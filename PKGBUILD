@@ -3,7 +3,7 @@
 # Contributor: Ivelin Velkov <ivelin dot velkov at gmail dot com>
 
 pkgname=teams-for-linux
-pkgver=1.4.37
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Unofficial Microsoft Teams client for Linux using Electron."
 arch=("aarch64" "armv7h" "i686" "x86_64")
@@ -15,11 +15,13 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/IsmaelMartinez/${pkgname}/archive/v${pkgver}.tar.gz"
   "${pkgname}.desktop"
 )
-sha256sums=('8816b56f218e3a3a9b5593f25a4c5b67e9e74b63b9af17ede02b3b4177cfc9f4'
+sha256sums=('9cc37e1523cf127a3347c5b85ade6e57b65437cc55bb83736c7ab3449022ab64'
             '4aa7c4aa178ba4e0f97f9ff4a514764a03b332978495d5e7f2dc1ce3f74db615')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+  # Temporary workaround: https://gitlab.archlinux.org/archlinux/packaging/packages/linux/-/issues/55
+  export UV_USE_IO_URING=0
   yarn install --non-interactive --pure-lockfile --cache-folder "${srcdir}/yarn-cache"
   if [[ ${CARCH} == "aarch64" ]]; then
     yarn electron-builder build --arm64 --linux dir
@@ -30,6 +32,7 @@ build() {
   elif [[ ${CARCH} == "x86_64" ]]; then
     yarn electron-builder build --x64 --linux dir
   fi
+
 }
 
 package() {
