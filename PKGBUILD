@@ -1,7 +1,7 @@
 # Maintainer: Fabien Devaux <fdev31@gmail.com>
 # Contributor: Fabien Devaux <fdev31@gmail.com>
 pkgname=pyprland
-pkgver=2.3.4
+pkgver=2.3.5
 pkgrel=1
 pkgdesc="Customize your Hyprland with scratchpads, menus, easy monitor layout and other extensions"
 arch=(any)
@@ -17,7 +17,7 @@ backup=()
 options=()
 noextract=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('04b0c50d568c5eecc2f222bb823d28a3e91a363577bdb61f5ea0b845cbafb3c7')
+sha256sums=('e92949d763a82be21133354d8b4d3307939d6823de91584dc54f7b96a9e783f5')
 
 build() {
     cd $pkgname-$pkgver
