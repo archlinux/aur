@@ -1,7 +1,7 @@
 # Maintainer: metamuffin <metamuffin@disroot.org>
 
 pkgname=jellything-git
-pkgver=r622.07fc74f
+pkgver=r628.34300db
 pkgrel=1
 pkgdesc="Jellything media streaming server"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -22,12 +22,6 @@ sha256sums=("SKIP"
             "SKIP"
             "SKIP"
             "SKIP")
-
-if test "$CARCH" = $(uname -m); then
-    _target=target
-else
-    _target=target/$CHOST
-fi
 
 pkgver() {
     cd "jellything"
@@ -51,8 +45,8 @@ check() {
     cargo test --release
 }
 package() {
-    install -Dm755 jellything/$_target/release/jellything "$pkgdir/usr/bin/jellything"
-    install -Dm755 jellything/$_target/release/jellytool "$pkgdir/usr/bin/jellytool"
+    install -Dm755 jellything/target/$CHOST/release/jellything "$pkgdir/usr/bin/jellything"
+    install -Dm755 jellything/target/$CHOST/release/jellytool "$pkgdir/usr/bin/jellytool"
     install -Dm644 jellything/completions/jellytool.fish "$pkgdir/usr/share/fish/completions/jellytool.fish"
     install -Dm644 jellything/completions/jellytool.bash "$pkgdir/usr/share/bash-completion/completions/jellytool"
     install -Dm644 jellything/completions/_jellytool "$pkgdir/usr/share/zsh/site-functions/_jellytool"
