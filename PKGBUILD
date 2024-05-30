@@ -9,7 +9,7 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=64a4c4aa7eaaaead17c1ee70420573afff7e3087
+_mozc_commit=bd66e803591cae5ceb2b2ef89a1e410ef94c2eca
 _mozcdict_ext_commit=de931271344ebb2d1349a7ae0a8ec883457ed930
 _branch=fcitx
 # Sudachi Dictionary
@@ -18,13 +18,14 @@ _sudachidict_date=20240409
 pkgbase=mozc-with-jp-dict
 pkgname=("ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
 pkgver=2.30.5448.102
-pkgrel=12
+pkgrel=13
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND LGPL-3.0-only AND MIT AND NAIST-2003')
 makedepends=('qt6-base' 'fcitx5' 'fcitx5-qt' 'bazel' 'git' 'python' 'python-six' 'pkg-config' 'curl' 'mesa' 'clang' 'ibus' 'rustup')
 options=(!lto)
 source=("git+$url.git#commit=${_mozc_commit}"
+        https://github.com/fcitx/mozc/pull/61.patch
         git+https://github.com/phoepsilonix/mozcdict-ext.git#commit=${_mozcdict_ext_commit}
         #"https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip"
         #"https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip"
@@ -37,7 +38,8 @@ source=("git+$url.git#commit=${_mozc_commit}"
 #        https://dumps.wikimedia.org/jawiki/latest/jawiki-latest-all-titles-in-ns0.gz)
 #noextract=(jawiki-latest-all-titles-in-ns0.gz)
 
-sha512sums=('5c7257e9bf5e9d3a6cfdfea8f9aba6dbc1d87331203c6e551c8734c6fc00d1db4e723971e3f4e677fd5f7e866f362b5267afa479577b5fd8ac6a4867290e5681'
+sha512sums=('ad3f5c17fee1a5fda4d7d0eb1b2f111ec270d81144d443b8a4b292ed617c7c4fc8372f5a1e941d1689f2946956d7bca588a832c5040f0afd4bc20ab26e83044c'
+            '9f88e7926a8db772856049c3e8d8066ca5e663d46817f432b042d212aa4ab20ed660ab9da9fed181c80116f6900602f753f7c55e9894b69964b0a2fb7518b830'
             'fcde4a3c0200969ebb21fa927f1ff59581386a39d83ea7ec5c0092e1566c38638129b71b286434e11fb4c6b76b48d6b36eb64b053306c2bbb8a7900e2c641558'
             'a293c3c9b544acd49bec4809e0c7c8c6849afe5d09d19ffeb094983e10e5dddbc780aefa6bcae48b4ee586549a88a5c1fa9f244d1ce1f4e5effc2f8d6c806ce6'
             '68eff02c9349a3058b693fe5be4ef9f388f29a286c56ec050301ca2ecb89ed80f392a0b7b36b603dffc988de97b7150eb32b1e77d5b06fbf4d52be50e683b851'
@@ -53,6 +55,9 @@ pkgver() {
 prepare() {
   cd "$srcdir/mozc" || exit
   git submodule update --init --recursive
+
+  # pr
+  patch -p1 -i ${srcdir}/61.patch
 
   cd src || exit
 
