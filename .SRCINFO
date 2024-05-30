@@ -1,13 +1,13 @@
 pkgbase = gcc10
 	pkgdesc = The GNU Compiler Collection (10.x.x)
 	pkgver = 10.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gcc.gnu.org
 	arch = x86_64
-	license = GPL
-	license = LGPL
-	license = FDL
-	license = custom
+	license = GPL-3.0-or-later
+	license = LGPL-3.0+
+	license = GFDL-1.3
+	license = LicenseRef-custom
 	checkdepends = dejagnu
 	checkdepends = inetutils
 	makedepends = binutils
@@ -27,6 +27,11 @@ pkgbase = gcc10
 	validpgpkeys = 86CFFCA918CF3AF47147588051E8B148A9999C34
 	validpgpkeys = 13975A70E63C361C73AE69EF6EEB81F8981C74C7
 	validpgpkeys = D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62
+	md5sums = c7d1958570fbd1cd859b015774b9987a
+	md5sums = SKIP
+	md5sums = dd2f7b78e118c25bd96134a52aae7f4d
+	md5sums = d5fd2672deb5f97a2c4bdab486470abe
+	md5sums = d99ba9f4bd860e274f17040ee51cd1bf
 	b2sums = 9b71761f4015649514677784443886e59733ac3845f7dfaa4343f46327d36c08c403c444b9e492b870ac0b3f2e3568f972b7700a0ef05a497fb4066079b3143b
 	b2sums = SKIP
 	b2sums = 88a178dad5fe9c33be5ec5fe4ac9abc0e075a86cff9184f75cedb7c47de67ce3be273bd0db72286ba0382f4016e9d74855ead798ad7bccb015b853931731828e
@@ -35,7 +40,7 @@ pkgbase = gcc10
 
 pkgname = gcc10
 	pkgdesc = The GNU Compiler Collection - C and C++ frontends (10.x.x)
-	depends = gcc10-libs=10.5.0-1
+	depends = gcc10-libs=10.5.0-2
 	depends = binutils>=2.28
 	depends = libmpc
 	depends = zstd
@@ -55,4 +60,4 @@ pkgname = gcc10-libs
 
 pkgname = gcc10-fortran
 	pkgdesc = Fortran front-end for GCC (10.x.x)
-	depends = gcc10=10.5.0-1
+	depends = gcc10=10.5.0-2
