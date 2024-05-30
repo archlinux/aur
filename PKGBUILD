@@ -1,8 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname=dicionario.js-bin
+_pkgname=dicionario
+pkgname="${_pkgname}.js-bin"
 pkgver=2.7.5
 _electronversion=28
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple dictionary in which you record your own words."
 arch=('x86_64')
 url="https://github.com/ArthurLobopro/dicionario.js"
@@ -13,16 +14,21 @@ depends=(
     "electron${_electronversion}"
     'nodejs'
 )
+options=(
+    '!strip'
+    '!emptydirs'
+)
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('354d3d518cb64f07dbadb9989dfc43702f234c0fb2e330822b97fb36215b033a'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
