@@ -1,8 +1,9 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Hugo Parente Lima <hugo.pl@gmail.com>
 
 pkgname=tijolo-git
 pkgver=0.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Lightweight, keyboard-oriented IDE for the masses"
 arch=("x86_64")
 conflicts=("tijolo")
@@ -26,4 +27,5 @@ build() {
 package() {
   cd "$srcdir/tijolo-git"
   make install DESTDIR="${pkgdir}"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
