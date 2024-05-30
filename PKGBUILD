@@ -2,7 +2,7 @@
 
 pkgname=wldash
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Wayland launcher and dashboard'
 arch=('x86_64')
 url='https://git.sr.ht/~kennylevinsen/wldash'

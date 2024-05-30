@@ -1,0 +1,22 @@
+pkgbase = wldash
+	pkgdesc = Wayland launcher and dashboard
+	pkgver = 0.3.0
+	pkgrel = 3
+	url = https://git.sr.ht/~kennylevinsen/wldash
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	depends = alsa-lib
+	depends = dbus
+	depends = fontconfig
+	depends = gcc-libs
+	depends = glibc
+	depends = libpulse
+	source = wldash-0.3.0.tar.gz::https://git.sr.ht/~kennylevinsen/wldash/archive/v0.3.0.tar.gz
+	source = fix-cargo-lock.patch
+	source = update-fontconfig.patch
+	sha512sums = 48f5356e76f77f9284b5533ee410b9a6ea2cb279da29f45d827ee521c4a46213909298e4c08c05cf1964b280d0cfb5124b0b85e85437c8289d7557194b95548d
+	sha512sums = 887a94e2af4aac20c118f75a63b5b12f41b925efa3a685792953dda4b02d94d08c1048cc9db61794d296470c2b85fca1fc947ba0b6f5b60dfc0ffcbba11c242a
+	sha512sums = b9a03d3f9f752225e27f2273f136712de89695575a8e40e16434b03eebfba0d185b552d163006acedad70983d2d5bfdfef996b7855bf66f2b2ceb9f371ba8d43
+
+pkgname = wldash
