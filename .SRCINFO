@@ -1,6 +1,6 @@
 pkgbase = dash-player-bin
 	pkgdesc = A video player designed specifically for English learning.一款专为英语学习打造的视频播放器
-	pkgver = 4.2.1
+	pkgver = 4.2.2
 	pkgrel = 1
 	url = https://solidspoon.xyz/app/dash-player/
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = dash-player-bin
 	depends = nss
 	depends = nspr
 	depends = alsa-lib
-	provides = dash-player=4.2.1
+	provides = dash-player=4.2.2
 	conflicts = dash-player
-	source = dash-player-4.2.1.deb::https://github.com/solidSpoon/DashPlayer/releases/download/v4.2.1/dash-player_4.2.1_amd64.deb
-	source = LICENSE-4.2.1::https://raw.githubusercontent.com/solidSpoon/DashPlayer/v4.2.1/LICENSE
-	sha256sums = 29b515e9e412941ae11eb8cf465d4d5ea4a135c806f8f4b3c2c897f689be4449
+	source = dash-player-4.2.2.deb::https://github.com/solidSpoon/DashPlayer/releases/download/v4.2.2/dash-player_4.2.2_amd64.deb
+	source = LICENSE-4.2.2::https://raw.githubusercontent.com/solidSpoon/DashPlayer/v4.2.2/LICENSE
+	sha256sums = 41a222365410ea7681624d29a0413451e5320d59a8670d4198b205f51c817730
 	sha256sums = 8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef
 
 pkgname = dash-player-bin
