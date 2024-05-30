@@ -17,7 +17,6 @@ depends=(
     glslang
     hyprlang
     hyprcursor
-    hyprwayland-scanner-git
     libdisplay-info
     libdrm
     libglvnd
@@ -59,6 +58,7 @@ makedepends=(
     vulkan-headers
     pkgconf
     xorgproto
+    hyprwayland-scanner-git
 )
 provides=("hyprland=${pkgver%%.r*}")
 conflicts=(hyprland)
