@@ -1,6 +1,6 @@
 pkgbase = python-tinygrad
 	pkgdesc = You like pytorch? You like micrograd? You love tinygrad! <3
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/tinygrad/tinygrad
 	arch = any
@@ -8,11 +8,11 @@ pkgbase = python-tinygrad
 	makedepends = python-setuptools
 	depends = python>=3.8
 	depends = python-tqdm
-	depends = python-gpuctypes
+	depends = python-numpy
 	optdepends = python-llvmlite: LLVM Backend Support
 	optdepends = python-unicorn: ARM Backend Support
 	optdepends = python-triton: Triton Backend Support
-	source = https://files.pythonhosted.org/packages/source/t/tinygrad/tinygrad-0.8.0.tar.gz
-	sha256sums = 009441986dc5f2ab48a3a6c7ecf6c92dda0684969d8c3469e131129bbf186777
+	source = https://files.pythonhosted.org/packages/source/t/tinygrad/tinygrad-0.9.0.tar.gz
+	sha256sums = 8a51478aa71e4306f2ba6858538c4ddd731be161cfa371a171d92108afed0e94
 
 pkgname = python-tinygrad
