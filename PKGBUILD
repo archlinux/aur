@@ -2,10 +2,10 @@
 
 _pkgname=webdump
 pkgname=webdump-git
-pkgver=r14.1d80db0
+pkgver=r51.a0118e6
 pkgrel=1
 pkgdesc='HTML to plain-text converter tool'
-arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
+arch=('i686' 'pentium4' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url='https://www.codemadness.org/git/webdump/file/README.html'
 license=('ISC')
 makedepends=('git')
@@ -20,7 +20,7 @@ pkgver() {
 }
 
 build() {
-  make WEBDUMP_CPPFLAGS="-D_DEFAULT_SOURCE" -C "$_pkgname"
+  make -C "$_pkgname"
 }
 
 package() {
