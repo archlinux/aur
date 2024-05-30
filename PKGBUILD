@@ -2,7 +2,7 @@
 # Modified based on hyprland-nvidia-nosystemd-git
 
 pkgname=hyprland-nosystemd-git
-pkgver=0.39.0.r12.g79a139c9
+pkgver=0.40.0.r144.ga60c7283
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (w/o systemd)"
 arch=(x86_64 aarch64)
@@ -17,6 +17,7 @@ depends=(
     glslang
     hyprlang
     hyprcursor
+    hyprwayland-scanner-git
     libdisplay-info
     libdrm
     libglvnd
@@ -104,7 +105,7 @@ prepare() {
 build() {
     cd hyprland-nosystemd-git
 
-    meson setup build \
+    CC=clang CXX="clang++" CC_LD=lld CXX_LD=lld meson setup build \
       --prefix     /usr \
       --libexecdir lib \
       --sbindir    bin \
@@ -129,12 +130,7 @@ package() {
     mkdir -p "$pkgdir/usr/include/hyprland/wlroots"
     mv "$pkgdir/usr/include/wlr" "$pkgdir/usr/include/hyprland/wlroots"
 
-    # resolve conflicts with system wlr
-    rm -f "$pkgdir/usr/lib/libwlroots.so"
-    rm -rf "$pkgdir/usr/lib/pkgconfig"
-
     # FIXME: remove after xdg-desktop-portal-hyprland disowns hyprland-portals.conf
-
     rm -rf "$pkgdir/usr/share/xdg-desktop-portal"
 
     # license
