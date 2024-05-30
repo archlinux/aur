@@ -7,7 +7,7 @@ pkgdesc="The itch.io desktop app (beta channel; binary release)"
 url="https://itchio.itch.io/kitch"
 license=('MIT')
 arch=('x86_64')
-provides=("kitch")
+provides=("itch" "kitch")
 conflicts=("kitch" "kitch-setup")
 depends=('alsa-lib' 'at-spi2-core' 'bash' 'cairo' 'dbus' 'expat' 'gcc-libs'
          'glib2' 'gtk3' 'libcups' 'libdrm' 'libx11' 'libxcb' 'libxcomposite'

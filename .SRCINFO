@@ -29,6 +29,7 @@ pkgbase = kitch-bin
 	depends = nss
 	depends = pango
 	optdepends = firejail: sandbox preference
+	provides = itch
 	provides = kitch
 	conflicts = kitch
 	conflicts = kitch-setup
