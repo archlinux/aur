@@ -1,6 +1,6 @@
 pkgbase = r-spatiallibd
 	pkgdesc = an R/Bioconductor package to visualize spatially-resolved transcriptomics data
-	pkgver = 1.16.0
+	pkgver = 1.16.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/spatialLIBD
 	arch = any
@@ -51,11 +51,11 @@ pkgbase = r-spatiallibd
 	optdepends = r-refmanager
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/spatialLIBD_1.16.0.tar.gz
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/spatialLIBD_1.16.2.tar.gz
 	source = fix-tests.patch
-	md5sums = c53e30d51ef6f68470bcd9e6196cf88c
+	md5sums = ad0807a9b15b57c60313c504fd908822
 	md5sums = ff2fc6d00615921ec62383cabcea1afb
-	b2sums = 89821d6951960d0852ef8fe2e483e33af3c03a3d1b79d1a1489295fee7b6b4ab5b7a96bdb1343865f8e60cda70c33644b3b0423fef4d0da1186479e87e4c23ab
+	b2sums = 06f3048b306f6440f6a60b6d231a3fc7e1cb9b4901ec005dd57602f7fe028f3f02c916a3cfb5a3a0e8c4289e39817a8901ba095e7ab0402617ecf0906cf5a0a3
 	b2sums = 637e4f2e31c0e77dfefacffd24c5e8a90b3bc70b36d68ec2fffebc41ca0bafe94707f02e67d42f22497d354a36b91157219d795661e80c173361fd33b20ae523
 
 pkgname = r-spatiallibd
