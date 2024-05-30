@@ -1,9 +1,9 @@
 # Maintainer: Martin Diehl <martin.diehl@kuleuven.be>
 pkgbase=damask
 pkgname=('damask' 'damask-grid' 'damask-mesh' 'python-damask')
-pkgver_=3.0.0-beta
+pkgver_=3.0.0-beta2
 pkgver=${pkgver_//-}
-pkgrel=3
+pkgrel=1
 pkgdesc='DAMASK - The Duesseldorf Advanced Material Simulation Kit'
 arch=('x86_64')
 url='https://damask.mpie.de'
@@ -12,16 +12,9 @@ makedepends=('cmake' 'python-setuptools'
              'petsc<3.22' 'hdf5-openmpi' 'fftw-openmpi' 'zlib' 'libfyaml'
              'python-matplotlib' 'python-scipy' 'python-pandas' 'python-h5py' 'python-pyaml')
 optdepends=('paraview: post-processing')
-source=(https://damask.mpie.de/files/download/damask-${pkgver_}.tar.xz)
+source=(https://damask.mpie.de/download/damask-${pkgver_}.tar.xz)
 
-sha512sums=('5ecf85c9e51f55275eec27a3ef369a71970d3ad9b4daaab5890861b769bee2f985d86d075eea5bdd9664e45107e427ee127d1857a5f38eb4edeb9974b842eef4')
-
-prepare() {
-  sed -i '23s/20/21/g' ${pkgname}-${pkgver_}/src/CLI.f90
-  sed -i '114d' ${pkgname}-${pkgver_}/src/CLI.f90
-  sed -i '14s/21/22/g' ${pkgname}-${pkgver_}/CMakeLists.txt
-
-}
+sha512sums=('aaa7bb1b88b30f42e4afc27952e1a04286304ab782a70442caf80b8d71af52dce5bb888b48775284470f2d31d5301d1281bd4ab8387e38840fed12add291ccd6')
 
 build() {
   cmake -S ${pkgbase}-${pkgver_} \
