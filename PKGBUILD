@@ -1,7 +1,7 @@
 # Maintainer: GreyXor <greyxor@protonmail.com>
 
 pkgname='polarproxy-bin'
-pkgver=0.9.10
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Transparent TLS and SSL inspection proxy primarily designed for incident responders and malware researchers to intercept, decrypt, and re-encrypt TLS encrypted traffic from malware while saving it in a PCAP file.'
 arch=('x86_64')
@@ -12,7 +12,7 @@ source=("$pkgname.tar.gz::https://www.netresec.com/?download=PolarProxy"
 "polarproxy_icon.png"
 "polarproxy.desktop"
 )
-b2sums=('2d8df8af9cb986e454e417638af05ffdb19840ac1ed0420fdb161afb3f10c124134b95b2045a65d202d040ab02f0ed11b17e176c0435ec95f90385eaf1994ef3'
+b2sums=('9014142e0fb4ba96f1647f1e2208d03541a84fe8b69369fb17e8aa4adfa19d30d1784d42708c26dba28e38f812686e2f7cd202c067719fa1d3bc6e9c8e1b9898'
         'd16df3c5469813bd5600bc8d56302c31e2e45ff0b6be582a3b12b28c9cfe64ac687aff8c4fdf49f6d09081b09242dd5df9ca1e88b345ccabf08f744094f5a4ea'
         'e805d3513b453b5f7be9e02c06426956bcf63928bdb983efafff6c62a5801a37039428c87665f8c63db84df0d3e837773b5d646695f39d79959f9e2821afca92')
 
