@@ -5,7 +5,7 @@ pkgname=$_pkgbin-bin
 pkgdesc="A high-performance, POSIX-ish S3 (Yandex, Amazon) file system written in Go."
 license=("Apache")
 url="https://github.com/yandex-cloud/geesefs"
-pkgver="0.41.0"
+pkgver="0.41.1"
 pkgrel=1
 arch=("x86_64")
 depends=("fuse3")
@@ -14,7 +14,7 @@ conflicts=("$_pkgbin" "$_pkgbin-git")
 _pkgsrc="geesefs-linux-amd64"
 source=("${_pkgsrc}-${pkgver}-${pkgrel}::${url}/releases/download/v${pkgver}/${_pkgsrc}"
         "LICENSE::https://raw.githubusercontent.com/yandex-cloud/geesefs/v${pkgver}/LICENSE")
-sha512sums=("1b321108fa9888fce6b6b30bd6cd0b1653a627625cc9ccad20c5dad6e3f3328b152f62c173dd69a92d5458bcd21ac397c0b71a23d43b790c1b4a9040c42ec3e2"
+sha512sums=("eaf9af3b0854c64531328c31ec6c3d50ae53224fa03830cabe4163f78e8084fed6bc1b808baca415325ede54059e774814afad60072e30f09a46367671964ec8"
             "34e066f8925ff51a4164d55d8ae3fd390fc2fd0d4bdf4ddc599f21a815e8886401cf95385b4c18d97276f4d3aee0ec323be3adf1b7fc773a192e31147d0a06da")
 
 
