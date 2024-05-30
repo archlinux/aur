@@ -34,7 +34,7 @@ pkgbase = itch-bin
 	conflicts = itch
 	conflicts = itch-setup
 	source = itch-linux-amd64-25.6.2.zip::https://broth.itch.ovh/itch/linux-amd64/25.6.2/archive/default
-	source = LICENSE::https://github.com/itchio/itch/raw/master/LICENSE
+	source = https://github.com/itchio/itch/raw/master/LICENSE
 	sha256sums = 46b16cc160a8e9720e190be14d91c6b290f3cce0fffadfffd20323296c9c09de
 	sha256sums = SKIP
 
