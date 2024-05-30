@@ -1,8 +1,7 @@
 # Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
 
 pkgname=gnome-shell-extension-just-perfection-desktop
-pkgver=27
-_commit=67b2366b0bd31a0c1ee8f33bd5ba355e362c46d9
+pkgver=28
 pkgrel=1
 pkgdesc='Just Perfection GNOME Shell Desktop'
 arch=(any)
@@ -10,7 +9,7 @@ url=https://gitlab.gnome.org/jrahmatzadeh/just-perfection
 license=(GPL3)
 depends=(gnome-shell)
 makedepends=(git)
-source=("$pkgname::git+$url.git#commit=$_commit")
+source=("$pkgname::git+$url.git#tag=$pkgver.0")
 md5sums=(SKIP)
 
 build() {
@@ -22,6 +21,6 @@ package() {
 	cd "$pkgname"
 	_extensiondir="/usr/share/gnome-shell/extensions/just-perfection-desktop@just-perfection"
 	install -d "$pkgdir$_extensiondir"
-	bsdtar -x -f just-perfection-desktop@just-perfection.shell-extension.zip -C "$pkgdir$_extensiondir"
-	install -Dm644 src/schemas/org.gnome.shell.extensions.just-perfection.gschema.xml -t "$pkgdir/usr/share/glib-2.0/schemas"
+	unzip just-perfection-desktop@just-perfection.shell-extension.zip -d "$pkgdir$_extensiondir"
+	glib-compile-schemas "$pkgdir$_extensiondir/schemas"
 }
