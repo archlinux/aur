@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electronim-bin
 _pkgname=ElectronIM
-pkgver=0.0.101
-_electronversion=29
+pkgver=0.0.102
+_electronversion=30
 pkgrel=1
 pkgdesc="Electron based multi IM (Instant Messaging) client"
 arch=('x86_64')
@@ -20,8 +20,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-${CARCH}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('c07e5a8f5d14dd8531ce3488c9756bd566f02f6c4794b43ce9a7696268542d7b'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+sha256sums=('bf20555e054dfef20597355ab7e784e03135627cf830990178fe161f0700b640'
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
