@@ -1,7 +1,7 @@
 pkgbase = autotrace
 	pkgdesc = A program for converting bitmap to vector graphics
 	pkgver = 0.31.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/autotrace/autotrace/
 	arch = x86_64
 	license = GPL-2.0-or-later
