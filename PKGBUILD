@@ -3,7 +3,7 @@
 _org='stack-of-tasks'
 _pkgname='pinocchio'
 pkgname=("$_pkgname" "$_pkgname-docs")
-pkgver=2.7.1
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Dynamic computations using Spatial Algebra"
 arch=('i686' 'x86_64')
@@ -12,29 +12,36 @@ license=('BSD-2-Clause')
 depends=('hpp-fcl' 'eigenpy' 'urdfdom' 'python' 'boost-libs' 'gcc-libs' 'glibc' 'eigen' 'python-numpy')
 optdepends=('lua52' 'cppad' 'cppadcodegen')
 makedepends=('cmake' 'boost' 'doxygen')
-source=("$url/releases/download/v$pkgver/$_pkgname-$pkgver.tar.gz"{,.sig})
-sha256sums=('fd50b72f9f32c14c8f9e7712d9abe077c154d2072e780faf12cc132cc198815f'
-            'SKIP')
+source=("$url/releases/download/v$pkgver/$_pkgname-$pkgver.tar.gz"{,.sig}
+        "pinocchio-valgrind.patch::$url/pull/2264.patch")
+sha256sums=('0e49f3d92e303fe109bc8b329513708a03cdb734a90cb7734821ed2978de8d10'
+            'SKIP'
+            '38031f5ec850a44ec1a1a19fb82cffb880ea0527a56897ea3d66f0c4c8f3af4e')
 validpgpkeys=(
         'A031AD35058955293D54DECEC45D22EF408328AD'  # https://github.com/jcarpent.gpg
         '1462AF00C9CF3C9E7AFC905E63380359F089A579'  # https://github.com/jorisv.gpg
 )
+
+prepare() {
+    patch -d "$pkgbase-$pkgver" -p1 -i "$srcdir/pinocchio-valgrind.patch"
+}
 
 build() {
     cmake -B "build-$pkgver" -S "$pkgbase-$pkgver" \
         -DBUILD_WITH_COLLISION_SUPPORT=ON \
         -DBUILD_UTILS=ON \
         -DPYTHON_EXECUTABLE=/usr/bin/python \
-        -DBUILD_WITH_AUTODIFF_SUPPORT="$(pacman -Qs cppad > /dev/null && echo -n ON || echo -n OFF)" \
-        -DBUILD_WITH_CODEGEN_SUPPORT="$(pacman -Qs cppadcodegen > /dev/null && echo -n ON || echo -n OFF)" \
+        -DBUILD_WITH_AUTODIFF_SUPPORT=OFF \
+        -DBUILD_WITH_CODEGEN_SUPPORT=OFF \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DGENERATE_PYTHON_STUBS=ON \
         -Wno-dev
-    cmake --build "build-$pkgver"
+    cmake --build "build-$pkgver" -j 1
 }
 
 check() {
+    export DEBUGINFOD_URLS=https://debuginfod.archlinux.org
     cmake --build "build-$pkgver" -t test
 }
 
