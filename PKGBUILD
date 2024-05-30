@@ -15,18 +15,12 @@ license=('GPL-3.0-only')
 provides=(${_pkgname})
 conflicts=(${pkgname%-git})
 #replaces=(${pkgname})
-depends=(
-    'gcc-libs'
-    'glibc'
-    'qcustomplot'
-    'qt5-base'
-    'qt5-serialport'
-    'qt5-connectivity')
+depends=('qcustomplot' 'qt5-serialport' 'qt5-connectivity')
 makedepends=('qt5-tools' 'git')
 backup=()
 options=()
 install=${pkgname}.install
-source=("${_pkgname}::git+${url}.git"
+source=("${_pkgname}::git+${url}.git#branch=dev"
         "${pkgname}.install")
 sha256sums=('SKIP'
             '303f34246c0d341e1093d6e486e2cbfdbbb0d122d751de649f562ebac37777b4')
@@ -38,7 +32,7 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "${srcdir}/${_pkgname}/"
-    git describe --long --tags | sed 's/^[vV]//g;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/V//g;s/v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare()
