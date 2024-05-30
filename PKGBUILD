@@ -2,7 +2,7 @@
 # Contributor: BrinkerVII <brinkervii@gmail.com>
 
 pkgname=luau
-pkgver=0.626
+pkgver=0.627
 pkgrel=1
 pkgdesc="A fast, small, safe, gradually typed embeddable scripting language derived from Lua"
 arch=(x86_64)
@@ -18,7 +18,7 @@ source=(
   "Luau.pc"
 )
 sha256sums=(
-  '4664dd5e68571e9455659ac471f18347d3cd2f07e66e57c4b0a68d0a394de252'
+  '96a9cb1331663ec35fb7e868460d2f0895a2203fbf4f280525b1023d449b1da6'
   'f65bc28fd66aac60cc8c7a33c7e64bec7ed296a69628dce57d2dfa57ba7ebab4'
 )
 
