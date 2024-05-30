@@ -1,13 +1,13 @@
 pkgbase = yesplaymusic-bin
 	pkgdesc = 高颜值的第三方网易云播放器。
 	pkgver = 0.4.8_2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://music.qier222.com/
 	arch = aarch64
 	arch = armv7h
 	arch = x86_64
 	license = MIT
-	depends = electron13-bin
+	depends = electron13
 	provides = yesplaymusic=0.4.8_2
 	conflicts = yesplaymusic
 	conflicts = yesplaymusic-electron
@@ -18,7 +18,7 @@ pkgbase = yesplaymusic-bin
 	source = LICENSE-0.4.8_2::https://raw.githubusercontent.com/qier222/YesPlayMusic/v0.4.8-2/LICENSE
 	source = yesplaymusic.sh
 	sha256sums = c33378c6fd12e6d040cedd06dc0d1bedfca74fd66bc46cc2cf10cc10e0906be6
-	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 	source_aarch64 = yesplaymusic-0.4.8_2-aarch64.deb::https://github.com/qier222/YesPlayMusic/releases/download/v0.4.8-2/yesplaymusic_0.4.8_arm64.deb
 	sha256sums_aarch64 = 3cfd1aa726d2391aa578e068825760215d6d619a9aa3c919e3be26b80103a5dd
 	source_armv7h = yesplaymusic-0.4.8_2-armv7h.deb::https://github.com/qier222/YesPlayMusic/releases/download/v0.4.8-2/yesplaymusic_0.4.8_armv7l.deb

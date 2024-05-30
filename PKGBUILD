@@ -3,7 +3,7 @@ pkgname=yesplaymusic-bin
 _pkgname=YesPlayMusic
 pkgver=0.4.8_2
 _electronversion=13
-pkgrel=1
+pkgrel=2
 pkgdesc="高颜值的第三方网易云播放器。"
 arch=(
     'aarch64'
@@ -14,7 +14,7 @@ url="https://music.qier222.com/"
 _ghurl="https://github.com/qier222/YesPlayMusic"
 license=('MIT')
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
 )
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=(
@@ -33,7 +33,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('c33378c6fd12e6d040cedd06dc0d1bedfca74fd66bc46cc2cf10cc10e0906be6'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 sha256sums_aarch64=('3cfd1aa726d2391aa578e068825760215d6d619a9aa3c919e3be26b80103a5dd')
 sha256sums_armv7h=('13ccd225abbd4d5beb6fcee95648f5aae551809ffd1eefe1b37cf446980d5ad3')
 sha256sums_x86_64=('8935a2fad64651053b27599c98c76559748aa581b2e263007aaf4237d7e19d9f')
@@ -41,6 +41,7 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
