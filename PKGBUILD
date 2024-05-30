@@ -2,7 +2,7 @@
 
 pkgname=frankenphp
 pkgver=1.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="FrankenPHP: Modern app server for PHP"
 arch=('x86_64')
 url="https://github.com/dunglas/frankenphp"
@@ -10,7 +10,7 @@ license=('MIT')
 depends=()
 makedepends=('curl')
 source=("https://github.com/dunglas/frankenphp/releases/download/v$pkgver/frankenphp-linux-x86_64")
-sha256sums=('39d2b7d2d891c13e7312ce77a1ab73a9f28ef25df04809a6ae9a1dd5cb1bb5fe')
+sha256sums=('881692cf884da7b430221e6b88527d8c8d684d7969b0c662062f2eb150401eb3')
 
 build() {
   cd "$srcdir"
