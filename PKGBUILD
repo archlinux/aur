@@ -5,23 +5,23 @@
 
 pkgname=python-undervolt
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Undervolt Intel CPUs under Linux"
-arch=('any')
 url="https://github.com/georgewhewell/undervolt"
-license=('GPL')
+arch=('any')
+license=('GPL-2.0-or-later')
 depends=('python')
-makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 conflicts=('undervolt')
-source=("git+$url.git#tag=$pkgver")
-sha256sums=('SKIP')
+source=("$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('d7a0bbb96e6acb998b7dd05cc41f8ccd82867bba0ac6e416b6e5b60fa3a55533')
 
 build() {
-  cd undervolt
+  cd undervolt-$pkgver
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd undervolt
+  cd undervolt-$pkgver
   PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir" dist/*.whl
 }
