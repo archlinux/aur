@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Crankshaft-Client
+Comment=A fast, feature-rich krunker client written in typescript
+Exec=crankshaft-client %U
+Icon=crankshaft-client
+Terminal=false
+Type=Application
+StartupNotify=false
+Categories=Game;
+Keywords=crankshaft;game;crankshaft-client;
