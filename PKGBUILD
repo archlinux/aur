@@ -2,7 +2,7 @@
 
 pkgname=twad-git
 _pkgname=twad
-pkgver=0.22.1.1
+pkgver=0.22.1.2
 pkgrel=1
 pkgdesc='Manage DOOM engines and mods with the terminal wad launcher'
 arch=('any')
@@ -20,9 +20,14 @@ pgkver() {
 build() {
   cd "${srcdir}"/${_pkgname}
   git checkout v0.22.1
-  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-  CGO_ENABLED=0 go build \
-    -o $pkgname .
+  #export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
+  CGO_ENABLED=0 go build -o $pkgname .
 }
 
 package() {
