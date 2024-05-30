@@ -2,7 +2,7 @@
 
 pkgname=python-instructor
 _pkgname=${pkgname#python-}
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Structured outputs for LLMs"
 arch=(any)
@@ -40,7 +40,7 @@ optdepends=(
   # 'python-google-generativeai: support for Google Gemini models'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('761ed4180a9bc9838d524fd221d1300b27e9acf0c265423130789ea0cc45da1d')
+sha256sums=('3c92e25469fd75c628ab25886d20158b9c447acb7c987228a77c94c29aea4752')
 
 _archive="$_pkgname-$pkgver"
 
