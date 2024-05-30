@@ -2,7 +2,7 @@
 # Contributor: sukanka<su975853527 AT gmail dot com>
 
 pkgname=clash-verge
-pkgver=1.6.2
+pkgver=1.6.4
 pkgrel=1
 pkgdesc="A Clash Meta GUI based on Tauri, Continuation of Clash Verge"
 arch=('x86_64' 'aarch64')
@@ -29,7 +29,7 @@ makedepends=('cargo-tauri'
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 	    "${pkgname}.desktop"
 )
-sha512sums=('0c3ce222276078162d580475623e516df1df261472a530cf0049e6013451ec8fd6acbaa828ecebfdb0e68d0f84a51294aeb769a05e6c5972a518ceae26669117'
+sha512sums=('aee92f38927da9ff455485598488522ae9e369391ba140ad59ed85bcdae4accbf1417ac66b3fcb8314b634e17bbacf00230a0447f69235b7af706ff6f175908a'
             '2066dacf2e5e0135e6403cbfb825efcdf08bbcdc781407e6bb1fbb85143817b2b1abef641d20390ff7e5b3e91a509933e9eb17a64f9de7671445ac6d5363a44a')
 options=(!lto)
 
@@ -64,8 +64,9 @@ package() {
 
 	install -d ${pkgdir}/usr/lib/${pkgname}/resources
 	ln -sf /etc/clash/Country.mmdb -t ${pkgdir}/usr/lib/${pkgname}/resources
+ 	install -Dm755 src-tauri/target/release/resources/{clash-verge,install,uninstall}-service -t ${pkgdir}/usr/lib/${pkgname}/resources
 
-	install -Dm644 src/assets/image/logo.bak.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg
+	install -Dm644 src-tauri/icons/icon.png ${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png
 
 	install -Dm644 ${srcdir}/${pkgname}.desktop -t ${pkgdir}/usr/share/applications
 }
