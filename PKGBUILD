@@ -3,9 +3,9 @@
 # Contributor: Carlos Galindo <carlos.s.galindo (at) gmail.com>
 
 _npmname=meshcentral
-_npmver=1.1.19
+_npmver=1.1.24
 pkgname=meshcentral
-pkgver=1.1.19
+pkgver=1.1.24
 pkgrel=1
 pkgdesc="The open source, multi-platform, self-hosted, feature packed web site for remote device management"
 arch=(any)
@@ -23,10 +23,10 @@ source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz"
 	"$_npmname.sysusers"
 	"$_npmname.tmpfiles")
 noextract=("$_npmname-$_npmver.tgz")
-sha256sums=('842604b4798be3d9a0b465204b417ee8b26e0a98c10fae6b19cae08a6cfbffd2'
-	'd88ad4d11395bd13a4aa64829bf03977ac3511134be2dbe875b95c7243e5bf92'
-	'd907415d1be94568c92d3a05e70dd855f004ebed2c4170f5c2d2f36c0dfd5199'
-	'ba5d7e33bc3ce9ce33d20b23e8632af8f1e1507908bba3e91dae1a0cf460ddcc')
+sha256sums=('04d037f7defe65ec65de9a48a2bd277ab873cf3e05aa093bbea74511f4e6eb96'
+            'd88ad4d11395bd13a4aa64829bf03977ac3511134be2dbe875b95c7243e5bf92'
+            'd907415d1be94568c92d3a05e70dd855f004ebed2c4170f5c2d2f36c0dfd5199'
+            'ba5d7e33bc3ce9ce33d20b23e8632af8f1e1507908bba3e91dae1a0cf460ddcc')
 
 package() {
 	cd "$srcdir"
