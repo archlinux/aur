@@ -15,7 +15,7 @@ depends=('alsa-lib' 'at-spi2-core' 'bash' 'cairo' 'dbus' 'expat' 'gcc-libs'
          'nspr' 'nss' 'pango')
 optdepends=('firejail: sandbox preference')
 source=("kitch-linux-amd64-$pkgver.zip::https://broth.itch.ovh/kitch/linux-amd64/$pkgver/archive/default"
-        "LICENSE::https://github.com/itchio/itch/raw/master/LICENSE")
+        "https://github.com/itchio/itch/raw/master/LICENSE")
 sha256sums=('5a4079ddce5770dcddc947e64fe28e01de253d45b7a7ba24d4dc2aa48fb59a10'
             'SKIP')
 
