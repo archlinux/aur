@@ -1,8 +1,8 @@
 #Maintainer: sukanka <su975853527 AT gmail.com>
 _pkgname=flexplot
-_pkgver=0.20.9
+_pkgver=0.21.0
 pkgname=r-${_pkgname,,}
-pkgver=0.20.9
+pkgver=0.21.0
 pkgrel=1
 pkgdesc="Graphically Based Data Analysis"
 arch=('x86_64')
