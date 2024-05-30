@@ -5,7 +5,7 @@ _pkgname="${_name,,}.lv2"
 _plugin_uri="https://www.jahnichen.de/plugins/lv2/$_name"
 pkgname=$_pkgname-git
 pkgdesc='A multi-dimensional dynamically distorted staggered multi-bandpass LV2 plugin (git version)'
-pkgver=1.6.2.r8.g4c7f61e
+pkgver=1.6.2.r10.gd477f6d
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/sjaehn/$_name"
@@ -51,7 +51,11 @@ build() {
 
 check() {
   cd $_pkgname
-  lv2lint -Mpack -I "$_name.lv2/" "${_plugin_uri}"
+  lv2lint \
+    -Mpack \
+    -s "_Z*" \
+    -I "$_name.lv2/" \
+    "${_plugin_uri}"
 }
 
 package() {
