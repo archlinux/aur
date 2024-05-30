@@ -9,7 +9,7 @@ depends=('python')
 optdepends=('python-lxml: The pycrate_diameter part uses lxml as optional dependency to translate xml files from IANA as Python dictionnaries when the diameter module is loaded.'
             'python-sctp: The pycrate_corenet part requires pysctp to run.'
             'python-cryptomobile: The pycrate_corenet part requires CryptoMobile to run. The pycrate_mobile/TS24301_EMM and pycrate_mobile/TS24501_FGMM modules use CryptoMobile as optional dependency to cipher / decipher LTE and 5G NAS messages.')
-url="https://github.com/P1sec/pycrate"
+url="https://github.com/pycrate-org/pycrate"
 license=('LGPL2.1')
 source=(https://github.com/pycrate-org/pycrate/archive/${pkgver}.tar.gz)
 md5sums=('1289f2aa9572183a7d0987bc677963aa')
