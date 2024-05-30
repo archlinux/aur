@@ -3,7 +3,7 @@ pkgname=boats-animator-bin
 _appname="Boats Animator"
 pkgver=0.13.0
 _electronversion=22
-pkgrel=9
+pkgrel=10
 pkgdesc="Stop motion animation program created using Electron"
 arch=('x86_64')
 url="http://charlielee.uk/boats-animator"
@@ -19,11 +19,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('671e5743d742b154a6576257b58a92c013c9bed690d1787c73b433c89f9dbbab'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
