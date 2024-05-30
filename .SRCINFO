@@ -1,0 +1,26 @@
+pkgbase = python-rad
+	pkgdesc = A HTTP and FTP parallel file downloader
+	pkgver = 0.20.0
+	pkgrel = 1
+	url = https://rad.readthedocs.io
+	arch = any
+	license = BSD-3-Clause
+	checkdepends = python-pytest-doctestplus
+	checkdepends = python-crds
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-sphinx-asdf
+	makedepends = python-importlib-metadata
+	makedepends = python-matplotlib
+	source = https://files.pythonhosted.org/packages/source/r/rad/rad-0.20.0.tar.gz
+	md5sums = 8cb6a5c0a5196361bb2a7e3f9e021413
+
+pkgname = python-rad
+	depends = python>=3.10
+	depends = python-asdf-astropy>=0.5.0
+	optdepends = python-rad-doc: Documentation for RAD
+
+pkgname = python-rad-doc
+	pkgdesc = Documentation for Python RAD
