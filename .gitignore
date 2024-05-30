@@ -1,3 +1,5 @@
 HandBrake
+handbrake-gcc-optimized-*-x86_64.pkg.tar.zst
 handbrake-llvm-optimized-*-x86_64.pkg.tar.zst
+handbrake-gcc-optimized-cli-*-x86_64.pkg.tar.zst
 handbrake-llvm-optimized-cli-*-x86_64.pkg.tar.zst
