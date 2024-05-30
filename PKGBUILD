@@ -1,8 +1,8 @@
 # Maintainer: Mort Yao <soi@mort.ninja>
 
 pkgname=fstar-bin
-pkgver=0.9.7.0
-_subver=-alpha1
+pkgver=2023.09.03
+_subver=
 pkgrel=1
 pkgdesc='A Higher-Order Effectful Language Designed for Program Verification'
 url='https://fstar-lang.org/'
@@ -11,8 +11,8 @@ arch=('x86_64')
 depends=()
 provides=('fstar')
 conflicts=('fstar' 'fstar-git')
-source=("https://github.com/FStarLang/FStar/releases/download/V${pkgver}${_subver}/fstar_${pkgver}${_subver}_Linux_x86_64.tar.gz")
-md5sums=('31316d6dc26e12e1c69b516bfdeeea3f')
+source=("https://github.com/FStarLang/FStar/releases/download/v${pkgver}${_subver}/fstar_${pkgver}${_subver}_Linux_x86_64.tar.gz")
+sha256sums=('dfc06973afecc48f1a7bd4e593215b438095dcf3451a45e33a6190f0c36a50ca')
 
 package() {
   cd "fstar"
