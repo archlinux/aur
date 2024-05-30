@@ -1,52 +1,55 @@
-# Maintainer: BigfootACA <bigfoot@classfun.cn>
+# Maintainer: Matteo Piccinini (loacker) <matteo.piccinini@gmail.com>
+# Contributor: BigfootACA <bigfoot@classfun.cn>
 
-_pyname=ovsdbapp
-pkgname=python-$_pyname
-pkgver=1.12.0
+pkgname=python-ovsdbapp
+pkgver=2.8.0
 pkgrel=1
-pkgdesc="A library for creating OVSDB applications"
+pkgdesc="OVSDB application library"
 arch=(any)
-url="https://pypi.org/project/ovsdbapp/"
-license=(Apache)
-depends=(
-	openvswitch
-	python
-	python-pbr
-	python-fixtures
-	python-netaddr
-	python-ovs-wrapper
-)
-makedepends=(
-	python-setuptools
-	python-sphinx
-	python-openstackdocstheme
-	python-reno
-)
-checkdepends=(
-	python-hacking
-	python-coverage
-	python-isort
-	python-subunit
-	python-oslotest
-	python-pylint
-	python-stestr
-	python-testscenarios
-	python-testtools
-)
-source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('3e587890d0f560fe769728c415f27bd1')
-sha256sums=('3718185f911fa9da82f75fc0a5ccb3f8228933fd99c6230b7f976a90e7918e87')
-sha512sums=('5d432be0a2de600ab994e76bf4d05c1c0665ab6053f2fe76a6f96b9f7bdfa69c449e58fdc28e921adf403a0083ee051a7d19a35ee6eaff3596334e4249f0f9ee')
+url="https://opendev.org/openstack/ovsdbapp"
+license=(Apache-2.0)
+depends=('python'
+         'python-fixtures'
+         'python-netaddr'
+         'python-ovs'
+         'python-pbr'
+         'python-eventlet'
+         'python-testscenarios'
+         'python-testtools'
+         'python-sortedcontainers'
+         'python-oslotest')
+makedepends=('python-build'
+             'python-installer'
+             'python-setuptools'
+             'python-wheel'
+             'tar')
+checkdepends=('python-coverage'
+              'python-isort'
+              'python-subunit'
+              'python-stestr')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+b2sums=('7524f69f605898c9e9eb85a43331d3ee315794e89bc1a13cbcc90336f31902e08e78633736fb75d94309944d65b02925c96950ebdb80572d6e6ed942fe0a2234')
 
-export PBR_VERSION=$pkgver
+prepare() {
+    tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level
+}
 
 build(){
-	cd $_pyname-$pkgver
-	python setup.py build
+    cd "$pkgname-$pkgver"
+    PBR_VERSION=$pkgver python -m build --wheel --no-isolation
+}
+
+check(){
+    cd "$pkgname-$pkgver"
+    stestr run
 }
 
 package(){
-	cd $_pyname-$pkgver
-	python setup.py install --root "$pkgdir" --optimize=1
-	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+    cd "$pkgname-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 README.rst -t "$pkgdir/usr/share/$pkgname/"
+    install -Dm644 HACKING.rst -t "$pkgdir/usr/share/$pkgname/"
+    install -Dm644 TESTING.rst -t "$pkgdir/usr/share/$pkgname/"
+    install -Dm644 CONTRIBUTING.rst -t "$pkgdir/usr/share/$pkgname/"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
