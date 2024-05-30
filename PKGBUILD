@@ -23,6 +23,10 @@ makedepends=(
     'gendesk'
     'gcc'
 )
+options=(
+    '!strip'
+    '!emptydirs'
+)
 source=(
     "${pkgname//-/.}::git+${url}.git"
     "${pkgname%-git}.sh")

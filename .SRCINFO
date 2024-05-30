@@ -14,6 +14,8 @@ pkgbase = uivonim-git
 	depends = nodejs
 	provides = uivonim=0.29.0
 	conflicts = uivonim
+	options = !strip
+	options = !emptydirs
 	source = uivonim.git::git+https://github.com/smolck/uivonim.git
 	source = uivonim.sh
 	sha256sums = SKIP
