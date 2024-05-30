@@ -2,7 +2,7 @@
 pkgname=xbyyunpan-bin
 _zhsname="小白羊云盘"
 _pkgname="XBYDriver"
-pkgver=3.13.3
+pkgver=3.13.5
 _electronversion=21
 pkgrel=1
 pkgdesc="小白羊网盘 - Powered by 阿里云盘Open"
@@ -21,7 +21,7 @@ conflicts=(
     "xbydriver"
 )
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.deb")
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-armv7l.deb")
@@ -31,14 +31,15 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('37b92e7918a9a8599a558d5e978900966b243cc9f6c964c36f4afa35bf50e009'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
-sha256sums_aarch64=('247583972357f4b731c3c71078183be3d27ef33b50b6c13377b0dfcd1ef4aff2')
-sha256sums_armv7h=('ea21a03beadfaa79f2293bf271163e175ba035dbbdf34be51d1e7bfe58e3cf29')
-sha256sums_x86_64=('ee8bbf1f387c3bf6ba5f1dfbb743ef13386b4687a8fffb9b3a9285ef89b22179')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+sha256sums_aarch64=('3420171837cecec3880114a4868351a1c29f429575429c43f5a9b94a98551426')
+sha256sums_armv7h=('f1e9b8da7a94cfbd6b8fcf3a8adb7e399473b819f01e336e9f78b3a16b3601d5')
+sha256sums_x86_64=('59dc465b59d149922278db38a78a1140921b37b312ae7f31640af99c261d7e3a')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|alixby3|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
