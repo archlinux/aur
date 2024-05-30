@@ -1,17 +1,20 @@
 pkgbase = colorway
 	pkgdesc = Generate color pairings
 	pkgver = 1.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/lainsce/colorway
 	arch = x86_64
-	license = GPL3
+	arch = aarch64
+	license = GPL-3.0-or-later
+	checkdepends = appstream-glib
 	makedepends = git
 	makedepends = meson
 	makedepends = vala
-	depends = libadwaita
 	depends = json-glib
+	depends = libadwaita
 	depends = libgee
-	source = colorway::git+https://github.com/lainsce/colorway.git#commit=b7ff8cf47032251b62e55798c6808f226bd21392
+	depends = libhelium
+	source = git+https://github.com/lainsce/colorway.git#commit=b7ff8cf47032251b62e55798c6808f226bd21392
 	md5sums = SKIP
 
 pkgname = colorway
