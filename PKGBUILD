@@ -1,8 +1,8 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgbase=vpkedit
 pkgname=(vpkedit libvpkeditc)
-pkgver=4.2.0
-pkgrel=2
+pkgver=4.2.1
+pkgrel=1
 pkgdesc="A library and CLI/GUI tool to create, read, and write several pack file formats"
 arch=('x86_64')
 url="https://github.com/craftablescience/VPKEdit"
@@ -23,7 +23,7 @@ source=("$pkgname::git+$url.git#tag=v${pkgver}"
 		"cryptopp::git+https://github.com/abdes/cryptopp-cmake.git"
 		#Submodule for submodules
 		"bufferstream::git+https://github.com/craftablescience/BufferStream.git")
-sha256sums=('8fe01e454f04129381d36c2d6104fb97a51bcffdca6031d752236e28769de5d6'
+sha256sums=('69ef696017d96d30695fa6ee0221a3393a5aa8dc39ddc7575ea41c49f710c3fb'
             'SKIP'
             'SKIP'
             'SKIP'
