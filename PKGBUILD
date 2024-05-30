@@ -3,7 +3,7 @@ pkgname=ficus-bin
 _pkgname=Ficus
 pkgver=0.2.1
 _electronversion=13
-pkgrel=8
+pkgrel=9
 pkgdesc="A software for editing and managing markdown documents, developed by the gg=G team."
 arch=('x86_64')
 url="https://ficus.world/"
@@ -12,7 +12,7 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}" "${pkgname%-bin}-desktop")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
 )
 makedepends=(
     'gendesk'
@@ -26,14 +26,15 @@ source=(
 sha256sums=('fb3a407722baa7b48b81db2753ae12f47799a3a434122d47db8b320c6c4ba993'
             '062dfd6ae4c19f555ebbdba752598c98510837687393a38a3602b711890430d7'
             '3c8344b3daac5c775a3bf38518e5eee024566d7ea0a3f72c543a7c7ae13f72ef'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
+    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
