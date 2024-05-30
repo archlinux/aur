@@ -4,12 +4,12 @@
 _pkgname=tuner
 pkgname=$_pkgname-git
 pkgver=1.5.1.r61.63fb6d9
-pkgrel=2
+pkgrel=3
 pkgdesc="GNU/Linux app to discover and play internet radio stations. Geared towards RadioBrowser"
 arch=('i686' 'x86_64')
 url="https://codeberg.org/$_pkgname/$_pkgname"
 license=('GPL-3.0-only')
-depends=('granite' 'libsoup' 'gst-plugins-bad-libs' 'geoclue' 'geocode-glib')
+depends=('granite' 'libsoup' 'gst-plugins-good' 'gst-plugins-bad-libs' 'geoclue' 'geocode-glib')
 optdepends=('gst-libav: play AAC[+] streams')
 makedepends=('git' 'meson' 'vala')
 provides=("${_pkgname}")
