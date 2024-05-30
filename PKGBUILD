@@ -1,5 +1,5 @@
 pkgname=lexido
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 arch=('any')
 url="https://github.com/micr0-dev/lexido"
