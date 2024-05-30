@@ -2,7 +2,7 @@
 # Modified based on hyprland-nvidia-nosystemd-git
 
 pkgname=hyprland-nosystemd-git
-pkgver=0.39.1.r105.5e6f7b1c 
+#pkgver=0.40.0.r145.5e6f7b1c
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (w/o systemd)"
 arch=(x86_64 aarch64)
@@ -81,12 +81,10 @@ pick_mr() {
 }
 
 pkgver() {
-    cd "$srcdir/$pkgname"
-    if git describe --long --tags >/dev/null 2>&1; then
-        git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-    else
-        printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git describe --always)"
-    fi
+    # use pkgver of hyprland-git package
+    
+    eval $(curl 'https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=hyprland-git' >/dev/null | grep pkgver | head -n1 | sed 's/pkgver/upstreamver/')
+    echo $upstreamver
 }
 
 prepare() {
