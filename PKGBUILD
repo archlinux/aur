@@ -9,7 +9,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/imgk/caddy-trojan"
 license=('GPL3')
 makedepends=('go' 'xcaddy')
-provides=("caddy")
+provides=("caddy=$pkgver")
 conflicts=("caddy")
 source=(
     "caddy.hook"
