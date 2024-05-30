@@ -22,12 +22,12 @@ optdepends=(
   'xclip'
 )
 makedepends=(
-  'git'
-  'python-build'
-  'python-installer'
-  'python-setuptools'
-  'python-wheel'
-  'python-poetry'
+  'git' # To retrieve upstream sources.
+  'python-build'      # For building/ packaging the software.
+  'python-installer'  # For building/ packaging the software.
+  'python-setuptools' # For building/ packaging the software.
+  'python-wheel'      # For building/ packaging the software.
+  'python-poetry'     # For building/ packaging the software.
   'python-sphinx>=6.0.0'              # For building the documentation.
   'python-sphinx-argparse>=0.4.0'     # For building the documentation.
   'python-sphinx-click>=4.4.0'        # For building the documentation.
@@ -37,10 +37,8 @@ makedepends=(
   'texlive-bin'                       # For building the documentation.
 )
 checkdepends=(
-  #'python-cssselect'
   'python-inkex>=1.2.2'
   'python-lxml>=4.9.2'
-  #'python-numpy'
   'python-pytest'
 )
 provides=(
