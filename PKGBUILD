@@ -3,6 +3,7 @@
 
 pkgname=hyprland-nosystemd-git
 pkgver=0.40.0.r145.5e6f7b1c
+pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (w/o systemd)"
 arch=(x86_64 aarch64)
 url="https://github.com/hyprwm/Hyprland"
