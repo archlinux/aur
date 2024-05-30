@@ -20,9 +20,8 @@ pgkver() {
 build() {
   cd "${srcdir}"/${_pkgname}
   git checkout v0.22.1
-  go build \
-    -trimpath \
-    -ldflags "-extldflags $LDFLAGS" \
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  CGO_ENABLED=0 go build \
     -o $pkgname .
 }
 
