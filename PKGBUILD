@@ -13,6 +13,6 @@ export LDFLAGS+=" -Wl,-z,relro,-z,now"
 
 
 package() {
-    install -Dm755 arch-torify "${pkgdir}/usr/bin/arch-torification"
+    install -Dm755 arch-torification "${pkgdir}/usr/bin/arch-torification"
     hash -r
 }
