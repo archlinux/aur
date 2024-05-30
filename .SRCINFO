@@ -1,0 +1,18 @@
+pkgbase = luax-git
+	pkgdesc = Lua interpreter and REPL based on Lua 5.4, augmented with some useful packages. It is also a "compiler" that produces standalone executables from Lua scripts.
+	pkgver = r590.70bcc33
+	pkgrel = 1
+	url = https://cdelord.fr/luax.html
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = ninja
+	makedepends = git
+	depends = lua
+	depends = zig
+	depends = glibc
+	provides = luax
+	source = git+https://github.com/CDSoft/luax.git
+	sha256sums = SKIP
+
+pkgname = luax-git
