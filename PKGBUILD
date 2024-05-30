@@ -3,13 +3,14 @@
 pkgname=errands
 pkgver=46.2.2
 _commit=f1b0e6028a1ffb12cfe941b09793f26800b7a22d
-pkgrel=1
+pkgrel=2
 pkgdesc='Todo application for those who prefer simplicity'
 url="https://github.com/mrvladus/Errands"
 license=('MIT')
 arch=('x86_64' 'aarch64')
-depends=('gtksourceview5' 'python-caldav' 'python-gobject' 'python-icalendar'
-         'python-pycryptodomex' 'libadwaita' 'libsecret')
+depends=('dconf' 'glib2' 'gtksourceview5' 'libadwaita' 'libgoa' 'libportal'
+         'libsecret' 'python-caldav' 'python-gobject' 'python-icalendar'
+         'python-pycryptodomex' 'python-requests' 'python-urllib3')
 optdepends=('gnome-online-accounts')
 makedepends=('git' 'meson')
 checkdepends=('appstream')
