@@ -1,0 +1,5 @@
+[python-jupyter-book]
+source = "github"
+github = "executablebooks/jupyter-book"
+use_latest_release = "true"
+prefix = "v"

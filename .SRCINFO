@@ -1,10 +1,10 @@
 pkgbase = python-jupyter-book
 	pkgdesc = Build a book with Jupyter Notebooks and Sphinx
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://jupyterbook.org
 	arch = any
-	license = custom:BSD-3-clause
+	license = BSD-3-Clause
 	checkdepends = python-pytest
 	checkdepends = python-jupytext
 	checkdepends = python-texsoup
@@ -27,7 +27,7 @@ pkgbase = python-jupyter-book
 	depends = python-sphinx-togglebutton
 	depends = python-sphinxcontrib-bibtex
 	depends = python-sphinx-multitoc-numbering
-	source = jupyter-book-1.0.0.tar.gz::https://github.com/executablebooks/jupyter-book/archive/v1.0.0.tar.gz
-	sha512sums = 4dc6056db34cb3692d529a038ddd1042ddd27c352d180408cdc4dbe400e28a6c046d570303c635e19982cf5cabdc302188d569778c48d6d648690e730d525711
+	source = jupyter-book-1.0.1.tar.gz::https://github.com/executablebooks/jupyter-book/archive/v1.0.1.tar.gz
+	sha512sums = 5050ab7d4fd63256ee79f843eed4451074453c58ce8c026d2ee67a3f8797e6f9435b8bb2a33e42a07c151d95220c885929dc9759f22589ae07cc781d5db89583
 
 pkgname = python-jupyter-book
