@@ -1,6 +1,6 @@
 pkgname=extm3u
 pkgver=20111201
-pkgrel=1
+pkgrel=2
 _commit=8fcb71469ce0ca31fb1ee382842ada36a74de5a7
 pkgdesc='Generates an extended .m3u playlist from mp3, mp4, ogg and flac files'
 arch=(any)
@@ -14,7 +14,7 @@ optdepends=('perl-audio-flac-header: FLAC files support'
 )
 source=("$_url_source/archive/$_commit.tar.gz" extm3u.patch)
 sha256sums=('c39cd41953da3430dcb889f5dbc7852c6d3d4d09a2233ce7f57c4b39d84eda4f'
-            '02389f5a9301a1faa0949876860f389ad86c59a68e0c45729fdcebdbda371f36')
+            'f7a9e07f904ff26cfe78a7a4a18bdc4367f775cd2b6afed0056217454e2af5b3')
 
 prepare() {
   cd $pkgname-$_commit
