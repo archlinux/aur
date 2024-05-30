@@ -2,7 +2,7 @@
 
 pkgname='geant4-full-debug'
 pkgver=11.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A simulation toolkit for particle physics interactions - includes all the optional libraries"
 depends=(
   'cmake>=3.16'
@@ -51,7 +51,7 @@ source=(
 )
 sha256sums=(
   "835db6543d5cb2e801675958965be96877f66d6907bb521954b598b785deae5e"
-  "2d681490722e8a0114d4262853449108f7c66dada28402dd944e723d840d7388"
+  "5fde7b80dcfa960407b1ecb2b2a2aa817250948cc32490d8ece48a5e5b4035c1"
 )
 install="geant4-full-debug.install"
 
@@ -128,8 +128,10 @@ package() {
 
   cd ${srcdir}/build
   make DESTDIR="${pkgdir}" install
+
+  mkdir -p "${pkgdir}"/usr/include
   ln -s /opt/Geant4/Geant4-v${pkgver}-debug/lib ${pkgdir}/opt/Geant4/Geant4-v${pkgver}-debug/lib64
-  ln -s /opt/Geant4/Geant4-v${pkgver}-debug/include/Geant4 "${pkgdir}"/usr/lib/include/Geant4
-  ln -s /opt/Geant4/Geant4-v${pkgver}-debug/include/Geant4/CLHEP "${pkgdir}"/usr/lib/include/CLHEP
-  ln -s /opt/Geant4/Geant4-v${pkgver}-debug/include/Geant4/PTL "${pkgdir}"/usr/lib/include/PTL
+  ln -s /opt/Geant4/Geant4-v${pkgver}-debug/include/Geant4 "${pkgdir}"/usr/include/Geant4
+  ln -s /opt/Geant4/Geant4-v${pkgver}-debug/include/Geant4/CLHEP "${pkgdir}"/usr/include/CLHEP
+  ln -s /opt/Geant4/Geant4-v${pkgver}-debug/include/Geant4/PTL "${pkgdir}"/usr/include/PTL
 }
