@@ -1,14 +1,14 @@
 pkgbase = zsa-keymapp-bin
 	pkgdesc = A live visual reference for your ZSA keyboard
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zsa.io/flash
 	arch = x86_64
 	license = custom:not-provided
 	depends = zsa-udev
 	depends = libusb
 	depends = gtk3
-	depends = webkit2gtk
+	depends = webkit2gtk-4.1
 	source = https://oryx.nyc3.cdn.digitaloceanspaces.com/keymapp/keymapp-1.2.0.tar.gz
 	source = keymapp.desktop
 	source = keymapp.png

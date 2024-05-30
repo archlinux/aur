@@ -2,13 +2,13 @@
 pkgname=zsa-keymapp-bin
 _pkgname=keymapp
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A live visual reference for your ZSA keyboard"
 arch=(x86_64)
 url="https://zsa.io/flash"
 license=(custom:not-provided)
 depends=(libusb gtk3)
-depends=(zsa-udev libusb gtk3 webkit2gtk)
+depends=(zsa-udev libusb gtk3 webkit2gtk-4.1)
 source=("https://oryx.nyc3.cdn.digitaloceanspaces.com/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
         "keymapp.desktop"
         "keymapp.png")
