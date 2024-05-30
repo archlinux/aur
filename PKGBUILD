@@ -2,7 +2,7 @@
 # Contributor: rich_o <aurua@riseup.net>
 
 pkgname=ncmpcpp-git
-pkgver=0.9.2.r20.gdc46f7a4
+pkgver=0.9.2.r21.g81e5cf58
 pkgrel=1
 epoch=2
 pkgdesc='An almost exact clone of ncmpc with some new features (git version)'
@@ -14,15 +14,12 @@ makedepends=('git' 'boost')
 provides=('ncmpcpp')
 conflicts=('ncmpcpp')
 source=('git+https://github.com/arybczak/ncmpcpp.git'
-        '010-ncmpcpp-use-arch-flags.patch'
-        '020-ncmpcpp-taglib2-fix.patch')
+        '010-ncmpcpp-use-arch-flags.patch')
 sha256sums=('SKIP'
-            '1907468f83dbd733e20e5d56b633eeee58a507f0767789fd0583e55d8761d0e7'
-            '8843ade2cfbdd88309a50d8e3ab186a21d4857e02ce93acef7ae5a7178fb3def')
+            '1907468f83dbd733e20e5d56b633eeee58a507f0767789fd0583e55d8761d0e7')
 
 prepare() {
     patch -d ncmpcpp -Np1 -i "${srcdir}/010-ncmpcpp-use-arch-flags.patch"
-    patch -d ncmpcpp -Np1 -i "${srcdir}/020-ncmpcpp-taglib2-fix.patch"
     ncmpcpp/autogen.sh
 }
 
@@ -36,9 +33,6 @@ build() {
     
     # http://site.icu-project.org/download/61#TOC-Migration-Issues
     export CPPFLAGS+=' -DU_USING_ICU_NAMESPACE=1'
-    
-    # work around deprecated TagLib::String::null from TagLib 1.12
-    export CXXFLAGS+=' -Wno-error=deprecated-declarations'
     
     ./configure \
         --prefix='/usr' \
