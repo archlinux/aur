@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=botclient-bin
-_appname=BotClient
+_pkgname=BotClient
 pkgver=0.12.1_alpha
 _electronversion=28
-pkgrel=3
+pkgrel=4
 pkgdesc="A discord botclient built with Electron, React and discord.js."
 arch=('x86_64')
 url="https://github.com/DarkGuy10/BotClient"
@@ -17,18 +17,19 @@ makedepends=(
     'fuse2'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver//_/-}/${_appname}-linux-${CARCH}.AppImage"
+    "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver//_/-}/${_pkgname}-linux-${CARCH}.AppImage"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/DarkGuy10/BotClient/v${pkgver//_/-}/LICENSE"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('74abee38ac63d3cc104807b21506e775af7c3bb70221e90ce73873529566a533'
             '56d602455f4872c78a5af3df024c6a8aab858b2e79ed53e417aaa90720b186b0'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
-        -e "s|@options@||g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
