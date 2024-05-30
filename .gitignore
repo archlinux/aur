@@ -4,4 +4,4 @@ src
 Caddyfile
 index.html
 *.service
-
+*.log
