@@ -1,20 +1,20 @@
-# Maintainer:
+# Maintainer: Mahdi Sarikhani <mahdisarikhani@outlook.com>
 # Contributor: Dobroslaw Kijowski [dobo] <dobo90_at_gmail.com>
 
 pkgname=codequery
-pkgver=0.27.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A code-understanding, code-browsing or code-search tool"
 arch=('x86_64')
-url="http://ruben2020.github.io/codequery/"
+url="http://ruben2020.github.io/codequery"
 license=('MPL-2.0')
-depends=('gcc-libs' 'glibc' 'qt5-base' 'sqlite')
-makedepends=('cmake' 'qt5-tools' 'ninja')
+depends=('gcc-libs' 'glibc' 'qt6-5compat' 'qt6-base' 'sqlite')
+makedepends=('cmake' 'ninja' 'qt6-tools')
 optdepends=('cscope: to create CodeQuery databases'
             'ctags: to create CodeQuery databases')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ruben2020/codequery/archive/v${pkgver}.tar.gz"
-        'codequery.desktop')
-sha256sums=('c03b86f9f5a8f5373862efaef6bddd18a15e5786570a93f0310725ecc5d74ff3'
+        "${pkgname}.desktop")
+sha256sums=('b0776adeae2963f197e3b9a57eb7ca405542da5f6413e06063e8d68f8246baa8'
             '1448fb7690e6b33cee50dffa8dc89654eba96e5910ae731b1b1486c46d72922a')
 
 build() {
@@ -22,7 +22,6 @@ build() {
     -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DBUILD_QT5=ON \
     -Wno-dev
   cmake --build build
 }
@@ -30,6 +29,6 @@ build() {
 package() {
   DESTDIR="${pkgdir}" cmake --install build
 
-  install -Dm644 -t "${pkgdir}/usr/share/applications" codequery.desktop
-  install -Dm644 "${pkgname}-${pkgver}/gui/images/logo.png" "${pkgdir}/usr/share/pixmaps/codequery.png"
+  install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+  install -Dm644 "${pkgname}-${pkgver}/gui/images/logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }

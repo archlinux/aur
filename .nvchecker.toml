@@ -1,0 +1,5 @@
+[codequery]
+source = "github"
+github = "ruben2020/codequery"
+use_max_tag = true
+prefix = "v"
