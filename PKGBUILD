@@ -1,14 +1,14 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
 pkgname=slade-git
-pkgver=3.2.4+42+ga3fd9c3a
+pkgver=3.2.6+1+gb38ded83
 pkgrel=1
 pkgdesc='SLADE3 Doom editor (git version)'
 arch=('i686' 'x86_64')
 url='http://slade.mancubus.net/'
 license=('GPL')
 depends=('bzip2'
-         'fluidsynth>=2.2'
+         'fluidsynth>=2.3'
          'freeimage'
          'ftgl'
          'glu'
@@ -16,7 +16,7 @@ depends=('bzip2'
          'libgl'
          'lua'
          'mpg123'
-         'sfml>=2.5'
+         'sfml>=2.6'
          'webkit2gtk'
          'wxwidgets-gtk3>=3.2'
          'zlib')
@@ -40,7 +40,6 @@ build() {
     export CCACHE_SLOPPINESS=pch_defines,time_macros
     cmake -D CMAKE_BUILD_TYPE=None \
           -D CMAKE_INSTALL_PREFIX=/usr \
-          -D BUILD_PK3=ON \
           .
     make
 }
