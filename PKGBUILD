@@ -1,65 +1,58 @@
-# Maintainer: BigfootACA <bigfoot@classfun.cn>
+# Maintainer: Matteo Piccinini (loacker) <matteo.piccinini@gmail.com>
+# Contributor: BigfootACA <bigfoot@classfun.cn>
 
-_pyname=oslo.policy
-_pycname=${_pyname/./-}
-pkgname=python-${_pycname}
-pkgver=3.8.2
+pkgname=python-oslo-policy
+pkgver=4.3.0
 pkgrel=1
-pkgdesc="Oslo Policy library"
+pkgdesc="Rules engine to enforce access control policy"
 arch=(any)
-url="https://docs.openstack.org/oslo.policy/latest/"
-license=(Apache)
-depends=(
-	python
-	python-pbr
-	python-requests
-	python-oslo-config
-	python-oslo-context
-	python-oslo-i18n
-	python-oslo-serialization
-	python-pyaml
-	python-stevedore
-	python-oslo-utils
-)
-makedepends=(
-	python-setuptools
-	python-sphinx
-	python-sphinxcontrib-apidoc
-	python-openstackdocstheme
-	python-reno
-)
-checkdepends=(
-	python-oslotest
-	python-requests-mock
-	python-stestr
-	python-sphinx
-	python-coverage
-)
-options=('!emptydirs')
-source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('511a86e6bf9ffd4e8f5fb041d2262d7a')
-sha256sums=('233030f9acbc3cb894c66943fd71406ec12825776021f5dda4afab6f1762837f')
-sha512sums=('6daea44a93f53608529314b5eb780d999a1ffd65c3c54f05d58341254f99754c94e177ad01bb37aa036f98f3211bb3705c499ad6244a68165ae56fa59943c79a')
+url="https://opendev.org/openstack/oslo.policy"
+license=(Apache-2.0)
+depends=('python'
+         'python-requests'
+         'python-oslo-config'
+         'python-oslo-context'
+         'python-oslo-i18n'
+         'python-oslo-serialization'
+         'python-yaml'
+         'python-stevedore'
+         'python-oslo-utils'
+         'python-fixtures'
+         'python-requests-mock'
+         'python-testtools'
+         'python-oslotest'
+         'python-pbr'
+         'python-sphinx'
+         'python-docutils')
+makedepends=('python-build'
+             'python-installer'
+             'python-setuptools'
+             'python-wheel'
+             'tar')
+checkdepends=('python-stestr'
+              'python-coverage')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+b2sums=('beb69e6f95e645cc888897f29586f5e2b58f85861c9975742c32436754a2fcad2af1b74b597e6b05023846597aa1b61ce0389abb8f63b308ecf0012c2015428a')
 
-export PBR_VERSION=$pkgver
+prepare() {
+    tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level
+}
 
 build(){
-	cd $_pyname-$pkgver
-	export PYTHONPATH="$PWD"
-	python setup.py build
-	sphinx-build -b text doc/source doc/build/text
+    cd "$pkgname-$pkgver"
+    PBR_VERSION=$pkgver python -m build --wheel --no-isolation
 }
 
 check(){
-	cd $_pyname-$pkgver
-	stestr run
+    cd "$pkgname-$pkgver"
+    stestr run
 }
 
 package(){
-	cd $_pyname-$pkgver
-	python setup.py install --root="$pkgdir/" --optimize=1
-	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-	mkdir -p "$pkgdir/usr/share/doc"
-	cp -r doc/build/text "$pkgdir/usr/share/doc/$pkgname"
-	rm -r "$pkgdir/usr/share/doc/$pkgname/.doctrees"
+    cd "$pkgname-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 README.rst -t "$pkgdir/usr/share/$pkgname/"
+    install -Dm644 HACKING.rst -t "$pkgdir/usr/share/$pkgname/"
+    install -Dm644 CONTRIBUTING.rst -t "$pkgdir/usr/share/$pkgname/"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
