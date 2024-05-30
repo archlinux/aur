@@ -2,13 +2,13 @@
 
 pkgbase=ok-gloox-git
 pkgname=ok-gloox-git
-pkgver=r200.aace53b
-pkgrel=1
+pkgver=r199.606f914
+pkgrel=2
 arch=(x86_64
     aarch64
     riscv64)
 pkgdesc="OkStar - OkGloox 对Gloox的拓展，上游主页：https://camaya.net/gloox"
-_url="https://gitee.com/okstar-org"
+_url="https://github.com/okstar-org"
 url="${_url}/ok-gloox"
 groups=()
 provides=(${pkgname%-git})
