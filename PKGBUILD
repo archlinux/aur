@@ -2,10 +2,9 @@
 _pkgname=typstyle
 pkgname=$_pkgname-bin
 pkgver=0.11.24
-pkgrel=3
+pkgrel=4
 pkgdesc="Beautiful and reliable typst code formatter"
-declare -A _arch=(["aarch64"]="arm64" ["armv7h"]="armhf" ["x86_64"]="x64")
-arch=("${!_arch[@]}")
+arch=("aarch64" "x86_64" "armv7h")
 url="https://github.com/Enter-tainer/typstyle"
 license=('Apache-2.0')
 depends=("gcc-libs" "glibc")
@@ -20,5 +19,6 @@ sha256sums_armv7h=('659b6c163eee833ec5e765eb92db106f1bf8258a12a466bf7fce0eedcea6
 sha256sums_x86_64=('b1a2a1a29f5bd57f8822cddd7c54df25b9c1da3bd9793f29851a50fd0c680685')
 
 package() {
+	declare -A _arch=(["aarch64"]="arm64" ["armv7h"]="armhf" ["x86_64"]="x64")
 	install -Dm755 "$_pkgname-${_arch[$CARCH]}-$pkgver" "$pkgdir/usr/bin/$_pkgname"
 }
