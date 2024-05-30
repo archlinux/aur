@@ -1,26 +1,23 @@
 pkgbase = magicseteditor
 	pkgdesc = A program to help create Magic: the Gathering cards and sets. Comes with no game support.
 	pkgver = 2.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/twanvl/MagicSetEditor2
 	install = magicseteditor.install
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = boost
-	makedepends = unzip
 	makedepends = cmake
+	makedepends = gendesk
 	depends = hunspell
-	depends = libjpeg
-	depends = wxgtk3
+	depends = wxwidgets-gtk3
+	depends = wxwidgets-common
 	depends = boost-libs
 	provides = magicseteditor=2.1.2
-	options = !strip
 	source = https://github.com/twanvl/MagicSetEditor2/archive/refs/tags/v2.1.2.tar.gz
 	source = compilefix.patch
-	source = MagicSetEditor.desktop
 	md5sums = 10a4d10e326f05c32a3e8f7be1842562
-	md5sums = 650a9afc5faa3d7749267608e1fe17c7
-	md5sums = fdcacb8841ebdbccd6b443e35276d497
+	md5sums = ceca30d280ed4f46037f727e877d6958
 
 pkgname = magicseteditor
