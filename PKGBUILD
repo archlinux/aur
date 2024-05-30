@@ -7,8 +7,8 @@ pkgdesc="Daemon that sends local hardware information to Home Assistant"
 url="https://github.com/${_reponame}"
 license=('MIT')
 
-pkgver=1.0.7
-pkgrel=5
+pkgver=1.0.12
+pkgrel=1
 arch=('any')
 
 conflicts=('hacompanion-git')
