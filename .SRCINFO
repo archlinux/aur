@@ -1,0 +1,14 @@
+pkgbase = ophis-git
+	pkgdesc = An assembler for the 6502 microprocessor
+	pkgver = r107.99f074d
+	pkgrel = 1
+	url = http://michaelcmartin.github.io/Ophis/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = python
+	conflicts = ophis
+	source = git+https://github.com/michaelcmartin/Ophis.git
+	sha256sums = SKIP
+
+pkgname = ophis-git
