@@ -1,66 +1,56 @@
-# Maintainer: BigfootACA <bigfoot@classfun.cn>
+# Maintainer: Matteo Piccinini (loacker) <matteo.piccinini@gmail.com>
+# Contributor: BigfootACA <bigfoot@classfun.cn>
 
-_pyname=oslo.privsep
-_pycname=${_pyname/./-}
-pkgname=python-${_pycname}
-pkgver=3.0.1
+pkgname=python-oslo-privsep
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="OpenStack library for privilege separation"
 arch=(any)
-url="https://docs.openstack.org/oslo.privsep/latest/"
-license=(Apache)
-depends=(
-	python
-	python-pbr
-	python-oslo-log
-	python-oslo-i18n
-	python-oslo-config
-	python-oslo-utils
-	python-cffi
-	python-eventlet
-	python-greenlet
-	python-msgpack
-)
-makedepends=(
-	python-setuptools
-	python-openstackdocstheme
-	python-sphinx
-	python-reno
-	python-sphinxcontrib-apidoc
-)
-checkdepends=(
-	python-hacking
-	python-oslotest
-	python-fixtures
-	python-stestr
-	bandit
-	python-pre-commit
-)
-options=('!emptydirs')
-source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('96951be7cf8a90ad7a55ffac32fc1e88')
-sha256sums=('c50977470b09a4016254dadc274837673604bd07b23b9d77a00769c47a0b05e4')
-sha512sums=('fc373a6c8690545f8e8fb9a2d05e7ce8b25453f31b7f5cf7c851573b7492b7c333583c35ed08b6867af6e928759764dcb6a4cc733550b0fc1be0eab216e9bae3')
+url="https://opendev.org/openstack/oslo.privsep"
+license=(Apache-2.0)
+depends=('python'
+         'python-oslo-log'
+         'python-oslo-i18n'
+         'python-oslo-config'
+         'python-oslo-utils'
+         'python-cffi'
+         'python-eventlet'
+         'python-msgpack'
+         'python-fixtures'
+         'python-testtools'
+         'python-oslotest'
+         'python-pbr')
+makedepends=('python-build'
+             'python-installer'
+             'python-setuptools'
+             'python-wheel'
+             'tar')
+checkdepends=('python-hacking'
+              'python-stestr'
+              'bandit'
+              'pre-commit')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+b2sums=('88cf18e8f7d871d1a285d94830523319b5b80c06758486c037b03df2834a4a4b83bded2035db54ed814b4d4dcfa63fe21d4651a2f5561d91e3081ca50ca344e6')
 
-export PBR_VERSION=$pkgver
+prepare() {
+    tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level
+}
 
 build(){
-	cd $_pyname-$pkgver
-	export PYTHONPATH="$PWD"
-	python setup.py build
-	sphinx-build -b text doc/source doc/build/text
+    cd "$pkgname-$pkgver"
+    PBR_VERSION=$pkgver python -m build --wheel --no-isolation
 }
 
-check(){
-	cd $_pyname-$pkgver
-	stestr run
-}
+#check(){
+#    cd "$pkgname-$pkgver"
+#    stestr run
+#}
 
 package(){
-	cd $_pyname-$pkgver
-	python setup.py install --root="$pkgdir/" --optimize=1
-	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-	mkdir -p "$pkgdir/usr/share/doc"
-	cp -r doc/build/text "$pkgdir/usr/share/doc/$pkgname"
-	rm -r "$pkgdir/usr/share/doc/$pkgname/.doctrees"
+    cd "$pkgname-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 README.rst -t "$pkgdir/usr/share/$pkgname/"
+    install -Dm644 HACKING.rst -t "$pkgdir/usr/share/$pkgname/"
+    install -Dm644 CONTRIBUTING.rst -t "$pkgdir/usr/share/$pkgname/"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
