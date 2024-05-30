@@ -17,6 +17,7 @@ depends=(
     glslang
     hyprlang
     hyprcursor
+    hyprwayland-scanner
     libdisplay-info
     libdrm
     libglvnd
@@ -58,7 +59,6 @@ makedepends=(
     vulkan-headers
     pkgconf
     xorgproto
-    hyprwayland-scanner-git
 )
 provides=("hyprland=${pkgver%%.r*}")
 conflicts=(hyprland)
@@ -80,10 +80,6 @@ pick_mr() {
     git pull origin pull/$1/head --no-edit
 }
 
-pkgver() {
-    git -C Hyprland describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
-}
-
 prepare() {
     cd hyprland-nosystemd-git
     git submodule init
@@ -95,12 +91,15 @@ prepare() {
 
     git -C subprojects/wlroots-hyprland reset --hard
 }
+
+pkgver() {
+    git -C hyprland-nosystemd-git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
+
 
 build() {
     cd hyprland-nosystemd-git
 
-    #CC=clang CXX="clang++" CC_LD=lld CXX_LD=lld meson setup build \
     meson setup build \
       --prefix     /usr \
       --libexecdir lib \
@@ -122,9 +121,6 @@ package() {
     meson install -C build \
       --destdir "$pkgdir" \
       --skip-subprojects hyprland-protocols
-
-    mkdir -p "$pkgdir/usr/include/hyprland/wlroots"
-    mv "$pkgdir/usr/include/wlr" "$pkgdir/usr/include/hyprland/wlroots"
 
     # FIXME: remove after xdg-desktop-portal-hyprland disowns hyprland-portals.conf
     rm -rf "$pkgdir/usr/share/xdg-desktop-portal"
