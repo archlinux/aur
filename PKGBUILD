@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=muffon-git
-pkgver=2.0.3.r36.gfeb7c1a
+pkgver=2.0.3.r41.g3178f23
 _electronversion=30
 pkgrel=1
 pkgdesc="Music streaming browser,retrieves audio, video and metadata from various Internet sources."
@@ -58,7 +58,7 @@ build() {
     else
         echo "Your network is OK."
     fi
-    cp build/logo.png build/icons/icon.png
+    cp public/logo.png public/icons/icon.png
     sed "s|icon.icns|icon.png|g" -i electron-builder.json
     pnpm install
     pnpm run build
