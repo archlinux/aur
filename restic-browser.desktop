@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Exec=/usr/bin/restic-browser %U
+Terminal=false
+Icon=restic-browser
+Categories=Utility;
+Name=Restic Browser
+Name[zh_CN]=Restic 管理工具
+Comment=A GUI to browse and restore restic backup repositories
+Comment[zh_CN]=Restic 的可视化管理工具
