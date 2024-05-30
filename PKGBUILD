@@ -1,7 +1,7 @@
 # Maintainer: fossdd <fossdd@pwned.life>
 
 pkgname=redlib
-pkgver=0.31.2
+pkgver=0.34.0
 pkgrel=1
 pkgdesc="Private front-end for Reddit"
 url='https://github.com/redlib-org/redlib'
@@ -14,7 +14,7 @@ options=('!lto')
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.zip"
 )
-sha256sums=('1a3a2ae5a5b5a4bb41931ca7c429f16e266c8c48736ffebf1f78135ebe4e3fe9')
+sha256sums=('fa028cc346ec185e1be5259ab8b042db7b5cd7604eeeaf18cb747a15faf49eb7')
 
 prepare() {
 	cd $pkgname-$pkgver
