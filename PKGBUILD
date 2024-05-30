@@ -1,6 +1,6 @@
 # Maintainer: RiverOnVenus <error@zhui.dev>
 pkgname=terminaltexteffects-git
-pkgver=r1070.d9a1ece
+pkgver=r1076.da16985
 pkgrel=1
 pkgdesc='Visual effects engine applied to text in the terminal. '
 url="https://github.com/ChrisBuilds/terminaltexteffects"
@@ -14,7 +14,7 @@ source=("$pkgname"::"git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd $pkgname
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
