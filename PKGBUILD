@@ -28,7 +28,7 @@ pkgver() {
 
 build() {
   # To change the theme for sfeed_curses you can set SFEED_THEME. See the themes directory for the theme names.
-  make SFEED_CPPFLAGS="-D_DEFAULT_SOURCE -D_XOPEN_SOURCE=700" SFEED_THEME="mono" -C "$_pkgname"
+  make SFEED_THEME="mono" -C "$_pkgname"
 }
 
 package() {
