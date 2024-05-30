@@ -1,13 +1,13 @@
-# Maintainer: Aaron Schaefer <aaron@elasticdog.com>
+# Contributor: Aaron Schaefer <aaron@elasticdog.com>
 
 pkgname=vim-pastie
 pkgver=2.0
 _scriptid=10260
-pkgrel=12
+pkgrel=13
 pkgdesc='A Vim plugin that lets you read and create pastes at http://pastie.org/'
 arch=('any')
 url='https://www.vim.org/scripts/script.php?script_id=1624'
-license=('custom:vim')
+license=('LicenseRef-vim')
 depends=('ruby' 'vim-plugin-runtime')
 groups=('vim-plugins')
 source=("https://www.vim.org/scripts/download_script.php?src_id=$_scriptid" license.txt)
