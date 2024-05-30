@@ -5,7 +5,7 @@
 
 pkgname=bigloo-devel
 pkgver=4.6a
-pkgrel=1
+pkgrel=2
 epoch=1
 _suffix=unstable
 pkgdesc="Fast scheme compiler"
@@ -20,12 +20,14 @@ optdepends=('emacs' 'zip' 'sqlite' 'alsa-lib' 'flac' 'avahi')
 options=('!makeflags' 'staticlibs')
 conflicts=('bigloo')
 provides=("bigloo=$pkgver")
-source=(ftp://ftp-sop.inria.fr/indes/fp/Bigloo/${pkgname%-devel}-${_suffix}.tar.gz bigloo-emacs.patch)
-sha256sums=('951c55a52ca5b6dff4a84856742552f0efdb4ca509c7eac3404f95adbd5380ec'
-            '80356c27b58a302775f75e848a89ab2d588796a548f4ce7a20df048e215deab0')
+source=(ftp://ftp-sop.inria.fr/indes/fp/Bigloo/${pkgname%-devel}-${_suffix}.tar.gz bigloo-emacs.patch https://patch-diff.githubusercontent.com/raw/manuel-serrano/bigloo/pull/117.patch)
+sha256sums=('c6c3e2f80398864e1454e5a3f03794d069a641b2c7dc46bf2f2de6355557f4e2'
+            '80356c27b58a302775f75e848a89ab2d588796a548f4ce7a20df048e215deab0'
+            'b47500aa8fcdfa0133729aa6e0b0b71f0d1904e433b16bb1541b9c7e42908d88')
 
 prepare() {
   patch -p0 -d "${srcdir}/${pkgname%-devel}-$_suffix" -i "${srcdir}/bigloo-emacs.patch"
+  patch -p1 -d "${srcdir}/${pkgname%-devel}-$_suffix" -i "${srcdir}/117.patch"
 }
 
 build() {
