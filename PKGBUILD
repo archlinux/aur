@@ -2,7 +2,7 @@
 
 pkgname=sanic-cors
 pkgdesc='A Sanic extension for handling Cross Origin Resource Sharing (CORS), making cross-origin AJAX possible. Based on flask-cors by Cory Dolphin.'
-pkgver=2.0.1
+pkgver=2.2.0
 pkgrel=1
 arch=('x86_64')
 license=('MIT')
@@ -10,7 +10,7 @@ url='https://github.com/ashleysommer/sanic-cors'
 depends=()
 # makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ashleysommer/sanic-cors/archive/$pkgver.tar.gz")
-sha256sums=('9ba708dffe818812513f22658960e5ec2d2778a1431d6335e02354eba7c119b8')
+sha256sums=('a370cd9d2102824422122e0f6aa013ad354229d021be5e07ff525a311df1b57c')
 
 build() {
   cd $pkgname-$pkgver
