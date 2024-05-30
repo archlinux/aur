@@ -1,3 +1,4 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: forivall <forivall@gmail.com>
 
 _pkgbase=hid-azio-lv-mech5
@@ -31,12 +32,10 @@ package() {
   local rev="$(git rev-parse --short HEAD)"
 
   # copy sources
-  msg2 "Copying sources, including dkms.conf..."
   mkdir -p "${pkgdir}/usr/src/"
   cp -r kernel-driver "${pkgdir}/usr/src/${_pkgbase}-$pkgver/"
   cp "${srcdir}/hid-ids.h" "${pkgdir}/usr/src/${_pkgbase}-$pkgver/"
 
-  msg2 "Copying udev rules..."
   mkdir -p "${pkgdir}/etc/udev/rules.d/"
   cp misc/90-azio-levetron-mech5.rules "$pkgdir/etc/udev/rules.d/"
 }
