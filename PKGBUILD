@@ -1,8 +1,8 @@
 # Contributor: Thor77 <thor77 at thor77 dot org>
 
 pkgname=perl-ogg-vorbis-header-pureperl
-pkgver=1.0
-pkgrel=2
+pkgver=1.05
+pkgrel=1
 pkgdesc='Perl/CPAN module Ogg::Vorbis::Header::PurePerl - An object-oriented interface to Ogg Vorbis info and comments'
 _dist=Ogg-Vorbis-Header-PurePerl
 arch=(any)
@@ -10,15 +10,8 @@ url="https://metacpan.org/release/$_dist"
 license=(GPL-2.0-or-later)
 depends=(perl)
 options=(!emptydirs purge)
-source=("https://cpan.metacpan.org/authors/id/D/DA/DANIEL/$_dist-$pkgver.tar.gz")
-sha256sums=('be5e44a980a7ce2191bd5c92858ae2e5bd2bae6fefc1fdd971fe5cc82dd7584e')
-
-prepare() {
-  cd "$srcdir/$_dist-$pkgver"
-  # unbreak tests
-  sed -i -e '/artist/c\is(($ogg->comment("artist"))[0], "maloi");' \
-    -e '/album/c\is(($ogg->comment("album"))[0], "this=that");' test.pl
-}
+source=("https://cpan.metacpan.org/authors/id/D/DA/DAVECROSS/$_dist-$pkgver.tar.gz")
+sha256sums=('521d3808f42d7122a6b06c33a6eae6d7c39947aab57c4c8ccafcc4f603fda53e')
 
 build() {
   cd "$srcdir/$_dist-$pkgver"
