@@ -7,18 +7,18 @@
 pkgname=svg2tikz-git
 _gitname="svg2tikz"
 pkgver=3.1.0+1.r532.20240519.c14dcde
-pkgrel=2
+pkgrel=3
 pkgdesc="Set of tools for converting SVG graphics to TikZ/PGF code."
 arch=('any')
 url="https://github.com/kjellmf/svg2tikz"
 license=('GPL-2.0-or-later')
 depends=(
-  'python>=3'
-  'python-inkex'
+  'python>=3.8'
+  'python-inkex>=1.2.2'
 )
 optdepends=(
   'inkscape: for using the inksape extension files.'
-  'python-lxml'
+  'python-lxml>=4.9.2'
   'xclip'
 )
 makedepends=(
@@ -28,12 +28,19 @@ makedepends=(
   'python-setuptools'
   'python-wheel'
   'python-poetry'
-  'python-sphinx'          # For building the documentation.
-  'python-sphinx-argparse' # For building the documentation.
-  'texlive-bin'            # For building the documentation.
+  'python-sphinx>=6.0.0'              # For building the documentation.
+  'python-sphinx-argparse>=0.4.0'     # For building the documentation.
+  'python-sphinx-click>=4.4.0'        # For building the documentation.
+  'python-sphinx-copybutton>=0.5.1'   # For building the documentation.
+  'python-sphinx-furo>=2023.9.10'     # For building the documentation.
+  'python-sphinxext-opengraph>=0.7.5' # For building the documentation.
+  'texlive-bin'                       # For building the documentation.
 )
 checkdepends=(
-  'python-inkex'
+  #'python-cssselect'
+  'python-inkex>=1.2.2'
+  'python-lxml>=4.9.2'
+  #'python-numpy'
   'python-pytest'
 )
 provides=(
