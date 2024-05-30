@@ -1,4 +1,5 @@
 # Maintainer: Mort Yao <soi@mort.ninja>
+# Maintainer: Johannes Wellhöfer <johannes.wellhofer@gmail.com>
 
 pkgname=fstar-bin
 pkgver=2023.09.03
