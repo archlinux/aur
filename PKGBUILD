@@ -23,7 +23,7 @@ build() {
     cd "${srcdir}/${_pkgname}" 
     go get -u github.com/chenjiandongx/dnstrack
     echo "::: Building binary" # (-trimpath ${srcdir}/${_pkgname})
-    CGO_ENABLED=1 GOOS=linux go build -tags linux -ldflags="-w -s" -v -gcflags "-trimpath ${srcdir}/${_pkgname}" -o ${_pkgname} .
+    CGO_ENABLED=1 GOOS=linux go build -tags linux -ldflags="-w -s -linkmode external" -v -gcflags "-trimpath ${srcdir}/${_pkgname}" -o ${_pkgname} .
     # go install -v -gcflags "-trimpath ${srcdir}/${_pkgname}" 
     # setcap cap_net_raw,cap_net_admin=eip ${_pkgname}
 }
