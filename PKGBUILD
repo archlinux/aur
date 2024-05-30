@@ -4,7 +4,7 @@
 
 pkgname=t-prot
 pkgver=3.4
-pkgrel=6
+pkgrel=7
 pkgdesc='Filter to improve readability of email/usenet by hiding annoyances'
 # https://escape.de/~tolot appears to be dead.
 url='https://github.com/kdave/t-prot'
