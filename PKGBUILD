@@ -1,25 +1,25 @@
 # Maintainer: bkacjios < blackops7799 at gmail dot com >
 
 pkgname=inav-configurator
-pkgver=7.1.0
+pkgver=7.1.1
 pkgrel=1
 pkgdesc="Crossplatform configuration tool for the INAV flight control system"
 arch=('i686' 'x86_64')
 url="https://github.com/iNavFlight/inav-configurator"
-source=(https://github.com/iNavFlight/inav-configurator/archive/7.1.0.zip
+source=(https://github.com/iNavFlight/inav-configurator/archive/7.1.1.zip
         inav-configurator.desktop)
-sha256sums=('117093456da66dd4b0c077f750e3bcd08c246d51f0a3f3a1b0821d00ab7b9d5b'
+sha256sums=('2de5b34c99ab4eebfc03f628892141e20c162487dc36518cf198e1403a249ee7'
          'SKIP')
 provides=('inav-configurator')
 conflicts=('inav-configurator')
 options=(!strip)
 license=('GPL-3.0-only')
 install=inav-configurator.install
-makedepends=('yarn')
+makedepends=('npm')
 
 build() {
 	cd $pkgname-$pkgver
-	yarn install
+	npm install
 
 	if [[ "$CARCH" == "i686" ]]; then
 		./node_modules/.bin/gulp --platform=linux32 release
