@@ -1,6 +1,6 @@
 # Maintainer: Alex Murkoff <413x1nkp@gmail.com>
 pkgname=paclogger
-pkgver=1.2.2
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="A Pacman hook written in C++ that logs all of the updates and downgrades every day."
 arch=("x86_64")
@@ -10,7 +10,7 @@ depends=("glibc"
 				 "gcc-libs")
 makedepends=("cmake")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/alexlnkp/paclogger/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c2ed10431359e8d20afc4a2762a3a5e61dfb80b3ca9585078c29737e20ebfc52')
+sha256sums=('e444c171533b79f0f4b5bf0e993fd384c3554c8ad8601308a5208f8191e4aa5e')
 
 prepare() {
 	tar -xvzf $pkgname-$pkgver.tar.gz
