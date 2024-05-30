@@ -11,7 +11,7 @@ pkgrel=1
 arch=('any')
 depends=('gnome-shell')
 
-source=('https://github.com/GrzegorzKozub/aur/raw/master/gnome-shell-extension-rounded-window-corners-reborn/rounded-window-corners@fxgn.shell-extension.zip')
+source=("https://github.com/GrzegorzKozub/aur/raw/master/gnome-shell-extension-rounded-window-corners-reborn/rounded-window-corners@fxgn.shell-extension-${pkgver}.zip")
 sha256sums=('8b90d24f5d567628291571e658a0ed72f51cc1097fd0e4415ba7694320df46fa')
 
 package() {
@@ -19,7 +19,7 @@ package() {
   local extdir="${pkgdir}/usr/share/gnome-shell/extensions/${uuid}"
 
   install -d ${extdir}
-  bsdtar -xvf "${uuid}.shell-extension.zip" -C ${extdir} --no-same-owner
+  bsdtar -xvf "${uuid}.shell-extension-${pkgver}.zip" -C ${extdir} --no-same-owner
 
   mv "${extdir}/locale" "${pkgdir}/usr/share/"
 
