@@ -1,7 +1,7 @@
 pkgbase = autotrace-nomagick
 	pkgdesc = A program for converting bitmap to vector graphics (no ImageMagick dependency)
 	pkgver = 0.31.10
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/autotrace/autotrace/
 	arch = x86_64

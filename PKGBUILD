@@ -2,7 +2,7 @@
 
 pkgname=autotrace-nomagick
 pkgver=0.31.10
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='A program for converting bitmap to vector graphics (no ImageMagick dependency)'
 arch=('x86_64')
@@ -27,6 +27,10 @@ prepare() {
 
 build() {
     cd "autotrace-${pkgver}"
+    
+    # fix build with gcc 14
+    export CFLAGS+=' -Wno-incompatible-pointer-types'
+    
     ./configure \
         --prefix='/usr' \
         --disable-static \
