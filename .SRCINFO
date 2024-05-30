@@ -1,6 +1,6 @@
 pkgbase = opera
 	pkgdesc = A fast and secure web browser
-	pkgver = 110.0.5130.23
+	pkgver = 110.0.5130.49
 	pkgrel = 1
 	url = https://www.opera.com/
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = opera
 	options = !strip
 	options = !zipman
 	backup = etc/opera/default
-	source = https://download3.operacdn.com/ftp/pub/opera/desktop/110.0.5130.23/linux/opera-stable_110.0.5130.23_amd64.deb
+	source = https://download3.operacdn.com/ftp/pub/opera/desktop/110.0.5130.49/linux/opera-stable_110.0.5130.49_amd64.deb
 	source = opera
 	source = default
 	source = eula.html

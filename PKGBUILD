@@ -1,5 +1,5 @@
 # vim:set ft=sh:
-# Maintainer: XSilverTH <XSilverTH AT outlook DOT com>
+# Maintainer: XSilverTH <XSilverTH AT proton DOT me>
 # Maintainer: Shadowphoenix <allescool85 AT gmail DOT com>
 # Contributor: Carlinix <rcarlini DOT aur AT gmail DOT com>
 # Contributor: BlackEagle <ike DOT devolder AT gmail DOT com>
@@ -12,7 +12,7 @@
 # Contributor: eworm
 
 pkgname=opera
-pkgver=110.0.5130.23
+pkgver=110.0.5130.49
 pkgrel=1
 pkgdesc="A fast and secure web browser"
 url="https://www.opera.com/"
