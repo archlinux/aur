@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=data-works-bin
-_appname=DataWorks
+_pkgname=DataWorks
 pkgver=1.0.0
 _electronversion=21
-pkgrel=9
+pkgrel=10
 pkgdesc="A simple data management system intended to be flexible and expandable"
 arch=('x86_64')
 url="https://github.com/alexaib2002/project-dataworks_base"
@@ -11,21 +11,22 @@ license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
 )
 makedepends=(
     'fuse2'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_appname}-${pkgver}.AppImage"
+    "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('90ca960db8eedcf706a490998f12111885a17d408b5016fe40d5628fe85697b0'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
