@@ -1,7 +1,7 @@
 # Maintainer: naether.markus[at]gmail.com
 
 pkgname=gto
-pkgver=1.1.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="Git Tag Ops. Turn your Git repository into Artifact Registry or Model Registry."
 arch=('any')
