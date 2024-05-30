@@ -1,6 +1,6 @@
 pkgbase = ok-gloox-git
 	pkgdesc = OkStar - OkGloox 对Gloox的拓展，上游主页：https://camaya.net/gloox
-	pkgver = r18.bb3b982
+	pkgver = r200.aace53b
 	pkgrel = 1
 	url = https://gitee.com/okstar-org/ok-gloox
 	arch = x86_64
