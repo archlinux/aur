@@ -1,7 +1,7 @@
 pkgbase = nginx-quic-libressl
 	pkgdesc = Lightweight HTTP server and IMAP/POP3 proxy server, HTTP/3 QUIC branch
-	pkgver = 1.25.3
-	pkgrel = 5
+	pkgver = 1.26.1
+	pkgrel = 1
 	url = https://nginx.org
 	install = nginx.install
 	arch = i686
@@ -28,19 +28,19 @@ pkgbase = nginx-quic-libressl
 	backup = etc/nginx/uwsgi_params
 	backup = etc/nginx/win-utf
 	backup = etc/logrotate.d/nginx
-	source = hg+https://hg.nginx.org/nginx#revision=9f84f2e49c62
-	source = https://cdn.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.9.1.tar.gz
+	source = hg+https://hg.nginx.org/nginx#revision=dd5bc1844be3
+	source = https://cdn.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.9.2.tar.gz
 	source = service
 	source = logrotate
-	sha256sums = SKIP
-	sha256sums = 6da0b954695f7ee62b03f64200a8a4f02af93717b60cce04ab6c8df262c07a51
+	sha256sums = de8ceed587130b2957bc55f666d361e818db95ef9038445e9f390fff44ca6555
+	sha256sums = 7b031dac64a59eb6ee3304f7ffb75dad33ab8c9d279c847f92c89fb846068f97
 	sha256sums = 05fdc0c0483410944b988d7f4beabb00bec4a44a41bd13ebc9b78585da7d3f9b
 	sha256sums = b9af19a75bbeb1434bba66dd1a11295057b387a2cbff4ddf46253133909c311e
 
 pkgname = nginx-quic-libressl
 
 pkgname = nginx-quic-libressl-src
-	pkgdesc = Source code of nginx-quic 1.25.3, useful for building modules
+	pkgdesc = Source code of nginx-quic 1.26.1, useful for building modules
 	arch = any
 	depends = sh
 	depends = bash
