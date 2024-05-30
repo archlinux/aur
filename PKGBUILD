@@ -47,7 +47,7 @@ checkdepends=(
 #  'xterm'
 )
 optdepends=(
-  'fluidsynth'
+  'fluidsynth: For games that have MIDI music'
   'gamemode: Allows games to request a temporary set of optimisations'
   'gamescope: Draw the game window isolated from your desktop'
   'gvfs: GVFS backend'
