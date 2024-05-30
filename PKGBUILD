@@ -4,7 +4,7 @@ pkgname=sfeed
 pkgver=2.0
 pkgrel=1
 pkgdesc='RSS and Atom parser'
-arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
+arch=('i686' 'pentium4' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url='https://codemadness.org/sfeed-simple-feed-parser.html'
 _url_source='https://codemadness.org/releases/sfeed'
 license=('ISC')
@@ -23,7 +23,7 @@ sha256sums=('8e6a7e6e1d7e86034ae27035e37a8f7fc98bc25fe35120bd18ff07e04f18e91d')
 
 build() {
   # To change the theme for sfeed_curses you can set SFEED_THEME. See the themes directory for the theme names.
-  make SFEED_CPPFLAGS="-D_DEFAULT_SOURCE" SFEED_THEME="mono" -C "${pkgname}-${pkgver}"
+  make SFEED_CPPFLAGS="-D_DEFAULT_SOURCE -D_XOPEN_SOURCE=700" SFEED_THEME="mono" -C "${pkgname}-${pkgver}"
 }
 
 package() {
