@@ -7,7 +7,7 @@ _projectname=electron
 _major=30
 _pkgname="${_projectname}${_major}"
 pkgname="${_pkgname}-bin"
-_subver="0.8"
+_subver="0.9"
 _pkgver="${_major}.${_subver}"
 pkgver="${_pkgver/-/.}"
 pkgrel=1
@@ -41,23 +41,23 @@ optdepends=(
     'xdg-utils: open URLs with desktop`s default'
 )
 source_aarch64=(
-	"${pkgname}-chromedriver-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${_pkgver}/chromedriver-v${_pkgver}-linux-arm64.zip"
-	"${pkgname}-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${_pkgver}/electron-v${_pkgver}-linux-arm64.zip"
+	"${pkgname%-bin}-chromedriver-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${_pkgver}/chromedriver-v${_pkgver}-linux-arm64.zip"
+	"${pkgname%-bin}-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${_pkgver}/electron-v${_pkgver}-linux-arm64.zip"
 )
 source_armv7h=(
-	"${pkgname}-chromedriver-${pkgver}-armv7h.zip::${_ghurl}/releases/download/v${_pkgver}/chromedriver-v${_pkgver}-linux-armv7l.zip"
-	"${pkgname}-${pkgver}-armv7h.zip::${_ghurl}/releases/download/v${_pkgver}/electron-v${_pkgver}-linux-armv7l.zip"
+	"${pkgname%-bin}-chromedriver-${pkgver}-armv7h.zip::${_ghurl}/releases/download/v${_pkgver}/chromedriver-v${_pkgver}-linux-armv7l.zip"
+	"${pkgname%-bin}-${pkgver}-armv7h.zip::${_ghurl}/releases/download/v${_pkgver}/electron-v${_pkgver}-linux-armv7l.zip"
 )
 source_x86_64=(
-	"${pkgname}-chromedriver-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${_pkgver}/chromedriver-v${_pkgver}-linux-x64.zip"
-	"${pkgname}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${_pkgver}/electron-v${_pkgver}-linux-x64.zip"
+	"${pkgname%-bin}-chromedriver-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${_pkgver}/chromedriver-v${_pkgver}-linux-x64.zip"
+	"${pkgname%-bin}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${_pkgver}/electron-v${_pkgver}-linux-x64.zip"
 )
-sha256sums_aarch64=('a9b115054ab6d0773e408cd81d703c95bc51aa4f7a5887fec1edd4e368770661'
-                    '909527303de8d3479f2d62dc28939eb1aee12285377807627ffd42fe8bd4e754')
-sha256sums_armv7h=('25e971503509799a66212af1e39a8d9be75b35d9882468ddd46276206e84fdb0'
-                   'eb53b9433e4f777e34e832d70c8b279a780d5dd4c373f55d8b00e3d56a8875fd')
-sha256sums_x86_64=('47a2d5188dd7d2ca456828d2cf63e0bccdd9c8985c0a9f6c768d47cde097a429'
-                   'd00ca370fb8cba0bb678c7ce116f26296416287addc81a9bdb3ce703e6d44a8e')
+sha256sums_aarch64=('a1e1f1067fe5e0bc520305e06fcdbf9459c1b7d72abbb7ecee8cb68e2f878af4'
+                    '6bd4844d3aaad3ecabc6935ee6e360937678f42ce5ffb1fb45dc1badf4358cc7')
+sha256sums_armv7h=('b441b3198e9b6fa846c2b292152f1fb6cd1124a5a3574a1992372274a4b6a616'
+                   '8f02e19bbba49469e9e588ecd7bfa0c2a872937d0d896418ba6b85a4a0ff8710')
+sha256sums_x86_64=('f9e1fc97c3f21808db3cd92e03197eafc338d0f6e83a314d6f22e075e4b31db0'
+                   'f1d183d0ebe77bbee14a173118ef862eff8cf0eb28eca06209db32f0da1c66de')
 package() {
 	install -dm755 "${pkgdir}/usr/lib/${_pkgname}/"
 	find . -mindepth 1 -maxdepth 1 -type f ! -name "*.zip" ! -name "LICENSE*" -exec cp -r --no-preserve=ownership --preserve=mode -t "${pkgdir}/usr/lib/${_pkgname}/." {} +
