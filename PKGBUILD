@@ -1,66 +1,55 @@
-# Maintainer: BigfootACA <bigfoot@classfun.cn>
+# Maintainer: Matteo Piccinini (loacker) <matteo.piccinini@gmail.com>
+# Contributor: BigfootACA <bigfoot@classfun.cn>
 
-_pyname=etcd3gw
-pkgbase=python-$_pyname
-pkgname=(python-$_pyname)
-pkgver=2.1.0
+pkgname=python-etcd3gw
+pkgver=2.4.1
 pkgrel=1
-pkgdesc="A python client for etcd3 grpc-gateway v3 API"
+pkgdesc="An etcd3 grpc-gateway v3 API Python client"
 arch=(any)
-url="https://github.com/dims/etcd3-gateway"
-license=(Apache)
-depends=(
-	python
-	python-pbr
-	python-requests
-	python-six
-	python-futurist
-)
-makedepends=(
-	python
-	python-setuptools
-	python-sphinx
-	python-openstackdocstheme
-	python-reno
-)
-checkdepends=(
-	python-pytest
-	python-hacking
-	python-coverage
-	python-subunit
-	python-oslotest
-	python-testrepository
-	python-testscenarios
-	python-testtools
-	python-pifpaf
-	python-nose
-	python-pytest
-	python-futurist
-	python-urllib3
-)
-source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('60b4b63e2eef1070c8cd7f9b0acbedbb')
-sha256sums=('38c42b51c01777a323a84362ef0987a19dda6c17b828d7877761d0fda5bfd0d1')
-sha512sums=('106bef3273bc934440716b81686b78fd0b7948c2baa1d36c32a9cbaa225c700037bbcbbb2384fa943b043ee8bdfc7f082bd35dab27df664f0210dd2d125148c9')
+url="https://opendev.org/openstack/etcd3gw"
+license=('Apache-2.0')
+depends=('python'
+         'python-pbr'
+         'python-requests'
+         'python-futurist'
+         'python-testtools'
+         'python-oslotest'
+         'python-urllib3')
+makedepends=('python-build'
+             'python-installer'
+             'python-setuptools'
+             'python-wheel'
+             'tar')
+checkdepends=('python-hacking'
+              'python-coverage'
+              'python-subunit'
+              'python-testrepository'
+              'python-testscenarios'
+              'python-pifpaf'
+              'python-nose'
+              'python-pytest')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+b2sums=('601e83e37910762ec4a434a0ca62743dcaab356796da912b745de9c4ae84da2f509148975562dcf6354709f20818d22b7f015dfc5fae3e8bff7ece6226cb7dc9')
 
-export PBR_VERSION=$pkgver
+prepare() {
+    tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level
+}
 
 build(){
-	cd $_pyname-$pkgver
-	python setup.py build
-	sphinx-build -b text doc/source doc/build/text
+    cd "$pkgname-$pkgver"
+    PBR_VERSION=$pkgver python -m build --wheel --no-isolation
 }
 
 check(){
-	cd $_pyname-$pkgver
-	python -m pytest
+    cd "$pkgname-$pkgver"
+    python -m unittest -v
 }
 
 package(){
-	cd $_pyname-$pkgver
-	python setup.py install --root "$pkgdir" --optimize=1
-	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-	mkdir -p "$pkgdir/usr/share/doc"
-	cp -r doc/build/text "$pkgdir/usr/share/doc/$pkgname"
-	rm -r "$pkgdir/usr/share/doc/$pkgname/.doctrees"
+    cd "$pkgname-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 README.md -t "$pkgdir/usr/share/$pkgname/"
+    install -Dm644 HACKING.rst -t "$pkgdir/usr/share/$pkgname/"
+    install -Dm644 CONTRIBUTING.rst -t "$pkgdir/usr/share/$pkgname/"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
