@@ -2,7 +2,7 @@
 
 _pkgname="restic-browser"
 pkgname="${_pkgname}-bin"
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A GUI to browse and restore restic backup repositories."
 arch=("x86_64")
@@ -14,7 +14,7 @@ depends=("restic" "webkit2gtk")
 source=("${_pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/Restic-Browser-v${pkgver}-linux.zip"
         "${_pkgname}.png::https://raw.githubusercontent.com/emuell/${_pkgname}/master/src-tauri/icons/icon.png"
         "${_pkgname}.desktop")
-sha256sums=('965a7efe99d3264dae2fd2d7f6e123a57b185f9be74227df7e2469da25c0ef0b'
+sha256sums=('230f590bb9837c84e6757a03236a50727e3636b593f8368c8d713561987f8450'
             '3a9f06e4bc146fb3231d58b726dfdc0965809996411523b8edcb37289980b744'
             '74e63083d076cdd3f5de3917e5c242b40e61119fbc3aaac013607b63824a8f71')
 
