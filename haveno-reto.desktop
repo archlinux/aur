@@ -1,11 +1,11 @@
 [Desktop Entry]
 Type=Application
 Version=1.5
-Name=Haveno
+Name=Haveno Reto
 GenericName=Crypto currency exchange
 NoDisplay=false
 Comment=Decentralised P2P exchange built on Monero and Tor.
-Icon=haveno
+Icon=haveno-reto
 Hidden=false
 #OnlyShowIn
 #NotShowIn

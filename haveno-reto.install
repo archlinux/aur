@@ -1,0 +1,12 @@
+post_upgrade() {
+	echo ">>    There have been reports of trades and XMR being lost after"
+	echo ">>    upgrades. See https://reddit.com/r/Monero/comments/1d07xa5"
+	echo ">>    and https://reddit.com/r/Monero/comments/1d1d5s0 for more."
+	echo ">>"
+	echo ">>    The Reto network is unofficial. Do not trade more than you're"
+	echo ">>    willing to lose!"
+}
+
+post_install() {
+	post_upgrade
+}

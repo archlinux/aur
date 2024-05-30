@@ -1,23 +1,26 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2034
 # shellcheck disable=SC2154
-# The PKGBUILD for Haveno.
-# Maintainer: Matheus <matheusgwdl@protonmail.com>
+# The PKGBUILD for Haveno-reto.
+# Based on the haveno PKGBUILD
+# Maintainer: Duje Mihanović <duje.mihanovic@skole.hr>
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
-pkgname="haveno"
+pkgname="haveno-reto"
 pkgver="1.0.6"
 pkgrel="1"
-pkgdesc="Decentralised P2P exchange built on Monero and Tor."
+pkgdesc="Decentralised P2P exchange built on Monero and Tor - unofficial Reto network"
 arch=("any")
-url="https://github.com/haveno-dex/${pkgname}"
+url="https://github.com/retoaccess1/${pkgname}"
 license=("AGPL-3.0-or-later")
 depends=("bash" "java-runtime>=21")
 makedepends=("java-environment>=21")
-source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
+conflicts=("haveno")
+source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.desktop")
-sha512sums=("45980b1d7370edbad776b8b5e21d5367c64547d0ab2a1689d9b77defbde837a0136c1836f52a9ca37f0e30c3390bb73d6574ee6601c0845752c689334573e2e2"
-    "046e32ecc69058d270b5660d55c323d1458b91989f1a3ddc8a107edc28c196029d25b5a5f5f46b754a778919cca13d016ef3e17813578605938c2b3b289b8e93")
+sha512sums=("bcd74020a0d58a755cf9634c5365906fc0431fcce02453f3b5045d11531101fe35f192732a271e80a156878eb8f02dfdb06fd4023e037227f07b36a843cc628e"
+    "90103d36dfbc4d5da1c16774a9474c5e4b9bcc9d9354d35060187aa89176989119a7ec83bd36beca9e79103aae5329db72bf981a622be1daf248bb6dffceae5c")
+install="${pkgname}.install"
 
 build()
 {
