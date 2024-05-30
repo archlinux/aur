@@ -1,17 +1,18 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgbase=ok-edu-classroom-desktop-git
-pkgname=(ok-msg-desktop-git)
+pkgname=(ok-edu-classroom-desktop-git)
 pkgver=r31.341cfc8
 pkgrel=1
 arch=(x86_64
     aarch64
     riscv64)
-_url="https://github.com/okstar-org"
-url="${_url}/ok-msg-desktop"
-pkgdesc="OkMSG是由OkStar(okstar.org)社区开发和维护的注重数据安全与保护的企业通讯协同工具，支持独立私有化部署的集即时消息、语音、视频通话、发送文件、会议等多种功能于一身的开源项目，同时让您的企业更加有效开启协作、有效沟通，控制成本，开拓新业务，并帮助您加速发展业务。"
-provides=(${pkgname%-git} ok-gloox)
-conflicts=(${pkgname%-git} ok-gloox)
+_url="https://gitee.com/okstar-org"
+url="${_url}/ok-edu-desktop"
+pkgdesc="OkEDU 是基于“互联网+教育”理念，
+解决在线上课问题而研发的互动教室。具备跨平台、拓展性等，可独立部署私有化系统，支持Windows、Linux、macOS平台。"
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
 replaces=()
 license=('GPL-2.0-or-later' 'MulanPubL-2.0')
 groups=()
@@ -79,7 +80,7 @@ makedepends=(
     )
 checkdepends=()
 optdepends=()
-source=("${pkgname}::git+${_url}/ok-msg-desktop.git"
+source=("${pkgname}::git+${_url}/ok-edu-desktop.git"
     "gloox::git+${_url}/ok-gloox.git"
 )
 sha256sums=('SKIP'
