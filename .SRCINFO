@@ -1,14 +1,16 @@
 pkgbase = r-bsda
-	pkgdesc = R Basic Statistics and Data Analysis
-	pkgver = 1.2.1
-	pkgrel = 1
-	url = https://cran.r-project.org/web/packages/BSDA/
-	arch = x86_64
-	license = GPL
-	depends = r
+	pkgdesc = Basic Statistics and Data Analysis
+	pkgver = 1.2.2
+	pkgrel = 4
+	url = https://cran.r-project.org/package=BSDA
+	arch = any
+	license = GPL-3.0-only
 	depends = r-e1071
-	replaces = r-cran-bsda
-	source = https://cran.r-project.org/src/contrib/BSDA_1.2.1.tar.gz
-	sha512sums = f4a6f755b95dd492b124342585ba5960659773e26901f0802e5e92a25a2c01919b86dc79250189b4a30153332c673ed746bad7ea3e983499d62fe63953679a34
+	optdepends = r-dplyr
+	optdepends = r-ggplot2
+	optdepends = r-tidyr
+	source = https://cran.r-project.org/src/contrib/BSDA_1.2.2.tar.gz
+	md5sums = 64d541438a5b355bc58630270bcfa6ae
+	b2sums = 2b286b72b12f005a19d7c56b6b4fedb88d458bf4c70953be22d4db17b03218763ca64eb070209f713e368aab3ee3fc71de9c85c759ecf711ccc244ff10b69182
 
 pkgname = r-bsda

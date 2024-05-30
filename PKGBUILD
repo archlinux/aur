@@ -1,25 +1,34 @@
-# Maintainer: Ward Segers <w@rdsegers.be>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Ward Segers <w@rdsegers.be>
 # Contributor: Alex Branham <alex.branham@gmail.com>
 
-_cranver=1.2.1
-pkgname=r-bsda
-pkgver=${_cranver//[:-]/.}
-pkgrel=1
-pkgdesc='R Basic Statistics and Data Analysis'
-arch=('x86_64')
-url='https://cran.r-project.org/web/packages/BSDA/'
-license=('GPL')
-depends=('r' 'r-e1071')
-replaces=('r-cran-bsda')
-source=("https://cran.r-project.org/src/contrib/BSDA_"$_cranver".tar.gz")
-sha512sums=('f4a6f755b95dd492b124342585ba5960659773e26901f0802e5e92a25a2c01919b86dc79250189b4a30153332c673ed746bad7ea3e983499d62fe63953679a34')
+_pkgname=BSDA
+_pkgver=1.2.2
+pkgname=r-${_pkgname,,}
+pkgver=${_pkgver//-/.}
+pkgrel=4
+pkgdesc="Basic Statistics and Data Analysis"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
+depends=(
+  r-e1071
+)
+optdepends=(
+  r-dplyr
+  r-ggplot2
+  r-tidyr
+)
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('64d541438a5b355bc58630270bcfa6ae')
+b2sums=('2b286b72b12f005a19d7c56b6b4fedb88d458bf4c70953be22d4db17b03218763ca64eb070209f713e368aab3ee3fc71de9c85c759ecf711ccc244ff10b69182')
 
-build(){
-    R CMD INSTALL BSDA_"$_cranver".tar.gz -l "$srcdir"
+build() {
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-    install -dm0755 "$pkgdir"/usr/lib/R/library
-    cp -a --no-preserve=ownership BSDA "$pkgdir"/usr/lib/R/library
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-
