@@ -2,7 +2,7 @@
 
 _pkgname=sfeed
 pkgname=sfeed-git
-pkgver=1.8.r0.gaed4714
+pkgver=2.0.r0.g1f76c85
 pkgrel=1
 pkgdesc='RSS and Atom parser'
 url='https://codemadness.org/sfeed.html'
@@ -10,7 +10,7 @@ license=('ISC')
 provides=('sfeed')
 conflicts=('sfeed')
 replaces=('sfeed-curses-git')
-arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
+arch=('i686' 'pentium4' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 depends=('sh' 'ncurses')
 optdepends=('curl: sfeed_update script'
     'xclip: used by sfeed_curses for yanking the URL or enclosure'
@@ -29,7 +29,7 @@ pkgver() {
 
 build() {
   # To change the theme for sfeed_curses you can set SFEED_THEME. See the themes directory for the theme names.
-  make SFEED_CPPFLAGS="-D_DEFAULT_SOURCE" SFEED_THEME="mono" -C "${pkgname%-git}"
+  make SFEED_CPPFLAGS="-D_DEFAULT_SOURCE -D_XOPEN_SOURCE=700" SFEED_THEME="mono" -C "${pkgname%-git}"
 }
 
 package() {
