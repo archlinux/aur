@@ -1,0 +1,59 @@
+From 264e618ec6fdc4800693f9359363ece979904014 Mon Sep 17 00:00:00 2001
+From: Michael Hansen <zrax0111@gmail.com>
+Date: Wed, 3 Apr 2024 09:51:54 -0700
+Subject: [PATCH 1/2] Fix compatibility with Qt 6.7
+
+---
+ src/main.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/main.cpp b/src/main.cpp
+index 1cc0de3..6e71bc4 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -19,6 +19,7 @@
+ #include <QLibraryInfo>
+ #include <QCommandLineParser>
+ #include <QIcon>
++#include <QtGlobal>
+ #if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
+ #include <QStyleHints>
+ #include <QStyle>
+@@ -47,7 +48,8 @@ static bool checkDefaultIconTheme()
+         QStringLiteral("edit-paste"),
+         QStringLiteral("edit-find"), QStringLiteral("edit-find-replace"),
+     };
+-    return std::all_of(std::begin(iconNames), std::end(iconNames), &QIcon::hasThemeIcon);
++    return std::all_of(std::begin(iconNames), std::end(iconNames),
++                       qOverload<const QString&>(&QIcon::hasThemeIcon));
+ }
+ 
+ static void setDefaultIconTheme()
+-- 
+2.45.1
+
+From 7fc96aedf6cda4c56bb5cefb4c88581c21fa9ad3 Mon Sep 17 00:00:00 2001
+From: Michael Hansen <zrax0111@gmail.com>
+Date: Wed, 3 Apr 2024 10:04:42 -0700
+Subject: [PATCH 2/2] Update C++ standard to C++14 so qOverload works
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b6d7186..efc857d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -18,7 +18,7 @@ project(qtextpad)
+ 
+ set(CMAKE_AUTOMOC TRUE)
+ set(CMAKE_AUTORCC TRUE)
+-set(CMAKE_CXX_STANDARD 11)
++set(CMAKE_CXX_STANDARD 14)
+ 
+ include(FeatureSummary)
+ 
+-- 
+2.45.1
+
