@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electrocrud-bin
-_appname=ElectroCRUD
+_pkgname=ElectroCRUD
 pkgver=3.1.0_develop.1
 _electronversion=22
-pkgrel=9
+pkgrel=10
 pkgdesc="Database CRUD Application Built on Electron | MySQL, Postgres, SQLite"
 arch=('x86_64')
 url="http://garrylachman.github.io/ElectroCRUD/"
@@ -13,18 +13,18 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'nodejs'
 )
 source=(
-    "${pkgname%-appimage}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver//_/-}/${_appname}-v${pkgver//_/-}-linux-x64.deb"
+    "${pkgname%-appimage}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver//_/-}/${_pkgname}-v${pkgver//_/-}-linux-x64.deb"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('6bd3e133f38beb97f8856254f09f28dd8f506ec127e3a3ae2020e65f046a441b'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
