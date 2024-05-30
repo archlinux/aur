@@ -2,7 +2,7 @@
 # Modified based on hyprland-nvidia-nosystemd-git
 
 pkgname=hyprland-nosystemd-git
-pkgver=0.40.0.r145.5e6f7b1c
+pkgver=0.39.1.r105.5e6f7b1c
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (w/o systemd)"
 arch=(x86_64 aarch64)
@@ -83,7 +83,13 @@ pick_mr() {
 pkgver() {
     # use pkgver of hyprland-git package
     
-    eval $(curl 'https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=hyprland-git' >/dev/null | grep pkgver | head -n1 | sed 's/pkgver/upstreamver/')
+    rm -rf hyprland-git
+    git clone --depth=1 "https://aur.archlinux.org/hyprland-git.git"
+    cd hyprland-git
+    eval $(grep pkgver PKGBUILD | head -n1 | sed 's/pkgver/upstreamver/')
+    cd ..
+    rm -rf hyprland-git
+
     echo $upstreamver
 }
 
@@ -103,7 +109,8 @@ prepare() {
 build() {
     cd hyprland-nosystemd-git
 
-    CC=clang CXX="clang++" CC_LD=lld CXX_LD=lld meson setup build \
+    #CC=clang CXX="clang++" CC_LD=lld CXX_LD=lld meson setup build \
+    meson setup build \
       --prefix     /usr \
       --libexecdir lib \
       --sbindir    bin \
