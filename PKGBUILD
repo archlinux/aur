@@ -1,7 +1,7 @@
 # Maintainer: SoftExpert <softexpert at gmail dot com>
 _pkgname=dnstrack
 pkgname=${_pkgname}-git
-pkgver=r5.g4739707
+pkgver=r7.gc4dbcb1
 pkgrel=1
 pkgdesc="A dns-query tracking tool written in go. dnstrack helps to track all dns query on your machine in real time."
 arch=(x86_64)
@@ -22,15 +22,18 @@ pkgver() {
 build() {
     cd "${srcdir}/${_pkgname}" 
     go get -u github.com/chenjiandongx/dnstrack
-    CGO_ENABLED=0
-    GOOS=linux
-    go build -tags linux -o ${_pkgname}  ./main.go ./cache.go ./dnstrack.go ./pacp_linux.go ./pcap.go
+    echo "::: Building binary" # (-trimpath ${srcdir}/${_pkgname})
+    CGO_ENABLED=1 GOOS=linux go build -tags linux -ldflags="-w -s" -v -gcflags "-trimpath ${srcdir}/${_pkgname}" -o ${_pkgname} .
+    # go install -v -gcflags "-trimpath ${srcdir}/${_pkgname}" 
+    # setcap cap_net_raw,cap_net_admin=eip ${_pkgname}
 }
 
 package() {
+	cd "${srcdir}/${_pkgname}" 
+    echo "::: Installing binaries"
     # cd "${srcdir}/${_pkgname}/bin" 
-    install -Dm755 "${srcdir}/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
      
     # cd "${srcdir}/${_pkgname}" 
-    install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
