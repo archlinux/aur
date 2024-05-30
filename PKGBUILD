@@ -23,7 +23,7 @@ sha256sums=('8e6a7e6e1d7e86034ae27035e37a8f7fc98bc25fe35120bd18ff07e04f18e91d')
 
 build() {
   # To change the theme for sfeed_curses you can set SFEED_THEME. See the themes directory for the theme names.
-  make SFEED_CPPFLAGS="-D_DEFAULT_SOURCE -D_XOPEN_SOURCE=700" SFEED_THEME="mono" -C "${pkgname}-${pkgver}"
+  make SFEED_THEME="mono" -C "${pkgname}-${pkgver}"
 }
 
 package() {
