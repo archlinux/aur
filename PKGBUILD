@@ -1,30 +1,39 @@
-# Maintainer: Pantelis Panayiotou <p.panayiotou@gmail.com>
+# Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
+# Contributor: Pantelis Panayiotou <p.panayiotou@gmail.com>
 
 pkgname=qman-git
-pkgver=1.3.1
+pkgver=1.3.1.r1.g5441f22
 pkgrel=1
 pkgdesc="A more modern manual page viewer for our terminals"
-
 arch=('x86_64')
-url="https://github.com/plp13/qman/tree/v1.3.0"
-license=("BSD-2-CLAUSE")
-depends=("ncurses" "libinih" "zlib")
+url="https://github.com/plp13/qman"
+license=("BSD-2-Clause")
+depends=("ncurses" "libinih" "zlib" "man-db")
 optdepends=("bzip2: support for bzip2-compressed man pages")
 makedepends=("git" "meson" "python-cogapp")
-source=("$pkgname"::"git+https://github.com/plp13/qman.git")
+provides=("qman")
+conflicts=("qman")
+source=("git+https://github.com/plp13/qman.git#branch=devel")
 sha256sums=('SKIP')
 
+pkgver() {
+  cd qman
+  git describe --long --tags | sed 's/^v//;s/[^-]*-g/r&/;s/-/./g'
+}
+
+prepare() {
+  cd qman
+  sed -r "s|install_dir: 'man/man1'|install_dir: 'share/man/man1'|g" \
+      -i man/meson.build
+}
+
 build() {
-  cd "${pkgname}"
-  sed -i "s/install_dir\: 'man\/man1'/install_dir: 'share\/man\/man1'/g" "man/meson.build"
-  meson setup "build/"
-  cd "build/"
-  meson configure -Dprefix="/usr"
-  meson compile
+  arch-meson build qman
+  meson compile -C build
 }
 
 package() {
-  cd "${pkgname}"
-  cd "build/"
-  meson install --destdir "${pkgdir}"
+  meson install --destdir "${pkgdir}" -C build
+  cd qman
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

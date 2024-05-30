@@ -1,18 +1,21 @@
 pkgbase = qman-git
 	pkgdesc = A more modern manual page viewer for our terminals
-	pkgver = 1.3.1
+	pkgver = 1.3.1.r1.g5441f22
 	pkgrel = 1
-	url = https://github.com/plp13/qman/tree/v1.3.0
+	url = https://github.com/plp13/qman
 	arch = x86_64
-	license = BSD-2-CLAUSE
+	license = BSD-2-Clause
 	makedepends = git
 	makedepends = meson
 	makedepends = python-cogapp
 	depends = ncurses
 	depends = libinih
 	depends = zlib
+	depends = man-db
 	optdepends = bzip2: support for bzip2-compressed man pages
-	source = qman-git::git+https://github.com/plp13/qman.git
+	provides = qman
+	conflicts = qman
+	source = git+https://github.com/plp13/qman.git#branch=devel
 	sha256sums = SKIP
 
 pkgname = qman-git
