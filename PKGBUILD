@@ -1,29 +1,25 @@
-# Maintainer: Arthur Vuillard <arthur@hashbang.fr>
+# Maintainer: Pantelis Panayiotou <p.panayiotou@gmail.com>
+# Previous maintainer: Arthur Vuillard <arthur@hashbang.fr>
 # Previous maintainer: Martin Imobersteg <martin.imobersteg@gmail.com>
+
 pkgname=tidy-html5-git
 name=tidy-html5
-pkgver=5.0.0.git_1566.8e70d4d
+pkgver=latest
 pkgrel=1
 pkgdesc="A tool to tidy down your HTML5 code to a clean style"
-url="https://github.com/htacg/tidy-html5"
+url="https://www.html-tidy.org/"
 license=('custom')
 arch=('i686' 'x86_64')
 depends=()
 makedepends=('git' 'cmake')
 provides=('tidy' 'tidyhtml')
 conflicts=('tidy-html5' 'tidyhtml')
-source=('git://github.com/htacg/tidy-html5.git')
-md5sums=('SKIP')
-
-pkgver(){
-    cd $srcdir/$name
-
-    echo 5.0.0.git_$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
-}
+source=("$pkgname"::"git+https://github.com/htacg/tidy-html5.git")
+sha256sums=('SKIP')
 
 build() {
   cd "$srcdir/$name/build/cmake"
-  cmake ../.. -DCMAKE_INSTALL_PREFIX=$pkgdir/usr
+  cmake ../.. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$pkgdir/usr
   make
 }
 
