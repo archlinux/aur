@@ -1,14 +1,9 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Marcell Pardavi <marcell.pardavi@gmail.com>
 
-# Tests assume access to vulkan video drivers, Wayland window creation,
-# detecting system keymaps, etc. Until their is something sensical for
-# a package to test in the suite, just skip it by default.
-BUILDENV+=(!check)
-
 pkgname=zed-preview
-pkgver=0.138.2
-pkgrel=2
+pkgver=0.138.3
+pkgrel=1
 pkgdesc='A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter'
 arch=(x86_64)
 url=https://zed.dev
@@ -43,7 +38,7 @@ provides=("${pkgname%-preview}=$pkgver" zed-editor-preview)
 conflicts=("${pkgname%-preview}" zed-editor-preview)
 _archive="zed-$pkgver-pre"
 source=("$_url/archive/v$pkgver-pre/$_archive.tar.gz")
-sha256sums=('6ae24e277eba075ff48167dd97fdc4e5c66a7b3b96e2b88c420493b5d925278a')
+sha256sums=('59f8a759fa384b45ca4315317cdcff914419eeadea1e0e721576414151208bd5')
 
 prepare() {
 	cd "$_archive"
@@ -70,9 +65,12 @@ build() {
 	cargo build --release --frozen --all-features
 }
 
+# Tests assume access to vulkan video drivers, Wayland window creation,
+# detecting system keymaps, etc. Until their is something sensical for
+# a package to test in the suite, just skip it by default.
 check() {
 	_srcenv
-	cargo test --frozen --all-features
+	# cargo test --frozen --all-features
 }
 
 package() {
