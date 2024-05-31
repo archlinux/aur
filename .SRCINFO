@@ -1,14 +1,14 @@
 pkgbase = jes
 	pkgdesc = A java-based tool for german cash method of accounting (Einnahmen-Überschuss-Rechnung)
-	pkgver = 2.6.26
-	pkgrel = 1
+	pkgver = 2.6.31
+	pkgrel = 2
 	url = http://www.jes-eur.de
 	arch = any
 	license = custom
 	depends = java-runtime
 	depends = x-server
 	depends = xdg-utils
-	source = http://www.jes-eur.de/userfiles/downloads/jes/jes_2.6.26.zip
+	source = http://www.jes-eur.de/userfiles/downloads/jes/jes_2.6.31.zip
 	source = jes.desktop
 	source = jes.sh.new
 	source = LICENSE
