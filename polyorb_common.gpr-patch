@@ -1,0 +1,11 @@
+--- ./projects/polyorb_common.gpr	2023-10-17 20:46:29.000000000 +1100
++++ ./projects/polyorb_common.gpr-new	2023-10-23 12:42:14.672270433 +1100
+@@ -62,7 +62,7 @@
+    package Compiler is
+ 
+       Base_Ada_Compiler_Switches :=
+-        ("-gnat12",           --  Ada 2012 mode
++        ("-gnat2022",         --  Ada 2012 mode
+          "-gnati1",           --  Full ISO 8859-1 character set allowed in
+                               --  source code (for generated CORBA stubs)
+          "-gnatf",            --  Full compiler error messages
