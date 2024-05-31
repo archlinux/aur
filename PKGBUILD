@@ -2,7 +2,7 @@
 
 pkgname=luminance
 _pkgname=Luminance
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A simple GTK application to control brightness of displays including external displays supporting DDC/CI"
 arch=('x86_64')
@@ -33,5 +33,6 @@ package() {
   install -Dm644 "./install_files/com.sidevesh.Luminance.desktop" "$pkgdir/usr/share/applications/com.sidevesh.Luminance.desktop"
   install -Dm644 "./install_files/com.sidevesh.Luminance.gschema.xml" "$pkgdir/usr/share/glib-2.0/schemas/com.sidevesh.Luminance.gschema.xml"
   install -Dm644 "./install_files/44-backlight-permissions.rules" "$pkgdir/usr/lib/udev/rules.d/44-backlight-permissions.rules"
-  install -Dm644 "./icons/icon.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.sidevesh.Luminance.svg"
+  install -Dm644 "./icons/hicolor/scalable/apps/com.sidevesh.Luminance.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.sidevesh.Luminance.svg"
+  install -Dm644 "./icons/hicolor/symbolic/apps/com.sidevesh.Luminance-symbolic.svg" "$pkgdir/usr/share/icons/hicolor/symbolic/apps/com.sidevesh.Luminance-symbolic.svg"
 }
