@@ -1,29 +1,30 @@
 # Maintainer: Guilhem "Nim65s" Saurel <guilhem.saurel@laas.fr>
 
-pkgorg='Simple-Robotics'
+_org='Simple-Robotics'
 _pkgname='proxsuite-nlp'
 pkgname=("$_pkgname" "$_pkgname-docs")
-pkgver=0.3.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A primal-dual augmented Lagrangian solver for nonlinear programming on manifolds."
 arch=('i686' 'x86_64')
-url="https://github.com/$pkgorg/$pkgname"
-license=('BSD')
+url="https://github.com/$_org/$pkgname"
+license=('BSD-2-Clause')
 depends=('proxsuite' 'boost-libs' 'eigenpy' 'pinocchio' 'casadi')
 optdepends=('doxygen')
 makedepends=('cmake' 'eigen' 'boost' 'fmt')
 source=($url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz{,.sig})
-sha256sums=('c3cf8f4a54c94ffa95628b47da15e3feeb573d17ccca370fc53c1ca4befb0b37'
+sha256sums=('58c94ae2965ba70bd436c90774dd660231a20a2be15f0e00c83708f39570aaed'
             'SKIP')
 validpgpkeys=(
         'A031AD35058955293D54DECEC45D22EF408328AD'  # https://github.com/jcarpent.gpg
         '1462AF00C9CF3C9E7AFC905E63380359F089A579'  # https://github.com/jorisv.gpg
+        'F6B9DDE42ED91D7939BC25B2A4D60E0153ADD041'  # https://github.com/manifoldfr.gpg
 )
 
 build() {
     cmake -B "build-$pkgver" -S "$pkgbase-$pkgver" \
         -DCMAKE_BUILD_TYPE=None \
-        -DBUILD_WITH_PROXSUITE=ON \
+        -DBUILD_WITH_PROXSUITE_SUPPORT=ON \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DGENERATE_PYTHON_STUBS=ON \
