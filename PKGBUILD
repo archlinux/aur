@@ -2,8 +2,8 @@
 
 pkgname=flips
 # Each commit to master should be treated as a release as per upstream recommendation.
-pkgver=161
-_commit=e26220eeae9afd9bfa4337f11da41f9e1222514c
+pkgver=179
+_commit=6caac470f7fc096b0c5fdc374b65954f8bac5b16
 pkgrel=1
 pkgdesc="Patcher for IPS and BPS files"
 depends=('at-spi2-core' 'cairo' 'gcc-libs' 'gdk-pixbuf2' 'glibc' 'glib2' 'gtk3'

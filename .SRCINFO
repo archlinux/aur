@@ -1,6 +1,6 @@
 pkgbase = flips
 	pkgdesc = Patcher for IPS and BPS files
-	pkgver = 161
+	pkgver = 179
 	pkgrel = 1
 	url = https://github.com/Alcaro/Flips
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = flips
 	depends = hicolor-icon-theme
 	depends = pango
 	depends = zlib
-	source = flips::git+https://github.com/Alcaro/Flips.git#commit=e26220eeae9afd9bfa4337f11da41f9e1222514c
+	source = flips::git+https://github.com/Alcaro/Flips.git#commit=6caac470f7fc096b0c5fdc374b65954f8bac5b16
 	sha256sums = SKIP
 
 pkgname = flips
