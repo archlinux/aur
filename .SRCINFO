@@ -1,6 +1,6 @@
 pkgbase = feathernotes-git
 	pkgdesc = Lightweight Qt hierarchical notes-manager for Linux.
-	pkgver = 0.10.0.14.g9cb610a
+	pkgver = 1.2.0.r5.gb7dcf80
 	pkgrel = 1
 	url = https://github.com/tsujan/feathernotes
 	arch = i686
