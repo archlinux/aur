@@ -3,7 +3,7 @@
 pkgname=python-pynetdicom
 _pkgname=pynetdicom
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Python implementation of the DICOM networking protocol'
 arch=(any)
 url='https://github.com/pydicom/pynetdicom'
@@ -29,5 +29,9 @@ package() {
   cd "${_pkgname}-${pkgver}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm644 LICENCE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  # avoid file conflicts with dcmtk, add pynetdicom prefix
+  for i in "${pkgdir}/usr/bin"/*; do
+    mv -vf "$i" "${pkgdir}/usr/bin/pynetdicom-$(basename "$i")"
+  done
 }
 # vim:set ts=2 sw=2 et:

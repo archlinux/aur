@@ -1,7 +1,7 @@
 pkgbase = python-pynetdicom
 	pkgdesc = A Python implementation of the DICOM networking protocol
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pydicom/pynetdicom
 	arch = any
 	license = MIT
