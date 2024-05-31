@@ -1,14 +1,13 @@
-# Maintainer: xiretza <xiretza+aur@gmail.com>
 # Maintainer: Rod Kay <rodakay5 at gmail dot com>
 
 pkgname=gnatcoll-db2ada
 pkgdesc='GNAT Components Collection - Tool to generate Ada code from database schemas.'
-pkgver=24.0w
+pkgver=25.0w
 pkgrel=1
 epoch=1
 
 _repo_name=gnatcoll-db
-_source_dir=$_repo_name-$pkgver-20230428-1640B-src
+_source_dir=$_repo_name-$pkgver-20240505-16412-src
 
 url=https://github.com/AdaCore/gnatcoll-db
 arch=(i686 x86_64)
@@ -17,8 +16,8 @@ license=(GPL3 custom)
 depends=(gnatcoll-core gnatcoll-sql python)
 makedepends=(gprbuild)
 
-source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/$_repo_name-$pkgver-20230324-166CC-src.tar.gz)
-sha256sums=(374adf9064cbdf87c4c3f4cc815d8c0f914820a0caa45edd605545ee7a4c07c2)
+source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources-2024/$_repo_name-$pkgver-20240408-1639A-src.tar.gz)
+sha256sums=(66f30323be6cec6fc68cc58aa46a162c61196a2b9d44992f041599d3970afe35)
 
 
 build()
