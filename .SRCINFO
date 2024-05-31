@@ -1,0 +1,15 @@
+pkgbase = decker
+	pkgdesc = Multimedia platform for creating interactive documents
+	pkgver = 1.43
+	pkgrel = 1
+	url = http://beyondloom.com/decker/
+	arch = x86_64
+	license = MIT
+	makedepends = xxd
+	depends = glibc
+	depends = sdl2
+	depends = sdl2_image
+	source = decker-1.43.tar.gz::https://github.com/JohnEarnest/Decker/archive/refs/tags/v1.43.tar.gz
+	sha256sums = ba94013e0d28ff7b63a9821dd15575f35d6ab946771d674d55fc93dcb2f7b075
+
+pkgname = decker
