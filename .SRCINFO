@@ -1,14 +1,15 @@
 pkgbase = xmlindent
 	pkgdesc = XML stream reformatter written in ANSI C
 	pkgver = 0.2.17
-	pkgrel = 2
+	pkgrel = 3
 	url = http://xmlindent.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = flex
 	source = https://downloads.sourceforge.net/xmlindent/xmlindent-0.2.17.tar.gz
+	source = strlen_yytext_assertion.patch
 	md5sums = c08be3867ee906ca69b949d55a4f3780
+	md5sums = c355159346ec9da32bb84c38c61c4b0c
 
 pkgname = xmlindent
-
