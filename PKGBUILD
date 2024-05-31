@@ -6,7 +6,7 @@ pkgdesc="DNA/RNA/etc simulator, from lorenzo-rovigatti/oxDNA, with CUDA support 
 
 url="https://github.com/lorenzo-rovigatti/oxDNA"
 
-pkgver=v3.6.1.r18.gdbdc7265
+pkgver=v3.6.1.r28.g16e5d7c8
 arch=('x86_64')
 license=('GPL3')
 provides=('oxdna')
@@ -15,7 +15,7 @@ pkgrel=1
 
 depends=('python3' 'python-matplotlib' 'python-scikit-learn' 'python-setuptools' 'ipython')
 
-makedepends=('git' 'cmake' 'gsl' 'cuda' 'gcc13' 'python-build' 'python-wheel' 'python-installer' 'cython' 'python-setuptools-scm')
+makedepends=('git' 'cmake' 'gsl' 'cuda-12.2' 'gcc12' 'python-build' 'python-wheel' 'python-installer' 'cython' 'python-setuptools-scm')
 optdepends=('python-matplotlib: for plotting')
 options=(!lto)
 source=("git+https://github.com/lorenzo-rovigatti/oxDNA.git")
@@ -31,8 +31,8 @@ build() {
     cmake -B build -S "oxDNA" \
         -DCMAKE_BUILD_TYPE='None' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
-        -DCMAKE_C_COMPILER='gcc-13' \
-        -DCMAKE_CXX_COMPILER='g++-13' \
+        -DCMAKE_C_COMPILER='gcc-12' \
+        -DCMAKE_CXX_COMPILER='g++-12' \
         -Wno-dev \
         -DCUDA=ON \
         -DPython=ON \
