@@ -1,13 +1,13 @@
 pkgname=mariebuild
-pkgver=0.5.2
-pkgrel=2
+pkgver=0.5.3
+pkgrel=1
 pkgdesc="A simple build system with support for incremental builds"
 arch=('x86_64')
 url="https://github.com/FelixEcker/mariebuild"
 license=('BSD-3')
 depends=('clang')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('08068595b27c4d2475685911d5857c0b649958527eb882b8e27105c1c537c69e')
+sha256sums=('1652d0e3488a4ed86dae32ff6ca6d25a5ba14b0487a6c14aefb3a198db30a335')
 
 build() {
 	cd "$pkgname-$pkgver"
