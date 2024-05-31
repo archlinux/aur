@@ -10,7 +10,7 @@
 pkgname=snort
 _pkgname=snort3
 _openappid=33380
-pkgver=3.1.84.0
+pkgver=3.2.1.0
 pkgrel=1
 pkgdesc='A lightweight network IDS /IPS with OpenAppID support.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64' 'arm')
@@ -30,7 +30,6 @@ backup=('etc/snort/snort.lua'
 install='snort.install'
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/snort3/snort3/archive/refs/tags/${pkgver}.tar.gz"
   "snort-openappid-${_openappid}.tar.gz::https://snort.org/downloads/openappid/${_openappid}"
-  'cstdint.patch'
   'tcmjem.patch'
   'local.lua'
   'snort.logrotate'
@@ -40,7 +39,6 @@ source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/snort3/snort3/archive/
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
-  patch -p0 <"${srcdir}"/cstdint.patch
   patch -p0 <"${srcdir}"/tcmjem.patch
   # Workaround https://github.com/intel/hyperscan/issues/388
   sed -i '/HAVE_HS_COMPILE_LIT/d' config.cmake.h.in cmake/sanity_checks.cmake
@@ -88,12 +86,11 @@ package() {
 
 }
 
-sha256sums=('dca1707a66f6ca56ddd526163b2d951cefdb168bddc162c791adc74c0d226c7f'
-            '3046c5af1dd81a104f13d8e895226ef64bca7fa358238fb5f29c659081eaee2a'
-            'b3d86ffa12207afa0f2d3a2349cf4746711e71b8a43bdc593b1527eda972f8ea'
-            '7fbf5c1b1ca10fba73350e563cafeb8ea4db7eb5d69ef62c067df602f27678f2'
-            'b61d6492f86c7d79c1a76d1394d099403981aac7f371b1fe22ddd8a4bb15c87c'
-            'a8a7684a676da5cd55c2b5ab012dac3d14c5a6c62f6e37c4913ba1dbe506088e'
-            'ae3245c5de527fb487c459f2f4a9c78803ae6341e9c81b9a404277679cdee051'
-            'bc4a02d184601faba5cd0f6cb454097a3b04a0c8fe56f5f8b36d24513484faa2'
-            'cb1108ab0a6ad38981a6f308b0ae2b276b68d08bfa0e38c036eae277b38b28d8')
+sha256sums=('c7242fd7a199ecc78c05ca357478b68b29bd2ca46dc14ac2517eae3406f7e1e0'
+  '3046c5af1dd81a104f13d8e895226ef64bca7fa358238fb5f29c659081eaee2a'
+  '7fbf5c1b1ca10fba73350e563cafeb8ea4db7eb5d69ef62c067df602f27678f2'
+  'b61d6492f86c7d79c1a76d1394d099403981aac7f371b1fe22ddd8a4bb15c87c'
+  'a8a7684a676da5cd55c2b5ab012dac3d14c5a6c62f6e37c4913ba1dbe506088e'
+  'ae3245c5de527fb487c459f2f4a9c78803ae6341e9c81b9a404277679cdee051'
+  'bc4a02d184601faba5cd0f6cb454097a3b04a0c8fe56f5f8b36d24513484faa2'
+  'cb1108ab0a6ad38981a6f308b0ae2b276b68d08bfa0e38c036eae277b38b28d8')
