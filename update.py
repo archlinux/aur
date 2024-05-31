@@ -5,20 +5,32 @@ import subprocess
 CHANNEL = "preview"
 CARCH = "x86_64"
 
-url = f"https://zed.dev/releases/{CHANNEL}"
+url = "https://api.github.com/repos/zed-industries/zed/releases"
 
 VERSION_RE = re.compile(
-    rf"(/api/releases/{CHANNEL}/(\d+\.\d+\.\d+)/zed-linux-{CARCH}.tar.gz)"
+    rf"/v(.*){'-pre' if CHANNEL == 'preview' else ''}/zed-linux-{CARCH}.tar.gz"
 )
 
 
 def get_versions():
     response = requests.get(url)
     response.raise_for_status()
-    html = response.text
-    versions = dict(map(reversed, VERSION_RE.findall(html)))
+    releases = [
+        release
+        for release in response.json()
+        if release["prerelease"] == (CHANNEL == "preview")
+    ]
+
+    urls = [
+        asset["browser_download_url"]
+        for release in releases
+        for asset in release["assets"]
+        if asset["name"] == "zed-linux-x86_64.tar.gz"
+    ]
+    versions = {VERSION_RE.search(url).group(1): url for url in urls}
+
     if not versions:
-        raise Exception(f"No versions found in {html}")
+        raise Exception(f"No versions found in {releases}")
 
     return versions
 
@@ -42,26 +54,31 @@ if pkgver == last_version:
 print(f"New version found: {last_version}")
 
 # Update PKGBUILD
-PKGBUILD = PKGBUILD.replace(pkgver, last_version)
+SOURCE_RE = re.compile(r"source=\(\"\$pkgname-\$pkgver.tar.gz::(.*)\"\)")
+source = SOURCE_RE.search(PKGBUILD).group(1)
+
+PKGBUILD = PKGBUILD.replace(pkgver, last_version).replace(
+    source, versions[last_version]
+)
 with open("PKGBUILD", "w") as f:
     f.write(PKGBUILD)
 
 # Update sha256sums with updpkgsums
-subprocess.run(["updpkgsums"])
+subprocess.check_call(["updpkgsums"])
 
 # Try building the package
-subprocess.run(["makepkg", "-si"])
+subprocess.check_call(["makepkg", "-si"])
 
 # Update .SRCINFO
 # Run makepkg --printsrcinfo get stdout and save it to .SRCINFO
-subprocess.run(["makepkg", "--printsrcinfo"], stdout=open(".SRCINFO", "w"))
+subprocess.check_call(["makepkg", "--printsrcinfo"], stdout=open(".SRCINFO", "w"))
 
 # Ask to commit changes
-subprocess.run(["git", "add", "PKGBUILD"])
-subprocess.run(["git", "add", ".SRCINFO"])
-subprocess.run(["git", "diff", "--cached"])
+subprocess.check_call(["git", "add", "PKGBUILD"])
+subprocess.check_call(["git", "add", ".SRCINFO"])
+subprocess.check_call(["git", "diff", "--cached"])
 input("Commit changes? [Enter]")
 
 # Commit changes
-subprocess.run(["git", "commit", "-m", f"Update to {last_version}"])
-subprocess.run(["git", "push"])
+subprocess.check_call(["git", "commit", "-m", f"Update to {last_version}"])
+subprocess.check_call(["git", "push"])
