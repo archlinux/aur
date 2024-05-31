@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=sentry-native
-pkgver=0.7.4
+pkgver=0.7.5
 pkgrel=1
 pkgdesc="Sentry SDK for C, C++ and native applications"
 arch=(x86_64)
@@ -32,7 +32,7 @@ source=(
   "git+https://chromium.googlesource.com/chromium/src/third_party/zlib.git"
 )
 sha256sums=(
-  '62c7701118479faa520b9073e3c4e105aa9677621d1220adb275c0a19cf6fe3c'
+  '8f59bb1946cb1727baf46aa56b60045e5e6d209a2c1a9bf1fe9b457eb35cdeed'
   'SKIP'
   'SKIP'
   'SKIP'
