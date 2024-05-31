@@ -1,7 +1,7 @@
 # Maintainer: sdaqo <sdaqo.dev@protonmail.com>
 
 pkgname=mpv-subs-popout
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A package to enable subtitles popout feature in mpv media player with translation features."
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('cairo>=1.10.0' 'glib2>=2.53' 'gtk3>=3.16.2' 'pango')
 source=(https://github.com/sdaqo/mpv-subs-popout/releases/download/v${pkgver}/mpv-subs-popout_${pkgver}-1_amd64.deb)
 
 sha512sums=(
-    '3d19c1a97590176267f59023ae33306389bee45d04b5ed055cb7c3c05e16920713b0bb5795b3298f28c6bd41ebc69ad62bdc053115c280661df9a2ec83c52277'   
+    'e788dbe6635ea748928fa23253d96da7336b91671781b57c8e78a202ba833a74975eede78bbc8e8091b0840260e6098b3152f3351c00ac440d8e416150de81b5'   
 )
 
 package() {
