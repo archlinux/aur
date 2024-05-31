@@ -2,7 +2,7 @@
 # Maintainer: Mahdi Sarikhani <mahdisarikhani@outlook.com>
 
 pkgname=fvm-bin
-pkgver=3.1.5
+pkgver=3.1.6
 pkgrel=1
 pkgdesc="Flutter Version Management: A simple CLI to manage Flutter SDK versions"
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("${url}/releases/download/${pkgver}/fvm-${pkgver}-linux-x64.tar.gz"
         "${pkgname}.sh")
-sha256sums=('93dc2c3dad64b444c2062061ca4a9b5ac7b240ad4131b2409c496f4f31c12f1a'
+sha256sums=('153356609854d5fe3f8567ebe8c7451921fb519becf75711a6440bbcfc1d6c26'
             'eafcf25a0db7cc51f242fea20bd0d3e83060d5abfefb16146c7862b74e6c3893')
 
 package() {
