@@ -2,7 +2,7 @@
 
 pkgname=apg-go
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A modern "Automated Password Generator"-clone'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/wneessen/apg-go'
@@ -11,6 +11,7 @@ makedepends=('go')
 source=("https://github.com/wneessen/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('dfe7633a6fe7fd40f9fc2ae43ce66a5d8224a732b8051f65504123fe0a95bb40')
 options=('!debug')
+conflicts=('apg')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
