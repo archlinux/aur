@@ -2,7 +2,7 @@
 
 pkgname=gnatcoll-core
 pkgdesc='Gnat components collection - Core packages.'
-pkgver=24.0w
+pkgver=25.0w
 pkgrel=1
 epoch=1
 
@@ -14,16 +14,12 @@ depends=(libgpr)
 makedepends=(gprbuild-toolbox
              python-sphinx
              python-sphinx_rtd_theme
-#             texlive-core
-#             texlive-latexextra
-#             texlive-latexrecommended
              texlive-meta)
 
-#https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/gnatcoll-core-24.0w-20230324-161A8-src.tar.gz
-source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/$pkgname-$pkgver-20230324-161A8-src.tar.gz)
-sha256sums=(4698c52bac871cd50aac2a2f305dfe8511731bc17b716400837a5f1f27166505)
+source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources-2024/$pkgname-$pkgver-20240408-16118-src.tar.gz)
+sha256sums=(5b683fcc693205b25148cbd2f9adb50e0075bb75cdc867c595efc8dc70ade7fc)
 
-_gnatcoll_core_src=$pkgname-$pkgver-20230428-16442-src
+_gnatcoll_core_src=gnatcoll-core-25.0w-20240505-162D8-src
 
 
 build()
@@ -36,7 +32,11 @@ build()
 
     make setup BUILD=PROD prefix=/usr
     make -j1 GPRBUILD_OPTIONS="-R -cargs $ADA_FLAGS -largs $LDFLAGS -gargs"
-    make -C docs html latexpdf
+
+    make -C docs html latexpdf   \
+         1> build-docs-1.log     \
+         2> build-docs-2.log
+         
 }
 
 
