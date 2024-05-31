@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=selvania-launcher-bin
 _pkgname=Selvania-Launcher
-pkgver=2.0.5
+pkgver=2.0.7
 _electronversion=30
 pkgrel=1
 pkgdesc="Custom launcher for modded minecraft written in electron.js and Node.js"
@@ -22,13 +22,14 @@ source=(
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/luuxis/Selvania-Launcher/${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('cd5915ecfdc6365da7c4a15250101366ef751d497b525232c275058a5d65375a'
+sha256sums=('4b84069d36d22197b3e5b27feea0d4d45d46dc10c9afe27783f5ee9abf69a974'
             '7c73b8f626696c0403394da3dae0d5ed33009cc2d674803d40bc4e2c7e67174b'
-            '05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
