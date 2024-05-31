@@ -3,7 +3,7 @@
 
 _name='activitywatch'
 pkgname="$_name-git"
-pkgver=0.12.3b16.r3.g5b75e58
+pkgver=0.12.3b19.r1.g04fbfac
 pkgrel=1
 pkgdesc='Log what you do on your computer. Simple, extensible, no third parties.'
 arch=('x86_64')
