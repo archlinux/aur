@@ -3,7 +3,7 @@
 pkgname=expressvpn-applet
 pkgver=0.1
 pkgrel=1
-pkgdesc="Applet for ExpressVPN"
+pkgdesc="Unofficial applet for ExpressVPN"
 arch=("x86_64")
 url="https://github.com/bbrunaczky/${pkgname}"
 license=("GPL-3")

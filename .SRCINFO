@@ -1,5 +1,5 @@
 pkgbase = expressvpn-applet
-	pkgdesc = Applet for ExpressVPN
+	pkgdesc = Unofficial applet for ExpressVPN
 	pkgver = 0.1
 	pkgrel = 1
 	url = https://github.com/bbrunaczky/expressvpn-applet
