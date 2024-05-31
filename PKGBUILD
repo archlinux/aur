@@ -1,5 +1,4 @@
-# Maintainer: Fijxu <fijxu [at] nadeko [dot] net> 
-# Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
+# Maintainer: username227 <gfrank227 [at] gmail [dot] com> 
 _pkgname=sudachi
 _branch=main
 pkgname=sudachi-git
