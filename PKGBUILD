@@ -1,9 +1,9 @@
 # Maintainer: Raphael Tittel <raphaeltittel@gmail.com>
 pkgname="bindump-git"
-pkgver=1.01	
+pkgver=1.01
 pkgrel=1
-pkgdesc="Display binary contents of file"
-arch=("x86_64" "arm64")
+pkgdesc="Display binary contents of a file"
+arch=("x86_64" "arm")
 url="https://github.com/Raphadoodle/bindump-git.git"
 license=('GPL')
 groups=()
