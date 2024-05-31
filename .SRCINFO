@@ -1,7 +1,7 @@
 pkgbase = ftcli
 	pkgdesc = Foundry Tools command line font editor
-	pkgver = 1.1.12
-	pkgrel = 2
+	pkgver = 1.1.13
+	pkgrel = 1
 	url = https://github.com/ftCLI/FoundryTools-CLI
 	arch = any
 	license = MIT
@@ -22,7 +22,7 @@ pkgbase = ftcli
 	depends = python-rich
 	depends = python-skia-pathops
 	depends = python-zopfli
-	source = https://github.com/ftCLI/FoundryTools-CLI/archive/v1.1.12/FoundryTools-CLI-1.1.12.tar.gz
-	sha256sums = c62d021797a6f294998fa1e0bb38d9d8409d8e9b8802b423cab6cdd09ed77a94
+	source = https://github.com/ftCLI/FoundryTools-CLI/archive/v1.1.13/FoundryTools-CLI-1.1.13.tar.gz
+	sha256sums = 9369a56db8bd99d5749628b004f76aedb5895b3eabd120d0927fca449bb02fda
 
 pkgname = ftcli
