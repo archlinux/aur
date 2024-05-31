@@ -4,6 +4,7 @@ pkgname=spark2014-bin
 pkgver=13.2.0
 pkgrel=1
 pkgdesc='Formally defined programming language based on Ada (Binary version)'
+
 url=https://github.com/alire-project/GNAT-FSF-builds
 arch=(x86_64)
 license=(GPL)
