@@ -1,0 +1,13 @@
+pkgbase = expressvpn-applet
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/bbrunaczky/expressvpn-applet
+	arch = x86_64
+	license = GPL-3
+	makedepends = cmake
+	depends = boost
+	depends = gtkmm3
+	source = https://github.com/bbrunaczky/expressvpn-applet/archive/refs/tags/v0.1.tar.gz
+	sha256sums = 577cad20118139fd809339ff486021af7e4e4f42c17b7077f7414858acea083a
+
+pkgname = expressvpn-applet
