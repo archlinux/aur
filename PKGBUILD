@@ -28,7 +28,7 @@ unset _pkgtype
 # basic info
 _pkgname="pcsx2"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=1.7.5843.r0.g9187e7e
+pkgver=1.7.5856.r0.g69c2c53
 pkgrel=1
 pkgdesc='Sony PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
@@ -51,6 +51,9 @@ _main_package() {
     soundtouch
     wayland
     xcb-util-cursor
+
+    ## AUR
+    libbacktrace
   )
   makedepends=(
     cmake

@@ -1,6 +1,6 @@
 pkgbase = pcsx2-avx-git
 	pkgdesc = Sony PlayStation 2 emulator
-	pkgver = 1.7.5843.r0.g9187e7e
+	pkgver = 1.7.5856.r0.g69c2c53
 	pkgrel = 1
 	url = https://github.com/PCSX2/pcsx2
 	install = pcsx2.install
@@ -33,6 +33,7 @@ pkgbase = pcsx2-avx-git
 	depends = soundtouch
 	depends = wayland
 	depends = xcb-util-cursor
+	depends = libbacktrace
 	depends = glslang
 	depends = spirv-tools
 	optdepends = qt6-wayland: Wayland support
