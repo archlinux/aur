@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=imagine-bin
-_appname=Imagine
+_pkgname=Imagine
 pkgver=0.7.5
 _electronversion=12
-pkgrel=8
+pkgrel=9
 pkgdesc="PNG/JPEG optimization app"
 arch=("x86_64")
 url="https://github.com/meowtec/Imagine"
@@ -11,22 +11,25 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
     'libjpeg6-turbo'
 )
 makedepends=(
     'fuse2'
 )
-source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_appname}-${pkgver}.AppImage"
+source=(
+    "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/meowtec/Imagine/v${pkgver}/LICENSE"
-    "${pkgname%-bin}.sh")
+    "${pkgname%-bin}.sh"
+)
 sha256sums=('a032f096cc4d09f866d9e575706cb3174875900a234ed0dca0e9a2dfc2cea838'
             'aebee0e853c4db64ce36bd0b235613a9b948036a7f62af387f2e0b406cd657b7'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
