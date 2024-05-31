@@ -20,8 +20,6 @@ pkgbase = labwc-wlroots-018-git
 	provides = labwc
 	conflicts = labwc
 	source = git+https://github.com/labwc/labwc.git
-	source = 1641.patch
 	md5sums = SKIP
-	md5sums = af5bd9abff47c2b9bbcb8d756eb1f8f7
 
 pkgname = labwc-wlroots-018-git
