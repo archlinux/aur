@@ -2,7 +2,7 @@
 
 pkgname=langkit
 pkgdesc='Compiler for syntactic and semantic language analysis libraries.'
-pkgver=24.0w
+pkgver=25.0w
 pkgrel=1
 epoch=1
 
@@ -31,16 +31,16 @@ makedepends=(gprbuild
              python-pycodestyle
              python-railroad-diagrams)
 
-source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/$pkgname-$pkgver-20230324-16391-src.tar.gz
+source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources-2024/$pkgname-$pkgver-20240411-1627B-src.tar.gz
         0001-Replace-calls-to-inspect.getargspec-with-getfullargs.patch)
         
-sha256sums=(aea03ed51466fdca9bee32274a09a08cce645094da1cabea87a75829eb56491c
+sha256sums=(175a54d50c427198e5e2f2644907f952d17e99fe17846a22c594b1ec81ce46e3
             dddf397b5a2de8b0bb45fb4d8cf49d6440911e92594cda8c1af1e045c348c547)
 
 
 build()
 {
-    cd $srcdir/$pkgname-$pkgver-20230428-16136-src
+    cd $srcdir/$pkgname-$pkgver-20240506-161EA-src
 
     ADA_FLAGS="$CFLAGS"
     ADA_FLAGS="${ADA_FLAGS//-Wformat}"
@@ -60,7 +60,7 @@ build()
 
 package()
 {
-    cd $srcdir/$pkgname-$pkgver-20230428-16136-src
+    cd $srcdir/$pkgname-$pkgver-20240506-161EA-src
 
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 

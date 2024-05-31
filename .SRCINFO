@@ -1,6 +1,6 @@
 pkgbase = langkit
 	pkgdesc = Compiler for syntactic and semantic language analysis libraries.
-	pkgver = 24.0w
+	pkgver = 25.0w
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/AdaCore/langkit
@@ -26,9 +26,9 @@ pkgbase = langkit
 	depends = gnatcoll-gmp
 	depends = python
 	depends = adasat
-	source = https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/langkit-24.0w-20230324-16391-src.tar.gz
+	source = https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources-2024/langkit-25.0w-20240411-1627B-src.tar.gz
 	source = 0001-Replace-calls-to-inspect.getargspec-with-getfullargs.patch
-	sha256sums = aea03ed51466fdca9bee32274a09a08cce645094da1cabea87a75829eb56491c
+	sha256sums = 175a54d50c427198e5e2f2644907f952d17e99fe17846a22c594b1ec81ce46e3
 	sha256sums = dddf397b5a2de8b0bb45fb4d8cf49d6440911e92594cda8c1af1e045c348c547
 
 pkgname = langkit
