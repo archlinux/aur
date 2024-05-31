@@ -2,7 +2,7 @@
 
 pkgname=ada-libfswatch
 pkgdesc='An Ada binding to the libfswatch library in the fswatch project.'
-pkgver=24.0w
+pkgver=25.0w
 pkgrel=1
 epoch=1
 
@@ -14,15 +14,14 @@ depends=(fswatch gnatcoll-core)
 makedepends=(gprbuild)
 
 _repo_name=ada_libfswatch
-_source_dir=$_repo_name-$pkgver-20230428-16626-src
+_source_dir=$_repo_name-$pkgver-20240505-16247-src
 
-#https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/ada_libfswatch-24.0w-20230428-16626-src.tar.gz
-source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/$_repo_name-$pkgver-20230428-16626-src.tar.gz
+source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources-2024/$_repo_name-$pkgver-20240505-16247-src.tar.gz
         0001-Use-system-libfswatch-install.patch
         0002-Build-dynamic-library.patch
         0003-Makefile-allow-passing-custom-flags-to-gprbuild.patch)
 
-sha256sums=(08a65c7bac9cabb36b26275cda41bc056a1c2d26bdfbd0dbc63761fc90067f86
+sha256sums=(fda4f4390bb78b1805b3fabe1248c99e59b72933368bad941ec346d4faaedc1d
             a1947e1d8b0f0449d196d422d0a2fd038fd8aa6e0abdd533cf71dbece901492b
             904c986f2cb67744f8799ec7770f73f3f893713d0ccc5f4c552d8d9a3cc9dae8
             53dc07cbb68b3ddfdb3133b0c2edb9878818fcba54d2f1dbc70b8821cf42d1cf)
@@ -61,6 +60,11 @@ package()
    # which is already owned by fswatch, so remove it.
    #
    rm "$pkgdir/usr/lib/libfswatch.so"
+   
+   # 'gprinstall' is set to be recursive in the Makefile which adds 'gnatcoll.gpr', so remove it.
+   #
+   rm "$pkgdir/usr/share/gpr/gnatcoll.gpr"
+   rm "$pkgdir/usr/share/gpr/manifests/gnatcoll"
 
    # Install the license.
    #
