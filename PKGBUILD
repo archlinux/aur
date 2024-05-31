@@ -1,13 +1,13 @@
 # Maintainer: Stuart Reilly <stu@reilly-family.co.uk>
 pkgname=dsda-launcher-git
-pkgver=v1.3.1.hotfix.r2.cdafb6d
-pkgrel=1
+pkgver=v1.3.1.hotfix.r54.73f94ed
+pkgrel=2
 pkgdesc="Launcher GUI for the dsda-doom source port"
 arch=('x86_64')
 url="https://github.com/Pedro-Beirao/dsda-launcher"
 license=('GPL-3.0-only')
 groups=()
-depends=('qt6-base' 'glibc' 'gcc-libs')
+depends=('dsda-doom' 'qt6-base' 'glibc' 'gcc-libs')
 makedepends=('git' 'qt6-base')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -26,14 +26,14 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
-	sed -i 's#/opt/$${TARGET}/bin#/usr/bin#g' ${pkgname%-git}/${pkgname%-git}.pro
+	sed -i 's#/opt/$${TARGET}/bin#/usr/bin#g' src/${pkgname%-git}.pro
 }
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
 	mkdir -p build
 	cd build
-	qmake6 QMAKE_CFLAGS="${CFLAGS}" QMAKE_CXXFLAGS="${CXXFLAGS}" QMAKE_LFLAGS="${LDFLAGS}" ../${pkgname%-git}/${pkgname%-git}.pro
+	qmake6 QMAKE_CFLAGS="${CFLAGS}" QMAKE_CXXFLAGS="${CXXFLAGS}" QMAKE_LFLAGS="${LDFLAGS}" ../src
 	make
 }
 
