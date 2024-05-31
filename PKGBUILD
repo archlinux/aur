@@ -8,7 +8,7 @@ arch=(x86_64)
 url=https://botgem.com
 license=(LicenseRef-UNLICENSED)
 depends=(
-	electron29
+	electron
 )
 makedepends=(
 	asar
