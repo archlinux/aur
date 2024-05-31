@@ -4,7 +4,7 @@ _appname=YouKu
 _chsname="优酷"
 pkgver=1.0.0
 _electronversion=9
-pkgrel=6
+pkgrel=7
 pkgdesc="Linux版优酷客户端APP,基于Electron技术实现在uos的APP客户端."
 arch=('x86_64')
 url="http://gitlab.alibaba-inc.com/youku-node/uos-youku-app/blob/master/README.md"
@@ -13,18 +13,19 @@ license=("LicenseRef-custom")
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_uosurl}/u/uos-${_appname}-app/uos-${_appname}-app_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('ae0b2ecd57224db7eedcf453dcd1178b2bf78e08fea2885978f7048dd0ebb78f'
-            '0c7b4041ba449cb35cb5cb23503be164af78e85572dda2d8db0ae3dc7fa2629c')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|uos-${pkgname%-bin}-app|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
