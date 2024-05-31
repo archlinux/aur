@@ -9,7 +9,7 @@ pkgdesc="The classic MS PAINT of Windows XP"
 license=("proprietary")
 options=(!strip)
 url="https://archive.org/details/MSPaintWinXP"
-source=('mspaint' 'https://files.wiicantcode.xyz/mspaint.zip' 'MSPaint.png' 'mspaint.desktop')
+source=('mspaint' 'https://jestershelter.xyz/files/mspaint.zip' 'MSPaint.png' 'mspaint.desktop')
 
 sha256sums=('5c9c20c7fa9aa242823c5edf4881e62030d9e46916902d1f87e16917faf54cce'
             'e90ad1b9cf6ee6566edf70818e3a6d422dd15f52ee37570260779a6ede871496'
