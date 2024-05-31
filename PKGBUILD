@@ -24,7 +24,7 @@ pkgver() {
 build() {
   rm -Rf build && mkdir build
   cd build
-  cmake $srcdir/$_pkgname/ -DENABLE_QT5=OFF
+  cmake $srcdir/$_pkgname/
   make
 }
 
