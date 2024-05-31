@@ -2,12 +2,12 @@
 _name=mcdreforged
 pkgname=python-${_name}
 pkgver=2.12.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A rewritten version of MCDaemon, a python script to control your Minecraft server"
 arch=(any)
 url="https://github.com/Fallen-Breath/MCDReforged"
 license=('LGPL3')
-depends=('python>=3.8' 'python-colorama' 'python-colorlog' 'python-parse' 'python-prompt_toolkit' 'python-psutil' 'python-requests' 'python-ruamel-yaml' 'python-typing_extensions')
+depends=('python>=3.8' 'python-colorama' 'python-colorlog' 'python-parse' 'python-prompt_toolkit' 'python-psutil' 'python-ruamel-yaml' 'python-typing_extensions')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 optdepends=('java-runtime: start Minecraft server')
 options=()

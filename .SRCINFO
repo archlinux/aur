@@ -15,7 +15,6 @@ pkgbase = python-mcdreforged
 	depends = python-parse
 	depends = python-prompt_toolkit
 	depends = python-psutil
-	depends = python-requests
 	depends = python-ruamel-yaml
 	depends = python-typing_extensions
 	optdepends = java-runtime: start Minecraft server
