@@ -1,0 +1,26 @@
+diff -u10 -r Togl2.0/togl.c Togl2.0a/togl.c
+--- Togl2.0/togl.c	2008-04-19 08:32:11.000000000 +0200
++++ Togl2.0a/togl.c	2024-05-31 14:09:08.086516314 +0200
+@@ -125,21 +125,21 @@
+ /* workaround for bug #123153 in tcl ver8.4a2 (tcl.h) */
+ #if defined(Tcl_InitHashTable) && defined(USE_TCL_STUBS)
+ #  undef Tcl_InitHashTable
+ #  define Tcl_InitHashTable (tclStubsPtr->tcl_InitHashTable)
+ #endif
+ #if TK_MAJOR_VERSION > 8 || (TK_MAJOR_VERSION == 8 && TK_MINOR_VERSION >= 4)
+ #  define HAVE_TK_SETCLASSPROCS
+ /* pointer to Tk_SetClassProcs function in the stub table */
+ 
+ static void (*SetClassProcsPtr)
+-        _ANSI_ARGS_((Tk_Window, Tk_ClassProcs *, ClientData));
++        _ANSI_ARGS_((Tk_Window, const Tk_ClassProcs *, ClientData));
+ #endif
+ 
+ /* 
+  * Copy of TkClassProcs declarations from tkInt.h
+  * (this is needed for Tcl ver =< 8.4a3)
+  */
+ 
+ typedef Window (TkClassCreateProc) _ANSI_ARGS_((Tk_Window tkwin,
+                 Window parent, ClientData instanceData));
+ typedef void (TkClassGeometryProc) _ANSI_ARGS_((ClientData instanceData));
