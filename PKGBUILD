@@ -5,10 +5,10 @@ pkgver=0.2.2.r0.g22a55c9
 pkgrel=1
 pkgdesc="Script to make it easier to update Proton GE to the latest version"
 arch=("any")
-url="https://github.com/flubberding/ProtonUpdater"
+url="https://github.com/kkleinw/ProtonUpdater"
 license=("MIT")
 makedepends=("git")
-source=("git+https://github.com/flubberding/ProtonUpdater.git")
+source=("git+https://github.com/kkleinw/ProtonUpdater.git")
 sha512sums=("SKIP")
 
 pkgver() {
