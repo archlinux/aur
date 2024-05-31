@@ -8,7 +8,6 @@ url="https://github.com/georgewoodall82/openscad-thumbnailers"
 license=('GPL-3.0-only')
 depends=(openscad imagemagick xorg-server-xvfb)
 makedepends=(git)
-provides=(stl-thumb)
 source=("$pkgname-$pkgver::git+https://github.com/georgewoodall82/openscad-thumbnailers.git")
 sha256sums=('SKIP')
 
