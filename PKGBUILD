@@ -1,7 +1,7 @@
 pkgbase=amp-locker
 pkgname=('amp-locker-data-bin' 'amp-locker-standalone-bin' 'amp-locker-lv2-bin' 'amp-locker-vst3-bin')
 pkgver=1.1.5
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://audioassault.mx/collections/amp-locker-gear/products/amp-locker"
 license=('EULA')
@@ -31,7 +31,10 @@ package_amp-locker-data-bin() {
     mkdir -p "$pkgdir/usr/lib/AmpLockerData/data"
 
     ## Copy assets to data directory
-    cp -rf "$srcdir/AmpLockerLinux/data"/* "$pkgdir/usr/lib/AmpLockerData"
+    cp -r "$srcdir/AmpLockerLinux/data/"* "$pkgdir/usr/lib/AmpLockerData"
+
+    ## Remove empty folder
+    rm -r "$pkgdir/usr/lib/AmpLockerData/data"
 
     ## Install Amp Locker Linker Script
     install -Dm755 "$srcdir/Amp Locker Linker" "$pkgdir/usr/bin/Amp Locker Linker"
