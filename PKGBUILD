@@ -5,25 +5,24 @@
 
 pkgname=xmlada
 pkgdesc='An XML parser for Ada95.'
-pkgver=24.0w
-pkgrel=2
+pkgver=25.0w
+pkgrel=1
 epoch=1
 
 arch=(i686 x86_64)
 url=https://github.com/AdaCore/xmlada
 license=(GPL3 custom)
 
-#makedepends=(gprbuild-bootstrap gcc-ada)
 makedepends=(gprbuild gcc-ada)
 conflicts=($pkgname-git)
 
-source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/$pkgname-$pkgver-20230324-1684A-src.tar.gz
+source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources-2024/$pkgname-$pkgver-20240408-16316-src.tar.gz
         expose-cargs-and-largs-makefile.patch)
 
-sha256sums=(c243de68f3f7c0f5e8a23d24ab0725d038f4dd2b7798855a3b91b574e44e2dc1
+sha256sums=(ffc933e16d16c694e8805ea27ff160846e9300ac97afea897a7f370e30e36c70
             7543e5fa8f2b0b400b937b0b3bb27b46b263a3cd7b17f00f6f9c6b3905729610)
 
-_xmlada_src=$pkgname-$pkgver-20230428-16463-src
+_xmlada_src=$pkgname-$pkgver-20240505-1649E-src
 
 
 prepare()
