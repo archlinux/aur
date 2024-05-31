@@ -9,7 +9,7 @@
 pkgbase=ggnfs-svn
 pkgname=('ggnfs-lasieve4e-x86_64-svn' 'ggnfs-svn')
 pkgver=441
-pkgrel=4
+pkgrel=5
 pkgdesc="GGNFS is an open source implementation of General Number Field Sieve algorithm for factoring integers."
 arch=('x86_64')
 url="http://sourceforge.net/projects/ggnfs/"
@@ -67,8 +67,8 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_svnmod}/src/experimental/lasieve4_64"
-  make
-  cd "${srcdir}/${_svnmod}"
+  make CFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=3 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection         -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer -fcommon -O3 -march=native -mtune=native -funroll-loops -fstack-protector-strong -static -Wno-error=implicit-function-declaration -Wno-error=implicit-int -Wno-error=incompatible-pointer-types"
+ cd "${srcdir}/${_svnmod}"
   make "$_ggnfstarget"
   cd doc/ggnfs-doc
   latexmk -pdf ggnfs-doc

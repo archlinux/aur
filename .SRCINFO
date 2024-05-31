@@ -1,7 +1,7 @@
 pkgbase = ggnfs-svn
 	pkgdesc = GGNFS is an open source implementation of General Number Field Sieve algorithm for factoring integers.
 	pkgver = 441
-	pkgrel = 4
+	pkgrel = 5
 	url = http://sourceforge.net/projects/ggnfs/
 	arch = x86_64
 	license = GPL2
