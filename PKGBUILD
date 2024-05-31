@@ -3,12 +3,12 @@
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=openfx-io-git
-pkgver=Natron.2.5.0.r2.gf63c273
+pkgver=r17.gc05d785
 pkgrel=1
 arch=('x86_64')
 pkgdesc="A set of Readers/Writers plugins written using the OpenFX standard"
 url="https://github.com/NatronGitHub/openfx-io"
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('ffmpeg' 'openimageio' 'libseexpr2')
 makedepends=('opencolorio' 'git')
 
@@ -22,15 +22,15 @@ source=("${_pkgname}::git+${url}"
         "openfx-supportext::git+${_url}/openfx-supportext"
         "SequenceParsing::git+${_url}/SequenceParsing"
         "tinydir::git+${_url}/tinydir")
-sha512sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+b2sums=('SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP')
 
 pkgver() {
   cd ${_pkgname}
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^.*testing.//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
