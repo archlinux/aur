@@ -1,0 +1,17 @@
+pkgbase = python-libschrodinger
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/1p22geo/schrodinger
+	arch = any
+	license = GPL
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-matplotlib
+	depends = ffmpeg
+	source = python-libschrodinger-1.2.2.tar.gz::https://github.com/1p22geo/schrodinger/releases/download/v1.2.2/libschrodinger-1.2.2.tar.gz
+	sha256sums = ff7bb79d5bd9bcafe1389bb1eb4416a97f6cae1647ab940689e8d4314762cd9c
+
+pkgname = python-libschrodinger
