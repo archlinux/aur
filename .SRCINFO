@@ -1,0 +1,13 @@
+pkgbase = unipager-git
+	pkgdesc = Universal POCSAG pager transmitter
+	pkgver = r267.c5c579e
+	pkgrel = 1
+	url = https://github.com/rwth-afu/UniPager
+	arch = any
+	license = GPL3
+	makedepends = cargo-nightly
+	depends = hidapi
+	source = unipager-git::git+https://github.com/rwth-afu/UniPager.git
+	sha256sums = SKIP
+
+pkgname = unipager-git
