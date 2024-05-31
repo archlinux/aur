@@ -1,0 +1,5 @@
+[python-islpy]
+source = "github"
+github = "inducer/islpy"
+use_latest_release = "true"
+prefix = "v"
