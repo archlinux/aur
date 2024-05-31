@@ -1,10 +1,10 @@
 pkgbase = openfx-misc-git
 	pkgdesc = Miscellaneous OpenFX plugins
-	pkgver = Natron.2.5.0.r2.g5524c1ba
+	pkgver = 2.5.0.r2.g5524c1ba
 	pkgrel = 1
 	url = https://github.com/NatronGitHub/openfx-misc
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = git
 	makedepends = openmp
 	depends = libgl

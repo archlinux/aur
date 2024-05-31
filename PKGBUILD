@@ -3,12 +3,12 @@
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=openfx-misc-git
-pkgver=Natron.2.5.0.r2.g5524c1ba
+pkgver=2.5.0.r10.g294ca3e2
 pkgrel=1
 arch=('x86_64')
 pkgdesc="Miscellaneous OpenFX plugins"
 url="https://github.com/NatronGitHub/openfx-misc"
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('libgl' 'python')
 makedepends=('git' 'openmp')
 optdepends=('natron-plugins-git: More presets for the Shadertoy plugin')
@@ -27,7 +27,7 @@ sha512sums=('SKIP'
 
 pkgver() {
   cd ${_pkgname}
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^Natron.//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
