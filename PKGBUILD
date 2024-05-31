@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname='jaguar-bin'
-pkgver=1.36.3
+pkgver=1.37.0
 pkgrel=1
 pkgdesc="Tool to develop Toit programs for the ESP32"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('gcc-libs')
 provides=('jaguar')
 conflicts=('jaguar')
 source=("$pkgname-$pkgver.tgz::$url/releases/download/v$pkgver/jag_linux.tgz")
-sha256sums=('cc40e8f93553371d679c7ff3a44ed56ce0cb916b8672c580aee8d0958562c8ed')
+sha256sums=('2969f07685a1a7b5a5d5bcfdfec3049d5dfef897d25710e221cb0517fdcaeb71')
 
 package() {
 	install -D jag -t "$pkgdir/usr/bin/"
