@@ -2,8 +2,8 @@
 
 pkgname=gtkada
 pkgdesc='Ada bindings for the Gtk+ library.'
-pkgver=24.0w
-pkgrel=2
+pkgver=25.0w
+pkgrel=1
 epoch=1
 
 url=https://github.com/AdaCore/gtkada
@@ -18,14 +18,14 @@ makedepends=(gprbuild-toolbox
              texlive-meta
              gnatdoc)
 
-source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/$pkgname-$pkgver-20230428-165F0-src.tar.gz
+source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources-2024/$pkgname-$pkgver-20240505-16451-src.tar.gz
         Makefile.in-patch
         docs_Makefile-patch)
-sha256sums=(596d19722c0b7f6ec67d0f00918a2bfb0ae0fb7352b2182a290d5dcdf31e1ba9
+sha256sums=(8ef936617886625a9fd98316b0db7226521a0e6637b25d1d92bab99fac99ce7e
             f525df1f7c319f1dc95ddafe1a73d961ce162c6171c97b0df3ae756122ca76d4
             65b8f2d56ad688b369ae13446e9c4a839604ab6b1836aa85a385f59515d54f03)
 
-_gtkada_src=gtkada-$pkgver-20230428-165F0-src
+_gtkada_src=gtkada-$pkgver-20240505-16451-src
 
 
 prepare()
