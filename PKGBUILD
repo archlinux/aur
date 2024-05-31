@@ -1,11 +1,11 @@
 # Maintainer: Jenil
 pkgname=arch-torification
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="A tool for full system torification of Arch Linux"
 arch=('x86_64')
 url="https://github.com/jenil1122/Arch-torification"
-license=('GPL')
+license=('GPL3')
 source=("https://github.com/jenil1122/Arch-torification/releases/download/${pkgver}/arch-torification")
 sha256sums=('SKIP')
 conflicts=("arch-torification")
