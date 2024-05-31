@@ -41,10 +41,10 @@ build()
 {
     cd $srcdir/als-25.0w-20240506-162AE-src
 
-    make BUILD_MODE=prod all
+    make -j16 BUILD_MODE=prod all
 
     export LIBRARY_TYPE=relocatable
-    gprbuild gnat/lsp_client_glib.gpr
+    gprbuild -j16 gnat/lsp_client_glib.gpr
 }
 
 
