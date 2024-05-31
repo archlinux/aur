@@ -26,3 +26,4 @@ build() {
 package() {
     cd "${pkgname}-${pkgver}"
     cmake --install build
+}
