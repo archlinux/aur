@@ -1,7 +1,7 @@
 pkgbase = python-mcdreforged
 	pkgdesc = A rewritten version of MCDaemon, a python script to control your Minecraft server
 	pkgver = 2.12.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Fallen-Breath/MCDReforged
 	arch = any
 	license = LGPL3
