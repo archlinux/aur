@@ -9,7 +9,6 @@ pkgbase = openscad-thumbnailers
 	depends = openscad
 	depends = imagemagick
 	depends = xorg-server-xvfb
-	provides = stl-thumb
 	source = openscad-thumbnailers-1.0.1::git+https://github.com/georgewoodall82/openscad-thumbnailers.git
 	sha256sums = SKIP
 
