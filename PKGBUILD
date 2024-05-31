@@ -3,7 +3,7 @@
 pkgbase=gpr
 pkgdesc='Parser for Ada GPR project files.'
 pkgname=(gpr gpr2tools)
-pkgver=24.0w
+pkgver=25.0w
 pkgrel=1
 
 url=https://github.com/AdaCore/gpr
@@ -20,20 +20,25 @@ depends=(gnatcoll-iconv
 
 makedepends=(gprbuild python-e3-core)
 
-source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/gpr2-$pkgver-20230324-16151-src.tar.gz)
-sha256sums=(e6f85d621d5161c15004657df01ae797a6cd782a8f7cf4fdbdf5b280e6840a1b)
+source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources-2024/gpr2-$pkgver-20240409-162B5-src.tar.gz
+        rid_testsuite_reference_in_docgen_target_in_Makefile.patch)
+        
+sha256sums=(dd893997839c5242cf2d8d1482de603ac509ece06b67a1f480b2dbfba4c6b8d6
+            f7222c11e9292dc0a378f925cbdb1a9dfbcfaf599063517affca87827db9d8dd)
 
 
 prepare()
 {
-    cd $srcdir/gpr2-$pkgver-20230428-162AF-src
+    cd $srcdir/gpr2-$pkgver-20240505-16442-src
     make setup prefix=$pkgdir/usr GPR2KBDIR=/usr/share/gprconfig
+    
+    patch -Np0 -i $srcdir/rid_testsuite_reference_in_docgen_target_in_Makefile.patch
 }
 
 
 build()
 {
-    cd $srcdir/gpr2-$pkgver-20230428-162AF-src
+    cd $srcdir/gpr2-$pkgver-20240505-16442-src
 
     make build-lib-static
     make build-lib-static-pic
@@ -47,7 +52,7 @@ build()
 
 package_gpr()
 {
-    cd $srcdir/gpr2-$pkgver-20230428-162AF-src
+    cd $srcdir/gpr2-$pkgver-20240505-16442-src
 
     make install-libs
     make install-tools
@@ -68,8 +73,8 @@ package_gpr()
     # Install the custom license.
     #
     install -D -m644 \
-       LICENSE       \
-       $pkgdir/usr/share/licenses/$pkgname/LICENSE
+       LICENSE-lib   \
+       $pkgdir/usr/share/licenses/$pkgname/LICENSE-lib
 }
 
 
@@ -78,23 +83,17 @@ package_gpr2tools()
     provides=(gprtools)
     conflicts=(gprtools)
 
-    cd $srcdir/gpr2-$pkgver-20230428-162AF-src
+    cd $srcdir/gpr2-$pkgver-20240505-16442-src
 
     mkdir -p $pkgdir/usr/bin
-    cp  .build/release/gprclean    $pkgdir/usr/bin
-    cp  .build/release/gprconfig   $pkgdir/usr/bin
-    cp  .build/release/gprinstall  $pkgdir/usr/bin
-    cp  .build/release/gprls       $pkgdir/usr/bin
+    cp  .build/release_checks/gprclean    $pkgdir/usr/bin
+    cp  .build/release_checks/gprconfig   $pkgdir/usr/bin
+    cp  .build/release_checks/gprinstall  $pkgdir/usr/bin
+    cp  .build/release_checks/gprls       $pkgdir/usr/bin
 
     # Install the license.
     #
     install -D -m644 \
-       COPYING3      \
-       $pkgdir/usr/share/licenses/$pkgname/COPYING3
-
-    # Install the custom license.
-    #
-    install -D -m644 \
-       LICENSE       \
-       $pkgdir/usr/share/licenses/$pkgname/LICENSE
+       LICENSE-tool  \
+       $pkgdir/usr/share/licenses/$pkgname/LICENSE-tool
 }

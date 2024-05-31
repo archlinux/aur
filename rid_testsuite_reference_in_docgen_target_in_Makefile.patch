@@ -1,0 +1,10 @@
+--- Makefile	2024-04-26 11:12:49.604988300 +1000
++++ Makefile-new	2024-05-20 22:25:11.247146736 +1000
+@@ -272,7 +272,6 @@
+ 
+ docgen:
+ 	${GPRDOC} > ${DOCOUT}
+-	${GPRDOC} --display=json > ${SOURCE_DIR}/testsuite/tests/gprdoc/attrs.json
+ 	make -C ${SOURCE_DIR}/doc gen GPRDOC_FILE="../${DOCOUT}"
+ 
+ 
