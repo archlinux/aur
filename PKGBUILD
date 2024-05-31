@@ -1,7 +1,7 @@
 # Maintainer: Ling Wang <lingwang@wcysite.com>
 pkgname=ruyi-bin
-pkgver=0.10.0
-pkgrel=2
+pkgver=0.11.0
+pkgrel=1
 pkgdesc="The package manager for RuyiSDK."
 arch=("x86_64" "arm64" "riscv64")
 url="https://github.com/ruyisdk/ruyi"
@@ -25,6 +25,6 @@ package() {
         echo "Unsupported architecture: $CARCH"
     fi
 }
-sha256sums_x86_64=('890ef23dfdf6cd4b753828fe40790f8dbddf68f20dda2fc75e51da0589c62165')
-sha256sums_arm64=('08307b88882d5f0aa13d07197c19a93b64398df4805f1e3b439def283e0d5859')
-sha256sums_riscv64=('b56ee9b32ce85cb2b63ca38331be0f473591a366fb5670d8b71cd9a5ea08cd28')
+sha256sums_x86_64=('4aae889ecc732cd81bd3e86617cf807fe7ceb80095169a78cc6b1c80d2c3b597')
+sha256sums_arm64=('ef06c8c3b30ebfe43b5d19cbcbb64b03c73430818d3fb12c12c58ea54a5722fc')
+sha256sums_riscv64=('613729f418b1d7cea68483f563b399a4b49c1ee29f0e4f2935ca97ab80ee2034')
