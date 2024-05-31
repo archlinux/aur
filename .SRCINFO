@@ -1,6 +1,6 @@
 pkgbase = percolator-bin
 	pkgdesc = Software for postprocessing of shotgun proteomics data + format converters + Elude tool
-	pkgver = 3.06.05
+	pkgver = 3.07
 	pkgrel = 1
 	url = http://percolator.ms/
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = percolator-bin
 	depends = tokyocabinet
 	provides = percolator
 	conflicts = percolator-git
-	source = percolator-v3.06.05-linux-amd64.deb::https://github.com/percolator/percolator/releases/download/rel-3-06-05/percolator-v3-06-linux-amd64.deb
-	source = percolator-converters-v3.06.05-linux-amd64.deb::https://github.com/percolator/percolator/releases/download/rel-3-06-05/percolator-converters-v3-06-linux-amd64.deb
-	sha256sums = 4e742c0bc6811b3359ca25c1025ba8e0bfe5908e5a5aa88869a0a7d966922ce1
-	sha256sums = 6290901d0ab703cc2b5f5839257c5a3ec43e6245dd39841ffe9751978eb667b7
+	source = percolator-v3.07-linux-amd64.deb::https://github.com/percolator/percolator/releases/download/rel-3-07/percolator-v3-07-linux-amd64.deb
+	source = percolator-converters-v3.07-linux-amd64.deb::https://github.com/percolator/percolator/releases/download/rel-3-07/percolator-converters-v3-07-linux-amd64.deb
+	sha256sums = 68bfe68d64dc52dfdd88a19e513a0e5dfba2678c93e7fbd7022ab8f5252efb15
+	sha256sums = c7ed5a1d0e2c624a6c9d183535282e3c89f1826f84b61d0884180fb9cb14dd75
 
 pkgname = percolator
 	pkgdesc = Percolator and qvality, two post processors for shotgun proteomics data.
