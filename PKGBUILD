@@ -3,7 +3,7 @@
 # Maintainer: Patrick Münch <patrick@mondoo.com>
 #
 pkgname=cnspec
-orignalVersion="11.6.2"
+orignalVersion="11.6.3"
 pkgver="${orignalVersion/-/_}"
 pkgrel=1
 pkgdesc="Cloud-Native Security and Policy Framework "
@@ -14,7 +14,7 @@ source=("https://releases.mondoo.com/cnspec/${orignalVersion}/cnspec_${orignalVe
 arch=('x86_64')
 depends=('cnquery')
 
-sha256sums=('76b04423d92356430e23bef271ba4ee1b5fd8b51db3a8b1cc549a8a9de160024'
+sha256sums=('7d9f3c75843849f65372c72f95eacb9fb10a5b743779d59cfc21442afc60d9f8'
             )
 
 
