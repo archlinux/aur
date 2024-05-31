@@ -2,7 +2,7 @@
 
 pkgname=python-ink-extensions-git
 _gitpkgname=ink_extensions
-pkgver=r41.31fc720
+pkgver=r44.86d79e1
 pkgrel=1
 pkgdesc='Python dependencies for running Inkscape extensions outside of Inkscape'
 arch=('any')
@@ -23,12 +23,10 @@ options=('!debug' '!strip')
 
 source=(
   "${_gitpkgname}::git+https://github.com/evil-mad/ink_extensions.git"
-  'github-pr-17.patch'
 )
 
 sha512sums=(
   'SKIP'
-  '299a0094685db480a10decfd191d25edce557901b315c537266100aa37c3be1c58c3a6c6faa376946a986b3eba401c72b3714c725a2345433112755c45e652b0'
 )
 
 pkgver() {
@@ -42,11 +40,6 @@ prepare() {
 
   # https://github.com/pypa/setuptools/issues/1347
   git clean -dfx
-
-  # Fix test failures: `'called_once_with' is not a valid assertion`
-  # Remove this patch once upstream has merged PR #17.
-  # See also: https://github.com/evil-mad/ink_extensions/pull/17
-  patch -p1 < ../github-pr-17.patch
 }
 
 build() {
