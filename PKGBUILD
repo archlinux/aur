@@ -1,14 +1,14 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=apache-git
-pkgver=2.4.57.r11251.g14aa4f56d7
+pkgver=2.4.59.r11582.g84ecd2f2b9
 pkgrel=1
 pkgdesc="Provides useful functions commonly found on BSD systems"
 arch=('i686' 'x86_64')
 url="https://httpd.apache.org/"
-license=('Apache')
-depends=('glibc' 'apr-util' 'libnghttp2' 'openssl' 'pcre' 'zlib')
-makedepends=('git' 'brotli' 'curl' 'jansson' 'libxml2' 'lua')
+license=('Apache-2.0')
+depends=('glibc' 'apr-util' 'libnghttp2' 'openssl' 'pcre2' 'zlib')
+makedepends=('git' 'brotli' 'curl' 'db' 'jansson' 'libxml2' 'lua')
 optdepends=('brotli: for mod_brotli module'
             'curl: for mod_md module'
             'jansson: for mod_md module'
@@ -86,7 +86,7 @@ build() {
     --enable-proxy-http2 --enable-md --enable-brotli \
     --with-apr="/usr/bin/apr-1-config" \
     --with-apr-util="/usr/bin/apu-1-config" \
-    --with-pcre="/usr"
+    --with-pcre="/usr/bin"
   make
 }
 
