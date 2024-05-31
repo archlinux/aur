@@ -4,10 +4,10 @@
 pkgname=python-pysocks-git
 _projectname=pysocks
 pkgver=20190919
-pkgrel=2
+pkgrel=3
 pkgdesc='Routes sockets of any TCP service through a SOCKS4, SOCKS5 or HTTP proxy (Anorov fork of socksipy)'
 arch=('any')
-license=('BSD')
+license=('BSD-3-Clause')
 url='https://github.com/Anorov/PySocks'
 depends=('python')
 provides=('socksipy')
