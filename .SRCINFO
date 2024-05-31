@@ -1,7 +1,7 @@
 pkgbase = perl-git
 	pkgdesc = A highly capable, feature-rich programming language (Git)
-	pkgver = 5.32.0.RC1.r6.g2bb47a6fc2
-	pkgrel = 2
+	pkgver = 5.40.0.RC1.r10.g121cb45e8f
+	pkgrel = 1
 	url = https://www.perl.org
 	arch = x86_64
 	license = GPL
@@ -10,119 +10,120 @@ pkgbase = perl-git
 	depends = gdbm>=1.17
 	depends = db
 	depends = glibc
-	provides = perl-archive-tar=2.32
-	provides = perl-attribute-handlers=1.01
-	provides = perl-autodie=2.29
+	provides = perl-archive-tar=2.40
+	provides = perl-attribute-handlers=1.03
+	provides = perl-autodie=2.36
 	provides = perl-autoloader=5.74
 	provides = perl-autouse=1.11
 	provides = perl-base=2.27
-	provides = perl-bignum=0.51
-	provides = perl-carp=1.50
-	provides = perl-compress-raw-bzip2=2.089
-	provides = perl-compress-raw-zlib=2.084
-	provides = perl-config-perl-v=0.32
+	provides = perl-bignum=0.66
+	provides = perl-carp=1.54
+	provides = perl-compress-raw-bzip2=2.205
+	provides = perl-compress-raw-zlib=2.205
+	provides = perl-config-perl-v=0.36
 	provides = perl-constant=1.33
-	provides = perl-cpan-meta-requirements=2.140
+	provides = perl-cpan-meta-requirements=2.143
 	provides = perl-cpan-meta-yaml=0.018
 	provides = perl-cpan-meta=2.150010
-	provides = perl-cpan=2.22
-	provides = perl-data-dumper=2.174
-	provides = perl-db_file=1.843
-	provides = perl-devel-ppport=3.52
+	provides = perl-cpan=2.36
+	provides = perl-data-dumper=2.188
+	provides = perl-db_file=1.858
+	provides = perl-devel-ppport=3.71
 	provides = perl-devel-selfstubber=1.06
-	provides = perl-digest-md5=2.55
-	provides = perl-digest-sha=6.02
-	provides = perl-digest=1.17_01
-	provides = perl-dumpvalue=1.18
-	provides = perl-encode=3.01
-	provides = perl-encoding-warnings=0.13
-	provides = perl-env=1.04
-	provides = perl-experimental=0.020
-	provides = perl-exporter=5.73
-	provides = perl-extutils-cbuilder=0.280231
+	provides = perl-digest-md5=2.58_01
+	provides = perl-digest-sha=6.04
+	provides = perl-digest=1.20
+	provides = perl-dumpvalue=1.21
+	provides = perl-encode=3.19
+	provides = perl-encoding-warnings=0.14
+	provides = perl-env=1.06
+	provides = perl-experimental=0.031
+	provides = perl-exporter=5.77
+	provides = perl-extutils-cbuilder=0.280239
 	provides = perl-extutils-constant=0.25
-	provides = perl-extutils-install=2.14
-	provides = perl-extutils-makemaker=7.34
-	provides = perl-extutils-manifest=1.72
-	provides = perl-extutils-parsexs=3.40
-	provides = perl-file-fetch=0.56
-	provides = perl-file-path=2.16
-	provides = perl-file-temp=0.2309
-	provides = perl-filter-simple=0.95
-	provides = perl-filter-util-call=1.59
-	provides = perl-getopt-long=2.5
-	provides = perl-http-tiny=0.076
+	provides = perl-extutils-install=2.22
+	provides = perl-extutils-makemaker=7.70
+	provides = perl-extutils-manifest=1.75
+	provides = perl-extutils-parsexs=3.51
+	provides = perl-extutils-pl2bat=0.005
+	provides = perl-file-fetch=1.04
+	provides = perl-file-path=2.18
+	provides = perl-file-temp=0.2311
+	provides = perl-filter-simple=0.96
+	provides = perl-filter-util-call=1.64
+	provides = perl-findbin=1.53
+	provides = perl-getopt-long=2.54
+	provides = perl-http-tiny=0.086
 	provides = perl-i18n-collate=1.02
-	provides = perl-i18n-langtags=0.43
-	provides = perl-if=0.0608
-	provides = perl-io-compress=2.084
-	provides = perl-io-socket-ip=0.39
-	provides = perl-io-zlib=1.10
-	provides = perl-io=1.40
-	provides = perl-ipc-cmd=1.02
-	provides = perl-ipc-sysv=2.07
-	provides = perl-json-pp=4.02
+	provides = perl-i18n-langtags=0.45
+	provides = perl-if=0.0610
+	provides = perl-io-compress=2.205
+	provides = perl-io-socket-ip=0.41_01
+	provides = perl-io-zlib=1.14
+	provides = perl-io=1.52
+	provides = perl-ipc-cmd=1.04
+	provides = perl-ipc-sysv=2.09
+	provides = perl-json-pp=4.16
 	provides = perl-lib=0.65
-	provides = perl-libnet=3.11
+	provides = perl-libnet=3.15
 	provides = perl-locale-maketext-simple=0.21_01
-	provides = perl-locale-maketext=1.29
-	provides = perl-math-bigint-fastcalc=0.5008
-	provides = perl-math-bigint=1.999816
-	provides = perl-math-bigrat=0.2614
-	provides = perl-math-complex=1.5901
-	provides = perl-memoize=1.03_01
-	provides = perl-mime-base64=3.15
-	provides = perl-module-corelist=5.20200601_30
-	provides = perl-module-load-conditional=0.68
-	provides = perl-module-load=0.34
+	provides = perl-locale-maketext=1.33
+	provides = perl-math-bigint-fastcalc=0.5014
+	provides = perl-math-bigint=1.999839
+	provides = perl-math-bigrat=0.2624
+	provides = perl-math-complex=1.62
+	provides = perl-memoize=1.16
+	provides = perl-mime-base64=3.16_01
+	provides = perl-module-corelist=5.20230720
+	provides = perl-module-load-conditional=0.74
+	provides = perl-module-load=0.36
 	provides = perl-module-loaded=0.08
-	provides = perl-module-metadata=1.000036
-	provides = perl-net-ping=2.71
+	provides = perl-module-metadata=1.000038
+	provides = perl-net-ping=2.76
 	provides = perl-params-check=0.38
-	provides = perl-parent=0.237
-	provides = perl-pathtools=3.78
+	provides = perl-parent=0.241
+	provides = perl-pathtools=3.89
 	provides = perl-perl-ostype=1.010
-	provides = perl-perlfaq=5.20190126
-	provides = perl-perlio-via-quotedprint=0.08
-	provides = perl-pod-checker=1.73
+	provides = perl-perlfaq=5.20230701
+	provides = perl-perlio-via-quotedprint=0.10
+	provides = perl-pod-checker=1.75
 	provides = perl-pod-escapes=1.07
-	provides = perl-pod-parser=1.63
 	provides = perl-pod-perldoc=3.2801
-	provides = perl-pod-simple=3.35
-	provides = perl-pod-usage=1.69
-	provides = perl-podlators=5.006
-	provides = perl-safe=2.40
-	provides = perl-scalar-list-utils=1.50
+	provides = perl-pod-simple=3.43
+	provides = perl-pod-usage=2.03
+	provides = perl-podlators=5.010
+	provides = perl-safe=2.44
+	provides = perl-scalar-list-utils=1.63
 	provides = perl-search-dict=1.07
-	provides = perl-selfloader=1.25
-	provides = perl-socket=2.027
-	provides = perl-storable=3.15
-	provides = perl-sys-syslog=0.35
-	provides = perl-term-ansicolor=4.06
-	provides = perl-term-cap=1.17
+	provides = perl-selfloader=1.26
+	provides = perl-socket=2.037
+	provides = perl-storable=3.32
+	provides = perl-sys-syslog=0.36
+	provides = perl-term-ansicolor=5.01
+	provides = perl-term-cap=1.18
 	provides = perl-term-complete=1.403
 	provides = perl-term-readline=1.17
-	provides = perl-test-harness=3.42
-	provides = perl-test-simple=1.302162
+	provides = perl-test-harness=3.44
+	provides = perl-test-simple=1.302195
 	provides = perl-test=1.31
 	provides = perl-text-abbrev=1.02
-	provides = perl-text-balanced=2.03
-	provides = perl-text-parsewords=3.30
-	provides = perl-text-tabs=2013.0523
-	provides = perl-thread-queue=3.13
+	provides = perl-text-balanced=2.06
+	provides = perl-text-parsewords=3.31
+	provides = perl-text-tabs=2023.0511
+	provides = perl-thread-queue=3.14
 	provides = perl-thread-semaphore=2.13
-	provides = perl-threads-shared=1.60
-	provides = perl-threads=2.22
-	provides = perl-tie-file=1.02
-	provides = perl-tie-refhash=1.39
-	provides = perl-time-hires=1.9760
-	provides = perl-time-local=1.28
-	provides = perl-time-piece=1.33
-	provides = perl-unicode-collate=1.27
-	provides = perl-unicode-normalize=1.26
-	provides = perl-version=0.9924
-	provides = perl-xsloader=0.30
-	provides = perl
+	provides = perl-threads-shared=1.68
+	provides = perl-threads=2.37
+	provides = perl-tie-file=1.07
+	provides = perl-tie-refhash=1.40
+	provides = perl-time-hires=1.9776
+	provides = perl-time-local=1.35
+	provides = perl-time-piece=1.3401_01
+	provides = perl-unicode-collate=1.31
+	provides = perl-unicode-normalize=1.32
+	provides = perl-version=0.9929
+	provides = perl-xsloader=0.32
+	provides = perl=5.40.0.RC1.r10.g121cb45e8f
 	conflicts = perl
 	options = makeflags
 	options = !purge
@@ -141,4 +142,3 @@ pkgbase = perl-git
 	sha512sums = 063624b6fc3728339e4f352597e6913c476c4eaa8e1004b2a46c480b5cce9c42f3083d1e6960081202099acf2b7d0b5d13dc6b7ee0aa303c272826febdcd311e
 
 pkgname = perl-git
-
