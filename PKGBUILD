@@ -4,15 +4,15 @@
 
 pkgname=python-pyotherside-moment-git
 _pyname=pyotherside
-pkgver=1.6.0.r8.a63556f
+pkgver=1.6.1.r2.302c111
 pkgrel=1
 pkgdesc='Asynchronous Python 3 Bindings for Qt5 (patched for Moment)'
 arch=('x86_64')
 url='https://thp.io/2011/pyotherside'
 license=('ISC')
 depends=('python' 'qt5-base' 'qt5-declarative' 'qt5-svg')
-source=("git+https://github.com/thp/${_pyname}.git" "https://github.com/thp/pyotherside/pull/134.patch")
-sha256sums=('SKIP' "250d20abcdff417df0c76b8482269d546312930d48a0868f1cea30284e57b37b")
+source=("git+https://github.com/thp/${_pyname}.git")
+sha256sums=('SKIP')
 provides=(python-pyotherside)
 conflicts=(python-pyotherside)
 
@@ -21,12 +21,6 @@ pkgver() {
 	local tag=$(git tag --sort=-v:refname | grep -v packaging | head -1)
 	local commits_since=$(git rev-list $tag..HEAD --count)
 	echo "$tag.r$commits_since.$(git log --pretty=format:'%h' -n 1)"
-}
-
-prepare() {
-	cd "${srcdir}/${_pyname}"
-
-	patch -p1 <"${srcdir}/134.patch"
 }
 
 build() {

@@ -1,6 +1,6 @@
 pkgbase = python-pyotherside-moment-git
 	pkgdesc = Asynchronous Python 3 Bindings for Qt5 (patched for Moment)
-	pkgver = 1.6.0.r8.a63556f
+	pkgver = 1.6.1.r2.302c111
 	pkgrel = 1
 	url = https://thp.io/2011/pyotherside
 	arch = x86_64
@@ -12,8 +12,6 @@ pkgbase = python-pyotherside-moment-git
 	provides = python-pyotherside
 	conflicts = python-pyotherside
 	source = git+https://github.com/thp/pyotherside.git
-	source = https://github.com/thp/pyotherside/pull/134.patch
 	sha256sums = SKIP
-	sha256sums = 250d20abcdff417df0c76b8482269d546312930d48a0868f1cea30284e57b37b
 
 pkgname = python-pyotherside-moment-git
