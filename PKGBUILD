@@ -3,19 +3,19 @@
 # Commented out lines are problematic and will be addressed in a future PKGBUILD release.
 
 pkgname=kazakov_simple_components
-pkgver=4.66
+pkgver=4.68
 pkgrel=1
 pkgdesc="A set of low-level Ada components by Dmitri Kazakov."
-arch=('i686' 'x86_64')
-url="http://www.dmitry-kazakov.de/ada/components.htm"
-license=('GPL2+')
+arch=(i686 x86_64)
+url=http://www.dmitry-kazakov.de/ada/components.htm
+license=(GPL2+)
 
 depends=(unixodbc)
 makedepends=(gprbuild)
 
-source=(http://www.dmitry-kazakov.de/ada/components_4_66.tgz
+source=(http://www.dmitry-kazakov.de/ada/components_4_68.tgz
         LICENSE)
-sha256sums=(1657ab4d57ae7b11fd567c1a1fc95368f91eaaf94967718bf4be1d22233fe4d2
+sha256sums=(33a4c29f6203e2b6a03598626863d651164f4dd2be6be853424e96282a3e62f6
             3718d08bc7d42a49e6ce06d6d942f4e310e0db3c4336de1c9fd91dc6c3711615)
 
 
