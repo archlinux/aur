@@ -2,7 +2,7 @@
 
 pkgname=libadalang
 pkgdesc="A high performance semantic engine for the Ada programming language."
-pkgver=24.0w
+pkgver=25.0w
 pkgrel=1
 epoch=2
 
@@ -20,13 +20,13 @@ makedepends=(gprbuild
              python-docutils
              python-sphinx)
 
-source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/$pkgname-$pkgver-20230324-164A3-src.tar.gz)
-sha256sums=(87c64c60ee147a9ac27f997dcf071a7c143e85382202a18e5d8a0943fb87cc16)
+source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources-2024/$pkgname-$pkgver-20240411-16289-src.tar.gz)
+sha256sums=(8001e19340b0aedea84952d0e09f0c814ec39a7dde82cbf840d860221d3d7eb4)
 
 
 build()
 {
-  cd $srcdir/$pkgname-$pkgver-20230428-16114-src
+  cd $srcdir/$pkgname-$pkgver-20240506-162EA-src
 
   ADA_FLAGS="$CFLAGS"
   ADA_FLAGS="${ADA_FLAGS//-Wformat}"
@@ -47,7 +47,7 @@ build()
 
 package()
 {
-  cd $srcdir/$pkgname-$pkgver-20230428-16114-src
+  cd $srcdir/$pkgname-$pkgver-20240506-162EA-src
 
   python manage.py                                \
     install                                       \
