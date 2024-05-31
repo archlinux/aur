@@ -5,8 +5,8 @@
 pkgname='kanzi-git'
 _pkgname="${pkgname/-git}"
 pkgver=2.3.0.r13.g0335279c
-pkgrel=1
-pkgdesc='Modern, modular, portable and efficient lossless data compressor (built from latest commit)'
+pkgrel=2
+pkgdesc='Modern, modular, portable and efficient lossless data compressor and decompressor (built from latest commit)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/flanglet/kanzi-cpp'
 source=("$_pkgname::git+$url.git")
@@ -53,8 +53,10 @@ package() {
 
   install -vDm0755 -t "$pkgdir/usr/bin" \
     bin/kanzi
+
   install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
     README.md
+
   install -vDm0644 -t "$pkgdir/usr/share/man/man1/" \
     kanzi.1.gz
 }
