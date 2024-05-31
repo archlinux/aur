@@ -1,7 +1,7 @@
 # Maintainer: Malachi Soord <me@malachisoord.com>
 
 pkgname=monsoon
-pkgver=0.4.0
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="A fast HTTP enumerator that allows you to execute a large number of HTTP requests."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.zip::https://github.com/RedTeamPentesting/monsoon/archive/v$pkgver.zip")
-sha512sums=('5ad59f63db671c37657361e11aa37e29f19a9c61e15527c988b3a0fddfb6610f2b6f0244de606f9a2532e7d5cf2c4906467c94595a42b30ead0a4dcdadc72eef')
+sha512sums=('b96f62d4057a8d9e88163456bde0f0b498fe60097f363e962084a60b0ff7beccce10bb5fa9df117e9dc5c90aaeb048460cc899e82205c4c98640256ae830ebc6')
 
 build() {
     cd $pkgname-$pkgver
