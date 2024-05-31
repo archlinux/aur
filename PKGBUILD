@@ -13,7 +13,8 @@ license=(Apache)
 depends=(gnatcoll-iconv
          gnatcoll-gmp
          python
-         adasat)
+         adasat
+         prettier-ada)
 
 makedepends=(gprbuild
              texlive-bin
