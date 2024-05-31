@@ -3,7 +3,7 @@ pkgname=zxinfo-file-browser-bin
 pkgver=1.2.5
 _subver=final
 _electronversion=27
-pkgrel=3
+pkgrel=4
 pkgdesc="Organize and manage your emulator files for ZX Spectrum & ZX 81 - powered by the web"
 arch=('x86_64')
 url="https://github.com/thomasheckmann/zxinfo-file-browser"
@@ -23,11 +23,12 @@ source=(
 )
 sha256sums=('3bdb2b699ba17bab7ed4179ca2eee9d88e2796f527d88d0f3cd30ac8d858016a'
             '2042c6124204156b44ed7676a90f1e0bb9ddfee1f76d20f7b6f220a90398f74e'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
