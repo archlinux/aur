@@ -46,7 +46,6 @@ source=(
   git+https://github.com/KhronosGroup/SPIRV-Headers.git
   git+https://github.com/eggert/tz.git
   git+https://github.com/google/googletest.git
-  ffmpeg.h.patch
 )
 b2sums=('SKIP'
         'SKIP'
@@ -76,8 +75,7 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        'SKIP'
-        'e0d78b3d09dbc6b2eab91fcc65e322c28e4407c58f9f9e58108b0e7dfef799a6a5b7089a1576552efa882a94731babfbe8554e92046ca2960960901f7871bb1a')
+        'SKIP')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
