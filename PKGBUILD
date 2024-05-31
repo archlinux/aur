@@ -1,13 +1,13 @@
-# Maintainer: Deckweiss <Deckweiss75@gmail.com>
+# Maintainer: codepoet <githubaman@gmail.com>
 
 _name="arttime"
 pkgname="${_name}-git"
-pkgver=2.0.0.r454
-pkgrel=10
+pkgver=2.3.2.r501
+pkgrel=11
 pkgdesc="arttime is a clock, timer, time manager and text-art viewer for the terminal (https://github.com/poetaman/$_name/wiki)"
 arch=('any')
 url="https://github.com/poetaman/${_name}"
-license=('GPLv3')
+license=('ARTTIME')
 depends=(
     'zsh>=5.7'
 )
@@ -32,9 +32,13 @@ package() {
     find "./share/$_name/keypoems/" -type f -exec install -D -t "$pkgdir/usr/share/$_name/keypoems/" {} \;
     find "./share/$_name/src/" -type f -exec install -D -t "$pkgdir/usr/share/$_name/src/" {} \;
     find "./share/$_name/textart/" -type f -exec install -D -t "$pkgdir/usr/share/$_name/textart/" {} \;
+    find "./share/$_name/doc/" -type f -exec install -D -t "$pkgdir/usr/share/$_name/doc/" {} \;
 
     install -D -t "$pkgdir/usr/share/zsh/site-functions/" "./share/zsh/functions/_artprint"
     install -D -t "$pkgdir/usr/share/zsh/site-functions/" "./share/zsh/functions/_arttime"
+
+    install -D -t "$pkgdir/usr/share/man/man1/" "./share/man/man1/arttime.1.gz"
+    install -D -t "$pkgdir/usr/share/man/man1/" "./share/man/man1/artprint.1.gz"
 
     install -Dm644 LICENSE_CODE "$pkgdir/usr/share/licenses/$_name/LICENSE_CODE"
     install -Dm644 LICENSE_ART "$pkgdir/usr/share/licenses/$_name/LICENSE_ART"

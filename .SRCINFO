@@ -1,10 +1,10 @@
 pkgbase = arttime-git
 	pkgdesc = arttime is a clock, timer, time manager and text-art viewer for the terminal (https://github.com/poetaman/arttime/wiki)
-	pkgver = 2.0.0.r454
-	pkgrel = 10
+	pkgver = 2.3.2.r501
+	pkgrel = 11
 	url = https://github.com/poetaman/arttime
 	arch = any
-	license = GPLv3
+	license = ARTTIME
 	depends = zsh>=5.7
 	optdepends = libnotify: for desktop notifications
 	optdepends = diffutils: for systems where /etc/localtime is not a symlink and arttime needs to guess the timezone
