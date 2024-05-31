@@ -1,7 +1,7 @@
 # Maintainer: t4k1t <t4k1t plus aur at protonmail dot com>
 
 pkgname=graveyard
-pkgver=1.1.4
+pkgver=1.1.5
 pkgrel=1
 pkgdesc="Dead simple encryption inspired by tomb"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -10,7 +10,7 @@ license=('Apache')
 depends=()
 makedepends=('git' 'go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/BetaPictoris/graveyard/archive/${pkgver}.tar.gz")
-b2sums=('dfcef7b468a24097128513c802cee90641e70881e8995cbc55a656c09f103a0f93aa448c3432c7e7c3982b7843a314d57e01150b04bb4f8109f53c818efdeab3')
+b2sums=('e6634aa045e7869a235556f95e7f730aa20ec9de4359eed9ac7b9ff27877a2dde5af1626803fc5fc66d9b6b0d36120c3795600ad817b6de9ed8489863667ac07')
 
 
 prepare() {
