@@ -1,10 +1,10 @@
 pkgbase = python-ytdl-sub
 	pkgdesc = Automate downloading and metadata generation with yt-dlp (includes bin script)
 	pkgver = 2024.05.29
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jmbannon/ytdl-sub
 	arch = any
-	license = MIT
+	license = GPL-3.0
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel

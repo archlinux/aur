@@ -2,11 +2,11 @@
 
 pkgname=python-ytdl-sub
 pkgver=2024.05.29
-pkgrel=1
+pkgrel=2
 pkgdesc="Automate downloading and metadata generation with yt-dlp (includes bin script)"
 arch=('any')
 url="https://github.com/jmbannon/ytdl-sub"
-license=('MIT')
+license=('GPL-3.0')
 depends=('yt-dlp')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jmbannon/ytdl-sub/archive/$pkgver.tar.gz")
