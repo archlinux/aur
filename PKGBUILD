@@ -12,15 +12,14 @@ options=('!libtool')
 source=('https://download3.ebz.epson.net/dsc/f/03/00/15/87/54/cfbbdc56430c527dc096c9853f6bbc724c196b87/epson-inkjet-printer-escpr2-1.2.10-1.tar.gz'
         'bug_x86_64.patch')
 sha256sums=('3c1b7c796143ac6ba966d0cd43ed79d3501c84d58419f78fef239f927a9a2fa5'
-            'ae480931863a195fb924fc5e5ea00478b3faa6cfb1507919d462f122be7d7084')
+            '1baff7a23db91544fec6ff5a27ba8fe4f05958b7f2f95f0c087518b9c0e1b733')
 
 prepare() {
   tar xvf "$pkgname-$pkgver-$pkgrel.tar.gz"
 
   cd "$pkgname-$pkgver"
 
-  # patch removed for 1.2.10 because it fails (it did work for 1.2.9):
-  # patch -p1 -i "${srcdir}/bug_x86_64.patch"
+  patch -p1 -i "${srcdir}/bug_x86_64.patch"
 }
 
 build() {
