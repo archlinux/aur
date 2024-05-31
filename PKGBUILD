@@ -3,7 +3,7 @@
 # Contributor: witchymary
 
 pkgname=aegisub-arch1t3cht-git
-pkgver=3.2.2.r1147.a455e07f1
+pkgver=3.2.2.r1181.80491bacb
 pkgrel=1
 pkgdesc="A general-purpose subtitle editor with ASS/SSA support (arch1t3cht fork)"
 arch=('x86_64')
@@ -37,9 +37,9 @@ optdepends=('vapoursynth: VapourSynth source support'
             'vapoursynth-plugin-wwxd: VapourSynth plugin for keyframe generation'
             'vapoursynth-plugin-scxvid: VapourSynth plugin for keyframe generation')
 source=("${pkgname}::git+https://github.com/arch1t3cht/Aegisub.git#branch=feature"
-        "${pkgname}-ffms2::git+https://github.com/arch1t3cht/ffms2.git"
-        "${pkgname}-bestsource::git+https://github.com/vapoursynth/bestsource.git#commit=9d7e218588867bf2b1334e5382b0f4d1b6a45aa1"
-        "${pkgname}-libp2p::git+https://github.com/sekrit-twc/libp2p#commit=5e65679ae54d0f9fa412ab36289eb2255e341625"
+        "${pkgname}-ffms2::git+https://github.com/FFMS/ffms2.git"
+        "${pkgname}-bestsource::git+https://github.com/vapoursynth/bestsource.git#tag=R4"
+        "${pkgname}-libp2p::git+https://bitbucket.org/the-sekrit-twc/libp2p.git#commit=1e3818bd7277165819f659d410873fe5dab37af6"
         "${pkgname}-avisynth::git+https://github.com/AviSynth/AviSynthPlus.git#tag=v3.7.2"
         "${pkgname}-vapoursynth::git+https://github.com/vapoursynth/vapoursynth.git#tag=R59"
         "${pkgname}-luajit::git+https://github.com/LuaJIT/LuaJIT.git#branch=v2.1"
@@ -78,7 +78,6 @@ prepare() {
 
     # Initialize subproject wraps for bestsource
     ln -s ../../"${pkgname}-bestsource" subprojects/bestsource
-    patch --directory=subprojects/bestsource --forward --strip=1 < subprojects/packagefiles/bestsource/0001.patch
 
     # Initialize subproject wraps for bestsource/libp2p
     rm -r subprojects/bestsource/libp2p
