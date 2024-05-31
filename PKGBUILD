@@ -4,7 +4,7 @@
 
 pkgname=tidy-html5-git
 pkgver=latest
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to tidy down your HTML5 code to a clean style"
 url="https://www.html-tidy.org/"
 license=('custom')
