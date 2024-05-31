@@ -2,7 +2,7 @@
 
 pkgname=gprbuild-toolbox
 pkgdesc='Meta builder toolbox for multi-language systems.'
-pkgver=24.0w
+pkgver=25.0w
 pkgrel=1
 
 arch=(any)
