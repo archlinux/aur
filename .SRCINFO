@@ -1,6 +1,6 @@
 pkgbase = imfile-git
 	pkgdesc = A full-featured download manager.Forked from motrix.
-	pkgver = 1.0.8.r49.g4a358e7
+	pkgver = 1.1.0.r10.g9db5d5a
 	pkgrel = 1
 	url = https://imfile.io/
 	arch = aarch64
@@ -8,14 +8,14 @@ pkgbase = imfile-git
 	arch = x86_64
 	license = MIT
 	makedepends = npm
-	makedepends = pnpm
+	makedepends = git
 	makedepends = git
 	makedepends = nvm
 	makedepends = gendesk
 	makedepends = curl
 	depends = electron30
 	provides = motrix
-	provides = imfile=1.0.8
+	provides = imfile=1.1.0
 	conflicts = imfile
 	conflicts = motrix
 	source = imfile.git::git+https://github.com/imfile-io/imfile-desktop.git
