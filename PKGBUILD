@@ -41,5 +41,5 @@ check(){
 package() {
   cd $srcdir/$pkgname
   install -Dm755 -t "$pkgdir/usr/bin" "target/release/${pkgname%-git}"
-  install -Dm755 debian/${pkgname%-git}.service $pkgdir/usr/lib/systemd/${pkgname%-git}.service
+  install -Dm755 debian/${pkgname%-git}.service $pkgdir/usr/lib/systemd/system/${pkgname%-git}.service
 }
