@@ -11,7 +11,7 @@ license=('GPL-3.0-or-later')
 depends=()
 makedepends=('git' 'go' 'goreleaser' 'delve' 'openssl')
 _pkgsrc="$_pkgname"
-source=("$_pkgsrc::git+https://github.com/rusq/wipemychat.git")
+source=("$_pkgsrc::git+${url}.git")
 provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=("$_pkgname")
 sha256sums=('SKIP')
@@ -24,7 +24,7 @@ pkgver() {
 build() {
   cd "$srcdir/$_pkgsrc"
   export CGO_LDFLAGS="-L/usr/local/opt/openssl/lib"
-  make -j$(nproc)
+  make
 }
 
 package() {
