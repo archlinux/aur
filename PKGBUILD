@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=turtle-git
 _app_id="de.philippun1.${pkgname%-git}"
-pkgver=0.8.r0.g9f8a7a3
+pkgver=0.9.r0.gd542f7f
 pkgrel=1
 pkgdesc="Manage your git repositories with easy-to-use dialogs in Nautilus."
 arch=('any')
@@ -56,7 +56,9 @@ package() {
   cd "$srcdir/${pkgname%-git}"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm755 "${pkgname%-git}_cli" -t "$pkgdir/usr/bin/"
+  install -Dm755 "${pkgname%-git}"{_cli,_service} -t "$pkgdir/usr/bin/"
+  install -Dm644 data/completions/turtle_cli -t \
+    "$pkgdir/usr/share/bash-completion/completions/"
   install -Dm644 "data/icons/hicolor/scalable/apps/${_app_id}.svg" -t \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
   install -Dm644 "data/icons/hicolor/symbolic/apps/${_app_id}-symbolic.svg" -t \
@@ -64,6 +66,7 @@ package() {
   install -Dm644 "data/${_app_id}.desktop" -t "$pkgdir/usr/share/applications/"
   install -Dm644 "data/${_app_id}.gschema.xml" -t "$pkgdir/usr/share/glib-2.0/schemas/"
   install -Dm644 "data/${_app_id}.metainfo.xml" -t "$pkgdir/usr/share/metainfo/"
+  install -Dm644 "data/${_app_id}.service" -t "$pkgdir/usr/share/dbus-1/services/"
   install -Dm644 "plugins/${pkgname%-git}"{_nautilus.py,_nautilus_compare.py} -t \
     "$pkgdir/usr/share/nautilus-python/extensions/"
   install -Dm644 "plugins/${pkgname%-git}_thunar.py" -t \
@@ -72,6 +75,4 @@ package() {
     "$pkgdir/usr/share/nemo-python/extensions/"
   install -Dm644 "plugins/${pkgname%-git}_caja.py" -t \
     "$pkgdir/usr/share/caja-python/extensions/"
-  install -Dm644 data/completions/turtle_cli -t \
-    "$pkgdir/usr/share/bash-completion/completions/"
 }
