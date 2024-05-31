@@ -1,5 +1,7 @@
-調整以下字形：㟢氹𠱁。
-MN 版調整以下字形：噸。
-上一版更新日誌：
-    新增 425 字，[詳情按此查看](https://github.com/lxgw/LxgwXiHei/blob/main/documentation/changelog/20240524.md)。
-    CL 版調整「綌」的寫法。
+v0.311.3:
+MN 版調整「薩」。
+CL 版無變化。
+
+v0.311.2:
+MN 版調整「函」部件：函涵崡菡。
+CL 版無變化。
