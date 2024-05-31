@@ -4,12 +4,13 @@
 pkgname=(backintime backintime-cli)
 _pkgname="backintime"
 pkgver=1.4.3
-pkgrel=2
+pkgrel=3
 arch=(any)
 url="https://github.com/bit-team/backintime"
 license=(GPL)
 makedepends=(python)
 checkdepends=(openssh python-dbus rsync systemd python-pyfakefs oxygen-icons python-pylint)
+install=backintime.install
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/bit-team/$_pkgname/archive/refs/tags/v$pkgver.tar.gz"
 fix.patch)
 sha256sums=('89a1d9f1b766025d0219b7978e77ee91a5e25ef99ade164c1d8b5a9a3d273e65'
