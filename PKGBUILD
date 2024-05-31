@@ -3,7 +3,7 @@
 
 _pkgname=electrum
 pkgname="${_pkgname}"-appimage
-pkgver=4.5.4
+pkgver=4.5.5
 pkgrel=1
 pkgdesc="Electrum Bitcoin wallet with bundled libraries"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=("https://download.electrum.org/${pkgver}/${_appimage}"
         "${_pkgname}-${pkgver}-LICENCE::https://raw.githubusercontent.com/spesmilo/${_pkgname}/${pkgver}/LICENCE"
         )
 
-b2sums=('babdbf6fb83513e279d9144edce09f2ff15b6cf09304dfb35d08d78f8b20c5992642748d3ac5f4fdece581bb57a7b90a06ad80d7777ac73db435ef0b1b2fd31b'
+b2sums=('381cb262344f539b9baca8a7418ecd6f1c16c43f1440363422077ebd73c0e042374307289dae136796b7b922ee8e0de735ba5c3057a6a9fae9e1cda4a5b169ba'
         'SKIP' 
         '8e30e92bffb9b3c518bb106c23cbab40ceb9a1dace193bdbd7e979fa8116e76b47dfc99c5361020c58a7d0bb7de236e6dd7d8f3dfdb1b7fd16245135d53cec3f')
 
