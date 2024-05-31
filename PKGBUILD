@@ -3,7 +3,7 @@
 
 pkgname=libadalang-tools
 pkgdesc='Libadalang-based tools for Ada: gnatpp, gnatmetric and gnatstub.'
-pkgver=24.0w
+pkgver=25.0w
 pkgrel=1
 epoch=1
 
@@ -14,13 +14,13 @@ license=(GPL3)
 depends=(libadalang templates_parser libvss)
 makedepends=(gprbuild gpr which)
 
-source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/$pkgname-$pkgver-20230324-166A6-src.tar.gz)
-sha256sums=(13837105dcb3e474ff96bcb530590e7404b87948c98ea33e05fa5a505eff76a5)
+source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources-2024/$pkgname-$pkgver-20240408-1625A-src.tar.gz)
+sha256sums=(931f5bfef6abf00117d44a176601176dffbf6f5903087e7c62badb4f98c3b08b)
 
 
 build()
 {
-  cd $srcdir/$pkgname-$pkgver-20230428-1627A-src
+  cd $srcdir/$pkgname-$pkgver-20240505-16471-src
 
    export BUILD_MODE=prod
    make lib
@@ -32,7 +32,7 @@ build()
 
 package()
 {
-   cd $srcdir/$pkgname-$pkgver-20230428-1627A-src
+   cd $srcdir/$pkgname-$pkgver-20240505-16471-src
 
    export DESTDIR=$pkgdir/usr
    export BUILD_MODE=prod

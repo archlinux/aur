@@ -1,6 +1,6 @@
 pkgbase = libadalang-tools
 	pkgdesc = Libadalang-based tools for Ada: gnatpp, gnatmetric and gnatstub.
-	pkgver = 24.0w
+	pkgver = 25.0w
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/AdaCore/libadalang-tools
@@ -13,7 +13,7 @@ pkgbase = libadalang-tools
 	depends = libadalang
 	depends = templates_parser
 	depends = libvss
-	source = https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/libadalang-tools-24.0w-20230324-166A6-src.tar.gz
-	sha256sums = 13837105dcb3e474ff96bcb530590e7404b87948c98ea33e05fa5a505eff76a5
+	source = https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources-2024/libadalang-tools-25.0w-20240408-1625A-src.tar.gz
+	sha256sums = 931f5bfef6abf00117d44a176601176dffbf6f5903087e7c62badb4f98c3b08b
 
 pkgname = libadalang-tools
