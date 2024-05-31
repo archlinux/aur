@@ -2,7 +2,7 @@
 
 _pkgname=rasdaemon
 pkgname=${_pkgname}-git
-pkgver=0.6.8.46.ga247baf
+pkgver=0.8.0.r49.gf9cb13b
 pkgrel=1
 pkgdesc="A RAS (Reliability, Availability and Serviceability) logging tool using the EDAC tracing events"
 arch=('x86_64' 'i686')
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  git describe --always | sed 's/^v//;s/-/./g'
+  git describe --long --tags | sed 's|^v||;s|-|.r|;s|-|.|'
 }
 
 prepare() {
