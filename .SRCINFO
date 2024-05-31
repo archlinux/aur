@@ -1,6 +1,6 @@
 pkgbase = surrealist-bin
 	pkgdesc = Surrealist is the ultimate way to visually manage your SurrealDB database
-	pkgver = 2.0.6
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://surrealdb.com/docs/surrealist
 	arch = x86_64
@@ -10,6 +10,6 @@ pkgbase = surrealist-bin
 	provides = surrealist
 	conflicts = surrealist
 	source = https://github.com/surrealdb/surrealist/releases/download/surrealist-v2.0.6/surrealist_2.0.6_amd64.deb
-	md5sums = SKIP
+	source = https://github.com/surrealdb/surrealist/releases/download/surrealist-v2.1.0/surrealist_2.1.0_amd64.deb
 
 pkgname = surrealist-bin
