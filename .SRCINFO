@@ -1,7 +1,7 @@
 pkgbase = kadu-git
 	pkgdesc = Qt-based Jabber/XMPP and Gadu-Gadu client
 	pkgver = 20240330
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/piotr-wrobel/kadu
 	arch = i686
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = kadu-git
 	provides = kadu
 	conflicts = kadu
 	options = !emptydirs
-	source = kadu-git::git+https://github.com/piotr-wrobel/kadu.git#commit=f9499d1
+	source = kadu-git::git+https://github.com/piotr-wrobel/kadu.git#commit=7338f16
 	sha256sums = SKIP
 
 pkgname = kadu-git
