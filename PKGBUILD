@@ -1,7 +1,7 @@
 # Maintainer: Jeremy Cantrell <jmcantrell at gmail dot com>
 
 pkgname=swaystatus-git
-pkgver=0.4.3.r1.b9e37eb
+pkgver=0.4.3.r5.a6f3c7e
 pkgrel=1
 pkgdesc="Generate a status line for swaybar"
 arch=('any')
@@ -24,6 +24,10 @@ pkgver() {
 check() {
     cd "$srcdir/${pkgname%-git}"
     PYTHONPATH=$PWD/src pytest --no-cov
+}
+
+prepare() {
+    git -C "$srcdir/$pkgname" clean -dfx
 }
 
 build() {
