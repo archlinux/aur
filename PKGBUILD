@@ -2,7 +2,7 @@
 
 pkgname=markdown
 pkgdesc='A markdown parser for Ada.'
-pkgver=24.0w
+pkgver=25.0w
 pkgrel=1
 
 url=https://github.com/AdaCore/markdown
@@ -12,20 +12,20 @@ license=(Apache)
 depends=(libvss)
 makedepends=(gprbuild-toolbox)
 
-source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/$pkgname-$pkgver-20230428-162F9-src.tar.gz)
-sha256sums=(6fc302143b73086f98a8a75853eb556b1736b4e18345637e463b90ad736aa523)
+source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources-2024/$pkgname-$pkgver-20240505-16475-src.tar.gz)
+sha256sums=(1b3799eecd41f5e0777110cdbc0fe5a523712f975e8217dd7b8c75b42f48ebf4)
 
 
 build()
 {
-    cd $srcdir/$pkgname-$pkgver-20230428-162F9-src
-    BUILD_MODE=prod make
+    cd $srcdir/$pkgname-$pkgver-20240505-16475-src
+    BUILD_MODE=prod make all
 }
 
 
 package()
 {
-    cd $srcdir/$pkgname-$pkgver-20230428-162F9-src
+    cd $srcdir/$pkgname-$pkgver-20240505-16475-src
 
     make BUILD_MODE=prod \
          DESTDIR=$pkgdir \
@@ -36,8 +36,4 @@ package()
     install -D -m644     \
        LICENSE.txt       \
        $pkgdir/usr/share/licenses/$pkgname/LICENSE
-
-    install -D -m644     \
-       COPYING3          \
-       $pkgdir/usr/share/licenses/$pkgname/COPYING3
 }
