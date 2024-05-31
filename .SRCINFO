@@ -1,0 +1,16 @@
+pkgbase = openscad-thumbnailers
+	pkgdesc = GTK thumbnailers for .scad and .stl files
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/georgewoodall82/openscad-thumbnailers
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	depends = openscad
+	depends = imagemagick
+	depends = xorg-server-xvfb
+	provides = stl-thumb
+	source = openscad-thumbnailers-1.0.1::git+https://github.com/georgewoodall82/openscad-thumbnailers.git
+	sha256sums = SKIP
+
+pkgname = openscad-thumbnailers
