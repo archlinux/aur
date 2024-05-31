@@ -1,6 +1,6 @@
 pkgbase = i3pystatus-git
 	pkgdesc = i3status replacement written in python for the i3 window manager
-	pkgver = 3.35.r403.g28ed5c1
+	pkgver = 3.35.r405.g5cbb062
 	pkgrel = 1
 	url = https://github.com/enkore/i3pystatus
 	arch = any
@@ -23,8 +23,6 @@ pkgbase = i3pystatus-git
 	provides = i3pystatus
 	conflicts = i3pystatus
 	source = i3pystatus-git::git+https://github.com/enkore/i3pystatus
-	source = python-3.12.patch::https://github.com/enkore/i3pystatus/pull/865.patch
 	md5sums = SKIP
-	md5sums = 7cb22a0fbdb4cc050d5ccc8d2e64541e
 
 pkgname = i3pystatus-git
