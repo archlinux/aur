@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=redisinsight-git
 _pkgname="Redis Insight"
-pkgver=2.48.0.r128.g0fb86744d
+pkgver=2.50.0.r0.g0870f8d
 _electronversion=25
 _nodeversion=18
 pkgrel=1
@@ -24,15 +24,19 @@ makedepends=(
     'git'
     'nvm'
     'gendesk'
-    'base-devel'
     'gcc'
+    'cmake'
     'python'
+    'curl'
+    'asar'
 )
-source=("${pkgname//-/.}::git+${_ghurl}.git")
+source=(
+    "${pkgname//-/.}::git+${_ghurl}.git"
+)
 sha256sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
-    git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
 }
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -42,30 +46,32 @@ _ensure_local_nvm() {
 }
 build() {
     _ensure_local_nvm
-    gendesk -q -f -n --categories="Development" --name="${_pkgname}" --exec="${pkgname%-git} %U"
+    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname%-git} --no-sandbox %U"
     cd "${srcdir}/${pkgname//-/.}"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-    export ELECTRONVERSION="${_electronversion}"
-    export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
+    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
+    #export ELECTRONVERSION="${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
     touch "${srcdir}/.electron-gyp/.yarnrc"
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
         export npm_config_registry=https://registry.npmmirror.com
+        export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
         export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
         export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
     else
         echo "Your network is OK."
     fi
     sed "s|--linux -p never|--l --dir -p never|g" -i package.json
-    yarn --cwd "${pkgname%-git}"/api/ install --ignore-optional --cache-folder "${srcdir}/.yarn_cache"
-    yarn --cwd "${pkgname%-git}"/ install --ignore-optional --cache-folder "${srcdir}/.yarn_cache"
     yarn install --cache-folder "${srcdir}/.yarn_cache"
+    yarn --cwd "${pkgname%-git}"/api/
     yarn run build:statics
     yarn run package:linux
+    asar e release/linux-*/resources/app.asar "${srcdir}/app.asar.unpacked"
+    sed "s|process.resourcesPath|\"\/usr\/lib\/${pkgname%-git}\"|g" -i "${srcdir}/app.asar.unpacked/dist/main/main.js"
+    asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{opt/"${pkgname%-git}",usr/bin}
