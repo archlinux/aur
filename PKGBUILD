@@ -9,13 +9,13 @@ url="https://github.com/rusq/wipemychat"
 license=('GPL-3.0-or-later')
 depends=()
 makedepends=('go' 'goreleaser' 'delve' 'openssl')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rusq/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('e8ac2bd483fc212a951474e6da46216136486c8fe6d8bb1cb7c237ea69502a3c')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   export CGO_LDFLAGS="-L/usr/local/opt/openssl/lib"
-  make -j$(nproc)
+  make
 }
 
 package() {
