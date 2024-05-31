@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=spData
-_pkgver=2.3.0
+_pkgver=2.3.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Datasets for Spatial Analysis"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -19,8 +19,8 @@ optdepends=(
   r-spdep
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('41aae4a68e1e038d28ff80af8388ee8f')
-b2sums=('69677c220d1af9dc1c5f61228c6d132774f3567a0c979c89d97bf4b733fe8e3b78fb81665b53283cfa1caefda23f1c5e55e07cd6405e4b1b58898ead38ebcc44')
+md5sums=('6cb99dc39a5ef8943f59577bd7cb69c8')
+b2sums=('e5b3e59b7bd8a58bbf91bc1a28a1d6a78cdbf7872718f553c8f15e7a38aeebf10068d46b51fb4921f8ec84e127a3c04f3c94d15346c7616e4692ea87845aa517')
 
 build() {
   mkdir build
