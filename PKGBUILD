@@ -8,12 +8,13 @@ _tinydir_commit=64fb1d4376d7580aa1013fdbacddbbeba67bb085
 
 pkgname=openfx-arena
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc="Extra OpenFX plugins for Natron"
 url="https://github.com/NatronGitHub/openfx-arena"
-license=('GPL')
-depends=('libcdr' 'libmagick' 'librsvg' 'libxt' 'libzip' 'opencolorio' 'poppler-glib' 'sox')
+license=('GPL-2.0-or-later')
+depends=('libcdr' 'libmagick' 'librsvg' 'libxt' 'libzip' 'ocl-icd' \
+         'opencolorio' 'poppler-glib' 'sox')
 makedepends=('jbigkit' 'openmp' 'pango')
 
 _natron_ver="Natron-${pkgver}"
@@ -27,13 +28,13 @@ source=("${_pkgname}.tar.gz::${url}/archive/refs/tags/${_natron_ver}.tar.gz"
         "lodepng-${_lodepng_commit}.tar.gz::https://github.com/lvandeve/lodepng/archive/${_lodepng_commit}.tar.gz"
         "SequenceParsing-${_SequenceParsing_commit}.tar.gz::${_url}/SequenceParsing/archive/${_SequenceParsing_commit}.tar.gz"
         "tinydir-${_tinydir_commit}.tar.gz::${_url}/tinydir/archive/${_tinydir_commit}.tar.gz")
-sha512sums=('1e30da50daa40a779325dff2d0f37d27fbbb97c2906fb4fa74be68c57208c4de5097b7d6ffa66deed902fbac8511075c1440aa670e9908529e10af78a684ba59'
-            '174b75061ac2bb887f2e10df1ec899276e8e27f1873d2dda2ef07ee3fb53f54169fe37d9921642248e28faa974a50a62e5e8ab20ccdd09c96a235084ae16d87d'
-            '610e27f056743961c7b3cfbf217e4474ee047e8b70e77eec4b23fb1ad647860b1cbb184c9439d9ca6bf8bcef5fa1248998f98e5da263ec15c070ff7e9264be24'
-            'd0ff47d51176defa8ea09c84b3f5c82e899455e5a3375c32fcf4d6ec24d96f3c2882cff759cd6a3a79be3004d2244092c16cfeb5313660dcab8fc17135435968'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+b2sums=('8e24dd50a85b880d0403fd0099bc4ece3dd3af3e6af10a4696506c31063b55bc32ecce4c9602fae6a690255c4c5333937b1e3ea8bf400f0bdedab6c9ed626837'
+        'b5bda788e381d8bfc585a16817ab207152327638290099b54565306e1f6165eb36f7b34ed57732ca53b75d34c6abfc30b7e6f73548820e0f214b4be99db84420'
+        'ccd145aabb554e4a3665d3da11dc7660cdf8a4907a6fe6a5a72895a6ecec4096a7ee8bf79d917233e1bd355b82fca6f0d52cef179a3bd3ffcf4e73ab0eeb4d10'
+        '26c63f91c778bb3e79e3ef8b0e7a0416881315a8c60e03e9bb7bf13e87115ad3b9b39ff9d249f2cc4e89f4a759fa18fe81448ebd5bb68f0af0be3d251a4c3240'
+        'SKIP'
+        'SKIP'
+        'SKIP')
 
 prepare() {
   tar -xzf "lodepng-${_lodepng_commit}.tar.gz" --strip 1 \
@@ -54,6 +55,10 @@ prepare() {
       -C   "${_pkgname}/OpenFX-IO/IOSupport/SequenceParsing/"
   tar -xzf "tinydir-${_tinydir_commit}.tar.gz" --strip 1 \
       -C   "${_pkgname}/OpenFX-IO/IOSupport/SequenceParsing/tinydir"
+
+  # Fix issue during compilation of ReadPDF module
+  sed '/POPPLER_CXXFLAGS/ s/$/ -std=c++20/' \
+   -i "${srcdir}/${_pkgname}/Makefile.master"
 }
 
 build() {
