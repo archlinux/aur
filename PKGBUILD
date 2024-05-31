@@ -57,8 +57,9 @@ _srcenv() {
 	cd "$_archive"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	export CFLAGS+=' -ffat-lto-objects'
-	export CXXFLAGS+=' -ffat-lto-objects'
+	CFLAGS+=' -ffat-lto-objects'
+	CXXFLAGS+=' -ffat-lto-objects'
+	RUSTFLAGS+=" --remap-path-prefix $PWD=/"
 }
 
 build() {
