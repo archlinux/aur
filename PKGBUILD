@@ -27,7 +27,7 @@ check() {
 }
 
 prepare() {
-    git -C "$srcdir/$pkgname" clean -dfx
+    git -C "$srcdir/${pkgname%-git}" clean -dfx
 }
 
 build() {
