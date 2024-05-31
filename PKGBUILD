@@ -2,9 +2,9 @@
 
 _org='stack-of-tasks'
 _pkgname='pinocchio'
-_pkgver=2.7.0
+_pkgver=3.0.0
 pkgname="$_pkgname-git"
-pkgver=2.7.0.r6529.877099d
+pkgver=3.0.0.r8685.9c107bb
 pkgrel=1
 pkgdesc="Dynamic computations using Spatial Algebra"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ optdepends=('lua52' 'cppad' 'cppadcodegen')
 makedepends=('cmake' 'boost' 'doxygen' 'git')
 conflicts=('pinocchio')
 provides=('pinocchio')
-source=("$_pkgname"::"git+https://github.com/$_org/$_pkgname.git")
+source=("$_pkgname"::"git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -32,8 +32,8 @@ build() {
         -DBUILD_WITH_COLLISION_SUPPORT=ON \
         -DBUILD_UTILS=ON \
         -DPYTHON_EXECUTABLE=/usr/bin/python \
-        -DBUILD_WITH_AUTODIFF_SUPPORT="$(pacman -Qs cppad > /dev/null && echo -n ON || echo -n OFF)" \
-        -DBUILD_WITH_CODEGEN_SUPPORT="$(pacman -Qs cppadcodegen > /dev/null && echo -n ON || echo -n OFF)" \
+        -DBUILD_WITH_AUTODIFF_SUPPORT=OFF \
+        -DBUILD_WITH_CODEGEN_SUPPORT=OFF \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DGENERATE_PYTHON_STUBS=ON \
@@ -42,6 +42,7 @@ build() {
 }
 
 check() {
+    export DEBUGINFOD_URLS=https://debuginfod.archlinux.org
     cmake --build build -t test
 }
 
