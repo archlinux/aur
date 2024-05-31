@@ -2,7 +2,7 @@
 
 _pkgname=featherpad
 pkgname=$_pkgname-git
-pkgver=1.2.0.2.g352c6aa
+pkgver=1.5.1.r6.gd72f662b
 pkgrel=1
 pkgdesc='Lightweight Qt5 plain text editor for Linux'
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ sha256sums=("SKIP")
 
 pkgver() {
   cd $_pkgname
-  git describe --always | sed "s:^V::;s:-:.:g"
+  git describe --always | sed "s:^V::;s:-:.r:;s:-:.:"
 }
 
 build() {
