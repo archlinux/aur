@@ -1,0 +1,21 @@
+--- Makefile	2023-09-12 00:03:24.000000000 +1000
++++ Makefile-new	2024-05-24 17:22:14.771601615 +1000
+@@ -272,8 +272,16 @@
+ 
+ install-libs-%:
+ 	$(GPRINSTALL) $(GPROPTS) $(GPRINST_OPTS) \
+-		-XLIBRARY_TYPE=$* -XXMLADA_BUILD=$* \
+-		--build-name=$* aws.gpr
++		-XLIBRARY_TYPE=static -XXMLADA_BUILD=static \
++		--build-name=static aws.gpr
++
++	$(GPRINSTALL) $(GPROPTS) $(GPRINST_OPTS) \
++		-XLIBRARY_TYPE=static-pic -XXMLADA_BUILD=static-pic \
++		--build-name=static-pic aws.gpr
++
++	$(GPRINSTALL) $(GPROPTS) $(GPRINST_OPTS) \
++		-XLIBRARY_TYPE=relocatable -XXMLADA_BUILD=relocatable \
++		--build-name=relocatable aws.gpr
+ 
+ install-lib-native: ${LIBAWS_TYPES:%=install-libs-%}
+ 
