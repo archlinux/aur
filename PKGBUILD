@@ -54,7 +54,7 @@ build() {
     )
 
     cmake "${_cmake_options[@]}"
-    make -j$(nproc)
+    make
 }
 
 package() {
