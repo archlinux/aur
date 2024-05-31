@@ -1,0 +1,11 @@
+--- source/gpr/lsp-gpr_files.adb	2024-04-30 11:07:00.796188600 +1000
++++ source/gpr/lsp-gpr_files.adb-new	2024-05-21 01:49:21.279925334 +1000
+@@ -1473,7 +1473,7 @@
+       if Name'Length > 0 then
+          return GPR2.Project.Create
+            (GPR2.Filename_Type (Name),
+-            File.Search_Paths);
++            Paths => File.Search_Paths);
+       else
+          return Path_Name.Undefined;
+       end if;
