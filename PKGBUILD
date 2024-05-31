@@ -1,12 +1,12 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-cmake-shared-git
-pkgver=v1.1.0.r82.g3eba2e3
+pkgver=v1.1.0.r91.ge633ba7
 pkgrel=1
 pkgdesc="Additional macros and functions for CMake"
 arch=('any')
-url='https://liri.io'
-license=('GPL3')
+url='https://github.com/lirios/cmake-shared'
+license=('GPL-3.0-only')
 depends=('extra-cmake-modules')
 makedepends=('git')
 conflicts=('liri-cmake-shared')
@@ -21,26 +21,21 @@ source=(${_gitname}::${_gitroot}#branch=${_gitbranch})
 md5sums=('SKIP')
 
 pkgver() {
-	cd ${srcdir}/${_gitname}
-	( set -o pipefail
-		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
-}
-
-prepare() {
-	mkdir -p build
+    cd ${srcdir}/${_gitname}
+    ( set -o pipefail
+      git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    )
 }
 
 build() {
-	cd build
-	cmake ../${_gitname} \
-		-DCMAKE_BUILD_TYPE=Release \
-		-DCMAKE_INSTALL_PREFIX=/usr
-	make
+    cmake -B build -S "${srcdir}/${_gitname}" \
+        -DCMAKE_BUILD_TYPE='None' \
+        -DCMAKE_INSTALL_PREFIX='/usr' \
+        -Wno-dev
+    cmake --build build
 }
 
 package() {
-	cd build
-	make DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" cmake --install build
 }
