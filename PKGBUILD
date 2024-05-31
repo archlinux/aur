@@ -3,13 +3,14 @@
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=openfx-arena-git
-pkgver=Natron.2.4.4.r1.gd7c5f1b
+pkgver=2.4.4.r12.gac12134
 pkgrel=1
 arch=('x86_64')
 pkgdesc="Extra OpenFX plugins for Natron"
 url="https://github.com/NatronGitHub/openfx-arena"
-license=('GPL')
-depends=('libcdr' 'libmagick' 'librsvg' 'libxt' 'libzip' 'opencolorio' 'poppler-glib' 'sox')
+license=('GPL-2.0-or-later')
+depends=('libcdr' 'libmagick' 'librsvg' 'libxt' 'libzip' 'ocl-icd' \
+         'opencolorio' 'poppler-glib' 'sox')
 makedepends=('git' 'jbigkit' 'openmp' 'pango')
 
 _pkgname=${pkgname%-git}
@@ -24,17 +25,17 @@ source=("${_pkgname}::git+${url}"
         "openfx-supportext::git+${_url}/openfx-supportext"
         "SequenceParsing::git+${_url}/SequenceParsing"
         "tinydir::git+${_url}/tinydir")
-sha512sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+b2sums=('SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP')
 
 pkgver() {
   cd $_pkgname
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^Natron.//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -57,6 +58,10 @@ prepare() {
   git submodule init
   git config submodule.tinydir.url "$srcdir"/tinydir
   git -c protocol.file.allow=always submodule update
+
+  # Fix issue during compilation of ReadPDF module
+  sed '/POPPLER_CXXFLAGS/ s/$/ -std=c++20/' \
+   -i "${srcdir}/${_pkgname}/Makefile.master"
 }
 
 build() {
