@@ -2,8 +2,8 @@
 
 pkgname=templates_parser
 pkgdesc='Ada tools to create templated text streams, such as dynamic HTML documents.'
-pkgver=24.0w
-pkgrel=2
+pkgver=25.0w
+pkgrel=1
 
 url=https://github.com/AdaCore/templates-parser
 arch=(i686 x86_64)
@@ -20,13 +20,13 @@ makedepends=(gprbuild
              python-sphinx_rtd_theme
              texlive-binextra)
 
-source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/$pkgname-$pkgver-20230324-1619B-src.tar.gz)
-sha256sums=(52e0f2cd44d92d99c818628bf3dfd1d019b6c2e852a3dc5de6edd0dfda529fd6)
+source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources-2024/$pkgname-$pkgver-20240408-16376-src.tar.gz)
+sha256sums=(65231004bed392fea5abbab64993046e2a73e8419dc44bfa80018d295d211c91)
 
 
 build()
 {
-  cd $srcdir/$pkgname-$pkgver-20230428-16620-src
+  cd $srcdir/$pkgname-$pkgver-20240505-1653B-src
 
   PROCESSORS=0 \
   make DEFAULT_LIBRARY_TYPE=relocatable prefix=$pkgdir/usr setup
@@ -40,7 +40,7 @@ build()
 
 package()
 {
-  cd $srcdir/$pkgname-$pkgver-20230428-16620-src
+  cd $srcdir/$pkgname-$pkgver-20240505-1653B-src
 
   make install
 
