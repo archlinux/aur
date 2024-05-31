@@ -1,6 +1,6 @@
 pkgbase = amp-locker
-	pkgver = 1.1.3
-	pkgrel = 2
+	pkgver = 1.1.5
+	pkgrel = 1
 	url = https://audioassault.mx/collections/amp-locker-gear/products/amp-locker
 	arch = x86_64
 	license = EULA
@@ -38,14 +38,26 @@ pkgbase = amp-locker
 	source = Amp Locker Linker
 	source = amp-locker.png
 	sha256sums = bbeb596d62ed9943294ee5025ba690def02e263b5c9b3b88304ee84607c52f53
-	sha256sums = b3d721f864776076621fb82bf044bbf90e12412497a23ea224881c13db3105cc
+	sha256sums = 0e40afffd26f7ef228631a00a0d2113b8ae861e5a25c43e64154674938577801
 	sha256sums = 2ccb54d693ba09c2f86750891f2d1ea090f74fe282c3268617d1519b58f79ad5
+
+pkgname = amp-locker-data-bin
+	pkgdesc = Audio Assault Multamp Simulator (Data Assets)
+	groups = pro-audio
 
 pkgname = amp-locker-standalone-bin
 	pkgdesc = Audio Assault Multamp Simulator (Standalone)
 	groups = pro-audio
+	depends = amp-locker-data-bin
+
+pkgname = amp-locker-lv2-bin
+	pkgdesc = Audio Assault Multamp Simulator (LV2)
+	groups = pro-audio
+	groups = lv2-plugins
+	depends = amp-locker-data-bin
 
 pkgname = amp-locker-vst3-bin
 	pkgdesc = Audio Assault Multamp Simulator (VST3)
 	groups = pro-audio
 	groups = vst3-plugins
+	depends = amp-locker-data-bin

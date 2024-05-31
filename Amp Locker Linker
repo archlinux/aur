@@ -1,6 +1,6 @@
 #!/bin/sh
 home_dir_user=$USER
-if [ ! -d "/opt/Audio Assault/AmpLockerData" ]; then
-    sudo mkdir -p /opt/Audio\ Assault
-    sudo ln -sf /home/$home_dir_user/.config/Amp\ Locker /opt/Audio\ Assault/AmpLockerData
+
+if [ ! -d "/home/${home_dir_user}/Audio Assault/PluginData/Audio Assault/AmpLockerData" ]; then
+    ln -sf /usr/lib/AmpLockerData /home/${home_dir_user}/Audio\ Assault/PluginData/Audio\ Assault/AmpLockerData
 fi
