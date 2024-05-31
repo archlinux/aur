@@ -1,16 +1,15 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 # Contributor: John Lane <archlinux at jelmail dot com>
-_projectname='railway-sans'
-pkgname="$_projectname-font"
+pkgname='railway-sans-font'
 pkgver='20170421'
 pkgrel='7'
 pkgdesc="An open source version of Edward Johnston's Timeless Typeface for London Underground of 1916"
 arch=('any')
-url="https://fontlibrary.org/en/font/$_projectname"
+url='https://www.ffonts.net/Railway-Semibold.font'
 license=('OFL-1.1-RFN')
 checkdepends=('fontconfig')
 source=(
-	"$pkgname-$pkgver.zip::https://www.ffonts.net/Railway-Semibold.font.zip"
+	"$pkgname-$pkgver.zip::$url.zip"
 	'LICENSE'
 )
 sha512sums=('8f94b1ab77975e70f4795261f63d59c9400a24f53a48e9cc385f39ae990812fa466064e2ab246286baa5a4b78cff806501fddfcc2cb4f5d6131c22e2c184c3c2'
