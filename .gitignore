@@ -1,1 +1,4 @@
 *.deb
+/*.pkg.*
+/pkg
+/src
