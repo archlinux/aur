@@ -18,4 +18,4 @@ pkgbase = shaderc-non-semantic-debug
 	sha256sums = SKIP
 	sha256sums = 216575bd302a48a083a9864b21bb569be89c00921188fa8f6f2fac8c30189b75
 
-pkgname = shaderc-non-semantic
+pkgname = shaderc-non-semantic-debug

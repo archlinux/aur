@@ -57,7 +57,7 @@ build() {
     -S "$_pkgsrc"
     -G Ninja
     -DCMAKE_BUILD_TYPE=Release
-    -DCMAKE_INSTALL_PREFIX=/usr/lib/shaderc-non-semantic
+    -DCMAKE_INSTALL_PREFIX=/usr/lib/shaderc-non-semantic-debug
     -DCMAKE_INSTALL_LIBDIR='.'
     -DCMAKE_CXX_FLAGS="$CXXFLAGS -ffat-lto-objects"
     -DSHADERC_SKIP_EXAMPLES=ON
