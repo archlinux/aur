@@ -18,8 +18,7 @@ md5sums=('SKIP')
 
 prepare() {
   cd "$_pkgname"
-  git fetch origin pull/1641/head:chase/0.18
-  git checkout chase/0.18
+  git fetch origin pull/1641/head && git checkout FETCH_HEAD
 }
 
 pkgver() {
