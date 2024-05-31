@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="An Ada 2012 package that provides simple command-line argument parsing."
 
 arch=(i686 x86_64)
-url="https://github.com/jhumphry/parse_args"
+url=https://github.com/jhumphry/parse_args
 license=(ISC)
 
 makedepends=(gcc-ada)
@@ -19,7 +19,7 @@ sha256sums=(7177d01d2ad43534b7d78d1b3c7def69bfd625d17637a84fdefe06d52e54545c
 
 prepare()
 {
-  cd "$srcdir/parse_args-master"
+  cd $srcdir/parse_args-master
 
   patch -Np0 -i ../parse_args.gpr.patch
 }
@@ -27,7 +27,7 @@ prepare()
 
 build() 
 {
-  cd "$srcdir/parse_args-master"
+  cd $srcdir/parse_args-master
 
   gprbuild -P parse_args.gpr
 }
@@ -35,13 +35,14 @@ build()
 
 package() 
 {
-  cd "$srcdir/parse_args-master"
+  cd $srcdir/parse_args-master
 
   gprinstall --prefix="$pkgdir/usr"   \
              --create-missing-dirs    \
               -P parse_args.gpr
 
   # Install the license.
+  #
   install -D -m644     \
      "LICENSE"         \
      "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
