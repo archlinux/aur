@@ -3,7 +3,6 @@
 # Previous maintainer: Martin Imobersteg <martin.imobersteg@gmail.com>
 
 pkgname=tidy-html5-git
-name=tidy-html5
 pkgver=latest
 pkgrel=1
 pkgdesc="A tool to tidy down your HTML5 code to a clean style"
