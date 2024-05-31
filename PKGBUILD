@@ -19,7 +19,8 @@ prepare() {
 
   cd "$pkgname-$pkgver"
 
-  patch -p1 -i "${srcdir}/bug_x86_64.patch"
+  # patch removed for 1.2.10 because it fails (it did work for 1.2.9):
+  # patch -p1 -i "${srcdir}/bug_x86_64.patch"
 }
 
 build() {
