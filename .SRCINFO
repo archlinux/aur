@@ -1,0 +1,17 @@
+pkgbase = cpputest-git
+	pkgdesc = Unit testing and mocking framework for C/C++
+	pkgver = latest.passing.build.r577.81eb8b8f
+	pkgrel = 1
+	url = https://github.com/cpputest/cpputest
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	provides = cpputest
+	conflicts = cpputest
+	options = !strip
+	options = staticlibs
+	source = cpputest::git+https://github.com/cpputest/cpputest.git
+	sha512sums = SKIP
+
+pkgname = cpputest-git
