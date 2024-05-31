@@ -1,0 +1,5 @@
+d /var/lib/onnxruntime-server 0750
+Z /var/lib/onnxruntime-server - onnxruntime-server onnxruntime-server
+d /var/log/onnxruntime-server 0750 onnxruntime-server onnxruntime-server
+z /etc/onnxruntime-server 0755 root onnxruntime-server
+z /etc/onnxruntime-server/config.env 0660 root onnxruntime-server
