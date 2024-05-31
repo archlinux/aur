@@ -1,7 +1,7 @@
 pkgbase = libportal-inputcapture
 	pkgdesc = GIO-style async APIs for most Flatpak portals with patches to support input capture for input-leap
-	pkgver = 0.7.1+r8+g1add346
-	pkgrel = 3
+	pkgver = 0.7.1+r21+gffd3f83
+	pkgrel = 1
 	url = https://github.com/flatpak/libportal
 	arch = x86_64
 	license = LGPL3
@@ -60,6 +60,15 @@ pkgname = libportal-inputcapture-qt5
 	provides = libportal-qt5
 	conflicts = libportal-qt5
 	replaces = libportal-qt5
+
+pkgname = libportal-inputcapture-qt6
+	pkgdesc = GIO-style async APIs for most Flatpak portals with patches to support input capture for input-leap - Qt 6 backend
+	depends = libportal
+	depends = qt6-base
+	provides = libportal-qt6.so
+	provides = libportal-qt6
+	conflicts = libportal-qt6
+	replaces = libportal-qt6
 
 pkgname = libportal-inputcapture-docs
 	pkgdesc = GIO-style async APIs for most Flatpak portals with patches to support input capture for input-leap - documentation

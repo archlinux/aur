@@ -6,10 +6,11 @@ pkgname=(
   libportal-inputcapture-gtk3
   libportal-inputcapture-gtk4
   libportal-inputcapture-qt5
+  libportal-inputcapture-qt6
   libportal-inputcapture-docs
 )
-pkgver=0.7.1+r8+g1add346
-pkgrel=3
+pkgver=0.7.1+r21+gffd3f83
+pkgrel=1
 pkgdesc="GIO-style async APIs for most Flatpak portals with patches to support input capture for input-leap"
 url="https://github.com/flatpak/libportal"
 arch=(x86_64)
@@ -48,7 +49,7 @@ prepare() {
 
 build() {
   arch-meson libportal build \
-  -D backend-qt6=disabled
+  -D backend-qt6=enabled
   meson compile -C build
 }
 
@@ -92,6 +93,9 @@ package_libportal-inputcapture() {
 
   _pick qt5 usr/include/libportal-qt5
   _pick qt5 usr/lib{,/pkgconfig}/libportal-qt5.*
+  
+  _pick qt6 usr/include/libportal-qt6
+  _pick qt6 usr/lib{,/pkgconfig}/libportal-qt6.*
 
   _pick docs usr/share/doc
 }
@@ -134,6 +138,19 @@ package_libportal-inputcapture-qt5() {
   replaces=('libportal-qt5')
 
   mv qt5/* "$pkgdir"
+}
+
+package_libportal-inputcapture-qt6() {
+  pkgdesc+=" - Qt 6 backend"
+  depends=(
+    libportal
+    qt6-base
+  )
+  provides=('libportal-qt6.so' 'libportal-qt6')
+  conflicts=('libportal-qt6')
+  replaces=('libportal-qt6')
+
+  mv qt6/* "$pkgdir"
 }
 
 package_libportal-inputcapture-docs() {
