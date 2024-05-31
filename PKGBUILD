@@ -1,12 +1,13 @@
 # Maintainer: Stefan Biereigel <$(base64 --decode <<<'c3RlZmFuQGJpZXJlaWdlbC5kZQo=')>
 # Contributor: xiretza <xiretza+aur@gmail.com>
+# Contributor: thotypous <thotypous@gmail.com>
 # Contributor: Patrick Lloyd <$(base64 --decode <<<'cGF0cmlja0BsbG95ZC5zaAo=')>
 # Contributor: Sebastian Bøe <$(base64 --decode <<<'c2ViYXN0aWFuYm9vZUBnbWFpbC5jb20K')>
 # Contributor: Darren Wu <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
 
 pkgname=yosys-git
 pkgrel=1
-pkgver=0.19+20.r11686.12b0ce972
+pkgver=0.41+111.r13563.a84e4f44f
 pkgdesc='A framework for RTL synthesis'
 arch=('x86_64' 'i686')
 url='https://yosyshq.net/yosys/'
@@ -29,14 +30,15 @@ pkgver() {
 }
 
 prepare() {
-    cd "${srcdir}/abc"
-    git checkout "$(make --silent -C "${srcdir}/yosys" echo-abc-rev)"
+    cd "${srcdir}/yosys"
+
+    git submodule init
+    git config submodule.abc.url "$srcdir/abc"
+    git -c protocol.file.allow=always submodule update
 }
 
 build() {
     cd "${srcdir}/yosys"
-
-    ln -s "${srcdir}/abc/" .
 
     make config-gcc
     echo "ENABLE_LIBYOSYS=1" >> Makefile.conf
