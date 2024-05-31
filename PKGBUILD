@@ -1,7 +1,7 @@
 # Maintainer: Phillip Schichtel <phillip@schich.tel>
 pkgname=bookman-cockpit
 pkgver=1.15.0
-pkgrel=2
+pkgrel=3
 options=(!strip)
 pkgdesc="Bookman Cockpit"
 arch=(any)
@@ -22,7 +22,7 @@ sha256sums=('81553ad3f07740bad70ede14819ef053fe0f3bd4352748a78072eb6ebf47676c'
             'f2a742dabb4f1ac32867c3ba152355695220e4bd4a7ba032de98e3c5d2ed3309'
             'ef6cf40ff0a46853f2d5308c884e17328a6a36009f5697d5914bfbb720cac261'
             '32db57235ad25fadb8b2a4a02f7618c7a51df33b50df780613f06cb33fb977e3'
-            'f024f2b5b831da9214d1ae278a60d5eb941de77b5aa5fbc3fa5a2549a818edaf')
+            'a7a35a78978803e1109c3511a8fc1666162dcc754a84aee392e4c233bce31c45')
 
 build() {
     export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
