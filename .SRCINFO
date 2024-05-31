@@ -1,0 +1,16 @@
+pkgbase = python-intellimouse-ctl-git
+	pkgdesc = A cross-platform command line tool and library for Microsoft's IntelliMouse devices.
+	pkgver = r24.b54424b
+	pkgrel = 1
+	url = https://github.com/madsl/Pro-IntelliMouse-Control-Panel
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = git
+	depends = python
+	depends = python-hidapi
+	conflicts = python-intellimouse-ctl
+	source = python-intellimouse-ctl-git::git+https://github.com/madsl/Pro-IntelliMouse-Control-Panel.git
+	sha256sums = SKIP
+
+pkgname = python-intellimouse-ctl-git
