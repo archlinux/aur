@@ -1,11 +1,10 @@
 pkgbase = perl-alien-cfitsio
 	pkgdesc = Build and Install the CFITSIO library
 	pkgver = 4.4.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/dist/Alien-CFITSIO
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = GPL-3.0-only
 	checkdepends = perl-test2-suite
 	checkdepends = perl-package-stash
 	makedepends = perl-sort-versions
