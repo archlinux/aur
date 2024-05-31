@@ -16,20 +16,32 @@ provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 replaces=()
 license=('BSD-3-Clause')
-depends=()
+depends=(
+    abseil-cpp
+    ffmpeg
+    gcc-libs
+    glib2
+    glibc
+    libjpeg-turbo
+    libpipewire
+    libvpx
+    libx11
+    libxcomposite
+    libxdamage
+    libxext
+    libxfixes
+    libxrandr
+    libxtst
+    openh264
+    openssl
+    opus
+    protobuf)
 makedepends=(
     cmake
-    ffmpeg4.4
-    ffmpeg
     gcc
     gdm
     git
     ninja
-    openh264
-    openssl
-    openjpeg2
-    pipewire
-    libx11
     yasm
     zlib
 )
@@ -75,7 +87,7 @@ build() {
 # see：https://wiki.archlinux.org/title/CMake_package_guidelines
     cmake -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DBUILD_SHARED_LIBS=OFF \
+        -DBUILD_SHARED_LIBS=ON \
         -B build \
         -G Ninja \
         -Wno-dev
