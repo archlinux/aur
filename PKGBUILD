@@ -1,4 +1,3 @@
-# Maintainer: xiretza <xiretza+aur@gmail.com>
 # Maintainer: Rod Kay <rodakay5 at gmail dot com>
 
 pkgbase=gnatcoll-bindings
@@ -11,7 +10,7 @@ pkgname=(gnatcoll-gmp
          gnatcoll-syslog
          gnatcoll-zlib)
 pkgdesc='GNAT Components Collection - Language and library bindings.'
-pkgver=24.0w
+pkgver=25.0w
 pkgrel=1
 epoch=1
 
@@ -22,24 +21,23 @@ license=(GPL3 custom)
 depends=(gnatcoll-core)
 makedepends=(python gprbuild libiconv syslog-ng)
 
-#https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/gnatcoll-bindings-24.0w-20230324-1636E-src.tar.gz
-source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/$pkgbase-$pkgver-20230324-1636E-src.tar.gz
-        0002-fix-python-don-t-cache-prefix-during-install.patch
-        python_support.c-patch)
+source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources-2024/$pkgbase-$pkgver-20240408-162B5-src.tar.gz
+        fix-python2-dont-cache-prefix-during-install.patch
+        fix-python3-dont-cache-prefix-during-install.patch)
 
-sha256sums=(6a3d077c2939fe53ce87b58e8414ef41779c670ed00e0d728f12ee160d67723e
-            0655801612e6b69a81d240e6fff71262c7db73c4708766e24627c1329730c345
-            6ca238a94cbafb0eca0f95e23d055cf9f10c0bd75bcc6cb27075ec4861ee3a38)
+sha256sums=(08b9b1145ff3b7b40a56e0a0172ea945acf4d0fa176f343db346047a73b0cf7b
+            3c01d8f03f3b9702b4ffb9c668f3bbf33f6908fb8f7a4ce55092cc784d637dc4
+            78e6493e38e74d1a2b246de9a50395f07e8d35cb0e7a3694cb62ef2d57d13286)
 
-_source_dir=$pkgbase-$pkgver-20230428-165DB-src
+_source_dir=$pkgbase-$pkgver-20240505-16461-src
 
 
 prepare()
 {
     cd $srcdir/$_source_dir
 
-    patch -p1 < $srcdir/0002-fix-python-don-t-cache-prefix-during-install.patch
-    patch -p0 < $srcdir/python_support.c-patch
+    patch -p0 < $srcdir/fix-python2-dont-cache-prefix-during-install.patch
+    patch -p0 < $srcdir/fix-python3-dont-cache-prefix-during-install.patch
 }
 
 

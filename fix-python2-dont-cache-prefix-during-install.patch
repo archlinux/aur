@@ -1,0 +1,13 @@
+--- python/setup.py	2024-04-04 19:48:49.815595000 +1100
++++ python/setup.py-new	2024-05-20 20:10:18.014891250 +1000
+@@ -195,6 +195,10 @@
+     def install(self, args):
+         config = Config()
+         has_static_python = "GNATCOLL_PYTHON_STATIC_LIB" in config.data["gprbuild"]
++        
++        if args.prefix is not None:
++            config.set_data('prefix', args.prefix)
++        
+         if has_static_python:
+             python_la = config.data["gprbuild"]["GNATCOLL_PYTHON_STATIC_LIB"]
+             prefix = config.data["prefix"]

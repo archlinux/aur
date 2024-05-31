@@ -1,0 +1,12 @@
+--- python3/setup.py	2024-04-04 19:48:49.815595000 +1100
++++ python3/setup.py-new	2024-05-20 20:12:25.617524371 +1000
+@@ -210,6 +210,9 @@
+         config = Config()
+         has_static_python = "GNATCOLL_PYTHON_STATIC_LIB" in config.data["gprbuild"]
+ 
++        if args.prefix is not None:
++            config.set_data('prefix', args.prefix)
++
+         if not has_static_python:
+             super(GNATCollPython, self).install(args)
+         else:

@@ -1,6 +1,6 @@
 pkgbase = gnatcoll-bindings
 	pkgdesc = GNAT Components Collection - Language and library bindings.
-	pkgver = 24.0w
+	pkgver = 25.0w
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/AdaCore/gnatcoll-bindings
@@ -13,12 +13,12 @@ pkgbase = gnatcoll-bindings
 	makedepends = libiconv
 	makedepends = syslog-ng
 	depends = gnatcoll-core
-	source = https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/gnatcoll-bindings-24.0w-20230324-1636E-src.tar.gz
-	source = 0002-fix-python-don-t-cache-prefix-during-install.patch
-	source = python_support.c-patch
-	sha256sums = 6a3d077c2939fe53ce87b58e8414ef41779c670ed00e0d728f12ee160d67723e
-	sha256sums = 0655801612e6b69a81d240e6fff71262c7db73c4708766e24627c1329730c345
-	sha256sums = 6ca238a94cbafb0eca0f95e23d055cf9f10c0bd75bcc6cb27075ec4861ee3a38
+	source = https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources-2024/gnatcoll-bindings-25.0w-20240408-162B5-src.tar.gz
+	source = fix-python2-dont-cache-prefix-during-install.patch
+	source = fix-python3-dont-cache-prefix-during-install.patch
+	sha256sums = 08b9b1145ff3b7b40a56e0a0172ea945acf4d0fa176f343db346047a73b0cf7b
+	sha256sums = 3c01d8f03f3b9702b4ffb9c668f3bbf33f6908fb8f7a4ce55092cc784d637dc4
+	sha256sums = 78e6493e38e74d1a2b246de9a50395f07e8d35cb0e7a3694cb62ef2d57d13286
 
 pkgname = gnatcoll-gmp
 	pkgdesc = GNAT Components Collection - Bindings to GMP
