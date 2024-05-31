@@ -1,13 +1,16 @@
 pkgbase = python-pynetdicom
 	pkgdesc = A Python implementation of the DICOM networking protocol
-	pkgver = 2.0.2
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/pydicom/pynetdicom
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	makedepends = python-wheel
 	depends = python-pydicom
-	source = python-pynetdicom-2.0.2.tar.gz::https://github.com/pydicom/pynetdicom/archive/refs/tags/v2.0.2.tar.gz
-	sha512sums = e31021a5cc665d7f74f225a13aa1fc40c3901f31c87c3a4cefdc4846b6cb628c5cb5e38705fa1726ba093f5c3d620501bdc678bd7b1cd4c25039dd191b3fc61c
+	source = python-pynetdicom-2.1.0.tar.gz::https://github.com/pydicom/pynetdicom/archive/refs/tags/v2.1.0.tar.gz
+	sha512sums = 3aae8b4e332c81d5e53303b97fa3fc4ee78c72b236910fdaadb28b97a7ce69eb32aa6f5ad012a1021615ab684a28514d9df2bda08d5148b60856cde16a6e4ebb
 
 pkgname = python-pynetdicom

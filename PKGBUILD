@@ -2,7 +2,7 @@
 
 pkgname=python-pynetdicom
 _pkgname=pynetdicom
-pkgver=2.0.2
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='A Python implementation of the DICOM networking protocol'
 arch=(any)
@@ -12,19 +12,22 @@ depends=(
   python-pydicom
 )
 makedepends=(
-  python-setuptools
+  python-build
+  python-installer
+  python-poetry-core
+  python-wheel
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pydicom/pynetdicom/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('e31021a5cc665d7f74f225a13aa1fc40c3901f31c87c3a4cefdc4846b6cb628c5cb5e38705fa1726ba093f5c3d620501bdc678bd7b1cd4c25039dd191b3fc61c')
+sha512sums=('3aae8b4e332c81d5e53303b97fa3fc4ee78c72b236910fdaadb28b97a7ce69eb32aa6f5ad012a1021615ab684a28514d9df2bda08d5148b60856cde16a6e4ebb')
 
 build() {
   cd "${_pkgname}-${pkgver}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${_pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm644 LICENCE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm644 LICENCE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 # vim:set ts=2 sw=2 et:
