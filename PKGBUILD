@@ -43,8 +43,8 @@ b2sums=('9b71761f4015649514677784443886e59733ac3845f7dfaa4343f46327d36c08c403c44
         'a76d19c7830b0a141302890522086fc1548c177611501caac7e66d576e541b64ca3f6e977de715268a9872dfdd6368a011b92e01f7944ec0088f899ac0d2a2a5'
         '02b655b5668f7dea51c3b3e4ff46d5a4aee5a04ed5e26b98a6470f39c2e98ddc0519bffeeedd982c31ef3c171457e4d1beaff32767d1aedd9346837aac4ec3ee')
 
-_CHOST="${CHOST}" # https://bbs.archlinux.org/viewtopic.php?pid=2174541
-_MAKEFLAGS="${MAKEFLAGS}"
+_CHOST="${CHOST:=}" # https://bbs.archlinux.org/viewtopic.php?pid=2174541
+_MAKEFLAGS="${MAKEFLAGS:=}"
 
 _libdir="usr/lib/gcc/${CHOST}/${pkgver%%+*}"
 
