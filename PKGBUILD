@@ -8,8 +8,18 @@ url="http://${pkgname}.sourceforge.net/"
 license=('GPL')
 depends=()
 makedepends=('flex')
-source=("https://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('c08be3867ee906ca69b949d55a4f3780')
+source=(
+  "https://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz"
+  "strlen_yytext_assertion.patch"
+)
+md5sums=(
+  "c08be3867ee906ca69b949d55a4f3780"
+  "c355159346ec9da32bb84c38c61c4b0c"
+)
+
+prepare() {
+  patch -p1 -d "$srcdir/$pkgname-$pkgver" <strlen_yytext_assertion.patch
+}
 
 package() {
   cd $srcdir/$pkgname-$pkgver

@@ -1,0 +1,17 @@
+--- xmlindent-0.2.17.orig/indent.c
++++ xmlindent-0.2.17/indent.c
+@@ -439,11 +439,13 @@ static bool need_wrap(struct buffer * bu
+ static void content(void)
+ {
+     char current;
++    int len = strlen(yytext);
++    if(!len) return;
+ 
+     /*
+      * We should get one character at a time.
+      */
+-    assert(strlen(yytext) == 1);
++    assert(len == 1);
+ 
+     current = yytext[0];
+     if (current == EOF)
