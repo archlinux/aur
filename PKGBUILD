@@ -2,7 +2,7 @@
 pkgname=wnr-bin
 pkgver=1.30.2
 _electronversion=22
-pkgrel=4
+pkgrel=5
 pkgdesc="Work/Rest Timer. Stricter. Prettier. More features. "
 arch=('x86_64')
 url="https://getwnr.com/"
@@ -23,11 +23,12 @@ source=(
 )
 sha256sums=('fd774a07fb28950878f3560542157a7335e816fe0b5db908bafbdbda42e58b4c'
             '1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
