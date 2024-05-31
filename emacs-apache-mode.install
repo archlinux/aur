@@ -1,5 +1,3 @@
-#!/bin/sh
-
 post_install() {
   cat << EOF
 ==> Put this in your '~/.emacs' file to enable autoloading of apache-mode
