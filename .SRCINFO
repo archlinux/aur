@@ -1,7 +1,7 @@
 pkgbase = python-av
 	pkgdesc = Pythonic bindings for FFmpeg
 	pkgver = 12.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pyav.basswood-io.com
 	arch = x86_64
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = python-av
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	makedepends = pkgconf
-	depends = ffmpeg<=2:6.1.1
+	depends = ffmpeg<=2:7
 	depends = python
 	depends = python-numpy
 	depends = python-pillow
