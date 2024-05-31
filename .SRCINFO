@@ -1,0 +1,14 @@
+pkgbase = kak-bundle-git
+	pkgdesc = A plugin manager for Kakoune designed for speed without sacrificing utility.
+	pkgver = r116.5f479e8
+	pkgrel = 1
+	url = https://codeberg.org/jdugan6240/kak-bundle
+	install = kak-bundle-git.install
+	arch = any
+	license = 0BSD
+	makedepends = git
+	depends = kakoune
+	source = kak-bundle-git::git+https://codeberg.org/jdugan6240/kak-bundle
+	md5sums = SKIP
+
+pkgname = kak-bundle-git
