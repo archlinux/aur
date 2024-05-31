@@ -2,12 +2,12 @@
 
 pkgname=kfoldersync
 pkgver=3.4.1
-pkgrel=4
-pkgrel_=7.71
+pkgrel=6
+pkgrel_=7.87
 pkgdesc="Folder synchronization and backup tool for KDE"
 arch=('x86_64')
-url="https://www.linux-apps.com/content/show.php/${_pkgname}?content=164092"
-license=('GPLv2')
+url="https://store.kde.org/p/1127677"
+license=('GPLv3')
 depends=('plasma-workspace' 'hicolor-icon-theme' 'kconfigwidgets5' 'kdbusaddons5' 'kitemviews5' 'kwindowsystem5' 'kxmlgui5')
 #makedepends=('extra-cmake-modules' 'phonon-qt5-gstreamer')
 #source=("https://dl.opendesktop.org/api/files/downloadfile/id/$_id1/s/$_id2/t/$_id3/u/$_id4/${pkgname}-${pkgver}.tar.xz"
@@ -15,7 +15,7 @@ source=("https://download.opensuse.org/repositories/home:/ecsos:/Backup/openSUSE
         "https://download.opensuse.org/repositories/home:/ecsos:/Backup/openSUSE_Tumbleweed/noarch/${pkgname}-lang-${pkgver}-${pkgrel_}.noarch.rpm"
         "${pkgname}.install")
 install=${pkgname}.install
-md5sums=('a58faf904a2ed6a23676c7f098a3a8bf' '0e3e07bd873489f532f17dde9ec28fbe' '262fc1597fb332894d1367f510a7f39b')
+md5sums=('a4d0f64c572d7e39b6ddc708d973419d' 'd4ee86bc7bfec96befb678c2c84d9d97' '262fc1597fb332894d1367f510a7f39b')
 
 build()
 {
