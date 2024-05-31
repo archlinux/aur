@@ -4,9 +4,10 @@ pkgname=adaogg
 pkgver=2021.10.14
 pkgrel=1
 pkgdesc="A complete interface layer that brings the Ogg, Vorbis, and Theora libraries to the Ada 2012 programming language."
-arch=('i686' 'x86_64')
-url="https://phasercat.com/adaogg/"
-license=('GPL3')
+
+arch=(i686 x86_64)
+url=https://phasercat.com/adaogg
+license=(GPL3)
 
 makedepends=(gprbuild)
 
@@ -19,7 +20,7 @@ sha256sums=(30d2d50c3f6dc9d6998ced24dd26cb52a097c1b768e74b397ab8cfe2ae709c8a
 
 prepare()
 {
-   cd "$srcdir/adaogg"
+   cd $srcdir/adaogg
    
    cp ../adaogg.gpr .
    cp ../debug.pra  .
@@ -28,7 +29,7 @@ prepare()
 
 build()
 {
-   cd "$srcdir/adaogg"
+   cd $srcdir/adaogg
 
    gprbuild -P adaogg
 }
@@ -36,12 +37,13 @@ build()
 
 package()
 {
-   cd "$srcdir/adaogg"
+   cd $srcdir/adaogg
 
    gprinstall -p -P adaogg.gpr --prefix="$pkgdir/usr"
 
    # Install the license.
-   install -D -m644 \
+   #
+   install -D -m644     \
       "License.txt"     \
       "$pkgdir/usr/share/licenses/$pkgname/License.txt"
 }
