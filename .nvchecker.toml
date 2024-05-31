@@ -1,0 +1,5 @@
+[python-numba-mpi]
+source = "github"
+github = "numba-mpi/numba-mpi"
+use_latest_release = "true"
+prefix = "v"
