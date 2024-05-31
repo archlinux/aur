@@ -2,7 +2,7 @@
 # Previous-maintainer: TabulateJarl8 <tabulatejarl8 at gmail dot com>
 
 pkgname=steam-tui
-pkgver=0.3.0
+pkgver=0.3.0b
 pkgrel=6
 pkgdesc="Rust TUI client for steamcmd"
 arch=('x86_64')

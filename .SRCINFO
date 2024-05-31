@@ -1,6 +1,6 @@
 pkgbase = steam-tui
 	pkgdesc = Rust TUI client for steamcmd
-	pkgver = 0.3.0
+	pkgver = 0.3.0b
 	pkgrel = 6
 	url = https://github.com/dmadisetti/steam-tui
 	arch = x86_64
