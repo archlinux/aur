@@ -1,12 +1,12 @@
 # Maintainer: Tércio Martins <echo dGVyY2lvd2VuZGVsQGdtYWlsLmNvbQo= | base64 -d>
 
 pkgname=openfx-gmic-git
-pkgver=Natron.2.4.4.r0.g3050534
+pkgver=2.4.4.r9.g292ac55
 pkgrel=1
 arch=('x86_64')
 pkgdesc="OpenFX wrapper for the G'MIC framework"
 url="https://github.com/NatronGitHub/openfx-gmic"
-license=('custom:CeCILL-C' 'custom:CeCILLv2')
+license=('CECILL-C OR CECILL-2.0')
 depends=('fftw' 'libgl' 'libpng')
 makedepends=('git' 'openmp')
 
@@ -23,7 +23,7 @@ sha512sums=('SKIP'
 
 pkgver() {
   cd ${_pkgname}
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^Natron.//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
