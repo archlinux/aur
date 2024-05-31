@@ -7,15 +7,15 @@
 
 pkgname=activinspire
 pkgver=3.3.15
-pkgrel=1
-pkgdesc="Presentation Software for use with Promethean Hardware products (manual user interaction required)."
+pkgrel=1.1
+pkgdesc="Presentation Software for use with Promethean Hardware products ."
 arch=('x86_64')
 url="https://support.prometheanworld.com/product/activinspire"
 license=('unknown')
 depends=(libxmu gst-plugins-base libjpeg-turbo libxrender libxkbcommon libxrandr libgl libxdamage snappy libgl fontconfig openssl-1.1 nss libxcomposite libxcursor libxtst dbus)
 optdepends=('activdriver: Driver for Promethean hardware'
             'activtools: Tools for Promethean hardware, e.g. calibration or systray monitor')
-source=("local://activinspire_${pkgver}.2004-1.amd64_amd64.deb"
+source=("http://activsoftware.co.uk/linux/repos/ubuntu/pool/focal/a/ac/activinspire_2004-3.3.15-1-amd64.deb"
         "inspire.sh"
         "activityplayer.sh"
         "libre2.so.5"
@@ -30,13 +30,6 @@ md5sums=('1ffab88a96ce74e202e319946b97899b'
 
 package() {
 
- # Manual instructions for the user
- echo "Manual download of the binary files required!"
- echo "1. Follow the instructions on the manufacturer's website to add their privately signed repository (only possible through Ubuntu 20.04?)"
- echo "2. Download the package (Ubuntu: 'sudo apt download activinspire')"
- echo "3. Copy the .deb file to your Arch Linux distribution (into the local build directory of this AUR package)."
- echo "4. Build and install this AUR package."
-
  # Extract software from debian archive. Exclude /etc/xdg (not needed) and /var/Promethean (created with the correct permissions below).
  bsdtar -C "$pkgdir" --exclude=./var --exclude=./etc/xdg --exclude=./usr/share/gnome-shell -xf data.tar.xz
 
@@ -44,14 +37,14 @@ package() {
  install -dm0755 "$pkgdir"/opt
  mv "$pkgdir"/usr/local/bin/activsoftware "$pkgdir"/opt/
  rm -r "$pkgdir"/usr/local
- 
+
  # Because we just changed the paths, now we need to fix the absolute paths that Promethean uses in their files.
  sed -i "s%/usr/local/bin%/usr/bin%" "$pkgdir"/usr/share/applications/activsoftware.desktop
  sed -i "s%/usr/local/bin%/usr/bin%" "$pkgdir"/usr/share/applications/activplayer.desktop
- 
+
  # ActivInspire ships with functionality to disable compositing. This should really be handled by the users WM configuration, so we remove that.
  rm "$pkgdir"/usr/share/applications/activsoftware-nc.desktop
- 
+
  # The upstream launch scripts only work with Ubuntu, so we replace them with our own.
  install -dm0755 "$pkgdir"/usr/bin
  install -Dm755 inspire.sh "$pkgdir"/usr/bin/inspire
