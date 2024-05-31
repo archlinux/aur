@@ -2,7 +2,7 @@
 pkgname="bindump-git"
 pkgver=1.01
 pkgrel=1
-pkgdesc="Display binary contents of a file"
+pkgdesc="Display binary contents of any file."
 arch=("x86_64" "arm")
 url="https://github.com/Raphadoodle/bindump-git.git"
 license=('GPL')
