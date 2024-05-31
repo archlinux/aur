@@ -1,0 +1,5 @@
+[python-adaptive]
+source = "github"
+github = "python-adaptive/adaptive"
+use_latest_release = "true"
+prefix = "v"
