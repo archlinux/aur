@@ -1,0 +1,15 @@
+pkgbase = ytdl-sub
+	pkgdesc = Automate downloading and metadata generation with yt-dlp
+	pkgver = 2024.05.29
+	pkgrel = 1
+	url = https://github.com/jmbannon/ytdl-sub
+	arch = any
+	license = GPL-3.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = yt-dlp
+	source = ytdl-sub-2024.05.29.tar.gz::https://github.com/jmbannon/ytdl-sub/archive/2024.05.29.tar.gz
+	sha512sums = dd103b1bc77a0f781b9a509427278522cd355aedc2d10263e524a446fedb18e30740159905449b3b40740f2b7ac40d0c1eb06afe6e19bbf0baa6dd99d4785a22
+
+pkgname = ytdl-sub
