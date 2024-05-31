@@ -1,7 +1,7 @@
 pkgbase = kona-git
 	pkgdesc = An open-source implementation of the K language, an ASCII APL.
 	pkgver = 20230601
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kevinlawler/kona
 	arch = i686
 	arch = x86_64
