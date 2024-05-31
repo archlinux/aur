@@ -1,4 +1,5 @@
-# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Thomas Schneider <thomas.aur@brainfuck.space>
+# Contributor: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Marcell Pardavi <marcell.pardavi@gmail.com>
 
 # Tests assume access to vulkan video drivers, Wayland window creation,
