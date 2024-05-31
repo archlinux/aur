@@ -1,0 +1,20 @@
+--- lib/gnat/aunit.gpr	2022-12-20 08:08:42.000000000 +1100
++++ lib/gnat/aunit.gpr-new	2024-05-25 16:21:19.926317875 +1000
+@@ -50,13 +50,13 @@
+ 
+    package Install is
+       for Artifacts ("share/doc/aunit/pdf")
+-        use ("../../doc/pdf/**");
++        use ("../../doc/build/aunit_cb/pdf/**");
+       for Artifacts ("share/doc/aunit/txt")
+-        use ("../../doc/txt/**");
++        use ("../../doc/build/aunit_cb/txt/**");
+       for Artifacts ("share/doc/aunit/info")
+-        use ("../../doc/info/**");
++        use ("../../doc/build/aunit_cb/info/**");
+       for Artifacts ("share/doc/aunit/html")
+-        use ("../../doc/html/**");
++        use ("../../doc/build/aunit_cb/html/**");
+ 
+       for Artifacts ("share/gps/plug-ins") use ("../../support/aunit.xml");
+       for Artifacts ("share/examples/aunit") use ("../../examples/*");

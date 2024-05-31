@@ -1,0 +1,10 @@
+--- doc/share/conf.py	2022-12-20 08:08:42.000000000 +1100
++++ doc/share/conf.py-new	2024-05-25 15:53:05.252283975 +1000
+@@ -96,5 +96,5 @@
+ 
+ 
+ def setup(app):
+-    app.add_lexer('ada', ada_pygments.AdaLexer())
+-    app.add_lexer('gpr', ada_pygments.GNATProjectLexer())
++    app.add_lexer('ada', ada_pygments.AdaLexer)
++    app.add_lexer('gpr', ada_pygments.GNATProjectLexer)
