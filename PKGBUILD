@@ -1,8 +1,9 @@
-# Maintainer: Lex Black <autumn-wind@web.de>
+# Maintainer: Christopher Snowhill <kode54@gmail.com>
+# Contributor: Lex Black <autumn-wind@web.de>
 
 _pkgname=labwc
 pkgname=labwc-wlroots-018-git
-pkgver=0.7.2.r65.g0008d36e
+pkgver=0.7.2.r51.gd00711bc
 pkgrel=1
 pkgdesc='stacking wayland compositor with look and feel from openbox (git version) (Highly experimental bleeding edge wlroots version)'
 url="https://github.com/labwc/labwc"
@@ -13,13 +14,17 @@ makedepends=('git' 'meson' 'scdoc' 'wayland-protocols')
 optdepends=("bemenu: default launcher via Alt+F3")
 conflicts=(labwc)
 provides=(labwc)
-source=("git+https://github.com/labwc/${_pkgname}.git")
-md5sums=('SKIP')
+source=("git+https://github.com/labwc/${_pkgname}.git"
+        '1641.patch'
+        'wlroots-0.18.patch')
+md5sums=('SKIP'
+         'af5bd9abff47c2b9bbcb8d756eb1f8f7'
+         'fc09b9336adb1b709cceba71a56b6020')
 
 prepare() {
   cd "$_pkgname"
-  git fetch origin pull/1641/head:chase/0.18
-  git checkout chase/0.18
+  patch -Np1 -i "${srcdir}/1641.patch"
+  patch -Np1 -i "${srcdir}/wlroots-0.18.patch"
 }
 
 pkgver() {

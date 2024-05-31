@@ -1,0 +1,1453 @@
+From 706b23c3b503a82b741e0e53b811f962a2eb7d4f Mon Sep 17 00:00:00 2001
+From: Consolatis <35009135+Consolatis@users.noreply.github.com>
+Date: Mon, 18 Mar 2024 23:53:54 +0100
+Subject: [PATCH 01/18] [wip] version dep to 0.18
+
+---
+ meson.build              | 2 +-
+ subprojects/wlroots.wrap | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index dcf564b..b6b6863 100644
+--- a/meson.build
++++ b/meson.build
+@@ -51,7 +51,7 @@ add_project_arguments('-DLABWC_VERSION=@0@'.format(version), language: 'c')
+ wlroots = dependency(
+   'wlroots',
+   default_options: ['default_library=static', 'examples=false'],
+-  version: ['>=0.17.0', '<0.18.0'],
++  version: ['>=0.18.0', '<0.19.0'],
+ )
+ 
+ wlroots_has_xwayland = wlroots.get_variable('have_xwayland') == 'true'
+diff --git a/subprojects/wlroots.wrap b/subprojects/wlroots.wrap
+index 7ae8582..2740724 100644
+--- a/subprojects/wlroots.wrap
++++ b/subprojects/wlroots.wrap
+@@ -1,6 +1,6 @@
+ [wrap-git]
+ url = https://gitlab.freedesktop.org/wlroots/wlroots.git
+-revision = 0.17
++revision = master
+ 
+ [provide]
+ dependency_names = wlroots
+-- 
+2.45.1
+
+From 4c2b25aba836b74fde208a863e02e84c2a768c53 Mon Sep 17 00:00:00 2001
+From: Consolatis <35009135+Consolatis@users.noreply.github.com>
+Date: Tue, 19 Mar 2024 11:38:24 +0100
+Subject: [PATCH 02/18] [wip] CI: unbreak wlroots build
+
+---
+ .github/workflows/build.yml | 15 ++++++++++++---
+ 1 file changed, 12 insertions(+), 3 deletions(-)
+
+diff --git a/.github/workflows/build.yml b/.github/workflows/build.yml
+index 7f91f07..fb1880c 100644
+--- a/.github/workflows/build.yml
++++ b/.github/workflows/build.yml
+@@ -3,6 +3,7 @@
+ #
+ # Void dependencies based on:
+ # https://github.com/void-linux/void-packages/blob/master/srcpkgs/labwc/template
++# https://github.com/void-linux/void-packages/blob/master/srcpkgs/wlroots0.17/template
+ #
+ # Recommended GH CI Void mirror based on
+ # https://docs.voidlinux.org/xbps/repositories/mirrors/changing.html
+@@ -80,7 +81,8 @@ jobs:
+           apt-get update
+           apt-get upgrade -y
+           apt-get install -y git gcc clang gdb xwayland
+-          apt-get build-dep -y labwc
++          apt-get build-dep -y labwc libwlroots-dev
++          apt-get remove -y libwlroots-dev
+ 
+       - name: Install FreeBSD dependencies
+         if: matrix.name == 'FreeBSD'
+@@ -106,6 +108,13 @@ jobs:
+           xbps-install -y git meson gcc clang pkg-config scdoc \
+             cairo-devel glib-devel libpng-devel librsvg-devel libxml2-devel \
+             pango-devel wlroots0.17-devel gdb bash xorg-server-xwayland \
++            wayland-devel glslang hwids \
++            libgbm-devel libglvnd-devel libseat-devel eudev-libudev-devel \
++            libdrm-devel libinput-devel libxkbcommon-devel pixman-devel wayland-devel \
++            wayland-protocols vulkan-loader Vulkan-Headers xcb-util-errors-devel \
++            xcb-util-wm-devel xcb-util-renderutil-devel libdisplay-info-devel libliftoff-devel \
++            libxcb-devel xcb-util-cursor-devel xcb-util-devel xcb-util-image-devel \
++            xcb-util-keysyms-devel xcb-util-xrm-devel xorg-server-xwayland \
+             dejavu-fonts-ttf
+ 
+       # These build are executed on all runners
+@@ -151,7 +160,7 @@ jobs:
+             cd "$GITHUB_WORKSPACE"
+             export CC=gcc
+             meson setup build-gcc-release -Dxwayland=enabled \
+-              -Dbuildtype=release -Db_ndebug=true --werror
++              -Dbuildtype=release -Db_ndebug=true -Dwlroots:werror=false --werror
+             meson compile -C build-gcc-release
+           ' | $TARGET
+ 
+@@ -173,7 +182,7 @@ jobs:
+             cd "$GITHUB_WORKSPACE"
+             export CC=clang
+             meson setup build-clang-release -Dxwayland=enabled \
+-              -Dbuildtype=release -Db_ndebug=true --werror
++              -Dbuildtype=release -Db_ndebug=true -Dwlroots:werror=false --werror
+             meson compile -C build-clang-release
+           ' | $TARGET
+ 
+-- 
+2.45.1
+
+From b1e12d226edf46f0598ad8445a567681aafc174e Mon Sep 17 00:00:00 2001
+From: Consolatis <35009135+Consolatis@users.noreply.github.com>
+Date: Wed, 24 Apr 2024 17:06:49 +0200
+Subject: [PATCH 03/18] [revert later] CI: fix runtime tests due to libwayland
+ bug
+
+Already fixed in its master branch but not yet available in a release.
+
+https://gitlab.freedesktop.org/wayland/wayland/-/merge_requests/366
+---
+ .github/workflows/build.yml | 29 +++++++++++++++--------------
+ subprojects/wayland.wrap    |  6 ++++++
+ 2 files changed, 21 insertions(+), 14 deletions(-)
+ create mode 100644 subprojects/wayland.wrap
+
+diff --git a/.github/workflows/build.yml b/.github/workflows/build.yml
+index fb1880c..17e1e16 100644
+--- a/.github/workflows/build.yml
++++ b/.github/workflows/build.yml
+@@ -174,8 +174,6 @@ jobs:
+             meson compile -C build-gcc-static_analyzer
+           ' | $TARGET
+ 
+-
+-      # Runtime tests, these run on Debian and Void only (the later due to libmusl being used)
+       - name: Build with clang - release
+         run: |
+           echo '
+@@ -186,27 +184,30 @@ jobs:
+             meson compile -C build-clang-release
+           ' | $TARGET
+ 
++      # Runtime tests, these run on Debian and Void only (the later due to libmusl being used)
+       - name: Build with gcc - runtime test
+         if: matrix.name == 'Debian'
+         run: |
+           echo '
+             cd "$GITHUB_WORKSPACE"
+             export CC=gcc
+-            meson setup build-gcc-ci -Dxwayland=enabled -Db_sanitize=undefined --werror
++            meson setup build-gcc-ci -Dxwayland=enabled -Db_sanitize=undefined --werror \
++              --force-fallback-for=wayland
+             meson compile -C build-gcc-ci
+             scripts/ci/smoke-test.sh build-gcc-ci
+           ' | $TARGET
+ 
+-      - name: Build with clang - runtime test
+-        if: matrix.name == 'Debian'
+-        run: |
+-          echo '
+-            cd "$GITHUB_WORKSPACE"
+-            export CC=clang
+-            meson setup build-clang-ci -Dxwayland=enabled -Db_sanitize=undefined --werror
+-            meson compile -C build-clang-ci
+-            scripts/ci/smoke-test.sh build-clang-ci
+-          ' | $TARGET
++      # Doesn't work with --force-fallback for some reason, re-enable later
++      #- name: Build with clang - runtime test
++      #  if: matrix.name == 'Debian'
++      #  run: |
++      #    echo '
++      #      cd "$GITHUB_WORKSPACE"
++      #      export CC=clang
++      #      meson setup build-clang-ci -Dxwayland=enabled -Db_sanitize=undefined --werror --force-fallback-for=wayland
++      #      meson compile -C build-clang-ci
++      #      scripts/ci/smoke-test.sh build-clang-ci
++      #    ' | $TARGET
+ 
+       # Void-musl doesn't support sanitizer
+       - name: Build with gcc - runtime test w/o sanitizer
+@@ -215,7 +216,7 @@ jobs:
+           echo '
+             cd "$GITHUB_WORKSPACE"
+             export CC=gcc
+-            meson setup build-gcc-ci -Dxwayland=enabled --werror
++            meson setup build-gcc-ci -Dxwayland=enabled --werror --force-fallback-for=wayland
+             meson compile -C build-gcc-ci
+             LABWC_RUNS=20 scripts/ci/smoke-test.sh build-gcc-ci
+           ' | $TARGET
+diff --git a/subprojects/wayland.wrap b/subprojects/wayland.wrap
+new file mode 100644
+index 0000000..7e699dc
+--- /dev/null
++++ b/subprojects/wayland.wrap
+@@ -0,0 +1,6 @@
++[wrap-git]
++url = https://gitlab.freedesktop.org/wayland/wayland.git
++revision = main
++
++[provide]
++dependency_names = wayland
+-- 
+2.45.1
+
+From 0dcd1ed09ae3ffdea649b5eb340741a20e50f0f3 Mon Sep 17 00:00:00 2001
+From: Consolatis <35009135+Consolatis@users.noreply.github.com>
+Date: Mon, 18 Mar 2024 23:53:38 +0100
+Subject: [PATCH 04/18] [wip] chase: output->pending (MR 4202)
+
+---
+ include/labwc.h            |  1 +
+ include/output-state.h     | 34 +++++++++++++++
+ src/common/scene-helpers.c |  4 +-
+ src/meson.build            |  1 +
+ src/output-state.c         | 85 ++++++++++++++++++++++++++++++++++++++
+ src/output.c               | 23 ++++++-----
+ src/server.c               |  1 +
+ src/view.c                 |  1 +
+ 8 files changed, 139 insertions(+), 11 deletions(-)
+ create mode 100644 include/output-state.h
+ create mode 100644 src/output-state.c
+
+diff --git a/include/labwc.h b/include/labwc.h
+index a47b3a3..0e454a7 100644
+--- a/include/labwc.h
++++ b/include/labwc.h
+@@ -361,6 +361,7 @@ struct output {
+ 	struct wl_list link; /* server.outputs */
+ 	struct server *server;
+ 	struct wlr_output *wlr_output;
++	struct wlr_output_state pending;
+ 	struct wlr_scene_output *scene_output;
+ 	struct wlr_scene_tree *layer_tree[LAB_NR_LAYERS];
+ 	struct wlr_scene_tree *layer_popup_tree;
+diff --git a/include/output-state.h b/include/output-state.h
+new file mode 100644
+index 0000000..0b90081
+--- /dev/null
++++ b/include/output-state.h
+@@ -0,0 +1,34 @@
++/* SPDX-License-Identifier: GPL-2.0-only */
++#ifndef LABWC_OUTPUT_STATE_H
++#define LABWC_OUTPUT_STATE_H
++
++#include <stdbool.h>
++
++struct output;
++struct wlr_output;
++
++void output_state_init(struct output *output);
++
++/* Forward port of removed functions */
++
++bool wlr_output_test(struct wlr_output *wlr_output);
++
++bool wlr_output_commit(struct wlr_output *wlr_output);
++
++void wlr_output_enable(struct wlr_output *wlr_output, bool enabled);
++
++void wlr_output_set_mode(struct wlr_output *wlr_output,
++	struct wlr_output_mode *mode);
++
++void wlr_output_set_custom_mode(struct wlr_output *wlr_output,
++		int32_t width, int32_t height, int32_t refresh);
++
++void wlr_output_set_scale(struct wlr_output *wlr_output, float scale);
++
++void wlr_output_set_transform(struct wlr_output *wlr_output,
++	enum wl_output_transform transform);
++
++void wlr_output_enable_adaptive_sync(struct wlr_output *wlr_output,
++	bool enabled);
++
++#endif // LABWC_OUTPUT_STATE_H
+diff --git a/src/common/scene-helpers.c b/src/common/scene-helpers.c
+index 755d65d..e1e1f1b 100644
+--- a/src/common/scene-helpers.c
++++ b/src/common/scene-helpers.c
+@@ -5,7 +5,9 @@
+ #include <wlr/types/wlr_scene.h>
+ #include <wlr/util/log.h>
+ #include "common/scene-helpers.h"
++#include "labwc.h"
+ #include "magnifier.h"
++#include "output-state.h"
+ 
+ struct wlr_surface *
+ lab_wlr_surface_from_node(struct wlr_scene_node *node)
+@@ -44,8 +46,8 @@ lab_wlr_scene_output_commit(struct wlr_scene_output *scene_output)
+ {
+ 	assert(scene_output);
+ 	struct wlr_output *wlr_output = scene_output->output;
+-	struct wlr_output_state *state = &wlr_output->pending;
+ 	struct output *output = wlr_output->data;
++	struct wlr_output_state *state = &output->pending;
+ 	bool wants_magnification = output_wants_magnification(output);
+ 
+ 	/*
+diff --git a/src/meson.build b/src/meson.build
+index c88e6bc..f233a8a 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -15,6 +15,7 @@ labwc_sources = files(
+   'osd.c',
+   'osd-field.c',
+   'output.c',
++  'output-state.c',
+   'output-virtual.c',
+   'overlay.c',
+   'placement.c',
+diff --git a/src/output-state.c b/src/output-state.c
+new file mode 100644
+index 0000000..d0ce7e5
+--- /dev/null
++++ b/src/output-state.c
+@@ -0,0 +1,85 @@
++// SPDX-License-Identifier: GPL-2.0-only
++
++#include <wlr/types/wlr_output.h>
++#include <wlr/types/wlr_output_management_v1.h>
++#include "labwc.h"
++#include "output-state.h"
++
++void
++output_state_init(struct output *output)
++{
++	wlr_output_state_init(&output->pending);
++
++	/*
++	 * As there is no direct way to convert an existing output
++	 * configuration to an output_state we first convert it
++	 * to a temporary output-management config and then apply
++	 * it to an empty wlr_output_state.
++	 */
++	struct wlr_output_configuration_v1 *backup_config =
++		wlr_output_configuration_v1_create();
++	struct wlr_output_configuration_head_v1 *backup_head =
++		wlr_output_configuration_head_v1_create(
++			backup_config, output->wlr_output);
++
++	wlr_output_head_v1_state_apply(&backup_head->state, &output->pending);
++	wlr_output_configuration_v1_destroy(backup_config);
++}
++
++bool
++wlr_output_test(struct wlr_output *wlr_output)
++{
++	struct output *output = wlr_output->data;
++	return wlr_output_test_state(wlr_output, &output->pending);
++}
++
++bool
++wlr_output_commit(struct wlr_output *wlr_output)
++{
++	struct output *output = wlr_output->data;
++	return wlr_output_commit_state(wlr_output, &output->pending);
++}
++
++void
++wlr_output_enable(struct wlr_output *wlr_output, bool enabled)
++{
++	struct output *output = wlr_output->data;
++	wlr_output_state_set_enabled(&output->pending, enabled);
++}
++
++void
++wlr_output_set_mode(struct wlr_output *wlr_output, struct wlr_output_mode *mode)
++{
++	struct output *output = wlr_output->data;
++	wlr_output_state_set_mode(&output->pending, mode);
++}
++
++void
++wlr_output_set_custom_mode(struct wlr_output *wlr_output,
++		int32_t width, int32_t height, int32_t refresh)
++{
++	struct output *output = wlr_output->data;
++	wlr_output_state_set_custom_mode(&output->pending, width, height, refresh);
++}
++
++void
++wlr_output_set_scale(struct wlr_output *wlr_output, float scale)
++{
++	struct output *output = wlr_output->data;
++	wlr_output_state_set_scale(&output->pending, scale);
++}
++
++void
++wlr_output_set_transform(struct wlr_output *wlr_output,
++		enum wl_output_transform transform)
++{
++	struct output *output = wlr_output->data;
++	wlr_output_state_set_transform(&output->pending, transform);
++}
++
++void
++wlr_output_enable_adaptive_sync(struct wlr_output *wlr_output, bool enabled)
++{
++	struct output *output = wlr_output->data;
++	wlr_output_state_set_adaptive_sync_enabled(&output->pending, enabled);
++}
+diff --git a/src/output.c b/src/output.c
+index bb2b976..757151e 100644
+--- a/src/output.c
++++ b/src/output.c
+@@ -24,6 +24,7 @@
+ #include "labwc.h"
+ #include "layers.h"
+ #include "node.h"
++#include "output-state.h"
+ #include "output-virtual.h"
+ #include "regions.h"
+ #include "view.h"
+@@ -100,8 +101,7 @@ output_frame_notify(struct wl_listener *listener, void *data)
+ 		return;
+ 	}
+ 
+-	output->wlr_output->pending.tearing_page_flip =
+-		get_tearing_preference(output);
++	output->pending.tearing_page_flip = get_tearing_preference(output);
+ 	lab_wlr_scene_output_commit(output->scene_output);
+ 
+ 	struct timespec now = { 0 };
+@@ -144,6 +144,8 @@ output_destroy_notify(struct wl_listener *listener, void *data)
+ 		}
+ 	}
+ 
++	wlr_output_state_finish(&output->pending);
++
+ 	/*
+ 	 * Ensure that we don't accidentally try to dereference
+ 	 * the output pointer in some output event handler like
+@@ -285,6 +287,12 @@ new_output_notify(struct wl_listener *listener, void *data)
+ 		return;
+ 	}
+ 
++	output = znew(*output);
++	output->wlr_output = wlr_output;
++	wlr_output->data = output;
++	output->server = server;
++	output_state_init(output);
++
+ 	wlr_log(WLR_DEBUG, "enable output");
+ 	wlr_output_enable(wlr_output, true);
+ 
+@@ -297,7 +305,9 @@ new_output_notify(struct wl_listener *listener, void *data)
+ 		wlr_log(WLR_DEBUG, "set preferred mode");
+ 		/* The mode is a tuple of (width, height, refresh rate). */
+ 		preferred_mode = wlr_output_preferred_mode(wlr_output);
+-		wlr_output_set_mode(wlr_output, preferred_mode);
++		if (preferred_mode) {
++			wlr_output_set_mode(wlr_output, preferred_mode);
++		}
+ 	}
+ 
+ 	/*
+@@ -327,10 +337,6 @@ new_output_notify(struct wl_listener *listener, void *data)
+ 
+ 	wlr_output_commit(wlr_output);
+ 
+-	output = znew(*output);
+-	output->wlr_output = wlr_output;
+-	wlr_output->data = output;
+-	output->server = server;
+ 	wlr_output_effective_resolution(wlr_output,
+ 		&output->usable_area.width, &output->usable_area.height);
+ 	wl_list_insert(&server->outputs, &output->link);
+@@ -909,9 +915,6 @@ handle_output_power_manager_set_mode(struct wl_listener *listener, void *data)
+ 		break;
+ 	case ZWLR_OUTPUT_POWER_V1_MODE_ON:
+ 		wlr_output_enable(event->output, true);
+-		if (!wlr_output_test(event->output)) {
+-			wlr_output_rollback(event->output);
+-		}
+ 		wlr_output_commit(event->output);
+ 		/*
+ 		 * Re-set the cursor image so that the cursor
+diff --git a/src/server.c b/src/server.c
+index 0a09393..55d448d 100644
+--- a/src/server.c
++++ b/src/server.c
+@@ -30,6 +30,7 @@
+ #include "labwc.h"
+ #include "layers.h"
+ #include "menu/menu.h"
++#include "output-state.h"
+ #include "output-virtual.h"
+ #include "regions.h"
+ #include "resize-indicator.h"
+diff --git a/src/view.c b/src/view.c
+index ab10620..69a92f4 100644
+--- a/src/view.c
++++ b/src/view.c
+@@ -12,6 +12,7 @@
+ #include "labwc.h"
+ #include "menu/menu.h"
+ #include "osd.h"
++#include "output-state.h"
+ #include "placement.h"
+ #include "regions.h"
+ #include "resize-indicator.h"
+-- 
+2.45.1
+
+From 273ca36e06e0cdaf4d17ce0ffdbb6e72d18350da Mon Sep 17 00:00:00 2001
+From: Consolatis <35009135+Consolatis@users.noreply.github.com>
+Date: Mon, 18 Mar 2024 23:55:37 +0100
+Subject: [PATCH 05/18] [wip] chase: output_layout_req_wl_display (MR 4310)
+
+---
+ src/output.c | 2 +-
+ src/server.c | 3 ++-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/src/output.c b/src/output.c
+index 757151e..a8f643a 100644
+--- a/src/output.c
++++ b/src/output.c
+@@ -423,7 +423,7 @@ output_init(struct server *server)
+ 	 * Create an output layout, which is a wlroots utility for working with
+ 	 * an arrangement of screens in a physical layout.
+ 	 */
+-	server->output_layout = wlr_output_layout_create();
++	server->output_layout = wlr_output_layout_create(server->wl_display);
+ 	if (!server->output_layout) {
+ 		wlr_log(WLR_ERROR, "unable to create output layout");
+ 		exit(EXIT_FAILURE);
+diff --git a/src/server.c b/src/server.c
+index 55d448d..410b503 100644
+--- a/src/server.c
++++ b/src/server.c
+@@ -614,7 +614,8 @@ server_finish(struct server *server)
+ 	wl_display_destroy_clients(server->wl_display);
+ 
+ 	seat_finish(server);
+-	wlr_output_layout_destroy(server->output_layout);
++
++	// FIXME: evaluate if removing output_layout_destroy is correct
+ 
+ 	wl_display_destroy(server->wl_display);
+ 
+-- 
+2.45.1
+
+From 4d049c2ad0b2ac31f0d9837f758e106a492dd24f Mon Sep 17 00:00:00 2001
+From: Consolatis <35009135+Consolatis@users.noreply.github.com>
+Date: Tue, 19 Mar 2024 00:19:24 +0100
+Subject: [PATCH 06/18] [wip] chase: tearing hint (MR #4480)
+
+---
+ src/tearing.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/tearing.c b/src/tearing.c
+index 45113de..583fe1e 100644
+--- a/src/tearing.c
++++ b/src/tearing.c
+@@ -15,7 +15,7 @@ set_tearing_hint(struct wl_listener *listener, void *data)
+ {
+ 	struct tearing_controller *controller = wl_container_of(listener, controller, set_hint);
+ 	struct view *view = view_from_wlr_surface(controller->tearing_control->surface);
+-	if (view && controller->tearing_control->hint) {
++	if (view && controller->tearing_control->current) {
+ 		view->tearing_hint = true;
+ 	}
+ }
+-- 
+2.45.1
+
+From e1409eb315be18fd5dbcc4021093c1348f0647b3 Mon Sep 17 00:00:00 2001
+From: Consolatis <35009135+Consolatis@users.noreply.github.com>
+Date: Tue, 19 Mar 2024 00:22:44 +0100
+Subject: [PATCH 07/18] [wip] chase: tablet_pad to tablet (MR #4585)
+
+---
+ src/seat.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/seat.c b/src/seat.c
+index e850694..b7104b3 100644
+--- a/src/seat.c
++++ b/src/seat.c
+@@ -40,7 +40,7 @@ device_type_from_wlr_device(struct wlr_input_device *wlr_input_device)
+ {
+ 	switch (wlr_input_device->type) {
+ 	case WLR_INPUT_DEVICE_TOUCH:
+-	case WLR_INPUT_DEVICE_TABLET_TOOL:
++	case WLR_INPUT_DEVICE_TABLET:
+ 		return LAB_LIBINPUT_DEVICE_TOUCH;
+ 	default:
+ 		break;
+@@ -397,7 +397,7 @@ seat_update_capabilities(struct seat *seat)
+ 			caps |= WL_SEAT_CAPABILITY_KEYBOARD;
+ 			break;
+ 		case WLR_INPUT_DEVICE_POINTER:
+-		case WLR_INPUT_DEVICE_TABLET_TOOL:
++		case WLR_INPUT_DEVICE_TABLET:
+ 			caps |= WL_SEAT_CAPABILITY_POINTER;
+ 			break;
+ 		case WLR_INPUT_DEVICE_TOUCH:
+@@ -438,7 +438,7 @@ new_input_notify(struct wl_listener *listener, void *data)
+ 	case WLR_INPUT_DEVICE_TOUCH:
+ 		input = new_touch(seat, device);
+ 		break;
+-	case WLR_INPUT_DEVICE_TABLET_TOOL:
++	case WLR_INPUT_DEVICE_TABLET:
+ 		input = new_tablet(seat, device);
+ 		break;
+ 	case WLR_INPUT_DEVICE_TABLET_PAD:
+@@ -603,7 +603,7 @@ seat_reconfigure(struct server *server)
+ 			configure_libinput(input->wlr_input_device);
+ 			map_touch_to_output(seat, input->wlr_input_device);
+ 			break;
+-		case WLR_INPUT_DEVICE_TABLET_TOOL:
++		case WLR_INPUT_DEVICE_TABLET:
+ 			map_input_to_output(seat, input->wlr_input_device, rc.tablet.output_name);
+ 			break;
+ 		default:
+@@ -758,7 +758,7 @@ seat_output_layout_changed(struct seat *seat)
+ 		case WLR_INPUT_DEVICE_TOUCH:
+ 			map_touch_to_output(seat, input->wlr_input_device);
+ 			break;
+-		case WLR_INPUT_DEVICE_TABLET_TOOL:
++		case WLR_INPUT_DEVICE_TABLET:
+ 			map_input_to_output(seat, input->wlr_input_device, rc.tablet.output_name);
+ 			break;
+ 		default:
+-- 
+2.45.1
+
+From 61472ab7a9b86f70fdd46620c1abbb65c7152c6d Mon Sep 17 00:00:00 2001
+From: Consolatis <35009135+Consolatis@users.noreply.github.com>
+Date: Tue, 19 Mar 2024 00:32:47 +0100
+Subject: [PATCH 08/18] [wip] chase: input inhibit removal (MR #4440)
+
+---
+ include/labwc.h      | 14 +--------
+ src/input/cursor.c   | 12 +-------
+ src/input/keyboard.c |  5 +---
+ src/seat.c           |  5 ----
+ src/server.c         | 71 --------------------------------------------
+ 5 files changed, 3 insertions(+), 104 deletions(-)
+
+diff --git a/include/labwc.h b/include/labwc.h
+index 0e454a7..f73be94 100644
+--- a/include/labwc.h
++++ b/include/labwc.h
+@@ -164,7 +164,6 @@ struct seat {
+ 	/* Used to prevent region snapping when starting a move with A-Left */
+ 	bool region_prevent_snap;
+ 
+-	struct wl_client *active_client_while_inhibited;
+ 	struct wl_list inputs;
+ 	struct wl_listener new_input;
+ 	struct wl_listener focus_change;
+@@ -232,10 +231,6 @@ struct server {
+ 	struct wl_listener xwayland_new_surface;
+ #endif
+ 
+-	struct wlr_input_inhibit_manager *input_inhibit;
+-	struct wl_listener input_inhibit_activate;
+-	struct wl_listener input_inhibit_deactivate;
+-
+ 	struct wlr_xdg_activation_v1 *xdg_activation;
+ 	struct wl_listener xdg_activation_request;
+ 
+@@ -418,7 +413,7 @@ void foreign_toplevel_update_outputs(struct view *view);
+  *  - optionally raise above other views
+  *
+  * It's okay to call this function even if the view isn't mapped or the
+- * session is locked/input is inhibited; it will simply do nothing.
++ * session is locked; it will simply do nothing.
+  */
+ void desktop_focus_view(struct view *view, bool raise);
+ 
+@@ -508,13 +503,6 @@ void server_init(struct server *server);
+ void server_start(struct server *server);
+ void server_finish(struct server *server);
+ 
+-/*
+- * wlroots "input inhibitor" extension (required for swaylock) blocks
+- * any client other than the requesting client from receiving events
+- */
+-bool input_inhibit_blocks_surface(struct seat *seat,
+-	struct wl_resource *resource);
+-
+ void create_constraint(struct wl_listener *listener, void *data);
+ void constrain_cursor(struct server *server, struct wlr_pointer_constraint_v1
+ 	*constraint);
+diff --git a/src/input/cursor.c b/src/input/cursor.c
+index dfd1303..23bfef1 100644
+--- a/src/input/cursor.c
++++ b/src/input/cursor.c
+@@ -315,15 +315,6 @@ cursor_update_image(struct seat *seat)
+ 		cursor_names[cursor]);
+ }
+ 
+-bool
+-input_inhibit_blocks_surface(struct seat *seat, struct wl_resource *resource)
+-{
+-	struct wl_client *inhibiting_client =
+-		seat->active_client_while_inhibited;
+-	return inhibiting_client
+-		&& inhibiting_client != wl_resource_get_client(resource);
+-}
+-
+ static bool
+ update_pressed_surface(struct seat *seat, struct cursor_context *ctx)
+ {
+@@ -429,8 +420,7 @@ cursor_update_common(struct server *server, struct cursor_context *ctx,
+ 		return false;
+ 	}
+ 
+-	if (ctx->surface && !input_inhibit_blocks_surface(seat,
+-			ctx->surface->resource)) {
++	if (ctx->surface) {
+ 		/*
+ 		 * Cursor is over an input-enabled client surface.  The
+ 		 * cursor image will be set by request_cursor_notify()
+diff --git a/src/input/keyboard.c b/src/input/keyboard.c
+index 1d1467c..a53fe8b 100644
+--- a/src/input/keyboard.c
++++ b/src/input/keyboard.c
+@@ -417,13 +417,10 @@ handle_compositor_keybindings(struct keyboard *keyboard,
+ 	}
+ 
+ 	/*
+-	 * Ignore labwc keybindings if input is inhibited
++	 * Ignore labwc keybindings if the session is locked.
+ 	 * It's important to do this after key_state_set_pressed() to ensure
+ 	 * _all_ key press/releases are registered
+ 	 */
+-	if (seat->active_client_while_inhibited) {
+-		return false;
+-	}
+ 	if (seat->server->session_lock_manager->locked) {
+ 		return false;
+ 	}
+diff --git a/src/seat.c b/src/seat.c
+index b7104b3..02c5949 100644
+--- a/src/seat.c
++++ b/src/seat.c
+@@ -631,11 +631,6 @@ seat_focus(struct seat *seat, struct wlr_surface *surface, bool is_lock_surface)
+ 		return;
+ 	}
+ 
+-	/* Respect input inhibit (also used by some lock screens) */
+-	if (input_inhibit_blocks_surface(seat, surface->resource)) {
+-		return;
+-	}
+-
+ 	if (!wlr_seat_get_keyboard(seat->seat)) {
+ 		/*
+ 		 * wlr_seat_keyboard_notify_enter() sends wl_keyboard.modifiers,
+diff --git a/src/server.c b/src/server.c
+index 410b503..b0fbaf7 100644
+--- a/src/server.c
++++ b/src/server.c
+@@ -10,7 +10,6 @@
+ #include <wlr/types/wlr_export_dmabuf_v1.h>
+ #include <wlr/types/wlr_fractional_scale_v1.h>
+ #include <wlr/types/wlr_gamma_control_v1.h>
+-#include <wlr/types/wlr_input_inhibitor.h>
+ #include <wlr/types/wlr_presentation_time.h>
+ #include <wlr/types/wlr_primary_selection_v1.h>
+ #include <wlr/types/wlr_screencopy_v1.h>
+@@ -151,61 +150,6 @@ handle_sigchld(int signal, void *data)
+ 	return 0;
+ }
+ 
+-static void
+-seat_inhibit_input(struct seat *seat,  struct wl_client *active_client)
+-{
+-	seat->active_client_while_inhibited = active_client;
+-
+-	if (seat->focused_layer && active_client !=
+-			wl_resource_get_client(seat->focused_layer->resource)) {
+-		seat_set_focus_layer(seat, NULL);
+-	}
+-	struct wlr_surface *previous_kb_surface =
+-		seat->seat->keyboard_state.focused_surface;
+-	if (previous_kb_surface && active_client !=
+-			wl_resource_get_client(previous_kb_surface->resource)) {
+-		seat_focus_surface(seat, NULL);	  /* keyboard focus */
+-	}
+-
+-	struct wlr_seat_client *previous_ptr_client =
+-		seat->seat->pointer_state.focused_client;
+-	if (previous_ptr_client && previous_ptr_client->client != active_client) {
+-		wlr_seat_pointer_clear_focus(seat->seat);
+-	}
+-}
+-
+-static void
+-seat_disinhibit_input(struct seat *seat)
+-{
+-	seat->active_client_while_inhibited = NULL;
+-
+-	/*
+-	 * Triggers a refocus of the topmost surface layer if necessary
+-	 * TODO: Make layer surface focus per-output based on cursor position
+-	 */
+-	output_update_all_usable_areas(seat->server, /*layout_changed*/ false);
+-}
+-
+-static void
+-handle_input_inhibit(struct wl_listener *listener, void *data)
+-{
+-	wlr_log(WLR_INFO, "activate input inhibit");
+-
+-	struct server *server =
+-		wl_container_of(listener, server, input_inhibit_activate);
+-	seat_inhibit_input(&server->seat, server->input_inhibit->active_client);
+-}
+-
+-static void
+-handle_input_disinhibit(struct wl_listener *listener, void *data)
+-{
+-	wlr_log(WLR_INFO, "deactivate input inhibit");
+-
+-	struct server *server =
+-		wl_container_of(listener, server, input_inhibit_deactivate);
+-	seat_disinhibit_input(&server->seat);
+-}
+-
+ static void
+ handle_drm_lease_request(struct wl_listener *listener, void *data)
+ {
+@@ -522,21 +466,6 @@ server_init(struct server *server)
+ 	wl_signal_add(&server->constraints->events.new_constraint,
+ 		&server->new_constraint);
+ 
+-	server->input_inhibit =
+-		wlr_input_inhibit_manager_create(server->wl_display);
+-	if (!server->input_inhibit) {
+-		wlr_log(WLR_ERROR, "unable to create input inhibit manager");
+-		exit(EXIT_FAILURE);
+-	}
+-
+-	wl_signal_add(&server->input_inhibit->events.activate,
+-		&server->input_inhibit_activate);
+-	server->input_inhibit_activate.notify = handle_input_inhibit;
+-
+-	wl_signal_add(&server->input_inhibit->events.deactivate,
+-		&server->input_inhibit_deactivate);
+-	server->input_inhibit_deactivate.notify = handle_input_disinhibit;
+-
+ 	server->foreign_toplevel_manager =
+ 		wlr_foreign_toplevel_manager_v1_create(server->wl_display);
+ 
+-- 
+2.45.1
+
+From 171a8b319201ac4fea64ad25a05711ed5acdc9a9 Mon Sep 17 00:00:00 2001
+From: Consolatis <35009135+Consolatis@users.noreply.github.com>
+Date: Tue, 19 Mar 2024 01:05:35 +0100
+Subject: [PATCH 09/18] [wip] chase: relative axis direction (MR #4003)
+
+---
+ src/input/cursor.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/input/cursor.c b/src/input/cursor.c
+index 23bfef1..d087089 100644
+--- a/src/input/cursor.c
++++ b/src/input/cursor.c
+@@ -1287,7 +1287,7 @@ cursor_axis(struct wl_listener *listener, void *data)
+ 		wlr_seat_pointer_notify_axis(seat->seat, event->time_msec,
+ 			event->orientation, rc.scroll_factor * event->delta,
+ 			round(rc.scroll_factor * event->delta_discrete),
+-			event->source);
++			event->source, event->relative_direction);
+ 	}
+ }
+ 
+-- 
+2.45.1
+
+From c872e180f8abfbff7e67e456a8747a9bd180b3b7 Mon Sep 17 00:00:00 2001
+From: Consolatis <35009135+Consolatis@users.noreply.github.com>
+Date: Tue, 19 Mar 2024 01:31:23 +0100
+Subject: [PATCH 10/18] [wip] chase: presentation is now handled internally (MR
+ #4482)
+
+---
+ src/server.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/server.c b/src/server.c
+index b0fbaf7..e904eef 100644
+--- a/src/server.c
++++ b/src/server.c
+@@ -443,7 +443,6 @@ server_init(struct server *server)
+ 		wlr_log(WLR_ERROR, "unable to create presentation interface");
+ 		exit(EXIT_FAILURE);
+ 	}
+-	wlr_scene_set_presentation(server->scene, presentation);
+ 
+ 	wlr_export_dmabuf_manager_v1_create(server->wl_display);
+ 	wlr_screencopy_manager_v1_create(server->wl_display);
+-- 
+2.45.1
+
+From b5fdffb849282ad8d235511bc1981ac84077a8de Mon Sep 17 00:00:00 2001
+From: Consolatis <35009135+Consolatis@users.noreply.github.com>
+Date: Tue, 19 Mar 2024 01:32:05 +0100
+Subject: [PATCH 11/18] [wip] chase: use wayland pointer enums rather than wlr
+ ones (MR #4575)
+
+---
+ include/input/cursor.h |  4 ++--
+ src/input/cursor.c     |  6 +++---
+ src/input/tablet-pad.c | 15 ++++++++++++++-
+ src/input/touch.c      |  6 +++---
+ 4 files changed, 22 insertions(+), 9 deletions(-)
+
+diff --git a/include/input/cursor.h b/include/input/cursor.h
+index 24f7326..e9ad4fa 100644
+--- a/include/input/cursor.h
++++ b/include/input/cursor.h
+@@ -11,7 +11,7 @@ struct seat;
+ struct server;
+ struct wlr_surface;
+ struct wlr_scene_node;
+-enum wlr_button_state;
++enum wl_pointer_button_state;
+ 
+ /* Cursors used internally by labwc */
+ enum lab_cursors {
+@@ -150,7 +150,7 @@ void cursor_emulate_move_absolute(struct seat *seat,
+ 		struct wlr_input_device *device,
+ 		double x, double y, uint32_t time_msec);
+ void cursor_emulate_button(struct seat *seat,
+-		uint32_t button, enum wlr_button_state state, uint32_t time_msec);
++		uint32_t button, enum wl_pointer_button_state state, uint32_t time_msec);
+ void cursor_finish(struct seat *seat);
+ 
+ #endif /* LABWC_CURSOR_H */
+diff --git a/src/input/cursor.c b/src/input/cursor.c
+index d087089..fe95695 100644
+--- a/src/input/cursor.c
++++ b/src/input/cursor.c
+@@ -1161,7 +1161,7 @@ cursor_emulate_move_absolute(struct seat *seat, struct wlr_input_device *device,
+ 
+ void
+ cursor_emulate_button(struct seat *seat, uint32_t button,
+-		enum wlr_button_state state, uint32_t time_msec)
++		enum wl_pointer_button_state state, uint32_t time_msec)
+ {
+ 	idle_manager_notify_activity(seat->seat);
+ 
+@@ -1226,14 +1226,14 @@ handle_cursor_axis(struct server *server, struct cursor_context *ctx,
+ 			&server->seat.keyboard_group->keyboard);
+ 
+ 	enum direction direction = LAB_DIRECTION_INVALID;
+-	if (event->orientation == WLR_AXIS_ORIENTATION_HORIZONTAL) {
++	if (event->orientation == WL_POINTER_AXIS_HORIZONTAL_SCROLL) {
+ 		int rel = compare_delta(event, &server->seat.smooth_scroll_offset.x);
+ 		if (rel < 0) {
+ 			direction = LAB_DIRECTION_LEFT;
+ 		} else if (rel > 0) {
+ 			direction = LAB_DIRECTION_RIGHT;
+ 		}
+-	} else if (event->orientation == WLR_AXIS_ORIENTATION_VERTICAL) {
++	} else if (event->orientation == WL_POINTER_AXIS_VERTICAL_SCROLL) {
+ 		int rel = compare_delta(event, &server->seat.smooth_scroll_offset.y);
+ 		if (rel < 0) {
+ 			direction = LAB_DIRECTION_UP;
+diff --git a/src/input/tablet-pad.c b/src/input/tablet-pad.c
+index a155de8..87ca0fa 100644
+--- a/src/input/tablet-pad.c
++++ b/src/input/tablet-pad.c
+@@ -21,7 +21,20 @@ handle_button(struct wl_listener *listener, void *data)
+ 		return;
+ 	}
+ 
+-	cursor_emulate_button(tablet_pad->seat, button, ev->state, ev->time_msec);
++	enum wl_pointer_button_state state;
++	switch (ev->state) {
++	case WLR_BUTTON_PRESSED:
++		state = WL_POINTER_BUTTON_STATE_PRESSED;
++		break;
++	case WLR_BUTTON_RELEASED:
++		state = WL_POINTER_BUTTON_STATE_RELEASED;
++		break;
++	default:
++		wlr_log(WLR_ERROR, "invalid button state: %u", ev->state);
++		return;
++	}
++
++	cursor_emulate_button(tablet_pad->seat, button, state, ev->time_msec);
+ }
+ 
+ static void
+diff --git a/src/input/touch.c b/src/input/touch.c
+index 048aaf2..d2419d1 100644
+--- a/src/input/touch.c
++++ b/src/input/touch.c
+@@ -127,7 +127,7 @@ touch_down(struct wl_listener *listener, void *data)
+ 	} else {
+ 		cursor_emulate_move_absolute(seat, &event->touch->base,
+ 			event->x, event->y, event->time_msec);
+-		cursor_emulate_button(seat, BTN_LEFT, WLR_BUTTON_PRESSED,
++		cursor_emulate_button(seat, BTN_LEFT, WL_POINTER_BUTTON_STATE_PRESSED,
+ 			event->time_msec);
+ 	}
+ }
+@@ -146,8 +146,8 @@ touch_up(struct wl_listener *listener, void *data)
+ 				wlr_seat_touch_notify_up(seat->seat, event->time_msec,
+ 					event->touch_id);
+ 			} else {
+-				cursor_emulate_button(seat, BTN_LEFT, WLR_BUTTON_RELEASED,
+-					event->time_msec);
++				cursor_emulate_button(seat, BTN_LEFT,
++					WL_POINTER_BUTTON_STATE_RELEASED, event->time_msec);
+ 			}
+ 			wl_list_remove(&touch_point->link);
+ 			zfree(touch_point);
+-- 
+2.45.1
+
+From 65380db13adab88b749343cc3fb0cb6c6ae01899 Mon Sep 17 00:00:00 2001
+From: Consolatis <35009135+Consolatis@users.noreply.github.com>
+Date: Tue, 19 Mar 2024 01:47:23 +0100
+Subject: [PATCH 12/18] [wip] chase: backend create now requires event_loop arg
+
+---
+ src/server.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/src/server.c b/src/server.c
+index e904eef..b20aa93 100644
+--- a/src/server.c
++++ b/src/server.c
+@@ -291,7 +291,7 @@ server_init(struct server *server)
+ 	 * window if an x11 server is running.
+ 	 */
+ 	server->backend = wlr_backend_autocreate(
+-		server->wl_display, &server->session);
++		server->wl_event_loop, &server->session);
+ 	if (!server->backend) {
+ 		wlr_log(WLR_ERROR, "unable to create backend");
+ 		fprintf(stderr, helpful_seat_error_message);
+@@ -304,7 +304,8 @@ server_init(struct server *server)
+ 
+ 	if (!server->headless.backend) {
+ 		wlr_log(WLR_DEBUG, "manually creating headless backend");
+-		server->headless.backend = wlr_headless_backend_create(server->wl_display);
++		server->headless.backend = wlr_headless_backend_create(
++			server->wl_event_loop);
+ 	} else {
+ 		wlr_log(WLR_DEBUG, "headless backend already exists");
+ 	}
+-- 
+2.45.1
+
+From 34fa7c1732d1b2720479609db920c7f22cc95d22 Mon Sep 17 00:00:00 2001
+From: Consolatis <35009135+Consolatis@users.noreply.github.com>
+Date: Tue, 19 Mar 2024 02:38:09 +0100
+Subject: [PATCH 13/18] [dirty] chase: xdg new toplevel (parent-less popups
+ missing) (MR 4345)
+
+---
+ include/labwc.h |  2 +-
+ src/xdg.c       | 20 ++++++++------------
+ 2 files changed, 9 insertions(+), 13 deletions(-)
+
+diff --git a/include/labwc.h b/include/labwc.h
+index f73be94..ee9de19 100644
+--- a/include/labwc.h
++++ b/include/labwc.h
+@@ -219,7 +219,7 @@ struct server {
+ 	struct wlr_xdg_shell *xdg_shell;
+ 	struct wlr_layer_shell_v1 *layer_shell;
+ 
+-	struct wl_listener new_xdg_surface;
++	struct wl_listener new_xdg_toplevel;
+ 	struct wl_listener new_layer_surface;
+ 
+ 	struct wl_listener kde_server_decoration;
+diff --git a/src/xdg.c b/src/xdg.c
+index 2b8bf96..58b97c4 100644
+--- a/src/xdg.c
++++ b/src/xdg.c
+@@ -715,19 +715,14 @@ xdg_activation_handle_request(struct wl_listener *listener, void *data)
+  *     to help the popups find their parent nodes
+  */
+ static void
+-xdg_surface_new(struct wl_listener *listener, void *data)
++xdg_toplevel_new(struct wl_listener *listener, void *data)
+ {
+ 	struct server *server =
+-		wl_container_of(listener, server, new_xdg_surface);
+-	struct wlr_xdg_surface *xdg_surface = data;
++		wl_container_of(listener, server, new_xdg_toplevel);
++	struct wlr_xdg_toplevel *xdg_toplevel = data;
++	struct wlr_xdg_surface *xdg_surface = xdg_toplevel->base;
+ 
+-	/*
+-	 * We deal with popups in xdg-popup.c and layers.c as they have to be
+-	 * treated differently
+-	 */
+-	if (xdg_surface->role != WLR_XDG_SURFACE_ROLE_TOPLEVEL) {
+-		return;
+-	}
++	assert(xdg_surface->role == WLR_XDG_SURFACE_ROLE_TOPLEVEL);
+ 
+ 	wlr_xdg_surface_ping(xdg_surface);
+ 
+@@ -822,8 +817,9 @@ xdg_shell_init(struct server *server)
+ 		wlr_log(WLR_ERROR, "unable to create the XDG shell interface");
+ 		exit(EXIT_FAILURE);
+ 	}
+-	server->new_xdg_surface.notify = xdg_surface_new;
+-	wl_signal_add(&server->xdg_shell->events.new_surface, &server->new_xdg_surface);
++
++	server->new_xdg_toplevel.notify = xdg_toplevel_new;
++	wl_signal_add(&server->xdg_shell->events.new_toplevel, &server->new_xdg_toplevel);
+ 
+ 	server->xdg_activation = wlr_xdg_activation_v1_create(server->wl_display);
+ 	if (!server->xdg_activation) {
+-- 
+2.45.1
+
+From 59de48d425f576659869691f4175626e4a4ca2ab Mon Sep 17 00:00:00 2001
+From: Consolatis <35009135+Consolatis@users.noreply.github.com>
+Date: Mon, 27 May 2024 15:55:46 +0200
+Subject: [PATCH 14/18] [wip] chase: move xdg destroy signal to toplevel /
+ popup (MR 4345)
+
+---
+ src/layers.c    | 2 +-
+ src/xdg-popup.c | 2 +-
+ src/xdg.c       | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/layers.c b/src/layers.c
+index 4a853fe..63574f5 100644
+--- a/src/layers.c
++++ b/src/layers.c
+@@ -402,7 +402,7 @@ create_popup(struct wlr_xdg_popup *wlr_popup, struct wlr_scene_tree *parent)
+ 		LAB_NODE_DESC_LAYER_POPUP, popup);
+ 
+ 	popup->destroy.notify = popup_handle_destroy;
+-	wl_signal_add(&wlr_popup->base->events.destroy, &popup->destroy);
++	wl_signal_add(&wlr_popup->events.destroy, &popup->destroy);
+ 
+ 	popup->new_popup.notify = popup_handle_new_popup;
+ 	wl_signal_add(&wlr_popup->base->events.new_popup, &popup->new_popup);
+diff --git a/src/xdg-popup.c b/src/xdg-popup.c
+index 0d1ed90..b4d8a94 100644
+--- a/src/xdg-popup.c
++++ b/src/xdg-popup.c
+@@ -92,7 +92,7 @@ xdg_popup_create(struct view *view, struct wlr_xdg_popup *wlr_popup)
+ 	popup->wlr_popup = wlr_popup;
+ 
+ 	popup->destroy.notify = handle_xdg_popup_destroy;
+-	wl_signal_add(&wlr_popup->base->events.destroy, &popup->destroy);
++	wl_signal_add(&wlr_popup->events.destroy, &popup->destroy);
+ 
+ 	popup->new_popup.notify = popup_handle_new_xdg_popup;
+ 	wl_signal_add(&wlr_popup->base->events.new_popup, &popup->new_popup);
+diff --git a/src/xdg.c b/src/xdg.c
+index 58b97c4..9ff7e17 100644
+--- a/src/xdg.c
++++ b/src/xdg.c
+@@ -791,9 +791,9 @@ xdg_toplevel_new(struct wl_listener *listener, void *data)
+ 	xdg_surface->surface->data = tree;
+ 
+ 	view_connect_map(view, xdg_surface->surface);
+-	CONNECT_SIGNAL(xdg_surface, view, destroy);
+ 
+ 	struct wlr_xdg_toplevel *toplevel = xdg_surface->toplevel;
++	CONNECT_SIGNAL(toplevel, view, destroy);
+ 	CONNECT_SIGNAL(toplevel, view, request_move);
+ 	CONNECT_SIGNAL(toplevel, view, request_resize);
+ 	CONNECT_SIGNAL(toplevel, view, request_minimize);
+-- 
+2.45.1
+
+From 3becb4b31cdee151f8b1e650d4985a3fe3d8ea19 Mon Sep 17 00:00:00 2001
+From: Consolatis <35009135+Consolatis@users.noreply.github.com>
+Date: Tue, 23 Apr 2024 23:37:08 +0200
+Subject: [PATCH 15/18] [dirty] chase: request initial configure (decoration
+ callback missing) (MR 4396)
+
+---
+ src/xdg.c | 17 +++++++++++------
+ 1 file changed, 11 insertions(+), 6 deletions(-)
+
+diff --git a/src/xdg.c b/src/xdg.c
+index 9ff7e17..7782f8c 100644
+--- a/src/xdg.c
++++ b/src/xdg.c
+@@ -82,6 +82,13 @@ handle_commit(struct wl_listener *listener, void *data)
+ 	struct wlr_xdg_surface *xdg_surface = xdg_surface_from_view(view);
+ 	assert(view->surface);
+ 
++	if (xdg_surface->initial_commit) {
++		wlr_log(WLR_DEBUG, "scheduling configure");
++		//FIXME: confirm potential xdg-deco mode
++		wlr_xdg_surface_schedule_configure(xdg_surface);
++		return;
++	}
++
+ 	struct wlr_box size;
+ 	wlr_xdg_surface_get_geometry(xdg_surface, &size);
+ 
+@@ -214,6 +221,7 @@ handle_destroy(struct wl_listener *listener, void *data)
+ 	/* Remove xdg-shell view specific listeners */
+ 	wl_list_remove(&xdg_toplevel_view->set_app_id.link);
+ 	wl_list_remove(&xdg_toplevel_view->new_popup.link);
++	wl_list_remove(&view->commit.link);
+ 
+ 	if (view->pending_configure_timeout) {
+ 		wl_event_source_remove(view->pending_configure_timeout);
+@@ -560,7 +568,6 @@ xdg_toplevel_view_map(struct view *view)
+ 		view_set_output(view, output_nearest_to_cursor(view->server));
+ 	}
+ 	struct wlr_xdg_surface *xdg_surface = xdg_surface_from_view(view);
+-	view->surface = xdg_surface->surface;
+ 	wlr_scene_node_set_enabled(&view->scene_tree->node, true);
+ 	if (!view->been_mapped) {
+ 		struct wlr_xdg_toplevel_requested *requested =
+@@ -614,9 +621,6 @@ xdg_toplevel_view_map(struct view *view)
+ 		view_moved(view);
+ 	}
+ 
+-	view->commit.notify = handle_commit;
+-	wl_signal_add(&xdg_surface->surface->events.commit, &view->commit);
+-
+ 	view_impl_map(view);
+ 	view->been_mapped = true;
+ }
+@@ -627,7 +631,6 @@ xdg_toplevel_view_unmap(struct view *view, bool client_request)
+ 	if (view->mapped) {
+ 		view->mapped = false;
+ 		wlr_scene_node_set_enabled(&view->scene_tree->node, false);
+-		wl_list_remove(&view->commit.link);
+ 		view_impl_unmap(view);
+ 	}
+ }
+@@ -788,7 +791,8 @@ xdg_toplevel_new(struct wl_listener *listener, void *data)
+ 	kde_server_decoration_set_view(view, xdg_surface->surface);
+ 
+ 	/* In support of xdg popups and IME popup */
+-	xdg_surface->surface->data = tree;
++	view->surface = xdg_surface->surface;
++	view->surface->data = tree;
+ 
+ 	view_connect_map(view, xdg_surface->surface);
+ 
+@@ -800,6 +804,7 @@ xdg_toplevel_new(struct wl_listener *listener, void *data)
+ 	CONNECT_SIGNAL(toplevel, view, request_maximize);
+ 	CONNECT_SIGNAL(toplevel, view, request_fullscreen);
+ 	CONNECT_SIGNAL(toplevel, view, set_title);
++	CONNECT_SIGNAL(view->surface, view, commit);
+ 
+ 	/* Events specific to XDG toplevel views */
+ 	CONNECT_SIGNAL(toplevel, xdg_toplevel_view, set_app_id);
+-- 
+2.45.1
+
+From dee4e971e2ddb062f6765140afbffda827bf970d Mon Sep 17 00:00:00 2001
+From: Consolatis <35009135+Consolatis@users.noreply.github.com>
+Date: Tue, 23 Apr 2024 22:01:35 +0200
+Subject: [PATCH 16/18] [wip] chase: let wlr_scene track damage again (MR
+ #4253)
+
+---
+ src/common/scene-helpers.c | 7 -------
+ 1 file changed, 7 deletions(-)
+
+diff --git a/src/common/scene-helpers.c b/src/common/scene-helpers.c
+index e1e1f1b..8da5399 100644
+--- a/src/common/scene-helpers.c
++++ b/src/common/scene-helpers.c
+@@ -77,13 +77,6 @@ lab_wlr_scene_output_commit(struct wlr_scene_output *scene_output)
+ 			wlr_output->name);
+ 		return false;
+ 	}
+-	/*
+-	 * FIXME: Remove the following line as soon as
+-	 * https://gitlab.freedesktop.org/wlroots/wlroots/-/merge_requests/4253
+-	 * is merged. At that point wlr_scene handles damage tracking internally
+-	 * again.
+-	 */
+-	wlr_damage_ring_rotate(&scene_output->damage_ring);
+ 
+ 	if (!wlr_box_empty(&additional_damage)) {
+ 		wlr_damage_ring_add_box(&scene_output->damage_ring, &additional_damage);
+-- 
+2.45.1
+
+From 1e0d119800a735d7c27d78d1ecaeb117df70a0d8 Mon Sep 17 00:00:00 2001
+From: Consolatis <35009135+Consolatis@users.noreply.github.com>
+Date: Wed, 24 Apr 2024 01:52:23 +0200
+Subject: [PATCH 17/18] [wip] disable restacking of unmanaged windows (MR
+ #4052)
+
+---
+ src/xwayland-unmanaged.c | 1 -
+ src/xwayland.c           | 8 --------
+ 2 files changed, 9 deletions(-)
+
+diff --git a/src/xwayland-unmanaged.c b/src/xwayland-unmanaged.c
+index 72dce1f..38d3c31 100644
+--- a/src/xwayland-unmanaged.c
++++ b/src/xwayland-unmanaged.c
+@@ -42,7 +42,6 @@ handle_map(struct wl_listener *listener, void *data)
+ 	assert(!unmanaged->node);
+ 
+ 	/* Stack new surface on top */
+-	wlr_xwayland_surface_restack(xsurface, NULL, XCB_STACK_MODE_ABOVE);
+ 	wl_list_append(&unmanaged->server->unmanaged_surfaces, &unmanaged->link);
+ 
+ 	CONNECT_SIGNAL(xsurface, unmanaged, set_geometry);
+diff --git a/src/xwayland.c b/src/xwayland.c
+index 2e53703..043acb5 100644
+--- a/src/xwayland.c
++++ b/src/xwayland.c
+@@ -780,14 +780,6 @@ xwayland_view_move_to_front(struct view *view)
+ 	 */
+ 	wlr_xwayland_surface_restack(xwayland_surface_from_view(view),
+ 		NULL, XCB_STACK_MODE_ABOVE);
+-
+-	/* Restack unmanaged surfaces on top */
+-	struct wl_list *list = &view->server->unmanaged_surfaces;
+-	struct xwayland_unmanaged *u;
+-	wl_list_for_each(u, list, link) {
+-		wlr_xwayland_surface_restack(u->xwayland_surface,
+-			NULL, XCB_STACK_MODE_ABOVE);
+-	}
+ }
+ 
+ static void
+-- 
+2.45.1
+
+From bc0a4626926227df3d075dc4d2916705a6b49933 Mon Sep 17 00:00:00 2001
+From: Consolatis <35009135+Consolatis@users.noreply.github.com>
+Date: Fri, 10 May 2024 20:02:12 +0200
+Subject: [PATCH 18/18] [revert_later] debug frame timing + add FPS counter
+
+---
+ include/labwc.h            |  2 ++
+ src/common/scene-helpers.c |  2 +-
+ src/output-state.c         | 35 ++++++++++++++++++++++++++++++++++-
+ src/output.c               |  5 +++++
+ 4 files changed, 42 insertions(+), 2 deletions(-)
+
+diff --git a/include/labwc.h b/include/labwc.h
+index ee9de19..50bec15 100644
+--- a/include/labwc.h
++++ b/include/labwc.h
+@@ -357,6 +357,7 @@ struct output {
+ 	struct server *server;
+ 	struct wlr_output *wlr_output;
+ 	struct wlr_output_state pending;
++	struct wl_event_source *fps_timer;
+ 	struct wlr_scene_output *scene_output;
+ 	struct wlr_scene_tree *layer_tree[LAB_NR_LAYERS];
+ 	struct wlr_scene_tree *layer_popup_tree;
+@@ -375,6 +376,7 @@ struct output {
+ 
+ 	bool leased;
+ 	bool gamma_lut_changed;
++	uint32_t frames;
+ };
+ 
+ #undef LAB_NR_LAYERS
+diff --git a/src/common/scene-helpers.c b/src/common/scene-helpers.c
+index 8da5399..623b4a1 100644
+--- a/src/common/scene-helpers.c
++++ b/src/common/scene-helpers.c
+@@ -58,7 +58,7 @@ lab_wlr_scene_output_commit(struct wlr_scene_output *scene_output)
+ 	 */
+ 	if (!wlr_output->needs_frame && !pixman_region32_not_empty(
+ 			&scene_output->damage_ring.current) && !wants_magnification) {
+-		return false;
++		return true;
+ 	}
+ 
+ 	if (!wlr_scene_output_build_state(scene_output, state, NULL)) {
+diff --git a/src/output-state.c b/src/output-state.c
+index d0ce7e5..24fe02c 100644
+--- a/src/output-state.c
++++ b/src/output-state.c
+@@ -2,9 +2,25 @@
+ 
+ #include <wlr/types/wlr_output.h>
+ #include <wlr/types/wlr_output_management_v1.h>
++#include <wlr/util/log.h>
+ #include "labwc.h"
+ #include "output-state.h"
+ 
++//#define FPS_TIMEOUT (2 * 1000)
++
++#ifdef FPS_TIMEOUT
++static int
++handle_fps_timer(void *data)
++{
++	struct output *output = data;
++	wlr_log(WLR_DEBUG, "%s commit: avg %.2f fps",
++		output->wlr_output->name, (double)output->frames / (FPS_TIMEOUT / 1000));
++	wl_event_source_timer_update(output->fps_timer, FPS_TIMEOUT);
++	output->frames = 0;
++	return 0;
++}
++#endif
++
+ void
+ output_state_init(struct output *output)
+ {
+@@ -37,7 +53,24 @@ bool
+ wlr_output_commit(struct wlr_output *wlr_output)
+ {
+ 	struct output *output = wlr_output->data;
+-	return wlr_output_commit_state(wlr_output, &output->pending);
++#ifdef FPS_TIMEOUT
++	if (!output->fps_timer) {
++		output->fps_timer = wl_event_loop_add_timer(
++			output->server->wl_event_loop, handle_fps_timer, output);
++		wl_event_source_timer_update(output->fps_timer, FPS_TIMEOUT);
++	}
++#endif
++	bool committed = wlr_output_commit_state(wlr_output, &output->pending);
++	if (committed) {
++#ifdef FPS_TIMEOUT
++		output->frames++;
++#endif
++		wlr_output_state_finish(&output->pending);
++		wlr_output_state_init(&output->pending);
++	} else {
++		wlr_log(WLR_ERROR, "Failed to commit frame");
++	}
++	return committed;
+ }
+ 
+ void
+diff --git a/src/output.c b/src/output.c
+index a8f643a..12b40a0 100644
+--- a/src/output.c
++++ b/src/output.c
+@@ -153,6 +153,11 @@ output_destroy_notify(struct wl_listener *listener, void *data)
+ 	 */
+ 	output->wlr_output->data = NULL;
+ 
++	if (output->fps_timer) {
++		wl_event_source_remove(output->fps_timer);
++		output->fps_timer = NULL;
++	}
++
+ 	/*
+ 	 * output->scene_output (if still around at this point) is
+ 	 * destroyed automatically when the wlr_output is destroyed
+-- 
+2.45.1
+
