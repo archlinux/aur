@@ -1,6 +1,6 @@
 pkgbase = python-panel
 	pkgdesc = The powerful data exploration & web app framework for Python
-	pkgver = 1.4.3
+	pkgver = 1.4.4
 	pkgrel = 1
 	url = https://panel.holoviz.org
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-panel
 	depends = python-linkify-it-py
 	depends = python-tqdm
 	depends = python-bleach
-	source = panel-1.4.3.tar.gz::https://github.com/holoviz/panel/archive/v1.4.3.tar.gz
-	sha512sums = 1007c54c75903de206b206463ec0b830a8818a95ac6318b03e783ab77de79d57c9c3e8fcafd7f93ea54afa25fbddc19e9afa7eee8163a14e75ab62b74796d8a0
+	source = panel-1.4.4.tar.gz::https://github.com/holoviz/panel/archive/v1.4.4.tar.gz
+	sha512sums = 02894ce6f46ca6d4295195ec371561868007d323e1c23a43550926d0e2736794b83e3b8670cf6d3628e1ff2b02665c493082dece8b01647f612246946e3acbf1
 
 pkgname = python-panel
