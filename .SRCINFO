@@ -1,0 +1,16 @@
+pkgbase = prettier-ada
+	pkgdesc = Pretty printer for Ada.
+	pkgver = 25.0w
+	pkgrel = 1
+	url = https://github.com/AdaCore/prettier-ada
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = gprbuild
+	depends = gcc-ada
+	depends = gnatcoll-core
+	depends = libvss
+	source = https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources-2024/prettier-ada-25.0w-20240408-16284-src.tar.gz
+	sha256sums = d531db8e79372e25191383eac290e52bd202e47e7f124b20373961231baa2b4f
+
+pkgname = prettier-ada
