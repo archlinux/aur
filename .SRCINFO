@@ -1,0 +1,16 @@
+pkgbase = proxsuite-git
+	pkgdesc = The Advanced Proximal Optimization Toolbox
+	pkgver = 0.6.4.r1799.
+	pkgrel = 1
+	url = https://github.com/Simple-Robotics/proxsuite
+	arch = any
+	license = BSD-2-Clause
+	makedepends = cmake
+	depends = eigen
+	depends = simde
+	provides = proxsuite
+	conflicts = proxsuite
+	source = proxsuite::git+https://github.com/nim65s/proxsuite.git
+	sha256sums = SKIP
+
+pkgname = proxsuite-git
