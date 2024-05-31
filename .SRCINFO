@@ -1,0 +1,16 @@
+pkgbase = lal-refactor
+	pkgdesc = A collection of source code refactoring tools for the Ada.
+	pkgver = 25.0w
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/AdaCore/lal-refactor
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = gprbuild
+	depends = gcc-ada
+	depends = adasat
+	source = https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources-2024/lal-refactor-25.0w-20240505-16130-src.tar.gz
+	sha256sums = 5de03fc76f3765c33a73395cbd510118bd01fc5f5d065277447eebb109d94c57
+
+pkgname = lal-refactor
