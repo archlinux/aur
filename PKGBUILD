@@ -1,7 +1,7 @@
 # Maintainer: Rod Kay   <rodakay5 at gmail dot com>
 
 pkgname=gnatstudio-bin
-pkgver=20230501
+pkgver=20240506
 pkgrel=1
 pkgdesc="GNAT Programming Studio for Ada binary"
 
@@ -12,10 +12,10 @@ license=(GPL3)
 depends=("python")
 conflicts=("gnat-gps")
 
-source=(https://github.com/AdaCore/gnatstudio/releases/download/gnatstudio-cr-20230501/GNAT_Studio-x86_64.AppImage
+source=(https://github.com/AdaCore/gnatstudio/releases/download/gnatstudio-cr-$pkgver/GNAT_Studio-x86_64.AppImage
         COPYING3)
 
-sha256sums=(133673bf478c7f3393f32af9a05d49fa816d4491e063550effaaf09dff245116
+sha256sums=(a601fd886260cf53a586a9254d25df4c6d2059a842daf9f8ac8ed9969187cf61
             8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903)
 
 
