@@ -11,7 +11,7 @@ _pkgname=clion
 _dlname=CLion
 pkgver=242.12881.46
 _dlver=$pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform IDE for C and C++ from JetBrains. Early Access Program."
 arch=('x86_64' 'aarch64')
 options=(!strip)
@@ -82,7 +82,7 @@ package_clion-eap() {
             "${pkgdir}/usr/share/pixmaps/${pkgbase}.svg"
     ln -s "/opt/${pkgbase}/license/CLion_Preview_License.txt" \
             "${pkgdir}/usr/share/licenses/${pkgbase}"
-    ln -s "/opt/${pkgbase}/bin/${_pkgname}.sh" \
+    ln -s "/opt/${pkgbase}/bin/${_pkgname}" \
             "${pkgdir}/usr/bin/${pkgbase}"
 }
 

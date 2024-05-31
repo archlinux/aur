@@ -1,7 +1,7 @@
 pkgbase = clion-eap
 	pkgdesc = Cross-platform IDE for C and C++ from JetBrains. Early Access Program.
 	pkgver = 242.12881.46
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.jetbrains.com/clion
 	arch = x86_64
 	arch = aarch64
