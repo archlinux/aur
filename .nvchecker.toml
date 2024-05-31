@@ -1,0 +1,5 @@
+[securefs]
+source = "github"
+github = "netheril96/securefs"
+use_max_tag = true
+prefix = "v"

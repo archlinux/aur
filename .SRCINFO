@@ -1,17 +1,25 @@
 pkgbase = securefs
-	pkgdesc = A better transparent encryption filesystem
-	pkgver = 0.13.1
+	pkgdesc = A filesystem in userspace (FUSE) with transparent encryption and decryption
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/netheril96/securefs
-	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = git
-	makedepends = python
-	depends = fuse
-	depends = clang
-	source = git+https://github.com/netheril96/securefs.git#tag=0.13.1
-	sha256sums = SKIP
+	makedepends = tclap
+	depends = abseil-cpp
+	depends = argon2
+	depends = crypto++
+	depends = fuse2
+	depends = gcc-libs
+	depends = glibc
+	depends = google-fruit
+	depends = protobuf
+	depends = sqlite
+	depends = uni-algo
+	source = git+https://github.com/netheril96/securefs.git?signed#tag=v1.0.0
+	validpgpkeys = 7640E42D45792AEA634188EAB10AE9952D2E33D9
+	sha256sums = 2e6fe604e1e6055f3308a117fbafad63e04bd7178402d181e1b9a30e804d67e0
 
 pkgname = securefs
