@@ -1,7 +1,7 @@
 # Maintainer: Dennis Herbrich (Gyroplast) <dennis.herbrich@veloxis.de>
 
 pkgname=clockify-cli
-pkgver=0.51.0
+pkgver=0.51.1
 pkgrel=1
 pkgdesc='A simple cli to manage your time entries on Clockify from terminal'
 arch=('x86_64')
@@ -9,11 +9,20 @@ url='https://clockify-cli.netlify.app'
 license=('Apache-2.0')
 makedepends=('git' 'go')
 source=("${pkgname}-${pkgver}::git+https://github.com/lucassabreu/clockify-cli#tag=v${pkgver}")
-sha256sums=('fa56160787c272ef2be94820dfb250e0e3db91cc0e68f4230a7727826bbb8175')
+sha256sums=('d5ccf36263c8c9caeb4dfde4decc044df112e447d5335eae82279e4ef1a7b47d')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
   mkdir -p build
+
+	commit="$(git rev-parse "v${pkgver}")"
+	build_date="$(date -u "+%Y-%m-%dT%H:%M:%SZ")"
+
+	sed -i \
+		-e "s/^\(\s*version\s*=\s*\"\)dev\(\".*$\)/\1${pkgver}\2/" \
+		-e "s/^\(\s*commit\s*=\s*\"\)none\(\".*$\)/\1${commit}\2/" \
+		-e "s/^\(\s*date\s*=\s*\"\)unknown\(\".*$\)/\1${build_date}\2/" \
+		cmd/clockify-cli/main.go
 }
 
 build() {
