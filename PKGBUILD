@@ -3,7 +3,7 @@ pkgname=snapmail-bin
 _pkgname=Snapmail
 pkgver=0.3.1_rc.6
 _electronversion=19
-pkgrel=3
+pkgrel=4
 pkgdesc="An open-source P2P messaging app based on Holochain.It is the latest iteration of Snapmail from Glass Bead Software."
 arch=('x86_64')
 url="https://github.com/glassbeadsoftware/snapmail"
@@ -11,14 +11,17 @@ license=('CAL-1.0')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    "electron${_electronversion}-bin"
-    'java-runtime'
+    "electron${_electronversion}"
     'nodejs'
+    'gtk2'
 )
 makedepends=(
     'fuse2'
 )
-options=('!strip')
+options=(
+    '!strip'
+    '!emptydirs'
+)
 _install_path="/opt/appimages"
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver//_/-}/${_pkgname}-${pkgver%_rc.6}.AppImage"
@@ -27,11 +30,12 @@ source=(
 )
 sha256sums=('e40525d3a19e352aaa261539ae9304a9eaf434ebcf4c427583062ecb12022fab'
             '12ce98b0343aa56cfff71264980dbbcb0f4696bff5500c3ea5f59aed05b9ef62'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
