@@ -2,7 +2,7 @@
 
 pkgname=gz-gui8
 pkgver=8.1.1
-pkgrel=1
+pkgrel=2
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Graphical interfaces for robotics applications"
@@ -10,17 +10,22 @@ arch=('any')
 url="https://github.com/gazebosim/${_pkgbase}"
 license=('Apache')
 depends=(
-  'protobuf'
-  'tinyxml2'
-  'gz-utils=2'
-  'gz-math=7'
   'gz-common=5'
-  'gz-plugin=2'
-  'gz-transport=13'
-  'gz-rendering=8'
+  'gz-math=7'
   'gz-msgs=10'
+  'gz-plugin=2'
+  'gz-rendering=8'
+  'gz-transport=13'
+  'gz-utils=2'
+  'protobuf'
   'qt5-base'
+  'qt5-charts'
+  'qt5-declarative'
+  'qt5-graphicaleffects'
+  'qt5-location'
+  'qt5-quickcontrols'
   'qt5-quickcontrols2'
+  'tinyxml2'
 )
 makedepends=(
   'cmake'
