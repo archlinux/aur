@@ -4,11 +4,9 @@ post_install() {
   cat <<EOF
 
 -----------------------------------------------------------------------------
-oama version 0.13.1
+oama version 0.13.2
 
-The redirect_uri automatically generated as localhost with a free random
-portnumber. There is no default redirect_uri but it is still can be configured
-if a fixed portnumber is needed for whatever reason.
+Fixed token_params_mode for microsoft, solving issue #54
 
 -----------------------------------------------------------------------------
 
