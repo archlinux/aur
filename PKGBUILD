@@ -6,8 +6,8 @@
 pkgbase=gprbuild
 pkgdesc="Builder for multi-language systems."
 pkgname=(libgpr gprbuild gprtools gprname gprslave)
-pkgver=24.0w
-pkgrel=6
+pkgver=25.0w
+pkgrel=1
 epoch=1
 
 arch=(i686 x86_64)
@@ -17,24 +17,25 @@ license=(GPL3 custom)
 depends=(gcc-ada xmlada)
 makedepends=(gprbuild python-sphinx)
 
-source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/gprbuild-$pkgver-20230324-1649D-src.tar.gz
-        https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/gprconfig-kb-$pkgver-20230324-16644-src.tar.gz
+source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources-2024/gprbuild-25.0w-20240408-162DA-src.tar.gz
+        https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources-2024/gprconfig-kb-25.0w-20240408-16484-src.tar.gz
         0001-Makefile-build-relocatable-instead-of-static-binary.patch
         gpr.gpr-patch)
 
-sha256sums=(efeb12ab26ca687a000ca781f3bce0e4ec2d4efd62b996116f2f505e50239b4f
-            7de5388f05168fb32577556989f0bc0f4f4d615cbd6a79ad544127a090aba5f4
-            6ebbea41d4b8b516d0646438338fb228ea907600a2ad2c594bab41a7e1c3680c
+sha256sums=(6c3cd17bc972ebcb470edefd1fa1d79f39fee902e4ca0251da56654dcb5c55ab
+            f8e3d74d9a0c5cb82256831603e00198dcfab7d7e5a0c5c8370a4a8ea7031f1f
+            96df34fab3c61790a7af8db2659a59ce9c8f767d712e9d999e50778bce259db1
             b4a31b4f23c1a040eebad26aff6c771d04afe0b9d7da19c97ef9fde9bceed3db)
 
-_gprbuild_src=gprbuild-$pkgver-20230430-16222-src
-_gprconfig_kb_src=gprconfig-kb-$pkgver-20230428-16586-src
+
+_gprbuild_src=gprbuild-$pkgver-20240505-164AB-src
+_gprconfig_kb_src=gprconfig-kb-$pkgver-20240505-16517-src
 
 
 prepare()
 {
     cd $srcdir/$_gprbuild_src
-    patch -Np1 -i $srcdir/0001-Makefile-build-relocatable-instead-of-static-binary.patch
+    patch -Np0 -i $srcdir/0001-Makefile-build-relocatable-instead-of-static-binary.patch
     patch -Np0 -i $srcdir/gpr.gpr-patch     # Rename 'libgpr.so' to 'libgpr-gnat.so' to prevent name clash with the 'grpc' package.
 
     ln -sfT $srcdir/gprconfig_kb-$pkgver/db/ share/gprconfig
@@ -65,10 +66,10 @@ build()
 
     make GPRBUILD_OPTIONS="$GPRBUILD_OPTIONS" libgpr.build
     make GPRBUILD_OPTIONS="$GPRBUILD_OPTIONS" build
-    
+
     cd doc
-    make html txt info texinfo \
-         1> doc-make-1.log     \
+    make html                \
+         1> doc-make-1.log   \
          2> doc-make-2.log
 }
 
@@ -127,7 +128,7 @@ package_gprbuild()
 
     # Install the knowledge base.
     #
-    cp -fr $srcdir/gprconfig-kb-24.0w-20230428-16586-src/db \
+    cp -fr $srcdir/$_gprconfig_kb_src/db \
            $pkgdir/usr/share/gprconfig
 }
 
