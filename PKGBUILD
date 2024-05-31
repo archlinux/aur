@@ -3,14 +3,14 @@
 
 pkgname=lime3ds-git
 pkgver=r10343.ceb97be
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc='An experimental open-source Nintendo 3DS emulator/debugger'
 url='https://github.com/Lime3DS/Lime3DS'
 license=('GPL-2.0')
 depends=('sdl2' 'mbedtls' 'speexdsp' 'qt6-multimedia' 'ffmpeg' 'libfdk-aac' 'libusb' 'openssl' 'glibc' 'gcc-libs' 'sndio' 'zstd' 'soundtouch' 'fmt' 'libinih' 'openal' 'enet')
 makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'qt6-tools' 'gcc' 'glslang' 'vulkan-headers' 'nlohmann-json' 'catch2' 'clang' 'libc++' 'ninja')
-conflicts=('lime3ds-appimage' 'lime3ds' 'citra')
+conflicts=('lime3ds-appimage' 'lime3ds')
 options=('lto' '!buildflags')
 source=("Lime3DS::git+https://github.com/Lime3DS/Lime3DS"
         "boost::git+https://github.com/blitzingeagle/ext-boost.git"
