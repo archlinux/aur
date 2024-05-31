@@ -1,0 +1,17 @@
+pkgbase = heirloom-pax
+	pkgdesc = A version of the POSIX standard archive tool from the The Heirloom Toolchest
+	pkgver = 070715
+	pkgrel = 1
+	url = https://heirloom.sourceforge.net/tools.html
+	arch = x86_64
+	license = TODO
+	provides = pax
+	conflicts = pax
+	source = heirloom-070715.tar.bz2::https://master.dl.sourceforge.net/project/heirloom/heirloom/070715/heirloom-070715.tar.bz2?viasf=1
+	source = makefile.patch
+	md5sums = d846be4b268b1d55b6ffcef847f09979
+	md5sums = 3a20671c610f9b9c6aec14ce88574869
+	sha256sums = eb33f70bcc019b1d0e0a41f1d7552d45c57a16272e4e1c48634ec3e44496a30f
+	sha256sums = 34e48e04983d63dae2e3e7798d2c4a7f92a34f5bc743c7e6ebcd193e2217adc6
+
+pkgname = heirloom-pax
