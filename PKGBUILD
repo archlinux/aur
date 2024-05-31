@@ -2,7 +2,7 @@
 # Maintainer: Devops <devops@nucleuscloud.com>
 
 pkgname='neosync-bin'
-pkgver=0.4.23
+pkgver=0.4.24
 pkgrel=1
 pkgdesc='CLI for interfacing with Neosync'
 url='https://www.neosync.dev'
@@ -11,11 +11,11 @@ license=('MIT')
 provides=('neosync')
 conflicts=('neosync')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/nucleuscloud/neosync/releases/download/v0.4.23/neosync_0.4.23_linux_arm64.tar.gz")
-sha256sums_aarch64=('f8498144da59c32c0f45c5e916ad0e05908b5674208266c26d66e7d80dadd608')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/nucleuscloud/neosync/releases/download/v0.4.24/neosync_0.4.24_linux_arm64.tar.gz")
+sha256sums_aarch64=('e1f6f0dbad279d018ca8ef6f24dcdd41af9a0712d541a8ee3c4de916f357debe')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/nucleuscloud/neosync/releases/download/v0.4.23/neosync_0.4.23_linux_amd64.tar.gz")
-sha256sums_x86_64=('d8307c7b236c381421f68f48d12f37db6b640dae9f5e6066ba28ee7ae13bc582')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/nucleuscloud/neosync/releases/download/v0.4.24/neosync_0.4.24_linux_amd64.tar.gz")
+sha256sums_x86_64=('684b18bf7c8a2a7ff116f9575df7bfd4254970c49ead584895bb49f7d32f0399')
 
 package() {
   # bin
