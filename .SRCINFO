@@ -1,0 +1,7 @@
+pkgbase = mairen-bin
+	pkgdesc = 透麦仁
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+
+pkgname = mairen-bin
