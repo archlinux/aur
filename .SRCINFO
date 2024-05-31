@@ -1,8 +1,8 @@
 pkgbase = vulkada
-	pkgdesc = A complete Vulkan 1.1 binding for the Ada 2012 programming language.
+	pkgdesc = A complete Vulkan 1.3 thick binding for the Ada 2012 programming language.
 	pkgver = 2024.12.4
 	pkgrel = 1
-	url = https://phasercat.com/vulkada/
+	url = https://phasercat.com/vulkada
 	arch = i686
 	arch = x86_64
 	license = GPL3
