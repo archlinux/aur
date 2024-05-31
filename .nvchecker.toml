@@ -1,4 +1,4 @@
-[python-myokit]
+[lfortran]
 source = "github"
 github = "lfortran/lfortran"
 use_latest_release = "true"
