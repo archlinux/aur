@@ -4,7 +4,7 @@ _pkgname=imFile
 pkgver=1.1.0
 _electronversion=30
 _nodeversion=20
-pkgrel=1
+pkgrel=2
 pkgdesc="A full-featured download manager.Forked from motrix."
 arch=(
     'aarch64'
@@ -25,7 +25,7 @@ depends=(
 )
 makedepends=(
     'npm'
-    'pnpm'
+    'yarn'
     'nvm'
     'gendesk'
     'curl'
@@ -58,9 +58,8 @@ build() {
     #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     #export ELECTRONVERSION="${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
-    pnpm config set store-dir "${srcdir}/.pnpm_store"
-    pnpm config set cache-dir "${srcdir}/.pnpm_cache"
-    pnpm config set link-workspace-packages true
+    mkdir -p "${srcdir}/.electron-gyp"
+    touch "${srcdir}/.electron-gyp/.yarnrc"
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
         export npm_config_registry=https://registry.npmmirror.com
         export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
@@ -69,8 +68,8 @@ build() {
     else
         echo "Your network is OK."
     fi
-    pnpm install
-    pnpm run build:dir
+    yarn install --cache-folder "${srcdir}/.yarn_cache"
+    yarn run build:dir
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"

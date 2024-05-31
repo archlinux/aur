@@ -1,14 +1,14 @@
 pkgbase = imfile
 	pkgdesc = A full-featured download manager.Forked from motrix.
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://imfile.io/
 	arch = aarch64
 	arch = armv7h
 	arch = x86_64
 	license = MIT
 	makedepends = npm
-	makedepends = pnpm
+	makedepends = yarn
 	makedepends = nvm
 	makedepends = gendesk
 	makedepends = curl
