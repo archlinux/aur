@@ -1,8 +1,8 @@
 # Maintainer: George Woodall <georgewoodall82@gmail.com>
 pkgname=openscad-thumbnailers
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
-pkgdesc="GTK thumbnailers for .scad and .stl files"
+pkgdesc="GTK thumbnailers for .scad, .stl and .3mf files"
 arch=('any')
 url="https://github.com/georgewoodall82/openscad-thumbnailers"
 license=('GPL-3.0-only')
