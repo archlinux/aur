@@ -1,6 +1,6 @@
 # Maintainer: lakejason0 <lakesarchive@outlook.com>
 pkgname='ttf-lxgw-heart-serif'
-pkgver=0.923
+pkgver=0.923.1
 pkgrel=1
 pkgdesc="「霞鹜铭心宋」，在「こころ明朝体」的基础上修改制作，将新致宋字面横向压缩 85%，并增加圆角，更加清瘦、圆润。"
 arch=('any')
@@ -10,7 +10,7 @@ source=("$pkgname-$pkgver-$pkgrel.ttf::$url/releases/download/v$pkgver/LXGWHeart
         *.md)
 changelog='changelog.txt'
 conflicts=('ttf-lxgw-heart-serif')
-sha256sums=('926b9d8465f276fffb6590dd38674bc60ff7560842536743972605a2884e2bde'
+sha256sums=('d9599d890d853250ef22edd10ec8915cedb38e80bb9b775d213e374f4ed72715'
             'bdadacd0751cbb3c9f040d1314ab9b855c3ebf1b540fa6dcf44524cd49819fa1'
             '1483c7de02dcf8b9c54b3b1aacabf7d6bdf32d412ca6724c0292ea68e862d8cf')
 
