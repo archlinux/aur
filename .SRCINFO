@@ -21,8 +21,8 @@ pkgbase = ytfe
 	sha256sums = 44bc1c569ae7829e65bc5ec3525ad260a2dc64d340da0f9912c4395552134eae
 	sha256sums = bf8e1295602992c618eacbc43a36c201293c8a159f49dd42a724c72f5e8a5267
 	source_x86_64 = http://oscomp.hu/depot/ytfe_direct/1.22.1/ytfe_linux_x86_64.xz
-	sha256sums_x86_64 = 9b9202a1409493adc5bd1c9546ce1d2a3385c06eed713732ee25ec10820d6b5d
+	sha256sums_x86_64 = 32b1eced3683d7280665e4ccdd4a4596ce9cf2f82e24e0e8332352dcadfff5fc
 	source_i686 = http://oscomp.hu/depot/ytfe_direct/1.22.1/ytfe_linux_i686.xz
-	sha256sums_i686 = b5906a1fb6c84fee29d4b3299ce146f515d045ffcf3a26f3436b98bc4ee6d08f
+	sha256sums_i686 = 8fd149f2657336758f7cc22d358b6f4146e528a25a9c0cef3e41b01552c60c26
 
 pkgname = ytfe
