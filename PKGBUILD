@@ -2,7 +2,7 @@
 pkgname=turtle-git
 _app_id="de.philippun1.${pkgname%-git}"
 pkgver=0.9.r0.gd542f7f
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage your git repositories with easy-to-use dialogs in Nautilus."
 arch=('any')
 url="https://gitlab.gnome.org/philippun1/turtle"
@@ -28,6 +28,7 @@ optdepends=(
   'thunarx-python: Thunar plugin'
   'nemo-python: Nemo plugin'
   'python-caja: Caja plugin'
+  'seahorse: sign commits'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'turtlegit')
@@ -35,17 +36,17 @@ source=('git+https://gitlab.gnome.org/philippun1/turtle.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
 #  PYTHONPATH=./ pytest
 
   appstreamcli validate --no-net "data/${_app_id}.metainfo.xml"
@@ -53,7 +54,7 @@ check() {
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm755 "${pkgname%-git}"{_cli,_service} -t "$pkgdir/usr/bin/"
