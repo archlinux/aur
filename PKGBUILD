@@ -1,5 +1,4 @@
-# Maintainer:
-# Contributor: Serge K <arch@phnx47.net>
+# Maintainer: Serge K <arch@phnx47.net>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 
 _appname=ledger-live-desktop
@@ -9,7 +8,7 @@ _electron='electron28'
 _sha='6f2bc1a7a6115e702fa16ba68f3cc8ef6e0eaafb'
 _short_sha="${_sha::7}"
 pkgver=2.81.2
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 _gh_owner='LedgerHQ'
 _gh_repo='ledger-live'
@@ -37,6 +36,7 @@ build() {
 
   _nvm_install
 
+  export UV_USE_IO_URING=0
   export GIT_REVISION="${pkgver}"
   pnpm i --filter="${_appname}..." --filter="ledger-live" --frozen-lockfile --unsafe-perm
   pnpm build:lld:deps
