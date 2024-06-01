@@ -3,7 +3,7 @@
 
 pkgname=babi-grammars
 _pkgname=babi_grammars
-pkgver=0.0.56
+pkgver=0.0.57
 pkgrel=1
 pkgdesc="Grammars for babi text editor"
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('51ea5f32173363d14289ea2f2be65180240d2b7f7682f5a164a49d6fca60ee23')
+sha256sums=('c350d05127a188364fc12b4a23aa5f992b0af89ca7753932afdbc562f4081dc8')
 
 build() {
         cd "${_pkgname}-${pkgver}"
