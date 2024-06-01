@@ -3,7 +3,7 @@
 _pkgname=asfa
 pkgname=${_pkgname}-bin
 pkgver=0.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc='share files by upload via ssh and generation of a non-guessable link (pre-built)'
 url="https://github.com/obreitwi/asfa"
 license=("MIT")
@@ -26,5 +26,6 @@ package() {
         | xargs -0 install -Dm644 -t "$pkgdir/usr/share/man/man1"
     find example-config -type f -print0 \
         | xargs -0 install -Dm644 -t "$pkgdir/usr/share/doc/asfa/example-config"
-    install -Dm644 README.md "$pkgdir/usr/share/doc/asfa/README.md"
+    install -Dm644 README.md -t "$pkgdir/usr/share/doc/asfa"
+    install -Dm644 CHANGELOG.md -t "$pkgdir/usr/share/doc/asfa"
 }
