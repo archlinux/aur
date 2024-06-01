@@ -1,15 +1,16 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Matthias Lamers <aussieevil@hotmail.com>
 pkgname=ohrrpgce
-pkgver=wip.r13543
+pkgver=wip.r13546
 pkgrel=1
 pkgdesc="A role playing game creation engine"
 arch=(i686 x86_64)
 license=(GPL)
 url="http://rpg.hamsterrepublic.com/ohrrpgce/Main_Page"
 depends=('sdl2_mixer' 'openeuphoria' 'libxpm' 'libxrandr' 'ncurses' 'xterm')
-makedepends=('subversion' 'freebasic' 'python2-scons')
+makedepends=('subversion' 'freebasic' 'scons')
 optdepends=('timidity-freepats: midi music support')
-source=(svn+https://rpg.hamsterrepublic.com/source/wip)
+source=(svn+https://rpg.hamsterrepublic.com/source/wip#revision=r13546)
 
 pkgver(){
 	cd "${srcdir}/wip"
@@ -41,9 +42,9 @@ EOF
 	chmod a+x hspeak
 	#cd ..
 	if [ "$CARCH" = "x86_64" ]; then
-		scons2 arch=64 game custom unlump relump release=1 install destdir='../release'
+		scons arch=64 game custom unlump relump release=1 install destdir='../release'
 	else
-		scons2 game custom unlump relump release=1 install destdir='../release'
+		scons game custom unlump relump release=1 install destdir='../release'
 	fi
 	cd vikings
 	"${srcdir}/release/usr/share/games/ohrrpgce/relump" vikings.rpgdir vikings.rpg
