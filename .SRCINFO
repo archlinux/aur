@@ -1,6 +1,6 @@
 pkgbase = python-trame-client
 	pkgdesc = Internal client of trame
-	pkgver = 3.0.3
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/Kitware/trame-client
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-trame-client
 	makedepends = nodejs
 	makedepends = npm
 	depends = python
-	source = trame-client-3.0.3.tar.gz::https://github.com/Kitware/trame-client/archive/v3.0.3.tar.gz
-	sha512sums = 12f76f9721cab3fa81eafa4e66e590bf93fdcf36bd42843bcd09e689f8472c1c3c07016c8bd77a42c46f0f21eb528885a1ab4cf6ad321c6d09b5ae49bd9cf965
+	source = trame-client-3.1.0.tar.gz::https://github.com/Kitware/trame-client/archive/v3.1.0.tar.gz
+	sha512sums = 0663a1eb878284015346444f599b033e93d7bef858766762453859290cddb7c288e73bbfd6080efaec9adce7fbb0516570dbea2e2b04e706db8cfd15e887cebf
 
 pkgname = python-trame-client
