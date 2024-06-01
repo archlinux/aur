@@ -1,0 +1,20 @@
+Description: This patch updates the "IOSupport/glsl.cpp" file to support the latest version of OpenColorIO.
+
+<https://github.com/NatronGitHub/openfx-io/commit/d954ef7d20146ee49b05d13f03279524bdf26a58>
+
+diff --unified --recursive --text openfx-io.orig/IOSupport/glsl.cpp openfx-io.new/IOSupport/glsl.cpp
+--- openfx-io.orig/IOSupport/glsl.cpp	2022-11-15 22:46:54.000000000 -0300
++++ openfx-io.new/IOSupport/glsl.cpp	2024-05-31 23:47:24.309619415 -0300
+@@ -332,7 +332,12 @@
+         unsigned height = 0;
+         GpuShaderDesc::TextureType channel = GpuShaderDesc::TEXTURE_RGB_CHANNEL;
+         Interpolation interpolation = INTERP_LINEAR;
++# if OCIO_VERSION_HEX >= 0x2030000
++        GpuShaderCreator::TextureDimensions dimensions;
++        m_shaderDesc->getTexture(idx, textureName, samplerName, width, height, channel, dimensions, interpolation);
++# else
+         m_shaderDesc->getTexture(idx, textureName, samplerName, width, height, channel, interpolation);
++# endif
+ 
+         if (!textureName || !*textureName
+             || !samplerName || !*samplerName

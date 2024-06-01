@@ -7,11 +7,11 @@ _tinydir_commit=64fb1d4376d7580aa1013fdbacddbbeba67bb085
 
 pkgname=openfx-io
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc="A set of Readers/Writers plugins written using the OpenFX standard"
 url="https://github.com/NatronGitHub/openfx-io"
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('ffmpeg' 'openimageio' 'libseexpr2')
 makedepends=('opencolorio')
 
@@ -23,12 +23,14 @@ source=("${_pkgname}.tar.gz::${url}/archive/refs/tags/${_natron_ver}.tar.gz"
         "openfx-${_natron_ver}.tar.gz::${_url}/openfx/archive/refs/tags/${_natron_ver}.tar.gz"
         "openfx-supportext-${_natron_ver}.tar.gz::${_url}/openfx-supportext/archive/${_natron_ver}.tar.gz"
         "SequenceParsing-${_SequenceParsing_commit}.tar.gz::${_url}/SequenceParsing/archive/${_SequenceParsing_commit}.tar.gz"
-        "tinydir-${_tinydir_commit}.tar.gz::${_url}/tinydir/archive/${_tinydir_commit}.tar.gz")
-sha512sums=('610e27f056743961c7b3cfbf217e4474ee047e8b70e77eec4b23fb1ad647860b1cbb184c9439d9ca6bf8bcef5fa1248998f98e5da263ec15c070ff7e9264be24'
-            '174b75061ac2bb887f2e10df1ec899276e8e27f1873d2dda2ef07ee3fb53f54169fe37d9921642248e28faa974a50a62e5e8ab20ccdd09c96a235084ae16d87d'
-            'd0ff47d51176defa8ea09c84b3f5c82e899455e5a3375c32fcf4d6ec24d96f3c2882cff759cd6a3a79be3004d2244092c16cfeb5313660dcab8fc17135435968'
-            'SKIP'
-            'SKIP')
+        "tinydir-${_tinydir_commit}.tar.gz::${_url}/tinydir/archive/${_tinydir_commit}.tar.gz"
+        'update-opencolorio-support.patch')
+b2sums=('ccd145aabb554e4a3665d3da11dc7660cdf8a4907a6fe6a5a72895a6ecec4096a7ee8bf79d917233e1bd355b82fca6f0d52cef179a3bd3ffcf4e73ab0eeb4d10'
+        'b5bda788e381d8bfc585a16817ab207152327638290099b54565306e1f6165eb36f7b34ed57732ca53b75d34c6abfc30b7e6f73548820e0f214b4be99db84420'
+        '26c63f91c778bb3e79e3ef8b0e7a0416881315a8c60e03e9bb7bf13e87115ad3b9b39ff9d249f2cc4e89f4a759fa18fe81448ebd5bb68f0af0be3d251a4c3240'
+        'SKIP'
+        'SKIP'
+        '5f0553a064c884da1f01f0274f2f997f917425037d560ca88bbf9ecb1d77973d8de128035060af130080fe80ccdb4780eb8d1c73692c0fbf9fcd9e62336cab28')
 
 prepare() {
   tar -xzf "openfx-${_natron_ver}.tar.gz" --strip 1 \
@@ -40,6 +42,9 @@ prepare() {
       -C   "${_pkgname}/IOSupport/SequenceParsing/"
   tar -xzf "tinydir-${_tinydir_commit}.tar.gz" --strip 1 \
       -C   "${_pkgname}/IOSupport/SequenceParsing/tinydir"
+
+  cd "${srcdir}/${_pkgname}"
+  patch --forward --strip=1 --input="${srcdir}/update-opencolorio-support.patch"
 }
 
 build() {
