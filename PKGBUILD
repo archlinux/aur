@@ -2,7 +2,7 @@
 
 _pkgname=babi
 pkgname=$_pkgname-git
-pkgver=v1.5.6.r8.g661eec0
+pkgver=v1.5.6.r22.g7544638
 pkgrel=1
 pkgdesc="A text editor, eventually..."
 arch=('any')
