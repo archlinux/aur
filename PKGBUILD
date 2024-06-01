@@ -5,7 +5,7 @@
 
 
 pkgname=minetest-game-cdb
-pkgver=20240508
+pkgver=20240527
 pkgrel=1
 pkgdesc='Latest version of “Minetest Game” from the Minetest Content Database, but installed system-wide as a regular Arch package.'
 
@@ -30,7 +30,7 @@ prepare() {
 }
 
 pkgver() {
-    echo $releases | jq -r '.[0].release_date' | date +%Y%m%d
+    date -d "$(echo $releases | jq -r '.[0].release_date')" "+%Y%m%d"
 }
 
 build() {
