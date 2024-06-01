@@ -1,0 +1,31 @@
+pkgbase = peazip
+	pkgdesc = Cross-platform file and archive manager
+	pkgver = 9.8.0
+	pkgrel = 1
+	url = https://github.com/peazip/PeaZip
+	arch = i686
+	arch = x86_64
+	license = LGPL-3.0-or-later
+	makedepends = git
+	makedepends = lazarus
+	makedepends = xmlstarlet
+	depends = 7-zip
+	depends = brotli
+	depends = zstd
+	depends = qt6pas
+	optdepends = paq8o
+	optdepends = quad
+	optdepends = unace
+	optdepends = upx
+	optdepends = zpaq
+	provides = peazip
+	conflicts = peazip
+	source = peazip::git+https://github.com/peazip/PeaZip.git#tag=9.8.0
+	sha256sums = SKIP
+
+pkgname = peazip
+	depends = 7-zip
+	depends = brotli
+	depends = zstd
+	depends = qt6pas
+	depends = hicolor-icon-theme
