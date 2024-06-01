@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/hmgle/graftcp"
 license=('GPL3')
 depends=('glibc')
-makedepends=('go' 'gcc' 'make')
+makedepends=('go' 'gcc' 'make' 'pkgconf')
 backup=('etc/graftcp-local/graftcp-local.conf')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hmgle/${pkgname}/archive/v${pkgver}.tar.gz"
 	"graftcp-local.service")
