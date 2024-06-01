@@ -1,14 +1,14 @@
 pkgbase = exchango-bin
 	pkgdesc = Currency conversion tool written in Go
-	pkgver = 0.0.1
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/tfkhdyt/exchango
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
-	source_x86_64 = exchango-bin-v0.0.1.tar.gz::https://github.com/tfkhdyt/exchango/releases/download/v0.0.1/exchango-v0.0.1-linux-amd64.tar.gz
-	sha256sums_x86_64 = 239951d0a151b4d793023990e9d88a3956bc706cb7c23584ad1209ed87dd35b9
-	source_aarch64 = exchango-bin-v0.0.1.tar.gz::https://github.com/tfkhdyt/exchango/releases/download/v0.0.1/exchango-v0.0.1-linux-arm64.tar.gz
-	sha256sums_aarch64 = 510168f68dab9632297a28d1295b894236602fc035df192060977ba83de71929
+	source_x86_64 = exchango-bin-v0.1.0-amd64.tar.gz::https://github.com/tfkhdyt/exchango/releases/download/v0.1.0/exchango-v0.1.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 32d2d3e94bfb4b904f9ddbe9e14be00c83b8b88de966f3741ed7f48d8bfde6d
+	source_aarch64 = exchango-bin-v0.1.0-arm64.tar.gz::https://github.com/tfkhdyt/exchango/releases/download/v0.1.0/exchango-v0.1.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = bf616d2d2ebe4f097159a5c6d036ce8bba1813bda4e0223a6787d8982e08482e
 
 pkgname = exchango-bin
