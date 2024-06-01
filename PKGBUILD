@@ -2,9 +2,9 @@
 
 pkgname=uwaka-git
 _pkgname="${pkgname%-git}"
-pkgver=0.5.0.r1.g32ac7e9
+pkgver=0.6.0
 pkgver() { git -C "$_pkgname" describe --tags | sed 's/^v//;s/-/.r/;s/-/./g'; }
-pkgrel=2
+pkgrel=1
 pkgdesc="Universal Wakatime Client"
 arch=('x86_64' 'aarch64' 'i686')
 url="https://github.com/yayaduckd/$_pkgname"
@@ -19,7 +19,7 @@ execname="uwaka_$arch-linux"
 
 build() {
 	cd "$srcdir/$_pkgname"
-	zig build --release=small
+	zig build --release=fast
 }
 
 package() {
@@ -28,4 +28,3 @@ package() {
 	install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
 	install -Dm755 "zig-out/bin/$execname" "$pkgdir/usr/bin/$_pkgname"
 }
-

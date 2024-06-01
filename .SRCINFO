@@ -1,7 +1,7 @@
 pkgbase = uwaka-git
 	pkgdesc = Universal Wakatime Client
-	pkgver = 0.5.0.r1.g32ac7e9
-	pkgrel = 2
+	pkgver = 0.6.0
+	pkgrel = 1
 	url = https://github.com/yayaduckd/uwaka
 	arch = x86_64
 	arch = aarch64
