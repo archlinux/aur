@@ -1,12 +1,13 @@
+# -*- sh -*-
+
 # Maintainer: Klaus Alexander Seistrup <klaus@seistrup.dk>
 # Contributor: Anna Vyalkova <cyber AT sysrq DOT in>
-# -*- sh -*-
 
 pkgname='offpunk-git'
 _pkgname='offpunk'
-pkgver=2.2.r5.g9a7e88d
-pkgrel=1
 epoch=5
+pkgver=2.2.r10.g80c096c
+pkgrel=1
 pkgdesc='Fork of the command-line Gemini client AV-98 with added offline capabilities (built from latest commit)'
 arch=('any')
 url='https://git.sr.ht/~lioploum/offpunk'
@@ -35,6 +36,7 @@ optdepends=(
   'python-requests: for HTTP support'
   'python-setproctitle: allows offpunk to change its process title'
   'timg: view images and videos in the terminal'
+  'wl-clipboard: for clipboard copy/paste under Wayland'
   'xdg-utils: xdg-open opens a URL in the preferred application'
   'xsel: copies text to and from the clipboard'
 )
@@ -61,10 +63,10 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -vDm0644 man/*.1 -t "$pkgdir/usr/share/man/man1/"
-  for _doc in CHANGELOG CONTRIBUTORS README.md; do
-    install -vDm0644 "$_doc" "$pkgdir/usr/share/doc/$pkgname/$_doc"
-  done
+  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
+    CHANGELOG CONTRIBUTORS README.md
+  install -vDm0644 -t "$pkgdir/usr/share/man/man1" \
+    man/*.1
 }
 
 # eof

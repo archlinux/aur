@@ -1,6 +1,6 @@
 pkgbase = offpunk-git
 	pkgdesc = Fork of the command-line Gemini client AV-98 with added offline capabilities (built from latest commit)
-	pkgver = 2.2.r5.g9a7e88d
+	pkgver = 2.2.r10.g80c096c
 	pkgrel = 1
 	epoch = 5
 	url = https://git.sr.ht/~lioploum/offpunk
@@ -25,6 +25,7 @@ pkgbase = offpunk-git
 	optdepends = python-requests: for HTTP support
 	optdepends = python-setproctitle: allows offpunk to change its process title
 	optdepends = timg: view images and videos in the terminal
+	optdepends = wl-clipboard: for clipboard copy/paste under Wayland
 	optdepends = xdg-utils: xdg-open opens a URL in the preferred application
 	optdepends = xsel: copies text to and from the clipboard
 	provides = offpunk
