@@ -4,41 +4,30 @@
 # https://github.com/transmission-remote-gui/transgui
 
 ## options
-: ${_build_gtk2:=true}
-: ${_build_gtk3:=false}
-: ${_build_qt5:=true}
-: ${_build_qt6:=false}
-
-: ${_build_git:=true}
-
-unset _pkgtype
-[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
+: ${_widgets:=qt6}
 
 ## basic info
 _pkgname="transgui"
-pkgbase="$_pkgname${_pkgtype:-}"
+pkgname="$_pkgname-git"
 pkgver=5.18.0.r90.g25df397
 pkgrel=1
 pkgdesc="Feature-rich client for Transmission Remote"
 url="https://github.com/transmission-remote-gui/transgui"
 license=("GPL-2.0-or-later")
-arch=('i686' 'x86_64')
+arch=('x86_64')
 
-unset pkgname
-[[ "${_build_gtk2::1}" == "t" ]] && pkgname+=("$_pkgname-gtk2${_pkgtype:-}")
-[[ "${_build_gtk3::1}" == "t" ]] && pkgname+=("$_pkgname-gtk3${_pkgtype:-}")
-[[ "${_build_qt5::1}" == "t" ]] && pkgname+=("$_pkgname-qt5${_pkgtype:-}")
-[[ "${_build_qt6::1}" == "t" ]] && pkgname+=("$_pkgname-qt6${_pkgtype:-}")
-
+case "${_widgets::1}" in
+  g)
+    depends=("${_widgets}")
+    ;;
+  q)
+    depends=("${_widgets}pas")
+    ;;
+esac
 makedepends=(
   'git'
   'lazarus'
 )
-
-[[ "${_build_gtk2::1}" == "t" ]] && makedepends+=('gtk2')
-[[ "${_build_gtk3::1}" == "t" ]] && makedepends+=('gtk3')
-[[ "${_build_qt5::1}" == "t" ]] && makedepends+=('qt5pas')
-[[ "${_build_qt6::1}" == "t" ]] && makedepends+=('qt6pas')
 
 provides=("transgui=${pkgver%%.r*}")
 conflicts=(
@@ -57,7 +46,7 @@ pkgver() {
 }
 
 prepare() {
-  cat >transgui.desktop <<END
+  cat > transgui.desktop << END
 [Desktop Entry]
 Name=Transmission Remote GUI
 Comment=Cross platform remote GUI for the Transmission daemon
@@ -69,88 +58,27 @@ Categories=Network;FileTransfer;P2P;GTK;
 MimeType=application/x-bittorrent;application/x-torrent;x-scheme-handler/magnet;
 END
 
-  mkdir -p build-gtk{2,3}
-  mkdir -p build-qt{5,6}
+  # set compiler options
+  sed -E 's&<CustomOptions Value=".*".*/>&<CustomOptions Value='\''-O3 -Sa -CX -XX -k"--sort-common --as-needed -z relro -z now"'\''/>&' \
+    -i "$_pkgsrc/transgui.lpi"
 }
 
-_package_common() {
-  install -Dm644 "lang"/transgui.* -t "$pkgdir/usr/share/transgui/lang"
-  #install -Dm644 README.md history.txt LICENSE -t "$pkgdir/usr/share/doc/$pkgbase"
+build() {
+  mkdir -p build
+  make -C "$_pkgsrc" clean
+  lazbuild -B "$_pkgsrc/transgui.lpi" \
+    --lazarusdir="/usr/lib/lazarus" \
+    --widgetset="$_widgets" \
+    --os=linux --cpu=$ARCH \
+    --primary-config-path=build
+}
 
-  install -Dm644 "transgui.png" -t "$pkgdir/usr/share/pixmaps/"
-  install -Dm644 "$srcdir/transgui.desktop" -t "$pkgdir/usr/share/applications/"
+package() {
+  install -Dm755 "$_pkgsrc/units/transgui" "$pkgdir/usr/bin/transgui"
 
+  install -Dm644 "$_pkgsrc/transgui.png" -t "$pkgdir/usr/share/pixmaps/"
+  install -Dm644 "transgui.desktop" -t "$pkgdir/usr/share/applications/"
+
+  install -Dm644 "$_pkgsrc/lang"/transgui.* -t "$pkgdir/usr/share/transgui/lang"
   rm "$pkgdir/usr/share/transgui/lang/transgui.template"
-}
-
-package_transgui-gtk2-git() {
-  depends=('gtk2')
-
-  provides+=("transgui-gtk=${pkgver%%.r*}")
-
-  cd "$_pkgsrc"
-  make clean
-
-  lazbuild "transgui.lpi" \
-    --lazarusdir="/usr/lib/lazarus" \
-    --widgetset="gtk2" \
-    --primary-config-path=../build-gtk2
-
-  install -Dm755 "units/transgui" "$pkgdir/usr/bin/transgui"
-
-  _package_common
-}
-
-package_transgui-gtk3-git() {
-  depends=('gtk3')
-
-  provides+=("transgui-gtk=${pkgver%%.r*}")
-
-  cd "$_pkgsrc"
-  make clean
-
-  lazbuild "transgui.lpi" \
-    --lazarusdir="/usr/lib/lazarus" \
-    --widgetset="gtk3" \
-    --primary-config-path=../build-gtk3
-
-  install -Dm755 "units/transgui" "$pkgdir/usr/bin/transgui"
-
-  _package_common
-}
-
-package_transgui-qt5-git() {
-  depends=('qt5pas')
-
-  provides+=("transgui-qt=${pkgver%%.r*}")
-
-  cd "$_pkgsrc"
-  make clean
-
-  lazbuild "transgui.lpi" \
-    --lazarusdir="/usr/lib/lazarus" \
-    --widgetset="qt5" \
-    --primary-config-path=../build-qt5
-
-  install -Dm755 "units/transgui" "$pkgdir/usr/bin/transgui"
-
-  _package_common
-}
-
-package_transgui-qt6-git() {
-  depends=('qt6pas')
-
-  provides+=("transgui-qt=${pkgver%%.r*}")
-
-  cd "$_pkgsrc"
-  make clean
-
-  lazbuild -B "transgui.lpi" \
-    --lazarusdir="/usr/lib/lazarus" \
-    --widgetset="qt6" \
-    --primary-config-path=../build-qt6
-
-  install -Dm755 "units/transgui" "$pkgdir/usr/bin/transgui"
-
-  _package_common
 }

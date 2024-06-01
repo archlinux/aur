@@ -3,13 +3,11 @@ pkgbase = transgui-git
 	pkgver = 5.18.0.r90.g25df397
 	pkgrel = 1
 	url = https://github.com/transmission-remote-gui/transgui
-	arch = i686
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = git
 	makedepends = lazarus
-	makedepends = gtk2
-	makedepends = qt5pas
+	depends = qt6pas
 	provides = transgui=5.18.0
 	conflicts = transgui
 	conflicts = transgui-gtk
@@ -17,12 +15,4 @@ pkgbase = transgui-git
 	source = transgui::git+https://github.com/transmission-remote-gui/transgui.git
 	sha256sums = SKIP
 
-pkgname = transgui-gtk2-git
-	depends = gtk2
-	provides = transgui=5.18.0
-	provides = transgui-gtk=5.18.0
-
-pkgname = transgui-qt5-git
-	depends = qt5pas
-	provides = transgui=5.18.0
-	provides = transgui-qt=5.18.0
+pkgname = transgui-git
