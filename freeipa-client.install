@@ -1,35 +1,81 @@
+_update_ssh_config() {
+	local restore=$1
+
+	local ssh_client_system_conf='/etc/ssh/ssh_config'
+	if [ -f "$ssh_client_system_conf" ]; then
+		sed -E --in-place=.orig 's/^(HostKeyAlgorithms ssh-rsa,ssh-dss)$/# disabled by ipa-client update\n# \1/' "$ssh_client_system_conf"
+
+		# https://pagure.io/freeipa/issue/9536
+		# replace sss_ssh_knownhostsproxy with sss_ssh_knownhosts
+		if [ -f '/usr/bin/sss_ssh_knownhosts' ]; then
+				if grep -E -q 'Include' $ssh_client_system_conf  2>/dev/null ; then
+						ssh_client_system_conf="/etc/ssh/ssh_config.d/04-ipa.conf"
+				fi
+
+				sed -E --in-place=.orig 's/^(GlobalKnownHostsFile \/var\/lib\/sss\/pubconf\/known_hosts)$/# disabled by ipa-client update\n# \1/' $ssh_client_system_conf
+
+				sed -E --in-place=.orig 's/(ProxyCommand \/usr\/bin\/sss_ssh_knownhostsproxy -p \%p \%h)/# replaced by ipa-client update\n    KnownHostsCommand \/usr\/bin\/sss_ssh_knownhosts \%H/' $ssh_client_system_conf
+		fi
+	fi
+
+	local sshd_client_system_conf='/etc/ssh/sshd_config'
+	if [ -f "$sshd_client_system_conf" -a $restore -ge 2 ]; then
+		# If the snippet already exists, skip
+		if [ ! -f "$sshd_client_system_conf.d/04-ipa.conf" ]; then
+			# Take the values from /etc/ssh/sshd_config and put them in 04-ipa.conf
+			grep -E '^(PubkeyAuthentication|KerberosAuthentication|GSSAPIAuthentication|UsePAM|ChallengeResponseAuthentication|AuthorizedKeysCommand|AuthorizedKeysCommandUser)' "$sshd_client_system_conf" 2>/dev/null > "$sshd_client_system_conf.d/04-ipa.conf"
+			# Remove the values from sshd_conf
+			sed -ri '
+				/^(PubkeyAuthentication|KerberosAuthentication|GSSAPIAuthentication|UsePAM|ChallengeResponseAuthentication|AuthorizedKeysCommand|AuthorizedKeysCommandUser)[ \t]/ d
+			' "$sshd_client_system_conf"
+
+			systemctl condrestart sshd.service 2>&1 || :
+		fi
+		# If the snippet has been created, ensure that it is included
+		# either by /etc/ssh/sshd_config.d/*.conf or directly
+		if [ -f "$sshd_client_system_conf.d/04-ipa.conf" ]; then
+			if ! grep -E -q '^\s*Include\s*/etc/ssh/sshd_config.d/\*\.conf' "$sshd_client_system_conf" 2> /dev/null ; then
+				if ! grep -E -q '^\s*Include\s*/etc/ssh/sshd_config.d/04-ipa\.conf' "$sshd_client_system_conf" 2> /dev/null ; then
+					# Include the snippet
+					echo "Include $sshd_client_system_conf.d/04-ipa.conf" > "$sshd_client_system_conf.ipanew"
+					cat "$sshd_client_system_conf" >> "$sshd_client_system_conf.ipanew"
+					mv -fZ --backup=existing --suffix .ipaold "$sshd_client_system_conf.ipanew" "$sshd_client_system_conf"
+				fi
+			fi
+		fi
+	fi
+}
+
 post_upgrade() {
-    # Has the client been configured?
-    restore=0
-    test -f '/var/lib/ipa-client/sysrestore/sysrestore.index' && restore=$(wc -l '/var/lib/ipa-client/sysrestore/sysrestore.index' | awk '{print $1}')
+	# Has the client been configured?
+	local restore=0
+	test -f '/var/lib/ipa-client/sysrestore/sysrestore.index' && \
+		restore=$(wc -l '/var/lib/ipa-client/sysrestore/sysrestore.index' | awk '{print $1}')
 
-    if [ -f '/etc/sssd/sssd.conf' -a $restore -ge 2 ]; then
-        if ! grep -E -q '/var/lib/sss/pubconf/krb5.include.d/' /etc/krb5.conf  2>/dev/null ; then
-            echo "includedir /var/lib/sss/pubconf/krb5.include.d/" > /etc/krb5.conf.ipanew
-            cat /etc/krb5.conf >> /etc/krb5.conf.ipanew
-            mv -Z /etc/krb5.conf.ipanew /etc/krb5.conf
-        fi
-    fi
+	if [ -f '/etc/sssd/sssd.conf' -a $restore -ge 2 ]; then
+		if ! grep -E -q '/var/lib/sss/pubconf/krb5.include.d/' /etc/krb5.conf  2>/dev/null ; then
+			echo "includedir /var/lib/sss/pubconf/krb5.include.d/" > /etc/krb5.conf.ipanew
+			cat /etc/krb5.conf >> /etc/krb5.conf.ipanew
+			mv -Z /etc/krb5.conf.ipanew /etc/krb5.conf
+		fi
+	fi
 
-    if [ $restore -ge 2 ]; then
-        if grep -E -q '\s*pkinit_anchors = FILE:/etc/ipa/ca.crt$' /etc/krb5.conf 2>/dev/null; then
-            sed -E 's|(\s*)pkinit_anchors = FILE:/etc/ipa/ca.crt$|\1pkinit_anchors = FILE:/var/lib/ipa-client/pki/kdc-ca-bundle.pem\n\1pkinit_pool = FILE:/var/lib/ipa-client/pki/ca-bundle.pem|' /etc/krb5.conf >/etc/krb5.conf.ipanew
-            mv -Z /etc/krb5.conf.ipanew /etc/krb5.conf
-            cp /etc/ipa/ca.crt /var/lib/ipa-client/pki/kdc-ca-bundle.pem
-            cp /etc/ipa/ca.crt /var/lib/ipa-client/pki/ca-bundle.pem
-        fi
-    fi
+	if [ $restore -ge 2 ]; then
+		if grep -E -q '\s*pkinit_anchors = FILE:/etc/ipa/ca.crt$' /etc/krb5.conf 2>/dev/null; then
+			sed -E 's|(\s*)pkinit_anchors = FILE:/etc/ipa/ca.crt$|\1pkinit_anchors = FILE:/var/lib/ipa-client/pki/kdc-ca-bundle.pem\n\1pkinit_pool = FILE:/var/lib/ipa-client/pki/ca-bundle.pem|' /etc/krb5.conf >/etc/krb5.conf.ipanew
+			mv -Z /etc/krb5.conf.ipanew /etc/krb5.conf
+			cp /etc/ipa/ca.crt /var/lib/ipa-client/pki/kdc-ca-bundle.pem
+			cp /etc/ipa/ca.crt /var/lib/ipa-client/pki/ca-bundle.pem
+		fi
 
-    if [ -f '/etc/conf.d/ntpd.conf' -a $restore -ge 2 ]; then
-        if grep -E -q 'OPTIONS=.*-u ntp:ntp' /etc/conf.d/ntpd.conf 2>/dev/null; then
-            sed -r '/OPTIONS=/ { s/\s+-u ntp:ntp\s+/ /; s/\s*-u ntp:ntp\s*// }' /etc/conf.d/ntpd.conf >/etc/conf.d/ntpd.conf.ipanew
-            mv -Z /etc/conf.d/ntpd.conf.ipanew /etc/conf.d/ntpd.conf
+		python -c 'from ipaclient.install.client import configure_krb5_snippet; configure_krb5_snippet()' >>/var/log/ipaupgrade.log 2>&1
+		python -c 'from ipaclient.install.client import update_ipa_nssdb; update_ipa_nssdb()' >>/var/log/ipaupgrade.log 2>&1
+		chmod 0600 /var/log/ipaupgrade.log
+	fi
 
-            /bin/systemctl condrestart ntpd.service 2>&1 || :
-        fi
-    fi
+	_update_ssh_config $restore
+}
 
-    if [ $restore -ge 2 ]; then
-        python2 -c 'from ipaclient.install.client import update_ipa_nssdb; update_ipa_nssdb()' >/var/log/ipaupgrade.log 2>&1
-    fi
+post_install() {
+	_update_ssh_config $restore
 }
