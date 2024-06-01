@@ -1,0 +1,31 @@
+pkgbase = firefox-larch-bin
+	pkgdesc = Standalone web browser from mozilla.org - Larch version
+	pkgver = 128.0a1
+	pkgrel = 1
+	url = https://www.mozilla.org/en-US/firefox
+	arch = x86_64
+	license = MPL
+	license = GPL
+	license = LGPL
+	depends = gtk3
+	depends = libxt
+	depends = mime-types
+	depends = dbus-glib
+	depends = nss
+	depends = ttf-font
+	optdepends = ffmpeg: H264/AAC/MP3 decoding
+	optdepends = networkmanager: Location detection via available WiFi networks
+	optdepends = libnotify: Notification integration
+	optdepends = pulseaudio: Audio support
+	optdepends = speech-dispatcher: Text-to-Speech
+	optdepends = hunspell-en_US: Spell checking, American English
+	provides = firefox=128.0a1
+	conflicts = firefox
+	source = https://ftp.mozilla.org/pub/firefox/nightly/latest-larch/firefox-128.0a1.en-US.linux-x86_64.tar.bz2
+	source = firefox.sh
+	source = firefox.desktop
+	sha256sums = e9c2d55113ebf1e40c5c5f5eaf02c0e35bf83bef462b5f73500bb717c56050d7
+	sha256sums = 73741ec887d82f897381f44c8bd4d6fc955ea82499f04b8414caeff2ee8e14f3
+	sha256sums = c64008cbf01956ce3dba693230670de58fa9487ad19f4ba76614af13beb1b8ef
+
+pkgname = firefox-larch-bin
