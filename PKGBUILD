@@ -2,6 +2,7 @@
 # Maintainer: flan_suse <windows2linux_AT_zoho_DOT_com>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 # Contributor: C2D6@aur (PKGBUILD improvements)
+# Contributor: salfter (patch to build with newer glib2)
 
 #       NOTE: Previous versions of this PKGBUILD contained an unused signature file.
 #       If you wish you validate the source file against its signature,
@@ -10,7 +11,7 @@
 
 pkgname=dvdisaster
 pkgver=0.79.10
-pkgrel=2
+pkgrel=3
 provides=('dvdisaster')
 pkgdesc="Provides a margin of safety against data loss on newly created ISO, CD, DVD, BDR, and M-Disc media caused by aging or scratches"
 arch=('x86_64')
@@ -18,9 +19,17 @@ url="https://dvdisaster.jcea.es"
 license=('GPL')
 depends=('gtk2')
 options=('!makeflags')
-source=(${pkgname}-${pkgver}.tar.bz2::${url}/downloads/${pkgname}-${pkgver}.tar.bz2)
+source=(${pkgname}-${pkgver}.tar.bz2::${url}/downloads/${pkgname}-${pkgver}.tar.bz2 bash-based-configure.patch)
 # Upstream only publishes an MD5 hash, which is why MD5 is specfically used in this checksum array
-md5sums=('e913b8375a2bd41a55df7f53379f8d0d')
+md5sums=('e913b8375a2bd41a55df7f53379f8d0d'
+         'f5d1737310b6d84a84c1cdb38c264c81')
+
+prepare()
+{
+  cd ${pkgname}-${pkgver}
+  # Apply patch to fix issue for building with newer glib2
+  patch -p1 -i ${srcdir}/bash-based-configure.patch
+}
 
 build() {
   export CFLAGS="$CFLAGS -fcommon"
@@ -36,7 +45,7 @@ build() {
 package() {
   cd ${pkgname}-${pkgver}
   make BUILDROOT="${pkgdir}" install
-  # Remove unnecessary uninstaller script 
+  # Remove unnecessary uninstaller script
   rm -f "${pkgdir}/usr/bin/dvdisaster-uninstall.sh"
   # Copy .desktop file to standard applications directory
   install -D -m 644 contrib/dvdisaster.desktop "${pkgdir}/usr/share/applications/dvdisaster.desktop"

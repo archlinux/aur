@@ -1,0 +1,10 @@
+--- dvdisaster-0.79.10/scripts/bash-based-configure	2021-09-24 02:13:23.000000000 -0700
++++ dvdisaster-0.79.10/scripts/bash-based-configure	2024-05-31 13:47:28.846985555 -0700
+@@ -1364,6 +1364,7 @@
+ 
+    cat >conftest.c <<EOF
+ #include <glib.h>
++#include <stdio.h>
+ int main(int argc, char *argv[])
+ { g_malloc(1024); 
+ 
