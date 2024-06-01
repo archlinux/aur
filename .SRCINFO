@@ -1,15 +1,15 @@
 pkgbase = lx-music-desktop-appimage
 	pkgdesc = 一个免费&开源的音乐查找工具
-	pkgver = 2.7.0
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://github.com/lyswhut/lx-music-desktop
 	arch = x86_64
 	license = Apache-2.0
 	depends = fuse2
-	noextract = lx-music-desktop_2.7.0_x64.AppImage
+	noextract = lx-music-desktop_2.8.0_x64.AppImage
 	options = !strip
 	options = !debug
-	source = lx-music-desktop_2.7.0_x64.AppImage::https://github.com/lyswhut/lx-music-desktop/releases/download/v2.7.0/lx-music-desktop_2.7.0_x64.AppImage
-	md5sums = a2422fb6920167c9a6c6b1e4ce82a200
+	source = lx-music-desktop_2.8.0_x64.AppImage::https://github.com/lyswhut/lx-music-desktop/releases/download/v2.8.0/lx-music-desktop_2.8.0_x64.AppImage
+	md5sums = e11f1aa8719c8e2327393bf43e1974b0
 
 pkgname = lx-music-desktop-appimage
