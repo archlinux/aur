@@ -1,7 +1,7 @@
 # Maintainer: Gianmarco Gargiulo <me@gianmarco.gg>
 pkgname=harmony2
 pkgver=2.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Dream Sounds: Harmony 2 sound theme for KDE Plasma"
 arch=(any)
 url="https://gianmarco.gg/other/harmony2/"
@@ -11,7 +11,6 @@ source=("https://git.gianmarco.gg/gianmarco/harmony2/releases/download/$pkgver/d
 sha256sums=(2088278d44b9dacf9aa61c12705fc2498d6c93217d8e0e8b6611b2729e2de20e)
 
 package() {
-	mkdir -p "$pkgdir/usr/share/sounds/harmony2"
-	cd "$srcdir"
-	cp -r stereo index.theme "$pkgdir/usr/share/sounds/harmony2"
+       install -d "$pkgdir/usr/share/sounds/harmony2"
+       cp -r "$srcdir"/{stereo,index.theme} "$pkgdir/usr/share/sounds/harmony2"
 }
