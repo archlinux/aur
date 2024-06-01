@@ -2,17 +2,16 @@ pkgbase = natron-git
 	pkgdesc = Open source compositing software (metapackage with the program and standard plugins)
 	pkgver = 1
 	pkgrel = 1
-	epoch = 1
 	url = https://natrongithub.github.io/
 	arch = x86_64
 	license = GPL
+	provides = natron
+	conflicts = natron
+
+pkgname = natron-git
 	depends = openfx-arena-git
 	depends = openfx-gmic-git
 	depends = openfx-io-git
 	depends = openfx-misc-git
 	depends = natron-compositor-git
 	optdepends = natron-plugins-git: Plugins made by the Natron community
-	provides = natron
-	conflicts = natron
-
-pkgname = natron-git
