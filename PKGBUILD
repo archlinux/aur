@@ -1,3 +1,4 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: dorphell <dorphell@archlinux.org>
@@ -5,12 +6,12 @@
 _pkgbasename=sdl
 pkgname=lib32-$_pkgbasename
 pkgver=1.2.15
-pkgrel=9
+pkgrel=10
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (32-bit)"
 arch=('x86_64')
 url="https://www.libsdl.org"
 license=('LGPL')
-depends=('lib32-libxext' 'lib32-libxrender' 'lib32-libx11' $_pkgbasename)
+depends=('lib32-libxext' 'lib32-libxrender' 'lib32-libx11' $_pkgbasename 'lib32-gcc-libs' 'lib32-glibc' 'bash')
 makedepends=('lib32-alsa-lib' 'lib32-mesa' 'lib32-libpulse' 'lib32-glu' gcc-multilib)
 optdepends=('lib32-alsa-lib: ALSA audio driver'
             'lib32-libpulse: PulseAudio audio driver')
