@@ -1,17 +1,18 @@
 pkgbase = peazip-gtk2
 	pkgdesc = Cross-platform file and archive manager
 	pkgver = 9.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/peazip/PeaZip
 	arch = i686
 	arch = x86_64
 	license = LGPL-3.0-or-later
 	makedepends = git
 	makedepends = lazarus
+	makedepends = xmlstarlet
 	depends = 7-zip
 	depends = brotli
-	depends = gtk2
 	depends = zstd
+	depends = gtk2
 	optdepends = paq8o
 	optdepends = quad
 	optdepends = unace
@@ -19,13 +20,12 @@ pkgbase = peazip-gtk2
 	optdepends = zpaq
 	provides = peazip
 	conflicts = peazip
-	options = !strip
 	source = peazip::git+https://github.com/peazip/PeaZip.git#tag=9.8.0
 	sha256sums = SKIP
 
 pkgname = peazip-gtk2
 	depends = 7-zip
 	depends = brotli
-	depends = gtk2
 	depends = zstd
+	depends = gtk2
 	depends = hicolor-icon-theme
