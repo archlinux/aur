@@ -1,8 +1,8 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=codechecker
 pkgver=6.23.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Analyzer tooling, defect database and viewer extension for the Clang Static Analyzer and Clang Tidy"
 arch=(x86_64)
 url="https://github.com/Ericsson/codechecker"
@@ -44,6 +44,7 @@ build() {
   make venv
   # shellcheck disable=SC1091
   source "$PWD/venv/bin/activate"
+  pip install setuptools
 
   # Parallel builds fail
   export MAKEFLAGS="-j1"

@@ -1,7 +1,7 @@
 pkgbase = codechecker
 	pkgdesc = Analyzer tooling, defect database and viewer extension for the Clang Static Analyzer and Clang Tidy
 	pkgver = 6.23.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Ericsson/codechecker
 	arch = x86_64
 	license = Apache-2.0
