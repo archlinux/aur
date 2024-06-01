@@ -13,7 +13,7 @@ post_install() {
 -->  as oridinary user, which is safer and for testing absolutely sufficient!!
 
 -->  You can run the testpages simply by starting the server and calling 
-                       http://localhost:8080
+                       http://localhost:9000
 -->  from your browser's location bar
 
 

@@ -1,5 +1,5 @@
 # $Id: PKGBUILD 308160 2017-10-17 17:36:56Z jelle $
-# Maintainer: Daniel Isenmann <daniel@archlinux.org>
+# Contributor: Daniel Isenmann <daniel@archlinux.org>
 # Contributor: Tobias Kieslich <tobias@justdreams.de>
 
 pkgname=xsp
