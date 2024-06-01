@@ -8,14 +8,14 @@
 # Contributor: Lucas H. Gabrielli <heitzmann@gmail.com>
 pkgname=slepc
 pkgver=3.21.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Scalable library for Eigenvalue problem computations"
 arch=(x86_64)
 url="https://${pkgname}.upv.es"
 license=(BSD-2-Clause)
 options=(staticlibs)
 depends=("petsc>=${pkgver::4}")
-makedepends=(gcc-fortran cython)
+makedepends=(gcc-fortran cython python-setuptools)
 provides=('slepc4py')
 install=${pkgname}.install
 source=(${url}/download/distrib/${pkgname}-${pkgver/_/-}.tar.gz)
