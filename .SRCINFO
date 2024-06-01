@@ -1,6 +1,6 @@
 pkgbase = r-nanoarrow
 	pkgdesc = Interface to the 'nanoarrow' 'C' Library
-	pkgver = 0.5.0
+	pkgver = 0.5.0.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=nanoarrow
 	arch = x86_64
@@ -14,13 +14,14 @@ pkgbase = r-nanoarrow
 	optdepends = r-bit64
 	optdepends = r-blob
 	optdepends = r-hms
+	optdepends = r-jsonlite
 	optdepends = r-rlang
 	optdepends = r-testthat
 	optdepends = r-tibble
 	optdepends = r-vctrs
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/nanoarrow_0.5.0.tar.gz
-	md5sums = b6584f360807a3a18ef283721f02bd9e
-	b2sums = 57a225ba46af49575c5386e3bce014059cff1b8ce6541970ed2bea926490ad293740d46b5bf8ad4abbbe819bb4eb798bba386a2ed128e589e5ffad76318dc18e
+	source = https://cran.r-project.org/src/contrib/nanoarrow_0.5.0.1.tar.gz
+	md5sums = b38e95b7558e866fb8dbb968148c89fe
+	b2sums = b02737dba64fc440c23e2c8ee9b560b08f3f0013fe369c9fb859bcfbc0f520ebd508c72d9d7667c6384c06b69e08318fab8b64cb776f40fbb33398aa9938aefe
 
 pkgname = r-nanoarrow
