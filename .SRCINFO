@@ -1,16 +1,16 @@
 pkgbase = siyuan-appimage
 	pkgdesc = A privacy-first, self-hosted, fully open source personal knowledge management software, written in typescript and golang
-	pkgver = 3.0.15
+	pkgver = 3.0.16
 	pkgrel = 1
 	url = https://b3log.org/siyuan
 	arch = x86_64
 	license = AGPL-3.0-only
 	depends = fuse2
 	optdepends = pandoc: docx export
-	noextract = siyuan-3.0.15-linux.AppImage
+	noextract = siyuan-3.0.16-linux.AppImage
 	options = !strip
 	options = !debug
-	source = siyuan-3.0.15-linux.AppImage::https://github.com/siyuan-note/siyuan/releases/download/v3.0.15/siyuan-3.0.15-linux.AppImage
-	sha256sums = 62cde348e9d3022d5db421d70560cd88d9bd5edad21888d2bf7dce08c75572a9
+	source = siyuan-3.0.16-linux.AppImage::https://github.com/siyuan-note/siyuan/releases/download/v3.0.16/siyuan-3.0.16-linux.AppImage
+	sha256sums = 6d4ed2bfa1cf274e24fa2812287f881ba4914dc4c9dd0ef475903079ade7113a
 
 pkgname = siyuan-appimage
