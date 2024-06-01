@@ -1,25 +1,23 @@
-# Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
+# Maintainer: Nikos Toutountzoglou <nikos dot toutou at protonmail dot com>
 
 pkgname=dektec-utilities
 pkgver=12.05.24
 pkgrel=1
 pkgdesc="DekTec utilities DtEpc, DtPlay, DtRecord and DtInfoCL"
-arch=(x86_64)
+arch=('x86_64')
 url="https://www.dektec.com/downloads/utilities/"
-license=(custom)
-makedepends=(unzip)
+license=('custom')
+makedepends=('unzip')
 _dtepc=2.13.1
 _dtplay=4.17.0
 _dtrecord=4.14.0
 _dtinfocl=1.5.2
 _sdk=2024.04.0
-source=(
-	"https://www.dektec.com/products/SDK/DTAPI/Downloads/LinuxSDK_v${_sdk}.tar.gz"
+source=("https://www.dektec.com/products/SDK/DTAPI/Downloads/LinuxSDK_v${_sdk}.tar.gz"
 	"https://www.dektec.com/products/applications/DtEpc/downloads/DtEpc-${_dtepc}.zip"
 	"https://www.dektec.com/products/applications/DtInfoCL/downloads/DtInfoCL_v${_dtinfocl}.zip"
 	"https://www.dektec.com/products/applications/DtPlay/downloads/DtPlay_v${_dtplay}.zip"
-	"https://www.dektec.com/products/applications/DtRecord/downloads/DtRecord_v${_dtrecord}.zip"
-)
+	"https://www.dektec.com/products/applications/DtRecord/downloads/DtRecord_v${_dtrecord}.zip")
 noextract=("DtPlay_v${_dtplay}.zip" "DtRecord_v${_dtrecord}.zip")
 sha256sums=('feef9fd6310f1903edff87a510db3a78e9a79067006ee659b37d3dd34fa277e6'
             '4fbbfe09d55b3528a6a45bc6a2effce3ba0431d7ac141bf190423accc7c4a435'
@@ -44,17 +42,17 @@ build() {
 	# Build DtPlay
 	cd dtplay
 	make
-	cp DtPlay "$srcdir"/Linux/
+	cp DtPlay "$srcdir/Linux"
 	# Build DtRecord
 	cd ../dtrecord
 	make
-	cp DtRecord "$srcdir"/Linux/
+	cp DtRecord "$srcdir/Linux"
 }
 
 package() {
-	install -Dvm755 "$srcdir"/Linux/DtEpc64 "$pkgdir"/usr/bin/DtEpc
-	install -Dvm755 "$srcdir"/Linux/DtInfoCL64 "$pkgdir"/usr/bin/DtInfoCL
-	install -Dvm755 "$srcdir"/Linux/DtPlay "$pkgdir"/usr/bin/DtPlay
-	install -Dvm755 "$srcdir"/Linux/DtRecord "$pkgdir"/usr/bin/DtRecord
-	install -Dvm644 "$srcdir"/LinuxSDK/License "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+	install -Dm755 "$srcdir/Linux/DtEpc64" "$pkgdir/usr/bin/DtEpc"
+	install -Dm755 "$srcdir/Linux/DtInfoCL64" "$pkgdir/usr/bin/DtInfoCL"
+	install -Dm755 "$srcdir/Linux/DtPlay" "$pkgdir/usr/bin/DtPlay"
+	install -Dm755 "$srcdir/Linux/DtRecord" "$pkgdir/usr/bin/DtRecord"
+	install -Dm644 "$srcdir/LinuxSDK/License" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
