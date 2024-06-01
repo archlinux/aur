@@ -1,5 +1,5 @@
 *.pkg.tar
 *.pkg.tar.*
+*.tar.gz
 /pkg
-/squawk
 /src

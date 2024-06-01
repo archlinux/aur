@@ -1,10 +1,9 @@
 #!/bin/bash -e
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 
-_commit=9ac8190d2b71ef5f65f4a7d5006e10ab02988b0c
 _pkgname=squawk
 pkgname="${_pkgname}-cli"
-pkgver=0.28.0.r3.g9ac8190
+pkgver=0.29.0
 pkgrel=1
 pkgdesc="Linter for PostgreSQL, focused on migrations"
 arch=(
@@ -19,18 +18,17 @@ depends=(
 )
 makedepends=(
 	cargo
-	git
 	jq
 )
 options=(
 	'!lto'
 )
 source=(
-	"${_pkgname}::git+https://github.com/sbdchd/squawk.git#commit=${_commit}"
+	"https://github.com/sbdchd/squawk/archive/refs/tags/v${pkgver}.tar.gz"
 	dynamic-pg_query-linking.patch
 )
 sha256sums=(
-	57d17fc96dfddb27ecd95899c8a2e78211e6de457b19d634b547611aee22a82f
+	365ddb9c007b95d41ee1ed78cc45ac006a5f94ba31e832842064bfbbadd6fa19
 	SKIP
 )
 
@@ -47,15 +45,8 @@ sha256sums=(
 : "${source[@]}"
 : "${sha256sums[@]}"
 
-pkgver() {
-	cd "${_pkgname}"
-
-	git describe --long --tags --abbrev=7 \
-		| sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 prepare() {
-	cd "${_pkgname}"
+	cd "${_pkgname}-${pkgver}"
 
 	export RUSTUP_TOOLCHAIN=stable
 
@@ -73,7 +64,7 @@ prepare() {
 }
 
 build() {
-	cd "${_pkgname}"
+	cd "${_pkgname}-${pkgver}"
 
 	export CARGO_TARGET_DIR=target
 	export LIBPG_QUERY_PATH=/usr
@@ -83,7 +74,7 @@ build() {
 }
 
 check() {
-	cd "${_pkgname}"
+	cd "${_pkgname}-${pkgver}"
 
 	export RUSTUP_TOOLCHAIN=stable
 
@@ -93,7 +84,7 @@ check() {
 package() {
 	: "${pkgdir:?}"
 
-	cd "${_pkgname}"
+	cd "${_pkgname}-${pkgver}"
 
 	install -Dm0755 "target/release/${_pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
