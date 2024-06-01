@@ -1,12 +1,15 @@
 pkgbase = pingpong
-	pkgdesc = Show internet connection status by ping
-	pkgver = 1.0
+	pkgdesc = Reverse proxy powered by Pingora.
+	pkgver = 0.2.3
 	pkgrel = 1
-	arch = any
+	url = https://github.com/Bluemangoo/Pingpong/
+	arch = x86_64
+	arch = aarch64
+	arch = i686
 	license = GPL
 	depends = bash
 	depends = coreutils
-	source = pingpong.sh
-	sha256sums = SKIP
+	source = pingpong-0.2.3-x86_64.zip::https://github.com/Bluemangoo/Pingpong/releases/download/0.2.3/pingpong-x86_64-unknown-linux-gnu.zip
+	sha256sums = 8d0f64c7e8a61113b449fc79d92d7f0a89f9e2ca829355fe42464588f778a273
 
 pkgname = pingpong
