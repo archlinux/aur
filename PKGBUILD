@@ -4,12 +4,12 @@
 # Contributor: Govind Gopakumar <govind.93 at gmail dot com>
 # Contributor: Daniel Wallace <danielwallace at gtmanfred dot com>
 pkgname=mlpack
-pkgver=4.3.0
+pkgver=4.4.0
 pkgrel=1
 pkgdesc="A fast, flexible, scalable C++ machine learning library"
 arch=(x86_64)
 url="https://${pkgname}.org"
-license=('custom:BSD-3-clause')
+license=(BSD-3-Clause)
 depends=(armadillo cereal boost lapack ensmallen cython python-numpy python-pandas)
 makedepends=(cmake txt2man python-setuptools python-wheel python-pytest-runner python-pip)
 optdepends=('openmp: parallel computation support'
@@ -17,7 +17,7 @@ optdepends=('openmp: parallel computation support'
   'r: r bindings support'
   'go: go bindings support')
 source=(${url}/files/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('6b7c16190fa5106dde76cbedddc42ed0a4a97fcc606dc0b962744fdc812ac81f59a21b6cf071e3a8661c58cb9de2654a4eabd03c4f44d6091f99175887735c41')
+sha512sums=('2ae159a4aa8340be4763944c1b1e460f4d8fe838c79325cffdcacfbac340cca4cec3031493caec7e9b4dcf6fc921cbd93c1384d7e1954492fe410c83d3e615f8')
 options=(!emptydirs)
 
 build() {
