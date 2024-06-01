@@ -1,12 +1,12 @@
 # Maintainer:  WorMzy Tykashi <wormzy.tykashi@gmail.com>
 pkgname=openfodder
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="An open source version of the Cannon Fodder engine, for modern operating systems"
 arch=('i686' 'x86_64')
 url="http://openfodder.com/"
-license=('GPL3')
-depends=('sdl2' 'sdl2_mixer')
+license=('GPL-3.0-or-later')
+depends=('gcc-libs' 'glibc' 'sdl2' 'sdl2_mixer')
 makedepends=('git' 'clang')
 install=${pkgname}.install
 source=(git+"https://github.com/OpenFodder/openfodder.git#tag=${pkgver}")
