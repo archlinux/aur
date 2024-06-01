@@ -1,6 +1,6 @@
 pkgbase = extract-otp-secrets
 	pkgdesc = Extract one time password secrets from QR codes exported by two-factor authentication apps
-	pkgver = 2.7.0
+	pkgver = 2.8.0
 	pkgrel = 3
 	url = https://github.com/scito/extract_otp_secrets
 	arch = x86_64
@@ -15,9 +15,7 @@ pkgbase = extract-otp-secrets
 	depends = tk
 	depends = zbar
 	depends = zlib
-	provides = extract-otp-secrets
-	conflicts = extract-otp-secrets
-	source = extract-otp-secrets-2.7.0::git+https://github.com/scito/extract_otp_secrets#tag=a822abbba181876e4cbc46a974d2a640028be040
-	b2sums = SKIP
+	source = extract-otp-secrets-2.8.0::git+https://github.com/scito/extract_otp_secrets.git#tag=v2.8.0
+	b2sums = 97b14203258a431c78041256eeea94d5850bd497a905cd3df46ba4d9ca06f17f23a268c161c66b4a2886249d80f55a997610fb88ec10635f3d2f3e1435661d45
 
 pkgname = extract-otp-secrets
