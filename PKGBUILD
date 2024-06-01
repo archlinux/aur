@@ -12,7 +12,7 @@ pkgname=(python-ipalib
          freeipa-client-common
          freeipa-client)
 pkgver=4.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The Identity, Policy and Audit system'
 arch=('i686' 'x86_64')
 url='http://www.freeipa.org/'
