@@ -4,12 +4,15 @@ _pkgname='linxterminator'
 pkgbase="$_pkgname"
 pkgname="$_pkgname-git"
 pkgver=r2.2d38ab1
-pkgrel=1
+pkgrel=2
 url="https://git.missingno.dev/$_pkgname"
 pkgdesc='Embeddable, small, URL cleaner compatible with LuaJIT'
 arch=('any')
 makedepends=('git')
-depends=('luajit')
+depends=(
+	'bash'
+	'luajit'
+)
 license=('GPL-3.0')
 source=(
 	"$_pkgname::git+$url"

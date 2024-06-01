@@ -1,11 +1,12 @@
 pkgbase = linxterminator
 	pkgdesc = Embeddable, small, URL cleaner compatible with LuaJIT
 	pkgver = r2.2d38ab1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.missingno.dev/linxterminator
 	arch = any
 	license = GPL-3.0
 	makedepends = git
+	depends = bash
 	depends = luajit
 	provides = linxterminator
 	conflicts = linxterminator
