@@ -1,7 +1,7 @@
 # Maintainer: Matthias Mailänder <matthias@mailaender.name>
 pkgname=openhv
 pkgver=20240401
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source pixel-art science-fiction real-time-strategy game."
 arch=('any')
 url="https://www.openhv.net"
@@ -16,6 +16,7 @@ sha512sums=('SKIP')
 prepare() {
   cd OpenHV
 
+  make engine
   make version
 }
 
