@@ -2,7 +2,7 @@
 # Maintainer: SimonMTS <simon at s14 dot nl>
 
 pkgname='herl-bin'
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='A minimal and scriptable way to refresh a webpage'
 url='https://github.com/SimonMTS/herl'
@@ -11,15 +11,15 @@ license=('GPL-3.0-or-later')
 provides=('herl')
 conflicts=('herl')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.binary::https://github.com/SimonMTS/herl/releases/download/v1.0.1/herl_1.0.1_linux_arm64")
-sha256sums_aarch64=('69723be69a5f189bdc9adcf051b4dd60ec58573059b2069bbfd4a548afb57301')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.binary::https://github.com/SimonMTS/herl/releases/download/v1.0.2/herl_1.0.2_linux_arm64")
+sha256sums_aarch64=('7339e9e0e409335998035d1d55f6d85ad451b0f7e67d228a69b2b6264396ec2e')
 
-source_i686=("${pkgname}_${pkgver}_i686.binary::https://github.com/SimonMTS/herl/releases/download/v1.0.1/herl_1.0.1_linux_386")
-sha256sums_i686=('fdca267b4355d38f12b8d2ae2ca2745cb56663223e7d8de833e8b1c32b79c5a1')
+source_i686=("${pkgname}_${pkgver}_i686.binary::https://github.com/SimonMTS/herl/releases/download/v1.0.2/herl_1.0.2_linux_386")
+sha256sums_i686=('69d552d28d42645847b8c5de969ca5758f4525b908f5cbf131d2bcb042a9aea3')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.binary::https://github.com/SimonMTS/herl/releases/download/v1.0.1/herl_1.0.1_linux_amd64")
-sha256sums_x86_64=('d02aa501108a0f72b14446a980a85639478b2332f83b2991d65f7add6cf8b92a')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.binary::https://github.com/SimonMTS/herl/releases/download/v1.0.2/herl_1.0.2_linux_amd64")
+sha256sums_x86_64=('82f01cf6968a72c0e263907b2c6bcce8d24ec8cf57cec87e97fbbb52525676b7')
 
 package() {
-  install -Dm755 "./herl" "${pkgdir}/usr/bin/herl"
+  install -Dm755 ./herl* "${pkgdir}/usr/bin/herl"
 }
