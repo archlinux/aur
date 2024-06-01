@@ -3,7 +3,7 @@
 # Contributor: Clansty <i at gao4 dot pw>
 
 pkgname=("icalingua++-git" "icalingua++-electron-git")
-pkgver=2.11.8.r0.gfd5df122
+pkgver=2.12.3.r1.g6733f707
 pkgrel=1
 pkgdesc='A Linux client for QQ and more(fork to upgrading)'
 license=('AGPL')
@@ -28,16 +28,14 @@ pkgver(){
 build(){
     cd "${srcdir}/Icalingua"
     export NODE_OPTIONS=--openssl-legacy-provider
-    export PATH="$HOME/.local/bin:$PATH"
-    mkdir -p "$HOME/.local/bin"
-    corepack enable --install-directory "$HOME/.local/bin"
-    pnpm install
+    corepack install
+    corepack pnpm install
     if [[ -f node_modules/ts-node/dist/bin.js ]]
     then
         chmod +x node_modules/ts-node/dist/bin.js
     fi
     cd icalingua
-    pnpm run build:dir
+    corepack pnpm run build:dir
 }
 package_icalingua++-git(){
     depends+=(
