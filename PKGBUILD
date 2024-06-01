@@ -7,7 +7,7 @@
 
 pkgname=bsd-games2
 pkgver=2.17
-pkgrel=19
+pkgrel=20
 pkgdesc='Linux port of the collection of BSD command line games, "junk pile" included'
 url='https://ibiblio.org/pub/linux/games/'
 arch=('x86_64')
@@ -19,13 +19,16 @@ provides=('bsd-games')
 conflicts=('bsd-games')
 source=(
   "$pkgname-$pkgver.tar.gz::https://www.ibiblio.org/pub/linux/games/bsd-games-$pkgver.tar.gz"
-  config.params 
-  stdio.h.diff 
-  gamescreen.h.diff 
+  config.params
+  stdio.h.diff
+  gamescreen.h.diff
   getline.diff
-  number.c.diff 
+  number.c.diff
   bsd-games-2.17-64bit.patch
-  bad-ntohl-cast.diff null-check.diff)
+  bad-ntohl-cast.diff
+  null-check.diff
+  hunt-sigpause.diff
+)
 md5sums=('238a38a3a017ca9b216fc42bde405639'
          '0d11fba067dafb30425dac49ad454df1'
          '784f68c796b9e099ac008aecef1af998'
@@ -34,7 +37,8 @@ md5sums=('238a38a3a017ca9b216fc42bde405639'
          '47249a90f38ccb4dd07625b245bbc728'
          '257813b76a41c8b2c02701571c804227'
          '3d21a9dad2e603ddf3842972e4ff85a1'
-         'a43ca0b4b9ebc4eec26372c52014ac0a')
+         'a43ca0b4b9ebc4eec26372c52014ac0a'
+         '4e31136605d341ff4ec81a053f742853')
 
 prepare() {
   cd "bsd-games-$pkgver"
@@ -57,6 +61,8 @@ prepare() {
   patch -p1 -i "${srcdir}/bad-ntohl-cast.diff"
   # And add a NULL pointer check to the "hunt" program, fixing a segfault.
   patch -p1 -i "${srcdir}/null-check.diff"
+  # Remove sigpause in "hunt", see https://bugzilla.redhat.com/show_bug.cgi?id=2152550
+  patch -p1 -i "${srcdir}/hunt-sigpause.diff"
 
   sed -i "s/FISH/GO-FISH/g; s/\.Nm fish/\.Nm go-fish/g" fish/fish.6
   sed -i "s/tenths/tenth/g" tests/number.-0.1

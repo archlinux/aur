@@ -1,0 +1,18 @@
+The sigpause function in glibc is the XPG version, not the BSD
+version.  But the signal mask is set by the immediately following
+sigsetmask function anyway, so remove the sigpause function call.
+
+This avoids an implicit function declaration and build failures with
+future compilers.
+
+diff -ur bsd-games-2.17.orig/hunt/hunt/otto.c bsd-games-2.17/hunt/hunt/otto.c
+--- bsd-games-2.17.orig/hunt/hunt/otto.c	2004-12-07 14:34:21.000000000 +0100
++++ bsd-games-2.17/hunt/hunt/otto.c	2023-02-05 17:58:11.266200099 +0100
+@@ -178,7 +178,6 @@
+ 	(void) signal(SIGALRM, nothing);
+ 	old_mask = sigblock(sigmask(SIGALRM));
+ 	setitimer(ITIMER_REAL, &pause_time, NULL);
+-	sigpause(old_mask);
+ 	sigsetmask(old_mask);
+ 
+ 	/* save away parameters so other functions may use/update info */
