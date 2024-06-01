@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=fbthrift
-pkgver=2024.05.06.00
+pkgver=2024.05.27.00
 pkgrel=1
 pkgdesc="Facebook's branch of Apache Thrift, including a new C++ server"
 arch=(x86_64)
@@ -17,7 +17,6 @@ depends=(
   gflags
   glibc
   google-glog
-  mvfst
   openssl
   python
   python-six
@@ -29,6 +28,7 @@ makedepends=(
   cmake
   cython
   gtest
+  mvfst
 )
 optdepends=(
   'python-snappy: Snappy compression support'
@@ -61,10 +61,12 @@ options=(
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
   "remove-python-six-dependency-from-cmake-files.patch"
+  "fix-compiler-cmake-file.patch"
 )
 sha256sums=(
-  '2e97b34db97cb2b328bf75b9528c8e2a9fc37e858a0c7982cd66dbd8911baa8a'
+  'a6c8d17062e459eaec36d5c64de6187f9b2d59eb927f6ac0d217e38aa6b75be1'
   'bedcf4d00d08263a943d0878b9a0fe68c0fafebd33b5445ae35f84a3e92540ec'
+  'e81036accfb08d864207eba92f6579559a213c80e90f0c79c3e952ae7bd04c6b'
 )
 
 _archive="$pkgname-$pkgver"
@@ -73,6 +75,7 @@ prepare() {
   cd "$_archive"
 
   patch --forward --strip=1 --input="$srcdir/remove-python-six-dependency-from-cmake-files.patch"
+  patch --forward --strip=1 --input="$srcdir/fix-compiler-cmake-file.patch"
 
   # Use system CMake config instead of bundled module, incompatible with glog
   # v0.7.0+
@@ -92,7 +95,6 @@ build() {
     -Dthriftpy3=OFF \
     -Dthriftpy=ON \
     -DCMAKE_CXX_STANDARD=20 \
-    -DHAVE_STREAM_SUPPORT=ON \
     -DPACKAGE_VERSION="$pkgver"
   cmake --build build
 }
