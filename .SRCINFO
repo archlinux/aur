@@ -8,6 +8,7 @@ pkgbase = nautilus-admin-gtk4
 	license = GPL3
 	makedepends = cmake>=2.6
 	makedepends = gettext
+	makedepends = git
 	depends = nautilus
 	depends = python-nautilus
 	depends = polkit

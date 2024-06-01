@@ -10,7 +10,7 @@ arch=('any')
 url="https://github.com/MacTavishAO/$pkgname"
 license=('GPL3')
 depends=('nautilus' 'python-nautilus' 'polkit')
-makedepends=('cmake>=2.6' 'gettext')
+makedepends=('cmake>=2.6' 'gettext' 'git')
 optdepends=('gedit: to use the "Edit as Administrator" action'
             'gnome-terminal: to use the "Run as Administrator" action')
 conflicts=($_pkgname $_pkgname-git)
