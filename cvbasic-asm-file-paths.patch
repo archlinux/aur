@@ -1,0 +1,28 @@
+diff --git a/cvbasic.c b/cvbasic.c
+index 8358516..cadac42 100644
+--- a/cvbasic.c
++++ b/cvbasic.c
+@@ -5556,9 +5556,9 @@ int main(int argc, char *argv[])
+             fprintf(output, "\tforg $00000\n");
+         }
+     }
+-    prologue = fopen("cvbasic_prologue.asm", "r");
++    prologue = fopen("/usr/share/cvbasic/cvbasic_prologue.asm", "r");
+     if (prologue == NULL) {
+-        fprintf(stderr, "Unable to open cvbasic_prologue.asm.\n");
++        fprintf(stderr, "Unable to open /usr/share/cvbasic/cvbasic_prologue.asm.\n");
+         exit(2);
+     }
+     while (fgets(line, sizeof(line) - 1, prologue)) {
+@@ -5586,9 +5586,9 @@ int main(int argc, char *argv[])
+     fclose(input);
+     remove(TEMPORARY_ASSEMBLER);
+     
+-    prologue = fopen("cvbasic_epilogue.asm", "r");
++    prologue = fopen("/usr/share/cvbasic/cvbasic_epilogue.asm", "r");
+     if (prologue == NULL) {
+-        fprintf(stderr, "Unable to open cvbasic_epilogue.asm.\n");
++        fprintf(stderr, "Unable to open /usr/share/cvbasic/cvbasic_epilogue.asm.\n");
+         exit(2);
+     }
+     while (fgets(line, sizeof(line) - 1, prologue)) {
