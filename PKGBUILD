@@ -1,63 +1,49 @@
-# Maintainer: spookyintheam <spookyintheam@proton.me>
+# Maintainer: Catppuccin <releases@catppuccin.com>
 
 pkgname=catppuccin-cursors-frappe
-pkgver=0.2.0
+pkgver=0.3.0 # renovate: datasource=github-tags depName=catppuccin/cursors
 pkgrel=1
 pkgdesc='Soothing pastel mouse cursors - Frappe'
 arch=('any')
 license=('GPL2')
 url='https://github.com/catppuccin/cursors'
-source=("$pkgname-$pkgver-blue.zip::$url/releases/download/v$pkgver/Catppuccin-Frappe-Blue-Cursors.zip"
-        "$pkgname-$pkgver-dark.zip::$url/releases/download/v$pkgver/Catppuccin-Frappe-Dark-Cursors.zip"
-        "$pkgname-$pkgver-flamingo.zip::$url/releases/download/v$pkgver/Catppuccin-Frappe-Flamingo-Cursors.zip"
-        "$pkgname-$pkgver-green.zip::$url/releases/download/v$pkgver/Catppuccin-Frappe-Green-Cursors.zip"
-        "$pkgname-$pkgver-lavender.zip::$url/releases/download/v$pkgver/Catppuccin-Frappe-Lavender-Cursors.zip"
-        "$pkgname-$pkgver-light.zip::$url/releases/download/v$pkgver/Catppuccin-Frappe-Light-Cursors.zip"
-        "$pkgname-$pkgver-maroon.zip::$url/releases/download/v$pkgver/Catppuccin-Frappe-Maroon-Cursors.zip"
-        "$pkgname-$pkgver-mauve.zip::$url/releases/download/v$pkgver/Catppuccin-Frappe-Mauve-Cursors.zip"
-        "$pkgname-$pkgver-peach.zip::$url/releases/download/v$pkgver/Catppuccin-Frappe-Peach-Cursors.zip"
-        "$pkgname-$pkgver-pink.zip::$url/releases/download/v$pkgver/Catppuccin-Frappe-Pink-Cursors.zip"
-        "$pkgname-$pkgver-red.zip::$url/releases/download/v$pkgver/Catppuccin-Frappe-Red-Cursors.zip"
-        "$pkgname-$pkgver-rosewater.zip::$url/releases/download/v$pkgver/Catppuccin-Frappe-Rosewater-Cursors.zip"
-        "$pkgname-$pkgver-sapphire.zip::$url/releases/download/v$pkgver/Catppuccin-Frappe-Sapphire-Cursors.zip"
-        "$pkgname-$pkgver-sky.zip::$url/releases/download/v$pkgver/Catppuccin-Frappe-Sky-Cursors.zip"
-        "$pkgname-$pkgver-teal.zip::$url/releases/download/v$pkgver/Catppuccin-Frappe-Teal-Cursors.zip"
-        "$pkgname-$pkgver-yellow.zip::$url/releases/download/v$pkgver/Catppuccin-Frappe-Yellow-Cursors.zip")
-sha256sums=('2f60aa4844fd5945322c2d0e939a7e48f845abeff64b7042a39d69d933a4f84e'
-            '885e1f1fe37f6f5304f716c53a3418fd49f220645d659a821db772cbe3ca4954'
-            '0b172cf4c442a1e5525f6def8f9a73a4919ec19f5f4ba97327fb5547e06809b7'
-            'cb8c9e477ad4e6ca9a4b6433a85b35fa31d8ba76c52acbce2afd2b3b7334cf65'
-            '3188fec7eff1eb378fe510bd546f5efe7d07cd02c50619a83f01f4168c7a59e1'
-            '963b13528eaec0d14ec853130c40bada4362a91f7a6a0ebba88af41a5844510f'
-            '295ef4b4e0ffdd6fbadd1baafa489b6aced4ec090aac2cd8a5b0911b049f05a9'
-            'a2866c220f304cfdf5e60662052fa87c718dc6d1274746613f375abb4c171223'
-            '49d27f63626573e78137a965b59162d4d218ec364b2d426c680d2245e085cb8e'
-            '047e900422327b034ead4ac76b1d728b1ac77a4e8d839df3e7194323296d2859'
-            'bf48b9783ea5f18821a2907365960c50a715681ccb8ac5fcfbc619ebf7a41b53'
-            '8e1d4b51586fa5759e9d65f2a9836897da68e3674bdc41d46b964f3b5bc6b9a8'
-            '8a59523fb4f35834388a6ce1a5a594fc68f9c4d38dc374c46a606b27e2d74117'
-            '92bcb7d8a574928139dcb80aadd55432736745b9911afed164c25462d24788fe'
-            '2facfc9eb678bb2d11a9f05437e272926e6a75212537ddab1911201b31104793'
-            'a9520200e1c404830581ea165375f0559395f1c282399cd4ea4429db2ca976d5')
-package() {
-  install -d "$pkgdir/usr/share/icons/"
-  cp -a --no-preserve=ownership \
-    "Catppuccin-Frappe-Blue-Cursors" \
-    "Catppuccin-Frappe-Dark-Cursors" \
-    "Catppuccin-Frappe-Flamingo-Cursors" \
-    "Catppuccin-Frappe-Green-Cursors" \
-    "Catppuccin-Frappe-Lavender-Cursors" \
-    "Catppuccin-Frappe-Light-Cursors" \
-    "Catppuccin-Frappe-Maroon-Cursors" \
-    "Catppuccin-Frappe-Mauve-Cursors" \
-    "Catppuccin-Frappe-Peach-Cursors" \
-    "Catppuccin-Frappe-Pink-Cursors" \
-    "Catppuccin-Frappe-Red-Cursors" \
-    "Catppuccin-Frappe-Rosewater-Cursors" \
-    "Catppuccin-Frappe-Sapphire-Cursors" \
-    "Catppuccin-Frappe-Sky-Cursors" \
-    "Catppuccin-Frappe-Teal-Cursors" \
-    "Catppuccin-Frappe-Yellow-Cursors" \
-      "$pkgdir/usr/share/icons"
-}
+source=(
+	"$pkgname-$pkgver-blue.zip::$url/releases/download/v$pkgver/catppuccin-frappe-blue-cursors.zip"
+	"$pkgname-$pkgver-dark.zip::$url/releases/download/v$pkgver/catppuccin-frappe-dark-cursors.zip"
+	"$pkgname-$pkgver-flamingo.zip::$url/releases/download/v$pkgver/catppuccin-frappe-flamingo-cursors.zip"
+	"$pkgname-$pkgver-green.zip::$url/releases/download/v$pkgver/catppuccin-frappe-green-cursors.zip"
+	"$pkgname-$pkgver-lavender.zip::$url/releases/download/v$pkgver/catppuccin-frappe-lavender-cursors.zip"
+	"$pkgname-$pkgver-light.zip::$url/releases/download/v$pkgver/catppuccin-frappe-light-cursors.zip"
+	"$pkgname-$pkgver-maroon.zip::$url/releases/download/v$pkgver/catppuccin-frappe-maroon-cursors.zip"
+	"$pkgname-$pkgver-mauve.zip::$url/releases/download/v$pkgver/catppuccin-frappe-mauve-cursors.zip"
+	"$pkgname-$pkgver-peach.zip::$url/releases/download/v$pkgver/catppuccin-frappe-peach-cursors.zip"
+	"$pkgname-$pkgver-pink.zip::$url/releases/download/v$pkgver/catppuccin-frappe-pink-cursors.zip"
+	"$pkgname-$pkgver-red.zip::$url/releases/download/v$pkgver/catppuccin-frappe-red-cursors.zip"
+	"$pkgname-$pkgver-rosewater.zip::$url/releases/download/v$pkgver/catppuccin-frappe-rosewater-cursors.zip"
+	"$pkgname-$pkgver-sapphire.zip::$url/releases/download/v$pkgver/catppuccin-frappe-sapphire-cursors.zip"
+	"$pkgname-$pkgver-sky.zip::$url/releases/download/v$pkgver/catppuccin-frappe-sky-cursors.zip"
+	"$pkgname-$pkgver-teal.zip::$url/releases/download/v$pkgver/catppuccin-frappe-teal-cursors.zip"
+	"$pkgname-$pkgver-yellow.zip::$url/releases/download/v$pkgver/catppuccin-frappe-yellow-cursors.zip"
+)
 
+sha256sums=('7b7d2d280adfadaa835551059df3ca57ef9eafb661e2a8fc99a2a178efbe434a'
+            '4d62ff4e67a210a81fac14e6e9f5685b4c325586c5f60150b22f5552e02f0cd3'
+            'b901b36074598e4f180a3b3c476101d5ae20dbc49646abf33187fa93bbe37c03'
+            '7779116946611928a6778d94e5d0c3cefe965a140a5786d1d2ee495bde9c2cb6'
+            '0d411a838bd4e9708edf51428ef03af7de88222b34b024b0675ae0f5bb5ca45f'
+            'd57943dfa9ad60c6a187749e193267d27a9fa16a82e35d902e0455d4b883484e'
+            'c0a3932bd1ceb543e972bd9fa83fddadee3ff740f4c3ee67dfacb383f71b4be0'
+            'ad07f3dcc1fc1ed170f1357721534ff1a70c27d6602c0c3e4e47fd073b4b57b4'
+            '863ec687f3d5794800a5779a8ad6f7555a0ed7ae319b45b3bf684ed9525b9aed'
+            '63c3d84170498632d7940056cf6d8a03cf5be605221d0a286f3ab8f8ebeb8b84'
+            '42bb3e8275eba7840cfdc012c7621fc1778a20ebdcc8f0aa0b03587f3a419706'
+            '5ff5e447e2586be661985dca3b40b2cabdc6df17fdb16f49aae0ba669c3c0682'
+            '899fdf85c292c7abdaa0e10cbe7564e6492e5fb808d4651394c5758258ea47cd'
+            '34a0892e7dfa4f56830112953033e23da0790967650e463870628eb55a816886'
+            '21c2c98d02ca18ce1c3b470a7f13ffa423be12194250310cf8914b27310d80b6'
+            'e8a9627e9dc6363c5f907f3c9a48e134484f2bf9af87553c655a3527262cea04')
+
+package() {
+	install -d "$pkgdir/usr/share/icons/"
+	cp -r -a --no-preserve=ownership catppuccin-frappe-* "$pkgdir/usr/share/icons"
+}
