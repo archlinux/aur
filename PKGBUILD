@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RcisTarget
-_pkgver=1.20.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="RcisTarget Identify transcription factor binding motifs enriched on a list of genes or genomic regions"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -22,6 +22,7 @@ depends=(
   r-s4vectors
   r-summarizedexperiment
   r-tibble
+  r-zoo
 )
 optdepends=(
   r-biobase
@@ -39,9 +40,9 @@ optdepends=(
   r-testthat
   r-visnetwork
 )
-source=("https://bioconductor.org/packages/3.17/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0f7605c0a9396d116b777b4954011027')
-b2sums=('c566bd26dd1a7fbec7628d048d4d5d533c34a893c08eddfdd441ff9cfd57af727d99f31e7993e0e6f6a7cb59bc779e22a7da84cdb7a73cbfe4bc7a00c9b5ba90')
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('ecda55e75c23883bdea365e8a72606fa')
+b2sums=('061b3c9b122be014e9856762d5f1006fe8cc026cd5af7f73933528d99f987913379d6478fe5db07d8c7190a83ed26e6fa0334884ffb29bfcf3ccd9df18309321')
 
 build() {
   mkdir build
