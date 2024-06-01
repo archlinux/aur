@@ -5,7 +5,7 @@
 pkgname=kwin
 pkgver=6.0.5
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=1
+pkgrel=2
 pkgdesc='An easy to use, but flexible, composited Window Manager'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
@@ -80,7 +80,7 @@ makedepends=(extra-cmake-modules
 optdepends=('maliit-keyboard: virtual keyboard for kwin-wayland')
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig}
-        fix-chromium-dragging.patch::https://invent.kde.org/plasma/$pkgname/-/commit/711c5bb43f2823766d5189dc8d567c8f4cec253c.patch)
+        https://invent.kde.org/plasma/$pkgname/-/commit/711c5bb4.patch)
 install=$pkgname.install
 sha256sums=('242e7d210529ec631bc5fe3fe0a117a3d1d4edb1dd3a644aafd5089312f8b0d7'
             'SKIP'
@@ -91,9 +91,7 @@ validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell
               '1FA881591C26B276D7A5518EEAAF29B42A678C20') # Marco Martin <notmart@gmail.com>
 
 prepare() {
-  cd "$pkgname-$pkgver"
-
-  patch -p1 -i "${srcdir}/fix-chromium-dragging.patch"
+  patch -d $pkgname-$pkgver -p1 < 711c5bb4.patch # Fix drag and drop to Chromium
 }
 
 build() {
