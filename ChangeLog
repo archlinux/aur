@@ -837,7 +837,18 @@ Fixes:
 === Morgen 3.4.2 + 3.4.3
 New Features:
 - iCloud can now be connected to Morgen Assist. Deploy calendar automation with your iCloud calendars, including Morgen Assist Calendar Propagation, Automated Travel Time, Team Meeting Optimizer, and more.
+
 Fixes:
 - A problem that caused some duplicate Outlook events to appear on desktop has been fixed.
 - An issue preventing the authentication with some CalDAV providers (such as Zimbra) has been rectified.
 - Removing the estimated duration from a Morgen task was not possible. This has been fixed.
+
+
+=== Morgen 3.4.4
+Improvements:
+- Out-of-Office events from Google Workspace can now be rescheduled from Morgen.
+ 
+Fixes:
+- We improved our CalDAV sync engine to be more robust and provide more detailed logs so we can better identify issues faster.
+- We improved the experience of setting reminders for Scheduling Links.
+- We fixed some edge cases that could allow invalid operations on the calendar, such as deleting read-only events.
