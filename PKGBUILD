@@ -1,6 +1,6 @@
 # Maintainer: AntiCompositeNumber <anticompositenumber at gmail dot com>
 pkgname=fresh-node
-pkgver=23.08.1
+pkgver=24.05.1
 pkgrel=1
 pkgdesc="Wikimedia tool to create Docker containers for running isolated npm tests"
 arch=('any')
@@ -18,7 +18,7 @@ prepare () {
 	cd "$pkgname-$pkgver"
     # The first two install tests fail on my machine at least.
     # This PKGBUILD doesn't use fresh-install anyway, so we're not losing anything.
-    sed '99,133 {s/^/#/}' -i test
+    sed '101,135 {s/^/#/}' -i test
 }
 
 check() {
