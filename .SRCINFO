@@ -1,0 +1,16 @@
+pkgbase = moccasin-git
+	pkgdesc = A TUI feed reader for RSS, Atom, and Podcasts (git)
+	pkgver = r43.b93dabf
+	pkgrel = 1
+	url = https://github.com/rektdeckard/moccasin
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = moccasin
+	conflicts = moccasin
+	source = git+https://github.com/rektdeckard/moccasin
+	sha512sums = SKIP
+
+pkgname = moccasin-git
