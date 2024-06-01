@@ -1,6 +1,6 @@
 pkgbase = specterext-spectrum
 	pkgdesc = This is a electrum-adapter. It exposes a Bitcoin-Core style API while using an electron API in the backend.
-	pkgver = 0.6.5
+	pkgver = 0.6.6
 	pkgrel = 1
 	url = https://specter.solutions
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = specterext-spectrum
 	depends = python-psycopg2
 	depends = python-pytest
 	depends = python-pysocks
-	source = https://github.com/cryptoadvance/spectrum/archive/refs/tags/v0.6.5.tar.gz
-	sha256sums = 6f648fc97a394f73453e9e3055fccbb71660fe391f3f6ade92c7715cd717eaf4
+	source = https://github.com/cryptoadvance/spectrum/archive/refs/tags/v0.6.6.tar.gz
+	sha256sums = c61c4b2e5cc9d78d35a2fbad057a2a11162d71a893cdd00b43fef6bfef33a16f
 
 pkgname = specterext-spectrum
