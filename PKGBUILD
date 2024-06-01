@@ -1,14 +1,14 @@
-# $Id$
-# Maintainer: winlu <derwinlu@gmail.com>
+# Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
+# Contributor: winlu <derwinlu@gmail.com>
 
 _pkgname=rebar3
 pkgname=${_pkgname}-git
-pkgver=5238.ac6f8bcb
+pkgver=5385.4594b00f
 pkgrel=1
 pkgdesc="A sophisticated build-tool for Erlang projects that follows OTP principles."
 arch=('any')
 url="https://github.com/erlang/rebar3"
-license=('APACHE')
+license=('Apache-2.0')
 depends=('erlang-nox')
 optdepends=('rebar3-zsh: ZSH completion')
 conflicts=('rebar3')

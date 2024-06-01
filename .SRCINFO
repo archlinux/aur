@@ -1,10 +1,10 @@
 pkgbase = rebar3-git
 	pkgdesc = A sophisticated build-tool for Erlang projects that follows OTP principles.
-	pkgver = 5238.ac6f8bcb
+	pkgver = 5385.4594b00f
 	pkgrel = 1
 	url = https://github.com/erlang/rebar3
 	arch = any
-	license = APACHE
+	license = Apache-2.0
 	makedepends = git
 	depends = erlang-nox
 	optdepends = rebar3-zsh: ZSH completion
