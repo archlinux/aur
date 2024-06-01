@@ -1,19 +1,19 @@
 # Maintainer: Guilhem Saurel <saurel@laas.fr>
 
-pkgorg='loco-3d'
+_org='loco-3d'
 _pkgname='crocoddyl'
 pkgname=("$_pkgname" "$_pkgname-docs")
-pkgver=2.0.2
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="optimal control library for robot control under contact sequence"
 arch=('i686' 'x86_64')
-url="https://github.com/$pkgorg/$pkgname"
-license=('BSD')
+url="https://github.com/$_org/$_pkgname"
+license=('BSD-2-Clause')
 depends=('pinocchio' 'eigenpy' 'example-robot-data' 'python-scipy' 'coin-or-ipopt')
 optdepends=('doxygen')
 makedepends=('cmake' 'eigen')
 source=($url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz{,.sig})
-sha256sums=('854c65e57fdb6b410cb14ca3dc70f76ec568344144c1d690b413b497abf5ae02'
+sha256sums=('85993df25e569dfbecf545d84e38a9a7e4d0e166ba4cb80d7e51947436d3b269'
             'SKIP')
 validpgpkeys=(
     '9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28'  # https://github.com/nim65s.gpg
@@ -22,8 +22,9 @@ validpgpkeys=(
 
 build() {
     cmake -B "build-$pkgver" -S "$pkgbase-$pkgver" \
+        -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=lib
+        -Wno-dev
     cmake --build "build-$pkgver"
 }
 
