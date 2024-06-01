@@ -5,7 +5,7 @@ pkgname=(
   papers
   papers-lib-docs
 )
-pkgver=45.0+r484+g4d43a1c7
+pkgver=46.0
 pkgrel=1
 pkgdesc="Document viewer (PDF, PostScript, XPS, djvu, dvi, tiff, cbr, cbz, cb7, cbt)"
 url="https://apps.gnome.org/Papers/"
@@ -37,7 +37,8 @@ makedepends=(
   rust
   libnautilus-extension
 )
-source=("git+https://gitlab.gnome.org/GNOME/Incubator/papers.git#branch=main")
+_commit=a08a9708f0dc54727a9124838c1ef16b36db2677   # tags/46.0^0
+source=("git+https://gitlab.gnome.org/GNOME/Incubator/papers.git#commit=$_commit")
 b2sums=('SKIP')
 
 pkgver() {

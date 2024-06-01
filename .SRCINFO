@@ -1,6 +1,6 @@
 pkgbase = papers
 	pkgdesc = Document viewer (PDF, PostScript, XPS, djvu, dvi, tiff, cbr, cbz, cb7, cbt)
-	pkgver = 45.0+r484+g4d43a1c7
+	pkgver = 46.0
 	pkgrel = 1
 	url = https://apps.gnome.org/Papers/
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = papers
 	depends = libspectre
 	depends = exempi
 	depends = poppler-glib
-	source = git+https://gitlab.gnome.org/GNOME/Incubator/papers.git#branch=main
+	source = git+https://gitlab.gnome.org/GNOME/Incubator/papers.git#commit=a08a9708f0dc54727a9124838c1ef16b36db2677
 	b2sums = SKIP
 
 pkgname = papers
