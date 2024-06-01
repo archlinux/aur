@@ -7,7 +7,7 @@ _microarchitecture=0
 ## Major kernel version
 _major=6.9
 ## Minor kernel version
-_minor=2
+_minor=3
 
 ## PKGBUILD ##
 
@@ -34,11 +34,11 @@ validpgpkeys=(
   '83BC8889351B5DEBBB68416EB8AC08600F108CDF'  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('d46c5bdf2c5961cc2a4dedefe0434d456865e95e4a7cd9f93fff054f9090e5f9'
+sha256sums=('c321c46401368774fc236f57095b205a5da57415f9a6008018902f9fd5eddfae'
             'SKIP'
             'SKIP'
             'SKIP'
-            '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee')
+            'a8b38eb482eb685944757182c4886404abc12703e5e56ec39c7d61298d17d71f')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -109,6 +109,9 @@ prepare() {
   sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
 
   ## --- Configs And Tweaks
+
+  msg2 "Disable NUMA..."
+  scripts/config --disable CONFIG_NUMA
   
   msg2 "Disable old dynticks..."
   scripts/config --disable CONFIG_HZ_PERIODIC
