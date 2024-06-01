@@ -1,20 +1,20 @@
 pkgname=2s2h-bin
-pkgver=1.0.0
-pkgrel=3
+pkgver=1.0.1
+pkgrel=1
 _pkgrel_x86_64=1
 _pkgrel_aarch64=1
-pkgdesc="Ship of Harkinian Reimplimentation engine"
+pkgdesc="An unofficial port of The Legend of Zelda Majora's Mask Binary package"
 arch=('x86_64' 'aarch64' 'i686')
 url="https://gitlab.com/linuxbombay/2s2h"
 license=('GPL')
 depends=('sdl2' 'sdl2_net' 'libpng' 'libzip' 'zenity' 'tinyxml2' 'spdlog')
 makedepends=('unzip')
 sha256sums_x86_64=('SKIP'
-                   '6be86c64f35e3cf86decb560cfa6d12d3a6ea0a9dca23fea49975bd3fb7cb137')
+                   '56b492f3d65c88ef1c3a057f72a558cbcc50f9f87ce17c7ee42edd0fc1a91e9f')
 sha256sums_aarch64=('SKIP'
-                    '9831aad0abfbca98ca2b148d1420feaab3d40f42c25a06b5934723be451c8087')
+                    '20e7f926f472371ac44ed0298ba72ba47e651bce69521b9677342485cff0e8be')
 sha256sums_i686=('SKIP'
-                 '1e55f16d8400c78f7ce5dafb8447bacdabed4160a32756175af49bc5b0625bf3')
+                 'c89c88079e4c4d508658405c714d36c00c599ddd525c2e5ac4a3d9dff3d21825')
 source_x86_64=("git+https://gitlab.com/linuxbombay/2s2h/2s2h-pkg" "$url/binaries/$pkgver/-/raw/main/2s2h-linux-x64.tar.xz")
 source_aarch64=("git+https://gitlab.com/linuxbombay/2s2h/2s2h-pkg" "$url/binaries/$pkgver/-/raw/main/2s2h-linux-arm64.tar.xz")
 source_i686=("git+https://gitlab.com/linuxbombay/2s2h/2s2h-pkg" "$url/binaries/$pkgver/-/raw/main/2s2h-linux-i686.tar.xz")
