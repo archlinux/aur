@@ -3,7 +3,7 @@
 # Contributor: Aleksandar Trifunović <akstrfn at gmail dot com>
 
 pkgname=fizz
-pkgver=2024.05.06.00
+pkgver=2024.05.27.00
 pkgrel=1
 pkgdesc="C++14 implementation of the TLS-1.3 standard"
 arch=(x86_64)
@@ -27,31 +27,23 @@ makedepends=(
   cmake
   gtest
 )
+checkdepends=(expat)
 provides=(
   libfizz.so
   libfizz_test_support.so
 )
-source=(
-  "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-  "add-missing-source-file.patch"
-)
-sha256sums=(
-  '0ef68f05d73b32393953ef8c35b953bfd1260a91521b3f86475295c69590bf72'
-  '4e25b9d22da13a82c85195d880592177a4ec0f2c54cfa771cdf3c92300f947d7'
-)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('3b41ed6d6afea0821b5702fbe46e10877efdf4f6da00e7fd9aceb514c03178be')
 
 _archive="$pkgname-$pkgver"
 
 prepare() {
   cd "$_archive"
 
-  patch --forward --strip=1 --input="$srcdir/add-missing-source-file.patch"
-
   # Use system CMake config instead of bundled module, incompatible with glog
   # v0.7.0+
   sed -i 's/find_package(Glog REQUIRED)/find_package(Glog CONFIG REQUIRED)/' \
     fizz/CMakeLists.txt
-
 }
 
 build() {

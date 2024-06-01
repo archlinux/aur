@@ -1,10 +1,11 @@
 pkgbase = fizz
 	pkgdesc = C++14 implementation of the TLS-1.3 standard
-	pkgver = 2024.05.06.00
+	pkgver = 2024.05.27.00
 	pkgrel = 1
 	url = https://github.com/facebookincubator/fizz
 	arch = x86_64
 	license = BSD-3-Clause
+	checkdepends = expat
 	makedepends = boost
 	makedepends = cmake
 	makedepends = gtest
@@ -21,9 +22,7 @@ pkgbase = fizz
 	depends = zstd
 	provides = libfizz.so
 	provides = libfizz_test_support.so
-	source = fizz-2024.05.06.00.tar.gz::https://github.com/facebookincubator/fizz/archive/v2024.05.06.00.tar.gz
-	source = add-missing-source-file.patch
-	sha256sums = 0ef68f05d73b32393953ef8c35b953bfd1260a91521b3f86475295c69590bf72
-	sha256sums = 4e25b9d22da13a82c85195d880592177a4ec0f2c54cfa771cdf3c92300f947d7
+	source = fizz-2024.05.27.00.tar.gz::https://github.com/facebookincubator/fizz/archive/v2024.05.27.00.tar.gz
+	sha256sums = 3b41ed6d6afea0821b5702fbe46e10877efdf4f6da00e7fd9aceb514c03178be
 
 pkgname = fizz
