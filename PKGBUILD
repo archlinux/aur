@@ -1,28 +1,26 @@
 # Maintainer: Marieke Westendorp <ma3ke.cyber@gmail.com>
 pkgname=tid
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A small system information bar"
 arch=('x86_64')
 url="https://git.sr.ht/~ma3ke/tid"
 license=('MIT')
 depends=()
-makedepends=('cargo-nightly')
+makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 backup=("etc/tid/tid.config")
-sha512sums=('57a68311f7522fb366c91952ec0b4780cea30ac3c6b044d190b6a18376500b3ae6b6658428bde0fc1d707bc110c4ef13a29724ce98221729b88e3895c3ef9fa7')
+sha512sums=('becb3807ccceabcef253a1d3354be4c5a0a3f41df49d825ee6d00a9ffc32c1d4387e7bd3fd2eac411dfdc0bfd811d838c81f14edd90255b6c56800d4600d184a')
 
 prepare() {
 	cd "$pkgname-$pkgver"
 
-	export RUSTUP_TOOLCHAIN=nightly
 	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
 	cd "$pkgname-$pkgver"
 
-	export RUSTUP_TOOLCHAIN=nightly
 	export CARGO_TARGET_DIR=target
 	cargo build --frozen --release --all-features
 }
@@ -30,7 +28,6 @@ build() {
 check() {
 	cd "$pkgname-$pkgver"
 
-	export RUSTUP_TOOLCHAIN=nightly
 	export CARGO_TARGET_DIR=target
 	cargo test --frozen --release --all-features
 }
