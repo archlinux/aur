@@ -16,7 +16,7 @@ source=("git+$url#branch=master")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "gr-limesdr"
 
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
