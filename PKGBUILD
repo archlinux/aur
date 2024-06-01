@@ -4,7 +4,7 @@
 _pkgname=squawk
 pkgname="${_pkgname}-cli"
 pkgver=0.29.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Linter for PostgreSQL, focused on migrations"
 arch=(
 	x86_64
@@ -14,7 +14,7 @@ license=(
 	GPL-3.0-only
 )
 depends=(
-	libpg_query
+	"libpg_query>=16"
 )
 makedepends=(
 	cargo
@@ -26,9 +26,11 @@ options=(
 source=(
 	"https://github.com/sbdchd/squawk/archive/refs/tags/v${pkgver}.tar.gz"
 	dynamic-pg_query-linking.patch
+	libpg_query16.patch
 )
 sha256sums=(
 	365ddb9c007b95d41ee1ed78cc45ac006a5f94ba31e832842064bfbbadd6fa19
+	SKIP
 	SKIP
 )
 
@@ -61,6 +63,8 @@ prepare() {
 		vendor/libpg_query-sys/.cargo-checksum.json \
 		> vendor/libpg_query-sys/.cargo-checksum.json.new
 	mv vendor/libpg_query-sys/.cargo-checksum.json{.new,}
+
+	patch -p0 -i ../libpg_query16.patch
 }
 
 build() {
