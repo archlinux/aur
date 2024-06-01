@@ -1,16 +1,16 @@
 # Maintainer: Cebtenzzre <cebtenzzre (AT) gmail (DOT) com>
 pkgname=gigatribe
-pkgver=3.06.006
+pkgver=3.06.015
 pkgrel=2
 pkgdesc='Create your own secure and private network to share files with friends.'
 arch=(x86_64)
 url='https://www.gigatribe.com/'
-license=('custom')
-depends=(zlib)
+license=('LicenseRef-GigaTribe')
+depends=(zlib hicolor-icon-theme)
 options=(!emptydirs !strip)
 source=("https://www.gigatribe.com/software/linux/${pkgname}_${pkgver}-1.deb"
         'LICENSE.html::https://www.gigatribe.com/en/legal')
-sha256sums=('eb5a2b4c97db48906b51eeb80b10cabea118252166df9ae275785815a26d9098'
+sha256sums=('3df024609b56d2e48bfc77ec56c9bac1f5f8e2a42edca0d5364f7bbd319351e9'
             'e9825c6317e648ba2d056b99c4708f975acc8d873a6a25fe24d43863bceba4ba')
 
 prepare() {
