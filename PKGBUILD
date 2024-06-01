@@ -2,7 +2,7 @@
 
 pkgname=modrinth-app-git
 _gitname=theseus
-pkgver=r178.6d9d403
+pkgver=r241.7394fdc
 pkgrel=1
 pkgdesc='Official Modrinth launcher. Open-source, built by the community, for the community.'
 url=https://github.com/modrinth/theseus
@@ -11,8 +11,8 @@ license=(GPL3)
 conflicts=('modrinth-app')
 provides=('modrinth-app')
 depends=('webkit2gtk')
-makedepends=('cargo-tauri' 'yarn' 'pnpm' 'git')
-options=(!lto) # Enable devtools (thanks @FabioLolix)
+makedepends=('cargo-tauri' 'pnpm' 'git')
+options=(!lto !debug) # !lto = Enable devtools (thanks @FabioLolix)
 source=("git+https://github.com/modrinth/theseus")
 sha256sums=('SKIP')
 
@@ -31,7 +31,12 @@ build() {
 		"s|\"targets\": \"all\"|\"targets\": \"deb\"|" \
 		"src-tauri/tauri.conf.json"
 
-	yarn install
+	# Allow using other pnpm versions as this doesn't seem to cause errors
+	# & doesn't require to install another pnpm version for no reason
+	# (excepted = 8.6.0, current = 9.1.4)
+	export COREPACK_ENABLE_STRICT=0
+	pnpm install
+
 	cargo tauri build
 }
 
