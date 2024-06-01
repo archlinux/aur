@@ -33,6 +33,6 @@ pkgbase = python-pystencils
 	optdepends = python-rich: for interactive support
 	optdepends = python-graphviz: for interactive support
 	source = https://i10git.cs.fau.de/pycodegen/pystencils/-/archive/release/1.3.4/pystencils-release-1.3.4.tar.gz
-	sha512sums = 454767ec56d0cb7f033e284a728a01714907e0793b39c01ca30330a4f27516c21f4d0da730e9e3a2a0050d1056fa40e002c6cb89119b7c8ac6013604f1c7449f
+	sha512sums = eb036438768fa847e3380f08a2ee25c0a06a11e27da3257c8a135b783e22b9af224977177bbac624fda6cc3ecb5f139ccb714d24e5560c733274f2b01f93286f
 
 pkgname = python-pystencils
