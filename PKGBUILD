@@ -4,20 +4,23 @@
 # Contributor: Tobias Manske <aur at rad4day dot de>
 
 pkgname=xp-pen-tablet
-pkgver=3.4.9
-pkgrel=231023
+pkgver=4.0.0
+pkgrel=240329
 epoch=0
 pkgdesc="XP-Pen (Official) Linux utility (New UI driver)"
 arch=('x86_64')
 url='https://www.xp-pen.com/download/index.html'
 license=('custom')
-source=("XPPenLinux${pkgver}-${pkgrel}.tar.gz::https://www.xp-pen.com/download/file/id/1936/pid/1016/ext/gz.html")
+source=("XPPenLinux${pkgver}-${pkgrel}.tar.gz::https://www.xp-pen.com/download/file.html?id=2854&pid=1016&ext=gz")
 install=${pkgname}.install
 
-sha512sums=('3732abdb444ae6ee0ff585b8fadb750761f194936054c392a3cf0e93f59468acedff79e864f6e751aac2b398e0ba6d951b55048ffe11bcb68c5b690062adf441')
+sha512sums=('42f44dc7ff5e14e0b570cbc2b129a7748cb8325bf51d2c99700647d8bbcacb4c25a8e5a4eb623e7b0b39cf4f0362d6a1968cea3f8767d3db926cc2627357ea28')
 
 
 package() {
+       #for ver 4.0.0-240329 fix typo in the folder name in the src archive
+       mv $srcdir/XPPenLinux${pkgver}-2400329 $srcdir/XPPenLinux${pkgver}-${pkgrel}
+       #
        cp -r $srcdir/XPPenLinux${pkgver}-${pkgrel}/App/* $pkgdir
        cp -r $pkgdir/lib/* $pkgdir/usr/lib
        rm -r $pkgdir/lib
@@ -38,3 +41,4 @@ package() {
        #Minimize GUI on autostartup
        #sed -re 's/(^Exec=\/.+)/\1 \/mini/gi' -i ${pkgdir}/etc/xdg/autostart/xppentablet.desktop
 }
+
