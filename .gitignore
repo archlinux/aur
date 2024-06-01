@@ -1,4 +1,5 @@
 /pkg
 /src
+/iyuuplus
 *.tar.gz
 *.pkg.tar.zst
