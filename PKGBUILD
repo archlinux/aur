@@ -1,63 +1,49 @@
-# Maintainer: spookyintheam <spookyintheam@proton.me>
+# Maintainer: Catppuccin <releases@catppuccin.com>
 
 pkgname=catppuccin-cursors-mocha
-pkgver=0.2.0
+pkgver=0.3.0 # renovate: datasource=github-tags depName=catppuccin/cursors
 pkgrel=1
 pkgdesc='Soothing pastel mouse cursors - Mocha'
 arch=('any')
 license=('GPL2')
 url='https://github.com/catppuccin/cursors'
-source=("$pkgname-$pkgver-blue.zip::$url/releases/download/v$pkgver/Catppuccin-Mocha-Blue-Cursors.zip"
-        "$pkgname-$pkgver-dark.zip::$url/releases/download/v$pkgver/Catppuccin-Mocha-Dark-Cursors.zip"
-        "$pkgname-$pkgver-flamingo.zip::$url/releases/download/v$pkgver/Catppuccin-Mocha-Flamingo-Cursors.zip"
-        "$pkgname-$pkgver-green.zip::$url/releases/download/v$pkgver/Catppuccin-Mocha-Green-Cursors.zip"
-        "$pkgname-$pkgver-lavender.zip::$url/releases/download/v$pkgver/Catppuccin-Mocha-Lavender-Cursors.zip"
-        "$pkgname-$pkgver-light.zip::$url/releases/download/v$pkgver/Catppuccin-Mocha-Light-Cursors.zip"
-        "$pkgname-$pkgver-maroon.zip::$url/releases/download/v$pkgver/Catppuccin-Mocha-Maroon-Cursors.zip"
-        "$pkgname-$pkgver-mauve.zip::$url/releases/download/v$pkgver/Catppuccin-Mocha-Mauve-Cursors.zip"
-        "$pkgname-$pkgver-peach.zip::$url/releases/download/v$pkgver/Catppuccin-Mocha-Peach-Cursors.zip"
-        "$pkgname-$pkgver-pink.zip::$url/releases/download/v$pkgver/Catppuccin-Mocha-Pink-Cursors.zip"
-        "$pkgname-$pkgver-red.zip::$url/releases/download/v$pkgver/Catppuccin-Mocha-Red-Cursors.zip"
-        "$pkgname-$pkgver-rosewater.zip::$url/releases/download/v$pkgver/Catppuccin-Mocha-Rosewater-Cursors.zip"
-        "$pkgname-$pkgver-sapphire.zip::$url/releases/download/v$pkgver/Catppuccin-Mocha-Sapphire-Cursors.zip"
-        "$pkgname-$pkgver-sky.zip::$url/releases/download/v$pkgver/Catppuccin-Mocha-Sky-Cursors.zip"
-        "$pkgname-$pkgver-teal.zip::$url/releases/download/v$pkgver/Catppuccin-Mocha-Teal-Cursors.zip"
-        "$pkgname-$pkgver-yellow.zip::$url/releases/download/v$pkgver/Catppuccin-Mocha-Yellow-Cursors.zip")
-sha256sums=('be107570f34ce2ee096ae6266d8fee4bfe57242a145e0f9a708ee8b27ebe5956'
-            'c270995f54e067275d60c6a4fac6528b991421ea2a192e3ac8f636fdc9c68a54'
-            'e605346a3b863172c61287d4f8e0811adf0fae641b8ab5d6d7444e60157717e2'
-            'dfb58fbb272c8b1a751ca4fff2a01e9b6d17141efbc08bbeed68976c5002afd1'
-            'e4e496d6346b552579423ffc98dae33af7eb6fc01dbd48c00b77fba9951ee96d'
-            '5ed54bff8478cf79219bb8510a69b7e4b164a0eb925b8d98622f2074bc602340'
-            'b1e40ad5cf42d0225d19d428fa3b2a4be1bb0fa5a310d37c600d9a655460e1b7'
-            '7ed5ef186e3cb15f5d26040e243355c74613c0645bf2b0bf34f1afb1df79e94c'
-            '70cc020965fda8eea0e8b05950353c64241b57c4a89f6fa4529f4fe5753613f8'
-            '6780ae6c8ca325f5339b07b6eff4f0f584a052ffa2fe91ca3437d95898793a6d'
-            'd2ce47c625a3f7b268dc298f51766be3811d0dcc3eaacefd6d1909058df3584d'
-            'c67225d5153bb0d72abbb70437fb4ec012e40d9663a8d28d82dc45507c5e77ad'
-            '6e91f5f83dad2ec5c91cee2e78c4a4fbd7042e80d76d6b61cb91d915012046cf'
-            '5a67f56d47183b3fc038c8752f8b2c61981c334f1d24b6fc6eba6fb084c4c205'
-            '6e8bbb0bf628a3faeb6833fd209fd15f5eaaa1a564e38e5fa7377e63ef48c9db'
-            'cabc27e9c0268c59df24ee628dddcebdacbf30d977faa30c682c67a530d3a449')
-package() {
-  install -d "$pkgdir/usr/share/icons/"
-  cp -a --no-preserve=ownership \
-    "Catppuccin-Mocha-Blue-Cursors" \
-    "Catppuccin-Mocha-Dark-Cursors" \
-    "Catppuccin-Mocha-Flamingo-Cursors" \
-    "Catppuccin-Mocha-Green-Cursors" \
-    "Catppuccin-Mocha-Lavender-Cursors" \
-    "Catppuccin-Mocha-Light-Cursors" \
-    "Catppuccin-Mocha-Maroon-Cursors" \
-    "Catppuccin-Mocha-Mauve-Cursors" \
-    "Catppuccin-Mocha-Peach-Cursors" \
-    "Catppuccin-Mocha-Pink-Cursors" \
-    "Catppuccin-Mocha-Red-Cursors" \
-    "Catppuccin-Mocha-Rosewater-Cursors" \
-    "Catppuccin-Mocha-Sapphire-Cursors" \
-    "Catppuccin-Mocha-Sky-Cursors" \
-    "Catppuccin-Mocha-Teal-Cursors" \
-    "Catppuccin-Mocha-Yellow-Cursors" \
-      "$pkgdir/usr/share/icons"
-}
+source=(
+	"$pkgname-$pkgver-blue.zip::$url/releases/download/v$pkgver/catppuccin-mocha-blue-cursors.zip"
+	"$pkgname-$pkgver-dark.zip::$url/releases/download/v$pkgver/catppuccin-mocha-dark-cursors.zip"
+	"$pkgname-$pkgver-flamingo.zip::$url/releases/download/v$pkgver/catppuccin-mocha-flamingo-cursors.zip"
+	"$pkgname-$pkgver-green.zip::$url/releases/download/v$pkgver/catppuccin-mocha-green-cursors.zip"
+	"$pkgname-$pkgver-lavender.zip::$url/releases/download/v$pkgver/catppuccin-mocha-lavender-cursors.zip"
+	"$pkgname-$pkgver-light.zip::$url/releases/download/v$pkgver/catppuccin-mocha-light-cursors.zip"
+	"$pkgname-$pkgver-maroon.zip::$url/releases/download/v$pkgver/catppuccin-mocha-maroon-cursors.zip"
+	"$pkgname-$pkgver-mauve.zip::$url/releases/download/v$pkgver/catppuccin-mocha-mauve-cursors.zip"
+	"$pkgname-$pkgver-peach.zip::$url/releases/download/v$pkgver/catppuccin-mocha-peach-cursors.zip"
+	"$pkgname-$pkgver-pink.zip::$url/releases/download/v$pkgver/catppuccin-mocha-pink-cursors.zip"
+	"$pkgname-$pkgver-red.zip::$url/releases/download/v$pkgver/catppuccin-mocha-red-cursors.zip"
+	"$pkgname-$pkgver-rosewater.zip::$url/releases/download/v$pkgver/catppuccin-mocha-rosewater-cursors.zip"
+	"$pkgname-$pkgver-sapphire.zip::$url/releases/download/v$pkgver/catppuccin-mocha-sapphire-cursors.zip"
+	"$pkgname-$pkgver-sky.zip::$url/releases/download/v$pkgver/catppuccin-mocha-sky-cursors.zip"
+	"$pkgname-$pkgver-teal.zip::$url/releases/download/v$pkgver/catppuccin-mocha-teal-cursors.zip"
+	"$pkgname-$pkgver-yellow.zip::$url/releases/download/v$pkgver/catppuccin-mocha-yellow-cursors.zip"
+)
 
+sha256sums=('fcd12dc65662c1bb5d41e7ee105e28c9848da8dabfcb2f5ca6aa86c72807081f'
+            'd98a8ad6f2f92bb304b6909db37911389da30ad8d6cf777dd20b6e1e9dff889c'
+            '1be39cc8ffe31f6cb366d0a20696e79c8e40640243416480c80938a8477ceb99'
+            '6d956af3dc035bd117a108d8870121a1668c3cbf3a10ac2a14727daa3633fe71'
+            'eacff16878330efa33f6b58c8d467ac0104371d076f97027668c7e974f2e59f0'
+            'fa2e50fbc1bdc20d8217d662adc6725f7d0b7899170687033197e53dc63dc8dc'
+            '923315fbd1c1cd111eae3820309556d50fd0b120f3d637e77211baef8d46d979'
+            '70f89a13799359603f8bf056f61afd7c96ca77391951a6c3705ac24496f7ca1c'
+            '4ed4e2bd2895cc1496ef5bc510002f7601e62de7f32768eea4af01890196e3b9'
+            '1d866561ad50beef1e3f9cc8c4defe546e47280801209757b9b378517141e2fa'
+            '251f5849211797efed9dd2c973e0adf67176c73c18acb04cab33b332b2209232'
+            'ea69b14dd6ddd8e1fe149f409b855d9d19ba9b5db168bbd404abe41380d4a86c'
+            '8f752493013d88474d357101d3596472e3ecbbee08d92066fefa4bae226e906f'
+            'b24f5233759125fa82cd8a412178d6a95082fdf320900922e4d1c216a17f3619'
+            '3b4c69fa338eb7739d75c32b31e7793f2ac3cb850e2774f0fdd802098c6fb2c0'
+            'bfc9706ad90da53f59faf7dc8a916cfbe5fb797317de18eb85c54207685830c5')
+
+package() {
+	install -d "$pkgdir/usr/share/icons/"
+	cp -r -a --no-preserve=ownership catppuccin-mocha-* "$pkgdir/usr/share/icons"
+}
