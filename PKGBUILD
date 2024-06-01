@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RLHub
-_pkgver=1.6.0
+_pkgver=1.9.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="An ExperimentHub package for accessing processed RLSuite data sets"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -20,9 +20,9 @@ optdepends=(
   r-rmarkdown
   r-testthat
 )
-source=("https://bioconductor.org/packages/3.17/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9072a588ef09512493ea389c50984153')
-b2sums=('caceabbd6afbc8dc710d8a5de89d3359ee68497c57b4a7dc58997fe308d3fd0ae79cdfc4198f9d044733469c1dc0c78404529d7d97663517abc62e85eb443665')
+source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('a056f13ee0636d7edd249c8f469c45ff')
+b2sums=('6781c4046a22ec8a2cf99ee35aa71267e3b103025a36e48ab6bde3282b732ec75f7a1cd6e880c5fbad821c144a80ee85eb97a9e75c09ebb58f319d00e86800e9')
 
 build() {
   mkdir build
