@@ -1,63 +1,49 @@
-# Maintainer: spookyintheam <spookyintheam@proton.me>
+# Maintainer: Catppuccin <releases@catppuccin.com>
 
 pkgname=catppuccin-cursors-macchiato
-pkgver=0.2.0
+pkgver=0.3.0 # renovate: datasource=github-tags depName=catppuccin/cursors
 pkgrel=1
 pkgdesc='Soothing pastel mouse cursors - Macchiato'
 arch=('any')
 license=('GPL2')
 url='https://github.com/catppuccin/cursors'
-source=("$pkgname-$pkgver-blue.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Blue-Cursors.zip"
-        "$pkgname-$pkgver-dark.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Dark-Cursors.zip"
-        "$pkgname-$pkgver-flamingo.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Flamingo-Cursors.zip"
-        "$pkgname-$pkgver-green.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Green-Cursors.zip"
-        "$pkgname-$pkgver-lavender.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Lavender-Cursors.zip"
-        "$pkgname-$pkgver-light.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Light-Cursors.zip"
-        "$pkgname-$pkgver-maroon.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Maroon-Cursors.zip"
-        "$pkgname-$pkgver-mauve.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Mauve-Cursors.zip"
-        "$pkgname-$pkgver-peach.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Peach-Cursors.zip"
-        "$pkgname-$pkgver-pink.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Pink-Cursors.zip"
-        "$pkgname-$pkgver-red.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Red-Cursors.zip"
-        "$pkgname-$pkgver-rosewater.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Rosewater-Cursors.zip"
-        "$pkgname-$pkgver-sapphire.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Sapphire-Cursors.zip"
-        "$pkgname-$pkgver-sky.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Sky-Cursors.zip"
-        "$pkgname-$pkgver-teal.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Teal-Cursors.zip"
-        "$pkgname-$pkgver-yellow.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Yellow-Cursors.zip")
-sha256sums=('4ed537638e472fb43810ceb039f1d822005647465bf454fa85863c8dc1cc1db3'
-            '89449d586d0b83d7b605127df748dbf48d79028cd14a613b1b24700c9de9b53b'
-            '834b8fe61ab64c959a663eb6374cef31e672f98caabd6a037ef52c4602a9c398'
-            '9437227e241af44a1898f679e0094b7d3e338ccd52342549c8771e4359183936'
-            'f8212c049e15ef0ce80f0a3795ee264597c6cb21a8ec72a2cc6e15cae07b7358'
-            'd3f51d9a8a666c95154c65b4001ab59dabff374d7c19e273c38ac81a29903f90'
-            '02e8c652e4b76ed173601beb1d872ef69cf84417ac20ab656dd187f87f5fcdf7'
-            '82b8d981ba290e0fcf67664260520122351443dc4436616b4bd3f806c2ca0db9'
-            '36d56346b04ba7b87dcb382e65d29794fd444a6a1a0b2859cff05d16827fb09c'
-            'd03f188b03d7a55723c55dab2d2c3ac54d56366dd1df6ad8ec915f8e5ae9be2c'
-            '3c5def01147a2ae23f39a1fc8c3e4cf173181d8061b86990feacace239e01eec'
-            'b782e7131ad6dd6e386a60b40794bcd610d656a4cb08f30f6338ebd166ba3881'
-            '6a2ef7d55216d5c9b71b73cb78b05a9cdbaab653e8561ee33e6cf99dcb4ccd22'
-            '861887ef3376366f73c86a1b1086cab012abc5290c54342ccb2ef63dd4d7c6f7'
-            '51b9549d9bcd34d2319fe0a590490e9f2be452c9e5fe8807e5be26cd0f7e3087'
-            '00bbd8e108c3dfc438b326cb12e34fe371f6b4e84b6cfab03dacbcb966deb979')
-package() {
-  install -d "$pkgdir/usr/share/icons/"
-  cp -a --no-preserve=ownership \
-    "Catppuccin-Macchiato-Blue-Cursors" \
-    "Catppuccin-Macchiato-Dark-Cursors" \
-    "Catppuccin-Macchiato-Flamingo-Cursors" \
-    "Catppuccin-Macchiato-Green-Cursors" \
-    "Catppuccin-Macchiato-Lavender-Cursors" \
-    "Catppuccin-Macchiato-Light-Cursors" \
-    "Catppuccin-Macchiato-Maroon-Cursors" \
-    "Catppuccin-Macchiato-Mauve-Cursors" \
-    "Catppuccin-Macchiato-Peach-Cursors" \
-    "Catppuccin-Macchiato-Pink-Cursors" \
-    "Catppuccin-Macchiato-Red-Cursors" \
-    "Catppuccin-Macchiato-Rosewater-Cursors" \
-    "Catppuccin-Macchiato-Sapphire-Cursors" \
-    "Catppuccin-Macchiato-Sky-Cursors" \
-    "Catppuccin-Macchiato-Teal-Cursors" \
-    "Catppuccin-Macchiato-Yellow-Cursors" \
-      "$pkgdir/usr/share/icons"
-}
+source=(
+	"$pkgname-$pkgver-blue.zip::$url/releases/download/v$pkgver/catppuccin-macchiato-blue-cursors.zip"
+	"$pkgname-$pkgver-dark.zip::$url/releases/download/v$pkgver/catppuccin-macchiato-dark-cursors.zip"
+	"$pkgname-$pkgver-flamingo.zip::$url/releases/download/v$pkgver/catppuccin-macchiato-flamingo-cursors.zip"
+	"$pkgname-$pkgver-green.zip::$url/releases/download/v$pkgver/catppuccin-macchiato-green-cursors.zip"
+	"$pkgname-$pkgver-lavender.zip::$url/releases/download/v$pkgver/catppuccin-macchiato-lavender-cursors.zip"
+	"$pkgname-$pkgver-light.zip::$url/releases/download/v$pkgver/catppuccin-macchiato-light-cursors.zip"
+	"$pkgname-$pkgver-maroon.zip::$url/releases/download/v$pkgver/catppuccin-macchiato-maroon-cursors.zip"
+	"$pkgname-$pkgver-mauve.zip::$url/releases/download/v$pkgver/catppuccin-macchiato-mauve-cursors.zip"
+	"$pkgname-$pkgver-peach.zip::$url/releases/download/v$pkgver/catppuccin-macchiato-peach-cursors.zip"
+	"$pkgname-$pkgver-pink.zip::$url/releases/download/v$pkgver/catppuccin-macchiato-pink-cursors.zip"
+	"$pkgname-$pkgver-red.zip::$url/releases/download/v$pkgver/catppuccin-macchiato-red-cursors.zip"
+	"$pkgname-$pkgver-rosewater.zip::$url/releases/download/v$pkgver/catppuccin-macchiato-rosewater-cursors.zip"
+	"$pkgname-$pkgver-sapphire.zip::$url/releases/download/v$pkgver/catppuccin-macchiato-sapphire-cursors.zip"
+	"$pkgname-$pkgver-sky.zip::$url/releases/download/v$pkgver/catppuccin-macchiato-sky-cursors.zip"
+	"$pkgname-$pkgver-teal.zip::$url/releases/download/v$pkgver/catppuccin-macchiato-teal-cursors.zip"
+	"$pkgname-$pkgver-yellow.zip::$url/releases/download/v$pkgver/catppuccin-macchiato-yellow-cursors.zip"
+)
 
+sha256sums=('d8a0a4774183e46b7f8de094d0c5a6d066de4ef89b6c7a4bcd948b9a5ac8fac2'
+            '2523e7a0b3c82f19f19032b6688507762c1fd300ad6626e338c710d052e8492f'
+            'ce21f4117c81f6b30642fbab31d7282bbce001facc9da7f900880659443c532b'
+            'b6c1364e98bfb8912d76268991f5822aa01eaf12d25bfb42ef7c140a6951d200'
+            'dd01365da47e4bd56e98841b5f2fe97467c94dbe55ae6f85cd796cbf3cb9089f'
+            '0487a19a8f38b0ff0c48802bc508f3b90cd06c9f303670a425773cae232c4241'
+            '45e69c26c3bd593d0ed826923f330fe27f3efc58ce0c47777c068bbbc4c3edec'
+            'f3b37924912b56c96777e4ce1addc7ce5d3735db542c33adeb7d2ef270f382b0'
+            '4f6d549a4069b20bfc6076bfc946a01591c5e38cc77817cd3e82b7928d53b6bb'
+            'c7fd499c70abb69ca0f6b53e0eefaa27cf6c5a5212eb51785aaae191bcafb6b0'
+            '5e3385c3c98b53c5f7b7dca7b1364a00d6db2f82d12604fa62a41ba704f2f332'
+            '585ef24d54b9caa6898cba35cc1075cb4be2a343bc1de1ea33eed67b050ecea0'
+            '6ac53b8dcef94a18d062a8338c0a081fe1ed9eb3ff077d2b0a3dea439dc7c363'
+            'db50f0e6587aeb499a2895e930ca2c4dd39fda2d48eaf65bdbaa8b47ed8fbef4'
+            '77d3a35afdc9f341585618e5aaed40e5ce8c966d14575942ec8f4e4ec397ce54'
+            '1a269719f8e3450d90d83a730bc5abba73ea00efaf36e8e8a4bba6a442858fdc')
+
+package() {
+	install -d "$pkgdir/usr/share/icons/"
+	cp -r -a --no-preserve=ownership catppuccin-macchiato-* "$pkgdir/usr/share/icons"
+}
