@@ -1,14 +1,22 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=aur-pull
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 # shellcheck disable=SC2016  # No interpolation wanted
 pkgdesc='Plugin for aurutils to `git pull` multiple repositories'
 arch=('any')
 url='https://github.com/claui/aur-pull'
 license=('Apache-2.0')
-depends=('bash' 'findutils' 'git' 'parallel' 'yq')
+depends=(
+  'bash'
+  'findutils'
+  'git'
+  'parallel'
+  'python'
+  'python-dotty-dict'
+  'python-tomlkit'
+)
 makedepends=('python-myst-parser' 'python-sphinx')
 optdepends=('aurutils: as a plugin host')
 options=('!debug' '!strip')
@@ -17,9 +25,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/claui/aur-pull/archive/v${pkgver}.tar.gz"
 )
 
-sha512sums=(
-  '57aa734decf56c14bcead61ec19475218cd8c30d35248d3a5a51952f9f52015c1e9f74158c038213ed25e42c8e2e9b470fc33943d824e81455f64d9a5e832790'
-)
+sha512sums=('dd4dab5af8f1ae55500f4019748dad6b93fcb70da10b01ccb6bd2d1ddd4ac639178dfcc903d0d8c7034bdae0c5bb418fba8a27b6ee8b2b1fe1713301cdf71d20')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
