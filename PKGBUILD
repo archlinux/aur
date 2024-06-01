@@ -1,7 +1,7 @@
 # Maintainer: Crazybrain <crazy+aur at crazy dot biscuitmafia dot xyz>
 
 pkgname=ss14.launcher
-pkgver=0.27.2
+pkgver=0.28.0
 pkgrel=1
 pkgdesc="Space Station 14 launcher"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=("${pkgname}.v${pkgver}.tar.gz::https://github.com/space-wizards/SS14.Lau
         "https://github.com/space-wizards/Robust.LoaderApi/archive/99a2f4b88077629f69fb66f74f50e88dbe43e0e8.zip"
         'spacestation14.svg'::'https://raw.githubusercontent.com/space-wizards/asset-dump/master/icon.svg'
         'ss14.launcher.desktop')
-sha256sums=('3bb5842b49a3ee8da088f68981799fda8204e72492f3e402894cedecd9fdd1ad'
+sha256sums=('1bda352894766a28cc49a9f8c2e8c76a6669947e7e50ab691ba43e2ae5a7e031'
             'eff77547bbdfe9d9bb633926b6763ca72793bad58adeda2cc33c15defe593ad3'
             'a047c810a26088cc1fd1df73036bd5b4cfb441c0697a2cbd583733d08474f37e'
             '4d68643cccbbb78dd92a14b37edf5476eaa48d5d523ef0d3fbf78f591b1f9ac2')
