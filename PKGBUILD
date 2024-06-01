@@ -1,7 +1,7 @@
 # Maintainer: mh4ckwascut <mh4ckt3mh4ckt1c4s@protonmail.com>
 # Contributor: Juliette Cordor
 pkgname=podman-desktop-bin
-pkgver=1.10.2
+pkgver=1.10.3
 pkgrel=1
 pkgdesc="Manage Podman and other container engines from a single UI and tray"
 arch=("x86_64")
@@ -16,7 +16,7 @@ source=(
     "run.sh"
 )
 sha256sums=(
-	"c0f120421c58d2051f3eeadbebafa7cd6dced4f74147cb0c24d6438d7ed407b8"
+	"9f0a55b84883158d617f694f0e2776dffc8188ca34afa25ea3ef7ff6920ac166"
         "81b78c485c38dd79b50a8008e148509a95fcc56477592315ab7354b64566315a"
         "f07b6315111ad354ed76fdd6dde37deb704fbe559fc226edb60db23efa02d151"
         "64d7035a78ab85b61129f311dacae5d23b43e79588f06db053b922c9d04e200a"
