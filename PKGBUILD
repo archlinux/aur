@@ -1,7 +1,7 @@
 # Maintainer: Andreas Hemmerle <andreas dot hemmerle at gmail dot com>
 pkgname=python-irgen
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A python module/tool for generating and converting InfraRed commands.'
 arch=(any)
 license=(MIT)

@@ -1,7 +1,7 @@
 pkgbase = python-irgen
 	pkgdesc = A python module/tool for generating and converting InfraRed commands.
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/elupus/irgen
 	arch = any
 	license = MIT
