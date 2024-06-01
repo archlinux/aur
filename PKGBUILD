@@ -2,7 +2,7 @@
 
 _pkgname=asfa
 pkgname=${_pkgname}-git
-pkgver=0.10.0.r3.g0f6b0b4
+pkgver=0.10.0.1.r0.g7ab27e1
 pkgrel=1
 pkgdesc='share files by upload via ssh and generation of a non-guessable link'
 arch=('x86_64')
@@ -38,7 +38,8 @@ _cargo_version() {
 # Only difference: dash after minor version.
 _ensure_version_information() {
     local _version
-    _version="$(_cargo_version)"
+    # patch version to denote binary re-release with a dash
+    _version="$(_cargo_version | sed 's/\./-/3')"
     cd "$srcdir/$_pkgname"
     sed -i "s/^version = .*\$/version = \"${_version}\"/" Cargo.toml
     # Replace the new verison in Cargo.lock but keep all other version info
@@ -80,5 +81,9 @@ package() {
     find target/release/man/man1 -type f -print0 \
         | xargs -0 install -Dm644 -t "$pkgdir/usr/share/man/man1"
     find "$pkgdir/usr/share/man/man1" -type f -print0 | xargs -0 gzip
+    find example-config -type f -print0 \
+        | xargs -0 install -Dm644 -t "$pkgdir/usr/share/doc/asfa/example-config"
+    install -Dm644 README.md -t "$pkgdir/usr/share/doc/asfa"
+    install -Dm644 CHANGELOG.md -t "$pkgdir/usr/share/doc/asfa"
 }
 
