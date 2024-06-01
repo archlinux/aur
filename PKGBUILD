@@ -3,7 +3,7 @@
 
 pkgname=xyzsh
 pkgver=1.5.8
-pkgrel=4
+pkgrel=5
 pkgdesc="Interactive shell and text processing tools"
 arch=('i686' 'x86_64')
 url="https://github.com/ab25cq/xyzsh"
@@ -25,7 +25,6 @@ package() {
   cd ${srcdir}/${pkgname}-${pkgver}
 
   make -j1 DESTDIR=${pkgdir} install
-  install --mode=644 -D --no-target-directory $srcdir/$pkgname-$pkgver/LICENSE "$pkgdir"/usr/share/$pkgname/LICENSE
+  install --mode=644 -D --no-target-directory $srcdir/$pkgname-$pkgver/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
 }
-
