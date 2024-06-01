@@ -3,11 +3,12 @@
 pkgname=python-sphinx-quark-theme
 _srcname=quark-sphinx-theme
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Sphinx theme designed for QTextBrowser'
 arch=('any')
 url="https://gitlab.com/fkrull/${_srcname}"
 license=('BSD-2-Clause')
+depends=('python-sphinx')
 makedepends=('python-flit' 'python-pip')
 source=("https://gitlab.com/fkrull/${_srcname}/-/archive/v${pkgver}/${_srcname}-v${pkgver}.tar.gz")
 sha256sums=('d2ef2adaba57ab9eeada195486d5ac7e9c21a84c948437b5842f9ad91135fdec')

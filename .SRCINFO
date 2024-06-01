@@ -1,12 +1,13 @@
 pkgbase = python-sphinx-quark-theme
 	pkgdesc = A Sphinx theme designed for QTextBrowser
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/fkrull/quark-sphinx-theme
 	arch = any
 	license = BSD-2-Clause
 	makedepends = python-flit
 	makedepends = python-pip
+	depends = python-sphinx
 	source = https://gitlab.com/fkrull/quark-sphinx-theme/-/archive/v0.6.0/quark-sphinx-theme-v0.6.0.tar.gz
 	sha256sums = d2ef2adaba57ab9eeada195486d5ac7e9c21a84c948437b5842f9ad91135fdec
 
