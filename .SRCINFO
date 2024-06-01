@@ -10,8 +10,8 @@ pkgbase = python-xeus-python-shell
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-debugpy
-	optdepends = ipython:
-	optdepends = python-pyjs:
+	optdepends = ipython: IPython support
+	optdepends = python-pyjs: wasm support
 	source = xeus-python-shell-0.6.2.tar.gz::https://github.com/jupyter-xeus/xeus-python-shell/archive/0.6.2.tar.gz
 	sha512sums = 1d8f151951bdfaa982d0bf0ed2a4ad836c7f13f9ac3c34ba747c1ff15514e3a428f40cb140012ab9d5efbdcc2a10e01e287d318cde165fe05c655f356804282f
 
