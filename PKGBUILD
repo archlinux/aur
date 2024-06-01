@@ -2,8 +2,8 @@
 # Contributor: LLL2yu <lll2yu@protonmail.com>
 
 pkgname=gallery-dl
-pkgver=1.26.9
-pkgrel=3
+pkgver=1.27.0
+pkgrel=1
 pkgdesc='Command-line program to download image-galleries and collections from several image hosting sites'
 arch=(any)
 url=https://github.com/mikf/gallery-dl
@@ -22,7 +22,7 @@ optdepends=('ffmpeg: Pixiv Ugoira conversion'
             'python-secretstorage: GNOME keyring passwords for --cookies-from-browser')
 source=(git+"${url}".git#tag=v"${pkgver}"?signed)
 validpgpkeys=(3E09F5908333DD83DBDCE7375680CA389D365A88) #Mike Fährmann
-sha512sums=('f2e11d10b56ee9c76605bd759661620e57d22090e9309589bc54d583410316dc661f6be9c7f33b2555417696e43925c82101debcff468d7db39baf12649325d3')
+sha512sums=('da790185e8bf22aed4256cfff4f30ff9bc514442598b927d6f4bdd8a93ffbc6ec39677b51b2805340aef05533f3362de6568c45ecc51995f3488c1819f1589d9')
 
 prepare() {
     # Clean out old wheels etc.
