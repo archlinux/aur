@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=mvfst
-pkgver=2024.05.06.00
+pkgver=2024.05.27.00
 pkgrel=1
 pkgdesc="An implementation of the QUIC transport protocol"
 arch=(x86_64)
@@ -24,6 +24,7 @@ makedepends=(
   boost
   cmake
 )
+checkdepends=(expat)
 provides=(
   libmvfst_async_udp_socket.so
   libmvfst_batch_writer.so
@@ -67,16 +68,12 @@ provides=(
   libmvfst_transport_settings_functions.so
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('9bfbdf7a73fdaf2e135050a9efccec577be1590e8ecbb262543a78fea14424b5')
+sha256sums=('9f9ca0da5f4cbd4dd88ebb9e72556f0305aa67dcea99beb462b7f321a829920d')
 
 _archive="$pkgname-$pkgver"
 
 prepare() {
   cd "$_archive"
-
-  # Remove tests that doesn't compile due to what I think is an incompatibility
-  # with gtest
-  sed -i '/QuicServerTest.cpp/d' quic/server/test/CMakeLists.txt
 
   # Use system CMake config instead of bundled module, incompatible with glog
   # v0.7.0+
