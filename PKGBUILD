@@ -1,7 +1,7 @@
 # Maintainer: Cebtenzzre <cebtenzzre (AT) gmail (DOT) com>
 pkgname=gigatribe
 pkgver=3.06.015
-pkgrel=2
+pkgrel=1
 pkgdesc='Create your own secure and private network to share files with friends.'
 arch=(x86_64)
 url='https://www.gigatribe.com/'

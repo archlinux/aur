@@ -1,7 +1,7 @@
 pkgbase = gigatribe
 	pkgdesc = Create your own secure and private network to share files with friends.
 	pkgver = 3.06.015
-	pkgrel = 2
+	pkgrel = 1
 	url = https://www.gigatribe.com/
 	arch = x86_64
 	license = LicenseRef-GigaTribe
