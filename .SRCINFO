@@ -1,6 +1,6 @@
 pkgbase = electric
 	pkgdesc = a sophisticated electrical CAD system for the design of integrated circuits
-	pkgver = 9.08d
+	pkgver = 9.08e
 	pkgrel = 1
 	url = https://www.gnu.org/software/electric/
 	arch = any
@@ -21,4 +21,3 @@ pkgbase = electric
 	sha512sums = 9fc25916ffa6536710016a313dfeab4a05de3d1a0818edb46a2e9c3c1eb850f82884383652e9ca1860c50ba6d4bab9cd818477606afffe522644f475ef22ba4b
 
 pkgname = electric
-
