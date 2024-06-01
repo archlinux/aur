@@ -79,14 +79,22 @@ makedepends=(extra-cmake-modules
              xorg-xwayland)
 optdepends=('maliit-keyboard: virtual keyboard for kwin-wayland')
 groups=(plasma)
-source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
+source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig}
+        fix-chromium-dragging.patch::https://invent.kde.org/plasma/$pkgname/-/commit/711c5bb43f2823766d5189dc8d567c8f4cec253c.patch)
 install=$pkgname.install
 sha256sums=('242e7d210529ec631bc5fe3fe0a117a3d1d4edb1dd3a644aafd5089312f8b0d7'
-            'SKIP')
+            'SKIP'
+            '1254b34e7088871af2f2f2b6a5b267fa29f8b30c3b7055336296e24f91f4a405')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
               'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
               '1FA881591C26B276D7A5518EEAAF29B42A678C20') # Marco Martin <notmart@gmail.com>
+
+prepare() {
+  cd "$pkgname-$pkgver"
+
+  patch -p1 -i "${srcdir}/fix-chromium-dragging.patch"
+}
 
 build() {
   cmake -B build  -S $pkgname-$pkgver \
