@@ -1,0 +1,4 @@
+[bitcomet]
+source = "regex"
+url = "https://download.bitcomet.com/linux/x86_64/"
+regex = 'BitComet-([\d.]+)-x86_64\.deb'

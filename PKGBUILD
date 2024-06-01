@@ -1,30 +1,34 @@
-# Maintainer: irmluity <45vw4yz8g@mozmail.com>
-# Maintainer: d6k283tix <d6k283tix@mozmail.com>
+# Maintainer:
+# Contributor: irmluity <45vw4yz8g@mozmail.com>
+# Contributor: d6k283tix <d6k283tix@mozmail.com>
 
 pkgname=bitcomet
-pkgver=2.8.1
+pkgver=2.8.3
 pkgrel=1
 pkgdesc="A BitTorrent/HTTP/FTP download client"
 arch=(x86_64)
 url='https://www.bitcomet.com'
-license=('LicenseRef-bitcomet')
-depends=('webkit2gtk')
-source=(
-    "BitComet-${pkgver}-${CARCH}.deb::https://download.bitcomet.com/linux/x86_64/BitComet-2.8.1-x86_64.deb"
-    "LICENSE.html::https://www.bitcomet.com/en/license"
-)
-sha256sums=(
-    "747a34b098be10f2f4741bef83703738c1cce8c077ff8f671cce791a41bcfe5d"
-    "SKIP"
-)
-
-prepare() {
-    cd $srcdir
-    tar -xf data.tar.xz
-}
+license=('LicenseRef-BitComet')
+depends=('cairo'
+         'expat'
+         'gcc-libs'
+         'gdk-pixbuf2'
+         'glib2'
+         'glibc'
+         'gtk3'
+         'hicolor-icon-theme'
+         'libpng'
+         'libx11'
+         'libxml2'
+         'pango'
+         'webkit2gtk'
+         'zlib')
+source=("${pkgname}-${pkgver}.deb::https://download.bitcomet.com/linux/x86_64/BitComet-${pkgver}-x86_64.deb"
+        "LICENSE.html::https://www.bitcomet.com/en/license")
+sha256sums=('a17a49ba23454b9a4c958336068ebc72dadffe4f2ec4190ab3af124da81a22f0'
+            '2ca856a798f48a00847f837133e368d4c3d1e776274a45fdcc4df22a8d25fca5')
 
 package() {
-    install -d $pkgdir/usr
-    cp -r $srcdir/usr/ $pkgdir/
-    install -Dm644 "$srcdir/LICENSE.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.html"
+    bsdtar -xf data.tar.xz -C "${pkgdir}" --no-same-owner --no-same-permissions
+    install -Dm644 LICENSE.html -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
