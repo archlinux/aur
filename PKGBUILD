@@ -4,8 +4,8 @@
 
 pkgname=('teleport' 'teleport-client')
 _pkgname=teleport
-pkgver=15.3.1
-pkgrel=1
+pkgver=15.4.0
+pkgrel=2
 pkgdesc="Modern SSH server for teams managing distributed infrastructure"
 arch=('i386' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/gravitational/teleport"
@@ -14,6 +14,7 @@ depends=('glibc' 'libbpf')
 makedepends=('go>=1.17.0' 'rustup' 'yarn' 'libbpf-static>=1.2.0' 'wasm-pack')
 provides=('tctl' 'tsh')
 
+_rust_version=1.76
 _webassets_ref=f48049a453348e0ee1ce2b998dffe5659455b398
 
 _go_srcpath="go/src/github.com/gravitational"
@@ -26,6 +27,9 @@ source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/gravitational/teleport
 
 
 prepare() {
+    export CARGO_HOME="${srcdir}/cargo"
+    export RUSTUP_HOME="${srcdir}/rustup"
+
     install -dm755 "${srcdir}/go/src/github.com"
 
     if [ -d "${srcdir}/${_pkgname}-${pkgver}" ]; then
@@ -46,14 +50,7 @@ prepare() {
         fi
     done
 
-    env CARGO_HOME="${srcdir}/cargo" \
-        rustup default 1.76.0
-
-    # Update wasm-bindgen. This is due to a version conflict specifically with v15.0.1.
-    env PATH="${CARGO_HOME}/bin:${PATH}" \
-        CARGO_HOME="${srcdir}/cargo" \
-        cargo add --package rdp-client wasm-bindgen@0.2.91
-
+    rustup default $_rust_version
 }
 
 build() {
@@ -61,6 +58,7 @@ build() {
 
     export GOPATH="${srcdir}/go"
     export CARGO_HOME="${srcdir}/cargo"
+    export RUSTUP_HOME="${srcdir}/rustup"
 
     # See: https://wiki.archlinux.org/index.php/Go_package_guidelines
     export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -70,8 +68,8 @@ build() {
     export ADDFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
     # Build
-    env PATH="${PATH}:${CARGO_HOME}/bin" \
-        RUST_LOG=debug \
+    rustup run ${_rust_version} \
+        env PATH="${PATH}:${CARGO_HOME}/bin" \
         make full
 
     # Make sure go path is writable so it can be cleaned up
@@ -102,7 +100,7 @@ package_teleport-client() {
     install -Dm755 build/tctl "${pkgdir}/usr/bin/tctl"
     install -Dm755 build/tsh "${pkgdir}/usr/bin/tsh"
 }
-sha512sums=('6e0dce363061162a23270757a2d8084fd136d6d0ea8f1e8543ba0d2d2af8543ed2427437e3bf88a91217c359f9da627601435d3cb3c29587f128e9feed05c3c1'
+sha512sums=('c49e85a0553ba6521d663982c39076099888abcc2ec8fb518a3f99c351c1570ba198c252d961bcd9986a594c1e2e964446c3e3301e16425938ec9e0998b1dcb6'
             'bf13a77d1cdaa0c3e09034ede9acdf6834a7e21dbb18b0f9d8f46917be9772416edba7f0001cd38f6124564c0c31549f8d7048dd7a9f5ad76ff8e02f4451f044'
             '409116e201c40b7e0a379b316123500ab7691cbf441ecee048811885f97cd1185671676bb61bf36cb288399e8c0355a0a9f963ce7f94e44ba49e061187c9249e'
             '469249bebaa974e5e205c66c0459ed071b06a35aa9b94a3f34d3cbc5e75aa0f290d70ba8e5c63b49a6319a0f524a846ded459e07e3dde4c260e7668959821b96'
