@@ -1,0 +1,15 @@
+pkgbase = landropv2-appimage
+	pkgdesc = Drop any files to any devices on your LAN.
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = https://github.com/LANDrop/LANDrop/blob/master/LANDrop/icons/app.png
+	arch = x86_64
+	license = custom:Unlicense
+	depends = zlib
+	depends = fuse2
+	noextract = landropv2-appimage-2.1.2.AppImage
+	options = !strip
+	source_x86_64 = landropv2-appimage-2.1.2.AppImage::https://releases.landrop.app/LANDrop-latest-linux.AppImage
+	sha256sums_x86_64 = 246b3c2535b6de9a1cf038f378ed027a7094c6d315798400bff30791d51ea93f
+
+pkgname = landropv2-appimage
