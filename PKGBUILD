@@ -2,7 +2,7 @@
 pkgname=turtle
 _app_id="de.philippun1.$pkgname"
 pkgver=0.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Manage your git repositories with easy-to-use dialogs in Nautilus."
 arch=('any')
 url="https://gitlab.gnome.org/philippun1/turtle"
@@ -29,8 +29,17 @@ optdepends=(
   'python-caja: Caja plugin'
 )
 conflicts=('turtlegit')
-source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('3c90de1e8e8711472c4474cf6169f24c8ff403221715197b360e2bed65e19160')
+source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz"
+        'https://gitlab.gnome.org/philippun1/turtle/-/commit/eeabb0e3e2f70296009d679f7a14311f547b74f5.patch')
+sha256sums=('3c90de1e8e8711472c4474cf6169f24c8ff403221715197b360e2bed65e19160'
+            '6b6610e5162b21d583f5bb709e29401caaca67e059b6193a870038704ddff8f1')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+
+  # https://gitlab.gnome.org/philippun1/turtle/-/issues/43
+  patch -Np1 -i ../eeabb0e3e2f70296009d679f7a14311f547b74f5.patch
+}
 
 build() {
   cd "$pkgname-$pkgver"
