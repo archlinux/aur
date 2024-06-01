@@ -1,6 +1,6 @@
 pkgbase = gf2-git
 	pkgdesc = A GDB frontend for Linux.
-	pkgver = r200.30d4440
+	pkgver = r309.82889c4
 	pkgrel = 1
 	url = https://github.com/nakst/gf
 	arch = x86_64
