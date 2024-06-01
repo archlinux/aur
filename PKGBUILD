@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Drop any files to any devices on your LAN."
 arch=('x86_64')
 url="https://releases.landrop.app/LANDrop-latest-linux.AppImage"
-license=('custom:LANDrop-license')
+license=('custom:See Included License File')
 depends=('zlib' 'fuse2')
 options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
@@ -96,6 +96,6 @@ package() {
   
   http://www.apache.org/licenses/LICENSE-2.0
   
-  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.' >> "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.' > "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 }
