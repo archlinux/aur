@@ -1,13 +1,13 @@
 pkgname=eact
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="A toolkit for building your electron applications with Electron-packager and electron-build for non DRM and DRM applications and then zip them up ready for you to be distrobuted."
-arch=('any')
+arch=('x86_64')
 url="https://gitlab.com/linuxbombay/libelectron"
 license=('GPL')
 depends=("git" "npm")
 source=("$url/eact/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('9345a56b7043d1abfa8d0eea4ee3163c03bcfa4f633366a40ab21a0baf00980f')
+sha256sums=('94281bbe5d7a0eeaf1e6062ac130d43334cf4a7036f5b8231bf48ca58c2bfeae')
 
 package() {
     for dir in $pkgname-$pkgver-* ; do mv "${dir}" "$pkgname" ;done
