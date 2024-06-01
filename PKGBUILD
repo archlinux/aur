@@ -2,7 +2,7 @@
 
 pkgname=aur-pull
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 # shellcheck disable=SC2016  # No interpolation wanted
 pkgdesc='Plugin for aurutils to `git pull` multiple repositories'
 arch=('any')
@@ -33,6 +33,9 @@ prepare() {
   for dir in 'bin' 'libexec'; do
     find "${dir?}" -name '.*' -exec rm -fv '{}' +
   done
+
+  echo >&2 'Patching the version number'
+  sed -i "s/0.1.0/${pkgver}/" libexec/version.bash
 
   echo >&2 'Preparing the binstub'
   # shellcheck disable=SC2016  # This isn’t supposed to expand at build time
