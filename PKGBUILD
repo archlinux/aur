@@ -1,13 +1,13 @@
 # Maintainer: Andrew Lin <andrewlin16 at gmail dot com>
 
 pkgname=zxtune-bin
-pkgver=r5056
+pkgver=r5060
 pkgrel=1
 pkgdesc="Portable toolkit for ZX-Spectrum music playing (pre-compiled)"
 arch=(x86_64)
 url="https://zxtune.bitbucket.io/"
 license=(GPL3)
-depends=(boost-libs gcc-libs qt4 zlib)
+depends=(boost-libs gcc-libs qt5-base zlib)
 optdepends=(
   'alsa-lib: for ALSA output support'
   'lame: for conversion to .mp3 format'
@@ -18,7 +18,7 @@ optdepends=(
 provides=(zxtune)
 conflicts=(zxtune-git)
 source=("https://bitbucket.org/zxtune/zxtune/downloads/zxtune_${pkgver}_linux_x86_64.tar.gz")
-md5sums=('b10aa2810dd7cd2e79087ecf42eeb756')
+md5sums=('d880d368e697b32472ec3eda7bf38732')
 
 package() {
   cp -r usr "${pkgdir}/usr"

@@ -1,13 +1,13 @@
 pkgbase = zxtune-bin
 	pkgdesc = Portable toolkit for ZX-Spectrum music playing (pre-compiled)
-	pkgver = r5056
+	pkgver = r5060
 	pkgrel = 1
 	url = https://zxtune.bitbucket.io/
 	arch = x86_64
 	license = GPL3
 	depends = boost-libs
 	depends = gcc-libs
-	depends = qt4
+	depends = qt5-base
 	depends = zlib
 	optdepends = alsa-lib: for ALSA output support
 	optdepends = lame: for conversion to .mp3 format
@@ -16,7 +16,7 @@ pkgbase = zxtune-bin
 	optdepends = curl: for accessing data via network schemes
 	provides = zxtune
 	conflicts = zxtune-git
-	source = https://bitbucket.org/zxtune/zxtune/downloads/zxtune_r5056_linux_x86_64.tar.gz
-	md5sums = b10aa2810dd7cd2e79087ecf42eeb756
+	source = https://bitbucket.org/zxtune/zxtune/downloads/zxtune_r5060_linux_x86_64.tar.gz
+	md5sums = d880d368e697b32472ec3eda7bf38732
 
 pkgname = zxtune-bin
