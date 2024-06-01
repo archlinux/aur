@@ -1,6 +1,6 @@
 # Maintainer: Péter Bohner <peter@bohner.me>
 pkgname=gf2-git
-pkgver=r200.30d4440
+pkgver=r309.82889c4
 pkgrel=1
 pkgdesc="A GDB frontend for Linux."
 arch=('x86_64' 'i686')
@@ -15,6 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/gf"
+	cp "extensions_v5/extensions.cpp" .
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 build() {
