@@ -1,0 +1,16 @@
+pkgbase = archlinux-studio-utils
+	pkgver = r3.acf3379
+	pkgrel = 1
+	url = https://github.com/usrmusicman/ArchLinuxStudioUtils
+	arch = x86_64
+	license = EULA
+	makedepends = git
+	source = archlinux-studio-utils::git+https://github.com/usrmusicman/ArchLinuxStudioUtils
+	sha256sums = SKIP
+
+pkgname = archlinux-studio-utils-efistub
+	depends = efibootmgr
+
+pkgname = archlinux-studio-utils-pipewire
+	depends = pipewire
+	depends = kdialog
