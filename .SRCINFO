@@ -6,6 +6,7 @@ pkgbase = su2
 	arch = x86_64
 	license = LGPL-2.1-or-later
 	makedepends = swig
+	makedepends = python-setuptools
 	makedepends = git
 	depends = python-numpy
 	depends = python-mpi4py

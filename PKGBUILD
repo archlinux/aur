@@ -10,7 +10,7 @@ pkgdesc="An Open-Source Suite for Multiphysics Simulation and Design"
 url="https://${pkgname}code.github.io"
 license=(LGPL-2.1-or-later)
 depends=(python-numpy python-mpi4py intel-oneapi-mkl)
-makedepends=(swig git) # ninja
+makedepends=(swig python-setuptools git) # ninja
 arch=(x86_64)
 source=(${_base}-${pkgver}::git+https://github.com/${pkgname}code/${_base}.git#tag=v${pkgver}
   ${pkgname}.sh)
