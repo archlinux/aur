@@ -1,6 +1,6 @@
 _pkgname=bibata_cursor
 pkgname=bibata-cursor-git
-pkgver=0.1.r1.0e147a4
+pkgver=0.1.r0.40e6dcf
 pkgrel=1
 pkgdesc='Bibata Cursor Themes, including hyprcursor and Xcursor'
 arch=('any')
