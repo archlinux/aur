@@ -6,7 +6,7 @@ pkgbase = arch-torification
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = iptables
-	source = git+https://github.com/jenil1122/Arch-torification.git#branch=release
+	source = git+https://github.com/jenil1122/Arch-torification.git#branch=master
 	sha256sums = SKIP
 
 pkgname = arch-torification

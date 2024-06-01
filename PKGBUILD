@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/jenil1122/Arch-torification"
 license=('GPL-3.0-only')
 depends=('iptables')
-source=("git+https://github.com/jenil1122/Arch-torification.git#branch=release")
+source=("git+https://github.com/jenil1122/Arch-torification.git#branch=master")
 sha256sums=("SKIP")
 package() {
     cd "${srcdir}/Arch-torification" || return
