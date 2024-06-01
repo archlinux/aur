@@ -1,8 +1,8 @@
 # Maintainer: mh4ckwascut <mh4ckt3mh4ckt1c4s@protonmail.com>
 
 pkgname=wit-bindgen
-pkgver=0.24.0
-pkgrel=2
+pkgver=0.26.0
+pkgrel=1
 pkgdesc="A language binding generator for WebAssembly interface types"
 arch=("x86_64")
 url="https://github.com/bytecodealliance/wit-bindgen"
@@ -10,7 +10,7 @@ license=("Apache-2.0")
 depends=("glibc" "gcc-libs")
 makedepends=("cargo")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bytecodealliance/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("02024a6d51d3c00d7f7ce3dc098328ddedcd5e5a84da6bee871549540108ecff")
+sha256sums=("211f4228ecf58c7d9caf42098bc530fa3599a6b78126317fc8633a94703f2691")
 
 prepare() {
 	cd "$pkgname-$pkgver"
