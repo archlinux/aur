@@ -2,7 +2,7 @@
 _projectname='alcotest'
 pkgname="ocaml-$_projectname"
 pkgver='1.7.0'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Lightweight and colourful test framework for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/mirage/$_projectname"
@@ -12,10 +12,12 @@ makedepends=('dune>=3.0.0')
 options=('!strip')
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
+	"fix-tests.diff::$url/commit/9c262dc310f20f0bf662317f5e0dbea09bd029b1.diff"
 	'fix-time_unix-deprecation.diff'
 	'remove-shim-deps.diff'
 )
 b2sums=('83a9b1bb3a6d9ec09de739e77a6e1085bbca328f5be39f6ab28931a7bc16d223d571917f924598ddcc399910f986df95eb72ae61f28512221d9de6174ffe3988'
+        '0800e0797d7818143f10c90248a68c24cf44e9a25ac72a4fb6efd937e4e2c9bbdbf03bc244aee6917dcbfdac5492aa216f3a95a5fde67c8cf525d82653b1a640'
         '7f991edd57b4eb3ccdab617fa5e4246f01e27d1ba0533927c02ca7a9097c9f5d6a8a553fdb2438f55b46a6b7df07bb03cd76ce8fe691a4613c4fd5956270c704'
         '428401f907f9cde71f52bb9fda40fd680913d3cd415a0d8653b9402737125e2f511b854fc3a00729e90241d91642cd64b982fada22a861f7ef49e8e18210cf21')
 
@@ -23,6 +25,9 @@ _sourcedirectory="$_projectname-$pkgver"
 
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"
+
+	# Fix tests on ocaml 5.2 (https://github.com/mirage/alcotest/commit/9c262dc310f20f0bf662317f5e0dbea09bd029b1)
+	patch --forward -p1 < '../fix-tests.diff'
 
 	# Fix core_unix.time_unix deprecation (based on https://github.com/mirage/alcotest/commit/289e52b8b2e1df8ca2034ba0d0e855b9f01edf51)
 	patch --forward -p1 < '../fix-time_unix-deprecation.diff'
