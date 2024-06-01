@@ -1,0 +1,56 @@
+From 796c132abb39da44237a07013781139f3fda8bb3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Thomas=20Wei=C3=9Fschuh?= <thomas@t-8ch.de>
+Date: Sat, 1 Jun 2024 11:13:24 +0200
+Subject: [PATCH] Abort Akonadi start if it is already broken
+
+If Akonadi is already marked broken Akonadi::Control::start()
+will not return breaking the initialization of Kraft.
+Add special handling until Akonadi is fixed.
+
+On ArchLinux this happens right now because kraft is using an older
+version of libakonadi that works with qt5 while the akonadi daemon needs
+to use a newer one with qt6.
+
+See:
+* https://invent.kde.org/pim/akonadi/-/merge_requests/189
+* https://aur.archlinux.org/packages/kraft#comment-976037
+---
+ src/addressprovider_akonadi.cpp | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/src/addressprovider_akonadi.cpp b/src/addressprovider_akonadi.cpp
+index 2b33c951cd82..51dfa3c8f89f 100644
+--- a/src/addressprovider_akonadi.cpp
++++ b/src/addressprovider_akonadi.cpp
+@@ -44,6 +44,7 @@
+ #include <Akonadi/ItemFetchScope>
+ #include <Akonadi/EntityDisplayAttribute>
+ #include <Akonadi/Control>
++#include <Akonadi/ServerManager>
+ #else
+ #include <AkonadiCore/ItemFetchJob>
+ #include <AkonadiCore/ItemFetchScope>
+@@ -54,6 +55,7 @@
+ #include <AkonadiCore/ItemFetchScope>
+ #include <AkonadiCore/entitydisplayattribute.h>
+ #include <AkonadiCore/control.h>
++#include <AkonadiCore/servermanager.h>
+ #endif
+ 
+ using namespace Akonadi;
+@@ -73,7 +75,11 @@ bool AddressProviderPrivate::init()
+ {
+     _akonadiUp = false;
+ #ifdef HAVE_AKONADI
+-    if ( !Akonadi::Control::start( ) ) {
++    if ( Akonadi::ServerManager::state() == Akonadi::ServerManager::Broken ) {
++        // should be handled in Akonadi::Control::start().
++        // See https://invent.kde.org/pim/akonadi/-/merge_requests/189
++        qDebug() << "Akonadi broken: " << Akonadi::ServerManager::brokenReason();
++    } else if ( !Akonadi::Control::start( ) ) {
+         qDebug() << "Failed to start Akonadi!";
+     } else {
+         mSession = new Akonadi::Session( "KraftSession" );
+-- 
+2.45.1
+

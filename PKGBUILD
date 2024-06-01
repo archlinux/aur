@@ -6,7 +6,7 @@
 pkgname=kraft
 pkgver=1.2.1
 _ver=v$pkgver
-pkgrel=2
+pkgrel=3
 pkgdesc="Kraft helps you to handle documents like quotes and invoices in your small business."
 arch=('x86_64')
 url="http://www.volle-kraft-voraus.de/"
@@ -22,6 +22,7 @@ optdepends=(
 makedepends=('cmake' 'extra-cmake-modules' 'asciidoctor' 'po4a')
 source=(
   "kraft-v${pkgver}.tar.gz::https://github.com/dragotin/kraft/archive/${_ver}.tar.gz"
+  "0001-Abort-Akonadi-start-if-it-is-already-broken.patch"
 )
 
 
@@ -62,4 +63,5 @@ package() {
   make "DESTDIR=${pkgdir}" install
 }
 
-sha256sums=('26f8e3ff7d12c86846b6db49ce171af31115f66119f9a7cce13de15f1397dd64')
+sha256sums=('26f8e3ff7d12c86846b6db49ce171af31115f66119f9a7cce13de15f1397dd64'
+            'ff802760ded75c6d511bda5c9f0a35a3756d2b0c8b6e09a73eb4e915acdada67')
