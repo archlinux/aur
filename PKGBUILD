@@ -8,7 +8,7 @@ arch=(x86_64 armv7h)
 url="https://git.openwrt.org/project/relayd.git"
 license=(GPL)
 depends=(glibc)
-makedepends=(git)
+makedepends=(git cmake)
 backup=("etc/conf.d/relayd")
 _repo_commit="f646ba40489371e69f624f2dee2fc4e19ceec00e"
 source=("relayd::git+https://git.openwrt.org/project/relayd.git#commit=${_repo_commit}"

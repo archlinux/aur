@@ -7,6 +7,7 @@ pkgbase = relayd
 	arch = armv7h
 	license = GPL
 	makedepends = git
+	makedepends = cmake
 	depends = glibc
 	backup = etc/conf.d/relayd
 	source = relayd::git+https://git.openwrt.org/project/relayd.git#commit=f646ba40489371e69f624f2dee2fc4e19ceec00e
