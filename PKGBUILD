@@ -1,6 +1,6 @@
-# Maintainer: Kiernan Hager <kiernan.hager@gmail.com>
+# Maintainer: Morgan Hager <morgan.hager1@gmail.com>
 pkgname=fontopia
-pkgver=1.7
+pkgver=1.8.4
 pkgrel=1
 pkgdesc="Text-based vt font editor"
 arch=("x86_64" "i686")
