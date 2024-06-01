@@ -1,0 +1,17 @@
+pkgbase = python-inplace
+	pkgdesc = In-place file processing in Python
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/jwodder/inplace
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-hatchling
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = inplace-1.0.0.tar.gz::https://github.com/jwodder/inplace/archive/v1.0.0.tar.gz
+	sha512sums = ef5f751b86c3f1663d5710862b72280bb9ff7e1d6742033be7b56d6a5ac79304d39f9f3bbcbc7d9dc6c80cebfd0f3d9e74679c3e48f4979c5344bb390b6a1231
+
+pkgname = python-inplace
