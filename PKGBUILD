@@ -2,17 +2,17 @@
 _base=xeus-python-shell
 pkgname=python-${_base}
 pkgdesc="The xeus-python core python logic"
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 arch=(any)
 url="https://github.com/jupyter-xeus/${_base}"
-license=('custom:BSD-3-clause')
+license=(BSD-3-Clause)
 depends=(python-debugpy)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 optdepends=('ipython: '
   'python-pyjs: ')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('fcb71bfadb10a4f84ee1d13865b57c0537e43afac47d71155121639f4890ede764e3c7f56e02ed1031260dec16fbc51428f7e57fc031c820e0658b23d5d1f26b')
+sha512sums=('1d8f151951bdfaa982d0bf0ed2a4ad836c7f13f9ac3c34ba747c1ff15514e3a428f40cb140012ab9d5efbdcc2a10e01e287d318cde165fe05c655f356804282f')
 
 build() {
   cd ${_base}-${pkgver}
