@@ -14,5 +14,5 @@ sha256sums=('aea64ec25b76906e11114168aa2346957abd5fdbd1ef3b7e2e806db41db8b9fe')
 package() {
     cd "$srcdir"
     tar -xzf "${pkgname}_${pkgver}_linux_x86_64.tar.gz"
-    install -Dm755 "kubectl-cnpg" "$pkgdir/kubectl-cnpg"
+    install -Dm755 "kubectl-cnpg" "$pkgdir/usr/bin/kubectl-cnpg"
 }
