@@ -1,63 +1,49 @@
-# Maintainer: spookyintheam <spookyintheam@proton.me>
+# Maintainer: Catppuccin <releases@catppuccin.com>
 
 pkgname=catppuccin-cursors-latte
-pkgver=0.2.0
+pkgver=0.3.0 # renovate: datasource=github-tags depName=catppuccin/cursors
 pkgrel=1
 pkgdesc='Soothing pastel mouse cursors - Latte'
 arch=('any')
 license=('GPL2')
 url='https://github.com/catppuccin/cursors'
-source=("$pkgname-$pkgver-blue.zip::$url/releases/download/v$pkgver/Catppuccin-Latte-Blue-Cursors.zip"
-        "$pkgname-$pkgver-dark.zip::$url/releases/download/v$pkgver/Catppuccin-Latte-Dark-Cursors.zip"
-        "$pkgname-$pkgver-flamingo.zip::$url/releases/download/v$pkgver/Catppuccin-Latte-Flamingo-Cursors.zip"
-        "$pkgname-$pkgver-green.zip::$url/releases/download/v$pkgver/Catppuccin-Latte-Green-Cursors.zip"
-        "$pkgname-$pkgver-lavender.zip::$url/releases/download/v$pkgver/Catppuccin-Latte-Lavender-Cursors.zip"
-        "$pkgname-$pkgver-light.zip::$url/releases/download/v$pkgver/Catppuccin-Latte-Light-Cursors.zip"
-        "$pkgname-$pkgver-maroon.zip::$url/releases/download/v$pkgver/Catppuccin-Latte-Maroon-Cursors.zip"
-        "$pkgname-$pkgver-mauve.zip::$url/releases/download/v$pkgver/Catppuccin-Latte-Mauve-Cursors.zip"
-        "$pkgname-$pkgver-peach.zip::$url/releases/download/v$pkgver/Catppuccin-Latte-Peach-Cursors.zip"
-        "$pkgname-$pkgver-pink.zip::$url/releases/download/v$pkgver/Catppuccin-Latte-Pink-Cursors.zip"
-        "$pkgname-$pkgver-red.zip::$url/releases/download/v$pkgver/Catppuccin-Latte-Red-Cursors.zip"
-        "$pkgname-$pkgver-rosewater.zip::$url/releases/download/v$pkgver/Catppuccin-Latte-Rosewater-Cursors.zip"
-        "$pkgname-$pkgver-sapphire.zip::$url/releases/download/v$pkgver/Catppuccin-Latte-Sapphire-Cursors.zip"
-        "$pkgname-$pkgver-sky.zip::$url/releases/download/v$pkgver/Catppuccin-Latte-Sky-Cursors.zip"
-        "$pkgname-$pkgver-teal.zip::$url/releases/download/v$pkgver/Catppuccin-Latte-Teal-Cursors.zip"
-        "$pkgname-$pkgver-yellow.zip::$url/releases/download/v$pkgver/Catppuccin-Latte-Yellow-Cursors.zip")
-sha256sums=('9509a0976d6cbfd7c046082536ff9c13d0098274ad52a34fb34e4054da8cfa99'
-            '36526d487a6a7ee93b0169b4e253957fa10d257c60530d4a4826a7197896f7d4'
-            'ef10c41fe354b02b10ae31d3612dcc043e5299ddf90ac75624e5af46aba612d0'
-            'e26538b34743d41b15bbc6a2deae58e2e4eba7e4e67b3f23ab383c4c36b0a369'
-            '4115b1a54affe0d18e63ef48852c88efa27f10fd4a500dbfa18aff4a8e892256'
-            'a64b649bc98699ecc0b54c5114eebb71816a28b8fa709aecc3a4eeecfed16e4a'
-            'ccb26418b5cf66d6c4d4b9023ab2ddc7c25a6f69ef5c2ea3c94c79dba79a5bee'
-            '4a6c104498901aae8770953bad2d63338e0e0ab89789487bda15d39a7447447a'
-            '85a95658f93af8d23c0fd5191cfa60203907e4469346cd62074f474f2f1597b1'
-            '76d6aaa1d1c3fb898e03e51e421d532eb740ea98457ce9ead860c9905f152b4f'
-            '38b192846761232da89ab437671d387e159510c8a0f173a28158cc011ae5e75d'
-            '5b081a3b7a7e17a2c34c26cfde32ed000069ebe188bdfafd0f32a56779d5d710'
-            'deea1e60de144f0bae9f7237a8a8fa11827926083f23992b31aa0f1aad90c5a4'
-            'e3b49d213d251de093c7a6b156cf458e3b9043d33219c852500856c4bebdb047'
-            '2a5c3ac2c4921d98221287c8419d8971ad8e6adef66a7cc28cff5342f73e5a5d'
-            '4300359ab250a7bca01ef686a2ca3d3a3ed6791537cfe22572e65275ea9a195c')
-package() {
-  install -d "$pkgdir/usr/share/icons/"
-  cp -a --no-preserve=ownership \
-    "Catppuccin-Latte-Blue-Cursors" \
-    "Catppuccin-Latte-Dark-Cursors" \
-    "Catppuccin-Latte-Flamingo-Cursors" \
-    "Catppuccin-Latte-Green-Cursors" \
-    "Catppuccin-Latte-Lavender-Cursors" \
-    "Catppuccin-Latte-Light-Cursors" \
-    "Catppuccin-Latte-Maroon-Cursors" \
-    "Catppuccin-Latte-Mauve-Cursors" \
-    "Catppuccin-Latte-Peach-Cursors" \
-    "Catppuccin-Latte-Pink-Cursors" \
-    "Catppuccin-Latte-Red-Cursors" \
-    "Catppuccin-Latte-Rosewater-Cursors" \
-    "Catppuccin-Latte-Sapphire-Cursors" \
-    "Catppuccin-Latte-Sky-Cursors" \
-    "Catppuccin-Latte-Teal-Cursors" \
-    "Catppuccin-Latte-Yellow-Cursors" \
-      "$pkgdir/usr/share/icons"
-}
+source=(
+	"$pkgname-$pkgver-blue.zip::$url/releases/download/v$pkgver/catppuccin-latte-blue-cursors.zip"
+	"$pkgname-$pkgver-dark.zip::$url/releases/download/v$pkgver/catppuccin-latte-dark-cursors.zip"
+	"$pkgname-$pkgver-flamingo.zip::$url/releases/download/v$pkgver/catppuccin-latte-flamingo-cursors.zip"
+	"$pkgname-$pkgver-green.zip::$url/releases/download/v$pkgver/catppuccin-latte-green-cursors.zip"
+	"$pkgname-$pkgver-lavender.zip::$url/releases/download/v$pkgver/catppuccin-latte-lavender-cursors.zip"
+	"$pkgname-$pkgver-light.zip::$url/releases/download/v$pkgver/catppuccin-latte-light-cursors.zip"
+	"$pkgname-$pkgver-maroon.zip::$url/releases/download/v$pkgver/catppuccin-latte-maroon-cursors.zip"
+	"$pkgname-$pkgver-mauve.zip::$url/releases/download/v$pkgver/catppuccin-latte-mauve-cursors.zip"
+	"$pkgname-$pkgver-peach.zip::$url/releases/download/v$pkgver/catppuccin-latte-peach-cursors.zip"
+	"$pkgname-$pkgver-pink.zip::$url/releases/download/v$pkgver/catppuccin-latte-pink-cursors.zip"
+	"$pkgname-$pkgver-red.zip::$url/releases/download/v$pkgver/catppuccin-latte-red-cursors.zip"
+	"$pkgname-$pkgver-rosewater.zip::$url/releases/download/v$pkgver/catppuccin-latte-rosewater-cursors.zip"
+	"$pkgname-$pkgver-sapphire.zip::$url/releases/download/v$pkgver/catppuccin-latte-sapphire-cursors.zip"
+	"$pkgname-$pkgver-sky.zip::$url/releases/download/v$pkgver/catppuccin-latte-sky-cursors.zip"
+	"$pkgname-$pkgver-teal.zip::$url/releases/download/v$pkgver/catppuccin-latte-teal-cursors.zip"
+	"$pkgname-$pkgver-yellow.zip::$url/releases/download/v$pkgver/catppuccin-latte-yellow-cursors.zip"
+)
 
+sha256sums=('529656e8a84ff02c0c809a47a3e4942587c751c4619af92949397e5752a3401d'
+            'd7a50e97947e17d78e1f8aa2ea93992d081f09a666ffb9de613d74f5c6626631'
+            'a1149fba30a448791810e316e3ab7927a1452a6a444f5f08252c1796f44b98f7'
+            '485ffccb9b60b199792934019e9ff5caf079c42fa922a0d9d254a0df094d305f'
+            '22977585fc439cfcc3302de98dc21051b7917874adbf3552e9ba1c07dae955f5'
+            'b243ef2528f49ef87247730b7811adf68097dcb9aad752ba85a15506a6bd86a6'
+            'bd366ac75a45e2b5b35e4751eda488b5422825f4b1eaf90c286704885e9f9030'
+            'a974c2c73673dfa583899f06a7ed85a3524d01744b8f48a5b98c90f03651d5c1'
+            'c801375c85e0a7360ba8c25bf3e843cd47db9acc77cd0ddbca689ce533c1eeb5'
+            '12fd790e4825d12ac383b02d819125291f0e7b883cb6d036b0accf7635005f1a'
+            'c81418fda85b7d9671778bd967a75b72bb604a6eade9c0183c6cb882392a5009'
+            'e79f6e2f9ede32af0e97dff0cbfd1206bc82926f1d562a4d2b8ca7a2a5eac8ba'
+            '8ca81f5cca170f6bfda606cf4ee44fb0e3fc569de752d721d5fd8996c38f98ea'
+            'b4cbc6e8fb85d8b5bc4fec71a37c896315c77269cc4835119273e7ab52604de2'
+            'e789f9370161e155316a6abbcbbcf5ac9f90147c97791755f5774e1d5b7a003d'
+            'd306b94c0c1347091d382937fe972f07aec77f3d04a967e9bb2a409b97a2507c')
+
+package() {
+	install -d "$pkgdir/usr/share/icons/"
+	cp -r -a --no-preserve=ownership catppuccin-latte-* "$pkgdir/usr/share/icons"
+}
