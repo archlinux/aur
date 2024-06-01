@@ -4,7 +4,7 @@ _org='Simple-Robotics'
 _pkgname='proxsuite'
 _pkgver=0.6.4
 pkgname="$_pkgname-git"
-pkgver=0.6.4.r1799.
+pkgver=0.6.4.r1800.f9c2b5c
 pkgrel=1
 
 pkgdesc="The Advanced Proximal Optimization Toolbox"
@@ -13,10 +13,10 @@ url="https://github.com/$_org/$_pkgname"
 license=('BSD-2-Clause')
 depends=('eigen' 'simde')
 optdepends=()
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 conflicts=('proxsuite')
 provides=('proxsuite')
-source=("$_pkgname"::"git+https://github.com/nim65s/proxsuite.git")
+source=("$_pkgname"::"git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -24,7 +24,7 @@ pkgver() {
 }
 
 prepare() {
-    git -C "$_pkgname" checkout arch
+    git -C "$_pkgname" checkout devel
     git -C "$_pkgname" submodule update --init --recursive
 }
 
