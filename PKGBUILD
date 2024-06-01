@@ -2,7 +2,7 @@
 
 _pkgname=minizip-ng
 pkgname=mingw-w64-${_pkgname}
-pkgver=4.0.5
+pkgver=4.0.6
 pkgrel=1
 pkgdesc='minizip-ng is a zip manipulation library written in C that is supported on Windows, macOS, and Linux. (mingw-w64)'
 url='https://github.com/zlib-ng/minizip-ng'
@@ -21,7 +21,7 @@ optdepends=()
 source=(
 	"$_pkgname-$pkgver.tar.gz::https://github.com/zlib-ng/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz"
 	"${pkgname}-iconv.patch")
-sha256sums=('9bb636474b8a4269280d32aca7de4501f5c24cc642c9b4225b4ed7b327f4ee73'
+sha256sums=('e96ed3866706a67dbed05bf035e26ef6b60f408e1381bf0fe9af17fe2c0abebc'
             'c4203584aed3c670c7aa2cb3774fe513088de3cee54c5b20f7ddea9fc673d1ef')
 
 _srcdir="${_pkgname}-${pkgver}"
@@ -43,7 +43,7 @@ build() {
 		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}-static" "${_flags[@]}" \
 			-DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX="/usr/${_arch}/static"
 		cmake --build "build-${_arch}-static"
-		
+
 		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}"
 		cmake --build "build-${_arch}"
 	done
@@ -64,7 +64,7 @@ package() {
 		DESTDIR="${pkgdir}" cmake --install "build-${_arch}-static"
 		rm -rf "$pkgdir"/usr/${_arch}/static/share
 		${_arch}-strip -g "$pkgdir"/usr/${_arch}/static/lib/*.a
-		
+
 		DESTDIR="${pkgdir}" cmake --install "build-${_arch}"
 		${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
 		${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
