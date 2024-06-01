@@ -1,6 +1,6 @@
 pkgbase = r-moleculeexperiment
 	pkgdesc = Prioritising a molecule-level storage of Spatial Transcriptomics Data
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MoleculeExperiment
 	arch = any
@@ -23,8 +23,8 @@ pkgbase = r-moleculeexperiment
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MoleculeExperiment_1.4.0.tar.gz
-	md5sums = 10384bcaa373eaaad343f189b151dee9
-	b2sums = afb24a5ae0141d35ee6b6b2cfc63648e6a12da84139b959880a65938d01f964c7ed38d3dc5c776d7d10b93a173d385e15dfcef2d76c3f362c3bb3cbe5b1b2fd3
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MoleculeExperiment_1.4.1.tar.gz
+	md5sums = cbb9fe45e74673215d8c4effcaadf06b
+	b2sums = 559f4f79b7d6b23c8c4c53798f9d72fb5f2c9d85fd616098fa4d4aaf8cf96e0124e78e198b26c53d8a8f827bc3459eff139cc07ed8419cb8d054d3d3f77bd52d
 
 pkgname = r-moleculeexperiment
