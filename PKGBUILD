@@ -11,7 +11,8 @@ url=https://libre.adacore.com
 license=(GPL V3.0)
 
 depends=(gcc-ada)
-makedepends=(gprbuild)
+makedepends=(gprbuild
+             python-sphinx_rtd_theme)
 
 source=(https://github.com/AdaCore/aunit/archive/refs/tags/v$pkgver.tar.gz
         conf.py.patch

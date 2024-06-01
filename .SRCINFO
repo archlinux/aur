@@ -9,6 +9,7 @@ pkgbase = aunit
 	license = GPL
 	license = V3.0
 	makedepends = gprbuild
+	makedepends = python-sphinx_rtd_theme
 	depends = gcc-ada
 	source = https://github.com/AdaCore/aunit/archive/refs/tags/v24.0.0.tar.gz
 	source = conf.py.patch
