@@ -1,6 +1,6 @@
 # Maintainer: Equationzhao <equationzhao at foxmail dot com>
 pkgname='g-ls'
-pkgver=0.28.1
+pkgver=0.28.2
 pkgrel=1
 pkgdesc='a powerful ls in golang'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('go')
 backup=("etc/$pkgname/config.conf")
 source=("g-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ce7e97bbe3ab0477192cbffc665613c37f32610ada66f0573f99b6c75a9ffa20')
+sha256sums=('05df40665ea8c402c9d76b29269edb721758e9913bc03d173e7e84fa7a0a2ab6')
 
 build() {
     cd "$srcdir/g-$pkgver"
