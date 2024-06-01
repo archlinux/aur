@@ -2,16 +2,16 @@
 _pkgname=lwjgl
 pkgname=${_pkgname}2
 pkgver=2.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight Java Game Library - for use in game projects in Java. Legacy version.'
 arch=(any)
 url='http://legacy.lwjgl.org/'
 license=('BSD')
 changelog=ChangeLog
 options=(!strip)
-source=("https://sourceforge.net/projects/java-game-lib/files/Official Releases/LWJGL $pkgver/$_pkgname-${pkgver}.zip")
-sha1sums=('6cf7522899c48f0295811a6ae88d93b6f8c21cad')
+source=("https://sourceforge.net/projects/java-game-lib/files/Official%20Releases/LWJGL%20$pkgver/$_pkgname-${pkgver}.zip")
 md5sums=('2318cb02d35c7b7e28b838595aa353ed')
+sha1sums=('6cf7522899c48f0295811a6ae88d93b6f8c21cad')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
