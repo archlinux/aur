@@ -30,6 +30,9 @@ prepare() {
 }
 
 build(){
+  # prevent static lib mangling with LTO (pacman#150, bsc#704)
+  CXXFLAGS+=" -ffat-lto-objects"
+
   cd "$srcdir/bsc"
   make GHC="ghc -dynamic" GHCJOBS=4 GHCRTSFLAGS='+RTS -M5G -A128m -RTS' install-src
   make install-doc
