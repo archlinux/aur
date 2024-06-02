@@ -2,7 +2,7 @@
 # Contributor: Kenneth Endfinger <kaendfinger@gmail.com>
 
 pkgname=fwupd-git
-pkgver=1.9.10.r640.g96cc2c6bc
+pkgver=1.9.10.r883.gd674f9584
 pkgrel=1
 pkgdesc="Simple daemon to allow session software to update firmware"
 arch=('x86_64')
@@ -10,33 +10,24 @@ url="https://github.com/fwupd/fwupd"
 license=('LGPL')
 depends=(
     'bluez'
-    'diffutils'
-    'efivar'
     'flashrom'
     'fwupd-efi'
-    'hicolor-icon-theme'
-    'gcab'
     'glib2'
     'gnutls'
-    'gzip'
-    'polkit'
-    'python'
-    'python-gobject'
-    'sqlite'
-    'libxmlb'
+    'hicolor-icon-theme'
+    'libarchive'
+    'libcbor'
+    'libdrm'
+    'libgudev'
     'libgusb'
     'libjcat'
-    'libarchive.so'
-    'libjson-glib-1.0.so'
     'libmm-glib'
-    'libcurl.so'
-    'libcbor.so'
-    'libsmbios'
-    'libsystemd.so'
-    'liblzma.so'
-    'libgudev-1.0.so'
     'libprotobuf-c.so'
     'libqmi'
+    'libxmlb'
+    'polkit'
+    'python'
+    'sqlite'
 )
 optdepends=(
     'udisks2: UEFI firmware upgrade support'
@@ -87,7 +78,8 @@ prepare() {
         -D plugin_powerd=disabled \
         -D supported_build=enabled \
         -D launchd=disabled \
-        -D efi_binary=false
+        -D efi_binary=false \
+        -D systemd_unit_user=fwupd
 }
 
 build() {
