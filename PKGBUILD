@@ -2,7 +2,7 @@
 _projectname='ppx_ignore_instrumentation'
 pkgname="ocaml-$_projectname"
 pkgver='0.17.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Ignore Jane Street specific instrumentation extensions'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
