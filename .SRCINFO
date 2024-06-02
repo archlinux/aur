@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_custom_printf
 	pkgdesc = Printf-style format-strings for user-defined string conversion
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/janestreet/ppx_custom_printf
 	arch = x86_64
