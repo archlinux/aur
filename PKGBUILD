@@ -3,7 +3,7 @@
 _projectname='sedlex'
 pkgname="ocaml-$_projectname"
 pkgver='3.2'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Unicode-friendly OCaml lexer generator'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocaml-community/$_projectname"
@@ -13,7 +13,7 @@ makedepends=('dune>=3.0.0')
 checkdepends=('ocaml-ppx_expect')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('00e257d1b97e99d49028d2e38b20a05c6aa151c362991c37c17522bf58c19e273b762ea39dd9783ed9ecc60d11dadeabb0487e16b4af91536e45e7e18c86cfe9')
+b2sums=('302a35a33d6b5be6fc504f655d6d6d24d60d64eac7fd3a36970253d181bd470aa7fdd35bec9f31199f0225a62942a64da90aa6a325656ca0ae2a2d9862dd4689')
 
 _sourcedirectory="$_projectname-$pkgver"
 
