@@ -22,6 +22,7 @@ makedepends=(
   libmpc
   python
   zstd
+  cargo
 )
 checkdepends=(
   dejagnu

@@ -20,6 +20,7 @@ pkgbase = gccrs-git
 	makedepends = libmpc
 	makedepends = python
 	makedepends = zstd
+	makedepends = cargo
 	options = !emptydirs
 	options = !lto
 	source = gccrs::git+https://github.com/Rust-GCC/gccrs.git
