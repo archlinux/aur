@@ -1,7 +1,7 @@
 pkgbase = ocaml-mew
 	pkgdesc = A general modal editing engine generator
 	pkgver = 0.1.0
-	pkgrel = 9
+	pkgrel = 10
 	url = https://github.com/kandu/mew
 	arch = x86_64
 	arch = aarch64
