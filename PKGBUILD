@@ -1,7 +1,7 @@
 # Maintainer: Jax Young <jaxvanyang@gmail.com>
 _name=pysgf
 pkgname="python-$_name"
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Simple SGF parser"
 arch=('any')
@@ -9,15 +9,8 @@ url="https://pypi.org/project/pysgf"
 license=('MIT')
 depends=('python>=3.6')
 makedepends=(python-build python-installer python-wheel python-poetry-core)
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
-	"$pkgname-$pkgver.patch")
-sha256sums=('123d987495c227dfb52a0e1cd73773868b780f20140777f185cec7bb0018a529'
-	'6a13ec77e4fbce2e692a1868b791b54ac7f01fcc303c2f90beadcbd3d9f16bbe')
-
-prepare() {
-	cd "$_name-$pkgver"
-	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
-}
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('ff6a95e3891818a12e09af022aebec0bfaeca8617599f34e647a94ae02ee0303')
 
 build() {
 	cd "$_name-$pkgver"
