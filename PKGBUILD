@@ -7,7 +7,7 @@ pkgname=kwin-explicit-sync
 _pkgname=kwin
 pkgver=6.0.5
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=2
+pkgrel=3
 pkgdesc='An easy to use composited Window Manager with explicit sync patches'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
@@ -74,7 +74,8 @@ depends=(breeze
          xcb-util-cursor
          xcb-util-keysyms
          xcb-util-wm)
-makedepends=(extra-cmake-modules
+makedepends=(git
+             extra-cmake-modules
              kdoctools
              krunner
              plasma-wayland-protocols

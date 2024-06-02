@@ -1,12 +1,13 @@
 pkgbase = kwin-explicit-sync
 	pkgdesc = An easy to use composited Window Manager with explicit sync patches
 	pkgver = 6.0.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://kde.org/plasma-desktop/
 	install = kwin.install
 	arch = x86_64
 	groups = plasma
 	license = LGPL-2.0-or-later
+	makedepends = git
 	makedepends = extra-cmake-modules
 	makedepends = kdoctools
 	makedepends = krunner
