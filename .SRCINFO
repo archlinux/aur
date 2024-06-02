@@ -1,12 +1,13 @@
 pkgbase = dconf2nix
 	pkgdesc = Convert Dconf files (e.g. Gnome Shell) to Nix, as expected by Home Manager
 	pkgver = 0.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/gvolpe/dconf2nix
 	arch = i686
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = ghc
+	makedepends = haskell-hedgehog
 	depends = glibc
 	depends = libffi
 	depends = haskell-transformers-compat
