@@ -145,7 +145,7 @@ _ENABLE_CUDA=$_ENABLE_CUDA
 _ENABLE_ROCM=$_ENABLE_ROCM
 _ENABLE_PIPER=$_ENABLE_PIPER
 _ENABLE_PYTHON=$_ENABLE_PYTHON
-  
+
 _OPTIONAL_MAKE_ARGS=$_OPTIONAL_MAKE_ARGS
 _EXTERNAL_SOURCES=$_EXTERNAL_SOURCES
 _DISABLED_MOD_EDIT=$_DISABLED_MOD_EDIT
@@ -160,7 +160,7 @@ EOF
   for i in $_DISABLED_MOD_EDIT; do
     sed -ri 's#.+\-replace github.com/'$i'.+##g' Makefile
   done
-  
+
   # modify python backend build library
   patch -N -i "${srcdir}/libbackend.patch" -p1
 
@@ -184,12 +184,12 @@ EOF
 
   # ROCM fixes
   cd "${srcdir}/${_pkgbase}-rocm"
-  
+
   # fix build error on ROCM by removing unsupported cf-protection from CMAKE_CXX_FLAGS
   export CXXFLAGS+="$CXXFLAGS -fcf-protection=none"
   # sed -i '1s/^/string(REPLACE "-fcf-protection" "" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")\n/' \
   #  backend/cpp/llama/llama.cpp/CMakeLists.txt
-  
+
   # fix whisper build_ --offload-arch is deprecated, replace it with -DGPU_TARGETS
   for i in sources/whisper.cpp/Makefile; do
     sed -ri 's/^(.+HIPFLAGS.+\+=).+offload-arch=.+$/\1 -DGPU_TARGETS="$(GPU_TARGETS)"/g' "$i"
