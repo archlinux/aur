@@ -3,7 +3,7 @@
 pkgname=alvr-nvidia
 _pkgname=${pkgname%-nvidia}
 pkgver=20.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
 url="https://github.com/alvr-org/ALVR"
@@ -12,7 +12,9 @@ depends=('vulkan-icd-loader' 'libunwind' 'libdrm' 'x264' 'alsa-lib' 'libva.so' '
 makedepends=('git' 'cargo' 'clang' 'imagemagick' 'vulkan-headers' 'jack' 'libxrandr' 'nasm' 'unzip' 'ffnvcodec-headers')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}"::"git+https://github.com/alvr-org/ALVR.git#tag=v$pkgver")
+source=("${_pkgname}"::"git+https://github.com/alvr-org/ALVR.git#tag=v$pkgver"
+		"git+https://github.com/ValveSoftware/openvr.git"
+)
 md5sums=('SKIP')
 options=('!lto')
 
@@ -23,6 +25,10 @@ export CARGO_TARGET_DIR=target
 
 prepare() {
 	cd "$srcdir/${_pkgname}"
+
+	git submodule init
+	git config submodule.openvr.url "$srcdir/openvr"
+	git -c protocol.file.allow=always submodule update
 
 	sed -i 's:../../../lib64/libalvr_vulkan_layer.so:libalvr_vulkan_layer.so:' alvr/vulkan_layer/layer/alvr_x86_64.json
 
