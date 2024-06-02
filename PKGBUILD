@@ -3,7 +3,7 @@
 _projectname='ppx_deriving'
 pkgname="ocaml-$_projectname"
 pkgver='6.0.2'
-pkgrel='1'
+pkgrel='2'
 epoch='1'
 pkgdesc='Type-driven code generation for OCaml'
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ makedepends=('cppo>=1.1.0' 'dune>=1.6.3')
 checkdepends=('ocaml-ounit')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('4dc4ca4839cd46a9457e1ec5cff4a778f71ac9284b7c2d917c808137b730c9911b782895360e388c1fc72e614616b7cc5961a17dd6268e41c0b67cca5188d4b3')
+b2sums=('dc597740321f8f8e6d5b837cbb1dc4b9a7c4b00314455e24d4671b187e3bda8b10c232df95fe7fef67064250b73f4fb21cb3f2b3c64e43e41f400bc395b767cd')
 
 _sourcedirectory="$_projectname-$pkgver"
 
