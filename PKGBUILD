@@ -2,7 +2,7 @@
 _projectname='domain-local-await'
 pkgname="ocaml-$_projectname"
 pkgver='1.0.1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='A scheduler independent blocking mechanism'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocaml-multicore/$_projectname"
@@ -15,8 +15,8 @@ source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
 	'remove-domain-shims-dep.diff'
 )
-sha512sums=('4c6e70959a7be52e80141cc7bd0952cf46c248fa6496a734a6ed2efcb61c7af033aecf8716445a62e838601fbfde59af8ad4c7c4617c515aa7fadfa254038ebf'
-            '3c587358e21c1a2b6bb9bb1dee04e7c4c1193dd8d93d4f05ee2dfc7de3fae382486a33279dbcf63ee6b0cd5ea441dccf19f3afaa60ac83769e65f0a7e5f30235')
+b2sums=('b5485cc9210b5a3d73fc8ecf5ae0784920f982ccb35aa490ae36cbffd83e8b305cd41d9e18055418c18d9a266db4c807448f25f4d69a0e927b6b080821ad7f8d'
+        '1de318e9178335a9f5f2030c4ec86d086baf20ad4d6e2464f11de9631cc3694b475c2a7c6e4b67aa6d5147e9377fb895b4086d775b9482da140c465f030e5989')
 
 _sourcedirectory="$_projectname-$pkgver"
 
