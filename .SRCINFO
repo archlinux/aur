@@ -1,7 +1,7 @@
 pkgbase = ocaml-graphics
 	pkgdesc = OCaml graphics library
 	pkgver = 5.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ocaml/graphics
 	arch = x86_64
 	arch = aarch64
@@ -13,6 +13,6 @@ pkgbase = ocaml-graphics
 	depends = pkgconf
 	options = !strip
 	source = ocaml-graphics-5.1.2.tar.gz::https://github.com/ocaml/graphics/archive/5.1.2.tar.gz
-	sha512sums = d4b92a34bcb11db2facbf0fa46b1a86fcad607f555d0068e430f8c4c3b6fdc07803f4bab61247c40941065e75e147e4063602a9c54593994cbd92548e25ee2df
+	b2sums = b9b75a87a1aaa584a5cae32b8d502fb8ecfb02bd7f887845cfaa3cebae93586fb8aa7bb97a8ed51d5dbee0a469c25528187a8e38a9ac4a29b09680c84c531a1f
 
 pkgname = ocaml-graphics
