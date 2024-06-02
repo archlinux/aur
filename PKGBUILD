@@ -9,9 +9,9 @@
 : ${_debug:=true}
 : ${_runtime_checks:=true}
 
-: ${_build_gtk2:=true}
+: ${_build_gtk2:=false}
 : ${_build_gtk3:=true}
-: ${_build_qt5:=true}
+: ${_build_qt5:=false}
 : ${_build_qt6:=true}
 
 : ${_build_git:=true}
@@ -22,7 +22,7 @@ unset _pkgtype
 ## basic info
 _pkgbase="lazarus"
 pkgbase="$_pkgbase${_pkgtype:-}"
-pkgver=3.2.r1624.gc971eaa
+pkgver=3.4.r1807.g258a7a4
 pkgrel=1
 pkgdesc='Delphi-like IDE for FreePascal'
 url="https://gitlab.com/freepascal.org/lazarus/lazarus"
@@ -81,16 +81,16 @@ _package_lazarus() {
   # skip the 'make install' mess completely and do everything manually
   mkdir -p "$pkgdir"/usr/lib/lazarus "$pkgdir"/usr/bin "$pkgdir"/usr/share/man/man1 "$pkgdir"/usr/share/doc
   rsync -a \
-    --exclude="CVS"     --exclude=".cvsignore" \
-    --exclude="*.ppw"   --exclude="*.ppl" \
-    --exclude="*.ow"    --exclude="*.a"\
-    --exclude="*.rst"   --exclude=".#*" \
-    --exclude="*.~*"    --exclude="*.bak" \
-    --exclude="*.orig"  --exclude="*.rej" \
+    --exclude="CVS" --exclude=".cvsignore" \
+    --exclude="*.ppw" --exclude="*.ppl" \
+    --exclude="*.ow" --exclude="*.a" \
+    --exclude="*.rst" --exclude=".#*" \
+    --exclude="*.~*" --exclude="*.bak" \
+    --exclude="*.orig" --exclude="*.rej" \
     --exclude=".xvpics" \
     --exclude="killme*" --exclude=".gdb_hist*" \
-    --exclude="debian"  --exclude="COPYING*" \
-    --exclude="*.app"   --exclude="tools/install" \
+    --exclude="debian" --exclude="COPYING*" \
+    --exclude="*.app" --exclude="tools/install" \
     --exclude=".git*" \
     . "$pkgdir"/usr/lib/lazarus
 
@@ -142,19 +142,18 @@ _package_licenses() {
 build() {
   cd "$_pkgsrc"
 
-  local _fpc_options=(-O2)
+  local _fpc_options=(-O3 "-k'--sort-common --as-needed  -z relro -z now'")
 
-  if [[ "${_debug::1}" == "t" ]] ; then
+  if [[ "${_debug::1}" == "t" ]]; then
     _fpc_options+=(-gl -gw)
   fi
 
-  if [[ "${_runtime_checks::1}" == "t" ]] ; then
+  if [[ "${_runtime_checks::1}" == "t" ]]; then
     _fpc_options+=(-Crtoi)
   fi
 
-  for _p in "${pkgname[@]}"; do
-    local _q=$(cut -d'-' -f2 <<< "$_p")
-    if [ "$_q" != 'git' ] ; then
+  for _q in gtk2 gtk3 qt5 qt6; do
+    if [ "$_q" != 'git' ]; then
       local _platform="${_q}"
 
       # build ide
@@ -172,22 +171,22 @@ build() {
 for _p in "${pkgname[@]}"; do
   local _q=$(cut -d'-' -f2 <<< "$_p")
 
-  case "${_q:?}" in
-    gtk2|gtk3)
+  case "${_q::2}" in
+    gt)
       eval "package_$_p() {
         pkgdesc+=' - ${_q:?} version'
         depends=('lazarus${pkgtype:-}' 'desktop-file-utils' '${_q:?}')
-        provides=(lazarus-${_q:?}${_pkgtype:-}=${pkgver%%.r*})
+        provides=(lazarus-${_q:?}=${pkgver%%.r*})
         conflicts=('lazarus-gtk2' 'lazarus-gtk3' 'lazarus-qt5' 'lazarus-qt6')
 
         _package_platform ${_q:?}
       }"
       ;;
-    qt5|qt6)
+    qt)
       eval "package_$_p() {
         pkgdesc+=' - ${_q:?} version'
-        depends=('lazarus-git' '${_q:?}pas')
-        provides=(lazarus-${_q:?}${_pkgtype:-}=${pkgver%%.r*})
+        depends=('lazarus${pkgtype:-}' '${_q:?}pas')
+        provides=(lazarus-${_q:?}=${pkgver%%.r*})
         conflicts=('lazarus-gtk2' 'lazarus-gtk3' 'lazarus-qt5' 'lazarus-qt6')
 
         _package_platform ${_q:?}
