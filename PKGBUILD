@@ -3,7 +3,7 @@
 _projectname='ppx_optional'
 pkgname="ocaml-$_projectname"
 pkgver='0.17.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Pattern matching on flat options'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
