@@ -3,10 +3,10 @@
 # Maintainer: damir <damir@archlinux.org>
 # Contributor: Damir Perisa <damir.perisa@bluewin.ch>
 
-_debian_version="5.1.25-13"
+_debian_version="5.1.25-14"
 pkgname=grace
 pkgver=5.1.25
-pkgrel=8
+pkgrel=9
 pkgdesc="2D plotting tool"
 arch=(x86_64)
 url="http://plasma-gate.weizmann.ac.il/Grace/"
@@ -14,6 +14,7 @@ depends=('openmotif' 't1lib' 'netcdf' 'fftw')
 license=('GPL')
 options=('staticlibs')
 source=("ftp://ftp.fu-berlin.de/unix/graphics/grace/src/grace5/$pkgname-$pkgver.tar.gz"
+        "https://sources.debian.org/data/main/g/grace/1%3A$_debian_version/debian/patches/configure-implicit-declarations.diff"
         "https://sources.debian.org/data/main/g/grace/1%3A$_debian_version/debian/patches/fftw3.diff"
         "https://sources.debian.org/data/main/g/grace/1%3A$_debian_version/debian/patches/font-extension-t1.diff"
         "https://sources.debian.org/data/main/g/grace/1%3A$_debian_version/debian/patches/gracerc.diff"
@@ -25,6 +26,8 @@ source=("ftp://ftp.fu-berlin.de/unix/graphics/grace/src/grace5/$pkgname-$pkgver.
         "https://sources.debian.org/data/main/g/grace/1%3A$_debian_version/debian/patches/source-hardening.diff"
         "https://sources.debian.org/data/main/g/grace/1%3A$_debian_version/debian/patches/t1lib-general.diff"
         "https://sources.debian.org/data/main/g/grace/1%3A$_debian_version/debian/patches/tmpnam_to_mkstemp.diff")
+
+CFLAGS="$CFLAGS -Wno-implicit-int"
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -42,6 +45,8 @@ prepare() {
   patch -p1 -i ../source-hardening.diff  # permit compilation with hardening flags
   patch -p1 -i ../t1lib-general.diff  # apply several updates and fixes to t1lib
   patch -p1 -i ../font-extension-t1.diff  # search for .t1 as a font file extension, in addition to .pfa/.pfb
+  patch -p1 -i ../grconvert-tirpc.diff
+  patch -p1 -i ../configure-implicit-declarations.diff
 }
 
 build() {
@@ -60,6 +65,7 @@ package() {
 }
 
 sha512sums=('9ea68483af1dfc98d217ae730b7a51b66deae5aaa8dfda29d5a3337ed4b5728b45aa03f561bf7d4173e73d6af8dee03cbabd95c0c8dd36999303c89451a3728a'
+            '6fd6165b83aa57596326ff4802d6879bc4c7fe43de3b4cb3418ba9f5a723c7bf96e2dc578235dfcef9502bfb473e79d9797b788d3231adabd17acbcabf6b296a'
             'a2c0d8725289069ca5766b7ab3dfee5a08ee15922e9734bc95d6a9ad008d4264e90c8cb5db8ab5e3c41cb4b29c14fca815d8a5d875dbb35977d810052ed566ea'
             'ffa8cc1a97b26192efbfb3597e9209e4c15455d27988cda30464a0fbd3c53167ce0fcc4f93eda7a14ebd8d6f798de08855f814f8dfbca010a7dcb504dd4b6097'
             '05045afb2b350bcbf6d34f5b572a85443725739236a2cb8d083fc391965db204a1e24e74a13ddfbe873eaa48077e8c0a352f77df82af86ce3d956fa9a2b5d594'
