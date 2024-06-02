@@ -2,7 +2,7 @@
 # Contributor: Nicolas Stalder <n+archlinux@stalder.io>
 
 pkgname=caddy-trojan
-pkgver=2.8.2
+pkgver=2.8.4
 pkgrel=1
 pkgdesc="Caddy web server with trojan support"
 arch=('x86_64' 'aarch64')
