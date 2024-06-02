@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_hash
 	pkgdesc = A ppx rewriter that generates hash functions from type expressions and definitions
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/janestreet/ppx_hash
 	arch = x86_64
 	arch = aarch64
