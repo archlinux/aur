@@ -1,0 +1,20 @@
+pkgbase = python-trame-jupyter-extension
+	pkgdesc = Jupyter extension for trame client/server communication
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://github.com/Kitware/trame-jupyter-extension
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatch-nodejs-version
+	makedepends = python-hatch-jupyter-builder
+	makedepends = python-wheel
+	makedepends = npm
+	depends = python-trame
+	depends = jupyterlab
+	depends = jupyter-server
+	source = trame-jupyter-extension-2.1.1.tar.gz::https://github.com/Kitware/trame-jupyter-extension/archive/v2.1.1.tar.gz
+	sha512sums = 3113005804e0dc0c63b092c1f43f3e8db0130291ebeddbf36d0881e5d88eb78216e8af6abb074fb77ce65898d26df9703eb873f234eabba370d59740f9aa490f
+
+pkgname = python-trame-jupyter-extension
