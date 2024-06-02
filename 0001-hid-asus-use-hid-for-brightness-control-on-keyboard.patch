@@ -1,0 +1,123 @@
+From 5ebde6eb9c149a9f1bc97c9bcc2a4512aaad36e8 Mon Sep 17 00:00:00 2001
+From: "Luke D. Jones" <luke@ljones.dev>
+Date: Mon, 13 May 2024 19:20:04 +1200
+Subject: [PATCH] hid-asus: use hid for brightness control on keyboard
+
+Signed-off-by: Luke D. Jones <luke@ljones.dev>
+---
+ drivers/hid/hid-asus.c                     | 18 +++++++++++++++++-
+ drivers/platform/x86/asus-wmi.c            |  3 ++-
+ include/linux/platform_data/x86/asus-wmi.h | 22 ++++++++++++++++++++++
+ 3 files changed, 41 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/hid/hid-asus.c b/drivers/hid/hid-asus.c
+index 02de2bf4f790..abb9478c001d 100644
+--- a/drivers/hid/hid-asus.c
++++ b/drivers/hid/hid-asus.c
+@@ -101,6 +101,7 @@ struct asus_kbd_leds {
+ 	unsigned int brightness;
+ 	spinlock_t lock;
+ 	bool removed;
++	int report_id;
+ };
+ 
+ struct asus_touchpad_info {
+@@ -473,7 +474,7 @@ static enum led_brightness asus_kbd_backlight_get(struct led_classdev *led_cdev)
+ static void asus_kbd_backlight_work(struct work_struct *work)
+ {
+ 	struct asus_kbd_leds *led = container_of(work, struct asus_kbd_leds, work);
+-	u8 buf[] = { FEATURE_KBD_REPORT_ID, 0xba, 0xc5, 0xc4, 0x00 };
++	u8 buf[] = { led->report_id, 0xba, 0xc5, 0xc4, 0x00 };
+ 	int ret;
+ 	unsigned long flags;
+ 
+@@ -492,12 +493,18 @@ static void asus_kbd_backlight_work(struct work_struct *work)
+  */
+ static bool asus_kbd_wmi_led_control_present(struct hid_device *hdev)
+ {
++	struct asus_drvdata *drvdata = hid_get_drvdata(hdev);
+ 	u32 value;
+ 	int ret;
+ 
+ 	if (!IS_ENABLED(CONFIG_ASUS_WMI))
+ 		return false;
+ 
++	if (drvdata->quirks & QUIRK_ROG_NKEY_KEYBOARD) {
++		hid_info(hdev, "using hidraw for asus::kbd_backlight\n");
++		return !asus_use_hidraw_led();
++	}
++
+ 	ret = asus_wmi_evaluate_method(ASUS_WMI_METHODID_DSTS,
+ 				       ASUS_WMI_DEVID_KBD_BACKLIGHT, 0, &value);
+ 	hid_dbg(hdev, "WMI backlight check: rc %d value %x", ret, value);
+@@ -507,6 +514,11 @@ static bool asus_kbd_wmi_led_control_present(struct hid_device *hdev)
+ 	return !!(value & ASUS_WMI_DSTS_PRESENCE_BIT);
+ }
+ 
++static bool asus_kbd_is_input_led(void) {
++	return dmi_match(DMI_PRODUCT_NAME, "GU605")
++		|| dmi_match(DMI_PRODUCT_NAME, "GA403");
++}
++
+ static int asus_kbd_register_leds(struct hid_device *hdev)
+ {
+ 	struct asus_drvdata *drvdata = hid_get_drvdata(hdev);
+@@ -549,6 +561,10 @@ static int asus_kbd_register_leds(struct hid_device *hdev)
+ 	if (!drvdata->kbd_backlight)
+ 		return -ENOMEM;
+ 
++	drvdata->kbd_backlight->report_id = FEATURE_KBD_REPORT_ID;
++	if (drvdata->quirks & QUIRK_ROG_NKEY_KEYBOARD && asus_kbd_is_input_led())
++		drvdata->kbd_backlight->report_id = FEATURE_KBD_LED_REPORT_ID1;
++
+ 	drvdata->kbd_backlight->removed = false;
+ 	drvdata->kbd_backlight->brightness = 0;
+ 	drvdata->kbd_backlight->hdev = hdev;
+diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
+index 3f9b6285c9a6..a58df18a70ad 100644
+--- a/drivers/platform/x86/asus-wmi.c
++++ b/drivers/platform/x86/asus-wmi.c
+@@ -1681,7 +1681,8 @@ static int asus_wmi_led_init(struct asus_wmi *asus)
+ 			goto error;
+ 	}
+ 
+-	if (!kbd_led_read(asus, &led_val, NULL)) {
++	if (!kbd_led_read(asus, &led_val, NULL) && !asus_use_hidraw_led()) {
++		pr_info("using asus-wmi for asus::kbd_backlight\n");
+ 		asus->kbd_led_wk = led_val;
+ 		asus->kbd_led.name = "asus::kbd_backlight";
+ 		asus->kbd_led.flags = LED_BRIGHT_HW_CHANGED;
+diff --git a/include/linux/platform_data/x86/asus-wmi.h b/include/linux/platform_data/x86/asus-wmi.h
+index 3eb5cd6773ad..33c5af4a0c9e 100644
+--- a/include/linux/platform_data/x86/asus-wmi.h
++++ b/include/linux/platform_data/x86/asus-wmi.h
+@@ -160,4 +160,26 @@ static inline int asus_wmi_evaluate_method(u32 method_id, u32 arg0, u32 arg1,
+ }
+ #endif
+ 
++/* To be used by both hid-asus and asus-wmi to determine which controls kbd_brightness */
++#if IS_REACHABLE(CONFIG_ASUS_WMI)
++static bool asus_use_hidraw_led(void) {
++   	const char *product, *board;
++
++	product = dmi_get_system_info(DMI_PRODUCT_NAME);
++	board = dmi_get_system_info(DMI_PRODUCT_NAME);
++	return !product
++		|| strcmp(product, "ROG Zephyrus")
++		|| strcmp(product, "ROG Strix")
++		|| strcmp(product, "ROG Flow")
++		|| strcmp(product, "GA403")
++		|| strcmp(product, "GU605")
++		|| !board
++		|| strcmp(board, "RC71L");
++}
++#else
++static inline bool asus_use_hidraw_led(void) {
++	return true;
++}
++#endif
++
+ #endif	/* __PLATFORM_DATA_X86_ASUS_WMI_H */
+-- 
+2.45.0
+

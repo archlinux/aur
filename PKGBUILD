@@ -4,7 +4,7 @@
 
 pkgbase=linux-g14
 pkgver=6.9.2.arch1
-pkgrel=2
+pkgrel=1
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
 _url='https://github.com/archlinux/linux'
@@ -39,6 +39,8 @@ source=(
 
   0027-mt76_-mt7921_-Disable-powersave-features-by-default.patch
   
+#  0001-linux6.8.y-bore5.1.0.patch
+  
   0032-Bluetooth-btusb-Add-a-new-PID-VID-0489-e0f6-for-MT7922.patch
   0035-Add_quirk_for_polling_the_KBD_port.patch
   
@@ -46,16 +48,9 @@ source=(
 
   0001-ALSA-PCI-HDA-Adjust-G814JZR-to-use-SPI-init-for-amp.patch
   0002-hid-asus-use-hid-for-brightness-control-on-keyboard.patch
-  0003-hid-asus-add-USB_DEVICE_ID_ASUSTEK_DUO_KEYBOARD.patch
-  0004-Debugging.patch
-  0005-asus-wmi-don-t-error-out-if-platform_profile-already.patch
-  0006-asus-wmi-min-max-for-ROG-tunables-defaults.patch
-  0007-asus-wmi-reduce-code-duplication.patch
-  0008-asus-wmi-add-panel-fhd.patch
-  0009-asus-wmi-use-WMI_SIMPLE_SHOW-in-some-more-places.patch
-  0010-asus-wmi-enable-disable-cores.patch
-  0011-asus-wmi-apu_mem-setting.patch
-  0012-asus-wmi-dgpu-tgp.patch
+  0003-Debugging.patch
+  0004-asus-wmi-don-t-error-out-if-platform_profile-already.patch
+  0005-hid-asus-add-USB_DEVICE_ID_ASUSTEK_DUO_KEYBOARD.patch
   
   0001-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
   0002-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
@@ -107,16 +102,9 @@ sha256sums=('d46c5bdf2c5961cc2a4dedefe0434d456865e95e4a7cd9f93fff054f9090e5f9'
             '6003eb7821c5df01af93386d82425bb49a0c70c92a8f6eddcdbd625a38b45754'
             '9152af5811a61dd196c520ac39792aebee325fda093ecf9acd19f80819cf8d7c'
             '567efcbb400bf2dc7327a790839d2a441bd7ca9fb7f5b2b07591c4abc63554bf'
-            'c4b18e935815584863e28e4c8707ab0bdd400b35710f586831e441d159e63413'
-            'd7bdbe9bad78e2f376b32804b99970cff53ab168b6754e860ebb453d0032a2ff'
-            '0047b19c4081cc931bd1d972fe03a308e74013a3358e4812b2b11492e9b52e7b'
-            '261214585978122c56f1bde9cd65e327e5c4d9586b136f86269cc63bd502639f'
-            '5871f00e8fc4d5ac541b38f64ead65df6a83db8045191e25cc0edeba3a09714b'
-            'eb41dffd799c6e251c22a137f212e919c974bd56613ea5240e8e95bbac79e36b'
-            '5a8c9f0d80feb25d47b2988442386781ccc57c0eac50975be2479526249d29ed'
-            '861c1c133da37ed1a02b5568107a06e5a2d6c1404509f52749c745cca53be3ac'
-            '08153246f687857a1c2f12e48d348a68bdc8157dd5e31a386eac74e1c912c1e8'
-            'c0011ae95b5488d9a934bf65962874b1dbbfe6ee8dbcddeb6f5910d3f6bfb29b'
+            '6ab14523be3cadf4d495dd13b0ed12a1241118d93d8313f47a8dea6b1bf16df6'
+            'c9835e39798d97ba0ca48c0d2353d1182715d4bfc99964051993dacc8f59ba83'
+            '423380be1902da29e695cb201516751759050fc0a50914a0459f05e1f4614087'
             'a00b952d53df9d3617d93e8fba4146a4d6169ebe79f029b3a55cca68f738d8ea'
             '4912b1319e46ddd6670147f5e878b4aca8bcfbd7b5c852fe11e434e424666365'
             '9f98765b43f5f31b33ed05f3611508113b02518e680ee82b251de80dae2e141d'

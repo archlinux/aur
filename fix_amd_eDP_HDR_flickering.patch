@@ -1,0 +1,14 @@
+diff --git a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
+index 4e82ee4d74ac..9ac2c66a96a8 100644
+--- a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
++++ b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
+@@ -6172,7 +6172,8 @@ create_stream_for_sink(struct amdgpu_dm_connector *aconnector,
+ 		mod_build_hf_vsif_infopacket(stream, &stream->vsp_infopacket);
+ 	else if (stream->signal == SIGNAL_TYPE_DISPLAY_PORT ||
+ 			 stream->signal == SIGNAL_TYPE_DISPLAY_PORT_MST ||
+-			 stream->signal == SIGNAL_TYPE_EDP) {
++			 stream->link->psr_settings.psr_feature_enabled ||
++			 stream->link->replay_settings.replay_feature_enabled) {
+ 		//
+ 		// should decide stream support vsc sdp colorimetry capability
+ 		// before building vsc info packet
