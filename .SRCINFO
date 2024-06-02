@@ -1,6 +1,6 @@
 pkgbase = greylistd
 	pkgdesc = Simple greylisting system for mail transport agents
-	pkgver = 0.9.0.2
+	pkgver = 0.9.0.3+nmu1
 	pkgrel = 1
 	url = https://packages.debian.org/sid/greylistd
 	install = greylistd.install
@@ -9,14 +9,13 @@ pkgbase = greylistd
 	license = GPL
 	depends = start-stop-daemon
 	backup = etc/greylistd/config
-	source = http://ftp.debian.org/debian/pool/main/g/greylistd/greylistd_0.9.0.2.tar.xz
+	source = http://ftp.debian.org/debian/pool/main/g/greylistd/greylistd_0.9.0.3+nmu1.tar.xz
 	source = greylistd.service
 	source = greylistd.tmpfiles
 	source = greylistd.install
-	md5sums = 1c6d6342a34784fff00eb77254058a82
+	md5sums = 0f40747abe6ce568c2a3b328736f48a3
 	md5sums = ad1f516bdb732982fec38f492134d5b8
 	md5sums = 5c76ca975a41ef967f6a1f8bfc760446
 	md5sums = 7c309496b15079820b852c7140194d8c
 
 pkgname = greylistd
-

@@ -3,7 +3,7 @@
 # Maintainer: Denis Yantarev <denis dot yantarev at gmail dot com>
 
 pkgname=greylistd
-pkgver=0.9.0.2
+pkgver=0.9.0.3+nmu1
 pkgrel=1
 pkgdesc="Simple greylisting system for mail transport agents"
 url="https://packages.debian.org/sid/greylistd"
@@ -12,7 +12,7 @@ source=(http://ftp.debian.org/debian/pool/main/g/greylistd/${pkgname}_${pkgver}.
 	greylistd.service
 	greylistd.tmpfiles
 	greylistd.install)
-md5sums=('1c6d6342a34784fff00eb77254058a82'
+md5sums=('0f40747abe6ce568c2a3b328736f48a3'
          'ad1f516bdb732982fec38f492134d5b8'
          '5c76ca975a41ef967f6a1f8bfc760446'
          '7c309496b15079820b852c7140194d8c')
