@@ -6,22 +6,24 @@
 # Contributor (Arch): Nicolas Pouillard <nicolas.pouillard@gmail.com>
 
 pkgname=tahoe-lafs
-pkgver=1.17.1
-pkgrel=2
+pkgver=1.19.0
+pkgrel=1
 pkgdesc='Secure, decentralized, and fault-tolerant storage system.'
 url='https://tahoe-lafs.org/trac/tahoe-lafs'
 license=('GPL' 'custom')
 arch=('any')
 depends=('magic-wormhole'
-         'python-argparse'
-         'python-bcrypt'
          'python-cbor2'
          'python-collections-extended'
          'python-eliot'
+         'python-filelock'
          'python-foolscap'
          'python-future'
          'python-klein'
          'python-netifaces'
+         'python-psutil'
+         'python-pycddl'
+         'python-pyutil'
          'python-treq'
          'python-yaml'
          'python-zfec')
@@ -29,7 +31,7 @@ depends=('magic-wormhole'
 
 source=(https://tahoe-lafs.org/downloads/tahoe-lafs-${pkgver}.tar.gz{,.asc})
 
-sha256sums=('2dc7fc103fe0e4f9fc69953934089f55e4428bd5d94670e844e64c210d7c1672'
+sha256sums=('bb48d440965bc3af0b25cfbe407c6100beda318a99280d65eeb24e45f08259ce'
             'SKIP')
 
 validpgpkeys=('9D5A2BD5688ECB889DEBCD3FC2602803128069A7')
