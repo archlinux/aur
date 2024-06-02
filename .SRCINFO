@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_tydi
 	pkgdesc = Let expressions, inferring pattern type from expression
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/janestreet/ppx_tydi
 	arch = x86_64
 	arch = aarch64
