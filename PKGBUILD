@@ -1,7 +1,7 @@
 # Maintainer: FTS427 <FTS427@outlook.com>
 # Contributor: Blessing-Studio <3424968114@qq.com>
 
-pkgname=wonderlab-appimage-featue
+pkgname=wonderlab-appimage-feature
 _pkgname=WonderLab
 pkgver=2.0.0
 pkgrel=1.0
