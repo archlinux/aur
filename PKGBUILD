@@ -5,26 +5,31 @@
 
 _pkgname=xf86-video-openchrome
 pkgname=$_pkgname-git
-pkgver=0.5.257.g0ea654c
+pkgver=0.6.0.r808.g857d892
 pkgrel=1
 pkgdesc='Open Source X driver for VIA IGPs'
 arch=('i686' 'x86_64')
 url='http://www.freedesktop.org/wiki/Openchrome'
 license=('MIT')
 depends=('libdrm' 'libxvmc' 'xorg-server')
-optdepends=('unichrome-dri')
-makedepends=('git' 'xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=23')
+makedepends=('git' 'xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=25.2')
 provides=("$_pkgname")
-conflicts=("$_pkgname" 'X-ABI-VIDEODRV_VERSION<23' 'X-ABI-VIDEODRV_VERSION>=24')
-source=("git://anongit.freedesktop.org/openchrome/$_pkgname")
+conflicts=("$_pkgname" 'X-ABI-VIDEODRV_VERSION<25' 'X-ABI-VIDEODRV_VERSION>=26')
+source=("git+https://anongit.freedesktop.org/git/openchrome/$_pkgname.git#branch=main")
 sha256sums=("SKIP")
 
 pkgver() {
     cd $_pkgname
-    git describe --always | sed "s/openchrome-//;s/-/./g"
+    git describe --always | sed "s/^xf86-video-openchrome-//;s/-/.r/;s/-/./"
 }
 
 build() {
+    # Since pacman 5.0.2-2, hardened flags are now enabled in makepkg.conf
+    # With them, module fail to load with undefined symbol.
+    # See https://bugs.archlinux.org/task/55102 / https://bugs.archlinux.org/task/54845
+    export CFLAGS=${CFLAGS/-fno-plt}
+    export CXXFLAGS=${CXXFLAGS/-fno-plt}
+    export LDFLAGS=${LDFLAGS/-Wl,-z,now}
     cd $_pkgname
     ./autogen.sh --prefix=/usr
     make
