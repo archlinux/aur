@@ -1,17 +1,39 @@
 pkgbase = winff
-	pkgdesc = GUI for ffmpeg written in Lazarus/GTK+2
+	pkgdesc = GUI for ffmpeg written in Lazarus
 	pkgver = 1.6.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/WinFF/winff/
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = lazarus
 	makedepends = gendesk
-	makedepends = tar
 	makedepends = git
-	depends = ffmpeg
-	depends = gtk2
+	makedepends = gtk2
+	makedepends = gtk3
+	makedepends = qt5pas
+	makedepends = qt6pas
 	source = git+https://github.com/WinFF/winff.git#tag=winff-1.6.4
 	md5sums = SKIP
 
-pkgname = winff
+pkgname = winff-common
+	arch = any
+
+pkgname = winff-gtk2
+	depends = winff-common
+	depends = ffmpeg
+	depends = gtk2
+
+pkgname = winff-gtk3
+	depends = winff-common
+	depends = ffmpeg
+	depends = gtk3
+
+pkgname = winff-qt5
+	depends = winff-common
+	depends = ffmpeg
+	depends = qt5pas
+
+pkgname = winff-qt6
+	depends = winff-common
+	depends = ffmpeg
+	depends = qt6pas
