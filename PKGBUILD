@@ -2,7 +2,7 @@
 _projectname='saturn'
 pkgname="ocaml-$_projectname"
 pkgver='0.4.1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Lock-free data structures for multicore OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocaml-multicore/$_projectname"
@@ -15,8 +15,8 @@ source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
 	'remove-domain-shims-dep.diff'
 )
-sha512sums=('334157b53318bb35daecedddca671ce6d844512577f8f73c6f7dbfe4f4939379788bf8823dfd84effde9ec924103a0a8221f2bc22d2c16ca97aa82a73b29c8c4'
-            '52200c0b70f64aa383532ddfd0b38475ac6b40770937963192d156d79c9533d934f4e8cf49fef701fb884aafcb6c94c1f21e1c659962c758df90b9d26a9ffc60')
+b2sums=('bcfa0177272edffb735085def417e755f54f779c41b831cb1249ff632df3185b9ae8d113a5fa1403b6abe783eb3946dd12389b938437200b813cd0eea5ab5563'
+        '29b7898324b9dac98574173fe42c1ef1d6d4de929eab3d2b8a5b04d6651b8cec26130f50c8fdb77d07f9e032689637f1f34c3605b74d5060d2585bbabb87b0f8')
 
 _sourcedirectory="$_projectname-$pkgver"
 
