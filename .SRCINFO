@@ -1,6 +1,6 @@
 pkgbase = swagger-codegen
 	pkgdesc = Swagger Code Generator
-	pkgver = 3.0.55
+	pkgver = 3.0.57
 	pkgrel = 1
 	url = https://github.com/swagger-api/swagger-codegen
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = swagger-codegen
 	makedepends = maven
 	depends = java-runtime
 	provides = swagger-codegen-cli
-	source = swagger-codegen-3.0.55.tar.gz::https://github.com/swagger-api/swagger-codegen/archive/v3.0.55.tar.gz
+	source = swagger-codegen-3.0.57.tar.gz::https://github.com/swagger-api/swagger-codegen/archive/v3.0.57.tar.gz
 	source = swagger-codegen
-	sha256sums = 0f02ee654c9240f550cdfd516e1e17bc677a887e6babff55c51b0faaa0d8032c
+	sha256sums = 1b2cb1514758d56afc6ba3f15c647282e71ed2c0e9f42720723fe4437134ab47
 	sha256sums = ac1dc1e6661c19572047e7253ddfb5c0861cdae78e2f14105b742fceda2733e3
 
 pkgname = swagger-codegen
