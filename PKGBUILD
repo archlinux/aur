@@ -2,7 +2,7 @@
 _projectname='uuseg'
 pkgname="ocaml-$_projectname"
 pkgver='15.1.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Unicode text segmentation for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://erratique.ch/software/$_projectname"
@@ -11,7 +11,7 @@ depends=('ocaml>=4.14.0' 'ocaml-cmdliner>=1.1.0' 'ocaml-uucp>=15.1.0' 'ocaml-uut
 makedepends=('ocamlbuild' 'ocaml-findlib' 'ocaml-topkg>=1.0.3' 'opam')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dbuenzli/$_projectname/archive/v$pkgver.tar.gz")
-sha512sums=('959769f915edac4961e50fe7a7f866fe50bed31866e44c6240c95b58034efc4e06b7bfdf5a7c0a7d3f41f21f0979f7b470c9d26c1e37da19613d07d2ad93d829')
+b2sums=('fcf0817b60040eb9065c487d2e2ac4c8124c19eed09f80de2c874a5704a658a69f9f478dcf94647cfe433f9b2082119824085cac075469d2ab5fa77b0e2c8472')
 
 _sourcedirectory="$_projectname-$pkgver"
 
