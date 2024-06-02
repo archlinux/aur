@@ -3,7 +3,7 @@
 _pkgname=asfa
 pkgname=${_pkgname}-bin
 pkgver=0.10.0
-pkgrel=3
+pkgrel=4
 pkgdesc='share files by upload via ssh and generation of a non-guessable link (pre-built)'
 url="https://github.com/obreitwi/asfa"
 license=("MIT")
@@ -13,7 +13,7 @@ conflicts=("asfa")
 depends=('gcc-libs' 'openssl' 'zlib')
 _archive_name_rerelease="${_pkgname}-v$pkgver.1-x86_64-unknown-linux-gnu"
 _archive_name="${_pkgname}-v$pkgver-x86_64-unknown-linux-gnu"
-source=("https://github.com/obreitwi/asfa/releases/download/v$pkgver.1/${_archive_name_rerelease}.tar.gz")
+source=("https://github.com/obreitwi/asfa/releases/download/v$pkgver-1/${_archive_name_rerelease}.tar.gz")
 sha256sums=("23c7c089486cb71d244b8b620bcd6e388bba32de0ad32c3e30392ff7da73e408")
 
 
