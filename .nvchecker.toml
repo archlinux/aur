@@ -1,0 +1,5 @@
+[python-paraview-trame-components]
+source = "github"
+github = "Kitware/paraview-trame-components"
+use_latest_release = "true"
+prefix = "v"
