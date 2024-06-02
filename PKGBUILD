@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=fotema
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Photo gallery for Linux"
 arch=('x86_64')
@@ -8,14 +8,20 @@ url="https://github.com/blissd/fotema"
 license=('CC0-1.0 AND CC-BY-2.0 AND CC-BY-4.0 AND CC-BY-NC-SA-4.0 AND CC-BY-SA-4.0 AND GFDL-1.3-or-later AND GPL-3.0-or-later')
 depends=('ffmpeg' 'glycin' 'libadwaita' 'libheif')
 makedepends=('cargo' 'clang' 'gtk3' 'meson' 'mold')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6044de5e7acd48b8a67ff5de6b2823a0cd97130c6e5e6fd1dc7d23b5e90ce41e')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+        'i18n.patch')
+sha256sums=('f145a7c7db6604e1f2bee189cace7ff12b615308b33a0161a6b72ddc1656cdda'
+            'ebe2f2c74ca282a918c748e7e1e08b0e8f3ec964244746c299211df38e7da396')
 
 prepare() {
   cd "$pkgname-$pkgver"
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+
+  # Correct i18n path
+  patch -Np1 meson.build <../i18n.patch
+#  sed -i 's/i18ndir = prefix/i18ndir = localedir/g' meson.build
 }
 
 build() {
