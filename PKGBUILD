@@ -3,7 +3,7 @@
 pkgname=capa-bin
 _pkg=capa
 pkgver=7.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The FLARE team's open-source tool to identify capabilities in executable files"
 url="https://github.com/mandiant/capa"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('capa')
 source=("$url/releases/download/v$pkgver/${_pkg}-v$pkgver-linux.zip"
         "https://raw.githubusercontent.com/mandiant/capa/master/LICENSE.txt")
 sha512sums=('dfca7f2040f9d65cc49de5713be474274928acef3992b55b763c1aefbee6f24916a6f97402c1a8af2697ef1f038e594ed7aa6b341a3db83ee6f18c4d4a511d1f'
-            'f8545e1acf803bc38f20b124df16e754a881021d8108e089acecc6f6c5d9fa4cae28698592e04811bbaf52ac0bf4cb9c8c1d819fed58ba3e9d36fe6c92bcba39')
+            'cfc7776e12281307fdbc69bad4fbe2572342466f4928e3e8f9c56020df4749003812586119b5a70bd008d74776c8bf157ae046c443d884793b8dec076e8f377a')
 
 package() {
   install -Dm755 "${srcdir}/capa" "$pkgdir/opt/${_pkg}/capa"
