@@ -7,14 +7,14 @@ pkgver=0.21.2943
 pkgrel=1
 pkgdesc='Use many torrent trackers with software that supports torznab/potato feeds.'
 arch=('x86_64' 'aarch64' 'armv7h')
-license=('GPL')
+license=('GPL-2.0-or-later')
 url='https://github.com/Jackett/Jackett'
-depends=('aspnet-runtime-6.0')
+depends=('aspnet-runtime-6.0' 'glibc' 'gcc-libs')
 optdepends=(
   'flaresolverr: A proxy server to bypass Cloudflare protection'
 )
 makedepends=('dotnet-sdk-6.0')
-options=('!strip' 'staticlibs')
+options=('!strip' 'staticlibs' '!debug')
 
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/Jackett/Jackett/archive/v${pkgver}.tar.gz"
@@ -24,8 +24,8 @@ source=(
 )
 
 sha256sums=('af7cebca32ae574727da027db0a8a502b9960e4b64eabe665a8f33b76cfb42a6'
-            '9d8f9d73e5fa2b2877dde010c0d8ca6fbf47f03eb1f01b02f846026a949a0dcf'
-            'd005fcd009ec5404e1ec88246c31e664167f5551d6cabc35f68eb41750bfe590'
+            '55e4ec1fdf87c2c7a3cb2bbc105a6d64bbfff489cc288d957f8e465d7f74b7fd'
+            'f865c06ffd21a12d37bf05953d9b483819c0f4e43d243a56db33986113fc40e4'
             '64022e15565a609f449090f02d53ee90ef95cffec52ae14f99e4e2132b6cffe1')
 
 build() {

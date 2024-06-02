@@ -1,14 +1,16 @@
 [Unit]
-Description=Jackett Service
+Description=Jackett Daemon
 After=network.target
 
 [Service]
 User=jackett
 Group=jackett
+SyslogIdentifier=jackett
 Restart=always
 RestartSec=5
 Type=simple
 Environment=XDG_CONFIG_HOME=/var/lib/jackett
+WorkingDirectory=/usr/lib/jackett
 ExecStart=/usr/lib/jackett/jackett --NoRestart --NoUpdates --DataFolder /var/lib/jackett
 TimeoutStopSec=20
 
