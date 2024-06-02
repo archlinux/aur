@@ -2,7 +2,7 @@
 _projectname='thread-table'
 pkgname="ocaml-$_projectname"
 pkgver='1.0.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='A lock-free thread-safe integer keyed hash table '
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocaml-multicore/$_projectname"
@@ -12,7 +12,7 @@ makedepends=('dune>=3.3.0')
 checkdepends=('ocaml-alcotest>=1.7.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('4827bb8d32022b887b5ae0aedd235476e4bc4209fead2dabb27f606c17df23dd124e0119ce5665e35d4e868a840d720732e3b2523f919eecff6b3e8f62db0692')
+b2sums=('f6ca73da30fa3e59d620aca45f8895ee3053a5d5d79ab2674c187a837d029509d92cfac94e1d2a4478f32c5a16a737f0373a3aa208d075f0e201dc13a46e4a04')
 
 _sourcedirectory="$_projectname-$pkgver"
 
