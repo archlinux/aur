@@ -2,7 +2,7 @@
 _projectname='reactiveData'
 pkgname="ocaml-reactivedata"
 pkgver='0.3'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Functional reactive programming with incremental changes in data structures for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocsigen/$_projectname"
@@ -11,7 +11,7 @@ depends=('ocaml>=4.08.0' 'ocaml-react>=1.2.1')
 makedepends=('dune>=1.0.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('ed3e1057f457b4c76060a7f6aad2a555b5a2baebe3d2b8938f2e6f5acad448d09a20b7b82fe8bb3ebb97e5c5946d70214d5bd062311af564752e40b880f75603')
+b2sums=('75ec85d465e461fd4f101e4854a00a43166e46b2aa9265c9bc43ae908997d6fad95f8cab2d83c72f7e3e1ea8380736c6df2ba2c4d6b8b37d9428accc692620e5')
 
 _sourcedirectory="$_projectname-$pkgver"
 
