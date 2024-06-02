@@ -2,7 +2,7 @@
 _projectname='uucp'
 pkgname="ocaml-$_projectname"
 pkgver='15.1.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Unicode character properties for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://erratique.ch/software/$_projectname"
@@ -11,7 +11,7 @@ depends=('ocaml>=4.14.0' 'ocaml-cmdliner>=1.1.0' 'ocaml-uucd>=15.1.0' 'ocaml-uun
 makedepends=('ocamlbuild' 'ocaml-findlib' 'ocaml-topkg>=1.0.3' 'opam')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dbuenzli/$_projectname/archive/v$pkgver.tar.gz")
-sha512sums=('5f232c4c354a52435073475f96b414b5efe14897894fb07aff91106d6f918de9bdfe7c1fd8190c380b433bc64e4c294674cdb91bdf17b1e1f9242e470ceb1136')
+b2sums=('0a10ce405321b3d31e19db8a5a9a3379b2b2e2710dc2e6e2f53e3aab0d9e91d0dfe9cf30652efceb5f189d43da5237b078e4927738afc36a6e1fec8f7aa2782c')
 
 _sourcedirectory="$_projectname-$pkgver"
 
