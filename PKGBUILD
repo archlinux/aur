@@ -4,7 +4,7 @@
 _projectname='spawn'
 pkgname="ocaml-$_projectname"
 pkgver='0.15.1'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='A small OCaml library for spawning sub-processes'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
@@ -14,7 +14,7 @@ makedepends=('dune>=2.8.0')
 checkdepends=('ocaml-ppx_expect')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('efdb31d5ec5ea36d0bc80224d4ee04e46ce3428d1662870e6cebece92bc313d6eebee378802c0c059dd6e0cafea515308c31b7dfaf04a098eb4566583c1e9ed4')
+b2sums=('95478f0f575688ba66dc69229463c6cf029c39e6edf8cead2d38dfa0fc01bacf85d63f09d6d084d96a2537c55b02184ce69166be12628a8046c7e007222f648c')
 
 _sourcedirectory="$_projectname-$pkgver"
 
