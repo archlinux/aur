@@ -2,7 +2,7 @@
 _projectname='ppx_stable_witness'
 pkgname="ocaml-$_projectname"
 pkgver='0.17.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Ppx extension for deriving a witness that a type is intended to be stable'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"

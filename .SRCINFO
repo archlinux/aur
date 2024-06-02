@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_stable_witness
 	pkgdesc = Ppx extension for deriving a witness that a type is intended to be stable
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/janestreet/ppx_stable_witness
 	arch = x86_64
 	arch = aarch64
