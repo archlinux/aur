@@ -1,7 +1,7 @@
 pkgbase = ocaml-fileutils
 	pkgdesc = OCaml API to manipulate real files and filenames
 	pkgver = 0.6.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/gildor478/ocaml-fileutils
 	arch = x86_64
 	arch = aarch64
