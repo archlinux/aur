@@ -1,6 +1,6 @@
 pkgbase = conky-lua-nv
 	pkgdesc = Lightweight system monitor for X with lua and nvidia enabled
-	pkgver = 1.19.8
+	pkgver = 1.21.2
 	pkgrel = 1
 	url = https://github.com/brndnmtthws/conky
 	install = conky-lua-nv.install
@@ -18,6 +18,7 @@ pkgbase = conky-lua-nv
 	makedepends = python-yaml
 	makedepends = python-jinja
 	makedepends = wayland-protocols
+	makedepends = gperf
 	depends = glibc
 	depends = glib2
 	depends = cairo
@@ -53,7 +54,7 @@ pkgbase = conky-lua-nv
 	conflicts = conky
 	replaces = torsmo
 	replaces = conky
-	source = https://github.com/brndnmtthws/conky/archive/refs/tags/v1.19.8.tar.gz
-	sha1sums = acd122047f7c1b273192e599f25fcb99e1eccb81
+	source = https://github.com/brndnmtthws/conky/archive/refs/tags/v1.21.2.tar.gz
+	sha1sums = 37c9cbe36e01843a4aedd6ccffbee963283c78e2
 
 pkgname = conky-lua-nv
