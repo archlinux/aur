@@ -1,0 +1,16 @@
+pkgbase = python-sphinx-rfcsection
+	pkgdesc = Intelligently title Sphinx references to RFC sections
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/dgw/sphinx-rfcsection
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-sphinx
+	source = python-sphinx-rfcsection-0.1.1.tar.gz::https://github.com/dgw/sphinx-rfcsection/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 02dadc3145f8786d273f3509e24af67cd35789efae44b2a9089fb117d8e18982
+
+pkgname = python-sphinx-rfcsection
