@@ -12,6 +12,7 @@ pkgbase = ctl
 	depends = libtiff
 	depends = aces-container
 	options = !lto
+	options = !debug
 	source = ctl-1.5.3.tar.gz::https://github.com/ampas/CTL/archive/ctl-1.5.3.tar.gz
 	sha256sums = 0a9f5f3de8964ac5cca31597aca74bf915a3d8214e3276fdcb52c80ad25b0096
 
