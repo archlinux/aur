@@ -14,7 +14,7 @@ optdepends=(
    'wayland: Wayland support'
    'libpipewire: Pipewire support'
 )
-makedepends=('ninja' 'cmake' 'pkg-config')
+makedepends=('ninja' 'cmake' 'pkgconf')
 source=("git+https://github.com/outfoxxed/quickshell.git")
 sha256sums=('SKIP')
 
