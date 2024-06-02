@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_sexp_message
 	pkgdesc = A ppx rewriter for easy construction of s-expressions
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/janestreet/ppx_sexp_message
 	arch = x86_64
