@@ -1,7 +1,7 @@
 pkgbase = ocaml-time_now
 	pkgdesc = Reports the current time
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/janestreet/time_now
 	arch = x86_64
 	arch = aarch64
