@@ -11,7 +11,7 @@ url="https://github.com/$_org/$_pkgname"
 license=('BSD-2-Clause')
 depends=('boost-libs' 'eigen' 'gcc-libs' 'glibc')
 optdepends=('doxygen')
-makedepends=('cmake' 'boost' 'python-numpy')
+makedepends=('cmake' 'boost' 'python-numpy' 'python-scipy')
 source=("$url/releases/download/v$pkgver/$_pkgname-$pkgver.tar.gz"{,.sig})
 sha256sums=('f01eb2df88f3f470d7bd0c90716170e59f1495f5631525646c9f9378db5c127a'
             'SKIP')
