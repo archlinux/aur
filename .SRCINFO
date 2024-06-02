@@ -1,7 +1,7 @@
 pkgbase = ocaml-markup
 	pkgdesc = Error-recovering streaming HTML5 and XML parsers for OCaml
 	pkgver = 1.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/aantron/markup.ml
 	arch = x86_64
 	arch = aarch64

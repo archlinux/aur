@@ -2,7 +2,7 @@
 _projectname='markup.ml'
 pkgname="ocaml-markup"
 pkgver='1.0.3'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Error-recovering streaming HTML5 and XML parsers for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/aantron/$_projectname"
