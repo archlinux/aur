@@ -1,8 +1,8 @@
 # Maintainer: Christopher Schnick <crschnick@xpipe.io>
 
-_fullver="9.3"
+_fullver="9.4"
 pkgname="xpipe"
-pkgver="9.3"
+pkgver="9.4"
 pkgrel="1"
 epoch=1
 pkgdesc="Your entire server infrastructure at your fingertips"
@@ -31,7 +31,7 @@ provides=()
 conflicts=()
 replaces=()
 backup=()
-options=()
+options=(!debug)
 install=
 changelog="${pkgname}.changelog"
 source=("${pkgname}.desktop")
