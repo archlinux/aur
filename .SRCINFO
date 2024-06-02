@@ -1,7 +1,7 @@
 pkgbase = ocaml-sexp_pretty
 	pkgdesc = S-expression pretty-printer for OCaml
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/janestreet/sexp_pretty
 	arch = x86_64
