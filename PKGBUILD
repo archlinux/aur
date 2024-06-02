@@ -1,14 +1,14 @@
-# Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
+# Maintainer: Nikos Toutountzoglou <nikos dot toutou at protonmail dot com>
 
 pkgname=snmpb
 pkgver=1.0
-pkgrel=7
+pkgrel=8
 pkgdesc="SnmpB is a desktop SNMP browser and MIB editor written in Qt."
 arch=('x86_64')
 url="https://sourceforge.net/projects/snmpb/"
-license=('GPL2')
-depends=(qwt qt5-base qt5-svg)
-makedepends=(bison flex qt5-tools git)
+license=('GPL-2.0-only')
+depends=('qwt' 'qt5-base' 'qt5-svg')
+makedepends=('bison' 'flex' 'qt5-tools' 'git')
 source=("$pkgname-code::git+https://git.code.sf.net/p/snmpb/code"
 	"https://www.ibr.cs.tu-bs.de/projects/libsmi/download/libsmi-0.5.0.tar.gz"
 	"https://github.com/libtom/libtomcrypt/releases/download/v1.18.2/crypt-1.18.2.tar.xz"
@@ -19,22 +19,21 @@ sha256sums=('SKIP'
             '9194f6513955d0fd7300f67158175064460197abab1a92fa127a67a4b0b71530')
 
 prepare() {
-	mkdir -p $pkgname-$pkgver
-	cp -r $pkgname-code/{app,snmp++,license.txt,Makefile} $pkgname-$pkgver
-
+	mkdir -p "$pkgname-$pkgver"
+	cp -r $pkgname-code/{app,snmp++,license.txt,Makefile} "$pkgname-$pkgver"
 	# Copy needed Libs
-	cp -r "$srcdir"/libsmi-0.5.0 $pkgname-$pkgver/libsmi
-	cp -r "$srcdir"/libtomcrypt-1.18.2 $pkgname-$pkgver/libtomcrypt
-	cp -r "$srcdir"/qwt-6.2.0 $pkgname-$pkgver/qwt
-
+	cp -r "libsmi-0.5.0" "$pkgname-$pkgver/libsmi"
+	cp -r "libtomcrypt-1.18.2" "$pkgname-$pkgver/libtomcrypt"
+	cp -r "qwt-6.2.0" "$pkgname-$pkgver/qwt"
 	# Include QwtScaleWidget
-	sed "30i#include <qwt_scale_widget.h>" -i $pkgname-$pkgver/app/graph.cpp
-	sed "31i#include <qwt_scale_widget.h>" -i $pkgname-$pkgver/app/graph.h
+	sed "30i#include <qwt_scale_widget.h>" -i "$pkgname-$pkgver/app/graph.cpp"
+	sed "31i#include <qwt_scale_widget.h>" -i "$pkgname-$pkgver/app/graph.h"
 }
 
 build() {
-	cd $pkgname-$pkgver
-
+	cd "$pkgname-$pkgver"
+	# Fix for gcc-14 issues
+	CFLAGS+=' -Wno-error=implicit-function-declaration'
 	# Libsmi
 	cd libsmi
 	autoreconf -i
@@ -42,16 +41,13 @@ build() {
 		--with-pathseparator=";" --with-dirseparator="/" \
 		--with-smipath="/usr/share/apps/snmpb/mibs;/usr/share/apps/snmpb/pibs"
 	make V=0
-
 	# Libtomcrypt
 	cd ../libtomcrypt
 	make library
-
 	# Qwt
 	cd ../qwt
 	qmake-qt5 qwt.pro
 	make
-
 	# Build snmpb Qt App
 	cd ../app
 	qmake-qt5 -o makefile.snmpb snmpb.pro
@@ -60,12 +56,8 @@ build() {
 
 package() {
 	# Install package
-	cd "$srcdir"/$pkgname-$pkgver
-	make INSTALL_PREFIX="$pkgdir"/usr install
-
-	# Install license files
-	install -Dvm644 "$srcdir"/$pkgname-$pkgver/license.txt \
-		"$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+	cd "$pkgname-$pkgver"
+	make INSTALL_PREFIX="$pkgdir/usr" install
 
 	# User config files stored in
 	# $HOME/.config/snmpb.sourceforge.net
