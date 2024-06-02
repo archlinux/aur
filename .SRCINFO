@@ -1,7 +1,7 @@
 pkgbase = mp3cat
 	pkgdesc = A command line utility for joining MP3 files.
 	pkgver = 4.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.dmulholl.com/dev/mp3cat.html
 	arch = any
 	license = Unlicense

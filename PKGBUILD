@@ -1,8 +1,8 @@
-# Maintainer: Nikos Toutountzoglou <nikos.toutou@gmail.com>
+# Maintainer: Nikos Toutountzoglou <nikos dot toutou at protonmail dot com>
 
 pkgname=mp3cat
 pkgver=4.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A command line utility for joining MP3 files."
 arch=('any')
 url="https://www.dmulholl.com/dev/mp3cat.html"
@@ -12,7 +12,7 @@ options=(!lto strip)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dmulholl/mp3cat/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('457e680e5b05e8a5a50a8b557372e23bf797026f43253efdff14b8137f214470')
 
-build(){
+build() {
 	cd "${pkgname}-${pkgver}"
 	export CGO_CPPFLAGS="${CPPFLAGS}"
 	export CGO_CFLAGS="${CFLAGS}"
@@ -26,5 +26,4 @@ build(){
 package() {
 	cd "${pkgname}-${pkgver}"
 	install -Dm755 mp3cat "${pkgdir}/usr/bin/mp3cat"
-	install -Dm644 license.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
