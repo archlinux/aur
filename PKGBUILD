@@ -3,18 +3,18 @@
 pkgname='perl-dist-zilla-plugin-run'
 _module='Dist-Zilla-Plugin-Run'
 _author='E/ET/ETHER'
-pkgver='0.049'
+pkgver='0.050'
 pkgrel='1'
 pkgdesc='Run external commands and code at specific phases of Dist::Zilla.'
 arch=('any')
 url="https://metacpan.org/release/$_module"
-license=('PerlArtistic' 'GPL')
+license=(' GPL-1.0-or-later OR Artistic-1.0-Perl')
 options=('!emptydirs' 'purge')
 depends=('perl-dist-zilla')
 makedepends=('perl-module-build-tiny')
 checkdepends=('perl-test-deep' 'perl-test-file-sharedir')
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_module-$pkgver.tar.gz")
-sha256sums=('cdbaebab34a163524baccc02dad3027d3bc3d269854e2a700468f82112a62b7a')
+sha256sums=('4b5c4045ef96f16b55c132c1f11b9ab19e2d136716f50bb47d78cda9ae5be54d')
 
 build() {
    (
