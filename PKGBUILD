@@ -6,7 +6,7 @@
 _projectname='xmlm'
 pkgname="ocaml-$_projectname"
 pkgver='1.4.0'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='An OCaml streaming codec to decode and encode the XML data format'
 arch=('x86_64' 'aarch64')
 url="https://erratique.ch/software/$_projectname"
@@ -15,7 +15,7 @@ depends=('ocaml>=4.05.0')
 makedepends=('ocamlbuild' 'ocaml-findlib' 'ocaml-topkg>=1.0.3' 'opam')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dbuenzli/$_projectname/archive/v$pkgver.tar.gz")
-sha512sums=('b19be8b8895e623cf4f9a5f083402f889dfb946b11b76de0821b6eb4f9f9ccac48a5c5ef456ec096d9db32cbd71f9e20187e8a71f9e07fdd9130f9ed941252f7')
+b2sums=('07684694cdfc9e2d9eaa7c17980fb6e5b7251e6d83c2bf4c1c11ddeac945e91af5ddb139b5b64b6d0aa99bd41ff8a40384f1eafaaca3f445b81d38fde449ec6a')
 
 _sourcedirectory="$_projectname-$pkgver"
 
