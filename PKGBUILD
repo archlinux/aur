@@ -4,10 +4,10 @@ pkgname=python-fabric-git
 reponame=fabric
 pkgver=0.0.1
 pkgrel=1
-pkgdesc="next-gen GTK+ based desktop widgets python framework"
+pkgdesc="next-gen framework for building desktop widgets using python"
 arch=(any)
-url="http://github.com/Fabric-Development/fabric"
-license=('unknown')
+url="https://github.com/Fabric-Development/fabric"
+license=("AGPL-3.0-or-later")
 groups=()
 depends=(
     gtk3
@@ -16,11 +16,14 @@ depends=(
     libgirepository
     gobject-introspection
     gobject-introspection-runtime
+    webkit2gtk-4.1
+    libdbusmenu-gtk3
     python
     python-pip
     python-gobject
     python-cairo
     python-loguru
+    python-click
     pkgconf
 )
 makedepends=(
@@ -39,6 +42,12 @@ conflicts=(
 
 source=(git+http://github.com/Fabric-Development/$reponame.git)
 sha256sums=("SKIP")
+
+pkgver() {
+  cd "$srcdir/$reponame"
+  ver=$(python -c "import importlib.metadata; print(importlib.metadata.version('$reponame'))")
+  printf "%s.r%s.%s" "$ver" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
 
 build() {
   cd "$srcdir/$reponame"
