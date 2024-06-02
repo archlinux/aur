@@ -1,0 +1,23 @@
+pkgbase = taierspeed-cli
+	pkgdesc = TaierSpeed CLI
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/ztelliot/taierspeed-cli
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	arch = riscv64
+	license = LGPL-3.0-or-later
+	makedepends = go
+	provides = taierspeed-cli
+	provides = taierspeed
+	conflicts = taierspeed-cli
+	conflicts = taierspeed
+	source = taierspeed-cli-1.7.0.tar.gz::https://github.com/ztelliot/taierspeed-cli/archive/refs/tags/v1.7.0.tar.gz
+	sha256sums = 00eeaae4f7bfb2be52049813314591dbba7fafa0fa08c67ae7cf3cd60d2db4bb
+
+pkgname = taierspeed-cli
