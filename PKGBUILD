@@ -1,16 +1,16 @@
 # Maintainer: FTS427 <FTS427@outlook.com>
 # Contributor: Blessing-Studio <3424968114@qq.com>
 
-pkgname=wonderlab-appimage
+pkgname=wonderlab-appimage-master
 _pkgname=wonderlab
 pkgver=1.2.8.2
 pkgrel=1.0
-pkgdesc="The next generation cross-platform Minecraft launcher"
+pkgdesc="The next generation cross-platform Minecraft launcher. (master branch)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Blessing-Studio/WonderLab.Override"
 license=('AGPL3')
 options=('!strip')
-conflicts=('wonderlab' 'wonderalb-git')
+conflicts=('wonderlab' 'wonderlab-git' 'wonderlab-feature')
 depends=('fuse')
 optdepends=('jre-openjdk: for launch Minecraft')
 source_x86_64=("${_pkgname}-${arch}.AppImage::${url}/releases/download/AutoBuild_master/${_pkgname}.${pkgver}.linux-x64.AppImage")
