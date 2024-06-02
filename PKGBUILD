@@ -3,8 +3,8 @@
 
 pkgname='perl-directory-scratch'
 pkgver='0.18'
-pkgrel='2'
-pkgdesc="Easy-to-use self-cleaning scratch space."
+pkgrel='3'
+pkgdesc="(DEPRECATED) Easy-to-use self-cleaning scratch space."
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
