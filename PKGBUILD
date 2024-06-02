@@ -2,7 +2,7 @@
 # Contributer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=pipewalker
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Pieces of a computer network are to be turned, to make all computers connected to the same network"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('mesa' 'sdl2' 'sdl2_image')
 makedepends=('meson' 'ninja')
 install=$pkgname.install
 source=(https://github.com/artemsen/$pkgname/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=('24232fdf71c7146f1621c461601b60bd6237d801e6403a5695be4d57419e1a21')
+sha256sums=('59c4746a1b3c703fb498792e9b54d3295b73b24bbbcc39565d41b14e1daf6b18')
 
 prepare() {
   cd "${srcdir}"/$pkgname-$pkgver
