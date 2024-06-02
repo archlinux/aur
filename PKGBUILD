@@ -1,7 +1,7 @@
 # Maintainer: eNV25 <env252525@gmail.com>
 
 pkgname=webtorrent-mpv-hook
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="script that allows mpv to stream torrents"
 arch=(any)
@@ -15,9 +15,9 @@ noextract=("$pkgname-$pkgver.tgz")
 package() {
 	npm install --cache "$srcdir/npm-cache" -g --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tgz"
 	mkdir -p "$pkgdir/etc/mpv/scripts/"
-	ln -srvf "$pkgdir/usr/lib/node_modules/webtorrent-mpv-hook/build/webtorrent.js" "$pkgdir/etc/mpv/scripts/webtorrent.js"
-	mkdir -p "$pkgdir/usr/share/licenses/"
-	ln -srvf "$pkgdir/usr/lib/node_modules/webtorrent-mpv-hook/LICENSE" "$pkgdir/usr/share/licenses/LICENSE"
+	ln -srvf "$pkgdir/usr/lib/node_modules/$pkgname/build/webtorrent.js" "$pkgdir/etc/mpv/scripts/webtorrent.js"
+	mkdir -p "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -srvf "$pkgdir/usr/lib/node_modules/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha256sums=('63ff0918b8130762f91a11988fe2e8c69cf5c89326f7eb7802b69145e9183c0d')
+sha256sums=('6b8d8f9df216036880b83c3dd7ca712001014b1400a8130082011e5cd1c0f5e2')
