@@ -1,0 +1,18 @@
+pkgbase = asak-git
+	pkgdesc = A cross-platform audio recording/playback tool (git)
+	pkgver = r44.4ba21ff
+	pkgrel = 1
+	url = https://github.com/chaosprint/asak
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = alsa-lib
+	depends = jack2
+	provides = asak
+	conflicts = asak
+	source = git+https://github.com/chaosprint/asak
+	sha512sums = SKIP
+
+pkgname = asak-git
