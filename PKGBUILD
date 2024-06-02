@@ -3,7 +3,7 @@
 pkgname=ocaml-grain_dypgen
 _srcname=dypgen
 pkgver=0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Self-extensible parsers and lexers for OCaml"
 arch=('x86_64')
 url="https://github.com/grain-lang/dypgen"

@@ -1,7 +1,7 @@
 pkgbase = ocaml-grain_dypgen
 	pkgdesc = Self-extensible parsers and lexers for OCaml
 	pkgver = 0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/grain-lang/dypgen
 	arch = x86_64
 	license = LicenseRef-oLicence_CeCILL-B_V1
