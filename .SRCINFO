@@ -1,7 +1,7 @@
 pkgbase = ocaml-async_log
 	pkgdesc = Logging library built on top of Async_unix
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/janestreet/async_log
 	arch = x86_64
 	arch = aarch64

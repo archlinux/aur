@@ -2,7 +2,7 @@
 _projectname='async_log'
 pkgname="ocaml-$_projectname"
 pkgver='0.17.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Logging library built on top of Async_unix'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
