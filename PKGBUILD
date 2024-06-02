@@ -2,7 +2,7 @@
 _projectname='js_of_ocaml'
 pkgname="ocaml-$_projectname"
 pkgver='5.8.2'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Compiler from OCaml to Javascript'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocsigen/$_projectname"
@@ -11,7 +11,7 @@ depends=('ocaml>=4.08.0' 'ocaml-cmdliner>=1.1.0' 'ocaml-graphics' 'ocaml-lwt>=2.
 makedepends=('dune>=3.7.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('1e1513b63b1848a2a1ce684f95a3ed121e178f1aaaba3698648c5321230a7ef7ba6dc342ad450c4222109e3e08d8ad17077c0350eefa0d648620366da2c66ec7')
+b2sums=('93a58d8b63dee116752831cb5a0f1b6878c33e7aa2f2a0daba2ae1671f81d5c60a35a7f0698913be9bf336253555a1ae51f6dc05aa1969711100e04ff9695dd0')
 
 _sourcedirectory="$_projectname-$pkgver"
 
