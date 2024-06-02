@@ -6,7 +6,7 @@
 _projectname='lwt'
 pkgname="ocaml-$_projectname"
 pkgver='5.7.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='A library for cooperative threads in OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocsigen/$_projectname"
@@ -16,7 +16,7 @@ makedepends=('cppo>=1.1.0')
 checkdepends=('ocaml-ppx_let')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('42e629920783428673b99c9d7a639237c9e6b35079b5d907bc67e7ea506acf9edadc48cec580bdcfd2410ed9412bf5e6bcc8b09de2fa7d35ce1490973d05ddd1')
+b2sums=('e1b401c70b7722b266085c0493ab4e081aeb58cdf0e3569f677ee3b66edb1b4dda9afd115143315562f301a80bf8efbb09ced3f09f641adcac01fe44b3670cdc')
 
 _sourcedirectory="$_projectname-$pkgver"
 
