@@ -1,6 +1,6 @@
 pkgbase = musicpod-git
 	pkgdesc = Music, radio, television and podcast player
-	pkgver = 1.4.1.r0.g174f145
+	pkgver = 1.4.4.r0.gb73b97f
 	pkgrel = 1
 	url = https://github.com/ubuntu-flutter-community/musicpod
 	arch = x86_64

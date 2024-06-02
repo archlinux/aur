@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=musicpod-git
 _app_id=org.feichtmeier.Musicpod
-pkgver=1.4.1.r0.g174f145
+pkgver=1.4.4.r0.gb73b97f
 pkgrel=1
 pkgdesc="Music, radio, television and podcast player"
 arch=('x86_64' 'aarch64')
@@ -23,8 +23,8 @@ pkgver() {
 prepare() {
   cd "${pkgname%-git}"
   export FVM_CACHE_PATH="$srcdir/fvm"
-  fvm install 3.19.6
-  fvm global 3.19.6
+  fvm install 3.22.0
+  fvm global 3.22.0
 
   # Disable analytics
   fvm flutter --disable-analytics
