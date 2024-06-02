@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_diff
 	pkgdesc = A PPX rewriter that generates the implementation of [Ldiffable.S]
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/janestreet/ppx_diff
 	arch = x86_64
 	arch = aarch64
