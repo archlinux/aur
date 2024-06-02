@@ -1,10 +1,10 @@
 pkgbase = g-ls
 	pkgdesc = a powerful ls in golang
 	pkgver = 0.28.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Equationzhao/g
 	arch = x86_64
-	arch = arm64
+	arch = aarch64
 	license = MIT
 	makedepends = go
 	backup = etc/g-ls/config.conf
