@@ -2,7 +2,7 @@
 _projectname='ppx_globalize'
 pkgname="ocaml-$_projectname"
 pkgver='0.17.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='A ppx rewriter that generates functions to copy local values to the global heap'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
