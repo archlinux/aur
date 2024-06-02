@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='ocaml-tsort'
 pkgver='2.1.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Easy to use and user-friendly topological sort module for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/dmbaturin/$pkgname"
@@ -10,7 +10,7 @@ depends=('ocaml>=4.03.0')
 makedepends=('dune>=1.9.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('cf0a6295eed3ca29dbedb1b32c736b37e98587d5420d2f6443b70ca3c50c8d75c508a245d243a3f28bfe9c250abc3a37d4f461b187d2459670eae4cb088514aa')
+b2sums=('f919057504cabada48b484aa0d6bf6831faf7c026d06b327c3f5f9b4292099dbb3a6ce532e8cb47c591f84cec51e0469ba861e7f64145b273d05ad52512eea46')
 
 _sourcedirectory="$pkgname-$pkgver"
 
