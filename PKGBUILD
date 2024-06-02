@@ -3,17 +3,19 @@
 pkgbase='python-svg2tikz'
 pkgname=('python-svg2tikz')
 _module='svg2tikz'
-pkgver='3.0.1'
-pkgrel=2
+pkgver='3.1.0'
+pkgrel=1
 pkgdesc="Tools for converting SVG graphics to TikZ/PGF code"
 url="http://xyz2tex.github.io/svg2tikz/"
 depends=('python')
 optdepends=('python-inkex' 'python-lxml' 'xclip')
 makedepends=('python-setuptools' 'python-build' 'python-installer')
+provides=("svg2tikz=${pkgver}")
+conflicts=("svg2tikz-git")
 license=('custom:Other/Proprietary License')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/${_module/-/_}-$pkgver.tar.gz")
-sha256sums=('125b856998e5e8b26b32df543ef46d69878230b64fec61f6e97ede55ede8a33e')
+source=("https://github.com/xyz2tex/${_module}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('36f7d083d6e21693390e9626abe28d6bc9e27bf7f370796fabcf55319f9e6750')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
