@@ -3,11 +3,12 @@
 
 pkgname=ctl
 pkgver=1.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The Color Transformation Language"
 arch=('x86_64')
 url="https://github.com/ampas/CTL"
 license=('custom')
+options=(!lto)
 depends=('openexr' 'libtiff' 'aces-container')
 makedepends=('cmake' 'gcc' 'make')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ampas/CTL/archive/${pkgname}-${pkgver}.tar.gz")
