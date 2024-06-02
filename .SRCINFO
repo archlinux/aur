@@ -1,7 +1,7 @@
 pkgbase = ocaml-gen
 	pkgdesc = Simple, efficient iterators for OCaml
 	pkgver = 1.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/c-cube/gen
 	arch = x86_64
 	arch = aarch64
