@@ -2,7 +2,7 @@
 
 pkgname=ksud
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='KernelSU userspace cli'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://kernelsu.org/'
@@ -10,11 +10,11 @@ license=('GPL-3.0-or-later')
 makedepends=('cargo' 'unzip')
 _srcname='KernelSU'
 source=("$_srcname-$pkgver.tar.gz::https://github.com/tiann/$_srcname/archive/v$pkgver.tar.gz"
-        "https://github.com/tiann/$_srcname/releases/download/v$pkgver/android12-5.10_kernelsu.ko"
-        "https://github.com/tiann/$_srcname/releases/download/v$pkgver/android13-5.10_kernelsu.ko"
-        "https://github.com/tiann/$_srcname/releases/download/v$pkgver/android13-5.15_kernelsu.ko"
-        "https://github.com/tiann/$_srcname/releases/download/v$pkgver/android14-5.15_kernelsu.ko"
-        "https://github.com/tiann/$_srcname/releases/download/v$pkgver/android14-6.1_kernelsu.ko"
+        "android12-5.10_kernelsu_$pkgver.ko::https://github.com/tiann/$_srcname/releases/download/v$pkgver/android12-5.10_kernelsu.ko"
+        "android13-5.10_kernelsu_$pkgver.ko::https://github.com/tiann/$_srcname/releases/download/v$pkgver/android13-5.10_kernelsu.ko"
+        "android13-5.15_kernelsu_$pkgver.ko::https://github.com/tiann/$_srcname/releases/download/v$pkgver/android13-5.15_kernelsu.ko"
+        "android14-5.15_kernelsu_$pkgver.ko::https://github.com/tiann/$_srcname/releases/download/v$pkgver/android14-5.15_kernelsu.ko"
+        "android14-6.1_kernelsu_$pkgver.ko::https://github.com/tiann/$_srcname/releases/download/v$pkgver/android14-6.1_kernelsu.ko"
         # For libmagiskboot.so
         "https://github.com/topjohnwu/Magisk/releases/download/v27.0/Magisk-v27.0.apk"
 )
@@ -38,9 +38,11 @@ prepare() {
 
     yes|unzip "$srcdir/Magisk-v27.0.apk" "lib/${ARCH_MAP[$CARCH]}/libmagiskboot.so" -d "$srcdir/Magisk-v27.0"
     install -v -Dm755 "$srcdir/Magisk-v27.0/lib/${ARCH_MAP[$CARCH]}/libmagiskboot.so" "bin/aarch64/magiskboot"
-
-    for ko in $srcdir/*.ko; do 
-        install -v -Dm644 "$ko" -t "bin/aarch64"
+    for ko in $srcdir/*.ko; do
+        _ko=${ko##*/}
+        _ko=${_ko%_$pkgver.ko}
+        install -v -Dm644 "$ko" "bin/aarch64/$_ko.ko"
+        unset _ko
     done
 }
 
