@@ -29,6 +29,7 @@ pkgbase = art-rawconverter
 	depends = mimalloc
 	depends = openmp
 	depends = openexr
+	depends = ctl
 	optdepends = perl-image-exiftool: metadata support for CR3 images
 	optdepends = art-rawconverter-imageio: add support for additional image formats
 	optdepends = art-rawconverter-ctlscripts: CTL scripts for advanced color transformations
