@@ -1,16 +1,16 @@
 pkgbase = dbus-inspect-git
-	pkgdesc = Command line dbus inspect written in Go
-	pkgver = v0.dcffffe
+	pkgdesc = Command-line D-Bus inspector written in Go
+	pkgver = r8.dcffffe
 	pkgrel = 1
 	url = https://github.com/amenzhinsky/dbus-inspect
-	arch = i686
 	arch = x86_64
-	arch = armv6h
-	arch = armv7h
 	license = MIT
+	makedepends = git
 	makedepends = go
 	depends = glibc
-	source = dbus-inspect::git://github.com/amenzhinsky/dbus-inspect.git
-	sha512sums = SKIP
+	provides = dbus-inspect
+	conflicts = dbus-inspect
+	source = dbus-inspect::git+https://github.com/amenzhinsky/dbus-inspect.git
+	sha256sums = SKIP
 
 pkgname = dbus-inspect-git

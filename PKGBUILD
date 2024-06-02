@@ -1,30 +1,45 @@
-# Maintainer: scrouthtv <scrouthtv 0x40 gmail 0x2e com>
-pkgname=dbus-inspect-git
-pkgver=v0.dcffffe
+# Maintainer:
+# Contributor: scrouthtv <scrouthtv 0x40 gmail 0x2e com>
+
+_pkgname="dbus-inspect"
+pkgname="$_pkgname-git"
+pkgver=r8.dcffffe
 pkgrel=1
-pkgdesc="Command line dbus inspect written in Go"
-license=('MIT')
+pkgdesc="Command-line D-Bus inspector written in Go"
 url="https://github.com/amenzhinsky/dbus-inspect"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+license=('MIT')
+arch=('x86_64')
+
 depends=('glibc')
-makedepends=('go')
-optdepends=()
-conflicts=()
-source=("dbus-inspect::git://github.com/amenzhinsky/dbus-inspect.git")
-sha512sums=("SKIP")
+makedepends=(
+  'git'
+  'go'
+)
+
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=("SKIP")
+
+pkgver() {
+  cd "$_pkgsrc"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
 
 build() {
-  cd "dbus-inspect"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-	export CGO_ENABLED=0
-
+  cd "$_pkgsrc"
   go build .
 }
 
 package() {
-	cd "dbus-inspect"
-
-	# binary:
-  install -Dm755 "dbus-inspect" "$pkgdir/usr/bin/dbus-inspect"
+  install -Dm755 "$_pkgsrc/dbus-inspect" -t "$pkgdir/usr/bin/"
+  install -Dm644 "$_pkgsrc/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
