@@ -1,12 +1,12 @@
 pkgbase = coreupdown
 	pkgdesc = Dynamically turn all non-main CPU's on and off
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://codeberg.org/maandree/coreupdown
 	arch = any
 	license = custom:ISC
 	makedepends = libsimple
-	source = coreupdown-1.0.tar.gz::https://codeberg.org/maandree/coreupdown/archive/1.0.tar.gz
-	sha512sums = 029add2223a4d7e9e4391694e967d642547610b492cb94f70aacd6de1d06cbe62e6cbbabc5d462b60d9d6ada1aad4aafb67b0c8234d0cb1c6981572a9a5abf11
+	source = coreupdown-1.1.tar.gz::https://codeberg.org/maandree/coreupdown/archive/1.1.tar.gz
+	sha512sums = d35965f301c89328fddda0eef8cf9a755964613558e5eaadb581b7a4249d996d61db6f97f9851edecd15934d7edb4a3464d4dc8b5371abbdc0062619dc6a121e
 
 pkgname = coreupdown

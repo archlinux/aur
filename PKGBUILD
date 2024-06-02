@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@kth.se>
 
 pkgname=coreupdown
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Dynamically turn all non-main CPU's on and off"
 url='https://codeberg.org/maandree/coreupdown'
@@ -10,7 +10,7 @@ license=('custom:ISC')
 depends=()
 makedepends=(libsimple)
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha512sums=(029add2223a4d7e9e4391694e967d642547610b492cb94f70aacd6de1d06cbe62e6cbbabc5d462b60d9d6ada1aad4aafb67b0c8234d0cb1c6981572a9a5abf11)
+sha512sums=(d35965f301c89328fddda0eef8cf9a755964613558e5eaadb581b7a4249d996d61db6f97f9851edecd15934d7edb4a3464d4dc8b5371abbdc0062619dc6a121e)
 
 build () {
 	cd "$srcdir/coreupdown"
