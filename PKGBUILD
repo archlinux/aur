@@ -3,7 +3,7 @@
 _projectname='timezone'
 pkgname="ocaml-$_projectname"
 pkgver='0.17.0'
-pkgrel='1'
+pkgrel='2'
 epoch='1'
 pkgdesc='Time-zone handling for OCaml'
 arch=('x86_64' 'aarch64')
