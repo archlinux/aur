@@ -10,8 +10,8 @@
 _pkgname="transgui"
 pkgname="$_pkgname-git"
 pkgver=5.18.0.r90.g25df397
-pkgrel=1
-pkgdesc="Feature-rich client for Transmission Remote"
+pkgrel=2
+pkgdesc="Feature-rich client for Transmission Remote (${_widgets^})"
 url="https://github.com/transmission-remote-gui/transgui"
 license=("GPL-2.0-or-later")
 arch=('x86_64')
@@ -65,12 +65,17 @@ END
 
 build() {
   mkdir -p build
-  make -C "$_pkgsrc" clean
-  lazbuild -B "$_pkgsrc/transgui.lpi" \
-    --lazarusdir="/usr/lib/lazarus" \
-    --widgetset="$_widgets" \
-    --os=linux --cpu=$ARCH \
+
+  local _laz_opts=(
+    --build-all
+    --cpu="$CARCH"
+    --lazarusdir="/usr/lib/lazarus"
+    --os=linux
     --primary-config-path=build
+    --widgetset="$_widgets"
+  )
+
+  lazbuild "${_laz_opts[@]}" "$_pkgsrc/transgui.lpi"
 }
 
 package() {

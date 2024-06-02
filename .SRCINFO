@@ -1,7 +1,7 @@
 pkgbase = transgui-git
-	pkgdesc = Feature-rich client for Transmission Remote
+	pkgdesc = Feature-rich client for Transmission Remote (Qt6)
 	pkgver = 5.18.0.r90.g25df397
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/transmission-remote-gui/transgui
 	arch = x86_64
 	license = GPL-2.0-or-later
