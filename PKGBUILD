@@ -1,25 +1,25 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname="metacubexd"
-pkgver=1.138.1
-pkgrel=2
+pkgver=1.140.0
+pkgrel=1
 pkgdesc="Mihomo Dashboard, The Official One, XD"
 arch=("any")
 url="https://github.com/MetaCubeX/${pkgname}"
 license=("MIT")
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-makedepends=("yarn")
+makedepends=("pnpm")
 optdepends=('clash: A rule-based tunnel in Go'
             'mihomo: Another Clash Kernel by MetaCubeX'
             'sing-box: The universal proxy platform')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fdaef50c1c19faae2f7000bd9741e9889789752824702001ac0d31b8a5055927')
+sha256sums=('8528d237d347bf3cd93200f6773bcd9768a939c520c710389354f7bd27d17dc1')
 
 build() {
     cd "${pkgname}-${pkgver}"
-    yarn install
-    yarn run build
+    pnpm install
+    pnpm build
 }
 
 package() {
