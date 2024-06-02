@@ -3,7 +3,7 @@
 _projectname='ppx_pipebang'
 pkgname="ocaml-$_projectname"
 pkgver='0.17.0'
-pkgrel='1'
+pkgrel='2'
 epoch='1'
 pkgdesc='A ppx rewriter that inlines reverse application operators |> and |!'
 arch=('x86_64' 'aarch64')
