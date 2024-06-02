@@ -2,7 +2,7 @@
 _projectname='wtf8'
 pkgname="ocaml-$_projectname"
 pkgver='1.0.2'
-pkgrel='9'
+pkgrel='10'
 pkgdesc='An ocaml library that implements a WTF-8 encoder and decoder'
 arch=('x86_64' 'aarch64')
 url="https://github.com/flow/$pkgname"
@@ -11,7 +11,7 @@ depends=('ocaml>=4.01.0')
 makedepends=('dune>=1.0.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('3e7a65e0085a84648e4758faf6873a7b6d037d0e45ac6be3f545b0ab9676287a31b803d5ceb0d93f8f34b771dd80b7b8770af06227a2ebfc8e0a9f12d21a7215')
+b2sums=('008a70d0e36038a6b8d19763deda15add10c3a0016bb1349b0cb13331cccccc9a8c811a5d6cfbbfb7256b76af62c789c6e0c00392363b5671ff0f41c80615305')
 
 _sourcedirectory="$pkgname-$pkgver"
 
