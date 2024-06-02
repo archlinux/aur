@@ -7,7 +7,7 @@
 pkgname=svg2tikz-git
 _gitname="svg2tikz"
 pkgver=3.1.0+1.r532.20240519.c14dcde
-pkgrel=3
+pkgrel=4
 pkgdesc="Set of tools for converting SVG graphics to TikZ/PGF code."
 arch=('any')
 url="https://github.com/kjellmf/svg2tikz"
@@ -34,7 +34,7 @@ makedepends=(
   'python-sphinx-copybutton>=0.5.1'   # For building the documentation.
   'python-sphinx-furo>=2023.9.10'     # For building the documentation.
   'python-sphinxext-opengraph>=0.7.5' # For building the documentation.
-  'texlive-bin'                       # For building the documentation.
+  # 'texlive-bin'                       # For building the documentation.
 )
 checkdepends=(
   'python-inkex>=1.2.2'
@@ -91,8 +91,8 @@ build() {
   python -m build --wheel --no-isolation
 
   cd docs
-  make latex
-  make html
+  # make latex
+  make htmlhelp
 }
 
 check() {
@@ -112,7 +112,7 @@ package() {
   for _docfile in "${srcdir}/git.log" CHANGELOG.md README.md; do
     install -Dvm644 "${_docfile}" "${pkgdir}/usr/share/doc/svg2tikz/$(basename "${_docfile}")"
   done
-  cp -rv docs "${pkgdir}/usr/share/doc/svg2tikz/docs"
+  cp -rv docs/_build/htmlhelp "${pkgdir}/usr/share/doc/svg2tikz"/
 
   install -Dvm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   ln -svr "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" "${pkgdir}/usr/share/doc/svg2tikz/LICENSE"
