@@ -2,12 +2,12 @@
 
 pkgname=heasoft
 pkgver=6.33.2
-pkgrel=1
+pkgrel=2
 # _mod should be '', '_no_xspec_modeldata' or '_plus_older_xspec_modeldata'
 _mod=''
 pkgdesc='NASA high energy astrophysics library'
-depends=('libxpm' 'libidn' 'ncurses' 'readline')
-makedepends=('glibc' 'gcc-fortran' 'inetutils' 'perl' 'python-astropy' 'python-matplotlib' 'python-pip' 'python-scipy' 'python-setuptools')
+depends=('inetutils' 'libxpm' 'libidn' 'ncurses' 'readline')
+makedepends=('glibc' 'gcc-fortran' 'perl' 'python-astropy' 'python-matplotlib' 'python-pip' 'python-scipy' 'python-setuptools')
 optdepends=(
   "python-astropy: python binding"
   "python-numpy: python binding"
