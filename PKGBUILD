@@ -1,11 +1,12 @@
-# Maintainer:
+# Maintainer: Mahdi Sarikhani <mahdisarikhani@outlook.com>
 # Contributor: Anna <morganamilo@gmail.com>
 
 pkgname=superproductivity
-pkgver=8.0.5
+_name=super-productivity
+pkgver=8.0.7
 pkgrel=1
 pkgdesc="ToDo List / Time Tracker / Personal Jira Task Manager"
-arch=('x86_64')
+arch=('any')
 url="https://super-productivity.com"
 license=('MIT')
 _electron=electron29
@@ -14,36 +15,36 @@ makedepends=('git' 'npm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/johannesjo/super-productivity/archive/v${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('cf7569ec502889432dbfa41af802103f539caa279e69e9d83a9950a61366e157'
+sha256sums=('c85bf7041e679ce8fe3c4dee9587c5a667dfe13129a5231b7da07272d80dd2b8'
             '54e5773ce27144d4f4a33b0b494fc37b52312c62eeda627882e4b6e328aaa9d9'
             'f9ca69e16223b3dcfa0d8ae9dbbff231255482d85f0d72ddcc5033dac890741e')
 
 prepare() {
-    sed -i "s/@ELECTRON@/${_electron}/" superproductivity.sh
+    sed -i "s/@ELECTRON@/${_electron}/" "${pkgname}.sh"
 
-    cd "super-productivity-${pkgver}"
-    npm install --no-fund
+    cd "${_name}-${pkgver}"
+    npm install
 }
 
 build() {
-    cd "super-productivity-${pkgver}"
+    cd "${_name}-${pkgver}"
     npm run build
-    npx electron-builder --linux --x64 --dir \
+    npx electron-builder --linux --dir \
         -c.electronDist="/usr/lib/${_electron}" \
         -c.electronVersion="$(cat /usr/lib/${_electron}/version)"
 }
 
 package() {
-    cd "super-productivity-${pkgver}"
+    cd "${_name}-${pkgver}"
 
     # Install asar file
-    install -Dm644 -t "${pkgdir}/usr/lib/${pkgname}" app-builds/linux-unpacked/resources/*
+    install -Dm644 app-builds/linux-unpacked/resources/* -t "${pkgdir}/usr/lib/${pkgname}"
 
     # Install start script
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 
     # Install shortcut
-    install -Dm644 -t "${pkgdir}/usr/share/applications" "${srcdir}/${pkgname}.desktop"
+    install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 
     # Installing icons
     for i in 16 32 48 64 128 256 512 1024; do
@@ -51,5 +52,5 @@ package() {
     done
 
     # Copying Licence
-    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
+    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
