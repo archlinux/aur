@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_module_timer
 	pkgdesc = Ppx rewriter that records top-level module startup times
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/janestreet/ppx_module_timer
 	arch = x86_64
 	arch = aarch64
