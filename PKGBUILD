@@ -3,7 +3,7 @@
 _projectname='visitors'
 pkgname="ocaml-$_projectname"
 pkgver='20210608'
-pkgrel='6'
+pkgrel='7'
 pkgdesc='An OCaml syntax extension for generating visitor classes'
 arch=('x86_64' 'aarch64')
 url="https://gitlab.inria.fr/fpottier/$_projectname"

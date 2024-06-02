@@ -1,7 +1,7 @@
 pkgbase = ocaml-visitors
 	pkgdesc = An OCaml syntax extension for generating visitor classes
 	pkgver = 20210608
-	pkgrel = 6
+	pkgrel = 7
 	url = https://gitlab.inria.fr/fpottier/visitors
 	arch = x86_64
 	arch = aarch64
