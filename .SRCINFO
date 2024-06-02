@@ -1,7 +1,7 @@
 pkgbase = ocaml-iso8601
 	pkgdesc = ISO 8601 and RFC 3339 date parsing for OCaml
 	pkgver = 0.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ocaml-community.github.io/ISO8601.ml
 	arch = x86_64
 	license = MIT
