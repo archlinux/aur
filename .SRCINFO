@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_string_conv
 	pkgdesc = Ppx extension for generating of_string & to_string
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/janestreet/ppx_string_conv
 	arch = x86_64
 	arch = aarch64
