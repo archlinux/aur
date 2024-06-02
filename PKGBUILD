@@ -3,16 +3,15 @@
 # Contributor: Evan Bush (PencilShavings) <eb.pencilshavings@protonmail.com>
 
 pkgname=quickemu-git
-pkgver=4.9.2.r468.gfaee282
+pkgver=4.9.4.r168.gd78255b
 pkgrel=2
 pkgdesc="Quickly create and run optimised Windows, macOS and Linux desktop virtual machines"
 arch=(any)
 url="https://github.com/quickemu-project/quickemu"
 license=(MIT)
-depends=(qemu jq python3 cdrtools usbutils spice-gtk swtpm wget xorg-xrandr zsync edk2-ovmf)
+depends=(qemu-desktop jq python3 cdrtools usbutils spice-gtk swtpm xorg-xrandr zsync edk2-ovmf)
 makedepends=(git)
-optdepends=('quickgui: graphical user interface'
-            'aria2: faster downloads')
+optdepends=('quickgui: graphical user interface')
 provides=(quickemu)
 conflicts=(quickemu)
 source=("git+$url.git")
@@ -25,10 +24,11 @@ pkgver() {
 
 package() {
   cd "quickemu"
-  install -Dm755 quickemu   -t "${pkgdir}/usr/bin"
-  install -Dm755 quickget   -t "${pkgdir}/usr/bin"
-  install -Dm755 chunkcheck -t "${pkgdir}/usr/bin"
-  install -Dm755 windowskey -t "${pkgdir}/usr/bin"
+  install -Dm755 quickemu    -t "${pkgdir}/usr/bin"
+  install -Dm755 quickget    -t "${pkgdir}/usr/bin"
+  install -Dm755 quickreport -t "${pkgdir}/usr/bin"
+  install -Dm755 chunkcheck  -t "${pkgdir}/usr/bin"
+  install -Dm755 windowskey  -t "${pkgdir}/usr/bin"
 
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
