@@ -1,7 +1,7 @@
 pkgbase = ocaml-jane-street-headers
 	pkgdesc = Jane Street C header files
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/janestreet/jane-street-headers
 	arch = x86_64
 	arch = aarch64
