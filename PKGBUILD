@@ -29,7 +29,6 @@ build() {
 
 package() {
 	cd "${pkgname}"
-  echo $pkgdir
 	DESTDIR=$pkgdir cmake --install build
 	install -Dm0644 -t "{$pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
