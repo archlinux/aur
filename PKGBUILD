@@ -85,12 +85,18 @@ options=(
   !makeflags
   !strip
 )
-source=(https://archive.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz{,.asc}
-        $pkgname.desktop identity-icons-brand.svg
-        18d19413472f.patch
-        6af7194e2778.patch
-        b1cc62489fae.patch)
-validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
+source=(
+  https://archive.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz{,.asc}
+  $pkgname.desktop identity-icons-brand.svg
+  18d19413472f.patch
+  6af7194e2778.patch
+  b1cc62489fae.patch
+)
+validpgpkeys=(
+  # Mozilla Software Releases <release@mozilla.com>
+  # https://blog.mozilla.org/security/2023/05/11/updated-gpg-key-for-signing-firefox-releases/
+  14F26682D0916CDD81E37B6D61B7B526D98F0353
+)
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
