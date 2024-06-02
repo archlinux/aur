@@ -1,10 +1,11 @@
 # Maintainer: linduxed <linduxed at protonmail dot com>
 # Contributor: Faerbit <faerbit at gmail dot com>
 # Contributor: patrick96 <p dot ziegler96 at gmail dot com>
+# Contributor: esskayesss <ess at esskayesss dot dev>
 
 _pkgname=exercism
 pkgname="${_pkgname}-bin"
-pkgver=3.3.0
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="Command line client for exercism.io"
 arch=("i686" "x86_64")
@@ -16,9 +17,9 @@ replaces=("exercism-cli")
 license=("MIT")
 
 source_i686=(${_rel_url}/exercism-${pkgver}-linux-i386.tar.gz)
-sha256sums_i686=('85376b1b36e09bb3ce09240205167fea5987f46b9fdca9581ec8ae642ef99fab')
+sha256sums_i686=('d54a520e1cacfc8ce69579a730990a0c13635496da17c81e6d0bfe4505a29f0c')
 source_x86_64=(${_rel_url}/exercism-${pkgver}-linux-x86_64.tar.gz)
-sha256sums_x86_64=('4be098894c47fd1aa7886946cac31ec7df73bf9c1979ad1c9ec403a79074c1dd')
+sha256sums_x86_64=('492b536d7e9ff909beb0e3f866af1b0ace48e5ae76235200c2add67db19a2cf3')
 
 package(){
     cd "$srcdir"
