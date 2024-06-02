@@ -6,9 +6,9 @@ pkgdesc="raw image converter ART (forked from RawTherapee with ease of use in mi
 arch=('i686' 'x86_64' 'aarch64')
 url="https://bitbucket.org/agriggio/art/wiki/Home"
 license=('GPL-3.0-only')
-depends=('opencolorio' 'lensfun' 'libraw' 'exiv2' 'fftw' 'gtk3' 'glibmm' 'gtkmm3' 'lcms2' 'libcanberra' 'libiptcdata' 'desktop-file-utils' 'mimalloc' 'openmp' 'openexr' 'ctl') 
+depends=('opencolorio' 'lensfun' 'libraw' 'exiv2' 'fftw' 'gtk3' 'glibmm' 'gtkmm3' 'lcms2' 'libcanberra' 'libiptcdata' 'desktop-file-utils' 'mimalloc' 'openmp' 'openexr') 
 optdepends=('perl-image-exiftool: metadata support for CR3 images' 'art-rawconverter-imageio: add support for additional image formats' 'art-rawconverter-ctlscripts: CTL scripts for advanced color transformations' 'lcms2-ff: lcms2 with fast-float plugin for improved export speed' )
-makedepends=('pkgconf' 'cmake' 'git' 'gcc' 'hicolor-icon-theme' 'fakeroot')
+makedepends=('pkgconf' 'cmake' 'make' 'git' 'gcc' 'hicolor-icon-theme' 'fakeroot')
 conflicts=('art-rawconverter-git')
 source=("${pkgname}_${pkgver}::git+https://bitbucket.org/agriggio/art.git#tag=${pkgver}")
 sha256sums=('SKIP')
@@ -26,8 +26,8 @@ build() {
 		-DENABLE_OCIO="ON" \
 		-DOPTION_OMP="ON" \
 		-DBUILD_SHARED="ON" \
-		-DENABLE_CTL="ON" \
-		-DCTL_INCLUDE_DIR="/usr/include/CTL"
+#		-DENABLE_CTL="ON" \
+#		-DCTL_INCLUDE_DIR="/usr/include/CTL"
 
 	make
 }
