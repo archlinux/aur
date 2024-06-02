@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=HamClock
+Exec=hamclock
+Icon=/usr/share/icons/hamclock.png
+Terminal=false
+Type=Application
+Categories=HamRadio
