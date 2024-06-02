@@ -3,13 +3,14 @@
 
 pkgname='perl-text-microtemplate'
 pkgver='0.24'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Micro template engine with Perl5 language"
 arch=('any')
 license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl>=5.8.0')
 makedepends=('perl-module-install')
+checkdepends=('perl-io-stringy')
 url='http://search.cpan.org/dist/Text-MicroTemplate'
 source=('http://search.cpan.org/CPAN/authors/id/K/KA/KAZUHO/Text-MicroTemplate-0.24.tar.gz')
 md5sums=('8dcce521bace009b87a30a445da15000')

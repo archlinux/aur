@@ -1,11 +1,12 @@
 pkgbase = perl-text-microtemplate
 	pkgdesc = Micro template engine with Perl5 language
 	pkgver = 0.24
-	pkgrel = 2
+	pkgrel = 3
 	url = http://search.cpan.org/dist/Text-MicroTemplate
 	arch = any
 	license = Artistic-1.0-Perl
 	license = GPL-1.0-or-later
+	checkdepends = perl-io-stringy
 	makedepends = perl-module-install
 	depends = perl>=5.8.0
 	options = !emptydirs
