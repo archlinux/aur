@@ -4,7 +4,7 @@
 # Contributor: beatgammit
 
 pkgname=servo-git
-pkgver=r47479.92196d985dc
+pkgver=r48452.2ca6c4b52be
 pkgrel=1
 pkgdesc='Parallel Browser Project: web browser written in Rust'
 arch=(x86_64 i686)
@@ -25,8 +25,7 @@ depends=(bzip2
          ttf-font
          xcb-util)
 install="$pkgname.install"
-makedepends=(autoconf2.13
-             cargo
+makedepends=(rustup # doesn't work with system rust
              clang
              cmake
              curl
@@ -39,6 +38,7 @@ makedepends=(autoconf2.13
              python-virtualenv)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
+options=('!lto') # lto breaks linking
 backup=("etc/profile.d/${pkgname%-git}".{csh,sh})
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
@@ -58,6 +58,11 @@ build() {
 	cd "$pkgname"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+	# was failing with some error and said to install these componenets
+	# "magically" works after this
+	rustup component add rust-src rustc-dev llvm-tools-preview
+	# Fix: error: could not execute process `crown -vV` (never executed)
+	./mach bootstrap
 	./mach build --release
 }
 
