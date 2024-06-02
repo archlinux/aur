@@ -92,6 +92,7 @@ build() {
 
   cd docs
   make latex
+  make html
 }
 
 check() {
