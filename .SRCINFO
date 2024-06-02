@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_stable
 	pkgdesc = Stable types conversions generator
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/janestreet/ppx_stable
 	arch = x86_64
 	arch = aarch64
