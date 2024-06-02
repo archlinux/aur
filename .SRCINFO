@@ -1,8 +1,8 @@
 pkgbase = firedragon-appmenu
-	pkgdesc = metapackage - migrate to firedragon-bin
+	pkgdesc = metapackage - migrate to firedragon
 	pkgver = 120
 	pkgrel = 1
 	arch = any
 
 pkgname = firedragon-appmenu
-	depends = firedragon-bin
+	depends = firedragon

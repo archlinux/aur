@@ -1,4 +1,4 @@
-_newpkg='firedragon-bin'
+_newpkg='firedragon'
 pkgname='firedragon-appmenu'
 pkgver=120
 pkgrel=1
