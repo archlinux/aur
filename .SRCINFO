@@ -1,0 +1,19 @@
+pkgbase = python-browserxt
+	pkgdesc = A simple eXTensible Browser runner
+	pkgver = 0.2.1
+	pkgrel = 0
+	epoch = 0
+	url = https://github.com/punkops/browserxt
+	arch = any
+	license = MPL2
+	checkdepends = git
+	checkdepends = python-pytest
+	checkdepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-pdm
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/b/browserxt/browserxt-0.2.1.tar.gz
+	sha256sums = 0c6d5fd9c03d63847127552499e2b157038f335f3aa568c0f8a5688df92633e4
+
+pkgname = python-browserxt
