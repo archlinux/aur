@@ -6,7 +6,7 @@
 pkgname='offpunk-git'
 _pkgname='offpunk'
 epoch=5
-pkgver=2.2.r10.g80c096c
+pkgver=2.2.r11.g0252349
 pkgrel=1
 pkgdesc='Fork of the command-line Gemini client AV-98 with added offline capabilities (built from latest commit)'
 arch=('any')
@@ -36,9 +36,10 @@ optdepends=(
   'python-requests: for HTTP support'
   'python-setproctitle: allows offpunk to change its process title'
   'timg: view images and videos in the terminal'
-  'wl-clipboard: for clipboard copy/paste under Wayland'
+  'wl-clipboard: copies text to  the Wayland clipboard'
   'xdg-utils: xdg-open opens a URL in the preferred application'
-  'xsel: copies text to and from the clipboard'
+  'xclip: copies text to the X11 clipboard'
+  'xsel: copies text to the X11 clipboard'
 )
 provides=('offpunk')
 conflicts=('offpunk')
