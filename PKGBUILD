@@ -4,13 +4,12 @@
 
 pkgname=pygtk
 pkgver=2.24.0
-pkgrel=13
+pkgrel=14
 pkgdesc="Python bindings for the GTK widget set"
 url='https://wiki.gnome.org/Projects/PyGTK'
 arch=('x86_64' 'aarch64')
 license=('LGPL-2.1-or-later')
-depends=('python2-cairo' 'python2-gobject2')
-optdepends=('python2-numpy' 'libglade')
+depends=('python2-cairo' 'python2-gobject2' 'gtk2' 'python2-numpy' 'libglade')
 source=("${pkgname}-${pkgver}.tar.bz2::https://download.gnome.org/sources/${pkgname}/${pkgver%.*}/${pkgname}-${pkgver}.tar.bz2"
         'drop-pangofont.patch'
         'python27.patch'
