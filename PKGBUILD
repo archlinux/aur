@@ -2,7 +2,7 @@
 _projectname='mdx'
 pkgname="ocaml-$_projectname"
 pkgver='2.4.1'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='Executable code blocks inside markdown files for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/realworldocaml/$_projectname"
