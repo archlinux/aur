@@ -5,13 +5,13 @@
 pkgname=basilisk
 pkgver=2024.05.11
 platform=RB_20240423
-pkgrel=1
+pkgrel=2
 pkgdesc="A XUL-based web-browser demonstrating the Unified XUL Platform (UXP)"
 arch=('x86_64')
 url="https://www.basilisk-browser.org/"
 license=('MPL' 'GPL' 'LGPL')
 depends=('gtk3' 'gtk2' 'libxt' 'mime-types' 'alsa-lib' 'ffmpeg' 'ttf-font')
-makedepends=('unzip' 'zip' 'python2' 'python2-dbus' 'yasm' 'mesa' 'autoconf2.13' 'gcc10')
+makedepends=('unzip' 'zip' 'python2' 'yasm' 'mesa' 'autoconf2.13' 'gcc13')
 options=('!emptydirs')
 source=("https://repo.palemoon.org/Basilisk-Dev/Basilisk/archive/v${pkgver}.tar.gz"
         "https://repo.palemoon.org/MoonchildProductions/UXP/archive/${platform}.tar.gz"
@@ -105,14 +105,14 @@ EOF
 build() {
   cd "$srcdir/$pkgname"
 
-  export CC=gcc-10
+  export CC=gcc-13
   ./mach build
 }
 
 package() {
   cd "$srcdir/$pkgname"
 
-  export CC=gcc-10
+  export CC=gcc-13
   DESTDIR="$pkgdir" ./mach install
 
   # Install icons and .desktop for menu entry
