@@ -1,0 +1,25 @@
+pkgbase = quickshell
+	pkgdesc = Simple and flexbile QtQuick based desktop shell toolkit.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/outfoxxed/quickshell
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = ninja
+	makedepends = cmake
+	makedepends = pkg-config
+	makedepends = just
+	depends = qt6ct
+	depends = qt6-declarative
+	depends = qt6-base
+	depends = jemalloc
+	optdepends = libxcb: X11 support
+	optdepends = wayland-protocols: Wayland support
+	optdepends = wayland: Wayland support
+	optdepends = hyprland: Hyprland support
+	optdepends = libpipewire: Pipewire support
+	source = git+https://github.com/outfoxxed/quickshell.git
+	sha256sums = SKIP
+
+pkgname = quickshell
