@@ -1,7 +1,7 @@
 # Maintainer: Antoine POPINEAU <antoine at popineau dot eu>
 
 pkgname=greetd-tuigreet-git
-pkgver=0.9.0.r0.g96f7d28
+pkgver=0.9.1.r0.g86bf7bb
 pkgrel=0
 
 pkgdesc='A console UI greeter for greetd'
