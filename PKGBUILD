@@ -4,7 +4,7 @@
 _srcname=ocamlgraph
 _pkgname=ocaml-$_srcname
 pkgname="${_pkgname}-git"
-pkgver=2.1.0.r12.g4c0fbca
+pkgver=2.1.0.r14.g75533f6
 pkgrel=1
 pkgdesc="Graph library for OCaml"
 arch=('x86_64')

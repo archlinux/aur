@@ -1,6 +1,6 @@
 pkgbase = ocaml-ocamlgraph-git
 	pkgdesc = Graph library for OCaml
-	pkgver = 2.1.0.r12.g4c0fbca
+	pkgver = 2.1.0.r14.g75533f6
 	pkgrel = 1
 	url = https://github.com/backtracking/ocamlgraph
 	arch = x86_64
