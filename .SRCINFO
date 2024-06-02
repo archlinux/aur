@@ -1,0 +1,12 @@
+pkgbase = taskhub
+	pkgdesc = a cli-based todo-list application written in c++
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/utkarshkrsingh/taskhub
+	arch = x86_64
+	license = BSD2
+	makedepends = git
+	source = taskhub::git+https://github.com/utkarshkrsingh/taskhub.git
+	sha256sums = SKIP
+
+pkgname = taskhub
