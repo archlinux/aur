@@ -2,7 +2,7 @@
 _projectname='gel'
 pkgname="ocaml-$_projectname"
 pkgver='0.17.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='A library to mark non-record fields global'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
