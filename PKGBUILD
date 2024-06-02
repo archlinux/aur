@@ -2,7 +2,7 @@
 _projectname='dtoa'
 pkgname="ocaml-$_projectname"
 pkgver='0.3.3'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='double-to-ascii ocaml implementation'
 arch=('x86_64' 'aarch64')
 url="https://github.com/flow/$pkgname"
@@ -12,7 +12,7 @@ makedepends=('dune>=2.0.0')
 checkdepends=('ocaml-ounit>=2.0.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('f5d9a287637c7a32c48ad2bbb0d7420c1b59fca26e2569b234d8f0e7b2d6b99d3f3cf0f2755e50d51c7453422593c2be6a54a90f49dfd672622c04f52c92359e')
+b2sums=('514b8f3da2a8f8e362847a6dd006e480a6a4d257db7ec02b3f9bf4959283d99e7d173f2ef3fe7599d6426e44d3263ece568e9c5bb0371dc7d9cd9ccb52735386')
 
 _sourcedirectory="$pkgname-$pkgver"
 

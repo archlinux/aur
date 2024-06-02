@@ -1,7 +1,7 @@
 pkgbase = ocaml-dtoa
 	pkgdesc = double-to-ascii ocaml implementation
 	pkgver = 0.3.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/flow/ocaml-dtoa
 	arch = x86_64
 	arch = aarch64
@@ -11,6 +11,6 @@ pkgbase = ocaml-dtoa
 	depends = ocaml>=4.01.0
 	options = !strip
 	source = ocaml-dtoa-0.3.3.tar.gz::https://github.com/flow/ocaml-dtoa/archive/v0.3.3.tar.gz
-	sha512sums = f5d9a287637c7a32c48ad2bbb0d7420c1b59fca26e2569b234d8f0e7b2d6b99d3f3cf0f2755e50d51c7453422593c2be6a54a90f49dfd672622c04f52c92359e
+	b2sums = 514b8f3da2a8f8e362847a6dd006e480a6a4d257db7ec02b3f9bf4959283d99e7d173f2ef3fe7599d6426e44d3263ece568e9c5bb0371dc7d9cd9ccb52735386
 
 pkgname = ocaml-dtoa
