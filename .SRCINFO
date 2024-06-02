@@ -1,0 +1,19 @@
+pkgbase = menu-qalc-wayland-git
+	pkgdesc = A calculator for Wofi/fuzzel/dmenu(2) using libqalculate
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/ClemaX/menu-qalc-wayland
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = libqalculate
+	depends = xclip
+	optdepends = dmenu
+	optdepends = wofi
+	optdepends = fuzzel
+	conflicts = menu-calc
+	conflicts = menu-qalc
+	source = git+https://github.com/ClemaX/menu-qalc-wayland.git
+	sha256sums = SKIP
+
+pkgname = menu-qalc-wayland-git
