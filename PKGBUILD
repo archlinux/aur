@@ -6,13 +6,13 @@
 
 pkgname=winff
 pkgver=1.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc='GUI for ffmpeg written in Lazarus/GTK+2'
 url='https://github.com/WinFF/winff/'
 license=('GPL3')
 arch=('x86_64')
 depends=('ffmpeg' 'gtk2')
-makedepends=('lazarus' 'lazarus-gtk2' 'gendesk' 'tar' 'git')
+makedepends=('lazarus' 'gendesk' 'tar' 'git')
 source=("git+https://github.com/WinFF/winff.git#tag=winff-$pkgver")
 md5sums=('SKIP')
 

@@ -1,12 +1,11 @@
 pkgbase = winff
 	pkgdesc = GUI for ffmpeg written in Lazarus/GTK+2
 	pkgver = 1.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/WinFF/winff/
 	arch = x86_64
 	license = GPL3
 	makedepends = lazarus
-	makedepends = lazarus-gtk2
 	makedepends = gendesk
 	makedepends = tar
 	makedepends = git
