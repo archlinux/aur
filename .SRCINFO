@@ -1,7 +1,7 @@
 pkgbase = imediff
 	pkgdesc = ncurses-based 2/3 file merge tool
 	pkgver = 2.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/osamuaoki/imediff
 	arch = any
 	license = GPL2

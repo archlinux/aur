@@ -2,7 +2,7 @@
 
 pkgname=imediff
 pkgver=2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="ncurses-based 2/3 file merge tool"
 arch=('any')
 url="https://github.com/osamuaoki/imediff"
