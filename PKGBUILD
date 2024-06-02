@@ -2,14 +2,14 @@
 # Contributor: Wes Jackson <icebal dot 7 at gmail dot com>
 
 pkgname=nfs-ganesha-git
-pkgver=5.5.3.r0.g2a57b6d53
+pkgver=6.dev.13.r0.g7e2b1f378
 pkgrel=1
 pkgdesc="NFS and 9P protocols in user mode."
 arch=(x86_64 i686 armv7h aarch64)
 url="http://nfs-ganesha.github.io/"
 license=(GPL3)
-depends=(glibc nfsidmap libcap krb5 util-linux-libs e2fsprogs xfsprogs dbus libwbclient jemalloc liburcu acl btrfs-progs)
-makedepends=(cmake git lsb-release doxygen python-sphinx graphviz)
+depends=(glibc nfsidmap libcap krb5 util-linux-libs e2fsprogs dbus libwbclient jemalloc liburcu acl btrfs-progs)
+makedepends=(cmake git lsb-release doxygen python-sphinx graphviz lsb-release)
 provides=(nfs-ganesha)
 conflicts=(nfs-ganesha)
 source=("git+https://github.com/nfs-ganesha/nfs-ganesha.git"
@@ -30,16 +30,13 @@ prepare() {
   git submodule init
   git config submodule.src/libntirpc.url "${srcdir}/ntirpc"
   git -c protocol.file.allow=always  submodule update
-
-  cd src/libntirpc
-  patch -Np1 -i ${srcdir}/nfs-ganesha-libntirpc-assert.h-fix.patch
 }
 
 build() {
   cmake -B build -S "nfs-ganesha/src" -Wno-dev \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DUSE_MAN_PAGE=OFF \
+    -DUSE_MAN_PAGE=ON \
     -DUSE_RADOS_RECOV=OFF \
     -DRADOS_URLS=OFF \
     -DUSE_FSAL_LUSTRE=OFF \
