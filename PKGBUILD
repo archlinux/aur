@@ -1,8 +1,10 @@
-# Maintainer: Michael Christoff <wxfanatic@gmail.com>
+# Maintainer: Cash Brunow <1apfuputl@mozmail.com>
+# Contributor: Michael Christoff <wxfanatic@gmail.com>
 # Developer: Dan Paulat
 
+
 pkgname=supercell-wx-bin
-pkgver=0.2.2
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="A NEXRAD Level 2 and Level 3 radar viewing application (Stable Build)"
 arch=('x86_64')
@@ -12,7 +14,7 @@ makedepends=('jq' 'unzip')
 depends=('xcb-util' 'xcb-util-cursor' 'mesa')
 provides=("supercell-wx")
 conflicts=('supercell-wx')
-source=("https://github.com/dpaulat/supercell-wx/releases/download/v${pkgver}-release/supercell-wx-linux-x64-v${pkgver}.tar.gz")
+source=("https://github.com/dpaulat/supercell-wx/releases/download/v${pkgver}-release/supercell-wx-v${pkgver}-linux-x64.tar.gz")
 md5sums=('SKIP')
 
 pkgver() {
@@ -21,7 +23,7 @@ pkgver() {
 
 package() {
     # Extract the tar.gz file
-    tar -xf "supercell-wx-linux-x64-v${pkgver}.tar.gz" -C "${srcdir}"
+    tar -xf "supercell-wx-v${pkgver}-linux-x64.tar.gz" -C "${srcdir}"
 
     # Confirming the internal structure is correct
     if [[ ! -d "${srcdir}/supercell-wx/bin" || ! -d "${srcdir}/supercell-wx/lib" || ! -d "${srcdir}/supercell-wx/plugins" ]]; then
