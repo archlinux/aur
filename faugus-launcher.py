@@ -11,7 +11,7 @@ import gi
 gi.require_version('Gtk', '3.0')
 gi.require_version('Gdk', '3.0')
 
-from gi.repository import Gtk, Gdk
+from gi.repository import Gtk, Gdk, GdkPixbuf, GLib
 
 
 class Main(Gtk.Window):
@@ -361,13 +361,48 @@ class Main(Gtk.Window):
         if game.gamemode:
             gamemode = "gamemoderun"
 
-        # Check if the icon directory exists and create if it doesn't
-        icon_directory = os.path.expanduser("~/.config/faugus-launcher/icons/")
-        if not os.path.exists(icon_directory):
-            os.makedirs(icon_directory)
+        # Check if the icon file exists
+        icons_path = os.path.expanduser(f"~/.config/faugus-launcher/icons/")
+        new_icon_path = os.path.join(icons_path, f"{title_formatted}.ico")
+        if not os.path.exists(new_icon_path):
+            # Check if the icon directory exists and create if it doesn't
+            icon_directory = os.path.expanduser(f"~/.config/faugus-launcher/icons/{title_formatted}/")
+            if not os.path.exists(icon_directory):
+                os.makedirs(icon_directory)
 
-        # Execute wrestool command to extract icon
-        os.system(f'wrestool -x -t14 "{path}" > ~/.config/faugus-launcher/icons/{title_formatted}.ico')
+            # Execute 7z command to extract icon
+            os.system(f'7z e "{path}" -o{icon_directory} -r -aoa')
+
+            # Open file dialog to select .ico file
+            dialog = Gtk.FileChooserDialog(title="Please choose an .ico file", action=Gtk.FileChooserAction.OPEN)
+            dialog.add_buttons(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL, Gtk.STOCK_OPEN, Gtk.ResponseType.OK)
+
+            # Add a filter to limit selection to .ico files
+            filter_ico = Gtk.FileFilter()
+            filter_ico.set_name("Image files")
+            filter_ico.add_mime_type("image/*")  # Other image formats
+            dialog.add_filter(filter_ico)
+
+            # Set the initial directory to the icon directory
+            dialog.set_current_folder(icon_directory)
+
+            # Connect signal to update preview widget when file selection changes
+            dialog.connect("update-preview", self.update_preview)
+
+            response = dialog.run()
+            if response == Gtk.ResponseType.OK:
+                file_path = dialog.get_filename()
+            else:
+                dialog.destroy()
+                return
+
+            dialog.destroy()
+
+            # Move and rename the icon file
+            shutil.move(file_path, os.path.expanduser(f"{icons_path}{title_formatted}.ico"))
+
+            # Delete the folder after the icon is moved
+            shutil.rmtree(icon_directory)
 
         command = (f'{mangohud} '
                    f'WINEPREFIX={prefix} '
@@ -378,13 +413,13 @@ class Main(Gtk.Window):
 
         # Create a .desktop file
         desktop_file_content = f"""[Desktop Entry]
-Name={game.title}
-Exec=sh -c '{command}'
-Icon={os.path.expanduser("~/.config/faugus-launcher/icons/")}{title_formatted}.ico
-Type=Application
-Categories=Game;
-Path={os.path.expanduser("~/.config/faugus-launcher/")}
-"""
+    Name={game.title}
+    Exec=sh -c '{command}'
+    Icon={new_icon_path}
+    Type=Application
+    Categories=Game;
+    Path={os.path.expanduser("~/.config/faugus-launcher/")}
+    """
 
         # Check if the destination directory exists and create if it doesn't
         desktop_directory = os.path.expanduser("~/.local/share/applications/")
@@ -402,6 +437,36 @@ Path={os.path.expanduser("~/.config/faugus-launcher/")}
         # Copy the shortcut to Desktop
         desktop_shortcut_path = os.path.expanduser(f"~/Desktop/{title_formatted}.desktop")
         shutil.copy(desktop_file_path, desktop_shortcut_path)
+
+    def update_preview(self, dialog):
+        # Updates the preview widget with the selected image's thumbnail
+        file_path = dialog.get_preview_filename()
+        if file_path:
+            try:
+                # Create an image widget for the thumbnail
+                pixbuf = GdkPixbuf.Pixbuf.new_from_file(file_path)
+
+                # Resize the thumbnail if it's too large, maintaining the aspect ratio
+                max_width = 400
+                max_height = 400
+                width = pixbuf.get_width()
+                height = pixbuf.get_height()
+
+                if width > max_width or height > max_height:
+                    # Calculate the new width and height while maintaining the aspect ratio
+                    ratio = min(max_width / width, max_height / height)
+                    new_width = int(width * ratio)
+                    new_height = int(height * ratio)
+                    pixbuf = pixbuf.scale_simple(new_width, new_height, GdkPixbuf.InterpType.BILINEAR)
+
+                image = Gtk.Image.new_from_pixbuf(pixbuf)
+                dialog.set_preview_widget(image)
+                dialog.set_preview_widget_active(True)
+                dialog.get_preview_widget().set_size_request(max_width, max_height)
+            except GLib.Error:
+                dialog.set_preview_widget_active(False)
+        else:
+            dialog.set_preview_widget_active(False)
 
     def remove_shortcut(self, game):
         # Remove existing shortcut if it exists
