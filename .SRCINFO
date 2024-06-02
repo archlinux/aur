@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_bin_prot
 	pkgdesc = Generation of bin_prot readers and writers from types
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/janestreet/ppx_bin_prot
 	arch = x86_64
