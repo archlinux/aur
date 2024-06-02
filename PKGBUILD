@@ -2,7 +2,7 @@
 _projectname='base_quickcheck'
 pkgname="ocaml-$_projectname"
 pkgver='0.17.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Randomized testing framework, designed for compatibility with Base'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
