@@ -3,7 +3,7 @@
 _projectname='core'
 pkgname="ocaml-$_projectname"
 pkgver='0.17.1'
-pkgrel='1'
+pkgrel='2'
 epoch='1'
 pkgdesc="Industrial strength alternative to OCaml's standard library"
 arch=('x86_64' 'aarch64')

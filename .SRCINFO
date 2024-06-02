@@ -1,7 +1,7 @@
 pkgbase = ocaml-core
 	pkgdesc = Industrial strength alternative to OCaml's standard library
 	pkgver = 0.17.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/janestreet/core
 	arch = x86_64
