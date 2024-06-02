@@ -2,7 +2,7 @@
 _projectname='async_kernel'
 pkgname="ocaml-$_projectname"
 pkgver='0.17.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Monadic concurrency library for OCaml (core data structures)'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
