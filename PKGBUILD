@@ -2,7 +2,7 @@
 _projectname='mirage-clock'
 pkgname="ocaml-$_projectname"
 pkgver='4.2.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Libraries and module types for portable clocks'
 arch=('x86_64' 'aarch64')
 url="https://github.com/mirage/$_projectname"
@@ -11,7 +11,7 @@ depends=('ocaml>=4.08.0')
 makedepends=('dune>=2.8.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('7c32adf30505fe35a1313c162731b96e283a883dbc18d530344830a1f76d3397a6dd3b76a4ac3024aa02ff917d228c953c9ebdfeeae1f48686e776007234edda')
+b2sums=('37c701a92ec8cdf71e9d297ec09992f313f1b3637146988b8fac3e7c6e21be4eb2ebe622fdf1ae52612b2cf51e6cbfa87750c62bf68f126d3e61789d461a4a31')
 
 _sourcedirectory="$_projectname-$pkgver"
 

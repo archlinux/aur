@@ -1,7 +1,7 @@
 pkgbase = ocaml-mirage-clock
 	pkgdesc = Libraries and module types for portable clocks
 	pkgver = 4.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mirage/mirage-clock
 	arch = x86_64
 	arch = aarch64
@@ -10,6 +10,6 @@ pkgbase = ocaml-mirage-clock
 	depends = ocaml>=4.08.0
 	options = !strip
 	source = ocaml-mirage-clock-4.2.0.tar.gz::https://github.com/mirage/mirage-clock/archive/v4.2.0.tar.gz
-	sha512sums = 7c32adf30505fe35a1313c162731b96e283a883dbc18d530344830a1f76d3397a6dd3b76a4ac3024aa02ff917d228c953c9ebdfeeae1f48686e776007234edda
+	b2sums = 37c701a92ec8cdf71e9d297ec09992f313f1b3637146988b8fac3e7c6e21be4eb2ebe622fdf1ae52612b2cf51e6cbfa87750c62bf68f126d3e61789d461a4a31
 
 pkgname = ocaml-mirage-clock
