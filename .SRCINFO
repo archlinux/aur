@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppxlib_jane
 	pkgdesc = Utilities for working with Jane Street AST constructs
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/janestreet/ppxlib_jane
 	arch = x86_64
 	arch = aarch64

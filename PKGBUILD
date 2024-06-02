@@ -2,7 +2,7 @@
 _projectname='ppxlib_jane'
 pkgname="ocaml-$_projectname"
 pkgver='0.17.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Utilities for working with Jane Street AST constructs'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
