@@ -1,7 +1,7 @@
 pkgbase = ocaml-containers
 	pkgdesc = A lightweight, modular standard library extension, string library, and interfaces to various libraries for OCaml
 	pkgver = 3.13.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/c-cube/ocaml-containers
 	arch = x86_64
 	arch = aarch64
