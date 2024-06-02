@@ -7,7 +7,7 @@ pkgdesc="Navicat Premium is a multi-connection database development tool. (Chine
 arch=(x86_64)
 url='https://www.navicat.com.cn/navicat-17-highlights'
 license=('NOASSERTION')
-source_x86_64=("navicat17-premium-cs-$CARCH-$pkgver.AppImage::https://www.navicat.com.cn/download/direct-download?product=navicat17-premium-cs-x86_64.AppImage&location=1")
+source_x86_64=("navicat17-premium-cs-$CARCH-$pkgver.AppImage::https://dn.navicat.com/download/navicat17-premium-cs-x86_64.AppImage")
 sha256sums_x86_64=('31b8eca01cec52eadfe37a0c5c2d9bcd52399893870aa6fb19d012dfc145c75d')
 
 package() {
