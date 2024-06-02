@@ -1,7 +1,7 @@
 pkgbase = ocaml-jst-config
 	pkgdesc = Compile-time configuration for Jane Street libraries
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/janestreet/jst-config
 	arch = x86_64
 	arch = aarch64

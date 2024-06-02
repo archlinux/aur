@@ -2,7 +2,7 @@
 _projectname='jst-config'
 pkgname="ocaml-$_projectname"
 pkgver='0.17.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Compile-time configuration for Jane Street libraries'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
