@@ -1,7 +1,7 @@
 pkgbase = ocaml-trie
 	pkgdesc = Strict impure trie tree
 	pkgver = 1.0.0
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/kandu/trie
 	arch = x86_64
 	arch = aarch64
@@ -10,6 +10,6 @@ pkgbase = ocaml-trie
 	depends = ocaml>=4.02.0
 	options = !strip
 	source = ocaml-trie-1.0.0.tar.gz::https://github.com/kandu/trie/archive/1.0.0.tar.gz
-	sha512sums = 1921a42486a0a221e546507287cbf28ccae5462abe55817269517b7b92e19f35031f2d0fba2b1890b97236d6fff11be9d76ade317ae1dfa1089bd4740a46786f
+	b2sums = 3f58dbe33686baca2290a413b7d069b8d97ec69546217cefbb6404877b1fec129824da66fbbd6774e069285960ad9dc12380ecd828135ea50d86caa951e0df8b
 
 pkgname = ocaml-trie

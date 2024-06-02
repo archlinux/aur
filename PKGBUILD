@@ -2,7 +2,7 @@
 _projectname='trie'
 pkgname="ocaml-$_projectname"
 pkgver='1.0.0'
-pkgrel='7'
+pkgrel='8'
 pkgdesc='Strict impure trie tree'
 arch=('x86_64' 'aarch64')
 url="https://github.com/kandu/$_projectname"
@@ -11,7 +11,7 @@ depends=('ocaml>=4.02.0')
 makedepends=('dune>=1.0.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('1921a42486a0a221e546507287cbf28ccae5462abe55817269517b7b92e19f35031f2d0fba2b1890b97236d6fff11be9d76ade317ae1dfa1089bd4740a46786f')
+b2sums=('3f58dbe33686baca2290a413b7d069b8d97ec69546217cefbb6404877b1fec129824da66fbbd6774e069285960ad9dc12380ecd828135ea50d86caa951e0df8b')
 
 _sourcedirectory="$_projectname-$pkgver"
 
