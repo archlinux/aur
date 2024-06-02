@@ -9,7 +9,6 @@ arch=('any')
 license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl')
-makedepends=()
 url='http://search.cpan.org/dist/Data-Validate'
 source=('http://search.cpan.org/CPAN/authors/id/S/SO/SONNEN/Data-Validate-0.09.tar.gz')
 md5sums=('5f7bbc378e2e16786941335a0d67b423')
