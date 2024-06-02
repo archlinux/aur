@@ -1,7 +1,7 @@
 pkgbase = ocaml-ocaml_intrinsics_kernel
 	pkgdesc = OCaml interface to operations that have dedicated hardware instructions on some micro-architectures
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/janestreet/ocaml_intrinsics_kernel
 	arch = x86_64
 	arch = aarch64
