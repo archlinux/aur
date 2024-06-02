@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_base
 	pkgdesc = Base set of ppx rewriters
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/janestreet/ppx_base
 	arch = x86_64
 	arch = aarch64
