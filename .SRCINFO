@@ -1,7 +1,7 @@
 pkgbase = ocaml-tyxml
 	pkgdesc = A library for building correct HTML and SVG documents for OCaml
 	pkgver = 4.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ocsigen/tyxml
 	arch = x86_64
 	arch = aarch64

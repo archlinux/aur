@@ -2,7 +2,7 @@
 _projectname='tyxml'
 pkgname="ocaml-$_projectname"
 pkgver='4.6.0'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='A library for building correct HTML and SVG documents for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocsigen/$_projectname"
