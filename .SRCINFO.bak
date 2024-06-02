@@ -9,6 +9,6 @@ pkgbase = g-ls
 	makedepends = go
 	backup = etc/g-ls/config.conf
 	source = g-0.28.2.tar.gz::https://github.com/Equationzhao/g/archive/refs/tags/v0.28.2.tar.gz
-	sha256sums = '05df40665ea8c402c9d76b29269edb721758e9913bc03d173e7e84fa7a0a2ab6'
+	sha256sums = ''
 
 pkgname = g-ls
