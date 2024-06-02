@@ -1,24 +1,25 @@
 pkgbase = dialect
 	pkgdesc = A translation app for GNOME.
-	pkgver = 2.3.0
-	pkgrel = 2
+	pkgver = 2.4.0
+	pkgrel = 1
 	url = https://apps.gnome.org/Dialect
 	arch = any
 	license = GPL-3.0-or-later
-	checkdepends = appstream-glib
 	makedepends = blueprint-compiler
 	makedepends = git
 	makedepends = gobject-introspection
 	makedepends = meson
 	depends = gst-python
 	depends = libadwaita
+	depends = libsecret
 	depends = libsoup3
+	depends = python-beautifulsoup4
 	depends = python-dbus
 	depends = python-gobject
 	depends = python-gtts
-	source = git+https://github.com/dialect-app/dialect.git#tag=2.3.0
+	source = git+https://github.com/dialect-app/dialect.git#tag=2.4.0
 	source = git+https://github.com/dialect-app/po.git
-	sha256sums = da2f83db0e9ff2687600cdfd4b1b0930e0f406fce85b9dec3232f216bc3e8db3
+	sha256sums = 5d7d03ffb48532c85ffdc12483c0b83d94cfe08b5269263387e778e337d99a49
 	sha256sums = SKIP
 
 pkgname = dialect

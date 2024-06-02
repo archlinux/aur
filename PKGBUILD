@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Mufeed Ali <lastweakness@tuta.io>
 pkgname=dialect
-pkgver=2.3.0
-pkgrel=2
+pkgver=2.4.0
+pkgrel=1
 pkgdesc="A translation app for GNOME."
 arch=('any')
 url="https://apps.gnome.org/Dialect"
@@ -10,7 +10,9 @@ license=('GPL-3.0-or-later')
 depends=(
   'gst-python'
   'libadwaita'
+  'libsecret'
   'libsoup3'
+  'python-beautifulsoup4'
   'python-dbus'
   'python-gobject'
   'python-gtts'
@@ -21,12 +23,9 @@ makedepends=(
   'gobject-introspection'
   'meson'
 )
-checkdepends=(
-  'appstream-glib'
-)
 source=("git+https://github.com/dialect-app/dialect.git#tag=$pkgver"
         'git+https://github.com/dialect-app/po.git')
-sha256sums=('da2f83db0e9ff2687600cdfd4b1b0930e0f406fce85b9dec3232f216bc3e8db3'
+sha256sums=('5d7d03ffb48532c85ffdc12483c0b83d94cfe08b5269263387e778e337d99a49'
             'SKIP')
 
 prepare() {
