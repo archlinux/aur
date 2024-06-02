@@ -1,10 +1,10 @@
-# Maintainer: Vlad Glagolev <scm(at)vaygr(dot)net>
+# Maintainer: Axel McLaren <scm(at)axml(dot)uk>
 
 pkgname=autotype
 _commit=f5b6527
 _pkgver=1.0.0
 pkgver=1.0.0.r6.f5b6527
-pkgrel=2
+pkgrel=3
 pkgdesc="Unicode-friendly tool for faking key presses to type strings on X11"
 arch=('any')
 url="https://github.com/gemdude46/autotype"
