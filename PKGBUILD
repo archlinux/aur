@@ -6,7 +6,7 @@
 _projectname='react'
 pkgname="ocaml-$_projectname"
 pkgver='1.2.2'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='An OCaml module for functional reactive programming'
 arch=('x86_64' 'aarch64')
 url="https://erratique.ch/software/$_projectname"
@@ -15,7 +15,7 @@ depends=('ocaml>=4.08.0')
 makedepends=('ocamlbuild' 'ocaml-findlib' 'ocaml-topkg>=1.0.3' 'opam')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dbuenzli/$_projectname/archive/v$pkgver.tar.gz")
-sha512sums=('ed3a384ea5ae9b4184a985acf38f3aac009e706537209abf8dd86c2d8d749fff6fe40a6a03e9313dd90723e3ff121c4cb55e344212d54f89c81425ea5e07c594')
+b2sums=('0d4043e212f50005e96e5e7804cd520fbb2f28f0e8d2a85537d6fdef2221535ba2c07b54d928810836fec9d7159aac0c948065cfc551a974d486d319b58350f8')
 
 _sourcedirectory="$_projectname-$pkgver"
 
