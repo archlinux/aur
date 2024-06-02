@@ -2,7 +2,7 @@
 
 pkgname=wg-meshconf
 pkgver=2.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="WireGuard full mesh configuration generator"
 arch=('any')
 url="https://github.com/k4yt3x/wg-meshconf"
