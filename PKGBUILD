@@ -5,7 +5,7 @@
 _projectname='textutils'
 pkgname="ocaml-$_projectname"
 pkgver='0.17.0'
-pkgrel='1'
+pkgrel='2'
 epoch='1'
 pkgdesc='Text output utilities for OCaml'
 arch=('x86_64' 'aarch64')
