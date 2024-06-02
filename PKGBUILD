@@ -8,6 +8,7 @@ pkgdesc="ACES Container Reference Implementation"
 arch=('x86_64')
 url="https://github.com/ampas/aces_container"
 license=('custom')
+options=(!lto !debug)
 depends=('gcc-libs')
 makedepends=('cmake' 'patch' 'gcc' 'make')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ampas/${_srcname}/archive/v${pkgver}.tar.gz"
