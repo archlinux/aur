@@ -2,8 +2,8 @@
 
 _name="arttime"
 pkgname="${_name}-git"
-pkgver=2.3.2.r501
-pkgrel=11
+pkgver=2.3.4
+pkgrel=12
 pkgdesc="arttime is a clock, timer, time manager and text-art viewer for the terminal (https://github.com/poetaman/$_name/wiki)"
 arch=('any')
 url="https://github.com/poetaman/${_name}"
@@ -19,11 +19,11 @@ provides=(${_name})
 source=("git+https://github.com/poetaman/$_name.git")
 sha256sums=('SKIP')
 
-pkgver() {
-  cd "${srcdir}/${_name}"
-  echo "$(git describe --tags $(git rev-list --tags --max-count=1)| grep -o '[0-9.]*'
-).r$(git rev-list --count HEAD)"
-}
+#pkgver() {
+#  cd "${srcdir}/${_name}"
+#  echo "$(git describe --tags $(git rev-list --tags --max-count=1)| grep -o '[0-9.]*'
+#).r$(git rev-list --count HEAD)"
+#}
 
 package() {
     cd "$_name"
