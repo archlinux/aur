@@ -1,6 +1,6 @@
 pkgbase = greetd-tuigreet-bin
 	pkgdesc = A console UI greeter for greetd
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 0
 	url = https://github.com/apognu/tuigreet
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = greetd-tuigreet-bin
 	makedepends = scdoc
 	conflicts = greetd-tuigreet
 	conflicts = greetd-tuigreet-git
-	source = https://github.com/apognu/tuigreet/releases/download/0.9.0/tuigreet-0.9.0-x86_64
-	source = https://raw.githubusercontent.com/apognu/tuigreet/0.9.0/LICENSE
-	source = https://raw.githubusercontent.com/apognu/tuigreet/0.9.0/contrib/man/tuigreet-1.scd
+	source = https://github.com/apognu/tuigreet/releases/download/0.9.1/tuigreet-0.9.1-x86_64
+	source = https://raw.githubusercontent.com/apognu/tuigreet/0.9.1/LICENSE
+	source = https://raw.githubusercontent.com/apognu/tuigreet/0.9.1/contrib/man/tuigreet-1.scd
 	source = tuigreet.conf
-	sha256sums = fbe1717d42a1edaa68f88967b39aa796afbb0707751cb39c4e15acba9648fc7c
+	sha256sums = 488f3f586217fe05cda3012e53304c0a45ec6edd4f5c6863704b0a20ca961106
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
-	sha256sums = 5965ac2fbc2ebc8fa509231dcc72313f622addaabb77c31939c5033b165be508
+	sha256sums = 6a1d9f158d5b8ab64b573d09ae4409873c6354ea0bf1ac6a0995796c23337c17
 	sha256sums = 8f83aee7874aab5d06981a1d1cd05df906368a79dbca90d157a33a2f023b67d3
 
 pkgname = greetd-tuigreet-bin
