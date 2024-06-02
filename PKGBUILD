@@ -3,7 +3,7 @@
 _projectname='ocplib-endian'
 pkgname="ocaml-$_projectname"
 pkgver='1.2'
-pkgrel='7'
+pkgrel='8'
 pkgdesc='Optimised functions to read and write int16/32/64 from strings, bytes and bigarrays'
 arch=('x86_64' 'aarch64')
 url="https://github.com/OCamlPro/$_projectname"
@@ -15,8 +15,8 @@ source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
 	"$pkgname-$pkgver-remove-bytes-dep.diff::$url/pull/26.diff"
 )
-sha512sums=('2e70be5f3d6e377485c60664a0e235c3b9b24a8d6b6a03895d092c6e40d53810bfe1f292ee69e5181ce6daa8a582bfe3d59f3af889f417134f658812be5b8b85'
-            '6199b7032bb3939513de1376966c595fc47e8204f2ba96d6909897378ed18f88e39d81bdabb09c4669c092eacdb8c600fccde733d61677890093b2a50bb90bf0')
+b2sums=('25354888f80ec4d09b9605f293b121dd66d365a461d2e40d9c3d41afa56303562d5db03a469469c1d59d304dd0d47657381c2f42b9e4935005c2ce85fbd5b80a'
+        'ecc218f13bf8c17f9c2b793f961936f26d4e2cb0d0490cae362dbf494e53fcbbf6ed511c2299f7ca55077e32ec766e0dcd4a5329e275ed97143931a1c1672867')
 
 _sourcedirectory="$_projectname-$pkgver"
 
