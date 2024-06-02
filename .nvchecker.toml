@@ -1,0 +1,5 @@
+[python-coincurve]
+source = "github"
+github = "ofek/coincurve"
+use_latest_release = "true"
+prefix = "v"
