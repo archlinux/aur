@@ -151,6 +151,7 @@ _EXTERNAL_SOURCES=$_EXTERNAL_SOURCES
 _DISABLED_MOD_EDIT=$_DISABLED_MOD_EDIT
 _OPTIONAL_GRPC=$_OPTIONAL_GRPC
 _GRPC_BACKENDS=$_GRPC_BACKENDS
+
 EOF
 
   # modify Makefile
@@ -161,7 +162,7 @@ EOF
     sed -ri 's#.+\-replace github.com/'$i'.+##g' Makefile
   done
 
-  # modify python backend build library
+  # modify python backend build library to use -system-site-packages, and dont reinstall torch*
   patch -N -i "${srcdir}/libbackend.patch" -p1
 
 	# fetch sources of backends to be recursive git checked out before build()
@@ -169,7 +170,7 @@ EOF
   make $_OPTIONAL_MAKE_ARGS $_EXTERNAL_SOURCES
 
   if [[ $_ENABLE_PIPER = 1 ]]; then
-    # piper build fixes
+    # fix piper build
     mkdir -p "sources/go-piper/piper-phonemize/pi/lib"
     touch "sources/go-piper/piper-phonemize/pi/lib/keep"
     sed -ri 's#(\$\(MAKE\) -C sources/go-piper libpiper_binding.a) example/main#\1#g' Makefile
@@ -187,13 +188,14 @@ EOF
 
   # fix build error on ROCM by removing unsupported cf-protection from CMAKE_CXX_FLAGS
   export CXXFLAGS+="$CXXFLAGS -fcf-protection=none"
-  # sed -i '1s/^/string(REPLACE "-fcf-protection" "" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")\n/' \
-  #  backend/cpp/llama/llama.cpp/CMakeLists.txt
 
-  # fix whisper build_ --offload-arch is deprecated, replace it with -DGPU_TARGETS
-  for i in sources/whisper.cpp/Makefile; do
-    sed -ri 's/^(.+HIPFLAGS.+\+=).+offload-arch=.+$/\1 -DGPU_TARGETS="$(GPU_TARGETS)"/g' "$i"
+  # fix llama and whisper build: --offload-arch, is deprecated, replace it with -DGPU_TARGETS
+  for i in \
+    backend/cpp/llama/llama.cpp/Makefile \
+    sources/whisper.cpp/Makefile; do
+      sed -ri 's/^(.+HIPFLAGS.+\+=).+offload-arch=.+$/\1 -DGPU_TARGETS="$(GPU_TARGETS)"/g' "$i"
   done
+
 }
 
 _build() {
