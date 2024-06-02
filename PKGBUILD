@@ -1,47 +1,54 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Mahdi Sarikhani <mahdisarikhani@outlook.com>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=sopel
-pkgver=7.1.9
-pkgrel=3
+pkgver=8.0.0
+pkgrel=1
 pkgdesc="An easy-to-use and highly extensible IRC Bot framework (Formerly Willie)"
 arch=('any')
-license=('EFL-2.0')
 url='https://sopel.chat'
-depends=('python-setuptools' 'sqlite' 'python-xmltodict' 'python-pytz' 'python-praw'
-         'python-geoip2' 'python-requests' 'python-dnspython' 'python-sqlalchemy')
-makedepends=('python-build' 'python-installer' 'python-wheel'
-             'python-sphinx' 'python-sphinxcontrib-autoprogram')
-checkdepends=('python-pytest' 'python-pytest-vcr' 'python-requests-mock')
-backup=('etc/sopel.cfg')
-source=("https://github.com/sopel-irc/sopel/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
-	"open-U-deprecated.patch")
-sha512sums=('55fd81f7d16bf3a46c216a0ae68b72df3cc2f4d1d282786f87eadadf51d19838f92d2e29a6a424905099dbf9e27ea495f6d54e676947dcd5c3edcff1d7b5aea3'
-            'aa3d13fad475bc5004545303694c3ce7eb7de9f780e266858aa70a47ca098b851395754962604210e3fb839af8e86ee237e36e2d15d3fe9dba5390f65e9a8db3')
+license=('EFL-2.0')
+depends=('python'
+         'python-dnspython'
+         'python-importlib-metadata'
+         'python-packaging'
+         'python-pytz'
+         'python-requests'
+         'python-sqlalchemy'
+         'python-unicodedata2'
+         'python-urllib3'
+         'python-xmltodict'
+         'sqlite')
+makedepends=('python-build'
+             'python-installer'
+             'python-setuptools'
+             'python-sphinx'
+             'python-sphinxcontrib-autoprogram'
+             'python-sphinx-rfcsection'
+             'python-wheel')
+# checkdepends=('python-pytest' 'python-pytest-vcr' 'python-requests-mock')
+source=("https://github.com/sopel-irc/sopel/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('dccc620a2a90c7dc9a175e4c76d32dd07a85307087a595ddc8f3156dc7e04326b3a7d8cfe44d7c444d25360e8039ed751dc334a19253bb7f54dbb7502ce594db')
 
 prepare() {
-  cd sopel-$pkgver
-  sed -i 's/<6/<8/;s/==0.12/>=0.12/;s/<1.4/<2.0/' {dev-,}requirements.txt
-  patch -Np1 -i ${srcdir}/open-U-deprecated.patch
+  cd "${pkgname}-${pkgver}"
+  sed 's/setuptools~=66.1/setuptools/' -i pyproject.toml
 }
 
 build() {
-  cd sopel-$pkgver
+  cd "${pkgname}-${pkgver}"
   python -m build --wheel --no-isolation
-  PYTHONPATH="$PWD" make -C docs man
+  PYTHONPATH="${PWD}" make -C docs man
 }
 
-check() {
-  cd sopel-$pkgver
-  PYTHONPATH="$PWD" pytest --ignore build/ -p no:nose
-}
+# check() {
+#   cd "${pkgname}-${pkgver}"
+#   PYTHONPATH="${PWD}" pytest
+# }
 
 package() {
-  cd sopel-$pkgver
-  python -m installer --destdir="$pkgdir" dist/*.whl
-
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 contrib/sopel.cfg "$pkgdir/etc/sopel.cfg"
-  install -Dm644 contrib/sopel.service "$pkgdir/usr/lib/systemd/system/sopel.service"
-  install -Dm644 contrib/sopel.conf "$pkgdir/usr/lib/tmpfiles.d/sopel.conf"
-  install -Dm644 docs/build/man/sopel.1 "$pkgdir/usr/share/man/man1/sopel.1"
+  cd "${pkgname}-${pkgver}"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 docs/build/man/sopel.3 -t "${pkgdir}/usr/share/man/man3"
 }

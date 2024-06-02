@@ -1,0 +1,5 @@
+[sopel]
+source = "github"
+github = "sopel-irc/sopel"
+use_max_tag = true
+prefix = "v"
