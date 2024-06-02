@@ -1,4 +1,4 @@
-# Maintainer: Nikos Toutoutzoglou <nikos.toutou@protonmail.com>
+# Maintainer: Nikos Toutoutzoglou <nikos dot toutou at protonmail dot com>
 
 pkgname=python-iptvtools
 _name=iptvtools
@@ -14,8 +14,8 @@ optdepends=('ffmpeg')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 sha256sums=('e27777bea615c653229b7f76f08ed964e7ba50a49b2b8d4c1e3b671a72bd9f0d')
 
-build(){
-	cd $_name-$pkgver
+build() {
+	cd "$_name-$pkgver"
 	python -m build --wheel --no-isolation
 
 	# create man page
@@ -23,10 +23,10 @@ build(){
 }
 
 package() {
-	cd $_name-$pkgver
+	cd "$_name-$pkgver"
 	python -m installer --destdir="$pkgdir" dist/*.whl
-	install -vDm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 
 	# man pages
-	install -vDm644 -t "$pkgdir/usr/share/man/man1" docs/_build/man/*.1
+	install -Dm644 -t "$pkgdir/usr/share/man/man1" docs/_build/man/*.1
 }
