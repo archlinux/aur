@@ -1,6 +1,6 @@
 _pkgname=roam-research
 pkgname=roam-research
-pkgver=0.0.18
+pkgver=0.0.21
 pkgrel=1
 pkgdesc="A note-taking tool for networked thought"
 arch=('any')
@@ -12,7 +12,7 @@ source=(
   "LICENSE"
 )
 md5sums=(
-  '702abbceae4bb920d779f7c2b23ebd1c'
+  '9d56786b09663acf694062e30167c5bc'
   '34234c4e196ceeaf00e4ee7f29b9fb63'
 )
 
