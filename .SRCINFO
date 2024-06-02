@@ -1,7 +1,7 @@
 pkgbase = ubgpsuite-git
 	pkgdesc = Micro BGP Suite and Utility library
-	pkgver = r74.25707a2
-	pkgrel = 2
+	pkgver = r78.b0c074e
+	pkgrel = 1
 	url = https://codeberg.org/1414codeforge/ubgpsuite.git
 	arch = i686
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = ubgpsuite-git
 	depends = xz
 	provides = upkgbuild
 	conflicts = upkgbuild
-	source = git+https://gitea.it/1414codeforge/ubgpsuite
+	source = git+https://codeberg.org/1414codeforge/ubgpsuite
 	sha256sums = SKIP
 
 pkgname = ubgpsuite-git

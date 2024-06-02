@@ -2,8 +2,8 @@
 
 _pkgname=ubgpsuite
 pkgname=${_pkgname}-git
-pkgver=r74.25707a2
-pkgrel=2
+pkgver=r78.b0c074e
+pkgrel=1
 pkgdesc="Micro BGP Suite and Utility library"
 url="https://codeberg.org/1414codeforge/ubgpsuite.git"
 license=("GPL-3.0-or-later" "LGPL-3.0-or-later")
@@ -12,7 +12,7 @@ depends=('bzip2' 'xz')
 makedepends=('git' 'meson' 'ninja')
 provides=(upkgbuild)
 conflicts=(upkgbuild)
-source=("git+https://gitea.it/1414codeforge/ubgpsuite")
+source=("git+https://codeberg.org/1414codeforge/ubgpsuite")
 sha256sums=('SKIP')
 
 pkgver() {
