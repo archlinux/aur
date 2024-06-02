@@ -2,7 +2,7 @@
 _projectname='ppx_fixed_literal'
 pkgname="ocaml-$_projectname"
 pkgver='0.17.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Simpler notation for fixed point literals'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
