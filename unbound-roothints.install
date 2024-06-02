@@ -1,0 +1,5 @@
+post_install() {
+#    echo -e "\e[38;5;72;1m==> \e[0m Recarge configuarción, inicie el servicio roothints.service y habilite sus unidades de monitoreo \e[1mSystemd\e[0m: \
+    echo -e "\e[38;5;72;1m==> \e[0m Recarge configuarción de \e[1msystemd\e[0m e inicie el servicio \"\e[1mroothints.service\e[0m\": \
+	    \n\n\tsudo systemctl daemon-reload \n\tsudo systemctl start roothints.service\n"
+}

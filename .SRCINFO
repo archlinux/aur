@@ -1,0 +1,14 @@
+pkgbase = unbound-roothints
+	pkgdesc = Automatically manages the root hint file /etc/unbound/root.hints
+	pkgver = 1.0.0.r22
+	pkgrel = 1
+	url = https://codeberg.org/dakataca/unbound-roothints
+	install = unbound-roothints.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = unbound
+	source = unbound-roothints::git+https://codeberg.org/dakataca/unbound-roothints.git
+	sha256sums = SKIP
+
+pkgname = unbound-roothints
