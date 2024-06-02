@@ -5,7 +5,7 @@
 _projectname='lambda-term'
 pkgname="ocaml-$_projectname"
 pkgver='3.3.2'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Terminal manipulation library for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocaml-community/$_projectname"
@@ -15,7 +15,7 @@ makedepends=('dune>=3.0.0')
 options=('!strip')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('78648768644058337e22c79cf1fbb1a36472b24f11b1dc0461fc38419be6ec01b02d8d0ac45fed0bc99f91ba4c0f19d3bda113e834e064bee973b734527b9766')
+b2sums=('81192f9fc7a8db83d08c7342a7914d4aa14ace14ee09d5a0387e5927502b02e018bc4c7537e82342221bd53a9e08ac24057820d5d1a056e243383fbe065f12b6')
 
 _sourcedirectory="$_projectname-$pkgver"
 

@@ -1,7 +1,7 @@
 pkgbase = ocaml-lambda-term
 	pkgdesc = Terminal manipulation library for OCaml
 	pkgver = 3.3.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ocaml-community/lambda-term
 	install = ocaml-lambda-term.install
 	arch = x86_64
@@ -17,6 +17,6 @@ pkgbase = ocaml-lambda-term
 	depends = libev
 	options = !strip
 	source = ocaml-lambda-term-3.3.2.tar.gz::https://github.com/ocaml-community/lambda-term/archive/3.3.2.tar.gz
-	sha512sums = 78648768644058337e22c79cf1fbb1a36472b24f11b1dc0461fc38419be6ec01b02d8d0ac45fed0bc99f91ba4c0f19d3bda113e834e064bee973b734527b9766
+	b2sums = 81192f9fc7a8db83d08c7342a7914d4aa14ace14ee09d5a0387e5927502b02e018bc4c7537e82342221bd53a9e08ac24057820d5d1a056e243383fbe065f12b6
 
 pkgname = ocaml-lambda-term
