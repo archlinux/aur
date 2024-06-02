@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_here
 	pkgdesc = Expands [%here] into its location
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/janestreet/ppx_here
 	arch = x86_64
