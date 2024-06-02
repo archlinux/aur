@@ -1,0 +1,25 @@
+pkgbase = lazpaint-git
+	pkgdesc = Image editor written in Free Pascal with Lazarus (Qt6)
+	pkgver = 7.2.2.r94.g45a7a47
+	pkgrel = 1
+	url = https://github.com/bgrabitmap/lazpaint
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = lazarus
+	makedepends = xmlstarlet
+	depends = qt6pas
+	provides = lazpaint=7.2.2
+	conflicts = lazpaint
+	options = !strip
+	options = !debug
+	source = git+https://github.com/bgrabitmap/lazpaint.git
+	source = git+https://github.com/bgrabitmap/bgrabitmap.git
+	source = git+https://github.com/bgrabitmap/bgracontrols.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = lazpaint-git
+	depends = qt6pas
+	depends = python
