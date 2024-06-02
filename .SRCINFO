@@ -12,6 +12,7 @@ pkgbase = quickshell
 	depends = qt6-declarative
 	depends = qt6-base
 	depends = jemalloc
+	depends = qt6-svg
 	optdepends = libxcb: X11 support
 	optdepends = wayland-protocols: Wayland support
 	optdepends = wayland: Wayland support

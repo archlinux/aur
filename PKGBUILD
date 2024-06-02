@@ -7,7 +7,7 @@ pkgdesc='Simple and flexbile QtQuick based desktop shell toolkit.'
 arch=(x86_64 aarch64)
 url='https://github.com/outfoxxed/quickshell'
 license=('GPL')
-depends=('qt6-declarative' 'qt6-base' 'jemalloc')
+depends=('qt6-declarative' 'qt6-base' 'jemalloc' 'qt6-svg')
 optdepends=(
    'libxcb: X11 support'
    'wayland-protocols: Wayland support'
