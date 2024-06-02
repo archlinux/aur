@@ -2,14 +2,14 @@
 # Contributor: Wes Jackson <icebal dot 7 at gmail dot com>
 
 pkgname=nfs-ganesha
-pkgver=5.7
+pkgver=5.9
 pkgrel=1
 pkgdesc="NFS and 9P protocols in user mode."
 arch=(x86_64 i686 armv7h aarch64)
 url="http://nfs-ganesha.github.io/"
 license=(GPL3)
 depends=(glibc nfsidmap libcap krb5 util-linux-libs e2fsprogs xfsprogs dbus libwbclient jemalloc liburcu acl btrfs-progs)
-makedepends=(cmake git lsb-release) # doxygen python-sphinx graphviz
+makedepends=(cmake git lsb-release) # doxygen python-sphinx graphviz lsb-release
 options=(!emptydirs)
 source=("git+https://github.com/nfs-ganesha/nfs-ganesha.git#tag=V${pkgver}"
         "git+https://github.com/nfs-ganesha/ntirpc.git"
@@ -24,9 +24,6 @@ prepare() {
   git submodule init
   git config submodule.src/libntirpc.url "${srcdir}/ntirpc"
   git -c protocol.file.allow=always  submodule update
-
-  cd src/libntirpc
-  patch -Np1 -i ${srcdir}/nfs-ganesha-libntirpc-assert.h-fix.patch
 }
 
 build() {
@@ -43,6 +40,9 @@ build() {
     -DUSE_FSAL_RGW=OFF
 
   cmake --build build
+
+# v5.9   Cannot find XFS runtime.  Disabling XFS build
+# yet xfsprogs is installed
 }
 
 package() {
