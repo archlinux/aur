@@ -1,7 +1,7 @@
 pkgbase = ocaml-core_unix
 	pkgdesc = Unix-specific extensions to some of the modules defined in ocaml-core and ocaml-core_kernel
 	pkgver = 0.17.0
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/janestreet/core_unix
 	arch = x86_64
