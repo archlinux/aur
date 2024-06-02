@@ -2,7 +2,7 @@
 # Maintainer: Roy Williams <fang64@gmail.com>
 
 pkgname=hamclock-big
-pkgver=4.00
+pkgver=4.01
 pkgrel=1
 epoch=
 pkgdesc="Clock and world map with extra features for amateur radio (1600x960 version)"
@@ -21,9 +21,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/kj7rrv/hamclock/archive/refs/tags/v$pkgver.tar.gz")
+source=("https://github.com/fang64/hamclock/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
-sha256sums=('1def12cf34d3486edb1c4fb0ec7f1a27cc1bda01ca811b6c0fefc68c4c98ab20')
+sha256sums=('8d0526a187ea27c768d3ff086b33855040c2db328df70569b6d2034904ceb8f5')
 validpgpkeys=()
 
 prepare() {
