@@ -2,7 +2,7 @@
 _projectname='ppx_gen_rec'
 pkgname="ocaml-$_projectname"
 pkgver='2.0.0'
-pkgrel='5'
+pkgrel='6'
 pkgdesc='A ppx rewriter that transforms a recursive module expression into a `struct`'
 arch=('x86_64' 'aarch64')
 url="https://github.com/flow/$pkgname"
@@ -12,7 +12,7 @@ makedepends=('dune')
 checkdepends=('ocaml-ppx_deriving')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('d51bc52e32b887f36e671559cf15ddc86b758240b8a244a1b18408bfe4b538b66836e5713875741a23348efacea98f8dfca456f0486b312ac9afd0766c20a9aa')
+b2sums=('d205aed7429d32caf4ad4c9098b5d34f0aa6e00fbab6a74658ffafd48589d5dc2e437fdb81fa1f4894047183d5e116ebac07df651e371b71d8e380a01975758c')
 
 _sourcedirectory="$pkgname-$pkgver"
 
