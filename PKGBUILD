@@ -3,7 +3,7 @@
 _projectname='lwt_log'
 pkgname="ocaml-$_projectname"
 pkgver='1.1.2'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Lwt-friendly logger'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocsigen/$_projectname"
@@ -12,7 +12,7 @@ depends=('ocaml>=4.03.0' 'ocaml-lwt>=4.0.0')
 makedepends=('dune>=1.0.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('fb976d89c0f868b57434a9e0907ffae0842fe48fc747ddb860954d20f36722faea315ebb0b4dac202f9bf7203b0a09681614e9619f3bbd0dd59f8dd7bbd50575')
+b2sums=('d555b2e54b327ddbb68d8fcf1f669eb8b74709673da8c0f0dc32ee5d58c5055ebda52c2f13d39ac37e0fda724e02c057872147b88921ed15dbed73b58c59962d')
 
 _sourcedirectory="$_projectname-$pkgver"
 
