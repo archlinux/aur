@@ -1,7 +1,7 @@
 pkgbase = ocaml-zed
 	pkgdesc = Abstract engine for text edition in OCaml
 	pkgver = 3.2.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ocaml-community/zed
 	arch = x86_64
 	arch = aarch64

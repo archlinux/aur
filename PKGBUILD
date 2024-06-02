@@ -5,7 +5,7 @@
 _projectname='zed'
 pkgname="ocaml-$_projectname"
 pkgver='3.2.3'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='Abstract engine for text edition in OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocaml-community/$_projectname"
