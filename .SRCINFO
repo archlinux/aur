@@ -1,7 +1,7 @@
 pkgbase = ocaml-async_unix
 	pkgdesc = Monadic concurrency library for OCaml (Unix-related dependencies)
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/janestreet/async_unix
 	arch = x86_64
 	arch = aarch64
