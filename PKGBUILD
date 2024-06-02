@@ -27,6 +27,8 @@ makedepends=('lazarus')
 
 install="$_pkgname.install"
 
+option=('!strip' '!debug')
+
 _pkgsrc="$pkgname-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
@@ -34,20 +36,25 @@ sha256sums=('475db848596d4c05db8e628a69e1477092291d962fe92e2972525e2c848262a2')
 
 build() {
   mkdir -p build
+
+  local _laz_opts=(
+    --build-all
+    --cpu="$CARCH"
+    --lazarusdir="/usr/lib/lazarus"
+    --os=linux
+    --primary-config-path=build
+    --widgetset="$_widgets"
+  )
+
   for i in "$_pkgsrc"/linux-src/*-src/*.lpi; do
-    lazbuild "$i" \
-      --build-all \
-      --lazarusdir="/usr/lib/lazarus" \
-      --widgetset="$_widgets" \
-      --os=linux --cpu="$CARCH" \
-      --primary-config-path=build
+    lazbuild "${_laz_opts[@]}" "$i"
   done
 }
 
 package() {
   install -Dm755 -t "$pkgdir/$_install_path/$_pkgname/" \
-          "$_pkgsrc"/linux-src/launcher-src/output/launcher \
-          "$_pkgsrc"/linux-src/bootstrapper-src/output/bootstrapper-v2
+    "$_pkgsrc"/linux-src/launcher-src/output/launcher \
+    "$_pkgsrc"/linux-src/bootstrapper-src/output/bootstrapper-v2
 
   install -Dm644 "$_pkgsrc"/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 
