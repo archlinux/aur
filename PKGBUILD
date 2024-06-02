@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/ampas/aces_container"
 license=('custom')
 depends=('gcc-libs')
-makedepends=('cmake')
+makedepends=('cmake' 'patch')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ampas/${_srcname}/archive/v${pkgver}.tar.gz"
         "Switch-to-CMAKE-default-variables.patch"
         "Set-the-appropriate-SONAME-for-the-library.patch")
