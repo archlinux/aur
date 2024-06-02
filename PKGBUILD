@@ -7,7 +7,7 @@ pkgbase=etlegacy
 pkgname=('etlegacy' 'etlegacy-mod')
 pkgver=2.82.1
 _binaryversion=590
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.etlegacy.com/"
 license=('GPL3' 'custom')
@@ -20,6 +20,12 @@ sha256sums=('b55084fcebd47dd08a06cd0891921b03193fdf32d176e3b687af6877ee60c189'
 
 build() {
     cd "$_pkgbase-$pkgver"
+
+    export CFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions \
+        -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security \
+        -fstack-clash-protection -fcf-protection \
+        -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer"
+    export CXXFLAGS="$CFLAGS -Wp,-D_GLIBCXX_ASSERTIONS"
 
     cmake . ${cmakeopts[@]} \
         -DCMAKE_LIBRARY_PATH=/usr/lib \
