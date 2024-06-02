@@ -3,11 +3,13 @@ pkgbase = lookupunicode-git
 	pkgver = r13.c3add01
 	pkgrel = 2
 	url = https://codeberg.org/nycex/lookupunicode
-	arch = any
-	license = GPL3
+	arch = x86_64
+	license = GPL-3.0-only
 	makedepends = git
 	makedepends = cargo
 	depends = unicode-character-database
+	provides = lookupunicode
+	conflicts = lookupunicode
 	source = git+https://codeberg.org/nycex/lookupunicode
 	sha256sums = SKIP
 

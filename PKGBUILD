@@ -4,11 +4,13 @@ pkgname=${_pkgbasename}-git
 pkgrel=2
 pkgver=r13.c3add01
 pkgdesc="swizz army knife for unicode - a utility to search in the unicode database"
-arch=('any')
+arch=('x86_64')
 url="https://codeberg.org/nycex/${_pkgbasename}"
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=('unicode-character-database')
 makedepends=('git' 'cargo')
+provides=(lookupunicode)
+conflicts=(lookupunicode)
 source=(git+${url})
 sha256sums=('SKIP')
 
