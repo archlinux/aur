@@ -3,7 +3,7 @@
 _projectname='ppx_enumerate'
 pkgname="ocaml-$_projectname"
 pkgver='0.17.0'
-pkgrel='1'
+pkgrel='2'
 epoch='1'
 pkgdesc='Generate a list containing all values of a finite type'
 arch=('x86_64' 'aarch64')
