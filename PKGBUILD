@@ -2,7 +2,7 @@
 
 pkgname=python-pyproject-patcher
 _gitpkgname=pyproject-patcher
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 # shellcheck disable=SC2016  # Not meant to expand
 pkgdesc='Collection of convenience functions to patch `pyproject.toml` in place'
@@ -31,7 +31,7 @@ source=(
 )
 
 sha512sums=(
-  'b689c77479b655d9e53f3ac4190c2f73899891c40d11d83a80d2b581289408387eb3b25285612633bdf775d3b5a475d750be1522422630700a37d0ff5bd32ef9'
+  '78a868d238bc1e7746e6245b5ae49ec1baccdf0d914cacfc40b3ab898a288ea9b7db8bcb512016c0b4cce78574bc8cd9b070f57c82b558c69d7f027ef916d2f9'
 )
 
 build() {
