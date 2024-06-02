@@ -10,7 +10,7 @@
 _srcname=ocamlgraph
 pkgname=ocaml-$_srcname
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Graph library for OCaml"
 arch=('x86_64')
 url="https://github.com/backtracking/ocamlgraph"
