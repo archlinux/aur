@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=valveresourceformat
-pkgver=9.2
-pkgrel=5
+pkgver=10.0
+pkgrel=1
 pkgdesc="Valve's Source 2 resource file format parser, decompiler, and exporter."
 arch=('x86_64')
 url="https://github.com/ValveResourceFormat/ValveResourceFormat"
@@ -11,7 +11,7 @@ makedepends=('dotnet-sdk' 'git')
 options=(!strip !debug)
 install=$pkgname.install
 source=("$pkgname::git+$url.git#tag=$pkgver")
-sha256sums=('47a753963dec9d981ff81480a2aa5e49ccfd6ef17d2c17f6af8881c33c9adad8')
+sha256sums=('683b402b6a487cce5c736dae07997a6ce8ab5a5a206a720c83676a6ab636bf5b')
 
 
 build() {
