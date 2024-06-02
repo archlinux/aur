@@ -2,7 +2,7 @@
 pkgbase="eslauncher2"
 pkgname="eslauncher2"
 pkgcompletename="ESLauncher2"
-pkgrel=1
+pkgrel=2
 pkgver=0.9.5
 pkgdesc="The next generation Endless Sky Launcher"
 depends=('rust' 'fuse2')
@@ -12,7 +12,7 @@ url="https://github.com/EndlessSkyCommunity/ESLauncher2"
 license=('GPL-3.0')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha512sums=('eb973a5176a0fd97242c07d8e0ad37ce85eb2614ccf30cdbaa6e5a3bb19bd6ecd87bf05cc59870c818a8011f44efbd08a5000db878365a50cf962d16b67ec251')
-makedepends=(cargo)
+makedepends=('cargo' 'alsa-lib')
 prepare() {
 	export RUSTUP_TOOLCHAIN=stable
 	cd "${pkgcompletename^}-${pkgver}"
