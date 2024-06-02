@@ -1,0 +1,19 @@
+pkgbase = suyu-appimage
+	pkgdesc = suyu is the afterlife the world's most popular, open-source, Nintendo Switch emulator (appimage version)
+	pkgver = 0.0.3
+	pkgrel = 1
+	epoch = 1
+	url = https://git.suyu.dev/suyu/suyu
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = ffmpeg
+	depends = fuse2
+	provides = suyu
+	conflicts = suyu-git
+	conflicts = suyu-dev-git
+	conflicts = suyu-dev-qt6-git
+	options = !strip
+	source = suyu.AppImage::https://git.suyu.dev/suyu/suyu/releases/download/v0.0.3/Suyu-Linux_x86_64.AppImage
+	b2sums = fdaf511bfbcef9d73fcb6a36149df06355ff111df8a6302ca48645fd34e568e3db37f54d367422780596fe6742ced269e60aca4916c0131e6c5b7c33722404e7
+
+pkgname = suyu-appimage
