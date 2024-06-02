@@ -4,7 +4,7 @@
 
 pkgname=python-hstspreload
 _pkg="${pkgname#python-}"
-pkgver=2024.4.1
+pkgver=2024.6.1
 pkgrel=1
 pkgdesc="Chromium HSTS Preload list as a Python package"
 arch=(any)
@@ -14,7 +14,7 @@ depends=(python)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 #checkdepends=(python-pytest python-urllib3)
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/h/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('d379d0593f4b8819bd42e758c697f43a95a8202f8f5412bd8db820b37cdf96ac')
+sha256sums=('64be485ffe18b83680b2ddf82214937e87e76c458599dde99f2d81459f7be7de')
 
 build() {
     cd $_pkg-$pkgver
