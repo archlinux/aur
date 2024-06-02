@@ -1,9 +1,9 @@
-# Maintainer: Vlad Glagolev <scm(at)vaygr(dot)net>
+# Maintainer: Axel McLaren <scm(at)axml(dot)uk>
 
 pkgname=python-simplepush
 _name=${pkgname#python-}
 pkgver=2.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Python library for simplepush.io"
 arch=('any')
 url="https://github.com/simplepush/simplepush-python"
