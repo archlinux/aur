@@ -1,7 +1,7 @@
 pkgbase = ocaml-protocol_version_header
 	pkgdesc = Protocol aware version negotiation library for OCaml
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/janestreet/protocol_version_header
 	arch = x86_64
 	arch = aarch64
