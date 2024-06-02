@@ -22,10 +22,7 @@ build() {
 	cd "${pkgname}"
 
 	cmake -GNinja -B build \
-		-DCMAKE_BUILD_TYPE="RelWithDebInfo" \
-		-DCMAKE_EXPORT_COMPILE_COMMANDS=ON
-
-	ln -sf build/compile_commands.json compile_commands.json
+		-DCMAKE_BUILD_TYPE="RelWithDebInfo"
 
 	cmake --build build
 }
