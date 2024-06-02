@@ -1,7 +1,7 @@
 pkgbase = honkers-launcher-bin
 	pkgdesc = A launcher for a specific anime game with auto-patching, discord rpc and time tracking
 	pkgver = 1.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/an-anime-team/honkers-launcher
 	arch = x86_64
 	license = GPL3
@@ -23,7 +23,7 @@ pkgbase = honkers-launcher-bin
 	source = honkers-launcher_1.6.3::https://github.com/an-anime-team/honkers-launcher/releases/download/1.6.3/honkers-launcher
 	source = icon.png
 	source = honkers-launcher.desktop
-	md5sums = b27451b463fb2721db3b6fcb4bcf7374
+	md5sums = 7d81573a0928f308e6289e5022b13fe0
 	md5sums = 26b637e96d0f4382c8b132656a9ce3a5
 	md5sums = 739854fbecc047beb55d738dbdfe85d9
 

@@ -3,7 +3,7 @@
 
 pkgname=honkers-launcher-bin
 pkgver=1.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A launcher for a specific anime game with auto-patching, discord rpc and time tracking"
 url="https://github.com/an-anime-team/honkers-launcher"
 provides=("honkers-launcher")
@@ -37,7 +37,7 @@ source=(
 )
 
 md5sums=(
-    'b27451b463fb2721db3b6fcb4bcf7374'
+    '7d81573a0928f308e6289e5022b13fe0'
     '26b637e96d0f4382c8b132656a9ce3a5'
     '739854fbecc047beb55d738dbdfe85d9'
 )
