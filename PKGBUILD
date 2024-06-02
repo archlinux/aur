@@ -13,7 +13,7 @@
 ## Contributor: Philip Abernethy <chais.z3r0@gmail.com>
 ## Contributor: sowieso <sowieso@dukun.de>
 
-_ver="1.20.5_0.9.1_0.25.0-1" # <mcver_installerver_loaderver-pkgrelease>
+_ver="1.20.6_0.9.2_0.26.0-1" # <mcver_installerver_loaderver-pkgrelease>
 # installer ver can be gotten at https://meta.quiltmc.org/v3/versions/installer
 # loader ver can be gotten at https://meta.quiltmc.org/v3/versions/loader
 # stay on stable loader+installer releases for the time being.
@@ -31,7 +31,7 @@ _quilt_ver=${_pkgver_temp[1]}
 # the version of the loader to install
 _quilt_loader_ver=${_pkgver_temp[2]}
 
-_mng_ver=1.0.2
+_mng_ver=1.0.4
 
 _pkgver=${_ver_temp[0]//_/-}
 
@@ -43,7 +43,7 @@ pkgdesc="Minecraft Quilt server unit files, script, and jar"
 arch=("any")
 url="https://quiltmc.org"
 license=("Apache-2.0")
-depends=("java-runtime-headless>=17" "tmux" "sudo" "bash" "awk" "sed" "tar")
+depends=("java-runtime-headless>=21" "tmux" "sudo" "bash" "awk" "sed" "tar")
 optdepends=("netcat: required in order to suspend an idle server")
 backup=("etc/conf.d/${_quilt_name}")
 install="quilt-server.install"
@@ -51,8 +51,8 @@ options=(emptydirs)
 source=("minecraft-server-${_mng_ver}.tar.gz"::"https://github.com/Edenhofer/minecraft-server/archive/refs/tags/v${_mng_ver}.tar.gz"
 		"quilt-installer-${_quilt_ver}.jar"::"https://maven.quiltmc.org/repository/release/org/quiltmc/quilt-installer/${_quilt_ver}/quilt-installer-${_quilt_ver}.jar")
 noextract=("quilt-${_pkgver}.jar")
-sha256sums=('739d526568d440f5bca0706d6d03d64e44e4e942766d27a4f273a812341978df'
-            'c4bd6300b883e406a15490f9c36059ec3057fc28b4f5b858e0e793231d0b4fa7')
+sha256sums=('55a9063d77e6fbb79b6e120c4a3faf78a129cc36b8874a895cc2261c3735130c'
+            'c3ad3e23eee860e5185c594e7cb280e4fabe7e766a83945381d9a99c64855c5b')
 
 prepare() {
 	java -Duser.home="${srcdir}" -jar "quilt-installer-${_quilt_ver}.jar" install server ${_minecraft_ver} ${_quilt_loader_ver} --download-server
