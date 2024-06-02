@@ -1,6 +1,6 @@
 pkgbase = doom
 	pkgdesc = Original Doom first person shooter powered by GZDoom.
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	arch = x86_64
 	arch = aarch64
@@ -10,7 +10,7 @@ pkgbase = doom
 	depends = wget
 	depends = unzip
 	depends = yad
-	source = https://gitlab.com/linuxbombay/doom/-/archive/1.0.0/doom-1.0.0.tar.bz2
-	sha256sums = d3b3f23c67b22c7815ee497af34479859e95699100d03732e0a0526f05f17b76
+	source = https://gitlab.com/linuxbombay/doom/-/archive/1.0.1/doom-1.0.1.tar.bz2
+	sha256sums = b43cea68deffc19dd36c850f8af64215b5cf7b972369bffd5f06af0c7ee66678
 
 pkgname = doom
