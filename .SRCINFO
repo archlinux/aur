@@ -1,12 +1,12 @@
 pkgbase = superconductor
 	pkgver = 0.11.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SuperFlyTV/SuperConductor
 	arch = x86_64
-	license = AGPL3
+	license = Unknown
+	license = AGPL-3.0-only
 	makedepends = yarn
-	makedepends = nodejs>=16.16.0
-	makedepends = nodejs<=20
+	makedepends = nodejs-lts-hydrogen
 	options = !emptydirs
 	source = superconductor-0.11.3.tar.gz::https://github.com/SuperFlyTV/SuperConductor/archive/refs/tags/v0.11.3.tar.gz
 	source = superconductor.desktop

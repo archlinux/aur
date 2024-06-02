@@ -1,21 +1,14 @@
-# Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
+# Maintainer: Nikos Toutountzoglou <nikos dot toutou at protonmail dot com>
 
 pkgbase=superconductor
-pkgname=(
-	superconductor
-	tsr-bridge
-)
+pkgname=('superconductor' 'tsr-bridge')
 pkgver=0.11.3
-pkgrel=1
+pkgrel=2
 _appname="SuperConductor-$pkgver"
 arch=('x86_64')
 url="https://github.com/SuperFlyTV/SuperConductor"
-license=('AGPL3')
-makedepends=(
-	'yarn' 
-	'nodejs>=16.16.0'
-	'nodejs<=20'
-)
+license=('Unknown' 'AGPL-3.0-only')
+makedepends=('yarn' 'nodejs-lts-hydrogen')
 options=(!emptydirs)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 	'superconductor.desktop'
@@ -29,7 +22,7 @@ prepare() {
 	# Workaround for 'husky - .git can't be found'
 	mkdir -p .git
 	# Installs all dependencies, including Lerna.
-	yarn install --cache-folder ../yarn-cache
+	yarn install --cache-folder "$srcdir/yarn-cache"
 }
 
 build() {
@@ -50,20 +43,19 @@ package_superconductor() {
 	provides=('superconductor')
 	conflicts=('superconductor')
 
-	install -d "$pkgdir"/usr/bin "$pkgdir"/usr/share
+	install -d "$pkgdir/usr/bin" "$pkgdir/usr/share"
 	# Install SuperConductor
-	cp -av --no-preserve=ownership $_appname/apps/app/dist/linux-unpacked "$pkgdir"/usr/share/$pkgname
-	ln -sf /usr/share/$pkgname/$pkgname "$pkgdir"/usr/bin/$pkgname
+	cp -a --no-preserve='ownership' "$_appname/apps/app/dist/linux-unpacked" "$pkgdir/usr/share/$pkgname"
+	ln -sf "/usr/share/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
 	# Install icons
 	for i in 16 24 32 48 64 96 128 256 512 1024; do
-		install -vDm 644 "$_appname/apps/app/build/icons/${i}x${i}.png" \
-			"$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png
+		install -Dm 644 "$_appname/apps/app/build/icons/${i}x${i}.png" \
+			"$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png"
 	done
 
 	# Install desktop files, license
-	install -vDm644 $pkgname.desktop -t "$pkgdir"/usr/share/applications
-	install -vDm644 $_appname/LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
+	install -Dm644 $pkgname.desktop -t "$pkgdir/usr/share/applications"
 }
 
 package_tsr-bridge() {
@@ -72,15 +64,15 @@ package_tsr-bridge() {
 	provides=('tsr-bridge')
 	conflicts=('tsr-bridge')
 
-	install -d "$pkgdir"/usr/bin "$pkgdir"/usr/share
+	install -d "$pkgdir/usr/bin" "$pkgdir/usr/share"
 	# Install TSR-Bridge
-	cp -av --no-preserve=ownership $_appname/apps/tsr-bridge/dist/linux-unpacked "$pkgdir"/usr/share/tsr-bridge
-	ln -sf /usr/share/tsr-bridge/tsr-bridge "$pkgdir"/usr/bin/tsr-bridge
+	cp -a --no-preserve='ownership' "$_appname/apps/tsr-bridge/dist/linux-unpacked" "$pkgdir/usr/share/tsr-bridge"
+	ln -sf "/usr/share/tsr-bridge/tsr-bridge" "$pkgdir/usr/bin/tsr-bridge"
 
 	# Install icons
-	install -vDm 644 "$_appname/apps/tsr-bridge/assets/tray.png" \
-		"$pkgdir"/usr/share/icons/hicolor/48x48/apps/tsr-bridge.png
+	install -Dm 644 "$_appname/apps/tsr-bridge/assets/tray.png" \
+		"$pkgdir/usr/share/icons/hicolor/48x48/apps/tsr-bridge.png"
 
 	# Install desktop files
-	install -vDm644 tsr-bridge.desktop -t "$pkgdir"/usr/share/applications
+	install -Dm644 tsr-bridge.desktop -t "$pkgdir/usr/share/applications"
 }
