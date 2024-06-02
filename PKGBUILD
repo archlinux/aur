@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 
 pkgname=damo
-pkgver=2.3.3
+pkgver=2.3.6
 pkgrel=1
 pkgdesc="DAMON user-space tool"
 arch=('any')
@@ -10,8 +10,8 @@ license=('GPL2')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/awslabs/damo/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8d37d2dedee735fecad0f3287b964b3af8b16b4892ac097a5413d47c1b3db68c')
-b2sums=('4ccd86264f591e42f642293516fbed5711c54d84a8149c9b65738a7553a739caa687d0cb84e5dcaa0632f063f8ce56fa142b7bb45cb475563bc6e45c12a0dc37')
+sha256sums=('19d18df2ed5a35d4dc1b9dba681604d65ac93c03d6e4aaf3ec668fa19711e5f8')
+b2sums=('0a49cae49fc2831a9ab3ce8840a9679359fed881ddd7d190573a3a4011fc8084ed7a72532b93bfc37918230bf5f6da37945a2546bdc00d2a041856b887e9c5a6')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -22,8 +22,7 @@ build() {
   ../packaging/mk_readme.sh "$PWD" "$pkgver"
 
   mkdir -p src/damo
-  cp -p ../*.py src/damo
-  cp -p ../damo src/damo/damo.py
+  cp -p ../src/*.py src/damo
   touch src/damo/__init__.py
 
   python -m build --wheel --no-isolation
