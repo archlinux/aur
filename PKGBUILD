@@ -2,7 +2,7 @@
 pkgname=suyu-bin
 pkgver=0.0.3
 pkgrel=1
-pkgdesc="suyu was the continuation of the world's most popular, open-source Nintendo Switch emulator, yuzu, but is now something more."
+pkgdesc="suyu is a Nintendo Switch emulator, based on yuzu, with additional features. It is written in C++ with portability in mind."
 arch=('x86_64')
 url="https://git.suyu.dev/suyu/suyu"
 license=('GPL3')
