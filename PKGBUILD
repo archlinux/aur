@@ -21,7 +21,6 @@ b2sums=("ec6bb2e022d54588c99fc695087ec2a362a6fc6dd5ac10e530f32d0eef534586ca8edc1
 build() {
     rm wheels -rf
     cd polars-$_tag/py-polars
-    env > env
     maturin build -o ../../wheels --release
 }
 
