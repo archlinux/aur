@@ -22,7 +22,7 @@
 # 'perl-xml-libxml' 'perl-xml-sax-expat' in makedepends
 
 pkgname=conky-cairo
-pkgver=1.19.8
+pkgver=v1.21.2
 pkgrel=1
 pkgdesc='Lightweight system monitor for X, Wayland, console, or file/HTTP output (with Cairo/Cairo-Lua support)'
 url='https://github.com/brndnmtthws/conky'
@@ -35,19 +35,36 @@ conflicts=('conky')
 provides=('conky')
 
 ## nvidia requirements - comment for non-nvidia
-depends=( 'alsa-lib' 'libxml2' 'curl' 'cairo' 'wireless_tools' 'libxft' 'librsvg' 'glib2' 'libxdamage' 'imlib2' 'lua' 'libxnvctrl' 'libxinerama' )
+depends=(
+	'alsa-lib'
+	'libxml2'
+	'curl'
+	'cairo'
+	'wireless_tools'
+	'libxft'
+	'librsvg'
+	'glib2'
+	'libxdamage'
+	'imlib2'
+	'lua'
+	'libxnvctrl'
+	'libxinerama'
+)
 
 ## NON-nvidia requirements - remove comment for non-nvidia
 ## in the cmake line below change -D BUILD_NVIDIA=ON \ to -D BUILD_NVIDIA=OFF \
-# depends=( 'alsa-lib' 'libxml2' 'curl' 'cairo' 'wireless_tools' 'libxft' 'librsvg' 'glib2' 'libxdamage' 'imlib2' 'lua' 'libxinerama' )
 
 
-makedepends=( 'cmake' 'git' )
+makedepends=(
+	'cmake'
+	'git'
+	'gperf'
+)
 
 
 
 ### change _myopts=0 to use git version
-_myopts=1
+_myopts=0
 
 case ${_myopts} in
 0)  ### _myopts=0 for git version #####################################
@@ -77,13 +94,11 @@ build() {
 
 	cd "${srcdir}/${_pkgname}"
 
-	## correction to conky.cc for the git version
-	sed -i 's|conky::run_all_callbacks();||' src/conky.cc
-
 ################################################################
 
 	cmake \
-		-D CMAKE_BUILD_TYPE=Release \
+		-B build \
+		-D CMAKE_BUILD_TYPE=None \
 		-D CMAKE_INSTALL_PREFIX=/usr \
 		-D BUILD_WLAN=ON \
 		-D BUILD_CURL=ON \
@@ -97,15 +112,17 @@ build() {
 		-D BUILD_LUA_RSVG=ON \
 		-D BUILD_NVIDIA=ON \
 		-D BUILD_DOCS=OFF \
-		.
+		-Wno-dev \
+		-S .
 
-	make
+	make -C build
+
 
 }
 
 package() {
 	cd "${srcdir}/${_pkgname}"
-	make DESTDIR="${pkgdir}" install
+	make -C build DESTDIR="${pkgdir}" install
 	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 	install -Dm755 extras/convert.lua "${pkgdir}"/usr/bin/conky-convert.lua
 }
