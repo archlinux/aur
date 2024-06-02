@@ -1,3 +1,14 @@
+2024-06-01 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 6.0.3.4-1:
+    Added POST /Api/Bot/{Bot}/AddLicense ASF API endpoint (@JustArchi).
+    ASF will no longer warn you about weak passwords usage - usefulness of that function was doubtful anyway (@JustArchi).
+    LicenseID will now be inherited when editing global config through IPC, like other sensitive properties, also added x-security-critical to swagger spec (@JustArchi @Abrynos #3200).
+    Fixed incorrect ASF behaviour which could rarely cause some valid neutral+ trade offers being rejected (@JustArchi #3203).
+    Fixed incorrect default value of ShutdownIfPossible (@JustArchi #3210).
+    Enabled build attestations for GitHub artifacts (@JustArchi).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2024-05-06 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 6.0.2.6-1:
     Added GET /HealthCheck ASF API endpoint for those that would like to monitor uptime of their ASF instance with minimal overhead, the endpoint does not require authorization (@JustArchi).
