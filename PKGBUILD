@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=rtkore
-_pkgver=1.6.10
+_pkgver=1.6.12
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="'STK++' Core Library Integration to 'R' using 'Rcpp'"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -14,8 +14,8 @@ depends=(
   r-rcpp
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7d3647bce2b7b9b7236d195c4909f28c')
-b2sums=('f33f37ce81d1970f72276e0e955ebf4cd24fd8ad9f157ce0e43da64eb44080dd096a12bb4029e2878315a1db0fb4e2b1d54ceba9467b288eba94396848f0f671')
+md5sums=('08bb981c3b634277431e62935569d995')
+b2sums=('4a1f145f8a3d544ca3f9a3821e2ef9f24d504b26697584651d42304de6b26c9dc9b6378b868b53ad999eabf03ea71f2b828c6f075fe145810410dd47f039365e')
 
 build() {
   mkdir build
