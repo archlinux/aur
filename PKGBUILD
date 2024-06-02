@@ -2,7 +2,7 @@
 _projectname='duration'
 pkgname="ocaml-$_projectname"
 pkgver='0.2.1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Conversions to various time units for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/hannesm/$_projectname"
@@ -11,7 +11,7 @@ depends=('ocaml>=4.04.2')
 makedepends=('dune>=1.0.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('36a2944e72ffcc8b3ae64a2a2c80382833a09cdf24e224c13deb645a0295c333bd8e2a22a1375691f7bb5021d7fa3ac1620e90c59a3d17fdd7eb5ff7853ebf74')
+b2sums=('9a6a4f0b5f924e05b9e571097d294dcb98516325311ec9d405cb3330556a8c8d632c317e10dfb4af71bccc34efb503e219e9a9b600f7a43726a6f5e5ea5400ae')
 
 _sourcedirectory="$_projectname-$pkgver"
 
