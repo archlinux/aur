@@ -2,7 +2,7 @@
 _projectname='mew_vi'
 pkgname="ocaml-$_projectname"
 pkgver='0.5.0'
-pkgrel='6'
+pkgrel='7'
 pkgdesc='Vi-like modal editing engine generator'
 arch=('x86_64' 'aarch64')
 url="https://github.com/kandu/$_projectname"
@@ -12,7 +12,7 @@ makedepends=('dune>=1.1.0')
 checkdepends=('ocaml-ppx_expect')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('f6ee1375ceee60ccae1799d07a8bc55684fdbffc2275147ef19cf3c7d242663764e6630b9423287a78efacba17f410971e3fc397d202effb331f94dc00797eb0')
+b2sums=('30953927947b80391ccff3a7378bfc7d4edcff7164226225c5c1f0fc835312aa31220eedc2e29de663027dd32e316f4ac365494da0893f6d91094f35c036b0db')
 
 _sourcedirectory="$_projectname-$pkgver"
 

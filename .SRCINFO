@@ -1,7 +1,7 @@
 pkgbase = ocaml-mew_vi
 	pkgdesc = Vi-like modal editing engine generator
 	pkgver = 0.5.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/kandu/mew_vi
 	arch = x86_64
 	arch = aarch64
@@ -13,6 +13,6 @@ pkgbase = ocaml-mew_vi
 	depends = ocaml-react
 	options = !strip
 	source = ocaml-mew_vi-0.5.0.tar.gz::https://github.com/kandu/mew_vi/archive/0.5.0.tar.gz
-	sha512sums = f6ee1375ceee60ccae1799d07a8bc55684fdbffc2275147ef19cf3c7d242663764e6630b9423287a78efacba17f410971e3fc397d202effb331f94dc00797eb0
+	b2sums = 30953927947b80391ccff3a7378bfc7d4edcff7164226225c5c1f0fc835312aa31220eedc2e29de663027dd32e316f4ac365494da0893f6d91094f35c036b0db
 
 pkgname = ocaml-mew_vi
