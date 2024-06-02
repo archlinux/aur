@@ -1,14 +1,16 @@
 # Maintainer: Vladislav Nepogodin <nepogodin.vlad@gmail.com>
 # Contributor: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
+# probably don't need support for all the languages
+
 pkgbase=gccrs-git
-pkgname=({gccrs,gccrs-libs,lib32-gccrs-libs,gccrs-fortran,gccrs-rust}-git)
-pkgver=13.0.0_r193646.g3164de6ac1b
+pkgname=({gccrs,gccrs-libs,lib32-gccrs-libs,gccrs-rust}-git)
+pkgver=14.0.1_r213484.g646046091b7
 _majorver=${pkgver%%.*}
 pkgrel=1
 pkgdesc='The GNU Compiler Collection with rust front-end'
 arch=(x86_64)
-license=(GPL3 LGPL FDL custom)
+license=(GPL-3.0-with-GCC-exception GFDL-1.3-or-later)
 url='https://github.com/Rust-GCC/gccrs'
 makedepends=(
   binutils
@@ -18,7 +20,6 @@ makedepends=(
   lib32-gcc-libs
   libisl
   libmpc
-  libxcrypt
   python
   zstd
 )
@@ -29,7 +30,7 @@ checkdepends=(
   python-pytest
   tcl
 )
-options=(!emptydirs !lto !debug)
+options=(!emptydirs !lto)
 _libdir=usr/lib/gcc/$CHOST/${pkgver%_*}
 source=("${pkgname%-git}::git+https://github.com/Rust-GCC/gccrs.git"
         c89 c99
@@ -63,6 +64,7 @@ build() {
     --mandir=/usr/share/man
     --infodir=/usr/share/info
     --with-bugurl=https://cachyos.org/
+    --with-build-config=bootstrap-lto
     --with-linker-hash-style=gnu
     --with-system-zlib
     --enable-__cxa_atexit
@@ -73,6 +75,8 @@ build() {
     --enable-default-ssp
     --enable-gnu-indirect-function
     --enable-gnu-unique-object
+    --enable-libstdcxx-backtrace
+    --enable-link-serialization=1
     --enable-linker-build-id
     --enable-lto
     --enable-multilib
@@ -82,9 +86,8 @@ build() {
     --disable-libssp
     --disable-libstdcxx-pch
     --disable-werror
-    --with-build-config=bootstrap-lto
-    --enable-link-serialization=1
   )
+
   cd gccrs-build
 
   # Credits @allanmcrae
@@ -94,16 +97,16 @@ build() {
   CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
 
   "$srcdir/gccrs/configure" \
-    --enable-languages=c,c++,fortran,lto,rust \
+    --enable-languages=c,c++,lto,rust \
     --enable-bootstrap \
     "${_confflags[@]:?_confflags unset}"
 
   # see https://bugs.archlinux.org/task/71777 for rationale re *FLAGS handling
   make -O STAGE1_CFLAGS="-O2" \
-    BOOT_CFLAGS="$CFLAGS" \
-    BOOT_LDFLAGS="$LDFLAGS" \
-    LDFLAGS_FOR_TARGET="$LDFLAGS" \
-    bootstrap
+          BOOT_CFLAGS="$CFLAGS" \
+          BOOT_LDFLAGS="$LDFLAGS" \
+          LDFLAGS_FOR_TARGET="$LDFLAGS" \
+          bootstrap
 
   # make documentation
   make -O -C $CHOST/libstdc++-v3/doc doc-man-doxygen
@@ -120,7 +123,7 @@ package_gccrs-libs-git() {
   pkgdesc='Runtime libraries shipped by GCC (git version)'
   depends=('glibc>=2.27')
   options=(!emptydirs !strip)
-  provides=("gcc-libs-git=$pkgver-$pkgrel" gcc-libs gcc-multilib{,-git} libgfortran.so
+  provides=("gcc-libs-git=$pkgver-$pkgrel" gcc-libs gcc-multilib{,-git}
   libubsan.so libasan.so libtsan.so liblsan.so)
   conflicts=(gcc-libs{,-git})
   replaces=(gcc-multilib-git)
@@ -130,21 +133,20 @@ package_gccrs-libs-git() {
   rm -f "$pkgdir/$_libdir/libgcc_eh.a"
 
   for lib in libatomic \
-    libgfortran \
-    libgomp \
-    libitm \
-    libquadmath \
-    libsanitizer/{a,l,ub,t}san \
-    libstdc++-v3/src \
-    libvtv; do
+             libgomp \
+             libitm \
+             libquadmath \
+             libsanitizer/{a,l,ub,t}san \
+             libstdc++-v3/src \
+             libvtv; do
     make -C $CHOST/$lib DESTDIR="$pkgdir" install-toolexeclibLTLIBRARIES
   done
 
   make -C $CHOST/libstdc++-v3/po DESTDIR="$pkgdir" install
 
   for lib in libgomp \
-    libitm \
-    libquadmath; do
+             libitm \
+             libquadmath; do
     make -C $CHOST/$lib DESTDIR="$pkgdir" install-info
   done
 
@@ -164,7 +166,7 @@ package_gccrs-git() {
   provides=(gcc{,-multilib{,-git}})
   conflicts=(gcc{,-git})
   replaces=(gcc-multilib-git)
-  options=(!emptydirs staticlibs debug)
+  options=(!emptydirs staticlibs)
 
   cd gccrs-build
 
@@ -213,8 +215,6 @@ package_gccrs-git() {
   make -C $CHOST/32/libsanitizer/asan DESTDIR="$pkgdir" install-nodist_toolexeclibHEADERS
 
   make -C gcc DESTDIR="$pkgdir" install-man install-info
-  rm "$pkgdir"/usr/share/man/man1/gfortran.1
-  rm "$pkgdir"/usr/share/info/gfortran.info
 
   make -C libcpp DESTDIR="$pkgdir" install
   make -C gcc DESTDIR="$pkgdir" install-po
@@ -235,30 +235,6 @@ package_gccrs-git() {
   # byte-compile python libraries
   python -m compileall "$pkgdir/usr/share/gcc-${pkgver%_*}/"
   python -O -m compileall "$pkgdir/usr/share/gcc-${pkgver%_*}/"
-
-  # Install Runtime Library Exception
-  install -d "$pkgdir/usr/share/licenses/$pkgname/"
-  ln -s /usr/share/licenses/gcc-libs/RUNTIME.LIBRARY.EXCEPTION \
-    "$pkgdir/usr/share/licenses/$pkgname/"
-}
-
-package_gccrs-fortran-git() {
-  pkgdesc='Fortran front-end for GCC (git version)'
-  depends=("gccrs-git=$pkgver-$pkgrel" libisl.so)
-  provides=(gcc-fortran gcc-multilib{,-git})
-  conflicts=(gcc-fortran{,-git})
-  replaces=(gcc-multilib-git)
-
-  cd gccrs-build
-  make -C $CHOST/libgfortran DESTDIR="$pkgdir" install-cafexeclibLTLIBRARIES \
-    install-{toolexeclibDATA,nodist_fincludeHEADERS,gfor_cHEADERS}
-  make -C $CHOST/32/libgfortran DESTDIR="$pkgdir" install-cafexeclibLTLIBRARIES \
-    install-{toolexeclibDATA,nodist_fincludeHEADERS,gfor_cHEADERS}
-  make -C $CHOST/libgomp DESTDIR="$pkgdir" install-nodist_fincludeHEADERS
-  make -C gcc DESTDIR="$pkgdir" fortran.install-{common,man,info}
-  install -Dm755 gcc/f951 "$pkgdir/${_libdir}/f951"
-
-  ln -s gfortran "$pkgdir/usr/bin/f95"
 
   # Install Runtime Library Exception
   install -d "$pkgdir/usr/share/licenses/$pkgname/"
@@ -288,7 +264,7 @@ package_gccrs-rust-git() {
 package_lib32-gccrs-libs-git() {
   pkgdesc='32-bit runtime libraries shipped by GCC (git version)'
   depends=('lib32-glibc>=2.27')
-  provides=(lib32-gcc-libs libgfortran.so libubsan.so libasan.so)
+  provides=(lib32-gcc-libs libubsan.so libasan.so)
   conflicts=(lib32-gcc-libs{,-git})
   groups=(multilib-devel-git)
   options=(!emptydirs !strip)
@@ -299,13 +275,12 @@ package_lib32-gccrs-libs-git() {
   rm -f "$pkgdir/$_libdir/32/libgcc_eh.a"
 
   for lib in libatomic \
-    libgfortran \
-    libgomp \
-    libitm \
-    libquadmath \
-    libsanitizer/{a,l,ub}san \
-    libstdc++-v3/src \
-    libvtv; do
+             libgomp \
+             libitm \
+             libquadmath \
+             libsanitizer/{a,l,ub}san \
+             libstdc++-v3/src \
+             libvtv; do
     make -C $CHOST/32/$lib DESTDIR="$pkgdir" install-toolexeclibLTLIBRARIES
   done
 
