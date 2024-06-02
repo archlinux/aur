@@ -2,7 +2,7 @@
 
 _pkgname=iyuuplus
 pkgname="${_pkgname}-git"
-pkgver=20240519.102744
+pkgver=20240602.124924
 pkgrel=1
 pkgdesc="IYUU Auto Reseed Plus"
 arch=("any")
@@ -24,7 +24,7 @@ options=(!strip !debug)
 
 prepare() {
     cd "${_pkgname}"
-    sed -i 's|<span .\+git_pull.\+通过git拉取最新代码.\+</span>||' plugin/admin/app/view/index/dashboard.html
+    sed -i 's|<button .\+git_pull.\+通过git拉取最新代码.\+</button>||' plugin/admin/app/view/index/dashboard.html
     sed -i "s|current_git_commit()|\"$(git rev-parse --short HEAD)\"|" plugin/admin/app/controller/IndexController.php
     echo "$(git tag --sort=committerdate | tail -1 | sed 's|v||')" > .version
 }
