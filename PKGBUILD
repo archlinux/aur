@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=turtle-git
 _app_id="de.philippun1.${pkgname%-git}"
-pkgver=0.9.r0.gd542f7f
-pkgrel=3
+pkgver=0.9.r1.geeabb0e
+pkgrel=1
 pkgdesc="Manage your git repositories with easy-to-use dialogs in Nautilus."
 arch=('any')
 url="https://gitlab.gnome.org/philippun1/turtle"
@@ -42,9 +42,6 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
-
-  # https://gitlab.gnome.org/philippun1/turtle/-/issues/43
-  git cherry-pick -n eeabb0e3e2f70296009d679f7a14311f547b74f5
 }
 
 build() {
