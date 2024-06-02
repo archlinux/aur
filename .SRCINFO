@@ -1,0 +1,19 @@
+pkgbase = wonderlab-appimage-featue
+	pkgdesc = The next generation cross-platform Minecraft launcher. (feature branch)
+	pkgver = 2.0.0
+	pkgrel = 1.0
+	url = https://github.com/Blessing-Studio/WonderLab.Override
+	arch = x86_64
+	arch = aarch64
+	license = AGPL3
+	depends = fuse
+	optdepends = jre-openjdk: for launch Minecraft
+	conflicts = wonderlab
+	conflicts = wonderlab-git
+	conflicts = wonderlab-appimage
+	options = !strip
+	source_x86_64 = WonderLab-x86_64.AppImage::https://github.com/Blessing-Studio/WonderLab.Override/releases/download/AutoBuild_feature/WonderLab.2.0.0.linux-x64.AppImage
+	sha512sums_x86_64 = SKIP
+	source_aarch64 = WonderLab-x86_64.AppImage::https://github.com/Blessing-Studio/WonderLab.Override/releases/download/AutoBuild_feature/WonderLab.2.0.0.linux-arm64.AppImage
+
+pkgname = wonderlab-appimage-featue
