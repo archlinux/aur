@@ -2,7 +2,7 @@
 # Contributor: Florian Maunier <fmauneko@dissidence.ovh>
 
 pkgname=msquic
-pkgver=2.3.0
+pkgver=2.3.5
 pkgrel=1
 epoch=1
 pkgdesc="Microsoft implementation of the IETF QUIC protocol"
