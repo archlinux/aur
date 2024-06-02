@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/ampas/CTL"
 license=('custom')
 depends=('openexr' 'libtiff' 'aces-container')
-makedepends=('cmake')
+makedepends=('cmake' 'gcc' 'make')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ampas/CTL/archive/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('0a9f5f3de8964ac5cca31597aca74bf915a3d8214e3276fdcb52c80ad25b0096')
 
