@@ -2,7 +2,7 @@
 _projectname='uopt'
 pkgname="ocaml-$_projectname"
 pkgver='0.17.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='An [option]-like type that incurs no allocation, without requiring a reserved value in the underlying type'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
