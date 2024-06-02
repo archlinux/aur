@@ -2,7 +2,7 @@
 # Contributor: Fabien Devaux <fdev31@gmail.com>
 pkgname=wlr-layout-ui
 pkgver=1.6.12
-pkgrel=0
+pkgrel=1
 pkgdesc="GUI to configure your screens"
 arch=(any)
 url="https://github.com/fdev31/wlr-layout-ui"
@@ -12,31 +12,25 @@ depends=('python' 'python-pyglet' 'python-tomli-w' 'python-tomli')
 optdepends=('wlr-randr: To apply the configuration on other wlroots systems'
     'hyprland: To apply the configuration on Hyprland (recommended)',
     'xorg-xrandr: To apply the configuration on X11')
-makedepends=('git' 'python-build' 'python-installer' 'python-poetry')
+makedepends=('python-build' 'python-installer' 'python-poetry')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 replaces=()
 backup=()
 options=()
 install=
-source=(git+"https://github.com/fdev31/wlr-layout-ui.git#tag=${pkgver}")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/${pkgver}.tar.gz")
 noextract=()
-md5sums=('6ffd41a33fd9c3a84ab3b4723b342cc1')
-
-pkgver() {
-    cd "$srcdir/${pkgname%-git}"
-    git checkout ${pkgver}
-    printf "%s" "$(git describe --tags)"
-}
+md5sums=('a86b3d2ae061a198fb443010cea2fb6d')
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-    python -m build --wheel --no-isolation
+	python -m build --wheel --no-isolation
 }
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
 	python -m installer --destdir="$pkgdir" dist/*.whl
-    install -Dm644 "${srcdir}/wlr-layout-ui/files/wlr-layout-ui.desktop"\
-            "${pkgdir}/usr/share/applications/wlr-layout-ui.desktop"
+	install -Dm644 "${srcdir}/wlr-layout-ui/files/wlr-layout-ui.desktop"\
+		"${pkgdir}/usr/share/applications/wlr-layout-ui.desktop"
 }
