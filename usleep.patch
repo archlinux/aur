@@ -1,0 +1,13 @@
+diff --git a/GNU/Makefile b/GNU/Makefile
+index 8086b91..6dc0744 100644
+--- a/GNU/Makefile
++++ b/GNU/Makefile
+@@ -21,7 +21,7 @@ CBM_LNX_PATH=	/usr/local
+ CBM_WIN_PATH=	../
+ 
+ # Default compile flags.  Be careful with optimization (-O2)
+-CFLAGS=${WARNS}
++CFLAGS=${WARNS} -D_DEFAULT_SOURCE
+ #CFLAGS+=-DSVN=$(shell svn info | grep Revision | sed 's/Revision: //') 
+ #CFLAGS+=-DSVN=$(shell svnversion | sed -e 's/.*://' -e 's/[A-Z]*$//')
+ 

@@ -2,7 +2,7 @@
 
 pkgname=nibtools-git
 _pkgname=nibtools
-pkgver=r634.77ec1e1
+pkgver=r682.2625325
 pkgrel=1
 pkgdesc="Commodore 1541/1571 disk image nibbler"
 arch=('i686' 'x86_64')
@@ -11,8 +11,15 @@ license=('unknown')
 depends=('opencbm')
 makedepends=('git' 'cc65')
 provides=('nibtools')
-source=('git+https://github.com/OpenCBM/nibtools.git')
-md5sums=('SKIP')
+source=('git+https://github.com/OpenCBM/nibtools.git'
+	'usleep.patch')
+md5sums=('SKIP'
+         'bd7d136a698bca9b161ab72622205c3b')
+
+prepare() {
+  cd "${srcdir}/${_pkgname}"
+  patch -p1 -i ../usleep.patch
+}
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
