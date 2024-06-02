@@ -2,7 +2,7 @@
 _projectname='ppx_disable_unused_warnings'
 pkgname="ocaml-$_projectname"
 pkgver='0.17.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Expands [@disable_unused_warnings] into [@warning "-20-26-32-33-34-35-36-37-38-39-60-66-67"]'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"

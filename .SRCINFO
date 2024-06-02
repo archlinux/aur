@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_disable_unused_warnings
 	pkgdesc = Expands [@disable_unused_warnings] into [@warning "-20-26-32-33-34-35-36-37-38-39-60-66-67"]
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/janestreet/ppx_disable_unused_warnings
 	arch = x86_64
 	arch = aarch64
