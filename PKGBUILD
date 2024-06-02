@@ -97,6 +97,7 @@ build() {
 check() {
   cd "$srcdir"/"$_gitname"
 
+  # See http://xyz2tex.github.io/svg2tikz/contribute.html#tools on how to run tests.
   python -m unittest
 }
 
