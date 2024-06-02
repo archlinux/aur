@@ -2,7 +2,7 @@
 
 pkgname=ocaml-toml
 pkgver=7.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OCaml library providing a parser, a serializer and a printer for TOML"
 arch=('x86_64')
 url="https://ocaml-toml.github.io/To.ml"

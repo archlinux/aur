@@ -1,7 +1,7 @@
 pkgbase = ocaml-toml
 	pkgdesc = OCaml library providing a parser, a serializer and a printer for TOML
 	pkgver = 7.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ocaml-toml.github.io/To.ml
 	arch = x86_64
 	license = LGPL-3.0-only
