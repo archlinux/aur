@@ -1,7 +1,7 @@
 pkgbase = ocaml-logs_lwt
 	pkgdesc = Logging infrastructure for OCaml - with the Logs_lwt library included
 	pkgver = 0.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://erratique.ch/software/logs
 	arch = x86_64
 	arch = aarch64
@@ -18,6 +18,6 @@ pkgbase = ocaml-logs_lwt
 	conflicts = ocaml-logs
 	options = !strip
 	source = ocaml-logs_lwt-0.7.0.tar.gz::https://github.com/dbuenzli/logs/archive/v0.7.0.tar.gz
-	sha512sums = 071c4e0970f2ef86a78561407d6e333bb206ac11e0b14cdecfcf33e75701570986de11d7b1bc027cd3ec20d42da44b0242c4f8b343e4fbf75d58d8f01e4b3b81
+	b2sums = 065a0456d335cf75339272a2a504c94c08223e09202c743044e42d247f73d3a8529b0725ab503c8be358195177dabdd1185741207ed9d189184a960d0263a029
 
 pkgname = ocaml-logs_lwt

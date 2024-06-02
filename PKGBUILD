@@ -2,7 +2,7 @@
 _projectname='logs'
 pkgname="ocaml-${_projectname}_lwt"
 pkgver='0.7.0'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Logging infrastructure for OCaml - with the Logs_lwt library included'
 arch=('x86_64' 'aarch64')
 url="https://erratique.ch/software/$_projectname"
@@ -13,7 +13,7 @@ provides=("ocaml-$_projectname=$pkgver")
 conflicts=("ocaml-$_projectname")
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dbuenzli/$_projectname/archive/v$pkgver.tar.gz")
-sha512sums=('071c4e0970f2ef86a78561407d6e333bb206ac11e0b14cdecfcf33e75701570986de11d7b1bc027cd3ec20d42da44b0242c4f8b343e4fbf75d58d8f01e4b3b81')
+b2sums=('065a0456d335cf75339272a2a504c94c08223e09202c743044e42d247f73d3a8529b0725ab503c8be358195177dabdd1185741207ed9d189184a960d0263a029')
 
 _sourcedirectory="$_projectname-$pkgver"
 
