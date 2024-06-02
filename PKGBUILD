@@ -2,7 +2,7 @@
 
 pkgname=wipemychat-git
 _pkgname=wipemychat
-pkgver=v1.1.0.r0.9f7ee12
+pkgver=1.1.0.r0.9f7ee12
 pkgrel=1
 pkgdesc="Delete all your messages in public and private Telegram chats"
 arch=('any')
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgsrc"
-  printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  printf "%s" "$(git describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
