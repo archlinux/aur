@@ -1,0 +1,3 @@
+[marp-cli]
+source = "npm"
+npm= "@marp-team/marp-cli"
