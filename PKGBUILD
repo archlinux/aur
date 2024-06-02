@@ -175,7 +175,7 @@ for _p in "${pkgname[@]}"; do
     gt)
       eval "package_$_p() {
         pkgdesc+=' - ${_q:?} version'
-        depends=('lazarus${pkgtype:-}' 'desktop-file-utils' '${_q:?}')
+        depends=('lazarus${_pkgtype:-}' 'desktop-file-utils' '${_q:?}')
         provides=(lazarus-${_q:?}=${pkgver%%.r*})
         conflicts=('lazarus-gtk2' 'lazarus-gtk3' 'lazarus-qt5' 'lazarus-qt6')
 
@@ -185,7 +185,7 @@ for _p in "${pkgname[@]}"; do
     qt)
       eval "package_$_p() {
         pkgdesc+=' - ${_q:?} version'
-        depends=('lazarus${pkgtype:-}' '${_q:?}pas')
+        depends=('lazarus${_pkgtype:-}' '${_q:?}pas')
         provides=(lazarus-${_q:?}=${pkgver%%.r*})
         conflicts=('lazarus-gtk2' 'lazarus-gtk3' 'lazarus-qt5' 'lazarus-qt6')
 

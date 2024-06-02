@@ -39,7 +39,7 @@ pkgname = lazarus-git
 
 pkgname = lazarus-gtk3-git
 	pkgdesc = Delphi-like IDE for FreePascal - gtk3 version
-	depends = lazarus
+	depends = lazarus-git
 	depends = desktop-file-utils
 	depends = gtk3
 	provides = lazarus-gtk3=3.4
@@ -50,7 +50,7 @@ pkgname = lazarus-gtk3-git
 
 pkgname = lazarus-qt6-git
 	pkgdesc = Delphi-like IDE for FreePascal - qt6 version
-	depends = lazarus
+	depends = lazarus-git
 	depends = qt6pas
 	provides = lazarus-qt6=3.4
 	conflicts = lazarus-gtk2
