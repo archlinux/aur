@@ -2,7 +2,7 @@
 _projectname='multicoretests'
 pkgname="ocaml-$_projectname"
 pkgver='0.3'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='PBT testsuite and libraries for testing multicore OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocaml-multicore/$_projectname"
@@ -14,8 +14,8 @@ source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
 	'disable-dynlink-lin_tests_dsl-test.diff'
 )
-sha512sums=('32e1808e6228df93c2f017259dbb70cd7c8b399a07b04d2e1a84e1d729fb5c478bf706bfc3ec342d160011c990f1520c43ff9a8cd13dd718eec8399a31618d6e'
-            '03b4d703ddce013313a24ac6d850db2debde77023843ee5917cbe89da576f61fbfa0f84675e00af2db59ac52e10f28be0cdda5d2953afe6ecf159bc2895f51d8')
+b2sums=('60506716c8f773582f2690c74a2344d6f5d76f15fac831fc80340c505ee8dda7f1740f35321faeeb05eba5d525ed24a9256dc820c5292779d83b691cd21dd798'
+        '914f9bdd965c2a767510b2daeadc71c6572b5292be1a382198d8f2700cb8c16ea34c9382a6877d6c4b3c3b895501c381f3f9522e11d7f3870fafc39103652f49')
 
 _sourcedirectory="$_projectname-$pkgver"
 
