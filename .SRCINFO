@@ -1,6 +1,6 @@
 pkgbase = art-rawconverter-git
 	pkgdesc = rawconverter ART (RawTherapee fork with ease of use in mind) built from latest sources
-	pkgver = r10455_7ab71712c
+	pkgver = r10489_bc7ed3776
 	pkgrel = 1
 	url = https://bitbucket.org/agriggio/art/wiki/Home
 	arch = i686

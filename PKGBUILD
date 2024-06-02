@@ -1,6 +1,6 @@
 # Maintainer: René Wagner <rwagner at rw-net dot de>
 pkgname=art-rawconverter-git
-pkgver=r10455_7ab71712c
+pkgver=r10489_bc7ed3776
 pkgrel=1
 pkgdesc="rawconverter ART (RawTherapee fork with ease of use in mind) built from latest sources"
 arch=('i686' 'x86_64' 'aarch64')
@@ -27,7 +27,6 @@ build() {
 		-DCACHE_NAME_SUFFIX="-git" \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DPROC_TARGET_NUMBER=2 \
-		-DWITH_LTO="ON" \
 		-DENABLE_LIBRAW="ON" \
 		-DENABLE_OCIO="ON" \
 		-DOPTION_OMP="ON" \
