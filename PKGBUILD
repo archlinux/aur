@@ -4,35 +4,46 @@
 _ENABLE_CPU=${_ENABLE_CPU:-1}
 _ENABLE_CUDA=${_ENABLE_CUDA:-1}
 _ENABLE_ROCM=${_ENABLE_ROCM:-1}
+
+# additional backends if set to 1
+_ENABLE_PYTHON=${_ENABLE_PYTHON:-1}
+_ENABLE_PIPER=${_ENABLE_PIPER:-0}
+
 # if GPU_TARGETS and AMDGPU_TARGETS are not set, populate build architecture list from arch:python-pytorch@2.2.2-3
 _AMDGPU_TARGETS="gfx906;gfx908;gfx90a;gfx940;gfx941;gfx942;gfx1010;gfx1012;gfx1030;gfx1100;gfx1101;gfx1102"
 if test -n "$GPU_TARGETS"; then _AMDGPU_TARGETS="$GPU_TARGETS"; fi
 if test -n "$AMDGPU_TARGETS"; then _AMDGPU_TARGETS="$AMDGPU_TARGETS"; fi
-# available GO_TAGS (use space as seperator): tts tinydream stablediffusion
-_GO_TAGS="${_GO_TAGS:-}"
-_OPTIONAL_GRPC="${_OPTIONAL_GRPC:-}"
-# optional args for main Makefile calling
-_OPTIONAL_MAKE_ARGS="${_OPTIONAL_MAKE_ARGS:-}"
-# limit external sources to llama.cpp, go-piper, whisper.cpp, go-bert and go-tiny-dream and submodules
-# disabled sources: sources/go-llama.cpp sources/gpt4all sources/go-rwkv.cpp sources/go-stable-diffusion sources/go-bert
-_EXTERNAL_SOURCES="${_EXTERNAL_SOURCES:-backend/cpp/llama/llama.cpp sources/go-piper sources/whisper.cpp sources/go-tiny-dream}"
-if test -n "$(echo "$_GO_TAGS" | grep -o "tts")"; then
-  _OPTIONAL_GRPC="backend-assets/grpc/piper $_OPTIONAL_GRPC"
-fi
-if test -n "$(echo "$_GO_TAGS" | grep -o "stablediffusion")"; then
-  _OPTIONAL_GRPC="backend-assets/grpc/stablediffusion $_OPTIONAL_GRPC"
-fi
-if test -n "$(echo "$_GO_TAGS" | grep -o "tinydream")"; then
-  _OPTIONAL_GRPC="backend-assets/grpc/tinydream $_OPTIONAL_GRPC"
-fi
-# backends to be build: llama-cpp, local-store, whisper
-# disabled backends: all python, bert-embeddings llama-ggml gpt4all rwkv 
-_GRPC_BACKENDS="$_OPTIONAL_GRPC backend-assets/grpc/llama-cpp backend-assets/grpc/local-store backend-assets/grpc/whisper"
-_pkgname="localai"
 
-pkgbase="${_pkgname}-git"
+# additional optional grpc backends
+_OPTIONAL_GRPC="${_OPTIONAL_GRPC:-}"
+# additional optional args for main Makefile calling
+_OPTIONAL_MAKE_ARGS="${_OPTIONAL_MAKE_ARGS:-}"
+
+# limit pulling external sources
+_EXTERNAL_SOURCES="backend/cpp/llama/llama.cpp sources/whisper.cpp"
+# disabled_sources=go-llama.cpp gpt4all go-rwkv.cpp go-stable-diffusion go-tiny-dream go-bert go-piper
+_DISABLED_MOD_EDIT="nomic-ai/gpt4all/gpt4all mudler/go-stable-diffusion \
+  go-skynet/go-llama.cpp go-skynet/go-bert.cpp donomii/go-rwkv.cpp M0Rf30/go-tiny-dream"
+
+if [[ $_ENABLE_PIPER = 1 ]]; then
+  _EXTERNAL_SOURCES="$_EXTERNAL_SOURCES sources/go-piper"
+  _OPTIONAL_GRPC="backend-assets/grpc/piper $_OPTIONAL_GRPC"
+  _GO_TAGS="tts"
+else
+ _DISABLED_MOD_EDIT="$_DISABLED_MOD_EDIT mudler/go-piper"
+ _GO_TAGS=""
+fi
+
+# enabled backends
+_GRPC_BACKENDS="backend-assets/grpc/llama-cpp-grpc backend-assets/util/llama-cpp-rpc-server \
+backend-assets/grpc/llama-cpp-avx2 backend-assets/grpc/whisper backend-assets/grpc/local-store \
+$_OPTIONAL_GRPC"
+# disabled backends: llama-ggml gpt4all rwkv tinydream bert-embeddings huggingface stablediffusion
+
+_pkgbase="localai"
+pkgbase="${_pkgbase}-git"
 pkgname=()
-pkgver=2.12.3.112.g9dbd217c
+pkgver=2.16.0.66.g77d752a4
 pkgrel=1
 pkgdesc="Self-hosted OpenAI API alternative - Open Source, community-driven and local-first."
 url="https://github.com/mudler/LocalAI"
@@ -57,7 +68,21 @@ makedepends=(
   'ffmpeg'
 )
 
-if test "$(echo "$_GO_TAGS" | grep -o "tts")" = "tts"; then
+if [[ $_ENABLE_PYTHON = 1 ]]; then
+  depends+=(
+    'python-numpy'
+    'python-opencv'
+    'python-pillow'
+    'python-pytorch'
+    'python-torchaudio'
+    'python-torchvision'
+    'python-protobuf'
+    'python-grpcio'
+		'python-grpcio-tools'
+  )
+fi
+
+if [[ $_ENABLE_PIPER = 1 ]]; then
   depends+=(
     'onnxruntime'
   )
@@ -92,91 +117,100 @@ if [[ $_ENABLE_ROCM = 1 ]]; then
 fi
 
 source=(
-  "${_pkgname}"::"git+https://github.com/mudler/LocalAI"
+  "${_pkgbase}"::"git+https://github.com/mudler/LocalAI"
+	"libbackend.patch"
+  "README.md"
 )
 
 sha256sums=(
   'SKIP'
+	'SKIP'
+  'SKIP'
 )
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_pkgbase}"
   (git describe --always --tags | tr "-" "." | tail -c +2)
 }
 
 prepare() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_pkgbase}"
 
   # display config
-  echo "_ENABLE_CPU=$_ENABLE_CPU"
-  echo "_ENABLE_CUDA=$_ENABLE_CUDA"
-  echo "_ENABLE_ROCM=$_ENABLE_ROCM"
-  echo "_GO_TAGS=$_GO_TAGS"
-  echo "_OPTIONAL_MAKE_ARGS=$_OPTIONAL_MAKE_ARGS"
-  echo "_EXTERNAL_SOURCES=$_EXTERNAL_SOURCES"
-  echo "_OPTIONAL_GRPC=$_OPTIONAL_GRPC"
-  echo "_GRPC_BACKENDS=$_GRPC_BACKENDS"
+  cat - << EOF
+Build Options:
 
+_ENABLE_CPU=$_ENABLE_CPU
+_ENABLE_CUDA=$_ENABLE_CUDA
+_ENABLE_ROCM=$_ENABLE_ROCM
+_ENABLE_PIPER=$_ENABLE_PIPER
+_ENABLE_PYTHON=$_ENABLE_PYTHON
+  
+_OPTIONAL_MAKE_ARGS=$_OPTIONAL_MAKE_ARGS
+_EXTERNAL_SOURCES=$_EXTERNAL_SOURCES
+_DISABLED_MOD_EDIT=$_DISABLED_MOD_EDIT
+_OPTIONAL_GRPC=$_OPTIONAL_GRPC
+_GRPC_BACKENDS=$_GRPC_BACKENDS
+EOF
+
+  # modify Makefile
   # modify get-sources
   sed -ri "s#get-sources: .*#get-sources: $_EXTERNAL_SOURCES#g" Makefile
+  # modify (remove) go mod edits for inactive backend sources
+  for i in $_DISABLED_MOD_EDIT; do
+    sed -ri 's#.+\-replace github.com/'$i'.+##g' Makefile
+  done
+  
+  # modify python backend build library
+  patch -N -i "${srcdir}/libbackend.patch" -p1
 
-  # remove go mod edits for inactive backend sources
-  sed -ri 's#.+\-replace github.com/nomic-ai/gpt4all/gpt4all.+##g' Makefile
-  sed -ri 's#.+\-replace github.com/donomii/go-rwkv.cpp.+##g' Makefile
-  sed -ri 's#.+\-replace github.com/go-skynet/go-llama.cpp.+##g' Makefile
-  sed -ri 's#.+\-replace github.com/go-skynet/go-bert.cpp.+##g' Makefile
-  sed -ri 's#.+\-replace github.com/mudler/go-stable-diffusion.+##g' Makefile
-
-  # verbose output of find
-  # sed -ri 's#^([\t ]+)(LLAMA_VERSION=.+-C backend/cpp/llama grpc-server[\t ]*)#\1CMAKE_ARGS="${CMAKE_ARGS} --debug-find" \2##g' Makefile
-
-  # fetch sources of backends to be recursive git checked out before build()
+	# fetch sources of backends to be recursive git checked out before build()
   mkdir -p "sources"
   make $_OPTIONAL_MAKE_ARGS $_EXTERNAL_SOURCES
 
-  # fix piper build
-  mkdir -p "sources/go-piper/piper-phonemize/pi/lib"
-  touch "sources/go-piper/piper-phonemize/pi/lib/keep"
-  sed -ri 's#(\$\(MAKE\) -C sources/go-piper libpiper_binding.a) example/main#\1#g' Makefile
-
-  # # fix stablediffusion
-  # sed -ri "s/^(#include <ncnn\/)(benchmark|net)(\.h>)/\1src\/\2\3/g" \
-  #   sources/go-stable-diffusion/stablediffusion.hpp
+  if [[ $_ENABLE_PIPER = 1 ]]; then
+    # piper build fixes
+    mkdir -p "sources/go-piper/piper-phonemize/pi/lib"
+    touch "sources/go-piper/piper-phonemize/pi/lib/keep"
+    sed -ri 's#(\$\(MAKE\) -C sources/go-piper libpiper_binding.a) example/main#\1#g' Makefile
+  fi
 
   # copy for different build types
   cd "${srcdir}"
-  for n in "${_pkgname}-cpu" "${_pkgname}-cuda" "${_pkgname}-rocm"; do
+  for n in "${_pkgbase}-cpu" "${_pkgbase}-cuda" "${_pkgbase}-rocm"; do
     if test -d "$n"; then rm -rf "$n"; fi
-    cp -r "${_pkgname}" "$n"
+    cp -r "${_pkgbase}" "$n"
   done
 
   # ROCM fixes
-  cd "${srcdir}/${_pkgname}-rocm"
+  cd "${srcdir}/${_pkgbase}-rocm"
+  
   # fix build error on ROCM by removing unsupported cf-protection from CMAKE_CXX_FLAGS
-  sed -i '1s/^/string(REPLACE "-fcf-protection" "" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")\n/' \
-    backend/cpp/llama/llama.cpp/CMakeLists.txt
-  # fix --offload-arch for multiple GPU_TARGETS, makefile does "," splitting, data is ";"
-  #   also: --ofload-arch is deprecated, replace it with -DGPU_TARGETS
-  for i in backend/cpp/llama/llama.cpp/Makefile sources/whisper.cpp/Makefile; do
+  export CXXFLAGS+="$CXXFLAGS -fcf-protection=none"
+  # sed -i '1s/^/string(REPLACE "-fcf-protection" "" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")\n/' \
+  #  backend/cpp/llama/llama.cpp/CMakeLists.txt
+  
+  # fix whisper build_ --offload-arch is deprecated, replace it with -DGPU_TARGETS
+  for i in sources/whisper.cpp/Makefile; do
     sed -ri 's/^(.+HIPFLAGS.+\+=).+offload-arch=.+$/\1 -DGPU_TARGETS="$(GPU_TARGETS)"/g' "$i"
   done
 }
 
 _build() {
-  if test -n "$(echo "$_GO_TAGS" | grep -o "stablediffusion")"; then
-    make BUILD_TYPE="$1" GRPC_BACKENDS="backend-assets/grpc/stablediffusion" GO_TAGS="$_GO_TAGS" $_OPTIONAL_MAKE_ARGS build
-  fi
   make BUILD_TYPE="$1" GRPC_BACKENDS="$_GRPC_BACKENDS" GO_TAGS="$_GO_TAGS" $_OPTIONAL_MAKE_ARGS build
+  if [[ $_ENABLE_PYTHON = 1 ]]; then
+		make BUILD_TYPE="$1" protogen-python
+	fi
 }
 
 build() {
   if [[ $_ENABLE_CPU = 1 ]]; then
-    cd "${srcdir}/${_pkgname}-cpu"
+    cd "${srcdir}/${_pkgbase}-cpu"
     _build openblas
   fi
 
   if [[ $_ENABLE_CUDA = 1 ]]; then
-    cd "${srcdir}/${_pkgname}-cuda"
+    cd "${srcdir}/${_pkgbase}-cuda"
     export CUDA_HOME="${CUDA_HOME:-/opt/cuda}"
     export PATH="$CUDA_HOME/bin:$PATH"
     MAGMA_HOME="$CUDA_HOME/targets/x86_64-linux" CUDA_LIBPATH="$CUDA_HOME/lib64/" \
@@ -184,7 +218,7 @@ build() {
   fi
 
   if [[ $_ENABLE_ROCM = 1 ]]; then
-    cd "${srcdir}/${_pkgname}-rocm"
+    cd "${srcdir}/${_pkgbase}-rocm"
     export ROCM_HOME="${ROCM_HOME:-/opt/rocm}"
     export PATH="$ROC_HOME/bin:$PATH"
     MAGMA_HOME="$ROCM_HOME" AMDGPU_TARGETS="$_AMDGPU_TARGETS" GPU_TARGETS="$_AMDGPU_TARGETS" \
@@ -193,26 +227,33 @@ build() {
 }
 
 _package_install() {
-  install -Dm755 "local-ai" "${pkgdir}/usr/bin/local-ai"
-  install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${_pkgname}"
-  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
+  install -Dm755 "local-ai" "${pkgdir}/usr/bin/localai"
+  ln -s "/usr/bin/localai" "${pkgdir}/usr/bin/local-ai"
+  install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${_pkgbase}"
+  install -Dm644 "${srcdir}/README.md" "${pkgdir}/usr/share/doc/${_pkgbase}/README-build.md"
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgbase}"
+  if [[ $_ENABLE_PYTHON = 1 ]]; then
+    cp -a backend/python "${pkgdir}/usr/share/${_pkgbase}/python"
+  fi
+  install -Dm644 localai.service -t "${pkgdir}/usr/lib/systemd/user"
+  install -Dm644 localai.env -t "${pkgdir}/usr/share/${_pkgbase}"
 }
 
 package_localai-git() {
-  cd "${srcdir}/${_pkgname}-cpu"
+  cd "${srcdir}/${_pkgbase}-cpu"
   depends+=('openblas')
   _package_install
 }
 
 package_localai-git-cuda() {
-  cd "${srcdir}/${_pkgname}-cuda"
+  cd "${srcdir}/${_pkgbase}-cuda"
   pkgdesc+=' (with CUDA support)'
   depends+=('cuda')
   _package_install
 }
 
 package_localai-git-rocm() {
-  cd "${srcdir}/${_pkgname}-rocm"
+  cd "${srcdir}/${_pkgbase}-rocm"
   pkgdesc+=' (with ROCM support)'
   depends+=('rocm-hip-runtime' 'hipblas' 'rocblas')
   _package_install

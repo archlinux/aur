@@ -1,0 +1,58 @@
+diff --git a/backend/python/common/libbackend.sh b/backend/python/common/libbackend.sh
+index 5c5805b9..92d9010e 100644
+--- a/backend/python/common/libbackend.sh
++++ b/backend/python/common/libbackend.sh
+@@ -1,7 +1,7 @@
+ 
+ 
+ # init handles the setup of the library
+-# 
++#
+ # use the library by adding the following line to a script:
+ # source $(dirname $0)/../common/libbackend.sh
+ #
+@@ -75,10 +75,10 @@ function getBuildProfile() {
+ # always result in an activated virtual environment
+ function ensureVenv() {
+     if [ ! -d "${MY_DIR}/venv" ]; then
+-        uv venv ${MY_DIR}/venv
++        python3 -m venv --system-site-packages ${MY_DIR}/venv
+         echo "virtualenv created"
+     fi
+-    
++
+     if [ "x${VIRTUAL_ENV}" != "x${MY_DIR}/venv" ]; then
+         source ${MY_DIR}/venv/bin/activate
+         echo "virtualenv activated"
+@@ -111,21 +111,11 @@ function ensureVenv() {
+ function installRequirements() {
+     ensureVenv
+ 
+-    # These are the requirements files we will attempt to install, in order
+-    declare -a requirementFiles=(
+-        "${MY_DIR}/requirements-install.txt"
+-        "${MY_DIR}/requirements.txt"
+-        "${MY_DIR}/requirements-${BUILD_TYPE}.txt"
+-    )
+-
+-    if [ "x${BUILD_TYPE}" != "x${BUILD_PROFILE}" ]; then
+-        requirementFiles+=("${MY_DIR}/requirements-${BUILD_PROFILE}.txt")
+-    fi
+-
+-    for reqFile in ${requirementFiles[@]}; do
++    for reqFile in "${MY_DIR}/requirements.txt"; do
+         if [ -f ${reqFile} ]; then
++            sed -ri '/^(torch|torchvision|torchaudio)/d' "${reqFile}"
+             echo "starting requirements install for ${reqFile}"
+-            uv pip install ${EXTRA_PIP_INSTALL_FLAGS} --requirement ${reqFile}
++            pip install ${EXTRA_PIP_INSTALL_FLAGS} --requirement ${reqFile}
+             echo "finished requirements install for ${reqFile}"
+         fi
+     done
+@@ -210,4 +200,4 @@ function checkTargets() {
+     echo false
+ }
+ 
+-init
+\ No newline at end of file
++init

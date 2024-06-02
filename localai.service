@@ -1,0 +1,57 @@
+[Unit]
+Description=LocalAI server
+
+[Service]
+Type=simple
+WorkingDirectory=%h
+Restart=on-failure
+
+PrivateTmp=yes
+
+# enabled extra backends
+Environment=EXTRA_BACKENDS="bark diffusers rerankers sentencetransformers transformers transformers-musicgen"
+# disabled: autogptq coqui exllama exllama2 mamba openvoice parler-tts petals vall-e-x
+Environment=EXTERNAL_GRPC_BACKENDS="bark:%h/.cache/localai/backend_extra/bark/run.sh,\
+diffusers:%h/.cache/localai/backend_extra/diffusers/run.sh,\
+rerankers:%h/.cache/localai/backend_extra/rerankers/run.sh,\
+sentencetransformers:%h/.cache/localai/backend_extra/sentencetransformers/run.sh,\
+transformers:%h/.cache/localai/backend_extra/transformers/run.sh,\
+transformers-musicgen:%h/.cache/localai/backend_extra/transformers-musicgen/run.sh"
+
+# default environment and local env
+EnvironmentFile=/usr/share/localai/löcalai.env
+EnvironmentFile=-%h/.config/localai/.env
+
+# create directories
+ExecStartPre=mkdir -p \
+  %h/.config/localai \
+  %h/.local/share/localai/models/config \
+  %h/.cache/localai/backend_assets \
+  %h/.cache/localai/backend_extra \
+  %T/localai/audio \
+  %T/localai/images \
+  %T/localai/upload
+
+# generate enabled python extra backends
+ExecStartPre=bash -c "\
+  cd %h/.cache/localai/backend_extra; \
+  for b in $EXTRA_BACKENDS; do \
+    if test ! -e $b; then \
+      cp -r /usr/share/localai/python/$b \
+        %h/.cache/localai/backend_extra; \
+      make -C $b; \
+    fi; \
+  done"
+
+# start server
+ExecStart=/usr/bin/localai run \
+  --config-path "%h/.config/localai" \
+  --localai-config-dir "%h/.config/localai" \
+  --models-path "%h/.local/share/localai/models" \
+  --backend-assets-path "%h/.cache/localai/backend_assets" \
+  --audio-path "%T/localai/audio" \
+  --image-path "%T/localai/images" \
+  --upload-path "%T/localai/upload"
+
+[Install]
+WantedBy=default.target
