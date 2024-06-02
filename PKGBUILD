@@ -12,7 +12,7 @@ pkgname=(python-ipalib
          freeipa-client-common
          freeipa-client)
 pkgver=4.12.0
-pkgrel=2
+pkgrel=3
 pkgdesc='The Identity, Policy and Audit system'
 arch=('i686' 'x86_64')
 url='http://www.freeipa.org/'
@@ -96,7 +96,7 @@ package_python-ipalib() {
 		'python-gssapi>=1.2.0'
 		'gnupg'
 		'keyutils'
-		'python-cryptography>=1.4'
+		'python-cryptography>=1.6'
 		'python-netaddr>=0.7.16'
 		'sssd'
 		'python-qrcode>=5.0.0'
@@ -108,11 +108,17 @@ package_python-ipalib() {
 		'python-setuptools'
 		'python-six'
 		'python-ldap'
-		'python-netaddr'
 		'python-dnspython>=1.15'
 		'python-netifaces>=0.10.4'
 		'python-pyusb'
-		'python-urllib3')
+		'python-urllib3'
+		'python-ifaddr'
+		'python-requests'
+		'python-lxml'
+		'python-pillow'
+		'python-argcomplete'
+		'python-systemd'
+		'python-jwcrypto>=0.4.2')
 	provides=(
 		"python-ipapython=$pkgver-$pkgrel"
 		"python-ipaplatform=$pkgver-$pkgrel")
