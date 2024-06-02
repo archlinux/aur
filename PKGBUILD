@@ -1,21 +1,17 @@
-# Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
+# Maintainer: Nikos Toutountzoglou <nikos dot toutou at protonmail dot com>
 
 pkgname=flashbrowser
 _appname=FlashBrowser
 pkgver=0.8.1
 _pkgver=0.81
-pkgrel=3
+pkgrel=4
 pkgdesc="A browser capable of viewing/displaying pages with embedded flash content"
 url="https://flash.pm/"
-arch=(x86_64)
-license=(unknown)
-makedepends=(
-	nodejs-lts-iron
-	npm
-	imagemagick
-)
-provides=(flashbrowser)
-conflicts=(flashbrowser)
+arch=('x86_64')
+license=('unknown')
+makedepends=('nodejs-lts-iron' 'npm' 'imagemagick')
+provides=('flashbrowser')
+conflicts=('flashbrowser')
 source=("${_appname}-${_pkgver}.tar.gz::https://github.com/radubirsan/FlashBrowser/archive/refs/tags/v${_pkgver}.tar.gz"
 	"https://github.com/darktohka/clean-flash-builds/releases/download/v1.7/flash_player_patched_ppapi_linux.x86_64.tar.gz"
 	"FlashBrowser.desktop")
@@ -28,30 +24,29 @@ prepare() {
 	# Extract FlashPlugin (PPAPI)
 	mkdir -p flash_plugin
 	bsdtar -xf flash_player_patched_ppapi_linux.x86_64.tar.gz -C flash_plugin
-}
-
-build() {
-	cd $_appname-$_pkgver
-	# Install all dependencies
-	npm ci --cache ../npm-cache --legacy-peer-deps
-	# Build
-	npm exec electron-packager -- ./ FlashBrowser --platform=linux --overwrite --icon=icon.ico -p always --prune-license nm-prune --force
+	# Remove macOS FlashPlugin
+	rm -r "$srcdir/${_appname}-${_pkgver}/flashver"/*
+	# Remove dotfiles
+	find "$srcdir/${_appname}-${_pkgver}" \( -name '.git*' -o -name '.DS*' -o -name '._*' \) | xargs rm -r	
 }
 
 package() {
-	install -d "$pkgdir"/opt/$pkgname "$pkgdir"/usr/bin
+	cd $_appname-$_pkgver
+	npm ci --cache "${srcdir}/npm-cache" --legacy-peer-deps
+	npm exec electron-packager -- ./ ${_appname} --platform=linux --overwrite --icon=icon.ico -p always --prune-license nm-prune --force
+	install -d "$pkgdir/opt/$pkgname" "$pkgdir/usr/bin"
 	# Install app
-	cp -a --no-preserve=ownership "$srcdir"/$_appname-$_pkgver/$_appname-linux-x64/* "$pkgdir"/opt/$pkgname
+	cp -a --no-preserve='ownership' "$srcdir/$_appname-$_pkgver/$_appname-linux-x64"/* "$pkgdir/opt/$pkgname"
 	# Install FlashPlugin
-	install -Dm755 "$srcdir"/flash_plugin/libpepflashplayer.so \
-		"$pkgdir"/opt/$pkgname/resources/app/flashver/libpepflashplayer.so
+	install -Dm755 "$srcdir/flash_plugin/libpepflashplayer.so" \
+		"$pkgdir/opt/$pkgname/resources/app/flashver/libpepflashplayer.so"
 	# Install /usr/bin executable
-	ln -s /opt/$pkgname/$_appname "$pkgdir"/usr/bin/$_appname
+	ln -s "/opt/$pkgname/$_appname" "$pkgdir/usr/bin/$_appname"
 	# Install desktop entry file
-	install -Dm644 "$srcdir"/$_appname.desktop "$pkgdir"/usr/share/applications/$_appname.desktop
+	install -Dm644 "$srcdir/$_appname.desktop" "$pkgdir/usr/share/applications/$_appname.desktop"
 	# Install icons
 	for d in 16 24 32 48 256; do
-		install -d "$pkgdir"/usr/share/icons/hicolor/${d}x${d}/apps
+		install -d "$pkgdir/usr/share/icons/hicolor/${d}x${d}/apps"
 	done
 
 	for i in 16 24 32 48 256; do
@@ -65,12 +60,11 @@ package() {
 			layer=3
 		elif [ $i = '256' ]; then layer=4; fi
 
-		convert "$srcdir"/$_appname-$_pkgver/icon.ico[${layer}] -define icon:auto-resize=${i} \
-			"$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/${_appname}.png
+		magick "$srcdir/$_appname-$_pkgver/icon.ico[${layer}]" -define icon:auto-resize=${i} \
+			"$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/${_appname}.png"
 	done
-	# Remove macOS FlashPlugin
-	rm -r "$pkgdir"/opt/$pkgname/resources/app/flashver/PepperFlashPlayer.plugin
-	# Remove empty folders and dotfiles
-	find "$pkgdir"/opt/flashbrowser/resources/app -name '.git*' | xargs rm -r
-	find "$pkgdir"/opt/flashbrowser/resources/app -empty -delete
+	# Remove references to $pkgdir
+	find "$pkgdir" -type f -name package.json -print0 | xargs -0 sed -i "/_where/d"
+	# Remove empty folders
+	find "$pkgdir/opt/flashbrowser/resources/app" -empty -delete
 }
