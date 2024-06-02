@@ -1,7 +1,7 @@
 pkgbase = ocaml-async_rpc_kernel
 	pkgdesc = Platform-independent core of Async RPC library for OCaml
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/janestreet/async_rpc_kernel
 	arch = x86_64
 	arch = aarch64
