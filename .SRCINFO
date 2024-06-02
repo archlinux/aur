@@ -1,7 +1,7 @@
 pkgbase = wlr-layout-ui
 	pkgdesc = GUI to configure your screens
-	pkgver = 1.6.12
-	pkgrel = 1
+	pkgver = 1.6.13
+	pkgrel = 0
 	url = https://github.com/fdev31/wlr-layout-ui
 	arch = any
 	license = MIT
@@ -17,7 +17,7 @@ pkgbase = wlr-layout-ui
 	optdepends = xorg-xrandr: To apply the configuration on X11
 	provides = wlr-layout-ui
 	conflicts = wlr-layout-ui
-	source = wlr-layout-ui-1.6.12.tar.gz::https://github.com/fdev31/wlr-layout-ui/archive/refs/tags/1.6.12.tar.gz
-	md5sums = a86b3d2ae061a198fb443010cea2fb6d
+	source = wlr-layout-ui-1.6.13.tar.gz::https://github.com/fdev31/wlr-layout-ui/archive/refs/tags/1.6.13.tar.gz
+	md5sums = b180c13ee62fc8494db6b1c43838193d
 
 pkgname = wlr-layout-ui
