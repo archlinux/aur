@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_fields_conv
 	pkgdesc = Generation of accessor and iteration functions for ocaml records
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/janestreet/ppx_fields_conv
 	arch = x86_64
