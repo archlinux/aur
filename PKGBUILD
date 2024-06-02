@@ -3,7 +3,7 @@
 _projectname='ppx_variants_conv'
 pkgname="ocaml-$_projectname"
 pkgver='0.17.0'
-pkgrel='1'
+pkgrel='2'
 epoch='1'
 pkgdesc='Generation of accessor and iteration functions for ocaml variant types'
 arch=('x86_64' 'aarch64')
