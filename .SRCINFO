@@ -35,6 +35,7 @@ pkgbase = art-rawconverter
 	optdepends = art-rawconverter-ctlscripts: CTL scripts for advanced color transformations
 	optdepends = lcms2-ff: lcms2 with fast-float plugin for improved export speed
 	conflicts = art-rawconverter-git
+	options = !debug
 	source = art-rawconverter_1.22::git+https://bitbucket.org/agriggio/art.git#tag=1.22
 	sha256sums = SKIP
 
