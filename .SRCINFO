@@ -1,7 +1,7 @@
 pkgbase = jellyfin-media-player-git
 	pkgdesc = Jellyfin Desktop Client
 	pkgver = r1789.1ca6cb8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jellyfin/jellyfin-media-player
 	arch = i686
 	arch = x86_64
@@ -20,10 +20,10 @@ pkgbase = jellyfin-media-player-git
 	provides = jellyfin-media-player
 	conflicts = jellyfin-media-player
 	source = git+https://github.com/jellyfin/jellyfin-media-player.git
-	source = jellyfin_10.9.3.tar.xz::https://repo.jellyfin.org/files/server/portable/stable/v10.9.3/any/jellyfin_10.9.3.tar.xz
+	source = jellyfin_10.9.4.tar.xz::https://repo.jellyfin.org/files/server/portable/stable/v10.9.4/any/jellyfin_10.9.4.tar.xz
 	source = disable-update-check.patch
 	sha256sums = SKIP
-	sha256sums = bffffd8a1da06852ad903587f497f9af348fa5aa2209c65eb1d8792a58543048
+	sha256sums = fa6e18f83d24c4f91b40dec97cd1b8eab5666c7d2b83ad76fcebe99d72f554a4
 	sha256sums = 23727ef8f727ac17af228f29aa5508230caac9d02f37d6c12908fcf50d4f382a
 
 pkgname = jellyfin-media-player-git

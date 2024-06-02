@@ -2,8 +2,8 @@
 
 pkgname=jellyfin-media-player-git
 pkgver=r1789.1ca6cb8
-_webver=10.9.3
-pkgrel=2
+_webver=10.9.4
+pkgrel=3
 pkgdesc='Jellyfin Desktop Client'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -16,7 +16,7 @@ source=('git+https://github.com/jellyfin/jellyfin-media-player.git'
         "jellyfin_${_webver}.tar.xz::https://repo.jellyfin.org/files/server/portable/stable/v${_webver}/any/jellyfin_${_webver}.tar.xz"
         "disable-update-check.patch")
 sha256sums=('SKIP'
-            'bffffd8a1da06852ad903587f497f9af348fa5aa2209c65eb1d8792a58543048'
+            'fa6e18f83d24c4f91b40dec97cd1b8eab5666c7d2b83ad76fcebe99d72f554a4'
             '23727ef8f727ac17af228f29aa5508230caac9d02f37d6c12908fcf50d4f382a')
 
 pkgver() {
