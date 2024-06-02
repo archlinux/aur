@@ -1,7 +1,7 @@
 pkgbase = ocaml-expect_test_helpers_core
 	pkgdesc = Helpers for writing expectation tests for OCaml
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/janestreet/expect_test_helpers_core
 	arch = x86_64

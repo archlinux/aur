@@ -3,7 +3,7 @@
 _projectname='expect_test_helpers_core'
 pkgname="ocaml-$_projectname"
 pkgver='0.17.0'
-pkgrel='1'
+pkgrel='2'
 epoch='1'
 pkgdesc='Helpers for writing expectation tests for OCaml'
 arch=('x86_64' 'aarch64')
