@@ -2,7 +2,7 @@
 _projectname='ppx_log'
 pkgname="ocaml-$_projectname"
 pkgver='0.17.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Ppx_sexp_message-like extension nodes for lazily rendering log messages'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
