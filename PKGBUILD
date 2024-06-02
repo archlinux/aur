@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=valveresourceformat-bin
-pkgver=9.2
+pkgver=10.0
 pkgrel=1
 pkgdesc="Valve's Source 2 resource file format parser, decompiler, and exporter."
 arch=('x86_64')
@@ -14,9 +14,9 @@ install=$pkgname.install
 source=("$url/releases/download/$pkgver/Decompiler-linux-x64.zip"
 	"$url/releases/download/$pkgver/Source2Viewer.exe"
 	"$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('74f48ddc930b49815712384b6a0ae7f92a878f00cd97c219b2c4e7792f1b87d3'
-            '37ac9e6f99e2f8e72ca2275f9da4da6f539f58c683744ef5c7655a56d935eb24'
-            '2af42583605e37122ba06027d244c05ebe69b39652497ca97dcfdd0daaefca24')
+sha256sums=('d2128173623aa851427609a776568688431879cbf6607341bf604b2450bc70c6'
+            '78f38f082937ef6a647f4468252b95ba35d62ef9220011818c0b17ff43a584bf'
+            '426eb7430e18fcc89ad2bea826a7cb41b02099e8dff5c8cedf8ce93e8e3d8706')
 
 
 package() {
