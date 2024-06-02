@@ -3,7 +3,7 @@
 _projectname='ppx_compare'
 pkgname="ocaml-$_projectname"
 pkgver='0.17.0'
-pkgrel='1'
+pkgrel='2'
 epoch='1'
 pkgdesc='Generation of comparison functions from types'
 arch=('x86_64' 'aarch64')
