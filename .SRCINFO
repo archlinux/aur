@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_expect
 	pkgdesc = Cram like framework for OCaml
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/janestreet/ppx_expect
 	arch = x86_64
