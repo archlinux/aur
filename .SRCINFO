@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_sexp_conv
 	pkgdesc = Generation of S-expression conversion functions from type definitions
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/janestreet/ppx_sexp_conv
 	arch = x86_64
