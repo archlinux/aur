@@ -1,0 +1,6 @@
+[jackett-mono]
+source = "github"
+github = "Jackett/Jackett"
+prefix = "v"
+include_regex = "v\\d\\.\\d+\\.\\d+"
+use_latest_release = true

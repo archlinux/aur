@@ -7,15 +7,14 @@ pkgver=0.21.2943
 pkgrel=1
 pkgdesc='Use many torrent trackers with software that supports torznab/potato feeds.'
 arch=('x86_64')
-license=('GPL')
+license=('GPL-2.0-or-later')
 url='https://github.com/Jackett/Jackett'
-depends=('mono')
+depends=('bash' 'glibc' 'mono')
 optdepends=(
   'flaresolverr: A proxy server to bypass Cloudflare protection'
 )
-options=('!strip' 'staticlibs')
-conflicts=('jackett' 'jackett-armv6-bin')
-replaces=('jackett' 'jackett-armv6-bin')
+options=('!strip' 'staticlibs' '!debug')
+conflicts=('jackett')
 provides=('jackett')
 
 source=("jackett.service"
@@ -23,8 +22,8 @@ source=("jackett.service"
         "jackett.tmpfiles"
         "Jackett.Binaries.Mono-${pkgver}.tar.gz::https://github.com/Jackett/Jackett/releases/download/v${pkgver}/Jackett.Binaries.Mono.tar.gz")
 
-sha256sums=('c5605e488bb113452b0bd6e6a7420ea5be8ffd7807cc06cbb6eb6277937c7da8'
-            'd005fcd009ec5404e1ec88246c31e664167f5551d6cabc35f68eb41750bfe590'
+sha256sums=('2eac076a27789c79447b290ee904bdabe65af4617e97fd8fe4177db097e08e8e'
+            'f865c06ffd21a12d37bf05953d9b483819c0f4e43d243a56db33986113fc40e4'
             '64022e15565a609f449090f02d53ee90ef95cffec52ae14f99e4e2132b6cffe1'
             'b46ae02226d34c864944a2bd64c5557975a7263ade36a5d0ec78fc76bf535c25')
 
