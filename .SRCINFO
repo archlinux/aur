@@ -1,4 +1,4 @@
-pkgbase = wonderlab-appimage-master
+pkgbase = wonderlab-appimage
 	pkgdesc = The next generation cross-platform Minecraft launcher. (master branch)
 	pkgver = 1.2.8.2
 	pkgrel = 1.0
@@ -10,10 +10,10 @@ pkgbase = wonderlab-appimage-master
 	optdepends = jre-openjdk: for launch Minecraft
 	conflicts = wonderlab
 	conflicts = wonderlab-git
-	conflicts = wonderlab-feature
+	conflicts = wonderlab-appimage-feature
 	options = !strip
 	source_x86_64 = wonderlab-x86_64.AppImage::https://github.com/Blessing-Studio/WonderLab.Override/releases/download/AutoBuild_master/wonderlab.1.2.8.2.linux-x64.AppImage
 	sha512sums_x86_64 = SKIP
 	source_aarch64 = wonderlab-x86_64.AppImage::https://github.com/Blessing-Studio/WonderLab.Override/releases/download/AutoBuild_master/wonderlab.1.2.8.2.linux-arm64.AppImage
 
-pkgname = wonderlab-appimage-master
+pkgname = wonderlab-appimage
