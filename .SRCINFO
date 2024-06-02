@@ -1,7 +1,7 @@
 pkgbase = ocaml-capitalization
 	pkgdesc = Defines case conventions and functions to rename identifiers according to them
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/janestreet/capitalization
 	arch = x86_64
 	arch = aarch64
