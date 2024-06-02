@@ -21,7 +21,6 @@ prepare() {
 
   # Correct i18n path
   patch -Np1 meson.build <../i18n.patch
-#  sed -i 's/i18ndir = prefix/i18ndir = localedir/g' meson.build
 }
 
 build() {
