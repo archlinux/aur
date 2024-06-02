@@ -31,7 +31,6 @@ pkgbase = gccrs-git
 
 pkgname = gccrs-git
 	pkgdesc = The GNU Compiler Collection - C and C++ frontends (git version)
-	groups = base-devel-git
 	depends = gccrs-libs-git=14.0.1_r213484.g646046091b7-1
 	depends = binutils>=2.28
 	depends = libmpc
@@ -66,7 +65,6 @@ pkgname = gccrs-libs-git
 
 pkgname = lib32-gccrs-libs-git
 	pkgdesc = 32-bit runtime libraries shipped by GCC (git version)
-	groups = multilib-devel-git
 	depends = lib32-glibc>=2.27
 	provides = lib32-gcc-libs
 	provides = libubsan.so

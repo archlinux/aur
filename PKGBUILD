@@ -161,7 +161,6 @@ package_gccrs-libs-git() {
 package_gccrs-git() {
   pkgdesc="The GNU Compiler Collection - C and C++ frontends (git version)"
   depends=("gccrs-libs-git=$pkgver-$pkgrel" "binutils>=2.28" libmpc zstd libisl.so)
-  groups=(base-devel-git)
   optdepends=('lib32-gcc-libs-git: for generating code for 32-bit ABI')
   provides=(gcc{,-multilib{,-git}})
   conflicts=(gcc{,-git})
@@ -266,7 +265,6 @@ package_lib32-gccrs-libs-git() {
   depends=('lib32-glibc>=2.27')
   provides=(lib32-gcc-libs libubsan.so libasan.so)
   conflicts=(lib32-gcc-libs{,-git})
-  groups=(multilib-devel-git)
   options=(!emptydirs !strip)
 
   cd gccrs-build
