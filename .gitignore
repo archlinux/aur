@@ -1,0 +1,6 @@
+*
+!.gitignore
+!.nvchecker.toml
+!.SRCINFO
+!PKGBUILD
+!remove-dependency-mock.patch

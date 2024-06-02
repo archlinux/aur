@@ -1,0 +1,24 @@
+diff --unified --recursive --text --new-file elastic-transport-python-8.13.1.orig/tests/node/test_http_requests.py elastic-transport-python-8.13.1/tests/node/test_http_requests.py
+--- elastic-transport-python-8.13.1.orig/tests/node/test_http_requests.py	2024-06-02 12:53:58.428935775 +0200
++++ elastic-transport-python-8.13.1/tests/node/test_http_requests.py	2024-06-02 12:54:33.325759273 +0200
+@@ -21,7 +21,7 @@
+ 
+ import pytest
+ import requests
+-from mock import Mock, patch
++from unittest.mock import Mock, patch
+ from requests.auth import HTTPBasicAuth
+ 
+ from elastic_transport import NodeConfig, RequestsHttpNode
+diff --unified --recursive --text --new-file elastic-transport-python-8.13.1.orig/tests/node/test_http_urllib3.py elastic-transport-python-8.13.1/tests/node/test_http_urllib3.py
+--- elastic-transport-python-8.13.1.orig/tests/node/test_http_urllib3.py	2024-06-02 12:53:58.428935775 +0200
++++ elastic-transport-python-8.13.1/tests/node/test_http_urllib3.py	2024-06-02 12:54:35.362435044 +0200
+@@ -22,7 +22,7 @@
+ 
+ import pytest
+ import urllib3
+-from mock import Mock, patch
++from unittest.mock import Mock, patch
+ from urllib3.response import HTTPHeaderDict
+ 
+ from elastic_transport import NodeConfig, TransportError, Urllib3HttpNode
