@@ -6,8 +6,8 @@
 
 pkgname=svg2tikz-git
 _gitname="svg2tikz"
-pkgver=3.1.0+1.r532.20240519.c14dcde
-pkgrel=4
+pkgver=3.1.0+5.r536.20240602.5e835af
+pkgrel=1
 pkgdesc="Set of tools for converting SVG graphics to TikZ/PGF code."
 arch=('any')
 url="https://github.com/kjellmf/svg2tikz"
@@ -39,7 +39,6 @@ makedepends=(
 checkdepends=(
   'python-inkex>=1.2.2'
   'python-lxml>=4.9.2'
-  'python-pytest'
 )
 provides=(
   "inkscape-tikz=${pkgver}"
@@ -98,7 +97,7 @@ build() {
 check() {
   cd "$srcdir"/"$_gitname"
 
-  python -m pytest
+  python -m unittest
 }
 
 package() {
