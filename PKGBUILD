@@ -2,8 +2,8 @@
 
 _pkgname="cpputest"
 pkgname="${_pkgname}-git"
-pkgver=latest.passing.build.r577.81eb8b8f
-pkgrel=1
+pkgver=4.0.r674.g81eb8b8
+pkgrel=2
 pkgdesc="Unit testing and mocking framework for C/C++"
 arch=("x86_64")
 url="https://github.com/cpputest/cpputest"
@@ -20,7 +20,7 @@ sha512sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
-	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "%s" "$(git describe --long --tags --abbrev=7 --exclude latest* | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
 }
 
 build() {
