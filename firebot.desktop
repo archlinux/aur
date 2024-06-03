@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Firebot v5
+Comment=A Powerful all-in-one bot for Twitch Streamers
+Icon=/usr/share/pixmaps/firebot.png
+Path=/opt/firebot
+Exec="Firebot v5"
+Categories=Network;Chat
