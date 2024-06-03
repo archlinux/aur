@@ -1,6 +1,9 @@
-FROM archlinux:latest
+FROM greyltc/archlinux-aur:yay
 
+# Install base dependencies
 RUN pacman --noconfirm -Sy fakeroot binutils make
+
+# Install OpenGamepadUI dependencies
 RUN pacman --noconfirm -S \
   libx11 \
   libxres \
@@ -21,5 +24,7 @@ RUN pacman --noconfirm -S \
   unzip \
   wget \
   git
+
+RUN aur-install inputplumber-bin
 
 RUN mkdir /home/build && chmod 777 /home/build
