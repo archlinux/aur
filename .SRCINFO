@@ -1,7 +1,7 @@
 pkgbase = codelite-unstable
 	pkgdesc = Cross platform IDE for C, C++, Rust, Python, PHP and Node.js written in C++
 	pkgver = 17.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codelite.org/
 	arch = i686
 	arch = x86_64
@@ -36,7 +36,7 @@ pkgbase = codelite-unstable
 	source = eranif-tinyjson-a6b0d0d.tar.gz::https://github.com/eranif/tinyjson/tarball/a6b0d0d31a05a9f55b4944b3b20f769305eb583a
 	source = eranif-ctags-3e173d8.tar.gz::https://github.com/eranif/ctags/tarball/3e173d8d82fd2d3534feff0d822d6de36ca3d74e
 	source = eranif-wx-config-msys2-fe65daf.tar.gz::https://github.com/eranif/wx-config-msys2/tarball/fe65daf2a49e2a1f218ea3106a26d5ae7c4235fb
-	source = eranif-wxdap-e5c7d35.tar.gz::https://github.com/eranif/wxdap/tarball/e5c7d35f17ca119aa99710244c0764b07f0cc4c6
+	source = eranif-wxdap-10f57bb.tar.gz::https://github.com/eranif/wxdap/tarball/10f57bbd9a4d52888b24ee79e8f02f9f5785eed4
 	source = jbeder-yaml-cpp-1b50109.tar.gz::https://github.com/jbeder/yaml-cpp/tarball/1b50109f7bea60bd382d8ea7befce3d2bd67da5f
 	source = http://repos.codelite.org/wxCrafterLibs/wxgui.zip
 	sha256sums = d1ac10e80467bc9301f35fd731f784c6a19a13bb9d49fab214ae16f81f8cba01
