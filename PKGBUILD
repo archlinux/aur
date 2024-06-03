@@ -1,11 +1,12 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 
 pkgname='perl-cookie-baker'
 pkgver='0.12'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Cookie string generator / parser"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl-uri' 'perl')
 makedepends=('perl-module-build-tiny')
