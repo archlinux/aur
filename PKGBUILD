@@ -1,7 +1,7 @@
 # Maintainer: Adrian Groh <adrian[dot]groh[at]t[dash]online[dot]de>
 pkgname=pfetch-rs
 _cargo_pkgname=pfetch
-pkgver=2.9.1
+pkgver=2.9.2
 pkgrel=1
 pkgdesc="A rewrite of the pfetch system information tool in Rust"
 url="https://github.com/Gobidev/pfetch-rs"
@@ -12,7 +12,7 @@ makedepends=("cargo")
 provides=("pfetch")
 conflicts=("pfetch-rs-bin" "pfetch" "pfetch-git")
 source=("$_cargo_pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$_cargo_pkgname/$_cargo_pkgname-$pkgver.crate")
-b2sums=('d2500f618b16f3fbff51795bc9104e763785deff44d90303d1b017a2582ad2055c926d36dfa9f129793f6ad8e8c00534c3e47097cff1f23776c8abc08fbcec45')
+b2sums=('56c30e25cdf4a51200620ac420bd145f7a3fecf926180ffbbad4a123e649c69340b86304c992ee64e97f8b33044ceac17d7329d0f9fb18afd336f97369f3a0ba')
 
 prepare() {
     cd "$_cargo_pkgname-$pkgver"
