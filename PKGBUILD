@@ -7,17 +7,12 @@
 _pkgname="peazip"
 pkgname="$_pkgname-gtk2"
 pkgver=9.8.0
-pkgrel=2
-pkgdesc='Cross-platform file and archive manager'
+pkgrel=3
+pkgdesc="Cross-platform file and archive manager (${_widgets^^})"
 url="https://github.com/peazip/PeaZip"
 license=('LGPL-3.0-or-later')
 arch=('i686' 'x86_64')
 
-depends=(
-  '7-zip'
-  'brotli'
-  'zstd'
-)
 makedepends=(
   'git'
   'lazarus'
@@ -40,20 +35,27 @@ case "${_widgets::1}" in
     ;;
 esac
 
-provides=('peazip')
-conflicts=('peazip')
+provides=("peazip=$pkgver")
+conflicts=("peazip")
+
+options=('!debug')
 
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git#tag=$pkgver")
 sha256sums=('SKIP')
+
+_packets=(
+  "$_pkgsrc"/peazip-sources/dev/metadarkstyle/metadarkstyle.lpk
+  "$_pkgsrc"/peazip-sources/dev/project_pea.lpi
+  "$_pkgsrc"/peazip-sources/dev/project_peach.lpi
+)
 
 prepare() {
   # support qt6
   sed -E -e 's&IFDEF LCLQT5&IF DEFINED(LCLQT5) OR DEFINED(LCLQT6)&' -i "$_pkgsrc/peazip-sources/dev/peach.pas"
 
   # modify compiler options
-  cd "$_pkgsrc/peazip-sources/dev"
-  for i in metadarkstyle/*.lpk *.lpi; do
+  for i in ${_packets[@]}; do
     xmlstarlet edit --inplace --delete '//Other' "$i"
     sed -E 's&(</CompilerOptions>)&<Other><CustomOptions Value='\''-O3 -Sa -CX -XX -k"--sort-common --as-needed -z relro -z now"'\''/></Other>\n\1&' \
       -i "$i"
@@ -61,10 +63,26 @@ prepare() {
 }
 
 build() {
-  cd "$_pkgsrc/peazip-sources/dev"
-  lazbuild --lazarusdir=/usr/lib/lazarus --widgetset="$_widgets" --os=linux --cpu=$ARCH --add-package metadarkstyle/metadarkstyle.lpk
-  lazbuild --lazarusdir=/usr/lib/lazarus --widgetset="$_widgets" --os=linux --cpu=$ARCH --build-all project_pea.lpi
-  lazbuild --lazarusdir=/usr/lib/lazarus --widgetset="$_widgets" --os=linux --cpu=$ARCH --build-all project_peach.lpi
+  depends+=(
+    '7-zip'
+    'brotli'
+    'zstd'
+  )
+
+  mkdir -p build
+
+  local _laz_opts=(
+    --build-all
+    --cpu="$CARCH"
+    --lazarusdir="/usr/lib/lazarus"
+    --os=linux
+    --primary-config-path=build
+    --widgetset="$_widgets"
+  )
+
+  for i in ${_packets[@]}; do
+    lazbuild "${_laz_opts[@]}" "$i"
+  done
 }
 
 package() {
