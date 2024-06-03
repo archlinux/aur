@@ -1,7 +1,7 @@
 pkgbase = indi-3rdparty-drivers
 	pkgdesc = Indi 3rd party drivers
 	pkgver = 2.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://indilib.org
 	arch = x86_64
 	arch = aarch64
@@ -14,6 +14,7 @@ pkgbase = indi-3rdparty-drivers
 	depends = zeromq
 	depends = urjtag
 	depends = dfu-util
+	options = !lto
 	source = https://github.com/indilib/indi-3rdparty/archive/refs/tags/v2.0.8.tar.gz
 	sha256sums = dbee5d88788266b9a17878e354fed12afea6716cf905351b62d0ec6f90bfdc73
 
