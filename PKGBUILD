@@ -4,8 +4,7 @@ pkgver='4.3.4'
 pkgrel='1'
 epoch='1'
 pkgdesc='Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more'
-# If you're running on pentium4, you have to add it to the arch and source arrays of the electron18-bin AUR dependency
-arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
+arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/$pkgname/$pkgname"
 license=('GPL-3.0-only')
 _electronpkg='electron18'
