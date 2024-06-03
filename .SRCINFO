@@ -1,6 +1,6 @@
 pkgbase = liteloader-qqnt-telegram-theme-bin
 	pkgdesc = LiteLoaderQQNT 插件，高仿 Telegram 风格的 QQNT 主题
-	pkgver = 4.2.6
+	pkgver = 4.3.0
 	pkgrel = 1
 	url = https://github.com/festoney8/LiteLoaderQQNT-Telegram-Theme
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = liteloader-qqnt-telegram-theme-bin
 	depends = liteloader-qqnt
 	provides = liteloader-qqnt-telegram-theme-bin
 	conflicts = liteloader-qqnt-telegram-theme-bin
-	source = liteloader-qqnt-telegram-theme-bin-4.2.6.zip::https://github.com/festoney8/LiteLoaderQQNT-Telegram-Theme/releases/download/v4.2.6/LiteLoaderQQNT-Telegram-Theme.zip
-	sha256sums = 693282aa2275e1f7f5ee53d644a4fdda36fd69ffd298ff8e34e2a880f57562d4
-	b2sums = ec3b1885e8489f10247d5cfc1ea65f6b41e8454b7c05a102c104da046b657d320fe48485636c4fab85af642c54f91f1ff561ec8cbed560416d02cb5e1baf63f7
+	source = liteloader-qqnt-telegram-theme-bin-4.3.0.zip::https://github.com/festoney8/LiteLoaderQQNT-Telegram-Theme/releases/download/v4.3.0/LiteLoaderQQNT-Telegram-Theme.zip
+	sha256sums = 30bdc4391021ef3364884560c006f1974d86f9a0ae0089c4e548047b322a1e2f
+	b2sums = 2b49e853d6712d03cb50cb139a43f6962d4450a02f17e399569ad51a4ff4569627c69ad8cd16ac2abb1c31f8a5c5be10b406802a38140456f121b33012b9ad53
 
 pkgname = liteloader-qqnt-telegram-theme-bin
