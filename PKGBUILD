@@ -2,7 +2,7 @@
 
 _name=browserxt
 pkgname=python-browserxt
-pkgver=0.2.1
+pkgver=0.2.3
 pkgrel=0
 epoch=0
 pkgdesc="A simple eXTensible Browser runner"
@@ -23,7 +23,7 @@ checkdepends=(
 source=(
   https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz
 )
-sha256sums=('0c6d5fd9c03d63847127552499e2b157038f335f3aa568c0f8a5688df92633e4')
+sha256sums=('cd6610c44401d1b1f799f89323c719250280ae9cd843c3b56623bbd1df425ce2')
 
 build() {
   cd $_name-$pkgver
