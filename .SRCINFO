@@ -41,4 +41,3 @@ pkgname = backintime-cli
 	depends = python-packaging
 	optdepends = backintime: Qt5 GUI version
 	optdepends = encfs: encrypted filesystem in user-space
-	optdepends = pm-utils: for laptops allows an option to not snapshot on battery
