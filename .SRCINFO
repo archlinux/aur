@@ -1,6 +1,6 @@
 pkgbase = jdmacroplayer
 	pkgdesc = Wayland compatible macro player for Linux
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://jakobdev.codeberg.page/work/app/jdMacroPlayer
 	arch = any
@@ -14,7 +14,8 @@ pkgbase = jdmacroplayer
 	depends = python-pyqt6
 	depends = polkit
 	depends = ydotool
-	source = jdmacroplayer-0.1.tar.gz::https://codeberg.org/JakobDev/jdMacroPlayer/archive/0.1.tar.gz
-	sha256sums = bb2937316ad0d605c6b96efc84f5d93f619ecd401c52c6c86215a132416d61c0
+	optdepends = python-setproctitle: Use correct process name
+	source = jdmacroplayer-0.2.tar.gz::https://codeberg.org/JakobDev/jdMacroPlayer/archive/0.2.tar.gz
+	sha256sums = 0d626a00aae2ba284652d0231cf46cc90d1377af20e83d6066060e6330081619
 
 pkgname = jdmacroplayer
