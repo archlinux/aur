@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/littleblack111/soft-shutdown"
 license=('GPL3')
 depends=('wmctrl' 'xorg-xprop')
-source=("close-userspace.sh" "shut-userspace.service")
+source=("https://github.com/littleblack111/soft-shutdown")
 sha256sums=('460ff968c7d504a43acb1205cf83de980ad599671ebb601d8db33b02ad675fc2' '96669484a37c6cd023e13438ea417b1206b378e87589616dc973a0656705d0f7')
 
 package() {
