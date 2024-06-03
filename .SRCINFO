@@ -1,6 +1,6 @@
 pkgbase = imhex-bin
 	pkgdesc = A Hex Editor for Reverse Engineers, Programmers and people who value their retinas when working at 3 AM.
-	pkgver = 1.33.2
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://github.com/WerWolv/ImHex
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = imhex-bin
 	depends = zstd
 	provides = imhex
 	conflicts = imhex
-	source = https://github.com/WerWolv/ImHex/releases/download/v1.33.2/imhex-1.33.2-ArchLinux-x86_64.pkg.tar.zst
-	md5sums = 19d6d9ca097f1495c00eeb0f6720fdd7
+	source = https://github.com/WerWolv/ImHex/releases/download/v1.34.0/imhex-1.34.0-ArchLinux-x86_64.pkg.tar.zst
+	md5sums = 8540c4e052f0813c49fca3b694cc0e96
 
 pkgname = imhex-bin
