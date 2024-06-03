@@ -3,7 +3,7 @@
 
 pkgname=yass-proxy-cli
 pkgver=1.10.5
-pkgrel=1
+pkgrel=2
 _pkgver=1.10.5
 _pkgrel=1
 pkgdesc="lightweight http/socks proxy commandline"
@@ -11,7 +11,7 @@ arch=(x86_64)
 url="https://github.com/Chilledheart/yass"
 license=(GPL-2.0-only)
 depends=(gcc-libs glibc zlib libnghttp2 c-ares gperftools)
-makedepends=(git ninja perl pkg-config cmake gettext curl go clang lld llvm gperftools)
+makedepends=(gcc binutils git ninja perl pkg-config cmake curl go)
 checkdepends=(curl)
 provides=(yass-proxy-cli)
 conflicts=(yass-proxy-cli-git)
@@ -35,19 +35,16 @@ prepare() {
 build(){
   SRC_DIR="${srcdir}/yass-${_pkgver}"
   pushd $SRC_DIR
-  export CC=clang
-  export CXX=clang++
-  rm -rf build-linux-amd64
-  mkdir build-linux-amd64
-  cd build-linux-amd64
+  rm -rf build
+  mkdir build
+  cd build
   cmake .. -DCMAKE_BUILD_TYPE=Release -G Ninja -DBUILD_TESTS=on \
     -DUSE_TCMALLOC=on -DUSE_SYSTEM_TCMALLOC=on \
     -DUSE_SYSTEM_ZLIB=on -DUSE_SYSTEM_CARES=on -DUSE_SYSTEM_NGHTTP2=on \
     -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_SYSCONFDIR=/etc \
     -DGUI=off -DCLI=ON -DSERVER=off \
-    -DUSE_LIBCXX=off -DENABLE_LTO=on
+    -DUSE_LIBCXX=off -DENABLE_GOLD=off -DENABLE_LTO=off
   ninja yass_cli yass_test
-  llvm-objcopy --strip-debug yass_cli
   cd ..
 
   popd
@@ -56,13 +53,13 @@ build(){
 check() {
   SRC_DIR="${srcdir}/yass-${_pkgver}"
   pushd $SRC_DIR
-  ./build-linux-amd64/yass_test
+  ./build/yass_test
   popd
 }
 
 package(){
   pushd "${srcdir}/yass-${_pkgver}"
-  DESTDIR=${pkgdir} ninja -C build-linux-amd64 install
+  DESTDIR=${pkgdir} ninja -C build install
   rm -rf ${pkgdir}/usr/share/doc
   popd
 }
