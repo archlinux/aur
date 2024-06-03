@@ -1,7 +1,7 @@
 # Maintainer: Tobias Frilling <tobias@frilling-online.de>
 pkgname=guvcview-git
 _gitname=guvcview-git-master
-pkgver=v2.0.6.r4.g73dacab
+pkgver=v2.0.8.1.r21.g564e457
 pkgrel=1
 pkgdesc="A video viewer and capturer for the linux uvc driver"
 arch=('i686' 'x86_64')
@@ -22,8 +22,8 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
-  export CPPFLAGS+=" -O2 "
-  ./bootstrap.sh --prefix=/usr
+  export CXXFLAGS+=" -O2 "
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="/usr" .
   make
 }
 

@@ -1,6 +1,6 @@
 pkgbase = guvcview-git
 	pkgdesc = A video viewer and capturer for the linux uvc driver
-	pkgver = v2.0.6.r4.g73dacab
+	pkgver = v2.0.8.1.r21.g564e457
 	pkgrel = 1
 	url = http://guvcview.sourceforge.net/
 	arch = i686
@@ -20,4 +20,3 @@ pkgbase = guvcview-git
 	sha1sums = SKIP
 
 pkgname = guvcview-git
-
