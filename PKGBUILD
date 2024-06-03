@@ -3,12 +3,12 @@
 
 pkgname='perl-tcl'
 pkgver='1.32'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Tcl extension module for Perl"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl>=5.006' 'tcl')
+depends=('glibc' 'perl>=5.006' 'tcl')
 makedepends=()
 url='http://search.cpan.org/dist/Tcl'
 source=('http://search.cpan.org/CPAN/authors/id/V/VK/VKON/Tcl-1.32.tar.gz')
