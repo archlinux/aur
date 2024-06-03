@@ -27,6 +27,7 @@ pkgbase = yass-proxy-qt6
 	depends = c-ares
 	depends = gperftools
 	optdepends = gtk-update-icon-cache
+	optdepends = qt6-wayland
 	provides = yass-proxy
 	conflicts = yass-proxy-git
 	conflicts = yass-proxy
