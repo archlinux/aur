@@ -3,7 +3,7 @@
 # Contributor: goodguy <lists.cinelerra-gg.org>
 
 pkgname=cinelerra-gg
-_pkgver=2024-02
+_pkgver=2024-05
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Professional video editing and compositing environment"
