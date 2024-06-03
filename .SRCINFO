@@ -1,13 +1,13 @@
 pkgbase = krandom
 	pkgdesc = Keccak-based userspace pseudorandom number generator
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://codeberg.org/maandree/krandom
 	arch = i686
 	arch = x86_64
 	license = custom:ISC
 	makedepends = libkeccak
-	source = krandom-2.0.1.tar.gz::https://codeberg.org/maandree/krandom/archive/2.0.1.tar.gz
-	sha256sums = 210078159eb10af4bed984b05caded07d496741b61302999341f937acde00cbe
+	source = krandom-2.0.2.tar.gz::https://codeberg.org/maandree/krandom/archive/2.0.2.tar.gz
+	sha512sums = 6dca1fd6767a20e2a7ae97d62c10790c76337c190223ca714fd3145f96d2dd0e4e45832168c1dd796b204200df0cdafad4caeaaafb0b73d32deb6e332375024d
 
 pkgname = krandom
