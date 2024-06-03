@@ -22,7 +22,8 @@ pkgbase = python-amaranth
 	provides = python-nmigen=0.4.5.r0.g4d1c4fc
 	provides = python-amaranth=0.4.5.r0.g4d1c4fc
 	conflicts = python-nmigen
-	conflicts = python-amaranth
+	conflicts = python-nmigen-git
+	conflicts = python-amaranth-git
 	replaces = python-nmigen
 	source = git+https://github.com/amaranth-lang/amaranth.git
 	source = amaranth-versioning.patch
