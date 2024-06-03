@@ -4,18 +4,18 @@
 # which is made by vvxxp8 <concatenate[g] the characters[x] in square[b] brackets[1] in[5] order[3] at gmail dot com>
 
 pkgname=siyuan_stable
-pkgver=v3.0.16
+pkgver=v3.0.17
 pkgrel=0
 pkgdesc="auto upload to AUR when SiYuan stable release"
 arch=("x86_64")
 url="https://b3log.org/siyuan"
 license=("AGPL-3.0-only")
-_pkgname=siyuan-3.0.16-linux.AppImage
-noextract=(siyuan-3.0.16-linux.AppImage)
+_pkgname=siyuan-3.0.17-linux.AppImage
+noextract=(siyuan-3.0.17-linux.AppImage)
 options=("!strip" "!debug")
 depends=("fuse2")
 optdepends=('pandoc: docx export')
-source=("${_pkgname}::https://github.com/siyuan-note/siyuan/releases/download/v3.0.16/siyuan-3.0.16-linux.AppImage")
+source=("${_pkgname}::https://github.com/siyuan-note/siyuan/releases/download/v3.0.17/siyuan-3.0.17-linux.AppImage")
 sha256sums=('SKIP')
 
 _installdir=/opt/appimages
