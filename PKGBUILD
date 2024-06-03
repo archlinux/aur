@@ -3,13 +3,13 @@
 # Contributor: Chandler Klüser <chandler.kluser@gmail.com>
 
 pkgname=vircon32-desktop-emulator-git
-pkgver=2f5b85bbead2ecafed9394cabe7e0a6e26676148
+pkgver=37500869bac26fbc883baf476d3a5e62fdbb5896
 pkgrel=1
-epoch=20231219
+epoch=20240603
 pkgdesc="Vircon32 Desktop Emulator"
 arch=('x86_64')
 url="https://github.com/vircon32/ComputerSoftware"
-license=('unknown')
+license=('BSD')
 depends=('mesa' 'sdl2' 'sdl2_image' 'openal' 'freealut' 'tinyxml2' 'gtk2')
 makedepends=('glibc' 'git' 'cmake')
 provides=('vircon32-desktop-emulator')
