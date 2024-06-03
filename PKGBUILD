@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Brittany Figueroa <dormwear underscore iure at crowley dot seership dot dev>
 pkgname=kpt-bin
-pkgver=1.0.0_beta.50
+pkgver=1.0.0_beta.51
 pkgrel=1
 pkgdesc="Automate Kubernetes Configuration Editing"
 arch=(
@@ -21,8 +21,8 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_ghurl}/releases/download/v${pkgver//_/-}/${pkgname%-bin}_linux_arm64-${pkgver//_/-}.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${_ghurl}/releases/download/v${pkgver//_/-}/${pkgname%-bin}_linux_amd64-${pkgver//_/-}.tar.gz")
-sha256sums_aarch64=('3b9962398822e1f1ff1425af82c4eb97ce3c4ce8f6a8a1a4d391988ed628eed8')
-sha256sums_x86_64=('3e73b6ffe90a93b73c73d48eecde36e38c773f9b14ba5244cb1bc8dd7b4a4d5b')
+sha256sums_aarch64=('450b99fd39fdaf18cdb63741d6605dfc9f7a67ed01cae0e2b8c112cf09f85290')
+sha256sums_x86_64=('eecf9ef4d43d121dd91e5bdc35bde422387e2b644499c279a43d3bef03dc6228')
 build() {
 	"${srcdir}/${pkgname%-bin}" completion bash > "${srcdir}/${pkgname%-bin}.bash"
 	"${srcdir}/${pkgname%-bin}" completion fish > "${srcdir}/${pkgname%-bin}.fish"
