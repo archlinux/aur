@@ -22,6 +22,6 @@ build() {
 }
 package() {
 	cd "$_gitname"
-	sudo cp webserv /usr/bin/
-	sudo cp man/webserv.8.gz /usr/share/man/man8/
+	install -Dm755 webserv "$pkgdir/usr/bin/webserv"
+	install -Dm755 man/webserv.8.gz "/usr/share/man/man8/webserv.8.gz"
 }
