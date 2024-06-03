@@ -1,11 +1,12 @@
 pkgbase = hfsutils
 	pkgdesc = HFS Access utils
 	pkgver = 3.2.6_p16
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.mars.org/home/rob/proj/hfs/
 	arch = x86_64
 	license = GPL2
 	depends = glibc
+	depends = sh
 	depends = tcl
 	depends = tk
 	source = https://deb.debian.org/debian/pool/main/h/hfsutils/hfsutils_3.2.6.orig.tar.gz

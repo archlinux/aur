@@ -4,12 +4,12 @@
 # Contributor: Pablo Lezaeta <prflr88@gmail.com>
 pkgname=hfsutils
 pkgver=3.2.6_p16
-pkgrel=2
+pkgrel=3
 pkgdesc="HFS Access utils"
 arch=('x86_64')
 license=('GPL2')
 url="https://www.mars.org/home/rob/proj/hfs/"
-depends=(glibc tcl tk)
+depends=(glibc sh tcl tk)
 source=(
 	"https://deb.debian.org/debian/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${pkgver/_p*}.orig.tar.gz"
 	"https://deb.debian.org/debian/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${pkgver/_p/-}.debian.tar.xz"
