@@ -4,8 +4,10 @@
 
 pkgname=vpn-slice-systemd-resolved-git 
 _pkgname=vpn-slice
+provides=(vpn-slice)
+conflicts=(vpn-slice vpn-slice-git)
 pkgver=v0.16.1.r25.g8836aa6
-pkgrel=1
+pkgrel=2
 pkgdesc="Python based vpnc-script replacement for easy and secure split-tunnel VPN setup with systemd-resolved support"
 arch=('any')
 url="https://github.com/dlenski/vpn-slice"
