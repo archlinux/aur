@@ -4,7 +4,7 @@ _pkgname='rtl-433'
 _pkgvariantsuffix=''
 _vcssuffix='-git'
 pkgname="${_pkgname}${_pkgvariantsuffix}${_vcssuffix}"
-pkgver=23.11+123.r3515.20240526.3339a4e7
+pkgver=23.11+127.r3519.20240602.f26dc931
 pkgrel=1
 pkgdesc="A generic software defined radio data receiver, mainly for the 433.92 MHz, 868 MHz (SRD), 315 MHz, 345 MHz, and 915 MHz ISM bands."
 arch=(
@@ -22,7 +22,8 @@ depends=(
 )
 makedepends=(
   'cmake'
-  # 'doxygen' # Would only be needed to build source code documentation.
+  # 'doxygen'     # Would only be needed to build source code documentation.
+  # 'texlive-bin' # Would only be needed to build source code documentation.
   'git'
 )
 conflicts=(
