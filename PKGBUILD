@@ -6,12 +6,13 @@
 
 pkgname=motion-git
 pkgver=4.6.0.r11.629b3ba
-pkgrel=1
+pkgrel=2
 pkgdesc='Monitor and record video signals from many types of cameras'
 arch=(x86_64)
 license=(GPL-2.0-or-later)
 url='https://motion-project.github.io'
 conflicts=(motion)
+provides=(motion)
 depends=(glibc libjpeg-turbo sqlite ffmpeg libmicrohttpd libwebp mariadb-libs)
 makedepends=(git)
 optdepends=('gettext: native language support')
