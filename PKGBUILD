@@ -7,7 +7,7 @@ provides=("nufxlib")
 pkgdesc="library for manipulating NuFX archives"
 arch=("x86_64")
 url="http://www.nulib.com/"
-license=("GPL-2")
+license=("BSD")
 depends=()
 source=(
 	${pkgname}-${pkgver}.tar.gz::https://github.com/fadden/nulib2/archive/v${pkgver}.tar.gz
