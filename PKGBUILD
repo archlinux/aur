@@ -77,14 +77,6 @@ prepare() {
     git config --file=.gitmodules submodule.$submodule.url "${srcdir}"/$submodule
   done
   git -c protocol.file.allow=always submodule update --init
-  
-  pushd externals
-  for submodule in {SPIRV-Tools};
-  do
-    git config --file=.gitmodules submodule.$submodule.url "${srcdir}"/$submodule
-  done
-  git -c protocol.file.allow=always submodule update --init
-
 
   pushd externals/cubeb
   for submodule in {sanitiers-cmake,googletest};
