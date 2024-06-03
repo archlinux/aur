@@ -9,7 +9,6 @@ arch=('any')
 license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl')
-makedepends=()
 url='http://search.mcpan.org/dist/Template-Alloy'
 source=('http://search.mcpan.org/CPAN/authors/id/R/RH/RHANDOM/Template-Alloy-1.022.tar.gz')
 md5sums=('e36561886e0abe39b88c4a35aca75e23')
