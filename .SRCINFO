@@ -6,6 +6,7 @@ pkgbase = iso-commander
 	arch = x86_64
 	license = GPL3
 	depends = coreutils
+	depends = glibc
 	depends = readline
 	depends = util-linux
 	optdepends = ccd2iso: BIN/IMG conversion support

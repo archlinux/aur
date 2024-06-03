@@ -6,7 +6,7 @@ pkgdesc='The Fastest ISO Manager on the Planet, written in C++'
 arch=('x86_64')
 url="https://github.com/siyia2/iso-commander"
 license=('GPL3')
-depends=('coreutils' 'readline' 'util-linux')
+depends=('coreutils' 'glibc' 'readline' 'util-linux')
 optdepends=('ccd2iso: BIN/IMG conversion support' 'mdf2iso: MDF/MDS conversion support')
 md5sums=('c2c03cc7a8e6b3fb9f6174ae3d7def30')
 
