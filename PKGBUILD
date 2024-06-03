@@ -2,7 +2,7 @@
 # Contributor: Giovanni Bottaro <aur@mybotti.eu>
 
 pkgname=('ocis')
-pkgver=5.0.4
+pkgver=5.0.5
 pkgrel=1
 pkgdesc="A file sync & share platform designed to scale"
 arch=('aarch64' 'x86_64')
@@ -20,7 +20,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/owncloud/$pkgname/archive/r
         "ocis.sysusers"
         "ocis.tmpfiles")
 
-sha512sums=('86717ca1cb2c7bceb14df6e9c11429662beae533db8f031e3a899bd83856787e47c6ff7bdff2cf7fb0b945b6f13ede2d4ca102497d6a84f717daea3a7f8e57a7'
+sha512sums=('4d0b944f5a18e9430e22aae733f83e35f324da9a7a341070682eef32c65466ac566c7f52fb05a4f945bc85ba1e0cde8fe6f52b6e14fec399c8e0b2b2bf46d440'
             'da70b77bf25c87d75f1a662d00a339f9b8756e6f8e33e17dcc0663d2dcd7d4981720a93fe1ba6c788d8a5e7f484f8e292e59273793106d496955c5a670862318'
             'd884c00b254d51d1991c902d916dc14dbacc2423793f5a5c9cad06bcd09f7ecd10630a9d4e4d12dec5cb224fccba066a051b9348e0ee8388bcd766bc6a1eb883'
             'cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e'
@@ -52,7 +52,7 @@ build() {
 }
 
 package() {
-    install -vDm755 "${pkgname}-${pkgver}/${pkgname}/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    install -vDm755 "${srcdir}/${pkgname}-${pkgver}/${pkgname}/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
     install -vdm755 "${pkgdir}/etc/${pkgname}"
     install -vDm750 "${srcdir}/${pkgname}.env" -t "${pkgdir}/etc"
