@@ -1,6 +1,6 @@
 pkgbase = paramountplus
 	pkgdesc = Unnofficial ParamountPlus desktop application
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/paramountplus
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = paramountplus
 	depends = libxss
 	depends = git
 	conflicts = ParamountPlus-bin
-	source = https://gitlab.com/linuxbombay/paramountplus/application/-/archive/1.0.3-1/application-1.0.3-1.tar.bz2
-	sha256sums = fd660355c858c74ca4d9def6be8edda5af20612ee32741659a8e3165eec4b8b0
+	source = https://gitlab.com/linuxbombay/paramountplus/application/-/archive/1.0.4-1/application-1.0.4-1.tar.bz2
+	sha256sums = fe490090f47cd20809911c6e7e2a955e49367821b4713b6f5fff272412263647
 
 pkgname = paramountplus
