@@ -87,6 +87,8 @@ makedepends=(
   'blas-openblas'
   'sdl2'
   'ffmpeg'
+  'protoc-gen-go'
+  'protoc-gen-go-grpc'
 )
 
 if [[ $_ENABLE_PYTHON = 1 ]]; then
@@ -171,8 +173,6 @@ EOF
   for i in $_DISABLED_MOD_EDIT; do
     sed -ri 's#.+\-replace github.com/'$i'.+##g' Makefile
   done
-  # add /fast for grpc-server build
-  sed -ri 's#(\$\(MAKE\) -C backend/cpp/\$\{VARIANT\} grpc-server)#\1/fast#g' Makefile
 
   # fetch sources of backends to be recursive git checked out before build()
   mkdir -p "sources"
