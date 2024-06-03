@@ -6,7 +6,6 @@ pkgrel=1
 pkgdesc='Linux voice activated macros'
 arch=('x86_64')
 url='https://github.com/stele95/LinVAM'
-arch=('x86_64')
 license=('GPL3')
 makedepends=(
   'python'
