@@ -1,9 +1,10 @@
 pkgbase = gridmonger-git
 	pkgdesc = Your trusty old-school cRPG mapping companion
 	pkgver = 1.1.0.r147.e677627
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://gridmonger.johnnovak.net/
+	install = gridmonger.install
 	arch = x86_64
 	license = custom:WTFPL
 	makedepends = git
