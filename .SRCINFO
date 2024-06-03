@@ -1,0 +1,15 @@
+pkgbase = ttf-bizin-gothic
+	pkgdesc = A composite font of BIZ UD Gothic and Inconsolata
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/yuru7/bizin-gothic
+	arch = any
+	license = custom:SIL
+	source = https://github.com/yuru7/bizin-gothic/releases/download/v0.0.2/BizinGothic_v0.0.2.zip
+	source = https://github.com/yuru7/bizin-gothic/releases/download/v0.0.2/BizinGothicDiscord_v0.0.2.zip
+	source = https://raw.githubusercontent.com/yuru7/bizin-gothic/v0.0.2/LICENSE
+	sha256sums = 66906c95284c105d2b3f71aeee07333e6045c0eb430425aad74148ec31995e2a
+	sha256sums = c47eaf24d16049499e152e369b0cf7d183c2ffd98c4c0430cbf55df56b1cb3ca
+	sha256sums = 84d463be283b64d6da4645194b5a2ea57f3a99b135574cce76eea0b9e3bffada
+
+pkgname = ttf-bizin-gothic
