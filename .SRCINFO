@@ -1,0 +1,14 @@
+pkgbase = perl-proc-find
+	pkgdesc = Find processes by name, PID, or some other attributes
+	pkgver = 0.051
+	pkgrel = 1
+	url = Find processes by name, PID, or some other attributes
+	arch = any
+	license = PerlArtistic
+	depends = perl
+	depends = perl-proc-processtable
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/P/PE/PERLANCAR/Proc-Find-0.051.tar.gz
+	sha512sums = 69c1363c9af7c3a441beed28233fdef315a4e20ae9bd209591c46ed46ef537833727ca5ebc9ab6001295939926ac6ba3820ba63c4ac34f438734b82e043bd647
+
+pkgname = perl-proc-find
