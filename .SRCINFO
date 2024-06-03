@@ -1,0 +1,18 @@
+pkgbase = catnap-git
+	pkgdesc = A minimalistic and fast system fetch written in Nim.
+	pkgver = r289.c6f9523
+	pkgrel = 1
+	url = https://github.com/iinsertNameHere/catnap
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = nim
+	depends = openssl
+	depends = pcre
+	depends = glibc
+	provides = catnap
+	conflicts = catnap
+	source = git+https://github.com/iinsertNameHere/catnap.git
+	sha256sums = SKIP
+
+pkgname = catnap-git
