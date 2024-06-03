@@ -3,7 +3,7 @@
 # Contributor: Peyman Mortazavi <pey.mortazavi@gmail.com>
 
 pkgname='protoc-gen-grpc-api-gateway-bin'
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc='Protoc plug-ings for generating reverse proxy code translating HTTP to gRPC.'
 url='https://meshapi.github.com/grpc-api-gateway'
@@ -12,14 +12,14 @@ license=('GPL-3.0')
 provides=('protoc-gen-openapiv3' 'protoc-gen-grpc-api-gateway')
 conflicts=('grpc-api-gateway')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/meshapi/grpc-api-gateway/releases/download/v0.0.8/grpc-api-gateway_Linux_arm64.tar.gz")
-sha256sums_aarch64=('3b2a557be5bb57c03a025b65ddc1459b330dc486b23b2e83aa0b06357d6389e5')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/meshapi/grpc-api-gateway/releases/download/v0.0.9/grpc-api-gateway_Linux_arm64.tar.gz")
+sha256sums_aarch64=('3c04183e81b7f3ef582bff8d6316e77efcd2e0316e29574c7f23c7752e2bf9e0')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/meshapi/grpc-api-gateway/releases/download/v0.0.8/grpc-api-gateway_Linux_i386.tar.gz")
-sha256sums_i686=('d486899b7024afbe55c7a630ab9530691f6cc03820944be8e3c4105423e2f8e7')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/meshapi/grpc-api-gateway/releases/download/v0.0.9/grpc-api-gateway_Linux_i386.tar.gz")
+sha256sums_i686=('6fc62b6d8e5b63fff98670905130b4a7a9615c7ff8b75ce8751bd67b689a3053')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/meshapi/grpc-api-gateway/releases/download/v0.0.8/grpc-api-gateway_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('0310afc861531d52eb972899c6018723da0a3b6ca66b338f1574f8e46000be2c')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/meshapi/grpc-api-gateway/releases/download/v0.0.9/grpc-api-gateway_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('ad5c5ff971ffdcbd088ffcec17c20434febaf327e70110c86ba101e9329155e0')
 
 package() {
   install -Dm755 "./protoc-gen-grpc-api-gateway" "${pkgdir}/usr/bin/protoc-gen-grpc-api-gateway"
