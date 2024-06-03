@@ -1,0 +1,17 @@
+pkgbase = spongecrab
+	pkgdesc = Bringing powerful argument parsing to bash scripts
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/ArielHorwitz/spongecrab
+	arch = x86_64
+	groups = iukbtw
+	license = Unlicense
+	makedepends = git
+	makedepends = rust
+	provides = spongecrab
+	conflicts = spongecrab
+	options = !debug
+	source = git+https://github.com/ArielHorwitz/spongecrab.git#tag=v0.2.3
+	sha256sums = SKIP
+
+pkgname = spongecrab
