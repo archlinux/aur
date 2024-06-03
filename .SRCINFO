@@ -1,0 +1,16 @@
+pkgbase = stl_normalize
+	pkgdesc = a script to normalize and validate STL files
+	pkgver = release_1.01.r11.g9f60064
+	pkgrel = 1
+	url = https://github.com/revarbat/stl_normalize
+	arch = any
+	license = BSD-2
+	makedepends = git
+	depends = python-numpy
+	depends = python-pyquaternion
+	depends = python-opengl
+	provides = stl_normalize
+	source = git+https://github.com/revarbat/stl_normalize.git
+	sha256sums = SKIP
+
+pkgname = stl_normalize
