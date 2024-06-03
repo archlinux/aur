@@ -2,8 +2,8 @@
 # Contributor: RadioactiveRadio <barraiser59@gmail.com>
 pkgname=blue-recorder-git
 _app_id=sa.sy.bluerecorder
-pkgver=r179.77d0c8a
-pkgrel=2
+pkgver=r185.ee02a8f
+pkgrel=1
 pkgdesc="Simple Screen Recorder written in Rust based on Green Recorder"
 arch=('x86_64')
 url="https://github.com/xlmnxp/blue-recorder"
@@ -33,6 +33,10 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
+
+  # We don't care if it builds on Ubuntu 20.04 or not
+  git revert --no-commit ee02a8f0ba930e6e0f9a96636ea95b80fb4695c1
+
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
