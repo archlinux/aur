@@ -4,12 +4,12 @@ _pkgname=backintime-git
 _pkgname_cli=backintime-cli-git
 pkgname=($_pkgname $_pkgname_cli)
 pkgver=1.4.3.r52.g1a91703f
-pkgrel=1
+pkgrel=2
 url=https://github.com/bit-team/backintime
 license=(GPL)
 arch=(any)
 makedepends=(git python)
-checkdepends=(openssh python-dbus python-pyfakefs python-pylint rsync systemd)
+checkdepends=(openssh python-dbus rsync systemd)
 install=$_pkgname.install
 source=($_pkgname::git+$url.git)
 sha256sums=('SKIP')
@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname/common"
-  ./configure --python --no-fuse-group
+  ./configure --python
   make
 
   cd "$srcdir/$_pkgname/qt"
@@ -58,7 +58,7 @@ package_backintime-cli-git() {
 package_backintime-git() {
   pkgdesc='Simple backup/snapshot system inspired by Flyback and TimeVault. Qt6 GUI version'
   #depends=("${_pkgname_cli%-git}" libnotify polkit python-dbus python-pyqt6 xorg-xdpyinfo)
-  depends=($_pkgname_cli           libnotify polkit python-dbus python-pyqt6 xorg-xdpyinfo)
+  depends=($_pkgname_cli libnotify polkit python-dbus python-pyqt6 xorg-xdpyinfo)
   # NOTE: Users can optionally install either kompare or meld but not both
   ##'python-secretstorage: store passwords'
   optdepends=(
