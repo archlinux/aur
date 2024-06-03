@@ -16,8 +16,10 @@
 #
 _pkg_user="eranif"
 _pkg_name="codelite"
-_pkg_ver="17.9.0"
+_pkg_ver="17.10.0"
 #_commit="16470d74c038b5c5c17756e78bd04ae6e00c2007"
+
+# NOTE: submodules/ are currenly only used by macos builds - ignore them for now
 
 # ccwrap submodule: https://github.com/eranif/cc-wrapper
 _ccwrap_pkg_user="${_pkg_user}"
@@ -135,7 +137,7 @@ source=(
     "http://repos.codelite.org/wxCrafterLibs/wxgui.zip"
   )
 
-sha256sums=('8578c83acb9377d56c62f47aa1753a8d0d7ceb328d00a211dc5ac3392ac0bf77'
+sha256sums=('d1ac10e80467bc9301f35fd731f784c6a19a13bb9d49fab214ae16f81f8cba01'
             '507adbaf9776f9f99f39e563876a6a5633eaa0c512f6b9b55c711037165413e4'
             '9343c1f05956308c7f3c4b6ad33d68c08d95ef0ffcdce0ec6c883ccd21bd5f71'
             'ff539f3e2ee4c52073e8b73fd8046163d68b0db567ce7ea5b9438424dc3a2253'
@@ -170,45 +172,50 @@ prepare()
   cd "${srcdir}/${_pkg_name_ident}"
 
   # submodule cubicdaiya-dtl
-  rmdir dtl
-  ln -s ../${_dtl_pkg_name_ident} dtl
+  test -d dtl && rmdir dtl
+  ln -s -fn ../${_dtl_pkg_name_ident} dtl
 
   # submodule eranif-cc-wrapper
-  rmdir cc-wrapper
-  ln -s ../${_ccwrap_pkg_name_ident} cc-wrapper
+  test -d cc-wrapper && rmdir cc-wrapper
+  ln -s -fn ../${_ccwrap_pkg_name_ident} cc-wrapper
 
   # sub-submodule eranif-tinyjson
-  test -d tinyjson && rmdir tinyjson
   test -h tinyjson && rm -f tinyjson
-  ln -s ../${_json_pkg_name_ident} tinyjson
+  test -d tinyjson && rmdir tinyjson
+  ln -s -fn ../${_json_pkg_name_ident} tinyjson
   #
-  rmdir cc-wrapper/tinyjson
+  test -d cc-wrapper/tinyjson && rmdir cc-wrapper/tinyjson
   #ln -s ../tinyjson cc-wrapper/tinyjson
-  ln -s ../${_json_pkg_name_ident} cc-wrapper/tinyjson
+  ln -s -fn ../${_json_pkg_name_ident} cc-wrapper/tinyjson
 
   # submodule eranif-ctags
-  rmdir ctags
-  ln -s ../${_ctags_pkg_name_ident} ctags
+  test -d ctags && rmdir ctags
+  ln -s -fn ../${_ctags_pkg_name_ident} ctags
 
   # submodule eranif-wxdap to wxdap
-  rmdir wxdap
-  ln -s ../${_wxdap_pkg_name_ident} wxdap
+  test -d wxdap && rmdir wxdap
+  ln -s -fn ../${_wxdap_pkg_name_ident} wxdap
 
   # submodule eranif-wx-config-msys2 to wx-config-msys2
-  rmdir wx-config-msys2
-  ln -s ../${_wxcfg_pkg_name_ident} wx-config-msys2
+  test -d wx-config-msys2 && rmdir wx-config-msys2
+  ln -s -fn ../${_wxcfg_pkg_name_ident} wx-config-msys2
 
   # submodule jbeder/yaml-cpp
-  rmdir yaml-cpp
-  ln -s ../${_yaml_pkg_name_ident} yaml-cpp
+  test -d yaml-cpp && rmdir yaml-cpp
+  ln -s -fn ../${_yaml_pkg_name_ident} yaml-cpp
 
+  #
   # apply patches
+  #
 
   #patch -p0 < "${startdir}/codelite-fsw-symlink.patch"
   #patch -p0 < "${startdir}/codelite-linux-on-sigpipe.patch"
   #patch -p0 < "${startdir}/codelite-DebugAdapterClient-CMakeLists-cxx17.patch"
   #patch -p0 < "${startdir}/codelite-quickfindbar-focus-tweak.patch"
   #patch -p0 < "${startdir}/cmake.patch"  # wx-config patch
+
+  # dtl-v1.20 cannot compile on gcc >= 14.1.1 and clang >= 17.0.6
+  ( cd dtl && patch -p0 < "${startdir}/dtl-dtl_Diff_hpp.patch" )
 
   # temporary disable wxcrafter build: cl-16.1.0/wxcrafter subdir build fails with wx-3.1.7 - is this still a problem - re-test !!!
   #mv wxcrafter wxcrafter.disable
