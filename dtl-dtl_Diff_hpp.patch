@@ -1,0 +1,13 @@
+diff --git dtl/Diff.hpp dtl/Diff.hpp
+index 8c9c774..57067f9 100644
+--- dtl/Diff.hpp
++++ dtl/Diff.hpp
+@@ -164,7 +164,7 @@ namespace dtl {
+             return trivial;
+         }
+         
+-        void enableTrivial () const {
++        void enableTrivial () {
+             this->trivial = true;
+         }
+         

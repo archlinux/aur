@@ -13,7 +13,7 @@
 
 pkgname=codelite-git
 _gitname=codelite
-pkgver=17.7.0.r26.g473b156f7
+pkgver=17.10.0.r2.g82c71e994
 pkgrel=1
 pkgdesc="Cross platform IDE for C, C++, Rust, Python, PHP and Node.js written in C++"
 arch=('i686' 'x86_64' 'aarch64')
@@ -96,6 +96,10 @@ prepare() {
   #patch -p0 < "${startdir}/codelite-fsw-symlink.patch"
 
   #patch -p0 < "${startdir}/codelite-DebugAdapterClient-CMakeLists-cxx17.patch"
+
+  # dtl-v1.20 cannot compile on gcc >= 14.1.1 and clang >= 17.0.6
+  ( cd dtl && patch -p0 < "${startdir}/dtl-dtl_Diff_hpp.patch" )
+
 }
 
 build() {
