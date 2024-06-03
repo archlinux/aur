@@ -1,7 +1,7 @@
 pkgbase = zfsbootmenu
 	pkgdesc = ZFS bootloader for root-on-ZFS systems
 	pkgver = 2.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/zbm-dev/zfsbootmenu
 	arch = x86_64
 	license = MIT
@@ -14,7 +14,7 @@ pkgbase = zfsbootmenu
 	depends = perl-sort-versions
 	depends = perl-boolean
 	depends = perl-yaml-pp
-	depends = openssl-1.1
+	depends = openssl
 	optdepends = dracut
 	optdepends = mkinitcpio
 	optdepends = efibootmgr
