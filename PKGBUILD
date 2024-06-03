@@ -1,7 +1,10 @@
 # Maintainer: yifwon <wyf9661 at gmail dot com>
 # Contributor: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="bilibili-appimage"
-pkgver=1.13.5
+_pkgver=1.13.5
+_subver=2
+release_tag="${_pkgver}-${_subver}"
+pkgver="${_pkgver}.${_subver}"
 pkgrel=1
 pkgdesc="Bilibili official desktop client.基于哔哩哔哩官方客户端移植的Linux版本,支持漫游"
 arch=('x86_64' 'aarch64' 'loong64')
@@ -11,9 +14,9 @@ options=(!strip)
 conflicts=("${pkgname%-appimage}")
 depends=('zlib' 'hicolor-icon-theme' 'glibc')
 _install_path="/opt/appimages"
-source_x86_64=("${pkgname}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}-1/${pkgname%-appimage}-${pkgver}-x86_64.AppImage")
-source_aarch64=("${pkgname}-${pkgver}-aarch64.AppImage::${url}/releases/download/v${pkgver}-1/${pkgname%-appimage}-${pkgver}-arm64.AppImage")
-source_loong64=("${pkgname}-${pkgver}-loong64.AppImage::${url}/releases/download/v${pkgver}-1/${pkgname%-appimage}-${pkgver}-loong64.AppImage")
+source_x86_64=("${pkgname}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${release_tag}/${pkgname%-appimage}-${_pkgver}-x86_64.AppImage")
+source_aarch64=("${pkgname}-${pkgver}-aarch64.AppImage::${url}/releases/download/v${release_tag}/${pkgname%-appimage}-${_pkgver}-arm64.AppImage")
+source_loong64=("${pkgname}-${pkgver}-loong64.AppImage::${url}/releases/download/v${release_tag}/${pkgname%-appimage}-${_pkgver}-loong64.AppImage")
 source=("LICENSE::https://raw.githubusercontent.com/msojocs/bilibili-linux/master/license")
 sha256sums_x86_64=('76453b48db1a24738c1e8e6255319fd446a95d543059594e550e8fe5a2424c30')
 sha256sums_aarch64=('4a6ee69b5094b54ffd2c413effc68f896317b5b684c2fcfde258f4974bd562a8')

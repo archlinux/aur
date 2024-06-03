@@ -1,6 +1,6 @@
 pkgbase = bilibili-appimage
 	pkgdesc = Bilibili official desktop client.基于哔哩哔哩官方客户端移植的Linux版本,支持漫游
-	pkgver = 1.13.5
+	pkgver = 1.13.5.2
 	pkgrel = 1
 	url = https://github.com/msojocs/bilibili-linux
 	arch = x86_64
@@ -14,11 +14,11 @@ pkgbase = bilibili-appimage
 	options = !strip
 	source = LICENSE::https://raw.githubusercontent.com/msojocs/bilibili-linux/master/license
 	sha256sums = 21668b8229199de1a523b82805c80d6e110a67fef5766aa7cc3c7df4416d1468
-	source_x86_64 = bilibili-appimage-1.13.5-x86_64.AppImage::https://github.com/msojocs/bilibili-linux/releases/download/v1.13.5-1/bilibili-1.13.5-x86_64.AppImage
+	source_x86_64 = bilibili-appimage-1.13.5.2-x86_64.AppImage::https://github.com/msojocs/bilibili-linux/releases/download/v1.13.5-2/bilibili-1.13.5-x86_64.AppImage
 	sha256sums_x86_64 = 76453b48db1a24738c1e8e6255319fd446a95d543059594e550e8fe5a2424c30
-	source_aarch64 = bilibili-appimage-1.13.5-aarch64.AppImage::https://github.com/msojocs/bilibili-linux/releases/download/v1.13.5-1/bilibili-1.13.5-arm64.AppImage
+	source_aarch64 = bilibili-appimage-1.13.5.2-aarch64.AppImage::https://github.com/msojocs/bilibili-linux/releases/download/v1.13.5-2/bilibili-1.13.5-arm64.AppImage
 	sha256sums_aarch64 = 4a6ee69b5094b54ffd2c413effc68f896317b5b684c2fcfde258f4974bd562a8
-	source_loong64 = bilibili-appimage-1.13.5-loong64.AppImage::https://github.com/msojocs/bilibili-linux/releases/download/v1.13.5-1/bilibili-1.13.5-loong64.AppImage
+	source_loong64 = bilibili-appimage-1.13.5.2-loong64.AppImage::https://github.com/msojocs/bilibili-linux/releases/download/v1.13.5-2/bilibili-1.13.5-loong64.AppImage
 	sha256sums_loong64 = ac59fb00ad1f8f5b2b3ca60236b9600db60a0f3e37bbf387cd20a457c0d72d7d
 
 pkgname = bilibili-appimage
