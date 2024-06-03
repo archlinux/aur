@@ -2,8 +2,8 @@
 _pkgname=backend.ai-desktop
 pkgname="${_pkgname//./-}-bin"
 _appname="Backend.AI Desktop"
-pkgver=24.03.3
-_electronversion=29
+pkgver=24.03.4
+_electronversion=30
 pkgrel=1
 pkgdesc="Provides a convenient environment for users, while allowing various commands to be executed without CLI. It also provides some visual features that are not provided by the CLI, such as dashboards and statistics."
 arch=(
@@ -32,16 +32,17 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('c54209c33c387908bfaae40a9c5f6c96bacaa52684f2546068e2b4441f4a53b3'
-            '61d56055897e9d71d68e185ac2de7c4cb2fbca16eb3fb0091703612c113441f3')
-sha256sums_aarch64=('912a2e430b66150da353c32e1669492eaec303ec31f121dacfd5c5af5e4d6df6')
-sha256sums_x86_64=('5b97fce4dfc6d965a1d81e3fc3f421694b3b7e6a10d8fa210849609c193d1918')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+sha256sums_aarch64=('900b32a6f0a3686e8b6e87fa0e5897d15ecfc39cef2121a27a4aee405c9a6ece')
+sha256sums_x86_64=('42b662d56dd422c8dbdc223cb5610d799429e4452577411722180c05fadf9b9d')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_appname}|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --pkgname="${_pkgname//./-}-bin" --categories="Development" --name="${pkgname%-bin}" --exec="${pkgname%-bin} %U"
+    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${pkgname%-bin}" --exec="${pkgname%-bin} %U"
     asar e "${srcdir}/${_appname}-linux-"*/resources/app.asar "${srcdir}/app.asar.unpacked"
 }
 package() {
