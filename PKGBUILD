@@ -6,7 +6,7 @@ pkgdesc="a simple aur_helper used to manage a AUR-Directory"
 arch=('any')
 url="https://github.com/Nikl174/simple_aur_helper"
 license=('BSD')
-depends=('pacman')
+depends=('pacman' 'git' 'sudo')
 makedepends=(
 	'cargo'
 )
