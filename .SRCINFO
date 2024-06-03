@@ -1,3 +1,4 @@
+pkgbase = devkitarm-r47
 	pkgdesc = Older version of devkitARM and libgba (GCC 7.1.0). Intended for legacy GBA dev.
 	pkgver = r47
 	pkgrel = 1
