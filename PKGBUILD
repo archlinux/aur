@@ -5,7 +5,7 @@
 pkgbase=libavio
 pkgname=('libavio' 'python-avio')
 pkgver=3.1.2
-pkgrel=1
+pkgrel=2
 url='https://github.com/sr99622/libavio'
 license=('Apache-2.0')
 arch=('i686' 'x86_64')

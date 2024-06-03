@@ -1,6 +1,6 @@
 pkgbase = libavio
 	pkgver = 3.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sr99622/libavio
 	arch = i686
 	arch = x86_64
