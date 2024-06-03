@@ -1,12 +1,14 @@
 pkgbase = aur_helper
 	pkgdesc = a simple aur_helper used to manage a AUR-Directory
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/Nikl174/simple_aur_helper
 	arch = any
 	license = BSD
 	makedepends = cargo
 	depends = pacman
+	depends = git
+	depends = sudo
 	source = https://github.com/Nikl174/aur_helper/archive/refs/tags/0.1.1.tar.gz
 	sha256sums = e4c30ce178b67f8fcec92d11454da96528e98687542371fb998022f6f350117b
 

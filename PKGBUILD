@@ -1,7 +1,7 @@
 # Maintainer: Nikl <nikl174@mailbox.org>
 pkgname=aur_helper
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="a simple aur_helper used to manage a AUR-Directory"
 arch=('any')
 url="https://github.com/Nikl174/simple_aur_helper"
