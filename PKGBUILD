@@ -67,7 +67,6 @@ ExecStart=clouddrive
 
 [Install]
 WantedBy=multi-user.target
-DefaultInstance=default
 EOF
 
     install -Dm644 /dev/stdin  "${pkgdir}/usr/lib/systemd/system/media-${pkgname}-dav.service" << EOF
