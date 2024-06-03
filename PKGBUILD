@@ -3,7 +3,7 @@
 
 pkgname='openwebrx-plus-git'
 _pkgname='openwebrx'
-pkgver=1.2.59.r1.g01e8f4dc
+pkgver=1.2.60.r1.g0a6225a1
 pkgrel=1
 pkgdesc='Open source, multi-user SDR receiver software with a web interface'
 arch=('any')
@@ -42,18 +42,25 @@ optdepends=(
     'python-paho-mqtt: send decoded signal data to an MQTT broker for further processing by third-party applications'
 
     # device support
-    'soapyremote: allows the usage of remote SDR devices using the SoapySDRServer'
     'soapyrtlsdr: provides additional support for rtl-sdr devices, such as the direct sampling mod'
     'soapysdrplay: interfacing with SDRPlay devices'
+    'soapymiri-git: interfacing with Mirics-based hardware (MSi001 + MSi2500)'
     'soapyhackrf: interfacing with HackRF devices'
+    'libperseus-sdr: use the Microtelecom Perseus HF receiver'
     'soapyairspy: interfacing with Airspy devices (Airspy R2, Airspy Mini)'
     'soapyairspyhf: interfacing with Airspy HF devices (Airspy HF+, Airspy HF discovery)'
+    # soapyafedri, no aur package yet
     'limesuite: interfacing with LimeSDR device series'
+    # fifi_sdr, no aur package yet
     'soapyplutosdr: interfacing with PlutoSDR devices'
+    'soapyremote: allows the usage of remote SDR devices using the SoapySDRServer'
     'soapyuhd: interfacing with UHD / USRP devices'
+    # radioberry, no aur package yet
     'soapyfcdpp-git: interfacing with the Funcube Dongle Pro+'
     'soapybladerf: interfacing with Blade RF devices'
-    'soapymiri-git: interfacing with Mirics-based hardware (MSi001 + MSi2500)'
+    # sddc, no aur package yet
+    # hpsdr, no aur package yet
+    # runds, no aur package yet
 )
 makedepends=('git')
 source=(
