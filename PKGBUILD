@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=draw.io
 pkgname="${_pkgname//./}-desktop-git"
-pkgver=24.4.8.r1.g638f0c0
+pkgver=24.4.13.r2.g2d36fe9
 _electronversion=30
 _nodeversion=20
 pkgrel=1
@@ -48,7 +48,7 @@ build() {
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${_pkgname//./}-desktop" --categories="Graphics" --exec="${pkgname%-git} %U"
+    gendesk -q -f -n --pkgname="${_pkgname//./}-desktop" --pkgdesc="${pkgdesc}" --categories="Graphics" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
