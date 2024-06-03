@@ -1,4 +1,4 @@
-pkgbase = alram
+pkgbase = alram-alarm-for-ram
 	pkgdesc = Alarm for RAM - monitor free RAM, alert when under threshold, kill tasks from list
 	pkgver = v0.1.1
 	pkgrel = 1
@@ -13,4 +13,4 @@ pkgbase = alram
 	sha512sums = 2886a627e9cb23e3f1eb05b7f77bc7968f85395d7a9105fc88e43ad08c196ece2334f4cdc5331a704b2565e08888ab2c2d35b3d65cd5d5d12284785173abaf66
 	sha512sums = 457343dfed48d29d2c06aff0c3b65db63b92012ec22f3392b078981c23b02d987776a18b46ab7c83653c167cb07d4da1ae2483573eca9574ce456dda3a08f5e2
 
-pkgname = alram
+pkgname = alram-alarm-for-ram

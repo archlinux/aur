@@ -1,11 +1,12 @@
 # Maintainer: gladykov <gladykov at gmail dot com>
 # Contributor: gladykov <gladykov at gmail dot com>
-pkgname='alram'
+pkgname='alram-alarm-for-ram'
+_basename="alram"
 pkgver=v0.1.1
 pkgrel=1
 pkgdesc="Alarm for RAM - monitor free RAM, alert when under threshold, kill tasks from list"
 arch=('x86_64')
-url="https://github.com/gladykov/${pkgname}/"
+url="https://github.com/gladykov/${_basename}/"
 options=('!debug')
 license=('GPL-3.0')
 depends=('glib2')
@@ -24,6 +25,6 @@ sha512sums=(
 package() {
   cd "$srcdir/"
   mkdir -p "${pkgdir}/usr/bin"	
-  install -D -m755 ${pkgname} "${pkgdir}/usr/bin/"
-  install -Dm644 ${pkgname}.service "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
+  install -D -m755 ${_basename} "${pkgdir}/usr/bin/"
+  install -Dm644 ${_basename}.service "${pkgdir}/usr/lib/systemd/user/${_basename}.service"
 }
