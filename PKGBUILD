@@ -1,6 +1,6 @@
 pkgname=faugus-launcher
 pkgver=1.0
-pkgrel=14
+pkgrel=15
 pkgdesc="Simple and Lightweight Game Launcher"
 arch=('x86_64')
 license=('GPL')
@@ -9,7 +9,7 @@ provides=('faugus-launcher')
 conflicts=('faugus-launcher')
 
 source=("faugus-launcher.py" "faugus-launcher.desktop" "faugus-launcher.png")
-sha256sums=('8dca2df57ea5c68f7744770f5c7f14ce9beeafa3ce0b9bf5aacf7bba0dd26ef7'
+sha256sums=('b0f057fbf793feea15345f4f69cc8c4222ccdf7e7ff705bf97c1325304eeaf1a'
             '7ee643017060562d27ad3f0960911bf7e5299df8d526863dd428f84a4765aa67'
             '36ca089b98e4169f17572dde833bd1039f8f5484a40ca307e6871de3814ea159')
 
