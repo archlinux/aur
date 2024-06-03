@@ -3,7 +3,7 @@ _pkgname=torzu
 _branch=main
 pkgname=torzu-git
 pkgver=r27123.fa84e4a2a
-pkgrel=2
+pkgrel=3
 pkgdesc="Torzu is a fork of yuzu, the world's most popular, open-source, Nintendo Switch emulator. It is written in C++ with portability in mind."
 arch=(x86_64)
 url=https://github.com/litucks/torzu
@@ -72,11 +72,19 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_pkgname"
-  for submodule in {enet,cubeb,libusb,xbyak,opus,SDL,cpp-httplib,ffmpeg,vcpkg,libadrenotools,tzdb_to_nx,simpleini,oaknut,SPIRV-Headers,SPIRV-Tools,fmt,Vulkan-Utility-Libraries,VulkanMemoryAllocator,Vulkan-Headers};
+  for submodule in {enet,cubeb,libusb,xbyak,opus,SDL,cpp-httplib,ffmpeg,vcpkg,libadrenotools,tzdb_to_nx,simpleini,oaknut,SPIRV-Headers,fmt,Vulkan-Utility-Libraries,VulkanMemoryAllocator,Vulkan-Headers};
   do
     git config --file=.gitmodules submodule.$submodule.url "${srcdir}"/$submodule
   done
   git -c protocol.file.allow=always submodule update --init
+  
+  pushd externals
+  for submodule in {SPIRV-Tools};
+  do
+    git config --file=.gitmodules submodule.$submodule.url "${srcdir}"/$submodule
+  done
+  git -c protocol.file.allow=always submodule update --init
+
 
   pushd externals/cubeb
   for submodule in {sanitiers-cmake,googletest};
@@ -111,6 +119,7 @@ build() {
     -DENABLE_COMPATIBILITY_LIST_DOWNLOAD=ON \
     -DENABLE_QT_TRANSLATION=OFF \
     -DUSE_DISCORD_PRESENCE=ON \
+    -DYUZU_USE_EXTERNAL_VULKAN_SPIRV_TOOLS=OFF \
     -DTORZU_ENABLE_COMPATIBILITY_REPORTING=${ENABLE_COMPATIBILITY_REPORTING:-"OFF"} \
     -DTORZU_USE_BUNDLED_FFMPEG=ON \
     -DTORZU_ENABLE_LTO=ON \
