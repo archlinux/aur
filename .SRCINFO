@@ -11,6 +11,7 @@ pkgbase = gpr
 	makedepends = python-e3-core
 	depends = gnatcoll-iconv
 	depends = gnatcoll-gmp
+	depends = langkit
 	depends = python
 	depends = which
 	depends = python-funcy

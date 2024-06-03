@@ -12,6 +12,7 @@ license=(GPL3 Apache)
 
 depends=(gnatcoll-iconv
          gnatcoll-gmp
+         langkit
          python
          which
          python-funcy
