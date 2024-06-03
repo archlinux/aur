@@ -1,6 +1,6 @@
 pkgbase = frp-bin
 	pkgdesc = A fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet.
-	pkgver = 0.58.0
+	pkgver = 0.58.1
 	pkgrel = 1
 	url = https://github.com/fatedier/frp
 	install = frp.install
@@ -21,12 +21,12 @@ pkgbase = frp-bin
 	sha256sums = fb83d77bcd7f7c2aad29c89fdcf251552486886d39557db64dd6c09c39cf2903
 	sha256sums = a342c7baf72252273f06597ce1aa465ee22dfbea51b842c2ca09c0ff019f7746
 	sha256sums = 42b8aa9e5589d157e8f6209c426ced70a2d079ca4040cd4469f458c081fc1bee
-	source_x86_64 = frp-0.58.0-linux-amd64.tar.gz::https://github.com/fatedier/frp/releases/download/v0.58.0/frp_0.58.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 09a6a170070ce02d7de6afa941d341a2caad0aa8e09fb840a64da4acba24d73a
-	source_arm = frp-0.58.0-linux-arm.tar.gz::https://github.com/fatedier/frp/releases/download/v0.58.0/frp_0.58.0_linux_arm.tar.gz
-	sha256sums_arm = 5e4b8b5ac36fe62f26ef37430aa56b11e562b046849796c51a61fd90251af18a
-	source_aarch64 = frp-0.58.0-linux-arm64.tar.gz::https://github.com/fatedier/frp/releases/download/v0.58.0/frp_0.58.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = ceef6df44f3a64b4a2076dfbb0ac02a3750b48fa0ac568478190ef477d4f2ec9
+	source_x86_64 = frp-0.58.1-linux-amd64.tar.gz::https://github.com/fatedier/frp/releases/download/v0.58.1/frp_0.58.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 5bd9f8860b580ed9c42eed1c99dfaa03b196d0f68007dca088f6c098d498430d
+	source_arm = frp-0.58.1-linux-arm.tar.gz::https://github.com/fatedier/frp/releases/download/v0.58.1/frp_0.58.1_linux_arm.tar.gz
+	sha256sums_arm = 44c59c70aaefe48dd9b0427c7e86a6a24c7e83fc31e38a7a2885dd1d53c05091
+	source_aarch64 = frp-0.58.1-linux-arm64.tar.gz::https://github.com/fatedier/frp/releases/download/v0.58.1/frp_0.58.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 25a77f4d7f4c5efeeaa89ed65b951a19014e79baac1efcbd57f0598b3ba95fd7
 
 pkgname = frpc-bin
 	pkgdesc = A fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet. (Client)
