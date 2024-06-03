@@ -15,14 +15,14 @@ prepare() {
   cd "${pkgname}-${pkgver}"
   mkdir -p build
 
-	commit="$(git rev-parse "v${pkgver}")"
-	build_date="$(date -u "+%Y-%m-%dT%H:%M:%SZ")"
+  commit="$(git rev-parse "v${pkgver}")"
+  build_date="$(date -u "+%Y-%m-%dT%H:%M:%SZ")"
 
-	sed -i \
-		-e "s/^\(\s*version\s*=\s*\"\)dev\(\".*$\)/\1${pkgver}\2/" \
-		-e "s/^\(\s*commit\s*=\s*\"\)none\(\".*$\)/\1${commit}\2/" \
-		-e "s/^\(\s*date\s*=\s*\"\)unknown\(\".*$\)/\1${build_date}\2/" \
-		cmd/clockify-cli/main.go
+  sed -i \
+    -e "s/^\(\s*version\s*=\s*\"\)dev\(\".*$\)/\1${pkgver}\2/" \
+    -e "s/^\(\s*commit\s*=\s*\"\)none\(\".*$\)/\1${commit}\2/" \
+    -e "s/^\(\s*date\s*=\s*\"\)unknown\(\".*$\)/\1${build_date}\2/" \
+    cmd/clockify-cli/main.go
 }
 
 build() {
