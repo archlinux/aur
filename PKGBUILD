@@ -1,7 +1,7 @@
 # Maintainer: asjur <asjur at proton dot me>
 pkgname=dbgate-beta-bin
 pkgver=5.2.10
-pkgrel=1
+pkgrel=4
 _electronversion=30
 pkgdesc="Database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others. Runs under Windows, Linux, Mac or as web application"
 arch=(
@@ -30,9 +30,9 @@ source=(
 )
 sha256sums=('4ba7d897a31d45781b6bbc0b87e9a241873d61fff657af2f0c54608f652d235b'
             'beb56bb45d0f3c3bf5bfb269bdc039355ff59dbb28c4f427f219385dba455ad3')
-sha256sums_aarch64=('c21771608a4c1420b6370a6fbc35823d51bfc55e2e9f6821cda9f523152f616b')
-sha256sums_armv7h=('721ecd3e90125665065efe60dc167c3a9fb79a5c77d3c968b7c070f3b7e01af5')
-sha256sums_x86_64=('7141619d32ac3cb8bc94c19cc209ce398163bf872ad308e2ce453b144e9e4a78')
+sha256sums_aarch64=('290b5fc499b8f3d415fee1f04fec86eece93921a91a9944c48053794f6751ae6')
+sha256sums_armv7h=('105aff90cfe2937774e1245080ff5ad528b59debadfc3476e35d48411924a7f0')
+sha256sums_x86_64=('59fccd52d4c6896bdaecbd2d20304a59f8bc7e7d04636c58f81dcb1e4d795ed8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
