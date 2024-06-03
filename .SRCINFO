@@ -1,6 +1,6 @@
 pkgbase = aihub-bin
 	pkgdesc = A collection of large model capabilities of the client.一款集合多家大模型能力的客户端.
-	pkgver = 1.8.8
+	pkgver = 1.8.9
 	pkgrel = 1
 	url = https://github.com/classfang/AIHub
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = aihub-bin
 	depends = electron30
 	provides = aihub
 	conflicts = aihub
-	source = aihub-1.8.8.deb::https://github.com/classfang/AIHub/releases/download/v1.8.8/aihub_1.8.8_amd64.deb
+	source = aihub-1.8.9.deb::https://github.com/classfang/AIHub/releases/download/v1.8.9/aihub_1.8.9_amd64.deb
 	source = aihub.sh
-	sha256sums = 349bf82163f05434a662a3fe281626c77037f24d820d702623a73c54b54a0bee
+	sha256sums = d4918b38e20543d8a3e3b03af2c66e0ce19d245b8ef072c8e637a9fc5524f14f
 	sha256sums = 41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d
 
 pkgname = aihub-bin
