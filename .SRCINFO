@@ -1,0 +1,13 @@
+pkgbase = passmake
+	pkgdesc = A simple password generator written in Go.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/GustavoWidman/passmake
+	arch = any
+	license = CC0
+	makedepends = go
+	makedepends = git
+	source = passmake::git+https://github.com/GustavoWidman/passmake.git
+	sha256sums = SKIP
+
+pkgname = passmake
