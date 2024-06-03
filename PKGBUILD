@@ -1,55 +1,53 @@
-# Maintainer: Sam Day <me@samcday.com>
+# Contributor: Sam Day <me@samcday.com>
 
 pkgname=dnf5
-pkgver=5.1.15
-pkgrel=3
-pkgdesc="Next-generation RPM package management system "
+pkgver=5.2.2.0
+pkgrel=1
+pkgdesc="Next-generation RPM package management system"
 arch=('x86_64')
 url="https://github.com/rpm-software-management/$pkgname"
-license=('GPL2')
+license=('GPL-2.0-or-later' 'LGPL-2.1-or-later')
 conflicts=('dnf')
-depends=()
-makedepends=(
-    'cmake'
-    'cppunit'
-    'createrepo_c'
-    'doxygen'
-    'gettext'
-    'perl-test-exception'
-    # 'ruby'  # https://github.com/rpm-software-management/dnf5/issues/562
-    'sdbus-cpp'
-    'swig'
-    'toml11'
-    #'zchunk'    # seems broken with zchunk support enabled currently.
-                 # I think because upstream depends on 0.9, but AUR has 1.3 packaged
-    )
-backup=("etc/$pkgname/dnf.conf")
+depends=('curl>=7.62.0' 'fmt' 'glib2>=2.46.0' 'json-c' 'libmodulemd>=2.11.2'
+         'librepo>=1.17.1' 'libsolv>=0.7.25' 'libxml2' 'rpm-tools>=4.17.0'
+         'sdbus-cpp>=0.9.0' 'sqlite>=3.35.0' 'systemd-libs' 'util-linux-libs')
+makedepends=('bash-completion' 'cmake>=3.13' 'doxygen' 'gettext' 'perl'
+             'python' 'python-breathe' 'python-sphinx' 'python-sphinx_rtd_theme'
+             'toml11' 'swig' 'systemd')
+checkdepends=('cppunit' 'createrepo_c' 'perl-test-exception')
+optdepends=('perl: for perl bindings'
+            'polkit: for dnf5daemon-server'
+            'python: for python bindings')
+backup=('etc/dnf/dnf.conf'
+        'etc/dnf/libdnf5-plugins/actions.conf')
 options=('!emptydirs')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('f4044439b84c10eb4378b9212c082c4c1c6b0d69319a043bf05ac6d7142ea21f')
+sha256sums=('370357b840c9186ec04955e82353878d317210a3109037c805afbf14114e5355')
 
 build() {
-  cd "$pkgname-$pkgver"
+	cd "$pkgname-$pkgver"
 
-  cmake -B build \
-        -DWITH_MAN=off \
-        -DWITH_ZCHUNK=off \
-        -DWITH_RUBY=off
+	cmake -B build \
+	      -DCMAKE_INSTALL_PREFIX='/usr' \
+	      -DCMAKE_INSTALL_SBINDIR='bin' \
+	      -DWITH_RUBY='OFF'  # https://github.com/rpm-software-management/dnf5/issues/562
 
-  cd build
-  make
+	cmake --build build
+	cmake --build build --target doc-man
 }
 
 check() {
-  cd "$pkgname-$pkgver/build"
-  CTEST_OUTPUT_ON_FAILURE=1 make test
+	cd "$pkgname-$pkgver"
+
+	LC_ALL=C.UTF-8 ctest --test-dir build --output-on-failure
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+	cd "$pkgname-$pkgver"
 
-  make -C build DESTDIR="$pkgdir/" install
-  mv $pkgdir/usr/{sbin,bin}/dnf5daemon-server
-  ln -fs $pkgname "$pkgdir/usr/bin/dnf"
-  rmdir $pkgdir/usr/sbin
+	DESTDIR="$pkgdir" cmake --install build
+
+	install -Dp -m644 COPYING.md "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
+
+# vim: set ft=sh ts=4 sw=4 noet:
