@@ -1,6 +1,6 @@
 pkgbase = twitchleecher-dx
 	pkgdesc = A simple download tool for Twitch streams
-	pkgver = 3.5.7
+	pkgver = 3.6.0
 	pkgrel = 1
 	url = https://github.com/schneidermanuel/TwitchLeecher-Dx
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = twitchleecher-dx
 	depends = icu
 	depends = ffmpeg
 	options = staticlibs
-	source = https://github.com/schneidermanuel/TwitchLeecher-Dx/archive/refs/tags/v3.5.7.tar.gz
-	sha256sums = 6828fad16783716e8d5dbddebcc9e234317467e7dbc53d7bc01c8e083c34b7d7
+	source = https://github.com/schneidermanuel/TwitchLeecher-Dx/archive/refs/tags/v3.6.0.tar.gz
+	sha256sums = 9117cf88b1cbe50e8a2c8a84491d74fe3bcf747823c86457855733c0473988e4
 
 pkgname = twitchleecher-dx
