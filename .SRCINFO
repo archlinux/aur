@@ -1,0 +1,12 @@
+pkgbase = devkitARM-r47
+	pkgdesc = Older version of devkitARM and libgba (GCC 7.1.0). Intended for legacy GBA dev.
+	pkgver = r47
+	pkgrel = 1
+	url = https://devkitpro.org/wiki/devkitARM
+	arch = x86_64
+	arch = i686
+	source = https://wii.leseratte10.de/devkitPro/devkitARM/r47%20%282017%29/devkitARM_r47-x86_64-linux.tar.bz2
+	source = https://wii.leseratte10.de/devkitPro/libgba/libgba_0.5.1/libgba-0.5.1.tar.bz2
+
+pkgname = devkitARM-r47
+
