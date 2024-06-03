@@ -1,13 +1,13 @@
 pkgbase = gibson
 	pkgdesc = A simple markdown go blog
-	pkgver = 0.2.9
+	pkgver = 0.2.10
 	pkgrel = 1
 	url = https://codeberg.org/fredix/gibson
 	arch = any
 	license = GPL-3.0-or-later
 	depends = go
 	provides = gibson
-	source = https://codeberg.org/fredix/gibson/archive/v0.2.9.tar.gz
+	source = https://codeberg.org/fredix/gibson/archive/v0.2.10.tar.gz
 	sha256sums = SKIP
 
 pkgname = gibson
