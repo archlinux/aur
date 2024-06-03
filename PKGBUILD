@@ -4,7 +4,7 @@
 pkgname=ada_language_server
 pkgdesc='High performance syntactic and semantic engine for the Ada programming language.'
 pkgver=25.0w
-pkgrel=1
+pkgrel=2
 epoch=2
 
 url=https://github.com/AdaCore/ada_language_server
@@ -12,12 +12,14 @@ arch=(x86_64)
 license=(GPL3)
 
 depends=(libadalang-tools
-        gtkada
-        libvss
-        ada_spawn
-        ada-libfswatch
-        gpr
-        gnatdoc)
+         lal-refactor
+         templates-parser
+         gtkada
+         libvss
+         ada_spawn
+         ada-libfswatch
+         gpr
+         gnatdoc)
 
 makedepends=(gprbuild)
 

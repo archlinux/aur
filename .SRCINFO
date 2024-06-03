@@ -1,13 +1,15 @@
 pkgbase = ada_language_server
 	pkgdesc = High performance syntactic and semantic engine for the Ada programming language.
 	pkgver = 25.0w
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 2
 	url = https://github.com/AdaCore/ada_language_server
 	arch = x86_64
 	license = GPL3
 	makedepends = gprbuild
 	depends = libadalang-tools
+	depends = lal-refactor
+	depends = templates-parser
 	depends = gtkada
 	depends = libvss
 	depends = ada_spawn
