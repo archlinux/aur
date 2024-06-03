@@ -1,6 +1,6 @@
 pkgbase = protoc-gen-grpc-api-gateway-bin
 	pkgdesc = Protoc plug-ings for generating reverse proxy code translating HTTP to gRPC.
-	pkgver = 0.0.9
+	pkgver = 0.0.10
 	pkgrel = 1
 	url = https://meshapi.github.com/grpc-api-gateway
 	license = GPL-3.0
@@ -8,13 +8,13 @@ pkgbase = protoc-gen-grpc-api-gateway-bin
 	provides = protoc-gen-openapiv3
 	provides = protoc-gen-grpc-api-gateway
 	arch = aarch64
-	source_aarch64 = https://github.com/meshapi/grpc-api-gateway/releases/download/v0.0.9/grpc-api-gateway_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 3c04183e81b7f3ef582bff8d6316e77efcd2e0316e29574c7f23c7752e2bf9e0
+	source_aarch64 = https://github.com/meshapi/grpc-api-gateway/releases/download/v0.0.10/grpc-api-gateway_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 8fbc652c3c4fb9c6b20f98ea2bc9e0556af933f911d9e725ef11e991e405a63f
 	arch = i686
-	source_i686 = https://github.com/meshapi/grpc-api-gateway/releases/download/v0.0.9/grpc-api-gateway_Linux_i386.tar.gz
-	sha256sums_i686 = 6fc62b6d8e5b63fff98670905130b4a7a9615c7ff8b75ce8751bd67b689a3053
+	source_i686 = https://github.com/meshapi/grpc-api-gateway/releases/download/v0.0.10/grpc-api-gateway_Linux_i386.tar.gz
+	sha256sums_i686 = e94bea078899d7ee825f7f44d13d289e344c96e411ef31d0e34e72d9b03eda21
 	arch = x86_64
-	source_x86_64 = https://github.com/meshapi/grpc-api-gateway/releases/download/v0.0.9/grpc-api-gateway_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = ad5c5ff971ffdcbd088ffcec17c20434febaf327e70110c86ba101e9329155e0
+	source_x86_64 = https://github.com/meshapi/grpc-api-gateway/releases/download/v0.0.10/grpc-api-gateway_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = c40b076aff838779f69f0978bba9bbb46f3789fee01971f55efcb2867f4ccfe1
 	
 pkgname = protoc-gen-grpc-api-gateway-bin
