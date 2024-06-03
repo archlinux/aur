@@ -7,15 +7,12 @@ pkgdesc="Active window border replacement for window managers."
 arch=('any')
 url="https://github.com/deter0/xborder"
 license=('The Unlicense')
-depends=('libwnck3' 'gtk3' 'python')
-makedepends=('git' 'python-pip')
+depends=('libwnck3' 'gtk3' 'python' 'python-cairo')
+makedepends=('git')
 provides=('xborders')
 source=('git+https://github.com/deter0/xborder')
 md5sums=('SKIP')
 
-prepare() {
-  python -m pip install pycairo
-}
 
 instructions() {
   /bin/cat << EOF
