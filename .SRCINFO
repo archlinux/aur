@@ -10,7 +10,7 @@ pkgbase = parlatype-libreoffice-extension
 	makedepends = appstream
 	makedepends = appstream-glib
 	depends = libreoffice
-	depends = parlatype=4.0
+	depends = parlatype
 	source = https://github.com/gkarsay/parlatype-libreoffice-extension/releases/download/v4.2/parlatype-libreoffice-extension-4.2.tar.gz
 	b2sums = 870291e91166814bbf653adc78f72b494241b0806afdb388a250f94c9fbcaf2cd692c9d986701d8fac59d90f7ff3068ee00d393ab6de077c135288a830ff4c8c
 
