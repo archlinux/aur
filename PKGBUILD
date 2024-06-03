@@ -8,15 +8,11 @@ pkgname=('systemd-chromiumos'
          'systemd-chromiumos-resolvconf'
          'systemd-chromiumos-sysvcompat'
          'systemd-chromiumos-ukify')
-_tag=255.6
-# Upstream versioning is incompatible with pacman's version comparisons so we
-# replace tildes with the empty string to make sure pacman's version comparing
-# does the right thing for rc versions:
-# ➜ vercmp 255~rc1 255
-# 1
-# ➜ vercmp 255rc1 255
-# -1
-pkgver="${_tag/~/}"
+_tag=255.7
+# Upstream versioning is incompatible with pacman's version comparisons, one
+# way or another. So we replace dashes and tildes with the empty string to
+# make sure pacman's version comparing does the right thing for rc versions:
+pkgver="${_tag/[-~]/}"
 pkgrel=1
 arch=('x86_64')
 license=('LGPL-2.1-or-later')
@@ -56,7 +52,7 @@ source=("git+https://github.com/systemd/systemd-stable#tag=v${_tag}?signed"
         '30-systemd-tmpfiles.hook'
         '30-systemd-udev-reload.hook'
         '30-systemd-update.hook')
-sha512sums=('c1de1eb0d0ef6d8da81a105cdfcb86634bed6f46ab1038de9ab786fd85f59524e7eb30fe1d02dbf2c3b3a29dc66d04a102b2274a09ad3d2c18953c380099aa0e'
+sha512sums=('224648e176fe48d0cb96ac740b4f239e7ddbbb6aed6299976f1df2d5825757021c7be243d187446c274715214c8175bf925ebb27eece18a02ce1884bac2c1f20'
             'd430427987309483c99062adb02741d25239ba5fbb97053ef817c0c5a0a935328af9c8b651de2b119b0e851dcf6623f01343859735ff81d7013ab0133e67c7ea'
             '3ccf783c28f7a1c857120abac4002ca91ae1f92205dcd5a84aff515d57e706a3f9240d75a0a67cff5085716885e06e62597baa86897f298662ec36a940cf410e'
             '14279a57ec414dc68c25d9e0fd688c94cd078143bf144ac9081ffaa1e369527f3f04369fc27a88c03ae15cc879ac9678c38ca4c7ebfc1d7cbb40a2c2941266d1'
@@ -95,6 +91,8 @@ if ((_systemd_UPSTREAM)); then
 fi
 
 _backports=(
+  # 99-systemd.rules: rework SYSTEMD_READY logic for device mapper
+  'c072860593329293e19580b337504adb52248462'
 )
 
 _reverts=(
@@ -140,9 +138,7 @@ build() {
 
   local _meson_options=(
     -Dversion-tag="${_meson_version}-arch"
-    # We use the version without tildes as the shared library tag because
-    # pacman looks at the shared library version.
-    -Dshared-lib-tag="${_meson_version/~/}"
+    -Dshared-lib-tag="${_meson_version}"
     -Dmode="${_meson_mode}"
 
     -Dapparmor=false
