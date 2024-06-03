@@ -15,7 +15,9 @@ conflicts=("${_pkgname}")
 source=("${_pkgname}"::"git+https://github.com/alvr-org/ALVR.git#tag=v$pkgver"
 		"git+https://github.com/ValveSoftware/openvr.git"
 )
-md5sums=('SKIP')
+md5sums=('81b0a4748f6f31f97b2f96193acfd81e'
+		'SKIP'
+)
 options=('!lto')
 
 export CARGO_PROFILE_RELEASE_LTO=true

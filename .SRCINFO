@@ -31,6 +31,7 @@ pkgbase = alvr-nvidia
 	options = !lto
 	source = alvr::git+https://github.com/alvr-org/ALVR.git#tag=v20.8.1
 	source = git+https://github.com/ValveSoftware/openvr.git
+	md5sums = 81b0a4748f6f31f97b2f96193acfd81e
 	md5sums = SKIP
 
 pkgname = alvr-nvidia
