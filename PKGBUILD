@@ -7,8 +7,8 @@
 _pkgname="winff"
 pkgname="$_pkgname-git"
 pkgver=1.6.4.r1.gac9211f
-pkgrel=1
-pkgdesc="FFmpeg frontend written in FPC/LCL (${_widgets^} widgets)"
+pkgrel=2
+pkgdesc="FFmpeg frontend written in Free Pascal with Lazarus (${_widgets^})"
 url="https://github.com/WinFF/winff"
 license=('GPL-3.0-or-later')
 arch=('x86_64')
@@ -26,6 +26,14 @@ makedepends=(
   'lazarus'
 )
 
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=(
+  'winff'
+  'winff-common'
+)
+
+options=('!debug')
+
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
@@ -38,11 +46,17 @@ pkgver() {
 
 build() {
   mkdir -p build
-  lazbuild -B "$_pkgsrc/winff/winff.lpr" \
-    --lazarusdir="/usr/lib/lazarus" \
-    --widgetset="$_widgets" \
-    --os=linux --cpu=$ARCH \
+
+  local _laz_opts=(
+    --build-all
+    --cpu="$CARCH"
+    --lazarusdir="/usr/lib/lazarus"
+    --os=linux
     --primary-config-path=build
+    --widgetset="$_widgets"
+  )
+
+  lazbuild "${_laz_opts[@]}" "$_pkgsrc/winff/winff.lpr"
 }
 
 package() {
@@ -60,7 +74,7 @@ package() {
 
   install -Dm644 "$_pkgsrc"/winff/winff-icons/48x48/winff.png -t "$pkgdir"/usr/share/pixmaps/
 
-install -Dm644 /dev/stdin "$pkgdir"/usr/share/applications/winff.desktop << END
+  install -Dm644 /dev/stdin "$pkgdir"/usr/share/applications/winff.desktop << END
 [Desktop Entry]
 Type=Application
 Name=Winff

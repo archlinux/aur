@@ -1,13 +1,17 @@
 pkgbase = winff-git
-	pkgdesc = FFmpeg frontend written in FPC/LCL (Qt6 widgets)
+	pkgdesc = FFmpeg frontend written in Free Pascal with Lazarus (Qt6)
 	pkgver = 1.6.4.r1.gac9211f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/WinFF/winff
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = lazarus
 	depends = qt6pas
+	provides = winff=1.6.4
+	conflicts = winff
+	conflicts = winff-common
+	options = !debug
 	source = winff::git+https://github.com/WinFF/winff.git
 	sha256sums = SKIP
 
