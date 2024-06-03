@@ -4,7 +4,7 @@
 
 pkgname=onvif-gui
 pkgver=2.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc='A client side implementation of the ONVIF specification - GUI app'
 url='https://github.com/sr99622/libonvif'
 license=('Apache-2.0')
