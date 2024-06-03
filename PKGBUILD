@@ -43,7 +43,7 @@ $_OPTIONAL_GRPC"
 _pkgbase="localai"
 pkgbase="${_pkgbase}-git"
 pkgname=()
-pkgver=2.16.0.66.g77d752a4
+pkgver=2.16.0.67.g5ddaa199
 pkgrel=1
 pkgdesc="Self-hosted OpenAI API alternative - Open Source, community-driven and local-first."
 url="https://github.com/mudler/LocalAI"
@@ -235,6 +235,7 @@ _package_install() {
   install -Dm644 "${srcdir}/README.md" "${pkgdir}/usr/share/doc/${_pkgbase}/README-build.md"
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgbase}"
   if [[ $_ENABLE_PYTHON = 1 ]]; then
+    mkdir -p "${pkgdir}/usr/share/${_pkgbase}"
     cp -a backend/python "${pkgdir}/usr/share/${_pkgbase}/python"
   fi
   install -Dm644 localai.service -t "${pkgdir}/usr/lib/systemd/user"

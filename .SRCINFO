@@ -1,6 +1,6 @@
 pkgbase = localai-git
 	pkgdesc = Self-hosted OpenAI API alternative - Open Source, community-driven and local-first.
-	pkgver = 2.16.0.66.g77d752a4
+	pkgver = 2.16.0.67.g5ddaa199
 	pkgrel = 1
 	url = https://github.com/mudler/LocalAI
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = localai-git
 	depends = python-grpcio
 	depends = python-grpcio-tools
 	provides = localai
-	provides = local-ai=2.16.0.66.g77d752a4
+	provides = local-ai=2.16.0.67.g5ddaa199
 	conflicts = localai
 	conflicts = local-ai
 	source = localai::git+https://github.com/mudler/LocalAI
