@@ -2,7 +2,7 @@
 
 _pkgname=gamescope
 pkgname=gamescope-fml
-pkgver=3.14.16
+pkgver=3.14.18
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager with added patches'
 arch=(x86_64)
@@ -61,22 +61,18 @@ source=(
   git+https://github.com/Joshua-Ashton/GamescopeShaders.git#tag=v0.1
   git+https://github.com/KhronosGroup/SPIRV-Headers.git
   720p.patch
-  disable-steam-touch-click-atom.patch
   external-rotation.patch
   panel-type.patch
-  modifiers.patch
 )
 
-sha256sums=('024c6e89befd05fe8e15b925adf2a9b435654834036df23a0571843478afb607'
+sha256sums=('97aeb6dd4206c2716a063c145d24bde443163e0e13e045359ac7e8a293f2d42e'
             'e39e0c91b297bfd707afcda84ecdc15a08c22e2ad4c347fc3533b1ed98fb3f85'
             'SKIP'
             '03726f2fb44ae79e6a398e8f9aaaf8054800dda9b8298726157522fe5f7296b1'
             'SKIP'
             '63a9c78d2871b5f53e037b43929a9db5fac1d464a0026d0d0b207227bbd9dcd5'
-            'b12682ccaf9e0fd25bfed37c16f79d79ce418564b73b2ed1e4a81b2b03dc43cf'
             '86f0832f00f5c4f75df8bd5d2a434a31ae4879b59dbee63239d4035b75c56b02'
-            '5b09480791d07f76df4da2fafc54336ad6806d3eaaf57ab81c651ebd3b56ff51'
-            'ef97afb0fa044fa0e95c38936ce92bdcdfc23080e377fd71f42a2fab9aabf0cb')
+            '5b09480791d07f76df4da2fafc54336ad6806d3eaaf57ab81c651ebd3b56ff51')
 
 prepare() {
   cd "$srcdir/$_pkgname"
@@ -115,6 +111,11 @@ build() {
   arch-meson gamescope build \
     -Dforce_fallback_for=stb,wlroots \
     -Dpipewire=enabled \
+    -Dinput_emulation=enabled \
+    -Ddrm_backend=enabled \
+    -Drt_cap=enabled \
+    -Davif_screenshots=enabled \
+    -Dsdl2_backend=enabled \
     -Denable_gamescope=true \
     -Denable_gamescope_wsi_layer=true \
     -Denable_openvr_support=true
