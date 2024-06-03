@@ -1,6 +1,6 @@
 pkgbase = oneshot
 	pkgdesc = First-come-first-serve single-fire HTTP/HTTPS server
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/raphaelreyna/oneshot
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = oneshot
 	depends = glibc
 	depends = hicolor-icon-theme
 	options = zipman
-	source = oneshot-2.1.0.tgz::https://github.com/raphaelreyna/oneshot/archive/v2.1.0.tar.gz
-	b2sums = afb40adf014cc17ec0ab686324a02fa14c41820d89e91a8a15586a7a1dc577372acb013e9eccbf667695ab613ef4f10847130582dd11eb51dd4dddbd7cc68b04
+	source = oneshot-2.1.1.tgz::https://github.com/raphaelreyna/oneshot/archive/v2.1.1.tar.gz
+	b2sums = fe90220042d29d4f7037ddebc0d7177c3445d1278da8758a1d862da28ec375f779d22610d47646e6f5b882c8f992ec144bb0b851e3973aa2864c28c5b773979e
 
 pkgname = oneshot

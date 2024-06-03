@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Kr1ss $(echo \<kr1ss+x-yandex+com\>|sed s/\+/./g\;s/\-/@/)
 pkgname=oneshot
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="First-come-first-serve single-fire HTTP/HTTPS server"
 arch=(i686 x86_64 arm armv7h armv6h aarch64)
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(glibc hicolor-icon-theme)
 makedepends=(go)
 source=(${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz)
-b2sums=('afb40adf014cc17ec0ab686324a02fa14c41820d89e91a8a15586a7a1dc577372acb013e9eccbf667695ab613ef4f10847130582dd11eb51dd4dddbd7cc68b04')
+b2sums=('fe90220042d29d4f7037ddebc0d7177c3445d1278da8758a1d862da28ec375f779d22610d47646e6f5b882c8f992ec144bb0b851e3973aa2864c28c5b773979e')
 options=('zipman')
 
 build() {
