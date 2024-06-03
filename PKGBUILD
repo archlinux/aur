@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=live-plus-plus-bin
 _pkgname="live++"
-pkgver=2.3.6
+pkgver=2.3.8
 _electronversion=24
-pkgrel=3
+pkgrel=1
 pkgdesc="Lightweight live streaming client.轻量级的直播客户端"
 arch=('x86_64')
 url="https://github.com/dipelta/live-plus-plus"
@@ -24,9 +24,9 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/dipelta/live-plus-plus/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('a8ca3c43067a4b9c7e9daaa612e11af380906efca6f14bd2bb99cbcd16f4d5c6'
+sha256sums=('eab84d48065a979b8809657e0d1b308e6cf7daeb64ec965697687984ad8adbdb'
             '8c66ee49d3a6ff7eb085eb7d896bdea56da0cac5c97bd60735847901d006f748'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \

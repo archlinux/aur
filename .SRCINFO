@@ -1,20 +1,20 @@
 pkgbase = live-plus-plus-bin
 	pkgdesc = Lightweight live streaming client.轻量级的直播客户端
-	pkgver = 2.3.6
-	pkgrel = 3
+	pkgver = 2.3.8
+	pkgrel = 1
 	url = https://github.com/dipelta/live-plus-plus
 	arch = x86_64
 	license = MIT
 	makedepends = fuse2
 	depends = electron24
-	provides = live-plus-plus=2.3.6
+	provides = live-plus-plus=2.3.8
 	conflicts = live-plus-plus
 	conflicts = live++
-	source = live-plus-plus-2.3.6.AppImage::https://github.com/dipelta/live-plus-plus/releases/download/v2.3.6/live++-2.3.6.AppImage
-	source = LICENSE-2.3.6::https://raw.githubusercontent.com/dipelta/live-plus-plus/v2.3.6/LICENSE
+	source = live-plus-plus-2.3.8.AppImage::https://github.com/dipelta/live-plus-plus/releases/download/v2.3.8/live++-2.3.8.AppImage
+	source = LICENSE-2.3.8::https://raw.githubusercontent.com/dipelta/live-plus-plus/v2.3.8/LICENSE
 	source = live-plus-plus.sh
-	sha256sums = a8ca3c43067a4b9c7e9daaa612e11af380906efca6f14bd2bb99cbcd16f4d5c6
+	sha256sums = eab84d48065a979b8809657e0d1b308e6cf7daeb64ec965697687984ad8adbdb
 	sha256sums = 8c66ee49d3a6ff7eb085eb7d896bdea56da0cac5c97bd60735847901d006f748
-	sha256sums = 41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = live-plus-plus-bin
