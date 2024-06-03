@@ -1,6 +1,6 @@
 pkgbase = perl-compression-util
 	pkgdesc = Compression::Util - implementation of various techniques used in data compression
-	pkgver = 0.07
+	pkgver = 0.08
 	pkgrel = 1
 	url = https://metacpan.org/release/Compression-Util
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = perl-compression-util
 	license = GPL
 	depends = perl>=5.36.0
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/T/TR/TRIZEN/Compression-Util-0.07.tar.gz
-	b2sums = 7d27c5baee48db234fdd0743d928a7636ee744f67c083eec47fb6528eb8085895614f2e2649f251eaf119eeaa8fa61b931c9f31154fda81aa2bb1295b96d3296
+	source = https://cpan.metacpan.org/authors/id/T/TR/TRIZEN/Compression-Util-0.08.tar.gz
+	b2sums = 8595ac5ae71c02823745b6305d91be1971972950011ed5c24980ea4fa707bfb5111b8be83e6961d3eb2f00a6bea41f2bdc742c9129469e669e932a74791ff7cd
 
 pkgname = perl-compression-util
