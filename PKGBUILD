@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=woocommerce-pos
 _pkgname=WooCommerce-POS
-pkgver=1.5.0
+pkgver=1.5.1
 _electronversion=30
-_nodeversion=18
+_nodeversion=20
 pkgrel=1
 pkgdesc="Electron Desktop App for WooCommerce POS"
 arch=('x86_64')
@@ -19,6 +19,7 @@ makedepends=(
     'gendesk'
     'yarn'
     'gcc'
+    'cmake'
     'curl'
 )
 source=(
@@ -26,7 +27,7 @@ source=(
     "expo.git::git+https://github.com/wcpos/managed-expo.git"
     "${pkgname}.sh"
 )
-sha256sums=('4c543d99df337ba062e49689b7be1fd893d04b8b218e1fe385c018a1627021fc'
+sha256sums=('ea637a086b333d9a8663ba4c76a603376c92788e3282a8e2adbc4cc4d11d4d98'
             'SKIP'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
