@@ -2,7 +2,7 @@
 pkgname=python-ffmpeg-asyncio
 _pkgname='python-ffmpeg-asyncio'
 pkgver=0.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A python interface for FFmpeg using asyncio"
 arch=(any)
 url="https://github.com/sumebrius/python-ffmpeg-asyncio"

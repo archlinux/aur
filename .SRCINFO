@@ -1,7 +1,7 @@
 pkgbase = python-ffmpeg-asyncio
 	pkgdesc = A python interface for FFmpeg using asyncio
 	pkgver = 0.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/sumebrius/python-ffmpeg-asyncio
 	arch = any
 	license = MIT
