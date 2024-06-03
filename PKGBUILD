@@ -2,7 +2,7 @@
 _pkgname="blueblack"
 pkgname=blueblack
 _name=blueblack
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Automatically switch between light/dark mode"
 arch=('any')
@@ -22,7 +22,7 @@ makedepends=(python-build python-installer python-wheel)
 
 source=("https://github.com/smitropoulos/blueblack/archive/refs/tags/v$pkgver.tar.gz")
 
-sha256sums=('ca05899d58753429a1eb372f34ab34696b07943370dab9c28ca14e5b952a900e')
+sha256sums=('cb7a24201ab2a66e9c57f29a1f5e7979eb4c269923a4b4ce0b99f0f6a8b43e4a')
 
 prepare() {
   cd "$_name-$pkgver" || exit 1
