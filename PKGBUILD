@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=at32-ide-bin
-pkgver=1.0.09
+pkgver=1.0.10
 pkgrel=1
 # epoch=1
 pkgdesc="AT32 IDE 是个跨平台 ARM 嵌入式系统的软件开发环境。 它包含一系列的 Eclipse 插件和工具。该插件可让用户在 AT32 IDE 开发环境下创建、建置和调试 AT32
@@ -15,8 +15,12 @@ replaces=()
 depends=(
 #   java-runtime
   bash
+  gcc-libs
   glibc
-  hidapi)
+  hidapi
+  libusb
+  perl
+  python)
 makedepends=(libarchive
   sed)
 optdepends=('artery-isp-console: Artery ISP Console 是一款基于 MCU Bootloader 的命令行应用程序。使用该应用程序,用户可以通过 UART 端口或者 USB 端口配置操作 Artery 的 MCU 设备。'
@@ -25,17 +29,17 @@ optdepends=('artery-isp-console: Artery ISP Console 是一款基于 MCU Bootload
     'at32-work-bench: AT32 MCU 图形化配置软件，生成初始化 C 代码(目前仅支持 AT32F421 系列)'
     'jlink-software-and-documentation: Segger JLink software & documentation pack for Linux')
 backup=()
-# options=(!strip)
+options=(!strip !emptydirs !staticlibs)
 install=${pkgname}.install
 _pkg_file_name=AT32_IDE_V${pkgver}_Linux-${arch}
 source=("${_pkg_file_name}.zip::https://www.arterytek.com/download/TOOL/${_pkg_file_name}.zip")
-sha256sums=('5402b0bac18842067a6c154080c0ee8c9a41f15484a901c98ab89951a9566332')
+sha256sums=('ce8e2a05c9e53b0e98e5cb4b1bf5dcfb7c6bd5139dc327db1a15231c4730f1ec')
 noextract=()
 
 package() {
     install -dm0755 "${pkgdir}/opt/artery32/${pkgname%-bin}/"
 
-    bsdtar -xf  ${srcdir}/AT32IDE_V${pkgver}_Linux-${arch}.tar.gz -C "${pkgdir}/opt/artery32/${pkgname%-bin}/"
+    bsdtar -xf  ${srcdir}/AT32IDE_V${pkgver}_Linux-${arch/x/X}.tar.gz -C "${pkgdir}/opt/artery32/${pkgname%-bin}/"
 
     install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-bin}" << EOF
 #!/bin/bash
