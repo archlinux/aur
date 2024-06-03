@@ -1,41 +1,55 @@
-# Based on the following version of extra/libmtp:
-# $Id: PKGBUILD 155745 2012-04-06 00:05:58Z tomegun $
-#
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Previous maintainer: Simon Conseil <contact+aur at saimon dot org>
 # Contributor: damir <damir@archlinux.org>
 # Contributor: Kevin Edmonds <edmondskevin@hotmail.com>
 # Contributor: John Karahalis <john.karahalis@gmail.com>
-# Maintainer: Simon Conseil <contact+aur at saimon dot org>
 
 pkgname=libmtp-git
-pkgver=1.1.12.r15.g586e047
+pkgver=1.1.21.r93.ge69958f
 pkgrel=1
 pkgdesc="Library implementation of the Media Transfer Protocol"
-arch=("i686" "x86_64")
-url="http://libmtp.sourceforge.net"
-license=('LGPL')
-depends=('libusb' 'libgcrypt')
-makedepends=('git')
+arch=('i686' 'x86_64')
+url="https://libmtp.sourceforge.net/"
+license=('LGPL-2.1-or-later')
+depends=('glibc' 'libgcrypt' 'libusb')
+makedepends=('git' 'doxygen')
+provides=("libmtp=$pkgver")
 conflicts=('libmtp')
-provides=('libmtp')
-source=("$pkgname"::'git://git.code.sf.net/p/libmtp/code')
-md5sums=('SKIP')
+options=('staticlibs')
+source=("git+https://git.code.sf.net/p/libmtp/code")
+sha256sums=('SKIP')
+
 
 pkgver() {
-  cd "$srcdir/$pkgname"
-  git describe --long --tags | sed -r 's/libmtp-//' | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+  cd "code"
+
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {
-  cd "$srcdir/$pkgname"
-  yes | ./autogen.sh
-  ./configure --prefix=/usr --with-udev=/usr/lib/udev
+  cd "code"
+
+  yes n | NOCONFIGURE=1 ./autogen.sh
+  CFLAGS="$CFLAGS -ffat-lto-objects" \
+  ./configure \
+    --prefix="/usr"
   make
 }
 
-package() {
-  cd "$srcdir/$pkgname"
-  make DESTDIR="${pkgdir}" install
+check() {
+  cd "code"
 
-  # fix broken udev rule
-  sed -i "/^Unable to open/d" ${pkgdir}/usr/lib/udev/rules.d/69-libmtp.rules
+  #make check
+}
+
+package() {
+  cd "code"
+
+  make DESTDIR="$pkgdir" install
+
+  # Install man page
+  cp -r "doc/man" "$pkgdir/usr/share/man"
 }
