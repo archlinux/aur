@@ -2,8 +2,8 @@
 
 pkgname="mumailer"
 pkgver=0.5.0
-pkgrel=2
-pkgdesc="Simple mailer agent using SMTP"
+pkgrel=3
+pkgdesc="Simple mailer agent and a Python library to easily interact with SMTP"
 url="http://www.muflone.com/mumailer"
 arch=('any')
 license=('GPL-3.0-or-later')
@@ -23,6 +23,6 @@ package() {
   cd "${pkgname}-${pkgver}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
   install -d "${pkgdir}/usr/share/doc/${pkgname}"
-  ln -s "/usr/lib/python3.11/site-packages/mumailer/samples" "${pkgdir}/usr/share/doc/${pkgname}"
+  ln -s "$(python -c 'print(__import__("site").getsitepackages()[0])')/mumailer/samples" "${pkgdir}/usr/share/doc/${pkgname}"
 }
 

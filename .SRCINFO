@@ -1,7 +1,7 @@
 pkgbase = mumailer
-	pkgdesc = Simple mailer agent using SMTP
+	pkgdesc = Simple mailer agent and a Python library to easily interact with SMTP
 	pkgver = 0.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.muflone.com/mumailer
 	arch = any
 	license = GPL-3.0-or-later
