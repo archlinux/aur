@@ -1,0 +1,112 @@
+diff --unified --recursive --text a/README.md b/README.md
+--- a/README.md	2023-12-24 15:24:30.000000000 +0100
++++ b/README.md	2024-06-03 19:21:04.293268724 +0200
+@@ -40,6 +40,7 @@
+   -o, --output                Filename for decrypted/downloaded file
+   -M, --model                 Required. Device model
+   -r, --region                Required. Device region
++  -I, --imei                  Required. Device serial or imei number
+   -f, --factory               Download factory firmware (Binary Nature)
+   -h, --disable-hash-check    Disables hash check in Download mode
+   -r, --disable-resume        Disables resume in Download mode
+@@ -56,19 +57,19 @@
+ ### Examples
+ Download: 
+ ```
+-./Syndical.Application -m Download -v A207FXXU2CUI2/A207FOXM2CUI2/A207FXXU2CUI2/A207FXXU2CUI2 -M SM-A207F -r SER -f
++./Syndical.Application -m Download -v A207FXXU2CUI2/A207FOXM2CUI2/A207FXXU2CUI2/A207FXXU2CUI2 -M SM-A207F -r SER -I 354260115477798 -f
+ ```
+ Decrypt: 
+ ```
+-./Syndical.Application -m Decrypt -v A207FXXU2CUI2/A207FOXM2CUI2/A207FXXU2CUI2/A207FXXU2CUI2 -M SM-A207F -r SER -f
++./Syndical.Application -m Decrypt -v A207FXXU2CUI2/A207FOXM2CUI2/A207FXXU2CUI2/A207FXXU2CUI2 -M SM-A207F -r SER -I 354260115477798 -f
+ ```
+ Download & Decrypt: 
+ ```
+-./Syndical.Application -m DownloadDecrypt -v A207FXXU2CUI2/A207FOXM2CUI2/A207FXXU2CUI2/A207FXXU2CUI2 -M SM-A207F -r SER -f
++./Syndical.Application -m DownloadDecrypt -v A207FXXU2CUI2/A207FOXM2CUI2/A207FXXU2CUI2/A207FXXU2CUI2 -M SM-A207F -r SER -I 354260115477798 -f
+ ```
+ Fetch device firmware list: 
+ ```
+-./Syndical.Application -m Fetch -M SM-A207F -r SER
++./Syndical.Application -m Fetch -M SM-A207F -r SER -I 354260115477798
+ ```
+ If `--factory` is present, `BINARY_NATURE` is set to 1 instead of 0. 
+ 
+diff --unified --recursive --text a/TheAirBlow.Syndical.Application/Program.cs b/TheAirBlow.Syndical.Application/Program.cs
+--- a/TheAirBlow.Syndical.Application/Program.cs	2023-12-24 15:24:30.000000000 +0100
++++ b/TheAirBlow.Syndical.Application/Program.cs	2024-06-03 19:21:46.260325951 +0200
+@@ -46,6 +46,9 @@
+             
+             [Option('r', "region", Required = true, HelpText = "Device region")]
+             public string Region { get; set; }
++
++            [Option('I', "imei", Required = true, HelpText = "Device serial or imei number")]
++            public string Imei { get; set; }
+             
+             [Option('f', "factory", Required = false, HelpText = "Download factory firmware (Binary Nature)")]
+             public bool FactoryFirmware { get; set; }
+@@ -91,7 +94,7 @@
+                             
+                             AnsiConsole.MarkupLine("[yellow]Fetching firmware information...[/]");
+                             var infoD = clientDownloadD.GetFirmwareInformation(o.FirmwareVersion, o.Model,
+-                                o.Region, typeDownloadD);
++                                o.Region, o.Imei, typeDownloadD);
+                             
+                             AnsiConsole.MarkupLine("[yellow]Initializing download...[/]");
+                             clientDownloadD.InitializeDownload(infoD);
+@@ -178,7 +181,7 @@
+                             
+                             AnsiConsole.MarkupLine("[yellow]Fetching firmware information...[/]");
+                             var infoDecrypt = clientDecrypt.GetFirmwareInformation(o.FirmwareVersion, o.Model,
+-                                o.Region, typeDecrypt);
++                                o.Region, o.Imei, typeDecrypt);
+                             
+                             var srcDecrypt = string.IsNullOrEmpty(o.InputFilename) ? infoDecrypt.FileName : o.InputFilename;
+                             var destDecrypt = string.IsNullOrEmpty(o.OutputFilename) ? infoDecrypt.FileName
+@@ -251,7 +254,7 @@
+                             
+                             AnsiConsole.MarkupLine("[yellow]Fetching firmware information...[/]");
+                             var info = clientDownload.GetFirmwareInformation(o.FirmwareVersion, o.Model,
+-                                o.Region, typeDownload);
++                                o.Region, o.Imei, typeDownload);
+                             
+                             AnsiConsole.MarkupLine("[yellow]Initializing download...[/]");
+                             clientDownload.InitializeDownload(info);
+@@ -376,12 +379,12 @@
+                                     task.IsIndeterminate(false);
+                                     task.Description = "[green]Fetching firmware information[/]";
+                                     task.MaxValue = list.Old.Count + 1;
+-                                    var info = new List<FirmwareInfo> { client.GetFirmwareInformation(list.Latest.NormalizedVersion, o.Model, o.Region, type) };
++                                    var info = new List<FirmwareInfo> { client.GetFirmwareInformation(list.Latest.NormalizedVersion, o.Model, o.Region, o.Imei, type) };
+                                     task.Increment(1);
+                                     foreach (var fw in list.Old) {
+                                         try {
+                                             info.Add(client.GetFirmwareInformation(fw.NormalizedVersion, o.Model,
+-                                                o.Region, type));
++                                                o.Region, o.Imei, type));
+                                         } catch {
+                                             AnsiConsole.MarkupLine($"[yellow]Unable to fetch firmware for {fw.NormalizedVersion}[/]");
+                                             info.Add(new FirmwareInfo { Version = fw.NormalizedVersion, OsVersion = "/UNKNOWN/", FileSize = 0 });
+
+diff --unified --recursive --text a/TheAirBlow.Syndical.Library/FusClient.cs b/TheAirBlow.Syndical.Library/FusClient.cs
+--- a/TheAirBlow.Syndical.Library/FusClient.cs	2023-12-24 15:24:30.000000000 +0100
++++ b/TheAirBlow.Syndical.Library/FusClient.cs	2024-06-03 19:24:37.801922404 +0200
+@@ -126,14 +126,15 @@
+         /// <param name="version">Firmware version</param>
+         /// <param name="model">Device model</param>
+         /// <param name="region">Device region</param>
++        /// <param name="imei">Device serial or imei number</param>
+         /// <param name="type">Firmware type</param>
+         /// <returns>Firmware information</returns>
+-        public FirmwareInfo GetFirmwareInformation(string version, string model, string region, FirmwareInfo.FirmwareType type)
++        public FirmwareInfo GetFirmwareInformation(string version, string model, string region, string imei, FirmwareInfo.FirmwareType type)
+         {
+             var xml = BuildFusXml(new Dictionary<string, string> {
+                 {"ACCESS_MODE", "2"},
+                 {"CLIENT_PRODUCT", "Syndical"},
+-                {"DEVICE_IMEI_PUSH", "12345678901234"},
++                {"DEVICE_IMEI_PUSH", imei},
+                 {"BINARY_NATURE", type == FirmwareInfo.FirmwareType.Factory ? "1" : "0"},
+                 {"DEVICE_FW_VERSION", version},
+                 {"DEVICE_LOCAL_CODE", region},
