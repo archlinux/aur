@@ -3,10 +3,10 @@
 
 pkgname='perl-tkx'
 pkgver='1.10'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Yet another Tk interface"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl>=5.008' 'perl-tcl>=1' 'tk')
 makedepends=()
