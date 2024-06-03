@@ -1,7 +1,7 @@
 pkgbase = python-pystray
 	pkgdesc = Allows to create a system tray icon
 	pkgver = 0.19.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/moses-palmer/pystray
 	arch = any
 	license = GPL-3.0-only

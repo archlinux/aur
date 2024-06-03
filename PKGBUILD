@@ -4,7 +4,7 @@
 
 pkgname=python-pystray
 pkgver=0.19.5
-pkgrel=3
+pkgrel=4
 arch=(any)
 license=(GPL-3.0-only LGPL-3.0-only)
 pkgdesc='Allows to create a system tray icon'
@@ -19,7 +19,7 @@ build() {
   python -m build --wheel --no-isolation
 }
 
-package_python-pystray() {
+package() {
   cd pystray-$pkgver
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
