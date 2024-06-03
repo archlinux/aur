@@ -2,17 +2,24 @@
 
 pkgbase='etherlab-ethercat'
 pkgname=("$pkgbase" 'etherlab-ethercat-tools')
-pkgver=1.5.2.r232.g34dcf04d
+pkgver=1.5.2.r408.g1c7f2b9b
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://etherlab.org/en/ethercat/'
 license=('GPL2')
 makedepends=('linux-headers')
-source=("$pkgbase::git+https://gitlab.com/etherlab.org/ethercat.git#branch=stable-1.5"
+source=("$pkgbase::git+https://gitlab.com/etherlab.org/ethercat.git#branch=stable-1.6"
+        "0001-Remove-dev_base_lock-for-linux-6.9.0.patch"
         "99-EtherCAT.rules")
 sha512sums=('SKIP'
+            'b8800df5e1bf33ffbec5f8001f54bfc5f684abad1fbea080904cd4d9e3e268b9e12efbde3c03c92f413900374df2233fa98aeb1fa01b75d4c12127d4e092a4a1'
             'b3baca5c546af8d57fe59e30d3acd63310a128fc938436b4a151e12fe2fde75029cf0f47b0ac2edc676e762a4cf7ac308b8229594a5d2c8301a02c0e8f623569')
 
+
+prepare() {
+  cd "$pkgbase"
+  patch --forward --strip=1 --input=../0001-Remove-dev_base_lock-for-linux-6.9.0.patch
+}
 
 pkgver() {
   cd "$pkgbase"
@@ -22,10 +29,13 @@ pkgver() {
 build() {
   cd "$pkgbase"
   ./bootstrap
-  # Only build the generic driver
+  # Only build with the generic driver
+  # TODO:
+  # - whenever 16516c3a8eac is merged, remove `--disable-8139too`
+  # - whenever 9ee6693fb3ff is merged, add `--disable-initd`
   ./configure \
-    --prefix=/usr --sysconfdir=/etc \
-    --sbindir=/usr/bin --libdir=/usr/lib \
+    --prefix=/usr --sbindir=/usr/bin --libdir=/usr/lib --sysconfdir=/etc \
+    --with-systemdsystemunitdir=/usr/lib/systemd/system \
     --enable-kernel --enable-generic --disable-8139too \
     --enable-tool --enable-userlib
   make all modules

@@ -1,14 +1,16 @@
 pkgbase = etherlab-ethercat
-	pkgver = 1.5.2.r232.g34dcf04d
+	pkgver = 1.5.2.r408.g1c7f2b9b
 	pkgrel = 1
 	url = https://etherlab.org/en/ethercat/
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = linux-headers
-	source = etherlab-ethercat::git+https://gitlab.com/etherlab.org/ethercat.git#branch=stable-1.5
+	source = etherlab-ethercat::git+https://gitlab.com/etherlab.org/ethercat.git#branch=stable-1.6
+	source = 0001-Remove-dev_base_lock-for-linux-6.9.0.patch
 	source = 99-EtherCAT.rules
 	sha512sums = SKIP
+	sha512sums = b8800df5e1bf33ffbec5f8001f54bfc5f684abad1fbea080904cd4d9e3e268b9e12efbde3c03c92f413900374df2233fa98aeb1fa01b75d4c12127d4e092a4a1
 	sha512sums = b3baca5c546af8d57fe59e30d3acd63310a128fc938436b4a151e12fe2fde75029cf0f47b0ac2edc676e762a4cf7ac308b8229594a5d2c8301a02c0e8f623569
 
 pkgname = etherlab-ethercat
