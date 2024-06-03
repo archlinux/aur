@@ -1,0 +1,15 @@
+pkgbase = alpha_tui
+	pkgdesc = A TUI for interpreting and debugging programs written in alpha-notation
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/LMH01/alpha_tui
+	arch = x86_64
+	license = GPL-3.0-only
+	checkdepends = cargo
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	source = alpha_tui-1.6.0.tar.gz::https://github.com/LMH01/alpha_tui/archive/v1.6.0.tar.gz
+	sha256sums = 7c825a69e29e51ca16870a9393747109efc7ff1e7580e05f95f8c081e9a6fea2
+
+pkgname = alpha_tui
