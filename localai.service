@@ -10,13 +10,12 @@ Description=LocalAI server
 [Service]
 User=localai
 Group=localai
-Type=simple
+Type=exec
 WorkingDirectory=%S/%N
 Restart=on-failure
 # PrivateTmp=yes
 
 # enabled extra backends
-Environment=EXTRA_BACKENDS="bark diffusers rerankers sentencetransformers transformers transformers-musicgen"
 # disabled: autogptq coqui exllama exllama2 mamba openvoice parler-tts petals vall-e-x
 Environment=EXTERNAL_GRPC_BACKENDS="\
 bark:%C/%N/backend-assets/python/bark/run.sh,\
