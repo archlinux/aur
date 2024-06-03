@@ -2,7 +2,7 @@
 # Maintainer: sQVe <oskargrunning@gmail.com>
 
 pkgname=vimix-gtk-themes-translucent-git
-pkgver=r568.f14f9a90
+pkgver=r570.8d9e62cc
 pkgrel=1
 pkgdesc='A flat Material Design theme for GTK 3, GTK 2 and Gnome-Shell, translucent version'
 url='https://github.com/vinceliuice/vimix-gtk-themes'
