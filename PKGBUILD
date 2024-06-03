@@ -8,7 +8,7 @@ url="https://github.com/dimalmfao/dimanet"
 license=('GPL-3.0')
 depends=('gcc')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dimalmfao/dimanet/archive/master.tar.gz")
-sha256sums=('7af031863f4039df5875ae7c20de715a34065481220e36a4b8aaeb87b04add50')
+sha256sums=('bf89eb6c4188618d6873db83f277a713a5b7614edb1157ac12b063335b96fdfd')
 
 build() {
   cd "$srcdir/dimanet-master"
@@ -17,6 +17,6 @@ build() {
 
 package() {
   cd "$srcdir/dimanet-master"
-  make install-lib DESTDIR="$pkgdir"
+  make install DESTDIR="$pkgdir"
 }
 
