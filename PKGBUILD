@@ -4,7 +4,7 @@ _reponame='ValveResourceFormat'
 pkgver='10.0'
 pkgrel='1'
 pkgdesc="File data viewer and decompiler for Valve's Source 2 resource file format"
-arch=('x86_64' 'armv7h' 'aarch64')
+arch=('x86_64')
 url="https://github.com/$_reponame/$_reponame"
 license=('MIT')
 depends=('dotnet-runtime>=8.0.0' 'skia-sharp')
@@ -15,18 +15,7 @@ sha512sums=('cedb81f4f56cd7eb8ca46a4c44d5db4a1aee6e6558a2b49d0d27c85a96e7db132f9
 validpgpkeys=('E58081FB804DF24DF217AB772B6E7BF31D171C61') # Pavel Djundik <github@xpaw.me> (https://github.com/xPaw.gpg)
 
 _sourcedirectory="$pkgname-$pkgver"
-
-case "$CARCH" in
-	armv7h)
-		_dotnetarch="linux-arm"
-	;;
-	aarch64)
-		_dotnetarch="linux-arm64"
-	;;
-	*)
-		_dotnetarch="linux-x64"
-	;;
-esac
+_dotnetarch="linux-x64"
 
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"

@@ -4,8 +4,6 @@ pkgbase = vrf-decompiler
 	pkgrel = 1
 	url = https://github.com/ValveResourceFormat/ValveResourceFormat
 	arch = x86_64
-	arch = armv7h
-	arch = aarch64
 	license = MIT
 	makedepends = dotnet-sdk>=8.0.0
 	makedepends = git
