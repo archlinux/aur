@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=elephicon
-pkgver=3.0.2
+pkgver=3.0.3
 _electronversion=30
 _nodeversion=20
 pkgrel=1
@@ -22,7 +22,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('e4230d561f945f624e83beb1224ad82f61fd49d80e4fc1c8785392ce3efafa57'
+sha256sums=('066cf93e91cbda9f89c8eed1796940de8b8c2fa06d43033cb2098b6063c65294'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
