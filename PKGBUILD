@@ -2,7 +2,7 @@
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 _base=oneshot
 pkgname=${_base}-bin
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="First-come-first-serve single-fire HTTP/HTTPS server"
 url="https://github.com/raphaelreyna/${_base}"
@@ -14,9 +14,9 @@ source_x86_64=("${_base}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pk
 source_armv7h=("${_base}-${pkgver}-armv7h.tar.gz::${url}/releases/download/v${pkgver}/${_base}_Linux_armv7.tar.gz")
 source_aarch64=("${_base}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_base}_Linux_arm64.tar.gz")
 
-sha512sums_x86_64=('98e5cd29d92ccc3a9cac112899763ff9d61abe75325809b1f4f692713e51b66ce7f5068c6b7cff446b08c56fa6c7615eff2f762ac04194ca6e24b7090d527e86')
-sha512sums_armv7h=('f7e8e12fa2723fbf95a456abc8e48623feda4be994cf3af0a1391ee7a7bd6c39afd7ff9c8b7e7265b6c0704092f7d063bc6d93d79401f6c790b26411abb93d50')
-sha512sums_aarch64=('d97856c6ec30cee438f35617fd92bb49579383d54f6dc4545a36bc5ddc46759f031fbf7e29b6ae5465308fa2dd1ed540401520575d1b04599a7b8d86cbb1f53a')
+sha512sums_x86_64=('09ff08223566de618e0031fda92e704959490482528ed8d98f646830b78e525cf5c0e1d6c14f36f6092f69fed0273d434afb90ed514b3bf167a15f053d20bc96')
+sha512sums_armv7h=('d4163ab14ea6b21e4afffbd8111d6fb085a5ae2680705a947851113034e20190665adb21cd24a31c60fb6c34f4d97ea64fca7a002d899eb6e0a12caddac28c43')
+sha512sums_aarch64=('0cc7f33402cc8c6805635d795e54ea8c226712b3ae643c4d22b4d1ebd388b643aeb55a4b2a6fc3d1d400132d35de782216c26600dd3a97c4b5e73eff5f5c9369')
 
 package() {
   cd "${srcdir}"
