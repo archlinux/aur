@@ -1,6 +1,6 @@
 # Maintainer: strifel <aur@strifel.de>
 pkgname=caddy-desec
-pkgver=2.7.6
+pkgver=2.8.1
 pkgrel=1
 pkgdesc="Caddy web server"
 arch=('any')
