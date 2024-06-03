@@ -8,7 +8,6 @@ pkgdesc="GAMA is a modeling and simulation development environment for building 
 arch=('x86_64')
 url="https://gama-platform.org"
 license=('GPL-3')
-groups=('')
 replaces=('gama-platform-jdk')
 conflicts=('gama-platform')
 options=('!strip' '!emptydirs')
