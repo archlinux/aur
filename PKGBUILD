@@ -10,6 +10,7 @@ depends=('libindi' 'ffmpeg' 'libgphoto2' 'pipewire-jack' 'wireplumber' 'libftdi'
 makedepends=(cmake)
 source=("https://github.com/indilib/indi-3rdparty/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('dbee5d88788266b9a17878e354fed12afea6716cf905351b62d0ec6f90bfdc73')
+options=(!lto)
 
 prepare() {
   mkdir -p build
