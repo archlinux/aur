@@ -7,7 +7,7 @@
 # Contributor: Colin Pitrat <colin.pitrat@gmail.com>
 
 pkgname=perl-pdl
-pkgver=2.088
+pkgver=2.089
 pkgrel=1
 pkgdesc='The Perl Data Language'
 _dist=PDL
@@ -101,7 +101,7 @@ checkdepends=(
 options=('!emptydirs' purge)
 source=("https://cpan.metacpan.org/authors/id/E/ET/ETJ/$_dist-$pkgver.tar.gz"
         perldl.conf)
-sha256sums=(0dd7de4d47259cd7b3f677f0b73afaddcba4e973c5575dc580ec7aaa02146cdd
+sha256sums=(9e408e4f06685de911697e12eaa5c8538e8521cbb80b876eda4bbcc7f98f196f
             SKIP)
 
 build() {

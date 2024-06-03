@@ -1,6 +1,6 @@
 pkgbase = perl-pdl
 	pkgdesc = The Perl Data Language
-	pkgver = 2.088
+	pkgver = 2.089
 	pkgrel = 1
 	url = https://metacpan.org/release/PDL
 	arch = i686
@@ -39,9 +39,9 @@ pkgbase = perl-pdl
 	depends = perl-extutils-f77
 	options = !emptydirs
 	options = purge
-	source = https://cpan.metacpan.org/authors/id/E/ET/ETJ/PDL-2.088.tar.gz
+	source = https://cpan.metacpan.org/authors/id/E/ET/ETJ/PDL-2.089.tar.gz
 	source = perldl.conf
-	sha256sums = 0dd7de4d47259cd7b3f677f0b73afaddcba4e973c5575dc580ec7aaa02146cdd
+	sha256sums = 9e408e4f06685de911697e12eaa5c8538e8521cbb80b876eda4bbcc7f98f196f
 	sha256sums = SKIP
 
 pkgname = perl-pdl
