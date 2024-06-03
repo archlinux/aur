@@ -2,7 +2,7 @@
 
 pkgname=unvpk-git
 pkgver=r108.1f1f44f
-pkgrel=1
+pkgrel=2
 pkgdesc='Extract Valve VPK archives'
 arch=(x86_64)
 url='https://github.com/panzi/unvpk'
@@ -11,11 +11,11 @@ depends=(glibc gcc-libs fuse boost-libs)
 makedepends=(git cmake boost)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("unvpk::git+$url.git")
-b2sums=(SKIP)
+source=("git+$url.git")
+b2sums=('SKIP')
 
 pkgver() {
-	cd $srcdir/${pkgname%-git}
+	cd ${pkgname%-git}
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
