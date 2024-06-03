@@ -16,7 +16,7 @@ optdepends=('python-paramiko: for remote builds')
 # FIXME: symbiyosys
 checkdepends=('python-pytest' 'yosys>0.16' 'symbiyosys-git' 'yices')
 provides=("python-nmigen=$pkgver" "python-$_pkgname=$pkgver")
-conflicts=('python-nmigen' "python-$_pkgname")
+conflicts=('python-nmigen' "python-nmigen-git" "python-$_pkgname-git")
 replaces=('python-nmigen')
 source=(
 	"git+$url.git" 
