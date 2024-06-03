@@ -16,7 +16,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 build() {
   cd $srcdir/cminpack-${pkgver}
   for _arch in ${_architectures}; do
-    ${_arch}-cmake -DCMINPACK_LIB_INSTALL_DIR=lib -DBUILD_EXAMPLES=OFF -B build-${_arch} .
+    ${_arch}-cmake -DCMINPACK_LIB_INSTALL_DIR=lib -DBUILD_EXAMPLES=OFF -DUSE_BLAS=OFF -B build-${_arch} .
     make -C build-${_arch}
   done
 }
