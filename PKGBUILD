@@ -1,7 +1,7 @@
 # Maintainer: littleblack111 <littleblack11111@gmail.com>
 pkgname=soft-shutdown
 pkgver=1.0
-pkgrel=4
+pkgrel=1
 pkgdesc="Gracefully shutdown userspace GUI applications before system shutdown"
 arch=('any')
 url="https://github.com/littleblack111/soft-shutdown"
