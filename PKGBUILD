@@ -13,7 +13,7 @@ license=(GPL3)
 
 depends=(libadalang-tools
          lal-refactor
-         templates-parser
+         templates_parser
          gtkada
          libvss
          ada_spawn
