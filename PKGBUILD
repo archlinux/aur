@@ -2,7 +2,7 @@
 pkgname=gridmonger-git
 pkgver=1.1.0.r147.e677627
 epoch=1
-pkgrel=2
+pkgrel=3
 pkgdesc="Your trusty old-school cRPG mapping companion"
 arch=('x86_64')
 url="https://gridmonger.johnnovak.net/"
@@ -30,7 +30,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	nim release -d:osdialogZenity
+	nim release -d:osdialogZenity --rangeChecks:off
 }
 
 package() {
