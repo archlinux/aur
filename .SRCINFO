@@ -1,0 +1,24 @@
+pkgbase = python-jschon
+	pkgdesc = Object-oriented JSON Schema implementation for Python
+	pkgver = 0.11.1
+	pkgrel = 1
+	url = https://github.com/marksparkza/jschon
+	arch = any
+	license = MIT
+	checkdepends = python-hypothesis
+	checkdepends = python-pytest
+	checkdepends = python-pytest-httpserver
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = python-wheel
+	makedepends = stylelint
+	depends = python
+	depends = python-requests
+	depends = python-rfc3986
+	source = jschon-0.11.1.tar.gz::https://github.com/marksparkza/jschon/archive/v0.11.1.tar.gz
+	sha512sums = a4b3c559501189efcfdd5a3dfca96594c7d5bbea0e7343524c2cea6bb661790704956401ea3901ff13d5bf15d15843ee2724c14061a3f1ee47a08dbbb0c9c2ab
+
+pkgname = python-jschon
