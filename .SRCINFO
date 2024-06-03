@@ -1,7 +1,7 @@
 pkgbase = indi-3rdparty-libs
 	pkgdesc = Indi 3rd party libraries
 	pkgver = 2.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://indilib.org
 	arch = x86_64
 	arch = aarch64

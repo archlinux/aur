@@ -1,7 +1,7 @@
 # Maintainer: Mattia Procopio (astro.matto) <matto.astro at gmail dot com>
 pkgname=indi-3rdparty-libs
 pkgver=2.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Indi 3rd party libraries"
 arch=(x86_64 aarch64)
 url="https://indilib.org"
