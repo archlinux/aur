@@ -1,11 +1,11 @@
 pkgbase = opencv-docs
 	pkgdesc = Open Source Computer Vision Library docs
-	pkgver = 4.9.0
+	pkgver = 4.10.0
 	pkgrel = 1
 	url = http://opencv.org/
 	arch = any
 	license = BSD
-	source = opencv-docs-4.9.0.tar.xz::https://docs.opencv.org/4.9.0.tar.xz
-	sha256sums = 259d8335ae1ceae1f084481d7e7f46202cfa1443a9d59f790ba595d922adf334
+	source = opencv-docs-4.10.0.tar.xz::https://docs.opencv.org/4.10.0.tar.xz
+	sha256sums = 0c622f7d084f30c9cd890019c08db1f1b724243b3a468943e9f4e60db6acf1c1
 
 pkgname = opencv-docs
