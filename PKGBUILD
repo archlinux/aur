@@ -11,8 +11,8 @@ url="https://www.waterfox.net/"
 depends=('gtk3' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 'ffmpeg'
          'ttf-font' 'hicolor-icon-theme' 'glibc' 'libpulse' 'nss' 'nspr')
 makedepends=('unzip' 'zip' 'diffutils' 'yasm' 'mesa' 'imake' 'inetutils' 'xorg-server-xvfb'
-             'autoconf2.13' 'rust' 'clang' 'llvm' 'alsa-lib' 'jack' 'cbindgen' 'nasm'
-             'nodejs' 'lld' 'bc' 'python<3.12' 'pciutils' 'dump_syms'
+             'rust' 'clang' 'llvm' 'alsa-lib' 'jack' 'cbindgen' 'nasm'
+             'nodejs' 'lld' 'bc' 'python' 'pciutils' 'dump_syms'
              'wasi-compiler-rt' 'wasi-libc' 'wasi-libc++' 'wasi-libc++abi'
              'git')
 replaces=("waterfox-g4-kpe" "waterfox-g3-kpe" "waterfox-g-kpe")
