@@ -2,7 +2,7 @@
 
 _pkgname=renovate
 pkgname="${_pkgname}-git"
-pkgver=37.368.3.r0.g8216f20
+pkgver=37.385.0.r6.g8c1b3ac
 pkgrel=1
 pkgdesc="Automated dependency updates (git-latest)"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('nodejs>=18.12.0')
 makedepends=('git' 'pnpm' 'npm' 'node-gyp')
 provides=("${_pkgname}")
 url="https://github.com/renovatebot/renovate"
-license=('AGPL3')
+license=('AGPL-3.0-only')
 source=("${pkgname}::git+${url}")
 sha256sums=('SKIP')
 
@@ -18,6 +18,7 @@ sha256sums=('SKIP')
 build() {
   cd "${pkgname}"
 
+  export COREPACK_ENABLE_STRICT=0
   pnpm version --no-git-tag-version "$(git describe --abbrev=0 --tags)"
   pnpm install --frozen-lockfile
   pnpm build
