@@ -4,7 +4,7 @@ pkgname="live2d-${_pkgname}"
 pkgver=2.8.1
 _electronversion=22
 _nodeversion=20
-pkgrel=1
+pkgrel=2
 pkgdesc="An AI Based live2d Kanban for Desktop Users Using Electron.基于Electron制作的桌面看板娘，支持日程提醒、小窗模式、ChatGPT集成、网页搜索、本地moc模型加载与独立设置界面等"
 arch=('any')
 url="http://studio.zerolite.cn/post/338/waifuproject2-live2d-kanban-desktop/"
@@ -45,13 +45,15 @@ build() {
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}-${pkgver}"
-    #export npm_config_build_from_source=true
-    export npm_config_cache="${srcdir}/.npm_cache"
+    export npm_config_build_from_source=true
     #export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     #export ELECTRONVERSION="${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
+    pnpm config set store-dir "${srcdir}/.pnpm_store"
+    pnpm config set cache-dir "${srcdir}/.pnpm_cache"
+    pnpm config set link-workspace-packages true
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
         export npm_config_registry=https://registry.npmmirror.com
         export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
@@ -62,8 +64,8 @@ build() {
     fi
     cp assets/applogo256.png assets/applogo.png
     sed "s|AppImage|dir|g" -i package.json
-    npm install --no-package-lock
-    npm run pack-linux
+    pnpm install
+    pnpm run pack-linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
