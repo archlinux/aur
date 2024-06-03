@@ -1,13 +1,12 @@
 pkgbase = netexec
 	pkgdesc = A swiss army knife for pentesting Windows/Active Directory environments
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/Pennyw0rth/NetExec
-	arch = any
+	arch = x86_64
 	license = BSD-2-Clause
-	depends = python
 	replaces = crackmapexec
-	source = https://github.com/Pennyw0rth/NetExec/releases/download/v1.1.0/nxc
-	sha256sums = a78f78fa018f18e2f95f4b535ab7fe78c5387242ecca1fcff674ca87140ad367
+	source = https://github.com/Pennyw0rth/NetExec/releases/download/v1.2.0/nxc
+	sha256sums = 9c4220e526290ffc836ccef6ad7556e760c50fcdf3e3c56d912754ffad64190b
 
 pkgname = netexec
