@@ -14,7 +14,7 @@ build() {
   cd $srcdir/cminpack-${pkgver}
   cmake -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DBUILD_SHARED_LIBS=ON -DBUILD_EXAMPLES=OFF -B build .
+    -DBUILD_SHARED_LIBS=ON -DBUILD_EXAMPLES=OFF -DUSE_BLAS=OFF -B build .
   make -C build
 }
 
