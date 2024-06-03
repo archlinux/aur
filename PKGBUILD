@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ytdownloader-gui-bin
 _pkgname=YTDownloader
-pkgver=3.17.4
+pkgver=3.18.0
 _electronversion=27
 pkgrel=1
 pkgdesc="A modern GUI App for downloading Videos and Audios from hundreds of sites."
@@ -20,12 +20,13 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_Linux.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('5e2b35b3079ab8a87e36f2fe4925f3754042b42e16d8d0acf1381b02b3334f54'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+sha256sums=('5b10d5aa05b006512e9e18b01256665165642d3a6a02475b086e0a93b1491763'
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@cfgdirname@|${pkgname%-gui-bin}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
