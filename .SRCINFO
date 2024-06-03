@@ -23,4 +23,7 @@ pkgbase = peazip-gtk2
 
 pkgname = peazip-gtk2
 	depends = gtk2
+	depends = 7-zip
+	depends = brotli
+	depends = zstd
 	depends = hicolor-icon-theme

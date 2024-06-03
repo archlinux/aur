@@ -5,7 +5,7 @@
 
 ## basic info
 _pkgname="peazip"
-pkgname="$_pkgname-gtk2"
+pkgname="$_pkgname-$_widgets"
 pkgver=9.8.0
 pkgrel=3
 pkgdesc="Cross-platform file and archive manager (${_widgets^^})"
@@ -63,12 +63,6 @@ prepare() {
 }
 
 build() {
-  depends+=(
-    '7-zip'
-    'brotli'
-    'zstd'
-  )
-
   mkdir -p build
 
   local _laz_opts=(
@@ -86,6 +80,11 @@ build() {
 }
 
 package() {
+  depends+=(
+    '7-zip'
+    'brotli'
+    'zstd'
+  )
   depends+=('hicolor-icon-theme')
 
   # binary
