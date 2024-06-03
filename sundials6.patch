@@ -460,10 +460,10 @@ index 2f3c077..e10f913 100644
 +sundials_core           = cdll.LoadLibrary(os.path.join(library_dir, platform_tuple, 'sundials_core'          + sharedLibraryExtension))
 \ No newline at end of file
 diff --git a/src/cswrapper/cswrapper.c b/src/cswrapper/cswrapper.c
-index d9888a8..4b77b0c 100644
+index d9888a8..b33bee5 100644
 --- a/src/cswrapper/cswrapper.c
 +++ b/src/cswrapper/cswrapper.c
-@@ -18,7 +18,7 @@
+@@ -18,13 +18,13 @@
  #include <nvector/nvector_serial.h>    /* access to serial N_Vector            */
  #include <sunmatrix/sunmatrix_dense.h> /* access to dense SUNMatrix            */
  #include <sunlinsol/sunlinsol_dense.h> /* access to dense SUNLinearSolver      */
@@ -472,6 +472,13 @@ index d9888a8..4b77b0c 100644
  
  #include "fmi2Functions.h"
  
+ 
+ #define EPSILON 1e-14
+-#define RTOL  RCONST(1.0e-4)   /* scalar relative tolerance            */
++#define RTOL 1.0e-4   /* scalar relative tolerance            */
+ 
+ #if defined(_WIN32)
+ #define SHARED_LIBRARY_EXTENSION ".dll"
 @@ -102,7 +102,7 @@ typedef struct {
  
  } Model;
@@ -512,13 +519,18 @@ index d9888a8..4b77b0c 100644
  
  
  /***************************************************
-@@ -296,22 +305,47 @@ fmi2Component fmi2Instantiate(fmi2String instanceName,
+@@ -296,22 +305,52 @@ fmi2Component fmi2Instantiate(fmi2String instanceName,
      m->c = m->fmi2Instantiate(instanceName, fmi2ModelExchange, fmuGUID, fmuResourceLocation, functions, visible, loggingOn); 
  	ASSERT_NOT_NULL(m->c)
      
++
 +#if SUNDIALS_VERSION_MAJOR >= 6
 +    SUNContext ctx;
++#if SUNDIALS_VERSION_MAJOR >= 7
++    SUNComm comm = 0;
++#else
 +    void *comm = NULL;
++#endif
 +    SUNContext_Create(comm, &ctx);
 +#endif
 +
@@ -563,7 +575,7 @@ index d9888a8..4b77b0c 100644
  	int flag;
  		
  	flag = CVodeInit(m->cvode_mem, f, 0, m->x);
-@@ -324,8 +358,12 @@ fmi2Component fmi2Instantiate(fmi2String instanceName,
+@@ -324,8 +363,12 @@ fmi2Component fmi2Instantiate(fmi2String instanceName,
          flag = CVodeRootInit(m->cvode_mem, (int)m->nz, g);
  		ASSERT_CV_SUCCESS(flag)
      }
@@ -577,7 +589,7 @@ index d9888a8..4b77b0c 100644
  
      flag = CVodeSetLinearSolver(m->cvode_mem, m->LS, m->A);
  	ASSERT_CV_SUCCESS(flag)
-@@ -333,12 +371,19 @@ fmi2Component fmi2Instantiate(fmi2String instanceName,
+@@ -333,12 +376,19 @@ fmi2Component fmi2Instantiate(fmi2String instanceName,
  	flag = CVodeSetNoInactiveRootWarn(m->cvode_mem);
  	ASSERT_CV_SUCCESS(flag)
  
@@ -598,7 +610,7 @@ index d9888a8..4b77b0c 100644
      return m;
  }
  
-@@ -534,9 +579,9 @@ fmi2Status fmi2DoStep(fmi2Component c,
+@@ -534,9 +584,9 @@ fmi2Status fmi2DoStep(fmi2Component c,
      
      fmi2Status status;
      
@@ -611,7 +623,7 @@ index d9888a8..4b77b0c 100644
          
      if (m->nx > 0) {
          status = m->fmi2GetContinuousStates(m->c, NV_DATA_S(m->x), NV_LENGTH_S(m->x));
-@@ -545,7 +590,7 @@ fmi2Status fmi2DoStep(fmi2Component c,
+@@ -545,7 +595,7 @@ fmi2Status fmi2DoStep(fmi2Component c,
      
      while (tret + epsilon < tNext) {
          
