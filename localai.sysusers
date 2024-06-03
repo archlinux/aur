@@ -1,0 +1,2 @@
+u localai - localai /var/lib/localai /bin/sh
+g localai - -

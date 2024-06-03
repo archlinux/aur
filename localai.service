@@ -1,62 +1,53 @@
 [Unit]
 Description=LocalAI server
 
-# "%C" Cache directory root
-# "%E" Configuration directory root
-# "%S" State directory root
-# "%T" Directory for temporary files
+# "%C" Cache directory root: /var/cache (system) or "$XDG_CACHE_HOME" (user)
+# "%E" Configuration directory root: /etc/ (system) or "$XDG_CONFIG_HOME" (user)
+# "%S" State directory root: /var/lib (system) or $XDG_STATE_HOME (user)
+# "%T" Directory for temporary files: /tmp or the path "$TMPDIR", "$TEMP" or "$TMP"
+# "%N" Full unit name	Same as "%n", but with the type suffix removed
 
 [Service]
+User=localai
+Group=localai
 Type=simple
-WorkingDirectory=%h
+WorkingDirectory=%S/%N
 Restart=on-failure
-
-PrivateTmp=yes
+# PrivateTmp=yes
 
 # enabled extra backends
 Environment=EXTRA_BACKENDS="bark diffusers rerankers sentencetransformers transformers transformers-musicgen"
 # disabled: autogptq coqui exllama exllama2 mamba openvoice parler-tts petals vall-e-x
 Environment=EXTERNAL_GRPC_BACKENDS="\
-bark:%C/localai/backend_extra/bark/run.sh,\
-diffusers:%C/localai/backend_extra/diffusers/run.sh,\
-rerankers:%C/localai/backend_extra/rerankers/run.sh,\
-sentencetransformers:%C/localai/backend_extra/sentencetransformers/run.sh,\
-transformers:%C/localai/backend_extra/transformers/run.sh,\
-transformers-musicgen:%C/localai/backend_extra/transformers-musicgen/run.sh"
-
+bark:%C/%N/backend-assets/python/bark/run.sh,\
+diffusers:%C/%N/backend-assets/python/diffusers/run.sh,\
+rerankers:%C/%N/backend-assets/python/rerankers/run.sh,\
+sentencetransformers:%C/%N/backend-assets/python/sentencetransformers/run.sh,\
+transformers:%C/%N/backend-assets/python/transformers/run.sh,\
+transformers-musicgen:%C/%N/backend-assets/python/transformers-musicgen/run.sh"
 # default environment and local env
-EnvironmentFile=/usr/share/localai/localai.env
-EnvironmentFile=-%E/localai/.env
+EnvironmentFile=%E/%N/%N.conf
+EnvironmentFile=-%S/%N/.env
 
 # create directories
-ExecStartPre=mkdir -p \
-  %E/localai \
-  %S/localai/models/config \
-  %C/localai/backend_assets \
-  %C/localai/backend_extra \
-  %T/localai/audio \
-  %T/localai/images \
-  %T/localai/upload
-
-# generate enabled python extra backends
-ExecStartPre=bash -c "\
-  cd %C/localai/backend_extra; \
-  for b in $EXTRA_BACKENDS; do \
-    if test ! -e $b; then \
-      cp -r /usr/share/localai/python/$b %C/localai/backend_extra; \
-      make -C $b; \
-    fi; \
-  done"
+ExecStartPre=install -d -g %N -o %N \
+  %C/%N \
+  %E/%N \
+  %S/%N/config \
+  %S/%N/models \
+  %T/%N/audio \
+  %T/%N/images \
+  %T/%N/upload
 
 # start server
 ExecStart=/usr/bin/localai run \
-  --config-path "%E/localai" \
-  --localai-config-dir "%E/localai" \
-  --models-path "%S/localai/models" \
-  --backend-assets-path "%C/localai/backend_assets" \
-  --audio-path "%T/localai/audio" \
-  --image-path "%T/localai/images" \
-  --upload-path "%T/localai/upload"
+  --backend-assets-path "%C/%N" \
+  --config-path "%S/%N" \
+  --localai-config-dir "%S/%N/config" \
+  --models-path "%S/%N/models" \
+  --audio-path "%T/%N/audio" \
+  --image-path "%T/%N/images" \
+  --upload-path "%T/%N/upload"
 
 [Install]
 WantedBy=default.target

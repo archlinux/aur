@@ -9,7 +9,7 @@ _ENABLE_ROCM=${_ENABLE_ROCM:-1}
 _ENABLE_PYTHON=${_ENABLE_PYTHON:-1}
 _ENABLE_PIPER=${_ENABLE_PIPER:-0}
 
-# if GPU_TARGETS and AMDGPU_TARGETS are not set, populate build architecture list from arch:python-pytorch@2.2.2-3
+# if GPU_TARGETS and AMDGPU_TARGETS are not set, mirror architecture list from arch:python-pytorch@2.3.0-2
 _AMDGPU_TARGETS="gfx906;gfx908;gfx90a;gfx940;gfx941;gfx942;gfx1010;gfx1012;gfx1030;gfx1100;gfx1101;gfx1102"
 if test -n "$GPU_TARGETS"; then _AMDGPU_TARGETS="$GPU_TARGETS"; fi
 if test -n "$AMDGPU_TARGETS"; then _AMDGPU_TARGETS="$AMDGPU_TARGETS"; fi
@@ -35,33 +35,54 @@ else
 fi
 
 # enabled backends
-_GRPC_BACKENDS="backend-assets/grpc/llama-cpp-grpc backend-assets/util/llama-cpp-rpc-server \
-backend-assets/grpc/llama-cpp-avx2 backend-assets/grpc/whisper backend-assets/grpc/local-store \
+_GRPC_BACKENDS="backend-assets/grpc/llama-cpp-avx2 \
+backend-assets/grpc/whisper \
+backend-assets/grpc/local-store \
 $_OPTIONAL_GRPC"
-# disabled backends: llama-ggml gpt4all rwkv tinydream bert-embeddings huggingface stablediffusion
+# disabled backends: backend-assets/util/llama-cpp-rpc-server llama-cpp-grpc llama-ggml gpt4all rwkv tinydream bert-embeddings huggingface stablediffusion
 
 _pkgbase="localai"
 pkgbase="${_pkgbase}-git"
 pkgname=()
-pkgver=2.16.0.67.g5ddaa199
-pkgrel=1
+pkgver=2.16.0.74.g6ef78ef7
+pkgrel=2
 pkgdesc="Self-hosted OpenAI API alternative - Open Source, community-driven and local-first."
 url="https://github.com/mudler/LocalAI"
 license=('MIT')
 arch=('x86_64')
-
 provides=('localai' "local-ai=${pkgver}")
 conflicts=('localai' 'local-ai')
+backup=("etc/${_pkgbase}/${_pkgbase}.conf")
+
+source=(
+  "${_pkgbase}"::"git+https://github.com/mudler/LocalAI"
+  "libbackend.patch"
+  "README.md"
+  "${_pkgbase}.conf"
+  "${_pkgbase}.service"
+  "${_pkgbase}.tmpfiles"
+  "${_pkgbase}.sysusers"
+)
+
+sha256sums=(
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+)
 
 depends=(
+  'protobuf'
   'grpc'
 )
+
 makedepends=(
   'go'
   'git'
   'cmake'
-  'protoc-gen-go'
-  'protoc-gen-go-grpc'
   'opencv'
   'blas-openblas'
   'sdl2'
@@ -70,15 +91,15 @@ makedepends=(
 
 if [[ $_ENABLE_PYTHON = 1 ]]; then
   depends+=(
+    'python-protobuf'
+    'python-grpcio'
+    'python-grpcio-tools'
     'python-numpy'
     'python-opencv'
     'python-pillow'
     'python-pytorch'
     'python-torchaudio'
     'python-torchvision'
-    'python-protobuf'
-    'python-grpcio'
-		'python-grpcio-tools'
   )
 fi
 
@@ -116,17 +137,6 @@ if [[ $_ENABLE_ROCM = 1 ]]; then
   )
 fi
 
-source=(
-  "${_pkgbase}"::"git+https://github.com/mudler/LocalAI"
-	"libbackend.patch"
-  "README.md"
-)
-
-sha256sums=(
-  'SKIP'
-	'SKIP'
-  'SKIP'
-)
 
 pkgver() {
   cd "${srcdir}/${_pkgbase}"
@@ -154,20 +164,22 @@ _GRPC_BACKENDS=$_GRPC_BACKENDS
 
 EOF
 
-  # modify Makefile
-  # modify get-sources
+  # ### modify Makefile
+  # remove unused sources from get-sources
   sed -ri "s#get-sources: .*#get-sources: $_EXTERNAL_SOURCES#g" Makefile
-  # modify (remove) go mod edits for inactive backend sources
+  # remove go mod edits for inactive backend sources
   for i in $_DISABLED_MOD_EDIT; do
     sed -ri 's#.+\-replace github.com/'$i'.+##g' Makefile
   done
+  # add /fast for grpc-server build
+  sed -ri 's#(\$\(MAKE\) -C backend/cpp/\$\{VARIANT\} grpc-server)#\1/fast#g' Makefile
 
-  # modify python backend build library to use -system-site-packages, and dont reinstall torch*
-  patch -N -i "${srcdir}/libbackend.patch" -p1
-
-	# fetch sources of backends to be recursive git checked out before build()
+  # fetch sources of backends to be recursive git checked out before build()
   mkdir -p "sources"
   make $_OPTIONAL_MAKE_ARGS $_EXTERNAL_SOURCES
+
+  # modify python backend build library to use --system-site-packages, and dont reinstall torch*
+  patch -N -i "${srcdir}/libbackend.patch" -p1
 
   if [[ $_ENABLE_PIPER = 1 ]]; then
     # fix piper build
@@ -199,10 +211,15 @@ EOF
 }
 
 _build() {
-  make BUILD_TYPE="$1" GRPC_BACKENDS="$_GRPC_BACKENDS" GO_TAGS="$_GO_TAGS" $_OPTIONAL_MAKE_ARGS build
   if [[ $_ENABLE_PYTHON = 1 ]]; then
-		make BUILD_TYPE="$1" protogen-python
-	fi
+    # generate grpc protobuf files for python and copy to backend-assets
+    make BUILD_TYPE="$1" protogen-python
+    mkdir -p backend-assets
+    cp -a backend/python backend-assets/python
+  fi
+
+  make -j"$(nproc)" BUILD_TYPE="$1" GRPC_BACKENDS="$_GRPC_BACKENDS" \
+    GO_TAGS="$_GO_TAGS" $_OPTIONAL_MAKE_ARGS build
 }
 
 build() {
@@ -234,12 +251,10 @@ _package_install() {
   install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${_pkgbase}"
   install -Dm644 "${srcdir}/README.md" "${pkgdir}/usr/share/doc/${_pkgbase}/README-build.md"
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgbase}"
-  if [[ $_ENABLE_PYTHON = 1 ]]; then
-    mkdir -p "${pkgdir}/usr/share/${_pkgbase}"
-    cp -a backend/python "${pkgdir}/usr/share/${_pkgbase}/python"
-  fi
-  install -Dm644 localai.service -t "${pkgdir}/usr/lib/systemd/user"
-  install -Dm644 localai.env -t "${pkgdir}/usr/share/${_pkgbase}"
+  install -Dm644 ${srcdir}/${_pkgbase}.conf -t "${pkgdir}/etc/${_pkgbase}"
+  install -Dm644 ${srcdir}/${_pkgbase}.service -t "${pkgdir}/usr/lib/systemd/system"
+  install -Dm644 ${srcdir}/${_pkgbase}.sysusers "${pkgdir}/usr/lib/sysusers.d/${_pkgbase}.conf"
+  install -Dm644 ${srcdir}/${_pkgbase}.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/${_pkgbase}.conf"
 }
 
 package_localai-git() {
@@ -252,6 +267,7 @@ package_localai-git-cuda() {
   cd "${srcdir}/${_pkgbase}-cuda"
   pkgdesc+=' (with CUDA support)'
   depends+=('cuda')
+  if [[ $_ENABLE_PYTHON = 1 ]]; then depends+=('python-pytorch-cuda'); fi
   _package_install
 }
 
@@ -259,5 +275,6 @@ package_localai-git-rocm() {
   cd "${srcdir}/${_pkgbase}-rocm"
   pkgdesc+=' (with ROCM support)'
   depends+=('rocm-hip-runtime' 'hipblas' 'rocblas')
+  if [[ $_ENABLE_PYTHON = 1 ]]; then depends+=('python-pytorch-rocm'); fi
   _package_install
 }
