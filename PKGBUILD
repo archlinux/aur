@@ -1,7 +1,7 @@
 # Maintainer: TrueConf LLC <packager@trueconf.com>
 pkgbase='trueconf-client'
 pkgname='trueconf'
-pkgver='8.4.1.520'
+pkgver='8.4.1.521'
 pkgrel='1'
 pkgdesc='Video conference client with a range of rich collaborative tools and an easy-to-use interface'
 arch=('x86_64')
@@ -56,15 +56,15 @@ depends=('pulseaudio'
 )
 install="${pkgname}-client.install"
 _channel=stable
-source=('https://mirror.trueconf.com/archlinux/trueconf-8.4.1.520-1-x86_64.pkg.tar.zst')
-sha512sums=('bb4b8df4b6488cbb4fb529d53e9c42ec96fda8d103a51a9b3efac2c93b280a69047a1bd1e8627f6440d984806fd311d6a161933e608f6a23a23da085b2ae73b2')
+source=('https://mirror.trueconf.com/archlinux/trueconf-8.4.1.521-1-x86_64.pkg.tar.zst')
+sha512sums=('3d95857a856a080bb644ce8eccc7942bc7b3b90d07b36c3924761ecc696eda2acbc7d7866c0033f753a62b613b3cf2291763376f55711cf3577658e80343c8c1')
 
 package() {
   cd "${srcdir}"
   install -Dm 755 "${srcdir}/opt/${pkgname}/client/TrueConf" "${pkgdir}/opt/${pkgname}/client/TrueConf"
   install -Dm 755 "${srcdir}/opt/${pkgname}/client/${pkgname}" "${pkgdir}/opt/${pkgname}/client/${pkgname}"
   install -Dm 755 "${srcdir}/opt/${pkgname}/client/${pkgname}-autostart" "${pkgdir}/opt/${pkgname}/client/${pkgname}-autostart"
-  install -Dm 644 "${srcdir}/opt/${pkgname}/client/${pkgname}-client-autostart.desktop" "${pkgdir}/opt/${pkgname}/client/${pkgname}_client-autostart.desktop"
+  install -Dm 644 "${srcdir}/opt/${pkgname}/client/${pkgname}_client-autostart.desktop" "${pkgdir}/opt/${pkgname}/client/${pkgname}_client-autostart.desktop"
   install -Dm 644 "${srcdir}/usr/share/metainfo/${pkgname}.appdata.xml" "${pkgdir}/usr/share/metainfo/${pkgname}.appdata.xml"
   install -Dm 644 "${srcdir}/usr/share/applications/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -Dm 644 "${srcdir}/usr/share/pixmaps/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
