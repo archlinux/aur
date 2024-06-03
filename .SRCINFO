@@ -8,5 +8,5 @@ pkgbase = devkitarm-r47
 	source = https://wii.leseratte10.de/devkitPro/devkitARM/r47%20%282017%29/devkitARM_r47-x86_64-linux.tar.bz2
 	source = https://wii.leseratte10.de/devkitPro/libgba/libgba_0.5.1/libgba-0.5.1.tar.bz2
 
-pkgname = devkitARM-r47
+pkgname = devkitarm-r47
 
