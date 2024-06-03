@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=blueknight-bin
 _pkgname=BlueKnight
-pkgver=1.2.0
-_electronversion=28
+pkgver=1.2.4
+_electronversion=30
 pkgrel=1
 pkgdesc="A Minecraft Launcher made with electron, that uses the Modrinth api to make installing mods as easy as possible.Beta version."
 arch=('x86_64')
@@ -14,15 +14,16 @@ depends=(
     "electron${_electronversion}"
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}-beta/${pkgname%-bin}-launcher-deb-${pkgver}.deb"
+    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgver}-beta/${pkgname%-bin}-launcher-deb-${pkgver}.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('7d127710c96e9f8514d4dbabac0357bb495817513fce3d68f800043f4fb7e4dd'
-            '24c1c5b90cba47cd3d7a3ff11a934fcdbb499f8c56423d22009ef33a775e2d21')
+sha256sums=('5943175b056468859ad8e1e5b72f0b5baf7f709019329f893167014049bf85d6'
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
