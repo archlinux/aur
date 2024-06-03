@@ -14,10 +14,8 @@ depends=(
 )
 makedepends=(
     'git'
+    'xxd'
 )
-if ! command -v xxd &> /dev/null; then
-    makedepends+=('tinyxxd')
-fi
 
 source=("$_pkgname::git+https://github.com/wins1ey/LibreSplit.git")
 sha256sums=('SKIP')
