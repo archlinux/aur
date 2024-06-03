@@ -1,0 +1,15 @@
+pkgbase = nulib2
+	pkgdesc = utility for manipulating NuFX archives
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = http://www.nulib.com/
+	arch = x86_64
+	license = GPL-2
+	depends = nufxlib
+	provides = nulib2
+	source = nulib2-3.1.0.tar.gz::https://github.com/fadden/nulib2/archive/v3.1.0.tar.gz
+	source = nulib2-3.1.0-make.patch
+	sha256sums = 383127d6966edae09da550f4d7197e68eed101d239f2a23cee42dc086506af12
+	sha256sums = 273e337c0f5c7f31e153f2d6c2e8280a78f11790de216fc7388756f8d41d1ded
+
+pkgname = nulib2
