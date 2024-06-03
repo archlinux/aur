@@ -3,33 +3,29 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=cmake
-pkgver=3.29.3
+pkgver=3.29.4
 pkgrel=1
 pkgdesc='A cross-platform open-source make system'
 arch=('x86_64')
 url="https://www.cmake.org/"
 license=('custom')
 depends=('curl' 'libarchive' 'hicolor-icon-theme' 'jsoncpp' 'libjsoncpp.so' 'libuv' 'rhash' 'cppdap')
-makedepends=('qt6-base' 'python-sphinx' 'emacs' 'nlohmann-json')
+makedepends=(emacs
+             git
+             nlohmann-json
+             python-sphinx
+             qt6-base)
 optdepends=(
   'make: for unix Makefile generator'
   'ninja: for ninja generator'
   'qt6-base: cmake-gui'
 )
-source=("https://www.cmake.org/files/v${pkgver%.*}/${pkgname}-${pkgver}.tar.gz"
-        "https://www.cmake.org/files/v${pkgver%.*}/${pkgname}-${pkgver}-SHA-256.txt"{,.asc})
-sha512sums=('930060cf484a769992ebc798d5e81984560b2cd7e163db7053181ad842656ccd0085e7e077c9c620e719d212f78283ca0db19bec5491a355d38078bbe0bac254'
-            '118604ac64ccd02995e6b421c256cb414637471094a72ff65d0f604cc4cc9f869f64fe1d409584925b93050373e7b69966ea91e4a9fc34b98287b0ee49eeb23c'
-            'SKIP')
+source=(git+https://gitlab.kitware.com/cmake/cmake#tag=v$pkgver?signed)
+sha512sums=('8fea53a1cd5f62f6dcc85b8b0b1b61587a5d3657e4256024d2af462c9b5647ed9c2d7b7ebf843532637d859d28f89d81c0b1cb29521c6c3db78457471b076621')
 validpgpkeys=(CBA23971357C2E6590D9EFD3EC8FEF3A7BFB4EDA) # Brad King <brad.king@kitware.com>
 
-prepare() {
-  # upstream does not provide signed tarballs, only signed checksums
-  sha256sum -c --ignore-missing "${pkgname}-${pkgver}-SHA-256.txt"
-}
-
 build() {
-  cd ${pkgname}-${pkgver}
+  cd ${pkgname}
   ./bootstrap --prefix=/usr \
     --mandir=/share/man \
     --docdir=/share/doc/cmake \
@@ -43,7 +39,7 @@ build() {
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
+  cd ${pkgname}
   make DESTDIR="${pkgdir}" install
 
   rm -r "$pkgdir"/usr/share/doc/cmake/html/_sources
