@@ -1,33 +1,29 @@
-# Maintainer: Maxime "pep" Buquet <archlinux@bouah.net>
+# Maintainer: Sam Whited <sam@samwhited.com>
+# Contributor: Maxime "pep" Buquet <archlinux@bouah.net>
 
-_pkgname=python-doubleratchet
-_tag=v0.7.0-beta
-pkgbase=${_pkgname}
-pkgname=${_pkgname}
-pkgver=0.7.0.beta
-pkgrel=5
+pkgname=python-doubleratchet
+pkgver=1.0.3
+pkgrel=1
 pkgdesc="A python implementation of the Double Ratchet algorithm"
 url='https://github.com/Syndace/python-doubleratchet'
 license=('MIT')
 arch=('any')
-makedepends=('git' 'python-setuptools')
-source=("${_pkgname}::git+https://github.com/Syndace/${_pkgname}.git#tag=${_tag}")
-sha256sums=('SKIP')
+makedepends=(
+	'python-setuptools'
+	'python-build'
+	'python-installer'
+	'python-wheel'
+)
+source=("${pkgname}_${pkgver}.tar.gz::https://github.com/Syndace/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('a254ace2b972d8adde25d7ba620e40249e47eb2ec4b5cb9a2657e0d565e024b0')
 depends=('python-cryptography')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-
-pkgver() {
-    cd ${_pkgname}
-    printf "%s" "$(git describe --tags | sed -e 's/^v//;s/-/./')"
-}
 
 build() {
-    cd ${_pkgname}
-    python3 setup.py build
+	cd ${pkgname}-${pkgver}
+	python -m build --wheel --no-isolation
 }
 
 package() {
-    cd ${_pkgname}
-    python3 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+	cd ${pkgname}-${pkgver}
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }
