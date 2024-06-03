@@ -5,8 +5,8 @@ pkgbase = bulk-rename-plus
 	url = https://github.com/siyia2/bulk-rename-plus
 	arch = x86_64
 	license = GPL3
-	depends = bash
 	depends = coreutils
+	depends = glibc
 	source = https://github.com/siyia2/bulk-rename-plus/archive/v1.9.6.tar.gz
 	md5sums = a634f558d7671680d7a02da2eb71a3b2
 
