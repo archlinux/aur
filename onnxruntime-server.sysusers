@@ -1,1 +1,1 @@
-u onnxruntime-server - "ONNX runtime daemon user" / /sbin/nologin
+u onnxruntime-server - "ONNX runtime daemon user" /var/lib/onnxruntime-server /sbin/nologin

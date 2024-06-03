@@ -6,7 +6,8 @@ After=network-online.target
 [Service]
 User=onnxruntime-server
 Group=onnxruntime-server
-EnvironmentFile=/etc/appflowy/config.env
+WorkingDirectory=~
+EnvironmentFile=/etc/onnxruntime-server/config.env
 PrivateTmp=true
 ProtectHome=true
 ProtectSystem=strict
@@ -17,10 +18,8 @@ ProtectControlGroups=true
 RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
 NoNewPrivileges=true
 PrivateDevices=true
-DeviceAllow=/dev/syslog
 RestrictSUIDSGID=true
 ProtectKernelModules=true
-MemoryDenyWriteExecute=true
 RestrictNamespaces=true
 RestrictRealtime=true
 LockPersonality=true
@@ -29,7 +28,7 @@ KillMode=mixed
 KillSignal=SIGTERM
 Restart=on-failure
 RestartPreventExitStatus=2
-ExecStartPre=/usr/bin/onnxruntime-server
+ExecStart=/usr/bin/onnxruntime-server
 
 [Install]
 WantedBy=multi-user.target
