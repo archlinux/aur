@@ -1,6 +1,9 @@
-FROM archlinux:base-devel
+FROM greyltc/archlinux-aur:yay
 
-RUN pacman --noconfirm -Sy fakeroot binutils make
+# Install base dependencies
+RUN pacman --noconfirm -Sy --needed fakeroot binutils make
+
+# Install OpenGamepadUI dependencies
 RUN pacman --noconfirm -S \
   libx11 \
   libxres \
@@ -11,3 +14,5 @@ RUN pacman --noconfirm -S \
   gamescope \
   vulkan-tools \
   mesa-utils
+
+RUN aur-install inputplumber-bin

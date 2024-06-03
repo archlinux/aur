@@ -1,6 +1,6 @@
 pkgbase = opengamepadui-bin
 	pkgdesc = Open source game launcher
-	pkgver = 0.30.3
+	pkgver = 0.31.0
 	pkgrel = 1
 	url = https://github.com/ShadowBlip/OpenGamepadUI
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = opengamepadui-bin
 	depends = libxdmcp
 	depends = gamescope
 	depends = vulkan-tools
+	depends = inputplumber
 	depends = mesa-utils
 	optdepends = firejail
 	optdepends = bubblewrap
@@ -25,8 +26,8 @@ pkgbase = opengamepadui-bin
 	optdepends = powerstation
 	provides = opengamepadui
 	conflicts = opengamepadui-git
-	source = opengamepadui-v0.30.3.tar.gz::https://github.com/ShadowBlip/OpenGamepadUI/releases/download/v0.30.3/opengamepadui.tar.gz
-	sha256sums = caa7a148f5c8a22ac7bb7f0623c974e4fb5972e611a7808bebec5a6c9a555011
+	source = opengamepadui-v0.31.0.tar.gz::https://github.com/ShadowBlip/OpenGamepadUI/releases/download/v0.31.0/opengamepadui.tar.gz
+	sha256sums = 84954dfcbe5c91d2f394c701f9ac51ab63d39d8c051770a8843b9b6e2ca8101a
 
 pkgname = opengamepadui-bin
 	options = !strip
