@@ -3,7 +3,7 @@
 
 pkgname=yass-proxy-qt6
 pkgver=1.10.5
-pkgrel=1
+pkgrel=2
 _pkgver=1.10.5
 _pkgrel=1
 pkgdesc="lightweight http/socks proxy"
@@ -12,7 +12,7 @@ url="https://github.com/Chilledheart/yass"
 license=(GPL-2.0-only)
 depends=(gcc-libs glibc qt6-base zlib libnghttp2 c-ares gperftools)
 optdepends=(gtk-update-icon-cache qt6-wayland)
-makedepends=(git ninja perl pkg-config cmake qt6-base qt6-tools curl go clang lld llvm gperftools)
+makedepends=(gcc binutils git ninja perl pkg-config cmake qt6-tools curl go)
 checkdepends=(curl)
 provides=(yass-proxy)
 conflicts=(yass-proxy-git yass-proxy yass-proxy-gtk3)
@@ -36,19 +36,16 @@ prepare() {
 build(){
   SRC_DIR="${srcdir}/yass-${_pkgver}"
   pushd $SRC_DIR
-  export CC=clang
-  export CXX=clang++
-  rm -rf build-linux-amd64
-  mkdir build-linux-amd64
-  cd build-linux-amd64
+  rm -rf build
+  mkdir build
+  cd build
   cmake .. -DCMAKE_BUILD_TYPE=Release -G Ninja -DBUILD_TESTS=on \
     -DUSE_TCMALLOC=on -DUSE_SYSTEM_TCMALLOC=on \
     -DUSE_SYSTEM_ZLIB=on -DUSE_SYSTEM_CARES=on -DUSE_SYSTEM_NGHTTP2=on \
-    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_SYSCONFDIR=/etc \
     -DGUI=ON -DUSE_QT6=on -DCLI=off -DSERVER=off \
-    -DUSE_LIBCXX=off -DENABLE_LTO=on
+    -DUSE_LIBCXX=off -DENABLE_GOLD=off -DENABLE_LTO=off
   ninja yass yass_test
-  llvm-objcopy --strip-debug yass
   cd ..
 
   popd
@@ -57,7 +54,7 @@ build(){
 check() {
   SRC_DIR="${srcdir}/yass-${_pkgver}"
   pushd $SRC_DIR
-  ./build-linux-amd64/yass_test
+  ./build/yass_test
   popd
 }
 
@@ -65,8 +62,8 @@ package(){
   SRC_DIR="${srcdir}/yass-${_pkgver}"
   pushd $SRC_DIR
 
-  install -Dm644 ./build-linux-amd64/LICENSE ${pkgdir}/usr/share/licenses/yass/LICENSE
-  DESTDIR=${pkgdir} ninja -C build-linux-amd64 install
+  install -Dm644 ./build/LICENSE ${pkgdir}/usr/share/licenses/yass/LICENSE
+  DESTDIR=${pkgdir} ninja -C build install
   rm -rf ${pkgdir}/usr/share/doc
 
   popd
