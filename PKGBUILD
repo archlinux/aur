@@ -1,16 +1,14 @@
 # Maintainer: Stefan Dimitrijevic <stefanstele95@hotmail.com>
 
 pkgname='linvam'
-pkgver=0.6.4
-pkgrel=2
+pkgver=0.7.0
+pkgrel=1
 pkgdesc='Linux voice activated macros'
 arch=('x86_64')
 url='https://github.com/stele95/LinVAM'
-arch=('x86_64')
 license=('GPL3')
 makedepends=(
   'python'
-  'nuitka-git'
   'git'
 )
 depends=(
@@ -34,23 +32,21 @@ conflicts=(
   'linvamrun'
 )
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a69a86ceb43de6a2151ba7f09224bc9c726fb3e4509118ab5c071727d8031ace')
+sha256sums=('3272ce782456e2435e3c85a7c590443160148fdcdfad0cd14add4d7468e93f79')
 install=linvam.install
 
 build() {
-  current_CFLAGS=$CFLAGS
-  export CFLAGS=''
-  cd "LinVAM-$pkgver"/scripts
-  source ./build.sh
-  export CFLAGS=$current_CFLAGS
+  cd "${srcdir}/LinVAM-${pkgver}"
+  python setup.py build
 }
 
 package() {
-  install "LinVAM-$pkgver"/src/LinVAM.desktop -Dm644 "$pkgdir/usr/share/applications/LinVAM.desktop"
-  install "LinVAM-$pkgver"/scripts/linvam -Dm755 "$pkgdir/usr/bin/linvam"
-  install "LinVAM-$pkgver"/scripts/linvamrun -Dm755 "$pkgdir/usr/bin/linvamrun"
-  install "LinVAM-$pkgver"/LICENSE.txt -Dm644 "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
-  # install "LinVAM-$pkgver"/rules/12-input.rules -Dm644 "$pkgdir/etc/udev/rules.d/12-input.rules"
-  # install "LinVAM-$pkgver"/rules/50-uinput.rules -Dm644 "$pkgdir/etc/udev/rules.d/50-uinput.rules"
-  install "LinVAM-$pkgver"/rules/80-uinput.rules -Dm644 "$pkgdir/etc/udev/rules.d/80-uinput.rules"
+  cd "${srcdir}/LinVAM-${pkgver}"
+  export PYTHONHASHSEED=0
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  install LinVAM.desktop -Dm644 "$pkgdir/usr/share/applications/LinVAM.desktop"
+  install LICENSE.txt -Dm644 "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+  # install rules/12-input.rules -Dm644 "$pkgdir/etc/udev/rules.d/12-input.rules"
+  # install rules/50-uinput.rules -Dm644 "$pkgdir/etc/udev/rules.d/50-uinput.rules"
+  install rules/80-uinput.rules -Dm644 "$pkgdir/etc/udev/rules.d/80-uinput.rules"
 }

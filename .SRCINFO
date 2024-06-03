@@ -1,13 +1,12 @@
 pkgbase = linvam
 	pkgdesc = Linux voice activated macros
-	pkgver = 0.6.4
-	pkgrel = 2
+	pkgver = 0.7.0
+	pkgrel = 1
 	url = https://github.com/stele95/LinVAM
 	install = linvam.install
 	arch = x86_64
 	license = GPL3
 	makedepends = python
-	makedepends = nuitka-git
 	makedepends = git
 	depends = xorg-xinput
 	depends = python
@@ -23,7 +22,7 @@ pkgbase = linvam
 	provides = linvamrun
 	conflicts = linvam
 	conflicts = linvamrun
-	source = https://github.com/stele95/LinVAM/archive/refs/tags/v0.6.4.tar.gz
-	sha256sums = a69a86ceb43de6a2151ba7f09224bc9c726fb3e4509118ab5c071727d8031ace
+	source = https://github.com/stele95/LinVAM/archive/refs/tags/v0.7.0.tar.gz
+	sha256sums = 3272ce782456e2435e3c85a7c590443160148fdcdfad0cd14add4d7468e93f79
 
 pkgname = linvam
