@@ -5,7 +5,7 @@
 pkgbase=libonvif
 pkgname=('libonvif' 'python-libonvif')
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 url='https://github.com/sr99622/libonvif'
 license=('LGPL-2.1-or-later')
 arch=('i686' 'x86_64')

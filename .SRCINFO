@@ -1,6 +1,6 @@
 pkgbase = libonvif
 	pkgver = 3.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sr99622/libonvif
 	arch = i686
 	arch = x86_64
