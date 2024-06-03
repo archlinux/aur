@@ -9,7 +9,7 @@ url="https://github.com/GustavoWidman/passmake"
 license=('CC0')
 depends=()
 makedepends=('go' 'git')
-options=('!debug')
+options=('!strip' '!debug')
 
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
