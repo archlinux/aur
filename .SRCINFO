@@ -1,0 +1,15 @@
+pkgbase = python-ffmpeg-asyncio
+	pkgdesc = A python interface for FFmpeg using asyncio
+	pkgver = 0.1.2
+	pkgrel = 2
+	url = https://github.com/sumebrius/python-ffmpeg-asyncio
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = ffmpeg
+	depends = python-pyee
+	options = !emptydirs
+	source = python-ffmpeg-asyncio-0.1.2::https://github.com/sumebrius/python-ffmpeg-asyncio/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = fc6ce7da6ff85ebd98a2328c484aa3aa891f5f6f10e47c66b92bc9a60d61b3bb
+
+pkgname = python-ffmpeg-asyncio
