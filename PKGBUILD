@@ -1,6 +1,6 @@
 pkgname=netflix
 _pkgname=Netflix
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="Unnofficial Netflix desktop application"
 arch=('x86_64')
@@ -10,7 +10,7 @@ conflicts=("Netflix-bin")
 replace=("Netflix-bin")
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 source=("$url/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
-sha256sums=('c562fb2611b693abff15b003b7da5ca286d6afafe0f698ef68251e3353abb585')
+sha256sums=('35f6ca7e40858dc9779af15043f09217320fa96ee10eee6f000ab70cdba8e849')
 
 
 package() {
