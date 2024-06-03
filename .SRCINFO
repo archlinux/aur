@@ -8,6 +8,7 @@ pkgbase = live2d-kanban-desktop
 	makedepends = gendesk
 	makedepends = npm
 	makedepends = nvm
+	makedepends = pnpm
 	makedepends = curl
 	depends = electron22
 	depends = python>=3
