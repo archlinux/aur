@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=tailchat
 pkgname="${_pkgname}-desktop"
-pkgver=1.11.3
+pkgver=1.11.4
 _electronversion=18
 _nodeversion=18
 pkgrel=1
@@ -19,17 +19,16 @@ makedepends=(
     'npm'
     'nvm'
     'yarn'
-    'git'
-    'base-devel'
     'gcc'
+    'cmake'
     'curl'
 )
 source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('9a52031f59bc4220a706884c8ed02dacd054b3fef2b55ffc40bdb1a811a980dc'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+sha256sums=('3596c19daf0bc1ad4d8c64fe9d5457f0326c066bac77efc542650191f62ae368'
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -40,11 +39,12 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@cfgdirname@|${pkgname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${_pkgname}-desktop" --categories="Network" --name="${pkgname}" --exec="${pkgname} %U"
+    gendesk -q -f -n --pkgname="${_pkgname}-desktop" --pkgdesc="${pkgdesc}" --categories="Network" --name="${pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${_pkgname}-${pkgver}/client/desktop"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
