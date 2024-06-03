@@ -1,14 +1,14 @@
 # Maintainer: Nep_Nep <nepnep91 at child dot pizza>
 
 pkgname=simplex-desktop-bin
-pkgver=5.7.4
-pkgrel=4
+pkgver=5.8.0
+pkgrel=1
 pkgdesc="SimpleX Chat, the first messaging network operating without user identifiers of any kind"
 arch=(x86_64)
 url="https://simplex.chat"
 license=('AGPL-3.0')
 source=("https://github.com/simplex-chat/simplex-chat/releases/download/v$pkgver/simplex-desktop-ubuntu-22_04-x86_64.deb")
-sha256sums=('6be4ae69e47ebd7546ff2b3df446e40be26976b5a05fffbab46b43a105b13e04')
+sha256sums=('1b5abc731b14b63ce6f2c697285b33dcad3c5fecd84fc8bcd2a620637a37eb89')
 
 package() {
     cd "$srcdir"
