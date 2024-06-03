@@ -3,23 +3,42 @@
 # Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
 
 pkgname=scx-scheds
+gitname=scx
 pkgver=0.1.9
-pkgrel=2
+pkgrel=3
 pkgdesc='Sched_ext schedulers'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
 license=('GPL-2.0-only')
 depends=('libelf' 'zlib' 'jq')
-makedepends=('python' 'meson' 'clang' 'llvm' 'llvm-libs' 'rust')
+makedepends=('git' 'python' 'meson' 'clang' 'llvm' 'llvm-libs' 'rust')
 backup=('etc/default/scx' 'etc/systemd/journald@sched-ext.conf')
+source=("git+https://github.com/sched-ext/scx#tag=v$pkgver")
+sha256sums=('4b226e717366a2d11561f72c9bde85b89390dbeb3f909504e5986e8751d9ef9e')
 options=(!lto)
-source=(https://github.com/sched-ext/scx/archive/refs/tags/v${pkgver}.tar.gz)
-sha512sums=('dabee9d4fc5ef4b5bbd8b1e7d681d918d3006499f000d33a1a419b2595415ec1beb454be0d97b22a84ebf56bd1ace444162eec6cfc14c972fb38fceaf6477337')
+
+_backports=(
+)
+
+_reverts=(
+)
 
 prepare() {
- cd scx-${pkgver}
+ cd $gitname
 
- local src
+ local _c _l
+  for _c in "${_backports[@]}"; do
+    if [[ "${_c}" == *..* ]]; then _l='--reverse'; else _l='--max-count=1'; fi
+    git log --oneline "${_l}" "${_c}"
+    git cherry-pick --mainline 1 --no-commit "${_c}"
+  done
+  for _c in "${_reverts[@]}"; do
+    if [[ "${_c}" == *..* ]]; then _l='--reverse'; else _l='--max-count=1'; fi
+    git log --oneline "${_l}" "${_c}"
+    git revert --mainline 1 --no-commit "${_c}"
+  done
+
+  local src
   for src in "${source[@]}"; do
     src="${src%%::*}"
     src="${src##*/}"
@@ -30,13 +49,13 @@ prepare() {
 }
 
 build() {
-  cd scx-${pkgver}
+  cd $gitname
   arch-meson . build --buildtype release --auto-features auto
   meson compile -C build
 }
 
 package() {
-  cd scx-${pkgver}
+  cd $gitname
   meson install -C build --destdir "${pkgdir}"
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
