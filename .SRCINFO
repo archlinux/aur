@@ -1,17 +1,17 @@
 pkgbase = koishi-desktop-bin
 	pkgdesc = Launch Koishi from your desktop
-	pkgver = 1.1.2
+	pkgver = 1.1.3
 	pkgrel = 1
 	url = https://koishi.chat/manual/starter/
 	arch = x86_64
 	license = AGPL-3.0-only
 	makedepends = fuse2
 	depends = nodejs
-	provides = koishi-desktop=1.1.2
+	provides = koishi-desktop=1.1.3
 	conflicts = koishi-desktop
-	source = koishi-desktop-1.1.2.AppImage::https://github.com/koishijs/koishi-desktop/releases/download/v1.1.2/koishi-desktop-linux-x64-v1.1.2.AppImage
+	source = koishi-desktop-1.1.3.AppImage::https://github.com/koishijs/koishi-desktop/releases/download/v1.1.3/koishi-desktop-linux-x64-v1.1.3.AppImage
 	source = koishi-desktop.sh
-	sha256sums = d3225d82e793a6ed821686747bd40a3469eb48f0596f2787efc0184d65c75179
-	sha256sums = 9d064bc18c8bcf7e3218df028fc3debb4eff93ea40c1570cc6251727b29cf5bf
+	sha256sums = 1ec0313db4fe5b8c2c1f22da6920917bf154292cae95b0523e29293b4f37d4ba
+	sha256sums = f28d3a03601dbd872dcfedae2ef57866f4bb5ad3430a610b98fcdd4b79a2e790
 
 pkgname = koishi-desktop-bin

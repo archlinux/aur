@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+set -o pipefail
 _APPDIR="/opt/@appname@"
 _RUNAPP="${_APPDIR}/@runname@"
 export PATH="${_APPDIR}:${_APPDIR}/bin:${PATH}"
