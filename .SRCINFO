@@ -1,6 +1,6 @@
 pkgbase = bk7231tools
 	pkgdesc = A collection of tools to interact with and analyze artifacts for BK7231 MCUs
-	pkgver = 1.5.7
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/tuya-cloudcutter/bk7231tools
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = bk7231tools
 	depends = python-pyserial
 	depends = python-pycryptodome
 	depends = python-datastruct
-	source = https://github.com/tuya-cloudcutter/bk7231tools/archive/refs/tags/v1.5.7.tar.gz
-	sha256sums = 2cb573fb7867675de40e89d40d1b305a70b11893a20b47154ebc4356d45077b9
-	b2sums = e51945a4b93982abc95b003a79110317753b110118f0b3f294b22d1d2f1ab78382b1721b4479729589c3f73c486dc01ae757b7b8db3cc3f84094ed2a1b994cb3
+	source = https://github.com/tuya-cloudcutter/bk7231tools/archive/refs/tags/v2.0.2.tar.gz
+	sha256sums = abc2e1b1ef1927ca5e3081dfbead5fba42ead7a5dd55d435777f2d087217e3c4
+	b2sums = a1921b9901100aca3cec3db64544576650b570b3c2d9c74dffc524d9f0ca8b89b32e4715c050228d63be62135449d25019f706a1b8a7e2a818f0d1bee82e9eb1
 
 pkgname = bk7231tools
