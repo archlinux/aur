@@ -1,7 +1,7 @@
 # Maintainer: Mélanie Chauvel (ariasuni) <aria at ariasuni dot eu>
 
 pkgname=tumelune
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc='a simple program to browse and search in twitter and mastodon archives'
 arch=(x86_64 i686 pentium4 armv7h aarch64)
@@ -10,7 +10,7 @@ url=https://fedi.doom.solutions/tumelune/
 options=(!lto)
 makedepends=(cargo)
 source=("https://fedi.doom.solutions/tumelune/files/tumelune-v${pkgver}-source.zip" tumelune.desktop)
-sha256sums=('3562520b14d8945c92f1b3cb356f1bac7d4facb3267f0746d010586bd7bd9e36'
+sha256sums=('c99024927fda6cf077891c6debf5d68e376eae78220a7264f27cadc8db8abd47'
             'e444a2095820b3ca1105a78ffff81bfc1d51cda2fd85a9fbcaf7d4427fc37515')
 
 prepare() {
