@@ -38,6 +38,7 @@ depends=(
 makedepends=(
     cmake
     extra-cmake-modules
+    shaderc-non-semantic-debug
     clang
     lld
     llvm
