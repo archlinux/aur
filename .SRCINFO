@@ -1,10 +1,10 @@
 pkgbase = libbismuth
-	pkgdesc = Libadwaita's responsive widgets, without all the baggage.
+	pkgdesc = Libadwaita's responsive widgets, without all the baggage
 	pkgver = 1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tau-OS/libbismuth
 	arch = x86_64
-	license = LGPL2.1
+	license = LGPL-2.1-or-later
 	makedepends = cmake
 	makedepends = fribidi
 	makedepends = gi-docgen
