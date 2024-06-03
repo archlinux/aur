@@ -1,14 +1,13 @@
-# CPAN Name  : POSIX::strftime::Compiler
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Anton Leontiev <scileont /at/ gmail.com>
-# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname=perl-posix-strftime-compiler
 pkgver=0.46
-pkgrel=1
+pkgrel=2
 pkgdesc='Perl module providing GNU C library compatible strftime for loggers and servers'
 arch=('any')
 url='https://metacpan.org/release/POSIX-strftime-Compiler'
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
 depends=('perl')
 makedepends=('perl-module-build-tiny>=0.035')
 source=(http://search.cpan.org/CPAN/authors/id/K/KA/KAZEBURO/POSIX-strftime-Compiler-0.46.tar.gz)
