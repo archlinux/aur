@@ -4,9 +4,9 @@
 # Contributor: Jiawen Geng
 pkgname=github-desktop-git
 _pkgname="GitHub Desktop"
-pkgver=release.2.9.10.r4415.ge315c497a1
-_electronversion=28
-_nodeversion=18
+pkgver=release.2.9.10.r4701.g2303fa5
+_electronversion=30
+_nodeversion=20
 pkgrel=1
 pkgdesc="GUI for managing Git and GitHub.Use system-wide electron."
 arch=('any')
@@ -25,17 +25,17 @@ makedepends=(
     'git'
     'nvm'
     'gendesk'
-    'base-devel'
     'gcc'
+    'cmake'
 )
 source=(
     "${pkgname%-git}.git::git+${url}.git"
     "${pkgname%-git}.sh")
 sha256sums=('SKIP'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
-    git describe --tags | sed 's/\w\+\///g;s/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
 }
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -47,26 +47,27 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-git}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
+    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-    export ELECTRONVERSION="${_electronversion}"
-    export npm_config_disturl=https://electronjs.org/headers
+    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
+    #export ELECTRONVERSION="${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
     touch "${srcdir}/.electron-gyp/.yarnrc"
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
-      export npm_config_registry=https://registry.npmmirror.com
-      export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
-      export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
+        export npm_config_registry=https://registry.npmmirror.com
+        export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
+        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
+        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
     else
-      echo "Your network is OK."
+        echo "Your network is OK."
     fi
     rm -rf dist node_mudules out
     yarn install --cache-folder "${srcdir}/.yarn_cache"
