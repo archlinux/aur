@@ -1,0 +1,11 @@
+--- nufxlib/Makefile.in	2017-09-21 11:52:37.000000000 -0700
++++ nufxlib/Makefile.in	2022-04-14 09:35:31.840302256 -0700
+@@ -54,7 +54,7 @@
+ # Build stuff
+ #
+ 
+-all: $(PRODUCT) samples
++all: $(PRODUCT)
+ 	@true
+ 
+ install: $(STATIC_PRODUCT)
