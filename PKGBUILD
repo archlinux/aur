@@ -7,7 +7,7 @@ pkgrel=2
 _mod=''
 pkgdesc='NASA high energy astrophysics library'
 depends=('inetutils' 'libxpm' 'libidn' 'ncurses' 'readline')
-makedepends=('glibc' 'gcc-fortran' 'perl' 'python-astropy' 'python-matplotlib' 'python-pip' 'python-scipy' 'python-setuptools')
+makedepends=('gcc13-fortran' 'glibc' 'gcc-fortran' 'perl' 'python-astropy' 'python-matplotlib' 'python-pip' 'python-scipy' 'python-setuptools')
 optdepends=(
   "python-astropy: python binding"
   "python-numpy: python binding"
@@ -26,7 +26,7 @@ install="$pkgname.install"
 build() {
   cd "heasoft-$pkgver/BUILD_DIR"
 
-  LDFLAGS='-lm' \
+  LDFLAGS='-lm' CC='gcc-13' CXX='g++-13' FC='gfortran-13' \
   CFLAGS="$CFLAGS -Wno-error=format-security" \
   ./configure --prefix="/opt/heasoft" --build="$CHOST"
 
