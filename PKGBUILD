@@ -1,16 +1,21 @@
-# Maintainer: Philip Goto <philip.goto@gmail.com>
+# Maintainer:
+# Contributor: Philip Goto <philip.goto@gmail.com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
+## useful links
+# https://wiki.gnome.org/Apps/Contacts
+# https://gitlab.gnome.org/GNOME/gnome-contacts
+
 _pkgname="gnome-contacts"
 pkgname="$_pkgname-git"
-pkgver=44.0.r5.gdee5b4cc
+pkgver=46.0.r15.g4ec2661
 pkgrel=1
 pkgdesc="Contacts Manager for GNOME"
-# https://wiki.gnome.org/Apps/Contacts
 url="https://gitlab.gnome.org/GNOME/gnome-contacts"
-arch=(i686 x86_64 armv7h aarch64)
-license=(GPL2)
+license=('GPL-2.0-or-later')
+arch=('x86_64')
+
 depends=(
   evolution-data-server
   folks
@@ -28,21 +33,22 @@ makedepends=(
   meson
   vala
 )
-groups=(gnome)
-provides=("$_pkgname")
-conflicts=(${provides[@]})
-source=(
-  "$_pkgname"::"git+$url"
-)
+
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 \
+    | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  arch-meson "$srcdir/$_pkgname" build 
+  arch-meson "$_pkgsrc" build
   meson compile -C build
 }
 
