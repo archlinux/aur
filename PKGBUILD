@@ -1,7 +1,7 @@
 # Maintainer: John Regan <john@jrjrtech.com>
 
 pkgname=lightningcss
-pkgver=1.25.0
+pkgver=1.25.1
 pkgrel=1
 pkgdesc='An extremely fast CSS parser, transformer, bundler, and minifier written in Rust.'
 url='https://lightningcss.dev/'
@@ -10,7 +10,7 @@ license=('MPL-2.0')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/parcel-bundler/lightningcss/archive/v${pkgver}.tar.gz")
-sha256sums=('b587cb1eecaee4c1e3921faebf8f5245e74dbc1f3bcabbd70b7e7e09aa09d448')
+sha256sums=('2d676632bbec5de73edab0108815bf3e4ceecf8810779e787ed0e3d125149601')
 
 prepare() {
     cd "$pkgname-$pkgver"
