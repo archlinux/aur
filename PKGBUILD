@@ -1,19 +1,19 @@
 pkgname=python-assimulo
-pkgver=3.4.3
+pkgver=3.5.1
 pkgrel=1
 pkgdesc="A package for solving ordinary differential equations and differential algebraic equations"
 url="http://www.jmodelica.org/assimulo"
 arch=('x86_64')
 license=('LGPL')
-makedepends=('python-setuptools' 'cython0' 'gcc-fortran')
+makedepends=('python-setuptools' 'cython' 'gcc-fortran')
 depends=('python-scipy' 'python-matplotlib' 'lapack' 'sundials')
-source=("https://github.com/modelon-community/Assimulo/archive/Assimulo-${pkgver}.tar.gz")
-sha256sums=('1f4d6fdde384c36bc8297e639cc5ece98817e6bbbe7e54e21ed20b1ff8f6fe7f')
+source=("https://github.com/modelon-community/Assimulo/archive/Assimulo-${pkgver}.tar.gz" setuptools.patch)
+sha256sums=('356a78953f13172f64fd040aceda7c00216e99766ac0758eaaec07d5fdf394f7' SKIP)
 
 prepare() {
   cd "${srcdir}"/Assimulo-Assimulo-$pkgver
 
-  curl -L https://github.com/modelon-community/Assimulo/pull/87.patch | patch -p1 || :
+  patch -p1 -i "${srcdir}"/setuptools.patch
 
   # use shared lib
   sed -i "s|BLASname_t+'.a'|BLASname_t+'.so'|g" setup.py

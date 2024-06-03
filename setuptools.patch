@@ -1,0 +1,60 @@
+diff --git a/setup.py b/setup.py
+index 3a317fb..779d093 100644
+--- a/setup.py
++++ b/setup.py
+@@ -23,7 +23,7 @@ import ctypes.util
+ import argparse
+ from os.path import isfile, join
+ import numpy as np
+-import numpy.distutils.core as ndc
++from setuptools import setup
+ 
+ def str2bool(v):
+     return v.lower() in ("yes", "true", "t", "1")
+@@ -74,7 +74,6 @@ logging.debug('Source from svn revision {}'.format(revision[:-1])) # exclude new
+ #and this is only possible with distutils, not setuptools
+ if not args[0].prefix:
+     import setuptools
+-import numpy.distutils as nd
+ 
+ try:
+     from Cython.Distutils import build_ext
+@@ -160,8 +159,8 @@ class Assimulo_prepare(object):
+         def fortran_compiler_flags(self):
+             opt = ['/nologo', '/MT', '/nbs', '/names:lowercase', '/assume:underscore']
+             return opt
+-        from numpy.distutils.fcompiler import intel
+-        nd.fcompiler.intel.IntelVisualFCompiler.get_flags=fortran_compiler_flags
++        # from numpy.distutils.fcompiler import intel
++        # nd.fcompiler.intel.IntelVisualFCompiler.get_flags=fortran_compiler_flags
+         
+         self.platform = 'linux'
+         if 'win' in sys.platform: 
+@@ -487,6 +486,9 @@ class Assimulo_prepare(object):
+                               force = True,
+                               compiler_directives={'language_level' : "3str"},)
+ 
++        for el in ext_list:
++           el.include_dirs += [np.get_include()]
++
+         # SUNDIALS
+         if self.with_SUNDIALS:
+             compile_time_env = {'SUNDIALS_VERSION': self.SUNDIALS_version,
+@@ -661,7 +663,7 @@ else:
+     change_dir = False
+ 
+ ext_list = prepare.cython_extensionlists()
+-ext_list += prepare.fortran_extensionlists()
++# ext_list += prepare.fortran_extensionlists()
+ 
+ # distutils part
+ 
+@@ -716,7 +718,7 @@ license_info=[place+os.sep+pck+os.sep+'LICENSE_{}'.format(pck.upper())
+                for pck in  thirdparty_methods for place in ['thirdparty','lib']]
+ logging.debug(license_info)
+ 
+-ndc.setup(name=NAME,
++setup(name=NAME,
+       version=VERSION,
+       license=LICENSE,
+       description=DESCRIPTION,
