@@ -1,0 +1,11 @@
+--- nulib2/Makefile.in	2017-09-21 11:52:37.000000000 -0700
++++ nulib2/Makefile.in	2022-04-14 09:55:49.145721697 -0700
+@@ -52,7 +52,7 @@
+ PRODUCT		= nulib2
+ 
+ # this is used for dependency checking
+-LIB_PRODUCT	= libnufx.a
++#LIB_PRODUCT	= libnufx.a
+ 
+ 
+ #
