@@ -48,7 +48,7 @@ _wxcfg_pkg_name_ident="${_wxcfg_pkg_user}-${_wxcfg_pkg_name}-${_wxcfg_pkg_ident:
 # wxdap/wxdap submodule: https://github.com/eranif/wxdap
 _wxdap_pkg_user="${_pkg_user}"
 _wxdap_pkg_name="wxdap"
-_wxdap_pkg_ident="e5c7d35f17ca119aa99710244c0764b07f0cc4c6"
+_wxdap_pkg_ident="10f57bbd9a4d52888b24ee79e8f02f9f5785eed4"
 _wxdap_pkg_name_ident="${_wxdap_pkg_user}-${_wxdap_pkg_name}-${_wxdap_pkg_ident:0:7}"
 
 # yaml-cpp submodule: https://github.com/jbeder/yaml-cpp
@@ -57,7 +57,7 @@ _yaml_pkg_name="yaml-cpp"
 _yaml_pkg_ident="1b50109f7bea60bd382d8ea7befce3d2bd67da5f"
 _yaml_pkg_name_ident="${_yaml_pkg_user}-${_yaml_pkg_name}-${_yaml_pkg_ident:0:7}"
 
-# tinyjson (yaml-cpp) sub-submodule: https://github.com/eranif/tinyjson
+# tinyjson (cc-wrapper) sub-submodule: https://github.com/eranif/tinyjson
 _json_pkg_user="${_pkg_user}"
 _json_pkg_name="tinyjson"
 _json_pkg_ident="a6b0d0d31a05a9f55b4944b3b20f769305eb583a"
@@ -69,7 +69,7 @@ pkgname="${_pkg_name}-unstable"
 #pkgver=${_pkg_ver}
 #pkgver="${_pkg_ver//_/-}"
 pkgver="${_pkg_ver/-*/}"
-pkgrel=1
+pkgrel=2
 
 # generic: pre
 _pkg_ver="${pkgver}"
