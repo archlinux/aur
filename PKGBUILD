@@ -1,11 +1,14 @@
+# Maintainer: Edmund Lodewijks <e.lodewijks@gmail.com>
+# Contributor: Gromit <gromit@archlinux.org>
+
 pkgname=gnucobol
 pkgver=3.2
 pkgdesc="A free, open source and modern COBOL compiler"
-pkgrel=1
+pkgrel=2
 arch=("x86_64")
 url="https://www.gnu.org/software/gnucobol/"
-license=("GPL")
-depends=("db" "gmp")
+license=("GPL-3.0-only")
+depends=("db" "gmp" "json-c" "libxml2" "ncurses" "glibc" "bash")
 makedepends=("gcc")
 options=("!libtool")
 source=(
@@ -21,7 +24,8 @@ validpgpkeys=(
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
 
-	./configure --prefix=/usr --infodir=/usr/share/info
+	# Until fixed, the following CFLAG is added:
+	CFLAGS="$CFLAGS -Wno-error=implicit-function-declaration" ./configure --prefix=/usr --infodir=/usr/share/info
 	make
 }
 
