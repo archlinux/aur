@@ -1,0 +1,15 @@
+pkgbase = ruby-hitimes
+	pkgdesc = Fast, high resolution timer library for recording performance metrics
+	pkgver = 2.0.0
+	pkgrel = 4
+	url = https://github.com/copiousfreetime/hitimes
+	arch = x86_64
+	license = ISC
+	makedepends = ruby-rdoc
+	depends = ruby
+	options = !emptydirs
+	source = https://github.com/copiousfreetime/hitimes/archive/v2.0.0/ruby-hitimes-2.0.0.tar.gz
+	sha256sums = 3cc6f67fd1e87f7978e8919c4af528a9f1677d8d70209b2bb46d6a196f26ad37
+	sha512sums = ac7211eafe8e1534d65a26b235e2558712ce91ecfb529a097974e749ef07d4ae232cd10411561f4f759df920b3133b8a57089c7f77d5a0bd5a0b56352724fae7
+
+pkgname = ruby-hitimes
