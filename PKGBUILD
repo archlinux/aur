@@ -1,7 +1,7 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=obs-text-pthread
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="This plugin aims to show beautiful texts on OBS Studio"
 arch=("x86_64" "aarch64")
@@ -11,7 +11,7 @@ depends=("obs-studio>=28" "glibc" "glib2" "cairo" "libpng" "pango")
 makedepends=("cmake")
 options=('debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/norihiro/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=("6c89368065fe5446f4fc1e537ed154c9652de3a5edb83fe959adc74770bc9aed")
+sha256sums=("1c4040e3fbca897640c40d1c6960a8c12d58a64ab365ccb1c5104703f4427ccb")
 
 build() {
   cd "$pkgname-$pkgver"
