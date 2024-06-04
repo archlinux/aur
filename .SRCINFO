@@ -1,6 +1,6 @@
 pkgbase = android-studio-system
 	pkgdesc = The official Android IDE (Stable branch)
-	pkgver = 2023.2.1.23
+	pkgver = 2023.3.1.19
 	pkgrel = 1
 	url = https://developer.android.com/studio
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = android-studio-system
 	provides = android-studio
 	conflicts = android-studio
 	options = !strip
-	source = https://dl.google.com/dl/android/studio/ide-zips/2023.2.1.23/android-studio-2023.2.1.23-linux.tar.gz
+	source = https://dl.google.com/dl/android/studio/ide-zips/2023.3.1.19/android-studio-2023.3.1.19-linux.tar.gz
 	source = android-studio.desktop
 	source = license.html
-	b2sums = b8125976c7cb3f02df74f138eadec733f0f0aec205cb240622ef093997216e5adb5eb0fd53f5ba059eadc72420f5d94868372c6846bd4926fba733fb7dac5f39
+	b2sums = d6de0f2aa876e9272969d56cac98c492ab919e2533c3c641c0724b4f534a72650342ad19a0c0d2f8d53b64fc88a471d2bde282c05f2bf5f508e56acc10adad7d
 	b2sums = 16940866032d710ce995cc6bb0b994875215df0f6191b09a3ece5d6c5750c4fb3d430c683f545154eeceecad10d70333d59302fe6c5efd97c3fc9e66f3009dca
 	b2sums = 43b288fb81656cd72826a52620e41fbd0daa65d37246cb5b7dbff9c326022eabf18344513517b16134b557d6ae86535f44f863ebd06d6fe0410f92117c1a8c67
 
