@@ -1,0 +1,16 @@
+pkgbase = samsung-m238x
+	pkgdesc = Samsung M238x printer driver
+	pkgver = 1.00.39
+	pkgrel = 1
+	url = http://www.samsung.com
+	arch = i686
+	arch = x86_64
+	license = LicenseRef-samsung
+	depends = cups
+	depends = ghostscript
+	conflicts = samsung-unified-driver
+	options = !strip
+	source = https://downloadcenter.samsung.com/content/DR/201704/20170407143829533/uld_V1.00.39_01.17.tar.gz
+	sha256sums = 09c166f9b1e11ff312965886387ee31c6980867c67c3d6206680cbae76ae6746
+
+pkgname = samsung-m238x
