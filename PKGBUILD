@@ -5,7 +5,7 @@
 
 pkgname=ocaml-curses
 pkgver=1.0.11
-pkgrel=3
+pkgrel=4
 license=('LGPL')
 arch=('x86_64')
 pkgdesc="Objective Caml libs for curses"
