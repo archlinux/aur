@@ -1,6 +1,6 @@
 pkgbase = kpeoplevcard-git
 	pkgdesc = Expose VCard contacts to KPeople
-	pkgver = 0.1.r124.gb84f309
+	pkgver = 0.1.r164.g6d9178d
 	pkgrel = 1
 	url = https://kde.org
 	arch = x86_64
