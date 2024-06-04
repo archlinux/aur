@@ -1,0 +1,19 @@
+pkgbase = wjt-git
+	pkgdesc = slider widget for X
+	pkgver = 0.24g931b8f9
+	pkgrel = 1
+	url = https://github.com/ianremmler/wjt
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = fontconfig
+	depends = freetype2
+	depends = libx11
+	optdepends = libxinerama: Xinerama support
+	provides = wjt=0.24g931b8f9
+	conflicts = wjt
+	source = git+https://github.com/ianremmler/wjt
+	b2sums = SKIP
+
+pkgname = wjt-git
