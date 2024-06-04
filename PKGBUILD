@@ -1,12 +1,13 @@
-# Maintainer: tarball <bootctl@gmail.com>
+# Maintainer: <none>
+# Contributor: tarball <bootctl@gmail.com>
 
 pkgname=qstudio-bin
 pkgver=3.05
-pkgrel=1
+pkgrel=2
 pkgdesc='Free SQL Editor for Data Analysis'
 arch=(any)
 url='https://www.timestored.com/qstudio'
-license=(Apache-2.0)
+license=(custom) # Apache-licensed sources on GitHub cover a small subset of the project
 provides=(qstudio)
 conflicts=(qstudio)
 depends=('java-runtime')

@@ -1,10 +1,10 @@
 pkgbase = qstudio-bin
 	pkgdesc = Free SQL Editor for Data Analysis
 	pkgver = 3.05
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.timestored.com/qstudio
 	arch = any
-	license = Apache-2.0
+	license = custom
 	depends = java-runtime
 	provides = qstudio
 	conflicts = qstudio
