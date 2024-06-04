@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=qStudio
+Comment=Free SQL Editor for Data Analysis
+Exec=qstudio %u
+Icon=qstudio
+Terminal=false
+StartupNotify=true
+
