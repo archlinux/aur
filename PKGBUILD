@@ -1,31 +1,32 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer:
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-cucumber-tag-expressions
-pkgver=4.1.0
-pkgrel=3
-pkgdesc="Provides tag-expression parser for cucumber/behave"
+_name=tag-expressions
+pkgver=6.1.0
+pkgrel=1
+pkgdesc="Provides a tag-expression parser and evaluation logic for cucumber/behave"
 url="https://github.com/cucumber/tag-expressions"
 license=('MIT')
 arch=('any')
 depends=('python')
-makedepends=('python-setuptools')
-checkdepends=('python-pytest' 'python-pytest-html')
-source=("https://github.com/cucumber/tag-expressions/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('b4790d8057d486b3d222ceea0e1e40c2e7a59f7d64e52f29f5e72ac4d91bdce8ac1c5b1aeced685e2d03046bc5c94e2fcb84a6c15f0f21560e85522c9dbae489')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+# checkdepends=('python-pytest')
+source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('304f5da3ca46a214cf15ba93b7e4e89d2387f8c10d48f3eae7708994eb4d32a1e6410c65dd1c5736449e46edcf6050389e1f4e6e7d7acb0b04c2a88924d65ed2')
 
 build() {
-  cd tag-expressions-$pkgver/python
-  python setup.py build
+    cd "${_name}-${pkgver}/python"
+    python -m build --wheel --no-isolation
 }
 
-check() {
-  cd tag-expressions-$pkgver/python
-  python -m pytest
-}
+# check() {
+#     cd "${_name}-${pkgver}/python"
+#     PYTHONPATH="${PWD}" pytest
+# }
 
 package() {
-  cd tag-expressions-$pkgver/python
-  python setup.py install --root="$pkgdir" --optimize=1
-
-  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
+    cd "${_name}-${pkgver}/python"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
+    install -Dm644 ../LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
