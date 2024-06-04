@@ -1,0 +1,24 @@
+pkgbase = python-casadi-bin
+	pkgdesc = Symbolic framework for automatic differentiation and numeric optimization, prebuilt
+	pkgver = 3.6.5
+	pkgrel = 1
+	url = https://github.com/casadi/casadi
+	arch = x86_64
+	license = GPL3
+	makedepends = python-installer
+	depends = python
+	depends = lapack
+	depends = tinyxml
+	depends = tinyxml2
+	depends = swig
+	depends = ipython
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-matplotlib
+	provides = casadi
+	conflicts = casadi
+	noextract = casadi-3.6.5-cp312-none-manylinux2014_x86_64.whl
+	source = https://github.com/casadi/casadi/releases/download/3.6.5/casadi-3.6.5-cp312-none-manylinux2014_x86_64.whl
+	sha256sums = 0118637823e292a9270133e02c9c6d3f3c7f75e8c91a6f6dc5275ade82dd1d9d
+
+pkgname = python-casadi-bin
