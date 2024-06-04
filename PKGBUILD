@@ -1,6 +1,6 @@
 # Maintainer: leuko <aydos.de>
 # Maintainer: VitalyR <vr@vitalyr.com>
-# Maintainer: phanium <$(echo bnhoc2R1QHFxLmNvbQo= | base64 -d)>
+# Former Maintainer: phanium <$(echo bnhoc2R1QHFxLmNvbQo= | base64 -d)>
 # Former Maintainer: xiretza <aur@xiretza.xyz>
 # Contributor: Darren Wu <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
 
@@ -12,8 +12,10 @@
 # 1. Go to https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools.html
 # 2. Download "AMD Unified Installer for FPGAs & Adaptive SoCs SFD" - WARNING:
 #   (1) This file is >100GB in size  (2) You need an account for US export
-# controls. 3. Place the .tar.gz in the same directory as the PKGBUILD
-# 4. Build!
+#   controls.
+# 3. Place the .tar.gz in the same directory as the PKGBUILD
+# 4. If you want to install a subset of the features, refer to `package()` below
+# 5. Build!
 #
 # No refunds for broken AUR helpers, just use make(chroot)pkg.
 #
@@ -36,10 +38,10 @@
 
 pkgname=vivado
 _srcname=FPGAs_AdaptiveSoCs_Unified
-pkgver=2023.2
-_more_ver=1013_2256
+pkgver=2024.1
+_more_ver=0522_2023
 pkgrel=1
-pkgdesc="FPGA/CPLD design suite for Xilinx devices"
+pkgdesc="FPGA/CPLD design suite for AMD devices"
 url="https://www.xilinx.com/products/design-tools/vivado.html"
 arch=('x86_64')
 license=('custom')
@@ -58,18 +60,27 @@ optdepends=('fxload'
     'matlab: Model Composer'
     'qt4: Model Composer'
 )
-
-source=("file:///${_srcname}_${pkgver}_${_more_ver}.tar.gz"
-    'spoof_homedir.c')
+source=(
+    "file:///${_srcname}_${pkgver}_${_more_ver}.tar.gz"
+    "spoof_homedir.c"
+    #"install_config.txt"
+)
 
 # checksum from https://www.xilinx.com/support/download.html
-md5sums=('64d64e9b937b6fd5e98b41811c74aab2'
-    '69d14ad64f6ec44e041eaa8ffcb6f87c')
+md5sums=(
+    '372c0b184e32001137424e395823de3c'
+    '69d14ad64f6ec44e041eaa8ffcb6f87c'
+    #SKIP
+)
 
 # takes forever for probably minimal gain
 options=('!strip')
 
 prepare() {
+    rm -r "$srcdir/installer_temp"
+    # If not removed, may lead to `Program group entry alerady exists` in
+    # future installations
+
     mkdir -p "$srcdir/installer_temp"
 }
 
@@ -81,13 +92,20 @@ build() {
 package() {
     cd "${_srcname}_${pkgver}_${_more_ver}"
 
-    # LD_PRELOAD already contains libfakeroot.so, add our own library before that
-    LD_PRELOAD="$srcdir/spoof_homedir.so:$LD_PRELOAD" ./xsetup \
-        --batch Install \
-        --agree XilinxEULA,3rdPartyEULA \
-        --product Vivado \
-        --edition 'Vivado ML Standard' \
-        --location "$pkgdir/opt/Xilinx"
+    # If you only need support for a subset of devices and would like to save space:
+    # 1. tar xf *.tar.gz
+    # 2. xsetup -b ConfigGen
+    # 3. edit the generated config file
+    #    1. modify `Destination` to `/opt/Xilinx`
+    # 4. move it you the PKGBUILD folder
+    # 5. append the file to `source`
+    # 6. append `SKIP` to md5sums
+    # 7. Then use instead the following arguments for `./xsetup`
+    #
+    #    --batch Install \
+    #    --agree XilinxEULA,3rdPartyEULA \
+    #    --location "$pkgdir/opt/Xilinx" \
+    #    --config ../install_config.txt
 
     # For *Vitis Unified Software Platform*, use:
     # ```
@@ -96,6 +114,16 @@ package() {
     # ```
     # The unified installer that you downloaded includes all Vivado and Vitis
     # editions.
+
+    # LD_PRELOAD already contains libfakeroot.so, add our own library before that
+    LD_PRELOAD="$srcdir/spoof_homedir.so:$LD_PRELOAD" ./xsetup \
+        --batch Install \
+        --agree XilinxEULA,3rdPartyEULA \
+        --location "$pkgdir/opt/Xilinx" \
+        --product Vivado \
+        --edition 'Vivado ML Standard'
+
+        #--config ../install_config.txt
 
     # install udev rules
     install -Dm644 "$pkgdir/opt/Xilinx/Vivado/${pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-digilent-usb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"

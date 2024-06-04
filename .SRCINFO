@@ -1,6 +1,6 @@
 pkgbase = vivado
-	pkgdesc = FPGA/CPLD design suite for Xilinx devices
-	pkgver = 2023.2
+	pkgdesc = FPGA/CPLD design suite for AMD devices
+	pkgver = 2024.1
 	pkgrel = 1
 	url = https://www.xilinx.com/products/design-tools/vivado.html
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = vivado
 	optdepends = matlab: Model Composer
 	optdepends = qt4: Model Composer
 	options = !strip
-	source = file:///FPGAs_AdaptiveSoCs_Unified_2023.2_1013_2256.tar.gz
+	source = file:///FPGAs_AdaptiveSoCs_Unified_2024.1_0522_2023.tar.gz
 	source = spoof_homedir.c
-	md5sums = 64d64e9b937b6fd5e98b41811c74aab2
+	md5sums = 372c0b184e32001137424e395823de3c
 	md5sums = 69d14ad64f6ec44e041eaa8ffcb6f87c
 
 pkgname = vivado
