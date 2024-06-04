@@ -1,8 +1,8 @@
 # Maintainer: Mattia Moffa <mattia@moffa.xyz>
 
 pkgname=virtualbricks-develop-git
-pkgver=r2169.1017943
-pkgrel=2
+pkgver=r2176.e331a0b
+pkgrel=1
 pkgdesc="Qemu/KVM and VDE frontend (git development branch)"
 arch=('any')
 url="https://github.com/virtualsquare/virtualbricks"
@@ -12,10 +12,8 @@ makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python
 optdepends=("vde-netemu-git: channel emulator support")
 provides=("virtualbricks=$pkgver")
 conflicts=("virtualbricks")
-source=('virtualbricks::git+https://github.com/virtualsquare/virtualbricks.git#branch=develop'
-        'virtualbricks.patch')
-sha256sums=('SKIP'
-            'd62e8df03f9ca96d6b6e1c271eeeed2fd6276f79ab37d7d12ad8a93e8b9731c7')
+source=('virtualbricks::git+https://github.com/virtualsquare/virtualbricks.git#branch=develop')
+sha256sums=('SKIP')
 
 pkgver() {
   cd virtualbricks
@@ -24,7 +22,7 @@ pkgver() {
 
 prepare() {
   cd virtualbricks
-  patch --strip=1 --input="${srcdir}/virtualbricks.patch"
+  #patch --strip=1 --input="${srcdir}/virtualbricks.patch"
 }
 
 build() {
