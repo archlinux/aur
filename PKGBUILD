@@ -8,9 +8,9 @@ url='https://github.com/LevitatingBusinessMan/rrd2html.rb'
 license=('MIT')
 depends=('ruby' 'rrdtool' 'ruby-tomlrb')
 backup=('etc/rrd2html.toml')
-_commit='86b82b54dfff4348f99505f37a2fe39c2d5679ab'
+_commit='8e422bbafab8f230484e733f5d109badc9610b2b'
 source=("$pkgname-$pkgrel::git+https://github.com/LevitatingBusinessMan/rrd2html.rb.git#commit=$_commit")
-sha256sums=('SKIP')
+sha256sums=('d53d572388ed39ee60b83489614263e3848d9ba5267485f04463d6042b74e98c')
 
 package() {
 	cd "$pkgname-$pkgrel"

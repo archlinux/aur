@@ -9,7 +9,7 @@ pkgbase = rrd2html
 	depends = rrdtool
 	depends = ruby-tomlrb
 	backup = etc/rrd2html.toml
-	source = rrd2html-7::git+https://github.com/LevitatingBusinessMan/rrd2html.rb.git#commit=86b82b54dfff4348f99505f37a2fe39c2d5679ab
-	sha256sums = SKIP
+	source = rrd2html-7::git+https://github.com/LevitatingBusinessMan/rrd2html.rb.git#commit=8e422bbafab8f230484e733f5d109badc9610b2b
+	sha256sums = d53d572388ed39ee60b83489614263e3848d9ba5267485f04463d6042b74e98c
 
 pkgname = rrd2html
