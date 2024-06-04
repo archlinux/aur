@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=vnt-git
-pkgver=1.2.7.r0.g26d68ac
-pkgrel=10
+pkgver=1.2.10.2.r8.ge36e450
+pkgrel=1
 pkgdesc="A virtual network tool (or VPN),简便高效的异地组网、内网穿透工具"
 arch=(x86_64
     aarch64
@@ -12,14 +12,14 @@ license=(Apache-2.0)
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 replaces=()
-depends=(cargo
-    systemd
-    procps-ng)
+depends=(
+    gcc-libs
+    glibc)
 makedepends=(git
-    rust)
+    cargo)
 optdepends=('iptables: Linux kernel packet control tool (using legacy interface)')
 backup=()
-options=('!strip' '!lto')
+options=('!lto')
 install=
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
