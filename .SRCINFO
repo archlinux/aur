@@ -1,7 +1,7 @@
 pkgbase = calculix-ccx
 	pkgdesc = CalculiX: 3D Structural Finite Element Program - Solver
 	pkgver = 2.21
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.calculix.de/
 	arch = i686
 	arch = x86_64

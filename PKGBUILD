@@ -7,7 +7,7 @@
 
 pkgname=calculix-ccx
 pkgver=2.21
-pkgrel=1
+pkgrel=2
 provides=('calculix')
 replaces=('calculix')
 conflicts=('calculix')
@@ -22,20 +22,27 @@ optdepends=('calculix-doc: documentation and examples'
 makedepends=('gcc-fortran' 'perl')
 checkdepends=('perl')
 
-source=("http://www.dhondt.de/ccx_${pkgver}.src.tar.bz2"
-        "http://www.dhondt.de/ccx_${pkgver}.test.tar.bz2"
-        "http://www.dhondt.de/ccx_${pkgver}.fluidtest.tar.bz2"
-        "http://www.dhondt.de/ccx_${pkgver}.structest.tar.bz2")
+source=(
+    "http://www.dhondt.de/ccx_${pkgver}.src.tar.bz2"
+    "http://www.dhondt.de/ccx_${pkgver}.test.tar.bz2"
+    "http://www.dhondt.de/ccx_${pkgver}.fluidtest.tar.bz2"
+    "http://www.dhondt.de/ccx_${pkgver}.structest.tar.bz2"
+)
 
-sha256sums=('52a20ef7216c6e2de75eae460539915640e3140ec4a2f631a9301e01eda605ad'
-            '094a0a2ec324fc6f937a96e932b488f48f31ad8d5d1186cd14437e6dc3e599ea'
-            'b7a5f672918deb4176c9c1c02619a16178e31771b72a58c1188db57e91f28954'
-            '264c6f9e9335f9bdcf6a39eafcdc868f47549a64866278d848e41bd9cd1b1a1b')
-
+sha256sums=(
+    '52a20ef7216c6e2de75eae460539915640e3140ec4a2f631a9301e01eda605ad'
+    '094a0a2ec324fc6f937a96e932b488f48f31ad8d5d1186cd14437e6dc3e599ea'
+    'b7a5f672918deb4176c9c1c02619a16178e31771b72a58c1188db57e91f28954'
+    '264c6f9e9335f9bdcf6a39eafcdc868f47549a64866278d848e41bd9cd1b1a1b'
+)
+#
+# NOTE: remove -Wno-implicit when code is fixed by upstream
+#
 build()
 {
     cd "${srcdir}/CalculiX/ccx_${pkgver}/src"
-    make CFLAGS="${CFLAGS} -Wall -O2 -fopenmp -I /usr/include/spooles \
+    make CFLAGS="${CFLAGS} -Wall -Wno-implicit -O2 -fopenmp \
+                  -I /usr/include/spooles \
                   -DARCH=\"Linux\" -DSPOOLES -DARPACK -DMATRIXSTORAGE \
                   -DNETWORKOUT -DUSE_MT=1" \
          FFLAGS='-Wall -O2 -fopenmp -fpic -fallow-argument-mismatch' \
