@@ -1,12 +1,12 @@
 # Maintainer: OmegaRogue <omegarogue@omegavoid.codes>
 pkgname=opendeck
 pkgver=v2.0.0_beta.8
-pkgrel=2
+pkgrel=3
 pkgdesc="OpenDeck is a desktop application that provides Stream Deck-like functionality, implementing the Elgato Stream Deck SDK for cross-compatibility."
 arch=('x86_64')
 url="https://github.com/ninjadev64/OpenDeck"
 license=('BSD-3-Clause')
-makedepends=(git npm cargo-tauri dpkg hidapi webkit2gtk)
+makedepends=(git npm cargo-tauri dpkg hidapi webkit2gtk libappindicator-gtk3)
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 options=('!lto')
