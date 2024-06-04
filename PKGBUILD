@@ -6,7 +6,7 @@
 # Maintainer: David Hummel <david dot hummel at gmail point com>
 
 pkgname=mapnik-git
-pkgver=4.0.0.rc1.r45.gd7a490f
+pkgver=4.0.0.rc1.r47.g4798be9
 pkgrel=1
 pkgdesc='Free Toolkit for developing mapping applications. Above all Mapnik is about rendering beautiful maps (git version)'
 arch=('i686' 'x86_64')
@@ -44,7 +44,7 @@ source=('git+https://github.com/mapnik/mapnik.git'
         'git+https://github.com/mapnik/test-data.git')
 sha256sums=('SKIP'
             'dabb1b99540a6df86b34511d0d94ef505f706419b7e6d1d69314797ebcdce72f'
-            '9916d5c2958bca6e2789b18cd8c738bc10363289d96b436f7a9e6a0d9048e17b'
+            '15fdd0938ba3106993eadc4186c5a8025ee7680a1289bfbbff9f46ce093dbdef'
             'SKIP')
 
 pkgver() {
