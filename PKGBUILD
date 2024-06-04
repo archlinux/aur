@@ -1,7 +1,7 @@
 # Maintainer: fuero <fuerob@gmail.com>
 pkgname=ls-lint
 # renovate: datasource=github-releases depName=loeffel-io/ls-lint
-pkgver=2.2.2
+pkgver=2.2.3
 pkgrel=1
 pkgdesc='directory and filename linter'
 arch=('x86_64')
@@ -9,7 +9,7 @@ _repo_prefix='github.com/loeffel-io'
 _repo_name="${pkgname%-git}"
 url="https://${_repo_prefix}/${_repo_name}"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('68c7a97971c55578d3e62423be95a9ac515b43e14d53eedb8aa84c1d20e6fef3')
+sha256sums=('10a6f03747b0f9c38538a8c54f8ee7e4539dbadae687519e7f5f8a140f55f34e')
 license=('MIT')
 depends=('glibc')
 makedepends=('go-pie')

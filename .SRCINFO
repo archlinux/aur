@@ -1,6 +1,6 @@
 pkgbase = ls-lint
 	pkgdesc = directory and filename linter
-	pkgver = 2.2.2
+	pkgver = 2.2.3
 	pkgrel = 1
 	url = https://github.com/loeffel-io/ls-lint
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = ls-lint
 	depends = glibc
 	provides = ls-lint
 	conflicts = ls-lint-git
-	source = ls-lint-2.2.2.tar.gz::https://github.com/loeffel-io/ls-lint/archive/refs/tags/v2.2.2.tar.gz
-	sha256sums = 68c7a97971c55578d3e62423be95a9ac515b43e14d53eedb8aa84c1d20e6fef3
+	source = ls-lint-2.2.3.tar.gz::https://github.com/loeffel-io/ls-lint/archive/refs/tags/v2.2.3.tar.gz
+	sha256sums = 10a6f03747b0f9c38538a8c54f8ee7e4539dbadae687519e7f5f8a140f55f34e
 
 pkgname = ls-lint
