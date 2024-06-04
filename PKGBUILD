@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=insight
-_pkgver=0.19.11
+_pkgver=0.20.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -121,8 +121,8 @@ optdepends=(
   r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0b3c60e064f1191aee169859214b4d0d')
-b2sums=('b5c7ea69dfbaf4f815e7e7e36d05e7e92dae567f33a52bc7aa04b5952b096cadf1a8409424493f6bd874c29695f03cb44439e77bd223f1b636467d2c6c8716a4')
+md5sums=('c45975c1a8fcaffd4775755f2991b4fb')
+b2sums=('a79cf59ce71aae3bb7daeb54bacdeb1230f6076f641a4297280f4b6a75329e7fee9b0c24e83bb5425ac9f5170fc9b6e103c67e193107616659428ed5febaaaec')
 
 build() {
   mkdir build
