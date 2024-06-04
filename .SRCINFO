@@ -1,6 +1,6 @@
 pkgbase = python-types-pyserial
 	pkgdesc = Typing stubs for pyserial
-	pkgver = 3.5.0.20240311
+	pkgver = 3.5.0.20240527
 	pkgrel = 1
 	url = https://pypi.org/project/types-pyserial
 	arch = any
@@ -9,11 +9,11 @@ pkgbase = python-types-pyserial
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
-	makedepends = python-typing-extensions
+	makedepends = python-typing_extensions
 	depends = python
-	source = python-types-pyserial-3.5.0.20240311.tar.gz::https://files.pythonhosted.org/packages/source/t/types-pyserial/types-pyserial-3.5.0.20240311.tar.gz
+	source = python-types-pyserial-3.5.0.20240527.tar.gz::https://files.pythonhosted.org/packages/source/t/types-pyserial/types-pyserial-3.5.0.20240527.tar.gz
 	source = grep-return-type.patch
-	sha256sums = be07e32ad3607314d4198aac427ac23b3f02e3d2f9522503299045abf1230d98
+	sha256sums = 55fdbb9849cddba1bf8dcc2617ce21d46d31a9d82974ef40b34946567ae2b89c
 	sha256sums = 0d694e57f0d2665cdd8b4ced1b231e4268470ede79ec1d454c6b7cf90cddf916
 
 pkgname = python-types-pyserial
