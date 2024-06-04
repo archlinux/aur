@@ -1,0 +1,13 @@
+diff --git a/src/luks.c b/src/luks.c
+index e764c33c1675..22b8e7734940 100644
+--- a/src/luks.c
++++ b/src/luks.c
+@@ -16,6 +16,8 @@
+ #include <limits.h>
+ #include <sys/stat.h>
+ #include <libintl.h>
++#include <fcntl.h>
++#include <unistd.h>
+ 
+ 
+ /* If CRYPTSETUP_RUID is set, we run cryptsetup with ruid = euid = 0.

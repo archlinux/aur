@@ -1,7 +1,7 @@
 pkgbase = pmount
 	pkgdesc = mount removable devices as normal user
 	pkgver = 0.9.23
-	pkgrel = 15
+	pkgrel = 16
 	url = https://salsa.debian.org/debian/pmount
 	arch = i686
 	arch = x86_64
@@ -16,8 +16,10 @@ pkgbase = pmount
 	source = https://salsa.debian.org/debian/pmount/-/archive/debian/0.9.23-7/pmount-debian-0.9.23-7.tar.gz
 	source = 0001-fix-debug-segfault.patch
 	source = 0002-support-exfat.patch
+	source = 0003-fix-luks-fail.patch
 	sha256sums = 259d5994e4580ea4c0171c1534e5111c503a605d62e1a2d4d4bbd5018f99d727
 	sha256sums = e19eda4987b41f1b76281b980b56239b386539938d70e5b4a40b286bff789b93
 	sha256sums = 6c90da5d992deea70334acaf6781df9d538887bd3d1b62e36a9449e0708006c0
+	sha256sums = 67a6a773ff063df11b2bed1637e4046de63b226909f237705c45bef8ee398a2f
 
 pkgname = pmount
