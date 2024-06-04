@@ -1,7 +1,7 @@
 pkgbase = telegram-desktop-altscroll-kdefix
 	pkgdesc = Modified Telegram Desktop client, changes: disable built-in unread indicator (so KDE unread counter can be used), alt scroll mechanism in media view.
-	pkgver = 5.0.1
-	pkgrel = 1
+	pkgver = 5.1.1
+	pkgrel = 2
 	url = https://desktop.telegram.org/
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -52,10 +52,10 @@ pkgbase = telegram-desktop-altscroll-kdefix
 	provides = telegram-desktop
 	conflicts = telegram-desktop
 	options = !debug
-	source = https://github.com/telegramdesktop/tdesktop/releases/download/v5.0.1/tdesktop-5.0.1-full.tar.gz
+	source = https://github.com/telegramdesktop/tdesktop/releases/download/v5.1.1/tdesktop-5.1.1-full.tar.gz
 	source = kde-theme-injection-fix.patch
 	source = mediaview-altscroll.patch
-	sha512sums = 45b7833f20f01d78c09163e205af7d68afffcfc88075ba6af35dc6cbbce1f0205c0150b137ca09e6bdaf271240e4d1336411ad427bc27a2b2ad42dc435ee0ec2
+	sha512sums = 4d33dc4e18651e17449c20f82b29dc1268b77f661d0791f33c45d5b5d00af73dca66b0849ef9711f40648132a265db5eec5f2c2aaca87aeae5df3e48d9c09f69
 	sha512sums = 7b3dd58276cbe2145887e3c127519a461be83485d9874c08d98d21e97bfb194a4355d0766746157b20d15027db8c265600b5d279cc07456153b2a2736832bae6
 	sha512sums = 38ff8627090ac9766a8d409fa26cbd4381640e08abcb677f4524a5305d011aa0f6ce81d69313a01f0db5c1a3794805bff2a059095258f5e8d9bd1133550cca2e
 
