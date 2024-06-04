@@ -1,7 +1,7 @@
 # Maintainer: Gaël PORTAY <gael.portay@gmail.com>
 
 pkgname=iamroot-mipsle
-pkgver=21
+pkgver=22
 pkgrel=1
 pkgdesc='Emulating the syscall chroot(2) in an unpriviliged process (mipsle)'
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('mips32el-glibc-bleeding-edge-toolchain'
 checkdepends=('shellcheck')
 options=('!strip')
 source=("https://github.com/gportay/${pkgname%-mipsle}/archive/v$pkgver.tar.gz")
-sha256sums=('3bbdc8b53a4e1e0a88d2aa281fd85bd4e3653c7634060d6b7442c932dae03b07')
+sha256sums=('09e7f9c52007090aceb53831103aba9d3ee72df3b41ce9c0ddb76f573a446e8c')
 validpgpkeys=('8F3491E60E62695ED780AC672FA122CA0501CA71')
 
 prepare() {
