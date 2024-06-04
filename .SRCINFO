@@ -1,0 +1,16 @@
+pkgbase = butter-snap-git
+	pkgdesc = Bash-based tool for automating Btrfs snapshots.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/clsty/butter-snap
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	depends = btrfs-progs
+	depends = bash
+	optdepends = cronie: cronjob support
+	provides = butter-snap
+	source = butter-snap-git::git+https://github.com/clsty/butter-snap.git
+	md5sums = SKIP
+
+pkgname = butter-snap-git
