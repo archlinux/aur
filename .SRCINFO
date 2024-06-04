@@ -1,6 +1,6 @@
 pkgbase = epk2extract-git
 	pkgdesc = Extraction tool for LG, Hisense, Sharp, Philips/TPV, Thompson and similar TVs/Embedded Devices.
-	pkgver = r655
+	pkgver = r664
 	pkgrel = 1
 	url = https://github.com/openlgtv/epk2extract
 	arch = x86_64
