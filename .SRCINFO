@@ -1,10 +1,10 @@
 pkgbase = shedskin
 	pkgdesc = Python to C++ compiler
 	pkgver = 0.9.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://shedskin.github.io/
 	arch = any
-	license = GPL2
+	license = GPL-3.0-only
 	makedepends = git
 	makedepends = python-setuptools
 	depends = pcre

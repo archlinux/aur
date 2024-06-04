@@ -3,11 +3,11 @@
 
 pkgname=shedskin
 pkgver=0.9.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Python to C++ compiler'
 arch=('any')
 url='https://shedskin.github.io/'
-license=('GPL2')
+license=('GPL-3.0-only')
 depends=('pcre' 'gc' 'python')
 makedepends=('git' 'python-setuptools')
 source=("git+https://github.com/shedskin/shedskin.git#tag=v$pkgver")
