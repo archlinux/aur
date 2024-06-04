@@ -1,11 +1,10 @@
 pkgbase = perl-debug-adapter
 	pkgdesc = Debug Adapter Protocol server for Perl
 	pkgver = 1.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Nihilus118/perl-debug-adapter
 	arch = any
 	license = MIT
-	makedepends = npm
 	depends = nodejs
 	depends = perl
 	depends = perl-padwalker
