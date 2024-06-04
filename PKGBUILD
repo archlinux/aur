@@ -1,8 +1,9 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Daniel Milde <daniel@milde.cz>
 # Based on https://github.com/aerospike/aerospike-client-c
 
 pkgname=aerospike-client-c-libev
-pkgver=6.6.1
+pkgver=6.6.2
 pkgrel=1
 pkgdesc="The Aerospike C client provides a C interface for interacting with the Aerospike Database."
 arch=('any')
