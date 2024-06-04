@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+function fetch() {
+	curl -sL "$1"
+}
+
+releaseAssets="$(fetch https://api.github.com/repos/evilmartians/lefthook/releases/latest)"
+
+version="$(echo $releaseAssets | jq -r '.name' | sed 's/v//g')"
+checksumsUrl="$(echo $releaseAssets | jq -r '.assets[] | select(.name=="lefthook_checksums.txt") | .browser_download_url')"
+
+checksums="$(fetch $checksumsUrl)"
+
+aarch64Checksum="$(echo "$checksums" | grep '_Linux_arm64.gz' | cut -d ' ' -f 1)"
+x86_64Checksum="$(echo "$checksums" | grep '_Linux_x86_64.gz' | cut -d ' ' -f 1)"
+
+# Replace version number in PKGBUILD
+sed -i "s/pkgver=.*/pkgver=$version/" PKGBUILD
+
+# Replace checksums in PKGBUILD
+sed -i "s/sha256sums_aarch64=.*/sha256sums_aarch64=('$aarch64Checksum')/" PKGBUILD
+sed -i "s/sha256sums_x86_64=.*/sha256sums_x86_64=('$x86_64Checksum')/" PKGBUILD
+
+makepkg --printsrcinfo >.SRCINFO
