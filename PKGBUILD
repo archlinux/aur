@@ -34,6 +34,10 @@ pkgver(){
         rev | tr -d -
 }
 
+prepare() {
+    sha256sum $_pkgname-$pkgver.tar.gz | sha256sum -c
+}
+
 package() {
     install -Dm755 "$srcdir"/Servo.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
 
