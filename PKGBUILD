@@ -7,8 +7,8 @@ license=("GPL-3.0-or-later")
 provides=("nomi")
 conflicts=("nomi")
 
-pkgver=0.1.2.fixed.r55.g19ac2df
-pkgrel=2
+pkgver=0.1.2.pre1.r1.gbaf5204
+pkgrel=1
 
 arch=("x86_64")
 options=(!lto)
