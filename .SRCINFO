@@ -9,14 +9,14 @@ pkgbase = gdcm-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = swig
-	makedepends = java-environment
+	makedepends = java-environment>=22
 	makedepends = python
 	makedepends = dcmtk-git
 	depends = expat
 	depends = libxml2
 	depends = openssl
 	depends = openjpeg2
-	optdepends = java-environment: Java wrapper
+	optdepends = java-runtime>=22: Java wrapper
 	optdepends = python: Python wrapper
 	provides = gdcm
 	conflicts = gdcm

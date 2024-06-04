@@ -9,8 +9,8 @@ arch=('i686' 'x86_64')
 url='https://sourceforge.net/projects/gdcm'
 license=('BSD-3-Clause')
 depends=('expat' 'libxml2' 'openssl' 'openjpeg2')
-optdepends=('java-environment: Java wrapper' 'python: Python wrapper')
-makedepends=('git' 'cmake' 'swig' 'java-environment' 'python' 'dcmtk-git')
+optdepends=('java-runtime>=22: Java wrapper' 'python: Python wrapper')
+makedepends=('git' 'cmake' 'swig' 'java-environment>=22' 'python' 'dcmtk-git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+https://github.com/malaterre/$_pkgname.git")
@@ -42,6 +42,7 @@ build() {
     -DGDCM_USE_SYSTEM_SOCKETXX=OFF \
     -DGDCM_USE_SYSTEM_ZLIB=ON \
     -DGDCM_WRAP_JAVA=ON \
+    -DGDCM_DEFAULT_JAVA_VERSION=22 \
     -DGDCM_WRAP_PYTHON=ON
   make
 }
