@@ -2,7 +2,7 @@
 
 pkgname=envision-xr-git
 pkgver=r398.35b0ab9
-pkgrel=3
+pkgrel=4
 pkgdesc='GUI for Monado'
 arch=(x86_64 aarch64)
 url='https://gitlab.com/gabmus/envision'
@@ -39,7 +39,7 @@ provides=(envision)
 conflicts=(envision)
 source=("git+${url}.git")
 b2sums=('SKIP')
-options=(!lto)
+options+=('!lto')
 
 pkgver() {
     cd envision
@@ -65,23 +65,21 @@ package() {
     # We will check for optional packages here:
     # Check for NVIDIA GPU and if monado-vulkan-layers-git is not already installed
     if lspci | grep -qi nvidia && ! pacman -Qm monado-vulkan-layers-git &>/dev/null; then
+        printf "\033[0;31m" # red
+        echo -e "\n"
         echo "An NVIDIA GPU has been detected on your system."
         echo "For NVIDIA GPU, 'monado-vulkan-layers-git' from the AUR is recommended."
         echo "Please install it manually using an AUR helper, e.g., yay -S monado-vulkan-layers-git"
-        echo "Press any key to continue..."
-        read answer
+        printf "\033[0m" # no color
     fi
 
     # Ask to install libudev0-shim
     if ! pacman -Q libudev0-shim &>/dev/null; then
+        printf "\033[0;31m" # red
+        echo -e "\n"
         echo "The package 'libudev0-shim' is recommended for lighthouse driver support."
-        echo "Do you want to install 'libudev0-shim'? [y/N]"
-        read answer
-        if [[ $answer =~ ^[Yy]$ ]]; then
-            sudo pacman -S libudev0-shim
-        fi
-    else
-        echo "'libudev0-shim' is already installed."
+        printf "\033[0m" # no color
     fi
 }
+
 
