@@ -1,6 +1,6 @@
 pkgbase = rustmon-git
 	pkgdesc = Pokemon Colorscripts written in Rust
-	pkgver = r26.2b2a15c
+	pkgver = r53.104b4eb
 	pkgrel = 1
 	url = https://github.com/Vomitblood/rustmon
 	arch = x86_64
