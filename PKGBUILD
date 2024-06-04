@@ -16,22 +16,25 @@ pkgname=("${pkgbase}-common"
          "${_dir_backends[@]}"
          "${pkgbase}-dir-mysql")
 pkgver=15.0.2
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 pkgdesc="${pkgbase^} - A Network Backup Tool "
 url="https://www.${pkgbase}.org"
 license=('AGPL3')
 makedepends=(sqlite libmariadbclient postgresql-libs qt5-base openssl readline lzo)
 install="bacula.install"
-source=("https://downloads.sourceforge.net/sourceforge/${pkgbase}/${pkgbase}-${pkgver}.tar.gz"
+source=("https://downloads.sourceforge.net/sourceforge/${pkgbase}/${pkgbase}-${pkgver}.tar.gz"{,.sig}
         'bacula-dir.service'
         'bacula-fd.service'
         'bacula-sd.service')
 
 sha256sums=('55515c2a66af9a86b955daea4089378b864d051b2e6e30383bef36e693acea7a'
+            'SKIP'
             '9a1c3fca9ac71f3bb72d100d328f265317404b226396e3a4030cdb3e4e69bd9f'
             '072a408b136f27251e9420f801d162e828218306ee74c0c5ba83b24f558e5e39'
             'a5e75ee945479f9e38415d2841cf3485200d9d9374d5a68c19c13b39467ca5bb')
+
+validpgpkeys=('5235F5B668D81DB61704A82DC0BE2A5FE9DF3643')
 
 _workdir="/var/lib/${pkgbase}"
 
@@ -97,6 +100,8 @@ package_bacula-fd() {
   cp --parents -a usr/lib/bpipe-fd.so "${pkgdir}"
   cp --parents -a usr/share/man/man8/${pkgname}.8.gz "${pkgdir}"
 
+  chmod 755 "${pkgdir}/etc/${pkgbase}"
+
   mkdir -p "${pkgdir}/usr/lib/systemd/system/"
   cp -f "${srcdir}/${pkgbase}-fd.service" "${pkgdir}/usr/lib/systemd/system/"
 }
@@ -115,6 +120,8 @@ package_bacula-common() {
   cp --parents -a usr/lib/libbacfind-${pkgver}.so "${pkgdir}"
   cp --parents -a usr/share/man/man8/btraceback.8.gz "${pkgdir}"
   #cp --parents -a usr/lib/libbacpy-${pkgver}.so "${pkgdir}"
+
+  chmod 755 "${pkgdir}/etc/${pkgbase}"
 
   mkdir -p "${pkgdir}${_workdir}"
   mkdir -p "${pkgdir}/var/log/${pkgbase}"
@@ -166,6 +173,8 @@ package_bacula-dir() {
   cp --parents -a usr/share/man/man8/bwild.8.gz "${pkgdir}"
   cp --parents -a usr/share/man/man8/dbcheck.8.gz "${pkgdir}"
   cp --parents -a usr/lib/libbacsql-${pkgver}.so "${pkgdir}"
+
+  chmod 755 "${pkgdir}/etc/${pkgbase}"
 
   mkdir -p "${pkgdir}/usr/lib/systemd/system/"
   cp -f "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/"
@@ -254,6 +263,8 @@ package_bacula-sd() {
   cp --parents -a usr/share/man/man8/bcopy.8.gz "${pkgdir}"
   cp --parents -a usr/share/man/man8/bscan.8.gz "${pkgdir}"
   cp --parents -a usr/share/man/man8/btape.8.gz "${pkgdir}"
+
+  chmod 755 "${pkgdir}/etc/${pkgbase}"
 
   chmod +x "${pkgdir}/usr/bin"*
   mkdir -p "${pkgdir}${_workdir}"
