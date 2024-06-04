@@ -1,6 +1,6 @@
 pkgbase = gita
 	pkgdesc = Command-line tool to manage multiple git repos
-	pkgver = 0.16.6.6
+	pkgver = 0.16.7.1
 	pkgrel = 1
 	url = https://github.com/nosarthur/gita
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = gita
 	depends = python-setuptools
 	depends = git
 	depends = python-argcomplete
-	source = gita-0.16.6.6.tar.gz::https://files.pythonhosted.org/packages/source/g/gita/gita-0.16.6.6.tar.gz
-	sha256sums = fe8d5f8cc71e5c11f59dae30df49936830f0fb0b51becfe2c02775e044739b37
+	source = gita-0.16.7.1.tar.gz::https://files.pythonhosted.org/packages/source/g/gita/gita-0.16.7.1.tar.gz
+	sha256sums = c489a04d178be52e48860373b0bb628af98d29a58ce1bf6b6c623f741f2fdc25
 
 pkgname = gita
