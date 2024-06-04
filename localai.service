@@ -15,38 +15,22 @@ WorkingDirectory=%S/%N
 Restart=on-failure
 # PrivateTmp=yes
 
-# enabled extra backends
-# disabled: autogptq coqui exllama exllama2 mamba openvoice parler-tts petals vall-e-x
-Environment=EXTERNAL_GRPC_BACKENDS="\
-bark:%C/%N/backend-assets/python/bark/run.sh,\
-diffusers:%C/%N/backend-assets/python/diffusers/run.sh,\
-rerankers:%C/%N/backend-assets/python/rerankers/run.sh,\
-sentencetransformers:%C/%N/backend-assets/python/sentencetransformers/run.sh,\
-transformers:%C/%N/backend-assets/python/transformers/run.sh,\
-transformers-musicgen:%C/%N/backend-assets/python/transformers-musicgen/run.sh"
 # default environment and local env
 EnvironmentFile=%E/%N/%N.conf
 EnvironmentFile=-%S/%N/.env
 
-# create directories
-ExecStartPre=install -d -g %N -o %N \
-  %C/%N \
-  %E/%N \
-  %S/%N/config \
-  %S/%N/models \
-  %T/%N/audio \
-  %T/%N/images \
-  %T/%N/upload
-
 # start server
 ExecStart=/usr/bin/localai run \
-  --backend-assets-path "%C/%N" \
-  --config-path "%S/%N" \
-  --localai-config-dir "%S/%N/config" \
-  --models-path "%S/%N/models" \
-  --audio-path "%T/%N/audio" \
-  --image-path "%T/%N/images" \
-  --upload-path "%T/%N/upload"
+  --backend-assets-path="%S/%N" \
+  --config-path="%S/%N" \
+  --localai-config-dir="%S/%N/config" \
+  --models-path="%S/%N/models" \
+  --audio-path="%T/%N/audio" \
+  --image-path="%T/%N/images" \
+  --upload-path="%T/%N/upload" \
+  --external-grpc-backends=bark:%S/%N/backend-assets/python/bark/run.sh,diffusers:%S/%N/backend-assets/python/diffusers/run.sh,rerankers:%S/%N/backend-assets/python/rerankers/run.sh,sentencetransformers:%S/%N/backend-assets/python/sentencetransformers/run.sh,transformers-musicgen:%S/%N/backend-assets/python/transformers-musicgen/run.sh
+
+# disabled: autogptq coqui exllama exllama2 mamba openvoice parler-tts petals transformers vall-e-x
 
 [Install]
 WantedBy=default.target

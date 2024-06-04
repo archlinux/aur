@@ -1,8 +1,8 @@
-d /var/lib/localai 0755 localai localai
-d /var/lib/localai/config 0755 localai localai
-d /var/lib/localai/models 0755 localai localai
-d /var/cache/localai 0755 localai localai
-d /tmp/localai/audio 0755 localai localai
-d /tmp/localai/images 0755 localai localai
-d /tmp/localai/upload 0755 localai localai
-Z /var/lib/localai 0755 localai localai
+d /var/lib/localai 0750 localai localai
+d /var/lib/localai/config 0750 localai localai
+d /var/lib/localai/models 0750 localai localai
+d /var/lib/localai/backend-assets 0750 localai localai
+d /tmp/localai 0750 localai localai
+d /tmp/localai/audio 0750 localai localai
+d /tmp/localai/images 0750 localai localai
+d /tmp/localai/upload 0750 localai localai
