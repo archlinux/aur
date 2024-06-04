@@ -1,88 +1,81 @@
-# Maintainer: Sumner Evans <sumner.evans98 at gmail dot com>
+# Maintainer:
+# Contributor: Sumner Evans <sumner.evans98 at gmail dot com>
 
-pkgbase='sublime-music-git'
-pkgname=('sublime-music-git')
-_module='sublime-music'
-pkgver=v0.11.16.r49.g430895e
+_pkgname="sublime-music"
+pkgname="$_pkgname-git"
+pkgver=0.12.0.r17.g0b4ba69
 pkgrel=1
-pkgdesc='A native Subsonic/Airsonic/*sonic client for Linux. Built using Python and GTK+.'
-url='https://sublimemusic.app'
-provides=('sublime-music')
-conflicts=('sublime-music')
+pkgdesc='A Subsonic/Airsonic/*sonic client'
+url="https://github.com/sublime-music/sublime-music"
+license=('GPL-3.0-or-later')
+arch=('any')
+
 depends=(
-    'python'
+  'python'
+)
+makedepends=(
+  'git'
+  'python-build'
+  'python-flit'
+  'python-installer'
+  'python-wheel'
+  'python-sphinx'
+)
+optdepends=(
+  'libnotify: for system song notification support'
+  'python-keyring: support for storing passwords in the system keyring'
+
+  ## AUR
+  'python-pychromecast: support for casting to Chromecast devices'
+)
+
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
+}
+
+build() {
+  cd "$_pkgsrc"
+  python -m build --no-isolation --wheel --skip-dependency-check
+
+  cd "docs"
+  make man
+}
+
+package() {
+  depends+=(
+    'glib2'
+    'hicolor-icon-theme'
     'python-bleach'
-    'python-dataclasses-json'
     'python-dateutil'
     'python-deepdiff'
-    'python-gobject'
-    'python-levenshtein'
     'python-mpv'
     'python-peewee'
     'python-requests'
     'python-semver'
+    'python-bottle'
+
+    ## AUR
+    'python-dataclasses-json'
     'python-thefuzz'
-)
-optdepends=(
-    'libnm-glib: for changing the Subsonic server address depending on what SSID you are connected to'
-    'libnotify: for system song notification support'
-    'python-keyring: support for storing passwords in the system keyring'
-    'python-pychromecast: support for casting to Chromecast devices'
-    'python-bottle: support for casting downloaded files to Chromecasts on the same LAN'
-)
-makedepends=(
-    'python-installer'
-    'python-pip'
-    'python-flit'
-    'python-sphinx'
-    'tar'
-)
-license=('GPL3')
-arch=('any')
-source=(
-    'sublime-music-git::git+https://github.com/sublime-music/sublime-music.git'
-    'sublime-music.desktop'
-)
-sha256sums=('SKIP'
-            'fd84f6b408aa78a21a2990a0b78c4851db80b7ef0f7e7573cc82b57d8abb4d0c')
+  )
 
-pkgver() {
-    cd "${srcdir}/${pkgname}"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
+  python -m installer --destdir="$pkgdir" "$_pkgsrc"/dist/*.whl
 
+  install -Dm644 "$_pkgsrc"/sublime-music.desktop -t "$pkgdir"/usr/share/applications/
+  install -Dm644 "$_pkgsrc"/sublime-music.metainfo.xml -t "$pkgdir"/usr/share/metainfo/
 
-build() {
-    cd "${srcdir}/${pkgname}"
-    flit build
-}
+  install -Dm644 "$_pkgsrc"/docs/_build/man/sublime-music.1 -t "$pkgdir"/usr/share/man/man1/
 
-package() {
-    python -m installer --destdir="$pkgdir" "sublime-music-git/dist"/*.whl
-
-    # Move all of the package data resources to ${pkgdir}/usr/share/sublime-music
-    data_dir=${pkgdir}/usr/share/sublime-music
-    mkdir -p $data_dir/adapters/subsonic $data_dir/dbus $data_dir/ui
-    pushd ${pkgdir}/usr/lib/python3.*/site-packages/sublime_music
-    mv adapters/icons $data_dir/adapters
-    mv adapters/images $data_dir/adapters
-    mv adapters/subsonic/icons $data_dir/adapters/subsonic
-    mv dbus/mpris_specs $data_dir/dbus
-    mv ui/icons $data_dir/ui
-    mv ui/images $data_dir/ui
-    popd
-
-    desktop-file-install --dir=${pkgdir}/usr/share/applications sublime-music.desktop
-    install -Dm644 "${srcdir}/sublime-music-git/sublime-music.metainfo.xml" "${pkgdir}/usr/share/metainfo/sublime-music.metainfo.xml"
-
-    pushd "${srcdir}/sublime-music-git/docs"
-    make man
-    install -Dm644 ./_build/man/sublime-music.1 "${pkgdir}/usr/share/man/man1/sublime-music.1"
-    popd
-
-    pushd "${srcdir}/sublime-music-git/logo/rendered"
-    for size in 16 22 24 32 36 48 64 72 96 128 192 512 1024; do
-        install -Dm644 ${size}.png ${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/sublime-music.png
-    done
-    popd
+  for sz in 16 22 24 32 36 48 64 72 96 128 192 512 1024; do
+    install -Dm644 "$_pkgsrc"/logo/rendered/$sz.png "$pkgdir"/usr/share/icons/hicolor/${sz}x${sz}/apps/sublime-music.png
+  done
 }
