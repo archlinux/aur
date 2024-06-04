@@ -1,5 +1,5 @@
 pkgname=mingw-w64-paraview
-pkgver=5.12.0
+pkgver=5.12.1
 pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK (mingw-w64)'
 arch=('any')
@@ -9,7 +9,7 @@ depends=('mingw-w64-qt5-tools' 'mingw-w64-qt5-svg' 'mingw-w64-boost' 'mingw-w64-
 makedepends=('mingw-w64-cmake' 'mingw-w64-eigen' 'mingw-w64-utf8cpp' 'mingw-w64-wine' 'protobuf' 'mingw-w64-nlohmann-json')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("${url}/files/v${pkgver:0:4}/ParaView-v${pkgver}.tar.xz")
-sha256sums=('d289afe7b48533e2ca4a39a3b48d3874bfe67cf7f37fdd2131271c57e64de20d')
+sha256sums=('927f880c13deb6dde4172f4727d2b66f5576e15237b35778344f5dd1ddec863e')
 
 _architectures="x86_64-w64-mingw32"
 
@@ -20,7 +20,6 @@ prepare() {
 build() {
   cd "${srcdir}/ParaView-v${pkgver}"
   for _arch in ${_architectures}; do
-    mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake \
       -DCMAKE_BUILD_TYPE=Release \
       -DPARAVIEW_USE_PYTHON=OFF \
@@ -28,6 +27,8 @@ build() {
       -DPARAVIEW_PLUGIN_DISABLE_XML_DOCUMENTATION=ON \
       -DPARAVIEW_USE_VTKM=OFF \
       -DPARAVIEW_BUILD_WITH_EXTERNAL=ON \
+      -DPARAVIEW_QT_VERSION=5 \
+      -DVTK_QT_VERSION=5 \
       -DVTK_MODULE_USE_EXTERNAL_VTK_ioss=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_fmt=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_cli11=OFF \
@@ -36,9 +37,8 @@ build() {
       -DVTK_MODULE_USE_EXTERNAL_VTK_token=OFF \
       -DCMAKE_CXX_STANDARD=17 \
       -DVTK_IGNORE_CMAKE_CXX11_CHECKS=ON \
-      ..
-    WINEPATH="/usr/${_arch}/bin;${PWD}/bin" make
-    popd
+      -B build-${_arch} .
+    WINEPATH="/usr/${_arch}/bin;${PWD}/bin" make -C build-${_arch}
   done
 }
 
