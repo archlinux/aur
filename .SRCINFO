@@ -1,0 +1,22 @@
+pkgbase = python-usb-protocol
+	pkgdesc = Utilities, data structures, constants, parsers, and tools for working with USB data
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/greatscottgadgets/python-usb-protocol
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-pyproject-patcher
+	makedepends = python-recommonmark
+	makedepends = python-setuptools
+	makedepends = python-sphinx
+	makedepends = python-sphinxcontrib-apidoc
+	makedepends = python-sphinx_rtd_theme
+	makedepends = python-wheel
+	depends = python
+	depends = python-construct
+	source = python-usb-protocol-0.0.2.tar.gz::https://github.com/greatscottgadgets/python-usb-protocol/archive/0.0.2.tar.gz
+	sha512sums = 9925cd74e8f17a0b158e16655c1e77a7b849ae8082000c4aca890be142304dcc8ef049c83c0a71ab1618a5e35c18649fc26c98b9595078f9709467ef018ba812
+
+pkgname = python-usb-protocol
