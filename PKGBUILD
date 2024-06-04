@@ -1,14 +1,14 @@
 # Maintainer: Thomas Clarke <tomclarke2006@hotmail.com>
 pkgname="elite-pip-macro"
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Elite Dangerous Pip Macros for Linux X11 made with Rust"
 arch=("x86_64")
 url="https://github.com/CMDR-WDX/elite-pip-macro"
 license=('MIT')
 depends=('alsa-lib' 'pkgconf' 'libxtst')
 makedepends=('cargo')
-conflicts=('elite-pip-macro')
+conflicts=('elite-pip-macro-bin')
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/CMDR-WDX/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
 )
