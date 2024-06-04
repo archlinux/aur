@@ -1,3 +1,4 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: peeweep <peeweep at 0x0 dot ee>
 # Contributor: Modelmat <modelmat@outlook.com.au>
 # Contributor: Paul Oppenheimer <redg3ar@airmail.cc>
@@ -6,13 +7,13 @@ pkgname=ao-git
 _pkgname=ao
 pkgver=6.9.0.r13.g86ceea6
 _pkgver=${pkgver%%.r*}
-pkgrel=1
+pkgrel=2
 pkgdesc="An Electron wrapper for Microsoft To-Do"
 arch=('x86_64')
 url="https://github.com/klaussinani/ao"
 license=('MIT')
-depends=('libnotify' 'libxtst' 'nss' 'libxss' 'libxcrypt-compat')
-makedepends=('npm' 'electron' 'git')
+depends=(dbus expat libxtst cairo alsa-lib libglvnd pango gtk3 glib2 libxcb libxext libxdamage libxi libxcursor nss libxcomposite util-linux-libs nspr libcups glibc at-spi2-core gdk-pixbuf2 libxfixes libxrender libxss gcc-libs libx11 libxrandr)
+makedepends=('git' 'npm' 'libxcrypt-compat')
 provides=('ao')
 conflicts=('ao')
 source=(git+${url}.git)
