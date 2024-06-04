@@ -1,22 +1,37 @@
-# Maintainer: Vitaly Utkin <vautkin AT teknik DOT io>
+# Controbutor: dreieck (https://aur.archlinux.org/account/dreieck)
+# Contributor: Vitaly Utkin (https://aur.archlinux.org/account/vautkin)
 pkgname=ovras
-pkgver=5.5.0
-pkgrel=0
+pkgver=5.8.11
+pkgrel=1
 epoch=0
 pkgdesc="Advanced settings and custom behavior for SteamVR using OpenVR (OVR)."
 arch=("x86_64")
 url="https://github.com/OpenVR-Advanced-Settings/OpenVR-AdvancedSettings"
-license=("GPL")
-depends=("qt5-declarative"
-         "qt5-multimedia"
-         "qt5-quickcontrols"
-         "libudev0-shim"
-         "mesa")
-optdepends=("dbus: media player support"
-            "xorg-server: send keyboard keys"
-            "pulseaudio: pulse audio support")
-source=("https://github.com/OpenVR-Advanced-Settings/OpenVR-AdvancedSettings/archive/v$pkgver.tar.gz")
-sha256sums=("9223baf4231e516a5459b4a65e07de35e2a7394a9b09c376b1a8c89a5eaede54")
+license=("GPL-3.0-or-later")
+depends=(
+  "gcc-libs"
+  "glibc"
+  "libx11"
+  "libxtst"
+  "mesa"
+  "qt5-base"
+  "qt5-declarative"
+  "qt5-multimedia"
+  "qt5-websockets"
+  "qt6-declarative"
+  "qt6-multimedia"
+)
+optdepends=(
+  "dbus: media player support"
+  "libpulse: pulse audio support"
+  "xorg-server: send keyboard keys"
+)
+source=(
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/OpenVR-Advanced-Settings/OpenVR-AdvancedSettings/archive/v$pkgver.tar.gz"
+)
+sha256sums=(
+  "2bd7e610a3b44e1525621b6fef17b4f0e1f40f8c4719bc0d4540cd8f81f3f8c5"
+)
 
 build() {
     cd "OpenVR-AdvancedSettings-$pkgver"
@@ -42,7 +57,7 @@ build() {
     fi
 
     # Attempting to compile without package will result in compile error
-    pacman -Qi pulseaudio >/dev/null 2>&1
+    pacman -Qi libpulse >/dev/null 2>&1
     if [ $? -ne 0 ]; then
         _additionalOptions+=" CONFIG+=noPulse"
         echo "Pulse features disabled."
@@ -50,7 +65,7 @@ build() {
         echo "Pulse features enabled."
     fi
 
-    qmake PREFIX="$pkgdir/opt/" $_additionalOptions
+    qmake -Wnone -nocache PREFIX="$pkgdir/opt/" $_additionalOptions
     make
 }
 
