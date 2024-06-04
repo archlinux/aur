@@ -2,7 +2,7 @@
 Name=PhpStorm EAP
 Version=1.0
 Type=Application
-Exec="/opt/phpstorm-eap/bin/phpstorm.sh" %f
+Exec="/opt/phpstorm-eap/bin/phpstorm" %f
 Icon=phpstorm-eap
 Comment=Lightweight and Smart PHP IDE
 Categories=Development;IDE;
