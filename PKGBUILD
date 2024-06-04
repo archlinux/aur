@@ -13,12 +13,12 @@ source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::$url/archive/refs/tags/selfhoste
 sha256sums=('e41015cd960a6a081263bb5c7f3d125bc8e506c43a648dcd78cf736aebb1bda4')
 
 prepare(){
-  cd "$pkgname-selfhosted-$pkgver"
+  cd "$pkgname-selfhosted-$pkgver/ddosify_engine/"
   mkdir -p build/
 }
 
 build() {
-  cd "$pkgname-selfhosted-$pkgver"
+  cd "$pkgname-selfhosted-$pkgver/ddosify_engine/"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -28,11 +28,11 @@ build() {
 }
 
 check() {
-  cd "$pkgname-selfhosted-$pkgver"
+  cd "$pkgname-selfhosted-$pkgver/ddosify_engine/"
   go test ./...
 }
 
 package() {
-  cd "$pkgname-selfhosted-$pkgver"
+  cd "$pkgname-selfhosted-$pkgver/ddosify_engine/"
   install -Dm755 build/$_pkgname "$pkgdir"/usr/bin/$pkgname
 }
