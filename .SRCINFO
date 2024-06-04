@@ -1,0 +1,16 @@
+pkgbase = acdb-git
+	pkgdesc = Clang's C/C++ compile_commands.json generator for Arduino projects
+	pkgver = r37.570cd3f
+	pkgrel = 1
+	url = https://github.com/Softmotions/acdb
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = arduino-cli
+	provides = acdb
+	conflicts = acdb
+	source = acdb-git::git+https://github.com/Softmotions/acdb.git
+	sha256sums = SKIP
+
+pkgname = acdb-git
