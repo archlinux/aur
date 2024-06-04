@@ -4,13 +4,12 @@
 _modname="nginx-module-vts"
 pkgname=nginx-mod-vts
 pkgver=0.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Nginx virtual host traffic status module"
 arch=('x86_64')
-depends=('nginx')
-makedepends=('nginx-src')
+makedepends=('nginx' 'nginx-src')
 url="https://github.com/vozlt/nginx-module-vts"
-license=('BSD')
+license=('BSD-2-Clause')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/vozlt/$_modname/archive/v$pkgver.tar.gz)
 sha256sums=('9353035331cfc5eec6c129eb8b348dab77f525329d4d60680a76e0c13c085f41')
 
@@ -23,6 +22,10 @@ build() {
 }
 
 package() {
+	local _nginx_version=$(nginx -v 2>&1)
+	_nginx_version=${_nginx_version/* nginx\/}
+	depends+=("nginx=${_nginx_version}")
+
     install -Dm0644 "nginx-module-vts-$pkgver"/LICENSE "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
 
     cd nginx/objs
