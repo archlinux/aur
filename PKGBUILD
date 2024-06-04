@@ -2,14 +2,14 @@
 
 pkgname=act-core-git
 pkgver=0.0.1.r1865.033b73b
-pkgrel=2
+pkgrel=3
 pkgdesc="ACT core provides the core library for the ACT AVLSI toolflow."
 arch=('x86_64')
 url="https://github.com/asyncvlsi/act"
 license=('GPL-2.0')
 depends=('libedit' 'zlib' 'm4')
 optdepends=()
-makedepends=('git' 'gcc' 'patch' 'sed')
+makedepends=('git' 'gcc' 'patch' 'sed' 'make')
 conflicts=('act-core')
 provides=('act-core')
 source=(
