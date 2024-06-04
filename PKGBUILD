@@ -40,7 +40,6 @@ prepare() {
 from pyproject_patcher import patch_in_place
 with patch_in_place('pyproject.toml') as toml:
     toml.set_project_version_from_env('pkgver')
-    toml.remove_build_system_dependency('setuptools-git-versoning')
     toml.remove_setuptools_git_versioning_section()
 EOF
 }
