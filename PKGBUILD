@@ -2,11 +2,11 @@
 
 pkgname=proxmark3gui-git
 pkgver=0.2.8.r0.ge2fb189
-pkgrel=15
+pkgrel=16
 pkgdesc="A cross-platform GUI for Proxmark3 client | 为 PM3 设计的图形界面"
 arch=('x86_64')
 url="https://github.com/wh201906/Proxmark3GUI"
-license=('LGPL-2.1')
+license=('LGPL-2.1-Only')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 depends=(qt5-serialport)
