@@ -17,7 +17,7 @@ sha512sums=('15c7935f1733da12b99996ad10e34635bb141f459487c1cdafd38ce625bc91e75dd
             '41e852c08f5e74668c3a4a839fc48f02b16dcc5446d51b1c64e95e2a1001bd0bd29ece736ea5777ea5f2d2de117dc14d00ebf4fc24e584f8b9d21c346172e82e')
 
 package() {
-        efimounts=$(lsblk -rno parttypename,mountpoint | awk -e '/EFI\\x20\(FAT-12\/16\/32\)|EFI\\x20System/ {print $2}' | tr -s '\n')
+        efimounts=$(lsblk -lno mountpoint --filter 'PARTTYPENAME=="EFI System"')
         
         if [ -z "${efimounts-}" ]; then
            echo "No ESP found, you must have a EFI partition mounted. Exiting...."
