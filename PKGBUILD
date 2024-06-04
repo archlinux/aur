@@ -1,7 +1,7 @@
 pkgname=python-cadquery
 local _build_hash=c44978d60cee2d61bdadf4cb4498286b7034b4c6
 pkgver=2.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A parametric CAD scripting framework based on PythonOCC"
 arch=(x86_64)
 url="https://github.com/CadQuery/cadquery"
@@ -14,7 +14,7 @@ nlopt
 python-typish
 python-nptyping
 python-multimethod
-casadi
+python-casadi-bin
 )
 checkdepends=(
 python-pytest
