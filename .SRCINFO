@@ -11,6 +11,7 @@ pkgbase = opendeck-git
 	makedepends = dpkg
 	makedepends = hidapi
 	makedepends = webkit2gtk
+	makedepends = libappindicator-gtk3
 	provides = opendeck
 	conflicts = opendeck
 	options = !lto
