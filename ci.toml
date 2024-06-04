@@ -1,0 +1,4 @@
+[source]
+type = "crates_io"
+crate = "tauri-cli"
+allow_prerelease = true
