@@ -1,6 +1,6 @@
 # Maintainer: Tommy Juhl <me@enbyte.dev>
 pkgname=dotctl-git
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A tool to manage dotfiles"
 arch=('any')
@@ -11,17 +11,15 @@ makedepends=('git')
 source=("${pkgname}::git+https://github.com/enbytedev/dotctl.git")
 sha256sums=('SKIP')
 
-prepare() {
-  cd "$srcdir/$pkgname"
-}
-
 package() {
+  cd "$srcdir/$pkgname"
+
   # Define user home directory and username
   USER_HOME=$(eval echo ~$USER)
   USER_NAME=$USER
 
-  # Set version
-  VERSION="1.0.0-rc.2"
+  # Set versions
+  VERSION=$(cat VERSION)
   FORMAT_VERSION="1b"
 
   # Create necessary directories with appropriate permissions
