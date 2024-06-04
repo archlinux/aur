@@ -3,7 +3,7 @@
 
 pkgname=amdfand-git
 pkgver=1.0.12.r15.g2d20203
-pkgrel=1
+pkgrel=2
 pkgdesc="AMDGPU fan speed management tool"
 url="https://github.com/Eraden/amdgpud"
 license=('MIT' 'Apache-2.0')
