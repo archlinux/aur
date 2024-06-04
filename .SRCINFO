@@ -1,0 +1,29 @@
+pkgbase = netradiant-custom-git
+	pkgdesc = The open-source, cross-platform level editor for id Tech based games.
+	pkgver = latest.r13.gac7b4d3c
+	pkgrel = 1
+	url = https://github.com/Garux/netradiant-custom
+	arch = i686
+	arch = x86_64
+	license = BSD-3-Clause AND LGPL-2.1-only AND GPL-2.0-only
+	makedepends = gcc
+	makedepends = gcc-libs
+	makedepends = git
+	makedepends = make
+	makedepends = svn
+	depends = gcc-libs
+	depends = glib2
+	depends = glibc
+	depends = libjpeg-turbo
+	depends = libpng
+	depends = libxml2
+	depends = qt5-base
+	depends = zlib
+	provides = netradiant-custom
+	provides = netradiant-custom-debug
+	conflicts = netradiant-custom
+	conflicts = netradiant-custom-debug
+	source = netradiant-custom::git+https://github.com/Garux/netradiant-custom#branch=master
+	sha512sums = SKIP
+
+pkgname = netradiant-custom-git
