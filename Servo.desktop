@@ -1,9 +1,9 @@
 [Desktop Entry]
-Encoding=UTF-8
 Type=Application
 Name=Servo
-Comment=A modern, high-performance browser engine being developed for application and embedded use
-Exec=servo-latest
+Comment=The embeddable, independent, memory-safe, modular, parallel web rendering engine
+Path=/usr/bin/servo
+Exec=servo
 Icon=Servo
 Terminal=false
 StartupNotify=false

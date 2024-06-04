@@ -1,51 +1,56 @@
-# Maintainer: Rene Hickersberger <r@renehsz.com>
-# Maintainer: White-Oak <lpzhelud@gmail.com>
-# Maintainer: Solomon Choina <shlomochoina@gmail.com>
-pkgname=servo-latest
+# Maintainer: Ralph Torres <mail@ralphptorr.es>
+# Contributor: Rene Hickersberger <r@renehsz.com>
+# Contributor: White-Oak <lpzhelud@gmail.com>
+# Contributor: Solomon Choina <shlomochoina@gmail.com>
+
 _pkgname=servo
+pkgname=$_pkgname-latest
 pkgver=r20231113
 pkgrel=1
-pkgdesc="A modern, high-performance browser engine being developed for application and embedded use"
-arch=('x86_64')
-url="https://download.servo.org/"
-license=('custom:Mozilla Public License v2.0')
-provides=('servo')
-conflicts=('servo')
-depends=('gst-plugins-bad' 'libunwind')
-sha256sums=('SKIP'
-            '5dcb8790a243b850995fd1e9ebd3a8b47a9266a96e266891571934a3fcf9a578'
-            '3db78572e8657cca9e9446ce56a057b8a981eb41af318c49a5fe08e7a10fa52a')
+pkgdesc='The embeddable, independent, memory-safe, modular, parallel web rendering engine'
+arch=(x86_64)
+url=https://servo.org
+license=(MPL-2.0)
+
+provides=(servo)
+conflicts=(servo)
+depends=(gst-plugins-bad libunwind)
 source=(
-	"https://download.servo.org/nightly/linux/servo-latest.tar.gz"
-	"Servo.desktop"
-	"LICENSE"
+    https://download.servo.org/nightly/linux/servo-latest.tar.gz
+    https://download.servo.org/nightly/linux/servo-latest.tar.gz.sha256
+    https://raw.githubusercontent.com/servo/servo/main/LICENSE
+    Servo.desktop
+)
+sha256sums=(
 )
 
 pkgver(){
-	time=$(curl -s -v -X HEAD "https://download.servo.org/nightly/linux/servo-latest.tar.gz" 2>&1\
-	 | grep '^< Last-Modified:'\
-	 | sed -n -e 's/^< Last-Modified: //p')
-	date --date="$time" +r%Y%m%d
+    time=$(curl -s -v -X HEAD
+        https://download.servo.org/nightly/linux/servo-latest.tar.gz 2>&1 \
+        | grep '^< Last-Modified:' \
+        | sed -n -e 's/^< Last-Modified: //p')
+    date --date="$time" +r%Y%m%d
 }
 
 package() {
-	install -Dm755 "$srcdir/Servo.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+    install -Dm755 "$srcdir"/Servo.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
 
-	install -dm755 "$pkgdir/usr/share/licenses/$pkgname/"
-	install -m644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
+    install -dm755 "$pkgdir"/usr/share/licenses/$pkgname/
+    install -m644 "$srcdir"/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/
 
-	install -dm755 "$pkgdir/usr/lib/servo"
-	chmod -R 755 "$srcdir/servo"
-	cp -r "$srcdir/servo" "$pkgdir/usr/lib/"
+    install -dm755 "$pkgdir"/usr/lib/servo
+    chmod -R 755 "$srcdir"/servo
+    cp -r "$srcdir"/servo "$pkgdir"/usr/lib/
 
-    install -d "$pkgdir/etc/profile.d"
-    echo 'export PATH=$PATH:/usr/lib/servo' > "$pkgdir/etc/profile.d/${_pkgname}.sh"
-    echo 'setenv PATH ${PATH}:/usr/lib/servo' > "$pkgdir/etc/profile.d/${_pkgname}.csh"
-    chmod 755 "$pkgdir/etc/profile.d/${_pkgname}".{csh,sh}
+    install -d "$pkgdir"/etc/profile.d
+    echo 'export PATH=$PATH:/usr/lib/servo' > "$pkgdir"/etc/profile.d/$_pkgname.sh
+    echo 'setenv PATH ${PATH}:/usr/lib/servo' > "$pkgdir"/etc/profile.d/$_pkgname.csh
+    chmod 755 "$pkgdir"/etc/profile.d/$_pkgname.csh
+    chmod 755 "$pkgdir"/etc/profile.d/$_pkgname.sh
 
-    # Install a wrapper to avoid confusion about binary path
-       install -Dm755 /dev/stdin "$pkgdir/usr/bin/servo" <<END
-       #!/bin/sh
-       exec /usr/lib/servo/servo "\$@"
-END
+    # install a wrapper to avoid confusion about binary path
+    install -Dm755 /dev/stdin "$pkgdir"/usr/bin/servo <<END
+        #!/bin/sh
+        exec /usr/lib/servo/servo "\$@"
+    END
 }
