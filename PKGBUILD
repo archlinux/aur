@@ -3,20 +3,20 @@
 pkgname=sirula
 pkgver=1.0.0
 pkgrel=2
-pkgdesc='An app launcher for wayland'
-url='https://github.com/DorianRudolph/sirula'
-arch=('x86_64')
-license=('GPL3')
-makedepends=('cargo')
-depends=('gtk-layer-shell')
+pkgdesc="An app launcher for wayland"
+arch=(x86_64)
+url=https://github.com/DorianRudolph/sirula
+license=(GPL-3.0-or-later)
+depends=(gtk-layer-shell)
+makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/DorianRudolph/sirula/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('311c2b3c1502a2e7c1c1ccd4c6a98f7fa387508cd2f3af23ea29b81f581292df')
+sha256sums=(311c2b3c1502a2e7c1c1ccd4c6a98f7fa387508cd2f3af23ea29b81f581292df)
 
 prepare() {
   cd "$pkgname-$pkgver"
 
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
