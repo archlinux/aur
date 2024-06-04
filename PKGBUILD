@@ -3,7 +3,7 @@
 pkgname=rustmon-git
 pkgdesc="Pokemon Colorscripts written in Rust"
 _gitname=rustmon
-pkgver=r47.31f64ae
+pkgver=r53.104b4eb
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/Vomitblood/$_gitname"
