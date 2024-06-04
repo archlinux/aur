@@ -5,6 +5,7 @@ pkgbase = iso-commander
 	url = https://github.com/siyia2/iso-commander
 	arch = x86_64
 	license = GPL3
+	makedepends = binutils
 	depends = coreutils
 	depends = glibc
 	depends = readline
