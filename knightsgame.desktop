@@ -2,7 +2,7 @@
 Type=Application
 Version=1.0
 Name=Knights
-Exec=knightsgame
+Exec=knights
 Icon=knightsgame
 Terminal=False
 Categories=Game
