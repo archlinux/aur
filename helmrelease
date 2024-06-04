@@ -134,7 +134,11 @@ function helmrelease() {
         ;;
       *)
         if [[ -f "$1" ]]; then
-          yaml=$(cat "$1")
+          if [[ -v yaml ]]; then
+            sourceParameter="$1"
+          else
+            yaml=$(cat "$1")
+          fi
         elif [[ -d "$1" ]]; then
           sourceParameter="$1"
         elif [[ "$1" =~ ^https://* ]] || [[ "$1" =~ ^oci://* ]]; then
@@ -191,8 +195,8 @@ function helmrelease() {
       KUBECONFIG="${REMOTE_KUBECONFIG:-$KUBECONFIG}" helm "${commands[@]}" ${namespace:+--namespace=$namespace} $releaseName "$@"
       ;;
     *)
-      values=$(<<< "$helmReleaseYaml" | yq -y -er .spec.values)
-      if [[ -d "$sourceParameter" ]]; then
+      values=$(<<< "$helmReleaseYaml" | yq -y -r .spec.values)
+      if [[ -e "$sourceParameter" ]]; then
         KUBECONFIG="${REMOTE_KUBECONFIG:-$KUBECONFIG}" helm "${commands[@]}" ${namespace:+--namespace=$namespace} $releaseName "$sourceParameter" --values <(<<< "$values") ${@}
       elif <<< "$helmReleaseYaml" | yq -e '.apiVersion == "helm.fluxcd.io/v1"' > /dev/null; then
         if <<< "$helmReleaseYaml" | yq -e .spec.chart.git > /dev/null; then
