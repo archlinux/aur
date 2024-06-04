@@ -20,7 +20,7 @@ source=(
     $_pkgname-$pkgver.tar.gz::$_url/download/$pkgname.tar.gz
     $_pkgname-$pkgver.tar.gz.sha256::$_url/download/$pkgname.tar.gz.sha256
     https://raw.githubusercontent.com/servo/servo/main/LICENSE
-    Servo.desktop
+    servo.desktop
 )
 sha256sums=(
     SKIP
@@ -39,24 +39,16 @@ prepare() {
 }
 
 package() {
-    install -Dm755 "$srcdir"/Servo.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
+    cd "$srcdir"
+    install -Dm644 -t "$pkgdir"/usr/share/applications $_pkgname.desktop
+    install -Dm644 -t "$pkgdir"/usr/share/licenses/$_pkgname LICENSE
 
-    install -dm755 "$pkgdir"/usr/share/licenses/$pkgname/
-    install -m644 "$srcdir"/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/
-
-    install -dm755 "$pkgdir"/usr/lib/servo
-    chmod -R 755 "$srcdir"/servo
-    cp -r "$srcdir"/servo "$pkgdir"/usr/lib/
-
-    install -d "$pkgdir"/etc/profile.d
-    echo 'export PATH=$PATH:/usr/lib/servo' > "$pkgdir"/etc/profile.d/$_pkgname.sh
-    echo 'setenv PATH ${PATH}:/usr/lib/servo' > "$pkgdir"/etc/profile.d/$_pkgname.csh
-    chmod 755 "$pkgdir"/etc/profile.d/$_pkgname.csh
-    chmod 755 "$pkgdir"/etc/profile.d/$_pkgname.sh
-
-    # install a wrapper to avoid confusion about binary path
-    install -Dm755 /dev/stdin "$pkgdir"/usr/bin/servo <<END
+    cd $_pkgname
+    install -Dm755 -t "$pkgdir"/usr/lib/$_pkgname $_pkgname
+    install -Dm755 /dev/stdin "$pkgdir"/usr/bin/$_pkgname <<END
         #!/bin/sh
         exec /usr/lib/servo/servo "\$@"
-    END
+END
+    cp -r resources/ "$pkgdir"/usr/lib/$_pkgname
+    chmod -R 644 "$pkgdir"/usr/lib/$_pkgname/resources
 }
