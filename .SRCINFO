@@ -1,6 +1,6 @@
 pkgbase = leavesmc-git
 	pkgdesc = Fork of Paper aimed at repairing broken vanilla properties.
-	pkgver = 1.20.6+210
+	pkgver = 1.20.6+212
 	pkgrel = 1
 	url = https://leavesmc.org/
 	install = leavesmc.install

@@ -3,8 +3,8 @@
 pkgname=leavesmc-git
 _pkgname=leavesmc
 _pkgver=1.20.6
-_build=dafcfaf
-_buildid=210
+_build=7dc9e87
+_buildid=212
 pkgver="${_pkgver}+${_buildid}"
 pkgrel=1
 pkgdesc="Fork of Paper aimed at repairing broken vanilla properties."
@@ -32,8 +32,8 @@ build() {
     cd "${srcdir}/${pkgname}"
     git checkout ${_build}
     export JAVA_HOME=/usr/lib/jvm/zulu-21
-    ./gradlew applyPatches --info
-    ./gradlew createReobfPaperclipJar --info
+    ./gradlew applyPatches
+    ./gradlew createReobfPaperclipJar
 }
 
 package() {
