@@ -1,5 +1,5 @@
 pkgname=('python-sphinx-renku-theme')
-pkgver=0.2.2
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Sphinx theme for Renku documentation'
 arch=('any')
@@ -7,7 +7,7 @@ url='https://github.com/SwissDataScienceCenter/renku-sphinx-theme'
 license=('Apache')
 makedepends=('python-setuptools')
 source=("https://github.com/SwissDataScienceCenter/renku-sphinx-theme/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a02e96e4b15fb3100d5d0d549795c47e35c66219a6279723848212fe2a206e3b')
+sha256sums=('bedf0d7719dcbfb4e2e36be13dadf6ba9783725512dd3e3ee56069fc21b5a60e')
 
 build() {
   cd $srcdir/renku-sphinx-theme-$pkgver
