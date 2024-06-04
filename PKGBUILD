@@ -1,59 +1,92 @@
 # Maintainer: Ludvig Hozman <ludvig.hozman@gmail.com>
 
 pkgname=plex-desktop
-pkgver=1.58.1
+pkgver=1.93.0.144
 pkgrel=1
-_snapid=qc6MFRM433ZhI1XjVzErdHivhSOhlpf0
-_snaprev=24
 pkgdesc="Plex desktop client for linux"
 arch=('x86_64')
 url='http://plex.tv'
 license=('unknown')
-makedepends=('squashfs-tools')
-depends=('qt5-base' 'qt5-svg' 'qt5-webengine' 'qt5-quickcontrols' 'qt5-x11extras' 'mpv' 'ffmpeg4.4')
-optdepends=('qt5-wayland: Wayland support' 'libva: GPU accelerated decoding')
-source=("https://api.snapcraft.io/api/v1/snaps/download/${_snapid}_${_snaprev}.snap" "qt.conf")
-sha256sums=('5f766068219ea49fa688969a9f43ce8cac0d59b2d6abc3e64a528d05241c433d'
-            '40d1b22236d9d2312d16563493b8c6d69134c5aa54ff6d1531243133fb46f083')
+depends=(libgl
+  hicolor-icon-theme
+  alsa-lib
+  dbus
+  expat
+  ffmpeg
+  fontconfig
+  freetype2
+  gcc-libs
+  glib2
+  glibc
+  harfbuzz
+  lcms2
+  libdrm
+  libjpeg-turbo
+  libwebp
+  libx11
+  libxcb
+  libxcomposite
+  libxdamage
+  libxext
+  libxfixes
+  libxkbcommon
+  libxkbfile
+  libxml2
+  libxrandr
+  libxslt
+  libxtst
+  mesa
+  minizip
+  nspr
+  nss
+  opus
+  xcb-util-renderutil
+  pciutils
+  libxss
+  xcb-util-image
+  libxkbcommon-x11
+  libxinerama
+  xcb-util-keysyms
+  xcb-util-wm
+  zlib
+  snappy
+  libva
+  libpulse
+  libxrender
+  wayland
 
-prepare() {
-  unsquashfs -q -f -d "${srcdir}/${pkgname}" "${_snapid}_${_snaprev}.snap"
-}
+)
+source=("https://artifacts.plex.tv/plex-desktop-stable/1.93.0.144-9b2f4a13/linux/Plex-1.93.0.144-9b2f4a13-linux-x86_64.tar.bz2"
+  "http://ftp.us.debian.org/debian/pool/main/libw/libwebp/libwebp6_0.6.1-2.1+deb11u2_amd64.deb"
+  "https://github.com/flathub/tv.plex.PlexDesktop/raw/master/tv.plex.PlexDesktop.desktop"
+  "https://github.com/flathub/tv.plex.PlexDesktop/raw/master/tv.plex.PlexDesktop.png"
+)
+sha256sums=('d665babdabaed34af8c8c2434b56c3269deb661f084ba80e0684b6115ae1859c'
+  '8abc2b1ca77a458bbbcdeb6af5d85316260977370fa2518d017222b3584d9653'
+  '2215f6bb3a2bbe50ceb3bedcb93f53d11f6a51ec7512f08f68af91da8253261b'
+  '565178841c318fb4926acf65a68df6dae484c0b705be6dd736858e7408a261d5')
+noextract=('Plex-1.93.0.144-9b2f4a13-linux-x86_64.tar.bz2')
 
 package() {
+  cd $srcdir
+
   install -d "${pkgdir}/opt/${pkgname}"
-  cp -r "${srcdir}/${pkgname}/." "${pkgdir}/opt/${pkgname}"
+  tar --no-same-owner -xvf $srcdir/Plex-1.93.0.144-9b2f4a13-linux-x86_64.tar.bz2 -C $pkgdir/opt/${pkgname}
+  tar -xvf $srcdir/data.tar.xz ./usr/lib/x86_64-linux-gnu/libwebp.so.6.0.2
+  install -Dm644 usr/lib/x86_64-linux-gnu/libwebp.so.6.0.2 ${pkgdir}/opt/${pkgname}/lib/libwebp.so.6
 
-  sed -i 's|${SNAP}/meta/gui/icon.png|plex-desktop|g' "${pkgdir}/opt/${pkgname}/meta/gui/plex-desktop.desktop"
+  rm -rf $pkgdir/opt/${pkgname}/lib/dri
+  rm -rf $pkgdir/opt/${pkgname}/lib/libEGL.so*
+  rm -rf $pkgdir/opt/${pkgname}/lib/libdrm.so*
+  rm -rf $pkgdir/opt/${pkgname}/lib/libdrm_*.so*
+  rm -rf $pkgdir/opt/${pkgname}/lib/libpciaccess.so*
+  rm -rf $pkgdir/opt/${pkgname}/lib/libswresample.so*
+  rm -rf $pkgdir/opt/${pkgname}/lib/libva.so*
+  rm -rf $pkgdir/opt/${pkgname}/lib/libva-*.so*
 
-  sed -e "/export LD_LIBRARY_PATH=/ c\export LD_LIBRARY_PATH=\"/usr/lib/${pkgname}:\$LD_LIBRARY_PATH\"" -i "${pkgdir}/opt/${pkgname}/Plex.sh"
-  sed -e '/export LC_ALL/ s/^#*/#/' -i "${pkgdir}/opt/${pkgname}/Plex.sh"
-  sed -e '/export QML/ s/^#*/#/' -i "${pkgdir}/opt/${pkgname}/Plex.sh"
-  sed -e '/export QT_/ s/^#*/#/' -i "${pkgdir}/opt/${pkgname}/Plex.sh"
-  sed -e '/export QTDIR/ s/^#*/#/' -i "${pkgdir}/opt/${pkgname}/Plex.sh"
-  sed -e '/export QT_QPA_PLATFORM/ i export FONTCONFIG_PATH="$BASE_DIR/etc/fonts"' -i "${pkgdir}/opt/${pkgname}/Plex.sh"
-  sed -e "/LIBVA_DRIVERS_PATH/c\export LIBVA_DRIVERS_PATH=/usr/lib/dri" -i "${pkgdir}/opt/${pkgname}/Plex.sh"
+  install -d ${pkgdir}/usr/bin
+  ln -s /opt/${pkgname}/Plex.sh ${pkgdir}/usr/bin/Plex
 
-  install -Dm644 "${pkgdir}/opt/${pkgname}/meta/gui/plex-desktop.desktop" -t "${pkgdir}/usr/share/applications"
-  install -Dm644 "${pkgdir}/opt/${pkgname}/meta/gui/icon.png" "${pkgdir}/usr/share/pixmaps/plex-desktop.png"
-  install -d "${pkgdir}/usr/lib/${pkgname}"
-  #install -Dm644 "${pkgdir}/opt/${pkgname}/lib/libcec.so.4" -t "${pkgdir}/usr/lib/${pkgname}"
-  install -Dm644 "${pkgdir}/opt/${pkgname}/lib/libPlexMediaServer.so" -t "${pkgdir}/usr/lib/${pkgname}"
-  install -Dm644 "${pkgdir}/opt/${pkgname}/lib/libicudata.so.66" -t "${pkgdir}/usr/lib/${pkgname}"
-  install -Dm644 "${pkgdir}/opt/${pkgname}/lib/libicui18n.so.66" -t "${pkgdir}/usr/lib/${pkgname}"
-  install -Dm644 "${pkgdir}/opt/${pkgname}/lib/libicuuc.so.66" -t "${pkgdir}/usr/lib/${pkgname}"
-  install -Dm644 "${pkgdir}/opt/${pkgname}/lib/libavutil.so.56" -t "${pkgdir}/usr/lib/${pkgname}"
-  install -Dm644 "${pkgdir}/opt/${pkgname}/lib/libavformat.so.58" -t "${pkgdir}/usr/lib/${pkgname}"
-  ln -s "/usr/lib/libmpv.so" "${pkgdir}/usr/lib/${pkgname}/libmpv.so.2"
-
-  install -Dm644 "${srcdir}/${pkgname}/usr/lib/x86_64-linux-gnu/libvpx.so.6.2.0" "${pkgdir}/usr/lib/${pkgname}/libvpx.so.6"
-  install -Dm644 "${srcdir}/${pkgname}/usr/lib/x86_64-linux-gnu/libwebp.so.6.0.2" "${pkgdir}/usr/lib/${pkgname}/libwebp.so.6"
-  install -Dm644 "${srcdir}/${pkgname}/usr/lib/x86_64-linux-gnu/libre2.so.5.0.0" "${pkgdir}/usr/lib/${pkgname}/libre2.so.5"
-
-  rm -rf "$pkgdir/opt/$pkgname"/{lib,gnome-platform,meta,data-dir,snap,usr}
-
-  install -Dm644 "${srcdir}/qt.conf" -t "${pkgdir}/opt/${pkgname}/bin"
-
-  install -d "${pkgdir}/usr/bin"
-  ln -s "/opt/${pkgname}/Plex.sh" "${pkgdir}/usr/bin/plex-desktop"
+  install -Dm644 "${srcdir}/tv.plex.PlexDesktop.desktop" -t "${pkgdir}/usr/share/applications"
+  install -Dm644 "${srcdir}/tv.plex.PlexDesktop.png" -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps/"
 }
