@@ -1,7 +1,7 @@
 pkgbase = elite-pip-macro
 	pkgdesc = Elite Dangerous Pip Macros for Linux X11 made with Rust
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CMDR-WDX/elite-pip-macro
 	arch = x86_64
 	license = MIT
