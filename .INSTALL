@@ -4,9 +4,9 @@ post_install() {
   cat <<EOF
 
 -----------------------------------------------------------------------------
-oama version 0.13.2
+oama version 0.13.3
 
-Fixed token_params_mode for microsoft, solving issue #54
+Get google always return a refresh_key even with private client_id,secret
 
 -----------------------------------------------------------------------------
 
