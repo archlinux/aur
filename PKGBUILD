@@ -1,14 +1,14 @@
 pkgname=youtubemusic
 _pkgname=YoutubeMusic
-pkgver=1.0.8
-pkgrel=2
+pkgver=1.0.9
+pkgrel=1
 pkgdesc="Youtube Music is a unofficial client to play your music."
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/linuxbombay/youtube-music"
 license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git' 'playerctl')
 source=("$url/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
-sha256sums=('fb9ba048351733fe2ce0f926ae8d60c1fe42bf2cca68a0d0ed0127d8bf7f9a9e')
+sha256sums=('d00ce2deb334154e5e0a89d8d9127b0f6a24535d47ef971d24de2a2ce71f836d')
 
 package() {
         for dir in application-$pkgver-$pkgrel ; do mv "${dir}" "$_pkgname" ;done
