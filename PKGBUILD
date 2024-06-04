@@ -1,6 +1,6 @@
 # Maintainer: Tommy Juhl <me@enbyte.dev>
 pkgname=dotctl-git
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A tool to manage dotfiles"
 arch=('any')
@@ -19,6 +19,7 @@ package() {
   USER_NAME=$USER
 
   # Set versions
+  # NOTE: pkgver is NOT tied to a version of dotctl.
   VERSION=$(cat VERSION)
   FORMAT_VERSION="1b"
 
@@ -26,7 +27,7 @@ package() {
   install -d -m 755 "$pkgdir/$USER_HOME/.dotctl"
   install -d -m 755 "$pkgdir/$USER_HOME/.dotctl/base"
   install -d -m 755 "$pkgdir/$USER_HOME/.dotctl/intermediate"
-  install -d -m 755 "$pkgdir/$USER_HOME/.dotctl/patches"
+  install -d -m 755 "$pkgdir/$USER_HOME/.dotctl/changes"
   install -d -m 755 "$pkgdir/usr/local/share/dotctl"
   install -d -m 755 "$pkgdir/usr/local/bin"
 
