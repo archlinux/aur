@@ -1,6 +1,6 @@
 pkgbase = folding
 	pkgdesc = Combined instrumentation and sampling for instantaneous metric evolution with low overhead (from BSC).
-	pkgver = 1.4.1.20230112
+	pkgver = 1.4.2.20240604
 	pkgrel = 1
 	url = https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = folding
 	depends = r
 	depends = clang
 	depends = python
-	source = https://ftp.tools.bsc.es/folding/folding-1.4.1-src.tar.bz2
+	source = https://ftp.tools.bsc.es/folding/folding-1.4.2-src.tar.bz2
 	source = python3-ports.patch
-	sha512sums = 386cefcb07afb813bff94a17730c13266c81a5470c719f6846132249419c99183478512d59c4a3baa70282d66e9fb46e7a75f2a1851491d209aa65a4df44b852
+	sha512sums = 6af1fc68ce47d2504a966972f2498bcbd34128e7725d7ca5507f3ce241d84c170448206e72ce270311818a687661a3912b89bebf77f7bba88809cc4a1545bf09
 	sha512sums = f62af324cfe585605dbdfdb87fa7877cb794ba854c1445193710f22ce3cb92effcfcb7c6b8e32286f927bd0804478580b6358b62f15cba789359862bc0589aa1
 
 pkgname = folding
