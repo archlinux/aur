@@ -2,7 +2,7 @@
 
 pkgname=modrinth-app
 pkgver=0.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc='An unique, open source launcher that allows you to play your favorite mods, and keep them up to date, all in one neat little package.'
 url='https://modrinth.com/app'
 arch=('x86_64')
@@ -35,12 +35,14 @@ prepare() {
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 
     cd "theseus_gui"
-    pnpm install --frozen-lockfile
+    export COREPACK_ENABLE_STRICT=0
+    pnpm install
 }
 
 build() {
     cd "theseus-${pkgver}/theseus_gui/"
 
+    export COREPACK_ENABLE_STRICT=0
     pnpm build
 
     cd ..
