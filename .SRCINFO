@@ -1,5 +1,5 @@
 pkgbase = python-libschrodinger
-	pkgver = 1.2.3
+	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://github.com/1p22geo/schrodinger
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-libschrodinger
 	depends = python-scipy
 	depends = python-matplotlib
 	depends = ffmpeg
-	source = python-libschrodinger-1.2.3.tar.gz::https://github.com/1p22geo/schrodinger/releases/download/v1.2.3/libschrodinger-1.2.3.tar.gz
-	sha256sums = 6ff437412e097487e03dfa838bc8ff7bc9c0bd4894239ab19e95f222d38b87c9
+	source = python-libschrodinger-1.2.4.tar.gz::https://github.com/1p22geo/schrodinger/releases/download/v1.2.4/libschrodinger-1.2.4.tar.gz
+	sha256sums = 7c7b3f5b5016d16dd35d5c42f78f86eebc78d2631f99f68ce252a0767b40da30
 
 pkgname = python-libschrodinger
