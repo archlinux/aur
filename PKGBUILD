@@ -1,6 +1,6 @@
 pkgname=python-ocp
-pkgver=7.7.2.0
-pkgrel=4
+pkgver=7.7.2.1
+pkgrel=1
 pkgdesc="Python wrapper for OCCT generated using pywrap"
 arch=(x86_64)
 url=https://github.com/CadQuery/OCP
@@ -57,10 +57,10 @@ python-clang15
 
 conflicts=(python-ocp-git)
 
-#_fragment="#tag=${pkgver}"
-_fragment="#commit=7bef13a1525610a8c208537e1c6793cf71d27334"
+_ocp_fragment="#commit=c692e6e2c61319ff4ec83065c5092ad43c364173"
+_pywrap_commit="79874f51d2ff963dc993fc77f6871fcd6140f5d9"  # comment this to use the latest
 source=(
-git+https://github.com/CadQuery/OCP.git${_fragment}
+git+https://github.com/CadQuery/OCP.git${_ocp_fragment}
 git+https://github.com/CadQuery/pywrap.git
 )
 
@@ -80,11 +80,20 @@ _n_parallel_build_jobs=1
 #_opencascade_install_prefix="/opt/opencascade-cadquery/usr"
 _opencascade_install_prefix="/usr"
 
+pkgver() {
+  git -C OCP describe --tags
+}
+
 prepare(){
   cd OCP
   git submodule init
   git config submodule.pywrap.url "${srcdir}"/pywrap
   git -c protocol.file.allow=always submodule update
+
+  if [[ ${_pywrap_commit} ]]; then
+    msg2 "using pywrap commit ${_pywrap_commit}"
+    git -C pywrap checkout ${_pywrap_commit}
+  fi
 
   sed "s,-i \${CLANG_INSTALL_PREFIX}/lib/clang/\${LLVM_VERSION}/include/,-i \"$(clang -print-resource-dir)/include\"," -i CMakeLists.txt
   sed "s,-n \${N_PROC},--njobs ${_n_parallel_build_jobs}," -i CMakeLists.txt
@@ -95,9 +104,6 @@ prepare(){
 
   # ensure any opencascade at /usr isn't used here
   sed 's|CONDA_PREFIX|_opencascade_install_prefix|g' -i pywrap/FindOpenCascade.cmake
-
-  # fix up VTK deps
-  curl --silent https://patch-diff.githubusercontent.com/raw/CadQuery/OCP/pull/141.patch | patch -p1
 
   # disable progress bars
   cd pywrap
