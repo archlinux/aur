@@ -12,7 +12,7 @@ depends=('xonsh' 'python')
 makedepends=('git' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 
 sha256sums=('SKIP')
-provides=("xontrib-z")
+provides=("xontrib-vox")
 
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"

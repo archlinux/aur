@@ -12,7 +12,7 @@ pkgbase = xontrib-vox-git
 	makedepends = python-wheel
 	depends = xonsh
 	depends = python
-	provides = xontrib-z
+	provides = xontrib-vox
 	source = git+https://github.com/xonsh/xontrib-vox
 	sha256sums = SKIP
 
