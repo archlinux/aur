@@ -5,7 +5,7 @@
 
 _pkgname=servo
 pkgname=$_pkgname-latest
-pkgver=r20231113
+pkgver=20240604
 pkgrel=1
 pkgdesc='The embeddable, independent, memory-safe, modular, parallel web rendering engine'
 arch=(x86_64)
