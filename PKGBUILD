@@ -2,7 +2,7 @@
 # Contributor: Ewout van Mansom <ewout@vanmansom.name>
 
 pkgname=amdfand-git
-pkgver=v1.0.12.r15.g2d20203
+pkgver=1.0.12.r15.g2d20203
 pkgrel=1
 pkgdesc="AMDGPU fan speed management tool"
 url="https://github.com/Eraden/amdgpud"
@@ -17,7 +17,7 @@ optdepends=('amdguid-glow' 'amdguid-wayland')
 
 pkgver() {
   cd "${pkgname%-git}"
-  git describe --long --abbrev=7 | sed 's/^foo-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
