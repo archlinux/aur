@@ -1,8 +1,9 @@
-# Maintainer: Rihards Skuja <rhssk at posteo eu>
+# Maintainer: Caleb Marshall <n0tacyb0rg at proton dot me>
+# Contributor: Rihards Skuja <rhssk at posteo eu>
 
 _pkgname=kpeoplevcard
 pkgname=$_pkgname-git
-pkgver=0.1.r124.gb84f309
+pkgver=0.1.r164.g6d9178d
 pkgrel=1
 pkgdesc='Expose VCard contacts to KPeople'
 arch=(x86_64)
