@@ -1,25 +1,25 @@
 # archlinux build for localai git version
 
-build versions:
+build architectures:
 
 - cpu
 - cuda
 - rocm
 
-build integrated backends:
+integrated backends:
 
 - Audio Transcription
   - whisper
 - Files
   - local-store
 - GPT, Embeddings
-  - llama-cpp-avx2
+  - llama-cpp
 
-build python backends:
+python backends:
 
-- Audio / Musik Generation
+- Audio Generation
   - bark
-  - transformers-musicgen
+  - parler-tts
 - Embeddings
   - sentencetransformers
 - GPT, Embeddings
@@ -28,3 +28,5 @@ build python backends:
   - diffusers
 - Information Ranking
   - rerankers
+- Musik Generation
+  - transformers-musicgen
