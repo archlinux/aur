@@ -1,28 +1,13 @@
 # Maintainer: drpebcak <tayworm@gmail.com>
 pkgname='gptscript'
-pkgver="v0.6.0"
+pkgver="v0.7.1"
 pkgrel=1
-pkgdesc="Scripting AI for fun and profit"
+pkgdesc="Natural Language Programming"
 arch=('x86_64')
 url="https://gptscript.ai/"
 license=('Apache')
-makedepends=('git' 'go' 'npm' 'yarn')
-source=("gptscript-$pkgver::git+https://github.com/gptscript-ai/gptscript#tag=$pkgver")
-noextract=()
-md5sums=('SKIP')
+source=("gptscript-$pkgver-linux-amd64.tar.gz::https://github.com/gptscript-ai/gptscript/releases/download/$pkgver/gptscript-$pkgver-linux-amd64.tar.gz")
+
+md5sums=('9617e2697d54e21c7433df8baa711bb3')
 conflicts=('gptscript-git')
 
-build() {
-	cd "gptscript-$pkgver"
-	make all
-}
-
-check() {
-	cd "gptscript-$pkgver"
-	./bin/gptscript -v
-}
-
-package() {
-	cd "gptscript-$pkgver"
-	install -Dm755 bin/gptscript "$pkgdir"/usr/bin/gptscript
-}
