@@ -1,0 +1,5 @@
+[brioche]
+source = "github"
+github = "brioche-dev/brioche"
+prefix = "v"
+use_max_tag = true
