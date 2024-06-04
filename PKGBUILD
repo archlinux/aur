@@ -4,7 +4,7 @@
 pkgname=authy-export-git
 _bin=authy-export
 _gitname=authy
-pkgver=v0.3.2.2.gc4f2
+pkgver=0.3.2.2.gc4f2
 pkgrel=1
 pkgdesc='Export your TOTP secret tokens from Authy.'
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
 
 pkgver() {
     cd "$_gitname"
-    git describe --abbrev=4 --always --tags | sed 's/-/./g'
+    git describe --abbrev=4 --always --tags | sed 's/-/./g' | sed 's/v//'
 }
 
 prepare(){
