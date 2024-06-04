@@ -2,13 +2,13 @@
 
 pkgname=turbo-attack-git
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A turbo traffic generator pentesting tool to generate random traffic with random mac and ip addresses in addition to random sequence numbers to a particular ip and port."
 arch=(aarch64
     riscv64
     x86_64)
 url="https://github.com/mytechnotalent/turbo-attack"
-license=('Apache')
+license=('Apache-2.0')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 #replaces=(${pkgname})
@@ -19,7 +19,7 @@ makedepends=(git
     go)
 checkdepends=()
 backup=()
-options=('!strip')
+options=()
 #install=${pkgname}.install
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
