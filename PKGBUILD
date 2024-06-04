@@ -12,7 +12,7 @@ pkgname=(
  aspnet-targeting-pack-6.0
  dotnet-source-built-artifacts-6.0
 )
-pkgver=6.0.30.sdk130
+pkgver=6.0.31.sdk131
 pkgrel=1
 arch=(x86_64)
 url=https://www.microsoft.com/net/core
@@ -43,14 +43,14 @@ options=(
   !lto
   staticlibs
 )
-_tag=a883df0be948105c30b07338b747301318cdc2bc
+_tag=df83ef13f54ad5b212234482efbfa1068fb337ad
 source=(
   dotnet-installer::git+https://github.com/dotnet/installer.git#tag=${_tag}
   dotnet.sh
   dotnet-core-runtime-disable-package-validation.patch
   dotnet-core-sdk-telemetry-optout.patch
 )
-b2sums=('139c2c7be9ff74686679bf0461f59a83f08a3b25b2d08304c587cbd82101557b514946a9159272e7ad386028169b490a3fb5d7e065c259a0bebb9ea1f326dcee'
+b2sums=('1a53fe6331e4f49570c9a5347af0cf8a31793da58dfc0d07f4a42277333a375ea5bc9f398013c69452c845f6cafdb92eb950a0734c25da56902b36a883c580b4'
         '4a64e3ee550e296bdde894f9202c6f372934cc29154f47d302599b4c368825a96a7b786faa6109a24a1101ff130fd9e4d0ccba094ec91e7f2ca645725bf71b34'
         'b9472b3967c9d7549ee2bbf0180d919748b40b1f9a65b1c3789be40f62ed17a9d37c2020409f7835570620108bd5ec43e728966d075d66bf0b7261cdd36a60c3'
         '95b083b842da6049a084ca015b7ddc099550aa818fc382d556cca832fee52265be568d20a2c50e70819aef6cf879e7a368f7dd3b5966356643b2efdd756e73f4')
