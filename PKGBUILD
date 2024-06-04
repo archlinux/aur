@@ -2,23 +2,23 @@
 
 _pkgname=gdcm
 pkgname=$_pkgname-git
-pkgver=2.6.6.364.g05a664a
+pkgver=3.0.24.r304.gf579a558d
 pkgrel=1
 pkgdesc='Open source implementation of the DICOM standard'
 arch=('i686' 'x86_64')
-url='http://gdcm.sourceforge.net'
-license=('BSD')
+url='https://sourceforge.net/projects/gdcm'
+license=('BSD-3-Clause')
 depends=('poppler')
 optdepends=('java-environment: Java wrapper' 'python: Python wrapper')
 makedepends=('git' 'cmake' 'libxslt' 'dcmtk-git' 'swig' 'python' 'java-environment')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname::git://git.code.sf.net/p/gdcm/gdcm")
+source=("git+https://github.com/malaterre/$_pkgname.git")
 sha256sums=("SKIP")
 
 pkgver() {
   cd $_pkgname
-  git describe --tags | sed 's:^v::;s:-:.:g'
+  git describe --tags | sed 's:^v::;s:-:.r:;s:-:.:'
 }
 
 build() {
