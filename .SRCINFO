@@ -1,6 +1,6 @@
 pkgbase = xinput-toggle
 	pkgdesc = xinput enable/disable toggler
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = http://github.com/cdown/xinput-toggle
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = xinput-toggle
 	provides = yubikey-toggle
 	conflicts = yubikey-toggle
 	replaces = yubikey-toggle
-	source = https://github.com/cdown/xinput-toggle/archive/1.2.0.zip
-	md5sums = eae088a29b226d190ce67c2c6a0cce7f
+	source = https://github.com/cdown/xinput-toggle/archive/1.3.0.zip
+	md5sums = 11b9b0467f6988c8d3cc8830537b38e2
 
 pkgname = xinput-toggle
-
