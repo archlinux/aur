@@ -4,7 +4,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.7.5856.r0.g69c2c53ca7
+pkgver=1.7.5865.r0.g3c15f6e42f
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -25,7 +25,6 @@ depends=(
     ffmpeg
     sdl2
     lld
-    shaderc-non-semantic-debug
     qt6-base
     qt6-svg
     soundtouch
