@@ -1,0 +1,15 @@
+pkgbase = sfl-git
+	pkgdesc = C++11 header-only library. Small and static vector. Small and static flat map/set. Compact vector. Segmented vector
+	pkgver = 1.6.0.r0.g9d76d9e
+	pkgrel = 2
+	url = https://github.com/slavenf/sfl-library
+	arch = any
+	license = Zlib
+	makedepends = git
+	makedepends = cmake
+	provides = sfl
+	conflicts = sfl
+	source = git+https://github.com/slavenf/sfl-library.git
+	sha256sums = SKIP
+
+pkgname = sfl-git
