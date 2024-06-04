@@ -2,7 +2,7 @@
 # Maintainer:  Radu Potop <radu at wooptoo dot com>
 
 pkgname=amber-search-git
-pkgver=v0.6.0.38.gf6e0
+pkgver=0.6.0.58.gc875
 pkgrel=1
 pkgdesc="A code search and replace tool written in Rust. Inspired by ack, ag, and grep."
 arch=('x86_64' 'i686')
@@ -13,16 +13,16 @@ depends=("gcc-libs")
 makedepends=('cargo' 'git')
 conflicts=("amber-search")
 source=("$pkgname::git+$url")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  git describe --abbrev=4 --always --tags | sed 's/-/./g'
+  git describe --abbrev=4 --always --tags | sed 's/-/./g' | sed 's/v//'
 }
 
 build() {
   cd "$srcdir/$pkgname"
-  cargo build --frozen --release
+  cargo build --release
 }
 
 package() {
