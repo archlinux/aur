@@ -10,7 +10,7 @@ url="http://jtniehof.github.com/syslog-notify"
 license=('GPL')
 depends=('libnotify')
 install=${pkgname}.install
-source=(https://github.com/jtniehof/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz
+source=($pkgname-$pkgver.tar.gz::https://github.com/jtniehof/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz
        ${pkgname}.patch)
 md5sums=('1ab07dacff870c3cc3472a4f6e65d2c2'
          '3dc49b913d4ee1a00426fb993770084d')
