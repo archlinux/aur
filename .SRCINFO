@@ -1,7 +1,7 @@
 pkgbase = regripper-git
 	pkgdesc = RegRipper is an open source forensic software used as a Windows Registry data extraction command line or GUI tool.
-	pkgver = r60.5d104c4
-	pkgrel = 2
+	pkgver = r100.cee174f
+	pkgrel = 3
 	url = https://github.com/keydet89/RegRipper3.0
 	arch = any
 	makedepends = git
@@ -9,8 +9,6 @@ pkgbase = regripper-git
 	depends = perl-parse-registry
 	options = !emptydirs
 	source = regripper-git::git+https://github.com/keydet89/RegRipper3.0
-	source = patch.diff
 	sha256sums = SKIP
-	sha256sums = 36a64f4887cd71da9b01956b3c3c4574a3b77164914a660aea44e002a8a79a04
 
 pkgname = regripper-git
