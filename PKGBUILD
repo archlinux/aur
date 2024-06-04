@@ -8,6 +8,7 @@ url="https://github.com/CMDR-WDX/elite-pip-macro"
 license=('MIT')
 depends=('alsa-lib' 'pkgconf' 'libxtst')
 makedepends=('cargo')
+conflicts=('elite-pip-macro')
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/CMDR-WDX/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
 )
