@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Spacedrive
+Icon=spacedrive
+GenericName=File Manager
+Comment=A file manager from the future.
+Exec=spacedrive %U
+MimeType=ionode/directory
+Categories=FileManager;Utility;

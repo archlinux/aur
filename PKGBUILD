@@ -3,7 +3,7 @@
 
 pkgname='spacedrive'
 pkgver=0.2.14
-pkgrel=1
+pkgrel=2
 pkgdesc='Spacedrive is an open source cross-platform file explorer, powered by a virtual distributed filesystem written in Rust.'
 arch=('x86_64')
 url='https://spacedrive.com/'
@@ -11,11 +11,13 @@ license=('AGPL3')
 conflicts=('spacedrive-git')
 source=(
 	"${pkgname}-v${pkgver}.tar.gz::https://github.com/spacedriveapp/spacedrive/archive/refs/tags/${pkgver}.tar.gz"
+	"spacedrive.desktop"
 )
 depends=('ffmpeg' 'libheif' 'gtk3' 'webkit2gtk' 'pango' 'gdk-pixbuf2' 'cairo' 'libsoup' 'glib2')
 makedepends=('cargo' 'pnpm>=9' 'clang' 'git' 'lld')
 sha256sums=(
 	'94e7e1d1debe3a4e180198e4e0041bc2e9c9549185df92a81ebbdaefbecafb87'
+	'a0ba3304b1ab4381653b7daa3fcd9386b5a54d9cf66ab97cb18b883d9b620e93'
 )
 
 prepare() {
@@ -42,4 +44,6 @@ package() {
 
 	install -Dm0755 -t "${pkgdir}/usr/bin/" "apps/desktop/src-tauri/target/release/spacedrive"
 	install -Dm0755 -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE
+	install -Dm0755 -t "${pkgdir}/usr/share/applications/" ../spacedrive.desktop
+	install -Dm0644 apps/desktop/app-icon.png "${pkgdir}/usr/share/icons/spacedrive.png"
 }
