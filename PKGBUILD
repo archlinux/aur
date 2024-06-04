@@ -1,12 +1,12 @@
 # Maintainer: TexturedPolak <rafal200725@gmail.com>
 pkgname=texturedplayer
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple and minimalistic TUI music player written in python."
 arch=('any')
 url="https://github.com/TexturedPolak/texturedplayer"
 license=('MIT')
-depends=('python' 'ffmpeg' 'python-textual')
+depends=('python>=3.8.0-1' 'ffmpeg' 'python-textual')
 optdepends=('python-tinytag: get metadata from songs' 
 	    'python-pypresence: Discord Rich Presence support')
 source=("https://github.com/TexturedPolak/texturedplayer/archive/refs/tags/${pkgver}.tar.gz")

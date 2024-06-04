@@ -1,11 +1,11 @@
 pkgbase = texturedplayer
 	pkgdesc = A simple and minimalistic TUI music player written in python.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TexturedPolak/texturedplayer
 	arch = any
 	license = MIT
-	depends = python
+	depends = python>=3.8.0-1
 	depends = ffmpeg
 	depends = python-textual
 	optdepends = python-tinytag: get metadata from songs
