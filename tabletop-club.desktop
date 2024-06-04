@@ -1,0 +1,8 @@
+[Desktop Entry]
+	Name=Tabletop Club
+	Comment=A virtual tabletop game for playing board games with friends
+	Exec=/usr/bin/tabletop-club
+	Icon=/usr/share/icons/hicolor/256x256/apps/tabletop-club.png
+	Terminal=false
+	Type=Application
+	Categories=Game;

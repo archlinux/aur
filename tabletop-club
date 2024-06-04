@@ -1,0 +1,2 @@
+#!/bin/bash
+exec /usr/share/tabletop-club/TabletopClub.x86_64 --main-pack /usr/share/tabletop-club/TabletopClub.x86_64.pck --base-asset-dir /usr/share/tabletop-club/assets
