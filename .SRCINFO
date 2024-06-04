@@ -1,13 +1,16 @@
 pkgbase = python-func-timeout
 	pkgdesc = Python module which allows you to specify timeouts when calling any existing function. Also provides support for stoppable-threads
-	pkgver = 4.3.5
-	pkgrel = 7
+	pkgver = 4.3.6
+	pkgrel = 1
 	url = https://github.com/kata198/func_timeout
 	arch = any
 	license = LGPL
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
-	source = python-func-timeout-4.3.5.tar.gz::https://github.com/kata198/func_timeout/archive/4.3.5.tar.gz
-	sha512sums = 0711b8bdd2b55e7473fb525e70b0e6596bb11ba074e6110c52e7fdc842d87ef2d57307f02af86eef1b1e7e4c84a9faf25ec450d25addce3ebb93e3d341b566ac
+	source = python-func-timeout-4.3.6.tar.gz::https://github.com/kata198/func_timeout/archive/4.3.6.tar.gz
+	sha512sums = 4f50ab5ee23d5c8ba721dfeee866a38857ea94c12a1032a977fef63bdbf4e63bf0cfdf6912d26358f78834ab81e2bf2b1cd9c487ba1f9141af08bb97538f9db4
 
 pkgname = python-func-timeout
