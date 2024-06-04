@@ -1,0 +1,13 @@
+--- Makefile.std	2024-06-04 18:12:48.311904067 +0200
++++ Makefile.std_fixed	2024-06-04 18:16:51.839374483 +0200
+@@ -36,6 +36,10 @@
+ 
+ include $(VLSI_TOOLS_SRC)/scripts/config
+ 
++ifdef INSTALL_OVERRIDE
++INSTALLDIR=$(INSTALL_OVERRIDE)
++endif
++
+ .SUFFIXES: .os
+ 
+ INSTALLBIN=$(INSTALLDIR)/bin

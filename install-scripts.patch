@@ -1,0 +1,31 @@
+--- install-scripts	2024-06-04 16:44:17.698909468 +0200
++++ install-scriptsfixed	2024-06-04 16:43:34.866749545 +0200
+@@ -27,9 +27,9 @@
+ #
+ #
+ 
+-if [ $# -ne 0 ]
++if [ $# -ne 1 ]
+ then
+-        echo "Usage: `basename $0`"
++        echo "Usage: `basename $0` dest"
+         exit 1
+ fi
+ 
+@@ -37,7 +37,7 @@
+ do
+     sed 's/VLSI_TOOLS_SRC/ACT_HOME/g' < $i > tmpfile
+     src=tmpfile
+-    dest=$ACT_HOME/scripts/$i
++    dest=$1/scripts/$i
+ 
+     if [ -r $src ]
+     then
+@@ -60,5 +60,5 @@
+ 
+ for i in install getarch getos getbaseos move-in move-out mymakedepend linkso findpkg tconfig
+ do
+-    chmod +x $ACT_HOME/scripts/$i
+-done
++    chmod +x $1/scripts/$i
++done

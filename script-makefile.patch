@@ -1,0 +1,4 @@
+6c6
+< 	@$(VLSI_TOOLS_SRC)/scripts/install-scripts
+---
+> 	@$(VLSI_TOOLS_SRC)/scripts/install-scripts $(INSTALLDIR)
