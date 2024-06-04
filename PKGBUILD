@@ -1,7 +1,7 @@
 # Maintainer: LevitatingBusinessMan <me@levitati.ng>
 pkgname=rrd2html
 pkgver=0.0.1
-pkgrel=7
+pkgrel=8
 pkgdesc='A tool for generating html pages from rrd data'
 arch=(any)
 url='https://github.com/LevitatingBusinessMan/rrd2html.rb'
