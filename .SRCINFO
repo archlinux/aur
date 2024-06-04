@@ -1,0 +1,18 @@
+pkgbase = brioche-git
+	pkgdesc = a package manager and build tool for building and running complex software projects
+	pkgver = 0.1.0.r0.g31f0e37
+	pkgrel = 1
+	url = https://brioche.dev
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	provides = brioche=0.1.0.r0.g31f0e37
+	conflicts = brioche-git
+	options = !lto
+	source = git+https://github.com/brioche-dev/brioche.git
+	sha256sums = SKIP
+
+pkgname = brioche-git
