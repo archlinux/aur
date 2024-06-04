@@ -1,0 +1,16 @@
+pkgbase = cosmic-applet-ollama-git
+	pkgdesc = Menu for quickly navigating places in the system on COSMIC DE
+	pkgver = r61.3e43fd3
+	pkgrel = 1
+	url = https://github.com/elevenhsoft/cosmic-applet-ollama
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = cosmic-applets
+	provides = cosmic-applet-ollama
+	conflicts = cosmic-applet-ollama
+	source = git+https://github.com/elevenhsoft/cosmic-applet-ollama
+	sha256sums = SKIP
+
+pkgname = cosmic-applet-ollama-git
