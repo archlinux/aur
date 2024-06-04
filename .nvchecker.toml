@@ -1,0 +1,4 @@
+[nginx-mod-vts]
+source = "git"
+git = "https://github.com/vozlt/nginx-module-vts.git"
+prefix = "v"
