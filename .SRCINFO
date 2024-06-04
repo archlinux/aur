@@ -1,0 +1,13 @@
+pkgbase = hyprscratch
+	pkgdesc = Scratchpad funciontality for Hyprland
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/sasheto-phizika/hyprscratch
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = hyprland
+	source = https://github.com/sasheto-phizika/hyprscratch/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = f4197425decfc60bd1fb3f0a5d31bf4bf0e0b868884117b26be483ac1b1d20bb
+
+pkgname = hyprscratch
