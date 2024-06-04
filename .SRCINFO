@@ -1,7 +1,7 @@
 pkgbase = mfgtools-git
 	pkgdesc = uuu (Universal Update Utility), mfgtools 3.0. Freescale/NXP I.MX Chip image deploy tools.
-	pkgver = 1.5.181.r0.gd362f4a
-	pkgrel = 2
+	pkgver = 1.5.182.r0.gda3cd53
+	pkgrel = 1
 	url = https://github.com/nxp-imx/mfgtools
 	arch = x86_64
 	arch = aarch64
