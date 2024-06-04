@@ -7,6 +7,7 @@ _ENABLE_ROCM=${_ENABLE_ROCM:-1}
 
 # additional backends if set to 1
 _ENABLE_PYTHON=${_ENABLE_PYTHON:-1}
+# piper build is currently broken, disable it
 _ENABLE_PIPER=${_ENABLE_PIPER:-0}
 
 # if GPU_TARGETS and AMDGPU_TARGETS are not set, mirror architecture list from arch:python-pytorch@2.3.0-2
@@ -35,8 +36,7 @@ else
 fi
 
 # enabled backends
-_GRPC_BACKENDS="backend-assets/grpc/llama-cpp-avx2 \
-backend-assets/grpc/whisper \
+_GRPC_BACKENDS="backend-assets/grpc/whisper \
 backend-assets/grpc/local-store \
 $_OPTIONAL_GRPC"
 # disabled backends: backend-assets/util/llama-cpp-rpc-server llama-cpp-grpc llama-ggml gpt4all rwkv tinydream bert-embeddings huggingface stablediffusion
@@ -44,7 +44,7 @@ $_OPTIONAL_GRPC"
 _pkgbase="localai"
 pkgbase="${_pkgbase}-git"
 pkgname=()
-pkgver=2.16.0.74.g6ef78ef7
+pkgver=2.16.0.76.g34ab442c
 pkgrel=2
 pkgdesc="Self-hosted OpenAI API alternative - Open Source, community-driven and local-first."
 url="https://github.com/mudler/LocalAI"
@@ -57,6 +57,7 @@ backup=("etc/${_pkgbase}/${_pkgbase}.conf")
 source=(
   "${_pkgbase}"::"git+https://github.com/mudler/LocalAI"
   "libbackend.patch"
+  "2485-hipblas.patch"
   "README.md"
   "${_pkgbase}.conf"
   "${_pkgbase}.service"
@@ -65,6 +66,7 @@ source=(
 )
 
 sha256sums=(
+  'SKIP'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -181,6 +183,9 @@ EOF
   # modify python backend build library to use --system-site-packages, and dont reinstall torch*
   patch -N -i "${srcdir}/libbackend.patch" -p1
 
+  # modify source from PR2485, adds hipblas llama version
+  patch -N -i "${srcdir}/2485-hipblas.patch" -p1
+
   if [[ $_ENABLE_PIPER = 1 ]]; then
     # fix piper build
     mkdir -p "sources/go-piper/piper-phonemize/pi/lib"
@@ -217,8 +222,21 @@ _build() {
     mkdir -p backend-assets
     cp -a backend/python backend-assets/python
   fi
+  if test "$1" = "cublas"; then
+    _LLAMA_CPP_BACKEND="backend-assets/grpc/llama-cpp-cuda"
+  elif test "$1" = "hipblas"; then
+    _LLAMA_CPP_BACKEND="backend-assets/grpc/llama-cpp-hipblas"
+  else
+    _LLAMA_CPP_BACKEND="backend-assets/grpc/llama-cpp-avx2"
+  fi
+  cat - << EOF
 
-  make -j"$(nproc)" BUILD_TYPE="$1" GRPC_BACKENDS="$_GRPC_BACKENDS" \
+BUILD: $1, GO_TAGS=$_GO_TAGS, OPTIONAL_MAKE_ARGS=$_OPTIONAL_MAKE_ARGS
+LLAMA_BACKEND: $_LLAMA_CPP_BACKEND
+OTHER_GRPC_BACKENDS: $_GRPC_BACKENDS
+
+EOF
+  make -j"$(nproc)" BUILD_TYPE="$1" GRPC_BACKENDS="$_LLAMA_CPP_BACKEND $_GRPC_BACKENDS" \
     GO_TAGS="$_GO_TAGS" $_OPTIONAL_MAKE_ARGS build
 }
 

@@ -1,0 +1,128 @@
+From 317875873ef6b14316c87d011185577172be65bd Mon Sep 17 00:00:00 2001
+From: Ettore Di Giacinto <mudler@localai.io>
+Date: Tue, 4 Jun 2024 13:02:22 +0200
+Subject: [PATCH] feat(amdgpu): try to build in single binary
+
+Signed-off-by: Ettore Di Giacinto <mudler@localai.io>
+---
+ .github/workflows/release.yaml | 10 ++++++++++
+ Makefile                       |  8 ++++++++
+ pkg/model/initializers.go      | 20 ++++++++++++++++++--
+ 3 files changed, 36 insertions(+), 2 deletions(-)
+
+diff --git a/.github/workflows/release.yaml b/.github/workflows/release.yaml
+index 618c81a39af..f9e734c0f5a 100644
+--- a/.github/workflows/release.yaml
++++ b/.github/workflows/release.yaml
+@@ -38,6 +38,15 @@ jobs:
+           sudo apt-get install -y cuda-nvcc-${CUDA_VERSION} libcublas-dev-${CUDA_VERSION}
+         env:
+           CUDA_VERSION: 12-3
++      - name: "Install Hipblas"
++        run: |
++          sudo apt-get update && \
++          sudo apt-get install -y --no-install-recommends \
++              hipblas-dev \
++              rocblas-dev && \
++          sudo apt-get clean && \
++          sudo rm -rf /var/lib/apt/lists/* && \
++          sudo ldconfig 
+       - name: Cache grpc
+         id: cache-grpc
+         uses: actions/cache@v4
+@@ -61,6 +70,7 @@ jobs:
+           go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.34.0
+           export PATH=$PATH:$GOPATH/bin
+           export PATH=/usr/local/cuda/bin:$PATH
++          export PATH=/opt/rocm/bin:$PATH
+           GO_TAGS=p2p make dist
+       - uses: actions/upload-artifact@v4
+         with:
+diff --git a/Makefile b/Makefile
+index f2c03086662..c0abfc2ae80 100644
+--- a/Makefile
++++ b/Makefile
+@@ -327,6 +327,7 @@ ifeq ($(OS),Darwin)
+ 	$(info ${GREEN}I Skip CUDA build on MacOS${RESET})
+ else
+ 	$(MAKE) backend-assets/grpc/llama-cpp-cuda
++	$(MAKE) backend-assets/grpc/llama-cpp-hipblas
+ endif
+ 	$(MAKE) build
+ 	mkdir -p release
+@@ -712,6 +713,13 @@ backend-assets/grpc/llama-cpp-cuda: backend-assets/grpc
+ 	CMAKE_ARGS="$(CMAKE_ARGS) -DLLAMA_AVX=on -DLLAMA_AVX2=off -DLLAMA_AVX512=off -DLLAMA_FMA=off -DLLAMA_F16C=off -DLLAMA_CUDA=ON" $(MAKE) VARIANT="llama-cuda" build-llama-cpp-grpc-server
+ 	cp -rfv backend/cpp/llama-cuda/grpc-server backend-assets/grpc/llama-cpp-cuda
+ 
++backend-assets/grpc/llama-cpp-hipblas: backend-assets/grpc
++	cp -rf backend/cpp/llama backend/cpp/llama-hipblas
++	$(MAKE) -C backend/cpp/llama-hipblas purge
++	$(info ${GREEN}I llama-cpp build info:hipblas${RESET})
++	BUILD_TYPE="hipblas" $(MAKE) VARIANT="llama-hipblas" build-llama-cpp-grpc-server
++	cp -rfv backend/cpp/llama-hipblas/grpc-server backend-assets/grpc/llama-cpp-hipblas
++
+ backend-assets/grpc/llama-cpp-grpc: backend-assets/grpc
+ 	cp -rf backend/cpp/llama backend/cpp/llama-grpc
+ 	$(MAKE) -C backend/cpp/llama-grpc purge
+diff --git a/pkg/model/initializers.go b/pkg/model/initializers.go
+index d013740ce5d..e9001f0a968 100644
+--- a/pkg/model/initializers.go
++++ b/pkg/model/initializers.go
+@@ -37,6 +37,7 @@ const (
+ 	LLamaCPPAVX      = "llama-cpp-avx"
+ 	LLamaCPPFallback = "llama-cpp-fallback"
+ 	LLamaCPPCUDA     = "llama-cpp-cuda"
++	LLamaCPPHipblas  = "llama-cpp-hipblas"
+ 	LLamaCPPGRPC     = "llama-cpp-grpc"
+ 
+ 	Gpt4AllLlamaBackend = "gpt4all-llama"
+@@ -93,7 +94,7 @@ ENTRY:
+ 	if autoDetect {
+ 		// if we find the llama.cpp variants, show them of as a single backend (llama-cpp) as later we are going to pick that up
+ 		// when starting the service
+-		foundLCPPAVX, foundLCPPAVX2, foundLCPPFallback, foundLCPPGRPC, foundLCPPCuda := false, false, false, false, false
++		foundLCPPAVX, foundLCPPAVX2, foundLCPPFallback, foundLCPPGRPC, foundLCPPCuda, foundLCPPHipblas := false, false, false, false, false, false
+ 		if _, ok := backends[LLamaCPP]; !ok {
+ 			for _, e := range entry {
+ 				if strings.Contains(e.Name(), LLamaCPPAVX2) && !foundLCPPAVX2 {
+@@ -116,6 +117,10 @@ ENTRY:
+ 					backends[LLamaCPP] = append(backends[LLamaCPP], LLamaCPPCUDA)
+ 					foundLCPPCuda = true
+ 				}
++				if strings.Contains(e.Name(), LLamaCPPHipblas) && !foundLCPPHipblas {
++					backends[LLamaCPP] = append(backends[LLamaCPP], LLamaCPPHipblas)
++					foundLCPPHipblas = true
++				}
+ 			}
+ 		}
+ 	}
+@@ -169,6 +174,7 @@ ENTRY:
+ // selectGRPCProcess selects the GRPC process to start based on system capabilities
+ func selectGRPCProcess(backend, assetDir string) string {
+ 	foundCUDA := false
++	foundAMDGPU := false
+ 	var grpcProcess string
+ 
+ 	// Select backend now just for llama.cpp
+@@ -195,10 +201,20 @@ func selectGRPCProcess(backend, assetDir string) string {
+ 					log.Info().Msgf("GPU device found but no CUDA backend present")
+ 				}
+ 			}
++			if strings.Contains(gpu.String(), "amd") {
++				p := backendPath(assetDir, LLamaCPPHipblas)
++				if _, err := os.Stat(p); err == nil {
++					log.Info().Msgf("[%s] attempting to load with HIPBLAS variant", backend)
++					grpcProcess = p
++					foundAMDGPU = true
++				} else {
++					log.Info().Msgf("GPU device found but no HIPBLAS backend present")
++				}
++			}
+ 		}
+ 	}
+ 
+-	if foundCUDA {
++	if foundCUDA || foundAMDGPU {
+ 		return grpcProcess
+ 	}
+ 
