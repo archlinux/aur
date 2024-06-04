@@ -1,4 +1,4 @@
-# Maintainer: Caleb Marshall <n0tAcyb0rg@proton.me>
+# Maintainer: Caleb Marshall <n0tAcyb0rg at proton dot me>
 pkgname=kde-tasks-git
 pkgver=r393.6371a6a
 pkgrel=1
