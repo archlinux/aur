@@ -3,7 +3,7 @@
 _pkgname=perl-extutils-makemaker-dist-zilla-develop
 pkgname="${_pkgname}"
 pkgver=0.03
-pkgrel=3
+pkgrel=4
 pkgdesc='create bare-bones Makefile.PL files for use with dzil.'
 arch=(
   'any'
@@ -86,6 +86,6 @@ package() {
     install -D -v -m644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/${_docfile}"
   done
 
-  install -D -v -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.txt"
+  install -D -v -m644 "${srcdir}/${_pkgname}-LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.txt"
 }
 

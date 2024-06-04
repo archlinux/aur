@@ -1,7 +1,7 @@
 pkgbase = perl-extutils-makemaker-dist-zilla-develop
 	pkgdesc = create bare-bones Makefile.PL files for use with dzil.
 	pkgver = 0.03
-	pkgrel = 3
+	pkgrel = 4
 	url = https://metacpan.org/pod/ExtUtils::MakeMaker::Dist::Zilla::Develop
 	arch = any
 	license = LicenseRef-PerlArtistic
