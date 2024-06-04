@@ -1,6 +1,6 @@
 pkgbase = chromium-bypass-paywalls-clean
 	pkgdesc = Chromium extension to bypass paywalls
-	pkgver = 3.7.1.0
+	pkgver = 3.7.1.1
 	pkgrel = 1
 	url = https://github.com/bpc-clone/bpc_updates
 	install = chromium-bypass-paywalls-clean.install
@@ -8,7 +8,7 @@ pkgbase = chromium-bypass-paywalls-clean
 	license = MIT
 	makedepends = curl
 	makedepends = jq
-	source = bypass-paywalls-chrome-clean-3.7.1.0.zip::https://github.com/bpc-clone/bpc_updates/releases/download/latest/bypass-paywalls-chrome-clean-master.zip
-	sha256sums = 1550ebe224703da54850f8e4aecd77cb63ca9e7c94bf4c4c1187275db7c6f18f
+	source = bypass-paywalls-chrome-clean-3.7.1.1.zip::https://github.com/bpc-clone/bpc_updates/releases/download/latest/bypass-paywalls-chrome-clean-master.zip
+	sha256sums = SKIP
 
 pkgname = chromium-bypass-paywalls-clean
