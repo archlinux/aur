@@ -3,10 +3,10 @@
 
 pkgname=mescc-tools
 pkgver=1.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="tools for binary bootstrapping"
 arch=(x86_64)
-license=('GPL')
+license=('GPL-3.0-or-later')
 url="https://github.com/oriansj/mescc-tools"
 makedepends=(git)
 depends=(glibc)
