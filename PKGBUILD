@@ -3,7 +3,7 @@
 # Maintainer: David Hummel <david dot hummel at gmail point com>
 
 pkgname=('mod_tile-git' 'renderd-git')
-pkgver=0.7.0.r61.g1ad4165
+pkgver=0.7.0.r62.g039a30e
 pkgrel=1
 pkgdesc='A daemon and apache module for rendering and serving Mapnik raster tiles'
 arch=('i686' 'x86_64')
@@ -38,10 +38,11 @@ build() {
   export CMAKE_BUILD_PARALLEL_LEVEL=${CMAKE_BUILD_PARALLEL_LEVEL:-$(nproc)}
   cmake -B build -S mod_tile \
     -DCMAKE_BUILD_TYPE:STRING=Release \
-    -DCMAKE_INSTALL_LOCALSTATEDIR=/var \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_RUNSTATEDIR=/run \
-    -DCMAKE_INSTALL_SYSCONFDIR=/etc \
+    -DCMAKE_CXX_STANDARD:STRING=17 \
+    -DCMAKE_INSTALL_LOCALSTATEDIR:PATH=/var \
+    -DCMAKE_INSTALL_PREFIX:PATH=/usr \
+    -DCMAKE_INSTALL_RUNSTATEDIR:PATH=/run \
+    -DCMAKE_INSTALL_SYSCONFDIR:PATH=/etc \
     -DENABLE_TESTS:BOOL=ON
   cmake --build build
 }
