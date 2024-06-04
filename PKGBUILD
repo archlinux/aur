@@ -1,6 +1,6 @@
 pkgname=doom2
 _pkgname=Doom2
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Doom II first person shooter powered by GZDoom."
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ license=('GPL')
 depends=('gzdoom-bin' 'wget' 'unzip' 'yad')
 makedepends=('unzip')
 source=("https://gitlab.com/linuxbombay/doom2/-/archive/$pkgver/$pkgname-$pkgver.tar.bz2")
-sha256sums=('7e9908dce1525c04e6ec5b958f071294fc7c69f12498b291b44a1206acc2451e')
+sha256sums=('1bb23a4d7884e59ace5bdfea77cdd5eba6076b0bcfe0f162ed3be3366a02b5c8')
 
 package() {
     install -dm755 "$pkgdir/usr/bin"
