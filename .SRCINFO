@@ -1,0 +1,17 @@
+pkgbase = poke-monitor-git
+	pkgdesc = Poke connected DP and HDMI displays after suspend
+	pkgver = r5.e7ec1cd
+	pkgrel = 1
+	url = https://github.com/pyamsoft/poke-monitor.git
+	arch = any
+	license = GPLv2
+	makedepends = git
+	depends = xorg-xrandr
+	optdepends = xorg-server: For use under X11
+	optdepends = xorg-xwayland: For use under Xwayland
+	provides = poke-monitor
+	conflicts = poke-monitor
+	source = poke-monitor::git+https://github.com/pyamsoft/poke-monitor.git#branch=main
+	sha256sums = SKIP
+
+pkgname = poke-monitor-git
