@@ -7,8 +7,8 @@
 # Contributor: hexchain <i@hexchain.org>
 
 pkgname=telegram-desktop-altscroll
-pkgver=5.0.1
-pkgrel=1
+pkgver=5.1.1
+pkgrel=2
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
 pkgdesc='Modified Telegram Desktop client, changes: alternative scroll mechanism in media view.'
@@ -27,7 +27,7 @@ optdepends=('webkit2gtk: embedded browser features'
             'xdg-desktop-portal: desktop integration')
 source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
         "mediaview-altscroll.patch") # https://github.com/telegramdesktop/tdesktop/pull/27245
-sha512sums=('45b7833f20f01d78c09163e205af7d68afffcfc88075ba6af35dc6cbbce1f0205c0150b137ca09e6bdaf271240e4d1336411ad427bc27a2b2ad42dc435ee0ec2'
+sha512sums=('4d33dc4e18651e17449c20f82b29dc1268b77f661d0791f33c45d5b5d00af73dca66b0849ef9711f40648132a265db5eec5f2c2aaca87aeae5df3e48d9c09f69'
             '38ff8627090ac9766a8d409fa26cbd4381640e08abcb677f4524a5305d011aa0f6ce81d69313a01f0db5c1a3794805bff2a059095258f5e8d9bd1133550cca2e')
 
 prepare() {
