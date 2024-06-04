@@ -4,7 +4,7 @@
 _pkgname="sublime-music"
 pkgname="$_pkgname-git"
 pkgver=0.12.0.r17.g0b4ba69
-pkgrel=1
+pkgrel=2
 pkgdesc='A Subsonic/Airsonic/*sonic client'
 url="https://github.com/sublime-music/sublime-music"
 license=('GPL-3.0-or-later')
@@ -24,9 +24,6 @@ makedepends=(
 optdepends=(
   'libnotify: for system song notification support'
   'python-keyring: support for storing passwords in the system keyring'
-
-  ## AUR
-  'python-pychromecast: support for casting to Chromecast devices'
 )
 
 provides=("$_pkgname")
@@ -65,6 +62,7 @@ package() {
 
     ## AUR
     'python-dataclasses-json'
+    'python-pychromecast'
     'python-thefuzz'
   )
 
