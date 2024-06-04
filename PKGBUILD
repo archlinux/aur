@@ -1,11 +1,11 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 pkgname=swbis
 pkgver=1.13.3
-pkgrel=2
+pkgrel=3
 pkgdesc="software packaging -- again"
 arch=(i686 x86_64)
 url='https://www.gnu.org/software/swbis/'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=(bash gawk gcc-libs glibc)
 optdepends=(inetutils)
 source=(https://ftp.gnu.org/gnu/swbis/$pkgname-$pkgver.tar.gz automake.patch)

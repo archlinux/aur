@@ -1,11 +1,11 @@
 pkgbase = swbis
 	pkgdesc = software packaging -- again
 	pkgver = 1.13.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gnu.org/software/swbis/
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	depends = bash
 	depends = gawk
 	depends = gcc-libs
