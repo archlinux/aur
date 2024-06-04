@@ -1,0 +1,19 @@
+pkgbase = ht-term
+	pkgdesc = headless terminal: wrap any binary with a terminal interface
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/andyk/ht
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	provides = ht
+	conflicts = ht
+	source = ht-0.1.1.tar.gz::https://github.com/andyk/ht/archive/v0.1.1.tar.gz
+	sha512sums = a9aff464a57f8e1fde58403c813213c9af6acccbfb452fecbc9319d1ad9ce50f1cae6d9118eab7aeb5efc0d6983582bc851ed99fef020886db3f0ad77ca93325
+
+pkgname = ht-term
