@@ -1,14 +1,14 @@
 pkgname=python-cadquery
 local _build_hash=c44978d60cee2d61bdadf4cb4498286b7034b4c6
 pkgver=2.4.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A parametric CAD scripting framework based on PythonOCC"
 arch=(x86_64)
 url="https://github.com/CadQuery/cadquery"
 license=('Apache')
 conflicts=(python-cadquery-git)
 depends=(
-'python-ocp=7.7.2.1'
+'python-ocp>=7.7.2'
 python-ezdxf
 nlopt
 python-typish
