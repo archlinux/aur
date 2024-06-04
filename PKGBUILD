@@ -12,24 +12,26 @@ arch=(x86_64)
 url=https://servo.org
 license=(MPL-2.0)
 
-provides=(servo)
-conflicts=(servo)
+_url=https://github.com/servo/servo-nightly-builds/releases/latest
+provides=($_pkgname)
+conflicts=($_pkgname)
 depends=(gst-plugins-bad libunwind)
 source=(
-    https://download.servo.org/nightly/linux/servo-latest.tar.gz
-    https://download.servo.org/nightly/linux/servo-latest.tar.gz.sha256
+    $_pkgname-$pkgver.tar.gz::$_url/download/$pkgname.tar.gz
+    $_pkgname-$pkgver.tar.gz.sha256::$_url/download/$pkgname.tar.gz.sha256
     https://raw.githubusercontent.com/servo/servo/main/LICENSE
     Servo.desktop
 )
 sha256sums=(
+    SKIP
+    SKIP
+    1af2d2b02d9c86030d29ed77117ca7a1b0e4b6ff35bcf8eeb124867d0f5cb59e
+    7a6cd816c35b9b42a27d83efbe72b3ac6bc79f2044153410fa434d7625f442ad
 )
 
 pkgver(){
-    time=$(curl -s -v -X HEAD
-        https://download.servo.org/nightly/linux/servo-latest.tar.gz 2>&1 \
-        | grep '^< Last-Modified:' \
-        | sed -n -e 's/^< Last-Modified: //p')
-    date --date="$time" +r%Y%m%d
+    curl -sLI -o /dev/null -w %{url_effective} $_url | rev | cut -d/ -f1 | \
+        rev | tr -d -
 }
 
 package() {
