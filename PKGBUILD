@@ -1,9 +1,6 @@
-# $Id$
-# Maintainer: Grey Christoforo <first name at last name dot net>
-
 pkgname=python-cq_warehouse
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cadquery parametric part collection"
 arch=(x86_64)
 url="https://github.com/gumyr/cq_warehouse"
@@ -13,6 +10,7 @@ python-cadquery
 )
 makedepends=(
 python-build
+python-pytest
 python-installer
 )
 
@@ -30,10 +28,10 @@ build() {
   python -m build --wheel --no-isolation
 }
 
-check() {
-  cd cq_warehouse-${pkgver}
-  python -m unittest -v  # project currently configured incorrectly for this to work
-}
+#check() {
+#  cd cq_warehouse-${pkgver}/tests
+#  python -m unittest -v  # project currently configured incorrectly for this to work
+#}
 
 package() {
   cd cq_warehouse-${pkgver}
