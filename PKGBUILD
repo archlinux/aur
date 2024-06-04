@@ -6,7 +6,7 @@
 pkgbase=webstorm-eap
 pkgname=(webstorm-eap webstorm-eap-jre)
 _pkgname=WebStorm
-pkgver=242.12881.51
+pkgver=242.14146.21
 _pkgver=2024.2
 pkgrel=1
 pkgdesc="JavaScript IDE and HTML editor. Early Access Program."
@@ -19,7 +19,7 @@ source=(https://download.jetbrains.com/webstorm/${_pkgname}-${pkgver}.tar.gz
         jetbrains-webstorm-eap.desktop
         ${_pkgname}_license.txt)
 
-sha256sums=('5581239b9fe567efc4349982e9339de784af69108e73629959c4db6a2b56779a'
+sha256sums=('81dcb71a9078fae299a7a7d3f0e4e1c4aa8d4c9497844213208f74c06bb8a3dc'
             'd66b0401d6132ff24bd422a824436dd8f33b47619149659f8567980d71c6e34f'
             '8464fc766dbb4f6a0de4acd84007fc2916b50ca48ce7d22654144f549c8c6f4c')
 
