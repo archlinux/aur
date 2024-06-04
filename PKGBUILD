@@ -3,7 +3,7 @@
 # Contributor: William Brown <glowinthedarkcia at horsefucker dot org>
 
 pkgname=ftb-app-bin
-pkgver=1.25.10
+pkgver=1.25.11
 pkgrel=1
 epoch=
 pkgdesc="A new Modpack launcher for FTB and Curse modpacks."
@@ -26,8 +26,8 @@ changelog=
 source_x86_64=("https://piston.feed-the-beast.com/app/ftb-app-${pkgver}-amd64.deb")
 source_aarch64=("https://piston.feed-the-beast.com/app/ftb-app-${pkgver}-arm64.deb")
 noextract=()
-sha256sums_x86_64=(57de7431da38d2126932cdac77d91b8a1547086af0b148019ce6719c773a3ff9)
-sha256sums_aarch64=(c4e2ef55947f53360cf409f51688de9e670a5e1120ce1f2b431e793741b74bb0)
+sha256sums_x86_64=(54c7e0e5be6bb4fa08c4e4a8742976d35afbb4881407b24f8af9d5b98b4bff92)
+sha256sums_aarch64=(8589cd3d90d7496dba097bed5c1ccffd49a139542e35d6a0718acf9c25129ad5)
 validpgpkeys=()
 
 package() {
@@ -36,6 +36,9 @@ package() {
   # move "/opt/FTB Electron App" to /opt/ftb-app
   mv "$pkgdir/opt/FTB Electron App" "$pkgdir/opt/ftb-app"
   sed -i 's#/opt/FTB Electron App/ftb-app#/opt/ftb-app/ftb-app#' "$pkgdir/usr/share/applications/ftb-app.desktop"
+
+  # prevent self-upgrade with dpkg
+  rm "$pkgdir/opt/ftb-app/resources/package-type"
 
   install -d "$pkgdir/usr/bin"
   ln -s /opt/ftb-app/ftb-app "$pkgdir/usr/bin/ftb-app"
