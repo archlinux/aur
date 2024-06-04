@@ -73,6 +73,7 @@ build() {
 		--disable-pylint --without-jslint \
 		--with-ipaplatform=arch
 
+	rm -rf ../install
 	mkdir -p ../install
 	make install DESTDIR="$PWD"/../install
 
