@@ -1,6 +1,6 @@
 pkgbase = iamroot-aarch64
 	pkgdesc = Emulating the syscall chroot(2) in an unpriviliged process (aarch64)
-	pkgver = 21
+	pkgver = 22
 	pkgrel = 1
 	url = https://github.com/gportay/iamroot
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = iamroot-aarch64
 	makedepends = patchelf
 	makedepends = asciidoctor
 	options = !strip
-	source = https://github.com/gportay/iamroot/archive/v21.tar.gz
+	source = https://github.com/gportay/iamroot/archive/v22.tar.gz
 	validpgpkeys = 8F3491E60E62695ED780AC672FA122CA0501CA71
-	sha256sums = 3bbdc8b53a4e1e0a88d2aa281fd85bd4e3653c7634060d6b7442c932dae03b07
+	sha256sums = 09e7f9c52007090aceb53831103aba9d3ee72df3b41ce9c0ddb76f573a446e8c
 
 pkgname = iamroot-aarch64
