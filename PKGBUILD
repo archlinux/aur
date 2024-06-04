@@ -19,6 +19,9 @@ prepare() {
 
   # install doc in /usr/share
   sed -i "s|DESTINATION doc)|DESTINATION share/doc/fmilib)|g" CMakeLists.txt
+
+  # miniunz.c:141:11: error: implicit declaration of function mkdir
+  sed -i "50i#include <sys/stat.h>" ThirdParty/Minizip/minizip/miniunz.c
 }
 
 build() {
