@@ -1,0 +1,12 @@
+--- A/src/ptrList.h	2021-01-07 16:11:34.103415912 +0100
++++ B/src/ptrList.h	2024-06-04 09:58:03.683274457 +0200
+@@ -40,3 +40,3 @@
+ 
+-        ptrListItem<T>& operator= ( const ptrListItem<T>& item );
++        ptrListItem<T>& operator= ( ptrListItem<T>& item );
+ 
+@@ -202,3 +202,3 @@
+ 
+-template < class T > ptrListItem<T>& ptrListItem<T>::operator= ( const ptrListItem<T>& item )
++template < class T > ptrListItem<T>& ptrListItem<T>::operator= ( ptrListItem<T>& item )
+ {

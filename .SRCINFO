@@ -10,7 +10,8 @@ pkgbase = libsnl-svn
 	provides = libsnl
 	conflicts = libsnl
 	source = libsnl::svn+https://svn.code.sf.net/p/libsnl/code/trunk
+	source = libsnl-svn-18.patch
 	md5sums = SKIP
+	md5sums = b9dbd85df3a33ef06595757dadccd555
 
 pkgname = libsnl-svn
-

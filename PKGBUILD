@@ -14,8 +14,12 @@ conflicts=('libsnl')
 depends=()
 makedepends=('subversion')
 
-source=("$_svnname::svn+https://svn.code.sf.net/p/$_svnname/code/trunk")
-md5sums=('SKIP')
+source=(
+    "$_svnname::svn+https://svn.code.sf.net/p/$_svnname/code/trunk"
+    "${pkgname}-${pkgver}.patch"
+)
+md5sums=('SKIP'
+         'b9dbd85df3a33ef06595757dadccd555')
 
 pkgver() 
 {
@@ -30,6 +34,7 @@ prepare()
     oldflags="export cflags = -Wall -fPIC -g"
     newflags="export cflags = -Wall -fPIC -O2 -g"
     sed -i -e "s/$oldflags/$newflags/g" ./makefile
+    patch -p2 -i "${srcdir}/${pkgname}-${pkgver}.patch" 
 }
 
 build() 
