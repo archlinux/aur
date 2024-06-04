@@ -4,7 +4,7 @@ pkgdesc="Minecraft launcher powered by Rust"
 url="https://github.com/Umatriz/nomi"
 license=("GPL-3.0-or-later")
 
-pkgver=0.1.2
+pkgver=0.1.2.1
 pkgrel=1
 
 arch=("x86_64")
@@ -13,9 +13,9 @@ depends=("glibc" "gcc-libs" "bzip2")
 makedepends=("cargo")
 
 source=(
-    "$pkgname-$pkgver.tar.gz::https://github.com/Umatriz/nomi/archive/refs/tags/v0.1.2-fixed.tar.gz"
+    "$pkgname-$pkgver.tar.gz::https://github.com/Umatriz/nomi/archive/refs/tags/0.1.2-pre1.tar.gz"
 )
-sha256sums=('bff133ec08a7909476cfdda166c5a0e0761039c9fb064678dfb7ad58d33e8ac9')
+sha256sums=('73c44aa1744884bccde86bf347db97b75f83024f6cd20d0a572f49414d901066')
 
 prepare() {
     cd $(find $srcdir/* -maxdepth 0 -type d)
