@@ -2,7 +2,7 @@
 pkgname=bitwave-bin
 _pkgname=bitwave
 pkgver=v1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple media player based on Qt and MPV."
 arch=('x86_64')
 url="https://github.com/Reverier-Xu/BitWave"
