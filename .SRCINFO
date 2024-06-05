@@ -1,6 +1,6 @@
 pkgbase = nvidia-535xx-settings
 	pkgdesc = Tool for configuring the NVIDIA graphics driver, 535 branch
-	pkgver = 535.179
+	pkgver = 535.183.01
 	pkgrel = 1
 	url = https://github.com/NVIDIA/nvidia-settings
 	arch = x86_64
@@ -10,12 +10,12 @@ pkgbase = nvidia-535xx-settings
 	makedepends = gtk3
 	makedepends = libxv
 	makedepends = libvdpau
-	makedepends = nvidia-utils=535.179
+	makedepends = nvidia-utils=535.183.01
 	makedepends = libxext
 	options = staticlibs
-	source = nvidia-settings-535.179.tar.gz::https://github.com/NVIDIA/nvidia-settings/archive/535.179.tar.gz
+	source = nvidia-settings-535.183.01.tar.gz::https://github.com/NVIDIA/nvidia-settings/archive/535.183.01.tar.gz
 	source = nvidia-settings-libxnvctrl_so.patch
-	sha512sums = c18863a02bde1960ebd1b2238ead466782e9dd1d3cc3b3e88ae24923b2a457b465f09b48b1e885043b0cba61643e5f06a4bbf7275b79d5ccc8e70c10aed447d0
+	sha512sums = 87f4a9ca936f0d0c553ee4cfc8569b9033816cd2afc33155b7a09274bfd52793d307be2cb64b224447d152c2f9bc34aac991ed0b8c5e5df6226fbcc197f7dcf6
 	sha512sums = 0303fe615d6ef4e14112998c531a17613b94776f9a6a027ddb81e400fddd5f2ff15583da8b8631c2306aca854edf2f54a8007eb36f1732b4c064c857aaf268ae
 
 pkgname = nvidia-535xx-settings
@@ -23,14 +23,14 @@ pkgname = nvidia-535xx-settings
 	depends = gtk3
 	depends = libxv
 	depends = libvdpau
-	depends = nvidia-utils=535.179
-	depends = libxnvctrl=535.179
-	provides = nvidia-settings=535.179
+	depends = nvidia-utils=535.183.01
+	depends = libxnvctrl=535.183.01
+	provides = nvidia-settings=535.183.01
 	conflicts = nvidia-settings
 
 pkgname = libxnvctrl-535xx
 	pkgdesc = NVIDIA NV-CONTROL X extension
 	depends = libxext
-	provides = libxnvctrl=535.179
+	provides = libxnvctrl=535.183.01
 	provides = libXNVCtrl.so
 	conflicts = libxnvctrl

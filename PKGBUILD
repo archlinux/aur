@@ -3,7 +3,7 @@
 _pkgmainbranch=nvidia-settings
 pkgbase=nvidia-535xx-settings
 pkgname=('nvidia-535xx-settings' 'libxnvctrl-535xx')
-pkgver=535.179
+pkgver=535.183.01
 pkgrel=1
 pkgdesc='Tool for configuring the NVIDIA graphics driver, 535 branch'
 url='https://github.com/NVIDIA/nvidia-settings'
@@ -13,7 +13,7 @@ makedepends=('inetutils' 'jansson' 'gtk3' 'libxv' 'libvdpau' "nvidia-utils=${pkg
 options=('staticlibs')
 source=(${_pkgmainbranch}-${pkgver}.tar.gz::https://github.com/NVIDIA/nvidia-settings/archive/${pkgver}.tar.gz
         nvidia-settings-libxnvctrl_so.patch)
-sha512sums=('c18863a02bde1960ebd1b2238ead466782e9dd1d3cc3b3e88ae24923b2a457b465f09b48b1e885043b0cba61643e5f06a4bbf7275b79d5ccc8e70c10aed447d0'
+sha512sums=('87f4a9ca936f0d0c553ee4cfc8569b9033816cd2afc33155b7a09274bfd52793d307be2cb64b224447d152c2f9bc34aac991ed0b8c5e5df6226fbcc197f7dcf6'
             '0303fe615d6ef4e14112998c531a17613b94776f9a6a027ddb81e400fddd5f2ff15583da8b8631c2306aca854edf2f54a8007eb36f1732b4c064c857aaf268ae')
 
 prepare() {
