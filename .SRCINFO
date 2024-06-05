@@ -1,0 +1,14 @@
+pkgbase = browser-open-in
+	pkgdesc = Native components needed by open-in browser extensions
+	pkgver = 0.9.5
+	pkgrel = 1
+	url = https://add0n.com/open-in.html
+	arch = any
+	license = MPL-2.0
+	depends = nodejs
+	source = https://github.com/andy-portmen/native-client/releases/download/0.9.5/linux.zip
+	source = install_module.patch
+	b2sums = 8d238ab47bef51ef1d7b2ca56bafa66b670ff4f9d46dcd5c8a4a361d5f8adcf909be0c75980692a59831a289ee9437c0dd022d5f09f7784015c27ec9101f4244
+	b2sums = 2cd3a68a2f886cafe1349a086e47ff0753632bf26513e7c01a12ce8b7ce56c16714bf898e388d19fadeac3735631fbdc1af798e92474645778fc175f60a80416
+
+pkgname = browser-open-in
