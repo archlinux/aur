@@ -12,7 +12,7 @@ depends=("gnupg")
 optdepends=('xclip: Clipoard functionality')
 conflicts=('kipr')
 provides=('kipr')
-sha256sums=('7dce3d95d9bd1f7b3f99abc5afc15de2c46c4f81972c90c907d702bae50ffd25')
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "kipr-git"

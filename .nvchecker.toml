@@ -1,0 +1,4 @@
+[kipr-git]
+source = "git"
+git = "https://github.com/grahamking/kipr.git"
+prefix = "v"
