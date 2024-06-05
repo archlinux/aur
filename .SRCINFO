@@ -1,7 +1,7 @@
 pkgbase = cosmic-ext-applet-ollama-git
 	pkgdesc = Ollama applet for COSMIC Desktop
 	pkgver = r73.19dacd0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/elevenhsoft/cosmic-ext-applet-ollama
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -9,6 +9,7 @@ pkgbase = cosmic-ext-applet-ollama-git
 	makedepends = git
 	depends = cosmic-applets
 	provides = cosmic-ext-applet-ollama
+	provides = cosmic-applet-ollama
 	conflicts = cosmic-ext-applet-ollama
 	source = git+https://github.com/elevenhsoft/cosmic-ext-applet-ollama
 	sha256sums = SKIP
