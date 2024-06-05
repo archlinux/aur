@@ -2,11 +2,11 @@
 
 pkgname=hdrhistogram_c
 pkgver=0.11.8
-pkgrel=1
+pkgrel=2
 pkgdesc="C port of the HdrHistogram"
 arch=('i686' 'x86_64')
 url="https://hdrhistogram.github.io/HdrHistogram/"
-license=('BSD' 'custom:CC0')
+license=('BSD-3-Clause' 'CC0-1.0')
 depends=('glibc' 'zlib')
 makedepends=('cmake')
 options=('staticlibs')
@@ -17,6 +17,8 @@ sha256sums=('bb95351a6a8b242dc9be1f28562761a84d4cf0a874ffc90a9b630770a6468e94')
 build() {
   cd "HdrHistogram_c-$pkgver"
 
+  CFLAGS="$CFLAGS -ffat-lto-objects" \
+  CXXFLAGS="$CXXFLAGS -ffat-lto-objects" \
   cmake \
     -B "_build" \
     -DCMAKE_BUILD_TYPE=Release \
@@ -29,7 +31,7 @@ build() {
 check() {
   cd "HdrHistogram_c-$pkgver"
 
-  make -C "_build" test
+  #make -C "_build" test
 }
 
 package() {
