@@ -2,13 +2,12 @@
 
 pkgname=act-sky130-git
 pkgver=0.0.1.r24.7f4e878
-pkgrel=1
+pkgrel=2
 pkgdesc="ACT configurations for the Skywater 130nm technology."
 arch=('x86_64')
 url="https://github.com/asyncvlsi/sky130l"
 license=('Apache-2.0')
 depends=('act-core')
-optdepends=('act-core-git')
 makedepends=('git' 'patch' 'make')
 conflicts=('act-sky130' 'act-sky130l')
 provides=('act-sky130' 'act-sky130l')
