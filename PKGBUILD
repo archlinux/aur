@@ -18,8 +18,7 @@ makedepends=(
     'nvm'
     'npm'
     'yarn'
-    'git'
-    'base-devel'
+    'curl'
     'gcc'
 )
 options=(
