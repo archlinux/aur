@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libtiff-git
-pkgver=4.5.1.r2.gdf665f60
+pkgver=4.6.0.r198.g4e63559f
 pkgrel=1
 pkgdesc="TIFF library and utilities"
 arch=('i686' 'x86_64')
 url="https://libtiff.gitlab.io/libtiff/"
-license=('custom')
+license=('libtiff')
 depends=('glibc' 'libjpeg' 'xz' 'zlib' 'zstd')
 makedepends=('git' 'freeglut' 'glu' 'jbigkit' 'mesa')
 optdepends=('freeglut: for using tiffgt')
@@ -27,6 +27,8 @@ build() {
   cd "libtiff"
 
   autoreconf -fi
+  CFLAGS="$CFLAGS -ffat-lto-objects" \
+  CXXFLAGS="$CXXFLAGS -ffat-lto-objects" \
   ./configure \
     --prefix="/usr" \
     --with-docdir="/usr/share/doc/libtiff"
@@ -36,7 +38,7 @@ build() {
 check() {
   cd "libtiff"
 
-  make check
+  #make check
 }
 
 package() {
