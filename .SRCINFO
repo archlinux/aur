@@ -1,15 +1,14 @@
 pkgbase = pmount-safe-removal
 	pkgdesc = mount removable devices as normal user, with safe removal of device
 	pkgver = 0.9.23
-	pkgrel = 8
+	pkgrel = 9
 	url = https://packages.qa.debian.org/p/pmount.html
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = intltool
-	depends = sysfsutils>=2.0.0-1
-	depends = bash
-	depends = util-linux
+	depends = glibc
+	depends = util-linux-libs
 	provides = pmount=0.9.23
 	conflicts = pmount
 	backup = etc/pmount.allow

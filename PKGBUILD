@@ -5,13 +5,13 @@
 _pkgname=pmount
 pkgname=$_pkgname-safe-removal
 pkgver=0.9.23
-pkgrel=8
+pkgrel=9
 pkgdesc="mount removable devices as normal user, with safe removal of device"
 arch=(i686 x86_64)
 license=('GPL2')
 url="https://packages.qa.debian.org/p/pmount.html"
 backup=('etc/pmount.allow')
-depends=('sysfsutils>=2.0.0-1' 'bash' 'util-linux')
+depends=('glibc' 'util-linux-libs')
 makedepends=('intltool')
 provides=('pmount=0.9.23')
 conflicts=('pmount')
