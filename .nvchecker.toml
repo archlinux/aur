@@ -1,0 +1,4 @@
+[livi]
+source = "git"
+git = "https://gitlab.gnome.org/guidog/livi.git"
+prefix = "v"
