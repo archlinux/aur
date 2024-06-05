@@ -1,38 +1,46 @@
 # Maintainer: Stefan Biereigel <stefan@biereigel.de>
 
-pkgname=fparser-git
+_pkgname="fparser"
+pkgname="$_pkgname-git"
 pkgver=r12.a952179
-pkgrel=1
+pkgrel=2
 pkgdesc="Function Parser for C++, Fork from http://warp.povusers.org/FunctionParser/"
 url="https://github.com/thliebig/fparser"
 arch=('i686' 'x86_64')
-license=('LGPL3')
+license=('LGPL-3.0-only')
+
+makedepends=(
+  'cmake'
+  'git'
+  'ninja'
+)
+
 provides=('fparser')
 conflicts=('fparser')
-makedepends=('cmake')
 
-source=(git+https://github.com/thliebig/fparser 'fix-libdir.patch')
-md5sums=('SKIP' 'SKIP')
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+https://github.com/thliebig/fparser.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/fparser"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd fparser
-  patch -Np1 -i ../fix-libdir.patch
+  cd "$_pkgsrc"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
-  cd "$srcdir/fparser" 
-  mkdir -p build
-  cd build
-  cmake -DCMAKE_INSTALL_PREFIX=${pkgdir} ../
-  make
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -Wno-dev
+  )
+
+  cmake "${_cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
-  cd "$srcdir/fparser/build"
-  make install
+  DESTDIR="$pkgdir" cmake --install build
 }

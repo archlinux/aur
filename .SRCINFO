@@ -1,17 +1,17 @@
 pkgbase = fparser-git
 	pkgdesc = Function Parser for C++, Fork from http://warp.povusers.org/FunctionParser/
 	pkgver = r12.a952179
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/thliebig/fparser
 	arch = i686
 	arch = x86_64
-	license = LGPL3
+	license = LGPL-3.0-only
 	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
 	provides = fparser
 	conflicts = fparser
-	source = git+https://github.com/thliebig/fparser
-	source = fix-libdir.patch
-	md5sums = SKIP
-	md5sums = SKIP
+	source = fparser::git+https://github.com/thliebig/fparser.git
+	sha256sums = SKIP
 
 pkgname = fparser-git
