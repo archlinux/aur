@@ -2,8 +2,9 @@
 
 pkgname=fantascene-gitee
 srcname=fantascene-gitee
-pkgver=1.7.8
-pkgrel=15
+proname=fantascene-dynamic-wallpaper
+pkgver=1.7.8.r0.gb4293b0
+pkgrel=1
 pkgdesc=" dynamic wallpaper. A very nice animated wallpaper on X11 systems.Support Movie and Web animated wallpaper."
 arch=(x86_64
     aarch64
@@ -34,7 +35,7 @@ prepare()
 
 build() {
     cd "${srcdir}/${pkgname%-git}"
-    qmake ./${pkgname%-git}.pro -spec linux-g++ CONFIG+=qtquickcompiler -o build/
+    qmake ./*.pro -spec linux-g++ CONFIG+=qtquickcompiler -o build/
     make -C ./build
 }
 
