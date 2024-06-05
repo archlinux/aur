@@ -1,3 +1,16 @@
+diff --git a/fclogger/test/logit.c b/fclogger/test/logit.c
+index e594afb..303f731 100644
+--- a/fclogger/test/logit.c
++++ b/fclogger/test/logit.c
+@@ -79,7 +79,7 @@ int nrbytes;
+ 
+ printf("%s: starting\n",fn);
+ 
+-initialize(argc, argv);
++int initialize(int argc, char **argv);
+ 
+ for(i=0; i<10; i++)
+ 	{
 diff --git a/include/simplLibProto.h b/include/simplLibProto.h
 index 4b8e271..dae49be 100644
 --- a/include/simplLibProto.h

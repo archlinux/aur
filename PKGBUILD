@@ -1,7 +1,7 @@
 # Maintainer: muttleyxd <mateusz [at] szychowski.it>
 pkgname=simpl
 pkgver=3.3.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Synchronous Interprocess Messaging Project for LINUX (SIMPL)"
 arch=('x86_64')
 url="https://sourceforge.net/projects/simpl"
@@ -12,7 +12,7 @@ conflicts=('simpl')
 source=("https://master.dl.sourceforge.net/project/simpl/simpl/simpl%20v$pkgver/simpl-$pkgver.tar.gz"
         "0001-compilation-fix.patch")
 sha256sums=('fd89141eea08821ea68f21fc6b66328547b73f332ac0239bda61b9b9c922dac1'
-            'c375a47114b92297208c689887d7cf5914f1bea8014f745f43ad100997b53ea6')
+            'ed64d0b2e23119aada8b6d86e65654a393fa5ffa62cf24c4690f6e6a2cb5ab6a')
 
 prepare()
 {

@@ -1,7 +1,7 @@
 pkgbase = simpl
 	pkgdesc = Synchronous Interprocess Messaging Project for LINUX (SIMPL)
 	pkgver = 3.3.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/simpl
 	arch = x86_64
 	license = LGPL2
