@@ -1,8 +1,8 @@
 pkgbase = cosmic-applet-apps-menu-git
 	pkgdesc = Category based menu for apps on COSMIC DE
-	pkgver = 0.1.5.r1.gcf224db
+	pkgver = 0.1.6.r8.g2e220d6
 	pkgrel = 1
-	url = https://github.com/leb-kuchen/cosmic-applet-apps-menu
+	url = https://github.com/leb-kuchen/apps-menu-applet-for-cosmic_tm
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = cargo
@@ -10,7 +10,7 @@ pkgbase = cosmic-applet-apps-menu-git
 	depends = cosmic-applets
 	provides = cosmic-applet-apps-menu
 	conflicts = cosmic-applet-apps-menu
-	source = git+https://github.com/leb-kuchen/cosmic-applet-apps-menu.git
+	source = git+https://github.com/leb-kuchen/apps-menu-applet-for-cosmic_tm.git
 	sha256sums = SKIP
 
 pkgname = cosmic-applet-apps-menu-git
