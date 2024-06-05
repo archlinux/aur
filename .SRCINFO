@@ -1,11 +1,11 @@
 pkgbase = libvorbis-git
 	pkgdesc = Reference implementation of the Ogg Vorbis audio format
 	pkgver = 1.3.7.r10.g84c02369
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xiph.org/vorbis/
 	arch = i686
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = git
 	depends = libogg
 	provides = libvorbis=1.3.7.r10.g84c02369
