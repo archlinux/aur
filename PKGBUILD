@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=bao-git
-pkgver=0.12.1.r3.g1d1f9cf
+pkgver=0.12.1.r6.ge5f01f8
 pkgrel=1
 pkgdesc="A verified streaming tool"
 arch=('i686' 'x86_64')
 url="https://github.com/oconnor663/bao"
-license=('MIT')
+license=('Apache-2.0' 'CC0-1.0')
 depends=('gcc-libs')
 makedepends=('git' 'rust')
 provides=("bao=$pkgver")

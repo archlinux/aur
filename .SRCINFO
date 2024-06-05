@@ -1,15 +1,16 @@
 pkgbase = bao-git
 	pkgdesc = A verified streaming tool
-	pkgver = 0.12.1.r3.g1d1f9cf
+	pkgver = 0.12.1.r6.ge5f01f8
 	pkgrel = 1
 	url = https://github.com/oconnor663/bao
 	arch = i686
 	arch = x86_64
-	license = MIT
+	license = Apache-2.0
+	license = CC0-1.0
 	makedepends = git
 	makedepends = rust
 	depends = gcc-libs
-	provides = bao=0.12.1.r3.g1d1f9cf
+	provides = bao=0.12.1.r6.ge5f01f8
 	conflicts = bao
 	source = git+https://github.com/oconnor663/bao
 	sha256sums = SKIP
