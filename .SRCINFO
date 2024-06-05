@@ -1,13 +1,13 @@
 pkgbase = perl-uuid
 	pkgdesc = UUID - Perl extension for using UUID interfaces as defined in e2fsprogs.
-	pkgver = 0.28
+	pkgver = 0.35
 	pkgrel = 1
-	url = https://metacpan.org/release/JRM/UUID-0.28
-	arch = any
-	license = PerlArtistic
+	url = https://metacpan.org/release/JRM/UUID-0.35
+	arch = x86_64
+	license = Artistic-2.0
 	depends = perl-devel-checklib
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/J/JR/JRM/UUID-0.28.tar.gz
-	md5sums = 15c17e1044f7ff686dafa27ff381b007
+	source = https://cpan.metacpan.org/authors/id/J/JR/JRM/UUID-0.35.tar.gz
+	md5sums = f71f42d3160b2b3493a4923653740d04
 
 pkgname = perl-uuid

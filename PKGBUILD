@@ -1,18 +1,18 @@
-# Maintainer: Jose Riha <jose1711 gmail com>
+# Contributor: Jose Riha <jose1711 gmail com>
 
 pkgname=perl-uuid
 _cpanname=uuid
-pkgver=0.28
+pkgver=0.35
 pkgrel=1
 pkgdesc="UUID - Perl extension for using UUID interfaces as defined in e2fsprogs."
-arch=('any')
+arch=(x86_64)
 url="https://metacpan.org/release/JRM/UUID-${pkgver}"
-license=('PerlArtistic')
+license=('Artistic-2.0')
 options=('!emptydirs')
 depends=('util-linux' 'perl')
 depends=('perl-devel-checklib')
 source=("https://cpan.metacpan.org/authors/id/J/JR/JRM/UUID-${pkgver}.tar.gz")
-md5sums=('15c17e1044f7ff686dafa27ff381b007')
+md5sums=('f71f42d3160b2b3493a4923653740d04')
 
 build() {
   cd $srcdir/UUID-${pkgver}
