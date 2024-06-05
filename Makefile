@@ -5,8 +5,8 @@ GID = $(shell id -g)
 
 .PHONY: build
 build: clean
-	makepkg
-	makepkg --printsrcinfo > .SRCINFO
+	makepkg --nodeps
+	makepkg --nodeps --printsrcinfo > .SRCINFO
 
 .PHONY: clean
 clean:

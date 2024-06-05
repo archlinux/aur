@@ -15,4 +15,4 @@ RUN pacman --noconfirm -S \
   vulkan-tools \
   mesa-utils
 
-RUN aur-install inputplumber-bin
+#RUN aur-install inputplumber-bin
