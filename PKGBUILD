@@ -4,7 +4,7 @@ pkgname="live2d-${_pkgname}"
 pkgver=2.8.1
 _electronversion=22
 _nodeversion=20
-pkgrel=2
+pkgrel=3
 pkgdesc="An AI Based live2d Kanban for Desktop Users Using Electron.基于Electron制作的桌面看板娘，支持日程提醒、小窗模式、ChatGPT集成、网页搜索、本地moc模型加载与独立设置界面等"
 arch=('any')
 url="http://studio.zerolite.cn/post/338/waifuproject2-live2d-kanban-desktop/"
@@ -66,6 +66,7 @@ build() {
     cp assets/applogo256.png assets/applogo.png
     sed "s|AppImage|dir|g" -i package.json
     pnpm install
+    pnpm add -D electron-builder@24.13.3
     pnpm run pack-linux
 }
 package() {
