@@ -1,6 +1,6 @@
 pkgbase = nextpnr-ecp5-nightly
 	pkgdesc = nextpnr portable FPGA place and route tool - for ecp5
-	pkgver = 20240604_nextpnr_0.7_39_gb7f91e57
+	pkgver = 20240605_nextpnr_0.7_39_gb7f91e57
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/YosysHQ/nextpnr
@@ -19,6 +19,7 @@ pkgbase = nextpnr-ecp5-nightly
 	depends = python
 	depends = boost-libs
 	depends = qt5-base
+	provides = nextpnr-ecp5=0.7
 	conflicts = nextpnr-git
 	conflicts = nextpnr-all-nightly
 	options = !strip
