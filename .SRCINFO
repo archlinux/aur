@@ -12,7 +12,6 @@ pkgbase = perl-alien-hdf4
 	depends = hdf4
 	depends = perl
 	options = !emptydirs
-	options = purge
 	source = https://cpan.metacpan.org/authors/id/E/ET/ETJ/Alien-HDF4-0.06.tar.gz
 	source = Alien-HDF4-0.06.patch
 	sha256sums = 19e143a3692c2c25a595e23834c2b318b912be1a92aa40ccd3e730cd097c152f

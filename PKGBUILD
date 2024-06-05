@@ -19,7 +19,7 @@ makedepends=(
 checkdepends=(
   perl-test-simple
 )
-options=('!emptydirs' purge)
+options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/E/ET/ETJ/$_dist-$pkgver.tar.gz"
         "$_dist-$pkgver.patch")
 sha256sums=(19e143a3692c2c25a595e23834c2b318b912be1a92aa40ccd3e730cd097c152f
