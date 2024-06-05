@@ -1,6 +1,6 @@
 # Maintainer: Edmund Lodewijks <e.lodewijks@gmail.com>
 
-pkgname=samsung-m238x
+pkgname=samsung-m283x
 pkgver=1.00.39
 pkgrel=1
 pkgdesc="Samsung M238x printer driver"
