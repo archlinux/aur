@@ -1,10 +1,10 @@
 pkgbase = shedskin-git
 	pkgdesc = Experimental (restricted) Python-to-C++ compiler (development version)
-	pkgver = 0.9.8.r68.g937e8196
-	pkgrel = 2
+	pkgver = 0.9.8.r98.g3714016d
+	pkgrel = 1
 	url = https://github.com/shedskin/shedskin
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	license = Expat
 	license = BSD-3
 	makedepends = git

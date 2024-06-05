@@ -4,12 +4,11 @@
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 
 pkgname=shedskin-git
-pkgver=0.9.8.r68.g937e8196
-pkgrel=2
+pkgver=0.9.8.r98.g3714016d
+pkgrel=1
 pkgdesc='Experimental (restricted) Python-to-C++ compiler (development version)'
 url='https://github.com/shedskin/shedskin'
-license=('GPL3' 'Expat' 'BSD-3')
-# Not sure whether this is GPL-3.0-only or GPL-3.0-or-later, upstream issue #469
+license=('GPL-3.0-only' 'Expat' 'BSD-3')
 source=(git+https://github.com/shedskin/shedskin.git)
 sha256sums=('SKIP')
 arch=('any')
