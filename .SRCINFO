@@ -1,0 +1,17 @@
+pkgbase = raiderio-client
+	pkgdesc = raider.io desktop client for Linux
+	pkgver = 4.1.1
+	pkgrel = 1
+	url = https://raider.io/
+	arch = x86_64
+	license = custom
+	license = MIT
+	license = custom:chromium-licenses
+	depends = fuse2
+	options = !strip
+	source = raiderio-client.AppImage::https://raider.io/client/download/linux
+	source = start
+	sha512sums = SKIP
+	sha512sums = d81f917aba4da97441462abf6e9dcb0240a47038f69d5efd715a5f41f81e5930b155febaabd6b551f9183f37a00b75e47ff58e3cef8108fda2669898cf1abdd6
+
+pkgname = raiderio-client
