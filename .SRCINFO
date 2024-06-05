@@ -1,6 +1,6 @@
 pkgbase = get-blessed
 	pkgdesc = Get the best crates for your Rust projects with a few keybindings
-	pkgver = 0.1.3
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/josueBarretogit/get_blessed_rs
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = get-blessed
 	makedepends = cargo
 	depends = gcc-libs
 	depends = openssl
-	source = get-blessed-0.1.3.tar.gz::https://github.com/josueBarretogit/get_blessed_rs/archive/v0.1.3.tar.gz
-	sha512sums = 18eb631762476f8065e8dab64bc46b0e7239db395ff35750994208ecec524a58dbfef37a4948e736330142f8c3a2a095ceb1132688977e76373a778a1625662f
+	source = get-blessed-0.2.0.tar.gz::https://github.com/josueBarretogit/get_blessed_rs/archive/v0.2.0.tar.gz
+	sha512sums = c46fe44f2c4ce5e6712f8b09ce264197a9150285a0cdb3da52da7e6e057be78800681da413bc49749fa2214c711f5bdc65dedfad54810594b0e8bd3b8dc9fd0d
 
 pkgname = get-blessed

@@ -3,7 +3,7 @@
 
 pkgname=get-blessed
 _pkgname=get_blessed_rs
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Get the best crates for your Rust projects with a few keybindings"
 arch=('x86_64')
@@ -12,11 +12,11 @@ license=('MIT')
 depends=('gcc-libs' 'openssl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('18eb631762476f8065e8dab64bc46b0e7239db395ff35750994208ecec524a58dbfef37a4948e736330142f8c3a2a095ceb1132688977e76373a778a1625662f')
+sha512sums=('c46fe44f2c4ce5e6712f8b09ce264197a9150285a0cdb3da52da7e6e057be78800681da413bc49749fa2214c711f5bdc65dedfad54810594b0e8bd3b8dc9fd0d')
 
 prepare() {
   cd "$_pkgname-$pkgver"
-  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')" # --locked
+  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')" --locked
 }
 
 build() {
@@ -26,7 +26,7 @@ build() {
 
 check() {
   cd "$_pkgname-$pkgver"
-  cargo test --frozen -- --skip "general_table_has_expected_data"
+  cargo test --frozen
 }
 
 package() {
