@@ -1,0 +1,4 @@
+[vim-easymotion]
+source = "git"
+git = "https://github.com/easymotion/vim-easymotion.git"
+prefix = "v"
