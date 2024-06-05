@@ -4,9 +4,9 @@
 
 pkgname=typora-electron
 _pkgname=typora
-pkgver=1.7.6
+pkgver=1.8.10
 _electron=electron27
-pkgrel=2
+pkgrel=1
 pkgdesc="A minimal markdown editor and reader. (Typora with system electron)"
 arch=('x86_64' 'aarch64')
 license=('custom:"Copyright (c) 2015 Abner Lee All Rights Reserved."')
@@ -22,9 +22,9 @@ source=("typora.sh")
 source_x86_64=("${_pkgname}_${pkgver}_amd64.deb::${url}/linux/${_pkgname}_${pkgver}_amd64.deb")
 source_aarch64=("${_pkgname}_${pkgver}_arm64.deb::${url}/linux/${_pkgname}_${pkgver}_arm64.deb")
 sha512sums=('0fac707616e055158d4a84a80554db1b4c76e44604de74f1e0726955d7b45e0ec5560cd5c3994b97d24d9f7f2a1bdc9a1af50a4fbc70aa22076d19079910c304')
-sha512sums_x86_64=('9c23de69be1dfd35ab9553f7d2c6e18b2a7b18ef44930fe986ca87063a96d9b5bfe2e58447f2b5625ab66e19a78053631ef0bf673e5c7935e808b2d27b093f5a')
-sha512sums_aarch64=('30055c886cda45464bdb1cd1a3782315975fbaf77247e9a273c09791f13a0b0f1cbb27b99031303f6649f584fe3db6560df8b8d3a7fbab7efddddefa5fdd94d1')
-prepare(){
+sha512sums_x86_64=('6560774e283129fa556a916d412903893388194625472062a36dd84d771ae261974b0c6a3b4642b081e8e19a7bb9477720e00f39efa4934aa8301001127e69a6')
+sha512sums_aarch64=('2811a067587dc4578b693ebf0e44f64b68a98a5391b7ae19995d4ede6019b85c4911d00fc1f5bea482de600532baf707cc843c6ee7ad7da3a3b83989720f3455')
+prepare() {
 	bsdtar -xf data.tar.xz -C "$srcdir/"
 	sed -i "s|__ELECTRON__|${_electron}|" ${srcdir}/${_pkgname}.sh
 	cd $srcdir/usr/share/typora/resources/
