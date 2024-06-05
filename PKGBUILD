@@ -19,7 +19,7 @@ arch=(i686 x86_64)
 license=(GPL3 custom)
 
 depends=(gnatcoll-core)
-makedepends=(python gprbuild libiconv syslog-ng)
+makedepends=(python python-setuptools gprbuild libiconv syslog-ng)
 
 source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources-2024/$pkgbase-$pkgver-20240408-162B5-src.tar.gz
         fix-python2-dont-cache-prefix-during-install.patch

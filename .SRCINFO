@@ -9,6 +9,7 @@ pkgbase = gnatcoll-bindings
 	license = GPL3
 	license = custom
 	makedepends = python
+	makedepends = python-setuptools
 	makedepends = gprbuild
 	makedepends = libiconv
 	makedepends = syslog-ng
