@@ -1,18 +1,16 @@
 pkgbase = snoop
 	pkgdesc = Snoop through your files
-	pkgver = 0.3
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://gitlab.gnome.org/philippun1/snoop
 	arch = x86_64
 	license = GPL-3.0-or-later
 	checkdepends = appstream-glib
-	makedepends = git
 	makedepends = meson
 	makedepends = vala
 	depends = gtksourceview5
 	depends = libadwaita
-	optdepends = python-nautilus: Nautilus extension
-	source = git+https://gitlab.gnome.org/philippun1/snoop.git#tag=0.3
-	sha256sums = bf41b61839d4afea5d5567449e995659196b1d863f18402c067c3b62a0173d88
+	source = https://gitlab.gnome.org/philippun1/snoop/-/archive/0.3.1/snoop-0.3.1.tar.gz
+	sha256sums = 68d0cc78b2255777fb75829cde312d79252b7ce4abc12a59e1fabf4656373179
 
 pkgname = snoop
