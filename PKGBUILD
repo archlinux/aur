@@ -1,3 +1,5 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Contributor: Daniel Milde <daniel@milde.cz>
 pkgname=aerospike-client-python
 pkgbase='aerospike-client-python'
 pkgname=(aerospike-client-python)
