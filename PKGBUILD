@@ -206,6 +206,9 @@ package_bacula-dir-mariadb() {
   for file in etc/${pkgbase}/scripts/*mysql*; do
     cp --parents -a "${file}" "${pkgdir}"
   done
+
+  chmod 755 "${pkgdir}/etc/${pkgbase}"
+
 }
 
 package_bacula-dir-mysql() {
@@ -242,6 +245,9 @@ package_bacula-dir-sqlite3() {
   for file in etc/${pkgbase}/scripts/*sqlite3*; do
     cp --parents -a "${file}" "${pkgdir}"
   done
+
+  chmod 755 "${pkgdir}/etc/${pkgbase}"
+
 }
 
 package_bacula-sd() {
