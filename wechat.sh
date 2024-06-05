@@ -170,6 +170,9 @@ function execApp() {
 	-p RestrictAddressFamilies=~AF_NETLINK \
 	-p RestrictAddressFamilies=~AF_PACKET \
 	-p PrivateTmp=yes \
+	-p BindReadOnlyPaths=/usr/bin/true:/usr/bin/lsblk \
+	-p BindReadOnlyPaths=/opt/wechat-uos-qt/files:/usr/lib/license \
+	-p BindReadOnlyPaths=-/run/systemd/resolve/stub-resolv.conf \
 	-- \
 	bwrap \
 		--dev /dev \
@@ -182,14 +185,11 @@ function execApp() {
 		--dir /sandbox \
 		--bind /tmp /tmp \
 		--bind /usr /usr \
-		--ro-bind /opt/wechat-uos-qt/files \
-			/usr/lib/license \
 		--ro-bind /etc /etc \
 		--symlink usr/lib /lib \
 		--symlink usr/lib64 /lib64 \
 		--symlink usr/bin /bin \
 		--symlink usr/bin /sbin \
-		--ro-bind /usr/bin/true /usr/bin/lsblk \
 		--bind /opt /opt \
 		--bind "${busDir}/bus" "${XDG_RUNTIME_DIR}/bus" \
 		--ro-bind "${XDG_RUNTIME_DIR}/pulse" \
@@ -223,8 +223,6 @@ function execApp() {
 			"${XDG_RUNTIME_DIR}/.flatpak-info" \
 		--ro-bind-try "${XDG_DATA_HOME}"/WeChat_Data/.flatpak-info \
 			/.flatpak-info \
-		--ro-bind-try /run/systemd/resolve/stub-resolv.conf \
-			/run/systemd/resolve/stub-resolv.conf \
 		--dir "${XDG_DOCUMENTS_DIR}" \
 		${bwCamPar} \
 		--setenv XDG_DOCUMENTS_DIR "${XDG_DOCUMENTS_DIR}" \
@@ -260,7 +258,10 @@ function dbusProxy() {
 
 function execAppUnsafe() {
 	killall wechat
-	bwrap \
+	systemd-run --user \
+		-p EnvironmentFile=/usr/lib/wechat-uos-qt/envs \
+		--tty \
+		bwrap \
 		--dev-bind / / \
 		--bind /opt/wechat-uos-qt/files \
 			/usr/lib/license \
@@ -327,12 +328,6 @@ function launch() {
 	if [[ $@ =~ "--actions" ]] && [[ $@ =~ "gamescope" ]]; then
 		export QT_SCREEN_SCALE_FACTOR=2
 		launchTarget="gamescope -F fsr --sharpness 0 -S integer -- /opt/wechat-uos-qt/files/wechat"
-	fi
-	if [[ -f "${XDG_DATA_HOME}"/WeChat_Data/bwrap.optargs ]]; then
-		userConf="$(cat ${XDG_DATA_HOME}/WeChat_Data/bwrap.optargs)"
-	else
-		echo "[Info] User defined bwrap options can be set in ${XDG_DATA_HOME}/WeChat_Data/bwrap.optargs"
-		userConf=""
 	fi
 	if [[ ${trashAppUnsafe} = 1 ]]; then
 		echo "Launching WeChat UOS (unsafe)..."
