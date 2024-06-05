@@ -1,0 +1,16 @@
+pkgbase = ontake-leech-git
+	pkgdesc = A simple HTTP(S) file hosting server with a simple UI.
+	pkgver = r11.gd38556b
+	pkgrel = 1
+	url = https://git.ontake.dev/go/leech
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = go>=1.18
+	provides = ontake-leech
+	conflicts = ontake-leech
+	source = git+https://git.ontake.dev/go/leech
+	md5sums = SKIP
+
+pkgname = ontake-leech-git
