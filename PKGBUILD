@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=canu-git
-pkgver=2.2.r89.g769108f4b
+pkgver=2.2.r162.gc61ebbb7a
 pkgrel=1
 pkgdesc="A fork of the Celera Assembler designed for high-noise single-molecule sequencing"
 arch=('i686' 'x86_64')
@@ -35,6 +35,8 @@ pkgver() {
 build() {
   cd "canu"
 
+  CFLAGS="$CFLAGS -ffat-lto-objects" \
+  CXXFLAGS="$CXXFLAGS -ffat-lto-objects" \
   make -C "src"
 }
 
