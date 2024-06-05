@@ -1,7 +1,7 @@
 # Maintainer: Alex David <flu0r1ne@flu0r1ne.net>
 # Contributor: Alex David <flu0r1ne@flu0r1ne.net>
 pkgname=wg2nd
-pkgver=0.2.0
+pkgver=0.2.1
 _pkgver=v$pkgver
 pkgrel=2
 pkgdesc="A utility to convert WireGuard configurations from wg-quick(8) format into systemd-networkd compatible configurations."
