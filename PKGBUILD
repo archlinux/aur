@@ -2,9 +2,9 @@
 #
 # Mantainer: Muflone http://www.muflone.com/contacts/english/
 # Contributor: Piero Proietti <piero.proietti_at_gmail.com>
-_commit=c91785dda3018b25f5e1207761a1d11b9a773a8e
+_commit=513b4f65343d2f161b9b1e3ceaa558da13166376
 pkgname=penguins-eggs
-pkgver=9.7.5
+pkgver=10.0.3
 pkgrel=1
 pkgdesc="A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE"
 arch=('any')
@@ -65,7 +65,7 @@ package() {
 
   # Symlink executable
   install -d "${pkgdir}/usr/bin"
-  ln -s "/usr/lib/${pkgname}/bin/run" "${pkgdir}/usr/bin/eggs"
+  ln -s "/usr/lib/${pkgname}/bin/run.js" "${pkgdir}/usr/bin/eggs"
 
   # Install shell completion files
   install -d "${pkgdir}/usr/share/bash-completion/completions"
