@@ -1,0 +1,3 @@
+[doitlive]
+source = "git"
+git = "https://github.com/sloria/doitlive.git"
