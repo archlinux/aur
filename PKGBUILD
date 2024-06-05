@@ -2,7 +2,7 @@
 
 pkgname=shvspy-git
 _gitname=shvspy
-pkgver=r432.fa91bbe
+pkgver=r508.21cc190
 pkgrel=1
 pkgdesc='Qt GUI tool for shvbroker administration and browsing'
 url='https://github.com/silicon-heaven/shvspy'
@@ -30,7 +30,7 @@ build() {
 	-DCMAKE_INSTALL_PREFIX=/usr \
 	-DSHVSPY_USE_LOCAL_NECROLOG=ON \
 	-DSHVSPY_USE_LOCAL_LIBSHV=ON \
-	-DUSE_QT6=ON
+	-DSHVSPY_USE_QT6=ON
 
 	cmake --build "$srcdir/build"
 }

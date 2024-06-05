@@ -1,6 +1,6 @@
 pkgbase = shvspy-git
 	pkgdesc = Qt GUI tool for shvbroker administration and browsing
-	pkgver = r432.fa91bbe
+	pkgver = r508.21cc190
 	pkgrel = 1
 	url = https://github.com/silicon-heaven/shvspy
 	arch = i686
