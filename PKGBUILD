@@ -18,7 +18,7 @@ checkdepends=(
   perl-data-dump
   perl-test2-suite
 )
-options=('!emptydirs' purge)
+options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/S/SL/SLAFFAN/$_dist-$pkgver.tar.gz")
 sha256sums=(e0290b4891a18068db109c3001c6c8f1c900a28568dcaaa78d4dd0b69216d666)
 
