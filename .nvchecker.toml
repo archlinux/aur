@@ -1,0 +1,4 @@
+[svd2rust]
+source = "git"
+git = "https://github.com/rust-embedded/svd2rust.git"
+prefix = "v"
