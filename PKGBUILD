@@ -1,6 +1,6 @@
 # Maintainer: Mattias Cockburn <mattias.cockburn@iits-consulting.de>
 pkgname=stackit-cli
-_pkgver=0.7.0
+_pkgver=0.8.0
 pkgver=$(tr -d '-' <<<${_pkgver})
 pkgrel=1
 epoch=
@@ -33,6 +33,9 @@ package() {
 	cd "$pkgname-$_pkgver"
 	install -d -m 0755 "${pkgdir}/usr/bin"
   install -m 0755 stackit "${pkgdir}/usr/bin/"
+  ./stackit completion bash | install -Dm644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/stackit"
+  ./stackit completion zsh | install -Dm644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_stackit"
+  ./stackit completion fish | install -Dm644 /dev/stdin "${pkgdir}/usr/share/fish/vendor_completions.d/stackit.fish"
 }
 
-sha256sums=('c5858770cb4d6afe2e82afcde78611beb884405dd805e253728e9db4c2a71535')
+sha256sums=('365c7ce1b27d31a4347ff1c27b394e29dd0e946f07c18d30cd9a1ab4771c6f96')
