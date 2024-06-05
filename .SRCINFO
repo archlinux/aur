@@ -1,17 +1,19 @@
 pkgbase = python-pymc3
 	pkgdesc = Probabilistic Programming in Python. Uses Theano as a backend, supports NUTS and ADVI.
-	pkgver = 3.11.5
+	pkgver = 3.11.6
 	pkgrel = 1
 	url = https://www.pymc.io/projects/docs/en/v3.11.5
 	arch = any
-	license = APACHE
+	license = Apache-2.0
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/p/pymc3/pymc3-3.11.5.tar.gz
-	sha256sums = 3341cbbd962909138b7d5ebe4ed7cfee29f40b2fe7cadeb888b39d6bbc17138c
+	source = https://files.pythonhosted.org/packages/source/p/pymc3/pymc3-3.11.6.tar.gz
+	source = fix-deprecated-np.distutils.patch
+	sha256sums = 9e930a1cfd2ee558892b4d92af043696c65a622b64098332687fd75c78f10bce
+	sha256sums = 930408da06bb1bbd83b3479091d5ae2f5cf7376c26e0308451684955aaa9e203
 
 pkgname = python-pymc3
 	depends = python>=3.7
