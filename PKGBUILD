@@ -3,7 +3,7 @@
 
 pkgname=starlark-rust
 _pkgname=starlark
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='Rust implementation of the Starlark language'
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('git' 'rustup')
 provides=('starlark')
 options=('!lto')
 source=("https://github.com/facebookexperimental/starlark-rust/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f36c2b120cfee00d1fe2842adfdaafad8871c84d47617d26205b67fd22921d06')
+sha256sums=('4d2cd3fbd9254b61d8251299adac5f61a5d5cd97fb5d63423b875e5fefb85e1c')
 
 prepare() {
   cd "$pkgname-$pkgver"

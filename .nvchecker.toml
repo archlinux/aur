@@ -1,0 +1,4 @@
+[starlark-rust]
+source = "git"
+git = "https://github.com/facebookexperimental/starlark-rust.git"
+prefix = "v"

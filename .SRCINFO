@@ -1,6 +1,6 @@
 pkgbase = starlark-rust
 	pkgdesc = Rust implementation of the Starlark language
-	pkgver = 0.11.0
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/facebookexperimental/starlark-rust
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = starlark-rust
 	depends = gcc-libs
 	provides = starlark
 	options = !lto
-	source = https://github.com/facebookexperimental/starlark-rust/archive/refs/tags/v0.11.0.tar.gz
-	sha256sums = f36c2b120cfee00d1fe2842adfdaafad8871c84d47617d26205b67fd22921d06
+	source = https://github.com/facebookexperimental/starlark-rust/archive/refs/tags/v0.12.0.tar.gz
+	sha256sums = 4d2cd3fbd9254b61d8251299adac5f61a5d5cd97fb5d63423b875e5fefb85e1c
 
 pkgname = starlark-rust
