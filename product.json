@@ -50,8 +50,8 @@
 		},
 		{
 			"name": "ms-vscode.js-debug",
-			"version": "1.89.0",
-			"sha256": "2abd9c01f711c0d60d40b722b5bed0930701be173931f3c6251906f692858221",
+			"version": "1.90.0",
+			"sha256": "1317dd7d1ac50641c1534a3e957ecbc94349f4fbd897acb916da11eea3208a66",
 			"repo": "https://github.com/microsoft/vscode-js-debug",
 			"metadata": {
 				"id": "25629058-ddac-4e17-abba-74678e126c5d",
@@ -206,6 +206,14 @@
 				},
 				{
 					"pathGlob": "{**/*.ps.config,**/*.ps1.config}"
+				}
+			]
+		},
+		"ms-toolsai.prompty": {
+			"onFileOpen": [
+				{
+					"pathGlob": "{**/*.prompty}",
+					"important": false
 				}
 			]
 		},
@@ -1752,13 +1760,11 @@
 	],
 	"extensionEnabledApiProposals": {
 		"ms-vscode.vscode-selfhost-test-provider": [
-			"testObserver"
+			"testObserver",
+			"attributableCoverage"
 		],
 		"VisualStudioExptTeam.vscodeintellicode-completions": [
 			"inlineCompletionsAdditions"
-		],
-		"ms-toolsai.datawrangler": [
-			"debugFocus"
 		],
 		"ms-vsliveshare.vsliveshare": [
 			"contribMenuBarHome",
@@ -1893,6 +1899,7 @@
 			"contribCommentThreadAdditionalMenu",
 			"contribCommentsViewThreadMenus",
 			"contribEditorContentMenu",
+			"contribMultiDiffEditorMenus",
 			"contribShareMenu",
 			"diffCommand",
 			"fileComments",
@@ -1914,9 +1921,9 @@
 			"terminalExecuteCommandEvent",
 			"terminalSelection",
 			"terminalQuickFixProvider",
-			"chatParticipant",
 			"chatParticipantAdditions",
 			"defaultChatParticipant",
+			"embeddings",
 			"chatVariableResolver",
 			"chatProvider",
 			"mappedEditsProvider",
@@ -1925,11 +1932,17 @@
 			"findTextInFiles",
 			"textSearchProvider",
 			"contribSourceControlInputBoxMenu",
+			"contribCommentEditorActionsMenu",
+			"contribCommentThreadAdditionalMenu",
+			"contribCommentsViewThreadMenus",
 			"newSymbolNamesProvider",
 			"findFiles2",
 			"extensionsAny",
 			"authLearnMore",
-			"testObserver"
+			"testObserver",
+			"aiTextSearchProvider",
+			"documentFiltersExclusive",
+			"chatParticipantPrivate"
 		],
 		"GitHub.remotehub": [
 			"contribRemoteHelp",
@@ -1988,6 +2001,11 @@
 		"ms-azuretools.vscode-azureresourcegroups": [
 			"authGetSessions"
 		],
+		"ms-azuretools.vscode-azure-github-copilot": [
+			"chatParticipantAdditions",
+			"embeddings",
+			"languageModelSystem"
+		],
 		"ms-vscode.anycode": [
 			"extensionsAny"
 		],
@@ -2011,9 +2029,9 @@
 			"fileSearchProvider",
 			"textSearchProvider"
 		],
-		"apidev.azure-api-center": [
-			"chatParticipant",
-			"languageModels"
+		"TeamsDevApp.ms-teams-vscode-extension": [
+			"chatParticipantAdditions",
+			"languageModelSystem"
 		]
 	},
 	"tasConfig": {
@@ -2209,7 +2227,10 @@
 		"https://*.vscode.dev",
 		"https://*.github.dev",
 		"https://gh.io",
-		"https://portal.azure.com"
+		"https://portal.azure.com",
+		"https://raw.githubusercontent.com",
+		"https://private-user-images.githubusercontent.com",
+		"https://avatars.githubusercontent.com"
 	],
 	"trustedExtensionAuthAccess": {
 		"github": [
@@ -2369,7 +2390,7 @@
 	"chatWelcomeView": {
 		"welcomeViewId": "copilot.welcome",
 		"welcomeViewTitle": "GitHub Copilot",
-		"welcomeViewContent": "You have access to GitHub Copilot, an AI-powered coding assistant, as a part of the Microsoft organization.\n Getting started with Copilot is easy - simply install the Copilot extension. [Learn more](https://code.visualstudio.com/docs/copilot/overview)\n[Install GitHub Copilot](command:workbench.extensions.installExtension?%5B%22github.copilot%22%5D)"
+		"welcomeViewContent": "You have access to [GitHub Copilot](command:extension.open?%5B%22github.copilot%22%5D), an AI-powered coding assistant, as a part of the Microsoft organization.\n Getting started with Copilot is easy - simply install the Copilot extension. [Learn more](https://aka.ms/copilot-overview)\n[Install GitHub Copilot](command:workbench.extensions.installExtension?%5B%22github.copilot%22%5D)"
 	},
 	"chatParticipantRegistry": "https://az764295.vo.msecnd.net/extensions/chat.json",
 	"commit": "@COMMIT@",
