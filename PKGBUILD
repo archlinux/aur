@@ -7,7 +7,7 @@
 _gitname="webkit2gtk"
 _pkgname="$_gitname-unstable"
 pkgname="$_pkgname"
-pkgver=2.45.2
+pkgver=2.45.3
 pkgrel=1
 pkgdesc="Web content engine for GTK"
 url="https://webkitgtk.org/"
@@ -93,7 +93,7 @@ source=(
   "$url/releases/$_pkgsrc.tar.xz"{,.asc}
 )
 sha256sums=(
-  '0ddbe3541e8cb28e37d226f2cc46ca9c9c47d0524ea12e6c39d7b9c4603a1741'
+  '9b5fbfa6c9ddc92508ca9f32cc8aa2e68cf50fcfada8f2f45775d559570713b3'
   'SKIP'
 )
 
