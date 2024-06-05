@@ -1,11 +1,11 @@
 pkgbase = mp3rename
 	pkgdesc = Rename mp3 files based on id3tags
 	pkgver = 0.6
-	pkgrel = 13
+	pkgrel = 14
 	url = https://salsa.debian.org/debian/mp3rename
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = glibc
 	source = http://ftp.debian.org/debian/pool/main/m/mp3rename/mp3rename_0.6.orig.tar.gz
 	source = http://ftp.debian.org/debian/pool/main/m/mp3rename/mp3rename_0.6-13.debian.tar.xz
