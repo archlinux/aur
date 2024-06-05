@@ -10,7 +10,7 @@ url="https://metacpan.org/release/$_dist"
 license=(GPL PerlArtistic)
 depends=(perl perl-pdl perl-pdl-graphics-colorspace)
 checkdepends=(perl-test-simple)
-options=('!emptydirs' purge)
+options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/E/ET/ETJ/$_dist-$pkgver.tar.gz"
         "$_dist-$pkgver.patch")
 sha256sums=(992392dd26f8d36ad335004869539d954138e2e8fd296b2696293ff281f9b525
