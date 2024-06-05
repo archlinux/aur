@@ -1,0 +1,4 @@
+[entropy]
+source = "git"
+git = "https://github.com/EwenQuim/entropy.git"
+prefix = "v"
