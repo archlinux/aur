@@ -1,11 +1,15 @@
 post_install(){
 pkexec bash /opt/apps/cn.flamescion.bookworm-compatibility-mode/files/bin/ace-init
+systemctl daemon-reload
 systemctl enable --now ace-bookworm-auto-upgrade.service
+systemctl reload apparmor
 }
 
 post_upgrade(){
 pkexec bash /opt/apps/cn.flamescion.bookworm-compatibility-mode/files/bin/ace-init
+systemctl daemon-reload
 systemctl enable --now ace-bookworm-auto-upgrade.service
+systemctl reload apparmor
 }
 
 post_remove(){
