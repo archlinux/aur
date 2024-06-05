@@ -14,7 +14,6 @@ pkgbase = perl-alien-sqlite
 	depends = perl-pkgconfig
 	depends = perl-sort-versions
 	options = !emptydirs
-	options = purge
 	source = https://cpan.metacpan.org/authors/id/S/SL/SLAFFAN/Alien-sqlite-1.07.tar.gz
 	sha256sums = 09ab5ea452b73749ef8ad6a07bdeb2e0b726d7d1509fe9236dcb10b48006caa9
 
