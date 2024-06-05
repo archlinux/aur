@@ -3,7 +3,7 @@
 pkgname=serial-studio
 _pkgname=Serial-Studio
 pkgver=2.0.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Multi-purpose serial data visualization & processing program"
 arch=('x86_64'
     'aarch64'
@@ -21,6 +21,7 @@ depends=(gcc-libs
     $_qt-serialport)
 makedepends=(git
     $_qt-charts
+    $_qt-location
     $_qt-quickcontrols2
     $_qt-svg
     $_qt-tools)
@@ -56,7 +57,7 @@ prepare() {
 
 build() {
     cd "$srcdir/${pkgname}"
-    qmake6 ./${_pkgname}.pro CONFIG+=[release]
+    qmake6 ${_pkgname}.pro CONFIG+=[release]
     make -j$(nproc)
 }
 
