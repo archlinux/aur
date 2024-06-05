@@ -11,8 +11,10 @@ url="https://github.com/keydet89/RegRipper3.0"
 depends=('perl' 'perl-parse-registry')
 makedepends=('git')
 options=('!emptydirs')
-source=("$pkgname::git+https://github.com/keydet89/RegRipper3.0")
-sha256sums=('SKIP')
+source=("$pkgname::git+https://github.com/keydet89/RegRipper3.0"
+        "patch.diff")
+sha256sums=('SKIP'
+            '24e4414ea46eb1ae3fe9ccbd372bf5bc74e0a72a75fdc594f1067d83c03efcc0')
 
 pkgver() {
   cd "$pkgname"
@@ -22,28 +24,16 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$pkgname"
-
-  # Modify the shebang line and add the plugindir variable
-  if [[ -f rip.pl ]]; then
-    sed -i '1s|^#! c:\\perl\\bin\\perl.exe|#!/usr/bin/perl|' rip.pl
-    sed -i '/GetOptions/i my $plugindir = "/usr/share/regripper/plugins/";' rip.pl
-  else
-    echo "rip.pl not found!"
-    return 1
-  fi
-
-  # Rename the file after patching
-  mv rip.pl regripper
-
+  patch -o "$pkgname/regripper" "$pkgname/rip.pl" < patch.diff
+  cd "$pkgname"
   ## Clean windows ^M new lines
   sed -i $'s/\r$//' regripper
 }
 
 package() {
   install -p -dm 755 "$pkgdir/usr/bin/"
-  install -p -m 755 "$srcdir/$pkgname/regripper" "$pkgdir/usr/bin/"
+  install -p -m 755 "$pkgname/regripper" "$pkgdir/usr/bin/"
 
   install -p -dm 755 "$pkgdir/usr/share/regripper/plugins/"
-  install -p -m 755 "$srcdir/$pkgname/plugins/"* "$pkgdir/usr/share/regripper/plugins/"
+  install -p -m 755 "$pkgname/plugins/"* "$pkgdir/usr/share/regripper/plugins/"
 }

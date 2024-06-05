@@ -1,0 +1,20 @@
+--- rip.pl.orig	2024-06-05 20:13:41.352607571 +0200
++++ rip.pl.modif	2024-06-05 20:52:27.697257894 +0200
+@@ -1,4 +1,4 @@
+-#! c:\perl\bin\perl.exe
++#!/usr/bin/perl
+ #-------------------------------------------------------------------------
+ # Rip - RegRipper, CLI version
+ # Use this utility to run a plugins file or a single plugin against a Reg
+@@ -68,9 +68,7 @@
+ # Suggested addition by Hal Pomeranz for compatibility with Linux
+ #push(@INC,$str);
+ # code updated 20190318
+-my $plugindir;
+-($^O eq "MSWin32") ? ($plugindir = $str."plugins/")
+-                   : ($plugindir = File::Spec->catfile("plugins"));
++my $plugindir = "/usr/share/regripper/plugins/";
+ #my $plugindir = $str."plugins/";
+ #my $plugindir = File::Spec->catfile("plugins");
+ #print "Plugins Dir = ".$plugindir."\n";
+
