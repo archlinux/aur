@@ -15,7 +15,7 @@ unset _pkgtype
 _pkgname="duckstation"
 pkgname="$_pkgname${_pkgtype:-}"
 pkgver=0.1.6759
-pkgrel=1
+pkgrel=2
 pkgdesc="Playstation emulator"
 url="https://github.com/stenzek/duckstation"
 arch=('x86_64')
@@ -56,13 +56,22 @@ makedepends=(
 )
 
 _src_shaderc="google.shaderc"
+_src_shaderc_glslang="khronosgroup.glslang"
+_src_shaderc_spirv_headers="khronosgroup.spirv-headers"
+_src_shaderc_spirv_tools="khronosgroup.spirv-tools"
 _src_backtrace="ianlancetaylor.libbacktrace"
 
 source=(
   "$_src_shaderc"::"git+https://github.com/google/shaderc.git"
+  "$_src_shaderc_glslang"::"git+https://github.com/KhronosGroup/glslang.git"
+  "$_src_shaderc_spirv_headers"::"git+https://github.com/KhronosGroup/SPIRV-Headers.git"
+  "$_src_shaderc_spirv_tools"::"git+https://github.com/KhronosGroup/SPIRV-Tools.git"
   "$_src_backtrace"::"git+https://github.com/ianlancetaylor/libbacktrace.git"
 )
 sha256sums=(
+  'SKIP'
+  'SKIP'
+  'SKIP'
   'SKIP'
   'SKIP'
 )
@@ -98,18 +107,12 @@ else
 fi
 
 prepare() {
-  cd "$_src_shaderc"
-  # apply duckstation patch
-  git apply "$srcdir/$_pkgname/scripts/shaderc-changes.patch"
+  ln -s "$srcdir/$_src_shaderc_glslang" "$srcdir/$_src_shaderc"/third_party/glslang
+  ln -s "$srcdir/$_src_shaderc_spirv_headers" "$srcdir/$_src_shaderc"/third_party/spirv-headers
+  ln -s "$srcdir/$_src_shaderc_spirv_tools" "$srcdir/$_src_shaderc"/third_party/spirv-tools
 
-  # de-vendor libs and disable git versioning
-  sed '/examples/d;/third_party/d' -i CMakeLists.txt
-  sed '/build-version/d' -i glslc/CMakeLists.txt
-  cat <<- EOF > glslc/src/build-version.inc
-"${pkgver}\\n"
-"$(pacman -Q spirv-tools | cut -d \  -f 2 | sed 's/-.*//')\\n"
-"$(pacman -Q glslang | cut -d \  -f 2 | sed 's/-.*//')\\n"
-EOF
+  cd "$_src_shaderc"
+  git apply "$srcdir/$_pkgname/scripts/shaderc-changes.patch"
 }
 
 build() {
@@ -148,7 +151,6 @@ build() {
     -DSHADERC_SKIP_TESTS=ON
     -DSHADERC_SKIP_EXAMPLES=ON
     -DSHADERC_SKIP_COPYRIGHT_CHECK=ON
-    -Dglslang_SOURCE_DIR=/usr/include/glslang
     -Wno-dev
   )
 
