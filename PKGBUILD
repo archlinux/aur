@@ -13,7 +13,7 @@ source=("$_pkgapp.AppImage::https://github.com/RPGLogs/Uploaders-warcraftlogs/re
 license=('custom' 'MIT' 'custom:chromium-licenses')
 options=(!strip)
 # Skip checksum check for the WarcraftLogs binary, to avoid breakage on updates
-sha512sums=('SKIP'
+sha512sums=('81cc94f8ebe818f1266c39a07762fd35f9b4dd08b9117d0e28e238fbc804b4ca5be5ff7a100cbbdc875bd53b427a59e1e94ec789b44782f2a924b63b4c2a9785'
             '1f8d504fb27e815f7efcc8e97672bad12f531d171ab8a08c49439fb4ee63b07e9355c49e56b5fb2eb2f6d202ce56a0526b609fef4b6209832026709002eba22a')
 
 pkgver() {
