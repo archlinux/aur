@@ -1,0 +1,4 @@
+[ruget-bin]
+source = "git"
+git = "https://github.com/ksk001100/ruget.git"
+prefix = "v"
