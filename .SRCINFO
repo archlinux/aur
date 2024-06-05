@@ -1,18 +1,18 @@
 pkgbase = firefly-iota-desktop-bin
 	pkgdesc = Manage your IOTA assets directly from your computer with both software and hardware wallet support. Earn staking rewards and participate in governance votes.
-	pkgver = 2.0.10
+	pkgver = 2.0.11
 	pkgrel = 1
 	url = https://firefly.iota.org/
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = fuse2
 	depends = electron27
-	provides = firefly-iota-desktop=2.0.10
+	provides = firefly-iota-desktop=2.0.11
 	conflicts = firefly-iota-desktop
 	conflicts = iota-firefly-wallet
-	source = firefly-iota-desktop-2.0.10.AppImage::https://github.com/iotaledger/firefly/releases/download/desktop-iota-2.0.10/firefly-iota-desktop-2.0.10.AppImage
+	source = firefly-iota-desktop-2.0.11.AppImage::https://github.com/iotaledger/firefly/releases/download/desktop-iota-2.0.11/firefly-iota-desktop-2.0.11.AppImage
 	source = firefly-iota-desktop.sh
-	sha256sums = cdbedf97ad9cda1c10227a8795c8633f4d55cece508113354a5cfc303e3435b7
-	sha256sums = 05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a
+	sha256sums = d6be93a0dea2ca6e04a878dc6b908553bd1d6e82ce40cf90c05032a106dd5ab9
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = firefly-iota-desktop-bin
