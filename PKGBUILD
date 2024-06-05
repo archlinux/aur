@@ -14,7 +14,7 @@ options=('!emptydirs')
 source=("$pkgname::git+https://github.com/keydet89/RegRipper3.0"
         "patch.diff")
 sha256sums=('SKIP'
-            '24e4414ea46eb1ae3fe9ccbd372bf5bc74e0a72a75fdc594f1067d83c03efcc0')
+            '392bda090d956df054f89b4a8ace550eb35ea302a258917450ec2bdef49d7c34')
 
 pkgver() {
   cd "$pkgname"
