@@ -1,11 +1,11 @@
 pkgbase = blis
 	pkgdesc = BLAS-like Library Instantiation Software Framework
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/flame/blis
 	arch = i686
 	arch = x86_64
-	license = custom
+	license = BSD-3-Clause
 	makedepends = python
 	depends = gcc-libs
 	provides = blas

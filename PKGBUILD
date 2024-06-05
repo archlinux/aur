@@ -4,11 +4,11 @@
 
 pkgname=blis
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="BLAS-like Library Instantiation Software Framework"
 arch=('i686' 'x86_64')
 url="https://github.com/flame/blis"
-license=('custom')
+license=('BSD-3-Clause')
 depends=('gcc-libs')
 makedepends=('python')
 provides=('blas' 'cblas')
@@ -21,6 +21,7 @@ sha256sums=('9c12972aa1e50f64ca61684eba6828f2f3dd509384b1e41a1e8a9aedea4b16a6')
 build() {
   cd "$pkgname-$pkgver"
 
+  CFLAGS="$CFLAGS -ffat-lto-objects" \
   ./configure \
     --prefix="/usr" \
     --enable-cblas \
