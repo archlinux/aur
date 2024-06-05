@@ -1,9 +1,9 @@
-# Maintainer: Guilhem Saurel <saurel@laas.fr>
+# Maintainer: Guilhem Saurel <guilhem.saurel@laas.fr>
 
 _org='Simple-Robotics'
 _pkgname='proxsuite'
 pkgname=("$_pkgname" "$_pkgname-docs")
-pkgver=0.6.4
+pkgver=0.6.5
 pkgrel=1
 pkgdesc="The Advanced Proximal Optimization Toolbox"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=()
 makedepends=('cmake')
 checkdepends=('libmatio')
 source=($url/releases/download/v$pkgver/$_pkgname-$pkgver.tar.gz{,.sig})
-sha256sums=('fb90a9e45f5bf91659c394b7cfa22f9754bd864798c10a1269d342f6a456a1f3'
+sha256sums=('1690cc9be9f69932e8cf491698c443ed053b5e7d8796fb37c5265f53b2c66649'
             'SKIP')
 validpgpkeys=(
         'A031AD35058955293D54DECEC45D22EF408328AD'  # https://github.com/jcarpent.gpg
