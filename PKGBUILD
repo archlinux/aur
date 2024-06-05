@@ -5,7 +5,7 @@
 pkgname=scx-scheds
 gitname=scx
 pkgver=0.1.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Sched_ext schedulers'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -22,6 +22,7 @@ validpgpkeys=(
 )
 
 _backports=(
+1505164ca09876b3439149b1b7df63c524f5856d # scx.service: start service after graphical target
 )
 
 _reverts=(
