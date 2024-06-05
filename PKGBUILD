@@ -1,22 +1,22 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=XML2R
-_pkgver=0.0.6
+_pkgver=0.0.8
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=7
-pkgdesc="EasieR XML data collection"
+pkgrel=1
+pkgdesc="Easier XML Data Collection"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
 license=('GPL-2.0-or-later')
 depends=(
+  r-httr
   r-plyr
-  r-rcurl
   r-xml
 )
-source=("https://cran.r-project.org/src/contrib/Archive/$_pkgname/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2c9f9d3870f9b54c7d89fe9212aee921')
-b2sums=('85ea866daff057381f282c5082853e394a6db9f62544dcadf349c18dff59adf053a29976089577d4ff5362257653d3392e0de45d03411185559ca646b3955f8b')
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('978ec418e6b0371a125821d46462d332')
+b2sums=('dfc65809dd1220c20bb2d6c7a9eeef6dbc68b59a55aa1455e0581bb7eb0ecda3a7da510784c79db588e4b705533bbcbdc3c37ae8233a0ab37aada05e931d902c')
 
 build() {
   mkdir build
