@@ -8,7 +8,7 @@ pkgdesc="Discreet Cryptocurrency Wallet. discreet.net - SCAM WARNING!"
 pkgver=1.0.0
 _guiver="${pkgver}"
 _daemonver="${pkgver}"
-pkgrel=6
+pkgrel=7
 arch=( 'i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm' )
 makedepends=('dotnet-sdk')
 url="https://${_pkgpath}"
@@ -22,27 +22,6 @@ sha256sums=('SKIP'
             'SKIP')
 
 build() {
-  echo -e "
-  \e[1;31mThe maintainer of this package was scammed out of thousands of dollars
-  by the founder of the discreet project FREDERIK MARKOR!
-
-  The maintainer of this package endured harassment
-  at the hands of toxic community elements in the official discreetnetwork telegram channel.
-
-  The maintainer of this package reported threats of sexual violence
-  made against children by community member 'Discreet Priest'.
-
-  The maintainer of this package
-  was banned from https://t.me/discreetnetwork by FRED MARKOR for reporting this.
-
-  The maintainer of this package was left with no ability to participate in the testnet
-  nor any alternative for transferring presale tokens to mainnet coins.
-
-  The maintainer of this package takes this opportunity to warn fellow arch users against this project.
-
-  If this situation or assessment should change, the build shall be fixed and this warning rescinded.
-  \e[0m"
-  exit 0
   msg2 'building discreet core'
   cd ${srcdir}/DiscreetCore/DiscreetCore/
   rm ../linux/*
