@@ -4,7 +4,7 @@
 
 pkgname=libjaylink-git
 _pkg="${pkgname%-git}"
-pkgver=0.3.1.r4.ge98b1d4
+pkgver=0.3.1.r9.g32c5ef7
 pkgrel=1
 pkgdesc='Library for accessing SEGGER J-Link and compatible devices'
 arch=('x86_64')
@@ -45,6 +45,6 @@ check() {
 package() {
 	meson install -C build --destdir "$pkgdir"
 
-	sed -i 's|plugdev|uucp|g' ${srcdir}/${_pkg}/contrib/99-libjaylink.rules
-	install -Dm644 ${srcdir}/${_pkg}/contrib/99-libjaylink.rules -t "${pkgdir}/usr/lib/udev/rules.d/"
+	sed -i 's|plugdev|uucp|g' ${srcdir}/${_pkg}/contrib/60-libjaylink.rules
+	install -Dm644 ${srcdir}/${_pkg}/contrib/60-libjaylink.rules -t "${pkgdir}/usr/lib/udev/rules.d/"
 }
