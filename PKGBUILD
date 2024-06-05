@@ -180,7 +180,7 @@ _stable=${_major}.${_minor}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 pkgdesc='Linux EEVDF-BORE scheduler Kernel by CachyOS with other patches and improvements'
-pkgrel=1
+pkgrel=2
 _kernver=$pkgver-$pkgrel
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
@@ -199,7 +199,7 @@ if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] || [ -n "$_use_k
 fi
 
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
-_nv_ver=555.42.02
+_nv_ver=555.52.04
 _nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 _nv_open_pkg="open-gpu-kernel-modules-${_nv_ver}"
 source=(
@@ -795,7 +795,7 @@ for _p in "${pkgname[@]}"; do
 done
 
 sha256sums=('aaa824eaf07f61911d22b75ff090a403c3dd0bd73e23933e0bba8b5971436ce1'
-            '821efb2826857d9ab0073366c1f717bd631d146282dab07fd6cbb9f91e088643'
-            '3f3233256725683aa95c29ee423932a5bcc74c0653e09d502240601387c3edec'
+            '895a8dfa906f2ae8a15209af562ac9b67af67afa615e243d54b31e94ca0dd1e4'
+            'a91249420d61edb17b8659ab3feca86d24cf3b1c941b14f232c47064fa4f4ce7'
             '794a5b743bd94a715957dc5fa391c3e3cd283b4aa12a4af9487565639192ef72'
             'e5bac2247f709a073ff5c901e9ec2043641d0cf61d8e64dcdfd35f489c72c13a')
