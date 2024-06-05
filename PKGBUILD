@@ -1,8 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=homeassistant-desktop-bin
-pkgver=1.0.0
+_pkgname="Home Assistant Desktop"
+pkgver=1.1.0
 _electronversion=23
-pkgrel=8
+pkgrel=1
 pkgdesc="A simple Home Assistant Desktop application, built using Electron.js"
 arch=('x86_64')
 url="https://github.com/mikepruett3/homeassistant-desktop"
@@ -17,13 +18,14 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/mikepruett3/homeassistant-desktop/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('171da8182923ab927c0b26e9dbc7dac1e1798e7f8012fb3b3bed0d09c81b0b82'
+sha256sums=('bd98324cad3dd55c61856d43bd820e5254425f3aaa1ff95eff1b0f85ea482480'
             '82f04c17c97a90cb676f7eec2bdeca09cfff8a6779b310226d8e750a70abad79'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
