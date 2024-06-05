@@ -8,8 +8,6 @@
 : ${_build_debug:=false}
 : ${_build_pgo:=try}
 
-: ${_build_clang:=true}
-: ${_build_mold:=false}
 : ${_build_git_tools:=false}
 
 : ${_build_instrumented:=false}
@@ -28,7 +26,7 @@ unset _pkgtype
 # basic info
 _pkgname="pcsx2"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=1.7.5856.r0.g69c2c53
+pkgver=1.7.5865.r0.g3c15f6e
 pkgrel=1
 pkgdesc='Sony PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
@@ -51,11 +49,11 @@ _main_package() {
     soundtouch
     wayland
     xcb-util-cursor
-
-    ## AUR
-    libbacktrace
   )
   makedepends=(
+    "clang${_tooltype:-}"
+    "lld${_tooltype:-}"
+    "llvm${_tooltype:-}"
     cmake
     extra-cmake-modules
     git
@@ -69,20 +67,6 @@ _main_package() {
   optdepends=(
     'qt6-wayland: Wayland support'
   )
-
-  if [[ "${_build_clang::1}" == "t" ]]; then
-    makedepends+=(
-      "clang${_tooltype:-}"
-      "llvm${_tooltype:-}"
-      "lld${_tooltype:-}"
-    )
-  fi
-
-  if [[ "${_build_mold::1}" == "t" ]]; then
-    makedepends+=(
-      "mold${_tooltype:-}"
-    )
-  fi
 
   provides=("$_pkgname")
   conflicts=("$_pkgname")
@@ -106,6 +90,7 @@ _main_package() {
   )
 
   _source_pcsx2
+  _source_backtrace
   _source_shaderc
 
   _source_biojppm_rapidyaml
@@ -185,43 +170,53 @@ _source_biojppm_c4core() {
   )
 }
 
-_source_shaderc() {
-  depends+=(
-    glslang
-    spirv-tools
-  )
-  makedepends+=(
-    spirv-headers
-  )
-
+_source_backtrace() {
   source+=(
-    "google.shaderc"::"git+https://github.com/google/shaderc.git"
-    #"khronosgroup.glslang"::"git+https://github.com/KhronosGroup/glslang.git"
-    #"khronosgroup.spirv-headers"::"git+https://github.com/KhronosGroup/SPIRV-Headers.git"
-    #"khronosgroup.spirv-tools"::"git+https://github.com/KhronosGroup/SPIRV-Tools.git"
+    "ianlancetaylor.libbacktrace"::"git+https://github.com/ianlancetaylor/libbacktrace.git"
   )
   sha256sums+=(
     'SKIP'
-    #'SKIP'
-    #'SKIP'
-    #'SKIP'
+  )
+
+  _build_backtrace() (
+    echo "Building libbacktrace..."
+    cd "ianlancetaylor.libbacktrace"
+
+    autoreconf -fi
+    ./configure
+    make
+
+    install -Dm644 .libs/libbacktrace.a -t "$srcdir/deps/"
+    install -Dm644 *.h -t "$srcdir/deps/include/"
+  )
+
+}
+
+_source_shaderc() {
+  source+=(
+    "google.shaderc"::"git+https://github.com/google/shaderc.git"
+    "khronosgroup.glslang"::"git+https://github.com/KhronosGroup/glslang.git"
+    "khronosgroup.spirv-headers"::"git+https://github.com/KhronosGroup/SPIRV-Headers.git"
+    "khronosgroup.spirv-tools"::"git+https://github.com/KhronosGroup/SPIRV-Tools.git"
+  )
+  sha256sums+=(
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
   )
 
   _prepare_shaderc() (
+    ln -s "$srcdir"/khronosgroup.glslang "$srcdir"/google.shaderc/third_party/glslang
+    ln -s "$srcdir"/khronosgroup.spirv-headers "$srcdir"/google.shaderc/third_party/spirv-headers
+    ln -s "$srcdir"/khronosgroup.spirv-tools "$srcdir"/google.shaderc/third_party/spirv-tools
+
     cd "$srcdir/google.shaderc"
     git apply "$srcdir/$_pkgsrc/.github/workflows/scripts/common/shaderc-changes.patch"
-
-    # de-vendor libs and disable git versioning
-    sed '/examples/d;/third_party/d' -i CMakeLists.txt
-    sed '/build-version/d' -i glslc/CMakeLists.txt
-    cat <<- EOF > glslc/src/build-version.inc
-"${pkgver}\\n"
-"$(pacman -Q spirv-tools | cut -d \  -f 2 | sed 's/-.*//')\\n"
-"$(pacman -Q glslang | cut -d \  -f 2 | sed 's/-.*//')\\n"
-EOF
   )
 
   _build_shaderc() {
+    echo "Building shaderc..."
     local _cmake_shaderc=(
       -B build_shaderc
       -S google.shaderc
@@ -231,7 +226,6 @@ EOF
       -DSHADERC_SKIP_TESTS=ON
       -DSHADERC_SKIP_EXAMPLES=ON
       -DSHADERC_SKIP_COPYRIGHT_CHECK=ON
-      -Dglslang_SOURCE_DIR=/usr/include/glslang
       -Wno-dev
     )
 
@@ -239,10 +233,10 @@ EOF
     cmake --build build_shaderc
     DESTDIR="$srcdir/deps" cmake --install build_shaderc
   }
-
 }
 
 _build_pcsx2() {
+  echo "Building pcsx2..."
   local _cmake_pcsx2
 
   _cmake_pcsx2+=(
@@ -250,8 +244,10 @@ _build_pcsx2() {
     -B build_pcsx2
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
-    -DCMAKE_PREFIX_PATH="$srcdir/deps/usr"
     -DCMAKE_SKIP_RPATH=ON
+    -DCMAKE_PREFIX_PATH="$srcdir/deps/usr"
+    -DLIBBACKTRACE_LIBRARY="$srcdir/deps/libbacktrace.a"
+    -DLIBBACKTRACE_INCLUDE_DIR="$srcdir/deps/include"
   )
 
   if [[ "${_build_debug::1}" == "t" ]]; then
@@ -322,24 +318,18 @@ pkgver() {
 }
 
 build() {
-  export CC CXX CFLAGS CXXFLAGS LDFLAGS
-
-  if [[ "${_build_clang::1}" == "t" ]]; then
-    CC=clang
-    CXX=clang++
-  fi
-
-  if [[ "${_build_mold::1}" == "t" ]]; then
-    LDFLAGS+=" -fuse-ld=mold"
-  elif [[ "${_build_clang::1}" == "t" ]]; then
-    LDFLAGS+=" -fuse-ld=lld"
-  fi
+  export AR CC CXX CFLAGS CXXFLAGS LDFLAGS
+  AR=llvm-ar
+  CC=clang
+  CXX=clang++
+  LDFLAGS+=" -fuse-ld=lld"
 
   if [[ "${_build_avx::1}" == "t" ]]; then
     CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
     CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
   fi
 
+  _build_backtrace
   _build_shaderc
   _build_pcsx2
 
