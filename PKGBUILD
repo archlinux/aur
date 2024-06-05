@@ -1,3 +1,4 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: John Reese <john@noswap.com>
 # Upstream URL: https://github.com/jreese/dotlink
 #
@@ -7,12 +8,12 @@
 
 pkgname=dotlink
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Automated deployment of dotfiles to local or remote locations"
 arch=('any')
 url="https://github.com/jreese/dotlink"
 license=('MIT')
-depends=('python-click' 'python-platformdirs' 'python-typing_extensions')
+depends=('python' 'python-click' 'python-platformdirs' 'python-typing_extensions')
 makedepends=('python-build' 'python-flit-core' 'python-installer')
 
 source=("https://pypi.python.org/packages/source/D/Dotlink/dotlink-${pkgver}.tar.gz")
