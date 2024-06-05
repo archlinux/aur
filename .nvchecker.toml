@@ -1,0 +1,4 @@
+[cwtch-autobindings-git]
+source = "git"
+git = "https://git.openprivacy.ca/cwtch.im/autobindings.git"
+prefix = "v"
