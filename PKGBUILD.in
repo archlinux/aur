@@ -30,6 +30,13 @@ conflicts=(
 	"nextpnr-generic-nightly"
 )
 replaces=()
+provides=(
+	"nextpnr-ecp5=$(cut -d _ -f 3 <<< "${pkgver}")"
+	"nextpnr-generic=$(cut -d _ -f 3 <<< "${pkgver}")"
+	"nextpnr-ice40=$(cut -d _ -f 3 <<< "${pkgver}")"
+	"nextpnr-machxo2=$(cut -d _ -f 3 <<< "${pkgver}")"
+	"nextpnr-nexus=$(cut -d _ -f 3 <<< "${pkgver}")"
+)
 source=(
 	"nextpnr::git+https://github.com/YosysHQ/nextpnr.git#commit=@EDA_HASH@"
 )

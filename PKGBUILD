@@ -1,7 +1,7 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=nextpnr-all-nightly
-pkgver=20240604_nextpnr_0.7_39_gb7f91e57
+pkgver=20240605_nextpnr_0.7_39_gb7f91e57
 pkgrel=1
 epoch=1
 pkgdesc="nextpnr portable FPGA place and route tool - ice40, ecp5, machxo2, nexus, and generic"
@@ -30,6 +30,13 @@ conflicts=(
 	"nextpnr-generic-nightly"
 )
 replaces=()
+provides=(
+	"nextpnr-ecp5=$(cut -d _ -f 3 <<< "${pkgver}")"
+	"nextpnr-generic=$(cut -d _ -f 3 <<< "${pkgver}")"
+	"nextpnr-ice40=$(cut -d _ -f 3 <<< "${pkgver}")"
+	"nextpnr-machxo2=$(cut -d _ -f 3 <<< "${pkgver}")"
+	"nextpnr-nexus=$(cut -d _ -f 3 <<< "${pkgver}")"
+)
 source=(
 	"nextpnr::git+https://github.com/YosysHQ/nextpnr.git#commit=b7f91e57"
 )
