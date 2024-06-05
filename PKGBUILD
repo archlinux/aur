@@ -1,6 +1,6 @@
 pkgname=primevideo
 _pkgname=PrimeVideo
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 _pkgrel_x86_64=1
 pkgdesc="Unnofficial Prime Videos desktop application"
@@ -11,7 +11,7 @@ depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 conflicts=("primevideo-git" "primevideo-bin")
 source=("https://gitlab.com/primevideo/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
-sha256sums=('SKIP')
+sha256sums=('4b0cac84ab9d6a66af49590a6a0596e5a8ed9554b9aca4a7d81d1d018789029b')
 
 package() {
     for dir in application-$pkgver-$pkgrel ; do mv "${dir}" "$_pkgname" ;done
