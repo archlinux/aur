@@ -1,13 +1,45 @@
---- Makefile.std	2024-06-04 18:12:48.311904067 +0200
-+++ Makefile.std_fixed	2024-06-04 18:16:51.839374483 +0200
-@@ -36,6 +36,10 @@
- 
- include $(VLSI_TOOLS_SRC)/scripts/config
- 
-+ifdef INSTALL_OVERRIDE
-+INSTALLDIR=$(INSTALL_OVERRIDE)
-+endif
-+
- .SUFFIXES: .os
- 
- INSTALLBIN=$(INSTALLDIR)/bin
+38a39,42
+> ifdef INSTALL_OVERRIDE
+> INSTALLDIR=$(INSTALL_OVERRIDE)
+> endif
+> 
+51,58c55,64
+< LIBCOMMON=-L$(INSTALLLIB) -lvlsilib
+< SHLIBCOMMON=-L$(INSTALLLIB) -lvlsilib_sh
+< LIBACT=-L$(INSTALLLIB) -lact -lvlsilib -ldl
+< SHLIBACT=-L$(INSTALLLIB) -lact_sh -lvlsilib_sh -ldl
+< LIBACTPASS=-L$(INSTALLLIB) -lactpass -lact -lvlsilib -ldl
+< SHLIBACTPASS=-L$(INSTALLLIB) -lactpass_sh -lact_sh -lvlsilib_sh -ldl
+< LIBSSIM=-L$(INSTALLLIB) -lssim -lvlsilib
+< LIBASIM=-L$(INSTALLLIB) -lasim -lvlsilib
+---
+> LIBLOC=$(ACT_HOME)/lib
+> 
+> LIBCOMMON=-L$(LIBLOC) -lvlsilib
+> SHLIBCOMMON=-L$(LIBLOC) -lvlsilib_sh
+> LIBACT=-L$(LIBLOC) -lact -lvlsilib -ldl
+> SHLIBACT=-L$(LIBLOC) -lact_sh -lvlsilib_sh -ldl
+> LIBACTPASS=-L$(LIBLOC) -lactpass -lact -lvlsilib -ldl
+> SHLIBACTPASS=-L$(LIBLOC) -lactpass_sh -lact_sh -lvlsilib_sh -ldl
+> LIBSSIM=-L$(LIBLOC) -lssim -lvlsilib
+> LIBASIM=-L$(LIBLOC) -lasim -lvlsilib
+62,68c68,74
+< LIBDEPEND=$(INSTALLLIB)/libvlsilib.a
+< ACTDEPEND=$(INSTALLLIB)/libact.a $(LIBDEPEND)
+< ACTPASSDEPEND=$(ACTDEPEND) $(INSTALLLIB)/libactpass.a
+< SSIMDEPEND=$(INSTALLLIB)/libssim.a $(LIBDEPEND)
+< ASIMDEPEND=$(INSTALLLIB)/libasim.a $(LIBDEPEND)
+< SCMDEPEND=$(INSTALLLIB)/libactscm.a
+< SCMCLIDEPEND=$(INSTALLLIB)/libactscm.a $(INSTALLLIB)/libactscmcli.a
+---
+> LIBDEPEND=$(LIBLOC)/libvlsilib.a
+> ACTDEPEND=$(LIBLOC)/libact.a $(LIBDEPEND)
+> ACTPASSDEPEND=$(ACTDEPEND) $(LIBLOC)/libactpass.a
+> SSIMDEPEND=$(LIBLOC)/libssim.a $(LIBDEPEND)
+> ASIMDEPEND=$(LIBLOC)/libasim.a $(LIBDEPEND)
+> SCMDEPEND=$(LIBLOC)/libactscm.a
+> SCMCLIDEPEND=$(LIBLOC)/libactscm.a $(LIBLOC)/libactscmcli.a
+73c79
+< DFLAGS=-DARCH_$(ARCH) -DOS_$(OS) -DBASEOS_$(BASEOS) -I$(INSTALLINC) # -D_FORTIFY_SOURCE=0
+---
+> DFLAGS=-DARCH_$(ARCH) -DOS_$(OS) -DBASEOS_$(BASEOS) -I$(INSTALLINC) -I$(ACT_HOME)/include # -D_FORTIFY_SOURCE=0

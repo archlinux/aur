@@ -2,7 +2,7 @@
 
 pkgname=act-core-git
 pkgver=0.0.1.r1865.033b73b
-pkgrel=3
+pkgrel=4
 pkgdesc="ACT core provides the core library for the ACT AVLSI toolflow."
 arch=('x86_64')
 url="https://github.com/asyncvlsi/act"
@@ -19,7 +19,6 @@ source=(
     "install-scripts.patch"
     "script-makefile.patch"
     "standard-makefile.patch"
-    "LICENSE"
 )
 sha512sums=(
     "SKIP"
@@ -27,8 +26,7 @@ sha512sums=(
     "d3b3826b1e2126f9e12760d9046da7cd19b8f20e94e40e4229b82df3a36f8d7392c09feb3b473ca603cdac214d6b97f6b2d6cd667b8b11e5cf5b661f0bf94640"
     "49663486b1d8098da390f53f731d654f7711af1329e0b21a7a34658864278b6671c2f234320c56132a5cfedd42a6152f5a1ad502f068a767a95049476aa44af0"
     "e2c949e7e7ef6a3053b406db61c975f3b77e7bef203dc858edabcc6eff8c1a1c47df7d5747f55973ac5a0ed6b5ff512aef87490b979c5cbcd13305d0a23348e0"
-    "14d2e5faffafa713805bad6952546870d6e2519f996899b89fbbc09e19b0ed5500db2f1cba3a9aaf73700e58d295b1f35000278046d7b38cceed5736e1102d6c"
-    "aee80b1f9f7f4a8a00dcf6e6ce6c41988dcaedc4de19d9d04460cbfb05d99829ffe8f9d038468eabbfba4d65b38e8dbef5ecf5eb8a1b891d9839cda6c48ee957"
+    "b63ddb198a5b967a1b1eb1801a20b021257424975ea98a738feb2d0e6020a43e5f551591b4257863100bc885a9034c4e3e713758bf29a38a690a9a57efe94949"
 )
 
 pkgver() {
@@ -41,16 +39,13 @@ prepare() {
     # we need to fix this
     patch "${srcdir}/act/scripts/install-scripts" < "install-scripts.patch"
     patch "${srcdir}/act/scripts/Makefile" < "script-makefile.patch"
-
-    # to separate libraries and build location better for packaging, inject install location override
-    patch "${srcdir}/act/scripts/Makefile.std" < "standard-makefile.patch"
 }
 
 package() {
     # install the scripts to set the correct env variables
     install -Dm755 "${pkgname}.sh" "${pkgdir}/etc/profile.d/${pkgname}.sh"
     install -Dm755 "${pkgname}.csh" "${pkgdir}/etc/profile.d/${pkgname}.csh"
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/act/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     # we need to build in fakeroot since ACT does not separate
     # build and install very cleanly
@@ -73,4 +68,7 @@ package() {
 
     export ACT_HOME="${pkgdir}/opt/act-async"
     make runtest
+
+    # to separate libraries and build location better for packaging, inject install location override
+    patch "${pkgdir}/opt/act-async/scripts/Makefile.std" < "${srcdir}/standard-makefile.patch"
 }
