@@ -2,7 +2,7 @@
 # Contributor: Jose Riha <jose1711 [at] gmail (dot) com>
 
 pkgname=ratarmount
-pkgver=0.15.0
+pkgver=0.15.1
 pkgrel=1
 pkgdesc="Mount tar files via fusepy. Supports Recursive Mounting, Compressed Files, Read-Only Bind Mounting, Union Mounting and Write Overlays. A fast random access alternative to archivemount."
 arch=(any)
@@ -34,7 +34,7 @@ optdepends=(
 )
 _pkg_ext='.tar.gz'
 source=("${pkgname}-${pkgver}${_pkg_ext}::${url}/archive/refs/tags/v${pkgver}${_pkg_ext}")
-b2sums=('ba235862d3238e145260995adb573f4c68c8cd3ef7ced4b21bc90476f8eeaa009d96ced337466981ef97423e7e239b10ffa5e46e41226d347dd1d58b13f9dda7')
+b2sums=('516253edbd22904af78e519bb66323c008fee013c293f7755bb935da0daa9dae165b01f316655308ee9af99c9538b9b5c3c6e4ae623ae864e74c31efa2a9599d')
 
 build() {
 	cd "$srcdir/${pkgname}-${pkgver}/core"
