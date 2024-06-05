@@ -1,0 +1,16 @@
+pkgbase = ontake-himitsu-git
+	pkgdesc = A tiny command line 2FA TOTP client.
+	pkgver = r10.g1840670
+	pkgrel = 1
+	url = https://git.ontake.dev/go/himitsu
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = go>=1.18
+	provides = ontake-himitsu
+	conflicts = ontake-himitsu
+	source = git+https://git.ontake.dev/go/himitsu
+	md5sums = SKIP
+
+pkgname = ontake-himitsu-git
