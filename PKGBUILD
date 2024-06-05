@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-indicator-session-git
-pkgver=2.2.8.r42.g5477639
+pkgver=2.3.1.r53.g666e6c6d
 pkgrel=1
 pkgdesc='Session indicator for Wingpanel'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/elementary/wingpanel-indicator-session'
 license=('GPL2')
 groups=('pantheon-unstable')
 depends=('accountsservice' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3'
-         'libgranite.so' 'libwingpanel-2.0.so' 'libhandy')
+         'libgranite.so' 'libwingpanel-3.0.so' 'libhandy')
 makedepends=('git' 'gobject-introspection' 'granite' 'meson' 'vala'
              'wingpanel')
 provides=('wingpanel-indicator-session')
