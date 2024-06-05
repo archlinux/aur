@@ -1,0 +1,18 @@
+pkgbase = r-multitaper
+	pkgdesc = Spectral Analysis Tools using the Multitaper Method
+	pkgver = 1.0.17
+	pkgrel = 1
+	url = https://cran.r-project.org/package=multitaper
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = gcc-fortran
+	depends = lapack
+	depends = r
+	optdepends = r-fftwtools
+	optdepends = r-psd
+	optdepends = r-slp
+	source = https://cran.r-project.org/src/contrib/multitaper_1.0-17.tar.gz
+	md5sums = b06203f832564a39ecea719b2d006771
+	b2sums = 6c935f324b68788edeb7cb2064af6a852c783679141eee0178e2dfe9598c81e8fe8755844dc51abb6f9f730d4122789177e4ef20230363ec9a1a1bc5b6c3c6c4
+
+pkgname = r-multitaper
