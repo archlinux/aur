@@ -4,7 +4,7 @@
 
 pkgname=casadi
 pkgver=3.6.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Symbolic framework for automatic differentiation and numeric optimization"
 arch=('i686' 'x86_64')
 url="https://github.com/${pkgname}/${pkgname}"
@@ -12,13 +12,13 @@ license=('LGPL-3.0-only')
 depends=('python' 'gcc-fortran' 'lapack' 'tinyxml' 'tinyxml2' 'swig' 'ipython'
          'python-numpy' 'python-scipy' 'python-matplotlib' 'coin-or-ipopt' 'dsdp'
          'osqp' 'proxsuite' 'coin-or-qpoases')
-makedepends=('cmake' 'eigen' 'simde')
+makedepends=('cmake' 'eigen' 'simde' 'python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz"::"${url}/archive/${pkgver}.tar.gz")
 sha256sums=('fb669c3dfac4c9a6872c4016961dcf4dd8879cf4448253a4aa1b5251652b360e')
 
 build() {
     cmake -B "build-$pkgver" -S "$pkgbase-$pkgver" \
-        -DCMAKE_INSTALL_PREFIX="/usr" \
+        -DCMAKE_INSTALL_PREFIX=/usr \
         -DFORTRAN_REQUIRED=ON \
         -DWITH_PYTHON=ON \
         -DWITH_PYTHON3=ON \
