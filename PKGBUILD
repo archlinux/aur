@@ -1,21 +1,21 @@
 # Maintainer: Refutationalist <archlinux@sammulvey.com>
 pkgname=xen-qemu
 _srcname=qemu
-pkgver=8.2.1
+pkgver=9.0.0
 pkgrel=1
 pkgdesc="A xen-specific QEMU, built to qemu-builtin standards"
 arch=("x86_64")
 url="https://www.qemu.org"
 license=(GPL2 LGPL2.1)
 depends=(curl xen numactl)  # lot of deps are apparently covered by xen
-makedepends=(ninja meson)
+makedepends=(ninja meson python-packaging)
 provides=(qemu-xen xen-qemu xen-qemu-builtin)
 conflicts=(xen-qemu-builtin)
 replaces=(xen-qemu-builtin)
 source=(
 	https://download.qemu.org/qemu-${pkgver}.tar.xz{,.sig}
 )
-sha512sums=('e72d3e13339c03e8d371ca060ac700c45af2ca37523cddb6b02dcaf8430d75c8cef194cf496df9816440b281f368457def1126677db757928805d93ceca2f9af'
+sha512sums=('1603517cd4c93632ba60ad7261eb67374f12a744bf58f10b0e8686e46d3a02d8b6bf58a0c617f23a1868084aaba6386c24341894f75539e0b816091718721427'
             'SKIP')
 
 
