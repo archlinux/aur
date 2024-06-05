@@ -1,10 +1,11 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Anatoly Bashmakov <anatoly at posteo dot net>
 # Contributor: Carsten Feuls <archlinux@carstenfeuls.de>
 
 _gemname=execjs
 pkgname=ruby-$_gemname
 pkgver=2.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Run JavaScript code from Ruby'
 arch=('any')
 url='https://github.com/rails/execjs'
@@ -12,13 +13,31 @@ license=('MIT')
 depends=('ruby' 'nodejs')
 makedepends=('ruby-rdoc')
 options=(!emptydirs)
-source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-noextract=($_gemname-$pkgver.gem)
-sha256sums=('e8fd066f6df60c8e8fbebc32c6fb356b5212c77374e8416a9019ca4bb154dcfb')
+source=("${url}/archive/v${pkgver}/${_gemname}-${pkgver}.tar.gz")
+sha256sums=('91355ddd70ae423254d0447a92c7fc94b037062e8d0fc1da7bd38971c6d92161')
+
+prepare() {
+  cd ${_gemname}-${pkgver}
+  sed 's|git ls-files -z|find -type f -print0\|sed "s,\\\\./,,g"|' -i ${_gemname}.gemspec
+  sed -r 's|~>|>=|g' -i ${_gemname}.gemspec
+}
+
+build() {
+  cd ${_gemname}-${pkgver}
+  gem build ${_gemname}.gemspec
+}
+
+check() {
+  cd ${_gemname}-${pkgver}
+  rake test
+}
 
 package() {
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
-  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
-  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/MIT-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd ${_gemname}-${pkgver}
+  local _gemdir="$(gem env gemdir)"
+  gem install --ignore-dependencies --no-user-install -i "${pkgdir}${_gemdir}" \
+    -n "${pkgdir}/usr/bin" ${_gemname}-${pkgver}.gem
+  install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 MIT-LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  rm -r "${pkgdir}/${_gemdir}/cache"
 }
