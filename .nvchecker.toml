@@ -1,0 +1,4 @@
+[libcwtch-go-git]
+source = "git"
+git = "https://git.openprivacy.ca/cwtch.im/libcwtch-go.git"
+prefix = "v"
