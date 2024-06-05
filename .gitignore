@@ -1,0 +1,11 @@
+*
+!PKGBUILD
+!license.tar.gz
+!open.sh
+!.SRCINFO
+!user-dirs.dirs
+!wechat.env
+!wechat.sh
+!wechat-uos-qt.desktop
+!wechat-uos-qt.svg
+!.gitignore
