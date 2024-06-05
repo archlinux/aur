@@ -1,0 +1,4 @@
+[obsidian-export]
+source = "git"
+git = "https://github.com/zoni/obsidian-export.git"
+prefix = "v"
