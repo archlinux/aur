@@ -4,9 +4,10 @@ pkgname=('xapp-thumbnailers-common'
          'xapp-epub-thumbnailer'
          'xapp-raw-thumbnailer'
          'xapp-vorbiscomment-thumbnailer'
-         'xapp-appimage-thumbnailer')
+         'xapp-appimage-thumbnailer'
+         'xapp-gimp-thumbnailer')
 pkgbase=xapp-thumbnailers
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="Thumbnailers for GTK Desktop Environments"
 arch=('any')
@@ -14,7 +15,7 @@ url="https://github.com/linuxmint/xapp-thumbnailers"
 license=('GPL-3.0-or-later')
 makedepends=('meson')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('c3b0ba1da4a7279be64f452ae507516b06cc1644bba7b14d18049dfe0f50ea09')
+sha256sums=('88107e5fe431ab28724e1ad4888981a58581ed4b0764937ce1d4f069ae7b3b40')
 
 build() {
   arch-meson "$pkgbase-$pkgver" build
@@ -73,6 +74,16 @@ package_xapp-vorbiscomment-thumbnailer() {
 package_xapp-appimage-thumbnailer() {
   pkgdesc="AppImage thumbnailer"
   depends=('python-pyelftools' 'squashfs-tools' 'xapp-thumbnailers-common')
+
+  cd "$pkgbase-$pkgver"
+  install -Dm755 "files/usr/bin/$pkgname" -t "$pkgdir/usr/bin/"
+  install -Dm644 "files/usr/share/thumbnailers/$pkgname.thumbnailer" -t \
+    "$pkgdir/usr/share/thumbnailers/"
+}
+
+package_xapp-gimp-thumbnailer() {
+  pkgdesc="GIMP thumbnailer"
+  depends=('gimp' 'xapp-thumbnailers-common')
 
   cd "$pkgbase-$pkgver"
   install -Dm755 "files/usr/bin/$pkgname" -t "$pkgdir/usr/bin/"
