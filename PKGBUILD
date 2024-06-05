@@ -10,13 +10,13 @@
 # https://releases.electronjs.org/
 
 pkgver=29.4.2
-pkgrel=1
+pkgrel=2
 _major_ver=${pkgver%%.*}
 _projectname=electron
 _pkgname="${_projectname}${_major_ver}"
 pkgname="${_pkgname}"-bin
 pkgdesc='Build cross platform desktop apps with web technologies — binary'
-arch=(x86_64 armv7l aarch64)
+arch=(x86_64 armv7h aarch64)
 url='https://electronjs.org'
 license=(MIT BSD-3-Clause)
 depends=(c-ares
@@ -41,7 +41,7 @@ source_aarch64=(
 	"${_releaseurl}/chromedriver-v${pkgver}-linux-arm64.zip"
 	"${_releaseurl}/${_projectname}-v${pkgver}-linux-arm64.zip"
 )
-source_armv7l=(
+source_armv7h=(
 	"${_releaseurl}/chromedriver-v${pkgver}-linux-armv7l.zip"
 	"${_releaseurl}/${_projectname}-v${pkgver}-linux-armv7l.zip"
 )
@@ -51,7 +51,7 @@ source_x86_64=(
 )
 sha256sums_x86_64=('e612ae9910bfd004ced13cdef0dda9e49d699c69ac18f04900b1129b98d41b23'
                    'eb07a8137fde970450242c51e0c2f8ef6556f377a21c357584aa2632ee9e1d3f')
-sha256sums_armv7l=('e7bc85b47ec47f282a6d198f33c656618f9011366f47bb04fd31cef331691c8b'
+sha256sums_armv7h=('e7bc85b47ec47f282a6d198f33c656618f9011366f47bb04fd31cef331691c8b'
                    'a75e2487ea1a1b292fbc160618167c204f161c602780f2b997b75d6ef5bbe539')
 sha256sums_aarch64=('b501dac3cd694a879a82f65d6a15047ff417c3b5d70107ee38973f4d16477ea1'
                     'a5c2bc148d3f6c3ee2bd15289243a1b75093afde3753d0aa1125d2cb621f5b59')
