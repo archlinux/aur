@@ -1,6 +1,6 @@
 pkgbase = xwin
 	pkgdesc = Allows downloading and repacking the MSVC CRT and Windows SDK for cross compilation
-	pkgver = 0.5.2
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://crates.io/crates/xwin
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = xwin
 	makedepends = clang
 	makedepends = lld
 	depends = glibc
-	source = xwin-0.5.2.tar.gz::https://static.crates.io/crates/xwin/xwin-0.5.2.crate
-	sha256sums = 785f4a70b9fa4f0bc2ce92026577cf57bd908f5f70663276eb989698d47ee8b4
+	source = xwin-0.6.0.tar.gz::https://static.crates.io/crates/xwin/xwin-0.6.0.crate
+	sha256sums = 5be0251ffb50d1ed6c08fbee5bba5b194e36a43b47371806554ac7ab4d58fe21
 
 pkgname = xwin
