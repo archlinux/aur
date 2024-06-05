@@ -37,7 +37,7 @@ package() {
   	tar -xvf data.tar.* -C $pkgdir
   	find $pkgdir/opt -type f -not -path "*/resources/*" -print -delete
   	printf '#!/bin/sh
-	exec env ELECTRON_IS_DEV=0 electron27 /opt/Anytype/resources/app.asar "$@"
+	exec env ELECTRON_IS_DEV=0 electron /opt/Anytype/resources/app.asar "$@"
 	' | install -Dm755 /dev/stdin $pkgdir/opt/Anytype/anytype
 
 }
