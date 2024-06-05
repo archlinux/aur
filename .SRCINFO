@@ -1,14 +1,20 @@
 pkgbase = libdecsync-bin
-	pkgdesc = libdecsync is a multiplatform library for synchronizing using DecSync.
+	pkgdesc = multiplatform library for synchronizing using DecSync
 	pkgver = 2.2.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/39aldo39/libdecsync
-	arch = aarch64
 	arch = x86_64
-	license = custom:LGPL2
+	arch = aarch64
+	arch = armv7h
+	license = LGPL-2.0-only
 	depends = gcc-libs
 	provides = libdecsync
-	source = https://github.com/39aldo39/libdecsync-bindings-python3/raw/master/libdecsync/libs/libdecsync_arm64.so
-	sha256sums = e8bb54ca7086d3d1d79b9987b904b34a6f4db3c9353b066f102f90cfffd5ab9b
+	conflicts = libdecsync
+	source_x86_64 = https://github.com/39aldo39/libdecsync/releases/download/v2.2.1/libdecsync_amd64.so
+	sha256sums_x86_64 = 14ccf7505ecf0161740fc0a6df8a08300c745d95ffee070564b96dfec10bbb3e
+	source_aarch64 = https://github.com/39aldo39/libdecsync/releases/download/v2.2.1/libdecsync_arm64.so
+	sha256sums_aarch64 = e8bb54ca7086d3d1d79b9987b904b34a6f4db3c9353b066f102f90cfffd5ab9b
+	source_armv7h = https://github.com/39aldo39/libdecsync/releases/download/v2.2.1/libdecsync_arm32.so
+	sha256sums_armv7h = dd38de69752357a95bf20de94d2e6bbfdb19c30fba98a27bd05128b9f6493c8c
 
 pkgname = libdecsync-bin
