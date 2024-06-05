@@ -2,13 +2,13 @@
 
 pkgname=act-tracelib-git
 pkgver=0.0.1.r29.c8af854
-pkgrel=1
+pkgrel=2
 pkgdesc="A simulation trace file writer interface."
 arch=('x86_64')
 url="https://github.com/asyncvlsi/tracelib"
 license=('LGPL-2.1')
 depends=('act-core')
-makedepends=('git' 'make')
+makedepends=('git' 'make' 'binutils' 'gcc')
 conflicts=('act-tracelib')
 provides=('act-tracelib')
 source=("git+${url}")

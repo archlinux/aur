@@ -1,12 +1,14 @@
 pkgbase = act-tracelib-git
 	pkgdesc = A simulation trace file writer interface.
 	pkgver = 0.0.1.r29.c8af854
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/asyncvlsi/tracelib
 	arch = x86_64
 	license = LGPL-2.1
 	makedepends = git
 	makedepends = make
+	makedepends = binutils
+	makedepends = gcc
 	depends = act-core
 	provides = act-tracelib
 	conflicts = act-tracelib
