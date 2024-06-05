@@ -3,12 +3,12 @@
 # Contributor: jdarch <jda -dot- cloud -plus- archlinux -at- gmail -dot- com>
 
 pkgname=blis-git
-pkgver=0.9.0.r134.ga72e4569f
+pkgver=1.0.r19.g5cbec6503
 pkgrel=1
 pkgdesc="BLAS-like Library Instantiation Software Framework"
 arch=('i686' 'x86_64')
 url="https://github.com/flame/blis"
-license=('custom')
+license=('BSD-3-Clause')
 depends=('gcc-libs')
 makedepends=('git' 'python')
 provides=("blis=$pkgver" 'blas' 'cblas')
@@ -30,6 +30,7 @@ pkgver() {
 build() {
   cd "blis"
 
+  CFLAGS="$CFLAGS -ffat-lto-objects" \
   ./configure \
     --prefix="/usr" \
     --enable-cblas \
