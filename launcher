@@ -7,7 +7,7 @@ export WINEPREFIX="${WINEPREFIX-${XDG_DATA_HOME}/wineprefixes/pkhex}"
 
 if [ ! -d "${WINEPREFIX}" ]; then
   echo 'Setting up the Wine prefix...'
-  winetricks -q --force 'dotnetdesktop7'
+  winetricks -q --force 'dotnetdesktop8'
   echo 'Completed setting up the Wine prefix.'
 fi
 
@@ -46,6 +46,7 @@ case "$1" in
     echo 'Updating'
     cd ${PKHEX_DATA_DIRECTORY}
     cp /usr/share/pkhex/PKHeX.exe ./PKHeX.exe
+    winetricks -q --force 'dotnetdesktop8'
     ;;
   *)
     # cd ${PKHEX_DATA_DIRECTORY}
