@@ -1,6 +1,6 @@
 pkgname=crunchyroll
 _pkgname=Crunchyroll
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Unnofficial CrunchyRoll desktop application"
 arch=('x86_64')
@@ -8,10 +8,8 @@ url="https://gitlab.com/linuxbombay/crunchyroll"
 license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
-conflicts=("crunchyroll-bin")
-replace=("crunchyroll-bin")
 source=("$url/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
-sha256sums=('fd9377797f7e2b1189cfe489216fec5553df032a5da87ff1f578f397f9034c75')
+sha256sums=('489c4e28fb691b02807355fb43699b51cf8c0a9c2b9e62d986a42473d776bc5e')
 
 
 package() {
