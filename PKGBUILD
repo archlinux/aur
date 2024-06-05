@@ -16,7 +16,7 @@ makedepends=("binutils" "tar" "coreutils" "wget")
 DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 
 source=("https://boosteroid.com/linux/installer/boosteroid-install-x64.deb")
-md5sums=("cc2d9b2cc7d4de37179f5f5d6daff7da:")
+md5sums=("cc2d9b2cc7d4de37179f5f5d6daff7da")
 
 prepare() {
   cd "$srcdir"
