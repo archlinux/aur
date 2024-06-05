@@ -1,0 +1,4 @@
+[trayer]
+source = "git"
+git = "https://github.com/sargon/trayer-srg.git"
+prefix = "trayer-"
