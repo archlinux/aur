@@ -1,16 +1,16 @@
 pkgbase = python-rich-argparse
 	pkgdesc = Rich help formatters for argparse and optparse
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
-	url = https://pypi.org/project/rich-argparse/
+	url = https://github.com/hamdanal/rich-argparse
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-hatchling
-	depends = python
+	depends = python>=3.0
 	depends = python-rich
-	source = https://files.pythonhosted.org/packages/source/r/rich_argparse/rich_argparse-1.4.0.tar.gz
-	sha256sums = c275f34ea3afe36aec6342c2a2298893104b5650528941fb53c21067276dba19
+	source = rich-argparse-1.5.0.tar.gz::https://github.com/hamdanal/rich-argparse/archive/v1.5.0.tar.gz
+	sha256sums = 18b21e23f562af9843531ebeb924aa68dc462ba807bd885b6fc355106178fddd
 
 pkgname = python-rich-argparse
