@@ -1,0 +1,4 @@
+[emacs-spacemacs-funcs]
+source = "git"
+git = "https://github.com/syl20bnr/spacemacs.git"
+prefix = "v"
