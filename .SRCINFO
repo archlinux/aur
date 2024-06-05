@@ -1,6 +1,6 @@
 pkgbase = tree-sitter-git
 	pkgdesc = An incremental parsing system for programming tools
-	pkgver = 0.20.9.r9.g78c297e6
+	pkgver = 0.22.6.r29.g604d38e6
 	pkgrel = 1
 	url = https://tree-sitter.github.io/tree-sitter/
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = tree-sitter-git
 	license = MIT
 	makedepends = git
 	depends = glibc
-	provides = tree-sitter=0.20.9.r9.g78c297e6
+	provides = tree-sitter=0.22.6.r29.g604d38e6
 	provides = libtree-sitter.so
 	conflicts = tree-sitter
 	options = staticlibs
