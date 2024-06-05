@@ -1,34 +1,45 @@
 pkgbase = electron29-bin
-	pkgdesc = Build cross platform desktop apps with web technologies — prebuilt
-	pkgver = 29.0.1
+	pkgdesc = Build cross platform desktop apps with web technologies — binary
+	pkgver = 29.4.2
 	pkgrel = 1
 	url = https://electronjs.org
 	arch = x86_64
+	arch = armv7l
 	arch = aarch64
 	license = MIT
-	license = custom
+	license = BSD-3-Clause
 	depends = c-ares
-	depends = alsa-lib
+	depends = gcc-libs
+	depends = glibc
 	depends = gtk3
+	depends = libgtk-3.so
 	depends = libevent
 	depends = libffi
+	depends = libffi.so
+	depends = libpulse
+	depends = libpulse.so
 	depends = nss
+	depends = zlib
+	depends = libz.so
 	optdepends = kde-cli-tools: file deletion support (kioclient5)
 	optdepends = pipewire: WebRTC desktop sharing under Wayland
 	optdepends = qt5-base: enable Qt5 with --enable-features=AllowQt
 	optdepends = gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)
-	provides = electron29=29.0.1
-	provides = electron=29.0.1
+	provides = electron29=29.4.2
 	conflicts = electron29
-	source_x86_64 = electron29-bin-chromedriver-29.0.1-x86_64.zip::https://github.com/electron/electron/releases/download/v29.0.1/chromedriver-v29.0.1-linux-x64.zip
-	source_x86_64 = electron29-bin-29.0.1-x86_64.zip::https://github.com/electron/electron/releases/download/v29.0.1/electron-v29.0.1-linux-x64.zip
-	sha256sums_x86_64 = 45b5f2be0df893a3ba8e903f3a3b97095a2d3d9079bfd6a61fb94369cbe793d7
-	sha256sums_x86_64 = 7158ff2a690b386ba665e3dc6de741f0c8e72408a16c5e9ea374e1dc111bf042
-	source_aarch64 = electron29-bin-chromedriver-29.0.1-aarch64.zip::https://github.com/electron/electron/releases/download/v29.0.1/chromedriver-v29.0.1-linux-arm64.zip
-	source_aarch64 = electron29-bin-29.0.1-aarch64.zip::https://github.com/electron/electron/releases/download/v29.0.1/electron-v29.0.1-linux-arm64.zip
-	sha256sums_aarch64 = 8dd84910d8cf7806e36f01c93dc82128fdcd56b57f8c4c3310395fb79042cddf
-	sha256sums_aarch64 = 8e73d80148dfb2a7f98ea95806e4c6e1f8fc9f0963d296de5b1a8cf29cdc2967
+	source_x86_64 = https://github.com/electron/electron/releases/download/v29.4.2/chromedriver-v29.4.2-linux-x64.zip
+	source_x86_64 = https://github.com/electron/electron/releases/download/v29.4.2/electron-v29.4.2-linux-x64.zip
+	sha256sums_x86_64 = e612ae9910bfd004ced13cdef0dda9e49d699c69ac18f04900b1129b98d41b23
+	sha256sums_x86_64 = eb07a8137fde970450242c51e0c2f8ef6556f377a21c357584aa2632ee9e1d3f
+	source_armv7l = https://github.com/electron/electron/releases/download/v29.4.2/chromedriver-v29.4.2-linux-armv7l.zip
+	source_armv7l = https://github.com/electron/electron/releases/download/v29.4.2/electron-v29.4.2-linux-armv7l.zip
+	sha256sums_armv7l = e7bc85b47ec47f282a6d198f33c656618f9011366f47bb04fd31cef331691c8b
+	sha256sums_armv7l = a75e2487ea1a1b292fbc160618167c204f161c602780f2b997b75d6ef5bbe539
+	source_aarch64 = https://github.com/electron/electron/releases/download/v29.4.2/chromedriver-v29.4.2-linux-arm64.zip
+	source_aarch64 = https://github.com/electron/electron/releases/download/v29.4.2/electron-v29.4.2-linux-arm64.zip
+	sha256sums_aarch64 = b501dac3cd694a879a82f65d6a15047ff417c3b5d70107ee38973f4d16477ea1
+	sha256sums_aarch64 = a5c2bc148d3f6c3ee2bd15289243a1b75093afde3753d0aa1125d2cb621f5b59
 
 pkgname = electron29-bin
