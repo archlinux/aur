@@ -1,7 +1,7 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=python-barbicanclient
-pkgver=5.7.0
+pkgver=6.0.0
 pkgrel=1
 pkgdesc='Client library for the Barbican Key Management API'
 arch=(any)
@@ -15,7 +15,7 @@ checkdepends=(python-fixtures python-requests-mock python-stestr
               python-testtools python-oslotest python-oslo-config
               python-openstackclient)
 source=("$pkgname-$pkgver.tar.gz::https://opendev.org/openstack/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('17cac8fd627789b0b1cd36f7c3c09abdb38fad238a84c159e5add291ded7d69bd88aa57ed2d41c1f30e49898460768e53b49a2fd75e9eb87235b0731bbf2bf16')
+sha512sums=('149dc8be226b7b37e5f3c412359e6d86697a6f9130853f3602bde2a26696a3d1485dd628e2e6b9ec7852996a55eaa9d3e76e9d65630247420e8a39fbd6d4995d')
 
 export PBR_VERSION=$pkgver
 
