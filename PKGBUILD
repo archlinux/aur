@@ -17,14 +17,14 @@ depends=(
     'libpng'
     'libxml2'
     'qt5-base'
-    'zlib' 
+    'zlib'
 )
 makedepends=(
     'gcc'
-    'gcc-libs' 
-    'git' 
+    'gcc-libs'
+    'git'
     'make'
-    'svn' 
+    'svn'
 )
 provides=('netradiant-custom' 'netradiant-custom-debug')
 conflicts=('netradiant-custom' 'netradiant-custom-debug')
@@ -44,13 +44,13 @@ build() {
 
 package() {
     cd "${srcdir}/${_pkgname}"
-	mkdir -p "${pkgdir}/opt/${_pkgname}"
+    mkdir -p "${pkgdir}/opt/${_pkgname}"
 
-	cp -R "./install/." "${pkgdir}/opt/${_pkgname}/"
+    cp -R "./install/." "${pkgdir}/opt/${_pkgname}/"
 
-	mkdir -p "${pkgdir}/usr/bin/"
-	ln -s "/opt/${_pkgname}/"{h2data,mbspc,q2map,q3map2,qdata3} "${pkgdir}/usr/bin/"
-	ln -s "/opt/${_pkgname}/"radiant                            "${pkgdir}/usr/bin/${_pkgname}"
+    mkdir -p "${pkgdir}/usr/bin/"
+    ln -s "/opt/${_pkgname}/"{h2data,mbspc,q2map,q3map2,qdata3} "${pkgdir}/usr/bin/"
+    ln -s "/opt/${_pkgname}/"radiant                            "${pkgdir}/usr/bin/${_pkgname}"
 
     install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
     install -Dm 644 GPL     "$pkgdir/usr/share/licenses/$_pkgname/GPL"
