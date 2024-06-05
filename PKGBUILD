@@ -7,7 +7,7 @@ pkgname='offpunk-git'
 _pkgname='offpunk'
 epoch=5
 pkgver=2.2.r14.g469311b
-pkgrel=2
+pkgrel=3
 pkgdesc='Fork of the command-line Gemini client AV-98 with added offline capabilities (built from latest commit)'
 arch=('any')
 url='https://git.sr.ht/~lioploum/offpunk'
@@ -16,6 +16,15 @@ depends=(
   'file'
   'less'
   'python'
+  'python-beautifulsoup4'
+  'python-chardet'
+  'python-cryptography'
+  'python-feedparser'
+  'python-lxml-html-clean'
+  'python-pillow'
+  'python-readability-lxml'
+  'python-requests'
+  'python-setproctitle'
 )
 makedepends=(
   'coreutils'
@@ -27,15 +36,6 @@ makedepends=(
 )
 optdepends=(
   'chafa: chafa and ansiwrap are required to render images in terminal'
-  'python-beautifulsoup4: conversion of HTML'
-  'python-chardet: detect text encoding'
-  'python-cryptography: better support of TOFU client certificates'
-  'python-feedparser: required to parse RSS and Atom feeds'
-  'python-lxml-html-clean: HTML cleaner from lxml project'
-  'python-pillow: image manipulation'
-  'python-readability-lxml: conversion of HTML'
-  'python-requests: for HTTP support'
-  'python-setproctitle: allows offpunk to change its process title'
   'timg: view images and videos in the terminal'
   'wl-clipboard: copies text to  the Wayland clipboard'
   'xdg-utils: xdg-open opens a URL in the preferred application'
