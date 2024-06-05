@@ -2,7 +2,7 @@
 
 pkgname=tabletop-club-bin
 pkgver=0.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Tabletop Club is an open-source multiplayer game that allows you to play your favourite tabletop games in a physics-driven 3D environment with the use of easy-to-make asset packs!"
 arch=(x86_64)
 url="https://github.com/drwhut/tabletop-club"
@@ -25,7 +25,7 @@ package() {
 	install -dm755 "$pkgdir/usr/share/icons/hicolor/256x256/apps"
 	install -m755 "$srcdir/TabletopClub.x86_64" -t "$pkgdir/usr/share/tabletop-club"
 	install -m644 "$srcdir/TabletopClub.pck" -t "$pkgdir/usr/share/tabletop-club"
-	cp -r assets "$pkgdir/usr/share/tabletop-club/assets/assets/"
+	cp -r assets "$pkgdir/usr/share/tabletop-club/assets/"
 	mv "$pkgdir/usr/share/tabletop-club/TabletopClub.pck" "$pkgdir/usr/share/tabletop-club/TabletopClub.x86_64.pck"
 	install -m755 $srcdir/tabletop-club.desktop -t $pkgdir/usr/share/applications
 	install -m644 $srcdir/tabletop-club.png -t $pkgdir/usr/share/icons/hicolor/256x256/apps

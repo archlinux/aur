@@ -1,7 +1,7 @@
 pkgbase = tabletop-club-bin
 	pkgdesc = Tabletop Club is an open-source multiplayer game that allows you to play your favourite tabletop games in a physics-driven 3D environment with the use of easy-to-make asset packs!
 	pkgver = 0.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/drwhut/tabletop-club
 	arch = x86_64
 	license = MIT
