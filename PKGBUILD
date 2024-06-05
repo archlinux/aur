@@ -2,11 +2,11 @@
 
 pkgname=hdrhistogram_c
 pkgver=0.11.8
-pkgrel=2
+pkgrel=3
 pkgdesc="C port of the HdrHistogram"
 arch=('i686' 'x86_64')
 url="https://hdrhistogram.github.io/HdrHistogram/"
-license=('BSD-3-Clause' 'CC0-1.0')
+license=('BSD-2-Clause' 'CC0-1.0')
 depends=('glibc' 'zlib')
 makedepends=('cmake')
 options=('staticlibs')
