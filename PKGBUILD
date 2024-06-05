@@ -2,7 +2,7 @@
 pkgname=bitwave-git
 _pkgname=bitwave-git
 pkgver=v1.0.1.r0.g2f536b9
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple media player based on Qt and MPV."
 arch=('x86_64')
 url="https://github.com/Reverier-Xu/BitWave"
@@ -10,6 +10,7 @@ license=('MPL')
 depends=('qt6-base' 'qt6-svg' 'qt6-translations' 'qt6-wayland' 'ffmpeg' 'mpv')
 makedepends=('cmake' 'extra-cmake-modules' 'git')
 provides=("BitWave")
+conflicts=("bitwave-bin")
 source=('git+https://github.com/Reverier-Xu/BitWave.git')
 md5sums=('SKIP')
 _name=BitWave
