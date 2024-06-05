@@ -2,7 +2,7 @@
 # Contributor: Marcell Pardavi <marcell.pardavi@gmail.com>
 
 pkgname=zed-preview
-pkgver=0.138.4
+pkgver=0.139.0
 pkgrel=1
 pkgdesc='A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter'
 arch=(x86_64)
@@ -35,17 +35,17 @@ optdepends=('clang: improved C/C++ language support'
             'rust-analyzer: improved Rust language support')
 replaces=(zed-editor-preview)
 provides=("${pkgname%-preview}=$pkgver" zed-editor-preview)
-conflicts=("${pkgname%-preview}" zed-editor-preview)
+conflicts=("${pkgname%-preview}" zed-editor-preview zq)
 _archive="zed-$pkgver-pre"
 source=("$_url/archive/v$pkgver-pre/$_archive.tar.gz")
-sha256sums=('28bb49316affcdcd8623aabed83c424d2a77150bb5d956e2b20734bb6206697c')
+sha256sums=('c78bcad2d01c493d33d45a67c8c3a0ada5834d6f0fee9b20cea0c103ad817392')
 
 prepare() {
 	cd "$_archive"
 	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 	gendesk -q -f -n \
 		--name 'Zed' \
-		--exec 'Zed' \
+		--exec 'zed' \
 		--pkgname "${pkgname%-preview}" \
 		--pkgdesc "$pkgdesc" \
 		--categories 'Development'
@@ -75,7 +75,7 @@ check() {
 
 package() {
 	cd "$_archive"
-	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/Zed"
+	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/zed"
 	install -Dm0644 -t "$pkgdir/usr/share/applications/" "${pkgname%-preview}.desktop"
 	install -Dm0644 crates/zed/resources/app-icon.png "$pkgdir/usr/share/icons/${pkgname%-preview}.png"
 }
