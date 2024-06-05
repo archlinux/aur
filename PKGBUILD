@@ -2,27 +2,32 @@
 # Contributor: Nick Logozzo <nlogozzo225@gmail.com>
 pkgname=tagger
 _app_id=org.nickvision.tagger
-pkgver=2023.11.3
+pkgver=2024.6.0
 pkgrel=1
 pkgdesc="An easy-to-use music tag (metadata) editor"
 arch=('x86_64' 'aarch64')
 url="https://github.com/NickvisionApps/Tagger"
 license=('GPL-3.0-or-later')
-depends=('chromaprint' 'dotnet-runtime>=8' 'ffmpeg' 'libadwaita' 'webp-pixbuf-loader')
-makedepends=('blueprint-compiler' 'dotnet-sdk>=8' 'git')
-checkdepends=('appstream')
-optdepends=('yelp: in-app help')
+depends=(
+  'chromaprint'
+  'dotnet-runtime>=8'
+  'ffmpeg'
+  'libadwaita'
+  'webp-pixbuf-loader'
+)
+makedepends=(
+  'blueprint-compiler'
+  'dotnet-sdk>=8'
+  'git'
+)
+optdepends=(
+  'yelp: in-app help'
+)
 conflicts=('nickvision-tagger')
-_commit=81a2f63d1b239b03063cfa1dab048c2c0bb71e81  # tags/2023.11.3^0
-source=("git+https://github.com/NickvisionApps/Tagger.git#commit=${_commit}"
+source=("git+https://github.com/NickvisionApps/Tagger.git#tag=$pkgver"
         'git+https://github.com/NickvisionApps/CakeScripts.git')
-sha256sums=('SKIP'
+sha256sums=('e84a653b55d7ca0a7e92ab7b0f01aaddae3ade3657e2fd0bed4c1b5dcaff0689'
             'SKIP')
-
-pkgver() {
-  cd Tagger
-  git describe --tags | sed 's/-/+/g'
-}
 
 prepare() {
   cd Tagger
