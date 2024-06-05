@@ -1,7 +1,7 @@
 pkgbase = ocproxy-bin
 	pkgdesc = A user-level SOCKS and port forwarding proxy for OpenConnect based on lwIP (binary release)
 	pkgver = 1.60
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/cernekee/ocproxy
 	arch = i686
 	arch = x86_64
