@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=googletest-git
-pkgver=1.13.0.r100.g057b4e90
+pkgver=1.14.0.r140.ga7f443b8
 pkgrel=1
 pkgdesc="Google's C++ test framework"
 arch=('i686' 'x86_64')
 url="https://google.github.io/googletest/"
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('gcc-libs' 'sh')
 makedepends=('git' 'cmake')
 provides=("gmock=$pkgver" "gtest=$pkgver")
