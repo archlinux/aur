@@ -5,14 +5,15 @@
 _pkgname="ksmoothdock"
 pkgname="$_pkgname"
 pkgver=6.3
-pkgrel=3
+pkgrel=4
 pkgdesc='A cool desktop panel for KDE Plasma 5'
-arch=('x86_64')
 url='https://github.com/dangvd/ksmoothdock'
-license=('GPL3')
+license=('GPL-3.0-or-later')
+arch=('x86_64')
 
 depends=(
   'kactivities5'
+  'kdbusaddons5'
   'kxmlgui5'
 )
 makedepends=(
@@ -21,41 +22,10 @@ makedepends=(
   'python'
 )
 
-
-if [ x"$pkgname" == x"$_pkgname" ] ; then
-  # normal package
-  _pkgsrc="$_pkgname-${pkgver%%.r*}"
-  _pkgext="tar.gz"
-  source=(
-   "$_pkgsrc.$_pkgext"::"$url/archive/v${pkgver%%.r*}.$_pkgext"
-  )
-  sha256sums=(
-   '96eb9ce72ee4c44496c760c6bc9aa5e26b5cd3826729c112e7c81d2661effc02'
-  )
-
-  pkgver() {
-    echo "${pkgver%%.r*}"
-  }
-else
-  # git package
-  makedepends+=('git')
-
-  provides=("$_pkgname")
-  conflicts=("$_pkgname")
-
-  _pkgsrc="$_pkgname"
-  source=(
-   "$_pkgsrc"::"git+$url.git"
-  )
-  sha256sums=(
-   'SKIP'
-  )
-
-  pkgver() {
-    cd "$_pkgsrc"
-    git describe --long --tags | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
-  }
-fi
+_pkgsrc="$_pkgname-${pkgver%%.r*}"
+_pkgext="tar.gz"
+source=("$_pkgsrc.$_pkgext"::"$url/archive/v${pkgver%%.r*}.$_pkgext")
+sha256sums=('96eb9ce72ee4c44496c760c6bc9aa5e26b5cd3826729c112e7c81d2661effc02')
 
 prepare() {
   cd "$_pkgsrc"
@@ -75,5 +45,5 @@ build() {
 }
 
 package() {
-  DESTDIR="${pkgdir:?}" cmake --install build
+  DESTDIR="$pkgdir" cmake --install build
 }
