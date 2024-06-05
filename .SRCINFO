@@ -1,9 +1,15 @@
 pkgbase = discreet-bin
-	pkgdesc = Discreet Cryptocurrency Wallet. discreet.net - SCAM WARNING!
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgdesc = Discreet Cryptocurrency Wallet. discreet.net
+	pkgver = 0.3.33
+	pkgrel = 3
 	url = https://discreet.net
 	arch = x86_64
+	noextract = discreet-gui_0.3.33-1_amd64.deb
+	noextract = discreet-daemon_0.2.69-1_amd64.deb
+	source = https://deb.discreet.net/dists/stable/main/binary-amd64/daemon/discreet-daemon_0.2.69-1_amd64.deb
+	source = https://deb.discreet.net/dists/stable/main/binary-amd64/wallet-gui/discreet-gui_0.3.33-1_amd64.deb
+	sha256sums = 84ea88ffb57c22d1029630e6dbe9d9b82a9d6b176fffe31d6f1c26636d156d22
+	sha256sums = 71efb1c2e3f4dddec095404875d8996d7ce276681e845e8dbff2b1770f4b69bd
 
 pkgname = discreet-gui-bin
 	depends = discreet-daemon-bin
