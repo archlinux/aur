@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=tailchat
 pkgname="${_pkgname}-desktop"
-pkgver=1.11.4
+pkgver=1.11.5
 _electronversion=18
 _nodeversion=18
 pkgrel=1
@@ -27,7 +27,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('3596c19daf0bc1ad4d8c64fe9d5457f0326c066bac77efc542650191f62ae368'
+sha256sums=('32910fcd8c1c8f0bf8e57aa87796716af8634ca556ed4682195910e8450ea515'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
