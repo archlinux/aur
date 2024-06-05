@@ -1,0 +1,3 @@
+[cargo-ramdisk]
+source = "cratesio"
+cratesio = "cargo-ramdisk"
