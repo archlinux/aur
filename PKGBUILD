@@ -3,7 +3,7 @@
 
 pkgname=canu
 pkgver=2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A fork of the Celera Assembler designed for high-noise single-molecule sequencing"
 arch=('i686' 'x86_64')
 url="https://canu.readthedocs.io/"
@@ -18,6 +18,8 @@ sha256sums=('e4d0c7b82149114f442ccd39e18f7fe2061c63b28d53700ad896e022b73b7404')
 build() {
   cd "$pkgname-$pkgver"
 
+  CFLAGS="$CFLAGS -ffat-lto-objects" \
+  CXXFLAGS="$CXXFLAGS -ffat-lto-objects" \
   make -C "src"
 }
 
