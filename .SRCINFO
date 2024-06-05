@@ -9,7 +9,6 @@ pkgbase = perl-net-amazon-signature-v4
 	depends = perl
 	depends = perl-uri
 	options = !emptydirs
-	options = purge
 	source = https://cpan.metacpan.org/authors/id/D/DB/DBOOK/Net-Amazon-Signature-V4-0.21.tar.gz
 	sha256sums = 599cb766c055f6c48d362597e7535c902cd6674e4d6ad1ce4cb08e8d06777fd1
 

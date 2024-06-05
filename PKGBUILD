@@ -9,7 +9,7 @@ arch=(any)
 url="https://metacpan.org/release/$_dist"
 license=(GPL PerlArtistic)
 depends=(perl perl-uri)
-options=('!emptydirs' purge)
+options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/D/DB/DBOOK/$_dist-$pkgver.tar.gz")
 sha256sums=(599cb766c055f6c48d362597e7535c902cd6674e4d6ad1ce4cb08e8d06777fd1)
 
