@@ -225,6 +225,9 @@ package_bacula-dir-postgresql() {
   for file in etc/${pkgbase}/scripts/*postgresql*; do
     cp --parents -a "${file}" "${pkgdir}"
   done
+
+  chmod 755 "${pkgdir}/etc/${pkgbase}"
+
 }
 
 package_bacula-dir-sqlite3() {
