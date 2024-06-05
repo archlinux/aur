@@ -1,14 +1,10 @@
 pkgbase = backintime-git
-	pkgver = 1.4.3.r52.g1a91703f
+	pkgver = 1.4.3.r54.g50c74444
 	pkgrel = 1
 	url = https://github.com/bit-team/backintime
 	install = backintime-git.install
 	arch = any
 	license = GPL
-	checkdepends = openssh
-	checkdepends = python-dbus
-	checkdepends = rsync
-	checkdepends = systemd
 	makedepends = git
 	makedepends = python
 	source = backintime-git::git+https://github.com/bit-team/backintime.git

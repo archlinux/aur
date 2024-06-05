@@ -3,13 +3,13 @@
 _pkgname=backintime-git
 _pkgname_cli=backintime-cli-git
 pkgname=($_pkgname $_pkgname_cli)
-pkgver=1.4.3.r52.g1a91703f
-pkgrel=2
+pkgver=1.4.3.r54.g50c74444
+pkgrel=1
 url=https://github.com/bit-team/backintime
 license=(GPL)
 arch=(any)
 makedepends=(git python)
-checkdepends=(openssh python-dbus rsync systemd)
+#checkdepends=(openssh python-dbus python-pyfakefs python-pylint rsync systemd)
 install=$_pkgname.install
 source=($_pkgname::git+$url.git)
 sha256sums=('SKIP')
