@@ -3,7 +3,7 @@
 pkgname=modrinth-app-bin
 _pkgname=${pkgname%-bin}
 pkgver=0.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc='An unique, open source launcher that allows you to play your favorite mods, and keep them up to date, all in one neat little package.'
 url='https://modrinth.com/app'
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
 options=(!strip !debug)
 noextract=("modrinth-app_${pkgver}_amd64.AppImage")
 sha256sums=('24f6a53b34eec89d9f8651daab871d5be0fe2616da8d163609728c2c1906c0c5'
-            '1aeb1f04049731e4e03d0ce9f6e3da9ae0716ff4a858e10b761cf0600cf2860a')
+            '891da8d3927841954ee771c80fe6018b90553902dcfc9f1e945a2c52a80874bc')
 
 package() {
     cd "$srcdir"
