@@ -1,0 +1,6 @@
+[cwtch-server]
+source = "gitea"
+gitea = "cwtch.im/server"
+host = "git.openprivacy.ca/"
+use_max_tag = "true"
+prefix = "v"
