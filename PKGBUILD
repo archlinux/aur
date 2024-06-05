@@ -2,12 +2,12 @@
 # Contributor: Michael Clayfield <me@michaelclayfield.com>
 
 pkgname=alerta
-pkgver=8.7.0
+pkgver=9.0.3
 pkgrel=1
-pkgdesc="A tool used to consolidate and de-duplicate alerts from multiple sources"
+pkgdesc="tool used to consolidate and de-duplicate alerts from multiple sources"
 arch=('any')
 url="https://github.com/alerta/alerta"
-license=('APACHE')
+license=('Apache-2.0')
 depends=(
 	'python>=3.7'
 	'python-blinker'
@@ -26,18 +26,18 @@ depends=(
 	'python-requests-hawk'
 	'python-sentry_sdk')
 optdepends=('python-psycopg2' 'postgresql' 'python-pymongo' 'mongodb')
-makedepends=('python-setuptools')
+makedepends=(python-build python-installer python-wheel python-setuptools)
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 	"alertad.service"
 	"alerta.sysusers")
-sha256sums=('b2f515652ad40beb4163566ff4ecff366550d253a656eafcc5c5568a3d0f914f'
+sha256sums=('cb61af5bdc6f3023d890a0cfdfe56e667cd0a53588a5d84f098f03d381bdcdb3'
             '4449acb346807229e4cbfeed68d9ba6006a165e65dec09487fb6e627088016c2'
             'f0a2f76266ba07275ab2baeab1497dfb2946305e85ae68e3b34dd14e2ac47423')
 
 build() {
-	cd "alerta-$pkgver"
-	python setup.py build
+	cd $pkgname-$pkgver
+	python -m build --wheel --no-isolation
 }
 
 ## tests require a server
@@ -45,7 +45,7 @@ build() {
 package() {
 	export PYTHONHASHSEED=0
 	cd "alerta-$pkgver"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python -m installer --destdir="$pkgdir" dist/*.whl
 	install -Dm644 "$srcdir/alerta.sysusers" "$pkgdir/usr/lib/sysusers.d/alerta.conf"
 	install -Dm644 "$srcdir/alertad.service" -t "$pkgdir/usr/lib/systemd/system/"
 }
