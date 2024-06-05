@@ -1,7 +1,7 @@
 # Maintainer: Sebastian LaVine <mail@smlavine.com>
 
 pkgname=gmnitohtml
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Gemini text to HTML converter'
 arch=('any')
@@ -9,7 +9,7 @@ url='https://git.sr.ht/~adnano/gmnitohtml'
 license=('GPL3')
 makedepends=('go' 'scdoc')
 source=("https://git.sr.ht/~adnano/gmnitohtml/archive/${pkgver}.tar.gz")
-sha256sums=('ae86594d0c3c0af8cc42ccf23b3463c1c20dd724395815a302699d10b9205d64')
+sha256sums=('f1f63eb33b77398d9bb8af0b4d15e61cf02db27472082bc853b1a8d2b75f3c9f')
 
 build() {
 	cd "${pkgname}-${pkgver}"
