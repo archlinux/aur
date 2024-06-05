@@ -1,12 +1,11 @@
 pkgbase = lzturbo
 	pkgdesc = High performance lz77 based compressor
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sites.google.com/site/powturbo/home
 	arch = x86_64
 	license = custom
-	source = https://sites.google.com/site/powturbo/downloads/lzturbo.7z?attredirects=0
+	source = lzturbo.7z::https://drive.usercontent.google.com/download?id=15mPIJo5pDTT9Xb3i4ek8D4ejNcjszBLT&export=download
 	sha256sums = c5212cf0dcdbb35ebce5e3126fe8ec53bfd7618744a36b14ce08fb26bdb73d55
 
 pkgname = lzturbo
-
