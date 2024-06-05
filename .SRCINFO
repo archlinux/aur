@@ -1,6 +1,6 @@
 pkgbase = swarm-desktop
 	pkgdesc = Electron Desktop app that helps you easily spin up and manage Swarm node
-	pkgver = 0.37.0
+	pkgver = 0.41.0
 	pkgrel = 1
 	url = https://desktop.ethswarm.org/
 	arch = aarch64
@@ -9,13 +9,13 @@ pkgbase = swarm-desktop
 	license = BSD-3-Clause
 	makedepends = gendesk
 	makedepends = npm
-	makedepends = nodejs
-	makedepends = git
-	depends = electron18-bin
+	makedepends = nvm
+	makedepends = curl
+	depends = electron18
 	conflicts = swarm-desktop
-	source = swarm-desktop::git+https://github.com/ethersphere/swarm-desktop.git#tag=v0.37.0
+	source = swarm-desktop-0.41.0.tar.gz::https://github.com/ethersphere/swarm-desktop/archive/refs/tags/v0.41.0.tar.gz
 	source = swarm-desktop.sh
-	sha256sums = e6161869a2e0263a4967da6562b3dad85d650b3740c31832e3c98a52524e97a6
-	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+	sha256sums = 94785c24889e042defd1221916d17e45daae95735b6afd6f750cac2e5a8b308c
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = swarm-desktop
