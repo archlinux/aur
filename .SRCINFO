@@ -1,7 +1,7 @@
 pkgbase = hyprland-nox
 	pkgdesc = A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (w/o XWayland support)
 	pkgver = 0.40.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hyprwm/Hyprland
 	arch = x86_64
 	license = BSD-3-Clause
@@ -42,10 +42,12 @@ pkgbase = hyprland-nox
 	source = hyprland-nox_hyprland-protocols::git+https://github.com/hyprwm/hyprland-protocols.git
 	source = hyprland-nox_udis86::git+https://github.com/canihavesomecoffee/udis86.git
 	source = 0001-core-chase-hyprwayland-scanner.patch
+	source = 0001-patches-Add-wlroots-merge-request-to-support-liblift.patch
 	sha256sums = 13a2f6da9afa5001bb745110d45d3a280a813ab5c9b838b0342cab461ff2ba7c
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 7445eb076ae0aa13492ecf99097e93cf8940c83185a957a77fb063e7fbc92ac8
+	sha256sums = e62c5b79ea37f0a69ba53b2537a21926c8efe126e1f63599dc6e6071cf3f0b1e
 
 pkgname = hyprland-nox
