@@ -12,7 +12,7 @@ pkgbase = python-textual_plotext
 	makedepends = python-wheel
 	depends = python
 	depends = python-plotext
-	depends = textual
+	depends = python-textual
 	source = https://files.pythonhosted.org/packages/source/t/textual_plotext/textual_plotext-0.2.1.tar.gz
 	sha256sums = bc6f2d75d8e20dda6321f8254dc3decda8f41f60e6e70a3ddd83b652b890c081
 
