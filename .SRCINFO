@@ -13,4 +13,3 @@ pkgbase = python-asyncqt
 	sha512sums = fdf232404c16f7e95547d5de83163a1e47885dc4dda1a4edf9c3414b75cdb1998588e196f174ef344168f1b07c1d546651ef6adbdacac024e507877b2b96c075
 
 pkgname = python-asyncqt
-
