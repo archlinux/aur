@@ -1,0 +1,3 @@
+[cargo-benchcmp]
+source = "git"
+git = "https://github.com/BurntSushi/cargo-benchcmp.git"
