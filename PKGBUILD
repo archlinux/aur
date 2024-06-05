@@ -1,5 +1,5 @@
 pkgname=python-otfmi
-pkgver=0.15
+pkgver=0.16.3
 pkgrel=1
 pkgdesc="FMI models manipulation module"
 license=('LGPL')
@@ -8,7 +8,7 @@ url="http://www.openturns.org/"
 depends=('openturns')
 makedepends=('python-setuptools')
 source=("https://github.com/openturns/otfmi/archive/v$pkgver.tar.gz")
-sha256sums=('18f481a20d08aa0b6ad85b21a27d43a1b13242696568da7f81ed3304b3be0f6e')
+sha256sums=('e879f92e59665d01662af45ef0124ae1cbdc8403904a020c3d5c6b146227950a')
 
 build() {
   cd otfmi-$pkgver
