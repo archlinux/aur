@@ -1,0 +1,3 @@
+[cargo-docset]
+source = "cratesio"
+cratesio = "cargo-docset"
