@@ -1,6 +1,6 @@
 pkgbase = wired-git
 	pkgdesc = Lightweight notification daemon with highly customizable layout blocks, written in Rust.
-	pkgver = r225.8298b72
+	pkgver = r358.9fb2153
 	pkgrel = 1
 	url = https://github.com/Toqozz/wired-notify
 	arch = x86_64
