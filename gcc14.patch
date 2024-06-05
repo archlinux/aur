@@ -1,0 +1,61 @@
+diff --git a/src/core/bloom.cc b/src/core/bloom.cc
+index ca55fa19..ffd2466a 100644
+--- a/src/core/bloom.cc
++++ b/src/core/bloom.cc
+@@ -4,6 +4,7 @@
+ 
+ #include "core/bloom.h"
+ 
++#include <algorithm>
+ #include <absl/base/internal/endian.h>
+ #include <absl/numeric/bits.h>
+ #include <xxhash.h>
+diff --git a/src/facade/dragonfly_connection.cc b/src/facade/dragonfly_connection.cc
+index e1671bdb..c0aa8785 100644
+--- a/src/facade/dragonfly_connection.cc
++++ b/src/facade/dragonfly_connection.cc
+@@ -4,6 +4,7 @@
+ 
+ #include "facade/dragonfly_connection.h"
+ 
++#include <algorithm>
+ #include <absl/container/flat_hash_map.h>
+ #include <absl/strings/match.h>
+ #include <absl/strings/str_cat.h>
+diff --git a/src/server/cluster/cluster_config.cc b/src/server/cluster/cluster_config.cc
+index 0be5c472..ee53e5d9 100644
+--- a/src/server/cluster/cluster_config.cc
++++ b/src/server/cluster/cluster_config.cc
+@@ -1,5 +1,5 @@
+ #include "cluster_config.h"
+-
++#include <algorithm>
+ #include <absl/container/flat_hash_set.h>
+ 
+ #include <jsoncons/json.hpp>
+diff --git a/src/server/cluster/cluster_family.cc b/src/server/cluster/cluster_family.cc
+index 87d456a6..9743a708 100644
+--- a/src/server/cluster/cluster_family.cc
++++ b/src/server/cluster/cluster_family.cc
+@@ -3,7 +3,7 @@
+ //
+ 
+ #include "server/cluster/cluster_family.h"
+-
++#include <algorithm>
+ #include <memory>
+ #include <mutex>
+ #include <string>
+diff --git a/src/server/search/doc_index.cc b/src/server/search/doc_index.cc
+index b277b53f..156f5486 100644
+--- a/src/server/search/doc_index.cc
++++ b/src/server/search/doc_index.cc
+@@ -3,7 +3,7 @@
+ //
+ 
+ #include "server/search/doc_index.h"
+-
++#include <algorithm>
+ #include <absl/strings/str_join.h>
+ 
+ #include <memory>
