@@ -5,7 +5,7 @@
 
 pkgname=openscad-git
 _pkg="${pkgname%-git}"
-pkgver=r11045.9718493
+pkgver=r11070.6db5adc
 pkgrel=1
 pkgdesc="The programmers solid 3D CAD modeller"
 arch=('x86_64')
@@ -32,6 +32,7 @@ depends=(
     'gmp'
     'mpfr'
 	'tbb'
+	'lib3mf'
 )
 makedepends=('git' 'boost' 'cmake' 'eigen' 'imagemagick' 'python')
 source=("$_pkg::git+$url")
