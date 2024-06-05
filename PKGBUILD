@@ -1,18 +1,18 @@
-# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Kuan-Yen Chou <kuanyenchou@gmail.com>
 
 pkgname=libnetconf2
-pkgver=1.1.26
+pkgver=3.0.17
 pkgrel=1
 pkgdesc='A NETCONF library in C intended for building NETCONF clients and servers.'
 url='https://github.com/CESNET/libnetconf2'
 arch=('x86_64' 'i686')
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('libssh' 'libyang' 'openssl' 'libxcrypt')
 makedepends=('cmake' 'doxygen')
 conflicts=('libnetconf2-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/CESNET/libnetconf2/archive/v$pkgver.tar.gz")
-sha256sums=('2ce2b819f3544fd46a3a4c8ba6dd0a3798cab2a63aa347bc1eb5275a2c89b7bd')
+sha256sums=('ff57fe659db3c43d11f14c76bcc1f9e99aac4883a9966a623998175b2983cafd')
 
 prepare() {
     mkdir -p "build"
