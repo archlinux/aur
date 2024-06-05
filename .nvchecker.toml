@@ -1,0 +1,3 @@
+[oniongen-rs]
+source = "cratesio"
+cratesio = "oniongen-rs"
