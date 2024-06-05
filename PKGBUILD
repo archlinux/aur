@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=jlivertool-bin
-pkgver=2.1.2
+pkgver=2.1.3
 _electronversion=26
 pkgrel=1
 pkgdesc="Bilibili 弹幕机"
@@ -18,7 +18,7 @@ source=(
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/Xinrea/JLiverTool/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('aaff43a72f9917ca0b67036ee3ecf276ef90bfa02e34d291ab224e9e7f82d931'
+sha256sums=('482f3a46406021a55d1db2985822336e06412a05382289f6077d09656f6d1905'
             '5d86e387ac33cf32eee9c968d38483a30567690b843c3768b35fe4bc55b455a8'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
