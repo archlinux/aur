@@ -2,8 +2,8 @@
 
 pkgname=samsung-m283x
 pkgver=1.00.39
-pkgrel=1
-pkgdesc="Samsung M238x printer driver"
+pkgrel=2
+pkgdesc="Samsung M283x printer driver"
 arch=('i686' 'x86_64')
 url="http://www.samsung.com"
 license=('LicenseRef-samsung')
