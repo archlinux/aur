@@ -3,12 +3,12 @@
 pkgbase=python-ndcube
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Package for multi-dimensional contiguious and non-contiguious coordinate aware arrays"
 arch=('any')
 url="https://docs.sunpy.org/projects/ndcube"
-license=('BSD')
+license=('BSD-2-Clause')
 makedepends=('python-setuptools-scm'
              'python-wheel'
              'python-build'
@@ -23,23 +23,26 @@ makedepends=('python-setuptools-scm'
              'python-sunpy'
              'python-mpl-animators'
              'graphviz')  # matplotlib <- mpl-animators
-checkdepends=('python-pytest-doctestplus'
-              'python-dask'
-              'python-reproject')  # pytest-doctestplus gwcs mpl-animators sunpy{,sphinx-theme} already in makedep
+# circular deps
+#checkdepends=('python-pytest-doctestplus'
+#              'python-dask'
+#              'python-reproject'
+#              'python-specutils'
+#              )  # pytest-doctestplus gwcs mpl-animators sunpy{,sphinx-theme} already in makedep
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #       'doc-use-local-fits.patch'
 #       "https://www.astropy.org/astropy-data/tutorials/FITS-images/HorseHead.fits"
 #       "https://github.com/sunpy/ndcube/raw/main/changelog/README.rst")
-md5sums=('39164538cca79fb6cee507100904a0ac')
+md5sums=('b3e02e9cc391e1b1d4232017e2b89b7c')
 #        'b50513a0bb73290d65317d0d44ae9fb9'
 #        'SKIP'
 #        'SKIP')
 
-prepare() {
-    cd ${srcdir}/${_pyname}-${pkgver}
+#prepare() {
+#    cd ${srcdir}/${_pyname}-${pkgver}
 
 #   install -Dm644 -t changelog ${srcdir}/README.rst # README not needed
-    mkdir -p changelog
+#   mkdir -p changelog
 #   cp ${srcdir}/*.fits examples
 #   patch -Np1 -i "${srcdir}/doc-use-local-fits.patch"
 #   sed -e "/datfix/d" -e "/unitfix/d" -i setup.cfg
@@ -49,7 +52,7 @@ prepare() {
 #       -e "/ignore:distutils/a \	ignore:The default kernel will change from 'Hann' to  'Gaussian'" \
 #       -e "/ignore:distutils/a \	ignore:The default boundary mode will change from 'ignore' to  'strict'" \
 #       -i setup.cfg
-}
+#}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -59,11 +62,11 @@ build() {
     PYTHONPATH="../build/lib" make -C docs html
 }
 
-check() {
-    cd ${srcdir}/${_pyname}-${pkgver}
-
-    pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count # -Wdefault
-}
+#check() {
+#    cd ${srcdir}/${_pyname}-${pkgver}
+#
+#    pytest -vv -l -ra --color=yes -o console_output_style=count #|| warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count # -Wdefault
+#}
 
 package_python-ndcube() {
     depends=('python>=3.9' 'python-gwcs>=0.18')
