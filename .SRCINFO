@@ -1,7 +1,7 @@
 pkgbase = act-sky130-git
 	pkgdesc = ACT configurations for the Skywater 130nm technology.
 	pkgver = 0.0.1.r24.7f4e878
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/asyncvlsi/sky130l
 	arch = x86_64
 	license = Apache-2.0
@@ -16,10 +16,8 @@ pkgbase = act-sky130-git
 	source = git+https://github.com/asyncvlsi/sky130l
 	source = conf_makefile.patch
 	source = conf2_makefile.patch
-	source = LICENSE
 	sha512sums = SKIP
 	sha512sums = 7995795df8e21ea9ce0573bd4add73845a937c575484177aa53dd167f46e5404dd616c9efe41b3b2918d6facdd2e9276202b36fe93e8e175ed4b99612638ef65
 	sha512sums = 9991e8d9e568dd868be17b232dd58a68a82d3191100b69f207e62a60e00b2d8601c227a7322f98d4ffa3308f55feb08b3d19ff4aacdf54213a301d077a56040b
-	sha512sums = 810991a9bd90053dfc749cdcffd542cce34fa989c5e2b7e45d50dded3072f2e78055448def8c5dd5b33c212ed6890a73adfff737827e14733308f37bad06a5f3
 
 pkgname = act-sky130-git

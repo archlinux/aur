@@ -2,7 +2,7 @@
 
 pkgname=act-sky130-git
 pkgver=0.0.1.r24.7f4e878
-pkgrel=2
+pkgrel=3
 pkgdesc="ACT configurations for the Skywater 130nm technology."
 arch=('x86_64')
 url="https://github.com/asyncvlsi/sky130l"
@@ -15,12 +15,11 @@ source=(
     "git+${url}"
     "conf_makefile.patch"
     "conf2_makefile.patch"
-    "LICENSE")
+)
 sha512sums=(
     "SKIP"
     "7995795df8e21ea9ce0573bd4add73845a937c575484177aa53dd167f46e5404dd616c9efe41b3b2918d6facdd2e9276202b36fe93e8e175ed4b99612638ef65"
     "9991e8d9e568dd868be17b232dd58a68a82d3191100b69f207e62a60e00b2d8601c227a7322f98d4ffa3308f55feb08b3d19ff4aacdf54213a301d077a56040b"
-    "810991a9bd90053dfc749cdcffd542cce34fa989c5e2b7e45d50dded3072f2e78055448def8c5dd5b33c212ed6890a73adfff737827e14733308f37bad06a5f3"  
 )
 
 pkgver() {
@@ -35,7 +34,7 @@ prepare() {
 }
 
 package() {
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 ${srcdir}/sky130l/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     export ACT_HOME="/opt/act-async"
     mkdir -p ${pkgdir}/opt/act-async/conf/sky130
