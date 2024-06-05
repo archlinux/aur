@@ -2,7 +2,7 @@
 # Contributor: mnabila nblid48[at]gmail[dot]com
 
 pkgname=jupyterlab-desktop-bin
-pkgver=4.1.8
+pkgver=4.2.1
 pkgrel=1
 _srcrel=1
 _debname="JupyterLab-Setup-Debian-x64"
@@ -14,7 +14,7 @@ license=("MIT")
 arch=('x86_64')
 source=("$_debname-$pkgver-${_srcrel}.deb::https://github.com/jupyterlab/jupyterlab-desktop/releases/download/v$pkgver-${_srcrel}/$_debname.deb")
 
-sha256sums=('7ffa63dfa3757b2b6b0a4559d474f6f54b20f9b7988f7051487bb262ec304996')
+sha256sums=('0d7d9af8a7e5c0abdd8ade33b196a836f1b77d2a9b342dedb91f08a31e5088c9')
 
 prepare(){
     cd $srcdir
