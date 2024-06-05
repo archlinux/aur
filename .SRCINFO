@@ -1,6 +1,6 @@
 pkgbase = findex-bin
 	pkgdesc = Highly customizable application finder with high performance. Written in Rust and uses GTK
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/mdgaziur/findex
 	install = post_install.install
@@ -10,7 +10,7 @@ pkgbase = findex-bin
 	depends = libkeybinder3
 	provides = findex
 	conflicts = findex
-	source = https://github.com/mdgaziur/findex/releases/download/v0.8.1/findex-0.8.1-x86_64.tar.gz
-	sha256sums = cbc751f6301597e12a76625f0db9472f291194cf6bc0e61d2f80f03e624caeda
+	source = https://github.com/mdgaziur/findex/releases/download/v0.8.2/findex-0.8.2-x86_64.tar.gz
+	sha256sums = 7ba7258b00590bb757f627c01439f17b05229d6b15480f62525b8cf251f132da
 
 pkgname = findex-bin
