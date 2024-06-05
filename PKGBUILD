@@ -2,7 +2,7 @@
 # Contributor: Cameron Otsuka <cameron@otsuka.haus>
 pkgname="python-pyln-client"
 _name=${pkgname#python-}
-pkgver="24.02.2"
+pkgver="24.05"
 pkgrel=1
 pkgdesc="Client library and plugin library for Core Lightning"
 arch=("any")
@@ -11,7 +11,7 @@ license=("custom:BSD-MIT")
 depends=("python" "python-pyln-bolt7" "python-pyln-proto")
 makedepends=("python-build" "python-installer" "python-poetry" "python-wheel")
 source=("https://github.com/ElementsProject/lightning/releases/download/v${pkgver}/clightning-v${pkgver}.zip")
-sha256sums=("2904bfe15994c4990da6f3dcc4be54a7d7f6e657a23f3be2d8088abb3450983a")
+sha256sums=("143ec914cf34c2baeea815a3627247661d9fd86649e970d09944345deb675818")
 
 build() {
 	cd "clightning-v$pkgver"/"contrib"/"pyln-client"
