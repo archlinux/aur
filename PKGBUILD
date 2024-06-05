@@ -1,4 +1,5 @@
-# Maintainer: Maxim Baz <archlinux at maximbaz dot com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Maxim Baz <archlinux at maximbaz dot com>
 
 pkgname=ttf-joypixels
 pkgver=8.0.0
