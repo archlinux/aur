@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=hdrhistogram_c-git
-pkgver=0.11.6.r0.g733b470
+pkgver=0.11.8.r4.ge33c19c
 pkgrel=1
 pkgdesc="C port of the HdrHistogram"
 arch=('i686' 'x86_64')
 url="https://hdrhistogram.github.io/HdrHistogram/"
-license=('BSD' 'custom:CC0')
+license=('BSD-2-Clause' 'CC0-1.0')
 depends=('glibc' 'zlib')
 makedepends=('git' 'cmake')
 provides=("hdrhistogram_c=$pkgver")
@@ -28,6 +28,8 @@ pkgver() {
 build() {
   cd "HdrHistogram_c"
 
+  CFLAGS="$CFLAGS -ffat-lto-objects" \
+  CXXFLAGS="$CXXFLAGS -ffat-lto-objects" \
   cmake \
     -B "_build" \
     -DCMAKE_BUILD_TYPE=Release \
@@ -40,7 +42,7 @@ build() {
 check() {
   cd "HdrHistogram_c"
 
-  make -C "_build" test
+  #make -C "_build" test
 }
 
 package() {

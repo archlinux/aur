@@ -1,17 +1,17 @@
 pkgbase = hdrhistogram_c-git
 	pkgdesc = C port of the HdrHistogram
-	pkgver = 0.11.6.r0.g733b470
+	pkgver = 0.11.8.r4.ge33c19c
 	pkgrel = 1
 	url = https://hdrhistogram.github.io/HdrHistogram/
 	arch = i686
 	arch = x86_64
-	license = BSD
-	license = custom:CC0
+	license = BSD-2-Clause
+	license = CC0-1.0
 	makedepends = git
 	makedepends = cmake
 	depends = glibc
 	depends = zlib
-	provides = hdrhistogram_c=0.11.6.r0.g733b470
+	provides = hdrhistogram_c=0.11.8.r4.ge33c19c
 	conflicts = hdrhistogram_c
 	options = staticlibs
 	source = git+https://github.com/HdrHistogram/HdrHistogram_c.git
