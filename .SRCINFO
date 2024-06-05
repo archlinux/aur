@@ -1,6 +1,6 @@
 pkgbase = electron31-bin
 	pkgdesc = Build cross platform desktop apps with web technologies — prebuilt
-	pkgver = 31.0.0.beta.7
+	pkgver = 31.0.0.beta.8
 	pkgrel = 1
 	url = https://electronjs.org
 	arch = aarch64
@@ -17,19 +17,19 @@ pkgbase = electron31-bin
 	optdepends = gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
-	provides = electron31=31.0.0.beta.7
+	provides = electron31=31.0.0.beta.8
 	conflicts = electron31
-	source_aarch64 = electron31-chromedriver-31.0.0.beta.7-aarch64.zip::https://github.com/electron/electron/releases/download/v31.0.0-beta.7/chromedriver-v31.0.0-beta.7-linux-arm64.zip
-	source_aarch64 = electron31-31.0.0.beta.7-aarch64.zip::https://github.com/electron/electron/releases/download/v31.0.0-beta.7/electron-v31.0.0-beta.7-linux-arm64.zip
-	sha256sums_aarch64 = 5e27a4a88ef294f242517f9b4e02e7c719af9c724ca171bbe6fe412175bee60e
-	sha256sums_aarch64 = d3ae0ce0279aef7b9de54560314adf3aac844a04bde6e79bdccd12d3410dc75b
-	source_armv7h = electron31-chromedriver-31.0.0.beta.7-armv7h.zip::https://github.com/electron/electron/releases/download/v31.0.0-beta.7/chromedriver-v31.0.0-beta.7-linux-armv7l.zip
-	source_armv7h = electron31-31.0.0.beta.7-armv7h.zip::https://github.com/electron/electron/releases/download/v31.0.0-beta.7/electron-v31.0.0-beta.7-linux-armv7l.zip
-	sha256sums_armv7h = 337e85af057f62d3125e09874d42c0ee21a42d9226f94256847b9352d8d53767
-	sha256sums_armv7h = 6824b596c78f16f58b3442879c5a73fbd6a1384c01ac02c23f94b80b95355b94
-	source_x86_64 = electron31-chromedriver-31.0.0.beta.7-x86_64.zip::https://github.com/electron/electron/releases/download/v31.0.0-beta.7/chromedriver-v31.0.0-beta.7-linux-x64.zip
-	source_x86_64 = electron31-31.0.0.beta.7-x86_64.zip::https://github.com/electron/electron/releases/download/v31.0.0-beta.7/electron-v31.0.0-beta.7-linux-x64.zip
-	sha256sums_x86_64 = 00ab473ce741d1110973e58278ab0cff5a4184af8b55378d67c7951405067bc8
-	sha256sums_x86_64 = 6067709540dab07a575171f684da8047847260f658cc6772fe9a6082d3ca04d4
+	source_aarch64 = electron31-chromedriver-31.0.0.beta.8-aarch64.zip::https://github.com/electron/electron/releases/download/v31.0.0-beta.8/chromedriver-v31.0.0-beta.8-linux-arm64.zip
+	source_aarch64 = electron31-31.0.0.beta.8-aarch64.zip::https://github.com/electron/electron/releases/download/v31.0.0-beta.8/electron-v31.0.0-beta.8-linux-arm64.zip
+	sha256sums_aarch64 = 857bf414fb784f440eee52a2b90192310c84b0a8e752971cfec47ceab12725f8
+	sha256sums_aarch64 = 51299af1d03d783e70beb89ec65b2db6531ecdc5f0efd69bd353b4b9884f95e9
+	source_armv7h = electron31-chromedriver-31.0.0.beta.8-armv7h.zip::https://github.com/electron/electron/releases/download/v31.0.0-beta.8/chromedriver-v31.0.0-beta.8-linux-armv7l.zip
+	source_armv7h = electron31-31.0.0.beta.8-armv7h.zip::https://github.com/electron/electron/releases/download/v31.0.0-beta.8/electron-v31.0.0-beta.8-linux-armv7l.zip
+	sha256sums_armv7h = c6b2b2b6a8cd1f6505988ea708bece475310053635133302cc5ab4d24d347c4e
+	sha256sums_armv7h = 1b2775c0de356f254316040ea0489c63cb5281c081ef31671932bdd6df8d01c4
+	source_x86_64 = electron31-chromedriver-31.0.0.beta.8-x86_64.zip::https://github.com/electron/electron/releases/download/v31.0.0-beta.8/chromedriver-v31.0.0-beta.8-linux-x64.zip
+	source_x86_64 = electron31-31.0.0.beta.8-x86_64.zip::https://github.com/electron/electron/releases/download/v31.0.0-beta.8/electron-v31.0.0-beta.8-linux-x64.zip
+	sha256sums_x86_64 = 271171a8ff4bcf39d327860127236569364f3594fd27b20c2935eab81dbe1ccd
+	sha256sums_x86_64 = 7838d4b4b99fa7d91a89eee5e0c4cf533c4895f46b6f10206334200a185a7e9f
 
 pkgname = electron31-bin
