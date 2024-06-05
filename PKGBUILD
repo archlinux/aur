@@ -3,8 +3,8 @@
 pkgname=leavesmc-git
 _pkgname=leavesmc
 _pkgver=1.20.6
-_build=7dc9e87
-_buildid=212
+_build=6951bdc
+_buildid=213
 pkgver="${_pkgver}+${_buildid}"
 pkgrel=1
 pkgdesc="Fork of Paper aimed at repairing broken vanilla properties."
@@ -33,7 +33,7 @@ build() {
     git checkout ${_build}
     export JAVA_HOME=/usr/lib/jvm/zulu-21
     ./gradlew applyPatches
-    ./gradlew createReobfPaperclipJar
+    ./gradlew createMojmapLeavesclipJar
 }
 
 package() {
@@ -42,7 +42,7 @@ package() {
     install -Dm644 "leavesmc.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${_pkgname}.png"
     install -Dm644 "leavesmc.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
     install -Dm755 "leavesmc-launch-script" "${pkgdir}/usr/bin/${_pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}/build/libs/Leaves-paperclip-${_buildver}-reobf.jar" "${pkgdir}/usr/share/java/${_pkgname}/${_pkgname}.jar"
+    install -Dm644 "${srcdir}/${pkgname}/build/libs/Leaves-leavesclip-${_buildver}-mojmap.jar" "${pkgdir}/usr/share/java/${_pkgname}/${_pkgname}.jar"
     install -Dm644 "${srcdir}/${pkgname}/licenses/GPL.md" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE_GPL"
     install -Dm644 "${srcdir}/${pkgname}/licenses/MIT.md" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE_MIT"
 }
