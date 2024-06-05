@@ -2,11 +2,11 @@
 
 pkgname=tunsafe
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="High performance and secure VPN client that uses the WireGuard protocol"
 arch=('i686' 'x86_64')
 url="https://tunsafe.com/"
-license=('AGPL' 'BSD' 'custom: OpenSSL')
+license=('AGPL-1.0' 'BSD-3-Clause' 'OpenSSL')
 depends=('gcc-libs')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/TunSafe/TunSafe/archive/v$pkgver.tar.gz")
 sha256sums=('a435e5bfd0decf6a2bd89b547851f3ccb3673365b6ace03e483fe66227010738')
