@@ -9,7 +9,6 @@ when including include/linux/efi.h
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/conftest.sh b/conftest.sh
-index 6e6da83..678b79c 100755
 --- a/conftest.sh
 +++ b/conftest.sh
 @@ -101,7 +101,7 @@ test_header_presence() {
@@ -18,8 +17,9 @@ index 6e6da83..678b79c 100755
  -DKBUILD_BASENAME=\"#conftest$$\" -DKBUILD_MODNAME=\"#conftest$$\" \
 --nostdinc -isystem $ISYSTEM \
 +-nostdinc -isystem $ISYSTEM -fshort-wchar \
- -Wno-implicit-function-declaration -Wno-strict-prototypes"
+ -Wno-implicit-function-declaration -Wno-strict-prototypes \
+ -Wno-incompatible-pointer-types"
  
      if [ "$OUTPUT" != "$SOURCES" ]; then
--- 
+---
 2.45.0

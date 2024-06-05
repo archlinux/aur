@@ -9,7 +9,6 @@ See https://forums.developer.nvidia.com/t/nvidia-modules-build-failure-with-upco
  1 file changed, 6 insertions(+), 1 deletion(-)
 
 diff --git a/conftest.sh b/conftest.sh
-index 678b79c..606f13d 100755
 --- a/conftest.sh
 +++ b/conftest.sh
 @@ -4593,8 +4593,13 @@ compile_test() {
@@ -27,5 +26,5 @@ index 678b79c..606f13d 100755
                  return obj->funcs->vmap(obj, map);
              }"
  
--- 
+---
 2.45.0
