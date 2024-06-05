@@ -1,7 +1,7 @@
 pkgbase = act-stdlib-git
 	pkgdesc = ACT stdlib provides the base ACT libraries which the rest of the toolchain uses.
 	pkgver = 0.0.1.r62.99d8416
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/asyncvlsi/stdlib
 	arch = x86_64
 	license = Apache-2.0
@@ -11,8 +11,6 @@ pkgbase = act-stdlib-git
 	provides = act-stdlib
 	conflicts = act-stdlib
 	source = git+https://github.com/asyncvlsi/stdlib
-	source = LICENSE
 	sha512sums = SKIP
-	sha512sums = 810991a9bd90053dfc749cdcffd542cce34fa989c5e2b7e45d50dded3072f2e78055448def8c5dd5b33c212ed6890a73adfff737827e14733308f37bad06a5f3
 
 pkgname = act-stdlib-git

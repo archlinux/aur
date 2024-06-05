@@ -2,7 +2,7 @@
 
 pkgname=act-stdlib-git
 pkgver=0.0.1.r62.99d8416
-pkgrel=3
+pkgrel=4
 pkgdesc="ACT stdlib provides the base ACT libraries which the rest of the toolchain uses."
 arch=('x86_64')
 url="https://github.com/asyncvlsi/stdlib"
@@ -11,10 +11,9 @@ depends=('act-core')
 makedepends=('git' 'make')
 conflicts=('act-stdlib')
 provides=('act-stdlib')
-source=("git+${url}" "LICENSE")
+source=("git+${url}")
 sha512sums=(
     "SKIP"
-    "810991a9bd90053dfc749cdcffd542cce34fa989c5e2b7e45d50dded3072f2e78055448def8c5dd5b33c212ed6890a73adfff737827e14733308f37bad06a5f3"  
 )
 
 pkgver() {
@@ -23,7 +22,7 @@ pkgver() {
 }
 
 package() {
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/stdlib/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     export ACT_HOME="/opt/act-async"
     mkdir -p ${pkgdir}/opt/act-async/act
