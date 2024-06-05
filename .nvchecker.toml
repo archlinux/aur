@@ -1,0 +1,4 @@
+[vim-airline]
+source = "git"
+git = "https://github.com/vim-airline/vim-airline.git"
+prefix = "v"
