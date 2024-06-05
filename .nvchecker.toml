@@ -1,0 +1,3 @@
+[python-instagram-private-api]
+source = "pypi"
+pypi = "instagram_private_api"
