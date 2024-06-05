@@ -2,14 +2,14 @@
 
 pkgname=act-stdlib-git
 pkgver=0.0.1.r62.99d8416
-pkgrel=1
+pkgrel=2
 pkgdesc="ACT stdlib provides the base ACT libraries which the rest of the toolchain uses."
 arch=('x86_64')
 url="https://github.com/asyncvlsi/stdlib"
 license=('Apache-2.0')
 depends=('act-core')
 optdepends=('act-core-git')
-makedepends=('git')
+makedepends=('git' 'make')
 conflicts=('act-stdlib')
 provides=('act-stdlib')
 source=("git+${url}" "LICENSE")
