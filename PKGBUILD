@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TreeTools
-_pkgver=1.10.0
+_pkgver=1.11.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=1
 pkgdesc="Create, Modify and Analyse Phylogenetic Trees"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -42,8 +42,8 @@ optdepends=(
   r-vdiffr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4511cbf60e3178ea966bff71b092fb3a')
-b2sums=('b46105e4e6667f575915b5ed5336d6fabb8696502f7186cf26479dbfc266d92727375d3d9511d42456365de539d6e1360e358042bedfb9231ced171c3da209cf')
+md5sums=('c799edcc3959f60d4e03e199662737cb')
+b2sums=('0dea0f406745b8b074fcfc529ba3fec60a44bb4842fd60f3fbb45abc5e8f3d8a5e33a0970e6e7058f3a53c4958e7ff5bf8d54108a8c7913b62b5a0492310471d')
 
 prepare() {
   # skip failing tests
