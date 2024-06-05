@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=jlivertool
 _pkgname=JLiverTool
-pkgver=2.1.2
+pkgver=2.1.3
 _electronversion=26
 pkgrel=1
 pkgdesc="Bilibili 弹幕机"
@@ -24,7 +24,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('fe0cad1a96ac2aa8470411268eca5fbbeb92a020500e45413f129d999a23844d'
+sha256sums=('cd9475ba1bbfefa1d22628b16a8528fcd68571d05d9931262c14bbc1f478bdb7'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
