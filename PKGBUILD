@@ -2,17 +2,18 @@
 
 pkgname=mrhlpr-git
 _pkgname=mrhlpr
-pkgver=r34.8243bcb
+pkgver=r133.336d952
 pkgrel=1
 pkgdesc="merge request helper for postmarketOS maintainers"
 arch=('any')
 url="https://gitlab.com/postmarketOS/mrhlpr"
-license=('GPL')
+license=('GPL-3.0-or-later')
 depends=('python')
-makedepends=('git')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+optdepends=('python-argcomplete' 'python-gitlab')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+https://gitlab.com/postmarketOS/mrhlpr")
+source=("git+https://gitlab.com/postmarketOS/mrhlpr.git")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -20,12 +21,12 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-package() {
-  # package doesn't have a setup.py, so do it manually
-  pythondir=$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")
-  mkdir -p "$pkgdir"/"$pythondir"
-
+build() {
   cd "$_pkgname"
-  install -Dm755 mrhlpr.py "$pkgdir"/usr/bin/mrhlpr
-  cp -r mrhlpr/ "$pkgdir"/"$pythondir"/mrhlpr
+  python -m build --wheel --no-isolation
+}
+
+package() {
+  cd "$_pkgname"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
