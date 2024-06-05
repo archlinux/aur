@@ -1,0 +1,4 @@
+[cwtch-git]
+source = "git"
+git = "https://git.openprivacy.ca/cwtch.im/cwtch-ui"
+prefix = "v"
