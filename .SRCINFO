@@ -1,7 +1,7 @@
 pkgbase = raiderio-client-appimage
 	pkgdesc = raider.io desktop client for Linux
 	pkgver = 4.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://raider.io/
 	arch = x86_64
 	arch = arm64
