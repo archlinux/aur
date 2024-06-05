@@ -1,0 +1,4 @@
+[isolate]
+source = "git"
+git = "https://github.com/ioi/isolate.git"
+prefix = "v"
