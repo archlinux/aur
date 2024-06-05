@@ -1,14 +1,15 @@
 pkgbase = r-genelendatabase
 	pkgdesc = Lengths of mRNA transcripts for a number of genomes
-	pkgver = 1.39.0
+	pkgver = 1.40.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/geneLenDataBase
 	arch = any
-	license = LGPL
-	depends = r
+	license = LGPL-2.0-or-later
 	depends = r-genomicfeatures
 	depends = r-rtracklayer
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/geneLenDataBase_1.39.0.tar.gz
-	sha256sums = eb99b85b7ecf3db2db3f75be2d694ab88601e38a042d12492ea87532b02dad65
+	depends = r-txdbmaker
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/geneLenDataBase_1.40.1.tar.gz
+	md5sums = a5b4f62fdd6d45a9f8e59575266961cc
+	b2sums = 9d6ff9321b46df6836e618d4c52a47b2c2bce89818fa54c3b549a3e280208ca197fabf15c3ae9629322e357a3507962939ba8f12ce116ad1f1afa8dbc19db4ac
 
 pkgname = r-genelendatabase
