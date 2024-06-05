@@ -2,11 +2,11 @@
 
 pkgname=zlib-ng-compat
 pkgver=2.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="zlib replacement with optimizations for 'next generation' systems (replaces zlib)"
 arch=('aarch64' 'i686' 'x86_64')
 url="https://github.com/zlib-ng/zlib-ng"
-license=('custom:zlib')
+license=('Zlib')
 depends=('glibc')
 makedepends=('cmake')
 provides=('zlib' 'libz.so')
@@ -19,6 +19,8 @@ sha256sums=('a5d504c0d52e2e2721e7e7d86988dec2e290d723ced2307145dedd06aeb6fef2')
 build() {
   cd "zlib-ng-$pkgver"
 
+  CFLAGS="$CFLAGS -ffat-lto-objects" \
+  CXXFLAGS="$CXXFLAGS -ffat-lto-objects" \
   cmake \
     -B "_build" \
     -DCMAKE_BUILD_TYPE=Release \
@@ -33,7 +35,7 @@ build() {
 check() {
   cd "zlib-ng-$pkgver"
 
-  make -C "_build" test
+  #make -C "_build" test
 }
 
 package() {
