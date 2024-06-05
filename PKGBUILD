@@ -2,7 +2,7 @@
 
 pkgname=wired-git
 _pkgname=wired-notify
-pkgver=r225.8298b72
+pkgver=r358.9fb2153
 pkgrel=1
 pkgdesc="Lightweight notification daemon with highly customizable layout blocks, written in Rust."
 arch=('x86_64' 'i686')
