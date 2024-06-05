@@ -23,7 +23,7 @@ depends=(
   perl-scalar-list-utils
   perl-sort-versions
 )
-options=('!emptydirs' purge)
+options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/S/SL/SLAFFAN/$_dist-$pkgver.tar.gz")
 sha256sums=(2b72b31b5a7386339b57ccc4f897031efea950506414be52516d751ec4adbf0f)
 
