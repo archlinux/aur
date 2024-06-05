@@ -1,0 +1,4 @@
+[synth]
+source = "git"
+git = "https://github.com/shuttle-hq/synth.git"
+prefix = "v"
