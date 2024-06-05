@@ -1,7 +1,7 @@
 # Maintainer: lanthora <lanthora@outlook.com>
 
 pkgname=candy-git
-pkgver=5.8.1.r1.gc76ef8f
+pkgver=5.8.6.r6.g6519215
 pkgrel=1
 pkgdesc="A reliable, low-latency, and anti-censorship virtual private network"
 url="https://github.com/lanthora/candy"
@@ -10,7 +10,7 @@ arch=('x86_64' 'aarch64' 'armv7h' 'riscv64')
 source=("$pkgname::git+https://github.com/lanthora/candy.git" )
 sha256sums=('SKIP')
 makedepends=('cmake' 'ninja' 'pkgconf' 'gcc' 'git')
-depends=('fmt' 'glibc' 'gcc-libs' 'openssl' 'libconfig' 'uriparser' 'spdlog' 'poco')
+depends=('fmt' 'glibc' 'gcc-libs' 'openssl' 'libconfig' 'spdlog' 'poco')
 conflicts=('candy')
 backup=('etc/candy.cfg')
 
