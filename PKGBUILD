@@ -1,11 +1,11 @@
-# Maintainer: iamawacko <iamawacko@prptonmail.com>
+# Maintainer: iamawacko <iamawacko@protonmail.com>
 # Contributor: Trevor Bergeron <mal@sec.gd>
 
 _pkgname=libcwtch-go
 pkgname=$_pkgname
 
 pkgver=1.10.5
-pkgrel=1
+pkgrel=2
 
 pkgdesc="C bindings for the Go Cwtch library"
 conflicts=('libcwtch-go-git')
