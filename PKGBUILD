@@ -3,7 +3,7 @@
 pkgname=tagger
 _app_id=org.nickvision.tagger
 pkgver=2024.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy-to-use music tag (metadata) editor"
 arch=('x86_64' 'aarch64')
 url="https://github.com/NickvisionApps/Tagger"
@@ -24,9 +24,9 @@ optdepends=(
   'yelp: in-app help'
 )
 conflicts=('nickvision-tagger')
-source=("git+https://github.com/NickvisionApps/Tagger.git#tag=$pkgver"
+source=("git+https://github.com/NickvisionApps/Tagger.git#tag=$pkgver-1"
         'git+https://github.com/NickvisionApps/CakeScripts.git')
-sha256sums=('e84a653b55d7ca0a7e92ab7b0f01aaddae3ade3657e2fd0bed4c1b5dcaff0689'
+sha256sums=('ee46f66fec96cf3f4d418ec8dad9b09fe81ab56daeaf3eb13423a8e417977c29'
             'SKIP')
 
 prepare() {
