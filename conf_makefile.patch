@@ -1,0 +1,12 @@
+--- Makefile	2024-06-05 13:40:10.760390444 +0200
++++ Makefile_fix	2024-06-05 13:41:55.947572547 +0200
+@@ -29,7 +29,7 @@
+ 
+ install: $(CONFS)
+ 	@echo "Installing configuration for sky130l..."
+-	@if [ ! -d $(ACT_HOME)/conf/sky130l ]; then mkdir $(ACT_HOME)/conf/sky130l; fi
+-	@for i in $(CONFS); do $(ACT_HOME)/scripts/install $$i $(ACT_HOME)/conf/sky130l/$$i; done
++	@if [ ! -d $(INSTALLCONF)/sky130l ]; then mkdir $(INSTALLCONF)/sky130l; fi
++	@for i in $(CONFS); do $(ACT_HOME)/scripts/install $$i $(INSTALLCONF)/sky130l/$$i; done
+ 
+ -include Makefile.deps
