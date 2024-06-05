@@ -1,6 +1,6 @@
 pkgbase = vtebench-git
 	pkgdesc = Generate benchmarks for terminal emulators
-	pkgver = 0.3.1.52.g9cb3afc
+	pkgver = 0.3.1.r15.gc75155b
 	pkgrel = 1
 	url = https://github.com/alacritty/vtebench
 	install = vtebench.install
@@ -26,4 +26,3 @@ pkgbase = vtebench-git
 	sha256sums = SKIP
 
 pkgname = vtebench-git
-

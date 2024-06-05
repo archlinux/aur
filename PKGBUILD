@@ -1,8 +1,9 @@
-# Maintainer:  Vincent Grande <shoober420@gmail.com>
+# Contributor:  Vincent Grande <shoober420@gmail.com>
 # Contributor: quininer
 
+_name=vtebench
 pkgname=vtebench-git
-pkgver=0.3.1.52.g9cb3afc
+pkgver=0.3.1.r15.gc75155b
 pkgrel=1
 arch=('x86_64')
 url=https://github.com/alacritty/vtebench
@@ -17,12 +18,12 @@ source=(git+https://github.com/alacritty/vtebench)
 sha256sums=('SKIP')
 
 pkgver() {
-	cd vtebench
-	echo "$(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2|cut -d\- -f1).$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+  cd ${_name}
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build(){
-  cd vtebench
+  cd ${_name}
   env CARGO_INCREMENTAL=0 cargo build --release --locked
 }
 
@@ -32,10 +33,8 @@ build(){
 #}
 
 package() {
-	cd vtebench
-
-	install -D -m755 "target/release/vtebench" "$pkgdir/usr/bin/vtebench"
-
-	install -d "${pkgdir}/usr/share/vtebench/benchmarks"
-        cp -r "$srcdir/vtebench/benchmarks" "${pkgdir}/usr/share/vtebench"
+  cd ${_name}
+  install -D -m755 "target/release/vtebench" "$pkgdir/usr/bin/vtebench"
+  install -d "${pkgdir}/usr/share/vtebench/benchmarks"
+  cp -r "$srcdir/vtebench/benchmarks" "${pkgdir}/usr/share/vtebench"
 }
