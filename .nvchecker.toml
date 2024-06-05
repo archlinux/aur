@@ -1,0 +1,4 @@
+[mlar]
+source = "git"
+git = "https://github.com/ANSSI-FR/MLA.git"
+prefix = "mlar-v"
