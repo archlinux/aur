@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=colorpicker-app-bin
 _pkgname=Colorpicker
-pkgver=2.2.1
+pkgver=2.2.2
 _electronversion=19
 pkgrel=1
 pkgdesc="A mininal but complete colorpicker desktop app"
@@ -25,8 +25,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('0850137c238fa80dc0cbb1bf99deee167856abe0d311e60159e8505b633d88d2'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+sha256sums=('4afc7bca5cbc3596cfa70d42ff0cd044e4267df9fbce2cfff51fb19c697aa8a4'
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
