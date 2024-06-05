@@ -15,6 +15,7 @@ optdepends=("graphviz: Schematics display support" "xdot: Design netlist display
 makedepends=("git" "gcc" "bison" "flex" "pkgconf" "gawk" "protobuf" "iverilog")
 conflicts=("yosys" "yosys-git")
 replaces=("yosys" "yosys-git")
+provides=("yosys=$(cut -d _ -f 3 <<< "${pkgver}")")
 source=(
 	"yosys::git+https://github.com/YosysHQ/yosys.git#commit=@EDA_HASH@"
 	"yosys.conf"
