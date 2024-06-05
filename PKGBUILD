@@ -2,13 +2,14 @@
 
 pkgbase=protobuf-git
 pkgname=('protobuf-git' 'python-protobuf-git')
-pkgver=21.12.r1098.gb598b2dd1
+pkgver=27.0.r285.g532f0c2ed
 pkgrel=1
 pkgdesc="Google's data interchange format"
 arch=('i686' 'x86_64')
 url="https://developers.google.com/protocol-buffers/"
-license=('BSD')
+license=('BSD-3-Clause')
 makedepends=('git' 'cmake' 'gtest' 'python-build' 'python-installer' 'python-wheel')
+checkdepends=('python-pytest' 'python-numpy')
 source=("git+https://github.com/protocolbuffers/protobuf.git")
 sha256sums=('SKIP')
 
@@ -31,16 +32,21 @@ pkgver() {
 build() {
   cd "protobuf"
 
+  CFLAGS="$CFLAGS -ffat-lto-objects" \
+  CXXFLAGS="$CXXFLAGS -ffat-lto-objects" \
   cmake \
     -B "_build" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DBUILD_SHARED_LIBS=ON \
+    -Dprotobuf_ABSL_PROVIDER=package \
+    -Dprotobuf_BUILD_TESTS=OFF \
     -Dprotobuf_USE_EXTERNAL_GTEST=ON \
     ./
   make -C "_build"
 
   cd "python"
+  ln -sf "dist/setup.py"
   python \
     -m build \
     --wheel \
@@ -53,12 +59,12 @@ check() {
 
   #make -C "_build" check
 
-  cd "python"
+  #cd "python"
   #python "setup.py" test
 }
 
 package_protobuf-git() {
-  depends=('gcc-libs' 'zlib')
+  depends=('gcc-libs' 'abseil-cpp' 'zlib')
   provides=("protobuf=$pkgver" 'libprotoc.so' 'libprotobuf.so' 'libprotobuf-lite.so')
   conflicts=('protobuf')
 
@@ -72,7 +78,7 @@ package_protobuf-git() {
 
 package_python-protobuf-git() {
   pkgdesc="Python 3 bindings for Google Protocol Buffers"
-  depends=("protobuf-git=$pkgver" 'python' 'python-six')
+  depends=("protobuf-git=$pkgver" 'python')
   provides=("python-protobuf=$pkgver")
   conflicts=('python-protobuf')
 
@@ -80,9 +86,8 @@ package_python-protobuf-git() {
 
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/python-protobuf"
 
-  cd "python"
   python \
     -m installer \
     --destdir="$pkgdir" \
-    dist/*.whl
+    python/dist/*.whl
 }
