@@ -10,7 +10,9 @@ pkgbase = what-the-port
 	arch = aarch64
 	license = AGPL-3.0-or-later
 	makedepends = cargo
+	makedepends = openssl
 	depends = gcc-libs
+	depends = openssl
 	source = what-the-port-0.1.0.tar.gz::https://static.crates.io/crates/what-the-port/what-the-port-0.1.0.crate
 	sha512sums = 3cfbeb3980418c7339fdb135e3092225e0fcc93cd59b911599ebbbf4591857d4de01610e9e31dfac978159beab8141670a5051ded7083612e4737be940725a54
 

@@ -7,8 +7,8 @@ pkgdesc="Quickly lookup what a port is used for."
 arch=("x86_64" "i686" "armv6h" "armv7h" "aarch64")
 url="https://github.com/cyqsimon/what-the-port"
 license=("AGPL-3.0-or-later")
-depends=("gcc-libs")
-makedepends=("cargo")
+depends=("gcc-libs" "openssl")
+makedepends=("cargo" "openssl")
 source=("${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/${pkgname}/${pkgname}-${pkgver}.crate")
 sha512sums=('3cfbeb3980418c7339fdb135e3092225e0fcc93cd59b911599ebbbf4591857d4de01610e9e31dfac978159beab8141670a5051ded7083612e4737be940725a54')
 
