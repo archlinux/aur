@@ -6,7 +6,7 @@ _pkgver="6.5.10"
 _pkgdate="240603"
 _foldername=${pkgname}
 pkgver=$_pkgver+$_pkgdate
-pkgrel=1
+pkgrel=2
 pkgdesc="The most popular FOSS online survey tool on the web."
 depends=('php')
 license=('GPL2')
@@ -15,7 +15,7 @@ url="https://www.limesurvey.org"
 source=(
 https://download.limesurvey.org/latest-master/limesurvey${pkgver}.zip
 )
-sha256sums=('5a851e5c9e0ec0e3d81f16485015f4143312b3ed9ef7701290711e13e74b385c')
+sha256sums=('66b80934a14f0b047814fd17aa83d00541a927c2c5040cb378b2d7d5b3edb947')
 
 optdepends=('apache: a supported application server'
 	    'nginx: a supported application server'
