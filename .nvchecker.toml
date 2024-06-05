@@ -1,0 +1,6 @@
+[cwtch-autobindings]
+source = "gitea"
+gitea = "cwtch.im/autobindings"
+host = "git.openprivacy.ca/"
+use_max_tag = "true"
+prefix = "v"
