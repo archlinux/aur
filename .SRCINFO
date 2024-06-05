@@ -1,12 +1,30 @@
 pkgbase = python-depthai
 	pkgdesc = DepthAI Python Library
-	pkgver = 2.24.0.0
+	pkgver = 2.26.0.0
 	pkgrel = 1
 	url = https://github.com/luxonis/depthai-python
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = python
-	makedepends = python-pip
+	makedepends = gcc-libs
+	makedepends = glibc
+	makedepends = curl
+	makedepends = sed
+	makedepends = cmake>=3.25
+	depends = python
+	depends = libusb
+	optdepends = python-pyqt5
+	optdepends = python-psutil
+	optdepends = python-numpy
+	optdepends = python-opencv
 	options = !strip
+	source = dephtai-python-2.26.0.0.tar.gz::https://github.com/luxonis/depthai-python/archive/refs/tags/v2.26.0.0.tar.gz
+	source = depthai-core-2.26.0.tar.gz::https://github.com/luxonis/depthai-core/releases/download/v2.26.0/depthai-core-v2.26.0.tar.gz
+	source = 80-movidius.rules
+	source = pyproject.toml
+	sha256sums = fef1bf905288021aafa60b582617a5ceb57c12fe85e9b1994f2e28523b7aa281
+	sha256sums = 7f1ef051f18f47ef109db9351fdf97e5240fa5d24043f1434e4a3c004ae6e063
+	sha256sums = 06643091a944b1e562f8ba5ecf8011b473120c6256ba2a2ac9b85fe8c1bb30aa
+	sha256sums = a0b59fa6f09767cce0e5bd1f5097db4381a9ecb119304113fe0533db5c7e52b5
 
 pkgname = python-depthai

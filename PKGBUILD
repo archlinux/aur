@@ -3,21 +3,53 @@
 # AUR package author : Robin Trioux <robin@trioux.eu>
 
 pkgname=python-depthai
-pkgver=2.24.0.0
+pkgver=2.26.0.0
 pkgrel=1
 pkgdesc="DepthAI Python Library"
-arch=(any)
+arch=('x86_64')
 url="https://github.com/luxonis/depthai-python"
 license=(MIT)
-makedepends=("python" "python-pip")
-options=(!strip)
+makedepends=("python" "gcc-libs" "glibc" "curl" "sed" "cmake>=3.25")
+depends=("python" "libusb")
+optdepends=("python-pyqt5" "python-psutil" "python-numpy" "python-opencv")
+options+=(!strip)
+
+core_version=$(echo "$pkgver" | sed 's/\.[^.]*$//') # Stripping last version number as it does not exist for depthai core
+source=(
+dephtai-python-$pkgver.tar.gz::"https://github.com/luxonis/depthai-python/archive/refs/tags/v$pkgver.tar.gz"
+depthai-core-$core_version.tar.gz::"https://github.com/luxonis/depthai-core/releases/download/v$core_version/depthai-core-v$core_version.tar.gz"
+"80-movidius.rules"
+"pyproject.toml"
+)
+
+prepare() {
+	cd "$srcdir"
+	cp -f pyproject.toml depthai-python-$pkgver
+	cp -r depthai-core-v$core_version/* depthai-python-$pkgver/depthai-core/
+}
+
+
 build() {
-  pip install --no-deps --target="depthai" depthai==2.24.0.0
+	# Prevent hunter C++ package manager from using users home
+	#export HUNTER_ROOT=$srcdir/hunter
+	#export HUNTER_BINARY_DIR=$srcdir/hunterdir
+	#mkdir -p $HUNTER_ROOT
+	#mkdir -p $HUNTER_BINARY_DIR
+	ncpu=$(nproc --all)
+	export MAKEFLAGS="-j$ncpu"
+	cd $srcdir/depthai-python-$pkgver
+	python -m build --wheel --no-isolation
 }
+
 package() {
-  sitepackages=$(python -c "import site; print(site.getsitepackages()[0])")
-  mkdir -p $pkgdir/"$sitepackages"
-  cp -r $srcdir/depthai/* $pkgdir/"$sitepackages"
-  install -Dm644 "${srcdir}/../80-movidius.rules" "${pkgdir}/etc/udev/rules.d/80-movidius.rules"
-  sudo udevadm control --reload-rules && sudo udevadm trigger
+	cd $srcdir/depthai-python-$pkgver
+	python -m installer --destdir="$pkgdir" dist/*.whl
+	install -Dm644 "${srcdir}/80-movidius.rules" "$pkgdir/etc/udev/rules.d/80-movidius.rules"
+	install -Dm644 "${srcdir}/depthai-python-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	sudo udevadm control --reload-rules && sudo udevadm trigger
 }
+
+sha256sums=('fef1bf905288021aafa60b582617a5ceb57c12fe85e9b1994f2e28523b7aa281'
+            '7f1ef051f18f47ef109db9351fdf97e5240fa5d24043f1434e4a3c004ae6e063'
+            '06643091a944b1e562f8ba5ecf8011b473120c6256ba2a2ac9b85fe8c1bb30aa'
+            'a0b59fa6f09767cce0e5bd1f5097db4381a9ecb119304113fe0533db5c7e52b5')
