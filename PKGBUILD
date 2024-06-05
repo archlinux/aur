@@ -2,7 +2,7 @@
 # Contributor: Jean Lucas <jean@4ray.co>
 
 pkgname=r-linux
-pkgver=6.3.191253
+pkgver=6.3.191269
 pkgrel=1
 pkgdesc="File recovery utility for the ext2/ext3/ext4 file system"
 arch=('i686' 'x86_64')
