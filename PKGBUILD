@@ -98,7 +98,7 @@ checkdepends=(
   perl-test-exception
   perl-test-warn
 )
-options=('!emptydirs' purge)
+options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/E/ET/ETJ/$_dist-$pkgver.tar.gz"
         perldl.conf)
 sha256sums=(9e408e4f06685de911697e12eaa5c8538e8521cbb80b876eda4bbcc7f98f196f

@@ -38,7 +38,6 @@ pkgbase = perl-pdl
 	depends = ffmpeg
 	depends = perl-extutils-f77
 	options = !emptydirs
-	options = purge
 	source = https://cpan.metacpan.org/authors/id/E/ET/ETJ/PDL-2.089.tar.gz
 	source = perldl.conf
 	sha256sums = 9e408e4f06685de911697e12eaa5c8538e8521cbb80b876eda4bbcc7f98f196f
