@@ -24,6 +24,7 @@ conflicts=(
 	"nextpnr-all-nightly"
 )
 replaces=()
+provides=("nextpnr-nexus=$(cut -d _ -f 3 <<< "${pkgver}")")
 source=(
 	"nextpnr::git+https://github.com/YosysHQ/nextpnr.git#commit=@EDA_HASH@"
 )
