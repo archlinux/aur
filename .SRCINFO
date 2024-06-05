@@ -5,11 +5,7 @@ pkgbase = skk-emoji-jisyo
 	url = https://github.com/uasi/skk-emoji-jisyo
 	arch = any
 	license = MIT
-	source = https://raw.githubusercontent.com/uasi/skk-emoji-jisyo/master/README.md
-	source = https://raw.githubusercontent.com/uasi/skk-emoji-jisyo/master/LICENSE
-	source = https://raw.githubusercontent.com/uasi/skk-emoji-jisyo/master/SKK-JISYO.emoji.utf8
-	md5sums = e904367a25bd27a5199af3471b5b49be
-	md5sums = b38ac3ba86b729f5feb72b371f99c981
-	md5sums = b7d5154a378975bec52c2e972fc93c2c
+	source = git+https://github.com/uasi/skk-emoji-jisyo.git
+	md5sums = SKIP
 
 pkgname = skk-emoji-jisyo
