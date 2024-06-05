@@ -2,7 +2,7 @@
 
 _name=pyflame
 pkgname="python-${_name}"
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='Generate flamegraphs for Python code, using Brendan Gregg’s excellent FlameGraph project to perform the heavy lifting'
 arch=('any')
@@ -13,10 +13,10 @@ provides=('pyflame')
 conflicts=('pyflame')
 license=('MIT')
 source=(
-  "https://files.pythonhosted.org/packages/0f/78/04a296a7488dddf81476d997d0c24f4872943501a26d02cee418b9fc53e0/${_name}-${pkgver}.tar.gz"
+  "https://files.pythonhosted.org/packages/74/9e/0e750a25b3166a0e4e4f6915c1cec971c774d3ea4f84827a64323700d5ae/pyflame-0.3.2.tar.gz"
 )
 sha256sums=(
-  d4d710a917bf12754675e058fb6d07c376ca52831a11f8f8d38b3426c5f06348
+  8f5e5146781bddef387b33170b27cfc5be907fae0179516db564a723f30e5121
 )
 
 
