@@ -1,9 +1,9 @@
 #Maintainer: Toni Sagrista Selles <tsagrista@ari.uni-heidelberg.de>
 pkgname=gaiasky
-pkgver=3.6.1
+pkgver=3.6.2
 pkgrel=1
 epoch=3
-versionstr=3.6.1.f3a379a3d
+versionstr=3.6.2.1b1e23dbb
 pkgdesc="Open source 3D universe simulator for desktop and VR with support for more than a billion objects"
 arch=(x86_64)
 url="https://zah.uni-heidelberg.de/gaia/outreach/gaiasky"
@@ -22,8 +22,8 @@ install=gaiasky.install
 changelog=releasenotes.txt
 source=("http://gaia.ari.uni-heidelberg.de/gaiasky/files/releases/${versionstr//_/-}/$pkgname-${versionstr//_/-}.tar.gz")
 noextract=()
-md5sums=("88786aa211156db5a39a34aeb3099206")
-sha256sums=("9f89ad1e47ab0074a5a16de6af1eaff84e07ef60606c91133c6b30f5cca57046")
+md5sums=("b6666b89744a3dac570a10e90e88af56")
+sha256sums=("e0e0913e938cd2135d0916b1fdd7b20450f6f4b168f5c6b30444d4740a3b959a")
 validpgpkeys=()
 
 prepare() {
