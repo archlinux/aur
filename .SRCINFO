@@ -1,0 +1,17 @@
+pkgbase = ruby-safe_yaml
+	pkgdesc = Parse YAML safely
+	pkgver = 1.0.5
+	pkgrel = 3
+	url = https://github.com/dtao/safe_yaml
+	arch = any
+	license = MIT
+	makedepends = ruby-rdoc
+	makedepends = ruby-rake
+	makedepends = ruby-rspec
+	depends = ruby
+	options = !emptydirs
+	source = https://github.com/dtao/safe_yaml/archive/1.0.5/ruby-safe_yaml-1.0.5.tar.gz
+	sha512sums = 5ca8472b09e5a463414417355d646e69f4754cb15db21771b45ad7173692dac9ebdfe96ee18659e018fa9b835ce42762c3c61889e127f4f44d658f9d279a1283
+	b2sums = f7d58ff81758ccbae960b887005f0fd9e48370b91d104959b877b8e5bd1d54779853e515e69dc152cdc0810f69e92915f11f1bb96a32cb387ce77c80c1f3e6d0
+
+pkgname = ruby-safe_yaml
