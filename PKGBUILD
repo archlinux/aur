@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=gameclock-git
 _pkgname=GameClock
-pkgver=1.2.r0.g083c971
+pkgver=1.3.0.r0.g03e1b2a
 _electronversion=29
 pkgrel=1
 pkgdesc="Track your Game time with your friends !"
@@ -16,9 +16,8 @@ depends=(
 makedepends=(
     'npm'
     'git'
-    'nvm'
+    'nodejs'
     'gendesk'
-    'base-devel'
     'gcc'
     'curl'
 )
