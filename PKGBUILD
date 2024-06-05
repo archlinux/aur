@@ -8,7 +8,6 @@ pkgdesc="A user-level SOCKS and port forwarding proxy for OpenConnect based on l
 arch=('i686' 'x86_64')
 url="https://github.com/cernekee/ocproxy"
 license=('BSD')
-groups=('')
 depends=('libevent>=2.1.8.stable')
 optdepends=('dante: SOCKS proxy server and client'
             'openconnect: Open client for Cisco AnyConnect VPN')

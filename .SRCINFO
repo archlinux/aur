@@ -5,7 +5,6 @@ pkgbase = ocproxy-bin
 	url = https://github.com/cernekee/ocproxy
 	arch = i686
 	arch = x86_64
-	groups = 
 	license = BSD
 	depends = libevent>=2.1.8.stable
 	optdepends = dante: SOCKS proxy server and client
