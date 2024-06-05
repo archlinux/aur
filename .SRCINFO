@@ -1,12 +1,13 @@
 pkgbase = ctranslate2
 	pkgdesc = A C++ and Python library for efficient inference with Transformer models.
 	pkgver = 4.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://opennmt.net/CTranslate2
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = cuda
+	makedepends = gcc13
 	makedepends = git
 	makedepends = intel-oneapi-mkl
 	makedepends = onednn

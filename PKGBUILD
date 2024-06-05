@@ -6,7 +6,7 @@ pkgname=(
 )
 pkgbase=ctranslate2
 pkgver=4.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A C++ and Python library for efficient inference with Transformer models."
 arch=('x86_64')
 url="https://opennmt.net/CTranslate2"
@@ -15,6 +15,7 @@ makedepends=(
   'cmake'
   'cuda'
 #  'cudnn'
+  'gcc13'
   'git'
   'intel-oneapi-mkl'
   'onednn'
@@ -88,6 +89,8 @@ build() {
   # https://github.com/OpenNMT/CTranslate2/issues/1294
 
   cmake -B build -S CTranslate2 \
+    -DCMAKE_C_COMPILER='gcc-13' \
+    -DCMAKE_CXX_COMPILER='g++-13' \
     -DCMAKE_BUILD_TYPE='Release' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DOPENMP_RUNTIME='COMP' \
