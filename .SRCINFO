@@ -1,6 +1,6 @@
 pkgbase = trueconf-client
 	pkgdesc = Video conference client with a range of rich collaborative tools and an easy-to-use interface
-	pkgver = 8.4.1.521
+	pkgver = 8.4.1.534
 	pkgrel = 1
 	url = https://trueconf.com
 	install = trueconf-client.install
@@ -51,7 +51,7 @@ pkgbase = trueconf-client
 	depends = libxcomposite
 	depends = libxdamage
 	depends = libxfixes
-	source = https://mirror.trueconf.com/archlinux/trueconf-8.4.1.521-1-x86_64.pkg.tar.zst
-	sha512sums = 3d95857a856a080bb644ce8eccc7942bc7b3b90d07b36c3924761ecc696eda2acbc7d7866c0033f753a62b613b3cf2291763376f55711cf3577658e80343c8c1
+	source = https://mirror.trueconf.com/archlinux/trueconf-8.4.1.534-1-x86_64.pkg.tar.zst
+	sha512sums = 8587bca6108509842d333d25a893469d07f1df383d7a170f9863f5c35fbb87073f7bc41162ed30fb8543b97a29dc1047b8384e0791181c663ef0b9daf953314a
 
 pkgname = trueconf
