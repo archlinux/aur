@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=deltachat-desktop-bin
 _pkgname=DeltaChat
-pkgver=1.45.0
+pkgver=1.45.3
 _electronversion=30
 pkgrel=1
 pkgdesc="Email-based instant messaging for Desktop."
@@ -26,8 +26,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::https://download.delta.chat/desktop/v${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::https://download.delta.chat/desktop/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 sha256sums=('2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-sha256sums_aarch64=('5dd14ae341602ddf1a7ec5fd7356c0d0d5440df128ee2d186258da338660da26')
-sha256sums_x86_64=('252cfffdcb103602d1d09aad7892ecdacb85e1e17e35264232851670e848827d')
+sha256sums_aarch64=('7bc8a08a15eb3eaacb10b57f909d45449403708346bc121d055f4aa278816397')
+sha256sums_x86_64=('c9010092c8944c57a4aa48392ecb4e3f510351271954fffbb1810d745923a5d4')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
