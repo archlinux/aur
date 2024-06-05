@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libbacktrace-git
-pkgver=r77.g9ae4f4a
+pkgver=r87.g11427f3
 pkgrel=1
 pkgdesc="Library to produce symbolic backtraces"
 arch=('i686' 'x86_64')
 url="https://github.com/ianlancetaylor/libbacktrace"
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('gcc-libs' 'zlib')
 makedepends=('git' 'libunwind')
 provides=("libbacktrace=$pkgver" 'libbacktrace.so')
@@ -39,6 +39,7 @@ build() {
   cd "libbacktrace"
 
   autoreconf -fi
+  CFLAGS="$CFLAGS -ffat-lto-objects" \
   ./configure \
     --prefix="/usr" \
     --enable-shared \
