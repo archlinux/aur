@@ -23,7 +23,7 @@ pkgdesc="Operating environment for the new internet. Anytype is a next generatio
 arch=('x86_64')
 url="https://anytype.io/"
 license=('custom')
-depends=(bash glibc gcc-libs libsecret glib2 hicolor-icon-theme)
+depends=('electron27' bash glibc gcc-libs libsecret glib2 hicolor-icon-theme)
 optdepends=('org.freedesktop.secrets: for not having to sign in each time')
 provides=('anytype')
 conflicts=('anytype'
@@ -37,7 +37,7 @@ package() {
   	tar -xvf data.tar.* -C $pkgdir
   	find $pkgdir/opt -type f -not -path "*/resources/*" -print -delete
   	printf '#!/bin/sh
-	exec env ELECTRON_IS_DEV=0 electron /opt/Anytype/resources/app.asar "$@"
+	exec env ELECTRON_IS_DEV=0 electron27 /opt/Anytype/resources/app.asar "$@"
 	' | install -Dm755 /dev/stdin $pkgdir/opt/Anytype/anytype
 
 }
