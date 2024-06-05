@@ -1,0 +1,4 @@
+[ttf-joypixels]
+source = "regex"
+url = "https://cms-api.joypixels.com/product/XYEJQ1FBDYQNWLD4UGOA/_/"
+regex = '"JoyPixels (\d+\.\d+)"'
