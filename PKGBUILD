@@ -22,6 +22,9 @@ optdepends=(
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/fwsGonzo/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz)
 sha256sums=('c173c06c0c82d39e0defc5bf80db73fd0af7625cd493cafdf51c3606d509cc96')
 
+# Workaround for linking against the installed library
+CXXFLAGS+=" -ffat-lto-objects "
+
 build(){
  # lib
   cmake -B build -S ${pkgname}-${pkgver} \
