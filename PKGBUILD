@@ -6,7 +6,7 @@
 # Contributor: lubosz
 
 pkgname=pcl-git
-pkgver=r14353.21b58c1be
+pkgver=r14416.eb9c003fc
 pkgrel=1
 pkgdesc="a standalone, large scale, open project for 2D/3D image and point cloud processing"
 arch=(i686 x86_64)
@@ -42,17 +42,14 @@ depends=(
 	utf8cpp
 	nlohmann-json
     openni2
-    ensenso-sdk
     postgresql
-    gcc12
+    gcc13
 )
 makedepends=(cmake git)
 source=(
     git+https://github.com/PointCloudLibrary/pcl
-    patch-eigen.patch::https://github.com/PointCloudLibrary/pcl/pull/5998.patch
 )
 sha256sums=(
-    SKIP
     SKIP
 )
 conflicts=(pcl)
@@ -65,11 +62,10 @@ pkgver() {
 }
 
 prepare() {
-    cd "${srcdir}/pcl"
-    patch -Np1 -i "${srcdir}/patch-eigen.patch" || true
 	mkdir  -p "$srcdir/build"
 	cd     "$srcdir/build"
 	cmake "${srcdir}/pcl" \
+        -DCMAKE_CXX_COMPILER=/usr/bin/g++-13 \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_CXX_FLAGS="${CXXFLAGS} -fPIC" \
 		-DCMAKE_SHARED_LINKER_FLAGS="${LDFLAGS} -Wl,--as-needed" \
@@ -84,18 +80,20 @@ prepare() {
 		-DBUILD_global_tests=OFF \
 		-DBUILD_surface_on_nurbs=ON \
 		-DBUILD_CUDA=ON \
-		-DBUILD_cuda_io=ON \
+		-DBUILD_cuda_io=OFF \
 		-DBUILD_cuda_apps=ON \
 		-DBUILD_GPU=ON \
 		-DBUILD_gpu_kinfu=OFF \
 		-DBUILD_gpu_kinfu_large_scale=OFF \
 		-DBUILD_gpu_surface=ON \
 		-DBUILD_gpu_tracking=ON \
+        -DBUILD_gpu_people=OFF \
 		-DBUILD_simulation=ON \
 		-DCMAKE_CUDA_COMPILER=/opt/cuda/bin/nvcc \
-        -DCMAKE_CUDA_HOST_COMPILER=/usr/bin/g++-12 \
+        -DCMAKE_CUDA_HOST_COMPILER=/usr/bin/g++-13 \
 		-DCMAKE_MODULE_PATH=/usr/lib/cmake/OpenVDB \
-		-DWITH_QT=QT5  # VTK is still using Qt5
+		-DWITH_QT=QT5 \
+        -DWITH_ENSENSO=OFF
 }
 
 build() {
