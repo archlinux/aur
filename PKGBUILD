@@ -1,6 +1,7 @@
 # Maintainer: Mark Collins <tera_1225 hat hotmail ðot com>
 # Contributor: Wilhelm Schuster <aur [aT] rot13 _dot_ io>
-pkgname=wget2
+pkgname=wget2-no-docs
+_name=wget2
 pkgver=2.1.0
 pkgrel=1
 pkgdesc="Updated version of wget URL retrieval tool, no docs (avoids pandoc makedep)"
@@ -29,14 +30,15 @@ makedepends=(
   'python'
   'doxygen'
 )
-conflicts=("$pkgname-git")
-source=("https://ftp.gnu.org/gnu/wget/${pkgname}-${pkgver}.tar.gz"{,.sig})
+conflicts=("$_name-git" "$_name")
+provides=("$_name")
+source=("https://ftp.gnu.org/gnu/wget/${_name}-${pkgver}.tar.gz"{,.sig})
 sha256sums=('a05dc5191c6bad9313fd6db2777a78f5527ba4774f665d5d69f5a7461b49e2e7'
             'SKIP')
 validpgpkeys=("1CB27DBC98614B2D5841646D08302DB6A2670428")
 
 build() {
-  cd "${srcdir}"/${pkgname}-${pkgver}
+  cd "${srcdir}"/${_name}-${pkgver}
 
   ./configure --prefix=/usr --sysconfdir=/etc \
     --with-openssl=no \
@@ -49,14 +51,14 @@ build() {
 }
 
 check() {
-  cd "${srcdir}"/${pkgname}-${pkgver}
+  cd "${srcdir}"/${_name}-${pkgver}
 
   make check
 }
 
 
 package() {
-  cd "${srcdir}"/${pkgname}-${pkgver}
+  cd "${srcdir}"/${_name}-${pkgver}
 
   make DESTDIR="$pkgdir/" install
 
@@ -67,4 +69,3 @@ package() {
   rm -f "$pkgdir/usr/bin/wget2_noinstall"
 }
 
-# vim:set ts=2 sw=2 tw=0 et:
