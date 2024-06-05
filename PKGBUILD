@@ -24,7 +24,7 @@ source=(
 	"$pkgname.png"
 	)
 sha256sums=(
-	'4f9da788a46090f5cb79080359d069c896dc0e4e6ae705c0a49821e2f62c7a6d'
+	'99812758be7e3a941253671540f345308097d8afb24d7671f6f8dd899fdd8f36'
 	'0624f9c1aa7377ccb5bd6b6a54a3dbea3cdd1a1e838a154c73bd01d22ff5fc3f'
 	'11e10dc114bd6cd8ecfe018b277798f1c7727f113c15ebc09090682f8575bb1f'
 )
@@ -39,6 +39,7 @@ package() {
 	install -d $pkgdir/{opt/$pkgname,usr/bin}
 	mv ./$_pkgname-linux-x64-$pkgver/* $pkgdir/opt/$pkgname
 	ln -s /opt/$pkgname/goby $pkgdir/usr/bin/$pkgname
+	ln -s /opt/$pkgname/goby/golib/goby-cmd-linux $pkgdir/usr/bin/$pkgname-cmd
 
 	install -Dm644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
 	install -Dm644 $srcdir/$pkgname.png $pkgdir/usr/share/pixmaps/$pkgname.png

@@ -15,7 +15,7 @@ pkgbase = goby-community
 	source = https://goby-storage-public.oss-cn-beijing.aliyuncs.com/2.9.4/goby-linux-x64-2.9.4-Community.zip
 	source = goby-community.desktop
 	source = goby-community.png
-	sha256sums = 4f9da788a46090f5cb79080359d069c896dc0e4e6ae705c0a49821e2f62c7a6d
+	sha256sums = 99812758be7e3a941253671540f345308097d8afb24d7671f6f8dd899fdd8f36
 	sha256sums = 0624f9c1aa7377ccb5bd6b6a54a3dbea3cdd1a1e838a154c73bd01d22ff5fc3f
 	sha256sums = 11e10dc114bd6cd8ecfe018b277798f1c7727f113c15ebc09090682f8575bb1f
 
