@@ -1,6 +1,6 @@
 pkgbase = fooyin
 	pkgdesc = A customisable music player
-	pkgver = 0.4.3
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/ludouzi/fooyin
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = fooyin
 	optdepends = pipewire: For the PipeWire audio output plugin
 	conflicts = fooyin
 	options = !strip
-	source = fooyin-0.4.3.tar.gz::https://github.com/ludouzi/fooyin/archive/refs/tags/v0.4.3.tar.gz
-	sha256sums = f50e5a316e5f8a0494902a06d2cee255574265c8f3904a65cb1b686d2df97afc
+	source = fooyin-0.4.4.tar.gz::https://github.com/ludouzi/fooyin/archive/refs/tags/v0.4.4.tar.gz
+	sha256sums = 217ed1daa6af6a767ccfca9c93fb3e21ab57e74e66808e89e0fb9bdc322b0e5f
 
 pkgname = fooyin
