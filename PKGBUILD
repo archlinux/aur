@@ -2,9 +2,9 @@
 # Contributor: Blessing-Studio <3424968114@qq.com>
 
 pkgname=wonderlab-appimage-feature
-_pkgname=WonderLab
+_pkgname=wonderlab
 pkgver=2.0.0
-pkgrel=1.0
+pkgrel=2.0
 pkgdesc="The next generation cross-platform Minecraft launcher. (feature branch)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Blessing-Studio/WonderLab.Override"
