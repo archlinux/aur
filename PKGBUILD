@@ -14,7 +14,7 @@ unset _pkgtype
 # basic info
 _pkgname="duckstation"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=0.1.6720
+pkgver=0.1.6759
 pkgrel=1
 pkgdesc="Playstation emulator"
 url="https://github.com/stenzek/duckstation"
@@ -40,8 +40,6 @@ depends=(
   #zlib
   #zstd
 
-  ## AUR
-  'libbacktrace'
 )
 makedepends=(
   'clang'
@@ -57,11 +55,20 @@ makedepends=(
   'spirv-headers'
 )
 
-source=("google.shaderc"::"git+https://github.com/google/shaderc.git")
-sha256sums=('SKIP')
+_src_shaderc="google.shaderc"
+_src_backtrace="ianlancetaylor.libbacktrace"
+
+source=(
+  "$_src_shaderc"::"git+https://github.com/google/shaderc.git"
+  "$_src_backtrace"::"git+https://github.com/ianlancetaylor/libbacktrace.git"
+)
+sha256sums=(
+  'SKIP'
+  'SKIP'
+)
 
 if [ "${_build_git::1}" != "t" ]; then
-  _commit=26917f14c568a8133721bb21614c08bd6fe1efce
+  _commit=0a63bec65ca0346c89f82469a8a9c9cba401faa1
 
   _pkgsrc="$_pkgname"
   source+=("$_pkgsrc"::"git+$url.git#commit=$_commit")
@@ -91,7 +98,7 @@ else
 fi
 
 prepare() {
-  cd "google.shaderc"
+  cd "$_src_shaderc"
   # apply duckstation patch
   git apply "$srcdir/$_pkgname/scripts/shaderc-changes.patch"
 
@@ -106,7 +113,8 @@ EOF
 }
 
 build() {
-  export CC CXX CFLAGS CXXFLAGS LDFLAGS LTOFLAGS
+  export AR CC CXX CFLAGS CXXFLAGS LDFLAGS LTOFLAGS
+  AR="llvm-ar"
   CC="clang"
   CXX="clang++"
   LDFLAGS+=" -fuse-ld=lld"
@@ -117,11 +125,23 @@ build() {
     export CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
   fi
 
+  (
+    echo "Building libbacktrace..."
+    cd "$_src_backtrace"
+
+    autoreconf -fi
+    ./configure
+    make
+
+    install -Dm644 .libs/libbacktrace.a -t "$srcdir/deps/"
+    install -Dm644 *.h -t "$srcdir/deps/include/"
+  )
+
   echo "Building shaderc..."
 
   local _cmake_shaderc=(
     -B build_shaderc
-    -S "google.shaderc"
+    -S "$_src_shaderc"
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX=/usr
@@ -147,6 +167,8 @@ build() {
     -DBUILD_QT_FRONTEND=ON
     -DCMAKE_PREFIX_PATH="$srcdir/deps/usr"
     -DCMAKE_SKIP_RPATH=ON
+    -DLIBBACKTRACE_LIBRARY="$srcdir/deps/libbacktrace.a"
+    -DLIBBACKTRACE_INCLUDE_DIR="$srcdir/deps/include"
     -Wno-dev
   )
 

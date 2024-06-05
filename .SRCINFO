@@ -1,6 +1,6 @@
 pkgbase = duckstation
 	pkgdesc = Playstation emulator
-	pkgver = 0.1.6720
+	pkgver = 0.1.6759
 	pkgrel = 1
 	url = https://github.com/stenzek/duckstation
 	arch = x86_64
@@ -22,9 +22,10 @@ pkgbase = duckstation
 	depends = qt6-base
 	depends = sdl2
 	depends = spirv-tools
-	depends = libbacktrace
 	source = google.shaderc::git+https://github.com/google/shaderc.git
-	source = duckstation::git+https://github.com/stenzek/duckstation.git#commit=26917f14c568a8133721bb21614c08bd6fe1efce
+	source = ianlancetaylor.libbacktrace::git+https://github.com/ianlancetaylor/libbacktrace.git
+	source = duckstation::git+https://github.com/stenzek/duckstation.git#commit=0a63bec65ca0346c89f82469a8a9c9cba401faa1
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
