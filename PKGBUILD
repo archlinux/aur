@@ -1,7 +1,7 @@
 # Maintainer: John Ramsden <johnramsden [at] riseup [dot] net>
 
 pkgname=zectl
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="ZFS Boot Environment manager."
 url="http://github.com/johnramsden/${pkgname}"
@@ -16,7 +16,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/johnramsden/${pkgname}/archive/v${pkgver}.tar.gz"
 )
 
-sha256sums=('e84976325317194707f6d0beddedddc3e7e6e830f4a2d8d09065756f768ede0c')
+sha256sums=('e162dcdf62ebb90b54b2a8b876018a463a33ac25263c585f5da3661314dabbca')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
