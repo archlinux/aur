@@ -3,7 +3,7 @@
 # This PKGBUILD is forked from https://aur.archlinux.org/packages/tableplus due to lack of updating.
 
 pkgname=tableplus-bin
-pkgver=0.1.252
+pkgver=0.1.254
 pkgrel=1
 pkgdesc='Modern, native, and friendly GUI tool for relational databases (Alpha)'
 arch=('x86_64' 'aarch64')
