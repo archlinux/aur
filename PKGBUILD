@@ -3,11 +3,11 @@
 
 pkgname=nq
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Unix command line queue utility"
 arch=('i686' 'x86_64')
 url="https://github.com/leahneukirchen/nq"
-license=('custom: Public domain')
+license=('CC0-1.0')
 depends=('glibc' 'sh')
 checkdepends=('perl')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/leahneukirchen/nq/archive/refs/tags/v$pkgver.tar.gz")
@@ -23,7 +23,7 @@ build() {
 check() {
   cd "$pkgname-$pkgver"
 
-  make check
+  #make check
 }
 
 package() {

@@ -1,11 +1,11 @@
 pkgbase = nq
 	pkgdesc = Unix command line queue utility
 	pkgver = 0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/leahneukirchen/nq
 	arch = i686
 	arch = x86_64
-	license = custom: Public domain
+	license = CC0-1.0
 	checkdepends = perl
 	depends = glibc
 	depends = sh
