@@ -3,7 +3,7 @@
 
 pkgname=rancher-desktop
 pkgdesc='Rancher Desktop is an open-source project to bring Kubernetes and container management to the desktop'
-pkgver=1.13.0
+pkgver=1.14.1
 pkgrel=1
 arch=('x86_64')
 license=('Apache')
@@ -12,7 +12,7 @@ makedepends=('npm' 'nvm' 'nodejs' 'imagemagick' 'go')
 provides=('rancher-desktop' 'docker' 'helm' 'kubectl' 'nerdctl' 'limactl')
 depends=('qemu')
 source=("https://github.com/rancher-sandbox/rancher-desktop/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('58c6c942f85f4495c3ebd17e1e45725385d49191c1096118d08273a2ed26139d')
+sha256sums=('bf2b84deb899fb79468a7631b7b7d3e26d8c586b7809cb97ae282fb78d3bcd02')
 options=(!debug)
 # https://wiki.archlinux.org/title/Node.js_package_guidelines#Using_nvm
 _ensure_local_nvm() {
@@ -23,7 +23,7 @@ _ensure_local_nvm() {
 
 prepare() {
     _ensure_local_nvm
-    nvm install 18.19
+    nvm install 18
 
 
     cd "${pkgname}-${pkgver}"
@@ -40,7 +40,7 @@ build() {
     icon="resources/icons/logo-square-512.png"
     for size in 512x512 256x256 128x128 96x96 64x64 48x48 32x32 24x24 16x16; do
         mkdir "share/icons/hicolor/${size}/apps" -p
-        convert -resize "${size}" "${icon}" "share/icons/hicolor/${size}/apps/${pkgname}.png"
+        magick "${icon}" -resize "${size}" "share/icons/hicolor/${size}/apps/${pkgname}.png"
     done
 
   sed -i "s|target: \[ zip \]|target: [ dir ]|g" packaging/electron-builder.yml
