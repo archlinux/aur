@@ -1,0 +1,16 @@
+pkgbase = acter-nightly-bin
+	pkgdesc = Casual Community Organizing
+	pkgver = 2024.06.05
+	pkgrel = 1
+	url = https://acter.global
+	arch = x86_64
+	license = custom:Acter Public Source License 1.0
+	depends = mpv
+	depends = libsecret
+	depends = jsoncpp
+	depends = xdg-user-dirs
+	conflicts = acter-bin
+	source = https://github.com/acterglobal/a3/releases/download/nightly-2024-06-05/acter-nightly-linux-x64-%{{TAG}}%.tar.bz2
+	md5sums = 8fc994e3e982d0e360003b340d4434bb
+
+pkgname = acter-nightly-bin
