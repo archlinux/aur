@@ -1,7 +1,7 @@
 # Maintainer: Popolon <popolon at popolon dot org>
 
 pkgname=libriscv
-pkgver=1.1
+pkgver=1.3
 pkgrel=1
 pkgdesc='RISC-V userspace emulator library'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64' 'riscv32' 'riscv64')
@@ -20,7 +20,7 @@ optdepends=(
 )
 
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/fwsGonzo/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('b172a2f1d06049bccf86e5795d3e7fa6c84b09491e5859f5ac35c34b44b21851')
+sha256sums=('c173c06c0c82d39e0defc5bf80db73fd0af7625cd493cafdf51c3606d509cc96')
 
 build(){
  # lib
