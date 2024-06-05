@@ -35,6 +35,13 @@ pipeline {
                 '''
             }
         }
+        stage('Get Changelog') {
+            steps {
+                sh '''
+                    curl https://api.github.com/repos/elastic/logstash/releases/latest | jq -r '.body' > ChangeLog
+                '''
+            }
+        }
         stage('Generate .SRCINFO') {
             steps {
                 sh '''
