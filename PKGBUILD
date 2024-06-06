@@ -74,8 +74,8 @@ build() {
 
 check() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
-  export HOME=${HOME:-/}  # https://github.com/syncthing/syncthing/issues/8785
-  QT_QPA_PLATFORM=offscreen SYNCTHING_PORT=$(ephemeral_port) SYNCTHING_TEST_TIMEOUT_FACTOR=3 ninja check
+  # https://github.com/syncthing/syncthing/issues/8785
+  HOME="$(mktemp -p . -d testhome.XXX)" QT_QPA_PLATFORM=offscreen SYNCTHING_PORT=$(ephemeral_port) SYNCTHING_TEST_TIMEOUT_FACTOR=3 ninja check
 }
 
 package() {
