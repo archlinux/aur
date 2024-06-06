@@ -5,7 +5,7 @@ _filename_=J7Z
 pkgver=1.4.2
 pkgrel=1
 pkgdesc="An alternative 7-Zip GUI"
-url="https://${_filename_}.Xavion.name"
+url="https://sites.google.com/site/xavions${pkgname}/"
 arch=("any")
 license=("LGPL3")
 depends=("java-runtime>=8" "p7zip")
