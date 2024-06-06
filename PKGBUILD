@@ -2,7 +2,7 @@
 
 pkgname=python-libeconf
 _pkgname=${pkgname#python-}
-pkgver=0.6.3
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='Python bindings for libeconf'
 url="https://github.com/openSUSE/$_pkgname"
@@ -17,7 +17,7 @@ makedepends=(
 )
 checkdepends=('python-pytest' "$_pkgname")
 source=("$_pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('ed3821344b04474f5f4cd6de629d0910bf0a3df906680397bcec88c43814b1b8eef4d95c67a60272279762cb1b66ae4e1d2e75940763f2c53ef8ca835baad381')
+b2sums=('18f9c93334aae18a816a809323867b4672d7c7edbd0b99a3c41948c1d02f8306b5f620204b625f771dfee899f905110286658ec0be83bd4c52f54ff3e82a6e7d')
 
 _srcdir=$_pkgname-$pkgver/bindings/python3
 
