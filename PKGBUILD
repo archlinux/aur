@@ -1,4 +1,5 @@
-# Maintainer: GI Jack <gi_jack@hackermail.com>
+# Maintainer: username227 <gfrank227 [at] gmail [dot] com>
+# Contributor: GI Jack <gi_jack@hackermail.com>
 
 pkgname=python-blue-loader
 pkgver=0.1.54
