@@ -2,7 +2,7 @@
 # Contributor: Andreas Bilke <abilke at cosy dot sbg dot ac dot at>
 # Contributor: Myles English <myles at rockhead dot biz>
 # Contributor: Lucas H. Gabrielli <heitzmann at gmail dot com>
-pkgver=3.21.1
+pkgver=3.21.2
 pkgrel=1
 pkgname=petsc
 pkgdesc="Portable, extensible toolkit for scientific computation"
@@ -32,7 +32,7 @@ optdepends=(
 install=petsc.install
 source=(http://web.cels.anl.gov/projects/petsc/download/release-snapshots/${pkgname}-${pkgver}.tar.gz
         test_optdepends.sh)
-sha512sums=('ae65afd9cff1eb33a4c7688b53d83427edf1b6866eca4879ea0fd1e7f03167906664f4b250901f37406e88e1ba43f1f7a38651c27dd367fc42e5e80a66ae8469'
+sha512sums=('f0c08909c3d5cdc086c1ab2705bc63ad487d7d9eac1785aca492b2154af7ac203f09c0a5046fde34ce46d5dfa72795cbca67961cd83930b07bbbb460d7218e2d'
             'aef377e84e6bf5aea114f97b1bac8301203e3a6e736cacb49f01a2e95a29022062fc0d9e85fe8ba1ae9bdc1ffa6c007a031327c185e4966d3393adf038fc0993')
 
 PETSC_ARCH=linux-c-opt
