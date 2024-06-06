@@ -9,7 +9,7 @@ license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git' 'playerctl')
 makedepends=('unzip')
 source=("https://gitlab.com/linuxbombay/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.bz2")
-sha256sums=('de93b3d47e3f830cdc56ca6ec97d363722d46c3179453be5105fae81704ee679')
+sha256sums=('e79d6b7cce33ac26535bc6d1e5bdf464afce68021c9f6006465a281a9208bf46')
 
 
 package() {
