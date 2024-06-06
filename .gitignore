@@ -1,0 +1,3 @@
+# Ignore makepkg generated directories/files
+*/
+*.pkg.tar.zst
