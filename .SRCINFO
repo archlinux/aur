@@ -1,0 +1,17 @@
+pkgbase = act-utils-git
+	pkgdesc = Useful scripts for working with the ACT flow.
+	pkgver = 0.1.r6.51c421a
+	pkgrel = 1
+	url = https://github.com/asyncvlsi/utils
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = make
+	depends = act-core
+	depends = python
+	provides = act-utils
+	conflicts = act-utils
+	source = git+https://github.com/asyncvlsi/utils
+	sha512sums = SKIP
+
+pkgname = act-utils-git
