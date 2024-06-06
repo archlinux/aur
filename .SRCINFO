@@ -1,6 +1,6 @@
 pkgbase = electron30-bin
 	pkgdesc = Build cross platform desktop apps with web technologies — prebuilt
-	pkgver = 30.0.9
+	pkgver = 30.1.0
 	pkgrel = 1
 	url = https://electronjs.org
 	arch = aarch64
@@ -17,19 +17,19 @@ pkgbase = electron30-bin
 	optdepends = gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop`s default
-	provides = electron30=30.0.9
+	provides = electron30=30.1.0
 	conflicts = electron30
-	source_aarch64 = electron30-chromedriver-30.0.9-aarch64.zip::https://github.com/electron/electron/releases/download/v30.0.9/chromedriver-v30.0.9-linux-arm64.zip
-	source_aarch64 = electron30-30.0.9-aarch64.zip::https://github.com/electron/electron/releases/download/v30.0.9/electron-v30.0.9-linux-arm64.zip
-	sha256sums_aarch64 = a1e1f1067fe5e0bc520305e06fcdbf9459c1b7d72abbb7ecee8cb68e2f878af4
-	sha256sums_aarch64 = 6bd4844d3aaad3ecabc6935ee6e360937678f42ce5ffb1fb45dc1badf4358cc7
-	source_armv7h = electron30-chromedriver-30.0.9-armv7h.zip::https://github.com/electron/electron/releases/download/v30.0.9/chromedriver-v30.0.9-linux-armv7l.zip
-	source_armv7h = electron30-30.0.9-armv7h.zip::https://github.com/electron/electron/releases/download/v30.0.9/electron-v30.0.9-linux-armv7l.zip
-	sha256sums_armv7h = b441b3198e9b6fa846c2b292152f1fb6cd1124a5a3574a1992372274a4b6a616
-	sha256sums_armv7h = 8f02e19bbba49469e9e588ecd7bfa0c2a872937d0d896418ba6b85a4a0ff8710
-	source_x86_64 = electron30-chromedriver-30.0.9-x86_64.zip::https://github.com/electron/electron/releases/download/v30.0.9/chromedriver-v30.0.9-linux-x64.zip
-	source_x86_64 = electron30-30.0.9-x86_64.zip::https://github.com/electron/electron/releases/download/v30.0.9/electron-v30.0.9-linux-x64.zip
-	sha256sums_x86_64 = f9e1fc97c3f21808db3cd92e03197eafc338d0f6e83a314d6f22e075e4b31db0
-	sha256sums_x86_64 = f1d183d0ebe77bbee14a173118ef862eff8cf0eb28eca06209db32f0da1c66de
+	source_aarch64 = electron30-chromedriver-30.1.0-aarch64.zip::https://github.com/electron/electron/releases/download/v30.1.0/chromedriver-v30.1.0-linux-arm64.zip
+	source_aarch64 = electron30-30.1.0-aarch64.zip::https://github.com/electron/electron/releases/download/v30.1.0/electron-v30.1.0-linux-arm64.zip
+	sha256sums_aarch64 = 5142b7b4ce60d3aa402f6435e5d7f9d71a2e64f47c6c10571025b5e1b7858ed4
+	sha256sums_aarch64 = c71c941cb92a644d6cbdb9a28d73b4318535c65806f1acf6addec076c34630e5
+	source_armv7h = electron30-chromedriver-30.1.0-armv7h.zip::https://github.com/electron/electron/releases/download/v30.1.0/chromedriver-v30.1.0-linux-armv7l.zip
+	source_armv7h = electron30-30.1.0-armv7h.zip::https://github.com/electron/electron/releases/download/v30.1.0/electron-v30.1.0-linux-armv7l.zip
+	sha256sums_armv7h = dd4054d99c202bc698e8998130d2020fed78104c2cc1f12bab9ababd83be527e
+	sha256sums_armv7h = 2699654ce8a0643fd2848fef93323e1b48d5186d544e00db39c64e370faf6836
+	source_x86_64 = electron30-chromedriver-30.1.0-x86_64.zip::https://github.com/electron/electron/releases/download/v30.1.0/chromedriver-v30.1.0-linux-x64.zip
+	source_x86_64 = electron30-30.1.0-x86_64.zip::https://github.com/electron/electron/releases/download/v30.1.0/electron-v30.1.0-linux-x64.zip
+	sha256sums_x86_64 = 00f72f22318338340c5c800d71c173ec0be0dee01250cbb8e2238cd6140f24a1
+	sha256sums_x86_64 = dd9973ae2dc51853ecfb55235ea3f9557ecee7036555fea261f7429ffe5b8223
 
 pkgname = electron30-bin
