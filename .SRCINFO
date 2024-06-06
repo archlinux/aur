@@ -1,17 +1,14 @@
 pkgbase = perl-net-sftp-foreign
-	pkgdesc = Perl SFTP client using the native SSH client application
+	pkgdesc = SSH File Transfer Protocol client using the native SSH client
 	pkgver = 1.93
-	pkgrel = 1
-	url = http://search.cpan.org/~salva/Net-SFTP-Foreign
-	changelog = Changes
+	pkgrel = 2
+	url = https://metacpan.org/release/Net-SFTP-Foreign
 	arch = any
-	license = GPL
-	license = PerlArtistic
-	depends = perl>=5.10.0
-	optdepends = perl-file-which
-	optdepends = perl-sort-key
+	license = GPL-1.0-or-later OR Artistic-1.0-Perl
+	depends = perl
+	depends = openssh
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/S/SA/SALVA/Net-SFTP-Foreign-1.93.tar.gz
+	source = https://cpan.metacpan.org/authors/id/S/SA/SALVA/Net-SFTP-Foreign-1.93.tar.gz
 	sha256sums = 6c7d64250876873da434800e5060a8bef7a46451d81f817e37e43cfda51a0f7a
 
 pkgname = perl-net-sftp-foreign

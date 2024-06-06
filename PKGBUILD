@@ -1,34 +1,37 @@
-# Maintainer: "Jameson Pugh <imntreal@gmail.com>"
+# Maintainer: Elias Elwyn <a@jthv.ai>
+# Contributor: "Jameson Pugh <imntreal@gmail.com>"
 # Contributor: Alessandro Sagratini <ale_sagra at hotmail dot com>
 
 pkgname=perl-net-sftp-foreign
 pkgver=1.93
-pkgrel=1
-pkgdesc="Perl SFTP client using the native SSH client application"
-arch=('any')
-url='http://search.cpan.org/~salva/Net-SFTP-Foreign'
-license=('GPL' 'PerlArtistic')
-depends=('perl>=5.10.0') 
-optdepends=('perl-file-which' 'perl-sort-key')
+pkgrel=2
+pkgdesc='SSH File Transfer Protocol client using the native SSH client'
+_dist=Net-SFTP-Foreign
+arch=(any)
+url="https://metacpan.org/release/$_dist"
+license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
+depends=(perl openssh)
 options=('!emptydirs')
-changelog=Changes
-source=("http://search.cpan.org/CPAN/authors/id/S/SA/SALVA/Net-SFTP-Foreign-${pkgver}.tar.gz")
+source=("https://cpan.metacpan.org/authors/id/S/SA/SALVA/$_dist-$pkgver.tar.gz")
 sha256sums=('6c7d64250876873da434800e5060a8bef7a46451d81f817e37e43cfda51a0f7a')
 
 build() {
-	cd "${srcdir}/Net-SFTP-Foreign-${pkgver}"
+  cd "$srcdir/$_dist-$pkgver"
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
+  /usr/bin/perl Makefile.PL
+  make
+}
 
-	# install module in vendor directories.
-	PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor || return 1
-	make || return 1
+check() {
+  cd "$srcdir/$_dist-$pkgver"
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1
+  make test
 }
 
 package() {
-	cd "${srcdir}/Net-SFTP-Foreign-${pkgver}"
-	make install DESTDIR=${pkgdir} || return 1
-	# remove perllocal.pod and .packlist
-	find "${pkgdir}" -name perllocal.pod -delete
-	find "${pkgdir}" -name .packlist -delete
+  cd "$srcdir/$_dist-$pkgver"
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
-
-# vim:set ts=2 sw=2 et:
