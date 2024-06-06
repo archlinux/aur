@@ -1,0 +1,24 @@
+pkgbase = protonpass
+	pkgdesc = Official desktop application for Proton Pass, repackaged from a .deb
+	pkgver = 1.17.5
+	pkgrel = 1
+	url = https://proton.me/pass/download
+	arch = x86_64
+	license = unknown
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = libdrm
+	depends = libglvnd
+	depends = libxcb
+	optdepends = kde-cli-tools: file deletion support (kioclient5)
+	optdepends = pipewire: WebRTC desktop sharing under Wayland
+	optdepends = trash-cli: file deletion support (trash-put)
+	optdepends = xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)
+	source = ProtonPass_1.17.5.deb::https://proton.me/download/PassDesktop/linux/x64/ProtonPass_1.17.5.deb
+	sha256sums = d9d9d1ff82e92e242525e6efef8fc5ecbfdae6560f87e00c3ea4152011efc5c8
+
+pkgname = protonpass
