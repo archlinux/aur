@@ -1,7 +1,7 @@
 # Maintainer: Romain Bazile <gromain.baz@gmail.com>
 pkgname=shutter-encoder
 pkgver=18.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Converter for all formats video|audio|image professionnals codecs and standards - swiss knife tool for Linux"
 arch=("x86_64")
 url="https://www.shutterencoder.com/"
@@ -14,7 +14,7 @@ sha256sums=('5265ce363c10fc4daaa53f5df2fbd8e39287bb92431395d039d740e669034f6f')
 
 prepare() {
     mkdir -p shutter-encoder
-    tar -xJf data.tar.xz -C shutter-encoder/
+    tar -xf data.tar.zst -C shutter-encoder/
 }
 
 
