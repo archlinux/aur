@@ -1,12 +1,11 @@
 pkgbase = perl-pgplot
 	pkgdesc = PGPLOT module for Perl
 	pkgver = 2.29
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/PGPLOT
 	arch = i686
 	arch = x86_64
-	license = PerlArtistic
-	license = GPL
+	license = GPL-1.0-or-later OR Artistic-1.0-Perl
 	makedepends = perl-devel-checklib
 	makedepends = perl-extutils-f77
 	depends = perl

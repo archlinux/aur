@@ -3,12 +3,12 @@
 
 pkgname=perl-pgplot
 pkgver=2.29
-pkgrel=2
+pkgrel=3
 pkgdesc='PGPLOT module for Perl'
 _dist=PGPLOT
-arch=('i686' 'x86_64')
+arch=(i686 x86_64)
 url="https://metacpan.org/release/$_dist"
-license=(PerlArtistic GPL)
+license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 depends=(perl pgplot)
 makedepends=(perl-devel-checklib perl-extutils-f77)
 source=("https://cpan.metacpan.org/authors/id/E/ET/ETJ/$_dist-$pkgver.tar.gz")
