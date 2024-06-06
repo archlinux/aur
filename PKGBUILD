@@ -3,8 +3,8 @@
 
 _pkgname=sile
 pkgname=$_pkgname-git
-pkgdesc='The SILE Typesetter, a modern typesetting system inspired by LaTeX, customizable in Lua'
-pkgver=0.14.17.r511.gd1da39b
+pkgdesc='a modern typesetting engine inspired by LaTeX, fully customizable in Lua'
+pkgver=0.15.0.r0.g8162e5d
 pkgrel=1
 arch=(x86_64)
 url=https://www.sile-typesetter.org
@@ -60,8 +60,6 @@ prepare () {
 	git submodule init
 	git config submodule.libtexpdf.url "$srcdir/libtexpdf"
 	git -c protocol.file.allow=always submodule update
-	sed Makefile.am -i \
-		-e 's/cargo \(build\|install\|test\)/cargo --offline \1/'
 	./bootstrap.sh
 	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
@@ -76,6 +74,7 @@ _srcenv() {
 	cd "$_pkgname"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+	export CARGO_FEATURE_FLAGS==--offline
 }
 
 build () {
