@@ -1,15 +1,15 @@
 pkgbase = rtrtr-git
 	pkgdesc = An RPKI data proxy
-	pkgver = 0.2.2.r7.g2391ffb
+	pkgver = 0.3.0.r1.gf7168af
 	pkgrel = 1
 	url = https://nlnetlabs.nl/projects/rpki/rtrtr/
 	arch = i686
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = git
 	makedepends = rust
 	depends = gcc-libs
-	provides = rtrtr=0.2.2.r7.g2391ffb
+	provides = rtrtr=0.3.0.r1.gf7168af
 	conflicts = rtrtr
 	source = git+https://github.com/NLnetLabs/rtrtr.git
 	sha256sums = SKIP

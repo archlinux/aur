@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=rtrtr-git
-pkgver=0.2.2.r7.g2391ffb
+pkgver=0.3.0.r1.gf7168af
 pkgrel=1
 pkgdesc="An RPKI data proxy"
 arch=('i686' 'x86_64')
 url="https://nlnetlabs.nl/projects/rpki/rtrtr/"
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('gcc-libs')
 makedepends=('git' 'rust')
 provides=("rtrtr=$pkgver")
