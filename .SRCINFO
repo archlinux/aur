@@ -1,7 +1,7 @@
 pkgbase = dioxus-cli
 	pkgdesc = CLI tool for developing, testing, and publishing Dioxus apps
 	pkgver = 0.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/DioxusLabs/dioxus/
 	arch = i686
 	arch = pentium4

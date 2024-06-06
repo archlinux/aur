@@ -1,7 +1,7 @@
 # Maintainer: Adrian Groh <adrian[dot]groh[at]t[dash]online[dot]de>
 pkgname=dioxus-cli
 pkgver=0.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI tool for developing, testing, and publishing Dioxus apps"
 url="https://github.com/DioxusLabs/dioxus/"
 license=("MIT" "Apache")
@@ -22,6 +22,7 @@ build() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    CFLAGS+=" -ffat-lto-objects"
     cargo build --frozen --release
 }
 
