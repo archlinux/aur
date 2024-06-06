@@ -1,12 +1,11 @@
 pkgbase = perl-pdl
 	pkgdesc = The Perl Data Language
 	pkgver = 2.089
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/PDL
 	arch = i686
 	arch = x86_64
-	license = GPL
-	license = PerlArtistic
+	license = GPL-1.0-or-later OR Artistic-1.0-Perl
 	checkdepends = perl-test-exception
 	checkdepends = perl-test-warn
 	makedepends = perl-devel-checklib

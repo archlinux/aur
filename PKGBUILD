@@ -8,12 +8,12 @@
 
 pkgname=perl-pdl
 pkgver=2.089
-pkgrel=2
+pkgrel=3
 pkgdesc='The Perl Data Language'
 _dist=PDL
 arch=(i686 x86_64)
 url="https://metacpan.org/release/$_dist"
-license=(GPL PerlArtistic)
+license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 depends=(
   perl
   perl-file-which
