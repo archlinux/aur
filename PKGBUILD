@@ -31,9 +31,14 @@ backup=('etc/fluent-bit/fluent-bit.conf'
 options=()
 install=
 changelog=
-source=("$pkgname-$pkgver.tar.gz::https://releases.fluentbit.io/${pkgver%.*}/source-$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://releases.fluentbit.io/${pkgver%.*}/source-$pkgver.tar.gz"
+        pr-8901.patch)
 noextract=()
 validpgpkeys=()
+
+prepare() {
+    patch -p1 < pr-8901.patch
+}
 
 build() {
     cd "$srcdir/build"
@@ -71,5 +76,7 @@ package() {
 }
 
 # r!. %; curl -s https://releases.fluentbit.io/${pkgver\%.*}/source-$pkgver.tar.gz.{md5,sha256} | awk '{print $1}'
-md5sums=('6c8ed6033a0405bf41a0d28af4c57d90')
-sha256sums=('1ebe15d48db1e6a06545e6ffc788d0eb82d74923f8ca6a6e53b327c8e3011b6f')
+md5sums=('6c8ed6033a0405bf41a0d28af4c57d90'
+         'SKIP')
+sha256sums=('1ebe15d48db1e6a06545e6ffc788d0eb82d74923f8ca6a6e53b327c8e3011b6f'
+            'SKIP')

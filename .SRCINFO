@@ -23,7 +23,10 @@ pkgbase = fluent-bit
 	backup = etc/fluent-bit/fluent-bit.conf
 	backup = etc/fluent-bit/parsers.conf
 	source = fluent-bit-3.0.2.tar.gz::https://releases.fluentbit.io/3.0/source-3.0.2.tar.gz
+	source = pr-8901.patch
 	md5sums = 6c8ed6033a0405bf41a0d28af4c57d90
+	md5sums = SKIP
 	sha256sums = 1ebe15d48db1e6a06545e6ffc788d0eb82d74923f8ca6a6e53b327c8e3011b6f
+	sha256sums = SKIP
 
 pkgname = fluent-bit
