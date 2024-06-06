@@ -5,7 +5,7 @@
 
 pkgbase=beats
 pkgname=(metricbeat filebeat packetbeat heartbeat-elastic auditbeat)
-pkgver=8.13.4
+pkgver=8.14.0
 pkgrel=1
 pkgdesc='Data shippers for Elasticsearch'
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=("https://github.com/elastic/beats/archive/v$pkgver/beats-$pkgver.tar.gz"
         "heartbeat.service"
         "auditbeat.service"
         "tmpfile.conf")
-sha512sums=('566ae0504078a00dd5c9278d448a807920a68dd8e02695c26cb9d85fb42e5e45a516faa8dc16ac6d4262bcb30b45ea5a455f6d3d261734e5fe49f123d78ca171'
+sha512sums=('06051bede439f1db692e3069db4bab754803a8756d5dcd08b933ace0e8d5e715318c77dd82ccfe43ac51f47b3cdd70f2996341d358b72be548dacd1c670fe75f'
             '4d8b160482ba27bdc63c79592f310f2c9bcd2e8e5d3aec5ba9d953f37916bffef57c0f21e3776f4712f87e9a1b90e42dba6058f72bbc4c75380a959276183a59'
             'f1e6fe6b677db31326433f4e3eef72356573c6947d653dbe6bc2151581444f80e09343fbf8544952aae82a061b87705e39c8741ea8e402ad53ac3552f532cfea'
             '7e4081b5173d1b58a783f1808f1a9ba4548498de87bdfc1960538d6df4f4da8f900f0e027aeff83ebfe0d81e6aa91db77c520bda76441e6bcaa6fd8a79fbb57a'
