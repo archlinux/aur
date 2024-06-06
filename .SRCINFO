@@ -1,5 +1,5 @@
 pkgbase = screamingfrogseospider
-	pkgdesc = A small desktop program you can install on your PC or Mac which spiders websites’ links, images, CSS, script and apps from an SEO perspective.
+	pkgdesc = spiders websites’ links, images, CSS, script and apps from an SEO perspective.
 	pkgver = 20.1
 	pkgrel = 1
 	url = https://www.screamingfrog.co.uk/seo-spider/

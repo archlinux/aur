@@ -4,7 +4,7 @@
 pkgname=screamingfrogseospider
 pkgver=20.1
 pkgrel=1
-pkgdesc="A small desktop program you can install on your PC or Mac which spiders websites’ links, images, CSS, script and apps from an SEO perspective."
+pkgdesc="spiders websites’ links, images, CSS, script and apps from an SEO perspective."
 arch=('x86_64' 'i686')
 url="https://www.screamingfrog.co.uk/seo-spider/"
 license=('custom')
