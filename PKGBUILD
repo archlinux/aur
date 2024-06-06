@@ -2,12 +2,12 @@
 
 pkgname=perl-alien-sqlite
 pkgver=1.07
-pkgrel=1
+pkgrel=2
 pkgdesc='Compile the Sqlite library'
 _dist=Alien-sqlite
 arch=(any)
 url="https://metacpan.org/release/$_dist"
-license=(GPL PerlArtistic)
+license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 depends=(
   perl
   perl-alien-build
