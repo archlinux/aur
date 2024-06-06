@@ -2,8 +2,8 @@
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=iotas
-pkgver=0.2.14
-pkgrel=2
+pkgver=0.8.0
+pkgrel=1
 pkgdesc="Simple note taking"
 arch=('any')
 url="https://gitlab.gnome.org/World/iotas"
@@ -12,7 +12,7 @@ depends=('libadwaita' 'python' 'gtksourceview5')
 makedepends=('meson' 'gobject-introspection')
 checkdepends=('appstream-glib')
 source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-b2sums=('687dc6d8ab2f23fdca4a6fe5f3dc3a5fd97fc09209f884d9a91391b74a194c2e48961cb825431224c460e9024622e4bc6d8866f4b1afcf3fc0929d94a39f3654')
+b2sums=('360318564d29ded063038f81a359398ac7e5c7c7c558c39ddc4da751256a4d199ceb8a765bc85922fd27f744fccce1892ae8c5e3ca9b6ccf6f47a381bad03275')
 
 _srcdir="$pkgname-$pkgver"
 
