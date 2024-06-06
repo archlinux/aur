@@ -15,7 +15,7 @@ unset _pkgtype
 _pkgname="duckstation"
 pkgname="$_pkgname${_pkgtype:-}"
 pkgver=0.1.6759
-pkgrel=2
+pkgrel=3
 pkgdesc="Playstation emulator"
 url="https://github.com/stenzek/duckstation"
 arch=('x86_64')
@@ -49,6 +49,8 @@ makedepends=(
   'lld'
   'llvm'
   'ninja'
+  'patchelf'
+  'patchutils'
   'python'
   'qt6-tools'
   'qt6-wayland'
@@ -56,22 +58,13 @@ makedepends=(
 )
 
 _src_shaderc="google.shaderc"
-_src_shaderc_glslang="khronosgroup.glslang"
-_src_shaderc_spirv_headers="khronosgroup.spirv-headers"
-_src_shaderc_spirv_tools="khronosgroup.spirv-tools"
 _src_backtrace="ianlancetaylor.libbacktrace"
 
 source=(
   "$_src_shaderc"::"git+https://github.com/google/shaderc.git"
-  "$_src_shaderc_glslang"::"git+https://github.com/KhronosGroup/glslang.git"
-  "$_src_shaderc_spirv_headers"::"git+https://github.com/KhronosGroup/SPIRV-Headers.git"
-  "$_src_shaderc_spirv_tools"::"git+https://github.com/KhronosGroup/SPIRV-Tools.git"
   "$_src_backtrace"::"git+https://github.com/ianlancetaylor/libbacktrace.git"
 )
 sha256sums=(
-  'SKIP'
-  'SKIP'
-  'SKIP'
   'SKIP'
   'SKIP'
 )
@@ -108,48 +101,33 @@ fi
 
 prepare() {
   local _version_shaderc=$(grep -E -m1 'SHADERC=' "$_pkgsrc/scripts/build-dependencies-linux.sh" | sed -E -e 's&^\s*SHADERC=(\S+)$&\1&')
-  local _hash_glslang=$(grep -E -m1 glslang_revision "$_src_shaderc"/DEPS | sed -E "s&^.*: '([a-f0-9]+)'.*\$&\1&")
-  local _hash_spirv_headers=$(grep -E -m1 spirv_headers_revision "$_src_shaderc"/DEPS | sed -E "s&^.*: '([a-f0-9]+)'.*\$&\1&")
-  local _hash_spirv_tools=$(grep -E -m1 spirv_tools_revision "$_src_shaderc"/DEPS | sed -E "s&^.*: '([a-f0-9]+)'.*\$&\1&")
 
   git -C "$srcdir/$_src_shaderc" checkout -f "v$_version_shaderc"
-  git -C "$srcdir/$_src_shaderc_glslang" checkout -f "$_hash_glslang"
-  git -C "$srcdir/$_src_shaderc_spirv_headers" checkout -f "$_hash_spirv_headers"
-  git -C "$srcdir/$_src_shaderc_spirv_tools" checkout -f "$_hash_spirv_tools"
 
-  ln -s "$srcdir/$_src_shaderc_glslang" "$srcdir/$_src_shaderc"/third_party/glslang
-  ln -s "$srcdir/$_src_shaderc_spirv_headers" "$srcdir/$_src_shaderc"/third_party/spirv-headers
-  ln -s "$srcdir/$_src_shaderc_spirv_tools" "$srcdir/$_src_shaderc"/third_party/spirv-tools
+  filterdiff -x '*/CMakeLists.txt' "$srcdir/$_pkgsrc/.github/workflows/scripts/common/shaderc-changes.patch" \
+    | sed -E 's&non_sematic_debug_info&non_semantic_debug_info&' \
+      > shaderc-changes.patch
 
   cd "$_src_shaderc"
   git apply "$srcdir/$_pkgname/scripts/shaderc-changes.patch"
+
+  sed -E -e '/\(glslc\)/d;/examples/d;/third_party/d' \
+    -i CMakeLists.txt
 }
 
-build() {
-  export AR CC CXX CFLAGS CXXFLAGS LDFLAGS LTOFLAGS
-  AR="llvm-ar"
-  CC="clang"
-  CXX="clang++"
-  LDFLAGS+=" -fuse-ld=lld"
-  LTOFLAGS="-flto=thin"
+_build_libbacktrace() (
+  echo "Building libbacktrace..."
+  cd "$_src_backtrace"
 
-  if [[ "${_build_avx::1}" == "t" ]]; then
-    export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
-    export CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
-  fi
+  autoreconf -fi
+  ./configure
+  make
 
-  (
-    echo "Building libbacktrace..."
-    cd "$_src_backtrace"
+  install -Dm644 .libs/libbacktrace.a -t "$srcdir/deps/"
+  install -Dm644 *.h -t "$srcdir/deps/include/"
+)
 
-    autoreconf -fi
-    ./configure
-    make
-
-    install -Dm644 .libs/libbacktrace.a -t "$srcdir/deps/"
-    install -Dm644 *.h -t "$srcdir/deps/include/"
-  )
-
+_build_shaderc() {
   echo "Building shaderc..."
 
   local _cmake_shaderc=(
@@ -161,13 +139,16 @@ build() {
     -DSHADERC_SKIP_TESTS=ON
     -DSHADERC_SKIP_EXAMPLES=ON
     -DSHADERC_SKIP_COPYRIGHT_CHECK=ON
+    -Dglslang_SOURCE_DIR=/usr/include/glslang
     -Wno-dev
   )
 
   cmake "${_cmake_shaderc[@]}"
   cmake --build build_shaderc
   DESTDIR="$srcdir/deps" cmake --install build_shaderc
+}
 
+_build_duckstation() {
   echo "Building duckstation..."
 
   local _cmake_options=(
@@ -177,10 +158,12 @@ build() {
     -DCMAKE_BUILD_TYPE=None
     -DBUILD_NOGUI_FRONTEND=OFF
     -DBUILD_QT_FRONTEND=ON
-    -DCMAKE_PREFIX_PATH="$srcdir/deps/usr"
+
     -DCMAKE_SKIP_RPATH=ON
     -DLIBBACKTRACE_LIBRARY="$srcdir/deps/libbacktrace.a"
     -DLIBBACKTRACE_INCLUDE_DIR="$srcdir/deps/include"
+    -DSHADERC_INCLUDE_DIR="$srcdir/deps/usr/include"
+    -DSHADERC_LIBRARY="$srcdir/deps/usr/lib/libshaderc_shared.so.1"
     -Wno-dev
   )
 
@@ -188,11 +171,31 @@ build() {
   cmake --build build
 }
 
+build() {
+  export AR CC CXX CFLAGS CXXFLAGS LDFLAGS
+  AR="llvm-ar"
+  CC="clang"
+  CXX="clang++"
+  LDFLAGS+=" -fuse-ld=lld"
+
+  if [[ "${_build_avx::1}" == "t" ]]; then
+    export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
+    export CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
+  fi
+
+  _build_libbacktrace
+  _build_shaderc
+  _build_duckstation
+}
+
 package() {
   install -dm755 "$pkgdir/opt/$_pkgname/"
   cp --reflink=auto -r build/bin/{resources,translations,duckstation-qt} "$pkgdir/opt/$_pkgname/"
 
-  # bundled shaderc
+  # add rpath
+  patchelf --force-rpath --set-rpath '$ORIGIN' "$pkgdir/opt/$_pkgname/duckstation-qt"
+
+  # bundle libraries
   install -Dm644 "$srcdir/deps/usr/lib/libshaderc_shared.so.1" -t "$pkgdir/opt/$_pkgname/"
 
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/duckstation" << END
