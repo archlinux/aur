@@ -1,29 +1,37 @@
+# Maintainer: Elias Elwyn <a@jthv.ai>
 # Contributor: Jose Riha <jose1711 gmail com>
 
 pkgname=perl-uuid
-_cpanname=uuid
 pkgver=0.35
-pkgrel=1
-pkgdesc="UUID - Perl extension for using UUID interfaces as defined in e2fsprogs."
-arch=(x86_64)
-url="https://metacpan.org/release/JRM/UUID-${pkgver}"
-license=('Artistic-2.0')
+pkgrel=2
+pkgdesc='Universally Unique Identifier library for Perl'
+_dist=UUID
+arch=(i686 x86_64)
+url="https://metacpan.org/release/$_dist"
+license=(PerlArtistic)
+depends=(perl)
+makedepends=(perl-devel-checklib)
+source=("https://cpan.metacpan.org/authors/id/J/JR/JRM/$_dist-$pkgver.tar.gz")
 options=('!emptydirs')
-depends=('util-linux' 'perl')
-depends=('perl-devel-checklib')
-source=("https://cpan.metacpan.org/authors/id/J/JR/JRM/UUID-${pkgver}.tar.gz")
-md5sums=('f71f42d3160b2b3493a4923653740d04')
+sha256sums=('41ae4884820ff29eeb3ecf542a16ef7aab687250c4956d876e9e70a88ac6dccf')
 
 build() {
-  cd $srcdir/UUID-${pkgver}
-  sed -i '/^auto_install/d' Makefile.PL
-  perl Makefile.PL
+  cd "$srcdir/$_dist-$pkgver"
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
+  /usr/bin/perl Makefile.PL
   make
 }
 
+check() {
+  cd "$srcdir/$_dist-$pkgver"
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1
+  make test
+}
+
 package() {
-  cd $srcdir/UUID-${pkgver}
-  make DESTDIR=$pkgdir install
-  find $pkgdir -name '.packlist' -delete
-  find $pkgdir -name '*.pod' -delete
+  cd "$srcdir/$_dist-$pkgver"
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
