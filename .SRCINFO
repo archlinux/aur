@@ -1,0 +1,17 @@
+pkgbase = nchess-git
+	pkgdesc = Chess in the terminal, written in C99
+	pkgver = r32.7489711
+	pkgrel = 1
+	url = https://github.com/billyvinning/nchess
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	depends = ncurses
+	provides = nchess=r32.7489711
+	conflicts = nchess
+	source = nchess::git+https://github.com/billyvinning/nchess.git
+	sha256sums = SKIP
+
+pkgname = nchess-git
