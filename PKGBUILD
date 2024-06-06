@@ -1,8 +1,8 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgbase=vpkedit
 pkgname=(vpkedit libvpkeditc)
-pkgver=4.2.1
-pkgrel=2
+pkgver=4.2.2
+pkgrel=1
 pkgdesc="A library and CLI/GUI tool to create, read, and write several pack file formats"
 arch=('x86_64')
 url="https://github.com/craftablescience/VPKEdit"
@@ -11,7 +11,6 @@ depends=('gcc-libs' 'glibc')
 makedepends=('cmake' 'git' 'gcc' 'qt6-tools')
 source=("$pkgname::git+$url.git#tag=v${pkgver}"
 	"argparse::git+https://github.com/p-ranav/argparse.git"
-	"vtflib::git+https://github.com/StrataSource/VTFLib.git"
 	"saap::git+https://github.com/craftablescience/SteamAppPathProvider.git"
 	"speedykeyv::git+https://github.com/ozxybox/SpeedyKeyV.git"
 	"sourcepp::git+https://github.com/craftablescience/sourcepp.git"
@@ -22,8 +21,7 @@ source=("$pkgname::git+$url.git#tag=v${pkgver}"
 	"cryptopp::git+https://github.com/abdes/cryptopp-cmake.git"
 	#Submodule for submodules
 	"bufferstream::git+https://github.com/craftablescience/BufferStream.git")
-sha256sums=('69ef696017d96d30695fa6ee0221a3393a5aa8dc39ddc7575ea41c49f710c3fb'
-            'SKIP'
+sha256sums=('ff452574714e4387c9a8d424e206d08897951b7e1d7d624dffaac3fea8aa2bb2'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -38,7 +36,7 @@ sha256sums=('69ef696017d96d30695fa6ee0221a3393a5aa8dc39ddc7575ea41c49f710c3fb'
 prepare() {
 	cd "$srcdir/$pkgname"
 	git submodule init
-	for submodule in {vtflib,saap,speedykeyv,sourcepp,miniaudio,discord}; do
+	for submodule in {saap,speedykeyv,sourcepp,miniaudio,discord}; do
 		git config submodule.src/gui/thirdparty/$submodule.url "$srcdir/${submodule}"
 	done
 	git config submodule.src/cli/thirdparty/argparse.url "$srcdir/argparse"
