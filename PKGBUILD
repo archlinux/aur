@@ -4,10 +4,10 @@
 
 pkgname=nitrogen
 pkgver=1.6.1
-pkgrel=5
-pkgdesc="Background browser and setter for X windows"
+pkgrel=6
+pkgdesc='Background browser and setter for X windows'
 arch=('x86_64')
-url="http://projects.l3ib.org/nitrogen/"
+url='https://github.com/l3ib/nitrogen'
 license=('GPL')
 depends=('gtkmm' 'hicolor-icon-theme' 'librsvg')
 validpgpkeys=('5B8B00633A07437835C80B7F1E39A08EDAB8F316') # keybase.io/daf <daf@keybase.io>')
@@ -15,10 +15,20 @@ source=("https://github.com/l3ib/${pkgname}/releases/download/${pkgver}/${pkgnam
 sha256sums=('f40213707b7a3be87e556f65521cef8795bd91afda13dfac8f00c3550375837d'
             'SKIP')
 
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  # fix metadata path with appstream
+  sed -i '/appdatadir/s|/appdata|/metainfo/|' data/Makefile.am
+
+  autoreconf -fi
+}
+
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   CXXFLAGS+=' -std=c++11'
-  ./configure --prefix=/usr
+  ./configure \
+    --prefix='/usr'
   make
 }
 
