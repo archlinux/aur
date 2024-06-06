@@ -1,0 +1,13 @@
+pkgbase = go-imap-backup-git
+	pkgdesc = Backup, restore and delete emails from an IMAP server to local storage
+	pkgver = v0.1+9+gc1ae5e0
+	pkgrel = 1
+	url = https://github.com/mlnoga/go-imap-backup
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	makedepends = go
+	source = git+https://github.com/mlnoga/go-imap-backup.git
+	sha256sums = SKIP
+
+pkgname = go-imap-backup-git
