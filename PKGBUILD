@@ -2,7 +2,7 @@
 pkgbase=vpkedit
 pkgname=(vpkedit libvpkeditc)
 pkgver=4.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A library and CLI/GUI tool to create, read, and write several pack file formats"
 arch=('x86_64')
 url="https://github.com/craftablescience/VPKEdit"
@@ -20,8 +20,10 @@ source=("$pkgname::git+$url.git#tag=v${pkgver}"
 	"indicators::git+https://github.com/p-ranav/indicators.git"
 	"cryptopp::git+https://github.com/abdes/cryptopp-cmake.git"
 	#Submodule for submodules
-	"bufferstream::git+https://github.com/craftablescience/BufferStream.git")
+	"bufferstream::git+https://github.com/craftablescience/BufferStream.git"
+	"miniz::git+https://github.com/richgel999/miniz.git")
 sha256sums=('ff452574714e4387c9a8d424e206d08897951b7e1d7d624dffaac3fea8aa2bb2'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -48,6 +50,7 @@ prepare() {
 	cd "$srcdir/$pkgname/src/gui/thirdparty/sourcepp"
 	git submodule init
 	git config submodule.src/thirdparty/bufferstream.url "$srcdir/bufferstream"
+	git config submodule.src/thirdparty/miniz.url "$srcdir/miniz"
 	git -c protocol.file.allow=always submodule update
 }
 
