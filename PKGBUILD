@@ -2,7 +2,7 @@
 # Contributor: Marcel Campello <marcel@prafrentex.com.br>
 
 pkgname=opentofu
-pkgver=1.7.1
+pkgver=1.7.2
 pkgrel=1
 pkgdesc="Lets you declaratively manage your cloud infrastructure"
 arch=(x86_64)
@@ -15,7 +15,7 @@ source=(
   "tofu.fish"
 )
 sha256sums=(
-  'aa21e326414ab7251c29d769847705281a7f73002685b187c41073b5fc03f6be'
+  '179216c485c6df55e9f4576c622fd12f3784ef9e0720925c2dc4a155c6b4aca1'
   '312fe00a97ed3098fa141a54dfc0694c13766957acedec19f10347b80f813ce8'
 )
 
