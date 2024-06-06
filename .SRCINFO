@@ -8,7 +8,7 @@ pkgbase = systemd-netconsole
 	depends = bash
 	depends = jq
 	backup = etc/default/netconsole
-	source = https://github.com/kode54/systemd-netconsole/archive/refs/tags/v1.1.tar.gz
+	source = systemd-netconsole-1.1.tar.gz::https://github.com/kode54/systemd-netconsole/archive/refs/tags/v1.1.tar.gz
 	sha256sums = 76cb7af68a0eb48393f363f1f1f7e6eef408011d68b287c0e3c5c705a31a2cab
 
 pkgname = systemd-netconsole

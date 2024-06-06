@@ -9,7 +9,7 @@ url="https://github.com/kode54/systemd-netconsole"
 license=('MIT')
 depends=('bash' 'jq')
 backup=('etc/default/netconsole')
-source=("https://github.com/kode54/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kode54/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('76cb7af68a0eb48393f363f1f1f7e6eef408011d68b287c0e3c5c705a31a2cab')
 
 package() {
