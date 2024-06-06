@@ -1,20 +1,17 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer: A. Klitzing <aklitzing@gmail.com>
 pkgname=rbtools
 _name=RBTools
-pkgver=4.1
+pkgver=5.0
 pkgrel=1
 pkgdesc="Client tools for Review Board"
 arch=('any')
 url="https://www.reviewboard.org/"
 license=('custom:MIT')
 makedepends=(python-build python-installer python-wheel)
-depends=(python python-setuptools python-six python-tqdm python-texttable python-colorama pydiffx python-certifi)
+depends=(python python-tqdm python-texttable python-colorama pydiffx python-certifi
+         python-housekeeping python-importlib-metadata python-importlib_resources)
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz)
-sha256sums=('24efb20346b905c9be0464e747ee1bdee7967d1b94175697ea0c830d929475ff')
-
-prepare() {
-  cd "$srcdir/RBTools-$pkgver"
-}
+sha256sums=('beb373100d0f2d707370a6ce449b6f98110dd0081accffd766d955cea16f08bc')
 
 build() {
   cd "$srcdir/RBTools-$pkgver"
@@ -28,4 +25,3 @@ package() {
   install -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-# vim: set ts=2 sw=2 et:
