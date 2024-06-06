@@ -1,16 +1,19 @@
 pkgbase = python-pytest-openfiles
-	pkgdesc = Pytest plugin for detecting file handles that were inadvertently left open at the end of unit tests
-	pkgver = 0.5.0
+	pkgdesc = Pytest plugin to check for files left open at the end of a test run
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/astropy/pytest-openfiles
-	arch = i686
-	arch = x86_64
-	license = BSD
+	arch = any
+	license = BSD-3-Clause
+	checkdepends = python-pytest
 	makedepends = python-setuptools-scm
-	depends = python-pytest>=4.6.0
-	depends = python-psutil
-	source = https://files.pythonhosted.org/packages/source/p/pytest-openfiles/pytest-openfiles-0.5.0.tar.gz
-	md5sums = a3704c256f9343a37095328a5e552d22
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	source = https://files.pythonhosted.org/packages/source/p/pytest_openfiles/pytest_openfiles-0.6.0.tar.gz
+	md5sums = 2c225b9f2730540abb256af36b753ede
 
 pkgname = python-pytest-openfiles
-
+	depends = python-pytest>=4.6.0
+	depends = python-packaging
+	depends = python-psutil
