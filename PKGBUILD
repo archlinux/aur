@@ -1,4 +1,4 @@
-# Maintainer: Sematre <sematre at gmx dot de>
+# Maintainer: Andrew Rabert <ar@nullsum.net>
 pkgname=unscrambler
 pkgver=0.5.4
 pkgrel=1
