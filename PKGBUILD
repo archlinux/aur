@@ -1,6 +1,6 @@
 #Maintainer: Evert Vorster <evorster@gmail.com>
 pkgname=vegastrike-engine-git
-pkgver=rev.15433
+pkgver=rev.15434
 pkgrel=1
 pkgdesc="A spaceflight simulator in massive universe"
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ url="https://www.vega-strike.org"
 license=('GPL')
 depends=('boost' 'python' 'freeglut' 'gtk3' 'libvorbis' 'openal' 'sdl' 'glu')
 #optdepends=('vegastrike-data: original dataset')
-makedepends=('gcc12' 'git' 'cmake')
+makedepends=('git' 'cmake')
 provides=('vegastrike-engine')
 conflicts=('vegastrike-engine')
 #install=$pkgname.install
@@ -35,7 +35,7 @@ mkdir -p build
 }
 
 build(){
-        export CC=gcc-12 CXX=g++-12
+#        export CC=gcc-12 CXX=g++-12
 	cd build
 	cmake ../Vega-Strike-Engine-Source/engine/ \
 	-DCMAKE_BUILD_TYPE=Release \
