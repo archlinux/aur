@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=woocommerce-pos
 _pkgname=WooCommerce-POS
-pkgver=1.5.1
+pkgver=1.5.2
 _electronversion=30
 _nodeversion=20
 pkgrel=1
