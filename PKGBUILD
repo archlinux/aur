@@ -6,7 +6,7 @@
 #    curl "https://storage.yandexcloud.net/yandexcloud-yc/release/stable"
 
 pkgname=yandex-cloud-bin
-pkgver=0.125.0
+pkgver=0.126.0
 pkgrel=1
 pkgdesc='Yandex.Cloud CLI'
 arch=('x86_64')
@@ -14,7 +14,7 @@ url='https://cloud.yandex.ru/docs/cli/'
 license=('unknown')
 provides=('yandex-cloud')
 source=("yc-$pkgver::https://storage.yandexcloud.net/yandexcloud-yc/release/${pkgver}/linux/amd64/yc")
-sha256sums=('14937338e4d68581e953ae8abf56276a18850ffc39cf12a94109431c04656ca9')
+sha256sums=('ddbb6ff7e93b90acc88c2847846ba3e40051e5f64e6adc8293eb9654dd33d456')
 
 package() {
     mkdir -p "$pkgdir/usr/bin"
