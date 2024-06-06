@@ -1,0 +1,14 @@
+pkgbase = systemd-netconsole
+	pkgdesc = A script for loading the netconsole kernel module using a systemd service, scheduled to start after the network is up.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/kode54/systemd-netconsole
+	arch = any
+	license = MIT
+	depends = bash
+	depends = jq
+	backup = etc/default/netconsole
+	source = https://github.com/kode54/systemd-netconsole/archive/refs/tags/v1.0.tar.gz
+	sha256sums = 5f3d5fa4be7904f8c7d1be89d876d39488e8e71f48233aab9e3d9082a1dff9fb
+
+pkgname = systemd-netconsole
