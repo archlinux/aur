@@ -14,7 +14,7 @@ pkgname=(
   libnm-iwd
   nm-iwd-cloud-setup
 )
-pkgver=1.46.0
+pkgver=1.48.0
 pkgrel=1
 pkgdesc="Network connection manager and user applications; using iwd backend instead of wpa_supplicant"
 url="https://networkmanager.dev/"
@@ -22,11 +22,14 @@ arch=(x86_64)
 license=(LGPL-2.1-or-later)
 makedepends=(
   audit
+  bash
   curl
   dhclient
   dnsmasq
+  gcc-libs
   git
-  glib2-docs
+  glib2
+  glibc
   gobject-introspection
   gtk-doc
   iproute2
@@ -40,6 +43,7 @@ makedepends=(
   meson
   modemmanager
   nftables
+  nspr
   nss
   openresolv
   pacrunner
@@ -47,7 +51,10 @@ makedepends=(
   polkit
   ppp
   python-gobject
+  python-packaging
+  readline
   systemd
+  systemd-libs
   vala
   vala
   wpa_supplicant
@@ -56,23 +63,15 @@ checkdepends=(
   libx11
   python-dbus
 )
-_commit=e39f48a30a2ef7b445276a859bbd5255e4c5071d  # tags/1.46.0^0
-source=("git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#commit=$_commit"
+source=("git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#tag=$pkgver"
         "$pkgbase.install")
-sha256sums=('SKIP' '6f77a626ec3fd7583beb45ffcac236cdc1fe2b5e5b8ccc5d90983312a265e818')
-
-pkgver() {
-  cd NetworkManager
-  git describe --tags | sed 's/-dev/dev/;s/-rc/rc/;s/[^-]*-g/r&/;s/-/+/g'
-}
+b2sums=('b1a4e2e2861acbb9f498872d32ec1fd2000b03016c09b8153f334a53a95810147670d906fa5326bbbc6bd2555e389418550bae33de9e2f28847efa533a418041'
+        '1045d7a75487dd063e2d52f2c94944c04650b9337d4cb839b66dc692f477797406ed2164725a53a1c213c46dd7ea398ca9764ee09386766554aa179d8c320cd2')
 
 build() {
   local meson_options=(
     # build checks this option; injecting just via *FLAGS is broken
     -D b_lto=true
-
-    # system paths
-    -D dbus_conf_dir=/usr/share/dbus-1/system.d
 
     # platform
     -D dist_version="$pkgver-$pkgrel"
@@ -101,10 +100,6 @@ build() {
     -D qt=false
   )
 
-  # NM uses malloc_usable_size in code copied from systemd
-  CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
-  CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
-
   arch-meson NetworkManager build "${meson_options[@]}"
   meson compile -C build
 }
@@ -127,6 +122,9 @@ package_networkmanager-iwd() {
   depends=(
     audit
     curl
+    gcc-libs
+    glib2
+    glibc
     iproute2
     jansson
     iwd
@@ -137,6 +135,10 @@ package_networkmanager-iwd() {
     libpsl
     libteam
     mobile-broadband-provider-info
+    nspr
+    nss
+    readline
+    systemd-libs
   )
   provides=(networkmanager)
   conflicts=(networkmanager)
@@ -212,7 +214,10 @@ END
 package_libnm-iwd() {
   pkgdesc="NetworkManager client library with iwd backend"
   depends=(
+    gcc-libs
     glib2
+    glibc
+    nspr
     nss
     systemd-libs
     util-linux-libs
@@ -225,7 +230,15 @@ package_libnm-iwd() {
 
 package_nm-iwd-cloud-setup() {
   pkgdesc="Automatically configure NetworkManager with iwd backend in cloud"
-  depends=(networkmanager-iwd)
+  depends=(
+    bash
+    curl
+    gcc-libs
+    glib2
+    glibc
+    libnm
+    networkmanager-iwd
+  )
   provides=(nm-cloud-setup)
   conflicts=(nm-cloud-setup)
 
