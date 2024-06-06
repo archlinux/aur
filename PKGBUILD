@@ -1,10 +1,11 @@
-# Maintainer: David Runge <dvzrv@archlinux.org>
+# Maintainer: iamawacko <iamawacko@protonmail.com>
+# Contributor: David Runge <dvzrv@archlinux.org>
 # Contributor: Ruben Kelevra <ruben@freifunk-nrw.de>
 # Contributor: Timothée Ravier <tim@siosm.fr>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=etherpad-lite
-pkgver=1.8.18
+pkgver=2.1.0
 pkgrel=1
 epoch=1
 arch=(x86_64)
@@ -12,7 +13,7 @@ pkgdesc="Lightweight fork of etherpad based on javascript"
 url="https://etherpad.org"
 license=(Apache)
 depends=(coffeescript nodejs)
-makedepends=(npm libsecret)
+makedepends=(npm)
 optdepends=('sqlite: to use sqlite as databse'
             'mariadb: to use mariadb as database'
             'postgresql: to use postgresql as database'
@@ -28,11 +29,11 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ether/${pkgname}/archiv
         "${pkgname}-sysusers.conf"
         "${pkgname}-tmpfiles.conf"
         "${pkgname}.service")
-sha512sums=('157e40748f13ef68cdc13335897919800bf17e9fcb835f4f2082c1af63997577e721bc490e237188791f3359c65b4c0f0c334614589220d325af443288dd2269'
+sha512sums=('bdafbb785b4ec91d5e3ec394d293e915cf61f85b5f26e4730b4b4406cb98191fb7df9c9153f220cb5788b5e38e5c735d150ab6ccec4beb29d44a977fc675938b'
             '8c9093cc82acb814023b60eecffae7cb697abfa6193a68ca068f010baf3bf1e5f1678bdb862f4af370badbd71deb6a8499f61c8b6115d280477db1b3fd895dfd'
             'f1be6d7094ea0dd267fba21c7c64017de6a63974e193720100d49eba07170a078d43f0b76c96e6453b8e9e94cdc24b36fb7ab14218598d65d1455418daf9e447'
             'db3f27c2bed7cc84910154da8851daf32ea248aeaca5026c9c4cf138841b921498a0c39d4f9b635d6686d13ac498399e4657563867d87d406ff6b8b6d9dd0d28')
-b2sums=('bcdeeb55c50ef6867328d5cb94376fe18555adf81d0add64afa4ac909cabd2af16444d6dd864a3e61f0481f5b6aca20cc2b864f5c4cda0e54141f198300dccb9'
+b2sums=('45275e41191db5db7882e9b9f4ba8f7ef01d5013bd4ccede06708ddcb6139296977433bf9d538d8ad20c54022b6a6556f8aafe0bc056bfcee9fb2b7c7f3657f7'
         'cb519b7d749982d899037445be36dc54754c523ee7aaa3f7d005b4cea4dd74c1596535b17bfdd6910923e4f723ee02c625d579966a601b84ca1b1eeb82fe932e'
         '88f0f7b9bbc64b853e3169cc9627b64c4b5aaef7238553ed110f82ebd40e1f8b0078d17a69adee6a37f6d59f6eb0871fc209a1fb6e4b71b7ac5239071db2eec7'
         '12c3be8037959b0613adc82a5632845a79c966a6c9ccbadffd103c30c5cb951c0d31e2cc8f2cfce5ebcaba847baf168584cd6dac4a76c0d14b0d534f1c82219b')

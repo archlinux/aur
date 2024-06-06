@@ -1,0 +1,4 @@
+[etherpad-lite]
+source = "git"
+git = "https://github.com/ether/etherpad-lite.git"
+prefix = "v"
