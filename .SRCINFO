@@ -1,6 +1,6 @@
 pkgbase = vaults
 	pkgdesc = An application for creating encrypted vaults for the GNOME desktop
-	pkgver = 0.6.1
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/mpobaschnig/Vaults
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = vaults
 	depends = fuse3
 	depends = gocryptfs
 	depends = cryfs
-	source = vaults-0.6.1.tar.gz::https://github.com/mpobaschnig/Vaults/archive/0.6.1.tar.gz
-	b2sums = 0821c87991793421df1caef069ae16a8f3c07219807e25785f5eef5a737a4dd117dcbf61ef96dbb3b832cb9df53446511feacb1fdd489e8b1fad51e2f0dbb6d7
+	source = vaults-0.7.1.tar.gz::https://github.com/mpobaschnig/Vaults/archive/0.7.1.tar.gz
+	b2sums = 3aadd79d4c1e76cb01625aadfd6425ba0ce423e146ef93f367c078cc46ca5c8672add7292a094d89813c5d400fe03eb224c9c6836cb90bf089cf700d7fab803b
 
 pkgname = vaults
