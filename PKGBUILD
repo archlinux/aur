@@ -4,7 +4,7 @@
 pkgname=appflowy-bin
 _pkgname=appflowy
 pkgver=0.5.9
-pkgrel=2
+pkgrel=3
 pkgdesc="AppFlowy is an open-source alternative to Notion. You are in charge of your data and customizations."
 arch=(x86_64)
 url="https://appflowy.io"
@@ -30,6 +30,6 @@ package(){
         "usr/share/pixmaps/appflowy.svg"
     mkdir usr/bin
   	ln -s "/usr/lib/AppFlowy/AppFlowy" -t "usr/bin/"
-  	ln -s "/usr/lib/libmpv.so" -t "/usr/lib/libmpv.so.2"
+  	ln -s "/usr/lib/libmpv.so" "usr/lib/libmpv.so.1"
 }
 # vim:set noet sts=0 sw=4 ts=4 ft=PKGBUILD:
