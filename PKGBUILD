@@ -10,7 +10,7 @@ url="https://launchpad.net/quote/"
 license=('GPL2')
 depends=('pidgin')
 source=(
-    'git://github.com/pomozoff/quotetext.git'
+    'git+https://github.com/pomozoff/quotetext.git'
     'replace_internal_h.patch'
     'Makefile'
 )
