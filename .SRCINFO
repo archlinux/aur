@@ -1,6 +1,6 @@
 pkgbase = upbge-git
 	pkgdesc = Uchronia Project Blender Game Engine fork of Blender Game Engine
-	pkgver = 142060.aa50f945acc
+	pkgver = 143395.bb472f87d6c
 	pkgrel = 1
 	url = https://upbge.org/
 	arch = i686
@@ -57,7 +57,8 @@ pkgbase = upbge-git
 	optdepends = makepkg-cg: Control resources during compilation
 	provides = blender
 	conflicts = blender
-	conflicts = blender-4.1-bin
+	conflicts = blender-git
+	conflicts = blender-4.2-bin
 	source = upbge::git+https://github.com/UPBGE/upbge#branch=master
 	source = blender-addons::git+https://github.com/UPBGE/blender-addons
 	source = blender-addons-contrib::git+https://github.com/blender/blender-addons-contrib

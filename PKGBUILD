@@ -12,7 +12,7 @@
 _fragment="${FRAGMENT:-#branch=master}"
 
 pkgname=upbge-git
-pkgver=142060.aa50f945acc
+pkgver=143395.bb472f87d6c
 pkgrel=1
 pkgdesc="Uchronia Project Blender Game Engine fork of Blender Game Engine"
 arch=('i686' 'x86_64')
@@ -38,11 +38,9 @@ makedepends+=('git' 'cmake' 'boost' 'mesa' 'llvm' 'clang' 'subversion')
 makedepends+=('wayland-protocols')
 makedepends+=('cython')
 provides=('blender')
-conflicts=('blender' 'blender-4.1-bin')
+conflicts=('blender' 'blender-git' 'blender-4.2-bin')
 license=('GPL')
 source=("upbge::git+https://github.com/UPBGE/upbge${_fragment}"
-        "blender-addons::git+https://github.com/UPBGE/blender-addons"
-        'blender-addons-contrib::git+https://github.com/blender/blender-addons-contrib'
         'blender/translations::git+https://github.com/blender/blender-translations'
         'blender/dev_tools::git+https://github.com/blender/blender-dev-tools'
         'blender/assets::svn+https://svn.blender.org/svnroot/bf-blender/trunk/lib/assets'
@@ -51,8 +49,6 @@ source=("upbge::git+https://github.com/UPBGE/upbge${_fragment}"
         '0004-fix-opencollada-pcre.patch' #fix broken search for opencollada pcre
         )
 sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -65,12 +61,8 @@ pkgver() {
 }
 
 prepare() {
-  cd "$srcdir"
-  mkdir -p upbge/scripts/addons
-  rm -rf upbge/scripts/addons{,/contrib}
-  mv blender-addons upbge/scripts/addons
-  mv blender-addons-contrib upbge/scripts/addons/contrib
-  cd "upbge"
+  cd "$srcdir/upbge"
+
   # update the submodules
   git -c protocol.file.allow=always submodule update --init --recursive --remote
   git apply -v "${srcdir}"/*.patch
@@ -160,7 +152,7 @@ build() {
     rm "$srcdir/upbge/CMakeCache.txt"
   fi
 
-  NUMPY_PY_INCLUDE=/usr/lib/python3.11/site-packages/numpy/core/include/
+  NUMPY_PY_INCLUDE="/usr/lib/python${_pyver}/site-packages/numpy/core/include/"
   [[ -d "$NUMPY_PY_INCLUDE" ]] && (
     _CMAKE_FLAGS+=( -DNUMPY_INCLUDE_DIR="$NUMPY_PY_INCLUDE" );
     __CFLAGS="$CFLAGS -I$NUMPY_PY_INCLUDE"
@@ -220,16 +212,15 @@ EOF
 }
 
 package() {
-  _suffix=${pkgver%%.r*}
+  _suffix=$(grep -Po "(?<=#define UPBGE_VERSION )\d+" "$srcdir"/upbge/source/blender/blenkernel/BKE_blender_version.h | sed "s/^\(.\)\(.\)$/\1.\2/")
+
   cd "$srcdir/build"
   sed -ie 's/\(file(INSTALL\)\(.*blender\.1"\))/#\1\2)/' source/creator/cmake_install.cmake
   BLENDER_SYSTEM_RESOURCES="${pkgdir}/usr/share/upbge/${_suffix}" make DESTDIR="$pkgdir" install
-  #find . -name 'cmake_install.cmake' -exec sed -i -e 's|/usr/lib64/|'"$pkgdir"'/usr/lib/|g' {} \;
-  #cmake --install . --prefix "$pkgdir/usr"
 
-  if [[ -e "$pkgdir/usr/share/upbge/${_suffix}/scripts/addons/cycles/lib/" ]] ; then
+  if [[ -e "$pkgdir/usr/share/upbge/${_suffix}/scripts/addons_core/cycles/lib/" ]] ; then
     # make sure the cuda kernels are not stripped
-    chmod 444 "$pkgdir"/usr/share/upbge/${_suffix}/scripts/addons/cycles/lib/*
+    chmod 444 "$pkgdir"/usr/share/upbge/${_suffix}/scripts/addons_core/cycles/lib/*
   fi
 
   install -D -m755 "$srcdir"/build/bin/blenderplayer "$pkgdir"/usr/bin/blenderplayer
