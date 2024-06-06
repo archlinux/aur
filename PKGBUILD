@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=miteiru
 _pkgname=Miteiru
-pkgver=4.3.0
+pkgver=4.3.1
 _electronversion=21
 _nodeversion=16
 pkgrel=1
@@ -22,6 +22,7 @@ makedepends=(
     'curl'
     'icoutils'
     'gcc'
+    'cmake'
 )
 optdepends=(
     'python-jieba'
@@ -31,7 +32,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('a38dbed86458f8a610bb26ba79d17c88f6610ed1b96fe9301b25482631e9c970'
+sha256sums=('fa150e99a2a21368947fc6b5eea95acfc86d1df3d7c8ab0ddedc931c99cb20de'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
