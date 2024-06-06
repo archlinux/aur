@@ -2,12 +2,12 @@
 
 pkgname=perl-alien-proj
 pkgver=1.27
-pkgrel=1
+pkgrel=2
 pkgdesc='Compile the Proj library'
 _dist=Alien-proj
 arch=(any)
 url="https://metacpan.org/release/$_dist"
-license=(GPL PerlArtistic)
+license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 depends=(
   proj
   perl
