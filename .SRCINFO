@@ -1,13 +1,14 @@
 pkgbase = faugus-launcher
 	pkgdesc = Simple and Lightweight Game Launcher
 	pkgver = 1.0
-	pkgrel = 17
+	pkgrel = 18
 	arch = x86_64
 	license = GPL
 	depends = python
 	depends = python-gobject
 	depends = umu-launcher
 	depends = p7zip
+	depends = git
 	provides = faugus-launcher
 	conflicts = faugus-launcher
 	source = faugus-launcher::git+https://github.com/Faugus/faugus-launcher.git
