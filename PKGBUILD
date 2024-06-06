@@ -7,7 +7,7 @@ pkgdesc='Alien::Build plugin to cleanse the build dir after the build phase'
 _dist=Alien-Build-Plugin-Cleanse-BuildDir
 arch=(any)
 url="https://metacpan.org/release/$_dist"
-license=(GPL PerlArtistic)
+license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 depends=(
   perl
   perl-alien-build
