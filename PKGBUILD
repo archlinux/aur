@@ -2,7 +2,7 @@
 
 pkgname=siyuan-appimage
 pkgver=3.0.17
-pkgrel=1
+pkgrel=2
 pkgdesc="A privacy-first, self-hosted, fully open source personal knowledge management software, written in typescript and golang"
 arch=("x86_64")
 url="https://b3log.org/siyuan"
