@@ -11,8 +11,8 @@ license=('GPL')
 depends=('qt5-base')
 conflicts=('qzdl-git')
 makedepends=('git' 'gdb' 'make')
-source=("git://github.com/qbasicer/qzdl.git")
-md5sums=("SKIP")
+source=("git+https://github.com/qbasicer/qzdl.git")
+md5sums=('SKIP')
 _gitname="qzdl"
 _branch=master
 

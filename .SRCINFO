@@ -11,8 +11,7 @@ pkgbase = qzdl
 	makedepends = make
 	depends = qt5-base
 	conflicts = qzdl-git
-	source = git://github.com/qbasicer/qzdl.git
+	source = git+https://github.com/qbasicer/qzdl.git
 	md5sums = SKIP
 
 pkgname = qzdl
-
