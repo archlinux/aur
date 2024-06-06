@@ -107,6 +107,16 @@ else
 fi
 
 prepare() {
+  local _version_shaderc=$(grep -E -m1 'SHADERC=' "$_pkgsrc/scripts/build-dependencies-linux.sh" | sed -E -e 's&^\s*SHADERC=(\S+)$&\1&')
+  local _hash_glslang=$(grep -E -m1 glslang_revision "$_src_shaderc"/DEPS | sed -E "s&^.*: '([a-f0-9]+)'.*\$&\1&")
+  local _hash_spirv_headers=$(grep -E -m1 spirv_headers_revision "$_src_shaderc"/DEPS | sed -E "s&^.*: '([a-f0-9]+)'.*\$&\1&")
+  local _hash_spirv_tools=$(grep -E -m1 spirv_tools_revision "$_src_shaderc"/DEPS | sed -E "s&^.*: '([a-f0-9]+)'.*\$&\1&")
+
+  git -C "$srcdir/$_src_shaderc" checkout -f "v$_version_shaderc"
+  git -C "$srcdir/$_src_shaderc_glslang" checkout -f "$_hash_glslang"
+  git -C "$srcdir/$_src_shaderc_spirv_headers" checkout -f "$_hash_spirv_headers"
+  git -C "$srcdir/$_src_shaderc_spirv_tools" checkout -f "$_hash_spirv_tools"
+
   ln -s "$srcdir/$_src_shaderc_glslang" "$srcdir/$_src_shaderc"/third_party/glslang
   ln -s "$srcdir/$_src_shaderc_spirv_headers" "$srcdir/$_src_shaderc"/third_party/spirv-headers
   ln -s "$srcdir/$_src_shaderc_spirv_tools" "$srcdir/$_src_shaderc"/third_party/spirv-tools
