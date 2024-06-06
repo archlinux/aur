@@ -1,13 +1,4 @@
-# Gaia Sky 3.6.2
-
-## Features
-- enable ray-marching effects in stereoscopic mode.
+# Gaia Sky 3.6.2-2
 
 ## Bug Fixes
-- use a new instance of the preferences dialog each time it is open, so that all preferences are reinitialized correctly.
-- invert-x/-y button in gamepad GUI does not work/update correctly.
-- ray-marching effects in cubemap modes. Probably a source of unforeseen consequences.
-- remove blank frame produced when activating a ray-marching effect for the first time.
-- never skip future closest body position computation.
-- restore light glow effect in cubemap modes (360, planetarium, orthosphere).
-- restore light glow effect in stereoscopic mode.
+- shadow map GLSL library crash due to use of old, unsupported  call. Fixes [#773](https://codeberg.org/gaiasky/gaiasky/issues/773).
