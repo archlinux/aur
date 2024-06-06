@@ -1,6 +1,6 @@
 pkgbase = air-bin
 	pkgdesc = Live reload for Go apps
-	pkgver = 1.52.1
+	pkgver = 1.52.2
 	pkgrel = 1
 	url = https://github.com/cosmtrek/air
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = air-bin
 	depends = go
 	provides = air
 	conflicts = air
-	source_x86_64 = air-1.52.1-x86_64.tar.gz::https://github.com/cosmtrek/air/releases/download/v1.52.1/air_1.52.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 05fe834091fc701c4a6961a8f3434372ae7b1128e7e02b6fe3e91685780013f0
-	source_i686 = air-1.52.1-i686.tar.gz::https://github.com/cosmtrek/air/releases/download/v1.52.1/air_1.52.1_linux_386.tar.gz
-	sha256sums_i686 = 173481c7d04a1cc230336034b6a0a862b25cd0ad445d88b4c412f0ab52e8a418
-	source_aarch64 = air-1.52.1-aarch64.tar.gz::https://github.com/cosmtrek/air/releases/download/v1.52.1/air_1.52.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 452c845f1cae7e4682a299ad4e6a516a84f9842219bbf75b145b6bf258e3e316
+	source_x86_64 = air-1.52.2-x86_64.tar.gz::https://github.com/cosmtrek/air/releases/download/v1.52.2/air_1.52.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 05eb11b50248b37edfad336ec5392af349e84cd34f487fe97a9a0081fd8475bc
+	source_i686 = air-1.52.2-i686.tar.gz::https://github.com/cosmtrek/air/releases/download/v1.52.2/air_1.52.2_linux_386.tar.gz
+	sha256sums_i686 = 40e46e58ff8b11de9d11c17173b1b320e22aa0166475fd7751379728f4f897fb
+	source_aarch64 = air-1.52.2-aarch64.tar.gz::https://github.com/cosmtrek/air/releases/download/v1.52.2/air_1.52.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = c898913867fd4b27a47b27f23263b8b872c1293d1943fffaf2e62a10ddebdb95
 
 pkgname = air-bin
