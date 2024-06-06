@@ -1,11 +1,10 @@
 pkgbase = perl-alien-hdf4
 	pkgdesc = Encapsulate install info for HDF4
 	pkgver = 0.06
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Alien-HDF4
 	arch = any
-	license = GPL
-	license = PerlArtistic
+	license = GPL-1.0-or-later OR Artistic-1.0-Perl
 	checkdepends = perl-test-simple
 	makedepends = perl-io-all
 	makedepends = perl-extutils-depends
