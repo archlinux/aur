@@ -1,13 +1,13 @@
 pkgbase = whiskers-bin
 	pkgdesc = A templating tool to simplify the creation of Catppuccin ports.
-	pkgver = 2.0.2
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/catppuccin/toolbox
 	arch = x86_64
 	license = MIT
 	conflicts = whiskers
 	conflicts = whiskers-bin
-	source = https://github.com/catppuccin/toolbox/releases/download/whiskers-v2.0.2/whiskers-x86_64-unknown-linux-gnu
-	sha256sums = a3aad247adfc77b74dce85bb72d64894bcbe4d611c40d33d12c79bd9f1e315d1
+	source = https://github.com/catppuccin/toolbox/releases/download/whiskers-v2.3.0/whiskers-x86_64-unknown-linux-gnu
+	sha256sums = c1f6588ad551ac54ff1316b17dafb5edd77f97b1054d26479299366190bc2833
 
 pkgname = whiskers-bin
