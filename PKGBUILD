@@ -4,12 +4,12 @@
 
 pkgname=steam-tools-ng
 pkgver=3.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Some useful tools for use with steam client or compatible programs, websites"
 arch=('any')
 url="https://github.com/calendulish/steam-tools-ng"
-depends=('python>=3.9' 'python-certifi' 'python-aiohttp' 'python-stlib>=2.0' 'python-stlib-plugins>=1.2.3' 'python-gobject' 'gtk4' 'xdg-utils' 'python-gettext')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'imagemagick')
+depends=('python>=3.9' 'python-certifi' 'python-aiohttp' 'python-stlib>=2.0' 'python-stlib-plugins>=1.2.3' 'python-gobject' 'gtk4' 'xdg-utils')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-gettext' 'imagemagick')
 license=('GPL')
 source=(
     "https://github.com/calendulish/$pkgname/archive/v${pkgver}.tar.gz"

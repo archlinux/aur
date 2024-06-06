@@ -1,13 +1,14 @@
 pkgbase = steam-tools-ng
 	pkgdesc = Some useful tools for use with steam client or compatible programs, websites
 	pkgver = 3.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/calendulish/steam-tools-ng
 	arch = any
 	license = GPL
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-gettext
 	makedepends = imagemagick
 	depends = python>=3.9
 	depends = python-certifi
@@ -17,7 +18,6 @@ pkgbase = steam-tools-ng
 	depends = python-gobject
 	depends = gtk4
 	depends = xdg-utils
-	depends = python-gettext
 	source = https://github.com/calendulish/steam-tools-ng/archive/v3.1.5.tar.gz
 	sha256sums = 1576a9cab2b965cddac56994ac713600e5732852cb63e166005b7cd282c0e711
 
