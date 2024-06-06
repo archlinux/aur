@@ -1,7 +1,7 @@
 pkgbase = iotas
 	pkgdesc = Simple note taking
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/World/iotas
 	arch = any
 	license = GPL3
@@ -24,8 +24,6 @@ pkgname = iotas
 	depends = python-linkify-it-py
 	depends = python-mdit_py_plugins
 	depends = python-gtkspellcheck
-	depends = hspell
-	depends = nuspell
 	depends = libvoikko
 	depends = sqlite
 	depends = org.freedesktop.secrets

@@ -3,7 +3,7 @@
 
 pkgname=iotas
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple note taking"
 arch=('any')
 url="https://gitlab.gnome.org/World/iotas"
@@ -33,8 +33,6 @@ package() {
 		'python-linkify-it-py'
 		'python-mdit_py_plugins'
 		'python-gtkspellcheck'
-		'hspell'
-		'nuspell'
 		'libvoikko'
 		'sqlite'
 		'org.freedesktop.secrets')
