@@ -4,19 +4,20 @@
 pkgname="deemix-gui-git"
 _pkgname="deemix-gui"
 pkgver=r222.5d447b6035
-pkgrel=2
+pkgrel=3
 pkgdesc="A gui electron app for the deemix lib"
 arch=('x86_64')
 url="https://gitlab.com/RemixDev/$_pkgname"
-license=('gpl3')
-depends=('electron')
+license=('GPL-3.0-only')
+depends=('electron27')
 makedepends=('git' 'yarn')
 provides=('deemix-gui')
 source=("${_pkgname}::git+https://gitlab.com/RemixDev/$_pkgname" "deemix-webui::git+https://gitlab.com/RemixDev/deemix-webui"
         "$_pkgname.desktop" "$_pkgname.sh")
-sha256sums=('SKIP' 'SKIP'
+sha256sums=('SKIP'
+            'SKIP'
             '87ae7b086c91a3ee8c9c29c5e920680416a1ca92d33b05c9276abb8d2bc4da3b'
-            '8c85c9833520f22b8bd0e62bd2e5673a731e737fa896f35b5c944258b39d5e31')
+            'e1c74c414423858b5ea845cabf75361aa330d34016939f2f97ed8e34fad13666')
 
 pkgver() {
   cd "${srcdir}/$_pkgname"
@@ -35,8 +36,8 @@ build() {
 
   # use system electron version
   # see: https://wiki.archlinux.org/index.php/Electron_package_guidelines
-  electronDist='/usr/lib/electron'
-  electronVer=$(sed s/^v// /usr/lib/electron/version)
+  electronDist='/usr/lib/electron27'
+  electronVer=$(sed s/^v// /usr/lib/electron27/version)
   sed -i '/		"electron": /d' ./package.json
   HOME="$srcdir/.electron-gyp" yarn install-all
   yarn predist

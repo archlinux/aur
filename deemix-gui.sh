@@ -1,3 +1,3 @@
 #!/bin/bash
 
-exec electron /usr/lib/deemix-gui/app.asar "$@"
+exec electron27 /usr/lib/deemix-gui/app.asar "$@"
