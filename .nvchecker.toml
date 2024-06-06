@@ -1,0 +1,3 @@
+[python-tensorly]
+source = "git"
+git = "https://github.com/tensorly/tensorly.git"

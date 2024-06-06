@@ -1,10 +1,11 @@
 # -*- mode: shell-script -*-
-# Maintainer: Chih-Hsuan Yen <yan12125@archlinux.org>
+# Maintainer: iamawacko <iamawacko@protonmail.com>
+# Contributor: Chih-Hsuan Yen <yan12125@archlinux.org>
 # Contributor: Dylon Edwards <deltaecho at archlinux dot us>
 
 pkgname='python-tensorly'
-pkgver=0.7.0
-pkgrel=3
+pkgver=0.8.1
+pkgrel=1
 pkgdesc="Simple and Fast Tensor Learning in Python"
 arch=('any')
 url="https://tensorly.org/stable/home.html"
@@ -36,7 +37,7 @@ optdepends+=(
 )
 changelog="${pkgname}.changelog"
 source=("tensorly-${pkgver}.tar.gz::https://github.com/tensorly/tensorly/archive/${pkgver}.tar.gz")
-sha256sums=('af6d61d58829d7e3267db59d0a8bf88a58ccf22e7acc9fbe1520dc20fde5cdc9')
+sha256sums=('0361202ac80341ff0563d27e774f0eb12190b3078bd07bc34cc5970e4c18caf5')
 
 build() {
     cd "tensorly-${pkgver}"
