@@ -2,12 +2,12 @@
 
 pkgname=perl-alien-build-plugin-pkgconfig-ppwrapper
 pkgver=0.03
-pkgrel=1
+pkgrel=2
 pkgdesc='Alien::Build plugin to ensure the pure perl PkgConfig is not run by the MSYS perl'
 _dist=Alien-Build-Plugin-PkgConfig-PPWrapper
 arch=(any)
 url="https://metacpan.org/release/$_dist"
-license=(GPL PerlArtistic)
+license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 depends=(
   perl
   perl-alien-build
