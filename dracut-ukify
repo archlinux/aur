@@ -56,12 +56,6 @@ function variant_name() {
   fi
 }
 
-function ukify_obsolete_syntax() {
-  read -r -a ukify_version < <(/usr/lib/systemd/ukify --version)
-  [ "${ukify_version[1]}" -lt 254 ]
-  return $?
-}
-
 function uki_path() {
   local name="$1"
   local version="$2"
@@ -234,10 +228,7 @@ function gen_image() {
     echo "BUILD_ID=\"$version_name\"" >> "$os_release"
     echo "VERSION_ID=\"$(variant_name "$pkgbase" "$variant")\"" >> "$os_release"
 
-    local -a ukify_args=()
-    if ! ukify_obsolete_syntax; then
-          ukify_args+=(build)
-    fi
+    local -a ukify_args=(build)
     ukify_args+=("${ukify_global_args[@]}")
     ukify_args+=(--uname "$version")
     ukify_args+=(--os-release "@$os_release")
@@ -256,12 +247,8 @@ function gen_image() {
       fi
     fi
 
-    if ukify_obsolete_syntax; then
-      ukify_args+=("$vmlinuz" "$initrd")
-    else
-      ukify_args+=(--linux "$vmlinuz")
-      ukify_args+=(--initrd "$initrd")
-    fi
+    ukify_args+=(--linux "$vmlinuz")
+    ukify_args+=(--initrd "$initrd")
 
     msg2 "Ukify image %s (%s)" "$kernel" "$version_name"
 
