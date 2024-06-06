@@ -1,16 +1,14 @@
 pkgbase = perl-pod2-base
 	pkgdesc = Base module for translations of Perl documentation
 	pkgver = 0.043
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/POD2-Base
 	arch = any
-	license = GPL
-	license = PerlArtistic
+	license = GPL-1.0-or-later OR Artistic-1.0-Perl
 	checkdepends = perl-test-pod
 	checkdepends = perl-test-pod-coverage
 	depends = perl
 	options = !emptydirs
-	options = purge
 	source = https://cpan.metacpan.org/authors/id/F/FE/FERREIRA/POD2-Base-0.043.tar.gz
 	sha256sums = 071910a2233d11767c9576f1909b8686b4696acb6a7035d1513f9c15ccf0237e
 
