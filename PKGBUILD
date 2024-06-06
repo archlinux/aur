@@ -9,8 +9,9 @@
 
 # https://releases.electronjs.org/
 
-pkgver=29.4.2
-pkgrel=2
+_pkgver=29.4.2
+pkgrel=3
+pkgver="${_pkgver/-/.}"
 _major_ver=${pkgver%%.*}
 _projectname=electron
 _pkgname="${_projectname}${_major_ver}"
@@ -19,15 +20,13 @@ pkgdesc='Build cross platform desktop apps with web technologies — binary'
 arch=(x86_64 armv7h aarch64)
 url='https://electronjs.org'
 license=(MIT BSD-3-Clause)
-depends=(c-ares
-         gcc-libs # libgcc_s.so
-         glibc # libc.so libm.so
-         gtk3 libgtk-3.so
-         libevent
-         libffi libffi.so
-         libpulse libpulse.so
-         nss # libnss3.so
-         zlib libz.so)
+depends=(
+    alsa-lib # libasound.so.2
+    gcc-libs # libgcc_s.so
+    glibc # libc.so libm.so
+    gtk3 libgtk-3.so
+    nss # libnss3.so
+)
 optdepends=('kde-cli-tools: file deletion support (kioclient5)'
             'pipewire: WebRTC desktop sharing under Wayland'
             'qt5-base: enable Qt5 with --enable-features=AllowQt'
@@ -36,18 +35,18 @@ optdepends=('kde-cli-tools: file deletion support (kioclient5)'
             'xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
-_releaseurl="https://github.com/${_projectname}/${_projectname}/releases/download/v${pkgver}"
+_releaseurl="https://github.com/${_projectname}/${_projectname}/releases/download/v${_pkgver}"
 source_aarch64=(
-	"${_releaseurl}/chromedriver-v${pkgver}-linux-arm64.zip"
-	"${_releaseurl}/${_projectname}-v${pkgver}-linux-arm64.zip"
+	"${_releaseurl}/chromedriver-v${_pkgver}-linux-arm64.zip"
+	"${_releaseurl}/${_projectname}-v${_pkgver}-linux-arm64.zip"
 )
 source_armv7h=(
-	"${_releaseurl}/chromedriver-v${pkgver}-linux-armv7l.zip"
-	"${_releaseurl}/${_projectname}-v${pkgver}-linux-armv7l.zip"
+	"${_releaseurl}/chromedriver-v${_pkgver}-linux-armv7l.zip"
+	"${_releaseurl}/${_projectname}-v${_pkgver}-linux-armv7l.zip"
 )
 source_x86_64=(
-	"${_releaseurl}/chromedriver-v${pkgver}-linux-x64.zip"
-	"${_releaseurl}/${_projectname}-v${pkgver}-linux-x64.zip"
+	"${_releaseurl}/chromedriver-v${_pkgver}-linux-x64.zip"
+	"${_releaseurl}/${_projectname}-v${_pkgver}-linux-x64.zip"
 )
 sha256sums_x86_64=('e612ae9910bfd004ced13cdef0dda9e49d699c69ac18f04900b1129b98d41b23'
                    'eb07a8137fde970450242c51e0c2f8ef6556f377a21c357584aa2632ee9e1d3f')
