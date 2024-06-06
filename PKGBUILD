@@ -1,7 +1,7 @@
 # Maintainer: Luis Pérez <luis.perez@protonmail.com>
 pkgname=pumble-desktop-bin
-pkgver=1.3.22
-pkgrel=1
+pkgver=1.3.28
+pkgrel=0
 pkgdesc='Pumble is a free team alternative to Slack and Microsoft Teams. Unlimited users and history - all for free.'
 arch=('x86_64')
 url="https://pumble.com"
@@ -11,7 +11,7 @@ depends=('alsa-lib' 'atk' 'at-spi2-atk' 'at-spi2-core' 'cairo' 'dbus' 'desktop-f
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("https://pumble.com/download/desktop/linux/Pumble-linux-${pkgver}.deb")
-sha256sums=('9350d7a69db885d37287265130deebbb8f6e6a3e2ba4f7d60d72bd83831d0a08')
+sha256sums=('b2d30b6c048b32699f37d5f4a615cb5276ead251e66fb5df20a23069305248ba')
 
 package(){
 	# Extract package data
