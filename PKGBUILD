@@ -4,12 +4,23 @@
 
 pkgname=cmake
 pkgver=3.29.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-platform open-source make system'
 arch=('x86_64')
 url="https://www.cmake.org/"
 license=('custom')
-depends=('curl' 'libarchive' 'hicolor-icon-theme' 'jsoncpp' 'libjsoncpp.so' 'libuv' 'rhash' 'cppdap')
+depends=(cppdap
+         curl
+         expat
+         gcc-libs
+         glibc
+         hicolor-icon-theme
+         jsoncpp
+         libarchive
+         libuv
+         ncurses
+         rhash
+         zlib)
 makedepends=(emacs
              git
              nlohmann-json
