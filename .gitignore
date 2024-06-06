@@ -1,0 +1,6 @@
+src/
+*~
+*.zst
+pkg/
+*.tar.gz
+amaranth-soc
