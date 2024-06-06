@@ -27,7 +27,7 @@ unset _pkgtype
 _pkgname="pcsx2"
 pkgname="$_pkgname${_pkgtype:-}"
 pkgver=1.7.5865.r0.g3c15f6e
-pkgrel=2
+pkgrel=3
 pkgdesc='Sony PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
 license=('GPL-3.0-only' 'LGPL-3.0-only')
@@ -207,10 +207,12 @@ _source_shaderc() {
   )
 
   _prepare_shaderc() (
+    local _version_shaderc=$(grep -E -m1 'SHADERC=' "$_pkgsrc/.github/workflows/scripts/linux/build-dependencies-qt.sh" | sed -E -e 's&^\s*SHADERC=(\S+)$&\1&')
     local _hash_glslang=$(grep -E -m1 glslang_revision "$srcdir"/google.shaderc/DEPS | sed -E "s&^.*: '([a-f0-9]+)'.*\$&\1&")
     local _hash_spirv_headers=$(grep -E -m1 spirv_headers_revision "$srcdir"/google.shaderc/DEPS | sed -E "s&^.*: '([a-f0-9]+)'.*\$&\1&")
     local _hash_spirv_tools=$(grep -E -m1 spirv_tools_revision "$srcdir"/google.shaderc/DEPS | sed -E "s&^.*: '([a-f0-9]+)'.*\$&\1&")
 
+    git -C "$srcdir/google.shaderc" checkout -f "v$_version_shaderc"
     git -C "$srcdir"/khronosgroup.glslang checkout -f "$_hash_glslang"
     git -C "$srcdir"/khronosgroup.spirv-headers checkout -f "$_hash_spirv_headers"
     git -C "$srcdir"/khronosgroup.spirv-tools checkout -f "$_hash_spirv_tools"
