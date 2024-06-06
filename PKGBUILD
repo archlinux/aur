@@ -2,13 +2,13 @@
 
 pkgname=rtrtr-git
 pkgver=0.3.0.r1.gf7168af
-pkgrel=1
+pkgrel=2
 pkgdesc="An RPKI data proxy"
 arch=('i686' 'x86_64')
 url="https://nlnetlabs.nl/projects/rpki/rtrtr/"
 license=('BSD-3-Clause')
 depends=('gcc-libs')
-makedepends=('git' 'rust')
+makedepends=('git' 'cargo')
 provides=("rtrtr=$pkgver")
 conflicts=('rtrtr')
 source=("git+https://github.com/NLnetLabs/rtrtr.git")
