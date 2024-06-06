@@ -1,0 +1,5 @@
+[openspace]
+source = "github"
+github = "OpenSpace/OpenSpace"
+prefix = "releases/v"
+use_latest_release = "true"
