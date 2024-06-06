@@ -1,0 +1,10 @@
+--- Makefile.bak	2024-06-06 13:53:31.550238955 +0200
++++ Makefile	2024-06-06 13:53:49.853055429 +0200
+@@ -37,7 +37,6 @@
+ OBJS= $(OBJS2)
+ 
+ RLIBS := -labc
+-RLIBS_SO := $(ACT_HOME)/lib/libabc.so
+ 
+ SHOBJS=$(OBJS:.o=.os)
+ 

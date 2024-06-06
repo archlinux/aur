@@ -1,0 +1,24 @@
+pkgbase = act-expropt-git
+	pkgdesc = The ExprOpt Library is used to optimize the sets of expressions by using external synthesis tools.
+	pkgver = 0.1.r66.b4f4b14
+	pkgrel = 1
+	url = https://github.com/asyncvlsi/expropt
+	arch = x86_64
+	license = GPL-2.0
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	makedepends = binutils
+	makedepends = patch
+	depends = act-core
+	depends = sed
+	depends = abc
+	depends = yosys
+	provides = act-expropt
+	conflicts = act-expropt
+	source = git+https://github.com/asyncvlsi/expropt
+	source = makefile.patch
+	sha512sums = SKIP
+	sha512sums = e819067e8ad69226770a5f991f1a926ce06d86853029a08d76deac39787e4ac9fa93bdee13f4321cf5151c73796b95441dc073a608093cc5558cb0daf3beaf38
+
+pkgname = act-expropt-git
