@@ -93,7 +93,7 @@ md5sums=('42824c2a866111605ca1a4ba2deee7a5'
          'dfc069e6c8d9dbaa90fe388cab4002c9'
          '6b159c6e9d21a98925489bc37a9aea43'
          '38e98220da64adc1d8f9dc17d04b3a39'
-         'dcdf6a599cc7bab27ab85c880401f717')
+         '17a2d0ee9d05053f7e34a96a82ca62f6')
 md5sums_x86_64=('2c2c8ec69b6b798b7ccaf873e27d977a')
 md5sums_aarch64=('c4d443515fe76ec35e792d43e9521887')
 md5sums_loong64=('c4d443515fe76ec35e792d43e9521887')

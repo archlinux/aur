@@ -223,6 +223,8 @@ function execApp() {
 			"${XDG_RUNTIME_DIR}/.flatpak-info" \
 		--ro-bind-try "${XDG_DATA_HOME}"/WeChat_Data/.flatpak-info \
 			/.flatpak-info \
+		--ro-bind-try "/run/systemd/resolve/stub-resolv.conf" \
+			"/run/systemd/resolve/stub-resolv.conf" \
 		--dir "${XDG_DOCUMENTS_DIR}" \
 		${bwCamPar} \
 		--setenv XDG_DOCUMENTS_DIR "${XDG_DOCUMENTS_DIR}" \
