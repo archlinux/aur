@@ -1,7 +1,7 @@
 # Maintainer: Alexis Maiquez <aur@almamu.com>
 pkgname=linux-wallpaperengine-git
 _pkgname=linux-wallpaperengine
-pkgver=r464.6c27d94
+pkgver=r466.431a39f
 pkgrel=1
 pkgdesc="use steam's wallpaperengine on linux"
 arch=('x86_64')
@@ -27,11 +27,15 @@ pkgver() {
 build() {
     cmake -B build -S "$pkgname" \
         -DCMAKE_BUILD_TYPE='Release' \
-        -DCMAKE_INSTALL_PREFIX='/usr' \
+        -DCMAKE_INSTALL_PREFIX='/opt/linux-wallpaperengine' \
         -Wno-dev
     cmake --build build
 }
 
 package() {
     DESTDIR="$pkgdir" cmake --install build
+    # create forwarding script
+    echo "#!/bin/bash" > /usr/bin/linux-wallpaperengine
+    echo "cd /opt/linux-wallpaperengine; ./linux-wallpaperengine \$*" >> /usr/bin/linux-wallpaperengine
+    chmod +x /usr/bin/linux-wallpaperengine
 }
