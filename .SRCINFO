@@ -1,13 +1,12 @@
 pkgbase = keepassx2-twofish
 	pkgdesc = Cross Platform Password Manager (with unofficial patches for Twofish and unlock on auto-type)
 	pkgver = 2.0.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.keepassx.org/dev/
 	install = keepassx2.install
 	arch = i686
 	arch = x86_64
-	license = GPL2
-	license = GPL3
+	license = GPL-2.0-or-later
 	makedepends = cmake
 	depends = qt4
 	depends = glibc
