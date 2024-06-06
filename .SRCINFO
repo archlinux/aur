@@ -1,0 +1,20 @@
+pkgbase = brother-hl1208
+	pkgdesc = LPR and CUPS driver for the Brother HL-1208
+	pkgver = 3.0.1_1
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us/
+	install = brother-hl1208.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother commercial license
+	depends = cups
+	depends = ghostscript
+	depends = foomatic-db
+	depends = foomatic-db-engine
+	depends = foomatic-db-nonfree
+	source = https://www.brother.cn/project/d2/HL1208/hl1208cupswrapper-3.0.1-1.i386.rpm
+	source = https://www.brother.cn/project/d2/HL1208/hl1208lpr-3.0.1-1.i386.rpm
+	md5sums = a4322b72bc86fed71fc955290e148e74
+	md5sums = 10acea405ce54fa54f15bcf62118bdd8
+
+pkgname = brother-hl1208

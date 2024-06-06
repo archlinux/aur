@@ -1,6 +1,6 @@
 # Maintainer: NameSetter <ssmzhn@163.com>
 pkgname="brother-hl1208"
-pkgver="3.0.1-1"
+pkgver="3.0.1_1"
 pkgrel=1
 pkgdesc="LPR and CUPS driver for the Brother HL-1208"
 arch=('i686' 'x86_64')
@@ -9,8 +9,8 @@ license=('custom:brother commercial license')
 depends=('cups' 'ghostscript' 'foomatic-db' 'foomatic-db-engine' 'foomatic-db-nonfree')
 install="$pkgname.install"
 source=(
-	"https://www.brother.cn/project/d2/HL1208/hl1208cupswrapper-3.0.1-1.i386.rpm"
-	"https://www.brother.cn/project/d2/HL1208/hl1208lpr-3.0.1-1.i386.rpm"
+	"https://www.brother.cn/project/d2/HL1208/hl1208cupswrapper-${pkgver//_/-}.i386.rpm"
+	"https://www.brother.cn/project/d2/HL1208/hl1208lpr-${pkgver//_/-}.i386.rpm"
 )
 md5sums=(
 	'a4322b72bc86fed71fc955290e148e74'
