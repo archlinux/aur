@@ -1,7 +1,7 @@
 pkgbase = gimp-nufraw
 	pkgdesc = Converter for raw files; utility and GIMP plugin
 	pkgver = 0.43.3
-	pkgrel = 9
+	pkgrel = 10
 	url = https://sourceforge.net/projects/nufraw/
 	arch = x86_64
 	license = GPL

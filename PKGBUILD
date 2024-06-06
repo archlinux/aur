@@ -3,7 +3,7 @@
 pkgname=gimp-nufraw
 _realver=0.43-3
 pkgver=0.43.3
-pkgrel=9
+pkgrel=10
 pkgdesc='Converter for raw files; utility and GIMP plugin'
 url='https://sourceforge.net/projects/nufraw/'
 arch=('x86_64')
@@ -29,6 +29,9 @@ prepare() {
   # fix build with exiv2 0.28.0
   patch -p1 < ../0002-exiv2-error.patch
 
+  # fix metadata path with appstream
+  sed -i '/appdatadir/s|/appdata|/metainfo/|' Makefile.am
+
   autoreconf -fi
 
   mv nufraw.desktop{.desktop,}
@@ -39,7 +42,7 @@ build() {
   cd "nufraw-${_realver}"
 
   ./configure \
-    --prefix=/usr \
+    --prefix='/usr' \
     --enable-extras \
     --enable-mime \
     --enable-openmp \
