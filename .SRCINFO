@@ -1,18 +1,21 @@
 pkgbase = abc-git
 	pkgdesc = System for Sequential Logic Synthesis and Formal Verification
-	pkgver = 1.01
+	pkgver = 1.02.r5444.806a996
 	pkgrel = 1
-	url = http://www.eecs.berkeley.edu/~alanmi/abc/abc.htm
+	url = https://people.eecs.berkeley.edu/~alanmi/abc/
 	arch = x86_64
 	arch = i686
 	license = BSD
 	makedepends = git
 	makedepends = make
 	makedepends = gcc
+	depends = readline
 	provides = abc
+	provides = libabc.so
 	conflicts = abc
 	source = git+https://github.com/berkeley-abc/abc.git
-	md5sums = SKIP
+	source = LICENSE
+	sha512sums = SKIP
+	sha512sums = 3b34a70f67f52df1aa933ee517babf9105d65adb9d53c475b5ea02e361c6a983e6611d81772350c25653920dbc27d37c90a1cf70cbd52859c5a12e06fbeb1563
 
 pkgname = abc-git
-
