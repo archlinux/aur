@@ -1,6 +1,6 @@
 _gitdir=gamescope-session-opengamepadui
 pkgname=opengamepadui-session-git
-pkgver=r21.af05735
+pkgver=r22.f9aafe5
 pkgrel=1
 pkgdesc="Gamescope session for running OpenGamepadUI"
 arch=('any')
