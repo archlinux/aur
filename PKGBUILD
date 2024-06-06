@@ -3,12 +3,12 @@
 
 pkgname=perl-opengl-glut
 pkgver=0.72
-pkgrel=2
+pkgrel=3
 pkgdesc='Perl bindings to GLUT/FreeGLUT GUI toolkit'
 _dist=OpenGL-GLUT
 arch=(i686 x86_64)
 url="https://metacpan.org/release/$_dist"
-license=(GPL PerlArtistic)
+license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 depends=(perl perl-opengl)
 source=("https://cpan.metacpan.org/authors/id/E/ET/ETJ/$_dist-$pkgver.tar.gz")
 options=('!emptydirs')
