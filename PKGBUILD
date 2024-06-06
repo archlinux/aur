@@ -102,6 +102,7 @@ package() {
   DESTDIR="${pkgdir}" ninja -C builddir install
   install -Dm 644 LICENCE -t "${pkgdir}"/usr/share/licenses/aegisub-git/
 
+  # Clean symlink to not break future builds
   rm -vf subprojects/bestsource/libp2p
 }
 
