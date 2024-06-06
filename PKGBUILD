@@ -8,7 +8,7 @@
 # for workarounds to `Insecure RPATH '<build path>' in opt/spotube/lib/lib*_plugin.so`
 
 pkgname=spotube
-pkgver=3.7.0
+pkgver=3.7.1
 pkgrel=1
 pkgdesc="Open source Spotify client that doesn't require Premium nor uses Electron! Available for both desktop & mobile!"
 arch=("x86_64" "aarch64")
@@ -21,12 +21,10 @@ makedepends=(
 )
 source=(
     "spotube-$pkgver.tar.gz::https://github.com/KRTirtho/spotube/archive/refs/tags/v$pkgver.tar.gz"
-    "001-fix-window-missing.diff::https://github.com/KRTirtho/spotube/commit/8fc44ed6550e8b2b804991ff82df08afb1c94ca8.diff"
 )
-sha256sums=('5ee3ae2ed9ad224ebc382ac04f706a78261e1da0453e933ac2c5ee7313b94a6b'
-            '9b22a7b9f35d009967eb577a1ddb70bebd089ece334b99658c25fd17a46c97ab')
+sha256sums=('d528c7be9db77786a5646982597bf7e48ca595bbc0d9f4ead528d5e7677f28fc')
 
-_release_date=2024-06-03
+_release_date=2024-06-06
 
 prepare() {
     cd "$srcdir/spotube-$pkgver"
@@ -37,7 +35,6 @@ prepare() {
         echo "LASTFM_API_SECRET=$MAKEPKG_SPOTUBE_LASTFM_API_SECRET"
         echo "RELEASE_CHANNEL=stable"
     } > .env
-    patch -Np1 -i ../001-fix-window-missing.diff
 
     # workaround for l10n
     echo 'synthetic-package: false' >> l10n.yaml
