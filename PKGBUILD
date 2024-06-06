@@ -3,7 +3,7 @@
 # Contributor: Niklas Wojtkowiak <aur.7xcqe@passmail.com>
 _pkgname='spacedrive'
 pkgname="${_pkgname}-bin"
-pkgver='0.2.2'
+pkgver='0.3.1'
 pkgrel='1'
 epoch='1'
 pkgdesc="A file manager from the future."
