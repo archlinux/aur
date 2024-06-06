@@ -1,7 +1,7 @@
 # Maintainer: munsternet <munsternet at ik dot me>
 _pkgname=trackaudio
 pkgname=trackaudio-git
-pkgver=1.0.2.beta.2.r11.gb90f58e
+pkgver=1.1.0.beta.10.r1.g9cf8503
 pkgrel=1
 pkgdesc="Next-generation cross-platform Audio-For-VATSIM ATC Client"
 arch=(x86_64 aarch64)
@@ -32,24 +32,28 @@ pkgver() {
 
 prepare() {
   cd "$_pkgname"
-  git submodule update --init --recursive
+  git submodule update --init --remote backend/vcpkg
+  git submodule update --init --remote backend/extern/afv-native
 }
 
 build() {
   cd "$_pkgname"
-  npm run build-backend
+  npm run build:backend
   npm install
-  npm run package
+  npm run build:unpack
 }
 
 package() {
-  mkdir -p "$pkgdir/usr/lib/$_pkgname/"
+  mkdir -p "$pkgdir/opt/TrackAudio"
   mkdir -p "$pkgdir/usr/bin"
   install -Dm644 trackaudio.desktop -t "$pkgdir/usr/share/applications/"
-  cp -r $_pkgname/out/TrackAudio-linux-x64/* -t "$pkgdir/usr/lib/$_pkgname/"
-  ln -s "/usr/lib/${_pkgname}/trackaudio" "${pkgdir}/usr/bin/trackaudio"
+  cp -r $_pkgname/dist/linux-unpacked/* "$pkgdir/opt/TrackAudio/"
 
-  # Trackaudio expects libafv_native.so in /usr/lib
-  ln -s "/usr/lib/${_pkgname}/libafv_native.so" "${pkgdir}/usr/lib/libafv_native.so"
+  # make /usr/bin/trackaudio available
+  binf="$pkgdir/usr/bin/$_pkgname"
+  if [[ ! -e "$binf" ]] && [[ ! -f "$binf" ]] && [[ ! -L "$binf" ]]; then
+    install -dm755 "$pkgdir/usr/bin"
+    ln -s /opt/TrackAudio/$_pkgname "$binf"
+  fi
 }
 
