@@ -35,7 +35,7 @@ build() {
 	
 package() {
 	install -Dm755 "${srcdir}/leech/leech" "${pkgdir}"/usr/bin/leech
-	install -Dm644 "${srcdir}/${_pkgbase}/pkg/config.json" "${pkgdir}"/etc/leech/config.json.example
-	install -Dm644 "${srcdir}/${_pkgbase}/pkg/leech.service" "${pkgdir}"/usr/lib/systemd/system/leech.service
-	install -Dm644 "${srcdir}/${_pkgbase}/pkg/sysusers.conf" "${pkgdir}"/usr/lib/sysusers.d/${_pkgbase}.conf
+	install -Dm644 "${srcdir}/leech/pkg/config.json" "${pkgdir}"/etc/leech/config.json.example
+	install -Dm644 "${srcdir}/leech/pkg/leech.service" "${pkgdir}"/usr/lib/systemd/system/leech.service
+	install -Dm644 "${srcdir}/leech/pkg/sysusers.conf" "${pkgdir}"/usr/lib/sysusers.d/leech.conf
 }
