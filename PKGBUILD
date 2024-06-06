@@ -1,13 +1,14 @@
+# -*- mode: sh -*-
+
 # Maintainer: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
 # Contributor: Marvin Gülker <quintus at quintilianus point eu>
 # Contributor: Pierre Chapuis <catwell at archlinux dot us>
 # Contributor: Uffe Jakobsen <uffe at uffe dot org>
-# -*- mode: sh -*-
 
 pkgname='mlmmj'
-pkgver=1.4.5
-_pkgver=1_4_5
-pkgrel=3
+pkgver=1.4.6
+_pkgver=1_4_6
+pkgrel=1
 pkgdesc='Simple and slim mailing list manager (MLM) inspired by ezmlm'
 depends=('bash' 'glibc' 'smtp-server')
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
@@ -21,6 +22,7 @@ source=(
   'tmpfile.conf'
 )
 options=('lto')
+changelog="$pkgname.changelog"
 
 build() {
   cd "$pkgname-$pkgver"
@@ -47,10 +49,10 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
-  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/" \
-    ChangeLog FAQ README README.* TODO TUNABLES UPGRADE
+  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
+    ChangeLog FAQ README.* TODO TUNABLES.md UPGRADE
 
-  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" \
+  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
     AUTHORS COPYING LICENSE
 
   cd "$srcdir"
@@ -60,11 +62,11 @@ package() {
 }
 
 sha256sums=(
-  '957a018d9e6d169fd54b7109bab747309cf72fe0072b54d11d174675da526126'
+  '4fb984fae0f7f93ab50a49c4c35a24f50600b0a4eb7b69d11b353f92ca06133a'
   'SKIP' 'SKIP'  # Skip to my lou
 )
 b2sums=(
-  '9390cfd343449160f6c9e244e75af539b73a4ba468e9c3ddf4bc21423e79c6d4d2905b8be829ad0232be00e63f47881d34cf571c9d480b95228df732c32bb7fe'
+  '21022a40ce77184b811d798a21defdad633e08d712dd44a13f53094ae19ecb6da15b6e4391e3e45c2a41107f2a7d3f3d69e1b0a72dd424ab70c1061ed6a59b67'
   'SKIP' 'SKIP'  # Skip to my lou
 )
 
