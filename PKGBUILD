@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Open-source password manager for effortless protection. Securely store, share and auto-login your accounts with Proton Pass, using end-to-end encryption trusted by millions."
 arch=("x86_64")
 url="https://proton.me/pass"
-license=("GPL3")
+license=("GPL-3.0-or-later")
 groups=("ProtonPass")
 
 makedepends=("git" "python-setuptools")
