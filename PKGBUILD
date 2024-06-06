@@ -4,13 +4,13 @@ pkgname=ancient-packages
 pkgver=0.3.0
 pkgrel=1
 pkgdesc="Lists installed packages no longer available (anywhere)"
-url="http://public.files.xavion.name/Software/${pkgname}/${pkgname}.jpg"
+url="https://objects-us-east-1.dream.io/pub-dist/Software/${pkgname}/${pkgname}.jpg"
 arch=("any")
 license=("GPL3")
 depends=("package-query")
 #optdepends=("pacman-cage: Better performance")
 options=(!emptydirs)
-source=(http://public.files.xavion.name/Software/${pkgname}/${pkgname})
+source=(https://objects-us-east-1.dream.io/pub-dist/Software/${pkgname}/${pkgname})
 
 package() {
 	cd "${srcdir}"

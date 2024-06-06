@@ -2,13 +2,12 @@ pkgbase = ancient-packages
 	pkgdesc = Lists installed packages no longer available (anywhere)
 	pkgver = 0.3.0
 	pkgrel = 1
-	url = http://public.files.xavion.name/Software/ancient-packages/ancient-packages.jpg
+	url = https://objects-us-east-1.dream.io/pub-dist/Software/ancient-packages/ancient-packages.jpg
 	arch = any
 	license = GPL3
 	depends = package-query
 	options = !emptydirs
-	source = http://public.files.xavion.name/Software/ancient-packages/ancient-packages
+	source = https://objects-us-east-1.dream.io/pub-dist/Software/ancient-packages/ancient-packages
 	sha1sums = 643a6452f67719a66effd72c1a446529c504ecd0
 
 pkgname = ancient-packages
-
