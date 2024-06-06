@@ -1,7 +1,7 @@
 # Maintainer: Christopher Snowhill <kode54@gmail.com>
 
 pkgname=systemd-netconsole
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="A script for loading the netconsole kernel module using a systemd service, scheduled to start after the network is up."
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('bash' 'jq')
 backup=('etc/default/netconsole')
 source=("https://github.com/kode54/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('5f3d5fa4be7904f8c7d1be89d876d39488e8e71f48233aab9e3d9082a1dff9fb')
+sha256sums=('76cb7af68a0eb48393f363f1f1f7e6eef408011d68b287c0e3c5c705a31a2cab')
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
