@@ -1,6 +1,6 @@
 pkgbase = act-flow-git-meta
 	pkgdesc = Meta package to install the git version of the ACT AVLSI tool flow.
-	pkgver = 0.4
+	pkgver = 0.5
 	pkgrel = 1
 	url = https://avlsi.csl.yale.edu/act
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = act-flow-git-meta
 	depends = act-sky130-git
 	depends = act-tracelib-git
 	depends = act-actsim-git
+	depends = act-expropt-git
 	provides = act-flow-meta
 	conflicts = act-flow-meta
 
