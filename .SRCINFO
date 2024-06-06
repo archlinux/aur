@@ -1,6 +1,6 @@
 pkgbase = spotube
 	pkgdesc = Open source Spotify client that doesn't require Premium nor uses Electron! Available for both desktop & mobile!
-	pkgver = 3.6.0
+	pkgver = 3.7.0
 	pkgrel = 1
 	url = https://spotube.krtirtho.dev/
 	arch = x86_64
@@ -21,8 +21,10 @@ pkgbase = spotube
 	depends = libnotify
 	depends = at-spi2-core
 	depends = libepoxy
-	source = spotube-3.6.0.tar.gz::https://github.com/KRTirtho/spotube/archive/refs/tags/v3.6.0.tar.gz
-	sha256sums = a47bb62acb7bf843aee1e5c2e490ae2d749c4235ec70181d5347e7474ddeb99e
+	source = spotube-3.7.0.tar.gz::https://github.com/KRTirtho/spotube/archive/refs/tags/v3.7.0.tar.gz
+	source = 001-fix-window-missing.diff::https://github.com/KRTirtho/spotube/commit/8fc44ed6550e8b2b804991ff82df08afb1c94ca8.diff
+	sha256sums = 5ee3ae2ed9ad224ebc382ac04f706a78261e1da0453e933ac2c5ee7313b94a6b
+	sha256sums = 9b22a7b9f35d009967eb577a1ddb70bebd089ece334b99658c25fd17a46c97ab
 
 pkgname = spotube
 	depends = mpv

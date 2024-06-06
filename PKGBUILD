@@ -8,7 +8,7 @@
 # for workarounds to `Insecure RPATH '<build path>' in opt/spotube/lib/lib*_plugin.so`
 
 pkgname=spotube
-pkgver=3.6.0
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="Open source Spotify client that doesn't require Premium nor uses Electron! Available for both desktop & mobile!"
 arch=("x86_64" "aarch64")
@@ -21,10 +21,12 @@ makedepends=(
 )
 source=(
     "spotube-$pkgver.tar.gz::https://github.com/KRTirtho/spotube/archive/refs/tags/v$pkgver.tar.gz"
+    "001-fix-window-missing.diff::https://github.com/KRTirtho/spotube/commit/8fc44ed6550e8b2b804991ff82df08afb1c94ca8.diff"
 )
-sha256sums=('a47bb62acb7bf843aee1e5c2e490ae2d749c4235ec70181d5347e7474ddeb99e')
+sha256sums=('5ee3ae2ed9ad224ebc382ac04f706a78261e1da0453e933ac2c5ee7313b94a6b'
+            '9b22a7b9f35d009967eb577a1ddb70bebd089ece334b99658c25fd17a46c97ab')
 
-_release_date=2024-04-15
+_release_date=2024-06-03
 
 prepare() {
     cd "$srcdir/spotube-$pkgver"
@@ -33,17 +35,26 @@ prepare() {
         echo "ENABLE_UPDATE_CHECK=0"
         echo "LASTFM_API_KEY=$MAKEPKG_SPOTUBE_LASTFM_API_KEY"
         echo "LASTFM_API_SECRET=$MAKEPKG_SPOTUBE_LASTFM_API_SECRET"
+        echo "RELEASE_CHANNEL=stable"
     } > .env
+    patch -Np1 -i ../001-fix-window-missing.diff
+
+    # workaround for l10n
+    echo 'synthetic-package: false' >> l10n.yaml
+    echo 'output-dir: lib/l10n/gen_l10n' >> l10n.yaml
+    sed -i 's|package:flutter_gen|../l10n|' \
+        lib/extensions/context.dart lib/main.dart lib/collections/side_bar_tiles.dart
+
     flutter config --no-analytics
     flutter config --enable-linux-desktop
     flutter pub get
 }
 build() {
     cd "$srcdir/spotube-$pkgver"
-    dart run build_runner build --delete-conflicting-outputs --enable-experiment=records,patterns
+    FLUTTER_ROOT=/usr/lib/flutter dart run build_runner build --delete-conflicting-outputs
     flutter build linux --release
     # This file is 509x509...
-    convert -resize 512x512 assets/spotube-logo.png spotube-logo.png
+    magick assets/spotube-logo.png -resize 512x512 spotube-logo.png
 }
 package() {
     depends+=("hicolor-icon-theme")
