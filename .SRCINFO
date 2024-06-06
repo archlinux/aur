@@ -1,6 +1,6 @@
 pkgbase = dockbarx
 	pkgdesc = TaskBar with groupping and group manipulation
-	pkgver = 1.0beta3
+	pkgver = 1.0beta3+19+gab8b856
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/xuzhen/dockbarx
@@ -12,6 +12,10 @@ pkgbase = dockbarx
 	license = GPL3
 	makedepends = python-setuptools
 	makedepends = python-polib
+	makedepends = python-installer
+	makedepends = python-build
+	makedepends = python-packaging
+	makedepends = python-wheel
 	depends = libkeybinder3
 	depends = python-cairo
 	depends = dbus-python
@@ -19,13 +23,13 @@ pkgbase = dockbarx
 	depends = python-pillow
 	depends = python-xlib
 	depends = python-pyxdg
-	optdepends = mate-panel: mate applet
+	optdepends = dockbarx-mate-applet: mate applet
 	optdepends = zeitgeist: recently used file list
 	optdepends = xfce4-dockbarx-plugin>=0.6: xfce4-panel plugin
 	optdepends = python-pyudev: dockx battery applet
 	optdepends = gconf: export settings from older versions of dockbarx
 	optdepends = python-lxml: import settings script
-	source = dockbarx-1.0beta3.tar.gz::https://github.com/xuzhen/dockbarx/archive/refs/tags/1.0-beta3.tar.gz
-	sha256sums = 61be03c1e73bd435d7330917d1a014082a90b3f07bbb6bc4b9d6e3b52a859138
+	source = dockbarx::git+https://github.com/xuzhen/dockbarx#commit=ab8b856d9eb338ac83e0167573685c465204cf8b
+	sha256sums = 41cea219d8e1febc718a717d7513701daffd8baf4420ae324a81f17ea0df06de
 
 pkgname = dockbarx
