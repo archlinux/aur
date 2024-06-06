@@ -4,8 +4,8 @@
 _pkgname=sile
 pkgname=$_pkgname-git
 pkgdesc='The SILE Typesetter, a modern typesetting system inspired by LaTeX, customizable in Lua'
-pkgver=0.14.17.r425.g8ff8c62
-pkgrel=2
+pkgver=0.14.17.r511.gd1da39b
+pkgrel=1
 arch=(x86_64)
 url=https://www.sile-typesetter.org
 _url="https://github.com/sile-typesetter/$_pkgname"
@@ -50,7 +50,7 @@ provides=(libtexpdf.so
           "$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 replaces=("$_pkgname-luajit-git")
-source=("git+$_url.git#branch=develop"
+source=("git+$_url.git"
         "git+${_url%/$_pkgname}/libtexpdf.git")
 sha256sums=('SKIP'
             'SKIP')
