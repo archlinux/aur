@@ -2,12 +2,12 @@
 
 pkgname=perl-pdl-graphics-colorspace
 pkgver=0.203
-pkgrel=1
+pkgrel=2
 pkgdesc='Image color space conversions'
 _dist=PDL-Graphics-ColorSpace
-arch=(x86_64)
+arch=(i686 x86_64)
 url="https://metacpan.org/release/$_dist"
-license=(GPL PerlArtistic)
+license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 depends=(perl perl-pdl)
 checkdepends=(perl-test-simple)
 options=('!emptydirs')
