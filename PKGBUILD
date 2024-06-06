@@ -1,34 +1,45 @@
-# Maintainer: sasvari
+# Contributor: gesh <gesh@gesh.uni.cx>
+# Contributor: sasvari
 
-pkg=python-bibtexparser
-pkgname=$pkg-git
-_pkgname=bibtexparser
+pkgname=python-bibtexparser-git
+_pkgname="${_pkgname%-git}"
 pkgrel=1
-pkgver=20240319.cf0079d
+pkgver=20240521.214ef38
 pkgdesc="Bibtex parser in Python"
 arch=('any')
 url="https://bibtexparser.readthedocs.org/"
-license=('LGPL3')
-depends=('python' 'python-future')
-makedepends=('python-setuptools')
-checkdepends=('python-nose')
+license=('LicenseRef-MIT')
+depends=('python' 'python-pylatexenc')
+makedepends=(
+    'git'
+    'python-build'
+    'python-installer'
+    'python-wheel'
+    'python-setuptools'
+)
+checkdepends=('python-pytest' 'python-pytest-cov')
 provides=("python-bibtexparser")
 conflicts=("python-bibtexparser")
 source=("git+https://github.com/sciunto-org/python-bibtexparser.git")
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$pkg"
-	git log -1 --format=%cd.%h --date=short|tr -d -
+    cd "$srcdir/$_pkgname"
+    git log -1 --format=%cd.%h --date=short | tr -d -
 }
 
 build() {
-	cd "$srcdir/$pkg"
-	python setup.py build
+    cd "$srcdir/$_pkgname"
+    python -m build --wheel --no-isolation
 }
 
-
-package(){
-	cd "$srcdir/$pkg"
-	python setup.py install --root="$pkgdir/" --optimize=1
+check() {
+    cd "$srcdir/$_pkgname"
+    python -m pytest
 }
-md5sums=('SKIP')
+
+package() {
+    cd "$srcdir/$_pkgname"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
