@@ -1,0 +1,7 @@
+[libcwtch-go]
+source = "gitea"
+gitea = "cwtch.im/libcwtch-go"
+host = "git.openprivacy.ca/"
+use_max_tag = "true"
+prefix = "v"
+
