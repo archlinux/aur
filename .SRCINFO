@@ -1,6 +1,6 @@
 pkgbase = air
 	pkgdesc = Live reload for Go apps
-	pkgver = 1.52.1
+	pkgver = 1.52.2
 	pkgrel = 1
 	url = https://github.com/cosmtrek/air
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = air
 	depends = glibc
 	depends = go
 	options = !lto
-	source = air::git+https://github.com/cosmtrek/air.git#commit=e3b6eafe8afd4ac8640421bad573ea5e655592cd
-	b2sums = ae431e14a03a31a9d1f95fe3000b7120db5fd9e0989583f568e29873255842c14628bc9e9d55ab0a04e4b3f6cb672e3e95555f2234061f8ddadce2b16df9b3ae
+	source = air::git+https://github.com/cosmtrek/air.git#commit=32b22d6c7fb4a2d388e1da529e602b3e719ea971
+	b2sums = 29d698d27c0669f761435f0f107da5d67d17712eb247a2ac1e765d10daaf472aa78398c3d0ff6abec9e91acd2fb3b8c78d11e814f8377247b05d288632db7687
 
 pkgname = air
