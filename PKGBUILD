@@ -3,7 +3,7 @@
 
 pkgname=feroxbuster
 pkgver=2.10.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, simple, recursive content discovery tool written in Rust"
 arch=('any')
 url="https://github.com/epi052/feroxbuster"
@@ -14,6 +14,7 @@ sha256sums=('ce4eae833118456a575f1b2839639b901632d33c5cc18085dfc47e8f68749618')
 
 build() {
     cd "$pkgname-$pkgver"
+    CFLAGS+=" -ffat-lto-objects"
     RUSTUP_TOOLCHAIN=stable cargo build --release --locked --all-features --target-dir=target
 }
 
