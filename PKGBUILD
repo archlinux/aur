@@ -8,7 +8,7 @@
 
 pkgname=perl-pdl
 pkgver=2.089
-pkgrel=1
+pkgrel=2
 pkgdesc='The Perl Data Language'
 _dist=PDL
 arch=(i686 x86_64)
@@ -45,7 +45,6 @@ depends=(
 
   #--- PDL::GIS::Proj, PDL::Transform::Proj
   # WARN: if this is commented, also comment PROJ_* in perldl.conf
-  proj
   perl-alien-proj
 
   #--- PDL::Graphics::TriD
@@ -72,7 +71,6 @@ depends=(
 
   #--- PDL::IO::HDF
   # WARN: if this is commented, also comment HDF_* in perldl.conf
-  hdf4
   perl-alien-hdf4
 
   #--- PDL::IO::Pic
