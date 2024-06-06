@@ -1,16 +1,16 @@
+# Maintainer: Elias Elwyn <a@jthv.ai>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Contributor: Elias Elwyn <a@jthv.ai>
 
 pkgname=perl-proc-pid-file
 pkgver=1.29
-pkgrel=1
-pkgdesc='A module to manage PID files'
+pkgrel=2
+pkgdesc='Manage process id files'
 _dist=Proc-PID-File
 arch=(any)
 url="https://metacpan.org/release/$_dist"
-license=(GPL PerlArtistic)
+license=(GPL-2.0-only)
 depends=(perl)
-options=('!emptydirs' purge)
+options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/D/DM/DMITRI/$_dist-$pkgver.tar.gz")
 sha256sums=(3bceda49df182d3d8168b70c2a51b2056f2fd45950a6d0428a9992fd355cd4a4)
 
