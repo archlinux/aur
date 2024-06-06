@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=another-redis-desktop-manager-bin
 _pkgname=Another-Redis-Desktop-Manager
-pkgver=1.6.4
+pkgver=1.6.5
 _electronversion=12
 pkgrel=1
 pkgdesc="A faster, better and more stable Redis desktop manager [GUI client]"
@@ -22,13 +22,14 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/qishibo/AnotherRedisDesktopManager/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('4c316f90879196075843616d16f043a118ec74e56717ac5abc570f97cd57e92a'
-            '49e1afe88ff863df075233daa348d313c1f77110de7d89794a6a9ae45b38c1b3'
+sha256sums=('0e2e53b239be96fca1cc742030b60901c5cee2cb9d2b20f116b558d6d413b4ee'
+            'c0bca7c1b149b2d86d21b24413a7fd05eaf0b4a8ae9ab361da095c9b287e6ae0'
             'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
