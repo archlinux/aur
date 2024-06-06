@@ -1,0 +1,4 @@
+[virtiofsd]
+source = "git"
+git = "https://gitlab.com/virtio-fs/virtiofsd"
+prefix = "v"
