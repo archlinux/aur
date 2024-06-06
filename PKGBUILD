@@ -1,11 +1,12 @@
-# Maintainer  : Arvid Norlander <VorpalBlade (at) users DOT noreply DOT github DOT com>
+# Maintainer: iamawacko <iamawacko@protnmail.com>
+# Contributor : Arvid Norlander <VorpalBlade (at) users DOT noreply DOT github DOT com>
 # Contributor : Martin Dratva <raquacontact+aur at gmail dot com>
 # Contributor : Dimitris Kiziridis <ragouel at outlook dot com>
 # Contributor : Jaron Viëtor <thulinma@thulinma.com>
 # Contributor : Jameson Pugh <imntreal@gmail.com>
 
 pkgname=domoticz
-pkgver=2023.2
+pkgver=2024.4
 pkgrel=1
 pkgdesc="Web based home automation"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -27,7 +28,7 @@ makedepends=('git'
 install='domoticz.install'
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/domoticz/domoticz/archive/${pkgver}.tar.gz"
         'domoticz.service')
-sha256sums=('32bcf49df8c80c470352e63004a82d9601b90ccf406096099656250a4515ac28'
+sha256sums=('d87113d7cacd0b52b9126fcc1ef24e140a4f7042d5bc6262e86e4b4752f5cf38'
             '908e2848731eef27928f87936f94ff3df280901559fcf5f4754b1a8139e4a38a')
 
 prepare() {
