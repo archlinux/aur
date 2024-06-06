@@ -1,7 +1,7 @@
 pkgbase = rbtools
 	pkgdesc = Client tools for Review Board
 	pkgver = 5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.reviewboard.org/
 	arch = any
 	license = custom:MIT
@@ -14,6 +14,7 @@ pkgbase = rbtools
 	depends = python-colorama
 	depends = pydiffx
 	depends = python-certifi
+	depends = python-packaging
 	depends = python-housekeeping
 	depends = python-importlib-metadata
 	depends = python-importlib_resources
