@@ -3,7 +3,7 @@
 
 pkgname=emacs-idris-mode-git
 pkgver=20150609
-pkgrel=3
+pkgrel=4
 pkgdesc="Major mode for editing Idris."
 arch=('any')
 url="https://github.com/idris-hackers/idris-mode"
@@ -11,7 +11,7 @@ license=('GPL-3.0-or-later')
 depends=('emacs' 'emacs-prop-menu')
 makedepends=('git')
 provides=('emacs-idris-mode')
-replaces=('emacs-idris-mode')
+conflicts=('emacs-idris-mode')
 install=$pkgname.install
 
 source=("git+https://github.com/idris-hackers/idris-mode")
