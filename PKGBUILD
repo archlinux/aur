@@ -1,4 +1,5 @@
-# Maintainer: Marius Zukaitis <marius@shadownest.tk>
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Contributor: Marius Zukaitis <marius@shadownest.tk>
 pkgname=spice-html5
 pkgver=0.3.0
 pkgrel=1
