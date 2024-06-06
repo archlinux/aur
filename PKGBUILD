@@ -3,7 +3,7 @@
 
 pkgname=pidgin-quote-text
 pkgver=0.9.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Quote selected message into the entry area"
 arch=('any')
 url="https://launchpad.net/quote/"
