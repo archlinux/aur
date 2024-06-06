@@ -4,10 +4,10 @@
 _pkgname=linuxqq
 _Pkgname=Linuxqq
 _disname=qq
-_version=3.2.8
-_update_date=2024.5.20
-_image_url_x86_64=https://dldir1.qq.com/qqfile/qq/QQNT/Linux/QQ_3.2.8_240520_x86_64_01.AppImage
-_image_url_aarch64=https://dldir1.qq.com/qqfile/qq/QQNT/Linux/QQ_3.2.8_240520_arm64_01.AppImage
+_version=3.2.9
+_update_date=2024.6.6
+_image_url_x86_64=https://dldir1.qq.com/qqfile/qq/QQNT/Linux/QQ_3.2.9_240606_x86_64_01.AppImage
+_image_url_aarch64=https://dldir1.qq.com/qqfile/qq/QQNT/Linux/QQ_3.2.9_240606_arm64_01.AppImage
 
 pkgname="${_pkgname}"-appimage
 pkgver="${_version}_${_update_date//./_}"
@@ -23,8 +23,8 @@ conflicts=('linuxqq' 'linuxqq-nt-bwrap')
 
 source_x86_64=("${_Pkgname}-${pkgver}-x86_64.AppImage::${_image_url_x86_64}")
 source_aarch64=("${_Pkgname}-${pkgver}-aarch64.AppImage::${_image_url_aarch64}")
-sha256sums_x86_64=('7e444dd760d6837d1c692e3b1431ffda7ab9e0c1ec850133ce1c487216d68f35')
-sha256sums_aarch64=('4cfdf39e2a57266711b9ee227962c8fbf6dbd5b785ad264d4e84685b7b277ed4')
+sha256sums_x86_64=('5b630f21c5c366d366041caf43dfbe2559b4e98ac954484aadb66ddb377bb812')
+sha256sums_aarch64=('a7c689a5423490c10285f287d0cdb7a0092952dad07ef56b33323e778175865a')
 
 _appimage="${_Pkgname}-${pkgver}-${CARCH}.AppImage"
 noextract=("${_appimage}")
