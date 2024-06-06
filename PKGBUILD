@@ -2,7 +2,7 @@
 # Contributor: Jan Oliver Oelerich <janoliver@oelerich.org>
 pkgname=uwsgitop-git
 pkgver=20240401
-pkgrel=2
+pkgrel=3
 pkgdesc="uWSGI stats viewer"
 arch=('any')
 url="http://github.com/unbit/uwsgitop.git"
@@ -23,4 +23,5 @@ package() {
   sed -i "s|#\!python|#\!/usr/bin/python2|" uwsgitop
   chmod +x uwsgitop
   python2 setup.py install --prefix=/usr --root="$pkgdir"
+  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 } 

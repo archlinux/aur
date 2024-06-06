@@ -1,7 +1,7 @@
 pkgbase = uwsgitop-git
 	pkgdesc = uWSGI stats viewer
 	pkgver = 20240401
-	pkgrel = 1
+	pkgrel = 3
 	url = http://github.com/unbit/uwsgitop.git
 	arch = any
 	license = MIT
