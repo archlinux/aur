@@ -1,0 +1,1 @@
+/home/waicool20/Programming/python/fw_fanctrl_ui/install/PKGBUILD

@@ -1,0 +1,13 @@
+pkgbase = fw-fanctrl-ui-git
+	pkgdesc = Framework Fan Control UI
+	pkgver = r1.120f20e
+	pkgrel = 1
+	url = https://github.com/waicool20/fw-fanctrl-ui
+	arch = any
+	license = GPLv3
+	depends = fw-fanctrl-git
+	depends = python-pystray
+	source = fw-fanctrl-ui::git+https://github.com/waicool20/fw-fanctrl-ui.git
+	md5sums = SKIP
+
+pkgname = fw-fanctrl-ui-git
