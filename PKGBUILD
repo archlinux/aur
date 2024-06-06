@@ -3,32 +3,32 @@
 # Contributor: Ivelin Velkov <ivelin dot velkov at gmail dot com>
 
 pkgname=teams-for-linux
-pkgver=1.5.2
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Unofficial Microsoft Teams client for Linux using Electron."
 arch=("aarch64" "armv7h" "i686" "x86_64")
 url="https://github.com/IsmaelMartinez/${pkgname}"
 license=("GPL-3.0-only")
 depends=("gtk3" "libxss" "nss")
-makedepends=("nodejs>=18" "node-gyp" "yarn")
+makedepends=("nodejs>=18" "node-gyp")
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/IsmaelMartinez/${pkgname}/archive/v${pkgver}.tar.gz"
   "${pkgname}.desktop"
 )
-sha256sums=('378497c097e909ba28210f6f5e8b0f4874b5e08c0791557ab05c5eacfe9a3dbf'
+sha256sums=('d6d09f5d29d928b363aec2672920c8cc87fb299fc0f3a00b134c8b137af44f95'
             '4aa7c4aa178ba4e0f97f9ff4a514764a03b332978495d5e7f2dc1ce3f74db615')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  yarn install --non-interactive --pure-lockfile --cache-folder "${srcdir}/yarn-cache"
+  npm_config_cache="${srcdir}/package-cache" npm install
   if [[ ${CARCH} == "aarch64" ]]; then
-    yarn electron-builder build --arm64 --linux dir
+    npx electron-builder build --arm64 --linux dir
   elif [[ ${CARCH} == "armv7h" ]]; then
-    yarn electron-builder build --armv7l --linux dir
+    npx electron-builder build --armv7l --linux dir
   elif [[ ${CARCH} == "i686" ]]; then
-    yarn electron-builder build --ia32 --linux dir
+    npx electron-builder build --ia32 --linux dir
   elif [[ ${CARCH} == "x86_64" ]]; then
-    yarn electron-builder build --x64 --linux dir
+    npx electron-builder build --x64 --linux dir
   fi
 
 }
