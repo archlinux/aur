@@ -1,7 +1,7 @@
 pkgbase = dvdisaster
 	pkgdesc = Provides a margin of safety against data loss on newly created ISO, CD, DVD, BDR, and M-Disc media caused by aging or scratches
 	pkgver = 0.79.10
-	pkgrel = 3
+	pkgrel = 4
 	url = https://dvdisaster.jcea.es
 	arch = x86_64
 	license = GPL

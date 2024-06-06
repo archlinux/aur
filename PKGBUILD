@@ -2,7 +2,7 @@
 # Maintainer: flan_suse <windows2linux_AT_zoho_DOT_com>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 # Contributor: C2D6@aur (PKGBUILD improvements)
-# Contributor: salfter (patch to build with newer glib2)
+# Contributor: Scott Alfter <scott@alfter.us> (patch to build with newer glib2)
 
 #       NOTE: Previous versions of this PKGBUILD contained an unused signature file.
 #       If you wish you validate the source file against its signature,
@@ -11,7 +11,7 @@
 
 pkgname=dvdisaster
 pkgver=0.79.10
-pkgrel=3
+pkgrel=4
 provides=('dvdisaster')
 pkgdesc="Provides a margin of safety against data loss on newly created ISO, CD, DVD, BDR, and M-Disc media caused by aging or scratches"
 arch=('x86_64')
