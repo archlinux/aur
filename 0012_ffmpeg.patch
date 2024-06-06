@@ -1,3 +1,9 @@
+commit 1430832d00ef9a9f65c6aea84eba63606cc0b924
+Author: CYBERDEV <cyberdevil-no-reply@notabug.org>
+Date:   Thu Jun 6 00:12:56 2024 +0200
+
+    ffmpeg: Fix first arg of av_packet_unref (my bad)
+
 commit cc06806e12600076b1f7b1de4adcf41f0d7e9a6f
 Author: CYBERDEViL <cyberdevil@notabug.org>
 Date:   Sun Dec 24 22:59:30 2023 +0100
@@ -3271,7 +3277,7 @@ index 5f47769..8d380fb 100644
  
  	char index_dir[768];
 diff --git a/blender-2.79b/source/blender/imbuf/intern/anim_movie.c b/blender-2.79b/source/blender/imbuf/intern/anim_movie.c
-index 8bd808f..9eb40d3 100644
+index 8bd808f..fc4de5c 100644
 --- a/blender-2.79b/source/blender/imbuf/intern/anim_movie.c
 +++ b/blender-2.79b/source/blender/imbuf/intern/anim_movie.c
 @@ -92,6 +92,7 @@
@@ -3683,7 +3689,7 @@ index 8bd808f..9eb40d3 100644
 -			av_free_packet(&anim->next_packet);
 -			anim->next_packet.stream_index = -1;
 +		if (anim->next_packet->stream_index == anim->videoStream) {
-+			av_packet_unref(&anim->next_packet);
++			av_packet_unref(anim->next_packet);
 +			anim->next_packet->stream_index = -1;
  		}
  

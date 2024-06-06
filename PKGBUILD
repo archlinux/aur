@@ -14,7 +14,7 @@
 
 pkgname=blender-2.7
 pkgver=2.79b
-pkgrel=4
+pkgrel=5
 pkgdesc="Keeping Blender 2.79b up-to-date with modern compiler and libs"
 arch=('i686' 'x86_64')
 url="https://blender.org/"
@@ -39,7 +39,8 @@ source=('https://download.blender.org/source/blender-2.79b.tar.gz'
         0008_python3_9.patch
         0009_python3_10.patch
         0010_python3_11.patch
-        0011_ffmpeg.patch)
+        0011_python3_12.patch
+        0012_ffmpeg.patch)
 sha512sums=('2db21ace446168dd683cdb5aad9dec001f8888ae4e9603a04ddb44fb78489ded827deb07e83712b0f1118a0e7bf66f2a5d935dc4ebb3a6703d72672ff414367f'
             '15b10bf91c759a8ab6519f3c02f54e7d3ad105eb915663e0de2a65b38d1e42b55cc383bae96a1507f1eb55200eb14ebe904b6a7b772b4073aa6a53ac5d4dd194'
             '4126ddaaab2dc8c45cd850353a2e4a0e6ff2ef4476f9a533916e59fc57e426ca3110f7b3d38685fffd97b969208f941359122b693584c2a70a3f8420a832214b'
@@ -54,7 +55,8 @@ sha512sums=('2db21ace446168dd683cdb5aad9dec001f8888ae4e9603a04ddb44fb78489ded827
             'a556445f27eaaba839d0efcfa70c530c269c7189e194c93b929044a54697f3606401dfdf5dbec05b181c26ba82d2b16560f2db7cd579104e0a0a322525cecaff'
             'ecae55f642bf7f08edc56f8740a9fec650a3617f0ce7c7ba5b3211994ad8c46dc8fbbe897405699d46cb01c15129c0d4d9184657daeaf41172533195cdbbb104'
             'de254cb5e43fe05c3b5e70df881c1ab847b58c383d8df28be6d044c058d4776a5a3d57f710eb3cf0a83b43c95fac29f772c446a23e0f9c2bf73d1dcc8b23b67c'
-            'a0ff4f4dbc3624692c16d45f632cda1362173a5685c85e62d54af1d63d5a421867a5eb89b5b1c5b72bbceef98664d96b54901790470cbe67f701c582858af0ed')
+            '35df00ed95f80c30211b58f30dcf004ca85e20399c47f4e71e6ca4c27fe105d479822372c77dff4287bbff79ab163cc14d666e44b82cfe7acaec9ee18f7cdc59'
+            '772ffb64d2c50ff15bf129e166935d2b56a624f7084607b9852ac5d4e5e87d3007e62395cc2acb173c8a8a39174917caa39c81bd77a01ae45ad3d48c821a09ef')
 
 prepare() {
   # Apply CUDA patch
@@ -77,7 +79,8 @@ prepare() {
   patch -p1 < 0008_python3_9.patch
   patch -p1 < 0009_python3_10.patch
   patch -p1 < 0010_python3_11.patch
-  patch -p1 < 0011_ffmpeg.patch
+  patch -p1 < 0011_python3_12.patch
+  patch -p1 < 0012_ffmpeg.patch
 }
 
 build() {
@@ -130,7 +133,7 @@ build() {
         -DWITH_GAMEENGINE=ON \
         -DWITH_PLAYER=ON \
         -DWITH_PYTHON_MODULE=OFF \
-        -DWITH_CYCLES_OSL=NO \
+        -DWITH_CYCLES_OSL=YES \
         "${_CMAKE_FLAGS[@]}"
   export NINJA_STATUS="[%p | %f<%r<%u | %cbps ] "
 # shellcheck disable=SC2086 # allow MAKEFLAGS to split when multiple flags provided.
