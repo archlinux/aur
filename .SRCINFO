@@ -6,6 +6,7 @@ pkgbase = tcobalt
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = cargo
+	makedepends = openssl
 	depends = gcc-libs
 	depends = glibc
 	depends = openssl

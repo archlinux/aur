@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/khyerdev/tcobalt"
 license=('GPL-3.0-or-later')
 depends=('gcc-libs' 'glibc' 'openssl')
-makedepends=(cargo)
+makedepends=('cargo' 'openssl')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/khyerdev/tcobalt/archive/refs/tags/v1.2.1.tar.gz")
 sha256sums=('d4531894cf22c317edc5f8da9396882b8d42e7cb316abe0e797d7affc5c2c8a7')
 
