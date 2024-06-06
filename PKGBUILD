@@ -1,12 +1,11 @@
 # Maintainer: pingplug < aur at pingplug dot me >
 # Contributor: Schala Zeal < schalaalexiazeal at gmail dot com >
 
-_commit=eb713262e3458b77cfe00d286d7fa0b7968dbb8f  # tags/2.58.0
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-librsvg
-pkgver=2.58.0
-pkgrel=2
+pkgver=2.58.1
+pkgrel=1
 pkgdesc="SVG rendering library (mingw-w64)"
 arch=('any')
 url="https://wiki.gnome.org/action/show/Projects/LibRsvg"
@@ -23,8 +22,11 @@ makedepends=('mingw-w64-configure'
              'gobject-introspection'
              'git')
 options=('!strip' 'staticlibs' '!buildflags')
-source=("git+https://gitlab.gnome.org/GNOME/librsvg.git#commit=${_commit}")
-sha256sums=('SKIP')
+source=("git+https://gitlab.gnome.org/GNOME/librsvg.git?signed#tag=$pkgver")
+b2sums=('146472a97dc2bf7b4b0150b2984b45e91ea5e188d162a37c3e3123f750e788c7b618f44e37ca1e96c6e2de354633e4918ba52531b725dc02e5d3325727c73853')
+validpgpkeys=(
+  263F590F7E0FE1CB3EA274B0167637EB6FB8DCCE # Federico Mena Quintero <federico@gnome.org>
+)
 
 pkgver() {
   cd "${srcdir}/librsvg"
