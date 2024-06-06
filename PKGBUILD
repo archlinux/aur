@@ -1,7 +1,7 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=httpgd
-_pkgver=2.0.1
+_pkgver=2.0.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -27,8 +27,8 @@ optdepends=(
   r-xml2
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2c18e37c6f9c36f743ce8b467ab370cd')
-b2sums=('5b40d65f133c5cda3c251478d643b747a0b4b048a0dacbd0be94271b021d898353d57270df601102dbfbcf4aaac471dd0c39f013393e3e37adafebce49d40f7e')
+md5sums=('509eda2881ff22c6b8f54428ec815aa1')
+b2sums=('bfe1a089cc41ed0177f21a9d6a50cbc604346b2f9bddc6d960e826ee438904d32a7bf7b0e01fd07f9aa2fd5b067d59a6ada4273c7482e25170257286479218bc')
 
 build() {
   mkdir build
