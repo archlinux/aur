@@ -63,7 +63,7 @@ check() {
 }
 
 package() {
-    cmake --install "$srcdir/$pkgname-$pkgver-build" --prefix "$pkgdir"
+    DESTDIR="$pkgdir" cmake --install "$srcdir/$pkgname-$pkgver-build"
 
     install -m 644 -D -t "$pkgdir/usr/share/licenses/$pkgname" "$srcdir/$pkgname-$pkgver/LICENSE"
 
