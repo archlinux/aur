@@ -6,7 +6,7 @@
 pkgname=xrestop
 pkgver=0.6
 pkgrel=3
-pkgdesc="Uses the X-Resource extension to provide 'top' like statistics"
+pkgdesc="A 'top' like tool for monitoring X Client server resource usage."
 arch=('x86_64')
 url="https://freedesktop.org/wiki/Software/xrestop"
 license=('GPL-2.0-or-later')

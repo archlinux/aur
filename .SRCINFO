@@ -1,5 +1,5 @@
 pkgbase = xrestop
-	pkgdesc = Uses the X-Resource extension to provide 'top' like statistics
+	pkgdesc = A 'top' like tool for monitoring X Client server resource usage.
 	pkgver = 0.6
 	pkgrel = 3
 	url = https://freedesktop.org/wiki/Software/xrestop
