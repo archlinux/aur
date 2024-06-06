@@ -1,7 +1,7 @@
 pkgbase = python-housekeeping
 	pkgdesc = Housekeeping for Python
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/housekeeping/
 	arch = any
 	license = custom:MIT
@@ -9,6 +9,7 @@ pkgbase = python-housekeeping
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
+	depends = python-typing_extensions
 	source = https://files.pythonhosted.org/packages/source/h/housekeeping/housekeeping-1.1.tar.gz
 	sha256sums = 75e71f1cc501885406f6be81410c9b05361871a3ecccde3891336da1e92426b5
 
