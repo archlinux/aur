@@ -1,14 +1,14 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=routinator-git
-pkgver=0.12.1.r14.gd9191fd
+pkgver=0.13.2.r55.g46fb390
 pkgrel=1
 pkgdesc="RPKI validator written in Rust"
 arch=('i686' 'x86_64')
 url="https://nlnetlabs.nl/rpki"
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('gcc-libs' 'rsync')
-makedepends=('git' 'rust')
+makedepends=('git' 'cargo')
 provides=("routinator=$pkgver")
 conflicts=('routinator')
 backup=('etc/routinator/routinator.conf')
@@ -50,7 +50,6 @@ package() {
     --root "$pkgdir/usr" \
     --path .
 
-  install -Dm755 "pkg/common/routinator-init" -t "$pkgdir/usr/bin"
   install -Dm644 "etc/routinator.conf.example" -t "$pkgdir/etc/routinator"
   install -Dm644 "etc/routinator.conf.system-service" "$pkgdir/etc/routinator/routinator.conf"
   install -Dm644 "pkg/common"/routinator{,-minimal}.routinator.service -t "$pkgdir/usr/lib/systemd/system"
