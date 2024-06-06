@@ -27,7 +27,7 @@ unset _pkgtype
 _pkgname="pcsx2"
 pkgname="$_pkgname${_pkgtype:-}"
 pkgver=1.7.5865.r0.g3c15f6e
-pkgrel=3
+pkgrel=4
 pkgdesc='Sony PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
 license=('GPL-3.0-only' 'LGPL-3.0-only')
@@ -254,7 +254,6 @@ _build_pcsx2() {
     -B build_pcsx2
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
-    -DCMAKE_SKIP_RPATH=ON
     -DCMAKE_PREFIX_PATH="$srcdir/deps/usr"
     -DLIBBACKTRACE_LIBRARY="$srcdir/deps/libbacktrace.a"
     -DLIBBACKTRACE_INCLUDE_DIR="$srcdir/deps/include"
@@ -332,7 +331,7 @@ build() {
   AR=llvm-ar
   CC=clang
   CXX=clang++
-  LDFLAGS+=" -fuse-ld=lld"
+  LDFLAGS+=" -fuse-ld=lld -Wl,-rpath='\$ORIGIN'"
 
   if [[ "${_build_avx::1}" == "t" ]]; then
     CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
