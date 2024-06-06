@@ -24,7 +24,7 @@ source=(
 )
 sha256sums=('0e2e53b239be96fca1cc742030b60901c5cee2cb9d2b20f116b558d6d413b4ee'
             'c0bca7c1b149b2d86d21b24413a7fd05eaf0b4a8ae9ab361da095c9b287e6ae0'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
