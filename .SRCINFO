@@ -1,7 +1,7 @@
 pkgbase = hydra-launcher-bin
 	pkgdesc = A game launcher with its own embedded bittorrent client and a self-managed repack scraper.
 	pkgver = 1.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hydralauncher/hydra
 	arch = x86_64
 	license = MIT
