@@ -2,7 +2,7 @@
 
 _name=pyopal
 pkgname=python-${_name}
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Cython bindings and Python interface to Opal, a SIMD-accelerated database search aligner."
 url="https://github.com/althonos/pyopal"
@@ -11,7 +11,7 @@ license=("MIT")
 depends=('python' 'python-archspec' 'python-scoring-matrices')
 makedepends=('python-setuptools' 'cython' 'python-build' 'python-installer')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=(434875e92be7bee2c27b7034f502f263ef777b364349a5fd50ec07d7401d1915)
+sha256sums=(039487f2ffeae29962e1ed38db401fbe2c295f894461f1dd9af09e94e1feccb0)
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
