@@ -1,17 +1,18 @@
 pkgbase = electron26-bin
-	pkgdesc = Build cross platform desktop apps with web technologies — prebuilt
+	pkgdesc = Build cross platform desktop apps with web technologies — binary
 	pkgver = 26.6.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://electronjs.org
 	arch = x86_64
+	arch = armv7h
 	arch = aarch64
 	license = MIT
-	license = custom
-	depends = c-ares
+	license = BSD-3-Clause
 	depends = alsa-lib
+	depends = gcc-libs
+	depends = glibc
 	depends = gtk3
-	depends = libevent
-	depends = libffi
+	depends = libgtk-3.so
 	depends = nss
 	optdepends = kde-cli-tools: file deletion support (kioclient5)
 	optdepends = pipewire: WebRTC desktop sharing under Wayland
@@ -19,14 +20,17 @@ pkgbase = electron26-bin
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)
 	provides = electron26=26.6.10
-	provides = electron=26.6.10
 	conflicts = electron26
-	source_x86_64 = electron26-bin-chromedriver-26.6.10-x86_64.zip::https://github.com/electron/electron/releases/download/v26.6.10/chromedriver-v26.6.10-linux-x64.zip
-	source_x86_64 = electron26-bin-26.6.10-x86_64.zip::https://github.com/electron/electron/releases/download/v26.6.10/electron-v26.6.10-linux-x64.zip
+	source_x86_64 = https://github.com/electron/electron/releases/download/v26.6.10/chromedriver-v26.6.10-linux-x64.zip
+	source_x86_64 = https://github.com/electron/electron/releases/download/v26.6.10/electron-v26.6.10-linux-x64.zip
 	sha256sums_x86_64 = 06a9b7dec82b048a848b3eabe533df371055c89b1acfe43eda5f940ca8090a29
 	sha256sums_x86_64 = 9a2ac0fcca0e0007859328b1df8e53f7ab1bc3d2946afee48c157a8a9ba36757
-	source_aarch64 = electron26-bin-chromedriver-26.6.10-aarch64.zip::https://github.com/electron/electron/releases/download/v26.6.10/chromedriver-v26.6.10-linux-arm64.zip
-	source_aarch64 = electron26-bin-26.6.10-aarch64.zip::https://github.com/electron/electron/releases/download/v26.6.10/electron-v26.6.10-linux-arm64.zip
+	source_armv7h = https://github.com/electron/electron/releases/download/v26.6.10/chromedriver-v26.6.10-linux-armv7l.zip
+	source_armv7h = https://github.com/electron/electron/releases/download/v26.6.10/electron-v26.6.10-linux-armv7l.zip
+	sha256sums_armv7h = ec006f1a7ba2243ba7d4cb1bf2cba6584fab90941436793cf7a4e1655f4c0ca2
+	sha256sums_armv7h = f6fb96c37fa0b4061998441ebf3d8edee1076b6ef33d2f6fe16e07dcdb4c638a
+	source_aarch64 = https://github.com/electron/electron/releases/download/v26.6.10/chromedriver-v26.6.10-linux-arm64.zip
+	source_aarch64 = https://github.com/electron/electron/releases/download/v26.6.10/electron-v26.6.10-linux-arm64.zip
 	sha256sums_aarch64 = 978ddf45f3e319f628e35981fff9d569a164867afe2155b521b0d86a832de863
 	sha256sums_aarch64 = 1f235d36a9f3729b8e8da83b5819f42c7083aa7725bd4cf2cb9460e0b70c4f17
 
