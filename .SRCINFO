@@ -1,11 +1,10 @@
 pkgbase = perl-pdl-transform-color
 	pkgdesc = Useful color system conversions for PDL
 	pkgver = 1.007
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/PDL-Transform-Color
 	arch = any
-	license = GPL
-	license = PerlArtistic
+	license = GPL-1.0-or-later OR Artistic-1.0-Perl
 	checkdepends = perl-test-simple
 	depends = perl
 	depends = perl-pdl

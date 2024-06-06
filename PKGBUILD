@@ -2,12 +2,12 @@
 
 pkgname=perl-pdl-transform-color
 pkgver=1.007
-pkgrel=1
+pkgrel=2
 pkgdesc='Useful color system conversions for PDL'
 _dist=PDL-Transform-Color
 arch=(any)
 url="https://metacpan.org/release/$_dist"
-license=(GPL PerlArtistic)
+license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 depends=(perl perl-pdl perl-pdl-graphics-colorspace)
 checkdepends=(perl-test-simple)
 options=('!emptydirs')
