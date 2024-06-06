@@ -8,7 +8,7 @@
 # basic info
 _pkgname="glaxnimate"
 pkgname="$_pkgname-git"
-pkgver=0.5.4.r49.g22bbaa6b
+pkgver=0.5.4.r49.g22bbaa6
 pkgrel=2
 pkgdesc="Simple vector animation program"
 url="https://gitlab.com/mattbas/glaxnimate"
