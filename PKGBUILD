@@ -1,4 +1,5 @@
-# Maintainer: Mihók Martin <mihok.martin@protonmail.com>
+# Maintainer: username227 <gfrank227 [at] gmail [dot] com>
+# Contributor: Mihók Martin <mihok.martin@protonmail.com>
 # Contributor: FabioLolix <fabio.loli@disroot.org>
 # Contributor: Niklas Wojtkowiak <aur.7xcqe@passmail.com>
 _pkgname='spacedrive'
