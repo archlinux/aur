@@ -34,5 +34,5 @@ build() {
 }
 	
 package() {
-	install -Dm755 "${srcdir}/himitsu/himitsu" "${pkgdir}"/usr/bin/himitsu
+	install -Dm755 "${srcdir}/himitsu/ohimitsu" "${pkgdir}"/usr/bin/ohimitsu
 }
