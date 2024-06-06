@@ -1,0 +1,5 @@
+[httpie-desktop-bin]
+source = "github"
+github = "httpie/desktop"
+use_latest_release = "true"
+prefix = "v"
