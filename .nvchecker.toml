@@ -1,0 +1,4 @@
+[sherlock-git]
+source = "git"
+git = "https://github.com/sherlock-project/sherlock.git"
+use_commit = "true"
