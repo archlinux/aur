@@ -2,9 +2,9 @@
 
 pkgname=ptyxis
 pkgver=46.2
-_vtever=0.76.2
-_vtecommit='160054483748508c1c1a938601e83635783d1ac4'
-pkgrel=4
+_vtever=0.76.3
+_vtecommit='036bc3ddcbb56f05c6ca76712a53b89dee1369e2'
+pkgrel=5
 pkgdesc='A terminal for a container-oriented desktop'
 arch=('x86_64')
 url='https://gitlab.gnome.org/chergert/ptyxis'
@@ -41,8 +41,8 @@ source=("$pkgname::git+$url#tag=$pkgver"
         "${pkgname}_vte::git+https://gitlab.gnome.org/GNOME/vte.git#commit=$_vtecommit"
         '0001-bundle-patched-vte.patch')
 sha256sums=('3b68d6cbe9e32b3bcdbe952d4f697cfad1a5553751cd705d9c146e38c71e2494'
-            'c4c51f0806c98709f3f377cfcae3538b1417c80051174393a95526a21e533b28'
-            'cafb9844646926070cec6c6550dd13edbafc2b5528e77ff1bf159cfecbb46f50')
+            '04cdba718e061063d1f8f623012769827e20561dcea735f5bd4d135c2579b10f'
+            'be0f5d53d73c53896055f6e35fe88dab343e27ad849ca032c7aa38f51498f713')
 
 prepare() {
   rm -rf "$srcdir/$pkgname/subprojects"

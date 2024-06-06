@@ -6,8 +6,8 @@ index ce2961ae..9305da5d 100644
  project(
    'vte',
    ['c', 'cpp'],
--  version: '0.76.2',
-+  version: '10000.76.2',
+-  version: '0.76.3',
++  version: '10000.76.3',
    license: ['LGPL-3.0-or-later', 'GPL-3.0-or-later'],
    default_options: [
      'buildtype=release',
@@ -29,7 +29,7 @@ index 3f89f492..9a0ff506 100644
  vte_sh = configure_file(
    input: 'vte.sh.in',
 -  output: '@BASENAME@',
-+  output: '100007602-@BASENAME@',
++  output: '100007603-@BASENAME@',
    configuration: {
      'libexecdir': vte_prefix / vte_libexecdir,
    },
@@ -42,7 +42,7 @@ index 2328a9ec..f4210af4 100644
  
  # Not running under vte?
 -[ "${VTE_VERSION:-0}" -ge 3405 ] || return 0
-+[ "${VTE_VERSION:-0}" -ge 100007602 ] || return 0
++[ "${VTE_VERSION:-0}" -ge 100007603 ] || return 0
  
  # TERM not supported?
  case "$TERM" in
