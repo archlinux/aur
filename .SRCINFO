@@ -1,11 +1,12 @@
 pkgbase = amaranth-font
 	pkgdesc = A friendly upright italic design with a slight contrast and distinctive curves
 	pkgver = 1.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://fonts.google.com/specimen/Amaranth
 	arch = any
-	license = GPL-2
-	source = Amaranth.zip::https://fonts.google.com/download?family=Amaranth
-	md5sums = c1cfc0a974037f316f9327998d923658
+	license = custom:OFL
+	makedepends = git
+	source = amaranth::git+https://github.com/googlefonts/amaranth
+	sha256sums = SKIP
 
 pkgname = amaranth-font
