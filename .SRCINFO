@@ -1,7 +1,7 @@
 pkgbase = abc-git
 	pkgdesc = System for Sequential Logic Synthesis and Formal Verification
 	pkgver = 1.02.r5444.806a996
-	pkgrel = 1
+	pkgrel = 2
 	url = https://people.eecs.berkeley.edu/~alanmi/abc/
 	arch = x86_64
 	arch = i686

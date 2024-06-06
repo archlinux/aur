@@ -7,7 +7,7 @@ _basever=1
 _patchlvl=02
 _gitversion=r5444.806a996
 pkgver=${_basever}.${_patchlvl}.${_gitversion}
-pkgrel=1
+pkgrel=2
 pkgdesc="System for Sequential Logic Synthesis and Formal Verification"
 url="https://people.eecs.berkeley.edu/~alanmi/abc/"
 arch=('x86_64' 'i686')
@@ -40,7 +40,7 @@ build() {
 
     # we build abc with PIC enabled, so we don't have to compile it multiple times
     # for the different targets
-    make ABC_USE_PIC=1 abc libabc.so -j$(NPROC)
+    make ABC_USE_PIC=1 abc libabc.so -j$(nproc)
 }
 
 package() {
