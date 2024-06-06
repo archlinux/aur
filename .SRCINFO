@@ -2,7 +2,7 @@ pkgbase = quamachi
 	pkgdesc = A Hamachi GUI for Linux
 	pkgver = 0.8.0
 	pkgrel = 1
-	url = https://Quamachi.Xavion.name
+	url = https://sites.google.com/site/xavionsquamachi/
 	install = Quamachi.install
 	arch = any
 	license = LGPL3
@@ -17,4 +17,3 @@ pkgbase = quamachi
 	sha1sums = 73c6ac7e3901c8ebba86abf9bf8d68c6e5b4c66a
 
 pkgname = quamachi
-

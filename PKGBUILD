@@ -5,7 +5,7 @@ _filename_=Quamachi
 pkgver=0.8.0
 pkgrel=1
 pkgdesc="A Hamachi GUI for Linux"
-url="https://${_filename_}.Xavion.name"
+url="https://sites.google.com/site/xavions${pkgname}/"
 arch=("any")
 license=("LGPL3")
 depends=("python-pyqt5" "logmein-hamachi>=2.1")
