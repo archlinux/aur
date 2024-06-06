@@ -5,7 +5,7 @@ _filename_=FcronQ
 pkgver=0.5.0
 pkgrel=1
 pkgdesc="An Fcron GUI"
-url="https://${_filename_}.Xavion.name"
+url="https://sites.google.com/site/xavions${pkgname}/"
 arch=("any")
 license=("GPL3")
 depends=("python-pyqt5" "fcron>=3.1")

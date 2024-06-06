@@ -2,7 +2,7 @@ pkgbase = fcronq
 	pkgdesc = An Fcron GUI
 	pkgver = 0.5.0
 	pkgrel = 1
-	url = https://FcronQ.Xavion.name
+	url = https://sites.google.com/site/xavionsfcronq/
 	install = FcronQ.install
 	arch = any
 	license = GPL3
@@ -14,4 +14,3 @@ pkgbase = fcronq
 	sha1sums = 9c8eb946d1a65b73dd7194af649986d59a598d54
 
 pkgname = fcronq
-
