@@ -1,7 +1,7 @@
 # Maintainer: kusanaginoturugi <kusanaginoturugi at gmail dot com>
 pkgname=skk-emoji-jisyo
-pkgrel=2
-pkgver=v0.0.9.r0.g7eadfd8
+pkgrel=3
+pkgver=0.0.9.r0.g7eadfd8
 pkgdesc="Emoji Dictionaries for the SKK Japanese input method"
 arch=("any")
 url="https://github.com/uasi/skk-emoji-jisyo"
@@ -11,7 +11,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 package() {
