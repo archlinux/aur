@@ -23,12 +23,12 @@ noextract=()
 md5sums=("SKIP") #autofill using updpkgsums
 
 pkgver() {
-	cd ${srcdir}/${_pkgbase}
+	cd ${srcdir}/leech
 	echo "r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "${srcdir}/${_pkgbase}"
+	cd "${srcdir}/leech"
 	go mod tidy
 	go build
 }
