@@ -10,25 +10,24 @@
 # https://releases.electronjs.org/
 
 _pkgver=28.3.3
-pkgrel=1
+pkgrel=2
 pkgver="${_pkgver/-/.}"
 _major_ver=${pkgver%%.*}
 _projectname=electron
 _pkgname="${_projectname}${_major_ver}"
 pkgname="${_pkgname}"-bin
-pkgdesc='Build cross platform desktop apps with web technologies — binary'
+pkgdesc='Build cross platform desktop apps with web technologies'
+pkgdesc+=' — binary'
 arch=(x86_64 armv7h aarch64)
 url='https://electronjs.org'
 license=(MIT BSD-3-Clause)
-depends=(c-ares
-         gcc-libs # libgcc_s.so
-         glibc # libc.so libm.so
-         gtk3 libgtk-3.so
-         libevent
-         libffi libffi.so
-         libpulse libpulse.so
-         nss # libnss3.so
-         zlib libz.so)
+depends=(
+    alsa-lib # libasound.so.2
+    gcc-libs # libgcc_s.so
+    glibc # libc.so libm.so
+    gtk3 libgtk-3.so
+    nss # libnss3.so
+)
 optdepends=('kde-cli-tools: file deletion support (kioclient5)'
             'pipewire: WebRTC desktop sharing under Wayland'
             'qt5-base: enable Qt5 with --enable-features=AllowQt'
