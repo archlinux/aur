@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=vpkedit-git
-pkgver=4.2.1.r0.gf496f0b
+pkgver=4.2.2.r0.g8b0c6dd
 epoch=1
 pkgrel=1
 pkgdesc="A library and tool to create, read, and write Valve VPK archives"
@@ -14,7 +14,6 @@ conflicts=('vpkedit' 'vpkedit-bin')
 replaces=('vpkedit')
 source=("$pkgname::git+$url.git"
 	"argparse::git+https://github.com/p-ranav/argparse.git"
-	"vtflib::git+https://github.com/StrataSource/VTFLib.git"
 	"saap::git+https://github.com/craftablescience/SteamAppPathProvider.git"
 	"speedykeyv::git+https://github.com/ozxybox/SpeedyKeyV.git"
 	"sourcepp::git+https://github.com/craftablescience/sourcepp.git"
@@ -24,7 +23,8 @@ source=("$pkgname::git+$url.git"
 	"indicators::git+https://github.com/p-ranav/indicators.git"
 	"cryptopp::git+https://github.com/abdes/cryptopp-cmake.git"
 	#Submodule for submodules
-	"bufferstream::git+https://github.com/craftablescience/BufferStream.git")
+	"bufferstream::git+https://github.com/craftablescience/BufferStream.git"
+	"miniz::git+https://github.com/richgel999/miniz.git")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -47,7 +47,7 @@ pkgver(){
 prepare() {
 	cd "$srcdir/$pkgname"
 	git submodule init
-	for submodule in {vtflib,saap,speedykeyv,sourcepp,miniaudio,discord};
+	for submodule in {saap,speedykeyv,sourcepp,miniaudio,discord};
 	do
 		git config submodule.src/gui/thirdparty/$submodule.url "$srcdir/${submodule}"
 	done
@@ -60,6 +60,7 @@ prepare() {
 	cd "$srcdir/$pkgname/src/gui/thirdparty/sourcepp"
 	git submodule init
 	git config submodule.src/thirdparty/bufferstream.url "$srcdir/bufferstream"
+	git config submoudle.src/thirdparty/miniz.url "$srcdir/miniz"
 	git -c protocol.file.allow=always submodule update
 
 
