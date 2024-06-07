@@ -1,12 +1,15 @@
 pkgbase = discimagecreator-git
-	pkgdesc = This is the disc (CD, GD, DVD, HD-DVD, BD, GC/Wii, XBOX, XBOX 360) and disk (Floppy, MO, USB, etc) image creation tool
-	pkgver = 2023.09.09.r15.g801da23
+	pkgdesc = A disk image creation tool supporting CD, GD, DVD, BD, GC/Wii, Xbox, floppy, MO, USB, etc
+	pkgver = 2024.06.01.r0.g5f84df1
 	pkgrel = 1
 	url = https://github.com/saramibreak/DiscImageCreator
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	makedepends = git
-	provides = discimagecreator=20230909
+	depends = gcc-libs
+	depends = glibc
+	optdepends = unscrambler: Unscramble GC/Wii optical disks
+	provides = discimagecreator=20240601
 	conflicts = discimagecreator
 	source = discimagecreator::git+https://github.com/saramibreak/DiscImageCreator.git
 	sha256sums = SKIP

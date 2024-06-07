@@ -2,14 +2,21 @@
 
 _pkgname="discimagecreator"
 pkgname="$_pkgname-git"
-pkgver=2023.09.09.r15.g801da23
+pkgver=2024.06.01.r0.g5f84df1
 pkgrel=1
-pkgdesc="This is the disc (CD, GD, DVD, HD-DVD, BD, GC/Wii, XBOX, XBOX 360) and disk (Floppy, MO, USB, etc) image creation tool"
+pkgdesc="A disk image creation tool supporting CD, GD, DVD, BD, GC/Wii, Xbox, floppy, MO, USB, etc"
 url="https://github.com/saramibreak/DiscImageCreator"
-license=('Apache')
+license=('Apache-2.0')
 arch=('x86_64')
 
+depends=(
+  gcc-libs
+  glibc
+)
 makedepends=('git')
+optdepends=(
+  'unscrambler: Unscramble GC/Wii optical disks'
+)
 
 provides=("$_pkgname=$(echo ${pkgver%%.r*} | sed -E 's@\.@@g')")
 conflicts=("$_pkgname")
@@ -20,16 +27,12 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgsrc"
-  local _pkgver=$(
-    git describe --long --tags --exclude='*[a-zA-Z][a-zA-Z]*' 2>/dev/null \
-      | sed -E \
-        -e 's/^v//' \
-        -e 's/([^-]*-g)/r\1/' \
-        -e 's/^([0-9]{4})([0-9]{2})([0-9]{2})/\1.\2.\3/' \
-        -e 's/-/./g'
-  )
-
-  echo "${_pkgver:?}"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E \
+      -e 's/^v//' \
+      -e 's/([^-]*-g)/r\1/' \
+      -e 's/^([0-9]{4})([0-9]{2})([0-9]{2})/\1.\2.\3/' \
+      -e 's/-/./g'
 }
 
 build() {
@@ -43,5 +46,5 @@ package() {
   make -C DiscImageCreator/ DESTDIR="$pkgdir" PREFIX="/usr" install
 
   # license
-  install -Dm644 "LICENSE" -t "${pkgdir:?}/usr/share/licenses/$pkgname/"
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
