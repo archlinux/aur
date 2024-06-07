@@ -22,7 +22,10 @@ build() {
 	./configure --prefix=/usr
 	make
 }
-
+check() {
+	cd "${srcdir}/scheme-${_pkgname}-${pkgver}"
+	make check
+}
 package() {
 	cd "${srcdir}/scheme-${_pkgname}-${pkgver}"
 	make DESTDIR="${pkgdir}" install
