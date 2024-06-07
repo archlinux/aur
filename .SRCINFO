@@ -1,12 +1,13 @@
 pkgbase = ognibuild
 	pkgdesc = Detect and invoke build systems
-	pkgver = 0.0.19
+	pkgver = 0.0.20
 	pkgrel = 1
 	url = https://github.com/jelmer/ognibuild
-	arch = any
+	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools-rust
 	makedepends = python-wheel
 	depends = breezy
 	depends = python-buildlog-consultant
@@ -19,8 +20,7 @@ pkgbase = ognibuild
 	optdepends = python-debian
 	optdepends = python-debmutate
 	optdepends = python-lz4
-	optdepends = python-psycopg2
-	source = ognibuild-0.0.19.tar.gz::https://github.com/jelmer/ognibuild/archive/refs/tags/v0.0.19.tar.gz
-	sha256sums = 04a167e20322387d5af077b66c76837a5491a1e21e77931566302e2067ed3080
+	source = ognibuild-0.0.20.tar.gz::https://github.com/jelmer/ognibuild/archive/refs/tags/v0.0.20.tar.gz
+	sha256sums = 21a8ac9a410e1dfb44e9931e02350c75ddf49b5c50422e2068cb7aba46006a2c
 
 pkgname = ognibuild
