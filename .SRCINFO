@@ -1,0 +1,15 @@
+pkgbase = grafterm-git
+	pkgdesc = Metrics dashboards on terminal (a grafana inspired terminal version)
+	pkgver = 0.2.0.r6.b4f1144
+	pkgrel = 1
+	url = https://github.com/slok/grafterm
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = go
+	provides = grafterm=0.2.0
+	conflicts = grafterm
+	source = grafterm::git+https://github.com/slok/grafterm.git
+	sha256sums = SKIP
+
+pkgname = grafterm-git
