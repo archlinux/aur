@@ -5,7 +5,6 @@ pkgbase = kuzu-bin
 	url = kuzudb.com
 	arch = x86_64
 	license = MIT
-	makedepends = ccache
 	source = https://github.com/kuzudb/kuzu/releases/download/v0.4.2/kuzu_cli-linux-x86_64.tar.gz
 	source = https://github.com/kuzudb/kuzu/releases/download/v0.4.2/libkuzu-linux-x86_64.tar.gz
 	sha256sums = e77600afd326531e7e7d9b7508fe545ed518e431d7e9a0e93f8960ae0c8f51bf

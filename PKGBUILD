@@ -11,7 +11,6 @@ url="kuzudb.com"
 license=('MIT')
 groups=()
 depends=()
-makedepends=(ccache)
 checkdepends=()
 optdepends=()
 provides=()
