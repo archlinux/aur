@@ -1,5 +1,5 @@
 pkgbase = iitj-autoproxy-bin
-	pkgdesc =
+	pkgdesc = A CLI tool to automatically login to IIT Jodhpur's network firewall.
 	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/SaahilNotSahil/iitj-autoproxy
@@ -8,9 +8,9 @@ pkgbase = iitj-autoproxy-bin
 	provides = iitj-autoproxy
 	arch = aarch64
 	source_aarch64 = https://github.com/SaahilNotSahil/iitj-autoproxy/releases/download/0.1.2/iitj-autoproxy_0.1.2_linux_arm64.tar.gz
-	sha256sums_aarch64 = b28eb91dcc51a6d0fe46e406a14e8fdebfe72858ecddec470ac54538b620363a
+	sha256sums_aarch64 = b71a94338837744f4ae15fcbb058fd437e5e008748a2e833fe5e680298cfe148
 	arch = x86_64
 	source_x86_64 = https://github.com/SaahilNotSahil/iitj-autoproxy/releases/download/0.1.2/iitj-autoproxy_0.1.2_linux_amd64.tar.gz
-	sha256sums_x86_64 = 17e72d6e279fbfdd5fa6eed6727078ee05f911ae0372d6593fd35a954c88a7da
+	sha256sums_x86_64 = 41e24b6c25a74a91b76381ae5d2326c4a50240e4e9f7afd4c1e1449b5d36afaf
 	
 pkgname = iitj-autoproxy-bin
