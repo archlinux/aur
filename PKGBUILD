@@ -1,4 +1,3 @@
-
 # Maintainer: Wai <waicool20@gmail.com>
 pkgname=fw-fanctrl-ui-git
 pkgver=r1.120f20e
