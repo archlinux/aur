@@ -21,24 +21,25 @@ pkgbase=java21-jetbrains-git
 _pkgbase=java21-jetbrains
 pkgname=('jre21-jetbrains-git' 'jdk21-jetbrains-git')
 pkgrel=1
-pkgver=jb21.0.2.b392.r2.gbede4b0
+pkgver=jb21.0.3.b478.r1.gd05e162
 _majorver=21
 arch=('x86_64')
 url='https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime'
 license=('custom')
-makedepends=('java-environment>=20' 'java-environment<=21' 'cpio' 'unzip' 'zip' 'libelf' 'libcups' 'libx11'
+makedepends=('java-environment=21' 'cpio' 'unzip' 'zip' 'libelf' 'libcups' 'libx11'
              'libxrender' 'libxtst' 'libxt' 'libxext' 'libxrandr' 'alsa-lib' 'pandoc'
              'graphviz' 'freetype2' 'libjpeg-turbo' 'giflib' 'libpng' 'lcms2'
              'libnet' 'bash' 'harfbuzz' 'gcc-libs' 'glibc' 'jcef-jetbrains' 'git')
-options=(!lto)
 source=(git+https://github.com/JetBrains/JetBrainsRuntime.git#branch=jbr21
         freedesktop-java.desktop
         freedesktop-jconsole.desktop
-        freedesktop-jshell.desktop)
+        freedesktop-jshell.desktop
+        ssd.patch::https://github.com/openjdk/wakefield/pull/7.patch)
 sha256sums=('SKIP'
             'b1007ce4c8cbe6b1cc3e6ce78b3c7bc1a26d76145c7c759baf7a04d8bc1bbfe3'
             '113abd0cbb73a34cc7268a97056453f3394632d5fe05d9d1e9f1d8895f8d279d'
-            '51dbaaa20b382c5220d560f4068896ba4a5643d3b7ce63c72cb42ba142689475')
+            '51dbaaa20b382c5220d560f4068896ba4a5643d3b7ce63c72cb42ba142689475'
+            'd6b5d37169294023a65a786585e32e558fa6b09c6c4fb32b7584114e57ef7759')
 
 case "${CARCH}" in
   x86_64) _JARCH='x86_64';;
@@ -49,6 +50,10 @@ _jvmdir=/usr/lib/jvm/java-${_majorver}-jetbrains
 _jdkdir=JetBrainsRuntime
 _imgdir=${_jdkdir}/build/linux-${_JARCH}-server-release/images
 
+_commondeps=('java-runtime-common>=3' 'ca-certificates-utils' 'nss' 'libjpeg-turbo' 'libjpeg.so'
+           'lcms2' 'liblcms2.so' 'libnet' 'freetype2' 'libfreetype.so' 'harfbuzz' 'libharfbuzz.so'
+           'glibc' 'gcc-libs')
+
 pkgver() {
   cd $srcdir/${_jdkdir}
   git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
@@ -58,6 +63,7 @@ build() {
 
   # build jbr
   cd $srcdir/${_jdkdir}
+  patch -Np1 -p1 -i ${srcdir}/ssd.patch
 
   NUM_PROC_OPT=''
   MAKEFLAG_J=$(echo ${MAKEFLAGS} | sed -En 's/.*-j([0-9]+).*/\1/p')
@@ -96,6 +102,13 @@ build() {
   unset CXXFLAGS
   unset LDFLAGS
 
+  if check_option "lto" "y"; then
+    jvm_features="zgc,shenandoahgc,link-time-opt"
+  else
+    jvm_features="zgc,shenandoahgc"
+  fi
+
+
   VENDOR_NAME="JetBrains s.r.o."
   JDK_BUILD_NUMBER=$(git log --simplify-by-decoration --decorate=short --pretty=short | grep "jdk-" | cut -d "(" -f2 | cut -d ")" -f1 | awk '{print $2}' | sort -t "-" -k 2 -g | tail -n 1 | tr -d "," | awk -F "-|[+]" '{print $3}')
   _ver=$(git describe --long --tags --abbrev=7 | awk -F'-b' '{print $1}' | awk -F'jb' '{print $2}')
@@ -119,9 +132,10 @@ build() {
     --with-lcms=system \
     --with-zlib=system \
     --with-harfbuzz=system \
-    --with-jvm-features=zgc \
+    --with-jvm-features="${jvm_features}" \
+    --with-native-debug-symbols=internal \
     --enable-unlimited-crypto \
-    --enable-warnings-as-errors=no \
+    --disable-warnings-as-errors \
     ${NUM_PROC_OPT} \
     #--disable-javac-server
 
@@ -173,15 +187,12 @@ build() {
 
 package_jre21-jetbrains-git() {
   pkgdesc="JetBrains Java ${_majorver} full runtime environment"
-  depends=('java-runtime-common>=3' 'ca-certificates-utils' 'nss' 'libjpeg-turbo' 'libjpeg.so'
-           'lcms2' 'liblcms2.so' 'libnet' 'freetype2' 'libfreetype.so' 'harfbuzz' 'libharfbuzz.so'
-           'glibc' 'gcc-libs' 'giflib' 'libgif.so' 'libpng' 'jcef-jetbrains')
+  depends=("${_commondeps[@]}" 'giflib' 'libgif.so' 'libpng' 'jcef-jetbrains')
   optdepends=('java-rhino: for some JavaScript support'
               'alsa-lib: for basic sound support'
-              'gtk2: for the Gtk+ 2 look and feel - desktop usage'
               'gtk3: for the Gtk+ 3 look and feel - desktop usage')
-  provides=("java-runtime=${_majorver}" "java-runtime-jetbrains=${_majorver}" "jre21-jetbrains=${pkgver}")
-  conflicts=("jre21-jetbrains")
+  provides=("java-runtime=${_majorver}" "java-runtime-jetbrains=${_majorver}" "jre${_majorver}-jetbrains=${pkgver}-${pkgrel}")
+  conflicts=("jre21-jetbrains" "jdk21-jetbrains")
   _pkgname="jre21-jetbrains"
   backup=(etc/${_pkgbase}/logging.properties
           etc/${_pkgbase}/management/jmxremote.access
@@ -209,7 +220,7 @@ package_jre21-jetbrains-git() {
   ln -s /etc/${_pkgbase} "${pkgdir}/${_jvmdir}/conf"
 
   # bin
-  install -D -m755 bin/{java,jfr,jrunscript} -t "${pkgdir}/${_jvmdir}/bin"
+  install -D -m755 bin/{java,jfr,jrunscript,jwebserver} -t "${pkgdir}/${_jvmdir}/bin"
   install -D -m755 bin/{keytool,rmiregistry} -t "${pkgdir}/${_jvmdir}/bin"
 
   # libs
@@ -240,9 +251,17 @@ package_jre21-jetbrains-git() {
 
 package_jdk21-jetbrains-git() {
   pkgdesc="JetBrains Java ${_majorver} development kit"
-  depends=("jre21-jetbrains=${pkgver}" 'java-environment-common=3' 'hicolor-icon-theme' 'libelf' 'glibc' 'gcc-libs')
-  provides=("java-environment=${_majorver}" "java-environment-jetbrains=${_majorver}")
-  conflicts=("jdk21-jetbrains")
+  depends=("${_commondeps[@]}" 'jcef-jetbrains' 'java-environment-common=3'
+           'hicolor-icon-theme' 'libelf' 'libgif.so' 'libpng'
+           'ca-certificates-utils' 'nss' 'libjpeg-turbo' 'libjpeg.so'
+           'lcms2' 'liblcms2.so' 'libnet' 'freetype2' 'libfreetype.so' 'harfbuzz'
+           'libharfbuzz.so')
+  optdepends=('java-rhino: for some JavaScript support'
+              'alsa-lib: for basic sound support'
+              'gtk3: for the Gtk+ 3 look and feel - desktop usage')
+  provides=("java-environment=${_majorver}" "java-environment-jetbrains=${_majorver}" "jdk${_majorver}-jetbrains=${pkgver}-${pkgrel}"
+            "java-runtime=${_majorver}" "java-runtime-jetbrains=${_majorver}" "jre${_majorver}-jetbrains=${pkgver}-${pkgrel}")
+  conflicts=("jre21-jetbrains" "jdk21-jetbrains")
   _pkgname="jdk21-jetbrains"
   install=install_jdk-jetbrains.sh
 
@@ -250,25 +269,27 @@ package_jdk21-jetbrains-git() {
 
   install -dm 755 "${pkgdir}${_jvmdir}"
 
+  # Conf
+  install -dm 755 "${pkgdir}/etc"
+  cp -r conf "${pkgdir}/etc/${_pkgbase}"
+  ln -s /etc/${_pkgbase} "${pkgdir}/${_jvmdir}/conf"
+
   cp -a ../jdk/demo include jmods \
     "${pkgdir}${_jvmdir}"
   # Symlink to system jcef
   find /usr/lib/jcef-jetbrains/jmods -maxdepth 1 -mindepth 1 -exec ln -sf {} "${pkgdir}${_jvmdir}/jmods/" \;
 
   # bin
-  cp -a bin "${pkgdir}/${_jvmdir}"
-  rm "${pkgdir}/${_jvmdir}/bin/"{java,jfr,jrunscript,keytool,rmiregistry}
-    
-  # libs
-  install -D -m644 lib/ct.sym       -t "${pkgdir}/${_jvmdir}/lib"
-  install -D -m644 lib/libattach.so -t "${pkgdir}/${_jvmdir}/lib"
-  install -D -m644 lib/libsaproc.so -t "${pkgdir}/${_jvmdir}/lib"
+  install -D -m755 bin/* -t "${pkgdir}/${_jvmdir}/bin"
 
-  # Conf files all belong to JRE
+  # libs
+  cp -a lib "${pkgdir}/${_jvmdir}"
 
   # Legal
   install -dm 755 "${pkgdir}/usr/share/licenses"
+  cp -r legal "${pkgdir}/usr/share/licenses/${_pkgbase}"
   ln -s ${_pkgbase} "${pkgdir}/usr/share/licenses/${_pkgname}"
+  ln -s /usr/share/licenses/${_pkgbase} "${pkgdir}/${_jvmdir}/legal"
 
   # man pages
   local _file
@@ -277,7 +298,6 @@ package_jdk21-jetbrains-git() {
       __file=${_file%.1}
       install -D -m644 "$_file" "${pkgdir}/usr/share/${__file#"../jdk/"}-jetbrains${_majorver}.1"
   done
-  rm "${pkgdir}/usr/share/man/man1/"{java,jfr,jrunscript,keytool,rmiregistry}-jetbrains"${_majorver}".1
 
   # Icons
   for s in 16 24 32 48; do
