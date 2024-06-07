@@ -1,8 +1,8 @@
 # Maintainer: Kotz <kotz at getgoogleoff dot me>
 
 pkgname='json2sharp-bin'
-pkgver='1.1.10.0'
-pkgrel=2
+pkgver='1.1.11.0'
+pkgrel=1
 pkgdesc='CLI tool for converting JSON objects to class definitions'
 arch=('x86_64' 'aarch64')
 url='https://github.com/Kaoticz/Json2Sharp'
@@ -11,8 +11,8 @@ provides=('json2sharp')
 options=('!strip')
 source_x86_64=("https://github.com/Kaoticz/Json2Sharp/releases/download/${pkgver}/Json2Sharp_linux-x64.zip")
 source_aarch64=("https://github.com/Kaoticz/Json2Sharp/releases/download/${pkgver}/Json2Sharp_linux-arm64.zip")
-sha256sums_x86_64=('fe8965943f3f6a05f8da91e2daf64cd438cc5c2356ed8890e63d7d57f8e15dda')
-sha256sums_aarch64=('ed526211fdf177d1fd0eec861063c204cc60c31fb4498ee3517a2a347aefed8f')
+sha256sums_x86_64=('7029260a64e60f6fb86acfdfb08f1e9bef1a94654cf57965b52144f333e11362')
+sha256sums_aarch64=('c87c57bf6b867e3047bbc067950c10b4623a715b316103a16b4515d8328abaa8')
 
 package()
 {
