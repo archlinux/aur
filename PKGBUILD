@@ -3,10 +3,10 @@
 
 pkgname=newsraft
 pkgver=0.25
-pkgrel=1
+pkgrel=2
 pkgdesc='Feed reader with ncurses user interface'
 url='https://codeberg.org/newsraft/newsraft'
-arch=('any')
+arch=('x86_64')
 license=('ISC')
 depends=(
 	'ncurses'
@@ -18,6 +18,12 @@ depends=(
 	)
 source=("https://codeberg.org/newsraft/newsraft/archive/newsraft-${pkgver}.tar.gz")
 sha256sums=('99e587c8dcd22addd1dbd1f6f3a823af234a941009f016abbbf325ab5a6c44a0')
+
+prepare() {
+  cd "${srcdir}/newsraft"
+  sed -i 's/^CFLAGS/#CFLAGS/g'   makefile
+  sed -i 's/^LDFLAGS/#LDFLAGS/g' makefile
+}
 
 build() {
 	cd "${srcdir}"/newsraft
