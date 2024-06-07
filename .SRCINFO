@@ -16,6 +16,9 @@ pkgbase = python-autoray
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	depends = python
+	optdepends = python-matplotlib: for visualizations
+	optdepends = python-networkx: for computational graph drawing
+	optdepends = python-pygraphviz: for graph layouts
 	source = autoray-0.6.12.tar.gz::https://github.com/jcmgray/autoray/archive/v0.6.12.tar.gz
 	sha512sums = aaaa4e97adaec71d67c0284491f4b9e00a5a4f5e0d7b7b873e3f58660ba4eeb234804abbf36bdbf56e2ed07358d5cb8c3c00243fc428e73e1c698c4bebe8f1df
 

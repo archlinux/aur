@@ -10,6 +10,9 @@ license=(Apache-2.0)
 depends=(python)
 makedepends=(python-build python-installer python-setuptools-scm python-wheel)
 checkdepends=(python-pytest python-dask python-tensorflow python-pytorch python-jax python-sparse)
+optdepends=('python-matplotlib: for visualizations'
+  'python-networkx: for computational graph drawing'
+  'python-pygraphviz: for graph layouts')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('aaaa4e97adaec71d67c0284491f4b9e00a5a4f5e0d7b7b873e3f58660ba4eeb234804abbf36bdbf56e2ed07358d5cb8c3c00243fc428e73e1c698c4bebe8f1df')
 
