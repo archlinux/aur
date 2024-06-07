@@ -1,0 +1,17 @@
+pkgbase = crowdsec-cloudflare-bouncer
+	pkgdesc = CrowdSec bouncer for Cloudflare
+	pkgver = 0.3.0.rc2
+	pkgrel = 1
+	url = https://doc.crowdsec.net/docs/bouncers/cloudflare
+	install = cs-cloudflare-bouncer.install
+	arch = x86_64
+	license = MIT
+	makedepends = gettext
+	depends = crowdsec
+	provides = cs-cloudflare-bouncer
+	conflicts = cs-cloudflare-bouncer
+	backup = etc/crowdsec/bouncers/crowdsec-cloudflare-bouncer.conf
+	source = crowdsec-cloudflare-bouncer-0.3.0.rc2.tar.gz::https://github.com/crowdsecurity/cs-cloudflare-bouncer/releases/download/v0.3.0-rc2/crowdsec-cloudflare-bouncer.tgz
+	sha256sums = 02c474b71ec9ee7c9f55e63942db497f9b48a895b8a4f5c495ff65135014a11f
+
+pkgname = crowdsec-cloudflare-bouncer

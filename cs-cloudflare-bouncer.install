@@ -1,0 +1,36 @@
+post_install() {
+  # Substitute vars in configuration
+  API_KEY=`cscli bouncers add crowdsec-cloudflare-bouncer -o raw`
+  export API_KEY
+  IFS=: read HOST PORT <<< `sudo cscli config show --key "Config.API.Server.ListenURI"`
+  echo "Bouncer registered to the CrowdSec Local API."
+
+  CROWDSEC_LAPI_URL="http://${HOST:-'127.0.0.1'}:${PORT:-'8080'}"
+  export CROWDSEC_LAPI_URL
+
+  TMP=$(mktemp -p /tmp/)
+  install -m600 /etc/crowdsec/bouncers/crowdsec-cloudflare-bouncer.yaml "$TMP"
+  envsubst < "$TMP" | tee /etc/crowdsec/bouncers/crowdsec-cloudflare-bouncer.yaml >/dev/null
+
+  # Substitute vars in systemd service
+  CONFIG_DIR=/etc/crowdsec/bouncers
+  export CONFIG_DIR
+  BIN=/usr/bin/crowdsec-cloudflare-bouncer
+  export BIN
+
+  TMP=$(mktemp -p /tmp/)
+  install -m600 /usr/lib/systemd/system/crowdsec-cloudflare-bouncer.service "$TMP"
+  envsubst < "$TMP" | tee /usr/lib/systemd/system/crowdsec-cloudflare-bouncer.service >/dev/null
+
+  # Advice
+  echo -e "Make sure to set your Cloudflare credentials in /etc/crowdsec/bouncers/crowdsec-cloudflare-bouncer.yaml,\n then start/enable the service crowdsec-cloudflare-bouncer.service"
+}
+
+post_remove() {
+  if ! cscli bouncers remove crowdsec-cloudflare-bouncer --error; then
+    echo -e "\nDon't forget to uninstall the plugin!"
+    cscli bouncers list
+  else
+    echo -e "\nSuccessfully unregistered the plugin"
+  fi
+}
