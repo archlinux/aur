@@ -1,5 +1,5 @@
 #!/bin/bash
 
-cd /usr/bin/unixbench
+cd /usr/lib/unixbench
 ./Run $@ 2>/dev/null
 
