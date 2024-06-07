@@ -1,0 +1,13 @@
+pkgbase = python-rgb565-converter
+	pkgdesc = Python script to convert images into rgb565 as required by some tft libraries
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/CommanderRedYT/rgb565-converter
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/CommanderRedYT/rgb565-converter/archive/refs/tags/1.2.2.tar.gz
+	sha256sums = 84d14f766f8d536d055ad19f4aaa7f11c3d34611f0b53ac8dd019958982a9938
+
+pkgname = python-rgb565-converter
