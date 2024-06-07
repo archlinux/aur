@@ -20,6 +20,7 @@ python backends:
 - Audio Generation
   - bark
   - parler-tts
+  - coqui-tts
 - Embeddings
   - sentencetransformers
 - GPT, Embeddings

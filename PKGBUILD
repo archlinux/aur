@@ -57,7 +57,7 @@ backup=("etc/${_pkgbase}/${_pkgbase}.conf")
 source=(
   "${_pkgbase}"::"git+https://github.com/mudler/LocalAI"
   "libbackend.patch"
-  "2485-hipblas.patch"
+  "backend-req.patch"
   "README.md"
   "${_pkgbase}.conf"
   "${_pkgbase}.service"
@@ -183,8 +183,8 @@ EOF
   # modify python backend build library to use --system-site-packages, and dont reinstall torch*
   patch -N -i "${srcdir}/libbackend.patch" -p1
 
-  # modify source from PR2485, adds hipblas llama version
-  patch -N -i "${srcdir}/2485-hipblas.patch" -p1
+  # modify python backend requirements
+  patch -N -i "${srcdir}/backend-req.patch" -p1
 
   if [[ $_ENABLE_PIPER = 1 ]]; then
     # fix piper build
@@ -236,7 +236,9 @@ LLAMA_BACKEND: $_LLAMA_CPP_BACKEND
 OTHER_GRPC_BACKENDS: $_GRPC_BACKENDS
 
 EOF
-  make -j"$(nproc)" BUILD_TYPE="$1" GRPC_BACKENDS="$_LLAMA_CPP_BACKEND $_GRPC_BACKENDS" \
+  # use number of physical cores for parallel build
+  _nproc=$(grep  "^core id" /proc/cpuinfo | sort -n | uniq | wc -l)
+  make -j"$_nproc" BUILD_TYPE="$1" GRPC_BACKENDS="$_LLAMA_CPP_BACKEND $_GRPC_BACKENDS" \
     GO_TAGS="$_GO_TAGS" $_OPTIONAL_MAKE_ARGS build
 }
 
