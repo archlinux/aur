@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=responsively-git
 _pkgname=Responsively
-pkgver=1.11.0.r0.g8ddfd8a
+pkgver=1.12.0.r0.g936b1d5
 _electronversion=27
 _nodeversion=20
 pkgrel=1
@@ -21,12 +21,13 @@ makedepends=(
     'git'
     'nvm'
     'gendesk'
-    'base-devel'
+    'cmake'
     'gcc'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
-    "${pkgname%-git}.sh")
+    "${pkgname%-git}.sh"
+)
 sha256sums=('SKIP'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 pkgver() {
@@ -47,7 +48,7 @@ build() {
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${pkgname%-git}" --categories="Development" --name="${_pkgname}" --exec="${pkgname%-git} %U"
+    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}/desktop-app"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
