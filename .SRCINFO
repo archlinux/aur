@@ -1,0 +1,16 @@
+pkgbase = python-verspec
+	pkgdesc = Python version/specifier handling
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jimporter/verspec
+	arch = any
+	license = Apache-2.0
+	license = BSD-2-Clause
+	checkdepends = python-pytest
+	checkdepends = python-pretend
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/v/verspec/verspec-0.1.0.tar.gz
+	md5sums = 34d408f044894ec89a9780dbb75b6c9e
+
+pkgname = python-verspec
+	depends = python>=3.6
