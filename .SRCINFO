@@ -1,0 +1,11 @@
+pkgbase = chromium-vimium
+	pkgdesc = Browser extension that provides keyboard-based navigation (unpacked)
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = https://github.com/philc/vimium
+	arch = any
+	license = MIT
+	source = https://github.com/philc/vimium/archive/refs/tags/v2.1.2.tar.gz
+	sha256sums = SKIP
+
+pkgname = chromium-vimium
