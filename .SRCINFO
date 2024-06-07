@@ -1,7 +1,7 @@
 pkgbase = mysqltuner
 	pkgdesc = MySQLTuner - review configuration quickly and make adjustments to increase performance and stability
 	pkgver = 2.5.3
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.mysqltuner.com
 	arch = any
 	license = GPL
@@ -10,7 +10,7 @@ pkgbase = mysqltuner
 	depends = perl
 	source = mysqltuner::git+https://github.com/rackerhacker/MySQLTuner-perl.git#tag=ac43eee9692c7f5ffcbdd975c2bd370fda5868f8
 	source = mariadb11.patch
-	sha256sums = SKIP
-	sha256sums = 23406fe34107df09ca6bc33e9cb8277b5bedc8273f966b31c108022e480cadc2
+	sha256sums = 26e9352d3a217f1bf0660e4d536dc5e50c0a9cff25d58422f0a187ffe0ccad79
+	sha256sums = 84046ce5d85422b7ae4f06438bf3ec4b8b2a7341d1c1f70e44e18ed65c275773
 
 pkgname = mysqltuner
