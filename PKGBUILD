@@ -14,8 +14,8 @@ unset _pkgtype
 # basic info
 _pkgname="duckstation"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=0.1.6759
-pkgrel=4
+pkgver=0.1.6892
+pkgrel=1
 pkgdesc="Playstation emulator"
 url="https://github.com/stenzek/duckstation"
 arch=('x86_64')
@@ -64,7 +64,7 @@ makedepends=(
   'spirv-headers'
 
   ## fixups
-  'chrpath'
+  'patchelf'
   'patchutils'
 )
 
@@ -81,7 +81,7 @@ sha256sums=(
 )
 
 if [ "${_build_git::1}" != "t" ]; then
-  _commit=0a63bec65ca0346c89f82469a8a9c9cba401faa1
+  _commit='f1ff15f9c603be8363d2c50cfdb9c7da11d61bea'
 
   _pkgsrc="$_pkgname"
   source+=("$_pkgsrc"::"git+$url.git#commit=$_commit")
@@ -110,7 +110,7 @@ else
   }
 fi
 
-prepare() {
+_prepare_shaderc() (
   local _version_shaderc=$(grep -E -m1 'SHADERC=' "$_pkgsrc/scripts/build-dependencies-linux.sh" | sed -E -e 's&^\s*SHADERC=(\S+)$&\1&')
 
   git -C "$srcdir/$_src_shaderc" checkout -f "v$_version_shaderc"
@@ -124,6 +124,12 @@ prepare() {
 
   sed -E -e '/\(glslc\)/d;/examples/d;/third_party/d' \
     -i CMakeLists.txt
+)
+
+prepare() {
+  _prepare_shaderc
+
+  sed -E -e 's&"shaderc_shared"&"'"shaderc_$_pkgname"'"&' -i "$_pkgsrc/src/util/gpu_device.cpp"
 }
 
 _build_libbacktrace() (
@@ -196,8 +202,6 @@ build() {
 
   _build_libbacktrace
   _build_shaderc
-
-  LDFLAGS+=" -Wl,--rpath=XORIGIN -Wl,-z,origin"
   _build_duckstation
 }
 
@@ -206,31 +210,34 @@ package() {
   cp --reflink=auto -r build/bin/{resources,translations,duckstation-qt} "$pkgdir/opt/$_pkgname/"
 
   # rpath
-  chrpath -r '$ORIGIN' "$pkgdir/opt/$_pkgname/duckstation-qt"
+  patchelf --force-rpath --set-rpath "/opt/$_pkgname" "$pkgdir/opt/$_pkgname/$_pkgname-qt"
 
   # libraries
-  install -Dm644 "$srcdir/deps/usr/lib/libshaderc_shared.so.1" -t "$pkgdir/opt/$_pkgname/"
+  local _shaderc_patched="$pkgdir/opt/$_pkgname/libshaderc_$_pkgname.so.1"
+  install -Dm644 "$srcdir/deps/usr/lib/libshaderc_shared.so.1" "$_shaderc_patched"
+  patchelf --set-soname "libshaderc_patched.so.1" "$_shaderc_patched"
 
   # icon
-  install -dm755 "$pkgdir/usr/share/pixmaps/"
-  ln -sf "$pkgdir/opt/$_pkgname/resources/images/duck.png" "$pkgdir/usr/share/pixmaps/duckstation.png"
+  install -Dm644 "$pkgdir/opt/$_pkgname/resources/images/duck.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 
   # script
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/duckstation" << END
-#!/usr/bin/env bash
-exec /opt/$_pkgname/duckstation-qt "\$@"
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << END
+#!/usr/bin/env sh
+exec /opt/$_pkgname/$_pkgname-qt "\$@"
 END
 
   # launcher
-  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/duckstation.desktop" << END
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
 [Desktop Entry]
 Type=Application
 Name=DuckStation
 GenericName=PlayStation Emulator
 Comment=PlayStation emulator
-Icon=duckstation
-TryExec=duckstation
-Exec=duckstation %f
+Icon=$_pkgname
+TryExec=$_pkgname
+Exec=$_pkgname %f
+Terminal=false
+StartupNotify=true
 Categories=Game;Emulator;Qt;
 END
 
