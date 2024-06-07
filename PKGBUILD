@@ -4,15 +4,15 @@
 _base=algopy
 pkgname=python-${_base}
 pkgdesc="A library for Automatic Differentation in Python"
-pkgver=0.5.7
-pkgrel=2
+pkgver=0.6.1
+pkgrel=1
 arch=(any)
 url="https://pythonhosted.org/${_base}"
 license=('custom')
 depends=(python-scipy)
 makedepends=(python-build python-installer python-setuptools python-wheel)
-source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.zip)
-sha512sums=('1d2cb62154f7bc344605e2db1d90125a76b93e99628056ef007a27b05546d0af3e1d52587dc3217d03118f8dddac298742c303ae9d39185ab33375e56ae3a1ba')
+source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
+sha512sums=('52101dca9473ff91297fe7e070b1906e3fe72c654b18941e425f0b1712ca78dd9583e5ecd2f5da59ee4d93b511fa20c515f3d53c8402bdf58dbbe294f274f952')
 
 build() {
   cd ${_base}-${pkgver}
