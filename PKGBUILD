@@ -3,7 +3,7 @@
 
 pkgname=lime3ds-git
 pkgver=r10380.ab99fff
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc='An experimental open-source Nintendo 3DS emulator/debugger'
 url='https://github.com/Lime3DS/Lime3DS'
@@ -147,4 +147,5 @@ build() {
 
 package() {   
     DESTDIR="$pkgdir/" ninja -C build install
+    rm -rf $pkgdir/usr/include/enet
 }
