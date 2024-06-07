@@ -9,7 +9,7 @@ arch=("x86_64" "i686")
 url="https://github.com/mov-cli/mov-cli-youtube"
 license=("MIT")
 makedepends=(
-	"python-build" "python-setuptools-scm" "python-wheel"
+	"python-build" "python-wheel" "python-installer"
 )
 depends=(
 	"python"
