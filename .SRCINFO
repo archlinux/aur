@@ -1,7 +1,7 @@
 pkgbase = spacedrive-bin
 	pkgdesc = A file manager from the future.
 	pkgver = 0.3.1
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://spacedrive.com
 	arch = x86_64
@@ -19,6 +19,8 @@ pkgbase = spacedrive-bin
 	depends = gdk-pixbuf2
 	depends = libheif
 	depends = onnxruntime
+	depends = webkit2gtk-4.1
+	depends = xdotool
 	provides = spacedrive
 	conflicts = spacedrive
 	source = https://github.com/spacedriveapp/spacedrive/releases/download/0.3.1/Spacedrive-linux-x86_64.deb
