@@ -1,3 +1,5 @@
 [python-pynamodb]
 source = "pypi"
 pypi = "pynamodb"
+# 6.x breaks python-aws-xray-sdk https://github.com/aws/aws-xray-sdk-python/issues/436
+include_regex = "^5\\..*"

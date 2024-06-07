@@ -3,7 +3,6 @@
 pkgname=python-pynamodb
 # https://pynamodb.readthedocs.io/en/latest/release_notes.html
 # https://github.com/pynamodb/PynamoDB/releases
-# UPDATE_BLOCKED: breaks python-aws-xray-sdk
 pkgver=5.5.1
 pkgrel=2
 pkgdesc="A pythonic interface to Amazon's DynamoDB"
