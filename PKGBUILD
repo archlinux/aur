@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=datawizard
-_pkgver=0.10.0
+_pkgver=0.11.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Easy Data Wrangling and Statistical Transformations"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -29,6 +29,7 @@ optdepends=(
   r-knitr
   r-lme4
   r-mediation
+  r-modelbased
   r-parameters
   r-poorman
   r-psych
@@ -44,8 +45,8 @@ optdepends=(
   r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e40af4bc6c0a49b3696229b08a803b7e')
-b2sums=('150fd8e2c2c878047e20a1450d55cba04f959539306494a15f86763d8056840eeab9efc9885efa5b9e326fdaad59e5afccb0f76b49dc860c0d1992530fac86f1')
+md5sums=('d4450c7a7fef09c2a51c382294d79c7f')
+b2sums=('4c32cf5f312d6b06633dc30077eb128f22b8e3d2ddf774923155f0b1fefe4e172e2bff798fda59037896ba0a190001e4e36586c6ef099b9045d6743617574162')
 
 build() {
   mkdir build
