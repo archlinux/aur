@@ -33,7 +33,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
 
-	cmake --build build
+  cmake --build build
 }
 
 package() {
