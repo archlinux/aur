@@ -1,7 +1,7 @@
 # Maintainer: Khorne <khorne@khorne.me>
 pkgname=python-pinecil
 _name=${pkgname##python-}_lib
-pkgver=0.2.14
+pkgver=0.2.15
 pkgrel=1
 pkgdesc="A python interface for Pinecil V2 controls and settings."
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python' 'python-bleak')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-poetry')
 source=("${_name}-${pkgver}.tar.gz::https://github.com/builder555/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ce7dfa49ecd2dabab667ac717729e070b7a482b6dba3cb7b70e69b5efd40ca02')
+sha256sums=('29e3506e7eef481660edacc8e437189b1fe9885318cb82636b0ca084b3fe46ce')
 
 build() {
     cd "${_name}-${pkgver}"
