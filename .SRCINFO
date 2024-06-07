@@ -7,6 +7,7 @@ pkgbase = zectl-git
 	license = MIT
 	makedepends = make
 	makedepends = cmake
+	makedepends = scdoc
 	depends = zfs
 	provides = zectl
 	conflicts = zectl
@@ -14,4 +15,3 @@ pkgbase = zectl-git
 	sha256sums = SKIP
 
 pkgname = zectl-git
-

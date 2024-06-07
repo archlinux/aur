@@ -2,14 +2,14 @@
 
 pkgname=zectl-git
 _pkgname=${pkgname%-git}
-pkgver=r121.958f45f
+pkgver=r157.a85e729
 pkgrel=1
 pkgdesc="ZFS Boot Environment manager"
 url="http://github.com/johnramsden/${_pkgname}"
 arch=('any')
 license=('MIT')
 depends=('zfs')
-makedepends=('make' 'cmake')
+makedepends=('make' 'cmake' 'scdoc')
 provides=('zectl')
 
 conflicts=("${_pkgname}")
