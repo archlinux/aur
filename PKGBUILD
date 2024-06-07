@@ -1,4 +1,4 @@
-# Maintainer: Ananas <ananas@r3tr0ananas.pro>
+# Maintainer: Ananas <ananas@ananas.moe>
 # Maintainer: Goldy <goldy@devgoldy.xyz>
 _pkgname=mov-cli-media-server
 pkgname=python-mov-cli-ms
@@ -9,7 +9,7 @@ arch=("x86_64" "i686")
 url="https://github.com/mov-cli/mov-cli-media-server"
 license=("MIT")
 makedepends=(
-	"python-build" "python-wheel"
+	"python-build" "python-wheel" "python-installer"
 )
 depends=(
 	"python"

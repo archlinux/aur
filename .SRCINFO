@@ -7,6 +7,7 @@ pkgbase = python-mov-cli-ms
 	license = MIT
 	makedepends = python-build
 	makedepends = python-wheel
+	makedepends = python-installer
 	depends = python
 	provides = mov-cli-ms
 	source = python-mov-cli-ms-1.0.0.zip::https://github.com/mov-cli/mov-cli-media-server/archive/refs/tags/1.0.0.zip
