@@ -2,32 +2,26 @@
 # Contributor: Jonian Guveli <https://github.com/jonian/>
 pkgname=gnome-shell-extension-bluetooth-quick-connect
 _uuid=bluetooth-quick-connect@bjarosze.gmail.com
-pkgver=48
+pkgver=49
 pkgrel=1
 pkgdesc="Allow to connect Bluetooth paired devices from GNOME control panel."
 arch=('any')
 url="https://github.com/Extensions-Valhalla/gnome-bluetooth-quick-connect"
 license=('GPL-3.0-or-later')
 depends=('gnome-shell' 'bluez-utils')
-makedepends=('git' 'pnpm' 'zip')
-_commit=4f532dad9743b7249c416f698cc7e25d827f2fc5  #  tags/v48^0
-source=("git+https://github.com/Extensions-Valhalla/gnome-bluetooth-quick-connect.git#commit=${_commit}")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd gnome-bluetooth-quick-connect
-  git describe --tags | sed 's/^v//;s/-/+/g'
-}
+makedepends=('pnpm' 'zip')
+source=("gnome-bluetooth-quick-connect-v$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('179daa3400e6200a7c7ddd2f241dbc6719d11ff1d946d8d77330a0a0393ee9da')
 
 build() {
-  cd gnome-bluetooth-quick-connect
+  cd gnome-bluetooth-quick-connect-$pkgver
   export PNPM_HOME="$srcdir/pnpm-home"
-  pnpm i
+  pnpm install
   pnpm build
 }
 
 package() {
-  cd gnome-bluetooth-quick-connect
+  cd gnome-bluetooth-quick-connect-$pkgver
   install -d "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"
   bsdtar -xvf "dist/${_uuid}.shell-extension.zip" -C \
     "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/" --no-same-owner
@@ -37,6 +31,5 @@ package() {
   install -Dm644 dist/schemas/org.gnome.shell.extensions.bluetooth-quick-connect.gschema.xml -t \
     "$pkgdir/usr/share/glib-2.0/schemas/"
 
-  # Extension expects schema to be in extension directory
-#  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas"
+  rm -rv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas"
 }
