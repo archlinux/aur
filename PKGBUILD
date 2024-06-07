@@ -1,10 +1,10 @@
-# Maintainer: Latif Sulistyo <latipun@aur.archlinux.org>
+# Maintainer: Catppuccin <releases@catppuccin.com>
 
 # shellcheck disable=2034,2154
 # shellcheck shell=bash
 
 pkgname=papirus-folders-catppuccin-git
-pkgver=r19.5b1e93fa
+pkgver=r27.667f3e7a
 pkgrel=1
 pkgdesc="Soothing pastel theme for Papirus Icon Theme folders"
 arch=("any")
@@ -20,9 +20,9 @@ source=("$pkgname::git+$url.git"
   "_papirus-folders"
   "papirus-folders")
 md5sums=('SKIP'
-  '181116893c90218ac0be9de66009b249'
-  '11377cc7005e1457042af56b1611a8c4'
-  '47cf0a071bfd2977e4db36998fbadbce')
+         '2acbe66d274f220ce1beb47fadcfbec0'
+         '7b1e8e8bd907eb21f67b4b7a78d060a0'
+         '6d050ecde3af37ce74a4a89cdc35990d')
 
 pkgver() {
   cd "$srcdir/$pkgname" || exit 1

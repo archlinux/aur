@@ -1,6 +1,6 @@
 pkgbase = papirus-folders-catppuccin-git
 	pkgdesc = Soothing pastel theme for Papirus Icon Theme folders
-	pkgver = r19.5b1e93fa
+	pkgver = r27.667f3e7a
 	pkgrel = 1
 	url = https://github.com/catppuccin/papirus-folders
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = papirus-folders-catppuccin-git
 	source = _papirus-folders
 	source = papirus-folders
 	md5sums = SKIP
-	md5sums = 181116893c90218ac0be9de66009b249
-	md5sums = 11377cc7005e1457042af56b1611a8c4
-	md5sums = 47cf0a071bfd2977e4db36998fbadbce
+	md5sums = 2acbe66d274f220ce1beb47fadcfbec0
+	md5sums = 7b1e8e8bd907eb21f67b4b7a78d060a0
+	md5sums = 6d050ecde3af37ce74a4a89cdc35990d
 
 pkgname = papirus-folders-catppuccin-git
