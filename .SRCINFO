@@ -1,0 +1,23 @@
+pkgbase = leser-git
+	pkgdesc = 一个现代风格的 RSS 跨平台桌面客户端
+	pkgver = r127.accb6a5
+	pkgrel = 1
+	url = https://github.com/KangodYan/leser
+	arch = any
+	license = LicenseRef-unknown
+	makedepends = npm
+	makedepends = git
+	makedepends = nvm
+	makedepends = gendesk
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = curl
+	depends = electron28
+	provides = leser=r127.accb6a5
+	conflicts = leser
+	source = leser.git::git+https://github.com/KangodYan/leser.git
+	source = leser.sh
+	sha256sums = SKIP
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+
+pkgname = leser-git
