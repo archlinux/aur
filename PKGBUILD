@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=cba
-_pkgver=0.2-23
+_pkgver=0.2-24
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Clustering for Business Analytics"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -17,8 +17,8 @@ optdepends=(
   r-gclus
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9033b1aa0baa6137fe64575dfbcd4ca3')
-b2sums=('ba648b022b925981253e225fa1b4a18319186ec604fde5b962ca9849cb1222217b9048df57ac679cff7eedf416753e7f49d811c62cd8e7002b336c37b4644756')
+md5sums=('6e5861366f7c567c64ed74e276ca482e')
+b2sums=('416f54e6060ada9f95346080275c5d3840a6758abc7bd84a814772de1139523392a373fbe29bc54222ca0551b86e3a204ece3f636375253e9bd8d19deefecffd')
 
 build() {
   mkdir build
