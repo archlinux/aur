@@ -3,7 +3,7 @@
 
 pkgname=kubeshark-bin
 pkgdesc="Kubeshark is an API Traffic Analyzer for Kubernetes."
-pkgver=52.1.66
+pkgver=52.3.62
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/kubeshark/kubeshark"
@@ -11,8 +11,8 @@ license=('apache')
 conflicts=('kubeshark')
 provides=('kubeshark')
 
-sha256sums_x86_64=('f1987f71e2b8bb61cf3ffcc54966cac333513168bb87107fefac537dd4a78e66')
-sha256sums_aarch64=('69164237fb1579bb1ecf5142d2a775d8cd96848c311707fe4643f5e4290887b9')
+sha256sums_x86_64=('8be2229dc64856f4b57d2fdff3830f2e500b9dc3ee2ebdd1edc18c245f80e608')
+sha256sums_aarch64=('8be2229dc64856f4b57d2fdff3830f2e500b9dc3ee2ebdd1edc18c245f80e608')
 
 source_x86_64=(
     "${pkgname}-${pkgver}::https://github.com/kubeshark/kubeshark/releases/download/v${pkgver}/kubeshark_linux_amd64"
