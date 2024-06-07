@@ -1,6 +1,6 @@
 pkgbase = napture-git
 	pkgdesc = An alternative for the World Wide Web
-	pkgver = 1.0.0
+	pkgver = r365.18941be
 	pkgrel = 1
 	url = https://github.com/face-hh/webx
 	arch = x86_64
