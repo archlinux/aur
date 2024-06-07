@@ -1,6 +1,6 @@
 pkgbase = mozc-with-jp-dict
-	pkgver = 2.30.5448.102
-	pkgrel = 14
+	pkgver = 2.30.5490.102
+	pkgrel = 1
 	url = https://github.com/fcitx/mozc
 	arch = x86_64
 	license = Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND LGPL-3.0-only AND MIT AND NAIST-2003
@@ -18,14 +18,14 @@ pkgbase = mozc-with-jp-dict
 	makedepends = ibus
 	makedepends = rustup
 	options = !lto
-	source = git+https://github.com/fcitx/mozc.git#commit=673563f654abe25007c27ee76f7b3fdee8414fe2
+	source = git+https://github.com/fcitx/mozc.git#commit=8acc79f6e82dedaa5515da751fd7277e677ea02f
 	source = https://github.com/fcitx/mozc/pull/61.patch
 	source = git+https://github.com/phoepsilonix/mozcdict-ext.git#commit=de931271344ebb2d1349a7ae0a8ec883457ed930
 	source = http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20240409/small_lex.zip
 	source = http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20240409/core_lex.zip
 	source = http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20240409/notcore_lex.zip
 	source = LICENSE-SudachiDict::https://github.com/WorksApplications/SudachiDict/raw/develop/LEGAL
-	sha512sums = dde802343204f267064b064c0c115bf5c3b2385c27f85a0f3ca9fcdaaf3b9654f28bed5b296f1e7440186a01a29368bb09f786c7ba363e58c6e7ea28820dd442
+	sha512sums = 1df9e7fa5802f2cda2c085ba95fa30b5a63599aeb7702d1c035e1974237a5570be28360fabc1ae8773dfdccdde47bd4b71a6232cd8d7d5f7876a641899f44974
 	sha512sums = 9f88e7926a8db772856049c3e8d8066ca5e663d46817f432b042d212aa4ab20ed660ab9da9fed181c80116f6900602f753f7c55e9894b69964b0a2fb7518b830
 	sha512sums = fcde4a3c0200969ebb21fa927f1ff59581386a39d83ea7ec5c0092e1566c38638129b71b286434e11fb4c6b76b48d6b36eb64b053306c2bbb8a7900e2c641558
 	sha512sums = a293c3c9b544acd49bec4809e0c7c8c6849afe5d09d19ffeb094983e10e5dddbc780aefa6bcae48b4ee586549a88a5c1fa9f244d1ce1f4e5effc2f8d6c806ce6
