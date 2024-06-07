@@ -2,13 +2,13 @@
 pkgname=vpkedit-git
 pkgver=4.2.2.r0.g8b0c6dd
 epoch=1
-pkgrel=1
+pkgrel=2
 pkgdesc="A library and tool to create, read, and write Valve VPK archives"
 arch=('x86_64')
 url="https://github.com/craftablescience/VPKEdit"
 license=('MIT')
 depends=('gcc-libs' 'glibc' 'qt6-base' 'hicolor-icon-theme')
-makedepends=('cmake' 'git' 'gcc')
+makedepends=('cmake' 'git' 'clang' 'qt6-tools')
 optdepends=('qt6-wayland: Wayland support')
 conflicts=('vpkedit' 'vpkedit-bin')
 replaces=('vpkedit')
@@ -72,7 +72,9 @@ build() {
 	-S "$pkgname" \
 	-DCMAKE_INSTALL_PREFIX=/usr/lib/$pkgname \
 	-DCMAKE_BUILD_TYPE=None \
-	-DVPKEDIT_BUILD_LIBC=OFF
+	-DVPKEDIT_BUILD_LIBC=OFF \
+	-DCMAKE_C_COMPILER=clang \
+	-DCMAKE_CXX_COMPILER=clang++
 
 	cmake --build build
 }
