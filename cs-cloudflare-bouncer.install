@@ -13,8 +13,8 @@ post_install() {
   envsubst < "$TMP" | tee /etc/crowdsec/bouncers/crowdsec-cloudflare-bouncer.yaml >/dev/null
 
   # Substitute vars in systemd service
-  CONFIG_DIR=/etc/crowdsec/bouncers
-  export CONFIG_DIR
+  CFG=/etc/crowdsec/bouncers
+  export CFG
   BIN=/usr/bin/crowdsec-cloudflare-bouncer
   export BIN
 

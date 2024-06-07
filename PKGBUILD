@@ -2,7 +2,7 @@
 pkgname=crowdsec-cloudflare-bouncer
 pkgver=0.3.0.rc2
 _pkgver_internal=0.3.0-rc2
-pkgrel=1
+pkgrel=2
 pkgdesc="CrowdSec bouncer for Cloudflare"
 arch=('x86_64')
 url="https://doc.crowdsec.net/docs/bouncers/cloudflare"
