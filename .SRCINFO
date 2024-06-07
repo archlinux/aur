@@ -1,0 +1,21 @@
+pkgbase = grafterm-bin
+	pkgdesc = Metrics dashboards on terminal (a grafana inspired terminal version)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/slok/grafterm
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = Apache
+	provides = grafterm
+	conflicts = grafterm
+	source = grafterm-0.2.0::https://github.com/slok/grafterm/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 00832f5f9882afead6048be8c6221f3ddd95325376b370b7f25b87cc4d840b21
+	source_x86_64 = grafterm::https://github.com/slok/grafterm/releases/download/v0.2.0/grafterm-linux-amd64
+	sha256sums_x86_64 = 9ce9a95394a5c53bab322421ef1cde8df1badc589c71baee4fece7b5ecd03bbe
+	source_aarch64 = grafterm::https://github.com/slok/grafterm/releases/download/v0.2.0/grafterm-linux-arm64
+	sha256sums_aarch64 = b6e97b0b73b60ac8d36d5580384b8a706af0ba6bd0ae198a28980849b045ffa5
+	source_armv7h = grafterm::https://github.com/slok/grafterm/releases/download/v0.2.0/grafterm-linux-arm-v7
+	sha256sums_armv7h = 45d3ed9fd78a7c294c2f44fe53919748b5b02c4e44ad1ea0e5f430133e2b4a92
+
+pkgname = grafterm-bin
