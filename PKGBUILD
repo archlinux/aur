@@ -1,6 +1,6 @@
 # Maintainer: wilke
 pkgname=harsh-bin
-pkgver=0.9.1
+pkgver=0.10.2
 pkgrel=0
 pkgdesc="CLI habit tracking for geeks"
 arch=('any')
@@ -12,13 +12,13 @@ conflicts=('harsh')
 
 case "$CARCH" in
     x86_64) _pkgarch="x86_64"
-	sha256sums=('f80cd8e525e4c1a072e372a67149e64509b1ba7079a1faa947b0bf97e73f2010')
+	sha256sums=('f649a07fe576416f6a3e28435e99518a257ee4458aef5fcf82c8d7ea05fee18f')
            ;;
     armv64h) _pkgarch="arm64"
-	sha256sums=('fb1f56a6280e6ba0bda0b94ef8895c325d5c4b1b7dd6f55632ca69b939eca0b3')
+	sha256sums=('8cb040c7df7eace78d32e0cabf22d6af83bc1f93599c37da6828762c5d199f9e')
            ;;
     i686) _pkgarch="i386"
-	sha256sums=('9a7b96eaab591602f610a801014653f0452a5dd5ebb16f6e7b531f36be0ebe91')
+	sha256sums=('0a3245f2f350de6353e920e2928686fa8a6e7037e76e98e9140726fd7d7b388e')
            ;;
 esac
 
