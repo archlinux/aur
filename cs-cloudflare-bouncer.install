@@ -26,6 +26,18 @@ post_install() {
   echo -e "Make sure to set your Cloudflare credentials in /etc/crowdsec/bouncers/crowdsec-cloudflare-bouncer.yaml,\n then start/enable the service crowdsec-cloudflare-bouncer.service"
 }
 
+post_upgrade() {
+  # Substitute vars in systemd service
+  CFG=/etc/crowdsec/bouncers
+  export CFG
+  BIN=/usr/bin/crowdsec-cloudflare-bouncer
+  export BIN
+
+  TMP=$(mktemp -p /tmp/)
+  install -m600 /usr/lib/systemd/system/crowdsec-cloudflare-bouncer.service "$TMP"
+  envsubst < "$TMP" | tee /usr/lib/systemd/system/crowdsec-cloudflare-bouncer.service >/dev/null
+}
+
 post_remove() {
   if ! cscli bouncers remove crowdsec-cloudflare-bouncer --error; then
     echo -e "\nDon't forget to uninstall the plugin!"

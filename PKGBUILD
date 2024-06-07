@@ -2,7 +2,7 @@
 pkgname=crowdsec-cloudflare-bouncer
 pkgver=0.3.0.rc2
 _pkgver_internal=0.3.0-rc2
-pkgrel=2
+pkgrel=3
 pkgdesc="CrowdSec bouncer for Cloudflare"
 arch=('x86_64')
 url="https://doc.crowdsec.net/docs/bouncers/cloudflare"
@@ -17,7 +17,7 @@ makedepends=(
   'gettext'
 )
 backup=(
-  etc/crowdsec/bouncers/crowdsec-cloudflare-bouncer.conf
+  etc/crowdsec/bouncers/crowdsec-cloudflare-bouncer.yaml
 )
 install=cs-cloudflare-bouncer.install
 source=(
