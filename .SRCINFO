@@ -1,11 +1,11 @@
 pkgbase = libosmocore-git
 	pkgdesc = Osmocom core library
-	pkgver = 1.9.0.r144.911d487ea
+	pkgver = 1.9.0.r208.10d4d119e
 	pkgrel = 1
 	url = https://osmocom.org/projects/libosmocore/wiki/Libosmocore
 	arch = x86_64
 	arch = i686
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = git
 	makedepends = python
 	depends = pcsclite

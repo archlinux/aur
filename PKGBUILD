@@ -2,12 +2,12 @@
 # Contributor: Michal Krenek (Mikos) <m.krenek@gmail.com>
 
 pkgname=libosmocore-git
-pkgver=1.9.0.r144.911d487ea
+pkgver=1.9.0.r208.10d4d119e
 pkgrel=1
 pkgdesc="Osmocom core library"
 arch=('x86_64' 'i686')
 url="https://osmocom.org/projects/libosmocore/wiki/Libosmocore"
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('pcsclite' 'talloc' 'libusb' 'lksctp-tools' 'libmnl' 'gnutls' 'systemd-libs' 'liburing')
 makedepends=('git' 'python')
 conflicts=('libosmocore')
