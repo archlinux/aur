@@ -5,7 +5,7 @@
 
 pkgname=radium
 pkgver=7.3.84
-pkgrel=1
+pkgrel=2
 pkgdesc='A graphical music editor. A next generation tracker.'
 arch=(x86_64)
 url=https://users.notam02.no/~kjetism/radium
@@ -59,10 +59,9 @@ makedepends=(
   libxinerama
   libxkbfile
   libxrandr
-  llvm15
-  clang15
   qt5-tools
   vst2sdk
+  gcc13
 )
 optdepends=(
   'new-session-manager: for session management'
@@ -77,17 +76,22 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/kmatheussen/radium/archive/
 )
 sha256sums=('99d42a56491812cbc04fa14f463588740eb2bed8c2f58eadd6e8f45b239fd3f6'
             'f627730ff7a819e8cc5ac5c2b5f1fb2f2237327db6ea5442c55a23c1ce82ef14'
-            '0decfc3adcba836004ac34d970a83d4d0b69743334a586f42be53b3de7bdd5a4'
+            'SKIP'
            )
 install=radium.install
 
 prepare() {
   cd radium-$pkgver
 
-  # use llvm15 to compile
   export PATH=$(pwd):$PATH
-  ln -sf /usr/lib/llvm15/bin/clang clang
-  ln -sf /usr/bin/llvm-config-15 llvm-config
+
+  # use gcc13 ...
+  ln -sf /usr/bin/cc-13 cc
+  ln -sf /usr/bin/gcc-13 gcc
+  ln -sf /usr/bin/c++-13 c++
+  ln -sf /usr/bin/g++-13 g++
+
+  export CC=gcc-13 CXX=g++-13
 
   # fix for binutils 2.40
   patch -p0 < "$srcdir/build_linux_common.patch"
@@ -100,15 +104,23 @@ prepare() {
   for file in bin/sounds/*.RAD; do sed -i -e 's/Calf MultiChorus LADSPA/Calf Multi Chorus LADSPA/g' "$file"; done
   sed -ie "s/C\* Eq - 10-band equalizer/C\* Eq10 - 10-band equaliser/g" bin/sounds/ROMANCE2.RAD 
   # See comment on calf-ladspa AUR page then on how to let Radium load Calf from LMMS package 
+
+  #sed -i "/cd libpd-master/s|$|\nsed -i '/g_canvas.h/s/$/\\\n    #include \"g_magicglass.h\"/' pure-data/src/g_editor.c|" bin/packages/build.sh
+  #sed -i "/cd libpd-master/s|$|\nsed -i '/^CFLAGS/s/=/= -Wno-error=implicit-function-declaration/' Makefile |" bin/packages/build.sh
+  #      ###sed -ne "/^CFLAGS/s/=/= -Wno-error=implicit-function-declaration/p" Makefile 
+  sed -i "/cd libpd-master/s|$|\nsed -i '/LINUXCFLAGS/s/=/= --Wno-error=implicit-function-declaration/' pure-data/extra/makefile |" bin/packages/build.sh
+  #      ###bin/packages/libpd-master/pure-data/extra$ sed -ne "/LINUXCFLAGS/s/=/= --Wno-error=implicit-function-declaration/p" makefile
+  sed -i "/cd libpd-master/s|$|\nsed -i '/define CFLAGS/s/-Wall/-Wall -Wno-error=implicit-function-declaration/' make.scm |" bin/packages/build.sh
+	###bin/packages/libpd-master$ sed -ne "/define CFLAGS/s/-Wall/-Wall --Wno-error=implicit-function-declaration/p" make.scm 
 }
 
 build() {
   cd radium-$pkgver
   export PATH=$(pwd):$PATH
-	export INCLUDE_FAUSTDEV_BUT_NOT_LLVM=1
+  export INCLUDE_FAUSTDEV_BUT_NOT_LLVM=1
 
-  RADIUM_QT_VERSION=5 RADIUM_VST2SDK_PATH=/usr/include/vst36 RADIUM_BUILD_LIBXCB=0 make packages
-  RADIUM_QT_VERSION=5 RADIUM_VST2SDK_PATH=/usr/include/vst36 BUILDTYPE=RELEASE ./build_linux.sh
+  RADIUM_QT_VERSION=5 RADIUM_VST2SDK_PATH=/usr/src/vst2sdk RADIUM_BUILD_LIBXCB=0 make packages
+  RADIUM_QT_VERSION=5 RADIUM_VST2SDK_PATH=/usr/src/vst2sdk BUILDTYPE=RELEASE ./build_linux.sh
 }
 
 package() {
