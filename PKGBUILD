@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=tbls
-pkgver=1.75.0
+pkgver=1.76.0
 pkgrel=1
 pkgdesc="CI-Friendly tool for documenting a database"
 arch=(x86_64)
@@ -10,17 +10,17 @@ license=(MIT)
 makedepends=(go)
 depends=(glibc)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('54ef5a6688af522f2bc88f9e2bfe7f45ab1595aa10e54036b140cb241bef313f')
+sha256sums=('ceb4129fe661079495e096ba0e2f324eaabfb598300c9c4fbfe594fc931d99d1')
 
 _archive="$pkgname-$pkgver"
 
 build() {
   cd "$_archive"
 
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS} -Wno-format-security -Wno-error=format-security"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
+  export CGO_CPPFLAGS="$CPPFLAGS"
+  export CGO_CFLAGS="$CFLAGS -Wno-format-security -Wno-error=format-security"
+  export CGO_CXXFLAGS="$CXXFLAGS"
+  export CGO_LDFLAGS="$LDFLAGS"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
   go build -v -buildvcs=false
@@ -39,7 +39,7 @@ check() {
 package() {
   cd "$_archive"
 
-  install -Dm755 tbls "$pkgdir/usr/bin/tbls"
+  install -Dm755 -t "$pkgdir/usr/bin" tbls
 
   install -Dm644 tbls.bash "$pkgdir/usr/share/bash-completion/completions/tbls"
   install -Dm644 tbls.fish "$pkgdir/usr/share/fish/vendor_completions.d/tbls.fish"
