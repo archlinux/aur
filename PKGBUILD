@@ -2,7 +2,7 @@
 
 pkgname=telegram-bot-api
 pkgver=7.4
-pkgrel=2
+pkgrel=3
 _commit=831968def2449efd9bbf630d8bd0296fa456db2d
 _td_commit=fab354add5a257a8121a4a7f1ff6b1b9fa9a9073
 pkgdesc="Telegram Bot API server"
@@ -40,6 +40,4 @@ package() {
   cd telegram-bot-api
 
   DESTDIR="$pkgdir" cmake --install build
-
-  install -Dm 644 "LICENSE_1_0.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

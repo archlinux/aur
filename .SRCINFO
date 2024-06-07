@@ -1,7 +1,7 @@
 pkgbase = telegram-bot-api
 	pkgdesc = Telegram Bot API server
 	pkgver = 7.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://core.telegram.org/bots
 	arch = x86_64
 	license = BSL-1.0
