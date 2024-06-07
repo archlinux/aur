@@ -1,6 +1,6 @@
 # Maintainer: aeris <aeris+aur@imirhil.fr>
 pkgname=website-auditing-tool
-pkgver=1.1.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="Tool to collect evidence, analyse them and generate reports regarding trackers that are being used by websites. It is intended to be used to facilitate website inspections."
 arch=(any)
@@ -13,7 +13,7 @@ source=(
 	electron-disable-deb.patch
 	"$pkgname.desktop"
 )
-sha256sums=('fe5d006e3714720e8e071e218dd53f54e8e41412fa73da8072865f854b180302'
+sha256sums=('e0d78162e800e2e2b259e0b1bd4dd1bdad3f51d6c168ff8592a1db3ea28de4d8'
             'c08c969fdba6868729cf7c39abd7b797f52cd36391666df1509cd7576f6e558e'
             '6e7c6ee07e476996b72e9ad51dbe5d8515c2be853204b1d35bd83d857fe19392')
 
