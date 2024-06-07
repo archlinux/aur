@@ -3,12 +3,12 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=blocky
-pkgver=0.23
-pkgrel=2
+pkgver=0.24
+pkgrel=1
 pkgdesc="Fast and lightweight DNS proxy as ad-blocker"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/0xERR0R/blocky"
-license=('Apache')
+license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go')
 backup=('etc/blocky.yml')
@@ -18,7 +18,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 	'blocky.sysusers'
 	'blocky.yml'
 )
-b2sums=('4dd8b4a9587ed2b768ff2cf8809e14242032d7e8be3d3c422eb5518df33c32c0f767ba8e7490f353e81ede8c150cf3175621ea35ad3aa682f62c7d169c511b63'
+b2sums=('ec6ddbdab6f77f039e5b79e4092239ae17b003659e02bcf4d81a6371be5e5f3c9f5cc071b3a2b8ad6d0a5cc11834da5ef618445288ba1f3ae8306f8629931cbf'
 	'b352c4dceb87892d291764c00d294dff50e3701b3eecc4c1573b1200fb5676e8ef19af842b11663080354aff087a59a72f11074533b4aa60e6a505edd52aad65'
 	'9641b73253d80a8f64fdd1c10a35ae7631e9eec8d2feda3214836af7634fc0d33d55a5b150912996b3380ef9242b17fbb2a847557b68bf5b657da68eb7d8321c'
 	'39ad1c530ea0abc3d166880c2e8cc6b1dd266531a131bef8cd5a5ea0208b4d361f3e98d07a8b26af8517cddb34cbfadc37ae175337befa673f073ae744f40633'
@@ -27,7 +27,7 @@ b2sums=('4dd8b4a9587ed2b768ff2cf8809e14242032d7e8be3d3c422eb5518df33c32c0f767ba8
 prepare() {
 	cd "$pkgname-$pkgver"
 	echo ":: Downloading Go modules..."
-	go mod download
+	go mod download -x
 }
 
 build() {
