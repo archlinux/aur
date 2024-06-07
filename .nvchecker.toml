@@ -1,0 +1,5 @@
+[python-pinecil]
+source = "github"
+github = "builder555/pinecil_lib"
+use_latest_release = true
+prefix = "v"
