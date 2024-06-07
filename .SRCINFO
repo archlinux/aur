@@ -21,6 +21,7 @@ pkgbase = ffplayout-git
 	replaces = ffplayout-unstable-git
 	options = !lto
 	backup = etc/ffplayout/ffplayout.toml
+	backup = etc/ffplayout/channel*
 	backup = etc/ffplayout/advanced.toml
 	source = ffplayout-git::git+https://github.com/ffplayout/ffplayout.git
 	source = ffplayout.install
