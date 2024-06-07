@@ -1,12 +1,12 @@
 pkgbase = apache-lucene
 	pkgdesc = Apache Lucene is a high-performance, full-featured text search engine library written entirely in Java.
-	pkgver = 9.10.0
+	pkgver = 9.11.0
 	pkgrel = 1
 	url = https://lucene.apache.org/
 	arch = any
 	license = Apache
 	depends = java-runtime
-	source = https://downloads.apache.org/lucene/java/9.10.0/lucene-9.10.0.tgz
-	sha256sums = c57b75ee0ea12b54337967b7854ebd12af3d7bad27245c1dc12a167ce2b1f8a7
+	source = https://downloads.apache.org/lucene/java/9.11.0/lucene-9.11.0.tgz
+	sha256sums = d484d1ec41aed7957c1a165d027573425711b9b2d4582414a9c7928adb53be40
 
 pkgname = apache-lucene
