@@ -1,0 +1,20 @@
+pkgbase = nsp-git
+	pkgdesc = New Serbian Translation Bible on the Command Line
+	pkgver = r9.6a69f7f
+	pkgrel = 1
+	url = https://github.com/tunalad/nsp
+	arch = any
+	license = The Unlicense
+	makedepends = git
+	depends = bash
+	depends = coreutils
+	depends = gawk
+	depends = sed
+	depends = ncurses
+	depends = tar
+	optdepends = less: for better preview
+	provides = nsp
+	source = nsp::git+https://github.com/tunalad/nsp.git
+	md5sums = SKIP
+
+pkgname = nsp-git
