@@ -2,13 +2,13 @@
 pkgbase=vpkedit
 pkgname=(vpkedit libvpkeditc)
 pkgver=4.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A library and CLI/GUI tool to create, read, and write several pack file formats"
 arch=('x86_64')
 url="https://github.com/craftablescience/VPKEdit"
 license=('MIT')
 depends=('gcc-libs' 'glibc')
-makedepends=('cmake' 'git' 'gcc' 'qt6-tools')
+makedepends=('cmake' 'git' 'clang' 'qt6-tools')
 source=("$pkgname::git+$url.git#tag=v${pkgver}"
 	"argparse::git+https://github.com/p-ranav/argparse.git"
 	"saap::git+https://github.com/craftablescience/SteamAppPathProvider.git"
@@ -60,7 +60,9 @@ build() {
 	-S "$pkgname" \
 	-DCMAKE_INSTALL_PREFIX=/usr/lib/$pkgname \
 	-DCMAKE_BUILD_TYPE=None \
-	-DVPKEDIT_BUILD_LIBC=ON
+	-DVPKEDIT_BUILD_LIBC=ON \
+	-DCMAKE_C_COMPILER=clang \
+	-DCMAKE_CXX_COMPILER=clang++
 
 	cmake --build build
 }
