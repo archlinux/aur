@@ -1,0 +1,18 @@
+pkgbase = python-nekos-git
+	pkgdesc = A Python module that uses Nekos API
+	pkgver = r19.e744f60
+	pkgrel = 1
+	url = https://github.com/Nekos-life/nekos.py
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	source = nekos::git+https://github.com/Nekos-life/nekos.py.git
+	sha256sums = SKIP
+
+pkgname = python-nekos-git
