@@ -1,16 +1,17 @@
 # Maintainer: Jay Chu <tothesong at gmail dot com>
-# Maintainer: Grafcube <grafcube at disroot dot org>
+# Maintainer: Berrit Birkner <aur at bbirkner dot de>
+# Contributor: Grafcube <grafcube at disroot dot org>
 
 _anki=anki
 _aqt=aqt
 _py=cp39
 
 pkgname=anki-bin
-pkgver=24.04.1
-pkgrel=2
+pkgver=24.06
+pkgrel=1
 pkgdesc='Helps you remember facts (like words/phrases in a foreign language) efficiently.
 Installed with wheel.'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://apps.ankiweb.net/'
 license=('AGPL3')
 depends=(
@@ -51,10 +52,10 @@ optdepends=(
 )
 provides=(anki=$pkgver)
 conflicts=(anki)
-_anki_whl="$_anki-$pkgver-$_py-abi3-manylinux_2_28_$arch.whl"
+_anki_whl_x86_64="$_anki-$pkgver-$_py-abi3-manylinux_2_28_x86_64.whl"
+_anki_whl_aarch64="$_anki-$pkgver-$_py-abi3-manylinux_2_31_aarch64.whl"
 _aqt_whl="$_aqt-$pkgver-py3-none-any.whl"
 source=(
-	"https://files.pythonhosted.org/packages/$_py/${_anki::1}/$_anki/$_anki_whl"
 	"https://files.pythonhosted.org/packages/py3/${_aqt::1}/$_aqt/$_aqt_whl"
 	"runanki-$pkgver.py::https://raw.githubusercontent.com/ankitects/anki/$pkgver/qt/runanki.py"
 	"anki-$pkgver.1::https://raw.githubusercontent.com/ankitects/anki/$pkgver/qt/bundle/lin/anki.1"
@@ -63,18 +64,26 @@ source=(
 	"anki-$pkgver.xml::https://raw.githubusercontent.com/ankitects/anki/$pkgver/qt/bundle/lin/anki.xml"
 	"anki-$pkgver.xpm::https://raw.githubusercontent.com/ankitects/anki/$pkgver/qt/bundle/lin/anki.xpm"
 )
+source_x86_64=(
+	"https://files.pythonhosted.org/packages/$_py/${_anki::1}/$_anki/$_anki_whl_x86_64"
+)
+source_aarch64=(
+	"https://files.pythonhosted.org/packages/$_py/${_anki::1}/$_anki/$_anki_whl_aarch64"
+)
 noextract=("${source[@]##*/}")
-sha256sums=('0ac1ffae65ee6e4f2a9e657de3311b04fa4166776b3ce89913539f7524f612a5'
-            '6b4814321e82e94c018d6f002543b148efe6a7c1d17c263f9660a97868f7baad'
+sha256sums=('8f32e8cbc184c1040b6f1b61a8cb5b1eab012f9e21fc99f7c7770d1b8db01a90'
             '9648e7e915f51f08e05c48ef5f39b4015922fe1cf3d7f2895535ef10ef4507ae'
             '8b9fec8fdf2897b4722f8cee169e9fb1e46cee90d3fb03ee12587e30c2f5dad7'
-            '53db2e5bfeb00aa249667e09466a34bfacb17b61097875a8cdd93ee1a9380b9a'
+            '3829ce614aaea9eb1e57abf4c269647cc87ccc6d4755c3b2563ce44e30992ae2'
             '97ad2134ef1a7686789c7becd8bd05dd8693cf0d3127951ca6ba7b29a80b402a'
             '2845a528fb3a064b67404a03d72bfaba9b421cb220b25228b815946c6553ce38'
             'd814c62e38246b6e4ba73ee037647a29675925167518137f05a8f9e60c258b6e')
+sha256sums_x86_64=('a3846b017ea62d86c3271dbc6b36f3a0d9fd98c064d21d93ea62758018df96c5')
+sha256sums_aarch64=('e9fe669cad4ce8b0856b84d2905f3e2d0363550c95618b881d3f5689a9c9c0f1')
+
 
 package() {
-	python -m installer --destdir="$pkgdir" $_anki_whl
+	python -m installer --destdir="$pkgdir" $(eval echo "\${_anki_whl_$CARCH}")
 	python -m installer --destdir="$pkgdir" $_aqt_whl
 
 	install -Dm755 runanki-$pkgver.py "$pkgdir/usr/bin/anki"
