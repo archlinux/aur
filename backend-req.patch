@@ -1,0 +1,38 @@
+diff --git a/backend/python/coqui/requirements.txt b/backend/python/coqui/requirements.txt
+index 24621f34..76670963 100644
+--- a/backend/python/coqui/requirements.txt
++++ b/backend/python/coqui/requirements.txt
+@@ -1,6 +1,6 @@
+ accelerate
+-TTS==0.22.0
++coqui-tts
+ grpcio==1.64.0
+ protobuf
+ certifi
+-transformers
+\ No newline at end of file
++transformers
+diff --git a/backend/python/transformers-musicgen/requirements.txt b/backend/python/transformers-musicgen/requirements.txt
+index 06588c5c..9ae586f1 100644
+--- a/backend/python/transformers-musicgen/requirements.txt
++++ b/backend/python/transformers-musicgen/requirements.txt
+@@ -3,5 +3,5 @@ transformers
+ grpcio==1.64.0
+ protobuf
+ torch
+-scipy==1.13.0
+-certifi
+\ No newline at end of file
++scipy
++certifi
+diff --git a/backend/python/transformers/requirements.txt b/backend/python/transformers/requirements.txt
+index 494a53fc..965f9e16 100644
+--- a/backend/python/transformers/requirements.txt
++++ b/backend/python/transformers/requirements.txt
+@@ -4,6 +4,3 @@ grpcio==1.64.0
+ protobuf
+ torch
+ certifi
+-intel-extension-for-transformers
+-bitsandbytes
+-setuptools==69.5.1 # https://github.com/mudler/LocalAI/issues/2406
