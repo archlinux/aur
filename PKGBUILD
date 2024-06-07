@@ -1,4 +1,4 @@
-# Maintainer: Ananas <ananas@r3tr0ananas.pro>
+# Maintainer: Ananas <ananas@ananas.moe>
 # Maintainer: Goldy <goldy@devgoldy.xyz>
 _pkgname=mov-cli-youtube
 pkgname=python-mov-cli-youtube
@@ -9,7 +9,7 @@ arch=("x86_64" "i686")
 url="https://github.com/mov-cli/mov-cli-youtube"
 license=("MIT")
 makedepends=(
-	"python-build" "python-wheel"
+	"python-build" "python-installer" "python-wheel"
 )
 depends=(
 	"python"
