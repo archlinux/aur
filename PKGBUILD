@@ -16,11 +16,6 @@ install=$pkgname.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/OpenKJ/OpenKJ/archive/refs/tags/v${pkgver}-release.tar.gz")
 sha256sums=('8a24f58e31f4a0abd5e4d0d6703940e96d00305baa57c24aa6ca727bcf6d1fd5')
 
-prepare()
-{
-  cd "${srcdir}/OpenKJ-${pkgver}-release/"
-}
-
 build() {
   cd "${srcdir}/OpenKJ-${pkgver}-release/"
   export PKG_CONFIG_PATH=/usr/lib/taglib1/pkgconfig
