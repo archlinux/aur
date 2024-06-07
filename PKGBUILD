@@ -1,6 +1,6 @@
 # Maintainer: Sterophonick
-pkgname=devkitARM-r47
-_pkgname='devkitARM-r47'
+pkgname=devkitarm-r47
+_pkgname='devkitarm-r47'
 pkgver=r47
 pkgrel=1
 pkgdesc="Older version of devkitARM and libgba (GCC 7.1.0). Intended for legacy GBA dev."
