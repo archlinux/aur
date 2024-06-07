@@ -10,7 +10,7 @@ fi
 # basic info
 _pkgname='pcsx2'
 pkgname="$_pkgname-latest-bin"
-pkgver=1.7.5843
+pkgver=1.7.5870
 pkgrel=1
 pkgdesc='Sony PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
@@ -21,10 +21,16 @@ arch=(x86_64)
 _main_package() {
   _update_version
 
+  makedepends=(
+    'patchelf'
+  )
+
   provides=("$_pkgname")
   conflicts=("$_pkgname")
 
-  options=(!strip !debug)
+  options=('!strip' '!debug')
+
+  install="$_pkgname.install"
 
   _appimage="pcsx2-v$_pkgver-linux-appimage-x64-Qt.AppImage"
   source+=("$url/releases/download/v$_pkgver/$_appimage")
@@ -46,8 +52,7 @@ build() {
     cd "$srcdir/squashfs-root"
     if [ ! -e "PCSX2.desktop" ]; then
       for i in *.desktop; do
-        mv "$i" PCSX2.desktop
-        break
+        [ -f "$i" ] && mv "$i" PCSX2.desktop && break
       done
     fi
   )
@@ -59,14 +64,25 @@ build() {
 }
 
 package() {
-  install -Dm755 "$srcdir/squashfs-root/AppRun" "$pkgdir/usr/bin/pcsx2-qt"
+  # main files
+  install -dm755 "$pkgdir/opt/$_pkgname"
+  mv "$srcdir"/squashfs-root/* "$pkgdir/opt/$_pkgname/"
 
-  install -Dm644 "$srcdir/squashfs-root/PCSX2.desktop" -t "$pkgdir/usr/share/applications"
+  # rpath
+  patchelf --force-rpath --set-rpath "/opt/$_pkgname/usr/lib" "$pkgdir/opt/$_pkgname/usr/bin/pcsx2-qt"
 
-  install -Dm644 "$srcdir/squashfs-root/PCSX2.png" -t "$pkgdir/usr/share/pixmaps"
+  # script
+  install -dm755 "$pkgdir/usr/bin"
+  ln -sf "/opt/$_pkgname/AppRun" "$pkgdir/usr/bin/pcsx2-qt"
 
-  mkdir -p "$pkgdir/opt"
-  mv "$srcdir/squashfs-root" "$pkgdir/opt/pcsx2"
+  # icon
+  install -Dm644 "$pkgdir/opt/$_pkgname/PCSX2.png" -t "$pkgdir/usr/share/pixmaps"
+
+  # launcher
+  install -Dm644 "$pkgdir/opt/$_pkgname/PCSX2.desktop" -t "$pkgdir/usr/share/applications"
+
+  # permissions
+  chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }
 
 # update version
