@@ -1,4 +1,4 @@
-# Gaia Sky 3.6.2-2
+# Gaia Sky 3.6.2-3
 
 ## Bug Fixes
-- shadow map GLSL library crash due to use of old, unsupported  call. Fixes [#773](https://codeberg.org/gaiasky/gaiasky/issues/773).
+- SVT indirection shader cleared with wrong value. Fixes [#774](https://codeberg.org/gaiasky/gaiasky/issues/774).
