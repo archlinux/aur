@@ -6,6 +6,7 @@ pkgbase = malcat-lite
 	arch = x86_64
 	license = Custom
 	depends = gtk3
+	depends = python311
 	depends = python-pycryptodomex
 	depends = python-pyasn1
 	depends = python-pyasn1-modules

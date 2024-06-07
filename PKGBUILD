@@ -7,7 +7,7 @@ pkgdesc="Malcat is a feature-rich hexadecimal editor / disassembler for Windows 
 arch=('x86_64')
 url="https://malcat.fr"
 license=('Custom')
-depends=('gtk3' 'python-pycryptodomex' 'python-pyasn1' 'python-pyasn1-modules' 'python-ruamel-yaml'
+depends=('gtk3' 'python311' 'python-pycryptodomex' 'python-pyasn1' 'python-pyasn1-modules' 'python-ruamel-yaml'
          'python-ruamel.yaml.clib' 'python-six' 'python-acefile' 'python-requests' 'python-dissect.cstruct' 'python-tabulate')
 source=("https://malcat.fr/all/$pkgver/malcat_ubuntu23_lite-$pkgver.zip"
         "malcat-lite.desktop")
