@@ -1,7 +1,7 @@
 # Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=php-legacy-imap
-pkgver=8.2.19
+pkgver=8.2.20
 pkgrel=1
 pkgdesc="PHP legacy extension for imap (excluded from official php packages)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('php-legacy' 'c-client' 'libxcrypt')
 source=(
   "https://php.net/distributions/php-${pkgver}.tar.xz"
 )
-sha256sums=('aecd63f3ebea6768997f5c4fccd98acbf897762ed5fc25300e846197a9485c13')
+sha256sums=('4474cc430febef6de7be958f2c37253e5524d5c5331a7e1765cd2d2234881e50')
 _interpreter=${pkgver%.*}
 
 prepare() {
