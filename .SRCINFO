@@ -1,12 +1,13 @@
 pkgbase = python-acefile
 	pkgdesc = Read/test/extract ACE 1.0 and 2.0 archives in pure python
 	pkgver = 0.6.12
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.roe.ch/acefile
 	arch = any
 	license = BSD 2-Clause
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
 	provides = python-acefile
