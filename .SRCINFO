@@ -1,13 +1,13 @@
 pkgbase = home-assistant-git
 	pkgdesc = Open source home automation that puts local control and privacy first
-	pkgver = 2024.4.4
+	pkgver = 2024.6.0
 	pkgrel = 1
 	url = https://home-assistant.io/
 	arch = any
 	license = APACHE
 	makedepends = git
 	makedepends = python-build
-	makedepends = python-setuptools
+	makedepends = python-setuptools-git
 	makedepends = python-wheel
 	depends = bluez-libs
 	depends = ffmpeg
@@ -21,9 +21,9 @@ pkgbase = home-assistant-git
 	depends = python
 	depends = tzdata
 	depends = zlib
-	source = home-assistant-git::git+https://github.com/home-assistant/core.git#tag=60be2af8ac15a98fb01b5f297b30898c21dea61c
+	source = home-assistant-git::git+https://github.com/home-assistant/core.git#tag=460909a7f6cb3a24152b2e1bdacf31387d89b33a
 	source = home-assistant-git.service
-	b2sums = 26e0b5ac9f04d535d9f47df9908484d9cc034bc9c856b72b02340e8350368a883800a327fb7840c95fd2fd60a26fea91616ef2b6d301324b3dde0eefa98981e5
+	b2sums = 8f0abcaabcf06dccdb5e01123064f89e757b396759a0785acae6778e2599849b08dbd98704f8881529f52e627b2dd036133fac39c7290d4cd7ad8606b3c1bc76
 	b2sums = 289b6d19fa36b8bcea5790da13b83211eb44fcda889a24bf07a2ef70e806b5bb138c8f6387057d153e109a3bdabd0f4009c171fc82e021cdfd43db376704d416
 
 pkgname = home-assistant-git
