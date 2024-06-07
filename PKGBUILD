@@ -5,8 +5,8 @@
 
 _pkgname=cura
 pkgname=$_pkgname-bin
-pkgver=5.7.1
-pkgrel=4
+pkgver=5.7.2
+pkgrel=1
 pkgdesc='State-of-the-art slicer app to prepare your 3D models for your 3D printer'
 url='https://ultimaker.com/software/ultimaker-cura'
 license=('LGPL3')
@@ -19,14 +19,14 @@ conflicts=($_pkgname)
 options=('!strip')
 
 source=(
-  "https://github.com/Ultimaker/Cura/releases/download/${pkgver}/UltiMaker-Cura-${pkgver}-linux-X64.AppImage"
+  "https://github.com/Ultimaker/Cura/releases/download/${pkgver}-RC2/UltiMaker-Cura-${pkgver}-linux-X64.AppImage"
   'AppRun.env.patch'
   'UltiMaker-Cura'
 )
 
 sha512sums=(
-  '3b148f2401d63f7cce839a945b5db28c6fa5f76a15258a1a50ce75dabf44db7ec5568ffb0dcecda04d685894a9f89c8a0370ead9cc1aae50bdb3f80e7c28b246'
-  '36901c32ba548f0b4b097945ce59efa45f26182f59ecb295af234f8efc939aa456b8e9a36e52b1d0d9188f6fd178f44629dc4df960391a519580a2c7407ebf03'
+  '45e1198b1ed0223620da1ec7db29ec7680781a7421cd26229e3ce7aef1ab2a7f29a179291b74d92c9cc4d032f9c32c55ed16adc30adbc9f1b7425eb934d4b82a'
+  'df7ea645ef9ec3e70de0c8e274082dfea087c2e15aace5c65f4675d097c056ff79841fa443e085373d1ca89d910d036a92f1df2fd905823e43534874abfbfd34'
   '706bfd5d7f46ba859fa1caddefe18504a8e82cd494d0279b5207191cdf2bca102e47bb4feee94d93d41a36e2f4aa5d71d2d2a398cbdcee8fd5c3d22b6b00a2de'
 )
 
