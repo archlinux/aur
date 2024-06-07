@@ -9,6 +9,7 @@ pkgbase = mov-cli
 	makedepends = python-build
 	makedepends = python-wheel
 	makedepends = python-setuptools-scm
+	makedepends = python-installer
 	depends = python
 	depends = python-beautifulsoup4
 	depends = python-httpx

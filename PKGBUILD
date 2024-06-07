@@ -1,5 +1,5 @@
 # Maintainer: Goldy <goldy@devgoldy.xyz>
-# Maintainer: Ananas <ananas@r3tr0ananas.pro>
+# Maintainer: Ananas <ananas@ananas.moe>
 pkgname=mov-cli
 pkgver="4.3.15"
 pkgrel=1
@@ -8,7 +8,7 @@ arch=("x86_64" "i686")
 url="https://github.com/mov-cli/mov-cli"
 license=("MIT")
 makedepends=(
-	"python-build" "python-wheel" "python-setuptools-scm"
+	"python-build" "python-wheel" "python-setuptools-scm" "python-installer"
 )
 depends=(
 	"python"
