@@ -26,7 +26,7 @@ unset _pkgtype
 # basic info
 _pkgname="pcsx2"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=1.7.5867.r0.g5e858fa
+pkgver=1.7.5870.r0.g7d53022
 pkgrel=1
 pkgdesc='Sony PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
@@ -71,7 +71,7 @@ _main_package() {
     p7zip
 
     ## fixups
-    chrpath
+    patchelf
   )
   optdepends=(
     'qt6-wayland: Wayland support'
@@ -85,6 +85,8 @@ _main_package() {
   else
     options=(!debug lto)
   fi
+
+  install="$_pkgname.install"
 
   _pkgsrc="$_pkgname"
   source=(
@@ -131,6 +133,8 @@ _source_pcsx2() {
       #'microsoft.wil'::'3rdparty/wil'
     )
     _submodule_update
+
+    sed -E -e 's&"shaderc_shared"&"'"shaderc_$_pkgname"'"&' -i "pcsx2/GS/Renderers/Vulkan/VKShaderCache.cpp"
   )
 }
 
@@ -352,8 +356,6 @@ build() {
 
   _build_backtrace
   _build_shaderc
-
-  LDFLAGS+=" -Wl,--rpath=XORIGIN -Wl,-z,origin"
   _build_pcsx2
 
   cd pcsx2_patches
@@ -365,32 +367,36 @@ package() {
   cp --reflink=auto -r build_pcsx2/bin/* "$pkgdir/opt/$_pkgname/"
 
   # rpath
-  chrpath -r '$ORIGIN' "$pkgdir/opt/$_pkgname/pcsx2-qt"
+  patchelf --force-rpath --set-rpath "/opt/$_pkgname" "$pkgdir/opt/$_pkgname/$_pkgname-qt"
 
   # libraries
-  install -Dm644 "$srcdir/deps/usr/lib/libshaderc_shared.so.1" -t "$pkgdir/opt/$_pkgname/"
+  local _shaderc_patched="$pkgdir/opt/$_pkgname/libshaderc_$_pkgname.so.1"
+  install -Dm644 "$srcdir/deps/usr/lib/libshaderc_shared.so.1" "$_shaderc_patched"
+  patchelf --set-soname "libshaderc_patched.so.1" "$_shaderc_patched"
 
   # icon
   install -Dm644 "$_pkgsrc/bin/resources/icons/AppIconLarge.png" \
     "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 
   # script
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/pcsx2-qt" << 'END'
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << END
 #!/usr/bin/env sh
-exec /opt/pcsx2/pcsx2-qt "$@"
+exec /opt/$_pkgname/$_pkgname-qt "$@"
 END
 
   # launcher
-  install -Dm755 /dev/stdin "$pkgdir/usr/share/applications/pcsx2-qt.desktop" << 'END'
+  install -Dm755 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
 [Desktop Entry]
 Type=Application
 Name=PCSX2
+GenericName=PlayStation 2 Emulator
 Comment=Sony PlayStation 2 emulator
-Exec=/opt/pcsx2/pcsx2-qt
-Icon=pcsx2
+Icon=$_pkgname
+TryExec=$_pkgname
+Exec=$_pkgname %f
 Terminal=false
 StartupNotify=true
-Categories=Game;Emulator;
+Categories=Game;Emulator;Qt
 END
 
   # permissions
