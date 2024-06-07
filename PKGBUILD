@@ -5,8 +5,12 @@
 # because it became obsolete with GIMP 2.10
 # see: https://photivo.org/download/gimp#photivo_to_gimp
 
+# Photivo is built with Qt 6 by default but is still compatible with Qt 5.
+# If you need to build with Qt 5, change the version here.
+PT_QT_MAJOR_VERSION=6
+
 pkgname=photivo-git
-pkgver=20231208_259d0ae
+pkgver=20240607_86880ad
 pkgrel=1
 epoch=1
 pkgdesc="Free and open source photo processor"
@@ -15,7 +19,7 @@ url="https://photivo.org/"
 license=('custom:GPL3 only')
 depends=(
     'exiv2' 'fftw' 'graphicsmagick' 'lcms2' 'lensfun' 'liblqr' 'libjpeg-turbo'
-    'libraw' 'qt5-base' 'shared-mime-info'
+    'libraw' "qt${PT_QT_MAJOR_VERSION}-base" 'shared-mime-info'
 )
 makedepends=('cmake' 'git')
 optdepends=('gimp: GIMP plugins' 'python2: GIMP to Photivo plugin')
@@ -30,7 +34,13 @@ pkgver() {
 }
 
 build() {
-    cmake -S photivo -B "build-$pkgver" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+    cmake \
+        -S photivo \
+        -B "build-$pkgver" \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DPT_QT_MAJOR_VERSION=${PT_QT_MAJOR_VERSION}
+
     cmake --build "build-$pkgver"
 }
 
