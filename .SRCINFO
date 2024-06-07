@@ -1,0 +1,15 @@
+pkgbase = noesis-bin
+	pkgdesc = Noesis is a tool for previewing and converting between hundreds of model, image, and animation formats.
+	pkgver = 4.473
+	pkgrel = 1
+	url = https://richwhitehouse.com/index.php?content=inc_projects.php&showproject=91
+	arch = x86_64
+	license = proprietary
+	depends = wine
+	provides = noesis
+	source = https://www.richwhitehouse.com/filemirror/noesisv4473.zip
+	source = noesis.sh
+	sha512sums = 8bb13699eae2bf1c3f0c3b71a00cb9daed6ad13f4df7089bed6541ffb5af50b817945a637ffb42f474129e6164589700c1790aafa03eaf0d5a3ef5ad50d616b0
+	sha512sums = SKIP
+
+pkgname = noesis-bin
