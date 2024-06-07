@@ -14,7 +14,7 @@ url="https://mqttx.app/"
 _ghurl="https://github.com/emqx/MQTTX"
 license=('Apache-2.0')
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
 )
 makedepends=(
     'npm'
