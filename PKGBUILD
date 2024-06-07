@@ -36,7 +36,12 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver"
-  install -Dm755 "$pkgname" -t "$pkgdir/usr/bin"
-  mkdir -p "$pkgdir/usr/share/docs"
+  install --verbose -Dm755 "$pkgname" -t "$pkgdir/usr/bin"
+
+  install --verbose -dp --mode=0644 "$pkgdir/usr/share/docs/$pkgname/"
   mv "site/content/docs/v$pkgver" "$pkgdir/usr/share/docs/$pkgname"
+
+  "${pkgdir}/usr/bin/sonobuoy" completion bash | install --verbose -D --mode=0644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/sonobuoy"
+  "${pkgdir}/usr/bin/sonobuoy" completion fish | install --verbose -D --mode=0644 /dev/stdin "${pkgdir}/usr/share/fish/vendor_completions.d/sonobuoy.fish"
+  "${pkgdir}/usr/bin/sonobuoy" completion zsh | install --verbose -D --mode=0644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_sonobuoy"
 }
