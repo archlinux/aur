@@ -4,8 +4,8 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=radium
-pkgver=7.3.84
-pkgrel=2
+pkgver=7.4.76
+pkgrel=1
 pkgdesc='A graphical music editor. A next generation tracker.'
 arch=(x86_64)
 url=https://users.notam02.no/~kjetism/radium
@@ -74,7 +74,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/kmatheussen/radium/archive/
         radium.install
         build_linux_common.patch
 )
-sha256sums=('99d42a56491812cbc04fa14f463588740eb2bed8c2f58eadd6e8f45b239fd3f6'
+sha256sums=('151d2c3e3963ded20023259edd997df3ba46658632b4f1df8aa403250a3070d0'
             'f627730ff7a819e8cc5ac5c2b5f1fb2f2237327db6ea5442c55a23c1ce82ef14'
             'SKIP'
            )
@@ -105,13 +105,8 @@ prepare() {
   sed -ie "s/C\* Eq - 10-band equalizer/C\* Eq10 - 10-band equaliser/g" bin/sounds/ROMANCE2.RAD 
   # See comment on calf-ladspa AUR page then on how to let Radium load Calf from LMMS package 
 
-  #sed -i "/cd libpd-master/s|$|\nsed -i '/g_canvas.h/s/$/\\\n    #include \"g_magicglass.h\"/' pure-data/src/g_editor.c|" bin/packages/build.sh
-  #sed -i "/cd libpd-master/s|$|\nsed -i '/^CFLAGS/s/=/= -Wno-error=implicit-function-declaration/' Makefile |" bin/packages/build.sh
-  #      ###sed -ne "/^CFLAGS/s/=/= -Wno-error=implicit-function-declaration/p" Makefile 
   sed -i "/cd libpd-master/s|$|\nsed -i '/LINUXCFLAGS/s/=/= --Wno-error=implicit-function-declaration/' pure-data/extra/makefile |" bin/packages/build.sh
-  #      ###bin/packages/libpd-master/pure-data/extra$ sed -ne "/LINUXCFLAGS/s/=/= --Wno-error=implicit-function-declaration/p" makefile
   sed -i "/cd libpd-master/s|$|\nsed -i '/define CFLAGS/s/-Wall/-Wall -Wno-error=implicit-function-declaration/' make.scm |" bin/packages/build.sh
-	###bin/packages/libpd-master$ sed -ne "/define CFLAGS/s/-Wall/-Wall --Wno-error=implicit-function-declaration/p" make.scm 
 }
 
 build() {

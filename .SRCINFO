@@ -1,7 +1,7 @@
 pkgbase = radium
 	pkgdesc = A graphical music editor. A next generation tracker.
-	pkgver = 7.3.84
-	pkgrel = 2
+	pkgver = 7.4.76
+	pkgrel = 1
 	url = https://users.notam02.no/~kjetism/radium
 	install = radium.install
 	arch = x86_64
@@ -60,10 +60,10 @@ pkgbase = radium
 	optdepends = ladspa-plugins: package group for plugins normally included in binary releases
 	optdepends = vst-plugins: more plugins
 	options = !strip
-	source = radium-7.3.84.tar.gz::https://github.com/kmatheussen/radium/archive/7.3.84.tar.gz
+	source = radium-7.4.76.tar.gz::https://github.com/kmatheussen/radium/archive/7.4.76.tar.gz
 	source = radium.install
 	source = build_linux_common.patch
-	sha256sums = 99d42a56491812cbc04fa14f463588740eb2bed8c2f58eadd6e8f45b239fd3f6
+	sha256sums = 151d2c3e3963ded20023259edd997df3ba46658632b4f1df8aa403250a3070d0
 	sha256sums = f627730ff7a819e8cc5ac5c2b5f1fb2f2237327db6ea5442c55a23c1ce82ef14
 	sha256sums = SKIP
 
