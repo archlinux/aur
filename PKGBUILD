@@ -34,7 +34,7 @@ build() {
 check() {
   local _gemdir="$(gem env gemdir)"
   cd bcrypt-ruby-$pkgver
-  # One check fails, to investigate later
+  # https://github.com/bcrypt-ruby/bcrypt-ruby/issues/244
   GEM_HOME="tmp_install/$_gemdir" rake || echo "Tests failed"
 }
 package() {
