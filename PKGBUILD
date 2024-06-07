@@ -1,7 +1,7 @@
 # Maintainer: icepie <icepie.dev [at] gmail dot com>
 pkgname=tiny-rdm-bin
 _pkgname=tiny-rdm
-pkgver=1.1.9
+pkgver=1.1.13
 pkgrel=2
 pkgdesc="A modern redis desktop manager. A better redis GUI client."
 arch=("x86_64")
@@ -12,12 +12,9 @@ optdepends=()
 provides=('tiny-rdm')
 conflicts=('tiny-rdm-git')
 replaces=()
-# https://tms.dingtalk.com/markets/dingtalk/service-terms-zh md5 will change per download
 source=("${_pkgname}_${pkgver}-${arch}.deb::https://github.com/tiny-craft/tiny-rdm/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.deb")
 
-# DebSource & pkgver can be get here: https://dtapp-pub.dingtalk.com/dingtalk-desktop/xc_dingtalk_update/linux_deb/Update/other/linux_dingtalk_update.json
-
-sha512sums=('SKIP')
+sha512sums=('81675ab8accd62fa278872cc836d518aa8bceabae693af3d15d922c0fcd8234b')
 
 prepare(){
     cd ${srcdir}
