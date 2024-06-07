@@ -55,11 +55,8 @@ prepare() {
 }
 
 build() {
-    # Disable parallel build if RAM is low
-    if [[ $(free | grep -Po "Mem:\s+\K\d+") -lt 8000000 ]]; then
-        printf "\nRAM is smaller than 8 GB. Parallel build will be disabled for stability.\n\n"
-        export COLCON_EXTRA_ARGS="${COLCON_EXTRA_ARGS} --executor sequential"
-    fi
+    # For low-mem high core count systems, add the following to disable parallel build
+    #export COLCON_EXTRA_ARGS="${COLCON_EXTRA_ARGS} --executor sequential"
 
     # Remove D_FORTIFY_SOURCE to avoid compilation errors
     CFLAGS=$(sed "s/-Wp,-D_FORTIFY_SOURCE=[0-9]\s//g" <(echo $CFLAGS))
