@@ -1,0 +1,15 @@
+pkgbase = wlr-dpms-git
+	pkgdesc = change output power modes in wlroots compositors
+	pkgver = r17.d0e6412
+	pkgrel = 1
+	url = https://sr.ht/~dsemy/wlr-dpms/
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = wayland
+	provides = wlr-dpms
+	conflicts = wlr-dpms
+	source = git+https://git.sr.ht/~dsemy/wlr-dpms
+	sha256sums = SKIP
+
+pkgname = wlr-dpms-git
