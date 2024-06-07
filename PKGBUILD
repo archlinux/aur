@@ -3,20 +3,20 @@
 # Contributor: Saahil Bhavsar <saahil_bhavsar@outlook.com>
 
 pkgname='iitj-autoproxy-bin'
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc=''
-url='https://github.com/XanderWatson/iitj-autoproxy'
+url='https://github.com/SaahilNotSahil/iitj-autoproxy'
 arch=('aarch64' 'x86_64')
 license=('MIT')
 provides=('iitj-autoproxy')
 conflicts=('iitj-autoproxy')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/XanderWatson/iitj-autoproxy/releases/download/v0.1.1/iitj-autoproxy_0.1.1_linux_arm64.tar.gz")
-sha256sums_aarch64=('7b09927a1d4a57dbae452e9a2e1a3c4062e412336a45ec2b887c294866487e02')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/SaahilNotSahil/iitj-autoproxy/releases/download/0.1.2/iitj-autoproxy_0.1.2_linux_arm64.tar.gz")
+sha256sums_aarch64=('75a1a31b9258f31305415dd882420bdf710bfacecec03094cef2a11d40514ae8')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/XanderWatson/iitj-autoproxy/releases/download/v0.1.1/iitj-autoproxy_0.1.1_linux_amd64.tar.gz")
-sha256sums_x86_64=('7f9120bbe355ce0c3f85d943e2151a232496937612eab19a9a456a37d9c7c576')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/SaahilNotSahil/iitj-autoproxy/releases/download/0.1.2/iitj-autoproxy_0.1.2_linux_amd64.tar.gz")
+sha256sums_x86_64=('5b8ff3480188afdf61f038e862025dbf681d698f0fb308c575c2013148ff4428')
 
 package() {
   install -Dm755 "./bin/autoproxyd" "${pkgdir}/usr/bin/autoproxyd"
@@ -24,6 +24,7 @@ package() {
   install -Dm755 "./scripts/linux/login.sh" "${pkgdir}/usr/bin/autoproxylogin"
   install -Dm755 "./scripts/linux/daemon-start.sh" "${pkgdir}/usr/bin/autoproxyd-start"
   install -Dm755 "./scripts/linux/daemon-stop.sh" "${pkgdir}/usr/bin/autoproxyd-stop"
+  install -Dm644 "./service_files/linux/autoproxyd@.service" "${pkgdir}/etc/systemd/system/autoproxyd@.service"
   install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/iitj-autoproxy/LICENSE"
   install -Dm644 "./autoproxy.config" "${pkgdir}/etc/iitj-autoproxy/autoproxy.config"
   install -Dm644 "./README.md" "${pkgdir}/usr/share/doc/iitj-autoproxy/README.md"
