@@ -37,4 +37,6 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 "$pkgname" -t "$pkgdir/usr/bin"
+  mkdir -p "$pkgdir/usr/share/docs"
+  mv "site/content/docs/v$pkgver" "$pkgdir/usr/share/docs/$pkgname"
 }
