@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=CFtime
-_pkgver=1.3.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -14,6 +14,7 @@ depends=(
 )
 checkdepends=(
   r-ncdf4
+  r-stringr
   r-testthat
 )
 optdepends=(
@@ -21,11 +22,12 @@ optdepends=(
   r-ncdf4
   r-rmarkdown
   r-rnetcdf
+  r-stringr
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1b0fe20341dfc1801c49dd14a35fe6b6')
-b2sums=('d3da058fdd924160b4409f75b5935991aa50ccbbe9aa13c1542782896e9142fba8602a49cf9634fd600f2e302214ff78138949e6e8830c7c84424ca306bbafd7')
+md5sums=('3e1e486b95dc7d53d4818ca58959197a')
+b2sums=('5d5ed80a2973429f74224905ecc200937cdeb57804e4f7e2d93c18719cb8b317e3f83ca9e737d82a0683fe6bcbded8ef0c05d9aa931ead3e613d28a7f7583b1b')
 
 build() {
   mkdir build
