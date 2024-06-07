@@ -19,13 +19,11 @@ provides=("kibana=$pkgver")
 conflicts=('kibana')
 backup=('etc/kibana/kibana.yml' 'etc/kibana/node.options')
 options=('!strip' 'emptydirs')
-source=(https://artifacts.elastic.co/downloads/$_relpkgname/$_relpkgname-${pkgver}-linux-x86_64.tar.gz
-        https://artifacts.elastic.co/downloads/$_relpkgname/$_relpkgname-${pkgver}-linux-x86_64.tar.gz.asc
+source=($pkgname-$pkgver.tar.gz::"https://github.com/elastic/kibana/archive/v${pkgver}.tar.gz"
         kibana.service
         tmpfile.conf
         user.conf)
-sha512sums=('692ee8d0282c49a7a2b5f335eb59bd6479c81908fc8e3833ee31907a1737b27c9ddb9adb43dac517a875296f402589a1263adfbc2ea63de9926da999987c4d0b'
-            'SKIP'
+sha512sums=('24267eafab9103d2d630f19f05d52e4ff013d4bdc031d21008f92f06720c0d219b662dbf681109aae520f628d0a0c8b99253fd6b64679b47b7d7859a46c99ca5'
             'be50713d4e4db3a8b2d0d02ec68b56ce1636ffa9a41738b0abf276c562c36ef6118f440f25b220f39302ba23b2351b5a38f961c8693ad03ea19424e4d40409e6'
             'afed49c164561f3c658a6d2423519adcf4d5293c416cd93fa5c9d12421416c1e9cb4287e832009049cfd014b365dc1cd93d9cf879117c701cce4caad3b772a8e'
             '9085884430c656cc68b855c3d6740e5fd0854a8785930341b29e15e201deacc1870d8223255d9ebe096cb111319bea9bf4faa03d0760d5819976ebf912221c7d')
