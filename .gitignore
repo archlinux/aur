@@ -1,6 +1,6 @@
+*.deb
+*.pkg.tar*
 *.src.tar*
 *.xz
-*.pkg.tar*
-crowdin3.rpm
 pkg
 src
