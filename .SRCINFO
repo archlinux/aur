@@ -44,7 +44,7 @@ pkgbase = gamescope-sk
 	depends = xorg-server-xwayland
 	provides = gamescope
 	conflicts = gamescope
-	source = git+https://github.com/3003n/gamescope.git#branch=sk-gamescope-stable
+	source = git+https://github.com/3003n/gamescope.git#tag=3.14.18-sk-1
 	source = git+https://github.com/nothings/stb.git#commit=af1a5bc352164740c1cc1354942b1c6b72eacb8a
 	source = git+https://github.com/Joshua-Ashton/wlroots.git
 	source = git+https://gitlab.freedesktop.org/emersion/libliftoff.git
