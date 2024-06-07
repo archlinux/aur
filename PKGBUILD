@@ -1,6 +1,6 @@
 _pkgname=gamescope
 pkgname=${_pkgname}-sk
-pkgver=3.14.18.sk.1.r0.g7402558
+pkgver=3.14.2.sk.9.r0.gc3fe69e
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager'
 arch=(x86_64)
@@ -29,7 +29,6 @@ depends=(
     libxres
     libxtst
     libxxf86vm
-    openvr
     sdl2
     seatd
     vulkan-icd-loader
@@ -40,6 +39,7 @@ depends=(
 )
 makedepends=(
     benchmark
+    cmake
     git
     glslang
     meson
@@ -47,23 +47,23 @@ makedepends=(
     vulkan-headers
     wayland-protocols
 )
-_tag=3.14.18-sk-1
+_tag=3.14.2-sk-9
 source=("git+https://github.com/3003n/gamescope.git#tag=${_tag}"
-    "git+https://github.com/nothings/stb.git#commit=af1a5bc352164740c1cc1354942b1c6b72eacb8a"
-    "git+https://github.com/Joshua-Ashton/wlroots.git"
-    "git+https://gitlab.freedesktop.org/emersion/libliftoff.git"
-    "git+https://github.com/Joshua-Ashton/GamescopeShaders.git#tag=v0.1"
-    "git+https://github.com/Joshua-Ashton/reshade.git"
-    "git+https://github.com/KhronosGroup/SPIRV-Headers.git"
-)
+        "git+https://github.com/nothings/stb.git#commit=af1a5bc352164740c1cc1354942b1c6b72eacb8a"
+        "git+https://github.com/Joshua-Ashton/wlroots.git"
+        "git+https://gitlab.freedesktop.org/emersion/libliftoff.git"
+        "git+https://github.com/Joshua-Ashton/GamescopeShaders.git#tag=v0.1"
+        "git+https://github.com/Joshua-Ashton/reshade.git"
+        "git+https://github.com/KhronosGroup/SPIRV-Headers.git"
+        )
 
 b2sums=('SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP')
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP')
 
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -72,7 +72,6 @@ prepare() {
     cd "$srcdir/$_pkgname"
     meson subprojects download
     git submodule init src/reshade
-    git config submodule.subprojects/wlroots.url "$srcdir/wlroots"
     git config submodule.subprojects/libliftoff.url "$srcdir/libliftoff"
     git config submodule.src/reshade.url "$srcdir/reshade"
     git submodule init thirdparty/SPIRV-Headers
@@ -91,11 +90,12 @@ pkgver() {
 }
 
 build() {
-    export LDFLAGS="$LDFLAGS -lrt"
-    arch-meson gamescope build \
-        -Dforce_fallback_for=stb,libliftoff,wlroots \
-        -Dpipewire=enabled
-    ninja -C build
+  export LDFLAGS="$LDFLAGS -lrt"
+  arch-meson gamescope build \
+    -Dforce_fallback_for=stb,libliftoff,wlroots \
+    -Dpipewire=enabled \
+    -Denable_openvr_support=false
+  ninja -C build
 }
 
 package() {
