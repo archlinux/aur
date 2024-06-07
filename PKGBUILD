@@ -1,4 +1,4 @@
-# Maintainer: Ananas <ananas@r3tr0ananas.pro>
+# Maintainer: Ananas <ananas@ananas.moe>
 # Maintainer: Goldy <goldy@devgoldy.xyz>
 _pkgname=mov-cli-test
 pkgname=python-mov-cli-test
