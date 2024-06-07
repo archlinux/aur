@@ -2,7 +2,7 @@
 # Maintainer: Nogweii <packages@nogweii.net>
 pkgname=sonobuoy
 pkgver=0.57.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Diagnostic tool for Kubernetes clusters'
 arch=('x86_64')
 url='https://github.com/vmware-tanzu/sonobuoy'
