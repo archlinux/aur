@@ -1,4 +1,5 @@
 {
+  "log-level": "WARNING",
   "access-token": "Your access token",
   "server": "your.mastodon.server",
   "home-timeline-length": 200,
