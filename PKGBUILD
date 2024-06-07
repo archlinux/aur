@@ -1,13 +1,14 @@
 # Maintainer: Andy Breuhan <andybreuhan 'at' andybreuhan 'dot' de>
 
 pkgname=blender-benchmark
-pkgver=3.1.0
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="Benchmark based on Blender to perform hardware and software performance tests"
 arch=('x86_64')
 url="https://opendata.blender.org/"
 license=('GPL' 'GPL3')
 depends=('glibc>=2.19')
+optdepends=('rocm-hip-runtime: Support AMD GPU acceleration')
 options=('!strip')
 
 source=("${pkgname}-launcher-${pkgver}.tar.gz::https://download.blender.org/release/BlenderBenchmark2.0/launcher/benchmark-launcher-3.1.0-linux.tar.gz")
