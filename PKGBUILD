@@ -5,7 +5,7 @@
 pkgname='iitj-autoproxy-bin'
 pkgver=0.1.2
 pkgrel=1
-pkgdesc='A CLI tool to automatically login to IIT Jodhpur's network firewall.'
+pkgdesc=''
 url='https://github.com/SaahilNotSahil/iitj-autoproxy'
 arch=('aarch64' 'x86_64')
 license=('MIT')
@@ -13,10 +13,10 @@ provides=('iitj-autoproxy')
 conflicts=('iitj-autoproxy')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/SaahilNotSahil/iitj-autoproxy/releases/download/0.1.2/iitj-autoproxy_0.1.2_linux_arm64.tar.gz")
-sha256sums_aarch64=('d26a017e5e1372586f149b652c3401448140276aabcdd8b701f2e6f358246cc5')
+sha256sums_aarch64=('c60b8f00760a2fcc1fb6a45db9355394f3ef7f1ccb0feb3e3e3be2d640a14178')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/SaahilNotSahil/iitj-autoproxy/releases/download/0.1.2/iitj-autoproxy_0.1.2_linux_amd64.tar.gz")
-sha256sums_x86_64=('c36fdbe14f774c4dd940a98c6dcbe67e24560d864bfd19fac330c746fdd68409')
+sha256sums_x86_64=('cccf26fdcd8d6e9905bf4edfe5ed9476c1d87a09d9ddcfabc1391be20de03897')
 
 package() {
   install -Dm755 "./bin/autoproxyd" "${pkgdir}/usr/bin/autoproxyd"
