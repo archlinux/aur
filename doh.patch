@@ -1,0 +1,281 @@
+From aa3882929df73977b61ba1ac511c9aa6558519d5 Mon Sep 17 00:00:00 2001
+From: aeris <aeris@imirhil.fr>
+Date: Sat, 8 Jun 2024 01:32:10 +0200
+Subject: [PATCH] Add DoH server support
+
+---
+ app/handlers/sessions/browser-session.ts      | 11 +++++++--
+ .../settings/browser/browser.component.html   | 24 +++++++++++++++----
+ src/app/services/settings.service.ts          | 15 ++++++++++--
+ src/assets/i18n/de.json                       |  6 +++--
+ src/assets/i18n/el.json                       |  6 +++--
+ src/assets/i18n/en.json                       |  6 +++--
+ src/assets/i18n/es.json                       |  6 +++--
+ src/assets/i18n/fr.json                       |  6 +++--
+ src/assets/i18n/it.json                       |  6 +++--
+ 9 files changed, 66 insertions(+), 20 deletions(-)
+
+diff --git a/app/handlers/sessions/browser-session.ts b/app/handlers/sessions/browser-session.ts
+index 5138b66..d651e05 100644
+--- a/app/handlers/sessions/browser-session.ts
++++ b/app/handlers/sessions/browser-session.ts
+@@ -25,7 +25,7 @@ export class BrowserSession {
+                 partition: this._session_name
+             }
+         });
+-        
++
+         this.applySettings(settings);
+ 
+         this.view.webContents.on('did-start-loading', () => {
+@@ -90,6 +90,13 @@ export class BrowserSession {
+         if (settings && settings.use_proxy) {
+             ses.setProxy({proxyRules:settings.proxy_settings})
+         }
++
++        if (settings && settings.use_doh) {
++            app.configureHostResolver({
++                secureDnsMode: 'secure',
++                secureDnsServers: [ settings.doh ]
++            })
++        }
+     }
+ 
+     async create() {
+@@ -204,4 +211,4 @@ export class BrowserSession {
+     get mainWindow(){
+         return this._mainWindow;
+     }
+-}
+\ No newline at end of file
++}
+diff --git a/src/app/modules/others/settings/browser/browser.component.html b/src/app/modules/others/settings/browser/browser.component.html
+index f1a5326..a11d78f 100644
+--- a/src/app/modules/others/settings/browser/browser.component.html
++++ b/src/app/modules/others/settings/browser/browser.component.html
+@@ -13,14 +13,18 @@
+         {{ 'settings.developer_tools' | translate }}</mat-slide-toggle><br> <br>
+     <mat-slide-toggle (change)="settingService.setItem('use_proxy', $event.checked)" [(ngModel)]="settingService.settings.use_proxy"
+         color="primary">
+-        {{ 'settings.use_proxy' | translate }}</mat-slide-toggle>
++        {{ 'settings.use_proxy' | translate }}</mat-slide-toggle><br> <br>
++
++    <mat-slide-toggle (change)="settingService.setItem('use_doh', $event.checked)" [(ngModel)]="settingService.settings.use_doh"
++                      color="primary">
++        {{ 'settings.use_doh' | translate }}</mat-slide-toggle>
+ </div>
+ 
+-<div 
++<div
+ *ngIf="settingService.settings.use_proxy"
+ class="content" style="max-width: 800px; margin-top: 56px;">
+     <div class="header">{{ 'settings.proxy_settings_header' | translate }}</div>
+-    <mat-form-field 
++    <mat-form-field
+     appearance="fill" style="width:100%">
+             <mat-label>{{ 'settings.proxy_settings' | translate }}</mat-label>
+             <input (input)="settingService.setProxySettings($event.target)" matInput type="text"
+@@ -36,4 +40,16 @@ class="content" style="max-width: 800px; margin-top: 56px;">
+         <input (input)="settingService.setUserAgent($event.target)" matInput type="text"
+             [(ngModel)]="settingService.settings.useragent">
+     </mat-form-field>
+-</div>
+\ No newline at end of file
++</div>
++
++<div
++        *ngIf="settingService.settings.use_doh"
++        class="content" style="max-width: 800px; margin-top: 56px;">
++    <div class="header">{{ 'settings.doh' | translate }}</div>
++    <mat-form-field
++            appearance="fill" style="width:100%">
++        <mat-label>{{ 'settings.doh' | translate }}</mat-label>
++        <input (input)="settingService.setDoH($event.target)" matInput type="text"
++               [(ngModel)]="settingService.settings.doh">
++    </mat-form-field>
++</div>
+diff --git a/src/app/services/settings.service.ts b/src/app/services/settings.service.ts
+index 5a8dfac..7a9d575 100644
+--- a/src/app/services/settings.service.ts
++++ b/src/app/services/settings.service.ts
+@@ -40,11 +40,13 @@ export class SettingsService {
+     client_id:"",
+     client_secret:"",
+     use_proxy : false,
+-    proxy_settings: ""
++    proxy_settings: "",
++    use_doh: false,
++    doh: ""
+   }
+ 
+   constructor(
+-  ) { 
++  ) {
+     const server_url = localStorage.getItem('server_url');
+     const client_id = localStorage.getItem('client_id');
+     const client_secret = localStorage.getItem('client_secret');
+@@ -52,6 +54,7 @@ export class SettingsService {
+     const test_ssl_location = localStorage.getItem('test_ssl_location');
+     const proxy_settings = localStorage.getItem('proxy_settings');
+     const setAgent = localStorage.getItem('useragent');
++    const doh = localStorage.getItem('doh')
+     this._settings.useragent = setAgent == null || setAgent == "" ? this.detaultUserAgent  : setAgent;
+     this._settings.dnt = localStorage.getItem('DNT') == 'true'? true : false ;
+     this._settings.testssl = localStorage.getItem('testssl') == 'true'? true : false ;
+@@ -73,6 +76,8 @@ export class SettingsService {
+     this._settings.client_secret = client_secret != null ? client_secret : "";
+     this._settings.use_proxy = localStorage.getItem('use_proxy') == 'true'? true : false ;
+     this._settings.proxy_settings = proxy_settings != null ? proxy_settings : "";
++    this._settings.use_doh = localStorage.getItem('use_doh') == 'true'? true : false ;
++    this._settings.doh = doh? doh : "";
+   }
+   setItem(key :string, value:any):void{
+     localStorage.setItem(key, value);
+@@ -95,6 +100,12 @@ export class SettingsService {
+     localStorage.setItem('test_ssl_location', location);
+   }
+ 
++  setDoH(event:any) {
++    if (event) {
++      localStorage.setItem('doh', event.value);
++    }
++  }
++
+   get settings(){
+     return this._settings;
+   }
+diff --git a/src/assets/i18n/de.json b/src/assets/i18n/de.json
+index dae6adb..d02dd34 100644
+--- a/src/assets/i18n/de.json
++++ b/src/assets/i18n/de.json
+@@ -236,7 +236,9 @@
+         "client_id": "Client-ID",
+         "client_secret": "Klientengeheimnis",
+         "update": "Aktualisierung",
+-        "infos": "Browser-Informationen anzeigen"
++        "infos": "Browser-Informationen anzeigen",
++        "use_doh": "DoH-Server verwenden",
++        "doh": "Zu verwendender DoH-Server (ein Neustart kann erforderlich sein)"
+     },
+     "reports": {
+         "creator": "Schöpfer",
+@@ -343,4 +345,4 @@
+         "apply_all": "Alle anwenden",
+         "dismiss": "Entlassung"
+     }
+-}
+\ No newline at end of file
++}
+diff --git a/src/assets/i18n/el.json b/src/assets/i18n/el.json
+index 50810e4..03b04b3 100644
+--- a/src/assets/i18n/el.json
++++ b/src/assets/i18n/el.json
+@@ -236,7 +236,9 @@
+         "client_id": "Αναγνωριστικό πελάτη",
+         "client_secret": "Απόρρητο πελάτη",
+         "update": "Επικαιροποίηση",
+-        "infos": "Εμφάνιση πληροφοριών φυλλομετρητή"
++        "infos": "Εμφάνιση πληροφοριών φυλλομετρητή",
++        "use_doh": "Χρησιμοποιήστε διακομιστή DoH",
++        "doh": "Διακομιστής DoH για χρήση (ενδέχεται να απαιτείται επανεκκίνηση)"
+     },
+     "reports": {
+         "creator": "Δημιουργός",
+@@ -343,4 +345,4 @@
+         "apply_all": "Εφαρμογή όλων",
+         "dismiss": "Απόρριψη"
+     }
+-}
+\ No newline at end of file
++}
+diff --git a/src/assets/i18n/en.json b/src/assets/i18n/en.json
+index 21113de..83ac66b 100644
+--- a/src/assets/i18n/en.json
++++ b/src/assets/i18n/en.json
+@@ -236,7 +236,9 @@
+         "client_id": "Client ID",
+         "client_secret": "Client Secret",
+         "update": "Update",
+-        "infos": "Show browser informations"
++        "infos": "Show browser informations",
++        "use_doh": "Use DoH server",
++        "dns": "DOH server to use (restart may be required)"
+     },
+     "reports": {
+         "creator": "Creator",
+@@ -343,4 +345,4 @@
+         "apply_all": "Apply all",
+         "dismiss": "Dismiss"
+     }
+-}
+\ No newline at end of file
++}
+diff --git a/src/assets/i18n/es.json b/src/assets/i18n/es.json
+index 9d7f1f0..1e40b87 100644
+--- a/src/assets/i18n/es.json
++++ b/src/assets/i18n/es.json
+@@ -236,7 +236,9 @@
+         "client_id": "ID de cliente",
+         "client_secret": "Secreto del cliente",
+         "update": "Actualización",
+-        "infos": "Mostrar información del navegador"
++        "infos": "Mostrar información del navegador",
++        "use_doh": "Usar servidor DoH",
++        "doh": "Servidor DoH a utilizar (puede ser necesario reiniciar)"
+     },
+     "reports": {
+         "creator": "Creador",
+@@ -343,4 +345,4 @@
+         "apply_all": "Aplicar todo",
+         "dismiss": "Desestimar"
+     }
+-}
+\ No newline at end of file
++}
+diff --git a/src/assets/i18n/fr.json b/src/assets/i18n/fr.json
+index e751a3e..f5b5390 100644
+--- a/src/assets/i18n/fr.json
++++ b/src/assets/i18n/fr.json
+@@ -236,7 +236,9 @@
+         "client_id": "ID du client",
+         "client_secret": "Secret du client",
+         "update": "Mise à jour",
+-        "infos": "Afficher les informations sur le navigateur"
++        "infos": "Afficher les informations sur le navigateur",
++        "use_doh": "Utiliser un serveur DoH",
++        "doh": "Serveur DoH à utiliser (Un redémarrage peut être nécessaire)"
+     },
+     "reports": {
+         "creator": "Créateur",
+@@ -343,4 +345,4 @@
+         "apply_all": "Appliquer tout",
+         "dismiss": "Annuler"
+     }
+-}
+\ No newline at end of file
++}
+diff --git a/src/assets/i18n/it.json b/src/assets/i18n/it.json
+index 348ba80..4f25c75 100644
+--- a/src/assets/i18n/it.json
++++ b/src/assets/i18n/it.json
+@@ -236,7 +236,9 @@
+         "client_id": "Client ID",
+         "client_secret": "Segreto del cliente",
+         "update": "Aggiornamento",
+-        "infos": "Mostra le informazioni del browser"
++        "infos": "Mostra le informazioni del browser",
++        "use_doh": "Utilizza il server DoH",
++        "doh": "Server DoH da utilizzare (potrebbe essere necessario riavviare)"
+     },
+     "reports": {
+         "creator": "Creatore",
+@@ -343,4 +345,4 @@
+         "apply_all": "Applica tutto",
+         "dismiss": "Licenziare"
+     }
+-}
+\ No newline at end of file
++}
+-- 
+2.45.2
+
