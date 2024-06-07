@@ -4,7 +4,7 @@
 
 pkgname=moonlight-qt
 pkgver=6.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc='GameStream client for PCs (Windows, Mac, and Linux)'
 arch=('x86_64')
 license=('GPL-3.0-or-later')
@@ -16,8 +16,6 @@ source=("https://github.com/moonlight-stream/${pkgname}/releases/download/v${pkg
 sha256sums=('07655598f82d607dbf20b484a45a46db2496764a4bbb7a18e66f066564a83b89')
 
 prepare() {
-  cd "${srcdir}/"
-  git submodule update --init --recursive
   qmake PREFIX="$pkgdir/usr" moonlight-qt.pro
 }
 
