@@ -1,7 +1,7 @@
 pkgbase = xsynth-dssi
 	pkgdesc = An analog-style (VCOs-VCF-VCA) synth plugin for DSSI
 	pkgver = 0.9.4
-	pkgrel = 5
+	pkgrel = 6
 	url = http://dssi.sourceforge.net/download.html#Xsynth-DSSI
 	arch = i686
 	arch = x86_64

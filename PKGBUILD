@@ -3,7 +3,7 @@
 # Contributor:  Thomas Karmann <thomas@karmann-paf.de>
 pkgname=xsynth-dssi
 pkgver=0.9.4
-pkgrel=5
+pkgrel=6
 pkgdesc="An analog-style (VCOs-VCF-VCA) synth plugin for DSSI"
 arch=('i686' 'x86_64')
 url="http://dssi.sourceforge.net/download.html#Xsynth-DSSI"
@@ -18,6 +18,8 @@ md5sums=('3432ecdac06407a992f80eb1c1ecf7cd'
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   ./configure --prefix=/usr
+  # prevent excessive overlinking due to libtool
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make || return 1
 }
 
