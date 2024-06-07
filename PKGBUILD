@@ -2,9 +2,9 @@
 pkgname=geforcenow-electron-bin
 _pkgname="com.github.hmlendea.${pkgname%-bin}"
 _appname="GeForce NOW"
-pkgver=2.1.0
+pkgver=2.1.1
 _electronversion=29
-pkgrel=2
+pkgrel=1
 pkgdesc="Linux Desktop client for Nvidia's GeForce NOW game streaming service"
 arch=('x86_64')
 url="https://github.com/hmlendea/gfn-electron"
@@ -19,14 +19,14 @@ source=(
     "${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux.zip"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('7bb3b0a00b2fb478fa043a5ed869534f72dc14120b5f78f24beee33dd323d42c'
+sha256sums=('3b2b190ea3b81b041fd1cdd1dd36515f9084ad1a96a867cbe7e8835ac6b96c6b'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
         -e "s|@cfgdirname@|${_appname}|g" \
-        -e "s|@options@||g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     sed "s|/opt/${pkgname%-bin}/${pkgname%-bin}|${pkgname%-bin}|g;s|nvidia|${pkgname%-bin}|g" \
         -i "${srcdir}/${_pkgname}.desktop"
