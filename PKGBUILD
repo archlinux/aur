@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=tiledb
-_pkgver=0.27.0
+_pkgver=0.28.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -40,9 +40,9 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "skip-tests.patch")
-md5sums=('72f5fdefa935d12ba713819209291791'
+md5sums=('05263703bcd944c60345bdf956d346d1'
          '65589ce8628e97f3ef75905ba16cd8fa')
-b2sums=('84620caa4fb257d237da33e9cfe4074cab0a788dc026d4f643a65b724c89788c563c2bee8e6d00dc8517048a7fe64ea9f1c4ecef1ce3f680ef08d67a37f0ca93'
+b2sums=('d27090d33e83cfc2f3869b9fbde476f27e333b1a640d56bdddc25e7423562195f71811350ddab4ba05f8367e4fb65b451c96353de010fd9fc55dc80c2c14da0f'
         'd82cae045055f52ca11160181df950e4f44773cac3ccd8c04de78f8ba5901b46d9095d9439b86ce78ba0804d98ef9ee6fdffc3ed76b7cda3d1e5c0ffd9b22449')
 
 prepare() {
