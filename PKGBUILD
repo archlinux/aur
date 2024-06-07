@@ -13,7 +13,7 @@ makedepends=('python-setuptools')
 #            'python-wheel'
 #            'python-build'
 #            'python-installer'
-checkdepends=('python-pytest-xdist'
+checkdepends=('python-pytest'
               'python-importlib-metadata'
               'python-importlib_resources'
               'python-pyparsing'
