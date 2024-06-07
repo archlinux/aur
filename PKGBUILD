@@ -1,6 +1,6 @@
 pkgname=tubi
 _pkgname=Tubi
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 _pkgrel_x86_64=1
 pkgdesc="Unnofficial Tubi desktop application"
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 source=("$url/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
-sha256sums=('9a9616602952ea98976fa10783870695d85c2ecb04ebcb3790ddad991b7df210')
+sha256sums=('6625e09908703ca3b7ea5ce932b551a9b280072f68dae442bc39505b07c841b1')
 
 package() {
     for dir in application-$pkgver-$pkgrel ; do mv "${dir}" "$_pkgname" ;done
