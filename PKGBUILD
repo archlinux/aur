@@ -1,7 +1,7 @@
 # Maintainer: Sergey Mezentsev <thebits@yandex.ru>
 pkgname=elasticmq
-pkgver=1.6.1
-pkgrel=2
+pkgver=1.6.3
+pkgrel=1
 pkgdesc="Amazon SQS compatible in-memory message queue"
 arch=('any')
 url="https://github.com/softwaremill/elasticmq"
@@ -9,7 +9,7 @@ license=("Apache")
 depends=("java-runtime-headless")
 source=("https://s3-eu-west-1.amazonaws.com/softwaremill-public/elasticmq-server-${pkgver}.jar")
 noextract=("elasticmq-server-${pkgver}.jar")
-sha256sums=('90ee1decede3458509c099cc95e195f84b31f6cb85552d0790d02d1b240e44aa')
+sha256sums=('015bf3231dfd21db4bce50fb8d4264dcd94d449ca6d0ddd56662ac9dc624cc55')
 
 package() {
   cd "${srcdir}"
