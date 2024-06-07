@@ -26,8 +26,8 @@ unset _pkgtype
 # basic info
 _pkgname="pcsx2"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=1.7.5865.r0.g3c15f6e
-pkgrel=4
+pkgver=1.7.5867.r0.g5e858fa
+pkgrel=1
 pkgdesc='Sony PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
 license=('GPL-3.0-only' 'LGPL-3.0-only')
@@ -51,18 +51,27 @@ _main_package() {
     xcb-util-cursor
   )
   makedepends=(
+    ## compiler
     "clang${_tooltype:-}"
     "lld${_tooltype:-}"
     "llvm${_tooltype:-}"
+
+    ## build
     cmake
     extra-cmake-modules
     git
+    ninja
+
+    ## pcsx2
     libpipewire
     libpulse
-    ninja
-    p7zip
     qt6-tools
     qt6-wayland
+
+    p7zip
+
+    ## fixups
+    chrpath
   )
   optdepends=(
     'qt6-wayland: Wayland support'
@@ -70,8 +79,6 @@ _main_package() {
 
   provides=("$_pkgname")
   conflicts=("$_pkgname")
-
-  install="$_pkgname.install"
 
   if [[ "${_build_debug::1}" == "t" ]]; then
     options=(debug !lto)
@@ -189,40 +196,42 @@ _source_backtrace() {
     install -Dm644 .libs/libbacktrace.a -t "$srcdir/deps/"
     install -Dm644 *.h -t "$srcdir/deps/include/"
   )
-
 }
 
 _source_shaderc() {
+  depends+=(
+    'glslang'
+    'spirv-tools'
+  )
+  makedepends+=(
+    'patchutils'
+    'spirv-headers'
+  )
+
   source+=(
     "google.shaderc"::"git+https://github.com/google/shaderc.git"
-    "khronosgroup.glslang"::"git+https://github.com/KhronosGroup/glslang.git"
-    "khronosgroup.spirv-headers"::"git+https://github.com/KhronosGroup/SPIRV-Headers.git"
-    "khronosgroup.spirv-tools"::"git+https://github.com/KhronosGroup/SPIRV-Tools.git"
+    #"khronosgroup.glslang"::"git+https://github.com/KhronosGroup/glslang.git"
+    #"khronosgroup.spirv-headers"::"git+https://github.com/KhronosGroup/SPIRV-Headers.git"
+    #"khronosgroup.spirv-tools"::"git+https://github.com/KhronosGroup/SPIRV-Tools.git"
   )
   sha256sums+=(
-    'SKIP'
-    'SKIP'
-    'SKIP'
     'SKIP'
   )
 
   _prepare_shaderc() (
     local _version_shaderc=$(grep -E -m1 'SHADERC=' "$_pkgsrc/.github/workflows/scripts/linux/build-dependencies-qt.sh" | sed -E -e 's&^\s*SHADERC=(\S+)$&\1&')
-    local _hash_glslang=$(grep -E -m1 glslang_revision "$srcdir"/google.shaderc/DEPS | sed -E "s&^.*: '([a-f0-9]+)'.*\$&\1&")
-    local _hash_spirv_headers=$(grep -E -m1 spirv_headers_revision "$srcdir"/google.shaderc/DEPS | sed -E "s&^.*: '([a-f0-9]+)'.*\$&\1&")
-    local _hash_spirv_tools=$(grep -E -m1 spirv_tools_revision "$srcdir"/google.shaderc/DEPS | sed -E "s&^.*: '([a-f0-9]+)'.*\$&\1&")
 
     git -C "$srcdir/google.shaderc" checkout -f "v$_version_shaderc"
-    git -C "$srcdir"/khronosgroup.glslang checkout -f "$_hash_glslang"
-    git -C "$srcdir"/khronosgroup.spirv-headers checkout -f "$_hash_spirv_headers"
-    git -C "$srcdir"/khronosgroup.spirv-tools checkout -f "$_hash_spirv_tools"
 
-    ln -s "$srcdir"/khronosgroup.glslang "$srcdir"/google.shaderc/third_party/glslang
-    ln -s "$srcdir"/khronosgroup.spirv-headers "$srcdir"/google.shaderc/third_party/spirv-headers
-    ln -s "$srcdir"/khronosgroup.spirv-tools "$srcdir"/google.shaderc/third_party/spirv-tools
+    filterdiff -x '*/CMakeLists.txt' "$srcdir/$_pkgsrc/.github/workflows/scripts/common/shaderc-changes.patch" \
+      | sed -E 's&non_sematic_debug_info&non_semantic_debug_info&' \
+        > shaderc-changes.patch
 
     cd "$srcdir/google.shaderc"
-    git apply "$srcdir/$_pkgsrc/.github/workflows/scripts/common/shaderc-changes.patch"
+    git apply "$srcdir/shaderc-changes.patch"
+
+    sed -E -e '/\(glslc\)/d;/examples/d;/third_party/d' \
+      -i CMakeLists.txt
   )
 
   _build_shaderc() {
@@ -236,6 +245,7 @@ _source_shaderc() {
       -DSHADERC_SKIP_TESTS=ON
       -DSHADERC_SKIP_EXAMPLES=ON
       -DSHADERC_SKIP_COPYRIGHT_CHECK=ON
+      -Dglslang_SOURCE_DIR=/usr/include/glslang
       -Wno-dev
     )
 
@@ -254,9 +264,11 @@ _build_pcsx2() {
     -B build_pcsx2
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
-    -DCMAKE_PREFIX_PATH="$srcdir/deps/usr"
-    -DLIBBACKTRACE_LIBRARY="$srcdir/deps/libbacktrace.a"
+    -DCMAKE_SKIP_RPATH=ON
     -DLIBBACKTRACE_INCLUDE_DIR="$srcdir/deps/include"
+    -DLIBBACKTRACE_LIBRARY="$srcdir/deps/libbacktrace.a"
+    -DSHADERC_INCLUDE_DIR="$srcdir/deps/usr/include"
+    -DSHADERC_LIBRARY="$srcdir/deps/usr/lib/libshaderc_shared.so.1"
   )
 
   if [[ "${_build_debug::1}" == "t" ]]; then
@@ -331,7 +343,7 @@ build() {
   AR=llvm-ar
   CC=clang
   CXX=clang++
-  LDFLAGS+=" -fuse-ld=lld -Wl,-rpath='\$ORIGIN'"
+  LDFLAGS+=" -fuse-ld=lld"
 
   if [[ "${_build_avx::1}" == "t" ]]; then
     CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
@@ -340,6 +352,8 @@ build() {
 
   _build_backtrace
   _build_shaderc
+
+  LDFLAGS+=" -Wl,--rpath=XORIGIN -Wl,-z,origin"
   _build_pcsx2
 
   cd pcsx2_patches
@@ -350,17 +364,23 @@ package() {
   install -Dm644 patches.zip -t "$pkgdir/opt/$_pkgname/resources/"
   cp --reflink=auto -r build_pcsx2/bin/* "$pkgdir/opt/$_pkgname/"
 
-  # bundled shaderc
+  # rpath
+  chrpath -r '$ORIGIN' "$pkgdir/opt/$_pkgname/pcsx2-qt"
+
+  # libraries
   install -Dm644 "$srcdir/deps/usr/lib/libshaderc_shared.so.1" -t "$pkgdir/opt/$_pkgname/"
 
+  # icon
   install -Dm644 "$_pkgsrc/bin/resources/icons/AppIconLarge.png" \
     "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 
+  # script
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/pcsx2-qt" << 'END'
 #!/usr/bin/env sh
 exec /opt/pcsx2/pcsx2-qt "$@"
 END
 
+  # launcher
   install -Dm755 /dev/stdin "$pkgdir/usr/share/applications/pcsx2-qt.desktop" << 'END'
 [Desktop Entry]
 Type=Application
@@ -373,6 +393,7 @@ StartupNotify=true
 Categories=Game;Emulator;
 END
 
+  # permissions
   chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }
 
