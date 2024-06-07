@@ -1,6 +1,6 @@
 _pkgname=gamescope
 pkgname=${_pkgname}-sk
-pkgver=3.14.17.sk.2.r0.gf02a0c0
+pkgver=3.14.18.sk.1.r0.g7402558
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager'
 arch=(x86_64)
@@ -10,77 +10,72 @@ depends=(
     gcc-libs
     glibc
     glm
-    hwdata
     libavif
     libcap.so
+    libdecor
     libdisplay-info.so
     libdrm
-    libdecor
-    libliftoff.so
     libinput
     libpipewire-0.3.so
-    libvulkan.so
     libx11
     libxcb
     libxcomposite
     libxdamage
     libxext
     libxfixes
-    libxkbcommon
+    libxkbcommon.so
     libxmu
     libxrender
     libxres
     libxtst
     libxxf86vm
-    seatd
+    openvr
     sdl2
+    seatd
     vulkan-icd-loader
     wayland
-    xcb-util-renderutil
-    xcb-util-wm
     xcb-util-errors
+    xcb-util-wm
     xorg-server-xwayland
 )
 makedepends=(
     benchmark
-    cmake
     git
     glslang
     meson
     ninja
     vulkan-headers
-    'wayland-protocols>=1.34'
+    wayland-protocols
 )
-_tag=3.14.17-sk-2
+# _tag=3.14.18-sk-1
 # _branch="wayland-backend"
-source=("git+https://github.com/3003n/gamescope.git#tag=${_tag}"
-        "git+https://github.com/nothings/stb.git#commit=af1a5bc352164740c1cc1354942b1c6b72eacb8a"
-        "git+https://github.com/Joshua-Ashton/GamescopeShaders.git#tag=v0.1"
-        "git+https://github.com/Joshua-Ashton/reshade.git"
-        "git+https://github.com/KhronosGroup/SPIRV-Headers.git"
-        )
+# source=("git+https://github.com/3003n/gamescope.git#tag=${_tag}"
+source=("git+https://github.com/3003n/gamescope.git#branch=sk-gamescope-stable"
+    "git+https://github.com/nothings/stb.git#commit=af1a5bc352164740c1cc1354942b1c6b72eacb8a"
+    "git+https://github.com/Joshua-Ashton/wlroots.git"
+    "git+https://gitlab.freedesktop.org/emersion/libliftoff.git"
+    "git+https://github.com/Joshua-Ashton/GamescopeShaders.git#tag=v0.1"
+    "git+https://github.com/Joshua-Ashton/reshade.git"
+    "git+https://github.com/KhronosGroup/SPIRV-Headers.git"
+)
 
 b2sums=('SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP')
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP')
 
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 prepare() {
-    cd $_pkgname
-    # This really should be a pacman feature...
-    for src in "${source[@]}"; do
-        src="${src%%::*}"
-        src="${src##*/}"
-        [[ $src = *.patch ]] || continue
-        echo "Applying patch $src..."
-        git apply "../$src"
-    done
+    cd "$srcdir/$_pkgname"
     meson subprojects download
     git submodule init src/reshade
+    git config submodule.subprojects/wlroots.url "$srcdir/wlroots"
+    git config submodule.subprojects/libliftoff.url "$srcdir/libliftoff"
     git config submodule.src/reshade.url "$srcdir/reshade"
     git submodule init thirdparty/SPIRV-Headers
     git config submodule.thirdparty/SPIRV-Headers.url ../SPIRV-Headers
@@ -93,19 +88,16 @@ prepare() {
 }
 
 pkgver() {
-    cd $_pkgname
+    cd "$srcdir/$_pkgname"
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  export LDFLAGS="$LDFLAGS -lrt"
-  arch-meson gamescope build \
-    -Dforce_fallback_for=stb,libliftoff,wlroots \
-    -Dpipewire=enabled \
-    -Denable_openvr_support=false \
-    -Dwlroots:backends=drm,libinput,x11 \
-    -Dwlroots:renderers=gles2,vulkan
-  ninja -C build
+    export LDFLAGS="$LDFLAGS -lrt"
+    arch-meson gamescope build \
+        -Dforce_fallback_for=stb,libliftoff,wlroots \
+        -Dpipewire=enabled
+    ninja -C build
 }
 
 package() {
