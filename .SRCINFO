@@ -1,13 +1,17 @@
 pkgbase = rgss_script_editor-git
 	pkgdesc = Script editor for Scripts.rxdata (RPG Maker XP)
 	pkgver = 54_e7483ee
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Ancurio/rgss_script_editor
 	arch = any
 	license = MIT
 	makedepends = cmake
 	makedepends = git
 	depends = qscintilla-qt5
+	depends = zlib
+	depends = gcc-libs
+	depends = qt5-base
+	depends = glibc
 	source = git+https://github.com/Ancurio/rgss_script_editor.git
 	md5sums = SKIP
 
