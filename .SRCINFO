@@ -1,7 +1,7 @@
 pkgbase = cargo-mommy
 	pkgdesc = Mommy's here to support you when running cargo~
 	pkgver = 0.3.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Gankra/cargo-mommy
 	arch = x86_64
 	arch = i686

@@ -2,7 +2,7 @@
 
 pkgname=cargo-mommy
 pkgver=0.3.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Mommy's here to support you when running cargo~"
 url='https://github.com/Gankra/cargo-mommy'
 license=('Apache-2.0' 'MIT')
@@ -27,7 +27,7 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgver
-
+  RUSTFLAGS='-C link-args=-Wl,-z,shstk' \
   CARGO_TARGET_DIR='target' \
     cargo build --frozen --release
 }
