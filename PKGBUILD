@@ -2,7 +2,7 @@
 
 _pkgname=tdf
 pkgname=${_pkgname}-git
-pkgver=20240529.r20.1e89a93
+pkgver=20240605.r26.f893ecb
 pkgrel=1
 pkgdesc='A terminal-based PDF viewer'
 url='https://github.com/itsjunetime/tdf'
