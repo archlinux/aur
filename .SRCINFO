@@ -1,0 +1,22 @@
+pkgbase = youtube-dl-nightly
+	pkgdesc = A command-line program to download videos from YouTube.com and a few more sites
+	pkgver = 2024.05.31
+	pkgrel = 1
+	url = https://ytdl-org.github.io/youtube-dl
+	arch = any
+	license = Unlicense
+	makedepends = python-setuptools
+	depends = python
+	optdepends = ffmpeg: for video post-processing
+	optdepends = rtmpdump: for rtmp streams support
+	optdepends = atomicparsley: for embedding thumbnails into m4a files
+	optdepends = python-pycryptodome: for hlsnative downloader
+	optdepends = python-pycryptodomex: for ivi extractor
+	optdepends = python-brotli: support for the Brotli compression format
+	optdepends = aria2: alternative parallel downloader
+	provides = youtube-dl
+	conflicts = youtube-dl
+	source = https://github.com/ytdl-org/ytdl-nightly/releases/download/2024.05.31/youtube-dl-2024.05.31.tar.gz
+	sha256sums = eb6e47eb665c0148a6f5674f323a75748f2a7929841be56db96d19381119d6a7
+
+pkgname = youtube-dl-nightly
