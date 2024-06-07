@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cycode
 _pkgname=CyCode
-pkgver=2.0.5
-_electronversion=28
+pkgver=2.0.6
+_electronversion=30
 _nodeversion=18
 pkgrel=1
 pkgdesc="A web-based HTML Editor, Markdown Editor, and WYSIWYG Editor,a code editor with a primary focus on web development."
@@ -26,7 +26,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('b0060fad7d53a8e2ca97e52f352ce8d76117220c9cee4e43aab0c7793d0a29a1'
+sha256sums=('f3360f5735cba336a62f966d4fa0585297995d1e5b6855697da0bf27cfe336b4'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
