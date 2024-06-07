@@ -1,9 +1,9 @@
 # Maintainer: xgjmibzr <xgjmibzr@gmail.com>
 
 pkgname=superslicer-bin
-pkgver=2.5.59.10
+pkgver=2.5.59.11
 _pkgtag=$pkgver
-_appimage=SuperSlicer-ubuntu_18.04-$_pkgtag.AppImage
+_appimage=SuperSlicer-ubuntu_20.04-$_pkgtag.AppImage
 pkgrel=1
 pkgdesc="G-code generator for 3D printers (Creality, RepRap, Makerbot, Ultimaker etc.) (binary AppImage)"
 arch=('x86_64')
@@ -16,9 +16,9 @@ conflicts=('superslicer' 'superslicer-git' 'superslicer-prerelease')
 source=("$url/releases/download/$_pkgtag/$_appimage"
         "superslicer.patch"
         )
-sha256sums=('86474cadcc210d7740d557426f432e0990b83f69bd5cbc00bc0f06178dc16391'
+sha256sums=('741c35182afe5ae63ff09f3cb58f4c4797c9c81bc793166784f81a19d29c7701'
             'a2d8092e5ec12e96d487d55b564f56c2df5bd41a3be066734b94465695a6c404')
-b2sums=('78652a686d91dfb70395ea04b0c7a83048f918312a2b5c082b21c0cb41789a174e048d678916b04483c334694fde01218229bcaae344f91eddab175ffc75582c'
+b2sums=('4cb88a690f7d38f8093d7f352be517ee621525406459b4f167544407a1ba19db172e96dd5a7e151a9d9ed1b97e27131ddbc5afb9f6f44d906e86d06b01cf6625'
         '7547a6cc945948e637413b55af6a5a68fb6c08e8d5b3c03b137134cc5ed4f399b3d666985be5c2103240d3ae56d591ab9f02b5237a01978d422673247fef7061')
 noextract=("${_appimage}")
 
