@@ -1,0 +1,31 @@
+pkgbase = python-mike
+	pkgdesc = Manage multiple versions of your MkDocs-powered documentation
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://github.com/jimporter/mike
+	arch = any
+	license = BSD-3-Clause
+	checkdepends = python-pytest-xdist
+	checkdepends = python-importlib-metadata
+	checkdepends = python-importlib_resources
+	checkdepends = python-pyparsing
+	checkdepends = python-shtab
+	checkdepends = python-yaml
+	checkdepends = python-verspec
+	checkdepends = mkdocs
+	checkdepends = git
+	makedepends = python-setuptools
+	source = https://github.com/jimporter/mike/archive/refs/tags/v2.1.1.tar.gz
+	md5sums = 0e4b1ad447017562868dd91318ac6f2a
+
+pkgname = python-mike
+	depends = python>=3.8
+	depends = python-importlib-metadata
+	depends = python-importlib_resources
+	depends = python-jinja>=2.7
+	depends = python-pyparsing>=3.0
+	depends = python-yaml>=5.1
+	depends = python-pyyaml-env-tag
+	depends = python-verspec
+	depends = mkdocs>=1.0
+	optdepends = python-shtab: set up shell-completion
