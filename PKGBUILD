@@ -4,8 +4,8 @@
 # Contributor: mitro <mitro@somecode.com>
 
 pkgname=taskjuggler
-pkgver=3.7.1
-pkgrel=2
+pkgver=3.7.2
+pkgrel=1
 pkgdesc='A Project Management Software'
 arch=(any)
 url='http://www.taskjuggler.org'
@@ -14,7 +14,7 @@ depends=(ruby ruby-mail 'ruby-term-ansicolor>=1.7.1' ruby-rdoc ruby-sync)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$pkgname-$pkgver.gem)
 noextract=($pkgname-$pkgver.gem)
-sha1sums=('968465f249c8aefea7ea4fb946cac6db1b0e2bb7')
+sha1sums=('ef5d4f62e78f835a3366065ca92ac6844454a84f')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
