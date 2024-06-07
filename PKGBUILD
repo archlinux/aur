@@ -9,7 +9,7 @@ arch=("x86_64" "i686")
 url="https://github.com/mov-cli/mov-cli-test"
 license=("MIT")
 makedepends=(
-	"python-build" "python-wheel" "python-setuptools-scm"
+	"python-build" "python-wheel" "python-installer"
 )
 depends=(
 	"python"
