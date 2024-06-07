@@ -45,12 +45,12 @@ package() {
   install -Dm 644 "${srcdir}/user.conf" "${pkgdir}/usr/lib/sysusers.d/kibana.conf"
   install -Dm 644 "${srcdir}/tmpfile.conf" "${pkgdir}/usr/lib/tmpfiles.d/kibana.conf"
 
-  rm -r "${pkgdir}/usr/share/kibana/node"
-  find "${pkgdir}/usr/share/kibana/node_modules" -type d -empty -delete
+  #rm -r "${pkgdir}/usr/share/kibana/node"
+  #find "${pkgdir}/usr/share/kibana/node_modules" -type d -empty -delete
 
-  if [ -f "${pkgdir}/usr/share/kibana/data/uuid" ];then
-    rm -v "${pkgdir}/usr/share/kibana/data/uuid"
-  fi
+  #if [ -f "${pkgdir}/usr/share/kibana/data/uuid" ];then
+  #  rm -v "${pkgdir}/usr/share/kibana/data/uuid"
+  #fi
 }
 
 # vim: ts=2 sw=2 et:
