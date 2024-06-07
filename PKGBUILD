@@ -1,9 +1,11 @@
 # Maintainer: Bernd Schöler <besc@here-be-braces.com>
 # Contributor: Lukas Jirkovsky <l.jirkovsky AT gmail.com>
 
-# The Photivo-to-Gimp GIMP plugin (ptGimp) is not built
-# because it became obsolete with GIMP 2.10
-# see: https://photivo.org/download/gimp#photivo_to_gimp
+# GIMP support is disabled.
+# * The old Photivo-to-Gimp GIMP plugin (ptGimp) is not built because it became obsolete with GIMP 2.10.
+#   see: https://photivo.org/download/gimp#photivo_to_gimp
+# * The Gimp-to-Photivo GIMP plugin (mm-extern-photivo.py) is not installed because Arch builds
+#   GIMP without Python scripting support.
 
 # Photivo is built with Qt 6 by default but is still compatible with Qt 5.
 # If you need to build with Qt 5, change the version here.
@@ -16,13 +18,12 @@ epoch=1
 pkgdesc="Free and open source photo processor"
 arch=('x86_64')
 url="https://photivo.org/"
-license=('custom:GPL3 only')
+license=('GPL-3.0-only')
 depends=(
     'exiv2' 'fftw' 'graphicsmagick' 'lcms2' 'lensfun' 'liblqr' 'libjpeg-turbo'
-    'libraw' "qt${PT_QT_MAJOR_VERSION}-base" 'shared-mime-info'
+    'libraw' "qt${PT_QT_MAJOR_VERSION}-base"
 )
 makedepends=('cmake' 'git')
-optdepends=('gimp: GIMP plugins' 'python2: GIMP to Photivo plugin')
 provides=('photivo')
 conflicts=('photivo')
 source=('git+https://bitbucket.org/Photivo/photivo.git')
@@ -39,16 +40,12 @@ build() {
         -B "build-$pkgver" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DPT_QT_MAJOR_VERSION=${PT_QT_MAJOR_VERSION}
+        -DPT_QT_MAJOR_VERSION=${PT_QT_MAJOR_VERSION} \
+        -DWITH_GIMP_TO_PT=OFF
 
     cmake --build "build-$pkgver"
 }
 
 package() {
     DESTDIR="$pkgdir" cmake --install "build-$pkgver"
-
-    # licence because Arch does not provide a *GPL3 only* one
-    sed -n '/Photivo is free software/,//p'  "photivo/README.md" > "build-$pkgver/LICENSE"
-    cat "photivo/COPYING" >> "build-$pkgver/LICENSE"
-    install -Dm 644 "build-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
