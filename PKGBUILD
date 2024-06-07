@@ -3,8 +3,8 @@
 
 _pkgname=tetherback
 pkgname="${_pkgname}-git"
-pkgver=0.9.1+20.r143.20230322.7797eb6
-pkgrel=4
+pkgver=0.9.1+22.r145.20240606.d1907a0
+pkgrel=1
 pkgdesc="Create backups of an Android device over USB (requires adb and TWRP recovery)."
 arch=('any')
 url="https://github.com/dlenski/tetherback"
@@ -29,19 +29,15 @@ provides=(
 )
 source=(
   "${_pkgname}::git+${url}.git"
-  "setup.py-fix-version-detection.patch"
 )
 sha256sums=(
   'SKIP'
-  '99aa1db7575ff1197e43e211ac94a9c44a66539769440de0544c4b144e72418d'
 )
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
 
   git log > git.log
-
-  patch -N -p1 --follow-symlinks -i "${srcdir}/setup.py-fix-version-detection.patch"
 }
 
 pkgver() {
