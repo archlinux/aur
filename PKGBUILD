@@ -2,7 +2,7 @@
 # Contributor: Marcin Mielniczuk <marmistrz dot dev at zoho dot eu>
 _backend=openmpi
 pkgname=ampi-${_backend}
-pkgver=7.0.1
+pkgver=8.0.0
 pkgrel=1
 pkgdesc="Adaptive Message Passing Interface, OpenMPI backend"
 arch=(x86_64)
@@ -11,7 +11,7 @@ url="http://charm.cs.uiuc.edu/research/ampi"
 depends=(openmpi)
 makedepends=(gcc-fortran)
 source=(charm-${pkgver}.tar.gz::https://github.com/UIUC-PPL/charm/archive/v${pkgver}.tar.gz)
-sha512sums=('baed3a7823f004ae24a6c49b5cdccc468ce36dcd5988e4d35ad19865a20e68939963ae9411a8afe8b9e3850d82a6a7b93085afc3f7e6de7e5a6877e19508e637')
+sha512sums=('e05ce57bf9bea0bd7b5e0a5b692ee881d384eb50dca42a3be3df81d33fea130287b28921ac6a24fdef90d6b99fbdcd2cc879d1679ec4b514b7833cb74d39f998')
 
 build() {
   cd charm-${pkgver}
