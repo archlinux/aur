@@ -1,8 +1,8 @@
 # Maintainer: Rodney van den Velden <rodney@dfagaming.nl>
 
 pkgname='osu'
-pkgver='20240503'
-pkgrel=3
+pkgver='20240607'
+pkgrel=1
 pkgdesc='A free-to-win rhythm game'
 _terms_commit='b8a98fb740ed8251958f16d719138e96afa6e299'
 arch=('i686' 'x86_64')
