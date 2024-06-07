@@ -1,0 +1,5 @@
+[session-desktop]
+source = "github"
+github = "oxen-io/session-desktop"
+use_max_tag = true
+prefix = "v"
