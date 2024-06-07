@@ -7,6 +7,7 @@ pkgbase = cursor-appimage
 	license = custom
 	depends = hicolor-icon-theme
 	depends = zlib
+	depends = fuse2
 	options = !strip
 	options = !debug
 	source = cursor-0.34.6.AppImage::https://downloader.cursor.sh/linux/appImage/x64

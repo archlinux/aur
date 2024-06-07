@@ -11,7 +11,7 @@ arch=('x86_64')
 url="https://cursor.so"
 license=('custom')
 options=('!strip' '!debug')
-depends=('hicolor-icon-theme' 'zlib')
+depends=('hicolor-icon-theme' 'zlib' 'fuse2')
 
 # Use curl to get the filename and extract the version
 # pkgver=$(curl -s -o /dev/null -D - -r 0-0 https://download.cursor.sh/linux/appImage/x64 | grep -o -E 'filename=.*$' | sed -e 's/.*cursor-\(.*\)\(.*\)\.AppImage.*/\1\.\2/')
