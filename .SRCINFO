@@ -12,6 +12,10 @@ pkgbase = qzdl
 	depends = qt5-base
 	conflicts = qzdl-git
 	source = git+https://github.com/qbasicer/qzdl.git
+	source = qzdl.desktop
+	source = zdl.png
 	md5sums = SKIP
+	md5sums = b00191baadc095c2452753106f65860d
+	md5sums = f54ace087194fa0e8f1e295551843b86
 
 pkgname = qzdl

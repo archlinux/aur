@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=QZDL
+GenericName=QZDL
+Comment=Launcher for DOOM sourceports
+Exec=qzdl
+Icon=/usr/share/pixmaps/qzdl.png
+Terminal=false
+Type=Application
+Categories=Game;

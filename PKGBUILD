@@ -11,8 +11,10 @@ license=('GPL')
 depends=('qt5-base')
 conflicts=('qzdl-git')
 makedepends=('git' 'gdb' 'make')
-source=("git+https://github.com/qbasicer/qzdl.git")
-md5sums=('SKIP')
+source=("git+https://github.com/qbasicer/qzdl.git" "qzdl.desktop" "zdl.png")
+md5sums=('SKIP'
+         'b00191baadc095c2452753106f65860d'
+         'f54ace087194fa0e8f1e295551843b86')
 _gitname="qzdl"
 _branch=master
 
@@ -33,5 +35,8 @@ package()
   cd "${srcdir}/${_gitname}-build"
   mkdir -p "${pkgdir}/usr/bin"
   mv "zdl" "${pkgdir}/usr/bin/qzdl"
+
+  install -Dm644 "$srcdir"/qzdl.desktop "$pkgdir"/usr/share/applications/"$pkgname".desktop
+  install -Dm644 "$srcdir"/zdl.png      "$pkgdir"/usr/share/pixmaps/"$pkgname".png
 }
 
