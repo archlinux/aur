@@ -18,6 +18,7 @@ _build_vulkan=true
 # Those variables skip CUDA and ROCm build, introduced in https://github.com/ollama/ollama/pull/4462/files.
 export OLLAMA_SKIP_CUDA_GENERATE=true
 export OLLAMA_SKIP_ROCM_GENERATE=true
+export ONEAPI_ROOT='/tmp/does_not_exist/this/path/should/not/exist/to/force-off/oneapi/build'
 
 _name="ollama"
 _pkgbase="${_name}-nogpu"
@@ -39,7 +40,7 @@ if "${_build_vulkan}"; then
   pkgname+=("${_name}-vulkan-git")
 fi
 pkgdesc='Create, run and share large language models (LLMs). Package(s) without dedicated GPU offloading (no CUDA, no ROCm, no SYCL).'
-pkgver=0.1.39+8.r2796.20240528.9db0996e
+pkgver=0.1.42.r2868.20240606.ce0dc33c
 pkgrel=1
 arch=(
   'armv7h'
