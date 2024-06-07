@@ -1,6 +1,6 @@
 pkgbase = mvnvm
 	pkgdesc = Maven version manager
-	pkgver = 1.0.26
+	pkgver = 1.0.27
 	pkgrel = 1
 	url = https://bitbucket.org/mjensen/mvnvm/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = mvnvm
 	depends = sh
 	provides = maven
 	conflicts = maven
-	noextract = mvnvm-1.0.26.tar.bz2
-	source = https://bitbucket.org/mjensen/mvnvm/get/mvnvm-1.0.26.tar.bz2
-	sha256sums = 8319dddc6ebcd3a63807edd0302241a68f48b3bb1f047549a70d7a13300fae69
+	noextract = mvnvm-1.0.27.tar.bz2
+	source = https://bitbucket.org/mjensen/mvnvm/get/mvnvm-1.0.27.tar.bz2
+	sha256sums = 7d0130d303a9bf0ccaff860ae9344b3727976ee94b54a44bd11fc343f2340832
 
 pkgname = mvnvm
