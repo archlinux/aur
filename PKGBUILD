@@ -9,7 +9,7 @@
 _pkgname="glaxnimate"
 pkgname="$_pkgname"
 pkgver=0.5.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Simple vector animation program"
 url="https://glaxnimate.mattbas.org/"
 license=('GPL-3.0-or-latr')
@@ -19,7 +19,6 @@ arch=('x86_64' 'i686' 'armv7h' 'aarch64' 'riscv32' 'riscv64')
 _main_package() {
   depends=(
     'ffmpeg'
-    'hicolor-icon-theme'
     'libarchive'
     'potrace'
     'python'
@@ -30,11 +29,9 @@ _main_package() {
     'zlib'
   )
   makedepends=(
-    'clang'
+    'clang' # lupdate/translations
     'cmake'
     'git'
-    'lld'
-    'llvm'
     'ninja'
     'qt6-declarative'
   )
@@ -97,11 +94,6 @@ prepare() {
 }
 
 build() {
-  export CC CXX LDFLAGS
-  CC=clang
-  CXX=clang++
-  LDFLAGS+=" -fuse-ld=lld"
-
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"
@@ -116,6 +108,10 @@ build() {
 }
 
 package() {
+  depends+=(
+    'hicolor-icon-theme'
+  )
+
   DESTDIR="$pkgdir" cmake --install build
 }
 
