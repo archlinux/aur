@@ -1,6 +1,6 @@
 pkgbase = wlroots-nvidia
 	pkgdesc = Modular Wayland compositor library, with fix for nvidia flickering
-	pkgver = 0.17.2
+	pkgver = 0.17.3
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/wlroots/wlroots
 	arch = x86_64
@@ -28,18 +28,18 @@ pkgbase = wlroots-nvidia
 	depends = xcb-util-renderutil
 	depends = xcb-util-wm
 	optdepends = xorg-xwayland: Xwayland support
-	provides = wlroots=0.17.2
+	provides = wlroots=0.17.3
 	provides = libwlroots.so
 	conflicts = wlroots
 	conflicts = wlroots-git
 	options = debug
-	source = wlroots-0.17.2.tar.gz::https://gitlab.freedesktop.org/wlroots/wlroots/-/releases/0.17.2/downloads/wlroots-0.17.2.tar.gz
-	source = https://gitlab.freedesktop.org/wlroots/wlroots/-/releases/0.17.2/downloads/wlroots-0.17.2.tar.gz.sig
+	source = wlroots-0.17.3.tar.gz::https://gitlab.freedesktop.org/wlroots/wlroots/-/releases/0.17.3/downloads/wlroots-0.17.3.tar.gz
+	source = https://gitlab.freedesktop.org/wlroots/wlroots/-/releases/0.17.3/downloads/wlroots-0.17.3.tar.gz.sig
 	source = nvidia.patch
 	validpgpkeys = 34FF9526CFEF0E97A340E2E40FDE7BE0E88F5E48
 	validpgpkeys = 9DDA3B9FA5D58DD5392C78E652CB6609B22DA89A
 	validpgpkeys = 4100929B33EEB0FD1DB852797BC79407090047CA
-	sha256sums = f4007d3f71e190b9000ab4a30afd87833b034ab2602030a00af4465ffd4e997c
+	sha256sums = 04d31521bd2b737541b9680098e55ebaaf956e68d692f80479f4ee1236606d98
 	sha256sums = SKIP
 	sha256sums = bbbb2a7c825d241f119a73503e7a04482f8d5f03192feabc68601c75cf93ad0b
 
