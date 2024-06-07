@@ -1,6 +1,6 @@
 # Maintainer: drzee <info@drzee.net>
 pkgname=aws-mountpoint-s3-bin
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Offical AWS S3 mount tools. This allows mounting S3 buckets into the file system. Not full POSIX support, see: https://docs.aws.amazon.com/AmazonS3/latest/userguide/mountpoint.html for details"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('fuse3')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=(https://s3.amazonaws.com/mountpoint-s3-release/${pkgver}/x86_64/mount-s3-${pkgver}-x86_64.tar.gz)
-md5sums=('db7a44b18bd114bd591b26823863d4a6')
+md5sums=('08dbab9d998c9ac42a63fda595903303')
 noextract=()
 
 package() {

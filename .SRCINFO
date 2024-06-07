@@ -1,6 +1,6 @@
 pkgbase = aws-mountpoint-s3-bin
 	pkgdesc = Offical AWS S3 mount tools. This allows mounting S3 buckets into the file system. Not full POSIX support, see: https://docs.aws.amazon.com/AmazonS3/latest/userguide/mountpoint.html for details
-	pkgver = 1.6.0
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/awslabs/mountpoint-s3
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = aws-mountpoint-s3-bin
 	depends = fuse3
 	provides = aws-mountpoint-s3
 	conflicts = aws-mountpoint-s3
-	source = https://s3.amazonaws.com/mountpoint-s3-release/1.6.0/x86_64/mount-s3-1.6.0-x86_64.tar.gz
-	md5sums = db7a44b18bd114bd591b26823863d4a6
+	source = https://s3.amazonaws.com/mountpoint-s3-release/1.7.0/x86_64/mount-s3-1.7.0-x86_64.tar.gz
+	md5sums = 08dbab9d998c9ac42a63fda595903303
 
 pkgname = aws-mountpoint-s3-bin
