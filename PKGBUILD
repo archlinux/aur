@@ -15,18 +15,21 @@ unset _pkgtype
 _pkgname="duckstation"
 pkgname="$_pkgname${_pkgtype:-}"
 pkgver=0.1.6759
-pkgrel=3
+pkgrel=4
 pkgdesc="Playstation emulator"
 url="https://github.com/stenzek/duckstation"
 arch=('x86_64')
 license=('GPL-3.0-only')
 
 depends=(
-  'glslang'
+  ## duckstation
   'libwebp'
   'libxrandr'
   'qt6-base'
   'sdl2'
+
+  ## shaderc
+  'glslang'
   'spirv-tools'
 
   ## implicit
@@ -42,19 +45,27 @@ depends=(
 
 )
 makedepends=(
+  ## compiler
   'clang'
+  'lld'
+  'llvm'
+
+  ## build
   'cmake'
   'extra-cmake-modules'
   'git'
-  'lld'
-  'llvm'
   'ninja'
-  'patchelf'
-  'patchutils'
-  'python'
+
+  ## duckstation
   'qt6-tools'
   'qt6-wayland'
+
+  ## shaderc
   'spirv-headers'
+
+  ## fixups
+  'chrpath'
+  'patchutils'
 )
 
 _src_shaderc="google.shaderc"
@@ -185,6 +196,8 @@ build() {
 
   _build_libbacktrace
   _build_shaderc
+
+  LDFLAGS+=" -Wl,--rpath=XORIGIN -Wl,-z,origin"
   _build_duckstation
 }
 
@@ -192,17 +205,23 @@ package() {
   install -dm755 "$pkgdir/opt/$_pkgname/"
   cp --reflink=auto -r build/bin/{resources,translations,duckstation-qt} "$pkgdir/opt/$_pkgname/"
 
-  # add rpath
-  patchelf --force-rpath --set-rpath '$ORIGIN' "$pkgdir/opt/$_pkgname/duckstation-qt"
+  # rpath
+  chrpath -r '$ORIGIN' "$pkgdir/opt/$_pkgname/duckstation-qt"
 
-  # bundle libraries
+  # libraries
   install -Dm644 "$srcdir/deps/usr/lib/libshaderc_shared.so.1" -t "$pkgdir/opt/$_pkgname/"
 
+  # icon
+  install -dm755 "$pkgdir/usr/share/pixmaps/"
+  ln -sf "$pkgdir/opt/$_pkgname/resources/images/duck.png" "$pkgdir/usr/share/pixmaps/duckstation.png"
+
+  # script
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/duckstation" << END
 #!/usr/bin/env bash
 exec /opt/$_pkgname/duckstation-qt "\$@"
 END
 
+  # launcher
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/duckstation.desktop" << END
 [Desktop Entry]
 Type=Application
@@ -215,8 +234,6 @@ Exec=duckstation %f
 Categories=Game;Emulator;Qt;
 END
 
-  install -dm755 "$pkgdir/usr/share/pixmaps/"
-  ln -sf "$pkgdir/opt/$_pkgname/resources/images/duck.png" "$pkgdir/usr/share/pixmaps/duckstation.png"
-
+  # permissions
   chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }
