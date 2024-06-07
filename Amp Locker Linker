@@ -2,5 +2,6 @@
 home_dir_user=$USER
 
 if [ ! -d "/home/${home_dir_user}/Audio Assault/PluginData/Audio Assault/AmpLockerData" ]; then
+    mkdir -p /home/${home_dir_user}/Audio\ Assault/PluginData/Audio\ Assault
     ln -sf /usr/lib/AmpLockerData /home/${home_dir_user}/Audio\ Assault/PluginData/Audio\ Assault/AmpLockerData
 fi
