@@ -1,6 +1,6 @@
 pkgbase = vscodium-insiders-bin
 	pkgdesc = Binary releases of Code Insiders without branding/telemetry/licensing (binary release)
-	pkgver = 1.90.0.24158
+	pkgver = 1.91.0.24159
 	pkgrel = 1
 	url = https://github.com/VSCodium/vscodium.git
 	arch = x86_64
@@ -25,9 +25,9 @@ pkgbase = vscodium-insiders-bin
 	source = vscodium-insiders-bin-uri-handler.desktop
 	sha256sums = 99dbc0d75aec1dbda70655fe3d9769aa2728116ae885e8be20c4b4f13ae1e80e
 	sha256sums = ccd83957fc14eaeeffc56762e864a8d313f99fa480c105eaecd832fb29d075ab
-	source_x86_64 = https://github.com/VSCodium/vscodium-insiders/releases/download/1.90.0.24158-insider/VSCodium-linux-x64-1.90.0.24158-insider.tar.gz
-	sha256sums_x86_64 = 6f542af997e746ae1ea7259c1b3537d54e0943304db61b2dd0c6e96a4e919447
-	source_aarch64 = https://github.com/VSCodium/vscodium-insiders/releases/download/1.90.0.24158-insider/VSCodium-linux-arm64-1.90.0.24158-insider.tar.gz
-	sha256sums_aarch64 = 0232d0918f622f0f164ea0599183b38d3fef5bb1f7d78a744312454a6736161a
+	source_x86_64 = https://github.com/VSCodium/vscodium-insiders/releases/download/1.91.0.24159-insider/VSCodium-linux-x64-1.91.0.24159-insider.tar.gz
+	sha256sums_x86_64 = 71a56b684accf24543322a0bc90db189b37ef7cb89c9cbb7bf63ed809b458d53
+	source_aarch64 = https://github.com/VSCodium/vscodium-insiders/releases/download/1.91.0.24159-insider/VSCodium-linux-arm64-1.91.0.24159-insider.tar.gz
+	sha256sums_aarch64 = 6f2e7b751237689e69183d9cb272232ee103a563fff4fd45427724079f1c77d5
 
 pkgname = vscodium-insiders-bin
