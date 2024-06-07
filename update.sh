@@ -17,3 +17,6 @@ mv DuckStation-x64.AppImage "duckstation-qt-0.1.r${revision}.AppImage"
 
 updpkgsums 
 makepkg --printsrcinfo > .SRCINFO
+
+git add .
+git commit -m "Revision $revision"
