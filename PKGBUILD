@@ -19,11 +19,11 @@ sha256sums=('8a24f58e31f4a0abd5e4d0d6703940e96d00305baa57c24aa6ca727bcf6d1fd5')
 prepare()
 {
   cd "${srcdir}/OpenKJ-${pkgver}-release/"
-  find -name \*.cpp -exec sed -i "s/<taglib\//<taglib1\/taglib\//" \{} \;
 }
 
 build() {
   cd "${srcdir}/OpenKJ-${pkgver}-release/"
+  export PKG_CONFIG_PATH=/usr/lib/taglib1/pkgconfig
   cmake -DCMAKE_INSTALL_PREFIX='/usr' CMakeLists.txt
   make
 }
