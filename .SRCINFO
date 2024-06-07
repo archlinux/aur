@@ -8,6 +8,7 @@ pkgbase = sonobuoy
 	makedepends = go
 	makedepends = git
 	makedepends = libarchive
+	makedepends = make
 	depends = glibc
 	optdepends = docker: sonobuoy images subcommand
 	optdepends = kubectl: advanced workflows
