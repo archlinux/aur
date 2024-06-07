@@ -1,7 +1,7 @@
 # Maintainer: icepie <icepie.dev@gmail.com>
 pkgname=chat2db
 _pkgname=Chat2DB
-pkgver=3.1.17
+pkgver=3.1.22
 pkgrel=1
 pkgdesc="集成了AI和BI报表功能的新一代数据库管理系统"
 arch=("x86_64")
@@ -13,7 +13,7 @@ source=(
 	"chat2db.desktop"
 	"chat2db.svg")
 sha256sums=(
-	'd18c3345ad14cdb0af5871b2db76790601ba541e6d745314ff5ea1a8a93a1a47'
+	'1c01e1a9221a23f55455875ba1e08368aa90f49564c7027248c6e3836faa3631'
 	'075fcbf163b2ead0639bb3ab102b0b08ac9c9f447e230ddf9f24f79b6ae9b91a'
 	'ddc8a78ea5a07fd24b045306775f794cf8de407cdcbf8cc35a242f62c235d771')
 options=(!strip)
