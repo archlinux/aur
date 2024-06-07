@@ -5,7 +5,7 @@
 
 pkgname=lix
 pkgver=0.10.23
-pkgrel=1
+pkgrel=2
 changelog=.CHANGELOG
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/SimonN/LixD/archive/v$pkgver.tar.gz"
         "$pkgname-music-1.1.zip::https://www.lixgame.com/dow/lix-music.zip")
@@ -25,13 +25,9 @@ prepare() {
 
     # Iterate thorugh the required packages and versions to fetch them in advance
     # Read from dub.selections.json and print them as "package,version"
-    for line in $(jq -r '.versions | keys[] as $k | "\($k),\(.[$k])"' <dub.selections.json); do
-
-        # Split each dependency at the ','
-        IFS=',' read -ra dep <<< "$line"
-
+    for line in $(jq -r '.versions | keys[] as $k | "\($k)@\(.[$k])"' <dub.selections.json); do
         # Fetch each package at the required version
-        dub fetch --cache=local "${dep[0]}@${dep[1]}"
+        dub fetch --cache=local "$line"
     done
 }
 
