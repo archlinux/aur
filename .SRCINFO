@@ -8,6 +8,7 @@ pkgbase = python-pinecil
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-poetry
 	depends = python
 	depends = python-bleak
 	source = pinecil_lib-0.2.14.tar.gz::https://github.com/builder555/pinecil_lib/archive/refs/tags/v0.2.14.tar.gz

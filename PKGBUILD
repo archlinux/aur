@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/builder555/pinecil_lib"
 license=('MIT')
 depends=('python' 'python-bleak')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-poetry')
 source=("${_name}-${pkgver}.tar.gz::https://github.com/builder555/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('ce7dfa49ecd2dabab667ac717729e070b7a482b6dba3cb7b70e69b5efd40ca02')
 
