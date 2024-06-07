@@ -1,0 +1,10 @@
+*.tar.*
+*.orig
+*.rej
+*.swp
+*.part
+src
+pkg
+gping.1
+LICENSE
+readme.md
