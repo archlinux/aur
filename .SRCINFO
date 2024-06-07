@@ -1,7 +1,7 @@
 pkgbase = mii_emu
 	pkgdesc = Apple //e Emulator for Linux
 	pkgver = 1.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/buserror/mii_emu
 	arch = any
 	license = MIT
@@ -16,6 +16,8 @@ pkgbase = mii_emu
 	provides = mii_emu
 	conflicts = mii_emu
 	source = mii_emu-1.9.tar.gz::https://github.com/buserror/mii_emu/archive/refs/tags/v1.9.tar.gz
+	source = mii_emu.desktop
 	sha256sums = dc21bc13d0ba125f390b5f7eb023c8f2e62d03a60decdb719796db83c852af85
+	sha256sums = 30ed9a8f75daf97aad8933d0409dd6dc0933e1b4ec4f077a8121eff14e53f951
 
 pkgname = mii_emu

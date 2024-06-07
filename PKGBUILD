@@ -2,8 +2,8 @@
 
 pkgname=mii_emu
 pkgver=1.9
-pkgrel=1
-pkgdesc="Apple //e Emulator for Linux "
+pkgrel=2
+pkgdesc="Apple //e Emulator for Linux"
 arch=('any')
 url="https://github.com/buserror/mii_emu"
 license=('MIT')
@@ -13,8 +13,10 @@ optdepends=('alsa-lib: needed for sound' 'mold')
 provides=('mii_emu')
 conflicts=('mii_emu')
 source=(
-  "${pkgname}-${pkgver}.tar.gz::https://github.com/buserror/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('dc21bc13d0ba125f390b5f7eb023c8f2e62d03a60decdb719796db83c852af85')
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/buserror/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
+  "mii_emu.desktop")
+sha256sums=('dc21bc13d0ba125f390b5f7eb023c8f2e62d03a60decdb719796db83c852af85'
+            '30ed9a8f75daf97aad8933d0409dd6dc0933e1b4ec4f077a8121eff14e53f951')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -25,8 +27,13 @@ build() {
 }
 
 package() {
+  # prep desktop file and .desktop
+  sed -e "s/^Version=.*/Version=${pkgver}/" mii_emu.desktop > "${srcdir}/${pkgname}-${pkgver}/mii_emu.desktop"
+
   cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR=${srcdir}/${pkgname}-${pkgver}/dist install
+  install -Dm644 "mii_emu.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm644 "contrib/mii-icon-64.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/mii_emu.png"
   install -Dm 755 dist/bin/mii_emu_gl "${pkgdir}"/usr/bin/mii_emu_gl
   install -Dm 644 LICENSE -t "${pkgdir}"/usr/share/licenses/${pkgname}
   install -Dm 644 README.md -t "${pkgdir}"/usr/share/doc/${pkgname}
