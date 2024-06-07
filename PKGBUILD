@@ -1,10 +1,9 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
 # Contributor: George Rawlinson <grawlinson@archlinux.org>
 
-pkgname=single-file
-_pkgname=single-file-cli
+pkgname=single-file-cli
 pkgver=2.0.43
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI tool for saving a faithful copy of a complete web page in a single HTML file"
 arch=(any)
 url="https://github.com/gildas-lormeau/single-file-cli"
@@ -15,17 +14,19 @@ optdepends=(
   'chromium: for webdriver-chromium backend'
   'playwright: for playwright-{firefox,chromium} backend'
 )
-source=("https://registry.npmjs.org/$_pkgname/-/$_pkgname-$pkgver.tgz")
-noextract=("$_pkgname-$pkgver.tgz")
+provides=(single-file)
+replaces=(single-file)
+source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
+noextract=("$pkgname-$pkgver.tgz")
 sha256sums=('1533d10212a6f821c7fd79e1251660497a58d281138eb823d35a6426a7874143')
 
 package() {
   npm install -g \
     --cache "$srcdir/npm-cache" \
     --prefix "$pkgdir/usr" \
-    "$srcdir/$_pkgname-$pkgver.tgz"
+    "$srcdir/$pkgname-$pkgver.tgz"
 
-  local moduledir="$pkgdir/usr/lib/node_modules/$_pkgname"
+  local moduledir="$pkgdir/usr/lib/node_modules/$pkgname"
 
   install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" "$moduledir/README.MD"
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" "$moduledir/LICENSE"
