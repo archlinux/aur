@@ -1,6 +1,6 @@
 pkgbase = fotema
 	pkgdesc = Photo gallery for Linux
-	pkgver = 1.8.1
+	pkgver = 1.8.2
 	pkgrel = 1
 	url = https://github.com/blissd/fotema
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = fotema
 	depends = glycin
 	depends = libadwaita
 	depends = libheif
-	source = fotema-1.8.1.tar.gz::https://github.com/blissd/fotema/archive/refs/tags/v1.8.1.tar.gz
+	source = fotema-1.8.2.tar.gz::https://github.com/blissd/fotema/archive/refs/tags/v1.8.2.tar.gz
 	source = i18n.patch
-	sha256sums = b6e0c3747ba62336c47cfdec43926cfd424a21693d3450f73ca9600c4ac320f9
+	sha256sums = 0a2e8fcdbf27ae6e74391b67b4874a9edca2abd90a8dde0e1a02879e8e9e7696
 	sha256sums = ebe2f2c74ca282a918c748e7e1e08b0e8f3ec964244746c299211df38e7da396
 
 pkgname = fotema
