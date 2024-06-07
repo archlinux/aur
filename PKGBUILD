@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=geepack
-_pkgver=1.3.10
+_pkgver=1.3.11
 pkgname=r-${_pkgname,,}
-pkgver=1.3.10
+pkgver=1.3.11
 pkgrel=1
 pkgdesc='Generalized Estimating Equation Package'
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=(
   r-magrittr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4a38923b3697fd5e6488075224b63ef10195a29223e73a40e969f7db63215f42')
+sha256sums=('29e2f0d314e75de748f33438b5b1282f469d163e29534c61616c257b2955e478')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
