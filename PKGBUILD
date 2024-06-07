@@ -1,8 +1,11 @@
 # Maintainer: Fabian Posch <aur@posch.tech>
 
 pkgname=act-core-git
-pkgver=0.0.1.r1865.033b73b
-pkgrel=4
+_basever=0
+_patchlvl=1
+_gitversion=r1866.3b3d028
+pkgver=${_basever}.${_patchlvl}.${_gitversion}
+pkgrel=1
 pkgdesc="ACT core provides the core library for the ACT AVLSI toolflow."
 arch=('x86_64')
 url="https://github.com/asyncvlsi/act"
