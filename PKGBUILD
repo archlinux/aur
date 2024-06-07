@@ -1,7 +1,7 @@
 # Maintainer: Audiolinux  audiolinux@fastmail.fm
 
 pkgname=audirvana-studio
-pkgver=2.8.1.7
+pkgver=2.8.2
 pkgrel=1
 pkgdesc="Audirvana Studio audio player"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://audirvana.com/"
 license=('custom')
 depends=('glibc' 'gcc-libs' 'alsa-lib' 'avahi' 'curl' 'libxml2')
 source=("https://audirvana.com/delivery/linux/apt-repo/pool/non-free/audirvana-studio/audirvana-studio_"$pkgver"_amd64.deb" 'audirvanaStudio.service')
-sha256sums=('2307b667fa071903d332db5485e06763812e45d3fcafe9d3c204878e500d519c' 
+sha256sums=('9dbde0ff40734527093fde38c0873d72899089ae499af00db3239ef81288132c' 
 'd1750d6eb360f3d348b2a016288ca4dae3ed544bbe62c1d802fa0fb59c487658')
 install=${pkgname}.install
 
