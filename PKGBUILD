@@ -1,8 +1,8 @@
 # Maintainer: Didrole <Didrole@gmail.com>
 
 pkgname=cato-client-bin
-pkgver=5.2.0.3
-pkgrel=2
+pkgver=5.2.1.1
+pkgrel=1
 pkgdesc='VPN client from Cato Networks to connect to the Cato Cloud.'
 arch=('x86_64')
 url='https://clientdownload.catonetworks.com/'
@@ -14,7 +14,7 @@ source=("cato-client-install-${pkgver}.deb::https://clients.catonetworks.com/lin
         "cato-client-bin.sysusers"
         "cato-client-bin.tmpfiles"
 )
-sha256sums=('35482f3e6dab68687a48ee3157782aa4b3ce260c1986d716097b693b9434bbf9'
+sha256sums=('d2151c85ac5a88a26d87607240c15f8ec08b8bfe2497e4ab352437dd8eabdd60'
             '3c51ce0ebde44edf062e2c9db69c95949ee2031f4e85156f2f401d6e8767f704'
             'd381f7126126f45ca36e43bd33772bfa0aa6d9cbc9a720e2485fc6061cdd9435')
 
