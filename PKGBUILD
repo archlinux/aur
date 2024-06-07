@@ -2,7 +2,7 @@
 pkgbase='python-rnapolis'
 pkgname='python-rnapolis'
 _name='rnapolis'
-pkgver='0.3.15'
+pkgver='0.3.16'
 pkgrel=1
 pkgdesc="A Python library containing RNA-related bioinformatics functions and classes"
 url="https://github.com/tzok/rnapolis-py"
@@ -11,7 +11,7 @@ makedepends=(python-setuptools python-build python-installer python-wheel)
 license=(MIT)
 arch=(any)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name/-/_}-${pkgver}.tar.gz")
-sha256sums=('d403767db7ddeb1b07c308ee6ca0c2c91b7ba156a07f911c1a2301ec8ba14249')
+sha256sums=('311b65f54459aab6051508da6db39ce7f324241374fddd3d8e7165d7a5a58ee4')
 
 build() {
     cd "${_name}-${pkgver}"
