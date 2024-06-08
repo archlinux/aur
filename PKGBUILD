@@ -14,15 +14,15 @@ makedepends=('cmake' 'git')
 source=("${_gitname}-${pkgver}.tar.gz::https://github.com/alexbatalov/${_gitname}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('2fcb58dd77eb025ac7a0a8f36699241e2303f9a7078ba563a3bfd424cbeb804a')
 
-
 build() {
     cd "${_gitname}-${pkgver}"
-    cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release ./
+    cmake -DCMAKE_BUILD_TYPE=Release ./
     make
 }
 
 package() {
     cd "${_gitname}-${pkgver}"
-    DESTDIR="$pkgdir" cmake -P cmake_install.cmake --install build
+    DESTDIR="$pkgdir" cmake --install . --prefix "/usr"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
