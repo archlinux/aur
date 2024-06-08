@@ -1,0 +1,20 @@
+pkgbase = arduino-avr-core
+	pkgdesc = Arduino AVR core with upstream avr-gcc and avrdude
+	pkgver = 1.8.6
+	pkgrel = 1
+	url = https://github.com/arduino/ArduinoCore-avr
+	arch = any
+	license = GPL
+	depends = avrdude
+	depends = avr-gcc
+	depends = avr-libc
+	options = !strip
+	options = !emptydirs
+	options = !debug
+	source = https://github.com/arduino/ArduinoCore-avr/archive/1.8.6/arduino-avr-core-1.8.6.tar.gz
+	source = platform.patch
+	validpgpkeys = 326567C1C6B288DF32CB061A95FA6F43E21188C4
+	sha512sums = 910fbf8103571d377e0094393fd249e4c5d637b81b1996521e5812372d55bc1a3dc1b87f668510e705a88072ac0514294fb27d2d5499f64a84e2e5b0c3a78ac3
+	sha512sums = 916d76a1313fa9372e141eb132eb3d5d4db32e27f695d3b6b0e2894111bfdacd54feec2ba6ea89b10918b9ef904f9b3d4c105c37d5a6851ac92c5c1758679f00
+
+pkgname = arduino-avr-core
