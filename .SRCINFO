@@ -1,12 +1,15 @@
 pkgbase = python-qtawesome-git
 	pkgdesc = Enables iconic fonts such as Font Awesome and Elusive Icons in PyQt and PySide applications
-	pkgver = 0.6.1.r2.g634112d
+	pkgver = 1.3.1.r1.g68abecc
 	pkgrel = 1
 	url = https://github.com/spyder-ide/qtawesome
 	arch = any
 	license = MIT
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-qtpy
 	provides = python-qtawesome
 	conflicts = python-qtawesome
@@ -14,4 +17,3 @@ pkgbase = python-qtawesome-git
 	md5sums = SKIP
 
 pkgname = python-qtawesome-git
-
