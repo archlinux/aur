@@ -27,16 +27,17 @@ esac
 url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('custom:EPSON EULA')
 depends=('iscan' 'iscan-data')
+source=("${pkgname}.install")
 source_x86_64=("https://download2.ebz.epson.net/iscan/plugin/${_product}/deb/x64/iscan-${_product}-bundle-${pkgver}.x64.deb.tar.gz"
                "https://download3.ebz.epson.net/dsc/f/03/00/15/87/26/2525daf2881161ddb0957e22601734bfedab5152/epsonscan2-bundle-${_scan_ver}.x86_64.deb.tar.gz")
 source_i686=("https://download2.ebz.epson.net/iscan/plugin/${_product}/deb/x86/iscan-${_product}-bundle-${pkgver}.x86.deb.tar.gz"
              "https://download3.ebz.epson.net/dsc/f/03/00/15/87/27/a2f4b9c48258de4e0c8082509a94060aa0ce7c61/epsonscan2-bundle-${_scan_ver}.i686.deb.tar.gz")
+sha256sums=('b2b50e633cdf060ef475ca80c456be7863272db31e056bdc303f9e38b6aac8ba')
 sha256sums_x86_64=('553eb55fef42ebcae562f3b8442d43093a16d8b53893da3b0d25396e81377949'
                    '66fe6bd9189dc67cd3d61c852eacc01ecaa1de59cc029d948d2199b38dca932d')
 sha256sums_i686=('657cd8d8e0e5dfcb305dde65c99d5fc085ad3eb5a889b048ef81bf99afa27d05'
                  '626baea9833265bc7c8e60ee08f94372ea81cb2b627239a4712a0411068241e2')
 install="${pkgname}.install"
-sha256sums_install=('b2b50e633cdf060ef475ca80c456be7863272db31e056bdc303f9e38b6aac8ba')
 
 prepare() {
   # Prepare the plugin
