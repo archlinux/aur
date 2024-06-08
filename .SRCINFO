@@ -1,0 +1,15 @@
+pkgbase = mimalloc
+	pkgdesc = General-purpose allocator with excellent performance characteristics
+	pkgver = 2.1.7
+	pkgrel = 1
+	url = https://github.com/microsoft/mimalloc
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = glibc
+	source = mimalloc::git+https://github.com/microsoft/mimalloc#tag=v2.1.7
+	sha512sums = 75d1ee7c25b6e53d1da25ab21b4140331cad4af72f7ff19e72f2a7c57715dfd3cbd4642b8f7cd5ae5a8695ed6a9592cb4cc20c340e09fb42abc619b245203c51
+	b2sums = afa823bee649bce039f9cb70ab5e222dd17b967fcefaf215b43fa55bbed11d5369add2a1471f8d5f606c2d62b1c4fd9b2e5c0a7a924ea390cc7d321ab2f15e53
+
+pkgname = mimalloc
