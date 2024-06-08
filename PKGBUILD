@@ -1,4 +1,5 @@
-# Maintainer: Anthony Wang <ta180m@pm.me>
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Anthony Wang <ta180m@pm.me>
 _base=jupyterlab-latex
 pkgname=python-${_base}
 pkgver=4.0.0
