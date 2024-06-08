@@ -1,7 +1,7 @@
 # Maintainer: Jax Young <jaxvanyang@gmail.com>
 _name=batchlink
 pkgname="python-$_name"
-pkgver=0.1.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Batch link file utility and library'
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=(
 	'python-pdm-backend'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jaxvanyang/$_name/archive/v$pkgver.tar.gz")
-sha256sums=('f1805033cb37b3981efb91e48a4240cb8e3c89557c907fadb61912076edc7d02')
+sha256sums=('f9a193466c119e9ee61f57e12f771b11cf250a366d154c5693c30172549d1d5c')
 
 build() {
 	cd "$_name-$pkgver"
