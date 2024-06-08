@@ -1,0 +1,17 @@
+pkgbase = cppzmq-git
+	pkgdesc = Header-only C++ binding for libzmq
+	pkgver = 4.10.0.r20.g6164cf7
+	pkgrel = 1
+	url = https://github.com/zeromq/cppzmq
+	arch = any
+	license = MIT
+	checkdepends = catch2-v2
+	makedepends = git
+	makedepends = cmake
+	depends = zeromq
+	provides = cppzmq=4.10.0.r20.g6164cf7
+	conflicts = cppzmq
+	source = git+https://github.com/zeromq/cppzmq.git
+	sha256sums = SKIP
+
+pkgname = cppzmq-git
