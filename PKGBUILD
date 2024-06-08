@@ -2,8 +2,8 @@
 
 _name=libbpf
 pkgname=lib32-$_name
-pkgver=1.3.0
-pkgrel=2
+pkgver=1.4.2
+pkgrel=1
 pkgdesc='Library for loading eBPF programs and reading and manipulating eBPF objects from user-space'
 url='https://github.com/libbpf/libbpf'
 arch=('x86_64')
@@ -12,8 +12,8 @@ depends=($_name 'lib32-glibc' 'lib32-libelf')
 makedepends=('rsync')
 provides=('libbpf.so')
 source=(https://github.com/libbpf/libbpf/archive/v${pkgver}/${_name}-${pkgver}.tar.gz)
-sha512sums=('59990189538e47765542e9ed6e88bc78c9d29bc077b5666bb1303cf15579c90b3d35a0d631b9bbd4bff2708243dc91d901bd68c119fb74dfd10a3e1066aa9acc')
-b2sums=('5ee0a45cd06be482c9523ec2a9bb26cf12b89df23f515b037badda868770069d5ffb751c011222b86b1d43034a1cdd537cb263883ed0645641548adc9c9896eb')
+sha512sums=('b0faf45e77fc0197239b87d74010bad6b7ef7d48c1b3de2a3960164d9029851e2ad204b92d0cccb2fde2d0dfe44d9fa7f24b35a4917179dbab1bee192d3780db')
+b2sums=('7529e6521337d45210ee2e3d00aae7c8cac309a4b3f36ffdd9c4a6c4439f266ee654b6ad6abaea2e43310260182bd9ad52ff162339545027050329d8307fe0d5')
 
 build() {
   export CC="gcc -m32"
