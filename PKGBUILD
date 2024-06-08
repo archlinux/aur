@@ -4,7 +4,7 @@
 # shellcheck shell=bash
 
 pkgname=papirus-folders-catppuccin-git
-pkgver=r27.667f3e7a
+pkgver=r28.0ad3b88a
 pkgrel=1
 pkgdesc="Soothing pastel theme for Papirus Icon Theme folders"
 arch=("any")
@@ -17,12 +17,10 @@ provides=("papirus-folders")
 conflicts=("papirus-folders")
 source=("$pkgname::git+$url.git"
   "papirus-folders.hook"
-  "_papirus-folders"
-  "papirus-folders")
+  "papirus-folders::https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-folders/master/papirus-folders")
 md5sums=('SKIP'
          '2acbe66d274f220ce1beb47fadcfbec0'
-         '7b1e8e8bd907eb21f67b4b7a78d060a0'
-         '6d050ecde3af37ce74a4a89cdc35990d')
+         '07398d48f6d86df3573fafc612c9c198')
 
 pkgver() {
   cd "$srcdir/$pkgname" || exit 1
@@ -33,8 +31,9 @@ package() {
   cd "$pkgname" || exit 1
   install -dm755 "$pkgdir/usr/share/icons/Papirus"
   cp -r src/* "$pkgdir/usr/share/icons/Papirus"
+  cp ../papirus-folders ../_papirus-folders
 
-  install -Dm755 papirus-folders -t "$pkgdir/usr/bin"
+  install -Dm755 ../papirus-folders -t "$pkgdir/usr/bin"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname}"
   install -Dm644 ../papirus-folders.hook -t "$pkgdir/usr/share/libalpm/hooks"
 
