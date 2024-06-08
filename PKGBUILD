@@ -2,10 +2,10 @@
 # Contributor: sukanka <su975853527@gmail.com>
 
 _pkgname=osqp
-_pkgver=0.6.3.2
+_pkgver=0.6.3.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Quadratic Programming Solver using the 'OSQP' Library"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -26,8 +26,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d6b45409799ce483514cada5818fa47a')
-b2sums=('34f744c65d04a2213721fd82b1116bae8d3c8f748a5dd164e77abf89be24a115c482c79e6d99b6bd89e438019badde7015f5b216a4e69cfb1369f1defe335877')
+md5sums=('3c29c9fa31f72cd1326fe9da148ce02b')
+b2sums=('2e90bd3a9caf39aa210aa5cad5b459d5c2267117b8e6e0784ab951033d2921f12adce44e2fdfb8903a3a8973de59a42da378c8cfb61cdff4645b648951668472')
 
 build() {
   mkdir build
