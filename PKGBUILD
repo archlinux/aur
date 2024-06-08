@@ -2,7 +2,7 @@
 
 pkgname=python-pyproject-patcher
 _gitpkgname=pyproject-patcher
-pkgver=0.1.1
+pkgver=0.2.1
 pkgrel=1
 # shellcheck disable=SC2016  # Not meant to expand
 pkgdesc='Collection of convenience functions to patch `pyproject.toml` in place'
@@ -15,6 +15,7 @@ depends=(
   'python-distlib'
   'python-inplace'
   'python-tomlkit'
+  'python-typing_extensions'
 )
 makedepends=(
   'python-build'
@@ -24,15 +25,14 @@ makedepends=(
 )
 checkdepends=(
   'python-pytest'
+  'python-setuptools-git-versioning'
 )
 
 source=(
   "${_gitpkgname}-${pkgver}.tar.gz::https://github.com/claui/pyproject-patcher/archive/v${pkgver}.tar.gz"
 )
 
-sha512sums=(
-  '78a868d238bc1e7746e6245b5ae49ec1baccdf0d914cacfc40b3ab898a288ea9b7db8bcb512016c0b4cce78574bc8cd9b070f57c82b558c69d7f027ef916d2f9'
-)
+sha512sums=('b096addc392a2ccf3755a2130a73c153908c0bf1c36d7ff688dd488ff6fc9db3d2900801a920f97c1987b02dcf972c84167e827c7adb51b34226f0a9bf02c842')
 
 build() {
   cd "${_gitpkgname}-${pkgver}"

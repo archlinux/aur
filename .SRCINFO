@@ -1,11 +1,12 @@
 pkgbase = python-pyproject-patcher
 	pkgdesc = Collection of convenience functions to patch `pyproject.toml` in place
-	pkgver = 0.1.1
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/claui/pyproject-patcher
 	arch = any
 	license = Apache-2.0
 	checkdepends = python-pytest
+	checkdepends = python-setuptools-git-versioning
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-poetry-core
@@ -15,7 +16,8 @@ pkgbase = python-pyproject-patcher
 	depends = python-distlib
 	depends = python-inplace
 	depends = python-tomlkit
-	source = pyproject-patcher-0.1.1.tar.gz::https://github.com/claui/pyproject-patcher/archive/v0.1.1.tar.gz
-	sha512sums = 78a868d238bc1e7746e6245b5ae49ec1baccdf0d914cacfc40b3ab898a288ea9b7db8bcb512016c0b4cce78574bc8cd9b070f57c82b558c69d7f027ef916d2f9
+	depends = python-typing_extensions
+	source = pyproject-patcher-0.2.1.tar.gz::https://github.com/claui/pyproject-patcher/archive/v0.2.1.tar.gz
+	sha512sums = b096addc392a2ccf3755a2130a73c153908c0bf1c36d7ff688dd488ff6fc9db3d2900801a920f97c1987b02dcf972c84167e827c7adb51b34226f0a9bf02c842
 
 pkgname = python-pyproject-patcher
