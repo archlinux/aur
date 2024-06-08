@@ -1,6 +1,6 @@
 # Maintainer: Deltara <boided420 at gmail dot com>
 pkgname="techmino-client"
-pkgver=0.17.14
+pkgver=0.17.16
 pkgrel=1
 pkgdesc="Techmino is fun!"
 arch=("x86_64")
@@ -9,7 +9,7 @@ license=("(L)GPL")
 depends=(fuse xorg-xrandr)
 options=(!strip)
 source=("https://github.com/26F-Studio/Techmino/releases/download/v${pkgver}/techmino_Linux.deb")
-sha256sums=("9a2decf5117dc84d51b04a526c7d758521fe3e4b791033d4e0aabf26d92aae69")
+sha256sums=("a4c76e11fe19b8d569258417576e10a0dbd441c0a65b3e751e7fe63c71fe88e4")
 
 prepare() {
     cd ${srcdir}
