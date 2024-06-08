@@ -2,14 +2,14 @@
 pkgname=oqsprovider
 _pkgname=oqs-provider
 pkgver=0.6.0
-_pkgverliboqs=0.10.0
-pkgrel=3
+_pkgverliboqs=0.10.1
+pkgrel=4
 pkgdesc="OpenSSL 3 provider containing post-quantum algorithms"
 arch=(x86_64)
 url=https://openquantumsafe.org/applications/tls.html#oqs-openssl-provider
 license=(MIT)
 depends=(
-    'liboqs=1:0.10.0'
+    'liboqs=1:0.10.1'
     'openssl'
 )
 makedepends=(
@@ -26,7 +26,7 @@ source=(
     liboqs-$_pkgverliboqs.tar.gz::https://github.com/open-quantum-safe/liboqs/archive/refs/tags/$_pkgverliboqs.tar.gz
 )
 b2sums=('0426042cad8c1e039c16f673b2411e5dc2ee487c65b295c230cc697e2fd98c175a9158e4ef407440d8fd7b4a10ce607576afc3903d5da268d2dcae7046e8ec76'
-        '6fda208f669f270b7c361a87c5b4d2bc59e3fac2d49a31c378650bc2b6a36a34e6627bf31785d5bbbb5609cc87ef280ff035c60961dfd3abe620035e88c9a433')
+        '7f5f59641734d9827323b116822bf0204c7390abcf3e899b638c9f2ee7acc2c79511bb53b91e8c5d1f6bf4c8b63191f8df8fef0054020d3a38f7af3ddf33c424')
 
 prepare() {
     cd $_pkgname-$pkgver
