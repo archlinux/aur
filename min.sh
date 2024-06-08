@@ -1,3 +1,3 @@
 #!/usr/bin/bash
 
-electron --app=/usr/lib/min
+exec @ELECTRON@ /usr/lib/min/app "$@"

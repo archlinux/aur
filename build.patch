@@ -1,0 +1,40 @@
+diff --git a/scripts/buildLinux.js b/scripts/buildLinux.js
+new file mode 100644
+index 0000000..d81b74c
+--- /dev/null
++++ b/scripts/buildLinux.js
+@@ -0,0 +1,19 @@
++const builder = require('electron-builder')
++const packageFile = require('./../package.json')
++const version = packageFile.version
++const Platform = builder.Platform
++const Arch = builder.Arch
++
++require('./createPackage.js')('linux', { arch: Arch.x64 }).then(function (path) {
++  const options = {
++    linux: {
++      target: ['dir'],
++    }
++  }
++
++  builder.build({
++    prepackaged: path,
++    targets: Platform.LINUX.createTarget(['dir'], Arch.x64),
++    config: options
++  })
++})
+diff --git a/scripts/createPackage.js b/scripts/createPackage.js
+index 88e1731..3a7a9da 100644
+--- a/scripts/createPackage.js
++++ b/scripts/createPackage.js
+@@ -139,7 +139,9 @@ module.exports = function (platform, extraOptions) {
+       }
+     ],
+     asar: false,
+-    afterPack: afterPack
++    afterPack: afterPack,
++    electronDist: '@ELECTRON_DIST@',
++    electronVersion: '@ELECTRON_VERSION@'
+   }
+
+   const target = (function () {

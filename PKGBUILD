@@ -1,93 +1,49 @@
-# Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Maintainer:
+# Contributor: kleintux <reg-archlinux AT klein DOT tuxli DOT ch>
 # Contributor: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=min
-pkgver=1.30.0
-_electronver=24
+pkgver=1.32.1
 pkgrel=1
 pkgdesc='A fast, minimal browser that protects your privacy'
-arch=('x86_64')
-url='https://minbrowser.org/'
-license=('Apache')
-depends=("electron${_electronver}" 'libsecret')
+arch=('any')
+url='https://minbrowser.org'
+license=('Apache-2.0')
+_electron=electron29
+depends=('bash' "${_electron}" 'nodejs')
 makedepends=('git' 'npm')
-options=(!emptydirs)
-source=(https://github.com/minbrowser/min/archive/v$pkgver/$pkgname-$pkgver.tar.gz
-        'min.desktop'
-        'min.js'
-        'icon.patch')
-sha256sums=('21b89fbb5ebb260f1dd5973eafab4526d1835bbb5254f74fefb0de2dfeb49766'
-            'a069caac07638ca2bafde5f96a4db646ec7484741ff9b44788c2e159b5142650'
-            '58925a72ab69500d4b2b2b9fe216aca44276423dfcb337063516fb8024a01b0a'
-            '3cff8e5613907c3776115ccdb14f37a4899c96874f662281a630912d893c1d87')
+source=("https://github.com/minbrowser/min/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
+        "${pkgname}.desktop"
+        "${pkgname}.sh"
+        'build.patch')
+sha256sums=('760fb5d4d10a8d5a44dad6f0e7b3ee58576f46fba5098df39a3fff8576c0086f'
+            'bca3356dbf5c783b44d5eb0919e0dbb263869f5d89224cc210d50610f67f3c3c'
+            '6dcadaf3e1ae6e619569df9c5500c7786eaebd0f978df14476f92147bc7cd34f'
+            '59d84d72eafbbdbcac40576a9a5c2a9098736bf7aa9baa5b63d0e206b635c9fc')
 
 prepare() {
-    cd $pkgname-$pkgver
+    cd "${pkgname}-${pkgver}"
+    patch -Np1 -i "${srcdir}/build.patch"
 
-    patch -Np1 -i "${srcdir}"/icon.patch
+    sed "s|@ELECTRON@|${_electron}|" -i "${srcdir}/${pkgname}.sh"
+    sed -e "s|@ELECTRON_DIST@|/usr/lib/${_electron}|" \
+        -e "s|@ELECTRON_VERSION@|$(cat /usr/lib/${_electron}/version)|" \
+        -i scripts/createPackage.js
+
+    npm install --omit=optional
 }
 
 build() {
-    cd $pkgname-$pkgver
-
-    npm install
+    cd "${pkgname}-${pkgver}"
     npm run build
-    rm -r node_modules
-
-    npm install --production --no-optional
+    node ./scripts/buildLinux.js
 }
 
 package() {
-    cd $pkgname-$pkgver
-
-    appdir=/usr/lib/${pkgname}
-
-    install -dm755 "${pkgdir}"${appdir}
-    cp -r * "${pkgdir}"${appdir}
-
-    install -dm755 "${pkgdir}"/usr/share/icons/hicolor/256x256/apps
-    mv icons/icon256.png \
-        "${pkgdir}"/usr/share/icons/hicolor/256x256/apps/${pkgname}.png
-
-    install -d "${pkgdir}/usr/bin"
-    sed "s|@ELECTRON@|electron${_electronver=19}|" "${srcdir}/${pkgname}.js" \
-        > "${pkgdir}/usr/bin/${pkgname}"
-    chmod 755 "${pkgdir}/usr/bin/${pkgname}"
-
-    install -Dm644 "${srcdir}"/${pkgname}.desktop \
-            "${pkgdir}"/usr/share/applications/${pkgname}.desktop
-
-    # Clean up
-    rm "${pkgdir}"${appdir}/dist/build.js
-    rm -r "${pkgdir}"${appdir}/icons
-    rm -r "${pkgdir}"${appdir}/localization
-    rm -r "${pkgdir}"${appdir}/main
-    rm -r "${pkgdir}"${appdir}/scripts
-    find "${pkgdir}"${appdir} \
-        -name "package.json" \
-            -exec sed -e "s|${srcdir}/${pkgname}|${appdir}|" \
-                -i {} \; \
-        -or -name ".*" -prune -exec rm -r '{}' \; \
-        -or -name "*.Makefile" -exec rm '{}' \; \
-        -or -name "*.h" -exec rm '{}' \; \
-        -or -name "*.c" -exec rm '{}' \; \
-        -or -name "*.cc" -exec rm '{}' \; \
-        -or -name "*.gypi" -exec rm '{}' \; \
-        -or -name "*.mk" -exec rm '{}' \; \
-        -or -name "Gruntfile.js" -exec rm '{}' \; \
-        -or -name "Makefile" -exec rm '{}' \; \
-        -or -name "bin" -prune -exec rm -r '{}' \; \
-        -or -name "bin.js" -exec rm '{}' \; \
-        -or -name "bower.json" -exec rm '{}' \; \
-        -or -name "cli.js" -exec rm '{}' \; \
-        -or -name "cmd.js" -exec rm '{}' \; \
-        -or -name "coffee" -prune -exec rm -r '{}' \; \
-        -or -name "example" -prune -exec rm -r '{}' \; \
-        -or -name "examples" -prune -exec rm -r '{}' \; \
-        -or -name "gulpfile.js" -exec rm '{}' \; \
-        -or -name "man" -prune -exec rm -r '{}' \; \
-        -or -name "obj.target" -prune -exec rm -r '{}' \; \
-        -or -name "scripts" -prune -exec rm -r '{}' \; \
-        -or -name "test" -prune -exec rm -r '{}' \; \
-        -or -name "tests" -prune -exec rm -r '{}' \;
+    cd "${pkgname}-${pkgver}"
+    install -d "${pkgdir}/usr/lib"
+    cp -r dist/app/linux-unpacked/resources "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 icons/icon256.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }
