@@ -1,6 +1,6 @@
 pkgbase = lemmy-ui
 	pkgdesc = The official web app for lemmy
-	pkgver = 0.19.3
+	pkgver = 0.19.4
 	pkgrel = 1
 	url = https://github.com/LemmyNet/lemmy-ui
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = lemmy-ui
 	depends = nodejs
 	depends = lemmy
 	backup = etc/lemmy/lemmy-ui.env
-	source = lemmy-ui::git+https://github.com/LemmyNet/lemmy-ui#commit=1787a778f8cf01fb1b00262e44ae8e49f9b3ccc1
+	source = lemmy-ui::git+https://github.com/LemmyNet/lemmy-ui#commit=66c60d9f145abcf9f7a4482f9dbe212187cc0ef1
 	source = git+https://github.com/LemmyNet/lemmy-translations.git
 	source = systemd.service
 	source = tmpfiles.conf
