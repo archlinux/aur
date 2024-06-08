@@ -1,14 +1,14 @@
 pkgbase = libg15-git
 	pkgdesc = Provides low-level access to the Logitech G15 and G11 keyboards and Z10 speakers
-	pkgver = 3.0.7.r5.c40b91b6
-	pkgrel = 3
-	url = https://gitlab.com/menelkir/libg15
+	pkgver = 1.3.1.r0.g132f443
+	pkgrel = 1
+	url = https://github.com/vividnightmare/libg15
 	arch = x86_64
 	license = GPL
-	depends = libusb
+	depends = libusb-compat
 	provides = libg15
 	conflicts = libg15
-	source = libg15-git::git+https://gitlab.com/menelkir/libg15
+	source = libg15-git::git+https://github.com/vividnightmare/libg15
 	sha512sums = SKIP
 
 pkgname = libg15-git

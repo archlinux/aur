@@ -1,16 +1,14 @@
-# Maintainer: Daniel Menelkir <dmenelkir at gmail dot com>
-# Contributor: Evgeniy Alekseev <arcanis.arch at gmail dot com>
-# Contributor: onestep_ua <onestep at ukr dot net>
+# Maintainer: VIVID <vivid@headrat.org>
 
 _pkgname=libg15
 pkgname=$_pkgname-git
-pkgver=3.0.7.r5.c40b91b6
-pkgrel=3
+pkgver=1.3.1.r0.g132f443
+pkgrel=1
 pkgdesc="Provides low-level access to the Logitech G15 and G11 keyboards and Z10 speakers"
 arch=('x86_64')
-url="https://gitlab.com/menelkir/$_pkgname"
+url="https://github.com/vividnightmare/$_pkgname"
 license=('GPL')
-depends=('libusb')
+depends=('libusb-compat')
 conflicts=('libg15')
 provides=('libg15')
 source=("$pkgname::git+$url")
@@ -22,6 +20,7 @@ pkgver() {
 }
 
 build() {
+  chmod -R 777 ${pkgname}
   cd "${pkgname}"
   ./configure --prefix=/usr
   make
