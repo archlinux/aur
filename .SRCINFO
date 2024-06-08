@@ -1,0 +1,19 @@
+pkgbase = doom_ascii-bin
+	pkgdesc = Text-based DOOM in your terminal! Source-port of doomgeneric. Does not have sound.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/wojciech-graj/doom-ascii
+	arch = x86_64
+	license = GPL-2.0-or-later
+	provides = doom_ascii
+	conflicts = doom_ascii
+	source = doom_ascii.sh
+	source = https://github.com/wojciech-graj/doom-ascii/raw/v0.1.1/README.md
+	source = https://github.com/wojciech-graj/doom-ascii/raw/v0.1.1/LICENSE
+	sha256sums = 27864d019900aa0728c95d77e70dfd94869e44a65e6657ef04110c5f5c1cc202
+	sha256sums = b89d9d29bf5e3989086c68f702ab9ac0eac2cba1d5af01d40776fa143511b54b
+	sha256sums = 8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643
+	source_x86_64 = doom_ascii-0.1.1.zip::https://github.com/wojciech-graj/doom-ascii/releases/download/v0.1.1/doom_ascii_linux_v0_1_1.zip
+	sha256sums_x86_64 = e4e47a6e0d0308d1f25e60868cd8eafb164b58bfbb941f2b49d1a0e1fb60bafd
+
+pkgname = doom_ascii-bin
