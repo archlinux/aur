@@ -4,7 +4,7 @@
 pkgname=rju-git
 _pkgname=rju
 pkgver=0.19.r15.g359627c
-pkgrel=2
+pkgrel=3
 pkgdesc='JackAudioToolkit'
 arch=( 'x86_64' )
 url='https://rohandrape.net/?t=rju'
@@ -48,17 +48,10 @@ build() {
 
 package () {
   mkdir -p ${pkgdir}/usr/{bin,include,share/rju}
-  cd "$srcdir/${_pkgname}/cmd"
-  for file in rju-{data,dl,level,lxvst,osc,play,plumbing,record,scope,transport,udp};
-  do
-    install -Dm755 $file "$pkgdir/usr/bin/$file"
-  done
-  cd "$srcdir/${_pkgname}/md"
-  for file in rju-{data,dl,level,lxvst,osc,play,plumbing,record,scope,transport,udp}.html;
-  do
-    install -Dm644 $file "$pkgdir/usr/share/rju/$file"
-  done
-  rsync -r announce "$pkgdir/usr/share/rju/" && chmod 644 -R "$pkgdir/usr/share/rju/announce"
+  cd ${_pkgname}/cmd
+  make install prefix=${pkgdir}/usr
+  cd ../md
+  cp -r *.html announce/ ${pkgdir}/usr/share/rju
   install -Dm644 "$srcdir/jack.plumbing" "${pkgdir}/usr/share/rju/rju.plumbing.example"
 }
 
