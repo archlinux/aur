@@ -1,0 +1,5 @@
+[python-jupyterlab-latex]
+source = "github"
+github = "jupyterlab/jupyterlab-latex"
+use_max_tag = "true"
+prefix = "v"
