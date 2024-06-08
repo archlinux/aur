@@ -1,0 +1,11 @@
+diff --text --recursive --unified Freesynd-0.8-Source/utils/src/file.cpp Freesynd-0.8-Source.new/utils/src/file.cpp
+--- Freesynd-0.8-Source/utils/src/file.cpp	2024-05-15 23:07:46.000000000 +0200
++++ Freesynd-0.8-Source.new/utils/src/file.cpp	2024-06-08 00:18:58.194922705 +0200
+@@ -31,6 +31,7 @@
+ #include <iostream>
+ #include <fstream>
+ #include <sstream>
++#include <algorithm>
+ 
+ #ifdef _WIN32
+ #include <windows.h>
