@@ -3,7 +3,7 @@
 
 pkgname=fsl
 pkgver=6.0.7.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A comprehensive library of analysis tools for FMRI, MRI and DTI brain imaging data"
 arch=("x86_64")
 url="http://www.fmrib.ox.ac.uk/fsl/"
@@ -12,7 +12,7 @@ depends=('python')
 source=("fslinstaller.py")
 options=('!strip') # Added as it took hours to do this without substantial benefit
 
-sha256sums=('3db63c9f53edc909b2264bd364c241d72945862726c305025694aae44e544b0c')
+sha256sums=('20705cb996873eec1114b04ba1d8a82a4a10694ed807439261e3dd4f3d4c5844')
 
 build() {
         export TMPFSLDIR="${srcdir}/fsl"

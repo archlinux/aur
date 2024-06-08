@@ -74,7 +74,7 @@ log = logging.getLogger(__name__)
 __absfile__ = op.abspath(__file__).rstrip('c')
 
 
-__version__ = '3.9.0'
+__version__ = '3.11.0'
 """Installer script version number. This must be updated
 whenever a new version of the installer script is released.
 """
@@ -398,6 +398,83 @@ def warn_on_error(*msgargs, **msgkwargs):
                 if tolog:    log.debug('%s', e, exc_info=True)
         return wrapper
     return decorator
+
+
+def retry_on_error(func, num_attempts, *args, **kwargs):
+    """Run func(*args, **kwargs), re-calling it up to num_attempts if it fails.
+
+    In addition to num_attempts, this function accepts two options, which must
+    be specified as keyword arguments. All other arguments will be passed
+    through to func when it is called.
+
+    :arg retry_error_message: Message to print when func fails, and before the
+                              next retry.
+    :arg retry_condition:     Function which is called when func fails. Passed
+                              the Exception object that was raised. If this
+                              function returns False, the function is not
+                              retried, and the exception is re-raised..
+    """
+
+    error_message   = kwargs.pop('retry_error_message',  '')
+    retry_condition = kwargs.pop('retry_condition', lambda e : True)
+    attempts        = 0
+    while True:
+        try:
+            return func(*args, **kwargs)
+
+        except Exception as e:
+            attempts += 1
+            if (attempts >= num_attempts) or (not retry_condition(e)):
+                raise e
+            else:
+                printmsg('{} Trying again (attempt {} of {})'.format(
+                         error_message, attempts + 1, num_attempts),
+                         WARNING, EMPHASIS)
+                log.debug('retry_on_error - reason for failure: {}'.format(
+                    str(e), WARNING))
+
+
+class LogRecordingHandler(logging.Handler):
+    """Custom logging handler which simply records log messages to an internal
+    queue. When used as a context manager, will install itself as a handler
+    on the fsl.installer.log logger object.
+    """
+    def __init__(self, patterns, logobj=None):
+        """Create a LogRecordingHandler.
+
+        :arg patterns: Sequence of strings - any log record which contains any
+                       of these strings will be recorded.
+
+        :arg logobj:   Log to register this handler with, when used as a
+                       context manager. Defaults to the fsl.installer.log
+                       object.
+        """
+
+        if logobj is None:
+            logobj = log
+
+        logging.Handler.__init__(self, level=logging.DEBUG)
+        self.__records  = []
+        self.__patterns = list(patterns)
+        self.__log      = logobj
+
+    def __enter__(self):
+        self.__log.addHandler(self)
+        return self
+
+    def __exit__(self, *args):
+        self.__log.removeHandler(self)
+
+    def emit(self, record):
+        record = record.getMessage()
+        if any([pat in record for pat in self.__patterns]):
+            self.__records.append(record)
+
+    def records(self):
+        return list(self.__records)
+
+    def clear(self):
+        self.__records = []
 
 
 @contextlib.contextmanager
@@ -1252,9 +1329,11 @@ class Context(object):
 
         # The download_fsl_environment function stores
         # the path to the FSL conda environment file
-        # and list of conda channels
+        # list of conda channels, and python version
+        # to be installed
         self.environment_file     = None
         self.environment_channels = None
+        self.python_version       = None
 
         # The config_logging function stores the path
         # to the fslinstaller log file here.
@@ -1314,6 +1393,41 @@ class Context(object):
             self.__platform = plat
 
         return self.__platform
+
+
+    @property
+    def miniconda_metadata(self):
+        """Returns a dict with information about the miniconda installer
+        to use as the base of the FSL installation. This must not be called
+        until after the download_fsl_environment function has been called.
+
+        The returned dict has `'url'`, `'sha256'` and `'output'` keys.
+        """
+        # Get information about the miniconda installer
+        # from the manifest.
+        metadata = self.manifest['miniconda'][self.platform]
+        pyver    = 'python{}'.format(self.python_version)
+
+        # From FSL 6.0.7.12 and newer, the manifest
+        # contains a separate miniconda installer URL
+        # for each Python version that is used in the
+        # different FSL versions. Prior to this, the
+        # manifest just contained a single miniconda URL
+        # for each platform. This code supports both the
+        # old and new manifest formats.
+        if pyver in metadata:
+            metadata = metadata[pyver]
+
+        # if pyver is not in metadata, we either have an
+        # old manifest format which contains info for a
+        # single miniconda installer, or the manifest
+        # does not contain a miniconda installer entry
+        # for the python version to be installed.
+        elif 'url' not in metadata:
+            raise Exception('Manifest does not contain metadata for a Python '
+                            '{} miniconda installer!'.format(pyver))
+
+        return metadata
 
 
     @property
@@ -1749,10 +1863,12 @@ def download_fsl_environment(ctx):
     # The install_miniconda function will then add the
     # channels to $FSLDIR/.condarc.
     #
-    # We also remove any packages that the user has
+    # We also identify the version of Python to be
+    # installed, remove any packages that the user has
     # requested to exclude from the installation.
     copy     = '.' + op.basename(ctx.environment_file)
     channels = []
+    pyver    = None
 
     shutil.move(ctx.environment_file, copy)
     with open(copy,                 'rt') as inf, \
@@ -1776,15 +1892,29 @@ def download_fsl_environment(ctx):
                     continue
 
             # Include/exclude packages upon user request
+            exclude = False
             pkgname = line.strip(' -').split()[0]
-            exclude = match_any(pkgname, ctx.args.exclude_package)
+
+            # Also pull out the python version so we
+            # know which miniconda installer to use
+            if pkgname == 'python' and pyver is None:
+                pyver = line.strip(' -').split()[1]
+                pyver = '.'.join(pyver.split('.')[:2])
+            else:
+                exclude = match_any(pkgname, ctx.args.exclude_package)
+
             if exclude:
                 log.debug('Excluding package %s (matched '
                           '--exclude_package %s)', line, exclude)
             else:
                 outf.write(line)
 
+    if pyver is None:
+        raise Exception('Could not identify Python version in '
+                        'FSL environment file ({})'.format(url))
+
     ctx.environment_channels = channels
+    ctx.python_version       = pyver
 
 
 def download_miniconda(ctx):
@@ -1807,10 +1937,10 @@ def download_miniconda(ctx):
         url      = ctx.args.miniconda
         checksum = None
 
-    # Use miniconda installer specified in
-    # FSL release manifest
+    # Use miniconda installer specified
+    # in FSL release manifest
     else:
-        metadata = ctx.manifest['miniconda'][ctx.platform]
+        metadata = ctx.miniconda_metadata
         url      = metadata['url']
         checksum = metadata['sha256']
 
@@ -1837,7 +1967,9 @@ def install_miniconda(ctx):
     if ctx.use_existing_base:
         return
 
-    metadata = ctx.manifest['miniconda'][ctx.platform]
+    # Get information about the miniconda installer
+    # from the manifest.
+    metadata = ctx.miniconda_metadata
     output   = metadata.get('output', '').strip()
 
     if output == '': output = None
@@ -1860,6 +1992,7 @@ def install_miniconda(ctx):
 def generate_condarc(fsldir,
                      channels,
                      skip_ssl_verify=False,
+                     throttle_downloads=False,
                      pkgsdir=None):
     """Called by install_miniconda. Generates content for a .condarc file to
     be saved in $FSLDIR/.condarc. This file contains some default values, and
@@ -1917,6 +2050,13 @@ def generate_condarc(fsldir,
     # priority order being modified by user ~/.condarc
     # configuration files.
     channel_priority: strict #!final
+
+
+    # Prevent conda from updating itself, as conda
+    # can sometimes break itself by updating itself
+    # in-place (see e.g.
+    # https://github.com/conda/conda/issues/13920)
+    auto_update_conda: false #!final
     """)
 
     # Fix the conda package cache
@@ -1937,6 +2077,14 @@ def generate_condarc(fsldir,
         # fslinstaller script was called with
         # --skip_ssl_verify). NOT RECOMMENDED.
         ssl_verify: false
+        """)
+
+    if throttle_downloads:
+        condarc += tw.dedent("""
+        # Limit number of simultaneous package
+        # downloads - useful when installing
+        # over an unreliable network connection.
+        fetch_threads: 1
         """)
 
     channels = list(channels)
@@ -2109,6 +2257,7 @@ def install_fsl(ctx):
     condarc_contents = generate_condarc(ctx.destdir,
                                         ctx.environment_channels,
                                         ctx.args.skip_ssl_verify,
+                                        ctx.args.throttle_downloads,
                                         pkgsdir)
     with open('.condarc', 'wt') as f:
         f.write(condarc_contents)
@@ -2135,9 +2284,39 @@ def install_fsl(ctx):
         cmd += ' -v -v -v'
 
     printmsg('Installing FSL into {}...'.format(ctx.destdir))
-    ctx.run(Process.monitor_progress, cmd,
-            timeout=2, total=progval, progfunc=progfunc,
-            proglabel='install_fsl', progfile=ctx.args.progress_file)
+
+    # Temporarily install a logging handler which
+    # records any stdout/stderr messages emitted
+    # by the conda command that contain phrases
+    # indicating that the installation failed due
+    # to a network error.
+    err_patterns = ['Connection broken',
+                    'Download error',
+                    'NewConnectionError']
+
+    with LogRecordingHandler(err_patterns) as hd:
+
+        # If the installation fails for what appears
+        # to have been a network error, retry it
+        # according to --num_retries. Conda>=23.11.0
+        # will resume failed package downloads, so
+        # we can just re-run e.g. conda command to
+        # resume.
+        #
+        # Tell the retry_on_error function to retry
+        # if conda emitted any messages matching the
+        # patterns above
+        err_message = 'Installation failed!'
+        def retry_install(e):
+            logmsgs = hd.records()
+            hd.clear()
+            return len(logmsgs) > 0
+
+        retry_on_error(ctx.run, ctx.args.num_retries, Process.monitor_progress,
+                       cmd, timeout=2, total=progval, progfunc=progfunc,
+                       proglabel='install_fsl', progfile=ctx.args.progress_file,
+                       retry_error_message=err_message,
+                       retry_condition=retry_install)
 
 
 @warn_on_error('WARNING: The installation succeeded, but an error occurred '
@@ -2495,23 +2674,26 @@ def parse_args(argv=None, include=None, parser=None):
         'fslversion'        : ('-V', {'default' : 'latest'}),
 
         # hidden options
-        'debug'           : (None, {'action'  : 'store_true'}),
-        'logfile'         : (None, {}),
-        'username'        : (None, {'default' : username}),
-        'password'        : (None, {'default' : password}),
-        'no_checksum'     : (None, {'action'  : 'store_true'}),
-        'skip_ssl_verify' : (None, {'action'  : 'store_true'}),
-        'workdir'         : (None, {}),
-        'homedir'         : (None, {'default' : homedir}),
-        'devrelease'      : (None, {'action'  : 'store_true'}),
-        'devlatest'       : (None, {'action'  : 'store_true'}),
-        'manifest'        : (None, {}),
-        'miniconda'       : (None, {}),
-        'conda'           : (None, {'action'  : 'store_true'}),
-        'no_self_update'  : (None, {'action'  : 'store_true'}),
-        'exclude_package' : (None, {'action'  : 'append'}),
-        'root_env'        : (None, {'action'  : 'store_true'}),
-        'progress_file'   : (None, {}),
+        'skip_ssl_verify'    : (None, {'action'  : 'store_true'}),
+        'throttle_downloads' : (None, {'action'  : 'store_true'}),
+        'num_retries'        : (None, {'type'    : int,
+                                       'default' : 3}),
+        'debug'              : (None, {'action'  : 'store_true'}),
+        'logfile'            : (None, {}),
+        'username'           : (None, {'default' : username}),
+        'password'           : (None, {'default' : password}),
+        'no_checksum'        : (None, {'action'  : 'store_true'}),
+        'workdir'            : (None, {}),
+        'homedir'            : (None, {'default' : homedir}),
+        'devrelease'         : (None, {'action'  : 'store_true'}),
+        'devlatest'          : (None, {'action'  : 'store_true'}),
+        'manifest'           : (None, {}),
+        'miniconda'          : (None, {}),
+        'conda'              : (None, {'action'  : 'store_true'}),
+        'no_self_update'     : (None, {'action'  : 'store_true'}),
+        'exclude_package'    : (None, {'action'  : 'append'}),
+        'root_env'           : (None, {'action'  : 'store_true'}),
+        'progress_file'      : (None, {}),
     }
 
     if include is None:
@@ -2534,13 +2716,28 @@ def parse_args(argv=None, include=None, parser=None):
                               'FSL development team.',
         'fslversion'        : 'Install this specific version of FSL.',
 
+        # Configure conda to skip SSL verification.
+        # Not recommended.
+        'skip_ssl_verify' : argparse.SUPPRESS,
+
+        # Limit the number of simultaneous package
+        # downloads - may be needed when installing
+        # over unreliable network connection.
+        'throttle_downloads' : argparse.SUPPRESS,
+
+        # Number of times to re-try a failed
+        # installation, if it appears that
+        # the installation failed due to a
+        # download error.
+        'num_retries' : argparse.SUPPRESS,
+
         # Enable verbose output when calling
         # mamba/conda.
-        'debug'           : argparse.SUPPRESS,
+        'debug' : argparse.SUPPRESS,
 
         # Direct the installer log to this file
         # (default: file in $TMPDIR)
-        'logfile'         : argparse.SUPPRESS,
+        'logfile' : argparse.SUPPRESS,
 
         # Username / password for accessing
         # internal FSL conda channel, if an
@@ -2548,11 +2745,11 @@ def parse_args(argv=None, include=None, parser=None):
         # installed. If not set, will be read from
         # FSLCONDA_USERNAME/FSLCONDA_PASSWORD
         # environment variables.
-        'username'        : argparse.SUPPRESS,
-        'password'        : argparse.SUPPRESS,
+        'username' : argparse.SUPPRESS,
+        'password' : argparse.SUPPRESS,
 
         # Do not automatically update the installer script,
-        'no_self_update'  : argparse.SUPPRESS,
+        'no_self_update' : argparse.SUPPRESS,
 
         # Install a development release. This
         # option will cause the installer to
@@ -2564,12 +2761,12 @@ def parse_args(argv=None, include=None, parser=None):
         # --manifest option. If --devlatest
         # is used, the most recent developmet
         # release is automatically selected.
-        'devrelease'      : argparse.SUPPRESS,
-        'devlatest'       : argparse.SUPPRESS,
+        'devrelease' : argparse.SUPPRESS,
+        'devlatest' : argparse.SUPPRESS,
 
         # Path/URL to alternative FSL release
         # manifest.
-        'manifest'        : argparse.SUPPRESS,
+        'manifest' : argparse.SUPPRESS,
 
         # Install miniconda from this path/URL,
         # instead of the one specified in the
@@ -2600,27 +2797,23 @@ def parse_args(argv=None, include=None, parser=None):
         # different path, e.g.:
         #
         #   fslinstaller.py --miniconda ~/miniconda3/ -d ~/fsl/
-        'miniconda'       : argparse.SUPPRESS,
+        'miniconda' : argparse.SUPPRESS,
 
         # Use conda and not mamba
-        'conda'           : argparse.SUPPRESS,
+        'conda' : argparse.SUPPRESS,
 
         # Disable SHA256 checksum validation
         # of downloaded files
-        'no_checksum'     : argparse.SUPPRESS,
+        'no_checksum' : argparse.SUPPRESS,
 
         # Store temp files in this directory
         # rather than in a temporary directory
-        'workdir'         : argparse.SUPPRESS,
+        'workdir' : argparse.SUPPRESS,
 
         # Treat this directory as user's home
         # directory, for the purposes of shell
         # configuration. Must already exist.
-        'homedir'         : argparse.SUPPRESS,
-
-        # Configure conda to skip SSL verification.
-        # Not recommended.
-        'skip_ssl_verify' : argparse.SUPPRESS,
+        'homedir' : argparse.SUPPRESS,
 
         # Do not install packages matching this
         # fnmatch-style wildcard pattern. Can
@@ -2630,10 +2823,10 @@ def parse_args(argv=None, include=None, parser=None):
         # If the installer is run as root, the
         # --no_env flag is automatically enabled
         # UNLESS this flag is also provided.
-        'root_env'        : argparse.SUPPRESS,
+        'root_env' : argparse.SUPPRESS,
 
         # File to send progress information to.
-        'progress_file'   : argparse.SUPPRESS,
+        'progress_file' : argparse.SUPPRESS,
     }
 
     # parse args
