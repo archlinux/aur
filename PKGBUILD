@@ -1,3 +1,6 @@
+# Maintainer: normal <marlon@kern.earth>
+# Contributor: Mr.Smith1974
+
 pkgname=fallout2-ce-game
 _gitname=fallout2-ce
 pkgver=1.3.0
