@@ -1,12 +1,18 @@
 pkgbase = binwalk-git
-	pkgdesc = A tool for searching a given binary image for embedded files
-	pkgver = 2.1.2.1054.a4945a9
+	pkgdesc = Tool for searching a given binary image for embedded files
+	pkgver = 2.3.8.r36.g686820a
 	pkgrel = 1
-	url = http://binwalk.org
+	url = https://github.com/OSPG/binwalk
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	makedepends = git
 	depends = python
+	depends = python-setuptools
 	optdepends = python-pyqtgraph: graph and visualization support
 	optdepends = python-opengl: binviz module support
 	optdepends = python-capstone: disassembly support
@@ -26,8 +32,7 @@ pkgbase = binwalk-git
 	optdepends = sleuthkit: forensic analysis support
 	provides = binwalk
 	conflicts = binwalk
-	source = binwalk-git::git+https://github.com/devttys0/binwalk
+	source = binwalk-git::git+https://github.com/OSPG/binwalk
 	sha512sums = SKIP
 
 pkgname = binwalk-git
-

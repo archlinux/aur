@@ -5,13 +5,26 @@
 
 pkgname=binwalk-git
 _gitname=binwalk
-pkgver=2.1.2.1054.a4945a9
+pkgver=2.3.8.r36.g686820a
 pkgrel=1
-pkgdesc="A tool for searching a given binary image for embedded files"
-url="http://binwalk.org"
-arch=('any')
-license=('MIT')
-depends=('python')
+pkgdesc='Tool for searching a given binary image for embedded files'
+url='https://github.com/OSPG/binwalk'
+arch=(any)
+license=(MIT)
+depends=(
+  python
+  python-setuptools
+)
+makedepends=(
+  python-build
+  python-installer
+  python-setuptools
+  python-wheel
+  git
+)
+checkdepends=(
+  python-pytest
+)
 optdepends=(
   'python-pyqtgraph: graph and visualization support'
   'python-opengl: binviz module support'
@@ -31,26 +44,31 @@ optdepends=(
   'lhasa: LHA support'
   'sleuthkit: forensic analysis support'
 )
-makedepends=('git')
 provides=('binwalk')
 conflicts=("binwalk")
-source=(${pkgname}::git+https://github.com/devttys0/${_gitname})
+source=(${pkgname}::git+${url})
 sha512sums=('SKIP')
 
 pkgver() {
   cd ${pkgname}
-  printf "%s.%s.%s" "$(grep 'MODULE_VERSION' -m1 setup.py|cut -d\" -f2)" \
-    "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --tags --match 'v*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   cd ${pkgname}
-  python setup.py build
+  python -m build --wheel --no-isolation
+}
+
+check() {
+  cd ${pkgname}
+  python -m venv --clear --without-pip --system-site-packages .testenv
+  .testenv/bin/python -m installer dist/*.whl
+  .testenv/bin/python -m pytest
 }
 
 package() {
   cd ${pkgname}
-  python setup.py install -O1 --prefix="${pkgdir}/usr"
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm 644 *.md -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
