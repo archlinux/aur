@@ -1,4 +1,5 @@
-# Maintainer: sant0s <diego.delossantos@mailbox.org>
+# Maintainer: abb128 <abb128@sapples.net>
+# Contributor: sant0s <diego.delossantos@mailbox.org>
 pkgname=livecaptions
 _pkgname=LiveCaptions
 pkgver=0.4.2
