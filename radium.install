@@ -2,10 +2,10 @@
 ### to get rid off the errormessage
 
 post_install() {
-  ln -sf /usr/lib/ladspa /opt/radium/ladspa
+	ln -sf /usr/lib/ladspa /opt/radium/ladspa
 }
 
 pre_remove() {
-  rm /opt/radium/ladspa
+	rm /opt/radium/ladspa
 }
 
