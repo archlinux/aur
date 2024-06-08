@@ -1,6 +1,6 @@
 pkgbase = pw-viz
 	pkgdesc = Pipewire graph editor
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/Ax9D/pw-viz
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = pw-viz
 	makedepends = cmake
 	depends = pipewire
 	depends = fontconfig
-	source = pw-viz-0.2.0.tar.gz::https://github.com/Ax9D/pw-viz/archive/refs/tags/v0.2.0.tar.gz
-	sha512sums = d14c7321963f0419354706c921e0b332f8ebcd842cc2cda60016ad74da473f37fd94846483fd97b47093bf4f35d77d5e677ff5e8e08d927a6fe82b5ff28b6e61
+	source = pw-viz-0.3.0.tar.gz::https://github.com/Ax9D/pw-viz/archive/refs/tags/v0.3.0.tar.gz
+	sha512sums = f134b704333e0a8fe4236d0a59f60700da0f0cc6aa532506c55422f77261a8e228621803e70c84747d07b0a0608e3116c2dcb1690b67b0357cd105368ace154d
 
 pkgname = pw-viz
