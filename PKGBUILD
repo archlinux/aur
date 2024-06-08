@@ -3,7 +3,7 @@
 pkgname=obs-studio-rc
 _pkgver=30.2.0-beta1
 pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgrel=2
 epoch=8
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
@@ -134,9 +134,14 @@ prepare() {
   git config submodule.plugins/obs-websocket.url $srcdir/obs-websocket
   git config submodule.plugins/obs-outputs/ftl-sdk.url $srcdir/ftl-sdk
   git -c protocol.file.allow=always submodule update
+
+  cd "$srcdir"
+  make PREFIX="$srcdir/nv-prefix" -C supported-nv-codec-headers install
 }
 
 build() {
+  export PKG_CONFIG_PATH="${srcdir}/nv-prefix/lib/pkgconfig"
+  
   cmake -B build -S obs-studio \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -150,7 +155,7 @@ build() {
     -DOBS_COMPILE_DEPRECATION_AS_WARNING=ON \
     -Wno-dev \
     -DOBS_VERSION_OVERRIDE="$_pkgver" \
-    -DFFnvcodec_INCLUDE_DIR="${srcdir}/supported-nv-codec-headers/include"
+    -DCMAKE_INCLUDE_PATH="${srcdir}/nv-prefix/include:/usr/include"
 
   sed -i "s|OBS_VERSION =|OBS_VERSION = \"$_pkgver-rc-$pkgrel\"; //|" build/libobs/obsversion.c
 
