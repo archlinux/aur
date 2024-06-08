@@ -7,15 +7,15 @@
 pkgname=('0ad-git' '0ad-data-git')
 _pkgname=0ad
 epoch=1
-pkgver=A26.r1364.gd3e513ba42
+pkgver=A26.r1378.ge1cea2a398
 pkgrel=1
 pkgdesc="Cross-platform, 3D and historically-based real-time strategy game - built from git development version."
 arch=('i686' 'x86_64')
 url="http://play0ad.com/"
 license=('GPL-2.0-or-later' 'CCPL')
-makedepends=('boost' 'cmake' 'mesa' 'zip' 'libsm' 'rust' 'python311' 'git'
-             'enet' 'fmt' 'gloox' 'glu' 'libgl' 'libminiupnpc.so' 'libogg'
-             'libpng' 'libsodium' 'libvorbis' 'miniupnpc' 'nspr' 'openal'
+makedepends=('boost' 'cmake' 'mesa' 'zip' 'libsm' 'rust' 'python311' 'python' 'git'
+             'enet' 'fmt' 'gloox' 'libminiupnpc.so'
+             'libpng' 'libsodium' 'libvorbis' 'miniupnpc' 'openal'
              'sdl2' 'wxwidgets-gtk3' 'which')
 options=('!lto' '!debug') # lto breaks spidermonkey linking (https://bugs.gentoo.org/746947)
 source=("git+https://github.com/0ad/0ad.git" "patch.patch")
@@ -65,9 +65,9 @@ build() {
 }
 
 package_0ad-git() {
-  depends=('0ad-data' 'binutils' 'boost-libs' 'curl' 'enet' 'libogg' 'libpng' 'libvorbis'
-           'libxml2' 'openal' 'sdl2' 'wxwidgets-gtk3' 'zlib' 'libgl' 'glu' 'fmt'
-           'gloox' 'miniupnpc' 'libminiupnpc.so' 'icu' 'nspr' 'libsodium' 'which')
+  depends=('0ad-data' 'boost-libs' 'curl' 'enet' 'libpng' 'libvorbis'
+           'libxml2' 'openal' 'sdl2' 'wxwidgets-gtk3' 'zlib' 'fmt'
+           'gloox' 'miniupnpc' 'libminiupnpc.so' 'icu' 'libsodium' 'which')
   conflicts=('0ad')
   provides=('0ad')
 
