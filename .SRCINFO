@@ -1,6 +1,6 @@
 pkgbase = moonlight-qt-bin
 	pkgdesc = moonlight-qt bin from appimage
-	pkgver = 5.0.1
+	pkgver = 6.0.0
 	pkgrel = 1
 	url = https://moonlight-stream.org
 	arch = x86_64
@@ -11,14 +11,13 @@ pkgbase = moonlight-qt-bin
 	depends = ffmpeg
 	depends = sdl2_ttf
 	depends = hicolor-icon-theme
-	depends = openssl-1.1
 	optdepends = libva-intel-driver: hardware acceleration for Intel GPUs
 	provides = moonlight-qt
 	conflicts = moonlight-qt
 	options = !strip
-	source = moonlight-qt-5.0.1.AppImage::https://github.com/moonlight-stream/moonlight-qt/releases/download/v5.0.1/Moonlight-5.0.1-x86_64.AppImage
+	source = moonlight-qt-6.0.0.AppImage::https://github.com/moonlight-stream/moonlight-qt/releases/download/v6.0.0/Moonlight-6.0.0-x86_64.AppImage
 	source = launcher.sh
-	sha256sums = c2bfdc93537333e1a2c1ba3eae66fa1b1a9f537fc60b3df7cabc8dff1b7f18cd
+	sha256sums = 0a39bfe666089434a337297df84ebffd5358786752f1ac46e5f49269798b372e
 	sha256sums = 7dc324b4621067c01c1ea91570dec230fb43735f48f5f9eac91b0e487070a79d
 
 pkgname = moonlight-qt-bin
