@@ -1,6 +1,6 @@
 pkgbase = r-cbaf
 	pkgdesc = Automated functions for comparing various omic data from cbioportal.org
-	pkgver = 1.26.2
+	pkgver = 1.26.3
 	pkgrel = 1
 	url = https://bioconductor.org/packages/cbaf
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-cbaf
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/cbaf_1.26.2.tar.gz
-	sha256sums = b918cca6b06c44a96f606b0e8fec8003d6fc0c064dab4eb1a79090a0f68856b7
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/cbaf_1.26.3.tar.gz
+	sha256sums = a379cd9b9496d2379d1e1c909a44ad2a9d5e7b0d4b9207d6b2626c84841dffd2
 
 pkgname = r-cbaf
