@@ -1,0 +1,5 @@
+[tfel]
+source = "github"
+github = "thelfer/TFEL"
+use_latest_release = "true"
+prefix = "TFEL-"

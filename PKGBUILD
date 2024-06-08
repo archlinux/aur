@@ -2,18 +2,18 @@
 # Contributor: Michele Mocciola <mimocciola@yahoo.com>
 _base=TFEL
 pkgname=${_base,,}
-pkgver=4.2.0
+pkgver=4.2.1
 pkgrel=1
 pkgdesc="TFEL/MFront introduces DSLs based on C++ to handle material knowledge"
 arch=(x86_64)
 url="https://github.com/thelfer/${_base}"
-license=(GPL3)
+license=(GPL-3.0-or-later)
 depends=(gcc-libs gnuplot)
 provides=(mfront)
 makedepends=(cmake gcc-fortran)
 optdepends=()
 source=(${url}/archive/${_base}-${pkgver}.tar.gz)
-sha512sums=('54fac7e9c939875232eebfd54f521cc6a80e203804a28ea6edf959db0a780e916a26b22df8a3ca5a39e0bf58b18098609228fc284a3f14de989edbecc336408e')
+sha512sums=('862d388fff9a5402ebe833f76f2fee18c2a5085c9357867e7953f301d146b7e759e5e3d921f51806b6a578902778e88ed9287ab0d9881c8700505bf48b365e21')
 
 build() {
   cmake \
