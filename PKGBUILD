@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=youtube-music
-pkgver=3.3.10
+pkgver=3.3.12
 pkgrel=1
 _electronversion=30
 pkgdesc="YouTube Music Desktop App bundled with custom plugins (and built-in ad blocker / downloader)"
@@ -13,7 +13,7 @@ install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/th-ch/youtube-music/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.sh"
         "$pkgname.desktop")
-sha256sums=('17e4fc54cad945d662c60acfaef64ad38095c5cbb75327fd37967524d84e473e'
+sha256sums=('f4266123240650485c4aa5c142a486221c68f2f65e1750051ca7429893c069e5'
             'e00aee0592b3b759fc055815c75326063348bcdf6e05b7632396592b05614637'
             '07af59376e13e5dae2e7e38fa09d734a5147d5c344b3aed84c2f3afe22b8af79')
 
