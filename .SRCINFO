@@ -1,6 +1,6 @@
 pkgbase = r-autonomics
 	pkgdesc = Unified statistal Modeling of Omics Data
-	pkgver = 1.12.0
+	pkgver = 1.12.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/autonomics
 	arch = any
@@ -76,8 +76,8 @@ pkgbase = r-autonomics
 	optdepends = r-uniprot.ws
 	optdepends = r-writexl
 	optdepends = r-xml
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/autonomics_1.12.0.tar.gz
-	md5sums = c7bff80077a4a5113d328ccd01f5b115
-	b2sums = ada10202f89010d9a7dc6255860f1e4d886bdeae777510488c7e9d568de6b60ba919d2bc57ad947b12219b6a64f794e08edbab148c7a3541cd9106c56c7c1269
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/autonomics_1.12.1.tar.gz
+	md5sums = 675d945e4fe04fc3977fbaf924876b0d
+	b2sums = b7d8fb4b2314b49fb32c8d779e478dfb7b5334252e7134b11d0edd6c7152bdb45c53db9e56992f18df2a807cf1384b42b26548efecb1ce604027f3375a5b3b9c
 
 pkgname = r-autonomics
