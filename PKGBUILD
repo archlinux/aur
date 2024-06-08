@@ -1,46 +1,64 @@
-# Maintainer: Philip Goto <philip.goto@gmail.com>
+# Contributor: Philip Goto <philip.goto@gmail.com>
+# Contributor: Fabian Bornschein <fabiscafe@archlinux.org>
 
+_pkgname=loupe
 pkgname=loupe-git
-pkgver=r274.c6ff71b
+pkgver=46.rc.r84.ge458872
 pkgrel=1
-pkgdesc='Simple image viewer for GNOME'
+pkgdesc="simple image viewer for GNOME"
 arch=(x86_64 aarch64)
-url='https://gitlab.gnome.org/Incubator/loupe'
-license=(GPL)
+url="https://gitlab.gnome.org/GNOME/loupe"
+license=('GPL-3.0-or-later')
 depends=(
-	gtk4
-	libadwaita
-	libgweather-4
-	libheif
+  cairo
+  dconf
+  gcc-libs
+  glib2
+  glibc
+  glycin
+  graphene
+  gtk4
+  hicolor-icon-theme
+  lcms2
+  libadwaita
+  libgweather-4
+  libseccomp
 )
 makedepends=(
-	git
-	itstool
-	meson
-	rust
+  git
+  itstool
+  meson
+  rust
 )
 provides=(loupe)
 conflicts=(loupe)
-source=("git+${url}.git")
+source=("git+$url.git")
 b2sums=('SKIP')
 
+# Use LTO
+export CARGO_PROFILE_RELEASE_LTO=true CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+
+# Use debug
+export CARGO_PROFILE_RELEASE_DEBUG=2
+
 pkgver() {
-	cd loupe
-	( set -o pipefail
-		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
+  cd $_pkgname
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd $_pkgname
 }
 
 build() {
-	arch-meson loupe build
-	meson compile -C build
+  arch-meson $_pkgname build
+  meson compile -C build
 }
 
-# check() {
-# 	meson test -C build --print-errorlogs
-# }
+check() {
+  meson test -C build --print-errorlogs
+}
 
 package() {
-	meson install -C build --destdir "${pkgdir}"
+  meson install -C build --destdir "$pkgdir" --no-rebuild
 }
