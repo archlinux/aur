@@ -3,7 +3,7 @@
 pkgname=mongodb50
 _pkgname=mongodb
 # #.<odd number>.# releases are unstable development/testing
-pkgver=5.0.21
+pkgver=5.0.27
 pkgrel=1
 pkgdesc="A high-performance, open source, schema-free document-oriented database"
 arch=("x86_64")
@@ -16,7 +16,8 @@ optdepends=('mongodb-tools: mongoimport, mongodump, mongotop, etc'
 backup=("etc/mongodb.conf")
 conflicts=(mongodb)
 provides=(mongodb="$pkgver")
-source=(https://fastdl.mongodb.org/src/mongodb-src-r$pkgver.tar.gz
+source=(#https://fastdl.mongodb.org/src/mongodb-src-r$pkgver.tar.gz
+        ${_pkgname}-${pkgver}.tar.gz::https://github.com/mongodb/mongo/archive/refs/tags/r${pkgver}.tar.gz
         mongodb.sysusers
         mongodb.tmpfiles
         mongodb-4.4.1-boost.patch
@@ -28,7 +29,7 @@ source=(https://fastdl.mongodb.org/src/mongodb-src-r$pkgver.tar.gz
         mongodb-5.0.2-boost-1.79.patch
         mongodb-5.0.5-no-force-lld.patch
         mongodb-4.4.10-boost-1.81.patch)
-sha256sums=('92702a6fa6d3d4aa4ed468b8b0a846db63ad08f84e47734c9a1463520b1e50f3'
+sha256sums=('62a51dee664b6d2722edc8443c2a8d2e1e7400bf48d44ae25b1ad799d3bee5da'
             '3757d548cfb0e697f59b9104f39a344bb3d15f802608085f838cb2495c065795'
             'b7d18726225cd447e353007f896ff7e4cbedb2f641077bce70ab9d292e8f8d39'
             'd3bc20d0cb4b8662b5326b8a3f2215281df5aed57550fa13de465e05e2044c25'
@@ -87,7 +88,7 @@ filter-flags() {
 }
 
 prepare() {
-  cd "${srcdir}/${_pkgname}-src-r${pkgver}"
+  cd ${_pkgname//db/}-r${pkgver}
 
   # Keep historical Arch dbPath
   sed -i 's|dbPath: /var/lib/mongo|dbPath: /var/lib/mongodb|' rpm/mongod.conf
@@ -124,7 +125,7 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}-src-r${pkgver}"
+  cd ${_pkgname//db/}-r${pkgver}
 
   if check_option debug n; then
     filter-flags '-m*'
@@ -136,7 +137,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-src-r${pkgver}"
+  cd ${_pkgname//db/}-r${pkgver}
 
   # Install binaries
   install -D build/install/bin/mongo "$pkgdir/usr/bin/mongo"
