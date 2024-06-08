@@ -1,7 +1,7 @@
 pkgbase = noesis-bin
 	pkgdesc = Noesis is a tool for previewing and converting between hundreds of model, image, and animation formats.
 	pkgver = 4.473
-	pkgrel = 1
+	pkgrel = 2
 	url = https://richwhitehouse.com/index.php?content=inc_projects.php&showproject=91
 	arch = x86_64
 	license = proprietary

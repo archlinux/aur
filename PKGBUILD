@@ -4,7 +4,7 @@
 pkgname=noesis-bin
 _pkgname=noesis
 pkgver=4.473
-pkgrel=1
+pkgrel=2
 pkgdesc="Noesis is a tool for previewing and converting between hundreds of model, image, and animation formats."
 arch=('x86_64')
 url="https://richwhitehouse.com/index.php?content=inc_projects.php&showproject=91"
