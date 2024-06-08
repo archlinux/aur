@@ -1,11 +1,11 @@
 pkgbase = ctags-git
 	pkgdesc = Generates an index file of language objects found in source files
-	pkgver = 6.0.0.r525.gc480d71e1
+	pkgver = 6.1.0.r195.g08e07dc98
 	pkgrel = 1
 	url = https://ctags.io/
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = git
 	makedepends = python-docutils
 	depends = glibc
@@ -15,7 +15,7 @@ pkgbase = ctags-git
 	depends = libxml2
 	depends = libyaml
 	depends = pcre2
-	provides = ctags=6.0.0.r525.gc480d71e1
+	provides = ctags=6.1.0.r195.g08e07dc98
 	conflicts = ctags
 	source = git+https://github.com/universal-ctags/ctags.git
 	sha256sums = SKIP

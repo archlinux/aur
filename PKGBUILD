@@ -7,12 +7,12 @@
 # Contributor: marsam
 
 pkgname=ctags-git
-pkgver=6.0.0.r525.gc480d71e1
+pkgver=6.1.0.r195.g08e07dc98
 pkgrel=1
 pkgdesc="Generates an index file of language objects found in source files"
 arch=('i686' 'x86_64')
 url="https://ctags.io/"
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('glibc' 'jansson' 'libseccomp' 'libseccomp.so' 'libxml2' 'libyaml' 'pcre2')
 makedepends=('git' 'python-docutils')
 provides=("ctags=$pkgver")
