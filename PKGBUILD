@@ -1,4 +1,4 @@
-# Maintainer: Elias Blume <mail at elias-blu.me>
+# Maintainers: XenHat <me at xenh.at>, luni3359
 pkgname=moonlight-qt-bin
 pkgver=6.0.0
 pkgrel=1
