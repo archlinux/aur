@@ -8,7 +8,7 @@ _buildver=242.10180.30
 _pkgver=2024.2
 _eap=true
 pkgver="${_pkgver}.${_buildver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Powerful Python and Django IDE, Early Access Program (EAP) build. Professional edition."
 arch=("any")
 options=("!strip")
@@ -36,7 +36,7 @@ else
 fi
 
 sha256sums=("dab88fe87b6a900591ab9b1393c546af7a6dafe4068233248284eeb8026524a7"
-            "8bb3493641645d6a0d23b1e2394a97066c94a0ac956b0ef160452d8fadf7214d")
+            "b76e9b0a64a62d0775b4fa98313f6cbc2c3a2306da3715cb1f855dea5736ece0")
 
 prepare() {
     if [[ -d $srcdir/pycharm-${_pkgver} ]]; then
@@ -46,7 +46,7 @@ prepare() {
 
 build() {
     # compile PyDev debugger used by PyCharm to speedup debugging
-    find $srcdir/pycharm-${_buildver}/plugins/python/helpers/pydev/ \( -name *.c -o -name *.so -o -name *.pyd \) -delete
+    find $srcdir/pycharm-${_buildver}/plugins/python/helpers/pydev/_pydevd_bundle/ \( -name *.c -o -name *.so -o -name *.pyd \) -delete
     sed -i '1s/^/# cython: language_level=3\n/' $srcdir/pycharm-${_buildver}/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_cython.pxd
     sed -i '/compatible_c/d' $srcdir/pycharm-${_buildver}/plugins/python/helpers/pydev/setup_cython.py
     python $srcdir/pycharm-${_buildver}/plugins/python/helpers/pydev/setup_cython.py build_ext --inplace --force-cython
