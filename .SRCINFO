@@ -1,5 +1,5 @@
 pkgbase = monotone
-	pkgdesc = The Monotone distributed version control system (abandoned)
+	pkgdesc = The Monotone distributed version control system
 	pkgver = 1.1
 	pkgrel = 9
 	url = http://www.monotone.ca/

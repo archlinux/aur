@@ -8,7 +8,7 @@
 pkgname=monotone
 pkgver=1.1
 pkgrel=9
-pkgdesc='The Monotone distributed version control system (abandoned)'
+pkgdesc='The Monotone distributed version control system'
 arch=('i686' 'x86_64')
 url='http://www.monotone.ca/'
 license=('GPL')
