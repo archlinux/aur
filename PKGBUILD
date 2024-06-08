@@ -6,11 +6,11 @@ pkgname=(
   plymouth-theme-catppuccin-macchiato-git
   plymouth-theme-catppuccin-mocha-git
 )
-pkgver=r4.d4105cf
+pkgver=r12.e13c348
 pkgrel=1
 pkgdesc="Soothing pastel theme for Plymouth"
 arch=('any')
-url="https://github.com/catppuccin?type=source"
+url="https://github.com/catppuccin/plymouth"
 license=('MIT')
 depends=('plymouth')
 source=("$pkgbase::git+https://github.com/catppuccin/plymouth.git")
