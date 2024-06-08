@@ -1,0 +1,13 @@
+pkgbase = soundfont-opl3
+	pkgdesc = A SoundFont designed to simulate the classic MIDI sound of the Sound Blaster 16 (and other YM262 enabled hardware).
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://gitlab.com/psi29a/opl3-soundfont
+	arch = any
+	license = CC
+	source = OPL-3_FM_128M.sf2::http://www.emu-france.com/?wpfb_dl=4232
+	source = LICENSE::https://gitlab.com/psi29a/opl3-soundfont/-/raw/master/LICENSE
+	sha256sums = 39bff96eee3dcfbce9665e3968701b894ca2136c7d0bd580281b2bbf59e80392
+	sha256sums = 2003829cf643d61b00a76088dd31bb11b8029546f24c56b39fd492adb9281483
+
+pkgname = soundfont-opl3
