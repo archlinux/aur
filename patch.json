@@ -292,13 +292,11 @@
 	"settingsSearchUrl": "https://bingsettingssearch.trafficmanager.net/api/Search",
 	"extensionEnabledApiProposals": {
 		"ms-vscode.vscode-selfhost-test-provider": [
-			"testObserver"
+			"testObserver",
+			"attributableCoverage"
 		],
 		"VisualStudioExptTeam.vscodeintellicode-completions": [
 			"inlineCompletionsAdditions"
-		],
-		"ms-toolsai.datawrangler": [
-			"debugFocus"
 		],
 		"ms-vsliveshare.vsliveshare": [
 			"contribMenuBarHome",
@@ -327,12 +325,12 @@
 			"contribEditorContentMenu",
 			"quickPickSortByLabel",
 			"portsAttributes",
-			"handleIssueUri",
 			"testObserver",
 			"quickPickItemTooltip",
 			"terminalDataWriteEvent",
 			"terminalExecuteCommandEvent",
-			"contribIssueReporter"
+			"contribIssueReporter",
+			"terminalShellIntegration"
 		],
 		"ms-dotnettools.dotnet-interactive-vscode": [
 			"notebookMessaging"
@@ -426,12 +424,15 @@
 			"codeActionRanges",
 			"commentingRangeHint",
 			"commentReactor",
+			"commentReveal",
 			"commentThreadApplicability",
+			"contribAccessibilityHelpContent",
 			"contribCommentEditorActionsMenu",
 			"contribCommentPeekContext",
 			"contribCommentThreadAdditionalMenu",
 			"contribCommentsViewThreadMenus",
 			"contribEditorContentMenu",
+			"contribMultiDiffEditorMenus",
 			"contribShareMenu",
 			"diffCommand",
 			"fileComments",
@@ -452,16 +453,15 @@
 			"terminalDataWriteEvent"
 		],
 		"GitHub.copilot-chat": [
-			"handleIssueUri",
 			"interactive",
 			"terminalDataWriteEvent",
 			"terminalExecuteCommandEvent",
 			"terminalSelection",
 			"terminalQuickFixProvider",
 			"chatProvider",
-			"chatParticipant",
 			"chatParticipantAdditions",
 			"defaultChatParticipant",
+			"embeddings",
 			"chatVariableResolver",
 			"mappedEditsProvider",
 			"aiRelatedInformation",
@@ -469,12 +469,17 @@
 			"findTextInFiles",
 			"textSearchProvider",
 			"contribSourceControlInputBoxMenu",
+			"contribCommentEditorActionsMenu",
+			"contribCommentThreadAdditionalMenu",
+			"contribCommentsViewThreadMenus",
 			"newSymbolNamesProvider",
 			"findFiles2",
 			"extensionsAny",
 			"authLearnMore",
 			"testObserver",
-			"aiTextSearchProvider"
+			"aiTextSearchProvider",
+			"documentFiltersExclusive",
+			"chatParticipantPrivate"
 		],
 		"GitHub.remotehub": [
 			"contribRemoteHelp",
@@ -502,7 +507,8 @@
 		],
 		"ms-python.debugpy": [
 			"portsAttributes",
-			"contribIssueReporter"
+			"contribIssueReporter",
+			"debugVisualization"
 		],
 		"ms-toolsai.jupyter-renderers": [
 			"contribNotebookStaticPreloads"
@@ -535,6 +541,11 @@
 		"ms-azuretools.vscode-azureresourcegroups": [
 			"authGetSessions"
 		],
+		"ms-azuretools.vscode-azure-github-copilot": [
+			"chatParticipantAdditions",
+			"embeddings",
+			"languageModelSystem"
+		],
 		"ms-vscode.anycode": [
 			"extensionsAny"
 		],
@@ -558,9 +569,9 @@
 			"fileSearchProvider",
 			"textSearchProvider"
 		],
-		"apidev.azure-api-center": [
-			"chatParticipant",
-			"languageModels"
+		"TeamsDevApp.ms-teams-vscode-extension": [
+			"chatParticipantAdditions",
+			"languageModelSystem"
 		]
 	},
 	"tasConfig": {
