@@ -1,0 +1,19 @@
+pkgbase = ruby-gdk_pixbuf2
+	pkgdesc = Ruby/GdkPixbuf2 is a Ruby binding of GdkPixbuf-2.x.
+	pkgver = 4.1.2
+	pkgrel = 2
+	url = http://ruby-gnome2.sourceforge.jp/
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = ruby-native-package-installer
+	makedepends = ruby-rake
+	depends = ruby
+	depends = ruby-gio2=4.1.2
+	depends = gdk-pixbuf2
+	replaces = ruby-gdkpixbuf2
+	noextract = gdk_pixbuf2-4.1.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/gdk_pixbuf2-4.1.2.gem
+	sha256sums = 29bb748956488b7fc462606a358f2a978a1bc3d5637e9e1249c5627e007ed538
+
+pkgname = ruby-gdk_pixbuf2
