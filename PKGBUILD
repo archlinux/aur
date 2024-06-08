@@ -2,7 +2,7 @@
 
 pkgname=lemmy
 pkgver=0.19.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A link aggregator for the fediverse'
 arch=('x86_64')
 url='https://join-lemmy.org'
@@ -48,9 +48,6 @@ prepare() {
   git submodule init
   git config submodule.crates/utils/translations.url ../lemmy-translations
   git -c protocol.file.allow=always submodule update
-
-  # set version
-  sed -i "s/unknown version/$pkgver/" crates/utils/src/version.rs
 
   # download dependencies
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
