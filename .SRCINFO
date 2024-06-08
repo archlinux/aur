@@ -1,7 +1,7 @@
 pkgbase = soupault-bin
 	pkgdesc = Static website generator based on HTML element tree rewriting (pre-compiled)
 	pkgver = 4.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PataphysicalSociety/soupault
 	arch = aarch64
 	arch = x86_64
