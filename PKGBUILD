@@ -3,11 +3,11 @@
 _pkgname=gimp
 pkgname=${_pkgname}-devel
 pkgver=2.99.18
-pkgrel=2
+pkgrel=5
 pkgdesc="GNU Image Manipulation Program (Development version)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://www.gimp.org/"
-license=('GPL' 'LGPL')
+license=('GPL-3.0-or-later')
 depends=('gtk3' 'lcms2' 'libwmf' 'icu' 'enchant' 'libgexiv2' 'librsvg' 'desktop-file-utils'
          'libexif' 'libgudev' 'openjpeg2' 'poppler-glib' 'poppler-data' 'openexr' 'mypaint-brushes1'
          'babl>=0.1.98' 'gegl>=0.4.48' 'cairo' 'python-gobject' 'appstream-glib' 'libxmu' 'graphviz')
@@ -15,11 +15,11 @@ makedepends=('appstream' 'intltool' 'libxslt' 'glib-networking'
              'alsa-lib' 'curl' 'ghostscript' 'libxpm'
              'libheif' 'libwebp' 'libmng' 'iso-codes' 'aalib' 'zlib' 'libjxl'
              'gjs'  'luajit' 'meson' 'gobject-introspection'
-             'gi-docgen' 'xorg-server-xvfb' 'vala' 'highway' 'meson' 'qoi-headers'
-             'cfitsio') #yelp-tools')
+             'xorg-server-xvfb' 'vala' 'highway' 'meson' 'qoi-headers'
+             'cfitsio' 'gi-docgen' 'yelp-tools')
 checkdepends=('xorg-server-xvfb')
-optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cups print support'
-            'alsa-lib: for MIDI event controller module'
+#'gutenprint: for sophisticated printing only as gimp has built-in cups print support'
+optdepends=('alsa-lib: for MIDI event controller module'
             'curl: for URI support'
             'ghostscript: for postscript support'
             'libxpm: XPM support'
@@ -38,13 +38,23 @@ optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cu
 conflicts=("${_pkgname}")
 provides=("${_pkgname}=${pkgver}")
 source=("https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz"
+        'docs_dont_fail_on_warn.patch'
+        'fix-missing-gimpchoice-header.patch::https://gitlab.gnome.org/GNOME/gimp/-/commit/11892f1d83ffc465346dab7e2e8c6e790f555a64.patch'
         'linux.gpl')
 sha256sums=('8c1bb7a94ac0d4d0cde4d701d8b356387c2ecd87abbd35bbf7d222d40f6ddb6e'
+            '7517df6ce9f2237253a49cb96eeb2638c80c53301bada6b44ce7f6eab835fe13'
+            'daeddaae0b5634f953189f4a479cc335c1516e7d490e6bf95f7be8e21835db3e'
             '1003bbf5fc292d0d63be44562f46506f7b2ca5729770da9d38d3bb2e8a2f36b3')
+
+prepare() {
+  cd "${_pkgname}-${pkgver}"
+  patch -uNp2 -r- -i ../docs_dont_fail_on_warn.patch
+}
 
 build() {
   local meson_options=(
     -Dilbm=disabled
+    -Dg-ir-doc=true
   )
 
   arch-meson "${_pkgname}-${pkgver}" build "${meson_options[@]}"
