@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://sourceforge.net/apps/trac/accel-ppp/"
 license=('GPL')
 depends=('openssl>=1.0.0' 'pcre>=8.30' 'libnl' 'lua51')
-makedepends=('cmake>=2.6' 'libnl' 'net-snmp>=5.x')
+makedepends=('cmake>=2.6' 'net-snmp>=5.x')
 optdepends=('accel-ppp-ipoe-dkms' 'accel-ppp-vlanmon-dkms' 'logrotate')
 conflicts=('accel-ppp-git')
 install='accel-ppp.install'
