@@ -1,17 +1,18 @@
 pkgbase = xfce4-kbdleds-plugin
 	pkgdesc = Xfce keyboard LEDs panel plugin
-	pkgver = 0.2.5
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/oco2000/xfce4-kbdleds-plugin
 	install = xfce4-kbdleds-plugin.install
 	arch = i686
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-only
 	makedepends = intltool
 	makedepends = xfce4-dev-tools
 	depends = xfce4-panel
 	conflicts = xfce4-kbdleds-plugin-git
-	source = https://github.com/oco2000/xfce4-kbdleds-plugin/archive/xfce4-kbdleds-plugin-0.2.5.tar.gz
-	sha256sums = d4af60e89230bdc36771c20531b19fe92efab2d1ade80f5856fc8a8fb9201668
+	source = https://github.com/oco2000/xfce4-kbdleds-plugin/archive/xfce4-kbdleds-plugin-0.3.0.tar.gz
+	sha256sums = dc6c2e195201de2a2d61dc0863bc2b8632a68b4d789c7b3f8b5a7b372f4846fe
+	sha512sums = 0633931eadfc1f02dbff2f49889e0ca10c071f7f214515dca3402fbb6bffb5214fa9ccf117b685375b258bcc7d645d28992232c6a6fc2a5090858f94e98dde18
 
 pkgname = xfce4-kbdleds-plugin
