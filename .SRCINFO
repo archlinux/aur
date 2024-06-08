@@ -1,5 +1,5 @@
 pkgbase = python-todo-or-not
-	pkgdesc = a simple tool that checks your project for TODOs and FIXMEs
+	pkgdesc = A simple tool that checks your project for TODOs and FIXMEs
 	pkgver = 0.10.15
 	pkgrel = 1
 	url = https://github.com/Start-Out/todo-or-not
