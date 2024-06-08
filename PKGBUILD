@@ -2,12 +2,12 @@
 
 pkgname=python-indexed-bzip2
 pkgver=1.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A parallelized bzip2 decoder with seek capability"
 arch=('x86_64')
 url="https://github.com/mxmlnkn/indexed_bzip2"
 license=('MIT')
-depends=('python')
+depends=('python' 'cython')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 options=(!emptydirs)
 _tag=84290abde51e5786feaf6869baf44657ce450f5f
