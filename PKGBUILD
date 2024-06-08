@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=mission-center
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Monitor your CPU, Memory, Disk, Network and GPU usage"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('dmidecode' 'libadwaita')
 makedepends=('blueprint-compiler' 'cargo' 'meson')
 checkdepends=('appstream-glib')
 source=("$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('c943a2b3e639cc216e876efeeacc038815ecfbb1561a0278e74d4338d191a978')
+sha256sums=('8b020ac4f5927cbc52f1567824f60018776b843a399ebf6e8696b01c67c1ad18')
 
 prepare() {
   cd "$pkgname-v$pkgver"
