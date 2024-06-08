@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://gitlab.com/auralquiz/auralquiz-dev"
 license=('GPL-2.0-or-later')
 makedepends=('qt5-base' 'make' 'git' 'gcc' 'taglib')
-depends=('phonon-qt5-vlc')
+depends=('qt5-base' 'phonon-qt5-vlc')
 #optdepends=('')
 source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/auralquiz/auralquiz-dev/-/archive/${pkgver}/${pkgname}-dev-${pkgver}.tar.gz")
 
