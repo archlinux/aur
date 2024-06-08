@@ -1,0 +1,12 @@
+pkgbase = xeyes-git
+	pkgdesc = A 'follow the mouse' X demo, using the X SHAPE extension
+	pkgver = 1.00
+	pkgrel = 1
+	url = https://gitlab.freedesktop.org/xorg/app/xeyes.git
+	arch = x86_64
+	arch = arm
+	license = GPL
+	source = git+https://gitlab.freedesktop.org/xorg/app/xeyes.git
+	sha256sums = SKIP
+
+pkgname = xeyes-git
