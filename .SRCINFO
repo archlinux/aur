@@ -1,6 +1,6 @@
 pkgbase = vk-messenger-bin
 	pkgdesc = VK Messenger for Linux from rpm package
-	pkgver = 6.0.40.208
+	pkgver = 6.0.43.254
 	pkgrel = 1
 	url = https://vk.me/app
 	arch = x86_64
@@ -11,6 +11,6 @@ pkgbase = vk-messenger-bin
 	replaces = vk-messenger-appimage
 	options = !strip
 	source = https://upload.object2.vk-apps.com/vk-me-desktop-dev-5837a06d-5f28-484a-ac22-045903cb1b1a/latest/vk-messenger.rpm
-	sha256sums = 5917d3a97f56b24ea7312ac7ceff3b1b123d6b48df1659972086c529335b43f7
+	sha256sums = 162cc8a5dffc0ad755665a70fe5316dbbefa28b43f170e8dfb114347256e7fe0
 
 pkgname = vk-messenger-bin
