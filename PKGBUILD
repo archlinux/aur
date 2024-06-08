@@ -1,7 +1,7 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=emacs-nyan-mode
-pkgver=1.1.1
+pkgver=1.1.3
 pkgrel=1
 epoch=1
 pkgdesc="Nyan Cat in your Emacs modeline"
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('emacs')
 install=emacs-nyan-mode.install
 source=("$url/archive/v${pkgver}.tar.gz")
-sha512sums=('9685c5dcb2f3125e1b00fa2be5a9bd2a27e596fa6b4a0501d0a4ed99a445749f88b00be7a5a8fd2afa217a023d1335cfcab79c6fb13b4e9eeef28032050d14f5')
+b2sums=('c138d6c9c29ecfa4f9ddf3ec27ceaf43cedddbda11d5a59c388ecd0c598c735f7ec9dfa99838a5ff2c521b096ef41e47c75199d4c2c225a278f6f1cd67684c82')
 
 build() {
   cd "$srcdir/${pkgname/emacs-/}-${pkgver}"
