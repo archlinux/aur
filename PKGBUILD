@@ -1,6 +1,6 @@
 pkgname=fallout2-ce-game
 _gitname=fallout2-ce
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Fallout 2 for modern operating systems"
 arch=('x86_64')
