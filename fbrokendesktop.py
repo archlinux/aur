@@ -92,13 +92,6 @@ if __name__ == "__main__":
         description="Find desktop entries files with broken/missing executables"
     )
     parser.add_argument(
-        "-a",
-        "--all",
-        action="store_true",
-        help="show all missing desktop entries",
-        default=True,
-    )
-    parser.add_argument(
         "--hidden",
         "--show_hidden",
         action="store_true",
