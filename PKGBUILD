@@ -1,8 +1,8 @@
 # Maintainer: Joaquin Colonnello <joaquincolonnello@hotmail.com>
 
 pkgname=python-indexed-bzip2
-pkgver=1.5.0
-pkgrel=3
+pkgver=1.6.0
+pkgrel=1
 pkgdesc="A parallelized bzip2 decoder with seek capability"
 arch=('x86_64')
 url="https://github.com/mxmlnkn/indexed_bzip2"
