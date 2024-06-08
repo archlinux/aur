@@ -2,16 +2,16 @@
 # Contributor: Daniel YC Lin <dlin.tw at gmail>
 
 pkgname=tmux-mem-cpu-load-git
-pkgver=3.4.0.r25.gd5007d4
+pkgver=3.7.0.r29.gdf71d21
 pkgrel=1
-pkgdesc="CPU, RAM memory, and load monitor for use with tmux"
-url="https://github.com/thewtex/tmux-mem-cpu-load"
-arch=('x86_64')
-license=('APACHE')
-makedepends=('cmake')
+pkgdesc='CPU, RAM memory, and load monitor for use with tmux'
+url=https://github.com/thewtex/tmux-mem-cpu-load
+arch=(x86_64)
+license=(Apache-2.0)
+makedepends=(cmake git)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=($pkgname::git+$url.git)
+source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -24,6 +24,6 @@ build() {
 }
 
 package() {
-  install -Dm755 build/tmux-mem-cpu-load "$pkgdir/usr/bin/tmux-mem-cpu-load"
+  install -Dm755 build/tmux-mem-cpu-load -t "$pkgdir/usr/bin"
 }
 
