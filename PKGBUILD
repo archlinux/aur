@@ -19,7 +19,7 @@ pkgname=(
 
   lib32-gstreamer-vaapi-git
 )
-pkgver=1.24.0+r490+g19bc0da824
+pkgver=1.24.0+r705+g81de6b7738
 pkgrel=1
 pkgdesc="Multimedia graph framework (32-bit)"
 url="https://gstreamer.freedesktop.org/"
@@ -118,6 +118,7 @@ build() {
     -D gst-plugins-bad:aja=disabled
     -D gst-plugins-bad:amfcodec=disabled 
     -D gst-plugins-bad:chromaprint=disabled
+    -D gst-plugins-bad:cuda-nvmm=disabled
     -D gst-plugins-bad:directfb=disabled
     -D gst-plugins-bad:directshow=disabled 
     -D gst-plugins-bad:flite=disabled
@@ -190,10 +191,12 @@ check() (
   export XDG_RUNTIME_DIR="$PWD/runtime-dir"
   mkdir -p -m 700 "$XDG_RUNTIME_DIR"
 
+  export NO_AT_BRIDGE=1 GTK_A11Y=none
+
   # Mask test fail interrupt
   # Flaky due to timeouts
-  # xvfb-run -s '-nolisten local' \
-  #   meson test -C build --print-errorlogs || :
+  xvfb-run -s '-nolisten local' \
+    meson test -C build --print-errorlogs -t 5 || :
 )
 
 _install() {
