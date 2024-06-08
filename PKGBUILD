@@ -4,7 +4,7 @@
 pkgname=fallout2-ce-game
 _gitname=fallout2-ce
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Fallout 2 for modern operating systems"
 arch=('x86_64')
 url="https://github.com/alexbatalov/fallout2-ce"
@@ -23,6 +23,6 @@ build() {
 package() {
     cd "${_gitname}-${pkgver}"
     DESTDIR="$pkgdir" cmake --install . --prefix "/usr"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
