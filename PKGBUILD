@@ -3,7 +3,7 @@
 _gemname=gdk4
 pkgname=ruby-$_gemname
 pkgver=4.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Ruby/GDK4 is a Ruby binding of GDK-4.x.'
 arch=(x86_64)
 url='http://ruby-gnome2.sourceforge.jp/'

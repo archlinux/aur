@@ -1,0 +1,20 @@
+pkgbase = ruby-gdk4
+	pkgdesc = Ruby/GDK4 is a Ruby binding of GDK-4.x.
+	pkgver = 4.1.2
+	pkgrel = 2
+	url = http://ruby-gnome2.sourceforge.jp/
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = ruby-native-package-installer
+	makedepends = rake
+	depends = ruby
+	depends = gtk4
+	depends = ruby-cairo-gobject=4.1.2
+	depends = ruby-gdk_pixbuf2=4.1.2
+	depends = ruby-pango=4.1.2
+	noextract = gdk4-4.1.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/gdk4-4.1.2.gem
+	sha256sums = 3902c58c3c0291341cd042807da83339193cdef21a548af3255f91a0e5b458cd
+
+pkgname = ruby-gdk4
