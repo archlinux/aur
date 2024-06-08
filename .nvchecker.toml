@@ -1,0 +1,5 @@
+[python-sphinx-jupyterbook-latex]
+source = "github"
+github = "executablebooks/sphinx-jupyterbook-latex"
+use_latest_release = "true"
+prefix = "v"
