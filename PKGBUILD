@@ -1,20 +1,18 @@
 # Maintainer: Vaporeon <vaporeon@vaporeon.io>
 pkgname=punes-git
-pkgver=0.109.r1896.45a55f4d
+pkgver=0.111.r2299.6e51b1a6
 pkgrel=1
 pkgdesc="Nintendo Entertainment System emulator (git build)"
 arch=('x86_64')
 url="https://github.com/punesemu/puNES"
-license=('GPL2')
-depends=('alsa-lib' 'desktop-file-utils' 'ffmpeg' 'hicolor-icon-theme' 'nvidia-cg-toolkit' 'libxrandr' 'qt5-base' 'qt5-svg')
-makedepends=('cmake' 'git' 'glu' 'ninja' 'qt5-tools' 'qt5-wayland')
+license=('GPL-2.0-or-later')
+depends=('alsa-lib' 'ffmpeg' 'hicolor-icon-theme' 'nvidia-cg-toolkit' 'libxrandr' 'qt6-base' 'qt6-svg'
+         'gcc-libs' 'glibc' 'libglvnd' 'libx11' 'libudev.so')
+makedepends=('cmake' 'git' 'glu' 'ninja' 'qt6-tools')
 conflicts=('punes')
 provides=('punes')
 source=("punes::git+https://github.com/punesemu/puNES.git")
 md5sums=('SKIP')
-
-#breaks internal lib7zip
-options=('!buildflags')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -27,7 +25,8 @@ build() {
     -B build \
     -DENABLE_GIT_INFO=ON \
     -DENABLE_OPENGL_CG=ON \
-    -DENABLE_QT6_LIBS=OFF \
+    -DENABLE_QT6_LIBS=ON \
+    -DDISABLE_PORTABLE_MODE=ON \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release
 
