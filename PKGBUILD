@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=xxhash-git
-pkgver=0.7.4.r542.gf4bef92
+pkgver=0.8.2.r106.gac3a25d
 pkgrel=1
 pkgdesc="Extremely fast non-cryptographic hash algorithm"
 arch=('i686' 'x86_64')
 url="https://cyan4973.github.io/xxHash/"
-license=('BSD')
+license=('BSD-2-Clause')
 depends=('glibc')
 makedepends=('git')
 checkdepends=('valgrind')
@@ -19,7 +19,10 @@ sha256sums=('SKIP')
 pkgver() {
   cd "xxHash"
 
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {

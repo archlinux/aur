@@ -1,15 +1,15 @@
 pkgbase = xxhash-git
 	pkgdesc = Extremely fast non-cryptographic hash algorithm
-	pkgver = 0.7.4.r542.gf4bef92
+	pkgver = 0.8.2.r106.gac3a25d
 	pkgrel = 1
 	url = https://cyan4973.github.io/xxHash/
 	arch = i686
 	arch = x86_64
-	license = BSD
+	license = BSD-2-Clause
 	checkdepends = valgrind
 	makedepends = git
 	depends = glibc
-	provides = xxhash=0.7.4.r542.gf4bef92
+	provides = xxhash=0.8.2.r106.gac3a25d
 	conflicts = xxhash
 	source = git+https://github.com/Cyan4973/xxHash.git
 	sha256sums = SKIP
