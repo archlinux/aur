@@ -10,6 +10,7 @@ url='https://github.com/Lypheo/vs-placebo'
 license=('LGPL')
 depends=('vapoursynth')
 makedepends=('git' 'meson' 'vulkan-headers' 'libplacebo')
+optdepends=('libdovi')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/Lypheo/vs-placebo.git"

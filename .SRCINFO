@@ -10,6 +10,7 @@ pkgbase = vapoursynth-plugin-placebo-git
 	makedepends = vulkan-headers
 	makedepends = libplacebo
 	depends = vapoursynth
+	optdepends = libdovi
 	provides = vapoursynth-plugin-placebo
 	conflicts = vapoursynth-plugin-placebo
 	source = placebo::git+https://github.com/Lypheo/vs-placebo.git
