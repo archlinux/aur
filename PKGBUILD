@@ -2,13 +2,13 @@
 
 pkgname=lemmy-ui
 pkgver=0.19.4
-pkgrel=1
+pkgrel=2
 pkgdesc='The official web app for lemmy'
 arch=('any')
 url='https://github.com/LemmyNet/lemmy-ui'
 license=('AGPL3')
 depends=('nodejs' 'lemmy')
-makedepends=('git' 'yarn' 'python')
+makedepends=('git' 'pnpm' 'python')
 backup=('etc/lemmy/lemmy-ui.env')
 _commit='66c60d9f145abcf9f7a4482f9dbe212187cc0ef1'
 source=(
@@ -44,8 +44,8 @@ prepare() {
 build() {
 	cd "$pkgname"
 
-  yarn install
-  yarn build:prod
+  pnpm install
+  pnpm build:prod
 }
 
 package() {

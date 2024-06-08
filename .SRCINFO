@@ -1,12 +1,12 @@
 pkgbase = lemmy-ui
 	pkgdesc = The official web app for lemmy
 	pkgver = 0.19.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LemmyNet/lemmy-ui
 	arch = any
 	license = AGPL3
 	makedepends = git
-	makedepends = yarn
+	makedepends = pnpm
 	makedepends = python
 	depends = nodejs
 	depends = lemmy
