@@ -1,7 +1,7 @@
 pkgbase = vagrant
 	pkgdesc = Build and distribute virtualized development environments
 	pkgver = 2.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vagrantup.com
 	arch = x86_64
 	license = BUSL-1.1
