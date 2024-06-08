@@ -1,32 +1,35 @@
-# Original Maintainer: Paul Stoetzer <n8hm at arrl dot net>
-# Current Maintainer: Sean Snell <ssnell@lakecs.net>
+# Contributor: Sean Snell <ssnell@lakecs.net>
+# Contributor: Paul Stoetzer <n8hm at arrl dot net>
 
 pkgname=predict
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc='Satellite tracking, orbital prediction, open-source software'
 arch=('i686' 'x86_64')
 url="http://www.qsl.net/kd2bd/predict.html"
-license=('GPL')
-depends=('ncurses')
-makedepends=()
-provides=('predict')
-conflicts=()
+license=('GPL-2.0-or-later')
+depends=('glibc' 'ncurses' 'alsa-lib')
 options=('!emptydirs')
-source=("${pkgname}-${pkgver}.tar.gz::https://www.qsl.net/kd2bd/${pkgname}-${pkgver}.tar.gz")
+source=("https://www.qsl.net/kd2bd/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('3ea626cadf1edf984e49e91891f9fd5cb38f6d83c5cd6e6693e8aecb2d289056')
 
-sha256sums=('f287263ebf512ab06fc8d7379700f5fc086a836d1ad484712983c3d8979386d5')
 
 build() {
     cd ${pkgname}-${pkgver}
+    # Because the configure script does everything, it cannot really be used
+    # Build predict
+    ./build
+    # Build earthtrack
+    cd clients/earthtrack
+    ./build
 }
 
 package() {
     cd ${pkgname}-${pkgver}
-	 ./configure
-	 mkdir -p ${pkgdir}/opt/predict/
-	 cp -r * ${pkgdir}/opt/predict/
-	 mkdir -p ${pkgdir}/usr/bin/
-	 ln -s /opt/predict/predict ${pkgdir}/usr/bin/predict
-	 install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm755 predict -t "$pkgdir/usr/bin/"
+    install -Dm755 xpredict -t "$pkgdir/usr/bin/"
+    install -Dm755 kepupdate -t "$pkgdir/usr/bin/"
+    install -Dm755 clients/earthtrack/earthtrack -t "$pkgdir/usr/bin/"
+    install -Dm644 docs/man/predict.1 -t "$pkgdir/usr/share/man/man1/"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
