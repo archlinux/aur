@@ -1,5 +1,5 @@
 pkgbase = monotone
-	pkgdesc = A free distributed version control system
+	pkgdesc = The Monotone distributed version control system (abandoned)
 	pkgver = 1.1
 	pkgrel = 9
 	url = http://www.monotone.ca/
@@ -14,7 +14,7 @@ pkgbase = monotone
 	depends = libidn
 	depends = zlib
 	source = http://www.monotone.ca/downloads/1.1/monotone-1.1.tar.bz2
-	source = http://http.debian.net/debian/pool/main/m/monotone/monotone_1.1-9.debian.tar.xz
+	source = http://archive.debian.org/debian/pool/main/m/monotone/monotone_1.1-9.debian.tar.xz
 	source = pcre-8.42-hack.diff
 	sha256sums = f95cf60a22d4e461bec9d0e72f5d3609c9a4576fb1cc45f553d0202ce2e38c88
 	sha256sums = 70a4e8fed56f4734de2192990db5e20fe8a8b819af51780df3d78310ee9eeeda
