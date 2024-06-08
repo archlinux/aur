@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=lz4-git
-pkgver=1.9.4.r74.gfe389ca
+pkgver=1.9.4.r514.g5e677416
 pkgrel=1
 pkgdesc="Extremely Fast Compression algorithm"
 arch=('i686' 'x86_64')
 url="https://lz4.github.io/lz4/"
-license=('GPL2' 'BSD')
+license=('BSD-2-Clause' 'GPL-2.0-or-later')
 depends=('glibc')
 makedepends=('git')
 provides=("lz4=1:$pkgver")
@@ -28,6 +28,8 @@ pkgver() {
 build() {
   cd "lz4"
 
+  CFLAGS="$CFLAGS -ffat-lto-objects" \
+  CXXFLAGS="$CXXFLAGS -ffat-lto-objects" \
   make
 }
 
