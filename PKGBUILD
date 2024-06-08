@@ -1,6 +1,6 @@
 # Maintainer: Trumpetrespas (Please comment on the package to contact me)
-pkgname=todo-or-not
-_name=${pkgname#-python}
+_pkgname=todo-or-not
+pkgname=python-todo-or-not
 pkgver=0.10.15
 pkgrel=1
 epoch=
@@ -26,19 +26,19 @@ sha256sums=(3abd797c8589139407ee3ec3ce9a7bda8b56210eb6ef4b8c1a6ca95894d2eedd)
 validpgpkeys=()
 
 prepare() {
-	cd "$pkgname-$pkgver"
+	cd "$_pkgname-$pkgver"
 }
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "$_pkgname-$pkgver"
 	poetry build
 }
 
 check() {
-	cd "$pkgname-$pkgver"
+	cd "$_pkgname-$pkgver"
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$_pkgname-$pkgver"
 	python -m installer --destdir="$pkgdir" dist/*.whl
 }
