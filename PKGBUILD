@@ -23,7 +23,7 @@ pkgrel=1
 pkgdesc='Tor Browser Bundle: anonymous browsing using Firefox and Tor'
 url='https://www.torproject.org/projects/torbrowser.html'
 arch=('i686' 'x86_64')
-license=('GPL')
+license=(MPL-2.0)
 depends=('libxt' 'startup-notification' 'mime-types' 'dbus-glib'
 	'alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme'
 	'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite')
@@ -110,5 +110,3 @@ package() {
 		"${pkgdir}/opt/${_appname}/${_appname}-${_archstr}-${pkgver}.tar.xz"
 
 }
-
-
