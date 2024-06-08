@@ -1,6 +1,6 @@
 pkgbase = sciter-js-sdk-bin
 	pkgdesc = The SDK of an embeddable HTML/CSS/JavaScript engine for modern UI development (Prebuilt binaries and libraries)
-	pkgver = 5.0.2.18
+	pkgver = 5.0.3.12
 	pkgrel = 1
 	url = https://sciter.com/
 	install = sciter-js-sdk-bin.install
@@ -11,7 +11,8 @@ pkgbase = sciter-js-sdk-bin
 	license = BSD
 	depends = gtk3
 	depends = glu
-	source = sdk-src-5.0.2.18::https://gitlab.com/sciter-engine/sciter-js-sdk/-/archive/main/sciter-js-sdk-main.zip
+	depends = webkit2gtk
+	source = sdk-src-5.0.3.12::https://gitlab.com/sciter-engine/sciter-js-sdk/-/archive/main/sciter-js-sdk-main.zip
 	sha256sums = SKIP
 
 pkgname = sciter-js-sdk-bin

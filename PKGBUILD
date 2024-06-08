@@ -1,13 +1,13 @@
 # Maintainer: w568w <w568w at outlook dot com>
 pkgname=sciter-js-sdk-bin
-pkgver=5.0.2.18
+pkgver=5.0.3.12
 pkgrel=1
 pkgdesc="The SDK of an embeddable HTML/CSS/JavaScript engine for modern UI development (Prebuilt binaries and libraries)"
 arch=('armv7h' 'aarch64' 'i686' 'x86_64')
 url="https://sciter.com/"
 license=('BSD')
 depends=(
-    'gtk3' 'glu' 
+    'gtk3' 'glu' 'webkit2gtk'
 )
 source=("sdk-src-${pkgver}::https://gitlab.com/sciter-engine/sciter-js-sdk/-/archive/main/sciter-js-sdk-main.zip")
 install="${pkgname}.install"
