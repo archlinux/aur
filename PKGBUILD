@@ -1,9 +1,7 @@
-# Maintainer: Daniel Menelkir <dmenelkir at gmail dot com>
-# Contributor: Evgeniy Alekseev <arcanis.arch at gmail dot com>
-# Contributor: onestep_ua <onestep at ukr dot net>
+# Maintainer: VIVID <vivid@headrat.org>
 
 pkgname=libg15render
-pkgver=3.0.5
+pkgver=3.0.5a
 pkgrel=1
 pkgdesc="A small graphics library optimised for drawing on an LCD"
 arch=('x86_64')
@@ -11,7 +9,7 @@ url="https://gitlab.com/menelkir/libg15render"
 license=('GPL')
 depends=('libg15')
 source=(https://gitlab.com/menelkir/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.bz2)
-sha512sums=('a4e3e361a2934d862a2c9ce8692205b220d41b7a6bdca249eb9a620cb229dceba48f9a022c471cf405d20ba9cda604a46b8694f548e5391db21ad779f1268007')
+sha512sums=('1bc457695fe4a4166035ea61922af7e8a8247fff7f946997539926f2e7802f152b2587518dfc76a5a036ec4346cbcc70e51c85205619c72609272f511cdebd9a')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
