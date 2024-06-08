@@ -1,8 +1,8 @@
 # Maintainer: sant0s <diego.delossantos@mailbox.org>
 pkgname=livecaptions
 _pkgname=LiveCaptions
-pkgver=0.4.1
-pkgrel=2
+pkgver=0.4.2
+pkgrel=1
 pkgdesc="Linux Desktop application that provides live captioning"
 arch=('x86_64')
 url="https://github.com/abb128/LiveCaptions"
