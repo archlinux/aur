@@ -1,0 +1,18 @@
+pkgbase = ruby-atk
+	pkgdesc = Ruby/ATK is a Ruby binding of ATK-1.0.x.
+	pkgver = 4.1.2
+	pkgrel = 2
+	url = http://ruby-gnome2.sourceforge.jp/
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = ruby-native-package-installer
+	makedepends = ruby-rake
+	depends = ruby
+	depends = atk
+	depends = ruby-glib2=4.1.2
+	noextract = atk-4.1.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/atk-4.1.2.gem
+	sha256sums = 4ee3b47e038d5f1156d7c658f983183623bf6da8a5b756509df1f69d1b77ed29
+
+pkgname = ruby-atk
