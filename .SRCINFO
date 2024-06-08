@@ -8,6 +8,7 @@ pkgbase = warcraftlogsuploader-appimage
 	license = MIT
 	license = custom:chromium-licenses
 	depends = fuse2
+	conflicts = warcraftlogsuploader
 	options = !strip
 	source = warcraftlogsuploader.AppImage::https://github.com/RPGLogs/Uploaders-warcraftlogs/releases/download/v8.5.12/warcraftlogs-v8.5.12.AppImage
 	source = start
