@@ -4,14 +4,14 @@
 # Contributor: Artem Sereda <overmind88 at gmail dot com>
 
 pkgname=flacon
-pkgver=11.3.0
+pkgver=11.4.0
 pkgrel=1
 pkgdesc="An Audio File Encoder. Extracts audio tracks from an audio CD image to separate tracks."
 arch=(x86_64 i686 aarch64)
 url="https://flacon.github.io/"
 license=(LGPL2.1)
-depends=(hicolor-icon-theme qt5-base uchardet taglib)
-makedepends=(git cmake icu qt5-tools yaml-cpp)
+depends=(hicolor-icon-theme qt6-base uchardet taglib)
+makedepends=(git cmake icu qt6-tools yaml-cpp)
 optdepends=(
             'alacenc: For ALAC support'
             'faac: For AAC support'
@@ -27,26 +27,20 @@ optdepends=(
 source=("git+https://github.com/flacon/flacon.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
-prepare() {
-  cd "${srcdir}/flacon"
-  [[ -d build ]] || mkdir build
-}
-
 build() {
-  cd "${srcdir}/flacon/build" #-Wno-dev
-  cmake ..  \
-    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-    -DCMAKE_INSTALL_PREFIX=/usr
+  cmake -B build -S "flacon" -Wno-dev \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DUSE_QT6=ON \
+    -DUSE_QT5=OFF
 
-    make
+  cmake --build build
 }
 
-check() {
-  cd "${srcdir}/flacon/build"
-  #ctest --output-on-failure
-}
+#check() {
+#  ctest --test-dir build --output-on-failure
+#}
 
 package() {
-  cd "${srcdir}/flacon/build"
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install build
 }
