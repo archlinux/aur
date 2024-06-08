@@ -1,0 +1,10 @@
+*.tar.*
+*.orig
+*.rej
+*.swp
+*.part
+src
+pkg
+doom_ascii
+LICENSE
+README.md
