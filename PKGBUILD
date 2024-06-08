@@ -8,7 +8,7 @@ url="https://github.com/alexbatalov/fallout2-ce"
 license=('custom:SUL')
 depends=('sdl2')
 source=("${_gitname}-${pkgver}.tar.gz::https://github.com/alexbatalov/${_gitname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7ae550f10dfd5319128d5276509da870f0651ee69f4216502e75cb35035866c8')
+sha256sums=('2fcb58dd77eb025ac7a0a8f36699241e2303f9a7078ba563a3bfd424cbeb804a')
 
 
 build() {
