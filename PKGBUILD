@@ -1,20 +1,27 @@
-# Maintainer: Stuart Mumford <stuart@cadair.com>
+# Contributor: Stuart Mumford <stuart@cadair.com>
+
 pkgname=python-drms
-_module_name=drms
-pkgver=0.6.2
+_name=drms
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="The drms module provides an easy-to-use interface for accessing HMI, AIA and MDI data with Python."
 arch=(any)
-url="http://sunpy.org"
-license=('MIT')
-depends=('python-numpy' 'python-six' 'python-pandas')
-source=("https://pypi.io/packages/source/d/${_module_name}/${_module_name}-${pkgver}.tar.gz")
-sha256sums=('21df2b3caf2aabbd601e7e432a7122ecba74f351856dc16d194faff3d565b7da')
+url="https://github.com/sunpy/drms"
+license=('BSD-2-Clause')
+depends=('python-oldest-supported-numpy' 'python-six' 'python-pandas')
+makedepends=(python-build python-installer python-wheel python-setuptools-scm)
+source=(${_name}-${pkgver}.tar.gz::https://github.com/sunpy/drms/archive/refs/tags/v${pkgver}.tar.gz)
+sha256sums=('3e83ca890abea825875812fe0e17455bc953bd127c73eef605cc22d08cc72f12')
+
+
+build() {
+    cd $_name-$pkgver
+    python -m build --wheel --no-isolation
+}
 
 package() {
-  cd "$srcdir/${_module_name}-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
-  install -D -m644 LICENSE.rst ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+    cd $_name-$pkgver
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
 # vim:set ts=2 sw=2 et:
