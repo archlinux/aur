@@ -3,17 +3,25 @@
 _name=blink
 _pkgname=blink-qt
 pkgname=blink-git
-pkgver=5.5.1.r1544.aa2432b
+pkgver=5.6.0.r1580.19f1c2b
 pkgrel=1
 pkgdesc='Fully featured, easy to use SIP client with a Qt based UI'
 arch=('aarch64' 'x86_64')
 url='https://icanblink.com'
 license=('GPL-3+')
+makedepends=(
+  'cython0'
+  'git'
+  'python-build'
+  'python-installer'
+  'python-wheel'
+  )
 depends=(
   'icu'
   'libvncserver'
   'python-application'
   'python-eventlib'
+  'python-formencode'
   'python-gevent'
   'python-gmpy2'
   'python-google-api-python-client'
@@ -26,7 +34,6 @@ depends=(
   'python-requests'
   'python-service-identity'
   'python-sipsimple'
-  'python-formencode'
   'python-sqlobject'
   'python-twisted'
   'python-zope-interface'
@@ -34,6 +41,7 @@ depends=(
   'qt5-webkit'
   )
 conflicts=(blink)
+provides=(blink)
 optdepends=('x11vnc: for screen sharing')
 source=("${pkgname}::git+https://github.com/AGProjects/${_pkgname}.git")
 noextract=()
@@ -49,12 +57,12 @@ pkgver() {
 
 build() {
   cd "${pkgname}"
-  python3 setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${pkgname}"
-  python3 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   # license
   install -Dm644 LICENSE \
