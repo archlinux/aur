@@ -4,8 +4,8 @@
 # Contributor: Eric Waller <ewwaller@gmail.com>
 
 pkgname=basic256
-pkgver=2.0.0.11
-pkgrel=3
+pkgver=2.0.99.10
+pkgrel=1
 pkgdesc="Educational BASIC programming environment"
 arch=('i686' 'x86_64')
 url="http://www.basic256.org/"
@@ -14,7 +14,7 @@ depends=('qt5-multimedia' 'qt5-serialport' 'espeak')
 makedepends=('bison' 'flex')
 source=(http://downloads.sourceforge.net/kidbasic/${pkgname}_${pkgver}.orig.tar.gz
         "basic256.desktop")
-sha256sums=('58a3d01afb800d2ca89bedf970afc376beb273420ef824a1d0962c654f157584'
+sha256sums=('cceb8447dd64b778080c7cf7e995105f4890b94c774374f62c72cab86cfd11be'
             '601fe0147cc4b394e2c01afa20e371f7dffc9e7787ce9360ae0332545f6e62ec')
 
 build () {
@@ -26,7 +26,7 @@ build () {
 package () {
         cd "$srcdir/${pkgname}-${pkgver}"
 	install -m 755 -D basic256 "${pkgdir}/usr/bin/basic256"
-	install -m 755 -D Examples/basic256_icon.png "${pkgdir}/usr/share/icons/basic256.png"
+	install -m 755 -D "$srcdir/$pkgname-$pkgver/resources/icons/basic256.png" "${pkgdir}/usr/share/icons/basic256.png"
 	install -m 755 -D "$srcdir/basic256.desktop" "${pkgdir}/usr/share/applications/basic256.desktop"
 	mkdir -p "${pkgdir}/usr/share/basic256/examples"
 	cp -pr Examples/* "${pkgdir}/usr/share/basic256/examples"
