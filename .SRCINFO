@@ -1,5 +1,5 @@
 pkgbase = zonylrctoolsx-bin
-	pkgdesc = A command tools to download lyric (.lrc) files from online music services.
+	pkgdesc = A command line tool to download lyric (.lrc) files for local songs from online music services.
 	pkgver = 2023122272
 	pkgrel = 1
 	url = https://github.com/real-zony/ZonyLrcToolsX
