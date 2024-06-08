@@ -1,13 +1,14 @@
 pkgbase = frankenphp
 	pkgdesc = FrankenPHP: Modern app server for PHP
-	pkgver = 1.1.5
-	pkgrel = 3
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://github.com/dunglas/frankenphp
 	arch = x86_64
 	license = MIT
 	makedepends = php-embed
 	makedepends = go
-	source = https://github.com/dunglas/frankenphp/archive/refs/tags/v1.1.5/frankenphp.tar.gz
-	sha256sums = 9fb37c90a6019de9ecdec25e6a0c37d93e60a2bd03eb8a0a20994c2c6606196b
+	source = frankenphp-1.2.0.tar.gz::https://github.com/dunglas/frankenphp/archive/refs/tags/v1.2.0/frankenphp.tar.gz
+	sha256sums = f862a89b56fa96fc63adb80896579f609965516850504c26d695943925647853
 
 pkgname = frankenphp
+
