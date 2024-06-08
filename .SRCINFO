@@ -1,6 +1,6 @@
 pkgbase = nulloy
 	pkgdesc = Music player with a waveform progress bar
-	pkgver = 0.9.8.7
+	pkgver = 0.9.9
 	pkgrel = 1
 	url = http://nulloy.com/
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = nulloy
 	makedepends = zip
 	depends = gcc-libs
 	depends = glib2
+	depends = glibc
 	depends = gst-plugins-base
 	depends = gst-plugins-base-libs
 	depends = gst-plugins-good
@@ -26,7 +27,7 @@ pkgbase = nulloy
 	depends = zlib
 	optdepends = gst-plugins-bad: additional codecs
 	optdepends = gst-plugins-ugly: additional codecs
-	source = https://github.com/nulloy/nulloy/releases/download/0.9.8.7/nulloy-0.9.8.7.tar.gz
-	sha256sums = b524cf137125a2466099567d037362fd638494e4920dcbad381dc8957dcb1843
+	source = https://github.com/nulloy/nulloy/releases/download/0.9.9/nulloy-0.9.9.tar.gz
+	sha256sums = f0b949ddce47972bf7a33d5bbc7458ca327a68bd83757dbeeb52a63436cf0537
 
 pkgname = nulloy
