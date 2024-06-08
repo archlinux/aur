@@ -1,0 +1,26 @@
+pkgbase = hyprmag-git
+	pkgdesc = A wlroots-compatible Wayland color picker that does not suck
+	pkgver = 2.0.0.r0.37b7e18
+	pkgrel = 1
+	url = https://github.com/SIMULATAN/hyprmag
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = cmake
+	makedepends = gdb
+	makedepends = git
+	makedepends = libglvnd
+	makedepends = libjpeg-turbo
+	makedepends = pango
+	makedepends = wayland-protocols
+	makedepends = xorgproto
+	depends = cairo
+	depends = gcc-libs
+	depends = glibc
+	depends = libxkbcommon
+	depends = wayland
+	provides = hyprmag=2.0.0
+	conflicts = hyprmag
+	source = git+https://github.com/SIMULATAN/hyprmag.git
+	b2sums = SKIP
+
+pkgname = hyprmag-git
