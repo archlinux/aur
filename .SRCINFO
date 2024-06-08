@@ -1,4 +1,4 @@
-pkgbase = arm-linux-gnueabihf-gcc14-linaro-linaro-name-bin
+pkgbase = arm-linux-gnueabihf-linaro-bin
 	pkgdesc = The GNU Compiler Collection- cross compiler and binutils for ARMv7 EABI hard float target (Linaro)
 	pkgver = 14.0
 	pkgrel = 0
@@ -19,4 +19,4 @@ pkgbase = arm-linux-gnueabihf-gcc14-linaro-linaro-name-bin
 	source = https://snapshots.linaro.org/gnu-toolchain/14.0-2023.06-1/arm-linux-gnueabihf/gcc-linaro-14.0.0-2023.06-x86_64_arm-linux-gnueabihf.tar.xz
 	sha512sums = 01da0d432c71298fb822515337ede72238644760fd0a414c2a22aa365ebcce9db87b85b503440bbbdb48a53705a4d9d62cf837aca626a02660dbd0118f60e0d3
 
-pkgname = arm-linux-gnueabihf-gcc14-linaro-linaro-name-bin
+pkgname = arm-linux-gnueabihf-linaro-bin

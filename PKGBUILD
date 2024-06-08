@@ -4,14 +4,13 @@
 _target=arm-linux-gnueabihf
 _pkgdate=2023.06
 _pkgrev=1
-_binutils_name=binutils
 _compiler_name=gcc
 _compiler_supplier=linaro
 _compiler_version_major=14
 _compiler_version_minor=0
 _compiler_version_rel=0
 
-pkgname=${_target}-${_compiler_name}${_compiler_version_major}-${_compiler_supplier}-${_compiler_supplier}-${_binutils-name}-bin
+pkgname=${_target}-${_compiler_supplier}-bin
 pkgver=${_compiler_version_major}.${_compiler_version_minor}
 pkgrel=${_compiler_version_rel}
 epoch=
