@@ -1,0 +1,50 @@
+diff --git a/src/vs/code/node/cli.ts b/src/vs/code/node/cli.ts
+index 3b823317303..095fcd9e34d 100644
+--- a/src/vs/code/node/cli.ts
++++ b/src/vs/code/node/cli.ts
+@@ -45,7 +45,7 @@ export async function main(argv: string[]): Promise<any> {
+ 	let args: NativeParsedArgs;
+ 
+ 	try {
+-		args = parseCLIProcessArgv(argv);
++		args = parseCLIProcessArgv(argv.slice(Math.max(0, argv.findIndex(a => a.endsWith('/code.js')) - 1)));
+ 	} catch (err) {
+ 		console.error(err.message);
+ 		return;
+diff --git a/src/vs/platform/native/electron-main/nativeHostMainService.ts b/src/vs/platform/native/electron-main/nativeHostMainService.ts
+index af0e0cfe14c..aaa96fc1b56 100644
+--- a/src/vs/platform/native/electron-main/nativeHostMainService.ts
++++ b/src/vs/platform/native/electron-main/nativeHostMainService.ts
+@@ -498,31 +498,7 @@ export class NativeHostMainService extends Disposable implements INativeHostMain
+ 
+ 	@memoize
+ 	private get cliPath(): string {
+-
+-		// Windows
+-		if (isWindows) {
+-			if (this.environmentMainService.isBuilt) {
+-				return join(dirname(process.execPath), 'bin', `${this.productService.applicationName}.cmd`);
+-			}
+-
+-			return join(this.environmentMainService.appRoot, 'scripts', 'code-cli.bat');
+-		}
+-
+-		// Linux
+-		if (isLinux) {
+-			if (this.environmentMainService.isBuilt) {
+-				return join(dirname(process.execPath), 'bin', `${this.productService.applicationName}`);
+-			}
+-
+-			return join(this.environmentMainService.appRoot, 'scripts', 'code-cli.sh');
+-		}
+-
+-		// macOS
+-		if (this.environmentMainService.isBuilt) {
+-			return join(this.environmentMainService.appRoot, 'bin', 'code');
+-		}
+-
+-		return join(this.environmentMainService.appRoot, 'scripts', 'code-cli.sh');
++		return '/usr/bin/code';
+ 	}
+ 
+ 	async getOSStatistics(): Promise<IOSStatistics> {
