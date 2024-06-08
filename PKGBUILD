@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ChAMP
-_pkgver=2.32.0
+_pkgver=2.34.0
 pkgname=r-${_pkgname,,}
-pkgver=2.32.0
+pkgver=2.34.0
 pkgrel=1
 pkgdesc='Chip Analysis Methylation Pipeline for Illumina HumanMethylation450 and EPIC'
 arch=('any')
@@ -56,7 +56,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('674ab945c0d294e925cfae6cc892a4a33f2bfde99894019969cef545466facbd')
+sha256sums=('fbb0ac0878577a5a31954aec2621b4b6f0b6455492b370323e77d5057d1a051b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
