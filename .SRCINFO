@@ -1,0 +1,16 @@
+pkgbase = tui-slides-git
+	pkgdesc = Terminal presentation utility with a modern TUI (git)
+	pkgver = r14.7af28c9
+	pkgrel = 1
+	url = https://github.com/Chleba/tui-slides
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = tui-slides
+	conflicts = tui-slides
+	source = git+https://github.com/Chleba/tui-slides
+	sha512sums = SKIP
+
+pkgname = tui-slides-git
