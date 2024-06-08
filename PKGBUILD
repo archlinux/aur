@@ -1,7 +1,7 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=mergerfs-git
-pkgver=2.36.0.r0.g7a86ed6
+pkgver=2.40.2.r0.g42d0b57
 pkgrel=1
 pkgdesc='Featureful union filesystem'
 arch=(x86_64)
@@ -20,7 +20,7 @@ pkgver() {
 }
 
 prepare() {
-  sed -i 's|^\(VERSION=\).*|\1"'$pkgver'"|' $pkgname/tools/update-version
+  sed -i 's|^\(VERSION=\).*|\1"'$pkgver'"|' $pkgname/buildtools/update-version
 }
 
 build() {
@@ -28,6 +28,6 @@ build() {
 }
 
 package() {
-  install -Dm644 $pkgname/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 $pkgname/LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
   make -C $pkgname DESTDIR="$pkgdir" PREFIX=/usr SBINDIR=/usr/bin install
 }
