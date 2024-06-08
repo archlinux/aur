@@ -6,7 +6,7 @@
 
 pkgname=chatterino2
 pkgver=2.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Second installment of the Twitch chat client series "Chatterino"'
 arch=('x86_64')
 url=https://chatterino.com
@@ -62,6 +62,7 @@ prepare() {
 
 build() {
     cmake -S "${pkgname}" -B build --fresh \
+        -DCMAKE_CXX_FLAGS="${CXXFLAGS} -DNDEBUG" \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DUSE_SYSTEM_QTKEYCHAIN=ON \
         -DBUILD_TESTS=ON \
