@@ -2,7 +2,7 @@
 # Contributor: Alfonso Saavedra "Son Link" <sonlink.dourden@gmail.com>
 
 pkgname=zesarux
-pkgver=X
+pkgver=11.0
 pkgrel=1
 epoch=1
 pkgdesc="A Zx80/Zx81/Z88, Zx Spectrum 16/48/128/+2/+2A and ZX-Uno emulator with ULAPlus support"
@@ -18,7 +18,7 @@ source=("https://github.com/chernandezba/zesarux/releases/download/ZEsarUX-${pkg
 	zesarux.desktop
 	zesarux.png)
 install="zesarux.install"
-sha256sums=('1c01520e55a85a114bbf6553cffb9f25e781ac8de3d1db89f2f59396cc6c4124'
+sha256sums=('cd8bd12d9548199c1c9a7fd2ed2a73c780268d5d684fa7add8c987a2b35d18cf'
             'a2b56a0349c52dc3826094cd587cc775033f4e206f4dafa4345b509c548736e1'
             'e11be8695f0f75ac2ad5c32e225a3a7aca35ca97b4d1f04726bda476aa460eb5')
 
