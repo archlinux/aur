@@ -1,0 +1,16 @@
+pkgbase = zrepl-git
+	pkgdesc = One-stop ZFS backup & replication solution
+	pkgver = 0.6.1.r15.g9c63736
+	pkgrel = 1
+	url = https://github.com/zrepl/zrepl
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = zrepl=0.6.1
+	conflicts = zrepl
+	source = zrepl::git+https://github.com/zrepl/zrepl.git
+	sha256sums = SKIP
+
+pkgname = zrepl-git
