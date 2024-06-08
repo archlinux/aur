@@ -8,9 +8,13 @@
 pkgname='mlmmj'
 pkgver=1.4.6
 _pkgver=1_4_6
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple and slim mailing list manager (MLM) inspired by ezmlm'
 depends=('bash' 'glibc' 'smtp-server')
+optdepends=(
+  'perl: for running some of the contributed scripts'
+  'python: for running some of the contributed scripts'
+)
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 #url='http://mlmmj.org/'
 url='https://codeberg.org/mlmmj/mlmmj'
@@ -23,6 +27,7 @@ source=(
 )
 options=('lto')
 changelog="$pkgname.changelog"
+install="$pkgname.install"
 
 build() {
   cd "$pkgname-$pkgver"
@@ -51,6 +56,8 @@ package() {
 
   install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
     ChangeLog FAQ README.* TODO TUNABLES.md UPGRADE
+
+  cp -vfa contrib "$pkgdir/usr/share/doc/$pkgname/"
 
   install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
     AUTHORS COPYING LICENSE

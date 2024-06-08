@@ -1,0 +1,15 @@
+#!/bin/sh
+
+post_install() {
+  cat <<EOF
+# Please notice that some of the contributed programs found in
+# /usr/share/doc/mlmmj/ may have different licensings than the
+# mlmmj suite proper.
+EOF
+}
+
+post_upgrade() {
+  post_install "$@"
+}
+
+# eof
