@@ -1,0 +1,5 @@
+[python-torchquad]
+source = "github"
+github = "esa/torchquad"
+use_latest_release = "true"
+prefix = "v"
