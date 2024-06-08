@@ -1,6 +1,6 @@
 pkgbase = cargo-compete
 	pkgdesc = Cargo subcommand for competitive programming
-	pkgver = 0.10.6
+	pkgver = 0.10.7
 	pkgrel = 1
 	url = https://github.com/qryxip/cargo-compete
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = cargo-compete
 	depends = openssl
 	depends = zlib
 	options = !lto
-	source = cargo-compete-0.10.6.tar.gz::https://github.com/qryxip/cargo-compete/archive/v0.10.6.tar.gz
-	sha512sums = 6ea52a2fa24ca433307ea1d5224554ba8d07935c7857ab08536841b0466658d89bd6151829b1a65ef5b534a1e4a8ad08966c175316c4ffd0edaed36c51d8fcba
+	source = cargo-compete-0.10.7.tar.gz::https://github.com/qryxip/cargo-compete/archive/v0.10.7.tar.gz
+	sha512sums = 2f0bb7e01c12b3f6d2ef0b69f1cfb52fb90b854876684bfcf69bc307addd3203adfd0cdfc1601b185bdeb10b61886543c4e3384dfdbcd8cb24b0bd14c4bc4332
 
 pkgname = cargo-compete
