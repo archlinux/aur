@@ -2,7 +2,7 @@
 # Contributor: Stephanie Wilde-Hobbs <hi@stephanie.is>
 
 pkgname=megacmd
-pkgver=1.6.3
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="MEGA Command Line Interactive and Scriptable Application"
 url="https://github.com/meganz/MEGAcmd"
@@ -11,14 +11,14 @@ license=('custom')
 depends=('crypto++' 'sqlite' 'c-ares' 'ffmpeg' 'freeimage'
          'libsodium' 'libmediainfo' 'pcre' 'libuv')
 makedepends=('git' 'autoconf')
-_sdkhash="965e4c7cd518d48c5b2fbf0084a244fdecc44b35"
+_sdkhash="e231d30c40bd4ebd1fdd9a3f20b1cda9641e0203"
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/meganz/MEGAcmd/archive/${pkgver}_Linux.tar.gz"
     "mega-sdk-${_sdkhash}.tar.gz::https://github.com/meganz/sdk/archive/${_sdkhash}.tar.gz"
     "fix-ffmpeg-compile.patch")
-sha512sums=('425584a1350e5965aea8a09076bb447b4d6a00fc0305e9a19ad91ed8292eae5b758e4c1a41ea7c0887c2f8e0644cf1d1154e3b33503ddcf4713e4a13dd80a6f6'
-            '97158dee4c8f2075124d576c67780d6cffa9f39713730d1c99adeb6632b6953bb3867e09eaa1c9babbe0c5aa83029ceb581dd930b5c884b396512f56240f37f7'
-            'cb29bd8be1aacd5b5de6c433a8857711b1bbce1e6e64cbb891d7ea1957f81d56070dda672b59dc3c7fff4472b0e891f4a461e336251d68dff36989aec85642b6')
+sha512sums=('9e29a318d062a7d01d2a7e7e7655ef3adf079f2ff64c2eee3c035816821f9c981411f3676c8749a6fc51c44fad06a1428b1db0d6b61f32be5e222553bd9bb0dd'
+            '58c07d7c73b309bd187534068d18e2c91d2b2be8aa7ed0192f2b978ae1124461ac207736418f416994a7b2e029e00c1457f0755c4125d8dbfa830e6965522e30'
+            'e843e40f72c69b05669478f13b092c115e37505692df1e781724f4466fc56b2339aa44470dbaec16c1cb06816fc779c08f57037cf8bfcf6d8aa966e00c3bf013')
 
 prepare() {
   cd "MEGAcmd-${pkgver}_Linux"
