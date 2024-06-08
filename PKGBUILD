@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc='A simple CI engine with great extensibility (agent), patched to use sudo to run local pipelines'
 arch=('x86_64')
 url='https://woodpecker-ci.org'
-license=('Apache')
+license=('Apache-2.0')
 depends=('glibc' 'sudo')
 optdepends=(
   'docker: Docker backend'
@@ -22,7 +22,7 @@ replaces=($_pkgname)
 conflicts=($_pkgname)
 backup=('etc/woodpecker/agent.env')
 source=(
-  "woodpecker::git+https://github.com/woodpecker-ci/woodpecker#commit=$_commit"
+  "woodpecker::git+https://github.com/woodpecker-ci/woodpecker#tag=v$pkgver"
   'agent-systemd.service'
   'agent-sysusers.conf'
   'agent-tmpfiles.conf'
@@ -30,19 +30,20 @@ source=(
   'sudo.patch'
   'sudoers'
 )
-b2sums=('SKIP'
+sha256sums=('8f980669822f823cc5ad08f834f9409430b3715de857ea9b18be810d383971db'
+            'c56ef62bb7491a4d53e10a4e3982be3ed4cd5c584b0566d5f8aff997f148193e'
+            'ede32e192f1647b618c62ddbd42a549d5203f871e422086d6bace51eaab86be4'
+            '61a8e9494a7dfbe466bf6ac3ca4be4caebdf824ed4aff0718aadd48801e5f3b6'
+            'cf84eb651a1d22641dfc8a66dac997e675d7d1d0740f2af1803124b4ab7b3a31'
+            'b39d691c64df9daf265c0d3425b841e74ddac5dccc1907ee9cb21399627db18c'
+            'bd6e946875cdbcd058aa173534ceebb1657ae7f8476f5b1c951ab1602096bd55')
+b2sums=('27c486a8baf61d7b561ff432bba9f451044a63bdb7095ae043df1faa2756ef3bf5e7cbfbb0912b1a323623486b6e276dfe55ee2ed1b6650835843df49c18c5e7'
         '6f5833c1d4db8f287f5a9877687fb0d8d66c91e80e9bbb0a78910f315e6dd4cba01131dfca20bcceaeb828833187ee6161b33272050967e3e1cea4cb2665cf57'
         '373a5889c899445c4b583a48e6d0ff67d4572e30e0dfd0842b389e9338712771ec053ee3771202fe2874ee8bbfb7cb5965a04cf10d4071100c4f7c89cf2a14f3'
         'b6479a7f3b3cf1ecaf0fc4e0653de10176af29b780ff716bf038077d70b0440e45a649ccd5ad9a12d5f52c9eecf9b5d8b5a01510a53eec7b664162c8bb9153ab'
         '9d64fa22d5fcfb8634926220aeb89b0fa914d8e04ee39fe14abf3f170292ab2dc875fe3fe14b054ca8173c167cec4d93518d15d5f08698bd70d86dec7728dee8'
         '1e586f4ef03c0928a9371c24c222b3dbe08cf11fd3ea912eff86103085faf04b5c19391d16bfb6d5ec67e5cb5556485825b3bee8124359bbaa89c6e6ea3357b8'
         '86cbff1c5554c4426b3de872696cae6eed093987ccec940283e340e6cc23d226d268b38f0843b19d2706167f13ac4e20d9340f47ce5dc8ad3cbdb80d501c4fc4')
-
-pkgver() {
-  cd woodpecker
-
-  git describe --tags | sed 's/^v//'
-}
 
 prepare() {
   cd woodpecker
