@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=oligo
-_pkgver=1.68.1
+_pkgver=1.68.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -45,8 +45,8 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3644a5338715b6359e56c51b1ef4b33e')
-b2sums=('7ddb336bdfd2b330c88f4cba379b73e5dca87f1e97d4643350243c1df4b07f81b8ff3503b0072394ed63bd12378a9508b9e603f2e5b87798f4528a3c9aba5aa9')
+md5sums=('e492eca257a1dd6945d05816833cf617')
+b2sums=('367d4ff12bef4dee4fbc9c92c96ec299df46f11e7467c0f29fd7a695e1a841bc9a3021a7c9987223986d262085579615621a8e9612f0de3c16f71814bc1c11e9')
 
 build() {
   mkdir build
