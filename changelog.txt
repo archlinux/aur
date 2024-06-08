@@ -1,7 +1,2 @@
-v0.311.3:
-MN 版調整「薩」。
-CL 版無變化。
-
-v0.311.2:
-MN 版調整「函」部件：函涵崡菡。
-CL 版無變化。
+新增一些漢字，[詳情按此查看](https://github.com/lxgw/LxgwZhiSong/blob/main/documentation/changelog/20240606.md)。
+調整以下漢字：詼靱鞴。
