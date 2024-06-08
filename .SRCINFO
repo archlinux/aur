@@ -7,6 +7,7 @@ pkgbase = arm-linux-gnueabihf-gcc14-linaro-bin
 	groups = arm-linux-gnueabihf-toolchain-linaro-bin
 	license = GPL
 	license = LGPL
+	provides = arm-linux-gnueabihf-gcc
 	conflicts = arm-linux-gnueabihf-gcc
 	replaces = arm-linux-gnueabihf-gcc
 	options = !emptydirs
