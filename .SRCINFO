@@ -1,10 +1,10 @@
 pkgbase = python-pywwt
 	pkgdesc = Python interface to the Windows and Web client of WorldWide Telescope
-	pkgver = 0.22.0
+	pkgver = 0.24.1
 	pkgrel = 1
 	url = https://github.com/WorldWideTelescope/pywwt
 	arch = any
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
@@ -20,7 +20,7 @@ pkgbase = python-pywwt
 	depends = python-flask
 	depends = python-six
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/p/pywwt/pywwt-0.22.0.tar.gz
-	sha256sums = af9a609692e2d4422db3c80ab50fc2fbbf1b7821e32b1a76535a9727de82b475
+	source = https://files.pythonhosted.org/packages/source/p/pywwt/pywwt-0.24.1.tar.gz
+	sha256sums = 658efbc6d1af15630473a1d0b6b1ffa28c25afe7399ac5b0d2aff564817f43fa
 
 pkgname = python-pywwt
