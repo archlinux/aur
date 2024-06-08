@@ -1,10 +1,11 @@
 pkgbase = ssldump
 	pkgdesc = SSLv3/TLS network protocol analyzer
 	pkgver = 1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/adulau/ssldump
 	arch = x86_64
 	license = BSD
+	makedepends = cmake
 	makedepends = ninja
 	depends = json-c
 	depends = libnet
