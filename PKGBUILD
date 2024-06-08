@@ -3,9 +3,9 @@
 # Contributor: frousties
 
 pkgname=tacentview
-pkgver=1.0.43
-_commit=bbb47e69561a11a3efcfd0582653495dc59d52a6
-pkgrel=4
+pkgver=1.0.44
+_commit=43f3dbbe06d14736fd8a4673fa30703402777089
+pkgrel=1
 pkgdesc="Image viewer/editor for tga, png, apng, exr, dds, pvr, ktx, ktx2, astc, pkm, qoi, gif, hdr, jpg, tif, ico, webp, and bmp files"
 url="https://github.com/bluescan/tacentview"
 license=('ISC')
