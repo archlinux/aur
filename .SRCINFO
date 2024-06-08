@@ -19,8 +19,8 @@ pkgbase = ffplayout
 	conflicts = ffplayout-unstable-git
 	replaces = ffplayout-git
 	replaces = ffplayout-unstable-git
-	backup = etc/ffplayout/{ffplayout.toml,advanced.toml}
-	backup = etc/ffplayout/channel*
+	backup = etc/ffplayout/ffplayout.toml
+	backup = etc/ffplayout/advanced.toml
 	source = ffplayout-0.23.1::git+https://github.com/ffplayout/ffplayout.git#tag=v0.23.1
 	source = ffplayout.install
 	sha256sums = SKIP
