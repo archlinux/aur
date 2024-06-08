@@ -1,7 +1,7 @@
 # Maintainer: Conor Burns <mail@conor-burns.com>
 
 pkgname=pog-appimage
-pkgver=1.2.5
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="A Kmk firmware flashing and configuration tool"
 arch=('x86_64')
@@ -11,7 +11,7 @@ options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://github.com/JanLunge/pog/releases/download/v${pkgver}/pog-${pkgver}-x86_64.AppImage")
 noextract=("${_appimage}")
-sha512sums_x86_64=('6703e0f54375fd3893d9b6eaca7c1f800869b0eb9d81cebfab17ee0948840063c7162639529161c04a9d0a42a470befc0d033b4debaa68214da1d22a7245bae4')
+sha512sums_x86_64=('aecf1b83956db61e9895931ca6996c5a1117441b7c860d0349545950f30765719c49781392c28050c9c5025ab7a965b3d4d21486390666b5ba2bcee095067221')
 
 prepare() {
     chmod +x "${_appimage}"
