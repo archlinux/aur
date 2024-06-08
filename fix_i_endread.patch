@@ -1,0 +1,11 @@
+--- a/i_video.h
++++ b/i_video.h
+@@ -136,6 +136,8 @@
+ 
+ void I_EnableLoadingDisk(void);
+ 
++void I_EndRead(void);
++
+ extern char *video_driver;
+ extern bool screenvisible;
+ 

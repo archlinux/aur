@@ -1,7 +1,7 @@
 pkgbase = doom_ascii
 	pkgdesc = Text-based DOOM in your terminal! Source-port of doomgeneric. Does not have sound.
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wojciech-graj/doom-ascii
 	arch = any
 	license = GPL-2.0-or-later
@@ -9,7 +9,9 @@ pkgbase = doom_ascii
 	makedepends = gcc
 	source = doom-ascii-0.1.1.tar.gz::https://github.com/wojciech-graj/doom-ascii/archive/refs/tags/v0.1.1.tar.gz
 	source = doom_ascii.sh
+	source = fix_i_endread.patch
 	sha256sums = 34c4116d687cac91dc1e23bd580a6211ff490bcbbf85d6f00df0f4fe1fa886e6
 	sha256sums = 27864d019900aa0728c95d77e70dfd94869e44a65e6657ef04110c5f5c1cc202
+	sha256sums = c1bb903467e5c012662e77ff4b9347c7fb6c966a1798e2af5400d0318b5a78e4
 
 pkgname = doom_ascii
