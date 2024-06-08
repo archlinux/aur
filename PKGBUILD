@@ -1,9 +1,9 @@
 # Maintainer: tytan652 <tytan652 at tytanium dot xyz>
 
 pkgname=obs-studio-rc
-_pkgver=30.1.2
+_pkgver=30.2.0-beta1
 pkgver=${_pkgver//-/_}
-pkgrel=3
+pkgrel=1
 epoch=8
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
@@ -21,7 +21,6 @@ depends=(
   "ffmpeg-obs>=6" # Deps of OBS Studio and FFmpeg plugin
   "fontconfig" # Deps of Freetype2 plugin
   "freetype2" # Deps of Freetype2 plugin
-  "ftl-sdk" # Deps of Outputs plugin
   "gcc-libs" # Deps of any C++ related binary
   "glib2" # Deps of libobs, PipeWire plugin and CEF
   "glibc" # Deps of any C related binary
@@ -114,17 +113,15 @@ source=(
   "obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=$_pkgver"
   "obs-browser::git+https://github.com/obsproject/obs-browser.git"
   "obs-websocket::git+https://github.com/obsproject/obs-websocket.git"
-  "0001-Add_finder_for_uthash.patch"
-  "0002-Use_system_uthash.patch"
-  "0003-Update_to_libajantv2_17_legacy_path_only.patch"
+  "ftl-sdk::git+https://github.com/microsoft/ftl-sdk.git"
+  "supported-nv-codec-headers::git+https://github.com/FFmpeg/nv-codec-headers.git#tag=n12.1.14.0"
 )
 sha256sums=(
   "SKIP"
   "SKIP"
   "SKIP"
-  "f4a56021a7f1c564f95b588d7c09b60a89efa2c1954c8a418cf6320b5a818542"
-  "82b14439697b5c5947117afa1b973bad7ddd9ee2f09e5d1ac56a96d10e01c6b1"
-  "a7149e1d9a07270132cf8085d52225ed3200a78ea943cbf52d64b1b8f293e117"
+  "SKIP"
+  "SKIP"
 )
 
 if [[ $CARCH == 'x86_64' ]]; then
@@ -135,11 +132,8 @@ prepare() {
   cd "$srcdir/obs-studio"
   git config submodule.plugins/obs-browser.url $srcdir/obs-browser
   git config submodule.plugins/obs-websocket.url $srcdir/obs-websocket
+  git config submodule.plugins/obs-outputs/ftl-sdk.url $srcdir/ftl-sdk
   git -c protocol.file.allow=always submodule update
-
-  patch -Np1 -i "$srcdir/0001-Add_finder_for_uthash.patch"
-  patch -Np1 -i "$srcdir/0002-Use_system_uthash.patch"
-  patch -Np1 -i "$srcdir/0003-Update_to_libajantv2_17_legacy_path_only.patch"
 }
 
 build() {
@@ -147,17 +141,16 @@ build() {
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DENABLE_RTMPS=ON \
+    -DOBS_CMAKE_VERSION=3 \
     -DENABLE_LIBFDK=ON \
     -DENABLE_JACK=ON \
     -DENABLE_SNDIO=ON \
     -DENABLE_BROWSER=ON \
     -DCEF_ROOT_DIR=/opt/cef-obs \
-    -DCALM_DEPRECATION=ON \
+    -DOBS_COMPILE_DEPRECATION_AS_WARNING=ON \
     -Wno-dev \
-    -DOBS_VERSION_OVERRIDE="$_pkgver"
-#    -DRELEASE_CANDIDATE="$_pkgver"
-#    -DBETA="$_pkgver"
+    -DOBS_VERSION_OVERRIDE="$_pkgver" \
+    -DFFnvcodec_INCLUDE_DIR="${srcdir}/supported-nv-codec-headers/include"
 
   sed -i "s|OBS_VERSION =|OBS_VERSION = \"$_pkgver-rc-$pkgrel\"; //|" build/libobs/obsversion.c
 
