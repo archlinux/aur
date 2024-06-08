@@ -3,11 +3,11 @@
 pkgname=ngp-git
 pkgver=1.3.r201.gc15dc44
 pkgrel=1
-pkgdesc="Ncurses grep tool"
-arch=('x86_64')
-url="https://github.com/jonathanklee/ngp"
-license=('GPL')
-makedepends=('cmake' 'git' 'libconfig')
+pkgdesc='Ncurses grep tool'
+arch=(x86_64)
+url=https://github.com/jonathanklee/ngp
+license=(GPL-3.0-or-later)
+makedepends=(cmake git libconfig pcre)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")
