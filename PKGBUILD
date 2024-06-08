@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=liboqs
-pkgver=0.10.0
-pkgrel=2
+pkgver=0.10.1
+pkgrel=1
 epoch=1
 pkgdesc="C library for prototyping and experimenting with quantum-resistant cryptography"
 arch=(x86_64)
@@ -23,7 +23,7 @@ checkdepends=(
     python-yaml
 )
 source=($pkgname-$pkgver.tar.gz::https://github.com/open-quantum-safe/$pkgname/archive/refs/tags/$pkgver.tar.gz)
-b2sums=('6fda208f669f270b7c361a87c5b4d2bc59e3fac2d49a31c378650bc2b6a36a34e6627bf31785d5bbbb5609cc87ef280ff035c60961dfd3abe620035e88c9a433')
+b2sums=('7f5f59641734d9827323b116822bf0204c7390abcf3e899b638c9f2ee7acc2c79511bb53b91e8c5d1f6bf4c8b63191f8df8fef0054020d3a38f7af3ddf33c424')
 
 build() {
     cmake -G Ninja -B build -S $pkgname-$pkgver\
