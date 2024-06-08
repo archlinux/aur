@@ -12,7 +12,7 @@ pkgbase = anki-qt5
 	makedepends = cargo
 	makedepends = python-installer
 	makedepends = python-wheel
-	makedepends = nodejs>=18
+	makedepends = nodejs>=20
 	makedepends = yarn
 	makedepends = mold
 	depends = python>=3.9
