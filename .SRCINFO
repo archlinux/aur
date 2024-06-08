@@ -1,0 +1,17 @@
+pkgbase = auralquiz
+	pkgdesc = Quiz game about your music.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/auralquiz/auralquiz-dev
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = qt5-base
+	makedepends = make
+	makedepends = git
+	makedepends = gcc
+	makedepends = taglib
+	depends = phonon-qt5-vlc
+	source = auralquiz-1.0.0.tar.gz::https://gitlab.com/auralquiz/auralquiz-dev/-/archive/1.0.0/auralquiz-dev-1.0.0.tar.gz
+	sha512sums = 49bc50052c93a4b43cab928346d9837dedd5f450fbed6d84d7b781e0d1928012f64fd4b2bcbbc891b0d235711fd6d3952238da719412a7c1b21de7fb188a37db
+
+pkgname = auralquiz
