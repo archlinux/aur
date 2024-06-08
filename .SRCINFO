@@ -1,0 +1,32 @@
+pkgbase = python-luna-usb-git
+	pkgdesc = Amaranth HDL framework for monitoring, hacking, and developing USB devices
+	pkgver = r875.640da58
+	pkgrel = 1
+	url = https://github.com/greatscottgadgets/luna
+	arch = any
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-pyproject-patcher
+	makedepends = python-setuptools
+	makedepends = python-setuptools-git-versioning
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = python-wheel
+	depends = python
+	depends = python-amaranth
+	depends = python-apollo
+	depends = python-pyserial
+	depends = python-pyusb
+	depends = python-pyvcd
+	depends = python-usb-protocol
+	optdepends = python-cynthion: connect to Cynthion hardware
+	optdepends = python-libusb1: to use the bulk_speed_test applet
+	optdepends = python-luna-boards: connect to Luna boards
+	optdepends = python-prompt_toolkit: to use the included applets
+	provides = python-luna-usb=r875.640da58
+	source = luna-usb::git+https://github.com/greatscottgadgets/luna.git
+	sha512sums = SKIP
+
+pkgname = python-luna-usb-git

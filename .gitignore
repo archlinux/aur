@@ -1,0 +1,7 @@
+/.vscode/
+/luna-usb/
+/src/
+/pkg/
+*.log
+*.pkg.*
+*.tar.*
