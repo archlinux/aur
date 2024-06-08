@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=ncurses-git
-pkgver=6.4.20230918.r0.g77bbdcdc
+pkgver=6.5.20240601.r0.ga09f7429
 pkgrel=1
 pkgdesc="Screen handling and optimization package"
 arch=('i686' 'x86_64')
@@ -25,6 +25,8 @@ pkgver() {
 build() {
   cd "ncurses-snapshots"
 
+  CFLAGS="$CFLAGS -ffat-lto-objects" \
+  CXXFLAGS="$CXXFLAGS -ffat-lto-objects" \
   ./configure \
     --prefix="/usr" \
     --mandir="/usr/share/man" \
