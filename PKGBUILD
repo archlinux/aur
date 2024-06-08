@@ -4,7 +4,7 @@
 pkgname=fallout2-ce-game
 _gitname=fallout2-ce
 pkgver=1.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Fallout 2 for modern operating systems"
 arch=('x86_64')
 url="https://github.com/alexbatalov/fallout2-ce"
