@@ -1,7 +1,7 @@
 pkgbase = woff2-git
 	pkgdesc = Web Open Font Format 2 reference implementation
-	pkgver = 1.0.2.r4.ga0d0ed7
-	pkgrel = 1
+	pkgver = 1.0.2.r8.g0f4d304
+	pkgrel = 2
 	url = https://github.com/google/woff2
 	arch = x86_64
 	arch = i686
@@ -9,15 +9,17 @@ pkgbase = woff2-git
 	arch = armv6h
 	arch = armv7h
 	arch = aarch64
-	license = custom:MIT
+	license = MIT
 	makedepends = git
 	makedepends = cmake
 	makedepends = ninja
 	depends = brotli
 	provides = woff2
+	provides = libwoff2common.so
+	provides = libwoff2dec.so
+	provides = libwoff2enc.so
 	conflicts = woff2
 	source = woff2-git::git+https://github.com/google/woff2.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = woff2-git
-

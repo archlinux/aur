@@ -2,18 +2,18 @@
 # Contributor: Auguste Pop <auguste [at] gmail [dot] com>
 
 pkgname=woff2-git
-pkgver=1.0.2.r4.ga0d0ed7
-pkgrel=1
+pkgver=1.0.2.r8.g0f4d304
+pkgrel=2
 pkgdesc="Web Open Font Format 2 reference implementation"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://github.com/google/woff2"
-license=(custom:MIT)
+license=(MIT)
 depends=(brotli)
 makedepends=(git cmake ninja)
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=(woff2 libwoff2common.so libwoff2dec.so libwoff2enc.so)
+conflicts=(woff2)
 source=("${pkgname}::git+https://github.com/google/woff2.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
