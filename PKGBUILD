@@ -20,7 +20,7 @@ makedepends=(
 provides=('ffplayout')
 conflicts=('ffplayout' 'ffplayout-git')
 replaces=('ffplayout' 'ffplayout-git')
-backup=('etc/ffplayout/{ffplayout.toml,advanced.toml}' 'etc/ffplayout/channel*')
+backup=(etc/ffplayout/{ffplayout.toml,advanced.toml})
 install='ffplayout.install'
 
 source=(
