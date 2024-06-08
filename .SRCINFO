@@ -1,0 +1,37 @@
+pkgbase = ente-auth
+	pkgdesc = 2FA app with free end-to-end encrypted backup and sync
+	pkgver = 3.0.8
+	pkgrel = 1
+	url = https://ente.io/auth
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	makedepends = clang
+	makedepends = cmake
+	makedepends = fvm
+	makedepends = git
+	makedepends = ninja
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = libsecret
+	depends = libsodium
+	depends = sqlite
+	depends = webkit2gtk
+	source = git+https://github.com/ente-io/ente.git#tag=auth-v3.0.8
+	source = git+https://github.com/ente-io/sentry-dart.git
+	source = git+https://github.com/flutter/flutter.git
+	source = git+https://github.com/simple-icons/simple-icons.git
+	source = git+https://github.com/ente-io/clip-ggml.git
+	source = git+https://github.com/abhinavkgrd/ffmpeg.wasm.git
+	source = git+https://github.com/ente-io/PhotoSwipe.git
+	source = ente_auth.desktop
+	sha256sums = 8a8fe749d6cc6e0cf1f2b5d5be293e37f318c6971b5d446ee827cb8d6a6613a1
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 55bc5058368c60b521b9f183c6ac8a73ca6bafbf775399fb9a8c91bd67a3e246
+
+pkgname = ente-auth

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Auth
+GenericName=Ente Authentication
+Icon=ente_auth
+Exec=ente_auth %U
+MimeType=x-scheme-handler/ente;
+Categories=Utility;
+Keywords=Authentication;2FA;
+StartupNotify=false
