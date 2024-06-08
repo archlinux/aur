@@ -2,13 +2,13 @@
 
 pkgbase=protobuf-git
 pkgname=('protobuf-git' 'python-protobuf-git')
-pkgver=27.0.r285.g532f0c2ed
+pkgver=27.1.r305.g54d8f0397
 pkgrel=1
 pkgdesc="Google's data interchange format"
 arch=('i686' 'x86_64')
 url="https://developers.google.com/protocol-buffers/"
 license=('BSD-3-Clause')
-makedepends=('git' 'cmake' 'gtest' 'python-build' 'python-installer' 'python-wheel')
+makedepends=('git' 'cmake' 'gtest' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest' 'python-numpy')
 source=("git+https://github.com/protocolbuffers/protobuf.git")
 sha256sums=('SKIP')
