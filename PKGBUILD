@@ -9,10 +9,10 @@ url='https://github.com/tfkhdyt/urban-cli'
 license=('GPL3')
 depends=()
 source_x86_64=("${pkgname}-v${pkgver}-amd64.tar.gz::${url}/releases/download/v${pkgver}/urban-cli-v${pkgver}-linux-amd64.tar.gz")
-sha256sums_x86_64=('eece0dd3b33a3f42122dd0e59d41c29f009807fa388b1a004977d324017b178a')
+sha256sums_x86_64=('6f347ab089119b7f149dd4cddb1b7504ae0f382db6a7269fd31d9348cb08af50')
 
 source_aarch64=("${pkgname}-v${pkgver}-arm64.tar.gz::${url}/releases/download/v${pkgver}/urban-cli-v${pkgver}-linux-arm64.tar.gz")
-sha256sums_aarch64=('e5710cf23017ca6994db6334f687f4e38732e218039f81b2689feb1a634c0b97')
+sha256sums_aarch64=('e585efa4245bbe755a060077a9301dd4b149d4e40d1423434eecc880a1fa94f8')
 
 package() {
 	install -Dm755 urban-cli "${pkgdir}/usr/bin/urban-cli"
