@@ -2,7 +2,7 @@
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=alacenc
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Encode audio into the Apple Lossless Audio Codec (ALAC) format"
 arch=(x86_64)
