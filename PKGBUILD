@@ -10,6 +10,7 @@ arch=('x86_64')
 url="https://github.com/alexbatalov/fallout2-ce"
 license=('custom:SUL')
 depends=('sdl2')
+makedepends=('cmake' 'git')
 source=("${_gitname}-${pkgver}.tar.gz::https://github.com/alexbatalov/${_gitname}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('2fcb58dd77eb025ac7a0a8f36699241e2303f9a7078ba563a3bfd424cbeb804a')
 
