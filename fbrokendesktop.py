@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/bin/python3
 
 import argparse
 import glob
@@ -7,6 +7,7 @@ import shlex
 import shutil
 import subprocess
 import sys
+import os
 
 from typing import cast
 from os import path
@@ -54,7 +55,7 @@ def is_gapp_cmd(cmd_args: list[str]):
     )
 
 
-def find_missing_desktop_files(desktop_dir: str, show_all: bool):
+def find_missing_desktop_files(desktop_dir: str, show_hidden: bool):
     for df in glob.iglob("*.desktop", root_dir=desktop_dir):
         file_path = path.join(desktop_dir, df)
         de = DesktopEntry(file_path)
@@ -63,7 +64,7 @@ def find_missing_desktop_files(desktop_dir: str, show_all: bool):
             yield file_name
             continue
 
-        if show_all or not de.getNoDisplay():
+        if not de.getNoDisplay() or show_hidden:
             if exc := cast(str | None, (de.getExec() or de.getTryExec())):
                 try:
                     cmd = shlex.split(exc)
@@ -88,16 +89,42 @@ def find_desktop_directories():
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
-        description="Find desktop entries files with broken executables"
+        description="Find desktop entries files with broken/missing executables"
     )
     parser.add_argument(
         "-a",
         "--all",
         action="store_true",
-        help='show all desktop entries regardless of "NoDisplay" value',
+        help="show all missing desktop entries",
+        default=True,
+    )
+    parser.add_argument(
+        "--hidden",
+        "--show_hidden",
+        action="store_true",
+        help="show hidden (or NoDisplay) desktop entries",
+        default=False,
+    )
+    parser.add_argument(
+        "-d",
+        "--delete",
+        action="store_true",
+        help="delete the missing entries",
+        default=False,
+    )
+    parser.add_argument(
+        "-u",
+        "--user",
+        action="store_true",
+        help="list only the entries which are owned by the current user",
         default=False,
     )
     args = parser.parse_args()
     for d in find_desktop_directories():
-        for df in find_missing_desktop_files(d, args.all):
+        for df in find_missing_desktop_files(d, args.hidden):
+            if args.user and not os.access(df, os.W_OK | os.R_OK):
+                continue
             print(df)
+            if args.delete:
+                os.remove(df)
+                print(f"Deleted {df}")
