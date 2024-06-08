@@ -1,10 +1,10 @@
 # Maintainer: Jose Lopes <josemslopes at gmail dot com>
 
 _pkgname=python3-application
-_pkgver=release-3.0.6
+_pkgver=release-3.0.7
 pkgname=python-application
-pkgver=3.0.6
-pkgrel=2
+pkgver=3.0.7
+pkgrel=1
 pkgdesc="Basic building blocks for Python applications"
 license=('LGPL-2.1+')
 arch=('aarch64' 'x86_64')
@@ -15,7 +15,7 @@ conflicts=('python3-application')
 provides=('python3-application')
 replaces=('python3-application')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AGProjects/${_pkgname}/archive/${_pkgver}.tar.gz")
-sha512sums=('854c72d50d6f06b327e6fc501bf1dfbbf8ca09c72a4c658cb4be2489e9071fe88e28c240b5e052146197fba5b313e911967fcd5cc54cdedde4b3c0253863656a')
+sha512sums=('aca22866367318c19c04fafa75d611ccdadfffe095e650eb7dc410004654664bdd4c7e8df247284b37f6f143d1041ef354c6cb3351ce896b33ce9312815ce06e')
 
 prepare() {
   cd "${_pkgname}-${_pkgver}"
