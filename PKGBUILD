@@ -1,8 +1,8 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=oqsprovider-git
 _pkgname=oqs-provider
-pkgver=r208.6ae3eca
-_pkgverliboqs=0.10.0
+pkgver=r213.8b3d460
+_pkgverliboqs=0.10.1
 pkgrel=1
 pkgdesc="OpenSSL 3 provider containing post-quantum algorithms"
 arch=(x86_64)
@@ -28,7 +28,7 @@ source=(
 )
 install=$pkgname.install
 b2sums=('SKIP'
-        '6fda208f669f270b7c361a87c5b4d2bc59e3fac2d49a31c378650bc2b6a36a34e6627bf31785d5bbbb5609cc87ef280ff035c60961dfd3abe620035e88c9a433')
+        '7f5f59641734d9827323b116822bf0204c7390abcf3e899b638c9f2ee7acc2c79511bb53b91e8c5d1f6bf4c8b63191f8df8fef0054020d3a38f7af3ddf33c424')
 
 pkgver() {
     cd $pkgname
