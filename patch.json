@@ -121,6 +121,14 @@
 				}
 			]
 		},
+		"ms-toolsai.prompty": {
+			"onFileOpen": [
+				{
+					"pathGlob": "{**/*.prompty}",
+					"important": false
+				}
+			]
+		},
 		"ms-vscode.cpptools-extension-pack": {
 			"onFileOpen": [
 				{
@@ -910,6 +918,9 @@
 		"https://*.vscode.dev",
 		"https://*.github.dev",
 		"https://gh.io",
-		"https://portal.azure.com"
+		"https://portal.azure.com",
+		"https://raw.githubusercontent.com",
+		"https://private-user-images.githubusercontent.com",
+		"https://avatars.githubusercontent.com"
 	]
 }
