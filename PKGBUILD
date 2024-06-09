@@ -1,7 +1,7 @@
 # Maintainer: torculus <20175597+torculus@users.noreply.github.com>
 # Contributor: George Rawlinson <grawlinson@archlinux.org>
 pkgname=shiori
-pkgver=1.6.3
+pkgver=1.7.0
 pkgrel=1
 pkgdesc='Simple bookmark manager built with Go'
 arch=('x86_64' 'armv7h' 'aarch64')
