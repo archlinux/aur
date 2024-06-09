@@ -5,8 +5,8 @@
 
 pkgbase=tuned
 pkgname=("${pkgbase}" "${pkgbase}-ppd")
-pkgver=2.22.1
-pkgrel=2
+pkgver=2.23.0
+pkgrel=1
 pkgdesc='Daemon that performs monitoring and adaptive configuration of devices in the system'
 arch=('any')
 url="https://github.com/redhat-performance/${pkgbase}"
@@ -15,15 +15,15 @@ depends=('dbus-glib' 'ethtool' 'gawk' 'hdparm' 'polkit' 'python-configobj' 'pyth
 makedepends=('desktop-file-utils')
 options=('!emptydirs')
 source=("https://github.com/redhat-performance/${pkgbase}/archive/v${pkgver}/${pkgbase}-${pkgver}.tar.gz")
-sha512sums=('160b1cab5477d84a0da89f584fe646b32162527a138d9b5957799c5f26598b98449733040710133a1c5bdd5588eee72549131ff163e777a105fc24e92edc6d8f')
+sha512sums=('b7d95b17ab38ac944e6e5b8b4345ddf65120a03ebb73cdb1795525c237852a8fa4223dcef6ce28189874e5010c8076816bd3646fd7f700983f2449400a2057d8')
 
 prepare() {
 	cd "${pkgbase}-${pkgver}"
 	mv libexec lib
 
-	sed -i 's/libexec/lib/g' Makefile
-	sed -i 's/sbin/bin/g' Makefile
-	sed -i 's/install-ppd: install$/install-ppd: install-dirs/' Makefile
+	sed -i 's|/libexec/|/lib/|g' Makefile
+	sed -i 's|/sbin/|/bin/|g' Makefile tuned.service tuned-gui.py tuned-gui.desktop tuned/ppd/tuned-ppd.service
+	sed -i 's|install-ppd: install$|install-ppd: install-dirs|' Makefile
 }
 
 package_tuned() {
@@ -35,6 +35,7 @@ package_tuned() {
 		'etc/tuned/cpu-partitioning-powersave-variables.conf'
 		'etc/tuned/cpu-partitioning-variables.conf'
 		'etc/tuned/post_loaded_profile'
+		'etc/tuned/profile_mode'
 		'etc/tuned/realtime-variables.conf'
 		'etc/tuned/realtime-virtual-guest-variables.conf'
 		'etc/tuned/realtime-virtual-host-variables.conf'
