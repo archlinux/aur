@@ -1,0 +1,15 @@
+pkgbase = hyprutils
+	pkgdesc = Hyprland utilities library used across the ecosystem
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/hyprwm/hyprutils
+	arch = any
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = cmake
+	makedepends = gcc
+	provides = hyprutils
+	source = hyprutils-0.1.1.tar.gz::https://github.com/hyprwm/hyprutils/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = a9d799b12338e911e6c1ff776ebeabbf71ce5032a56d074ce7f2226267e10b29
+
+pkgname = hyprutils
