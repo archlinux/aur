@@ -1,4 +1,4 @@
-# Maintainer: Reverier-Xu <reverier.xu@outlook.com>
+# Maintainer: Zakros
 
 pkgname=wsrx-bin
 _pkgname=${pkgname%-bin}
