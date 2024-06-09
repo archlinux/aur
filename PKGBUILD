@@ -6,9 +6,9 @@ pkgver=1.1.0.r0.9f7ee12
 pkgrel=2
 pkgdesc="Delete all your messages in public and private Telegram chats"
 arch=('any')
-url="https://github.com/rusq/wipemychat"
+url="https://github.com/rusq/${_pkgname}"
 license=('GPL-3.0-or-later')
-makedepends=('git' 'go' 'goreleaser' 'delve' 'openssl')
+makedepends=('git' 'make' 'go' 'openssl')
 _pkgsrc="${_pkgname}"
 source=("${_pkgsrc}::git+${url}.git")
 provides=("${_pkgname}=${pkgver%%.r*}")

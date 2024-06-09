@@ -6,9 +6,8 @@ pkgbase = wipemychat-git
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = git
+	makedepends = make
 	makedepends = go
-	makedepends = goreleaser
-	makedepends = delve
 	makedepends = openssl
 	provides = wipemychat=1.1.0
 	conflicts = wipemychat
