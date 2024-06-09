@@ -1,7 +1,7 @@
-# Maintainer: Dario Zarcone <dariozarcone at gmail dot com>
+# Maintainer: Catppuccin <releases@catppuccin.com>
 
 pkgname=refind-theme-catppuccin-git
-pkgver=r7.60dbd37
+pkgver=r10.ff0b593
 pkgrel=1
 pkgdesc="Catppuccin - Soothing pastel theme for rEFInd"
 arch=('any')

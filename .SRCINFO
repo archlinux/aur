@@ -1,6 +1,6 @@
 pkgbase = refind-theme-catppuccin-git
 	pkgdesc = Catppuccin - Soothing pastel theme for rEFInd
-	pkgver = r7.60dbd37
+	pkgver = r10.ff0b593
 	pkgrel = 1
 	url = https://github.com/catppuccin/refind
 	install = refind-theme-catppuccin-git.install
