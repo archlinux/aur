@@ -2,8 +2,8 @@
 # Contributor: Hubbe King <hubbe128@gmail.com>
 
 pkgname=targetd-git
-pkgver=0.8.12.2.g0322c1a
-pkgrel=2
+pkgver=0.10.4
+pkgrel=1
 pkgdesc="Remote configuration of a LIO-based storage appliance"
 arch=('any')
 url="https://github.com/open-iscsi/targetd"
@@ -12,7 +12,7 @@ provides=('targetd')
 conflicts=('targetd')
 source=("$pkgname::git+https://github.com/open-iscsi/targetd")
 sha256sums=('SKIP')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'git')
 depends=('targetcli-fb' 'python-rtslib-fb' 'python-configshell-fb' 'libblockdev' 'python-setproctitle' 'python-yaml')
 optdepends=('zfs-utils: ZFS block device support'
             'zfs-linux: ZFS block device support'
