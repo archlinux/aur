@@ -5,7 +5,7 @@
 # Contributor: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 pkgname=lutris-git
-pkgver=0.5.17.r1.ge8bfc73bb
+pkgver=0.5.17.r218.g3d143a7
 pkgrel=1
 pkgdesc='Open Gaming Platform'
 arch=('any')
@@ -33,6 +33,7 @@ depends=(
   'python-yaml'
   'unzip'
   'webkit2gtk-4.1'
+  'xdg-desktop-portal-impl'
   'xdg-utils'
   'xorg-xrandr'
 )
@@ -68,7 +69,7 @@ optdepends=(
   'vulkan-tools: Vulkan support'
   'wine: easiest way to get all the libraries missing from the Lutris runtime'
   'winetricks: use system winetricks'
-  'xdg-desktop-portal-impl')
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/lutris/lutris.git')
@@ -76,7 +77,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
