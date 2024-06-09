@@ -1,11 +1,12 @@
-# Maintainer: Christer Solskogen <christer.solskogen@gmail.com>
+# Maintainer: graysky <therealgraysky AT proton DOT me>
+# Contributor: Christer Solskogen <christer.solskogen@gmail.com>
 # Build order: armv7l-binutils -> armv7l-linux-api-headers -> armv7l-gcc-bootstrap -> armv7l-glibc -> armv7l-gcc -> armv7l-glibc (again)
 
 _arch=armv7l
 _target=$_arch-unknown-linux-gnueabihf
 pkgname=$_arch-gcc-bootstrap
-pkgver=12.2.1
-pkgrel=3
+pkgver=14.1.0
+pkgrel=1
 pkgdesc='The GNU Compiler Collection - cross compiler for ARM64 target - bootstrap compiler'
 arch=(x86_64)
 url='https://gcc.gnu.org/'
@@ -15,7 +16,8 @@ makedepends=($_arch-binutils git)
 provides=($_arch-gcc)
 conflicts=($_arch-gcc)
 options=(!emptydirs !strip staticlibs)
-_commit=6b1adeb22789e190e87b905761f8a47a2e4e830a
+# https://gcc.gnu.org/git/gitweb.cgi?p=gcc.git
+_commit=cd0059a1976303638cea95f216de129334fc04d1
 source=(git+https://sourceware.org/git/gcc.git#commit=${_commit})
 
 sha256sums=('SKIP')
