@@ -12,7 +12,7 @@ depends=('bleachbit'
          'polkit')
 conflicts=('bleachbit-cli') # Requires desktop functions for bleachbit
 source=('org.bleachbit.BleachBit-Root.desktop')
-sha256sums=('86f8438dde194afbddcf403e4ca10cb553178f1230a840e26851230297057715')
+sha256sums=('407e04a20f0944e31298dc56c540903e5eb74c452396678a4ba5e26ef85f39f7')
 optdepends=('xorg-xhost: Xorg support')
 
 package() {
