@@ -1,0 +1,14 @@
+# Source and package folders
+src/
+pkg/
+
+# Archives
+*.zip
+*.tar.gz
+*.tar.xz
+
+# License files
+LICENSE
+
+# Packages
+*.zst
