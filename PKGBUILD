@@ -13,7 +13,7 @@ makedepends=("git" "python-setuptools")
 source=("https://proton.me/download/PassDesktop/linux/x64/ProtonPass_${pkgver}.deb")
 sha256sums=('d9d9d1ff82e92e242525e6efef8fc5ecbfdae6560f87e00c3ea4152011efc5c8')
 
-conflicts=('protonpass')
+conflicts=('protonpass' 'protonpass-bin' 'proton-pass-bin')
 replaces=('protonpass-bin' 'proton-pass-bin')
 
 package() {
