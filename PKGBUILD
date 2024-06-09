@@ -2,7 +2,7 @@
 
 pkgname=kitch-bin
 pkgver=26.1.9
-pkgrel=2
+pkgrel=3
 pkgdesc="The itch.io desktop app (beta channel) (binary release)"
 url="https://itchio.itch.io/kitch"
 license=('MIT')
@@ -24,8 +24,8 @@ prepare() {
   echo "# to fix the firejail issue, see:"
   echo "# https://github.com/itchio/itch/issues/2732"
   sleep 6
-  _DIR="$HOME/.config/itch/prereqs/firejail-amd64"
-  _DIR2="$HOME/.config/itch/prereqs/firejail-386"
+  _DIR="$HOME/.config/kitch/prereqs/firejail-amd64"
+  _DIR2="$HOME/.config/kitch/prereqs/firejail-386"
   mkdir -p $_DIR $_DIR2
   ln -sf /usr/bin/firejail $_DIR
   ln -sf /usr/bin/firejail $_DIR2
