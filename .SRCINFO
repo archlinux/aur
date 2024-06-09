@@ -5,6 +5,7 @@ pkgbase = wipemychat
 	url = https://github.com/rusq/wipemychat
 	arch = any
 	license = GPL-3.0-or-later
+	makedepends = make
 	makedepends = go
 	makedepends = openssl
 	source = wipemychat-1.1.0.tar.gz::https://github.com/rusq/wipemychat/archive/refs/tags/v1.1.0.tar.gz
