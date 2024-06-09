@@ -1,0 +1,13 @@
+pkgbase = tui-slides
+	pkgdesc = Terminal presentation utility with a modern TUI
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/Chleba/tui-slides
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	depends = gcc-libs
+	source = tui-slides-0.1.1.tar.gz::https://github.com/Chleba/tui-slides/archive/v0.1.1.tar.gz
+	sha512sums = e2cfef62e5e10b3191c0669d4402db183b5e31dae9a6d587600cb30816ef319b2c63ea3cc7d7edcfc2b653311810d55f1dccc0efb20a047e9f2fb97f3d826f3c
+
+pkgname = tui-slides
