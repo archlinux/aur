@@ -1,7 +1,7 @@
 pkgbase = slcl
 	pkgdesc = A simple and lightweight cloud
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitea.privatedns.org/xavi/slcl
 	arch = i686
 	arch = x86_64

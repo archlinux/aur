@@ -1,7 +1,7 @@
 # Maintainer: Bobby Hamblin <hamblingreen@hotmail.com>
 pkgname=slcl
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple and lightweight cloud"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 url="https://gitea.privatedns.org/xavi/slcl"
@@ -19,13 +19,19 @@ prepare() {
 
 build() {
   cd "$pkgname"
+  make
 
+  cd "doc/man1"
   make
 }
 
 package() {
   cd "$pkgname"
-
-  sudo make install
+  mkdir -p "$pkgdir/usr/bin"
+  install "slcl" "usergen" "$pkgdir/usr/bin/"
+  
+  cd "doc/man1"
+  mkdir -p "$pkgdir/usr/share/man/man1"
+  install "slcl.1" "usergen.1" "$pkgdir/usr/share/man/man1"
 }
 
