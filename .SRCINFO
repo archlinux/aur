@@ -1,6 +1,6 @@
 pkgbase = python-nextcord
 	pkgdesc = A Python wrapper for the Discord API forked from discord.py
-	pkgver = 2.3.2
+	pkgver = 2.6.1
 	pkgrel = 1
 	url = https://github.com/nextcord/nextcord
 	arch = any
