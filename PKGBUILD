@@ -4,7 +4,7 @@
 
 pkgname=compiledb
 pkgver=0.10.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Tool for generating Clang's JSON Compilation Database file for GNU make-based build systems"
 
 replaces=(compiledb-generator)
@@ -28,8 +28,22 @@ makedepends=(
     "python-setuptools"
     "python-wheel"
 )
+checkdepends=(
+    "python-pytest"
+)
+
+build () {
+    cd "$srcdir/$pkgname-$pkgver"
+    python -m build --wheel --no-isolation
+}
+
+check () {
+    cd "$srcdir/$pkgname-$pkgver"
+    pytest
+}
 
 package () {
     cd "$srcdir/$pkgname-$pkgver"
-    python -m build --wheel --no-isolation
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
