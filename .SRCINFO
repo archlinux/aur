@@ -6,8 +6,8 @@ pkgbase = nchess-git
 	arch = any
 	license = GPL
 	makedepends = git
-	makedepends = gcc
 	makedepends = make
+	makedepends = gcc
 	depends = ncurses
 	provides = nchess=r32.7489711
 	conflicts = nchess

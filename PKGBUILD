@@ -1,15 +1,15 @@
 # Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
 
-pkgname=nchess-git
 _pkgname=nchess
+pkgname=${_pkgname}-git
 pkgver=r32.7489711
 pkgrel=1
 pkgdesc="Chess in the terminal, written in C99"
 arch=('any')
-url="https://github.com/billyvinning/nchess"
+url="https://github.com/billyvinning/${_pkgname}"
 license=('GPL')
 depends=('ncurses')
-makedepends=('git' 'gcc' 'make')
+makedepends=('git' 'make' 'gcc')
 _pkgsrc="${_pkgname}"
 source=("${_pkgsrc}::git+${url}.git")
 provides=("${_pkgname}=${pkgver}")
