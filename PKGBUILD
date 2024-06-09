@@ -1,18 +1,23 @@
 pkgname=swaytools
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Quality of life tools for sway'
 arch=('any')
 url="https://github.com/tmccombs/swaytools"
 license=('GPL3')
 depends=('python' 'sway')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-build' 'python-installer')
 optdepends=('slurp: for swayinfo' 'bemenu: for winfocus' 'dmenu: for winfocus')
 source=("https://github.com/tmccombs/swaytools/archive/$pkgver.tar.gz")
 
-b2sums=('520e4c897b58e868de800b57541127e7671e233d8c4fcd49c82bbe584b5f568ddddadc608b87e6b93fe5edebbe3ac1d311b156c873e173e681ca949eb2fd1be6')
+b2sums=('c405936bb2080de1b9bd0800eb3cd4c6350a82d69860842e81f68a2ad0e8e425baa733a715bafc169c98a07b26b72bc9edea22fce613dbeb5ab8ad10669d9eed')
 
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+  # use --no-isolation to use the existing installation of setuptools
+  python -m build --no-isolation --wheel
+}
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1
+  python -m installer --destdir="$pkgdir" --compile-bytecode=1 dist/*.whl
 }
