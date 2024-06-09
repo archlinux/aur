@@ -5,7 +5,7 @@
 
 pkgname=magics++
 Pkgname=Magics
-pkgver=4.14.1
+pkgver=4.15.4
 _attnum=3473464
 pkgrel=1
 pkgdesc="Magics is the latest generation of the ECMWF's Meteorological plotting software MAGICS."
@@ -15,13 +15,13 @@ license=('Apache')
 depends=('eccodes>=2.19.0' libgeotiff qt6-base pango python)
 optdepends=(ksh libaec odb_api)
 makedepends=(cmake gcc-fortran python-jinja swig)
-source=(http://confluence.ecmwf.int/download/attachments/${_attnum}/${Pkgname}-${pkgver}-Source.tar.gz)
-sha256sums=('263818fc163945280d5df277e0c7f0b9ef701e698c991d9ffec8caf82a5f70c8')
+source=(http://confluence.ecmwf.int/download/attachments/${_attnum}/${Pkgname}-${pkgver}-Source.tar.gz minizip.patch)
+sha256sums=('a38033aa8bd5845c55ad10f9bf5aaee932177e3aa88cf8f174814d825d354285' 'f09ee5f328edd326d94e0bf5a751351956455de1816ce7ff93368eae6b6835d4')
 
-# prepare() {
-#   cd "${Pkgname}-${pkgver}-Source"
-#   patch --forward --strip=1 --input=$srcdir/gcc11.patch
-# }
+prepare() {
+  cd "${Pkgname}-${pkgver}-Source"
+  patch --forward --strip=1 --input=$srcdir/minizip.patch
+}
 
 build() {
   [ -x /usr/bin/odb ] && has_odb=ON || has_odb=OFF

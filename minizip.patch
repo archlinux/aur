@@ -1,0 +1,12 @@
+diff -u -r Magics-4.15.4-Source-orig/src/drivers/minizip/zip.c Magics-4.15.4-Source/src/drivers/minizip/zip.c
+--- Magics-4.15.4-Source-orig/src/drivers/minizip/zip.c	2024-06-10 00:18:59.230647546 +0200
++++ Magics-4.15.4-Source/src/drivers/minizip/zip.c	2024-06-10 00:21:25.796509940 +0200
+@@ -880,7 +880,7 @@
+         unsigned char bufHead[RAND_HEAD_LEN];
+         unsigned int sizeHead;
+         zi->ci.encrypt = 1;
+-        zi->ci.pcrc_32_tab = get_crc_table();
++        zi->ci.pcrc_32_tab = (const long unsigned int *)(get_crc_table());
+         /*init_keys(password,zi->ci.keys,zi->ci.pcrc_32_tab);*/
+ 
+         sizeHead=crypthead(password,bufHead,RAND_HEAD_LEN,zi->ci.keys,zi->ci.pcrc_32_tab,crcForCrypting);
