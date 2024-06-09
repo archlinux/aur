@@ -1,18 +1,20 @@
 pkgbase = armv7l-glibc
-	pkgdesc = GNU C Library ARM64 target
-	pkgver = 2.36
-	pkgrel = 3
+	pkgdesc = GNU C Library ARM target
+	pkgver = 2.39
+	pkgrel = 1
 	url = https://www.gnu.org/software/libc/
 	arch = any
 	license = GPL
 	license = LGPL
 	makedepends = git
+	makedepends = armv7l-binutils
 	makedepends = armv7l-gcc
 	makedepends = armv7l-linux-api-headers
 	makedepends = python
+	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = git+https://sourceware.org/git/glibc.git#commit=4f4d7a13edfd2fdc57c9d76e1fd6d017fb47550c
+	source = git+https://sourceware.org/git/glibc.git#commit=ef321e23c20eebc6d6fb4044425c00e6df27b05f
 	validpgpkeys = 7273542B39962DF7B299931416792B4EA25340F8
 	validpgpkeys = BC7C7372637EC10C57D7AA6579C43DFBF1CF2187
 	b2sums = SKIP
