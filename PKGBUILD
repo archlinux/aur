@@ -2,7 +2,7 @@
 
 pkgname=zrepl
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='One-stop ZFS backup & replication solution'
 arch=('x86_64')
 url='https://zrepl.github.io/'
@@ -26,7 +26,7 @@ build() {
 
     cd "${pkgname}-${pkgver}"
     go build \
-        -ldflags "${GO_LDFLAGS} -linkmode=external -extldflags ${LDFLAGS}" \
+        -ldflags "${GO_LDFLAGS} -linkmode=external -extldflags \"${LDFLAGS}\"" \
         -o "${pkgname}" .
 }
 
