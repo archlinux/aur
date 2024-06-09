@@ -1,7 +1,7 @@
 # Maintainer: Antoine Viallon <antoine at lesviallon dot fr>
 
 pkgbase=tilibs-git
-pkgname=(libticables-git libticalcs-git)
+pkgname=(libticalcs-git)
 pkgver=1.18.r41.g7be38a45
 pkgrel=2
 pkgdesc="Various TI libs required for TILP"
@@ -50,20 +50,6 @@ _package() {
   cd "${srcdir}/${pkgbase}/${subpkg}/trunk"
 
   make install DESTDIR="${pkgdir}"
-}
-
-
-#install_cables-git="libticables.install"
-package_libticables-git() {
-    provides=('libticables')
-    conflicts=('libticables')
-    #cd "${srcdir}/${pkgbase}/${pkgname}/trunk"
-    #make install DESTDIR="${pkgdir}"
-    _package
-
-    install="libticables.install"
-
-    install -Dm644 "${srcdir}/69-libticables.rules" "${pkgdir}/usr/lib/udev/rules.d/69-libticables.rules"
 }
 
 package_libticalcs-git() {
