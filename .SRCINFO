@@ -19,6 +19,6 @@ pkgbase = paru-root
 	optdepends = devtools: build in chroot and downloading pkgbuilds
 	backup = etc/paru.conf
 	source = paru-2.0.3.tar.gz::https://github.com/Arnau478/paru-root/archive/v2.0.3.tar.gz
-    sha256sums = ccf6defc4884d580a4b813cc40323a0389ffc9aa4bdc55f3764a46b235dfe1e0
+    sha256sums = 7e4e51e43e3f898c17a4de4b595c6b8a8210a2d423da1a3ddc98d84548979eb7
 
 pkgname = paru-root
