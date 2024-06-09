@@ -1,13 +1,13 @@
 # Maintainer: Eldred Habert <arch@eldred.fr>
 pkgname=mesen2-git
-pkgver=r2446.94a9956c
-pkgrel=3
+pkgver=r2971.31a13cfa
+pkgrel=1
 pkgdesc="Multi-system emulator (NES, SNES, Game Boy and PC Engine)"
 arch=('x86_64')
 url="https://www.mesen.ca"
 license=('GPL3')
-depends=('dotnet-runtime-6.0' 'libevdev' 'sdl2')
-makedepends=('dotnet-sdk-6.0' 'git' 'zip')
+depends=('dotnet-runtime-8.0' 'libevdev' 'sdl2')
+makedepends=('dotnet-sdk-8.0' 'git' 'zip')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=(!strip !debug) # Reportedly, these break with C#..?
