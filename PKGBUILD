@@ -2,7 +2,7 @@
 
 pkgname=discord-electron-openasar
 _pkgname=discord
-pkgver=0.0.54+827
+pkgver=0.0.55+827
 _pkgver=${pkgver%%+*}
 pkgrel=1
 _electronver=30
@@ -15,22 +15,23 @@ url='https://discord.com'
 license=('custom')
 options=('!strip')
 install="$pkgname.install"
-depends=("${_electronname}" 'libxss' 'unzip')
+depends=("${_electronname}" 'libxss' 'unzip' 'python')
 makedepends=('git' 'asar' 'nodejs' 'curl' 'python-html2text')
 optdepends=(
 	'libpulse: Pulseaudio support'
 	'libappindicator-gtk3: Systray indicator support'
 	'xdg-utils: Open files'
-	'rizin: Allow patching Krisp support'
+	'python-pyelftools: Required for Krisp patcher'
+	'python-capstone: Required for Krisp patcher'
 )
 source=("https://dl.discordapp.net/apps/linux/${_pkgver}/${_pkgname}-${_pkgver}.tar.gz"
 	'discord-launcher.sh'
+	'krisp-patcher.py' # original: https://github.com/sersorrel/sys/blob/main/hm/discord/krisp-patcher.py
 	"git+https://github.com/goosemod/openasar.git#commit=4f264d860a5a6a32e1862ce26178b9cf6402335d")
-sha512sums=('ceb6265e846fafd27e3c2941f00f0a2d4e045abe5471a2691b070bedb330ef345edee838a706b27ff65ecce40aec46b1a1dd9c4bb9763dadaa907ec181c1a222'
-            '9d00f9d2e05c2ba31c930c066f247954700bb0f96f2fc605e61c3973d7dacf962bf372659b71e05e5d8d4e152cc884bf12ec1fb5ecbfc4da55d22ab2591c4c40'
+sha512sums=('c12365109cb4db94033fda101073d2a3d6af7bdc9728e025494ee8d44ebf5f27623861879ec38bb7dd88d40de7cddede268e0f5e44bfeb586fc12713a3758c5b'
+            'fc25a6ac9ca2881a94158ed972039a4dcc082db91a8ba072f2f896b65a788c9decb4456c71da977ac2976e72d081c6c66aa4bb27b5d58cf946dfea6086b0d557'
+            '3c1021592fa856f3561072c76b5ee0b5a34a53bc230336e6d36827efb4866c9d801ef7abb24650d3a7210c61dd57f35e2812ae89226fc157cc8d9ffce032155f'
             '055bbe5fbc63a715ab8357db8aabacad282e3d176b48e322d7133a5887291577687456bbfaf7b832d19f13b1a5a373e2c0f6f82664887509feb3c193ee4f1849')
-
-_krisp_b2sum='c4e49b1a0be64cacd23474c5e474130084755f2de36af01686ce94c6eceea67426b6d6aa81889a418f9d08476476e99d63479b6131d1f7eaef987ecf4d779cf9'
 
 # just in case I get the version wrong
 pkgver() {
@@ -43,7 +44,6 @@ prepare() {
 	sed -i -e "s|@PKGNAME@|${_pkgname}|g" \
 		-e "s|@PKGVER@|${_pkgver}|g" \
 		-e "s|@ELECTRON@|${_electronname}|g" \
-		-e "s|@KRISPB2@|${_krisp_b2sum}|g" \
 		discord-launcher.sh
 
 	# fix the .desktop file
@@ -69,15 +69,14 @@ build() {
 
 package() {
 	# create necessary directories
-	install -d "${pkgdir}"/usr/{lib/$_pkgname,bin}
-	install -d "${pkgdir}"/usr/share/{pixmaps,applications,licenses/$_pkgname}
+	install -d "${pkgdir}"/usr/lib/$_pkgname
 
 	# copy relevant data
 	cp -r ${_pkgname^}/resources "${pkgdir}"/usr/lib/$_pkgname/
-	cp ${_pkgname^}/$_pkgname.png \
-		"${pkgdir}"/usr/share/pixmaps/$_pkgname.png
-	cp ${_pkgname^}/$_pkgname.desktop \
-		"${pkgdir}"/usr/share/applications/$_pkgname.desktop
+
+	# intall icon and desktop file
+	install -Dm 644 ${_pkgname^}/$_pkgname.png "${pkgdir}"/usr/share/pixmaps/$_pkgname.png
+	install -Dm 644 ${_pkgname^}/$_pkgname.desktop "${pkgdir}"/usr/share/applications/$_pkgname.desktop
 
 	# overwrite Discord asar
 	install -Dm 644 openasar/app.asar "${pkgdir}"/usr/lib/$_pkgname/resources/
@@ -85,7 +84,10 @@ package() {
 	# install the launch script
 	install -Dm 755 discord-launcher.sh "${pkgdir}"/usr/bin/$_pkgname
 
+	# install krisp patcher
+	install -Dm 644 krisp-patcher.py "${pkgdir}"/usr/lib/${_pkgname}/
+
 	# install licenses
-	install -Dm 644 LICENSE.md "${pkgdir}"/usr/share/licenses/$_pkgname/
-	install -Dm 644 OSS-LICENSES.md "${pkgdir}"/usr/share/licenses/$_pkgname/
+	install -Dm 644 LICENSE.md "${pkgdir}"/usr/share/licenses/$_pkgname/LICENSE.md
+	install -Dm 644 OSS-LICENSES.md "${pkgdir}"/usr/share/licenses/$_pkgname/OSS-LICENSES.md
 }

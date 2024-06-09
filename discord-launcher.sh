@@ -1,22 +1,18 @@
 #!/usr/bin/env bash
 
-set -eo pipefail
+set -euo pipefail
 
 declare -a flags
-
+declare -l PATCH_KRISP
 
 [[ -r "${XDG_CONFIG_HOME:-$HOME/.config}/@PKGNAME@.conf" ]] && source "${XDG_CONFIG_HOME:-$HOME/.config}/@PKGNAME@.conf"
 
 flags_file="${XDG_CONFIG_HOME:-$HOME/.config}/@PKGNAME@-flags.conf"
-krisp_bin="${XDG_CONFIG_HOME:-$HOME/.config}/@PKGNAME@/@PKGVER@/modules/@PKGNAME@_krisp/@PKGNAME@_krisp.node"
-krisp_b2=@KRISPB2@
+krisp_bin="${DISCORD_USER_DATA_DIR:-${XDG_CONFIG_HOME:-$HOME/.config}/@PKGNAME@}/@PKGVER@/modules/@PKGNAME@_krisp/@PKGNAME@_krisp.node"
 
-if hash rizin &> /dev/null && [[ "${PATCH_KRISP}" == true ]]; then
+if [[ "${PATCH_KRISP}" == true ]] && [[ -w "${krisp_bin}" ]] && python -c "import capstone; import elftools" &> /dev/null; then
 	# Patch Krisp binary to ignore signature check
-	if [[ -w "${krisp_bin}" && $(b2sum "${krisp_bin}" | head -c 128) == $krisp_b2 ]]; then
-		addr=$(rz-find -x '4881ec00010000' "${krisp_bin}" | head -n1)
-		rizin -q -w -c "s $addr + 0x30 ; wao nop" "${krisp_bin}" &> /dev/null
-	fi
+	python /usr/lib/@PKGNAME@/krisp-patcher.py "${krisp_bin}"
 fi
 
 if [[ -r "${flags_file}" ]]; then
@@ -33,7 +29,7 @@ for line in "${MAPFILE[@]}"; do
 	fi
 done
 
-unset flags_file krisp_bin krisp_b2
+unset flags_file krisp_bin
 
 
 exec /usr/lib/@ELECTRON@/electron \
