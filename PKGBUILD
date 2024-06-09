@@ -11,7 +11,8 @@ license=('GPL3')
 depends=('glib2>=2.38' 'glib-networking' 'gtk4' 'gpgme'
 	 'libgee>=0.10' 'libgcrypt' 'libsoup3' 'sqlite' 'qrencode'
 	 'libsignal-protocol-c' 'gspell' 'gst-plugins-base'
-	 'gst-plugins-good' 'gst-plugin-gtk' 'webrtc-audio-processing'
+	 'gst-plugins-good' 'gst-plugins-bad'
+	 'gst-plugin-gtk' 'webrtc-audio-processing'
 	 'libnice' 'libsrtp' 'libadwaita' 'libcanberra')
 makedepends=('git' 'cmake' 'vala>=0.34' 'ninja')
 provides=('dino-plus')

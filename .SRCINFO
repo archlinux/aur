@@ -23,6 +23,7 @@ pkgbase = dino-plus-git
 	depends = gspell
 	depends = gst-plugins-base
 	depends = gst-plugins-good
+	depends = gst-plugins-bad
 	depends = gst-plugin-gtk
 	depends = webrtc-audio-processing
 	depends = libnice
