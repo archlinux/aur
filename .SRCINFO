@@ -1,11 +1,11 @@
 pkgbase = dblab-bin
 	pkgdesc = Interactive client for PostgreSQL, MySQL and SQLite3.
-	pkgver = 0.21.0
+	pkgver = 0.24.0
 	pkgrel = 1
 	url = https://github.com/danvergara/dblab
 	arch = x86_64
 	license = MIT
-	source = https://github.com/danvergara/dblab/releases/download/v0.21.0/dblab_0.21.0_linux_amd64.tar.gz
-	sha256sums = 7b971e55decad7951f054bde24b2bf34baff5e3e964b7a9d122f5c9d8fca416d
+	source = https://github.com/danvergara/dblab/releases/download/v0.24.0/dblab_0.24.0_linux_amd64.tar.gz
+	sha256sums = 741f52e26eb1407d2d7cde7bebb8d02ca90382adef64fe6cec0a5c5b36f6af8d
 
 pkgname = dblab-bin
