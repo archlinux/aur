@@ -2,7 +2,7 @@
 
 pkgname=kitch-bin
 pkgver=26.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="The itch.io desktop app (beta channel) (binary release)"
 url="https://itchio.itch.io/kitch"
 license=('MIT')
@@ -22,11 +22,13 @@ sha256sums=('9324777a2edf37d3afaa39b073050c2a5d3a07fec45d21171813af9e6b3fd6a3'
 prepare() {
   echo "# Creating a symlink under the HOME directory"
   echo "# to fix the firejail issue, see:"
-  echo "# https://github.com/itchio/itch/issues/2732#issuecomment-1716903738"
+  echo "# https://github.com/itchio/itch/issues/2732"
   sleep 6
   _DIR="$HOME/.config/itch/prereqs/firejail-amd64"
-  mkdir -p "$_DIR"
-  ln -sf /usr/bin/firejail "$_DIR"
+  _DIR2="$HOME/.config/itch/prereqs/firejail-386"
+  mkdir -p $_DIR $_DIR2
+  ln -sf /usr/bin/firejail $_DIR
+  ln -sf /usr/bin/firejail $_DIR2
 
 # Create a shortcut
   echo -e "[Desktop Entry]\n\
