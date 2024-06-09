@@ -16,7 +16,8 @@ arch=('any')
 url='https://cyan.com/games/riven/'
 epoch="0"
 pkgver='1.2_20030721_dvd' # Obtained from the file 'Read Instructions First'.
-pkgrel=3
+pkgrel=4
+_newestoriginalver='1.2_20231231_dvd' # Assumed highest possible version number of 'riven' that is for the original game.
 makedepends=(
   'dos2unix'    # To convert text files with Mac and DOS new line standard to Unix new line standard.
   'ffmpeg'      # To convert the Making Of-movie to smaller filesize.
@@ -44,7 +45,7 @@ prepare() {
   cd "${srcdir}"
 
   ## If 'riven-data' is not yet installed, then ask for confirmation:
-  if ! pacman -Qqi 'riven-original-data' > /dev/null 2>&1; then
+  if ! pacman -Qqi 'riven-original-data' > /dev/null 2>&1 || pacman -Qqi "riven-data<=${_newestoriginalver}" > /dev/null 2>&1; then
     ## Check if the user has a legal copy (by trusting the user).  
     #  Ideally, we want to have it before downloading stuff, but if we put it in the general part if the `PKGBUILD` then it is executed each time the `PKGBUILD` is parsed, so also at the creation of `.SRCINFO`.
     local _legalcopy
@@ -94,8 +95,8 @@ package_riven-original() {
     "riven-soundtrack: Soundtrack of Riven."
   )
   provides=("riven=${pkgver}")
-  conflicts=("riven<=1.2_2023")
-  replaces=("riven<=1.2_2023")
+  conflicts=("riven<=${_newestoriginalver}")
+  replaces=("riven<=${_newestoriginalver}")
 
   cd "${srcdir}"
 
@@ -117,8 +118,8 @@ package_riven-original-data() {
     "scummvm: To play the game by manually launching ScummVM and adding the game ScummVM."
   )
   provides=("riven-data=${pkgver}")
-  conflicts=("riven-data<=1.2_2023")
-  replaces=("riven-data<=1.2_2023")
+  conflicts=("riven-data<=${_newestoriginalver}")
+  replaces=("riven-data<=${_newestoriginalver}")
 
 
   cd "${srcdir}"
@@ -156,8 +157,8 @@ package_riven-original-makingof() {
     "riven-original-soundtrack: Soundtrack of the original game of Riven."
   )
   provides=("riven-makingof=${pkgver}")
-  conflicts=("riven-makingof<=1.2_2023")
-  replaces=("riven-makingof<=1.2_2023")
+  conflicts=("riven-makingof<=${_newestoriginalver}")
+  replaces=("riven-makingof<=${_newestoriginalver}")
 
 
   cd "${srcdir}"

@@ -1,7 +1,7 @@
 pkgbase = riven-original
 	pkgdesc = 'Riven: The Sequel to Myst' is a 1997 point-and-click puzzle adventure game with superb landscape immersion. This is the original game, not the remake.
 	pkgver = 1.2_20030721_dvd
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 0
 	url = https://cyan.com/games/riven/
 	arch = any
@@ -30,8 +30,8 @@ pkgname = riven-original
 	optdepends = riven-makingof: Movie 'The Making of Riven'.
 	optdepends = riven-soundtrack: Soundtrack of Riven.
 	provides = riven=1.2_20030721_dvd
-	conflicts = riven<=1.2_2023
-	replaces = riven<=1.2_2023
+	conflicts = riven<=1.2_20231231_dvd
+	replaces = riven<=1.2_20231231_dvd
 
 pkgname = riven-original-data
 	pkgdesc = Data files for the point-and-click adventure/ puzzle game 'Riven: The Sequel to Myst'. Can be directly used with ScummVM. This is the game data of the original game, not the remake.
@@ -40,8 +40,8 @@ pkgname = riven-original-data
 	optdepends = riven-original: To actually launch the game just by executing '/usr/bin/riven'.
 	optdepends = scummvm: To play the game by manually launching ScummVM and adding the game ScummVM.
 	provides = riven-data=1.2_20030721_dvd
-	conflicts = riven-data<=1.2_2023
-	replaces = riven-data<=1.2_2023
+	conflicts = riven-data<=1.2_20231231_dvd
+	replaces = riven-data<=1.2_20231231_dvd
 
 pkgname = riven-original-makingof
 	pkgdesc = Movie 'The Making of Riven', a point-and-click immersive puzzle adventure game. This is for the original game, not the remake.
@@ -50,5 +50,5 @@ pkgname = riven-original-makingof
 	optdepends = riven-original: To play the game.
 	optdepends = riven-original-soundtrack: Soundtrack of the original game of Riven.
 	provides = riven-makingof=1.2_20030721_dvd
-	conflicts = riven-makingof<=1.2_2023
-	replaces = riven-makingof<=1.2_2023
+	conflicts = riven-makingof<=1.2_20231231_dvd
+	replaces = riven-makingof<=1.2_20231231_dvd
