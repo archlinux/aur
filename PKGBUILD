@@ -10,7 +10,7 @@ _pkgname=discord
 _electron=electron29
 pkgname=${_pkgname}_arch_electron
 pkgver=0.0.55
-pkgrel=2
+pkgrel=3
 pkgdesc="Discord using system provided ${_electron} for increased security and performance"
 arch=('any')
 provides=("${_pkgname}")
@@ -30,7 +30,7 @@ source=("https://dl.discordapp.net/apps/linux/${pkgver}/${_pkgname}-${pkgver}.ta
         'discord-launcher.sh'
         'krisp-patcher.py') # original: https://github.com/sersorrel/sys/blob/main/hm/discord/krisp-patcher.py
 sha512sums=('c12365109cb4db94033fda101073d2a3d6af7bdc9728e025494ee8d44ebf5f27623861879ec38bb7dd88d40de7cddede268e0f5e44bfeb586fc12713a3758c5b'
-            '88d8b7ae7efc4cb7173de1b0a209c3ae844e43685b1c042e6fe993099ce869dc0d072aa6a13bd5e56e2ebdaa2609ae5c90c6c93333ee2ec912e2d74d9c59f42a'
+            '6b7043d2e66b52a5f76b8d01813a7f4fd572b38bbd24087d618af7f2cc416c41074071fa738af5e6f31dacd0186d71eb841fa0c598bfa3ad444c5bbc911402af'
             '3c1021592fa856f3561072c76b5ee0b5a34a53bc230336e6d36827efb4866c9d801ef7abb24650d3a7210c61dd57f35e2812ae89226fc157cc8d9ffce032155f')
 
 prepare() {
