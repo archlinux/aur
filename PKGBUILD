@@ -1,7 +1,7 @@
 # Maintainer: Catppuccin <releases@catppuccin.com>
 
 pkgname=catppuccin-cursors-mocha
-pkgver=0.3.0 # renovate: datasource=github-tags depName=catppuccin/cursors
+pkgver=0.3.1 # renovate: datasource=github-tags depName=catppuccin/cursors
 pkgrel=1
 pkgdesc='Soothing pastel mouse cursors - Mocha'
 arch=('any')
@@ -26,22 +26,22 @@ source=(
 	"$pkgname-$pkgver-yellow.zip::$url/releases/download/v$pkgver/catppuccin-mocha-yellow-cursors.zip"
 )
 
-sha256sums=('fcd12dc65662c1bb5d41e7ee105e28c9848da8dabfcb2f5ca6aa86c72807081f'
-            'd98a8ad6f2f92bb304b6909db37911389da30ad8d6cf777dd20b6e1e9dff889c'
-            '1be39cc8ffe31f6cb366d0a20696e79c8e40640243416480c80938a8477ceb99'
-            '6d956af3dc035bd117a108d8870121a1668c3cbf3a10ac2a14727daa3633fe71'
-            'eacff16878330efa33f6b58c8d467ac0104371d076f97027668c7e974f2e59f0'
-            'fa2e50fbc1bdc20d8217d662adc6725f7d0b7899170687033197e53dc63dc8dc'
-            '923315fbd1c1cd111eae3820309556d50fd0b120f3d637e77211baef8d46d979'
-            '70f89a13799359603f8bf056f61afd7c96ca77391951a6c3705ac24496f7ca1c'
-            '4ed4e2bd2895cc1496ef5bc510002f7601e62de7f32768eea4af01890196e3b9'
-            '1d866561ad50beef1e3f9cc8c4defe546e47280801209757b9b378517141e2fa'
-            '251f5849211797efed9dd2c973e0adf67176c73c18acb04cab33b332b2209232'
-            'ea69b14dd6ddd8e1fe149f409b855d9d19ba9b5db168bbd404abe41380d4a86c'
-            '8f752493013d88474d357101d3596472e3ecbbee08d92066fefa4bae226e906f'
-            'b24f5233759125fa82cd8a412178d6a95082fdf320900922e4d1c216a17f3619'
-            '3b4c69fa338eb7739d75c32b31e7793f2ac3cb850e2774f0fdd802098c6fb2c0'
-            'bfc9706ad90da53f59faf7dc8a916cfbe5fb797317de18eb85c54207685830c5')
+sha256sums=('6bec52b32699bc9846fed8ea2d384bf0da0250c957766a2f5c09e6d009f990c1'
+            '5a4391576467245861cedabffaa860fab088cacdfa071d424901642c3065165e'
+            'fbcf8ef2a6dac8b64ebfbcbda6961c842bfc8a22e4aed0ba77864a990316cc4e'
+            'c61e3bd74f5de1911bb9b5480e58d55390374c9eabfee48947010a1ecaf74068'
+            '5172c2d089033e3651a9c4be736e6d5b745ff861af766aff54590908e9dbfae3'
+            '4e2cbb6fd5a1a6dc487847d40f12a6e1315c68ab82656333fc3d625242d0fc14'
+            '1e2bba02c621badb1ce9de1054f2661e3ae857d813f39c3987b8f8f09f559307'
+            '78f91c4b0d6aff819603124febfd1b764a470615c1f4550cb79b5721338ab464'
+            '4b1240dbb2f7ae7e712c04b45eb41807a88a2b199ac1614187b3d0d341bcc35f'
+            '7eb518768f212eae2ffe07905b615eb8712ed046e07bfa694409e7638b371acb'
+            '2d13997025d72a038a2c30584b9f70766d1f204203cbb04988b7ba4d457255cc'
+            '76209fece5a92ec8e6b7ba801867abf490d758c6a314de004a5749e456eee79d'
+            'f18f56f35df5121eb42abdd07a6356166550b7283fa78cb3689726921f0d7d5f'
+            'f3acb14a0bb02fd793b46f90d767c68d01a3678edde4641356c9664bc5d174f9'
+            '3112c712e6ccb2638319759ff60052cb979737f41b14a0f75fbfc83685c348a7'
+            '52fe73bdd320ee11b3741e2608d38199be836e25a127ba260e29f109beb8da66')
 
 package() {
 	install -d "$pkgdir/usr/share/icons/"
