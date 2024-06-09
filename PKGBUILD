@@ -1,9 +1,9 @@
-# Maintainer: Alfredo Ramos <alfredo.ramos@skiff.com>
+# Maintainer: Alfredo Ramos <alfredoramos@duck.com>
 
 _binname=asdf
 _pkgname=${_binname}-vm
 pkgname=${_pkgname}-git
-pkgver=0.10.1.1.g0bc8c3a
+pkgver=0.14.0.0.gccdd47d
 pkgrel=1
 pkgdesc='Extendable version manager with support for Ruby, Node.js, Elixir, Erlang & more. Git version.'
 arch=('any')
