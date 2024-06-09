@@ -1,0 +1,30 @@
+pkgbase = python-luna-soc-git
+	pkgdesc = Amaranth HDL libary for building USB-capable SoC designs
+	pkgver = r70.2eb240d
+	pkgrel = 1
+	url = https://github.com/greatscottgadgets/luna-soc
+	arch = any
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-minerva-git
+	makedepends = python-pyproject-patcher
+	makedepends = python-recommonmark
+	makedepends = python-setuptools
+	makedepends = python-setuptools-git-versioning
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = python-sphinxcontrib-apidoc
+	makedepends = python-wheel
+	depends = python
+	depends = python-amaranth
+	depends = python-luna-usb-git
+	depends = python-pyserial
+	optdepends = python-minerva-git: to implement SoC designs using a Minerva RISC-V CPU
+	provides = python-luna-soc=r70.2eb240d
+	conflicts = python-luna-soc
+	source = luna-soc::git+https://github.com/greatscottgadgets/luna-soc.git
+	sha512sums = SKIP
+
+pkgname = python-luna-soc-git

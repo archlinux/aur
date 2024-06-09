@@ -1,0 +1,7 @@
+/.vscode/
+/luna-soc/
+/src/
+/pkg/
+*.log
+*.pkg.*
+*.tar.*
