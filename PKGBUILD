@@ -25,17 +25,17 @@ _engine_version=3.13.9
 prepare() {
 	cd "${_srcdir}/app"
 	source '/opt/flutter-engine/pkgbuild-prepare.sh'
+}
+
+build() {
+	cd "${_srcdir}/app"
+	source '/opt/flutter-engine/pkgbuild-build.sh'
 
 	local dartpkg="$(yq -er .name 'pubspec.yaml')"
 	flutter create --project-name="${dartpkg}" --platforms=linux --no-pub --no-overwrite .
 
 	flutter clean
 	flutter pub get
-}
-
-build() {
-	cd "${_srcdir}/app"
-	source '/opt/flutter-engine/pkgbuild-build.sh'
 
 	flutter pub run build_runner build --release --delete-conflicting-outputs
 	flutter build linux --release
