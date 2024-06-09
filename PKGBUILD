@@ -2,11 +2,11 @@
 # Contributor: 2ion <dev@2ion.de>
 pkgname=bunsen-utilities-git
 pkgver=r741.28dd596
-pkgrel=2
+pkgrel=3
 pkgdesc="Collection of utility scripts"
 arch=('any')
 url="https://github.com/BunsenLabs/bunsen-utilities"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=(
 # upstream
 'bunsen-common'
@@ -21,7 +21,7 @@ depends=(
 'wmctrl'
 'xdotool'
 'yad'
-#namcap
+# namcap
 'bash'
 )
 optdepends=(\
