@@ -3,8 +3,8 @@
 _pkgname='hacki'
 pkgname=${_pkgname}
 _pkgreponame='Hacki'
-pkgver=2.8.0
-pkgrel=2
+pkgver=2.8.1
+pkgrel=1
 pkgdesc='A Hacker News reader.'
 url='https://github.com/Livinglist/Hacki'
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
 	'flutter::git+https://github.com/flutter/flutter.git'
 	'flutter-engine::git+https://github.com/flutter/engine.git'
 	'git+https://chromium.googlesource.com/chromium/tools/depot_tools.git')
-sha256sums=('5ab19ecf65ab9129916cb41306478de1a115d83cd0b908e65f3c500c0878b2ad'
+sha256sums=('13580e9eb89ae1339fab73256e35ec36e29e6e2fdeb1914e92eff99ca5eabe89'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -31,17 +31,17 @@ _engine_version=3.22.2
 prepare() {
 	cd "${_srcdir}"
 	source '/opt/flutter-engine/pkgbuild-prepare.sh'
+}
+
+build() {
+	cd "${_srcdir}"
+	source '/opt/flutter-engine/pkgbuild-build.sh'
 
 	local dartpkg="$(yq -er .name 'pubspec.yaml')"
 	flutter create --project-name="${dartpkg}" --platforms=linux --no-pub --no-overwrite .
 
 	flutter clean
 	flutter pub get
-}
-
-build() {
-	cd "${_srcdir}"
-	source '/opt/flutter-engine/pkgbuild-build.sh'
 
 	flutter build linux --release
 }
