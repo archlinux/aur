@@ -1,0 +1,45 @@
+commit 2018baf0e1add4f9971dd02271ee8e6773cebfac
+Author: Lutz Freitag <lutz@gottliebtfreitag.de>
+Date:   Wed May 22 21:29:54 2024 +0200
+
+    added missing includes and a define to compile it for recent machines
+    
+    I use arch btw
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d12bd0db..7b8cf57d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -668,6 +668,8 @@ install(FILES DSView/icons/logo.svg DESTINATION share/pixmaps RENAME dsview.svg)
+ if(CMAKE_SYSTEM_NAME MATCHES "Linux")	
+ 	install(FILES DSView/DSView.desktop DESTINATION /usr/share/applications RENAME dsview.desktop)
+ 	
++	add_compile_definitions(_DEFAULT_SOURCE)
++
+ 	if(IS_DIRECTORY /usr/lib/udev/rules.d)
+ 		install(FILES DSView/DreamSourceLab.rules DESTINATION /usr/lib/udev/rules.d RENAME 60-dreamsourcelab.rules)
+ 	elseif(IS_DIRECTORY /lib/udev/rules.d)
+diff --git a/libsigrok4DSL/input/in_wav.c b/libsigrok4DSL/input/in_wav.c
+index de16e513..7a130496 100644
+--- a/libsigrok4DSL/input/in_wav.c
++++ b/libsigrok4DSL/input/in_wav.c
+@@ -24,6 +24,7 @@
+ #include <unistd.h>
+ #include <fcntl.h>
+ #include <string.h>
++#include <strings.h>
+ #include "../log.h"
+ #include <stdlib.h>
+ 
+diff --git a/libsigrok4DSL/strutil.c b/libsigrok4DSL/strutil.c
+index 52cb01d8..6c02c6df 100644
+--- a/libsigrok4DSL/strutil.c
++++ b/libsigrok4DSL/strutil.c
+@@ -21,6 +21,7 @@
+ #include "libsigrok-internal.h"
+ #include <stdlib.h>
+ #include <string.h>
++#include <strings.h>
+ #include <stdio.h>
+ #include "log.h"
+ 
