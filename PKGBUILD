@@ -3,11 +3,11 @@
 _gitname=pam_p11
 pkgname=pam_p11-git
 pkgver=pam_p11.0.6.0.r0.ga6d8605
-pkgrel=2
+pkgrel=3
 pkgdesc="PAM module for using crpytographic PKCS11 tokens such as smart cards and usb crypto tokens for local authentication."
 arch=('i686' 'x86_64')
 url="https://github.com/OpenSC/OpenSC/wiki/pam_p11-simple-RSA-authentication-with-PKCS%2311-modules"
-license=('LGPL')
+license=('LGPL-2.1-or-later')
 depends=('glibc' 'pam' 'libp11' 'openssl')
 makedepends=('git')
 provides=('pam_p11')

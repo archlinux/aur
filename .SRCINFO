@@ -1,11 +1,11 @@
 pkgbase = pam_p11-git
 	pkgdesc = PAM module for using crpytographic PKCS11 tokens such as smart cards and usb crypto tokens for local authentication.
 	pkgver = pam_p11.0.6.0.r0.ga6d8605
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/OpenSC/OpenSC/wiki/pam_p11-simple-RSA-authentication-with-PKCS%2311-modules
 	arch = i686
 	arch = x86_64
-	license = LGPL
+	license = LGPL-2.1-or-later
 	makedepends = git
 	depends = glibc
 	depends = pam
