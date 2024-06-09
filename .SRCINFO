@@ -1,14 +1,14 @@
 pkgbase = urban-cli-bin
 	pkgdesc = Blazingly fast command line interface for Urban Dictionary
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/tfkhdyt/urban-cli
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
-	source_x86_64 = urban-cli-bin-v0.2.1-amd64.tar.gz::https://github.com/tfkhdyt/urban-cli/releases/download/v0.2.1/urban-cli-v0.2.1-linux-amd64.tar.gz
-	sha256sums_x86_64 = 42b57d157f1981c247edcc5b238678a701a87940f32a5e7991d36b236121a0fb
-	source_aarch64 = urban-cli-bin-v0.2.1-arm64.tar.gz::https://github.com/tfkhdyt/urban-cli/releases/download/v0.2.1/urban-cli-v0.2.1-linux-arm64.tar.gz
-	sha256sums_aarch64 = 67952ee2c16c97e70350cf1943f44d9c156347dacaba935d6d94bd311ec20543
+	source_x86_64 = urban-cli-bin-v0.2.2-amd64.tar.gz::https://github.com/tfkhdyt/urban-cli/releases/download/v0.2.2/urban-cli-v0.2.2-linux-amd64.tar.gz
+	sha256sums_x86_64 = 2b43c5636f9d61862a0f02d41c34f0288cf574c03ee990222cfbb06768360e93
+	source_aarch64 = urban-cli-bin-v0.2.2-arm64.tar.gz::https://github.com/tfkhdyt/urban-cli/releases/download/v0.2.2/urban-cli-v0.2.2-linux-arm64.tar.gz
+	sha256sums_aarch64 = 0c437da113a34a39b432c50469c101e4ab8c02ffc27c25637a6e4580711c0f35
 
 pkgname = urban-cli-bin
