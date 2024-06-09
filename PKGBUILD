@@ -13,7 +13,7 @@
 # basic info
 _pkgname='beeper'
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=3.105.2
+pkgver=3.106.2
 pkgrel=1
 pkgdesc="all your chats in one app"
 url="https://beeper.com/"
@@ -27,10 +27,10 @@ _main_package() {
   provides=("$_pkgname")
   conflicts=("$_pkgname")
 
-  options=('!strip')
+  options=('!strip' '!debug')
 
-  source+=("$_filename"::"$_dl_url")
-  sha256sums+=('SKIP')
+  source=("$_filename"::"$_dl_url")
+  sha256sums=('SKIP')
 }
 
 # common functions
