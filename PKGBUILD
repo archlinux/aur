@@ -2,13 +2,13 @@
 
 _pkgname=dockbarx-lxqt-plugin
 pkgname=${_pkgname}-git
-pkgver=0.9+1+g3838fbb
+pkgver=0.9.1+0+g763705c
 pkgrel=1
 pkgdesc="DockBarX LXQT applet"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://github.com/xuzhen/dockbarx-lxqt-plugin"
 license=('GPL3')
-depends=('dockbarx' 'lxqt-panel' 'qt5-x11extras')
+depends=('dockbarx' 'lxqt-panel' 'qt6-base')
 makedepends=('cmake' 'git')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
