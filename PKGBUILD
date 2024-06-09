@@ -31,7 +31,8 @@ url='http://www.robynmiller.net/music'
 # url='https://archive.org/details/Nova_RivenOST_USA'
 epoch="0"
 pkgver='19980224' # Release date according to https://www.discogs.com/release/1097332-Robyn-Miller-Riven-The-Soundtrack
-pkgrel=2
+pkgrel=3
+_newestoriginalver=20200101  # Assumed highest possible version number of 'riven-soundtrack' that is from the original game.
 makedepends=(
   'ffmpeg'              # To convert the raw CD .bin files to opus.
   'ghostscript'         # To build the CD booklet PDF (build multi-page PDF).
@@ -85,7 +86,7 @@ sha256sums=(
 prepare() {
   cd "${srcdir}"
 
-  if ! pacman -Qqi 'riven-original-soundtrack' > /dev/null 2>&1; then
+  if ! (pacman -Qqi 'riven-original-soundtrack' > /dev/null 2>&1 || pacman -Qqi "riven-soundtrack<=${_newestoriginalver}" > /dev/null 2>&1); then
     local _legalcopy
     msg2 "Please make sure you have obtained a legal copy of the soundtrack before continuing!"
     read -e -p "Enter 'i have a legal copy of the riven original soundtrack' (without quotes) to continue, anything else to abort and DELETE DOWNLOADED DATA: " _legalcopy
@@ -158,8 +159,8 @@ package_riven-original-soundtrack() {
     "riven-makingof: Movie 'The Making of Riven'."
   )
   provides=("riven-soundtrack=${pkgver}")
-  conflicts=("riven-soundtrack<=2023")
-  replaces=("riven-soundtrack<=2023")
+  conflicts=("riven-soundtrack<=${_newestoriginalver}")
+  replaces=("riven-soundtrack<=${_newestoriginalver}")
 
   cd "${srcdir}"
 

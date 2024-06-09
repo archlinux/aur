@@ -1,7 +1,7 @@
 pkgbase = riven-original-soundtrack
 	pkgdesc = Official Soundtrack of the game 'Riven: The Sequel to Myst'. Soundtrack of the original game.
 	pkgver = 19980224
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 0
 	url = http://www.robynmiller.net/music
 	arch = any
@@ -51,5 +51,5 @@ pkgname = riven-original-soundtrack
 	optdepends = riven: To play the game.
 	optdepends = riven-makingof: Movie 'The Making of Riven'.
 	provides = riven-soundtrack=19980224
-	conflicts = riven-soundtrack<=2023
-	replaces = riven-soundtrack<=2023
+	conflicts = riven-soundtrack<=20200101
+	replaces = riven-soundtrack<=20200101
