@@ -1,7 +1,7 @@
 # Maintainer: Hubbe King <hubbe128@gmail.com>
 
 pkgname=targetd
-pkgver=0.9.1
+pkgver=0.10.4
 pkgrel=2
 pkgdesc="Remote configuration of a LIO-based storage appliance"
 arch=('any')
@@ -11,7 +11,7 @@ provides=('targetd')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/open-iscsi/targetd/archive/v${pkgver}.tar.gz"
         "targetd.service"
         "targetd.yaml")
-sha256sums=('40846e30a8f2d3ce9a6075a76dcf59f927932296b774a1b7f2875e82b96312e8'
+sha256sums=('1590ea211ee187e07ba019d2a359c83ca07ec10c05696eff951aaaf719b844bb'
             '221c660d89f94c5543991ce62127d1b30da78f133b6683b9f6be79293266aa73'
             'fd9362d5dc32c976107114ef40a983f2440687c89e444c63f22c911df8010b06')
 
@@ -22,14 +22,14 @@ optdepends=('zfs-utils: ZFS block device support'
             'zfs-linux-lts: ZFS block device support'
             'zfs-dkms: ZFS block device support')
 
-prepare() {
+build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  sed -i 's/ distutils.core / setuptools /' setup.py
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  python setup.py install --root="$pkgdir"
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -D -m755 scripts/targetd "$pkgdir"/usr/bin/targetd
   install -D -m644 "$srcdir"/targetd.service "$pkgdir"/usr/lib/systemd/system/targetd.service
   install -D -m644 "$srcdir"/targetd.yaml "$pkgdir"/usr/share/targetd/targetd.yaml
