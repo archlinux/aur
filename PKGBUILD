@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonamil.com>
 pkgname=ofinstaller-beans
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc=" Installer for Open Fortress "
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-only')
 depends=("glibc" "gcc-libs" "openssl")
 makedepends=("rust-nightly-bin")
 source=("$pkgname::git+$url.git#tag=v$pkgver")
-sha256sums=('f4d63950d1e9dc3cb14f59f161cfba13c65ab67e35914bab20c95b2ca92fa5c8')
+sha256sums=('ef568d255802413d32610330670387169137e3407d9f01262a114588d9c5005e')
 
 prepare() {
 	cd "$srcdir/$pkgname"
