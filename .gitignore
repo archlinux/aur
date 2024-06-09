@@ -1,5 +1,4 @@
-/src/
-/pkg/
-/mindustry-*.pkg.tar.*
-
-/mindustry-*.tar.gz
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
