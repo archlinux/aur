@@ -33,7 +33,6 @@ depends=(
     libpng
     hicolor-icon-theme
     xcb-util-cursor
-    libbacktrace-git
 )
 makedepends=(
     cmake
@@ -60,6 +59,7 @@ provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 options=(!lto)
 
+LIBBACKTRACE=ad106d5fdd5d960bd33fae1c48a351af567fd075
 SHADERC=2024.1
 SHADERC_GLSLANG=142052fa30f9eca191aa9dcf65359fcaed09eeec
 SHADERC_SPIRVHEADERS=5e3ad389ee56fca27c9705d093ae5387ce404df4
@@ -79,6 +79,7 @@ source=(
     git+https://github.com/biojppm/debugbreak.git
     git+https://github.com/fastfloat/fast_float.git
     vulkan-headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
+    git+https://github.com/ianlancetaylor/libbacktrace.git#commit=$LIBBACKTRACE
     git+https://github.com/google/shaderc.git#tag=v$SHADERC
     git+https://github.com/KhronosGroup/glslang.git#commit=$SHADERC_GLSLANG
     git+https://github.com/KhronosGroup/SPIRV-Headers.git#commit=$SHADERC_SPIRVHEADERS
@@ -87,8 +88,8 @@ source=(
 )
 install=pcsx2-git.install
 
-prepare() {
-
+prepare() 
+{
     cd "shaderc/third_party"
     mv -n ../../glslang . 
     mv -n ../../SPIRV-Headers spirv-headers
@@ -135,6 +136,13 @@ pkgver() {
 
 build() 
 {
+    echo "Building libbacktrace..."
+    cd libbacktrace
+    ./configure --prefix="${srcdir}/deps-build"
+    make
+    make install
+    cd ${srcdir}
+
     echo "Building shaderc..."
     cd shaderc
     cmake -DCMAKE_BUILD_TYPE=Release \
@@ -164,7 +172,7 @@ build()
     -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
     -DDISABLE_ADVANCE_SIMD=ON \
     -DCMAKE_PREFIX_PATH="${srcdir}/deps-build" \
-    -DCMAKE_BUILD_RPATH="/opt/pcsx2"
+    -DCMAKE_BUILD_RPATH="/opt/pcsx2/lib"
     ninja -C build
     
     cd pcsx2_patches
@@ -172,7 +180,6 @@ build()
 }
 
 package() {
-    ls pcsx2
     install -dm755  "${pkgdir}"/opt/
     cp -r build/bin "${pkgdir}"/opt/"${pkgname%-git}"
     install -Dm755 pcsx2-qt.sh "$pkgdir"/usr/bin/pcsx2-qt
@@ -181,10 +188,11 @@ package() {
     install -Dm644 pcsx2/bin/resources/icons/AppIconLarge.png \
     "${pkgdir}"/usr/share/icons/hicolor/512x512/apps/PCSX2.png
     install -Dm644 -t "${pkgdir}"/opt/"${pkgname%-git}"/resources/ patches.zip
-    install -Dm644 -t "${pkgdir}"/opt/"${pkgname%-git}"/ ${srcdir}/deps-build/lib/libshaderc_shared.so.1
+    install -Dm644 -t "${pkgdir}"/opt/"${pkgname%-git}"/lib ${srcdir}/deps-build/lib/libshaderc_shared.so.1
 }
 
 sha256sums=('SKIP'
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'

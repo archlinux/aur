@@ -37,7 +37,6 @@ pkgbase = pcsx2-git
 	depends = libpng
 	depends = hicolor-icon-theme
 	depends = xcb-util-cursor
-	depends = libbacktrace-git
 	optdepends = qt6-wayland: Wayland support
 	optdepends = libpulse: Pulseaudio support
 	optdepends = libpipewire: Pipewire support
@@ -55,11 +54,13 @@ pkgbase = pcsx2-git
 	source = git+https://github.com/biojppm/debugbreak.git
 	source = git+https://github.com/fastfloat/fast_float.git
 	source = vulkan-headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
+	source = git+https://github.com/ianlancetaylor/libbacktrace.git#commit=ad106d5fdd5d960bd33fae1c48a351af567fd075
 	source = git+https://github.com/google/shaderc.git#tag=v2024.1
 	source = git+https://github.com/KhronosGroup/glslang.git#commit=142052fa30f9eca191aa9dcf65359fcaed09eeec
 	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git#commit=5e3ad389ee56fca27c9705d093ae5387ce404df4
 	source = git+https://github.com/KhronosGroup/SPIRV-Tools.git#commit=dd4b663e13c07fea4fbb3f70c1c91c86731099f7
 	source = pcsx2-qt.sh
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
