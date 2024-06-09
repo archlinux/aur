@@ -1,16 +1,16 @@
 # Contributor: twa022 <twa022 at gmail dot com>
 
 pkgname=dockbarx-lxqt-plugin
-pkgver=0.9
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="DockBarX LXQT applet"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://github.com/xuzhen/dockbarx-lxqt-plugin"
-license=('GPL3')
-depends=('dockbarx' 'lxqt-panel' 'qt5-x11extras')
+license=('GPL-3.0-or-later')
+depends=('dockbarx' 'lxqt-panel' 'qt6-base')
 makedepends=('cmake')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")	
-sha256sums=('f61222d8a1a01ec2140860251cba9ff7107fcea606560324440d91b58d4e9c4d')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('a9d0ddc52ab106c46ad5e7d2d6028fe48dcb94b80d81e2828871aeb929fa71c5')
 
 build() {
   cd "${pkgname}-${pkgver}"
