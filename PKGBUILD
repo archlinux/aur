@@ -3,7 +3,7 @@
 pkgname=bunsen-common-git
 pkgver=r143.1f382a8
 pkgrel=3
-pkgdesc="Shared shell scripts commonly used in BunsenLabs Linux projects"
+pkgdesc="Various shared files for BunsenLabs"
 arch=('any')
 url="https://github.com/BunsenLabs/bunsen-common"
 license=('GPL-3.0-or-later')
