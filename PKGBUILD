@@ -21,6 +21,7 @@ sha256sums=(
 
 build() {
 	cd "$pkgname-$pkgver"
+	export CFLAGS="$CFLAGS -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration"
 	./configure --prefix=/usr
 	make
 }
