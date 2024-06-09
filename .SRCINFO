@@ -1,9 +1,8 @@
 pkgbase = rime-minecraft-dict
 	pkgdesc = Minecraft dict for RIME
 	pkgver = 1.20.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kimiblock/rime-minecraft-dict
-	install = rime-minecraft-dict.install
 	arch = any
 	license = GPL-3.0-or-later
 	provides = rime-minecraft-dict
