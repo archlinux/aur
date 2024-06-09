@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=hwatch-git
-pkgver=0.3.12.r1.g5dc06a5
+pkgver=0.3.14.r0.gdf88367
 pkgrel=1
 pkgdesc="A modern alternative to the watch command (git)"
 arch=('x86_64')
