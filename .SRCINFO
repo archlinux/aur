@@ -1,6 +1,6 @@
 pkgbase = dockbarx-git
 	pkgdesc = TaskBar with grouping and group manipulation
-	pkgver = 1.0beta3+17+g31209c2
+	pkgver = 1.0beta4+0+g3c5e6b3
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/xuzhen/dockbarx
@@ -21,12 +21,13 @@ pkgbase = dockbarx-git
 	depends = python-xlib
 	depends = python-pyxdg
 	optdepends = dockbarx-mate-applet: mate applet
+	optdepends = dockbarx-lxqt-plugin: lxqt applet
+	optdepends = xfce4-dockbarx-plugin: xfce4-panel plugin
 	optdepends = zeitgeist: recently used file list
-	optdepends = xfce4-dockbarx-plugin>=0.6: xfce4-panel plugin
 	optdepends = python-pyudev: dockx battery applet
 	optdepends = gconf: export settings from older versions of dockbarx
 	optdepends = python-lxml: import settings script
-	provides = dockbarx=1.0beta3+17+g31209c2
+	provides = dockbarx=1.0beta4+0+g3c5e6b3
 	conflicts = dockbarx
 	source = dockbarx::git+https://github.com/xuzhen/dockbarx.git#branch=pygi-python3
 	sha256sums = SKIP

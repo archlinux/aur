@@ -4,7 +4,7 @@ _pkgname=dockbarx
 pkgname=${_pkgname}-git
 epoch=2
 _pkgver=1.0beta
-pkgver=1.0beta3+17+g31209c2
+pkgver=1.0beta4+0+g3c5e6b3
 pkgrel=1
 pkgdesc="TaskBar with grouping and group manipulation"
 arch=('any')
@@ -14,8 +14,9 @@ depends=('libkeybinder3' 'python-cairo' 'dbus-python' 'python-gobject' 'python-p
          'python-xlib' 'python-pyxdg')
 makedepends=('python-setuptools' 'python-installer' 'python-build' 'python-wheel' 'python-polib' 'git')
 optdepends=('dockbarx-mate-applet: mate applet'
+            'dockbarx-lxqt-plugin: lxqt applet'
+            'xfce4-dockbarx-plugin: xfce4-panel plugin'
             'zeitgeist: recently used file list'
-            'xfce4-dockbarx-plugin>=0.6: xfce4-panel plugin'
             'python-pyudev: dockx battery applet'
             'gconf: export settings from older versions of dockbarx'
             'python-lxml: import settings script')
