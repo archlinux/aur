@@ -1,4 +1,4 @@
-From 2d6eb3775056be6c00993aa55eac79cac7678d6d Mon Sep 17 00:00:00 2001
+From 90a64d7efe111a10b623e179b040bdf5c5e1d406 Mon Sep 17 00:00:00 2001
 From: Dorian Stoll <dorian.stoll@tmsp.io>
 Date: Sat, 27 Jun 2020 18:21:11 +0200
 Subject: [PATCH 01/16] Add support for BUS_VIRTUAL
@@ -17,10 +17,11 @@ Signed-off-by: Dorian Stoll <dorian.stoll@tmsp.io>
  libwacom/libwacom.h          | 1 +
  test/test-tablet-validity.c  | 1 +
  test/test_data_files.py      | 1 +
- 5 files changed, 12 insertions(+)
+ tools/debug-device.c         | 1 +
+ 6 files changed, 13 insertions(+)
 
 diff --git a/libwacom/libwacom-database.c b/libwacom/libwacom-database.c
-index 2c17e0d..090d5aa 100644
+index 0dfb5f0..0f1b180 100644
 --- a/libwacom/libwacom-database.c
 +++ b/libwacom/libwacom-database.c
 @@ -130,6 +130,8 @@ bus_from_str (const char *str)
@@ -42,10 +43,10 @@ index 2c17e0d..090d5aa 100644
  	g_assert_not_reached ();
  }
 diff --git a/libwacom/libwacom.c b/libwacom/libwacom.c
-index c606e48..2f6bddd 100644
+index 349608d..b6d1f4c 100644
 --- a/libwacom/libwacom.c
 +++ b/libwacom/libwacom.c
-@@ -148,6 +148,10 @@ get_bus_vid_pid (GUdevDevice  *device,
+@@ -149,6 +149,10 @@ get_bus_vid_pid (GUdevDevice  *device,
  		*bus = WBUSTYPE_I2C;
  		retval = TRUE;
  		break;
@@ -56,7 +57,7 @@ index c606e48..2f6bddd 100644
  	}
  
  out:
-@@ -826,6 +830,7 @@ static void print_match(int fd, const WacomMatch *match)
+@@ -1022,6 +1026,7 @@ static void print_match(int fd, const WacomMatch *match)
  		case WBUSTYPE_USB:		bus_name = "usb";	break;
  		case WBUSTYPE_SERIAL:		bus_name = "serial";	break;
  		case WBUSTYPE_I2C:		bus_name = "i2c";	break;
@@ -65,10 +66,10 @@ index c606e48..2f6bddd 100644
  		default:			g_assert_not_reached(); break;
  	}
 diff --git a/libwacom/libwacom.h b/libwacom/libwacom.h
-index 389681d..040c51e 100644
+index c0d380c..a4fbb17 100644
 --- a/libwacom/libwacom.h
 +++ b/libwacom/libwacom.h
-@@ -149,6 +149,7 @@ typedef enum {
+@@ -154,6 +154,7 @@ typedef enum {
  	WBUSTYPE_SERIAL,	/**< Serial tablet */
  	WBUSTYPE_BLUETOOTH,	/**< Bluetooth tablet */
  	WBUSTYPE_I2C,		/**< I2C tablet */
@@ -77,7 +78,7 @@ index 389681d..040c51e 100644
  
  /**
 diff --git a/test/test-tablet-validity.c b/test/test-tablet-validity.c
-index 4b7983d..91e83de 100644
+index 69d34c8..964fce0 100644
 --- a/test/test-tablet-validity.c
 +++ b/test/test-tablet-validity.c
 @@ -177,6 +177,7 @@ assert_vidpid(WacomBusType bus, int vid, int pid)
@@ -89,10 +90,10 @@ index 4b7983d..91e83de 100644
  			g_assert_cmpint(pid, >, 0);
  			break;
 diff --git a/test/test_data_files.py b/test/test_data_files.py
-index 4cca787..8ab1fea 100755
+index 9385b1c..f76c3f3 100755
 --- a/test/test_data_files.py
 +++ b/test/test_data_files.py
-@@ -46,6 +46,7 @@ def test_device_match(tabletfile):
+@@ -47,6 +47,7 @@ def test_device_match(tabletfile):
              "bluetooth",
              "i2c",
              "serial",
@@ -100,6 +101,18 @@ index 4cca787..8ab1fea 100755
          ], f"{tabletfile}: unknown bus type"
          assert re.match(
              "[0-9a-f]{4}", vid
+diff --git a/tools/debug-device.c b/tools/debug-device.c
+index 2cdac20..51ec53e 100644
+--- a/tools/debug-device.c
++++ b/tools/debug-device.c
+@@ -122,6 +122,7 @@ handle_device(WacomDeviceDatabase *db, const char *path)
+ 			case WBUSTYPE_SERIAL: busstr = "SERIAL"; break;
+ 			case WBUSTYPE_BLUETOOTH: busstr = "BLUETOOTH"; break;
+ 			case WBUSTYPE_I2C: busstr = "I2C"; break;
++			case WBUSTYPE_VIRTUAL: busstr = "VIRTUAL"; break;
+ 		}
+ 		func(libwacom_get_bustype, "%s", busstr);
+ 	}
 -- 
-2.43.2
+2.45.1
 
