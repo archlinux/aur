@@ -12,7 +12,7 @@ sha256sums_x86_64=('56007840bbef20f607fd0722e0bdff461554a68619f353f7b93f86d0b57f
 
 package(){
     # extract package data
-    tar xf data.tar.xz -C "${pkgdir}"
+    tar xf data.tar.gz -C "${pkgdir}"
 }
 
 post_install() {
