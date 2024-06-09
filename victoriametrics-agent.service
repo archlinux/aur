@@ -5,8 +5,8 @@ After=network.target
 
 [Service]
 DynamicUser=true
-LogsDirectory=victoriametrics
-StateDirectory=victoriametrics
+LogsDirectory=victoriametrics-agent
+StateDirectory=victoriametrics-agent
 
 AmbientCapabilities=
 CapabilityBoundingSet=
@@ -21,8 +21,8 @@ MemoryDenyWriteExecute=true
 
 User=victoriametrics
 Group=victoriametrics
-EnvironmentFile=/etc/default/victoriametrics
-ExecStart=/usr/bin/victoria-metrics -storageDataPath /var/lib/victoriametrics $ARGS
+EnvironmentFile=/etc/default/victoriametrics-agent
+ExecStart=/usr/bin/vmagent -remoteWrite.tmpDataPath=/var/lib/victoriametrics-agent $ARGS
 LimitNOFILE=65536
 LimitNPROC=32000
 

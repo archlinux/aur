@@ -1,23 +1,31 @@
-# Maintainer: Giovanni Harting <539@idlegandalf.com>
+# Maintainer: Lapo Luchini <lapo@lapo.it>
+# Contributor: Giovanni Harting <539@idlegandalf.com>
 # Contributor: KawaiDesu <zmey1992@ya.ru>
 
-pkgname=victoriametrics
+# Based on https://aur.archlinux.org/victoriametrics.git
+
+pkgname=victoriametrics-agent
 _name=VictoriaMetrics
-pkgver=1.99.0
+pkgver=1.101.0
 pkgrel=1
-pkgdesc='Fast, cost-effective and scalable time series database'
+pkgdesc='Agent for Victoria Metrics, a fast, cost-effective and scalable time series database'
 arch=(x86_64)
 url='https://victoriametrics.github.io'
 license=(Apache-2.0)
 depends=(glibc)
 makedepends=(go)
-backup=('etc/default/victoriametrics')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/VictoriaMetrics/VictoriaMetrics/archive/refs/tags/v$pkgver.tar.gz"
-        'victoriametrics.service'
-        'victoriametrics.default')
-b2sums=('d0883b5a52e74d5dbfa10e3cb4b78229674d6e5476bd3a74b28ae178e7c99762c52fe43e6a987546ac380851c3d177afb7a7e5e8c43f75e9330eb167c4cfcfb8'
-        '82b1c2b55b3c9f3d4deee12753820247ba1f4ac28a94cf16dad31ce091306875d392f7a7a0a56029d88101d7e75f7fefec392ac50d2447276850476f773d147d'
-        '4405dc19795d2cbfa515e4750a2cad77c13611293176ff5aeec597f9905494902bd4496c1e90f1efe2d484e383adb39d034167673b9fe7de8b307b8cedf17b7f')
+conflicts=('vmutils')
+backup=('etc/default/victoriametrics-agent')
+source=("victoriametrics-$pkgver.tar.gz::https://github.com/VictoriaMetrics/VictoriaMetrics/archive/refs/tags/v$pkgver.tar.gz"
+        'victoriametrics-agent.service'
+        'victoriametrics-agent.default'
+        'victoriametrics.sysusers'
+        'victoriametrics-agent.tmpfiles')
+b2sums=('99b02ad20d601bb17b11c6bbe64430a25b57f274c512b6c4917e2ee9e6346275dd707fd74b595a1eb718a205128cabd08a6953f7c9bf4e99f05c9098b2bba63b'
+        '3d6ed6ecd42dd4fc449de5a601b6977dff6c1e802977710a442fbd422b92b484dbd6f0f8703e2ed5cd394c6b69694f7fa3046062d897f5110b19b585a67dad77'
+        'e1344542a24c0039b61bf906fb5270d4d82340dcf0afe8d973ce850587093163454436c9e47ba3793d4796de16a7163ab904311e20bd810a9f97ad949bba72c5'
+        'ef92fc1e9be0380fb7781d553ac0d967e880bfab33d22842aed23cf88ca247c3f2e1fcddfc1e503f3ec51c0977749b8fa7b01d768dc9a59a679fc80743187e0e'
+        '9b2c61b4e5002daafc1f2ea7e75249bed1c8e61e6bbd1a63b4a484a3f0cdd12b5c47da4c79427469c52dc0d0db09473b4ecaa3576ee338a0dcd2f0206ad289d5')
 
 build() {
   cd $_name-$pkgver
@@ -27,19 +35,21 @@ build() {
       -mod=readonly \
       -modcacherw \
       -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
-      -o bin/victoria-metrics \
-      ./app/victoria-metrics
+      -o bin/vmagent \
+      ./app/vmagent
 }
 
 check() {
   cd $_name-$pkgver
-  go test ./app/victoria-metrics
+  go test ./app/vmagent
 }
 
 package() {
-  install -Dm 755 $_name-$pkgver/bin/victoria-metrics -t "$pkgdir"/usr/bin/
-  install -Dm 644 victoriametrics.service -t "$pkgdir"/usr/lib/systemd/system/
-  install -Dm 644 victoriametrics.default "$pkgdir"/etc/default/victoriametrics
+  install -Dm 755 $_name-$pkgver/bin/vmagent -t "$pkgdir"/usr/bin/
+  install -Dm 644 victoriametrics-agent.service -t "$pkgdir"/usr/lib/systemd/system/
+  install -Dm 644 victoriametrics-agent.default "$pkgdir"/etc/default/victoriametrics-agent
+  install -Dm 644 victoriametrics.sysusers "$pkgdir"/usr/lib/sysusers.d/victoriametrics.conf
+  install -Dm 644 victoriametrics-agent.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/victoriametrics-agent.conf
 }
 
 # vim:set ts=2 sw=2 et:

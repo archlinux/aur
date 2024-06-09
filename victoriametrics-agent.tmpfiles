@@ -1,0 +1,2 @@
+d /var/log/victoriametrics-agent 0755 victoriametrics victoriametrics - -
+d /var/lib/victoriametrics-agent 0700 victoriametrics victoriametrics - -
