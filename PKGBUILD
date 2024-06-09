@@ -29,7 +29,7 @@ build() {
   python -m build --no-isolation --wheel
 }
 
-package_python-jenkinsapi-git() {
+package() {
   depends=("python" "python-urllib3" "python-setuptools" "python-requests" "python-pytz")
   optdepends=("python-requests-kerberos: for Kerberos support")
   conflicts=("python-${_pkgname}")
