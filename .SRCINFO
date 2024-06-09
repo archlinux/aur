@@ -24,7 +24,3 @@ pkgname = libticables-git
 pkgname = libticalcs-git
 	provides = libticalcs
 	conflicts = libticalcs
-
-pkgname = libtifiles-git
-	provides = libtifiles
-	conflicts = libtifiles

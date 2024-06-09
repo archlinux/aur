@@ -1,7 +1,7 @@
 # Maintainer: Antoine Viallon <antoine at lesviallon dot fr>
 
 pkgbase=tilibs-git
-pkgname=(libticables-git libticalcs-git libtifiles-git)
+pkgname=(libticables-git libticalcs-git)
 pkgver=1.18.r41.g7be38a45
 pkgrel=2
 pkgdesc="Various TI libs required for TILP"
@@ -69,10 +69,5 @@ package_libticables-git() {
 package_libticalcs-git() {
     provides=(libticalcs)
     conflicts=(libticalcs)
-    _package
-}
-package_libtifiles-git() {
-    provides=(libtifiles)
-    conflicts=(libtifiles)
     _package
 }
