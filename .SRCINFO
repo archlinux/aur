@@ -1,7 +1,7 @@
 pkgbase = ofinstaller-beans-bin
 	pkgdesc = Installer for Open Fortress
-	pkgver = 1.3.0
-	pkgrel = 2
+	pkgver = 1.3.1
+	pkgrel = 1
 	url = https://github.com/AdastralGroup/beans-rs
 	arch = x86_64
 	license = GPL-3.0-only
@@ -10,7 +10,7 @@ pkgbase = ofinstaller-beans-bin
 	depends = openssl
 	provides = ofinstaller-beans
 	conflicts = ofinstaller-beans
-	source = https://github.com/AdastralGroup/beans-rs/releases/download/v1.3.0/beans-rs
-	sha256sums = c43edae503a94d601b124e7905f5638f841a16a0edd74305411b1647e3982fca
+	source = https://github.com/AdastralGroup/beans-rs/releases/download/v1.3.1/beans-rs
+	sha256sums = de212f4e9b002168fbbade1df7d5886313e9323486dc8d4d6df0e8c4710d4f6d
 
 pkgname = ofinstaller-beans-bin
