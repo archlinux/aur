@@ -1,15 +1,17 @@
 pkgbase = vtex2
 	pkgdesc = A VTF converter and editor
-	pkgver = 0.1.2
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/StrataSource/vtex2
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = git
+	makedepends = gendesk
 	depends = gcc-libs
 	depends = glibc
 	depends = qt6-base
+	depends = hicolor-icon-theme
 	source = git+https://github.com/StrataSource/vtex2.git#commit=09d03a07a8034e7574b4235aff8e7f1d2450e0e4
 	source = vtflib::git+https://github.com/StrataSource/VTFLib.git
 	source = fmtlib::git+https://github.com/fmtlib/fmt.git

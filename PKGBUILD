@@ -1,13 +1,13 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com
 pkgname=vtex2
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A VTF converter and editor"
 arch=('x86_64')
 url="https://github.com/StrataSource/vtex2"
 license=('MIT')
-depends=('gcc-libs' 'glibc' 'qt6-base')
-makedepends=('cmake' 'git')
+depends=('gcc-libs' 'glibc' 'qt6-base' 'hicolor-icon-theme')
+makedepends=('cmake' 'git' 'gendesk')
 source=("git+$url.git#commit=09d03a07a8034e7574b4235aff8e7f1d2450e0e4"
 	"vtflib::git+https://github.com/StrataSource/VTFLib.git"
 	"fmtlib::git+https://github.com/fmtlib/fmt.git")
@@ -30,13 +30,24 @@ build() {
 	cmake -B build \
 	-S $pkgname \
 	-DCMAKE_INSTALL_PREFIX=/usr \
+	-DCMAKE_BUILD_TYPE=None \
 	-DBUILD_GUI=1
 
 	cmake --build build
+
+	gendesk -f --pkgname=vtfview \
+	--pkgdesc="$pkgdesc" \
+	--name=VTFView \
+	--exec=vtfview \
+	--icon=vtfview \
+	--terminal=false \
+	--categories=Development,Utilities,Graphics
 }
 
 package() {
 	cd "$srcdir"
 	DESTDIR=$pkgdir cmake --install build
 	install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "$srcdir/vtfview.desktop" "$pkgdir/usr/share/applications/vtfview.desktop"
+	install -Dm644 "$srcdir/$pkgname/res/icon.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/vtfview.svg"
 }
