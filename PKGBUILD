@@ -3,7 +3,7 @@
 
 pkgname=proton-pass
 pkgver=1.17.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Open-source password manager for effortless protection. Securely store, share and auto-login your accounts with Proton Pass, using end-to-end encryption trusted by millions."
 arch=("x86_64")
 url="https://proton.me/pass"

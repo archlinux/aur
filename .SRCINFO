@@ -1,7 +1,7 @@
 pkgbase = proton-pass
 	pkgdesc = Open-source password manager for effortless protection. Securely store, share and auto-login your accounts with Proton Pass, using end-to-end encryption trusted by millions.
 	pkgver = 1.17.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://proton.me/pass
 	arch = x86_64
 	groups = ProtonPass
