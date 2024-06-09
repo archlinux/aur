@@ -1,0 +1,10 @@
+--- pre.my_api.c	2024-01-01 11:32:32.000000000 -0500
++++ my_api.c	2024-06-09 11:48:41.766646837 -0500
+@@ -20,6 +20,7 @@
+  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+  * DEALINGS IN THE SOFTWARE.
+  */
++#define _GNU_SOURCE
+ #include <stdlib.h>
+ #include <memory.h>
+ #include <stdio.h>
