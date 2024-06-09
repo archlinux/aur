@@ -1,6 +1,6 @@
 # Maintainer: matt quintanilla <matt @ matt quintanilla . xyz>
 pkgname=python-nextcord
-pkgver=2.6.2
+pkgver=2.6.1
 _tarname=nextcord-$pkgver
 pkgrel=1
 pkgdesc="A Python wrapper for the Discord API forked from discord.py "
