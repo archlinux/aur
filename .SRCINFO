@@ -1,0 +1,11 @@
+pkgbase = hare-hook-runit
+pkgdesc = Runit service for hare-hook
+pkgver = 0.9.1
+pkgrel = 1
+url = https://harehook.net
+arch = x86_64
+license = Unlicense
+depends = hare-hook
+source = run
+sha256sums = e9a6f13c431d4022a46748f0705244569ec90d11423bd4fe5b3887d52791c3a4
+pkgname = hare-hook-runit
