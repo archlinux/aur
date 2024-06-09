@@ -1,8 +1,9 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
-pkgname=seccomp-filtered-run
+_pkgname_base=seccomp-filtered
+pkgname=${_pkgname_base}-run
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Run other program with seccomp filters.'
 url="https://gitlab.com/patlefort/${pkgname}"
 license=('GPL3')
@@ -10,7 +11,7 @@ depends=('gcc-libs' 'glibc')
 makedepends=('rust' 'cargo')
 arch=('x86_64' 'aarch64')
 source=("https://gitlab.com/patlefort/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('431b92b6c3016655f64dc30fe0998853877fccdb27f87fde8d57a2803a81ffb1')
+sha256sums=('2c9d685bbdc57a3a3b8c4035fad42af5df6a2ec8364cdbf1601fdf7a18cfdf9f')
 
 _srcdir="${pkgname}-v${pkgver}"
 
@@ -21,5 +22,6 @@ build() {
 }
 
 package() {
-	install -Dm755 "build/release/${pkgname}" -t "${pkgdir}/usr/bin"
+	install -Dm755 "build/release/${_pkgname_base}-run" -t "${pkgdir}/usr/bin"
+	install -Dm755 "build/release/${_pkgname_base}-gen" -t "${pkgdir}/usr/bin"
 }

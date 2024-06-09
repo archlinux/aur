@@ -1,7 +1,7 @@
 pkgbase = seccomp-filtered-run
 	pkgdesc = Run other program with seccomp filters.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/patlefort/seccomp-filtered-run
 	arch = x86_64
 	arch = aarch64
@@ -11,6 +11,6 @@ pkgbase = seccomp-filtered-run
 	depends = gcc-libs
 	depends = glibc
 	source = https://gitlab.com/patlefort/seccomp-filtered-run/-/archive/v1.0.0/seccomp-filtered-run-v1.0.0.tar.gz
-	sha256sums = 431b92b6c3016655f64dc30fe0998853877fccdb27f87fde8d57a2803a81ffb1
+	sha256sums = 2c9d685bbdc57a3a3b8c4035fad42af5df6a2ec8364cdbf1601fdf7a18cfdf9f
 
 pkgname = seccomp-filtered-run
