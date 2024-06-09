@@ -1,0 +1,51 @@
+pkgbase = riven-original
+	pkgdesc = 'Riven: The Sequel to Myst' is a 1997 point-and-click puzzle adventure game with superb landscape immersion. This is the original game, not the remake.
+	pkgver = 1.2_20030721_dvd
+	pkgrel = 1
+	epoch = 0
+	url = https://cyan.com/games/riven/
+	arch = any
+	groups = myst
+	groups = riven
+	makedepends = dos2unix
+	makedepends = ffmpeg
+	makedepends = imagemagick
+	makedepends = optipng
+	options = emptydirs
+	source = riven.dvd.iso::https://archive.org/download/riven_202001/Riven.iso
+	source = riven.sh
+	source = riven.desktop
+	source = license-note.txt
+	sha256sums = 90f4e43a4fcb6cddc50497eccd235b79590beaa4bf8e432ddb87755b8fbab0fe
+	sha256sums = ee6a4ba3dbd61e7d0fb14476b64df0aced66a5486f4cfee3c9f09eb944e7852b
+	sha256sums = 7b4d5fb2f60281cbd4c031f99923f8122ff7dd5996ce395cba99e498309dc270
+	sha256sums = f92e92e57ae86a3d490c81d965e5d51779afef61c869ed4c9d9e0b6411c1789c
+
+pkgname = riven-original
+	pkgdesc = 'Riven: The Sequel to Myst' is a 1997 point-and-click puzzle adventure game with superb landscape immersion. This is the original game, not the remake.
+	url = https://cyan.com/games/riven/
+	license = GPL-3.0-or-later
+	depends = riven-data
+	depends = scummvm
+	optdepends = riven-makingof: Movie 'The Making of Riven'.
+	optdepends = riven-soundtrack: Soundtrack of Riven.
+	provides = riven=1.2_20030721_dvd
+	replaces = riven<=1.2_2023
+
+pkgname = riven-original-data
+	pkgdesc = Data files for the point-and-click adventure/ puzzle game 'Riven: The Sequel to Myst'. Can be directly used with ScummVM. This is the game data of the original game, not the remake.
+	url = https://archive.org/details/riven_202001
+	license = LicenseRef-proprietary:Cyan Worlds
+	optdepends = riven-original: To actually launch the game just by executing '/usr/bin/riven'.
+	optdepends = scummvm: To play the game by manually launching ScummVM and adding the game ScummVM.
+	provides = riven-data=1.2_20030721_dvd
+	replaces = riven-data<=1.2_2023
+
+pkgname = riven-original-makingof
+	pkgdesc = Movie 'The Making of Riven', a point-and-click immersive puzzle adventure game. This is for the original game, not the remake.
+	url = https://archive.org/details/riven_202001
+	license = LicenseRef-proprietary
+	optdepends = riven-original: To play the game.
+	optdepends = riven-original-soundtrack: Soundtrack of the original game of Riven.
+	provides = riven-makingof=1.2_20030721_dvd
+	replaces = riven-makingof<=1.2_2023

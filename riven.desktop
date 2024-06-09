@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Riven
+Comment=An adventure/ puzzle game with immersive landscape.
+Exec=riven
+Icon=riven
+Terminal=false
+Type=Application
+Categories=Game;AdventureGame;LogicGame;
