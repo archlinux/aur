@@ -11,6 +11,7 @@ url="https://github.com/kingwingfly/${_pkgname}"
 license=('custom:MIT')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-git")
+OPTIONS=(!debug)
 source=("${_pkgname}-${pkgver}.tar.gz::$url/releases/download/v$pkgver/${_pkgname}-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz"
 	"https://github.com/kingwingfly/fav/raw/v${pkgver}/LICENSE")
 sha256sums=('081f8826b0f403daf2c704974a80b708fbf186184a78321f174a05624d8a98d3'
