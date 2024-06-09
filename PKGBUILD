@@ -1,7 +1,7 @@
 # Maintainer: Eldred Habert <arch@eldred.fr>
 pkgname=mesen2-git
 pkgver=r2971.31a13cfa
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-system emulator (NES, SNES, Game Boy and PC Engine)"
 arch=('x86_64')
 url="https://www.mesen.ca"
@@ -25,10 +25,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	make LTO=true SYSTEM_LIBEVDEV=true STATICLINK=false USE_GCC=true # GCC is part of `base-devel`, `clang` is not.
-	# FIXME: this is currently required because the first build generates two dependency `.so`s
-	#        *after* they are necessary.
-	make LTO=true SYSTEM_LIBEVDEV=true STATICLINK=false USE_GCC=true
+	make LTO=true SYSTEM_LIBEVDEV=true STATICLINK=false USE_AOT=true USE_GCC=true # GCC is part of `base-devel`, `clang` is not.
 }
 
 package() {
