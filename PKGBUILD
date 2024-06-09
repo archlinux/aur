@@ -1,12 +1,13 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=drawterm-git
-pkgver=r135.fa5671b
+pkgver=r136.b485166
 pkgrel=1
-pkgdesc="Connect to Plan 9 CPU servers from other operating systems."
+pkgdesc='Connect to Plan 9 CPU servers from other operating systems.'
 arch=('i686' 'x86_64')
 url='https://github.com/9fans/drawterm'
 license=('MIT')
 makedepends=('git')
+depends=('libx11' 'libxt')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}" "${pkgname%-*}-hg")
 source=("$pkgname::git+$url")
@@ -24,6 +25,6 @@ build() {
 
 package() {
 	cd "$srcdir/$pkgname"
-	install -Dm755 drawterm $pkgdir/usr/bin/drawterm
-	install -Dm644 drawterm.ico $pkgdir/usr/share/pixmaps/drawterm.ico
+	install -D -m755 drawterm $pkgdir/usr/bin/drawterm
+	install -D -m644 drawterm.ico $pkgdir/usr/share/pixmaps/drawterm.ico
 }
