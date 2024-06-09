@@ -1,4 +1,4 @@
-pkgbase = dangerzone
+pkgbase = dangerzone-bin
 	pkgdesc = Take potentially dangerous PDFs, office documents, or images and convert them to a safe PDF
 	pkgver = 0.6.1
 	pkgrel = 1
@@ -20,4 +20,4 @@ pkgbase = dangerzone
 	source = dangerzone-0.6.1.deb::https://packages.freedom.press/apt-tools-prod/pool/main/d/dangerzone/dangerzone_0.6.1-1_all.deb
 	sha256sums = 9cb41ecf73f80121fcd5713bc044386eb18027a2542ac9e6253bb4e98a64e350
 
-pkgname = dangerzone
+pkgname = dangerzone-bin
