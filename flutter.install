@@ -1,19 +1,28 @@
 _builders=(
   builder
   builduser
-  flutteruser
   main-builder
+)
+
+_groups=(
+  flutter
+  flutteruser
 )
 
 post_install() {
   # primary flutter group
   groupadd -f flutter
-  setfacl -R -m "g:flutter:rwX" /opt/flutter
+
+  for i in "${_groups[@]}"; do
+    if grep -q "$i" /etc/passwd > /dev/null; then
+      setfacl -R -m "g:$i:rwX" /opt/flutter
+    fi
+  done
 
   # clean chroot/container builders
-  for _group in "${_builders[@]}"; do
-    if grep -q "$_group" /etc/passwd > /dev/null; then
-      setfacl -R -m "u:$_group:rwX" /opt/flutter
+  for i in "${_builders[@]}"; do
+    if grep -q "$i" /etc/passwd > /dev/null; then
+      setfacl -R -m "u:$i:rwX" /opt/flutter
     fi
   done
 
@@ -25,14 +34,29 @@ post_upgrade() {
   post_install
 }
 
-post_remove() {
+pre_install() {
+  chmod -R go-w opt/flutter
+}
+
+pre_upgrade() {
+  chmod -R go-w opt/flutter
+}
+
+pre_remove() {
   # remove extra permissions
-  for _group in "${_builders[@]}"; do
-    if grep -q "group:$_group" <<< $(getfacl -ac /opt/flutter 2> /dev/null); then
-      sudo setfacl -R -x "g:flutter" /opt/flutter
+  for i in ${_builders[@]} ${_groups[@]}; do
+    if grep -q "group:$i" <<< $(getfacl -ac /opt/flutter 2> /dev/null); then
+      sudo setfacl -R -x "g:$i" /opt/flutter
+    fi
+    if grep -q "user:$i" <<< $(getfacl -ac /opt/flutter 2> /dev/null); then
+      sudo setfacl -R -x "u:$i" /opt/flutter
     fi
   done
 
+  chmod -R go-w opt/flutter
+}
+
+post_remove() {
   # leave opt directory to prevent data loss
   echo "The 'flutter' directory may be removed, if not needed:"
   echo "   sudo \rm -rf /opt/flutter"
