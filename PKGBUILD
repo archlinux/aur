@@ -1,7 +1,7 @@
 # Maintainer: Integral <integral@murena.io>
 
 pkgname=geekbench-preview
-pkgver=6.2.1
+pkgver=6.3.0
 pkgrel=1
 pkgdesc="A cross-platform benchmark that measures processor and memory performance (Preview Version)"
 arch=('aarch64' 'riscv64')
@@ -10,8 +10,8 @@ depends=('zlib' 'gcc-libs')
 license=("custom")
 source_aarch64=("https://cdn.geekbench.com/Geekbench-${pkgver}-LinuxARMPreview.tar.gz")
 source_riscv64=("https://cdn.geekbench.com/Geekbench-${pkgver}-LinuxRISCVPreview.tar.gz")
-sha512sums_aarch64=('387b1207cb06bbb305fcd7e1c6bb03ed0ec0bd707284f9b71fb570e12ffe6014dd3f9afa9019046301423a022c4803ec159c8bfbe9342e1171e11b18ff33a175')
-sha512sums_riscv64=('12452aa4032da006b3b8009491f6e210bb8e214c9945029c74bca9f43debf7eb3fc226bf181f764f7620c7368f25aba36dd7253f46a59dd8d7ee6f9f288036b3')
+sha512sums_aarch64=('e9992eb5c7038efdb721fd970bfcf8b0ee3e9d323a9e7cd98588514798560f16428c3e7c4d1d235d2a28320dc629305f29ec56a504923826d09136f4cfb7b775')
+sha512sums_riscv64=('5f8ec8582778d4aeff3644bd19f50ec5431dedb5eafe4643bb21dcbbe29f231fed5d3fa344bbe3fc9c7632209f47197dd1ae8043cbe308d025262dd1706f7cc3')
 conflicts=("geekbench")
 provides=("geekbench")
 options=('!strip')
