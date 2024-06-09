@@ -9,8 +9,8 @@ pkgbase = cuda-12.2
 	makedepends = zstd
 	makedepends = tar
 	depends = gcc12
-	depends = opencl-nvidia>=535.104
-	depends = nvidia-utils>=535.104
+	depends = opencl-nvidia-535xx
+	depends = nvidia-535xx-utils
 	optdepends = gdb: for cuda-gdb
 	optdepends = glu: required for some profiling tools in CUPTI
 	provides = cuda-toolkit

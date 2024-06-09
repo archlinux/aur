@@ -2,7 +2,6 @@ _major=12
 _minor=2
 _patch=2
 _release=1
-_driver=535.104
 
 pkgname=cuda-$_major.$_minor
 pkgver=$_major.$_minor.$_patch
@@ -15,7 +14,7 @@ license=('custom:NVIDIA')
 replaces=('cuda-toolkit' 'cuda-sdk' 'cuda-static')
 provides=('cuda-toolkit' 'cuda-sdk')
 conflicts=('cuda')
-depends=('gcc12' "opencl-nvidia>=$_driver" "nvidia-utils>=$_driver")
+depends=('gcc12' "opencl-nvidia-535xx" "nvidia-535xx-utils")
 optdepends=('gdb: for cuda-gdb'
             'glu: required for some profiling tools in CUPTI')
 makedepends=('zstd' 'tar')
