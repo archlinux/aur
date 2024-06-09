@@ -1,0 +1,15 @@
+pkgbase = bluraybackup-git
+	pkgdesc = command line program to backup Blu-ray Disc Movies (BDMV), inspired by dvdbackup
+	pkgver = 1.0.r2.g6f2f38c
+	pkgrel = 1
+	url = https://git.golem.linux.it/matteobin/bluraybackup
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = libbluray
+	provides = bluraybackup
+	conflicts = bluraybackup
+	source = git+https://git.golem.linux.it/matteobin/bluraybackup.git
+	sha256sums = SKIP
+
+pkgname = bluraybackup-git
