@@ -1,10 +1,10 @@
 pkgbase = bunsen-pipemenus-git
 	pkgdesc = Collection of Openbox pipemenus from BunsenLabs Linux
 	pkgver = r452.5e4e8c4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BunsenLabs/bunsen-pipemenus
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
 	depends = bunsen-common
 	depends = jgmenu

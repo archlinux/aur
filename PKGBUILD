@@ -2,11 +2,11 @@
 # Contributor: 2ion <dev@2ion.de>
 pkgname=bunsen-pipemenus-git
 pkgver=r452.5e4e8c4
-pkgrel=1
+pkgrel=2
 pkgdesc="Collection of Openbox pipemenus from BunsenLabs Linux"
 arch=('any')
 url="https://github.com/BunsenLabs/bunsen-pipemenus"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('bunsen-common' 'jgmenu' 'lua52' 'lua52-expat' 'lua52-penlight' 'lua52-posix' 'lua52-socket' 'mesa-utils' 'python3' 'python-lxml' 'python-paramiko' 'wget' 'xterm' 'yad')
 makedepends=('git')
 provides=("${pkgname%-git}")
