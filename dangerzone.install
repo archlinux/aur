@@ -1,0 +1,6 @@
+post_upgrade() {
+	echo "Running podman import..."
+	echo "You need to run: podman load -i /usr/share/dangerzone/container.tar.gz"
+	echo "Then: podman images -q the ID to /usr/share/dangerzone/image-id.txt"
+	echo "Done! Enjoy your dangerzone!"
+}
