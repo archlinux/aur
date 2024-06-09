@@ -122,7 +122,7 @@ GenericName[zh_CN]=无用文件清理程序
 GenericName[zh_TW]=無用檔案清理器
 TryExec=pkexec
 TryExec=bleachbit
-Exec=pkexec env DISPLAY=$DISPLAY HOME=$HOME XAUTHORITY=$XAUTHORITY HOME=$HOME USER=$USER XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR WAYLAND_DISPLAY=$WAYLAND_DISPLAY bleachbit
+Exec=pkexec env DISPLAY=$DISPLAY HOME=$HOME XAUTHORITY=$XAUTHORITY USER=$USER XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR WAYLAND_DISPLAY=$WAYLAND_DISPLAY bleachbit
 Icon=bleachbit
 Categories=System;FileTools;GTK;
 Keywords=cache;clean;free;performance;privacy;

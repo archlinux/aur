@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC
+ "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN"
+ "http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
+<policyconfig>
+  <action id="org.bleachbit.Bleachbit-Root">
+    <description>Run BleachBit as root</description>
+    <description xml:lang="zh-CN">以根用户执行 BleachBit</description>
+    <message>Authentication is required.</message>
+    <message xml:lang="zh-CN">请进行身份验证。</message>
+    <icon_name>bleachbit</icon_name>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>auth_admin</allow_active>
+    </defaults>
+    <annotate key="org.freedesktop.policykit.exec.path">/usr/bin/env</annotate>
+    <annotate key="org.freedesktop.policykit.exec.argv7">bleachbit</annotate>
+  </action>
+</policyconfig>
