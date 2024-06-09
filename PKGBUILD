@@ -3,7 +3,7 @@
 
 pkgname=bleachbit-root
 pkgver=1.0.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Run bleachbit as root for cleaning system files"
 arch=('any')
 url="https://www.bleachbit.org/"

@@ -1,7 +1,7 @@
 pkgbase = bleachbit-root
 	pkgdesc = Run bleachbit as root for cleaning system files
 	pkgver = 1.0.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.bleachbit.org/
 	arch = any
 	license = GPL
