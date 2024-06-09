@@ -1,7 +1,7 @@
 pkgbase = texturedplayer
 	pkgdesc = A simple and minimalistic TUI music player written in python.
 	pkgver = 1.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/TexturedPolak/texturedplayer
 	arch = any
 	license = MIT
@@ -11,6 +11,6 @@ pkgbase = texturedplayer
 	optdepends = python-tinytag: get metadata from songs
 	optdepends = python-pypresence: Discord Rich Presence support
 	source = https://github.com/TexturedPolak/texturedplayer/archive/refs/tags/1.0.1.tar.gz
-	sha256sums = f8785aecc8751a6136f3408c9fe12461d5083a0e19d3b4fa09f8cc334db0c68d
+	sha256sums = 67308fbad24682233ae0604b5c22b0e73451dafd5b8c90d1deffdd6232b246dd
 
 pkgname = texturedplayer
