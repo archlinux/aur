@@ -3,7 +3,7 @@
 pkgname=xpm-pixbuf-git
 pkgver=r1530.d290a0c
 pkgrel=1
-pkgdesc="Drop-in replacement of the old GdkPixbuf (devel branch)"
+pkgdesc="Utilities for rendering XPM icons to a GdkPixbuf (devel branch)"
 url="https://gitlab.gnome.org/ZanderBrown/xpm-pixbuf.git"
 arch=(x86_64)
 license=('LGPL-2.0-or-later')
@@ -15,11 +15,8 @@ depends=(
   gdk-pixbuf2
 )
 makedepends=(
-  gi-docgen
   git
-  gobject-introspection
   meson
-  python-docutils
 )
 source=(
   "$pkgname::git+$url"
