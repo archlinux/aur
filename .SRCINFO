@@ -13,6 +13,7 @@ pkgbase = cuda-12.2
 	depends = nvidia-535xx-utils
 	optdepends = gdb: for cuda-gdb
 	optdepends = glu: required for some profiling tools in CUPTI
+	provides = cuda
 	provides = cuda-toolkit
 	provides = cuda-sdk
 	conflicts = cuda
