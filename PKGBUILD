@@ -5,7 +5,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=tin
 pkgver=2.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A threaded NNTP and spool based UseNet newsreader.'
 arch=('i686' 'x86_64')
 url='http://www.tin.org'
@@ -25,7 +25,8 @@ build() {
 	cd "$srcdir/$pkgname-$pkgver"
 	unset CFLAGS
 	unset CPPFLAGS
-	./configure --prefix=/usr --mandir=/usr/share/man \
+	./configure CFLAGS='-fpermissive' \
+	--prefix=/usr --mandir=/usr/share/man \
 	--enable-shell-escape \
 	--enable-nntp \
 	--enable-nls \
