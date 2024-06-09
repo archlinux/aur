@@ -21,7 +21,7 @@ depends=(
   libx11
   libxkbfile
   python
-  rg
+  ripgrep
 )
 makedepends=(
   arduino-language-server
