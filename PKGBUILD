@@ -11,9 +11,9 @@ depends=('glibc')
 source_x86_64=("tgpt-linux-x86_64::https://github.com/aandrew-me/tgpt/releases/download/v${pkgver}/tgpt-linux-amd64")
 source_aarch64=("tgpt-linux-aarch64::https://github.com/aandrew-me/tgpt/releases/download/v${pkgver}/tgpt-linux-arm64")
 source_i686=("tgpt-linux-i686::https://github.com/aandrew-me/tgpt/releases/download/v${pkgver}/tgpt-linux-i386")
-md5sums_x86_64=('52f7da7f14fae945e3376278269c11db')
-md5sums_aarch64=('84454953db4f52c8f6dd2d5accfc0673')
-md5sums_i686=('278deef6e9f683defb70a0bb395b291e')
+md5sums_x86_64=('d2cf4b0f676010df0def10527a137e45')
+md5sums_aarch64=('5eaad2bf215bf992ed7bd50363ff9d5c')
+md5sums_i686=('0ab51021c4cbc7ee13ba9ce7bffda785')
 
 package() {
     cd "$srcdir"
