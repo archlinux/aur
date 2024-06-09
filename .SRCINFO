@@ -1,0 +1,19 @@
+pkgbase = asciify-git
+	pkgdesc = A simple command-line tool to create ASCII art from .png files
+	pkgver = 2.0.r7.a981e82
+	pkgrel = 1
+	url = https://github.com/user-simon/asciify
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	makedepends = gcc
+	provides = asciify=2.0
+	conflicts = asciify
+	source = asciify::git+https://github.com/user-simon/asciify.git
+	source = lodepng::git+https://github.com/lvandeve/lodepng.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = asciify-git
