@@ -1,33 +1,38 @@
-# Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
+# Maintainer: HurricanePootis <hurricanepootis@protonamil.com>
 pkgname=ofinstaller-beans-git
-_pkgname=ofinstaller-beans
-pkgver=r191.d69361e
+pkgver=1.3.1.r33.ga2fcc74
 pkgrel=1
-pkgdesc="Open Fortress's quick-n-easy downloading solution"
-arch=("x86_64")
-url="https://github.com/AdastralGroup/ofinstaller-beans"
+pkgdesc=" Installer for Open Fortress "
+arch=('x86_64')
+url="https://github.com/AdastralGroup/beans-rs"
 license=('GPL-3.0-only')
-depends=("python-pyzstd" "python-rich" "python-tqdm" "python-httpx")
-makedepends=("pyinstaller")
+depends=("glibc" "gcc-libs" "openssl")
+makedepends=("rust-nightly-bin")
 provides=("ofinstaller-beans")
 conflicts=("ofinstaller-beans")
-install=ofinstaller-beans-git.install
-source=("git+$url.git"
-	"beans")
-sha256sums=('SKIP'
-            '5ccaed2cc336faa6b58c515a3619ec91fc12b720fe20e70e7799dbb5e80cb4ca')
+source=("$pkgname::git+$url.git")
+sha256sums=('SKIP')
+
 pkgver() {
-  cd "$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	cd "$srcdir/$pkgname"
+	git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+	cd "$srcdir/$pkgname"
+	export RUSTUP_TOOLCHAIN=nightly
+	cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-	cd "$srcdir/$_pkgname"
-	pyinstaller beans.spec
+	cd "$srcdir/$pkgname"
+	export RUSTUP_TOOLCHAIN=nightly
+	export CARGO_TARGET_DIR=target
+	export CFLAGS+=" -ffat-lto-objects"
+	cargo build --frozen --release --all-features
 }
 
 package() {
-	cd "$srcdir/$_pkgname"
-	install -Dm755 "$srcdir/$_pkgname/dist/beans" "$pkgdir/usr/share/ofinstaller-beans/beans"
-	install -Dm755 "$srcdir/beans" "$pkgdir/usr/bin/beans"
+	cd "$srcdir/$pkgname/target/release"
+	install -Dm755 beans-rs "$pkgdir/usr/bin/${pkgname::-4}"
 }
