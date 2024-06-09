@@ -8,7 +8,6 @@
 
 ## options
 : ${_build_clang:=true}
-: ${_build_mold:=false}
 : ${_build_noglu:=true}
 
 : ${_build_avx:=false}
@@ -31,18 +30,13 @@ depends=(
   libarchive
   sdl2
   zlib
-
-  ## implicit
-  #hicolor-icon-theme
-  #libglvnd
 )
 makedepends=(
   autoconf-archive
   mesa
 )
 
-[ "${_build_clang::1}" == "t" ] && makedepends+=('clang' 'lld' )
-[ "${_build_mold::1}" == "t" ] && makedepends+=('mold' )
+[ "${_build_clang::1}" == "t" ] && makedepends+=('clang' 'lld')
 [ "${_build_noglu::1}" != "t" ] && makedepends+=('glu')
 
 install="$_pkgname.install"
@@ -53,21 +47,20 @@ source=("$_pkgsrc.$_pkgext"::"https://github.com/0ldsk00l/nestopia/archive/$pkgv
 sha256sums=('c9c0bce673eb3b625b538b462e49c00ed1ee1ded1e0bad09be780076880968b5')
 
 build() {
-  if [[ "${_build_clang::1}" == "t" ]] ; then
-    export CC=clang
-    export CXX=clang++
-    export CXXFLAGS+=" -Wno-narrowing -Wno-ignored-optimization-argument"
+  export CC CXX CFLAGS CXXFLAGS LDFLAGS
+  CFLAGS=${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}
+  CXXFLAGS=${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}
+
+  if [[ "${_build_clang::1}" == "t" ]]; then
+    CC=clang
+    CXX=clang++
+    CXXFLAGS+=" -Wno-narrowing -Wno-ignored-optimization-argument"
+    LDFLAGS+=" -fuse-ld=lld"
   fi
 
-  if [[ "${_build_mold::1}" == "t" ]] ; then
-    export LDFLAGS+=" -flto -fuse-ld=mold"
-  elif [[ "${_build_clang::1}" == "t" ]] ; then
-    export LDFLAGS+=" -fuse-ld=lld"
-  fi
-
-  if [[ "${_build_avx::1}" == "t" ]] ; then
-    export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
-    export CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
+  if [[ "${_build_avx::1}" == "t" ]]; then
+    CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
+    CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
   fi
 
   cd "$_pkgsrc"
