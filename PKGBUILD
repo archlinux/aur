@@ -1,9 +1,9 @@
 # Maintainer: lpt <aur AT lucapetrucci DOT net>
 
 pkgname=youtube-local
-pkgver=2.8.9
+pkgver=2.8.10
 pkgrel=1
-pkgdesc="browser-based client for watching Youtube anonymously and with greater page performance"
+pkgdesc="Browser based client for watching YouTube anonymously and with greater page performance"
 url="https://github.com/user234683/youtube-local"
 license=("custom")
 source=(
@@ -11,7 +11,7 @@ source=(
 	"remove-portable-mode.patch"
 )
 sha256sums=(
-	"4f762f049811de712caca71ce99e282938b968427fc32414a4ca3cd4eca6442c"
+	"5afc9cfd6ef07984d17eca384a9e99ff3ca4dec5e2479ca409af0bec60327002"
 	"d479daf59f4a073a7e7ba462b6932d7928c3876c5cc86eef9eeae74cf9fac761"
 )
 arch=("any")
