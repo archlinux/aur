@@ -1,7 +1,7 @@
 pkgbase = ttf-0xproto
 	pkgdesc = An opinionated font for software engineers
 	pkgver = 2.100
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/0xType/0xProto
 	arch = any
 	license = custom:SIL
