@@ -1,13 +1,12 @@
 pkgbase = bleachbit-root
 	pkgdesc = Run bleachbit as root for cleaning system files
 	pkgver = 1.0.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.bleachbit.org/
 	arch = any
 	license = GPL
 	depends = bleachbit
 	depends = polkit
-	depends = xorg-xhost
 	conflicts = bleachbit-cli
 	source = org.bleachbit.BleachBit-Root.desktop
 	sha256sums = 86f8438dde194afbddcf403e4ca10cb553178f1230a840e26851230297057715
