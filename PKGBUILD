@@ -16,7 +16,7 @@ arch=('any')
 url='https://cyan.com/games/riven/'
 epoch="0"
 pkgver='1.2_20030721_dvd' # Obtained from the file 'Read Instructions First'.
-pkgrel=2
+pkgrel=3
 makedepends=(
   'dos2unix'    # To convert text files with Mac and DOS new line standard to Unix new line standard.
   'ffmpeg'      # To convert the Making Of-movie to smaller filesize.
@@ -94,9 +94,8 @@ package_riven-original() {
     "riven-soundtrack: Soundtrack of Riven."
   )
   provides=("riven=${pkgver}")
-  replaces=(
-    "riven<=1.2_2023"
-  )
+  conflicts=("riven<=1.2_2023")
+  replaces=("riven<=1.2_2023")
 
   cd "${srcdir}"
 
@@ -118,9 +117,8 @@ package_riven-original-data() {
     "scummvm: To play the game by manually launching ScummVM and adding the game ScummVM."
   )
   provides=("riven-data=${pkgver}")
-  replaces=(
-    "riven-data<=1.2_2023"
-  )
+  conflicts=("riven-data<=1.2_2023")
+  replaces=("riven-data<=1.2_2023")
 
 
   cd "${srcdir}"
@@ -158,9 +156,8 @@ package_riven-original-makingof() {
     "riven-original-soundtrack: Soundtrack of the original game of Riven."
   )
   provides=("riven-makingof=${pkgver}")
-  replaces=(
-    "riven-makingof<=1.2_2023"
-  )
+  conflicts=("riven-makingof<=1.2_2023")
+  replaces=("riven-makingof<=1.2_2023")
 
 
   cd "${srcdir}"
