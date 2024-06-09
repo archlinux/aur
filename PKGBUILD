@@ -1,8 +1,8 @@
 # Maintainer: Nate Simon <njsimon10@gmail.com>
 
 pkgname=pix
-pkgver=3.2.2
-pkgrel=5
+pkgver=3.4.0
+pkgrel=1
 pkgdesc="Image viewer and browser based on gthumb. X-Apps Project."
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
@@ -41,14 +41,13 @@ provides=($pkgname)
 conflicts=('pix-git')
 url='https://github.com/linuxmint/pix'
 
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/linuxmint/${pkgname}/archive/${pkgver}.tar.gz"
-'0001-jxl-added-support-for-version-0.9.0.patch'
-)
-md5sums=('450fed1003f786b7f904c65662115cdf' '9e81ebbe9dbd6638b178189c1a5ab51b')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/linuxmint/${pkgname}/archive/${pkgver}.tar.gz" '0001-fix-gcc-errors.patch')
+md5sums=('f0531bec33032e352df9b1dac75a5d24' '5fa2d73ff17bf3165edd35f5bea67448')
 
 prepare() {
     cd "${srcdir}"/${pkgname}-${pkgver}
-    patch --forward --strip=1 --input="${srcdir}"/0001-jxl-added-support-for-version-0.9.0.patch
+
+    patch --forward --strip=1 --input=../0001-fix-gcc-errors.patch
 }
 
 build() {
