@@ -16,6 +16,4 @@ pkgbase = tilibs-git
 	md5sums = 1831838d99949e3d378a07d8608b2bb4
 	md5sums = 2e38fe89764f129c567b06afbbdfdcd0
 
-pkgname = libticalcs-git
-	provides = libticalcs
-	conflicts = libticalcs
+pkgname = tilibs-git

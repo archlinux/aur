@@ -1,7 +1,7 @@
 # Maintainer: Antoine Viallon <antoine at lesviallon dot fr>
 
 pkgbase=tilibs-git
-pkgname=(libticalcs-git)
+pkgname=tilibs-git
 pkgver=1.18.r41.g7be38a45
 pkgrel=2
 pkgdesc="Various TI libs required for TILP"
@@ -45,15 +45,9 @@ build() {
     done
 }
 
-_package() {
+package() {
   subpkg=${pkgname%-*}
   cd "${srcdir}/${pkgbase}/${subpkg}/trunk"
 
   make install DESTDIR="${pkgdir}"
-}
-
-package_libticalcs-git() {
-    provides=(libticalcs)
-    conflicts=(libticalcs)
-    _package
 }
