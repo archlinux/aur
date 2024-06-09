@@ -18,7 +18,7 @@ pkgbase = python-nextcord
 	optdepends = python-brotli: speed support
 	optdepends = python-cchardet=2.1.7: speed support
 	optdepends = python<3.10: speed support
-	source = nextcord-2.3.2.tar.gz::https://github.com/nextcord/nextcord/archive/v2.3.2.tar.gz
-	sha256sums = eb244ccc4991e6272f6d03f3e68f4c39caf369ce37a3338812afbfaf9284a86b
+	source = nextcord-2.6.1.tar.gz::https://github.com/nextcord/nextcord/archive/v2.6.1.tar.gz
+	sha256sums = 234646fde5cbf4b2c175fd64113ddb019d8d094d64112eb58eef80de41fd55e5
 
 pkgname = python-nextcord
