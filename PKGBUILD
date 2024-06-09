@@ -1,4 +1,4 @@
-# Maintainer: Alfredo Ramos <alfredo.ramos@skiff.com>
+# Maintainer: Alfredo Ramos <alfredoramos@duck.com>
 # Contributor: Muflone http://www.muflone.com/contacts/english/
 # Contributor: Arne Hoch <arne@derhoch.de
 
