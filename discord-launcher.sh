@@ -1,21 +1,35 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 set -euo pipefail
 
 name=@PKGNAME@
+ver=@PKGVER@
 electron=@ELECTRON@
-flags_file="${XDG_CONFIG_HOME:-$HOME/.config}/${name}-flags.conf"
 
 declare -a flags
+declare -l PATCH_KRISP
 
-if [[ -f "${flags_file}" ]]; then
-    mapfile -t < "${flags_file}"
+[[ -r "${XDG_CONFIG_HOME:-$HOME/.config}/${name}.conf" ]] && source "${XDG_CONFIG_HOME:-$HOME/.config}/${name}.conf"
+
+flags_file="${XDG_CONFIG_HOME:-$HOME/.config}/${name}-flags.conf"
+krisp_bin="${DISCORD_USER_DATA_DIR:-${XDG_CONFIG_HOME:-$HOME/.config}/${name}}/${ver}/modules/${name}_krisp/${name}_krisp.node"
+
+if [[ "${PATCH_KRISP}" == true ]] && [[ -w "${krisp_bin}" ]] && python -c "import capstone; import elftools" &> /dev/null; then
+	# Patch Krisp binary to ignore signature check
+	python /usr/share/${name}/krisp-patcher.py "${krisp_bin}"
+fi
+
+if [[ -r "${flags_file}" ]]; then
+	mapfile -t < "${flags_file}"
 fi
 
 for line in "${MAPFILE[@]}"; do
-    if [[ ! "${line}" =~ ^[[:space:]]*#.* ]] && [[ -n "${line}" ]]; then
-        flags+=("${line}")
-    fi
+	if [[ ! "${line}" =~ ^[[:space:]]*#.* ]] && [[ -n "${line}" ]]; then
+		flags+=("${line}")
+	fi
 done
 
-exec /usr/bin/${electron} /usr/share/${name}/resources/app.asar "${flags[@]}" "$@"
+exec /usr/bin/${electron} \
+	/usr/share/${name}/resources/app.asar \
+	--ozone-platform-hint=auto \
+	"${flags[@]}" "$@"

@@ -1,60 +1,88 @@
 # Maintainer: Zoddo <archlinux+aur@zoddo.fr>
 # Contributor: Thaodan <AUR+me@thaodan.de>
+# Contributor: Manuel Hüsers <aur@huesers.de>
 # Contributor: huyizheng
 # Contributor: johnnyapol <arch@johnnyapol.me>
+
 # Based off the discord community repo PKGBUILD by Filipe Laíns (FFY00) <lains@archlinux.org>
+
 _pkgname=discord
 _electron=electron29
 pkgname=${_pkgname}_arch_electron
 pkgver=0.0.55
-pkgrel=1
-pkgdesc="Discord (popular voice + video app) using the system provided electron for increased security and performance"
+pkgrel=2
+pkgdesc="Discord using system provided ${_electron} for increased security and performance"
 arch=('any')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 url='https://discord.com'
 license=('custom')
-options=(!strip)
-depends=("${_electron}" 'libxss')
-makedepends=('asar')
+options=('!strip')
+install="$pkgname.install"
+depends=("${_electron}" 'libxss' 'python')
+makedepends=('asar' 'curl')
 optdepends=('libpulse: Pulseaudio support'
-            'xdg-utils: Open files')
-source=("https://dl.discordapp.net/apps/linux/$pkgver/$_pkgname-$pkgver.tar.gz"
+            'libappindicator-gtk3: Systray indicator support'
+            'xdg-utils: Open files'
+            'python-pyelftools: Required for Krisp patcher'
+            'python-capstone: Required for Krisp patcher')
+source=("https://dl.discordapp.net/apps/linux/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
         'discord-launcher.sh'
-        'LICENSE.html::https://discord.com/terms'
-        'OSS-LICENSES.html::https://discord.com/licenses')
+        'krisp-patcher.py') # original: https://github.com/sersorrel/sys/blob/main/hm/discord/krisp-patcher.py
 sha512sums=('c12365109cb4db94033fda101073d2a3d6af7bdc9728e025494ee8d44ebf5f27623861879ec38bb7dd88d40de7cddede268e0f5e44bfeb586fc12713a3758c5b'
-            'd398351b209cd89432d8e9cebe9122f152484236d8ca4dd91e5679d3853fe2f082625d35a9ac3f450f1f08250736bf3a23db9926311e8271730d884b57d12dbc'
-            SKIP
-            SKIP)
+            '88d8b7ae7efc4cb7173de1b0a209c3ae844e43685b1c042e6fe993099ce869dc0d072aa6a13bd5e56e2ebdaa2609ae5c90c6c93333ee2ec912e2d74d9c59f42a'
+            '3c1021592fa856f3561072c76b5ee0b5a34a53bc230336e6d36827efb4866c9d801ef7abb24650d3a7210c61dd57f35e2812ae89226fc157cc8d9ffce032155f')
 
 prepare() {
-  sed -i "s|@PKGNAME@|${_pkgname}|;s|@ELECTRON@|${_electron}|" discord-launcher.sh
-  sed -i "s|Exec=.*|Exec=/usr/bin/$_pkgname|" Discord/discord.desktop
+  # prepare launcher script
+  sed -i -e "s|@PKGNAME@|${_pkgname}|" \
+    -e "s|@PKGVER@|${pkgver}|" \
+    -e "s|@ELECTRON@|${_electron}|" \
+    discord-launcher.sh
 
-  # HACKS FOR SYSTEM ELECTRON
-  asar e Discord/resources/app.asar Discord/resources/app
-  rm Discord/resources/app.asar
-  sed -i "s|process.resourcesPath|'/usr/share/${_pkgname}/resources'|" Discord/resources/app/app_bootstrap/buildInfo.js
-  sed -i "s|exeDir,|'/usr/share/pixmaps',|" Discord/resources/app/app_bootstrap/autoStart/linux.js
-  sed -i -E "s|resourcesPath = _path.+;|resourcesPath = '/usr/share/${_pkgname}/resources';|" Discord/resources/app/common/paths.js
-  asar p Discord/resources/app Discord/resources/app.asar
-  rm -rf Discord/resources/app
+  # fix the .desktop file
+  sed -i -e "s|Exec=.*|Exec=/usr/bin/${_pkgname}|" ${_pkgname^}/$_pkgname.desktop
+
+  # create the license files
+  curl -o "${srcdir}/LICENSE.html" https://discord.com/terms
+  curl -o "${srcdir}/OSS-LICENSES.html" https://discord.com/licenses
+}
+
+build() {
+  cd "${srcdir}/${_pkgname^}"
+
+  # use system electron
+  asar e resources/app.asar resources/app
+  rm resources/app.asar
+  sed -i -e "s|resourcesPath = _path.*;|resourcesPath = '/usr/share/${_pkgname}/resources';|" resources/app/common/paths.js
+  sed -i -e "s|process.resourcesPath|'/usr/share/${_pkgname}/resources'|" resources/app/app_bootstrap/buildInfo.js
+  sed -i -e "/^const appName/d" -e "/^const exePath/d" -e "/^const exeDir/d" -e "/^const iconPath/d" \
+    -e "s|^Exec=\${exePath}$|Exec=/usr/bin/${_pkgname}|" \
+    -e "s|^Name=\${appName}$|Name=${_pkgname^}|" \
+    -e "s|^Icon=\${iconPath}$|Icon=/usr/share/pixmaps/${_pkgname}.png|" \
+    resources/app/app_bootstrap/autoStart/linux.js
+  asar p resources/app resources/app.asar
+  rm -rf resources/app
 }
 
 package() {
-  # Install the app
-  install -d "${pkgdir}/usr/share/${_pkgname}/resources"
+  # create necessary directories
+  install -d "${pkgdir}/usr/share/${_pkgname}"
 
-  # Copy Relevanat data
-  cp -r Discord/resources/*  "${pkgdir}/usr/share/${_pkgname}/resources/"
+  # copy relevant data
+  cp -r ${_pkgname^}/resources "${pkgdir}/usr/share/${_pkgname}/"
 
-  install -Dm 755 "${srcdir}/discord-launcher.sh" "${pkgdir}/usr/bin/${_pkgname}"
+  # intall icon and desktop file
+  install -Dm 644 ${_pkgname^}/$_pkgname.png "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+  install -Dm 644 ${_pkgname^}/$_pkgname.desktop "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
-  install -Dm 644 Discord/discord.png "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
-  install -Dm 644 Discord/discord.desktop "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+  # install the launch script
+  install -Dm 755 discord-launcher.sh "${pkgdir}/usr/bin/${_pkgname}"
 
-  # Licenses
-  install -Dm 644 LICENSE.html "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.html
-  install -Dm 644 OSS-LICENSES.html "$pkgdir"/usr/share/licenses/$pkgname/OSS-LICENSES.html
+  # install krisp patcher
+  install -Dm 644 krisp-patcher.py "${pkgdir}/usr/share/${_pkgname}/"
+
+  # install licenses
+  install -Dm 644 LICENSE.html "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.html"
+  install -Dm 644 OSS-LICENSES.html "${pkgdir}/usr/share/licenses/${pkgname}/OSS-LICENSES.html"
 }
