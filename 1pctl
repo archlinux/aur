@@ -437,9 +437,6 @@ function update_port() {
 
 function main() {
 	case "${action}" in
-		init)
-			init_1panel
-			;;
 		status)
 			status
 			;;
@@ -528,4 +525,8 @@ function main() {
 		echo "不支持的参数，请使用 help 或 --help 参数获取帮助"
 	esac
 }
-main
+if [ ${action} == 'init' ]; then
+	init_1panel
+else
+	main
+fi

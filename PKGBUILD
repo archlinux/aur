@@ -2,7 +2,7 @@
 # Contributor: Senge Dev <sengedev@gmail.com>
 
 pkgname=1panel
-pkgver=1.10.6_lts
+pkgver=1.10.10_lts
 pkgrel=1
 pkgdesc="1Panel, a modern open source linux panel."
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ source=(
     "1panel.service"
 )
 b2sums=(
-    "056f4129c21cac69f90428b3a5bfa51cc1f37ee7e370aedc89c0e31decf17cf5d9a172caa4791101baf2e19d86f3865c211976e80a21a8d303891cda4e5e815a"
-    "66ac94658395e534ff4fc392ccbb49d25157db8ab3d64d7827f20e5e6b143348cb9574579f5c54c48706e23c8808334939d1b8d880b423ad3824ae0b9c25adf6"
+    "5b1b589f2fadc6d132aa0a780ad7933d9a82ec9b9ebf944b5e9f3843aedbc02130087bd833c02bd60eebdfe636fe392e0b9a78ea05aded13301247c5455efcb7"
+    "921627e26e99a5145b7496aba7fdef21df49adae493875cdce9a4256f36a9359746dc9e347228734ab12ba826d5baacb55bf134a2321e4afe174f20ccb3d26c0"
     "2fd0b19f6e5496e31bbb22997ab6ed5876b3034551a8a3b9f32b78af22e2587b5b022787e1035c918e8b99e7b5a28ffaf965403146e80bb4efb6297a32226059"
 )
 
