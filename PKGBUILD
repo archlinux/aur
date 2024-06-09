@@ -1,11 +1,12 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 pkgname=mockgen
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc='GoMock is a mocking framework for the Go programming language.'
 arch=('x86_64')
 url="https://github.com/uber-go/mock"
 license=('Apache-2.0')
+depends=('glibc')
 makedepends=('go>1.20')
 source=("$pkgname-$pkgver.tar.gz::$url//archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('30f28caf179b14a3a4f0ed28135904728e1bf61d78ba5fc4b89a36e301dd621b')
