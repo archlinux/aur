@@ -3,11 +3,11 @@
 
 pkgname=xorg-xgc
 pkgver=1.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Xaw-based graphics demo that shows/tests various features of the X11 core protocol graphics primitives."
 arch=(i686 x86_64)
 url="http://xorg.freedesktop.org/"
-license=('custom')
+license=('MIT')
 depends=('libxt' 'glibc' 'libxaw' 'libx11')
 makedepends=('xorg-util-macros')
 groups=('xorg-apps' 'xorg')
