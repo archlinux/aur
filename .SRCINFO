@@ -1,8 +1,8 @@
 pkgbase = ruby-libvirt
 	pkgdesc = Ruby bindings for libvirt.
 	pkgver = 0.8.3
-	pkgrel = 1
-	url = http://libvirt.org/ruby/
+	pkgrel = 2
+	url = https://gitlab.com/libvirt/libvirt-ruby
 	arch = i686
 	arch = x86_64
 	license = LGPL-2.1-or-later
@@ -11,8 +11,7 @@ pkgbase = ruby-libvirt
 	makedepends = ruby-rdoc
 	depends = ruby
 	depends = libvirt
-	noextract = ruby-libvirt-0.8.3.gem
-	source = https://rubygems.org/downloads/ruby-libvirt-0.8.3.gem
-	sha256sums = d5eaed883a5baeabc7a07fd405518fc5f5b191480c7da0727b566f21869a2c08
+	source = https://gitlab.com/libvirt/libvirt-ruby/-/archive/ruby-libvirt-0.8.3/libvirt-ruby-ruby-libvirt-0.8.3.tar.gz
+	sha256sums = a218fea762585e890fce10bbdb11aa5a91646c29611f85c93a46c24b74a6983e
 
 pkgname = ruby-libvirt

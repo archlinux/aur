@@ -3,20 +3,35 @@
 # Contributor: henning mueller <henning@orgizm.net>
 
 pkgname=ruby-libvirt
+_gemname=$pkgname
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Ruby bindings for libvirt.'
 arch=(i686 x86_64)
 license=(LGPL-2.1-or-later)
-url=http://libvirt.org/ruby/
+url=https://gitlab.com/libvirt/libvirt-ruby
 depends=(ruby libvirt)
 makedepends=(rubygems ruby-rake ruby-rdoc)
-source=(https://rubygems.org/downloads/$pkgname-$pkgver.gem)
-noextract=($pkgname-$pkgver.gem)
-sha256sums=('d5eaed883a5baeabc7a07fd405518fc5f5b191480c7da0727b566f21869a2c08')
+source=("${url}/-/archive/${pkgname}-${pkgver}/libvirt-ruby-${pkgname}-${pkgver}.tar.gz")
+sha256sums=('a218fea762585e890fce10bbdb11aa5a91646c29611f85c93a46c24b74a6983e')
+
+build() {
+  cd libvirt-ruby-${_gemname}-${pkgver}
+  rake build
+  rake gem
+}
+
+check() {
+  cd libvirt-ruby-${_gemname}-${pkgver}
+  rake test
+}
 
 package() {
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $pkgname-$pkgver.gem
-  rm "$pkgdir/$_gemdir/cache/$pkgname-$pkgver.gem"
+  cd libvirt-ruby-${_gemname}-${pkgver}/pkg
+  local _gemdir="$(gem env gemdir)"
+  gem install --ignore-dependencies --no-user-install -i "${pkgdir}${_gemdir}" \
+    -n "${pkgdir}/usr/bin" ${_gemname}-${pkgver}.gem
+  install -Dm 644 ${pkgname}-${pkgver}/README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 ${pkgname}-${pkgver}/COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  rm -r "${pkgdir}/${_gemdir}/cache"
 }
