@@ -1,21 +1,36 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
-# Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=ludusavi
 _app_id="com.github.mtkennerly.$pkgname"
-pkgver=0.23.0
+pkgver=0.24.0
 pkgrel=1
 pkgdesc="Backup tool for PC game saves"
 arch=('x86_64')
 url="https://github.com/mtkennerly/ludusavi"
 license=('MIT')
-depends=('bzip2' 'gcc-libs' 'hicolor-icon-theme')
-makedepends=('cargo' 'git' 'libx11' 'libxcb' 'python')
-checkdepends=('appstream' 'desktop-file-utils')
-optdepends=('rclone: upload backups to the cloud')
+depends=(
+  'bzip2'
+  'gcc-libs'
+  'hicolor-icon-theme'
+)
+makedepends=(
+  'cargo'
+  'git'
+  'libx11'
+  'libxcb'
+  'python'
+)
+checkdepends=(
+  'appstream'
+  'desktop-file-utils'
+)
+optdepends=(
+  'rclone: upload backups to the cloud'
+)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$url/releases/download/v$pkgver/$pkgname-v$pkgver-legal.zip")
-sha256sums=('4316fcdf788d47a1acdb561fece877dd127542139239784356bab58da7f79451'
-            'aee0fd70e79fae55caa7f7f3f25987a7cd02876739548cd1d5ca76da5cf5b8ef')
+sha256sums=('3736d0cc5c14b9ad5a47b22c8d6c55a8ee3e13489dc7527438a6efa040aa1cc1'
+            '2675942a39a1e7f860f2cd88b7ac4c9f958b3864cb5fa69907b0946ba73c352c')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -51,7 +66,8 @@ package() {
     "$pkgdir/usr/share/icons/hicolor/64x64/apps/$pkgname.png"
   install -Dm644 assets/icon.svg \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
-  install -Dm644 "assets/$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
+  install -Dm644 "assets/$pkgname.desktop" \
+    "$pkgdir/usr/share/applications/${_app_id}.desktop"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -Dm644 "$srcdir/$pkgname-v$pkgver-legal.txt" \
     "$pkgdir/usr/share/licenses/$pkgname/legal.txt"
