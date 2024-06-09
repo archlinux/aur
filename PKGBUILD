@@ -3,13 +3,15 @@
 _pkgname=paper-soccer
 pkgname=${_pkgname}-git
 pkgver=1.0.1.r0.dcaeb4e
-pkgrel=1
+pkgrel=2
 pkgdesc="A networked version of paper soccer game in modern console"
 arch=('any')
 url="https://github.com/MateuszJanda/paper-soccer"
 license=('MIT')
 depends=('protobuf' 'boost-libs' 'ncurses')
 makedepends=('git' 'cmake' 'gcc' 'protobuf' 'boost' 'ncurses')
+conflicts=("${_pkgname}")
+provides=("${_pkgname}=${pkgver%%.r*}")
 _pkgsrc="${_pkgname}"
 source=("${_pkgsrc}::git+${url}.git"
         "googletest::git+https://github.com/google/googletest.git")
