@@ -2,7 +2,8 @@
 # Previous Maintainer: Rojikku <RojikkuNoKami at gmail dot com>
 # Contributor: GI_Jack <GI_Jack@hackermail.com>
 
-pkgname=dangerzone
+pkgname=dangerzone-bin
+_pkgname=dangerzone
 pkgver=0.6.1
 pkgrel=1
 pkgdesc="Take potentially dangerous PDFs, office documents, or images and convert them to a safe PDF"
@@ -12,9 +13,9 @@ license=('MIT')
 depends=('python-appdirs' 'python-markdown' 'python-click' 'python-colorama' 'python-pyxdg' 'python-requests' 'pyside2' 'python-termcolor' 'python-pip' 'podman')
 makedepends=('python-setuptools')
 
-source=("${pkgname}-${pkgver}.deb::https://packages.freedom.press/apt-tools-prod/pool/main/d/dangerzone/dangerzone_${pkgver}-1_all.deb")
+source=("${_pkgname}-${pkgver}.deb::https://packages.freedom.press/apt-tools-prod/pool/main/d/dangerzone/dangerzone_${pkgver}-1_all.deb")
 
-install=${pkgname}.install
+install=${_pkgname}.install
 sha256sums=('9cb41ecf73f80121fcd5713bc044386eb18027a2542ac9e6253bb4e98a64e350')
 pythonpath="#!/usr/bin/env python3"
 
@@ -24,7 +25,7 @@ package() {
   install -d "${pkgdir}/usr/lib/python3.11/site-packages/"
 
   # Extract data
-  ar x "${pkgname}-${pkgver}.deb"
+  ar x "${_pkgname}-${pkgver}.deb"
   tar xf data.tar.xz 
 
   cp -r "${srcdir}/usr" "${pkgdir}/"
