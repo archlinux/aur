@@ -1,0 +1,21 @@
+pkgbase = paper-soccer
+	pkgdesc = A networked version of paper soccer game in modern console
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/MateuszJanda/paper-soccer
+	arch = any
+	license = MIT
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = protobuf
+	makedepends = boost
+	makedepends = ncurses
+	depends = protobuf
+	depends = boost-libs
+	depends = ncurses
+	source = paper-soccer-1.0.1.tar.gz::https://github.com/MateuszJanda/paper-soccer/archive/refs/tags/v1.0.1.tar.gz
+	source = googletest-ca4b7c9ff4d8a5c37ac51795b03ffe934958aeff.tar.gz::https://github.com/google/googletest/archive/ca4b7c9ff4d8a5c37ac51795b03ffe934958aeff.tar.gz
+	sha256sums = 09cde23ce2b02a59725b495107ab55058c47e4d532f3dedc47909f7133b6a8c6
+	sha256sums = da0f704133e746bb248358ce05322ec9013c3c32449408e9235b4ebf23dbf6b6
+
+pkgname = paper-soccer
