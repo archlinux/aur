@@ -1,7 +1,7 @@
 pkgbase = recutils
 	pkgdesc = Set of tools and libraries to access plain text databases called recfiles.
 	pkgver = 1.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/recutils/
 	arch = i686
 	arch = x86_64

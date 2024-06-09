@@ -1,7 +1,7 @@
 # Maintainer: Stefan Haller <fgrsnau@gmail.com>
 pkgname=recutils
 pkgver=1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Set of tools and libraries to access plain text databases called recfiles."
 arch=(i686 x86_64)
 url="https://www.gnu.org/software/recutils/"
