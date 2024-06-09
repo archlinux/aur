@@ -31,7 +31,7 @@ url='http://www.robynmiller.net/music'
 # url='https://archive.org/details/Nova_RivenOST_USA'
 epoch="0"
 pkgver='19980224' # Release date according to https://www.discogs.com/release/1097332-Robyn-Miller-Riven-The-Soundtrack
-pkgrel=1
+pkgrel=2
 makedepends=(
   'ffmpeg'              # To convert the raw CD .bin files to opus.
   'ghostscript'         # To build the CD booklet PDF (build multi-page PDF).
@@ -152,7 +152,7 @@ build() {
 package_riven-original-soundtrack() {
   pkgdesc="Official Soundtrack of the game 'Riven: The Sequel to Myst'."
   url='http://www.robynmiller.net/music'
-  license=('custom: proprietary')
+  license=('LicenseRef-proprietary')
   optdepends=(
     'riven: To play the game.'
     "riven-makingof: Movie 'The Making of Riven'."
