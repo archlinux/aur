@@ -1,11 +1,12 @@
-# Maintainer: Christer Solskogen <christer.solskogen@gmail.com>
+# Maintainer: graysky <therealgraysky AT proton DOT me>
+# Contributor: Christer Solskogen <christer.solskogen@gmail.com>
 # Build order: armv7l-binutils -> armv7l-linux-api-headers -> armv7l-gcc-bootstrap -> armv7l-glibc -> armv7l-gcc -> armv7l-glibc (again)
 
 _arch=armv7l
 _kernel_arch=arm
 _target=$_arch-unknown-linux-gnueabihf
 pkgname=$_arch-linux-api-headers
-pkgver=5.15.86
+pkgver=6.6.32
 pkgrel=1
 pkgdesc="Kernel headers sanitized for use in userspace ($_target)"
 arch=(any)
@@ -13,8 +14,8 @@ url='https://www.kernel.org'
 license=(GPL2)
 makedepends=(rsync)
 options=(!strip)
-source=(https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.{xz,sign})
-sha256sums=('80fcd9efa443502de9e2750f6dfb59e8de43a5d87a6d2be09dca748d79b5f2ee'
+source=(https://www.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.{xz,sign})
+sha256sums=('aaa824eaf07f61911d22b75ff090a403c3dd0bd73e23933e0bba8b5971436ce1'
             'SKIP')
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
