@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/kaboussi/Botflix"
 license=('MIT')
 groups=()
-depends=('nodejs' 'npm' 'python' 'python-pip' 'python-simple-term-menu' 'scrapy' 'python-rich')
+depends=('nodejs' 'npm' 'python' 'python-pip' 'python-simple-term-menu' 'scrapy' 'python-rich' 'webtorrent-cli')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -21,15 +21,6 @@ pkgver() {
         git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
         printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
   )
-}
-
-
-build() {
-        if ! yay -Qi webtorrent-cli &> /dev/null && ! npm list -g webtorrent-cli &> /dev/null; then
-                echo "Installing webtorrent-cli"
-                yay -S --noconfirm --needed webtorrent-cli
-        fi        
-        
 }
 
 package() {
