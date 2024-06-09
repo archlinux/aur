@@ -1,9 +1,9 @@
-# Maintainer: Letu Ren <fantasquex at gmail dot com>
+# Contributor: Letu Ren <fantasquex at gmail dot com>
 # Contributor: Poscat <poscat@mail.poscat.moe>
 
 pkgname='python-pyoidc'
 _name=${pkgname#python-}
-pkgver='1.6.0'
+pkgver=1.7.0
 pkgrel=1
 pkgdesc='A complete OpenID Connect implementation in Python'
 arch=('any')
@@ -19,19 +19,14 @@ depends=(
   'python-cryptography'
   'python-defusedxml'
 )
-makedepends=('python-setuptools')
+makedepends=(python-build python-installer python-wheel python-setuptools)
 checkdepends=('python-pytest' 'python-pytest-runner')
-source=("https://github.com/CZ-NIC/pyoidc/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('756602451375d293e0e516bc43f0551627edd8be1ea1378ac898cbc8eaec9c35')
+source=(${_name}-${pkgver}.tar.gz::"https://github.com/CZ-NIC/pyoidc/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('a03c7717ef30bd8490b1848922bd08b4557177696ed0e7eab7fec73fc784e3d1')
 
 build() {
   cd ${_name}-${pkgver}
-  python setup.py build
-}
-
-package() {
-  cd ${_name}-${pkgver}
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  python -m build --wheel --no-isolation
 }
 
 check() {
@@ -39,3 +34,7 @@ check() {
   python setup.py pytest
 }
 
+package() {
+  cd ${_name}-${pkgver}
+  python -m installer --destdir="$pkgdir" dist/*.whl
+}
