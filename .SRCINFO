@@ -7,6 +7,7 @@ pkgbase = doom_ascii-bin
 	license = GPL-2.0-or-later
 	provides = doom_ascii
 	conflicts = doom_ascii
+	backup = opt/doom_ascii/.default.cfg
 	source = doom_ascii.sh
 	source = https://github.com/wojciech-graj/doom-ascii/raw/v0.1.1/README.md
 	source = https://github.com/wojciech-graj/doom-ascii/raw/v0.1.1/LICENSE

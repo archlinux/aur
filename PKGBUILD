@@ -20,6 +20,7 @@ sha256sums=('27864d019900aa0728c95d77e70dfd94869e44a65e6657ef04110c5f5c1cc202'
             'b89d9d29bf5e3989086c68f702ab9ac0eac2cba1d5af01d40776fa143511b54b'
             '8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643')
 sha256sums_x86_64=('e4e47a6e0d0308d1f25e60868cd8eafb164b58bfbb941f2b49d1a0e1fb60bafd')
+backup=("opt/${_pkgname}/.default.cfg")
 
 package() {
   cd "${srcdir}"
