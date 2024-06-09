@@ -7,6 +7,7 @@ pkgbase = bleachbit-root
 	license = GPL
 	depends = bleachbit
 	depends = polkit
+	optdepends = xorg-xhost: Xorg support
 	conflicts = bleachbit-cli
 	source = org.bleachbit.BleachBit-Root.desktop
 	sha256sums = 86f8438dde194afbddcf403e4ca10cb553178f1230a840e26851230297057715

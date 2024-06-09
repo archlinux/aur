@@ -13,6 +13,7 @@ depends=('bleachbit'
 conflicts=('bleachbit-cli') # Requires desktop functions for bleachbit
 source=('org.bleachbit.BleachBit-Root.desktop')
 sha256sums=('86f8438dde194afbddcf403e4ca10cb553178f1230a840e26851230297057715')
+optdepends=('xorg-xhost: Xorg support')
 
 package() {
   install -Dm644 org.bleachbit.BleachBit-Root.desktop -t "${pkgdir}/usr/share/applications/"
