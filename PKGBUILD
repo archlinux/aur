@@ -2,8 +2,8 @@
 
 pkgname=leavesmc
 _pkgver=1.20.6
-_build=6951bdc
-_buildid=213
+_build=2a7fc43
+_buildid=214
 pkgver="${_pkgver}+${_buildid}"
 pkgrel=1
 pkgdesc="Fork of Paper aimed at repairing broken vanilla properties."
@@ -26,7 +26,7 @@ sha256sums=("720ee68108bbe12c362cf5ed05b3ad5b28bbaf53f3d7952d389bfc404a5baaac"
             "4a03cc59260564cbd176260250a4256e56793d4e82e40c61d421dd549c981022"
             "8d2cad3c8e9f7e9f2c6ba88235b75dfc8ba0b2729b39fdad06c23aeb8910f681"
             "af0f7f846da7e5da02193538d5120fdb40cc3730e1ec0574c23583bc0b03841f"
-            "89b1b32100787f095e862b4761295dbd6e724e99face20f56b231770e18d6d1b"
+            "3b9466698255582d25644c2a2f3fcc35e224dd23382e0713a20db31b4148042a"
             "0e1372769c3ea4ce2a8fb0955a02adf8e88d1804c6143518dee9f969eb0911f7"
             "559c62b6c55d1288098a4f744832081cdb7e0015139636cbbad1ad6cbe55ffea")
 
