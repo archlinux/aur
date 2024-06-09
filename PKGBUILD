@@ -1,25 +1,33 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=kitch-bin
-pkgver=26.1.3
-pkgrel=2
-pkgdesc="The itch.io desktop app (beta channel; binary release)"
+pkgver=26.1.9
+pkgrel=1
+pkgdesc="The itch.io desktop app (beta channel) (binary release)"
 url="https://itchio.itch.io/kitch"
 license=('MIT')
 arch=('x86_64')
-provides=("itch" "kitch")
+provides=("kitch")
 conflicts=("kitch" "kitch-setup")
-depends=('alsa-lib' 'at-spi2-core' 'bash' 'cairo' 'dbus' 'expat' 'gcc-libs'
-         'glib2' 'gtk3' 'libcups' 'libdrm' 'libx11' 'libxcb' 'libxcomposite'
-         'libxdamage' 'libxext' 'libxfixes' 'libxkbcommon' 'libxrand'r 'mesa'
-         'nspr' 'nss' 'pango')
+depends=('alsa-lib' 'at-spi2-core' 'bash' 'cairo' 'dbus' 'expat' 'glib2'
+         'gtk3' 'libcups' 'libdrm' 'libx11' 'libxcb' 'libxcomposite'
+         'libxdamage' 'libxext' 'libxfixes' 'libxkbcommon'
+         'libxrandr' 'mesa' 'nspr' 'nss' 'pango')
 optdepends=('firejail: sandbox preference')
-source=("kitch-linux-amd64-$pkgver.zip::https://broth.itch.ovh/kitch/linux-amd64/$pkgver/archive/default"
-        "https://github.com/itchio/itch/raw/master/LICENSE")
-sha256sums=('5a4079ddce5770dcddc947e64fe28e01de253d45b7a7ba24d4dc2aa48fb59a10'
-            'SKIP')
+source=("itch-linux-amd64-$pkgver.zip::https://broth.itch.ovh/itch/linux-amd64/$pkgver/archive/default"
+        "https://github.com/itchio/itch/raw/31d8d2f5646f9c6ab93cdd3a8bd1be6f59c687af/LICENSE")
+sha256sums=('9324777a2edf37d3afaa39b073050c2a5d3a07fec45d21171813af9e6b3fd6a3'
+            '747d5f4b6f82e28fbd50e192ee6e977159e4848cb55e0cc6ee04219832932d7c')
 
 prepare() {
+  echo "# Creating a symlink under the HOME directory"
+  echo "# to fix the firejail issue, see:"
+  echo "# https://github.com/itchio/itch/issues/2732#issuecomment-1716903738"
+  sleep 6
+  _DIR="$HOME/.config/itch/prereqs/firejail-amd64"
+  mkdir -p "$_DIR"
+  ln -sf /usr/bin/firejail "$_DIR"
+
 # Create a shortcut
   echo -e "[Desktop Entry]\n\
 Name=kitch\n\
@@ -42,7 +50,7 @@ package() {
   install -Dm644 resources/app/src/static/images/tray/kitch.png -t "$pkgdir/usr/share/icons/hicolor/256x256/apps"
   install -Dm644 resources/app/src/static/images/window/kitch/icon.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/kitch.png"
   install -Dm644 resources/app/src/static/images/window/kitch/icon-32.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/kitch.png"
-  rm LICENSE kitch.desktop kitch-linux-amd64-$pkgver.zip
+  rm LICENSE kitch.desktop itch-linux-amd64-$pkgver.zip
   mv * "$pkgdir/opt/kitch"
   ln -s /opt/kitch/kitch "$pkgdir/usr/bin"
 }
