@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc="TaskBar with grouping and group manipulation"
 arch=('any')
 url="https://github.com/xuzhen/dockbarx"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('libkeybinder3' 'python-cairo' 'dbus-python' 'python-gobject' 'python-pillow'
          'python-xlib' 'python-pyxdg')
 makedepends=('python-setuptools' 'python-installer' 'python-build' 'python-wheel' 'python-polib' 'git')
