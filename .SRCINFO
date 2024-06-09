@@ -1,6 +1,6 @@
 pkgbase = xfce4-settings-git
 	pkgdesc = Settings manager for xfce (git checkout)
-	pkgver = 4.19.0+1+gceefb03b
+	pkgver = 4.19.2+112+g091f2f23
 	pkgrel = 1
 	url = https://docs.xfce.org/xfce/xfce4-settings/start
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = xfce4-settings-git
 	depends = exo
 	depends = libxfce4util
 	depends = garcon
-	depends = libxfce4ui
+	depends = libxfce4ui>=4.19.5
 	depends = xfconf
 	depends = libnotify
 	depends = colord
@@ -22,8 +22,9 @@ pkgbase = xfce4-settings-git
 	depends = adwaita-icon-theme
 	depends = gnome-themes-extra
 	depends = python
+	depends = gtk-layer-shell
 	optdepends = libcanberra: for sound control
-	provides = xfce4-settings=4.19.0
+	provides = xfce4-settings=4.19.2
 	conflicts = xfce4-settings
 	source = xfce4-settings::git+https://gitlab.xfce.org/xfce/xfce4-settings
 	source = enable-antialias-by-default.patch
