@@ -50,10 +50,6 @@ prepare() {
 	source '/opt/flutter-engine/pkgbuild-prepare.sh'
 
 	patch -p1 -i "${srcdir}/flet-linux.patch"
-
-	cd 'client'
-	flutter clean
-	flutter pub get
 }
 
 build() {
@@ -61,6 +57,8 @@ build() {
 	source '/opt/flutter-engine/pkgbuild-build.sh'
 
 	pushd 'client'
+		flutter clean
+		flutter pub get
 		flutter build linux --release
 		#flutter build web --release
 	popd
