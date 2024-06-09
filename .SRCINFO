@@ -1,0 +1,13 @@
+pkgbase = edairy
+	pkgdesc = E-Dairy application running with Wine
+	pkgver = 4.3.1
+	pkgrel = 1
+	url = http://down.haoxg.net/ediary/download/ediary-4.3.1-win64-copy.zip
+	arch = x86_64
+	license = MIT
+	depends = deepin-wine-wechat
+	depends = unzip
+	source = http://down.haoxg.net/ediary/download/ediary-4.3.1-win64-copy.zip
+	sha512sums = dac9e3b035be4c0d6ccba5b420e3038ad1a3fee5858f980ff4de3d9adaadd6c6e388cf75d0fa53ec2b1c91a5291f55f9b92051e357adf29bdd5001fef74fa53a
+
+pkgname = edairy
