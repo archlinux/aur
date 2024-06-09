@@ -1,0 +1,13 @@
+pkgbase = wlnfancurve
+	pkgdesc = A small script to control NVIDIA GPU fan speed on Wayland using pyNVML
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/xiyori/wlnfancurve
+	arch = any
+	license = GPL3
+	depends = python-nvidia-ml-py
+	backup = etc/wlnfancurve.conf
+	source = wlnfancurve-1.0.1::https://github.com/xiyori/wlnfancurve/archive/v1.0.1.tar.gz
+	sha512sums = 7746504da4a67602652728290c106e575913346e8c53cb28f04256f5f35f536c7053ae740b812879e53fa50534391c5124bed43b30f9a1b68a639944d9c34063
+
+pkgname = wlnfancurve
