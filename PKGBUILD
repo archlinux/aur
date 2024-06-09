@@ -1,9 +1,9 @@
 # vim:ts=2:sw=2:expandtab
 # Maintainer: peelz <peelz.dev+arch@gmail.com>
 
-_commit="b9a9bb9d3f633b5b2270badfa693edfd4e5ace31"
+_commit="9230f71440f224b35fdb176605151e81cb9b6c6f"
 pkgname="uwsm"
-pkgver="0.15.4"
+pkgver="0.15.6"
 pkgrel="1"
 pkgdesc="A standalone Wayland session manager"
 url="https://github.com/Vladimir-csp/uwsm"
@@ -18,6 +18,7 @@ depends=(
 makedepends=(
   "git"
   "meson"
+  "scdoc"
 )
 source=(
   "${pkgname}::git+https://github.com/Vladimir-csp/uwsm.git#commit=${_commit}"
