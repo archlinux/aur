@@ -6,10 +6,10 @@ _pkgver=1.0-beta4
 pkgver=1.0beta4
 pkgrel=1
 pkgdesc="TaskBar with groupping and group manipulation"
-arch=('i688' 'x86_64' 'armv7h' 'aarch64')
+arch=('any')
 #url="https://github.com/M7S/dockbarx"
 url="https://github.com/xuzhen/dockbarx"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('libkeybinder3' 'python-cairo' 'dbus-python' 'python-gobject' 'python-pillow'
          'python-xlib' 'python-pyxdg')
 makedepends=('python-setuptools' 'python-polib' 'python-installer' 'python-build'
