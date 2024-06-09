@@ -1,4 +1,5 @@
-# Maintainer: Vilar da Camara Neto <archlinux5435 at vilarneto dot com>
+# Maintainer: Matt Rusiniak <matt at simplyv4 dot com>
+# Contributor: Vilar da Camara Neto <archlinux5435 at vilarneto dot com>
 # Contributor: Ali Molaei <ali dot molaei at protonmail dot com>
 # Contributor: Troy Engel <troyengel+arch at gmail dot com>
 
@@ -6,7 +7,8 @@ pkgbase=holland
 pkgname=('holland' 'holland-common' 'holland-lvm' 'holland-mysql' 
          'holland-mysqldump' 'holland-mysqllvm' 'holland-pgdump'
          'holland-xtrabackup' 'holland-mariabackup' 'holland-mongodump')
-pkgver=1.2.10
+pkgver=1.2.12
+docs_pkgver=1.2.10
 pkgrel=1
 arch=('any')
 url="http://hollandbackup.org"
@@ -14,9 +16,9 @@ license=('BSD' 'GPL2')
 options=('emptydirs')
 makedepends=('python-setuptools' 'python-sphinx')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/holland-backup/holland/archive/v${pkgver}.tar.gz"
-        "${pkgbase}-backup.github.io-${pkgver}.tar.gz::https://github.com/holland-backup/holland-backup.github.com/archive/v${pkgver}.tar.gz"
+        "${pkgbase}-backup.github.io-${docs_pkgver}.tar.gz::https://github.com/holland-backup/holland-backup.github.com/archive/v${docs_pkgver}.tar.gz"
         "holland.logrotate")
-sha256sums=('20f2802bebb30ed15acdee84519ebd6cb2e25c5dc26044640946583e1b481bf7'
+sha256sums=('1c33dea2a08e4e1754ab1962d0c4dd40232f106d950e90b438cfe49ce62d8950'
             '5a75579e19b130ac6f5b9787dee989f67537a92a5792e2150a404aa22369439d'
             '6b0240375e5cafe24a4e0c6fd078e42eaff4f5b2030f7fba4202d052d9a54995')
 
@@ -29,7 +31,7 @@ build() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
   python setup.py build
 
-  cd "${srcdir}/${pkgbase}-backup.github.io-${pkgver}"
+  cd "${srcdir}/${pkgbase}-backup.github.io-${docs_pkgver}"
   make man
 
   cd "${srcdir}/${pkgbase}-${pkgver}/plugins/holland.lib.common"
@@ -98,7 +100,7 @@ package_holland() {
   install -Dm0644 "${srcdir}/holland.logrotate" \
     "${pkgdir}/etc/logrotate.d/holland"
 
-  cd "${srcdir}/${pkgbase}-backup.github.io-${pkgver}"
+  cd "${srcdir}/${pkgbase}-backup.github.io-${docs_pkgver}"
   install -Dm0644 _build/holland.1 "${pkgdir}/usr/share/man/man1/holland.1"
 }
 
