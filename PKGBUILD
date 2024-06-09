@@ -1,6 +1,7 @@
 # Maintainer: Tom van der Lee <t0m.vd.l33@gmail.com>
 pkgname=liquidprompt
-pkgver=2.2.0_rc.2
+pkgver=2.2.0_release
+_pkgver=${pkgver%_*}
 pkgrel=1
 pkgdesc="A useful adaptive prompt for Bash & Zsh"
 arch=("any")
@@ -32,16 +33,16 @@ optdepends=("acpi: Battery and temperature status"
             "nvm: Show NVM virtual environment status"
             "terraform: Show Terraform workspace status"
             "python-virtualenv: Show Python virtual environment status")
-source=("https://github.com/nojhan/liquidprompt/archive/refs/tags/v${pkgver//_/-}.tar.gz")
-sha256sums=('1f4829d21ba07286808b38ea6b80809ff7c93a6502df1d74db4969ce3ada0939')
+source=("https://github.com/nojhan/liquidprompt/archive/refs/tags/v${_pkgver//_/-}.tar.gz")
+sha256sums=('8fcfd3a192f6f484cd29e0c5bea02564adf0ee524d6dfad52307ca9d54bffd15')
 
 build () {
-  cd "${pkgname}-${pkgver//_/-}"
+  cd "${pkgname}-${_pkgver//_/-}"
   ./tools/config-from-doc.sh > liquidpromptrc-dist
 }
 
 package() {
-  cd "${pkgname}-${pkgver//_/-}"
+  cd "${pkgname}-${_pkgver//_/-}"
   install -Dm755 liquidprompt "${pkgdir}/usr/bin/liquidprompt"
   install -Dm644 liquidpromptrc-dist "${pkgdir}/etc/liquidpromptrc"
   install -dm755 "${pkgdir}/usr/share/liquidprompt/themes"

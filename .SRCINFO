@@ -1,6 +1,6 @@
 pkgbase = liquidprompt
 	pkgdesc = A useful adaptive prompt for Bash & Zsh
-	pkgver = 2.2.0_rc.2
+	pkgver = 2.2.0_release
 	pkgrel = 1
 	url = https://github.com/nojhan/liquidprompt
 	arch = any
@@ -31,7 +31,7 @@ pkgbase = liquidprompt
 	optdepends = terraform: Show Terraform workspace status
 	optdepends = python-virtualenv: Show Python virtual environment status
 	conflicts = liquidprompt-git
-	source = https://github.com/nojhan/liquidprompt/archive/refs/tags/v2.2.0-rc.2.tar.gz
-	sha256sums = 1f4829d21ba07286808b38ea6b80809ff7c93a6502df1d74db4969ce3ada0939
+	source = https://github.com/nojhan/liquidprompt/archive/refs/tags/v2.2.0.tar.gz
+	sha256sums = 8fcfd3a192f6f484cd29e0c5bea02564adf0ee524d6dfad52307ca9d54bffd15
 
 pkgname = liquidprompt
