@@ -1,7 +1,7 @@
 pkgbase = itch-bin
 	pkgdesc = The itch.io desktop app (binary release)
 	pkgver = 26.1.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://itchio.itch.io/itch
 	arch = x86_64
 	license = MIT
