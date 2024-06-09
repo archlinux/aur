@@ -1,0 +1,9 @@
+*.tar.*
+*.zip
+*.orig
+*.rej
+*.swp
+*.part
+src
+pkg
+TerminalImageViewer
