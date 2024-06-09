@@ -1,7 +1,7 @@
 # Maintainer: Cem Kaya<cemkaya.boun@gmail.com>
 # Contributor: Cem Kaya <cemkaya.boun@gmail.com>
 pkgname=dell-g15-controller
-pkgver=3.6
+pkgver=3.7
 pkgrel=1
 pkgdesc="AWCC alternative for Dell G15 with keyboard backlight control, power mode control and fan control."
 arch=('x86_64')
@@ -18,9 +18,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("${pkgname}::https://github.com/cemkaya-mpi/Dell-G15-Controller/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}_${pkgver}::https://github.com/cemkaya-mpi/Dell-G15-Controller/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('96ebe6f07a54d414e15c6d5142d700aeb35c585864217c50fc6cbad813ebec94')
+sha256sums=('be915453123f7b3370d7cbeb0581cc623adc136e2988a5b31e7094c0c250ebb4')
 
 package() {
   cd "${srcdir}/Dell-G15-Controller-$pkgver"
