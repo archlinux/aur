@@ -1,10 +1,11 @@
+# Maintainer: David Anderegg <dd.anderegg@hotmail.com>
 # Maintainer: Felix Golatofski <contact@xdfr.de>
 # Contributor: eolianoe <eolianoe [At] GmaiL [Dot] com>
 # Contributor: Dmitriy Morozov <archlinux@foxcub.org>
 
 pkgname=visit-bin
 _pkgname=visit
-pkgver=3.1.2
+pkgver=3.4.1
 _pkgver=${pkgver//./_}
 pkgrel=1
 pkgdesc="Interactive parallel visualization and graphical analysis tool"
@@ -13,19 +14,20 @@ arch=('x86_64')
 license=('BSD' 'custom')
 provides=('visit')
 conflicts=('visit' 'visit-build')
-depends=('libpng15' 'glu' 'libicu50')
-makedepends=('bash' 'cpio')
-_ver=rhel7
+depends=('glu')
+makedepends=('bash' 'cpio' 'gendesk')
+_ver=debian12
 _url="https://github.com/visit-dav/visit/releases/download/v${pkgver}"
 source=("${_url}/visit${_pkgver}.linux-x86_64-${_ver}.tar.gz"
         "${_url}/visit-install${_pkgver}"
         'visit.sh'
         'visit-libs.patch')
 noextract=("${_pkgname}${_pkgver}.linux-x86_64-${_ver}.tar.gz")
-sha256sums=('79e91b7b8b75b0305064579a689608fae7c2486e1852132773d68d2f5686e652'
-            'ed4806c4edec7941a11ccf9329f303c663a757723fb8dc3a09f5a6999c9f354f'
+sha256sums=('331ba2ddb29e65be18ce7da7faa4df37d9bd355774bc49ece78e15336efa9556'
+            '1577fee905eb7e8b1591c5ed8928e259cc790a68002554d2b497d50fac4db2ec'
             'd07a11e67ad646579fbc341f30e1eb63ebd38a5fbdd4f3ea36e8f460419028da'
             '4f0cd7507721974e3545eefb7087c3d2a7ad661945c60407f3a0455590108fef')
+
 
 package() {
   cd "${srcdir}"
@@ -45,4 +47,11 @@ package() {
 
   # Fix permissions
   chown -R root:root "${pkgdir}/opt/${_pkgname}"
+
+  # create .desktop file
+  gendesk -f --pkgname "$pkgname" --pkgdesc "$pkgdesc"
+  
+  # install .desktop file and icon
+  install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
+  install -Dm644 "$_pkgname.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 }
