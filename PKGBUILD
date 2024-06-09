@@ -16,6 +16,7 @@ conflicts=("${_pkgname}")
 provides=("${_pkgname}=${pkgver%%.r*}")
 sha256sums=('SKIP'
             '27864d019900aa0728c95d77e70dfd94869e44a65e6657ef04110c5f5c1cc202')
+backup=("opt/${_pkgname}/.default.cfg")
 
 pkgver() {
   cd "${_pkgsrc}"

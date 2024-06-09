@@ -10,6 +10,7 @@ pkgbase = doom_ascii-git
 	makedepends = gcc
 	provides = doom_ascii=0.1.1
 	conflicts = doom_ascii
+	backup = opt/doom_ascii/.default.cfg
 	source = doom_ascii::git+https://github.com/wojciech-graj/doom-ascii.git
 	source = doom_ascii.sh
 	sha256sums = SKIP
