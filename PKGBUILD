@@ -6,11 +6,12 @@ pkgver=0.2.0
 pkgrel=1
 pkgdesc="Metrics dashboards on terminal (a grafana inspired terminal version)"
 arch=('x86_64' 'aarch64' 'armv7h')
-url="https://github.com/slok/grafterm"
+url="https://github.com/slok/${_pkgname}"
 license=('Apache')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
-source=("${_pkgname}-${pkgver}::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+_pkgsrc="${_pkgname}-${pkgver}"
+source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 source_x86_64=("${_pkgname}::${url}/releases/download/v${pkgver}/${_pkgname}-linux-amd64")
 source_aarch64=("${_pkgname}::${url}/releases/download/v${pkgver}/${_pkgname}-linux-arm64")
 source_armv7h=("${_pkgname}::${url}/releases/download/v${pkgver}/${_pkgname}-linux-arm-v7")
@@ -23,7 +24,7 @@ package() {
   cd "${srcdir}"
   install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
-  cd "${_pkgname}-${pkgver}"
+  cd "${_pkgsrc}"
   install -Dm644 "Readme.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
