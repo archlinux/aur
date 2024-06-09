@@ -7,17 +7,19 @@ pkgver=1.16.1
 pkgrel=1
 pkgdesc="Ping, but with a graph"
 arch=('x86_64' 'aarch64' 'armv7h')
-url="https://github.com/orf/gping"
+url="https://github.com/orf/${_pkgname}"
 license=('MIT')
 depends=('iputils')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
-source=("${url}/releases/download/${_pkgname}-v${pkgver}/${_pkgname}.1"
-        "${url}/raw/${_pkgname}-v${pkgver}/LICENSE"
-        "${url}/raw/${_pkgname}-v${pkgver}/readme.md")
-source_x86_64=("${_pkgname}-${pkgver}.tar.gz::${url}/releases/download/${_pkgname}-v${pkgver}/${_pkgname}-Linux-x86_64.tar.gz")
-source_aarch64=("${_pkgname}-${pkgver}.tar.gz::${url}/releases/download/${_pkgname}-v${pkgver}/${_pkgname}-aarch64-unknown-linux-gnu.tar.gz")
-source_armv7h=("${_pkgname}-${pkgver}.tar.gz::${url}/releases/download/${_pkgname}-v${pkgver}/${_pkgname}-armv7-unknown-linux-gnueabihf.tar.gz")
+_pkgsrc="${_pkgname}-${pkgver}"
+_pkgvsrc="${_pkgname}-v${pkgver}"
+source=("${url}/releases/download/${_pkgvsrc}/${_pkgname}.1"
+        "${url}/raw/${_pkgvsrc}/LICENSE"
+        "${url}/raw/${_pkgvsrc}/readme.md")
+source_x86_64=("${_pkgsrc}.tar.gz::${url}/releases/download/${_pkgvsrc}/${_pkgname}-Linux-x86_64.tar.gz")
+source_aarch64=("${_pkgsrc}.tar.gz::${url}/releases/download/${_pkgvsrc}/${_pkgname}-aarch64-unknown-linux-gnu.tar.gz")
+source_armv7h=("${_pkgsrc}.tar.gz::${url}/releases/download/${_pkgvsrc}/${_pkgname}-armv7-unknown-linux-gnueabihf.tar.gz")
 sha256sums=('ee8eaf849ae5028f8986e994e4f1b5648a0b3d24a432beb64724584f035cbbd3'
             '9f9d97dd2f2ed799c1b77a94847f695c8378d6b040908cbdb7fdd58524e32ad1'
             '81555671c78897390407d4b8439d30feb8d536c4d794f293ec5bea17d47862f1')
