@@ -1,0 +1,18 @@
+pkgbase = bluray_info-git
+	pkgdesc = Blu-ray utilities: bluray_info, bluray_copy, bluray_player
+	pkgver = 1.14.r0.g0f1a747
+	pkgrel = 1
+	url = https://github.com/beandog/bluray_info
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = git
+	depends = glibc
+	depends = libaacs
+	depends = libbluray
+	depends = mpv
+	provides = bluray_info
+	conflicts = bluray_info
+	source = git+https://github.com/beandog/bluray_info.git
+	sha256sums = SKIP
+
+pkgname = bluray_info-git
