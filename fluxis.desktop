@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=fluXis
+Comment=A community-driven rhythm game with a focus on creativity and expression.
+Icon=fluxis
+Exec=fluxis %F
+Terminal=false
+Categories=Game;
+StartupNotify=true
+SingleMainWindow=true
