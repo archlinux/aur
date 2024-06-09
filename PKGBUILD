@@ -1,4 +1,6 @@
-# Maintainer: Florian Maunier <fmauneko@dissidence.ovh>
+# Maintainer: Catppuccin <releases@catppuccin.com>
+
+
 pkgbase=plymouth-theme-catppuccin-git
 pkgname=(
   plymouth-theme-catppuccin-latte-git
