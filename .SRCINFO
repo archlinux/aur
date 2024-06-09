@@ -1,13 +1,13 @@
 pkgbase = python-calc
 	pkgdesc = A minimalist scientific calculator for python.
-	pkgver = 23.6c0d495
+	pkgver = 27.6fa2bae
 	pkgrel = 1
-	url = https://github.com/ewtoombs/python-calc
+	url = https://codeberg.org/triteraflops/python-calc
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = git+https://github.com/ewtoombs/python-calc.git
+	source = git+https://codeberg.org/triteraflops/python-calc.git
 	md5sums = SKIP
 
 pkgname = python-calc
