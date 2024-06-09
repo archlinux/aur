@@ -1,7 +1,7 @@
 pkgbase = ocaml-xml-light
 	pkgdesc = Objective Caml lightweight xml parser
 	pkgver = 2.5
-	pkgrel = 3
+	pkgrel = 4
 	url = http://tech.motion-twin.com/xmllight.html
 	arch = i686
 	arch = x86_64
