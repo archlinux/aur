@@ -7,6 +7,7 @@ pkgbase = doom_ascii
 	license = GPL-2.0-or-later
 	makedepends = make
 	makedepends = gcc
+	backup = opt/doom_ascii/.default.cfg
 	source = doom-ascii-0.1.1.tar.gz::https://github.com/wojciech-graj/doom-ascii/archive/refs/tags/v0.1.1.tar.gz
 	source = doom_ascii.sh
 	source = fix_i_endread.patch
