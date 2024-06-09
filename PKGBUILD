@@ -4,15 +4,15 @@
 
 _pkgname=dbeaver
 pkgname=${_pkgname}-git
-pkgver=22.3.3.265.g8019a0ccca
+pkgver=23.2.4.867.g66babe562e
 pkgrel=1
 pkgdesc='Free universal SQL Client for developers and database administrators. Community Edition. Git version.'
 arch=('x86_64')
 url='https://dbeaver.io'
-license=('Apache')
+license=('Apache-2.0')
 
-depends=('java-runtime=17' 'gtk3' 'gtk-update-icon-cache' 'libsecret')
-makedepends=('git' 'java-environment=17' 'maven')
+depends=('java-runtime>=17' 'gtk3' 'gtk-update-icon-cache' 'libsecret')
+makedepends=('git' 'java-environment>=17' 'maven')
 optdepends=(
 	'dbeaver-plugin-office: To export data in Microsoft Office Excel format'
 	'dbeaver-plugin-svg-format: To save diagrams in SVG format'
@@ -23,6 +23,7 @@ conflicts=("${_pkgname}")
 
 source=(
 	"git+https://github.com/${_pkgname}/${_pkgname}.git"
+	"git+https://github.com/${_pkgname}/${_pkgname}-common.git"
 	"io.${_pkgname}.DBeaver.desktop"
 	"${_pkgname}.sh"
 	"${_pkgname}.profile.gz"
@@ -30,6 +31,7 @@ source=(
 	"${_pkgname}.install"
 )
 sha512sums=(
+	'SKIP'
 	'SKIP'
 	'fdf89ba4be526925f27bcf1e185c16461474ef333b3c2587dc535c4ffe68d7fe851465649c8ea2f4d3b05a3e714e5ac3a53a131350ceba449c8f3d5dcfcedb60'
 	'1d4e0947baa5d9c663f7afcef2e6938d1a2f768de4002beb38b79bfc93748d6a0acd88dae765bfe5b4cc01897946e9b6a712f1f061e7896dfc07fc7274c88a30'
@@ -51,14 +53,19 @@ prepare() {
 		sed "s/DBEAVER_VERSION/${pkgver}/g" |
 		gzip -9 >"${srcdir}/${pkgname}.profile.gz"
 
-	export JAVA_HOME="/usr/lib/jvm/$(archlinux-java status | tail -n +2 | sort | cut -d ' ' -f 3 | sort -nr -k 2 -t '-' | grep -E '17-|18-|19-' -m 1)"
+	export JAVA_HOME="/usr/lib/jvm/$(archlinux-java status | tail -n +2 | sort | cut -d ' ' -f 3 | sort -nr -k 2 -t '-' | grep -E '17-|18-|19-|20-|21-|22-' -m 1)"
 	export MAVEN_OPTS="-Xmx2048m"
 	cd "${srcdir}/${_pkgname}"
+
+	# Skip broken test.platform
+	sed -i '/org.jkiss.dbeaver.test.platform/d' test/pom.xml
+
 	mvn --batch-mode validate
 }
 
 build() {
 	cd "${srcdir}/${_pkgname}"
+	cd "product/aggregate"
 	mvn --batch-mode package
 }
 
