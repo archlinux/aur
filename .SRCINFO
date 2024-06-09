@@ -13,6 +13,7 @@ pkgbase = botflix-git
 	depends = python-simple-term-menu
 	depends = scrapy
 	depends = python-rich
+	depends = webtorrent-cli
 	provides = botflix
 	conflicts = botflix
 	source = botflix::git+https://github.com/kaboussi/Botflix.git
