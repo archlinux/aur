@@ -1,7 +1,7 @@
 # Maintainer: Antoine Viallon <antoine at lesviallon dot fr>
 
 pkgbase=tilibs-git
-pkgname=(libticonv-git libticables-git libticalcs-git libtifiles-git)
+pkgname=(libticables-git libticalcs-git libtifiles-git)
 pkgver=1.18.r41.g7be38a45
 pkgrel=2
 pkgdesc="Various TI libs required for TILP"
@@ -66,11 +66,6 @@ package_libticables-git() {
     install -Dm644 "${srcdir}/69-libticables.rules" "${pkgdir}/usr/lib/udev/rules.d/69-libticables.rules"
 }
 
-package_libticonv-git() {
-    provides=(libticonv)
-    conflicts=(libticonv)
-    _package
-}
 package_libticalcs-git() {
     provides=(libticalcs)
     conflicts=(libticalcs)
