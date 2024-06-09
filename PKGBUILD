@@ -1,37 +1,31 @@
-# Maintainer: neodarz <neodarz@neodarz.net>
+# Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: neodarz <neodarz@neodarz.net>
 
-pkgbase=terminalimageviewer
-pkgname=terminalimageviewer-git
-_pkgname=TerminalImageViewer
-pkgver=r46.65ebc0a
-pkgrel=2
+pkgname=terminalimageviewer
+_pkgName=TerminalImageViewer
+_binname=tiv
+pkgver=1.2.1
+pkgrel=1
 pkgdesc="Small C++ program to display images in a (modern) terminal using RGB ANSI codes and unicode block graphics characters"
-arch=('i686' 'x86_64')
-url="https://github.com/stefanhaustein/$_pkgname"
+arch=('any')
+url="https://github.com/stefanhaustein/${_pkgName}"
 license=('Apache')
-makedepends=(git make gcc imagemagick)
-provides=("$_pkgname" "tiv")
-conflicts=("$_pkgname" "tiv")
-source=("$pkgname"::"git+https://github.com/stefanhaustein/$_pkgname.git")
-noextract=()
-md5sums=('SKIP')
-
-pkgver() {
-    cd "$pkgname"
-    ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    )
-}
+depends=('imagemagick')
+makedepends=('make' 'gcc' 'imagemagick')
+provides=("${_binname}")
+conflicts=("${_binname}")
+_pkgsrc="${_pkgName}-${pkgver}"
+source=("${_pkgsrc}.tar.gz"::"${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('08d0c30e3ffa47b69d1bce07bea56f04b7deb4a8a79307ce435a4f0852fbcd5f')
 
 build() {
-    cd $srcdir/$pkgname/src/main/cpp
-    make
+  cd "${srcdir}/${_pkgsrc}/src"
+  make
 }
-
 
 package() {
-    cd $srcdir/$pkgname
-    install -Dm755 src/main/cpp/tiv $pkgdir/usr/bin/tiv
+  cd "${srcdir}/${_pkgsrc}"
+  install -Dm755 "src/${_binname}" "${pkgdir}/usr/bin/${_binname}"
+  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_binname}/README.md"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_binname}/LICENSE"
 }
-                                        
