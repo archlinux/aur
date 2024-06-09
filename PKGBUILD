@@ -15,7 +15,6 @@ source=('org.bleachbit.BleachBit-Root.desktop'
         'org.bleachbit.BleachBit-Root.policy')
 sha256sums=('4e05d8571e3ace3c16f99f6701ca89628d73580cf8035484c614cd6ddd845772'
             '069611921297e3ab09222f594be8214e3722f2218bc48325c78758fae71f535f')
-optdepends=('xorg-xhost: Xorg support')
 
 package() {
   install -Dm644 org.bleachbit.BleachBit-Root.desktop -t "${pkgdir}/usr/share/applications/"
