@@ -1,7 +1,7 @@
 pkgbase = cargo-sync-rdme
 	pkgdesc = Cargo subcommand to synchronize README with crate documentation
-	pkgver = 0.3.5
-	pkgrel = 2
+	pkgver = 0.3.6
+	pkgrel = 1
 	url = https://github.com/gifnksm/cargo-sync-rdme
 	arch = x86_64
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = cargo-sync-rdme
 	provides = cargo-sync-rdme
 	conflicts = cargo-sync-rdme-bin
 	options = !lto
-	source = cargo-sync-rdme-0.3.5.tar.gz::https://github.com/gifnksm/cargo-sync-rdme/archive/refs/tags/v0.3.5.tar.gz
-	sha256sums = e8002a234039b9963f99f1fef18d04be6a72a2533ed4cfb1209db8660d097188
+	source = cargo-sync-rdme-0.3.6.tar.gz::https://github.com/gifnksm/cargo-sync-rdme/archive/refs/tags/v0.3.6.tar.gz
+	sha256sums = 6f0a0d3021993dff8cbf5a1f90309f30c085d063127a5fc2a3d1268682c96cdc
 
 pkgname = cargo-sync-rdme
