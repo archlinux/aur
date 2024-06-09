@@ -8,7 +8,7 @@ url='https://localsend.org/'
 arch=('x86_64')
 license=('MIT')
 depends=('xdg-user-dirs' 'libayatana-appindicator')
-makedepends=('flutter-engine' 'git' 'yq' 'python>=3.11' 'python<3.12')
+makedepends=('flutter-engine' 'git' 'yq' 'python' 'python311')
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
 	'flutter::git+https://github.com/flutter/flutter.git'
