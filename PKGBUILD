@@ -3,7 +3,7 @@
 
 _pkgname=libint
 pkgname=libint2
-pkgver=2.8.1
+pkgver=2.9.0
 pkgrel=1
 pkgdesc='A high-performance library for computing Gaussian integrals in quantum mechanics'
 url='https://github.com/evaleev/libint'
@@ -11,13 +11,13 @@ license=('GPL')
 arch=('x86_64')
 depends=('boost')
 makedepends=('python' 'gcc-fortran' 'cmake' 'automake' 'autoconf' 'eigen')
-source=("https://github.com/evaleev/libint/archive/v${pkgver}.tar.gz")
-sha256sums=('54ae9c55f03f1989ee4792ab1ec24eda8ac88126f9c11f3723ed76a3275b3e24')
+source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/evaleev/libint/archive/v${pkgver}.tar.gz")
+sha256sums=('4929b2f2d3e53479270be052e366e8c70fa154a7f309e5c2c23b7d394159687d')
 options=(staticlibs)
 
 
 prepare() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+    cd "${_pkgname}-${pkgver}"
 
     ./autogen.sh
     
