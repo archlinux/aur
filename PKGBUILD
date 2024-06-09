@@ -5,10 +5,10 @@ _ENABLE_CPU=${_ENABLE_CPU:-1}
 _ENABLE_CUDA=${_ENABLE_CUDA:-1}
 _ENABLE_ROCM=${_ENABLE_ROCM:-1}
 
-# additional backends if set to 1
+# additional piper backend
+_ENABLE_PIPER=${_ENABLE_PIPER:-1}
+# additional python backends if set to 1
 _ENABLE_PYTHON=${_ENABLE_PYTHON:-1}
-# piper build is currently broken, disable it
-_ENABLE_PIPER=${_ENABLE_PIPER:-0}
 
 # if GPU_TARGETS and AMDGPU_TARGETS are not set, mirror architecture list from arch:python-pytorch@2.3.0-2
 _AMDGPU_TARGETS="gfx906;gfx908;gfx90a;gfx940;gfx941;gfx942;gfx1010;gfx1012;gfx1030;gfx1100;gfx1101;gfx1102"
@@ -31,8 +31,8 @@ if [[ $_ENABLE_PIPER = 1 ]]; then
   _OPTIONAL_GRPC="backend-assets/grpc/piper $_OPTIONAL_GRPC"
   _GO_TAGS="tts"
 else
- _DISABLED_MOD_EDIT="$_DISABLED_MOD_EDIT mudler/go-piper"
- _GO_TAGS=""
+  _DISABLED_MOD_EDIT="$_DISABLED_MOD_EDIT mudler/go-piper"
+  _GO_TAGS=""
 fi
 
 # enabled backends
@@ -44,8 +44,8 @@ $_OPTIONAL_GRPC"
 _pkgbase="localai"
 pkgbase="${_pkgbase}-git"
 pkgname=()
-pkgver=2.16.0.76.g34ab442c
-pkgrel=2
+pkgver=2.16.0.112.gd9109ffa
+pkgrel=1
 pkgdesc="Self-hosted OpenAI API alternative - Open Source, community-driven and local-first."
 url="https://github.com/mudler/LocalAI"
 license=('MIT')
@@ -95,6 +95,7 @@ makedepends=(
 
 if [[ $_ENABLE_PYTHON = 1 ]]; then
   depends+=(
+    'espeak-ng'
     'python-protobuf'
     'python-grpcio'
     'python-grpcio-tools'
@@ -259,6 +260,7 @@ build() {
   if [[ $_ENABLE_ROCM = 1 ]]; then
     cd "${srcdir}/${_pkgbase}-rocm"
     export ROCM_HOME="${ROCM_HOME:-/opt/rocm}"
+    export ROCM_VERSION="$(cat $ROCM_HOME/.info/version)"
     export PATH="$ROC_HOME/bin:$PATH"
     MAGMA_HOME="$ROCM_HOME" AMDGPU_TARGETS="$_AMDGPU_TARGETS" GPU_TARGETS="$_AMDGPU_TARGETS" \
       _build hipblas
