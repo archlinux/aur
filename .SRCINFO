@@ -1,0 +1,20 @@
+pkgbase = python-jtagtap-git
+	pkgdesc = Simple JTAG TAP described in plain Python using the nMigen/Amaranth toolbox
+	pkgver = r4.851b71b
+	pkgrel = 1
+	url = https://github.com/lambdaconcept/jtagtap
+	arch = any
+	license = BSD-2-Clause
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-amaranth
+	provides = python-jtagtap=r4.851b71b
+	conflicts = python-jtagtap
+	source = jtagtap::git+https://github.com/lambdaconcept/jtagtap.git
+	sha512sums = SKIP
+
+pkgname = python-jtagtap-git

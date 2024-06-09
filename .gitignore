@@ -1,0 +1,7 @@
+/.vscode/
+/jtagtap/
+/src/
+/pkg/
+*.log
+*.pkg.*
+*.tar.*
