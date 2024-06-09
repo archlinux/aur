@@ -1,4 +1,5 @@
-# Maintainer: hannut
+# Maintainer: edwloef
+# Contributor: hannut
 # Contributor: Leo_Verto
 # Contributor: tsuflux
 # Contributor: sekret
