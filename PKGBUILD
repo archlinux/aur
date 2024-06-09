@@ -35,17 +35,17 @@ _engine_version=3.19.6
 prepare() {
 	cd "${_srcdir}"
 	source '/opt/flutter-engine/pkgbuild-prepare.sh'
+}
+
+build() {
+	cd "${_srcdir}"
+	source '/opt/flutter-engine/pkgbuild-build.sh'
 
 	local dartpkg="$(yq -er .name 'pubspec.yaml')"
 	flutter create --project-name="${dartpkg}" --platforms=linux --no-pub --no-overwrite .
 
 	flutter clean
 	flutter pub get
-}
-
-build() {
-	cd "${_srcdir}"
-	source '/opt/flutter-engine/pkgbuild-build.sh'
 
 	flutter build linux --release
 }
@@ -70,7 +70,7 @@ package() {
 	ln -s \
 		"/opt/${_pkgname}/${_pkgname}" \
 		"${pkgdir}/usr/bin/${_pkgname}"
-		
+
 	# Icon for .desktop
 	install -Dm644 \
 		"${srcdir}/${_srcdir}/assets/launcher/convertall_icon.svg" \
@@ -85,7 +85,7 @@ package() {
 		Exec=/usr/bin/${_pkgname}
 		Comment=${pkgdesc}
 		Categories=Utilities
-		
+
 		EOF
 	) "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 }
