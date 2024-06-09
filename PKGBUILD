@@ -7,7 +7,7 @@ pkgdesc="Napture is a simple browser using a modified version of the http protoc
 arch=('x86_64')
 url="https://github.com/face-hh/webx"
 license=('Apache2')
-depends=('glib2' 'cargo' 'gtk4' 'libadwaita' 'lua')
+depends=('glib2' 'cargo' 'gtk4' 'libadwaita' 'lua' 'luajit')
 source=("git+${url}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 build() {

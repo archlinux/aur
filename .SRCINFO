@@ -10,6 +10,7 @@ pkgbase = napture
 	depends = gtk4
 	depends = libadwaita
 	depends = lua
+	depends = luajit
 	source = git+https://github.com/face-hh/webx.git#tag=v1.3.0
 	sha256sums = SKIP
 
