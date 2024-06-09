@@ -2,7 +2,7 @@
 # Contributor: Łukasz Mariański <lmarianski at protonmail dot com>
 
 pkgname=itch-bin
-pkgver=25.6.2
+pkgver=26.1.9
 pkgrel=1
 pkgdesc="The itch.io desktop app (binary release)"
 url="https://itchio.itch.io/itch"
@@ -10,17 +10,25 @@ license=('MIT')
 arch=('x86_64')
 provides=("itch")
 conflicts=("itch" "itch-setup")
-depends=('alsa-lib' 'at-spi2-core' 'bash' 'cairo' 'dbus' 'expat' 'gcc-libs'
-         'gdk-pixbuf2' 'glib2' 'gtk3' 'libcups' 'libdrm' 'libx11' 'libxcb'
-         'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxkbcommon'
+depends=('alsa-lib' 'at-spi2-core' 'bash' 'cairo' 'dbus' 'expat' 'glib2'
+         'gtk3' 'libcups' 'libdrm' 'libx11' 'libxcb' 'libxcomposite'
+         'libxdamage' 'libxext' 'libxfixes' 'libxkbcommon'
          'libxrandr' 'mesa' 'nspr' 'nss' 'pango')
 optdepends=('firejail: sandbox preference')
 source=("itch-linux-amd64-$pkgver.zip::https://broth.itch.ovh/itch/linux-amd64/$pkgver/archive/default"
-        "https://github.com/itchio/itch/raw/master/LICENSE")
-sha256sums=('46b16cc160a8e9720e190be14d91c6b290f3cce0fffadfffd20323296c9c09de'
-            'SKIP')
+        "https://github.com/itchio/itch/raw/31d8d2f5646f9c6ab93cdd3a8bd1be6f59c687af/LICENSE")
+sha256sums=('9324777a2edf37d3afaa39b073050c2a5d3a07fec45d21171813af9e6b3fd6a3'
+            '747d5f4b6f82e28fbd50e192ee6e977159e4848cb55e0cc6ee04219832932d7c')
 
 prepare() {
+  echo "# Creating a symlink under the HOME directory"
+  echo "# to fix the firejail issue, see:"
+  echo "# https://github.com/itchio/itch/issues/2732#issuecomment-1716903738"
+  sleep 6
+  _DIR="$HOME/.config/itch/prereqs/firejail-amd64"
+  mkdir -p "$_DIR"
+  ln -sf /usr/bin/firejail "$_DIR"
+
 # Create a shortcut
   echo -e "[Desktop Entry]\n\
 Name=itch\n\
