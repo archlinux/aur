@@ -5,15 +5,17 @@
 pkgbase='concourse'
 pkgname=('concourse' 'concourse-fly-cli' 'concourse-resource-types')
 pkgver=7.11.2
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://concourse-ci.org'
 license=('custom:Apache-2.0')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/concourse/concourse/archive/v${pkgver}.tar.gz"
-        "https://github.com/concourse/concourse/releases/download/v${pkgver}/concourse-${pkgver}-linux-amd64.tgz")
+        "https://github.com/concourse/concourse/releases/download/v${pkgver}/concourse-${pkgver}-linux-amd64.tgz"
+        "https://github.com/concourse/concourse/pull/8928/commits/25c789d872f8c782b582341f90adddde0efa204a.patch")
 makedepends=('go' 'yarn')
 sha256sums=('17dc204aa58b1b3604dee32a5679d0c312ae4b72bff5f2560dd29770c6d2c7b6'
-            '9de8cf177372e6afa907700c2ae5f943c9e7ac258aea6afbc6b0fe3ec728d985')
+            '9de8cf177372e6afa907700c2ae5f943c9e7ac258aea6afbc6b0fe3ec728d985'
+            'c683c1e94a8450b29ba4a4e0f3e0d9d24cedac57ce924d7522114db42fce8d0a')
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   mkdir -p "${srcdir}/go"
@@ -25,6 +27,8 @@ prepare() {
   sed -e 's#"cni-plugins-dir" default:"/usr/local/concourse/bin"#"cni-plugins-dir" default:"/usr/lib/cni"#' -i worker/workercmd/worker_linux.go
   sed -e 's#/usr/local/concourse/bin/init#/usr/lib/concourse/bin/init#' -i worker/runtime/spec/mounts.go
   sed -e 's#"init-bin"   default:"/usr/local/concourse/bin/init"#"init-bin"   default:"/usr/lib/concourse/bin/init"#' -i worker/workercmd/worker_linux.go
+
+  patch -p1 -i ../25c789d872f8c782b582341f90adddde0efa204a.patch
 
   go get -d ./...
   yarn
