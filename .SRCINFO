@@ -1,6 +1,6 @@
 pkgbase = ueberzugpp
 	pkgdesc = Command line util which allows to display images in combination with X11 written in C++
-	pkgver = 2.9.5
+	pkgver = 2.9.6
 	pkgrel = 1
 	url = https://github.com/jstkdng/ueberzugpp
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = ueberzugpp
 	provides = ueberzug
 	conflicts = ueberzug
 	options = debug
-	source = https://github.com/jstkdng/ueberzugpp/archive/v2.9.5.tar.gz
-	sha256sums = 79c077ef8e158db3b5eb9d40512c9f9749383a29df9e3f7b11837481d1d90c74
+	source = https://github.com/jstkdng/ueberzugpp/archive/v2.9.6.tar.gz
+	sha256sums = 29cca04404c5883510aebf02846f608cfbf5892176bf4a48099e5167d5ef9d95
 
 pkgname = ueberzugpp
