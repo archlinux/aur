@@ -1,15 +1,15 @@
 pkgname=tailscaledesktop
 _pkgname=TailscaleDesktop
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Unnofficial Tailscale desktop application"
 arch=('x86_64' 'aarch64')
-url="https://gitlab.com/linuxbombay/application"
+url="https://gitlab.com/linuxbombay/tailscaledesktop"
 license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
-source=("https://gitlab.com/tailscaledesktop/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
-sha256sums=('3d3e7bff4bc3979ae997102ded1626786742b464f47593087cb53ef4ffeb53ad')
+source=("$url/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
+sha256sums=('62c5a3d01ae3e443a975292fc0f0f9fbed238a57694022eaf9ff1b2d32b6944d')
 
 package() {
     for dir in application-$pkgver-$pkgrel ; do mv "${dir}" "$_pkgname" ;done
