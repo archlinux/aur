@@ -1,6 +1,6 @@
 pkgbase = elan-lean
 	pkgdesc = A Lean version manager
-	pkgver = 3.1.0
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://github.com/leanprover/elan
 	install = post.install
@@ -11,12 +11,13 @@ pkgbase = elan-lean
 	depends = curl
 	depends = xz
 	provides = lean-community
+	provides = lean4
 	conflicts = lean-bin
 	conflicts = lean-git
 	conflicts = lean4
 	conflicts = lean-community
 	options = !lto
-	source = elan-3.1.0.tar.gz::https://github.com/leanprover/elan/archive/v3.1.0.tar.gz
-	sha512sums = 80cfcb39d66b552785db261459c1420646b94df5894e234c25a8bd3362b15e891f3f17bde291907bb5aeb81d9dc7aef533b2876c23d45a0ee1e97a6f8d60ea8e
+	source = elan-3.1.1.tar.gz::https://github.com/leanprover/elan/archive/v3.1.1.tar.gz
+	sha512sums = e674d52a265ed451008b7374e85f8f60de404d1901e41bba3888db95b586bcacfde61231401df4689ff644483703d21103722668d12514147acd8e6acfdd19e7
 
 pkgname = elan-lean
