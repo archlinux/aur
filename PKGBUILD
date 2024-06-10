@@ -1,12 +1,13 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=valveresourceformat-bin
 pkgver=10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Valve's Source 2 resource file format parser, decompiler, and exporter."
 arch=('x86_64')
 url="https://github.com/ValveResourceFormat/ValveResourceFormat"
 license=('MIT' 'CC-BY-2.5')
 depends=('glibc' 'gcc-libs' 'zlib' 'wine' 'bash' 'hicolor-icon-theme')
+makedepends=('gendesk')
 conflicts=(valveresourceformat)
 provides=(valveresourceformat)
 options=(!strip !debug)
@@ -21,6 +22,15 @@ sha256sums=('d2128173623aa851427609a776568688431879cbf6607341bf604b2450bc70c6'
 
 package() {
 	cd "$srcdir"
+	gendesk -f --pkgname=source2viewer \
+	--pkgdesc="$pkgdesc" \
+	--exec="${pkgname::-3}source2viewer" \
+	--name="Source 2 Viewer" \
+	--icon="${pkgname::-3}source2viewer" \
+	--terminal=false \
+	--categories="Development;Utility;Wine" \
+	--custom="PrefersNonDefaultGPU=true"
+
 	for file in {Decompiler,libSkiaSharp.so};
 	do
 		install -Dm755 $file "$pkgdir/usr/lib/$pkgname/$file"
@@ -44,18 +54,7 @@ EOF
 	chmod 755 "$pkgdir/usr/bin/${pkgname::-4}-source2viewer"
 
 	mkdir -p "$pkgdir/usr/share/applications"
-	cat >> "$pkgdir/usr/share/applications/source2viewer.desktop" <<-EOF
-[Desktop Entry]
-Version=$pkgver
-Name=Source 2 Viewer
-Comment=Valve's Source 2 resource file format parser, decompiler, and exporter
-Exec=${pkgname::-4}-source2viewer %f
-Icon=${pkgname::-4}-source2viewer
-Terminal=false
-Type=Application
-Categories=Development;Utility;Wine;
-PrefersNonDefaultGPU=true
-EOF
 
 	install -Dm644 "$srcdir/ValveResourceFormat-$pkgver/Misc/Icons/source2viewer.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/${pkgname::-4}-source2viewer.png"
+	install -Dm644 "$srcdir/source2viewer.desktop" "$pkgdir/usr/share/applications/source2viewer.desktop"
 }
