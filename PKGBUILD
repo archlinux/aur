@@ -22,15 +22,15 @@ pythonpath="#!/usr/bin/env python3"
 package() {
   # Create directories in advance
   install -d "${pkgdir}/usr/"
-  install -d "${pkgdir}/usr/lib/python3.11/site-packages/"
+  install -d "${pkgdir}/usr/lib/python3.12/site-packages/"
 
   # Extract data
   ar x "${_pkgname}-${pkgver}.deb"
   tar xf data.tar.xz 
 
   cp -r "${srcdir}/usr" "${pkgdir}/"
-  mv "${pkgdir}/usr/lib/python3/dist-packages/dangerzone" "${pkgdir}/usr/lib/python3.11/site-packages/"
-  mv "${pkgdir}/usr/lib/python3/dist-packages/dangerzone-${pkgver}.egg-info" "${pkgdir}/usr/lib/python3.11/site-packages/"
+  mv "${pkgdir}/usr/lib/python3/dist-packages/dangerzone" "${pkgdir}/usr/lib/python3.12/site-packages/"
+  mv "${pkgdir}/usr/lib/python3/dist-packages/dangerzone-${pkgver}.egg-info" "${pkgdir}/usr/lib/python3.12/site-packages/"
 
   # Remove unused directory
   rm -r "${pkgdir}/usr/lib/python3"
