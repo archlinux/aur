@@ -21,7 +21,7 @@ provides=(
 	"$_pkgname"
 )
 source_x86_64=(
-	"$pkgname-$pkgver.pacman::https://github.com/XDwanj/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver-$pkgrel-x86_64.pkg.tar.zst"
+	"$pkgname-$pkgver.pacman::https://github.com/XDwanj/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver-1-x86_64.pkg.tar.zst"
 )
 sha256sums_x86_64=('546e9c46d0296038c2cda8c5cfa53098a6234de43c7b857a0121d83053f0613c')
 
