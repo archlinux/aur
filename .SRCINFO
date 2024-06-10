@@ -1,14 +1,11 @@
 pkgbase = img2irc
 	pkgdesc = CLI utility to convert images to halfblock ANSI or IRC art with various optional post-processing filters
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/waveplate/img2irc
 	arch = x86_64
 	license = GPL3
-	makedepends = rust
 	makedepends = cargo
-	depends = rust
-	depends = cargo
 	options = !strip
 	options = !debug
 	source = img2irc-1.0.4.tar.gz::https://github.com/waveplate/img2irc/archive/refs/tags/v1.0.4.tar.gz
