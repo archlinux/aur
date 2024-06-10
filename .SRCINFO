@@ -1,0 +1,17 @@
+pkgbase = mayhem-bin
+	pkgdesc = A minimal TUI-based task tracker
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://github.com/BOTbkcd/mayhem
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = sqlite
+	provides = mayhem
+	conflicts = mayhem
+	source_x86_64 = mayhem-1.2.3.tar.gz::https://github.com/BOTbkcd/mayhem/releases/download/v1.2.3/mayhem-linux-amd64.tar.gz
+	sha256sums_x86_64 = ecb006df4332e64719757dc65b11fcd0b677d511c259fd8d3e9628030c846f2f
+	source_aarch64 = mayhem-1.2.3.tar.gz::https://github.com/BOTbkcd/mayhem/releases/download/v1.2.3/mayhem-linux-arm64.tar.gz
+	sha256sums_aarch64 = e05db224d4d3c49a8b7669bc667f26831d42d8c717ab7659f9726c816d7da165
+
+pkgname = mayhem-bin
