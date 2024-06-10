@@ -73,7 +73,7 @@ _subarch=
 pkgbase=linux-ck
 pkgver=6.9.3
 _upstream=arch1
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=(GPL-2.0-only)
@@ -113,7 +113,7 @@ validpgpkeys=(
 )
 sha256sums=('c321c46401368774fc236f57095b205a5da57415f9a6008018902f9fd5eddfae'
             'SKIP'
-            '4a6d42d663b6a7b0ccdedd05193f748fdf74bbe096d014282217437b56d62438'
+            '3acffee6493e810bd13f042b0a8e97e2b66a977b8ae7ec7c25a604446271860f'
             'cf11fe18d60f2bf85fa0dd61a2fb1d59bf40f98db48dfae2244c5839c1281919'
             '1d3ac3e581cbc5108f882fcdc75d74f7f069654c71bad65febe5ba15a7a3a14f'
             '111adfc5b9c7d3bfd7d1a06286e7bee853dd1f51ecca3948eed39710eaf51381')
