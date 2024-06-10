@@ -21,14 +21,19 @@ provides=(
 	"$pkgname"
 	"$_pkgname"
 )
-source_x86_64=(
+source=(
 	"$pkgname-$pkgver.pacman::https://github.com/XDwanj/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver-$_offical_pkgrel-x86_64.pkg.tar.zst"
 )
-sha256sums_x86_64=('546e9c46d0296038c2cda8c5cfa53098a6234de43c7b857a0121d83053f0613c')
+sha256sums=('546e9c46d0296038c2cda8c5cfa53098a6234de43c7b857a0121d83053f0613c')
 
-package_x86_64() {
+package() {
     cd ${srcdir}
     tar -xvf "$srcdir/$pkgname-$pkgver.pacman" -C "$pkgdir/"
+    echo tar -xvf "$srcdir/$pkgname-$pkgver.pacman" -C "$pkgdir/"
     # Remove exsiting files
-    rm -f "$pkgdir/.PKGINFO" "$pkgdir/.MTREE $pkgdir/.INSTALL"
+    rm -f \
+		"$pkgdir/.PKGINFO" \
+		"$pkgdir/.MTREE" \
+		"$pkgdir/.INSTALL" \
+		"$pkgdir/.BUILDINFO"
 }
