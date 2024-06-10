@@ -1,7 +1,7 @@
 pkgbase = soil2-git
 	pkgdesc = SOILa tiny C library used primarily for uploading textures into OpenGL.
 	pkgver = 1.20.r53.g2293246
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SpartanJ/SOIL2
 	arch = x86_64
 	license = MIT-0
@@ -10,7 +10,7 @@ pkgbase = soil2-git
 	makedepends = git
 	depends = glibc
 	depends = gcc-libs
-	depends = glvnd
+	depends = libglvnd
 	source = soil2-git::git+https://github.com/SpartanJ/SOIL2.git
 	sha256sums = SKIP
 
