@@ -1,6 +1,6 @@
 # Maintainer: StuckUpCreations <onelove.nyahbingi@gmail.com>
 pkgname=ctjs-bin
-pkgver=1.7.0
+pkgver=4.0.2
 pkgrel=1
 pkgdesc="ct.js is a 2D game editor that makes its bet on good documentation, visual tools and smooth workflow"
 arch=("x86_64")
@@ -16,7 +16,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/ct-js/ct-js/releases/download/v1.7.0/ct.js.v1.7.0.for.linux64.zip")
+source=("https://github.com/ct-js/ct-js/releases/download/v4.0.2/ct.js.v4.0.2.for.linux64.zip")
 noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
@@ -28,21 +28,21 @@ package() {
 	mkdir -p ${pkgdir}/usr/share/applications/
 	mv ${srcdir}/linux64/data/fonts/OpenSans\ –\ LICENSE.txt ${srcdir}/linux64/data/fonts/OpenSansLicense.txt
 	touch ${pkgdir}/usr/bin/ctjs
-	echo "#!/bin/bash" >> ${pkgdir}/usr/bin/ctjs
-	echo "cd /opt/ctjs" >> ${pkgdir}/usr/bin/ctjs
-	echo "./ctjs" >> ${pkgdir}/usr/bin/ctjs
+	echo "#!/bin/bash" >>${pkgdir}/usr/bin/ctjs
+	echo "cd /opt/ctjs" >>${pkgdir}/usr/bin/ctjs
+	echo "./ctjs" >>${pkgdir}/usr/bin/ctjs
 	chmod +x ${pkgdir}/usr/bin/ctjs
 	touch ${pkgdir}/usr/share/applications/ctjs.desktop
-	echo "[Desktop Entry]" >>  ${pkgdir}/usr/share/applications/ctjs.desktop
-	echo "Type=Application" >> ${pkgdir}/usr/share/applications/ctjs.desktop
-	echo "Version=1.5.0" >> ${pkgdir}/usr/share/applications/ctjs.desktop
-	echo "Name=ct.js" >> ${pkgdir}/usr/share/applications/ctjs.desktop
-	echo "Comment=ct.js is a 2D game editor that makes its bet on good documentation, visual tools and smooth workflow" >> ${pkgdir}/usr/share/applications/ctjs.desktop
-	echo "Path=/opt/" >> ${pkgdir}/usr/share/applications/ctjs.desktop
-	echo "Exec=/opt/ctjs/ctjs" >> ${pkgdir}/usr/share/applications/ctjs.desktop
-	echo "Icon=/usr/share/icons/ct_ide.png" >> ${pkgdir}/usr/share/applications/ctjs.desktop
-	echo "Terminal=false" >> ${pkgdir}/usr/share/applications/ctjs.desktop
-	echo "Categories=Development;" >> ${pkgdir}/usr/share/applications/ctjs.desktop
+	echo "[Desktop Entry]" >>${pkgdir}/usr/share/applications/ctjs.desktop
+	echo "Type=Application" >>${pkgdir}/usr/share/applications/ctjs.desktop
+	echo "Version=1.5.0" >>${pkgdir}/usr/share/applications/ctjs.desktop
+	echo "Name=ct.js" >>${pkgdir}/usr/share/applications/ctjs.desktop
+	echo "Comment=ct.js is a 2D game editor that makes its bet on good documentation, visual tools and smooth workflow" >>${pkgdir}/usr/share/applications/ctjs.desktop
+	echo "Path=/opt/" >>${pkgdir}/usr/share/applications/ctjs.desktop
+	echo "Exec=/opt/ctjs/ctjs" >>${pkgdir}/usr/share/applications/ctjs.desktop
+	echo "Icon=/usr/share/icons/ct_ide.png" >>${pkgdir}/usr/share/applications/ctjs.desktop
+	echo "Terminal=false" >>${pkgdir}/usr/share/applications/ctjs.desktop
+	echo "Categories=Development;" >>${pkgdir}/usr/share/applications/ctjs.desktop
 	cp -r ${srcdir}/linux64/* ${pkgdir}/opt/ctjs
 	cp ${pkgdir}/opt/ctjs/ct_ide.png ${pkgdir}/usr/share/icons/ct_ide.png
 }
