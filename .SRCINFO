@@ -1,11 +1,10 @@
 pkgbase = ttf-sipa-dip
-	pkgdesc = Thai formal standard fonts from SIPA
+	pkgdesc = Thai formal standard fonts from SIPA, including Sarabun
 	pkgver = 1.0
 	pkgrel = 3
 	url = http://www.f0nt.com/release/13-free-fonts-from-sipa
 	arch = any
 	license = custom
-	optdepends = ttf-th-sarabun-new: Improved version of TH SarabunPSK
 	source = https://waa.inter.nstda.or.th/stks/pub/2020/20200217-13Fonts.zip
 	sha256sums = a153619f1b248d43ba4145337984c09b8ca375ba6319d8cd780a5502df5b720d
 
