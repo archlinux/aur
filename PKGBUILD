@@ -1,16 +1,21 @@
 # Maintainer: kpcyrd <git@rxv.cc>
 
 pkgname=cargo-debstatus
-pkgver=0.2.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="cargo-tree for debian packaging"
 url="https://github.com/kpcyrd/cargo-debstatus"
-depends=('openssl' 'curl')
+depends=(
+  'curl'
+  'gcc-libs'
+  'glibc'
+  'openssl'
+)
 makedepends=('cargo')
 arch=('i686' 'x86_64' 'armv6h' 'aarch64')
-license=('GPL3')
+license=('GPL-3.0-or-later')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kpcyrd/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('68770be752ff06e53b8264471b9a0fa724eec4dd5fae2785d1e2a9da0eafd41542f79daa3b8b56fbf40372da8aa30664d6f119ca71396628c70670519c5f0f65')
+sha512sums=('990b6e203abd683fa38f3ea8ef4a6d288969700d579124b45102c8cb784f4db76b8111a641700357aef4a8729850824d44b14852b45781f8dee4c91d2645bb0b')
 
 build() {
   cd "${pkgname}-${pkgver}"
