@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=brioche
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='a package manager and build tool for building and running complex software projects'
 arch=(x86_64)
@@ -14,7 +14,7 @@ makedepends=(cargo)
 options=(!lto)
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('50c27c9e1de6dc588116b40acdf3d448e9e445925b76393a3be63078e6b341a7')
+sha256sums=('92d4303eed325a3c5b5fc28218753cd7b0f4057710b854a0cd22b422f153a65d')
 
 prepare() {
 	cd "$_archive"
@@ -45,6 +45,7 @@ check() {
 		test_eval_import_dep
 		test_eval_import_local
 		test_eval_serialize_async
+		test_script_ops_version
 	)
 	cargo test --frozen --all-features -- ${skipped[@]/#/--skip }
 }
