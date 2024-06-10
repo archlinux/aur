@@ -1,0 +1,18 @@
+# -*- mode:shell-script; -*-
+post_install() {
+
+  cat <<-EOW
+
+  Access to the ITE 8291r3 keyboard backlight is limited to systemd
+  input group users.
+
+  To configure the keyboard backlight at boot time, itectl hook must
+  be included in the /etc/mkinitcpio.conf file after the udev
+  hook. For example
+
+  ...
+  HOOKS=(base udev autodetect itectl microcode modconf kms keyboard keymap consolefont block filesystems fsck)
+  ...
+
+EOW
+}

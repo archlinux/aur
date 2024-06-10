@@ -1,0 +1,23 @@
+pkgbase = itectl
+	pkgdesc = Tool to manage ITE 8291 (rev 0.03) keyboard backlight device.
+	pkgver = 0.0.11
+	pkgrel = 1
+	url = https://github.com/V4n6/itectl
+	install = itectl.install
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	arch = riscv64
+	license = MIT
+	makedepends = go>=1.21
+	depends = tuxedo-drivers-dkms
+	options = !lto
+	backup = etc/xdg/itectl.yml
+	source = itectl-0.0.11.tar.gz::https://github.com/v4n6/itectl/archive/v0.0.11.tar.gz
+	sha512sums = 6eb9abeacbf25830003060b583efb1c8149b4702d9cfc01f5230343d4dc8fb2955e262e413961f16e599f1b23eb96b0474c018f178d7d98fe1958017c5d56122
+
+pkgname = itectl
