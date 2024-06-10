@@ -1,7 +1,7 @@
 # Maintainer: Robert Manner <rmanni@gmail.com>
 
 pkgname=widgie
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="A lightweight widget library for applications which do not need a splashscreen."
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ optdepends=("ttf-dejavu-nerd: (or a nerd font) for icon support")
 makedepends=(wayland-protocols wayland libxkbcommon freetype2 libxkbcommon-x11 libxcb xcb-util-image xorgproto)
 source=("https://gitlab.com/manner/widgie/-/archive/$pkgver/widgie-$pkgver.tar.gz")
 options=('staticlibs')
-sha256sums=('518ef4d871c14bd3b2f99963bb40683ea870d1233f04391d71f17cfc5abb48bc')
+sha256sums=('4e03cd17ceb49c0a337239c6b01e518af200fb8e7138cf13c1029cfa5cc6be3b')
 
 _builddir="$pkgname-$pkgver"
 
