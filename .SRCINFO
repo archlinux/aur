@@ -1,0 +1,15 @@
+pkgbase = framework-sensors-git
+	pkgdesc = Sensors configuration for the framework 16.
+	pkgver = 0.0.0.r0.5f090323
+	pkgrel = 1
+	url = https://github.com/FrameworkComputer/lm-sensors
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = lm_sensors
+	provides = framework-sensors
+	conflicts = framework-sensors
+	source = framework-sensors::git+https://github.com/FrameworkComputer/lm-sensors#branch=framework
+	sha256sums = SKIP
+
+pkgname = framework-sensors-git
