@@ -1,0 +1,16 @@
+pkgbase = cloudflarewarpspeedtest-bin
+	pkgdesc = ⭐WARP IP 优选工具
+	pkgver = v1.4.2
+	pkgrel = 1
+	url = https://github.com/peanut996/CloudflareWarpSpeedTest
+	arch = aarch64
+	arch = x86_64
+	license = GPL-3.0-only
+	provides = cloudflarewarpspeedtest=v1.4.2
+	conflicts = cloudflarewarpspeedtest
+	source_aarch64 = cloudflarewarpspeedtest-bin-v1.4.2-aarch64.tar.gz::https://github.com/peanut996/CloudflareWarpSpeedTest/releases/download/v1.4.2/CloudflareWarpSpeedTest-v1.4.2-linux-arm64.tar.gz
+	md5sums_aarch64 = 5ca462b6f08bd19af7a98832e54059b9
+	source_x86_64 = cloudflarewarpspeedtest-bin-v1.4.2-x86_64.tar.gz::https://github.com/peanut996/CloudflareWarpSpeedTest/releases/download/v1.4.2/CloudflareWarpSpeedTest-v1.4.2-linux-amd64.tar.gz
+	md5sums_x86_64 = 901b52b04f27a6184901e9bcbf91fe24
+
+pkgname = cloudflarewarpspeedtest-bin
