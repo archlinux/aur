@@ -1,5 +1,5 @@
 # Maintainer: Shin-gema <Shin-gema@proton.me>
-pkgname=tdl_terminal_directmedia_library-git
+pkgname=tdl_terminal_directmedia_library
 pkgver=1.0.1
 pkgrel=1
 epoch=
