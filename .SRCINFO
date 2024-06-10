@@ -1,7 +1,7 @@
 pkgbase = cloudflarewarpspeedtest-bin
-	pkgdesc = ⭐WARP IP 优选工具
+	pkgdesc = Test the latency and speed of all Cloudflare Warp IPs to obtain the lowest latency and port. ⭐WARP IP 优选工具
 	pkgver = v1.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/peanut996/CloudflareWarpSpeedTest
 	arch = aarch64
 	arch = x86_64

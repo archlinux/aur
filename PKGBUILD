@@ -2,8 +2,8 @@
 pkgname=cloudflarewarpspeedtest-bin
 _appname=CloudflareWarpSpeedTest
 pkgver=v1.4.2
-pkgrel=1
-pkgdesc="⭐WARP IP 优选工具"
+pkgrel=2
+pkgdesc="Test the latency and speed of all Cloudflare Warp IPs to obtain the lowest latency and port. ⭐WARP IP 优选工具"
 arch=(
 	'aarch64'
 	'x86_64'
