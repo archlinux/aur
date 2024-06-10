@@ -1,11 +1,11 @@
 pkgbase = curtail-git
 	pkgdesc = Simple & useful image compressor (latest commit)
-	pkgver = 1.9.1.r11.g424cea7
+	pkgver = 1.10.0.r2.ge6900c9
 	pkgrel = 1
 	url = https://github.com/Huluti/Curtail
 	arch = x86_64
 	arch = aarch64
-	license = GPL3
+	license = GPL-3.0-or-later
 	checkdepends = appstream-glib
 	makedepends = git
 	makedepends = meson

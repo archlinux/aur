@@ -1,12 +1,12 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=curtail-git
-pkgver=1.9.1.r11.g424cea7
+pkgver=1.10.0.r2.ge6900c9
 pkgrel=1
 pkgdesc='Simple & useful image compressor (latest commit)'
 url="https://github.com/Huluti/Curtail"
 arch=('x86_64' 'aarch64')
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('jpegoptim' 'libadwaita' 'libwebp' 'oxipng' 'pngquant' 'python-gobject' 'scour')
 makedepends=('git' 'meson')
 checkdepends=('appstream-glib')
