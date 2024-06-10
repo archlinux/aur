@@ -1,6 +1,6 @@
 # Maintainer: Theodore Huang <teddyhuangnan@gmail.com>
 pkgname=biome-bin
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="A toolchain for web projects, aimed to provide functionalities to maintain them. Biome offers formatter and linter, usable via CLI and LSP."
 arch=("x86_64" "aarch64")
@@ -22,8 +22,8 @@ source_aarch64=(
 # checksum generate with 'makepkg -g'
 sha256sums=('e2746aba8799f7a3378259f36a83a079e811ca7926cbdd248a2eb7ca9cbbac5d'
             '4f6a0d776a00c0f46e1da1879321896071494229aa3219862a625e4560691a3a')
-sha256sums_x86_64=('02130f183b65583da5eb4cb8ca023c8565b5e8613904f65a8dd7f02755d66ee2')
-sha256sums_aarch64=('806bce8f838139011f97942e0cb3dfe385858c7bdbbbbac4a2c128b4d7239a41')
+sha256sums_x86_64=('344a08e4300074612dbf71d417e54816234175e7095f58ce7f10559349d9bc82')
+sha256sums_aarch64=('c0dfd1bb4cef5ca36c9aec8b4c7ae478ba81331f013a74f23807f20232988008')
 
 build() {
     mkdir -p "$srcdir/$pkgname-$pkgver"
