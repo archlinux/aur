@@ -1,7 +1,7 @@
 pkgbase = keepalived-openrc
 	pkgdesc = keepalived bundled as an openrc based service
 	pkgver = 2.3.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://gitlab.com/drad/keepalived
 	install = keepalived.install
 	arch = x86_64
@@ -12,6 +12,6 @@ pkgbase = keepalived-openrc
 	makedepends = net-snmp
 	depends = openrc
 	source = keepalived-2.3.1.tar.gz::https://www.keepalived.org/software/keepalived-2.3.1.tar.gz
-	md5sums = 8c26f75a8767e5341d82696e1e717115
+	md5sums = 5434ebc3becb6f86ebc3adc04e3e7e6d
 
 pkgname = keepalived-openrc

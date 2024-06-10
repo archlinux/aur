@@ -8,6 +8,7 @@
 
 - make changes as needed
 - update PKGBUILD > pkgver to new upstream version
+    + __note:__ also update the PKGBUILD > md5sums with the md5sum of the new release!
 - increment PKGBUILD > pkgrel
 - test locally as needed
 - generate new .SRCINFO: `makepkg --printsrcinfo > .SRCINFO`
