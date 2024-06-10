@@ -2,7 +2,7 @@
 # Maintainer: Roy Williams <fang64@gmail.com>
 
 pkgname=hamclock-bigger
-pkgver=4.02
+pkgver=4.03
 pkgrel=1
 epoch=
 pkgdesc="Clock and world map with extra features for amateur radio (2400x1440 version)"
@@ -23,7 +23,7 @@ install=
 changelog=
 source=("https://github.com/fang64/hamclock/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
-sha256sums=('d66c906d32f8c535d23bfce1dfe2516ca7651926cba5b497e1a0bfb8a4825d7d')
+sha256sums=('801f00b8574a7cd491cf7257f100ae64bc67f9741428ee8c0dc52aed0227346a')
 validpgpkeys=()
 
 prepare() {
@@ -48,13 +48,6 @@ package() {
 	cp hamclock-2400x1440 "$pkgdir/usr/bin/hamclock"
 	cp hamclock.png "$pkgdir/usr/share/icons"
 	cp LICENSE "$pkgdir/usr/share/licenses/$pkgname"
-	cat > "$pkgdir/usr/share/applications/hamclock.desktop" << HERE
-[Desktop Entry]
-Name=HamClock
-Exec=hamclock
-Icon=/usr/share/icons/hamclock.png
-Terminal=false
-Type=Application
-Categories=HamRadio
-HERE
+	cp hamclock.desktop "${pkgdir}/usr/share/applications/hamclock.desktop"
+        chmod -x "${pkgdir}/usr/share/applications/hamclock.desktop"
 }
