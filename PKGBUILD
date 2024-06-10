@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 pkgname=python-tensorstore
 _pkgname=${pkgname#python-}
-pkgver=0.1.51
+pkgver=0.1.60
 pkgrel=1
 pkgdesc='Library for reading and writing large multi-dimensional arrays.'
 arch=('x86_64')
@@ -21,6 +21,7 @@ depends=(
     'libwebp'
     'lz4'
     'pybind11'
+    'python-ml-dtypes'
     'python-numpy'
     'snappy'
     'xz'
@@ -36,7 +37,7 @@ makedepends=(
 )
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/google/$_pkgname/archive/refs/tags/v$pkgver.tar.gz"
         'pyproject.toml.patch')
-sha256sums=('01b0434519fcefea5d28da6a3decb3f3a8c86b13295870459c4032d157726593'
+sha256sums=('03632fb027d0fa2ea010c144238e3ec1bd1b89ddbf732f431ca0555151b08175'
             'aba99d7080a132cf40d8da7cd0b86f15e76b463e0d5ec004b95875da94ef1979')
 
 prepare() {

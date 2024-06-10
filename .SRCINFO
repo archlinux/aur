@@ -1,6 +1,6 @@
 pkgbase = python-tensorstore
 	pkgdesc = Library for reading and writing large multi-dimensional arrays.
-	pkgver = 0.1.51
+	pkgver = 0.1.60
 	pkgrel = 1
 	url = https://github.com/google/tensorstore
 	arch = x86_64
@@ -23,14 +23,15 @@ pkgbase = python-tensorstore
 	depends = libwebp
 	depends = lz4
 	depends = pybind11
+	depends = python-ml-dtypes
 	depends = python-numpy
 	depends = snappy
 	depends = xz
 	depends = zlib
 	depends = zstd
-	source = tensorstore-0.1.51.tar.gz::https://github.com/google/tensorstore/archive/refs/tags/v0.1.51.tar.gz
+	source = tensorstore-0.1.60.tar.gz::https://github.com/google/tensorstore/archive/refs/tags/v0.1.60.tar.gz
 	source = pyproject.toml.patch
-	sha256sums = 01b0434519fcefea5d28da6a3decb3f3a8c86b13295870459c4032d157726593
+	sha256sums = 03632fb027d0fa2ea010c144238e3ec1bd1b89ddbf732f431ca0555151b08175
 	sha256sums = aba99d7080a132cf40d8da7cd0b86f15e76b463e0d5ec004b95875da94ef1979
 
 pkgname = python-tensorstore
