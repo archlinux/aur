@@ -43,5 +43,8 @@ package() {
 	rm -rf 	${pkgdir}/usr/include
 	rm -rf 	${pkgdir}/usr/share/{dejagnu,doc,gcc-*,gdb,info,locale}
 	rm -rf 	${pkgdir}/usr/share/man/{man1/runtest.1,man5,man7}
+	rm -rf 	${pkgdir}/usr/share/info
+	rm -rf  ${pkgdir}/usr/lib/bfd-plugins/libdep.so
+	rm -rf  ${pkgdir}/usr/lib/bfd-plugins/libdep.a
 }
 
