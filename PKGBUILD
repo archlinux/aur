@@ -1,7 +1,7 @@
 # Maintainer: David Vick <david@failedstatic.click>
 # Contributer: Mistle <tehmistle [at] gmx.com>
 pkgname=stash
-pkgver=0.26.0
+pkgver=0.26.1
 pkgrel=1
 pkgdesc="Locally hosted web-based app written in Go which organizes and serves your Adult Video"
 arch=('x86_64' 'aarch64' 'armv7h')
