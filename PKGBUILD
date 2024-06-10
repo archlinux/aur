@@ -52,8 +52,8 @@ optdepends=(
     libxrender                  # libxrender1
     libxxf86vm                  # libxxf86vm1
 )
-_mirror="https://cdn.d.store.deepinos.org.cn"
-# _mirror="https://mirrors.sdu.edu.cn/spark-store-repository"		# SDU mirror, sometimes outdated
+#_mirror="https://cdn.d.store.deepinos.org.cn"
+_mirror="https://mirrors.sdu.edu.cn/spark-store-repository"		# SDU mirror, sometimes outdated
 source=("${_mirror}/store/depends/${pkgname}/${pkgname}_8.16_plus_Mejituu-2024012516_${_arch}.deb")
 b2sums=('b02cd03a19a248a12c8527f0cd21d2ed50888a2c8f89aa29323bacaf67aa45a2f1867ac064611a62d76c83f1fe9482dbf33e40bdc7f5b63b31a430d15dc56e1e')
 

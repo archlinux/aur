@@ -44,7 +44,7 @@ pkgbase = mejituu-wine8
 	optdepends = libxrandr
 	optdepends = libxrender
 	optdepends = libxxf86vm
-	source = https://cdn.d.store.deepinos.org.cn/store/depends/mejituu-wine8/mejituu-wine8_8.16_plus_Mejituu-2024012516_amd64.deb
+	source = https://mirrors.sdu.edu.cn/spark-store-repository/store/depends/mejituu-wine8/mejituu-wine8_8.16_plus_Mejituu-2024012516_amd64.deb
 	b2sums = b02cd03a19a248a12c8527f0cd21d2ed50888a2c8f89aa29323bacaf67aa45a2f1867ac064611a62d76c83f1fe9482dbf33e40bdc7f5b63b31a430d15dc56e1e
 
 pkgname = mejituu-wine8
