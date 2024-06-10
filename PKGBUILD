@@ -1,34 +1,40 @@
-# Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
-# Contributor: Jeremy Ruten <jeremy.ruten@gmail.com>
+# Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 
 pkgname=soil2-git
-pkgver=1.20.r14.g8d14c71
+pkgver=1.20.r53.g2293246
 pkgrel=1
-pkgdesc="A tiny C library used primarily for uploading textures into OpenGL."
+pkgdesc="SOILa tiny C library used primarily for uploading textures into OpenGL."
 arch=('x86_64')
 url="https://github.com/SpartanJ/SOIL2"
-license=('Public Domain')
-provides=('soil2')
-conflicts=('soil2')
-makedepends=('git' 'premake' 'sdl2')
-source=("git+https://github.com/SpartanJ/SOIL2.git")
-sha512sums=('SKIP')
+license=('MIT-0')
+depends=('glibc' 'gcc-libs' 'glvnd')
+makedepends=('mesa' 'cmake' 'git')
+source=("$pkgname::git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd SOIL2
-  git describe --long | sed 's/^release.//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "$srcdir/$pkgname"
+	git describe --long --abbrev=7 | sed 's/^release.//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+	cd "$srcdir/$pkgname"
 }
 
 build() {
-  cd SOIL2
-  premake5 gmake
-  cd make/linux
-  make config=release_x86_64
+	cd "$srcdir"
+
+	cmake -B build \
+	-S $pkgname \
+	-DCMAKE_BUILD_TYPE=None \
+	-DCMAKE_INSTALL_PREFIX=/usr \
+	-DOpenGL_GL_PREFERENCE=GLVND
+
+	cmake --build build
 }
 
 package() {
-  cd SOIL2
-  install -Dm644 lib/linux/libsoil2.a "$pkgdir/usr/lib/libsoil2.a"
-  install -Dm644 src/SOIL2/SOIL2.h "$pkgdir/usr/include/SOIL2.h"
+	cd "$srcdir"
+	DESTDIR="$pkgdir" cmake --install build
 }
 
