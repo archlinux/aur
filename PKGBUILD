@@ -1,11 +1,12 @@
-# Maintainer: leuko <aydos.de>
+# Maintainer: Gökçe Aydos (leuko) <aydos.de>
 # Maintainer: VitalyR <vr@vitalyr.com>
 # Former Maintainer: phanium <$(echo bnhoc2R1QHFxLmNvbQo= | base64 -d)>
 # Former Maintainer: xiretza <aur@xiretza.xyz>
 # Contributor: Darren Wu <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
 
-# This PKGBUILD can also be used to install *Vitis Unified Software Platform*.
-# See `package()` for details.
+# This PKGBUILD can also be used to install *Vitis Unified Software Platform*
+# or a subset of components like specific device support etc. See `package()`
+# for details.
 
 # BUILD INSTRUCTIONS:
 #
@@ -66,26 +67,26 @@ source=(
     #"install_config.txt"
 )
 
-# checksum from https://www.xilinx.com/support/download.html
+# Checksum from https://www.xilinx.com/support/download.html
 md5sums=(
     '372c0b184e32001137424e395823de3c'
     '69d14ad64f6ec44e041eaa8ffcb6f87c'
     #SKIP
 )
 
-# takes forever for probably minimal gain
+# Takes forever for probably minimal gain
 options=('!strip')
 
 prepare() {
-    rm -r "$srcdir/installer_temp"
-    # If not removed, may lead to `Program group entry alerady exists` in
-    # future installations
+    rm -rf "$srcdir/installer_temp"
+    # If not removed, may lead to `Program group entry already exists` in
+    # future makepkg packagings.
 
     mkdir -p "$srcdir/installer_temp"
 }
 
 build() {
-    # build our getpwuid() wrapper library
+    # Build our getpwuid() wrapper library
     gcc -shared -fPIC -D "FAKE_HOME=\"$srcdir/installer_temp\"" spoof_homedir.c -o spoof_homedir.so -ldl
 }
 
@@ -115,32 +116,49 @@ package() {
     # The unified installer that you downloaded includes all Vivado and Vitis
     # editions.
 
+    INSTALL_DIR="/opt/Xilinx"
+    # If you want to install two Vivado versions on the same root:
+    # 1. Modify this to another path like `/opt/Xilinx24`
+    # 2. Comment out below the packaging of
+    #    1. udev rules
+    #    2. desktop files
+
     # LD_PRELOAD already contains libfakeroot.so, add our own library before that
     LD_PRELOAD="$srcdir/spoof_homedir.so:$LD_PRELOAD" ./xsetup \
         --batch Install \
         --agree XilinxEULA,3rdPartyEULA \
-        --location "$pkgdir/opt/Xilinx" \
+        --location "$pkgdir$INSTALL_DIR" \
         --product Vivado \
         --edition 'Vivado ML Standard'
 
         #--config ../install_config.txt
 
-    # install udev rules
-    install -Dm644 "$pkgdir/opt/Xilinx/Vivado/${pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-digilent-usb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
-    install -Dm644 "$pkgdir/opt/Xilinx/Vivado/${pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-ftdi-usb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
-    install -Dm644 "$pkgdir/opt/Xilinx/Vivado/${pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-pcusb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
 
-    # install desktop files
+    # Install udev rules
+    install -Dm644 "$pkgdir$INSTALL_DIR/Vivado/${pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-digilent-usb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
+    install -Dm644 "$pkgdir$INSTALL_DIR/Vivado/${pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-ftdi-usb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
+    install -Dm644 "$pkgdir$INSTALL_DIR/Vivado/${pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-pcusb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
+
+    # Install desktop files
     for deskfile in "$srcdir"/installer_temp/Desktop/*.desktop; do
         sed -i -e "s|$pkgdir||g" "$deskfile"
         install -Dm644 -t "$pkgdir/usr/share/applications/" "$deskfile"
     done
 
-    # clean up artefacts, remove leading $pkgdir from paths
-    rm -rf "$pkgdir/opt/Xilinx/.xinstall/"
-    find "$pkgdir/opt/Xilinx/" -name '*settings64*' -exec sed -i -e "s|$pkgdir||g" '{}' \+
+    # Clean up artifacts, remove leading $pkgdir from paths
+    rm -rf "$pkgdir$INSTALL_DIR/.xinstall/"
+    find "$pkgdir$INSTALL_DIR" -name '*settings64*' -exec sed -i -e "s|$pkgdir||g" '{}' \+
 
-    # Save space for subsequent packaging, checking etc
-    cd ..
-    rm -rf "${_srcname}_${pkgver}_${_more_ver}"
+    # If you want to save space for subsequent packaging, then remove the
+    # extracted installation archive files. The following lines are executed
+    # before the pacman package is created and will free >100G of space.
+    #cd ..
+    #rm -rf "${_srcname}_${pkgver}_${_more_ver}"
+
+    # If you did not remove the extracted installation archive files and save
+    # checksum test and extraction time for repackaging, then follow these
+    # steps on your shell:
+    #
+    # 1. Remove `installer_temp`, e.g., `rm -rf src/installer_temp`
+    # 2. makepkg --skipchecksums --noextract -f
 }
