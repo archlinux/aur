@@ -1,5 +1,5 @@
 pkgbase = handbrake-llvm-optimized
-	pkgver = 1.7.3.r7.g69d5a6b37
+	pkgver = 1.8.0.r9.gfb5cec055
 	pkgrel = 1
 	url = https://handbrake.fr/
 	arch = x86_64
@@ -44,12 +44,12 @@ pkgbase = handbrake-llvm-optimized
 	makedepends = gst-plugins-base
 	makedepends = gst-plugins-base-libs
 	makedepends = gstreamer
-	makedepends = gtk3
+	makedepends = gtk4
 	makedepends = harfbuzz
 	makedepends = libgudev
 	makedepends = pango
 	options = !lto
-	source = HandBrake::git+https://github.com/HandBrake/HandBrake.git#tag=69d5a6b37fafa298eb43e537c4d99a8fd70a3e3c
+	source = HandBrake::git+https://github.com/HandBrake/HandBrake.git#tag=fb5cec0554487eb61c58f7850a5ad1bce4d2e4da
 	sha256sums = SKIP
 
 pkgname = handbrake-llvm-optimized
@@ -84,7 +84,7 @@ pkgname = handbrake-llvm-optimized
 	depends = gst-plugins-base
 	depends = gst-plugins-base-libs
 	depends = gstreamer
-	depends = gtk3
+	depends = gtk4
 	depends = harfbuzz
 	depends = libgudev
 	depends = pango
