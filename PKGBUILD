@@ -3,11 +3,11 @@ pkgname=vesktop_electron
 _pkgname=Vesktop
 pkgdesc="Vesktop gives you the performance of web Discord and the comfort of Discord Desktop, using the system provided Electron"
 pkgver=1.5.2
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'aarch64')
 url="https://github.com/Vencord/Vesktop"
 license=('GPL3')
-depends=('electron29')
+depends=('electron30')
 makedepends=('pnpm' 'git')
 optdepends=(
   'libnotify: Notifications'
@@ -22,12 +22,12 @@ source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
         'vesktop.sh')
 sha256sums=('2795891c71d3ec39fd412cf1396a3172499b58619b2e7f92ce81de3db19d5de7'
             'f279b1e469fb965cdf6dba9b4f428b0a7f28f414d84a47c6481b726adeb99c2b'
-            'e7f658771cc9fb6394b676f6ddf839f0641fe7fb9dc4f427ba8a619b7d0ce029')
+            'a644d0eccfdf6d5e02cb5103711b2751d7dca6b7c689267262f2a8467a48143e')
 prepare() {
   # Accept any pnpm version
   sed -i 's/"pnpm@.*/"pnpm@"\,/' "$srcdir/$_pkgname-$pkgver/package.json"
   # Use system's electron
-  sed -i '/linux/s/^/        "electronDist": "\/usr\/lib\/electron29",\n/' "$srcdir/$_pkgname-$pkgver/package.json"
+  sed -i '/linux/s/^/        "electronDist": "\/usr\/lib\/electron30",\n/' "$srcdir/$_pkgname-$pkgver/package.json"
 }
 
 build() {
