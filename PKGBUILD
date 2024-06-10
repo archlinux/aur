@@ -2,7 +2,7 @@
 
 _pkgname=zephyr-sdk
 pkgname="${_pkgname}-bin"
-pkgver=0.16.6
+pkgver=0.16.8
 pkgrel=1
 pkgdesc="SDK for Zephyr real-time operating system"
 arch=('x86_64' 'aarch64')
@@ -24,8 +24,8 @@ source_aarch64=("https://github.com/zephyrproject-rtos/sdk-ng/releases/download/
 
 sha256sums=('10d0873b848df7dc30940a5642957763d48ab53b04ea828e1a404c6016d4b0de'
             '4f6058f9e3990143d4f7d5f2aed6053bb6b5eb8b6034538b02a06b70f807b4f8')
-sha256sums_x86_64=('bca2b2dc306dd8766322efe9a13ca2f45b06558cf7382b57a695a5fd2d999c4a')
-sha256sums_aarch64=('2a3ce7e6b04b6daf725dc01bc5868fd559fd3308ba94f029b3b00b91a7f0fce9')
+sha256sums_x86_64=('cb4e4012751e4526aaf1ec1e8ab9b4ded5681e2e01711b64f7a1b519ff7dbc6a')
+sha256sums_aarch64=('83782b4cf595bb3da8a6c7c1ade01eed00ad03f8ba0c72da6680693192b3668d')
 
 options=(!strip)
 
