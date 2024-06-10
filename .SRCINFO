@@ -1,14 +1,14 @@
 pkgbase = python-vimgolf
 	pkgdesc = This project contains a vimgolf client written in Python.
-	pkgver = 0.4.0
+	pkgver = 0.5.1
 	pkgrel = 1
-	url = https://pypi.org/project/vimgolf/
+	url = https://github.com/dstein64/vimgolf
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	source = vimgolf-0.4.0::https://github.com/dstein64/vimgolf/archive/v0.4.0.tar.gz
-	md5sums = 17092bef8e1b729b19b0fdc4143c7a43
+	source = vimgolf-0.5.1::https://github.com/dstein64/vimgolf/archive/refs/tags/v0.5.1.tar.gz
+	md5sums = ce848efa0a705c9b284bbf94172290fb
 
 pkgname = python-vimgolf
-	depends = python
+depends = python
 
