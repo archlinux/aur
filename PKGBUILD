@@ -2,14 +2,14 @@
 pkgbase=python-crds
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=11.17.22
+pkgver=11.17.23
 pkgrel=1
 pkgdesc="Calibration Reference Data System for HST and JWST"
 arch=('any')
 url="https://hst-crds.stsci.edu/static/users_guide/index.html"
 license=('BSD-3-Clause')
 makedepends=('python-setuptools-scm' 'python-wheel' 'python-build' 'python-installer')
-#checkdepends=('python-pytest'
+#checkdepends=('python-pytest-xdist'
 #              'python-mock'
 #              'python-astropy'
 #              'python-yaml'
@@ -22,7 +22,7 @@ makedepends=('python-setuptools-scm' 'python-wheel' 'python-build' 'python-insta
 ##             'python-pylint'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #       'fix-roman-asdf-test.patch')
-md5sums=('197fa3ef5c64b3aef9e8c40ad71b2735')
+md5sums=('b3db821bc540149b605ed13378601de4')
 
 #prepare() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
@@ -43,7 +43,7 @@ build() {
 ##   CRDS_TESTING_CACHE="crdscache" pytest -vv -l -ra --color=yes -o console_output_style=count #\
 ##   test/submit/test_submit.py .
 ##   metrisc_logger, stdatamodels
-#    pytest -vv -l -ra --color=yes -o console_output_style=count \
+#    pytest -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 5 \
 #        --ignore=test/bestrefs/test_bestrefs.py \
 #        --ignore=test/certify/test_certify.py \
 #        --ignore=test/roman/test_roman.py \
@@ -77,6 +77,8 @@ build() {
 #        --deselect=test/submit/test_submit.py::TestSubmit::test_multiple_invalid_chars \
 #        --deselect=test/submit/test_submit.py::TestSubmit::test_addfiles \
 #        --deselect=test/submit/test_submit.py::TestSubmit::test_badvalue_trinary \
+#        --deselect=test/submit/test_submit.py::TestSubmit::test_badvalue_choices \
+#        --deselect=test/submit/test_submit.py::TestSubmit::test_invalid_description \
 #        --deselect=test/submit/test_submit.py::TestSubmit::test_resetfield \
 #        --deselect=test/submit/test_submit.py::TestSubmit::test_validate \
 #        --deselect=test/submit/test_submit.py::TestSubmit::test_rmfile \
