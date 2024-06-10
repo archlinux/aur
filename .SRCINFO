@@ -1,0 +1,15 @@
+pkgbase = python-gbulb-git
+	pkgdesc = Implementation of asyncio using GLib
+	pkgver = 0.6.5.r50.g244c510
+	pkgrel = 1
+	url = https://github.com/beeware/gbulb
+	arch = any
+	license = Apache
+	checkdepends = python-tox
+	makedepends = python-setuptools
+	depends = python-gobject
+	optdepends = gtk3: Gtk application integration
+	source = gbulb::git+https://github.com/beeware/gbulb.git
+	sha256sums = SKIP
+
+pkgname = python-gbulb-git
