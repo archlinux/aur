@@ -17,13 +17,13 @@ fi
 
 _pkgname="skunkjuice"
 pkgname="${_pkgname}-git"
-pkgver=0.0.2.r2.gee9c258
+pkgver=0.0.2.r3.g01beb4f
 pkgrel=1
 pkgdesc="Rudimentary QML compositor branched off qtwayland/examples/wayland/pure-qml"
 arch=("any")
 url="http://www.qt.io"
 license=("LGPL3" "GPL3")
-source=("git://github.com/sirspudd/${_pkgname}.git")
+source=("git+https://github.com/sirspudd/${_pkgname}.git")
 sha256sums=("SKIP")
 options=('!strip')
 
