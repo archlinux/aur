@@ -1,13 +1,13 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=inspector
-pkgver=0.1.9
-_commit=e1ed9bfd2666852e638a92034a3c0357e2c44393
+pkgver=0.2.0
+_commit=5e3ac67e7e193bac25dc0cfb8dca7ef982cfcc0e
 pkgrel=1
 pkgdesc='Gives information about your system'
 url="https://github.com/Nokse22/inspector"
 license=('GPL-3.0-or-later')
-arch=('aarch64' 'x86_64')
+arch=('x86_64' 'aarch64')
 depends=('libadwaita' 'python')
 makedepends=('git' 'meson')
 checkdepends=('appstream-glib')

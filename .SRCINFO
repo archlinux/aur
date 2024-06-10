@@ -1,17 +1,17 @@
 pkgbase = inspector
 	pkgdesc = Gives information about your system
-	pkgver = 0.1.9
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/Nokse22/inspector
-	arch = aarch64
 	arch = x86_64
+	arch = aarch64
 	license = GPL-3.0-or-later
 	checkdepends = appstream-glib
 	makedepends = git
 	makedepends = meson
 	depends = libadwaita
 	depends = python
-	source = git+https://github.com/Nokse22/inspector.git#commit=e1ed9bfd2666852e638a92034a3c0357e2c44393
+	source = git+https://github.com/Nokse22/inspector.git#commit=5e3ac67e7e193bac25dc0cfb8dca7ef982cfcc0e
 	sha256sums = SKIP
 
 pkgname = inspector
