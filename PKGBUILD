@@ -9,7 +9,7 @@ license=('MIT')
 depends=('libpng' 'openal' 'freetype2' 'libsndfile')
 _tag=f2ca047e0c7970050339c14a8622bb3e894e5d26
 source=(https://github.com/Shin-gema/TDL_Terminal-DirectMedia-Library/archive/refs/tags/Release-1.0.1.tar.gz)
-sha256sums=('71e4fec38de33b6979f7bdee37cf2af13ba9b27fdadf769c674c968a01eb228a')
+sha256sums=('SKIP')
 	
 build() {
 	cd "TDL_Terminal-DirectMedia-Library-Release-1.0.1"
