@@ -2,7 +2,7 @@
 
 pkgname=slade
 pkgver=3.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc='SLADE3 Doom editor'
 arch=('i686' 'x86_64')
 url='http://slade.mancubus.net/'
@@ -17,7 +17,7 @@ depends=('bzip2'
          'lua'
          'mpg123'
          'sfml>=2.6'
-         'webkit2gtk'
+         'webkit2gtk-4.1'
          'wxwidgets-gtk3>=3.2'
          'zlib')
 makedepends=('cmake'
