@@ -2,10 +2,10 @@
 # Contributor: Byeonghoon Yoo <bh322yoo gmail com>
 
 _pkgname=openvpn3-linux
-_commit=8a13d1b8d8
+_commit=4f37952340
 pkgname=openvpn3
-pkgver=22_rc
-pkgrel=2
+pkgver=22_rc_4f37952340
+pkgrel=1
 pkgdesc='OpenVPN 3 Linux client'
 arch=('x86_64' 'aarch64')
 url="https://codeberg.org/OpenVPN/$_pkgname"

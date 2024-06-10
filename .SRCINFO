@@ -1,7 +1,7 @@
 pkgbase = openvpn3
 	pkgdesc = OpenVPN 3 Linux client
-	pkgver = 22_rc
-	pkgrel = 2
+	pkgver = 22_rc_4f37952340
+	pkgrel = 1
 	url = https://codeberg.org/OpenVPN/openvpn3-linux
 	arch = x86_64
 	arch = aarch64
@@ -31,7 +31,7 @@ pkgbase = openvpn3
 	optdepends = mbedtls: mbed TLS version
 	optdepends = polkit>=0.112: for systemd-resolved integration
 	optdepends = repkg: Automatically rebuild the package on dependency updates
-	source = git+https://codeberg.org/OpenVPN/openvpn3-linux.git#commit=8a13d1b8d8
+	source = git+https://codeberg.org/OpenVPN/openvpn3-linux.git#commit=4f37952340
 	source = git+https://github.com/OpenVPN/openvpn3.git
 	source = git+https://github.com/chriskohlhoff/asio.git
 	source = openvpn3.rule
