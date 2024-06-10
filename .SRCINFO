@@ -1,0 +1,15 @@
+pkgbase = mercator-git
+	pkgdesc = A TUI OpenStreetMap explorer
+	pkgver = 0.2.0.r10.37de51a
+	pkgrel = 1
+	url = https://github.com/mrusme/mercator
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = go
+	provides = mercator
+	conflicts = mercator
+	source = mercator::git+https://github.com/mrusme/mercator.git
+	sha256sums = SKIP
+
+pkgname = mercator-git
