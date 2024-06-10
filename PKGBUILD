@@ -22,7 +22,7 @@ optdepends=(
 	'wqy-zenhei: Recommended font'
 )
 install=wechat.install
-_mirror="https://cdn.d.store.deepinos.org.cn"
+_mirror="https://mirrors.sdu.edu.cn/spark-store-repository"
 # _mirror="https://mirrors.sdu.edu.cn/spark-store-repository"		# SDU mirror, sometimes outdated
 source=("${_mirror}/store/chat/${pkgname}/${pkgname}_3.9.9.43_plus_Mejituu-2024022102_${_arch}.deb")
 b2sums=('047dd3d1ac7ed05e604e20de1b84510bc6729d485c88878f0d02fa9b3248f9231d3cc60bb9849c135cbc5e3c7c4c55480ca565c8bfed325d2e2c81a0122d483f')
