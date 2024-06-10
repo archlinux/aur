@@ -28,7 +28,7 @@ sha256sums_x86_64=('546e9c46d0296038c2cda8c5cfa53098a6234de43c7b857a0121d83053f0
 
 package_x86_64() {
     cd ${srcdir}
-    tar -xvf "$pkgname-$pkgver.pacman" -C "$pkgdir"
+    tar -xvf "$srcdir/$pkgname-$pkgver.pacman" -C "$pkgdir/"
     # Remove exsiting files
     rm -f "$pkgdir/.PKGINFO" "$pkgdir/.MTREE $pkgdir/.INSTALL"
 }
