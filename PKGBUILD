@@ -8,8 +8,7 @@ pkgdesc='Hacking with style: ttf VT220'
 arch=('any')
 license=('Unlicense')
 url='https://caglrc.cc/~svo/glasstty/'
-#source=("http://sensi.org/~svo/glasstty/Glass_TTY_VT220.ttf")
-source=("http://www.spacerogue.net/images/Glass_TTY_VT220.ttf")
+source=("https://caglrc.cc/~svo/glasstty/Glass_TTY_VT220.ttf")
 md5sums=('7342d5c4c32ea4aa69c5d22d2f461fbb')
 
 package() {

@@ -5,7 +5,7 @@ pkgbase = ttf-glass-tty
 	url = https://caglrc.cc/~svo/glasstty/
 	arch = any
 	license = Unlicense
-	source = http://www.spacerogue.net/images/Glass_TTY_VT220.ttf
+	source = https://caglrc.cc/~svo/glasstty/Glass_TTY_VT220.ttf
 	md5sums = 7342d5c4c32ea4aa69c5d22d2f461fbb
 
 pkgname = ttf-glass-tty
