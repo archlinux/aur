@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('bash' 'python' 'python-beautifulsoup4' 'python-html5lib')
 optdepends=(
   "vim: for using vim as a pager"
-  "nvim: for using nvim as a pager"
+  "neovim: for using nvim as a pager"
   "perl: for bash/zsh completion"
   )
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
