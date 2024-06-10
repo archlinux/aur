@@ -2,7 +2,7 @@
 
 _pkgname="discimagecreator"
 pkgname="$_pkgname-git"
-pkgver=2024.06.01.r0.g5f84df1
+pkgver=2024.06.01.r2.g2124646
 pkgrel=1
 pkgdesc="A disk image creation tool supporting CD, GD, DVD, BD, GC/Wii, Xbox, floppy, MO, USB, etc"
 url="https://github.com/saramibreak/DiscImageCreator"
@@ -13,7 +13,11 @@ depends=(
   gcc-libs
   glibc
 )
-makedepends=('git')
+makedepends=(
+  'git'
+  'meson'
+  'ninja'
+)
 optdepends=(
   'unscrambler: Unscramble GC/Wii optical disks'
 )
@@ -36,15 +40,10 @@ pkgver() {
 }
 
 build() {
-  cd "$_pkgsrc"
-  make -C DiscImageCreator/
+  arch-meson build "$_pkgsrc"
+  meson compile -C build
 }
 
 package() {
-  cd "$_pkgsrc"
-
-  make -C DiscImageCreator/ DESTDIR="$pkgdir" PREFIX="/usr" install
-
-  # license
-  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
+  meson install -C build --destdir "$pkgdir"
 }
