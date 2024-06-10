@@ -10,7 +10,7 @@ _pkgname=discord
 _electron=electron29
 pkgname=${_pkgname}_arch_electron
 pkgver=0.0.55
-pkgrel=3
+pkgrel=4
 pkgdesc="Discord using system provided ${_electron} for increased security and performance"
 arch=('any')
 provides=("${_pkgname}")
@@ -19,7 +19,7 @@ url='https://discord.com'
 license=('custom')
 options=('!strip')
 install="$pkgname.install"
-depends=("${_electron}" 'libxss' 'python')
+depends=("${_electron}" 'libxss')
 makedepends=('asar' 'curl')
 optdepends=('libpulse: Pulseaudio support'
             'libappindicator-gtk3: Systray indicator support'
@@ -30,7 +30,7 @@ source=("https://dl.discordapp.net/apps/linux/${pkgver}/${_pkgname}-${pkgver}.ta
         'discord-launcher.sh'
         'krisp-patcher.py') # original: https://github.com/sersorrel/sys/blob/main/hm/discord/krisp-patcher.py
 sha512sums=('c12365109cb4db94033fda101073d2a3d6af7bdc9728e025494ee8d44ebf5f27623861879ec38bb7dd88d40de7cddede268e0f5e44bfeb586fc12713a3758c5b'
-            '6b7043d2e66b52a5f76b8d01813a7f4fd572b38bbd24087d618af7f2cc416c41074071fa738af5e6f31dacd0186d71eb841fa0c598bfa3ad444c5bbc911402af'
+            'e11a60419c6ee5944aefc1ac16a5b496518fae626627d37a5bf636975bd21b1d9b6118ec3f44e7f4283befe5fa14737ad28dc38d975967789247ac0e66c352f3'
             '3c1021592fa856f3561072c76b5ee0b5a34a53bc230336e6d36827efb4866c9d801ef7abb24650d3a7210c61dd57f35e2812ae89226fc157cc8d9ffce032155f')
 
 prepare() {
