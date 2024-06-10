@@ -1,38 +1,42 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: RiverOnVenus <error@zhui.dev>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Wei-Ning Huang <aitjcize@gmail.com>
 
 pkgname=cppman-git
-_pkg="${pkgname%-git}"
-pkgver=0.5.3.r2.g5b39e69
+pkgver=0.5.6.r5.ga3f3846
 pkgrel=1
-pkgdesc="C++ 98/11/14 manual pages for Linux/MacOS"
+pkgdesc="C++ 98/11/14/17/20 manual pages for Linux, with source from cplusplus.com and cppreference.com."
 arch=('any')
 url='https://github.com/aitjcize/cppman'
 license=('GPL3')
-depends=('python-beautifulsoup4' 'python-html5lib')
-optdepends=('vim: Pager option')
+depends=('bash' 'python' 'python-beautifulsoup4' 'python-html5lib')
+optdepends=(
+  "vim: For using vim as a pager"
+  "perl: for bash/zsh completion"
+  )
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-provides=("$_pkg=${pkgver%.r*}")
-conflicts=("$_pkg")
-source=("$_pkg::git+$url"
-        'setup.py.patch')
-sha256sums=('SKIP'
-            '525deb610fae6c6222164154c34c3290663bcd522b339c659f338f2cbc120033')
+provides=('cppman')
+conflicts=('cppman')
+source=("$pkgname"::"git+${url}")
+sha256sums=('SKIP')
 
 pkgver() {
-	git -C "$_pkg" describe --long --tags | sed 's/-/.r/;s/-/./'
+  cd $pkgname
+  git describe --long --tags --abbrev=7 | sed 's/-/.r/;s/-/./'
 }
 
-prepare() {
-	patch -p1 -d "$_pkg" < setup.py.patch
+prepare(){
+  cd $pkgname
+  git clean -dfx
 }
 
 build() {
-	cd "$_pkg"
-	python -m build --wheel --no-isolation
+  cd $pkgname
+  python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "$_pkg"
-	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir" dist/*.whl
+  cd $pkgname
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 "$srcdir/$pkgname/COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
