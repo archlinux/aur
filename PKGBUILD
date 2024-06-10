@@ -1,13 +1,13 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=valveresourceformat-git
-pkgver=9.2.r91.g0486309
-pkgrel=4
+pkgver=10.0.r32.g57db363
+pkgrel=1
 pkgdesc="Valve's Source 2 resource file format parser, decompiler, and exporter."
 arch=('x86_64')
 url="https://github.com/ValveResourceFormat/ValveResourceFormat"
 license=('MIT')
 depends=('glibc' 'gcc-libs' 'zlib' 'bash' 'hicolor-icon-theme' 'wine')
-makedepends=('dotnet-sdk' 'git')
+makedepends=('dotnet-sdk' 'git' 'gendesk')
 options=(!strip !debug)
 provides=("${pkgname::-4}")
 conflicts=("${pkgname::-4}")
@@ -26,6 +26,16 @@ build() {
 
 	cd "$srcdir/$pkgname/GUI"
 	dotnet publish -r win-x64 --sc true -p:EnableWindowsTargeting=true
+
+	cd "$srcdir"
+	gendesk -f --pkgname=source2viewer \
+	--pkgdesc="$pkgdesc" \
+	--exec="${pkgname::-3}source2viewer" \
+	--name="Source 2 Viewer" \
+	--icon="${pkgname::-3}source2viewer" \
+	--terminal=false \
+	--categories="Development;Utility;Wine" \
+	--custom="PrefersNonDefaultGPU=true"
 }
 
 package() {
@@ -57,20 +67,6 @@ DOTNET_BUNDLE_EXTRACT_BASE_DIR=./ wine /usr/lib/$pkgname/Source2Viewer.exe "\$@"
 EOF
 	chmod 755 "$pkgdir/usr/bin/${pkgname::-4}-source2viewer"
 
-	mkdir -p "$pkgdir/usr/share/applications"
-	cat >> "$pkgdir/usr/share/applications/source2viewer.desktop" <<-EOF
-[Desktop Entry]
-Version=$pkgver
-Name=Source 2 Viewer
-Comment=Valve's Source 2 resource file format parser, decompiler, and exporter
-Exec=${pkgname::-4}-source2viewer %f
-Icon=${pkgname::-4}-source2viewer
-Terminal=false
-Type=Application
-Categories=Development;Utility;Wine;
-PrefersNonDefaultGPU=true
-EOF
-
 	install -Dm644 "$srcdir/$pkgname/Misc/Icons/source2viewer.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/${pkgname::-4}-source2viewer.png"
-
+	install -Dm644 "$srcdir/source2viewer.desktop" "$pkgdir/usr/share/applications/source2viewer.desktop"
 }
