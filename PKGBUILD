@@ -1,4 +1,4 @@
-# Maintainer: Brodi <me@brodi.space>
+# Maintainer: Zakros
 _pkgname=aretext
 pkgname=${_pkgname}-bin
 pkgver=
