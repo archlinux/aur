@@ -1,7 +1,19 @@
 post_install() {
-  echo "If you want to remove proprietary stuff to avoid asking for a Lens ID, you"
-  echo "can delete the folder /usr/share/lens/resources/extensions/lenscloud*"
-  echo "# sudo rm -vr /usr/share/lens/resources/extensions/lenscloud*"
+  cat << EOF
+If you want to remove proprietary stuff to avoid asking for a Lens ID, you
+can empty (or delete) the following file:
+
+- /usr/share/lens/resources/app.asar.unpacked/node_modules/@lensapp/lenscloud-lens-extension/dist/main.js
+
+To do this you can run the following command:
+
+$ sudo truncate -s 0 \
+  /usr/share/lens/resources/app.asar.unpacked/node_modules/@lensapp/lenscloud-lens-extension/dist/main.js
+
+Note that if you do this when Lens starts up you will get an error on the
+welcome page stating that it cannot load, the rest of the application will
+work without problems.
+EOF
 }
 
 post_upgrade() {
