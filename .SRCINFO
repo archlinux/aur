@@ -1,6 +1,6 @@
 pkgbase = r-cotan
 	pkgdesc = COexpression Tables ANalysis
-	pkgver = 2.4.1
+	pkgver = 2.4.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/COTAN
 	arch = any
@@ -48,8 +48,9 @@ pkgbase = r-cotan
 	optdepends = r-spelling
 	optdepends = r-testthat
 	optdepends = r-tidyverse
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/COTAN_2.4.1.tar.gz
-	md5sums = 9f4a66c367115dcd68c67e0334693376
-	b2sums = 18ad3f916c009e361118a43fe2bc0c0228479159547abf1d11bbaf13e977fcf8fe84249805ccc0983900c05b3ff7da1980df0261fac908316b7a9a0a07e13f9f
+	optdepends = r-torch
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/COTAN_2.4.2.tar.gz
+	md5sums = c9f7defeec704f16d220b800db88707a
+	b2sums = b8f63a07784422f3b447c37bae8644c3091c50ae5da143096c09cc2e996b2b0dc653cddddfe8e20c68ce4ef88817d54385b79aa69c571f677690078639b8a5c1
 
 pkgname = r-cotan
