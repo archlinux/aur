@@ -1,7 +1,7 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 
 pkgname=gnome-shell-extension-flexi-dock
-pkgver=2
+pkgver=3
 pkgrel=1
 pkgdesc="GNOME Shell extension to provide a flexible applications dock with panel mode support"
 arch=("any")
@@ -10,7 +10,7 @@ license=("GPL")
 depends=("gnome-shell")
 conflicts=("gnome-shell-extension-flexi-dock-git")
 source=("$pkgname-$pkgver.zip::$url/releases/download/v$pkgver/flexi-dock-v$pkgver.zip")
-md5sums=('29833ddcc4a35be2a77a6f175c62ff2d')
+md5sums=('c7deac66f684e9f0bc40a315ebbf5027')
 
 package() {
   rm -f "$srcdir/$pkgname-$pkgver.zip"
