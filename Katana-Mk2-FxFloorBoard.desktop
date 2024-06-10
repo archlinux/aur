@@ -1,0 +1,9 @@
+[Desktop Entry]
+Exec=/usr/bin/Katana-Mk2-FxFloorBoard
+Name=Katana-Mk2-FxFloorBoard
+Type=Application
+Version=1.0
+Name=KATANA MK2 FxFloorBoard
+Terminal=false
+Categories=AudioVIdeo;Audio;Music
+

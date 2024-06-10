@@ -1,0 +1,3 @@
+#!/bin/sh
+cd /opt/Katana_Mk2_FxFloorBoard
+./AppRun
