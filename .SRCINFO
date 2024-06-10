@@ -1,6 +1,6 @@
 pkgbase = sprofile
 	pkgdesc = A tool for accessing your spotify statistics without ever leaving the terminal
-	pkgver = 0.0.1
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/goodboyneon/sprofile
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = sprofile
 	depends = nodejs>=18
 	depends = rust
 	depends = cargo
-	source = sprofile-0.0.1.tar.gz::https://github.com/goodboyneon/sprofile/archive/v0.0.1.tar.gz
+	source = sprofile-0.1.0.tar.gz::https://github.com/goodboyneon/sprofile/archive/v0.1.0.tar.gz
 	sha256sums = d7c51b2d2de5fdb9153467386c55db89b070e2f6d27783805685c3ff796b565d
 
 pkgname = sprofile
