@@ -5,7 +5,7 @@
 
 pkgname=gatling
 pkgver=0.16
-pkgrel=3
+pkgrel=4
 pkgdesc='A high performance http and ftp server'
 arch=(i686 x86_64)
 url=https://www.fefe.de/gatling
@@ -25,7 +25,7 @@ build() {
   cd $srcdir/$pkgname-$pkgver
 
   sed -i 's|/usr/local/include|/usr/include/libowfat|' GNUmakefile
-  make gatling CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS"
+  make gatling CFLAGS="$CFLAGS -Wno-implicit-function-declaration" LDFLAGS="$LDFLAGS"
 }
 
 package() {
