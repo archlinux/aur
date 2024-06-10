@@ -2,20 +2,21 @@
 # Maintainer: 
 # Contributor: 
 pkgname=rosary-tauri
-pkgver=1.2.4
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="A Bible App developed with tauri"
-arch=('x86_64')
+arch=('x86_64' 'aarch64' 'armhf')
 url="https://github.com/RoseBlume/Rosary"
 license=('mit')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://github.com/RoseBlume/Rosary/releases/download/v$pkgver/rosary_"$pkgver"_amd64.deb")
-sha256sums_x86_64=('778d2fc4a1bdd376c4944dc2b9d1369657c2f7ef2ac8c0691291a94c56d00359')
+sha256sums_x86_64=('81c917fdce366aa6d417fdae65306c5f4860fb9dc26c8ffa9a9b62c0d206c54a')
+source_aarch64=("https://github.com/RoseBlume/Rosary/releases/download/v$pkgver/rosary_"$pkgver"_amd64.deb")
+sha256sums_aarch64=('bad20bfad1c337db35ee3f95d59ad5e70c4947b64aa6118de0953ddfec4c1538')
+source_armhf=("https://github.com/RoseBlume/Rosary/releases/download/v$pkgver/rosary_"$pkgver"_amd64.deb")
+sha256sums_armhf=('8a8140bf7dcea4852a265b55bca332bb904d249627521b1bd1a985b383fd8307')
 package(){
-
-	# Extract package data
 	tar -xz -f data.tar.gz -C "${pkgdir}"
-
 }
