@@ -1,17 +1,17 @@
 pkgbase = trivia-quiz
 	pkgdesc = Respond to endless questions
-	pkgver = 0.2.0
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/Nokse22/trivia-quiz
-	arch = aarch64
 	arch = x86_64
+	arch = aarch64
 	license = GPL-3.0-or-later
 	checkdepends = appstream-glib
 	makedepends = git
 	makedepends = meson
 	depends = libadwaita
 	depends = python
-	source = git+https://github.com/Nokse22/trivia-quiz.git#tag=v0.2.0
+	source = git+https://github.com/Nokse22/trivia-quiz.git#commit=170b78fc48be11bffa0c821fd4f7da1fa0b51be3
 	sha256sums = SKIP
 
 pkgname = trivia-quiz
