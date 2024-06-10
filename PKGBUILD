@@ -2,7 +2,7 @@
 
 pkgname="ttf-sipa-dip"
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 depends=()
 optdepends=("ttf-th-sarabun-new: Improved version of TH SarabunPSK")
 pkgdesc="Thai formal standard fonts from SIPA"
@@ -10,10 +10,10 @@ arch=("any")
 provide=("ttf-font")
 license=("custom")
 url="http://www.f0nt.com/release/13-free-fonts-from-sipa"
-source=("https://jaist.dl.sourceforge.net/project/thaiopensource/font/sipa-dip-font.zip")
-sha256sums=("575b7bf6e27a589d754569b608f784b1451ba0b35681a4a3187fd0e9335fb8f0")
+source=("https://waa.inter.nstda.or.th/stks/pub/2020/20200217-13Fonts.zip")
+sha256sums=("a153619f1b248d43ba4145337984c09b8ca375ba6319d8cd780a5502df5b720d")
 
 package() {
     install -d -m 755 "${pkgdir}/usr/share/fonts/TTF"
-    install -m 644 "${srcdir}/${pkgname}-${pkgver}/"*.ttf "${pkgdir}/usr/share/fonts/TTF"
+    install -m 644 "${srcdir}/Fonts/"*.ttf "${pkgdir}/usr/share/fonts/TTF"
 }
