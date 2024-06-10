@@ -9,7 +9,7 @@
 # basic info
 _pkgname="nextcloud-client"
 pkgname="$_pkgname-git"
-pkgver=3.13.0.r185.gf15810a
+pkgver=3.13.0.r215.gd787728
 pkgrel=1
 pkgdesc="Nextloud client for linux"
 url="https://github.com/nextcloud/desktop"
@@ -17,31 +17,22 @@ license=('GPL-2.0-or-later')
 arch=('i686' 'x86_64')
 
 depends=(
-  karchive
-  kguiaddons
-  kio
-  libcloudproviders
-  openssl
-  qt6-5compat
-  qt6-base
-  qt6-declarative
-  qt6-svg
-  qt6-webengine
-  qt6-websockets
-  qtkeychain-qt6
-  sqlite
+  'karchive'
+  'libcloudproviders'
+  'qt6-5compat'
+  'qt6-svg'
+  'qt6-webengine'
+  'qt6-websockets'
+  'qtkeychain-qt6'
 )
 makedepends=(
-  cmocka
-  doxygen
-  extra-cmake-modules
-  git
-  python-sphinx
-  qt6-tools
+  'extra-cmake-modules'
+  'git'
 )
 optdepends=(
   'nemo-python: integration with Nemo'
   'python-caja: integration with Caja'
+  'python-gobject' # silence namcap
   'python-nautilus: integration with Nautilus'
 )
 
@@ -73,7 +64,7 @@ pkgver() {
 prepare() {
   _submodule_update() {
     local _module
-    for _module in "${_submodules[@]}" ; do
+    for _module in "${_submodules[@]}"; do
       git submodule init "${_module##*::}"
       git submodule set-url "${_module##*::}" "$srcdir/${_module%::*}"
       git -c protocol.file.allow=always submodule update "${_module##*::}"
@@ -94,7 +85,6 @@ build() {
     -DCMAKE_BUILD_TYPE=Release
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DCMAKE_INSTALL_LIBDIR='lib'
-    -DWITH_DOC=FALSE
     -DBUILD_TESTING=OFF
     -Wno-dev
   )
