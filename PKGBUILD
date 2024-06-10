@@ -2,10 +2,10 @@
 # Contributor: Robert Greener <me@r0bert.dev>
 
 _pkgname=leaps
-_pkgver=3.1
+_pkgver=3.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=12
+pkgrel=1
 pkgdesc="Regression Subset Selection"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -20,8 +20,8 @@ optdepends=(
   r-biglm
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2535d3b89f1457e8a3918345629d802f')
-b2sums=('979eedd53566f8c416c7809d7cbb567dffcc8a5dfef3bd24ec51b6e622e413cc525cea932dbc74a6edfe7aa5eed97ddc5a82bf98e5c7ab691e61cd692421c7b3')
+md5sums=('b4432034faf4eeda50279acbaee4c63a')
+b2sums=('c875e296f3d3ffd4ae8767e25e6b8f041648ca8a561e7785966f049b162b04018b37386f4e2973cd11ad5f0718f04af1e00ceb68c3598c76d55638177542d893')
 
 build() {
   mkdir build
