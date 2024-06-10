@@ -1,7 +1,7 @@
 pkgbase = synergy3-bin
 	pkgdesc = Share a single mouse and keyboard between multiple computers
-	pkgver = v3.0.79.1
-	pkgrel = 15
+	pkgver = v3.0.80.1
+	pkgrel = 1
 	url = https://symless.com/synergy
 	arch = x86_64
 	license = unknown
@@ -14,7 +14,7 @@ pkgbase = synergy3-bin
 	conflicts = synergy2-bin
 	conflicts = synergy3-bin
 	options = !strip
-	source_x86_64 = https://rc.symless.com/synergy3/v3.0.79.1-rc3/synergy-linux_x64-libssl3-v3.0.79.1-rc3.deb
-	sha256sums_x86_64 = 355d650a135204f8a85e8705501d090f2c278be80c75e255003080a353fc553d
+	source_x86_64 = https://symless.com/synergy/synergy/api/download/synergy-linux_x64-libssl3-v3.0.80.1-rc3.deb
+	sha256sums_x86_64 = 93de6b396e181a49bb30107852286d935836322f221e2f3494ea655d39c3fe5a
 
 pkgname = synergy3-bin
