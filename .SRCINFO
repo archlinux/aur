@@ -1,7 +1,7 @@
 pkgbase = rstudio-desktop
 	pkgdesc = A powerful and productive integrated development environment (IDE) for R programming language
-	pkgver = 2024.04.1.748
-	pkgrel = 4
+	pkgver = 2024.04.2.764
+	pkgrel = 1
 	url = https://github.com/rstudio/rstudio
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -38,12 +38,12 @@ pkgbase = rstudio-desktop
 	optdepends = quarto: for Quarto projects support
 	options = !emptydirs
 	options = !debug
-	source = rstudio-2024.04.1.748.tar.gz::https://github.com/rstudio/rstudio/archive/refs/tags/v2024.04.1+748.tar.gz
+	source = rstudio-2024.04.2.764.tar.gz::https://github.com/rstudio/rstudio/archive/refs/tags/v2024.04.2+764.tar.gz
 	source = git+https://github.com/quarto-dev/quarto.git#branch=release/rstudio-cherry-blossom
 	source = https://github.com/SOCI/soci/archive/refs/tags/v4.0.3.tar.gz
 	source = qt.conf
 	source = 0002-allow_system_node.patch
-	sha256sums = 5c1190ae22e3a25740727ff1f341ef568f47359a0d1358958ec22f7e5b59b75b
+	sha256sums = 89b0d6741b6bd4dac52fd8bd9372d4f1919c97dd41056a03c975d0570eaf439e
 	sha256sums = SKIP
 	sha256sums = 4b1ff9c8545c5d802fbe06ee6cd2886630e5c03bf740e269bb625b45cf934928
 	sha256sums = 723626bfe05dafa545e135e8e61a482df111f488583fef155301acc5ecbbf921

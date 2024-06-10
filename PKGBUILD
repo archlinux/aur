@@ -3,9 +3,9 @@
 pkgname=rstudio-desktop
 _vermajor=2024
 _verminor=04
-_verpatch=1
-_versuffix=748
-_gitcommit=3ada7c6
+_verpatch=2
+_versuffix=764
+_gitcommit=e4392fc
 _gitname=rstudio-rstudio-${_gitcommit}
 pkgver=${_vermajor}.${_verminor}.${_verpatch}.${_versuffix}
 _srcname=rstudio-${_vermajor}.${_verminor}.${_verpatch}-${_versuffix}
@@ -13,7 +13,7 @@ _pandocver="current"
 _sociver="4.0.3"
 _quarto="FALSE"
 
-pkgrel=4
+pkgrel=1
 pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
 arch=('x86_64')
 url="https://github.com/rstudio/rstudio"
@@ -31,7 +31,7 @@ source=("rstudio-$pkgver.tar.gz::https://github.com/rstudio/rstudio/archive/refs
         "qt.conf"
         "0002-allow_system_node.patch")
 
-sha256sums=('5c1190ae22e3a25740727ff1f341ef568f47359a0d1358958ec22f7e5b59b75b'
+sha256sums=('89b0d6741b6bd4dac52fd8bd9372d4f1919c97dd41056a03c975d0570eaf439e'
             'SKIP'
             '4b1ff9c8545c5d802fbe06ee6cd2886630e5c03bf740e269bb625b45cf934928'
             '723626bfe05dafa545e135e8e61a482df111f488583fef155301acc5ecbbf921'
