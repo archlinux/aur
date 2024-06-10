@@ -1,7 +1,7 @@
 # Maintainer: efoundation <dev [at] e -dot- email>
 # Maintainer: steadfasterX <steadfasterX [at] binbash -dot- rocks>
 pkgname=easy-installer
-pkgver=0.20.1
+pkgver=0.21
 pkgrel=1
 pkgdesc="The Easy Installer is a desktop application which helps users install Android /e/ (https://doc.e.foundation/what-s-e) on supported devices."
 arch=('x86_64')
@@ -24,7 +24,7 @@ build(){
     cd "$pkgname-$pkgver"
     export JAVA_HOME="$(pwd)/buildSrc/linux/jdk-11.0.2/"
     [ ! -d $JAVA_HOME ] && echo "ERROR: $JAVA_HOME does not exist" && exit 3
-    ./gradlew dist
+    ./gradlew dist -Djdk.tls.client.protocols="TLSv1,TLSv1.1,TLSv1.2" --stacktrace
 }
 package(){
     install -d -m 755 $pkgdir/opt/
