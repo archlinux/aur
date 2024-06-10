@@ -38,7 +38,7 @@ pkgname = riven-original-data
 	url = https://archive.org/details/riven_202001
 	license = LicenseRef-proprietary:Cyan Worlds
 	optdepends = riven-original: To actually launch the game just by executing '/usr/bin/riven'.
-	optdepends = scummvm: To play the game by manually launching ScummVM and adding the game ScummVM.
+	optdepends = scummvm: To play the game by manually launching ScummVM and adding the game to ScummVM.
 	provides = riven-data=1.2_20030721_dvd
 	conflicts = riven-data<=1.2_20231231_dvd
 	replaces = riven-data<=1.2_20231231_dvd

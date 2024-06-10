@@ -115,7 +115,7 @@ package_riven-original-data() {
   license=('LicenseRef-proprietary:Cyan Worlds')
   optdepends=(
     "riven-original: To actually launch the game just by executing '/usr/bin/riven'."
-    "scummvm: To play the game by manually launching ScummVM and adding the game ScummVM."
+    "scummvm: To play the game by manually launching ScummVM and adding the game to ScummVM."
   )
   provides=("riven-data=${pkgver}")
   conflicts=("riven-data<=${_newestoriginalver}")
