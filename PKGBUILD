@@ -45,7 +45,7 @@ prepare() {
   cd "${srcdir}"
 
   ## If 'riven-data' is not yet installed, then ask for confirmation:
-  if ! pacman -Qqi 'riven-original-data' > /dev/null 2>&1 || pacman -Qqi "riven-data<=${_newestoriginalver}" > /dev/null 2>&1; then
+  if ! (pacman -Qqi 'riven-original-data' > /dev/null 2>&1 || pacman -Qqi "riven-data<=${_newestoriginalver}" > /dev/null 2>&1); then
     ## Check if the user has a legal copy (by trusting the user).  
     #  Ideally, we want to have it before downloading stuff, but if we put it in the general part if the `PKGBUILD` then it is executed each time the `PKGBUILD` is parsed, so also at the creation of `.SRCINFO`.
     local _legalcopy
