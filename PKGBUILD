@@ -1,7 +1,7 @@
 # Maintainer: Chase 李 <aur@chase.ninja>
 
 pkgname=tenv-bin
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="OpenTofu / Terraform / Terragrunt and Atmos version manager"
 arch=('x86_64' 'i386' 'armv6' 'arm64')
@@ -37,7 +37,7 @@ package() {
   install -Dm 0644 "README.md" "${pkgdir}/usr/share/doc/tenv/README.md"
 }
 
-sha256sums_x86_64=('f463c7686fef36b53a3e095914920f0e08e89220e0ed31db65286ff9dd0687e2')
-sha256sums_i386=('d4720197f3dd750291814564f0b6bb42064fabd167c80c56630349a650f84944')
-sha256sums_armv6=('e36537a085c2fb2b5037ce8776f1a2709e4337909d59d3aca994d1a80f8464b3')
-sha256sums_arm64=('fa1f56cebefd60fd4aabf97fefee5c5ae2929e53365f5dfb861e94872176c899')
+sha256sums_x86_64=('a0fe7e008b52c1f9c3cbeb1cdef97cc3b37a65c4b6075869ce55e78ad815446a')
+sha256sums_i386=('33469125d90e6eced4b75e007f222a74bba73107dbbb5ee9b247a08744b7772b')
+sha256sums_armv6=('09653115ded3b48e1e83e32d83e53e322df4ae60697e66502f5dfabec6a23f8e')
+sha256sums_arm64=('81a257391947eb6518376068a330825d8339329acb1604285acf3a7f4ee5e986')
