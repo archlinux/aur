@@ -1,0 +1,4 @@
+!*.patch
+!.SRCINFO
+!.gitignore
+!PKGBUILD

@@ -1,0 +1,13 @@
+pkgbase = libopencsd
+	pkgdesc = A library to decode ARM Coresight traces
+	pkgver = v1.5.2.r0.g5d86f27
+	pkgrel = 1
+	url = https://github.com/Linaro/OpenCSD
+	arch = any
+	license = BSD-3-Clause
+	provides = libopencsd.so
+	conflicts = libopencsd
+	source = git+https://github.com/Linaro/OpenCSD.git
+	sha256sums = SKIP
+
+pkgname = libopencsd
