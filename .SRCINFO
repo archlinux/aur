@@ -10,7 +10,7 @@ pkgbase = go-gsgm
 	provides = gsgm
 	conflicts = go-gsgm
 	conflicts = gsgm
-	source_x86_64 = go-gsgm.pacman::https://github.com/XDwanj/go-gsgm/releases/download/v{0.1.1}/go-gsgm-0.1.1-{1}-x86_64.pkg.tar.zst
+	source_x86_64 = go-gsgm.pacman::https://github.com/XDwanj/go-gsgm/releases/download/v0.1.1/go-gsgm-0.1.1-1-x86_64.pkg.tar.zst
 	sha256sums_x86_64 = 546e9c46d0296038c2cda8c5cfa53098a6234de43c7b857a0121d83053f0613c
 
 pkgname = go-gsgm
