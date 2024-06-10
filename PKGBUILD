@@ -12,11 +12,11 @@ source=(git+https://$url.git?signed#tag=$_tag)
 sha256sums=('SKIP')
 
 build() {
-	cd "$pkgname-Release-$pkgver"
+	cd "TDL_Terminal-DirectMedia-Library"
 	cmake -B build -S . -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_DEMO=OFF -DBUILD_SHARED_LIBS=ON
 	sudo cmake --build build --target install
 }
 
 package() {
-	cd "$pkgname-Release-$pkgver"
+	cd "TDL_Terminal-DirectMedia-Library"
 }
