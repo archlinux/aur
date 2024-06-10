@@ -1,0 +1,15 @@
+pkgbase = arm-linux-musleabihf-cross-bin
+	pkgdesc = Static, binary released musl-based cross-compilation toolchain provided by musl.cc
+	pkgver = 11.2
+	pkgrel = 1
+	url = https://more.musl.cc
+	arch = x86_64
+	groups = arm-linux-musleabihf-toolchain-bin
+	license = MIT
+	options = !emptydirs
+	options = !strip
+	options = staticlibs
+	source = https://more.musl.cc/11.2.1/x86_64-linux-musl/arm-linux-musleabihf-cross.tgz
+	sha512sums = 44df5fdc148c99dbdecd668b0a8a5fb02d5d81fce78fd5930c4b82aee0d237681f05a213e1d19f27f1e97942dd00952d69c28549cfeb4feeaabb820a836f194d
+
+pkgname = arm-linux-musleabihf-cross-bin
