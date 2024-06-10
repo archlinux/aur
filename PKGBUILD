@@ -1,10 +1,10 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Jack Roehr <jack@seatgull.com>
-# Contributor: tee <teeaur at duck dot com>
+# Maintainer: tee <teeaur at duck dot com>
 
 pkgname=ticker
-pkgver=4.5.14
-pkgrel=2
+pkgver=4.6.3
+pkgrel=1
 pkgdesc='Terminal stock ticker with live updates and position tracking'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/achannarasappa/ticker"
@@ -14,7 +14,7 @@ provides=("$pkgname")
 conflicts=("$pkgname")
 makedepends=('go')
 source_x86_64=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums_x86_64=('d95e286a2ecda18154e24b1b8a05b6e3bff9cc48d2a127217ba7ec7379e4c163')
+sha256sums_x86_64=('09e228b38b3da55e870b194bc6780af027c47bd0fdf39d146459a372a8956b87')
 
 prepare () {
 	cd "$pkgname-$pkgver"
