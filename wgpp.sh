@@ -1,7 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # script: wg++ (WebGrab+Plus)
 # author: Nikos Toutountzoglou, nikos.toutou@protonmail.com
-# rev.date: 08/05/2024
+# rev.date: 10/06/2024
 
 # vars
 WGPP_USR=$(whoami)

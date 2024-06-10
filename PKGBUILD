@@ -1,19 +1,17 @@
 # Maintainer: Nikos Toutountzoglou <nikos dot toutou at protonmail dot com>
 
 pkgname=wg++
-pkgver=5.1.5
-pkgrel=9
+pkgver=5.2
+pkgrel=1
 pkgdesc='WebGrab+Plus is a Freeware, closed-source multi-site incremental XMLTV EPG grabber'
 arch=('any')
 url="http://webgrabplus.com/"
 license=('custom')
 depends=('dotnet-runtime-8.0' 'unzip' 'libxml2' 'curl' 'wget')
-source=("$pkgname-5.1.0.tar.gz::http://webgrabplus.com/sites/default/files/download/SW/V5.1.0/WebGrabPlus_V5.1_install.tar_0.gz"
-	"$pkgname-$pkgver.tar.gz::http://webgrabplus.com/sites/default/files/download/SW/V${pkgver}/WebGrabPlus_V${pkgver}_beta_install.tar.gz"
+source=("http://webgrabplus.com/sites/default/files/download/SW/V5.2.0/WebGrabPlus_V5.2_install.tar.gz"
 	'wgpp.sh')
-sha256sums=('368b14be4b0ec724ac394b59b26c05ecff3cef2864572a8cca844d56e1ce6f0f'
-            '8d9b7cdff826ae4bd8aa8f033bafcf5bea6525b3b6fbdebf724918b1ba788ad0'
-            'bb940c9e7bfd186b781ca9a5f69e3e47dfc26f654101903a3533797a98206092')
+sha256sums=('dd472d58a84114d42776d3e04738f962b7a89e150dbd828d0db137a445ff8f1b'
+            'ea58bc3aaa40c549808e185ed85356a3823490b9a37fd617cd7801358144b6cd')
 
 prepare() {
 	# Rename folder
@@ -40,6 +38,6 @@ prepare() {
 package() {
 	install -d "$pkgdir/usr/share/$pkgname"
 	cp -a --no-preserve='mode,ownership' "$srcdir/$pkgname" "$pkgdir/usr/share"
-	find "$pkgdir" -name '*.sh' -type f -exec chmod u=rwx,go=rx {} \;
+	find "$pkgdir" -type f -name '*.sh' -exec chmod u=rwx,go=rx {} \;
 	install -Dm755 "$srcdir/wgpp.sh" "$pkgdir/usr/bin/$pkgname"
 }
