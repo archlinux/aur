@@ -1,14 +1,17 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org>
+# Maintainer: Petrov Vlad <petrov.vlad@ya.ru>
 # Contributor: Sergey Kostyaev <feo.me@ya.ru>
 
 pkgname=freelib-git
-pkgver=6.0.53.r103.gcf3f1aa
+pkgver=6.0.93.r33.g1e83b5f
 pkgrel=1
 pkgdesc="Freelib is book library manager"
 arch=(x86_64)
 url="https://github.com/petrovvlad/freeLib"
 license=(GPL3)
 depends=(qt6-base qt6-svg qt6-httpserver quazip-qt6)
+optdepends=('kindlegen: convert to EPUB, MOBI, AZW3'
+            'djvulibre: djvu covers')
 makedepends=(git cmake)
 provides=(freelib)
 conflicts=(freelib)
