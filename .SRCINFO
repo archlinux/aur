@@ -1,6 +1,6 @@
 pkgbase = discord-ptb
 	pkgdesc = All-in-one voice and text chat for gamers - public test build
-	pkgver = 0.0.87
+	pkgver = 0.0.88
 	pkgrel = 1
 	url = https://discordapp.com
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = discord-ptb
 	optdepends = noto-fonts-cjk: Font for special characters such as /shrug face
 	optdepends = emoji-font: Fonts for emoji support
 	options = !strip
-	source = https://dl-ptb.discordapp.net/apps/linux/0.0.87/discord-ptb-0.0.87.tar.gz
+	source = https://dl-ptb.discordapp.net/apps/linux/0.0.88/discord-ptb-0.0.88.tar.gz
 	source = LICENSE.html::https://discordapp.com/terms
 	source = OSS-LICENSES.html::https://discordapp.com/licenses
-	sha512sums = 1fe7ee02a08c52ede6881dcf77f07a77c5929b9d5fcf7e74302a17d7680db561fd232753440d849b3243bc54a469d6f3eedfd1b64be0cf2af59e3db945223df4
+	sha512sums = 51e8c32dd6a9679801e41cc8fddc816fa5ff1dbf5e93bbb8396dbf63cf1b5224990ed51bebe13b383e0fbcb29017fff58436269de0023dbe608c9ebd309aed1a
 	sha512sums = SKIP
 	sha512sums = SKIP
 
