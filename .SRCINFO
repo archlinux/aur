@@ -8,7 +8,7 @@ pkgbase = mdbook-epub
 	makedepends = rust
 	makedepends = cargo
 	options = !lto
-	source = https://github.com/Michael-F-Bryan/mdbook-epub/archive/0.4.37.tar.gz
+	source = mdbook-epub-0.4.37.tar.gz::https://github.com/Michael-F-Bryan/mdbook-epub/archive/0.4.37.tar.gz
 	sha256sums = 028702150826d7f2ed13d0892f5cbf44d7dbf4854a1b16df35a4da5658e59446
 
 pkgname = mdbook-epub
