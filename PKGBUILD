@@ -1,16 +1,17 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=mini-text
-pkgdesc='A very small and basic text editor'
-pkgver=0.2.0
+pkgver=0.2.2
+_commit=9661c16c274d1c46ed1c0990f12614414ffd24dd
 pkgrel=1
-arch=('aarch64' 'x86_64')
+pkgdesc='A very small and basic text editor'
 url="https://github.com/Nokse22/mini-text"
-license=('GPL3')
+license=('GPL-3.0-or-later')
+arch=('x86_64' 'aarch64')
 depends=('libadwaita' 'python')
 makedepends=('git' 'meson')
 checkdepends=('appstream-glib')
-source=("git+$url.git#tag=v$pkgver")
+source=("git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 
 build() {
