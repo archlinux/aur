@@ -12,7 +12,7 @@
 : ${_build_pgo:=true}
 
 # reuse existing PGO profile
-: ${_build_pgo_reuse:=true}
+: ${_build_pgo_reuse:=try}
 
 # package debug symbols for upload
 : ${_build_symbols:=false}
@@ -36,7 +36,7 @@
 ## basic info
 pkgname="firefox${_pkgtype:-}"
 _pkgname=firefox-nightly
-pkgver=125.0a1+20240220.1+hef9cbc0f26f8
+pkgver=128.0a1+20240608.1+hf8b2b22126e3
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 url="https://www.mozilla.org/firefox/channel/#nightly"
@@ -89,8 +89,8 @@ optdepends=(
   'xdg-desktop-portal: Screensharing with Wayland'
 )
 
-if [[ "${_build_pgo::1}" == "t" ]] ; then
-  if [[ "${_build_pgo_xvfb::1}" == "t" ]] && [ "${_build_wayland::1}" != "t" ] ; then
+if [[ "${_build_pgo::1}" == "t" ]]; then
+  if [[ "${_build_pgo_xvfb::1}" == "t" ]] && [ "${_build_wayland::1}" != "t" ]; then
     makedepends+=(
       xorg-server-xvfb
     )
@@ -102,13 +102,13 @@ if [[ "${_build_pgo::1}" == "t" ]] ; then
   fi
 fi
 
-if [[ "${_build_nightly::1}" == "t" ]] ; then
+if [[ "${_build_nightly::1}" == "t" ]]; then
   pkgdesc+=" - nightly"
 else
   pkgdesc+=" - mozilla-unified hg, nightly branding"
 fi
 
-if [[ "${_build_wayland::1}" == "t" ]] ; then
+if [[ "${_build_wayland::1}" == "t" ]]; then
   pkgdesc+=", targeting wayland"
 else
   pkgdesc+=", targeting wayland and x11"
@@ -119,14 +119,14 @@ else
   )
 fi
 
-if [[ "${_build_hg::1}" == "t" ]] ; then
+if [[ "${_build_hg::1}" == "t" ]]; then
   depends+=(
     nspr-hg
     nss-hg
   )
 fi
 
-if [[ "$pkgname" != "firefox-nightly" ]] ; then
+if [[ "$pkgname" != "firefox-nightly" ]]; then
   provides=('firefox-nightly')
   conflicts=('firefox-nightly')
 fi
@@ -139,7 +139,7 @@ options=(
   !strip
 )
 
-if [[ "${_build_nightly::1}" == "t" ]] ; then
+if [[ "${_build_nightly::1}" == "t" ]]; then
   _get_version_info() {
     local _info_url="https://archive.mozilla.org/pub/firefox/nightly/latest-mozilla-central"
     local _filename=$(
@@ -171,12 +171,13 @@ else
   pkgver() {
     cd "${_repo##*/}"
 
-    local version=$(<browser/config/version_display.txt)
+    local version=$(< browser/config/version_display.txt)
     local date=$(date +%Y%m%d) # Without TZ=UTC, to match systemd timer
     local counter=1
     local rev=$(hg id -i -r. | sed 's/+$//')
 
-    local last_rev=${pkgver##*+h} tmp=${pkgver#*+}; tmp=${tmp%+*}
+    local last_rev=${pkgver##*+h} tmp=${pkgver#*+}
+    tmp=${tmp%+*}
     local last_date=${tmp%.*} last_counter=${tmp#*.}
     if [[ $date == $last_date ]]; then
       if [[ $rev == $last_rev ]]; then
@@ -223,12 +224,12 @@ prepare() {
   cd "${_repo##*/}"
 
   # Change install dir from 'firefox' to 'firefox-nightly'
-  patch -Np1 -i ../firefox-install-dir.patch
+  patch -Np1 -F100 -i "../firefox-install-dir.patch"
 
-  echo -n "$_google_api_key" >google-api-key
-  echo -n "$_mozilla_api_key" >mozilla-api-key
+  echo -n "$_google_api_key" > google-api-key
+  echo -n "$_mozilla_api_key" > mozilla-api-key
 
-  cat >../mozconfig <<END
+  cat > ../mozconfig << END
 ac_add_options --enable-application=browser
 ac_add_options --disable-artifact-builds
 mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
@@ -304,14 +305,14 @@ export NM=llvm-nm
 export RANLIB=llvm-ranlib
 END
 
-  if [[ "${_build_wayland::1}" == "t" ]] ; then
-    echo >>../mozconfig "ac_add_options --enable-default-toolkit=cairo-gtk3-wayland-only"
+  if [[ "${_build_wayland::1}" == "t" ]]; then
+    echo >> ../mozconfig "ac_add_options --enable-default-toolkit=cairo-gtk3-wayland-only"
   else
-    echo >>../mozconfig "ac_add_options --enable-default-toolkit=cairo-gtk3-x11-wayland"
+    echo >> ../mozconfig "ac_add_options --enable-default-toolkit=cairo-gtk3-x11-wayland"
   fi
 
-  if [[ "${_build_hg::1}" == "t" ]] ; then
-    cat >>../mozconfig <<END
+  if [[ "${_build_hg::1}" == "t" ]]; then
+    cat >> ../mozconfig << END
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
 END
@@ -333,38 +334,46 @@ build() {
   export MOZ_NOSPAM=1
   export MOZ_SOURCE_REPO="$_repo"
 
+  # malloc_usable_size is used in various parts of the codebase
+  CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+  CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+
+  # Breaks compilation since https://bugzilla.mozilla.org/show_bug.cgi?id=1896066
+  CFLAGS="${CFLAGS/-fexceptions/}"
+  CXXFLAGS="${CXXFLAGS/-fexceptions/}"
+
   # LTO/PGO needs more open files
   ulimit -n 4096
 
   # Do 3-tier PGO
-  if [[ "${_build_pgo::1}" == "t" ]] ; then
+  if [[ "${_build_pgo::1}" == "t" ]]; then
     local _old_profdata="${SRCDEST:-$startdir}/merged.profdata"
     local _old_jarlog="${SRCDEST:-$startdir}/jarlog"
 
     # Restore old profile
-    if [[ "${_build_pgo_reuse::1}" == "t" ]] ; then
-      if [[ -s "$_old_profdata" ]] ; then
+    if [[ "${_build_pgo_reuse::1}" == "t" ]]; then
+      if [[ -s "$_old_profdata" ]]; then
         echo "Restoring old profile data."
         cp --reflink=auto -f "$_old_profdata" merged.profdata
       fi
 
-      if [[ -s "$_old_jarlog" ]] ; then
+      if [[ -s "$_old_jarlog" ]]; then
         echo "Restoring old jar log."
         cp --reflink=auto -f "$_old_jarlog" jarlog
       fi
     fi
 
     # Make new profile
-    if [[ "${_build_pgo_reuse::1}" != "t" ]] || [[ ! -s merged.profdata ]] ; then
+    if [[ "${_build_pgo_reuse::1}" != "t" ]] || [[ ! -s merged.profdata ]]; then
       echo "Building instrumented browser..."
-      cat >.mozconfig ../mozconfig
-      echo >>.mozconfig "ac_add_options --enable-profile-generate=cross"
-      ./mach build
+      cat > .mozconfig ../mozconfig
+      echo >> .mozconfig "ac_add_options --enable-profile-generate=cross"
+      ./mach build --priority normal
 
       echo "Profiling instrumented browser..."
       ./mach package
 
-      if [[ "${_build_pgo_xvfb::1}" == "t" ]] ; then
+      if [[ "${_build_pgo_xvfb::1}" == "t" ]]; then
         local _headless_run=(
           xvfb-run
           -s "-screen 0 1920x1080x24 -nolisten local"
@@ -380,16 +389,16 @@ build() {
         "${_headless_run[@]}" -- ./mach python build/pgo/profileserver.py
 
       echo "Removing instrumented browser..."
-      ./mach clobber
+      ./mach clobber objdir
     fi
 
     echo "Building optimized browser..."
-    cat >.mozconfig ../mozconfig
+    cat > .mozconfig ../mozconfig
 
-    if [[ -s merged.profdata ]] ; then
+    if [[ -s merged.profdata ]]; then
       stat -c "Profile data found (%s bytes)" merged.profdata
-      echo >>.mozconfig "ac_add_options --enable-profile-use=cross"
-      echo >>.mozconfig "ac_add_options --with-pgo-profile-path='${PWD@Q}/merged.profdata'"
+      echo >> .mozconfig "ac_add_options --enable-profile-use=cross"
+      echo >> .mozconfig "ac_add_options --with-pgo-profile-path='${PWD@Q}/merged.profdata'"
 
       # save profdata for reuse
       cp --reflink=auto -f merged.profdata "$_old_profdata"
@@ -397,9 +406,9 @@ build() {
       echo "Profile data not found."
     fi
 
-    if [[ -s jarlog ]] ; then
+    if [[ -s jarlog ]]; then
       stat -c "Jar log found (%s bytes)" jarlog
-      echo >>.mozconfig "ac_add_options --with-pgo-jarlog='${PWD@Q}/jarlog'"
+      echo >> .mozconfig "ac_add_options --with-pgo-jarlog='${PWD@Q}/jarlog'"
 
       # save jarlog for reuse
       cp --reflink=auto -f jarlog "$_old_jarlog"
@@ -407,11 +416,11 @@ build() {
       echo "Jar log not found."
     fi
 
-    ./mach build
+    ./mach build --priority normal
   else
     echo "Building browser..."
-    cat >.mozconfig ../mozconfig
-    ./mach build
+    cat > .mozconfig ../mozconfig
+    ./mach build --priority normal
   fi
 
   echo "Building symbol archive..."
@@ -423,7 +432,7 @@ package() {
   DESTDIR="$pkgdir" ./mach install
 
   local vendorjs="$pkgdir/usr/lib/$_pkgname/browser/defaults/preferences/vendor.js"
-  install -Dvm644 /dev/stdin "$vendorjs" <<END
+  install -Dvm644 /dev/stdin "$vendorjs" << END
 // Use LANG environment variable to choose locale
 pref("intl.locale.requested", "");
 
@@ -450,7 +459,7 @@ pref("services.settings.main.search-telemetry-v2.last_check", $(date +%s));
 END
 
   local distini="$pkgdir/usr/lib/$_pkgname/distribution/distribution.ini"
-  install -Dvm644 /dev/stdin "$distini" <<END
+  install -Dvm644 /dev/stdin "$distini" << END
 [Global]
 id=archlinux
 version=1.0
@@ -480,7 +489,7 @@ END
     "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
   # Install a wrapper to avoid confusion about binary path
-  install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" <<END
+  install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << END
 #!/bin/sh
 exec /usr/lib/$_pkgname/firefox "\$@"
 END
@@ -496,7 +505,7 @@ END
   fi
 
   local sprovider="$pkgdir/usr/share/gnome-shell/search-providers/$_pkgname.search-provider.ini"
-  install -Dvm644 /dev/stdin "$sprovider" <<END
+  install -Dvm644 /dev/stdin "$sprovider" << END
 [Shell Search Provider]
 DesktopId=$_pkgname.desktop
 BusName=org.mozilla.${_pkgname//-/}.SearchProvider
@@ -505,7 +514,7 @@ Version=2
 END
 
   # Package debug symbols for upload
-  if [[ "${_build_symbols::1}" == "t" ]] ; then
+  if [[ "${_build_symbols::1}" == "t" ]]; then
     export SOCORRO_SYMBOL_UPLOAD_TOKEN_FILE="$startdir/.crash-stats-api.token"
     if [[ -f $SOCORRO_SYMBOL_UPLOAD_TOKEN_FILE ]]; then
       make -C obj uploadsymbols

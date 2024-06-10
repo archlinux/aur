@@ -1,6 +1,6 @@
 pkgbase = firefox-wayland-hg
 	pkgdesc = Standalone web browser from mozilla.org - mozilla-unified hg, nightly branding, targeting wayland
-	pkgver = 125.0a1+20240220.1+hef9cbc0f26f8
+	pkgver = 128.0a1+20240608.1+hf8b2b22126e3
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/channel/#nightly
 	arch = x86_64
