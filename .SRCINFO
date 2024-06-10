@@ -9,7 +9,7 @@ pkgbase = tdl_terminal_directmedia_library
 	depends = openal
 	depends = freetype2
 	depends = libsndfile
-	source = git+https://github.com/Shin-gema/TDL_Terminal-DirectMedia-Library.git?signed#tag=f2ca047e0c7970050339c14a8622bb3e894e5d26
-	sha256sums = SKIP
+	source = https://github.com/Shin-gema/TDL_Terminal-DirectMedia-Library/archive/refs/tags/Release-1.0.1.tar.gz
+	sha256sums = aadc33a715504a7db06e748632d44e86e6df654b182f5d1bcf7ec42506e9cfda
 
 pkgname = tdl_terminal_directmedia_library
