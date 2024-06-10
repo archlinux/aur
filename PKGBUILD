@@ -4,7 +4,7 @@ pkgbase=python-griffe
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.45.2
+pkgver=0.45.3
 pkgrel=1
 pkgdesc="Signatures for entire Python programs"
 arch=('any')
@@ -18,10 +18,9 @@ makedepends=('python-pdm-backend'
 #              'python-jsonschema'
 #              'git')
 #source=("https://github.com/oprypin/markdown-callouts/archive/refs/tags/v${pkgver}.tar.gz")
-source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
-        "${pkgver}-schema.json::https://github.com/mkdocstrings/griffe/raw/${pkgver}/docs/schema.json")
-md5sums=('f3b333bcb2f970630c858bf12356bc8a'
-         '6acbeecb6bb1bb93f0e874da4bd172f0')
+source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
+#       "${pkgver}-schema.json::https://github.com/mkdocstrings/griffe/raw/${pkgver}/docs/schema.json")
+md5sums=('9128704aaa8331fbc11dd4f97191e6f5')
 
 #prepare() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
