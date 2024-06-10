@@ -1,5 +1,5 @@
 pkgbase = libdmx
-	pkgdesc = X11 Distributed Multihead extension library
+	pkgdesc = Xlib-based library for the DMX (Distributed Multihead X) extension
 	pkgver = 1.1.5
 	pkgrel = 3
 	url = https://xorg.freedesktop.org/

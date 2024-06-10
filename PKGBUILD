@@ -4,7 +4,7 @@
 pkgname=libdmx
 pkgver=1.1.5
 pkgrel=3
-pkgdesc='X11 Distributed Multihead extension library'
+pkgdesc='Xlib-based library for the DMX (Distributed Multihead X) extension'
 arch=('x86_64' 'i686')
 license=('MIT')
 url='https://xorg.freedesktop.org/'
