@@ -1,0 +1,21 @@
+pkgbase = synergy3-beta-bin
+	pkgdesc = Share a single mouse and keyboard between multiple computers
+	pkgver = v3.1.3
+	pkgrel = 1
+	url = https://symless.com/synergy
+	arch = x86_64
+	license = unknown
+	depends = openssl
+	optdepends = libappindicator-gtk3
+	conflicts = synergy
+	conflicts = synergy1-bin
+	conflicts = synergy-git
+	conflicts = synergy-1.6
+	conflicts = synergy2-bin
+	conflicts = synergy3-bin
+	conflicts = synergy3-stable-bin
+	options = !strip
+	source_x86_64 = https://symless.com/synergy/synergy/api/download/synergy-linux_x64-libssl3-v3.1.3-beta.deb
+	sha256sums_x86_64 = 8b90eaec23cf917824adf638c61596ccff37398ec81e5a7bb96b80ee2213b371
+
+pkgname = synergy3-beta-bin
