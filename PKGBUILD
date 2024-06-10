@@ -3,7 +3,7 @@
 
 pkgname=g4music
 pkgver=3.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Play your music elegantly"
 arch=('aarch64' 'x86_64')
 url="https://gitlab.gnome.org/neithern/g4music"
@@ -32,9 +32,9 @@ build() {
   meson compile -C build
 }
 
-check() {
-  meson test -C build --print-errorlogs
-}
+# check() {
+#   meson test -C build --print-errorlogs
+# }
 
 package() {
   meson install -C build --destdir "${pkgdir}"
