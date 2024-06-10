@@ -1,0 +1,17 @@
+pkgbase = lfs-s3
+	pkgdesc = A tiny (~300 SLOC) Custom Transfer Agent for Git LFS which simply sends LFS binary files to an S3 bucket.
+	pkgver = 0.1.5.r45.g18ab884
+	pkgrel = 1
+	url = https://github.com/nicolas-graves/lfs-s3.git
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	provides = lfs-s3
+	conflicts = lfs-s3
+	options = strip
+	options = !debug
+	source = git+https://github.com/nicolas-graves/lfs-s3.git
+	sha256sums = SKIP
+
+pkgname = lfs-s3-git
