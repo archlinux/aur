@@ -19,7 +19,7 @@ prepare() {
   cmake -S $pkgname -B build -DCMAKE_BUILD_TYPE=Release -DFETCHCONTENT_QUIET=OFF -GNinja
 
 # Fix build https://aur.archlinux.org/packages/tacentview#comment-976341
-# Detect the text string in the first line and append it if it isn't found
+# Detect the text string in the 38th line and append it if it isn't found
   cd build/_deps/tacent-src/Modules/Image/Src
   if ! head -n 38 tQuantizeSpatial.cpp | grep -q '#include <algorithm>'; then
     sed -i '38s/^/#include <algorithm>\n/' tQuantizeSpatial.cpp
