@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Doc2XGUI
+Comment=A third Party Doc2X Client
+Exec=python3 /opt/Doc2X_GUI/Doc2X.py
+Path=/opt/Doc2X_GUI
+Icon=/opt/Doc2X_GUI/icon.png
+Terminal=false
+Type=Application

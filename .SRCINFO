@@ -1,0 +1,20 @@
+pkgbase = doc2xgui-git
+    pkgdesc = Third Party Doc2X Client
+    pkgver = 0.0.1.r0.g79f00eb
+    pkgrel = 1
+    url = https://github.com/Menghuan1918/Doc2X_GUI
+    arch = any
+    license = GPL-3.0-or-later
+    makedepends = git
+    depends = python-imagehash
+    depends = python-pillow
+    depends = python-pyperclip
+    depends = python-pyqt6
+    depends = python-requests
+    depends = python-pyqt6-sip
+    source = git+https://github.com/Menghuan1918/Doc2X_GUI.git
+    source = Doc2XGUI.desktop
+    sha256sums = SKIP
+    sha256sums = 0ce81e5733a5c92fe29d723a1688cba84811c32e96b7ddc8b7531b420af9409f
+
+pkgname = doc2xgui-git
