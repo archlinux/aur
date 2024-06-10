@@ -3,15 +3,18 @@
 
 _pkgname="audiotube"
 pkgname="$_pkgname-git"
-pkgver=24.02.0.r45.g90a7d10
+pkgver=24.05.0.r26.gd9b1902
 pkgrel=1
 pkgdesc="Client for YouTube Music"
 url="https://invent.kde.org/multimedia/audiotube"
-license=('GPL-2.0-only')
+license=(
+  'GPL-2.0-or-later'
+  'LGPL-2.0-or-later'
+)
 arch=('x86_64' 'aarch64')
 
 depends=(
-  futuresql-qt6
+  futuresql
   kcoreaddons
   kcrash
   ki18n
@@ -20,11 +23,11 @@ depends=(
   purpose
   python
   python-ytmusicapi
-  qt6-5compat
   qt6-base
   qt6-declarative
   qt6-imageformats
   qt6-multimedia
+  qt6-multimedia-gstreamer
   qt6-svg
   yt-dlp
 )
