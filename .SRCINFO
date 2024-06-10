@@ -1,0 +1,17 @@
+pkgbase = dano
+	pkgdesc = A hashdeep/md5tree (but much more) for media files
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/kimono-koans/dano
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = cargo
+	makedepends = git
+	depends = ffmpeg
+	depends = gcc-libs
+	depends = glibc
+	optdepends = flac: to import FLAC file's checksums
+	source = dano::git+https://github.com/kimono-koans/dano#tag=0.9.0
+	sha256sums = 853411a71c92720aa92cceed75a1ee54cb305aa1bf113da47585d535270cc323
+
+pkgname = dano
