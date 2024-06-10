@@ -1,8 +1,8 @@
-# Maintainer: Philipp Nowak <nowak dot philipp97 at gmail dot com>
+# Maintainer: Philipp Nowak <aur at phnowak dot net>
 # Contributor: Esteban López Rodríguez <gnu_stallman at protonmail dot ch>
 # Contributor: Moon Sungjoon <sumoon at seolsaram dot com>
 pkgname=norminette
-pkgver=3.3.54
+pkgver=3.3.55
 pkgrel=1
 pkgdesc="C linter for 42 Network"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python>=3.8' 'python-setuptools')
 conflicts=('norminette-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/42School/norminette/archive/refs/tags/$pkgver.tar.gz")
-b2sums=('dcbdae2ac1141905ca69bb4c14f55d8d1a47035787e7029ea4aa8d3ea3a804f78af7028a3de41528f4a237d31ec2c3ce93667caf1cd6f45a8376069570f30c44')
+b2sums=('68278d0efbf76c0164f13f22185a3a5c9bd695779cd571bb2a1fa99f2932a6020f21d9f776659e5e124cffa90bf1c7624b3f03129c51fb2a4a114157e4abbf0d')
 
 build() {
 	cd "$pkgname-$pkgver"
