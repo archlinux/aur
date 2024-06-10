@@ -8,22 +8,19 @@
 
 pkgname=keepalived-openrc
 _pkgname=keepalived
-pkgver="2.2.8"
-pkgrel="4"
+pkgver="2.3.1"
+pkgrel="5"
 pkgdesc="keepalived bundled as an openrc based service"
 arch=("x86_64")
 url='https://gitlab.com/drad/keepalived'
 license=('GPL3')
 depends=(openrc)
 makedepends=('gcc' 'openssl' 'libnl' 'net-snmp')
-#~ optdepends=()
-#~ conflicts=()
+
 install=keepalived.install
 #changelog=CHANGELOG.md
 source=("$_pkgname-$pkgver.tar.gz::https://www.keepalived.org/software/$_pkgname-$pkgver.tar.gz")
 md5sums=('8c26f75a8767e5341d82696e1e717115')
-
-#~ prepare() {}
 
 build() {
     cd "$_pkgname-$pkgver"
