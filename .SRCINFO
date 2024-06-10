@@ -1,7 +1,7 @@
 pkgbase = openwebstart-bin
 	pkgdesc = An open source reimplementation of the Java Web Start technology.
 	pkgver = 1.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openwebstart.com/
 	install = openwebstart.install
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = openwebstart-bin
 	depends = xdg-utils
 	provides = openwebstart
 	conflicts = icedtea-web
-	source = openwebstart-bin.deb::https://github.com/karakun/OpenWebStart/releases/download/v1.10.0/OpenWebStart_linux_1_10_0.deb
+	source = https://github.com/karakun/OpenWebStart/releases/download/v1.10.0/OpenWebStart_linux_1_10_0.deb
 	source = jnlp.xml
 	source = javaws.desktop
 	source = itw-settings.desktop

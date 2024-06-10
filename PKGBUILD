@@ -3,7 +3,7 @@
 
 pkgname=openwebstart-bin
 pkgver=1.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source reimplementation of the Java Web Start technology."
 arch=("x86_64")
 url="https://openwebstart.com/"
@@ -13,7 +13,7 @@ provides=("openwebstart")
 conflicts=("icedtea-web")
 install="openwebstart.install"
 source=(
-  "${pkgname}.deb::https://github.com/karakun/OpenWebStart/releases/download/v${pkgver}/OpenWebStart_linux_${pkgver//./_}.deb"
+  "https://github.com/karakun/OpenWebStart/releases/download/v${pkgver}/OpenWebStart_linux_${pkgver//./_}.deb"
   "jnlp.xml"
   "javaws.desktop"
   "itw-settings.desktop"
