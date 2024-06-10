@@ -2,13 +2,15 @@
 
 pkgname=soil2-git
 pkgver=1.20.r53.g2293246
-pkgrel=2
+pkgrel=3
 pkgdesc="SOILa tiny C library used primarily for uploading textures into OpenGL."
 arch=('x86_64')
 url="https://github.com/SpartanJ/SOIL2"
 license=('MIT-0')
 depends=('glibc' 'gcc-libs' 'libglvnd')
 makedepends=('mesa' 'cmake' 'git')
+provides=("soil2")
+conflicts=("soil2")
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
