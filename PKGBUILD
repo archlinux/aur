@@ -1,6 +1,6 @@
 # Maintainer: Dennis Herbrich <dennis.herbrich@veloxis.de>
 pkgname=openapi-python-client
-pkgver=0.20.0
+pkgver=0.21.0
 pkgrel=1
 pkgdesc='Generate modern Python clients from OpenAPI 3.0 and 3.1 documents'
 arch=('any')
@@ -33,7 +33,7 @@ optdepends=(
   'python-ruff>=0.2: linter support in generated code'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/openapi-generators/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b4fe54d2e9dc1f95be7cf9be77fc2f11574853c2c4a6cdf3a894a1a914634716')
+sha256sums=('39127d7a851ea4509b1a7ca4cb557bb24a4d7c6fd733361e60f2ed94cc778209')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -46,6 +46,8 @@ package() {
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-# NOTE: check() with `pdm run test` deliberately not included. Too much of a
-# hassle to get running properly, and checkdepends on a handful of (orphaned)
-# AUR packages as well. Not worth the effort, IMHO.
+check() {
+  cd "${pkgname}-${pkgver}"
+	pdm install
+	pdm test
+}
