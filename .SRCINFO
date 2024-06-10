@@ -1,6 +1,6 @@
 pkgbase = keepkey-desktop-appimage
 	pkgdesc = An all-in-one suite for using your KeepKey hardware wallet.
-	pkgver = 3.0.11
+	pkgver = 3.0.24
 	pkgrel = 1
 	url = https://www.keepkey.com/
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = keepkey-desktop-appimage
 	depends = keepkey-udev
 	depends = gtk3
 	depends = nss
-	noextract = KeepKey-Desktop-3.0.11.AppImage
+	noextract = KeepKey-Desktop-3.0.24.AppImage
 	options = !strip
-	source = https://github.com/keepkey/keepkey-desktop/releases/download/v3.0.11/KeepKey-Desktop-3.0.11.AppImage
-	sha256sums = bab61928f279e8f2791db22d2d757ab6b1560d077453335f7e965aa323f837c9
+	source = https://github.com/keepkey/keepkey-desktop/releases/download/v3.0.24/KeepKey-Desktop-3.0.24.AppImage
+	sha256sums = 8c024132bccfafc8882dcde3f807b8796a0d00c6ae6bfe8c9785b23c65d2d884
 
 pkgname = keepkey-desktop-appimage
