@@ -1,6 +1,6 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
-# Contributor: drieck (https://aur.archlinux.org/account/dreieck)
-# Contributor: frousties
+# Contributor: drieck <https://aur.archlinux.org/account/dreieck>
+# Contributor: frousties <tacentview-git>
 
 pkgname=tacentview
 pkgver=1.0.44
