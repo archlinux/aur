@@ -1,0 +1,20 @@
+pkgbase = caps-log-bin
+	pkgdesc = A small, terminal-based journaling tool
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/NikolaDucak/caps-log
+	arch = x86_64
+	license = MIT
+	depends = boost-libs
+	depends = libgit2
+	provides = caps-log
+	conflicts = caps-log
+	backup = ~/.caps-log/config.ini
+	source = https://github.com/NikolaDucak/caps-log/raw/1.0.1/README.md
+	source = https://github.com/NikolaDucak/caps-log/raw/1.0.1/LICENCE
+	sha256sums = 2259205a6b50054f0ccdf9e282cdc8915599dcf47ce02d1110993c900f4785d5
+	sha256sums = 9fd4f46b0ba1940805ca00a8cb34c60ed94d646a99d3650b69c0a60004990e18
+	source_x86_64 = caps-log-1.0.1.tar.gz::https://github.com/NikolaDucak/caps-log/releases/download/1.0.1/caps-log-linux.tar.gz
+	sha256sums_x86_64 = e284eecb409620e224dfc031c77a9c44727e47fca32415ab90ab67488fac96ef
+
+pkgname = caps-log-bin
