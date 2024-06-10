@@ -1,0 +1,5 @@
+*.tar.zst
+*.pacman
+src/
+pkg/
+LICENSE
