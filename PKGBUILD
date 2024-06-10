@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=casile-git
-pkgver=0.13.1.r20.g969c4a5
-pkgrel=2
+pkgver=0.13.2.r0.g67061ed
+pkgrel=1
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=(x86_64)
 url="https://github.com/sile-typesetter/${pkgname%-git}"
@@ -56,22 +56,23 @@ depends=(bc
          zint
          zola
          zsh)
-_lua_deps=(colors-git
-           decasify
-           filesystem
-           yaml)
-_perl_deps=(yaml
-            yaml-merge-simple)
-_python_deps=(isbnlib
-              deepl
-              pandocfilters
-              pantable
-              ruamel-yaml
-              usfm2osis-cw-git)
-depends+=("${_lua_deps[@]/#/lua-}"
-          "${_lua_deps[@]/#/lua51-}"
-          "${_perl_deps[@]/#/perl-}"
-          "${_python_deps[@]/#/python-}")
+_luadeps=(colors-git
+          cosmo
+          decasify
+          filesystem
+          yaml)
+_perldeps=(yaml
+           yaml-merge-simple)
+_pythondeps=(isbnlib
+             deepl
+             pandocfilters
+             pantable
+             ruamel-yaml
+             usfm2osis-cw-git)
+depends+=("${_luadeps[@]/#/lua-}"
+          "${_luadeps[@]/#/lua51-}"
+          "${_perldeps[@]/#/perl-}"
+          "${_pythondeps[@]/#/python-}")
 makedepends=(cargo
              node-prune
              yarn)
