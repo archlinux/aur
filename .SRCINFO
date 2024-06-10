@@ -1,0 +1,25 @@
+pkgbase = way-shell-git
+	pkgdesc = A Gnome inspired desktop shell for Wayland compositors/window managers written in C and Gtk4.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/ldelossa/way-shell
+	arch = x86_64
+	license = GPL-2.0
+	makedepends = meson
+	makedepends = cmake
+	makedepends = gtk-doc
+	makedepends = git
+	depends = libadwaita
+	depends = upower
+	depends = wireplumber
+	depends = json-glib
+	depends = libnm
+	depends = libpulse
+	depends = gtk4-layer-shell
+	depends = glib2
+	provides = way-shell
+	conflicts = way-shell
+	source = git+https://github.com/ldelossa/way-shell.git
+	sha256sums = SKIP
+
+pkgname = way-shell-git
