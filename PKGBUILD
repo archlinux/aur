@@ -28,7 +28,7 @@ sha256sums=('546e9c46d0296038c2cda8c5cfa53098a6234de43c7b857a0121d83053f0613c')
 
 package() {
     cd ${srcdir}
-    tar -xvf "$srcdir/$pkgname-$pkgver.pacman" -C "$pkgdir/"
+    tar -xf "$srcdir/$pkgname-$pkgver.pacman" -C "$pkgdir/"
     # Remove exsiting files
     rm -f \
 		"$pkgdir/.PKGINFO" \
