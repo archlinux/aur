@@ -11,7 +11,8 @@ url='https://github.com/aitjcize/cppman'
 license=('GPL3')
 depends=('bash' 'python' 'python-beautifulsoup4' 'python-html5lib')
 optdepends=(
-  "vim: For using vim as a pager"
+  "vim: for using vim as a pager"
+  "nvim: for using nvim as a pager"
   "perl: for bash/zsh completion"
   )
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
