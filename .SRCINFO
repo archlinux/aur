@@ -1,6 +1,6 @@
 pkgbase = catppuccin-catwalk-bin
 	pkgdesc = Soothing pastel previews for the high-spirited!
-	pkgver = 1.3.1
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://github.com/catppuccin/catwalk
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = catppuccin-catwalk-bin
 	conflicts = catwalk
 	conflicts = catwalk-bin
 	conflicts = catppuccin-catwalk-bin
-	source = https://github.com/catppuccin/catwalk/releases/download/v1.3.1/catwalk-x86_64-unknown-linux-gnu
-	sha256sums = c53b1f276087bf440446133f140bcb9a3a5bdb5fbc1c569ab6c9a5b4f8db59d3
+	source = https://github.com/catppuccin/catwalk/releases/download/v1.3.2/catwalk-x86_64-unknown-linux-gnu
+	sha256sums = bec3c321ffc71604ab2bd405cc8221e34b5739009508375a6a9f640d21860370
 
 pkgname = catppuccin-catwalk-bin
