@@ -1,7 +1,7 @@
 # Maintainer: Luke Taylor <luket1@proton.me>
 
 pkgname=fooyin-git
-pkgver=r2068.acf02d2d
+pkgver=r2256.caf29354
 pkgrel=1
 pkgdesc="A customisable music player"
 url="https://github.com/ludouzi/fooyin"
@@ -13,6 +13,7 @@ depends=(
     'alsa-lib'
     'taglib'
     'ffmpeg'
+    'icu'
     'kdsingleapplication'
     'hicolor-icon-theme'
     'glibc'
@@ -27,7 +28,7 @@ makedepends=(
     'qt6-tools'
 )
 optdepends=(
-    'sdl2:     For the SDL2 audio output plugin'
+    'sdl2: For the SDL2 audio output plugin'
     'libpipewire: For the PipeWire audio output plugin'
 )
 provides=('fooyin')

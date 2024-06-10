@@ -16,6 +16,7 @@ depends = qt6-svg
 depends = alsa-lib
 depends = taglib
 depends = ffmpeg
+depends = icu
 depends = kdsingleapplication
 depends = hicolor-icon-theme
 depends = glibc
