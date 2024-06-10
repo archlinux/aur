@@ -1,7 +1,7 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
 pkgname=slade-git
-pkgver=3.2.6+1+gb38ded83
+pkgver=3.2.6+2+g25cbba80
 pkgrel=1
 pkgdesc='SLADE3 Doom editor (git version)'
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ depends=('bzip2'
          'lua'
          'mpg123'
          'sfml>=2.6'
-         'webkit2gtk'
+         'webkit2gtk-4.1'
          'wxwidgets-gtk3>=3.2'
          'zlib')
 makedepends=('cmake'
