@@ -1,6 +1,6 @@
 pkgbase = webstorm
 	pkgdesc = JavaScript IDE and HTML editor
-	pkgver = 2024.1.3
+	pkgver = 2024.1.4
 	pkgrel = 1
 	url = https://www.jetbrains.com/webstorm/
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = webstorm
 	license = custom:jetbrains
 	depends = glib2
 	options = !strip
-	source = https://download-cf.jetbrains.com/webstorm/WebStorm-2024.1.3.tar.gz
+	source = https://download-cf.jetbrains.com/webstorm/WebStorm-2024.1.4.tar.gz
 	source = jetbrains-webstorm.desktop
 	source = LICENSE
-	b2sums = 85f76435c4a0d6c7220cb4553c81ee1f723561ea3f23ca8b55d7fa96aeb862b3a9c80af2c966cad54bc16a61961ee5cf51b9bf83bd38aee4e34cfa889306cced
+	b2sums = b3523b9b1952af9d77618cfe98166a45a7355734407406769de1b68c8a2f9bb775df5b0d6000e59e234536e07cec6fbad142dc7fc505d592683a9b0a905e050f
 	b2sums = 0d4e900eb8c78abf7acbbcc86400065d63d9cd3fec77299d7d6abf540a9bf589f879b274f9bb23573f6ef78592b8987414816a56397b9d8d80d6bad29ad4440d
 	b2sums = dadaf0e67b598aa7a7a4bf8644943a7ee8ebf4412abb17cd307f5989e36caf9d0db529a0e717a9df5d9537b10c4b13e814b955ada6f0d445913c812b63804e77
 
