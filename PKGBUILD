@@ -1,20 +1,25 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('nwg-shell-config')
-pkgver=0.5.38
+pkgver=0.5.39
 pkgrel=1
 pkgdesc="nwg-shell configuration utility"
 arch=('any')
 url="https://github.com/nwg-piotr/nwg-shell-config"
 license=('MIT')
 depends=('python' 'python-gobject' 'python-i3ipc' 'python-geopy' 'playerctl' 'gtklock' 'noto-fonts' 'wlsunset')
-makedepends=('python-setuptools' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nwg-piotr/nwg-shell-config/archive/v"$pkgver".tar.gz")
 
-md5sums=('d79c5c1cbf2e3d90ffae46ef4b3de86f')
+md5sums=('d4626880faff23e6a85600a615906d82')
+
+build() {
+        cd "${pkgname}-${pkgver}"
+        python -m build --wheel --no-isolation
+}
 
 package() {
   cd "${pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1
+  python -m installer --destdir="${pkgdir}" dist/*.whl
   
   install -D -t "$pkgdir"/usr/share/pixmaps nwg-shell-config.svg
   install -D -t "$pkgdir"/usr/share/pixmaps nwg-shell-update.svg
