@@ -2,9 +2,9 @@
 # Contributor: Hugo Parente Lima <hugo.pl@gmail.com>
 
 pkgname=tijolo-git
-pkgver=0.8.1
-pkgrel=3
-pkgdesc="Lightweight, keyboard-oriented IDE for the masses"
+pkgver=0.8.1+3+gf4cb1bf
+pkgrel=1
+pkgdesc="Simple and fast keyboard focused IDE written in Crystal and GTK."
 arch=("x86_64")
 conflicts=("tijolo")
 url="https://github.com/hugopl/tijolo"
