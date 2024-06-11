@@ -24,9 +24,8 @@ pkgdesc="Linux driver for Pantum printers V$pkgver (check PKGBUILD for compatibl
 arch=('x86_64' 'x86' 'i686' 'i386' 'arm' "aarch64")
 url="https://global.pantum.com/support/download/driver/"
 license=('proprietary')
-depends=('sane' 'cups')
 sha256sums=("71d8b382a4a974600874f8891afec086747ffdcd0815fd6bf8d0c80d44227eff")
-source=("https://articexploit.xyz/file/Pantum%20Ubuntu%20Driver%20V1_1_123.zip")
+source=("https://github.com/ArticExploit/pantum-driver/releases/download/1.1.123/Pantum.Ubuntu.Driver.V1_1_123.zip")
 
 extract_deb()
 {
