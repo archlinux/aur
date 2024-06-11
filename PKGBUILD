@@ -36,8 +36,9 @@ build() {
   sed -i 's@DECLARE_ALIGNED@DECLARE_ASM_CONST@g' resample_mmx.h
 
   cd ../../../ffmpeg-${pkgver}
-  sed -i 's@-Werror@@g' configure
+  #sed -i 's@-Werror@@g' configure
 
+  CFLAGS="${CFLAGS} -Wno-incompatible-pointer-types -Wno-implicit-function-declaration" \
   ./configure \
     --prefix=/opt \
     --libdir=/opt/lib/ffmpeg2.1 \
