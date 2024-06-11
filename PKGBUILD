@@ -2,10 +2,10 @@
 
 pkgname=intellij-idea-ue-eap
 _pkgname=idea-IU
-_buildver=242.14146.16
+_buildver=242.15523.18
 _veryear=2024
 _verrelease=1
-_verextra=2
+_verextra=3
 pkgver=${_veryear}.${_verrelease}.${_buildver}
 pkgrel=1
 pkgdesc="Early access version of the upcoming version of Intellij Idea IDE (ultimate version)"
