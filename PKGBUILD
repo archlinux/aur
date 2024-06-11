@@ -126,7 +126,7 @@ build() {
   [[ -n "${_LOCAL_PACKAGES[*]}" ]] && _npm i "${_LOCAL_PACKAGES[@]/#/"${_NODE_MODULES}"}"
   npm pkg delete "${_remove_deps[@]/#/devDependencies.}"
   if [[ "${_LOCKFILE}" == "true" ]]; then
-    _npm ci 
+    _npm ci
   else
     _npm update
   fi
@@ -246,7 +246,7 @@ _cleanup() {
 
   _PACKAGE_IGNORE=(
     "../${_pkgname}.asar" "../iconThemes" "sources/assets/icons/app.ico"
-    "sources/assets/icons/app.icns" "app/code/build" "sources/code/build" 
+    "sources/assets/icons/app.icns" "app/code/build" "sources/code/build"
     "schemas" "../docs" "build"
   )
 
