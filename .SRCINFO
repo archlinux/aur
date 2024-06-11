@@ -1,15 +1,15 @@
 pkgbase = workflowy
 	pkgdesc = Desktop app for workflowy.com, a note taking tool based on lists
-	pkgver = 4.0.2406051050
+	pkgver = 4.0.2406110826
 	pkgrel = 1
 	url = https://workflowy.com
 	arch = x86_64
 	license = custom
 	depends = fuse2
-	noextract = workflowy-4.0.2406051050.AppImage
+	noextract = workflowy-4.0.2406110826.AppImage
 	options = !strip
 	options = !debug
-	source = workflowy-4.0.2406051050.AppImage::https://github.com/workflowy/desktop/releases/download/v4.0.2406051050/WorkFlowy-x86_64.AppImage
-	sha256sums = 34f997a894a3b3d79b193828bdd9b47f9e384e19baf897573b879cd102fc2d9b
+	source = workflowy-4.0.2406110826.AppImage::https://github.com/workflowy/desktop/releases/download/v4.0.2406110826/WorkFlowy-x86_64.AppImage
+	sha256sums = ea07ee540354c8031f5bcd4403b347abce977543040ab8eeac9d92ce32beb44b
 
 pkgname = workflowy
