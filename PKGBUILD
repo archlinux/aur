@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ferrum-bin
 _pkgname=Ferrum
-pkgver=0.17.3
+pkgver=0.18.0
 _electronversion=22
 pkgrel=1
 pkgdesc="Music library app for Mac, Linux and Windows"
@@ -14,15 +14,16 @@ depends=(
     "electron${_electronversion}"
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux.deb"
+    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('59579c2c2b63f596dfe1c0be973771cb8f0b6b0f1c7efd765ee22a7fbb00c60c'
-            '61d56055897e9d71d68e185ac2de7c4cb2fbca16eb3fb0091703612c113441f3')
+sha256sums=('dfc46858d206fd77f581e66ba896ed0dc626fd4c244742329c692d875f262e7f'
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|space.kasper.${pkgname%-bin}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
