@@ -1,12 +1,12 @@
 pkgbase = filediver
 	pkgdesc = An unofficial Helldivers 2 game asset extractor
-	pkgver = 0.3.1
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/xypwn/filediver
 	arch = x86_64
 	license = BSD-3
 	makedepends = go
-	source = git+https://github.com/xypwn/filediver.git#tag=v0.3.1
+	source = git+https://github.com/xypwn/filediver.git#tag=v0.3.3
 	sha512sums = SKIP
 
 pkgname = filediver
