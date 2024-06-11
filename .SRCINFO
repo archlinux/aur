@@ -13,6 +13,7 @@ pkgbase = poissonrecon
 	depends = gcc8-libs
 	depends = libpng
 	depends = libjpeg
+	depends = boost
 	provides = poissonrecon
 	provides = ssdrecon
 	provides = surfacetrimmer

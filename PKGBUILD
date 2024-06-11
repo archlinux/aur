@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 url="http://www.cs.jhu.edu/~misha/Code/PoissonRecon/Version9.0/"
 license=('MIT')
 groups=('photogrametry')
-depends=('glibc' 'gcc8-libs' 'libpng' 'libjpeg')
+depends=('glibc' 'gcc8-libs' 'libpng' 'libjpeg' 'boost')
 makedepends=('git' 'gcc8')
 # use ccache-ext to make gcc8 cacheable if using options=(ccache)
 [[ "${BUILDENV[*]}" =~ [^!]+ccache ]] && makedepends+=('ccache-ext')
