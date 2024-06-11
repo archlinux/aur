@@ -12,6 +12,9 @@ optdepends=('gnome-keyring')
 source=("https://upload.object2.vk-apps.com/vk-me-desktop-dev-5837a06d-5f28-484a-ac22-045903cb1b1a/latest/vk-messenger.rpm")
 sha256sums=('162cc8a5dffc0ad755665a70fe5316dbbefa28b43f170e8dfb114347256e7fe0')
 
+prepare() {
+    rm "${srcdir}/${pkgname}.rpm"
+}
 
 package() {
     mv "${srcdir}"/* "${pkgdir}"
