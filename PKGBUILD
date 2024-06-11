@@ -4,12 +4,12 @@
 
 pkgname=python-google-resumable-media
 _pkg="${pkgname#python-}"
-pkgver=2.7.0
+pkgver=2.7.1
 pkgrel=1
 pkgdesc="Utilities for Google Media Downloads and Resumable Uploads"
 arch=('any')
 url="https://github.com/googleapis/google-resumable-media-python"
-license=('Apache')
+license=('Apache-2.0')
 depends=('python-google-crc32c')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 optdepends=(
@@ -18,7 +18,7 @@ optdepends=(
 	'python-google-auth: for extra functionality')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkg::1}/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('5f18f5fa9836f4b083162064a1c2c98c17239bfda9ca50ad970ccf905f3e625b')
+sha256sums=('eae451a7b2e2cdbaaa0fd2eb00cc8a1ee5e95e16b55597359cbc3d27d7d90e33')
 
 build() {
 	cd "$_pkg-$pkgver"
