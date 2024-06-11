@@ -25,6 +25,7 @@ package() {
   install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
   install -Dm644 "$srcdir/$pkgname-$pkgver/led_matrix_daemon.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+  install -Dm644 "$srcdir/$pkgname-$pkgver/led_matrix_daemon.socket" "$pkgdir/usr/lib/systemd/system/$pkgname.socket"
   install -Dm644 "$srcdir/$pkgname-$pkgver/test_data/config.toml" "$pkgdir/etc/led_matrix/daemon.toml"
 
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
