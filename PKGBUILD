@@ -15,6 +15,5 @@ package(){
 git clone https://github.com/linzeennnn/lze-web.git 
 sudo mv /etc/httpd/conf/httpd.conf /etc/httpd/conf/httpd.conf.bck
 sudo mv /etc/php/php.ini /etc/php/php.ini.bck
-cp -r "lze-web/etc/" "${pkgdir}/"
-cp -r "lze-web/opt/" "${pkgdir}/"
+cp -r "lze-webi/*" "${pkgdir}/"
 }

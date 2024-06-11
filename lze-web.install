@@ -1,20 +1,26 @@
 post_install() {
+if [ -n "$SUDO_USER" ]; then
+    USER_HOME=$(getent passwd "$SUDO_USER" | cut -d: -f6)
+else
+    USER_HOME=$HOME
+fi
   pip config set global.target /usr/local/bin 
   sudo pip install webssh --break-system-packages
-  mkdir -u $USER $HOME/Documents/note
-  chmod 777 -u $USER $HOME/Documents
-  chmod 777 -u $USER $HOME/Downloads 
-  chmod 777 -R -u $USER $HOME/Pictures
+  mkdir  $HOME/Documents/note
+  chmod 777  $HOME/Documents
+  chmod 777  $HOME/Downloads 
+  chmod 777  $HOME/Pictures
   chmod 777 $HOME/Documents/note
- pwd 
   ln -s $HOME/Documents /opt/lze-web/Documents
   ln -s $HOME/Downloads /opt/lze-web/Downloads
   ln -s $HOME/Pictures /opt/lze-web/Pictures
   ln -s /opt/lze-web/code/Terminal/webssh-start /usr/bin/webssh-start
   ln -s /opt/lze-web/code/Terminal/webssh-stop /usr/bin/webssh-stop
 sudo systemctl enable --now httpd.service
-cp -r  lze-web/templates /usr/lib/python3.12/site-packages/webssh
-cp -r  lze-web/statici /usr/lib/python3.12/site-packages/webssh
+cp -r  templates /usr/lib/python3.12/site-packages/webssh
+cp -r  statici /usr/lib/python3.12/site-packages/webssh
+rm -rf  templates
+rm -rf  statici 
 sudo systemctl enable --now wessh.service
 }
 
