@@ -2,16 +2,16 @@
 
 pkgname=arianna-git
 _pkgname=arianna
-pkgver=1.1.0.r29.gd80b345
+pkgver=24.01.90.r54.ge0e9259
 pkgrel=1
 epoch=1
 pkgdesc="EPub Reader for mobile devices"
 groups=('kde-applications-git')
 url="https://invent.kde.org/graphics/${_pkgname}.git"
-depends=('kquickcharts' 'kirigami-addons' 'hicolor-icon-theme')
+depends=('kquickcharts' 'kirigami-addons' 'hicolor-icon-theme' 'qt6-httpserver')
 arch=('x86_64')
 license=('GPL' 'LGPL' 'MIT' 'BSD')
-makedepends=('git' 'extra-cmake-modules' 'kdoctools' 'kfilemetadata' 'qqc2-desktop-style' 'python' 'reuse' 'baloo' 'qt5-websockets' 'qt5-webengine')
+makedepends=('git' 'extra-cmake-modules' 'kdoctools' 'kfilemetadata' 'qqc2-desktop-style' 'python' 'reuse' 'baloo' 'qt6-websockets' 'qt6-websockets' 'qt6-webengine')
 provides=('arianna')
 conflicts=('arianna')
 source=(git+https://invent.kde.org/graphics/${_pkgname}.git)
