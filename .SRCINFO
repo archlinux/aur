@@ -1,7 +1,7 @@
 pkgbase = itch-bin
 	pkgdesc = The itch.io desktop app (binary release)
 	pkgver = 26.1.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://itchio.itch.io/itch
 	arch = x86_64
 	license = MIT
@@ -28,6 +28,7 @@ pkgbase = itch-bin
 	depends = nss
 	depends = pango
 	optdepends = firejail: sandbox preference
+	optdepends = wine: Windows games
 	provides = itch
 	conflicts = itch
 	conflicts = itch-setup
