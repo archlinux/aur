@@ -3,10 +3,10 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-nightly
-pkgver=128.0a1+20240526.1+h277ccd163bbc
+pkgver=129.0a1+20240611.1+h9e49a1b86e40
 pkgrel=1
-pkgdesc="Development version of the popular Firefox web browser"
-url="https://www.mozilla.org/firefox/channel/#nightly"
+pkgdesc="Fast, Private & Safe Web Browser (Nightly version)"
+url="https://www.mozilla.org/firefox/channel/desktop/#nightly"
 arch=(x86_64)
 license=(MPL-2.0)
 depends=(
@@ -82,8 +82,9 @@ options=(
 _repo=https://hg.mozilla.org/mozilla-central
 source=(
   hg+$_repo
+  $pkgname-symbolic.svg
   $pkgname.desktop
-  identity-icons-brand.svg
+  org.mozilla.$pkgname.metainfo.xml
   firefox-install-dir.patch
 )
 validpgpkeys=(
@@ -92,12 +93,14 @@ validpgpkeys=(
   14F26682D0916CDD81E37B6D61B7B526D98F0353
 )
 sha256sums=('SKIP'
-            '781896224710e0b6eb262cbfb27a48d2b2c2ff95e4f307792eddc379c98c559d'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
+            '781896224710e0b6eb262cbfb27a48d2b2c2ff95e4f307792eddc379c98c559d'
+            '41f24752cf1a1d2f757cb14aa0fab34453470386800360c7689825f925c2ba91'
             'c80937969086550237b0e89a02330d438ce17c3764e43cc5d030cb21c2abce5f')
 b2sums=('SKIP'
-        'fd23653ae8c758ef0351a8b5ff98dfa438cd8a83e9bc56d8103161a940276ee828f4856fec56e29f3c158caf75a4968bc80e5891633cb9435f92fe73faf77456'
         '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
+        'fd23653ae8c758ef0351a8b5ff98dfa438cd8a83e9bc56d8103161a940276ee828f4856fec56e29f3c158caf75a4968bc80e5891633cb9435f92fe73faf77456'
+        '10329d1988275cbbe20edc8fa764e7743b75797132f222ccff68b3a3ecd45de3e63689e487afd8284a14226fe1827281717eb1b559896b7d5a3e6414c050243a'
         'f76eb72c326f347991133c004b252ed2e037e72a7a436012fb1495668d2b9194d836765b58b01ba0bd9f5c4b888ee5ee715bdb458823a2a7822f1b299f4d1948')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -283,11 +286,10 @@ END
     "$pkgdir/usr/share/icons/hicolor/384x384/apps/$pkgname.png"
   install -Dvm644 browser/branding/$theme/content/about-logo.svg \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
-  install -Dvm644 ../identity-icons-brand.svg \
-    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$pkgname-symbolic.svg"
 
-  install -Dvm644 ../$pkgname.desktop \
-    "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dvm644 ../$pkgname-symbolic.svg -t "$pkgdir/usr/share/icons/hicolor/symbolic/apps"
+  install -Dvm644 ../$pkgname.desktop -t "$pkgdir/usr/share/applications"
+  install -Dvm644 ../org.mozilla.$pkgname.metainfo.xml -t "$pkgdir/usr/share/metainfo"
 
   # Install a wrapper to avoid confusion about binary path
   install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" <<END
