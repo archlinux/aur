@@ -2,7 +2,7 @@
 _appname=thedesk
 pkgname="${_appname}-client-bin"
 _pkgname=TheDesk
-pkgver=24.2.0
+pkgver=24.2.1
 _electronversion=22
 pkgrel=1
 pkgdesc="Mastodon Client for PC."
@@ -19,12 +19,13 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('0631241ca3380317e2645c7e2611033b18a538f23df4f5c70d1e84f5e1987b55'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+sha256sums=('01d8f280d9d0dea401d37706710e44074718dd75d62ebcdf0aac3f53cb6ad58a'
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_appname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
