@@ -1,6 +1,6 @@
 pkgbase = python-jax
 	pkgdesc = Composable transformations of Python+NumPy programs
-	pkgver = 0.4.28
+	pkgver = 0.4.29
 	pkgrel = 1
 	url = https://github.com/google/jax/
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-jax
 	depends = python-scipy
 	optdepends = python-protobuf: Australis
 	optdepends = python-requests: Distributed computations
-	source = jax-0.4.28.tar.gz::https://github.com/google/jax/archive/refs/tags/jax-v0.4.28.tar.gz
-	sha256sums = 799360618d867676a0f98e2c28bd13f5620b4c3ed4868a5559d87f3f3ac8a81c
+	source = jax-0.4.29.tar.gz::https://github.com/google/jax/archive/refs/tags/jax-v0.4.29.tar.gz
+	sha256sums = bbabbba40f9d87dcedf999cc179b67326f1f0fa135ce7b19fb1101f841d23b5f
 
 pkgname = python-jax
