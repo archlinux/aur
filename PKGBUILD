@@ -3,7 +3,7 @@
 # Contributor: Gabriel Peixoto <gabrielrcp@gmail.com>
 
 pkgname=lastpass-cli
-pkgver=1.3.5
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="LastPass command line interface tool"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('asciidoc' 'cmake' 'bash-completion')
 optdepends=('xclip: clipboard support'
             'pinentry: securely read passwords')
 source=("https://github.com/lastpass/lastpass-cli/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('2681d6305b39f610aa4e93017e43b78a5a2a9408b0c9798a9ea7ee8f2e2878c4')
+sha256sums=('4caaf2674b02822a114df46d77dcfd41d4ab98bd0551d0867c6fbed7f3f8fd5a')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
