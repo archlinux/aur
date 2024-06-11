@@ -13,8 +13,8 @@ options=('!strip' '!emptydirs')
 install=${pkgname}.install
 package(){
 git clone https://github.com/linzeennnn/lze-web.git 
-mv /etc/httpd/conf/httpd.conf /etc/httpd/conf/httpd.conf.bck
-mv /etc/php/php.ini /etc/php/php.ini.bck
+sudo mv /etc/httpd/conf/httpd.conf /etc/httpd/conf/httpd.conf.bck
+sudo mv /etc/php/php.ini /etc/php/php.ini.bck
 cp -r "lze-web/etc/" "${pkgdir}/"
 cp -r "lze-web/opt/" "${pkgdir}/"
 }
