@@ -14,8 +14,6 @@ pkgbase = python-amaranth-soc
 	optdepends = python-paramiko: for remote builds
 	provides = python-amaranth-soc=0.1a.r15.ge1b8428
 	source = git+https://github.com/amaranth-lang/amaranth-soc.git
-	source = amaranth-soc-versioning.patch
 	sha256sums = SKIP
-	sha256sums = 9b5323acd21d7082c0beaac1c990710ab2cc4c0e31b7fac0d557ffa3f956f13b
 
 pkgname = python-amaranth-soc

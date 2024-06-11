@@ -16,11 +16,9 @@ optdepends=('python-paramiko: for remote builds')
 provides=("python-$_pkgname=$pkgver")
 source=(
 	"git+$url.git" 
-	amaranth-soc-versioning.patch
 	)
 sha256sums=(
 	'SKIP' 
-	'9b5323acd21d7082c0beaac1c990710ab2cc4c0e31b7fac0d557ffa3f956f13b'
 	)
 
 pkgver() {
@@ -33,7 +31,7 @@ prepare()
 {
 	cd "$_pkgname"
 	git checkout $_git_commit
-	patch -p1 -i ${srcdir}/amaranth-soc-versioning.patch
+	sed -i -e "s/pdm\\.backend\\._vendor\\.//" pdm_build.py
 }
 
 build() {
