@@ -18,24 +18,19 @@
 # L2710FDW
 
 pkgname=pantum-driver
-pkgver="1.1.106"
+pkgver="1.1.123"
 pkgrel="1"
 pkgdesc="Linux driver for Pantum printers V$pkgver (check PKGBUILD for compatible printer models)"
 arch=('x86_64' 'x86' 'i686' 'i386' 'arm' "aarch64")
 url="https://global.pantum.com/support/download/driver/"
 license=('proprietary')
 depends=('sane' 'cups')
-source=(
-    "https://drivers.pantum.com/userfiles/files/download/drive/Pantum%20Ubuntu%20Driver%20V1_1_106.zip"
-)
-
-sha256sums=(
-    "21f97310cda4aaa32a390599e44bbdd3a7446bce61f8d1519a847bcbb58f5fb4"
-)
+sha256sums=("71d8b382a4a974600874f8891afec086747ffdcd0815fd6bf8d0c80d44227eff")
+source=("https://articexploit.xyz/file/Pantum%20Ubuntu%20Driver%20V1_1_123.zip")
 
 extract_deb()
 {
-	ar p $1 data.tar.xz | tar xJ
+    ar p $1 data.tar.xz | tar xJ
 }
 
 build()
