@@ -2,7 +2,7 @@
 
 pkgname=kpcli-go
 _pkgname=kpcli
-pkgver=1.0.10
+pkgver=1.0.32
 pkgrel=1
 pkgdesc="create, list and diff entries between keepass databases"
 arch=('x86_64' 'i686' 'aarch64')
@@ -12,7 +12,7 @@ depends=('glibc')
 makedepends=('go')
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('89544fc53e7e0faa65d0b2e002655b7ffdc1890c9ab5d0064e668d22c227e7dd')
+sha256sums=('4b6a9e26625074931c94a948858f15c5aa6d347e1e3f8a2a2a54f575afad2887')
 
 
 build() {
