@@ -1,6 +1,6 @@
 pkgbase = candy-git
 	pkgdesc = A reliable, low-latency, and anti-censorship virtual private network
-	pkgver = 5.8.6.r6.g6519215
+	pkgver = 5.8.9.r0.ga64cfdd
 	pkgrel = 1
 	url = https://github.com/lanthora/candy
 	arch = x86_64
@@ -17,7 +17,6 @@ pkgbase = candy-git
 	depends = glibc
 	depends = gcc-libs
 	depends = openssl
-	depends = libconfig
 	depends = spdlog
 	depends = poco
 	conflicts = candy
