@@ -1,0 +1,63 @@
+Description: Fix build failure due to latest GStreamer update (version 0.24)
+
+<https://github.com/brunoherbelin/vimix/commit/2d99870ec2d3171a00dbcb045bb8dca629caee60>
+
+diff --unified --recursive --text vimix.orig/src/MediaPlayer.cpp vimix.new/src/MediaPlayer.cpp
+--- vimix.orig/src/MediaPlayer.cpp	2024-01-02 10:20:45.000000000 -0300
++++ vimix.new/src/MediaPlayer.cpp	2024-06-11 00:31:35.132270348 -0300
+@@ -435,6 +435,9 @@
+     GstAppSinkCallbacks callbacks;
+ #if GST_VERSION_MINOR > 18 && GST_VERSION_MAJOR > 0
+     callbacks.new_event = NULL;
++#if GST_VERSION_MINOR > 23
++    callbacks.propose_allocation = NULL;
++#endif
+ #endif
+     callbacks.new_preroll = callback_new_preroll;
+     if (singleFrame()) {
+@@ -612,6 +615,9 @@
+     GstAppSinkCallbacks callbacks;
+ #if GST_VERSION_MINOR > 18 && GST_VERSION_MAJOR > 0
+     callbacks.new_event = NULL;
++#if GST_VERSION_MINOR > 23
++    callbacks.propose_allocation = NULL;
++#endif
+ #endif
+     callbacks.new_preroll = callback_new_preroll;
+     if (singleFrame()) {
+diff --unified --recursive --text vimix.orig/src/Stream.cpp vimix.new/src/Stream.cpp
+--- vimix.orig/src/Stream.cpp	2024-01-02 10:20:45.000000000 -0300
++++ vimix.new/src/Stream.cpp	2024-06-11 00:33:01.270397360 -0300
+@@ -167,6 +167,9 @@
+                 GstAppSinkCallbacks callbacks;
+ #if GST_VERSION_MINOR > 18 && GST_VERSION_MAJOR > 0
+                 callbacks.new_event = NULL;
++#if GST_VERSION_MINOR > 23
++                callbacks.propose_allocation = NULL;
++#endif
+ #endif
+                 callbacks.eos = NULL;
+                 callbacks.new_sample = NULL;
+@@ -269,6 +272,9 @@
+     GstAppSinkCallbacks callbacks;
+ #if GST_VERSION_MINOR > 18 && GST_VERSION_MAJOR > 0
+     callbacks.new_event = NULL;
++#if GST_VERSION_MINOR > 23
++    callbacks.propose_allocation = NULL;
++#endif
+ #endif
+     callbacks.new_preroll = callback_new_preroll;
+     if (single_frame_) {
+diff --unified --recursive --text vimix.orig/src/TextSource.cpp vimix.new/src/TextSource.cpp
+--- vimix.orig/src/TextSource.cpp	2024-01-02 10:20:45.000000000 -0300
++++ vimix.new/src/TextSource.cpp	2024-06-11 00:33:55.504650769 -0300
+@@ -127,6 +127,9 @@
+     GstAppSinkCallbacks callbacks;
+ #if GST_VERSION_MINOR > 18 && GST_VERSION_MAJOR > 0
+     callbacks.new_event = NULL;
++#if GST_VERSION_MINOR > 23
++    callbacks.propose_allocation = NULL;
++#endif
+ #endif
+     callbacks.new_preroll = callback_new_preroll;
+     callbacks.eos = callback_end_of_stream;
