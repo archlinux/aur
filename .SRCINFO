@@ -1,6 +1,6 @@
 pkgbase = pcsx2-git
 	pkgdesc = A Sony PlayStation 2 emulator
-	pkgver = 1.7.5873.r0.g58ae9fd355
+	pkgver = 1.7.5883.r0.g7ad27e6e9d
 	pkgrel = 1
 	url = https://github.com/PCSX2/pcsx2
 	install = pcsx2-git.install
@@ -19,6 +19,7 @@ pkgbase = pcsx2-git
 	makedepends = libpulse
 	makedepends = libpipewire
 	makedepends = p7zip
+	makedepends = ccache
 	makedepends = libjpeg-turbo
 	makedepends = qt6-tools
 	makedepends = qt6-wayland
@@ -45,30 +46,12 @@ pkgbase = pcsx2-git
 	options = !lto
 	source = git+https://github.com/PCSX2/pcsx2.git
 	source = git+https://github.com/PCSX2/pcsx2_patches.git
-	source = git+https://github.com/google/googletest.git
-	source = git+https://github.com/fmtlib/fmt.git
-	source = git+https://github.com/microsoft/wil.git
-	source = git+https://github.com/biojppm/rapidyaml.git
-	source = git+https://github.com/biojppm/cmake.git
-	source = git+https://github.com/biojppm/c4core.git
-	source = git+https://github.com/biojppm/debugbreak.git
-	source = git+https://github.com/fastfloat/fast_float.git
-	source = vulkan-headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
 	source = git+https://github.com/ianlancetaylor/libbacktrace.git#commit=ad106d5fdd5d960bd33fae1c48a351af567fd075
 	source = git+https://github.com/google/shaderc.git#tag=v2024.1
 	source = git+https://github.com/KhronosGroup/glslang.git#commit=142052fa30f9eca191aa9dcf65359fcaed09eeec
 	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git#commit=5e3ad389ee56fca27c9705d093ae5387ce404df4
 	source = git+https://github.com/KhronosGroup/SPIRV-Tools.git#commit=dd4b663e13c07fea4fbb3f70c1c91c86731099f7
 	source = pcsx2-qt.sh
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
