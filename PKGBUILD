@@ -2,7 +2,7 @@
 pkgname=elemntary-bin
 pkgver=0.5.6
 _electronversion=24
-pkgrel=11
+pkgrel=12
 pkgdesc='A GUI application that allows your to control Wahoo Elemnt bicycle computers from a desktop PC providing some insights and hidden features.'
 arch=('x86_64')
 url="https://github.com/vti/elemntary"
@@ -35,7 +35,8 @@ build() {
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname%-bin}" --exec="${pkgname%-bin} %U"
-    sed 's|"src"|"/usr/lib/elemntary/app/src"|g' -i "${srcdir}/${pkgname%-bin}-linux-x64/resources/app/src/electron/main.js"
+    sed "s|process.resourcesPath|\"\/usr\/lib\/${pkgname%-bin}\"|g" -i "${srcdir}/${pkgname%-bin}-linux-x64/resources/app/src/domain/adb-wrapper.js"
+    sed "s|process.resourcesPath|\"\/usr\/lib\/${pkgname%-bin}\"|g" -i "${srcdir}/${pkgname%-bin}-linux-x64/resources/app/src/electron/resources.js"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
