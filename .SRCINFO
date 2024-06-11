@@ -1,0 +1,19 @@
+pkgbase = opl-pc-tools-git
+	pkgdesc = Desktop tools for working with Open PS2 Loader storages
+	pkgver = 3.0.r1.g2da4c5c
+	pkgrel = 1
+	url = https://github.com/brainstream/OPL-PC-Tools
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt5-tools
+	makedepends = base-devel
+	depends = qt5-base
+	depends = glibc
+	depends = gcc-libs
+	depends = bash
+	source = git+https://github.com/brainstream/OPL-PC-Tools.git
+	sha256sums = SKIP
+
+pkgname = opl-pc-tools-git
