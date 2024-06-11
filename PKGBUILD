@@ -2,8 +2,8 @@
 
 pkgname=python-beziers
 _pyname=${pkgname#python-}.py
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 pkgdesc='Routines for extracting information from font glyphs'
 arch=(any)
 url="https://github.com/simoncozens/$_pyname"
@@ -14,7 +14,7 @@ makedepends=(python-{build,installer,wheel}
 _archive="$_pyname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
 # source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.tar.gz")
-sha256sums=('96ab69ad1f98a4f6f1f251b255f2473c3408a80983f9c82ddf3a6e3f67fa58b4')
+sha256sums=('842f43f4d8acf5691adc5dbc86c3c2b940035f8c08934fba356f77eee0260903')
 
 build() {
 	cd "$_archive"
