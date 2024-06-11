@@ -1,0 +1,103 @@
+#!/bin/bash
+pre_install()  {
+AppName=PenTablet
+AppDir=pentablet
+pid=`ps -e|grep $AppName`
+appScript=$AppName".sh"
+if [ -n "$pid" ]; then
+	echo $pid
+	arr=()
+	while read -r line; do
+	   arr+=("$line")
+	done <<< "$pid"
+	for val in "${arr[@]}";
+	do
+		appid=`echo $val | awk '{print $1}'`
+	   	name=`echo $val | awk '{print $4}'`
+	   	echo "ID:"$appid
+		echo "Name:"$name
+		if [ "$name" = "$appRunScript" ]; then
+			echo "close $appRunScript"
+			kill -15 $appid
+		elif [ "$name" = "$AppName" ]; then
+			echo "close $AppName"
+			kill -15 $appid
+		fi
+	done
+fi
+}
+
+post_install() {
+
+appDir=/usr/lib/pentablet
+confPath=$appDir/conf/xppen
+libPath=$appDir/lib
+platPath=$appDir/platforms
+AppName=PenTablet
+exeShell="PenTablet.sh"
+RuleDir="/lib/udev/rules.d"
+ruleName="10-xp-pen.rules"
+DesktopDir=/usr/share/applications
+AppIconDir=/usr/share/icons/hicolor/256x256/apps
+AutoStartDir=/etc/xdg/autostart
+appDesktopName=xppentablet.desktop
+appIconName=xppentablet.png
+
+chmod +0444 $AutoStartDir/$appDesktopName
+chmod +0444 $DesktopDir/$appDesktopName
+chmod +0555 $AppIconDir/$appIconName
+
+chmod +0555 $appDir/$AppName
+chmod +0755 $appDir/$exeShell
+chmod +0666 $appDir/resource.rcc
+
+#Moved to package() script to avoid warnings during installation/updates
+#chmod +0777 $confPath
+#chmod +0777 $libPath
+#chmod +0777 $platPath
+
+chmod +0666 $confPath/config.xml
+chmod +0666 $confPath/language.ini
+chmod +0666 $confPath/name_config.ini
+
+#No longer required, according to the new driver scripts
+#chmod +0666 $libPath/libicudata.so.56
+#chmod +0666 $libPath/libicui18n.so.56
+#chmod +0666 $libPath/libicuuc.so.56
+#chmod +0666 $libPath/libQt5Core.so.5
+#chmod +0666 $libPath/libQt5DBus.so.5
+#chmod +0666 $libPath/libQt5Gui.so.5
+#chmod +0666 $libPath/libQt5Network.so.5
+#chmod +0666 $libPath/libQt5Widgets.so.5
+#chmod +0666 $libPath/libQt5X11Extras.so.5
+#chmod +0666 $libPath/libQt5XcbQpa.so.5
+#chmod +0666 $libPath/libQt5Xml.so.5
+
+#chmod +0666 $platPath/libqxcb.so
+
+lockfile="/tmp/qtsingleapp-Pentab-9c9b-lockfile"
+touch $lockfile
+chmod +0666 $lockfile
+
+if [ -f "/etc/xdg/autostart/pentablet.desktop" ]; then
+	rm /etc/xdg/autostart/ugee-pentablet.desktop
+fi
+
+echo "Installation successful!"
+echo "If you are installing for the first time, please use it after restart."
+
+}
+pre_upgrade() {
+pre_install
+}
+post_upgrade() {
+post_install
+}
+pre_remove () {
+ pre_install
+ lockfile="/tmp/qtsingleapp-Pentab-9c9b-lockfile"
+ rm $lockfile
+ }
+ post_remove(){
+ echo "Uninstall succeeded."
+ }
