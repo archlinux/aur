@@ -1,0 +1,16 @@
+pkgbase = lze-web
+	pkgdesc = lze-web
+	pkgver = 1.0
+	pkgrel = 1
+	install = lze-web.install
+	arch = x86_64
+	license = PGP
+	makedepends = tar
+	depends = apache
+	depends = php-apache
+	depends = python-pip
+	provides = lze-web
+	options = !strip
+	options = !emptydirs
+
+pkgname = lze-web

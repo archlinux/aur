@@ -1,0 +1,38 @@
+post_install() {
+  pip config set global.target /usr/local/bin 
+  sudo pip install webssh --break-system-packages
+  mkdir $HOME/Documents/note
+  chmod 777 $HOME/Documents
+  chmod 777 $HOME/Downloads 
+  chmod 777 -R $HOME/Pictures
+  chmod 777 $HOME/Documents/note 
+  ln -s $HOME/Documents /opt/lze-web/Documents
+  ln -s $HOME/Downloads /opt/lze-web/Downloads
+  ln -s $HOME/Pictures /opt/lze-web/Pictures
+sudo systemctl enable --now httpd.service
+cp -r  lze-web/templates /usr/lib/python3.12/site-packages/webssh
+cp -r  lze-web/statici /usr/lib/python3.12/site-packages/webssh
+sudo systemctl enable --now wessh.service
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+	#
+
+	action="$1"
+	if [ "$2" = "in-favour" ]; then
+	  # Treat conflict remove as an upgrade.
+	  action="upgrade"
+	fi
+
+}
+
+post_remove() {
+systemctl disable --now wessh.service
+rm /etc/systemd/system/wessh.service
+rm -rf /opt/lze-web
+
+}
