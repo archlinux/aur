@@ -5,35 +5,44 @@ pkgbase=python-sunpy
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=5.1.3
+pkgver=5.1.4
 pkgrel=1
 pkgdesc="Python library for solar physics"
 arch=('i686' 'x86_64')
 url="https://sunpy.org"
 license=('BSD-2-Clause')
-makedepends=('python-setuptools-scm' 'python-wheel' 'python-build' 'python-installer' 'python-extension-helpers' 'python-numpy' 'gcc13')
+makedepends=('python-setuptools-scm' 'python-wheel' 'python-build' 'python-installer' 'python-extension-helpers' 'python-numpy')
 #'python-sunpy-sphinx-theme'
 #'python-parfive' 'python-astroquery' 'python-reproject' 'python-ruamel-yaml' 'python-jplephem' 'python-sphinx-automodapi' 'python-sphinx-changelog' 'python-sphinx-gallery>=0.9.0' 'python-sphinxext-opengraph'
 #'python-scikit-image' 'python-h5netcdf' 'python-sqlalchemy' 'python-lxml' 'python-zeep' 'python-drms' 'python-aioftp' 'python-asdf' 'python-cdflib' 'python-mpl-animators' 'graphviz')
-#checkdepends=('python-pytest-doctestplus'
+#checkdepends=('python-pytest-arraydiff'
+#              'python-pytest-doctestplus'
+#              'python-pytest-remotedata'
+#              'python-pytest-xdist'
+#              'python-pytest-mpl'
 #              'python-pytest-mock'
 #              'python-reproject'
-#              'python-aiohttp'
+#              'python-asdf-astropy'
 #              'python-parfive'
-#              'python-matplotlib'
 #              'python-scipy'
 #              'python-beautifulsoup4'
+#              'python-pandas'
 #              'python-lxml'
-#              'python-requests'
 #              'python-zeep'
 #              'python-drms'
 #              'python-sqlalchemy'
 #              'python-hypothesis'
 #              'python-scikit-image'
 #              'python-h5netcdf'
+#              'python-cdflib'
+#              'python-mpl-animators'
 #              'python-glymur'
-#              'python-asdf'
-#              'python-mpl-animators')
+#              'python-hvpy'
+#              'python-opencv'
+#              'python-astroquery'
+#              'python-aioftp'
+#              'python-jplephem'
+#)   # matplotlib <-mpl-animater, aiohttp <- parfive, asdf <- asdf-astropy
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #        "http://data.sunpy.org/sunpy/v1/AIA20110607_063301_0131_lowres.fits"
 #        "http://data.sunpy.org/sunpy/v1/AIA20110607_063302_0171_lowres.fits"
@@ -63,7 +72,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
 #        "http://data.sunpy.org/sunpy/v1/aiacalibim5.fits.gz"
 #        "http://data.sunpy.org/sunpy/v1/glg_cspec_n5_110607_v00.pha")
 ##       "http://netdrms01.nispdc.nso.edu/VSO/WSDL/VSOi_rpc_literal.wsdl")
-md5sums=('2090b02145aee2f8b8ce7ac166882bca')
+md5sums=('95b74b9111a8525e7199ad3713862eff')
 #        'bde3bd7a691b38e2e4c4e1d17b143b24'
 #        '01efaf052d81efc32a92050a249aa557'
 #        'ead6d3ce4c183c471d76bf1bc3be44a3'
@@ -109,7 +118,7 @@ get_pyver() {
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
-    CC=gcc-13 python -m build --wheel --no-isolation --skip-dependency-check
+    python -m build --wheel --no-isolation --skip-dependency-check
 
 #   msg "Building Docs"
 #   cd ${srcdir}/${_pyname}-${pkgver}/docs
@@ -127,12 +136,17 @@ build() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
 #
 #    ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname}*egg-info \
-#        build/lib.linux-${CARCH}-$(get_pyver)/${_pyname}-${pkgver}-py$(get_pyver).egg-info
-#    mkdir -p ${HOME}/.local/share/${_pyname}
-#    ln -rs ${srcdir}/*.fit* ${HOME}/.local/share/${_pyname}
-#    ln -rs ${srcdir}/*.txt ${HOME}/.local/share/${_pyname}
-#    ln -rs ${srcdir}/*.pha ${HOME}/.local/share/${_pyname}
-#    PYTHONPATH="build/lib.linux-${CARCH}-$(get_pyver)" pytest "build/lib.linux-${CARCH}-$(get_pyver)" #|| warning "Tests failed"
+#        build/lib.linux-${CARCH}-cpython-$(get_pyver)/${_pyname}-${pkgver}-py$(get_pyver .).egg-info
+##   mkdir -p ${HOME}/.local/share/${_pyname}
+##   ln -rs ${srcdir}/*.fit* ${HOME}/.local/share/${_pyname}
+##   ln -rs ${srcdir}/*.txt ${HOME}/.local/share/${_pyname}
+##   ln -rs ${srcdir}/*.pha ${HOME}/.local/share/${_pyname}
+##   PYTHONPATH="build/lib.linux-${CARCH}-$(get_pyver)" pytest "build/lib.linux-${CARCH}-$(get_pyver)" -vv -l -ra --color=yes -o console_output_style=count #|| warning "Tests failed" -vv -l -ra --color=yes -o console_output_style=count
+#    # From NixOS, remove tests needs hvpy, spicepy
+#    PYTHONPATH="build/lib.linux-${CARCH}-cpython-$(get_pyver)" pytest -vv -l -ra --color=yes -o console_output_style=count "build/lib.linux-${CARCH}-cpython-$(get_pyver)" docs --remote-data=any -p xdist -n 4 -Wdefault \
+#        --ignore=build/lib.linux-${CARCH}-cpython-$(get_pyver)/sunpy/net/tests/test_fido.py \
+#        --ignore=build/lib.linux-${CARCH}-cpython-$(get_pyver)/sunpy/coordinates/tests/test_spice.py #\
+#    #|| warning "Tests failed" -vv -l -ra --color=yes -o console_output_style=count
 #}
 
 package_python-sunpy() {
