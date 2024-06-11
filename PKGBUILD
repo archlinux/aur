@@ -4,8 +4,8 @@
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>, youngunix <>
 
 pkgname=swift-bin-development
-pkgver=5.9.DEVELOPMENT
-vendorver=5.9-DEVELOPMENT-SNAPSHOT-2023-07-29-a
+pkgver=6.0.DEVELOPMENT
+vendorver=6.0-DEVELOPMENT-SNAPSHOT-2024-06-08-a
 pkgrel=1
 epoch=4
 pkgdesc="Binary builds of the Swift programming language (dev snapshot)"
@@ -18,7 +18,7 @@ makedepends=('patchelf')
 options=('!strip')
 provides=('swift-language')
 replaces=('swift-language-bin')
-source=("https://swift.org/builds/swift-5.9-branch/centos7/swift-${vendorver}/swift-${vendorver}-centos7.tar.gz")
+source=("https://swift.org/builds/swift-6.0-branch/centos7/swift-${vendorver}/swift-${vendorver}-centos7.tar.gz")
 sha256sums=('SKIP')
 
 package() {
