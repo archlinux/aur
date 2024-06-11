@@ -4,7 +4,7 @@
 pkgname=typora-plugin
 _pkgname=typora
 _typora_ver=1.8.10
-_plugin_ver=1.8.22
+_plugin_ver=1.9.2
 pkgver=${_typora_ver}+plugin+${_plugin_ver}
 pkgrel=1
 pkgdesc="A minimal markdown editor and reader. with obgnail/typora_plugin plugin."
@@ -17,6 +17,11 @@ conflicts=("$_pkgname")
 optdepends=(
 	'noto-fonts-emoji: Or some other emoji font to see emojis'
 	'pandoc: Import/export for extra file formats')
+backups=(
+    '/usr/share/typora/resources/plugin/global/settings/custom_plugin.user.toml'
+    '/usr/share/typora/resources/plugin/global/settings/hotkey.user.toml'
+    '/usr/share/typora/resources/plugin/global/settings/settings.user.toml'
+    )
 _filename="${_pkgname}_${_typora_ver}_amd64.deb"
 source=(
     "https://typora.io/linux/$_filename"
@@ -25,7 +30,7 @@ source=(
 sha512sums=(
     '6560774e283129fa556a916d412903893388194625472062a36dd84d771ae261974b0c6a3b4642b081e8e19a7bb9477720e00f39efa4934aa8301001127e69a6'
     'de9c883c63f3ea35bd551c8761e605f8e1a3468943e000abcbf94bb0c5cbb5f0f6c7fa4d49ab39c177f167e0e3d0b061c861bf828627b4a34f7f1589119c3d04'
-    'd636cfc5a11f37ea5c5fd09154995a10a870b14d609ada795d928f84e69bf2a942fa30f2926cb5c5bd3136d2702336ced1017ae111b2b6e0b6d6887a12ea8743')
+    '5b84610047b1b8447ce00eb7527e28ec47610c96999592a86c9ddd39f34b19e05137af5b360e6b9e8e371de332b4354332fd50d29f0d2a72eb5a1208c40717ae')
 
 _patch_plugin() {
   tar xvf ${_plugin_ver}.tar.gz -C "$pkgdir/"
