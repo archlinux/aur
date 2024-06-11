@@ -3,7 +3,7 @@
 pkgbase=dataspell
 pkgname=(dataspell dataspell-jre)
 pkgver=2024.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Python IDE for data scientists'
 arch=('x86_64' 'i686')
 license=('custom:jetbrains')
@@ -22,13 +22,14 @@ package_dataspell() {
               'java-runtime: JRE - Required if dataspell-jre is not installed'
               'gnome-keyring: save login/deployment credentials safely'
               'java-openjfx: rendering Markdown files')
+  _buildver="$(ls | grep -Eo 'dataspell-[[:digit:]]+\.[[:digit:]]{2,5}\.[[:digit:]]+' | sort -r | head -1 | sed 's#dataspell-##')"
 
   install -dm755 "${pkgdir}"/opt/
   install -dm755 "${pkgdir}"/usr/bin/
   install -dm755 "${pkgdir}"/usr/share/applications/
   install -dm755 "${pkgdir}"/usr/share/pixmaps/
 
-  cp -a "${srcdir}"/dataspell-${pkgver}/ "${pkgdir}"/opt/${pkgbase}
+  cp -a "${srcdir}"/dataspell-${_buildver:?_buildver unset}/ "${pkgdir}"/opt/${pkgbase}
   rm -rf "${pkgdir}"/opt/${pkgbase}/jbr
 
   chmod +x "${pkgdir}"/opt/dataspell/plugins/r-plugin/rwrapper*linux
@@ -42,7 +43,8 @@ package_dataspell() {
 package_dataspell-jre() {
   pkgdesc='JBR (JetBrains Runtime) for DataSpell - a patched JRE'
   url='https://github.com/JetBrains/JetBrainsRuntime'
+  _buildver="$(ls | grep -Eo 'dataspell-[[:digit:]]+\.[[:digit:]]{2,5}\.[[:digit:]]+' | sort -r | head -1 | sed 's#dataspell-##')"
 
   install -d -m 755 "${pkgdir}"/opt/${pkgbase}
-  cp -a "${srcdir}"/dataspell-${pkgver}/jbr "${pkgdir}"/opt/${pkgbase}
+  cp -a "${srcdir}"/dataspell-${_buildver:?_buildver unset}/jbr "${pkgdir}"/opt/${pkgbase}
 }
