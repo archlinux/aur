@@ -30,5 +30,6 @@ build() {
 
 package() {
 	cd "${srcdir}"/"${pkgname}-${pkgver}"
-	cmake --build build --target install -j 2 -DCMAKE_INSTALL_PREFIX="$pkgdir/usr"
+	cmake --build build -j 2
+	cmake --install build --prefix "$pkgdir/usr"
 }
