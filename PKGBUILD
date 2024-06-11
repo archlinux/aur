@@ -4,9 +4,9 @@
 pkgbase=datagrip-eap
 _pkgbase=${pkgbase/-eap/}
 pkgname=(datagrip-eap datagrip-eap-jre)
-pkgver=241.14494.251
-_pkgver=2024.1
-#_pkgver=${pkgver}
+pkgver=242.15523.28
+#_pkgver=2024.1
+_pkgver=${pkgver}
 pkgrel=1
 pkgdesc='Smart SQL Editor and Advanced Database Client Packed Together for Optimum Productivity (EAP)'
 arch=('any')
@@ -18,7 +18,7 @@ options=('!strip')
 source=("https://download.jetbrains.com/${_pkgbase}/${_pkgbase}-${_pkgver}.tar.gz"
         jetbrains-datagrip-eap.desktop
         LICENSE)
-b2sums=('9d196e579e25ab778a07441a904e3ea7aedeef8a5486bdcc545b7c6ce06b6d59c7a97604bdc08d8fdbb52962281c796510cb4c5a558a69577bb307e90c03cfa3'
+b2sums=('f4f3e86d5fd25c1654f0d88adc2fc7bf02c0b2e966b28ebb48ac6ceb9a2611f6cd219fb96d01404719c8389f9ee9b8c850e294a55380c620704cbe3dc042c85f'
         '780569cb12b9f5d2475363c7b9c28d903f5a79806aaeea634973664b7cdac0ef281519024fa784b20d7e0062bf9b69e2bca3036bca58e6ee43a475609ea42a1c'
         'dadaf0e67b598aa7a7a4bf8644943a7ee8ebf4412abb17cd307f5989e36caf9d0db529a0e717a9df5d9537b10c4b13e814b955ada6f0d445913c812b63804e77')
 
