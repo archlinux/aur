@@ -10,7 +10,8 @@ pkgbase = trivia-quiz
 	makedepends = git
 	makedepends = meson
 	depends = libadwaita
-	depends = python
+	depends = python-gobject
+	depends = python-requests
 	source = git+https://github.com/Nokse22/trivia-quiz.git#commit=170b78fc48be11bffa0c821fd4f7da1fa0b51be3
 	sha256sums = SKIP
 
