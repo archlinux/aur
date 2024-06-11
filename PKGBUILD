@@ -6,12 +6,12 @@
 
 pkgname=wxmaxima
 pkgver=24.05.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A wxWidgets GUI for the computer algebra system Maxima"
 arch=(x86_64)
 url="https://github.com/${pkgname}-developers/${pkgname}"
 license=(GPL-2.0-or-later)
-depends=(maxima wxwidgets-gtk3 webkit2gtk)
+depends=(maxima wxwidgets-gtk3 webkit2gtk-4.1)
 makedepends=(cmake)
 checkdepends=(xorg-server-xvfb)
 optdepends=('bash-completion: for completion when using bash'
