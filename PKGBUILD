@@ -124,8 +124,8 @@ prepare() {
 
 build() {
 	cd "$srcdir/TIC-80-$pkgver/build"
-	cmake .. -DCMAKE_BUILD_TYPE=Release -DBUILD_SDLGPU=On
-	cmake --build . --config Release --parallel
+	cmake .. -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_SDLGPU=On -DBUILD_WITH_ALL=On
+	cmake --build . --config MinSizeRel --parallel
 }
 
 check() {
