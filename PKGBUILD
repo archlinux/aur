@@ -1,7 +1,7 @@
 # Maintainer: Jeffrey Zhang <zhang.lei.fly#gmail.com>
 
 pkgname=ansible-runner
-pkgver=2.3.5
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="A tool and python library that helps when interfacing with Ansible directly"
 arch=("any")
@@ -12,20 +12,20 @@ depends=("python-psutil"
          "python-daemon"
          "python-yaml"
          "python-six")
-makedepends=('python-setuptools' 'python-pbr')
-source=("https://files.pythonhosted.org/packages/e8/c7/c5f3fb32de173ff821554ead3deeeb8ac79b2874fc716341771fc53580da/ansible-runner-${pkgver}.tar.gz")
-sha256sums=('cd9ddd5765870ea3c545b6cb47aaad5f04d9a30a628dd3fcdb4f367a28c22085')
+makedepends=('python-setuptools' 'python-pbr' 'git' 'python-wheel')
+source=("https://files.pythonhosted.org/packages/e0/b4/842698d5c17b3cae7948df4c812e01f4199dfb9f35b1c0bb51cf2fe5c246/ansible-runner-${pkgver}.tar.gz")
+sha256sums=('82d02b2548830f37a53517b65c823c4af371069406c7d213b5c9041d45e0c5b6')
 
 build() {
     cd ${pkgname}-${pkgver}
-    python setup.py build
+    python -m build
 }
 
 package() {
     local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
 
     cd ${pkgname}-${pkgver}
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    python -m pip install --root="$pkgdir" .
     rm -rf "${pkgdir}${site_packages}/test"
     install -Dm644 LICENSE.md "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
