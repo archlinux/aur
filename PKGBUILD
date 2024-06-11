@@ -1,19 +1,20 @@
 # Maintainer: VIVID <vivid@headrat.org>
 
 pkgname=libg15render
-pkgver=3.0.5a
+pkgver=1.3.1
 pkgrel=1
-pkgdesc="A small graphics library optimised for drawing on an LCD"
+pkgdesc="Library to aid in drawing to Logitech G15 screens"
 arch=('x86_64')
-url="https://gitlab.com/menelkir/libg15render"
+url="https://github.com/vividnightmare/libg15render"
 license=('GPL')
-depends=('libg15')
-source=(https://gitlab.com/menelkir/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.bz2)
-sha512sums=('1bc457695fe4a4166035ea61922af7e8a8247fff7f946997539926f2e7802f152b2587518dfc76a5a036ec4346cbcc70e51c85205619c72609272f511cdebd9a')
+depends=('libg15' 'freetype2')
+source=(https://github.com/vividnightmare/${pkgname}/archive/refs/tags/${pkgver}.tar.gz)
+sha512sums=('c5bc04e281506415c4b559fde08f48e30b34cc6fdd47ca1765cefcf9eeb8aa82ad0902204d35358db36deebc491d8b8bdfb0d82741393f36dd7be5f80d12461c')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  ./configure --prefix=/usr
+  chmod +x configure
+  ./configure --prefix=/usr --enable-ttf
   make
 }
 
