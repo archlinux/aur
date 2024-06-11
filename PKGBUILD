@@ -3,13 +3,13 @@
 
 pkgname='jedstate-git'
 _pkgname="${pkgname/-git/}"
-pkgver=1.0.0.r0.g81d6d40
+pkgver=1.0.0.r2.g85c435b
 pkgrel=1
 pkgdesc='S-Lang module for the JED editor to remember its cursor position across invocations (built from latest commit)'
 arch=('any')
 url='https://codeberg.org/kas/jedstate'
 license=('AGPL-3.0-or-later')  # SPDX-License-Identifier: AGPL-3.0-or-later
-depends=('jed')
+depends=('jed' 'slsh')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -32,15 +32,19 @@ build() {
 package() {
   cd "$_pkgname"
 
-  install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -vDm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 
   cd "src"
 
-  install -Dm0644 jedstate.sl "$pkgdir/usr/share/jed/lib/jedstate.sl"
-  install -Dm0644 jedstate.slc "$pkgdir/usr/share/jed/lib/jedstate.slc"
+  install -vDm0644 -t "$pkgdir/usr/share/jed/lib" \
+    jedstate.sl{,c}
 
-  install -Dm0644 jedstate-hooks.sl \
-    "$pkgdir/usr/share/doc/$pkgname/jedstate-hooks.sl"
+  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
+    jedstate-hooks.sl
+
+  test -f jedstate-prune-nonexistent && \
+    install -vDm0755 -t "$pkgdir/usr/bin" \
+      jedstate-prune-nonexistent
 }
 
 # eof
