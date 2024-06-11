@@ -1,6 +1,6 @@
 pkgbase = floorp-bin
 	pkgdesc = Firefox-based web browser focused on performance and customizability
-	pkgver = 11.13.3
+	pkgver = 11.14.0
 	pkgrel = 1
 	url = https://floorp.app/
 	arch = x86_64
@@ -15,19 +15,20 @@ pkgbase = floorp-bin
 	optdepends = libnotify: notification integration
 	optdepends = networkmanager: location detection via available WiFi networks
 	optdepends = speech-dispatcher: text-to-speech
-	provides = floorp=11.13.3
+	provides = floorp=11.14.0
 	conflicts = floorp
+	options = !strip
 	options = !debug
 	source = floorp.desktop
 	source = floorp.png
-	source = LICENSE-11.13.3-1::https://github.com/Floorp-Projects/Floorp-private-components/raw/main/LICENSE
+	source = LICENSE-11.14.0-1::https://github.com/Floorp-Projects/Floorp-private-components/raw/main/LICENSE
 	sha256sums = 07a63f189beaafe731237afed0aac3e1cfd489e432841bd2a61daa42977fb273
 	sha256sums = 853ba77377f296d3bf52f191131883702dd96d38084f78ea5ddb29821ac253d1
 	sha256sums = f7bca5c0edabcd0450e6c122dc008a64787e00f9e62ddd40e91accb5f79b2c1e
-	source_x86_64 = https://github.com/Floorp-Projects/Floorp/releases/download/v11.13.3/floorp-11.13.3.linux-x86_64.tar.bz2
-	sha256sums_x86_64 = 24204a472b7f668b71baeb21948d037d34b56bc25b5c2380e36f5046bc2be81b
-	source_aarch64 = https://github.com/Floorp-Projects/Floorp/releases/download/v11.13.3/floorp-11.13.3.linux-aarch64.tar.bz2
-	sha256sums_aarch64 = aeffc912a8180cc29bba32f90e7fa339cd569021dc29cf0e636352bc1454f1eb
+	source_x86_64 = https://github.com/Floorp-Projects/Floorp/releases/download/v11.14.0/floorp-11.14.0.linux-x86_64.tar.bz2
+	sha256sums_x86_64 = 1426f3d302f445aa98f001e7c296ac6d76751683ac2f52327331d3a6b05a8e18
+	source_aarch64 = https://github.com/Floorp-Projects/Floorp/releases/download/v11.14.0/floorp-11.14.0.linux-aarch64.tar.bz2
+	sha256sums_aarch64 = 3d8b62e398559dee8e6b1b3b45aa60d6a91cab146c17f22aa2b3e991858aa863
 
 pkgname = floorp-bin
 	depends = alsa-lib
