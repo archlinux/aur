@@ -1,0 +1,13 @@
+pkgbase = mayhem
+	pkgdesc = A minimal TUI-based task tracker
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://github.com/BOTbkcd/mayhem
+	arch = any
+	license = MIT
+	makedepends = go
+	depends = sqlite
+	source = mayhem-1.2.3.tar.gz::https://github.com/BOTbkcd/mayhem/archive/refs/tags/v1.2.3.tar.gz
+	sha256sums = 84d3e1d15db0f917a91f676636e867515b0c8e847409b7387682c0badbbdabe7
+
+pkgname = mayhem
