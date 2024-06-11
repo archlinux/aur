@@ -5,17 +5,17 @@
 # Contributor: GalSim developers team on GitHub
 _base=GalSim
 pkgname=python-${_base,,}
-pkgver=2.5.2
+pkgver=2.5.3
 pkgrel=1
 pkgdesc="Modular galaxy image simulation toolkit"
 arch=(x86_64)
 url="https://github.com/${_base}-developers/${_base}"
-license=('BSD')
+license=('BSD-style')
 depends=(python-astropy boost-libs eigen fftw python-coord python-future)
 makedepends=(python-build python-installer python-setuptools python-wheel pybind11 python-numpy)
 # checkdepends=(python-pytest) # python-timeout python-scipy python-yaml
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha256sums=('e6c04e2c983e241f3cd8a52de289a3ca8bf23c3ebbb692a96fbd27c84b427060')
+sha256sums=('22051ba4bf9617eaef6f8279a346419a7cae6f31b152ba53b1c38e3064c6336a')
 
 build() {
   cd ${_base}-${pkgver}
