@@ -1,10 +1,10 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=ofinstaller-beans-bin
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Installer for Open Fortress"
 arch=("x86_64")
-url="https://github.com/AdastralGroup/beans-rs"
+url="https://github.com/ktwrd/beans-rs"
 license=('GPL-3.0-only')
 provides=("ofinstaller-beans")
 conflicts=("ofinstaller-beans")
