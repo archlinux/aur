@@ -1,7 +1,7 @@
 # Maintainer: Axel McLaren <scm(at)axml(dot)uk>
 
 pkgname=sxcs
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="minimal X11 color picker and magnifier"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha256sums=('b90b8910fb7bf09b9bf9eb48a547d9c593e19dfcb79223b7dcf0c4597fd147b3')
+sha256sums=('23cd9aef9d590172744c90083480786d0b20945e9c2eea2061d379bbdf7f3748')
 
 build() {
   cd "${pkgname}"
