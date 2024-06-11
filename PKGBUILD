@@ -5,7 +5,7 @@
 pkgname=microsoft-edge-beta-bin
 _pkgname=microsoft-edge-beta
 _pkgshortname=msedge-beta
-pkgver=126.0.2592.36
+pkgver=126.0.2592.49
 pkgrel=1
 pkgdesc="A browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier"
 arch=('x86_64')
@@ -27,7 +27,7 @@ _channel=beta
 source=("https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-beta/${_pkgname}_${pkgver}-1_amd64.deb"
         "microsoft-edge-beta.sh"
         "Microsoft Standard Application License Terms - Standalone (free) Use Terms.pdf")
-sha256sums=('bbd81c4e37a77abdf9b8ab7df53dbbf8b2b403849835d5825b91521d612768d0'
+sha256sums=('f99a1a6d6a3ada9b71f64c4128612b68f3fdf9bfd7491dfba6299306d18cd2eb'
             'ccb0d8939af2f129da97f75ef063b6ff2d9484e94c090aef82570001eba8dd71'
             'edf2ed596eb068f168287fc76aa713ad5e0afb59f0a0a47a4f29c0c124ade15e')
 
