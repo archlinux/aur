@@ -1,0 +1,17 @@
+pkgbase = akuse-bin
+	pkgdesc = Simple and easy to use anime streaming desktop app without ads.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/akuse-app/akuse
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = asar
+	depends = electron26
+	provides = akuse=1.0.0
+	conflicts = akuse
+	source = akuse-1.0.0.deb::https://github.com/akuse-app/akuse/releases/download/1.0.0/linux-akuse-1.0.0.deb
+	source = akuse.sh
+	sha256sums = 6468b8a324988527a98280aeaf6b2fcf1fb9db8dfde80b4b570c9a60a866c5b5
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+
+pkgname = akuse-bin
