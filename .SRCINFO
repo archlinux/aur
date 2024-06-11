@@ -1,6 +1,6 @@
 pkgbase = leser-git
 	pkgdesc = 一个现代风格的 RSS 跨平台桌面客户端
-	pkgver = r127.accb6a5
+	pkgver = 1.0.0.r2.gb04a6fc
 	pkgrel = 1
 	url = https://github.com/KangodYan/leser
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = leser-git
 	makedepends = cmake
 	makedepends = curl
 	depends = electron28
-	provides = leser=r127.accb6a5
+	provides = leser=1.0.0
 	conflicts = leser
 	source = leser.git::git+https://github.com/KangodYan/leser.git
 	source = leser.sh
