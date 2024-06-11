@@ -10,7 +10,7 @@ pkgbase = ultimate-tic-tac-toe
 	makedepends = git
 	makedepends = meson
 	depends = libadwaita
-	depends = python
+	depends = python-gobject
 	source = git+https://github.com/Nokse22/ultimate-tic-tac-toe.git#commit=a9ae9da4d2bff3e3113a60825dc16d6f6f2bbf2a
 	sha256sums = SKIP
 
