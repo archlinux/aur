@@ -11,7 +11,7 @@ arch=(any)
 url="https://github.com/amaranth-lang/amaranth"
 license=('BSD')
 depends=('python' 'python-jinja' 'python-pyvcd')
-makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools-scm' 'python-jschon')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools-scm' 'python-jschon' 'python-packaging' 'python-pdm-backend')
 optdepends=('python-paramiko: for remote builds')
 # FIXME: symbiyosys
 checkdepends=('python-pytest' 'yosys>0.16' 'symbiyosys-git' 'yices')
@@ -20,11 +20,9 @@ conflicts=('python-nmigen' "python-nmigen-git" "python-$_pkgname-git")
 replaces=('python-nmigen')
 source=(
 	"git+$url.git" 
-	amaranth-versioning.patch
 	)
 sha256sums=(
 	'SKIP' 
-	'4a6582f9490af97b04d979b13f0ca3127c96d46788b27131ae3aaa7467524131'
 	)
 
 pkgver() {
@@ -37,7 +35,7 @@ prepare()
 {
 	cd "$_pkgname"
 	git checkout $_git_commit
-	patch -p1 -i ${srcdir}/amaranth-versioning.patch
+	sed -i -e "s/pdm\\.backend\\._vendor\\.//" pdm_build.py
 }
 
 build() {
