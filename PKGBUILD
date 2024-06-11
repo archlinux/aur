@@ -1,13 +1,14 @@
-# Maintainer: Kyle Keen <keenerd@gmail.com>
+# Maintainer: Misaka13514 <Misaka13514 at gmail dot com>
+# Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Dominik Heidler <dheidler@gmail.com>
 
 pkgname=gqrx
 pkgver=2.17.5
-pkgrel=2
-pkgdesc="Interactive SDR receiver waterfall for many devices."
-arch=(x86_64)
-url="http://gqrx.dk/"
-license=(GPL3)
+pkgrel=3
+pkgdesc="Software defined radio receiver powered by GNU Radio and Qt."
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
+url="https://www.gqrx.dk/"
+license=('GPL-3.0-or-later AND GPL-2.0-or-later AND Apache-2.0 AND BSD-2-Clause')
 depends=(gcc-libs glibc hicolor-icon-theme libvolk qt6-base qt6-svg)
 makedepends=(
   boost
@@ -45,4 +46,5 @@ package() {
   )
 
   DESTDIR="$pkgdir" cmake --install build
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" $pkgname-$pkgver/LICENSE-CTK
 }
