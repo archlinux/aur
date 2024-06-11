@@ -1,6 +1,6 @@
 pkgbase = r-paradox
 	pkgdesc = Define and Work with Parameter Spaces for Complex Algorithms
-	pkgver = 0.11.1
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=paradox
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-paradox
 	optdepends = r-lhs
 	optdepends = r-spacefillr
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/paradox_0.11.1.tar.gz
-	sha256sums = 0d8efdf69c006ebb85fd0284cdc946a4190ea0b5e21f0d59713647e60151ff45
+	source = https://cran.r-project.org/src/contrib/paradox_1.0.0.tar.gz
+	sha256sums = ded614df373e3ed9dfe94a9873f05eb13537dc28f387f3beeb1502eba51e9452
 
 pkgname = r-paradox

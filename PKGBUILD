@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=paradox
-_pkgver=0.11.1
+_pkgver=1.0.0
 pkgname=r-${_pkgname,,}
-pkgver=0.11.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Define and Work with Parameter Spaces for Complex Algorithms'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0d8efdf69c006ebb85fd0284cdc946a4190ea0b5e21f0d59713647e60151ff45')
+sha256sums=('ded614df373e3ed9dfe94a9873f05eb13537dc28f387f3beeb1502eba51e9452')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
