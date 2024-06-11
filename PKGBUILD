@@ -1,8 +1,7 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=licensee
-pkgver=9.17.0
-_commit=9882a65744c7cea0f586d09986925c7ff948c89e
+pkgver=9.17.1
 pkgrel=1
 pkgdesc="Detect under what license a project is distributed"
 arch=(any)
@@ -27,16 +26,10 @@ checkdepends=(
   ruby-webmock
 )
 options=(!emptydirs)
-source=("git+$url.git#commit=$_commit")
-sha256sums=('SKIP')
+source=("git+$url.git#tag=v$pkgver")
+sha256sums=('84b69ff9511ee3e487dcf8d2c6d6143f035692684d0da6539e2b74b763b3f500')
 
 _archive="$pkgname"
-
-pkgver() {
-  cd "$_archive"
-
-  git describe --tags | sed 's/^v//'
-}
 
 prepare() {
   cd "$_archive"
