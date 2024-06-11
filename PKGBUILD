@@ -61,21 +61,23 @@ options=(!lto)
 source=("git+https://github.com/xbmc/xbmc.git#branch=$_codename")
 b2sums=('SKIP')
 
-pkgver() {
-  cd "$_gitname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 prepare() {
-  [[ -d kodi-build ]] && rm -rf kodi-build
+#  [[ -d kodi-build ]] && rm -rf kodi-build
   mkdir -p "$srcdir/kodi-build"
 
   cd "$_gitname"
 
+  _lasttag=$(git for-each-ref --sort=creatordate --format '%(refname)' refs/tags | tail -n1)
+  git reset --hard "${_lasttag}"
   if [[ -n "$_clangbuild" ]]; then
     msg "Building with clang"
     export CC=clang CXX=clang++
   fi
+}
+
+pkgver() {
+  cd "$_gitname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
