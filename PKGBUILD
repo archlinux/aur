@@ -11,10 +11,8 @@ arch=('i686' 'x86_64')
 url="http://www.cs.jhu.edu/~misha/Code/PoissonRecon/Version9.0/"
 license=('MIT')
 groups=('photogrametry')
-depends=('glibc' 'gcc8-libs' 'libpng' 'libjpeg' 'boost')
-makedepends=('git' 'gcc8')
-# use ccache-ext to make gcc8 cacheable if using options=(ccache)
-[[ "${BUILDENV[*]}" =~ [^!]+ccache ]] && makedepends+=('ccache-ext')
+depends=('glibc' 'libpng' 'libjpeg' 'boost')
+makedepends=('git')
 options=(!makeflags)
 provides=('poissonrecon' 'ssdrecon' 'surfacetrimmer')
 source=("${pkgname}::git+https://github.com/mkazhdan/PoissonRecon.git${_fragment}")
@@ -25,7 +23,7 @@ prepare() {
 }
 
 build() {
-  make -C ${pkgname} CC=gcc-8 CXX=g++-8
+  make -C ${pkgname}
 }
 
 package() {
