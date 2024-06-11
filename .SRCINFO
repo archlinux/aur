@@ -1,0 +1,13 @@
+pkgbase = gtfs-to-html
+	pkgdesc = Build human readable transit timetables as HTML or PDF from GTFS.
+	pkgver = 2.6.7
+	pkgrel = 1
+	url = https://gtfstohtml.com/
+	arch = any
+	license = MIT
+	makedepends = npm
+	noextract = -2.6.7.tgz
+	source = https://registry.npmjs.org/gtfs-to-html/-/gtfs-to-html-2.6.7.tgz
+	sha256sums = ef1902b057d7568a71046387be0b2ff2ebe5b540db57c38f0b906245404030c9
+
+pkgname = gtfs-to-html
