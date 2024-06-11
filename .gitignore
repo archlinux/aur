@@ -1,0 +1,5 @@
+/hasciicam_*.tar.gz
+/src/
+/pkg/
+/*.pkg.tar*
+/*.log

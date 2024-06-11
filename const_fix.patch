@@ -1,0 +1,12 @@
+diff '--color=auto' -urN hasciicam_1.3.orig/src/hasciicam.c hasciicam_1.3/src/hasciicam.c
+--- a/src/hasciicam.c	2014-09-16 06:34:57.000000000 -0700
++++ b/src/hasciicam.c	2024-06-10 20:56:31.103282037 -0700
+@@ -162,7 +162,7 @@
+ 
+ char hascii_header[1024];
+ 
+-char *html_escapes[] =
++const char *html_escapes[] =
+   { "<", "&lt;", ">", "&gt;", "&", "&amp;", NULL };
+ 
+ struct aa_format hascii_format = {
