@@ -1,6 +1,6 @@
 pkgbase = minio-client
 	pkgdesc = Replacement for ls, cp, mkdir, diff and rsync commands for filesystems and object storage
-	pkgver = 2024.06.05
+	pkgver = 2024.06.10
 	pkgrel = 1
 	url = https://minio.io/downloads/#minio-client
 	install = minio-client.install
@@ -10,7 +10,7 @@ pkgbase = minio-client
 	makedepends = git
 	depends = glibc
 	options = !lto
-	source = git+https://github.com/minio/mc.git#tag=RELEASE.2024-06-05T18-13-30Z
-	sha512sums = d971b32dc4980520dc3d03ea9c5f0763d80e2366896d3c30818440f6c3130be310a6bff18ead1e5ffce4cda5532f7a079b8515358b092b79d895c63c3a5ff177
+	source = git+https://github.com/minio/mc.git#tag=RELEASE.2024-06-10T16-44-15Z
+	sha512sums = 753d0e801b255dc807f35415ba11fcc4e560769bfa7bd0f8f4941bdff9df1f9e9d687298de0f995af6861536f105e8719f18fbba80f6c650f2d58971225b2299
 
 pkgname = minio-client
