@@ -1,7 +1,7 @@
 pkgbase = mini-text
 	pkgdesc = A very small and basic text editor
 	pkgver = 0.2.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Nokse22/mini-text
 	arch = x86_64
 	arch = aarch64

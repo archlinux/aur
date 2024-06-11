@@ -3,7 +3,7 @@
 pkgname=mini-text
 pkgver=0.2.2
 _commit=9661c16c274d1c46ed1c0990f12614414ffd24dd
-pkgrel=3
+pkgrel=4
 pkgdesc='A very small and basic text editor'
 url="https://github.com/Nokse22/mini-text"
 license=('GPL-3.0-or-later')
@@ -20,7 +20,7 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs || :
+  meson test -C build --no-rebuild --print-errorlogs || :
 }
 
 package() {
