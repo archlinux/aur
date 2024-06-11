@@ -3,9 +3,9 @@
 # Contributor: Xaryphon <xaryphon at tuta dot io>
 pkgname=protonhax
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Program to help executing outside programs in proton"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/jcnils/protonhax"
 license=('BSD')
 conflicts=("$pkgname-git")
