@@ -2,7 +2,7 @@
 
 pkgname=python-instructor
 _pkgname=${pkgname#python-}
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="Structured outputs for LLMs"
 arch=(any)
@@ -13,9 +13,9 @@ depends=(
   python-aiohttp
   python-docstring-parser
   python-httpx
+  python-jiter
   python-openai
   python-pydantic
-  python-pydantic-core
   python-regex
   python-rich
   python-tenacity
@@ -40,7 +40,7 @@ optdepends=(
   # 'python-google-generativeai: support for Google Gemini models'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('3c92e25469fd75c628ab25886d20158b9c447acb7c987228a77c94c29aea4752')
+sha256sums=('6db6b32bf90ab54809d1f2a170d0e2ec8f0d1a87fdcf2d2fee35bc8852fb077f')
 
 _archive="$_pkgname-$pkgver"
 
@@ -68,7 +68,8 @@ check() {
     --deselect tests/llm/test_anthropic/test_stream.py \
     --deselect tests/llm/test_new_client.py \
     --ignore tests/llm/test_gemini \
-    --ignore tests/llm/test_openai
+    --ignore tests/llm/test_openai \
+    --ignore tests/llm/test_vertexai
 }
 
 package() {
