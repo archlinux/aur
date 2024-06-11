@@ -1,36 +1,27 @@
-# Maintainer Dan T. <dnt@tuta.io>
+# Maintainer: Adrian Perez de Castro <aperez@igalia.com>
+# Contributor: Dan T. <dnt@tuta.io>
 # Credit to 6.0.5 maintainer: Arthur Zamarin <arthurzam@gmail.com>
 
 pkgname=grfcodec
-pkgver=6.0.6
-pkgrel=2
-pkgdesc="A tool to convert a GRF file into graphics files and meta data, and vice versa"
-arch=('i686' 'x86_64')
+pkgver=6.1.0
+pkgrel=1
+pkgdesc='A tool to convert a GRF file into graphics files and meta data, and vice versa'
+arch=(i686 x86_64)
 url=https://github.com/OpenTTD/grfcodec
-license=('GPL2')
-depends=(libpng)
-makedepends=('boost')
-provides=("nforenum")
-conflicts=('nforenum')
-replaces=('nforenum')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('4675db1d98de2559ef79611b455712928e21e561f130ceca166355a1fb3be9a77e5bf1f435259f8fd4788472a6ec7fb67efaaa520d0ed610182d99ee87949cdf')
-
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  sed -i 's@/usr/local@/usr@' Makefile.bundle
-}
-
-_make () {
-  make CXXFLAGS="${CXXFLAGS} -Wno-narrowing -std=c++11" LDFLAGS="${LDFLAGS}" "$@"
-}
+license=(GPL-2.0-only)
+depends=(gcc-libs glibc libpng)
+makedepends=(boost cmake ninja)
+provides=(nforenum)
+conflicts=(nforenum)
+replaces=(nforenum)
+source=("$pkgname-$pkgver.tar.xz::$url/releases/download/$pkgver/$pkgname-$pkgver-source.tar.xz")
+b2sums=('e9ce6ca4984e319abd5c1fd53473b1257b2b98b0948b5bef5e6275e29b50243981bf7fc837b190b37b2bb12d2ac9aecbb8595150eedb029f1d7ae64053668475')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  _make -j$(nproc)
+	cmake "-S$pkgname-$pkgver" -B_build -GNinja -DCMAKE_INSTALL_PREFIX=/usr
+	ninja -C_build
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  _make DESTDIR="${pkgdir}" install
+	DESTDIR="$pkgdir" ninja -C_build install
 }

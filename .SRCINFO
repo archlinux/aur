@@ -1,17 +1,21 @@
 pkgbase = grfcodec
 	pkgdesc = A tool to convert a GRF file into graphics files and meta data, and vice versa
-	pkgver = 6.0.6
-	pkgrel = 2
+	pkgver = 6.1.0
+	pkgrel = 1
 	url = https://github.com/OpenTTD/grfcodec
 	arch = i686
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-only
 	makedepends = boost
+	makedepends = cmake
+	makedepends = ninja
+	depends = gcc-libs
+	depends = glibc
 	depends = libpng
 	provides = nforenum
 	conflicts = nforenum
 	replaces = nforenum
-	source = grfcodec-6.0.6.tar.gz::https://github.com/OpenTTD/grfcodec/archive/refs/tags/6.0.6.tar.gz
-	b2sums = 4675db1d98de2559ef79611b455712928e21e561f130ceca166355a1fb3be9a77e5bf1f435259f8fd4788472a6ec7fb67efaaa520d0ed610182d99ee87949cdf
+	source = grfcodec-6.1.0.tar.xz::https://github.com/OpenTTD/grfcodec/releases/download/6.1.0/grfcodec-6.1.0-source.tar.xz
+	b2sums = e9ce6ca4984e319abd5c1fd53473b1257b2b98b0948b5bef5e6275e29b50243981bf7fc837b190b37b2bb12d2ac9aecbb8595150eedb029f1d7ae64053668475
 
 pkgname = grfcodec
