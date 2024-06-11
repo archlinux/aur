@@ -1,0 +1,4 @@
+[protonhax]
+source = "git"
+git = "https://github.com/jcnils/protonhax.git"
+include_regex = '\d(?:\d|\.)+\d'
