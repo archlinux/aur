@@ -1,0 +1,17 @@
+pkgbase = deadbeef-plugin-gui-qt5-bin
+	pkgdesc = Qt5 plugin for DeaDBeeF (binary release)
+	pkgver = 1.9
+	pkgrel = 1
+	url = https://github.com/kuba160/ddb_gui_qt5
+	arch = x86_64
+	license = GPL-2.0-or-later
+	depends = deadbeef
+	depends = qt5-base
+	provides = deadbeef-plugin-gui-qt5
+	provides = deadbeef-gui-qt5
+	provides = ddb-gui-qt5
+	conflicts = deadbeef-plugin-gui-qt5
+	source = deadbeef-plugin-gui-qt5-bin-1.9.zip::https://github.com/kuba160/ddb_gui_qt5/releases/download/v1.9-preview2/ddb_gui_qt5_linux-shared.zip
+	sha256sums = f2c2d559108c21eed4f66b37ad67aa8a3c5638430ce5624c11927311442362e7
+
+pkgname = deadbeef-plugin-gui-qt5-bin
