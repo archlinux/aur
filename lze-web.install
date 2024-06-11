@@ -16,7 +16,11 @@ fi
   ln -s $HOME/Pictures /opt/lze-web/Pictures
   ln -s /opt/lze-web/code/Terminal/webssh-start /usr/bin/webssh-start
   ln -s /opt/lze-web/code/Terminal/webssh-stop /usr/bin/webssh-stop
-sudo systemctl enable --now httpd.service
+  mv /etc/httpd/conf/httpd.conf /etc/httpd/conf/httpd.conf.back
+  mv /etc/httpd/conf/httpd.conf.lze /etc/httpd/conf/httpd.conf
+  mv /etc/php/php.ini /etc/php/php.ini.bck
+  mv /etc/php/php.lze /etc/php/php.ini
+  systemctl enable --now httpd.service
 cp -r  templates /usr/lib/python3.12/site-packages/webssh
 cp -r  statici /usr/lib/python3.12/site-packages/webssh
 rm -rf  templates
