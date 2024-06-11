@@ -2,11 +2,11 @@
 
 pkgname=picolibc
 pkgver=1.8.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A C library designed for embedded 32 and 64 bit systems"
 arch=('i686' 'x86_64')
 url="https://keithp.com/picolibc/"
-license=('LicenseRef-')
+license=('LicenseRef-picolibc')
 makedepends=('glibc' 'meson')
 options=('staticlibs')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/picolibc/picolibc/archive/refs/tags/$pkgver.tar.gz")
