@@ -2,7 +2,7 @@
 pkgname=openradtool
 pkgdesc='Generator for front-end and back-end code for Web applications written in C'
 pkgver=0.14.1
-pkgrel=1
+pkgrel=2
 url=https://kristaps.bsd.lv/openradtool
 license=(custom:BSD)
 makedepends=(bc bmake)
@@ -24,16 +24,16 @@ build () {
 	cd "${pkgname}-${pkgver}"
 	CFLAGS="${CFLAGS}" ./configure PREFIX=/usr MANDIR=/usr/share/man LDFLAGS="${LDFLAGS}"
 	chmod +w ort-version.h
-	bmake
+	bmake MAKE=bmake
 }
 
 check () {
-	bmake -C "${pkgname}-${pkgver}" -j1 regress
+	bmake -C "${pkgname}-${pkgver}" -j1 regress MAKE=bmake
 }
 
 package () {
 	cd "${pkgname}-${pkgver}"
-	bmake install DESTDIR="${pkgdir}"
+	bmake install DESTDIR="${pkgdir}" MAKE=bmake
 	strip -x --strip-unneeded "${pkgdir}"/usr/bin/ort*
 	awk '/^\/\*/,/\*\// { print ; }' main.c > COPYING
 	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"

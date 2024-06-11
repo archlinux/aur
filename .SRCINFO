@@ -1,7 +1,7 @@
 pkgbase = openradtool
 	pkgdesc = Generator for front-end and back-end code for Web applications written in C
 	pkgver = 0.14.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kristaps.bsd.lv/openradtool
 	arch = x86_64
 	license = custom:BSD
