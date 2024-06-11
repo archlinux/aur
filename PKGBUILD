@@ -8,6 +8,7 @@ pkgdesc="XP-Pen (Official) Linux utility for legacy XPPen Tablets"
 arch=('x86_64')
 url='https://www.xp-pen.com/download/index.html'
 license=('custom')
+conflicts=('xp-pen-tablet')
 source=("XPPenLinux${pkgver}-${pkgrel}.tar.gz::https://www.xp-pen.com/download/file/id/1936/pid/1016/ext/gz.html")
 install=${pkgname}.install
 
