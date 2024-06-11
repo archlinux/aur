@@ -1,7 +1,7 @@
 pkgbase = 1password
 	pkgdesc = Password manager and secure wallet
-	pkgver = 8.10.33
-	pkgrel = 1
+	pkgver = 8.10.34
+	pkgrel = 40
 	url = https://1password.com
 	install = 1password.install
 	arch = x86_64
@@ -9,13 +9,14 @@ pkgbase = 1password
 	conflicts = 1password-beta
 	conflicts = 1password-beta-bin
 	options = !strip
-	source = https://downloads.1password.com/linux/tar/stable/x86_64/1password-8.10.33.x64.tar.gz
-	source = https://downloads.1password.com/linux/tar/stable/x86_64/1password-8.10.33.x64.tar.gz.sig
+	source = https://downloads.1password.com/linux/tar/stable/x86_64/1password-8.10.34.x64.tar.gz
+	source = https://downloads.1password.com/linux/tar/stable/x86_64/1password-8.10.34.x64.tar.gz.sig
 	validpgpkeys = 3FEF9748469ADBE15DA7CA80AC2D62742012EA22
-	sha256sums = 9e34af462fec03b979f97c5f0a9bf7158f52982bf9a0f8b1f65d8465ec198353
-	sha256sums = d952fc38f0f3d9fe6c8e0008b112da02f9afb656c7fbc41e2a97bbc4a0f8e41e
+	sha256sums = dcb20c8a2a84e5067a06815059ab966abd0292733438338f36c08e28bf7839e5
+	sha256sums = b202fd6e1e82eee9a0962ee9b8f6a2e9644b1c9f2133464640956ba8d5e40a5f
 
 pkgname = 1password
 	depends = hicolor-icon-theme
 	depends = libgtk-3.so=0
 	depends = nss
+	depends = xdg-utils
