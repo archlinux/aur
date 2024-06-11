@@ -7,6 +7,7 @@ else
     home_dir="$HOME"
 fi
   mkdir  $uhome/Documents/note
+  chmod +x  $uhome
   chmod 777  $uhome/Documents
   chmod 777  $uhome/Downloads 
   chmod 777  $uhome/Pictures
