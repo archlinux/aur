@@ -1,7 +1,7 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('nwg-shell')
-pkgver=0.5.34
-pkgrel=2
+pkgver=0.5.35
+pkgrel=1
 pkgdesc="nwg-shell meta-package"
 arch=('any')
 url="https://github.com/nwg-piotr/nwg-shell"
@@ -20,14 +20,20 @@ optdepends=('chromium: suggested web browser'
             'mousepad: suggested text editor' 
             'thunar: suggested file manager'
             'nano: in case you hate vi')
-makedepends=('python-setuptools' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nwg-piotr/nwg-shell/releases/download/v"$pkgver"/nwg-shell-v"$pkgver".tar.gz")
 
-md5sums=('3cfa51cb7d68c5d93a58c69a738e9857')
+md5sums=('d16e7ba3f09bef19dd43cd4abb24a1c5')
+
+build() {
+        cd "${pkgname}-${pkgver}"
+        python -m build --wheel --no-isolation
+}
 
 package() {
   cd "${pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1
+  python -m installer --destdir="${pkgdir}" dist/*.whl
+  
   install -D -t "$pkgdir"/usr/local/bin scripts/*
   install -D -t "$pkgdir"/usr/share/backgrounds nwg-shell.jpg
   install -D -t "$pkgdir"/usr/share/licenses/"$pkgname" LICENSE

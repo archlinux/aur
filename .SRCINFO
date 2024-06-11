@@ -1,12 +1,14 @@
 pkgbase = nwg-shell
 	pkgdesc = nwg-shell meta-package
-	pkgver = 0.5.34
-	pkgrel = 2
+	pkgver = 0.5.35
+	pkgrel = 1
 	url = https://github.com/nwg-piotr/nwg-shell
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = foot
 	depends = gnome-themes-extra
 	depends = grim
@@ -54,7 +56,7 @@ pkgbase = nwg-shell
 	optdepends = mousepad: suggested text editor
 	optdepends = thunar: suggested file manager
 	optdepends = nano: in case you hate vi
-	source = nwg-shell-0.5.34.tar.gz::https://github.com/nwg-piotr/nwg-shell/releases/download/v0.5.34/nwg-shell-v0.5.34.tar.gz
-	md5sums = 3cfa51cb7d68c5d93a58c69a738e9857
+	source = nwg-shell-0.5.35.tar.gz::https://github.com/nwg-piotr/nwg-shell/releases/download/v0.5.35/nwg-shell-v0.5.35.tar.gz
+	md5sums = d16e7ba3f09bef19dd43cd4abb24a1c5
 
 pkgname = nwg-shell
