@@ -1,6 +1,6 @@
 pkgbase = passwordsafe-bin
 	pkgdesc = Popular secure and convenient password manager
-	pkgver = 1.18.2
+	pkgver = 1.19.0
 	pkgrel = 1
 	url = https://pwsafe.org/
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = passwordsafe-bin
 	depends = util-linux-libs
 	depends = wxwidgets-gtk3
 	depends = wxwidgets-common
-	provides = passwordsafe=1.18.2
+	provides = passwordsafe=1.19.0
 	conflicts = passwordsafe
-	source = passwordsafe-1.18.2.deb::https://github.com/pwsafe/pwsafe/releases/download/1.18.2/passwordsafe-ubuntu23-1.18.2-amd64.deb
-	source = LICENSE-1.18.2::https://raw.githubusercontent.com/pwsafe/pwsafe/1.18.2/LICENSE
-	sha256sums = a18bb859eb14536a47f072effb3ac8860088e2a120177315abcb6ccb798b2bfe
+	source = passwordsafe-1.19.0.deb::https://github.com/pwsafe/pwsafe/releases/download/1.19.0/passwordsafe-ubuntu24-1.19-amd64.deb
+	source = LICENSE-1.19.0::https://raw.githubusercontent.com/pwsafe/pwsafe/1.19.0/LICENSE
+	sha256sums = 686593be75d95bc8ac6bc1cc02c4311f79c9a80aba9a5aefd590d686efff3c8b
 	sha256sums = 2d471d94ca72c38aeee8544cbceaa239e7cfd13fa766f8bee7a1dd8fa82c11c8
 
 pkgname = passwordsafe-bin
