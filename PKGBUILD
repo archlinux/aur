@@ -21,10 +21,10 @@
 : ${_lang:=}
 
 ## update
-_icver="115.11.0"
-_commit="5107c173217a594c52c6c301be62a4dc603b3f6f"
-_icsum="4cee9abd2b32030b83d4b3ce3326919c57414d102b8db96dafc3cbf07a9f6e62"
-_ffsum="16be46f16a356a2b8bd3541805a24c8a2acf6f077cf8a65859689685c26025e0"
+_icver="115.12.0"
+_commit="f200ffe88821f66234591096bcbe87b0c11f8da0"
+_icsum="42ac5b9349933b1e916594f80e4121274f53eaab0c8dbe9a18bdd7de58190f8b"
+_ffsum="b59e1625a0bb2f0565a737394f2bf8a7ce3171314b0d871bde533a101847a8ef"
 
 if [ -n "$_srcinfo" ]; then
   : ${_lang:=en-US}
@@ -374,15 +374,14 @@ export CXX='clang++'
 export NM=llvm-nm
 export RANLIB=llvm-ranlib
 END
+
+  patch -Np1 -F100 -i "$srcdir/18d19413472f-$_patch_commit.patch"
+  patch -Np1 -F100 -i "$srcdir/6af7194e2778-$_patch_commit.patch"
+  patch -Np1 -F100 -i "$srcdir/b1cc62489fae-$_patch_commit.patch"
 }
 
 build() {
   cd "$_pkgsrc"
-
-  # patch to fix rust issues
-  patch -Np1 -F100 -i "$srcdir/18d19413472f-$_patch_commit.patch"
-  patch -Np1 -F100 -i "$srcdir/6af7194e2778-$_patch_commit.patch"
-  patch -Np1 -F100 -i "$srcdir/b1cc62489fae-$_patch_commit.patch"
 
   export RUSTUP_TOOLCHAIN=1.77
 

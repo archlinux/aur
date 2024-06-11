@@ -1,6 +1,6 @@
 pkgbase = icecat
 	pkgdesc = GNU version of the Firefox ESR browser
-	pkgver = 115.11.0
+	pkgver = 115.12.0
 	pkgrel = 1
 	url = https://git.savannah.gnu.org/cgit/gnuzilla.git
 	arch = x86_64
@@ -57,21 +57,21 @@ pkgbase = icecat
 	optdepends = networkmanager: Location detection via available WiFi networks
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
-	noextract = firefox-115.11.0esr.source.tar.xz
+	noextract = firefox-115.12.0esr.source.tar.xz
 	options = !debug
 	options = !emptydirs
 	options = !lto
 	options = !makeflags
 	options = !strip
-	source = https://git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/gnuzilla-5107c173217a594c52c6c301be62a4dc603b3f6f.tar.gz
-	source = https://archive.mozilla.org/pub/firefox/releases/115.11.0esr/source/firefox-115.11.0esr.source.tar.xz
-	source = https://archive.mozilla.org/pub/firefox/releases/115.11.0esr/source/firefox-115.11.0esr.source.tar.xz.asc
+	source = https://git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/gnuzilla-f200ffe88821f66234591096bcbe87b0c11f8da0.tar.gz
+	source = https://archive.mozilla.org/pub/firefox/releases/115.12.0esr/source/firefox-115.12.0esr.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/115.12.0esr/source/firefox-115.12.0esr.source.tar.xz.asc
 	source = 18d19413472f-24a6ea8.patch::https://aur.archlinux.org/cgit/aur.git/plain/18d19413472f.patch?h=firefox-esr&id=24a6ea8
 	source = 6af7194e2778-24a6ea8.patch::https://aur.archlinux.org/cgit/aur.git/plain/6af7194e2778.patch?h=firefox-esr&id=24a6ea8
 	source = b1cc62489fae-24a6ea8.patch::https://aur.archlinux.org/cgit/aur.git/plain/b1cc62489fae.patch?h=firefox-esr&id=24a6ea8
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha256sums = 4cee9abd2b32030b83d4b3ce3326919c57414d102b8db96dafc3cbf07a9f6e62
-	sha256sums = 16be46f16a356a2b8bd3541805a24c8a2acf6f077cf8a65859689685c26025e0
+	sha256sums = 42ac5b9349933b1e916594f80e4121274f53eaab0c8dbe9a18bdd7de58190f8b
+	sha256sums = b59e1625a0bb2f0565a737394f2bf8a7ce3171314b0d871bde533a101847a8ef
 	sha256sums = SKIP
 	sha256sums = 3cc55401ed5e027f1b9e667b0b52296af11f3c5c62b4a80b7e55cda0e117ed18
 	sha256sums = 6952f93889acb514e3b06e251ea901df88c39b429da9677cd5547d90a8b6c73e
