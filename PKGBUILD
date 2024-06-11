@@ -3,7 +3,7 @@
 # Contributor: TrialnError <autumn-wind@web.de>
 pkgname=coolterm-bin
 _pkgname=CoolTerm
-pkgver=2.1.1
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Simple GUI serial port terminal application (no terminal emulation)"
 arch=(
@@ -27,11 +27,11 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${url}/${_pkgname}Raspbe
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.zip::${url}/${_pkgname}RaspberryPi.zip")
 source_i686=("${pkgname%-bin}-${pkgver}-i686.zip::${url}/${_pkgname}Linux32Bit.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${url}/${_pkgname}Linux64Bit.zip")
-sha256sums=('d913a1332a260a98b11207a5be85055497357cdb69f6669f208b0591bd95fc6b')
-sha256sums_aarch64=('b1d37dcdc4f06a406c96cb18aefde8ad0d63842e8435758a81a27fcdbd902971')
-sha256sums_armv7h=('751ee658404b1c547439ecfd09d0649373029462244b21aa9f0504ab1a91d90e')
-sha256sums_i686=('d41a8cc14d53a0a30b1f4616ec69f5d10de5764347dc0fc30db70b0533d0b153')
-sha256sums_x86_64=('f63a3bba586cd9ec8b152b97182a1f12254327a29797bfeefe16d5b1a3d242f1')
+sha256sums=('806086947b217b6051a76fa8136f6aa78454893467823e0a90d3bf3667bae94a')
+sha256sums_aarch64=('97bb5da70ef4b6a3efe845b73ebe5caff6b933345599ebb078745fcced82601b')
+sha256sums_armv7h=('c2267fb95c2d6363444bbe326175bd92a7096d23abfb0c387f46464d6b79d31e')
+sha256sums_i686=('6b8bd525e790b30d20fb042ffa60fdf34824660fa9ee5afd0e68fa8c0939387e')
+sha256sums_x86_64=('f20cd340e48ee6789053236d9a178d7e521d8aea5b770a1df4cd2f6a2dd51ab5')
 build() {
 	sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
