@@ -1,6 +1,6 @@
 pkgbase = serialportassistant-bin
 	pkgdesc = A cross-platform serial port assistant.一个跨平台的串口助手
-	pkgver = 0.5.24
+	pkgver = 0.5.25
 	pkgrel = 1
 	url = https://github.com/KangLin/SerialPortAssistant
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = serialportassistant-bin
 	depends = qt6-serialport
 	depends = qt6-webengine
 	depends = qt6-base
-	provides = serialportassistant-0.5.24
+	provides = serialportassistant-0.5.25
 	conflicts = serialportassistant
-	source = serialportassistant-0.5.24.deb::https://github.com/KangLin/SerialPortAssistant/releases/download/v0.5.24/serialportassistant_0.5.24_amd64.deb
+	source = serialportassistant-0.5.25.deb::https://github.com/KangLin/SerialPortAssistant/releases/download/v0.5.25/serialportassistant_0.5.25_amd64.deb
 	source = serialportassistant.sh
-	sha256sums = a55c0f57e8ebd21fd5c28c24e09ab6f26f21a49994ab75833aa828b577a564d7
+	sha256sums = f066fb4ff16d7d800588b4ccd85475c42141a47da8300eecedc8073e2bf3b67a
 	sha256sums = 43f4133b96125b8962ea9b770336707d4125fbd016083c2ce27466058b92a1ba
 
 pkgname = serialportassistant-bin
