@@ -1,13 +1,12 @@
 pkgbase = protonhax
 	pkgdesc = Program to help executing outside programs in proton
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://github.com/jcnils/protonhax
 	arch = x86_64
 	license = BSD
-	makedepends = tcc
 	conflicts = protonhax-git
-	source = protonhax-1.0.4.tar.gz::https://github.com/jcnils/protonhax/archive/refs/tags/1.0.4.tar.gz
-	sha256sums = da4104a16265a4cf482510d41d7c2ad02679ff3f6b70b2a2675958af08f72a49
+	source = protonhax-1.0.5.tar.gz::https://github.com/jcnils/protonhax/archive/refs/tags/1.0.5.tar.gz
+	sha256sums = 3da772c947309f33be7b613c1cb9232c3477ae44fb1c581ffa96cb6508496ba4
 
 pkgname = protonhax
