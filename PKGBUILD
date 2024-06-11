@@ -3,7 +3,7 @@
 
 pkgname=lightning-terminal
 _pkgname=litd
-pkgver=0.12.4_alpha
+pkgver=0.13.0_alpha
 _pkgver="${pkgver//_/-}"
 pkgrel=1
 pkgdesc="Lightning Terminal (LiT) is a browser-based interface for managing channel liquidity on the Lightning Network (LND). ⚡"
@@ -22,7 +22,7 @@ source=(
     "${_pkgname}.service"
     "${_pkgname}.env"
 )
-sha512sums=('3379ce9416948f21d47b1511607b4aaa97cb6d734f90229e42c611e2377dd2bf64de36687b5c5bfa4f377324d3ef0e0e31af60969cb4a9265db63b673add5c80'
+sha512sums=('1d2f51db8e452a4b216c4b091c787615d14b1a492ba1d914d6f6a7bdf7aeb63b5e8dc426825ef8821bc0faf53215254d3486740dad086dd11b989ecc87a428b9'
             '7df7f3fa6602837d30976455dc0457743a92b0399d9280c2226132379812f91a07841ef515445dfa894d63f4b9288986382382d3018bae194a308fb8b9253a7d'
             '90b66e7c96b942fdae76f505253c6aa1844b3eefeb69c7f1132f4500c5d269cdad13da68475dae9a3560d11e14759416391783ff627050b2080ef18f64f36b21'
             '08f9148f53b3b5aa398c65d245048c41a9e89d041b3123fe2bb7725556c51312f478f9ddb2b64196329024b6fcda55268c6e7cc9db469c6f4835cbc72847d035'
