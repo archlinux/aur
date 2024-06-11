@@ -1,0 +1,22 @@
+diff --unified --recursive --text TIC-80.orig/CMakeLists.txt TIC-80.new/CMakeLists.txt
+--- TIC-80.orig/CMakeLists.txt	2024-05-02 21:50:20.874636970 -0700
++++ TIC-80.new/CMakeLists.txt	2024-05-02 21:58:09.029386604 -0700
+@@ -38,12 +38,12 @@
+         string(SUBSTRING ${GIT_COMMIT_HASH} 0 7 GIT_COMMIT_HASH)
+         set(VERSION_HASH ${GIT_COMMIT_HASH} )
+ 
+-        execute_process(
+-            COMMAND ${GIT_EXECUTABLE} rev-list HEAD --count
+-            WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+-            OUTPUT_VARIABLE VERSION_REVISION
+-            OUTPUT_STRIP_TRAILING_WHITESPACE
+-        )
++        # execute_process(
++        #     COMMAND ${GIT_EXECUTABLE} rev-list HEAD --count
++        #     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
++        #     OUTPUT_VARIABLE VERSION_REVISION
++        #     OUTPUT_STRIP_TRAILING_WHITESPACE
++        # )
+ 
+     endif()
+ endif()
