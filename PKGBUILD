@@ -3,7 +3,7 @@
 _mainver=5
 pkgname=firebot
 pkgver="${_mainver}.62.1"
-pkgrel=2
+pkgrel=3
 pkgdesc="A powerful all-in-one bot for Twitch streamers"
 arch=('x86_64')
 url="https://github.com/crowbartools/Firebot"
@@ -15,7 +15,7 @@ source=("${url}/releases/download/v${pkgver}/${pkgname}-v${pkgver}-linux-x64.tar
 sha256sums=('bc57885e9ab54c38d925eb4f42fefa696b69106b8c77bc387d2b8153fe8b64eb'
             '7694f96ec45d7b729c01bc9d50a12805a8a040b4e3f8c5fbdccbed57fe10fef6'
             '99bcae97bdfe4ab742664ddbc70fa3ead6d6c26cc468f1b0f86e6d1f0ca68703'
-            '3b8d711df0ce2dd8bb4e2a7ef3a0937d7e658ace6bf8532412118fdf6ec50f3f')
+            '45a0b16253788a33df8b1687a2b488ad3146b8afdca81c96704b2ba00c98d437')
 
 prepare() {
   cd $srcdir
