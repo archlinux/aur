@@ -1,6 +1,6 @@
 pkgbase = cemu
 	pkgdesc = Software to emulate Wii U games and applications on PC
-	pkgver = 2.0.595
+	pkgver = 2.0.602+really+2.0.86
 	pkgrel = 1
 	url = https://cemu.info
 	install = cemu.install
@@ -32,13 +32,13 @@ pkgbase = cemu
 	optdepends = alsa-lib: Audio output
 	optdepends = vulkan-driver: Vulkan graphics
 	options = !strip
-	source = git+https://github.com/cemu-project/Cemu#tag=v2.0-85
+	source = git+https://github.com/cemu-project/Cemu#tag=v2.0-86
 	source = git+https://github.com/mozilla/cubeb.git#commit=dc511c6b3597b6384d28949285b9289e009830ea
 	source = git+https://github.com/ocornut/imgui.git#commit=8a44c31c95c8e0217f6e1fc814cbbbcca4981f14
 	source = git+https://github.com/Exzap/ZArchive.git#commit=d2c717730092c7bf8cbb033b12fd4001b7c4d932
 	source = git+https://github.com/arsenm/sanitizers-cmake.git#commit=aab6948fa863bc1cbe5d0850bc46b9ef02ed4c1a
 	source = git+https://github.com/google/googletest.git#commit=800f5422ac9d9e0ad59cd860a2ef3a679588acb4
-	sha512sums = 69cf958f47a7ad903811bc48a0cbb0c142abb50da04c17996af022dcfe6b17a42aeb8d2be17d1f890e40c0557d9cef2d8f2aebcc681bd99bb0d9c9f1624fdb8e
+	sha512sums = db54630d097e1aab78b59563696f6c827effa9f6cd6e1af2813347da7d17f63661a463998ba3ed031756e9c4792aaf1170d54bf37671fc830e624e0c3ebaa5ce
 	sha512sums = 770a67624181e4c7f05c88c3f1a10dc14012d4967d5bf95f48af1a5bd7a90dd5d8242a868dbe74d8beb043365eababd0d62768b74ccc9867c0c4fd1883849828
 	sha512sums = 0c3d10999772aa92e97aa3082f10e6ebba93f2a738e402f9833f350eb525b71afca178bf834db3bbe965eb0073f249f68b5c8124176add0af997f1c897282803
 	sha512sums = 6ac14841ef983fe5202b23ea5c647959a04b9815bb187c0a0141fb14fb3e2edf8ce14b0c43474774d5ff779284f365981e6d45cc011612e5cd8fb429b3accf5e
