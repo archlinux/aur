@@ -12,7 +12,7 @@
 
 _pkgname=webcord
 pkgname="${_pkgname}-vencord-git"
-pkgver=4.9.2.r962.c39e12a+1.8.8.r25.g4ec01d0
+pkgver=4.9.2.r0.gc39e12a+1.8.8.r25.g4ec01d0
 pkgrel=1
 pkgdesc="A Discord and Fosscord client made with the Electron (master branch with Vencord)."
 arch=("any")
@@ -107,7 +107,7 @@ prepare() {
 pkgver() {
   cd "${srcdir:?}/${_pkgname}"
   printf "%s+%s" \
-    $(printf "%s.r%s.%s" "$(npm pkg get version | sed 's~-~_~g;s~"\([^"]*\)"~\1~g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)") \
+    $(git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g') \
     $(git -C "$srcdir/vencord" describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')
 }
 
