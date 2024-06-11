@@ -1,6 +1,0 @@
-cmake_minimum_required(VERSION 3.13)
-project(hello_world CXX)
-find_package(HPX REQUIRED)
-add_executable(hello_world main.cpp)
-target_link_libraries(hello_world PRIVATE HPX::wrap_main)
-target_link_libraries(hello_world PRIVATE HPX::iostreams_component)

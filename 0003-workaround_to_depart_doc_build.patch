@@ -1,0 +1,13 @@
+diff --git a/docs/CMakeLists.txt b/docs/CMakeLists.txt
+index c6c273a1ca..1dc3362f1a 100644
+--- a/docs/CMakeLists.txt
++++ b/docs/CMakeLists.txt
+@@ -241,7 +241,7 @@ foreach(output_format ${HPX_WITH_DOCUMENTATION_OUTPUT_FORMATS})
+   )
+ 
+   add_custom_target(
+-    docs-${output_format}-file ALL DEPENDS ${SPHINX_DOCS_OUTPUT_FILE}
++    docs-${output_format}-file DEPENDS ${SPHINX_DOCS_OUTPUT_FILE}
+   )
+   add_dependencies(docs-${output_format} docs-${output_format}-file)
+ 

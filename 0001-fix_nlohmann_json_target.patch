@@ -1,0 +1,12 @@
+diff --git a/libs/core/command_line_handling_local/cmake/HPX_SetupJSON.cmake b/libs/core/command_line_handling_local/cmake/HPX_SetupJSON.cmake
+index faf9225642..bc3044399b 100644
+--- a/libs/core/command_line_handling_local/cmake/HPX_SetupJSON.cmake
++++ b/libs/core/command_line_handling_local/cmake/HPX_SetupJSON.cmake
+@@ -15,6 +15,7 @@ endif()
+ 
+ if(NOT HPX_WITH_FETCH_JSON)
+   find_package(nlohmann_json 3.2.0 REQUIRED)
++  add_library(Json::json ALIAS nlohmann_json::nlohmann_json)
+ elseif(NOT TARGET Json::json)
+   if(NOT HPX_WITH_JSON_TAG)
+     set(HPX_WITH_JSON_TAG "v3.11.2")

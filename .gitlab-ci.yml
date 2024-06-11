@@ -1,4 +1,0 @@
-build_and_test:
-  image: archlinux:base
-  script:
-  - ./build_and_test.sh
