@@ -1,20 +1,20 @@
 pkgbase = deltachat-desktop-bin
 	pkgdesc = Email-based instant messaging for Desktop.
-	pkgver = 1.45.4
+	pkgver = 1.46.0
 	pkgrel = 1
 	url = https://delta.chat/
 	arch = aarch64
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = electron30
-	provides = deltachat=1.45.4
-	provides = deltachat-desktop=1.45.4
+	provides = deltachat=1.46.0
+	provides = deltachat-desktop=1.46.0
 	conflicts = deltachat-desktop
 	source = deltachat-desktop.sh
 	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
-	source_aarch64 = deltachat-desktop-1.45.4-aarch64.deb::https://download.delta.chat/desktop/v1.45.4/deltachat-desktop_1.45.4_arm64.deb
-	sha256sums_aarch64 = c0d222cb2714d47754d74c07df5b2b30cc02465979be2fef7d68ec7072daf3a4
-	source_x86_64 = deltachat-desktop-1.45.4-x86_64.deb::https://download.delta.chat/desktop/v1.45.4/deltachat-desktop_1.45.4_amd64.deb
-	sha256sums_x86_64 = ff16e871ffd15197c4e8951a996a68d8357508c2ebff8e6ae1e68a403272cfc6
+	source_aarch64 = deltachat-desktop-1.46.0-aarch64.deb::https://download.delta.chat/desktop/v1.46.0/deltachat-desktop_1.46.0_arm64.deb
+	sha256sums_aarch64 = 8a5cb6be1151cdfa8ae4e022930477611da45fdd2d20a15f9ebc0408831254ce
+	source_x86_64 = deltachat-desktop-1.46.0-x86_64.deb::https://download.delta.chat/desktop/v1.46.0/deltachat-desktop_1.46.0_amd64.deb
+	sha256sums_x86_64 = 2d6ffd27e2bd5d78a5cfe3987bdda2756f3be33dde81ef9bf308761c584d35d2
 
 pkgname = deltachat-desktop-bin
