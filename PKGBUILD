@@ -1,45 +1,32 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
+# Contributor: Matthias Bethke <c+aur@towiski.de>
+#  previously: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
 # Generator  : CPANPLUS::Dist::Arch 1.25
 
 pkgname='perl-amazon-s3'
-pkgver='0.45'
+pkgver='2.0.2'
 pkgrel='1'
-pkgdesc="A portable client library for working with and"
+pkgdesc='A portable client library for working with and managing Amazon S3 buckets and keys.'
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('PerlArtistic')
 options=('!emptydirs')
 depends=('perl-class-accessor' 'perl-digest-hmac' 'perl-digest-md5-file' 'perl-http-date' 'perl-lwp-useragent-determined' 'perl-uri' 'perl-xml-simple>=1.08')
-makedepends=()
-url='http://search.cpan.org/dist/Amazon-S3'
-source=('http://search.cpan.org/CPAN/authors/id/T/TI/TIMA/Amazon-S3-0.45.tar.gz')
-md5sums=('a055ab8fd27d86ddc65a216145391793')
-sha512sums=('69096502afc1ec66ff691d13cac3126b6f3423b5240857809db8f910f4ffa0cc712573f05c39979306e84d918bade44c26e4144e23e75bd8318cdc1ac918f4ee')
-_distdir="Amazon-S3-0.45"
+makedepends=('make' 'automake' 'autoconf')
+url='https://github.com/rlauer6/perl-amazon-s3'
+source=("https://github.com/rlauer6/perl-amazon-s3/archive/refs/tags/${pkgver}.tar.gz")
+md5sums=('f546d3819b18b5e562a4b3a2e52f55bf')
+sha512sums=('44f992d98fd30087f48e899198d3f4b81d757a0ad67a5f646f1665681aca2a80ea1c3064ca534d3a4f13b7d8ba6e53f25b2df626a3f60561fccfd27be4bbb356')
+_distdir="perl-amazon-s3-${pkgver}"
 
 build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
-
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
-    make
-  )
-}
-
-check() {
   cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
-  )
+  ./bootstrap
+  ./configure --prefix=/usr --with-perl5libdir=/usr/share/perl5/vendor_perl
+  make
 }
 
 package() {
   cd "$srcdir/$_distdir"
-  make install
-
+  make install DESTDIR="$pkgdir"
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
