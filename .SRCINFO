@@ -1,6 +1,6 @@
 pkgbase = pdfarranger-git
 	pkgdesc = Helps merge or split pdf documents and rotate, crop and rearrange pages.
-	pkgver = 1.10.0.r1079.0a81645
+	pkgver = 1.10.1.r1165.a38e057
 	pkgrel = 1
 	url = https://github.com/pdfarranger/pdfarranger
 	arch = any
