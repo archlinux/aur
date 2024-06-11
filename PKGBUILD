@@ -1,7 +1,7 @@
 # Maintainer: StuckUpCreations <onelove.nyahbingi@gmail.com>
 pkgname=ctjs-bin
 pkgver=4.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="ct.js is a 2D game editor that makes its bet on good documentation, visual tools and smooth workflow"
 arch=("x86_64")
 url="https://ctjs.rocks/"
@@ -43,6 +43,10 @@ package() {
 	echo "Icon=/usr/share/icons/ct_ide.png" >>${pkgdir}/usr/share/applications/ctjs.desktop
 	echo "Terminal=false" >>${pkgdir}/usr/share/applications/ctjs.desktop
 	echo "Categories=Development;" >>${pkgdir}/usr/share/applications/ctjs.desktop
+	cd ${srcdir}/linux64/
+	find . -type d -exec chmod 0755 {} \;
+	find . -type f -exec chmod 0777 {} \;
+	cd ${startdir}
 	cp -r ${srcdir}/linux64/* ${pkgdir}/opt/ctjs
 	cp ${pkgdir}/opt/ctjs/ct_ide.png ${pkgdir}/usr/share/icons/ct_ide.png
 }

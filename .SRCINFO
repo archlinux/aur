@@ -1,7 +1,7 @@
 pkgbase = ctjs-bin
 	pkgdesc = ct.js is a 2D game editor that makes its bet on good documentation, visual tools and smooth workflow
 	pkgver = 4.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ctjs.rocks/
 	arch = x86_64
 	license = MIT
