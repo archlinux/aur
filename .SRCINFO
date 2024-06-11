@@ -1,7 +1,7 @@
 pkgbase = naconnect
 	pkgdesc = ncurses-based ALSA MIDI sequencer connection manager
 	pkgver = 85
-	pkgrel = 2
+	pkgrel = 3
 	url = http://web.archive.org/web/20160402080632/http://nedko.arnaudov.name/soft/naconnect/
 	arch = x86_64
 	license = GPL2
@@ -13,4 +13,3 @@ pkgbase = naconnect
 	sha512sums = 73412859e7daf786a53d446b0caec219783bede42a30a6e0f33b225b0281efdf7b07cd38a538579faa316e927d59e6ec5d140875813eeb60a132c41ad6a88cad
 
 pkgname = naconnect
-

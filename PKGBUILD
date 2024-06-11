@@ -2,7 +2,7 @@
 pkgname=naconnect
 pkgdesc='ncurses-based ALSA MIDI sequencer connection manager'
 pkgver=85
-pkgrel=2
+pkgrel=3
 url=http://web.archive.org/web/20160402080632/http://nedko.arnaudov.name/soft/naconnect/
 arch=(x86_64)
 license=(GPL2)
@@ -22,7 +22,7 @@ build () {
 	cd "${pkgname}-r${pkgver}"
 
 	# Run compiler manually, the Makefile forces its own CFLAGS (sigh!)
-	gcc ${CFLAGS} ${LDFLAGS} -Wall -o naconnect naconnect.c -lncurses -lasound
+	gcc ${CFLAGS} ${LDFLAGS} -Wall -Wno-error=format-security -o naconnect naconnect.c -lncurses -lasound
 }
 
 package () {
