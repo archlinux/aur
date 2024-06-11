@@ -1,7 +1,7 @@
 pkgbase = dangerzone-bin
 	pkgdesc = Take potentially dangerous PDFs, office documents, or images and convert them to a safe PDF
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/freedomofpress/dangerzone
 	install = dangerzone.install
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = dangerzone-bin
 	depends = python-colorama
 	depends = python-pyxdg
 	depends = python-requests
-	depends = pyside2
+	depends = pyside6
 	depends = python-termcolor
 	depends = python-pip
 	depends = podman
