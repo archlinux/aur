@@ -34,5 +34,6 @@ post_remove() {
 systemctl disable --now wessh.service
 rm /etc/systemd/system/wessh.service
 rm -rf /opt/lze-web
-
+mv /etc/httpd/conf/httpd.conf.bck  /etc/httpd/conf/httpd.conf 
+mv /etc/php/php.ini.bck  /etc/php/php.ini
 }
