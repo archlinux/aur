@@ -1,7 +1,7 @@
 pkgbase = vimix
 	pkgdesc = Live video editor
 	pkgver = 0.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://brunoherbelin.github.io/vimix/
 	arch = x86_64
 	license = GPL-3.0-or-later

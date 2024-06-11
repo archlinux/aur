@@ -11,7 +11,7 @@ _asio_commit=01b4e87c04abd4daec58e40463bcdc150085b269
 
 pkgname=vimix
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc="Live video editor"
 url="https://brunoherbelin.github.io/vimix/"
@@ -64,6 +64,13 @@ prepare() {
 
   sed -i 's|${SNAP}/meta/gui/||' \
          "$pkgname-$pkgver/snap/gui/$pkgname.desktop"
+
+  # Fix std::list search issue in some modules
+  sed -i '/<sstream>/ a #include <algorithm>' \
+         "$pkgname-$pkgver/src/DisplaysView.cpp" \
+         "$pkgname-$pkgver/src/SessionCreator.cpp"
+  sed -i '/<iostream>/ a #include <algorithm>' \
+         "$pkgname-$pkgver/src/SourceControlWindow.cpp"
 }
 
 build() {
