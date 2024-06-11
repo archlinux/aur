@@ -5,8 +5,8 @@ pkgname=(
 #  'ctranslate2-docs'
 )
 pkgbase=ctranslate2
-pkgver=4.3.0
-pkgrel=2
+pkgver=4.3.1
+pkgrel=1
 pkgdesc="A C++ and Python library for efficient inference with Transformer models."
 arch=('x86_64')
 url="https://opennmt.net/CTranslate2"
@@ -46,7 +46,7 @@ source=("git+https://github.com/OpenNMT/CTranslate2.git#tag=v$pkgver"
         'git+https://github.com/google/ruy.git'
         'git+https://github.com/pytorch/cpuinfo.git'
         'git+https://github.com/NVIDIA/cub.git')
-sha256sums=('913a485e15700e66594a3ad7ccb79f02cd3a1d56090a63c8f329714f225bccd9'
+sha256sums=('bc7027995d66b83894e36752bfe2a7b0cd4bb91ba5b03c4752c3ee851ecbe6d3'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -60,7 +60,7 @@ prepare() {
   cd CTranslate2
   git submodule init
   for submodule in cxxopts thrust googletest cpu_features spdlog ruy; do
-    git config submodule.src/third_party/"$submodule".url "$srcdir/$submodule"
+    git config submodule.src/third_party/${submodule}.url "$srcdir/${submodule}"
   done
   git -c protocol.file.allow=always submodule update
 
@@ -107,6 +107,7 @@ build() {
   CTRANSLATE2_ROOT=.. LIBRARY_PATH="$srcdir/build" python -m build --wheel --no-isolation
   popd
 
+  # AttributeError: 'NoneType' object has no attribute 'endswith'
 #  pushd CTranslate2/docs
 #  PYTHONPATH="$srcdir/build" python generate.py python
 #  sphinx-build . build
@@ -117,6 +118,7 @@ build() {
 #  cd CTranslate2
 
   # C++ tests, requires BUILD_TESTS='ON'
+  # Does not actually build 'ctranslate2_test' to run tests ???
 #  ./tests/ctranslate2_test ../tests/data
 
   # Python tests
