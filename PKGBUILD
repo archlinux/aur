@@ -2,8 +2,8 @@
 
 _pkgname=libg15render
 pkgname=$_pkgname-git
-pkgver=1.3.0.r0.e432b21
-pkgrel=3
+pkgver=1.3.1.r0.e432b21
+pkgrel=1
 pkgdesc="Library to aid in drawing to Logitech G15 screens"
 arch=('x86_64')
 url="https://github.com/vividnightmare/$_pkgname"
