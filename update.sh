@@ -13,6 +13,7 @@ LAST=$(jq -r <<<$RELEASES '
 [ keys[]
     | select(contains("beta") == false)
     | select(contains("rc") == false)
+    | select(contains("a") == false)
     | [split(".")[] | tonumber] ]
   | sort[-1]
   | join(".")
