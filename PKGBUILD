@@ -14,6 +14,7 @@ sha512sums=('SKIP')
 build() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=nightly
+  export RUSTFLAGS="--cfg tokio_unstable --cfg=tokio_unstable"
   export CC=clang
   cargo build --release --locked
 }
