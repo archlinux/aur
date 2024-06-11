@@ -1,7 +1,7 @@
 pkgbase = kitch-bin
 	pkgdesc = The itch.io desktop app (beta channel) (binary release)
 	pkgver = 26.1.9
-	pkgrel = 3
+	pkgrel = 4
 	url = https://itchio.itch.io/kitch
 	arch = x86_64
 	license = MIT
@@ -28,6 +28,7 @@ pkgbase = kitch-bin
 	depends = nss
 	depends = pango
 	optdepends = firejail: sandbox preference
+	optdepends = wine: Windows games
 	provides = kitch
 	conflicts = kitch
 	conflicts = kitch-setup
