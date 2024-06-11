@@ -5,7 +5,7 @@
 pkgname=asdcplib
 pkgver=2.13.0
 _pkgver=2_13_0
-pkgrel=2
+pkgrel=3
 pkgdesc="Open Source implementation of SMPTE and the MXF Interop “Sound & Picture Track File” format"
 arch=('i686' 'x86_64')
 url="http://www.cinecert.com/asdcplib/"
@@ -18,6 +18,8 @@ prepare() {
   cd ${pkgname}-rel_${_pkgver}
   autoreconf -if
   ./configure --enable-freedist --enable-as-02 --prefix=/usr
+  # prevent excessive overlinking due to libtool
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 }
 
 build() {
