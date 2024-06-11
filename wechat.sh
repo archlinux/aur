@@ -115,7 +115,9 @@ function execApp() {
 	# 	--ro-bind-try "${XDG_RUNTIME_DIR}/${WAYLAND_DISPLAY}" \
 	#			"${XDG_RUNTIME_DIR}/${WAYLAND_DISPLAY}" \
 	
-	
+	if [[ ${wechatXserverPatch} = 1 ]]; then
+		xhost +
+	fi
 	touch "${XDG_DATA_HOME}"/WeChat_Data/.flatpak-info
 	cameraDect
 	importEnv
