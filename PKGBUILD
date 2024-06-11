@@ -2,8 +2,8 @@
 
 _pkgname_base=seccomp-filtered
 pkgname=${_pkgname_base}-run
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc='Run other program with seccomp filters.'
 url="https://gitlab.com/patlefort/${pkgname}"
 license=('GPL3')
@@ -11,7 +11,7 @@ depends=('gcc-libs' 'glibc')
 makedepends=('rust' 'cargo')
 arch=('x86_64' 'aarch64')
 source=("https://gitlab.com/patlefort/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('2c9d685bbdc57a3a3b8c4035fad42af5df6a2ec8364cdbf1601fdf7a18cfdf9f')
+sha256sums=('f72dce2bf0b9cbe40fa74a88a4289d8e73bc41c828080fd0b7513414070ca9e5')
 
 _srcdir="${pkgname}-v${pkgver}"
 
