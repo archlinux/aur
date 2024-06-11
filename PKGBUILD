@@ -78,7 +78,7 @@ prepare() {
 pkgver() {
   cd "$_gitname"
   printf "%sr%s.%s" \
-    "${cat version.txt | grep "VERSION_CODE" | cut -d' ' -f2}" \
+    "${cat "$srcdir/$_gitname/version.txt | grep "VERSION_CODE" | cut -d' ' -f2}" \
     "$(git rev-list --count HEAD)" \
     "$(git rev-parse --short HEAD)"
 }
