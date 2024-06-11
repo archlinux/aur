@@ -2,11 +2,12 @@
 # Contributor: Johan Svensson <johan@loxley.se>
 pkgname=logwarn
 pkgver=1.0.17
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility for finding interesting messages in log files"
 arch=('i686' 'x86_64')
 url="https://code.google.com/p/logwarn"
 license=('APACHE')
+depends=('bash' 'glibc')
 source=($pkgname-$pkgver.tar.gz::https://github.com/archiecobbs/logwarn/archive/refs/tags/$pkgver.tar.gz)
 sha256sums=('e928522045dee389862dce8031fb45e4db2a17ab94062427c1d00c54d1e5d29f')
 
