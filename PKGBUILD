@@ -54,7 +54,7 @@ prepare() {
 build() {
   cd ffmpeg-0.6.7
 
-  CFLAGS="${CFLAGS} -Wno-implicit-function-declaration" \
+  CFLAGS="${CFLAGS} -Wno-incompatible-pointer-types -Wno-implicit-function-declaration" \
   ./configure \
     --prefix="${srcdir}/fakeroot" \
     --disable-ffmpeg \
