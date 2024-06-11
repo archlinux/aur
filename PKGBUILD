@@ -1,6 +1,6 @@
 pkgbase=archlinux-studio-utils
 pkgname=('archlinux-studio-utils-efistub' 'archlinux-studio-utils-pipewire')
-pkgver=r3.acf3379
+pkgver=r4.bb6a39f
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/usrmusicman/ArchLinuxStudioUtils"
