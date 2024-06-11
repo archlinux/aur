@@ -1,6 +1,6 @@
 pkgbase = python-home-assistant-frontend
 	pkgdesc = The Home Assistant frontend
-	pkgver = 20240501.1
+	pkgver = 20240610.0
 	pkgrel = 1
 	url = https://github.com/home-assistant/frontend
 	arch = any
