@@ -6,8 +6,8 @@ pkgdesc="A daemon that renders images on a LED matrix connected to a Framework 1
 arch=('x86_64')
 url="https://github.com/night-crawler/$pkgname"
 license=('MIT')
-depends=('gcc-libs')
-makedepends=('rust' 'cargo' 'clang')
+depends=()
+makedepends=('rust' 'clang')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/night-crawler/$pkgname/archive/$pkgver.tar.gz")
 sha512sums=('SKIP')
 
