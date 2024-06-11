@@ -1,6 +1,6 @@
 pkgbase = sudachi-git
 	pkgdesc = Sudachi is a Nintendo Switch emulator for Android, Linux, macOS and Windows, written in C++
-	pkgver = r51.4d365c0
+	pkgver = r52.50ad683
 	pkgrel = 1
 	url = https://github.com/sudachi-emu/sudachi
 	arch = x86_64

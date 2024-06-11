@@ -2,7 +2,7 @@
 _pkgname=sudachi
 _branch=main
 pkgname=sudachi-git
-pkgver=r51.4d365c0
+pkgver=r52.50ad683
 pkgrel=1
 pkgdesc="Sudachi is a Nintendo Switch emulator for Android, Linux, macOS and Windows, written in C++"
 arch=(x86_64)
@@ -136,6 +136,7 @@ build() {
     -DSUDACHI_USE_BUNDLED_FFMPEG=ON \
     -DSUDACHI_ENABLE_LTO=ON \
     -DSUDACHI_CRASH_DUMPS=OFF \
+    -DSUDACHI_USE_FASTER_LD=OFF \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DSUDACHI_ROOM=OFF \
     -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
