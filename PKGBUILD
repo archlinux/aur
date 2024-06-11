@@ -2,7 +2,7 @@
 # Contributor: Hilton Medeiros <medeiros.hilton@gmail.com>
 
 pkgname=pixelorama
-pkgver=0.11.3
+pkgver=0.11.4
 pkgrel=1
 pkgdesc="A free & open-source 2D sprite editor"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('hicolor-icon-theme' 'libglvnd' 'libxcursor' 'libxi' 'libxinerama' 'lib
 makedepends=('curl' 'godot' 'unzip')
 provides=('pixelorama')
 source=("${pkgname^}-${pkgver}.tar.gz::${_url}/archive/v${pkgver}.tar.gz")
-b2sums=('c5c9e584f89bd7cfe28540c30b8214dd9fd4a87fd946e225238ef93a154d43108ad63af8aa139aec862db83da3bfeccc052c048b7aedc1a9b3a89bb7d5d46576')
+b2sums=('da61cee2ac2a5cacd9d4847f57063f15dd9c52fae2d931affab18e37fbb4c436f59d18746b777c07b9a250cffabd28d2321b5ce75f12ea0231d749448ab6efb3')
 
 prepare() {
   # Checks if the user's directory has the export templates
@@ -29,17 +29,17 @@ prepare() {
   if [ ! -d ${_templates_home_dir} ]
   then
     _templates_file="Godot_v$(echo ${_godot_version} | sed 's/\(.*\)\./\1-/')_export_templates.tpz"
-    _templates_url=https://downloads.tuxfamily.org/godotengine/${_godot_version_number}
-    curl -O ${_templates_url}/SHA512-SUMS.txt
+    _templates_url=https://github.com/godotengine/godot/releases/download/$(echo ${_godot_version} | sed 's/\(.*\)\./\1-/')
+    curl -LO ${_templates_url}/SHA512-SUMS.txt
     grep ${_templates_file} SHA512-SUMS.txt > ${_templates_file}.sha512sum
 
     if [ ! -f ${_templates_file} ]
     then
-      curl -O ${_templates_url}/${_templates_file}
+      curl -LO ${_templates_url}/${_templates_file}
     fi
 
     if ! sha512sum -c ${_templates_file}.sha512sum ; then
-      curl -O ${_templates_url}/${_templates_file}
+      curl -LO ${_templates_url}/${_templates_file}
     fi
 
     mkdir -p ${_templates_home_dir}
