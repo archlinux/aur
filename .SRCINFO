@@ -1,6 +1,6 @@
 pkgbase = drawio-desktop-bin
 	pkgdesc = Diagram drawing application built on web technology
-	pkgver = 24.5.1
+	pkgver = 24.5.3
 	pkgrel = 1
 	url = https://github.com/jgraph/drawio-desktop
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = drawio-desktop-bin
 	depends = alsa-lib
 	provides = drawio-desktop
 	conflicts = drawio-desktop
-	source = drawio-desktop-bin-24.5.1.deb::https://github.com/jgraph/drawio-desktop/releases/download/v24.5.1/drawio-amd64-24.5.1.deb
-	sha256sums = f9644afab03ef63fb869cf80888b0cabb7d5eecaa126d71abb6118514e9e1f7b
+	source = drawio-desktop-bin-24.5.3.deb::https://github.com/jgraph/drawio-desktop/releases/download/v24.5.3/drawio-amd64-24.5.3.deb
+	sha256sums = 84d14fe1414d0a933a8009b6f533533954bd14f2b822a00eb9c7e10c05bd9730
 
 pkgname = drawio-desktop-bin
