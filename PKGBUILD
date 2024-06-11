@@ -2,13 +2,13 @@
 pkgname=ofinstaller-beans
 _pkgname=beans-rs
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc=" Installer for Open Fortress "
 arch=('x86_64')
-url="https://github.com/AdastralGroup/beans-rs"
+url="https://github.com/ktwrd/beans-rs"
 license=('GPL-3.0-only')
 depends=("glibc" "gcc-libs" "openssl")
-makedepends=("rust-nightly-bin")
+makedepends=("cargo-nightly")
 source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('6c2c1687aad0bfe4d9f82bf1507c4818f22598a55921604f9e2125aa330c8021')
 
