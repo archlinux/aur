@@ -12,10 +12,11 @@ LAST=$(jq -r <<<$RELEASES '
 [ keys[]
     | select(contains("beta") == false)
     | select(contains("rc") == false)
+    | select(contains("a") == false)
     | [split(".")[] | tonumber] ]
   | sort[-1]
   | join(".")
-')
+' || (echo $RELEASES > resp.err && exit 1))
 
 if [ "$pkgver" == "$LAST" ]; then
     echo "Already up to date" >&2
