@@ -3,7 +3,7 @@
 pkgname=trivia-quiz
 pkgver=0.2.2
 _commit=170b78fc48be11bffa0c821fd4f7da1fa0b51be3
-pkgrel=1
+pkgrel=2
 pkgdesc='Respond to endless questions'
 url="https://github.com/Nokse22/trivia-quiz"
 license=('GPL-3.0-or-later')
@@ -24,6 +24,6 @@ check() {
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
   chmod +x "$pkgdir/usr/bin/$pkgname"
 }

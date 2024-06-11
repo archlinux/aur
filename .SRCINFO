@@ -1,7 +1,7 @@
 pkgbase = trivia-quiz
 	pkgdesc = Respond to endless questions
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Nokse22/trivia-quiz
 	arch = x86_64
 	arch = aarch64
