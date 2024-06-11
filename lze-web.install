@@ -22,7 +22,7 @@ fi
   mv /etc/httpd/conf/httpd.conf /etc/httpd/conf/httpd.conf.back
   mv /etc/httpd/conf/httpd.conf.lze /etc/httpd/conf/httpd.conf
   mv /etc/php/php.ini /etc/php/php.ini.bck
-  mv /etc/php/php.lze /etc/php/php.ini
+  mv /etc/php/php.ini.lze /etc/php/php.ini
   systemctl enable --now httpd.service
 sudo systemctl enable --now wessh.service
 }
@@ -47,6 +47,8 @@ systemctl disable --now wessh.service
 rm -rf /usr/lib/python3.12/site-packages/webssh
 rm /etc/systemd/system/wessh.service
 rm -rf /opt/lze-web
+rm /usr/bin/webssh-start
+rm /usr/bin/webssh-stop
 mv /etc/httpd/conf/httpd.conf.bck  /etc/httpd/conf/httpd.conf 
 mv /etc/php/php.ini.bck  /etc/php/php.ini
 }
