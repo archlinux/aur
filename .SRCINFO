@@ -1,7 +1,7 @@
 pkgbase = ultimate-tic-tac-toe
 	pkgdesc = Play Ultimate Tic Tac Toe
 	pkgver = 0.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Nokse22/ultimate-tic-tac-toe
 	arch = x86_64
 	arch = aarch64

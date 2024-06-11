@@ -3,7 +3,7 @@
 pkgname=ultimate-tic-tac-toe
 pkgver=0.2.0
 _commit=a9ae9da4d2bff3e3113a60825dc16d6f6f2bbf2a
-pkgrel=2
+pkgrel=3
 pkgdesc='Play Ultimate Tic Tac Toe'
 url="https://github.com/Nokse22/ultimate-tic-tac-toe"
 license=('GPL-3.0-or-later')
@@ -20,7 +20,7 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs
+  meson test -C build --no-rebuild --print-errorlogs
 }
 
 package() {
