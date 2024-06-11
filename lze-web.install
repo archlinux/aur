@@ -1,10 +1,10 @@
 post_install() {
   pip config set global.target /usr/local/bin 
   sudo pip install webssh --break-system-packages
-  mkdir $HOME/Documents/note
-  chmod 777 $HOME/Documents
-  chmod 777 $HOME/Downloads 
-  chmod 777 -R $HOME/Pictures
+  mkdir -u $USER $HOME/Documents/note
+  chmod 777 -u $USER $HOME/Documents
+  chmod 777 -u $USER $HOME/Downloads 
+  chmod 777 -R -u $USER $HOME/Pictures
   chmod 777 $HOME/Documents/note 
   ln -s $HOME/Documents /opt/lze-web/Documents
   ln -s $HOME/Downloads /opt/lze-web/Downloads
