@@ -1,7 +1,7 @@
 pkgbase = webcord-vencord-git
 	pkgdesc = A Discord and Fosscord client made with the Electron (master branch with Vencord).
-	pkgver = 4.5.0.r852.123e818
-	pkgrel = 6
+	pkgver = 4.9.2.r962.c39e12a
+	pkgrel = 1
 	url = https://github.com/SpacingBat3/WebCord
 	arch = any
 	license = MIT
@@ -20,9 +20,11 @@ pkgbase = webcord-vencord-git
 	conflicts = webcord
 	source = webcord::git+https://github.com/SpacingBat3/WebCord.git
 	source = webcord.desktop
+	source = vencord.patch
 	source = vencord::git+https://github.com/vendicated/vencord.git
 	md5sums = SKIP
 	md5sums = 6046178af59a8c93835051e698eacf1e
+	md5sums = 1c88839cf47854437da0a85019061063
 	md5sums = SKIP
 
 pkgname = webcord-vencord-git

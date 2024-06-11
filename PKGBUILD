@@ -11,8 +11,8 @@
 
 _pkgname=webcord
 pkgname="${_pkgname}-vencord-git"
-pkgver=4.5.0.r852.123e818
-pkgrel=6
+pkgver=4.9.2.r962.c39e12a
+pkgrel=1
 pkgdesc="A Discord and Fosscord client made with the Electron (master branch with Vencord)."
 arch=("any")
 
@@ -33,13 +33,13 @@ conflicts=("${_pkgname}")
 source=(
   "${_pkgname}::git+https://github.com/${_author}/${_repo}.git"
   "${_pkgname}.desktop"
+  "vencord.patch"
   "vencord::git+https://github.com/vendicated/vencord.git"
 )
-md5sums=(
-  'SKIP'
-  '6046178af59a8c93835051e698eacf1e'
-  'SKIP'
-)
+md5sums=('SKIP'
+         '6046178af59a8c93835051e698eacf1e'
+         '1c88839cf47854437da0a85019061063'
+         'SKIP')
 
 ### CONFIGURABLE VARIABLES ###
 
@@ -97,7 +97,7 @@ prepare() {
 
   cd "${srcdir:?}/${_pkgname}"
 
-  patch -p1 < '../../vencord.patch'
+  patch -p1 < '../vencord.patch'
 
   _echo_times "Generating / updating a changelog..."
   _changelog vty > "${_pkgbuilddir:?}/${_pkgname}-vencord.changelog"

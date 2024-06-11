@@ -4,10 +4,10 @@ index 72a8176..9ae0790 100644
 +++ b/sources/code/common/main.ts
 @@ -356,6 +356,8 @@ function main(): void {
      checkVersion(updateInterval).catch(commonCatches.print);
-     const mainWindow = createMainWindow({startHidden, screenShareAudio});
-     
+     const mainWindow = createMainWindow(startHidden);
+ 
 +    session.defaultSession.loadExtension("/usr/share/webcord/vencord-ext").then(() => console.log("Vencord loaded."));
 +
      // WebSocket server
-     import("../main/modules/socket")
+     import("../main/modules/socket.mjs")
        .then(socket => socket.default())
