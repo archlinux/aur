@@ -12,7 +12,7 @@
 _pkgname=webcord
 pkgname="${_pkgname}-vencord-git"
 pkgver=4.5.0.r852.123e818
-pkgrel=5
+pkgrel=6
 pkgdesc="A Discord and Fosscord client made with the Electron (master branch with Vencord)."
 arch=("any")
 
@@ -49,7 +49,7 @@ _UPDATE_NOTIFICATIONS=false
 # Set to "true" if you want to use dependencies from the upstream lockfile
 # (NOT RECOMMENDED, as they might be outdated). By the default, NPM will try to
 # pick the latest dependencies defined in `package.json`.
-_LOCKFILE=true
+_LOCKFILE=false
 
 # Set to "release" if you want to disable an access to the development tools.
 _RELEASE_TYPE=devel
