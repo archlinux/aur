@@ -1,4 +1,5 @@
 # Maintainer: Luna Jernberg <droidbittin@gmail.com>
+# Maintainer: Christopher Snowhill <kode54@gmail.com>
 # Contributor: EsauPR 
 
 pkgname=microsoft-edge-beta-bin
