@@ -2,8 +2,7 @@
 
 pkgname=rdrview
 pkgver=0.1.2
-pkgrel=1
-_commit=36428005eabfb1a8d1b203ee47fa59303793fcb0
+pkgrel=2
 pkgdesc="Firefox Reader View as a command line tool"
 arch=(x86_64)
 url="https://github.com/eafer/$pkgname"
@@ -13,7 +12,9 @@ depends=(
   glibc
   libseccomp
   libxml2
-  xdg-utils
+)
+makedepends=(
+  git
 )
 optdepends=(
   'elinks: open pages in elinks'
@@ -21,6 +22,7 @@ optdepends=(
   'links: open pages in links'
   'lynx: open pages in lynx'
   'w3m: open pages in w3m'
+  'xdg-utils: for opening pages'
 )
 options=(!debug)
 source=(
@@ -30,6 +32,7 @@ b2sums=('6d46824cc2ce76337bf3ed05631e5d04b8985d8abdf3c64642e32e33a181e3afaacbca7
 
 prepare(){
   cd $pkgname-$pkgver
+  local _commit=$(zcat ../$pkgname-$pkgver.tar.gz | git get-tar-commit-id)
   sed -i 's/GIT_COMMIT = $(shell git rev-parse --short HEAD)/GIT_COMMIT = '${_commit:0:7}'/' Makefile
 }
 
