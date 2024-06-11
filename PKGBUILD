@@ -6,10 +6,10 @@
 # Contributor: |AhIoRoS| < ahioros@gmail.com >
 
 pkgname=tuxguitar
-pkgver=1.6.2
-pkgrel=3
+pkgver=1.6.3
+pkgrel=1
 pkgdesc='A multitrack guitar tablature editor and player'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://www.tuxguitar.app/'
 license=('LGPL-3.0-or-later')
 depends=('java-runtime' 'gtk3' 'alsa-lib')
@@ -23,20 +23,19 @@ optdepends=('fluidsynth: FluidSynth plugin support'
             'lilypond: Compile exported LilyPond files')
 replaces=('tuxguitar-common' 'tuxguitar-gtk2')
 source=("tuxguitar-$pkgver.zip::https://github.com/helge17/tuxguitar/archive/refs/tags/$pkgver.zip")
-sha256sums=('d0d8e8f64240379e8fc8f83dcdfd220f9c105dcc2879b56f6f1c3ad4ce256a11')
+sha256sums=('5a0855ea63e32773670dc7bc85ae4e76c055c8afd12016307e60d02135fde62c')
 
 prepare() {
     export MAVEN_OPTS="$MAVEN_OPTS -Duser.home=$srcdir"
 
-    # Install SWT manually (see https://github.com/helge17/tuxguitar/blob/1.6.2/INSTALL.md#download-and-install-swt-for-linux)
-    wget https://archive.eclipse.org/eclipse/downloads/drops4/R-4.26-202211231800/swt-4.26-gtk-linux-x86_64.zip -O swt.zip
+    # Install SWT manually (see https://github.com/helge17/tuxguitar/blob/1.6.3/INSTALL.md#download-and-install-swt-for-linux)
+    wget "https://archive.eclipse.org/eclipse/downloads/drops4/R-4.21-202109060500/swt-4.21-gtk-linux-$CARCH.zip" -O swt.zip
     unzip -o swt.zip swt.jar
-    # Lie about version to fix wayland bug https://github.com/helge17/tuxguitar/issues/323
-    mvn install:install-file -Dfile=swt.jar -DgroupId=org.eclipse.swt -DartifactId=org.eclipse.swt.gtk.linux.x86_64 -Dpackaging=jar -Dversion=4.13
+    mvn install:install-file -Dfile=swt.jar -DgroupId=org.eclipse.swt -DartifactId=org.eclipse.swt.gtk.linux -Dpackaging=jar -Dversion=4.21
 }
 
 build() {
-    cd tuxguitar-$pkgver/desktop/build-scripts/tuxguitar-linux-swt-x86_64
+    cd tuxguitar-$pkgver/desktop/build-scripts/tuxguitar-linux-swt
 
     export MAVEN_OPTS="$MAVEN_OPTS -Duser.home=$srcdir"
 
@@ -44,7 +43,7 @@ build() {
 }
 
 package() {
-    cd "$srcdir/tuxguitar-$pkgver/desktop/build-scripts/tuxguitar-linux-swt-x86_64/target/tuxguitar-SNAPSHOT-linux-swt-x86_64"
+    cd "$srcdir/tuxguitar-$pkgver/desktop/build-scripts/tuxguitar-linux-swt/target/tuxguitar-9.99-SNAPSHOT-linux-swt"
 
     # Man page has to be gzipped first
     gzip share/man/man1/tuxguitar.1
