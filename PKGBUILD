@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=thoughts-bin
-pkgver=0.9.12
+pkgver=0.10.0
 _electronversion=23
 pkgrel=1
 pkgdesc="一个还算强大的Web思维导图。A relatively powerful web mind map."
@@ -17,13 +17,13 @@ makedepends=(
     'fuse2'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/electron_${pkgver}/-${pkgver}.AppImage"
-    "LICENSE-${pkgver}::https://raw.githubusercontent.com/wanglin2/mind-map/electron_${pkgver}/LICENSE"
+    "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/electron-${pkgver}/-${pkgver}.AppImage"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/wanglin2/mind-map/electron-${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('c24786621ec58416f9bb5c9fe3472f097b43980806b8ca43bed683b27bd6d868'
+sha256sums=('9be661e2fd44956cc690927379cc4e98488759c028156445615b7aea5e5a8ab2'
             '8a19b651678a6a644640524d984ed89d0b9a78c662545715218a05130c7329c7'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
