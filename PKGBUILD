@@ -1,6 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonamil.com>
 pkgname=ofinstaller-beans
-pkgver=1.3.1
+_pkgname=beans-rs
+pkgver=1.4.1
 pkgrel=1
 pkgdesc=" Installer for Open Fortress "
 arch=('x86_64')
@@ -8,17 +9,17 @@ url="https://github.com/AdastralGroup/beans-rs"
 license=('GPL-3.0-only')
 depends=("glibc" "gcc-libs" "openssl")
 makedepends=("rust-nightly-bin")
-source=("$pkgname::git+$url.git#tag=v$pkgver")
-sha256sums=('ef568d255802413d32610330670387169137e3407d9f01262a114588d9c5005e')
+source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('6c2c1687aad0bfe4d9f82bf1507c4818f22598a55921604f9e2125aa330c8021')
 
 prepare() {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir/$_pkgname-$pkgver"
 	export RUSTUP_TOOLCHAIN=nightly
 	cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir/$_pkgname-$pkgver"
 	export RUSTUP_TOOLCHAIN=nightly
 	export CARGO_TARGET_DIR=target
 	export CFLAGS+=" -ffat-lto-objects"
@@ -26,6 +27,6 @@ build() {
 }
 
 package() {
-	cd "$srcdir/$pkgname/target/release"
+	cd "$srcdir/$_pkgname-$pkgver/target/release"
 	install -Dm755 beans-rs "$pkgdir/usr/bin/$pkgname"
 }
