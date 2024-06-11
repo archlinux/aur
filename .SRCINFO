@@ -1,6 +1,6 @@
 pkgbase = zstr-git
 	pkgdesc = A C++ header-only ZLib wrapper
-	pkgver = r39.af8c8d1
+	pkgver = r127.755da78
 	pkgrel = 1
 	url = https://github.com/sandsmark/zstr
 	arch = any
@@ -9,8 +9,7 @@ pkgbase = zstr-git
 	depends = zlib
 	provides = zstr
 	conflicts = zstr
-	source = git+https://github.com/sandsmark/zstr.git
+	source = git+https://github.com/mateidavid/zstr.git
 	md5sums = SKIP
 
 pkgname = zstr-git
-

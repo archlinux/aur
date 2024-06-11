@@ -1,7 +1,7 @@
-# Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
+# Contributor: Martin Sandsmark <martin.sandsmark@kde.org>
 
 pkgname=zstr-git
-pkgver=r39.af8c8d1
+pkgver=r127.755da78
 pkgrel=1
 pkgdesc='A C++ header-only ZLib wrapper'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('zlib')
 makedepends=('git')
 conflicts=(zstr)
 provides=(zstr)
-source=('git+https://github.com/sandsmark/zstr.git')
+source=('git+https://github.com/mateidavid/zstr.git')
 md5sums=('SKIP')
 
 pkgver() {
