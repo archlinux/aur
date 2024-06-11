@@ -2,10 +2,10 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
 _name=poissonrecon
-_fragment="#commit=c1b1214"
+_fragment="#commit=e04a91d40093dd80669afb07f7d3f586db063ee9"
 pkgname=${_name}
-pkgver=11.0
-pkgrel=2
+pkgver=16.04
+pkgrel=1
 pkgdesc="Screened Poisson Surface Reconstruction (and Smoothed Signed Distance Reconstruction)"
 arch=('i686' 'x86_64')
 url="http://www.cs.jhu.edu/~misha/Code/PoissonRecon/Version9.0/"
@@ -17,13 +17,11 @@ makedepends=('git' 'gcc8')
 [[ "${BUILDENV[*]}" =~ [^!]+ccache ]] && makedepends+=('ccache-ext')
 options=(!makeflags)
 provides=('poissonrecon' 'ssdrecon' 'surfacetrimmer')
-source=("${pkgname}::git+https://github.com/mkazhdan/PoissonRecon.git${_fragment}"
-        "patch.diff::https://github.com/mkazhdan/PoissonRecon/commit/2fcb16ac782fac312dc3225bea33227cbc0d7488.diff")
-sha256sums=('SKIP'
-            '7a1f874a018428979b3bc66288790497be4b30635f6c6b608d48d28ebd84fd35')
+source=("${pkgname}::git+https://github.com/mkazhdan/PoissonRecon.git${_fragment}")
+sha256sums=('bf4740bea10f33629e046bae2465357248a1f50b26680f548bcd2e192462e207')
 
 prepare() {
-  git -C ${pkgname} apply -v "${srcdir}"/*.diff
+: #git -C ${pkgname} apply -v "${srcdir}"/*.diff
 }
 
 build() {
