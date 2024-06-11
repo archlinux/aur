@@ -8,7 +8,7 @@
 # Note: source array can be synced with an Electron release after updating $pkgver with:
 # bash -c 'source PKGBUILD; _update_sources'
 
-pkgver=30.1.0
+pkgver=31.0.0
 _gcc_patches=124
 pkgrel=1
 _major_ver=${pkgver%%.*}
@@ -64,8 +64,9 @@ options=('!lto') # Electron adds its own flags for ThinLTO
 source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/$_gcc_patches/chromium-patches-$_gcc_patches.tar.bz2
         # Chromium
-        drop-flag-unsupported-by-clang17.patch
+        allow-ANGLEImplementation-kVulkan.patch
         compiler-rt-adjust-paths.patch
+        drop-flag-unsupported-by-clang17.patch
         # Electron
         default_app-icon.patch
         electron-launcher.sh
@@ -232,10 +233,11 @@ source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         chromium-mirror_third_party_vulkan-deps_vulkan-validation-layers_src::git+https://chromium.googlesource.com/external/github.com/KhronosGroup/Vulkan-ValidationLayers.git#commit=5b8af92af052c83444ac560ff1e28c1c322424ef
         # END managed sources
         )
-sha256sums=('464b996e65b2dcaec19f3120f42031e2442e386f627f2474273ce2a1d02f810a'
+sha256sums=('3f9cb77d22b75ce37adc4c90012d54a1cfc07619e20750a3cbee499d646987d3'
             'c2bc4e65ed2a4e23528dd10d5c15bf99f880b7bbb789cc720d451b78098a7e12'
-            '3bd35dab1ded5d9e1befa10d5c6c4555fe0a76d909fb724ac57d0bf10cb666c1'
+            '8f81059d79040ec598b5fb077808ec69d26d6c9cbebf9c4f4ea48b388a2596c5'
             'b3de01b7df227478687d7517f61a777450dca765756002c80c4915f271e2d961'
+            '3bd35dab1ded5d9e1befa10d5c6c4555fe0a76d909fb724ac57d0bf10cb666c1'
             'dd2d248831dd4944d385ebf008426e66efe61d6fdf66f8932c963a12167947b4'
             '13fcf26193f4417fd5dfbc82a3f24e5c7a1cce82f729f6a73f1b1d3a7b580b34'
             '4484200d90b76830b69eea3a471c103999a3ce86bb2c29e6c14c945bf4102bae'
@@ -482,6 +484,7 @@ prepare() {
   echo "Applying local patches..."
 
   ## Upstream fixes
+  patch -Np1 -i ../allow-ANGLEImplementation-kVulkan.patch
 
   # https://crbug.com/893950
   sed -i -e 's/\<xmlMalloc\>/malloc/' -e 's/\<xmlFree\>/free/' \

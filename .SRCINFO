@@ -1,6 +1,6 @@
-pkgbase = electron30
+pkgbase = electron31
 	pkgdesc = Build cross platform desktop apps with web technologies
-	pkgver = 30.1.0
+	pkgver = 31.0.0
 	pkgrel = 1
 	url = https://electronjs.org
 	arch = x86_64
@@ -79,10 +79,11 @@ pkgbase = electron30
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)
 	options = !lto
-	source = git+https://github.com/electron/electron.git#tag=v30.1.0
+	source = git+https://github.com/electron/electron.git#tag=v31.0.0
 	source = https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/124/chromium-patches-124.tar.bz2
-	source = drop-flag-unsupported-by-clang17.patch
+	source = allow-ANGLEImplementation-kVulkan.patch
 	source = compiler-rt-adjust-paths.patch
+	source = drop-flag-unsupported-by-clang17.patch
 	source = default_app-icon.patch
 	source = electron-launcher.sh
 	source = electron.desktop
@@ -245,10 +246,11 @@ pkgbase = electron30
 	source = chromium-mirror_third_party_vulkan-deps_vulkan-tools_src::git+https://chromium.googlesource.com/external/github.com/KhronosGroup/Vulkan-Tools.git#commit=733fd2b522918f81f9c4669350dafd066f99c5d5
 	source = chromium-mirror_third_party_vulkan-deps_vulkan-utility-libraries_src::git+https://chromium.googlesource.com/external/github.com/KhronosGroup/Vulkan-Utility-Libraries.git#commit=a4140c5fd47dcf3a030726a60b293db61cfb54a3
 	source = chromium-mirror_third_party_vulkan-deps_vulkan-validation-layers_src::git+https://chromium.googlesource.com/external/github.com/KhronosGroup/Vulkan-ValidationLayers.git#commit=5b8af92af052c83444ac560ff1e28c1c322424ef
-	sha256sums = 464b996e65b2dcaec19f3120f42031e2442e386f627f2474273ce2a1d02f810a
+	sha256sums = 3f9cb77d22b75ce37adc4c90012d54a1cfc07619e20750a3cbee499d646987d3
 	sha256sums = c2bc4e65ed2a4e23528dd10d5c15bf99f880b7bbb789cc720d451b78098a7e12
-	sha256sums = 3bd35dab1ded5d9e1befa10d5c6c4555fe0a76d909fb724ac57d0bf10cb666c1
+	sha256sums = 8f81059d79040ec598b5fb077808ec69d26d6c9cbebf9c4f4ea48b388a2596c5
 	sha256sums = b3de01b7df227478687d7517f61a777450dca765756002c80c4915f271e2d961
+	sha256sums = 3bd35dab1ded5d9e1befa10d5c6c4555fe0a76d909fb724ac57d0bf10cb666c1
 	sha256sums = dd2d248831dd4944d385ebf008426e66efe61d6fdf66f8932c963a12167947b4
 	sha256sums = 13fcf26193f4417fd5dfbc82a3f24e5c7a1cce82f729f6a73f1b1d3a7b580b34
 	sha256sums = 4484200d90b76830b69eea3a471c103999a3ce86bb2c29e6c14c945bf4102bae
@@ -412,4 +414,4 @@ pkgbase = electron30
 	sha256sums = c90d55dbff2f09ea9fce383ddaa3987b4fca15537467ee4a9297be18a95244d5
 	sha256sums = cb023b113d3413928eb16efc78c02c86800279fdfe8d03648d922c07e714f875
 
-pkgname = electron30
+pkgname = electron31
