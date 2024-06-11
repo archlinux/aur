@@ -1,6 +1,6 @@
 pkgbase = konfyt
 	pkgdesc = is a digital keyboard workstation for Linux to set up patches with multiple layers, and switch for live playing.
-	pkgver = 1.6.1
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = http://www.noedig.co.za/konfyt
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = konfyt
 	depends = liblscp
 	depends = qt5-base
 	depends = linuxsampler
-	source = https://github.com/noedigcode/konfyt/archive/v1.6.1.tar.gz
-	sha256sums = 5013f1743c887a2c2d834e3cf4abbb216a2f03f62775cc3739a82d6d9ad75333
+	source = https://github.com/noedigcode/konfyt/archive/v1.6.2.tar.gz
+	sha256sums = 4589d25ae814633ec7d6e8de703ccb7c1ee9e60875c10dbff2fb907f75384dae
 
 pkgname = konfyt
