@@ -3,7 +3,7 @@
 _pkgname=libg15render
 pkgname=$_pkgname-git
 pkgver=1.3.0.r0.e432b21
-pkgrel=2
+pkgrel=3
 pkgdesc="Library to aid in drawing to Logitech G15 screens"
 arch=('x86_64')
 url="https://github.com/vividnightmare/$_pkgname"
@@ -13,11 +13,6 @@ conflicts=('libg15render')
 provides=('libg15render')
 source=("$pkgname::git+$url")
 sha512sums=('SKIP')
-
-pkgver() {
-  cd "$pkgname"
-  #git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
 
 build() {
   cd "${pkgname}"
