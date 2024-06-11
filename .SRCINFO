@@ -1,7 +1,7 @@
 pkgbase = discord_arch_electron
 	pkgdesc = Discord using system provided electron29 for increased security and performance
-	pkgver = 0.0.55
-	pkgrel = 4
+	pkgver = 0.0.56
+	pkgrel = 1
 	url = https://discord.com
 	install = discord_arch_electron.install
 	arch = any
@@ -18,10 +18,10 @@ pkgbase = discord_arch_electron
 	provides = discord
 	conflicts = discord
 	options = !strip
-	source = https://dl.discordapp.net/apps/linux/0.0.55/discord-0.0.55.tar.gz
+	source = https://dl.discordapp.net/apps/linux/0.0.56/discord-0.0.56.tar.gz
 	source = discord-launcher.sh
 	source = krisp-patcher.py
-	sha512sums = c12365109cb4db94033fda101073d2a3d6af7bdc9728e025494ee8d44ebf5f27623861879ec38bb7dd88d40de7cddede268e0f5e44bfeb586fc12713a3758c5b
+	sha512sums = 799d6cf5fcdeff83aaad20662668b17ff0cf88edab1bf404ad366340d0783269fef8800382a111f8505b353031c80cd17ab804a56f51f3c8bb2e2a2c5e6b86ec
 	sha512sums = e11a60419c6ee5944aefc1ac16a5b496518fae626627d37a5bf636975bd21b1d9b6118ec3f44e7f4283befe5fa14737ad28dc38d975967789247ac0e66c352f3
 	sha512sums = 3c1021592fa856f3561072c76b5ee0b5a34a53bc230336e6d36827efb4866c9d801ef7abb24650d3a7210c61dd57f35e2812ae89226fc157cc8d9ffce032155f
 
