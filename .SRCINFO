@@ -1,0 +1,20 @@
+pkgbase = python-jiter
+	pkgdesc = Fast iterable JSON parser
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/pydantic/jiter
+	arch = x86_64
+	license = MIT
+	checkdepends = python-dirty-equals
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-maturin
+	makedepends = python-wheel
+	depends = gcc-libs
+	depends = glibc
+	depends = python
+	source = python-jiter-0.4.1.tar.gz::https://github.com/pydantic/jiter/archive/v0.4.1.tar.gz
+	sha256sums = a5c9b78426e4590151f78bb18464626e0e5b5443acd8209d4c7ad87f5e027c94
+
+pkgname = python-jiter
