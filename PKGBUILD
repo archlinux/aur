@@ -2,8 +2,8 @@
 AppName=Converter432Hz
 appid=converter432hz
 pkgname=${appid}-appimage
-pkgver=3.3
-pkgrel=3
+pkgver=3.3.1
+pkgrel=1
 pkgdesc="Converts and re-encodes music to 432Hz"
 arch=('x86_64')
 url="https://github.com/mysteryx93/NaturalGroundingPlayer/wiki/432hz-Batch-Converter"
