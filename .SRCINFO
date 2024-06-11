@@ -20,12 +20,12 @@ pkgbase = palemoon-gtk3-bin
 	conflicts = palemoon
 	options = !strip
 	source = palemoon.desktop
+	source = https://rm-eu.palemoon.org/release/palemoon-33.1.1.linux-x86_64-gtk3.tar.xz
+	source = https://rm-eu.palemoon.org/release/palemoon-33.1.1.linux-x86_64-gtk3.tar.xz.sig
 	validpgpkeys = 439F46F42C6AE3D23CF52E70865E6C87C65285EC
 	validpgpkeys = 3DAD8CD107197488D2A2A0BD40481E7B8FCF9CEC
 	sha256sums = 6fa2786e1828684a6783d340690f75382d1dcd02ce8533dad4f3f4f8b076dad7
-	source_x86_64 = https://rm-eu.palemoon.org/release/palemoon-33.1.1.linux-x86_64-gtk3.tar.xz
-	source_x86_64 = https://rm-eu.palemoon.org/release/palemoon-33.1.1.linux-x86_64-gtk3.tar.xz.sig
-	sha256sums_x86_64 = d94051946166f295b75a7036341ba27dcdad0b7283f022619d5201eba1cb8934
-	sha256sums_x86_64 = SKIP
+	sha256sums = d94051946166f295b75a7036341ba27dcdad0b7283f022619d5201eba1cb8934
+	sha256sums = SKIP
 
 pkgname = palemoon-gtk3-bin
