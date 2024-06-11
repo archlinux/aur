@@ -1,20 +1,20 @@
 # Maintainer: Adrian Perez <aperez@igalia.com>
 pkgname=dq
-pkgver=20220822
-pkgrel=7
+pkgver=20240101
+pkgrel=1
 pkgdesc='Small recursive DNS server and tools with DNSCurve support'
 url=https://mojzis.com/software/dq/
 arch=(x86_64 i686)
-license=('custom:Public Domain')
+license=(CC0-1.0)
 depends=(glibc)
 install=dq.install
 source=("https://github.com/janmojzis/dq/archive/${pkgver}.tar.gz"
         root-servers dqcache@.service default.conf dqcache-sysusers.conf)
-sha512sums=('a743fc87b1db741b6348e1ebc30728963b239afe2629127d342608e0b80c96b8c8a70bb45edb29ad54297c5064ce821ebea697e2a13a5a581e8797f7b7dd01e3'
-            '1444d75a559769044cabca730a11846f14c8db0096a33464fbd90b8c1f363525088b55801ea29554b46906792097ce8a84f1f5e763f018270600408cc9404614'
-            'd711a54b5ba9dd9d7d8afcda7f426122454156ae6854d3bb1a0bc40108f4dd090b91e39f98016e02a346e2f5c8e8a81431dd5434a0709e75a905d4351dd8a03d'
-            '8b9b8510d77e831a0faca238b9fafbf9f5856dd38eff061cdc1b9194ee94f0ec366650f4f1b20884ac09f710379079a090adcb26baeb7e164266beb0e4436fa4'
-            'ab7fcf301cfcbc1fa70ec6ff914c8b33b8c868e305990351d0dac5d28832a60368af3a79bbd635742583801eb8bf4226aac0c9e478d40c3b180f1d68e946bf0a')
+b2sums=('e02418c8f2db5bf1d307c1e867ded65c2142e6df52edcb38904ea3b8de71799636894404846a3e41ba1de81a8633662c58be0e2770398f6ac0b566402269db3f'
+        'e235639a1ad4342ef2ec25b8bfc1b97270137bea5804f48ccc04d71eb289eda7f0372e93bac5fd1bf8b5e2f71b447d99363d8c0740bfee52a6567b79b003b591'
+        'e1dc8d1a6dea6b51b0ce1722b33fb7f1d489af8cfc8c390b2b652de6802b9b893832a4f7fb04a599b4f31cc59324e50467e35d9a775e84dd6a0117c01932c9c9'
+        '0001c07656ead8f3df72e75478ca1352bab3b266131eed5d065b690cc07dcd97be1d12987bc6ab49542ebc7f08d056c48ff2346b56ad31e717c11a302754cc9c'
+        'f2c276dbe25a8f98d61c0851e47757fb878f884f29d1bbfb2a692f6c66bc7b2f02f91b9e95b1b2f82ea4af734dda500dc80f89a840d18c6912787194cc780d0e')
 
 build () {
 	cd "${pkgname}-${pkgver}"
@@ -31,9 +31,6 @@ package () {
 
 	mv "${pkgdir}/usr/sbin"/* "${pkgdir}/usr/bin"
 	rmdir "${pkgdir}/usr/sbin"
-
-	install -m 644 -D LICENCE.md \
-		"${pkgdir}/usr/share/licenses/${pkgname}/LICENCE.md"
 
 	install -m 755 -d "${srcdir}/etc/dqcache/default/dump"
 
