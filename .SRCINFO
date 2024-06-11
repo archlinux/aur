@@ -1,6 +1,6 @@
 pkgbase = taproot-assets-bin
 	pkgdesc = A layer 1 daemon, for the Taproot Assets Protocol specification, written in Go (golang)
-	pkgver = 0.3.0
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/lightninglabs/taproot-assets
 	arch = any
@@ -8,12 +8,12 @@ pkgbase = taproot-assets-bin
 	depends = lnd
 	provides = taproot-assets
 	provides = taproot-assetsd
-	source = taproot-assets-linux-amd64-v0.3.0.tar.gz::https://github.com/lightninglabs/taproot-assets/releases/download/v0.3.0/taproot-assets-linux-amd64-v0.3.0.tar.gz
-	source = manifest-v0.3.0.txt.sig::https://github.com/lightninglabs/taproot-assets/releases/download/v0.3.0/manifest-guggero-v0.3.0.sig
-	source = manifest-v0.3.0.txt::https://github.com/lightninglabs/taproot-assets/releases/download/v0.3.0/manifest-v0.3.0.txt
+	source = taproot-assets-linux-amd64-v0.3.3.tar.gz::https://github.com/lightninglabs/taproot-assets/releases/download/v0.3.3/taproot-assets-linux-amd64-v0.3.3.tar.gz
+	source = manifest-v0.3.3.txt.sig::https://github.com/lightninglabs/taproot-assets/releases/download/v0.3.3/manifest-guggero-v0.3.3.sig
+	source = manifest-v0.3.3.txt::https://github.com/lightninglabs/taproot-assets/releases/download/v0.3.3/manifest-v0.3.3.txt
 	validpgpkeys = F4FC70F07310028424EFC20A8E4256593F177720
-	sha256sums = efc38855f83dabe9023fe32025cae41925c57a0ea6bf642dee969ea9e0236a45
+	sha256sums = f2026412a6d63353ea78b96d0a049894586bac010b3609de0ec11eb907c0c404
 	sha256sums = SKIP
-	sha256sums = cc8d7913cbfe4e4226e8a65d102fa206a74b73c11b891d1f9c5b319ae03f7c3c
+	sha256sums = 305fd9111acac04504e96a31183e6761444a59bd334fd4f9dcdf2a0b4764fa9a
 
 pkgname = taproot-assets-bin

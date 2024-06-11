@@ -1,7 +1,7 @@
 # Maintainer: Luis Aranguren <pizzaman@hotmail.com
 _pkgname=taproot-assets
 pkgname=${_pkgname}-bin
-pkgver=0.3.0
+pkgver=0.3.3
 _pkgver="${pkgver//_/-}"
 pkgrel=1
 pkgdesc="A layer 1 daemon, for the Taproot Assets Protocol specification, written in Go (golang)"
@@ -18,9 +18,9 @@ manifest-v${_pkgver}.txt.sig::"${url}/releases/download/v${_pkgver}/manifest-gug
 manifest-v${_pkgver}.txt::"${url}/releases/download/v${_pkgver}/manifest-v${_pkgver}.txt"
 )
 
-sha256sums=('efc38855f83dabe9023fe32025cae41925c57a0ea6bf642dee969ea9e0236a45'
+sha256sums=('f2026412a6d63353ea78b96d0a049894586bac010b3609de0ec11eb907c0c404'
             'SKIP'
-            'cc8d7913cbfe4e4226e8a65d102fa206a74b73c11b891d1f9c5b319ae03f7c3c')
+            '305fd9111acac04504e96a31183e6761444a59bd334fd4f9dcdf2a0b4764fa9a')
 
 # LND provides manifest signatures from several developers
 # To wit; guggero and roasbeef
