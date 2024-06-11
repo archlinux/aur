@@ -3,8 +3,8 @@
 # Contributor: Kuba Serafinowski <zizzfizzix(at)gmail(dot)com>
 
 pkgname=kdeconnect
-pkgver=24.05.0
-pkgrel=2
+pkgver=24.05.1
+pkgrel=1
 pkgdesc='Adds communication between KDE and your smartphone'
 url='https://kdeconnect.kde.org/'
 arch=(x86_64)
@@ -55,7 +55,7 @@ optdepends=('python-nautilus: Nautilus integration'
 groups=(kde-applications
         kde-network)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-kde-$pkgver.tar.xz{,.sig})
-sha256sums=('b05f5ee164160a7ffaa1269a27fd2a55006dd009f66c6bf10530bce2d9d980cd'
+sha256sums=('efdb17b60f531b13cb5222b293349050711a4636282ac3d586da98aa50564780'
             'SKIP')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
