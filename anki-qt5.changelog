@@ -1,3 +1,7 @@
+# 24.06.2-1
+
+  * Fix image occlusion errors in previewer and card template editor by @glutanimate[2] in #3228[3]
+
 # 24.06.1-1
 What's Changed:
 
