@@ -852,3 +852,15 @@ Fixes:
 - We improved our CalDAV sync engine to be more robust and provide more detailed logs so we can better identify issues faster.
 - We improved the experience of setting reminders for Scheduling Links.
 - We fixed some edge cases that could allow invalid operations on the calendar, such as deleting read-only events.
+
+=== Morgen 3.4.5
+New Features:
+- Display due dates of tasks created natively in Morgen and imported from Todoist, Notion, Clickup, and Linear, directly on your calendar. When you drag a due date in your calendar to another time, it will sync with the task source, ensuring you have the same due date displayed in both places. You can also add a corresponding scheduled task in one-click to make sure you plan time to get the task done before it's due.
+- Morgen can adjust the due date if a scheduled task falls after it's due. Configure in Preferences > General whether you want Morgen to automatically adjust the due date, prefer to be asked every time, or leave it as is.
+
+Improvements:
+- This desktop release includes significant performance improvements, in particular when the app is launched and while navigating across task sources with many tasks, including opening and closing the sidebar panel.
+
+Fixes:
+- We improved the reliability of the CalDAV (and iCloud) sync to be more robust to special characters in the event filename.
+- A problem updating Google Out-of-Office and Working location events has been rectified.
