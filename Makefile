@@ -10,14 +10,14 @@ clean:
 	  PKGBUILD      \
 	  src
 
-upload: export GIT_DIR=.${PKG}.git/.git
+upload: export GIT_DIR=.${PKG}.git
 upload: export GIT_WORK_TREE=$(dir $(realpath $(lastword $(MAKEFILE_LIST))))
 upload: .${PKG}.git .SRCINFO
 	git commit -am 'bump'
 	git push origin master
 
 .%.git:
-	git clone ssh://aur@aur.archlinux.org/$* $@
+	git clone --bare ssh://aur@aur.archlinux.org/$* $@
 
 src: PKGBUILD
 	makepkg -do
