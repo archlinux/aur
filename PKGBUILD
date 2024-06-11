@@ -15,7 +15,8 @@ pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('x86_64')
 url="https://libvirt.org/"
-license=('LGPL' 'GPL3') #libvirt_parthelper links to libparted which is GPL3 only
+license=('LGPL-2.1-or-later'
+         'GPL-3.0-or-later') # libvirt_parthelper links to libparted
 depends=('libpciaccess' 'yajl' 'fuse3' 'gnutls' 'parted' 'libssh' 'libxml2'
 'numactl' 'polkit' 'libnbd' 'libnl')
 makedepends=('meson' 'libxslt' 'python-docutils' 'lvm2' 'open-iscsi' 'libiscsi' 'glusterfs'
@@ -136,31 +137,30 @@ build() {
     -Dstorage_zfs=enabled\
     -Dstorage_rbd=disabled
 
-  ninja -C build
+  meson compile -C build
 }
 
 check() {
   cd "$_pkgname"
 
-  ninja -C build test
+  meson test -C build --print-errorlogs
 }
 
 package_libvirt-git() {
   provides=("libvirt=$pkgver" 'libvirt.so' 'libvirt-admin.so' 'libvirt-lxc.so' 'libvirt-qemu.so')
   cd "$_pkgname"
-  DESTDIR="$pkgdir" ninja -C build install
+  meson install -C build --destdir "$pkgdir"
 
   mkdir -p "$pkgdir"/usr/lib/{sysusers,tmpfiles}.d
-  echo 'g libvirt - -' > "$pkgdir/usr/lib/sysusers.d/libvirt.conf"
+  echo 'g libvirt - -' > "$pkgdir/usr/lib/sysusers.d/libvirt-qemu.conf"
   echo 'u libvirt-qemu /var/lib/libvirt "Libvirt QEMU user"' >> "$pkgdir/usr/lib/sysusers.d/libvirt.conf"
   echo 'm libvirt-qemu kvm' >> "$pkgdir/usr/lib/sysusers.d/libvirt.conf"
   echo 'z /var/lib/libvirt/qemu 0751' > "$pkgdir/usr/lib/tmpfiles.d/libvirt.conf"
 
-  chown 0:102 "$pkgdir/usr/share/polkit-1/rules.d"
-  chmod 0750 "$pkgdir/usr/share/polkit-1/rules.d"
   chmod 600 "$pkgdir"/etc/libvirt/nwfilter/*.xml \
     "$pkgdir/etc/libvirt/qemu/networks/default.xml"
   chmod 700 "$pkgdir"/etc/libvirt/secrets
+  chmod 711 "$pkgdir"/var/lib/libvirt/swtpm
 
   rm -rf \
     "$pkgdir/run" \
