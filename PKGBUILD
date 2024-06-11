@@ -1,6 +1,6 @@
 pkgname=dictpopup
 pkgver=0.2
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="A Japanese popup dictionary working on mouse selection with Anki integration"
 arch=('any')
