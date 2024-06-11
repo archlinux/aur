@@ -3,20 +3,29 @@
 
 pkgname=cgproxy
 pkgver=0.20
-pkgrel=1
+pkgrel=2
 pkgdesc="A transparent proxy program powered by cgroup2 and tproxy"
 arch=('x86_64')
 url="https://github.com/springzfx/cgproxy"
 license=('GPL-2.0-or-later')
 groups=()
-makedepends=('cmake' 'nlohmann-json' 'clang' 'bpf' 'libbpf')
-depends=('libbpf' 'iproute2' 'which')
+makedepends=('cmake' 'nlohmann-json' 'clang' 'bpf' 'libbpf' "git")
+depends=("libbpf" "iproute2" "which" "nftables" "iptables-nft" "bash" "glibc" "gcc-libs")
 provides=('cgproxy')
 
 source=("${pkgname}::git+https://github.com/springzfx/cgproxy#tag=v${pkgver}")
 md5sums=('SKIP')
 
 backup=('etc/cgproxy/config.json')
+
+function prepare() {
+	cd "${srcdir}/${pkgname}"
+	
+	# Cherry Pick Pull Request #52
+	git cherry-pick -n d7990c0c2f1a1add5f863d35c670ec6aa720f1d3^..0b2c9a4c8264c2c4464ac38b12a60b96adf364f6
+	git cherry-pick -n 3e68415864bacfe7fdbb73c08f403f867b440253
+	git cherry-pick -n cb809d4033a0fb30ad22c03d98e0792793835f07
+}
 
 function build() {
 	mkdir -p "${srcdir}/${pkgname}/build"
