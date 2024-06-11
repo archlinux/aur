@@ -1,6 +1,6 @@
 pkgbase = vte3-notification
 	pkgdesc = Virtual Terminal Emulator widget
-	pkgver = 0.76.2
+	pkgver = 0.76.3
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Terminal/VTE
 	arch = x86_64
@@ -29,16 +29,18 @@ pkgbase = vte3-notification
 	depends = systemd-libs
 	options = !emptydirs
 	options = !lto
-	source = git+https://gitlab.gnome.org/GNOME/vte#tag=0.76.2
-	source = vte291-cntnr-precmd-preexec-scroll.patch-5259739a74bc70754247b33195a09412738df036::https://src.fedoraproject.org/rpms/vte291/raw/5259739a74bc70754247b33195a09412738df036/f/vte291-cntnr-precmd-preexec-scroll.patch
+	source = git+https://gitlab.gnome.org/GNOME/vte#tag=0.76.3
+	source = 0001-a11y-implement-GtkAccessibleText.patch-2ca928e0ae789378d65ed7b6e8609345764a4ca3::https://src.fedoraproject.org/rpms/vte291/raw/2ca928e0ae789378d65ed7b6e8609345764a4ca3/f/0001-a11y-implement-GtkAccessibleText.patch
+	source = 0001-add-notification-and-shell-precmd-preexec.patch-2ca928e0ae789378d65ed7b6e8609345764a4ca3::https://src.fedoraproject.org/rpms/vte291/raw/2ca928e0ae789378d65ed7b6e8609345764a4ca3/f/0001-add-notification-and-shell-precmd-preexec.patch
 	sha256sums = SKIP
-	sha256sums = 54e35ff79a8aa7aabd09f26c4e51fe8ec3605eb22ccf233793b4731fe6f2cca8
+	sha256sums = e238d865e8a20a06d56b99f34a398ab3279d7228395a109e2a66bae32fddf760
+	sha256sums = 49374e5513735c4d31997709b6f9b9a444b0da5c04bc9c62d87919ab839aa1c3
 
 pkgname = vte-notification-common
 	pkgdesc = Common files used by vte and vte3/vte4
 	depends = glibc
 	depends = sh
-	provides = vte-common=0.76.2
+	provides = vte-common=0.76.3
 	conflicts = vte-common
 
 pkgname = vte3-notification
@@ -59,7 +61,7 @@ pkgname = vte3-notification
 	depends = at-spi2-core
 	depends = gtk3
 	depends = vte-notification-common
-	provides = vte3=0.76.2
+	provides = vte3=0.76.3
 	provides = libvte-2.91.so
 	conflicts = vte3
 
@@ -80,12 +82,12 @@ pkgname = vte4-notification
 	depends = systemd-libs
 	depends = gtk4
 	depends = vte-notification-common
-	provides = vte4=0.76.2
+	provides = vte4=0.76.3
 	provides = libvte-2.91-gtk4.so
 	conflicts = vte4
 
 pkgname = vte-notification-docs
 	pkgdesc = Virtual Terminal Emulator widget documentation
 	depends = 
-	provides = vte-docs=0.76.2
+	provides = vte-docs=0.76.3
 	conflicts = vte-docs
