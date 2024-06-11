@@ -1,13 +1,13 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonamil.com>
 pkgname=ofinstaller-beans-git
-pkgver=1.3.1.r33.ga2fcc74
+pkgver=1.3.1.r124.g4a83444
 pkgrel=1
 pkgdesc=" Installer for Open Fortress "
 arch=('x86_64')
-url="https://github.com/AdastralGroup/beans-rs"
+url="https://github.com/ktwrd/beans-rs"
 license=('GPL-3.0-only')
 depends=("glibc" "gcc-libs" "openssl")
-makedepends=("rust-nightly-bin")
+makedepends=("cargo-nightly")
 provides=("ofinstaller-beans")
 conflicts=("ofinstaller-beans")
 source=("$pkgname::git+$url.git")
