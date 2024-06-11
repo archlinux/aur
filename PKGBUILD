@@ -1,34 +1,33 @@
-# Maintainer: Sandor Nagy <sandor[dot]nagy[at]kdemail[dot]net>
+# Maintainer: Jeremy Gust <jeremy AT plasticsoup DOT net>
+# Contributor: Sandor Nagy <sandor[dot]nagy[at]kdemail[dot]net>
 pkgname=librcsc
-pkgver=4.1.0
+pkgver=rc2023
 pkgrel=1
-pkgdesc="The basic library to develop the RoboCup Soccer Simulation client and tools"
-arch=('x86_64' 'i686')
-url="https://osdn.net/projects/rctools/"
-license=('CCPL')
-groups=('rcss')
-depends=('zlib' 'gcc-libs' 'sh')
-makedepends=('boost>=1.32')
-optdepends=(
-	'rcssserver:	RCSS Server'
-	'rcssmonitor:	RCSS Monitor'
-	'cppunit:	C++ unit testing framework')
-options=('buildflags' 'makeflags')
-source=(https://osdn.net/dl/rctools/$pkgname-$pkgver.tar.gz)
-md5sums=('509c30d1e00499a08ae1f58f4ff05573')
+pkgdesc="A base library to develop a simulated soccer team for the RoboCup Soccer Simulation"
+arch=('x86_64')
+url="https://github.com/helios-base/librcsc"
+license=('LGPL-3.0-or-later')
+depends=('bash' 'gcc-libs' 'glibc' 'zlib')
+makedepends=('boost')
+optdepends=('rcssserver: RCSS Server'
+            'rcssmonitor: RCSS Monitor'
+            'cppunit: C++ unit testing framework')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('377cd6bf366091eebb6863255bb5fb5dcc94e4f4bd085d4c67bd3c3db5fabb35')
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$pkgname-$pkgver"
+	./bootstrap
 	./configure --prefix=/usr
 	make
 }
 
 check() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$pkgname-$pkgver"
 	make -k check
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" install
 }
