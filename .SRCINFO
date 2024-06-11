@@ -1,16 +1,17 @@
 pkgbase = cppreference-doc
 	pkgdesc = A complete reference for the features in the C++ Standard Library. HTML book, fork by PeterFeicht
-	pkgver = 20230810
+	pkgver = 20240610
 	pkgrel = 1
 	url = http://en.cppreference.com/
 	arch = any
-	license = CCPL:cc-by-sa
-	license = GPL3
+	license = CC-BY-SA-3.0
+	license = GPL-3.0-only
 	provides = cppreference
 	conflicts = cppreference
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/PeterFeicht/cppreference-doc/releases/download/v20230810/html-book-20230810.tar.xz
-	sha256sums = 31c08e4d99e86c7f63f324d3ff5304eff2030131c4a0ac0d1e3c19c62c8ed684
+	options = !debug
+	source = https://github.com/PeterFeicht/cppreference-doc/releases/download/v20240610/html-book-20240610.tar.xz
+	sha256sums = bc2412a5eaf7f6094d4eb70f765bdf8f649e654a8aabf20160c5a81697684761
 
 pkgname = cppreference-doc
