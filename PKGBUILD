@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=ofinstaller-beans-bin
-pkgver=1.3.1
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Installer for Open Fortress"
 arch=("x86_64")
@@ -10,7 +10,7 @@ provides=("ofinstaller-beans")
 conflicts=("ofinstaller-beans")
 depends=("glibc" "gcc-libs" "openssl")
 source=("$url/releases/download/v$pkgver/beans-rs")
-sha256sums=('de212f4e9b002168fbbade1df7d5886313e9323486dc8d4d6df0e8c4710d4f6d')
+sha256sums=('f0b00657b42075ad8d085a84a27031e699c04daad0d05299c95a6f466610ccf9')
 
 package() {
 	cd "$srcdir"
