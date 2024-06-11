@@ -1,6 +1,6 @@
 pkgbase = companion
 	pkgdesc = Control software for the Elgato Streamdeck with a focus on broadcasting.
-	pkgver = 3.3.0
+	pkgver = 3.3.1
 	pkgrel = 1
 	url = https://github.com/bitfocus/companion
 	install = companion.install
@@ -16,9 +16,9 @@ pkgbase = companion
 	depends = nss
 	depends = hicolor-icon-theme
 	depends = libusb
-	source = companion-3.3.0::git+https://github.com/bitfocus/companion.git#tag=v3.3.0
+	source = companion-3.3.1::git+https://github.com/bitfocus/companion.git#tag=v3.3.1
 	source = bitfocus-companion.desktop
-	sha256sums = 7980721ff74217082d94f0f287d47a52c08db93ab85bc57bf88d105aa6dac3c3
+	sha256sums = acdc4153dffbca2e02eb075d1bdfa8a836504c74c6a1588d6e7140aa71a535de
 	sha256sums = 65289895360dae94dd710e6804709c1e3f95e6bc275b1621cb88eb8a7cbd348f
 
 pkgname = companion
