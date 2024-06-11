@@ -10,7 +10,7 @@ _pkgname=libvirt
 pkgname=(${_pkgname}-git)
 provides=(${_pkgname})
 conflicts=(${_pkgname})
-pkgver=10.2.0.rc2.r1.g32d836bc6f
+pkgver=10.4.0.r28.gacb26f22a1
 pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('x86_64')
@@ -101,7 +101,7 @@ prepare() {
 
   sed -i 's|/sysconfig/|/conf.d/|g' \
     src/remote/libvirtd.service.in \
-    tools/{libvirt-guests.service,libvirt-guests.sh,virt-pki-validate}.in \
+    tools/{libvirt-guests.service,libvirt-guests.sh}.in \
     docs/manpages/libvirt-guests.rst \
     src/locking/virtlockd.service.in \
     src/logging/virtlogd.service.in
