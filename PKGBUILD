@@ -2,7 +2,7 @@
 
 pkgname=gamescope-session-sk-git
 _gitdir=gamescope-session
-pkgver=r284.fabde37
+pkgver=0.1.0.r0.g6662d15
 pkgrel=1
 pkgdesc="Common gamescope session files"
 arch=('any')
@@ -20,8 +20,8 @@ md5sums=('SKIP')
 pkgver() {
 	cd "$srcdir/${_gitdir}"
 
-# Git, no tags available
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	# printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 package() {
