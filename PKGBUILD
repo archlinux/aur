@@ -2,7 +2,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=lms
-pkgver=3.53.1
+pkgver=3.54.0
 pkgrel=1
 pkgdesc='Lightweight Music Server. Access your self-hosted music using a web interface'
 arch=('x86_64')
@@ -13,25 +13,18 @@ depends=('ffmpeg'
          'libconfig'
          'taglib'
          'wt')
-makedepends=('cmake' 
+makedepends=('cmake'
              'wt'
              'boost'
              'gtest'
              'graphicsmagick')
 source=("${pkgname}-${pkgver}.tar.xz::https://github.com/epoupon/lms/archive/v${pkgver}.tar.gz"
-        "0001-UpperCaseValidator-add-missing-header.patch"
         "lms.sysusers"
         "lms.tmpfiles")
-sha256sums=('f661d0133d98882a76d39db0b7d3d25bf4ff04a6d5ac9116fa6dec808140d296'
-            'bfd2e63df871cb0e691194bae21f3d1a6d11d31d04cfe1d78c35a5cd7ed67282'
+sha256sums=('bf04a72bb551df921bed83bf78e20fbb8378d634e7e471bc9a37dda70f0be8a9'
             '9d26489cb828576c8c2296821d52f3a453b2c9d63cdace425e3f312e190601d6'
             '32f537bf3480fbe55d0a9929ba633718fbc16887a68e0ba1a2b3b265c400ed41')
 backup=("etc/lms.conf")
-
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver/"
-  patch --forward -p1 --input="${srcdir}/0001-UpperCaseValidator-add-missing-header.patch"
-}
 
 build() {
   mkdir "${pkgname}-${pkgver}/build"
