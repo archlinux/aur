@@ -2,7 +2,7 @@
 # Contributor: Michael Fellinger <m.fellinger@gmail.com>
 
 pkgname=vms-empire
-pkgver=1.14
+pkgver=1.17
 pkgrel=1
 pkgdesc="Empire is a simulation of a full-scale war between two emperors, the computer and you."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('ncurses')
 makedepends=('xmlto')
 source=("http://www.catb.org/~esr/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('9defc2be52380171f293b5bfb4c5fa28')
+md5sums=('2c0ba007fb3d84875ee972cbe1b02976')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
