@@ -1,7 +1,7 @@
 pkgbase = dictpopup
 	pkgdesc = A Japanese popup dictionary working on mouse selection with Anki integration
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/Ajatt-Tools/dictpopup
 	install = dictpopup.install

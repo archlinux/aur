@@ -1,6 +1,6 @@
 pkgname=dictpopup
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A Japanese popup dictionary working on mouse selection with Anki integration"
 arch=('any')
@@ -30,5 +30,5 @@ build() {
 
 package() {
 	cd "${srcdir}"/"${pkgname}-${pkgver}"
-	cmake --build build --target install -j 2 --prefix "$pkgdir/usr"
+	cmake --build build --target install -j 2 -DCMAKE_INSTALL_PREFIX="$pkgdir/usr"
 }
