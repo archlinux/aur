@@ -1,7 +1,7 @@
 pkgbase = dia-git
 	pkgdesc = A GTK+ based diagram creation program
 	pkgver = 6872.aad567a2c
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.gnome.org/action/show/Apps/Dia
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -17,13 +17,12 @@ pkgbase = dia-git
 	depends = freetype2
 	depends = graphene
 	depends = libemf
+	depends = xpm-pixbuf-git
 	provides = dia
 	conflicts = dia
 	options = docs
 	options = !emptydirs
 	source = git+https://gitlab.gnome.org/GNOME/dia.git
-	source = git+https://gitlab.gnome.org/ZanderBrown/xpm-pixbuf.git
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = dia-git
