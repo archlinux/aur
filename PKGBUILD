@@ -1,24 +1,25 @@
 # Maintainer: Alex Szczuczko <alex@szc.ca>
+# Contributor: Robert Gonciarz <gonciarz@gmail.com>
 
 pkgbase=adobe-dng
 pkgname=("adobe-dng-lcp" "adobe-dng-dcp")
-pkgver=12.2.1
+pkgver=16.3
 pkgrel=1
 pkgdesc="Extracted profiles from Adobe DNG Converter"
 arch=("any")
 url="https://helpx.adobe.com/ca/photoshop/using/adobe-dng-converter.html"
 license=("custom:commercial")
-makedepends=("p7zip")
-source=("http://download.adobe.com/pub/adobe/dng/win/DNGConverter_${pkgver//./_}.exe")
-sha256sums=("78d97cca5e075af5dae18da63613577b35bbf24d7d2145af058a3c34cb0de200")
-noextract=("DNGConverter_${pkgver//./_}.exe")
+makedepends=("innoextract")
+source=("http://download.adobe.com/pub/adobe/dng/win/AdobeDNGConverter_x64_${pkgver//./_}.exe")
+sha256sums=("668d5cbe9023323e22bda0fd7dd409b18f8ff1646806076790a68f6d5190ad85")
+noextract=("AdobeDNGConverter_x64_${pkgver//./_}.exe")
 options=("!strip")
 
 prepare() {
     cd "$srcdir/"
-    7z x -y "DNGConverter_${pkgver//./_}.exe" '$APPDATA'
-    mv '$APPDATA/Adobe/CameraRaw/' ./
-    rmdir -p '$APPDATA/Adobe/'
+    innoextract -e "AdobeDNGConverter_x64_${pkgver//./_}.exe"
+    mv 'commonappdata/Adobe/CameraRaw/' .
+    rm -rf commonappdata
 }
 
 package_adobe-dng-lcp() {
