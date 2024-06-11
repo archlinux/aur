@@ -1,7 +1,7 @@
 # Maintainer: D3vil0p3r <vozaanthony[at]gmail[dot]com>
 
 pkgname=plasma5-applets-plasma-drawer
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="A full-screen customizable launcher with application directories and krunner-like search for KDE Plasma."
 arch=(any)
@@ -9,7 +9,7 @@ url="https://github.com/P-Connor/plasma-drawer"
 license=(GPL)
 depends=(plasma-workspace)
 source=("$url/archive/v$pkgver.tar.gz")
-sha512sums=('745e2ff55d5962ae83ada488033cae5daaa3bfa06fcbd429379efece31be6efcfda135c763c878e8fec5a7a22ab402e9ae0e9c149dbb22e5ca62abe39606c554')
+sha512sums=('015cc8816e51d750436cee88f8bfabb0159363f98cbc8e41608ff5a0fe25fd9b6ace4125b74edb0289cb9c930b2760e42a616cef2c499d9856bd69711672c33f')
 
 package() {
   _pkgdir="$pkgdir/usr/share/plasma/plasmoids/P-Connor.PlasmaDrawer"
