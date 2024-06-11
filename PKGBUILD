@@ -3,7 +3,7 @@
 pkgname=inspector
 pkgver=0.2.0
 _commit=5e3ac67e7e193bac25dc0cfb8dca7ef982cfcc0e
-pkgrel=2
+pkgrel=3
 pkgdesc='Gives information about your system'
 url="https://github.com/Nokse22/inspector"
 license=('GPL-3.0-or-later')
@@ -20,7 +20,7 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs || :
+  meson test -C build --no-rebuild --print-errorlogs || :
 }
 
 package() {
