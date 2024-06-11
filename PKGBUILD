@@ -3,7 +3,7 @@
 pkgname=trivia-quiz
 pkgver=0.2.2
 _commit=170b78fc48be11bffa0c821fd4f7da1fa0b51be3
-pkgrel=2
+pkgrel=3
 pkgdesc='Respond to endless questions'
 url="https://github.com/Nokse22/trivia-quiz"
 license=('GPL-3.0-or-later')
@@ -20,7 +20,7 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs
+  meson test -C build --no-rebuild --print-errorlogs
 }
 
 package() {
