@@ -8,7 +8,7 @@ _nodejs="20.9.0"
 
 pkgname=${_pkgname}-electron
 pkgver=1.90.0.24158
-pkgrel=1
+pkgrel=2
 pkgdesc="VS Code without MS branding/telemetry/licensing. - System-wide Electron edition"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/VSCodium/vscodium"
@@ -35,13 +35,15 @@ source=("git+https://github.com/VSCodium/vscodium.git#tag=${pkgver}"
 		"${_pkgname}.sh"
 		"${_pkgname}.js"
 		"${_pkgname}.desktop"
+		"${_pkgname}-wayland.desktop"
 		"${_pkgname}-uri-handler.desktop")
 sha256sums=(SKIP
             'b96a713be2577dd07b727362c77edc7fd0430a5894eead186c1f18f666fc5536'
             'da8fbd6dcafa667e2b3368ae87ed216e7e76f56ce4a3e4ede426dc129e8f8349'
             '7a3dceb7a470f1dd6bc2991c28a4bfc68be6b81252ec7ff8f61f280e2e5b01f8'
-            '204ed8761e4f57e095833aee800f5fe662667aa06c2a213ef8b733929c639237'
-            '765db91bf3eb97936d85c53f108d739a5c95d806ff5d4808a05d2c2d9e5f8453')
+            'f76eb3ecf7fa531e0f711938e4e10f82145b5a7bf8b24bda218acb2d47466d60'
+            '1841d08fdb512f32433eefa21132bf7ad13e106cb45ca3218d0da7b7be9cfc81'
+            '6eef345b65bf2679c928c763529540435ab9c6e1836917319810a7a2d484ae1b')
 
 # Even though we don't officially support other archs, let's
 # allow the user to use this PKGBUILD to compile the package
@@ -122,25 +124,35 @@ build() {
 }
 
 package() {
-	cd "$srcdir/vscodium/VSCode-linux-$_vscode_arch"
+	# Reference: https://aur.archlinux.org/packages/vscodium
+	install -d -m755 ${pkgdir}/usr/bin
+	install -d -m755 ${pkgdir}/usr/share/{${_pkgname},applications,pixmaps}
+	install -d -m755 ${pkgdir}/usr/share/licenses/${_pkgname}
 
-	install -Dm644 resources/app/LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm644 resources/app/ThirdPartyNotices.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
+	# vscodium-electron modification: put resource files and vscodium.js under /usr/lib/
+	install -dm755 "${pkgdir}/usr/lib/${_pkgname}"
 
-	install -Dm755 "$srcdir/vscodium-electron.sh" "$pkgdir/usr/bin/${_pkgname}"
+	# vscodium-electron modification: Only install licenses and files under resources/app/
+	install -Dm644 ${srcdir}/${_pkgname}/VSCode-linux-${_vscode_arch}/resources/app/LICENSE.txt -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
+	install -Dm644 ${srcdir}/${_pkgname}/VSCode-linux-${_vscode_arch}/resources/app/ThirdPartyNotices.txt -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
+	cp -r --no-preserve=ownership --preserve=mode ${srcdir}/${_pkgname}/VSCode-linux-${_vscode_arch}/resources/app/!(LICENSE.txt|ThirdPartyNotices.txt) "$pkgdir/usr/lib/${_pkgname}/"
+
+	# vscodium-electron modification: Use custom launcher scripts
+	install -Dm755 "${srcdir}/vscodium-electron.sh" "${pkgdir}/usr/bin/${_pkgname}"
+	install -Dm755 "${srcdir}/vscodium-electron.js" "${pkgdir}/usr/lib/${_pkgname}/vscodium.js"
 	ln -s "/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/codium"
 
-	install -Dm755 "$srcdir/vscodium-electron.js" "$pkgdir/usr/lib/${_pkgname}/vscodium.js"
+	install -D -m644 ${_pkgname}.desktop ${pkgdir}/usr/share/applications/${_pkgname}.desktop
+	install -D -m644 ${_pkgname}-wayland.desktop ${pkgdir}/usr/share/applications/${_pkgname}-wayland.desktop
+	install -D -m644 ${_pkgname}-uri-handler.desktop ${pkgdir}/usr/share/applications/${_pkgname}-uri-handler.desktop
+	install -D -m644 ${srcdir}/${_pkgname}/VSCode-linux-${_vscode_arch}/resources/app/resources/linux/code.png ${pkgdir}/usr/share/pixmaps/${_pkgname}.png
 
-	install -dm755 "$pkgdir/usr/lib/${_pkgname}"
-	cp -r --no-preserve=ownership --preserve=mode resources/app/!(LICENSE.txt|ThirdPartyNotices.txt) "$pkgdir/usr/lib/${_pkgname}/"
+	# Symlink shell completions
+	install -d -m755 ${pkgdir}/usr/share/zsh/site-functions
+	install -d -m755 ${pkgdir}/usr/share/bash-completion/completions
+	ln -s /usr/share/${_pkgname}/resources/completions/zsh/_codium ${pkgdir}/usr/share/zsh/site-functions
+	ln -s /usr/share/${_pkgname}/resources/completions/bash/codium ${pkgdir}/usr/share/bash-completion/completions
+
+	# vscodium-electron modification: replace bundled ripgrep with system ripgrep
 	ln -sf /usr/bin/rg "$pkgdir/usr/lib/$_pkgname/node_modules.asar.unpacked/@vscode/ripgrep/bin/rg"
-
-	install -Dm644 "$srcdir/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-	install -Dm644 "$srcdir/${_pkgname}-uri-handler.desktop" "${pkgdir}/usr/share/applications/${_pkgname}-uri-handler.desktop"
-
-	install -Dm 644 "resources/completions/bash/codium" "$pkgdir/usr/share/bash-completion/completions/codium"
-	install -Dm 644 "resources/completions/zsh/_codium" "$pkgdir/usr/share/zsh/site-functions/_codium"
-
-	install -Dm644 "resources/app/resources/linux/code.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
 }
