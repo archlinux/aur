@@ -13,5 +13,6 @@ options=('!strip' '!emptydirs')
 install=${pkgname}.install
 package(){
 git clone https://github.com/linzeennnn/lze-web.git 
-cp -r "lze-web/*" "${pkgdir}/"
+cp -r "lze-web/opt" "${pkgdir}/"
+cp -r "lze-web/etc" "${pkgdir}/"
 }
