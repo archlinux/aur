@@ -3,20 +3,22 @@
 # Contributor: Łukasz Mariański <lmarianski at protonmail dot com>
 
 _pkgname=vscodium
-_electron=electron27
-_nodejs="18.17.1"
+_electron=electron29
+_nodejs="20.9.0"
 
 pkgname=${_pkgname}-electron
-pkgver=1.89.1.24130
+pkgver=1.90.0.24158
 pkgrel=1
 pkgdesc="VS Code without MS branding/telemetry/licensing. - System-wide Electron edition"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/VSCodium/vscodium"
 license=('MIT')
+options=(!strip !debug)
 depends=("$_electron" 'libsecret' 'libx11' 'libxkbfile' 'ripgrep')
-optdepends=('x11-ssh-askpass: SSH authentication'
-	    'gvfs: For move to trash functionality'
-	    'libdbusmenu-glib: For KDE global menu')
+optdepends=(
+	'gvfs: For move to trash functionality'
+	'libdbusmenu-glib: For KDE global menu'
+)
 makedepends=('git' 'python' 'nvm' 'jq' 'python-distutils-extra')
 provides=(
     'codium'
@@ -34,7 +36,7 @@ source=("git+https://github.com/VSCodium/vscodium.git#tag=${pkgver}"
 		"${_pkgname}.js"
 		"${_pkgname}.desktop"
 		"${_pkgname}-uri-handler.desktop")
-sha256sums=('SKIP'
+sha256sums=(SKIP
             'b96a713be2577dd07b727362c77edc7fd0430a5894eead186c1f18f666fc5536'
             'da8fbd6dcafa667e2b3368ae87ed216e7e76f56ce4a3e4ede426dc129e8f8349'
             '7a3dceb7a470f1dd6bc2991c28a4bfc68be6b81252ec7ff8f61f280e2e5b01f8'
@@ -109,6 +111,12 @@ build() {
 	yarn config set cache-folder "$srcdir/yarn-cache"
 
 	cd "$srcdir/vscodium"
+
+	# the app will be updated with pacman
+	export DISABLE_UPDATE="yes"
+
+	# https://github.com/nodejs/node/issues/51555
+	export DISABLE_V8_COMPILE_CACHE=1
 
 	. build/build.sh
 }
