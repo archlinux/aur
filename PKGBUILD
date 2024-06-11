@@ -4,11 +4,10 @@
 
 pkgname=hasciicam
 pkgver=1.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Renders video input as ascii (to the terminal, textfile, or live webpage)"
 url="http://ascii.dyne.org/"
 depends=('aalib' 'libv4l')
-optdepents=('xorg-fonts-misc: Live mode. Restart your X server or Xwayland after installing.')
 arch=('i686' 'x86_64')
 source=("https://files.dyne.org/$pkgname/${pkgname}_$pkgver.tar.gz"
         'const_fix.patch')
