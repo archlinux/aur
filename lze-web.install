@@ -5,7 +5,8 @@ post_install() {
   chmod 777 -u $USER $HOME/Documents
   chmod 777 -u $USER $HOME/Downloads 
   chmod 777 -R -u $USER $HOME/Pictures
-  chmod 777 $HOME/Documents/note 
+  chmod 777 $HOME/Documents/note
+ pwd 
   ln -s $HOME/Documents /opt/lze-web/Documents
   ln -s $HOME/Downloads /opt/lze-web/Downloads
   ln -s $HOME/Pictures /opt/lze-web/Pictures
