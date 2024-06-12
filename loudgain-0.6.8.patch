@@ -1,0 +1,13 @@
+diff --git a/src/scan.c~ b/src/scan.c
+index 671353d..b46c4d3 100644
+--- a/src/scan.c~
++++ b/src/scan.c
+@@ -116,7 +116,7 @@ int scan_file(const char *file, unsigned index) {
+ 
+ 	AVFormatContext *container = NULL;
+ 
+-	AVCodec *codec;
++	const AVCodec *codec;
+ 	AVCodecContext *ctx;
+ 
+ 	AVFrame *frame;
