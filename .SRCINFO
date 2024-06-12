@@ -1,0 +1,12 @@
+pkgbase = nsis-embedhtml-bin
+	pkgdesc = Embeds an HTML document anywhere in the installer window
+	pkgver = 1.0.0.3
+	pkgrel = 1
+	url = https://nsis.sourceforge.io/EmbedHTML_plug-in
+	arch = any
+	license = custom
+	depends = nsis
+	source = EmbedHTML-1.0.0.3.zip::https://nsis.sourceforge.io/mediawiki/images/7/7c/EmbedHTML.zip
+	sha256sums = f00732a93660fa71c8bfcac35e68242780262a46929274cb9182117094475a1a
+
+pkgname = nsis-embedhtml-bin
