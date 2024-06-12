@@ -17,7 +17,9 @@ def eprint(*args, **kwargs):
 def fetch_deps(url, rev):
     # Get the DEPS file from the given URL and revision
     if "googlesource.com" in url:
-        response = requests.get(f"{url}/+/{rev}/DEPS?format=text")
+        deps_url = f"{url}/+/{rev}/DEPS?format=text"
+        eprint(f"  Fetching {deps_url}")
+        response = requests.get(deps_url)
         response.raise_for_status()
         return base64.b64decode(response.text).decode("utf-8")
     elif url.startswith("https://github.com/"):
@@ -65,6 +67,9 @@ def parse_deps(path, prefix="", is_src=False, vars=None, reverse_map=None):
 
     spec.loader.exec_module(deps_module)
 
+    if not hasattr(deps_module, "vars"):
+        deps_module.vars = {}
+
     for k in (
         "checkout_win",
         "checkout_mac",
@@ -73,6 +78,13 @@ def parse_deps(path, prefix="", is_src=False, vars=None, reverse_map=None):
         "checkout_fuchsia",
         "checkout_android",
         "checkout_cxx_debugging_extension_deps",
+        # Skip architecture specific deps. They are prebuilt binaries and we should install them via pacman
+        "checkout_x86",
+        "checkout_x64",
+        "checkout_arm64",
+        "checkout_mips64",
+        "checkout_mips",
+        "checkout_arm",
     ):
         deps_module.vars[k] = False
     deps_module.vars["checkout_linux"] = True
@@ -85,7 +97,7 @@ def parse_deps(path, prefix="", is_src=False, vars=None, reverse_map=None):
     def url_and_revision(raw_url):
         url = raw_url.format(**deps_module.vars)
         url, rev = url.rsplit("@", 1)
-        if '.googlesource.com/' in url and not url.endswith(".git"):
+        if ".googlesource.com/" in url and not url.endswith(".git"):
             # Unify url format by adding .git suffix (for de-duplication)
             url += ".git"
         return (url, rev)
@@ -95,6 +107,7 @@ def parse_deps(path, prefix="", is_src=False, vars=None, reverse_map=None):
 
     real_deps = OrderedDict()
     cipd_deps = {}
+    gcs_deps = {}
     reverse_map = reverse_map or {}
 
     def add_dep(dep_name, raw_url):
@@ -108,11 +121,23 @@ def parse_deps(path, prefix="", is_src=False, vars=None, reverse_map=None):
         # Add to reverse map for de-duplication, use a heap to make sure the shortest path is chosen
         heappush(reverse_map.setdefault(url, []), (len(path), path))
 
+    if not hasattr(deps_module, "deps"):
+        return real_deps, {}, cipd_deps, gcs_deps, reverse_map
+
     for dep_name, dep_value in deps_module.deps.items():
         if isinstance(dep_value, dict):
             if "dep_type" in dep_value:
                 if dep_value["dep_type"] == "cipd":
                     cipd_deps[format_path(dep_name)] = dep_value["packages"]
+                elif dep_value["dep_type"] == "gcs":
+                    if "condition" in dep_value and not eval(
+                        dep_value["condition"], vars, deps_module.vars
+                    ):
+                        eprint(
+                            f"Skipping {format_path(dep_name)} because of unmet condition {dep_value['condition']}"
+                        )
+                        continue
+                    gcs_deps[format_path(dep_name)] = dep_value
                 else:
                     raise Exception(f"Unknown DEP {dep_name} = {dep_value}")
             else:
@@ -147,17 +172,20 @@ def parse_deps(path, prefix="", is_src=False, vars=None, reverse_map=None):
             with NamedTemporaryFile(mode="w", delete=True) as f:
                 f.write(deps_text)
                 f.flush()
-                dep_deps, dep_gclient_gn_args, dep_cipd_deps, _ = parse_deps(
-                    f.name,
-                    format_path(dep),
-                    dep == "src",
-                    deps_module.vars | vars,
-                    reverse_map,
+                dep_deps, dep_gclient_gn_args, dep_cipd_deps, dep_gcs_deps, _ = (
+                    parse_deps(
+                        f.name,
+                        format_path(dep),
+                        dep == "src",
+                        deps_module.vars | vars,
+                        reverse_map,
+                    )
                 )
                 real_deps.update(dep_deps)
                 gclient_gn_args.update(dep_gclient_gn_args)
                 cipd_deps.update(dep_cipd_deps)
-    return real_deps, gclient_gn_args, cipd_deps, reverse_map
+                gcs_deps.update(dep_gcs_deps)
+    return real_deps, gclient_gn_args, cipd_deps, gcs_deps, reverse_map
 
 
 repos_with_changed_url = {
@@ -326,6 +354,11 @@ def generate_cipd_cmds(cipd_deps, enabled_deps):
             yield f"cipd install {cipd_path_substitute(package['package'])} {package['version']} -root {dep}"
 
 
+def generate_gcs_cmds(gcs_deps):
+    for path, package in gcs_deps.items():
+        yield f"# Unhandled gcs dependency {path}: {package}"
+
+
 if __name__ == "__main__":
     if len(sys.argv) != 4:
         eprint(f"Usage: {sys.argv[0]} ACTION PATH_OR_ELECTRON_VERSION PKGNAME")
@@ -344,9 +377,9 @@ if __name__ == "__main__":
         with NamedTemporaryFile(mode="w", delete=True) as f:
             f.write(deps_text)
             f.flush()
-            git_deps, gargs, cipd_deps, reverse_map = parse_deps(f.name)
+            git_deps, gargs, cipd_deps, gcs_deps, reverse_map = parse_deps(f.name)
     else:
-        git_deps, gargs, cipd_deps, reverse_map = parse_deps(deps_path)
+        git_deps, gargs, cipd_deps, gcs_deps, reverse_map = parse_deps(deps_path)
     if action == "print":
         for name, value in git_deps.items():
             print(f"git: {name} = {value}")
@@ -354,7 +387,8 @@ if __name__ == "__main__":
             print(f"cipd: {name} = {value}")
     elif action == "update":
         update_pkgbuild(git_deps, reverse_map, [])
-    elif action == "generate":
+    
+    if action == "generate" or action == "update":
         garg_cmd = generate_gclient_args(gargs)
         # cipd dependencies are usually binary blobs. Only add the necessary parts.
         cipd_cmds = generate_cipd_cmds(
@@ -369,7 +403,12 @@ if __name__ == "__main__":
                 ("src/third_party/devtools-frontend/src/third_party/esbuild", False),
             ],
         )
+        # gcs dependencies are usually binary blobs. They are not handled yet.
+        gcs_cmds = generate_gcs_cmds(gcs_deps)
         managed_script = generate_managed_scripts(
-            git_deps, [garg_cmd] + list(cipd_cmds), pkgname, reverse_map
+            git_deps,
+            [garg_cmd] + list(cipd_cmds) + list(gcs_cmds),
+            pkgname,
+            reverse_map,
         )
     print("Done")
