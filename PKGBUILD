@@ -1,14 +1,14 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgbase=stc-isp-wine
-pkgname=(stc-isp{,-tiny}-wine)
-pkgver=6.93
+pkgname=(stcai-isp{,-tiny}-wine)
+pkgver=6.94E
 pkgrel=1
 arch=('x86_64')
-url="http://www.stcmcudata.com"
+url="http://www.stcmcudata.com/INDEX-CHANGE.HTM"
 license=('unknow')
-provides=('STC-ISP')
-conflicts=('stc-isp' 'stc-isp-bin')
+provides=('STC-ISP' 'STCAI-ISP')
+conflicts=('stc-isp' 'stcai-isp' 'stc-isp-bin')
 replaces=('stc-isp-bin')
 depends=('wine' 'wqy-microhei' 'winetricks' 'wine-mono' 'wine-gecko')
 optdepends=()
@@ -16,15 +16,15 @@ makedepends=('libarchive')
 backup=()
 options=('!strip')
 install=${pkgname}.install
-source=("${pkgname%-wine}-v${pkgver}.zip::${url}/STCISP/${pkgname%-wine}-15xx-v${pkgver}.zip"
-        "${pkgname%-wine}-tiny-v${pkgver}.zip::${url}/STCISP/${pkgname%-wine}-15xx-v${pkgver}-tiny.zip"
-        "stc-isp-wine.install"
-        "stc-isp-tiny-wine.install"
+source=("${pkgname%-wine}-v${pkgver}.zip::http://www.stcmcudata.com/STCISP/${pkgname%-wine}-v${pkgver}.zip"
+        "${pkgname%-wine}-tiny-v${pkgver}.zip::http://www.stcmcudata.com/STCISP/${pkgname%-wine}-v${pkgver}-tiny.zip"
+        "stcai-isp-wine.install"
+        "stcai-isp-tiny-wine.install"
         "icon.svg")
-sha256sums=('e1b018e286837895ed6dd6c22d9f6aecaf8966ffe7f5ef5f19a91c5b80c48dd0'
-            '5fb97da5c17a8e2732f4ffd7083854865403b050bb01b1688f12eb08e52acdb7'
-            'b2a93211b74f6e23a9c4dd508c65bf374c0a03c11174092f6ccec3e9194e47a6'
-            'b2a93211b74f6e23a9c4dd508c65bf374c0a03c11174092f6ccec3e9194e47a6'
+sha256sums=('ccfa333783e09bdd02f1345ee02ef69df57d19f9c30373ee68e33ef153bbc827'
+            '2d46b8beeb42e53b0fbbbf9210bdfccf2b02811e3945731de0e684cfec9b422f'
+            'ddcf8bdd41c3bd5f1b004bff265516efe64e730be534a2e85f44c76c865b6bd4'
+            'ddcf8bdd41c3bd5f1b004bff265516efe64e730be534a2e85f44c76c865b6bd4'
             'c04d3cf704c9055e4b0bb010d946c5e90710677c459def826f762c8e9d717538')
 # noextract=("${pkgname%-wine}-v${pkgver}.zip"
 #             "${pkgname%-wine}-tiny-v${pkgver}.zip")
@@ -36,10 +36,10 @@ sha256sums=('e1b018e286837895ed6dd6c22d9f6aecaf8966ffe7f5ef5f19a91c5b80c48dd0'
 #     bsdtar -xf  "${srcdir}/${pkgname%-wine}-tiny-v${pkgver}.zip"
 # }
 
-package_stc-isp-wine() {
+package_stcai-isp-wine() {
     export LC_CTYPE="zh_CN.UTF-8"
 
-    pkgdesc="Wine STC-ISP 下载编程烧录软件"
+    pkgdesc="Wine STCAI-ISP 下载编程烧录软件"
 
     _stc="opt/STCMCU"
     _ftname="wqy-microhei.ttc"
@@ -157,10 +157,10 @@ Version=${pkgver}
 EOF
 }
 
-package_stc-isp-tiny-wine() {
+package_stcai-isp-tiny-wine() {
     export LC_CTYPE="zh_CN.UTF-8"
 
-    pkgdesc="Wine STC-ISP 简化版下载编程烧录软件"
+    pkgdesc="Wine STCAI-ISP 简化版下载编程烧录软件"
 
     _stc="opt/STCMCU"
     _ftname="wqy-microhei.ttc"
