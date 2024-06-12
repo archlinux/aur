@@ -3,27 +3,24 @@
 pkgname=('psiphon-console-client' 'psiphon-server')
 pkgbase=psiphon-tunnel-core
 pkgver=2.0.31
-pkgrel=1
+pkgrel=2
 pkgdesc="Psiphon Internet censorship circumvention system."
 arch=('i686' 'x86_64')
 _gomod="github.com/Psiphon-Labs/psiphon-tunnel-core"
 url="https://$_gomod"
 license=('GPL')
 makedepends=('go')
+options=(!debug)
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 install=psiphon.install
 
 export GO111MODULE=off
 
-export CGO_CPPFLAGS="$CPPFLAGS"
-export CGO_CFLAGS="$CFLAGS"
-export CGO_CXXFLAGS="$CXXFLAGS"
-export CGO_LDFLAGS="$LDFLAGS"
+export CGO_CPPFLAGS="${CPPFLAGS}"
+export CGO_CFLAGS="${CFLAGS}"
+export CGO_CXXFLAGS="${CXXFLAGS}"
+export CGO_LDFLAGS="${LDFLAGS}"
 export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-
-if (( $(vercmp "$(go version | cut -d' ' -f3)" go1.21) >= 0 )); then
-	export GOFLAGS+=" -tags=PSIPHON_DISABLE_QUIC "
-fi
 
 build() {
 	function echorun {
