@@ -1,0 +1,23 @@
+pkgbase = figurine-bin
+	pkgdesc = A terminal client for MangaDex
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/arsham/figurine
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = Apache
+	provides = figurine
+	conflicts = figurine
+	source = https://github.com/arsham/figurine/raw/v1.3.0/README.md
+	source = https://github.com/arsham/figurine/raw/v1.3.0/LICENSE
+	sha256sums = 18daeccc025edb298d9d8fbd13652a31add19c0d410c5d7e6b23a8cf4edf0404
+	sha256sums = 07944e5d027ada147fa405b891016d1c180a22b7bed0a306a4019157725dac1e
+	source_x86_64 = figurine-1.3.0.tar.gz::https://github.com/arsham/figurine/releases/download/v1.3.0/figurine_linux_amd64_v1.3.0.tar.gz
+	sha256sums_x86_64 = e72430de0ca4b4b4548495d803856f5fec223f43c59a97a0bfcc714710d5032a
+	source_aarch64 = figurine-1.3.0.tar.gz::https://github.com/arsham/figurine/releases/download/v1.3.0/figurine_linux_arm64_v1.3.0.tar.gz
+	sha256sums_aarch64 = c49d0eb3d6e84a14c6e76c553f7c57b1ed3ce61fca1f3c7ce39f95c2a5a99329
+	source_armv7h = figurine-1.3.0.tar.gz::https://github.com/arsham/figurine/releases/download/v1.3.0/figurine_linux_arm_v1.3.0.tar.gz
+	sha256sums_armv7h = 427686f46cf4548b7d0f52cc8077bbb1812b38c148fea0352fe73e582f2d489c
+
+pkgname = figurine-bin
