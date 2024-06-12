@@ -1,4 +1,4 @@
-# Maintainer: Matt Quintanilla < mattt @ mat quintanilla . xyz
+# Maintainer: Matt Quintanilla < matt @ matt quintanilla . xyz
 _pkgname='devtoys'
 pkgname="${_pkgname}-bin"
 pkgver=2.0.1.0
