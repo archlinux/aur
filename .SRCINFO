@@ -1,6 +1,6 @@
 pkgbase = candy
 	pkgdesc = A reliable, low-latency, and anti-censorship virtual private network
-	pkgver = 5.8.9
+	pkgver = 5.8.10
 	pkgrel = 1
 	url = https://github.com/lanthora/candy
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = candy
 	depends = spdlog
 	depends = poco
 	backup = etc/candy.cfg
-	source = candy-5.8.9.tar.gz::https://github.com/lanthora/candy/archive/refs/tags/v5.8.9.tar.gz
-	sha256sums = 41878b07b1aabf7875e9ddec9b3beb4b16f995163d936ac704784f7d9afc4a6a
+	source = candy-5.8.10.tar.gz::https://github.com/lanthora/candy/archive/refs/tags/v5.8.10.tar.gz
+	sha256sums = a22869d272017c9cb09b14ff9223aa2f169680fb27df37c231e7fc7a26fe471d
 
 pkgname = candy
