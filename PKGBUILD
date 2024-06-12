@@ -3,12 +3,12 @@ pkgbase=python-drizzlepac
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=3.6.2
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="AstroDrizzle for HST images"
 arch=('i686' 'x86_64')
 url="http://www.stsci.edu/scientific-community/software/drizzlepac.html"
-license=('BSD')
+license=('BSD-3-Clause')
 makedepends=('python-setuptools-scm>=3.4'
              'python-wheel'
              'python-build'
@@ -53,7 +53,7 @@ checkdepends=('python-pytest'
 #              'python-crds'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
        "https://raw.githubusercontent.com/spacetelescope/drizzlepac/master/tests/hap/ACSWFC3ListDefault50.csv")
-md5sums=('0fd1bd62e67b2306aa3e6597a6a086dd'
+md5sums=('8cc6fdeab3a8483033d4e10267ea6a09'
          'acaf7d8bcf0f6244042bba0df3d03679')
 
 get_pyinfo() {
@@ -69,7 +69,7 @@ prepare() {
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
-    python -m build --wheel --no-isolation
+    python -m build --wheel --no-isolation --skip-dependency-check
 
 #   msg "Building Docs"
 #   python setup.py build_sphinx
@@ -96,7 +96,7 @@ check() {
 }
 
 package_python-drizzlepac() {
-    depends=('python>=3.9'
+    depends=('python>=3.10'
              'python-scipy'
              'python-matplotlib'
              'python-requests'
