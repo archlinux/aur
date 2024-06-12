@@ -1,0 +1,4 @@
+[libxml2]
+source = "git"
+git = "https://gitlab.gnome.org/GNOME/libxml2.git"
+prefix = "v"

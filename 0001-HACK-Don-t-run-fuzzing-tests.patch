@@ -9,7 +9,7 @@ They take way too long.
  1 file changed, 1 insertion(+), 4 deletions(-)
 
 diff --git a/Makefile.am b/Makefile.am
-index 0a49d37547b8..f1bc8deb3364 100644
+index 4cb9a5cc90b7..014fdb719641 100644
 --- a/Makefile.am
 +++ b/Makefile.am
 @@ -6,11 +6,8 @@ SUBDIRS = include . doc example xstc
