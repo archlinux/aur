@@ -12,8 +12,15 @@ license=('GPL3')
 depends=('emacs' 'emacs-dash' 'emacs-graphql' 'emacs-treepy')
 makedepends=('git' 'texlive-core')
 provides=('emacs-ghub')
-source=("git+https://github.com/${_github_org}/${_github_repo}.git#tag=v${pkgver}")
-md5sums=('SKIP')
+source=("git+https://github.com/${_github_org}/${_github_repo}.git#tag=v${pkgver}"
+        "0001-make-Explicitly-specify-output-directory-for-makeinf.patch")
+md5sums=('0111387a567e4bf62ccbc46e897e1dae'
+         '777222ee44c8da9f78a1e10bc3c4d714')
+
+prepare() {
+  cd "$srcdir/${_github_repo}"
+  patch --strip=1 --input=../0001-make-Explicitly-specify-output-directory-for-makeinf.patch
+}
 
 build() {
   cd "$srcdir/${_github_repo}"
