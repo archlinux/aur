@@ -6,7 +6,7 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-curl
-pkgver=8.7.1
+pkgver=8.8.0
 pkgrel=1
 arch=('any')
 pkgdesc="An URL retrival utility and library (Android ${_android_arch})"
@@ -26,7 +26,7 @@ options=(!strip !buildflags staticlibs !emptydirs)
 source=("${url}/download/curl-${pkgver}.tar.bz2"
         "0002-nghttp2-static.patch"
         "0004-more-static-fixes.patch")
-md5sums=('a7335b3daf80b9a0ee884fcb62324f88'
+md5sums=('d5265a351fdfb12ec840a2a0ba1ce9ff'
          '08976b11b3e986c43c2ebd8eac36e2fb'
          '98ba4e01c3545650087a4852192ce10e')
 
@@ -66,6 +66,6 @@ package() {
     make DESTDIR="$pkgdir" install
     rm -r "${pkgdir}/${ANDROID_PREFIX_BIN}/curl"
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
