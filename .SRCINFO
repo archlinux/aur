@@ -1,10 +1,12 @@
 pkgbase = perl-net-amazon-signature-v4
 	pkgdesc = Implements the Amazon Web Services signature version 4, AWS4-HMAC-SHA256
 	pkgver = 0.21
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/Net-Amazon-Signature-V4
 	arch = any
 	license = GPL-1.0-or-later OR Artistic-1.0-Perl
+	checkdepends = perl-file-slurper
+	checkdepends = perl-http-message
 	depends = perl
 	depends = perl-uri
 	options = !emptydirs
