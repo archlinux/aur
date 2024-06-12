@@ -1,9 +1,9 @@
 # Maintainer: Santiago Burgos <santiago.burgos1089@gmail.com>
-# Contributer: Manuel Hüsers <aur@huesers.de>
+# Contributor: Manuel Hüsers <aur@huesers.de>
 # Many options will remain here as leftovers in case the packaging in Github resumes once again
 
 pkgname=mintlocale
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="Language and locale selection tool"
 arch=('any')
@@ -28,7 +28,7 @@ depends=(
 source=("${pkgname}-${pkgver}.tar.xz::${url}/${pkgname}_${pkgver}.tar.xz"
         "im_apt_check.patch"
         "install_remove_apt_check.patch")
-sha256sums=('2b82b8981a7e33352587c7086b277d3c4e818766b110512e240d69ac962d72c5'
+sha256sums=('ce08ffeefd174fe4829713f66b4192e8e06bc07fcc977377babfc43ffe0a047d'
             '21778d62b28e677cfb8d7784c5b486ff373534de6e6fb5603e2c8bd268abef7b'
             '4b8bc562521564022ae657ce1db7c3170d4184f955150bd9e51b871c73f4a996')
 
