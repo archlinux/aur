@@ -2,8 +2,8 @@
 
 pkgname=deadbeef-plugin-gui-qt6-git
 pkgver=1.9.r183.gf401c21
-pkgrel=1
-pkgdesc="Qt6 plugin for DeaDBeeF (Qt6 branch) (latest commit)"
+pkgrel=2
+pkgdesc="Qt6 plugin for DeaDBeeF (Qt 6 branch) (latest commit)"
 url="https://github.com/kuba160/ddb_gui_qt5"
 license=('GPL-2.0-or-later')
 arch=('x86_64')
