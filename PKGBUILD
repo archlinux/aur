@@ -1,14 +1,14 @@
 # Maintainer: Fabien LEFEBVRE <contact@d1ceward.com>
 
 pkgname=netrc
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc='Utility that allows users to manage netrc files'
 arch=('x86_64')
 url='https://github.com/dokku/netrc'
 license=('MIT')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1c1a048347d3d05f041649e5d77f2dab1f06b59ea4469a358f0e695f94085458')
+sha256sums=('51d7de091499ea325c9ef644c3ff4f33291cacc421cb0a059d9818e880a0e96d')
 
 build() {
   cd "${pkgname}-${pkgver}"
