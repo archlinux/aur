@@ -5,7 +5,7 @@
 # Contributor: Dr.Egg <rwhite@archlinux.us>
 
 pkgname=musescore-midi
-pkgver=4.3.0
+pkgver=4.3.2
 pkgrel=1
 pkgdesc='Create, play and print beautiful sheet music / With patch for midi playback support'
 arch=(x86_64)
@@ -43,7 +43,7 @@ optdepends=('lame: MP3 export')
 provides=('musescore')
 conflicts=('musescore')
 options=(!lto)
-_tag=v4.3.0
+_tag=v4.3.2
 source=(
   git+https://github.com/musescore/MuseScore.git#tag=${_tag}
   midi.patch
