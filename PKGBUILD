@@ -2,7 +2,7 @@
 # Contributor: Evert Vorster <evorster@gmail.com>
 
 pkgname=vegastrike-engine-release-git
-pkgver=0.8.1.beta2.r25.g057726978
+pkgver=0.8.1.beta2.r59.g837ed6069
 pkgrel=1
 pkgdesc="A spaceflight simulator in massive universe"
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(boost-libs python freeglut gtk3 libvorbis openal sdl glu
 
          # namcap implicit depends
          glibc gcc-libs glib2 zlib libpng libglvnd expat libjpeg-turbo)
-makedepends=(git cmake boost gcc12 lsb-release)
+makedepends=(git cmake boost)
 provides=(vegastrike-engine)
 conflicts=(vegastrike-engine)
 source=("git+https://github.com/vegastrike/Vega-Strike-Engine-Source#branch=0.8.x")
@@ -27,7 +27,6 @@ build(){
   # buildtype None, enable ffmpeg, ogre will fail, not supported
   # https://github.com/vegastrike/Vega-Strike-Engine-Source/issues/777#issuecomment-1763235378
 
-  export CC=/usr/bin/gcc-12 CXX=/usr/bin/g++-12
   cmake -B build -S "Vega-Strike-Engine-Source/engine" -Wno-dev \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -42,6 +41,3 @@ package() {
   rm -rf ${pkgdir}/usr/include
   rm -rf ${pkgdir}/usr/lib
 }
-
-# lsb-release as makedepends avoid issue if dpkg is installed, recognized as Debian.
-# Don't happen the same if rpm-tools is intalled
