@@ -1,13 +1,14 @@
 # Maintainer: Meowser <edward dot o dot holmes at gmail dot com>
 # Contributor: Douglas Iuri Medeiros Cabral <douglasimcabral at zohomail dot com>
 pkgname=forticlient-vpn
-pkgver=7.2.2.0753
-pkgrel=2
+pkgver=7.4.0.1636
+pkgrel=1
 pkgdesc="Build through the official package of FortiClient VPN only"
 arch=("x86_64")
 url="https://www.fortinet.com/support/product-downloads"
 license=('custom:fortinet')
-depends=('systemd' 'nss' 'gtk3' 'libxss' 'polkit' 'openssl' 'libnotify' 'org.freedesktop.secrets' 'libappindicator-gtk2' 'gzip' 'iptables')
+#depends=('systemd' 'nss' 'gtk3' 'libxss' 'polkit' 'openssl' 'libnotify' 'org.freedesktop.secrets' 'libappindicator-gtk2' 'gzip' 'iptables')
+depends=('alsa-lib' 'gtk2' 'libsecret' 'nss' 'gtk3' 'libnotify')
 optdepends=(
 	'mate-polkit: for polkit authentication for the MATE'
 	'polkit-gnome: for polkit authentication for the GNOME'
@@ -20,7 +21,7 @@ provides=('fortivpn' 'FortiClient')
 conflicts=('forticlient')
 install='forticlient-vpn.install'
 source=("https://filestore.fortinet.com/forticlient/forticlient_vpn_${pkgver}_amd64.deb")
-sha256sums=('9ec6f07da10142417f154bbe83a247b8422e05dfd505766527b039a1089858bf')
+sha256sums=('197de51135c093233054107120f55df3720b01a6879eef15ec2fc84f9217b62b')
 
 
 package() {
