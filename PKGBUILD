@@ -2,7 +2,7 @@
 
 _pkgname=ptex
 pkgname=mingw-w64-${_pkgname}
-pkgver=2.4.2
+pkgver=2.4.3
 pkgrel=1
 pkgdesc='Per-Face Texture Mapping for Production Rendering (mingw-w64)'
 url='http://ptex.us/'
@@ -18,7 +18,7 @@ optdepends=()
 source=(
 	"$_pkgname-$pkgver.tar.gz::https://github.com/wdas/${_pkgname}/archive/v${pkgver}.tar.gz"
 )
-sha256sums=('c8235fb30c921cfb10848f4ea04d5b662ba46886c5e32ad5137c5086f3979ee1')
+sha256sums=('435aa2ee1781ff24859bd282b7616bfaeb86ca10604b13d085ada8aa7602ad27')
 
 _srcdir="${_pkgname}-${pkgver}"
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
@@ -46,7 +46,7 @@ build() {
 check() {
 	unix2dos "${_srcdir}/src/tests/rtestok.dat"
 	unix2dos "${_srcdir}/src/tests/ftestok.dat"
-	
+
 	for _arch in ${_architectures}; do
 		ARCH_CMAKE=${_arch}-cmake ${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" -DBUILD_TESTING=ON
 		cmake --build "build-${_arch}"
