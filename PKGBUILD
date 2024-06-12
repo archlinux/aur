@@ -8,7 +8,7 @@ url="https://gitlab.com/T4cC0re/cryptsetup-vault"
 license=('Apache-2.0')
 makedepends=('go>=1.11.1')
 depends=('cryptsetup' 'mkinitcpio-netconf' 'ca-certificates-utils')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/-/archive/${pkgver}/cryptsetup-vault-v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/-/archive/v${pkgver}/cryptsetup-vault-v${pkgver}.tar.gz")
 noextract=("${pkgname}-${pkgver}.tar.gz")
 
 build(){
