@@ -3,7 +3,7 @@
 pkgbase='python-bronzebeard'
 pkgname=('python-bronzebeard')
 _module='bronzebeard'
-pkgver='0.2.1'
+pkgver='0.2.2'
 pkgrel=1
 pkgdesc="Minimal ecosystem for bare-metal assembly RISC-V development"
 url="https://github.com/theandrew168/bronzebeard"
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('e956aa7b7e7ef8b4468c3c5f19c1ce5c0a67f7e98ecef5b8cd2dcef18028b269')
+sha256sums=('397eef9a2fdedee4e99d67764f5a1a1d1c7d5899ce9fa14927568ae04312a0e2')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
