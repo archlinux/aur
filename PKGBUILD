@@ -1,16 +1,17 @@
 # Maintainer: Ersei <contact at ersei dot net>
 # Contributer: Paul <paul@mrarm.io>
 pkgname=mcpelauncher-ui-git
-pkgver=0.11.0.r8.gd56d29b
+pkgver=0.15.0.r0.g8ba3a05
 pkgrel=1
 pkgdesc="Minecraft: PE Linux launcher UI"
 arch=('x86_64')
 url="https://github.com/minecraft-linux/mcpelauncher-ui-manifest"
-license=('GPL3' 'MIT')
+license=('GPL-3.0-only' 'MIT')
 makedepends=('git' 'cmake')
 depends=('qt6-base' 'qt6-webengine' 'qt6-declarative' 'qt6-svg' 'libzip' 'protobuf' 'libxi' 'libxrandr' 'libxinerama' 'libxcursor' 'mcpelauncher-client')
 provides=('mcpelauncher-ui')
 conflicts=('mcpelauncher-ui')
+optdepends=('mcpelauncher-msa-ui-qt-git: Microsoft authentication for version before 1.16.1X')
 source=(
   'git+https://github.com/minecraft-linux/mcpelauncher-ui-manifest.git#branch=qt6'
   'git+https://github.com/MCMrARM/axml-parser.git'
@@ -36,6 +37,7 @@ md5sums=(
 
 pkgver() {
   git -C mcpelauncher-ui-manifest describe --long --tags | sed 's/^v//;s/.qt6//;s/\([^-]*-g\)/r\1/;s/-/./g'
+
 }
 prepare() {
   cd mcpelauncher-ui-manifest
@@ -55,7 +57,7 @@ build() {
   mkdir -p build
   cd build
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
-  make
+  cmake --build . --parallel
 }
 package() {
   cd mcpelauncher-ui-manifest/build
