@@ -1,6 +1,6 @@
 pkgbase = android-x86-curl
 	pkgdesc = An URL retrival utility and library (Android x86)
-	pkgver = 8.7.1
+	pkgver = 8.8.0
 	pkgrel = 1
 	url = https://curl.haxx.se
 	arch = any
@@ -19,10 +19,10 @@ pkgbase = android-x86-curl
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://curl.haxx.se/download/curl-8.7.1.tar.bz2
+	source = https://curl.haxx.se/download/curl-8.8.0.tar.bz2
 	source = 0002-nghttp2-static.patch
 	source = 0004-more-static-fixes.patch
-	md5sums = a7335b3daf80b9a0ee884fcb62324f88
+	md5sums = d5265a351fdfb12ec840a2a0ba1ce9ff
 	md5sums = 08976b11b3e986c43c2ebd8eac36e2fb
 	md5sums = 98ba4e01c3545650087a4852192ce10e
 
