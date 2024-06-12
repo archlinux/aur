@@ -67,8 +67,8 @@ prepare() {
 
   cd "$_gitname"
 
-#  _lasttag=$(git for-each-ref --sort=creatordate --format '%(refname)' refs/tags | tail -n1)
-#  git reset --hard "${_lasttag}"
+  _lastbranch=$(git branch --all --sort='-*authordate' | tail -2 | head -1)
+  git reset --hard "${_lastbranch}"
 
   if [[ -n "$_clangbuild" ]]; then
     msg "Building with clang"
