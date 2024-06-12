@@ -4,7 +4,7 @@
 pkgname=python-pysocks-git
 _projectname=pysocks
 pkgver=20190919
-pkgrel=3
+pkgrel=4
 pkgdesc='Routes sockets of any TCP service through a SOCKS4, SOCKS5 or HTTP proxy (Anorov fork of socksipy)'
 arch=('any')
 license=('BSD-3-Clause')
@@ -30,6 +30,7 @@ build() {
 package() {
   cd "$srcdir/$_projectname"
   python setup.py install --root="$pkgdir/" --optimize=1
+  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
 
 # vim:set ts=2 sw=2 et:
