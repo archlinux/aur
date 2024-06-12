@@ -2,7 +2,7 @@
 
 pkgname=libldap-2.5
 pkgver=2.5.16
-pkgrel=2
+pkgrel=3
 pkgdesc="Lightweight Directory Access Protocol (LDAP) client libraries"
 arch=('x86_64')
 url="https://www.openldap.org/"
