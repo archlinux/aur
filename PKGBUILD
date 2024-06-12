@@ -68,7 +68,7 @@ prepare() {
   cd "$_gitname"
 
   _lastbranch=$(git branch --all --sort='-*authordate' | tail -2 | head -1)
-  git reset --hard "${_lastbranch}"
+  git checkout "${_lastbranch}"
 
   if [[ -n "$_clangbuild" ]]; then
     msg "Building with clang"
