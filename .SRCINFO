@@ -1,7 +1,7 @@
 pkgbase = kitch-bin
 	pkgdesc = The itch.io desktop app (beta channel) (binary release)
 	pkgver = 26.1.9
-	pkgrel = 4
+	pkgrel = 5
 	url = https://itchio.itch.io/kitch
 	arch = x86_64
 	license = MIT

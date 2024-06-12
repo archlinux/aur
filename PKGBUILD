@@ -2,7 +2,7 @@
 
 pkgname=kitch-bin
 pkgver=26.1.9
-pkgrel=4
+pkgrel=5
 pkgdesc="The itch.io desktop app (beta channel) (binary release)"
 url="https://itchio.itch.io/kitch"
 license=('MIT')
@@ -24,8 +24,8 @@ prepare() {
   echo "# Creating two symlinks under the HOME directory" && sleep 1
   echo "# to fix the firejail issue, see:" && sleep 1
   echo "# https://github.com/itchio/itch/issues/2732" && sleep 4
-  _DIR="$HOME/.config/kitch/prereqs/firejail-amd64"
-  _DIR2="$HOME/.config/kitch/prereqs/firejail-386"
+  _DIR="$HOME/.config/itch/prereqs/firejail-amd64"
+  _DIR2="$HOME/.config/itch/prereqs/firejail-386"
   mkdir -p $_DIR $_DIR2
   ln -sf /usr/bin/firejail $_DIR
   ln -sf /usr/bin/firejail $_DIR2
@@ -54,5 +54,6 @@ package() {
   install -Dm644 resources/app/src/static/images/window/kitch/icon-32.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/kitch.png"
   rm LICENSE kitch.desktop itch-linux-amd64-$pkgver.zip
   mv * "$pkgdir/opt/kitch"
+  ln -s /opt/kitch/itch "$pkgdir/opt/kitch/kitch"
   ln -s /opt/kitch/kitch "$pkgdir/usr/bin"
 }
