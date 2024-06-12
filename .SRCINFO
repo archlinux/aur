@@ -1,0 +1,21 @@
+pkgbase = mangadesk-bin
+	pkgdesc = A terminal client for MangaDex
+	pkgver = 0.7.8
+	pkgrel = 1
+	url = https://github.com/darylhjd/mangadesk
+	arch = x86_64
+	arch = i686
+	license = MIT
+	depends = glibc
+	provides = mangadesk
+	conflicts = mangadesk
+	source = https://github.com/darylhjd/mangadesk/raw/v0.7.8/README.md
+	source = https://github.com/darylhjd/mangadesk/raw/v0.7.8/LICENSE
+	sha256sums = 43fc3bd3d6bf52f2ae92cc276a1ac01bd1ac3e75d007b30a6b22f49258d2c35f
+	sha256sums = e743d91289001adbc103d2a56569846913592ca72f89f4be151a7d056f31ade6
+	source_x86_64 = mangadesk-0.7.8::https://github.com/darylhjd/mangadesk/releases/download/v0.7.8/mangadesk_v0-7-8_x64
+	sha256sums_x86_64 = b2fa020f42182dd4af059b5bd814cdb5d2c62a91a4acd580a33df190982eb86d
+	source_i686 = mangadesk-0.7.8::https://github.com/darylhjd/mangadesk/releases/download/v0.7.8/mangadesk_v0-7-8_x32
+	sha256sums_i686 = 049f47fe3cdfea6b29809a3a9a5c3729e5776accc23e9979f6fba0767ff8232a
+
+pkgname = mangadesk-bin
