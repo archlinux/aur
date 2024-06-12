@@ -2,12 +2,12 @@
 
 pkgbase=platformio-core
 pkgname=('platformio-core' 'platformio-core-udev')
-pkgver=6.1.14
-pkgrel=2
+pkgver=6.1.15
+pkgrel=1
 pkgdesc='An open source ecosystem for IoT development'
 arch=('any')
 url='https://platformio.org'
-license=('Apache')
+license=('Apache-2.0')
 depends=(
   'python'
   'python-bottle'
@@ -38,15 +38,9 @@ optdepends=(
   'python-click-completion: for shell completions'
   'python-shellingham: for shell completions'
 )
-_commit='9d1593da0b5a23df19fe7d7c0460bc0ff47731a5'
-source=("$pkgbase::git+https://github.com/platformio/platformio-core#commit=$_commit")
-b2sums=('SKIP')
-
-pkgver() {
-  cd "$pkgbase"
-
-  git describe --tags | sed 's/^v//'
-}
+source=("$pkgbase::git+https://github.com/platformio/platformio-core#tag=v$pkgver")
+sha512sums=('cdf4b9568d13e85f6dd4295467a7a08184db923d6a730df3d9bdee2eb4a06bf283ddf2fc2adafb5e4e4839903f8ad0c4d9e2f52e4f511672df4cb23e82e2c98f')
+b2sums=('88f5483d05afd86a57c75ca197784a961bf88b179bbe04d6c89fbdd047988687d628620f81a69b4abb95e9e2c1a9fd1e465c710f0c3c9decc610de4a3ed6298d')
 
 build() {
   cd "$pkgbase"
