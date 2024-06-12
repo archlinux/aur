@@ -1,0 +1,61 @@
+--- a/libmariadb/CMakeLists.txt
++++ b/libmariadb/CMakeLists.txt
+@@ -419,17 +419,6 @@
+     ADD_DEFINITIONS("-DHAVE_REMOTEIO=1")
+   ENDIF()
+ ENDIF()
+-IF(NOT WIN32)
+-  IF(NOT AUTH_GSSAPI_PLUGIN_TYPE MATCHES "OFF")
+-    INCLUDE(${CC_SOURCE_DIR}/cmake/FindGSSAPI.cmake)
+-    IF(GSSAPI_FOUND)
+-      INCLUDE_DIRECTORIES(${GSSAPI_INCS})
+-      IF(AUTH_GSSAPI_PLUGIN_TYPE MATCHES "STATIC")
+-        SET(SYSTEM_LIBS ${SYSTEM_LIBS} ${GSSAPI_LIBS})
+-      ENDIF()
+-    ENDIF()
+-  ENDIF()
+-ENDIF()
+ INCLUDE(${CC_SOURCE_DIR}/plugins/CMakeLists.txt)
+ ADD_SUBDIRECTORY(include)
+ ADD_SUBDIRECTORY(libmariadb)
+--- a/libmariadb/plugins/auth/CMakeLists.txt
++++ b/libmariadb/plugins/auth/CMakeLists.txt
+@@ -94,38 +94,6 @@
+   ENDIF()
+ ENDIF()
+ 
+-#GSSAPI client authentication plugin
+-IF(NOT WIN32)
+-  INCLUDE(${CC_SOURCE_DIR}/cmake/FindGSSAPI.cmake)
+-  IF(GSSAPI_FOUND)
+-    SET(GSSAPI_SOURCES ${AUTH_DIR}/auth_gssapi_client.c ${AUTH_DIR}/gssapi_client.c ${AUTH_DIR}/gssapi_errmsg.c)
+-    IF (CMAKE_VERSION VERSION_GREATER 3.18)
+-      INCLUDE(CheckLinkerFlag)
+-      CHECK_LINKER_FLAG(C -Wl,--as-needed have__Wl___as_needed)
+-    ENDIF()
+-  ENDIF()
+-  SET(AUTH_GSSAPI_DEFAULT_CONFIG DYNAMIC)
+-ELSE()
+-  SET(GSSAPI_LIBS secur32)
+-  SET(GSSAPI_SOURCES ${AUTH_DIR}/auth_gssapi_client.c ${AUTH_DIR}/sspi_client.c ${AUTH_DIR}/sspi_errmsg.c)
+-  SET(AUTH_GSSAPI_DEFAULT_CONFIG DYNAMIC_AND_STATIC)
+-ENDIF()
+-IF(GSSAPI_SOURCES)
+-  REGISTER_PLUGIN(TARGET auth_gssapi_client
+-                  TYPE MARIADB_CLIENT_PLUGIN_AUTH
+-                  CONFIGURATIONS DYNAMIC STATIC OFF DYNAMIC_AND_STATIC
+-                  DEFAULT ${AUTH_GSSAPI_DEFAULT_CONFIG}
+-                  SOURCES ${GSSAPI_SOURCES}
+-                  INCLUDES ${CC_SOURCE_DIR}/plugins/auth ${GSSAPI_INCS}
+-                  LIBRARIES ${GSSAPI_LIBS})
+-  IF(CMAKE_C_COMPILER_ID MATCHES "Clang")
+-    SET_SOURCE_FILES_PROPERTIES(${GSSAPI_SOURCES} PROPERTY COMPILE_FLAGS "-Wno-deprecated-declarations")
+-  ENDIF()
+-  IF(have__Wl___as_needed AND TARGET auth_gssapi_client)
+-    SET_TARGET_PROPERTIES(auth_gssapi_client PROPERTIES LINK_FLAGS "-Wl,--as-needed")
+-  ENDIF()
+-ENDIF()
+-
+ # old_password plugin
+ REGISTER_PLUGIN(TARGET mysql_old_password
+                 TYPE MARIADB_CLIENT_PLUGIN_AUTH
