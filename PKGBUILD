@@ -67,6 +67,7 @@ source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         allow-ANGLEImplementation-kVulkan.patch
         compiler-rt-adjust-paths.patch
         drop-flag-unsupported-by-clang17.patch
+        blink-fix-missing-stdlib-include.patch
         # Electron
         default_app-icon.patch
         electron-launcher.sh
@@ -74,6 +75,8 @@ source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         jinja-python-3.10.patch
         use-system-libraries-in-node.patch
         makepkg-source-roller.py
+        prepare-electron-source-tree.sh
+        gclient_args.gni
         # BEGIN managed sources
         chromium-mirror::git+https://github.com/chromium/chromium.git#tag=124.0.6367.243
         chromium-mirror_third_party_nan::git+https://github.com/nodejs/nan.git#commit=e14bdcd1f72d62bca1d541b66da43130384ec213
@@ -237,14 +240,17 @@ sha256sums=('3f9cb77d22b75ce37adc4c90012d54a1cfc07619e20750a3cbee499d646987d3'
             'c2bc4e65ed2a4e23528dd10d5c15bf99f880b7bbb789cc720d451b78098a7e12'
             '8f81059d79040ec598b5fb077808ec69d26d6c9cbebf9c4f4ea48b388a2596c5'
             'b3de01b7df227478687d7517f61a777450dca765756002c80c4915f271e2d961'
-            '3bd35dab1ded5d9e1befa10d5c6c4555fe0a76d909fb724ac57d0bf10cb666c1'
+            '2654f5924e01c2b4cac1046d973b71614fb9d16fda659ddddd028d0b579174b4'
+            'a4a822e135b253c93089a80c679842cc470c6936742767ae09d952646889abd6'
             'dd2d248831dd4944d385ebf008426e66efe61d6fdf66f8932c963a12167947b4'
             '13fcf26193f4417fd5dfbc82a3f24e5c7a1cce82f729f6a73f1b1d3a7b580b34'
             '4484200d90b76830b69eea3a471c103999a3ce86bb2c29e6c14c945bf4102bae'
             '55dbe71dbc1f3ab60bf1fa79f7aea7ef1fe76436b1d7df48728a1f8227d2134e'
             'ff588a8a4fd2f79eb8a4f11cf1aa151298ffb895be566c57cc355d47f161f53f'
-            '3ae82375ba212c31fd4ba6f1fa4e2445eeca8eb8c952176131ad57c0258db224'
-            'f1674e6550645996c9e4fdb3de00f1f53978c2d4a72daec127d9e2973cc33ecb'
+            '2c8cd28cee0e1df1862e801794f210d2b7cac652f943cf94f43c2abe26f2a2f4'
+            '92f648bf8254e83405989eb173fa6984fcf4176114130f5cf5028f87c0686a0e'
+            '999e9c7d006334da8fdbd81816cfc8731408515968f22657ace3dea580f2777e'
+            'ff45dec4eb10be28cb411a0769c41f1536af7c6452ced295941512824b8f5951'
             '0b7a546ee6913c49519c10c293ac530ff381641a8a465fa2e184d6dbe0fb784d'
             'b8670cb7c3ff51e53dbfa77ad1508260e674a46ef0ec8a177d7dd6c4acd4f443'
             '3522166c3ca75316a172b7cc4fe12bba9367e30fed16df8193ede2e236dca8c5'
@@ -449,8 +455,6 @@ prepare() {
   #export VPYTHON_BYPASS='manually managed python not supported by chrome operations'
 
   echo "Putting together electron sources"
-  # Generate gclient gn args file and prepare-electron-source-tree.sh
-  python makepkg-source-roller.py generate electron/DEPS $pkgname
   rbash prepare-electron-source-tree.sh "$CARCH"
   mv electron src/electron
 
@@ -493,8 +497,10 @@ prepare() {
     third_party/libxml/chromium/*.cc \
     third_party/maldoca/src/maldoca/ole/oss_utils.h
 
+  patch -Np0 -i ../blink-fix-missing-stdlib-include.patch
+
   # Drop compiler flag that needs newer clang
-  patch -Np1 -i ../drop-flag-unsupported-by-clang17.patch
+  patch -Np0 -i ../drop-flag-unsupported-by-clang17.patch
 
   # Allow libclang_rt.builtins from compiler-rt >= 16 to be used
   patch -Np1 -i ../compiler-rt-adjust-paths.patch
