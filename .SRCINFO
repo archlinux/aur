@@ -1,6 +1,6 @@
 pkgbase = python-xopen
 	pkgdesc = Python library to pen compressed files transparently
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/pycompression/xopen/
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-xopen
 	depends = python-zstandard
 	depends = python-isal
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/x/xopen/xopen-2.0.1.tar.gz
-	sha256sums = 6c34127651e538cfdd67ec8016a6505ba386158bbfe3f615e105d49027d5968e
+	source = https://files.pythonhosted.org/packages/source/x/xopen/xopen-2.0.2.tar.gz
+	sha256sums = f19d83de470f5a81725df0140180ec71d198311a1d7dad48f5467b4ad5df6154
 
 pkgname = python-xopen
