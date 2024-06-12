@@ -1,7 +1,4 @@
-# Maintainer: Padraic Fanning < fanninpm AT miamioh DOT edu >
-# Contributor: Jake <aur@ja-ke.tech>
-# Contributor: Ian MacKay <immackay0@gmail.com>
-
+# Maintainer: Matt Quintanilla < mattt @ mat quintanilla . xyz
 _pkgname='devtoys'
 pkgname="${_pkgname}-bin"
 pkgver=2.0.1.0
