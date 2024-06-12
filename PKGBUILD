@@ -2,10 +2,10 @@
 _pkgname=stardew-valley-designer
 pkgname=stardew-valley-designer-bin
 pkgver=0.12.0
-pkgrel=7
+pkgrel=8
 pkgdesc="The goal of this project is to provide a finely tuned editor for designing your farm and the interior of all its buildings."
 arch=('x86_64')
-url='https://stardewdesigner.com'
+url='https://stardewdesigner.com/'
 license=('Apache-2.0')
 depends=('alsa-lib'
          'fontconfig'
@@ -13,7 +13,6 @@ depends=('alsa-lib'
          'glibc'
          'gcc-libs'
          'hicolor-icon-theme'
-         'jre-openjdk-headless'
          'libgl'
          'libx11'
          'libxext'
