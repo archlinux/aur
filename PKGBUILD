@@ -2,7 +2,7 @@
 
 pkgname=streamrip
 pkgver=2.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A scriptable stream downloader for Qobuz, Tidal, Deezer and SoundCloud.'
 arch=(any)
 url='https://github.com/nathom/streamrip'
@@ -24,7 +24,8 @@ depends=(python
          python-pytest-mock
          python-rich
          python-simple-term-menu
-         python-tomlkit)
+         python-tomlkit
+         python-requests)
 makedepends=(git
              python-build
              python-installer
