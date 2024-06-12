@@ -1,7 +1,7 @@
 # Maintainer: Karl-Felix Glatzer <karl[dot]glatzer[at]gmx[dot]de>
 
 pkgname=mingw-w64-fribidi
-pkgver=1.0.14
+pkgver=1.0.15
 pkgrel=1
 pkgdesc="A Free Implementation of the Unicode Bidirectional Algorithm (mingw-w64)"
 arch=('any')
@@ -15,7 +15,7 @@ source=(
 #  "git+https://github.com/fribidi/c2man#commit=577ed4095383ef5284225d45709e6b5f0598a064"
   "testrunnerwine.patch"
 )
-b2sums=('1bb9f57eae1652a7efb33bd39a2e93845f764efab5ac5b5de9d2dc2074aa514d40b26db4b5abd458013fb25d2b106f85c3ed2e71b378d2e9b16edf87908a403c'
+b2sums=('5085e333f8597d512e97f772261dca476caa2c642bb444694bb4346e96fed0f312cf808b6fb52af78a1fc2874047a19c20016be5819bedb655a815193255bfba'
 #        '4ce1f0e039bbac3d7015eff10b9738ac4b58dc59f736a8f7ba12857d67092444f500928447a08004ae3548ffb2c788a849ac76c89924db2d82653f547cc4cc6a')
         'b4a3a06cfbedf92959b2d5ceb7714957c7f42cd9b7bb02cebcf867c929cdc2922f836310e3464e10bbc89f6788ea9bbaf2f20914db78db7169801cffdffd98af')
 validpgpkeys=(
