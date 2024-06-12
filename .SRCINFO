@@ -1,6 +1,6 @@
 pkgbase = hyperamp-bin
 	pkgdesc = Humble music player
-	pkgver = 1.1.8
+	pkgver = 1.1.9
 	pkgrel = 1
 	url = https://twitter.com/hyperampapp
 	arch = aarch64
@@ -8,16 +8,16 @@ pkgbase = hyperamp-bin
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = fuse2
-	depends = electron30
-	provides = hyperamp=1.1.8
+	depends = electron31
+	provides = hyperamp=1.1.9
 	conflicts = hyperamp
 	source = hyperamp.sh
-	sha256sums = 24c1c5b90cba47cd3d7a3ff11a934fcdbb499f8c56423d22009ef33a775e2d21
-	source_aarch64 = hyperamp-1.1.8-aarch64.AppImage::https://github.com/hypermodules/hyperamp/releases/download/v1.1.8/Hyperamp-1.1.8-arm64.AppImage
-	sha256sums_aarch64 = dfb301e0196e153fac04f5d42d4a9a3393b834a3f32054ed8c34bb2d91b9cb2e
-	source_armv7h = hyperamp-1.1.8-armv7h.AppImage::https://github.com/hypermodules/hyperamp/releases/download/v1.1.8/Hyperamp-1.1.8-armv7l.AppImage
-	sha256sums_armv7h = 4c90c4ece460b87705eff3fb447dc028db44e117e5d9aa5c2d34f65aed9f2fcf
-	source_x86_64 = hyperamp-1.1.8-x86_64.AppImage::https://github.com/hypermodules/hyperamp/releases/download/v1.1.8/Hyperamp-1.1.8.AppImage
-	sha256sums_x86_64 = 0d9c91a6e1373e5d565c6ce015b212a0b7cf558094337c9ebcdf46dc526b439a
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+	source_aarch64 = hyperamp-1.1.9-aarch64.AppImage::https://github.com/hypermodules/hyperamp/releases/download/v1.1.9/Hyperamp-1.1.9-arm64.AppImage
+	sha256sums_aarch64 = 5a6d194fbd3103fca7b60d9c1cc706d2a42ad57925d3c40d70486a33889d57df
+	source_armv7h = hyperamp-1.1.9-armv7h.AppImage::https://github.com/hypermodules/hyperamp/releases/download/v1.1.9/Hyperamp-1.1.9-armv7l.AppImage
+	sha256sums_armv7h = 2db69c592577620c75ade792283d6f9d6f1b81caca447ac79c6018116286b778
+	source_x86_64 = hyperamp-1.1.9-x86_64.AppImage::https://github.com/hypermodules/hyperamp/releases/download/v1.1.9/Hyperamp-1.1.9.AppImage
+	sha256sums_x86_64 = 0c97915889dc9217e4d2fe094f4aca24330d415918d885043d6060d4d888a072
 
 pkgname = hyperamp-bin
