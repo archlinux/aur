@@ -1,5 +1,5 @@
 pkgname=rteval
-pkgver=3.5
+pkgver=3.7
 pkgrel=1
 pkgdesc="Evaluate performance of realtime Linux kernel on a particular hardware platform"
 arch=('x86_64')
@@ -13,9 +13,9 @@ md5sums=('SKIP')
 
 prepare() {
   cd "${pkgname}"
-  KLOAD="linux-5.18.1.tar.xz"
+  KLOAD="linux-6.1.8.tar.xz"
   if [ ! -f "loadsource/$KLOAD" ]; then
-    wget -P loadsource https://www.kernel.org/pub/linux/kernel/v5.x/$KLOAD
+    wget -P loadsource https://www.kernel.org/pub/linux/kernel/v6.x/$KLOAD
   fi
 }
 

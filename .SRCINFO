@@ -1,6 +1,6 @@
 pkgbase = rteval
 	pkgdesc = Evaluate performance of realtime Linux kernel on a particular hardware platform
-	pkgver = 3.5
+	pkgver = 3.7
 	pkgrel = 1
 	url = https://wiki.linuxfoundation.org/realtime/documentation/howto/tools/rteval
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = rteval
 	depends = python-ethtool
 	depends = python-lxml
 	depends = python-dmidecode
-	source = git+https://git.kernel.org/pub/scm/utils/rteval/rteval.git#commit=v3.5
+	source = git+https://git.kernel.org/pub/scm/utils/rteval/rteval.git#commit=v3.7
 	md5sums = SKIP
 
 pkgname = rteval
