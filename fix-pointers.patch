@@ -1,0 +1,39 @@
+diff '--color=auto' --unified --recursive --text openldap-2.5.16/servers/slapd/overlays/constraint.c openldap-2.5.16.patched/servers/slapd/overlays/constraint.c
+--- openldap-2.5.16/servers/slapd/overlays/constraint.c	2023-07-31 20:10:20.000000000 +0200
++++ openldap-2.5.16.patched/servers/slapd/overlays/constraint.c	2024-06-04 13:06:20.111019028 +0200
+@@ -557,7 +557,7 @@
+ 				a2->restrict_filter = ap.restrict_filter;
+ 				a2->restrict_val = ap.restrict_val;
+ 
+-				for ( app = &on->on_bi.bi_private; *app; app = &(*app)->ap_next )
++				for ( app = (constraint**) &on->on_bi.bi_private; *app; app = &(*app)->ap_next )
+ 					/* Get to the end */ ;
+ 
+ 				a2->ap_next = *app;
+diff '--color=auto' --unified --recursive --text openldap-2.5.16/servers/slapd/overlays/dyngroup.c openldap-2.5.16.patched/servers/slapd/overlays/dyngroup.c
+--- openldap-2.5.16/servers/slapd/overlays/dyngroup.c	2023-07-31 20:10:20.000000000 +0200
++++ openldap-2.5.16.patched/servers/slapd/overlays/dyngroup.c	2024-06-04 13:15:38.106210587 +0200
+@@ -111,7 +111,7 @@
+ 		 */
+ 		a2 = ch_malloc( sizeof(adpair) );
+ 
+-		for ( app = &on->on_bi.bi_private; *app; app = &(*app)->ap_next )
++		for ( app = (adpair**) &on->on_bi.bi_private; *app; app = &(*app)->ap_next )
+ 			/* Get to the end */ ;
+ 
+ 		a2->ap_mem = ap.ap_mem;
+Only in openldap-2.5.16.patched/servers/slapd/overlays: .libs
+Only in openldap-2.5.16.patched/servers/slapd/overlays: Makefile
+Only in openldap-2.5.16.patched/servers/slapd/overlays: statover.c
+diff '--color=auto' --unified --recursive --text openldap-2.5.16/servers/slapd/overlays/valsort.c openldap-2.5.16.patched/servers/slapd/overlays/valsort.c
+--- openldap-2.5.16/servers/slapd/overlays/valsort.c	2023-07-31 20:10:20.000000000 +0200
++++ openldap-2.5.16.patched/servers/slapd/overlays/valsort.c	2024-06-04 13:17:14.932880870 +0200
+@@ -201,7 +201,7 @@
+ 		return(1);
+ 	}
+ 
+-	for ( vip = &on->on_bi.bi_private; *vip; vip = &(*vip)->vi_next )
++	for ( vip = (valsort_info**) &on->on_bi.bi_private; *vip; vip = &(*vip)->vi_next )
+ 		/* Get to the end */ ;
+ 
+ 	vi = ch_malloc( sizeof(valsort_info) );

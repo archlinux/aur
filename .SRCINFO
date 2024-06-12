@@ -17,6 +17,8 @@ pkgbase = libldap-2.5
 	options = !makeflags
 	options = emptydirs
 	source = https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.5.16.tgz
+	source = fix-pointers.patch
 	sha256sums = 546ba591822e8bb0e467d40c4d4a30f89d937c3a507fe83a578f582f6a211327
+	sha256sums = 962ec8d6fee64481120ef2b1ac1644b242284dc6839f85ced154b10d04541c3b
 
 pkgname = libldap-2.5

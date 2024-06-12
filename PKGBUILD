@@ -10,11 +10,12 @@ license=('custom')
 makedepends=('libtool' 'libsasl' 'e2fsprogs' 'util-linux' 'chrpath' 'unixodbc' 'libsodium')
 depends=('libsasl' 'e2fsprogs')
 options=('!makeflags' 'emptydirs')
-source=(https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-${pkgver}.tgz)
-sha256sums=('546ba591822e8bb0e467d40c4d4a30f89d937c3a507fe83a578f582f6a211327')
+source=(https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-${pkgver}.tgz fix-pointers.patch)
+sha256sums=('546ba591822e8bb0e467d40c4d4a30f89d937c3a507fe83a578f582f6a211327' '962ec8d6fee64481120ef2b1ac1644b242284dc6839f85ced154b10d04541c3b')
 
 prepare() {
   cd openldap-${pkgver}
+  patch -p1 --input=../fix-pointers.patch
 }
 
 build() {
@@ -26,7 +27,7 @@ build() {
     --enable-crypt --enable-spasswd --enable-modules \
     --enable-backends --disable-ndb --enable-overlays=mod \
     --with-cyrus-sasl --with-threads --disable-bdb --disable-hdb \
-    --disable-wt --enable-static=no
+    --disable-wt --enable-static=no 
 
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 
