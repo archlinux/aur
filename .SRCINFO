@@ -1,12 +1,12 @@
 pkgbase = procfile-util
 	pkgdesc = A tool for interacting with Procfiles
-	pkgver = 0.18.0
+	pkgver = 0.18.1
 	pkgrel = 1
 	url = https://github.com/dokku/procfile-util
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = https://github.com/dokku/procfile-util/archive/refs/tags/v0.18.0.tar.gz
-	sha256sums = cce331d1d7c546102da860637bc3611b6084594b045c4daf4fe62c67f63a974c
+	source = https://github.com/dokku/procfile-util/archive/refs/tags/v0.18.1.tar.gz
+	sha256sums = 5ec36418c2c8387b071d59b92e320bb883483f219091345f2da72c6d8170379d
 
 pkgname = procfile-util
