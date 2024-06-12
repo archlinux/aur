@@ -1,0 +1,12 @@
+pkgbase = nsis-nsisxml-bin
+	pkgdesc = Small NSIS plugin to manipulate XML data through MSXML
+	pkgver = 1.4
+	pkgrel = 1
+	url = http://wiz0u.free.fr/prog/nsisXML
+	arch = any
+	license = custom
+	depends = nsis
+	source = nsisXML-1.4.zip::http://wiz0u.free.fr/prog/nsisXML/latest.php
+	sha256sums = 42a6c3bb29bab5754df7715bc739ba6011c31d7dbaf9e1d4be2df06dea504f31
+
+pkgname = nsis-nsisxml-bin
