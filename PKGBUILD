@@ -1,7 +1,7 @@
 # Maintainer: Gary Wang <git@blumia.net>
 
 pkgname=pineapple-midi-player
-pkgver=1.0.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Simple SoundFont MIDI Player'
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/BLumia/pineapple-midi-player/archive/${pkgver}.tar.gz"
 )
 sha256sums=(
-	'ed2dc4de675d646371e9c77b06f8ecd3d28c088980613d0114f318b2a6d29569'
+	'ba712f2c11b602fd425dfaa05580cd510582d62f52659434556e611e50ad9b1b'
 )
 
 build () {
