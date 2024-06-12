@@ -1,0 +1,33 @@
+pkgbase = stirling-pdf-bin
+	pkgdesc = Locally hosted web application that allows you to perform various operations on PDF files
+	pkgver = 0.26.0
+	pkgrel = 1
+	url = https://github.com/Stirling-Tools/Stirling-PDF
+	arch = any
+	license = GPL-3.0-or-later
+	depends = java-runtime-headless>=17
+	depends = libreoffice-fresh
+	depends = ocrmypdf
+	depends = pngquant
+	depends = python-opencv
+	depends = tesseract-data-eng
+	depends = unoconv
+	depends = unpaper
+	optdepends = jbig2enc: for certain OCR functionality
+	optdepends = tesseract-data-<langs_code>: for certain language OCR
+	optdepends = tesseract-data: for all language OCR
+	provides = stirling-pdf
+	conflicts = stirling-pdf
+	backup = etc/stirling-pdf/stirling-pdf.env
+	source = stirling-pdf.jar::https://github.com/Stirling-Tools/Stirling-PDF/releases/download/v0.26.0/Stirling-PDF-with-login.jar
+	source = stirling-pdf.env
+	source = stirling-pdf.service
+	source = stirling-pdf.sysusers
+	source = stirling-pdf.tmpfiles
+	sha256sums = 1c464ea1c80cc51776cb470c5bcc479c839e2a8a792a4a6606e1de5be5222121
+	sha256sums = e42cd1b7f960be61c93a141084002c8a8a0dc832a437b1e4b4a21004dfe4243d
+	sha256sums = 2bb657dff015c992782eddfd036cc001c105bb57e052e8b2fe3f80161a450070
+	sha256sums = 0f8b3d727955536ae3ed98e8aeccb8f073e4c97c36a95de595624a71ea5fdd11
+	sha256sums = 554fbc114c32f4b81fe3b8199e936881e26b5649098c495acfd4cd77eefd2612
+
+pkgname = stirling-pdf-bin

@@ -1,0 +1,16 @@
+[Unit]
+Description   = Stirling-PDF Service
+Documentation = https://stirlingtools.com/docs/Overview/What%20is%20Stirling-PDF
+Wants         = network-online.target
+After         = network-online.target
+
+[Service]
+User             = stirling-pdf
+Group            = stirling-pdf
+Restart          = on-failure
+WorkingDirectory = /var/lib/stirling-pdf
+EnvironmentFile  = -/etc/stirling-pdf/stirling-pdf.env
+ExecStart        = /usr/bin/java -jar -Xmx512m /usr/share/java/stirling-pdf.jar
+
+[Install]
+WantedBy = multi-user.target
