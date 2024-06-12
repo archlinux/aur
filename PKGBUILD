@@ -4,7 +4,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-neptune-65
-_tag=6.5.0-valve7
+_tag=6.5.0-valve11
 pkgver=${_tag//-/.}
 pkgrel=1
 pkgdesc='SteamOS linux-neptune 6.5 mirrored from Valve'
