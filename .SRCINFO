@@ -1,0 +1,16 @@
+pkgbase = magicavoxel-launcher-bin
+	pkgdesc = A simple launcher for MagicaVoxel that allows you to select a folder as a workspace and then open the program with that workspace.
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/Kan-A-Pesh/magicavoxel-launcher
+	arch = x86_64
+	license = MIT
+	depends = electron30
+	provides = magicavoxel-launcher=1.0.2
+	conflicts = magicavoxel-launcher
+	source = magicavoxel-launcher-1.0.2.deb::https://github.com/Kan-A-Pesh/magicavoxel-launcher/releases/download/v1.0.2/magicavoxel-launcher_1.0.2_amd64.deb
+	source = magicavoxel-launcher.sh
+	sha256sums = be5d61a495818837c4a74eebc71aebd08793adee9bdac0783dcdc86b69babdf7
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+
+pkgname = magicavoxel-launcher-bin
