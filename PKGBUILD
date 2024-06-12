@@ -24,6 +24,7 @@ depends=(
     'python-gobject'
     'python-pyparted'
     'python-xapp'
+    'python-unidecode'
     'udisks2'
     'util-linux'
     'xapp'

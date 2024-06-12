@@ -22,6 +22,7 @@ pkgbase = mintstick
 	depends = python-gobject
 	depends = python-pyparted
 	depends = python-xapp
+	depends = python-unidecode
 	depends = udisks2
 	depends = util-linux
 	depends = xapp
