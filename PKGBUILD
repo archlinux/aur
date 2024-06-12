@@ -2,7 +2,7 @@
 
 _pkgname=libxslt
 pkgname=mingw-w64-${_pkgname}
-pkgver=1.1.39
+pkgver=1.1.40
 pkgrel=1
 pkgdesc="XML stylesheet transformation library (mingw-w64)"
 arch=(any)
@@ -13,9 +13,9 @@ makedepends=(mingw-w64-configure)
 options=(!strip staticlibs !buildflags !emptydirs)
 source=("https://gitlab.gnome.org/GNOME/${_pkgname}/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.bz2"
         "0003-fix-concurrent-directory-creation.all.patch")
-sha256sums=('78e3e1e56ad7b70480b069b5f0de8102f3c56604508a1a7d6eda9fcdfe74d841'
+sha256sums=('fc5c5cc7ab2066c518355bfdbfa957851c68bcad834aabadf08347f5be04666c'
             'fc23bd3c9e62a28cb1c020cebc83ca7532a5a7a21c2e4748b72d13ac7716a851')
-            
+
 _srcdir="${_pkgname}-v${pkgver}"
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
