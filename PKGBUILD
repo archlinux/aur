@@ -1,6 +1,6 @@
 # Maintainer: Timo Sarawinski <timo@it-kraut.net>
 pkgname=php80-apcu
-pkgver=5.1.22
+pkgver=5.1.23
 pkgrel=1
 arch=('x86_64')
 pkgdesc='A userland caching module for PHP 8.0'
