@@ -1,7 +1,7 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=nextpnr-all-nightly
-pkgver=20240611_nextpnr_0.7_39_gb7f91e57
+pkgver=20240612_nextpnr_0.7_39_gb7f91e57
 pkgrel=1
 epoch=1
 pkgdesc="nextpnr portable FPGA place and route tool - ice40, ecp5, machxo2, nexus, and generic"
