@@ -1,0 +1,19 @@
+pkgbase = devtoys-bin
+	pkgdesc = A Swiss Army knife for developers.
+	pkgver = 2.0.1.0
+	pkgrel = 1
+	url = https://github.com/DevToys-app/DevToys
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = webkitgtk-6.0
+	provides = devtoys
+	conflicts = devtoys
+	source = devtoys.desktop
+	sha256sums = 0c9daf652ca76bd6433572e431ac7bd0f20958e9c542e60f6389bd56936fedc1
+	source_x86_64 = https://github.com/DevToys-app/DevToys/releases/download/v2.0.1.0/devtoys_linux_x64.deb
+	sha256sums_x86_64 = 5cdf317b54b5a690ee9613c941c9b6ac1a811faf15e41466c492f4d36ff6f413
+	source_aarch64 = https://github.com/DevToys-app/DevToys/releases/download/v2.0.1.0/devtoys_linux_arm.deb
+	sha256sums_aarch64 = 9cdbcdefb6f19d31426cddec8f1ec796a02b64de2f5d6c41880b4a50195057d1
+
+pkgname = devtoys-bin
