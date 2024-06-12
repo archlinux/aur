@@ -1,6 +1,6 @@
 # Maintainer: Fang Erjing <szdytom@qq.com>
 pkgname=kd-bin
-pkgver=0.0.9
+pkgver=0.0.10
 pkgrel=1
 pkgdesc="A crystal clean command-line dictionary."
 arch=('x86_64' 'aarch64')
@@ -15,10 +15,10 @@ sha256sums=('01fc1f8f20ef852628985a6fdb862fadd1c2f3b438cd3104c6a8e724bc16986a'
 '89eb98a14555b6a6fe1209ce428b39abe348ca36affea432572dc3ac81a75517')
 
 source_x86_64=("kd::https://github.com/Karmenzind/kd/releases/download/v${pkgver}/kd_linux_amd64")
-sha256sums_x86_64=('ced2f0663c3c563d1fc07d942234aec6239ec2560e5d41237662c1f485aa6114')
+sha256sums_x86_64=('69cb24fbc3280c367e50dfc81e0b714c2138a8608e05ba0e3f9c180313c0a39a')
 
 source_aarch64=("kd::https://github.com/Karmenzind/kd/releases/download/v${pkgver}/kd_linux_arm64")
-sha256sums_aarch64=('e6d9e5698ace199b38206b0f9734be093102bf3f552645af663299b03ceca489')
+sha256sums_aarch64=('c2c1383ade9bde8aca4fbc583f51dc18ecd55238e316b9e5dfbd03c39146b6c4')
 
 package() {
 	cd "$srcdir/"
