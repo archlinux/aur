@@ -1,7 +1,7 @@
 pkgbase = python-periodictable
 	pkgdesc = Extensible periodic table of the elements
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://periodictable.readthedocs.org
 	arch = any
 	license = public domain
@@ -10,5 +10,6 @@ pkgbase = python-periodictable
 	md5sums = 54c58bb8e591a6f9c80b43465fb283f0
 
 pkgname = python-periodictable
+	depends = python
 	depends = python-numpy
 	depends = python-pyparsing
