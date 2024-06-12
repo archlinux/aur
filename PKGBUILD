@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electron-widgets-bin
-pkgver=2.1.2
+pkgver=2.1.3
 _electronversion=30
 pkgrel=1
 pkgdesc="A desktop application developed using Electron.js and Node.js. The application allows users to create and manage widgets on their desktops."
@@ -17,7 +17,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e17f11577ae8fd0100f0ff7c13db8ce876d223eccbd54451b2a9884cf64f1f5a'
+sha256sums=('51659d0e7ff07c2767a722aa27d3c84011465820298594c49f3ef38212cd9435'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
