@@ -1,0 +1,12 @@
+pkgbase = nsis-registry-bin
+	pkgdesc = NSIS plug-in for registry
+	pkgver = 4.2
+	pkgrel = 1
+	url = https://nsis.sourceforge.io/Registry_plug-in
+	arch = any
+	license = custom
+	depends = nsis
+	source = Registry-4.2.zip::https://nsis.sourceforge.io/mediawiki/images/4/47/Registry.zip
+	sha256sums = 791451f1be34ea1ed6f2ad6d205cf8e54bb0562af11b0160a6bfa5f499624094
+
+pkgname = nsis-registry-bin
