@@ -47,7 +47,7 @@ backup=("usr/lib/${_pkgname}/${_pkgname}.cfg"
   "usr/lib/${_pkgname}/distribution/policies.json")
 source=(https://gitlab.com/api/v4/projects/55893651/packages/generic/firedragon/${_pkgver}/firedragon-v${_pkgver}.linux-x86_64.tar.bz2
   https://gitlab.com/garuda-linux/firedragon/settings/-/raw/master/firedragon.psd
-  "${_pkgname}.desktop")
+  https://gitlab.com/garuda-linux/firedragon/settings/-/raw/master/firedragon.desktop)
 sha256sums=('0d497967fa6ebf475824415e7d57babfa2b20a25498d80cfd053d4e621e890f3'
             '61355930cc59813e7e610ffdab8a01e32be980fffe1dfd8f9654b8f8f9f7fdc0'
             '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560')
