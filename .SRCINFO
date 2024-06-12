@@ -1,6 +1,6 @@
 pkgbase = openmodelica
 	pkgdesc = Open-source Modelica-based modeling and simulation environment
-	pkgver = 1.22.4
+	pkgver = 1.23.0
 	pkgrel = 1
 	url = https://www.openmodelica.org
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = openmodelica
 	depends = qt5-xmlpatterns
 	depends = qt5-svg
 	depends = qt5-tools
-	source = openmodelica::git+https://github.com/OpenModelica/OpenModelica.git#tag=v1.22.4
-	sha256sums = SKIP
+	source = openmodelica::git+https://github.com/OpenModelica/OpenModelica.git#tag=v1.23.0
+	sha256sums = 17d87f98ed3e5af152f712385e82cb7b1c44cb014a202587417db6e7a296384a
 
 pkgname = openmodelica
