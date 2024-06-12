@@ -17,6 +17,7 @@ pkgbase = python-stregion
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-numpy
+	makedepends = gcc13
 	source = https://files.pythonhosted.org/packages/source/s/stregion/stregion-1.1.8.tar.gz
 	md5sums = 3a515d1b8a3405ac99e3ee90df985814
 

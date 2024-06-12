@@ -14,7 +14,8 @@ makedepends=('python-setuptools-scm'
              'python-wheel'
              'python-build'
              'python-installer'
-             'python-numpy')
+             'python-numpy'
+             'gcc13')
 #            'python-sphinx'
 #            'python-matplotlib'
 #            'python-pyparsing'
@@ -39,7 +40,7 @@ get_pyinfo() {
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
-    python -m build --wheel --no-isolation
+    CC=gcc-13 CXX=g++-13 python -m build --wheel --no-isolation
 
 #    msg "Building Docs"
 ##   PYTHONPATH="../build/lib.linux-${CARCH}-cpython-$(get_pyinfo)" make -C doc html
