@@ -41,14 +41,14 @@ build() {
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/share/${pkgname}/model/" \
+  install -dm0755 "${pkgdir}/usr/share/epson/${pkgname}/model/" \
     "${pkgdir}/usr/share/cups/model/" \
     "${pkgdir}/usr/share/licenses/${pkgname}/" \
     "${pkgdir}/usr/bin/" \
     "${pkgdir}/usr/share/doc/${pkgname}/"
 
-  cp --preserve=mode -r ${srcdir}/${_pkg_name}/usr/share/cups/model/Epson/*.ppd "${pkgdir}/usr/share/${pkgname}/model/"
-  ln -sf /usr/share/${pkgname}/model "${pkgdir}/usr/share/cups/model/${pkgname}"
+  cp --preserve=mode -r ${srcdir}/${_pkg_name}/usr/share/cups/model/Epson/*.ppd "${pkgdir}/usr/share/epson/${pkgname}/model/"
+  ln -sf /usr/share/epson/${pkgname}/model "${pkgdir}/usr/share/cups/model/${pkgname}"
   install -Dm0755 "${srcdir}/${_pkg_name}/opt/Epson/${pkgname%-bin}/bin/Epson_${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
   install -Dm0755 "${srcdir}/${_pkg_name}/opt/Epson/${pkgname%-bin}/doc/COPYING" -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm0755 "${srcdir}/${_pkg_name}/opt/Epson/${pkgname%-bin}/doc/copyright" -t "${pkgdir}/usr/share/licenses/${pkgname}"
