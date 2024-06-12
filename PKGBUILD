@@ -2,23 +2,23 @@
 
 pkgname="olivetin-bin"
 pkgver=2024.06.04
-pkgrel=1
+pkgrel=2
 pkgdesc="Safe and simple access to predefined shell commands from a web interface"
 url="https://www.olivetin.app/"
 license=("AGPL3")
 arch=("x86_64" "aarch64" "armv7h")
 provides=("olivetin")
 conflicts=("olivetin")
-source_x86_64=("$pkgname-$pkgver.tar.gz"::"https://github.com/OliveTin/OliveTin/releases/download/$pkgver/OliveTin-linux-amd64.tar.gz")
-source_aarch64=("$pkgname-$pkgver.tar.gz"::"https://github.com/OliveTin/OliveTin/releases/download/$pkgver/OliveTin-linux-arm64.tar.gz")
-source_armv7h=("$pkgname-$pkgver.tar.gz"::"https://github.com/OliveTin/OliveTin/releases/download/$pkgver/OliveTin-linux-arm7.tar.gz")
+source_x86_64=("$pkgname-$pkgver-$CARCH.tar.gz"::"https://github.com/OliveTin/OliveTin/releases/download/$pkgver/OliveTin-linux-amd64.tar.gz")
+source_aarch64=("$pkgname-$pkgver-$CARCH.tar.gz"::"https://github.com/OliveTin/OliveTin/releases/download/$pkgver/OliveTin-linux-arm64.tar.gz")
+source_armv7h=("$pkgname-$pkgver-$CARCH.tar.gz"::"https://github.com/OliveTin/OliveTin/releases/download/$pkgver/OliveTin-linux-arm7.tar.gz")
 source=("olivetin.service"
         "olivetin@.service")
 b2sums=('402097ad54be50688a22223b96f32a6630ec5479bcf4f99dbaf98d1b212cac4316c4adcf8dd7aeb9216d28dd815b5b80820023a4ca710ebe60f7603795931489'
         '90c4f129b8a481612a7b4c051b48930bce6259df1a1f02c7fcadcabe4eb3031feaa7bc620fd543ed66d2453464c7f5c383e58d7146019a01c98c333ccf382f25')
 b2sums_x86_64=('9269a105aeb5ab22db427a7ea1f504b0190824895838637d7b47ff1cd2a507308701f4ee128482b56b38cd2fa111cb913fa3a9f2211c24c4c1d35d95fe3f3591')
-b2sums_aarch64=('9269a105aeb5ab22db427a7ea1f504b0190824895838637d7b47ff1cd2a507308701f4ee128482b56b38cd2fa111cb913fa3a9f2211c24c4c1d35d95fe3f3591')
-b2sums_armv7h=('9269a105aeb5ab22db427a7ea1f504b0190824895838637d7b47ff1cd2a507308701f4ee128482b56b38cd2fa111cb913fa3a9f2211c24c4c1d35d95fe3f3591')
+b2sums_aarch64=('4c73f48f3e87180f29fdc0f4b7584fd7e87cbe22c7775935e9ab5ab277ef8246648ff05befc180440c2f40a4c76d12d52dfb7a0e3669dc0c72535816bdc68943')
+b2sums_armv7h=('ee6007909246287def7f65053d844704ca97b53a1ae79cf7de16153fe091e913079788f18eeff5911d6372b0c1c8d9f54b74cf8a6f7f5dfedb64471967222678')
 backup=("etc/olivetin/config.yaml")
 
 prepare(){
