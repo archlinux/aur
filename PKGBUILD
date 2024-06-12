@@ -1,28 +1,24 @@
-#!/usr/bin/env -S sh -c 'nvchecker -cnvchecker.toml --logger=json | jq -r '\''.version | sub("^v"; "") | split("-") | .[-1]'\'' | xargs -i{} sed -i "s/^\\(pkgver=\\).*/\\1{}/" $0'
-# shellcheck shell=bash disable=SC2034,SC2154
-# ex: nowrap
-_pkgname=plotext
-pkgname=python-$_pkgname
+# Maintainer: Debucquoy Anthony (tonitch) <d.tonitch@gmail.com>
+# Previous Maintainer: Freed <https://freed-wu.github.io/>
+
+pkgname=python-plotext
+_name=${pkgname#python-}
 pkgver=5.2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="plotting on terminal"
 arch=(any)
 url=https://github.com/piccolomo/plotext
 makedepends=(python-installer python-shtab)
 license=(MIT)
-_py=py3
-source=("https://files.pythonhosted.org/packages/$_py/${_pkgname:0:1}/$_pkgname/${_pkgname//-/_}-$pkgver-$_py-none-any.whl")
-sha256sums=('7364cf72e6c9bffaf96158340fd2e0058faf404edbbc1e7a2aed421c8638d475')
+source=("https://github.com/piccolomo/${_name}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('9080878520c09c50b5ebea2ca48eab77f41ea60bff751cd6219222a770ada3a7')
+
+build(){
+	cd "$_name-$pkgver"
+	python -m build --wheel --no-isolation
+}
 
 package() {
-  python -m installer --destdir="$pkgdir" ./*.whl || return 1
-  local bin=${_repo##*/}
-  PYTHONPATH="$(ls -d "$pkgdir"/usr/lib/python*/site-packages)"
-  export PYTHONPATH
-  "$pkgdir/usr/bin/$bin" --print-completion bash > "$bin.bash"
-  "$pkgdir/usr/bin/$bin" --print-completion zsh > "_$bin"
-  "$pkgdir/usr/bin/$bin" --print-completion tcsh > "$bin.csh"
-  install -D $bin.bash "$pkgdir/usr/share/bash-completion/completions/$bin"
-  install -D _$bin -t "$pkgdir/usr/share/zsh/site-functions"
-  install -D $bin.csh -t "$pkgdir/etc/profile.d"
+	cd "$_name-$pkgver"
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }

@@ -1,13 +1,13 @@
 pkgbase = python-plotext
 	pkgdesc = plotting on terminal
 	pkgver = 5.2.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/piccolomo/plotext
 	arch = any
 	license = MIT
 	makedepends = python-installer
 	makedepends = python-shtab
-	source = https://files.pythonhosted.org/packages/py3/p/plotext/plotext-5.2.8-py3-none-any.whl
-	sha256sums = 7364cf72e6c9bffaf96158340fd2e0058faf404edbbc1e7a2aed421c8638d475
+	source = https://github.com/piccolomo/plotext/archive/refs/tags/5.2.8.tar.gz
+	sha256sums = 9080878520c09c50b5ebea2ca48eab77f41ea60bff751cd6219222a770ada3a7
 
 pkgname = python-plotext
