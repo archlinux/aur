@@ -1,6 +1,6 @@
 # Maintainer: egoroff <egoroff@gmail.com>
 pkgname=solv
-pkgver=0.16.0
+pkgver=0.16.1
 pkgrel=1
 makedepends=('cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -9,11 +9,11 @@ url="https://github.com/aegoroff/solv"
 license=('MIT')
 
 build() {
-	return 0
+  return 0
 }
 
 package() {
-	conflicts=("solv-bin")
+  conflicts=("solv-bin")
 
-	cargo install --no-track --root "$pkgdir/usr/" solv
+  cargo install --no-track --root "$pkgdir/usr/" solv
 }
