@@ -1,0 +1,21 @@
+pkgbase = nym-vpnd
+	pkgdesc = NymVPN daemon
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/nymtech/nym-vpn-client
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = rust
+	makedepends = cargo
+	makedepends = go
+	depends = glibc
+	depends = gcc-libs
+	depends = dbus
+	depends = libnftnl
+	depends = libmnl
+	provides = nym-vpnd
+	conflicts = nym-vpnd
+	source = nym-vpnd-0.1.6.tar.gz::https://github.com/nymtech/nym-vpn-client/archive/refs/tags/nym-vpn-core-v0.1.6.tar.gz
+	sha256sums = ff4be517ed9bc3346bff655477df860e6f7debd5138a0c72f417c94eea3091db
+
+pkgname = nym-vpnd
