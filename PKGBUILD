@@ -3,7 +3,7 @@
 # Contributor: Harms <thotro at lyse dot net>
 # Contributor: dnikoloski <nikoloskid at proton dot me>
 pkgname=forticlient
-pkgver=7.2.4.0809
+pkgver=7.4.0.1636
 pkgrel=1
 pkgdesc="Fortinet VPN client ZTNA edition"
 arch=('x86_64')
@@ -13,8 +13,8 @@ groups=()
 provides=(forticlient)
 depends=('libxss' 'libsecret' 'alsa-lib' 'libnotify' 'gtk3' 'nss' 'libxcrypt-compat' 'libappindicator-gtk2')
 options=('!strip' '!emptydirs')
-source=("https://repo.fortinet.com/repo/forticlient/7.2/ubuntu/pool/multiverse/${pkgname}/${pkgname}_${pkgver}_amd64.deb")
-sha512sums=('417ab5bf8623f81f2894aef9e8e1415d48ca13be098de989036a99d2289953398614b9af8594608b037b9fe6e676f079ba9f6d357d96b36eea92c319fa44cd89')
+source=("https://repo.fortinet.com/repo/forticlient/7.4/ubuntu22/pool/non-free/f/${pkgname}/${pkgname}_${pkgver}_amd64.deb")
+sha512sums=('67e8e3cd48e68b437b277e4147e7dd3f24463a83fef163f2e935649acffa27b1a589d52f88c334236ddf9470d1f582bc35f3ac767b0370efbeb035c6c5060f6f')
 package(){
 
 	# Extract package data
@@ -29,3 +29,4 @@ package(){
 	cd ..
 
 }
+

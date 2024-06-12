@@ -1,6 +1,6 @@
 pkgbase = forticlient
 	pkgdesc = Fortinet VPN client ZTNA edition
-	pkgver = 7.2.4.0809
+	pkgver = 7.4.0.1636
 	pkgrel = 1
 	url = https://www.forticlient.com
 	arch = x86_64
@@ -16,8 +16,7 @@ pkgbase = forticlient
 	provides = forticlient
 	options = !strip
 	options = !emptydirs
-	backup = etc/forticlient/config.db
-	source = https://repo.fortinet.com/repo/forticlient/7.2/ubuntu/pool/multiverse/forticlient/forticlient_7.2.4.0809_amd64.deb
-	sha512sums = 417ab5bf8623f81f2894aef9e8e1415d48ca13be098de989036a99d2289953398614b9af8594608b037b9fe6e676f079ba9f6d357d96b36eea92c319fa44cd89
+	source = https://repo.fortinet.com/repo/forticlient/7.4/ubuntu22/pool/non-free/f/forticlient/forticlient_7.4.0.1636_amd64.deb
+	sha512sums = 67e8e3cd48e68b437b277e4147e7dd3f24463a83fef163f2e935649acffa27b1a589d52f88c334236ddf9470d1f582bc35f3ac767b0370efbeb035c6c5060f6f
 
 pkgname = forticlient
