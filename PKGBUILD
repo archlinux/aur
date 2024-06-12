@@ -8,7 +8,7 @@
 pkgname='hmcl-dev'
 _pkgname='hmcl'
 pkgver='3.5.8.248'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='A Minecraft Launcher which is multi-functional, cross-platform and popular (development version)'
 arch=('any')
 url='https://github.com/huanghongxun/HMCL'
