@@ -1,0 +1,25 @@
+From 007c28da2e3f9a7b634863ae18a233edf51d84ae Mon Sep 17 00:00:00 2001
+From: Masaki ISHIYAMA <b4b4r07@users.noreply.github.com>
+Date: Sat, 17 Jun 2023 01:55:12 +0900
+Subject: [PATCH] Do not quote multiple lines to deal as single line (#210)
+
+---
+ src/filepath.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/filepath.sh b/src/filepath.sh
+index 6106f2b..e62b08c 100644
+--- a/src/filepath.sh
++++ b/src/filepath.sh
+@@ -15,7 +15,7 @@ __enhancd::filepath::walk()
+ 
+   # __enhancd::filepath::get_parent_dirs does not return $PWD itself,
+   # so add it to the array explicitly
+-  dirs=( "${PWD}" "$(__enhancd::filepath::get_parent_dirs "${1:-${PWD}}")" )
++  dirs=( "${PWD}" $(__enhancd::filepath::get_parent_dirs "${1:-${PWD}}") )
+ 
+   for dir in "${dirs[@]}"
+   do
+-- 
+2.45.2
+
