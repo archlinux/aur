@@ -7,6 +7,7 @@ pkgdesc="Print your text in style"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/arsham/${pkgname}"
 license=('Apache')
+makedepends=('make' 'go')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('e969f4f9e617201fc92d5467c7af11578a4f3d1f025ad2110ee2c56a663cbdf0')
