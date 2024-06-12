@@ -3,10 +3,10 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-gettext
-pkgver=0.22.4
-pkgrel=2
+pkgver=0.22.5
+pkgrel=1
 arch=('any')
-pkgdesc="GNU internationalization library (Android, ${_android_arch})"
+pkgdesc="GNU internationalization library (Android ${_android_arch})"
 depends=("android-${_android_arch}-termcap"
          "android-${_android_arch}-libunistring"
          "android-${_android_arch}-libxml2")
@@ -16,15 +16,15 @@ license=("GPL")
 url="http://www.gnu.org/software/gettext/"
 source=("http://ftp.gnu.org/pub/gnu/gettext/gettext-${pkgver}.tar.gz"
         "intl.pc")
-sha256sums=('c1e0bb2a4427a9024390c662cd532d664c4b36b8ff444ed5e54b115fdb7a1aea'
+sha256sums=('ec1705b1e969b83a9f073144ec806151db88127f5e40fe5a94cb6c8fa48996a0'
             '0dc8a3e2c95d79aacaeaacd3c90e41c0f5d6ba9cfbc949a0ca55f4b0fd389d9c')
 
 build() {
-    cd "${srcdir}"/gettext-${pkgver}
+    cd "${srcdir}/gettext-${pkgver}"
     source android-env ${_android_arch}
 
     android-${_android_arch}-configure \
-        --infodir=${ANDROID_PREFIX_SHARE}/info/gettext \
+        --infodir="${ANDROID_PREFIX_SHARE}/info/gettext" \
         --disable-java \
         --disable-native-java \
         --disable-csharp \
@@ -36,13 +36,13 @@ build() {
 }
 
 package() {
-    cd "${srcdir}"/gettext-${pkgver}
+    cd "${srcdir}/gettext-${pkgver}"
     source android-env ${_android_arch}
 
-    make DESTDIR="$pkgdir" install
-    rm -r "${pkgdir}"/${ANDROID_PREFIX_BIN}
+    make DESTDIR="${pkgdir}" install
+    rm -r "${pkgdir}/${ANDROID_PREFIX_BIN}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 
     # provide pkgconfig file for iconv library
 
