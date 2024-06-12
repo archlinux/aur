@@ -10,10 +10,10 @@ pkgrel=1
 pkgdesc='CLI for Stripe'
 arch=(i686 x86_64 aarch64)
 url=https://github.com/stripe/stripe-cli
-license=(Apache)
+license=(Apache-2.0)
 depends=(glibc)
 makedepends=(go git)
-source=($pkgname-$pkgver.tar.gz::https://github.com/stripe/stripe-cli/archive/v$pkgver.tar.gz)
+source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
 b2sums=('609fae39f9f4597000e5d237045fdc1a4e4b2066a5dcba4a9cae4b08cfcaa8360d1d5124fe020aae183a87bb61947a1474cf8bb051725b66f93d5b64141f9bc4')
 
 prepare() {
