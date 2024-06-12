@@ -2,11 +2,11 @@
 
 pkgname=libosmo-pfcp
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="PFCP protocol encoding and decoding, and generic PFCP endpoint implementation"
 arch=('any')
 url="https://osmocom.org/projects/libosmo-pfcp"
-license=(GPL)
+license=('GPL-2.0-or-later')
 depends=('libosmocore') # TODO: >=1.9.0
 provides=("libosmo-gtlv.so=1-64"
           "libosmo-pfcp.so=0-64")
