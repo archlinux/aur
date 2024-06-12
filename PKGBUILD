@@ -5,14 +5,15 @@
 
 gitname=pdf.js
 pkgname=chromium-pdfjs-git
-pkgver=3.10.111.54.gb1578225f
+pkgver=4.3.136.35.g341ff40e7
 pkgrel=1
+nodever=21.7.3
 pkgdesc="PDF viewer in Javascript, packaged as a Chromium extension"
 arch=('any')
-# temporarily building from a fork until upstream fixes their babel dependency
 url="https://github.com/mozilla/${gitname}"
 license=('GPL3')
-makedepends=(git npm gulp)
+depends=(pixman cairo)
+makedepends=(git nvm) # gulp
 source=("git+${url}.git")
 sha512sums=('SKIP')
 
@@ -24,6 +25,10 @@ pkgver() {
 }
 build() {
     cd "${srcdir}/${gitname}"
+    . /usr/share/nvm/init-nvm.sh
+    nvm install $nodever
+    nvm use $nodever
+    npm install -g gulp
     npm install
     gulp chromium
 }
