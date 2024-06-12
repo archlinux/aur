@@ -1,20 +1,15 @@
 # Maintainer: Constantine Evans <const@costi.eu>
 # Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 pkgname=oxdna-cuda-git
-
 pkgdesc="DNA/RNA/etc simulator, from lorenzo-rovigatti/oxDNA, with CUDA support and analysis tools."
-
 url="https://github.com/lorenzo-rovigatti/oxDNA"
-
 pkgver=v3.6.1.r28.g16e5d7c8
 arch=('x86_64')
 license=('GPL3')
 provides=('oxdna')
 conflicts=('oxdna')
 pkgrel=1
-
 depends=('python3' 'python-matplotlib' 'python-scikit-learn' 'python-setuptools' 'ipython')
-
 makedepends=('git' 'cmake' 'gsl' 'cuda-12.2' 'gcc12' 'python-build' 'python-wheel' 'python-installer' 'cython' 'python-setuptools-scm')
 optdepends=('python-matplotlib: for plotting')
 options=(!lto)
