@@ -2,7 +2,7 @@
 
 pkgname=tantrix
 pkgver=2.11
-pkgrel=4
+pkgrel=5
 pkgdesc='Abstract strategy board game'
 arch=(any)
 url='https://www.tantrix.com/'
@@ -20,8 +20,6 @@ source=("$_base/jws/Launcher.jar"
         "$_base/jws/Darwin.jar"
         "tantrix.png::$_base/smalltile.png"
         'tantrix'
-        'tantrix-discovery'
-        'tantrix-reviewer'
         'tantrix.desktop'
         'tantrix-discovery.desktop'
         'tantrix-reviewer.desktop'
@@ -35,19 +33,17 @@ sha256sums=('df143c0f02b27c002af4152124f066a477ade59c9b56822e6eef9abf2ff86a92'
             '9a29532e5e3f56b592ba8eabc8078560cd2cf7686ce8bde838f5de86a02d844a'
             '2955140987a4ec6a67d2f6bccdc57fa19f272fb1e971cb0537909e2a60e7d82e'
             'a244a49a541adef4840c8a4e7941c79deeb02213588e7d472ed7f0fbdade01aa'
-            'ffe1d19d00620d740057e310da59d7bdea1c1f143168d1d67af7d02475c78bc6'
-            '912c25979fe244df68dddf273262dabde5517f696e6589df9ccf49c996aa3bc3'
-            'a187bbc9e61825fad6af1f1586606f99142349417aba7473d3d6f20ccaaa53ad'
+            '7aa41d4cb87bfc19f4c3f04370c7343fbb0f1e3dae6c063b66398715b77aadaf'
             'f492efa1e032bc4bd7c701e5c06c66619d23098cf1f2acafaed441ba4d8f30e0'
-            '53ce6a8b2985e19a59b29241429e05c7b8ed1487a1bedbb341a4f157131fd802'
-            '5580a63978e833d7ae4ad2492ef2b911afa4278a91738d277f418e5a62cdb340'
+            '593cd009514144534b15bebe36c8e393adbfbbd63eac054eea54f20e1c362621'
+            '5f8a776872a98933c5f0c7681d5cc3606b3a84290235a909d46fe2e1a1f4eb48'
             '1fe5802975ac5579e2b9fc3c9ec50f2334b9ed1a22dfd1bb9fad251850f06661')
 noextract=(*.jar)
 
 package() {
   depends+=(java-runtime)
   install -Dm644 *.jar -t "$pkgdir"/usr/share/java/$pkgname
-  install -Dm755 tantrix{,-discovery,-reviewer} -t "$pkgdir"/usr/bin
+  install -Dm755 tantrix -t "$pkgdir"/usr/bin
   install -Dm644 tantrix{,-discovery,-reviewer}.desktop -t "$pkgdir"/usr/share/applications
   install -Dm644 tantrix.png -t "$pkgdir"/usr/share/pixmaps
   install -Dm644 tantrix.xml -t "$pkgdir"/usr/share/mime/packages
