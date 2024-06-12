@@ -1,7 +1,7 @@
 # Maintainer: Seal <will@kimbell.uk>
 
 pkgname=filetree-traversing
-pkgver=0.1.13
+pkgver=0.1.15
 pkgrel=1
 pkgdesc="A Rust library for working with file trees"
 arch=('x86_64')
