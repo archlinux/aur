@@ -1,0 +1,23 @@
+pkgbase = epsidm24-secc0019-bin
+	pkgdesc = Driver for Epson SIDM Printers: LQ-790KII/690KII/680KIII/675KTII/106KFII/2680KII ppds
+	pkgver = 1.2.5
+	pkgrel = 1
+	url = https://www.epson.com.cn/services/supportproduct.html?p=beca262ad3e3431a9da695c7e696a737
+	arch = aarch64
+	arch = x86_64
+	license = GPL-2.0-or-later
+	license = Commercial
+	depends = glibc
+	depends = libcups
+	provides = epsidm24-secc0019
+	conflicts = epsidm24-secc0019
+	noextract = signed_epsidm24-secc0019_1_2_5-1_amd64.deb
+	noextract = signed_epsidm24-secc0019_1_2_5-1_arm64.deb
+	options = !strip
+	options = !debug
+	source = signed_epsidm24-secc0019_1_2_5-1_amd64.deb::https://eposs.epson.com.cn/EPSON/assets/resource/Download/Service/driver/SIDM/LQ-2680KII/signed_epsidm24-secc0019_1_2_5-1_amd64.deb
+	source = signed_epsidm24-secc0019_1_2_5-1_arm64.deb::https://eposs.epson.com.cn/EPSON/assets/resource/Download/Service/driver/SIDM/LQ-2680KII/signed_epsidm24-secc0019_1_2_5-1_arm64.deb
+	sha256sums = 625305695cf8a1bc5bc916de7ef2cf073de2c90082a170992b41a0f94c41da8f
+	sha256sums = e4dae3d4683af7e6252ddb4fca86d2b02bc3dd04d895967bcb22e8a7280643dd
+
+pkgname = epsidm24-secc0019-bin
