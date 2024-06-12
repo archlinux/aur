@@ -1,6 +1,6 @@
 pkgbase = cpp-httplib-git
 	pkgdesc = A C++ HTTP/HTTPS server and client library
-	pkgver = 0.15.0.r4.ge323374
+	pkgver = 0.16.0.r0.g8438df4
 	pkgrel = 1
 	url = https://github.com/yhirose/cpp-httplib
 	arch = aarch64
@@ -19,8 +19,8 @@ pkgbase = cpp-httplib-git
 	depends = gcc-libs
 	depends = glibc
 	depends = zlib
-	provides = cpp-httplib=0.15.0.r4.ge323374
-	provides = libhttplib.so
+	provides = cpp-httplib=0.16.0.r0.g8438df4
+	provides = libcpp-httplib.so
 	conflicts = cpp-httplib
 	source = cpp-httplib::git+https://github.com/yhirose/cpp-httplib.git
 	b2sums = SKIP

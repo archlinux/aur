@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=cpp-httplib
 pkgname=$_pkgname-git
-pkgver=0.15.0.r4.ge323374
+pkgver=0.16.0.r0.g8438df4
 pkgrel=1
 pkgdesc="A C++ HTTP/HTTPS server and client library"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs' 'glibc' 'zlib')
 makedepends=('brotli' 'cmake' 'git' 'openssl>=3' 'python')
 checkdepends=('gtest')
-provides=("$_pkgname=$pkgver" 'libhttplib.so')
+provides=("$_pkgname=$pkgver" 'libcpp-httplib.so')
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git")
 b2sums=('SKIP')
