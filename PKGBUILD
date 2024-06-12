@@ -22,7 +22,7 @@ sha256sums=('9324777a2edf37d3afaa39b073050c2a5d3a07fec45d21171813af9e6b3fd6a3'
             '747d5f4b6f82e28fbd50e192ee6e977159e4848cb55e0cc6ee04219832932d7c')
 
 prepare() {
-  echo "# Creating a symlink under the HOME directory" && sleep 1
+  echo "# Creating two symlinks under the HOME directory" && sleep 1
   echo "# to fix the firejail issue, see:" && sleep 1
   echo "# https://github.com/itchio/itch/issues/2732" && sleep 4
   _DIR="$HOME/.config/itch/prereqs/firejail-amd64"
