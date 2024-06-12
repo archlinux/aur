@@ -5,7 +5,7 @@
 # https://mullvad.net/en/help/verifying-mullvad-browser-signature
 
 pkgname=mullvad-browser-bin
-pkgver=13.0.15
+pkgver=13.0.16
 pkgrel=1
 pkgdesc='Privacy-focused web browser developed by Mullvad VPN and the Tor Project'
 arch=(x86_64)
@@ -40,7 +40,7 @@ validpgpkeys=(
 )
 changelog='mullvad-browser.changelog'
 
-sha256sums=('4f2a4f7af024a751bb18fcc14d152fdcde14272740a9f96535e913b187e28ac4'
+sha256sums=('fbc8eeaf615cf9f86b58ef71c9a4aec335199cb2e14cffeecf5e7e117e84ecae'
             'SKIP'
             '0fbfcc63591c661fd73de462a123e6daeae01d7ebc5981c8793227369d77b565'
             '9bb24b8e210112b1222d028285c6d68ab599f8382b2b108ab69284948bb4ac70')
