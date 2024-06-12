@@ -1,0 +1,12 @@
+pkgbase = nsis-nsrichedit-bin
+	pkgdesc = Plug-in for NSIS which provides loading of text from a file into a RichEdit control, printing of a RichEdit control and addition of a Print button to the NSIS license pages
+	pkgver = 1.0.0.0
+	pkgrel = 1
+	url = https://nsis.sourceforge.io/mediawiki/images/e/e5/NsRichEdit.zip
+	arch = any
+	license = custom
+	depends = nsis
+	source = NsRichEdit-1.0.0.0.zip::https://nsis.sourceforge.io/mediawiki/images/e/e5/NsRichEdit.zip
+	sha256sums = fb0aa2e0750d4b8ba386cdf3df98e4643f1ea7130d64c6d81573cc3bfb7c845b
+
+pkgname = nsis-nsrichedit-bin
