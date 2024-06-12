@@ -1,7 +1,7 @@
 pkgbase = sophus
 	pkgdesc = C++ implementation of Lie Groups using Eigen
 	pkgver = 1.24.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://strasdat.github.io/Sophus/latest
 	arch = x86_64
 	arch = i686

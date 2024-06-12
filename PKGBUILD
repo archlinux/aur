@@ -3,7 +3,7 @@
 pkgname=sophus
 _pkgname=Sophus
 pkgver=1.24.6
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ implementation of Lie Groups using Eigen"
 arch=('x86_64' 'i686')
 url="https://strasdat.github.io/Sophus/latest"
@@ -32,13 +32,15 @@ build() {
 
 check() {
   cd $_pkgname-$pkgver
-
   ctest --test-dir build --output-on-failure
-
   python -m venv venv --system-site-packages
   source venv/bin/activate
+  python -m pip install sympy==1.8 --ignore-installed
   python -m installer dist/*.whl
   python -m pytest sophus_pybind/tests/sophusPybindTests.py
+  pushd sympy
+  sh run_tests.sh
+  popd
   deactivate
 }
 
