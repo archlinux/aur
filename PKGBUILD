@@ -2,7 +2,7 @@
 
 pkgname=microw8-src
 _pkgname=microw8
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="WebAssembly based fantasy console inspired by the likes of TIC-80, WASM-4 and PICO-8."
 arch=('x86_64' 'armv7h' 'armv8' 'riscv32' 'riscv64')
@@ -10,7 +10,7 @@ url='https://exoticorn.github.io/microw8'
 license=('The Unlicense')
 makedepends=('rust')
 source=("https://github.com/exoticorn/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('20018bd1bd5e0081d25ac1f77c4bcab1874a0c26df1001cfd51ca256d0e46f79')
+sha256sums=('61df79c65d61419bcae2d0224a0e650271c7d9d197362910d055a4b374dc6467')
 
 #prepare() {
 #  cd "${pkgname}-${pkgver}"
