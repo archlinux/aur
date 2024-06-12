@@ -2,17 +2,17 @@
 # Contributer: Paul <paul@mrarm.io>
 
 pkgname=mcpelauncher-linux-git
-pkgver=0.11.0.r18.g7a64b4e
+pkgver=0.15.0.r3.g6bdf80d
 pkgrel=1
 pkgdesc="Minecraft: Pocket Edition launcher for Linux"
 arch=('x86_64' 'i686')
 url="https://github.com/minecraft-linux/mcpelauncher-manifest"
-license=('GPL3' 'custom')
+license=('GPL-3.0-only' 'custom')
 makedepends_x86_64=('git' 'cmake' 'clang')
 depends_x86_64=('curl' 'libx11' 'zlib' 'libpng' 'libevdev' 'systemd' 'libxi' 'libegl' 'qt6-base' 'qt6-declarative' 'qt6-webengine' 'libuv')
-optdepends=('mcpelauncher-msa: Xbox Live support')
-provides=('mcpelauncher-client')
-conflicts=('mcpelauncher-client')
+optdepends=('mcpelauncher-ui: GUI for Launcher')
+provides=('mcpelauncher-client' 'mcpelauncher-linux')
+conflicts=('mcpelauncher-client' 'mcpelauncher-linux')
 
 source=(
   'git+https://github.com/minecraft-linux/mcpelauncher-manifest.git#branch=qt6'
@@ -45,12 +45,14 @@ source=(
   'git+https://github.com/MCMrARM/simple-ipc'
   'git+https://github.com/minecraft-linux/android_bionic'
   'git+https://github.com/libsdl-org/SDL'
+  'git+https://github.com/ocornut/imgui'
   # Temporary override of 'git+https://android.googlesource.com/platform/system/core'
   # git clone --mirror timed out on archlinux while it still works on ubuntu 22.04, the history has been truncated due to large files
   'git+https://github.com/minecraft-linux/android_core'
 )
 
 md5sums=(
+  'SKIP'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -118,6 +120,7 @@ prepare() {
   git -C mcpelauncher-manifest config submodule.properties-parser.url "$srcdir/properties-parser"
   git -C mcpelauncher-manifest config submodule.simple-ipc.url "$srcdir/simple-ipc"
   git -C mcpelauncher-manifest config submodule.sdl3.url "$srcdir/SDL"
+  git -C mcpelauncher-manifest config submodule.imgui.url "$srcdir/imgui"
   git -C mcpelauncher-manifest -c protocol.file.allow=always submodule update
   git -C mcpelauncher-manifest/mcpelauncher-linker config submodule.bionic.url "$srcdir/android_bionic"
   # Workaround of git clone --mirror timeout commit sha of core doesn't match git repo
@@ -144,6 +147,11 @@ package() {
   make -C build DESTDIR="$pkgdir" install
   if [[ $CARCH == "i686" ]]; then
     mv "$pkgdir/usr/bin/mcpelauncher-client" "$pkgdir/usr/bin/mcpelauncher-client32"
+	rm -rf "$pkgdir/usr/share/mcpelauncher/lib/native/x86_64"
+  fi
+
+  if [[ $CARCH == "x86_64" ]]; then
+    rm -rf "$pkgdir/usr/share/mcpelauncher/lib/native/x86"
   fi
 
   install -Dm644 mcpelauncher-manifest/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
