@@ -1,6 +1,6 @@
 pkgbase = sidplayfp
 	pkgdesc = Sidplay2 fork with improved filter emulation
-	pkgver = 2.6.2
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://github.com/libsidplayfp/sidplayfp
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = sidplayfp
 	conflicts = sidplay-residfp
 	conflicts = sidplay-residfp-alsa
 	conflicts = sidplay-residfp-pulse
-	source = https://github.com/libsidplayfp/sidplayfp/archive/refs/tags/v2.6.2.tar.gz
-	sha256sums = 36ffc9182339c8925451fa31f3f3c1a3434d6392de9e8fd21f000f5f01e75201
+	source = https://github.com/libsidplayfp/sidplayfp/archive/refs/tags/v2.8.0.tar.gz
+	sha256sums = 98ca4d04fb1f648203e43dfa47a28c819089a5fb46142ddd062299e404d52b6c
 
 pkgname = sidplayfp
