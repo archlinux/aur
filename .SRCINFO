@@ -1,5 +1,5 @@
 pkgbase = freealchemist
-	pkgdesc = A figure block game written in Python where you have to connect blocks
+	pkgdesc = A simple arcade game
 	pkgver = 0.7
 	pkgrel = 3
 	url = http://dakblog.wordpress.com/freealchemist/

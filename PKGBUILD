@@ -5,7 +5,7 @@
 pkgname=freealchemist
 pkgver=0.7
 pkgrel=3
-pkgdesc="A figure block game written in Python where you have to connect blocks"
+pkgdesc="A simple arcade game"
 arch=('any')
 url="http://dakblog.wordpress.com/freealchemist/"
 license=('GPL-2.0-or-later')
