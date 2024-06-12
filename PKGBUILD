@@ -1,7 +1,7 @@
 # Maintainer: Khorne <khorne@khorne.me>
 # Adapted from durdraw-git by: Kyle Keen <keenerd@gmail.com>
 pkgname=durdraw
-pkgver=0.27.0
+pkgver=0.27.1
 pkgrel=1
 pkgdesc="Frame based ASCII and ANSI drawing and playback program"
 url="http://cmang.org/durdraw/"
@@ -10,7 +10,7 @@ arch=('any')
 depends=('python' 'python-pillow' 'python-setuptools' 'python-importlib-metadata')
 optdepends=('ansilove: png export, animated gif export')
 source=("durdraw-"$pkgver".tar.gz::https://github.com/cmang/durdraw/archive/refs/tags/${pkgver}.tar.gz")
-md5sums=('b80d1069f4bae998e69a95e6e8c3cc2a')
+md5sums=('f69a2131f5dfcb3958774b2cd02e2b08')
 
 package() {
   cd ${pkgname}-${pkgver}
