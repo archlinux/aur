@@ -5,9 +5,9 @@ pkgbase = neothesia
 	url = https://polymeilex.github.io/Neothesia
 	arch = x86_64
 	license = GPL
-	depends = rust
+	makedepends = rust
+	makedepends = clang
 	depends = ffmpeg
-	depends = clang
 	source = https://github.com/PolyMeilex/Neothesia/archive/refs/tags/v0.2.1.tar.gz
 	sha256sums = 2c2d361552bdb3bcd0c2ec8ffab18ae1e8e6d8e15ca72779552ea37a2b1f939c
 
