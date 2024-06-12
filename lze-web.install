@@ -1,21 +1,19 @@
 post_install() {
   if [ -n "$SUDO_USER" ]; then
-    current_user="$SUDO_USER"
+    cu_user="$SUDO_USER"
     uhome=$(getent passwd "$current_user" | cut -d: -f6)
 else
-    current_user=$(whoami)
-    home_dir="$HOME"
+    cu_user=$(whoami)
 fi
-  mkdir  $uhome/Documents/note
-  chmod +x  $uhome
-  chmod 777  $uhome/Documents
-  chmod 777  $uhome/Downloads 
-  chmod 777  $uhome/Pictures
-  chmod 777 $uhome/Documents/note
-  chmod 777 -R /opt/lze-web
-  ln -s $uhome/Documents /opt/lze-web/Documents
-  ln -s $uhome/Downloads /opt/lze-web/Downloads
-  ln -s $uhome/Pictures /opt/lze-web/Pictures
+
+  mkdir /$cu_user
+  mkdir /$cu_user/Documents
+  mkdir /$cu_user/Downloads
+  mkdir /$cu_user/Pictures
+  mkdir /$cu_user/Note
+  mkdir /$cu_user/Bookmark
+  chmod 777  -R /$cu_user
+  ln -s /$cu_user /opt/lze-web/file
   ln -s /opt/lze-web/code/Terminal/webssh-start /usr/bin/webssh-start
   ln -s /opt/lze-web/code/Terminal/webssh-stop /usr/bin/webssh-stop
   ln -s /opt/lze-web/code/Terminal/webssh /usr/lib/python3.12/site-packages/webssh
