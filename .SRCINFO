@@ -1,0 +1,33 @@
+pkgbase = python-revup
+	pkgdesc = Effortlessly create and manage pull requests without changing branches. Powers a stacked diffs workflow with python and git 'plumbing' commands.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/Skydio/revup
+	arch = any
+	license = MIT
+	makedepends = make
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-pip
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = pandoc-cli
+	makedepends = gzip
+	makedepends = coreutils
+	makedepends = gawk
+	depends = python
+	depends = python-aiohttp
+	depends = python-async-lru
+	depends = python-attrs
+	depends = python-requests
+	depends = python-rich
+	depends = python-multidict
+	depends = python-yarl
+	depends = python-async-timeout
+	depends = python-charset-normalizer
+	depends = python-aiosignal
+	depends = git
+	source = python-revup::git+https://github.com/Skydio/revup#tag=v0.2.1
+	sha256sums = 94737af56c8acace88a2986881b9285bb070504d9f77f00d87d961be55b346f8
+
+pkgname = python-revup
