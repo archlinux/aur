@@ -1,19 +1,21 @@
 pkgbase = lib32-libxslt
 	pkgdesc = XML stylesheet transformation library (32-bit)
-	pkgver = 1.1.39
+	pkgver = 1.1.40
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/libxslt/-/wikis/home
 	arch = x86_64
-	license = custom:MIT
+	license = MIT
 	checkdepends = docbook-xml
 	checkdepends = python
 	makedepends = git
+	depends = lib32-gcc-libs
+	depends = lib32-glibc
 	depends = lib32-libgcrypt
 	depends = lib32-libxml2
 	depends = lib32-xz
 	depends = libxslt
-	source = git+https://gitlab.gnome.org/GNOME/libxslt.git#commit=743ab691bed98ed11ac99bbd9d903d59fb814ab8
-	b2sums = SKIP
+	source = git+https://gitlab.gnome.org/GNOME/libxslt.git#tag=v1.1.40
+	b2sums = 12737793c1b71c2336f4010dcd2b7c340c1b392962bc1cbf0211dd6bd19559d33db0a654177bad96530628fff286bb08c2fbb4ce8056543f008e118419b8b4ab
 
 pkgname = lib32-libxslt
 	provides = libxslt.so

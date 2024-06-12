@@ -1,0 +1,4 @@
+[lib32-libxslt]
+source = "git"
+git = "https://gitlab.gnome.org/GNOME/libxslt.git"
+prefix = "v"
