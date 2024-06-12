@@ -1,6 +1,6 @@
 post_install() {
-	echo ':: Warning! From time to time there are breaking changes in VictoriaMetrics.
-	echo ':: This package will not warn you about them, so please,
+	echo ':: Warning! From time to time there are breaking changes in VictoriaMetrics.'
+	echo ':: This package will not warn you about them, so please,'
 	echo ':: track it by yourself in changelog and follow the upgrade guides.'
 	echo ':: Settings could be adjusted in /etc/default/victoriametrics'
 }
