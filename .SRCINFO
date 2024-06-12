@@ -1,6 +1,6 @@
 pkgbase = filetree-traversing
 	pkgdesc = A Rust library for working with file trees
-	pkgver = 0.1.13
+	pkgver = 0.1.15
 	pkgrel = 1
 	url = https://github.com/seal/filetree-traversing
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = filetree-traversing
 	makedepends = cargo
 	depends = rust
 	depends = cargo
-	source = filetree-traversing-0.1.13.tar.gz::https://github.com/seal/filetree-traversing/archive/refs/tags/v0.1.13.tar.gz
+	source = filetree-traversing-0.1.15.tar.gz::https://github.com/seal/filetree-traversing/archive/refs/tags/v0.1.15.tar.gz
 	sha256sums = SKIP
 
 pkgname = filetree-traversing
