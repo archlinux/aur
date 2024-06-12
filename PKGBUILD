@@ -72,10 +72,10 @@ _subarch=40
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=6.1
-_minor=46
-_rtpatchver=13
-_clr=${_major}.38-105
-_gcc_more_v='20230105'
+_minor=92
+_rtpatchver=32
+_clr=${_major}.92-155
+_gcc_more_v='20240221.2'
 _srcname=linux-${_major}.${_minor}
 pkgbase=linux-clear-preempt-rt
 pkgver=${_major}.${_minor}
@@ -84,12 +84,12 @@ pkgdesc='Clear Linux Preempt-RT'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-preempt-rt"
 license=('GPL2')
-makedepends=('bc' 'cpio' 'git' 'libelf' 'pahole' 'xmlto')
-options=('!strip')
+makedepends=(bc cpio gettext git libelf pahole perl python tar xz zstd)
+options=(!debug !strip)
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_major}.${_minor}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_major}.${_minor}.tar.sign"
-  "https://cdn.kernel.org/pub/linux/kernel/projects/rt/${_major}/patch-${_major}.46-rt${_rtpatchver}.patch.xz"
+  "https://cdn.kernel.org/pub/linux/kernel/projects/rt/${_major}/patch-${_major}.${_minor}-rt${_rtpatchver}.patch.xz"
   "$pkgbase::git+https://github.com/clearlinux-pkgs/linux-preempt-rt.git#tag=${_clr}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
 )
@@ -103,7 +103,7 @@ prepare() {
 
     ### Add upstream patches
     echo "Add upstream patches"
-    patch -Np1 -i ../patch-${_major}.46-rt${_rtpatchver}.patch
+    patch -Np1 -i ../patch-${_major}.${_minor}-rt${_rtpatchver}.patch
 
     ### Setting version
     echo "Setting version..."
@@ -138,9 +138,7 @@ prepare() {
     scripts/config --enable KPROBES
 
     # Enable loadable module support
-    scripts/config --undefine MODULE_SIG_FORCE \
-                   --undefine MODULE_COMPRESS_NONE \
-                   --enable MODULE_COMPRESS_ZSTD
+    scripts/config --undefine MODULE_SIG_FORCE
 
     # Networking support
     scripts/config --enable NETFILTER_INGRESS \
@@ -180,7 +178,7 @@ prepare() {
     # https://github.com/graysky2/kernel_compiler_patch
     # make sure to apply after olddefconfig to allow the next section
     echo "Patching to enable GCC optimization for other uarchs..."
-    patch -Np1 -i "$srcdir/kernel_compiler_patch-$_gcc_more_v/more-uarches-for-kernel-5.17+.patch"
+    patch -Np1 -i "$srcdir/kernel_compiler_patch-$_gcc_more_v/more-uarches-for-kernel-6.1.79-6.8-rc3.patch"
 
     if [ -n "$_subarch" ]; then
         # user wants a subarch so apply choice defined above interactively via 'yes'
@@ -336,11 +334,11 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('f5f67bcfccd47f8d9db2d5ba24e33af7778f40a777577d1fba424f4a1712a296'
+sha256sums=('9019f427bfdc9ced5bc954d760d37ac08c0cdffb45ad28087fc45a73e64336c9'
             'SKIP'
-            'df29cf27bb7ef0b7750f541d959b791905a5d41a322896f9a4bb57b5ab00f202'
+            '383c24b86b73747cab70550d92f1b8f6a9d98aca965b698ef0b6cd2d09350a03'
             'SKIP'
-            '802946f623c69ae1a636b63697c23ca48af31a099415ed837d2c1e168a272d23')
+            '1d3ac3e581cbc5108f882fcdc75d74f7f069654c71bad65febe5ba15a7a3a14f')
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds

@@ -1,29 +1,35 @@
 pkgbase = linux-clear-preempt-rt
 	pkgdesc = Clear Linux Preempt-RT
-	pkgver = 6.1.46
+	pkgver = 6.1.92
 	pkgrel = 1
 	url = https://github.com/clearlinux-pkgs/linux-preempt-rt
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
 	makedepends = cpio
+	makedepends = gettext
 	makedepends = git
 	makedepends = libelf
 	makedepends = pahole
-	makedepends = xmlto
+	makedepends = perl
+	makedepends = python
+	makedepends = tar
+	makedepends = xz
+	makedepends = zstd
+	options = !debug
 	options = !strip
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.1.46.tar.xz
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.1.46.tar.sign
-	source = https://cdn.kernel.org/pub/linux/kernel/projects/rt/6.1/patch-6.1.46-rt13.patch.xz
-	source = linux-clear-preempt-rt::git+https://github.com/clearlinux-pkgs/linux-preempt-rt.git#tag=6.1.38-105
-	source = more-uarches-20230105.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/20230105.tar.gz
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.1.92.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.1.92.tar.sign
+	source = https://cdn.kernel.org/pub/linux/kernel/projects/rt/6.1/patch-6.1.92-rt32.patch.xz
+	source = linux-clear-preempt-rt::git+https://github.com/clearlinux-pkgs/linux-preempt-rt.git#tag=6.1.92-155
+	source = more-uarches-20240221.2.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/20240221.2.tar.gz
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = f5f67bcfccd47f8d9db2d5ba24e33af7778f40a777577d1fba424f4a1712a296
+	sha256sums = 9019f427bfdc9ced5bc954d760d37ac08c0cdffb45ad28087fc45a73e64336c9
 	sha256sums = SKIP
-	sha256sums = df29cf27bb7ef0b7750f541d959b791905a5d41a322896f9a4bb57b5ab00f202
+	sha256sums = 383c24b86b73747cab70550d92f1b8f6a9d98aca965b698ef0b6cd2d09350a03
 	sha256sums = SKIP
-	sha256sums = 802946f623c69ae1a636b63697c23ca48af31a099415ed837d2c1e168a272d23
+	sha256sums = 1d3ac3e581cbc5108f882fcdc75d74f7f069654c71bad65febe5ba15a7a3a14f
 
 pkgname = linux-clear-preempt-rt
 	pkgdesc = The Clear Linux Preempt-RT kernel and modules
