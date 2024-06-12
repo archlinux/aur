@@ -4,7 +4,7 @@
 pkgname=bruno-electron
 _pkgname=bruno
 pkgdesc="Bruno, an opensource API Client for Exploring and Testing APIs using the system provided Electron"
-pkgver=1.18.1
+pkgver=1.19.0
 pkgrel=1
 conflicts=('bruno')
 provides=('bruno')
@@ -14,11 +14,11 @@ license=('MIT')
 _electron=electron
 depends=(
     "${_electron}>=21.0.0"
-    "nodejs>=20.9.0"
 )
+
 makedepends=(
     'asar'
-    'npm'
+    'nvm' # :(
 )
 
 source=(
@@ -26,19 +26,34 @@ source=(
    com.usebruno.app.Bruno.desktop
 )
 
-sha256sums=('1f7977ffd55b09a9fe08d694fec8353d3ebde002853ff4271801d8fe9a67a31b'
+sha256sums=('e3fec9cd967b4612b86610a8bfe89a81c9175f5b7783e53f3d89891199528d31'
             '7bad0d66e67fdaaf99d1b7b32ba2f119b7d6dba12ecfdb398c39ee3c81bbe051')
 
+_ensure_local_nvm() {
+    # let's be sure we are starting clean
+    which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+    export NVM_DIR="${srcdir}/.nvm"
+
+    # The init script returns 3 if version specified
+    # in ./.nvrc is not (yet) installed in $NVM_DIR
+    # but nvm itself still gets loaded ok
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+}
+
 prepare() {
+    _ensure_local_nvm
+
     cd "${_pkgname}-${pkgver}"
 
-    # Try our hardest to disable Husky
-    sed -i -e 's/"husky":.*//g' -e 's/"husky install"/"true"/g' package.json
+    export HUSKY=0
 
-    npm install --cache "${srcdir/npm-cache}" --legacy-peer-deps
+    nvm install
+    npm install --cache "${srcdir/npm-cache}"
 }
 
 build() {
+    _ensure_local_nvm
+
     export NODE_ENV=production
 
     cd "${_pkgname}-${pkgver}"
