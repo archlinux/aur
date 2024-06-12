@@ -6,7 +6,7 @@ url="https://amber-lang.com/"
 arch=('x86_64' 'aarch64')
 license=('GPL3')
 provides=('amber-bash')
-confilicts=('amber-bash')
+conflicts=('amber-bash')
 
 source_x86_64=("https://github.com/Ph0enixKM/Amber/releases/download/0.3.1-alpha/amber_linux_x86_64")
 source_aarch64=("https://github.com/Ph0enixKM/Amber/releases/download/0.3.1-alpha/amber_linux_aarch64")
