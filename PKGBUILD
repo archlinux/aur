@@ -75,8 +75,6 @@ source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         jinja-python-3.10.patch
         use-system-libraries-in-node.patch
         makepkg-source-roller.py
-        prepare-electron-source-tree.sh
-        gclient_args.gni
         # BEGIN managed sources
         chromium-mirror::git+https://github.com/chromium/chromium.git#tag=126.0.6478.36
         chromium-mirror_third_party_nan::git+https://github.com/nodejs/nan.git#commit=e14bdcd1f72d62bca1d541b66da43130384ec213
@@ -252,8 +250,6 @@ sha256sums=('3f9cb77d22b75ce37adc4c90012d54a1cfc07619e20750a3cbee499d646987d3'
             '55dbe71dbc1f3ab60bf1fa79f7aea7ef1fe76436b1d7df48728a1f8227d2134e'
             'ff588a8a4fd2f79eb8a4f11cf1aa151298ffb895be566c57cc355d47f161f53f'
             '2c8cd28cee0e1df1862e801794f210d2b7cac652f943cf94f43c2abe26f2a2f4'
-            '92f648bf8254e83405989eb173fa6984fcf4176114130f5cf5028f87c0686a0e'
-            '999e9c7d006334da8fdbd81816cfc8731408515968f22657ace3dea580f2777e'
             'ff45dec4eb10be28cb411a0769c41f1536af7c6452ced295941512824b8f5951'
             '0b7a546ee6913c49519c10c293ac530ff381641a8a465fa2e184d6dbe0fb784d'
             'b8670cb7c3ff51e53dbfa77ad1508260e674a46ef0ec8a177d7dd6c4acd4f443'
@@ -463,6 +459,8 @@ prepare() {
   #export VPYTHON_BYPASS='manually managed python not supported by chrome operations'
 
   echo "Putting together electron sources"
+  # Generate gclient gn args file and prepare-electron-source-tree.sh
+  python makepkg-source-roller.py generate electron/DEPS $pkgname
   rbash prepare-electron-source-tree.sh "$CARCH"
   mv electron src/electron
 
