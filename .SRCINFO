@@ -1,13 +1,13 @@
 pkgbase = metrics-observer
 	pkgdesc = A text-based UI for observing metrics exported by the `metrics-exporter-tcp` Rust crate
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/metrics-rs/metrics/metrics-observer
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = metrics-observer-0.3.0.tar.gz::https://static.crates.io/crates/metrics-observer/metrics-observer-0.3.0.crate
-	b2sums = 75d12623ce0b457d41291e34e4953cba67f3884a53ac9016e67b881a8a62abe87d9b66838fb4037503c8dc5f31bee2d1f48a4087ad0114d02f998fe70ecb4c88
+	source = metrics-observer-0.4.0.tar.gz::https://static.crates.io/crates/metrics-observer/metrics-observer-0.4.0.crate
+	b2sums = 46a065ee76b8506b97fea281a37f93dbd10c6f71e91267fdbc0190f5d41f423aa6c965b0b9cd43c416adc427fb9b1fc01028a2efd7a6fb62bc6f4b01bc210952
 
 pkgname = metrics-observer
