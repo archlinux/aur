@@ -52,7 +52,7 @@ depends=(cairo # libcairo.so
          xcb-util-renderutil # libxcb-render-util.so
          xcb-util-wm # libxcb-ewmh.so  libxcb-icccm.so
          xorg-xinput
-         xorg-xwayland)
+         xorg-xwayland-hidpi-xprop)
 makedepends=(cmake
              gdb
              hyprwayland-scanner
