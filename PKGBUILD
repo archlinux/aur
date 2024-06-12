@@ -1,14 +1,15 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 _pyname=drizzlepac
 pkgname=python-${_pyname}-doc
-pkgver=3.6.2
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="Documentation for DrizzlePac"
 arch=('any')
 url="http://www.stsci.edu/scientific-community/software/drizzlepac.html"
-license=('BSD')
+license=('BSD-3-Clause')
 makedepends=("python-${_pyname}=${pkgver}"
              'graphviz'
+             'python-setuptools'
              'python-numpydoc'
              'python-sphinx_rtd_theme'
 #            'python-astroquery'
@@ -16,8 +17,10 @@ makedepends=("python-${_pyname}=${pkgver}"
 #            'python-pandas'
 #            'python-stsci_rtd_theme'
              'python-sphinx-automodapi'
+             'python-tomli'
 #            'python-ci_watson'
-             'texlive-latexextra')  # anyfontsize.sty
+             'texlive-latexextra')  # latex.fmt: -latex; anyfontsize.sty: latexextra
+             # texlive-basic(mktexfmt)
 #            'python-bokeh'
 #            'python-scikit-image'
 #            'python-pypdf2'
@@ -29,7 +32,7 @@ source=("https://github.com/spacetelescope/${_pyname}/archive/${pkgver}.tar.gz"
 #       "https://raw.githubusercontent.com/spacetelescope/drizzlepac/master/doc/source/ZoomSkyCellCombo.png"
         'fix_catalog_generation_title_level.patch')
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
-md5sums=('35e99ac2acfbb55984302521ca6eef0d'
+md5sums=('d9dfab42ba28ebaa904b5e4a515163c9'
          'eb046975b52452d799021218eb414cfb')
 
 prepare() {
