@@ -1,29 +1,34 @@
-From ddfae0d984220e28628cc4706fc14685302d12fe Mon Sep 17 00:00:00 2001
-From: bbm <brian.maranville@nist.gov>
-Date: Wed, 13 Dec 2023 16:54:36 -0500
-Subject: [PATCH] apply fix suggested in #129
+From af82c757b7cdd78556563af10ee08f013b784002 Mon Sep 17 00:00:00 2001
+From: Paul Kienzle <pkienzle@nist.gov>
+Date: Tue, 21 May 2024 17:26:18 -0400
+Subject: [PATCH] acknowledge bad values in wsolve ci/pi tests
 
 ---
- bumps/plotutil.py | 9 +++++++++
- 1 file changed, 9 insertions(+)
+ bumps/wsolve.py | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
-diff --git a/bumps/plotutil.py b/bumps/plotutil.py
-index 3f47e61e..cbbda879 100644
---- a/bumps/plotutil.py
-+++ b/bumps/plotutil.py
-@@ -54,6 +54,15 @@ def next_color():
-     import pylab
-     lines = pylab.gca()._get_lines
-     try:
-+        base = lines.get_next_color()
-+    except Exception:
-+        try: # Cruft 1.7 - 3.7?
-+            base = next(lines.prop_cycler)['color']
-+        except Exception:
-+            try: # Cruft 1.4-1.6?
-+                base = next(lines.color_cycle)
-+            except Exception:  # Cruft 1.3 and earlier
-+                base = lines._get_next_cycle_color()
-         base = next(lines.prop_cycler)['color']
-     except Exception:
-         try: # Cruft 1.4-1.6?
+diff --git a/bumps/wsolve.py b/bumps/wsolve.py
+index 3f48344b..fb4b1aeb 100644
+--- a/bumps/wsolve.py
++++ b/bumps/wsolve.py
+@@ -435,7 +435,7 @@ def test():
+     # Uncomment these to show target values
+     # print "Tp = [%.16g, %.16g]"%(p[0],p[1])
+     # print "Tdp = [%.16g, %.16g]"%(dp[0],dp[1])
+-    # print "Tpi,Tci = %.16g, %.16g"%(pi,ci)
++    # "Tpi,Tci = %.16g, %.16g"%(pi,ci)
+     Tp = np.array([7.787249069840737, 1.503992847461524])
+     Tdp = np.array([1.522338103010216, 2.117633626902384])
+     Tpi, Tci = 7.611128464981324, 2.342860389884832
+@@ -446,8 +446,9 @@ def test():
+     pierr = np.abs(pi - Tpi)
+     assert perr < 1e-14, "||p-Tp||=%g" % perr
+     assert dperr < 1e-14, "||dp-Tdp||=%g" % dperr
+-    assert cierr < 1e-14, "||ci-Tci||=%g" % cierr
+-    assert pierr < 1e-14, "||pi-Tpi||=%g" % pierr
++    # Target values are only accurate to 9 digits for scipy < 1.13
++    assert cierr < 1e-8, "||ci-Tci||=%g" % cierr
++    assert pierr < 1e-8, "||pi-Tpi||=%g" % pierr
+     assert_array_almost_equal_nulp(py, poly(px), nulp=8)
+ 
+ if __name__ == "__main__":
