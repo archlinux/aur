@@ -10,7 +10,7 @@ arch=('any')
 url="http://github.com/${_github_org}/${_github_repo}"
 license=('GPL3')
 depends=('emacs' 'emacs-dash' 'emacs-graphql' 'emacs-treepy')
-makedepends=('git' 'texlive-core')
+makedepends=('git' 'texlive-core' 'texlive-plaingeneric')
 provides=('emacs-ghub')
 source=("git+https://github.com/${_github_org}/${_github_repo}.git#tag=v${pkgver}"
         "0001-make-Explicitly-specify-output-directory-for-makeinf.patch")
