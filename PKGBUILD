@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=dreamlet
-_pkgver=1.2.0
+_pkgver=1.2.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -65,8 +65,8 @@ optdepends=(
   r-scuttle
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('83d18b989204e6bed101a1fe3fef8d18')
-b2sums=('3e0fdb7ff01e89d28e859eb6be2b134350c3b04b52be654a4e150d2c7cedf20e12f7dddb64cbd10940e39cb4c5d672c801cba6277ac672e3c122860aa58f2601')
+md5sums=('c3e81ef429221ca65b0477fb6c354736')
+b2sums=('10497482c85fadd6fd5f8f1529bcf028086ed572f14f3fba4b5f4e8f8bd57860451db36a03558ff6dcf879cc89cb7264ee50bc5ac2326994dcdcbb9256ad3249')
 
 build() {
   mkdir build
