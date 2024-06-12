@@ -18,9 +18,9 @@ optdepends=(
 	'noto-fonts-emoji: Or some other emoji font to see emojis'
 	'pandoc: Import/export for extra file formats')
 backups=(
-    '/usr/share/typora/resources/plugin/global/settings/custom_plugin.user.toml'
-    '/usr/share/typora/resources/plugin/global/settings/hotkey.user.toml'
-    '/usr/share/typora/resources/plugin/global/settings/settings.user.toml'
+    'usr/share/typora/resources/plugin/global/settings/custom_plugin.user.toml'
+    'usr/share/typora/resources/plugin/global/settings/hotkey.user.toml'
+    'usr/share/typora/resources/plugin/global/settings/settings.user.toml'
     )
 _filename="${_pkgname}_${_typora_ver}_amd64.deb"
 source=(
