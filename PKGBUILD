@@ -3,15 +3,16 @@
 
 pkgname=libosmocore-git
 pkgver=1.9.0.r208.10d4d119e
-pkgrel=1
+pkgrel=2
 pkgdesc="Osmocom core library"
 arch=('x86_64' 'i686')
 url="https://osmocom.org/projects/libosmocore/wiki/Libosmocore"
 license=('GPL-2.0-or-later')
 depends=('pcsclite' 'talloc' 'libusb' 'lksctp-tools' 'libmnl' 'gnutls' 'systemd-libs' 'liburing')
 makedepends=('git' 'python')
-conflicts=('libosmocore')
-provides=('libosmocodec.so=4-64'
+conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}"
+          'libosmocodec.so=4-64'
           'libosmocoding.so=0-64'
           'libosmocore.so=21-64'
           'libosmoctrl.so=0-64'
