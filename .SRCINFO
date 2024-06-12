@@ -1,13 +1,14 @@
 pkgbase = hmcl-dev
 	pkgdesc = A Minecraft Launcher which is multi-functional, cross-platform and popular (development version)
 	pkgver = 3.5.8.248
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/huanghongxun/HMCL
 	arch = any
 	license = GPL3
-	makedepends = jdk-openjdk
+	makedepends = jdk21-openjdk
 	makedepends = gradle
-	depends = jre-openjdk
+	makedepends = git
+	depends = jre21-openjdk
 	provides = hmcl
 	conflicts = hmcl
 	source = hmcl-launch-script
