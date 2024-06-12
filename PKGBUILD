@@ -52,7 +52,7 @@ depends=(
   xcb-util-renderutil
   xcb-util-wm
   xorg-xinput
-  xorg-xwayland
+  xorg-xwayland-hidpi-xprop
 )
 depends+=(libdisplay-info.so)
 makedepends=(
