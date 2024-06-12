@@ -1,21 +1,20 @@
 pkgbase = hmcl-dev
 	pkgdesc = A Minecraft Launcher which is multi-functional, cross-platform and popular (development version)
-	pkgver = 3.5.7.247
+	pkgver = 3.5.8.248
 	pkgrel = 1
 	url = https://github.com/huanghongxun/HMCL
 	arch = any
 	license = GPL3
-	makedepends = jdk21-openjdk
+	makedepends = jdk-openjdk
 	makedepends = gradle
-	makedepends = git
-	depends = java21-openjfx
+	depends = jre-openjdk
 	provides = hmcl
 	conflicts = hmcl
 	source = hmcl-launch-script
 	source = hmcl.desktop
-	source = git+https://github.com/huanghongxun/HMCL.git#tag=v3.5.7.247
-	sha256sums = eaad0d897060459413b35f00b6ca037b1f351e19a64c5297982b0ddd3d336feb
+	source = git+https://github.com/huanghongxun/HMCL.git#tag=v3.5.8.248
+	sha256sums = 5052316e95f26a137cd7ab3953e7b019bcd0a755cfe27abb318c505eb6268baf
 	sha256sums = 5780cf70f1afec0eb3cd8fc43297d361903c7204e274a28c5edf9b8ac3eea83e
-	sha256sums = SKIP
+	sha256sums = 11f8603738838421e3bf1da2516015f8dcff5515d832b86bbd45a3d457dab7e6
 
 pkgname = hmcl-dev
