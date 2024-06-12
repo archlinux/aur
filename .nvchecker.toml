@@ -1,0 +1,5 @@
+[nheko]
+source = "git"
+git = "https://nheko.im/nheko-reborn/nheko.git"
+prefix = "v"
+ignored = "20190519.1"
