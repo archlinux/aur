@@ -2,14 +2,14 @@
 #
 # shellcheck disable=all
 pkgname=nom-bin
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="RSS reader for the terminal"
 arch=(x86_64)
 url="https://github.com/guyfedwards/nom"
 license=('GPL')
-source=('https://github.com/guyfedwards/nom/releases/download/v2.4.0/nom_2.4.0_linux_amd64.tar.gz')
-sha256sums=('05f040a2a021a6038751c1075fed375c04c3d6587167ca5b20652fe69c9d9a90')
+source=('https://github.com/guyfedwards/nom/releases/download/v2.5.0/nom_2.5.0_linux_amd64.tar.gz')
+sha256sums=('3b1fb8f348dc8102b2bdc5e0c5151f3305a7724778d8e765ed5638d0a534a5aa')
 
 package() {
 	cd "$srcdir/"
