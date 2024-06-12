@@ -1,0 +1,18 @@
+pkgbase = figurine-git
+	pkgdesc = Print your text in style
+	pkgver = 1.3.0.r0.d51c245
+	pkgrel = 1
+	url = https://github.com/arsham/figurine
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = Apache
+	makedepends = git
+	makedepends = make
+	makedepends = go
+	provides = figurine=1.3.0
+	conflicts = figurine
+	source = figurine::git+https://github.com/arsham/figurine.git
+	sha256sums = SKIP
+
+pkgname = figurine-git
