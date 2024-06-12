@@ -1,8 +1,8 @@
 # Maintainer: Mark Collins <tera_1225 hat hotmail ðot com>
 # Partially adapted from https://github.com/wasta-linux/lameta-snap
 pkgname=lameta
-pkgver=2.3.1_alpha
-_electron=electron22
+pkgver=2.3.4_beta
+_electron=electron23
 pkgrel=1
 pkgdesc="The Metadata Editor for Transparent Archiving of language document materials"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=(
 	bash
 	"$_electron"
-	nodejs-lts-hydrogen
+	nodejs
 )
 makedepends=(
 	asar
@@ -23,7 +23,7 @@ source=(
 	"${pkgname}.desktop"
   'no_node_pin.patch'
 )
-sha256sums=('acbf53905622cc9f5a2697d70224c67c810eb64dfac360f721bebec5c30524b4'
+sha256sums=('c00a64c9bd69c50408bdce84cc113d792ce42604c62b18381e627b833e595fd8'
             '874e1acc986076e9c876c6ccd2efc7ee0dcda322733c018fb8e3d0bf010b8791'
             '7bc59aee62f8a77217d76ae42f6445ed51375f5c1c158c678aa56c208edbdc28')
 
@@ -39,7 +39,6 @@ build() {
   yarn
   yarn build
   yarn install --frozen-lockfile
-  yarn strings:compile
 	./node_modules/.bin/electron-builder \
 	  --linux --x64 --dir \
     --config.electronDist=/usr/lib/"$_electron"
