@@ -84,7 +84,7 @@ source=(https://gitlab.com/api/v4/projects/55893651/packages/generic/firedragon/
   patch-python3.12-bug1874280.patch
   rustup.sh::https://sh.rustup.rs
   https://gitlab.com/garuda-linux/firedragon/settings/-/raw/master/firedragon.psd
-  "${pkgname}.desktop")
+  https://gitlab.com/garuda-linux/firedragon/settings/-/raw/master/firedragon.desktop)
 sha256sums=('7ef6798b20554820924007c721aac2da935b2a23324b18a9b70dcbf9a5045778'
             '9516c36c145d365c3b65153d83a5b3b0dd8a319b5c30d47a390070892bd431b3'
             '168d16a027a81c311c58f9302858244dfa5517f0a95a8d3df1abbf9b93b9d455'
