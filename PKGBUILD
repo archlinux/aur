@@ -7,8 +7,8 @@
 
 _pkgname=gamescope
 pkgname=gamescope-plus
-pkgver=3.13.16.9.plus1
-pkgrel=4
+pkgver=3.14.18.40.g6bc5256
+pkgrel=1
 pkgdesc='SteamOS session compositing window manager with added patches'
 arch=(x86_64)
 url=https://github.com/ChimeraOS/gamescope
@@ -62,7 +62,7 @@ makedepends=(
   wayland-protocols
 )
 
-_tag=f2e47826d2bdefa8d4bb3f26a52b5cd6da09787e
+_tag=6bc5256a844d9e69ee1baef71e107daca5338f8b
 source=("git+https://github.com/ChimeraOS/gamescope.git#commit=${_tag}"
         "git+https://github.com/nothings/stb.git#commit=af1a5bc352164740c1cc1354942b1c6b72eacb8a"
         "git+https://github.com/Joshua-Ashton/GamescopeShaders.git#tag=v0.1"
