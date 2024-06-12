@@ -1,4 +1,4 @@
-# Maintainer: ventusliberum <dafeinayius@gmail.com>
+# Maintainer: Zakros
 
 pkgname=graviton-bin
 pkgver=2.3.0
