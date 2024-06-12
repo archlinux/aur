@@ -1,6 +1,6 @@
 pkgbase = android-armv7a-eabi-gdk-pixbuf2
 	pkgdesc = An image loading library (Android armv7a-eabi)
-	pkgver = 2.42.11
+	pkgver = 2.42.12
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/GdkPixbuf
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = android-armv7a-eabi-gdk-pixbuf2
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://gitlab.gnome.org/GNOME/gdk-pixbuf/-/archive/2.42.11/gdk-pixbuf-2.42.11.tar.bz2
-	md5sums = ace6257f190b7ea3f54a626106884540
+	source = https://gitlab.gnome.org/GNOME/gdk-pixbuf/-/archive/2.42.12/gdk-pixbuf-2.42.12.tar.bz2
+	md5sums = 8d6e95d829ade125d9cece4ad1cc6dff
 
 pkgname = android-armv7a-eabi-gdk-pixbuf2
