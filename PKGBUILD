@@ -1,14 +1,14 @@
 # Maintainer: Maciej Dems <macdems@gmail.com>
 pkgname=z-library-bin
-pkgver=1.0.2
-pkgrel=3
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="Z-library application"
 arch=('x86_64')
-url="https://singlelogin.se"
+url="https://go-to-library.sk/"
 depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'at-spi2-core' 'util-linux-libs' 'libsecret' 'libappindicator-gtk3')
 license=('ISC')
-source=("https://singlelogin.re/soft/zlibrary-setup-latest.deb")
-sha256sums=('7fbdcefcea789dea4e2cde07593fdfa2c35626e94d03e017047ee96f597fefe3')
+source=("https://go-to-library.sk/soft/zlibrary-setup-latest.deb")
+sha256sums=('d3d6c845fafd3a16bd1cb28451bfa8295767c6942fb0449930ee51db54b94c7f')
 
 prepare() {
     mkdir -p "$srcdir/z-library"
