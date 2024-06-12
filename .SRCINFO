@@ -1,15 +1,18 @@
 pkgbase = python-foolscap
 	pkgdesc = Remote object-messaging for Python+Twisted
 	pkgver = 23.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/warner/foolscap
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = python-twisted
+	depends = python
 	depends = python-pyopenssl
+	depends = python-six
+	depends = python-twisted
+	depends = python-zope-interface
 	source = https://github.com/warner/foolscap/archive/refs/tags/foolscap-23.11.0.tar.gz
 	sha256sums = 99e79c69f2090842e68b3ebc6f333c37426e52a83c1945a08e2b6e9304617ccb
 
