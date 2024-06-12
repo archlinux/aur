@@ -4,11 +4,11 @@
 
 pkgname=libosmo-netif
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Osmocom library for muxed audio"
 arch=('any')
 url="https://osmocom.org/projects/libosmo-netif"
-license=(GPL)
+license=('GPL-2.0-or-later')
 # TODO: libosmocore>=1.9.0 libosmo-abis>=1.5.0
 depends=('lksctp-tools' 'libpcap' 'libosmocore' 'libosmo-abis')
 provides=("libosmonetif.so=11-64")
