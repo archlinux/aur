@@ -1,13 +1,14 @@
 pkgbase = chromium-pdfjs-git
 	pkgdesc = PDF viewer in Javascript, packaged as a Chromium extension
-	pkgver = 3.10.111.54.gb1578225f
+	pkgver = 4.3.136.35.g341ff40e7
 	pkgrel = 1
 	url = https://github.com/mozilla/pdf.js
 	arch = any
 	license = GPL3
 	makedepends = git
-	makedepends = npm
-	makedepends = gulp
+	makedepends = nvm
+	depends = pixman
+	depends = cairo
 	source = git+https://github.com/mozilla/pdf.js.git
 	sha512sums = SKIP
 
