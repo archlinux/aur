@@ -1,16 +1,33 @@
-# Contributor: Matthias Bethke <c+aur@towiski.de>
+# Contributor: Matthias Bethke <m+aur@towiski.de>
 #  previously: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
 # Generator  : CPANPLUS::Dist::Arch 1.25
 
 pkgname='perl-amazon-s3'
 pkgver='2.0.2'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='A portable client library for working with and managing Amazon S3 buckets and keys.'
 arch=('any')
 license=('PerlArtistic')
 options=('!emptydirs')
-depends=('perl-class-accessor' 'perl-digest-hmac' 'perl-digest-md5-file' 'perl-http-date' 'perl-lwp-useragent-determined' 'perl-uri' 'perl-xml-simple>=1.08')
-makedepends=('make' 'automake' 'autoconf')
+depends=(
+  'perl-class-accessor'
+  'perl-digest-hmac'
+  'perl-digest-md5-file'
+  'perl-http-date'
+  'perl-io-stringy'
+  'perl-lwp-useragent-determined'
+  'perl-net-amazon-signature-v4'
+  'perl-readonly'
+  'perl-test-output'
+  'perl-uri'
+  'perl-xml-simple>=1.08'
+)
+makedepends=(
+  'autoconf'
+  'automake'
+  'make'
+  'perl-pod-markdown'
+)
 url='https://github.com/rlauer6/perl-amazon-s3'
 source=("https://github.com/rlauer6/perl-amazon-s3/archive/refs/tags/${pkgver}.tar.gz")
 md5sums=('f546d3819b18b5e562a4b3a2e52f55bf')

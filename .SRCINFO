@@ -1,18 +1,23 @@
 pkgbase = perl-amazon-s3
 	pkgdesc = A portable client library for working with and managing Amazon S3 buckets and keys.
 	pkgver = 2.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rlauer6/perl-amazon-s3
 	arch = any
 	license = PerlArtistic
-	makedepends = make
-	makedepends = automake
 	makedepends = autoconf
+	makedepends = automake
+	makedepends = make
+	makedepends = perl-pod-markdown
 	depends = perl-class-accessor
 	depends = perl-digest-hmac
 	depends = perl-digest-md5-file
 	depends = perl-http-date
+	depends = perl-io-stringy
 	depends = perl-lwp-useragent-determined
+	depends = perl-net-amazon-signature-v4
+	depends = perl-readonly
+	depends = perl-test-output
 	depends = perl-uri
 	depends = perl-xml-simple>=1.08
 	options = !emptydirs
