@@ -1,4 +1,4 @@
-# Maintainer: matt quintanilla <matt @ matt quintanilla . xyz>
+# Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
 pkgname=lemoa-git
 pkgver=0.2.0.r97.e51da62
 pkgrel=2
