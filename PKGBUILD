@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=hicolor-icon-theme-git
-pkgver=0.17.r1.gb3f1207
+pkgver=0.18.r2.gf83ba10
 pkgrel=1
 pkgdesc="Freedesktop.org Hicolor icon theme"
 arch=('any')
 url="https://www.freedesktop.org/wiki/Software/icon-theme/"
-license=('GPL')
-makedepends=('git')
+license=('GPL-2.0-or-later')
+makedepends=('git' 'meson')
 provides=("hicolor-icon-theme=$pkgver")
 conflicts=('hicolor-icon-theme')
 source=("git+https://gitlab.freedesktop.org/xdg/default-icon-theme")
@@ -23,14 +23,21 @@ pkgver() {
 build() {
   cd "default-icon-theme"
 
-  ./autogen.sh --no-configure
-  ./configure \
-    --prefix="/usr"
-  make
+  meson setup \
+    --buildtype=plain \
+    --prefix="/usr" \
+    "_build"
+  meson compile -C "_build"
+}
+
+check() {
+  cd "default-icon-theme"
+
+  #meson test -C "_build"
 }
 
 package() {
   cd "default-icon-theme"
 
-  make DESTDIR="$pkgdir" install
+  meson install -C "_build" --destdir "$pkgdir"
 }
