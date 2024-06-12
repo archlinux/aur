@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com
 pkgname=vtex2
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A VTF converter and editor"
 arch=('x86_64')
 url="https://github.com/StrataSource/vtex2"
@@ -38,10 +38,11 @@ build() {
 	gendesk -f --pkgname=vtfview \
 	--pkgdesc="$pkgdesc" \
 	--name=VTFView \
-	--exec=vtfview \
+	--exec='vtfview %f' \
 	--icon=vtfview \
 	--terminal=false \
-	--categories=Development,Utilities,Graphics
+	--categories='Development;Utilities;Graphics' \
+	--mimetypes="application/x-vtf"
 }
 
 package() {
@@ -50,4 +51,18 @@ package() {
 	install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 "$srcdir/vtfview.desktop" "$pkgdir/usr/share/applications/vtfview.desktop"
 	install -Dm644 "$srcdir/$pkgname/res/icon.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/vtfview.svg"
+	mkdir -p "$pkgdir/usr/share/mime/packages/"
+	cat >> "$pkgdir/usr/share/mime/packages/vtfview.xml" << EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+    <mime-type type="application/x-vtf">
+        <comment>Valve Texture Format</comment>
+        <acronym>VTF</acronym>
+        <expanded-acronym>Valve Texture Format</expanded-acronym>
+        <glob-deleteall/>
+        <glob pattern="*.vtf"/>
+        <glob pattern="*.VTF"/>
+    </mime-type>
+</mime-info>
+EOF
 }
