@@ -1,3 +1,4 @@
+# Maintainer: Matt Quintanilla < mattt @ mat quintanilla . xyz >
 pkgname=python-nextcord-git
 pkgver=r.
 pkgrel=1
