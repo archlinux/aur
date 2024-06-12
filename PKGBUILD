@@ -5,12 +5,13 @@
 
 pkgname=libosmocore
 pkgver=1.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Osmocom core libraries"
 arch=('armv7h' 'i686' 'x86_64')
 url="https://osmocom.org/projects/libosmocore/"
 license=('GPL-2.0-or-later')
 groups=()
+conflicts=("${pkgname}-git")
 provides=('libosmocodec.so=4-64'
           'libosmocoding.so=0-64'
           'libosmocore.so=21-64'
