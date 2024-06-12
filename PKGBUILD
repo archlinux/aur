@@ -3,7 +3,7 @@
 pkgname=openarc-unofficial-patches
 _pkgname=openarc
 pkgver=1.0.0.Beta3
-pkgrel=1
+pkgrel=2
 _commit=0676227216f69bb52a4da2e52faf1978062b1fd7
 pkgdesc="OpenARC with patches from not-yet-merged PRs - by flowerysong"
 arch=(x86_64)
@@ -36,7 +36,6 @@ build() {
      --sbindir=/usr/bin \
      --sysconfdir="/etc/$pkgname" \
      --localstatedir=/var \
-     --with-privsep-user=openarc
   make
 }
 
@@ -58,6 +57,6 @@ package() {
   # License
   mkdir -p "$pkgdir/usr/share/licenses/$_pkgname"
   for f in LICENSE LICENSE.Sendmail; do
-    ln -s ../../doc/$_pkgname/$f "$pkgdir/usr/share/licenses/$_pkgname/$f"
+    ln -s ../../doc/$_pkgname/$f "$pkgdir/usr/share/licenses/$pkgname/$f"
   done
 }
