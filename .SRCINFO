@@ -1,0 +1,22 @@
+pkgbase = intel-lpmd-git
+	pkgdesc = A daemon to optimize active idle power
+	pkgver = 0.0.4.r0.g330c71d
+	pkgrel = 1
+	url = https://github.com/intel/intel-lpmd
+	arch = i686
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = gtk-doc
+	depends = glibc
+	depends = dbus-glib
+	depends = glib2
+	depends = libnl
+	depends = libxml2
+	depends = systemd-libs
+	provides = intel-lpmd=0.0.4.r0.g330c71d
+	conflicts = intel-lpmd
+	source = git+https://github.com/intel/intel-lpmd.git
+	sha256sums = SKIP
+
+pkgname = intel-lpmd-git
