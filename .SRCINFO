@@ -1,0 +1,20 @@
+pkgbase = celluloid-linuxmint
+	pkgdesc = Simple GTK+ frontend for mpv. Linux Mint version
+	pkgver = 0.21
+	pkgrel = 1
+	url = https://celluloid-player.github.io/
+	arch = x86_64
+	license = GPL3
+	makedepends = appstream-glib
+	makedepends = meson
+	depends = gtk3
+	depends = mpv
+	provides = celluloid
+	provides = celluloid-gtk3
+	conflicts = celluloid
+	conflicts = celluloid-gtk3
+	replaces = gnome-mpv
+	source = http://packages.linuxmint.com/pool/upstream/c/celluloid/celluloid_0.21+mint2+wilma.tar.xz
+	sha256sums = 4276366a2e3d731291129c77b249f49b9c0212a8f0654993d816abbe8a2dd841
+
+pkgname = celluloid-linuxmint
