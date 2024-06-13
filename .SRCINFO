@@ -1,6 +1,6 @@
 pkgbase = amber-bash-bin
 	pkgdesc = The programming language compiled to bash
-	pkgver = 0.3.1.alpha
+	pkgver = 0.3.2.alpha
 	pkgrel = 1
 	url = https://amber-lang.com/
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = amber-bash-bin
 	license = GPL3
 	provides = amber-bash
 	conflicts = amber-bash
-	source_x86_64 = https://github.com/Ph0enixKM/Amber/releases/download/0.3.1-alpha/amber_linux_x86_64
-	source_aarch64 = https://github.com/Ph0enixKM/Amber/releases/download/0.3.1-alpha/amber_linux_aarch64
-	sha256sums_x86_64 = 19677119811c864dd3092f48b9149612cf1dbd77e4172ff4e52b92ca3625c952
-	sha256sums_aarch64 = 73870093f74a413205a5967242fddbf6c692f1ab868fec9a24157680ec41d988
+	source_x86_64 = https://github.com/Ph0enixKM/Amber/releases/download/0.3.2-alpha/amber-x86_64-unknown-linux-gnu.tar.xz
+	source_aarch64 = https://github.com/Ph0enixKM/Amber/releases/download/0.3.2-alpha/amber-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 0529eb540a8f4d994173e96307b3255ce631b8307fc858be4637f9f098a2ee98
+	sha256sums_aarch64 = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 
 pkgname = amber-bash-bin
