@@ -2,7 +2,7 @@
 _pkgname="ollamamodelupdater"
 pkgname="$_pkgname"
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to help you update your Ollama models"
 arch=('any')
 url="https://github.com/thatonecalculator/ollamamodelupdater"
@@ -18,7 +18,7 @@ conflicts=(
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/v"$pkgver".tar.gz")
 noextract=()
 options=(!strip)
-sha256sums=('810dabad221ba04e301d5ad028ea8bceb9f9de96c13506712ecf8815a4ac0c1b')
+sha256sums=('023ea787dfd391e5c019db8ccf0a34d660461d63546c5e84433656abbcc5aad0')
 
 prepare() {
     if ! command -v bun &> /dev/null; then
