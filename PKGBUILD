@@ -2,12 +2,12 @@
 # Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=libasn1c-git
-pkgver=0.9.36.r0.g7965ac7
+pkgver=0.9.36.r2.g5324a22
 pkgrel=1
 pkgdesc="runtime library of Lev Walkin's asn1c split out as separate library"
-url="http://cgit.osmocom.org/libasn1c"
+url="https://cgit.osmocom.org/libasn1c"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
-license=(GPL)
+license=('BSD-2-Clause')
 depends=('talloc')
 makedepends=('git')
 provides=('libasn1c.so=1-64')
@@ -36,6 +36,7 @@ build() {
 package() {
   cd "${pkgname%-git}"
   make DESTDIR=${pkgdir} install
+  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
