@@ -1,5 +1,5 @@
 pkgbase = mutter-text-input-v1
-	pkgdesc = Window manager and compositor for GNOME
+	pkgdesc = Window manager and compositor for GNOME with text-input-v1 support
 	pkgver = 46.2
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/mutter
@@ -81,7 +81,7 @@ pkgname = mutter-text-input-v1
 	conflicts = mutter
 
 pkgname = mutter-text-input-v1-docs
-	pkgdesc = Window manager and compositor for GNOME (documentation)
+	pkgdesc = Window manager and compositor for GNOME with text-input-v1 support (documentation)
 	depends = 
 	provides = mutter-docs
 	conflicts = mutter-docs

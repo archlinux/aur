@@ -10,7 +10,7 @@ pkgname=(
 )
 pkgver=46.2
 pkgrel=1
-pkgdesc="Window manager and compositor for GNOME"
+pkgdesc="Window manager and compositor for GNOME with text-input-v1 support"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
 license=(GPL-2.0-or-later)
