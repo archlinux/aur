@@ -7,7 +7,7 @@ pkgdesc="Osmocom GSM Audio Pocket Knife"
 arch=('x86_64' 'i686')
 url="https://osmocom.org/projects/gapk"
 license=('GPL-3.0-or-later')
-depends=('libosmocore' 'talloc' 'alsa-lib' 'gsm' 'opencore-amr')
+depends=('libosmocore-git' 'talloc' 'alsa-lib' 'gsm' 'opencore-amr')
 makedepends=('git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver}"
