@@ -2,8 +2,8 @@
 # Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=libosmo-sccp-git
-pkgver=1.8.0.r33.g02d664b1
-pkgrel=2
+pkgver=1.8.0.r67.gfb30ebda
+pkgrel=1
 pkgdesc="Osmocom SCCP + Sigtran (M3UA, SUA) library"
 url="https://osmocom.org/projects/libosmo-sccp"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
