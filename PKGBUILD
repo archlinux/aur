@@ -3,7 +3,7 @@
 pkgname=python-luna-soc-git
 _gitpkgname=luna-soc
 pkgver=0.1.0.post0+git.3132c898
-pkgrel=1
+pkgrel=2
 pkgdesc='Amaranth HDL libary for building USB-capable SoC designs'
 arch=('any')
 url='https://github.com/greatscottgadgets/luna-soc'
@@ -11,7 +11,7 @@ license=('BSD-3-Clause')
 depends=(
   'python'
   'python-amaranth'
-  'python-luna-usb-git'
+  'python-luna-usb'
   'python-pyserial'
 )
 makedepends=(
