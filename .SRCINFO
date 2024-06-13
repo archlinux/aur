@@ -1,10 +1,10 @@
 pkgbase = osmo-python-tests
 	pkgdesc = Osmocom tools for testing VTY/CTRL interfaces
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitea.osmocom.org/cellular-infrastructure/osmo-python-tests
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later AND AGPL-3.0-or-later
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
