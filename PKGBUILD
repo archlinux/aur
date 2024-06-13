@@ -31,9 +31,9 @@ package() {
     install -m u=rw,go=r ${srcdir}/${_pkg}/var/db/${_pkg}/LICENSE.txt ${pkgdir}/var/db/${_pkg}/
 }
 sha256sums=('60f2a31b2d461f029c786a18f1feb393c1a5e43beac520b1c7d5e12b45590ae0')
-sha256sums_aarch64=('8536771005ec4f4c38ba9a14cabc9de0d04a84fdc12f26deea2a5bb141a208c3'
+sha256sums_aarch64=('23ba2513c8350750703f549618613878479f48d46e414cffd89c75094e19e4f8'
                     'SKIP')
-sha256sums_armv7h=('70298103629c770da32d383c595f5f7ce2825bae20a2a86cb77244bda70a7ddf'
+sha256sums_armv7h=('72436046b360dbbec59eef79e501703f91c3a35dd049c01e7e2e9ed08d1044cf'
                    'SKIP')
-sha256sums_x86_64=('5671efb9f6fb5b0420ef79a962e3860199a81bb4b553b28db319b5c9dcf07670'
+sha256sums_x86_64=('54ad5a89d77a1cc849c5108c9fa2e6dcd6ac361a4198c6a170af89920659f57a'
                    'SKIP')
