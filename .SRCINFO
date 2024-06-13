@@ -1,22 +1,22 @@
 pkgbase = wolai-bin
 	pkgdesc = wolai是一种新形态的文档/笔记/信息系统,它与你过去使用的所有传统文档、在线文档都有很多不同,学会使用wolai就等于拥有了一个强大的个人与团队生产力工具。
-	pkgver = 1.2.9
-	pkgrel = 6
+	pkgver = 1.2.10
+	pkgrel = 1
 	url = https://www.wolai.com
 	arch = aarch64
 	arch = x86_64
 	license = LicenseRef-custom
+	makedepends = asar
 	depends = electron22
-	depends = java-runtime
-	provides = wolai=1.2.9
+	provides = wolai=1.2.10
 	conflicts = wolai
 	source = LICENSE.html
 	source = wolai.sh
 	sha256sums = 04b7a1e4cecbadd2e1bc903b3ad518834f93b9b76542bf53fcb18f24faac099c
-	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
-	source_aarch64 = wolai-1.2.9-aarch64.deb::https://cdn.wostatic.cn/dist/installers/wolai_1.2.9_arm64.deb
-	sha256sums_aarch64 = c9b4f563908b7ad370d5def0e7ad4880925810f1af4c940d65d88168d91c2e63
-	source_x86_64 = wolai-1.2.9-x86_64.deb::https://cdn.wostatic.cn/dist/installers/wolai_1.2.9_amd64.deb
-	sha256sums_x86_64 = 7bcfd89d5667b0986d633f0c333c42fb9770317ce9fb4691390832f77869aef7
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+	source_aarch64 = wolai-1.2.10-aarch64.deb::https://cdn.wostatic.cn/dist/installers/wolai_1.2.10_arm64.deb
+	sha256sums_aarch64 = 18e7f956b85e0396320ee938455c80e16446d267a5c7b35268f9d046d8cd86b7
+	source_x86_64 = wolai-1.2.10-x86_64.deb::https://cdn.wostatic.cn/dist/installers/wolai_1.2.10_amd64.deb
+	sha256sums_x86_64 = 512b11d5f9a743e59bb188eb2179bcfdd2313c81c0ac1f6a60cf1936cb7c0636
 
 pkgname = wolai-bin
