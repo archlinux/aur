@@ -2,8 +2,8 @@
 # Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=libosmo-abis-git
-pkgver=1.5.0.r5.gaa3452c
-pkgrel=2
+pkgver=1.5.1.r22.g945b12a
+pkgrel=1
 pkgdesc="Osmocom library for A-bis interface"
 url="https://osmocom.org/projects/libosmo-abis"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')

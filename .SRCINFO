@@ -1,7 +1,7 @@
 pkgbase = libosmo-abis-git
 	pkgdesc = Osmocom library for A-bis interface
-	pkgver = 1.5.0.r5.gaa3452c
-	pkgrel = 2
+	pkgver = 1.5.1.r22.g945b12a
+	pkgrel = 1
 	url = https://osmocom.org/projects/libosmo-abis
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = libosmo-abis-git
 	depends = libosmocore-git
 	depends = ortp
 	depends = talloc
-	provides = libosmo-abis=1.5.0.r5.gaa3452c
+	provides = libosmo-abis=1.5.1.r22.g945b12a
 	provides = libosmoabis.so=13-64
 	provides = libosmotrau.so=2-64
 	conflicts = libosmo-abis
