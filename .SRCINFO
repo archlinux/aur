@@ -9,7 +9,7 @@ pkgbase = libosmo-abis-git
 	arch = armv7h
 	license = GPL
 	makedepends = git
-	depends = libosmocore
+	depends = libosmocore-git
 	depends = ortp
 	depends = talloc
 	provides = libosmo-abis=1.5.0.r5.gaa3452c
