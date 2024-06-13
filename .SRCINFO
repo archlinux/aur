@@ -1,7 +1,7 @@
 pkgbase = mutter-text-input-v1-git
 	pkgdesc = Window manager and compositor for GNOME
 	pkgver = 46.1+r166+g530659c64
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
 	license = GPL-2.0-or-later

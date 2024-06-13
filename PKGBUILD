@@ -19,7 +19,7 @@ pkgname=(
   mutter-docs-text-input-v1-git
 )
 pkgver=46.1+r166+g530659c64
-pkgrel=1
+pkgrel=2
 pkgdesc="Window manager and compositor for GNOME"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
