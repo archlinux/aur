@@ -27,7 +27,7 @@ sha256sums=('3caf3a5fe5b6f2808f461f85132fbff4ae22a53ef9f3d26d9e6030f6c6d5baa2'
             'c32cd36f75dd18db082f9b9447f1c0982279703b9d648f5695295ff25c9b678d')
 
 prepare() {
-  cd $pkgname-$pkgver
+  cd $_pkgname-$pkgver
 
   # set paths for ROM files from vice for sidplay
   patch -Np1 -i ../sidplay-rom-paths.patch
