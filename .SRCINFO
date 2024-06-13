@@ -1,6 +1,6 @@
 pkgbase = dj64-git
 	pkgdesc = djgpp 64 bit compiler
-	pkgver = 0.0.r3697.4b7e4f9
+	pkgver = 0.0.r3822.75e0182
 	pkgrel = 1
 	url = https://github.com/stsp/dj64dev
 	arch = x86_64
@@ -15,10 +15,7 @@ pkgbase = dj64-git
 	provides = dj64=0.0
 	conflicts = dj64
 	source = git+https://github.com/stsp/dj64dev.git
-	source = 0001-src-makefile-misc-exe.patch
 	md5sums = SKIP
-	md5sums = bfccaead6a72a30c3e099da50cd220a6
 	sha256sums = SKIP
-	sha256sums = 065a875c1ea2f76dd621d8f38d17a67919582f3f6881b50ca1bee35faeea0764
 
 pkgname = dj64-git

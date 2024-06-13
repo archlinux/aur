@@ -2,7 +2,7 @@
 
 set -u
 pkgname='dj64-git'
-pkgver=0.0.r3697.4b7e4f9
+pkgver=0.0.r3822.75e0182
 pkgrel=1
 pkgdesc='djgpp 64 bit compiler'
 arch=('x86_64')
@@ -15,12 +15,10 @@ conflicts=("${pkgname%-git}")
 _srcdir='dj64dev'
 source=(
   "git+${url}.git"
-  '0001-src-makefile-misc-exe.patch'
+  #'0001-src-makefile-misc-exe.patch'
 )
-md5sums=('SKIP'
-         'bfccaead6a72a30c3e099da50cd220a6')
-sha256sums=('SKIP'
-            '065a875c1ea2f76dd621d8f38d17a67919582f3f6881b50ca1bee35faeea0764')
+md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   set -u
