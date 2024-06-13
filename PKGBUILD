@@ -11,7 +11,6 @@ license=('LGPL-2.1')
 depends=(
     alsa-lib                   # libasound2 (>= 1.0.16)
     glibc                       # libc6 (>= 2.26)
-    libcapi                     # libcapi20-3
     dbus                        # libdbus-1-3 (>= 1.9.16)
     gcc-libs                    # libgcc1 (>= 1:3.0)
     glib2                       # libglib2.0-0 (>= 2.37.3)
