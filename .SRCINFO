@@ -1,6 +1,6 @@
 pkgbase = osmo-bsc-git
 	pkgdesc = Osmocom's Base Station Controller for 2G circuit-switched mobile networks
-	pkgver = 1.11.0.r64.g3c92391c9
+	pkgver = 1.11.0.r91.gd8203d83b
 	pkgrel = 1
 	url = https://osmocom.org/projects/osmobsc
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = osmo-bsc-git
 	depends = sqlite
 	depends = libpcap
 	depends = talloc
-	provides = osmo-bsc=1.11.0.r64.g3c92391c9
+	provides = osmo-bsc=1.11.0.r91.gd8203d83b
 	conflicts = osmo-bsc
 	backup = etc/osmocom/osmo-bsc.cfg
 	source = git+https://git.osmocom.org/osmo-bsc
