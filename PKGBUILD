@@ -1,4 +1,5 @@
 # Maintainer: Denis Benato <benato.denis96 [at] gmail dot com>
+# Maintainer: Chris Lane <aur at chrislane dot com>
 # Contributor: Reza Jahanbakhshi <reza.jahanbakhshi at gmail dot com
 # Contributor: Lone_Wolf <lone_wolf@klaas-de-kat.nl>
 # Contributor: Armin K. <krejzi at email dot com>
@@ -29,7 +30,7 @@ pkgrel=1
 pkgdesc="An open-source implementation of the OpenGL specification (32-bit)"
 url="https://www.mesa3d.org/"
 arch=('x86_64')
-license=('custom')
+license=('custom:mesa')
 makedepends=(
   'lib32-clang'
   'lib32-expat'
@@ -224,9 +225,8 @@ package_lib32-amdonly-gaming-vulkan-mesa-layers-git() {
     'lib32-vulkan-mesa-layers'
     'lib32-vulkan-mesa-layer'
   )
-  replaces=(
+  provides=(
     'lib32-vulkan-mesa-layers'
-    'lib32-vulkan-mesa-layer'
   )
 
   rm -rv fakeinstall/usr/share/vulkan/explicit_layer.d
@@ -252,16 +252,12 @@ package_lib32-amdonly-gaming-opencl-clover-mesa-git() {
   )
   optdepends=('opencl-headers: headers necessary for OpenCL development')
   provides=(
-    'lib32-opencl-clover-mesa'
     'lib32-opencl-driver'
-  )
-  replaces=(
     'lib32-opencl-clover-mesa'
-    "lib32-opencl-mesa<=23.1.4-1"
   )
   conflicts=(
-    'lib32-opencl-clover-mesa'  
     'lib32-opencl-mesa'
+    'lib32-opencl-clover-mesa'
   )
 
   rm -v fakeinstall/etc/OpenCL/vendors/mesa.icd
@@ -289,10 +285,6 @@ package_lib32-amdonly-gaming-opencl-rusticl-mesa-git() {
   provides=(
     'lib32-opencl-rusticl-mesa'
     'lib32-opencl-driver'
-  )
-  replaces=(
-    'lib32-opencl-rusticl-mesa'
-    "lib32-opencl-mesa<=23.1.4-1"
   )
   conflicts=(
     'lib32-opencl-rusticl-mesa'
@@ -322,10 +314,9 @@ package_lib32-amdonly-gaming-vulkan-radeon-git() {
   )
   optdepends=('lib32-vulkan-mesa-layers: additional vulkan layers')
   provides=(
-    'lib32-vulkan-radeon'
     'lib32-vulkan-driver'
+    'lib32-vulkan-radeon'
   )
-  replaces=('lib32-vulkan-radeon')
   conflicts=('lib32-vulkan-radeon')
 
   rm -v fakeinstall/usr/share/drirc.d/00-radv-defaults.conf
@@ -349,16 +340,12 @@ package_lib32-amdonly-gaming-vulkan-swrast-git() {
   )
   optdepends=('lib32-vulkan-mesa-layers: additional vulkan layers')
   conflicts=(
-    'lib32-vulkan-swrast'
     'lib32-vulkan-mesa'
-  )
-  replaces=(
     'lib32-vulkan-swrast'
-    'lib32-vulkan-mesa'
   )
   provides=(
-    'lib32-vulkan-swrast'
     'lib32-vulkan-driver'
+    'lib32-vulkan-swrast'
   )
 
   _install fakeinstall/usr/share/vulkan/icd.d/lvp_icd*.json
@@ -379,7 +366,6 @@ package_lib32-amdonly-gaming-libva-mesa-driver-git() {
     'lib32-zstd'
   )
   provides=('lib32-libva-driver')
-  replaces=('lib32-libva-mesa-driver')
   conflicts=('lib32-libva-mesa-driver')
 
   _install fakeinstall/$_libdir/dri/*_drv_video.so
@@ -402,7 +388,6 @@ package_lib32-amdonly-gaming-mesa-vdpau-git() {
     'lib32-vdpau-driver'
     'lib32-mesa-vdpau'
   )
-  replaces=('lib32-mesa-vdpau')
   conflicts=('lib32-mesa-vdpau')
 
   _install fakeinstall/$_libdir/vdpau
@@ -435,10 +420,6 @@ package_lib32-amdonly-gaming-mesa-git() {
     'lib32-opengl-driver'
   )
   conflicts=(
-    'lib32-mesa'
-    'lib32-mesa-libgl'
-  )
-  replaces=(
     'lib32-mesa'
     'lib32-mesa-libgl'
   )
