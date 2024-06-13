@@ -1,11 +1,11 @@
 # Maintainer: Mattia Moffa <mattia [at] moffa [dot] xyz>
 
-_pkgname=eclipse-cpp
-pkgname=${_pkgname}-bin
+pkgname=eclipse-cpp-bin
+_pkgname=${pkgname%-bin}
 epoch=2
-pkgver=4.31
-pkgrel=2
-_release=2024-03/R
+pkgver=4.32
+pkgrel=1
+_release=2024-06/R
 pkgdesc="Highly extensible IDE (C/C++ version)"
 arch=('x86_64' 'aarch64')
 url="https://www.eclipse.org/"
@@ -22,8 +22,8 @@ _srcfilename_aarch64="$_pkgname-${_release//\//-}-linux-gtk-aarch64.tar.gz"
 source_x86_64=("$_srcfilename_x86_64::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/$_release/$_srcfilename_x86_64&r=1")
 source_aarch64=("$_srcfilename_aarch64::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/$_release/$_srcfilename_aarch64&r=1")
 
-sha512sums_x86_64=('ebbde32b16fbd49716c3d5fef40fe6e510115f1698cf35f9fde23f11ba2be11a524d6e5179b15a1cf30af135b8f27a3efac301111b6160e6cdac9977a42082fd')
-sha512sums_aarch64=('40a5b0f31de779579ccf39653fffd158fdf710b3a06340a81d018e9fbc1257ebd23f70a600838868e18b931a81b7bc8abe0974b0cb37a9eb08b9e6a143bc42f2')
+sha512sums_x86_64=('1c7268214d9e367518812eb2237ac73be2f52d6e912092ffb18224f9a44cec5ed03a250ba4394932a55588a670571adaebe0c6608633606d3bfcd5ce30eb3231')
+sha512sums_aarch64=('c0ca4fff3750b018c7cd21562f6e90b248d023538dec203615c17d658952b0e0d92f028614314aa867e4d5a8351b7537ca77ef77cd7b5e2a8c13b8d3c28719ec')
 
 source=("eclipse.desktop")
 sha512sums=('96a532509459056c470e18bc5fde639cd9725b831ff69864a444ed8282dd87aefe71b23be92280f22a480f2321794c4e3f7b8026925fb03625f0bb954a06e139')
@@ -34,11 +34,7 @@ package() {
     install -d "${pkgdir}/usr/lib"
     cp -r "eclipse" "${pkgdir}/usr/lib/eclipse"
     install -d "${pkgdir}/usr/bin"
-    #ln -s "/usr/lib/eclipse/eclipse" "${pkgdir}/usr/bin/eclipse"
-    cat > "${pkgdir}/usr/bin/eclipse" <<EOF
-#!/bin/sh
-env WEBKIT_DISABLE_DMABUF_RENDERER=1 /usr/lib/eclipse/eclipse
-EOF
+    ln -s "/usr/lib/eclipse/eclipse" "${pkgdir}/usr/bin/eclipse"
     chmod 755 "${pkgdir}/usr/bin/eclipse"
 
     install -Dm644 "eclipse.desktop" "${pkgdir}/usr/share/applications/eclipse.desktop"
