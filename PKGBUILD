@@ -2,7 +2,7 @@
 
 pkgname=psf-cozette
 pkgver=1.24.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A bitmap programming font optimized for coziness, console version (PSF format)'
 arch=('any')
 url='https://github.com/slavfox/Cozette'
@@ -18,7 +18,13 @@ sha384sums=('037bf10817f31bbf4cd3e038c10032289c23a6d179a5fd23c370d864d69d9e91309
             'ecc6c97aabc0ac49bb1ed17a8467ac7e90c8eb595c72494727a7eff20b275a57875ae3f71da92b438d2d77ad686b2f90')
 
 build() {
+  # Confine Powerline left divider symbols to strictly 6 pixels wide
+  awk -i inplace 'BEGIN { l=-128 } $1=="ENCODING"&&($2==57520||$2==57521||$2==57524) { l=FNR } l+4<FNR&&FNR<=l+17 { printf("%02X\n", and(lshift(strtonum("0x"$1), 1), 0xFF)); next; }{ print }' cozette.bdf
+  awk -i inplace 'BEGIN { l=-128 } $1=="ENCODING"&&($2==57520||$2==57521||$2==57524) { l=FNR } l+4<FNR&&FNR<=l+30 { printf("%04X\n", and(lshift(strtonum("0x"$1), 1), 0xFFFF)); next; }{ print }' cozette_hidpi.bdf
+
+  # Fix for bdf2psf limitation (See https://github.com/slavfox/Cozette/issues/122#issuecomment-2165328416)
   sed -i -e 's/^BBX [2-8]/BBX 9/g' cozette_hidpi.bdf
+
   bdf2psf --fb cozette.bdf /usr/share/bdf2psf/standard.equivalents codepoints.set 512 cozette6x13.psfu
   bdf2psf --fb cozette_hidpi.bdf /usr/share/bdf2psf/standard.equivalents codepoints.set 512 cozette12x26.psfu
   zstd -f cozette6x13.psfu
