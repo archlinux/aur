@@ -1,0 +1,4 @@
+[steamtokendumper-bin]
+source = "git"
+git = "https://github.com/SteamDatabase/SteamTokenDumper.git"
+include_regex = '\d{4}\.\d{2}\.\d{2}'
