@@ -1,6 +1,6 @@
 pkgbase = woocommerce-pos
 	pkgdesc = Electron Desktop App for WooCommerce POS
-	pkgver = 1.5.2
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/wcpos/electron
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = woocommerce-pos
 	makedepends = curl
 	depends = electron30
 	conflicts = woocommerce-pos
-	source = woocommerce-pos-1.5.2.tar.gz::https://github.com/wcpos/electron/archive/refs/tags/v1.5.2.tar.gz
+	source = woocommerce-pos-1.6.0.tar.gz::https://github.com/wcpos/electron/archive/refs/tags/v1.6.0.tar.gz
 	source = expo.git::git+https://github.com/wcpos/managed-expo.git
 	source = woocommerce-pos.sh
-	sha256sums = ea637a086b333d9a8663ba4c76a603376c92788e3282a8e2adbc4cc4d11d4d98
+	sha256sums = a3c382f04430cd2356b31eb92de3d7cc3dd4715a59ea7c04f2cf9fea01e64112
 	sha256sums = SKIP
 	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
