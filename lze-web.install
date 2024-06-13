@@ -1,22 +1,21 @@
 post_install() {
   if [ -n "$SUDO_USER" ]; then
     cu_user="$SUDO_USER"
-    uhome=$(getent passwd "$current_user" | cut -d: -f6)
 else
     cu_user=$(whoami)
 fi
 
-  mkdir /$cu_user
-  mkdir /$cu_user/Documents
-  mkdir /$cu_user/Downloads
-  mkdir /$cu_user/Pictures
-  mkdir /$cu_user/Note
-  mkdir /$cu_user/Bookmark
+  mkdir -p /$cu_user
+  mkdir -p /$cu_user/Documents
+  mkdir -p /$cu_user/Downloads
+  mkdir -p /$cu_user/Pictures
+  mkdir -p /$cu_user/Note
+  mkdir -p /$cu_user/Bookmark
   chmod 777  -R /$cu_user
-  ln -s /$cu_user /opt/lze-web/file
-  ln -s /opt/lze-web/code/Terminal/webssh-start /usr/bin/webssh-start
-  ln -s /opt/lze-web/code/Terminal/webssh-stop /usr/bin/webssh-stop
-  ln -s /opt/lze-web/code/Terminal/webssh /usr/lib/python3.12/site-packages/webssh
+  ln -sf /$cu_user /opt/lze-web/file
+  ln -sf /opt/lze-web/code/Terminal/webssh-start /usr/bin/webssh-start
+  ln -sf /opt/lze-web/code/Terminal/webssh-stop /usr/bin/webssh-stop
+  ln -sf /opt/lze-web/code/Terminal/webssh /usr/lib/python3.12/site-packages/webssh
   mv /etc/httpd/conf/httpd.conf /etc/httpd/conf/httpd.conf.back
   mv /etc/httpd/conf/httpd.conf.lze /etc/httpd/conf/httpd.conf
   mv /etc/php/php.ini /etc/php/php.ini.bck
@@ -24,7 +23,9 @@ fi
   systemctl enable --now httpd.service
 sudo systemctl enable --now wessh.service
 }
-
+pre_upgrade() {
+  post_remove()
+}
 post_upgrade() {
 	post_install
 }
@@ -42,11 +43,12 @@ pre_remove() {
 
 post_remove() {
 systemctl disable --now wessh.service
-rm -rf /usr/lib/python3.12/site-packages/webssh
 rm /etc/systemd/system/wessh.service
 rm -rf /opt/lze-web
 rm /usr/bin/webssh-start
 rm /usr/bin/webssh-stop
+rm /usr/bin/wessh
+rm /usr/lib/python3.12/site-packages/webssh
 mv /etc/httpd/conf/httpd.conf.bck  /etc/httpd/conf/httpd.conf 
 mv /etc/php/php.ini.bck  /etc/php/php.ini
 }
