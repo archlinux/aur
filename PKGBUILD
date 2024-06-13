@@ -49,7 +49,7 @@ makedepends=(
   'libinput'
   # external
   'ffmpeg' 'flatbuffers'
-  'libdvdcss' 'libdvdnav' 'libdvdread' 'libudfread' 'fstrcmp'
+  'libdvdcss' 'libdvdnav' 'libdvdread' 'libudfread-git' 'fstrcmp'
   'fmt' 'spdlog' 'libcrossguid-git'
 )
 [[ -n "$_clangbuild" ]] && makedepends+=('clang' 'lld' 'llvm')
@@ -134,7 +134,7 @@ package_kodi-ext-git() {
     'libxrandr' 'libxkbcommon' 'waylandpp' 'libinput' 'pcre'
     # external
     'ffmpeg' 'flatbuffers'
-    'libdvdcss' 'libdvdnav' 'libdvdread' 'libudfread' 'fstrcmp'
+    'libdvdcss' 'libdvdnav' 'libdvdread' 'libudfread-git' 'fstrcmp'
     'fmt' 'spdlog' 'libcrossguid-git'
   )
   [[ -n "$_clangbuild" ]] && depends+=('glu')
