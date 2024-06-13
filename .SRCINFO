@@ -13,6 +13,7 @@ pkgbase = libosmo-netif-git
 	depends = libpcap
 	depends = libosmocore
 	depends = libosmo-abis
+	provides = libosmo-netif=1.4.0.r20.g96e26d5
 	provides = libosmonetif.so=11-64
 	conflicts = libosmo-netif
 	source = git+https://gitea.osmocom.org/osmocom/libosmo-netif.git
