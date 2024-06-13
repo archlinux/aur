@@ -2,7 +2,7 @@
 
 pkgname=act-flow-git-meta
 _baserver=0
-_patchlvl=6
+_patchlvl=7
 pkgver=${_baserver}.${_patchlvl}
 pkgrel=1
 pkgdesc="Meta package to install the git version of the ACT AVLSI tool flow."
@@ -17,6 +17,7 @@ depends=(
     'act-actsim-git'
     'act-expropt-git'
     'act-utils-git'
+    'act-dflowmap-git'
 )
 conflicts=('act-flow-meta')
 provides=('act-flow-meta')
