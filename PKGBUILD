@@ -13,7 +13,7 @@ depends=(
 	gcc-libs
 	glibc
 	hicolor-icon-theme
-	libhttplib.so
+	libcpp-httplib.so
 	sdl2
 	zlib
 )
