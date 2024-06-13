@@ -1,10 +1,9 @@
 [Desktop Entry]
-Type=Application
 Name=Eclipse
-Comment=Open Development Platform
-Exec=/opt/eclipse/eclipse %u
+Comment=Java and Web Development Environment
 Icon=eclipse
+Exec=eclipse
 Terminal=false
-Categories=GTK;Development;IDE;
+Type=Application
+Categories=Development;IDE;Java;
 StartupNotify=true
-MimeType=x-scheme-handler/eclipse+command;x-scheme-handler/eclipse+mpc;

@@ -1,65 +1,46 @@
-# Maintainer: Arnaud Dovi <mr.dovi@gmail.com>
+# Maintainer: Mattia Moffa <mattia [at] moffa [dot] xyz>
 
 pkgname=eclipse-jee-bin
-pkgver=4.20
-_pkgver=2021-06
+_pkgname=${pkgname%-bin}
+epoch=2
+pkgver=4.32
 pkgrel=1
-pkgdesc='Highly extensible IDE'
-arch=('x86_64')
-url='https://www.eclipse.org'
-license=(EPL)
-provides=(
-  'eclipse-jee'
-  'eclipse-java'
-)
-conflicts=(
-  'eclipse-jee'
-  'eclipse-java'
-  'eclipse-cpp'
-)
-depends=(
-  'java-environment>=11'
-  'polkit'
-)
-makedepends=(
-  'imagemagick'
-)
-source=(
-  "eclipse-jee-${_pkgver}-R-linux-gtk-x86_64.tar.gz::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/${_pkgver}/R/eclipse-jee-${_pkgver}-R-linux-gtk-x86_64.tar.gz&r=1"                                     
-  'eclipse.desktop'
-  'eclipse-root.desktop'
-  'eclipse.policy'
-)
-sha512sums=(
-  '89b8d359e7a0e5891b4adce63b464a84520c7aff7fde8f47689b2414dc7fdb1247d74f8651986d7fe8699561368c10133c9633b0d39fc7cc76b6206d574eb4cb'
-  '105f797bbcd7465b87ea0b43f3a243fa1c49e6b6ce26cde51c2e651b217ea596d4317456e5718efeff500a1eed7223e2a01f5b41769a1cf66233d5dd36e9b988'
-  '3a7ce30eac368d3edc73f0525ae212fc174da3a53db456839ca2747aaa250e0029617e9e3e493a9b90abd6746345bced7b68ee4a1d553bad743f80f264a71b92'
-  'ddeb688a077bba915333270934a13bdb0720b07b0d36cf0d39fdc33648c1c80cc41a5bab8ae97b58317cbf03b49c02f256d04dfb43fefe3eaaa43eaaa4e3276d'
-)
-_pkgname="${pkgname/-git/}"
-_stop='\e[m'
-_color="\e[33m"
-_bold='\e[1m'
-_prefix=" ${_bold}${_color}==>$_stop "
+_release=2024-06/R
+pkgdesc="Highly extensible IDE (Enterprise Java and Web version)"
+arch=('x86_64' 'aarch64')
+url="https://www.eclipse.org/"
+license=('EPL')
+depends=('java-runtime>=17' webkit2gtk unzip)
+makedepends=()
+provides=(eclipse=$pkgver-$pkgrel)
+conflicts=(eclipse)
+options=(!strip)
 
+_srcfilename_x86_64="$_pkgname-${_release//\//-}-linux-gtk-x86_64.tar.gz"
+_srcfilename_aarch64="$_pkgname-${_release//\//-}-linux-gtk-aarch64.tar.gz"
+
+source_x86_64=("$_srcfilename_x86_64::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/$_release/$_srcfilename_x86_64&r=1")
+source_aarch64=("$_srcfilename_aarch64::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/$_release/$_srcfilename_aarch64&r=1")
+
+sha512sums_x86_64=('02c1c43326e8e38dd2611268123c6cab2fd918b41d6707cef8bbf81f8f445249e6aae91817b9ff4446c937b3371caf9eb2647b32612997a4fb102cc8d76c4569')
+sha512sums_aarch64=('ebcbf7f31cf29e1e9b34ec29e46e96729b43e730fdc3cdb30e36ed282c97eae66e4ac1c62e26a9ffa875096a5d8c28a86ac57384bc363548ce1d53a2acf998fd')
+
+source=("eclipse.desktop")
+sha512sums=('9da29da1fe9e4ac4b8f1a4faef158155399574752a317addf90f6a068019ad62906f8ce1db11e543c7fee7dbf3dd8273aa34fc86ff2354420371cdf9b017cdf3')
+
+#backup=('usr/lib/eclipse/eclipse.ini')
 
 package() {
-  echo -e "${_prefix}Creating the package base"
-  install -d "$pkgdir"/{opt,usr/bin,usr/share/pixmaps}
+    install -d "${pkgdir}/usr/lib"
+    cp -r "eclipse" "${pkgdir}/usr/lib/eclipse"
+    install -d "${pkgdir}/usr/bin"
+    ln -s "/usr/lib/eclipse/eclipse" "${pkgdir}/usr/bin/eclipse"
+    chmod 755 "${pkgdir}/usr/bin/eclipse"
 
-  echo -e "${_prefix}Copying the package files"
-  cp -r eclipse -t "$pkgdir"/opt
+    install -Dm644 "eclipse.desktop" "${pkgdir}/usr/share/applications/eclipse.desktop"
 
-  echo -e "${_prefix}Setting up /usr/bin launchers"
-  ln -s /opt/eclipse/eclipse "$pkgdir"/usr/bin/eclipse
-
-  echo -e "${_prefix}Setting up desktop shortcuts"
-  install -Dm 644 ../eclipse.desktop -t "$pkgdir"/usr/share/applications
-  install -Dm 644 ../eclipse-root.desktop -t "$pkgdir"/usr/share/applications
-
-  echo -e "${_prefix}Setting up desktop icon"
-  convert eclipse/icon.xpm "$pkgdir"/usr/share/pixmaps/eclipse.png
-
-  echo -e "${_prefix}Setting up policy file for the \"run as root\" desktop shortcut, recommended launcher for updating Eclipse and installing plugins"
-  install -Dm 644 ../eclipse.policy -t "$pkgdir"/usr/share/polkit-1/actions
+    for i in 16 22 24 32 48 64 128 256 512 1024 ; do
+        install -Dm644 eclipse/plugins/org.eclipse.platform_${pkgver}*/eclipse$i.png \
+            "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/eclipse.png"
+    done
 }
