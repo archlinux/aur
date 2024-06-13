@@ -1,8 +1,10 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
+
 pkgbase=python-stsci.imagestats
-_pyname=${pkgbase#python-}
-pkgname=("python-${_pyname}")
-pkgver=1.8.2
+_pname=${pkgbase#python-}
+_pyname=${_pname//./_}
+pkgname=("python-${_pname}")
+pkgver=1.8.3
 pkgrel=1
 pkgdesc="STScI clipped image statistics with core functionality of IRAF's imstatistics"
 arch=('i686' 'x86_64')
@@ -15,7 +17,7 @@ makedepends=('python-setuptools-scm'
              'python-numpy')
 checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('2c4858cf1f35515e376bb49006e11510')
+md5sums=('99902ea061b72afe45f80b1eb9ead0fe')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -24,7 +26,7 @@ get_pyver() {
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    python -m build --wheel --no-isolation
+    python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 check() {
