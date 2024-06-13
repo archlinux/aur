@@ -1,4 +1,4 @@
-# Maintainer: Latif Sulistyo <latipun@aur.archlinux.org>
+# Maintainer: Catppuccin <releases@catppuccin.com>
 
 # shellcheck disable=2034,2154
 # shellcheck shell=bash
