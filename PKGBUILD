@@ -4,7 +4,7 @@ pkgname=ptyxis
 pkgver=46.3
 _vtever=0.76.3
 _vtecommit='036bc3ddcbb56f05c6ca76712a53b89dee1369e2'
-pkgrel=1
+pkgrel=2
 pkgdesc='A terminal for a container-oriented desktop'
 arch=('x86_64')
 url='https://gitlab.gnome.org/chergert/ptyxis'
@@ -30,8 +30,8 @@ depends=('cairo'
          'systemd-libs'
          "vte-common=$_vtever")
 makedepends=('git'
-             'meson'
-             'python-packaging')
+             'glib2-devel'
+             'meson')
 optdepends=()
 provides=()
 conflicts=()

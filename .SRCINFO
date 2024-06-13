@@ -1,14 +1,14 @@
 pkgbase = ptyxis
 	pkgdesc = A terminal for a container-oriented desktop
 	pkgver = 46.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/chergert/ptyxis
 	arch = x86_64
 	license = GPL-3.0-or-later
 	license = LGPL-3.0-or-later
 	makedepends = git
+	makedepends = glib2-devel
 	makedepends = meson
-	makedepends = python-packaging
 	depends = cairo
 	depends = dconf
 	depends = fribidi
