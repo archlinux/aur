@@ -17,6 +17,7 @@ makedepends=("curl" "jq" "sed")
 optdepends=(
   "protontricks: Tool required for running the patcher"
   "flatpak: Allows automatic installation of \`protontricks\` from Flathub"
+  "zenity: Required for using Polyversal Patcher as a GUI"
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
