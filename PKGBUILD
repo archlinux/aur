@@ -2,7 +2,7 @@
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=livi
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A simple GTK4 based video player for mobile phones"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('libadwaita' 'gstreamer' 'gst-plugins-base' 'gst-plugins-bad' 'gst-plug
 makedepends=('meson')
 checkdepends=('appstream-glib')
 source=($url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz)
-b2sums=('34d0dc485cb0b18a041aee6c2809a6252dd956e8ca4dc1385d585c7fa17a7e98330eb3d339c44ed7eda81536f84a6036a3401627f621f293e0a90e5cec354bcd')
+b2sums=('1321415e9a57d71226d1a008b16250112bd9e75eec6bf1b0e63f6f6347bedb9dc1d7c1269b9b7d6fa96c736873dbe769242703b87e87bb61ada9a0241ef5cc25')
 
 build() {
   arch-meson "$pkgname-v$pkgver" build
