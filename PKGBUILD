@@ -10,7 +10,8 @@ license=('GPL-3.0-or-later')
 depends=('libosmocore' 'talloc' 'alsa-lib' 'gsm' 'opencore-amr')
 makedepends=('git')
 conflicts=("${pkgname%-git}")
-provides=('libosmogapk.so=0-64')
+provides=("${pkgname%-git}=${pkgver}"
+          'libosmogapk.so=0-64')
 source=("${pkgname%-git}::git+https://gitea.osmocom.org/osmocom/gapk.git")
 sha256sums=('SKIP')
 
