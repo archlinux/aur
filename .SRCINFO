@@ -1,0 +1,14 @@
+pkgbase = amber-bash-git
+	pkgdesc = The programming language compiled to bash
+	pkgver = master
+	pkgrel = 1
+	url = https://amber-lang.com/
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	provides = amber-bash
+	conflicts = amber-bash
+	source = git+https://github.com/Ph0enixKM/Amber
+	sha256sums = SKIP
+
+pkgname = amber-bash-git
