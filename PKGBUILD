@@ -4,7 +4,7 @@
 _pkgtag=v2.2.0 #auto updated by CI
 pkgname=ruqola
 pkgver=${_pkgtag/v}
-pkgrel=1
+pkgrel=1 #auto reset by CI
 epoch=
 pkgdesc="Rocket.Chat client for the KDE desktop"
 arch=('x86_64')
