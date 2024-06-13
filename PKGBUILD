@@ -1,5 +1,5 @@
 pkgname=ffplayout-unstable-git
-pkgver=r2074.19be689
+pkgver=r2098.9714c5d
 pkgrel=0
 pkgdesc="24/7 playout based on rust and ffmpeg"
 arch=('x86_64')
@@ -20,16 +20,15 @@ makedepends=(
 provides=('ffplayout')
 conflicts=('ffplayout' 'ffplayout-git')
 replaces=('ffplayout' 'ffplayout-git')
-backup=(etc/ffplayout/{ffplayout.toml,advanced.toml})
 install='ffplayout.install'
 
 source=(
-  "${pkgname}::git+https://github.com/jb-alvarado/ffplayout.git"
+  #"${pkgname}::git+https://github.com/jb-alvarado/ffplayout.git"
+  "${pkgname}::git+https://github.com/jb-alvarado/ffplayout.git#branch=single-app"
   'ffplayout.install'
 )
 sha256sums=('SKIP'
-            '91fa57deb966dd5f3f611d0a8213934f200487c64153167a1d9d6f7c9b1b85e8')
-options=('!lto')
+            '8fb8fb94c4ed8af580f5407f8eab7bc65b6cbf24a7ad962d20c725bb4a95d7e8')
 
 pkgver() {
   cd ${pkgname}
@@ -55,6 +54,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}"
+  CFLAGS+=" -ffat-lto-objects"
   export CARGO_HOME="$srcdir/rust-home"
   export RUSTUP_HOME="$srcdir/rust-home"
   export RUSTUP_TOOLCHAIN=stable
@@ -76,17 +76,9 @@ package() {
     cd "${srcdir}/${pkgname}"
 
     install -Dm755 target/x86_64-unknown-linux-musl/release/ffplayout "${pkgdir}/usr/bin/ffplayout"
-    install -Dm755 target/x86_64-unknown-linux-musl/release/ffpapi "${pkgdir}/usr/bin/ffpapi"
-    install -Dm644 assets/ffplayout.toml "${pkgdir}/etc/ffplayout/ffplayout.toml"
-    install -Dm644 assets/advanced.toml "${pkgdir}/etc/ffplayout/advanced.toml"
-    install -Dm644 assets/ffpapi.service "${pkgdir}/usr/lib/systemd/system/ffpapi.service"
     install -Dm644 assets/ffplayout.service "${pkgdir}/usr/lib/systemd/system/ffplayout.service"
-    install -Dm644 assets/ffplayout@.service "${pkgdir}/usr/lib/systemd/system/ffplayout@.service"
-    install -Dm644 assets/11-ffplayout "${pkgdir}/etc/sudoers.d/11-ffplayout"
-    install -Dm644 assets/ffpapi.1.gz "${pkgdir}/usr/share/man/man1/ffpapi.1.gz"
     install -Dm644 assets/ffplayout.1.gz "${pkgdir}/usr/share/man/man1/ffplayout.1.gz"
     install -Dm644 assets/logo.png "${pkgdir}/usr/share/ffplayout/logo.png"
-    install -Dm644 assets/ffplayout.toml "${pkgdir}/usr/share/ffplayout/ffplayout.toml.orig"
     install -Dm644 assets/ffplayout.conf "${pkgdir}/usr/share/ffplayout/ffplayout.conf.example"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/ffplayout/README"
     install -Dm644 LICENSE "${pkgdir}/usr/share/doc/ffplayout/copyright"

@@ -1,6 +1,6 @@
 pkgbase = ffplayout-unstable-git
 	pkgdesc = 24/7 playout based on rust and ffmpeg
-	pkgver = r2074.19be689
+	pkgver = r2098.9714c5d
 	pkgrel = 0
 	url = https://github.com/jb-alvarado/ffplayout
 	install = ffplayout.install
@@ -19,12 +19,9 @@ pkgbase = ffplayout-unstable-git
 	conflicts = ffplayout-git
 	replaces = ffplayout
 	replaces = ffplayout-git
-	options = !lto
-	backup = etc/ffplayout/ffplayout.toml
-	backup = etc/ffplayout/advanced.toml
-	source = ffplayout-unstable-git::git+https://github.com/jb-alvarado/ffplayout.git
+	source = ffplayout-unstable-git::git+https://github.com/jb-alvarado/ffplayout.git#branch=single-app
 	source = ffplayout.install
 	sha256sums = SKIP
-	sha256sums = 91fa57deb966dd5f3f611d0a8213934f200487c64153167a1d9d6f7c9b1b85e8
+	sha256sums = 8fb8fb94c4ed8af580f5407f8eab7bc65b6cbf24a7ad962d20c725bb4a95d7e8
 
 pkgname = ffplayout-unstable-git

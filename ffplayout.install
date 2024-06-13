@@ -1,6 +1,5 @@
 post_install() {
-			
-	systemctl unmask ffpapi.service >/dev/null || true
+
 	systemctl unmask ffplayout.service >/dev/null || true
 	systemctl --system daemon-reload >/dev/null || true
 
@@ -21,15 +20,13 @@ post_install() {
 
 	    IP=$(ip route get 1.2.3.4 | awk '{if($7 !~ /^[[:space:]]*$/) print $7}')
 
-	    /usr/bin/ffpapi -i -d "${IP}:8787"
+	    /usr/bin/ffplayout -i -d "${IP}:8787"
 
 	    chown -R ${sysUser}: "/usr/share/ffplayout"
 	    chown -R ${sysUser}: "/var/lib/ffplayout"
-	    chown -R ${sysUser}: "/etc/ffplayout"
 	else
 	    chown -R ${sysUser}: "/usr/share/ffplayout"
 	    chown -R ${sysUser}: "/var/lib/ffplayout"
-	    chown -R ${sysUser}: "/etc/ffplayout"
 	fi
 
 	if [ ! -d "/var/log/ffplayout" ]; then
@@ -40,11 +37,10 @@ post_install() {
 	    chown ${sysUser}: "/var/log/ffplayout"
 	fi
 
-	echo "1. activate systemd services:"
-    echo "    - 'systemctl enable ffplayout'"
-    echo "    - 'systemctl enable --now ffpapi'"
-    echo "2. add admin user to ffpapi:"
-    echo "    - 'ffpapi -a'"
+	echo "1. add admin user to ffplayout:"
+    echo "    - 'ffplayout -a'"
+	echo "2. activate systemd service:"
+    echo "    - 'systemctl enable --now ffplayout'"
     echo "3. use a reverse proxy for SSL, Port is **8787**."
     echo "4. login with your browser, address without proxy would be: **http://[IP ADDRESS]:8787**"
 	echo "5. Default location for playlists and media files are: **/var/lib/ffplayout/**."
@@ -67,11 +63,8 @@ pre_remove() {
 
 post_remove() {
 
-	rm -f /usr/lib/systemd/system/ffpapi.service || true
-	rm -f /usr/lib/systemd/system/ffplayout* || true
-    
 	systemctl --system daemon-reload >/dev/null || true
-	systemctl unmask ffpapi.service ffplayout.service >/dev/null || true
+	systemctl unmask ffplayout.service >/dev/null || true
 
 	sysUser="ffpu"
 
