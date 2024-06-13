@@ -57,12 +57,10 @@ build() {
 
 check() {
   cd "${srcdir}/${_gitpkgname}-${pkgver}"
-  python -m venv --clear --system-site-packages .venv
-  # shellcheck disable=SC1091
-  source .venv/bin/activate
-  pip install --force-reinstall --no-deps dist/*.whl
-  python -m unittest discover -v
-  deactivate
+  local _site_packages
+  _site_packages="$(python -c 'import site; print(site.getsitepackages()[0])')"
+  python -m installer --destdir=tmp_install dist/*.whl
+  PYTHONPATH="${PWD}/tmp_install/${_site_packages}" python -m unittest discover -v
 }
 
 package() {
