@@ -5,10 +5,6 @@
 # You need to manually download the IBM ILOG CPLEX Optimization Studio installer
 # and place it into the same directory as this PKGBUILD, before you proceed.
 
-# Note that CPLEX consistently refuses to run with recent Python versions and
-# currently supports only versions 3.7 and 3.8. If you have one of those
-# installed from the AUR, then the appropriate bindings will be installed.
-
 pkgname='cplex'
 pkgdesc="A commercial solver for mathematical optimization problems."
 pkgver=22.1.1
@@ -24,7 +20,6 @@ _arch_upper=${arch^}
 _basename="cplex_studio${_pkgver}.linux_${arch}"
 _installer="${_basename}.bin"
 _archdir="${arch/_/-}_linux"
-_pythonver=$(python --version | awk '{ print $2 }' | awk -F "." '{ print $1"."$2 }')
 
 source=("local://${_installer}" installer.properties.template)
 
