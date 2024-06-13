@@ -2,7 +2,7 @@
 
 pkgname=python-luna-usb-git
 _gitpkgname=luna-usb
-pkgver=r875.640da58
+pkgver=r877.d933d42
 pkgrel=1
 pkgdesc='Amaranth HDL framework for monitoring, hacking, and developing USB devices'
 arch=('any')
@@ -35,6 +35,7 @@ optdepends=(
   'python-prompt_toolkit: to use the included applets'
 )
 provides=("python-luna-usb=${pkgver}")
+conflicts=('python-luna-usb')
 
 source=(
   "${_gitpkgname}::git+https://github.com/greatscottgadgets/luna.git"
