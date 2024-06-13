@@ -2,7 +2,7 @@
 
 pkgname=gvc-git
 pkgver=r3.a00aa37
-pkgrel=4
+pkgrel=5
 pkgdesc="Provides libgnome-volume-control outside Gnome environment."
 arch=(x86_64)
 url="https://github.com/JingMatrix/${pkgname%-git}"
@@ -14,23 +14,26 @@ depends=(
 )
 makedepends=(
   git
+  glib2-devel
   meson
 )
-provides=(${pkgname%-git} libgnome-volume-control)
+provides=(${pkgname%-git})
 conflicts=(${pkgname%-git} gsconnect)
 options=(!debug)
 source=(${pkgname%-git}::git+$url.git)
 b2sums=('SKIP')
 
 pkgver() {
-  printf "r%s.%s" "$(git -C ${pkgname%-git} rev-list --count HEAD)" "$(git -C ${pkgname%-git} rev-parse --short=7 HEAD)"
+  cd ${pkgname%-git}
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
-  arch-meson ${pkgname%-git} gvc-build
-  meson compile -C gvc-build
+  arch-meson ${pkgname%-git} build
+  meson configure  build --no-pager
+  meson compile -C build
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C gvc-build
+  meson install -C build --destdir "$pkgdir"
 }
