@@ -7,7 +7,7 @@ pkgbase = eclipse-jee-bin
 	arch = x86_64
 	arch = aarch64
 	license = EPL
-	depends = java-runtime>=17
+	depends = java-runtime>=21
 	depends = webkit2gtk
 	depends = unzip
 	provides = eclipse=4.32-1
