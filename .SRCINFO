@@ -44,6 +44,8 @@ pkgbase = audacious-plugins-git
 	provides = audacious-plugins
 	conflicts = audacious-plugins
 	source = git+https://github.com/audacious-media-player/audacious-plugins.git
+	source = https://gitlab.archlinux.org/archlinux/packaging/packages/audacious-plugins/-/raw/main/sidplay-rom-paths.patch
 	sha256sums = SKIP
+	sha256sums = c32cd36f75dd18db082f9b9447f1c0982279703b9d648f5695295ff25c9b678d
 
 pkgname = audacious-plugins-git

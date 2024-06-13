@@ -25,12 +25,21 @@ depends=('audacious-git'
          'libpipewire' 'libpulse' 'libsamplerate' 'libsidplayfp' 'libvorbis'
          'lirc' 'mpg123' 'neon' 'opusfile' 'wavpack')
 makedepends=('meson' 'git' 'glib2-devel')
-source=("git+https://github.com/audacious-media-player/$_pkgname.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/audacious-media-player/$_pkgname.git"
+        "https://gitlab.archlinux.org/archlinux/packaging/packages/$_pkgname/-/raw/main/sidplay-rom-paths.patch")
+sha256sums=('SKIP'
+            'c32cd36f75dd18db082f9b9447f1c0982279703b9d648f5695295ff25c9b678d')
 
 pkgver() {
   cd "$_pkgname"
   git describe --long --tags | sed 's/^audacious-plugins-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "$_pkgname"
+
+  # set paths for ROM files from vice for sidplay
+  patch -Np1 -i ../sidplay-rom-paths.patch
 }
 
 build() {
