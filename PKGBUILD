@@ -4,21 +4,19 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libdrm
-pkgver=2.4.120
+pkgver=2.4.121
 pkgrel=1
 arch=('any')
-pkgdesc="Userspace interface to kernel DRM services"
+pkgdesc="Userspace interface to kernel DRM services (Android ${_android_arch})"
 url="https://dri.freedesktop.org/"
 license=('custom')
 depends=("android-${_android_arch}-libpciaccess")
 makedepends=('android-meson')
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://dri.freedesktop.org/libdrm/libdrm-$pkgver.tar.xz"{,.sig}
+source=("https://dri.freedesktop.org/libdrm/libdrm-$pkgver.tar.xz"
         '0001-Disable-open_memstream.patch')
-md5sums=('f8521de37ccbd15987b843a83fabd567'
-         'SKIP'
+md5sums=('9eaa82b7b7a79972c6b11dd25a4356b1'
          'b01f3f9e59e04924adcc3385e634c8dc')
-validpgpkeys=('34FF9526CFEF0E97A340E2E40FDE7BE0E88F5E48') # Simon Ser <contact@emersion.fr>
 
 prepare() {
     cd "${srcdir}/libdrm-${pkgver}"
@@ -53,7 +51,7 @@ package() {
     source android-env ${_android_arch}
 
     DESTDIR="${pkgdir}" ninja install
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a || true
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_RANLIB} "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a || true
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_RANLIB} "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
 }
