@@ -14,7 +14,7 @@
 pkgname=conky-cairo-wayland-git
 _pkgname=conky
 pkgver=1.19.6.r47.g5e6db91b
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight system monitor for X, Wayland, console, or file/HTTP output (with Cairo/Cairo-Lua support)'
 url='https://github.com/brndnmtthws/conky'
 license=('GPL3' 'BSD')
@@ -48,6 +48,7 @@ build() {
 	sed -i 's|conky::run_all_callbacks();||' src/conky.cc
 
 	cmake \
+		-B build \
 		-D CMAKE_BUILD_TYPE=Release \
 		-D CMAKE_INSTALL_PREFIX=/usr \
 		-D BUILD_WLAN=ON \
@@ -63,14 +64,15 @@ build() {
 		-D BUILD_WAYLAND=ON \
 		-D BUILD_DOCS=OFF \
     -D BUILD_NVIDIA=OFF \
+		-Wno-dev \
 		.
 
-	make
+	make -C build
 }
 
 package() {
 	cd "${srcdir}/${_pkgname}"
-	make DESTDIR="${pkgdir}" install
+	make -C build DESTDIR="${pkgdir}" install
 	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 	install -Dm755 extras/convert.lua "${pkgdir}"/usr/bin/conky-convert.lua
 }
