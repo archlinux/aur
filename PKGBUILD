@@ -1,7 +1,7 @@
 # Maintainer: Thorsten Müller
 
 pkgname=auditbeat-oss-bin
-pkgver=8.14.0
+pkgver=8.14.1
 pkgrel=0
 pkgdesc='Data shippers for Elasticsearch'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('glibc')
 conflicts=(auditbeat-oss)
 source=("https://artifacts.elastic.co/downloads/beats/auditbeat/auditbeat-${pkgver}-linux-x86_64.tar.gz"
         "auditbeat-oss.service")
-sha512sums=('305251d312943be56819122b8dd87acda26a4b5865796bd76a0ff9ad4f8e03dee0039212808bf86d0d067489883c0cb2d074655e082b2d9fb22558f456f7defc'
+sha512sums=('02ed4e9a50e74d091d0dcce9a022a358dd6290c827ac79a7bd3737718901f2b49178d03d16f5109d05f2c6e9c1a565a989a3d8062761975884d55ee072bdae85'
             '6c2b7ad706efbbaab55e2bd6a63dd85ee358aeed8255a829adeacdcd45d364520cc7f0328cfa966d61e911042d8fac40abc7ff36cdb7a834fc83df7da94fce13')
 backup=('etc/auditbeat-oss/auditbeat.yml', 'etc/auditbeat-oss/fields.yml')
 srcpath="auditbeat-${pkgver}-linux-x86_64"
