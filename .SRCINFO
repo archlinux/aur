@@ -1,26 +1,42 @@
-pkgbase = auto-cpufreq-git
-	pkgdesc = Automatic CPU speed & power optimizer
-	pkgver = 1.9.6.r3.gff72e1e
-	pkgrel = 2
-	url = https://github.com/AdnanHodzic/auto-cpufreq
-	install = auto-cpufreq.install
-	arch = any
-	license = LGPL-3.0
-	makedepends = git
-	makedepends = python-setuptools
-	makedepends = python-pip
-	depends = python-distro
-	depends = python-psutil
-	depends = python-click
-	depends = dmidecode
-	optdepends = cpufreqctl: CPU Power Manager
-	optdepends = gnome-shell-extension-cpufreq: CPU Power Manager for GNOME Shell
-	optdepends = thermald: Thermal Daemon - recommended by upstream
-	provides = auto-cpufreq
-	conflicts = auto-cpufreq
-	source = git+https://github.com/AdnanHodzic/auto-cpufreq.git
-	source = auto-cpufreq.service
-	sha256sums = SKIP
-	sha256sums = SKIP
+# Maintainer: crian <crian84 at gmail dot com>
 
-pkgname = auto-cpufreq-git
+pkgname=auto-cpufreq-git
+pkgver=2.3.0.r16.ga7df94d
+pkgrel=1
+pkgdesc='Automatic CPU speed & power optimizer'
+arch=('any')
+url="https://github.com/AdnanHodzic/auto-cpufreq"
+license=('LGPL-3.0')
+depends=('python-distro' 'python-poetry' 'python-psutil' 'python-click' 'dmidecode')
+optdepends=('cpufreqctl: CPU Power Manager'
+            'gnome-shell-extension-cpufreq: CPU Power Manager for GNOME Shell'
+            'thermald: Thermal Daemon - recommended by upstream')
+makedepends=('git' 'python-setuptools' 'python-pip')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+install="${pkgname%-git}.install"
+source=("git+${url}.git" "${pkgname%-git}.service")
+sha256sums=('SKIP' 'SKIP')
+
+pkgver() {
+    cd "$srcdir/${pkgname%-git}"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd "$srcdir/${pkgname%-git}"
+    sed -i 's|usr/local|usr|g' "scripts/${pkgname%-git}.service" auto_cpufreq/core.py
+}
+
+build() {
+    cd "$srcdir/${pkgname%-git}"
+    poetry install
+}
+
+package() {
+    cd "$srcdir/${pkgname%-git}"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
+    install -Dm644 README.md "$pkgdir/usr/share/doc/${pkgname%-git}/README"
+    install -Dm755 scripts/cpufreqctl.sh -t "$pkgdir/usr/share/${pkgname%-git}/scripts"
+    install -Dm644 "$srcdir/${pkgname%-git}.service" -t "$pkgdir/usr/lib/systemd/system"
+}
