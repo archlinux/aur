@@ -2,20 +2,18 @@
 _appname=qaxbrowser
 _pkgname="${_appname}-safe-stable"
 pkgname=qianxin-browser-stable
-pkgver=1.0.45398.7
-pkgrel=2
+pkgver=1.0.45554.7
+pkgrel=1
 pkgdesc="奇安信可信浏览器国密开发者专版"
 arch=(
     'aarch64'
-    'armv7h'
     'x86_64'
 )
 url="https://www.qianxin.com/product/detail/pid/333"
-_downloadurl="https://dl.qianxin.com/c8a52014-99d3-57ff/%E5%9B%BD%E5%AF%86%E5%BC%80%E5%8F%91%E8%80%85-231227"
+_downloadurl="https://dl.qianxin.com/c8a52014-99d3-57ff/45554"
 license=('LicenseRef-custom')
 conflicts=("${pkgname%-stable}" "${_pkgname%-stable}" "${_pkgname%-safe-stable}")
 depends=(
-    'hicolor-icon-theme'
     'alsa-lib'
     'gtk2'
     'nss'
@@ -25,17 +23,15 @@ depends=(
     'mesa'
 )
 source_aarch64=("${pkgname}-${pkgver}-aarch64.deb::${_downloadurl}/${_pkgname}_${pkgver}-1_arm64.deb")
-source_armv7h=("${pkgname}-${pkgver}-armv7h.deb::${_downloadurl}/${_pkgname}_${pkgver}-1_arm64.deb")
 source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::${_downloadurl}/${_pkgname}_${pkgver}-1_amd64.deb")
 source=(
     "LICENSE.html"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('368c8e1aff7ff8d7b5843e12222e58c6e43fee8aa8d65581b33d65ec48586a43'
-            'a4abd9ed98dd2836c5756028db55e4966bb80ffde8dc23a198cc137907bc8206')
-sha256sums_aarch64=('d4174090c61162c2e3ef0dd07d92e050f95687be9d70a5378bd1b0d4ae6e1498')
-sha256sums_armv7h=('d4174090c61162c2e3ef0dd07d92e050f95687be9d70a5378bd1b0d4ae6e1498')
-sha256sums_x86_64=('ff9d7ecc10780e3b08694e492f92717edfbdad1dd8acbbd451e12f148efb5669')
+            '6ffb95b6435970c0b1bfab1efd8979e5613a5ce2d10c4f2570dffd594e5b6ba6')
+sha256sums_aarch64=('11e817105094b4c589a0995e5cce33a6598f6b593bff6e3ceb7c0f27667d1c59')
+sha256sums_x86_64=('4724f522b0d7b99b4ce75aa0e0ffb5066410501f15d0a7e0093ea9f1d41dfb1a')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_appname}|g" \

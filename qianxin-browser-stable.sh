@@ -1,5 +1,5 @@
-#!/bin/sh
-set -e
+#!/bin/bash
+set -o pipefail
 _APPDIR="/opt/@appname@"
 _RUNNAME="${_APPDIR}/@runname@"
 export PATH="${_APPDIR}:${PATH}"
@@ -10,4 +10,4 @@ exec < /dev/null
 exec > >(exec cat)
 exec 2> >(exec cat >&2)
 cd "${_APPDIR}"
-exec -a "$0" "${_APPDIR}/qaxbrowser" "$@" || exit $?
+exec -a "$0" "${_APPDIR}/@runname@" "$@" || exit $?
