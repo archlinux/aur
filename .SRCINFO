@@ -1,0 +1,21 @@
+pkgbase = epson-label-printer-utility-community-bin
+	pkgdesc = Epson Label Printer Utility
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://www.epson.com.cn/drive/df974e42dfab44ce965b39d4b2965fcc.html?productId=58a272d0e37640588de9bed078e2d11b
+	arch = x86_64
+	license = GPL-2.0-or-later
+	license = Commercial
+	depends = glibc
+	depends = gcc-libs
+	depends = qt5-base
+	depends = libcups
+	optdepends = epson-printer-io-community: EPSON Linux Printer IO daemon
+	provides = epson-label-printer-utility-community
+	conflicts = epson-label-printer-utility-community
+	options = !strip
+	options = !debug
+	source = https://eposs.epson.com.cn/EPSON/assets/resource/Download/Service/driver/CW/CW-C4030/epson-label-printer-utility-community-1_5_1-QT5_s%20(1).zip
+	sha256sums = 33572eb62320e80d9730f6d2180d5de60eadc56ee6afdbb8adf5381d2edd7717
+
+pkgname = epson-label-printer-utility-community-bin
