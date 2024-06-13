@@ -7,7 +7,7 @@ pkgrel=2
 pkgdesc="Osmocom library for A-bis interface"
 url="https://osmocom.org/projects/libosmo-abis"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
-license=(GPL)
+license=('GPL-2.0-or-later AND LGPL-2.1-only AND AGPL-3.0-or-later')
 depends=('libosmocore-git' 'ortp' 'talloc')
 makedepends=('git')
 provides=("${pkgname%-git}=${pkgver}"
