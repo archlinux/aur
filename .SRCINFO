@@ -7,7 +7,6 @@ pkgbase = mejituu-wine8
 	license = LGPL-2.1
 	depends = alsa-lib
 	depends = glibc
-	depends = libcapi
 	depends = dbus
 	depends = gcc-libs
 	depends = glib2
