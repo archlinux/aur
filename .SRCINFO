@@ -9,6 +9,8 @@ pkgbase = rtl8812au-openhd-dkms-git
 	depends = dkms
 	depends = bc
 	source = git+https://github.com/OpenHD/rtl8812au.git
+	source = fix-6.9.0-build.patch
 	sha256sums = SKIP
+	sha256sums = a527f89fecb9fbf8249e2e72859560f4381376873bb8a408047870df07a8d79b
 
 pkgname = rtl8812au-openhd-dkms-git

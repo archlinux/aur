@@ -11,12 +11,17 @@ url='https://github.com/OpenHD/rtl8812au'
 license=(GPL2)
 depends=('dkms' 'bc')
 makedepends=('git')
-source=('git+https://github.com/OpenHD/rtl8812au.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/OpenHD/rtl8812au.git' 'fix-6.9.0-build.patch')
+sha256sums=('SKIP' 'a527f89fecb9fbf8249e2e72859560f4381376873bb8a408047870df07a8d79b')
 
 pkgver() {
 	cd "${srcdir}/rtl8812au"
 	printf '%s.r%s.g%s' "${_pkgver}" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+prepare() {
+	cd "${srcdir}/rtl8812au"
+	patch -p1 -i "$srcdir/fix-6.9.0-build.patch"
 }
 
 package() {
