@@ -37,9 +37,11 @@ source=(
   'https://ffmpeg.org/releases/ffmpeg-0.6.7.tar.bz2'
   'mathops_fix.patch'
   'found_ffmpeg.patch'
+  'qxinewidget_stack_smashing_detected_fix.patch'
 )
 sha256sums=(
   '8170ae54ad380e1265a8da767b8ee1e70d4ede116a61422de24a509e28bc351e'
+  'SKIP'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -49,6 +51,7 @@ options=('debug' '!lto')
 prepare() {
   patch -d ffmpeg-0.6.7 -p1 -i "${srcdir}/mathops_fix.patch"
   patch -d "$pkgname-$pkgver" -p1 -i "${srcdir}/found_ffmpeg.patch"
+  patch -d "$pkgname-$pkgver" -p1 -i "${srcdir}/qxinewidget_stack_smashing_detected_fix.patch"
 }
 
 build() {
