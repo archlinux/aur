@@ -10,7 +10,7 @@ pkgdesc="Highly extensible IDE (C/C++ version)"
 arch=('x86_64' 'aarch64')
 url="https://www.eclipse.org/"
 license=('EPL')
-depends=('java-runtime>=17' webkit2gtk unzip)
+depends=('java-runtime>=21' webkit2gtk unzip)
 makedepends=()
 provides=(eclipse=$pkgver-$pkgrel)
 conflicts=(eclipse)
