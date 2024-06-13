@@ -19,6 +19,7 @@ depends=(
 makedepends=(
     "git"
     "python-build"
+    "python-hatchling"
     "python-installer"
     "python-wheel"
 )
