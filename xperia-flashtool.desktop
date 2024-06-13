@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Version=1.5
+Name=Xperia Flashtool
+GenericName=Flashing Utility for SONY Xperia Android Phones
+Comment=A S1 protocol flashing software for SONY Xperia phones
+Icon=xperia-flashtool
+TryExec=xperia-flashtool
+Exec=xperia-flashtool
+Path=/opt/xperia-flashtool/
+Categories=Utility
+Keywords=S1; Flash; Flashing; Protocol; SIN; BIN; ADB; FastBoot Mode; Flash Mode; Xperi-Firm; Firmware; Extract; Xperia Home; Android; SmartPhone; USB; Cable; Connection;
+SingleMainWindow=true
+StartupWMClass=Flashtool

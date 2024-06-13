@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+
+pkexec env "DISPLAY=$DISPLAY" "XAUTHORITY=$XAUTHORITY" "/opt/xperia-flashtool/FlashTool" "$@"
