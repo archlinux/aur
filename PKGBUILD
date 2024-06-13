@@ -1,68 +1,51 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _appname=adrive
 pkgname="deepin-wine-${_appname}"
-_pkgname="com.${_appname}.deepin"
+_sparkname=com.aliyundrive.spark
 _officalname=aDrive
-pkgver=4.12.0
-_deepinver=2.2.6deepin8
+pkgver=4.9.15spark9
 pkgrel=1
-pkgdesc="Aliyun aDrive on Deepin Wine 6"
+pkgdesc="Aliyun aDrive on Deepin Wine 8"
 arch=("x86_64")
 url="https://www.aliyundrive.com"
+_dlurl="https://mirrors.sdu.edu.cn/spark-store-repository/store"
 license=('LicenseRef-custom')
 conflicts=("${_appname}")
 provides=("${_appname}")
 depends=(
     'deepin-wine6-stable'
-    'deepin-wine-helper'
+    'spark-dwine-helper'
     'xdg-utils'
-    'hicolor-icon-theme'
 )
 makedepends=(
     'p7zip'
 )
 install="${pkgname}.install"
 source=(
-    "${_pkgname}_${_deepinver}_i386.deb::https://com-store-packages.uniontech.com/appstore/pool/appstore/c/${_pkgname}/${_pkgname}_${_deepinver}_i386.deb"
-    "${_officalname}-${pkgver}.exe::https://cdn.aliyundrive.net/downloads/apps/desktop/${_officalname}-${pkgver}.exe"
+    "${pkgname}-${pkgver}.deb::${_dlurl}//network/${_sparkname}/${_sparkname}_${pkgver}_all.deb"
     "LICENSE.html::https://terms.alicdn.com/legal-agreement/terms/suit_bu1_alibaba_group/suit_bu1_alibaba_group202102022125_53871.html"
     "${pkgname}.sh"
 )
-sha256sums=('9db53833b86b3ad941f23bdefa354170ec432c3b15980621e8011261d5617843'
-            '9a829cc1e6a93ab55f89d79339113e4ab142e3cc30e7bfc9d1edd08d2090bc7c'
-            'e6092d61af50523fde28e50d680b00fb7efe565314baf6e97389a86fd1b59074'
-            '43de3d52a2d41a4f95d685c4fa89c00d9e67d4df82c2b5fd12f2ba42a10d547d')
+sha256sums=('769e2265f50c5eb3d53299f86f3975ebf9ea783b132de9fd7d44002e15487966'
+            '6805d4f66fba42ef107aa186c1aa57b157273dc75469bc5476134f4ce001e96a'
+            '60092b36b388d8c5899ced088bf4fa2f26999ba5ea7470dedf196bdc6473b43b')
 build() {
     sed -e "s|@bottlename@|Deepin-${_officalname}|g" \
         -e "s|@appver@|${pkgver}|g" \
         -e "s|@appname@|${pkgname}|g" \
-        -e "s|/@pathname@|${_officalname}|g" \
+        -e "s|@pathname@|${_officalname}|g" \
         -i "${srcdir}/${pkgname}.sh"
 
     bsdtar -xf "${srcdir}/data."* -C "${srcdir}"
-    mv "${srcdir}/opt/apps/${_pkgname}" "${srcdir}/opt/apps/${pkgname}"
-    mkdir -p "${srcdir}/tmp"
-    msg "Extracting Deepin Wine ${_officalname} archive ..."
-    bsdtar -xf "${srcdir}/opt/apps/${pkgname}/files/files.7z" -C "${srcdir}/tmp"
-       
-    msg "Copying latest ${_officalname} files to ${srcdir}/tmp/drive_c/Program Files/${_officalname} ..."
-    7z x -aoa "${srcdir}/${_officalname}-${pkgver}.exe" -o"${srcdir}/tmp/drive_c/Program Files/${_officalname}/"
-    rm -rf "${srcdir}/tmp/drive_c/Program Files/${_officalname}/\$PLUGINSDIR" \
-        "${srcdir}/tmp/drive_c/Program Files/${_officalname}/\$TEMP"
-    msg "Repackaging app archive ..."
-    rm -r "${srcdir}/opt/apps/${pkgname}/files/files.7z" "${srcdir}/opt/apps/${pkgname}/info"
-    7z a -t7z -r "${srcdir}/opt/apps/${pkgname}/files/files.7z" "${srcdir}/tmp/*"
-    sed -e "s|${_pkgname}|${pkgname}|g" -e "s|internet|Network|g" -e "s|\"/opt/apps/${pkgname}/files/run.sh\"|${pkgname}|g" \
-        -i "${srcdir}/opt/apps/${pkgname}/entries/applications/${_pkgname}.desktop"
+    mv "${srcdir}/opt/apps/${_sparkname}" "${srcdir}/opt/apps/${pkgname}"
+    sed "s|\"/opt/apps/${_sparkname}/files/run.sh\"|${pkgname}|g;s|${_sparkname}|${pkgname}|g" \
+        -i "${srcdir}/opt/apps/${pkgname}/entries/applications/${_sparkname}.desktop"
 }
 package() {
     cp -r "${srcdir}/opt" "${pkgdir}"
     md5sum "${srcdir}/opt/apps/${pkgname}/files/files.7z" | awk '{ print $1 }' > "${pkgdir}/opt/apps/${pkgname}/files/files.md5sum"
-    install -Dm644 "${srcdir}/opt/apps/${pkgname}/entries/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    for _icons in 24x24 32x32 48x48 64x64;do
-        install -Dm644 "${srcdir}/opt/apps/${pkgname}/entries/icons/hicolor/${_icons}/apps/${_pkgname}.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
-    done
+    install -Dm644 "${srcdir}/opt/apps/${pkgname}/entries/applications/${_sparkname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -Dm644 "${srcdir}/opt/apps/${pkgname}/entries/icons/hicolor/scalable/apps/${_sparkname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm755 "${srcdir}/${pkgname}.sh" -t "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/LICENSE.html" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
