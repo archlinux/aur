@@ -2,7 +2,7 @@
 
 pkgname=python-luna-usb-git
 _gitpkgname=luna-usb
-pkgver=r877.d933d42
+pkgver=0.1.0.post0+git.d933d428
 pkgrel=1
 pkgdesc='Amaranth HDL framework for monitoring, hacking, and developing USB devices'
 arch=('any')
@@ -34,7 +34,7 @@ optdepends=(
   'python-luna-boards: connect to Luna boards'
   'python-prompt_toolkit: to use the included applets'
 )
-provides=("python-luna-usb=${pkgver}")
+provides=("python-luna-usb=${pkgver%.post*}")
 conflicts=('python-luna-usb')
 
 source=(
@@ -46,9 +46,7 @@ sha512sums=(
 )
 
 pkgver() {
-  printf "r%s.%s" \
-    "$(git -C "${_gitpkgname}" rev-list --count HEAD)" \
-    "$(git -C "${_gitpkgname}" rev-parse --short HEAD)"
+  setuptools-git-versioning "${_gitpkgname}"
 }
 
 prepare() {
