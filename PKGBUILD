@@ -2,8 +2,8 @@
 # Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=libosmo-netif-git
-pkgver=1.4.0.r20.g96e26d5
-pkgrel=2
+pkgver=1.4.0.r56.g0a254d1
+pkgrel=1
 pkgdesc="Osmocom library for muxed audio"
 url="http://osmocom.org/projects/libosmo-netif"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
