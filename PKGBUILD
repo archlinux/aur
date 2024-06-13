@@ -2,12 +2,12 @@
 
 pkgname=plotxy
 pkgver=nov2018
-pkgrel=1
+pkgrel=2
 pkgdesc="A plotting and post-processing program developed by prof. Massimo Ceraolo from the University of Pisa, as part of his research activities involving simulation and post-processing of measured data"
 arch=('x86_64')
 url="http://ceraolo-plotxy.ing.unipi.it/default.htm"
 license=(GPL3)
-depends=()
+depends=(qt5-svg)
 conflicts=()
 source=(http://ceraolo-plotxy.ing.unipi.it/PlotXY_Download/PlotXY-2018-Nov-Linux.zip)
 sha256sums=('62876fb6329de24a09c7088ef70976ec726d409041cfa9c28d163b8483df1306')
