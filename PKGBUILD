@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yakuza-bin
-pkgver=0.2.2
+pkgver=0.2.4
 _electronversion=28
-pkgrel=3
+pkgrel=1
 pkgdesc="An extensible linux application launcher"
 arch=('x86_64')
 url="https://github.com/fzdwx/yakuza"
@@ -21,15 +21,16 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/fzdwx/yakuza/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('6f4ee338308cd8a018add29bcb2fa3f6ab53f2b3967e3d82a0eecb82bf8bc4a0'
-            '53af07ff1586a021dd891e2fe3f1fe2f3b93ed92f1977a6325c3c0dbe1afe9b7'
+sha256sums=('b600cbbddb06b1f607ca126ac9734807af56086dfe78f8c0be9e0886d9b04269'
+            'e68e39144f593ee54698780c64d4619b4e2f7a30af1a27acaa9691aef0e1f1bd'
             '9e05d771f47c0447e9147319523e1a2de79538b9e85f7ad1f4d657ac56648b38'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
-        -e "s|@options@||g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
