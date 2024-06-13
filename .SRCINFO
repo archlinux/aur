@@ -1,12 +1,13 @@
 pkgbase = epsidm24-secc0014-bin
 	pkgdesc = Driver for Epson SIDM Printers: LQ-82KF/90KP/106KF/136KWII/300KH/520K/590KII/595KII/610KII/615KII/630KII/635KII/675KT/680KII/690K/730KII/735KII/1600KIVH/1900KIIH/2680K/790K;PLQ-20K/30K/30KM ppds
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.epson.com.cn/services/supportproduct.html?p=b896c3f048ca4c62a5c339e7084feb8b#
 	arch = aarch64
 	arch = x86_64
 	license = GPL-2.0-or-later
 	license = Commercial
+	makedepends = gzip
 	depends = glibc
 	depends = libcups
 	provides = epsidm24-secc0014
