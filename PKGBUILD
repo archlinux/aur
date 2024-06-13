@@ -3,7 +3,7 @@
 
 pkgname=superproductivity
 _name=super-productivity
-pkgver=8.0.7
+pkgver=8.0.9
 pkgrel=1
 pkgdesc="ToDo List / Time Tracker / Personal Jira Task Manager"
 arch=('any')
@@ -15,8 +15,8 @@ makedepends=('git' 'npm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/johannesjo/super-productivity/archive/v${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('c85bf7041e679ce8fe3c4dee9587c5a667dfe13129a5231b7da07272d80dd2b8'
-            '54e5773ce27144d4f4a33b0b494fc37b52312c62eeda627882e4b6e328aaa9d9'
+sha256sums=('f99a6c80ee0fe086b09adfdaab92dbd8f443fe5e68def74b04fc2ae83c23782d'
+            'e3c71e1ba653ebb1662c8a10d55ed72dbec37eea911c1f18568d0c3e2d13f452'
             'f9ca69e16223b3dcfa0d8ae9dbbff231255482d85f0d72ddcc5033dac890741e')
 
 prepare() {
