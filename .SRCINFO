@@ -1,6 +1,6 @@
 pkgbase = dtbell-git
 	pkgdesc = A highly configurable Linux-based desktop notifier for RSS/Atom feeds.
-	pkgver = v1.1.0.r1.gec623b3
+	pkgver = v1.1.1.r3.ge85796b
 	pkgrel = 1
 	url = https://github.com/eschermoore/ditchthebell
 	arch = x86_64

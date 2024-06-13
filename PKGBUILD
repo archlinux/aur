@@ -1,7 +1,7 @@
 # Maintainer: Escher Moore <aur@eschermoore.com>
 
 pkgname=dtbell-git
-pkgver=v1.1.0.r1.gec623b3
+pkgver=v1.1.1.r3.ge85796b
 pkgrel=1
 pkgdesc="A highly configurable Linux-based desktop notifier for RSS/Atom feeds."
 arch=("x86_64")
