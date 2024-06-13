@@ -5,7 +5,7 @@ conflicts=(
     "$_pkgname"
     "$_pkgname-bin"
 )
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Tool to help you update your Ollama models"
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=(
 source=("$_pkgname::$url/releases/download/v"$pkgver"/$_pkgname")
 noextract=()
 options=(!strip)
-sha256sums=('a1df33598747a28eb229cd91be87d9059ba1c4fc851f7dfc2171f681597f31a2')
+sha256sums=('d73159bf292b6bdeb599d26571dfae22277db29951c2361491afc9296f8c7ec6')
 
 package() {
     install -Dm755 "${srcdir}/${_pkgname}" "$pkgdir/usr/bin/$_pkgname"
