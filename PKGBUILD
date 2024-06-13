@@ -1,15 +1,15 @@
 # Maintainer: Daniel Kuehn <daniel@kuehn.foo>
 pkgname=wordgen
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A CLI program that prints random words generated from the EFF Large Wordlist."
 arch=('x86_64')
 url="https://github.com/danny-kuehn/$pkgname"
 license=('AGPL-3.0-or-later')
 makedepends=('go')
 options=(!debug)
-source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('ae7d18f8cfb61fb89e5252e2d96d8b82407a27a7553fc2611de51fa6557d31b0')
+source=("$url/archive/v$pkgver.tar.gz")
+sha256sums=('aad62444915782d609c44e0c1bf6cfdf13638ca285a39ad888314f50770f43ed')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
