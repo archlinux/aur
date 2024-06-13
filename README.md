@@ -15,5 +15,4 @@ that the BakkesMod DLL is replaced rather than duplicated, which is the default.
 
 ## TODO
 - stop resetting the user's config on install
-- rebase and publish the `rolling` branch as `bakkesmod-steam-git`
 

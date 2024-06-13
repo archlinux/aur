@@ -1,4 +1,4 @@
-pkgbase = bakkesmod-steam
+pkgbase = bakkesmod-steam-git
 	pkgdesc = A mod aimed at making you better at Rocket League!
 	pkgver = 2.41
 	pkgrel = 4
@@ -11,11 +11,11 @@ pkgbase = bakkesmod-steam
 	makedepends = mingw-w64-headers
 	makedepends = mingw-w64-winpthreads
 	makedepends = python
-	source = dll-2-0-41.zip::https://github.com/bakkesmodorg/BakkesModInjectorCpp/releases/download/2.0.41/bakkesmod.zip
-	source = src-2-0-41.zip::https://github.com/bakkesmodorg/BakkesModInjectorCpp/archive/refs/tags/2.0.41.zip
-	source = loopback-2-41-4.zip::https://github.com/kentslaney/bakkesmod-steam/archive/refs/tags/2.41-4.zip
-	sha256sums = d6ab60b6209c43ac450af14d71ebc30fa394a1359a7f37aa39326aecd8b587e2
-	sha256sums = e9cc066c5769f8c712c7216e470b659cdb63a2246b255f2ecfee25082a7d91ad
+	source = dll-2-0-41.zip::https://github.com/bakkesmodorg/BakkesModInjectorCpp/releases/latest/download/BakkesMod.zip
+	source = src-2-0-41.zip::https://api.github.com/repos/bakkesmodorg/BakkesModInjectorCpp/zipball/master
+	source = loopback-2-41-4.zip::https://api.github.com/repos/kentslaney/bakkesmod-steam/zipball/rolling
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = bakkesmod-steam
+pkgname = bakkesmod-steam-git

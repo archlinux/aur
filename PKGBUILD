@@ -1,5 +1,5 @@
 # Maintainer: Kent Slaney <kent@slaney.org>
-pkgname=bakkesmod-steam
+pkgname=bakkesmod-steam-git
 pkgver=2.41
 pkgrel=4
 pkgdesc="A mod aimed at making you better at Rocket League!"
@@ -11,11 +11,9 @@ depends=()
 makedepends=('mingw-w64-binutils' 'mingw-w64-crt' 'mingw-w64-gcc' 'mingw-w64-headers' 'mingw-w64-winpthreads' 'python')
 optdepends=()
 
-# versionless URLs and official repo backups
+# official repo backups
 # "https://github.com/bakkesmodorg/BakkesModInjectorCpp/releases/latest/download/BakkesModSetup.exe"
 # "https://github.com/bakkesmodorg/BakkesModInjectorCpp/releases/latest/download/BakkesModInjectorWin7.zip"
-# "https://github.com/bakkesmodorg/BakkesModInjectorCpp/releases/latest/download/BakkesMod.zip"
-# "https://api.github.com/repos/bakkesmodorg/BakkesModInjectorCpp/zipball/master"
 
 rlver=( 2 0 41 )
 rlstr=$(IFS=. ; echo "${rlver[*]}")
@@ -23,13 +21,13 @@ rlesc=$(IFS=- ; echo "${rlver[*]}")
 pkgesc=`echo "$pkgver" | sed 's%\.%-%g'`
 
 source=(
-    "dll-$rlesc.zip::https://github.com/bakkesmodorg/BakkesModInjectorCpp/releases/download/$rlstr/bakkesmod.zip"
-    "src-$rlesc.zip::https://github.com/bakkesmodorg/BakkesModInjectorCpp/archive/refs/tags/$rlstr.zip"
-    "loopback-$pkgesc-$pkgrel.zip::https://github.com/kentslaney/bakkesmod-steam/archive/refs/tags/$pkgver-$pkgrel.zip"
+    "dll-$rlesc.zip::https://github.com/bakkesmodorg/BakkesModInjectorCpp/releases/latest/download/BakkesMod.zip"
+    "src-$rlesc.zip::https://api.github.com/repos/bakkesmodorg/BakkesModInjectorCpp/zipball/master"
+    "loopback-$pkgesc-$pkgrel.zip::https://api.github.com/repos/kentslaney/bakkesmod-steam/zipball/rolling"
 )
 sha256sums=(
-    'd6ab60b6209c43ac450af14d71ebc30fa394a1359a7f37aa39326aecd8b587e2'
-    'e9cc066c5769f8c712c7216e470b659cdb63a2246b255f2ecfee25082a7d91ad'
+    'SKIP'
+    'SKIP'
     'SKIP'
 )
 
