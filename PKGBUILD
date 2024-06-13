@@ -1,8 +1,8 @@
 # Maintainer: Furkan Kardame <tech@fkardame.com>
 pkgname=cammus-ff-dkms
 _pkgname="${pkgname%-*}"
-pkgver=r28.2a2be93
-pkgrel=2
+pkgver=0.0.1
+pkgrel=3
 pkgdesc='Enable Force Feedback for Cammus C5 Direct Drive Wheel'
 arch=(any)
 url="https://github.com/spikerguy/${_pkgname}"
@@ -28,13 +28,13 @@ prepare() {
 	done
 }
 
-pkgver() {
-	cd "$srcdir"/"$_pkgname"
+#pkgver() {
+#	cd "$srcdir"/"$_pkgname"
 	# Git, tags available
 	# printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 	# Git, no tags available
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+#	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+#}
 
 package() {
 	install -Dm 0644 -T cammus.rules "${pkgdir}/usr/lib/udev/rules.d/99-cammus.rules"

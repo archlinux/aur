@@ -1,7 +1,7 @@
 pkgbase = cammus-ff-dkms
 	pkgdesc = Enable Force Feedback for Cammus C5 Direct Drive Wheel
-	pkgver = r28.2a2be93
-	pkgrel = 2
+	pkgver = 0.0.1
+	pkgrel = 3
 	url = https://github.com/spikerguy/cammus-ff
 	install = cammus-ff-dkms.install
 	arch = any
