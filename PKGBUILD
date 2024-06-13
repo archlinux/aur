@@ -4,8 +4,8 @@
 #
 # shellcheck disable=SC2034,SC2154
 pkgname=ytt-bin
-pkgver=0.49.0
-pkgrel=2
+pkgver=0.49.1
+pkgrel=1
 pkgdesc='YAML templating tool that works on YAML structure instead of text'
 url='https://carvel.dev/ytt'
 arch=(x86_64 aarch64)
@@ -13,10 +13,10 @@ license=(apache-2.0)
 install=''
 conflicts=(ytt)
 provides=(ytt)
-source_x86_64=(ytt-v0.49.0::https://github.com/carvel-dev/ytt/releases/download/v0.49.0/ytt-linux-amd64)
-source_aarch64=(ytt-v0.49.0::https://github.com/carvel-dev/ytt/releases/download/v0.49.0/ytt-linux-arm64)
-sha256sums_x86_64=(357ec754446b1eda29dd529e088f617e85809726c686598ab03cfc1c79f43b56)
-sha256sums_aarch64=(a2d195b058884c0e36a918936076965b8efb426f7e00f6b7d7b99b82737c7299)
+source_x86_64=(ytt-v0.49.1::https://github.com/carvel-dev/ytt/releases/download/v0.49.1/ytt-linux-amd64)
+source_aarch64=(ytt-v0.49.1::https://github.com/carvel-dev/ytt/releases/download/v0.49.1/ytt-linux-arm64)
+sha256sums_x86_64=(20a2f7466157a9c6189e885d0027e17c48776e65627f30fe04bffeef1d6f6166)
+sha256sums_aarch64=(7a8d04ac91578239d32683eea7c5bb045e6e3f0df6a8c3bb42927a161b7da4db)
 package () 
 { 
     set -eo pipefail;
