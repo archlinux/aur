@@ -1,10 +1,10 @@
 # Maintainer: Luke Taylor <luket1@proton.me>
 
 pkgname=fooyin-git
-pkgver=r2256.caf29354
+pkgver=r2289.cadcbc36
 pkgrel=1
 pkgdesc="A customisable music player"
-url="https://github.com/ludouzi/fooyin"
+url="https://github.com/fooyin/fooyin"
 arch=('x86_64')
 license=('GPL-3.0-only')
 depends=(
@@ -33,7 +33,7 @@ optdepends=(
 )
 provides=('fooyin')
 conflicts=('fooyin')
-source=("$pkgname"::"git+https://github.com/ludouzi/fooyin.git")
+source=("$pkgname"::"git+https://github.com/fooyin/fooyin.git")
 sha256sums=('SKIP')
 
 pkgver() {
