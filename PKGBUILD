@@ -3,11 +3,11 @@
 
 pkgname=osmo-bsc
 pkgver=1.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Osmocom's Base Station Controller for 2G circuit-switched mobile networks"
 url="https://osmocom.org/projects/osmobsc"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
-license=(GPL)
+license=('GPL-3.0-or-later AND LGPL-2.1-only AND AGPL-3.0-or-later')
 depends=('libosmocore'
          'libosmo-abis'
          'libosmo-sccp'
