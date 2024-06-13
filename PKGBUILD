@@ -5,7 +5,7 @@
 
 # Maintainer: Ayoub Eddaoudi <me@ayoubedd.me>
 pkgname=zfind
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Search for files (even inside tar/zip/7z/rar) using a SQL-WHERE filter"
 arch=('x86_64' 'arm64' 'riscv64')
