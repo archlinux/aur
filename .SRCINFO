@@ -1,7 +1,7 @@
 pkgbase = ollamamodelupdater
 	pkgdesc = Tool to help you update your Ollama models
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgver = 1.1.1
+	pkgrel = 1
 	url = https://github.com/thatonecalculator/ollamamodelupdater
 	arch = any
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = ollamamodelupdater
 	conflicts = ollamamodelupdater
 	conflicts = ollamamodelupdater-bin
 	options = !strip
-	source = ollamamodelupdater-1.1.0.tar.gz::https://github.com/thatonecalculator/ollamamodelupdater/archive/v1.1.0.tar.gz
-	sha256sums = 023ea787dfd391e5c019db8ccf0a34d660461d63546c5e84433656abbcc5aad0
+	source = ollamamodelupdater-1.1.1.tar.gz::https://github.com/thatonecalculator/ollamamodelupdater/archive/v1.1.1.tar.gz
+	sha256sums = c93f75e3fd5c4be08989f18be53af0a649de1b1855aaec9f809316776924d99e
 
 pkgname = ollamamodelupdater
