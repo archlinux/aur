@@ -10,7 +10,8 @@ arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=(GPL)
 depends=('libosmocore' 'ortp' 'talloc')
 makedepends=('git')
-provides=("libosmoabis.so=13-64"
+provides=("${pkgname%-git}=${pkgver}"
+          "libosmoabis.so=13-64"
           "libosmotrau.so=2-64")
 conflicts=("${pkgname%-git}")
 source=("git+https://gitea.osmocom.org/osmocom/${pkgname%-git}.git")

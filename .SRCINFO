@@ -12,6 +12,7 @@ pkgbase = libosmo-abis-git
 	depends = libosmocore
 	depends = ortp
 	depends = talloc
+	provides = libosmo-abis=1.5.0.r5.gaa3452c
 	provides = libosmoabis.so=13-64
 	provides = libosmotrau.so=2-64
 	conflicts = libosmo-abis
