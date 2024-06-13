@@ -1,7 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 _pyname=crds
 pkgname=python-${_pyname}-doc
-pkgver=11.17.23
+pkgver=11.17.25
 pkgrel=1
 pkgdesc="Documentation for STScI CRDS"
 arch=('any')
