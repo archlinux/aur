@@ -2,7 +2,7 @@
 
 pkgname=tidal-dl-ng
 _pkgname=${pkgname//-/_}
-pkgver=0.13.2
+pkgver=0.15.4
 pkgrel=1
 pkgdesc='A tool for downloading music and albums from TIDAL'
 arch=(any)
@@ -24,16 +24,19 @@ depends=(
     'python-ffmpeg-python'
     'pyside6'
     'python-pyqtdarktheme'
+    'python-darkdetect'
 )
 makedepends=(
     'python-poetry-core'
+    'python-installer'
+    'python-build'
 )
 source=(
     "https://files.pythonhosted.org/packages/source/t/$_pkgname/$_pkgname-$pkgver.tar.gz"
     "tidal-dl-ng"
     "tidal-dl-ng-gui"
 )
-sha256sums=('08c6bd354b994071f8e8398234319316c65e59a8620933e8cfa67e56d7c5995f'
+sha256sums=('d3402c7b9af6903642d16aedcc5773ecfccd61f270c8a8539e531a32e574051a'
             '1d2f9b06b7bba762f9a8770b163e001e5044a38b9d5befa8ea44fa3c98bcf172'
             'ecdc2868d0df9fa41e3bca50f3f0bcfede7543b54700f45b2095b9662da6dd9c')
 
