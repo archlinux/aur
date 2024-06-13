@@ -1,6 +1,6 @@
-# Maintainer: Maximilian Stahlberg <maximilian.stahlberg tu-berlin de>
+# Maintainer: zayn7lie <zayn7lie.ber7+git@gmail.com>
+# Contributor: Maximilian Stahlberg <maximilian.stahlberg tu-berlin de>
 # Contributor: Alberto Santini <alberto.santini at upf dot edu>
-# Contributor: zayn7lie <zayn7lie.ber7+git@gmail.com>
 
 # You need to manually download the IBM ILOG CPLEX Optimization Studio installer
 # and place it into the same directory as this PKGBUILD, before you proceed.
