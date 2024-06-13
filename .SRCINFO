@@ -1,6 +1,6 @@
 pkgbase = osmo-bts-git
 	pkgdesc = Osmocom's GSM BTS (Base Transceiver Station) with A-bis/IP interface
-	pkgver = 1.7.0.r53.ge94553a54
+	pkgver = 1.7.0.r68.g5076fef0e
 	pkgrel = 1
 	url = https://osmocom.org/projects/osmobts
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = osmo-bts-git
 	depends = libosmo-netif-git
 	depends = talloc
 	depends = ortp
-	provides = osmo-bts=1.7.0.r53.ge94553a54
+	provides = osmo-bts=1.7.0.r68.g5076fef0e
 	conflicts = osmo-bts
 	backup = etc/osmocom/osmo-bts-trx.cfg
 	backup = etc/osmocom/osmo-bts-virtual.cfg
