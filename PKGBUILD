@@ -2,6 +2,7 @@
 # Maintainer: Jonas Schwartz <jonas@josc.io>
 # Maintainer: Vlad <ejiek at mail.ru>
 # Maintainer: Solomon Choina<shlomochoina@gmail.com>
+# Maintainer: Christopher Snowhill <kode54@gmail.com>
 # Contributor: Caleb Maclennan <caleb@alerque.com>
 # Contributor: intrnl
 
