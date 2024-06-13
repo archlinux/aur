@@ -1,12 +1,12 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=epsidm24-secc0014-bin
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 epoch=
-pkgdesc="Driver for Epson SIDM Printers: DLQ-3500KII/LQ-82KF/90KP/106KF/136KWII/300KH/520K/590KII/595KII/610KII/615KII/630KII/635KII/675KT/680KII/690K/730KII/735KII/1600KIVH/1900KIIH/2680K/790K/PLQ-20K/30K/30KM/35K/50K ppds"
+pkgdesc="Driver for Epson SIDM Printers: DLQ-3500KII/3500KIIN/LQ-82KF/90KP/106KF/136KWII/300KH/520K/590KII/595KII/610KII/615KII/630KII/635KII/675KT/680KII/690K/730KII/735KII/1600KIVH/1900KIIH/2680K/790K/PLQ-20K/30K/30KM/35K/50K/50KM/50KMK ppds"
 arch=('aarch64' 'x86_64' )
-url="https://www.epson.com.cn/services/supportproduct.html?p=be71009d3b5345398384c5d723cfe9cf"
+url="https://www.epson.com.cn/services/supportproduct.html?p=c5d0b2a483a14657bf87bd8e2f9a00aa"
 license=('GPL-2.0-or-later' 'Commercial' )
 provides=(${pkgname%-bin})
 conflicts=(${pkgname%-bin})
@@ -19,12 +19,12 @@ optdepends=()
 backup=()
 options=(!strip !debug)
 install=
-_url=https://eposs.epson.com.cn/EPSON/assets/resource/Download/Service/driver/SIDM/DLQ-3500KII
+_url=https://eposs.epson.com.cn/EPSON/assets/resource/Download/Service/driver/SIDM/PLQ-50KMK
 _pkg_name=signed_${pkgname%-bin}_${pkgver//./_}-1uos20
 source=("${_pkg_name}_amd64.deb::${_url}/${_pkg_name}_amd64.deb"
   "${_pkg_name}_arm64.deb::${_url}/${_pkg_name}_arm64.deb")
-sha256sums=('8efaa016bb25358348a7f638f53476578cbc7257a72765b716976df5df480fbe'
-            '93e0dcf982dbb7637c1145b85dc3cec360a6f855cf3a182e482c8be2497d8838')
+sha256sums=('838336d80eba91a4ac7b1397ee60509b532a6b220ae5256d87b1d61a95016d7f'
+            'd04a14da17a72b6f1434fb506cc5ad8eafdc35078130f893d86ce5f5ffd07efd')
 noextract=("${_pkg_name}_amd64.deb"
   "${_pkg_name}_arm64.deb")
 
