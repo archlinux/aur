@@ -2,7 +2,7 @@
 
 pkgname=ascii-pony-git
 _gitname=ASCII-Pony
-pkgrel=1
+pkgrel=2
 pkgdesc='Shows a pony and system information'
 pkgver=20220221
 arch=('any')
@@ -12,12 +12,12 @@ provides=('systempony')
 license=('GPLv3+' 'CC-BY-SA 3.0')
 depends=('bash' 'coreutils' 'iproute2' 'inetutils' 'procps-ng' 
          'lsb-release' 'sed' 'grep' 'findutils' 'awk' 'lxc'
-	 'sysfsutils' 'bc')
+	 'bc')
 sha256sums=('SKIP')
 
 package() {
 	cd $_gitname
-	make install PREFIX="$pkgdir/usr/local"
+	make install PREFIX="$pkgdir/usr"
 }
 
 pkgver() {

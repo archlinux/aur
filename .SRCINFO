@@ -1,7 +1,7 @@
 pkgbase = ascii-pony-git
 	pkgdesc = Shows a pony and system information
 	pkgver = 20220221
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/mattia.basaglia/ASCII-Pony
 	arch = any
 	license = GPLv3+
@@ -17,7 +17,6 @@ pkgbase = ascii-pony-git
 	depends = findutils
 	depends = awk
 	depends = lxc
-	depends = sysfsutils
 	depends = bc
 	provides = systempony
 	source = git+https://gitlab.com/mattia.basaglia/ASCII-Pony.git
