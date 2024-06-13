@@ -2,7 +2,7 @@
 
 pkgname=('mod_tile' 'renderd')
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A daemon and apache module for rendering and serving Mapnik raster tiles'
 arch=('i686' 'x86_64')
 url='https://github.com/openstreetmap/mod_tile'
@@ -12,11 +12,13 @@ optdepends=('ceph-libs: RADOS tile storage support'
 makedepends=('apache' 'apr' 'boost' 'cairo' 'cmake' 'glib2' 'iniparser' 'mapnik')
 checkdepends=('jq')
 source=("${url}/archive/v${pkgver}/mod_tile-${pkgver}.tar.gz"
+        "v0.7.1_fixes.patch::${url}/compare/v0.7.1...521e47b327242d2e1f2b8066ee697dbaf6ce9ffa.patch"
         'renderd.service'
         'renderd-postgresql.service'
         'renderd.sysusers'
         'renderd.tmpfiles')
 sha256sums=('b42bd91136625b06b32d3d2e33637fa55599fba7858eb0e1725d3d143eb2dfab'
+            '702687bb8948ac2cfd7cbb23da16932ff23ff369423de51cdc391220d6772d46'
             '7bb1c67f92e9d253cecbb2f17048fba151a67e470c231fc33605937917b0567a'
             'd6c009e95380d8a9be41f0bd077638cb6adbebb74fff238a2bfc9fbbb3ed49fa'
             'cd6871cdb3e640912c95499e97fe1a2496ba95f102ec65f112bcd546ba736514'
@@ -28,16 +30,19 @@ prepare() {
     rm -rf mod_tile
   fi
   mv mod_tile-${pkgver} mod_tile
+  cd mod_tile || exit
+  patch -Np1 < ../v0.7.1_fixes.patch
 }
 
 build() {
   export CMAKE_BUILD_PARALLEL_LEVEL=${CMAKE_BUILD_PARALLEL_LEVEL:-$(nproc)}
   cmake -B build -S mod_tile \
     -DCMAKE_BUILD_TYPE:STRING=Release \
-    -DCMAKE_INSTALL_LOCALSTATEDIR=/var \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_RUNSTATEDIR=/run \
-    -DCMAKE_INSTALL_SYSCONFDIR=/etc \
+    -DCMAKE_CXX_STANDARD:STRING=17 \
+    -DCMAKE_INSTALL_LOCALSTATEDIR:PATH=/var \
+    -DCMAKE_INSTALL_PREFIX:PATH=/usr \
+    -DCMAKE_INSTALL_RUNSTATEDIR:PATH=/run \
+    -DCMAKE_INSTALL_SYSCONFDIR:PATH=/etc \
     -DENABLE_TESTS:BOOL=ON
   cmake --build build
 }
@@ -67,7 +72,7 @@ package_mod_tile() {
 
   # "/etc/renderd.conf", "/usr/bin", "/usr/share/man", "/var/cache/renderd/tiles" & "/run/renderd" are contained in "renderd" package
   cd "$pkgdir" || return
-  rm -rf etc/renderd.conf usr/bin usr/share/man var
+  rm -rf etc/renderd.conf run usr/bin usr/share/man var
 }
 
 package_renderd() {
@@ -89,5 +94,5 @@ package_renderd() {
   # "/var/cache/renderd/tiles" & "/run/renderd" will be handled by "renderd.tmpfiles"
   # "/etc/httpd" & "/usr/lib/httpd" are contained in "mod_tile" package
   cd "$pkgdir" || return
-  rm -rf var etc/httpd usr/lib/httpd
+  rm -rf etc/httpd run usr/lib/httpd var
 }
