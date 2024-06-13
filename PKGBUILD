@@ -4,7 +4,7 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-libxml2
-pkgver=2.12.6
+pkgver=2.12.7
 pkgrel=1
 arch=('any')
 pkgdesc="XML parsing library, version 2 (Android ${_android_arch})"
@@ -18,7 +18,7 @@ depends=('android-ndk'
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://gitlab.gnome.org/GNOME/libxml2/-/archive/v${pkgver}/libxml2-v${pkgver}.tar.gz")
-md5sums=('51b9d36d5148cec5e82d48a032e1c4b9')
+md5sums=('2e8149bc46ba816d36546125349b8af1')
 
 prepare () {
     cd "${srcdir}/libxml2-v${pkgver}"
@@ -39,9 +39,9 @@ build()
     make $MAKEFLAGS
 
     # deps symbols are not included in static lib:
-    ${ANDROID_AR} x ${ANDROID_PREFIX_LIB}/libiconv.a
-    ${ANDROID_AR} x ${ANDROID_PREFIX_LIB}/liblzma.a
-    ${ANDROID_AR} x ${ANDROID_PREFIX_LIB}/libz.a
+    ${ANDROID_AR} x "${ANDROID_PREFIX_LIB}/libiconv.a"
+    ${ANDROID_AR} x "${ANDROID_PREFIX_LIB}/liblzma.a"
+    ${ANDROID_AR} x "${ANDROID_PREFIX_LIB}/libz.a"
     ${ANDROID_AR} cru .libs/libxml2.a *.o
     ${ANDROID_RANLIB} .libs/libxml2.a
 }
@@ -52,9 +52,9 @@ package()
     source android-env ${_android_arch}
 
     make DESTDIR="$pkgdir" install
-    rm -r "${pkgdir}"/${ANDROID_PREFIX_BIN}
-    rm -r "${pkgdir}"/${ANDROID_PREFIX_SHARE}
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    rm -r "${pkgdir}/${ANDROID_PREFIX_BIN}"
+    rm -r "${pkgdir}/${ANDROID_PREFIX_SHARE}"
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
 
