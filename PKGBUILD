@@ -5,7 +5,7 @@
 
 pkgname=ffmpeg-amd-full-git
 _srcname=ffmpeg
-pkgver=7.1.r114795.g0e4dfa4709
+pkgver=7.1.r115820.g959cb2e2e3
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for AMD; git version)'
 arch=('x86_64')
@@ -16,11 +16,11 @@ depends=('alsa-lib' 'aom' 'aribb24' 'avisynthplus' 'bzip2' 'celt' 'codec2'
          'gnutls' 'gsm' 'harfbuzz' 'jack' 'kvazaar' 'ladspa' 'lame' 'libavc1394'
          'lcms2' 'lensfun-git' 'libass' 'libbluray' 'libbs2b' 'libcaca' 'libcdio-paranoia'
          'libdc1394' 'libdrm' 'libfdk-aac' 'libgme' 'libgl' 'libgcrypt' 'libiec61883'
-         'libilbc' 'libjxl' 'libmodplug' 'libmysofa' 'libomxil-bellagio' 'libplacebo'
+         'libilbc' 'libjxl' 'liblc3' 'libmodplug' 'libmysofa' 'libomxil-bellagio' 'libplacebo'
          'libpulse' 'librabbitmq-c' 'librsvg' 'libssh' 'libsoxr' 'libtheora' 'libva'
          'libvdpau' 'libvorbis' 'libvpx' 'libx11' 'libxcb' 'libxext' 'libxml2' 'libxv'
          'libwebp' 'lilv' 'lv2' 'ocl-icd' 'openal' 'opencore-amr' 'openh264' 'openjpeg2'
-         'libopenmpt' 'opus' 'qrencode' 'quirc' 'rav1e' 'rubberband' 'rtmpdump' 'sdl2' 'smbclient' 'snappy'
+         'libopenmpt' 'opus' 'qrencode' 'quirc-git' 'rav1e' 'rubberband' 'rtmpdump' 'sdl2' 'smbclient' 'snappy'
          'sndio' 'speex' 'spirv-tools' 'srt' 'svt-av1' 'svt-hevc' 'svt-vp9' 'tesseract'
          'twolame' 'v4l-utils' 'vapoursynth' 'vid.stab' 'vmaf' 'vulkan-icd-loader' 'x264'
          'x265' 'xvidcore' 'xz' 'zeromq' 'zimg' 'zlib' 'zvbi'
@@ -41,14 +41,14 @@ source=("git+https://git.ffmpeg.org/ffmpeg.git"
         "020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
         "030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/${_svt_vp9_ver}/ffmpeg_plugin/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch"
         "040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
-        "060-ffmpeg-fix-segfault-with-avisynthplus.patch"
+        "050-ffmpeg-fix-segfault-with-avisynthplus.patch"
         "LICENSE")
 sha256sums=('SKIP'
             '9047e18d34716812d4ea7eafc1d0fd8b376d922a4b6b4dc20237662fcaf0c996'
             'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
             '59da61f2b2c556fbe0cdbf84bcc00977ee3d2447085decb21f6298226559f2aa'
-            '06afdb3bc83b670c213f508f4f9fd27d0b4f9005fa00c3f5cf9b648dd8ec2d48'
-            '0e277c0d5e33612ca7a11025958133b17bfbe23168b0aee5bd07f674f6fd7440'
+            '67e87527ba853c2b59fa5efd9e116c157f0abb18a40e3bc55673cf0d98364923'
+            'e97272668cd16493e520f0188eea265e2372c98b3c09585781e7a453ddb5478f'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
 prepare() {
@@ -63,7 +63,7 @@ prepare() {
     patch -d ffmpeg -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
-    patch -d ffmpeg -Np1 -i "${srcdir}/060-ffmpeg-fix-segfault-with-avisynthplus.patch"
+    patch -d ffmpeg -Np1 -i "${srcdir}/050-ffmpeg-fix-segfault-with-avisynthplus.patch"
 }
 
 pkgver() { 
@@ -76,6 +76,9 @@ build() {
     cd "$_srcname"
     
     printf '%s\n' '  -> Running ffmpeg configure script...'
+
+    # fix build of libavfilter/asrc_flite.c with gcc 14
+    export CFLAGS+=' -Wno-incompatible-pointer-types'
     
     ./configure \
         --prefix='/usr' \
@@ -132,6 +135,7 @@ build() {
         --enable-libjxl \
         --enable-libklvanc \
         --enable-libkvazaar \
+        --enable-liblc3 \
         --enable-liblensfun \
         --enable-libmodplug \
         --enable-libmp3lame \
