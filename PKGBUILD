@@ -2,7 +2,7 @@
 # Contributor: Marcell Pardavi <marcell.pardavi@gmail.com>
 
 pkgname=zed-preview
-pkgver=0.140.0
+pkgver=0.140.1
 pkgrel=1
 pkgdesc='A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter'
 arch=(x86_64)
@@ -27,6 +27,7 @@ depends=(alsa-lib libasound.so
          wayland
          zlib libz.so)
 makedepends=(cargo
+             clang
              vulkan-headers
              vulkan-validation-layers)
 optdepends=('clang: improved C/C++ language support'
@@ -38,7 +39,7 @@ conflicts=("${pkgname%-preview}")
 _archive="zed-$pkgver-pre"
 source=("$_url/archive/v$pkgver-pre/$_archive.tar.gz"
         use-lib-not-libexec.patch)
-sha256sums=('2ba36f5c6b39af6a089b93bd98f7dcece23eca4bbddaeae01368b5d9aca80167'
+sha256sums=('1be95c4f6b25f4be9560833816b09fa3c3a3854e35e4845f990f5c827859244f'
             '180f8f84cd4320a758225ccb016cd6fc46146f1e7ba6d2c3b75decee8b89989d')
 
 _binname=zeditor
