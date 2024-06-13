@@ -15,7 +15,7 @@ _pgo=true
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse-no-telemetry
 pkgver=121.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE, no telemetry"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -100,6 +100,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         0032-Bug-1822730-Add-basic-blob-protocol-handling-for-blo.patch
         0033-Bug-1862601-firefox-icu-74.patch
         0034-disable-data-reporting-at-compile-time.patch
+        0035-mach-add-python-12.patch
        )
 
 validpgpkeys=(
@@ -329,4 +330,5 @@ sha256sums=('b3a4216e01eaeb9a7c6ef4659d8dcd956fbd90a78a8279ee3a598881e63e49ce'
             '0d7a0f8bd7f0a8f1319d79a433d848a3eb43e81f4a14f29d5c8602be49d93cb9'
             'ca63e1a8b93eed45fe1b6dc4da087d18b866570d99cfc6abfb8a7d3187d98e83'
             '9f2cc514ecac31de28a26493fb5841073a945109107c1f4d2f267e8b18f32bd5'
-            '81c1891d65155b1f30bd67b206c7c92dde565803e2c6f2a68d46268c44e271ed')
+            '81c1891d65155b1f30bd67b206c7c92dde565803e2c6f2a68d46268c44e271ed'
+            'e9c7c3b06690814ca1e4331b71532c9d432773fa9a949ca52bf0e5bd8445cae8')

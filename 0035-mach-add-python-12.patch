@@ -1,0 +1,72 @@
+diff -ruN -x '*.pyc' -x '*.patch' -x '*.profdata' a/build/pgo/genpgocert.py b/build/pgo/genpgocert.py
+--- a/build/pgo/genpgocert.py	2024-01-08 21:25:52.000000000 +0300
++++ b/build/pgo/genpgocert.py	2024-06-13 11:57:52.037921264 +0300
+@@ -13,7 +13,7 @@
+ import shutil
+ import subprocess
+ import sys
+-from distutils.spawn import find_executable
++from shutil import which as find_executable
+ 
+ import mozinfo
+ from mozbuild.base import BinaryNotFoundException, MozbuildObject
+diff -ruN -x '*.pyc' -x '*.patch' -x '*.profdata' a/mach b/mach
+--- a/mach	2024-01-08 21:43:07.000000000 +0300
++++ b/mach	2024-06-13 11:29:36.071983323 +0300
+@@ -11,7 +11,7 @@
+ from textwrap import dedent, fill
+ 
+ MIN_PYTHON_VERSION = (3, 7)
+-MAX_PYTHON_VERSION_TO_CONSIDER = (3, 11)
++MAX_PYTHON_VERSION_TO_CONSIDER = (3, 12)
+ 
+ 
+ def load_mach(dir_path, mach_path, args):
+diff -ruN -x '*.pyc' -x '*.patch' -x '*.profdata' a/python/mozbuild/mozbuild/base.py b/python/mozbuild/mozbuild/base.py
+--- a/python/mozbuild/mozbuild/base.py	2024-01-08 21:26:00.000000000 +0300
++++ b/python/mozbuild/mozbuild/base.py	2024-06-13 11:29:36.068650037 +0300
+@@ -728,7 +728,7 @@
+             for flag in flags:
+                 if flag == "-j":
+                     try:
+-                        flag = flags.next()
++                        flag = next(flags)
+                     except StopIteration:
+                         break
+                     try:
+diff -ruN -x '*.pyc' -x '*.patch' -x '*.profdata' a/security/manager/tools/pypkcs12.py b/security/manager/tools/pypkcs12.py
+--- a/security/manager/tools/pypkcs12.py	2024-01-08 21:26:00.000000000 +0300
++++ b/security/manager/tools/pypkcs12.py	2024-06-13 11:57:30.198229877 +0300
+@@ -19,7 +19,7 @@
+ import os
+ import subprocess
+ import sys
+-from distutils.spawn import find_executable
++from shutil import which as find_executable
+ 
+ import mozinfo
+ import pycert
+diff -ruN -x '*.pyc' -x '*.patch' -x '*.profdata' a/testing/mozbase/mozdevice/mozdevice/adb.py b/testing/mozbase/mozdevice/mozdevice/adb.py
+--- a/testing/mozbase/mozdevice/mozdevice/adb.py	2024-01-08 21:43:07.000000000 +0300
++++ b/testing/mozbase/mozdevice/mozdevice/adb.py	2024-06-13 11:56:41.998910428 +0300
+@@ -15,7 +15,7 @@
+ import tempfile
+ import time
+ import traceback
+-from distutils import dir_util
++import shutil as dir_util
+ from threading import Thread
+ 
+ import six
+diff -ruN -x '*.pyc' -x '*.patch' -x '*.profdata' a/testing/mozbase/mozrunner/mozrunner/application.py b/testing/mozbase/mozrunner/mozrunner/application.py
+--- a/testing/mozbase/mozrunner/mozrunner/application.py	2024-01-08 21:43:07.000000000 +0300
++++ b/testing/mozbase/mozrunner/mozrunner/application.py	2024-06-13 11:48:03.276163970 +0300
+@@ -5,7 +5,7 @@
+ import os
+ import posixpath
+ from abc import ABCMeta, abstractmethod
+-from distutils.spawn import find_executable
++from shutil import which as find_executable
+ 
+ import six
+ from mozdevice import ADBDeviceFactory
