@@ -1,7 +1,7 @@
 pkgbase = faugus-launcher
 	pkgdesc = Simple and Lightweight Game Launcher
 	pkgver = 1.0
-	pkgrel = 20
+	pkgrel = 22
 	arch = x86_64
 	license = GPL
 	depends = python
