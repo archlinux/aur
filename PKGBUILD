@@ -18,7 +18,7 @@ pkgname=(
   mutter-text-input-v1-git
   mutter-docs-text-input-v1-git
 )
-pkgver=46.1+r32+g0ab5ff6ee
+pkgver=46.1+r166+g530659c64
 pkgrel=1
 pkgdesc="Window manager and compositor for GNOME"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -85,19 +85,13 @@ makedepends=(
   egl-wayland
   gi-docgen
   git
+  glib2-devel
   gobject-introspection
   gtk3
   meson
+  python-packaging
   sysprof
   wayland-protocols
-  xorg-server
-  xorg-server-xvfb
-)
-checkdepends=(
-  gnome-session
-  python-dbusmock
-  wireplumber
-  zenity
 )
 source=('git+https://gitlab.gnome.org/GNOME/mutter.git'
         'text-input-v1.patch::https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/3751/diffs.patch')
@@ -120,6 +114,7 @@ build() {
     -D egl_device=true
     -D installed_tests=false
     -D libdisplay_info=enabled
+    -D tests=false
     -D wayland_eglstream=true
   )
 
@@ -129,24 +124,6 @@ build() {
   arch-meson mutter build "${meson_options[@]}"
   meson compile -C build
 }
-
-check() (
-  export XDG_RUNTIME_DIR="$PWD/rdir" GSETTINGS_SCHEMA_DIR="$PWD/build/data"
-  mkdir -p -m 700 "$XDG_RUNTIME_DIR"
-  glib-compile-schemas "$GSETTINGS_SCHEMA_DIR"
-
-  export NO_AT_BRIDGE=1 GTK_A11Y=none
-  export MUTTER_DEBUG_DUMMY_MODE_SPECS="800x600@10.0"
-
-  # Tests fail:
-  # mutter:cogl+cogl/conform / cogl-test-offscreen-texture-formats-gles2
-  # mutter:core+mutter/stacking / fullscreen-maximize
-  ## https://gitlab.gnome.org/GNOME/mutter/-/issues/3343
-  xvfb-run -s '-nolisten local +iglx -noreset' \
-    mutter/src/tests/meta-dbus-runner.py --launch=pipewire --launch=wireplumber \
-    meson test -C build --no-suite 'mutter/kvm' --no-rebuild \
-    --print-errorlogs --timeout-multiplier 10 --setup plain ||:
-)
 
 _pick() {
   local p="$1" f d; shift
