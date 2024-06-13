@@ -1,0 +1,21 @@
+pkgbase = polyversal-patcher-bin
+	pkgdesc = The Polyversal Linux Steam Patcher for the Committee of Zero's Science Adventure Steam Patches on Linux
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://github.com/CommitteeOfZero/polyversal-coz-linux-patcher
+	install = polyversal-patcher-bin.install
+	arch = any
+	license = MIT
+	makedepends = curl
+	makedepends = jq
+	makedepends = sed
+	optdepends = protontricks: Tool required for running the patcher
+	optdepends = flatpak: Allows automatic installation of `protontricks` from Flathub
+	provides = polyversal-patcher
+	conflicts = polyversal-patcher
+	source = polyversal-patcher.tar.gz::https://github.com/CommitteeOfZero/polyversal-coz-linux-patcher/releases/download/2.1.1/Polyversal-v2_1_1.tar.gz
+	source = polyversal-patcher.svg::https://raw.githubusercontent.com/CommitteeOfZero/polyversal-coz-linux-patcher/2.1.1/assets/logo-square.svg
+	sha256sums = 679373ffce46254560a3f76b06310a37fb1dd054acc09961f8f03b1ea1ff1754
+	sha256sums = 62f3a79c1446932e1ce1d4a56991113739c7d7c6d8b4a8d9c994b62468229960
+
+pkgname = polyversal-patcher-bin
