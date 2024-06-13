@@ -1,7 +1,7 @@
 pkgbase = bin86
 	pkgdesc = A complete 8086 assembler and loader
 	pkgver = 0.16.21
-	pkgrel = 5
+	pkgrel = 6
 	url = https://v3.sk/~lkundrak/dev86/
 	arch = x86_64
 	license = GPL

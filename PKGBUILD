@@ -3,7 +3,7 @@
 
 pkgname=bin86
 pkgver=0.16.21
-pkgrel=5
+pkgrel=6
 pkgdesc='A complete 8086 assembler and loader'
 arch=('x86_64')
 license=('GPL')
@@ -25,7 +25,9 @@ prepare() {
 build() {
   cd "${pkgname}-${pkgver}"
 
-  make PREFIX=/usr
+  make \
+    CFLAGS="${CFLAGS} -Wno-implicit-int -Wno-implicit-function-declaration" \
+    PREFIX=/usr
 }
 
 package() {
