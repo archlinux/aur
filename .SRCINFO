@@ -1,0 +1,13 @@
+pkgbase = firefox-extension-connective-signing
+	pkgdesc = Connective Signing Extension for Firefox
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://plugin.connective.eu/
+	arch = any
+	license = unknown
+	depends = firefox
+	noextract = connective_signing_extension-1.0.5.xpi
+	source = connective_signing_extension-1.0.5.xpi::https://plugin.connective.eu/software/firefox/connective_signing_extension-1.0.5.xpi
+	sha512sums = 924cc008b4f3e111b7fa7fed679940a66481564494304a04e680247a948dc592223f2df8d8b1d9d55a68b28929748f1d740e5d99ff9dba159dc72139bd1d9a29
+
+pkgname = firefox-extension-connective-signing
