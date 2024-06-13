@@ -3,7 +3,7 @@
 pkgname=openarc-unofficial-patches
 _pkgname=openarc
 pkgver=1.0.0.Beta3
-pkgrel=2
+pkgrel=3
 _commit=0676227216f69bb52a4da2e52faf1978062b1fd7
 pkgdesc="OpenARC with patches from not-yet-merged PRs - by flowerysong"
 arch=(x86_64)
@@ -35,7 +35,7 @@ build() {
      --prefix=/usr \
      --sbindir=/usr/bin \
      --sysconfdir="/etc/$pkgname" \
-     --localstatedir=/var \
+     --localstatedir=/var
   make
 }
 
@@ -54,9 +54,9 @@ package() {
   install -Dm644 "$srcdir/$_pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$_pkgname.conf"
   install -Dm644 "$srcdir/$_pkgname.service" -t "$pkgdir/usr/lib/systemd/system"
 
-  # License
+  # license
   mkdir -p "$pkgdir/usr/share/licenses/$_pkgname"
   for f in LICENSE LICENSE.Sendmail; do
-    ln -s ../../doc/$_pkgname/$f "$pkgdir/usr/share/licenses/$pkgname/$f"
+    ln -s ../../doc/$pkgname/$f "$pkgdir/usr/share/licenses/$_pkgname/$f"
   done
 }
