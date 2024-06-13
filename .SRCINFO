@@ -1,0 +1,15 @@
+pkgbase = connective-plugin-linux-git
+	pkgdesc = A replacement for the Connective Browser Plugin which is used on several websites to log in or sign documents using a card reader and an electronic identity card.
+	pkgver = r64.3b99d74
+	pkgrel = 1
+	url = https://github.com/roelderickx/connective-plugin-linux
+	arch = any
+	license = GPL-3.0
+	makedepends = git
+	depends = python
+	depends = python-pyscard
+	depends = python-nativemessaging-ng
+	source = git+https://github.com/roelderickx/connective-plugin-linux.git
+	sha512sums = SKIP
+
+pkgname = connective-plugin-linux-git
