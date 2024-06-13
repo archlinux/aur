@@ -1,0 +1,23 @@
+pkgbase = act-dflowmap-git
+	pkgdesc = dflowmap is used to map ACT dataflow programs into production rule based circuit description.
+	pkgver = 0.1.r429.05c74e4
+	pkgrel = 1
+	url = https://github.com/asyncvlsi/dflowmap
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	makedepends = cmake
+	depends = act-core
+	depends = glibc
+	depends = gcc-libs
+	optdepends = act-expropt: Logic optimization
+	provides = act-dflowmap
+	conflicts = act-dflowmap
+	source = git+https://github.com/asyncvlsi/dflowmap
+	source = cmakelists.patch
+	sha512sums = SKIP
+	sha512sums = a721916ae9b430b9acb84d4d1b4c2f7901355a73a2cf030d09e3653cf0af119af3097174144c17bbd4c1e52ddbbb2712d15db9fa11e8739b653f0fb9d479b7b7
+
+pkgname = act-dflowmap-git

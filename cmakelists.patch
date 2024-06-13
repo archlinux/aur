@@ -1,0 +1,23 @@
+--- CMakeLists.txt	2024-06-13 13:59:50.113982239 +0200
++++ CMakeLists_fix.txt	2024-06-13 14:23:12.702697862 +0200
+@@ -51,7 +51,7 @@
+     add_library(ExprOpt SHARED IMPORTED)
+     set_target_properties(ExprOpt PROPERTIES IMPORTED_LOCATION $ENV{ACT_HOME}/lib/libexpropt_sh.so)
+     add_library(ABC SHARED IMPORTED)
+-    set_target_properties(ABC PROPERTIES IMPORTED_LOCATION $ENV{ACT_HOME}/lib/libabc.so)
++    set_target_properties(ABC PROPERTIES IMPORTED_LOCATION /usr/lib/libabc.so)
+ else ()
+     message(
+             "libexpropt_sh.so missing from $ENV{ACT_HOME}/lib. The tool cannot do logic optimizations or performance modeling for the customized function unit processes!")
+@@ -69,7 +69,10 @@
+ # Set the output directory of executables
+ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin)
+ 
+-set(CMAKE_INSTALL_PREFIX $ENV{ACT_HOME} CACHE PATH "installation path" FORCE)
++IF(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
++    set(CMAKE_INSTALL_PREFIX $ENV{ACT_HOME} CACHE PATH "installation path" FORCE)
++ENDIF(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
++
+ 
+ add_subdirectory(src)
+ 
