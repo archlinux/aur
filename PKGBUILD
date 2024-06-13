@@ -8,7 +8,7 @@ _nodejs="20.9.0"
 
 pkgname=${_pkgname}-electron
 pkgver=1.90.0.24158
-pkgrel=2
+pkgrel=3
 pkgdesc="VS Code without MS branding/telemetry/licensing. - System-wide Electron edition"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/VSCodium/vscodium"
@@ -19,7 +19,7 @@ optdepends=(
 	'gvfs: For move to trash functionality'
 	'libdbusmenu-glib: For KDE global menu'
 )
-makedepends=('git' 'python' 'nvm' 'jq' 'python-distutils-extra')
+makedepends=('git' 'python' 'nvm' 'jq')
 provides=(
     'codium'
     'vscodium'
@@ -105,7 +105,7 @@ build() {
 	_ensure_local_nvm
 	nvm install "${_nodejs}"
 	nvm use "${_nodejs}"
-	npm install --global yarn
+	npm install --global yarn node-gyp
 
 	# Contain yarn, electron and node
 	export HOME=$srcdir

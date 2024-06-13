@@ -1,7 +1,7 @@
 pkgbase = vscodium-electron
 	pkgdesc = VS Code without MS branding/telemetry/licensing. - System-wide Electron edition
 	pkgver = 1.90.0.24158
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/VSCodium/vscodium
 	arch = x86_64
 	arch = aarch64
@@ -11,7 +11,6 @@ pkgbase = vscodium-electron
 	makedepends = python
 	makedepends = nvm
 	makedepends = jq
-	makedepends = python-distutils-extra
 	depends = electron29
 	depends = libsecret
 	depends = libx11
