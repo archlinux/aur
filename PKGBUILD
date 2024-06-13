@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gnome-network-displays
 pkgver=0.92.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Miracast implementation for GNOME"
 arch=('x86_64')
 url="https://gitlab.gnome.org/GNOME/gnome-network-displays"
@@ -20,7 +20,10 @@ depends=(
   'python-gobject'
   'xdg-desktop-portal'
 )
-makedepends=('meson')
+makedepends=(
+  'glib2-devel'
+  'meson'
+)
 optdepends=(
   'dnsmasq'
   'gst-plugin-pipewire'
