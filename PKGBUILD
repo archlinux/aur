@@ -1,61 +1,129 @@
-# Maintainer: Chris Warrick <aur@chriswarrick.com>
+# Maintainer:
+# Contributor: Chris Warrick <aur@chriswarrick.com>
 # Contributor: shmilee <echo c2htaWxlZS56anVAZ21haWwuY29tCg==|base64 -d>
-_pyname=nikola
-_gitname=nikola
-pkgname=nikola-git
-pkgver=8.0.4.r5.gc452d36a8
+
+_pkgname="nikola"
+pkgname="$_pkgname-git"
+pkgver=8.3.1.r2.gf7989de
 pkgrel=1
-pkgdesc='A modular, fast, simple, static website generator. (git version)'
-arch=('any')
-url='https://getnikola.com/'
+pkgdesc="A static site and blog generator"
+url="https://github.com/getnikola/nikola"
 license=('MIT')
-options=(!emptydirs)
-depends=('python' 'python-doit' 'python-pygments' 'python-pillow'
-         'python-docutils' 'python-mako' 'python-unidecode' 'python-lxml'
-         'python-yapsy>=1.11.223' 'python-pyrss2gen' 'python-dateutil'
-         'python-blinker' 'python-natsort' 'python-setuptools'
-         'python-requests' 'python-piexif' 'python-markdown' 'python-babel')
-optdepends=('python-jinja: for Jinja2 themes'
-            'python-husl: for color mixing features'
-            'python-pyphen: for hyphenation'
-            'python-pygal: for SVG graph plotting'
-            'python-typogrify: for typographical enhancements'
-            'python-webassets: for bundling assets'
-            'ipython-notebook: for ipynb support'
-            'ipython: for ipynb support'
-            'python-ghp-import: for uploading to GitHub Pages'
-            'python-micawber: for embedding media in posts'
-            'python-phpserialize: for WordPress imports'
-            'python-aiohttp: for nikola auto'
-            'python-watchdog: for nikola auto'
-            'python-pyyaml: for YAML metadata and datafiles'
-            'python-toml: for TOML metadata and datafiles')
-makedepends=('git')
-source=("git+https://github.com/getnikola/${_gitname}.git" "make_tab_completion.py")
-md5sums=('SKIP' '0c5b36c239ac465da024dac76e4892e7')
-conflicts=('python-nikola' 'python2-nikola' 'python-nikola-git' 'python2-nikola-git' 'nikola')
-replaces=('python-nikola-git' 'python2-nikola-git' 'python-nikola-doc-git')
+arch=('any')
+
+depends=('python')
+depends=(
+  python
+  python-babel
+  python-blinker
+  python-dateutil
+  python-docutils
+  python-doit
+  python-logbook
+  python-lxml
+  python-mako
+  python-markdown
+  python-natsort
+  python-piexif
+  python-pillow
+  python-pygments
+  python-pyrss2gen
+  python-requests
+  python-setuptools # https://github.com/getnikola/nikola/issues/3743
+  python-unidecode
+)
+makedepends=(
+  git
+  jupyter-notebook
+  python-aiohttp
+  python-build
+  python-ghp-import
+  python-husl
+  python-html5lib
+  python-installer
+  python-ipykernel
+  python-jinja
+  python-micawber
+  python-phpserialize
+  python-pygal
+  python-pyphen
+  python-ruamel-yaml
+  python-toml
+  python-typogrify
+  python-watchdog
+  python-wheel
+  zeromq
+)
+checkdepends=(
+  libwebp
+  python-feedparser
+  python-freezegun
+  python-pytest
+)
+optdepends=(
+  'libwebp: for WEBP image file support'
+  'jupyter-notebook: for .ipynb support'
+  'python-aiohttp: for nikola auto'
+  'python-ghp-import: for upload to Github pages'
+  'python-hsluv: for section color mixing'
+  'python-html5lib: for HTML5 minify and format support'
+  'python-husl: for optional color support'
+  'python-ipykernel: for .ipynb support'
+  'python-jinja: for jinja2 based themes'
+  'python-micawber: for embedding media in posts'
+  'python-phpserialize: for Wordpress import'
+  'python-pygal: for SVG graph plotting'
+  'python-pyphen: for hyphenation support'
+  'python-ruamel-yaml: for YAML support'
+  'python-toml: for TOML support'
+  'python-typogrify: for typographical enhancements'
+  'python-watchdog: for nikola auto'
+)
+
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_gitname}"
-  git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/^v//g'
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
+}
+
+build() {
+  cd "$_pkgsrc"
+  python -m build --wheel --no-isolation
+
+  # shell completions
+  python -m "$_pkgname" tabcompletion --shell bash --hardcode-tasks > "${_pkgname}_bash"
+  python -m "$_pkgname" tabcompletion --shell zsh --hardcode-tasks > "${_pkgname}_zsh"
+
+  # ensure that the shell completion is assigned to the correct executable
+  sed -e "s/__main__.py/$_pkgname/g" -i "${_pkgname}_"{bash,zsh}
+}
+
+check() {
+  local pytest_options=(
+    -vv
+    -o addopts=''
+  )
+  cd "$_pkgsrc"
+  pytest "${pytest_options[@]}"
 }
 
 package() {
-  cd "${srcdir}/${_gitname}"
-  python3 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
-  ln -s ${_gitname} "${pkgdir}/usr/bin/${_gitname}3"
+  cd "$_pkgsrc"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 "${_pkgname}_bash" "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
+  install -Dm644 "${_pkgname}_zsh" "$pkgdir/usr/share/zsh/site-functions/_$_pkgname"
 
-  install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -d -m755 "${pkgdir}/usr/share/doc/${pkgname}"
-  install -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -m644 docs/man/nikola.1.gz "${pkgdir}/usr/share/man/man1/nikola.1.gz"
-  install -m644 docs/manual.rst "${pkgdir}/usr/share/doc/${pkgname}/manual.rst"
-  install -m644 docs/theming.rst "${pkgdir}/usr/share/doc/${pkgname}/theming.rst"
-  install -m644 docs/extending.rst "${pkgdir}/usr/share/doc/${pkgname}/extending.rst"
+  install -Dm644 docs/man/nikola.1.gz "$pkgdir/usr/share/man/man1/nikola.1.gz"
 
-  export pkgdir
-  python3 ../make_tab_completion.py
+  for i in manual theming extending creating-a-site creating-a-theme; do
+    install -Dm644 "docs/$i.rst" -t "$pkgdir/usr/share/doc/$pkgname/"
+  done
 }
-
-# vim:set ts=2 sw=2 et:
