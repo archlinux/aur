@@ -2,7 +2,7 @@
 
 pkgname=python-luna-soc-git
 _gitpkgname=luna-soc
-pkgver=r70.2eb240d
+pkgver=0.1.0.post0+git.3132c898
 pkgrel=1
 pkgdesc='Amaranth HDL libary for building USB-capable SoC designs'
 arch=('any')
@@ -31,7 +31,7 @@ makedepends=(
 optdepends=(
   'python-minerva-git: to implement SoC designs using a Minerva RISC-V CPU'
 )
-provides=("python-luna-soc=${pkgver}")
+provides=("python-luna-soc=${pkgver%.post*}")
 conflicts=('python-luna-soc')
 
 source=(
@@ -43,9 +43,7 @@ sha512sums=(
 )
 
 pkgver() {
-  printf "r%s.%s" \
-    "$(git -C "${_gitpkgname}" rev-list --count HEAD)" \
-    "$(git -C "${_gitpkgname}" rev-parse --short HEAD)"
+  setuptools-git-versioning "${_gitpkgname}"
 }
 
 prepare() {
