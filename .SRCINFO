@@ -7,7 +7,7 @@ pkgbase = libosmo-gprs-git
 	arch = i686
 	license = GPL-2.0-or-later AND AGPL-3.0-or-later
 	makedepends = git
-	depends = libosmocore
+	depends = libosmocore-git
 	provides = libosmo-gprs=r353.00cd941
 	provides = libosmo-csn1.so=0-64
 	provides = libosmo-gprs-gmm.so=0-64

@@ -6,7 +6,7 @@ pkgdesc="Osmocom GPRS libraries"
 arch=('x86_64' 'i686')
 url="https://osmocom.org/projects/libosmo-gprs"
 license=('GPL-2.0-or-later AND AGPL-3.0-or-later')
-depends=('libosmocore')
+depends=('libosmocore-git')
 makedepends=('git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver}"
