@@ -71,7 +71,7 @@ package() {
 	# Concert headers.
 	install -dm755 "${pkgdir}/usr/include/ilconcert"
 	cp -R "./concert/include/ilconcert/"* "${pkgdir}/usr/include/ilconcert"
-	chmod -R 644 "${pkgdir}/usr/include/ilconcert"
+	find "${pkgdir}/usr/include/ilconcert" -type f -exec chmod 644 {} +
 	
 	# Constraint Optimizer headers.
 	install -dm755 "${pkgdir}/usr/include/ilcp"
@@ -86,7 +86,7 @@ package() {
 	cp -R ./doc/html/* "${pkgdir}/usr/share/doc/cplex/html"
 	cp -R ./cplex/examples/{src,data} "${pkgdir}/usr/share/doc/cplex/examples/cplex"
 	cp -R ./cpoptimizer/examples/{src,data,tutorial} "${pkgdir}/usr/share/doc/cplex/examples/cpoptimizer"
-	chmod -R 644 "${pkgdir}/usr/share/doc/cplex"
+	find "${pkgdir}/usr/share/doc/cplex" -type f -exec chmod 644 {} +
 }
 
 md5sums=('3af3d707b7278d526381cadc9bc7e33c'
