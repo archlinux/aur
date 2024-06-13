@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 pkgname=valent-git
-pkgver=1.0.0.alpha.45.r9.g199b608
+pkgver=1.0.0.alpha.45.r75.ga1aefc9
 pkgrel=1
 pkgdesc="Connect, control and sync devices"
 arch=('x86_64')
@@ -22,8 +22,9 @@ depends=(
 makedepends=(
 #  'gi-docgen'  ## -Ddocumentation=true
   'git'
-  'meson'
+  'glib2-devel'
   'gobject-introspection'
+  'meson'
   'vala'
 )
 checkdepends=(
@@ -38,12 +39,12 @@ sha256sums=('SKIP'
             'SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${pkgname%-git}"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   git submodule init
   git config submodule.subprojects/gvc.url "$srcdir/libgnome-volume-control"
   git -c protocol.file.allow=always submodule update

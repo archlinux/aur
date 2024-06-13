@@ -1,14 +1,15 @@
 pkgbase = valent-git
 	pkgdesc = Connect, control and sync devices
-	pkgver = 1.0.0.alpha.45.r9.g199b608
+	pkgver = 1.0.0.alpha.45.r75.ga1aefc9
 	pkgrel = 1
 	url = https://valent.andyholmes.ca
 	arch = x86_64
 	license = GPL-3.0-or-later
 	checkdepends = appstream
 	makedepends = git
-	makedepends = meson
+	makedepends = glib2-devel
 	makedepends = gobject-introspection
+	makedepends = meson
 	makedepends = vala
 	depends = evolution-data-server
 	depends = gnutls
