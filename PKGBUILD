@@ -4,7 +4,7 @@
 pkgname=python-viztracer
 _pkgname=viztracer
 pkgver=0.16.3
-pkgrel=3
+pkgrel=4
 pkgdesc='VizTracer is a low-overhead logging/debugging/profiling tool that can trace and visualize your python code execution.'
 arch=('x86_64')
 url="https://github.com/gaogaotiantian/viztracer"
@@ -20,8 +20,10 @@ optdepends=(
   'python-orjson: Full function support'
   'chromium: browser to open html results'
 )
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/gaogaotiantian/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('959c8d52e55241deba86bebc33366ba8e23da93f5763b27a4a937632741ad225')
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/gaogaotiantian/viztracer/archive/$pkgver.tar.gz"
+        "https://github.com/gaogaotiantian/viztracer/pull/447.patch")
+sha256sums=('959c8d52e55241deba86bebc33366ba8e23da93f5763b27a4a937632741ad225'
+            'a3273503b88abf56f6ef34164d5639c57a990981881ef2911a60e0d25fdbf4fc')
 
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver" || exit
@@ -34,6 +36,8 @@ prepare() {
 
   # Attach is not working, this is some black magic and is OS-dependent.
   rm tests/test_remote.py
+
+  patch -Np1 < ../447.patch
 }
 
 build() {
