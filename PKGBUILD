@@ -3,11 +3,11 @@
 
 pkgname=libasn1c
 pkgver=0.9.36
-pkgrel=2
+pkgrel=3
 pkgdesc="runtime library of Lev Walkin's asn1c split out as separate library"
 url="https://cgit.osmocom.org/libasn1c"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
-license=(GPL)
+license=('BSD-2-Clause')
 depends=('talloc')
 provides=('libasn1c.so=1-64')
 conflicts=("${pkgname}-git")
@@ -25,6 +25,7 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR=${pkgdir} install
+  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
