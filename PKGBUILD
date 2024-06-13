@@ -8,7 +8,7 @@ pkgdesc="Osmocom's Media Gateway for 2G and 3G circuit-switched mobile networks"
 url="https://osmocom.org/projects/osmo-mgw/"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=('GPL-2.0-or-later AND AGPL-3.0-or-later')
-depends=('libosmocore' 'libosmo-abis' 'libosmo-netif' 'talloc')
+depends=('libosmocore-git' 'libosmo-abis-git' 'libosmo-netif-git' 'talloc')
 makedepends=('git')
 provides=("${pkgname%-git}=${pkgver}"
           'libosmo-mgcp-client.so=12-64')
