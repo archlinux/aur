@@ -1,7 +1,7 @@
 # Maintainer: ThatOneCalculator (Kainoa Kanter) <kainoa@t1c.dev>
 _pkgname="ollamamodelupdater"
 pkgname="$_pkgname"
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Tool to help you update your Ollama models"
 arch=('any')
