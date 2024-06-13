@@ -24,7 +24,7 @@ depends=('audacious-git'
          'libcue' 'libmms' 'libmodplug' 'libmtp' 'libnotify' 'libopenmpt'
          'libpipewire' 'libpulse' 'libsamplerate' 'libsidplayfp' 'libvorbis'
          'lirc' 'mpg123' 'neon' 'opusfile' 'wavpack')
-makedepends=('python-packaging' 'git')
+makedepends=('git' 'glib2-devel')
 source=("git+https://github.com/audacious-media-player/$_pkgname.git")
 sha256sums=('SKIP')
 
