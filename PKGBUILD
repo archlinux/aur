@@ -4,12 +4,12 @@
 # Contributor: Alexander Fehr <pizzapunk gmail com>
 # Contributor: William Rea <sillywilly@gmail.com>
 
-# Set to 1 to use Meson build system
-_use_meson=0
+_enable_gtk=true
+_enable_qt=true
 
 _pkgname=audacious-plugins
 pkgname="$_pkgname-git"
-pkgver=4.3.1.r70.g79000fce5
+pkgver=4.4.r0.gb29776eee
 pkgrel=1
 epoch=1
 pkgdesc="Plugins for Audacious (git version)"
@@ -24,13 +24,9 @@ depends=('audacious-git'
          'libcue' 'libmms' 'libmodplug' 'libmtp' 'libnotify' 'libopenmpt'
          'libpipewire' 'libpulse' 'libsamplerate' 'libsidplayfp' 'libvorbis'
          'lirc' 'mpg123' 'neon' 'opusfile' 'wavpack')
-makedepends=('git' 'glib2-devel')
+makedepends=('meson' 'git' 'glib2-devel')
 source=("git+https://github.com/audacious-media-player/$_pkgname.git")
 sha256sums=('SKIP')
-
-if [ "$_use_meson" = 1 ]; then
-  makedepends+=('meson')
-fi
 
 pkgver() {
   cd "$_pkgname"
@@ -38,26 +34,13 @@ pkgver() {
 }
 
 build() {
-  cd "$_pkgname"
-
-  if [ "$_use_meson" = 1 ]; then
-    arch-meson build
-    meson compile -C build
-  else
-    autoreconf
-    ./configure --prefix=/usr
-    make
-  fi
+  arch-meson $_pkgname build \
+    -D gtk="$_enable_gtk" \
+    -D qt="$_enable_qt"
+  meson compile -C build
 }
 
 package() {
-  cd "$_pkgname"
-
-  if [ "$_use_meson" = 1 ]; then
-    meson install -C build --destdir "$pkgdir"
-  else
-    make DESTDIR="$pkgdir" install
-  fi
-
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+  meson install -C build --destdir "$pkgdir"
+  install -Dm644 $_pkgname/COPYING -t "$pkgdir/usr/share/licenses/$_pkgname"
 }
