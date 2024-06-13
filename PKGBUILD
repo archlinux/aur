@@ -38,7 +38,7 @@ pkgver() {
 prepare() {
   cd "$srcdir/${pkgname}"
 
-  sed -i 's/default = \["embed_frontend"\]/default = []/' ffplayout-api/Cargo.toml
+  sed -i 's/default = \["embed_frontend"\]/default = []/' ffplayout/Cargo.toml
 
   export CARGO_HOME="$srcdir/rust-home"
   export RUSTUP_HOME="$srcdir/rust-home"
