@@ -1,0 +1,23 @@
+pkgbase = python-pymodbus-repl
+	pkgdesc = Pymodbus REPL: a REPL tool for the Pymodbus library.
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://github.com/pymodbus-dev/repl
+	arch = any
+	license = MIT
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-poetry-core
+	depends = python
+	depends = python-pymodbus
+	depends = python-typer
+	depends = python-prompt_toolkit
+	depends = python-pygments
+	depends = python-tabulate
+	depends = python-aiohttp
+	source = 2.0.3.tar.gz::https://github.com/pymodbus-dev/repl/archive/refs/tags/2.0.3.tar.gz
+	sha256sums = 17af55572c22f0e2779037b3e51bf434408f4bb81b1b9e2bbf5fe8ba5acc7b66
+
+pkgname = python-pymodbus-repl
