@@ -1,0 +1,13 @@
+pkgbase = connective-plugin-linux-firefox
+	pkgdesc = A replacement for the Connective Browser Plugin - Firefox setup and plugin included
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/roelderickx/connective-plugin-linux
+	install = .install
+	arch = any
+	license = custom:unknown
+	depends = firefox
+	depends = firefox-extension-connective-signing
+	depends = connective-plugin-linux-git
+
+pkgname = connective-plugin-linux-firefox

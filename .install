@@ -1,0 +1,6 @@
+post_upgrade() {
+    printf "Don't forget to register the plugin in Firefox by running: \n
+\t nativemessaging-install install firefox --manifest /opt/connective-plugin-linux/native-manifest.json \n
+in a terminal.\n
+This operation must be repeated for each user."
+}
