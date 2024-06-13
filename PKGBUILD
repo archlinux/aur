@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=apifox-bin
 _pkgname=Apifox
-pkgver=2.5.12
+pkgver=2.5.1
 _electronversion=22
-pkgrel=2
+pkgrel=1
 pkgdesc="Apifox=Postman+Swagger+Mock+JMeter.API 文档、API 调试、API Mock、API 自动化测试"
 arch=(
     'aarch64'
@@ -31,7 +31,7 @@ source=(
     #"${pkgname%-bin}.sh"
 )
 sha256sums=('3884df6451dd5aaadc867c2b6882a7feabccb10c7e1df98e48e9fe2414c9fe19')
-sha256sums_aarch64=('bb0c9a302b6386c8aa966e2b794cee8a4387614661f5179a8685e3979bc37458')
+sha256sums_aarch64=('4417b3c9876c7d1a7e703016f20c2185f9e83b1bd69379df909de17702318482')
 sha256sums_x86_64=('f838e4d7d2f3218f9f9cb5ba23b510c8c5105772031e046d20447fd32c6c4298')
 build() {
     #sed -e "s|@electronversion@|${_electronversion}|" \
