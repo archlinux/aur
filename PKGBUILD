@@ -48,7 +48,7 @@ prepare() {
   git submodule update --init
   git submodule update --remote --merge
 
-  cd ffplayout-frontend
+  cd frontend
   npm install
 }
 
@@ -60,7 +60,7 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
 
   # Frontend build steps
-  cd ffplayout-frontend
+  cd frontend
   npm run generate
   cp -vr .output/public "${srcdir}/${pkgname}/public"
 
