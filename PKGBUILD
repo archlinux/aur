@@ -1,7 +1,7 @@
 # Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
 
 pkgname=osmo-gapk-git
-pkgver=v1.1.r0.82c4b31
+pkgver=v1.1.r3.4b1abf3
 pkgrel=1
 pkgdesc="Osmocom GSM Audio Pocket Knife"
 arch=('x86_64' 'i686')
