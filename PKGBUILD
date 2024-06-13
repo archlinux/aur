@@ -18,6 +18,7 @@ depends=('libosmocore'
          # TODO: 'libcdk' for --enable-meas-vis
          'talloc')
 makedepends=('git')
+provides=("${pkgname%-git}=${pkgver}")
 conflicts=("${pkgname%-git}")
 backup=('etc/osmocom/osmo-bsc.cfg')
 source=("git+https://git.osmocom.org/${pkgname%-git}")

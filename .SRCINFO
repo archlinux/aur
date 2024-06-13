@@ -17,6 +17,7 @@ pkgbase = osmo-bsc-git
 	depends = sqlite
 	depends = libpcap
 	depends = talloc
+	provides = osmo-bsc=1.11.0.r64.g3c92391c9
 	conflicts = osmo-bsc
 	backup = etc/osmocom/osmo-bsc.cfg
 	source = git+https://git.osmocom.org/osmo-bsc
