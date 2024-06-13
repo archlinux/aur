@@ -1,10 +1,8 @@
 # Maintainer: Frederik “Freso” S. Olesen <archlinux@freso.dk>
 _pkgname=SteamTokenDumper
 pkgname=${_pkgname,,}-bin
-# Hash from bottom of https://steamdb.info/tokendumper/
-_source_hash=3eadaaacb713b2faa3f7498fe69dd7c2c4ea46dd588e9e3611f55916e9723e81
-pkgver=r0.${_source_hash:0:7}
-pkgrel=2
+pkgver=2024.05.31
+pkgrel=1
 pkgdesc='Steam token dumper for SteamDB'
 arch=('x86_64' 'x86_64_v3')
 url='https://steamdb.info/tokendumper/'
@@ -14,9 +12,12 @@ makedepends=('coreutils')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 options=(!strip)
-source=("$_pkgname-linux-$pkgver.tar.gz::https://tokendumper.steamdb.info/SteamTokenDumper-linux.tar.gz?hash=$_source_hash"
-        "${pkgname%-bin}.sh")
-sha256sums=($_source_hash 'SKIP')
+source=("${pkgname%-bin}.sh")
+source_x86_64=("${_pkgname}-${pkgver}-linux-x64.tar.gz::https://github.com/SteamDatabase/${_pkgname}/releases/download/${pkgver}/${_pkgname}-linux-x64.tar.gz")
+source_x86_64_v3=("${source_x86_64[@]}")
+sha256sums=('b9e3c64ecfc793401d4397a9fb789da87fe4b49dcd30fe97855ac0aa4b91cabd')
+sha256sums_x86_64=('0384361581d70c728603eb03637e302cc1c8c264a82e96ce621d84dd23a9f03f')
+sha256sums_x86_64_v3=('0384361581d70c728603eb03637e302cc1c8c264a82e96ce621d84dd23a9f03f')
 
 package(){
   depends=('libz.so=1-64' 'glibc' 'gcc-libs' 'sh')  # TODO: Depend on .so files instead of packages

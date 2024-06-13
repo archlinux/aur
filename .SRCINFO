@@ -1,7 +1,7 @@
 pkgbase = steamtokendumper-bin
 	pkgdesc = Steam token dumper for SteamDB
-	pkgver = r0.3eadaaa
-	pkgrel = 2
+	pkgver = 2024.05.31
+	pkgrel = 1
 	url = https://steamdb.info/tokendumper/
 	arch = x86_64
 	arch = x86_64_v3
@@ -11,10 +11,12 @@ pkgbase = steamtokendumper-bin
 	conflicts = steamtokendumper
 	options = !strip
 	backup = opt/steamtokendumper/SteamTokenDumper.config.ini
-	source = SteamTokenDumper-linux-r0.3eadaaa.tar.gz::https://tokendumper.steamdb.info/SteamTokenDumper-linux.tar.gz?hash=3eadaaacb713b2faa3f7498fe69dd7c2c4ea46dd588e9e3611f55916e9723e81
 	source = steamtokendumper.sh
-	sha256sums = 3eadaaacb713b2faa3f7498fe69dd7c2c4ea46dd588e9e3611f55916e9723e81
-	sha256sums = SKIP
+	sha256sums = b9e3c64ecfc793401d4397a9fb789da87fe4b49dcd30fe97855ac0aa4b91cabd
+	source_x86_64 = SteamTokenDumper-2024.05.31-linux-x64.tar.gz::https://github.com/SteamDatabase/SteamTokenDumper/releases/download/2024.05.31/SteamTokenDumper-linux-x64.tar.gz
+	sha256sums_x86_64 = 0384361581d70c728603eb03637e302cc1c8c264a82e96ce621d84dd23a9f03f
+	source_x86_64_v3 = SteamTokenDumper-2024.05.31-linux-x64.tar.gz::https://github.com/SteamDatabase/SteamTokenDumper/releases/download/2024.05.31/SteamTokenDumper-linux-x64.tar.gz
+	sha256sums_x86_64_v3 = 0384361581d70c728603eb03637e302cc1c8c264a82e96ce621d84dd23a9f03f
 
 pkgname = steamtokendumper-bin
 	depends = libz.so=1-64
