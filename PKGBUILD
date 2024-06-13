@@ -1,5 +1,6 @@
 # Maintainer: Maximilian Stahlberg <maximilian.stahlberg tu-berlin de>
 # Contributor: Alberto Santini <alberto.santini at upf dot edu>
+# Contributor: zayn7lie <zayn7lie.ber7+git@gmail.com>
 
 # You need to manually download the IBM ILOG CPLEX Optimization Studio installer
 # and place it into the same directory as this PKGBUILD, before you proceed.
@@ -10,20 +11,17 @@
 
 pkgname='cplex'
 pkgdesc="A commercial solver for mathematical optimization problems."
-pkgver=20.10
-pkgrel=2
+pkgver=22.1.1
+_pkgver=2211
+pkgrel=1
 arch=('x86_64')
-url='https://www.ibm.com/software/products/de/ibmilogcpleoptistud'
+url='https://www.ibm.com/products/ilog-cplex-optimization-studio/cplex-optimizer'
 license=('custom')
 depends=('gcc-libs')
-optdepends=(
-	'python37: for Python 3.7 bindings'
-	'python38: for Python 3.8 bindings'
-)
 options=('!strip')
 
 _arch_upper=${arch^}
-_basename="ILOG_COS_${pkgver}_LINUX_${_arch_upper/-/_}"
+_basename="cplex_studio${_pkgver}.linux_${arch}"
 _installer="${_basename}.bin"
 _archdir="${arch/_/-}_linux"
 _pythonver=$(python --version | awk '{ print $2 }' | awk -F "." '{ print $1"."$2 }')
@@ -84,18 +82,6 @@ package() {
 	install -dm755 "${pkgdir}/usr/include/ilcp"
 	install -m644 "./cpoptimizer/include/ilcp/"*.h "${pkgdir}/usr/include/ilcp"
 
-	# Install Python bindings.
-	if pacman -Qq python37 >/dev/null 2>&1; then
-		cd "./cplex/python/3.7/${_archdir}/"
-		python3.7 setup.py install --root="${pkgdir}/" --optimize=1
-		cd "../../../../"
-	fi
-	if pacman -Qq python38 >/dev/null 2>&1; then
-		cd "./cplex/python/3.8/${_archdir}/"
-		python3.8 setup.py install --root="${pkgdir}/" --optimize=1
-		cd "../../../../"
-	fi
-
 	# Install license.
 	install -dm755 "${pkgdir}/usr/share/licenses/cplex"
 	install -m644  "./license/"*.txt "${pkgdir}/usr/share/licenses/cplex/"
@@ -108,5 +94,5 @@ package() {
 	chmod -R 644 "${pkgdir}/usr/share/doc/cplex"
 }
 
-md5sums=('b82c7a2751b91c3373435486815c267e'
+md5sums=('3af3d707b7278d526381cadc9bc7e33c'
          'f295f6c4ecd0f3a6d2fdca21788efd0f')
