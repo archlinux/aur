@@ -1,6 +1,6 @@
 pkgbase = eigenpy
 	pkgdesc = Bindings between numpy and eigen using boost::python
-	pkgver = 3.6.0
+	pkgver = 3.7.0
 	pkgrel = 1
 	url = https://github.com/stack-of-tasks/eigenpy
 	arch = i686
@@ -15,13 +15,13 @@ pkgbase = eigenpy
 	depends = gcc-libs
 	depends = glibc
 	optdepends = doxygen
-	source = https://github.com/stack-of-tasks/eigenpy/releases/download/v3.6.0/eigenpy-3.6.0.tar.gz
-	source = https://github.com/stack-of-tasks/eigenpy/releases/download/v3.6.0/eigenpy-3.6.0.tar.gz.sig
+	source = https://github.com/stack-of-tasks/eigenpy/releases/download/v3.7.0/eigenpy-3.7.0.tar.gz
+	source = https://github.com/stack-of-tasks/eigenpy/releases/download/v3.7.0/eigenpy-3.7.0.tar.gz.sig
 	validpgpkeys = A031AD35058955293D54DECEC45D22EF408328AD
 	validpgpkeys = F534E75540B2E7D24F99746987CFFF3D0D73CC93
 	validpgpkeys = F182CC432A4752C7A3E4FE02001EB2069D785C81
 	validpgpkeys = 1462AF00C9CF3C9E7AFC905E63380359F089A579
-	sha256sums = 2c6784bb0cd9c58bfa6b22a29d5ec529537dc4496d8667740a62965ad2b5478f
+	sha256sums = c88df6b44ccf8ac4cddc4c1015a3f1c3cbd7425cac1342f07ac16bc6f2b33f87
 	sha256sums = SKIP
 
 pkgname = eigenpy
