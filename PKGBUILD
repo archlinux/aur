@@ -9,7 +9,6 @@ pkgdesc="IDE for Rich Client Platform (RCP) and Remote Application Platform (RAP
 arch=('x86_64')
 url="https://eclipse.org/ide"
 license=('EPL')
-depends=('java-environment>=17')
 provides=(eclipse=$pkgver-$pkgrel)
 conflicts=(eclipse)
 

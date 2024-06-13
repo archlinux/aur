@@ -6,7 +6,6 @@ pkgbase = eclipse-rcp
 	url = https://eclipse.org/ide
 	arch = x86_64
 	license = EPL
-	depends = java-environment>=17
 	provides = eclipse=4.31-1
 	conflicts = eclipse
 	backup = usr/lib/eclipse/eclipse.ini
