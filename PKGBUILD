@@ -2,7 +2,7 @@
 
 pkgbase=pirate
 pkgname=("${pkgbase}-qt-bin" "${pkgbase}-cli-bin")
-pkgver=5.8.1
+pkgver=5.8.2
 pkgrel=1
 pkgdesc="Pirate Chain (ARRR) - Untraceable, Anonymous, Private Cryptocurrency"
 arch=('x86_64')
@@ -17,14 +17,14 @@ optdepends=('libappindicator-gtk3: system tray support'
 conflicts=('treasure-chest' 'treasure-chest-bin')
 replaces=('treasure-chest' 'treasure-chest-bin')
 
-source=("${pkgbase}-qt-v${pkgver}.zip::${url}/releases/download/v${pkgver}/${pkgbase}-qt-ubuntu1804-v${pkgver}.zip"
-        "${pkgbase}-cli-v${pkgver}.zip::${url}/releases/download/v${pkgver}/${pkgbase}-cli-ubuntu1804-v${pkgver}.zip"
+source=("${pkgbase}-qt-v${pkgver}.zip::${url}/releases/download/v${pkgver}/${pkgbase}-qt-ubuntu2004-v${pkgver}.zip"
+        "${pkgbase}-cli-v${pkgver}.zip::${url}/releases/download/v${pkgver}/${pkgbase}-cli-ubuntu2004-v${pkgver}.zip"
         "${pkgbase}-qt.desktop"
         "${pkgbase}.xpm"
         "COPYING")
 
-sha256sums=('cd139de6abcb9a622e7383265bb44cf3628cdeacdfb388641ae2a6c4662c728f'
-            '8ff4b8751325f96d13b8137ced490f81ff44f72e06e5e618cf972856a5f85934'
+sha256sums=('b75d18990a06e0619eb3c01569e113236fefc98c6769c464e5ffccdfefe9faf2'
+            '6af7ff76d2338f4284626bcd16980eca8e46419437c8679e94161e14644dab0c'
             'db1875d7ef83e3b4d69a83a39acbb0e6c5092f1a0919b3c8c94cabdf62232191'
             'ae5d7ccbb18a07c794091a4294cca3b260f9b49ecf70a53279da2c0a3c654e18'
             '011f6e7fa0238cff93eb3ea12b6b2743cdc7b3ee638570b6143a1f7bdfe1ba3e')
