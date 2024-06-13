@@ -2,7 +2,7 @@
 
 pkgname=gsconnect
 pkgver=57
-pkgrel=3
+pkgrel=4
 pkgdesc="KDE Connect implementation. CLI usage without Gnome environment"
 arch=(x86_64)
 url="https://github.com/GSConnect/gnome-shell-extension-$pkgname"
@@ -15,6 +15,7 @@ depends=(
   gobject-introspection
   hicolor-icon-theme
   libpulse
+  python
 )
 makedepends=(
   appstream
@@ -22,6 +23,7 @@ makedepends=(
   eslint
   flake8
   git
+  glib2-devel
   gtk-update-icon-cache
   meson
   python-black
@@ -51,16 +53,22 @@ b2sums=(
 )
 
 build() {
+  local meson_options=(
+     -D installed_tests=false
+     -D firewalld=true
+     -D nemo=true
+  )
+
   arch-meson   gvc gvc-build
+  meson configure  gvc-build       --no-pager
   meson compile -C gvc-build
-  arch-meson -Dinstalled_tests=false\
-             -Dfirewalld=true\
-             gnome-shell-extension-$pkgname-$pkgver gsconnect-build
+  arch-meson gnome-shell-extension-$pkgname-$pkgver gsconnect-build "${meson_options[@]}"
+  meson configure  gsconnect-build --no-pager
   meson compile -C gsconnect-build
 }
 
 package() {
-  DESTDIR="$pkgdir"  meson install -C gvc-build
-  DESTDIR="$pkgdir"  meson install -C gsconnect-build
+  meson install -C gvc-build       --destdir "$pkgdir"
+  meson install -C gsconnect-build --destdir "$pkgdir"
   install -vDm644 $pkgname.service -t "$pkgdir"/usr/lib/systemd/user/
 }
