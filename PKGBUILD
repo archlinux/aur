@@ -2,9 +2,9 @@
 _appname=eCloud
 _officalname=ecloud
 pkgname="deepin-wine-${_officalname}"
-pkgver=6.6.0spark7
+pkgver=6.6.0spark10
 _sparkname=cn.189.cloud.spark
-pkgrel=2
+pkgrel=1
 pkgdesc="China Telecom eCloud Client on Deepin Wine6.天翼云盘客户端,文件云端存储,从此抛弃U盘,文件自动同步,便捷上传下载."
 arch=("x86_64")
 url="https://cloud.189.cn/"
@@ -29,7 +29,7 @@ source=(
     "LICENSE.html"
     "${pkgname}.sh"
 )
-sha256sums=('ece91916014866f04f760ef42206c905c0608c18e0a325b2ba07fcf23a6a4f2a'
+sha256sums=('93eef97dac4a7ec9556c45a18b68a7d804138bdf0a6f447bbb8afbb12a3a7475'
             '1ed45cc3d1362c9a00f995dc22ad452203fc9e786f703e8d73eed4ecc3b97d35'
             'f9ff267382d6615dfe133b84453f34da7cd037edec432055396b62b6869492a5')
 build() {

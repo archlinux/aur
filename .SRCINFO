@@ -1,7 +1,7 @@
 pkgbase = deepin-wine-ecloud
 	pkgdesc = China Telecom eCloud Client on Deepin Wine6.天翼云盘客户端,文件云端存储,从此抛弃U盘,文件自动同步,便捷上传下载.
-	pkgver = 6.6.0spark7
-	pkgrel = 2
+	pkgver = 6.6.0spark10
+	pkgrel = 1
 	url = https://cloud.189.cn/
 	install = deepin-wine-ecloud.install
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = deepin-wine-ecloud
 	optdepends = wqy-microhei
 	optdepends = wqy-zenhei
 	provides = ecloud
-	source = deepin-wine-ecloud-6.6.0spark7.deb::https://mirrors.sdu.edu.cn/spark-store/store/network/cn.189.cloud.spark/cn.189.cloud.spark_6.6.0spark7_all.deb
+	source = deepin-wine-ecloud-6.6.0spark10.deb::https://mirrors.sdu.edu.cn/spark-store/store/network/cn.189.cloud.spark/cn.189.cloud.spark_6.6.0spark10_all.deb
 	source = LICENSE.html
 	source = deepin-wine-ecloud.sh
-	sha256sums = ece91916014866f04f760ef42206c905c0608c18e0a325b2ba07fcf23a6a4f2a
+	sha256sums = 93eef97dac4a7ec9556c45a18b68a7d804138bdf0a6f447bbb8afbb12a3a7475
 	sha256sums = 1ed45cc3d1362c9a00f995dc22ad452203fc9e786f703e8d73eed4ecc3b97d35
 	sha256sums = f9ff267382d6615dfe133b84453f34da7cd037edec432055396b62b6869492a5
 
