@@ -13,7 +13,7 @@ arch=('x86_64' 'aarch64')
 url='https://www.tuxguitar.app/'
 license=('LGPL-3.0-or-later')
 depends=('java-runtime' 'gtk3' 'alsa-lib')
-makedepends=('unzip' 'gzip' 'wget' 'java-environment' 'maven' 'fluidsynth' 'jack' 'lv2' 'suil' 'lilv' 'qt5-base')
+makedepends=('gzip' 'java-environment' 'maven' 'fluidsynth' 'jack' 'lv2' 'suil' 'lilv' 'qt5-base')
 optdepends=('fluidsynth: FluidSynth plugin support'
             'lv2: LV2 plugin support'
             'suil: LV2 plugin support'
@@ -23,14 +23,16 @@ optdepends=('fluidsynth: FluidSynth plugin support'
             'lilypond: Compile exported LilyPond files')
 replaces=('tuxguitar-common' 'tuxguitar-gtk2')
 source=("tuxguitar-$pkgver.zip::https://github.com/helge17/tuxguitar/archive/refs/tags/$pkgver.zip")
+source_x86_64=("https://archive.eclipse.org/eclipse/downloads/drops4/R-4.21-202109060500/swt-4.21-gtk-linux-x86_64.zip")
+source_aarch64=("https://archive.eclipse.org/eclipse/downloads/drops4/R-4.21-202109060500/swt-4.21-gtk-linux-aarch64.zip")
 sha256sums=('5a0855ea63e32773670dc7bc85ae4e76c055c8afd12016307e60d02135fde62c')
+sha256sums_x86_64=('3e35a4ababf504bcf64df864e4a957aaa2f0dec9696a922d936c7ee224fa4c5f')
+sha256sums_aarch64=('6d0e8d28eebe051710bc379d86a1ff8141aadcac633be0e02ce0a1eaab01a144')
 
 prepare() {
     export MAVEN_OPTS="$MAVEN_OPTS -Duser.home=$srcdir"
 
     # Install SWT manually (see https://github.com/helge17/tuxguitar/blob/1.6.3/INSTALL.md#download-and-install-swt-for-linux)
-    wget "https://archive.eclipse.org/eclipse/downloads/drops4/R-4.21-202109060500/swt-4.21-gtk-linux-$CARCH.zip" -O swt.zip
-    unzip -o swt.zip swt.jar
     mvn install:install-file -Dfile=swt.jar -DgroupId=org.eclipse.swt -DartifactId=org.eclipse.swt.gtk.linux -Dpackaging=jar -Dversion=4.21
 }
 
