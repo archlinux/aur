@@ -2,7 +2,7 @@
 
 pkgname=shpool
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Think tmux, then aim... lower'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://github.com/shell-pool/shpool'
@@ -25,6 +25,15 @@ check() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm755 "target/release/$pkgname" \
+    "$pkgdir/usr/bin/$pkgname"
+
+  install -Dm644 README.md -t \
+    "$pkgdir/usr/share/doc/$pkgname"
+
+  install -Dm644 systemd/shpool.service -t \
+    "$pkgdir/usr/lib/systemd/user/"
+
+  install -Dm644 systemd/shpool.socket -t \
+    "$pkgdir/usr/lib/systemd/user/"
 }

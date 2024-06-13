@@ -1,7 +1,7 @@
 pkgbase = shpool
 	pkgdesc = Think tmux, then aim... lower
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/shell-pool/shpool
 	arch = i686
 	arch = x86_64
