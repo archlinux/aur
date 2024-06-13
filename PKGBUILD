@@ -38,3 +38,5 @@ package() {
   cd "$srcdir/${pkgname%-git}"
   make DESTDIR=$pkgdir install
 }
+
+# vim:set ts=2 sw=2 et:
