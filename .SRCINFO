@@ -1,7 +1,7 @@
 pkgbase = osmo-qcdiag-git
 	pkgdesc = Osmocom tool for Qualcomm DIAG
 	pkgver = r97.aea8cb8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://osmocom.org/projects/osmo-qcdiag
 	arch = x86_64
 	arch = i686
