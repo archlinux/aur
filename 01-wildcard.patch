@@ -1,0 +1,91 @@
+diff --unified --recursive --text a/Drivers/Dta/Source/Linux/Makefile b/Drivers/Dta/Source/Linux/Makefile
+--- a/Drivers/Dta/Source/Linux/Makefile	2024-06-07 17:27:42.000000000 +0200
++++ b/Drivers/Dta/Source/Linux/Makefile	2024-06-14 01:29:33.611799630 +0200
+@@ -66,9 +66,7 @@
+ 
+ # Force using inline code to mitigate against straight line speculation in stead of using
+ # the current default thunk-extern which generates duplicate functions.
+-ifneq ($(wildcard /etc/fedora-release),)
+ 	EXTRA_CFLAGS += -mindirect-branch=thunk-inline
+-endif
+ 
+ # ========================================================================================
+ # Include version evironment vars
+diff --unified --recursive --text a/Drivers/DtaNw/Source/Linux/Makefile b/Drivers/DtaNw/Source/Linux/Makefile
+--- a/Drivers/DtaNw/Source/Linux/Makefile	2024-06-07 17:27:42.000000000 +0200
++++ b/Drivers/DtaNw/Source/Linux/Makefile	2024-06-14 01:29:49.045262035 +0200
+@@ -61,9 +61,7 @@
+ 
+ # Force using inline code to mitigate against straight line speculation in stead of using
+ # the current default thunk-extern which generates duplicate functions.
+-ifneq ($(wildcard /etc/fedora-release),)
+ 	EXTRA_CFLAGS += -mindirect-branch=thunk-inline
+-endif
+ 
+ # ========================================================================================
+ # Include version evironment vars
+diff --unified --recursive --text a/Drivers/DtDrvCommon/Source/Linux/Makefile b/Drivers/DtDrvCommon/Source/Linux/Makefile
+--- a/Drivers/DtDrvCommon/Source/Linux/Makefile	2024-06-07 17:27:42.000000000 +0200
++++ b/Drivers/DtDrvCommon/Source/Linux/Makefile	2024-06-14 01:30:06.592075191 +0200
+@@ -67,9 +67,7 @@
+ 
+ # Force using inline code to mitigate against straight line speculation in stead of using
+ # the current default thunk-extern which generates duplicate functions.
+-ifneq ($(wildcard /etc/fedora-release),)
+ 	EXTRA_CFLAGS += -mindirect-branch=thunk-inline
+-endif
+ 
+ # ========================================================================================
+ # Source definitions
+diff --unified --recursive --text a/Drivers/DtPcie/Source/Linux/Makefile b/Drivers/DtPcie/Source/Linux/Makefile
+--- a/Drivers/DtPcie/Source/Linux/Makefile	2024-06-07 17:27:42.000000000 +0200
++++ b/Drivers/DtPcie/Source/Linux/Makefile	2024-06-14 01:30:27.038912213 +0200
+@@ -66,9 +66,7 @@
+ 
+ # Force using inline code to mitigate against straight line speculation in stead of using
+ # the current default thunk-extern which generates duplicate functions.
+-ifneq ($(wildcard /etc/fedora-release),)
+ 	EXTRA_CFLAGS += -mindirect-branch=thunk-inline
+-endif
+ 
+ # ========================================================================================
+ # Include version evironment vars
+diff --unified --recursive --text a/Drivers/DtPcieNw/Source/Linux/Makefile b/Drivers/DtPcieNw/Source/Linux/Makefile
+--- a/Drivers/DtPcieNw/Source/Linux/Makefile	2024-06-07 17:27:42.000000000 +0200
++++ b/Drivers/DtPcieNw/Source/Linux/Makefile	2024-06-14 01:30:40.989028238 +0200
+@@ -61,9 +61,7 @@
+ 
+ # Force using inline code to mitigate against straight line speculation in stead of using
+ # the current default thunk-extern which generates duplicate functions.
+-ifneq ($(wildcard /etc/fedora-release),)
+ 	EXTRA_CFLAGS += -mindirect-branch=thunk-inline
+-endif
+ 
+ # ========================================================================================
+ # Include version evironment vars
+diff --unified --recursive --text a/Drivers/DtSal/Source/Linux/Makefile b/Drivers/DtSal/Source/Linux/Makefile
+--- a/Drivers/DtSal/Source/Linux/Makefile	2024-06-07 17:27:42.000000000 +0200
++++ b/Drivers/DtSal/Source/Linux/Makefile	2024-06-14 01:30:57.999169490 +0200
+@@ -60,9 +60,7 @@
+ 
+ # Force using inline code to mitigate against straight line speculation in stead of using
+ # the current default thunk-extern which generates duplicate functions.
+-ifneq ($(wildcard /etc/fedora-release),)
+ 	EXTRA_CFLAGS += -mindirect-branch=thunk-inline
+-endif
+ 
+ # ========================================================================================
+ # Source definitions
+diff --unified --recursive --text a/Drivers/Dtu/Source/Linux/Makefile b/Drivers/Dtu/Source/Linux/Makefile
+--- a/Drivers/Dtu/Source/Linux/Makefile	2024-06-07 17:27:42.000000000 +0200
++++ b/Drivers/Dtu/Source/Linux/Makefile	2024-06-14 01:31:14.375971929 +0200
+@@ -67,9 +67,7 @@
+ 
+ # Force using inline code to mitigate against straight line speculation in stead of using
+ # the current default thunk-extern which generates duplicate functions.
+-ifneq ($(wildcard /etc/fedora-release),)
+ 	EXTRA_CFLAGS += -mindirect-branch=thunk-inline
+-endif
+ 
+ # ========================================================================================
+ # Include version evironment vars
