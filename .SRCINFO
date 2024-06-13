@@ -1,8 +1,8 @@
 pkgbase = adsbexchange-stats-git
 	pkgdesc = ADSBexchange.com Statistics.
-	pkgver = r121.47473bd
+	pkgver = r146.11647f2
 	pkgrel = 1
-	url = https://github.com/adsbxchange/adsbexchange-stats
+	url = https://github.com/adsbexchange/adsbexchange-stats
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
@@ -14,10 +14,9 @@ pkgbase = adsbexchange-stats-git
 	depends = jq
 	depends = inotify-tools
 	depends = gzip
-	source = adsbexchange-stats::git+git://github.com/adsbxchange/adsbexchange-stats
+	source = adsbexchange-stats::git+https://github.com/adsbexchange/adsbexchange-stats
 	source = adsbexchange-stats.service
 	sha256sums = SKIP
 	sha256sums = 622b2c0c9e6a822b76ad5a77bbb23b320ee113d9e6ee71db08eb3cdb8e72dde6
 
 pkgname = adsbexchange-stats-git
-

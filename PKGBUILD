@@ -2,16 +2,16 @@
 
 pkgname=adsbexchange-stats-git
 _gitname=adsbexchange-stats
-pkgver=r121.47473bd
+pkgver=r146.11647f2
 pkgrel=1
 pkgdesc="ADSBexchange.com Statistics."
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
-url="https://github.com/adsbxchange/adsbexchange-stats"
+url="https://github.com/adsbexchange/adsbexchange-stats"
 license=('GPL3')
 depends=('readsb' 'curl' 'jq' 'inotify-tools' 'gzip')
 makedepends=('git')
 
-source=('adsbexchange-stats::git+git://github.com/adsbxchange/adsbexchange-stats'
+source=('adsbexchange-stats::git+https://github.com/adsbexchange/adsbexchange-stats'
 	'adsbexchange-stats.service')
 
 sha256sums=('SKIP'
