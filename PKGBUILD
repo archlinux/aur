@@ -8,8 +8,9 @@ url="https://osmocom.org/projects/libosmo-gprs"
 license=('GPL-2.0-or-later AND AGPL-3.0-or-later')
 depends=('libosmocore')
 makedepends=('git')
-conflicts=('libosmo-gprs')
-provides=('libosmo-csn1.so=0-64'
+conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}=${pkgver}"
+          'libosmo-csn1.so=0-64'
           'libosmo-gprs-gmm.so=0-64'
           'libosmo-gprs-llc.so=0-64'
           'libosmo-gprs-rlcmac.so=0-64'
