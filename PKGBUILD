@@ -13,7 +13,7 @@
 # Contributor: Diego Jose <diegoxter1006@gmail.com>
 
 pkgbase=lib32-mesa-amdonly-gaming-git
-pkgver=24.1.0_devel.184875.893780b3625.d41d8cd98f00b204e9800998ecf8427e
+pkgver=24.2.0_devel.190517.86813c60a49.06dd7d71877d3888dbd811616cd4c52d
 options=(!lto) # LTO is bad for mesa, makes random applications crash on my system
 
 pkgname=(
@@ -73,10 +73,11 @@ makedepends=(
 source=(
   'mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git#branch=main'
   'LICENSE'
+  '29275.patch'
 )
 b2sums=('SKIP'
-        'cc60238726b35133b5b729fb4ed1e76e04136588533615d84b4a54656d5b41727d5e7ff06ef4de3eb102eed6669d6c5c5cb8ac9fbdf6fc25aa477877c5c3ba87' # LICENSE
-)
+        'cc60238726b35133b5b729fb4ed1e76e04136588533615d84b4a54656d5b41727d5e7ff06ef4de3eb102eed6669d6c5c5cb8ac9fbdf6fc25aa477877c5c3ba87'
+        '782fdb9b72a2c54608e9a2d76e2b3446970e26773f70007fba723cc0b5f9fc6c06f7ae5dd16f2a4265e684a68ec45d4d2a277551555478f9488a52dd379f464f')
 validpgpkeys=('8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D'  # Emil Velikov <emil.l.velikov@gmail.com>
               '946D09B5E4C9845E63075FF1D961C596A7203456'  # Andres Gomez <tanty@igalia.com>
               'E3E8F480C52ADD73B278EE78E1ECBE07D7D70895'  # Juan Antonio Suárez Romero (Igalia, S.L.) <jasuarez@igalia.com>
