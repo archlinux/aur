@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ddcutil-service
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="A Dbus ddcutil server for control of DDC Monitors/VDUs"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/digitaltrails/ddcutil-service"
 license=('GPL-2.0-or-later')
 depends=('ddcutil')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('58a26f611e5ec69e1dcd90a6e9609564a6d489fa54cc5f25b12a451eb805f40e')
+sha256sums=('b034284ccc098c94de5d2780ac2685270f7d3944a5cde68aa7176241d00c72b0')
 
 prepare() {
   cd "$pkgname-$pkgver"
