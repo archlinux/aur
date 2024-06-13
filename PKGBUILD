@@ -1,9 +1,9 @@
-# Maintainer: skrewball <aur at joickle dot com>
+# Maintainer: Mia Furze <46620osu@gmail.com>
 
 pkgbase=pirate
 pkgname=("${pkgbase}-qt-bin" "${pkgbase}-cli-bin")
 pkgver=5.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Pirate Chain (ARRR) - Untraceable, Anonymous, Private Cryptocurrency"
 arch=('x86_64')
 url='https://github.com/PirateNetwork/pirate'
