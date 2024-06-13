@@ -27,7 +27,7 @@ depends=('libxt' 'mime-types'
         )
 
 makedepends=('unzip' 'zip' 'diffutils' 'yasm' 'mesa' 'imake'
-             'xorg-server-xvfb' 'libpulse' 'inetutils' 'autoconf2.13'
+             'xorg-server-xvfb' 'libpulse' 'inetutils'
              'cargo' 'mercurial' 'llvm' 'clang' 'rust' 'jack'
              'nodejs' 'cbindgen' 'nasm' 'xz'
              'python' 'python-zstandard' 'dump_syms'
