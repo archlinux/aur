@@ -1,0 +1,22 @@
+pkgbase = shanggu
+	pkgdesc = CJK Fonts
+	pkgver = 1.020
+	pkgrel = 1
+	url = https://github.com/GuiWonder/Shanggu
+	arch = any
+	license = OFL-1.1
+	replaces = otf-advocate-ancient
+	source = https://github.com/GuiWonder/Shanggu/releases/download/1.020/ShangguMonoOTCs.7z
+	source = https://github.com/GuiWonder/Shanggu/releases/download/1.020/ShangguRoundTTCs.7z
+	source = https://github.com/GuiWonder/Shanggu/releases/download/1.020/ShangguSans-VF_OTCTTC.7z
+	source = https://github.com/GuiWonder/Shanggu/releases/download/1.020/ShangguSansOTCs.7z
+	source = https://github.com/GuiWonder/Shanggu/releases/download/1.020/ShangguSerif-VF_OTCTTC.7z
+	source = https://github.com/GuiWonder/Shanggu/releases/download/1.020/ShangguSerifOTCs.7z
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = shanggu
