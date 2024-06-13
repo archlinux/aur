@@ -2,27 +2,21 @@
 
 pkgname=rtl8812au-openhd-dkms-git
 _modname=88XXau_ohd
-pkgver=5.2.20.2.r855.g28580eb
+pkgver=5.2.20.2.r878.gc070e02
 _pkgver=5.2.20.2
-pkgrel=4
+pkgrel=5
 pkgdesc='Realtek RTL88xxAU WiFi USB driver (with OpenHD patches)'
 arch=(any)
 url='https://github.com/OpenHD/rtl8812au'
 license=(GPL2)
 depends=('dkms' 'bc')
 makedepends=('git')
-source=('git+https://github.com/OpenHD/rtl8812au.git' '0001-Update-beacon-change-signature-to-fix-build-on-recen.patch')
-sha256sums=('SKIP'
-            '040518c8e58cadec1cdafa147d916be25c4c66eb0508726ef6448896e5d4a917')
+source=('git+https://github.com/OpenHD/rtl8812au.git')
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/rtl8812au"
 	printf '%s.r%s.g%s' "${_pkgver}" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-}
-
-prepare() {
-	cd "${srcdir}/rtl8812au"
-	patch -p1 -i "$srcdir/0001-Update-beacon-change-signature-to-fix-build-on-recen.patch"
 }
 
 package() {
