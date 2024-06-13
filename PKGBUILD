@@ -2,7 +2,7 @@
 # Contributor: Marcell Pardavi <marcell.pardavi@gmail.com>
 
 pkgname=zed-preview
-pkgver=0.139.3
+pkgver=0.140.0
 pkgrel=1
 pkgdesc='A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter'
 arch=(x86_64)
@@ -27,28 +27,31 @@ depends=(alsa-lib libasound.so
          wayland
          zlib libz.so)
 makedepends=(cargo
-             gendesk
              vulkan-headers
              vulkan-validation-layers)
 optdepends=('clang: improved C/C++ language support'
             'eslint: improved Javascript language support'
             'rust-analyzer: improved Rust language support')
 replaces=(zed-editor-preview)
-provides=("${pkgname%-preview}=$pkgver" zed-editor-preview)
-conflicts=("${pkgname%-preview}" zed-editor-preview zq)
+provides=("${pkgname%-preview}=$pkgver")
+conflicts=("${pkgname%-preview}")
 _archive="zed-$pkgver-pre"
-source=("$_url/archive/v$pkgver-pre/$_archive.tar.gz")
-sha256sums=('3c2e14fc3dadc382813448ba82853d855109d72456ad668d0f8a948c0602e1b9')
+source=("$_url/archive/v$pkgver-pre/$_archive.tar.gz"
+        use-lib-not-libexec.patch)
+sha256sums=('2ba36f5c6b39af6a089b93bd98f7dcece23eca4bbddaeae01368b5d9aca80167'
+            '180f8f84cd4320a758225ccb016cd6fc46146f1e7ba6d2c3b75decee8b89989d')
+
+_binname=zeditor
 
 prepare() {
 	cd "$_archive"
 	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
-	gendesk -q -f -n \
-		--name 'Zed' \
-		--exec 'zed' \
-		--pkgname "${pkgname%-preview}" \
-		--pkgdesc "$pkgdesc" \
-		--categories 'Development'
+	export DO_STARTUP_NOTIFY="true"
+	export APP_ICON="zed"
+	export APP_NAME="Zed"
+	envsubst < "crates/zed/resources/zed.desktop.in" > zed.desktop
+	sed -i -e "s/Exec=zed/Exec=$_binname/g" zed.desktop
+	patch -p0 -i ../use-lib-not-libexec.patch
 }
 
 _srcenv() {
@@ -62,7 +65,8 @@ _srcenv() {
 
 build() {
 	_srcenv
-	cargo build --release --frozen --all-features
+	export ZED_UPDATE_EXPLANATION='Updates are handled by pacman'
+	cargo build --release --frozen --package zed --package cli
 }
 
 # Tests assume access to vulkan video drivers, Wayland window creation,
@@ -75,7 +79,8 @@ check() {
 
 package() {
 	cd "$_archive"
-	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/zed"
+	install -Dm0755 target/release/cli "$pkgdir/usr/bin/$_binname"
+	install -Dm0755 target/release/zed "$pkgdir/usr/lib/zed/zed-editor"
 	install -Dm0644 -t "$pkgdir/usr/share/applications/" "${pkgname%-preview}.desktop"
 	install -Dm0644 crates/zed/resources/app-icon.png "$pkgdir/usr/share/icons/${pkgname%-preview}.png"
 }
