@@ -9,8 +9,8 @@ pkgbase = libosmo-sccp-git
 	arch = armv7h
 	license = GPL
 	makedepends = git
-	depends = libosmocore
-	depends = libosmo-netif
+	depends = libosmocore-git
+	depends = libosmo-netif-git
 	depends = lksctp-tools
 	depends = talloc
 	provides = libosmo-sccp=1.8.0.r33.g02d664b1
