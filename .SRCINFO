@@ -1,6 +1,6 @@
 pkgbase = android-aarch64-highway
 	pkgdesc = A C++ library that provides portable SIMD/vector intrinsics (Android aarch64)
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/google/highway/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = android-aarch64-highway
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/google/highway/archive/1.1.0/highway-1.1.0.tar.gz
-	sha256sums = 354a8b4539b588e70b98ec70844273e3f2741302c4c377bcc4e81b3d1866f7c9
+	source = https://github.com/google/highway/archive/1.2.0/highway-1.2.0.tar.gz
+	sha256sums = 7e0be78b8318e8bdbf6fa545d2ecb4c90f947df03f7aadc42c1967f019e63343
 
 pkgname = android-aarch64-highway

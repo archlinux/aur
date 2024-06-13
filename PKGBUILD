@@ -4,7 +4,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-highway
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 arch=('any')
 pkgdesc="A C++ library that provides portable SIMD/vector intrinsics (Android ${_android_arch})"
@@ -15,7 +15,7 @@ depends=('android-ndk')
 makedepends=('android-cmake')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/google/highway/archive/${pkgver}/highway-${pkgver}.tar.gz")
-sha256sums=('354a8b4539b588e70b98ec70844273e3f2741302c4c377bcc4e81b3d1866f7c9')
+sha256sums=('7e0be78b8318e8bdbf6fa545d2ecb4c90f947df03f7aadc42c1967f019e63343')
 
 build() {
     cd "${srcdir}/highway-${pkgver}"
@@ -35,6 +35,6 @@ package() {
     cd "${srcdir}/highway-${pkgver}"
     source android-env ${_android_arch}
 
-    make -C build DESTDIR="$pkgdir" install
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
+    make -C build DESTDIR="${pkgdir}" install
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
 }
