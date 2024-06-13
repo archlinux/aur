@@ -28,7 +28,7 @@ sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc50677
             'a0ceb0a6c240cf97b21a2e46c5c212250d3ee24fecef16aca3dffb04b8350c445b9f4398274abccdb745dd0ba5132a17942c9508ce165d4f97f41ece02b0b989'
             '0c7b31715fce6a7bd77a2d9f9a3dca54a929a7790d748051576f62cdaeaeb6a9d0f3fbb13f0b20a51966bdb9470acdbc9ee529a9e84f38a9c834a1bd28d81773'
             'd4faf1807de57265407fd6dba9734301b8281c942324851792047708a50442a1feb76fd2ae48bc8e162210ee72e0f13ed0373ed33a7637a382703d6b96fe54de'
-            '09e2104c089df4a1d58bd7a9d9deaf5b4c6cb1cd9d81ef4e8fa8d4c685be49283b457b3b9ef3fa10237972fa6b0881ac44ae17790a53c657bf603b57af9cdc9f'
+            '8aa7a6ba05d6dd2a4d504cb9eeecdce0ac34be8cd648400739332ae8b8aa9444cceaaa598cb75e431efc43eaf471422cbf5e49c8dc77adbfe23529bc8feb803b'
             'fa0f619d10d1b334ec44e444c6503be0401e6c372e1eef997c69f388dd626e4866a3da2baf375d50a474a12f08f51e296a67c7d3b3f61b53549e10848a87344e')
 
 
@@ -49,9 +49,9 @@ prepare() {
 
     cd kernel
 
+    patch -p1 -i "$srcdir/gcc-14.patch"
     patch -p1 -i "$srcdir/kernel-6.8.patch"
     patch -p1 -i "$srcdir/kernel-6.10.patch"
-    patch -p1 -i "$srcdir/gcc-14.patch"
 
     sed -i "s/__VERSION_STRING/${pkgver}/" dkms.conf
     sed -i 's/__JOBS/`nproc`/' dkms.conf
