@@ -2,7 +2,7 @@
 
 pkgname=python-fabric-git
 reponame=fabric
-pkgver=0.0.1
+pkgver=0.0.1.r115.0b1aee8.r115.0b1aee8.r115.0b1aee8
 pkgrel=1
 pkgdesc="next-gen framework for building desktop widgets using python"
 arch=(any)
@@ -45,8 +45,7 @@ sha256sums=("SKIP")
 
 pkgver() {
   cd "$srcdir/$reponame"
-  ver=$(python -c "import importlib.metadata; print(importlib.metadata.version('$reponame'))")
-  printf "%s.r%s.%s" "$ver" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  printf "%s.r%s.%s" "$pkgver" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
