@@ -45,10 +45,14 @@ prepare() {
   export RUSTUP_TOOLCHAIN=stable
   rustup target add x86_64-unknown-linux-musl
 
-  git submodule update --init
-  git submodule update --remote --merge
+  git clone "https://github.com/ffplayout/ffplayout-frontend.git" "frontend"
 
   cd frontend
+
+  git checkout "e8532ba8d095ae83886df39ba53e9595b124f9c0"
+
+  # git submodule update --init
+  # git submodule update --remote --merge
   npm install
 }
 
