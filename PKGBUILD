@@ -8,18 +8,19 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-icu
-pkgver=74.2
+pkgver=75.1
 pkgrel=1
 arch=('any')
-pkgdesc="International Components for Unicode library (android)"
+pkgdesc="International Components for Unicode library (Android ${_android_arch})"
 depends=('android-ndk')
-makedepends=('android-configure' 'autoconf-archive')
+makedepends=('android-environment'
+             'autoconf-archive')
 options=(!strip !buildflags staticlibs !emptydirs)
 license=('custom')
 url="https://icu.unicode.org/"
 source=("https://github.com/unicode-org/icu/releases/download/release-${pkgver//./-}/icu4c-${pkgver//./_}-src.tgz"{,.asc}
         "0001-Unversioned-libs.patch")
-sha256sums=('68db082212a96d6f53e35d60f47d38b962e9f9d207a74cfac78029ae8ff5e08c'
+sha256sums=('cb968df3e4d2e87e8b11c49a5d01c787bd13b9545280fc6642f826527618caef'
             'SKIP'
             '8a49d3231bfb2aff95d1f82c21af8183423692b020a883de7a347c60446d3b36')
 validpgpkeys=("FFA9129A180D765B7A5BEA1C9B432B27D1BA20D7"
@@ -47,8 +48,20 @@ build() {
 
     source android-env ${_android_arch}
 
-    android-${_android_arch}-configure \
-        --with-cross-build=${PWD}/nativebuild \
+    unset CPPFLAGS
+
+    target=${_android_arch/x86-/x86_}-linux-android
+
+    ./configure \
+        --host=${target} \
+        --target=${target} \
+        --build="${CHOST}" \
+        --prefix="${ANDROID_PREFIX}" \
+        --libdir="${ANDROID_PREFIX_LIB}" \
+        --includedir="${ANDROID_PREFIX_INCLUDE}" \
+        --enable-shared \
+        --enable-static \
+        --with-cross-build="${PWD}/nativebuild" \
         --with-data-packaging=library \
         --disable-rpath \
         --enable-release \
@@ -64,8 +77,8 @@ package() {
     source android-env ${_android_arch}
 
     make install DESTDIR="${pkgdir}"
-    rm -rf "${pkgdir}"/${ANDROID_PREFIX_SHARE}/man
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
-    rm -f "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so.*
+    rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}/man"
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+    rm -f "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so.*
 }
