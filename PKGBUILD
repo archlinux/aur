@@ -1,10 +1,11 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
+
 pkgbase=python-stsci.image
 _pname=${pkgbase#python-}
 _pyname=${_pname//./_}
 pkgname=("python-${_pname}")
 #"python-${_pyname}-doc")
-pkgver=2.3.8
+pkgver=2.3.9
 pkgrel=1
 pkgdesc="Image array manipulation functions"
 arch=('i686' 'x86_64')
@@ -19,7 +20,7 @@ makedepends=('python-setuptools-scm'
 checkdepends=('python-pytest'
               'python-scipy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('dfb55990763c3ac1d33abf589d34dcdf')
+md5sums=('d3c4e64c4e772a59f47adc2293609c9e')
 
 get_pyinfo() {
      [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" || \

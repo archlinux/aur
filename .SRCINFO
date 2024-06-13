@@ -1,6 +1,6 @@
 pkgbase = python-stsci.image
 	pkgdesc = Image array manipulation functions
-	pkgver = 2.3.8
+	pkgver = 2.3.9
 	pkgrel = 1
 	url = https://github.com/spacetelescope/stsci.image
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = python-stsci.image
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-numpy
-	source = https://files.pythonhosted.org/packages/source/s/stsci_image/stsci_image-2.3.8.tar.gz
-	md5sums = dfb55990763c3ac1d33abf589d34dcdf
+	source = https://files.pythonhosted.org/packages/source/s/stsci_image/stsci_image-2.3.9.tar.gz
+	md5sums = d3c4e64c4e772a59f47adc2293609c9e
 
 pkgname = python-stsci.image
 	depends = python-numpy>=1.14
