@@ -5,39 +5,44 @@
 pkgname='koi-git'
 _pkgname='koi'
 __pkgname='Koi'
-pkgver=0.2.4.r0.geae87d1
-pkgrel=3
+pkgver=0.3
+pkgrel=1
 pkgdesc="Scheduled LIGHT/DARK Theme Switching for the KDE Plasma Desktop"
 arch=('x86_64' 'aarch64')
 url="https://github.com/baduhai/Koi"
 license=('LGPL3')
-depends=('plasma-integration' 'plasma-framework5' 'hicolor-icon-theme')
-makedepends=('gcc' 'qt5-base' 'qt5-tools' 'qt5-svg' 'cmake' 'extra-cmake-modules')
-optdepends=('xsettingsd: Apply settings to GTK applications on the fly')
-provides=("${_pkgname}-${pkgver}")
+depends=('gcc-libs' 'plasma-desktop' 'plasma-integration' 'plasma-workspace' 'qt6-svg' 'hicolor-icon-theme')
+makedepends=('git' 'gcc' 'qt6-base' 'qt6-tools' 'cmake' 'extra-cmake-modules' 'desktop-file-utils' 'fdupes')
+optdepends=('xsettingsd: Apply settings to GTK applications on the fly'
+                        'kvantum: Powerful extra customisable themes')
+provides=("${_pkgname}")
 conflicts=('koi')
-source=("${__pkgname}-${pkgver}::git+https://github.com/baduhai/Koi.git")
+source=("${pkgname}::git+https://github.com/baduhai/Koi.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${__pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}"
   git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-    mkdir -p "${srcdir}/${__pkgname}-${pkgver}/src/build/"
+build() {
+    cmake -S "${srcdir}/${pkgname}/src/" \
+          -B "${srcdir}/${pkgname}/src/build/" \
+          -DCMAKE_INSTALL_PREFIX="/usr/"
+
+    make -C "${srcdir}/${pkgname}/src/build/"
 }
 
-build() {
-    cmake -S "${srcdir}/${__pkgname}-${pkgver}/src/" \
-          -B "${srcdir}/${__pkgname}-${pkgver}/src/build/" \
-          -DCMAKE_INSTALL_PREFIX=/usr/
-
-    make -C "${srcdir}/${__pkgname}-${pkgver}/src/build/" all
+check() {
+    desktop-file-validate "${srcdir}/${pkgname}/src/${_pkgname}.desktop"
+    fdupes -r -s "${srcdir}/"
 }
 
 package() {
-    make -C "${srcdir}/${__pkgname}-${pkgver}/src/build/" DESTDIR="${pkgdir}" install
+    make -C "${srcdir}/${pkgname}/src/build/" DESTDIR="${pkgdir}" install
 
-    install -Dm644 "${srcdir}/${__pkgname}-${pkgver}/src/koi.desktop" -t "${pkgdir}/usr/share/applications/"
+    install -Dm644 "${srcdir}/${pkgname}/src/${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
+
+    desktop-file-validate "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    fdupes -r -s "${pkgdir}/"
 }
