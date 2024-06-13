@@ -7,7 +7,7 @@
 # shellcheck disable=SC2034,SC2154
 
 pkgname=kapp
-pkgver=0.62.0
+pkgver=0.62.1
 pkgrel=1
 pkgdesc='kapp is a simple deployment tool focused on the concept of "Kubernetes application" — a set of resources with the same label'
 url='https://carvel.dev/kapp'
@@ -16,7 +16,7 @@ license=(apache-2.0)
 install=''
 makedepends=(bash go)
 provides=(kapp)
-source=(kapp-0.62.0::https://github.com/carvel-dev/kapp/archive/v0.62.0.tar.gz)
+source=(kapp-0.62.1::https://github.com/carvel-dev/kapp/archive/v0.62.1.tar.gz)
 build () 
 { 
     set -eo pipefail;
@@ -42,4 +42,4 @@ package ()
     ./$BIN completion fish | install -Dm644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/$BIN.fish";
     ./$BIN completion zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_$BIN"
 }
-sha256sums=('149d393b9a7291b16af7c108f39462d285f7053af236169fb6f8fdf8cd99459b')
+sha256sums=('e505a3d2deff84c1d9c61f266fe35de2745e76d1b0cecf84691c4fe5bf5df767')
