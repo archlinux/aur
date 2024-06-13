@@ -2,7 +2,7 @@
 # Contributor: Malte Jürgens <maltejur@dismail.de>
 
 pkgname=libation
-pkgver=11.3.6
+pkgver=11.3.13
 pkgrel=1
 pkgdesc="Audible audiobook manager: liberate your Library"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL-3.0-or-later')
 depends=('fontconfig' 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'lttng-ust2.12' 'zlib')
 makedepends=('dotnet-sdk')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('bc8d83d15c8d4402b85d2af00adab19b44f4988d026b5236cd11e2fafc9ccecb')
+sha256sums=('16884cda195253659d54e8eed7b5cec7bd92a3f6200a4b5570888b5e32d203f9')
 
 build() {
   cd "${pkgname^}-${pkgver}"
@@ -23,9 +23,9 @@ build() {
 
 package() {
   cd "${pkgname^}-${pkgver}"
-  install -Dm755 -t "${pkgdir}/usr/lib/${pkgname}" build/*
-  install -Dm644 -t "${pkgdir}/usr/share/applications" Source/LoadByOS/LinuxConfigApp/Libation.desktop
-  install -Dm644 Images/libation_glass.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/libation.svg"
+  install -Dm755 build/* -t "${pkgdir}/usr/lib/${pkgname}"
+  install -Dm644 Source/LoadByOS/LinuxConfigApp/Libation.desktop -t "${pkgdir}/usr/share/applications"
+  install -Dm644 Images/libation_glass.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
 
   install -d "${pkgdir}/usr/bin"
   ln -s "/usr/lib/${pkgname}/Libation" "${pkgdir}/usr/bin/libation"
