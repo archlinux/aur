@@ -2,7 +2,7 @@
 
 _name=pyskani
 pkgname=python-${_name}
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="PyO3 bindings and Python interface to skani, a method for fast fast genomic identity calculation using sparse chaining"
 url="https://github.com/althonos/pyskani"
@@ -13,7 +13,7 @@ makedepends=('python-setuptools' 'python-build' 'python-installer' 'cargo')
 depends=('python')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=(f8d7b9b5baddf6444bb66dd112bc0b4b8d504ee7e787b99e96122b8e983a05ea)
+sha256sums=(f40880a32583699d80657182807fdae74d6a6b2881912148c1e6da0f41ccc38b)
 
 prepare() {
     cargo fetch --manifest-path "${srcdir}/${_name}-${pkgver}/Cargo.toml" --target "$CARCH-unknown-linux-gnu"
