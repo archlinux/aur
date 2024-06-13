@@ -12,13 +12,13 @@ optdepends=('ceph-libs: RADOS tile storage support'
 makedepends=('apache' 'apr' 'boost' 'cairo' 'cmake' 'glib2' 'iniparser' 'mapnik')
 checkdepends=('jq')
 source=("${url}/archive/v${pkgver}/mod_tile-${pkgver}.tar.gz"
-        "v0.7.1_fixes.patch::${url}/compare/v0.7.1...521e47b327242d2e1f2b8066ee697dbaf6ce9ffa.patch"
+        "v0.7.1_fixes.patch::${url}/compare/v0.7.1...dc02baf62777ba95375b55b1c27f5897502f09e9.patch"
         'renderd.service'
         'renderd-postgresql.service'
         'renderd.sysusers'
         'renderd.tmpfiles')
 sha256sums=('b42bd91136625b06b32d3d2e33637fa55599fba7858eb0e1725d3d143eb2dfab'
-            '702687bb8948ac2cfd7cbb23da16932ff23ff369423de51cdc391220d6772d46'
+            '2069005af1477c1c97341362b740a8dbc67c2de0c6c4b9e51736b6c52a9a0e06'
             '7bb1c67f92e9d253cecbb2f17048fba151a67e470c231fc33605937917b0567a'
             'd6c009e95380d8a9be41f0bd077638cb6adbebb74fff238a2bfc9fbbb3ed49fa'
             'cd6871cdb3e640912c95499e97fe1a2496ba95f102ec65f112bcd546ba736514'
