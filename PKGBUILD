@@ -8,7 +8,7 @@ pkgdesc="Osmocom library for muxed audio"
 url="http://osmocom.org/projects/libosmo-netif"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=('GPL-2.0-or-later')
-depends=('lksctp-tools' 'libpcap' 'libosmocore' 'libosmo-abis')
+depends=('lksctp-tools' 'libpcap' 'libosmocore-git' 'libosmo-abis-git')
 makedepends=('git')
 provides=("${pkgname%-git}=${pkgver}"
           'libosmonetif.so=11-64')

@@ -11,8 +11,8 @@ pkgbase = libosmo-netif-git
 	makedepends = git
 	depends = lksctp-tools
 	depends = libpcap
-	depends = libosmocore
-	depends = libosmo-abis
+	depends = libosmocore-git
+	depends = libosmo-abis-git
 	provides = libosmo-netif=1.4.0.r20.g96e26d5
 	provides = libosmonetif.so=11-64
 	conflicts = libosmo-netif
