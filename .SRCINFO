@@ -8,7 +8,7 @@ pkgbase = audacious-plugins-gtk3
 	license = BSD
 	license = GPL
 	makedepends = meson
-	makedepends = python-packaging
+	makedepends = glib2-devel
 	depends = audacious-gtk3>=4.4
 	depends = alsa-lib
 	depends = curl

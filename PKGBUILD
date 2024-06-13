@@ -18,7 +18,7 @@ depends=("audacious-gtk3>=$pkgver"
          'libcue' 'libmms' 'libmodplug' 'libmtp' 'libnotify' 'libopenmpt'
          'libpipewire' 'libpulse' 'libsamplerate' 'libsidplayfp' 'libvorbis'
          'lirc' 'mpg123' 'neon' 'opusfile' 'wavpack')
-makedepends=('meson' 'python-packaging')
+makedepends=('meson' 'glib2-devel')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("https://distfiles.audacious-media-player.org/$_pkgname-$pkgver.tar.bz2")
