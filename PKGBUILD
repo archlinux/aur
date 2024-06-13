@@ -19,8 +19,8 @@ sha256sums=('SKIP')
 
 build() {
     cmake -S "${srcdir}/${_pkgname}-${pkgver}/src/" \
-                -B "${srcdir}/${_pkgname}-${pkgver}/src/build/" \
-                -DCMAKE_INSTALL_PREFIX="/usr/"
+          -B "${srcdir}/${_pkgname}-${pkgver}/src/build/" \
+          -DCMAKE_INSTALL_PREFIX="/usr/"
 
     make -C "${srcdir}/${_pkgname}-${pkgver}/src/build/"
 }
