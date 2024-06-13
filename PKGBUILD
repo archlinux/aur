@@ -3,11 +3,11 @@
 _pkgname=gapk
 pkgname=osmo-gapk
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Osmocom GSM Audio Pocket Knife"
 arch=('x86_64' 'i686')
 url="https://osmocom.org/projects/gapk"
-license=('GPL')
+license=('GPL-3.0-or-later')
 depends=('libosmocore' 'talloc' 'alsa-lib' 'gsm' 'opencore-amr')
 conflicts=("${pkgname}-git")
 provides=('libosmogapk.so=0-64')
