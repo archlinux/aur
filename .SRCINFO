@@ -1,0 +1,19 @@
+pkgbase = python-meshcat
+	pkgdesc = WebGL-based 3D visualizer for Python
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/meshcat-dev/meshcat-python
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = ipython
+	depends = python-numpy
+	depends = python-pillow
+	depends = python-pyngrok
+	depends = python-pyzmq
+	depends = python-tornado
+	depends = python-u-msgpack
+	source = meshcat-0.3.2.tar.gz::https://github.com/meshcat-dev/meshcat-python/archive/v0.3.2.tar.gz
+	sha256sums = 42ce29a84121478a321dda88ad987729d31b8352fdfae57efeaaa8e21946e24d
+
+pkgname = python-meshcat
