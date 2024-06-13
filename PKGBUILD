@@ -2,7 +2,7 @@
 
 pkgname=epsidm24-secc0019-bin
 pkgver=1.2.5
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Driver for Epson SIDM Printers: LQ-790KII/690KII/680KIII/675KTII/106KFII/2680KII ppds"
 arch=('aarch64' 'x86_64' )
@@ -14,7 +14,7 @@ replaces=()
 depends=(
   glibc
   libcups)
-makedepends=()
+makedepends=(gzip)
 optdepends=()
 backup=()
 options=(!strip !debug)
@@ -47,7 +47,11 @@ package() {
     "${pkgdir}/usr/bin/" \
     "${pkgdir}/usr/share/doc/${pkgname}/"
 
-  cp --preserve=mode -r ${srcdir}/${_pkg_name}/usr/share/cups/model/Epson/* "${pkgdir}/usr/share/epson/${pkgname}/model/"
+  for file in ${srcdir}/${_pkg_name}/usr/share/cups/model/Epson/*.ppd; do
+      filename=$(basename "$file")
+      gzip -c "$file" > "${pkgdir}/usr/share/epson/${pkgname}/model/${filename%.*}.ppd.gz"
+  done
+
   ln -sf /usr/share/epson/${pkgname}/model "${pkgdir}/usr/share/cups/model/${pkgname}"
   install -Dm0755 "${srcdir}/${_pkg_name}/opt/Epson/${pkgname%-bin}/bin/Epson_${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
   install -Dm0755 "${srcdir}/${_pkg_name}/opt/Epson/${pkgname%-bin}/doc/COPYING" -t "${pkgdir}/usr/share/licenses/${pkgname}"

@@ -1,12 +1,13 @@
 pkgbase = epsidm24-secc0019-bin
 	pkgdesc = Driver for Epson SIDM Printers: LQ-790KII/690KII/680KIII/675KTII/106KFII/2680KII ppds
 	pkgver = 1.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.epson.com.cn/services/supportproduct.html?p=beca262ad3e3431a9da695c7e696a737
 	arch = aarch64
 	arch = x86_64
 	license = GPL-2.0-or-later
 	license = Commercial
+	makedepends = gzip
 	depends = glibc
 	depends = libcups
 	provides = epsidm24-secc0019
