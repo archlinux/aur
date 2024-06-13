@@ -2,7 +2,7 @@
 # Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=libsmpp34-git
-pkgver=1.14.3.r2.g4b6d3f0
+pkgver=1.14.4.r1.gf1ec51d
 pkgrel=1
 pkgdesc="Osmocom version of libsmpp34, an implementation of the SMPP Protocol v3.4"
 url="http://osmocom.org/projects/libsmpp34"
