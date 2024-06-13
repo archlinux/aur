@@ -2,7 +2,7 @@
 # Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=osmo-mgw-git
-pkgver=1.12.1.r28.g8ee08c6b7
+pkgver=1.12.1.r50.gfa393fa1e
 pkgrel=1
 pkgdesc="Osmocom's Media Gateway for 2G and 3G circuit-switched mobile networks"
 url="https://osmocom.org/projects/osmo-mgw/"

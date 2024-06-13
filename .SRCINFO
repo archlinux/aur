@@ -1,6 +1,6 @@
 pkgbase = osmo-mgw-git
 	pkgdesc = Osmocom's Media Gateway for 2G and 3G circuit-switched mobile networks
-	pkgver = 1.12.1.r28.g8ee08c6b7
+	pkgver = 1.12.1.r50.gfa393fa1e
 	pkgrel = 1
 	url = https://osmocom.org/projects/osmo-mgw/
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = osmo-mgw-git
 	depends = libosmo-abis-git
 	depends = libosmo-netif-git
 	depends = talloc
-	provides = osmo-mgw=1.12.1.r28.g8ee08c6b7
+	provides = osmo-mgw=1.12.1.r50.gfa393fa1e
 	provides = libosmo-mgcp-client.so=12-64
 	conflicts = osmo-mgw
 	backup = etc/osmocom/osmo-mgw.cfg
