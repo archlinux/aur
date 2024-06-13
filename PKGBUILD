@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Osmocom version of libsmpp34, an implementation of the SMPP Protocol v3.4"
 url="http://osmocom.org/projects/libsmpp34"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
-license=(GPL)
+license=('LGPL-2.1-or-later')
 depends=('libxml2')
 makedepends=('git')
 provides=("${pkgname%-git}=${pkgver}"

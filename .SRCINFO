@@ -7,7 +7,7 @@ pkgbase = libsmpp34-git
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
-	license = GPL
+	license = LGPL-2.1-or-later
 	makedepends = git
 	depends = libxml2
 	provides = libsmpp34=1.14.3.r2.g4b6d3f0
