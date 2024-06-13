@@ -8,11 +8,11 @@
 
 ## Mozc compile option
 _bldtype='Release'
-_mozc_commit=b4519f6
+_mozc_commit=8acc79f
 _zipcode_rel=202110
 
 # Ut Dictionary
-_utdicdate=20240424
+_utdicdate=20240612
 _dict=(alt-cannadic
        edict2
        jawiki
@@ -24,7 +24,7 @@ _dict=(alt-cannadic
 
 pkgbase=mozc-ut-full
 pkgname=("$pkgbase-common" "ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
-pkgver=2.30.5448.102.20240424
+pkgver=2.30.5490.102.20240612
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
@@ -50,7 +50,7 @@ noextract=(jawiki-latest-all-titles-in-ns0-${_utdicdate}.gz)
 for dict in "${_dict[@]}"; do
   source+=("mozcdic-ut-${dict}-${_utdicdate}.txt.tar.bz2"::"https://github.com/utuhiro78/mozcdic-ut-${dict}/raw/main/mozcdic-ut-${dict}.txt.tar.bz2")
 done
-sha512sums=('4bf6a60bb0b9f610b7bf76d8b118e53d242119c6b68eb01d90ed1f8b15f83056bfd55b85e378f65e9b5783ebba25aaed22aef91f66e3d91c76fa9da53942f091'
+sha512sums=('1df9e7fa5802f2cda2c085ba95fa30b5a63599aeb7702d1c035e1974237a5570be28360fabc1ae8773dfdccdde47bd4b71a6232cd8d7d5f7876a641899f44974'
             'dec6479b42ddc1355cd882d17824cd874d8f103ad7767bac3f490f04551059d65b2806fa9e3f39a50ced2ecfdd37b75c9ed4536d9ad3bcef9e8c5ae1ec10e302'
             '606f45d48a9dad0e80a566cab0001910de3c6b2f634ec52c6ef6f44745b55ae8e181b3e3cdf90525a08be1f180eb35900672c90c6ab4f43679a178e863378bbc'
             'SKIP'
@@ -61,13 +61,13 @@ sha512sums=('4bf6a60bb0b9f610b7bf76d8b118e53d242119c6b68eb01d90ed1f8b15f83056bfd
             'SKIP'
             'SKIP'
             'SKIP'
-            'dfb53846aa487ecfd647b9b1912da5dc04662f50453061e42b9efacab9bbc0174ad2952f35fd4d3b40a63e20ab05abb46c4a0bcf7672db4ca92be05d735e8a13'
+            '59fee8d8aae504ea1a93e843f494649b606191d87f1e0a361c3dbb722af4de021aff53ddde037b6ab441d19fdcaaf56d5b59e9d35ffdcec44c8da3148a77cfa9'
             '30019a9ce73456046f67edd6fe8f4661bd9a8e9ca201f3bdf22d2fa70dad9544bd595a8820fbed402a0709809d02cabbdea9dc79ee1f5bf30f8ef722ba4a2c17'
-            '70404ec53876117c0138ce560464bf601e6345b2c91cc784c3c684ece89dc3abe7cd1e6113c5ca7458295b9da76b21e97c16e7fcc2896b5599d6f862cf087397'
-            'e5a1933a52f7de8a113afc9e9d320e953df5609ca40da7bdfb2685b03a27e206041f4d513e03c3f512799e4fbf30a7c2f5e0f681b570b280afd3b8c3d2ab813e'
+            'baffc571568dca8d808cd84d0672bf918cefd958837236729fc955a80c47feb59fa1801e7f0e65aa2c058edb42a4e96bf2f291d18b0b9d0b36094d1ac09629b1'
+            '7600c47f1c6a1434a994ddeda435f0b48c0aae3dd752a717ecb0a1f04743750520a388c89164bbcdce11900f67c59684cccf34ed6cdb93fc3163b0c428e875d2'
             '3d11bc71a870181e9554525ca81fe72bc6018ad5599938b1b3f8ffe59eb2833be72031cdd5d3d2652e43294950ed0b5ba4cd60eefe2a98c03d089593d772fef3'
-            '905b36060c05abeb589742a5aa26f1a02258c0b022eb5b2bfbcea1a6d94e7f5b05322747a8070eb8f5f1e4391540e93e76b671105e072186ab15061247e44e70'
-            'd0887d489841adfa4c61ab00550526c4f876f961f5ec956c714ff3a9e206c8356000b775c0fd2bce88d0eeb1e2b8c0fafe309e39d4f967b79ffe5e96d0e88ac6'
+            '5f5f692be10aa9841316fb61aa57453a3e36141c3f71238cca8bda69196ddad9b0acad61912300e0a799c555145a7fadea164ff7c391476d3eb606e62e0f4951'
+            '0eda41936ed894070a5bc0662183b436ed164c6e5f225e3d86e564188bdd843c563d5b7470bb8667f128ed3bca20db0825e1f65751bd20d397c0a7f34c780adc'
             '6b373b27f37d222788093ad2502893a9b88ad801b8ba191ff7ae761884dc3f6a214ca2af991d5f8aa29793ca37b29ecb9036ede0d4fb034fdd2d035eb5b2c806'
             '29f788210f86a565df906a08f0a231c3acd625f32b8f004543d3e9470e8e014e81d0fd552044944506f68fc16f8868df6f96dfca49dd5eb0e6d734c1b2927787')
 
@@ -139,6 +139,10 @@ build() {
 
   export JAVA_HOME='/usr/lib/jvm/java-11-openjdk/'
   export QT_BASE_PATH=/usr/include/qt
+
+  # Temp fix for GCC 14
+  sed -i -e '/Werror/d' third_party/protobuf/build_defs/cpp_opts.bzl
+
   bazel build --copt=-fPIC --compilation_mode opt --config oss_linux $_targets
 
   # Extract license part of mozc
