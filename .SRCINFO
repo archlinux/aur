@@ -10,6 +10,7 @@ pkgbase = libsmpp34-git
 	license = GPL
 	makedepends = git
 	depends = libxml2
+	provides = libsmpp34=1.14.3.r2.g4b6d3f0
 	provides = libsmpp34.so=1-64
 	conflicts = libsmpp34
 	source = git+https://gitea.osmocom.org/cellular-infrastructure/libsmpp34.git
