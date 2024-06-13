@@ -9,9 +9,9 @@ pkgbase = osmo-bts-git
 	arch = armv7h
 	license = GPL-2.0-or-later AND AGPL-3.0-or-later
 	makedepends = git
-	depends = libosmocore
-	depends = libosmo-abis
-	depends = libosmo-netif
+	depends = libosmocore-git
+	depends = libosmo-abis-git
+	depends = libosmo-netif-git
 	depends = talloc
 	depends = ortp
 	provides = osmo-bts=1.7.0.r53.ge94553a54
