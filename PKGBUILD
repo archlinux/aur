@@ -1,7 +1,7 @@
 # Maintainer: Piroro-hs
 
 pkgname=psf-cozette
-pkgver=1.19.0
+pkgver=1.24.1
 pkgrel=1
 pkgdesc='A bitmap programming font optimized for coziness, console version (PSF format)'
 arch=('any')
@@ -9,20 +9,24 @@ url='https://github.com/slavfox/Cozette'
 license=('MIT')
 makedepends=('bdf2psf')
 source=("${url}/releases/download/v.${pkgver}/cozette.bdf"
+        "${url}/releases/download/v.${pkgver}/cozette_hidpi.bdf"
         "${url}/releases/download/v.${pkgver}/LICENSE"
         "codepoints.set")
-sha384sums=('33b80855df7b254b61596d60cf6a0098417f8530f1e9fa0207b661d9b3b164a1290047dff1e7f498a50759ca2e899fcc'
+sha384sums=('037bf10817f31bbf4cd3e038c10032289c23a6d179a5fd23c370d864d69d9e913093282e63b5681e03f517d0300aefd5'
+            'b9e0c1ec731ce75aa580a16da50a7545d1e050bd4d3a4a2d4ccb755536e123e1c92c2ae2c3cdbe0be182296e1f59f4a3'
             'd7e16144c6cb7b6690b13732f94547445b12e13f2514773fdca0ebd4d3b238de5a816a15adb860929b77844554fe9850'
-            '7ede9a68426b0fc61455e51e25329acf93574f56ee415a78e24d6bf4d7884ca827af638feddf139e94660360b9be9e8b')
+            'ecc6c97aabc0ac49bb1ed17a8467ac7e90c8eb595c72494727a7eff20b275a57875ae3f71da92b438d2d77ad686b2f90')
 
 build() {
-  awk -Wposix '$1=="STARTCHAR" {u=$2} $1=="ENCODING" && $2=="-1" && u~/^u/  {printf("ENCODING %d\n", "0x" substr(u, 2)); next} {print}' cozette.bdf > cozette.bdf.tmp
-  mv cozette.bdf.tmp cozette.bdf
-  bdf2psf --fb cozette.bdf /usr/share/bdf2psf/standard.equivalents codepoints.set 512 cozette.psfu
-  zstd cozette.psfu
+  sed -i -e 's/^BBX [2-8]/BBX 9/g' cozette_hidpi.bdf
+  bdf2psf --fb cozette.bdf /usr/share/bdf2psf/standard.equivalents codepoints.set 512 cozette6x13.psfu
+  bdf2psf --fb cozette_hidpi.bdf /usr/share/bdf2psf/standard.equivalents codepoints.set 512 cozette12x26.psfu
+  zstd -f cozette6x13.psfu
+  zstd -f cozette12x26.psfu
 }
 
 package() {
-  install -Dm644 "cozette.psfu.zst" "${pkgdir}/usr/share/kbd/consolefonts/cozette6x13.psfu.zst"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 cozette6x13.psfu.zst "${pkgdir}/usr/share/kbd/consolefonts/cozette6x13.psfu.zst"
+  install -Dm644 cozette12x26.psfu.zst "${pkgdir}/usr/share/kbd/consolefonts/cozette12x26.psfu.zst"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
