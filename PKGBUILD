@@ -1,24 +1,24 @@
 # Maintainer: Daniel Kuehn <daniel@kuehn.foo>
 pkgname=wordgen
-pkgver=1.0.0
-pkgrel=2
+pkgver=0.1.0
+pkgrel=1
 pkgdesc="A CLI program that prints random words generated from the EFF Large Wordlist."
 arch=('x86_64')
-url="https://github.com/danny-kuehn/$pkgname"
+url="https://github.com/wordgen/cli"
 license=('AGPL-3.0-or-later')
 makedepends=('go')
 options=(!debug)
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('aad62444915782d609c44e0c1bf6cfdf13638ca285a39ad888314f50770f43ed')
+sha256sums=('df7fbfe648c054e1156ab31cc2f226302d150f37b7b6dfab87b3ebca30471158')
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/cli-$pkgver"
 
-	go build -o "bin/$pkgname" -trimpath -ldflags="-s -w -X main.version=$pkgver -buildid=" ./cmd/wordgen
+	go build -o "bin/$pkgname" -trimpath -ldflags="-s -w -X main.version=$pkgver -buildid=" .
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/cli-$pkgver"
 
 	install -Dm755 "bin/$pkgname" "$pkgdir/usr/bin/$pkgname"
 	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
