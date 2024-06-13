@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=wthrr
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Weather companion for the terminal"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs' 'openssl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('1ac37f509eccf4af3b4e08093e44419e687306822d985e2abde133c9d5a94fef134cc12f4c72608516e65b2102f7a07c0cf0f8602a8c529832c174751691e698')
+sha512sums=('17d2e4e0c24c1474b6485fcfeebe18e919f769856103524827cab0c7b935db6405466e5f95287f02e0479ee9308f231fd9c86e1f3a300c0b12ce91a833f8b41d')
 
 prepare() {
   mv "wthrr-the-weathercrab-$pkgver" "$pkgname-$pkgver"

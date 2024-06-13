@@ -1,6 +1,6 @@
 pkgbase = wthrr
 	pkgdesc = Weather companion for the terminal
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/tobealive/wthrr-the-weathercrab
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = wthrr
 	makedepends = cargo
 	depends = gcc-libs
 	depends = openssl
-	source = wthrr-1.1.1.tar.gz::https://github.com/tobealive/wthrr-the-weathercrab/archive/v1.1.1.tar.gz
-	sha512sums = 1ac37f509eccf4af3b4e08093e44419e687306822d985e2abde133c9d5a94fef134cc12f4c72608516e65b2102f7a07c0cf0f8602a8c529832c174751691e698
+	source = wthrr-1.2.0.tar.gz::https://github.com/tobealive/wthrr-the-weathercrab/archive/v1.2.0.tar.gz
+	sha512sums = 17d2e4e0c24c1474b6485fcfeebe18e919f769856103524827cab0c7b935db6405466e5f95287f02e0479ee9308f231fd9c86e1f3a300c0b12ce91a833f8b41d
 
 pkgname = wthrr
