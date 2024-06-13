@@ -14,6 +14,7 @@ pkgbase = osmo-bts-git
 	depends = libosmo-netif
 	depends = talloc
 	depends = ortp
+	provides = osmo-bts=1.7.0.r53.ge94553a54
 	conflicts = osmo-bts
 	backup = etc/osmocom/osmo-bts-trx.cfg
 	backup = etc/osmocom/osmo-bts-virtual.cfg

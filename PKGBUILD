@@ -10,6 +10,7 @@ arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=('GPL-2.0-or-later AND AGPL-3.0-or-later')
 depends=('libosmocore' 'libosmo-abis' 'libosmo-netif' 'talloc' 'ortp')
 makedepends=('git')
+provides=("${pkgname%-git}=${pkgver}")
 conflicts=("${pkgname%-git}")
 backup=('etc/osmocom/osmo-bts-trx.cfg'
         'etc/osmocom/osmo-bts-virtual.cfg')
