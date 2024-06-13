@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-lzlib
 pkgver=1.14
-pkgrel=1
+pkgrel=2
 pkgdesc="A library providing in-memory LZMA compression and decompression functions (mingw-w64)"
 arch=('any')
 url="https://www.nongnu.org/lzip/lzlib.html"
@@ -20,7 +20,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 build() {
   cd "$srcdir"/lzlib-${pkgver}
   for _arch in $_architectures; do
-    mkdir build-${_arch} && pushd build-${_arch}
+    mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-configure
     ${_arch}-make
     popd
