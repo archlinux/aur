@@ -1,7 +1,7 @@
 pkgbase = android-x86-64-libjpeg-turbo
 	pkgdesc = JPEG image codec with accelerated baseline compression and decompression (Android x86-64)
-	pkgver = 3.0.2
-	pkgrel = 2
+	pkgver = 3.0.3
+	pkgrel = 1
 	url = http://libjpeg-turbo.virtualgl.org
 	arch = any
 	groups = android-libjpeg-turbo
@@ -15,7 +15,7 @@ pkgbase = android-x86-64-libjpeg-turbo
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/libjpeg-turbo/libjpeg-turbo/archive/refs/tags/3.0.2.tar.gz
-	md5sums = 94756db95bc2477f7f7dad1c2590b51f
+	source = https://github.com/libjpeg-turbo/libjpeg-turbo/archive/refs/tags/3.0.3.tar.gz
+	md5sums = 081269bd1f35eaadb7ce2e3b4f03aebb
 
 pkgname = android-x86-64-libjpeg-turbo
