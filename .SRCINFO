@@ -1,0 +1,16 @@
+pkgbase = python-pyngrok
+	pkgdesc = A Python wrapper for ngrok
+	pkgver = 7.1.6
+	pkgrel = 1
+	url = https://github.com/alexdlaird/pyngrok
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-pyaml
+	conflicts = ngrok
+	source = pyngrok-7.1.6.tar.gz::https://github.com/alexdlaird/pyngrok/archive/7.1.6.tar.gz
+	sha256sums = f3586fc7abd018afb30e52226e0100fb0f87509d9608895c19bafbb931aaa2d9
+
+pkgname = python-pyngrok
