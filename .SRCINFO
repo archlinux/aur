@@ -1,6 +1,6 @@
 pkgbase = hyprutils
 	pkgdesc = Hyprland utilities library used across the ecosystem
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/hyprwm/hyprutils
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = hyprutils
 	makedepends = gcc
 	makedepends = make
 	provides = hyprutils
-	source = hyprutils-0.1.1.tar.gz::https://github.com/hyprwm/hyprutils/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = a9d799b12338e911e6c1ff776ebeabbf71ce5032a56d074ce7f2226267e10b29
+	source = hyprutils-0.1.2.tar.gz::https://github.com/hyprwm/hyprutils/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = a11598fbba1dcb8e1f939935ed55339b481816b1fddc89dbbfe4dafb4d753562
 
 pkgname = hyprutils

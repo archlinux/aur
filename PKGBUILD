@@ -1,7 +1,7 @@
 # Maintainer: alba4k <blaskoazzolaaaron@gmail.com>
 
 pkgname="hyprutils"
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Hyprland utilities library used across the ecosystem"
 arch=(any)
@@ -12,7 +12,7 @@ makedepends=('git' 'cmake' 'gcc' 'make')
 _archive="${pkgname}-$pkgver"
 source=("$_archive.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 provides=('hyprutils')
-sha256sums=('a9d799b12338e911e6c1ff776ebeabbf71ce5032a56d074ce7f2226267e10b29')
+sha256sums=('a11598fbba1dcb8e1f939935ed55339b481816b1fddc89dbbfe4dafb4d753562')
 
 build() {
 	cd "$_archive"
