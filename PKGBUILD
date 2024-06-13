@@ -8,10 +8,10 @@ pkgdesc="Osmocom's Base Station Controller for 2G circuit-switched mobile networ
 url="https://osmocom.org/projects/osmobsc"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=('GPL-3.0-or-later AND LGPL-2.1-only AND AGPL-3.0-or-later')
-depends=('libosmocore'
-         'libosmo-abis'
-         'libosmo-sccp'
-         'libosmo-netif'
+depends=('libosmocore-git'
+         'libosmo-abis-git'
+         'libosmo-sccp-git'
+         'libosmo-netif-git'
          'libosmo-mgcp-client.so' # from osmo-mgw
          'sqlite' # for osmo-meas-udp2db
          'libpcap' # for osmo-meas-pcap2db
