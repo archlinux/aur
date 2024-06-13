@@ -2,7 +2,7 @@
 
 pkgname=python-cyclonedx-lib
 _gitpkgname=cyclonedx-python-lib
-pkgver=7.4.0
+pkgver=7.4.1
 pkgrel=1
 pkgdesc='Render and read CycloneDX, a lightweight BOM specification document format'
 arch=('any')
@@ -36,9 +36,7 @@ source=(
   "${_gitpkgname}-${pkgver}.tar.gz::https://github.com/CycloneDX/cyclonedx-python-lib/archive/refs/tags/v${pkgver}.tar.gz"
 )
 
-sha512sums=(
-  'e282d69694d233b3856aed6fb36d3ef200c8fd5084463f68643c14e798a116ccaf2f766078e36c2c681d6671ec2f8618e9c5bf0ed3934e1aa99a2937ae902120'
-)
+sha512sums=('ffa4a3e334f155670faed58bbf1f4676454af6923c2f99fba9cff62296950b17ce043823a5980094dc4f6d7cb2a01219d22bac90c07c3cebd4c414c47f06be31')
 
 prepare() {
   cd "${srcdir}/${_gitpkgname}-${pkgver}"
