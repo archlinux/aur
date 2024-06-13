@@ -1,14 +1,14 @@
 # Maintainer: kotontrion <kotontrion@tutanota.de>
 pkgname=aylurs-gtk-shell-git
 _pkgname=ags
-pkgver=1.6.3.beta.r74.gdb37e5f
+pkgver=1.8.2.r2.g1115022
 pkgrel=1
 pkgdesc="Aylurs's Gtk Shell (AGS), An eww inspired gtk widget system."
 arch=('x86_64')
 url="https://github.com/Aylur/ags"
 license=('GPL3')
 makedepends=('git' 'gobject-introspection' 'meson' 'npm' 'typescript')
-depends=('gjs' 'glib2' 'glibc' 'gtk3' 'gtk-layer-shell' 'libpulse' 'pam')
+depends=('gjs' 'glib2' 'glib2-devel' 'glibc' 'gtk3' 'gtk-layer-shell' 'libpulse' 'pam')
 optdepends=('gnome-bluetooth-3.0: required for bluetooth service'
             'greetd: required for greetd service'
             'libdbusmenu-gtk3: required for systemtray service'
