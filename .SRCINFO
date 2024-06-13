@@ -1,11 +1,11 @@
 pkgbase = ttf-remixicon
 	pkgdesc = Open source neutral style icon system
-	pkgver = 4.1.0
+	pkgver = 4.3.0
 	pkgrel = 1
-	url = https://remixicon.com/
+	url = https://remixicon.com
 	arch = any
 	license = Apache-2.0
-	source = https://github.com/Remix-Design/RemixIcon/releases/download/v4.1.0/RemixIcon_Fonts_v4.1.0.zip
-	sha256sums = d3856ca604b301a2e2df12b98cb1ad4124e2e9ecf85db33c1aa1c015ce93f300
+	source = https://github.com/Remix-Design/RemixIcon/releases/download/v4.3.0/RemixIcon_Fonts_v4.3.0.zip
+	sha256sums = ca2ddade5ae5a6015347fc769880bce3a32c7f2aa81232c819e2a65a3a9fd4cc
 
 pkgname = ttf-remixicon

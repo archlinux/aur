@@ -2,15 +2,15 @@
 # Contributor: Alexis Janon <kardyne -at- gmail -dot- com>
 
 pkgname=ttf-remixicon
-pkgver=4.1.0
+pkgver=4.3.0
 pkgrel=1
 pkgdesc="Open source neutral style icon system"
 arch=('any')
-url="https://remixicon.com/"
+url="https://remixicon.com"
 license=('Apache-2.0')
 source=("https://github.com/Remix-Design/RemixIcon/releases/download/v${pkgver}/RemixIcon_Fonts_v${pkgver}.zip")
-sha256sums=('d3856ca604b301a2e2df12b98cb1ad4124e2e9ecf85db33c1aa1c015ce93f300')
+sha256sums=('ca2ddade5ae5a6015347fc769880bce3a32c7f2aa81232c819e2a65a3a9fd4cc')
 
 package() {
-  install -Dm644 -t "${pkgdir}/usr/share/fonts/TTF/" fonts/remixicon.ttf
+  install -Dm644 fonts/remixicon.ttf -t "${pkgdir}/usr/share/fonts/TTF"
 }

@@ -1,0 +1,5 @@
+[ttf-remixicon]
+source = "github"
+github = "Remix-Design/RemixIcon"
+use_max_tag = true
+prefix = "v"
