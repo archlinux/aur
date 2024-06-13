@@ -1,7 +1,7 @@
 pkgbase = sticky
 	pkgdesc = A sticky notes app for the Linux desktop
 	pkgver = 1.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linuxmint/sticky
 	arch = any
 	license = GPL2
