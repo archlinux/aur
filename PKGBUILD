@@ -2,7 +2,7 @@
 
 pkgname=python-fabric-git
 reponame=fabric
-pkgver=0.0.1.r115.0b1aee8.r115.0b1aee8.r115.0b1aee8
+pkgver=0.0.1
 pkgrel=1
 pkgdesc="next-gen framework for building desktop widgets using python"
 arch=(any)
