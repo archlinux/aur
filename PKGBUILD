@@ -41,15 +41,20 @@ package() {
   _binDir="$pkgdir/usr/bin";
   _desktopDir="$pkgdir/usr/share/applications"
   _iconDir="$pkgdir/usr/share/icons/hicolor/scalable/apps"
+  _binFile="$_archive/polyversal"
   _desktopFile="$_archive/Polyversal.desktop"
 
   sed -i \
-    -e "s/\(Exec=\).*\/\(polyversal\)\(\( .*\)\? --log\)\( \|\$\)/\1\2\5/" \
+    -e 's/\(DATADIR=\).*$/\1"$HOME\/.cache\/polyversal-patcher"/' \
+    "$_binFile"
+
+  sed -i \
+    -e "s/\(Exec=\).*\/\(polyversal\( .*\)\?\)\$/\1\2/" \
     -e "\$a Icon=$_pkgname" \
     "$_desktopFile"
 
   install -dm755 "$_binDir" "$_desktopDir" "$_iconDir"
-  install -Dm755 "$_archive/polyversal" "$_binDir"
+  install -Dm755 "$_binFile" "$_binDir"
   install -Dm644 "$_pkgname.svg" "$_iconDir"
   install -Dm644 "$_desktopFile" "$_desktopDir"
   install -Dm644 "$_archive/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
