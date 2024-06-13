@@ -36,7 +36,6 @@ package() {
   cp -r "eclipse" "${pkgdir}/usr/lib/eclipse"
   install -d "${pkgdir}/usr/bin"
   ln -s "/usr/lib/eclipse/eclipse" "${pkgdir}/usr/bin/eclipse"
-  chmod 755 "${pkgdir}/usr/bin/eclipse"
 
   install -Dm0644 "eclipse.desktop" "${pkgdir}/usr/share/applications/eclipse.desktop"
 
