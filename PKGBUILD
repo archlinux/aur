@@ -3,7 +3,7 @@
 pkgname=python-cynthion
 _gitpkgname=cynthion
 pkgver=0.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python package and utilities for the Great Scott Gadgets Cynthion USB Test Instrument'
 arch=('any')
 url='https://github.com/greatscottgadgets/cynthion'
@@ -12,8 +12,8 @@ depends=(
   'python'
   'python-amaranth<0.5'  # https://github.com/greatscottgadgets/cynthion/issues/39
   'python-apollo'
-  'python-luna-usb-git'
-  'python-luna-soc-git'
+  'python-luna-usb'
+  'python-luna-soc'
   'python-pygreat'
   'python-pyusb'
   'python-tomli'
