@@ -1,7 +1,7 @@
 pkgbase = android-x86-64-libtool
-	pkgdesc = A generic library support script (Android, x86-64)
-	pkgver = 2.4.7
-	pkgrel = 2
+	pkgdesc = A generic library support script (Android x86-64)
+	pkgver = 2.5.0
+	pkgrel = 1
 	url = https://www.gnu.org/software/libtool
 	arch = any
 	license = GPL
@@ -9,17 +9,17 @@ pkgbase = android-x86-64-libtool
 	makedepends = help2man
 	depends = android-ndk
 	depends = tar
-	provides = android-x86-64-libltdl=2.4.7
+	provides = android-x86-64-libltdl=2.5.0
 	conflicts = android-x86-64-libltdl
 	replaces = android-x86-64-libltdl
 	options = !strip
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://ftpmirror.gnu.org/libtool/libtool-2.4.7.tar.gz
+	source = https://git.savannah.gnu.org/cgit/libtool.git/snapshot/libtool-2.5.0.tar.gz
 	source = gnulib.tgz::https://git.savannah.gnu.org/gitweb/?p=gnulib.git;a=snapshot;h=HEAD;sf=tgz
 	source = gnulib-bootstrap.zip::https://github.com/gnulib-modules/bootstrap/archive/refs/heads/master.zip
-	sha256sums = 04e96c2404ea70c590c546eba4202a4e12722c640016c12b9b2f1ce3d481e9a8
+	sha256sums = 730e866d17f87068b0601f219d4a7cf68f1640aa348b0a2a05e4aa7d4e0add8e
 	sha256sums = SKIP
 	sha256sums = SKIP
 
