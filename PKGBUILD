@@ -44,7 +44,7 @@ package() {
   _desktopFile="$_archive/Polyversal.desktop"
 
   sed -i \
-    -e "s/\(Exec=\).*\/\(polyversal\)/\1\2/" \
+    -e "s/\(Exec=\).*\/\(polyversal\)\(\( .*\)\? --log\)\( \|\$\)/\1\2\5/" \
     -e "\$a Icon=$_pkgname" \
     "$_desktopFile"
 
