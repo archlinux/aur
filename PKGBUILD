@@ -2,7 +2,7 @@
 # Maintainer: atomicfs <https://aur.archlinux.org/account/atomicfs>
 
 pkgname="paperless-ngx"
-pkgver=2.8.3
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="A supercharged version of paperless: scan, index and archive all your physical documents"
 url="https://docs.paperless-ngx.com/"
@@ -119,7 +119,9 @@ optdepends=("jbig2enc: smaller PDF size"
             "postgresql: postgres database"
             "mariadb: mariadb database"
             "python-mysqlclient: connect to mariadb"
-            "python-flower: celery monitoring")
+            "python-flower: celery monitoring"
+            "tika-server: extract metadata from files"
+            "gotenberg: convert files to pdf")
 source=("https://github.com/$pkgname/$pkgname/releases/download/v$pkgver/$pkgname-v$pkgver.tar.xz"
         "paperless.hook"
         "paperless.sysusers"
@@ -129,7 +131,7 @@ source=("https://github.com/$pkgname/$pkgname/releases/download/v$pkgver/$pkgnam
         "paperless-scheduler.service"
         "paperless-task-queue.service"
         "paperless-webserver.service")
-b2sums=('13547d054b199a4b471f0ad002ffd2273d581198dbc41463c3ca1e40a516617ea7726ef14518ad06a4ca0454b5e6bfe53f120e1a8490dc802761005eb1b6ec68'
+b2sums=('e1286584d18142ed48d779dd5e2bba2c2d0b719ccf6d4a922183ddae1b79fe0d3fd1ca858aa20cf17c714a649c1f6377b8f728a2fc37f8d16be53ed4791e0516'
         '66073b686ac143f5b6a2c581705ca77a90b48e5ad03208c61976e0421e54c08bb5ce8168a42cd1f11d9f34e270a27ee91102c5fbf5477fdb5a596ad7b38e5750'
         '586ad775e26aef216716c33d8951e00044a7f6866167d27dceab39d51b4fd46527693dfe4e085dc20d2e9193679122ad2b9ac8a1c03a98df747af15ecca24ca2'
         '4a59f0a0c6a4abad23cba01e216909f45a7064e93911b8ba3e3b394f52379e41898b8c9e1246ba034bc8d2fe6dc83f5cad926e265a17da7c7093d997cfe8b4f3'
