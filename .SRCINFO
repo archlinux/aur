@@ -13,6 +13,7 @@ pkgbase = osmo-mgw-git
 	depends = libosmo-abis
 	depends = libosmo-netif
 	depends = talloc
+	provides = osmo-mgw=1.12.1.r28.g8ee08c6b7
 	provides = libosmo-mgcp-client.so=12-64
 	conflicts = osmo-mgw
 	backup = etc/osmocom/osmo-mgw.cfg
