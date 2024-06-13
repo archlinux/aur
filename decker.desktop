@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Decker
+Comment=Multimedia platform for creating interactive documents
+Icon=/usr/share/pixmaps/decker.png
+Exec=decker
+Terminal=false
+Categories=Development;Education;
