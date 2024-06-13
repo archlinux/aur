@@ -1,11 +1,12 @@
 pkgbase = gnome-network-displays-git
 	pkgdesc = Miracast implementation for GNOME
-	pkgver = 0.92.2.r0.g62a9203
+	pkgver = 0.92.2.r3.g6045dc8
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/gnome-network-displays
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
+	makedepends = glib2-devel
 	makedepends = meson
 	depends = avahi
 	depends = gst-plugins-bad

@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-network-displays-git
-pkgver=0.92.2.r0.g62a9203
+pkgver=0.92.2.r3.g6045dc8
 pkgrel=1
 pkgdesc="Miracast implementation for GNOME"
 arch=('x86_64')
@@ -20,7 +20,11 @@ depends=(
   'python-gobject'
   'xdg-desktop-portal'
 )
-makedepends=('git' 'meson')
+makedepends=(
+  'git'
+  'glib2-devel'
+  'meson'
+)
 optdepends=(
   'dnsmasq'
   'gst-plugin-pipewire'
@@ -33,7 +37,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
