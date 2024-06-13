@@ -7,7 +7,7 @@
 _pkgname=audacious-plugins
 pkgname=$_pkgname-gtk3
 pkgver=4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugins for Audacious"
 arch=('i686' 'x86_64')
 url="https://audacious-media-player.org/"
@@ -21,8 +21,17 @@ depends=("audacious-gtk3>=$pkgver"
 makedepends=('meson' 'glib2-devel')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("https://distfiles.audacious-media-player.org/$_pkgname-$pkgver.tar.bz2")
-sha256sums=('3caf3a5fe5b6f2808f461f85132fbff4ae22a53ef9f3d26d9e6030f6c6d5baa2')
+source=("https://distfiles.audacious-media-player.org/$_pkgname-$pkgver.tar.bz2"
+        "https://gitlab.archlinux.org/archlinux/packaging/packages/$_pkgname/-/raw/main/sidplay-rom-paths.patch")
+sha256sums=('3caf3a5fe5b6f2808f461f85132fbff4ae22a53ef9f3d26d9e6030f6c6d5baa2'
+            'c32cd36f75dd18db082f9b9447f1c0982279703b9d648f5695295ff25c9b678d')
+
+prepare() {
+  cd $pkgname-$pkgver
+
+  # set paths for ROM files from vice for sidplay
+  patch -Np1 -i ../sidplay-rom-paths.patch
+}
 
 build() {
   arch-meson $_pkgname-$pkgver build \
