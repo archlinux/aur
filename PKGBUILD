@@ -7,7 +7,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-ncurses
-pkgver=6.4_20240203
+pkgver=6.5
 pkgrel=1
 pkgdesc='System V Release 4.0 curses emulation library (android)'
 arch=('any')
@@ -16,9 +16,9 @@ license=('MIT')
 depends=('android-ndk')
 options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-configure')
-source=("https://invisible-mirror.net/archives/ncurses/current/ncurses-${pkgver/_/-}.tgz"
+source=("https://ftp.gnu.org/gnu/ncurses/ncurses-${pkgver}.tar.gz"
         "0001-Disable-lib-symlinks.patch")
-sha256sums=('33a79f39c0dc6a1f0fd16e711ea67dbe80cdb62488ad721a8594785bb5084b70'
+sha256sums=('136d91bc269a9a5785e5f9e980bc76ab57428f604ce3e5a5a90cebc767971cc6'
             'ff16e8e4418660d7eea17caa2678d9a962f65ed15d523ce906e55d616eb89b9d')
 
 prepare() {
@@ -39,7 +39,7 @@ build() {
         --enable-pc-files \
         --with-cxx-binding \
         --with-cxx-shared \
-        --with-pkg-config-libdir=${ANDROID_PREFIX_LIB}/pkgconfig \
+        --with-pkg-config-libdir="${ANDROID_PREFIX_LIB}/pkgconfig" \
         --with-shared \
         --with-xterm-kbs=del \
         --without-ada \
@@ -55,10 +55,10 @@ package() {
     cd ncurses-${pkgver/_/-}
 
     make DESTDIR="$pkgdir" install
-    rm -rf "${pkgdir}"/${ANDROID_PREFIX_BIN}
-    rm -f "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so.*
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    rm -rf "${pkgdir}/${ANDROID_PREFIX_BIN}"
+    rm -f "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so.*
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 
     # fool packages looking to link to non-wide-character ncurses libraries
     for lib in ncurses ncurses++ form panel menu; do
