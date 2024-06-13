@@ -1,4 +1,5 @@
 # Maintainer: Denis Benato <benato.denis96 [at] gmail dot com>
+# Maintainer: Chris Lane <aur at chrislane dot com>
 # Contributor: Laurent Carlier <lordheavym@gmail.com>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Reza Jahanbakhshi <reza.jahanbakhshi at gmail dot com
@@ -30,7 +31,7 @@ pkgrel=1
 pkgdesc="An open-source implementation of the OpenGL specification"
 url="https://www.mesa3d.org/"
 arch=('x86_64')
-license=('custom')
+license=('LicenseRef-mesa')
 makedepends=(
   'expat'
   'libdrm'
@@ -213,12 +214,8 @@ package_amdonly-gaming-vulkan-mesa-layers-git() {
     'python'
   )
   conflicts=(
-    'vulkan-mesa-layer'
     'vulkan-mesa-layers'
-  )
-  replaces=(
     'vulkan-mesa-layer'
-    'vulkan-mesa-layers'
   )
   provides=(
     'vulkan-mesa-layers'
@@ -249,10 +246,6 @@ package_amdonly-gaming-opencl-clover-mesa-git() {
     'opencl-driver'
     'opencl-clover-mesa'
   )
-  replaces=(
-    'opencl-mesa'
-    'opencl-clover-mesa'  
-  )
   conflicts=(
     'opencl-mesa'
     'opencl-clover-mesa'
@@ -275,17 +268,13 @@ package_amdonly-gaming-opencl-rusticl-mesa-git() {
     'lm_sensors'
     'spirv-llvm-translator'
     'zstd'
-  
+
     'libclc'
   )
   optdepends=('opencl-headers: headers necessary for OpenCL development')
   provides=(
     'opencl-rusticl-mesa'
     'opencl-driver'
-  )
-  replaces=(
-    'opencl-rusticl-mesa'
-    'opencl-mesa'
   )
   conflicts=(
     'opencl-rusticl-mesa'
@@ -317,7 +306,6 @@ package_amdonly-gaming-vulkan-radeon-git() {
     'vulkan-radeon'
   )
   conflicts=('vulkan-radeon')
-  replaces=('vulkan-radeon')
 
   _install fakeinstall/usr/share/drirc.d/00-radv-defaults.conf
   _install fakeinstall/usr/share/vulkan/icd.d/radeon_icd*.json
@@ -340,10 +328,6 @@ package_amdonly-gaming-vulkan-swrast-git() {
   )
   optdepends=('vulkan-mesa-layers: additional vulkan layers')
   conflicts=(
-    'vulkan-mesa'
-    'vulkan-swrast'
-  )
-  replaces=(
     'vulkan-mesa'
     'vulkan-swrast'
   )
@@ -370,7 +354,6 @@ package_amdonly-gaming-libva-mesa-driver-git() {
     'zstd'
   )
   provides=('libva-driver')
-  replaces=('libva-mesa-driver')
   conflicts=('libva-mesa-driver')
 
   _install fakeinstall/$_libdir/dri/*_drv_video.so
@@ -394,7 +377,6 @@ package_amdonly-gaming-mesa-vdpau-git() {
     'mesa-vdpau'
   )
   conflicts=('mesa-vdpau')
-  replaces=('mesa-vdpau')
 
   _install fakeinstall/$_libdir/vdpau
 
@@ -426,10 +408,6 @@ package_amdonly-gaming-mesa-git() {
     'opengl-driver'
   )
   conflicts=(
-    'mesa'
-    'mesa-libgl'
-  )
-  replaces=(
     'mesa'
     'mesa-libgl'
   )

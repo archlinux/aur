@@ -4,7 +4,7 @@ pkgbase = mesa-amdonly-gaming-git
 	pkgrel = 1
 	url = https://www.mesa3d.org/
 	arch = x86_64
-	license = custom
+	license = LicenseRef-mesa
 	makedepends = expat
 	makedepends = libdrm
 	makedepends = libelf
@@ -60,10 +60,8 @@ pkgname = amdonly-gaming-vulkan-mesa-layers-git
 	depends = wayland
 	depends = python
 	provides = vulkan-mesa-layers
-	conflicts = vulkan-mesa-layer
 	conflicts = vulkan-mesa-layers
-	replaces = vulkan-mesa-layer
-	replaces = vulkan-mesa-layers
+	conflicts = vulkan-mesa-layer
 
 pkgname = amdonly-gaming-opencl-clover-mesa-git
 	pkgdesc = OpenCL support with clover for mesa drivers
@@ -79,8 +77,6 @@ pkgname = amdonly-gaming-opencl-clover-mesa-git
 	provides = opencl-clover-mesa
 	conflicts = opencl-mesa
 	conflicts = opencl-clover-mesa
-	replaces = opencl-mesa
-	replaces = opencl-clover-mesa
 
 pkgname = amdonly-gaming-opencl-rusticl-mesa-git
 	pkgdesc = OpenCL support with rusticl for mesa drivers
@@ -97,8 +93,6 @@ pkgname = amdonly-gaming-opencl-rusticl-mesa-git
 	provides = opencl-driver
 	conflicts = opencl-rusticl-mesa
 	conflicts = opencl-mesa
-	replaces = opencl-rusticl-mesa
-	replaces = opencl-mesa
 
 pkgname = amdonly-gaming-vulkan-radeon-git
 	pkgdesc = Radeon's Vulkan mesa driver
@@ -115,7 +109,6 @@ pkgname = amdonly-gaming-vulkan-radeon-git
 	provides = vulkan-driver
 	provides = vulkan-radeon
 	conflicts = vulkan-radeon
-	replaces = vulkan-radeon
 
 pkgname = amdonly-gaming-vulkan-swrast-git
 	pkgdesc = Vulkan software rasteriser driver
@@ -132,8 +125,6 @@ pkgname = amdonly-gaming-vulkan-swrast-git
 	provides = vulkan-swrast
 	conflicts = vulkan-mesa
 	conflicts = vulkan-swrast
-	replaces = vulkan-mesa
-	replaces = vulkan-swrast
 
 pkgname = amdonly-gaming-libva-mesa-driver-git
 	pkgdesc = VA-API drivers
@@ -146,7 +137,6 @@ pkgname = amdonly-gaming-libva-mesa-driver-git
 	depends = zstd
 	provides = libva-driver
 	conflicts = libva-mesa-driver
-	replaces = libva-mesa-driver
 
 pkgname = amdonly-gaming-mesa-vdpau-git
 	pkgdesc = VDPAU drivers
@@ -160,7 +150,6 @@ pkgname = amdonly-gaming-mesa-vdpau-git
 	provides = vdpau-driver
 	provides = mesa-vdpau
 	conflicts = mesa-vdpau
-	replaces = mesa-vdpau
 
 pkgname = amdonly-gaming-mesa-git
 	depends = libdrm
@@ -181,5 +170,3 @@ pkgname = amdonly-gaming-mesa-git
 	provides = opengl-driver
 	conflicts = mesa
 	conflicts = mesa-libgl
-	replaces = mesa
-	replaces = mesa-libgl
