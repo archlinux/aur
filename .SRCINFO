@@ -1,0 +1,13 @@
+pkgbase = lpl
+	pkgdesc = Command-line plotting from streaming input sources
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/SOF3/lpl
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = cargo
+	depends = gcc-libs
+	source = lpl-0.1.0.tar.gz::https://github.com/SOF3/lpl/archive/0.1.0.tar.gz
+	sha512sums = 06c27eca54d5fa4ccbf7b9a0f17c1f6e4f0cdfd983c93ff8c4a9576669e9edf01dac1d7cbb9d1acf9e923d14e22de15faa65bd798acc660cb56eae1431f7d591
+
+pkgname = lpl
