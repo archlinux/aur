@@ -1,7 +1,7 @@
 # Maintainer: Akatsuki Rui <akiirui@outlook.com>
 
 pkgname=v2ray-domain-list-china
-pkgver=20240609122311
+pkgver=20240613162204
 pkgrel=1
 pkgdesc="A list of domains to be used as geosites for routing purpose in Project V"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/akiirui/domain-list-china"
 license=('MIT')
 source=("dlc.dat-$pkgver::https://github.com/akiirui/domain-list-china/releases/download/$pkgver/dlc.dat"
         "https://raw.githubusercontent.com/akiirui/domain-list-china/main/LICENSE")
-b2sums=('80db0f9fd603c9826d9e855300821668939967aae2883e5d1e5fee2c0554ab7c3292e346699552ffbb126c694099ea24a5ccfd7b3b0e8bbb749990917aab6b2a'
+b2sums=('0c273709049981148ecb3dce972dba2baaf7e9bc8639a9cafbce8741440aeebc84a6a84dded9eb3ce11120c1411aa218df00c3dea047016f53b192a712599ca2'
         '53fcf5b8a104ecd10a6719ef025de0d4779d1b24ea33a9b9dab78ae9f2579dc063c099e698745c6ac7b7e00bd5cbe5d849211f06281da9291fed86e193ae3628')
 
 package() {
