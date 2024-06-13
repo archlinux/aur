@@ -1,0 +1,16 @@
+*.svg
+*.tar
+*.tar.*
+*.jar
+*.exe
+*.msi
+*.zip
+*.tgz
+*.log
+*.log.*
+*.sig
+
+LICENSE
+
+pkg/
+src/
