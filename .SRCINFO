@@ -1,0 +1,14 @@
+pkgbase = flooxs
+	pkgdesc = FLorida Object-Oriented Process/Device Simulator
+	pkgver = 2024.0.0
+	pkgrel = 1
+	url = https://flooxs.com/
+	arch = x86_64
+	license = Special
+	depends = plplot
+	depends = suitesparse
+	options = !lto
+	source = flooxs-2024.0.0-Linux.tar.gz::http://flooxs.org/packages/flooxs-2024.0.0-Linux.tar.gz
+	sha256sums = e6f4329f6b5826d01e3093fcf5cf576d130d6ca54db8e4b658bd0dd94efd6e68
+
+pkgname = flooxs
