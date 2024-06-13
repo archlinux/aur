@@ -3,11 +3,11 @@
 
 pkgname=osmo-bts
 pkgver=1.7.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Osmocom's GSM BTS (Base Transceiver Station) with A-bis/IP interface"
 url="https://osmocom.org/projects/osmobts"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
-license=(GPL)
+license=('GPL-2.0-or-later AND AGPL-3.0-or-later')
 depends=('libosmocore' 'libosmo-abis' 'libosmo-netif' 'talloc' 'ortp')
 conflicts=("${pkgname}-git")
 backup=('etc/osmocom/osmo-bts-trx.cfg'

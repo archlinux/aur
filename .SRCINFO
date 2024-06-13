@@ -1,13 +1,13 @@
 pkgbase = osmo-bts
 	pkgdesc = Osmocom's GSM BTS (Base Transceiver Station) with A-bis/IP interface
 	pkgver = 1.7.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://osmocom.org/projects/osmobts
 	arch = i686
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
-	license = GPL
+	license = GPL-2.0-or-later AND AGPL-3.0-or-later
 	depends = libosmocore
 	depends = libosmo-abis
 	depends = libosmo-netif
