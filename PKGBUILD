@@ -2,21 +2,26 @@
 
 pkgname=rtl88x2bu-openhd-dkms-git
 _modname=88x2bu_ohd
-pkgver=5.13.1.r224.g4e07c13
+pkgver=5.13.1.r227.g9571cc7
 _pkgver=5.13.1
-pkgrel=5
+pkgrel=6
 pkgdesc='Realtek RTL88x2BU WiFi USB driver (with OpenHD patches)'
 arch=(any)
 url='https://github.com/OpenHD/rtl88x2bu'
 license=(GPL2)
 depends=(dkms bc)
 makedepends=(git)
-source=('git+https://github.com/OpenHD/rtl88x2bu.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/OpenHD/rtl88x2bu.git' 'fix-6.9.0-build.patch')
+sha256sums=('SKIP' 'fd6afeadc4b00b74d9ed870fe446ffcc0773d07364fb7ed07f538b0ca07507ed')
 
 pkgver() {
 	cd "${srcdir}/rtl88x2bu"
 	printf '%s.r%s.g%s' "${_pkgver}" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+prepare() {
+	cd "${srcdir}/rtl88x2bu"
+	patch -p1 -i "$srcdir/fix-6.9.0-build.patch"
 }
 
 package() {
