@@ -1,7 +1,7 @@
 pkgbase = jumpfm-bin
 	pkgdesc = A file manager that lets you jump
 	pkgver = 1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jumpfm.org/
 	arch = x86_64
 	license = ISC
@@ -13,4 +13,3 @@ pkgbase = jumpfm-bin
 	sha512sums = SKIP
 
 pkgname = jumpfm-bin
-

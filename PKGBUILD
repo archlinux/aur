@@ -1,9 +1,9 @@
-# Maintainer: ahrs <Forward dot to at hotmail dot co dot uk>
+# Maintainer: Mia Furze <46620osu@gmail.com>
 
 pkgname=jumpfm-bin
 _json=$(curl -s -L https://api.github.com/repos/Gilad-Kutiel-App/jumpfm/releases/latest | jq '.')
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A file manager that lets you jump'
 arch=(x86_64)
 url='https://jumpfm.org/'
