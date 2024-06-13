@@ -1,8 +1,9 @@
 # Maintainer: <reg-archlinux AT klein DOT tuxli DOT ch> 
 
 _pkgname=overte
+_pkgname_addition="-nodebug"
 pkgname=${_pkgname}-appimage
-pkgver=2023.11.1
+pkgver=2024.06.1
 pkgrel=1
 pkgdesc="Overte open source virtual worlds platform. "
 arch=('x86_64')
@@ -10,9 +11,9 @@ url="https://github.com/overte-org/overte"
 license=('APACHE')
 options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
-source_x86_64=("${_appimage}::https://github.com/overte-org/overte/releases/download/${pkgver}/Overte-${pkgver}-x86_64.AppImage")
+source_x86_64=("${_appimage}::https://github.com/overte-org/overte/releases/download/${pkgver}/Overte-${pkgver}${_pkgname_addition}-x86_64.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('21f2e5bc0004ddbf0e2973950b84f672f464cf932e78468eb535c659730ebebc')
+sha256sums_x86_64=('c85faa1da6ebc01e85af4843cad93037b3282fd0f4719beba2356662b9bfbaac')
 
 prepare() {
     chmod +x "${_appimage}"
