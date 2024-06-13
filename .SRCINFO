@@ -1,12 +1,12 @@
 pkgbase = python-spherical_geometry
 	pkgdesc = Python based tools for spherical geometry
-	pkgver = 1.2.23
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = http://www.stsci.edu/resources/software_hardware/stsci_python
 	arch = i686
 	arch = x86_64
 	license = BSD-3-Clause
-	checkdepends = python-pytest
+	checkdepends = python-pytest-astropy-header
 	checkdepends = python-astropy
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
@@ -16,19 +16,18 @@ pkgbase = python-spherical_geometry
 	makedepends = python-numpy
 	makedepends = python-sphinx-automodapi
 	makedepends = python-numpydoc
-	makedepends = gcc13
-	source = https://files.pythonhosted.org/packages/source/s/spherical_geometry/spherical_geometry-1.2.23.tar.gz
+	source = https://files.pythonhosted.org/packages/source/s/spherical_geometry/spherical_geometry-1.3.2.tar.gz
 	source = fix_typo.patch
 	source = fix_doc_warning.patch
 	source = revert-inside-png-path.patch
-	md5sums = ad72571c6f83a80b49e033685a24d8c0
+	md5sums = f18f7a1f53a65ebdf94035dfeec8c6f7
 	md5sums = 376f76ebdf3c52048a113c386c091210
 	md5sums = fed5395d45a2275ccd5e0d63956ecddf
 	md5sums = ad61482f989d4df861753edc5af0f920
 
 pkgname = python-spherical_geometry
-	depends = python>=3.8
-	depends = python-numpy>=1.18
+	depends = python>=3.9
+	depends = python-numpy>=1.23
 	depends = qd>=2.3.24
 	depends = python-astropy>=5.0.4
 	optdepends = python-spherical_geometry-doc: Documentation for Spherical Geometry Toolkit
