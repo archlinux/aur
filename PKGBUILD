@@ -7,7 +7,7 @@ pkgdesc="Osmocom tool for Qualcomm DIAG"
 arch=('x86_64' 'i686')
 url="https://osmocom.org/projects/osmo-qcdiag"
 license=('GPL-2.0-or-later')
-depends=('libosmocore' 'libqmi')
+depends=('libosmocore-git' 'libqmi')
 makedepends=('git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver}")

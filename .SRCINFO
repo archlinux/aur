@@ -7,7 +7,7 @@ pkgbase = osmo-qcdiag-git
 	arch = i686
 	license = GPL-2.0-or-later
 	makedepends = git
-	depends = libosmocore
+	depends = libosmocore-git
 	depends = libqmi
 	provides = osmo-qcdiag=r97.aea8cb8
 	conflicts = osmo-qcdiag
