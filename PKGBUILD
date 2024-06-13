@@ -1,8 +1,8 @@
 # Maintainer: Kaiyang Wu <origincode@aosc.io>
 pkgname=ciel
 _pkgname=${pkgname}-rs
-pkgver=3.2.2
-pkgrel=1
+pkgver=3.2.6
+pkgrel=2
 pkgdesc="A tool for controlling multi-layer file systems and containers."
 arch=('i686' 'x86_64')
 url="https://github.com/AOSC-Dev/ciel-rs"
@@ -10,12 +10,27 @@ license=('MIT')
 depends=('systemd' 'dbus' 'openssl' 'libssh2' 'libgit2' 'xz')
 makedepends=('rust' 'make' 'gcc')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AOSC-Dev/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('227875288b0069bb22df8485e235c0d080c06fbb2f595dc07f9dfd4c20af09f1')
+sha256sums=('9bfbf9b803d94cd91c9cb0f111d63bff06f480cdc85ee07c13ce0da77d3b3788')
 conflicts=('ciel-git')
+
+prepare() {
+    cd ${_pkgname}-${pkgver}
+    export RUSTUP_TOOLCHAIN=stable
+    cargo update
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
 
 build() {
     cd ${_pkgname}-${pkgver}
-    LIBSSH2_SYS_USE_PKG_CONFIG=1 cargo build --release --locked --all-features --target-dir=target
+    export LIBSSH2_SYS_USE_PKG_CONFIG=1
+    CFLAGS+=' -ffat-lto-objects'
+    cargo build --release --frozen --all-features --target-dir=target
+}
+
+check() {
+    cd ${_pkgname}-${pkgver}
+    export RUSTUP_TOOLCHAIN=stable
+    cargo test --frozen --all-features
 }
 
 package() {
