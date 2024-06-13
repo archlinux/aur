@@ -6,21 +6,41 @@
 
 pkgname=firefox-vaapi
 _pkgname=firefox
-pkgver=126.0
+pkgver=127.0
 pkgrel=1
-pkgdesc="Standalone web browser from mozilla.org (with VA-API patches)"
+pkgdesc="Fast, Private & Safe Web Browser (with VA-API patches)"
 url="https://www.mozilla.org/firefox/"
 arch=(x86_64)
 license=(MPL-2.0)
 depends=(
+  alsa-lib
+  at-spi2-core
+  bash
+  cairo
   dbus
   ffmpeg
+  fontconfig
+  freetype2
+  gcc-libs
+  gdk-pixbuf2
+  glib2
+  glibc
   gtk3
+  hicolor-icon-theme
   libpulse
+  libx11
+  libxcb
+  libxcomposite
+  libxdamage
+  libxext
+  libxfixes
+  libxrandr
   libxss
   libxt
   mime-types
+  nspr
   nss
+  pango
   ttf-font
 )
 makedepends=(
@@ -50,7 +70,6 @@ optdepends=(
   'hunspell-en_US: Spell checking, American English'
   'libnotify: Notification integration'
   'networkmanager: Location detection via available WiFi networks'
-  'pulseaudio: Audio support'
   'speech-dispatcher: Text-to-Speech'
   'xdg-desktop-portal: Screensharing with Wayland'
 )
@@ -63,9 +82,9 @@ options=(
 )
 source=(
   https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz{,.asc}
-  firefox.desktop
-  identity-icons-brand.svg
-  https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/main/0001-Bug-1882209-Update-encoding_rs-to-0.8.34-to-deal-wit.patch
+  $_pkgname-symbolic.svg
+  $_pkgname.desktop
+  org.mozilla.$_pkgname.metainfo.xml
   0003-enable-vaapi.patch
   0004-remove-nvidia-blocklist.patch
 )
@@ -74,18 +93,18 @@ validpgpkeys=(
   # https://blog.mozilla.org/security/2023/05/11/updated-gpg-key-for-signing-firefox-releases/
   14F26682D0916CDD81E37B6D61B7B526D98F0353
 )
-sha256sums=('910e82a1999ec229e5bc5090a39cec9c575e8bafcac2c54f9bb5c699bd868526'
+sha256sums=('ea6b089ff046ca503978fdaf11ea123c64f66bbcdc4a968bed8f7c93e9994321'
             'SKIP'
-            '1f241fdc619f92a914c75aece7c7c717401d7467c9a306458e106b05f34e5044'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
-            '22c030ef8a047802ae56d20b1c2a6a3830e9a5ac4e5399163a2b57a1c09a20b2'
+            '1f241fdc619f92a914c75aece7c7c717401d7467c9a306458e106b05f34e5044'
+            '58d78ce57b3ee936bc966458d6b20ab142d02a897bbe924b3f26717af0c5bee1'
             '00c449422246283cd7e0bdc65d216fce4a42f755ad881106a08fb7d97eab1679'
             '75d3c213f3717cfc3f72acd4e3b6d029d373916f9ff9a1e8a3e2d7b0958760ed')
-b2sums=('9f40424502ccf7516b8b1142372ff816986c07646e88b3e69ca1a6a5173166a3b6c37696c99fbbaece23d01af51a76e56c19df3babc7af4e5d13e5821262ad1b'
+b2sums=('78fe92863389763759ce6e25dccc8adb19b8c35b59e591f40982fe5cd3b5511fee8f809567fa5aade68fcf3b40c1860f5e63aabdef0421c94b803d30d32d4988'
         'SKIP'
-        'd07557840097dd48a60c51cc5111950781e1c6ce255557693bd11306c7a9258b2a82548329762148f117b2295145f9e66e0483a18e2fe09c5afcffed2e4b8628'
         '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
-        '6b8b6fe5d658fd76844fc1d9f47b3892bcb5a59a8d10baabf7d52fb4f7c9e8f4858576859390e6d4c542d46cabb335cd06f8c4a80a7d5dde0868b29cd048d308'
+        'd07557840097dd48a60c51cc5111950781e1c6ce255557693bd11306c7a9258b2a82548329762148f117b2295145f9e66e0483a18e2fe09c5afcffed2e4b8628'
+        '2ce33432f8a73a4f1a412b7a065d3c124e1ca9f6bdf3fad0407e897efc0840f8ef43eeeb1b9bef4a102d9fac0b2c4a2ef205726b817f83fe9c3742d076778b14'
         'f84752e04c7e69b69158b9514a5227a2b71b60ccbbe5acb437d9830bfa2e725fe6784e1603890722a114abda424f9cafc007e9934310f21483b6540bc19da905'
         '87ecd8a3891a9a171173a97cf3b2b5f978be9ec876bb257d9f5e037f21dc5bd91167eabeb1c3cc181260b82cb2774c7b38ad73e1d807cc49b6d95617e2fb5d55')
 
@@ -104,9 +123,6 @@ _mozilla_api_key=e05d56db0a694edc8b5aaebda3f2db6a
 prepare() {
   mkdir mozbuild
   cd firefox-$pkgver
-
-  # Fix build with Rust 1.78.0
-  patch -Np1 -i ../0001-Bug-1882209-Update-encoding_rs-to-0.8.34-to-deal-wit.patch
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1809068
   # https://bbs.archlinux.org/viewtopic.php?id=281398
@@ -141,7 +157,7 @@ ac_add_options --with-distribution-id=org.archlinux
 ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
 export MOZILLA_OFFICIAL=1
-export MOZ_APP_REMOTINGNAME=${_pkgname//-/}
+export MOZ_APP_REMOTINGNAME=$_pkgname
 
 # Keys
 ac_add_options --with-google-location-service-api-keyfile=${PWD@Q}/google-api-key
@@ -173,6 +189,10 @@ build() {
   CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
   CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
 
+  # Breaks compilation since https://bugzilla.mozilla.org/show_bug.cgi?id=1896066
+  CFLAGS="${CFLAGS/-fexceptions/}"
+  CXXFLAGS="${CXXFLAGS/-fexceptions/}"
+
   # LTO needs more open files
   ulimit -n 4096
 
@@ -181,7 +201,7 @@ build() {
   cat >.mozconfig ../mozconfig - <<END
 ac_add_options --enable-profile-generate=cross
 END
-  ./mach build
+  ./mach build --priority normal
 
   echo "Profiling instrumented browser..."
   ./mach package
@@ -197,16 +217,16 @@ END
   test -s jarlog
 
   echo "Removing instrumented browser..."
-  ./mach clobber
+  ./mach clobber objdir
 
   echo "Building optimized browser..."
   cat >.mozconfig ../mozconfig - <<END
-ac_add_options --enable-lto=cross
+ac_add_options --enable-lto=cross,full
 ac_add_options --enable-profile-use=cross
 ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
 ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
 END
-  ./mach build
+  ./mach build --priority normal
 }
 
 package() {
@@ -264,11 +284,10 @@ END
     "$pkgdir/usr/share/icons/hicolor/384x384/apps/$_pkgname.png"
   install -Dvm644 browser/branding/$theme/content/about-logo.svg \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg"
-  install -Dvm644 ../identity-icons-brand.svg \
-    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$_pkgname-symbolic.svg"
 
-  install -Dvm644 ../${_pkgname}.desktop \
-    "$pkgdir/usr/share/applications/${_pkgname}.desktop"
+  install -Dvm644 ../$_pkgname-symbolic.svg -t "$pkgdir/usr/share/icons/hicolor/symbolic/apps"
+  install -Dvm644 ../$_pkgname.desktop -t "$pkgdir/usr/share/applications"
+  install -Dvm644 ../org.mozilla.$_pkgname.metainfo.xml -t "$pkgdir/usr/share/metainfo"
 
   # Install a wrapper to avoid confusion about binary path
   install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" <<END
@@ -297,3 +316,4 @@ END
 }
 
 # vim:set sw=2 sts=-1 et:
+
