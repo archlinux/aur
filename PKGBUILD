@@ -22,7 +22,7 @@ depends=(
     'hicolor-icon-theme'
     'json-glib'
     'libarchive'
-    'libportal'
+    'libportal-gtk3'
     'pango'
     'unzip'
     'zip'
