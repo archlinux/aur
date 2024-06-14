@@ -1,5 +1,5 @@
 [Unit]
-Description = hoarder browser
+Description = Hoarder browser
 Wants = network-online.target
 After = network-online.target
 

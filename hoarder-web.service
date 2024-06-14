@@ -1,7 +1,7 @@
 [Unit]
-Description = hoarder web
-Wants = network-online.target redis.service hoarder-workers.service meilisearch.service ollama.service
-After = network-online.target redis.service hoarder-workers.service meilisearch.service ollama.service
+Description = Hoarder web
+Wants = network-online.target redis.service hoarder-workers.service meilisearch.service
+After = network-online.target redis.service hoarder-workers.service meilisearch.service
 
 [Service]
 User = hoarder
