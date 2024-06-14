@@ -1,6 +1,6 @@
 pkgbase = yapet
 	pkgdesc = Yet Another Password Encryption Tool
-	pkgver = 2.5
+	pkgver = 2.6
 	pkgrel = 1
 	url = https://yapet.guengel.ch/
 	arch = x86_64
@@ -9,8 +9,7 @@ pkgbase = yapet
 	depends = ncurses
 	depends = openssl
 	depends = argon2
-	source = https://yapet.guengel.ch/downloads/yapet-2.5.tar.xz
-	sha256sums = af518e6f76fda72eef0530e431b54b8d252b4dd6b10c7d7765a9089f9b5ef142
+	source = https://yapet.guengel.ch/downloads/yapet-2.6.tar.xz
+	sha256sums = 54ca11c9c71d1bc530908f7f68d0a6021c871d283bdc1b421d8776ba8b456302
 
 pkgname = yapet
-

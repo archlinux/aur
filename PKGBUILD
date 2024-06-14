@@ -4,7 +4,7 @@
 # Contributor: teddy_beer_maniac <teddy_beer_maniac@wp.pl>
 
 pkgname=yapet
-pkgver=2.5
+pkgver=2.6
 pkgrel=1
 pkgdesc="Yet Another Password Encryption Tool"
 arch=('x86_64')
@@ -13,7 +13,7 @@ license=('GPL')
 depends=('ncurses' 'openssl' 'argon2')
 makedepends=('cppunit')
 source=(https://yapet.guengel.ch/downloads/$pkgname-$pkgver.tar.xz)
-sha256sums=('af518e6f76fda72eef0530e431b54b8d252b4dd6b10c7d7765a9089f9b5ef142')
+sha256sums=('54ca11c9c71d1bc530908f7f68d0a6021c871d283bdc1b421d8776ba8b456302')
 
 build() {
   cd "${srcdir}"/$pkgname-$pkgver
