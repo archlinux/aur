@@ -10,7 +10,7 @@ pkgname=(
   libxml2-docs
 )
 pkgver=2.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="XML C parser and toolkit"
 url="https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home"
 arch=(x86_64)
@@ -41,6 +41,13 @@ prepare() {
 
   # Use xmlconf from conformance test suite
   ln -s ../xmlconf
+
+  # Fix https://gitlab.gnome.org/GNOME/libxml2/-/issues/733
+  # (impacting systemd: https://github.com/systemd/systemd/issues/33302)
+  # parser: Make failure to load main document a warning
+  git cherry-pick -n 2608baaf92c7e3b90469cefdadb47cbde6039518
+  # xinclude: Don't raise error on empty nodeset
+  git cherry-pick -n 1aa37db04cf09bcdd0172333eb67bb6597ee75f6
 
   # Do not run fuzzing tests
   git apply -3 ../0001-HACK-Don-t-run-fuzzing-tests.patch
