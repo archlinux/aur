@@ -8,7 +8,7 @@ _buildver=242.16677.12
 _pkgver=2024.2
 _eap=true
 pkgver="${_pkgver}.${_buildver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Powerful Python and Django IDE, Early Access Program (EAP) build. Professional edition."
 arch=("any")
 options=("!strip")
@@ -35,7 +35,7 @@ else
     "${pkgname}.desktop")
 fi
 
-sha256sums=("138d1b58f390cb858c5fb33ce09745cf6b1ea64f2c0a5d6d56d95db5ea1c9b05"
+sha256sums=("538f180e935db1c3119c8e4965c8744840c18b12af24fdae0a8f95da066c06a7"
             "b76e9b0a64a62d0775b4fa98313f6cbc2c3a2306da3715cb1f855dea5736ece0")
 
 prepare() {
