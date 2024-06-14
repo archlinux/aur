@@ -1,7 +1,7 @@
 # Maintainer: Aikawa Yataro <aikawayataro at protonmail dot com>
 
 pkgname=cmake-pkg
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="pkg-config clone for CMake packages."
 arch=('any')
@@ -11,7 +11,7 @@ depends=('cmake')
 makedepends=('zig')
 
 source=("https://gitlab.com/yataro/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('42f801328366490addf9aa301b980cccdd937c66b416a05b08e9e6ba5dbd1350')
+sha256sums=('82eefffe4851b69b753b94a98eaf943733bebf1ac1e20d3a72fa3835d73ed589')
 
 
 
@@ -31,5 +31,9 @@ package() {
     cd "$pkgname-v$pkgver"
 
     cp -a build/* "$pkgdir"
-    install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+
+    install -Dm644 completions/bash/cmake-pkg -t "$pkgdir/usr/share/bash-completion/completions"
+    install -Dm644 completions/zsh/_cmake-pkg -t "$pkgdir/usr/share/zsh/site-functions"
+
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
