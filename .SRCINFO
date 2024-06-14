@@ -1,13 +1,15 @@
 pkgbase = fixit
 	pkgdesc = A utility to fix mistakes in your commands.
-	pkgver = 0.1.0_alpha
-	pkgrel = 5
+	pkgver = 0.2.0_alpha
+	pkgrel = 1
 	url = https://github.com/eugene-babichenko/fixit
 	arch = x86_64
+	arch = i686
 	arch = aarch64
+	arch = armv7h
 	license = MIT
 	makedepends = rust
-	source = fixit-0.1.0_alpha.tar.gz::https://github.com/eugene-babichenko/fixit/archive/v0.1.0-alpha.tar.gz
-	sha256sums = 015e87eea277ac069065792b7ebebf5056d5b96c7b3bd95aff1a51f3d761647a
+	source = fixit-0.2.0_alpha.tar.gz::https://github.com/eugene-babichenko/fixit/archive/v0.2.0-alpha.tar.gz
+	sha256sums = 889f36b70d00251bc03e9634e568c5228f168faf0fac9ca31a47247cc122b7ea
 
 pkgname = fixit
