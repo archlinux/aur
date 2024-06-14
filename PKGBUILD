@@ -2,7 +2,7 @@
 # Thanks to <mti at tillenius dot com> whose packages the ps7 packages were based on
 # Contributor: CrocoDuck <crocoduck dot oducks at gmail dot com>
 pkgname=ps7b_libusbtc08
-pkgver=2.0.139_1r6031
+pkgver=2.0.141_1r6044
 pkgrel=1
 pkgdesc="Early Access driver for Pico Technology PicoLog TC-08 Datalogger"
 arch=('x86_64')
@@ -19,7 +19,7 @@ options=(!strip)
 install=$pkgname.install
 changelog=
 source=("https://labs.picotech.com/rc/picoscope7/debian/pool/main/libp/libusbtc08/libusbtc08_${pkgver//_/-}_amd64.deb")
-md5sums=('4b683ea6792812ad7abd11d70666c9f1')
+md5sums=('89711e19af8f0a86d594c6095ed25473')
 
 package() {
   tar -xf data.tar.xz -C "${pkgdir}"
