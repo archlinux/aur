@@ -1,0 +1,16 @@
+pkgbase = aoruscontrol-bin
+	pkgdesc = Control Aorus Devices from the Terminal
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/SIMULATAN/aoruscontrol
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = aoruscontrol=1.0.0
+	conflicts = aoruscontrol
+	source_x86_64 = https://github.com/SIMULATAN/aoruscontrol/releases/download/1.0.0/AorusControl_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 93f4015f343a43f0419f9c50a6862fdc677ebc7771e8668ebbfcc11ece6006b4
+	source_aarch64 = https://github.com/SIMULATAN/aoruscontrol/releases/download/1.0.0/AorusControl_Linux_arm64.tar.gz
+	sha256sums_aarch64 = cd5127bbec08c1c010681b2aad57c8c98a3be4cafdf2fc6dee04b2a326edab98
+
+pkgname = aoruscontrol-bin
