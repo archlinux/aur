@@ -17,7 +17,7 @@ depends=(
   'python-jsonschema>=4.21.1'
 )
 
-makedepends=(python-build python-installer python-wheel git poetry)
+makedepends=(python-build python-installer python-wheel git python-poetry)
 
 source=("${_pkgname}::git+https://github.com/smitropoulos/blueblack.git")
 

@@ -9,7 +9,7 @@ pkgbase = blueblack-git
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = git
-	makedepends = poetry
+	makedepends = python-poetry
 	depends = python-yaml>=6.0.1
 	depends = python-requests>=2.31.0
 	depends = python-xdg-base-dirs
