@@ -1,7 +1,7 @@
 pkgbase = qtcreator-prerelease
 	pkgdesc = Qt Creator prerelease/latest
 	pkgver = 14.0.0beta1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://qt.io/ide
 	install = qtcreator-prerelease.install
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = qtcreator-prerelease
 	depends = qt6-tools
 	depends = qt6-declarative
 	depends = qt6-quickcontrols2
+	depends = litehtml
 	optdepends = qt6-doc: integrated Qt documentation
 	optdepends = qt6-examples: welcome page examples
 	optdepends = qt6-translations: for other languages
@@ -27,7 +28,6 @@ pkgbase = qtcreator-prerelease
 	optdepends = valgrind: analyze support
 	provides = qtcreator
 	conflicts = qtcreator
-	conflicts = litehtml
 	source = https://download.qt.io/development_releases/qtcreator/14.0/14.0.0-beta1/qt-creator-opensource-src-14.0.0-beta1.tar.xz
 	sha512sums = 0ed616fe0e0665a4e1ae1288dd21b62f1ed54b95dcc808c22d8ca0d83b5e17d20d7cc02382bc394b5bf5dfd4be2029c504c99e9aff6b52be55c469f66bae7eb0
 
