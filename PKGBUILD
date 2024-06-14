@@ -2,7 +2,7 @@
 
 pkgname=fixit
 pkgver=0.1.0_alpha
-pkgrel=1
+pkgrel=3
 url="https://github.com/eugene-babichenko/fixit"
 pkgdesc="A utility to fix mistakes in your commands."
 license=('MIT')
