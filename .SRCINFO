@@ -1,12 +1,12 @@
 pkgbase = kwin-effects-kinetic
 	pkgdesc = KWin effects optimized for a smooth and snappy KDE Plasma experience.
-	pkgver = 1.0
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://github.com/gurrgur/kwin-effects-kinetic
 	arch = any
 	license = GPL
 	depends = kwin
-	source = kwin-effects-kinetic-1.0.tar.gz::https://github.com/gurrgur/kwin-effects-kinetic/archive/1.0.tar.gz
-	sha512sums = aa7f105e88feecb7309d7e17b9bc45d24921ae62f3f51f3f34f5c6fcef47ca602fff7c3741a2f35700e772ce257e0264436b580795e32487d5dfa8dcf374b716
+	source = kwin-effects-kinetic-2.0.tar.gz::https://github.com/gurrgur/kwin-effects-kinetic/archive/2.0.tar.gz
+	sha512sums = 685794b21779fcaad0b769522af1afc3baa2b8b1a6ebaffeb194a2ec0239386a898993507a2b7a87b0278693eee81a3817cdafa93b58fba7048f8851004dd59e
 
 pkgname = kwin-effects-kinetic
