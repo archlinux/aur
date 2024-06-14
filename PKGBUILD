@@ -70,6 +70,7 @@ build() {
 
   # man docs
   cd "${srcdir}/${pkgname}"
+  sed -i '/ffplayout\/README\.md/d' scripts/man_create.sh
   ./scripts/man_create.sh
 
   # Backend build step
