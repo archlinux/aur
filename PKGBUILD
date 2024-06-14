@@ -2,12 +2,17 @@
 
 pkgname=xplayer-plparser
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Playlist parser for xplayer. X-Apps Project."
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
 depends=('gmime3' 'libsoup' 'libarchive' 'libquvi')
-makedepends=('meson' 'gtk-doc' 'gobject-introspection')
+makedepends=(
+    'meson'
+    'gtk-doc'
+    'gobject-introspection'
+    'glib2-devel'
+)
 provides=($pkgname)
 conflicts=('xplayer-plparser-git')
 url='https://github.com/linuxmint/xplayer-plparser'

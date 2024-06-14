@@ -1,7 +1,7 @@
 pkgbase = xplayer-plparser
 	pkgdesc = Playlist parser for xplayer. X-Apps Project.
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linuxmint/xplayer-plparser
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = xplayer-plparser
 	makedepends = meson
 	makedepends = gtk-doc
 	makedepends = gobject-introspection
+	makedepends = glib2-devel
 	depends = gmime3
 	depends = libsoup
 	depends = libarchive
