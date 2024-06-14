@@ -1,24 +1,23 @@
 # Maintainer: Cp Dong <cp-dong at outlook dot com>
 pkgname=apple-sf-script-extension-fonts
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc='Apple SF Script Extensions, containing SF Arabic, SF Armenian, SF Georgian and SF Hebrew, designed to fit with SF Pro for multilingual typesetting'
 arch=(any)
 url='https://developer.apple.com/fonts/'
 license=('custom')
-depends=()
+depends=('apple-fonts')
 makedepends=(p7zip)
-optdepends=('apple-fonts: Apple San Francisco, New York fonts')
 source=('https://devimages-cdn.apple.com/design/resources/download/SF-Arabic.dmg'
         'https://devimages-cdn.apple.com/design/resources/download/SF-Armenian.dmg'
         'https://devimages-cdn.apple.com/design/resources/download/SF-Georgian.dmg'
         'https://devimages-cdn.apple.com/design/resources/download/SF-Hebrew.dmg'
         'LICENSE.THE-APPLE-SAN-FRANCISCO-FONT')
 noextract=("${source[@]##*/}")
-sha256sums=('56f7e5f41c8ac30e79944dd14c8c784ce11fbb256410d08c6c72d81462e1a76a'
-            'a0948fea06a60cbb080a47aa380fb7472d8213e94eccdc9db25119953c75d794'
-            '0d60f262edb2ee4b80a8a3c33520981b0f48a7a21dbdd18c752002bac8842f91'
-            '2266990808ad3602277c1a278cf2119ba5c580dc12cf7d4bcc8b26be8c49d340'
+sha256sums=('d5c941a7e69e3d22cd47d26b4be8d1787ee9109b6c1fece9cec88128b42fbd4b'
+            '00332b773b25bc0400f5e2edcdf46d521f3d778f76d4d4755f8bdeb1d917cfb5'
+            '3bc1a6f5a1d728982d0cdf3c660352d1b4afed06f7ef45413ef033f1ec7770be'
+            '04f35fa56d704b21e0179da1e4867c20a70582f39400d20f3247d1718dff03ce'
             'd01bdb70f65b7c4df3da4dc2edd9ba1e65c4fb72cb5b39c226e19e2b1c44c178')
 
 prepare() {
