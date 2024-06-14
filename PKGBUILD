@@ -8,7 +8,7 @@ _nodejs="20.9.0"
 
 pkgname=${_pkgname}-electron
 pkgver=1.90.1.24165
-pkgrel=1
+pkgrel=2
 pkgdesc="VS Code without MS branding/telemetry/licensing. - System-wide Electron edition"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/VSCodium/vscodium"
@@ -148,9 +148,10 @@ package() {
 	# Symlink shell completions
 	install -d -m755 ${pkgdir}/usr/share/zsh/site-functions
 	install -d -m755 ${pkgdir}/usr/share/bash-completion/completions
-	ln -s /usr/share/${_pkgname}/resources/completions/zsh/_codium ${pkgdir}/usr/share/zsh/site-functions
-	ln -s /usr/share/${_pkgname}/resources/completions/bash/codium ${pkgdir}/usr/share/bash-completion/completions
+	# vscodium-electrion modification: Shell completion files changed locations
+	ln -s /usr/lib/${_pkgname}/completions/zsh/_codium ${pkgdir}/usr/share/zsh/site-functions
+	ln -s /usr/lib/${_pkgname}/completions/bash/codium ${pkgdir}/usr/share/bash-completion/completions
 
 	# vscodium-electron modification: Replace bundled ripgrep with system ripgrep
-	ln -sf /usr/bin/rg "$pkgdir/usr/lib/$_pkgname/node_modules.asar.unpacked/@vscode/ripgrep/bin/rg"
+	ln -sf /usr/bin/rg ${pkgdir}/usr/lib/$_pkgname/app/node_modules.asar.unpacked/@vscode/ripgrep/bin/rg
 }
