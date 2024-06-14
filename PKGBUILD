@@ -3,17 +3,16 @@
 # Contributor: Ricardo Catalinas Jiménez <jimenezrick@gmail.com>
 
 pkgname=erlang-docs
-pkgver=26.2.5
+pkgver=27.0
 pkgrel=1
 pkgdesc='HTML and PDF documentation for Erlang'
 arch=(any)
 url='http://erlang.org/doc/'
-license=(custom)
+license=(Apache-2.0)
 source=("https://github.com/erlang/otp/releases/download/OTP-$pkgver/otp_doc_html_$pkgver.tar.gz")
-b2sums=('2292745354b886beada8b26c2cf4c1fd43597829ced572adb9ca3412d9b82d9c97c8b543f4330496ab11be3fee0d80aea285019af1d5d302a4346cf05cbb3560')
+b2sums=('bae1425e3b43608c59975c7936e3e250ae9606acce34a7168c2ef1aba60a2956858e3a5cb4412f8ff937c93821110eae5f0d71b9378cce86d9ad9810f70510dc')
 
 package() {
   install -d "$pkgdir/usr/share/doc/erlang"
   cp -rf doc erts-* lib "$pkgdir/usr/share/doc/erlang"
-  install -Dm644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
