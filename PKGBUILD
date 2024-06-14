@@ -1,6 +1,6 @@
 # Maintainer: Enmanuel Moreira <enmanuelmoreira@gmail.com>
 pkgname=popeye-bin
-pkgver=0.20.5
+pkgver=0.21.3
 pkgrel=1
 pkgdesc='A Kubernetes cluster resource sanitizer'
 arch=('x86_64')
@@ -8,7 +8,7 @@ url='https://github.com/derailed/popeye'
 license=('Apache 2')
 provides=('popeye')
 source=("https://github.com/derailed/popeye/releases/download/v${pkgver}/popeye_Linux_amd64.tar.gz")
-sha256sums=('c2022a4ca7dd0b6062c5c87524bd6274519686f66534b6261be617dba97c5ecd')
+sha256sums=('4b497ee9c1a4a031064aebe220cf16c7d8579bdf766aced332553866217917c5')
 
 package() {
     mkdir -p "${pkgdir}/usr/bin"
