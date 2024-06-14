@@ -1,6 +1,6 @@
 pkgbase = python-torchio
 	pkgdesc = Tools for medical image processing in deep learning and PyTorch
-	pkgver = 0.19.6
+	pkgver = 0.19.7
 	pkgrel = 1
 	url = https://github.com/fepegar/torchio
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = python-torchio
 	depends = python-simpleitk
 	depends = python-torchvision
 	depends = python-tqdm
-	source = python-torchio-0.19.6.tar.gz::https://github.com/fepegar/torchio/archive/v0.19.6.tar.gz
-	sha512sums = e6b7dbcc45d75245bf605147cb26f50414b3ff3730d57dbf94eebbc79ec2128af4f730d51742cca5bf0cf421855b7275970d84ab51239ddd7b296b5e0fa4d7d5
+	source = python-torchio-0.19.7.tar.gz::https://github.com/fepegar/torchio/archive/v0.19.7.tar.gz
+	sha512sums = eaf6b5e2603fe71cabf560f6e4a83f83cf101f0a5acc30139f75b3be408b2bddd0bec10f2806d3e11d2b4dc48eecd65977121738800fc9d093237c8734973ae4
 
 pkgname = python-torchio
