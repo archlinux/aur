@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# Set permissions for the Go dir
+chmod -R 755 "$GOPATH"/pkg/mod/
+chown -R $USER:$USER "$GOPATH"/pkg/mod/
