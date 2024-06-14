@@ -4,10 +4,10 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-pcre2
-pkgver=10.43
+pkgver=10.44
 pkgrel=1
 arch=('any')
-pkgdesc="A library that implements Perl 5-style regular expressions (Android, ${_android_arch})"
+pkgdesc="A library that implements Perl 5-style regular expressions (Android ${_android_arch})"
 url="http://www.pcre.org/"
 license=("BSD")
 depends=('android-ndk')
@@ -17,7 +17,7 @@ makedepends=('android-configure'
              "android-${_android_arch}-readline"
              "android-${_android_arch}-zlib")
 source=("https://github.com/PhilipHazel/pcre2/releases/download/pcre2-$pkgver/pcre2-$pkgver.tar.bz2")
-md5sums=('c8e2043cbc4abb80e76dba323f7c409f')
+md5sums=('9d1fe11e2e919c7b395e3e8f0a5c3eec')
 
 build() {
     cd "${srcdir}/pcre2-${pkgver}"
@@ -40,6 +40,6 @@ package() {
     make DESTDIR="$pkgdir" install
     rm -r "${pkgdir}/${ANDROID_PREFIX_BIN}"
     rm -r "${pkgdir}/${ANDROID_PREFIX_SHARE}"
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
