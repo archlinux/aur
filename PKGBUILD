@@ -1,7 +1,7 @@
 # Maintainer: Evert Vorster <superchief@evertvorster.com>
 pkgname=oolite-git
-_gitname=oolite
-pkgver=1.91.0.7616.240527.f882b71.r0.f882b715d
+_gitname=oolite-git
+pkgver=1.91.0.7617.240614.f930b3a.r0.f930b3a96
 pkgrel=1
 pkgdesc="Open Source remake of Elite with many, many enhancements"
 arch=('x86_64')
@@ -38,9 +38,15 @@ prepare(){
   echo "Updating git submodules"
   git checkout -- .gitmodules
 
+# Workaround for missing textures and fonts (thanks Lone_Wolf)
+#  # http://aegidian.org/bb/viewtopic.php?f=9&t=20754
+#  rm deps/Linux-deps/include/png.h
+#  rm deps/Linux-deps/include/pngconf.h
+
+
   # Workaround for -Werror=format-security default flag from GNUstep
   sed -Ei 's|(include \$\(GNUSTEP_MAKEFILES\)/common\.make)|\1\nCCFLAGS += -Wno-error=format-security\nOPTFLAG += -Wno-error=format-security|' GNUmakefile
-  patch -Np1 -i ../../patch.patch
+#  patch -Np1 -i ../../patch.patch
 
 
 }
@@ -60,8 +66,8 @@ package() {
   mkdir -p ${pkgdir}/usr/bin
   mkdir -p ${pkgdir}/usr/share/{oolite,applications,pixmaps,doc/oolite}
   cp -r oolite.app/* ${pkgdir}/usr/share/oolite/
-  rm ${pkgdir}/usr/share/oolite/oolite
-  install -D -m755 oolite.app/oolite ${pkgdir}/usr/bin/oolite
+  pwd
+  install -D -m755 ../../oolite ${pkgdir}/usr/bin/oolite
   install -D -m644 installers/FreeDesktop/oolite-icon.png ${pkgdir}/usr/share/pixmaps/oolite-icon.png
   install -D -m644 installers/FreeDesktop/oolite.desktop ${pkgdir}/usr/share/applications/oolite.desktop
   install -D -m644 Doc/AdviceForNewCommanders.pdf Doc/OoliteReadMe.pdf Doc/OoliteRS.pdf ${pkgdir}/usr/share/doc/oolite/
