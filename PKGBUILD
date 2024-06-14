@@ -1,7 +1,7 @@
 # Maintainer: Dallo <dallo@tutanota.com>
 
 pkgname=surfshark-yac
-pkgver=2.4.1.3954
+pkgver=2.4.3.4018
 pkgrel=1
 pkgdesc="Yet another Surfshark VPN GUI Client for the AUR."
 arch=('x86_64')
@@ -12,8 +12,8 @@ options=('!strip' '!emptydirs')
 provides=("surfshark-yac")
 conflicts=("surfshark-yac")
 install=surfshark-yac.install
-source=("https://ocean.surfshark.com/debian/pool/main/s/surfshark_2.4.1_amd64.deb")
-sha256sums=('eb494c91f5132736be47d208d3399452111faa1185580f50e47a1960b08aa621')
+source=("https://ocean.surfshark.com/debian/pool/main/s/surfshark_2.4.3_amd64.deb")
+sha256sums=('3b207046aa7e0e31c55c63596f1457251d9fdf5dc1e306bba707702993ea9fd6aa621')
 
 package() {
 	# Extract package data
