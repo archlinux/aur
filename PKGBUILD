@@ -14,5 +14,5 @@ source=("${_pkgname}-${pkgver}-cp311-cp311-manylinux1_${arch}.whl::https://files
 sha256sums=('2a0f6984980779e6878a6cded52ee08806bae49af6bd209c7740549417e69e96')
 
 package() {
-    python -m installer --destdir="${pkgdir}" "${srcdir}/"*.whl
+    python3.11 -m installer --destdir="${pkgdir}" "${srcdir}/"*.whl
 }
