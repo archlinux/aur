@@ -216,6 +216,9 @@ package() {
     rm -f "${pkgdir}"/usr/lib/cmake/fmt/*
     rm -f "${pkgdir}"/usr/lib/libfmt.a
 
+    rm -f "${pkgdir}"/usr/include/tinyxml2.h
+    rm -f "${pkgdir}"/usr/lib/cmake/tinyxml2/*
+
     find "${pkgdir}" -type d -empty -delete
 
     cd "${srcdir}/${_pkgname}"
