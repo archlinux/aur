@@ -26,7 +26,7 @@ unset _pkgtype
 # basic info
 _pkgname="pcsx2"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=1.7.5870.r0.g7d53022
+pkgver=1.7.5891.r0.g480bd2d
 pkgrel=1
 pkgdesc='Sony PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
@@ -88,96 +88,28 @@ _main_package() {
 
   install="$_pkgname.install"
 
-  _pkgsrc="$_pkgname"
-  source=(
-    "$_pkgsrc"::"git+$url.git"
-    "pcsx2_patches"::"git+https://github.com/PCSX2/pcsx2_patches.git"
-  )
-  sha256sums=(
-    'SKIP'
-    'SKIP'
-  )
+  source=()
+  sha256sums=()
 
   _source_pcsx2
   _source_backtrace
   _source_shaderc
-
-  _source_biojppm_rapidyaml
-  _source_biojppm_c4core
 }
 
-# submodules
 _source_pcsx2() {
+  _pkgsrc="$_pkgname"
   source+=(
-    'biojppm.rapidyaml'::'git+https://github.com/biojppm/rapidyaml.git'
-    'fmtlib.fmt'::'git+https://github.com/fmtlib/fmt.git'
-    'google.googletest'::'git+https://github.com/google/googletest.git'
-    'khronosgroup.vulkan-headers'::'git+https://github.com/KhronosGroup/Vulkan-Headers.git'
-    #'microsoft.wil'::'git+https://github.com/microsoft/wil.git'
+    "$_pkgsrc"::"git+$url.git"
+    "pcsx2_patches"::"git+https://github.com/PCSX2/pcsx2_patches.git"
   )
   sha256sums+=(
     'SKIP'
     'SKIP'
-    'SKIP'
-    'SKIP'
-    #'SKIP'
   )
 
   _prepare_pcsx2() (
     cd "$_pkgsrc"
-    local _submodules=(
-      'biojppm.rapidyaml'::'3rdparty/rapidyaml/rapidyaml'
-      'fmtlib.fmt'::'3rdparty/fmt/fmt'
-      'google.googletest'::'3rdparty/gtest'
-      'khronosgroup.vulkan-headers'::'3rdparty/vulkan-headers'
-      #'microsoft.wil'::'3rdparty/wil'
-    )
-    _submodule_update
-
     sed -E -e 's&"shaderc_shared"&"'"shaderc_$_pkgname"'"&' -i "pcsx2/GS/Renderers/Vulkan/VKShaderCache.cpp"
-  )
-}
-
-_source_biojppm_rapidyaml() {
-  source+=(
-    'biojppm.c4core'::'git+https://github.com/biojppm/c4core.git'
-  )
-  sha256sums+=(
-    'SKIP'
-  )
-
-  _prepare_biojppm_rapidyaml() (
-    cd "$_pkgsrc"
-    cd '3rdparty/rapidyaml/rapidyaml'
-    local _submodules=(
-      'biojppm.c4core'::'ext/c4core'
-    )
-    _submodule_update
-  )
-}
-
-_source_biojppm_c4core() {
-  source+=(
-    'biojppm.cmake'::'git+https://github.com/biojppm/cmake.git'
-    'biojppm.debugbreak'::'git+https://github.com/biojppm/debugbreak.git'
-    'fastfloat.fast_float'::'git+https://github.com/fastfloat/fast_float.git'
-  )
-  sha256sums+=(
-    'SKIP'
-    'SKIP'
-    'SKIP'
-  )
-
-  _prepare_biojppm_c4core() (
-    cd "$_pkgsrc"
-    cd '3rdparty/rapidyaml/rapidyaml'
-    cd 'ext/c4core'
-    local _submodules=(
-      'biojppm.cmake'::'cmake'
-      'biojppm.debugbreak'::'src/c4/ext/debugbreak'
-      'fastfloat.fast_float'::'src/c4/ext/fast_float'
-    )
-    _submodule_update
   )
 }
 
@@ -328,9 +260,6 @@ prepare() {
   _prepare_pcsx2
   _prepare_shaderc
 
-  _prepare_biojppm_rapidyaml
-  _prepare_biojppm_c4core
-
   # prevent march=native
   sed -E -e 's@^(\s*)(add_compile_options\(.*march=native.*\))@\1message("skip: march=native")@' \
     -i "$_pkgsrc/cmake/BuildParameters.cmake"
@@ -372,7 +301,7 @@ package() {
   # libraries
   local _shaderc_patched="$pkgdir/opt/$_pkgname/libshaderc_$_pkgname.so.1"
   install -Dm644 "$srcdir/deps/usr/lib/libshaderc_shared.so.1" "$_shaderc_patched"
-  patchelf --set-soname "libshaderc_patched.so.1" "$_shaderc_patched"
+  patchelf --set-soname "libshaderc_$_pkgname.so.1" "$_shaderc_patched"
 
   # icon
   install -Dm644 "$_pkgsrc/bin/resources/icons/AppIconLarge.png" \
