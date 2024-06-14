@@ -21,7 +21,7 @@ build() {
   cd "$pkgname-${pkgver//_/-}"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release
+  cargo build --frozen --release --target "$(rustc -vV | sed -n 's/host: //p')
 }
 
 package() {
