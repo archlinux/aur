@@ -69,6 +69,7 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "$srcdir/$_pkgname"
+    git checkout f0c2832d031640f9e833ac0589b47b54dabbdf0d
     git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
