@@ -1,0 +1,17 @@
+pkgbase = paraview-medreader
+	pkgdesc = ParaView MEDReader plugin
+	pkgver = 9.12.0
+	pkgrel = 1
+	url = https://docs.salome-platform.org/latest/dev/PARAVIS/
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	makedepends = fast_float
+	depends = paraview
+	depends = medcoupling
+	source = git+https://git.salome-platform.org/gitpub/modules/paravis.git#tag=V9_12_0
+	source = git+https://git.salome-platform.org/gitpub/tools/configuration.git#tag=V9_12_0
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = paraview-medreader
