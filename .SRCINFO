@@ -19,6 +19,7 @@ pkgbase = nymvpn-x
 	depends = glib2
 	depends = openssl
 	depends = libsoup
+	optdepends = nym-vpnd: NymVPN daemon as a systemd service
 	provides = nymvpn-x
 	conflicts = nymvpn-x
 	source = nymvpn-x-0.1.1.tar.gz::https://github.com/nymtech/nym-vpn-client/archive/refs/tags/nym-vpn-x-v0.1.1.tar.gz
