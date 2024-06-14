@@ -1,12 +1,12 @@
 pkgbase = metalcloud-cli-bin
 	pkgdesc = A command line tool for metal-stack cloud services
-	pkgver = 0.2.3
-	pkgrel = 2
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://github.com/metal-stack-cloud/cli
 	arch = x86_64
 	license = MIT
 	provides = metal
-	source = metalcloud-cli-0.2.3-2::https://github.com/metal-stack-cloud/cli/releases/download/v0.2.3/metal-linux-amd64
-	md5sums = ca858868e4825f7dba2b86fe041681d6
+	source = metalcloud-cli-0.3.0-1::https://github.com/metal-stack-cloud/cli/releases/download/v0.3.0/metal-linux-amd64
+	md5sums = af21c8696eeb63ad3fe205fda81c6271
 
 pkgname = metalcloud-cli-bin
