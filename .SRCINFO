@@ -1,26 +1,19 @@
 pkgbase = med
-	pkgdesc = Modelisation et Echanges de Donnees, i.e. Data Modelization and Exchanges - code-aster exchange module linked to hdf5. Without openmpi.
-	pkgver = 4.0.0
-	pkgrel = 7
+	pkgdesc = MED: interoperable format for data interchange between mesh based solvers
+	pkgver = 5.0.0
+	pkgrel = 1
 	url = https://www.salome-platform.org/downloads
 	arch = x86_64
-	license = LGPL
+	license = LGPL-3.0
 	makedepends = gcc-fortran
 	makedepends = swig
 	makedepends = cmake
 	depends = hdf5
 	depends = tk
 	depends = python
-	source = http://files.salome-platform.org/Salome/other/med-4.0.0.tar.gz
-	source = https://gist.githubusercontent.com/jedbrown/527ef81ff59a0dccf833da40fdd15a47/raw/7482f9a42fdd277f5f9cf0167ea7a3381032ca7a/hdf5-1.12.patch
-	source = pycompile.patch
-	sha256sums = a474e90b5882ce69c5e9f66f6359c53b8b73eb448c5f631fa96e8cd2c14df004
-	sha256sums = 82d28b6ae2ee6ceb3c6de9acb861a49741e2e759c7c556217f7d284216788206
-	sha256sums = fec659efc391376eeb73c2e749d98ae504a178dde2d2e9d7b81d26537a043300
+	source = https://files.salome-platform.org/Salome/medfile/med-5.0.0.tar.bz2
+	source = hdf5-1.14.patch
+	sha256sums = 267e76d0c67ec51c10e3199484ec1508baa8d5ed845c628adf660529dce7a3d4
+	sha256sums = SKIP
 
 pkgname = med
-
-pkgname = med-docs
-	arch = any
-	depends = 
-
