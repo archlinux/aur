@@ -1,6 +1,6 @@
 # Maintainer: Chris Rizzitello <sithlord48@gmail.com>
 pkgname=libff7tk-git
-pkgver=1.0.0.16
+pkgver=1.2.0.0
 pkgrel=1
 provides=("libff7tk=${pkgver}")
 conflicts=('libff7tk')

@@ -1,6 +1,6 @@
 pkgbase = libff7tk-git
 	pkgdesc = Final Fantasy 7 Tool library
-	pkgver = 1.0.0.16
+	pkgver = 1.2.0.0
 	pkgrel = 1
 	url = https://github.com/sithlord48/ff7tk
 	install = libff7tk-git.install
@@ -20,7 +20,7 @@ pkgbase = libff7tk-git
 	depends = qt6-declarative
 	depends = qt6-5compat
 	depends = zlib
-	provides = libff7tk=1.0.0.16
+	provides = libff7tk=1.2.0.0
 	conflicts = libff7tk
 	options = !strip
 	source = ff7tk::git+https://github.com/sithlord48/ff7tk.git
