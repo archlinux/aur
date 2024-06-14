@@ -4,7 +4,7 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo at gmail dot com>
 
 pkgname=geary-git
-pkgver=44.0.r86.gf39839a92
+pkgver=46.0.r3.g8d111ef65
 pkgrel=1
 pkgdesc="An email application built around conversations, for the GNOME 3 desktop."
 arch=(i686 x86_64)
@@ -13,7 +13,7 @@ license=('GPL3')
 depends=(folks pango gdk-pixbuf2 libhandy icu dconf libsecret webkit2gtk-4.1
          libgoa gsound hicolor-icon-theme libstemmer at-spi2-core libsoup3 gtk3
          json-glib libgee libxml2 cairo enchant gcr gspell glibc libunwind
-         glib2 libpeas libytnef gmime3 sqlite)
+         glib2 libpeas libytnef gmime3 sqlite appstream-glib)
 makedepends=(git gobject-introspection itstool meson vala)
 conflicts=(geary)
 source=('git+https://gitlab.gnome.org/GNOME/geary.git')
