@@ -1,6 +1,6 @@
 pkgbase = beekeeper-studio-git
 	pkgdesc = Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more
-	pkgver = 4.3.4.r1.g7822155
+	pkgver = 4.4.0.r1.g0ea794e
 	pkgrel = 1
 	url = https://www.beekeeperstudio.io/
 	arch = any
@@ -11,9 +11,10 @@ pkgbase = beekeeper-studio-git
 	makedepends = nvm
 	makedepends = gendesk
 	makedepends = python>=3.8
-	makedepends = base-devel
 	makedepends = gcc
+	makedepends = cmake
 	depends = electron18
+	depends = openssl
 	source = beekeeper-studio.git::git+https://github.com/beekeeper-studio/beekeeper-studio.git
 	source = beekeeper-studio.sh
 	sha256sums = SKIP
