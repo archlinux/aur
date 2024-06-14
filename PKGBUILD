@@ -3,8 +3,8 @@
 _name='chompjs'
 _framework='python'
 pkgname="${_framework}-${_name}"
-pkgver=1.2.3
-pkgrel=2
+pkgver=1.2.4
+pkgrel=1
 pkgdesc='Parsing JavaScript objects into Python data structures'
 arch=('any')
 url="https://github.com/Nykakin/${_name}"
@@ -16,10 +16,10 @@ depends=(
 	'python>=3'
 )
 source=(
-	"${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/1f/58/afbd1a858cb037a6d65a4e9506fe433bd09a4152a5922196744636e67c0d/${_name}-${pkgver}.tar.gz"
+	"${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/2a/7a/a8c24d8822edf1143aa1f5febd0c445ccd594183949d47ee925908f27bab/${_name}-${pkgver}.tar.gz"
 )
 provides=("${_framework}-${_name}")
-b2sums=('4e0b6c484876ab651d560f26acf58340231df65b4c22347175b1f75bbbac6f57d6be4597cd32873e4cd1f2ab0eedae2ebb3d41b381913a24675494c91f608fe7')
+b2sums=('66c04675d251989dc59f5355a3e64961c2f70163c7ec63610fe8ee09cd2ffba348c3d9e2a276ea5178ed00f732bcd8d77d1318a0002eabec9cca069ba1ac2117')
 
 build() {
 	cd "${srcdir}/${_name}-${pkgver}"
