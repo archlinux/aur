@@ -6,6 +6,7 @@ pkgbase = python-cplex
 	arch = x86_64
 	license = custom
 	makedepends = python-installer
+	depends = python311
 	source = cplex-22.1.1.2-cp311-cp311-manylinux1_x86_64.whl::https://files.pythonhosted.org/packages/59/10/af7410d6568df0a78e442ccd3a1a11a21c0633a3f4c17544c5632a3a40da/cplex-22.1.1.2-cp311-cp311-manylinux1_x86_64.whl
 	sha256sums = 2a0f6984980779e6878a6cded52ee08806bae49af6bd209c7740549417e69e96
 
