@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=escrcpy
-pkgver=1.19.1
+pkgver=1.19.3
 _electronversion=30
 _nodeversion=20
 pkgrel=1
@@ -27,7 +27,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('fa55517f321b43cc8a350dd9f775d13c204d3288b3128bf858b52d2b71b479f6'
+sha256sums=('b21bdc77419c742ec5c5ef1e58fc63009f3841cb9eff2c86f787ecbc9d3962bc'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -63,8 +63,8 @@ build() {
     fi
     sed "s|--linux|-l --dir|g" -i package.json
     sed "s|logo.icns|logo.png|g" -i electron-builder.json
-    yarn install --cache-folder "${srcdir}/.yarn_cache"
-    yarn run build:linux
+    NODE_ENV=development yarn install --cache-folder "${srcdir}/.yarn_cache" --force
+    NODE_ENV=production yarn run build:linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
