@@ -1,7 +1,7 @@
 # Maintainer: Stefanos Mitropoulos stefmitropoulos@gmail.com
 _pkgname="blueblack"
 pkgname="${_pkgname}-git"
-pkgver=1.0.2.r2.gf1006edd
+pkgver=1.0.3.r2.ge0a681a3
 pkgrel=1
 pkgdesc="Automatically switch between light/dark mode"
 arch=('any')
@@ -17,7 +17,7 @@ depends=(
   'python-jsonschema>=4.21.1'
 )
 
-makedepends=(python-build python-installer python-wheel git)
+makedepends=(python-build python-installer python-wheel git poetry)
 
 source=("${_pkgname}::git+https://github.com/smitropoulos/blueblack.git")
 
