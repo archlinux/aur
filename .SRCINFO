@@ -1,15 +1,15 @@
 pkgbase = azcopy-bin
 	pkgdesc = A command-line utility that you can use to copy data to and from containers and file shares in Azure Storage accounts.
-	pkgver = 10.24.0
-	pkgrel = 4
+	pkgver = 10.25.1
+	pkgrel = 1
 	url = https://github.com/Azure/azure-storage-azcopy
 	arch = x86_64
 	license = MIT
-	provides = azcopy=10.24.0
+	provides = azcopy=10.25.1
 	conflicts = azcopy
-	source = LICENSE-10.24.0::https://raw.githubusercontent.com/Azure/azure-storage-azcopy/v10.24.0/LICENSE
+	source = LICENSE-10.25.1::https://raw.githubusercontent.com/Azure/azure-storage-azcopy/v10.25.1/LICENSE
 	sha256sums = e9ca6f8518c969a4d3bb98030581771975a90730a27d294123855c90a31eddcc
-	source_x86_64 = https://aka.ms/downloadazcopy-v10-linux
-	sha256sums_x86_64 = 4932dd2bd3b97631938ab2bf9f73b73a7a2a9b62f0daa9341006fc64c4833883
+	source_x86_64 = azcopy-bin-10.25.1-x86_64::https://aka.ms/downloadazcopy-v10-linux
+	sha256sums_x86_64 = a5d29be02ca7176fb4e3afe3f5ba83ab2ef8d95ecab71629e0df48f34eff6c55
 
 pkgname = azcopy-bin
