@@ -1,6 +1,6 @@
 # Maintainer: Axel Navarro <navarroaxel gmail>
 pkgname=webtorrent-cli
-pkgver=5.1.0
+pkgver=5.1.1
 pkgrel=1
 pkgdesc="The streaming torrent client. For the command line."
 arch=(any)
@@ -10,7 +10,7 @@ depends=(nodejs)
 makedepends=(git npm)
 provides=(webtorrent)
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/webtorrent/$pkgname/archive/v$pkgver.tar.gz)
-sha256sums=('46eae46b6855467465df24a7d548eceb679275eb72e6c6cac03e616a3f47cf50')
+sha256sums=('ae498cdf17cf78070282bce57161d7485eecb49b2a08fb741893afa0853c5cd6')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
