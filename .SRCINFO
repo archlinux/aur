@@ -1,0 +1,17 @@
+pkgbase = asciibox
+	pkgdesc = An auxiliary tool to simplify write svgbob and asciidoc
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://github.com/NObodyGX/asciibox
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = rust
+	depends = gtk4
+	depends = libadwaita
+	source = https://github.com/NObodyGX/asciibox/archive/refs/tags/v0.8.2.tar.gz
+	sha256sums = 9410de12fee15c1803496234a6b732ab41ed2543ea9359df83f5d0dd98269645
+
+pkgname = asciibox
