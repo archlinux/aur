@@ -2,7 +2,7 @@
 
 _pkgname=ipe-tools
 pkgname=$_pkgname-git
-pkgrel=9
+pkgrel=10
 pkgver=git
 arch=('i686' 'x86_64')
 makedepends=('git' 'sed')
@@ -11,12 +11,14 @@ url="https://github.com/otfried/ipe-tools"
 pkgdesc="Tools for Ipe: pdftoipe, figtoipe, ipe5toxml, svgtoipe"
 source=("git+https://github.com/otfried/ipe-tools.git"
         "0001-pdftoipe-fix-building-with-poppler-22.03.0.patch"
+        "c++20.patch"
         "fix-poppler-22.09-65586fcd9cc39e482ae5a9abdb6f4932d9bb88c4.patch")
 
 prepare() {
     cd "$srcdir/ipe-tools"
     patch -p1 < "$srcdir/0001-pdftoipe-fix-building-with-poppler-22.03.0.patch"
     patch -p1 < "$srcdir/fix-poppler-22.09-65586fcd9cc39e482ae5a9abdb6f4932d9bb88c4.patch"
+    patch -p1 < "$srcdir/c++20.patch"
 }
 
 build() {
@@ -56,4 +58,5 @@ package() {
 # vim: ft=sh syn=sh et ts=2 sw=2
 md5sums=('SKIP'
          'fa23828c2d7fdf2d86460a6a443a4a37'
+         '80be8c994d310165d2d34163e7481b84'
          '27d3f2c2421d4aa9e49c727c3ce786bf')
