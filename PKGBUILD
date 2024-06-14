@@ -8,7 +8,7 @@ _nodejs="20.9.0"
 
 pkgname=${_pkgname}-electron
 pkgver=1.90.1.24165
-pkgrel=2
+pkgrel=3
 pkgdesc="VS Code without MS branding/telemetry/licensing. - System-wide Electron edition"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/VSCodium/vscodium"
@@ -133,7 +133,8 @@ package() {
 	# vscodium-electron modification: Only install licenses, files and shell completions under resources/
 	install -Dm644 ${srcdir}/${_pkgname}/VSCode-linux-${_vscode_arch}/resources/app/LICENSE.txt -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
 	install -Dm644 ${srcdir}/${_pkgname}/VSCode-linux-${_vscode_arch}/resources/app/ThirdPartyNotices.txt -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
-	cp -r --no-preserve=ownership --preserve=mode ${srcdir}/${_pkgname}/VSCode-linux-${_vscode_arch}/resources/!(LICENSE.txt|ThirdPartyNotices.txt) "$pkgdir/usr/lib/${_pkgname}/"
+	cp -r --no-preserve=ownership --preserve=mode ${srcdir}/${_pkgname}/VSCode-linux-${_vscode_arch}/resources/app/!(LICENSE.txt|ThirdPartyNotices.txt) "$pkgdir/usr/lib/${_pkgname}/"
+	cp -r --no-preserve=ownership --preserve=mode ${srcdir}/${_pkgname}/VSCode-linux-${_vscode_arch}/resources/completions "$pkgdir/usr/lib/${_pkgname}/"
 
 	# vscodium-electron modification: Use custom launcher scripts
 	install -Dm755 "${srcdir}/vscodium-electron.sh" "${pkgdir}/usr/bin/${_pkgname}"
@@ -153,5 +154,5 @@ package() {
 	ln -s /usr/lib/${_pkgname}/completions/bash/codium ${pkgdir}/usr/share/bash-completion/completions
 
 	# vscodium-electron modification: Replace bundled ripgrep with system ripgrep
-	ln -sf /usr/bin/rg ${pkgdir}/usr/lib/$_pkgname/app/node_modules.asar.unpacked/@vscode/ripgrep/bin/rg
+	ln -sf /usr/bin/rg ${pkgdir}/usr/lib/$_pkgname/node_modules.asar.unpacked/@vscode/ripgrep/bin/rg
 }
