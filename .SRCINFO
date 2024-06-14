@@ -1,7 +1,7 @@
 pkgbase = zfind
 	pkgdesc = Search for files (even inside tar/zip/7z/rar) using a SQL-WHERE filter
 	pkgver = 0.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/laktak/zfind
 	arch = x86_64
 	arch = arm64
