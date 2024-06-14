@@ -1,7 +1,7 @@
 # Maintainer: AntiCompositeNumber <anticompositenumber at gmail dot com>
 pkgname=fresh-node
 pkgver=24.05.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Wikimedia tool to create Docker containers for running isolated npm tests"
 arch=('any')
 url="https://gerrit.wikimedia.org/g/fresh"
@@ -30,5 +30,5 @@ package() {
 	cd "$pkgname-$pkgver"
 	install -Dm644 LICENSE-0BSD "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm755 -t "$pkgdir/usr/bin/" bin/fresh-node*
-    ln -s /usr/bin/fresh-node18 "$pkgdir/usr/bin/fresh-node"
+    ln -s /usr/bin/fresh-node20 "$pkgdir/usr/bin/fresh-node"
 }

@@ -1,7 +1,7 @@
 pkgbase = fresh-node
 	pkgdesc = Wikimedia tool to create Docker containers for running isolated npm tests
 	pkgver = 24.05.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gerrit.wikimedia.org/g/fresh
 	arch = any
 	license = custom:0BSD
