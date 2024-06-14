@@ -1,0 +1,19 @@
+pkgbase = flatpak-ext
+	pkgdesc = Tool for run flatpaks without installing them
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/ryanabx/flatpak-ext
+	arch = x86_64
+	license = MIT
+	makedepends = clang
+	makedepends = rust
+	depends = flatpak
+	depends = gcc-libs
+	depends = glib2
+	depends = glibc
+	depends = hicolor-icon-theme
+	options = !debug
+	source = https://github.com/ryanabx/flatpak-ext/archive/v0.1.3/flatpak-ext-0.1.3.tar.gz
+	b2sums = 030f1514b13d9a26e7cc7b40698f13040815b94ee6f996c31f1bc869bd3cd9f8b0f05b1be6e84b7dffd1b3603915f86c9f91f6db2e6cfc5c57b71f3b1e52d58d
+
+pkgname = flatpak-ext
