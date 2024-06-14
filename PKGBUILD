@@ -35,7 +35,6 @@ build() {
 
     # build web
     cd "${pkgbase}"
-    corepack disable
     pnpm install
     cd packages/db
     pnpm dlx @vercel/ncc build migrate.ts -o ../../db_migrations
