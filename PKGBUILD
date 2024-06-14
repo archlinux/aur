@@ -1,7 +1,7 @@
 # Maintainer: ihipop <ihipop at gmail dot com>
 _pkgname=proxyman
 pkgname="${_pkgname}-bin"
-pkgver=2.14.0
+pkgver=2.15.0
 pkgrel=1
 pkgdesc="Proxyman is a native, high-performance app, which enables developers to capture, inspect, and manipulate HTTP/HTTPS requests/responses with ease."
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
     "LICENSE.md"
 )
 sha256sums=(
-            '3a5318fc80ba3e776486ec5f23dc8599ae92a619beff6a5311e051a6a4d30477'
+            '123596da00344f813940275739886c292963a4d895b50ba780018089a8f59217'
             '1f06e6dbbba57c36ef98daa6ad4893b944494b1e20bcf477eb78580476205f9a'
            )
 build() {
@@ -26,7 +26,7 @@ build() {
     rm -f  "${srcdir}"*.AppImage
     sed "s|Exec=AppRun|Exec=env APPDIR=/opt/${_pkgname} ${_pkgname}|g;s|Icon=proxyman|Icon=/opt/${_pkgname}/.DirIcon|g" \
         -i "${srcdir}/squashfs-root/proxyman.desktop"
-    find -type d -exec chmod 755 {} \;
+    find . -type d -exec chmod 755 {} \;
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{opt/${_pkgname},usr/bin,usr/share/applications}
