@@ -1,7 +1,7 @@
 pkgbase = enhancd
 	pkgdesc = A next-generation cd command with your interactive filter
 	pkgver = 2.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/babarot/enhancd
 	install = enhancd.install
 	arch = any

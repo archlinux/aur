@@ -1,7 +1,7 @@
 # Maintainer: Debucquoy Anthony (tonitch) <d.tonitch@gmail.com>
 pkgname=enhancd
 pkgver=2.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A next-generation cd command with your interactive filter "
 arch=(any)
 url="https://github.com/babarot/enhancd"
@@ -14,7 +14,7 @@ sha256sums=('93a3b935a9e9d9e7201827e7b45ee52df8eb77caf4bd93552f8fecc5fb634e28'
 
 prepare(){
 	cd $pkgname-$pkgver/
-	git apply ../0001-Do-not-quote-multiple-lines-to-deal-as-single-line-2.patch
+	patch -p1 < ../0001-Do-not-quote-multiple-lines-to-deal-as-single-line-2.patch
 }
 
 package() {
