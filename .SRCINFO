@@ -1,7 +1,7 @@
 pkgbase = kpxcpc-git
 	pkgdesc = A non-featureful KeePassXC-proxy command line client
 	pkgver = latest
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/nwwdles/kpxcpc
 	arch = x86_64
 	license = MIT

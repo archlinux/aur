@@ -2,7 +2,7 @@
 
 pkgname=kpxcpc-git
 pkgver=latest
-pkgrel=1
+pkgrel=2
 pkgdesc="A non-featureful KeePassXC-proxy command line client"
 arch=('x86_64')
 url="https://gitlab.com/nwwdles/kpxcpc"
