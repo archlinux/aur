@@ -1,6 +1,6 @@
 pkgbase = xplayer-git
 	pkgdesc = Simple media player. X-Apps Project (git version).
-	pkgver = 2.4.4.r4.ga97dd8d
+	pkgver = 2.4.4.r5.g56839ed
 	pkgrel = 1
 	url = https://github.com/linuxmint/xplayer
 	arch = i686
@@ -16,6 +16,7 @@ pkgbase = xplayer-git
 	makedepends = lirc
 	makedepends = zeitgeist
 	makedepends = grilo
+	makedepends = glib2-devel
 	depends = clutter-gtk
 	depends = clutter-gst
 	depends = xplayer-plparser

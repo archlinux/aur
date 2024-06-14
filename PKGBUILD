@@ -2,7 +2,7 @@
 
 pkgname=xplayer-git
 _pkgbasename=xplayer
-pkgver=2.4.4.r4.ga97dd8d
+pkgver=2.4.4.r5.g56839ed
 pkgrel=1
 pkgdesc="Simple media player. X-Apps Project (git version)."
 arch=('i686' 'x86_64' 'armv7h')
@@ -18,6 +18,7 @@ makedepends=(
     'git'
     'gnome-common' 'gtk-doc' 'gobject-introspection' 'vala'
     'python-pylint' 'lirc' 'zeitgeist' 'grilo'
+    'glib2-devel'
 )
 optdepends=(
     'gst-libav: Extra media codec support'
