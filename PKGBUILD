@@ -1,14 +1,16 @@
 # Maintainer: tarball <bootctl@gmail.com>
+# Contributors: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=shpool
 pkgver=0.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Think tmux, then aim... lower'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://github.com/shell-pool/shpool'
 license=(Apache-2.0)
 depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
+checkdepends=('fish' 'less' 'zsh')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha512sums=('0e12a2c4c1a9113c271f88eb32c278b232ae74c88927829c03d10fac4246349843b14752b702e337b70f6fdcc30f948f5819e736c3f6b6913f28b3426b021c39')
 
@@ -19,7 +21,9 @@ build() {
 
 check() {
   cd $pkgname-$pkgver
-  cargo test --release --locked
+
+  XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-$PWD/test-run}" \
+    cargo test --locked
 }
 
 package() {
@@ -29,7 +33,7 @@ package() {
     "$pkgdir/usr/bin/$pkgname"
 
   install -Dm644 README.md -t \
-    "$pkgdir/usr/share/doc/$pkgname"
+    "$pkgdir/usr/share/doc/$pkgname/"
 
   install -Dm644 systemd/shpool.service -t \
     "$pkgdir/usr/lib/systemd/user/"

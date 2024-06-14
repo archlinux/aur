@@ -1,13 +1,16 @@
 pkgbase = shpool
 	pkgdesc = Think tmux, then aim... lower
 	pkgver = 0.6.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/shell-pool/shpool
 	arch = i686
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
 	license = Apache-2.0
+	checkdepends = fish
+	checkdepends = less
+	checkdepends = zsh
 	makedepends = cargo
 	depends = glibc
 	depends = gcc-libs
