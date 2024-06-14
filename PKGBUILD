@@ -23,7 +23,6 @@ makedepends=('python-setuptools-scm'
 checkdepends=('python-pytest-astropy-header'
               'python-pytest-doctestplus'
               'python-pytest-remotedata'
-              'python-pytest-xdist'
               'python-dust-extinction'
               'python-specutils')   # astropy scipy already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")

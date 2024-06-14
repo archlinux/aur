@@ -9,7 +9,6 @@ pkgbase = python-synphot
 	checkdepends = python-pytest-astropy-header
 	checkdepends = python-pytest-doctestplus
 	checkdepends = python-pytest-remotedata
-	checkdepends = python-pytest-xdist
 	checkdepends = python-dust-extinction
 	checkdepends = python-specutils
 	makedepends = python-setuptools-scm
