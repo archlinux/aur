@@ -1,0 +1,11 @@
+--- a/tools/Makefile.am	2024-06-14 18:33:01.676519269 +0300
++++ b/tools/Makefile.am	2024-06-14 18:36:44.504460572 +0300
+@@ -93,8 +93,3 @@
+ 				"\"}," \
+ 			}' \
+ 		$< > $@ || ( $(RM) -f $@ ; exit 1 )
+-
+-fxt_print.1: fxt_print
+-	help2man --version-string=$(VERSION) -N -n "Dump the content of an FxT trace file" --output=$@ ./$<
+-
+-man1_MANS = fxt_print.1
