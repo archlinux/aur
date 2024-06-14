@@ -1,7 +1,7 @@
 pkgbase = dia-git
 	pkgdesc = A GTK+ based diagram creation program
 	pkgver = 6872.aad567a2c
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wiki.gnome.org/action/show/Apps/Dia
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -10,6 +10,7 @@ pkgbase = dia-git
 	makedepends = intltool
 	makedepends = dblatex
 	makedepends = appstream-glib
+	makedepends = glib2-devel
 	depends = poppler
 	depends = python-gobject
 	depends = libxslt
