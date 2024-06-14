@@ -1,2 +1,1 @@
-新增一些漢字，[詳情按此查看](https://github.com/lxgw/LxgwXiHei/blob/main/documentation/changelog/20240606.md)。
-調整以下漢字：詼。
+新增更多簡化字，[詳情按此查看](https://github.com/lxgw/LxgwXiHei/blob/main/documentation/changelog/20240608.md)。
