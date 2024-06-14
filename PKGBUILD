@@ -4,35 +4,18 @@ _pkgbase=asus-numberpad-driver
 pkgbase="${_pkgbase}-git"
 pkgname=(
     "${_pkgbase}-b7402-git"
-    "${_pkgbase}-b7402-unicode-git"
-    "${_pkgbase}-b7402-non-unicode-git"
     "${_pkgbase}-e210ma-git"
-    "${_pkgbase}-e210ma-unicode-git"
-    "${_pkgbase}-e210ma-non-unicode-git"
     "${_pkgbase}-g513-git"
-    "${_pkgbase}-g513-unicode-git"
-    "${_pkgbase}-g513-non-unicode-git"
     "${_pkgbase}-g533-git"
-    "${_pkgbase}-g533-unicode-git"
-    "${_pkgbase}-g533-non-unicode-git"
     "${_pkgbase}-gx551-git"
-    "${_pkgbase}-gx551-unicode-git"
-    "${_pkgbase}-gx551-non-unicode-git"
     "${_pkgbase}-gx701-git"
-    "${_pkgbase}-gx701-unicode-git"
-    "${_pkgbase}-gx701-non-unicode-git"
     "${_pkgbase}-up5401ea-git"
-    "${_pkgbase}-up5401ea-unicode-git"
-    "${_pkgbase}-up5401ea-non-unicode-git"
+    "${_pkgbase}-up5401ea-3145-git"
     "${_pkgbase}-ux433fa-git"
-    "${_pkgbase}-ux433fa-unicode-git"
-    "${_pkgbase}-ux433fa-non-unicode-git"
     "${_pkgbase}-ux581l-git"
-    "${_pkgbase}-ux581l-unicode-git"
-    "${_pkgbase}-ux581l-non-unicode-git"
 )
 pkgver=r817.08a2027
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux newest feature-rich configurable driver for Asus numberpad"
 arch=('any')
 url="https://github.com/asus-linux-drivers/asus-numberpad-driver"
