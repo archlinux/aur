@@ -1,6 +1,6 @@
 pkgbase = gwe
 	pkgdesc = A system utility for controlling NVIDIA GPUs
-	pkgver = 0.15.7
+	pkgver = 0.15.9
 	pkgrel = 1
 	url = https://gitlab.com/leinardi/gwe
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = gwe
 	depends = python-requests
 	depends = python-reactivex
 	optdepends = libappindicator-gtk3: tray support
-	source = https://gitlab.com/leinardi/gwe/-/archive/0.15.7/gwe-0.15.7.tar.gz
-	sha256sums = 537c13b47ebe1df8940a807f562ac6c50bff19d8b2d85e32542bd0110406f643
+	source = https://gitlab.com/leinardi/gwe/-/archive/0.15.9/gwe-0.15.9.tar.gz
+	sha256sums = d430b5a7cbac42d06708a6af27f013ac17773d184403e6e088bf6193a014ccb2
 
 pkgname = gwe
