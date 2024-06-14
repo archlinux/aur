@@ -42,12 +42,14 @@ prepare() {
   # Use xmlconf from conformance test suite
   ln -s ../xmlconf
 
-  # Fix https://gitlab.gnome.org/GNOME/libxml2/-/issues/733
-  # (impacting systemd: https://github.com/systemd/systemd/issues/33302)
-  # parser: Make failure to load main document a warning
-  git cherry-pick -n 2608baaf92c7e3b90469cefdadb47cbde6039518
-  # xinclude: Don't raise error on empty nodeset
-  git cherry-pick -n 1aa37db04cf09bcdd0172333eb67bb6597ee75f6
+  # https://gitlab.gnome.org/GNOME/libxml2/-/issues/732
+  git cherry-pick -n 8322eef39d775b1c16a5895a77da53d82653a04e \
+                     9ecabe1c2461dc4aa28a75bb9c889f82e37a5786
+
+  # https://gitlab.gnome.org/GNOME/libxml2/-/issues/733
+  # https://github.com/systemd/systemd/issues/33302
+  git cherry-pick -n aa90cb0c578bd189089cd1fe195faf85040ac98b \
+                     c04d9b1b87eaf5c12f70173762f8c81c34e59aeb
 
   # Do not run fuzzing tests
   git apply -3 ../0001-HACK-Don-t-run-fuzzing-tests.patch
