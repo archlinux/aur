@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=phytools
-_pkgver=2.1-1
+_pkgver=2.3-0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Phylogenetic Tools for Comparative Biology (and Other Things)"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -14,6 +14,7 @@ depends=(
   r-clustergeneration
   r-coda
   r-combinat
+  r-deoptim
   r-doparallel
   r-expm
   r-foreach
@@ -32,8 +33,8 @@ optdepends=(
   r-rgl
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b03442df6f468772b8da8784eef396e2')
-b2sums=('699e9fa0c09ce3850d10a2caac64204feac28afb9fa6f976f72fc69c939086a432afdcef7aeede5ec0c44f0919e614a98106bc84dee9f16e00a355aed629410f')
+md5sums=('2915ac3b549fff920e8de6ea55ad6592')
+b2sums=('c07623c5bdad025474f1e622a2cb755fbc6792de899b45425566ac9035e2d8eb23c9f5e4f7a99910ff8a497f701e22117e306b92242fbb1d43655f40173d3957')
 
 build() {
   mkdir build
