@@ -5,6 +5,7 @@ pkgbase = kwin-effects-kinetic
 	url = https://github.com/gurrgur/kwin-effects-kinetic
 	arch = any
 	license = GPL
+	makedepends = zip
 	depends = kwin
 	source = kwin-effects-kinetic-2.0.tar.gz::https://github.com/gurrgur/kwin-effects-kinetic/archive/2.0.tar.gz
 	sha512sums = 685794b21779fcaad0b769522af1afc3baa2b8b1a6ebaffeb194a2ec0239386a898993507a2b7a87b0278693eee81a3817cdafa93b58fba7048f8851004dd59e
