@@ -5,7 +5,7 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-pango
-pkgver=1.52.2
+pkgver=1.54.0
 pkgrel=1
 arch=('any')
 pkgdesc="A library for layout and rendering of text (Android ${_android_arch})"
@@ -20,23 +20,21 @@ makedepends=('android-meson'
              'gobject-introspection')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://gitlab.gnome.org/GNOME/pango/-/archive/$pkgver/pango-$pkgver.tar.bz2")
-md5sums=('0be3c92b57b623eb499bce3db58bef6a')
+md5sums=('60f3bb303e1f30a7cd0cfda4a7eaeff6')
 
 build() {
     cd "${srcdir}/pango-${pkgver}"
     source android-env ${_android_arch}
 
-    mkdir -p build
-    cd build
-    android-${_android_arch}-meson
-    ninja
+    android-${_android_arch}-meson build
+    ninja -C build
 }
 
 package() {
-    cd "${srcdir}/pango-${pkgver}/build"
+    cd "${srcdir}/pango-${pkgver}"
     source android-env ${_android_arch}
 
-    DESTDIR="${pkgdir}" ninja install
+    DESTDIR="${pkgdir}" ninja install -C build
     rm -rf "${pkgdir}/${ANDROID_PREFIX_BIN}"
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
 }
