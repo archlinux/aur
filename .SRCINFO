@@ -10,7 +10,8 @@ pkgbase = moonlight-qt
 	depends = qt6-svg
 	depends = ffmpeg
 	depends = sdl2_ttf
-	optdepends = libva-intel-driver: hardware acceleration for Intel GPUs
+	optdepends = libva-intel-driver: hardware acceleration for Intel GPUs GMA 4500 (2008) up to Coffee Lake (2017)
+	optdepends = intel-media-driver: hardware acceleration for Intel GPUs starting from Broadwell (2014) and newer (e.g. Intel Arc)
 	source = https://github.com/moonlight-stream/moonlight-qt/releases/download/v6.0.0/MoonlightSrc-6.0.0.tar.gz
 	sha256sums = 07655598f82d607dbf20b484a45a46db2496764a4bbb7a18e66f066564a83b89
 
