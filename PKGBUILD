@@ -12,7 +12,7 @@
 _fragment="${FRAGMENT:-#branch=master}"
 
 pkgname=upbge-git
-pkgver=143395.bb472f87d6c
+pkgver=143892.b5e8d115361
 pkgrel=1
 pkgdesc="Uchronia Project Blender Game Engine fork of Blender Game Engine"
 arch=('i686' 'x86_64')
@@ -45,15 +45,12 @@ source=("upbge::git+https://github.com/UPBGE/upbge${_fragment}"
         'blender/dev_tools::git+https://github.com/blender/blender-dev-tools'
         'blender/assets::svn+https://svn.blender.org/svnroot/bf-blender/trunk/lib/assets'
         # Patches...
-        '0001-use-github.com-for-make-update-git.patch'
-        '0004-fix-opencollada-pcre.patch' #fix broken search for opencollada pcre
-        )
+        '0001-use-github.com-for-make-update-git.patch')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '0bb8ac4cba0ac00999790087c51e601d185b78a96081f08a7c7afb8c0f4b0d7c'
-            '6beedc541e33288a282f57cd2bd09860f333154027b6175e9f61cce49b8db5df')
+            '0bb8ac4cba0ac00999790087c51e601d185b78a96081f08a7c7afb8c0f4b0d7c')
 
 pkgver() {
 	cd "$srcdir/upbge"
