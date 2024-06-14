@@ -1,0 +1,3 @@
+[yuki-iptv-bin]
+source = "git"
+git = "https://codeberg.org/Ame-chan-angel/yuki-iptv.git"
