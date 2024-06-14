@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ddcutil-service
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="A Dbus ddcutil server for control of DDC Monitors/VDUs"
 arch=('x86_64')
@@ -8,11 +8,14 @@ url="https://github.com/digitaltrails/ddcutil-service"
 license=('GPL-2.0-or-later')
 depends=('ddcutil')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b034284ccc098c94de5d2780ac2685270f7d3944a5cde68aa7176241d00c72b0')
+sha256sums=('f0e898d07fb5587bb77870fc95f44fcf7ef0d1443e7bace05dc6d662d96be2a2')
 
 prepare() {
   cd "$pkgname-$pkgver"
   make clean
+
+  # comment local build option
+  sed -i 's/CFLAGS_DDCUTIL = -isystem $(HOME)\/Downloads\/ddcutil-2.1.5-dev-clion/#CFLAGS_DDCUTIL = -isystem $(HOME)\/Downloads\/ddcutil-2.1.5-dev-clion/g' Makefile
 }
 
 build() {
