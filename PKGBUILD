@@ -1,15 +1,18 @@
-# Maintainer: Yuan Zhou <xyyqzy@hotmail.com>
+# Maintainer: Pierce Thompson <pierce at insprill dot net>
 
 _pkgname=i3lock-fancy-rapid
 pkgname=$_pkgname-git
-pkgver=r18.c70ecfa
-pkgrel=1
+pkgver=r19.6eeebd4
+pkgrel=2
 pkgdesc="A faster implementation of i3lock-fancy"
 arch=('x86_64')
 url="https://github.com/yvbbrjdr/$_pkgname"
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('i3lock' 'libx11')
-makedepends=('libx11')
+makedepends=('git')
+optdepends=('i3lock: Locking support')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 source=("$pkgname::git+$url")
 sha512sums=('SKIP')
 
