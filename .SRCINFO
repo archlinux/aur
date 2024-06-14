@@ -1,6 +1,6 @@
 pkgbase = catppuccin-whiskers-bin
 	pkgdesc = Soothing port creation tool for the high-spirited!
-	pkgver = 2.3.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/catppuccin/whiskers
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = catppuccin-whiskers-bin
 	conflicts = whiskers
 	conflicts = whiskers-bin
 	conflicts = catppuccin-whiskers-bin
-	source = https://github.com/catppuccin/whiskers/releases/download/v2.3.0/whiskers-x86_64-unknown-linux-gnu
-	sha256sums = c1f6588ad551ac54ff1316b17dafb5edd77f97b1054d26479299366190bc2833
+	source = https://github.com/catppuccin/whiskers/releases/download/v2.4.0/whiskers-x86_64-unknown-linux-gnu
+	sha256sums = 9efd348dbbae5b9f7da58602130ab1b26066198f010a464eb1482a9687b606e2
 
 pkgname = catppuccin-whiskers-bin
