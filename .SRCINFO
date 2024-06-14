@@ -1,6 +1,6 @@
 pkgbase = wordgen-bin
 	pkgdesc = A CLI program that prints random words generated from the EFF Large Wordlist.
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/wordgen/cli
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = wordgen-bin
 	conflicts = wordgen
 	options = !strip
 	options = !debug
-	source = https://github.com/wordgen/cli/releases/download/v0.1.0/wordgen-linux-amd64
-	source = https://github.com/wordgen/cli/releases/download/v0.1.0/LICENSE
-	sha256sums = ce4b5a3717de290f475e711f051eb32e4d78bce65c9a94516d9cf3563ed2d5cb
+	source = https://github.com/wordgen/cli/releases/download/v0.2.0/wordgen-linux-amd64
+	source = https://github.com/wordgen/cli/releases/download/v0.2.0/LICENSE
+	sha256sums = 5af1fe4483d8f564abc67081be1b48e6c6e3c6e261aa8c1cf025ef1309e86f57
 	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
 
 pkgname = wordgen-bin
