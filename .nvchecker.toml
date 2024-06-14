@@ -1,0 +1,5 @@
+[droidcam]
+source = "github"
+github = "dev47apps/droidcam-linux-client"
+use_max_tag = true
+prefix = "v"
