@@ -1,9 +1,9 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=oqsprovider
 _pkgname=oqs-provider
-pkgver=0.6.0
+pkgver=0.6.1
 _pkgverliboqs=0.10.1
-pkgrel=4
+pkgrel=1
 pkgdesc="OpenSSL 3 provider containing post-quantum algorithms"
 arch=(x86_64)
 url=https://openquantumsafe.org/applications/tls.html#oqs-openssl-provider
@@ -25,7 +25,7 @@ source=(
     $pkgname-$pkgver.tar.gz::https://github.com/open-quantum-safe/$_pkgname/archive/refs/tags/$pkgver.tar.gz
     liboqs-$_pkgverliboqs.tar.gz::https://github.com/open-quantum-safe/liboqs/archive/refs/tags/$_pkgverliboqs.tar.gz
 )
-b2sums=('0426042cad8c1e039c16f673b2411e5dc2ee487c65b295c230cc697e2fd98c175a9158e4ef407440d8fd7b4a10ce607576afc3903d5da268d2dcae7046e8ec76'
+b2sums=('8b6d7852bc460c95ed1701673f4af538844ee38881c868caf2c753480e02d7855bc539c16edb5e28384abd63866b8d38b983651fb4d40e34657778e5b6481dde'
         '7f5f59641734d9827323b116822bf0204c7390abcf3e899b638c9f2ee7acc2c79511bb53b91e8c5d1f6bf4c8b63191f8df8fef0054020d3a38f7af3ddf33c424')
 
 prepare() {
