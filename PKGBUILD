@@ -1,8 +1,8 @@
 # Maintainer: Nate Simon <njsimon10@gmail.com>
 
 pkgname=xplayer
-pkgver=2.4.2
-pkgrel=5
+pkgver=2.4.4
+pkgrel=1
 pkgdesc="Simple media player. X-Apps Project."
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
@@ -30,7 +30,7 @@ conflicts=('xplayer-git')
 url='https://github.com/linuxmint/xplayer'
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/linuxmint/${pkgname}/archive/${pkgver}.tar.gz" '0001-type-cast-compiler-errors.patch')
-md5sums=('00bfa48048b789cc0e79b3b0e38df117' '920687067445959857f14e000bab2b14')
+md5sums=('535e2fac8ba729d218d00ec31a7ef80d' '920687067445959857f14e000bab2b14')
 
 prepare() {
     cd ${srcdir}/${pkgname}-${pkgver}
