@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/hir0xygen/sentinelguard"
 license=('MIT')
 depends=('glibc')
-makedepends=('gcc', 'git' 'cmake' 'make')
+makedepends=('gcc' 'git' 'cmake' 'make')
 source=("git+https://github.com/hir0xygen/sentinelguard.git")
 md5sums=('SKIP')
 

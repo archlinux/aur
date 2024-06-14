@@ -5,9 +5,11 @@ pkgbase = sentinelguard
 	url = https://github.com/hir0xygen/sentinelguard
 	arch = x86_64
 	license = MIT
+	makedepends = gcc
 	makedepends = git
 	makedepends = cmake
 	makedepends = make
+	depends = glibc
 	source = git+https://github.com/hir0xygen/sentinelguard.git
 	md5sums = SKIP
 
