@@ -4,7 +4,7 @@
 # Contributor: Hodong Kim <https://gitlab.com/hodong>
 
 pkgname=nimf
-pkgver=1.3.1
+pkgver=1.3.5
 pkgrel=1
 epoch=1
 pkgdesc='a lightweight, fast and extensible input method framework'
@@ -19,6 +19,7 @@ depends=(gtk3
          wayland
          wayland-protocols)
 makedepends=(anthy
+             glib2-devel
              gtk-doc
              gtk2
              intltool
@@ -31,8 +32,8 @@ makedepends=(anthy
 optdepends=('brise: Rime schema repository'
             'noto-fonts-cjk: Google Noto CJK fonts')
 _archive="$pkgname-$pkgver"
-source=("$url/archive/$pkgver/$_archive.tar.gz")
-sha256sums=('330d382fdc0799a98e5ee0ba7330fd55b0d10346b4ffd19901d8d86de817d4c7')
+source=("$url/archive/v$pkgver/$_archive.tar.gz")
+sha256sums=('c52ed9a1cbc441c3026aa48346153b9a8711071765986269373143cd574cefca')
 
 prepare() {
 	cd "$_archive"
