@@ -6,7 +6,7 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-librsvg
-pkgver=2.58.0
+pkgver=2.58.1
 pkgrel=1
 arch=('any')
 pkgdesc="SVG rendering library (Android ${_android_arch})"
@@ -23,7 +23,7 @@ makedepends=('android-configure'
              'android-rust')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://gitlab.gnome.org/GNOME/librsvg/-/archive/${pkgver}/librsvg-${pkgver}.tar.bz2")
-md5sums=('d05753b55dd5cd59cfa6f9b7cc7b151c')
+md5sums=('43ea095ba01ff3cad6d7d6860543527e')
 
 prepare() {
     cd "${srcdir}/librsvg-$pkgver"
@@ -60,6 +60,6 @@ package() {
     make DESTDIR="$pkgdir" install
     rm -rf "${pkgdir}/${ANDROID_PREFIX_BIN}"
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}/"{doc,man}
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
