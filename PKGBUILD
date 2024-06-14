@@ -10,7 +10,7 @@ license=('MIT')
 depends=('rust' 'gtk4' 'libadwaita')
 makedepends=('git' 'meson' 'ninja')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('9410de12fee15c1803496234a6b732ab41ed2543ea9359df83f5d0dd98269645')
+sha256sums=('64e606fca4873efc72d5a33a758dd9587510c53b3c1ccac0dfee0562f9fa3b8a')
 
 build() {
     cd "$srcdir/${pkgname}-${pkgver}"
