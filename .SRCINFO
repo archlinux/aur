@@ -1,0 +1,12 @@
+pkgbase = cargo-godot
+	pkgdesc = Cargo helper to improve godot rust developement experience.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/sanpii/cargo-godot
+	arch = x86_64
+	license = MIT
+	depends = cargo
+	source = 0.3.0.tar.gz::https://crates.io/api/v1/crates/cargo-godot/0.3.0/download
+	sha256sums = b75a3bf3bc7a97602233d7554ea2a3fc451ccc647decbc6323181a20538c328b
+
+pkgname = cargo-godot
