@@ -1,7 +1,7 @@
 # Maintainer: lafleur <lafleur at boum dot org>
 pkgname=conduit-bin
 _pkgname=${pkgname/-bin/}
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="stable, binary, static versions of the Conduit server (Matrix protocol)"
 arch=('x86_64' 'aarch64')
@@ -28,7 +28,7 @@ package() {
   install -vDm644 tmpfiles.conf "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf"
 }
 
-sha256sums=('27f0b70dd359ce09372484fd2f511877e198c134a620e801025095510b8a46a9'
+sha256sums=('59289b3d3b4b20684acb86033477ffab18a82947cb6559b37772da02507ec1d9'
             '1c5f53cc49bae88b80281ab6edcf08e18430e5db668eaa186b8be4928f850594'
             '4316952810a2295b81d7faf3e28c371dd63629671c4b7e3c39bfbae5ab9e2db6'
             '0f454a2a5af857fe978e2276798fb357b4578c6ee705664a794426c8b7576a4c')
