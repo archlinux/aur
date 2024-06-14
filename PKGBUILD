@@ -2,9 +2,9 @@
 # Contributor: PolpOnline <aur at t0mmy dot anonaddy dot com>
 pkgname=gitify
 _pkgname=Gitify
-pkgver=5.7.0
-_electronversion=30
-_nodeversion=20
+pkgver=5.8.1
+_electronversion=31
+_nodeversion=20.14.2
 pkgrel=1
 pkgdesc="GitHub notifications on your menu bar."
 arch=('any')
@@ -18,7 +18,7 @@ makedepends=(
     'gendesk'
     'nvm'
     'npm'
-    'pnpm'
+    'pnpm>=9.3.0'
     'icoutils'
     'curl'
 )
@@ -26,7 +26,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('089f89697688a9f03bc6f9d2d1380292065e9145c819a831527c9b87d2c5d0b2'
+sha256sums=('e581c7740b7f51cd095f5b8eeb2f6e3093f89aad3cb0a7ca7aba1c7df6985673'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -62,9 +62,9 @@ build() {
     fi
     sed 's|"AppImage", "deb", "rpm", "snap"|"dir"|g;/packageManager/d' -i package.json
     icotool -x assets/images/app-icon.ico -o assets/images/app-icon.png
-    pnpm install
-    pnpm run build
-    pnpm run make:linux
+    NODE_ENV=development pnpm install
+    NODE_ENV=production pnpm build
+    pnpm make:linux --publish=never
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
