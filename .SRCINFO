@@ -1,7 +1,7 @@
 pkgbase = incron-next
 	pkgdesc = Maintainable fork for incron package. MRs are welcome
 	pkgver = 0.5.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dpvpro/incron-next
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -17,6 +17,6 @@ pkgbase = incron-next
 	sha256sums = SKIP
 	sha256sums = e5da0a3af368c286fa2b180015c9efc5aef5018c271a16620b8c30bfe6f9ccc2
 	sha256sums = 422c4a715da4037550d2f97de28f47f91d0b58983c188c6cf1d1233370e048a4
-	sha256sums = 5ff72411c704dd38823892d7fd13992509c3d906bfe0b4a5cafbe382e4e01c24
+	sha256sums = 3da9f54cf3b86a8195bd76c7e35ebd197f0b4935215b71f49fa9d05114204ed9
 
 pkgname = incron-next
