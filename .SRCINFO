@@ -8,6 +8,7 @@ pkgbase = nym-vpnd
 	makedepends = rust
 	makedepends = cargo
 	makedepends = go
+	makedepends = protobuf
 	depends = glibc
 	depends = gcc-libs
 	depends = dbus
