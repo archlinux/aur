@@ -3,7 +3,7 @@
 
 pkgname=i3pystatus-git
 pkgdesc="i3status replacement written in python for the i3 window manager"
-pkgver=3.35.r405.g5cbb062
+pkgver=3.35.r407.gf3c539a
 pkgrel=1
 arch=('any')
 url="https://github.com/enkore/i3pystatus"
