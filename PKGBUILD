@@ -36,15 +36,15 @@ sha512sums=('44df5fdc148c99dbdecd668b0a8a5fb02d5d81fce78fd5930c4b82aee0d237681f0
 package() {
 	mkdir -p ${pkgdir}/usr
 	cp -a ${srcdir}/${_target}-cross/* ${pkgdir}/usr
+  
+	rm -f   ${pkgdir}/usr/*-manifest.txt
+  rm -f   ${pkgdir}/usr/bin/runtest
+  rm -f   ${pkgdir}/usr/lib/lib*
+  rm -f   ${pkgdir}/usr/lib/bfd-plugins/libdep.a
+  rm -rf  ${pkgdir}/usr/libexec
+  rm -rf  ${pkgdir}/usr/include
+  rm -rf  ${pkgdir}/usr/share/{dejagnu,doc,gcc-*,gdb,info,locale}
+  rm -rf  ${pkgdir}/usr/share/man/{man1/runtest.1,man5,man7}
 
-	rm -f 	${pkgdir}/usr/*-manifest.txt
-	rm -f 	${pkgdir}/usr/bin/runtest
-	rm -f 	${pkgdir}/usr/lib/lib*
-	rm -rf 	${pkgdir}/usr/include
-	rm -rf 	${pkgdir}/usr/share/{dejagnu,doc,gcc-*,gdb,info,locale}
-	rm -rf 	${pkgdir}/usr/share/man/{man1/runtest.1,man5,man7}
-	rm -rf 	${pkgdir}/usr/share/info
-	rm -rf  ${pkgdir}/usr/lib/bfd-plugins/libdep.so
-	rm -rf  ${pkgdir}/usr/lib/bfd-plugins/libdep.a
 }
 
