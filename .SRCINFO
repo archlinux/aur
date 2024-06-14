@@ -37,6 +37,7 @@ pkgbase = lime3ds
 	depends = libinih
 	depends = openal
 	depends = enet
+	depends = zydis
 	conflicts = lime3ds-appimage
 	conflicts = lime3ds-git
 	options = lto
