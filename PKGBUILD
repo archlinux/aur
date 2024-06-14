@@ -59,6 +59,7 @@ makedepends=(
   ## duckstation
   'qt6-tools'
   'qt6-wayland'
+  'spirv-cross'
 
   ## shaderc
   'spirv-headers'
