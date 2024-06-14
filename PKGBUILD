@@ -9,6 +9,7 @@ url="https://www.quantum-espresso.org/"
 license=('GPL2')
 depends=('openmpi' 'glibc' 'libgfortran.so' 'intel-oneapi-mkl')
 makedepends=('gcc-fortran' 'cmake' 'gcc')
+checkdepends=('python')
 source=("https://gitlab.com/QEF/q-e/-/archive/qe-${pkgver}/q-e-qe-${pkgver}.tar.gz")
 sha256sums=('2c58b8fadfe4177de5a8b69eba447db5e623420b070dea6fd26c1533b081d844')
 
