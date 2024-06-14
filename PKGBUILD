@@ -6,7 +6,7 @@
 
 pkgname=libopenshot
 pkgver=0.3.2
-pkgrel=10
+pkgrel=11
 pkgdesc="A video editing, animation, and playback library for C++, Python, and Ruby"
 arch=(x86_64)
 url="https://github.com/openshot/libopenshot"
@@ -28,7 +28,7 @@ makedepends=(
   cmake
   cppzmq
   doxygen
-  ffmpeg
+  ffmpeg4.4
   jsoncpp
   libopenshot-audio
   protobuf
@@ -62,6 +62,7 @@ build() {
     -W no-dev
   )
 
+  export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
   cmake "${cmake_options[@]}"
   cmake --build build
 }
@@ -74,7 +75,7 @@ check() {
 
 package() {
   depends+=(
-    ffmpeg libavcodec.so libavformat.so libavutil.so libswscale.so libswresample.so
+    ffmpeg4.4 libavcodec.so libavformat.so libavutil.so libswscale.so libswresample.so
     jsoncpp libjsoncpp.so
     libopenshot-audio libopenshot-audio.so
     protobuf libprotobuf.so
