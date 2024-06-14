@@ -43,8 +43,10 @@ prepare() {
   ln -s ../xmlconf
 
   # https://gitlab.gnome.org/GNOME/libxml2/-/issues/732
-  git cherry-pick -n 8322eef39d775b1c16a5895a77da53d82653a04e \
-                     9ecabe1c2461dc4aa28a75bb9c889f82e37a5786
+  git cherry-pick -n 8322eef39d775b1c16a5895a77da53d82653a04e
+
+  # https://gitlab.gnome.org/GNOME/libxml2/-/issues/731
+  git cherry-pick -n 9ecabe1c2461dc4aa28a75bb9c889f82e37a5786
 
   # https://gitlab.gnome.org/GNOME/libxml2/-/issues/733
   # https://github.com/systemd/systemd/issues/33302
