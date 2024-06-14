@@ -1,7 +1,7 @@
 pkgbase = firefox-esr-globalmenu
 	pkgdesc = Standalone web browser from mozilla.org, Extended Support Release. (With appmenu patch from Ubuntu)
-	pkgver = 115.11.0
-	pkgrel = 2
+	pkgver = 115.12.0
+	pkgrel = 1
 	url = https://www.mozilla.org/en-US/firefox/enterprise/
 	install = firefox-esr.install
 	arch = x86_64
@@ -44,13 +44,13 @@ pkgbase = firefox-esr-globalmenu
 	optdepends = pulseaudio: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
-	provides = firefox-esr=115.11.0
+	provides = firefox-esr=115.12.0
 	conflicts = firefox-esr
 	options = !emptydirs
 	options = !lto
 	options = !makeflags
-	source = https://archive.mozilla.org/pub/firefox/releases/115.11.0esr/source/firefox-115.11.0esr.source.tar.xz
-	source = https://archive.mozilla.org/pub/firefox/releases/115.11.0esr/source/firefox-115.11.0esr.source.tar.xz.asc
+	source = https://archive.mozilla.org/pub/firefox/releases/115.12.0esr/source/firefox-115.12.0esr.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/115.12.0esr/source/firefox-115.12.0esr.source.tar.xz.asc
 	source = D187418.patch::https://phabricator.services.mozilla.com/D187418?download=true
 	source = D187749.patch::https://phabricator.services.mozilla.com/D187749?download=true
 	source = D208884.patch::https://phabricator.services.mozilla.com/D208884?download=true
@@ -59,7 +59,7 @@ pkgbase = firefox-esr-globalmenu
 	source = feature-unity-menubar-m-c.patch::https://github.com/Betterbird/thunderbird-patches/raw/83819e9a1df8e8e4221c3e5bce5d35492611d5ca/115/features/feature-unity-menubar-m-c.patch
 	source = fis-csd-global-menu.patch::https://github.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/raw/7e9b3f679ebf55a8dbbd52dad692167fe6ff14fb/waterfox-kde/patches/fis-csd-global-menu.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha1sums = 822bb539528c0f6c1bf0a2b8bbdd0a33b546c2c3
+	sha1sums = d53b3a65dde69d1103aead1174deb343386f31ca
 	sha1sums = SKIP
 	sha1sums = b3ccca02959d94ef2a5db8f140ff96a2cd9724ef
 	sha1sums = 559ce09fee54c849ea4da2bf881da37f5fc0cac9
