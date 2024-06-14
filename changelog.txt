@@ -1,2 +1,5 @@
-新增一些漢字，[詳情按此查看](https://github.com/lxgw/LxgwZhiSong/blob/main/documentation/changelog/20240606.md)。
-調整以下漢字：詼靱鞴。
+v0.320.1:
+CL 版調整「孓」，MN 版無變化。
+
+v0.320:
+新增更多簡化字，[詳情按此查看](https://github.com/lxgw/LxgwZhiSong/blob/main/documentation/changelog/20240608.md)。
