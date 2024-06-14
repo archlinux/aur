@@ -1,7 +1,7 @@
 pkgbase = xplayer
 	pkgdesc = Simple media player. X-Apps Project.
 	pkgver = 2.4.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/linuxmint/xplayer
 	arch = i686
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = xplayer
 	makedepends = lirc
 	makedepends = zeitgeist
 	makedepends = grilo
+	makedepends = glib2-devel
 	depends = clutter-gtk
 	depends = clutter-gst
 	depends = xplayer-plparser

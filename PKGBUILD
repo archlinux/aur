@@ -2,7 +2,7 @@
 
 pkgname=xplayer
 pkgver=2.4.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Simple media player. X-Apps Project."
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
@@ -15,7 +15,9 @@ depends=(
 )
 makedepends=(
     'gnome-common' 'gtk-doc' 'gobject-introspection' 'vala'
-    'python-pylint' 'lirc' 'zeitgeist' 'grilo')
+    'python-pylint' 'lirc' 'zeitgeist' 'grilo'
+    'glib2-devel'
+)
 optdepends=(
     'gst-libav: Extra media codec support'
     'lirc: Infrared remote control plugin'
