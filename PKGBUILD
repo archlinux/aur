@@ -2,7 +2,7 @@
 
 pkgname=fixit
 pkgver=0.1.0_alpha
-pkgrel=3
+pkgrel=4
 url="https://github.com/eugene-babichenko/fixit"
 pkgdesc="A utility to fix mistakes in your commands."
 license=('MIT')
@@ -21,7 +21,7 @@ build() {
   cd "$pkgname-${pkgver//_/-}"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --target "$(rustc -vV | sed -n 's/host: //p')
+  cargo build --frozen --release --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 package() {

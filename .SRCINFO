@@ -1,7 +1,7 @@
 pkgbase = fixit
 	pkgdesc = A utility to fix mistakes in your commands.
 	pkgver = 0.1.0_alpha
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/eugene-babichenko/fixit
 	arch = x86_64
 	arch = aarch64
