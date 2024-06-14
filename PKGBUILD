@@ -5,22 +5,22 @@
 
 pkgname=ngrok
 pkgver=3.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A tunneling, reverse proxy for developing and understanding networked, HTTP services'
 url='https://ngrok.com'
-license=('custom')
+license=('LicenseRef-custom')
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 optdepends=('bash-completion: Bash completion support')
 source=("TERMS-OF-SERVICE.txt")
-source_x86_64=("https://bin.equinox.io/a/6BaLT3NTuTR/ngrok-v3-3.11.0-linux-amd64")
-source_i686=("https://bin.equinox.io/a/8igXKoUbqiu/ngrok-v3-3.11.0-linux-386")
-source_armv7h=("https://bin.equinox.io/a/9TqyoTepBjy/ngrok-v3-3.11.0-linux-arm")
-source_aarch64=("https://bin.equinox.io/a/9bUxr2mA92G/ngrok-v3-3.11.0-linux-arm64")
+source_x86_64=("https://bin.equinox.io/a/3MFEZKVpGkg/ngrok-v3-3.11.0-linux-amd64.tar.gz")
+source_i686=("https://bin.equinox.io/a/85jup5DKATu/ngrok-v3-3.11.0-linux-386.tar.gz")
+source_armv7h=("https://bin.equinox.io/a/3MypJXrphpd/ngrok-v3-3.11.0-linux-arm.tar.gz")
+source_aarch64=("https://bin.equinox.io/a/g7hNJHCT9q8/ngrok-v3-3.11.0-linux-arm64.tar.gz")
 sha256sums=('d1fce3c7e78d5f7e5307238ee5f371b7a10911aeb249e3358e945eaa8cf2f1b2')
-sha256sums_i686=('34af64c8a0babe3d99b3ef9071dc089f81c26090fe196088478076ca5f8e1861')
-sha256sums_x86_64=('c4755d5c10926e7e199e755b387e2436c53573843be3bdeb6c384eb5087cdd35')
-sha256sums_armv7h=('01cf3c0b1e84a2c89854c55d5f56fad4440dd3f23dd71d3601482620eb21efec')
-sha256sums_aarch64=('3639f1d06c76f9d4d3b830eae6f98d2daa27de3234e1b57c6afd6e589d1dc730')
+sha256sums_i686=('d2d9d0240fb20b5ab2d33fc87f71d312bff4fc568034c38be239713f9f514fcc')
+sha256sums_x86_64=('fd9deb93e4b4ba66847f577bb54a2d965cfd885681df62fd534713b3bfc5252b')
+sha256sums_armv7h=('779713078edc60bcc5fdc1e5acd9df4203c7ba122033fa06ad1907cf3babe350')
+sha256sums_aarch64=('3ff27e01e05961aaeaf1cc28db9738b0669108079389762669c8462e01c96e6c')
 
 # In order to make Ngrok's built-in updater happy, we need to avoid modifying the binary
 options=(!strip)
@@ -35,7 +35,7 @@ package() {
   cd "${srcdir}"
 
   # Install the program.
-  install -Dm755 ngrok-v3-${pkgver}-linux-* "${pkgdir}/usr/bin/ngrok"
+  install -Dm755 "ngrok" "${pkgdir}/usr/bin/ngrok"
 
   # Generate completion for bash and zsh
   mkdir -p "$BASH_COMPLETION_DIR" "$ZSH_COMPLETION_DIR"
