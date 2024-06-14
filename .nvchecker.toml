@@ -1,0 +1,4 @@
+[python-pytorch]
+source = "git"
+git = "https://github.com/pytorch/pytorch.git"
+prefix = "v"

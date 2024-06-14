@@ -7,9 +7,9 @@ pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "${pkgbase}-rocm" "${pkgbase}-opt-rocm")
 # When updating pytorch, also check the compatibility table for torchvision
 # https://github.com/pytorch/vision?tab=readme-ov-file#installation
-pkgver=2.3.0
-_pkgver=2.3.0
-pkgrel=5
+pkgver=2.3.1
+_pkgver=2.3.1
+pkgrel=1
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -19,7 +19,7 @@ depends=('google-glog' 'gflags' 'opencv' 'openmp' 'openmpi' 'pybind11' 'python' 
          'python-numpy' 'python-sympy' 'protobuf' 'ffmpeg' 'python-future' 'qt6-base' 'eigen'
          'intel-oneapi-mkl' 'python-typing_extensions' 'numactl' 'python-jinja'
          'python-networkx' 'python-filelock')
-makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda'
+makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda' 'gcc13'
              'nccl' 'cudnn' 'git' 'rocm-hip-sdk' 'hipblaslt' 'roctracer' 'miopen' 'magma-cuda' 'magma-hip'
              'ninja' 'pkgconfig' 'doxygen' 'vulkan-headers' 'shaderc' 'onednn')
 source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
@@ -69,7 +69,7 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
         use-system-libuv.patch
         fix-building-for-torchvision.patch
         87773.patch
-        https://github.com/pytorch/pytorch/pull/123377.patch
+        123377.patch
         disable-werror1.patch
         disable-werror2.patch
         disable-werror4.patch
@@ -81,7 +81,7 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
         python-pytorch-ffmpeg6.patch
         python-pytorch-aotriton-include.patch
         pytorch-remove-caffe2-binaries.patch)
-b2sums=('84fbe79dac719adaf7e3da68bdf7f137e4a2f949c762ca62856eb2c9d8168f8305b477c8124dac176fff6466aa7ed1d4994d5411058b063c0aff3b1a36058851'
+b2sums=('f54764fa53423910cf8f1c6115698269aaf819641fc2b592cb10369f052fdd17a7ffec668d9a64066231d74d57d620c979eec147e8a5d96c1726bf442bb4b74f'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -127,7 +127,7 @@ b2sums=('84fbe79dac719adaf7e3da68bdf7f137e4a2f949c762ca62856eb2c9d8168f8305b477c
         'af8c724ed80898ae3875a295ad6bd4d18d90f8a9124f6cff6d1b2f525bf7806fe61306e739c1f7362fbd8d0e4f8ba57d0e3bf925ea3f7a78a0a98f26722db147'
         'fdea0b815d7750a4233c1d4668593020da017aea43cf4cb63b4c00d0852c7d34f0333e618fcf98b8df2185313a2089b8c2e9fe8ec3cfb0bf693598f9c61461a8'
         '0a8fc110a306e81beeb9ddfb3a1ddfd26aeda5e3f7adfb0f7c9bc3fd999c2dde62e0b407d3eca573097a53fd97329214e30e8767fb38d770197c7ec2b53daf18'
-        '3b3e024cc90eac1f074308d77b596744694858c5c7b6f6e5b0bfe8b5c936ff9e3b6133f98a310e2c1eb28b5ba805de1daec2824e48ebd7ec00315a6316a6b82a'
+        'eccdd0cbb50c3d44a12020ad00e17ffc26723218edfebee6dbe4ec83764767a8f1144ebf7f040b7807c600d8ee36b964010f6c3d2a2a7cb7d4dbdcfab614a3c5'
         '844d0b7b39777492a6d456fa845d5399f673b4bb37b62473393449c9ad0c29dca3c33276dc3980f2e766680100335c0acfb69d51781b79575f4da112d9c4018c'
         '985e331b2025e1ca5a4fba5188af0900f1f38bd0fd32c9173deb8bed7358af01e387d4654c7e0389e5f98b6f7cbed053226934d180b8b3b1270bdbbb36fc89b2'
         'eea86bbed0a37e1661035913536456f90e0cd1e687c7e4103011f0688bc8347b6fc2ff82019909c41e7c89ddbc3b80dde641e88abf406f4faebc71b0bb693d25'
@@ -278,8 +278,8 @@ _prepare() {
   # export BUILD_SPLIT_CUDA=ON  # modern preferred build, but splits libs and symbols, ABI break
   # export USE_FAST_NVCC=ON  # parallel build with nvcc, spawns too many processes
   export USE_CUPTI_SO=ON  # make sure cupti.so is used as shared lib
-  export CC=/usr/bin/gcc
-  export CXX=/usr/bin/g++
+  export CC=/usr/bin/gcc-13
+  export CXX=/usr/bin/g++-13
   export CUDAHOSTCXX="${NVCC_CCBIN}"
   export CUDA_HOST_COMPILER="${CUDAHOSTCXX}"
   export CUDA_HOME=/opt/cuda
@@ -295,7 +295,8 @@ _prepare() {
   export HIP_ROOT_DIR=/opt/rocm
   export PYTORCH_ROCM_ARCH="gfx906;gfx908;gfx90a;gfx940;gfx941;gfx942;gfx1010;gfx1012;gfx1030;gfx1100;gfx1101;gfx1102"
   # Compile source code for supported GPU archs in parallel
-  export HIPCC_COMPILE_FLAGS_APPEND="-parallel-jobs=$(nproc)"
+  # Use gcc 13 toolchain as ROCm is not compatible with gcc 14.
+  export HIPCC_COMPILE_FLAGS_APPEND="-parallel-jobs=$(nproc) --gcc-install-dir=/usr/lib/gcc/x86_64-pc-linux-gnu/13.3.0/"
   export HIPCC_LINK_FLAGS_APPEND="-parallel-jobs=$(nproc)"
 }
 
