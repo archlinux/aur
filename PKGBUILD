@@ -2,7 +2,7 @@
 
 pkgname=duckstation-git
 _pkgname=duckstation
-pkgver=0.1.r6886.g015804c
+pkgver=0.1.r6939.gef69c31
 pkgdesc='A Sony PlayStation (PSX) emulator, focusing on playability, speed, and long-term maintainability (git version)'
 pkgrel=1
 arch=(x86_64 aarch64)
@@ -60,16 +60,18 @@ conflicts=(duckstation)
 source=(
     git+"$url".git
     git+https://github.com/google/shaderc.git#tag=v2024.1
+    git+https://github.com/KhronosGroup/SPIRV-Cross.git#tag=vulkan-sdk-1.3.280.0
     duckstation-qt.desktop
     duckstation-qt.sh)
 sha256sums=('SKIP'
             'f1dbf3270fc21bf6871ae8693ddfb467ce142009d3371fd407512b956c25ace0'
+            '45eb9bf96f0527fbab522800f816d4eac0e835ddb34e4381769158ae6b54ae00'
             'ec2d7358f81598390a8ceca2d1974be3e5f7c45602b550c89a1e9323ab45474b'
             '4e1c4ff072f0bf7df589b5c7160b0a4add5de326abd7570a2d1a4657f09e47a6')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-    git checkout f0c2832d031640f9e833ac0589b47b54dabbdf0d
+
     git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -86,6 +88,9 @@ prepare() {
 "$(pacman -Q spirv-tools|cut -d \  -f 2|sed 's/-.*//')\\n"
 "$(pacman -Q glslang|cut -d \  -f 2|sed 's/-.*//')\\n"
 EOF
+    cd "$srcdir/SPIRV-Cross"
+    # apply duckstation patch
+    git apply "$srcdir/$_pkgname/scripts/spirv-cross-changes.patch"
 }
 
 build() {
@@ -106,6 +111,31 @@ build() {
         -Dglslang_SOURCE_DIR=/usr/include/glslang
     ninja -C build-shaderc
     DESTDIR="$srcdir/deps" ninja -C build-shaderc install
+
+    echo "Building SPIRV-Cross..."
+
+    cmake -B build-SPIRV-Cross -S SPIRV-Cross \
+        -G Ninja \
+        -DCMAKE_BUILD_TYPE=None \
+        -DCMAKE_C_COMPILER=clang \
+        -DCMAKE_CXX_COMPILER=clang++ \
+        -DCMAKE_EXE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
+        -DCMAKE_MODULE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
+        -DCMAKE_SHARED_LINKER_FLAGS_INIT="-fuse-ld=lld" \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DSPIRV_CROSS_SHARED=ON \
+        -DSPIRV_CROSS_STATIC=OFF \
+        -DSPIRV_CROSS_CLI=OFF \
+        -DSPIRV_CROSS_ENABLE_TESTS=OFF \
+        -DSPIRV_CROSS_ENABLE_GLSL=ON \
+        -DSPIRV_CROSS_ENABLE_HLSL=OFF \
+        -DSPIRV_CROSS_ENABLE_MSL=OFF \
+        -DSPIRV_CROSS_ENABLE_CPP=OFF \
+        -DSPIRV_CROSS_ENABLE_REFLECT=OFF \
+        -DSPIRV_CROSS_ENABLE_C_API=ON \
+        -DSPIRV_CROSS_ENABLE_UTIL=ON
+    ninja -C build-SPIRV-Cross
+    DESTDIR="$srcdir/deps" ninja -C build-SPIRV-Cross install
 
     echo "Building duckstation..."
 
@@ -143,7 +173,8 @@ package() {
     done
 
     # Install bundled shaderc
-    install -vm644 "${srcdir}/deps/usr/lib/libshaderc_shared.so.1" "${pkgdir}/usr/lib/${_pkgname}"
+    install -vm644 "${srcdir}/deps/usr/lib/libshaderc_shared.so" "${srcdir}/deps/usr/lib/libspirv-cross-c-shared.so" \
+        "${pkgdir}/usr/lib/${_pkgname}"
 
     # Install additional license
     install -m 755 -d "${pkgdir}/usr/share/licenses/${pkgname}/"
@@ -154,3 +185,4 @@ package() {
     install -Dvm644 "${srcdir}/duckstation-qt.desktop" "${pkgdir}/usr/share/applications/duckstation-qt.desktop"
     install -Dvm644 "${pkgdir}/usr/share/${_pkgname}/resources/images/duck.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/duckstation-qt.png"
 }
+
