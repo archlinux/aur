@@ -6,7 +6,7 @@
 # Maintainer: David Hummel <david dot hummel at gmail point com>
 
 pkgname=mapnik-git
-pkgver=4.0.0.rc1.r51.g61cb187
+pkgver=4.0.0.rc3.r0.g63d7e51
 pkgrel=1
 pkgdesc='Free Toolkit for developing mapping applications. Above all Mapnik is about rendering beautiful maps (git version)'
 arch=('i686' 'x86_64')
@@ -72,7 +72,6 @@ build() {
     -DBUILD_DEMO_CPP:BOOL=OFF \
     -DBUILD_DEMO_VIEWER:BOOL=OFF \
     -DCMAKE_BUILD_TYPE:STRING=Release \
-    -DCMAKE_CXX_STANDARD:STRING=17 \
     -DCMAKE_INSTALL_PREFIX:PATH=/usr \
     -DFONTS_INSTALL_DIR:PATH=share/fonts/TTF \
     -DUSE_EXTERNAL_MAPBOX_GEOMETRY:BOOL=ON \
