@@ -1,6 +1,6 @@
 # Maintainer: Thomas Millward Wright <tmillwardwright@gmail.com>
 pkgname=perimeter81
-pkgver=8.1.0.778
+pkgver=9.0.1.843
 pkgrel=1
 pkgdesc='Perimeter81 agent application'
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
   'LICENSE'
 )
 md5sums=(
-  'da4011020de6fc036d1bb574376b9c84'
+  '54711cd4f1dd4927535e76b3ee5e9c41'
   '089b611fb1ecbd3e39e2d2d391743205'
   '64c25ccc5446c93c6073a418f664d3d5'
 )
