@@ -2,7 +2,7 @@
 # Contributor: Marcell Pardavi <marcell.pardavi@gmail.com>
 
 pkgname=zed-git
-pkgver=0.140.0.r15.gcfbf5dc
+pkgver=0.140.2.r62.g3539a7c
 pkgrel=1
 pkgdesc='A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter'
 arch=(x86_64)
@@ -50,8 +50,8 @@ prepare() {
 	export DO_STARTUP_NOTIFY="true"
 	export APP_ICON="zed"
 	export APP_NAME="Zed"
+	export APP_CLI=$_binname
 	envsubst < "crates/zed/resources/zed.desktop.in" > zed.desktop
-	sed -i -e "s/Exec=zed/Exec=$_binname/g" zed.desktop
 	patch -p0 -i ../use-lib-not-libexec.patch
 }
 
