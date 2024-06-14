@@ -9,20 +9,17 @@ pkgrel=1
 pkgdesc='SteamOS session compositing window manager'
 arch=(x86_64)
 url=https://github.com/ValveSoftware/gamescope
-license=(BSD)
+license=(BSD-2-Clause BSD-3-Clause)
 depends=(
   gcc-libs
   glibc
-  glm
   libavif
   libcap.so
   libdecor
   libdisplay-info.so
   libdrm
-  libliftoff.so
+  libinput
   libpipewire-0.3.so
-  libvulkan.so
-  libwlroots.so
   libx11
   libxcb
   libxcomposite
@@ -37,8 +34,11 @@ depends=(
   libxxf86vm
   openvr
   sdl2
+  seatd
   vulkan-icd-loader
   wayland
+  xcb-util-errors
+  xcb-util-wm
   xorg-server-xwayland
 )
 makedepends=(
@@ -62,6 +62,10 @@ b2sums=('bcdfcfdb7636d10c9d4450e03b252669a6ce9d5d21d241cde12bbf29feffaaf72bb785d
 
 prepare() {
   cd gamescope
+
+  # Use shared libs, remove submodules to avoid fallback
+  git rm subprojects/{libdisplay-info,openvr}
+
   meson subprojects download
   git submodule init src/reshade
   git config submodule.src/reshade.url ../reshade
@@ -77,7 +81,7 @@ pkgver() {
 
 build() {
   arch-meson gamescope build \
-    -Dforce_fallback_for=stb \
+    -Dforce_fallback_for=wlroots,libliftoff,vkroots,glm,stb \
     -Dpipewire=enabled
   meson compile -C build
 }
@@ -85,7 +89,6 @@ build() {
 package() {
   DESTDIR="${pkgdir}" meson install -C build \
     --skip-subprojects
-  install -Dm 644 gamescope/LICENSE -t "${pkgdir}"/usr/share/licenses/gamescope/
 }
 
 # vim: ts=2 sw=2 et:
