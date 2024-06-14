@@ -1,6 +1,6 @@
 # Maintainer: dude <brrtsm@gmail.com>
 
-pkgver=1.33.1
+pkgver=1.34
 pkgname=(hledger-bin hledger-ui-bin hledger-web-bin)
 pkgrel=1
 pkgdesc="Easy-to-use command-line/curses/web plaintext accounting tool"
@@ -10,15 +10,15 @@ license=('GPL')
 depends=('gmp' 'ncurses5-compat-libs')
 makedepends=('coreutils')
 source=(
-    hledger-${pkgver}.zip::https://github.com/simonmichael/hledger/releases/download/${pkgver}/hledger-linux-x64.zip
+    hledger-${pkgver}.tar.gz::https://github.com/simonmichael/hledger/releases/download/${pkgver}/hledger-linux-x64.tar.gz
 )
 sha256sums=(
-    12af08dd38ad99a9f92b216965a2b619dca798feac4e52406de84a20549b55cc
+    bbeef13b7cea31e5896cfcc5b2563b96187673bddc29f243815814a44f25a139
 )
 
 prepare() {
     cd $srcdir
-    tar -xvf ./hledger-linux-x64.tar
+    tar -xvf ./hledger-1.34.tar.gz
 }
 
 package_hledger-bin() {
