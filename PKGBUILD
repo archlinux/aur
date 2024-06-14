@@ -2,7 +2,7 @@
 
 _pkgname=pwsafe
 pkgname=passwordsafe
-pkgver=1.18.2
+pkgver=1.19.0
 pkgrel=1
 pkgdesc="Simple & Secure Password Management"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ conflicts=('passwordsafe-debian' 'pwsafe' 'pwsafe-gui')
 source=(passwordsafe-$pkgver.tar.gz::https://github.com/pwsafe/pwsafe/archive/$pkgver.tar.gz
 	passwordsafe-$pkgver.tar.gz.sig::https://github.com/pwsafe/pwsafe/releases/download/$pkgver/$pkgver.tar.gz.sig)
 validpgpkeys=('C8876BE69A8EC6414C8C8729B131423D7F2F1BB9')  # http://pgp.mit.edu/pks/lookup?op=vindex&search=0xB131423D7F2F1BB9
-sha1sums=('dc6c5588a8981e1ebdc59d2bd7071f45bd5352cc'
+sha1sums=('e5ed92afc48cf19d4a5f052e7fb3908c235ca2dd'
           'SKIP')
 
 build() {
