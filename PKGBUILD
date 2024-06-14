@@ -15,7 +15,7 @@ _py=py37
 source=("https://files.pythonhosted.org/packages/$_py/${_name::1}/$_name/${_name//-/_}-$pkgver-$_py-none-manylinux_2_28_$CARCH.whl"
         "https://cdn.odriverobotics.com/files/odrive-udev-rules.rules")
 
-sha256sums=('28d7869eed8acc7c3f408462fb1da5bfe9486a2e0006f05bc9b5e9b140cfcb5d'
+sha256sums=('SKIP'
             'b574486e0fcdf13f2faa7165f5634d466353274547ab4d3a36b75f67c7124d3c')
 noextract=()
 

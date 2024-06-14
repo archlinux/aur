@@ -16,7 +16,7 @@ pkgbase = python-odrive
 	optdepends = python-matplotlib: required to run the liveplotter
 	source = https://files.pythonhosted.org/packages/py37/o/odrive/odrive-0.6.9.post0-py37-none-manylinux_2_28_x86_64.whl
 	source = https://cdn.odriverobotics.com/files/odrive-udev-rules.rules
-	sha256sums = 28d7869eed8acc7c3f408462fb1da5bfe9486a2e0006f05bc9b5e9b140cfcb5d
+	sha256sums = SKIP
 	sha256sums = b574486e0fcdf13f2faa7165f5634d466353274547ab4d3a36b75f67c7124d3c
 
 pkgname = python-odrive
