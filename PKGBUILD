@@ -6,7 +6,8 @@ pkgdesc="On-the-fly toggling of security features for integration with Steam gam
 arch=('x86_64')
 url="https://github.com/hir0xygen/sentinelguard"
 license=('MIT')
-makedepends=('git' 'cmake' 'make')
+depends=('glibc')
+makedepends=('gcc', 'git' 'cmake' 'make')
 source=("git+https://github.com/hir0xygen/sentinelguard.git")
 md5sums=('SKIP')
 
