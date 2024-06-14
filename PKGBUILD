@@ -2,7 +2,7 @@
 
 pkgname=fixit-bin
 _pkgname="${pkgname/-bin}"
-pkgver=0.1.0_alpha
+pkgver=0.2.0_alpha
 _pkgver="${pkgver//_/-}"
 pkgrel=1
 _repo="eugene-babichenko/$_pkgname"
@@ -23,7 +23,7 @@ source_x86_64=(
   "$_license"
 )
 sha256sums_x86_64=(
-  "5c31e3a72ae1aad59c57c37520c90e6d30a90d3d0f93143b9caf55f717e56d50"
+  "4f0d8466456f89951327f4ccb55e61402d47b2e0c51706b5422d6596275f8c6e"
   'SKIP'
   'SKIP'
 )
@@ -34,13 +34,13 @@ source_aarch64=(
   "$_license"
 )
 sha256sums_aarch64=(
-  "148ee94c0f9abfca7d8402507471499f0282602e0831a4e9a17c6b609d28ed71"
+  "e66b5c3845e32b8008d7ad8227ada15989ffa7161b9d87f59ac864668b03fbcd"
   'SKIP'
   'SKIP'
 )
 
 package() {
   install -Dm755 "$_pkgname" -t "$pkgdir/usr/bin"
-  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$_pkgname"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
 }
