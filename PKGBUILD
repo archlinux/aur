@@ -2,14 +2,17 @@
 
 pkgname=xreader-git
 _pkgbasename=xreader
-pkgver=3.8.2.r5.g31c9f12
+pkgver=4.2.0.r0.gce89025
 pkgrel=1
 pkgdesc="Document viewer for files like PDF and Postscript. X-Apps Project (git version)."
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('poppler-glib' 'webkit2gtk' 'xapp')
-makedepends=('git' 'meson' 'samurai' 'gobject-introspection' 'mathjax2'
-    'libgxps' 'intltool' 'itstool' 'djvulibre' 'libspectre' 'texlive-bin')
+depends=('poppler-glib' 'webkit2gtk-4.1' 'xapp')
+makedepends=(
+    'git' 'meson' 'samurai' 'gobject-introspection' 'mathjax2'
+    'libgxps' 'intltool' 'itstool' 'djvulibre' 'libspectre' 'texlive-bin'
+    'glib2-devel'
+)
 optdepends=(
     'nemo: nemo extension'
     'caja: caja extension'
