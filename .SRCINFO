@@ -1,0 +1,20 @@
+pkgbase = python-yapsy-git
+	pkgdesc = A simple plugin system for Python applications (built from the latest commit)
+	pkgver = release_Yapsy.1.12.2.r17.g6b487b0
+	pkgrel = 1
+	url = https://github.com/tibonihoo/yapsy
+	arch = any
+	license = BSD-2-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = git
+	depends = python
+	depends = python-packaging
+	provides = python-yapsy
+	conflicts = python-yapsy
+	source = yapsy::git+https://github.com/tibonihoo/yapsy.git
+	sha256sums = SKIP
+
+pkgname = python-yapsy-git
