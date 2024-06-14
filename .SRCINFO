@@ -1,7 +1,7 @@
 pkgbase = ofinstaller-beans
 	pkgdesc = Installer for Open Fortress
-	pkgver = 1.4.1
-	pkgrel = 2
+	pkgver = 1.4.3
+	pkgrel = 1
 	url = https://github.com/ktwrd/beans-rs
 	arch = x86_64
 	license = GPL-3.0-only
@@ -9,7 +9,9 @@ pkgbase = ofinstaller-beans
 	depends = glibc
 	depends = gcc-libs
 	depends = openssl
-	source = https://github.com/ktwrd/beans-rs/archive/refs/tags/v1.4.1.tar.gz
-	sha256sums = 6c2c1687aad0bfe4d9f82bf1507c4818f22598a55921604f9e2125aa330c8021
+	source = https://github.com/ktwrd/beans-rs/archive/refs/tags/v1.4.3.tar.gz
+	source = nightly.patch::https://github.com/ktwrd/beans-rs/commit/fd653569f147d2e7bef78ea1eabab072e7dbcc1f.patch
+	sha256sums = 1f4ce3c7a38cede39366aacddc48540cfcd8ce66ac61b929b8be592bcaf60c1c
+	sha256sums = d2864ebc5dcd070aa31e0ab5c7cd3f45b6793877ec761b74427761e69f15e5ab
 
 pkgname = ofinstaller-beans
