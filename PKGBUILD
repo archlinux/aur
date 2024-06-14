@@ -2,7 +2,7 @@
 
 pkgname=ayugram-desktop
 pkgver=5.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop Telegram client with good customization and Ghost mode."
 arch=("x86_64")
 url="https://github.com/AyuGram/AyuGramDesktop"
@@ -17,6 +17,7 @@ makedepends=(
     "cmake" "ninja" "python" "range-v3" "tl-expected" "microsoft-gsl" "meson"
     "extra-cmake-modules" "wayland-protocols" "plasma-wayland-protocols" "libtg_owt"
     "gobject-introspection" "boost" "fmt" "mm-common" "perl-xml-parser" "python-packaging"
+    "glib2-devel"
 )
 optdepends=(
     "webkit2gtk: embedded browser features"
