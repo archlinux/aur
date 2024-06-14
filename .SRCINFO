@@ -13,6 +13,7 @@ pkgbase = xviewer-git
 	makedepends = meson
 	makedepends = itstool
 	makedepends = gtk-doc
+	makedepends = glib2-devel
 	depends = xapp
 	depends = gtk3
 	depends = cinnamon-desktop

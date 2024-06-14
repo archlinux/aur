@@ -2,15 +2,18 @@
 
 pkgname=xviewer-git
 _pkgbasename=xviewer
-pkgver=3.2.7.r0.gbb4aa66
+pkgver=3.4.4.r0.gc201d9e
 pkgrel=1
 pkgdesc="A simple and easy to use image viewer. X-Apps Project (git version)."
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
 depends=('xapp' 'gtk3' 'cinnamon-desktop' 'libpeas' 'libexif' 'libjpeg-turbo'
          'exempi')
-makedepends=('git' 'gobject-introspection' 'librsvg' 'meson' 'itstool'
-             'gtk-doc')
+makedepends=(
+    'git' 'gobject-introspection' 'librsvg' 'meson' 'itstool'
+    'gtk-doc'
+    'glib2-devel'
+)
 optdepends=('xviewer-plugins-git: Extra plugins'
             'librsvg: for scaling svg images'
             'webp-pixbuf-loader: webp image support'
