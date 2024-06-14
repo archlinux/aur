@@ -1,0 +1,33 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <heftig@archlinux.org>
+Date: Sat, 15 Jun 2024 00:22:58 +0200
+Subject: [PATCH] runtest: Print output causing failure
+
+---
+ tests/runtest.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/runtest.c b/tests/runtest.c
+index 56eb31f1dc8c..fea4bd3c61f4 100644
+--- a/tests/runtest.c
++++ b/tests/runtest.c
+@@ -668,17 +668,17 @@ xsltTest(const char *filename, int options) {
+     res = compareFileMem(outFilename, (char *) out, outSize);
+     if (res != 0) {
+         fprintf(stderr, "Result for %s failed\n", filename);
+-        /* printf("####\n%s####\n", out); */
++        printf("####\n%s####\n", out);
+         ret = -1;
+     }
+     free(outFilename);
+     xmlFree(out);
+ 
+     errFilename = changeSuffix(filename, errSuffix);
+     res = compareFileMem(errFilename, testErrors, testErrorsSize);
+     if (res != 0) {
+         fprintf(stderr, "Error for %s failed\n", filename);
+-        /* printf("####\n%s####\n", testErrors); */
++        printf("####\n%s####\n", testErrors);
+         ret = -1;
+     }
+     free(errFilename);
