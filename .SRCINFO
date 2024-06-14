@@ -1,6 +1,6 @@
 pkgbase = torchvision
 	pkgdesc = Datasets, transforms, and models specific to computer vision
-	pkgver = 0.18.0
+	pkgver = 0.18.1
 	pkgrel = 1
 	url = https://github.com/pytorch/vision
 	arch = x86_64
@@ -25,14 +25,16 @@ pkgbase = torchvision
 	depends = python-sympy
 	optdepends = ffmpeg: video reader backend (the recommended one with better performance)
 	optdepends = python-pycocotools: support for MS-COCO dataset
-	source = vision-0.18.0.tar.gz::https://github.com/pytorch/vision/archive/v0.18.0.tar.gz
+	source = vision-0.18.1.tar.gz::https://github.com/pytorch/vision/archive/v0.18.1.tar.gz
 	source = https://github.com/NVIDIA/DALI/raw/main/dali/operators/reader/loader/video/nvdecode/cuviddec.h
 	source = https://github.com/NVIDIA/DALI/raw/main/dali/operators/reader/loader/video/nvdecode/nvcuvid.h
 	source = torchvision-0_17_1-fix-build.patch
-	b2sums = 11b00b740589d109002136c2823edab8b06e832b93fc6b1a5ecbad29bb3a32516ac1a4e5fa48c5ae4cf8a579289c7581ba1658187fa0c56933cc820d73d43e96
+	source = torchvision-ffmpeg7.patch
+	b2sums = 663277ebd597ed27f410729ae8e17bb68e64d0116d65b752c9c59b342f58eae7ce6073e2f3a05c4697ff4d1390ff7a64b01e8839cca74000af1c1d4d976ddaa0
 	b2sums = 9ccff204a4e1e93340d8b12c2b1d17e01663c12957b4665c0043eccf76d507a7308745a5d9e4d89657840aaf8abf0aa8f51bd79d6e0d5dc57a376d54a754755a
 	b2sums = 7db5d621f3099bc5455f1faeb7f4c3575a9cf70153ba56a6efc6d67d0ef2ac5438f6e117e621c5ef35c239eb3bce3fe17ce160e6b7765e8203d67a7299085429
 	b2sums = 1c3b33f7ff310e2e91ba277e2d984641e10b60c2acde42e30d3454e254b44f1f91cb7374a8aa7e66e5a870c71166a799f9fe640fed3629dc3d7a0a8ea66f9f2f
+	b2sums = eee97b25bd40a18341e991bfa8a4adf72cd884aaf08068326c276532b5769c02afebeb8834d207a04725d2d2b2f696ac04837dbc2982bc4389f17b9810e14574
 
 pkgname = torchvision
 	pkgdesc = Datasets, transforms, and models specific to computer vision (C++ library only)

@@ -1,0 +1,110 @@
+From 375cfdf5675d0b6dbebe4d49ffcd0a6d50081715 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Robert-Andr=C3=A9=20Mauchin?=
+ <30413512+eclipseo@users.noreply.github.com>
+Date: Thu, 6 Jun 2024 16:02:45 +0200
+Subject: [PATCH] Add compatibility with FFMPEG 7.0 (#8408)
+
+Co-authored-by: Nicolas Hug <nh.nicolas.hug@gmail.com>
+Co-authored-by: Nicolas Hug <contact@nicolas-hug.com>
+---
+ torchvision/csrc/io/decoder/audio_sampler.cpp | 18 ++++++++++++++
+ torchvision/csrc/io/decoder/audio_stream.cpp  | 24 +++++++++++++++----
+ 2 files changed, 38 insertions(+), 4 deletions(-)
+
+diff --git a/torchvision/csrc/io/decoder/audio_sampler.cpp b/torchvision/csrc/io/decoder/audio_sampler.cpp
+index e26d788d9c7..d46b93ddc69 100644
+--- a/torchvision/csrc/io/decoder/audio_sampler.cpp
++++ b/torchvision/csrc/io/decoder/audio_sampler.cpp
+@@ -48,6 +48,23 @@ bool AudioSampler::init(const SamplerParameters& params) {
+     return false;
+   }
+ 
++#if LIBAVUTIL_VERSION_INT >= AV_VERSION_INT(57, 28, 100)
++  SwrContext* swrContext_ = NULL;
++  AVChannelLayout channel_out;
++  AVChannelLayout channel_in;
++  av_channel_layout_default(&channel_out, params.out.audio.channels);
++  av_channel_layout_default(&channel_in, params.in.audio.channels);
++  int ret = swr_alloc_set_opts2(
++      &swrContext_,
++      &channel_out,
++      (AVSampleFormat)params.out.audio.format,
++      params.out.audio.samples,
++      &channel_in,
++      (AVSampleFormat)params.in.audio.format,
++      params.in.audio.samples,
++      0,
++      logCtx_);
++#else
+   swrContext_ = swr_alloc_set_opts(
+       nullptr,
+       av_get_default_channel_layout(params.out.audio.channels),
+@@ -58,6 +75,7 @@ bool AudioSampler::init(const SamplerParameters& params) {
+       params.in.audio.samples,
+       0,
+       logCtx_);
++#endif
+   if (swrContext_ == nullptr) {
+     LOG(ERROR) << "Cannot allocate SwrContext";
+     return false;
+diff --git a/torchvision/csrc/io/decoder/audio_stream.cpp b/torchvision/csrc/io/decoder/audio_stream.cpp
+index 0f6c57e5588..9d7354e02f5 100644
+--- a/torchvision/csrc/io/decoder/audio_stream.cpp
++++ b/torchvision/csrc/io/decoder/audio_stream.cpp
+@@ -6,26 +6,36 @@
+ namespace ffmpeg {
+ 
+ namespace {
++static int get_nb_channels(const AVFrame* frame, const AVCodecContext* codec) {
++#if LIBAVUTIL_VERSION_INT >= AV_VERSION_INT(57, 28, 100)
++  return frame ? frame->ch_layout.nb_channels : codec->ch_layout.nb_channels;
++#else
++  return frame ? frame->channels : codec->channels;
++#endif
++}
++
+ bool operator==(const AudioFormat& x, const AVFrame& y) {
+   return x.samples == static_cast<size_t>(y.sample_rate) &&
+-      x.channels == static_cast<size_t>(y.channels) && x.format == y.format;
++      x.channels == static_cast<size_t>(get_nb_channels(&y, nullptr)) &&
++      x.format == y.format;
+ }
+ 
+ bool operator==(const AudioFormat& x, const AVCodecContext& y) {
+   return x.samples == static_cast<size_t>(y.sample_rate) &&
+-      x.channels == static_cast<size_t>(y.channels) && x.format == y.sample_fmt;
++      x.channels == static_cast<size_t>(get_nb_channels(nullptr, &y)) &&
++      x.format == y.sample_fmt;
+ }
+ 
+ AudioFormat& toAudioFormat(AudioFormat& x, const AVFrame& y) {
+   x.samples = y.sample_rate;
+-  x.channels = y.channels;
++  x.channels = get_nb_channels(&y, nullptr);
+   x.format = y.format;
+   return x;
+ }
+ 
+ AudioFormat& toAudioFormat(AudioFormat& x, const AVCodecContext& y) {
+   x.samples = y.sample_rate;
+-  x.channels = y.channels;
++  x.channels = get_nb_channels(nullptr, &y);
+   x.format = y.sample_fmt;
+   return x;
+ }
+@@ -54,9 +64,15 @@ int AudioStream::initFormat() {
+   if (format_.format.audio.samples == 0) {
+     format_.format.audio.samples = codecCtx_->sample_rate;
+   }
++#if LIBAVUTIL_VERSION_INT >= AV_VERSION_INT(57, 28, 100)
++  if (format_.format.audio.channels == 0) {
++    format_.format.audio.channels = codecCtx_->ch_layout.nb_channels;
++  }
++#else
+   if (format_.format.audio.channels == 0) {
+     format_.format.audio.channels = codecCtx_->channels;
+   }
++#endif
+   if (format_.format.audio.format == AV_SAMPLE_FMT_NONE) {
+     format_.format.audio.format = codecCtx_->sample_fmt;
+   }
