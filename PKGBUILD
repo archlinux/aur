@@ -3,22 +3,32 @@
 
 pkgbase=qbittorrent-enhanced-ua
 pkgname=(qbittorrent-enhanced-ua qbittorrent-enhanced-ua-nox)
-pkgver=4.6.4.10
+pkgver=4.6.5.10
 pkgrel=1
-pkgdesc="An advanced BitTorrent client programmed in C++, based on Qt toolkit and libtorrent-rasterbar (Enhanced Edition with original user-agent)"
+pkgdesc='An advanced BitTorrent client programmed in C++, based on Qt toolkit and libtorrent-rasterbar (Enhanced Edition with original user-agent)'
 arch=('x86_64')
-_repo="qBittorrent-Enhanced-Edition"
+_repo='qBittorrent-Enhanced-Edition'
 url="https://github.com/c0re100/${_repo}"
-license=('custom' 'GPL')
-depends=('libtorrent-rasterbar')
-makedepends=('cmake' 'boost')
+license=('GPL-2.0-or-later' 'GPL-3.0-or-later')
+
+depends=(
+    'gcc-libs'
+    'glibc'
+    'libtorrent-rasterbar'
+    'openssl'
+    'zlib'
+)
+makedepends=(
+    'boost'
+    'cmake'
+)
 optdepends=('python: needed for torrent search tab')
 
-_rel="release-${pkgver}"
-_snapshot="${_repo}-${_rel}"
+_tag="release-${pkgver}"
+_snapshot="${_repo}-${_tag}"
 
-source=("${_snapshot}.tar.gz::${url}/archive/${_rel}.tar.gz")
-sha256sums=('096c081ae018c5a2c70762647f63ca6ddb31946a8428bc718ac3e5f390245bf1')
+source=("${url}/archive/${_tag}/${_snapshot}.tar.gz")
+sha256sums=('9330b6c331975c53ef17f106c430c70e4853e44d523a0c0d3d2fd60f7c112019')
 
 USE_QT6="${USE_QT6:-ON}"
 
@@ -35,23 +45,23 @@ fi
 prepare() {
     cd "${_snapshot}"
     sed -e 's|"qBittorrent Enhanced/"|"qBittorrent/"|' -i 'src/base/bittorrent/sessionimpl.cpp'
-    sed -e 's|#define QBT_VERSION_BUILD .\+|#define QBT_VERSION_BUILD 0|' -i 'src/base/version.h.in'
+    sed -e 's|^#define QBT_VERSION_BUILD .\+|#define QBT_VERSION_BUILD 0|' -i 'src/base/version.h.in'
 }
 
 build() {
-    cmake -B "build" -S "${_snapshot}" \
+    cmake -B 'build' -S "${_snapshot}" \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DQT6="${USE_QT6}"
 
-    cmake --build "build"
+    cmake --build 'build'
 
-    cmake -B "build-nox" -S "${_snapshot}" \
+    cmake -B 'build-nox' -S "${_snapshot}" \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DQT6="${USE_QT6}" \
         -DGUI=OFF \
         -DSYSTEMD=ON
 
-    cmake --build "build-nox"
+    cmake --build 'build-nox'
 }
 
 package_qbittorrent-enhanced-ua() {
@@ -59,7 +69,7 @@ package_qbittorrent-enhanced-ua() {
     provides=('qbittorrent')
     conflicts=('qbittorrent')
 
-    DESTDIR="${pkgdir}" cmake --install "build"
+    DESTDIR="${pkgdir}" cmake --install 'build'
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${_snapshot}/COPYING"
 }
 
@@ -67,6 +77,6 @@ package_qbittorrent-enhanced-ua-nox() {
     provides=('qbittorrent-nox')
     conflicts=('qbittorrent-nox')
 
-    DESTDIR="${pkgdir}" cmake --install "build-nox"
+    DESTDIR="${pkgdir}" cmake --install 'build-nox'
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${_snapshot}/COPYING"
 }
