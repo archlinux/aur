@@ -1,8 +1,9 @@
-# Maintainer: Yorick Peterse <aur AT yorickpeterse DOT com>
+# Maintainer: Johannes Frohnmeyer <aur at frohnmeyer-wds dot de>
+# Contributor: Yorick Peterse <aur AT yorickpeterse DOT com>
 # Contributor: Wesley Moore <wes@wezm.net>
 _pkgname=neovim-gtk
 pkgname=neovim-gtk-git
-pkgver=1063
+pkgver=1075
 pkgrel=1
 pkgdesc='GTK UI for Neovim written in Rust'
 arch=('x86_64')
@@ -33,13 +34,13 @@ package() {
   install -Dm644 "$srcdir/$_pkgname/runtime/plugin/nvim_gui_shim.vim" "$pkgdir/usr/share/nvim-gtk/runtime/nvim_gui_shim.vim"
 
   # desktop file
-  install -D -m644 "$srcdir/$_pkgname/desktop/org.daa.NeovimGtk.desktop" "${pkgdir}"/usr/share/applications/org.daa.NeovimGtk.desktop
+  install -D -m644 "$srcdir/$_pkgname/desktop/com.github.Lyude.neovim-gtk.desktop" "${pkgdir}"/usr/share/applications/com.github.Lyude.neovim-gtk.desktop
 
   # Icons
-  install -D -m644 "$srcdir/$_pkgname/desktop/org.daa.NeovimGtk_128.png"  "${pkgdir}"/usr/share/icons/hicolor/128x128/apps/org.daa.NeovimGtk.png
-  install -D -m644 "$srcdir/$_pkgname/desktop/org.daa.NeovimGtk_48.png"  "${pkgdir}"/usr/share/icons/hicolor/48x48/apps/org.daa.NeovimGtk.png
-  install -D -m644 "$srcdir/$_pkgname/desktop/org.daa.NeovimGtk.svg"  "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/org.daa.NeovimGtk.svg
-  install -D -m644 "$srcdir/$_pkgname/desktop/org.daa.NeovimGtk-symbolic.svg"  "${pkgdir}"/usr/share/icons/hicolor/symbolic/apps/org.daa.NeovimGtk-symbolic.svg
+  install -D -m644 "$srcdir/$_pkgname/desktop/com.github.Lyude.neovim-gtk_128.png"  "${pkgdir}"/usr/share/icons/hicolor/128x128/apps/com.github.Lyude.neovim-gtk.png
+  install -D -m644 "$srcdir/$_pkgname/desktop/com.github.Lyude.neovim-gtk_48.png"  "${pkgdir}"/usr/share/icons/hicolor/48x48/apps/com.github.Lyude.neovim-gtk.png
+  install -D -m644 "$srcdir/$_pkgname/desktop/com.github.Lyude.neovim-gtk.svg"  "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/com.github.Lyude.neovim-gtk.svg
+  install -D -m644 "$srcdir/$_pkgname/desktop/com.github.Lyude.neovim-gtk-symbolic.svg"  "${pkgdir}"/usr/share/icons/hicolor/symbolic/apps/com.github.Lyude.neovim-gtk-symbolic.svg
 
   # LICENSE
   install -D -m644 "$srcdir/$_pkgname/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
