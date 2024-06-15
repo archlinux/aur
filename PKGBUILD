@@ -10,7 +10,7 @@
 
 _pkgname=gamescope
 pkgname=${_pkgname}-git
-pkgver=3.14.2.r27.gf9386a7
+pkgver=3.14.18.r22.gfd67152
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager'
 arch=(x86_64)
@@ -26,10 +26,8 @@ depends=(
     libdecor
     libdisplay-info.so
     libdrm
-    libliftoff.so
     libinput
     libpipewire-0.3.so
-    libvulkan.so
     libx11
     libxcb
     libxcomposite
@@ -91,7 +89,7 @@ pkgver() {
 
 build() {
     arch-meson "${_pkgname}" build \
-        -Dforce_fallback_for=stb,wlroots \
+        -Dforce_fallback_for=stb,wlroots,vkroots,libliftoff \
         -Dpipewire=enabled
     meson compile -C build
 }
