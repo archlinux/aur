@@ -30,7 +30,7 @@ options=(!lto)
 backup=("etc/conduwuit.toml")
 
 package() {
-	install -Dm755 "${srcdir}/$pkgname-$pkgver" "${pkgdir}/usr/bin/conduwuit"
+	install -Dm755 "${srcdir}/$pkgname-$pkgver-$CARCH" "${pkgdir}/usr/bin/conduwuit"
 	install -Dm644 "${srcdir}/conduwuit.service" "$pkgdir/usr/lib/systemd/system/conduwuit.service"
 	install -Dm644 "${srcdir}/conduwuit.toml" "${pkgdir}/etc/conduwuit.toml"
 	install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
