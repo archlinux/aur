@@ -1,0 +1,7 @@
+DPF/
+pugl/
+StompTuner/
+pkg/
+src/
+*.tar.*
+*.zip
