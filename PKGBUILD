@@ -4,7 +4,7 @@
 
 pkgname=ledger-git
 pkgver=latest
-pkgrel=6
+pkgrel=7
 pkgdesc="A double-entry accounting system with a command-line reporting interface (development version)"
 arch=('i686' 'x86_64')
 url="http://ledger-cli.org"
@@ -26,6 +26,7 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}"/ledger
+  sed -E -e 's/c\+\+11/c\+\+17/' -i CMakeLists.txt
 }
 
 build() {
