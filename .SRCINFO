@@ -1,12 +1,13 @@
 pkgbase = clapper-git
 	pkgdesc = A modern media player powered by GStreamer and built for the GNOME desktop environment.
-	pkgver = r1183.f0f4801
+	pkgver = r1232.df371c6
 	pkgrel = 1
 	url = https://github.com/Rafostar/clapper
 	arch = any
 	license = GPL-3.0-or-later and LGPL-2.1-or-later
 	makedepends = meson>=0.64
 	makedepends = git
+	makedepends = glib2-devel>=2.76.0
 	makedepends = gobject-introspection
 	makedepends = vala
 	depends = gtk4>=4.1.0

@@ -22,7 +22,7 @@
 _basename=clapper
 _libver=0.0
 pkgname="${_basename}-git"
-pkgver=r1183.f0f4801
+pkgver=r1232.df371c6
 pkgrel=1
 pkgdesc="A modern media player powered by GStreamer and built for the GNOME desktop environment."
 arch=(any)
@@ -42,6 +42,7 @@ depends=(
 makedepends=(
 	"meson>=0.64"
 	"git"
+	"glib2-devel>=2.76.0"
 	"gobject-introspection" # /usr/sbin/g-ir-scanner
 	"vala"
 )
