@@ -5,6 +5,7 @@ provides=(${_pkgname})
 conflicts=(${_pkgname})
 pkgver=2.0.1.0
 pkgrel=1
+scdir=$_pkgname
 _pkgver="${pkgver//_/-}"
 _gitname="release-${_pkgver}"
 pkgdesc="A Swiss Army knife for developers."
@@ -23,7 +24,7 @@ source_aarch64=(https://github.com/DevToys-app/DevToys/releases/download/v"$pkgv
 package() {
     tar xf data.tar.zst -C "${pkgdir}"
     install -d "${pkgdir}/opt/${_pkgname}"
-    cd ..
+    cd $srcdir
 
     rm "${pkgdir}/usr/share/applications/devtoys.desktop"
 install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
