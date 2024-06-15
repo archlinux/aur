@@ -4,8 +4,8 @@
 # Contributor: Orlando Garcia Feal <rodland at gmail dot com>
 
 pkgname=gnudatalanguage
-pkgver=1.0.4
-pkgrel=3
+pkgver=1.0.6
+pkgrel=1
 pkgdesc="An IDL (Interactive Data Language) compatible incremental compiler (ie. runs IDL programs)"
 arch=("i686" "x86_64")
 url="https://gnudatalanguage.github.io/"
@@ -19,18 +19,18 @@ optdepends=("cuda")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/gnudatalanguage/gdl/releases/download/v${pkgver}/gdl-v${pkgver}.tar.gz"
         "gdl.profile"
         "gdl-cmake.patch")
-sha512sums=("3206bdd88b0478493221c0552e62620f1c9acbfec6f1900d73d932caae12401bf825e8893c81f844965f79e332bedb6ea99e6ea6f2b21427022efa60d1326eb0"
+sha512sums=("8a10e2d33d99aa2d29a085957a726b7d1af8e73fdb7c725508c929b5dbbff55e3fbb9265e9aa9c14e73bf72f6409aac24817032bd81007b694ebb689c02aa75a"
             "b3a3589d2ce8eb5d49c902aa9bc43df0a0fcc369d17deb060026d34fa821881a212ce6aa02edc7ea6c0476b2faacc7455e467af7b5baf672e2653b71b162190f"
             "bcb0f55f7f5a203a3f976e7b258019f425aeb8bb1534a381e4b586ad35d62620d5e7d3f5fe7918e29a0634a6df99a5f86a2caa4f62ce4a1e8ef4c647ea860f65")
 
 prepare() {
-    cd "${srcdir}/gdl-v1.0.4"
+    cd "${srcdir}/gdl-v${pkgver}"
 
     patch -p1 -i ../gdl-cmake.patch
 }
 
 build() {
-    cd "${srcdir}/gdl-v1.0.4"
+    cd "${srcdir}/gdl-v${pkgver}"
     if [[ -d build ]]; then
         rm -r build
     fi
@@ -47,7 +47,7 @@ build() {
 }
 
 check() {
-    cd "${srcdir}/gdl-v1.0.4/build"
+    cd "${srcdir}/gdl-v${pkgver}/build"
     
     # we need *..driver_info files, those are installed but not in 
     while IFS= read -r -d '' file
@@ -59,7 +59,7 @@ check() {
 }
 
 package() {
-    cd "${srcdir}/gdl-v1.0.4/build"
+    cd "${srcdir}/gdl-v${pkgver}/build"
     make DESTDIR="${pkgdir}" install
 
     install -D -m755 ../../gdl.profile "${pkgdir}/etc/profile.d/gdl.sh"
