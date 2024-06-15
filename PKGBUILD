@@ -3,26 +3,27 @@
 # Contributor: Glaucous <glakke1 at gmail dot com>
 
 pkgname=lib32-apitrace
+_name="${pkgname//lib32-/}"
 pkgver=11.1
 pkgrel=1
 pkgdesc="Graphics API Tracing (32-bit)"
 arch=('x86_64')
 url="https://github.com/apitrace/apitrace"
 license=(MIT)
-depends=('python' 'lib32-libgl' 'lib32-procps-ng' 'apitrace')
+depends=('python' 'lib32-libgl' 'lib32-libprocps' $_name=$pkgver)
 makedepends=('cmake' 'git' 'gcc-multilib')
-source=("apitrace-$pkgver::git+https://github.com/apitrace/apitrace.git#tag=${pkgver}")
+source=("$_name::git+https://github.com/apitrace/apitrace.git#tag=${pkgver}")
 sha256sums=('SKIP')
 
 prepare() {
-  cd apitrace-${pkgver}
+  cd $_name
 
   git submodule update --init --depth 1 --recursive
 }
 
 
 build() {
-  cd apitrace-${pkgver}
+  cd $_name
 
   export CC='gcc -m32'
   export CXX='g++ -m32'
@@ -34,7 +35,7 @@ build() {
 }
 
 package() {
-  cd apitrace-${pkgver}
+  cd $_name
   
   make  -C build DESTDIR="${pkgdir}/" install
 
