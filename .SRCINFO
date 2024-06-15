@@ -4,7 +4,6 @@ pkgbase = firedragon
 	pkgrel = 1.1
 	epoch = 1
 	url = https://garudalinux.org
-	install = firedragon.install
 	arch = x86_64
 	license = MPL2
 	license = Floorp Shared Source License

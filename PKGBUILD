@@ -93,7 +93,6 @@ sha256sums=('7ef6798b20554820924007c721aac2da935b2a23324b18a9b70dcbf9a5045778'
             '32a680a84cf76014915b3f8aa44e3e40731f3af92cd45eb0fcc6264fd257c428'
             '61355930cc59813e7e610ffdab8a01e32be980fffe1dfd8f9654b8f8f9f7fdc0'
             '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560')
-install="${pkgname}.install"
 
 # Select the method of profiling
 if [[ "${_build_pgo::1}" == "t" ]]; then
