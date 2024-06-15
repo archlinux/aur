@@ -12,7 +12,7 @@
 
 pkgname=('boost-git' 'boost-libs-git')
 pkgver=1.85.0.r103.gf4d80a8676
-pkgrel=1
+pkgrel=2
 pkgdesc='Free peer-reviewed portable C++ source libraries'
 url='https://www.boost.org/'
 arch=('x86_64')
@@ -211,11 +211,11 @@ pkgver() {
 }
 
 prepare() {
-  cd $srcdir/boost
+  cd "boost"
   git rm more
   git submodule init
-  git config --add safe.directory '*'
-  git config protocol.file.allow always
+  git config --global --add safe.directory '*'
+  git config --global protocol.file.allow always
   for module in \
     accumulators algorithm align any array asio assert assign atomic auto_index bcp beast bimap bind boostbook boostdep boost_install build callable_traits charconv check_build chrono circular_buffer cmake cobalt compat compatibility compute concept_check config container container_hash context contract conversion convert core coroutine{,2} crc date_time describe detail dll docca dynamic_bitset endian exception fiber filesystem flyweight foreach format function functional function_types fusion geometry gil graph{,_parallel} hana headers heap histogram hof icl inspect integer interprocess interval intrusive io iostreams iterator json lambda{,2} leaf lexical_cast litre locale local_function lockfree log logic math metaparse move mp11 mpi mpl msm multi_array multi_index multiprecision mysql nowide numeric_conversion odeint optional outcome parameter parameter_python pfr phoenix poly_collection polygon pool predef preprocessor process program_options property_map{,_parallel} property_tree proto ptr_container python quickbook qvm random range ratio{,nal} redis regex safe_numerics scope scope_exit serialization signals2 smart_ptr sort spirit stacktrace statechart static_{assert,string} stl_interfaces system test thread throw_exception timer tokenizer tti tuple type_{erasure,index,traits} typeof ublas units unordered url utility uuid variant{,2} vmd wave winapi xpressive yap; do
     git config submodule.$module.url "$srcdir/boost-$module"
@@ -226,12 +226,12 @@ prepare() {
 build() {
   local JOBS="$(sed -e 's/.*\(-j *[0-9]\+\).*/\1/' <<< ${MAKEFLAGS})"
 
-  cd boost
+  cd "boost"
 
   ( cd tools/build
     ./bootstrap.sh --cxxflags="$CXXFLAGS $LDFLAGS" --prefix="$srcdir/fakeinstall"
     ./b2 install --prefix="$srcdir/fakeinstall"
-    ln -s ./b2 "$srcdir/fakeinstall/bin/bjam" )
+    ln -sf ./b2 "$srcdir/fakeinstall/bin/bjam" )
 
   ./bootstrap.sh --with-toolset=gcc --with-icu --with-python=python3 --prefix="$srcdir/fakeinstall"
 
