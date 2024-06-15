@@ -16,7 +16,7 @@ pkgbase = python-adafruit-blinka
 	depends = python-adafruit-platformdetect
 	depends = python-gpiod
 	depends = python-adafruit-pureio
-	source = https://pypi.io/packages/source/A/Adafruit-Blinka/Adafruit-Blinka-8.43.0.tar.gz
+	source = https://pypi.io/packages/source/a/adafruit_blinka/adafruit_blinka-8.43.0.tar.gz
 	sha256sums = 2ac2fa1dce8ed589800bb8253f2ebaf0932448248ef920ab5d23f78a508c2c52
 
 pkgname = python-adafruit-blinka

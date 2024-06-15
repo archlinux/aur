@@ -1,7 +1,7 @@
 # Maintainer: Razer <razer[AT]neuf[DOT]fr>
 
 pkgname=python-adafruit-blinka
-_pypi_pkgname=Adafruit-Blinka
+_pypi_pkgname=adafruit_blinka
 pkgver=8.43.0
 pkgrel=0
 pkgdesc="CircuitPython APIs for non-CircuitPython versions of Python such as CPython on Linux and MicroPython"
@@ -22,7 +22,7 @@ depends=(
 'python-adafruit-pureio'
 )
 optdepends=()
-source=("https://pypi.io/packages/source/A/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
+source=("https://pypi.io/packages/source/a/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
 sha256sums=('2ac2fa1dce8ed589800bb8253f2ebaf0932448248ef920ab5d23f78a508c2c52')
 
 build() {
