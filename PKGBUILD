@@ -2,7 +2,7 @@
 
 _pkgname=goby
 pkgname=goby-community
-pkgver=2.9.4
+pkgver=2.9.5
 pkgrel=1
 pkgdesc="Attack surface mapping"
 arch=("x86_64")
@@ -24,7 +24,7 @@ source=(
 	"$pkgname.png"
 	)
 sha256sums=(
-	'99812758be7e3a941253671540f345308097d8afb24d7671f6f8dd899fdd8f36'
+	'40b167973300f6ac24d34f68492e32173d356b940a6046bf22e12dca3aff3a6d'
 	'0624f9c1aa7377ccb5bd6b6a54a3dbea3cdd1a1e838a154c73bd01d22ff5fc3f'
 	'11e10dc114bd6cd8ecfe018b277798f1c7727f113c15ebc09090682f8575bb1f'
 )

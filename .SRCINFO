@@ -1,6 +1,6 @@
 pkgbase = goby-community
 	pkgdesc = Attack surface mapping
-	pkgver = 2.9.4
+	pkgver = 2.9.5
 	pkgrel = 1
 	url = https://gobies.org/
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = goby-community
 	depends = libpcap
 	options = !strip
 	options = !debug
-	source = https://goby-storage-public.oss-cn-beijing.aliyuncs.com/2.9.4/goby-linux-x64-2.9.4-Community.zip
+	source = https://goby-storage-public.oss-cn-beijing.aliyuncs.com/2.9.5/goby-linux-x64-2.9.5-Community.zip
 	source = goby-community.desktop
 	source = goby-community.png
-	sha256sums = 99812758be7e3a941253671540f345308097d8afb24d7671f6f8dd899fdd8f36
+	sha256sums = 40b167973300f6ac24d34f68492e32173d356b940a6046bf22e12dca3aff3a6d
 	sha256sums = 0624f9c1aa7377ccb5bd6b6a54a3dbea3cdd1a1e838a154c73bd01d22ff5fc3f
 	sha256sums = 11e10dc114bd6cd8ecfe018b277798f1c7727f113c15ebc09090682f8575bb1f
 
