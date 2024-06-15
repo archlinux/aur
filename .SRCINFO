@@ -1,0 +1,19 @@
+pkgbase = python-pretty-errors-git
+	pkgdesc = Prettifies Python exception output to make it legible.
+	pkgver = r.
+	pkgrel = 1
+	url = https://github.com/onelivesleft/PrettyErrors/
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-colorama
+	provides = python-pretty-errors
+	conflicts = python-pretty-errors
+	source = pretty-errors-git::git+https://github.com/onelivesleft/PrettyErrors.git
+	md5sums = SKIP
+
+pkgname = python-pretty-errors-git
