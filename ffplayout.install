@@ -20,7 +20,7 @@ post_install() {
 
 	    IP=$(ip route get 1.2.3.4 | awk '{if($7 !~ /^[[:space:]]*$/) print $7}')
 
-	    /usr/bin/ffplayout -i -d "${IP}:8787"
+	    #/usr/bin/ffplayout -i -d "${IP}:8787"
 
 	    chown -R ${sysUser}: "/usr/share/ffplayout"
 	    chown -R ${sysUser}: "/var/lib/ffplayout"
@@ -37,8 +37,8 @@ post_install() {
 	    chown ${sysUser}: "/var/log/ffplayout"
 	fi
 
-	echo "1. add admin user to ffplayout:"
-    echo "    - 'ffplayout -a'"
+	echo "1. Add an admin user to ffplayout and set global settings:"
+    echo "    - 'ffplayout -i -d ${IP}:8787'
 	echo "2. activate systemd service:"
     echo "    - 'systemctl enable --now ffplayout'"
     echo "3. use a reverse proxy for SSL, Port is **8787**."

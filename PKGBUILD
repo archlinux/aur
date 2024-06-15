@@ -28,7 +28,7 @@ source=(
   'ffplayout.install'
 )
 sha256sums=('SKIP'
-            '8fb8fb94c4ed8af580f5407f8eab7bc65b6cbf24a7ad962d20c725bb4a95d7e8')
+            '5587bea0f4f451619467920f6df8c307ffac75a2cd18a17d5a4903af5c338204')
 
 pkgver() {
   cd ${pkgname}
