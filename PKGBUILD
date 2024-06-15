@@ -13,16 +13,16 @@ conflicts=('cunicu')
 optdepends=('bash-completion: for shell completions' 'wireguard-tools: for controlling WireGuard interfaces')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/cunicu/cunicu/releases/download/v0.5.0/cunicu_0.5.0_linux_arm64.tar.gz")
-sha256sums_aarch64=('ed5728dbb9d4744afa2ccdbcf95bbb0f30d639a6d13e7957a4280a8c78fcbc86')
+sha256sums_aarch64=('b66d2c576da1109c41096bd244aa90eab9123325cf018c1120a0ab36765bec84')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/cunicu/cunicu/releases/download/v0.5.0/cunicu_0.5.0_linux_armv7.tar.gz")
-sha256sums_armv7h=('0649abf4d1abecf80508486d3854be4deb8f955d7ba6ff0db35fb25053730c9c')
+sha256sums_armv7h=('ee7ba5de246d1b6af5e9b9207597f1c5f141f107596c1daedcf4711a0bd9e5e0')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/cunicu/cunicu/releases/download/v0.5.0/cunicu_0.5.0_linux_386.tar.gz")
-sha256sums_i686=('2744eee491a558f8a097dc8ed28212368875c6910ca8391f0391f41c653478fa')
+sha256sums_i686=('a56da345000899eec5e57e8db5114b5d09109da35434b90e149fef26f9b38e55')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/cunicu/cunicu/releases/download/v0.5.0/cunicu_0.5.0_linux_amd64.tar.gz")
-sha256sums_x86_64=('f835ce0cf94c5f673d64b755cabd28aaa9d76b976ca7e83581af475dbfab843b')
+sha256sums_x86_64=('c678c313cf1ee225c940051791533d1fe2b962fd934d798c00fc83e82e480f88')
 
 package() {
   # bin
