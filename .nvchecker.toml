@@ -1,0 +1,5 @@
+[felix-bin]
+source = "git"
+git = "https://github.com/projectcalico/felix.git"
+prefix = "v"
+exclude_regex = ".*dev"
