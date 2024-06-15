@@ -3,7 +3,7 @@
 
 _pkgname="kwin-effect-rounded-corners"
 pkgname="$_pkgname-git"
-pkgver=0.6.5.r3.gc700296
+pkgver=0.6.6.r6.g0e1fa34
 pkgrel=1
 pkgdesc="Rounds the corners of your windows"
 url="https://github.com/matinlotfali/KDE-Rounded-Corners"
@@ -25,12 +25,9 @@ depends=(
   #qt6-base
 )
 makedepends=(
-  'clang'
   'cmake'
   'extra-cmake-modules'
   'git'
-  'lld'
-  'llvm'
   'ninja'
 )
 
@@ -45,11 +42,6 @@ pkgver() {
 }
 
 build() {
-  export CC CXX LDFLAGS
-  CC=clang
-  CXX=clang++
-  LDFLAGS+=" -fuse-ld=lld"
-
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"
