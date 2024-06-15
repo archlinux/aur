@@ -1,0 +1,4 @@
+[nucleus]
+source = "git"
+git = "https://github.com/nucleuscloud/cli.git"
+prefix = "v"

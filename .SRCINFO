@@ -1,0 +1,12 @@
+pkgbase = nucleus
+	pkgdesc = CLI for interfacing with Nucleus
+	pkgver = 0.2.12
+	pkgrel = 1
+	url = https://nucleuscloud.com
+	arch = any
+	license = Apache-2.0
+	makedepends = go
+	source = nucleus-0.2.12.tar.gz::https://github.com/nucleuscloud/cli/archive/v0.2.12.tar.gz
+	sha256sums = 2ef2f4ce52b84dc5454ef0003480a453d86871ed26f7b2b53e7a6aebd1f0cd9d
+
+pkgname = nucleus
