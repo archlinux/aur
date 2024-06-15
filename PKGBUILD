@@ -1,7 +1,7 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=sby-nightly
-pkgver=20240614_yosys_0.42
+pkgver=20240615_yosys_0.42_2_gc9e3b82
 pkgrel=1
 epoch=1
 pkgdesc="Front-end for Yosys-based formal verification flows"
@@ -20,7 +20,7 @@ makedepends=("git")
 conflicts=("symbiyosys-git")
 replaces=("symbiyosys-nightly")
 source=(
-	"sby::git+https://github.com/YosysHQ/sby.git#commit=641d5d5"
+	"sby::git+https://github.com/YosysHQ/sby.git#commit=c9e3b82"
 )
 sha256sums=(
 	"SKIP"
