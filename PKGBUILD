@@ -7,7 +7,7 @@ _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-rav1e
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="An AV1 encoder focused on speed and safety (Android ${_android_arch})"
 url="https://github.com/xiph/rav1e/"
@@ -50,8 +50,6 @@ package() {
         --destdir "${pkgdir}" \
         --features asm,threading,signal_support \
         --no-default-features
-    mv -f "${pkgdir}/${ANDROID_PREFIX_LIB}/librav1e.so".*.*.* "${pkgdir}/${ANDROID_PREFIX_LIB}/librav1e.so"
-    rm -f "${pkgdir}/${ANDROID_PREFIX_LIB}/librav1e.so".*
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
     ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
 }

@@ -1,7 +1,7 @@
 pkgbase = android-armv7a-eabi-rav1e
 	pkgdesc = An AV1 encoder focused on speed and safety (Android armv7a-eabi)
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xiph/rav1e/
 	arch = any
 	license = custom:BSD
