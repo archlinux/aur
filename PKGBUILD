@@ -1,4 +1,5 @@
-# Maintainer: Kyle Keen <keenerd@gmail.com>
+# Maintainer: iamawacko <iamawacko@protonmail.com>
+# Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Leslie P. Polzer <polzer@stardawn.org>
 # Contributor: RaxG
@@ -15,8 +16,8 @@ depends=('edelib')
 provides=('pekwm')
 conflicts=('pekwm')
 makedepends=('ftjam' 'asciidoc')
-source=(http://downloads.sourceforge.net/project/ede/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz)
-md5sums=('232300328557a75ad2aef5fdc064002e')
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/edeproject/ede/archive/ede-${pkgver}.tar.gz)
+sha256sums=('65fd31c3dafbd7e79f859bd0bba4dfc6333c655a801d85119834f1345f87767b')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"

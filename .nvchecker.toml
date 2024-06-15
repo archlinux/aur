@@ -1,0 +1,4 @@
+[ede]
+source = "git"
+git = "https://github.com/edeproject/ede.git"
+prefix = "ede-"
