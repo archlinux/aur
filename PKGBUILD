@@ -50,27 +50,35 @@ prepare() {
 
 
 build() {
-  cd $_name
+  local cmake_options=(
+    -B build
+    -D CMAKE_BUILD_TYPE=None
+    -D CMAKE_INSTALL_PREFIX=/usr
+    -D ENABLE_GUI=NO
+    -D LIB_SUFFIX=32
+    -S $_name
+    -W no-dev
+  )
 
-  export CC='gcc -m32'
-  export CXX='g++ -m32'
+  export CFLAGS+=" -m32"
+  export CXXFLAGS+=" -m32"
+  export LDFLAGS+=" -m32"
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
-  cmake . -Bbuild -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_SUFFIX=32 -DENABLE_GUI="no"
-  make -C build
+  cmake "${cmake_options[@]}"
+  cmake --build build --verbose
+  cd $_name
 }
 
 package() {
-  cd $_name
-  
-  make  -C build DESTDIR="${pkgdir}/" install
+  local binary
 
-  mv -v ${pkgdir}"/usr/bin/apitrace" ${pkgdir}"/usr/bin/apitrace32"
-  rm -r ${pkgdir}/usr/share/doc
-  rm ${pkgdir}/usr/bin/{*retrace,gltrim}
-  
-  install -m755 -d "${pkgdir}/usr/share/licenses/apitrace"
-  ln -s apitrace "$pkgdir/usr/share/licenses/apitrace/"${pkgname}
+  DESTDIR="$pkgdir" cmake --install build
+  install -vDm 644 $_name/LICENSE -t "${pkgdir}/usr/share/licenses/$pkgname/"
+
+  for binary in "$pkgdir/usr/bin/"*; do
+    mv -v "$binary" "$binary-32"
+  done
+  mv -v "$pkgdir/usr/share/doc/$_name" "$pkgdir/usr/share/$pkgname"
 }
 
