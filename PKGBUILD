@@ -3,8 +3,8 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-xz
-pkgver=5.6.1
-pkgrel=3
+pkgver=5.6.2
+pkgrel=1
 arch=('any')
 pkgdesc="Library and command line tools for XZ and LZMA compressed files (Android ${_android_arch})"
 url="https://tukaani.org/xz"
@@ -16,7 +16,7 @@ makedepends=('android-configure'
              'doxygen')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/tukaani-project/xz/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('b873d65db3e66157bf382a0fa9f90b7e')
+md5sums=('ffedb1780d9168ba29cdbe71bbf62ad3')
 
 prepare() {
     cd "${srcdir}/xz-${pkgver}"
@@ -46,6 +46,6 @@ package() {
     source android-env ${_android_arch}
 
     make DESTDIR="$pkgdir" install
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
