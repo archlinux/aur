@@ -1,5 +1,5 @@
 pkgbase = adaptivecpp-full-git
-	pkgdesc = A modern community-driven platform for C++-based heterogeneous programming models targeting CPUs and GPUs from all major vendors.
+	pkgdesc = A modern, community-driven platform for C++-based heterogeneous programming models targeting CPUs and GPUs from all major vendors.
 	pkgver = 24.02.0.r126.g2636e1f
 	pkgrel = 1
 	url = https://github.com/AdaptiveCpp/AdaptiveCpp
