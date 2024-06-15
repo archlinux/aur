@@ -36,7 +36,7 @@ post_install() {
 	fi
 
 	echo "1. Add an admin user to ffplayout and set global settings:"
-    echo "    - 'ffplayout -i -d ${IP}:8787'
+    echo "    - 'ffplayout -i -d ${IP}:8787'"
 	echo "2. activate systemd service:"
     echo "    - 'systemctl enable --now ffplayout'"
     echo "3. use a reverse proxy for SSL, Port is **8787**."
