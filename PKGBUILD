@@ -1,7 +1,7 @@
 # Maintainer: StuckUpCreations <onelove.nyahbingi@gmail.com>
 pkgname=ctjs-bin
 pkgver=5.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="ct.js is a 2D game editor that makes its bet on good documentation, visual tools and smooth workflow"
 arch=("x86_64")
 url="https://ctjs.rocks/"
@@ -26,7 +26,7 @@ package() {
 	mkdir -p ${pkgdir}/usr/bin
 	mkdir -p ${pkgdir}/usr/share/icons/
 	mkdir -p ${pkgdir}/usr/share/applications/
-	mv ${srcdir}/linux64/data/fonts/OpenSans\ –\ LICENSE.txt ${srcdir}/linux64/data/fonts/OpenSansLicense.txt
+	mv ${srcdir}/linux64/package.nw/data/fonts/OpenSans\ –\ LICENSE.txt ${srcdir}/linux64/package.nw/data/fonts/OpenSansLicense.txt
 	touch ${pkgdir}/usr/bin/ctjs
 	echo "#!/bin/bash" >>${pkgdir}/usr/bin/ctjs
 	echo "cd /opt/ctjs" >>${pkgdir}/usr/bin/ctjs
