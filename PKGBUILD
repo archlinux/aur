@@ -51,7 +51,6 @@ source=(https://gitlab.com/api/v4/projects/55893651/packages/generic/firedragon/
 sha256sums=('0d497967fa6ebf475824415e7d57babfa2b20a25498d80cfd053d4e621e890f3'
             '61355930cc59813e7e610ffdab8a01e32be980fffe1dfd8f9654b8f8f9f7fdc0'
             '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560')
-install="${_pkgname}.install"
 
 package() {
   cd "${srcdir}/${_pkgname}"
