@@ -1,0 +1,8 @@
+pkg/
+src/
+
+# Source files
+Outline-Client_*.AppImage
+
+# Compressed package
+outline-client-appimage-*-*-*.pkg.tar.zst
