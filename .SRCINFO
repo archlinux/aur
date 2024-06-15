@@ -1,13 +1,13 @@
 pkgbase = cloud-sql-proxy
 	pkgdesc = Cloud SQL Auth Proxy
-	pkgver = 2.11.3
+	pkgver = 2.11.4
 	pkgrel = 1
 	url = https://github.com/GoogleCloudPlatform/cloudsql-proxy
 	arch = x86_64
 	license = Apache
 	makedepends = go
 	depends = fuse3
-	source = cloud-sql-proxy-2.11.3.tar.gz::https://github.com/GoogleCloudPlatform/cloudsql-proxy/archive/v2.11.3.tar.gz
-	b2sums = 7eb1833ee223eaf3dbb7dc715e0ace9445ae8aedbf2c777cf9eb74c4378b7f59d5527ca566d15c8f6088385dc0f0c12c79e364ebaef13636c0cd918283b7886a
+	source = cloud-sql-proxy-2.11.4.tar.gz::https://github.com/GoogleCloudPlatform/cloudsql-proxy/archive/v2.11.4.tar.gz
+	b2sums = 2cc670aa217f398b3250f81deef5d068d0f38d2537dc2a647aadafdb997c2c7e6527eb397e147601c3ec4aedde10824d81d3aae2081ebcac2ab189b295b0e768
 
 pkgname = cloud-sql-proxy
