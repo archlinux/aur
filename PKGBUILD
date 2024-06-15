@@ -1,10 +1,11 @@
 # Maintainer: jpberdejo <jpberdejo at gmail dot com>
+# Contributor: zhullyb <zhullyb at outlook dot com>
 pkgname=dolphin-megasync-bin
 pkgver=5.2.0
 pkgrel=1
 pkgdesc="Extension for KDE based file managers to interact with Megasync"
 arch=('x86_64')
-url="http://mega.nz"
+url="https://mega.nz"
 license=('custom')
 provides=("dolphin-megasync=$pkgver")
 conflicts=('dolphin-megasync' 'dolphin-megasync-git')
