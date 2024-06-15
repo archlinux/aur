@@ -5,7 +5,7 @@ pkgname=starpu
 pkgdesc='Task programming library for hybrid architectures'
 url='https://starpu.gitlabpages.inria.fr/'
 pkgver=1.3.11
-pkgrel=1
+pkgrel=2
 arch=(x86_64 x86_64_v3)
 license=('LGPL3')
 depends=('blas' 'fxt' 'hwloc')
@@ -23,10 +23,10 @@ build() {
         --disable-build-doc \
         --disable-build-doc-pdf \
         --disable-build-examples \
-        --disable-fast-install \
         --disable-build-tests \
         --disable-cuda \
         --disable-fortran \
+        --disable-mpi \
         --disable-opencl \
         --disable-socl \
         --disable-starpufft \
