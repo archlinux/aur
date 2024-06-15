@@ -10,8 +10,23 @@ pkgdesc="Graphics API Tracing (32-bit)"
 arch=('x86_64')
 url="https://github.com/apitrace/apitrace"
 license=(MIT)
-depends=('python' 'lib32-libgl' 'lib32-libprocps' $_name=$pkgver)
-makedepends=('cmake' 'git' 'gcc-multilib')
+depends=(
+  $_name=$pkgver
+  lib32-brotli
+  lib32-gcc-libs
+  lib32-glibc
+  lib32-libpng
+  lib32-libprocps
+  lib32-libx11
+  lib32-zlib
+  python
+  python-numpy
+  python-pillow
+)
+makedepends=(
+  cmake
+  git
+)
 source=(
   $_name::git+$url.git#tag=$pkgver
   git+https://github.com/apitrace/gltrim-tests.git
@@ -79,6 +94,6 @@ package() {
   for binary in "$pkgdir/usr/bin/"*; do
     mv -v "$binary" "$binary-32"
   done
-  mv -v "$pkgdir/usr/share/doc/$_name" "$pkgdir/usr/share/$pkgname"
+  mv -v "$pkgdir/usr/share/doc/$_name" "$pkgdir/usr/share/doc/$pkgname"
 }
 
