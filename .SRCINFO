@@ -1,6 +1,6 @@
 pkgbase = stater-git
 	pkgdesc = Stater is a raylib based gui-app that can visualize pieces of data.
-	pkgver = r37.2f0024a
+	pkgver = r45.3111c89
 	pkgrel = 1
 	url = https://github.com/tim-tm/stater
 	arch = x86_64
@@ -8,14 +8,9 @@ pkgbase = stater-git
 	makedepends = git
 	makedepends = make
 	makedepends = gcc
+	makedepends = autoconf
 	depends = glibc
-	depends = alsa-lib
-	depends = mesa
-	depends = libx11
-	depends = libxrandr
-	depends = libxi
-	depends = libxcursor
-	depends = libxinerama
+	depends = raylib
 	source = stater::git+https://github.com/tim-tm/stater.git
 	md5sums = SKIP
 
