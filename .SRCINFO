@@ -1,7 +1,7 @@
 pkgbase = kaudiocreator-git
 	pkgdesc = A program for ripping and encoding Audio-CDs, encoding files from disk. (GIT version)
 	pkgver = 1.3.r886.f21c160
-	pkgrel = 2
+	pkgrel = 3
 	url = https://kde.org/applications/en/unmaintained/org.kde.kaudiocreator
 	arch = x86_64
 	license = GPL
@@ -37,12 +37,25 @@ pkgbase = kaudiocreator-git
 	depends = solid5
 	depends = kservice5
 	depends = kdelibs4support
+	depends = cdparanoia
+	depends = alsa-lib
+	depends = libasound.so
+	depends = flac
+	depends = libFLAC.so
+	depends = libogg
+	depends = libogg.so
+	depends = libvorbis
+	depends = libvorbis.so
+	depends = libvorbisenc.so
 	depends = hicolor-icon-theme
+	depends = audiocd-kio
 	provides = kaudiocreator
 	conflicts = kaudiocreator
 	source = git+https://invent.kde.org/unmaintained/kaudiocreator.git
 	source = git+https://invent.kde.org/multimedia/libkcddb.git#branch=release/20.04
 	source = git+https://invent.kde.org/multimedia/libkcompactdisc.git#branch=release/20.04
+	source = git+https://invent.kde.org/multimedia/audiocd-kio.git#branch=release/20.04
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

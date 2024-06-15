@@ -2,7 +2,7 @@
 
 pkgname=kaudiocreator-git
 pkgver=1.3.r886.f21c160
-pkgrel=2
+pkgrel=3
 pkgdesc="A program for ripping and encoding Audio-CDs, encoding files from disk. (GIT version)"
 arch=('x86_64')
 url='https://kde.org/applications/en/unmaintained/org.kde.kaudiocreator'
@@ -32,7 +32,13 @@ depends=(
   'solid5' # libKF5Solid.so
   'kservice5' # libKF5Service.so
   'kdelibs4support' # libKF5KDELibs4Support.so
+  'cdparanoia'
+  'alsa-lib' 'libasound.so'
+  'flac' 'libFLAC.so'
+  'libogg' 'libogg.so'
+  'libvorbis' 'libvorbis.so' 'libvorbisenc.so'
   'hicolor-icon-theme'
+  'audiocd-kio'
 )
 makedepends=(
   'git'
@@ -48,8 +54,11 @@ provides=('kaudiocreator')
 source=(
   'git+https://invent.kde.org/unmaintained/kaudiocreator.git'
   'git+https://invent.kde.org/multimedia/libkcddb.git#branch=release/20.04'
-  'git+https://invent.kde.org/multimedia/libkcompactdisc.git#branch=release/20.04')
+  'git+https://invent.kde.org/multimedia/libkcompactdisc.git#branch=release/20.04'
+  'git+https://invent.kde.org/multimedia/audiocd-kio.git#branch=release/20.04'
+)
 sha256sums=(
+  'SKIP'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -71,7 +80,13 @@ prepare() {
 
   sed -e 's|TAGLIB_INCLUDE_DIR|Taglib_INCLUDE_DIRS|g' \
       -e 's|TAGLIB|Taglib|g' \
+      -e 's|ServiceMenus|servicemenus|g' \
       -i kaudiocreator/CMakeLists.txt
+
+  # ugly as fuck, but this can do the library coinstalable. share bits is shared with audiocd-kio for kf6,so add audiocd-kio as depends
+  # when this PR gets merged, then i do edit to remove this https://invent.kde.org/multimedia/audiocd-kio/-/merge_requests/13/diffs
+  sed 's|SOVERSION 5|SOVERSION 55|g' \
+      -i audiocd-kio/CMakeLists.txt
 }
 
 build() {
@@ -93,13 +108,25 @@ build() {
   cmake --build build-libkcompactdisc
   cmake --install build-libkcompactdisc
 
+  # ugly fix for find Cdinfo in the wanted path
+  sed "s|<KCddb/Cdinfo>|\"${srcdir}/fakeroot/usr/include/KF5/KCddb/Cdinfo\"|g" -i audiocd-kio/plugins/audiocdencoder.h
+  cmake -S audiocd-kio -B build-audiocd-kio \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DKF5Cddb_DIR="${srcdir}/fakeroot/usr/lib/cmake/KF5Cddb" \
+    -DKF5CompactDisc_DIR="${srcdir}/fakeroot/usr/lib/cmake/KF5CompactDisc" \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_TESTING=OFF
+
+  cmake --build build-audiocd-kio
+
   export PKG_CONFIG_PATH=/usr/lib/taglib1/pkgconfig
   cmake -S kaudiocreator -B build \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_TESTING=ON \
     -DKF5Cddb_DIR="${srcdir}/fakeroot/usr/lib/cmake/KF5Cddb" \
-    -DKF5CompactDisc_DIR="${srcdir}/fakeroot/usr/lib/cmake/KF5CompactDisc"
+    -DKF5CompactDisc_DIR="${srcdir}/fakeroot/usr/lib/cmake/KF5CompactDisc" \
+    -DSERVICES_INSTALL_DIR=/usr/share/kio
 
   cmake --build build
 }
@@ -109,5 +136,15 @@ check() {
 }
 
 package() {
-  make -C build DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install build
+  DESTDIR="${pkgdir}" cmake --install build-audiocd-kio
+  # Remove colided files with audiocd-kio
+  rm -fr "${pkgdir}/usr/include"
+  rm -fr "${pkgdir}/usr/lib/libaudiocdplugins.so"
+  rm -fr "${pkgdir}/usr/share/config.kcfg"
+  rm -fr "${pkgdir}/usr/share/doc/HTML/en/kcontrol"
+  rm -fr "${pkgdir}/usr/share/doc/HTML/en/kioslave5"
+  rm -fr "${pkgdir}//usr/share/konqsidebartng"
+  rm -fr "${pkgdir}/usr/share/metainfo"
+  rm -fr "${pkgdir}/usr/share/solid"
 }
