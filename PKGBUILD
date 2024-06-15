@@ -41,6 +41,7 @@ depends=(
 )
 makedepends=(
 	"meson>=0.64"
+	"glib2-devel>=2.76.0"
 	"gobject-introspection" # /usr/sbin/g-ir-scanner
 	"vala"
 )

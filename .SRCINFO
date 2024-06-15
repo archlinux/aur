@@ -6,6 +6,7 @@ pkgbase = clapper
 	arch = any
 	license = GPL-3.0-or-later and LGPL-2.1-or-later
 	makedepends = meson>=0.64
+	makedepends = glib2-devel>=2.76.0
 	makedepends = gobject-introspection
 	makedepends = vala
 	depends = gtk4>=4.10.0
