@@ -4,6 +4,6 @@ Name=Outline
 Exec=outline-client
 Terminal=false
 Type=Application
-Icon=outline-client
+Icon=outline-apps
 StartupWMClass=Outline
 Categories=Network;
