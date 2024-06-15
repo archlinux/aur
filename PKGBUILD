@@ -1,5 +1,5 @@
 _basename=vlauncher
-pkgname=${_basename}
+pkgname=${_basename}-ve
 pkgver=1.0.2
 _pathname=${_basename}-${pkgver}
 _tarname=${_pathname}-linux-amd64
