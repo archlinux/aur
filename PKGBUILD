@@ -2,7 +2,7 @@
 
 # shellcheck disable=SC1090
 pkgname=nvidia-patch
-pkgver=550.78
+pkgver=550.90.07
 pkgrel=1
 pkgdesc="install or reinstall to apply and update nvidia-patch by keylase, unlock nvfbc and nvenc limit"
 arch=('x86_64')
@@ -19,8 +19,8 @@ encso=$(readlink -es /lib/libnvidia-encode.so)
 fbcso=$(readlink -es /lib/libnvidia-fbc.so)
 
 pkgver() {
-	encver=$(echo "$encso" | grep -oP '\d+\.\d+')
-	fbcver=$(echo "$fbcso" | grep -oP '\d+\.\d+')
+	encver=$(echo "$encso" | grep -oP '[0-9]..*[0-9]$')
+	fbcver=$(echo "$fbcso" | grep -oP '[0-9]..*[0-9]$')
 	if [ "$encver" == "$fbcver" ]; then
 		if [[ -z $force_nvutils_ver ]]; then
 			echo "$encver"
