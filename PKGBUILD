@@ -7,7 +7,7 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-pcsclite
-pkgver=2.2.0
+pkgver=2.2.3
 pkgrel=1
 arch=('any')
 pkgdesc="PC/SC Architecture smartcard middleware library (Android ${_android_arch})"
@@ -17,16 +17,19 @@ depends=('android-ndk')
 makedepends=('android-meson')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://pcsclite.apdu.fr/files/pcsc-lite-${pkgver}.tar.xz"{,.asc}
-        '0001-Fix-pcsc-arch.patch')
-md5sums=('9e4006e1f3210ffa7dd0fadbc9083dc2'
+        '0002-Disable-issetugid.patch'
+        '0003-Fix-missing-pthread_cancel.patch')
+md5sums=('1a5f60ade943393f9e609e0e55bb1417'
          'SKIP'
-         '0d862bb58084ec6e7da1ccc764de4ac4')
+         '17cc08c1b9ed2c5912be2fd2b368c669'
+         '3050ecacb997c4c6f901ddd18d4c87fc')
 validpgpkeys=('F5E11B9FFE911146F41D953D78A1B4DFE8F9C57E') # Ludovic Rousseau <rousseau@debian.org>
 
 prepare() {
     cd "${srcdir}/pcsc-lite-$pkgver"
 
-    patch -Np1 -i ../0001-Fix-pcsc-arch.patch
+    patch -Np1 -i ../0002-Disable-issetugid.patch
+    patch -Np1 -i ../0003-Fix-missing-pthread_cancel.patch
 }
 
 build() {
