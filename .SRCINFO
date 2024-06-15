@@ -1,7 +1,7 @@
 pkgbase = siera
 	pkgdesc = CLI tool to interact with an Aries agent
 	pkgver = 0.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/animo/siera-cli
 	arch = x86_64
 	license = Apache-2.0

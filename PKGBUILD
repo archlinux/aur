@@ -1,9 +1,9 @@
-# Maintainer:
+# Maintainer: iamawacko <iamawacko@protonmail.com>
 # Contributor: Animo Solutions contact@animo.id
 
 pkgname=siera
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="CLI tool to interact with an Aries agent"
 arch=(x86_64)
 url="https://github.com/animo/siera-cli"
