@@ -9,7 +9,7 @@
 pkgname='python2-werkzeug'
 _commit='54acdd16b247f7037482737e72ec52fc6d50a78d' # 1.0.2 unreleased
 pkgver=1.0.2u.r5.g54acdd16
-pkgrel=2
+pkgrel=3
 pkgdesc='Swiss Army knife of Python web development (legacy Python 2 version)'
 arch=('any')
 url="https://pypi.org/project/werkzeug/"
@@ -20,19 +20,14 @@ optdepends=(
   'python2-cryptography: for serving WSGI applications'
   'python2-greenlet: alternative for concurrency (multithreading)'
 )
-_checkdepends_needed=(
+checkdepends=(
   'python2-pytest-timeout'
   'python2-requests'
   'python2-requests-unixsocket'
 )
-optdepends+=("${_checkdepends_needed[@]/%/: needed for check() during build}")
 _tarname="werkzeug-${_commit}"
 source=("${_tarname}.tar.gz::https://github.com/pallets/werkzeug/archive/${_commit}.tar.gz")
 b2sums=('805001d280ae0818ea0dbecfe543a08f9fa5a9dcacb03b4cb630dce538cc251295811118d42f5a740f2180bbd429874a63570d34218b5e794a1e3220afe60e94')
-
-_checkinstalled() {
-  pacman --deptest $@
-}
 
 prepare() {
   cd "${_tarname}"
@@ -53,19 +48,13 @@ build() {
 }
 
 check() {
-  ( _checkinstalled "${_checkdepends_optional[@]}" > /dev/null ) \
-    || echo "Skipping testing: checkdepends not installed:"; \
-    ( _checkinstalled "${_checkdepends_optional[@]}" ) || \
-    return 0
-
   cd "${_tarname}"
-  (
-    echo '-- Using LC_ALL=C.UTF-8 locale to ensure UTF-8 filesystem encoding is used in Python 2'
-    export LC_ALL=C.UTF-8
-    export PYTHONDONTWRITEBYTECODE=1
-    export PYTHONPATH="${PWD}/build/lib:${PYTHONPATH}"
-    pytest2 --verbose
-  )
+
+  echo '-- Using LC_ALL=C.UTF-8 locale to ensure UTF-8 filesystem encoding is used in Python 2'
+  export LC_ALL=C.UTF-8
+  export PYTHONDONTWRITEBYTECODE=1
+  export PYTHONPATH="${PWD}/build/lib:${PYTHONPATH}"
+  pytest2 --verbose
 }
 
 package() {
