@@ -6,7 +6,7 @@ _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-nss
 pkgver=3.99
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Network Security Services (Android ${_android_arch})"
 url="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS"
@@ -23,13 +23,11 @@ options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://ftp.mozilla.org/pub/security/nss/releases/NSS_${pkgver//./_}_RTM/src/nss-${pkgver}.tar.gz"
         'Linux.mk.patch'
         'FreeblMakefile.patch'
-        'mpcpucache.c.patch'
-        'fix.patch')
+        'mpcpucache.c.patch')
 sha256sums=('5cd5c2c8406a376686e6fa4b9c2de38aa280bea07bf927c0d521ba07c88b09bd'
             '79d959a1af5f00e4515e930121eb12cc8927d3ee8730b0cbfb3fd005c1075f7f'
             '957675d7a34c56c388057348941d2ab814ba9e94648c79c4285bc19de8ddd6fc'
-            '7e0eaf3111942f46e503464957f25b2d36a1b24b91adc6a6a858e209e0c0e27f'
-            'SKIP')
+            '7e0eaf3111942f46e503464957f25b2d36a1b24b91adc6a6a858e209e0c0e27f')
 
 prepare() {
     cd "${srcdir}/nss-${pkgver}"
