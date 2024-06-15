@@ -2,7 +2,7 @@
 
 pkgname=fixit-bin
 _pkgname="${pkgname/-bin}"
-pkgver=0.3.0_beta
+pkgver=0.3.1_beta
 _pkgver="${pkgver//_/-}"
 pkgrel=1
 _repo="eugene-babichenko/$_pkgname"
@@ -23,7 +23,7 @@ source_x86_64=(
   "$_license"
 )
 sha256sums_x86_64=(
-  "7b2f853b9001a39a47bebc083db988f67c01b05d1d8daaade52aa03ac3bce853"
+  "9da248775cf06b9f5ec24eac348eadd35758e5d69b1f9a15985295a84350093b"
   'SKIP'
   'SKIP'
 )
@@ -34,7 +34,7 @@ source_aarch64=(
   "$_license"
 )
 sha256sums_aarch64=(
-  "57a51bbbef820896ee47533cf2597af5b300aed2eacf9778cc485df1e4add9c2"
+  "9394996bd3452d9666e1cb676072a2da9fd9261076c30b641de9f3a93c5f672f"
   'SKIP'
   'SKIP'
 )
