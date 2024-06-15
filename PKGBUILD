@@ -17,7 +17,7 @@ source=("git+https://github.com/scrapinghub/python-crfsuite.git"
         "git+https://github.com/chokkan/liblbfgs.git")
 sha512sums=('SKIP'
             'SKIP'
-            '0e8031112ce62eaeaa993a7156269a1786ee9f53729a07c2328fdd680fcd827111e298d7d8151910424e6386f0f63219df2772874b910ede6c8baa35f7225db0'
+            '3adc9802a06cfe58244e621d77ada45a90deab3744c31313a64ac0da6791f985df7c52c4a392f060c19030babec77f41f6dcbed3f49ccf9563316ae9f0e92320'
             'SKIP')
 provides=('python-crfsuite')
 conflicts=('python-crfsuite')
