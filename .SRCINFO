@@ -10,6 +10,6 @@ pkgbase = ped
 	depends = glibc
 	depends = ncurses
 	source = ped-0.0.3::https://github.com/tim-tm/ped/releases/download/v0.0.3/ped-0.0.3.tar.gz
-	md5sums = SKIP
+	sha512sums = f137f1fe075a25cf50e763355e43bcc359f531bdb9314ae18c0de4b8dea6f89bb58cd3e72eb898aa69ffbca4c6f85071b6a8efdfb9977c823028f8bc33b4723a
 
 pkgname = ped
