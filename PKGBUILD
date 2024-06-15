@@ -1,7 +1,7 @@
 # Maintainer: Tira Misu <misu dot tira at cock dot li>
 pkgname=zsh-auto-dunstify
 pkgver=0.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Zsh plugin that sends out a dunst notification when a long running task has completed"
 arch=('any')
 url="https://github.com/Amir1453/zsh-auto-dunstify"
