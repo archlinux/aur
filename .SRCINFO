@@ -1,0 +1,15 @@
+pkgbase = python-prettyerrors
+	pkgdesc = A Python wrapper for the Discord API forked from discord.py
+	pkgver = 1.2.25
+	pkgrel = 1
+	url = https://github.com/onelivesleft/PrettyErrors
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-aiohttp>=3.7.4
+	depends = python-aiohttp<4
+
+pkgname = python-prettyerrors
