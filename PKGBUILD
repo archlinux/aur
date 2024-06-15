@@ -1,6 +1,6 @@
 # Maintainer: Vinícius dos Santos Oliveira <vini.ipsmaker@gmail.com>
 pkgname=emilua-glib
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="GLib event loop integration for Emilua"
 arch=('i686' 'x86_64')
