@@ -2,8 +2,8 @@
 # Contributor: Moritz Lipp <mlq@pwmt.org>
 
 pkgname=zathura-pdf-mupdf-git
-pkgver=0.4.1.r8.gc742d4c
-pkgrel=2
+pkgrel=1
+pkgver=0.4.3.r1.g2c28795
 pkgdesc="PDF support for zathura (mupdf backend) (Supports PDF, ePub, and OpenXPS)"
 arch=('x86_64')
 url="https://pwmt.org/projects/zathura-pdf-mupdf"
@@ -12,10 +12,10 @@ depends=('cairo' 'gumbo-parser' 'jbig2dec' 'libjpeg' 'libmupdf' 'openjpeg2' 'ope
 makedepends=('git' 'meson' 'ninja')
 conflicts=('zathura-pdf-mupdf' 'zathura-pdf-poppler' 'zathura-pdf-poppler-git')
 provides=('zathura-pdf-mupdf')
-source=("$pkgname::git+https://git.pwmt.org/pwmt/zathura-pdf-mupdf.git#branch=develop"
+source=("$pkgname::git+https://github.com/pwmt/zathura-pdf-mupdf.git#branch=develop"
         "0001-Remove-mupdf-linking-detection.patch")
 sha256sums=('SKIP'
-            '2254646722ed253b84e187791b9949fa3502c853929bfa71e611cc7db85fea49')
+            '711a6cee7b34160c6a1d735a2ddb1e639ea575d500354e79fc1609306cbfde40')
 
 pkgver() {
   cd "$pkgname"
