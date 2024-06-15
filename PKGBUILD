@@ -1,4 +1,5 @@
-# Maintainer: Peter Jung <admin@ptr1337.dev
+# Maintainer: Michael Shaw <michaelsshaw44@gmail.com>
+# Maintainer: Peter Jung <admin@ptr1337.dev>
 # Maintainer: Diego Roux <diegoroux04 at protonmail dot com>
 # Contributor: grant0417 <grant0417@protonmail.com>
 # Contributor: Araragi Hokuto <kanseihonbucho@protonmail.com>
@@ -6,7 +7,7 @@
 
 _target=x86_64-elf
 pkgname=$_target-gcc
-pkgver=12.2.0
+pkgver=14.1.0
 pkgrel=1
 pkgdesc='The GNU Compiler Collection - cross compiler for x86_64-elf target'
 arch=(x86_64)
@@ -20,7 +21,7 @@ changelog='.Changelog'
 source=("https://mirrors.kernel.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz"
         "https://mirrors.kernel.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz.sig")
 
-sha256sums=('e549cf9cf3594a00e27b6589d4322d70e0720cdd213f39beb4181e06926230ff'
+sha256sums=('e283c654987afe3de9d8080bc0bd79534b5ca0d681a73a11ff2b5d3767426840'
             'SKIP')
 
 _basedir=gcc-$pkgver
