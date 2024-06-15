@@ -6,27 +6,28 @@ _android_arch=aarch64
 
 pkgname=android-${_android_arch}-zstd
 _pkgname=zstd
-pkgver=1.5.5
+pkgver=1.5.6
 pkgrel=1
 arch=('any')
-pkgdesc="Zstandard - Fast real-time compression algorithm (android)"
+pkgdesc="Zstandard - Fast real-time compression algorithm (Android ${_android_arch})"
 url="http://www.zstd.net/"
-license=('BSD' 'GPL2')
+license=('BSD'
+         'GPL2')
 depends=("android-${_android_arch}-zlib"
          "android-${_android_arch}-xz"
          "android-${_android_arch}-lz4")
 makedepends=('android-cmake')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/facebook/zstd/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('98e9c3d949d1b924e28e01eccb7deed865eefebf25c2f21c702e5cd5b63b85e1')
+sha256sums=('30f35f71c1203369dc979ecde0400ffea93c27391bfd2ac5a9715d2173d92ff7')
 
 build() {
     cd "${srcdir}/zstd-${pkgver}"
     source android-env ${_android_arch}
 
-    mkdir -p build && pushd build
     android-${_android_arch}-cmake \
-        -S ../build/cmake \
+        -S build/cmake \
+        -B builddir \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DZSTD_ZLIB_SUPPORT=ON \
@@ -36,18 +37,14 @@ build() {
         -DZSTD_BUILD_TESTS=OFF \
         -DZSTD_PROGRAMS_LINK_SHARED=OFF \
         -DZSTD_BUILD_PROGRAMS=OFF
-    make $MAKEFLAGS
-    popd
+    make -C builddir $MAKEFLAGS
 }
 
 package() {
     cd "${srcdir}/zstd-${pkgver}"
     source android-env ${_android_arch}
 
-    pushd build
-    make DESTDIR="${pkgdir}" install
-    popd
-
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a || true
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
+    make -C builddir DESTDIR="${pkgdir}" install
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
 }
