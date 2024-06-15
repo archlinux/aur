@@ -1,31 +1,22 @@
-# Maintainer: Leandro Guedes <leandroguedes@protonmail.com>
+# Maintainer: database64128 <free122448@hotmail.com>
 
 pkgname=f33-backgrounds
 pkgver=33.0.8
-pkgrel=3
-_relnum=33
-pkgdesc="Fedora $_relnum backgrounds"
+pkgrel=1
+pkgdesc="Desktop backgrounds of the Fedora 33 default theme for GNOME, KDE, Mate and Xfce desktops"
 arch=('any')
-url="https://fedoraproject.org/wiki/F${_relnum}_Artwork"
-license=('custom')
-source=("https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/f/f$_relnum-backgrounds-$pkgver-$pkgrel.fc35.src.rpm")
-sha256sums=('d107d41a5ccbc15cd7d15a5d9768c5f2643ec303f09c252e5a25a6e2e4d3e7a6')
-
-prepare() {
-    tar -xvJf ./${pkgname}-${pkgver}.tar.xz
-    rm -r ./${pkgname}-${pkgver}.tar.xz
-    rm -r ./${pkgname}.spec
-}
+url="https://github.com/fedoradesign/backgrounds"
+license=('CC-BY-SA-4.0')
+replaces=("f33-backgrounds-fedoradesign")
+source=("https://github.com/fedoradesign/backgrounds/releases/download/v33.0.8/f33-backgrounds-33.0.8.tar.xz")
+b2sums=('7f64108aafccba083bea2e3b56438c29575facccf73ea6a1dbb0a42037b63c3f6a6c3491e76fdd8116af5a6eac8fe7d7cd26955a4ff7b92d2fa6e77400484e09')
 
 build() {
-    cd ./${pkgname}
+    cd $pkgname
     make
 }
 
 package() {
-    cd ./${pkgname}
+    cd $pkgname
     make install DESTDIR="$pkgdir"
-    install -Dm 644 CC-BY-SA-4.0 "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-#vim: syntax=sh
