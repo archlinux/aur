@@ -1,6 +1,6 @@
 pkgbase = quatrack
 	pkgdesc = Hit the keyboard/click the screen with the music beat, enjoy the geometric style animation, get higher scores, and challenge your record!
-	pkgver = 0.6.2
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://github.com/26F-Studio/Quatrack
 	arch = any
@@ -8,11 +8,11 @@ pkgbase = quatrack
 	makedepends = git
 	makedepends = imagemagick
 	depends = love
-	source = quatrack-0.6.2.tar.gz::https://github.com/26F-Studio/Quatrack/archive/refs/tags/v0.6.2.tar.gz
-	source = git+https://github.com/26F-Studio/Zenitha.git#tag=ed98686a0e7029fab8b034799a4f6dfa5893f801
+	source = quatrack-0.6.3.tar.gz::https://github.com/26F-Studio/Quatrack/archive/refs/tags/v0.6.3.tar.gz
+	source = git+https://github.com/26F-Studio/Zenitha.git#tag=e6a7e0166cc852f2294505054bdeec8c1f5ba7f9
 	source = quatrack.sh
 	source = quatrack.desktop
-	sha256sums = 8b484ac1dfbf7eb3ae5e3f4c7eaa4a080b9def1f99ee1317e8cb548fb3d0729e
+	sha256sums = 117c8c1c8a05083410ef190a36ca990a3e3b82efc7f651597aa9e2e8d73d8be2
 	sha256sums = SKIP
 	sha256sums = 77fdcc4f6989a4390f3da7d1573e39fc6a96e6f3f38210f864c2330870a94fca
 	sha256sums = 74d3f7cc58e7192ffbc86523e3c3f00542d39af882716461147803015301fa2f
