@@ -1,7 +1,7 @@
 # Maintainer: 1F616EMO <root at 1f616emo dot xyz>
 
 pkgname=mixing-station
-pkgver=2.0.12
+pkgver=2.0.13
 pkgrel=1
 pkgdesc='Mixer remote control for multiple mixers'
 arch=('any')
@@ -17,7 +17,7 @@ source=(
     'ms-icon.png::https://mixingstation.app/ms-docs/assets/ms.png'
     'mixing-station.desktop')
 sha256sums=(
-    '3bf1be23af57d2f99b887f7111a56b31df7a79eaf34beb784d4fd16c377e2c04' # release.zip
+    '08753a99ea5c1ae118bcc0e4802f45c5b3d973660ff735d713c204a39ce97b87' # release.zip
     '2bf580819e9ddb5183d7d1a260ed50e759339038fc767c5a065333d7aebb46f9' # mixing-station
     'a5d350e62b37f9394944421d94aaa1a823f396a0e76727cb37898029bc5d77bf' # copyright.txt
     '2a9b5fedbaf45ff7c7822b9cfc6dd50541b68ca39545611814f034608c2f9a00' # ms-icon.png
