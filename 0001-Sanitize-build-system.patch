@@ -1,0 +1,24 @@
+From 712e5cd2b09684ff8daf13fff63f48d75a493aea Mon Sep 17 00:00:00 2001
+From: Ivan Shapovalov <intelfx@intelfx.name>
+Date: Sat, 15 Jun 2024 17:55:24 +0300
+Subject: [PATCH] Sanitize build system
+
+---
+ shell-rs/src/meson.build | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/shell-rs/src/meson.build b/shell-rs/src/meson.build
+index 9ec6290f..b78c11dc 100644
+--- a/shell-rs/src/meson.build
++++ b/shell-rs/src/meson.build
+@@ -25,7 +25,6 @@ endif
+ 
+ cargo_env = environment()
+ # it seems that flatpak can't access network during install stage.
+-cargo_env.set('CARGO_HOME', build_root / 'cargo-home')
+ cargo_env.set('CODEGEN_BUILD_DIR', meson.current_build_dir())
+ # override library lookup, we should not use the system library.
+ cargo_env.set('SYSTEM_DEPS_PAPERS_SHELL_4_0_NO_PKG_CONFIG', '1')
+-- 
+2.45.1.5.gcac5b863b0
+
