@@ -1,0 +1,4 @@
+[crmsh]
+source = "git"
+git = "https://github.com/ClusterLabs/crmsh.git"
+exclude_regex=".*-pre"
