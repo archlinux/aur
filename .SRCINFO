@@ -1,0 +1,15 @@
+pkgbase = neofetch-extended
+	pkgdesc = Neofetch is discounted. This project resumes it!
+	pkgver = 7.2.0
+	pkgrel = 2
+	arch = any
+	license = MIT
+	depends = bash
+	provides = neofetch
+	provides = neofetch-git
+	conflicts = neofetch
+	conflicts = neofetch-git
+	source = https://gitlab.com/neofetch-extended/neofetch-extended/-/archive/7.2.0/neofetch-extended-7.2.0.tar.gz
+	sha512sums = SKIP
+
+pkgname = neofetch-extended
