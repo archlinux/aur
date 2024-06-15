@@ -4,7 +4,7 @@ _plug=mlrt
 pkgname=vapoursynth-plugin-${_plug}-trt-runtime-git
 pkgver=598.460f978
 pkgrel=1
-pkgdesc="Plugin for VapourSynth: ${_plug} (TensorRT runtime: recommended for Nvidia GPUs)"
+pkgdesc="Plugin for VapourSynth: ${_plug} (TensorRT runtime: recommended for Nvidia GPUs >=8GB VRAM)"
 arch=('x86_64')
 url='https://github.com/AmusementClub/vs-mlrt'
 license=('LGPL')
