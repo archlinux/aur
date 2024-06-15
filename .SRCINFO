@@ -1,6 +1,6 @@
 pkgbase = violet
 	pkgdesc = Lightweight STUN/TURN server
-	pkgver = 0.4.5
+	pkgver = 0.4.6
 	pkgrel = 2
 	url = https://github.com/paullouisageneau/violet
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = violet
 	makedepends = cmake
 	depends = glibc
 	depends = libjuice
-	source = git+https://github.com/paullouisageneau/violet.git#tag=v0.4.5
+	source = git+https://github.com/paullouisageneau/violet.git#tag=v0.4.6
 	md5sums = SKIP
 
 pkgname = violet
