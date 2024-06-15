@@ -1,0 +1,11 @@
+pkgbase = vlauncher
+	pkgdesc = Launcher for Voxel Engine
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/boolean-false/VLauncher-Releases
+	arch = x86_64
+	depends = jre17-openjdk
+	source = https://github.com/boolean-false/VLauncher-Releases/releases/download/1.0.2/vlauncher-1.0.2-linux-amd64.tar.gz
+	sha256sums = SKIP
+
+pkgname = vlauncher
