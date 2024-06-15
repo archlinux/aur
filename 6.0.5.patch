@@ -1,0 +1,147 @@
+diff --git a/src/kcms/rules/kcmrules.cpp b/src/kcms/rules/kcmrules.cpp
+index b794a06a9f..a10d80e6a4 100644
+--- a/src/kcms/rules/kcmrules.cpp
++++ b/src/kcms/rules/kcmrules.cpp
+@@ -316,7 +316,7 @@ QModelIndex KCMKWinRules::findRuleWithProperties(const QVariantMap &info, bool w
+     const QString title = info.value("caption").toString();
+     const QString machine = info.value("clientMachine").toString();
+     const bool isLocalHost = info.value("localhost").toBool();
+-
++    const bool isFullscreen = info.value("fullscreen").toBool();
+     int bestMatchRow = -1;
+     int bestMatchScore = 0;
+ 
+@@ -329,6 +329,7 @@ QModelIndex KCMKWinRules::findRuleWithProperties(const QVariantMap &info, bool w
+         if (!rule.matchWMClass(wmclass_class, wmclass_name)
+                 || !rule.matchType(type)
+                 || !rule.matchRole(role)
++                || !rule.matchFullscreen(isFullscreen)
+                 || !rule.matchTitle(title)
+                 || !rule.matchClientMachine(machine, isLocalHost)) {
+             continue;
+@@ -354,6 +355,10 @@ QModelIndex KCMKWinRules::findRuleWithProperties(const QVariantMap &info, bool w
+                 score += settings->windowrolematch() == Rules::ExactMatch ? 5 : 1;
+                 generic = false;
+             }
++            if (settings->fullscreenmatch() != false ) {
++                score += 10;
++                generic = false;
++            }
+             if (settings->titlematch() != Rules::UnimportantMatch) {
+                 score += settings->titlematch() == Rules::ExactMatch ? 3 : 1;
+                 generic = false;
+@@ -400,6 +405,7 @@ void KCMKWinRules::fillSettingsFromProperties(RuleSettings *settings, const QVar
+     const NET::WindowType type = static_cast<NET::WindowType>(info.value("type").toInt());
+     const QString title = info.value("caption").toString();
+     const QString machine = info.value("clientMachine").toString();
++    const bool fullscreen = info.value("fullscreen").toBool();
+ 
+     settings->setDefaults();
+ 
+@@ -413,6 +419,7 @@ void KCMKWinRules::fillSettingsFromProperties(RuleSettings *settings, const QVar
+         settings->setClientmachine(machine); // set, but make unimportant
+         settings->setClientmachinematch(Rules::UnimportantMatch);
+         settings->setWindowrolematch(Rules::UnimportantMatch);
++        settings->setFullscreenmatch(fullscreen);
+         if (wmclass_name == wmclass_class) {
+             settings->setWmclasscomplete(false);
+             settings->setWmclass(wmclass_class);
+diff --git a/src/kcms/rules/rulesmodel.cpp b/src/kcms/rules/rulesmodel.cpp
+index 3bb1f4aa7d..c188657122 100644
+--- a/src/kcms/rules/rulesmodel.cpp
++++ b/src/kcms/rules/rulesmodel.cpp
+@@ -405,6 +405,13 @@ void RulesModel::populateRuleList()
+                                                 QIcon::fromTheme("window")));
+     wmclasscomplete->setFlag(RuleItem::AlwaysEnabled);
+ 
++    
++    auto fullscreenmatch = addRule(new RuleItem(QLatin1String("fullscreenmatch"),
++                                                RulePolicy::NoPolicy, RuleItem::Boolean,
++                                                i18n("Fullscreen match"), i18n("Window matching"),
++                                                QIcon::fromTheme("window")));
++    fullscreenmatch->setFlag(RuleItem::AlwaysEnabled);
++
+     // Helper item to store the detected whole window class when detecting properties
+     auto wmclasshelper = addRule(new RuleItem(QLatin1String("wmclasshelper"),
+                                               RulePolicy::NoPolicy, RuleItem::String,
+diff --git a/src/rules.cpp b/src/rules.cpp
+index 3cb9a539c3..053c12b2e4 100644
+--- a/src/rules.cpp
++++ b/src/rules.cpp
+@@ -37,6 +37,7 @@ Rules::Rules()
+     , wmclassmatch(UnimportantMatch)
+     , wmclasscomplete(UnimportantMatch)
+     , windowrolematch(UnimportantMatch)
++    , fullscreenmatch(UnimportantMatch)
+     , titlematch(UnimportantMatch)
+     , clientmachinematch(UnimportantMatch)
+     , types(NET::AllTypesMask)
+@@ -104,6 +105,7 @@ void Rules::readFromSettings(const RuleSettings *settings)
+     READ_MATCH_STRING(wmclass, );
+     wmclasscomplete = settings->wmclasscomplete();
+     READ_MATCH_STRING(windowrole, );
++    READ_MATCH_STRING(fullscreen, );
+     READ_MATCH_STRING(title, );
+     READ_MATCH_STRING(clientmachine, .toLower());
+     types = NET::WindowTypeMask(settings->types());
+@@ -349,6 +351,14 @@ bool Rules::matchRole(const QString &match_role) const
+     return true;
+ }
+ 
++bool Rules::matchFullscreen(const bool &isFullscreen) const
++{
++    if (isFullscreen != fullscreen) {
++        return false;
++    }
++    return true;
++}
++
+ bool Rules::matchTitle(const QString &match_title) const
+ {
+     if (titlematch != UnimportantMatch) {
+@@ -401,6 +411,9 @@ bool Rules::match(const Window *c) const
+     if (!matchRole(c->windowRole())) {
+         return false;
+     }
++    if (!matchFullscreen(c->isFullScreen())) {
++        return false;
++    }
+     if (!matchClientMachine(c->clientMachine()->hostName(), c->clientMachine()->isLocal())) {
+         return false;
+     }
+diff --git a/src/rules.h b/src/rules.h
+index d55f3da9f7..238b24a8c8 100644
+--- a/src/rules.h
++++ b/src/rules.h
+@@ -191,6 +191,7 @@ private:
+     bool matchType(NET::WindowType match_type) const;
+     bool matchWMClass(const QString &match_class, const QString &match_name) const;
+     bool matchRole(const QString &match_role) const;
++    bool matchFullscreen(const bool &match_role) const;
+     bool matchTitle(const QString &match_title) const;
+     bool matchClientMachine(const QString &match_machine, bool local) const;
+ #ifdef KCMRULES
+@@ -213,6 +214,7 @@ private:
+     bool wmclasscomplete;
+     QString windowrole;
+     StringMatch windowrolematch;
++    bool fullscreenmatch;
+     QString title;
+     StringMatch titlematch;
+     QString clientmachine;
+diff --git a/src/rulesettings.kcfg b/src/rulesettings.kcfg
+index dabaec6e96..5333b40cf3 100644
+--- a/src/rulesettings.kcfg
++++ b/src/rulesettings.kcfg
+@@ -40,6 +40,11 @@
+       <max code="true">Rules::LastStringMatch</max>
+     </entry>
+ 
++    <entry name="fullscreenmatch" type="Bool">
++      <label>Fullscreen window match</label>
++      <default code="false"></default>
++    </entry>
++
+     <entry name="title" type="String">
+       <label>Window title</label>
+     </entry>

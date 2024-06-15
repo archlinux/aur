@@ -1,0 +1,112 @@
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+
+pkgname=kwin-unredir
+_pkgname=kwin
+pkgver=6.0.5
+_dirver=$(echo $pkgver | cut -d. -f1-3)
+pkgrel=2
+pkgdesc='An easy to use, but flexible, composited Window Manager (patched for matching fullscreen windows)'
+arch=(x86_64)
+url='https://kde.org/plasma-desktop/'
+license=(LGPL-2.0-or-later)
+depends=(breeze
+         gcc-libs
+         glibc
+         plasma-activities
+         kauth
+         kcmutils
+         kcolorscheme
+         kconfig
+         kconfigwidgets
+         kcoreaddons
+         kcrash
+         kdbusaddons
+         kdeclarative
+         kdecoration
+         kglobalaccel
+         kglobalacceld
+         kguiaddons
+         ki18n
+         kidletime
+         kirigami
+         kitemmodels
+         knewstuff
+         knotifications
+         kpackage
+         kquickcharts
+         kscreenlocker
+         kservice
+         ksvg
+         kwayland
+         kwidgetsaddons
+         kwindowsystem
+         kxmlgui
+         lcms2
+         libdisplay-info
+         libdrm
+         libepoxy
+         libinput
+         libpipewire
+         libqaccessibilityclient-qt6
+         libx11
+         libxcb
+         libxcvt
+         libxi
+         libxkbcommon
+         libxkbcommon-x11
+         mesa
+         pipewire-session-manager
+         libplasma
+         qt6-5compat
+         qt6-base
+         qt6-declarative
+         qt6-multimedia
+         qt6-sensors
+         qt6-tools
+         qt6-wayland
+         systemd-libs
+         wayland
+         xcb-util-cursor
+         xcb-util-keysyms
+         xcb-util-wm)
+makedepends=(extra-cmake-modules
+             kdoctools
+             krunner
+             plasma-wayland-protocols
+             python
+             wayland-protocols
+             xorg-xwayland)
+optdepends=('maliit-keyboard: virtual keyboard for kwin-wayland')
+groups=(plasma)
+source=(https://download.kde.org/stable/plasma/$_dirver/$_pkgname-$pkgver.tar.xz{,.sig}
+        https://invent.kde.org/plasma/$_pkgname/-/commit/711c5bb4.patch
+        6.0.5.patch)
+install=$_pkgname.install
+sha256sums=('242e7d210529ec631bc5fe3fe0a117a3d1d4edb1dd3a644aafd5089312f8b0d7'
+            'SKIP'
+            '1254b34e7088871af2f2f2b6a5b267fa29f8b30c3b7055336296e24f91f4a405'
+            'SKIP')
+validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
+              '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
+              'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
+              '1FA881591C26B276D7A5518EEAAF29B42A678C20') # Marco Martin <notmart@gmail.com>
+conflicts=(kwin)
+provides=(kwin)
+
+prepare() {
+  patch -d $_pkgname-$pkgver -p1 < 711c5bb4.patch # Fix drag and drop to Chromium
+  cat ${source[-1]} | patch -p1 -d $_pkgname-$pkgver
+}
+
+build() {
+  cmake -B build  -S $_pkgname-$pkgver \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    -DBUILD_TESTING=OFF
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}

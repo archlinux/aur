@@ -1,0 +1,5 @@
+711c5bb4.patch
+kwin-*.tar.xz*
+*pkg.tar.zst
+pkg/
+src/
