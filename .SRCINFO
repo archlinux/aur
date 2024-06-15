@@ -1,7 +1,7 @@
 pkgbase = android-x86-nss
 	pkgdesc = Network Security Services (Android x86)
 	pkgver = 3.99
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS
 	arch = any
 	license = MPL-2.0
@@ -21,11 +21,9 @@ pkgbase = android-x86-nss
 	source = Linux.mk.patch
 	source = FreeblMakefile.patch
 	source = mpcpucache.c.patch
-	source = fix.patch
 	sha256sums = 5cd5c2c8406a376686e6fa4b9c2de38aa280bea07bf927c0d521ba07c88b09bd
 	sha256sums = 79d959a1af5f00e4515e930121eb12cc8927d3ee8730b0cbfb3fd005c1075f7f
 	sha256sums = 957675d7a34c56c388057348941d2ab814ba9e94648c79c4285bc19de8ddd6fc
 	sha256sums = 7e0eaf3111942f46e503464957f25b2d36a1b24b91adc6a6a858e209e0c0e27f
-	sha256sums = SKIP
 
 pkgname = android-x86-nss
