@@ -1,5 +1,5 @@
 pkgbase = vapoursynth-plugin-mlrt-trt-runtime-git
-	pkgdesc = Plugin for VapourSynth: mlrt (TensorRT runtime: recommended for Nvidia GPUs)
+	pkgdesc = Plugin for VapourSynth: mlrt (TensorRT runtime: recommended for Nvidia GPUs >=8GB VRAM)
 	pkgver = 598.460f978
 	pkgrel = 1
 	url = https://github.com/AmusementClub/vs-mlrt
