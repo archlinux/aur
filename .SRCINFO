@@ -8,6 +8,7 @@ pkgbase = asciibox
 	makedepends = git
 	makedepends = meson
 	makedepends = ninja
+	makedepends = cargo
 	depends = rust
 	depends = gtk4
 	depends = libadwaita
