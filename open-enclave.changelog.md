@@ -1,6 +1,10 @@
 Changelog
 =========
 
+> Note by myl7 as the maintainer of `open-enclave-bin` in pacman source of Arch Linux:
+> The changelog has not been updated for a long time.
+> The information here should be outdated.
+
 Major work such as new features, bug fixes, feature deprecations, and other
 breaking changes should be noted here. It should be more concise than `git log`.
 
@@ -21,7 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 --------------
 ### Added
 
-- OE SDK can now be built with Clang-11 and it is recommended to upgrade the compiler to Clang-11 if you are building the SDK from source. 
+- OE SDK can now be built with Clang-11 and it is recommended to upgrade the compiler to Clang-11 if you are building the SDK from source.
   - Building OE SDK enclaves now includes the following LVI mitigation options:
     - `ControlFlow-GNU` - enables LVI mitigation using the existing GNU-based mitigation specified by `LVI_MITIGATION_BINDIR`. This option is recommended when building OE SDK with Clang-10.
     - `ControlFlow-Clang` - enables Clang-based LVI mitigations. Choosing this option requires Clang-11.
@@ -68,7 +72,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 --------------
 ### Added
 -  Added oe_set_host_log_level and oe_set_enclave_log_level APIs to dynamically modify host and enclave log level verbosity, respectively. See #4610 for more details
-- Added backtrace debug log for unhandled exceptions if the enclave is configured with and CapturePFGPExceptions=1, the backtrace information will be printed in the enclave log when an in-enclave exception is not handled by trusted handlers. If the enclave is not configured with CapturePFGPExceptions=1, the similar helper message in the following will be printed in the log: `2022-07-13T00:25:05+0000.276579Z 
+- Added backtrace debug log for unhandled exceptions if the enclave is configured with and CapturePFGPExceptions=1, the backtrace information will be printed in the enclave log when an in-enclave exception is not handled by trusted handlers. If the enclave is not configured with CapturePFGPExceptions=1, the similar helper message in the following will be printed in the log: `2022-07-13T00:25:05+0000.276579Z
  (H)ERROR] tid(0x7f6cbb2b1f40) | Unhandled in-enclave exception. To get more information, configure the enclave with CapturePFGPExceptions=1 and enable the in-enclave logging.`
 
 ### Changed
@@ -164,7 +168,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.17.5][v0.17.5_log]
 --------------
 
-### Added 
+### Added
 - Added MUSL time functions
 asctime, asctime_r, ctime, ctime_r, ftime, localtime, localtime_r, strptime, timespec_get, wcsftime.
 
