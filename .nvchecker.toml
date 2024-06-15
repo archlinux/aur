@@ -1,0 +1,4 @@
+[erg]
+source = "git"
+git = "https://github.com/erg-lang/erg.git"
+prefix = "v"
