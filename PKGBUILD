@@ -1,3 +1,4 @@
+# Maintainer: NimBold
 # Maintainer: d6k283tix <d6k283tix@mozmail.com>
 # Maintainer: irmluity <45vw4yz8g@mozmail.com>
 
