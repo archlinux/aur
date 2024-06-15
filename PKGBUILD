@@ -3,7 +3,7 @@
 # Contributor: Simon Thorpe <simon@hivetechnology.com.au>
 
 pkgname=pianoteq-standard-trial-bin
-pkgver=8.2.2
+pkgver=8.3.0
 pkgrel=1
 _name="Pianoteq ${pkgver%%.*}"
 pkgdesc='Physical modelling piano instrument standalone program, VST2 and LV2 plugin. STANDARD trial version'
@@ -22,7 +22,7 @@ provides=(${pkgname%-*})
 conflicts=(${pkgname%-*} pianoteq-standard-bin)
 source=("local://pianoteq_linux_trial_v${pkgver//./}.7z"
         'https://www.pianoteq.com/images/logo/pianoteq_icon_128.png')
-sha256sums=('c3df4c6a25ef38ebfa6ca0c7e14b229ca2712be65fa767f37662cebc3324fc38'
+sha256sums=('d37e7d4056e218d43941e024e0c47df0216cdc70070115461419d58817f261eb'
             '94ee64cf6688a49d74f0bf70d811e7466abac103feeab17496a89f828afcc6d3')
 
 prepare() {
@@ -33,7 +33,7 @@ prepare() {
     --pkgdesc="$pkgdesc" \
     --name="$_name" \
     --exec="\"$_name\"" \
-    --categories 'Audio;Sequencer;Midi;AudioVideoEditing;Music;AudioVideo;'
+    --categories 'Audio;AudioVideoEditing;Music;AudioVideo;'
 }
 
 package() {
