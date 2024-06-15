@@ -13,7 +13,7 @@ license=(MIT)
 depends=('python' 'lib32-libgl' 'lib32-libprocps' $_name=$pkgver)
 makedepends=('cmake' 'git' 'gcc-multilib')
 source=(
-  "$_name::git+https://github.com/apitrace/apitrace.git#tag=${pkgver}"
+  $_name::git+$url.git#tag=$pkgver
   git+https://github.com/apitrace/gltrim-tests.git
   git+https://github.com/google/brotli.git
   git+https://github.com/google/googletest.git
