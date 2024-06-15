@@ -6,14 +6,14 @@ pkgver=46.1.r78.g6e9a48dc
 pkgrel=1
 pkgdesc="A document viewer for PDF and other document formats aimed at the GNOME desktop"
 arch=('x86_64')
-license=('GPL2')
+license=('GPL-2.0')
 url="https://gitlab.gnome.org/GNOME/Incubator/papers"
-depends=('glib2' 'gtk4' 'dbus' 'libadwaita' 'libgirepository' 'libnautilus-extension' 'libsecret'
-         'libxml2' 'exempi' 'gdk-pixbuf2' 'cairo' 'zlib'
+depends=('glibc' 'gcc-libs' 'glib2' 'gtk4' 'dbus' 'libadwaita' 'libgirepository'
+         'libnautilus-extension' 'libsecret' 'libxml2' 'exempi' 'gdk-pixbuf2' 'cairo' 'zlib'
          'libspectre' 'libarchive' 'djvulibre' 'poppler-glib' 'libtiff' 'libgxps')
 conflicts=('gnome-papers')
 provides=('gnome-papers')
-makedepends=('rust' 'git' 'meson' 'glib2-devel' 'gobject-introspection' 'gi-docgen' 'itstool')
+makedepends=('rust' 'cargo' 'git' 'meson' 'glib2-devel' 'gobject-introspection' 'gi-docgen' 'itstool')
 source=("git+https://gitlab.gnome.org/GNOME/Incubator/papers.git"
 	'0001-Sanitize-build-system.patch')
 sha256sums=('SKIP'
