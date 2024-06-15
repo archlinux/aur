@@ -1,8 +1,8 @@
 # Maintainer: Sushant Ray <contact@neon.is-a.dev>
 
 pkgname='sprofile'
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.2.0
+pkgrel=0
 epoch=
 pkgdesc="A tool for accessing your spotify statistics without ever leaving the terminal"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('nodejs>=18' 'rust' 'cargo')
 makedepends=('git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/goodboyneon/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=("187c5b80cd94f1740c5fa7588a34a398dd4d71e8eb9218a76fc693927c967894")
+sha256sums=("453464c1b1a7d25bf4e75ea7222e5cf2aab766469adb0afab8d8f5d999ea50c6")
 
 
 build() {
