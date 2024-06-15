@@ -1,7 +1,7 @@
 pkgbase = leavesmc
 	pkgdesc = Fork of Paper aimed at repairing broken vanilla properties.
 	pkgver = 1.20.6+215
-	pkgrel = 1
+	pkgrel = 2
 	url = https://leavesmc.org/
 	install = leavesmc.install
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = leavesmc
 	source = leavesmc.desktop
 	source = leavesmc-launch-script
 	source = leavesmc.install
-	source = leavesmc-1.20.6+215.jar::https://github.com/LeavesMC/Leaves/releases/download/1.20.6-e234432/leaves-1.20.6.jar
+	source = leavesmc-1.20.6+215.jar::https://github.com/LeavesMC/Leaves/releases/download/1.20.6-/leaves-1.20.6.jar
 	source = LICENSE_GPL::https://github.com/LeavesMC/Leaves/raw/master/licenses/GPL.md
 	source = LICENSE_MIT::https://github.com/LeavesMC/Leaves/raw/master/licenses/MIT.md
 	sha256sums = 720ee68108bbe12c362cf5ed05b3ad5b28bbaf53f3d7952d389bfc404a5baaac
