@@ -1,15 +1,15 @@
 pkgbase = mqttx-bin
 	pkgdesc = A cross-platform MQTT 5.0 client tool open sourced by EMQ
-	pkgver = 1.9.10
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://github.com/emqx/MQTTX
 	arch = x86_64
 	license = Apache
 	makedepends = squashfs-tools
 	depends = electron13
-	source = MQTTX-1.9.10.snap::https://github.com/emqx/MQTTX/releases/download/v1.9.10/MQTTX_1.9.10_amd64.snap
+	source = MQTTX-1.10.0.snap::https://github.com/emqx/MQTTX/releases/download/v1.10.0/MQTTX_1.10.0_amd64.snap
 	source = mqttx.sh
-	sha256sums = 0c310a6725320f8fefdd5d0cfd18f449e87b7b14e94b992a50111a174509d653
+	sha256sums = a25177ca7f2449ab0a8a02935765a29552cc8596aa16ca4c2dfca9cd784713c9
 	sha256sums = 735d91b5f674b830d761a56fdef8e577077e9738e92143e75394acdecf38cba1
 
 pkgname = mqttx-bin
