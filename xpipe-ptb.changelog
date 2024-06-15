@@ -1,59 +1,72 @@
-## Coherent desktops
+## A new HTTP API
 
-XPipe now comes with support for remote desktop connections. VNC connections are fully handled over SSH and can therefore be established on top of any existing SSH connection you have in XPipe. RDP support is realized similar to the terminal support, i.e. by launching your preferred RDP client with the connection information. X11-forwarding for SSH is also now supported.
+There is now a new HTTP API for the XPipe daemon, which allows you to programmatically manage remote systems.
+You can find details and an OpenAPI spec at the new API button in the sidebar.
+The API page contains everything you need to get started, including code samples for various different programming languages.
 
-With support for remote graphical desktop connection methods as well now in XPipe 9, the big picture idea is to implement the concept of coherent desktops. Essentially, you can launch predefined desktop applications, terminals, and scripts on any remote desktop connection, regardless of the underlying connection implementation. In combination with the improved SSH tunnel and background session support, you can launch graphical remote applications with one click in the same unified way for VNC over SSH connections, RDP connections, and X11-forwarded SSH connections.
+To start off, you can query connections based on various filters.
+With the matched connections, you can start remote shell sessions for each one and run arbitrary commands in them.
+You get the command exit code and output as a response, allowing you to adapt your control flow based on command outputs.
+Any kind of passwords and other secrets are automatically provided by XPipe when establishing a shell connection.
 
-The general implementation and concept will be refined over the next updates.
+There will be more functionality added to the API in the future, for now this initial implementation is open for feedback.
 
-## SSH connection improvements
+## Service integration
 
-- Tunneled and X11-forwarded custom SSH connections are now properly detected and can be toggled on and off to run in the background as normal tunnels. This applies to normal connections and also SSH configs
+Many systems run a variety of different services such as web services and others.
+There is now support to detect, forward, and open the services.
+For example, if you are running a web service on a remote container, you can automatically forward the service port via SSH tunnels, allowing you to access these services from your local machine, e.g. in a web browser.
+These service tunnels can be toggled at any time.
+The port forwarding supports specifying a custom local target port and also works for connections with multiple intermediate systems through chained tunnels.
+For containers, services are automatically detected via their exposed mapped ports. 
+For other systems, you can manually add services via their port.
 
-- The connection establishment has been reworked to reduce the amount of double prompts, e.g. for smartcards or 2FA, where user input is required twice. 
+You can use an unlimited amount of local services and one active tunneled service in the community edition.
 
-- The custom SSH connections now properly apply all configuration options of your user configuration file. They also now correctly apply multiple options for the same key correctly.
+## Script rework
 
-- Any value specified for the `RemoteCommand` config option will now be properly applied when launching a terminal. This allows you to still use your preexisting init command setup, e.g. with tmux.
+The scripting system has been reworked. There have been several issues with it being clunky and not fun to use. The new system allows you to assign each script one of multiple execution types. Based on these execution types, you can make scripts active or inactive with a toggle. If they are active, the scripts will apply in the selected use cases. There currently are these types:
+- Init scripts: When enabled, they will automatically run on init in all compatible shells. This is useful for setting things like aliases consistently
+- Shell scripts: When enabled, they will be copied over to the target system and put into the PATH. You can then call them in a normal shell session by their name, e.g. `myscript.sh`, also with arguments.
+- File scripts: When enabled, you can call them in the file browser with the selected files as arguments. Useful to perform common actions with files
 
-- There is now support defining multiple host entries in place in a custom SSH connection. This is useful for cases where you want to use ProxyJump hosts in place without having to define them elsewhere.
+If you have existing scripts, they will have to be manually adjusted by setting their execution types.
 
-- A host key acceptance notification is now displayed properly in case your system doesn't automatically accept new host keys
+## Docker improvements
 
-## SSH for unknown shells (Professional feature)
+The docker integration has been updated to support docker contexts. You can use the default context in the community edition, essentially being the same as before as XPipe previously only used the default context. Support for using multiple contexts is included in the professional edition.
 
-There's now an option to not let XPipe interact with the system. In case a system that does not run a known command shell, e.g. a router, link, or some IOT device, XPipe was previously unable to detect the shell type and errored out after some time. This option fixes this problem. This feature is available in the professional edition preview for two weeks.
+Note that old docker container connections will be removed as they are incompatible with the new version. Any other subconnections like shell environments in docker containers will persist, although they might get invalidated and will show up on the bottom of the connection list.
 
-## SSH X11 Forwarding on Windows via WSL
+There's now support for Windows docker containers running on HyperV.
 
-You can now enable X11 forwarding for an SSH connection.
+## Proxmox improvements
 
-XPipe allows you to use the WSL2 X11 capabilities on Windows for your SSH connection. The only thing you need for this is a [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install) distribution installed on your local system. XPipe it will automatically choose a compatible installed distribution if possible, but you can also use another one in the settings menu.
+You can now automatically open the Proxmox dashboard website through the new service integration. This will also work with the service tunneling feature for remote servers.
 
-This means that you don't need to install a separate X11 server on Windows. However, if you are using one anyway, XPipe will detect that and use the currently running X11 server.
+You can now open VNC sessions to Proxmox VMs.
 
-## Translations
+The Proxmox professional license requirement has been reworked to support one non-enterprise PVE node in the community edition.
 
-XPipe 9 now comes with translations for the user interface. These were initially generated with DeepL and can be easily improved and corrected by anyone on GitHub. You can check them out in action and if there is any translation you don't like, submit a quick pull request to fix it. For instructions on how to do this, see https://github.com/xpipe-io/xpipe/tree/master/lang.
+## Better connection organization
 
-## Terminal improvements
+The toggle to show only running connections will now no longer actually remove the connections internally and instead just not display them.
+This will reduce git vault updates and is faster in general.
 
-The terminal integrations have been reworked across the board. To better show which terminals are well supported and which aren't, there is now a status indicator for every available terminal. This will show you how good the XPipe integration with each one is and which terminals are recommended to be used with XPipe. 
+You can now order connections relative to other sibling connections. This ordering will also persist when changing the global order in the top left.
 
-The kitty terminal is now fully supported with tabs on both Linux and macOS. The Warp terminal integration now correctly enables all Warp features on remote shells. On macOS, other third-party prompts also now work properly in the launched terminals.
+The UI has also been streamlined to make common actions and toggles more easily accessible.
 
-## Password manager improvements
+## Other
 
-The password manager handling has been improved and some potential sources of errors and confusion have been eliminated. There are also now a few command templates available for established password managers to quickly get started.
-
-## Improved keyboard control
-
-It is a goal to be able to use XPipe only with a keyboard either for productivity or for accessibility reasons. XPipe 9 introduces improved keyboard support with new shortcuts and improved focus control for navigating with the arrow keys, tab, space, and enter.
-
-## Improved logo
-
-The application logo has been improved with of regards to contrast and visibility, which often was a problem on dark backgrounds. It should now stand out on any background color.
-
-## Other changes
-
-There have been countless small bug fixes across the board. They are not listed individually here, but hopefully you will notice some of them.
+- Several more actions have been added for podman containers
+- Support VMs for tunneling
+- Searching for connections has been improved to show children as well
+- The welcome screen will now also contain the option to straight up jump to the synchronization settings
+- Add support for foot terminal
+- Fix elementary terminal not launching correctly
+- Fix kubernetes not elevating correctly for non-default contexts
+- Fix ohmyzsh update notification freezing shell
+- Fix file browser icons being broken for links
+- The Linux installers now contain application icons from multiple sizes which should increase the icon display quality
+- The Linux builds now list socat as a dependency such that the kitty terminal integration will work without issues

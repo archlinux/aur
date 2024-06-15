@@ -1,7 +1,7 @@
 pkgbase = xpipe-ptb
 	pkgdesc = XPipe (Public Test Build) releases
-	pkgver = 9.4
-	pkgrel = 4
+	pkgver = 10.0
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/xpipe-io/xpipe-ptb
 	changelog = xpipe-ptb.changelog
@@ -19,12 +19,14 @@ pkgbase = xpipe-ptb
 	depends = libxtst
 	depends = pango
 	depends = util-linux
+	depends = socat
+	depends = hicolor-icon-theme
 	options = !debug
 	source = xpipe-ptb.desktop
 	sha512sums = SKIP
-	source_x86_64 = xpipe-ptb-9.4-4-x86_64.tar.gz::https://github.com/xpipe-io/xpipe-ptb/releases/download/9.4-4/xpipe-portable-linux-x86_64.tar.gz
+	source_x86_64 = xpipe-ptb-10.0-3-x86_64.tar.gz::https://github.com/xpipe-io/xpipe-ptb/releases/download/10.0-3/xpipe-portable-linux-x86_64.tar.gz
 	sha512sums_x86_64 = SKIP
-	source_aarch64 = xpipe-ptb-9.4-4-arm64.tar.gz::https://github.com/xpipe-io/xpipe-ptb/releases/download/9.4-4/xpipe-portable-linux-arm64.tar.gz
+	source_aarch64 = xpipe-ptb-10.0-3-arm64.tar.gz::https://github.com/xpipe-io/xpipe-ptb/releases/download/10.0-3/xpipe-portable-linux-arm64.tar.gz
 	sha512sums_aarch64 = SKIP
 
 pkgname = xpipe-ptb

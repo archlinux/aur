@@ -1,9 +1,9 @@
 # Maintainer: Christopher Schnick <crschnick@xpipe.io>
 
-_fullver="9.4-4"
+_fullver="10.0-3"
 pkgname="xpipe-ptb"
-pkgver="9.4"
-pkgrel="4"
+pkgver="10.0"
+pkgrel="3"
 epoch=1
 pkgdesc="XPipe (Public Test Build) releases"
 arch=('x86_64' 'aarch64')
@@ -23,6 +23,8 @@ depends=(
   libxtst
   pango
   util-linux
+  socat
+  hicolor-icon-theme
 )
 makedepends=()
 checkdepends=()
@@ -46,6 +48,10 @@ package() {
 	install -dm0755 "$pkgdir/opt"
 	cp -a "$srcdir/xpipe-${_fullver}" "$pkgdir/opt/$pkgname"
 	install -Dm0644 -t "$pkgdir/usr/share/applications/" "$srcdir/${pkgname}.desktop"
+	install -d "$pkgdir"/usr/share/icons/hicolor/48x48/apps"
+	cp -a "$srcdir/logo_48x48.png" "$pkgdir"/usr/share/icons/hicolor/48x48/apps/${pkgname}.png"
+	install -d "$pkgdir"/usr/share/icons/hicolor/256x256/apps"
+	cp -a "$srcdir/logo_256x256.png" "$pkgdir"/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
 	install -d "$pkgdir"/usr/bin
 	ln -s "/opt/$pkgname/cli/bin/xpipe" "$pkgdir/usr/bin/${pkgname}"
 	install -d "$pkgdir"/etc/bash_completion.d
