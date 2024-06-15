@@ -2,12 +2,12 @@
 # Contributor: Anton Kudelin <kudelin at protonmail dot com>
 pkgname=quantum-espresso
 pkgver=7.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A suite of codes for electronic-structure calculations and modeling"
 arch=("x86_64")
 url="https://www.quantum-espresso.org/"
 license=('GPL2')
-depends=('openmpi' 'glibc' 'libgfortran.so' 'intel-oneapi-mkl')
+depends=('openmpi' 'glibc' 'libgfortran.so' 'blas-openblas' 'fftw')
 makedepends=('gcc-fortran' 'cmake' 'gcc')
 checkdepends=('python')
 source=("https://gitlab.com/QEF/q-e/-/archive/qe-${pkgver}/q-e-qe-${pkgver}.tar.gz")
