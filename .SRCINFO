@@ -1,0 +1,21 @@
+pkgbase = vapoursynth-plugin-mlrt-trt-runtime-git
+	pkgdesc = Plugin for VapourSynth: mlrt (TensorRT runtime: recommended for Nvidia GPUs)
+	pkgver = 597.28c8c5f
+	pkgrel = 1
+	url = https://github.com/AmusementClub/vs-mlrt
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = ninja
+	makedepends = cmake
+	depends = vapoursynth
+	depends = cuda
+	depends = tensorrt
+	provides = vapoursynth-plugin-mlrt
+	conflicts = vapoursynth-plugin-mlrt-ov-runtime-git
+	conflicts = vapoursynth-plugin-mlrt-ort-runtime-git
+	conflicts = vapoursynth-plugin-mlrt-ncnn-runtime-git
+	source = mlrt::git+https://github.com/AmusementClub/vs-mlrt.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-mlrt-trt-runtime-git
