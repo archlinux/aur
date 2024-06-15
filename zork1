@@ -1,0 +1,2 @@
+#!/bin/sh
+frotz /usr/share/zork/zork1/ZORK1.DAT
