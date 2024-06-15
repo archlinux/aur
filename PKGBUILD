@@ -1,9 +1,9 @@
 # Maintainer: Christopher Schnick <crschnick@xpipe.io>
 
-_fullver="10.0-3"
+_fullver="10.0-4"
 pkgname="xpipe-ptb"
 pkgver="10.0"
-pkgrel="3"
+pkgrel="4"
 epoch=1
 pkgdesc="XPipe (Public Test Build) releases"
 arch=('x86_64' 'aarch64')
@@ -36,11 +36,11 @@ backup=()
 options=(!debug)
 install=
 changelog="${pkgname}.changelog"
-source=("${pkgname}.desktop")
+source=("logo_48x48.png" "logo_256x256.png" "${pkgname}.desktop")
 source_x86_64=("${pkgname}-${_fullver}-x86_64.tar.gz::https://github.com/xpipe-io/${pkgname}/releases/download/${_fullver}/xpipe-portable-linux-x86_64.tar.gz")
 source_aarch64=("${pkgname}-${_fullver}-arm64.tar.gz::https://github.com/xpipe-io/${pkgname}/releases/download/${_fullver}/xpipe-portable-linux-arm64.tar.gz")
 noextract=()
-sha512sums=("SKIP")
+sha512sums=("SKIP" "SKIP" "SKIP")
 sha512sums_x86_64=("SKIP")
 sha512sums_aarch64=("SKIP")
 
@@ -48,12 +48,12 @@ package() {
 	install -dm0755 "$pkgdir/opt"
 	cp -a "$srcdir/xpipe-${_fullver}" "$pkgdir/opt/$pkgname"
 	install -Dm0644 -t "$pkgdir/usr/share/applications/" "$srcdir/${pkgname}.desktop"
-	install -d "$pkgdir"/usr/share/icons/hicolor/48x48/apps"
-	cp -a "$srcdir/logo_48x48.png" "$pkgdir"/usr/share/icons/hicolor/48x48/apps/${pkgname}.png"
-	install -d "$pkgdir"/usr/share/icons/hicolor/256x256/apps"
-	cp -a "$srcdir/logo_256x256.png" "$pkgdir"/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
-	install -d "$pkgdir"/usr/bin
+	install -d "$pkgdir/usr/share/icons/hicolor/48x48/apps"
+	cp -a "$srcdir/logo_48x48.png" "$pkgdir/usr/share/icons/hicolor/48x48/apps/${pkgname}.png"
+	install -d "$pkgdir/usr/share/icons/hicolor/256x256/apps"
+	cp -a "$srcdir/logo_256x256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
+	install -d "$pkgdir/usr/bin"
 	ln -s "/opt/$pkgname/cli/bin/xpipe" "$pkgdir/usr/bin/${pkgname}"
-	install -d "$pkgdir"/etc/bash_completion.d
+	install -d "$pkgdir/etc/bash_completion.d"
 	ln -s "/opt/$pkgname/cli/xpipe_completion" "$pkgdir/etc/bash_completion.d/${pkgname}"
 }
