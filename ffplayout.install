@@ -20,8 +20,6 @@ post_install() {
 
 	    IP=$(ip route get 1.2.3.4 | awk '{if($7 !~ /^[[:space:]]*$/) print $7}')
 
-	    #/usr/bin/ffplayout -i -d "${IP}:8787"
-
 	    chown -R ${sysUser}: "/usr/share/ffplayout"
 	    chown -R ${sysUser}: "/var/lib/ffplayout"
 	else
