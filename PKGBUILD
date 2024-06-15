@@ -69,7 +69,7 @@ package()
 
     cd "${srcdir}"/"${_pkgname}"-"${pkgver}"/ || exit 1
     doxygen "${srcdir}"/"${_pkgname}"-"${pkgver}"/docs/Doxyfile
-    cp -r "${srcdir}"/"${_pkgname}"-"${pkgver}"/docs/* "${pkgdir}"/usr/share/doc/"${pkgname}"/
+    cp -r "${srcdir}"/"${_pkgname}"-"${pkgver}"/html/* "${pkgdir}"/usr/share/doc/"${pkgname}"/
 
     find "${pkgdir}"/usr/share/doc/"${pkgname}"/ -type d -exec chmod 755 {} +
     find "${pkgdir}"/usr/share/doc/"${pkgname}"/ -type f -exec chmod 644 {} +
