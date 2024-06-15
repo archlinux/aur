@@ -1,13 +1,12 @@
 # Maintainers: XenHat <me at xenh.at>, luni3359
 pkgname=moonlight-qt-bin
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="moonlight-qt bin from appimage"
 arch=('x86_64')
 url="https://moonlight-stream.org"
-license=('GPL3')
-depends=('qt5-base' 'qt5-quickcontrols2' 'qt5-svg' 'ffmpeg' 'sdl2_ttf' 'hicolor-icon-theme')
-optdepends=('libva-intel-driver: hardware acceleration for Intel GPUs')
+license=('GPL3-or-later')
+depends=('qt6-base' 'qt6-quickcontrols2' 'qt6-svg' 'ffmpeg' 'sdl2_ttf')
 
 source=("${pkgname%-bin}-$pkgver.AppImage::https://github.com/moonlight-stream/moonlight-qt/releases/download/v${pkgver}/Moonlight-${pkgver}-x86_64.AppImage"
 "launcher.sh")
