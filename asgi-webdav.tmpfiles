@@ -1,0 +1,2 @@
+d /var/lib/asgi-webdav 0755 asgi-webdav asgi-webdav -
+Z /var/lib/asgi-webdav -    asgi-webdav asgi-webdav -

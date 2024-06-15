@@ -1,0 +1,14 @@
+[Unit]
+Description = ASGI WebDAV Server
+Documentation = https://rexzhang.github.io/asgi-webdav/
+Documentation = https://rexzhang.github.io/asgi-webdav/zh/
+Wants = network-online.target
+After = network-online.target
+
+[Service]
+Restart = on-failure
+ExecStartPre = /usr/bin/mkdir -p "%E/asgi-webdav" ; /usr/bin/touch "%E/asgi-webdav/config.json"
+ExecStart = /usr/bin/asgi-webdav --host 127.0.0.1 --port 8000 --config "%E/asgi-webdav/config.json"
+
+[Install]
+WantedBy = default.target
