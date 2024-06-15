@@ -1,10 +1,11 @@
-# Maintainer: Gavin D. Howard <yzena.tech@gmail.com>
-# Contributor: Klaus Alexander Seistrup <klaus@seistrup.dk>
 # -*- mode: sh -*-
 
+# Maintainer: Gavin D. Howard <yzena.tech@gmail.com>
+# Contributor: Klaus Alexander Seistrup <klaus@seistrup.dk>
+
 pkgname='bc-gh'
-pkgver=6.7.5
-pkgrel=4
+pkgver=6.7.6
+pkgrel=1
 pkgdesc='Implementation of dc and POSIX bc with GNU extensions'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url='https://github.com/gavinhoward/bc'
@@ -18,12 +19,12 @@ source=(
   "$pkgname-$pkgver.tar.xz.sig::$url/releases/download/$pkgver/bc-$pkgver.tar.xz.sig"
 )
 sha512sums=(
-  '5f689fd20801ea7ede725ae5dc4e8744bdf2d72424bffef99c53193a950f4bd83b6eb4c5a07556576d0b3f5b6cd7f9fc7cbcb41d27891f488bb2e97a186f76a4'
-  '6d1770f8cb441136302e35c1e0017d6db9cfeabae28df03eaaa5c23873ddd79fd0ad6d275e660b82ecd0644b67d80ddaebaf3202715d71ac35878fc4d2ac6651'
+  '418ce61e8151a548627b794692325f48c68f8cedca7a0cb8d896bb74510f55b33486214af0af1b160c1f387f3d034300dff6fbc29c2d44d7b304a7a37c3c478b'
+  'd25ef2fdd03b59156b2856d278779ebb8ee28e495444ac6ab71b4b352b957ff378b5f69ef81aa71a0cd3fb1607e5c4e09bea90a05bbbb0bb4d7a3c12c04fb55d'
 )
 sha256sums=(
-  'c3e02c948d51f3ca9cdb23e011050d2d3a48226c581e0749ed7cbac413ce5461'
-  '4cdc28f77a296d61ba955d8cd183b6e2e0bc90bf0c2e8e6a20b0937a360333bc'
+  '828f390c2a552cadbc8c8ad5fde6eeaee398dc8d59d706559158330f3629ce35'
+  'e25673e6ed8f22919d19e60254cc1330e6f9c905188a8e6233f51548f90b9ee1'
 )
 validpgpkeys=('FF360647C7A7147F27DAAEC1B132F881C306590A')
 
@@ -34,8 +35,8 @@ build() {
   # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
   #
   # ld(1) says: “Supported for i386 and x86-64.”
-  case "${CARCH:-unknown}" in
-    'x86_64' | 'i386' )
+  case "Z${CARCH:-unknown}" in
+    'Zx86_64' | 'Zi386' )
       export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
     ;;
     * ) : pass ;;
@@ -43,6 +44,7 @@ build() {
 
   env CFLAGS="$CFLAGS -O3" \
     PREFIX=/usr ./configure.sh -p GNU -e -G -sbc.banner -sdc.tty_mode
+
   make
 }
 
@@ -57,14 +59,10 @@ package() {
 
   DESTDIR="$pkgdir" make install
 
-  # If we have a tty, tell the user what we are doing
-  test -t 1 && _v='v' || _v=''
-
-  install "-${_v}Dm0644" LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
-
-  for _doc in {NEWS,NOTICE,README}.md; do
-    install "-${_v}Dm0644" "$_doc" "$pkgdir/usr/share/doc/$pkgname/$_doc"
-  done
+  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
+    {NEWS,NOTICE,README}.md
+  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
+    LICENSE.md
 }
 
 # eof
