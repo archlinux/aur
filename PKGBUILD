@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=xdg-desktop-portal-cosmic-git
-pkgver=r124.db02412
+pkgver=r137.5f38044
 pkgrel=1
 pkgdesc="A backend implementation for xdg-desktop-portal for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
@@ -35,17 +35,16 @@ prepare() {
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   make vendor
-
-  # libexec > lib
-  sed -i 's|libexecdir = $(prefix)/libexec|libexecdir = $(libdir)|g' Makefile
 }
 
 build() {
   cd "${pkgname%-git}"
-  make prefix='/usr' VENDOR='1' all
+  export CARGO_HOME="$srcdir/cargo-home"
+  export RUSTUP_TOOLCHAIN=stable
+  make prefix='/usr' libexecdir='/usr/lib' VENDOR='1' all
 }
 
 package() {
   cd "${pkgname%-git}"
-  make prefix='/usr' DESTDIR="$pkgdir" install
+  make prefix='/usr' libexecdir='/usr/lib' DESTDIR="$pkgdir" install
 }
