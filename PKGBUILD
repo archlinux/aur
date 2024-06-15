@@ -1,6 +1,6 @@
 #Maintainer: archdevlab <https://github.com/archdevlab>
 
-major=2024.Q2.1
+major=2024.Q2.2
 
 pkgbase=amdvlk-bin
 pkgname=(amdvlk-bin lib32-amdvlk-bin)
@@ -93,7 +93,7 @@ package_lib32-amdvlk-bin(){
   chmod -R 755 "$pkgdir"/usr
 }
 
-sha256sums=('4573ad49cd4df8f007a76b76b052858668120149e45ef5f1454fb4907ccced2a'
-            '00323e2e2cd5bd7cb3067b5346edf78aeff301b73be7350e42cf60dac0a5bcc9')
+sha256sums=('776de23bdfd2f2fa6588a3ce9d7ea695555b69d97387b510e7528c51aaae1dbb'
+            'd21ac8ac9cf949c48d46ac0f5711d3bbb64309a59f2b9ee712457b657384af5c')
 
 # vim:set ts=8 sts=2 sw=2 et:
