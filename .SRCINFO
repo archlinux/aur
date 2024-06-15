@@ -1,0 +1,15 @@
+pkgbase = keydogger
+	pkgdesc = Zero dependency keyboard macro processor
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/jarusll/keydogger
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	source = keydogger-1.0.tar.gz::https://github.com/jarusll/keydogger/archive/v1.0.tar.gz
+	sha512sums = c67c49a04b748a9fbcf90785e733eacb2356371ccbdd2504a65071a077d72446a8af44ee636f415a39b5c09834110186bc2b6907e08cf6bed29c39460289e331
+
+pkgname = keydogger
