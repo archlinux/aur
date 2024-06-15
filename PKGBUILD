@@ -3,16 +3,16 @@
 
 pkgname=zathura-djvu-git
 pkgrel=1
-pkgver=0.2.9.r3.g56b0fd5
+pkgver=0.2.9.r6.gd749059
 pkgdesc="DjVu support for zathura"
 arch=('x86_64')
 url="https://pwmt.org/projects/zathura-djvu"
-license=('Zlib')
+license=('custom')
 depends=('zathura-git' 'djvulibre' 'desktop-file-utils')
 makedepends=('git' 'meson' 'ninja')
 conflicts=('zathura-djvu')
 provides=('zathura-djvu')
-source=("$pkgname::git+https://git.pwmt.org/pwmt/zathura-djvu.git#branch=develop")
+source=("$pkgname::git+https://github.com/pwmt/zathura-djvu.git#branch=develop")
 md5sums=('SKIP')
 
 pkgver() {
