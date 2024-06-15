@@ -1,34 +1,41 @@
 # Maintainer: Stephen Brandt <stephen@stephenbrandt.com>
 
 pkgname=haguichi-git
-pkgver=1.4.6.r0.g4f3879f
+_pkgname=haguichi
+pkgver=1.4.6.r18.g346b6bc
 pkgrel=1
 pkgdesc="Provides a user friendly GUI to control the Hamachi client on Linux (development version)"
-arch=('x86_64')
+arch=(x86_64)
 url="https://github.com/ztefn/haguichi"
-license=('GPL3')
-depends=('gtk3' 'libappindicator-gtk3' 'logmein-hamachi')
-makedepends=('git' 'meson' 'vala')
-conflicts=('haguichi')
-provides=('haguichi')
+license=(GPL-3.0-or-later)
+depends=(
+  gtk4
+  libadwaita
+  libgee
+  libportal
+  libportal-gtk4
+  logmein-hamachi
+)
+makedepends=(
+  git
+  meson
+  vala
+)
+conflicts=(haguichi)
+provides=(haguichi)
 source=("git+$url")
 sha512sums=('SKIP')
-_pkg=haguichi
 
 pkgver() {
-  cd $_pkg
+  cd $_pkgname
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd $_pkg
-  rm -rf build
-  mkdir build && cd build
-
-  meson setup -Denable-appindicator=true ..
-  ninja
+  arch-meson $_pkgname build
+  meson compile -C build
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja -C $_pkg/build install
+  meson install -C build --destdir "$pkgdir"
 }
