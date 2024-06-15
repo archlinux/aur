@@ -12,7 +12,8 @@
 
 pkgname=('boost-git' 'boost-libs-git')
 pkgver=1.85.0.r103.gf4d80a8676
-pkgrel=2
+_current_arch_boost_release=1.83.0-64
+pkgrel=3
 pkgdesc='Free peer-reviewed portable C++ source libraries'
 url='https://www.boost.org/'
 arch=('x86_64')
@@ -27,6 +28,7 @@ source=(
   'boost-array::git+https://github.com/boostorg/array'
   'boost-asio::git+https://github.com/boostorg/asio'
   'boost-assert::git+https://github.com/boostorg/assert'
+
   'boost-assign::git+https://github.com/boostorg/assign'
   'boost-atomic::git+https://github.com/boostorg/atomic'
   'boost-auto_index::git+https://github.com/boostorg/auto_index'
@@ -266,7 +268,7 @@ build() {
 
 package_boost-git() {
   pkgdesc+=' - development headers'
-  depends=("boost-libs=${pkgver}")
+  depends=("boost-libs")
   optdepends=('python: for python bindings')
   provides=('boost')
   conflicts=('boost')
@@ -281,21 +283,27 @@ package_boost-libs-git() {
   pkgdesc+=' - runtime libraries'
   depends=('bzip2' 'zlib' 'icu' 'zstd')
   optdepends=('openmpi: for mpi support')
-  provides=(libboost_atomic.so libboost_chrono.so libboost_container.so
-    libboost_context.so libboost_contract.so libboost_coroutine.so
-    libboost_date_time.so libboost_fiber.so libboost_filesystem.so
-    libboost_graph.so libboost_graph_parallel.so libboost_iostreams.so
-    libboost_locale.so libboost_log.so libboost_log_setup.so
-    libboost_math_c99.so libboost_math_c99f.so libboost_math_c99l.so
-    libboost_math_tr1.so libboost_math_tr1f.so libboost_math_tr1l.so
-    libboost_mpi.so "libboost_numpy${_py/./}.so"
-    libboost_prg_exec_monitor.so libboost_program_options.so
-    "libboost_python${_py/./}.so" libboost_random.so
-    libboost_regex.so libboost_serialization.so
-    libboost_stacktrace_addr2line.so libboost_stacktrace_basic.so
-    libboost_stacktrace_noop.so libboost_system.so libboost_thread.so
-    libboost_timer.so libboost_type_erasure.so libboost_unit_test_framework.so
-    libboost_wave.so libboost_wserialization.so boost-libs)
+  libs="libboost_atomic.so libboost_chrono.so libboost_container.so
+libboost_context.so libboost_contract.so libboost_coroutine.so
+libboost_date_time.so libboost_fiber.so libboost_filesystem.so
+libboost_graph.so libboost_graph_parallel.so libboost_iostreams.so
+libboost_locale.so libboost_log.so libboost_log_setup.so
+libboost_math_c99.so libboost_math_c99f.so libboost_math_c99l.so
+libboost_math_tr1.so libboost_math_tr1f.so libboost_math_tr1l.so
+libboost_mpi.so "libboost_numpy${_py/./}.so"
+libboost_prg_exec_monitor.so libboost_program_options.so
+"libboost_python${_py/./}.so" libboost_random.so
+libboost_regex.so libboost_serialization.so
+libboost_stacktrace_addr2line.so libboost_stacktrace_basic.so
+libboost_stacktrace_noop.so libboost_system.so libboost_thread.so
+libboost_timer.so libboost_type_erasure.so libboost_unit_test_framework.so
+libboost_wave.so libboost_wserialization.so boost-libs"
+  new_libs=""
+  for item in $libs; do
+    new_libs+=" $item=$_current_arch_boost_release"
+  done
+  libs=$new_libs
+  provides=($libs)
   conflicts=('boost-libs')
 
   install -D fakeinstall/lib/*.so* -t "$pkgdir/usr/lib/"
