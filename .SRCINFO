@@ -1,12 +1,12 @@
 pkgbase = ttf-tabler-icons
 	pkgdesc = A set of over 5200 free high-quality icons
 	pkgver = 3.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tabler.io/icons
 	arch = any
 	license = MIT
 	source = https://github.com/tabler/tabler-icons/releases/download/v3.6.0/tabler-icons-3.6.0.zip
-	source = https://github.com/tabler/tabler-icons/raw/v3.6.0/LICENSE
+	source = ttf-tabler-icons-LICENSE::https://github.com/tabler/tabler-icons/raw/v3.6.0/LICENSE
 	sha256sums = c299a09dd0b0e249629333d2f57f33a52710e54d5975b1b37cca905f0e759495
 	sha256sums = d5a3f948ae5cb95bfc4d2f767ef2bf6a778815b0ddb2d1c48037744cf636518e
 
