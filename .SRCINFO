@@ -1,6 +1,6 @@
 pkgbase = python-adafruit-platformdetect
 	pkgdesc = Platform detection for use by libraries like Adafruit-Blinka
-	pkgver = 3.63.0
+	pkgver = 3.69.0
 	pkgrel = 0
 	url = https://github.com/adafruit/Adafruit_Python_PlatformDetect
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-adafruit-platformdetect
 	makedepends = python-wheel
 	makedepends = python-setuptools-scm
 	depends = python
-	source = https://pypi.io/packages/source/A/Adafruit_PlatformDetect/adafruit_platformdetect-3.63.0.tar.gz
-	sha256sums = 6e7b5c3ff3f47a842c8c84107092edb17b0f712ca5295354a7e7ff442fd4e66e
+	source = https://pypi.io/packages/source/A/Adafruit_PlatformDetect/adafruit_platformdetect-3.69.0.tar.gz
+	sha256sums = 27ee15480fb6c5908da0bac808d5e99881bcb54e9c9ce9f81231273755451985
 
 pkgname = python-adafruit-platformdetect
