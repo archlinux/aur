@@ -1,0 +1,16 @@
+pkgbase = python-bayesicfitting
+	pkgdesc = A Python Toolbox for Bayesian fitting
+	pkgver = 3.2.1
+	pkgrel = 1
+	url = https://github.com/dokester/BayesicFitting
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/B/BayesicFitting/BayesicFitting-3.2.1.tar.gz
+	sha256sums = 9988c8f9d06f60a537bc153f4fa37810a397ceb82341f3f903176c9229de2757
+
+pkgname = python-bayesicfitting
+	depends = python-astropy>=2.0
+	depends = python-matplotlib>=2.0
+	depends = python-scipy>=1.0
+	depends = python-future
