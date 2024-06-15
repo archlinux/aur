@@ -1,0 +1,19 @@
+pkgbase = lib32-libprocps
+	pkgdesc = procps 3.x libraries for monitoring your system and its processes
+	pkgver = 3.3.17
+	pkgrel = 1
+	url = https://gitlab.com/procps-ng/procps
+	arch = x86_64
+	license = GPL-2.0-or-later
+	license = LGPL-2.1-or-later
+	makedepends = git
+	makedepends = lib32-gcc-libs
+	depends = lib32-glibc
+	depends = lib32-systemd
+	provides = libprocps.so
+	source = libprocps::git+https://gitlab.com/procps-ng/procps.git#tag=v3.3.17
+	validpgpkeys = 5D2FB320B825D93904D205193938F96BDF50FEA5
+	sha512sums = 948bada236458aa5751cc5f3e049e00af1e08d0f754b95574e56b4b5bf6a1086e3fce299a361cc53030e887ab30fb74fbffaaf1128308de192936718411adebe
+	b2sums = 1141866a24a2ad0d96a1f2ea96f3f9a14be967134d2676195c44d1c1abcdb58fda2fbb44fc53c1145f606e6d6f03192542017c4742ec00849ffe09d0cb2cb02f
+
+pkgname = lib32-libprocps

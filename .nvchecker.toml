@@ -1,0 +1,5 @@
+[lib32-libprocps]
+source = "git"
+git = "https://gitlab.com/procps-ng/procps"
+prefix = "v"
+include_regex = 'v3.*'
