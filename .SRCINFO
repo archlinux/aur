@@ -1,4 +1,4 @@
-pkgbase = python-prettyerrors
+pkgbase = python-pretty-errors
 	pkgdesc = A Python wrapper for the Discord API forked from discord.py
 	pkgver = 1.2.25
 	pkgrel = 1
