@@ -1,0 +1,14 @@
+pkgbase = noto-fonts-cjk-conf
+	pkgdesc = fix noto-fonts-cjk fallback problem
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://www.google.com/get/noto
+	arch = any
+	license = OFL-1.1
+	depends = noto-fonts-cjk
+	provides = noto-fonts-cjk-conf
+	conflicts = noto-fonts-cjk-conf
+	source = 64-noto-cjk.conf
+	sha256sums = 357e9ed6553087567ec5a28f835db5c43d3cd68a688e4677f759cca465379a32
+
+pkgname = noto-fonts-cjk-conf
