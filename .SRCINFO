@@ -1,24 +1,17 @@
 pkgbase = gweled
-	pkgdesc = A puzzle game similar to Bejeweled (aka Diamond Mine)
-	pkgver = 0.9.1
-	pkgrel = 6
+	pkgdesc = A puzzle game similar to Bejeweled or Diamond Mine
+	pkgver = 1.0.beta1
+	pkgrel = 1
 	url = https://gweled.org
-	install = gweled.install
 	arch = x86_64
 	license = GPL-2.0-or-later
-	makedepends = git
-	makedepends = intltool
-	depends = gtk2
-	depends = hicolor-icon-theme
-	depends = librsvg
-	depends = sdl_mixer
-	source = git+https://github.com/Marisa-Chan/gweled-sdl_mixer.git#commit=819bede9b80860c49eb7666c163bfe42f21dd2c6
-	source = gweled-fix-librsvg-segfault-v2.patch
-	source = gweled-c99.patch
-	source = gweled.appdata.xml
-	sha256sums = SKIP
-	sha256sums = 61f483bde4bfafc4e964da990e34f82f94861c2d7318efb4c52b998b52b92045
-	sha256sums = d7d09017527c0eb44c311e105f1b1106dcbffd9c0711736ed680a371deb69c81
-	sha256sums = 987567fac9026edb06493a7be7de522a625f224aa7d31684846bbacfd770ad7c
+	checkdepends = appstream-glib
+	makedepends = meson
+	depends = clutter-gtk
+	depends = gsound
+	depends = gtk3
+	depends = libgnome-games-support
+	source = https://launchpad.net/gweled/1.0/1.0-beta1/+download/gweled-1.0-beta1.tar.xz
+	sha256sums = f4930b1ebb4ecc8f7a021a3b185a668e9ec26a0dcdb9b361a00edbad557e9f62
 
 pkgname = gweled
