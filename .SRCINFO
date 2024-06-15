@@ -1,0 +1,37 @@
+pkgbase = zed-preview-bin
+	pkgdesc = A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter
+	pkgver = 0.140.4
+	pkgrel = 1
+	url = https://zed.dev
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	license = AGPL-3.0-or-later
+	license = Apache-2.0
+	depends = alsa-lib
+	depends = libasound.so
+	depends = fontconfig
+	depends = gcc-libs
+	depends = glibc
+	depends = libxcb
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = openssl
+	depends = sqlite
+	depends = vulkan-driver
+	depends = vulkan-icd-loader
+	depends = vulkan-tools
+	depends = wayland
+	depends = zlib
+	depends = libz.so
+	optdepends = clang: improved C/C++ language support
+	optdepends = eslint: improved Javascript language support
+	optdepends = rust-analyzer: improved Rust language support
+	provides = zed=0.140.4
+	conflicts = zed
+	source_x86_64 = https://zed.dev/api/releases/preview/0.140.4/zed-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 2369d23f2101e1a5858643a22e0dae376ab961b89b582e7f234db0e67a63bc3f
+	source_aarch64 = https://zed.dev/api/releases/preview/0.140.4/zed-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 9d6d94566fce520c586d36ffa104dd3b431b89c1276542b25a7cdcd1a343bd5f
+
+pkgname = zed-preview-bin
