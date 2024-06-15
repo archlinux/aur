@@ -1,14 +1,14 @@
 pkgbase = rcu-bin
 	pkgdesc = reMarkable Connection Utility (RCU).
-	pkgver = d2024.001o
+	pkgver = d2024.001p
 	pkgrel = 1
 	url = http://www.davisr.me/projects/rcu/
 	arch = x86_64
 	license = AGPL3
 	options = !strip
-	source = local://rcu-d2024.001o-fedora38.tar.gz
+	source = local://rcu-d2024.001p-fedora38.tar.gz
 	source = rcu.desktop
-	sha256sums = c52302340ae78aee8c76c84a797e5309279687990538a6295b313d19cb672bbb
+	sha256sums = f0c341433499e948553fdc8c1bf6836227af1bf632a129b3bb9cdf3fe7c21800
 	sha256sums = b2c876686d260b2b55553e00d0870e55d1f4fd23b60ba88e6767770e4aae1c5c
 
 pkgname = rcu-bin
