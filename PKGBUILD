@@ -2,7 +2,7 @@
 
 _name=inceptum
 pkgname=$_name-git
-pkgver=0.3.1.r96.g4aa1f24
+pkgver=0.3.1.r106.g4e43d43
 pkgrel=1
 pkgdesc="An advanced minecraft launcher written in java"
 arch=("x86_64")
