@@ -1,4 +1,4 @@
-# Maintainer: Johannes Frohnmeyer <johannes at frohnmeyer-wds dot de>
+# Maintainer: Johannes Frohnmeyer <aur at frohnmeyer-wds dot de>
 
 _name=inceptum
 pkgname=$_name-git
