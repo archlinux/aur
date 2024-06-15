@@ -1,7 +1,7 @@
 pkgbase = lightwrite
 	pkgdesc = Lightwrite is a simple sdl2 based text-editor.
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tim-tm/lightwrite
 	arch = x86_64
 	license = MIT
@@ -11,6 +11,6 @@ pkgbase = lightwrite
 	depends = sdl2
 	depends = sdl2_ttf
 	source = lightwrite-0.1.0::https://github.com/tim-tm/lightwrite/releases/download/v0.1.0/lightwrite-0.1.0.tar.gz
-	md5sums = SKIP
+	sha512sums = e55b75a1046288ff7648fd097c908bcea4e3bcc1941ca349df9e6a8a0a77682a68a6cc9c8443b156cede81d6f7b83e861ac2684cf58f6de6963b4324e2c7adf5
 
 pkgname = lightwrite
