@@ -10,15 +10,15 @@
 
 pkgbase=gdal-ecw
 _pkgbase=gdal
-provides=('gdal=3.8.4')
+provides=('gdal=3.8.5')
 conflicts=('gdal')
 pkgname=('gdal-ecw' 'python-gdal-ecw')
-pkgver=3.8.4
-pkgrel=1
-pkgdesc="A translator library for raster geospatial data formats, with support to ECW format. Based on gdal-hdf4 AUR package."
-arch=('x86_64')
+pkgver=3.8.5
+pkgrel=2
+pkgdesc="A translator library for raster and vector geospatial data formats, with support to ECW format. Based on gdal-hdf4 AUR package."
+arch=(x86_64)
 url="https://gdal.org/"
-license=('custom')
+license=(custom)
 depends=('curl' 'geos' 'giflib' 'hdf5' 'libgeotiff' 'libjpeg-turbo' 'libpng' 'libspatialite' 'libtiff' 'netcdf'
          'openjpeg2' 'poppler' 'cfitsio' 'sqlite' 'mariadb-libs' 'postgresql-libs' 'xerces-c' 'json-c' 'arrow' 'pcre2'
          # needed for ecw support:
@@ -26,20 +26,21 @@ depends=('curl' 'geos' 'giflib' 'hdf5' 'libgeotiff' 'libjpeg-turbo' 'libpng' 'li
 
 makedepends=(cmake opencl-headers python-setuptools python-numpy
              proj arrow blosc cfitsio curl crypto++ libdeflate expat libfreexl
-             libgeotiff geos giflib libheif hdf5 libjpeg-turbo json-c xz
+             libgeotiff geos giflib libheif hdf5 libjpeg-turbo json-c libjxl xz
              libxml2 lz4 mariadb-libs netcdf unixodbc ocl-icd openexr openjpeg2
-             openssl pcre2 libpng podofo-0.9 poppler postgresql-libs qhull
+             openssl pcre2 libpng podofo poppler postgresql-libs qhull
              libspatialite sqlite swig libtiff libwebp xerces-c zlib zstd libaec)
-optdepends=('postgresql: postgresql database support'
-            'mariadb: mariadb database support'
-            'perl: perl binding support'
-            'unixodbc: when present while building, will add odbc support'
-            'libkml: when present while building, adds kml support'
-)
-options=('!emptydirs')
-changelog=${_pkgbase}.changelog
-source=(https://download.osgeo.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz)
-b2sums=('53d553ac09bf6a007e38ad41d3033e6b4ab7992c9c2eb84ac4f56b7be14f68a2931bb7655807b10aff1836d47a98e04ec70bb9c6db19596c2b35aa260b3579dc')
+# armadillo basisu brunsli lerc libkml qb3 rasterlite2 sfcgal tiledb
+# ogdi
+changelog=$_pkgbase.changelog
+source=(https://download.osgeo.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz
+        https://github.com/OSGeo/gdal/commit/7b526b12.patch)
+b2sums=('2c5f9b3fa1c3d5d7879c2aa1c95f82c6360b35a259443a8ad68ff8f471f4efa8d2fd7935c57317ee5e94789244067706967f9c5df413bccd2556b5790d51d349'
+        '801eb649c20ef81d7590888589d4049eab4505fac6efbe1718d8bc9e01a35390b9d8cad090c3421ff90d769fe3f5aec4d1641409ecc5a434ba68c4c5d30eec85')
+
+prepare() {
+  patch -d $_pkgbase-$pkgver -p1 < 7b526b12.patch # Fix build with C++20
+}
 
 build() {
   opt_libs=""
@@ -47,7 +48,7 @@ build() {
 
   cmake -B build -S $_pkgbase-$pkgver \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_CXX_STANDARD=17 \
+    -DCMAKE_CXX_STANDARD=20 \
     -DENABLE_IPO=ON \
     -DBUILD_PYTHON_BINDINGS=ON \
     -DGDAL_ENABLE_PLUGINS=ON \
@@ -100,24 +101,25 @@ build() {
 package_gdal-ecw () {
   depends=(proj blosc crypto++ curl libdeflate expat libfreexl geos libgeotiff
            giflib libjpeg-turbo json-c xz libxml2 lz4 unixodbc ocl-icd openssl
-           pcre2 libpng qhull libspatialite sqlite libtiff xerces-c zlib zstd
-           # https://github.com/OSGeo/gdal/issues/6281
-           # optdepends should be either hard deps or split package
-           # due to upstream design choice - hard dep for the moment
+           pcre2 libpng qhull libspatialite sqlite libtiff xerces-c zlib zstd libaec
            arrow cfitsio hdf5 libheif mariadb-libs netcdf openexr openjpeg2
            podofo poppler postgresql-libs libwebp libecwj2)
-#  optdepends=('arrow: Arrow/Parquet support'
-#              'cfitsio: FITS support'
-#              'hdf5: HDF5 support'
-#              'libheif: HEIF support'
-#              'mariadb-libs: MySQL support'
-#              'netcdf: netCDF support'
-#              'openexr: EXR support'
-#              'openjpeg2: JP2 support'
-#              'podofo-0.9: PDF support'
-#              'poppler: PDF support'
-#              'postgresql-libs: PostgreSQL support'
-#              'libwebp: WebP support')
+  optdepends=('arrow: Arrow/Parquet support'
+              'cfitsio: FITS support'
+              'hdf5: HDF5 support'
+              'libheif: HEIF support'
+              'libjxl: JPEG XL support'
+              'mariadb-libs: MySQL support'
+              'netcdf: netCDF support'
+              'openexr: EXR support'
+              'openjpeg2: JP2 support'
+              'podofo: PDF support'
+              'poppler: PDF support'
+              'postgresql-libs: PostgreSQL support'
+              'perl: perl binding support'
+              'unixodbc: when present while building, will add odbc support'
+              'libkml: when present while building, adds kml support'
+              'libwebp: WebP support')
 
   make -C build DESTDIR="${pkgdir}" install
   install -Dm644 ${_pkgbase}-${pkgver}/LICENSE.TXT -t "${pkgdir}"/usr/share/licenses/$_pkgbase/
@@ -132,7 +134,6 @@ package_python-gdal-ecw () {
   provides=("python-gdal")
   conflicts=("python-gdal")
   depends=("gdal-ecw=$pkgver" 'python-numpy')
-  optdepends=()
 
   install -d "${pkgdir}"/usr/{bin,lib}
   mv bin/* "${pkgdir}"/usr/bin
