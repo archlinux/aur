@@ -3,7 +3,7 @@
 
 pkgname=python-sse-starlette
 _pkgname=${pkgname#python-}
-pkgver=2.1.0
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Server Sent Events (SSE) for Starlette and FastAPI"
 arch=(any)
@@ -30,7 +30,7 @@ checkdepends=(
   python-pytest-asyncio
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c6929fe7a3fe1dcbd285a4b214843fe04233960f22ec1a566c8c47b3ba67d12f')
+sha256sums=('742db06df61434d7861748d58558b43b28ad4531eed8e9e23dbe155d036abe21')
 
 _archive="$_pkgname-$pkgver"
 
