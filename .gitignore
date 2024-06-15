@@ -1,13 +1,4 @@
-
-# Created by https://www.gitignore.io/api/archlinuxpackages
-# Edit at https://www.gitignore.io/?templates=archlinuxpackages
-
-### ArchLinuxPackages ###
-*.part
-*.rpm
-*.xz
-
-pkg/
-src/
-
-# End of https://www.gitignore.io/api/archlinuxpackages
+pkg
+src
+*.tar.xz
+*.tar.zst
