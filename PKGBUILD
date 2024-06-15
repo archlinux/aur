@@ -1,7 +1,7 @@
 # Maintainer: StuckUpCreations <onelove.nyahbingi@gmail.com>
 pkgname=ctjs-bin
 pkgver=5.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="ct.js is a 2D game editor that makes its bet on good documentation, visual tools and smooth workflow"
 arch=("x86_64")
 url="https://ctjs.rocks/"
@@ -48,5 +48,5 @@ package() {
 	find . -type f -exec chmod 0777 {} \;
 	cd ${startdir}
 	cp -r ${srcdir}/linux64/* ${pkgdir}/opt/ctjs
-	cp ${pkgdir}/opt/ctjs/ct_ide.png ${pkgdir}/usr/share/icons/ct_ide.png
+	cp ${pkgdir}/opt/ctjs/package.nw/ct_ide.png ${pkgdir}/usr/share/icons/ct_ide.png
 }
