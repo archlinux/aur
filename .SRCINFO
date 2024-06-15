@@ -1,0 +1,20 @@
+pkgbase = orderly-git
+	pkgdesc = A simple task management application for the COSMIC desktop.
+	pkgver = r89.6c1e7e2
+	pkgrel = 1
+	url = https://tasks.edfloreshz.dev
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	makedepends = just
+	depends = hicolor-icon-theme
+	depends = libxkbcommon
+	provides = orderly
+	conflicts = orderly
+	conflicts = cosmic-tasks-git
+	source = git+https://github.com/edfloreshz/orderly.git
+	sha256sums = SKIP
+
+pkgname = orderly-git
