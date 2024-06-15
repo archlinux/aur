@@ -1,0 +1,15 @@
+pkgbase = hieroglyphic-bin
+	pkgdesc = Find LaTeX symbols.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/FineFindus/Hieroglyphic
+	arch = x86_64
+	license = MIT
+	depends = gtk4
+	depends = libadwaita
+	provides = hieroglyphic
+	conflicts = hieroglyphic
+	source = hieroglyphic-bin-1.1.0.tar.gz::https://github.com/archisman-panigrahi/Hieroglyphic/releases/download/v1.1.0/hieroglyphic-1.1.0.tar.gz
+	sha256sums = dbce366db8c80b54623f1d47a0a560091fc5ef485eacb56bca0a690f07749ac1
+
+pkgname = hieroglyphic-bin
