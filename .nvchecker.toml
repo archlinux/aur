@@ -1,0 +1,3 @@
+[lib32-apitrace]
+source = "git"
+git = "https://github.com/apitrace/apitrace/"
