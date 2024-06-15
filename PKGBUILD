@@ -5,7 +5,7 @@
 pkgbase="lombok"
 pkgname=('lombok-common' 'lombok-eclipse-java' 'lombok-eclipse-jee' 'lombok-spring-tool-suite')
 pkgver=1.18.32
-pkgrel=1
+pkgrel=2
 pkgdesc="Project Lombok integrated with several Eclipse-based installations"
 makedepends=('java-runtime')
 arch=("any")
@@ -29,13 +29,13 @@ package_lombok-common() {
 
 package_lombok-eclipse-java() {
     pkgdesc="Lombok integration with Eclipse IDE for Java Developers"
-    depends=(lombok-common=$pkgver-$pkgrel 'eclipse-java')
+    depends=(lombok-common=$pkgver-$pkgrel 'eclipse-java-bin')
     install=lombok-eclipse.install
 }
 
 package_lombok-eclipse-jee() {
     pkgdesc="Lombok integration with Eclipse IDE for Java EE Developers"
-    depends=(lombok-common=$pkgver-$pkgrel 'eclipse-jee')
+    depends=(lombok-common=$pkgver-$pkgrel 'eclipse-jee-bin')
     install=lombok-eclipse.install
 }
 
