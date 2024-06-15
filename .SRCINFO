@@ -1,6 +1,6 @@
 pkgbase = pest-language-server
 	pkgdesc = Language Server Protocol implementation for pest grammars
-	pkgver = 0.3.9
+	pkgver = 0.3.11
 	pkgrel = 1
 	url = https://github.com/pest-parser/pest-ide-tools
 	arch = x86_64
@@ -9,9 +9,8 @@ pkgbase = pest-language-server
 	makedepends = cargo
 	depends = glibc
 	depends = gcc-libs
-	depends = openssl
 	options = !lto
-	source = pest-ide-tools-0.3.9.tar.gz::https://github.com/pest-parser/pest-ide-tools/archive/refs/tags/v0.3.9.tar.gz
-	sha256sums = 0e89066d3cd1e9064c61954395a85270909270a773a9ed689ff5591c95e69faa
+	source = pest-ide-tools-0.3.11.tar.gz::https://github.com/pest-parser/pest-ide-tools/archive/refs/tags/v0.3.11.tar.gz
+	sha256sums = 6e3327c78b62aa12e4e2884449021e2915a97ccef36d1d907bbe669dbb1aaf5b
 
 pkgname = pest-language-server

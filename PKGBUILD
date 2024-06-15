@@ -1,7 +1,7 @@
 # Maintainer: SandaruKasa <sandarukasa plus aur at ya dot ru>
 
 pkgname=pest-language-server
-pkgver=0.3.9
+pkgver=0.3.11
 pkgrel=1
 pkgdesc='Language Server Protocol implementation for pest grammars'
 arch=('x86_64' 'aarch64')
@@ -9,10 +9,10 @@ url="https://github.com/pest-parser/pest-ide-tools"
 license=("Apache-2.0")
 makedepends=(cargo)
 options=(!lto)
-depends=(glibc gcc-libs openssl)
+depends=(glibc gcc-libs)
 _basename="pest-ide-tools-${pkgver}"
 source=("${_basename}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0e89066d3cd1e9064c61954395a85270909270a773a9ed689ff5591c95e69faa')
+sha256sums=('6e3327c78b62aa12e4e2884449021e2915a97ccef36d1d907bbe669dbb1aaf5b')
 _src="${_basename}/language-server"
 
 prepare() {
