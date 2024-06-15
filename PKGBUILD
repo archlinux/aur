@@ -33,19 +33,7 @@ package() {
     # Create a launcher script
     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/mediamonkey" << EOF
 #!/bin/bash
-WINEPREFIX="/opt/mediamonkey/wineprefix" wine "/opt/mediamonkey/MediaMonkey.exe" "\$@"
-EOF
-
-    # Install desktop entry
-    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/mediamonkey.desktop" << EOF
-[Desktop Entry]
-Name=MediaMonkey
-Comment=MediaMonkey Music Manager
-Exec=mediamonkey
-Icon=mediamonkey
-Terminal=false
-Type=Application
-Categories=AudioVideo;Player;Audio;
+WINEPREFIX="\$HOME/.local/share/wineprefixes/mediamonkey" wine "/opt/mediamonkey/MediaMonkey.exe" "\$@"
 EOF
 
     # Install icon (assuming you have an icon file, otherwise skip this part)
