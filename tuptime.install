@@ -1,25 +1,13 @@
-_DIR='/var/lib/tuptime'
-
 post_install() {
-    echo -e '\nActivate using: \nsystemctl enable --now tuptime-sync.timer tuptime.service \n'
-    /usr/bin/systemd-sysusers
-    install -o _tuptime -g _tuptime -m 0755 -d ${_DIR}
+    echo -e '\nActivate using: \nsystemctl enable --now tuptime-sync.timer tuptime.service\n'
 }
 
 post_upgrade() {
-    ! id tuptime &>/dev/null || echo -e '\nUser "tuptime" was replaced with "_tuptime", you may remove it. \n'
-    /usr/bin/systemd-sysusers
-    if [ -d ${_DIR} ]; then
-        chmod 0755 ${_DIR}
-        chown -R _tuptime:_tuptime ${_DIR}
-    else
-        install -o _tuptime -g _tuptime -m 0755 -d ${_DIR}
+    local DB='/var/lib/tuptime/tuptime.db'
+    if [ -f ${DB} ]; then
+        [ "$(stat -c '%U' ${DB})" == '_tuptime' ] || { systemd-sysusers && chown _tuptime:_tuptime ${DB}; }
     fi
-}
-
-post_remove() {
-    rm -rf ${_DIR}
-    ! id _tuptime &>/dev/null || userdel -f _tuptime
+    ! id tuptime &>/dev/null || echo -e '\nUser "tuptime" was replaced with "_tuptime", you may remove it.\n'
 }
 
 # vim: ts=4 sw=4 et:
