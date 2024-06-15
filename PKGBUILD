@@ -33,6 +33,7 @@ package() {
     # Create a launcher script
     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/mediamonkey" << EOF
 #!/bin/bash
+WINEPREFIX="\$HOME/.local/share/wineprefixes/mediamonkey" mkdir -p "\$WINEPREFIX"
 WINEPREFIX="\$HOME/.local/share/wineprefixes/mediamonkey" wine "/opt/mediamonkey/MediaMonkey.exe" "\$@"
 EOF
 
