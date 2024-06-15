@@ -1,7 +1,7 @@
 # Maintainer: su226 <thesu226 at dot outlook.com>
 
 pkgname=ftb-app
-pkgver=1.25.11
+pkgver=1.25.13
 pkgrel=1
 epoch=
 pkgdesc="A new Modpack launcher for FTB and Curse modpacks."
@@ -23,7 +23,7 @@ options=()
 install=
 changelog=
 # Use source tarball will cause Gradle plugin com.palantir.git-version to fail
-source=("git+https://github.com/FTBTeam/FTB-App#tag=v$pkgver"
+source=("git+https://github.com/FTBTeam/FTB-App.git#tag=v$pkgver"
         "ftb-app.sh"
         "ftb-app.desktop")
 noextract=()
