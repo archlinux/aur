@@ -1,6 +1,6 @@
 pkgbase = pianoteq-stage-trial-bin
 	pkgdesc = Physical modelling piano instrument standalone program, VST2 and LV2 plugin. STAGE trial version
-	pkgver = 8.2.2
+	pkgver = 8.3.0
 	pkgrel = 1
 	url = https://www.modartt.com/pianoteq
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = pianoteq-stage-trial-bin
 	provides = pianoteq-stage-trial
 	conflicts = pianoteq-stage-trial
 	conflicts = pianoteq-stage-bin
-	source = local://pianoteq_stage_linux_trial_v822.7z
+	source = local://pianoteq_stage_linux_trial_v830.7z
 	source = https://www.pianoteq.com/images/logo/pianoteq_icon_128.png
-	sha256sums = 9db8e1c4950a925809ab5375e7847a48553fd59d1654d1fb85d0d47d954054df
+	sha256sums = 7079e7c3ea78aa9d141538660c525e63ce3457d51051650ddd7dec259503de2b
 	sha256sums = 94ee64cf6688a49d74f0bf70d811e7466abac103feeab17496a89f828afcc6d3
 
 pkgname = pianoteq-stage-trial-bin
