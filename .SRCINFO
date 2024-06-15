@@ -11,7 +11,7 @@ pkgbase = blackchocobo
 	arch = aarch64
 	license = GPL3
 	depends = qt6-base
-	depends = libff7tk>=1.1.0
+	depends = libff7tk>=1.2.0
 	conflicts = blackchocobo-git
 	source = blackchocobo::git+https://github.com/sithlord48/blackchocobo.git#tag=v1.16.0
 	sha256sums = 9da9c75228c11cb66615f38643dfbe8e9bfdceb3e02b37775b4e35264d79afba
