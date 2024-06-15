@@ -1,7 +1,7 @@
 pkgbase = zathura-ps-git
 	pkgdesc = PostScript support for zathura
-	pkgver = 0.2.7.r2.g0d28473
-	pkgrel = 2
+	pkgver = 0.2.7.r5.gd03911c
+	pkgrel = 1
 	url = https://pwmt.org/projects/zathura-ps
 	arch = x86_64
 	license = Zlib
@@ -13,7 +13,7 @@ pkgbase = zathura-ps-git
 	depends = desktop-file-utils
 	provides = zathura-ps
 	conflicts = zathura-ps
-	source = zathura-ps-git::git+https://git.pwmt.org/pwmt/zathura-ps.git#branch=develop
+	source = zathura-ps-git::git+https://github.com/pwmt/zathura-ps.git#branch=develop
 	md5sums = SKIP
 
 pkgname = zathura-ps-git
