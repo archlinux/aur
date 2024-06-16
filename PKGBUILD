@@ -13,13 +13,13 @@
 
 pkgbase=imagemagick-full-git
 pkgname=('imagemagick-full-git' 'imagemagick-full-doc-git')
-pkgver=7.1.1.32.r1.g2b42fc1ef
+pkgver=7.1.1.33.r24.g33119d988
 pkgrel=1
 arch=('x86_64')
 _qdepth='32'
 pkgdesc="An image viewing/manipulation program (Q${_qdepth} HDRI with all features, git version)"
 url='https://www.imagemagick.org/'
-license=('custom')
+license=('LicenseRef-Custom')
 makedepends=(
     # official repositories:
         'git'  'perl' 'jbigkit' 'opencl-headers' 'glu' 'ghostpcl' 'ghostxps'
@@ -135,7 +135,7 @@ package_imagemagick-full-git() {
             'graphviz' 'openexr' 'libheif' 'openjpeg2' 'libjpeg-turbo' 'xz' 'glib2' 'pango'
             'cairo' 'libpng' 'ghostscript' 'ming' 'librsvg' 'libtiff' 'libwebp' 'libwmf'
             'ocl-icd' 'gsfonts' 'ttf-dejavu' 'perl' 'libzip' 'libjxl' 'gperftools'
-            'autotrace'
+            'autotrace-nomagick'
         # AUR:
             'dmalloc' 'flif' 'libfpx' 'libultrahdr-git' 'libumem-git' 'magickcache-git'
     )

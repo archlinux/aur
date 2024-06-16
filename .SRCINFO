@@ -1,10 +1,10 @@
 pkgbase = imagemagick-full-git
 	pkgdesc = An image viewing/manipulation program (Q32 HDRI with all features, git version)
-	pkgver = 7.1.1.32.r1.g2b42fc1ef
+	pkgver = 7.1.1.33.r24.g33119d988
 	pkgrel = 1
 	url = https://www.imagemagick.org/
 	arch = x86_64
-	license = custom
+	license = LicenseRef-Custom
 	makedepends = git
 	makedepends = perl
 	makedepends = jbigkit
@@ -103,7 +103,7 @@ pkgname = imagemagick-full-git
 	depends = libzip
 	depends = libjxl
 	depends = gperftools
-	depends = autotrace
+	depends = autotrace-nomagick
 	depends = dmalloc
 	depends = flif
 	depends = libfpx
@@ -111,7 +111,7 @@ pkgname = imagemagick-full-git
 	depends = libumem-git
 	depends = magickcache-git
 	optdepends = imagemagick-full-doc-git: manual and API docs
-	provides = imagemagick=7.1.1.32.r1.g2b42fc1ef
+	provides = imagemagick=7.1.1.33.r24.g33119d988
 	provides = imagemagick-git
 	provides = libmagick
 	provides = libmagick-git
@@ -139,5 +139,5 @@ pkgname = imagemagick-full-git
 pkgname = imagemagick-full-doc-git
 	pkgdesc = An image viewing/manipulation program (Q32 HDRI with all features, git version) (manual and API docs)
 	arch = any
-	provides = imagemagick-doc=7.1.1.32.r1.g2b42fc1ef
+	provides = imagemagick-doc=7.1.1.33.r24.g33119d988
 	conflicts = imagemagick-doc
