@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bytebackup-git
 _pkgname=ByteBackup
-pkgver=r15.0028279
+pkgver=1.0.0.r1.g7645172
 _electronversion=28
 _nodeversion=20
 pkgrel=1
@@ -31,8 +31,7 @@ sha256sums=('SKIP'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
-    #git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
 }
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -65,8 +64,8 @@ build() {
     else
         echo "Your network is OK."
     fi
-    npm install
-    npm run build:unpack
+    NODE_ENV=development npm install
+    NODE_ENV=production npm run build:unpack
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"

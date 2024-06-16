@@ -1,6 +1,6 @@
 pkgbase = bytebackup-git
 	pkgdesc = A Simple File Backup Utility.
-	pkgver = r15.0028279
+	pkgver = 1.0.0.r1.g7645172
 	pkgrel = 1
 	url = https://github.com/muhammadali360/ByteBackup
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = bytebackup-git
 	makedepends = cmake
 	makedepends = curl
 	depends = electron28
-	provides = bytebackup=r15.0028279
+	provides = bytebackup=1.0.0
 	conflicts = bytebackup
 	source = bytebackup.git::git+https://github.com/muhammadali360/ByteBackup.git
 	source = bytebackup.sh
