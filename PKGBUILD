@@ -1,7 +1,7 @@
 # Maintainer: aquova <mail at aquova dot net>
 
 pkgname=zelda64recomp-bin
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Static recompilation of Majora's Mask for PC"
 url='https://github.com/Mr-Wiseguy/Zelda64Recomp'
@@ -9,10 +9,10 @@ arch=("x86_64")
 license=("GPL3")
 depends=(freetype2 gtk3 libx11 libxrandr sdl2 vulkan-driver)
 source=(
-    "${url}/releases/download/v${pkgver}/Zelda64Recompiled-v${pkgver}-Linux.tar.gz"
+    "${url}/releases/download/v${pkgver}/Zelda64Recompiled-v${pkgver}-Linux-x64.tar.gz"
 )
 sha256sums=(
-    'e321aeb56b3358920ac596736271adbadbf5787adf46c65ebe62e1662de9ff1c'
+    '62857ea68858554ec7ec4c461ebf5fba11142016684b4fea0804979e644493cb'
 )
 
 package() {
