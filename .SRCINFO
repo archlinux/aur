@@ -1,11 +1,11 @@
 pkgbase = hash-calculator-bin
 	pkgdesc = Hash Calculator is the console tool that can calculate about 50 cryptographic hashes of strings and files.
-	pkgver = 5.3.6
+	pkgver = 5.3.7
 	pkgrel = 1
 	url = https://github.com/aegoroff/hc
 	arch = x86_64
 	license = LGPL-3
-	source = https://github.com/aegoroff/hc/releases/download/5.3.6/hc-5.3.6-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 319847e5bb6cdff4974e6f6ee9e275e07f5ccf4187f3e55c14612c3749bf1e8b
+	source = https://github.com/aegoroff/hc/releases/download/5.3.7/hc-5.3.7-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 7198c3d804ce86b50d595471dcda7f8cfccccf34ca94205ee45abc1440f278df
 
 pkgname = hash-calculator-bin
