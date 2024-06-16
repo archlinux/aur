@@ -2,7 +2,7 @@
 
 _name=tempest
 pkgname=python-tempest
-pkgver=37.0.0
+pkgver=39.0.0
 pkgrel=1
 pkgdesc='OpenStack Integration Testing'
 arch=(any)
@@ -10,15 +10,15 @@ url='https://docs.openstack.org/tempest/'
 license=(Apache)
 makedepends=(python-setuptools)
 depends=(python-pbr python-cliff python-jsonschema python-testtools
-         python-paramiko python-netaddr python-testrepository
+         python-paramiko python-cryptography python-netaddr
          python-oslo-concurrency python-oslo-config python-oslo-log
-         python-oslo-serialization python-oslo-utils python-six
+         python-stestr python-oslo-serialization python-oslo-utils
          python-fixtures python-yaml python-subunit python-stevedore
-         python-prettytable python-os-testr python-urllib3
-         python-debtcollector)
-checkdepends=(python-hacking python-mock python-oslotest)
+         python-prettytable python-urllib3 python-debtcollector
+         python-defusedxml python-fasteners)
+checkdepends=(python-hacking python-oslotest)
 source=("$pkgname-$pkgver.tar.gz::https://opendev.org/openstack/tempest/archive/$pkgver.tar.gz")
-sha512sums=('a7358d139350b38f5f21fd3591ea01aaa90c9c9f0119ef015f2dd0678aaa87fe201cf1c82bb216809a938004642a3a53ff44a65456a508f192582d13be1b1242')
+sha512sums=('59bbf2cc1d10a1316dbcc110022e71703d25ad62f7c5d9641ef6c46476953fa00eed203538213f12e73820324af846a797618cac3bec3c63f8d696ac41119af1')
 
 export PBR_VERSION=$pkgver
 
@@ -27,9 +27,9 @@ build() {
   python setup.py build
 }
 
-# Disabling due to 9 test failures
+# Disabling due to test failures
 #check() {
-#  cd tempest-$pkgver
+#  cd $_name
 #  stestr --test-path tempest/tests run
 #}
 
