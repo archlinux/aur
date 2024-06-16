@@ -1,15 +1,15 @@
 pkgbase = ucm-bin
 	pkgdesc = Unison language code manager
-	pkgver = M5f
+	pkgver = 0.5.21
 	pkgrel = 1
 	url = https://www.unison-lang.org/
 	arch = x86_64
 	license = custom
 	depends = gmp
 	depends = zlib
-	source = ucm-M5f::https://github.com/unisonweb/unison/releases/download/release%2FM5f/ucm-linux.tar.gz
-	source = https://raw.githubusercontent.com/unisonweb/unison/release/M5f/LICENSE
-	sha256sums = ea7e190f565f8b99f4400f54664fd0b8b96dd8ff7634fe394b8f48d68a78ddbf
+	source = ucm-0.5.21::https://github.com/unisonweb/unison/releases/download/release%2F0.5.21/ucm-linux.tar.gz
+	source = https://raw.githubusercontent.com/unisonweb/unison/release/0.5.21/LICENSE
+	sha256sums = 9e29e47d807d766383ebe2ec40d0c95bcf45af0667d86ad990b19b69f32cac78
 	sha256sums = cbcdbf3fd38b10578a384fdfa53f498ceb66bc34af6c3c705577aa68afffc4ac
 
 pkgname = ucm-bin
