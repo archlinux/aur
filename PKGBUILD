@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=lanzouyun
 pkgname="${_pkgname}-pan"
-pkgver=3.4.9
+pkgver=3.4.11
 _electronversion=18
 _nodeversion=18
 pkgrel=1
@@ -28,7 +28,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('14fcf92ca87397c1f69b19cbcb55a932d5f0db4d268934d6f8999509368ee77e'
+sha256sums=('6cff1d0edd05fc632c721437e71c6936db772af5e57effe79e40a535d2ae6858'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -63,8 +63,8 @@ build() {
         echo "Your network is OK."
     fi
     sed "s|electron-builder -mw|electron-builder -l --dir|g" -i app/package.json
-    yarn install --cache-folder "${srcdir}/.yarn_cache"
-    yarn run build
+    NODE_ENV=development yarn install --cache-folder "${srcdir}/.yarn_cache"
+    NODE_ENV=production yarn run build
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
