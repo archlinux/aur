@@ -1,7 +1,7 @@
 pkgbase = lok
 	pkgdesc = Count the number of codes
 	pkgver = 0.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wyhaya/lok
 	arch = any
 	license = MIT

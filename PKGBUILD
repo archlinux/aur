@@ -1,7 +1,7 @@
 # Maintainer: iamawacko <iamawacko@protonmail.com>
 pkgname=lok
 pkgver=0.2.5
-pkgrel=1
+pkgrel=2
 url="https://github.com/wyhaya/lok"
 license=('MIT')
 pkgdesc="Count the number of codes"
@@ -12,14 +12,7 @@ sha256sums=('525d74a8a47a8c7de981b5dbdf61b68f448ac6927c502e8cc37cc9468cdc02da')
 
 prepare() {
 	cd "$pkgname-$pkgver"
-	case $CARCH in 
-		"pentium4")
-			cargo fetch --locked --target "i686-unknown-linux-gnu"
-			;;
-		*)
-			cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
-			;;
-	esac
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
