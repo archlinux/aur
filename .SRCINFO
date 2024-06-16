@@ -1,0 +1,13 @@
+pkgbase = canoon-git
+	pkgdesc = Canoon is an installer for Cano, the terminal-based modal text editor.
+	pkgver = r23.736a3cb
+	pkgrel = 1
+	url = https://github.com/kul-sudo/canoon
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	source = canoon::git+https://github.com/kul-sudo/canoon.git
+	md5sums = SKIP
+
+pkgname = canoon-git
