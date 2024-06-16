@@ -1,0 +1,24 @@
+pkgbase = python-wiimatch
+	pkgdesc = A package for optimal "matching" N-dimentional image background
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://wiimatch.readthedocs.io
+	arch = any
+	license = BSD-3-Clause
+	checkdepends = python-pytest
+	checkdepends = python-scipy
+	makedepends = python-setuptools-scm
+	makedepends = python-stsci_rtd_theme
+	makedepends = python-numpydoc
+	makedepends = python-numpy
+	makedepends = texlive-latexextra
+	source = https://files.pythonhosted.org/packages/source/w/wiimatch/wiimatch-0.3.2.tar.gz
+	md5sums = 1792179f66a712ef09121344666d1a80
+
+pkgname = python-wiimatch
+	depends = python>=3.7
+	depends = python-scipy
+	optdepends = python-wiimatch-doc: Documentation for wiimatch
+
+pkgname = python-wiimatch-doc
+	pkgdesc = Documentation for Python wiimatch
