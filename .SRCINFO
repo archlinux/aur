@@ -1,6 +1,6 @@
 pkgbase = ricochlime-bin
 	pkgdesc = A game where you attack the advancing slimes with your ricocheting projectiles.
-	pkgver = 1.8.2
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://ricochlime.adil.hanney.org/
 	arch = aarch64
@@ -10,14 +10,14 @@ pkgbase = ricochlime-bin
 	depends = gdk-pixbuf2
 	depends = gstreamer
 	depends = gst-plugins-base-libs
-	provides = ricochlime=1.8.2
+	provides = ricochlime=1.9.0
 	conflicts = ricochlime
-	noextract = ricochlime-1.8.2-x86_64.tar.gz
+	noextract = ricochlime-1.9.0-x86_64.tar.gz
 	source = ricochlime.sh
 	sha256sums = 7a232e68a07c829390ea2b50cf8214db1d02ebe5fa8713722869352365aa2e92
-	source_aarch64 = ricochlime-1.8.2-aarch64.tar.gz::https://github.com/adil192/ricochlime/releases/download/v1.8.2/Ricochlime_v1.8.2_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 28d810cfae3f0bf6ecf5607d34f8375871e6951ec6cd140c0c61fc3f713010a1
-	source_x86_64 = ricochlime-1.8.2-x86_64.tar.gz::https://github.com/adil192/ricochlime/releases/download/v1.8.2/Ricochlime_v1.8.2_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 48c4dea0a71b3312b7d26362d5a914ef199365022241b9fcf41beb7bd34d75d5
+	source_aarch64 = ricochlime-1.9.0-aarch64.tar.gz::https://github.com/adil192/ricochlime/releases/download/v1.9.0/Ricochlime_v1.9.0_Linux_arm64.tar.gz
+	sha256sums_aarch64 = a3855be552cef2c26e556feec3508e84ea93588d49dc3b750375e33a87372c2c
+	source_x86_64 = ricochlime-1.9.0-x86_64.tar.gz::https://github.com/adil192/ricochlime/releases/download/v1.9.0/Ricochlime_v1.9.0_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 53ec1dd1a74f2d375705e6accb745b4e188e5ccb3f629b78904736e828baab43
 
 pkgname = ricochlime-bin
