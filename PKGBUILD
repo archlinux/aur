@@ -89,7 +89,7 @@ b2sums=(
 options=(debug)
 
 pick_mr() {
-  git pull origin pull/$1/head --no-edit
+  git pull origin pull/$1/head --no-ff --no-commit
 }
 
 prepare() {
