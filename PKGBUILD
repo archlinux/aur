@@ -11,7 +11,14 @@ source=("https://github.com/open-component-model/ocm/releases/download/v${pkgver
 noextract=()
 b2sums=('c87cb3197011eb507c93b3daad1f82f847a3fdc9123044bcc37aca6f0155a97d09b13b9774f0d1e5e80e782a1b3086167d8b81e48f00329e969e3c3f24330eec')
 
+
+build() {
+  ocm completion bash > ocm-bash-completion
+}
+
 package() {
   mkdir -p "$pkgdir/usr/bin"
   cp "$srcdir/ocm" "$pkgdir/usr/bin/ocm"
+  mkdir -p "$pkgdir/usr/share/bash-completion/completions"
+  cp "$srcdir/ocm-bash-completion" "$pkgdir/usr/share/bash-completion/completions/ocm"
 }
