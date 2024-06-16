@@ -5,7 +5,7 @@ pkgdesc="simplest way to use IRC in your browser."
 arch=('x86_64')
 url="https://convos.chat/"
 license=('Artistic-2.0')
-depends=('perl' 'perl-io-socket-ssl' 'openssl')
+depends=('perl' 'perl-io-socket-ssl' 'openssl' 'cpanminus')
 makedepends=('git')
 source=("git+https://github.com/convos-chat/convos.git"
         "convos.service")
