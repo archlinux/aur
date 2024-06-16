@@ -1,8 +1,8 @@
-# Maintainer: Julian Hornich <julianhornich@googlemail.com>
+# Contributor: Julian Hornich <julianhornich@googlemail.com>
 
 pkgname=kerncraft-git
 pkgrel=1
-pkgver=r803
+pkgver=r1268
 pkgdesc="Loop Kernel Analysis and Performance Modeling Toolkit"
 arch=('i686' 'x86_64')
 url="https://github.com/RRZE-HPC/kerncraft"
@@ -10,14 +10,20 @@ license=('GPLv3')
 # iaca does currently not build from AUR. You might want to install it by hand and uncomment it here
 depends=('python'
          'python-yaml'
-         'python-pycachesim-git'
+         'python-pycachesim'
          'python-sympy'
          'python-pylru'
          'python-numpy'
          'python-pycparser'
-         'likwid' )
+         'likwid'
+         'python-ruamel-yaml'
+         'python-compress-pickle'
+         'python-osaca'
+         'python-pyparsing'
+         'python-networkx'
+         'python-psutil')
 makedepends=('git')
-optdepends=('intel-compiler-base' 'gcc' 'python2-matplotlib')
+optdepends=('intel-compiler-base' 'gcc' 'python-matplotlib')
 source=('git+https://github.com/RRZE-HPC/kerncraft.git')
 sha256sums=('SKIP')
 provides=('kerncraft')
