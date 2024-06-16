@@ -3,7 +3,7 @@
 
 pkgname=rustywind
 pkgver=0.22.0
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI for organizing Tailwind CSS classes'
 arch=('any')
 url=https://github.com/avencera/rustywind
@@ -15,14 +15,7 @@ b2sums=('d175712f33dfdab196516e3f53c314410bc0c22892b932699d894f92f5fae0a7a0fd557
 
 prepare() {
   cd $pkgname-$pkgver
-  case $CARCH in
-  	"pentium4")
-		cargo fetch --locked --target "i686-unknown-linux-gnu"
-		;;
-	*)
-  		cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
-		;;
-  esac
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
