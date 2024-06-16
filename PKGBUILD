@@ -1,14 +1,14 @@
-# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Brian Bidulock <bidulock@openss7.org>
 # Contributor: chimeracoder <dev@chimeracoder.net
 pkgname='perl-moosex-types'
 pkgver='0.50'
-pkgrel=1
+pkgrel=2
 pkgdesc="Organise your Moose types in libraries"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-carp-clan>=6.00' 'perl-namespace-clean>=0.19' 'perl-sub-install>=0.924' 'perl-sub-name' 'perl-sub-exporter-formethods')
-makedepends=('perl-moose' 'perl-test-fatal' 'perl-test-requires')
+makedepends=('perl-moose' 'perl-test-fatal' 'perl-test-requires' 'perl-module-build-tiny')
 url='http://search.cpan.org/dist/MooseX-Types'
 source=("http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/MooseX-Types-${pkgver}.tar.gz")
 md5sums=('99b0999ce024c5f27ac00a42a7244ec4')
