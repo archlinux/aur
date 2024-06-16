@@ -1,0 +1,14 @@
+pkgbase = python-pycachesim
+	pkgdesc = Python Cache Hierarchy Simulator
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/RRZE-HPC/pycachesim
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/p/pycachesim/pycachesim-0.3.1.tar.gz
+	sha256sums = 1d84977a2b8873e537b9e589f484faec42a9323bb6526ce279d0798a54f35c5a
+
+pkgname = python-pycachesim
