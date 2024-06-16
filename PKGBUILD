@@ -1,7 +1,7 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=python-yaql
-pkgver=2.0.1
+pkgver=3.0.0
 pkgrel=1
 pkgdesc='YAQL - Yet Another Query Language'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(python-six python-pbr python-babel python-dateutil
          python-ply)
 checkdepends=(python-fixtures python-testtools python-stestr)
 source=("$pkgname-$pkgver.tar.gz::https://opendev.org/openstack/yaql/archive/$pkgver.tar.gz")
-sha512sums=('f5aa3277e4d0de1b18a4266d4012205083292ef1175c672ef8d3d25de4b7ca34eca5a4ce13b0f1525885afaa3af082bc51a0e658a2fabe0c12e6506f707a937b')
+sha512sums=('38ab283babc10aeae20a7abaa5d2113a7ae66654bc04035fce3e0819ee86265ca5146b47fe229fb7ca67bcf31185543b1d1d266abc179903f42bf2ba7a13257a')
 
 export PBR_VERSION=$pkgver
 
