@@ -1,4 +1,4 @@
-# Python package author: Iain King <matt @ matt quintanilla .xyz>
+# Python package author: Matt Quintanilla <matt @ matt quintanilla .xyz>
 pkgname=python-pretty-errors
 pkgver=1.2.25
 pkgrel=1
