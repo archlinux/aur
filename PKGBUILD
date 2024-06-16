@@ -10,6 +10,12 @@ makedepends=(rebar3)
 source=(git+https://github.com/erlang-ls/erlang_ls.git#tag=$pkgver)
 b2sums=('SKIP')
 
+prepare() {
+  cd $pkgname
+
+  git cherry-pick 8700e96fba0087248ea27be2a7b09b9f3dc4ea44
+}
+
 build() {
   cd $pkgname
 
