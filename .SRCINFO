@@ -1,10 +1,10 @@
 pkgbase = mint-l-theme
 	pkgdesc = A collection of legacy mint themes.
-	pkgver = 1.9.6
+	pkgver = 1.9.7
 	pkgrel = 1
 	url = http://packages.linuxmint.com/pool/main/m/mint-l-theme
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = python
 	makedepends = sassc
 	depends = ttf-ubuntu-font-family
@@ -16,7 +16,7 @@ pkgbase = mint-l-theme
 	conflicts = mint-y-theme
 	conflicts = mint-cinnamon-themes
 	conflicts = mint-themes-legacy
-	source = mint-l-theme_1.9.6.tar.xz::http://packages.linuxmint.com/pool/main/m/mint-l-theme/mint-l-theme_1.9.6.tar.xz
-	sha256sums = 5b8ae3f2089996636b65d2804cedcd48e80e092884a885d84bc98388766bf480
+	source = mint-l-theme_1.9.7.tar.xz::http://packages.linuxmint.com/pool/main/m/mint-l-theme/mint-l-theme_1.9.7.tar.xz
+	sha256sums = 171f6071179fe8bd585491b5a417642b6a5d38e14b69592571258bc05ba98cd3
 
 pkgname = mint-l-theme
