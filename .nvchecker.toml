@@ -1,0 +1,3 @@
+[osintgram]
+source = "git"
+git = "https://github.com/Datalux/Osintgram.git"
