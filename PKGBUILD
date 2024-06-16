@@ -3,11 +3,11 @@
 
 pkgname=osmo-pcu
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Osmocom's GPRS/EGPRS PCU (Packet Control Unit) with Gb/IP interface"
 url="https://osmocom.org/projects/osmopcu"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
-license=(GPL)
+license=('GPL-2.0-or-later AND AGPL-3.0-or-later')
 depends=('libosmocore' 'talloc')
 conflicts=("${pkgname}-git")
 backup=('etc/osmocom/osmo-pcu.cfg')

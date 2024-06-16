@@ -1,13 +1,13 @@
 pkgbase = osmo-pcu
 	pkgdesc = Osmocom's GPRS/EGPRS PCU (Packet Control Unit) with Gb/IP interface
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://osmocom.org/projects/osmopcu
 	arch = i686
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
-	license = GPL
+	license = GPL-2.0-or-later AND AGPL-3.0-or-later
 	depends = libosmocore
 	depends = talloc
 	conflicts = osmo-pcu-git
