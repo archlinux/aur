@@ -1,4 +1,3 @@
-# Maintainer: kompowiec <diasp@o2.pl>
 pkgname=convos
 pkgver=8.07
 pkgrel=1
@@ -21,11 +20,6 @@ build() {
 
 package() {
   cd "$srcdir/convos"
-  install -Dm755 script/convos "$pkgdir/usr/bin/convos"
-  cp -r . "$pkgdir/usr/share/convos"
-}
-package() {
-  cd "$srcdir/convos"
   install -d "$pkgdir/usr/bin"
   install -d "$pkgdir/usr/share/convos"
   install -Dm755 script/convos "$pkgdir/usr/bin/convos"
@@ -36,11 +30,12 @@ Description=Convos IRC client
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/convos daemon
+ExecStart=/usr/bin/env perl /usr/share/convos/script/convos daemon
 WorkingDirectory=/usr/share/convos
 User=convos
 Group=convos
 Restart=on-failure
+Environment=PERL5LIB=/usr/share/convos/lib/perl5
 
 [Install]
 WantedBy=multi-user.target
