@@ -1,13 +1,13 @@
 pkgbase = osmo-hlr
 	pkgdesc = Osmocom HLR for GSUP protocol towards OsmoSGSN and OsmoCSCN
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://osmocom.org/projects/osmo-hlr
 	arch = i686
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
-	license = GPL
+	license = AGPL-3.0-or-later
 	depends = libosmocore
 	depends = libosmo-abis
 	depends = talloc

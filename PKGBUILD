@@ -3,11 +3,11 @@
 
 pkgname=osmo-hlr
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Osmocom HLR for GSUP protocol towards OsmoSGSN and OsmoCSCN"
 url="https://osmocom.org/projects/osmo-hlr"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
-license=(GPL)
+license=('AGPL-3.0-or-later')
 depends=('libosmocore' 'libosmo-abis' 'talloc' 'sqlite')
 provides=('libosmo-gsup-client.so=0-64'
           'libosmo-mslookup.so=1-64')
