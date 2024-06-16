@@ -1,7 +1,7 @@
 # Maintainer:
 pkgname=scrt-sfx-opt-bin
-pkgver=9.5.1
-pkgrel=3272
+pkgver=9.5.2
+pkgrel=3325
 pkgdesc='SecureCRT + SecureFX 9.0 Bundle'
 arch=('x86_64')
 url='https://www.vandyke.com/'
@@ -18,7 +18,7 @@ source=(
 )
 
 sha512sums=(
-	"e470d94b61e9b79df842c369d7d8145ca01e97d9f5754053419fe4fdc38bb72613cef490b9959d23f9cf111287553c1681dc27cddffc44718f53f7b713b827e2"
+	"1fde763ca27315355c1b7358ebecdb915a85ea14a319348e21aa8bd47266ccd9aa22ade282c42351de71f9b0e2303eca748d1849f98764963d309582f31eacdc"
 )
 
 package() {
