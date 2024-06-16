@@ -1,6 +1,6 @@
 pkgbase = android-x86-64-aom
 	pkgdesc = Alliance for Open Media video codec (Android x86-64)
-	pkgver = 3.9.0
+	pkgver = 3.9.1
 	pkgrel = 1
 	url = https://aomedia.org/
 	arch = any
@@ -12,10 +12,10 @@ pkgbase = android-x86-64-aom
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://storage.googleapis.com/aom-releases/libaom-3.9.0.tar.gz
-	source = https://storage.googleapis.com/aom-releases/libaom-3.9.0.tar.gz.asc
+	source = https://storage.googleapis.com/aom-releases/libaom-3.9.1.tar.gz
+	source = https://storage.googleapis.com/aom-releases/libaom-3.9.1.tar.gz.asc
 	validpgpkeys = B002F08B74A148DAA01F7123A48E86DB0B830498
-	md5sums = 895519bf46cda7a25da7e80f3a3b66b2
+	md5sums = f31b72e81dd177396e3553576f6515ef
 	md5sums = SKIP
 
 pkgname = android-x86-64-aom
