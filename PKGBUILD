@@ -6,11 +6,11 @@
 _pkgbasename=sdl
 pkgname=lib32-$_pkgbasename
 pkgver=1.2.15
-pkgrel=10
+pkgrel=11
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (32-bit)"
 arch=('x86_64')
 url="https://www.libsdl.org"
-license=('LGPL')
+license=('LGPL-2.1-only')
 depends=('lib32-libxext' 'lib32-libxrender' 'lib32-libx11' $_pkgbasename 'lib32-gcc-libs' 'lib32-glibc' 'bash')
 makedepends=('lib32-alsa-lib' 'lib32-mesa' 'lib32-libpulse' 'lib32-glu' gcc-multilib)
 optdepends=('lib32-alsa-lib: ALSA audio driver'
