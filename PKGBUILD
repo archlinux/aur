@@ -11,7 +11,7 @@
 # https://releases.electronjs.org/
 
 _pkgver=24.8.8
-pkgrel=2
+pkgrel=3
 pkgver="${_pkgver/-/.}"
 _major_ver=${pkgver%%.*}
 _projectname=electron
