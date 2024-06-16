@@ -1,6 +1,6 @@
 # Maintainer: Denton Liu <liu.denton@gmail.com>
 pkgname=pixlet
-pkgver=0.29.1
+pkgver=0.33.3
 pkgrel=1
 pkgdesc='Build apps for pixel-based displays'
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('Apache')
 depends=('libwebp')
 makedepends=('npm' 'go')
 source=("https://github.com/tidbyt/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('8a96ac31b74263b6ef31ebdfe63b8061fabab5d498b9612b560982810a47d4f3')
+sha256sums=('d53e35da244787850070873ea8c7933aca1eac44ccd99b4cc70158382bd91e0d')
 
 build () {
 	cd "$pkgname-$pkgver"
