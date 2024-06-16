@@ -1,0 +1,15 @@
+pkgbase = elles-bin
+	pkgdesc = A nicer /bin/ls
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/arp242/elles
+	arch = x86_64
+	license = MIT
+	provides = elles
+	conflicts = elles
+	source = https://github.com/arp242/elles/releases/download/v0.1.0/elles-v0.1.0-linux-amd64.gz
+	source = https://raw.githubusercontent.com/arp242/elles/master/LICENSE
+	sha256sums = ba0c65c96079f9120dca32fca30a8ebbec0b85bad2933d2938b555868dff35dd
+	sha256sums = 401b054d7378650e9289148ff085496190a301820c93eaacec84f1ae46cb2d22
+
+pkgname = elles-bin
