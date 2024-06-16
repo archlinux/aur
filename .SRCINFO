@@ -15,11 +15,7 @@ pkgbase = godsvg-bin
 	source = GodSVG-1.0-alpha4.zip::https://github.com/MewPurPur/GodSVG/releases/download/v1.0-alpha4/GodSVG.Linux.zip
 	source = LICENSE::https://github.com/MewPurPur/GodSVG/raw/main/LICENSE
 	source = godsvg.png::https://raw.githubusercontent.com/MewPurPur/GodSVG/main/visual/icon.png
-<<<<<<< HEAD
-	source = godsvg.desktop
-=======
 	source = godsvg.desktop::https://aur.archlinux.org/cgit/aur.git/plain/godsvg.desktop?h=godsvg-bin
->>>>>>> ae6d430 (i am so sorry i am an idiot)
 	sha256sums = 59ed79c724cd065e34197dfc41da1d52f0598434b0618a750633170ece384e15
 	sha256sums = a2e1a9795671794be3a25bd921a16f0fa9819ede1ead54a13da6edb34bfc0ee1
 	sha256sums = c809390a25c9a922a1f122d48492dac8ed32c288df827c5605e86358d84cd1c1
