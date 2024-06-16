@@ -3,14 +3,15 @@
 # Contributor: Kamil Stachowski <kamil.stachowski gmail.com>
 
 pkgname=git-ftp-git
-pkgver=1.6.0.r5.g1431c02
+pkgver=1.6.0.r8.g3465417
 pkgrel=1
 pkgdesc="Uses Git to upload only changed files to FTP servers"
 url='https://github.com/git-ftp/git-ftp'
 arch=('any')
-license=('GPL')
-depends=('curl' 'git')
-makedepends=('pandoc')
+license=('GPL-3.0-or-later')
+depends=('curl' 'git' 'bash' 'coreutils' 'gawk' 'sed')
+makedepends=('pandoc-cli')
+optdepends=('lftp: for experimental features')
 provides=('git-ftp')
 conflicts=('git-ftp')
 source=("git+${url}")
