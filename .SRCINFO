@@ -1,0 +1,21 @@
+pkgbase = python-flifile
+	pkgdesc = Python code for opening a lambert instruments .fli file
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://github.com/rharkes/flifile
+	arch = any
+	license = GPL-3.0-only
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-pytest
+	depends = python-numpy
+	optdepends = python-black
+	optdepends = python-pytest
+	optdepends = mypy
+	optdepends = twine
+	source = python-flifile-1.4.2.tar.gz::https://github.com/rharkes/flifile/archive/refs/tags/v1.4.2.tar.gz
+	b2sums = b07f0ae7a8e758a14ab519e34894f3f199c2e48af0a3e9e161c7841150716489d34be96ff16bb50a88b56f9a7c69e3ab3a385073dee438b1133174e9fe4ae340
+
+pkgname = python-flifile
