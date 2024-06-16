@@ -1,0 +1,16 @@
+pkgbase = python-mov-cli-jellyplex
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/mov-cli/mov-cli-jellyplex
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	depends = python
+	provides = mov-cli-jellyplex
+	source = python-mov-cli-jellyplex-1.1.0.zip::https://github.com/mov-cli/mov-cli-jellyplex/archive/refs/tags/1.1.0.zip
+	md5sums = SKIP
+
+pkgname = python-mov-cli-jellyplex
