@@ -6,13 +6,13 @@ url="https://github.com/girlbossceo/conduwuit"
 license=("Apache-2.0")
 arch=("x86_64")
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 makedepends=("rust" "cargo" "git" "clang")
 depends=("gcc-libs" "glibc" "liburing")
 source=("git+https://github.com/girlbossceo/conduwuit#tag=v${pkgver}")
 md5sums=("SKIP")
 provides=("conduwuit")
-options=(!lto)
+options=(lto)
 backup=("etc/conduwuit.toml")
 
 function prepare() {
@@ -38,7 +38,7 @@ function check() {
 function package() {
 	install -Dm755 "${srcdir}/conduwuit/target/release/conduit" "${pkgdir}/usr/bin/conduwuit"
 	install -Dm644 "${srcdir}/conduwuit/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 "${srcdir}/conduwuit/conduwuit-example.toml" "${pkgdir}/etc/conduwuit.toml"
+	install -Dm644 "${srcdir}/conduwuit/conduwuit-example.toml" "${pkgdir}/etc/conduwuit/conduwuit.toml"
 	install -d "${pkgdir}/usr/lib/systemd/system/"
 	echo '''[Unit]
 Description=conduwuit Matrix homeserver
@@ -84,7 +84,7 @@ StateDirectory=matrix-conduit
 RuntimeDirectory=conduwuit
 RuntimeDirectoryMode=0750
 
-Environment="CONDUIT_CONFIG=/etc/conduwuit.toml"
+Environment="CONDUIT_CONFIG=/etc/conduwuit/conduwuit.toml"
 
 ExecStart=/usr/bin/conduwuit
 Restart=on-failure
@@ -98,5 +98,13 @@ StartLimitBurst=5
 
 [Install]
 WantedBy=multi-user.target''' >"${pkgdir}/usr/lib/systemd/system/conduwuit.service"
+	if [ -f /etc/conduwuit.toml ]; then
+		ln -sfr "${pkgdir}/etc/conduwuit/conduwuit.toml" "${pkgdir}/etc/conduwuit.toml"
+		echo "[Warning] The configuration file has changed!"
+		echo "Configure conduwuit @ /etc/conduwuit/conduwuit.toml, attempting to automatically migrate..."
+		sleep 5s
+		cp /etc/conduwuit.toml "${pkgdir}/etc/conduwuit/conduwuit.toml"
+		cp /etc/conduwuit.toml "${pkgdir}/etc/conduwuit.toml.old"
+	fi
 }
 
