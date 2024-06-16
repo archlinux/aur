@@ -1,7 +1,7 @@
 pkgbase = pacundo
 	pkgdesc = A time machine to rollback your ArchLinux machine to a working state.
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code.ortegas.org/nortega/pacundo
 	arch = any
 	license = Zlib
@@ -10,6 +10,6 @@ pkgbase = pacundo
 	depends = perl-file-readbackwards
 	depends = curl
 	source = https://code.ortegas.org/nortega/pacundo/archive/v1.1.1.tar.gz
-	sha256sums = 50b7b0557d8dc86f8164025a0150921a8380e7710671b21d7530dfb445a34e91
+	sha256sums = 4db7ca1e7b58a38e4ffd21818d56dc051e84f4b650c677c0f461455035c28537
 
 pkgname = pacundo
