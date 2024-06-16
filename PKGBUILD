@@ -8,7 +8,7 @@ pkgdesc="Osmocom code for the Iuh interface (HNBAP, RUA, RANAP)"
 url="http://osmocom.org/projects/osmohnbgw"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=('AGPL-3.0-or-later')
-depends=('libosmocore' 'libosmo-netif' 'libosmo-sccp' 'talloc' 'libasn1c' 'lksctp-tools')
+depends=('libosmocore-git' 'libosmo-netif-git' 'libosmo-sccp-git' 'talloc' 'libasn1c' 'lksctp-tools')
 makedepends=('git' 'python')
 provides=("${pkgname%-git}=${pkgver}"
           'libosmo-hnbap.so=0-64'
