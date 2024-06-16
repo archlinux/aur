@@ -1,7 +1,7 @@
 # Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
 
 pkgname=osmo-cbc-git
-pkgver=0.4.2.r3.gda8b98c
+pkgver=0.4.2.r9.gf6a2a6b
 pkgrel=1
 pkgdesc="Osmocom Cell Broadcast Centre"
 arch=('x86_64' 'i686')
