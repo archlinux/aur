@@ -1,7 +1,7 @@
 # Maintainer: iamawacko <iamawacko@protonmail.com>
 pkgname=kipr-git
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Command Line Password Manager'
 url='https://github.com/grahamking/kipr'
 license=('MIT')
@@ -21,14 +21,7 @@ pkgver() {
 
 prepare() {
 	cd "kipr-git"
-	case $CARCH in 
-		"pentium4")
-			cargo fetch --locked --target "i686-unknown-linux-gnu"
-			;;
-		*)
-			cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
-			;;
-	esac
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
