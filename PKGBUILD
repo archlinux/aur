@@ -14,7 +14,11 @@ arch=('x86_64')
 url='https://godsvg.com'
 _url='https://github.com/MewPurPur/GodSVG'
 
+<<<<<<< HEAD
 license=(MIT)
+=======
+license=('MIT')
+>>>>>>> ae6d430 (i am so sorry i am an idiot)
 
 depends=(
     glibc
@@ -29,10 +33,17 @@ conflicts=(
 )
 
 source=(
+<<<<<<< HEAD
     "${_pkgname}-${_pkgver}.zip::${_url}/releases/download/v${_pkgver}/GodSVG.Linux.zip"
     "LICENSE::${_url}/raw/main/LICENSE"
     "godsvg.png::https://raw.githubusercontent.com/MewPurPur/GodSVG/main/visual/icon.png"
     "godsvg.desktop"
+=======
+    "GodSVG-${_pkgver}.zip::${_url}/releases/download/v${_pkgver}/GodSVG.Linux.zip"
+    "LICENSE::${_url}/raw/main/LICENSE"
+    "godsvg.png::https://raw.githubusercontent.com/MewPurPur/GodSVG/main/visual/icon.png"
+    "godsvg.desktop::https://aur.archlinux.org/cgit/aur.git/plain/godsvg.desktop?h=godsvg-bin"
+>>>>>>> ae6d430 (i am so sorry i am an idiot)
 )
 sha256sums=('59ed79c724cd065e34197dfc41da1d52f0598434b0618a750633170ece384e15'
             'a2e1a9795671794be3a25bd921a16f0fa9819ede1ead54a13da6edb34bfc0ee1'
@@ -46,7 +57,12 @@ options=(
 
 package() {
     install -Dm755 "GodSVG.${CARCH}" "${pkgdir}/usr/bin/godsvg"
+<<<<<<< HEAD
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "godsvg.desktop" -t "${pkgdir}/usr/share/applications/godsvg.desktop"
+=======
+    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -Dm644 "godsvg.desktop" -t "${pkgdir}/usr/share/applications/"
+>>>>>>> ae6d430 (i am so sorry i am an idiot)
     install -Dm644 "godsvg.png" -t "${pkgdir}/usr/share/pixmaps/"
 }
