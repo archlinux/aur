@@ -1,7 +1,7 @@
 pkgbase = conduwuit
 	pkgdesc = a very cool, featureful fork of conduit
 	pkgver = 0.4.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/girlbossceo/conduwuit
 	install = conduwuit.install
 	arch = x86_64
@@ -15,9 +15,8 @@ pkgbase = conduwuit
 	depends = liburing
 	provides = conduwuit
 	options = !lto
-	backup = etc/conduwuit.toml
 	backup = etc/conduwuit/conduwuit.toml
 	source = git+https://github.com/girlbossceo/conduwuit#tag=v0.4.2
-	md5sums = SKIP
+	md5sums = 64846a21b9015c0686af5c2bd0ccb259
 
 pkgname = conduwuit
