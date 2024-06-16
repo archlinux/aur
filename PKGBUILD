@@ -10,13 +10,14 @@
 # https://releases.electronjs.org/
 
 _pkgver=29.4.2
-pkgrel=3
+pkgrel=4
 pkgver="${_pkgver/-/.}"
 _major_ver=${pkgver%%.*}
 _projectname=electron
 _pkgname="${_projectname}${_major_ver}"
 pkgname="${_pkgname}"-bin
-pkgdesc='Build cross platform desktop apps with web technologies — binary'
+pkgdesc='Build cross platform desktop apps with web technologies'
+pkgdesc+=' — binary'
 arch=(x86_64 armv7h aarch64)
 url='https://electronjs.org'
 license=(MIT BSD-3-Clause)
