@@ -6,11 +6,11 @@ url="https://github.com/girlbossceo/conduwuit"
 license=("Apache-2.0")
 arch=("x86_64")
 pkgver=0.4.2
-pkgrel=2
+pkgrel=3
 makedepends=("rust" "cargo" "git" "clang")
 depends=("gcc-libs" "glibc" "liburing")
 source=("git+https://github.com/girlbossceo/conduwuit#tag=v${pkgver}")
-md5sums=("SKIP")
+md5sums=('64846a21b9015c0686af5c2bd0ccb259')
 provides=("conduwuit")
 conflicts=()
 options=(!lto)
@@ -45,6 +45,7 @@ function package() {
 	echo '''[Unit]
 Description=conduwuit Matrix homeserver
 After=network.target
+Documentation=https://conduwuit.puppyirl.gay/
 RequiresMountsFor=/var/lib/private/conduwuit
 
 [Service]
