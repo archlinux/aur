@@ -28,8 +28,8 @@
 
 pkgname=vivado-lab-edition
 _srcname=Vivado_Lab_Lin
-pkgver=2023.2
-_more_ver=1013_2256
+pkgver=2024.1
+_more_ver=0522_2023
 pkgrel=1
 pkgdesc="FPGA/CPLD Lab Tools for Xilinx devices"
 url="https://www.xilinx.com/products/design-tools/vivado.html"
@@ -44,7 +44,7 @@ source=("file:///${_srcname}_${pkgver}_${_more_ver}.tar.gz"
         'spoof_homedir.c')
 
 # checksum from https://www.xilinx.com/support/download.html
-md5sums=('4945d1b01f08b56cc83a692a81a527da'
+md5sums=('6f9d9e79e5a5e9cca4e34262ddfe77d1'
          '69d14ad64f6ec44e041eaa8ffcb6f87c')
 
 # takes forever for probably minimal gain
