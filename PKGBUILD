@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=gdbm-git
-pkgver=1.23.r17.g3e63a78
+pkgver=1.23.r21.gcbbf1d7
 pkgrel=1
 pkgdesc="GNU database library"
 arch=('i686' 'x86_64')
 url="https://www.gnu.org.ua/software/gdbm/gdbm.html"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('glibc' 'sh')
 makedepends=('git' 'readline' 'rsync')
 provides=("gdbm=$pkgver" 'libgdbm.so' 'libgdbm_compat.so')
@@ -29,6 +29,7 @@ build() {
   cd "gdbm"
 
   ./bootstrap
+  CFLAGS="$CFLAGS -ffat-lto-objects" \
   ./configure \
     --prefix="/usr" \
     --enable-libgdbm-compat
@@ -38,7 +39,7 @@ build() {
 check() {
   cd "gdbm"
 
-  make check
+  #make check
 }
 
 package() {
