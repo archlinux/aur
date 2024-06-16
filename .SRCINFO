@@ -1,0 +1,18 @@
+pkgbase = krokodil-git
+	pkgdesc = The most advanced cross-platform discord nuker made in C still in developing
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/UsboKirishima/krokodil
+	install = .install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = gtk3
+	depends = zenity
+	depends = curl
+	depends = cowsay
+	depends = lolcat
+	source = https://github.com/UsboKirishima/krokodil.git
+	sha256sums = SKIP
+
+pkgname = krokodil-git
