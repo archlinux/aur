@@ -2,13 +2,13 @@
 
 _pkgname=crossandra
 pkgname="python-$_pkgname"
-pkgver=1.3.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc='A simple tokenizer operating on enums with a decent amount of configuration'
 arch=(x86_64)
 url="https://github.com/trag1c/$_pkgname"
 license=('MIT')
-depends=('python>=3.9' 'python-result')
+depends=('python>=3.8' 'python-result')
 makedepends=('python-build'
              'python-installer'
              'python-wheel'
@@ -17,7 +17,7 @@ makedepends=('python-build'
 checkdepends=()
 optdepends=()
 source=("$_pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha512sums=('d7614b82c91b4e9b5b633a4638807d5b55fb66ad23a5a202397a91cc85f9dc6d71158ff0df8477f9c25ca5bdc1a29d9a3940fc6d92f48aa9cae28aa392a57d65')
+sha512sums=('87fbf5370e4943ef37bbdc4cfa3e0ecf52867a2ed9cada4323c3a28b92026226a0c43a0ceeaf02da0f2dd7f6ff798d3c0642c07b43105a88a98c22e9158af4d6')
 
 prepare() {
 	cd "$srcdir/$_pkgname-$pkgver"
