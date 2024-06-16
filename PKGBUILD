@@ -1,11 +1,12 @@
-# Maintainer: mars <gzhqyz at gmail dot com>
+# Maintainer: Echo J. <aidas957 at gmail dot com>
+# Contributor: mars <gzhqyz at gmail dot com>
 # Contributor: Sébastien Luttringer <seblu@archlinux.org>
 # Contributor: Tom Gundersen <teg@jklm.no>
 # Contributor: Joel Teichroeb <joel@teichroeb.net>
 
 pkgbase=wayland-chromium
 _pkgbase=wayland
-pkgname=(wayland-chromium wayland-docs-chromium)
+pkgname=(wayland-chromium wayland-chromium-docs)
 pkgver=1.21.0
 pkgrel=3
 pkgdesc='A computer display server protocol (chromium version)'
@@ -60,7 +61,7 @@ package_wayland-chromium() {
   install -Dm 644 $_pkgbase-$pkgver/COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
 
-package_wayland-docs-chromium() {
+package_wayland-chromium-docs() {
   pkgdesc+=" (documentation)"
   provides=(wayland-docs)
   conflicts=(wayland-docs)

@@ -44,7 +44,7 @@ pkgname = wayland-chromium
 	provides = libwayland-server.so
 	conflicts = wayland
 
-pkgname = wayland-docs-chromium
+pkgname = wayland-chromium-docs
 	pkgdesc = A computer display server protocol (chromium version) (documentation)
 	depends = 
 	provides = wayland-docs
