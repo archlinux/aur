@@ -26,6 +26,12 @@ pkgver() {
   python -m hatch version
 }
 
+prepare() {
+  cd "$srcdir/${pkgname%-git}"
+  # Remove stale wheels and other build artifacts
+  git clean -dfx
+}
+
 build() {
   cd "$srcdir/${pkgname%-git}"
   python -m build --wheel --no-isolation
