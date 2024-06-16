@@ -9,7 +9,7 @@ pkgbase = osmo-ggsn-git
 	arch = armv7h
 	license = GPL-2.0-only AND LGPL-2.1-or-later AND MIT
 	makedepends = git
-	depends = libosmocore
+	depends = libosmocore-git
 	depends = talloc
 	provides = osmo-ggsn=1.11.0.r2.g8d97644
 	provides = libgtp.so=6-64

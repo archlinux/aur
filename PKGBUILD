@@ -8,7 +8,7 @@ pkgdesc="Open Source implementation of a GGSN (Gateway GPRS Support Node)"
 url="https://osmocom.org/projects/openggsn"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=('GPL-2.0-only AND LGPL-2.1-or-later AND MIT')
-depends=('libosmocore' 'talloc')
+depends=('libosmocore-git' 'talloc')
 makedepends=('git')
 provides=("${pkgname%-git}=${pkgver}"
           'libgtp.so=6-64')
