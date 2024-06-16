@@ -1,6 +1,6 @@
 # Maintainer: CYBERDEViL <cyberdev [at] disroot [dot] org>
 pkgname=searx-qt
-_pkgver=0.6.0-alpha2
+_pkgver=0.6.0-alpha3
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Desktop client application for Searx/SearXNG/searx-space"
@@ -17,7 +17,7 @@ makedepends=(
     "gettext" "qt5-tools" "python-setuptools" "python-build"
     "python-installer" "python-wheel" "make")
 source=("$pkgname-$_pkgver.tar.gz::$url/archive/$_pkgver.tar.gz")
-sha512sums=("925b4659ae50c7ce816e64c3ed4ca4904690907da47bd5e8b4fb1b4ccaf027d9f828bc01cdc5fdbd33fb6f870a0ad34f2ff6e9227f86c2239d48dcae143b80a4")
+sha512sums=("cde045a1c6921e33d8484655e35609e571d6dd02afe6ab8997828adc8bd266505a46208fc6e9fa97a4596edb277edceb3ea38a79db5e3c427c9984f791520e67")
 
 build() {
     cd "$srcdir/$pkgname"
