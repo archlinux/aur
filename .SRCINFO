@@ -1,6 +1,6 @@
 pkgbase = libultrahdr-git
 	pkgdesc = Codec for the Ultra HDR format (git version)
-	pkgver = 1.0.0.r103.g74993de
+	pkgver = 1.0.0.r164.g56b3e49
 	pkgrel = 1
 	url = https://github.com/google/libultrahdr/
 	arch = x86_64
@@ -12,6 +12,8 @@ pkgbase = libultrahdr-git
 	provides = libultrahdr
 	conflicts = libultrahdr
 	source = git+https://github.com/google/libultrahdr.git
+	source = 010-libultrahdr-fix-bool-type.patch::https://github.com/google/libultrahdr/commit/a02750532d9b50436f8fdae0c1fdd08fa516766e.patch
 	sha256sums = SKIP
+	sha256sums = 4347dbc59999629381e9b3df1ff35a875433b90ef7e188bfec519b664486b2f2
 
 pkgname = libultrahdr-git
