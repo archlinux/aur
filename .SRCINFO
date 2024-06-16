@@ -1,6 +1,6 @@
 pkgbase = krokodil-git
 	pkgdesc = The most advanced cross-platform discord nuker made in C still in developing
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/UsboKirishima/krokodil
 	install = .install
