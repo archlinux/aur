@@ -24,7 +24,12 @@ depends=(
   qt6-svg
   tailscale
 )
-makedepends=(cmake extra-cmake-modules go)
+makedepends=(
+  cmake
+  extra-cmake-modules
+  git
+  go
+)
 
 # git tag is used by the cmake script to determine app version
 source=(git+$url.git#tag=v$pkgver)

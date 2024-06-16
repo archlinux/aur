@@ -8,6 +8,7 @@ pkgbase = ktailctl
 	license = GPL-3.0-only
 	makedepends = cmake
 	makedepends = extra-cmake-modules
+	makedepends = git
 	makedepends = go
 	depends = gcc-libs
 	depends = glibc
