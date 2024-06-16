@@ -13,6 +13,7 @@ pkgbase = osmo-hlr-git
 	depends = libosmo-abis
 	depends = talloc
 	depends = sqlite
+	provides = osmo-hlr=1.7.0.r8.gac1365fd
 	provides = libosmo-gsup-client.so=0-64
 	provides = libosmo-mslookup.so=1-64
 	conflicts = osmo-hlr

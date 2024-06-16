@@ -10,7 +10,8 @@ arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=('AGPL-3.0-or-later')
 depends=('libosmocore' 'libosmo-abis' 'talloc' 'sqlite')
 makedepends=('git')
-provides=('libosmo-gsup-client.so=0-64'
+provides=("${pkgname%-git}=${pkgver}"
+          'libosmo-gsup-client.so=0-64'
           'libosmo-mslookup.so=1-64')
 conflicts=("${pkgname%-git}")
 backup=('etc/osmocom/osmo-hlr.cfg')
