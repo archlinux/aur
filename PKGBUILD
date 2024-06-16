@@ -2,7 +2,7 @@
 
 pkgname=ruget
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 arch=(any)
 pkgdesc="Alternative to wget written in Rust"
 url="https://github.com/ksk001100/ruget"
@@ -13,14 +13,7 @@ sha256sums=('548c8f268646cd0101e977c6bfb02a668b9f10881033f4aceb4a05a2b5484590')
 
 prepare() {
 	cd "$pkgname-$pkgver"
-	case $CARCH in
-		"pentium4")
-			cargo fetch --locked --target "i686-unknown-linux-gnu"
-			;;
-		*)
-			cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
-			;;
-	esac
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {

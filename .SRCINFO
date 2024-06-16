@@ -1,7 +1,7 @@
 pkgbase = ruget
 	pkgdesc = Alternative to wget written in Rust
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ksk001100/ruget
 	arch = any
 	license = MIT
