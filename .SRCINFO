@@ -21,6 +21,7 @@ pkgbase = osmo-msc-git
 	depends = lksctp-tools
 	depends = sqlite
 	depends = talloc
+	provides = osmo-msc=1.11.1.r28.g6f2749ce0
 	conflicts = osmo-msc
 	backup = etc/osmocom/osmo-msc.cfg
 	source = git+https://gitea.osmocom.org/cellular-infrastructure/osmo-msc.git

@@ -22,6 +22,7 @@ depends=('libosmocore'
          'talloc')
 makedepends=('git')
 conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}=${pkgver}")
 backup=('etc/osmocom/osmo-msc.cfg')
 source=("git+https://gitea.osmocom.org/cellular-infrastructure/${pkgname%-git}.git")
 sha256sums=('SKIP')
