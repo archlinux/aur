@@ -13,8 +13,8 @@ source=("git+https://github.com/girlbossceo/conduwuit#tag=v${pkgver}")
 md5sums=("SKIP")
 provides=("conduwuit")
 conflicts=()
-options=(lto)
-backup=("etc/conduwuit.toml")
+options=(!lto)
+backup=("etc/conduwuit.toml" "etc/conduwuit/conduwuit.toml")
 install=conduwuit.install
 
 function prepare() {
@@ -87,7 +87,7 @@ StateDirectory=conduwuit
 RuntimeDirectory=conduwuit
 RuntimeDirectoryMode=0750
 
-Environment="CONDUIT_CONFIG=/etc/conduwuit/conduwuit.toml"
+Environment="CONDUWUIT_CONFIG=/etc/conduwuit/conduwuit.toml"
 
 ExecStart=/usr/bin/conduwuit
 Restart=on-failure
