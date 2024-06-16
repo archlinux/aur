@@ -1,0 +1,20 @@
+pkgbase = python-librivox-git
+	pkgdesc = Python library for interfacing with LibriVox
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://codeberg.org/Freso/python-librivox
+	arch = any
+	license = AGPL-3.0-or-later
+	makedepends = python-hatchling
+	makedepends = python-hatch-vcs
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	provides = python-librivox
+	conflicts = python-librivox
+	source = git+https://codeberg.org/Freso/python-librivox.git
+	b2sums = SKIP
+
+pkgname = python-librivox-git
