@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Osmocom's Mobile Switching Center for 2G and 3G circuit-switched mobile networks"
 url="https://osmocom.org/projects/osmomsc"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
-license=(GPL)
+license=('AGPL-3.0-or-later AND GPL-2.0-or-later')
 depends=('libosmocore'
          'libosmo-abis'
          'libosmo-netif'
