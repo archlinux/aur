@@ -6,7 +6,7 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-svt-av1
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 arch=('any')
 pkgdesc="Scalable Video Technology AV1 encoder and decoder (Android ${_android_arch})"
@@ -18,7 +18,7 @@ makedepends=('android-cmake'
              'nasm')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v${pkgver}/SVT-AV1-v${pkgver}.tar.bz2")
-md5sums=('c2997034a5bff3eec4c885adf27e152f')
+md5sums=('79404543e5adbd5c23d537352e9f4ba6')
 
 prepare() {
     cd "${srcdir}/SVT-AV1-v$pkgver"
@@ -44,5 +44,5 @@ package() {
     source android-env ${_android_arch}
 
     make -C build DESTDIR="$pkgdir" install
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
 }
