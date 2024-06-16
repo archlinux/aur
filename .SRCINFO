@@ -1,6 +1,6 @@
 pkgbase = python-dahlia
 	pkgdesc = A simple text formatting package, inspired by the game Minecraft.
-	pkgver = 2.3.2
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/trag1c/Dahlia
 	arch = any
@@ -8,8 +8,9 @@ pkgbase = python-dahlia
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-poetry-core
+	makedepends = git
 	depends = python>=3.8
-	source = dahlia-2.3.2.tar.gz::https://files.pythonhosted.org/packages/source/d/dahlia/dahlia-2.3.2.tar.gz
-	sha512sums = ed8862ea13025e7a71be8f0620c12b1d70a639c0235af66a4cf5cf2759632b36ab6f2abed305e2090bc2270f91234d02a6dcc78e5ace24757ca39400288d530f
+	source = dahlia-3.0.0.tar.gz::https://files.pythonhosted.org/packages/source/d/dahlia/dahlia-3.0.0.tar.gz
+	sha512sums = ec2c2bee242c40cb458429c8d7a96c664aa501ded3ca93f4977914b8a4e40eb8597b1a24f059c0ad0b1ca37b955c1f7515cb33dc5defb917bcc5e835eafe9f8a
 
 pkgname = python-dahlia
