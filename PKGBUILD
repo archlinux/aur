@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tome-bin
 _pkgname=Tome
-pkgver=0.11.0
+pkgver=0.11.1
 _electronversion=22
 pkgrel=1
 pkgdesc="Git integrated cross-platform markdown editor"
@@ -19,7 +19,7 @@ source=(
     "LICENSE-${pkgver}.txt::https://raw.githubusercontent.com/evinowen/tome/${pkgver}/LICENSE.txt"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('8c1c4ab9846602a5fe9d67e9e6335abd2fa07b323bef6e6e0f91bad291849860'
+sha256sums=('22b2b67e7b854c73ea6eff065dc0106c2d1113770b8bd5b039d8cfab6ba0f4ff'
             '3103a7058613516746435f89ff07509d42d9a07a485ad7b7fbc2781b06be4722'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
