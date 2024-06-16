@@ -2,7 +2,7 @@ _response=$(curl -L -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Ve
 _version=$(echo $_response | jq -r '.name')
 _basename=vlauncher
 pkgname=${_basename}-ve
-pkgver=1.0.4
+pkgver=1.0.6
 _tarname=${_basename}-${_version}
 pkgrel=1
 pkgdesc="Launcher for VoxelEngine(https://github.com/MihailRis/VoxelEngine-Cpp/)"
@@ -21,6 +21,8 @@ prepare() {
     sed -i 's/Exec.*/Exec=\/usr\/bin\/vlauncher/g' ./share/applications/io.github.dagger.${_basename}.desktop
 
     find .. -name "*.tar.gz" -type f -delete
+
+    find ../.. -name "*.pkg.tar.zst" -type f -delete
 }
 
 package() {
