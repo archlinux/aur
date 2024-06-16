@@ -1,5 +1,5 @@
 pkgname=amazon-corretto-22-bin
-pkgver=22.0.0.37.1
+pkgver=22.0.1.8.1
 pkgrel=1
 pkgdesc='No-cost, multiplatform, production-ready distribution of OpenJDK'
 arch=('x86_64')
@@ -18,7 +18,7 @@ package() {
   cp -a "amazon-corretto-$pkgver-linux-x64" "$pkgdir/usr/lib/jvm/java-22-amazon-corretto"
 }
 
-sha256sums=('5539f405d8b6201639b23c1125482a9cc29e7367ca3c6c31a44eb65110f7939e'
+sha256sums=('b840a424ef007c2951e7af3562492e67e984e311c978a6cbbbb60c36421f67ae'
         'SKIP')
 
 
