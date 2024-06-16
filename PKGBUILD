@@ -39,6 +39,7 @@ prepare() {
   cd "$srcdir/${pkgname}"
 
   sed -i 's/default = \["embed_frontend"\]/default = []/' ffplayout/Cargo.toml
+  sed -i 's|ExecStart=/usr/bin/ffplayout|ExecStart=/usr/bin/ffplayout -l 0.0.0.0:8787|' assets/ffplayout.service
 
   export CARGO_HOME="$srcdir/rust-home"
   export RUSTUP_HOME="$srcdir/rust-home"
