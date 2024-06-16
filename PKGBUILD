@@ -9,7 +9,7 @@ pkgver=3.5.99.alpha2.20240421.2baa3a90
 pkgrel=1
 pkgdesc='Light eye-candy fully themable animated dock with wayland support'
 arch=('i686' 'x86_64')
-url='https://github.com/dkondor/cairo-dock-core'
+url='https://github.com/Cairo-Dock/cairo-dock-core'
 license=('GPL')
 depends=('curl' 'dbus-glib' 'glu' 'gtk3' 'librsvg' 'wayland' 'gtk-layer-shell')
 makedepends=('cmake' 'git' 'extra-cmake-modules')
@@ -20,7 +20,7 @@ provides=("${pkgname%-git}" "cairo-dock")
 conflicts=("${pkgname%-git}" "cairo-dock")
 options=(debug)
 source=(
-    "${pkgname}::git+https://github.com/dkondor/cairo-dock-core.git#branch=wayland_new3"
+    "${pkgname}::git+https://github.com/Cairo-Dock/cairo-dock-core.git"
 )
 sha256sums=(
     'SKIP'
