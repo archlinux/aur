@@ -9,7 +9,7 @@ pkgbase = osmo-pcu-git
 	arch = armv7h
 	license = GPL-2.0-or-later AND AGPL-3.0-or-later
 	makedepends = git
-	depends = libosmocore
+	depends = libosmocore-git
 	depends = talloc
 	provides = osmo-pcu=1.4.0.r1.gb04e1d7d
 	conflicts = osmo-pcu
