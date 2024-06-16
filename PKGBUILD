@@ -1,18 +1,13 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
 # Maintainer: Vincent Bidard de la Noë <vincentbidarddelanoe@gmail.com>
 pkgname=cpoint-git
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc="C-like programming language compiler based on LLVM with garbage collection"
 arch=('any')
 url="https://github.com/Vinz2008/C."
-license=('GPL')
-depends=('llvm-libs' 'clang' 'glibc' 'gcc-libs' 'sh')
-makedepends=("git" "llvm")
+license=('GPL-3.0-only')
+depends=('llvm-libs' 'clang' 'glibc' 'gcc-libs' 'sh' 'gcc' 'make' 'automake')
+makedepends=("git" "llvm" "tomlplusplus")
 checkdepends=("python" "python-termcolor")
 options=('staticlibs')
 provides=()
