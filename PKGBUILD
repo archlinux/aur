@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=R2HTML
-_pkgver=2.3.3
+_pkgver=2.3.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=10
+pkgrel=1
 pkgdesc="HTML Exportation for R Objects"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -14,8 +14,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0c5bf024dcf198df199aea7135f325dd')
-b2sums=('e45e5a1d441d9224ecbbbb730e4037e9388440c17acfb18f73db504248a12804978b6873309c4325847d9fe3121843dab78b38f795fb5ccca8a61776c58da146')
+md5sums=('702ef7658e385762136b5c43dfe7a499')
+b2sums=('b51a8fbf8f9548d220d432f3e060d2a6bf80e36cb66a367f2e0d9eff290acd8eb8f7ddbdb3d2542a066247a9643e5c60fbcb9f948e15a8b86130ea7758dcaecb')
 
 build() {
   mkdir build
