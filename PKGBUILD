@@ -18,7 +18,8 @@ optdepends=('python: for osmo-cbc-apitool.py'
             'python-requests: for osmo-cbc-apitool.py')
 makedepends=('git')
 conflicts=("${pkgname%-git}")
-provides=('libosmo-sbcap.so=0-64')
+provides=("${pkgname%-git}=${pkgver}"
+          'libosmo-sbcap.so=0-64')
 backup=("etc/osmocom/osmo-cbc.cfg")
 source=("git+https://gitea.osmocom.org/cellular-infrastructure/${pkgname%-git}.git"
         'LICENSE-MIT')

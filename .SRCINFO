@@ -16,6 +16,7 @@ pkgbase = osmo-cbc-git
 	depends = ulfius
 	optdepends = python: for osmo-cbc-apitool.py
 	optdepends = python-requests: for osmo-cbc-apitool.py
+	provides = osmo-cbc=0.4.2.r3.gda8b98c
 	provides = libosmo-sbcap.so=0-64
 	conflicts = osmo-cbc
 	backup = etc/osmocom/osmo-cbc.cfg
