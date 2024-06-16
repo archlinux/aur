@@ -1,7 +1,7 @@
 # Maintainer: iamawacko <iamawacko@protonmail.com>
 pkgname='synth-git'
 pkgver=0.6.9.r10.g8b3b738
-pkgrel=2
+pkgrel=3
 pkgdesc='The Open Source Data Generator'
 url='https://getsynth.com/'
 arch=('any')
@@ -21,14 +21,7 @@ pkgver() {
 
 prepare() {
 	cd "synth-git"
-	case $CARCH in 
-		"pentium4")
-			cargo fetch --locked --target "i686-unknown-linux-gnu"
-			;;
-		*)
-			cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
-			;;
-	esac
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
