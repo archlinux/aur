@@ -6,7 +6,7 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-poppler
-pkgver=24.03.0
+pkgver=24.06.0
 pkgrel=1
 arch=('any')
 pkgdesc="PDF rendering library based on xpdf 3.0 (Android ${_android_arch})"
@@ -30,7 +30,7 @@ makedepends=('android-cmake'
 optdepends=("android-${_android_arch}-glib2: libpoppler-glib")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://poppler.freedesktop.org/poppler-${pkgver}.tar.xz")
-md5sums=('2d50c3c8e0011d1fa14572c744cd33bb')
+md5sums=('52bbd64187e785eeb3c06d8720e7ae67')
 
 build() {
     cd "${srcdir}/poppler-${pkgver}"
@@ -39,6 +39,8 @@ build() {
     openjpeg_dir=$(ls "${ANDROID_PREFIX_LIB}/cmake" | grep openjpeg- | head -n 1)
 
     android-${_android_arch}-cmake \
+        -S . \
+        -B build \
         -DCMAKE_BUILD_TYPE=Release \
         -DBUILD_CPP_TESTS=NO \
         -DBUILD_GTK_TESTS=NO \
@@ -73,16 +75,15 @@ build() {
         -DGpgmepp_DIR="${ANDROID_PREFIX_LIB}/cmake/Gpgmepp" \
         -DENABLE_ZLIB_UNCOMPRESS=ON \
         -DZLIB_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
-        -DZLIB_LIBRARY="${ANDROID_PREFIX_LIB}/libz.so" \
-        .
-    sed -i 's| -lpthread | |g' CMakeFiles/poppler.dir/link.txt
-    make $MAKEFLAGS
+        -DZLIB_LIBRARY="${ANDROID_PREFIX_LIB}/libz.so"
+    sed -i 's| -lpthread | |g' build/CMakeFiles/poppler.dir/link.txt
+    make -C build $MAKEFLAGS
 }
 
 package() {
     cd "${srcdir}/poppler-${pkgver}"
     source android-env ${_android_arch}
 
-    make DESTDIR="$pkgdir" install
+    make -C build DESTDIR="$pkgdir" install
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
 }
