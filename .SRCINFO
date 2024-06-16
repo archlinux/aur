@@ -5,7 +5,7 @@ pkgbase = osmo-cbc-git
 	url = https://osmocom.org/projects/osmo-cbc
 	arch = x86_64
 	arch = i686
-	license = GPL
+	license = AGPL-3.0-or-later AND MIT
 	makedepends = git
 	depends = libosmocore
 	depends = libosmo-netif
@@ -20,6 +20,8 @@ pkgbase = osmo-cbc-git
 	conflicts = osmo-cbc
 	backup = etc/osmocom/osmo-cbc.cfg
 	source = git+https://gitea.osmocom.org/cellular-infrastructure/osmo-cbc.git
+	source = LICENSE-MIT
 	sha256sums = SKIP
+	sha256sums = 323c587d0ccf10e376f8bf9a7f31fb4ca6078105194b42e0b1e0ee2bc9bde71f
 
 pkgname = osmo-cbc-git
