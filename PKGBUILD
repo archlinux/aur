@@ -3,13 +3,13 @@
 
 pkgname='perl-moosex-types-set-object'
 pkgver='0.05'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Set::Object type with coercions and stuff."
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-moose>=0.50' 'perl-moosex-types' 'perl-set-object' 'perl>=5.006')
-makedepends=()
+makedepends=('perl-module-build-tiny')
 checkdepends=('perl-test-fatal')
 url='https://metacpan.org/release/MooseX-Types-Set-Object'
 source=('http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/MooseX-Types-Set-Object-0.05.tar.gz')
