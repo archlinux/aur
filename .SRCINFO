@@ -16,6 +16,7 @@ pkgbase = osmo-iuh-git
 	depends = talloc
 	depends = libasn1c
 	depends = lksctp-tools
+	provides = osmo-iuh=1.5.1.r1.ga2516476
 	provides = libosmo-hnbap.so=0-64
 	provides = libosmo-ranap.so=7-64
 	provides = libosmo-rua.so=0-64

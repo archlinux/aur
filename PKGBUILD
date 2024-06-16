@@ -10,7 +10,8 @@ arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=('AGPL-3.0-or-later')
 depends=('libosmocore' 'libosmo-netif' 'libosmo-sccp' 'talloc' 'libasn1c' 'lksctp-tools')
 makedepends=('git' 'python')
-provides=('libosmo-hnbap.so=0-64'
+provides=("${pkgname%-git}=${pkgver}"
+          'libosmo-hnbap.so=0-64'
           'libosmo-ranap.so=7-64'
           'libosmo-rua.so=0-64'
           'libosmo-sabp.so=1-64')
