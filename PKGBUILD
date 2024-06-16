@@ -21,7 +21,13 @@ build() {
 }
 
 package() {
-    sudo mv /bin/krokodil $pkgdir
+    if [ ! -e "/bin/krokodil" ]; then
+        sudo mv /bin/krokodil $pkgdir
+    else
+        build
+        sudo mv /bin/krokodil $pkgdir
+    fi
+    
     sudo cp $pkgdir/krokodil /usr/local/bin
 }
 
