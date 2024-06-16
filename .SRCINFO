@@ -1,6 +1,6 @@
 pkgbase = android-x86-64-vapoursynth
 	pkgdesc = A video processing framework with simplicity in mind (Android x86-64)
-	pkgver = R66
+	pkgver = R68
 	pkgrel = 1
 	url = http://www.vapoursynth.com/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = android-x86-64-vapoursynth
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/vapoursynth/vapoursynth/archive/refs/tags/R66.tar.gz
-	md5sums = b30860e5c1d7b2dba8bd53eb76046d90
+	source = https://github.com/vapoursynth/vapoursynth/archive/refs/tags/R68.tar.gz
+	md5sums = ac6e8ea4f92d86ae76e269c66f882773
 
 pkgname = android-x86-64-vapoursynth
