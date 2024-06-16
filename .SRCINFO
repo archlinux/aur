@@ -17,8 +17,6 @@ pkgbase = way-shell
 	depends = libpulse
 	depends = gtk4-layer-shell
 	depends = glib2
-	provides = way-shell
-	conflicts = way-shell
 	source = way-shell-0.0.4.tar.gz::https://github.com/ldelossa/way-shell/archive/v0.0.4.tar.gz
 	sha256sums = 8ba58f19f6d047a820846ba61d9a7f8f61714f61ced0303a47204e7ebe0c3ba6
 
