@@ -1,7 +1,7 @@
 # Maintainer: Amir Zarrinkafsh <nightah at me dot com>
 pkgname=authelia-bin
 _pkgname=authelia
-pkgver=4.38.8
+pkgver=4.38.9
 pkgrel=1
 pkgdesc="The Cloud ready multi-factor authentication portal for your Apps. Pre-compiled."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -18,9 +18,9 @@ source_x86_64=("https://github.com/$_pkgname/$_pkgname/releases/download/v$pkgve
 source_aarch64=("https://github.com/$_pkgname/$_pkgname/releases/download/v$pkgver/$_pkgname-v$pkgver-linux-arm64.tar.gz")
 source_armv7h=("https://github.com/$_pkgname/$_pkgname/releases/download/v$pkgver/$_pkgname-v$pkgver-linux-arm.tar.gz")
 
-sha256sums_x86_64=('8f6dda0c345c4ab5f045517ca367e7f382ac1ffc82873aa5d369e4bd593be829')
-sha256sums_aarch64=('d2184cf8b51151df3f54a6c3a4fd18e004d26813b176b5e67e6e7c0018fac145')
-sha256sums_armv7h=('864435beafc99e6017c6ac1bffa6b62a8e8f80b19c16f6cb27e93ae404cafa4f')
+sha256sums_x86_64=('4b1ef031989a61eea17b3e0abe94bb2ba8dbf1221c65485a8e5bc01977d42d4a')
+sha256sums_aarch64=('b448b4f1460b1a80529df10646b8b4ca486460a8d7230daf0ac2144f25d46332')
+sha256sums_armv7h=('02143a94f7fed3584f63303a63e9ba6e1674b5135e28873da07b9167978ea6b6')
 
 package() {
   install -Dm644 "$srcdir/$_pkgname.service" "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
