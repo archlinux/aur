@@ -1,0 +1,8 @@
+function post_install() {
+	mkdir -p /var/lib/private/conduwuit
+	if [ -f /var/lib/private/conduit ] || [ -d /var/lib/private/conduit ]; then
+		echo "[Warning] State directory has moved, patching..."
+		cp -a /var/lib/private/conduit/* /var/lib/private/conduwuit
+		echo "Manual removal of old data under /var/lib/conduit/ is required"
+	fi
+}

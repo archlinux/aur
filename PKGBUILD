@@ -12,8 +12,10 @@ depends=("gcc-libs" "glibc" "liburing")
 source=("git+https://github.com/girlbossceo/conduwuit#tag=v${pkgver}")
 md5sums=("SKIP")
 provides=("conduwuit")
+conflicts=()
 options=(lto)
 backup=("etc/conduwuit.toml")
+install=conduwuit.install
 
 function prepare() {
 	cd "${srcdir}/conduwuit"
@@ -43,6 +45,7 @@ function package() {
 	echo '''[Unit]
 Description=conduwuit Matrix homeserver
 After=network.target
+RequiresMountsFor=/var/lib/private/conduwuit
 
 [Service]
 DynamicUser=yes
@@ -79,7 +82,7 @@ SystemCallArchitectures=native
 SystemCallFilter=@system-service @resources
 SystemCallFilter=~@clock @debug @module @mount @reboot @swap @cpu-emulation @obsolete @timer @chown @setuid @privileged @keyring @ipc
 SystemCallErrorNumber=EPERM
-StateDirectory=matrix-conduit
+StateDirectory=conduwuit
 
 RuntimeDirectory=conduwuit
 RuntimeDirectoryMode=0750
