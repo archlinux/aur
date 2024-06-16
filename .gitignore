@@ -1,0 +1,4 @@
+pkg/
+src/
+way-shell/
+*pkg.tar.zst
