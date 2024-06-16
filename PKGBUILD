@@ -2,16 +2,33 @@
 
 pkgname=python-astroquery-git
 _gitname=astroquery
-pkgver=0.4.6.r66.gc081ee4a
-pkgrel=2
+pkgver=0.4.7.r188.g06de109c5
+pkgrel=1
 pkgdesc="Set of tools for querying astronomical web forms and databases"
 arch=('any')
-url="http://astroquery.readthedocs.org/en/latest/"
-license=('BSD')
-depends=('python' 'python-numpy' 'python-astropy' 'python-requests' 'python-keyring' 'python-beautifulsoup4' 'python-html5lib' 'python-astropy-helpers')
+url="https://astroquery.readthedocs.org/en/latest/"
+license=('BSD-3-Clause')
+depends=(
+  'python-astropy'
+  'python-numpy'
+  'python-requests'
+  'python-keyring'
+  'python-beautifulsoup4'
+  'python-html5lib'
+  'python-pyvo'
+)
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
-makedepends=('python-setuptools' 'git')
+makedepends=(
+  'git'
+  'python-astropy-helpers'
+  'python-setuptools'
+)
+optdepends=(
+  'python-astropy-healpix: for full functionality of the alma module'
+  'python-regions: for full functionality of the alma module'
+  'python-boto3: for full functionality of the mast module'
+)
 source=("git+https://github.com/astropy/astroquery")
 md5sums=(SKIP)
 
@@ -30,3 +47,5 @@ package() {
   install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE.rst licenses/*
   python setup.py install --root="${pkgdir}" --skip-build --optimize=1 --use-system-astropy-helpers
 }
+
+# vim: set ts=2 sw=2 et:
