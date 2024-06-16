@@ -2,7 +2,7 @@
 # Maintainer: Goldy <goldy@devgoldy.xyz>
 _pkgname=mov-cli-youtube
 pkgname=python-mov-cli-youtube
-pkgver="1.2.3"
+pkgver="1.3"
 pkgrel=1
 pkgdesc="A mov-cli v4 plugin for watching youtube."
 arch=("x86_64" "i686")
@@ -15,7 +15,6 @@ depends=(
 	"python"
 	"python-pytubefix"
 	"yt-dlp"
-	"mov-cli"
 )
 optdepends=()
 checkdepends=()
