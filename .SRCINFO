@@ -1,0 +1,10 @@
+pkgbase = luajit-symlinks
+	pkgdesc = Runs luajit if lua5.1 is called
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	depends = luajit
+	provides = lua5.1
+	conflicts = lua5.1
+
+pkgname = luajit-symlinks
