@@ -1,18 +1,20 @@
 # Maintainer: RhiobeT (Pierre Jeanjean) <rhiobet@gmail.com>
 # Contributor: odrling <florianbadie@odrling.xyz>
 pkgname=aegisub-japan7-git
-pkgver=3.3.3.r816.e4a0ec565
+pkgver=3.3.3.r816.9fb382c4c
 pkgrel=1
 pkgdesc='A fork of aegisub including tap-to-time feature and custom user scripts'
 arch=(x86_64)
 url=https://github.com/odrling/Aegisub
 license=(
-  custom
+  BSD-3-Clause
+  MIT
 )
 depends=(
   alsa-lib
   amaranth-font
   boost-libs
+  ffmpeg
   fftw
   fontconfig
   hunspell
@@ -22,6 +24,7 @@ depends=(
   libpulse
   openssl
   uchardet
+  xxhash
   wxgtk3
   zlib
 )
