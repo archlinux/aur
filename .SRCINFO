@@ -1,12 +1,12 @@
 pkgbase = haveno-reto
 	pkgdesc = Decentralised P2P exchange built on Monero and Tor - unofficial Reto network
 	pkgver = 1.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/retoaccess1/haveno-reto
 	install = haveno-reto.install
 	arch = any
 	license = AGPL-3.0-or-later
-	makedepends = java-environment>=21
+	makedepends = java-environment=21
 	depends = bash
 	depends = java-runtime>=21
 	conflicts = haveno

@@ -8,13 +8,13 @@
 
 pkgname="haveno-reto"
 pkgver="1.0.7"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Decentralised P2P exchange built on Monero and Tor - unofficial Reto network"
 arch=("any")
 url="https://github.com/retoaccess1/${pkgname}"
 license=("AGPL-3.0-or-later")
 depends=("bash" "java-runtime>=21")
-makedepends=("java-environment>=21")
+makedepends=("java-environment=21")
 conflicts=("haveno")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.desktop")
