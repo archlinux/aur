@@ -2,7 +2,7 @@
 # Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=osmo-pcu-git
-pkgver=1.4.0.r1.gb04e1d7d
+pkgver=1.4.0.r14.g0b0d0bbf
 pkgrel=1
 pkgdesc="Osmocom's GPRS/EGPRS PCU (Packet Control Unit) with Gb/IP interface"
 url="https://osmocom.org/projects/osmopcu"
