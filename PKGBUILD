@@ -5,7 +5,7 @@ pkgbase=hepmc
 pkgname=("${pkgbase}" "${pkgbase}-docs")
 _pkgname=HepMC3
 pkgver=3.2.6
-pkgrel=9
+pkgrel=10
 pkgdesc="A particle physics package for storing collision events from Monte Carlo generators"
 arch=('x86_64')
 url="https://hepmc.web.cern.ch/"
@@ -29,6 +29,7 @@ build() {
     -B build
     -D CMAKE_BUILD_TYPE=None
     -D CMAKE_INSTALL_PREFIX=/usr
+    -D HEPMC3_CXX_STANDARD=17
     -D HEPMC3_BUILD_DOCS=ON
     -D HEPMC3_BUILD_EXAMPLES=ON
     -D HEPMC3_ENABLE_TEST=ON

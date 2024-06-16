@@ -1,7 +1,7 @@
 pkgbase = hepmc
 	pkgdesc = A particle physics package for storing collision events from Monte Carlo generators
 	pkgver = 3.2.6
-	pkgrel = 9
+	pkgrel = 10
 	url = https://hepmc.web.cern.ch/
 	arch = x86_64
 	license = GPL3
