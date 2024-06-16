@@ -1,6 +1,6 @@
 pkgname=raze-bin
-pkgver=1.9.1
-pkgrel=2
+pkgver=1.10.2
+pkgrel=1
 pkgdesc='Build engine port backed by GZDoom tech'
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/linuxbombay/raze"
@@ -11,16 +11,10 @@ optdepends=('gxmessage: crash dialog (GNOME)' 'kdialog: crash dialog (KDE)' 'xor
 makedepends=('unzip')
 _pkgrel_x86_64=1
 _pkgrel_aarch64=1
-#_pkgrel_i386=1
-#_pkgrel_i686=1
-sha256sums_x86_64=('365b3267f70a7876fe1421e827755047524e0f7d7281b74d860673720d7bd9da')
-sha256sums_aarch64=('897b64496396b8d2aa85a681602845553330f9d6eb33f0b6eebab817c9f83c18')
-#sha256sums_i386=('SKIP')
-#sha256sums_i686=('SKIP')
-source_x86_64=("https://gitlab.com/linuxbombay/raze//binaries/$pkgver/-/raw/main/raze-linux-x64.tar.xz")
-source_aarch64=("https://gitlab.com/linuxbombay/raze//binaries/$pkgver/-/raw/main/raze-linux-arm64.tar.xz")
-#source_i386=("https://gitlab.com/linuxbombay/raze//binaries/$pkgver/-/raw/main/raze-linux-i686.tar.xz")
-#source_i686=("https://gitlab.com/linuxbombay/raze//binaries/$pkgver/-/raw/main/raze-linux-i686.tar.xz")
+sha256sums_x86_64=('c7f8463eb44747b12bfc1adc1a4c5f3705e80cc0b3dc3fe46cdcd4fb12c9b639')
+sha256sums_aarch64=('c20a90f1b2d294954ceb2b134de5ab7c050434c6002bcedf62e023d0c3fc0c32')
+source_x86_64=("https://gitlab.com/linuxbombay/raze/binaries/$pkgver/-/raw/main/raze-linux-x64.tar.xz")
+source_aarch64=("https://gitlab.com/linuxbombay/raze/binaries/$pkgver/-/raw/main/raze-linux-arm64.tar.xz")
 
 package() {
     install -dm755 "$pkgdir/usr/bin"

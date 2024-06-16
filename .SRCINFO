@@ -1,7 +1,7 @@
 pkgbase = raze-bin
 	pkgdesc = Build engine port backed by GZDoom tech
-	pkgver = 1.9.1
-	pkgrel = 2
+	pkgver = 1.10.2
+	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/raze
 	arch = x86_64
 	arch = aarch64
@@ -22,9 +22,9 @@ pkgbase = raze-bin
 	conflicts = raze
 	conflicts = raze-git
 	conflicts = zmusic-bin
-	source_x86_64 = https://gitlab.com/linuxbombay/raze//binaries/1.9.1/-/raw/main/raze-linux-x64.tar.xz
-	sha256sums_x86_64 = 365b3267f70a7876fe1421e827755047524e0f7d7281b74d860673720d7bd9da
-	source_aarch64 = https://gitlab.com/linuxbombay/raze//binaries/1.9.1/-/raw/main/raze-linux-arm64.tar.xz
-	sha256sums_aarch64 = 897b64496396b8d2aa85a681602845553330f9d6eb33f0b6eebab817c9f83c18
+	source_x86_64 = https://gitlab.com/linuxbombay/raze/binaries/1.10.2/-/raw/main/raze-linux-x64.tar.xz
+	sha256sums_x86_64 = c7f8463eb44747b12bfc1adc1a4c5f3705e80cc0b3dc3fe46cdcd4fb12c9b639
+	source_aarch64 = https://gitlab.com/linuxbombay/raze/binaries/1.10.2/-/raw/main/raze-linux-arm64.tar.xz
+	sha256sums_aarch64 = c20a90f1b2d294954ceb2b134de5ab7c050434c6002bcedf62e023d0c3fc0c32
 
 pkgname = raze-bin
