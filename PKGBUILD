@@ -2,7 +2,7 @@
 # I don't know where the libffmpeg version numbers in this snap come from
 
 pkgname=opera-developer-ffmpeg-codecs-bin
-pkgver=115016
+pkgver=115541
 pkgrel=1
 pkgdesc="additional support for proprietary codecs for opera-developer, extracted directly from the chromium-ffmpeg snap"
 arch=('x86_64')
