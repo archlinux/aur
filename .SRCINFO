@@ -14,6 +14,7 @@ pkgbase = gtk3-classic
 	makedepends = fribidi
 	makedepends = gdk-pixbuf2
 	makedepends = git
+	makedepends = glib2-devel
 	makedepends = gobject-introspection
 	makedepends = gtk-update-icon-cache
 	makedepends = hicolor-icon-theme
