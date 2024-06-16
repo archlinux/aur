@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=niconizer-bin
-pkgver=2.0.138
+pkgver=2.0.139
 _electronversion=30
 pkgrel=1
 pkgdesc="A desktop application that displays plain text, images, and any other HTML content on the screen."
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/matzkoh/niconizer/v${pkgver}/icon/icon_512x512.png"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ef309660d21a6e2924482d06c7bc4ef72723bf6b34a2c8765deaf5fb329d2200'
+sha256sums=('ecdee480f72d19c3ccf33bc30a3c7ab9cfdceafc6100b515a8890e8acebf65b0'
             '7c820610080a8d47f26c555d498ae391c89f2848de93cde005f1fd438e1e0236'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
@@ -30,7 +30,7 @@ build() {
         -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --pkgname="${pkgname%-bin}" --categories="Utility" --name="${pkgname%-bin}" --exec="${pkgname%-bin} %U"
+    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname%-bin}" --exec="${pkgname%-bin} %U"
 }
 package() {
    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
