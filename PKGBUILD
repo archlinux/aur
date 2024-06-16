@@ -2,7 +2,7 @@
 _appname=dnschanger
 pkgname="${_appname}-desktop-bin"
 _pkgname=DNS-Changer
-pkgver=2.2.0
+pkgver=2.3.0
 _electronversion=29
 pkgrel=1
 pkgdesc="Gather the best DNS servers in a secure application."
@@ -23,13 +23,14 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/DnsChanger/dnsChanger-desktop/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('8617820b4aea8d534284ac38a66e4adffef71539fdaddca5da2bbd402c5fa129'
+sha256sums=('903dffd6d5c2b38b5141d458c6ad425ecec3c0d084f69ed07716a0df905f8104'
             'd8cd7d03b1c407ad97d6059dd8d6821ce42ab3bd8e9d39caab2fe4e730c8f737'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_appname}|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
