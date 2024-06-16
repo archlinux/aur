@@ -7,8 +7,8 @@ pkgdesc="Osmocom Cell Broadcast Centre"
 arch=('x86_64' 'i686')
 url="https://osmocom.org/projects/osmo-cbc"
 license=('AGPL-3.0-or-later AND MIT')
-depends=('libosmocore'
-         'libosmo-netif'
+depends=('libosmocore-git'
+         'libosmo-netif-git'
          'lksctp-tools'
          'talloc'
          'jansson'
