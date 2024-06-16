@@ -1,6 +1,6 @@
 pkgbase = pixlet
 	pkgdesc = Build apps for pixel-based displays
-	pkgver = 0.33.4
+	pkgver = 0.33.5
 	pkgrel = 1
 	url = https://github.com/tidbyt/pixlet
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = pixlet
 	makedepends = npm
 	makedepends = go
 	depends = libwebp
-	source = https://github.com/tidbyt/pixlet/archive/v0.33.4.tar.gz
-	sha256sums = 47e07cd0d4470deeeb59b393df8a6a0773e458ac3ae9aeaba3b3187cbb0ab6df
+	source = https://github.com/tidbyt/pixlet/archive/v0.33.5.tar.gz
+	sha256sums = 80a3acf956e301e3a02ae37e4ee2ef5eb6750e4531f050d02a8dbffc6f2f1d5a
 
 pkgname = pixlet
