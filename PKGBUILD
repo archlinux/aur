@@ -1,7 +1,7 @@
 # Maintainer: iamawacko <iamawacko@protonmail.com>
 pkgname='synth'
 pkgver='0.6.9'
-pkgrel=4
+pkgrel=5
 pkgdesc='The Open Source Data Generator'
 url='https://getsynth.com/'
 arch=('any')
@@ -13,14 +13,7 @@ depends=('sqlite')
 
 prepare() {
 	cd "$pkgname-$pkgver"
-	case $CARCH in 
-		"pentium4")
-			cargo fetch --locked --target "i686-unknown-linux-gnu"
-			;;
-		*)
-			cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
-			;;
-	esac
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
