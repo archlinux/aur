@@ -1,0 +1,14 @@
+pkgbase = python-compress-pickle
+	pkgdesc = Standard pickle, wrapped with standard compression libraries
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/lucianopaz/compress_pickle
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/c/compress_pickle/compress_pickle-2.1.0.tar.gz
+	sha256sums = 3e944ce0eeab5b6331324d62351c957d41c9327c8417d439843e88fe69b77991
+
+pkgname = python-compress-pickle
