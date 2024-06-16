@@ -4,6 +4,7 @@ post_install() {
 	systemctl --system daemon-reload >/dev/null || true
 
 	sysUser="ffpu"
+	IP=$(ip route get 1.2.3.4 | awk '{if($7 !~ /^[[:space:]]*$/) print $7}')
 
 	if [ -f /run/.containerenv ] || [ -f /run/.dockerenv ] || [ -f /.dockerenv ] || [ -f /.dockerinit ]; then
 	    sysUser="root"
@@ -17,8 +18,8 @@ post_install() {
 	    mkdir "/usr/share/ffplayout/db"
 	    mkdir -p "/var/lib/ffplayout/playlists"
 	    mkdir -p "/var/lib/ffplayout/tv-media"
-
-	    IP=$(ip route get 1.2.3.4 | awk '{if($7 !~ /^[[:space:]]*$/) print $7}')
+		
+		/usr/bin/ffplayout -d "${IP}:8787" --log-path=/var/log/ffplayout --hls-path=/usr/share/ffplayout/public --storage-path=/var/lib/ffplayout/tv-media --shared-storage -u admin -p admin -m ffplayout@example.org
 
 	    chown -R ${sysUser}: "/usr/share/ffplayout"
 	    chown -R ${sysUser}: "/var/lib/ffplayout"
@@ -35,13 +36,15 @@ post_install() {
 	    chown ${sysUser}: "/var/log/ffplayout"
 	fi
 
-	echo "1. Add an admin user to ffplayout and set global settings:"
-    echo "    - 'ffplayout -i -d ${IP}:8787'"
-	echo "2. activate systemd service:"
-    echo "    - 'systemctl enable --now ffplayout'"
-    echo "3. use a reverse proxy for SSL, Port is **8787**."
-    echo "4. login with your browser, address without proxy would be: **http://[IP ADDRESS]:8787**"
-	echo "5. Default location for playlists and media files are: **/var/lib/ffplayout/**."
+	echo "1. activate systemd service:"
+	echo "   $ systemctl enable --now ffplayout"
+	echo "2. use a reverse proxy for SSL, Port is **8787**."
+	echo "3. login with your browser, address without proxy would be: **http://${IP}:8787**"
+	echo "5. Login using the default "admin" account and the default "admin" password with your web browser; the address without a proxy would be: **http://${IP}:8787**"
+	echo "4. Default location for playlists and media files are: **/var/lib/ffplayout/**."
+	echo "6. If you want to change the default global settings:"
+	echo "	 $ sudo rm -rv /usr/share/ffplayout/db/*"
+	echo "   $ ffplayout -i -d "${IP}:8787"
 
 }
 
