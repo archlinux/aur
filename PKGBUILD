@@ -32,8 +32,6 @@ After=network.target
 [Service]
 ExecStart=/usr/bin/env perl /usr/share/convos/script/convos daemon
 WorkingDirectory=/usr/share/convos
-User=convos
-Group=convos
 Restart=on-failure
 Environment=PERL5LIB=/usr/share/convos/lib/perl5
 
