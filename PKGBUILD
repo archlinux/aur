@@ -26,16 +26,16 @@ build() {
   meson compile -C build
 }
 
-check() {
-  #
-  # Checks are disabled for now, because it is required that they
-  # run in the same D-Bus session as the originally logged-in user.
-  # That means that even running them with "sudo --user #<UID>"
-  # (like pikaur does) will cause them to fail in an irrelevant way.
-  #
-  # cd "$srcdir/$pkgname"
-  # meson test -C build
-}
+#
+# Checks are disabled for now, because it is required that they
+# run in the same D-Bus session as the originally logged-in user.
+# That means that even running them with "sudo --user #<UID>"
+# (like pikaur does) will cause them to fail in an irrelevant way.
+#
+# check() {
+#   cd "$srcdir/$pkgname"
+#   meson test -C build
+# }
 
 package() {
   cd "$srcdir/$pkgname/"
