@@ -1,7 +1,7 @@
 pkgbase = penpot
 	pkgdesc = The open-source design tool for design and code collaboration
 	pkgver = 2.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://penpot.app
 	arch = x86_64
 	license = MPL-2.0
@@ -40,7 +40,7 @@ pkgbase = penpot
 	source = penpot.tmpfiles.d
 	source = penpot-update-flags.sh
 	source = nginx.conf
-	sha256sums = 8b0e05e238d1167b4d67f5a772834a98e0fd34d21c73b15a7b2407e1daa784ad
+	sha256sums = 5a5f73cf354d7b45a584eed589d779bbc52c051decb93365985e00e252b24dca
 	sha256sums = 228e8ccee724ba8d66c66d8672161b991bb00b00e538e7aecd0b902330e5a712
 	sha256sums = 4b82b8a79d8a143fd8a6e4473447f8946c095e2617ba5fcba4cb5b1fdd840c2c
 	sha256sums = bc133ba7409921978655c488293ef83f77250fd65cb7d574c3cba9f34ff42523
