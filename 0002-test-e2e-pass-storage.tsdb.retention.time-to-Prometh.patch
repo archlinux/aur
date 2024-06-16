@@ -1,0 +1,52 @@
+From 9deab9eb3db4b3805f3aaa13511ab7b4bbc321e8 Mon Sep 17 00:00:00 2001
+From: Ivan Shapovalov <intelfx@intelfx.name>
+Date: Tue, 15 Apr 2025 17:37:27 +0700
+Subject: [PATCH 2/2] test/e2e: pass `--storage.tsdb.retention.time` to
+ Prometheus
+
+The `--storage.tsdb.retention` flag was long deprecated and removed in
+Prometheus 3.x. It is replaced with `--storage.tsdb.retention.time`,
+use it.
+---
+ pkg/promclient/promclient.go       | 4 ++--
+ pkg/testutil/e2eutil/prometheus.go | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/pkg/promclient/promclient.go b/pkg/promclient/promclient.go
+index b655ea1a..b844d570 100644
+--- a/pkg/promclient/promclient.go
++++ b/pkg/promclient/promclient.go
+@@ -213,7 +213,7 @@ func (c *Client) ExternalLabels(ctx context.Context, base *url.URL) (labels.Labe
+ 
+ type Flags struct {
+ 	TSDBPath           string         `json:"storage.tsdb.path"`
+-	TSDBRetention      model.Duration `json:"storage.tsdb.retention"`
++	TSDBRetention      model.Duration `json:"storage.tsdb.retention.time"`
+ 	TSDBMinTime        model.Duration `json:"storage.tsdb.min-block-duration"`
+ 	TSDBMaxTime        model.Duration `json:"storage.tsdb.max-block-duration"`
+ 	WebEnableAdminAPI  bool           `json:"web.enable-admin-api"`
+@@ -227,7 +227,7 @@ func (f *Flags) UnmarshalJSON(b []byte) error {
+ 	// - prometheus/prometheus: flags should return proper JSON (not bool in string).
+ 	parsableFlags := struct {
+ 		TSDBPath           string        `json:"storage.tsdb.path"`
+-		TSDBRetention      modelDuration `json:"storage.tsdb.retention"`
++		TSDBRetention      modelDuration `json:"storage.tsdb.retention.time"`
+ 		TSDBMinTime        modelDuration `json:"storage.tsdb.min-block-duration"`
+ 		TSDBMaxTime        modelDuration `json:"storage.tsdb.max-block-duration"`
+ 		WebEnableAdminAPI  modelBool     `json:"web.enable-admin-api"`
+diff --git a/pkg/testutil/e2eutil/prometheus.go b/pkg/testutil/e2eutil/prometheus.go
+index 1862361d..1d2b255f 100644
+--- a/pkg/testutil/e2eutil/prometheus.go
++++ b/pkg/testutil/e2eutil/prometheus.go
+@@ -240,7 +240,7 @@ func (p *Prometheus) start() error {
+ 		return err
+ 	}
+ 	args := append([]string{
+-		"--storage.tsdb.retention=2d", // Pass retention cause prometheus since 2.8.0 don't show default value for that flags in web/api: https://github.com/prometheus/prometheus/pull/5433.
++		"--storage.tsdb.retention.time=2d", // Pass retention cause prometheus since 2.8.0 don't show default value for that flags in web/api: https://github.com/prometheus/prometheus/pull/5433.
+ 		"--storage.tsdb.path=" + p.db.Dir(),
+ 		"--web.listen-address=" + p.addr,
+ 		"--web.route-prefix=" + p.prefix,
+-- 
+2.49.0.5.g15b5d850cb1
+

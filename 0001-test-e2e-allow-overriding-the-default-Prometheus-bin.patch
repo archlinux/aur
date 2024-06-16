@@ -1,0 +1,41 @@
+From c2e6a4f03d95c944fa79deed297e6aba33471305 Mon Sep 17 00:00:00 2001
+From: Ivan Shapovalov <intelfx@intelfx.name>
+Date: Tue, 15 Apr 2025 17:37:05 +0700
+Subject: [PATCH 1/2] test/e2e: allow overriding the default Prometheus binary
+
+In addition to `$THANOS_TEST_PROMETHEUS_PATHS` that allows overriding
+the set of Prometheus versions to test, also accept
+`$THANOS_TEST_PROMETHEUS_PATH` to allow overriding the single
+Prometheus version that is used as fallback.
+---
+ pkg/testutil/e2eutil/prometheus.go | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/pkg/testutil/e2eutil/prometheus.go b/pkg/testutil/e2eutil/prometheus.go
+index a6db07a9..1862361d 100644
+--- a/pkg/testutil/e2eutil/prometheus.go
++++ b/pkg/testutil/e2eutil/prometheus.go
+@@ -48,6 +48,7 @@ const (
+ 	defaultMinioVersion        = "RELEASE.2022-07-30T05-21-40Z"
+ 
+ 	// Space delimited list of versions.
++	prometheusBinEnvVar   = "THANOS_TEST_PROMETHEUS_PATH"
+ 	promPathsEnvVar       = "THANOS_TEST_PROMETHEUS_PATHS"
+ 	alertmanagerBinEnvVar = "THANOS_TEST_ALERTMANAGER_PATH"
+ 	minioBinEnvVar        = "THANOS_TEST_MINIO_PATH"
+@@ -89,7 +90,11 @@ var (
+ )
+ 
+ func PrometheusBinary() string {
+-	return "prometheus-" + defaultPrometheusVersion
++	b := os.Getenv(prometheusBinEnvVar)
++	if b == "" {
++		return fmt.Sprintf("prometheus-%s", defaultPrometheusVersion)
++	}
++	return b
+ }
+ 
+ func AlertmanagerBinary() string {
+-- 
+2.49.0.5.g15b5d850cb1
+

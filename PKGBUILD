@@ -10,6 +10,7 @@ url="https://thanos.io/"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
+checkdepends=('prometheus' 'alertmanager' 'minio')
 backup=(
   'etc/thanos/compact.conf'
   'etc/thanos/downsample.conf'
@@ -21,6 +22,8 @@ backup=(
 )
 source=(
   "thanos-${pkgver}.tar.gz::https://github.com/thanos-io/thanos/archive/v${pkgver}.tar.gz"
+  "0001-test-e2e-allow-overriding-the-default-Prometheus-bin.patch"
+  "0002-test-e2e-pass-storage.tsdb.retention.time-to-Prometh.patch"
   "thanos-compact.service"
   "thanos-downsample.service"
   "thanos-query.service"
@@ -38,6 +41,8 @@ source=(
   "thanos.sysuser"
 )
 sha512sums=('93609dbe9aeac52a17d7223c2c7d05ea9a4ecbf1fff362cff960965eddab68be22f5d937fbeb6d1795a83108cdba1381ee1054f11ccf56fd1e602172ae3aaf6f'
+            '1e5d8ed3e8a0ac50a014a364f8e297d7f0cbd1cafbd22ff4dc9a31b42e257aba6c7d66a2b875d0eda07cd2a88b029eebbcb9d71ae594f8dbccffd4ff68aa84f3'
+            '4d5f34bc571efaba159e9cf3e21a43bf2c8b0fad2fc6908ae45162d2df0ed0aa65a405837a70121c961e0fb77b2863efbdae5540ab0ff79b9cf6684bef756baa'
             '8b99500bd2aee6f49993cdce2770e890cec5cbb2c18e104afbf9d95442a1cc011591f57c1e3b5a7d83e4e4104c52cdab1465976f3fa2f8c870091674fec443d6'
             '01075b8fbe5dc2bb714b7ebfaa802be775dd7698bf3331948626eef73285477935f403e4ed80c81e4aad423b190313722f1c9cfbf21359419ff47345852d7721'
             '49bc075ebfae0722f2e6d8574dd7b95e2fdc0ce9bc043f8d2590a26edf227868dbdbcf9795c4518526fcd33e267fd5dabcd28b7692a14f55bd56f7aa5df02a69'
@@ -56,6 +61,10 @@ sha512sums=('93609dbe9aeac52a17d7223c2c7d05ea9a4ecbf1fff362cff960965eddab68be22f
 
 prepare() {
   cd "thanos-$pkgver"
+
+  # fix up tests to use (and work with) system Prometheus binary
+  patch -Np1 -i "${srcdir}/0001-test-e2e-allow-overriding-the-default-Prometheus-bin.patch"
+  patch -Np1 -i "${srcdir}/0002-test-e2e-pass-storage.tsdb.retention.time-to-Prometh.patch"
 
   go mod tidy
 }
@@ -90,6 +99,56 @@ build() {
     "${_goflags[@]}" \
     -o ./thanos \
     ./cmd/thanos
+}
+
+check() {
+  cd "thanos-$pkgver"
+
+  # point Thanos tests to Arch binaries
+  declare -g -x \
+    THANOS_TEST_PROMETHEUS_PATH \
+    THANOS_TEST_ALERTMANAGER_PATH \
+    THANOS_TEST_MINIO_PATH \
+    # EOL
+  THANOS_TEST_PROMETHEUS_PATH="$(command -v prometheus)"
+  THANOS_TEST_ALERTMANAGER_PATH="$(command -v alertmanager)"
+  THANOS_TEST_MINIO_PATH="$(command -v minio)"
+
+  # skip tests that expect public cloud credentials or fail with Arch binaries
+  local _skip=(
+    # need public cloud credentials
+    TestMetaFetcher_Fetch
+    TestIgnoreDeletionMarkFilter_Filter
+    TestGarbageCollectDoesntCreateEmptyBlocksWithDeletionMarksOnly
+    TestBucketStore_e2e
+    TestBucketStore_ManyParts_e2e
+    TestBucketStore_LabelValues_e2e
+    TestBucketStore_LabelNames_e2e
+    TestGroupCompactPenaltyDedupE2E
+    TestGroupCompactE2E
+    TestSyncer_GarbageCollect_e2e
+    TestShipper_SyncBlocks_e2e
+
+    # fail with newer prometheus
+    TestPrometheus_Rules_e2e
+
+    # ???
+    TestMemcachedClient_SetAsync_CircuitBreaker
+    TestRoundTripQueryCacheWithShardingMiddleware
+    # some sort of an ordering issue in expected serialization
+    TestBucketStore_TSDBInfo
+  )
+
+  # skip e2e tests under ./tests/e2e/ as they require docker
+  local _pkgs=(
+    ./cmd/...
+    ./pkg/...
+    ./internal/...
+    ./examples/...
+  )
+
+  local IFS='|'
+  go test -short -skip "${_skip[*]}" "${_pkgs[@]}"
 }
 
 package() {
