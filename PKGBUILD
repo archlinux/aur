@@ -3,7 +3,7 @@
 pkgname=python2-lxml
 _pkgver=4.9.4
 pkgver=${_pkgver/-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc='Python2 binding for the libxml2 and libxslt libraries'
 arch=('i686' 'x86_64' 'armv7h')
 url='https://lxml.de/'
@@ -26,6 +26,7 @@ _args=(--with-xml2-config=xml2-config-2.9 --with-xslt-config=xslt-config --auto-
 
 build() {
 	cd "${_dir}"
+	export CFLAGS+=' -Wno-error=incompatible-pointer-types'
 	python2 setup.py build build_ext -i "${_args[@]}"
 }
 
@@ -38,7 +39,7 @@ check() {
 package() {
 	cd "${_dir}"
 	python2 setup.py install --root "${pkgdir}" --prefix=/usr --optimize=1 --skip-build "${_args[@]}"
-	
+
 	install -Dm644 'LICENSES.txt' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 'doc/licenses/BSD.txt' "$pkgdir/usr/share/licenses/$pkgname/BSD.txt"
 	install -Dm644 'doc/licenses/elementtree.txt' "$pkgdir/usr/share/licenses/$pkgname/elementtree.txt"
