@@ -1,19 +1,21 @@
 pkgbase = emacs-ghub
 	pkgdesc = Emacs - Minuscule client library for the Github API
 	pkgver = 3.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://github.com/magit/ghub
 	arch = any
 	license = GPL3
 	makedepends = git
 	makedepends = texlive-core
+	makedepends = texlive-plaingeneric
 	depends = emacs
 	depends = emacs-dash
 	depends = emacs-graphql
 	depends = emacs-treepy
 	provides = emacs-ghub
 	source = git+https://github.com/magit/ghub.git#tag=v3.2.0
-	md5sums = SKIP
+	source = 0001-make-Explicitly-specify-output-directory-for-makeinf.patch
+	md5sums = 0111387a567e4bf62ccbc46e897e1dae
+	md5sums = 777222ee44c8da9f78a1e10bc3c4d714
 
 pkgname = emacs-ghub
-
