@@ -1,7 +1,7 @@
 # Contributor: David Vachulka <archdvx@dxsolutions.org>
 
 pkgname=dxreminders
-pkgver=1.21.2
+pkgver=1.21.3
 pkgrel=1
 pkgdesc="A simple program for reminders"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('wxwidgets-gtk3')
 makedepends=('cmake')
 install=${pkgname}.install
 source=(https://files.dxsolutions.org/$pkgname-$pkgver.tar.gz)
-md5sums=('1bb88e4508b7e112f94e7b122abda420')
+md5sums=('289da9f1dbc9fc5dda1cabb6a1862462')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
