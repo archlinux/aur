@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-gtk4-desktop-icons-ng
 	pkgdesc = A Gtk4 fork from the desktop icons project, with several enhancements, better multimonitor support, GSConnect integration. For Gnome Shell 45, 46.
-	pkgver = 76
+	pkgver = 77
 	pkgrel = 1
 	url = https://extensions.gnome.org/extension/5263/gtk4-desktop-icons-ng-ding
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = gnome-shell-extension-gtk4-desktop-icons-ng
 	conflicts = gnome-shell-extension-desktop-icons-ng
 	conflicts = gnome-shell-extension-desktop-icons-ng-git
 	conflicts = gnome-shell-extension-desktop-icons
-	source = git+https://gitlab.com/smedius/desktop-icons-ng.git#commit=6c44f7c94ca22e07d9639255d94c6acabf10e91e
+	source = git+https://gitlab.com/smedius/desktop-icons-ng.git#commit=c893ab36dc4600192f39299c9328a0d47e75e388
 	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-gtk4-desktop-icons-ng
