@@ -1,12 +1,12 @@
 # Maintainer: Santiago Burgos <santiago.burgos1089@gmail.com>
 
 pkgname=mint-l-icons
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc='A flat, colorful, and modern theme based on Paper and Moka. Legacy version'
 arch=('any')
 url="http://packages.linuxmint.com/pool/main/m/${pkgname}"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=(
     'gtk-update-icon-cache'
     'hicolor-icon-theme'
@@ -16,7 +16,7 @@ optdepends=(
 )
 options=(!strip)
 source=("${url}/${pkgname}_${pkgver}.tar.xz")
-sha256sums=('1ea9a614f47f39a0b93a0b857a4e735141b12ac46920c47fa3768881d1f335c5')
+sha256sums=('cd2c0e8f01d37c8a53f6356dcdaf1df0c433b188e3e85c32f46a928eb8ba7c2c')
 
 package() {
     cd "${srcdir}"/"${pkgname}"
