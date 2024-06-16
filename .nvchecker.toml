@@ -1,0 +1,3 @@
+[python-gnureadline]
+source = "pypi"
+pypi = "gnureadline"
