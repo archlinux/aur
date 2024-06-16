@@ -1,5 +1,5 @@
 pkgbase = cab
-	pkgdesc = MacPorts-like maintenance command of Haskell cabal packages
+	pkgdesc = A maintenance command of Haskell cabal packages.
 	pkgver = 0.2.21
 	pkgrel = 5
 	url = http://www.mew.org/~kazu/proj/cab
