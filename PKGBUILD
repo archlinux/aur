@@ -3,7 +3,7 @@
 
 pkgname=osmo-msc
 pkgver=1.11.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Osmocom's Mobile Switching Center for 2G and 3G circuit-switched mobile networks"
 url="https://osmocom.org/projects/osmomsc"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
@@ -15,8 +15,8 @@ depends=('libosmocore'
          'libosmo-gsup-client.so' # from osmo-hlr
          'libosmo-mgcp-client.so' # from osmo-mgw
          'libosmo-ranap.so' # from osmo-iuh (for --enable-iu)
-         'libasn1c' # (for --enable-iu)
-         'libsmpp34'
+         'libasn1c.so' # (for --enable-iu)
+         'libsmpp34.so' # (for --enable-smpp)
          'lksctp-tools'
          'sqlite'
          'talloc')
