@@ -11,6 +11,7 @@ pkgbase = osmo-pcu-git
 	makedepends = git
 	depends = libosmocore
 	depends = talloc
+	provides = osmo-pcu=1.4.0.r1.gb04e1d7d
 	conflicts = osmo-pcu
 	backup = etc/osmocom/osmo-pcu.cfg
 	source = git+https://gitea.osmocom.org/cellular-infrastructure/osmo-pcu.git
