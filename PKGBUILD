@@ -18,13 +18,13 @@ build() {
   # https://github.com/ab25cq/xyzsh/issues/5
   patch -p1 -i ../gcc14.patch
   ./configure --prefix=/usr --sysconfdir=/etc --with-optimize
-  make -j1
+  make
 }
 
 package() {
   cd ${srcdir}/${pkgname}-${pkgver}
 
-  make -j1 DESTDIR=${pkgdir} install
+  make DESTDIR=${pkgdir} install
   install --mode=644 -D --no-target-directory $srcdir/$pkgname-$pkgver/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
 }
