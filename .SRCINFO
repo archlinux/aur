@@ -1,0 +1,17 @@
+pkgbase = byobu
+	pkgdesc = Enhanced tmux
+	pkgver = 6.1.12
+	pkgrel = 1
+	url = https://byobu.org/
+	arch = any
+	license = GPL-3.0
+	makedepends = gettext
+	makedepends = git
+	makedepends = setconf
+	depends = libnewt
+	depends = python
+	depends = tmux
+	source = git+https://github.com/dustinkirkland/byobu#commit=cd253f0229b68d3c2cffa8d862309c6ea7019d94
+	b2sums = 2efc481edef6f74641e93de012a34d2ac496a7bf402d390aa677954aa08554efeba3a2833a7c385a712923a96c0a765397db9d8f86cb2c19021547c5cf5e231b
+
+pkgname = byobu

@@ -6,26 +6,23 @@
 # Contributor: Justin Coffman <jcoffman at datasecu dot red>
 
 pkgname=byobu
-pkgver=5.133
-pkgrel=3
+pkgver=6.1.12
+pkgrel=1
 pkgdesc='Enhanced tmux'
 arch=(any)
 url='https://byobu.org/'
-license=(GPL3)
+license=(GPL-3.0)
 depends=(libnewt python tmux)
-makedepends=(gettext setconf)
-source=("$pkgname-$pkgver.tar.gz::https://launchpad.net/byobu/trunk/$pkgver/+download/byobu_$pkgver.orig.tar.gz"
-        "$pkgname-$pkgver.tar.gz.asc::https://launchpad.net/byobu/trunk/$pkgver/+download/..-byobu_$pkgver.orig.tar.gz.asc")
-sha256sums=('4d8ea48f8c059e56f7174df89b04a08c32286bae5a21562c5c6f61be6dab7563'
-            'SKIP')
-validpgpkeys=('E2D9E1C5F9F5D59291F4607D95E64373F1529469') # Dustin Kirkland <kirkland@ubuntu.com>
+makedepends=(gettext git setconf)
+source=('git+https://github.com/dustinkirkland/byobu#commit=cd253f0229b68d3c2cffa8d862309c6ea7019d94')
+b2sums=('2efc481edef6f74641e93de012a34d2ac496a7bf402d390aa677954aa08554efeba3a2833a7c385a712923a96c0a765397db9d8f86cb2c19021547c5cf5e231b')
 
 prepare() {
   # Adjust path to SOCKETDIR
-  setconf "$pkgname-$pkgver/etc/byobu/socketdir" SOCKETDIR '"/tmp/screens"'
+  setconf "$pkgname/etc/byobu/socketdir" SOCKETDIR '"/tmp/screens"'
 
   # Tweak the two .desktop files that comes with Byobu
-  cd "$pkgname-$pkgver/usr/share/byobu/desktop"
+  cd $pkgname/usr/share/byobu/desktop
   setconf byobu.desktop Name 'Byobu Gnome Terminal'
   setconf byobu.desktop Icon=/usr/share/byobu/pixmaps/byobu.svg
   setconf byobu.desktop \
@@ -34,13 +31,14 @@ prepare() {
 }
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd $pkgname
+  autoreconf -fiv
   ./configure --prefix=/usr --sysconfdir=/etc
   make
 }
 
 package() {
-  DESTDIR="$pkgdir" make -C "$pkgname-$pkgver" install
+  DESTDIR="$pkgdir" make -C "$pkgname" install
 
   # Move .desktop files to /usr/share/applications
   install -d "$pkgdir/usr/share/applications"
@@ -50,6 +48,3 @@ package() {
     "$pkgdir/usr/share/applications/byobu_old.desktop"
   rmdir "$pkgdir/usr/share/byobu/desktop"
 }
-
-# getver: launchpad.net/byobu/+download
-# vim: ts=2 sw=2 et:
