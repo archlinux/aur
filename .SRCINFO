@@ -1,12 +1,14 @@
 pkgbase = dbus-term-launcher
 	pkgdesc = Wrapper program to launch arbitrary terminal with Terminal intent API
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/thayne/dbus-term-launcher
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	makedepends = meson
+	makedepends = glib2-devel
 	depends = glib2
+	depends = glibc
 	optdepends = alacritty: for alacritty launcher
 	optdepends = kitty: for kitty launcher
 	optdepends = xterm: for xterm launcher
