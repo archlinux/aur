@@ -15,8 +15,8 @@ depends=('libosmocore'
          'libosmo-gsup-client.so' # from osmo-hlr
          'libosmo-mgcp-client.so' # from osmo-mgw
          'libosmo-ranap.so' # from osmo-iuh (for --enable-iu)
-         'libasn1c' # (for --enable-iu)
-         'libsmpp34'
+         'libasn1c.so' # (for --enable-iu)
+         'libsmpp34.so' # (for --enable-smpp)
          'lksctp-tools'
          'sqlite'
          'talloc')
