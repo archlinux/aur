@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/mikedilger/gossip"
 license=(MIT)
 conflicts=(ffmpeg-git)
-makedepends=(cargo git mold clang)
+makedepends=(cargo clang cmake ffmpeg git mold)
 optdepends=(xdg-utils)
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/mikedilger/gossip/archive/refs/tags/v${pkgver}.tar.gz"
