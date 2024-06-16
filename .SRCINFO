@@ -10,6 +10,6 @@ pkgbase = ucm-bin
 	source = ucm-0.5.21::https://github.com/unisonweb/unison/releases/download/release%2F0.5.21/ucm-linux.tar.gz
 	source = https://raw.githubusercontent.com/unisonweb/unison/release/0.5.21/LICENSE
 	sha256sums = 9e29e47d807d766383ebe2ec40d0c95bcf45af0667d86ad990b19b69f32cac78
-	sha256sums = cbcdbf3fd38b10578a384fdfa53f498ceb66bc34af6c3c705577aa68afffc4ac
+	sha256sums = 26537a8bd08791aef2f335fd296b00023b292546b8a1b35223c11abca39cd6ed
 
 pkgname = ucm-bin

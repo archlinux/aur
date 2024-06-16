@@ -11,7 +11,7 @@ depends=('gmp' 'zlib')
 source=("ucm-$pkgver::https://github.com/unisonweb/unison/releases/download/release%2F$pkgver/ucm-linux.tar.gz"
         "https://raw.githubusercontent.com/unisonweb/unison/release/$pkgver/LICENSE")
 sha256sums=('9e29e47d807d766383ebe2ec40d0c95bcf45af0667d86ad990b19b69f32cac78'
-            'cbcdbf3fd38b10578a384fdfa53f498ceb66bc34af6c3c705577aa68afffc4ac')
+            '26537a8bd08791aef2f335fd296b00023b292546b8a1b35223c11abca39cd6ed')
 
 package() {
   install -D -m755 ucm "$pkgdir/usr/share/ucm/ucm"
