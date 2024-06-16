@@ -1,17 +1,17 @@
 pkgbase = mint-themes
 	pkgdesc = A collection of Mint themes.
-	pkgver = 2.1.6
+	pkgver = 2.1.7
 	pkgrel = 1
 	url = http://packages.linuxmint.com/pool/main/m/mint-themes
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = python
 	makedepends = sassc
 	depends = ttf-ubuntu-font-family
 	optdepends = mint-y-icons
 	optdepends = mint-x-icons
 	options = !strip
-	source = mint-themes_2.1.6.tar.xz::http://packages.linuxmint.com/pool/main/m/mint-themes/mint-themes_2.1.6.tar.xz
-	sha256sums = 5358493edeca9188a8c243ba6f352d020b8961d852836319b0292117ed17e096
+	source = mint-themes_2.1.7.tar.xz::http://packages.linuxmint.com/pool/main/m/mint-themes/mint-themes_2.1.7.tar.xz
+	sha256sums = 42a77084026dd6ffb8f271be5da01f478df59f458891018f56e3e4fee7a40422
 
 pkgname = mint-themes
