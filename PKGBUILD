@@ -1,7 +1,7 @@
-# Maintainer: RogueGirl
+# Contributor: RogueGirl
 
 pkgname=libfreenect-git
-pkgver=v0.7.0.r0.g0f8d11e
+pkgver=v0.7.5.r0.g09a1f09
 pkgrel=1
 pkgdesc="Drivers and libraries for the Xbox Kinect device on Linux"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=(
 )
 makedepends=('cmake' 'libxmu' 'cython0' 'python-numpy')
 optdepends=('opencv: support for python demos'
-            'python2-matplotlib: support for python demos')
+            'python-matplotlib: support for python demos')
 provides=('libfreenect')
 conflicts=('libfreenect')
 source=('libfreenect-git::git+https://github.com/OpenKinect/libfreenect.git#branch=master')
