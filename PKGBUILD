@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=simple-icons
-pkgver=12.2.0
+pkgver=12.3.0
 pkgrel=1
 pkgdesc="Free SVG icons for popular brands"
 arch=('any')
@@ -17,7 +17,7 @@ options=(
 source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/${pkgver}.tar.gz"
 )
-sha256sums=('caa0e6104eb58f2a9394abb6d2d1eaef98eb93b64c2a62c0979ce8b833f9d870')
+sha256sums=('9346e6c9e43a22f2255ef9fbc0bce656540373a52d9970d2d00ca2d4b67cd40c')
 package() {
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/icons/"*.svg -t "${pkgdir}/usr/share/icons/${pkgname}/scalable"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
