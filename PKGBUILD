@@ -1,7 +1,7 @@
 # Maintainer: iamawacko <iamawacko@protonmail.com>
 pkgname=kipr
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Command Line Password Manager'
 url='https://github.com/grahamking/kipr'
 license=('MIT')
@@ -14,14 +14,7 @@ sha256sums=('a4ce0a5563f0a620679681645b451a26b732f3b531baf0b60aafbc947291fcb1')
 
 prepare() {
 	cd "$pkgname-$pkgver"
-	case $CARCH in 
-		"pentium4")
-			cargo fetch --locked --target "i686-unknown-linux-gnu"
-			;;
-		*)
-			cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
-			;;
-	esac
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
