@@ -1,6 +1,6 @@
 pkgbase = mautrix-signal
 	pkgdesc = A Matrix-Signal puppeting bridge (go rewrite)
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/mautrix/signal
 	install = mautrix-signal.install
@@ -9,17 +9,17 @@ pkgbase = mautrix-signal
 	arch = armv7h
 	license = AGPL-3.0-or-later
 	makedepends = go
-	makedepends = libsignal-ffi=0.44.0
+	makedepends = libsignal-ffi=0.51.0
 	depends = glibc
 	depends = gcc-libs
 	depends = libolm
 	backup = etc/mautrix-signal/config.yaml
 	backup = etc/mautrix-signal/registration.yaml
-	source = https://github.com/mautrix/signal/archive/refs/tags/v0.6.1.tar.gz
+	source = https://github.com/mautrix/signal/archive/refs/tags/v0.6.2.tar.gz
 	source = mautrix-signal.service
 	source = mautrix-signal.sysusers
 	source = mautrix-signal.tmpfiles
-	sha256sums = e06e32fb678c15c532041c1a08e952a14fabd89c01693d4aa3630fbfa85c86ba
+	sha256sums = 979936a2958ac0168284190910e9e2a0d1757c2eae39596fc560da4b75614ecd
 	sha256sums = e9a6a88f7b08fa00b354c3d50ded995f5578e6a6b75b96988cc2b27432575ded
 	sha256sums = b47c0829a9f285e0a4bd7852e601f325e1fa8385ea96eaa92cad204c0e583adf
 	sha256sums = 5badc8727dfbf4531f93e86ae475c64753952ee60090a043be22b9dd9a124ca5
