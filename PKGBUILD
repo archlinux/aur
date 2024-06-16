@@ -4,15 +4,28 @@
 
 pkgbase=pango-git
 pkgname=(pango-git pango-docs-git)
-pkgver=1.50.8.r7.g4b5905aa
+pkgver=1.54.0
 pkgrel=1
 epoch=1
 pkgdesc="A library for layout and rendering of text"
 url="https://www.pango.org/"
 arch=(x86_64)
-license=(LGPL)
-depends=(cairo libxft harfbuzz fribidi libthai)
-makedepends=(gobject-introspection help2man git meson gi-docgen)
+license=(LGPL-2.1-or-later)
+depends=(
+  cairo
+  fontconfig
+  freetype2
+  fribidi
+  glib2
+  glibc
+  harfbuzz
+  libsysprof-capture
+  libthai
+  libx11
+  libxft
+  libxrender
+)
+makedepends=(gobject-introspection help2man git meson gi-docgen glib2-devel)
 source=("git+https://gitlab.gnome.org/GNOME/pango.git")
 sha256sums=('SKIP')
 
@@ -22,14 +35,15 @@ pkgver() {
 }
 
 build() {
-  arch-meson pango build -D gtk_doc=true
+  local meson_options=(
+    -D documentation=true
+    -D sysprof=enabled
+  )
+  arch-meson pango build "${meson_options[@]}"
   meson compile -C build
 }
 
-#Not running checks according to official PKGBUILD
-#check() {
-#  meson test -C build --print-errorlogs
-#}
+# Not running checks according to official PKGBUILD
 
 package_pango-git() {
   provides=(pango libpango{,cairo,ft2,xft}-1.0.so)
