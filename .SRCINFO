@@ -1,13 +1,14 @@
 pkgbase = android-studio-system
 	pkgdesc = The official Android IDE (Stable branch)
 	pkgver = 2024.1.1.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.android.com/studio
 	arch = x86_64
 	license = APACHE
 	depends = alsa-lib
 	depends = libxtst
 	depends = java-environment=17
+	depends = kotlin
 	optdepends = ncurses5-compat-libs: native debugger support
 	provides = android-studio
 	conflicts = android-studio

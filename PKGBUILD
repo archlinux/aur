@@ -12,13 +12,13 @@
 
 pkgname=android-studio-system
 pkgver=2024.1.1.11
-pkgrel=1
+pkgrel=2
 pkgdesc="The official Android IDE (Stable branch)"
 arch=('x86_64')
 url="https://developer.android.com/studio"
 license=('APACHE')
 makedepends=()
-depends=('alsa-lib' 'libxtst' 'java-environment=17')
+depends=('alsa-lib' 'libxtst' 'java-environment=17' 'kotlin')
 optdepends=('ncurses5-compat-libs: native debugger support')
 options=('!strip') # Removing it is a bit more violent but it removes 90MB of files...
 source=("https://dl.google.com/dl/android/studio/ide-zips/$pkgver/android-studio-$pkgver-linux.tar.gz"
@@ -36,6 +36,14 @@ package() {
   # Install the application
   install -dm 755 $pkgdir/usr/{bin,share/{licenses,pixmaps,android-studio}}
   cp -a bin lib plugins build.txt product-info.json $pkgdir/usr/share/android-studio
+
+  # Kotlinc
+  rm -rf $pkgdir/usr/share/android-studio/plugins/Kotlin/kotlinc/{bin,lib,license,build.txt}
+  ln -s /usr/bin/ $pkgdir/usr/share/android-studio/plugins/Kotlin/kotlinc/bin
+  ln -s /usr/share/kotlin/lib/ $pkgdir/usr/share/android-studio/plugins/Kotlin/kotlinc/lib
+  ln -s /usr/share/kotlin/build.txt $pkgdir/usr/share/android-studio/plugins/Kotlin/kotlinc/build.txt
+  ln -s /usr/share/licenses/kotlin/ $pkgdir/usr/share/android-studio/plugins/Kotlin/kotlinc/license
+
   ln -s /usr/share/android-studio/bin/studio.sh $pkgdir/usr/bin/android-studio
   ln -s /usr/lib/jvm/java-17-openjdk/ $pkgdir/usr/share/android-studio/jbr
 
