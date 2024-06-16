@@ -1,17 +1,17 @@
-# Maintainer: luka null β <lukadevnull@vivaldi.net>
+# Contributor: luka null β <lukadevnull@vivaldi.net>
 # Contributor: Laurent Carlier <lordheavym@gmail.com>
 # Contributor: lod <aur@cyber-anlage.de>
 
 pkgname=amdvlk-2021q2.5
 pkgver=2021.Q2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="AMD's standalone Vulkan driver for pre-Raven (GCN 5.0 APU) and pre-Polaris (GCN 4.0) GPUs."
 arch=(x86_64)
 url="https://github.com/GPUOpen-Drivers"
 license=('MIT')
 provides=('vulkan-driver')
 makedepends=('perl-xml-xpath' 'python' 'wayland' 'libxrandr' 'xorg-server-devel' 'cmake' 'ninja' 'git')
-makedepends+=('python2') # spvgen
+makedepends+=('python') # spvgen
 conflicts=("amdvlk")
 source=("https://github.com/GPUOpen-Drivers/AMDVLK/archive/v-${pkgver}.tar.gz")
 sha256sums=('e115011f99356b41aa60381b4cde0519e25c6d2b369316a390367b224fe9eef7')
@@ -32,11 +32,14 @@ prepare() {
       popd
     (( nrepos-- ))
   done
+  # solve some compilation bugs:
+  sed -i '31 a #include <ctime>' pal/src/util/lnx/lnxUuid.cpp
+  sed -i '17 a #include <cstdint>' llvm-project/llvm/include/llvm/Support/Signals.h
 }
 
 build() {
   cd ${srcdir}/spvgen/external
-  python2 fetch_external_sources.py
+  python fetch_external_sources.py
 
   cd ${srcdir}/xgl
   cmake -H. -Bbuilds/Release64 \
