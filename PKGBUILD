@@ -1,7 +1,7 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=diffviewer
-_cranver=0.1.1
+_cranver=0.1.2
 pkgname=r-${_cranname,,}
 pkgdesc="HTML Widget to Show File Differences"
 url="https://cran.r-project.org/package=${_cranname}"
@@ -11,7 +11,7 @@ pkgrel=1
 
 arch=("any")
 depends=(
-    "r"
+    "r>=3.6.0"
     "r-htmlwidgets"
     "r-jsonlite"
 )
@@ -21,7 +21,7 @@ optdepends=(
 )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("6d90157d0e3bb7cdadc79f6ec259fad8b8b8e6f614fb3be68609c8f475dc4b207116c0e78078773ac52af0fefcee1c59cf22ea197442b6d9afed16ef5f0a3a81")
+b2sums=("d5cf6773999853b5e7ca9cd3fa6f17e41d717cd2da4cc28c36968dae56015be9e3d3e04461b7ccc72242256159c76b34c40b01c1805c846020c45f6b3fe81f9d")
 
 build() {
     mkdir -p "${srcdir}/build/"
