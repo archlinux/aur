@@ -1,14 +1,14 @@
 # Maintainer: Goldy <goldy@devgoldy.xyz>
 # Maintainer: Ananas <ananas@ananas.moe>
 pkgname=mov-cli
-pkgver="4.3.15"
+pkgver="4.4.1"
 pkgrel=1
 pkgdesc="Watch everything from your terminal."
 arch=("x86_64" "i686")
 url="https://github.com/mov-cli/mov-cli"
 license=("MIT")
 makedepends=(
-	"python-build" "python-wheel" "python-setuptools-scm" "python-installer"
+	"python-build" "python-wheel" "python-installer"
 )
 depends=(
 	"python"
