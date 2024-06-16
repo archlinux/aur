@@ -1,67 +1,78 @@
 # Maintainer: Madeline Mewmews <maddie at mewmews dot gay>
+# Maintainer: bemxio <bemxiov at protonmail dot com>
 # Contributor: Harrison <htv04rules at gmail dot com>
 
-_pkgbase=sm64coopdx
-#edit if using a non-us rom
-_sm64ver=us
-_pkgname=${_pkgbase}
+pkgname="sm64coopdx-git"
+pkgdesc="A fork of sm64ex-coop with more features, customizability and power to the Lua API"
 
-pkgname=${_pkgname}-git
-pkgver=r3689.30ccad30
-pkgrel=3
-pkgdesc="Fork of sm64ex-coop with more features, customizability and power to the Lua API."
-arch=("x86_64" "i686" "pentium4" "arm" "armv6h" "armv7h" "aarch64")
-url="https://github.com/coop-deluxe/${_pkgbase}"
-license=("reverse-engineered and unlicensed")
-depends=("sdl2")
-makedepends=('audiofile' 'git' 'python' 'glew' 'zlib' 'curl')
-provides=(${_pkgname})
-conflicts=(${_pkgname})
-source=("git+${url}"
-        "file://baserom.${_sm64ver}.z64"
-        "${_pkgname}.sh"
-        "${_pkgname}.desktop"
-        "${_pkgname}.png")
-sha256sums=("SKIP"
-            "17ce077343c6133f8c9f2d6d6d9a4ab62c8cd2aa57c40aea1f490b4c8bb21d91" # CHANGE IF USING NON-US ROM.
-            "e06407a3a92334db30bebcfa94b7bb9ddfcc1ffe71ea7e5b85a8a15288cf0a42"
-            "d51ca0a8e000ed7a99f09c0247cabfb58fa96ac042ac17498d05556e2b42f651"
-            "ab30cbc8720714ea02c1e36088bef6f1609c1e81d67b72807ecdd98d21bc03eb")
+_region="us" # change this (as well as the 2nd checksum in line 25) if you want to use a different ROM
+
+pkgver=r3689.30ccad3
+pkgrel=1
+epoch=1
+
+arch=(x86_64 i686 pentium4 aarch64 armv7h)
+
+url="https://sm64coopdx.com/"
+#license=("LicenseRef-unknown")
+
+depends=(sdl2)
+makedepends=(git "python>=3.6" glew zlib curl audiofile gendesk)
+
+provides=(sm64coopdx)
+#conflicts=()
+
+DLAGENTS=("file::/usr/bin/echo Could not find %u. Please download it to `$(pwd)` in order to build the package.")
+
+source=("git+https://github.com/coop-deluxe/sm64coopdx.git" "file://baserom.${_region}.z64" "sm64coopdx.sh" "sm64coopdx.png")
+md5sums=("SKIP" "20b854b239203baf6c961b850a4a51a2" "fda12fe3e7f38cf15273bd5cd47448f0" "9bec90a66559edbf42992c4985e4548a")
+
+options=("!strip")
 
 pkgver() {
-  cd "${srcdir}/${_pkgbase}"
+  	# move to the source directory
+	cd sm64coopdx
 
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	# use the number of revisions since beginning of the history
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
-  cd "${srcdir}"
+    # copy the ROM to the source directory
+    cp "baserom.${_region}.z64" "sm64coopdx/baserom.${_region}.z64"
 
-  cp baserom.${_sm64ver}.z64 "${srcdir}/${_pkgbase}"
+    # generate a .desktop file
+    gendesk -f -n \
+        --pkgname "Super Mario 64 Coop Deluxe" \
+        --pkgdesc "${pkgdesc}" \
+        --exec sm64coopdx \
+        --icon sm64coopdx.png \
+        --categories "Game;ActionGame;AdventureGame"
 }
 
 build() {
-  cd "${srcdir}/${_pkgbase}"
+    # move to the source directory
+    cd sm64coopdx
 
-  # Reference: https://github.com/sm64pc/sm64ex/wiki/Build-options
-  make VERSION=${_sm64ver} TARGET_BITS=64 COOPNET=1 RENDER_API=GL WINDOW_API=SDL2 # OPT_LEVEL=4 TEXTURE_FIX=1
+    # build the game
+    make
 }
 
 package() {
-  cd "${srcdir}"
+    # move to the build directory
+    cd "sm64coopdx/build/${_region}_pc"
 
-  # Install binary and launcher
-  install -Dm0755 ${_pkgbase}/build/${_sm64ver}_pc/sm64coopdx "${pkgdir}/usr/share/${_pkgname}/${_pkgname}"
-  install -Dm0755 ${_pkgname}.sh "${pkgdir}/usr/bin/${_pkgname}"
-  # Install Libs
-  install -Dm0644 ${_pkgbase}/build/${_sm64ver}_pc/libdiscord_game_sdk.so "${pkgdir}/usr/share/${_pkgname}/libdiscord_game_sdk.so"
-  install -Dm0644 ${_pkgbase}/build/${_sm64ver}_pc/libbass.so "${pkgdir}/usr/share/${_pkgname}/libbass.so"
-  install -Dm0644 ${_pkgbase}/build/${_sm64ver}_pc/libbass_fx.so "${pkgdir}/usr/share/${_pkgname}/libbass_fx.so"
-  install -Dm0644 ${_pkgbase}/build/${_sm64ver}_pc/lang/* -t ${pkgdir}/usr/share/${_pkgname}/lang/
-  # Install Mods and DynOS Packs
-  (cd ${_pkgbase}/build/${_sm64ver}_pc/ && find dynos -type f -exec install -Dm 755 "{}" ${pkgdir}/usr/share/${_pkgname}/"{}" \;)
-  (cd ${_pkgbase}/build/${_sm64ver}_pc/ && find mods -type f -exec install -Dm 755 "{}" ${pkgdir}/usr/share/${_pkgname}/"{}" \;)
-  # Install desktop entry
-  install -Dm0644 ${_pkgname}.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png"
-  install -Dm0644 ${_pkgname}.desktop "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    # copy all of the built files
+    find . -type f \
+        -not -name "sm64coopdx" \
+        -exec install -Dm644 {} "${pkgdir}/usr/share/sm64coopdx/{}" \;
+
+    install -Dm755 sm64coopdx "${pkgdir}/usr/share/sm64coopdx/sm64coopdx"
+
+    # copy the script
+    install -Dm755 "${srcdir}/sm64coopdx.sh" "${pkgdir}/usr/bin/sm64coopdx"
+
+    # copy the icon and the .desktop file
+    install -Dm644 "${srcdir}/sm64coopdx.png" "${pkgdir}/usr/share/pixmaps/sm64coopdx.png"
+    install -Dm644 "${srcdir}/sm64coopdx.desktop" "${pkgdir}/usr/share/applications/sm64coopdx.desktop"
 }

@@ -1,0 +1,17 @@
+# Source and package folders
+src/
+pkg/
+
+# Raw repository files
+sm64coopdx/
+
+# Nintendo 64 ROM files
+*.z64
+
+# Archive files
+*.zip
+*.tar.gz
+*.tar.xz
+
+# Package files
+*.zst

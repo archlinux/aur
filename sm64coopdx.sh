@@ -1,12 +1,11 @@
 #!/bin/sh
 
-# Launcher for sm64 Coop DX (US)
+# constants
+GAMEPATH="/usr/share/sm64coopdx"
+SAVEPATH="$HOME/.local/share/sm64coopdx"
 
-pkgname=sm64coopdx
-sm64path=~/.local/share/${pkgname}
+# create the save directory if it doesn't exist
+mkdir -p "$SAVEPATH"
 
-# Create sm64path if it doesn't exist
-mkdir -p "${sm64path}"
-
-# Redirect savepath to sm64path and launch
-LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/share/sm64coopdx" /usr/share/${pkgname}/${pkgname} --savepath "${sm64path}" "$@"
+# run the game
+LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$GAMEPATH" "$GAMEPATH/sm64coopdx" --savepath "$SAVEPATH" "$@"
