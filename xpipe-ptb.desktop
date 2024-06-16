@@ -9,5 +9,4 @@ Icon=xpipe-ptb
 Terminal=false
 Categories=Utility;Development;
 StartupNotify=true
-StartupWMClass=io.xpipe.app.core.App
 MimeType=x-scheme-handler/xpipe;x-scheme-handler/ssh
