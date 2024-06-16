@@ -1,8 +1,8 @@
 #!/bin/bash
 
 _pkgnamefmt=LibreOfficeDev
-_pkgver=24.8.0.0.alpha1
-pkgver=24.8.0.0alpha1
+_pkgver=24.8.0.0.beta1
+pkgver=24.8.0.0beta1
 
 sed -i "5s|_pkgnamefmt=.*|_pkgnamefmt=${_pkgnamefmt}|" PKGBUILD
 
