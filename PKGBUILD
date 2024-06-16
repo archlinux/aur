@@ -40,6 +40,7 @@ prepare() {
 
   sed -i 's/default = \["embed_frontend"\]/default = []/' ffplayout/Cargo.toml
   sed -i 's|ExecStart=/usr/bin/ffplayout|ExecStart=/usr/bin/ffplayout -l 0.0.0.0:8787|' assets/ffplayout.service
+  sed -i '/ffplayout\/README\.md/d' scripts/man_create.sh
 
   export CARGO_HOME="$srcdir/rust-home"
   export RUSTUP_HOME="$srcdir/rust-home"
@@ -71,7 +72,6 @@ build() {
 
   # man docs
   cd "${srcdir}/${pkgname}"
-  sed -i '/ffplayout\/README\.md/d' scripts/man_create.sh
   ./scripts/man_create.sh
 
   # Backend build step
