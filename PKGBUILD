@@ -1,7 +1,7 @@
 # Maintainer: Răzvan Cojocaru <rzvncj@gmail.com>
 
 pkgname=gdbuspp-git
-pkgver=master_7d80f553d64ec647
+pkgver=makepkg_7d80f553d64ec647
 pkgrel=1
 pkgdesc="glib2 D-Bus C++ interface"
 arch=('x86_64')
@@ -27,8 +27,14 @@ build() {
 }
 
 check() {
-  cd "$srcdir/$pkgname"
-  meson test -C build
+  #
+  # Checks are disabled for now, because it is required that they
+  # run in the same D-Bus session as the originally logged-in user.
+  # That means that even running them with "sudo --user #<UID>"
+  # (like pikaur does) will cause them to fail in an irrelevant way.
+  #
+  # cd "$srcdir/$pkgname"
+  # meson test -C build
 }
 
 package() {
