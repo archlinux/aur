@@ -11,6 +11,7 @@ pkgbase = osmo-ggsn-git
 	makedepends = git
 	depends = libosmocore
 	depends = talloc
+	provides = osmo-ggsn=1.11.0.r2.g8d97644
 	provides = libgtp.so=6-64
 	conflicts = osmo-ggsn
 	backup = etc/osmocom/osmo-ggsn.cfg

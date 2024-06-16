@@ -10,7 +10,8 @@ arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=('GPL-2.0-only AND LGPL-2.1-or-later AND MIT')
 depends=('libosmocore' 'talloc')
 makedepends=('git')
-provides=('libgtp.so=6-64')
+provides=("${pkgname%-git}=${pkgver}"
+          'libgtp.so=6-64')
 conflicts=("${pkgname%-git}")
 backup=('etc/osmocom/osmo-ggsn.cfg')
 source=("git+https://gitea.osmocom.org/cellular-infrastructure/${pkgname%-git}.git"
