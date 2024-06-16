@@ -1,7 +1,7 @@
 pkgbase = papers
-	pkgdesc = Document viewer (PDF, PostScript, XPS, djvu, dvi, tiff, cbr, cbz, cb7, cbt)
+	pkgdesc = Document viewer (PDF, PostScript, XPS, djvu, tiff, cbr, cbz, cb7, cbt)
 	pkgver = 46.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://apps.gnome.org/Papers/
 	arch = x86_64
 	license = GPL
@@ -13,6 +13,7 @@ pkgbase = papers
 	makedepends = yelp-tools
 	makedepends = rust
 	makedepends = libnautilus-extension
+	makedepends = glib2-devel
 	depends = dconf
 	depends = djvulibre
 	depends = gsettings-desktop-schemas
@@ -36,5 +37,5 @@ pkgname = papers
 	provides = libppsview-4.0.so
 
 pkgname = papers-lib-docs
-	pkgdesc = Document viewer (PDF, PostScript, XPS, djvu, dvi, tiff, cbr, cbz, cb7, cbt) (library API documentation)
+	pkgdesc = Document viewer (PDF, PostScript, XPS, djvu, tiff, cbr, cbz, cb7, cbt) (library API documentation)
 	depends = 

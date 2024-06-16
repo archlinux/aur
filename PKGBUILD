@@ -6,8 +6,8 @@ pkgname=(
   papers-lib-docs
 )
 pkgver=46.1
-pkgrel=1
-pkgdesc="Document viewer (PDF, PostScript, XPS, djvu, dvi, tiff, cbr, cbz, cb7, cbt)"
+pkgrel=2
+pkgdesc="Document viewer (PDF, PostScript, XPS, djvu, tiff, cbr, cbz, cb7, cbt)"
 url="https://apps.gnome.org/Papers/"
 arch=(x86_64)
 license=(GPL)
@@ -36,6 +36,7 @@ makedepends=(
   yelp-tools
   rust
   libnautilus-extension
+  glib2-devel
 )
 _commit=745aa740b909a0ee6a55c1fa3bf593d97b766733   # tags/46.1^0
 source=("git+https://gitlab.gnome.org/GNOME/Incubator/papers.git#commit=$_commit")
