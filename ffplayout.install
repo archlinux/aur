@@ -19,7 +19,7 @@ post_install() {
 	    mkdir -p "/var/lib/ffplayout/playlists"
 	    mkdir -p "/var/lib/ffplayout/tv-media"
 		
-		/usr/bin/ffplayout -d "${IP}:8787" --log-path=/var/log/ffplayout --hls-path=/usr/share/ffplayout/public --storage-path=/var/lib/ffplayout/tv-media --shared-storage -u admin -p admin -m ffplayout@example.org
+	    /usr/bin/ffplayout -d "${IP}:8787" --log-path=/var/log/ffplayout --hls-path=/usr/share/ffplayout/public --storage-path=/var/lib/ffplayout/tv-media --shared-storage -u admin -p admin -m ffplayout@example.org
 
 	    chown -R ${sysUser}: "/usr/share/ffplayout"
 	    chown -R ${sysUser}: "/var/lib/ffplayout"
@@ -40,10 +40,10 @@ post_install() {
 	echo "   $ systemctl enable --now ffplayout"
 	echo "2. use a reverse proxy for SSL, Port is **8787**."
 	echo "3. login with your browser, address without proxy would be: **http://${IP}:8787**"
-	echo "5. Login using the default "admin" account and the default "admin" password with your web browser; the address without a proxy would be: **http://${IP}:8787**"
-	echo "4. Default location for playlists and media files are: **/var/lib/ffplayout/**."
+	echo "4. Login using the default "admin" account and the default "admin" password with your web browser; the address without a proxy would be: **http://${IP}:8787**"
+	echo "5. Default location for playlists and media files are: **/var/lib/ffplayout/**."
 	echo "6. If you want to change the default global settings:"
-	echo "	 $ sudo rm -rv /usr/share/ffplayout/db/*"
+	echo "	 $ sudo rm -v /usr/share/ffplayout/db/*"
 	echo "   $ ffplayout -i -d "${IP}:8787"
 
 }
