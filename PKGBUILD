@@ -1,6 +1,6 @@
 # Maintainer: Lennyy1337 <lennyy1337@proton.me>
 pkgname=krokodil-git
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="The most advanced cross-platform discord nuker made in C still in developing"
 arch=('any')
