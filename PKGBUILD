@@ -3,13 +3,14 @@
 
 _basename=gossip
 pkgname=${_basename}-git
-pkgver=0.8.0.r653.g7b3a290
+pkgver=.r2635.g72ffea6a
 pkgrel=1
 pkgdesc="gossip nostr client, rust, egui based."
 arch=('x86_64')
 url="https://github.com/mikedilger/$_basename"
 license=(MIT)
-makedepends=(cargo git mold)
+makedepends=(cargo cmake ffmpeg git mold)
+optdepends=(xdg-utils)
 provides=($pkgname)
 conflicts=($pkgname)
 source=(
