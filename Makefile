@@ -37,4 +37,5 @@ clean:
 		websocketpp \
 		magic_enum \
 		lua \
+		expected-lite \
 		miniaudio
