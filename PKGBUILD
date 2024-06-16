@@ -15,7 +15,10 @@ sha256sums=('9e29e47d807d766383ebe2ec40d0c95bcf45af0667d86ad990b19b69f32cac78'
 
 package() {
   install -D -m755 ucm "$pkgdir/usr/share/ucm/ucm"
+  cp -rv "$srcdir/racket" "$pkgdir/usr/share/ucm/racket"
+  cp -rv "$srcdir/runtime" "$pkgdir/usr/share/ucm/runtime"
   cp -rv "$srcdir/ui" "$pkgdir/usr/share/ucm/ui"
+  cp -rv "$srcdir/unison" "$pkgdir/usr/share/ucm/unison"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   mkdir -p "${pkgdir}/usr/bin"
