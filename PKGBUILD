@@ -3,7 +3,7 @@
 # Contributor: Fredy García <frealgagu at gmail dot com>
 # Contributor: Sebastian Krebs <sebastian@krebs.one>
 pkgname=kaniko
-pkgver=1.22.0
+pkgver=1.23.1
 pkgrel=1
 pkgdesc='Build Container Images In Kubernetes'
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('bash: run_in_docker.sh script')
 makedepends=('go')
 options=(!lto)
 source=("https://github.com/GoogleContainerTools/kaniko/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('aafdd9e3971bb2fbc32c80427cbeb0dcf70df02be16ba2779eb0c12f56447959')
+sha256sums=('9a283c626bf1033266c14993e931ed94bcba4a1c866bcaf54f7333aedf538f50')
 
 build() {
   cd "$pkgname-$pkgver"
