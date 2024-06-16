@@ -25,22 +25,24 @@ python backends:
   - parler-tts
 - Embeddings
   - sentencetransformers
+- GPT, Embeddings
+  - transformers
 - Image generation
   - diffusers
 - Information Ranking
   - rerankers
 - Musik Generation
   - transformers-musicgen
-- GPT, Embeddings
-  - gptq
 
+### bark
 
+ROCM: works, but very slow
 
-### bark-suno-ai Speaker Library (v2)
+#### Bark-suno-ai Speaker Library (v2)
 
-ROCM:
+Available:
 
-- works, but very slow
+- https://suno-ai.notion.site/8b8e8749ed514b0cbf3f699013548683?v=bc67cff786b04b50b3ceb756fd05f68c
 
 Tested:
 
@@ -50,18 +52,17 @@ Tested:
 - german/female:  v2/de_speaker_3
 - german/female:  v2/de_speaker_8
 
-Available:
 
-- https://suno-ai.notion.site/8b8e8749ed514b0cbf3f699013548683?v=bc67cff786b04b50b3ceb756fd05f68c
+### coqui-tts
 
-### coqui-tts models
+ROCM: tested works on rocm gpu, some models need espeak-ng, some dont work
 
 Tested:
 
 tts_models/de/thorsten/tacotron2-DCA
 tts_models/en/ljspeech/tacotron2-DDC_ph
 
-
+Available:
 tts_models/multilingual/multi-dataset/xtts_v2
 tts_models/multilingual/multi-dataset/xtts_v1.1
 tts_models/multilingual/multi-dataset/your_tts

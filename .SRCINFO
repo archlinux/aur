@@ -1,6 +1,6 @@
 pkgbase = localai-git
 	pkgdesc = Self-hosted OpenAI API alternative - Open Source, community-driven and local-first.
-	pkgver = 2.16.0.112.gd9109ffa
+	pkgver = 2.16.0.139.g5116d561
 	pkgrel = 1
 	url = https://github.com/mudler/LocalAI
 	arch = x86_64
@@ -14,8 +14,6 @@ pkgbase = localai-git
 	makedepends = ffmpeg
 	makedepends = protoc-gen-go
 	makedepends = protoc-gen-go-grpc
-	makedepends = onnxruntime
-	makedepends = libucd-git
 	makedepends = cuda
 	makedepends = cudnn
 	makedepends = nccl
@@ -36,9 +34,8 @@ pkgbase = localai-git
 	depends = python-pytorch
 	depends = python-torchaudio
 	depends = python-torchvision
-	depends = onnxruntime
 	provides = localai
-	provides = local-ai=2.16.0.112.gd9109ffa
+	provides = local-ai=2.16.0.139.g5116d561
 	conflicts = localai
 	conflicts = local-ai
 	backup = etc/localai/localai.conf
@@ -72,8 +69,8 @@ pkgname = localai-git
 	depends = python-pytorch
 	depends = python-torchaudio
 	depends = python-torchvision
-	depends = onnxruntime
 	depends = openblas
+	depends = onnxruntime
 
 pkgname = localai-git-cuda
 	pkgdesc = Self-hosted OpenAI API alternative - Open Source, community-driven and local-first. (with CUDA support)
@@ -89,8 +86,8 @@ pkgname = localai-git-cuda
 	depends = python-pytorch
 	depends = python-torchaudio
 	depends = python-torchvision
-	depends = onnxruntime
 	depends = cuda
+	depends = onnxruntime
 	depends = python-pytorch-cuda
 
 pkgname = localai-git-rocm
@@ -107,8 +104,8 @@ pkgname = localai-git-rocm
 	depends = python-pytorch
 	depends = python-torchaudio
 	depends = python-torchvision
-	depends = onnxruntime
 	depends = rocm-hip-runtime
 	depends = hipblas
 	depends = rocblas
+	depends = onnxruntime-rocm
 	depends = python-pytorch-rocm

@@ -6,7 +6,7 @@ _ENABLE_CUDA=${_ENABLE_CUDA:-1}
 _ENABLE_ROCM=${_ENABLE_ROCM:-1}
 
 # additional piper backend
-_ENABLE_PIPER=${_ENABLE_PIPER:-1}
+_ENABLE_PIPER=${_ENABLE_PIPER:-0}
 # additional python backends if set to 1
 _ENABLE_PYTHON=${_ENABLE_PYTHON:-1}
 
@@ -44,7 +44,7 @@ $_OPTIONAL_GRPC"
 _pkgbase="localai"
 pkgbase="${_pkgbase}-git"
 pkgname=()
-pkgver=2.16.0.112.gd9109ffa
+pkgver=2.16.0.139.g5116d561
 pkgrel=1
 pkgdesc="Self-hosted OpenAI API alternative - Open Source, community-driven and local-first."
 url="https://github.com/mudler/LocalAI"
@@ -109,9 +109,6 @@ if [[ $_ENABLE_PYTHON = 1 ]]; then
 fi
 
 if [[ $_ENABLE_PIPER = 1 ]]; then
-  depends+=(
-    'onnxruntime'
-  )
   makedepends+=(
     'onnxruntime'
     'libucd-git'
@@ -282,6 +279,7 @@ _package_install() {
 package_localai-git() {
   cd "${srcdir}/${_pkgbase}-cpu"
   depends+=('openblas')
+  if [[ $_ENABLE_PIPER = 1 ]]; then depends+=('onnxruntime'); fi
   _package_install
 }
 
@@ -289,6 +287,7 @@ package_localai-git-cuda() {
   cd "${srcdir}/${_pkgbase}-cuda"
   pkgdesc+=' (with CUDA support)'
   depends+=('cuda')
+  if [[ $_ENABLE_PIPER = 1 ]]; then depends+=('onnxruntime'); fi
   if [[ $_ENABLE_PYTHON = 1 ]]; then depends+=('python-pytorch-cuda'); fi
   _package_install
 }
@@ -297,6 +296,7 @@ package_localai-git-rocm() {
   cd "${srcdir}/${_pkgbase}-rocm"
   pkgdesc+=' (with ROCM support)'
   depends+=('rocm-hip-runtime' 'hipblas' 'rocblas')
+  if [[ $_ENABLE_PIPER = 1 ]]; then depends+=('onnxruntime-rocm'); fi
   if [[ $_ENABLE_PYTHON = 1 ]]; then depends+=('python-pytorch-rocm'); fi
   _package_install
 }
