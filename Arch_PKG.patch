@@ -1,0 +1,34 @@
+--- Upstream
++++ AUR
+@@ -2,23 +2,23 @@
+ 
+ VERS=$(shell sed -n <NEWS.adoc '/^[0-9]/s/:.*//p' | head -1)
+ 
+-SFILE=/usr/games/lib/greed.hs
++SFILE=/usr/share/greed/greed.hs
+ # Location of game executable
+-BIN=/usr/games
++BIN=/usr/bin
+ 
+ greed: greed.c
+-	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -DSCOREFILE=\"$(SFILE)\" -DRELEASE=\"$(VERS)\" -o greed greed.c -O3 -lcurses
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -DSCOREFILE=\"$(SFILE)\" -DRELEASE=\"$(VERS)\" -o greed greed.c -lcurses
+ 
+ # Note: to suppress the footers with timestamps being generated in HTML,
+ # we use "-a nofooter".
+ # To debug asciidoc problems, you may need to run "xmllint --nonet --noout --valid"
+ # on the intermediate XML that throws an error.
+-.SUFFIXES: .html .adoc .6
++#.SUFFIXES: .html .adoc .6
+ 
+-.adoc.6:
+-	asciidoctor -D. -a nofooter -b manpage $<
+-.adoc.html:
+-	asciidoctor -D. -a nofooter -a webfonts! $<
++#.adoc.6:
++	asciidoctor -D. -a nofooter -b manpage greed.adoc
++#.adoc.html:
++#	asciidoctor -D. -a nofooter -a webfonts! $<
+ install: greed.6 uninstall
+ 	cp greed $(BIN)
+ 	cp greed.6 /usr/share/man/man6/greed.6
