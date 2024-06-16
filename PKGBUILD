@@ -2,7 +2,7 @@
 # Maintainer: Goldy <goldy@devgoldy.xyz>
 _pkgname=mov-cli-test
 pkgname=python-mov-cli-test
-pkgver="1.1.6"
+pkgver="1.1.7"
 pkgrel=1
 pkgdesc="A mov-cli v4 plugin to test mov-cli's capabilities."
 arch=("x86_64" "i686")
