@@ -1,6 +1,6 @@
 pkgbase = ohrrpgce
 	pkgdesc = A role playing game creation engine
-	pkgver = wip.r13546
+	pkgver = wip.r13561
 	pkgrel = 1
 	url = http://rpg.hamsterrepublic.com/ohrrpgce/Main_Page
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = ohrrpgce
 	depends = ncurses
 	depends = xterm
 	optdepends = timidity-freepats: midi music support
-	source = svn+https://rpg.hamsterrepublic.com/source/wip#revision=r13546
+	source = svn+https://rpg.hamsterrepublic.com/source/wip#revision=r13561
 	md5sums = SKIP
 
 pkgname = ohrrpgce
