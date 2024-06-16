@@ -1,15 +1,15 @@
 # Maintainer: chise0713 <chise0713 at protonmail dot com>
 
 pkgname=wgcf-cli
-pkgver=0.3.5
-pkgrel=2
+pkgver=0.3.6
+pkgrel=1
 pkgdesc='A command-line tool for Cloudflare-WARP API, built using Cobra.'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64' 's390x' 'riscv64')
 url='https://github.com/ArchiveNetwork/wgcf-cli'
 license=('MPL-2.0')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('b50787ebaf3f998d4cebed9b5904dacd8b0e584907bb0031f6040a3415109d43f534653a4e61f031bd0dc8e8a922cc9191669f12736e0509dbcdc50e37fb7671')
+sha512sums=('0feded8450cfd7dbf71dfb3490cf8922181c4adec45e8bd6be270ff35e48042b86dee1ce60d44ee4eaa950e3cad6902276275bbd0f30c3820d4e8a766e2410de')
 
 build(){
     cd "$pkgname-$pkgver"
