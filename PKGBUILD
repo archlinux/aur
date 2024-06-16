@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ognibuild
-pkgver=0.0.22
+pkgver=0.0.23
 pkgrel=1
 pkgdesc="Detect and invoke build systems"
 arch=('x86_64')
@@ -29,7 +29,7 @@ optdepends=(
   'python-lz4'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e8bf7304a5a3fec55388f65f0a156e58ab895a26d041a74cd942e4146753436a')
+sha256sums=('961696774d2925ecf0fc5e3a3d7b08071e74d6462c7c5cd86c139775eb0a8aa9')
 
 prepare() {
   cd "$pkgname-$pkgver"
