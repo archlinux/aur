@@ -2,7 +2,7 @@
 _pkgname="ollamamodelupdater"
 pkgname="$_pkgname"
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to help you update your Ollama models"
 arch=('any')
 url="https://github.com/thatonecalculator/ollamamodelupdater"
@@ -22,7 +22,7 @@ sha256sums=('c93f75e3fd5c4be08989f18be53af0a649de1b1855aaec9f809316776924d99e')
 
 prepare() {
     if ! command -v bun &> /dev/null; then
-        echo "Bun was not found. Please install bun from https://bun.sh"
+        echo "Bun was not found. Please install bun from https://bun.sh, or install the bun-bin or bun-git AUR package."
         exit 1
     fi
     bunversion=$(bun --version | sed 's/[^0-9]*//g')
