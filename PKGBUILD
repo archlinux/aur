@@ -14,7 +14,7 @@ md5sums=("SKIP")
 provides=("conduwuit")
 conflicts=()
 options=(!lto)
-backup=("etc/conduwuit.toml" "etc/conduwuit/conduwuit.toml")
+backup=("etc/conduwuit/conduwuit.toml")
 install=conduwuit.install
 
 function prepare() {
@@ -101,13 +101,5 @@ StartLimitBurst=5
 
 [Install]
 WantedBy=multi-user.target''' >"${pkgdir}/usr/lib/systemd/system/conduwuit.service"
-	if [ -f /etc/conduwuit.toml ]; then
-		ln -sfr "${pkgdir}/etc/conduwuit/conduwuit.toml" "${pkgdir}/etc/conduwuit.toml"
-		echo "[Warning] The configuration file has changed!"
-		echo "Configure conduwuit @ /etc/conduwuit/conduwuit.toml, attempting to automatically migrate..."
-		sleep 5s
-		cp /etc/conduwuit.toml "${pkgdir}/etc/conduwuit/conduwuit.toml"
-		cp /etc/conduwuit.toml "${pkgdir}/etc/conduwuit.toml.old"
-	fi
 }
 

@@ -1,8 +1,15 @@
-function post_install() {
+function post_upgrade() {
 	mkdir -p /var/lib/private/conduwuit
 	if [ -f /var/lib/private/conduit ] || [ -d /var/lib/private/conduit ]; then
 		echo "[Warning] State directory has moved, patching..."
 		cp -a /var/lib/private/conduit/* /var/lib/private/conduwuit
 		echo "Manual removal of old data under /var/lib/conduit/ is required"
+	fi
+	if [ -f /etc/conduwuit.toml ]; then
+		install -Dm644 /etc/conduwuit.toml "/etc/conduwuit.toml.old"
+		echo "[Warning] The configuration file has changed!"
+		echo "Configure conduwuit @ /etc/conduwuit/conduwuit.toml, attempting to automatically migrate..."
+		sleep 5s
+		mv /etc/conduwuit.toml "/etc/conduwuit/conduwuit.toml"
 	fi
 }
