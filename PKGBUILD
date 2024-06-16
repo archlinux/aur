@@ -2,11 +2,11 @@
 # Contributor: Arlo Siemsen <arkixml@gmail.com>
 pkgname=gridmgr-git
 pkgver=r30.44be97c
-pkgrel=3
+pkgrel=4
 pkgdesc="command line tool which provides keyboard-bindable commands for easy window manipulation."
 arch=('i686' 'x86_64')
 url="http://nickbp.com/gridmgr/"
-license=('GPL')
+license=('GPL-3.0-or-later')
 depends=('libxinerama' 'gcc-libs' 'libx11' 'glibc')
 provides=('gridmgr')
 conflicts=('gridmgr')
