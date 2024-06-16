@@ -11,7 +11,7 @@
 # Contributor: Dhina17 <dhinalogu@gmail.com>
 
 pkgname=android-studio-system
-pkgver=2023.3.1.19
+pkgver=2024.1.1.11
 pkgrel=1
 pkgdesc="The official Android IDE (Stable branch)"
 arch=('x86_64')
@@ -24,7 +24,7 @@ options=('!strip') # Removing it is a bit more violent but it removes 90MB of fi
 source=("https://dl.google.com/dl/android/studio/ide-zips/$pkgver/android-studio-$pkgver-linux.tar.gz"
         "android-studio.desktop"
         "license.html")
-b2sums=('d6de0f2aa876e9272969d56cac98c492ab919e2533c3c641c0724b4f534a72650342ad19a0c0d2f8d53b64fc88a471d2bde282c05f2bf5f508e56acc10adad7d'
+b2sums=('6ea5c710f50254d62f9dc950647059943b7be8fff0fcac367e2bdd14b8dac7f093f81f208d05538ccbea70490b83c5c11b450811e7df1a1cd5337f4aff1ac0dd'
         '16940866032d710ce995cc6bb0b994875215df0f6191b09a3ece5d6c5750c4fb3d430c683f545154eeceecad10d70333d59302fe6c5efd97c3fc9e66f3009dca'
         '43b288fb81656cd72826a52620e41fbd0daa65d37246cb5b7dbff9c326022eabf18344513517b16134b557d6ae86535f44f863ebd06d6fe0410f92117c1a8c67')
 provides=("android-studio")
