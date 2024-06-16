@@ -2,13 +2,13 @@
 
 pkgname=sof
 pkgver=6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple and fast calculate size of directories"
 license=(GPL3)
 url="https://codeberg.org/balaraz/sof"
 arch=(x86_64)
 depends=()
-makedepends=(cmake argumentum gzip)
+makedepends=(cmake tclap gzip)
 provides=(sof)
 conflicts=()
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
