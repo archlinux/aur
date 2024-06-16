@@ -9,8 +9,8 @@ pkgbase = osmo-hlr-git
 	arch = armv7h
 	license = AGPL-3.0-or-later
 	makedepends = git
-	depends = libosmocore
-	depends = libosmo-abis
+	depends = libosmocore-git
+	depends = libosmo-abis-git
 	depends = talloc
 	depends = sqlite
 	provides = osmo-hlr=1.7.0.r8.gac1365fd
