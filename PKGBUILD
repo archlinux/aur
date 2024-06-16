@@ -2,7 +2,7 @@
 # Contributor: Leslie P. Polzer <polzer@gnu.org>
 pkgname=db4.8
 pkgver=4.8.30
-pkgrel=7
+pkgrel=8
 pkgdesc="The Berkeley DB embedded database system 4.8"
 arch=('x86_64' 'i686' 'pentium4' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('custom')
@@ -38,7 +38,7 @@ build() {
   cd "$srcdir/db-$pkgver/"
 
   cd "build_unix"
-  ../dist/configure --prefix=/usr --enable-compat185 --enable-shared --disable-static --enable-cxx
+  CFLAGS=-Wno-error=implicit-function-declaration ../dist/configure --prefix=/usr --enable-compat185 --enable-shared --disable-static --enable-cxx
   make LIBSO_LIBS=-lpthread || return 1
 }
 
