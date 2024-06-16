@@ -3,8 +3,8 @@
 
 pkgname=daed-git
 _pkgname=${pkgname%-git}
-pkgver=0.4.0rc1.r68.g2841ec2
-pkgrel=4
+pkgver=0.7.0rc1.r1.gba8d223
+pkgrel=1
 pkgdesc="A modern dashboard for dae, bundled with dae-wing (backend API server) and dae (core)."
 arch=('x86_64' 'aarch64')
 url="https://github.com/daeuniverse/daed"
@@ -21,7 +21,7 @@ pkgver() {
 	cd "${_pkgname}/"
 	(
 		set -o pipefail
-		git describe --tags --long --abbrev=7 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+		git describe --tags --long --match="v[0-9]*" --abbrev=7 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
 			printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 	)
 }
