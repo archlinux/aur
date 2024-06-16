@@ -1,6 +1,6 @@
 pkgbase = android-aarch64-alsa-lib
 	pkgdesc = An alternative implementation of Linux sound support (Android aarch64)
-	pkgver = 1.2.11
+	pkgver = 1.2.12
 	pkgrel = 1
 	url = https://www.alsa-project.org
 	arch = any
@@ -12,10 +12,10 @@ pkgbase = android-aarch64-alsa-lib
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://www.alsa-project.org/files/pub/lib/alsa-lib-1.2.11.tar.bz2
-	source = https://www.alsa-project.org/files/pub/lib/alsa-lib-1.2.11.tar.bz2.sig
+	source = https://www.alsa-project.org/files/pub/lib/alsa-lib-1.2.12.tar.bz2
+	source = https://www.alsa-project.org/files/pub/lib/alsa-lib-1.2.12.tar.bz2.sig
 	validpgpkeys = F04DF50737AC1A884C4B3D718380596DA6E59C91
-	md5sums = 1c5870770047b6a520d18a43f49e42ea
+	md5sums = 97bbf3cca911c1701fe9fe115c32b03d
 	md5sums = SKIP
 
 pkgname = android-aarch64-alsa-lib
