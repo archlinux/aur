@@ -1,19 +1,21 @@
 pkgbase = osmo-ggsn
 	pkgdesc = Open Source implementation of a GGSN (Gateway GPRS Support Node)
 	pkgver = 1.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://osmocom.org/projects/openggsn
 	arch = i686
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
-	license = GPL
+	license = GPL-2.0-only AND LGPL-2.1-or-later AND MIT
 	depends = libosmocore
 	depends = talloc
 	provides = libgtp.so=6-64
 	conflicts = osmo-ggsn-git
 	backup = etc/osmocom/osmo-ggsn.cfg
 	source = https://downloads.osmocom.org/releases/osmo-ggsn/osmo-ggsn-1.9.1.tar.bz2
+	source = LICENSE-MIT
 	sha256sums = 4629580df8abc01c392e443c7a2945b3ab3d34e9bcce27a73405a2ad1797a294
+	sha256sums = 323c587d0ccf10e376f8bf9a7f31fb4ca6078105194b42e0b1e0ee2bc9bde71f
 
 pkgname = osmo-ggsn
