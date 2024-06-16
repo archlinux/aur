@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BiasedUrn
-_pkgver=2.0.11
+_pkgver=2.0.12
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Biased Urn Model Distributions"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('435d436db9c8359cf99234f9468bfc78')
-b2sums=('9351d7487088136a2edf64b54486cfe03d79a27807013c3be391bcaf6e293cc1c6c8e1ac2932a3dc54c8874387423d25c8d522e40f1911a63248c17e8d79b136')
+md5sums=('7283f3ef0b174580f7b612f3c9d37978')
+b2sums=('f2af2dee12579a13e01cb59e71a24498cf2bc2956faf44da0683afcbfe67175effc7bd4f09027c57672e24fa55b2c4a69127bae73b42c0b1c6246bee893edcf4')
 
 build() {
   mkdir build
