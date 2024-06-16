@@ -147,6 +147,8 @@ package() {
   install -Dm0644 -t "$pkgdir/usr/share/wayland-sessions/" "example/$_pkgname.desktop"
   install -Dm0644 -t "$pkgdir/usr/share/$_pkgname/" "example/$_pkgname.conf"
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
+  install -Dm0644 subprojects/wlroots-hyprland/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-wlroots-hyprland"
+  install -Dm0644 subprojects/udis86/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-udis86"
   find subprojects/wlroots-hyprland/build -name 'libwlroots.so.*' -type f -execdir \
     install -Dm0755 -t "$pkgdir/usr/lib/" {} \;
 }
