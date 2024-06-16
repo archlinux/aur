@@ -103,7 +103,7 @@ _languages=(
   'ro           "Romanian"                     1'
   'ru           "Russian"                      1'
   'rw           "Kinyarwanda"                  0'
-#  'qtz          "Weblate Localization"         1' ## search for KeyID strings in weblate and help with localization of LibreOffice
+  'qtz          "Weblate Localization"         1' ## search for KeyID strings in weblate and help with localization of LibreOffice
   'sa-IN        "Sanskrit (India)"             0'
   'sat          "Santali"                      0'
   'sd           "Sindhi"                       0'
@@ -349,6 +349,8 @@ sha256sums=('9955ce1804cbb7d5fb8d6863cca4eb4a62bb4a3598948eb43247c7d6cb20791d'
             'b5f006620f145e5361d1d6cc80724d962f226a69b151affae3ab01946ad165de'
             'ac5480013bbd11981069135db8829bc7775147cf85bb5ef6444dc6bc44e139a4'
             '3fc9eb4663da3e2f35726921758fdc4fe28edc88803e131202045ed09fba34e5'
+            '26aeaf85a9795f151be10df3be53801917008eb76e0c9458e9ed8092f04ffd3a'
+            '4e1d60f1358168b83b7fa40af785c883accfacc27fd7ac32a9e1c060bb933b0a'
             '71b0e0ea7bc80d1a4182d9758a57a48ffb3d3d2f9203811d0593a98366cf634d'
             'cca743d42bb0e8db911c234c1dc467dea682c563e9b5e4b1b820234abac6a694'
             '2e8e8d649c1203106dcc68f1fc53c0762d3947fbdb4c9595e7bfe7f3159d6f2c'
