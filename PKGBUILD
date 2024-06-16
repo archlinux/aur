@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pika-backup
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Keep your data safe"
 arch=('x86_64' 'aarch64')
@@ -9,16 +9,10 @@ url="https://apps.gnome.org/PikaBackup"
 license=('GPL-3.0-or-later')
 depends=('borg' 'fuse3' 'libadwaita' 'libsecret' 'python-pyfuse3')
 makedepends=('cargo' 'git' 'itstool' 'meson')
-checkdepends=('appstream')
 #checkdepends+=('openssh' 'xorg-server-xvfb')
-_commit=18558cd1a25eaa921b700db6393eb006749c1f28  # tags/v0.7.2^0
-source=("git+https://gitlab.gnome.org/World/pika-backup.git#commit=$_commit")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd "$pkgname"
-  git describe --tags | sed 's/^v//;s/-/+/g'
-}
+optdepends=('gvfs: Network shares')
+source=("git+https://gitlab.gnome.org/World/pika-backup.git#tag=v$pkgver")
+sha256sums=('3c5a2d337c47a4141c8e2f74c43818715cff047df4197470634add094b64cbc9')
 
 prepare() {
   cd "$pkgname"

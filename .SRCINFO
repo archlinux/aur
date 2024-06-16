@@ -1,13 +1,12 @@
 pkgbase = pika-backup
 	pkgdesc = Keep your data safe
 	pkgver = 0.7.2
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://apps.gnome.org/PikaBackup
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
-	checkdepends = appstream
 	makedepends = cargo
 	makedepends = git
 	makedepends = itstool
@@ -17,7 +16,8 @@ pkgbase = pika-backup
 	depends = libadwaita
 	depends = libsecret
 	depends = python-pyfuse3
-	source = git+https://gitlab.gnome.org/World/pika-backup.git#commit=18558cd1a25eaa921b700db6393eb006749c1f28
-	sha256sums = SKIP
+	optdepends = gvfs: Network shares
+	source = git+https://gitlab.gnome.org/World/pika-backup.git#tag=v0.7.2
+	sha256sums = 3c5a2d337c47a4141c8e2f74c43818715cff047df4197470634add094b64cbc9
 
 pkgname = pika-backup
