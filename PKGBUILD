@@ -4,14 +4,14 @@
 
 pkgname=python-depthai
 pkgver=2.26.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="DepthAI Python Library"
 arch=('x86_64')
 url="https://github.com/luxonis/depthai-python"
 license=(MIT)
-makedepends=("python" "gcc-libs" "glibc" "curl" "sed" "cmake>=3.25")
+makedepends=("python" "python-build" "python-installer" "gcc-libs" "glibc" "curl" "sed" "cmake>=3.25")
 depends=("python" "libusb")
-optdepends=("python-pyqt5" "python-psutil" "python-numpy" "python-opencv")
+optdepends=("mypy" "python-pyqt5" "python-psutil" "python-numpy" "python-opencv")
 options+=(!strip)
 
 core_version=$(echo "$pkgver" | sed 's/\.[^.]*$//') # Stripping last version number as it does not exist for depthai core

@@ -1,11 +1,13 @@
 pkgbase = python-depthai
 	pkgdesc = DepthAI Python Library
 	pkgver = 2.26.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/luxonis/depthai-python
 	arch = x86_64
 	license = MIT
 	makedepends = python
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = gcc-libs
 	makedepends = glibc
 	makedepends = curl
@@ -13,6 +15,7 @@ pkgbase = python-depthai
 	makedepends = cmake>=3.25
 	depends = python
 	depends = libusb
+	optdepends = mypy
 	optdepends = python-pyqt5
 	optdepends = python-psutil
 	optdepends = python-numpy
