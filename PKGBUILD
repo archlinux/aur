@@ -2,7 +2,7 @@
 # Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=osmo-hlr-git
-pkgver=1.7.0.r8.gac1365fd
+pkgver=1.7.0.r16.g413f5e36
 pkgrel=1
 pkgdesc="Osmocom HLR for GSUP protocol towards OsmoSGSN and OsmoCSCN"
 url="https://osmocom.org/projects/osmo-hlr"
