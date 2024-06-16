@@ -12,7 +12,7 @@ makedepends=("wget" "curl" "jq" "tar")
 depends=("jre17-openjdk")
 
 prepare() {
-    wget https://github.com/boolean-false/VLauncher-Releases/releases/download/${pkgver}/${_tarname}-linux-amd64.tar.gz
+    wget https://github.com/boolean-false/VLauncher-Releases/releases/download/${_version}/${_tarname}-linux-amd64.tar.gz
 
     tar -xvzf ${_tarname}-linux-amd64.tar.gz -C ./
 
