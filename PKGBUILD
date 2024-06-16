@@ -107,6 +107,7 @@ build() {
   BAZEL_CXXOPTS=""
   for f in $CFLAGS;do ([[ ! $f =~ _FORTIFY_SOURCE ]]) && BAZEL_COPTS+=" --copt $f";done
   for f in $CXXFLAGS;do ([[ ! $f =~ _FORTIFY_SOURCE ]]) && BAZEL_CXXOPTS+=" --cxxopt $f";done
+  BAZEL_LDOPTS=$(echo $LDFLAGS | xargs -n1 echo "--linkopt")
   #BAZEL_COPTS=$(echo $CFLAGS | xargs -n1 echo "--copt")
   #BAZEL_CXXOPTS=$(echo $CXXFLAGS | xargs -n1 echo "--cxxopt")
   #bazel clean
@@ -114,7 +115,8 @@ build() {
     bazel build --config oss_linux --compilation_mode opt package unix/fcitx5:fcitx5-mozc.so --cxxopt=-Wno-uninitialized --host_cxxopt=-Wno-uninitialized
     #bazel build --config oss_linux --compilation_mode opt package unix/fcitx5:fcitx5-mozc.so --linkopt "$LDFLAGS" $BAZEL_COPTS $BAZEL_CXXOPTS
   else
-    bazel build --config oss_linux --compilation_mode opt package unix/fcitx5:fcitx5-mozc.so --linkopt "$LDFLAGS" $BAZEL_COPTS $BAZEL_CXXOPTS
+    #bazel build --config oss_linux --compilation_mode opt package unix/fcitx5:fcitx5-mozc.so --linkopt "$LDFLAGS" $BAZEL_COPTS $BAZEL_CXXOPTS
+    bazel build --config oss_linux --compilation_mode opt package unix/fcitx5:fcitx5-mozc.so $BAZEL_LDOPTS $BAZEL_COPTS $BAZEL_CXXOPTS
   fi
   bazel shutdown
 
