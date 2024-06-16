@@ -22,6 +22,6 @@ pkgbase = ffplayout-unstable-git
 	source = ffplayout-unstable-git::git+https://github.com/jb-alvarado/ffplayout.git#branch=single-app
 	source = ffplayout.install
 	sha256sums = SKIP
-	sha256sums = 414cf82d6c786c67c2ef1c56d268db234b6bb874f4eb3d46d7fac06933ef781f
+	sha256sums = bf7e36309308fb1578b123f0f219acd7d821d17620b495d6c0d996cb0991d360
 
 pkgname = ffplayout-unstable-git
