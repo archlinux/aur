@@ -2,7 +2,7 @@
 # Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=osmo-ggsn-git
-pkgver=1.11.0.r2.g8d97644
+pkgver=1.11.0.r31.g7ae1177
 pkgrel=1
 pkgdesc="Open Source implementation of a GGSN (Gateway GPRS Support Node)"
 url="https://osmocom.org/projects/openggsn"
