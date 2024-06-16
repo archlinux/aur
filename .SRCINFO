@@ -7,7 +7,7 @@ pkgbase = osmo-ggsn-git
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
-	license = GPL
+	license = GPL-2.0-only AND LGPL-2.1-or-later AND MIT
 	makedepends = git
 	depends = libosmocore
 	depends = talloc
@@ -15,6 +15,8 @@ pkgbase = osmo-ggsn-git
 	conflicts = osmo-ggsn
 	backup = etc/osmocom/osmo-ggsn.cfg
 	source = git+https://gitea.osmocom.org/cellular-infrastructure/osmo-ggsn.git
+	source = LICENSE-MIT
 	sha256sums = SKIP
+	sha256sums = 323c587d0ccf10e376f8bf9a7f31fb4ca6078105194b42e0b1e0ee2bc9bde71f
 
 pkgname = osmo-ggsn-git

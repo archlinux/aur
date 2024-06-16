@@ -7,14 +7,16 @@ pkgrel=1
 pkgdesc="Open Source implementation of a GGSN (Gateway GPRS Support Node)"
 url="https://osmocom.org/projects/openggsn"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
-license=(GPL)
+license=('GPL-2.0-only AND LGPL-2.1-or-later AND MIT')
 depends=('libosmocore' 'talloc')
 makedepends=('git')
 provides=('libgtp.so=6-64')
 conflicts=("${pkgname%-git}")
 backup=('etc/osmocom/osmo-ggsn.cfg')
-source=("git+https://gitea.osmocom.org/cellular-infrastructure/${pkgname%-git}.git")
-sha256sums=('SKIP')
+source=("git+https://gitea.osmocom.org/cellular-infrastructure/${pkgname%-git}.git"
+        'LICENSE-MIT')
+sha256sums=('SKIP'
+            '323c587d0ccf10e376f8bf9a7f31fb4ca6078105194b42e0b1e0ee2bc9bde71f')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -37,6 +39,9 @@ build() {
 package() {
   cd "${pkgname%-git}"
   make DESTDIR=${pkgdir} install
+
+  # /usr/bin/gtp-echo-responder is licensed under the MIT
+  install -Dm644 "${srcdir}/LICENSE-MIT" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
 }
 
 # vim:set ts=2 sw=2 et:
