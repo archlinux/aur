@@ -1,12 +1,12 @@
 # Maintainer: Santiago Burgos <santiago.burgos1089@gmail.com>
 
 pkgname=mint-y-icons
-pkgver=1.7.5
+pkgver=1.7.6
 pkgrel=1
 pkgdesc='A flat, colorful, and modern theme based on Paper and Moka'
 arch=('any')
 url="http://packages.linuxmint.com/pool/main/m/${pkgname}"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=(
     'gtk-update-icon-cache'
     'hicolor-icon-theme'
@@ -16,7 +16,7 @@ optdepends=(
 )
 options=(!strip)
 source=("${url}/${pkgname}_${pkgver}.tar.xz")
-sha256sums=('b19c9be822e33fc86dc9e95a176f44bd5aa0c74479efb5890b77941c777feee1')
+sha256sums=('ccbd2613a44f04f78b45743b3c159a33c34d75fc5297594224f03c29f608e2ac')
 
 package() {
     cd "${srcdir}"/"${pkgname}"
