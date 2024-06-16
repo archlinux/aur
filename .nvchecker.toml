@@ -1,0 +1,5 @@
+[python-librivox]
+source = "git"
+git = "https://codeberg.org/Freso/python-librivox.git"
+include_regex = 'v((?:\d|\.)+)'
+prefix = "v"
