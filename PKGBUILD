@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electerm-git
-pkgver=1.39.18.r1.g43f8aa4
+pkgver=1.39.46.r3.g333d55f
 _electronversion=26
 _nodeversion=20
 pkgrel=1
@@ -23,7 +23,6 @@ makedepends=(
     'nvm'
     'gendesk'
     'python-setuptools'
-    'base-devel'
     'gcc'
     'curl'
 )
@@ -51,7 +50,7 @@ build() {
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${pkgname%-git}" --categories="System" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
+    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="System" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
     export npm_config_build_from_source=true
     #export ELECTRON_SKIP_BINARY_DOWNLOAD=1
@@ -70,9 +69,9 @@ build() {
         echo "Your network is OK."
     fi
     export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
-    yarn install --cache-folder "${srcdir}/.yarn_cache"
-    yarn run prepare-build
-    npx electron-builder -l --dir
+    NODE_ENV=development yarn install --cache-folder "${srcdir}/.yarn_cache"
+    NODE_ENV=production yarn run prepare-build
+    NODE_ENV=production npx electron-builder -l --dir
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
