@@ -8,10 +8,10 @@ pkgdesc="Osmocom's Mobile Switching Center for 2G and 3G circuit-switched mobile
 url="https://osmocom.org/projects/osmomsc"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=('AGPL-3.0-or-later AND GPL-2.0-or-later')
-depends=('libosmocore'
-         'libosmo-abis'
-         'libosmo-netif'
-         'libosmo-sccp'
+depends=('libosmocore-git'
+         'libosmo-abis-git'
+         'libosmo-netif-git'
+         'libosmo-sccp-git'
          'libosmo-gsup-client.so' # from osmo-hlr
          'libosmo-mgcp-client.so' # from osmo-mgw
          'libosmo-ranap.so' # from osmo-iuh (for --enable-iu)
