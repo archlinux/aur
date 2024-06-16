@@ -11,7 +11,7 @@
 _name=scipy
 pkgname=python2-scipy
 pkgver=1.2.3
-pkgrel=6
+pkgrel=7
 pkgdesc="SciPy is open-source software for mathematics, science, and engineering."
 arch=(x86_64)
 url="https://www.scipy.org/"
@@ -26,7 +26,7 @@ sha512sums=('d7739fa2f25689fc14ddf09477207c990b39b593a85f5c74687df1ffe097f6eee1b
 
 prepare() {
   cd "scipy-$pkgver"
-  
+
   for file in $(find . -name '*.py' -print); do
        sed -i 's_^#!.*/usr/bin/python_#!/usr/bin/python2_' $file
        sed -i 's_^#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' $file
@@ -48,6 +48,7 @@ check() {
 build() {
   # required for gfortran
   export LDFLAGS="-Wall -shared"
+  export CFLAGS+=' -Wno-error=implicit-function-declaration -Wno-error=implicit-int -Wno-error=incompatible-pointer-types'
 
   cd "scipy-$pkgver"
   python2 setup.py config_fc --fcompiler=gnu95 --f77flags="-Wall -g -ffixed-form -fno-second-underscore -fallow-argument-mismatch" --f90flags="-Wall -g -fno-second-underscore -fallow-argument-mismatch" build
