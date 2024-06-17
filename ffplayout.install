@@ -7,44 +7,51 @@ post_install() {
 	IP=$(ip route get 1.2.3.4 | awk '{if($7 !~ /^[[:space:]]*$/) print $7}')
 
 	if [ -f /run/.containerenv ] || [ -f /run/.dockerenv ] || [ -f /.dockerenv ] || [ -f /.dockerinit ]; then
-	    sysUser="root"
+		sysUser="root"
 	fi
 
 	if [ ! $(id -u $sysUser 2>/dev/null || echo -1) -ge 0 ]; then
-	    useradd -m --system $sysUser || adduser --system --create-home $sysUser > /dev/null || adduser --system --home "/home/$sysUser" $sysUser
+		useradd -m --system $sysUser || adduser --system --create-home $sysUser >/dev/null || adduser --system --home "/home/$sysUser" $sysUser
 	fi
 
 	if [ ! -d "/usr/share/ffplayout/db" ]; then
-	    mkdir "/usr/share/ffplayout/db"
-	    mkdir -p "/var/lib/ffplayout/playlists"
-	    mkdir -p "/var/lib/ffplayout/tv-media"
-		
-	    /usr/bin/ffplayout -d "${IP}:8787" --log-path=/var/log/ffplayout --hls-path=/usr/share/ffplayout/public --storage-path=/var/lib/ffplayout/tv-media --shared-storage -u admin -p admin -m ffplayout@example.org
+		mkdir "/usr/share/ffplayout/db"
+		mkdir -p "/var/lib/ffplayout/playlists"
+		mkdir -p "/var/lib/ffplayout/tv-media"
 
-	    chown -R ${sysUser}: "/usr/share/ffplayout"
-	    chown -R ${sysUser}: "/var/lib/ffplayout"
+		/usr/bin/ffplayout -d "${IP}:8787" \
+			-u admin \
+			-p admin \
+			-m ffplayout@example.org \
+			--log-path=/var/log/ffplayout \
+			--hls-path=/usr/share/ffplayout/public \
+			--storage-path=/var/lib/ffplayout/tv-media \
+			--shared-storage
+
+		chown -R ${sysUser}: "/usr/share/ffplayout"
+		chown -R ${sysUser}: "/var/lib/ffplayout"
 	else
-	    chown -R ${sysUser}: "/usr/share/ffplayout"
-	    chown -R ${sysUser}: "/var/lib/ffplayout"
+		chown -R ${sysUser}: "/usr/share/ffplayout"
+		chown -R ${sysUser}: "/var/lib/ffplayout"
 	fi
 
 	if [ ! -d "/var/log/ffplayout" ]; then
-	    mkdir "/var/log/ffplayout"
+		mkdir "/var/log/ffplayout"
 
-	    chown ${sysUser}: "/var/log/ffplayout"
+		chown ${sysUser}: "/var/log/ffplayout"
 	else
-	    chown ${sysUser}: "/var/log/ffplayout"
+		chown ${sysUser}: "/var/log/ffplayout"
 	fi
 
-    tab="   "
-    echo -e "1. Activate systemd service:"
-    echo -e "   $ systemctl enable --now ffplayout"
-    echo -e "2. Use a reverse proxy for SSL, Port is 8787."
-    echo -e "3. Login with your browser, address without proxy would be: http://${IP}:8787, \n${tab}the default account is \"admin\" and the password is \"admin\"."
-    echo -e "4. Default location for playlists and media files are: /var/lib/ffplayout/."
-    echo -e "5. If you want to change the default global settings:"
-    echo -e "   $ sudo rm -v /usr/share/ffplayout/db/*"
-    echo -e "   $ ffplayout -i -d \"${IP}:8787\""
+	tab="   "
+	echo -e "1. Activate systemd service:"
+	echo -e "   $ systemctl enable --now ffplayout"
+	echo -e "2. Use a reverse proxy for SSL, Port is 8787."
+	echo -e "3. Login with your browser, address without proxy would be: http://${IP}:8787, \n${tab}the default account is \"admin\" and the password is \"admin\"."
+	echo -e "4. Default location for playlists and media files are: /var/lib/ffplayout/."
+	echo -e "5. If you want to change the default global settings:"
+	echo -e "   $ sudo rm -v /usr/share/ffplayout/db/*"
+	echo -e "   $ ffplayout -i -d \"${IP}:8787\""
 
 }
 
@@ -56,8 +63,8 @@ pre_remove() {
 
 	if [ -d /run/systemd/system ]; then
 		for service in $(systemctl list-units --type service --all --no-legend | grep 'ffplayout' | awk '{print $1}'); do
-            systemctl stop "$service" >/dev/null || true
-        done
+			systemctl stop "$service" >/dev/null || true
+		done
 	fi
 
 }
@@ -70,7 +77,7 @@ post_remove() {
 	sysUser="ffpu"
 
 	if [ $(id -u $sysUser 2>/dev/null || echo -1) -ge 0 ]; then
-	    userdel -r -f $sysUser
+		userdel -r -f $sysUser
 	fi
 
 	rm -rf /var/log/ffplayout
