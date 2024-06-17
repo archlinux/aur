@@ -2,5 +2,4 @@
 source = "github"
 github = "thisismypassport/shrinko8"
 prefix = "v"
-include_regex = ".*\\d"
-use_max_tag = true
+use_latest_release = true
