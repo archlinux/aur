@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=aplot
-_pkgver=0.2.2
+_pkgver=0.2.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Decorate a 'ggplot' with Associated Information"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -21,8 +21,8 @@ optdepends=(
   r-ggtree
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d71398cd2be0c5e51a46616471716348')
-b2sums=('d6ceae132ce6f04a32acb80f3c23e4028c9ab0bcafc36828a0c9dd6e07fa866c5b4cc83db382ce041d7745e580f4dfd9aad3b6af81f03ce38324e023dd9daab4')
+md5sums=('fc358216217e21658f1aa8a3833beb02')
+b2sums=('aa38c2723b668554fa92e3d5b73751e726d84d1474c27d1510e613a72ae6e181b82cef703b11a57fecf35644d74926f108c91681a712395bccafe43fe3d17f37')
 
 build() {
   mkdir build
