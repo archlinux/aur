@@ -1,5 +1,5 @@
 pkgname=watchit
-_pkgver=0.1.0-beta.10
+_pkgver=1.0.0-beta.0
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Watch movies everywhere"
@@ -8,7 +8,10 @@ url="http://watchitapp.site"
 license=('LGPL3')
 depends=('libxss' 'nss' 'gtk3')
 source=("https://github.com/ZorrillosDev/watchit-desktop/releases/download/v$_pkgver/${pkgname%-bin}_${_pkgver}_amd64.deb")
- 
+sha256sums=('ea7763256bda3b3805f1024130db7d53f4a23e82121b384af02333e99054aef8')
+sha512sums=('fa54672278dbee172a09b23bf8e696847ba0b9d4b2dc11cead5460d66e726f335dbf32ddd15a4f3baa4e8fbb9bbb84b62de04fef94f4282d06aa27e14447d429')
+b2sums=('415a7528859b5ffc56b5e7e333978d6723bf315e114076195f474a216039e5899427835b5449506f16dd0b673c01fc6f1ef23d1f8792d0dcdf0ca9c7b4bd7738')
+
 package() {
     bsdtar xvf data.tar.xz -C "$pkgdir"
  
@@ -22,6 +25,3 @@ package() {
     #rm -rf "$pkgdir/usr/share/doc"
 }
 
-sha256sums=('e62446518ac2613f03e656ac544b67adca84147706f8857270685fd9fe144665')
-sha512sums=('fe11c7063d9f8b6dacb23c288b6b23a779b6f6a63849c7d5ae1b0edb7b2e2a82703227228021eb75b3225b393e43fc059abafe0e94ad5e176e0f8425837ce5f4')
-b2sums=('db33b24a14ee97ad6c87e9c91c04ea4242763a5da8b554c6b6357157bea69a9979ca469f050bfcfd073031a44e5a82ee02872c22a97ba9fa1fc9fbcf3f23c7d8')
