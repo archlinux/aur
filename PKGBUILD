@@ -2,7 +2,7 @@
 _pkgname=k8sgpt
 pkgname=k8sgpt-bin
 pkgver=0.3.32
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool for scanning your Kubernetes clusters, diagnosing, and triaging issues in simple English.'
 arch=('x86_64' 'arm64' 'i386')
 url='https://k8sgpt.ai/'
@@ -18,6 +18,6 @@ sha256sums=(
 )
 
 package() {
-    install -Dm644 "${srcdir}/${_pkgname}" \
+    install -Dm755 "${srcdir}/${_pkgname}" \
         "${pkgdir}/usr/bin/${_pkgname}"
 }
