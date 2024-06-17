@@ -1,8 +1,9 @@
 pkgbase = openvpn3
 	pkgdesc = OpenVPN 3 Linux client
 	pkgver = 22_dev
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/OpenVPN/openvpn3-linux
+	install = openvpn3.install
 	arch = x86_64
 	arch = aarch64
 	license = AGPL3
@@ -27,11 +28,9 @@ pkgbase = openvpn3
 	optdepends = repkg: Automatically rebuild the package on dependency updates
 	source = https://swupdate.openvpn.net/community/releases/openvpn3-linux-22_dev.tar.xz
 	source = openvpn3.rule
-	source = openvpn3.install
 	source = sysusers-openvpn3.conf
 	sha256sums = ad8f373814bfbefd12f9824d57badef4535f6c1fde68d2c73d7ee14863547cb6
 	sha256sums = ec0b8e28ae77b4b074d3eb8a084626e6dcfc587a07bef5d53fe1c6e160c0fc01
-	sha256sums = a5879d9e637658f5127e849d17f4050bae1f82fa9b25f05bbbbb531867120e8b
 	sha256sums = 045e914bb6fff5a082314dfc805bb511c9a80170619fa1e94a07825fa977c90a
 
 pkgname = openvpn3
