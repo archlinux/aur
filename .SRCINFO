@@ -1,4 +1,5 @@
 pkgbase = fynedesk
+	pkgdesc = An easy to use Linux/Unix desktop environment following material design
 	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://fyshos.com/desktop/

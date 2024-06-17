@@ -3,7 +3,7 @@
 pkgname=fynedesk
 pkgver=0.4.0
 pkgrel=1
-pkgdesc=""
+pkgdesc="An easy to use Linux/Unix desktop environment following material design"
 arch=('x86_64' 'armv7h')
 url="https://fyshos.com/desktop/"
 license=('BSD-3-Clause')
@@ -25,13 +25,13 @@ build() {
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
     go build ./cmd/fynedesk_runner
-	go build ./cmd/fynedesk
+    go build ./cmd/fynedesk
 }
 
 package() {
     cd "${pkgname}-${pkgver}"
     install -Dm00644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
     install -Dm00755 fynedesk_runner "${pkgdir}"/usr/bin/fynedesk_runner
-	install -Dm00755 fynedesk "${pkgdir}"/usr/bin/fynedesk
-	install -Dm00644 fynedesk.desktop "${pkgdir}"/usr/share/xsessions/fynedesk.desktop
+    install -Dm00755 fynedesk "${pkgdir}"/usr/bin/fynedesk
+    install -Dm00644 fynedesk.desktop "${pkgdir}"/usr/share/xsessions/fynedesk.desktop
 }
