@@ -1,0 +1,17 @@
+pkgbase = a52dec-git
+	pkgdesc = A free ATSC A/52 stream decoder
+	pkgver = 0.8.0.r0.gc388f3b
+	pkgrel = 1
+	url = https://git.adelielinux.org/community/a52dec/
+	arch = i686
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	depends = glibc
+	provides = a52dec=0.8.0.r0.gc388f3b
+	conflicts = a52dec
+	options = staticlibs
+	source = git+https://git.adelielinux.org/community/a52dec.git
+	sha256sums = SKIP
+
+pkgname = a52dec-git
