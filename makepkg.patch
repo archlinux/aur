@@ -25,7 +25,6 @@ index ccf4069a..6f298f01 100644
      if (status == ROM_OK) return ROM_OK;
      if (status == ROM_MISSING) {
 -        pfd::message("Missing ROM","Cannot find sm64.z64\n\nPlease place an unmodified, US Super Mario 64 ROM next to the .exe and name it \"sm64.z64\"", pfd::choice::ok);
-+        std::cout << "Missing ROM! Place an unmodified US SM64 ROM into your home directory and rename it to 'sm64.z64'" << std::endl;
 +        pfd::message("Missing ROM","Cannot find sm64.z64\n\nPlease place an unmodified, US Super Mario 64 ROM in your home directory and name it \"sm64.z64\"", pfd::choice::ok);
          return ROM_MISSING;
      }
