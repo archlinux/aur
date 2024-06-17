@@ -2,7 +2,7 @@
 pkgname=wordgen-bin
 pkgver=0.4.0
 pkgrel=1
-pkgdesc='A CLI program that prints random words.'
+pkgdesc='A CLI random word generator.'
 arch=('x86_64')
 url='https://github.com/wordgen/cli'
 license=('AGPL-3.0-or-later')
