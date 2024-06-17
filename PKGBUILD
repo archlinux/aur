@@ -3,14 +3,14 @@ pkgname=oqsprovider
 _pkgname=oqs-provider
 pkgver=0.6.1
 _pkgverliboqs=0.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenSSL 3 provider containing post-quantum algorithms"
 arch=(x86_64)
 url=https://openquantumsafe.org/applications/tls.html#oqs-openssl-provider
 license=(MIT)
 depends=(
-    'liboqs=1:0.10.1'
-    'openssl'
+    liboqs
+    openssl
 )
 makedepends=(
     cmake
