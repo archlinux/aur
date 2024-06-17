@@ -27,8 +27,8 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
 md5sums=('c305df7191966e609cd96521166bda9d')
 
 get_pyinfo() {
-     [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" || \
-             python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
+    [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" || \
+        python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
 }
 
 build() {
