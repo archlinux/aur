@@ -2,7 +2,7 @@
 
 pkgname=hellpot
 _targetname=hellpot
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 pkgdesc="HellPot is a portal to endless suffering meant to punish unruly HTTP bots."
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -12,14 +12,14 @@ makedepends=('go' 'git')
 provides=('hellpot')
 conflicts=('hellpot')
 source=(
-    "$_targetname::git+https://github.com/yunginnanet/HellPot.git#tag=v0.4.4"
+    "$_targetname::git+https://github.com/yunginnanet/HellPot.git#tag=v${pkgver}"
     "service"
     "tmpfiles"
     "sysusers"
     "config.toml"
 )
 backup=('etc/hellpot/config.toml')
-sha256sums=('a5bbc216443659d5737534edd8011b66dfbfc8d6dbdae7fa438604e620880b15'
+sha256sums=('477dd095824ce8879ef3200ff95ded209ec3515340299df3b5975233ab27de30'
             '0136fd65b73e678d12ddff09cd5f71bfea360787cf7955770fe95b64dabe8274'
             'a370bd1f4f1caa1aa4777e3a6cb6c752f711721c9913e09c78a11d304bc53b37'
             'd462d4a84021cb2ce0052ba6c46ad0ea6e7aab7a9459d048de892d8503a99aee'
