@@ -12,7 +12,7 @@ depends=(# ordered per https://github.com/dgtlmoon/changedetection.io/blob/maste
          python-pyee
          python-flask-compress
          python-eventlet
-         # out of date - python-validators
+         # python-validators # waiting for package update - needs at least 0.21
          python-timeago
          python-inscriptis
          python-feedgen
@@ -47,7 +47,7 @@ depends=(# ordered per https://github.com/dgtlmoon/changedetection.io/blob/maste
          python-loguru
          python-pysocks
          # below for pyppeteer-ng
-         python-aenum
+         # python-aenum # no longer packaged
          python-appdirs
          python-typing_inspect
          python-tqdm
@@ -63,11 +63,12 @@ sha512sums=('f51992bbf0b7eaf06dabc610564cc899f577a6800b373a1424827e6cd849dd27d30
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  sed -i 's/[~=]=.*//' requirements.txt
+  sed -i 's/[>~=]=.*//' requirements.txt
   python setup.py install --root="$pkgdir" --optimize=1
   # command per https://wiki.archlinux.org/title/Python_package_guidelines (now removed from page?)
-  PIP_CONFIG_FILE=/dev/null pip install --isolated --target="$pkgdir/usr/lib/changedetection.io" --ignore-installed --no-deps pyppeteer-ng==2.0.0rc5 validators pyppeteerstealth
+  PIP_CONFIG_FILE=/dev/null pip install --isolated --target="$pkgdir/usr/lib/changedetection.io" --ignore-installed --no-deps pyppeteer-ng==2.0.0rc5 validators pyppeteerstealth aenum
   sed -Ei '/Requires-Dist: (aenum|typing_extensions|typing_inspect|websockets)/s/\(.*//' "$pkgdir"/usr/lib/changedetection.io/pyppeteer_ng-2.0.0rc5.dist-info/METADATA
+  rm ${pkgdir}/usr/lib/changedetection.io/aenum/_py2.py # fails to compile
   python -O -m compileall -s ${pkgdir} "${pkgdir}/usr/lib/changedetection.io"
   install -Dm644 "${srcdir}/sysusers" "${pkgdir}/usr/lib/sysusers.d/changedetection.io.conf"
   install -Dm644 "${srcdir}/tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/changedetection.io.conf"

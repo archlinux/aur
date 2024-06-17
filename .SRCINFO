@@ -42,7 +42,6 @@ pkgbase = changedetection.io
 	depends = python-pytest-flask
 	depends = python-loguru
 	depends = python-pysocks
-	depends = python-aenum
 	depends = python-appdirs
 	depends = python-typing_inspect
 	depends = python-tqdm
