@@ -1,7 +1,7 @@
 pkgbase = sm64coopdx-git
-	pkgdesc = A fork of sm64ex-coop with more features, customizability and power to the Lua API
+	pkgdesc = Fork of Super Mario 64 Co-op with more features, customizability and power to the Lua API
 	pkgver = r3689.30ccad3
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://sm64coopdx.com/
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = sm64coopdx-git
 	source = sm64coopdx.png
 	md5sums = SKIP
 	md5sums = 20b854b239203baf6c961b850a4a51a2
-	md5sums = fda12fe3e7f38cf15273bd5cd47448f0
+	md5sums = 84fd37eacc71065d03ccad67cb35f699
 	md5sums = 9bec90a66559edbf42992c4985e4548a
 
 pkgname = sm64coopdx-git
