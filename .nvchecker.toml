@@ -1,5 +1,5 @@
 [build2]
 source = 'github'
-github = 'build2/build2'
+github = 'build2/build2-toolchain'
 use_max_tag = true
 prefix = 'v'
