@@ -9,6 +9,8 @@ pkgdesc="An asynchronous WebDAV server implementation, Support multi-provider, m
 arch=("any")
 url="https://github.com/rexzhang/${_pkgname}"
 license=('MIT')
+backup=("etc/${_pkgname}/config.json")
+install="${_pkgname}.install"
 depends=("python-aiofiles" "python-arrow" "python-asgi-middleware-static-file" "python-chardet" "python-click" "python-pydantic" "python-xmltodict")
 optdepends=("python-bonsai: LDAP support"
             "python-brotli: response compress support")
