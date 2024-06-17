@@ -4,7 +4,7 @@ pkgbase=bitcoin-bin
 _util_suffixes=('cli' 'qt' 'tx' 'util' 'wallet')
 _pkgname=('bitcoin-daemon' "${_util_suffixes[@]/#/bitcoin-}")
 pkgname=("${_pkgname[@]/%/-bin}")
-pkgver=26.0
+pkgver=27.1
 pkgrel=1
 pkgdesc="A peer-to-peer network based digital currency (official binaries)"
 arch=('x86_64')
@@ -21,8 +21,8 @@ source=("${_bindirbase}.tar.gz::https://bitcoincore.org/bin/bitcoin-core-${pkgve
 # We manually extract in prepare()
 noextract=("${_bindirbase}.tar.gz"
            "${_srcdirbase}.tar.gz")
-sha256sums=('23e5ab226d9e01ffaadef5ffabe8868d0db23db952b90b0593652993680bb8ab'
-            'ab1d99276e28db62d1d9f3901e85ac358d7f1ebcb942d348a9c4e46f0fcdc0a1'
+sha256sums=('c9840607d230d65f6938b81deaec0b98fe9cb14c3a41a5b13b2c05d044a48422'
+            '0c1051fd921b8fae912f5c2dfd86b085ab45baa05cd7be4585b10b4d1818f3da'
             '7a77112fb094b9b2e6dd873e24c9a6bacb1f1c453d811a024f271f4b78f2a704'
             'ba83570b4671b18c230f23d8d93cd8faa73179a546655448c14d1644d9b49f35'
             'a020897651c03690eae3411fe401100fd1a2ffaa799247165eb71124609b7959'
