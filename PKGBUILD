@@ -3,7 +3,7 @@
 
 pkgname=fcitx-cloudpinyin
 pkgver=0.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Standalone module for fcitx that uses pinyin API on the internet to provide additional input candidates'
 arch=('x86_64')
 url="https://github.com/fcitx/fcitx-cloudpinyin"

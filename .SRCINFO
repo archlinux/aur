@@ -1,0 +1,17 @@
+pkgbase = fcitx-cloudpinyin
+	pkgdesc = Standalone module for fcitx that uses pinyin API on the internet to provide additional input candidates
+	pkgver = 0.3.7
+	pkgrel = 2
+	url = https://github.com/fcitx/fcitx-cloudpinyin
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = curl
+	depends = fcitx
+	source = https://download.fcitx-im.org/fcitx-cloudpinyin/fcitx-cloudpinyin-0.3.7.tar.xz
+	source = https://download.fcitx-im.org/fcitx-cloudpinyin/fcitx-cloudpinyin-0.3.7.tar.xz.sig
+	validpgpkeys = 2CC8A0609AD2A479C65B6D5C8E8B898CBF2412F9
+	sha512sums = 1deb934fe9003aae519c8635fc8f13e21d1dcba4124b1b75c6e071b7ee903edf3fb9ce0eda5219fad5a78221eb6b157d2e731f1ff4cf49cb0643d87ddd55834b
+	sha512sums = SKIP
+
+pkgname = fcitx-cloudpinyin
