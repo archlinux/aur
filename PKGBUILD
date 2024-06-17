@@ -1,5 +1,5 @@
 # Maintainer: hir0xygen <aur (at) hir0.pw>
-pkgname=sentinelguard
+pkgname=sentinelguard-git
 pkgver=r8.13de5ac
 pkgrel=1
 pkgdesc="On-the-fly toggling of security features for integration with Steam games"

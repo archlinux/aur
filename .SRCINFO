@@ -1,4 +1,4 @@
-pkgbase = sentinelguard
+pkgbase = sentinelguard-git
 	pkgdesc = On-the-fly toggling of security features for integration with Steam games
 	pkgver = r8.13de5ac
 	pkgrel = 1
@@ -13,4 +13,4 @@ pkgbase = sentinelguard
 	source = git+https://github.com/hir0xygen/sentinelguard.git
 	md5sums = SKIP
 
-pkgname = sentinelguard
+pkgname = sentinelguard-git
