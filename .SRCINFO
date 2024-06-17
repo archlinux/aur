@@ -1,33 +1,29 @@
-pkgbase = python-amaranth
-	pkgdesc = A modern hardware definition language and toolchain based on Python (formerly nMigen)
-	pkgver = 0.5.0.r0.ga0750b8
+pkgbase = python-amaranth0.4.5
+	pkgdesc = A modern hardware definition language and toolchain based on Python (formerly nMigen). Version 0.4.5.
+	pkgver = 0.4.5
 	pkgrel = 1
 	url = https://github.com/amaranth-lang/amaranth
 	arch = any
-	license = BSD
+	license = BSD-2-Clause
 	checkdepends = python-pytest
-	checkdepends = yosys>0.16
 	checkdepends = symbiyosys-git
 	checkdepends = yices
-	makedepends = git
+	checkdepends = yosys
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-wheel
-	makedepends = python-setuptools-scm
 	makedepends = python-jschon
 	makedepends = python-packaging
 	makedepends = python-pdm-backend
+	makedepends = python-pyproject-patcher
+	makedepends = python-wheel
 	depends = python
 	depends = python-jinja
 	depends = python-pyvcd
 	optdepends = python-paramiko: for remote builds
-	provides = python-nmigen=0.5.0.r0.ga0750b8
-	provides = python-amaranth=0.5.0.r0.ga0750b8
-	conflicts = python-nmigen
-	conflicts = python-nmigen-git
-	conflicts = python-amaranth-git
-	replaces = python-nmigen
-	source = git+https://github.com/amaranth-lang/amaranth.git
-	sha256sums = SKIP
+	provides = python-nmigen=0.4.5
+	provides = python-amaranth=0.4.5
+	conflicts = python-amaranth
+	source = amaranth-0.4.5.tar.gz::https://github.com/amaranth-lang/amaranth/archive/v0.4.5.tar.gz
+	sha256sums = 913c2a13274caed077dcdce61ae375ca0b35ad683dd4e615c59ea5bee69cb6b9
 
-pkgname = python-amaranth
+pkgname = python-amaranth0.4.5
