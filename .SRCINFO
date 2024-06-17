@@ -1,0 +1,13 @@
+pkgbase = fcitx5-qt-google-earth
+	pkgdesc = Fcitx5 Qt5 Library for Google Earth Pro
+	pkgver = 5.1.6
+	pkgrel = 1
+	url = https://github.com/nozomi-yoshika/fcitx5-qt-builds
+	arch = x86_64
+	license = BSD
+	depends = google-earth-pro
+	depends = fcitx5
+	source = https://github.com/nozomi-yoshika/fcitx5-qt-builds/releases/download/v5.1.6/fcitx5-qt-builds-5.1.6.tar.gz
+	sha256sums = 1b0b96c2d86e993035bbea36328d6d77c9e2e9831b1044b76cbd50c05b969d18
+
+pkgname = fcitx5-qt-google-earth
