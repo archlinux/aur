@@ -2,7 +2,7 @@
 # Maintainer: Goldy <goldy@devgoldy.xyz>
 _pkgname=mov-cli-soundcloud
 pkgname=python-mov-cli-soundcloud
-pkgver="1.0.0"
+pkgver="1.0.1"
 pkgrel=1
 pkgdesc="A mov-cli v4 plugin for playing soundcloud."
 arch=("x86_64" "i686")
