@@ -1,0 +1,5 @@
+[oblivion-desktop]
+source = "github"
+github = "bepass-org/oblivion-desktop"
+use_max_tag = true
+prefix = "v"
