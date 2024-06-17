@@ -3,7 +3,7 @@
 
 _pkgname=squawk
 pkgname="${_pkgname}-cli"
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Linter for PostgreSQL, focused on migrations"
 arch=(
@@ -26,10 +26,10 @@ options=(
 source=(
 	"https://github.com/sbdchd/squawk/archive/refs/tags/v${pkgver}.tar.gz"
 	dynamic-pg_query-linking.patch
-	libpg_query16.patch
+	libpg_query-sys.patch
 )
 sha256sums=(
-	fde7996900a1fa73e368bdc8d3d727cba627231e216f75f915b356d3272534f5
+	1f3797aa60254c5f7b9e7e21cc0370677a2953119208ed5a36736ce6f0bfae92
 	SKIP
 	SKIP
 )
@@ -50,6 +50,8 @@ sha256sums=(
 prepare() {
 	cd "${_pkgname}-${pkgver}"
 
+	patch -p0 -i ../libpg_query-sys.patch
+
 	export RUSTUP_TOOLCHAIN=stable
 
 	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
@@ -63,8 +65,6 @@ prepare() {
 		vendor/libpg_query-sys/.cargo-checksum.json \
 		> vendor/libpg_query-sys/.cargo-checksum.json.new
 	mv vendor/libpg_query-sys/.cargo-checksum.json{.new,}
-
-	patch -p0 -i ../libpg_query16.patch
 }
 
 build() {
