@@ -1,9 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ente-auth
 pkgdesc="2FA app with free end-to-end encrypted backup and sync"
-pkgver=3.0.8
+pkgver=3.0.12
 pkgrel=1
-_flutter_ver=3.19.3
+_flutter_ver=3.22.2
 arch=('x86_64' 'aarch64')
 url="https://ente.io/auth"
 license=('AGPL-3.0-or-later')
@@ -31,7 +31,7 @@ source=("git+https://github.com/ente-io/ente.git#tag=auth-v$pkgver"
         'git+https://github.com/abhinavkgrd/ffmpeg.wasm.git'
         'git+https://github.com/ente-io/PhotoSwipe.git'
         'ente_auth.desktop')
-sha256sums=('8a8fe749d6cc6e0cf1f2b5d5be293e37f318c6971b5d446ee827cb8d6a6613a1'
+sha256sums=('3cd92c6e2429941a257b4921522e0ffd0ffeffdb44226aee5bc1e399653d794e'
             'SKIP'
             'SKIP'
             'SKIP'
