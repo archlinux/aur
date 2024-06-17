@@ -1,0 +1,13 @@
+pkgbase = profilex
+	pkgdesc = ProFileX is a Linux file management tool with a Qt-based GUI.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/felipealfonsog/ProFileX
+	arch = x86_64
+	license = BSD 3-clause
+	depends = gcc
+	depends = qt5-base
+	source = https://github.com/felipealfonsog/ProFileX/archive/refs/tags/v0.0.1.tar.gz
+	sha256sums = 939e1524edda8773745c816514371d1dd5f70610654ec09c2cd72d0aeaa867eb
+
+pkgname = profilex
