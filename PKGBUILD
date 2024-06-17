@@ -7,7 +7,7 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-libusb
 pkgver=1.0.27
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Library that provides generic access to USB devices (Android ${_android_arch})"
 url="https://libusb.info/"
@@ -29,8 +29,6 @@ build() {
     cd "${srcdir}/libusb-$pkgver"
     source android-env ${_android_arch}
 
-    # configure: error: udev support requested but libudev header not installed
-
     android-${_android_arch}-configure \
         --enable-udev=no
     make $MAKEFLAGS
@@ -41,6 +39,6 @@ package () {
     source android-env ${_android_arch}
 
     make DESTDIR="$pkgdir" install
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
