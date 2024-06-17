@@ -1,0 +1,13 @@
+pkgbase = warp-plus
+	pkgdesc = An open-source implementation of Cloudflare's Warp, enhanced with Psiphon integration
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://github.com/bepass-org/warp-plus
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = warp-plus-1.2.3.tar.gz::https://github.com/bepass-org/warp-plus/archive/refs/tags/v1.2.3.tar.gz
+	sha256sums = 445fe2d1ee27afe91f8a52839036b0d9c42efcd788fe7644d4ba4bdebe724291
+
+pkgname = warp-plus

@@ -1,0 +1,5 @@
+[warp-plus]
+source = "github"
+github = "bepass-org/warp-plus"
+use_max_tag = true
+prefix = "v"
