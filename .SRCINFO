@@ -1,17 +1,17 @@
 pkgbase = pkglog
 	pkgdesc = Reports log of package updates
-	pkgver = 1.30
+	pkgver = 1.31
 	pkgrel = 1
 	url = https://github.com/bulletmark/pkglog
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools-scm
 	depends = python>=3.7
-	source = pkglog-1.30.tar.gz::https://github.com/bulletmark/pkglog/archive/1.30.tar.gz
-	sha1sums = d2a3b3f3ab73fd8f9eda56baccfb04577ddefd4a
+	source = pkglog-1.31.tar.gz::https://github.com/bulletmark/pkglog/archive/1.31.tar.gz
+	sha1sums = 2994e2d73e4ef9c8212382900cdfb863b94d8b86
 
 pkgname = pkglog
