@@ -2,13 +2,13 @@
 
 pkgname=extension-manager
 pkgver=0.5.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A native tool for browsing, installing, and managing GNOME Shell Extensions"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mjakeman/extension-manager"
 license=('GPL3')
 depends=('libadwaita' 'libsoup3' 'json-glib' 'text-engine')
-makedepends=('meson' 'blueprint-compiler' 'gobject-introspection')
+makedepends=('meson' 'blueprint-compiler' 'gobject-introspection' 'glib2-devel')
 checkdepends=('appstream-glib')
 optdepends=('libbacktrace-git')
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz backtrace.patch return-ext.patch return-inst.patch index.patch osc1.patch osc2.patch)
