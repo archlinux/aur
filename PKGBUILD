@@ -6,7 +6,7 @@ _pkgname=GodSVG
 
 _pkgver=1.0-alpha4
 pkgver=${_pkgver//-/_}
-pkgrel=2
+pkgrel=3
 
 pkgdesc='An editor for Scalable Vector Graphics (SVG) files. Built with Godot'
 arch=('x86_64')
