@@ -2,7 +2,7 @@
 
 pkgname=hellpot-git
 _targetname=hellpot
-pkgver=v0.4.4.r0.g28169bd
+pkgver=v0.4.5.r0.g00e908a
 pkgrel=1
 pkgdesc="HellPot is a portal to endless suffering meant to punish unruly HTTP bots. (Git version)"
 arch=('x86_64' 'aarch64' 'riscv64')
