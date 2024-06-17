@@ -39,6 +39,7 @@ package() {
     echo "Comment=A cross-platform, all-in-one machinima studio for Super Mario 64." >> $DESKTOP_ENTRY
     echo "Exec=sm64-saturn" >> $DESKTOP_ENTRY
     echo "Icon=sm64-saturn" >> $DESKTOP_ENTRY
+    echo "Path=$V64SATURN" >> $DESKTOP_ENTRY
     echo "Terminal=false" >> $DESKTOP_ENTRY
     echo "Categories=Game" >> $DESKTOP_ENTRY
 }
