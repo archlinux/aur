@@ -5,17 +5,20 @@ pkgdesc="simplest way to use IRC in your browser."
 arch=('x86_64')
 url="https://convos.chat/"
 license=('Artistic-2.0')
-depends=('perl' 'perl-io-socket-ssl' 'openssl' 'cpanminus')
+depends=('perl' 'openssl' 'perl-crypt-passphrase' 'perl-crypt-passphrase-argon2' 'perl-crypt-passphrase-bcrypt'
+         'perl-file-homedir' 'perl-file-readbackwards' 'perl-http-acceptlanguage' 'perl-syntax-keyword-try' 'perl-future-asyncawait'
+         'perl-io-socket-ssl' 'perl-irc-utils' 'perl-json-validator' 'perl-link-embedder' 'perl-module-install'
+         'perl-mojolicious' 'perl-mojolicious-plugin-openapi' 'perl-mojolicious-plugin-syslog' 'perl-parse-irc'
+         'perl-text-markdown-hoedown' 'perl-time-piece' 'perl-unicode-utf8' 'perl-cpanel-json-xs' 'perl-ev' 'perl-yaml-libyaml') #cpanminus
 makedepends=('git')
+checkdepends=('perl-test-deep')
 source=("git+https://github.com/convos-chat/convos.git"
         "convos.service")
 sha256sums=('SKIP' 
             '453f0e3404114d97c3b4ddc9f9ae3de559d827c63e2710170735d3317973ccca')
 build() {
-	cd "$srcdir/convos"
-		./script/convos install
-		cpanm Crypt::Passphrase Crypt::Passphrase::Argon2 Crypt::Passphrase::Bcrypt File::HomeDir File::ReadBackwards HTTP::AcceptLanguage Syntax::Keyword::Try Future::AsyncAwait IO::Socket::SSL IRC::Utils JSON::Validator LinkEmbedder Module::Install Mojolicious Mojolicious::Plugin::OpenAPI Mojolicious::Plugin::Syslog Parse::IRC Text::Markdown::Hoedown Time::Piece Unicode::UTF8 Cpanel::JSON::XS EV YAML::LibYAML
-
+  cd "$srcdir/convos"
+  ./script/convos install
 }
 
 package() {
