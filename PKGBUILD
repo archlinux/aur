@@ -1,9 +1,9 @@
 # Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
 
 pkgname=hqplayer-client
-pkgver=5.7.1
-_debpkgver=5.7.1-19
-pkgrel=2
+pkgver=5.7.2
+_debpkgver=5.7.2-20
+pkgrel=1
 pkgdesc="The high-end upsampling multichannel software HD-audio player - client application"
 arch=('x86_64' 'x86_64_v3')
 url="http://www.signalyst.com/consumer.html"
@@ -11,7 +11,7 @@ license=('custom')
 depends=('qt6-webengine')
 optdepends=('hqplayer4' 'hqplayer5' 'hqplayer-embedded' 'hqplayer-embedded-sse')
 source=("https://www.signalyst.com/bins/jammy/hqplayer5desktop_"$_debpkgver"_amd64.deb")
-sha256sums=('a885f0ace0810968556f725287e3a050943c2e64e46f6d464203873385309629')
+sha256sums=('e741e6ef04c28d3a632fea17983e110e2667e194bc5279f19879051cbac6e89d')
 options=(!strip)
 install=${pkgname}.install
 
