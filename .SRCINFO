@@ -1,7 +1,7 @@
 pkgbase = python-pylibjpeg-libjpeg
 	pkgdesc = A JPEG, JPEG-LS and JPEG XT plugin for pylibjpeg
-	pkgver = 2.1.0
-	pkgrel = 2
+	pkgver = 2.1.1
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/pydicom/pylibjpeg-libjpeg
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = python-pylibjpeg-libjpeg
 	depends = gcc-libs
 	depends = glibc
 	depends = python-numpy
-	source = python-pylibjpeg-libjpeg::git+https://github.com/pydicom/pylibjpeg-libjpeg.git#tag=v2.1.0
-	sha512sums = 985dd371ceea677fcdffd07494d45c83e020d24057b98700a7d086cb42bbe6bf7ebd92c06c242d09af334d5668ccc6d16449bac6fd19807dde0c0a55184eaea0
+	source = python-pylibjpeg-libjpeg::git+https://github.com/pydicom/pylibjpeg-libjpeg.git#tag=v2.1.1
+	sha512sums = 5bf8c3c6946ae129bfe180014ee187848405247d7b9cc8d83e17d9a1266a4435038e04c572221620464f28da1bbe4cc4310addeea1e7619beb9319c910a982f2
 
 pkgname = python-pylibjpeg-libjpeg
