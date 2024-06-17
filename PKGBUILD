@@ -8,7 +8,7 @@ pkgdesc="Fork of Super Mario 64 Co-op with more features, customizability and po
 _region="us" # change this (as well as the 2nd checksum in line 28) if you want to use a different ROM
 
 pkgver=r3689.30ccad3
-pkgrel=2
+pkgrel=3
 epoch=1
 
 arch=(x86_64 i686 pentium4 aarch64 armv7h)
@@ -62,11 +62,16 @@ package() {
 	# move to the build directory
 	cd "sm64coopdx/build/${_region}_pc"
 
-	# copy the main executable and libraries
+	# copy the main executable
 	install -Dm755 sm64coopdx "${pkgdir}/usr/share/sm64coopdx/sm64coopdx"
-	find . \
-		-type f -name "*.so" \
-		-exec install -Dm755 {} "${pkgdir}/usr/lib/sm64coopdx/{}" \;
+
+	# copy the shared libraries
+	find . -type f -name "*.so" -exec install -Dm755 {} "${pkgdir}/usr/lib/sm64coopdx/{}" \;
+
+	# copy the other directories
+	find lang -type f -exec install -Dm644 {} "${pkgdir}/usr/share/sm64coopdx/{}" \;
+	find dynos -type f -exec install -Dm644 {} "${pkgdir}/usr/share/sm64coopdx/{}" \;
+	find mods -type f -exec install -Dm644 {} "${pkgdir}/usr/share/sm64coopdx/{}" \;
 
 	# copy the script
 	install -Dm755 "${srcdir}/sm64coopdx.sh" "${pkgdir}/usr/bin/sm64coopdx"
