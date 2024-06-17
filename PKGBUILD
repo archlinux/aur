@@ -38,41 +38,41 @@ pkgver() {
 }
 
 prepare() {
-    # copy the ROM to the source directory
-    cp "baserom.${_region}.z64" "sm64coopdx/baserom.${_region}.z64"
+	# copy the ROM to the source directory
+	cp "baserom.${_region}.z64" "sm64coopdx/baserom.${_region}.z64"
 
-    # generate a .desktop file
-    gendesk -f -n \
-        --pkgname "Super Mario 64 Coop Deluxe" \
-        --pkgdesc "${pkgdesc}" \
-        --exec sm64coopdx \
-        --icon sm64coopdx.png \
-        --categories "Game;ActionGame;AdventureGame"
+	# generate a .desktop file
+	gendesk -f -n \
+		--pkgname "Super Mario 64 Coop Deluxe" \
+		--pkgdesc "${pkgdesc}" \
+		--exec sm64coopdx \
+		--icon sm64coopdx.png \
+		--categories "Game;ActionGame;AdventureGame"
 }
 
 build() {
-    # move to the source directory
-    cd sm64coopdx
+	# move to the source directory
+	cd sm64coopdx
 
-    # build the game
-    make
+	# build the game
+	make
 }
 
 package() {
-    # move to the build directory
-    cd "sm64coopdx/build/${_region}_pc"
+	# move to the build directory
+	cd "sm64coopdx/build/${_region}_pc"
 
-    # copy all of the built files
-    find . -type f \
-        -not -name "sm64coopdx" \
-        -exec install -Dm644 {} "${pkgdir}/usr/share/sm64coopdx/{}" \;
+	# copy all of the built files
+	find . -type f \
+		-not -name "sm64coopdx" \
+		-exec install -Dm644 {} "${pkgdir}/usr/share/sm64coopdx/{}" \;
 
-    install -Dm755 sm64coopdx "${pkgdir}/usr/share/sm64coopdx/sm64coopdx"
+	install -Dm755 sm64coopdx "${pkgdir}/usr/share/sm64coopdx/sm64coopdx"
 
-    # copy the script
-    install -Dm755 "${srcdir}/sm64coopdx.sh" "${pkgdir}/usr/bin/sm64coopdx"
+	# copy the script
+	install -Dm755 "${srcdir}/sm64coopdx.sh" "${pkgdir}/usr/bin/sm64coopdx"
 
-    # copy the icon and the .desktop file
-    install -Dm644 "${srcdir}/sm64coopdx.png" "${pkgdir}/usr/share/pixmaps/sm64coopdx.png"
-    install -Dm644 "${srcdir}/sm64coopdx.desktop" "${pkgdir}/usr/share/applications/sm64coopdx.desktop"
+	# copy the icon and the .desktop file
+	install -Dm644 "${srcdir}/sm64coopdx.png" "${pkgdir}/usr/share/pixmaps/sm64coopdx.png"
+	install -Dm644 "${srcdir}/sm64coopdx.desktop" "${pkgdir}/usr/share/applications/sm64coopdx.desktop"
 }
