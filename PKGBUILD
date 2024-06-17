@@ -16,7 +16,7 @@
 ## basic info
 _pkgname="floorp"
 pkgname="$_pkgname"
-pkgver=11.13.3
+pkgver=11.14.1
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
@@ -102,7 +102,6 @@ _main_package() {
     !makeflags
     !strip
   )
-
 
   _pkgsrc="Floorp"
   source=(
