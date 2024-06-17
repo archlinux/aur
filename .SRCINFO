@@ -1,7 +1,7 @@
 pkgbase = intel-lpmd
 	pkgdesc = Intel Low Power Mode Daemon
 	pkgver = 0.0.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/intel/intel-lpmd
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -10,6 +10,7 @@ pkgbase = intel-lpmd
 	makedepends = autoconf-archive
 	makedepends = gtk-doc
 	makedepends = glib2-devel
+	makedepends = systemd
 	depends = dbus-glib
 	depends = libxml2
 	depends = libnl
