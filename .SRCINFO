@@ -1,6 +1,6 @@
 pkgbase = verity-squash-root
 	pkgdesc = Build signed efi files which mount a verified squashfs image as rootfs on boot
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://github.com/brandsimon/verity-squash-root/
 	arch = any
@@ -22,8 +22,8 @@ pkgbase = verity-squash-root
 	depends = squashfs-tools
 	depends = tar
 	backup = etc/verity_squash_root/config.ini
-	source = verity-squash-root-0.3.3.tar.gz::https://github.com/brandsimon/verity-squash-root/archive/refs/tags/v0.3.3.tar.gz
-	sha512sums = f960e842ef3ccf097c2af19a136761a66502a3401d572d26b4719817d5e17e5f463283fa0b72d3c79b85e4baff298f2e62cd184dc8e78631b1c482ff2fd56e98
-	b2sums = be3bb50a968294055a457f935ee204cc320fc3b92424e9f83ffe3550796068e6e1ac943cabdea5d9bb0ed71a53574406a198ace9fe488dd0d0e206df23fc57b7
+	source = verity-squash-root-0.3.4.tar.gz::https://github.com/brandsimon/verity-squash-root/archive/refs/tags/v0.3.4.tar.gz
+	sha512sums = 8081964921faba01a0908f82e4f7f1141b891e6bc5dae46fa9fb083d01d141acfb1f81dffa0256e089ef6eaef3a10e66f8049e7369b3b9b58edeb4f2468eccba
+	b2sums = 14a5fac01b296dec6f837f01bfd5fdcdf1c2545ec4f0b8f76d93c54c07c3f4625c62ee7c2f4de2c361965bbc517e85def07fc332a397e6aa818b7b8d9bf90dbb
 
 pkgname = verity-squash-root
