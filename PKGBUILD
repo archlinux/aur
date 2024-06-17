@@ -3,22 +3,48 @@
 
 pkgname=upower-nocritical
 _pkgname=upower
-pkgver=1.90.2
+pkgver=1.90.4
 pkgrel=1
 pkgdesc="Abstraction for enumerating power devices, listening to device events and querying history and statistics (With a patch to disable low battery action)"
 arch=('i686' 'x86_64')
 url="http://upower.freedesktop.org"
-license=('GPL')
-depends=('systemd' 'libusb' 'libimobiledevice' 'libgudev')
-makedepends=('intltool' 'docbook-xsl' 'gobject-introspection' 'python' 'git' 'gtk-doc')
-provides=('upower')
+license=(GPL-2.0-or-later)
+depends=(
+  gcc-libs
+  glib2
+  glib2-devel
+  glibc
+  libgudev
+  libimobiledevice
+  libplist
+)
+optdepends=(
+  'usbmuxd: Read charge status of iOS devices'
+)
+makedepends=(
+  docbook-xsl
+  git
+  gobject-introspection
+  gtk-doc
+  meson
+  python
+  systemd
+  usbmuxd
+)
+checkdepends=(
+  python-dbus
+  python-dbusmock
+  python-gobject
+  python-packaging
+  umockdev
+)
 conflicts=('upower')
 backup=('etc/UPower/UPower.conf')
 _tag=v${pkgver}
 source=("git+https://gitlab.freedesktop.org/upower/upower.git#tag=$_tag"
         0001-Add-a-critical-action-Ignore.patch)
 md5sums=('SKIP'
-         '69fbeb7e5906a59fd39f702d01f83815')
+         '1be98d9fc7f2db0cf08e1209474e98a3')
 
 pkgver() {
   cd $_pkgname
