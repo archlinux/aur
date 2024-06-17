@@ -1,6 +1,6 @@
 # Maintainer: Axel Navarro <navarroaxel gmail>
 pkgname=webtorrent-cli
-pkgver=5.1.1
+pkgver=5.1.2
 pkgrel=1
 pkgdesc="The streaming torrent client. For the command line."
 arch=(any)
@@ -10,7 +10,7 @@ depends=(nodejs)
 makedepends=(git npm)
 provides=(webtorrent)
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/webtorrent/$pkgname/archive/v$pkgver.tar.gz)
-sha256sums=('ae498cdf17cf78070282bce57161d7485eecb49b2a08fb741893afa0853c5cd6')
+sha256sums=('1041f723de7d349c92f8d8ce8a2f2f66110dcbe398ededdc70919a70f4c51c47')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
@@ -22,7 +22,7 @@ package() {
   cd "$srcdir/${pkgname}-${pkgver}"
 
   install -dm755 "${pkgdir}/usr/lib/${pkgname}"
-  cp -a bin node_modules package.json "${pkgdir}/usr/lib/${pkgname}/"
+  cp -a bin node_modules package.json version.cjs "${pkgdir}/usr/lib/${pkgname}/"
 
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
