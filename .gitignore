@@ -1,5 +1,5 @@
-*.tar.gz
-*.pkg.tar.xz
-pkg/
-src/
-minecraft-launcher.svg
+/*.zst
+/*.gz
+/*.svg
+/src/
+/pkg/
