@@ -1,0 +1,12 @@
+pkgbase = python-pynufft
+	pkgdesc = PyNUFFT: Python non-uniform fast Fourier transform
+	pkgver = 2024.1.2
+	pkgrel = 1
+	url = https://github.com/jyhmiinlin/pynufft
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	source = python-pynufft-2024.1.2.tar.gz::https://github.com/jyhmiinlin/pynufft/archive/2024.1.2.tar.gz
+	sha256sums = c2398a3718fda56f95cecd4994e9b66379114390a7f698647ae4251e46ec038f
+
+pkgname = python-pynufft
