@@ -1,0 +1,14 @@
+pkgbase = python-bigsuds
+	pkgdesc = Library for F5 Networks iControl API
+	pkgver = 1.0.6
+	pkgrel = 2
+	url = https://github.com/F5Networks/bigsuds
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python-suds
+	source = python-bigsuds-1.0.6.tar.gz::https://github.com/F5Networks/bigsuds/archive/v1.0.6.tar.gz
+	sha512sums = 01042ee94104eb708ded4427fd8fe2c2ae646bf449b39ebc14932641bc899be017b542af1710408ca201d31e348ad18ac8a6bf608a2e8a9717eee382265bfcf0
+
+pkgname = python-bigsuds
