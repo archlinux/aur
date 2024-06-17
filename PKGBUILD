@@ -2,7 +2,7 @@
 
 pkgname=mint-themes
 pkgver=2.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc='A collection of Mint themes.'
 arch=('any')
 url="http://packages.linuxmint.com/pool/main/m/${pkgname}"
@@ -12,7 +12,7 @@ depends=(
 )
 makedepends=(
     'python'
-    'sassc'
+    'python-libsass'
 )
 optdepends=(
     'mint-y-icons'
