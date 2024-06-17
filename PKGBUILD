@@ -1,7 +1,9 @@
-# Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
+# Maintainer: Adam Schadler (ajschadler at gmail dot com)
+# Previous Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
+_threads=$(nproc)
 pkgname=cmdstan
-pkgver=2.34.0
-pkgrel=3
+pkgver=2.35.0
+pkgrel=1
 pkgdesc="The command line interface to Stan, a C++ library for statistical modeling and high-performance statistical computation"
 arch=('x86_64')
 url="https://mc-stan.org/"
@@ -10,50 +12,35 @@ depends=(
     'gcc-libs'
     'glibc'
 )
-makedepends=('gcc')
+#makedepends=('gcc')
 checkdepends=(
     'gtest'
     'python'
 )
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/stan-dev/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
-    "fix-test.patch::https://patch-diff.githubusercontent.com/raw/stan-dev/cmdstan/pull/1239.patch"
-    "fix-gcc13.patch::https://patch-diff.githubusercontent.com/raw/stan-dev/stan/pull/3255.patch"
 )
-b2sums=('d1b8e410e48d15ca9227e232da4b8fecc564cc40a1a91e13bc76f5aa403aa7a9d88ad89286b2a95c8a79653c9cb8b9b9387c75efc6913c76fdce27f5c4ee7ac5'
-        '01c4a242db1749816f57c81855313bc8b80a6cd1721a8d9199d418831f6e3de6e14a5c795297641fa9af909da6c68dd9e660c0f7b8d565503a90896b8316acd4'
-        '2f85d727a1ce730876cd16ae6badd7f9bc90dc3bdf40e9761bd767d047f85f4e8f98c260bc0c77310ba5b202b4dc1e00e9927fdeb92bb5dc860379f341ef35e6')
+b2sums=('8de5bfa4b6411a486ddc97e2479b6addc9e14a7ffdcc7a35a8733f517740fee4d19408d63b286363a5487ff89e76c016bf1e669d579b4fc2cb3e65f4a37ffd65')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
     # delete precompiled binaries in the tarball
     rm -r bin
-    # https://github.com/stan-dev/cmdstan/issues/1238
-    patch --forward --strip=1 --input="${srcdir}/fix-test.patch"
-    # fix build tests with gcc13
-    patch --directory=stan --forward --strip=1 --input="${srcdir}/fix-gcc13.patch"
 }
 
 build() {
     cd "${pkgname}-${pkgver}"
-    make -j$(nproc) build
+    make -j$_threads build
 }
 
 check() {
     cd "${pkgname}-${pkgver}"
-    python runCmdStanTests.py -j$(nproc) src/test
-
-    #cd stan
-    #python runTests.py -j$(nproc) src/test
-
-    #cd lib/stan_math
-    #python runTests.py -j$(nproc) test/unit
-    #python runTests.py -j$(nproc) test/prob
+    python runCmdStanTests.py -j$_threads src/test
 }
 
 package() {
     mkdir -p "${pkgdir}/opt" "${pkgdir}/usr/bin"
-    cp -r "${pkgname}-${pkgver}" "${pkgdir}/opt/cmdstan"
+    cp -a --no-preserve=ownership "${pkgname}-${pkgver}" "${pkgdir}/opt/cmdstan"
     ln -s "/opt/cmdstan/bin/stanc" "${pkgdir}/usr/bin/stanc"
     ln -s "/opt/cmdstan/bin/stansummary" "${pkgdir}/usr/bin/stansummary"
     ln -s "/opt/cmdstan/bin/diagnose" "${pkgdir}/usr/bin/stan-diagnose"
