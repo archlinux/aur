@@ -1,10 +1,11 @@
 pkgbase = sof-bin
 	pkgdesc = Simple and fast calculate size of directories
 	pkgver = 6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/balaraz/sof
 	arch = x86_64
 	license = GPL3
+	depends = gcc-libs
 	provides = sof
 	noextract = sof.1.gz
 	source = https://codeberg.org/balaraz/sof/releases/download/v6.0/sof-v6.0-linux-amd64

@@ -2,12 +2,12 @@
 
 pkgname=sof-bin
 pkgver=6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple and fast calculate size of directories"
 license=(GPL3)
 url="https://codeberg.org/balaraz/sof"
 arch=(x86_64)
-depends=()
+depends=(gcc-libs)
 makedepends=()
 provides=(sof)
 conflicts=()
