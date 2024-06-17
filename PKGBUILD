@@ -1,6 +1,6 @@
 # Maintainer: Shantanu Tushar <shantanu@kde.org>
 pkgname=ruqola-git
-pkgver=2.1.43alpha
+pkgver=2.2.0.r230.g2fb3e56
 pkgrel=1
 epoch=
 pkgdesc="Rocket.Chat client for the KDE desktop"
@@ -26,4 +26,9 @@ build() {
 package() {
 	cd "$srcdir/build"
 	DESTDIR="$pkgdir" cmake --install .
+}
+
+pkgver() {
+	cd "$srcdir/ruqola"
+	git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
