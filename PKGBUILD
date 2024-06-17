@@ -2,7 +2,7 @@
 # Maintainer: Nicolas Karolak <nicolas at karolak dot fr>
 
 pkgname='goresume-bin'
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=1
 pkgdesc='Build HTML/PDF resume from JSON/YAML/TOML.'
 url='https://github.con/nikaro/goresume'
@@ -11,11 +11,11 @@ license=('MIT')
 provides=('goresume')
 conflicts=('goresume')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/nikaro/goresume/releases/download/0.3.7/goresume_0.3.7_linux_arm64.tar.gz")
-sha256sums_aarch64=('88c5624dba023000c4ce9e4b7515a1eab062b6782129513d7282b2d16c391f95')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/nikaro/goresume/releases/download/0.3.8/goresume_0.3.8_linux_arm64.tar.gz")
+sha256sums_aarch64=('9f0f1e13e40055db3c1831661d4cbd35115af6f687165323c3b42d7d0be0baba')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/nikaro/goresume/releases/download/0.3.7/goresume_0.3.7_linux_amd64.tar.gz")
-sha256sums_x86_64=('8037e8257494329034eea07bbb4d0a7a50bbc2a9399aad97d0220ffe1a6bba58')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/nikaro/goresume/releases/download/0.3.8/goresume_0.3.8_linux_amd64.tar.gz")
+sha256sums_x86_64=('19845b7b51e3f07ec79e0c95ae3e8019e08d8939e3c6e42d998181f2f8faec64')
 
 package() {
   install -Dm755 "./goresume" "${pkgdir}/usr/bin/goresume"
