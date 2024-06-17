@@ -1,7 +1,7 @@
 # Maintainer: David Čuček <observ33r@gmail.com>
 
 pkgname="code-translucent"
-pkgver=1.90.0
+pkgver=1.90.1
 pkgrel=1
 pkgdesc="The Open Source build of Visual Studio Code (vscode) editor with translucent window, official marketplace, unblocked proprietary features and wayland support!"
 
@@ -122,7 +122,7 @@ build() {
 
 	yarn install --arch="${_vscode_arch}"
 
-	gulp --max_old_space_size=8192 --openssl-legacy-provider vscode-linux-"${_vscode_arch}"-min
+	gulp --max_old_space_size=8192 vscode-linux-"${_vscode_arch}"-min
 
 }
 
