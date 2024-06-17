@@ -1,7 +1,7 @@
 pkgbase = openvpn3
 	pkgdesc = OpenVPN 3 Linux client
 	pkgver = 22_dev
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codeberg.org/OpenVPN/openvpn3-linux
 	install = openvpn3.install
 	arch = x86_64
