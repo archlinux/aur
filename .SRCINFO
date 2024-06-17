@@ -1,7 +1,7 @@
 pkgbase = minecraft-launcher
 	pkgdesc = Official Minecraft Launcher
 	pkgver = 1.0.1221
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://mojang.com/
 	arch = x86_64
@@ -11,6 +11,7 @@ pkgbase = minecraft-launcher
 	depends = zlib
 	depends = libgpg-error
 	optdepends = flite: narrator support
+	optdepends = org.freedesktop.secrets: persistent login support
 	provides = minecraft-launcher-beta
 	conflicts = minecraft-launcher-beta
 	source = https://launcher.mojang.com/download/linux/x86_64/minecraft-launcher_1.0.1221.tar.gz
