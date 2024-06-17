@@ -1,7 +1,7 @@
 # Maintainer: Marius Hirt <marius-hirt@web.de>
 pkgname=k8sgpt
 pkgver=0.3.35
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool for scanning your Kubernetes clusters, diagnosing, and triaging issues in simple English.'
 arch=('x86_64' 'arm64' 'i386')
 url='https://k8sgpt.ai/'
@@ -19,8 +19,20 @@ sha256sums=(
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+
+    export CGO_ENAGBLED=0
+    export GOPATH="${srcdir}"
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+
     go build -o "bin/${pkgname}" \
-        -ldflags "-s -w -X main.version=${pkgver} -X main.date=$(date +%FT%TZ)" \
+        -trimpath \
+        -buildmode=pie \
+        -mod=readonly \
+        -modcacherw \
+        -ldflags "-s -w -X main.version=${pkgver} -X main.date=$(date +%FT%TZ) -compressdwarf=false -linkmode external" \
         ./main.go
 }
 
@@ -30,6 +42,6 @@ check() {
 }
 
 package() {
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/bin/${pkgname}" \
+    install -Dm755 "${srcdir}/${pkgname}-${pkgver}/bin/${pkgname}" \
         "${pkgdir}/usr/bin/${pkgname}"
 }
