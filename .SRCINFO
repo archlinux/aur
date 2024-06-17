@@ -1,0 +1,16 @@
+pkgbase = python-mov-cli-soundcloud
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/mov-cli/mov-cli-soundcloud
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	depends = python
+	provides = mov-cli-soundcloud
+	source = python-mov-cli-soundcloud-1.0.0.zip::https://github.com/mov-cli/mov-cli-soundcloud/archive/refs/tags/1.0.0.zip
+	md5sums = SKIP
+
+pkgname = python-mov-cli-soundcloud
