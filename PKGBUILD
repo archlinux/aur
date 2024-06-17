@@ -2,7 +2,7 @@
 
 pkgname=mattermost-desktop-git
 _pkgname=mattermost-desktop
-pkgver=5.7.0.2154b404
+pkgver=5.9.0.fb43846d
 pkgrel=1
 pkgdesc="Mattermost Desktop for Linux (git)"
 arch=('x86_64')
@@ -20,12 +20,12 @@ provides=("${_pkgname}")
 source=('git+https://github.com/mattermost/desktop.git#branch=master' ${_pkgname}.desktop)
 sha256sums=('SKIP' '9e60ac9cc5a9cbebccb4180e7de947968aa49858812b5623812a1ab651a91093')
 
-_npmargs="--cache '$srcdir/npm-cache' --no-audit --no-fund"
-
 prepare() {
     cd 'desktop'
 
-    npm $_npmargs install
+    _npmargs="--cache $srcdir/npm-cache --no-audit --no-fund"
+
+    CFLAGS="-Wno-implicit-function-declaration" npm $_npmargs install
 }
 
 build() {
