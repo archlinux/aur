@@ -51,7 +51,7 @@ post_install() {
 	echo -e "4. Default location for playlists and media files are: /var/lib/ffplayout/."
 	echo -e "5. If you want to change the default global settings:"
 	echo -e "   $ sudo rm -v /usr/share/ffplayout/db/*"
-	echo -e "   $ ffplayout -i -d \"${IP}:8787\""
+	echo -e "   $ sudo -u ffpu ffplayout -i -d \"${IP}:8787\""
 
 }
 
