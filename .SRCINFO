@@ -1,6 +1,6 @@
 pkgbase = sunroof-bin
 	pkgdesc = A Vesktop fork cross platform electron-based desktop app aiming to give you a snappier Discord experience with Suncord pre-installed
-	pkgver = 1.5.8
+	pkgver = 1.6.0
 	pkgrel = 2
 	url = https://github.com/verticalsync/Sunroof
 	arch = aarch64
