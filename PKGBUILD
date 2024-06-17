@@ -1,6 +1,6 @@
 # Maintainer: Jon Gjengset <jon@thesquareplanet.com>
 pkgname=topfew
-pkgver=1.0.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Finds the field values (or combinations of values) which appear most often in a stream of records."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-only')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/timbray/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ac277366c1f12e88b7a050a11d8eb35b1b518b1b94b0ec58a34ff935f76d9269')
+sha256sums=('89b9abe7304eb6bb50cc5b3152783e50600439955f73b6175c6db8aec75c0ac9')
 
 prepare() {
 	cd "$pkgname-$pkgver"
