@@ -8,6 +8,7 @@ pkgdesc='A modern, community-driven platform for C++-based heterogeneous program
 arch=('x86_64')
 url='https://github.com/AdaptiveCpp/AdaptiveCpp'
 license=('BSD-2-Clause')
+conflicts=('adaptivecpp')
 source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
 

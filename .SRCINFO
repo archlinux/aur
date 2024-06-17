@@ -23,6 +23,7 @@ pkgbase = adaptivecpp-full-git
 	depends = ocl-icd
 	depends = python
 	depends = spirv-tools
+	conflicts = adaptivecpp
 	source = adaptivecpp-git::git+https://github.com/AdaptiveCpp/AdaptiveCpp.git
 	sha512sums = SKIP
 
