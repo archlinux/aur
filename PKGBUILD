@@ -4,9 +4,9 @@ _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-lz4
 pkgver=1.9.4
-pkgrel=1
+pkgrel=2
 arch=('any')
-pkgdesc='Very fast lossless compression algorithm (android)'
+pkgdesc="Very fast lossless compression algorithm (Android ${_android_arch})"
 url='http://lz4.github.io/lz4/'
 license=('GPL2')
 depends=('android-ndk')
@@ -19,25 +19,23 @@ build() {
     cd "${srcdir}/lz4-${pkgver}"
     source android-env ${_android_arch}
 
-    mkdir -p build-static && pushd build-static
     android-${_android_arch}-cmake \
+        -S build/cmake \
+        -B build-static \
         -DLIB_INSTALL_DIR=lib \
         -DBUILD_SHARED_LIBS=OFF \
         -DLZ4_BUILD_CLI=OFF \
-        -DLZ4_BUILD_LEGACY_LZ4C=OFF \
-        ../build/cmake
-    make $MAKEFLAGS
-    popd
+        -DLZ4_BUILD_LEGACY_LZ4C=OFF
+    make -C build-static $MAKEFLAGS
 
-    mkdir -p build-shared && pushd build-shared
     android-${_android_arch}-cmake \
+        -S build/cmake \
+        -B build-shared \
         -DLIB_INSTALL_DIR=lib \
         -DBUILD_SHARED_LIBS=ON \
         -DLZ4_BUILD_CLI=OFF \
-        -DLZ4_BUILD_LEGACY_LZ4C=OFF \
-        ../build/cmake
-    make $MAKEFLAGS
-    popd
+        -DLZ4_BUILD_LEGACY_LZ4C=OFF
+    make -C build-shared $MAKEFLAGS
 }
 
 package() {
@@ -45,13 +43,10 @@ package() {
     source android-env ${_android_arch}
 
     for _type in static shared; do
-        pushd build-${_type}
-        make install DESTDIR="${pkgdir}"
-        popd
+        make install -C build-${_type} DESTDIR="${pkgdir}"
     done
 
-    #rm -rf "${pkgdir}/${ANDROID_PREFIX_BIN}"
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a || true
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
 }
