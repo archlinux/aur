@@ -4,4 +4,4 @@ names to the global module namespace."""
 import python_qualify
 python_qualify.enable_submodules(__name__)
 
-__version__ = '{{ pkgver }}'
+__version__ = '{{ version }}'

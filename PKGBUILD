@@ -1,8 +1,8 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=shrinko8
-pkgver=1.1.2
-pkgrel=3
+pkgver=1.2.2d
+pkgrel=1
 pkgdesc='Shrink (minify) Pico-8 carts, as well as other tools (e.g. linting, format conversion)'
 arch=('any')
 url='https://github.com/thisismypassport/shrinko8'
@@ -25,27 +25,26 @@ source=(
   'test_cart.p8'
 )
 
-sha512sums=(
-  '79dfea0a1322a81073cfbd51785f78eafcb62b070154eb8b4878a1482b80257317ae47e39f6b51c4a14f046588bd59307278dfdc1a93983e671e598e0594baa5'
-  'e484cb3881923665ff3bf7cb7522f897227896b81d8c8b094f7be8c49d79f1ed6d069bb82d878be36210df80ddf75cb009eb92ea03a2bc9cd3988f651e0bee57'
-  'f10fb1b15dfe370ae85eb8d80065929591d06f3626e5ff69930b491bc3c781cb4b8485af130bbb892b70fb54f0eee70e3aadce28cdc1a40993c7620ad449fc9e'
-  'c00dc0e42044d30c5b99888ac4d6f1a563decfbc357b0f6057c6417b0c0c2d225a64ad3e5bd3f7017b97c92384cca8e48e240778654e0bb516d89776c1ca24a7'
-  'b51c0ed94ffec9f0aa93d09bd6e4fcb155c69dd5dcfc5e155156227e5574f872bd61d541bfe6b98150c78bd8d4142f964c9bbd3c304c8daf58c9f8f21b59f2e6'
-)
+sha512sums=('9861e6922f690aa6a110c380d50a063ca3f6d93e08d53951f9fcd492b627633de95828e78cf09c18084c318d29740c2777042ebe97488e7ce22284e8ac3e4429'
+            'dcc8fa017109c70a96f6356d786f343de2ad3c478bec90a44d714688039eb6b26ceb552d464588a80d73b27961521bd6a4bd9ba79f113ab2e28438e9d1000e39'
+            '185284f60dad6e7172a588416d770e7129d7bcc0ce86bfae1fb7d09cafeb0f6d19ff14dada0844f1fd557510671ff3631f488f2687b4da631488e0421fc61cdb'
+            'c00dc0e42044d30c5b99888ac4d6f1a563decfbc357b0f6057c6417b0c0c2d225a64ad3e5bd3f7017b97c92384cca8e48e240778654e0bb516d89776c1ca24a7'
+            'b51c0ed94ffec9f0aa93d09bd6e4fcb155c69dd5dcfc5e155156227e5574f872bd61d541bfe6b98150c78bd8d4142f964c9bbd3c304c8daf58c9f8f21b59f2e6')
 
 prepare() {
+  local _pep440_conforming_version="${pkgver%[a-z]}+${pkgver##*[0-9]}"
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   # pyinstaller bundles dependencies and the Python runtime, so we
   # use setuptools instead
   echo >&2 'Preparing setuptools'
   j2 -f env -o 'pyproject.toml' '../pyproject.toml.template' - \
-    <<< "pkgver=${pkgver}"
+    <<< "version=${_pep440_conforming_version}"
 
   echo >&2 'Preparing Python namespace compatibility fix'
   mkdir -pv shrinko8
   j2 -f env -o 'shrinko8/__init__.py' '../__init__.py.template' - \
-    <<< "pkgver=${pkgver}"
+    <<< "version=${_pep440_conforming_version}"
 
   echo >&2 'Preparing Python packages'
   xargs < 'files.lst' bash -c 'mv -v $@ shrinko8/' _
@@ -77,7 +76,7 @@ check() {
   echo >&2 'Running minification test'
   python "${srcdir}/shrinko8" \
     -m "${srcdir}/test_cart.p8" test_cart_minified.p8
-  if [[ "$(wc -c < 'test_cart_minified.p8')" -gt 116 ]]; then
+  if [[ "$(wc -c < 'test_cart_minified.p8')" -gt 117 ]]; then
     printf >&2 '%s\n' 'Unexpected minification output:' '==='
     cat >&2 'test_cart_minified.p8'
     printf >&2 '\n%s\n' '==='
