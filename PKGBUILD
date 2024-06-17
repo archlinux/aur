@@ -3,7 +3,7 @@ PROJECT=amalthea
 DESCR="Small general library for the D programming language"
 makedepends=("bash" "chrpath" "findutils" "glib2" "gcc-d")
 depends=("dialog" "glib2" "gcc-d")
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 license=("BSL-1.0 or LGPL-3+")
 
@@ -16,7 +16,7 @@ arch=("x86_64")
 url="https://gitlab.com/os-18/${PROJECT}"
 TARBALL=$pkgname-$pkgver.tar.gz
 source=("$TARBALL::$url/-/archive/v$pkgver/${PROJECT}-v$pkgver.tar.gz")
-sha256sums=("384fa105216f2934f271b1788a2aa0b76626e826e564061247ab4c41492b050a")
+sha256sums=("e99c5e9e460f8cd0b39c4f256151f015afed11ed4283d2f90d1cc3e1d7666351")
 
 build() {
     cd "${PROJECT}-v$pkgver"
