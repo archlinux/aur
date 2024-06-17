@@ -1,6 +1,6 @@
 # Maintainer: Fabrix Xm <fabrix.xm@gmail.com>
 pkgname=oliver
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A simple GUI for PHPStan"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('gtk4' 'libadwaita' 'php')
 makedepends=('vala' 'meson' 'ninja' 'blueprint-compiler' 'gobject-introspection' 'git')
 provides=(oliver)
 source=("https://git.sr.ht/~fabrixxm/oliver/archive/$pkgver.tar.gz")
-md5sums=('d970198e17739d996728f8399f23a4fc')
+md5sums=('2a8c5c5f508cee6fc594b10ae5237b88')
 
 
 build() {
