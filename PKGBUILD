@@ -40,8 +40,8 @@ provides=('VIRTUALBOX-GUEST-MODULES'
           'NTFS3-MODULE')
 _url="https://sourceforge.net/projects/xanmod/files/releases/$branch/${pkgverdl}-xanmod1/${pkgverdl}-${psabi}-xanmod1"
 _url_info="$(curl -sL "$_url"|grep "net.sf.files"|sed 's|net.sf.files = ||g;s|;$||'|jq -r '.[].download_url'|grep -v '\-dbg_')"
-_url_image="$(echo "$_url_info"|grep -o "https:.*/linux-image.*deb")"
-_url_headers="$(echo "$_url_info"|grep -o "https:.*/linux-headers.*deb")"
+_url_image="$(echo "$_url_info"|grep -o "https:.*/linux-image.*deb"|head -1)"
+_url_headers="$(echo "$_url_info"|grep -o "https:.*/linux-headers.*deb"|head -1)"
 source=("${_url_image}" "${_url_headers}")
 noextract=("${_url_image}" "${_url_headers}")
 sha256sums=('SKIP' 'SKIP')

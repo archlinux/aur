@@ -23,11 +23,11 @@ pkgbase = linux-xanmod-bin
 	provides = NTFS3-MODULE
 	conflicts = linux-xanmod-headers
 	conflicts = linux-xanmod
-	noextract = https://sourceforge.net/projects/xanmod/files/releases/main/6.9.4-xanmod1/6.9.4-x64v4-xanmod1/linux-image-6.9.4-x64v4-xanmod1_6.9.4-x64v4-xanmod1-0~20240612.gadde0ab_amd64.deb https://sourceforge.net/projects/xanmod/files/releases/main/6.9.4-xanmod1/6.9.4-x64v4-xanmod1/linux-image-6.9.4-x64v4-xanmod1_6.9.4-x64v4-xanmod1-0~20240612.g3ccbe2e_amd64.deb
-	noextract = https://sourceforge.net/projects/xanmod/files/releases/main/6.9.4-xanmod1/6.9.4-x64v4-xanmod1/linux-headers-6.9.4-x64v4-xanmod1_6.9.4-x64v4-xanmod1-0~20240612.gadde0ab_amd64.deb https://sourceforge.net/projects/xanmod/files/releases/main/6.9.4-xanmod1/6.9.4-x64v4-xanmod1/linux-headers-6.9.4-x64v4-xanmod1_6.9.4-x64v4-xanmod1-0~20240612.g3ccbe2e_amd64.deb
+	noextract = https://sourceforge.net/projects/xanmod/files/releases/main/6.9.4-xanmod1/6.9.4-x64v4-xanmod1/linux-image-6.9.4-x64v4-xanmod1_6.9.4-x64v4-xanmod1-0~20240612.gadde0ab_amd64.deb
+	noextract = https://sourceforge.net/projects/xanmod/files/releases/main/6.9.4-xanmod1/6.9.4-x64v4-xanmod1/linux-headers-6.9.4-x64v4-xanmod1_6.9.4-x64v4-xanmod1-0~20240612.gadde0ab_amd64.deb
 	options = !strip
-	source = https://sourceforge.net/projects/xanmod/files/releases/main/6.9.4-xanmod1/6.9.4-x64v4-xanmod1/linux-image-6.9.4-x64v4-xanmod1_6.9.4-x64v4-xanmod1-0~20240612.gadde0ab_amd64.deb https://sourceforge.net/projects/xanmod/files/releases/main/6.9.4-xanmod1/6.9.4-x64v4-xanmod1/linux-image-6.9.4-x64v4-xanmod1_6.9.4-x64v4-xanmod1-0~20240612.g3ccbe2e_amd64.deb
-	source = https://sourceforge.net/projects/xanmod/files/releases/main/6.9.4-xanmod1/6.9.4-x64v4-xanmod1/linux-headers-6.9.4-x64v4-xanmod1_6.9.4-x64v4-xanmod1-0~20240612.gadde0ab_amd64.deb https://sourceforge.net/projects/xanmod/files/releases/main/6.9.4-xanmod1/6.9.4-x64v4-xanmod1/linux-headers-6.9.4-x64v4-xanmod1_6.9.4-x64v4-xanmod1-0~20240612.g3ccbe2e_amd64.deb
+	source = https://sourceforge.net/projects/xanmod/files/releases/main/6.9.4-xanmod1/6.9.4-x64v4-xanmod1/linux-image-6.9.4-x64v4-xanmod1_6.9.4-x64v4-xanmod1-0~20240612.gadde0ab_amd64.deb
+	source = https://sourceforge.net/projects/xanmod/files/releases/main/6.9.4-xanmod1/6.9.4-x64v4-xanmod1/linux-headers-6.9.4-x64v4-xanmod1_6.9.4-x64v4-xanmod1-0~20240612.gadde0ab_amd64.deb
 	sha256sums = SKIP
 	sha256sums = SKIP
 
