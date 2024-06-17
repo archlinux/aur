@@ -2,14 +2,14 @@
 # Contributor: Lev Lybin <lev.lybin@gmail.com>
 
 pkgname=connectiq-sdk-manager
-pkgver=6.4.2
+pkgver=7.1.1
 pkgrel=1
 pkgdesc="Garmin Connect IQ SDK Manager"
 arch=('x86_64')
 url="https://developer.garmin.com/connect-iq/sdk/"
 license=('MIT')
 source=(https://developer.garmin.com/downloads/connect-iq/sdk-manager/connectiq-sdk-manager-linux.zip)
-sha256sums=('5a85f85afa5b51caa1a3f0b9551c53ae256c49c1cb940edc97e3d9246c08f6f7')
+sha256sums=('34c9d5754813e44739734ebf3b17e6189aee3bca6dd4c339b37f02e975aebcfe')
 package() {
     cd "$srcdir"
 
