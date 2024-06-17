@@ -3,7 +3,7 @@
 _pkgname=Sunroof
 pkgname=sunroof-bin
 _appname=sunroof-desktop
-pkgver=1.5.8
+pkgver=1.6.0
 _electronversion=29
 pkgrel=2
 pkgdesc="A Vesktop fork cross platform electron-based desktop app aiming to give you a snappier Discord experience with Suncord pre-installed"
@@ -28,8 +28,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 source=("${pkgname%-bin}.sh")
 sha256sums=('ff735fe74c99880bd05cf90473db836149b7daa8d01bf7334b299aeb12a46f3e')
-sha256sums_aarch64=('11122656288b5c4d78d528bf46892cf55401e3f35ae8a3b223f14544264573a0')
-sha256sums_x86_64=('1f5ec85636bbb266b23831f32808db79ce1a391e42bda0860ea95fac09c56c51')
+sha256sums_aarch64=('45eb90994ddf146f5825940197261baf2d833ecd8e049c91026712d8dfe3d369')
+sha256sums_x86_64=('4a44540a7717117c4c579f4ef2c78421582799ac530e96e366d657cf0510343f')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
