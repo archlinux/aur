@@ -1,0 +1,30 @@
+pkgbase = adaptivecpp
+	pkgdesc = A modern, community-driven platform for C++-based heterogeneous programming models targeting CPUs and GPUs from all major vendors.
+	pkgver = 24.02.0
+	pkgrel = 1
+	url = https://github.com/AdaptiveCpp/AdaptiveCpp
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = boost
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = git
+	makedepends = level-zero-headers
+	makedepends = llvm
+	makedepends = openmp
+	makedepends = rocm-llvm
+	depends = cuda
+	depends = gcc-libs
+	depends = glibc
+	depends = hip-runtime-amd
+	depends = level-zero-loader
+	depends = llvm-libs
+	depends = nvidia-utils
+	depends = ocl-icd
+	depends = python
+	depends = spirv-tools
+	conflicts = adaptivecpp-git
+	source = adaptivecpp::git+https://github.com/AdaptiveCpp/AdaptiveCpp.git#tag=v24.02.0
+	sha512sums = SKIP
+
+pkgname = adaptivecpp
