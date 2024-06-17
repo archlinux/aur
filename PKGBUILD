@@ -7,49 +7,50 @@
 
 pkgname=home-assistant
 pkgdesc='Open source home automation that puts local control and privacy first'
-pkgver=2024.5.5
+pkgver=2024.6.3
 pkgrel=1
 epoch=1
-arch=(any)
-url=https://home-assistant.io/
-license=(Apache-2.0)
+arch=('any')
+url='https://home-assistant.io/'
+license=('Apache-2.0')
 depends=(
-  bluez-libs
-  ffmpeg
-  gcc
-  lapack
-  libffi
-  libjpeg-turbo
-  libtiff
-  openjpeg2
-  openssl
-  python
-  tzdata
-  zlib
+  'bluez-libs'
+  'ffmpeg'
+  'gcc'
+  'lapack'
+  'libffi'
+  'libjpeg-turbo'
+  'libtiff'
+  'openjpeg2'
+  'openssl'
+  'python'
+  'tzdata'
+  'zlib'
 )
 makedepends=(
-  git
-  python-build
-  python-setuptools
-  python-wheel
+  'git'
+  'python-build'
+  'python-setuptools'
+  'python-wheel'
 )
-_tag=c34731185164aaf44419977c4086e9a7dd6c0a7f
 source=(
-  home-assistant::git+https://github.com/home-assistant/core.git#tag=${_tag}
-  home-assistant.service
+  "$pkgname::git+https://github.com/home-assistant/core.git#tag=$pkgver"
+  'home-assistant.service'
 )
-b2sums=('c3fe0952fab5fab87fa3719ee7fea7c94c65f34635deea1f524fc9c9a772f2c5c66685fdf5390bdbb75f6af38093d1a9762ae7ab3fe46ff8abc826f62ed965a3'
+sha512sums=('d287641ffad4db037d314b3a710333c1030b3864817a729fbf1e06bf2ee94ea008e9627b1e3b9dca39a5b05d53df1554a1eaa854f1a0ff3f306b4e7848b42008'
+            '487b0140564f1495bf4587abda7b82d0bf0d72adbdbdf7a368a375c85a874c14e9c0cf34e0d5e298d2634d6bbcee580bce3bc40a07c901474004908eb7890a18')
+b2sums=('2375ee617e24acb514cddaca4482182f06d5add479ecf6e6f2b4862d97044ef33f7ac14f5658e129c8edfd16b7c1972a7c0b5aef2f282a736f9c57ee7ed00894'
         'd7a6cd85b89c74997cd7794e5205504033c37684d798bd12e40786f33fce846980d10373261444077cc527ef382246b8235573e1bb6ade8bb8e6d9e34f9961ad')
 
 prepare() {
-  cd home-assistant
-  # allow any setuptools and wheel to be used
-  sed 's/==69.2.0//; s/~=0.40.0//' -i pyproject.toml
-}
+  # update version in service file
+  sed "s/@VERSION@/${pkgver}/" -i home-assistant.service
 
-pkgver() {
+  # allow any setuptools and wheel to be used
   cd home-assistant
-  git describe --tags
+  sed \
+    -e 's/==69.2.0//; s/~=0.40.0//' \
+    -i pyproject.toml
 }
 
 build() {
@@ -60,7 +61,6 @@ build() {
 
 package() {
   install -Dm 644 home-assistant/dist/*.whl -t "${pkgdir}"/usr/share/home-assistant/
-  sed "s/@VERSION@/${pkgver}/" -i home-assistant.service
   install -Dm 644 home-assistant.service -t "${pkgdir}"/usr/lib/systemd/system/
 }
 
