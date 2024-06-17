@@ -2,7 +2,7 @@
 # Based on Arch stock kernel build by Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-amd-color
-pkgver=6.9.3
+pkgver=6.9.5
 pkgrel=1
 pkgdesc='Linux with experimental AMD color management enabled'
 url='https://github.com/archlinux/linux'
@@ -35,11 +35,11 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('c321c46401368774fc236f57095b205a5da57415f9a6008018902f9fd5eddfae'
-            '3acffee6493e810bd13f042b0a8e97e2b66a977b8ae7ec7c25a604446271860f'
+sha256sums=('a51fb4ab5003a6149bd9bf4c18c9b1f0f4945c272549095ab154b9d1052f95b1'
+            '89ff6a9109faf89d94a96ecca79afb463af946eabc196c3a494595d599d47f68'
             '37b3c194bceacd0b10da26484f5740b3d92010099fba183dd0fad9b8266e6a83')
-b2sums=('8d8fe931d304458bcaa8c8b9572a5354ad272d88d1e0642e76b37247ce13bf70c49c8de6d8843fbb3037ee074ebc6cc94f0cc2b5b7e7187385a9dd0b0e2e250d'
-        '8a125f2584507a3645aef2ee75d728b1a8afe643de367c26c29fc91e48e570339a295d585ce3c4419cf39c2b2f3329a53ce7287fd92efbe7eb9a01a99e5d1d49'
+b2sums=('a120ee2517ff9bdc164a55cbd78929b545d77d8f3b4d09e8903ea9c2f1a85ef837b079524dd465b3f0cf268ee1f6db5166ccb5676ac67b31bca1927ea0a6997b'
+        '59275c61c530d0bafb3866402d538fc8b4be0c88193bcaf6b378e88fa1fc9bf93a87dd73d7d4defb660b054403fa246fbcca14510fa7b36d71918cb5820ce10e'
         '393ef3c1f22899f2d6ed7a712f41e297cf38c64e4552d61fa138b8e67a0b897ddc5cbe0744b8cb0826a701ee8b68f3583d5e8df0de4b1cc1ed2e2c9291fdf2b1')
 
 export KBUILD_BUILD_HOST=archlinux
