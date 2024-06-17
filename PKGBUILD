@@ -36,7 +36,7 @@ optdepends=('qt6-doc: integrated Qt documentation'
             'mercurial: mercurial support'
             'bzr: bazaar support'
             'valgrind: analyze support')
-makedepends=('gcc' 'mold' 'qt6-base' 'patchelf')
+makedepends=('gcc' 'mold' 'qt6-base' 'patchelf' 'ninja')
 source=("${_urlbase}/qtcreator/${_pkgvermajmin}/${_pkgver}/${_source_archive_name}.tar.xz")
 sha512sums=('0ed616fe0e0665a4e1ae1288dd21b62f1ed54b95dcc808c22d8ca0d83b5e17d20d7cc02382bc394b5bf5dfd4be2029c504c99e9aff6b52be55c469f66bae7eb0')
 

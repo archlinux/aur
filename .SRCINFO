@@ -10,6 +10,7 @@ pkgbase = qtcreator-prerelease
 	makedepends = mold
 	makedepends = qt6-base
 	makedepends = patchelf
+	makedepends = ninja
 	depends = python-beautifulsoup4
 	depends = qt6-base
 	depends = qt6-tools
