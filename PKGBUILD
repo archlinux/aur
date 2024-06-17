@@ -1,27 +1,29 @@
-# Maintainer: Grey Christoforo <first name [at] last name [dot] net>
+# Contributor: Grey Christoforo <first name at last name dot net>
+# Contributor: Rafael Silva <perigoso at riseup dot net>
 
-pkgname=python-epics
-_pkgname=pyepics
-pkgver=3.4.1
+pkgname='python-epics'
+_name='pyepics'
+pkgver=3.5.5
 pkgrel=1
-pkgdesc="Python interface to Epics Channel Access "
+pkgdesc="Python interface to Epics Channel Access"
 arch=('any')
-url=http://pyepics.github.io/pyepics/
-license=('custom')
+url="http://pyepics.github.io/pyepics/"
+license=('custom:Epics Open License')
 depends=('python' 'python-numpy' 'epics-base')
-makedepends=('python-setuptools')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pyepics/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('a995685638c01a9326d3414de9b5471fb7b0bf6b1c60de1efae778c25dedaabf')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+source=("https://github.com/pyepics/$_name/archive/refs/tags/$pkgver.tar.gz")
+sha512sums=('SKIP')
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py build
-}
+  cd "$_name-$pkgver"
 
+  # Workaround for python-setuptools-scm
+  export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
+  python -m build --wheel --no-isolation
+}
 
 package(){
-  cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
-}
+  cd "$_name-$pkgver"
 
-# vim:ts=2:sw=2:et:
+  python -m installer --destdir="$pkgdir" dist/*.whl
+}
