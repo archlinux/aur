@@ -1,0 +1,11 @@
+diff --color -ruN ./openjp2/src/lib/openjp2/src/bin/jp2/opj_compress.c ./openjp2/src/lib/openjp2/src/bin/jp2/opj_compress.c
+--- ./openjp2/src/lib/openjp2/src/bin/jp2/opj_compress.c	2015-03-03 20:54:11.000000000 +0000
++++ ./openjp2/src/lib/openjp2/src/bin/jp2/opj_compress.c	2024-06-18 00:13:38.150593732 +0100
+@@ -64,6 +64,7 @@
+ /* MINGW32 */
+ #elif __linux__
+ /* Linux */
++#include <unistd.h>
+ #elif __unix__
+ /* UNIX */
+ #endif
