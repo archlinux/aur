@@ -1,22 +1,20 @@
 # Maintainer: Daniel Kuehn <daniel@kuehn.foo>
 pkgname=wordgen-bin
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
-pkgdesc="A CLI program that prints random words generated from the EFF Large Wordlist."
+pkgdesc='A CLI program that prints random words.'
 arch=('x86_64')
-url="https://github.com/wordgen/cli"
+url='https://github.com/wordgen/cli'
 license=('AGPL-3.0-or-later')
 conflicts=('wordgen')
 provides=('wordgen')
-options=(!strip !debug)
-source=("$url/releases/download/v$pkgver/wordgen-linux-amd64"
-        "$url/releases/download/v$pkgver/LICENSE")
-sha256sums=('366b9d4922592dc06f05e69e8a042e14cd8a2a04a06fa84fc0a246ae338cc460'
-            '0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0')
+options=('!strip' '!debug')
+source=("$url/releases/download/v$pkgver/wordgen-v$pkgver-linux-amd64.tar.gz")
+sha256sums=('a7e078d059a3a6185c59c174ea72b70f659ad60d6c75c32ae4571f7d58ae6795')
 
 package() {
 	cd "$srcdir"
 
-	install -Dm755 "wordgen-linux-amd64" "$pkgdir/usr/bin/wordgen"
+	install -Dm755 "wordgen" "$pkgdir/usr/bin/wordgen"
 	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/wordgen/LICENSE"
 }
