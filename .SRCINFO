@@ -1,0 +1,16 @@
+pkgbase = python-gspread-dataframe
+	pkgdesc = Easy data flow between a Google spreadsheet and a Pandas DataFrame
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://github.com/robin900/gspread-dataframe
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python-gspread
+	depends = python-pandas
+	depends = python-six
+	source = python-gspread-dataframe-4.0.0.tar.gz::https://github.com/robin900/gspread-dataframe/archive/v4.0.0.tar.gz
+	sha512sums = e8faeb25d56825c31c61ccbd482274032bb52849c879eb016dc4926b2ffc09fba13894d351203bb570a79ed0719b42d717a4c7fe897dd64ca21ed5ba77fd6faf
+
+pkgname = python-gspread-dataframe
