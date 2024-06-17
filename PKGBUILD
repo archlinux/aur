@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ludusavi-bin
 _app_id="com.github.mtkennerly.${pkgname%-bin}"
-pkgver=0.24.0
+pkgver=0.24.1
 pkgrel=1
 pkgdesc="Backup tool for PC game saves"
 arch=('x86_64')
@@ -17,9 +17,9 @@ source=("$url/releases/download/v$pkgver/${pkgname%-bin}-v$pkgver-linux.zip"
         "icon-$pkgver.svg::https://raw.githubusercontent.com/mtkennerly/${pkgname%-bin}/v$pkgver/assets/icon.svg"
         "${pkgname%-bin}-$pkgver.desktop::https://raw.githubusercontent.com/mtkennerly/${pkgname%-bin}/v$pkgver/assets/${pkgname%-bin}.desktop"
         "LICENSE-$pkgver::https://raw.githubusercontent.com/mtkennerly/${pkgname%-bin}/v$pkgver/LICENSE")
-sha256sums=('69c59c3f4214ff0732edee93444adf0ffa77a848bc47d4ae4b631f9171664c43'
-            '2675942a39a1e7f860f2cd88b7ac4c9f958b3864cb5fa69907b0946ba73c352c'
-            '28dae8cfa4189f3d575932ad254cc5c61bb3737761b5fd78b339e67820736cb0'
+sha256sums=('6c754de81d7f83a9df231f88f52f233402e0e39ededbe05a00949e71a54cfab4'
+            '7dc35b558d1ae74b63daaa3665533c5fb7749291fa6812f5057c40f1e35f0cd4'
+            'a8a6b76ce112a3d1dc229f18b9d9630edc0caa0575b06f828f1b6532edf316d9'
             'a8eb8375fae6120f3233e7f03a9e120c9b0484890191c6758ffe63ff7affcf84'
             '1eb345aff3c931c7dd5476f783cf6586442563eacb29565a5484eb9260179939'
             '8757b3673c910019fa02e030a4e153eae3c461d96d5c9de1b6bc153344903e55'
