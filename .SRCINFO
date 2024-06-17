@@ -1,4 +1,5 @@
 pkgbase = python-mov-cli-jellyplex
+	pkgdesc = A mov-cli v4 plugin for watching content from a media server hosting jellyfin or plex.
 	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/mov-cli/mov-cli-jellyplex
