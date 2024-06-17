@@ -1,7 +1,7 @@
 pkgbase = android-x86-lz4
-	pkgdesc = Very fast lossless compression algorithm (android)
+	pkgdesc = Very fast lossless compression algorithm (Android x86)
 	pkgver = 1.9.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://lz4.github.io/lz4/
 	arch = any
 	license = GPL2
