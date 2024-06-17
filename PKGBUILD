@@ -2,7 +2,7 @@
 
 pkgname=cider-bin
 _pkgname=cider
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=3
 pkgdesc="Project Cider. An open-source Apple Music client built from the ground up with Vue.js and Electron. Built from deb file on GitHub releases."
 arch=(x86_64)
@@ -16,15 +16,14 @@ source_x86_64=("https://github.com/ciderapp/${_pkgname}/releases/download/v${pkg
 sha256sums_x86_64=('a637119a14fb085215bdf9775bc26c916c931ad1755d0fdc50f6b1d6fbe48ad6')
 
 package() {
-  # Extract package data
-  bsdtar -xf ${srcdir}/data.tar.xz -C ${pkgdir}/
-  # mv "${pkgdir}/opt/${_pkgname^}" "${pkgdir}/opt/${pkgname}" # Disabled as breaks desktop file
+	# Extract package data
+	bsdtar -xf ${srcdir}/data.tar.xz -C ${pkgdir}/
+	# mv "${pkgdir}/opt/${_pkgname^}" "${pkgdir}/opt/${pkgname}" # Disabled as breaks desktop file
 
-  # Symlink the binary
-  install -d "$pkgdir/usr/bin/"
-  ln -sf "/opt/${_pkgname^}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+	# Symlink the binary
+	install -d "$pkgdir/usr/bin/"
+	ln -sf "/opt/${_pkgname^}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
-  # Echo documentation to user
-  echo "To change the port that Cider uses, CIDER_PORT environment variable can be set."
+	# Echo documentation to user
+	echo "To change the port that Cider uses, CIDER_PORT environment variable can be set."
 }
- 
