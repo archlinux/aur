@@ -1,6 +1,6 @@
 pkgname=ffplayout-unstable-git
-pkgver=r2104.6de9bb9
-pkgrel=0
+pkgver=r2108.88d187a
+pkgrel=1
 pkgdesc="24/7 playout based on rust and ffmpeg"
 arch=('x86_64')
 url="https://github.com/jb-alvarado/ffplayout"

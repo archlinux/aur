@@ -36,15 +36,15 @@ post_install() {
 	    chown ${sysUser}: "/var/log/ffplayout"
 	fi
 
-	echo "1. activate systemd service:"
-	echo "   $ systemctl enable --now ffplayout"
-	echo "2. use a reverse proxy for SSL, Port is **8787**."
-	echo "3. login with your browser, address without proxy would be: **http://${IP}:8787**"
-	echo "4. Login using the default "admin" account and the default "admin" password with your web browser; the address without a proxy would be: **http://${IP}:8787**"
-	echo "5. Default location for playlists and media files are: **/var/lib/ffplayout/**."
-	echo "6. If you want to change the default global settings:"
-	echo "	 $ sudo rm -v /usr/share/ffplayout/db/*"
-	echo "   $ ffplayout -i -d "${IP}:8787"
+    tab="   "
+    echo -e "1. Activate systemd service:"
+    echo -e "   $ systemctl enable --now ffplayout"
+    echo -e "2. Use a reverse proxy for SSL, Port is 8787."
+    echo -e "3. Login with your browser, address without proxy would be: http://${IP}:8787, \n${tab}the default account is \"admin\" and the password is \"admin\"."
+    echo -e "4. Default location for playlists and media files are: /var/lib/ffplayout/."
+    echo -e "5. If you want to change the default global settings:"
+    echo -e "   $ sudo rm -v /usr/share/ffplayout/db/*"
+    echo -e "   $ ffplayout -i -d \"${IP}:8787\""
 
 }
 
