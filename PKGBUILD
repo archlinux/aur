@@ -5,8 +5,9 @@
 # I could only get this working in java-11-openjdk, hence the depends
 
 pkgname=terasology
-_version=5.3.0
-_version_postfix=alpha23
+_version=5.4.0
+_version_postfix=alpha24
+_version_postfix_secondary=rc.1
 pkgver=${_version}${_version_postfix}
 pkgrel=1
 epoch=1
@@ -15,16 +16,16 @@ arch=('x86_64')
 license=('Apache')
 url="https://terasology.org"
 options=('!strip')
-depends=(zlib java-runtime-openjdk=11)
+depends=(zlib java-runtime-openjdk)
 makedepends=('unzip')
 source=(
     "$pkgname"
     "${pkgname}.desktop"
-    "TerasologyOmega${pkgver}.zip::https://github.com/MovingBlocks/Terasology/releases/download/v${_version}/TerasologyOmega.zip"
+    "TerasologyOmega${pkgver}.zip::https://github.com/MovingBlocks/Terasology/releases/download/v${_version}-${_version_postfix_secondary}/TerasologyOmega.zip"
 )
-sha512sums=('a4764c3d5fdbf080b48e5de358f7162b334b4ca88e1249975d2d378f649a2a5fbdb8823d960a5167e9fd39745966efb4a597f3195207be0bf80cec810a4dff50'
+sha512sums=('b575b3e3bd5200794a9752ad6f96a147fd5af0196b7e81d1afb4358f9c4da1b656e5ad326cdeabf1be687f1ae69031d609420fc1df2001ef71a131068f2ef835'
             '737953ab10027100b6bd03ca60a3f1cd4fff503c4c5a1689b3e12ef8df66a3e3347c99d498e48dccc3be8d00e9e37fcab56d5c97bbb81dd310ce757979aa0276'
-            'cddc836c6704810b0c9025828d0ed35ea55d5024598a4b022dc2f6332c55ddf416cfd07852e599d9deefee5d1012e82ae8488a727422e05dd20194799473317d')
+            'd9162e48339caad270714818be3ff6e8588d12b6bac8662c0df2f378a1d51a67498750c0f503b41a6aa2065a63315ea0007d855f498f1e034d935d237977fda9')
 
 package() {
     cd "$srcdir"
@@ -35,7 +36,7 @@ package() {
     rm "${srcdir}/${pkgname}" "${srcdir}/${pkgname}.desktop" "${srcdir}/TerasologyOmega${pkgver}.zip"
 
     #extract and install icons
-    unzip -u libs/engine-${_version}.jar "org/terasology/engine/icons/*"
+    unzip -u libs/engine-${_version}-SNAPSHOT.jar "org/terasology/engine/icons/*"
     pushd org/terasology/engine/icons
     for icon in *
     do
