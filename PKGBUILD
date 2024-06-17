@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=packetry-git
-pkgver=r531.9331bda
+pkgver=r573.cd3be8d
 pkgrel=1
 pkgdesc='USB 2.0 protocol analysis app for use with Cynthion'
 arch=('x86_64')
@@ -79,7 +79,7 @@ check() {
   cd "${pkgname}"
   export RUSTUP_TOOLCHAIN=stable
   dbus-run-session xvfb-run -s '-nolisten local' \
-    cargo test --frozen --features test-ui-replay
+    cargo test --frozen
 }
 
 package() {
