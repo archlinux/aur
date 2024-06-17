@@ -1,0 +1,56 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <heftig@archlinux.org>
+Date: Mon, 17 Jun 2024 01:08:12 +0200
+Subject: [PATCH] Bug 1902824 - Make MicroGeckoProfiler.h compatible with C
+ again. r?gerard-majax
+
+---
+ tools/profiler/public/MicroGeckoProfiler.h | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/tools/profiler/public/MicroGeckoProfiler.h b/tools/profiler/public/MicroGeckoProfiler.h
+index 5a40d124f7ab..b3be883d2e7b 100644
+--- a/tools/profiler/public/MicroGeckoProfiler.h
++++ b/tools/profiler/public/MicroGeckoProfiler.h
+@@ -52,11 +52,11 @@ extern MOZ_EXPORT void uprofiler_simple_event_marker_with_stack(
+     const char** arg_names, const unsigned char* arg_types,
+     const unsigned long long* arg_values, void* provided_stack);
+ 
+-extern MOZ_EXPORT bool uprofiler_backtrace_into_buffer(NativeStack* stack,
+-                                                       void* aBuffer);
++extern MOZ_EXPORT bool uprofiler_backtrace_into_buffer(
++    struct NativeStack* stack, void* aBuffer);
+ 
+ extern MOZ_EXPORT void uprofiler_native_backtrace(const void* top,
+-                                                  NativeStack* stack);
++                                                  struct NativeStack* stack);
+ 
+ extern MOZ_EXPORT bool uprofiler_is_active();
+ 
+@@ -103,8 +103,8 @@ struct UprofilerFuncPtrs {
+                                          const unsigned char* arg_types,
+                                          const unsigned long long* arg_values,
+                                          void* provided_stack);
+-  bool (*backtrace_into_buffer)(NativeStack* stack, void* aBuffer);
+-  void (*native_backtrace)(const void* top, NativeStack* stack);
++  bool (*backtrace_into_buffer)(struct NativeStack* stack, void* aBuffer);
++  void (*native_backtrace)(const void* top, struct NativeStack* stack);
+   bool (*is_active)();
+ };
+ 
+@@ -137,13 +137,13 @@ static void simple_event_marker_with_stack_noop(
+   /* no-op */
+ }
+ 
+-static bool backtrace_into_buffer_noop(NativeStack* stack,
++static bool backtrace_into_buffer_noop(struct NativeStack* stack,
+                                        void* aBuffer) { /* no-op */
+   return false;
+ }
+ 
+ static void native_backtrace_noop(const void* top,
+-                                  NativeStack* stack) { /* no-op */ }
++                                  struct NativeStack* stack) { /* no-op */ }
+ 
+ static bool is_active_noop() { /* no-op */ return false; }
+ 
