@@ -11,7 +11,7 @@ url="https://github.com/mattermost/desktop"
 license=('Apache')
 _electron=electron29
 
-makedepends=('jq' 'nodejs-lts-iron' 'npm' 'git' 'asar' 'rpm-tools' 'moreutils')
+makedepends=('jq' 'nodejs' 'npm' 'git' 'asar' 'rpm-tools' 'moreutils')
 depends=($_electron 'libxcrypt-compat' 'alsa-lib' 'gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'libutil-linux' 'libappindicator-gtk3' 'libsecret')
 optdepends=()
 
@@ -20,7 +20,7 @@ provides=("${_pkgname}")
 
 source=('git+https://github.com/mattermost/desktop.git#branch=master' ${_pkgname}.desktop ${_pkgname}.sh)
 sha256sums=('SKIP'
-            '9e60ac9cc5a9cbebccb4180e7de947968aa49858812b5623812a1ab651a91093'
+            '29d8bdc503ec71d69efa8b73655a230df00c18667c875a73cb8de31a6d86dd2a'
             '1c2bf48b6397d04a5a536c5c9f4960db53249c838c380f03f808c612b00ba4c6')
 
 prepare() {
@@ -54,9 +54,10 @@ build() {
     cd 'desktop'
 
     export NODE_ENV=production
+    _npmargs="--cache $srcdir/npm-cache --no-audit --no-fund"
 
-    npm $_npmargs --offline run build
-    npm $_npmargs --offline run package:linux-all-x64
+    npm $_npmargs --offline run build-prod 
+    npx electron-builder --linux tar.gz --x64 --publish=never
 }
 
 package() {
