@@ -2,8 +2,8 @@
 
 _pkgname=beaver-notes
 pkgname=beaver-notes-git
-pkgver=r440.f633056
-pkgrel=2
+pkgver=r444.25c951b
+pkgrel=1
 epoch=
 pkgdesc="A privacy-focused, cross-platform note-taking application."
 _electron=electron29
@@ -40,7 +40,6 @@ package() {
     cd "Beaver-Notes"
 	install -dm 755 "$pkgdir"/usr/lib/$_pkgname
   asar extract ./dist/linux-unpacked/resources/app.asar ./dist/linux-unpacked/resources/app
-  rm -rf ./dist/linux-unpacked/resources/app/node_modules
 	# Copy full application to destiation directory
 	cp -r --no-preserve=ownership --preserve=mode dist/linux-unpacked/resources/app "$pkgdir"/usr/lib/$_pkgname
 	install -dm 755 "$pkgdir"/usr/bin

@@ -1,7 +1,7 @@
 pkgbase = beaver-notes-git
 	pkgdesc = A privacy-focused, cross-platform note-taking application.
-	pkgver = r440.f633056
-	pkgrel = 2
+	pkgver = r444.25c951b
+	pkgrel = 1
 	url = https://www.beavernotes.com/
 	arch = x86_64
 	license = MIT
