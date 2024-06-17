@@ -1,14 +1,14 @@
 # Maintainer: Benoît Allard <benoit dot allard at gmx dot de>
 # Contributor: promach
-_gitname=SymbiYosys
-pkgname="${_gitname,,}-git"
-pkgver=r284.ac9001b
+_gitname=sby
+pkgname=symbiyosys-git
+pkgver=r615.c9e3b82
 pkgrel=1
 pkgdesc="A front-end driver program for Yosys-based formal hardware verification flows"
 arch=('any')
 url="https://github.com/YosysHQ/${_gitname}.git"
 license=('custom:ISC')
-depends=('python3' 'yosys')
+depends=('python3' 'python-click' 'yosys')
 makedepends=('git')
 provides=('symbiyosys')
 conflicts=('symbiyosys')
