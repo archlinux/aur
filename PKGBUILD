@@ -2,9 +2,9 @@
 
 pkgname=messlidger
 _name=$pkgname
-_pkgver='0.0.0.dev0+20240217.gitbd44a23568'
-pkgver=0.0.0.dev0+20240217.gitbd44a23568.py3.12
-pkgrel=2
+_pkgver='0.0.0.dev0+20240516.gite91c2b67e7' # Only change this
+pkgver=0.0.0.dev0+20240516.gite91c2b67e7.py3.12
+pkgrel=1
 pkgdesc='A feature-rich Facebook Messenger to XMPP puppeteering gateway, based on slidge and mautrix-facebook.'
 arch=('any')
 url="https://git.sr.ht/~nicoco/messlidger"
@@ -17,7 +17,7 @@ source=("https://slidge.im/repo/$_name/${_name//-/_}-$_pkgver.tar.gz"
         'messlidger.sysuser.conf'
         'messlidger.service'
         'messlidger.conf')
-sha256sums=('d1181e98355c22a50b84a5f98de40a3842322059fe79c5626d3447dd353abe74'
+sha256sums=('e405e9981d43adbda1a8265eeecdb83dee606894d91e738e43c990627926f76a'
             'e2216061d8a45bd6d194730eaab94fa7a98948bbd5ce7834c7c33dc281db85e7'
             '5f411731658c6f05448dd61123d5831389ebcc2107d5277458f68ac7d40ee0da'
             '4d7d6e6fe6a37680cdb68bdf481c9b803c7c93bebf84bd5ed6056af8625a8b40'
