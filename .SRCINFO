@@ -1,7 +1,7 @@
 pkgbase = android-armv7a-eabi-libtasn1
-	pkgdesc = The ASN.1 library used in GNUTLS (android)
+	pkgdesc = The ASN.1 library used in GNUTLS (Android armv7a-eabi)
 	pkgver = 4.19.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnu.org/software/libtasn1
 	arch = any
 	license = GPL3, LGPL
