@@ -1,5 +1,6 @@
-post_install() {
-if [[ -f /usr/bin/xdg-desktop-menu ]]; then
+post_install()
+{
+  if [[ -f /usr/bin/xdg-desktop-menu ]]; then
     xdg-desktop-menu install --novendor /usr/share/desktop-directories/DaVinciResolve.directory /usr/share/applications/DaVinciResolve.desktop
     xdg-desktop-menu install --novendor /usr/share/desktop-directories/DaVinciResolve.directory /usr/share/applications/blackmagicraw-player.desktop
     xdg-desktop-menu install --novendor /usr/share/desktop-directories/DaVinciResolve.directory /usr/share/applications/blackmagicraw-speedtest.desktop
@@ -7,5 +8,5 @@ if [[ -f /usr/bin/xdg-desktop-menu ]]; then
     xdg-desktop-menu install --novendor /usr/share/desktop-directories/DaVinciResolve.directory /usr/share/applications/DaVinciResolveCaptureLogs.desktop
     xdg-desktop-menu install --novendor /usr/share/desktop-directories/DaVinciResolve.directory /usr/share/applications/DaVinciResolveInstaller.desktop
     xdg-desktop-menu forceupdate
-fi
+  fi
 }
