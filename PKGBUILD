@@ -17,7 +17,7 @@ _snapshot="${_repo}-${pkgver}"
 
 source=(
     "https://github.com/arvidn/${_repo}/archive/v${pkgver}/${_snapshot}.tar.gz"
-    '01-python-fix.patch'
+    '01-python-fix.patch' # https://github.com/arvidn/libtorrent/issues/7553
 )
 sha256sums=(
     'c09c3f13dd6462d6ef0a5d1780ed0f73b504fcfbbdb5c6cad2cfad05daea50ba'
