@@ -9,6 +9,7 @@ pkgbase = terasology
 	makedepends = unzip
 	depends = zlib
 	depends = java-runtime-openjdk
+	conflicts = terasology-latest-bin
 	options = !strip
 	source = terasology
 	source = terasology.desktop

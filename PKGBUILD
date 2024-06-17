@@ -17,6 +17,7 @@ license=('Apache')
 url="https://terasology.org"
 options=('!strip')
 depends=(zlib java-runtime-openjdk)
+conflicts=(terasology-latest-bin)
 makedepends=('unzip')
 source=(
     "$pkgname"
