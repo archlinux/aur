@@ -3,12 +3,12 @@
 pkgname=sunroof
 _pkgname=Sunroof
 pkgdesc="Sunroof is a Vesktop fork that gives you the performance of web Discord and the comfort of Discord Desktop, with additional plugins."
-pkgver=1.5.8
+pkgver=1.6.0
 pkgrel=3
 arch=('x86_64' 'aarch64')
 url="https://github.com/verticalsync/Sunroof"
 license=('GPL3')
-makedepends=('pnpm nodejs')
+makedepends=('pnpm' 'nodejs')
 optdepends=(
   'libnotify: Notifications'
   'xdg-utils: Open links, files, etc'
@@ -19,7 +19,7 @@ conflicts=('sunroof-bin')
 source=("https://github.com/verticalsync/Sunroof/archive/refs/tags/v${pkgver}.tar.gz"
         'me.verticalsync.sunroof.desktop'
         'sunroof.sh')
-sha256sums=('b788571cf9f4a3ca89cf2a50e0d160d7a24846ca56a9a1c2e6fd263962f9f265'
+sha256sums=('32766adf1140df048da03c191f2e50421f8360d14dc3bc405479a087be96b0ec'
             '959683d191af774e3b3f35d2b2edf85d029628dff8b0a989cdaa1b4604f3fba9'
             '1bdc4d3b8454d3bffc0c454685b45179893fff5e1cfafde00417e839addb1685')
 
