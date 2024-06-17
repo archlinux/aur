@@ -2,7 +2,7 @@
 # Maintainer: German Lashevich <german.lashevich at gmail dot com>
 
 pkgname='myks-bin'
-pkgver=4.2.0
+pkgver=4.2.1
 pkgrel=1
 pkgdesc='Configuration framework for Kubernetes applications'
 url='https://github.com/mykso/myks'
@@ -12,11 +12,11 @@ provides=('myks')
 conflicts=('myks')
 optdepends=('vendir: for downloading from external sources' 'git: for smart detection of changes' 'helm: for rendering helm charts')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/mykso/myks/releases/download/v4.2.0/myks_4.2.0_linux_arm64.tar.gz")
-sha256sums_aarch64=('45013d5ff06ef1ca528dfb438fd129f610f0e2814f615b7777741a2cd6460d88')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/mykso/myks/releases/download/v4.2.1/myks_4.2.1_linux_arm64.tar.gz")
+sha256sums_aarch64=('3d936cd1bdca31c6c77753965bcd48ee51edab7d8faefc702a8c55fa143eb861')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/mykso/myks/releases/download/v4.2.0/myks_4.2.0_linux_amd64.tar.gz")
-sha256sums_x86_64=('442aab980ccdd739423e0e0517343f889e19e6f0d00beac90ad31f358b76d190')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/mykso/myks/releases/download/v4.2.1/myks_4.2.1_linux_amd64.tar.gz")
+sha256sums_x86_64=('0207be1a95d732caaf132bd15c459fd25e12b38c34fdf9e8e90a8655a2521594')
 
 package() {
   BIN=myks
