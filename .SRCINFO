@@ -1,0 +1,20 @@
+pkgbase = python-calcephpy
+	pkgdesc = Python interface for the CALCEPH Library
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://www.imcce.fr/inpop/calceph
+	arch = x86_64
+	license = CECILL-C
+	license = CECILL-B
+	license = CECILL-2.1
+	makedepends = cmake
+	makedepends = cython
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = glibc
+	depends = python-numpy
+	source = https://files.pythonhosted.org/packages/source/c/calcephpy/calcephpy-4.0.0.tar.gz
+	sha256sums = 034621b80a6e521d40985d933e17ab43caefab1df483dccc411eba4b24310c53
+
+pkgname = python-calcephpy
