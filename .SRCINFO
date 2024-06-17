@@ -1,0 +1,16 @@
+pkgbase = clipevent
+	pkgdesc = Listen for changes to the X11 clipboard and print them to stdout as JSON
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/LiteracyFanatic/ClipEvent
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = dotnet-sdk
+	depends = xclip
+	depends = xorg-xprop
+	options = !strip
+	source = git+https://github.com/LiteracyFanatic/ClipEvent#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = clipevent
