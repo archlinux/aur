@@ -1,13 +1,13 @@
 pkgbase = pnpm-shell-completion
 	pkgdesc = Complete your pnpm command fastly.
-	pkgver = 0.5.3
+	pkgver = 0.5.4
 	pkgrel = 1
 	url = https://github.com/g-plane/pnpm-shell-completion
 	arch = x86_64
 	license = MIT
 	depends = glibc
 	depends = gcc-libs
-	source = pnpm-shell-completion-0.5.3.tar.gz::https://github.com/g-plane/pnpm-shell-completion/releases/download/v0.5.3/pnpm-shell-completion_x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 1cdb8c1babb29d456a3cf038c556a9c5e23612aaadbc027b3507498ca00cae8b
+	source = pnpm-shell-completion-0.5.4.tar.gz::https://github.com/g-plane/pnpm-shell-completion/releases/download/v0.5.4/pnpm-shell-completion_x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = fbbcfcd8c5c691ed9125593a82eb6d894cc4c7080685191a5c6297b1a01373b8
 
 pkgname = pnpm-shell-completion
