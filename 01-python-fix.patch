@@ -1,0 +1,12 @@
+--- a/bindings/python/CMakeLists.txt
++++ b/bindings/python/CMakeLists.txt
+@@ -114,8 +114,7 @@
+ 	configure_file(${SETUP_PY_IN} ${SETUP_PY} @ONLY)
+ 
+ 	add_custom_command(OUTPUT ${OUTPUT}
+-		COMMAND ${Python3_EXECUTABLE} ${SETUP_PY} build -b "${CMAKE_CURRENT_SOURCE_DIR}"
+-		COMMAND ${Python3_EXECUTABLE} ${SETUP_PY} egg_info -b "${CMAKE_CURRENT_SOURCE_DIR}"
++		COMMAND ${Python3_EXECUTABLE} ${SETUP_PY} egg_info
+ 		COMMAND ${CMAKE_COMMAND} -E touch ${OUTPUT}
+ 		DEPENDS ${DEPS}
+ 	)
