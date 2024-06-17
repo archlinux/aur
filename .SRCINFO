@@ -1,0 +1,17 @@
+pkgbase = saturn-studio
+	pkgdesc = A cross-platform SFM-like video editor for Super Mario 64. Fork of Saturn by sm64rise.
+	pkgver = 1.4
+	pkgrel = 1
+	arch = x86_64
+	makedepends = gcc
+	makedepends = make
+	makedepends = git
+	makedepends = python3
+	depends = sdl2
+	depends = glew
+	source = https://github.com/Dominicentek/saturn-studio/archive/studio.tar.gz
+	source = makepkg.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = saturn-studio

@@ -1,0 +1,31 @@
+commit c719e2a69e241e948b524f0aa081ebe4c9e21490
+Author: Dominicentek <dominicentekgaming@gmail.com>
+Date:   Mon Jun 17 16:31:45 2024 +0200
+
+    makepkg patch
+
+diff --git a/.patched b/.patched
+new file mode 100644
+index 0000000..e69de29
+diff --git a/src/saturn/saturn_rom_extract.cpp b/src/saturn/saturn_rom_extract.cpp
+index 2800a34..5d88206 100644
+--- a/src/saturn/saturn_rom_extract.cpp
++++ b/src/saturn/saturn_rom_extract.cpp
+@@ -44,7 +44,7 @@ std::map<std::string, FormatTableEntry> format_table = {
+ };
+ 
+ #define EXTRACT_PATH std::filesystem::path(sys_user_path()) / "res"
+-#define EXTRACT_ROM "sm64.z64"
++#define EXTRACT_ROM "~/sm64.z64"
+ #define ROM_SIZE (8 * 1024 * 1024)
+ #define ROM_CHECKSUM 0x3CE60709
+ 
+@@ -404,7 +404,7 @@ int saturn_extract_rom(int type) {
+ 
+     if (status == ROM_OK) return ROM_OK;
+     if (status == ROM_MISSING) {
+-        pfd::message("Missing ROM","Cannot find " EXTRACT_ROM "\n\nPlease place an unmodified, US Super Mario 64 ROM next to the .exe and name it \"" EXTRACT_ROM "\"", pfd::choice::ok);
++        pfd::message("Missing ROM","Cannot find " EXTRACT_ROM "\n\nPlease place an unmodified, US Super Mario 64 ROM in your home directory and name it \"sm64.z64\"", pfd::choice::ok);
+         return ROM_MISSING;
+     }
+     if (status == ROM_INVALID) {
