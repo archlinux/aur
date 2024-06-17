@@ -1,19 +1,26 @@
 pkgbase = epics-base
-	pkgdesc = Experimental Physics and Industrial Control System -- base
-	pkgver = 7.0.4.1
-	pkgrel = 2
+	pkgdesc = Experimental Physics and Industrial Control System
+	pkgver = 7.0.7
+	pkgrel = 1
 	url = https://epics-controls.org
-	arch = x86_64
+	arch = any
 	groups = epics
-	license = EPICS Open License
-	makedepends = clang
+	license = custom:EPICS Open License
 	depends = readline
 	depends = ncurses
 	depends = perl
-	depends = valgrind
-	depends = glibc
-	source = epics-base-7.0.4.1.tar.gz::https://epics-controls.org/download/base/base-7.0.4.1.tar.gz
-	sha256sums = 7b1aa5a0b0a381207b3aa64b4496ffbdd0882ba3d57a09d75b94a9ef1fef668d
+	source = https://epics-controls.org/download/base/base-7.0.7.tar.gz
+	source = https://epics-controls.org/download/base/base-7.0.7.tar.gz.asc
+	source = 00_install_locations.patch
+	source = 01_install_permissions.patch
+	source = 02_no_rpath.patch
+	source = 03_no_debug_symbols.patch
+	validpgpkeys = 4B688BF5CAF9452CBD5BE86FD306120EEACB4576
+	sha512sums = f72e4f7b27f39a18540346184ef185b7fb3ecab4df4e4f66b86c44c39a35a1a236a580f79a089b857ec276b129760d6faedbc3a8b4c9bde8f3528c35b01aa155
+	sha512sums = SKIP
+	sha512sums = c55d53895af137706d99500b72f18ffb580ec98ab3ededb69a85fefc15539e4853fc46d7b31ea364195f3b9423066fbcd9ae4bd4b31cacb0328fa230fe5698f6
+	sha512sums = 760dda09dbd9e84b96e6d5e34183e9ff383ea7403e1c751e07e4c0ca734bc1837d4d595f403f471d76845e5967bdcbe6340919c07ad3127be05e2008d2880fa4
+	sha512sums = 394b023fe3003e61701c8c31d44c17281297a3b67f3bbe604e9191f38267986c34b06fe24eae5e778a29b466b022bdce5d4d0f4061da9c91a44467f1e0d266a3
+	sha512sums = d8337a9ee5a9c1ca2c1aa3ee8e45c0507f9386a590474e0345ff903ec7ebd56feed739c46a56c6dced56129ca4d6e783b72d01a25f6346daaf7ce34127fd9903
 
 pkgname = epics-base
-

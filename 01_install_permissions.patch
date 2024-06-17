@@ -1,0 +1,18 @@
+diff '--color=auto' --unified --recursive --text src.orig/configure/CONFIG_COMMON src.new/configure/CONFIG_COMMON
+--- src.orig/configure/CONFIG_COMMON	2022-09-07 19:50:35.000000000 +0100
++++ src.new/configure/CONFIG_COMMON	2024-06-14 12:09:34.799547552 +0100
+@@ -421,10 +421,10 @@
+ 
+ #---------------------------------------------------------------
+ # Installed file permissions
+-BIN_PERMISSIONS = 555
+-LIB_PERMISSIONS = 444
+-SHRLIB_PERMISSIONS = 555
+-INSTALL_PERMISSIONS = 444
++BIN_PERMISSIONS = 755
++LIB_PERMISSIONS = 644
++SHRLIB_PERMISSIONS = 755
++INSTALL_PERMISSIONS = 644
+ 
+ #---------------------------------------------------------------
+ #

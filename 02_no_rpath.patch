@@ -1,0 +1,12 @@
+diff '--color=auto' --unified --recursive --text src.orig/configure/CONFIG_SITE src.new/configure/CONFIG_SITE
+--- src.orig/configure/CONFIG_SITE	2022-09-07 19:50:35.000000000 +0100
++++ src.new/configure/CONFIG_SITE	2024-06-14 12:10:35.436375723 +0100
+@@ -169,7 +169,7 @@
+ #  way for Base executables to find their shared libraries when they are
+ #  run at build-time, e.g. set the LD_LIBRARY_PATH environment variable.
+ #  ORIGIN is a feature of the ELF executable format used by Linux, freebsd, and solaris.
+-LINKER_USE_RPATH = YES
++LINKER_USE_RPATH = NO
+ 
+ # Only used when LINKER_USE_RPATH=ORIGIN
+ # The build time root(s) of the relocatable tree (separate multiple w/ ':').

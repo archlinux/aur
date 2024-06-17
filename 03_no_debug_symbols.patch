@@ -1,0 +1,80 @@
+diff '--color=auto' --unified --recursive --text src.orig/configure/os/CONFIG.Common.iosCommon src.new/configure/os/CONFIG.Common.iosCommon
+--- src.orig/configure/os/CONFIG.Common.iosCommon	2024-06-14 17:31:14.147737706 +0100
++++ src.new/configure/os/CONFIG.Common.iosCommon	2024-06-14 17:33:54.460279483 +0100
+@@ -45,8 +45,8 @@
+ #--------------------------------------------------
+ # Always compile in debugging symbol table information
+ #
+-OPT_CFLAGS_YES += -g
+-OPT_CXXFLAGS_YES += -g
++#OPT_CFLAGS_YES += -g
++#OPT_CXXFLAGS_YES += -g
+ 
+ #-------------------------------------------------------
+ # Compiler definitions:
+diff '--color=auto' --unified --recursive --text src.orig/configure/os/CONFIG.darwinCommon.darwinCommon src.new/configure/os/CONFIG.darwinCommon.darwinCommon
+--- src.orig/configure/os/CONFIG.darwinCommon.darwinCommon	2024-06-14 17:31:14.154737914 +0100
++++ src.new/configure/os/CONFIG.darwinCommon.darwinCommon	2024-06-14 17:34:13.703738232 +0100
+@@ -42,8 +42,8 @@
+ #
+ # Always compile in debugging symbol table information
+ #
+-OPT_CFLAGS_YES += -g
+-OPT_CXXFLAGS_YES += -g
++#OPT_CFLAGS_YES += -g
++#OPT_CXXFLAGS_YES += -g
+ 
+ #
+ # Libraries for command-line editing.
+diff '--color=auto' --unified --recursive --text src.orig/configure/os/CONFIG_SITE.cygwin-x86.cygwin-x86 src.new/configure/os/CONFIG_SITE.cygwin-x86.cygwin-x86
+--- src.orig/configure/os/CONFIG_SITE.cygwin-x86.cygwin-x86	2024-06-14 17:31:14.170738390 +0100
++++ src.new/configure/os/CONFIG_SITE.cygwin-x86.cygwin-x86	2024-06-14 17:33:02.907019015 +0100
+@@ -11,6 +11,6 @@
+ # in case you want to attach gdb to the process or examine a core-dump.
+ # This does cost disk space, but not memory as debug symbols are not
+ # loaded into RAM when the binary is loaded.
+-OPT_CFLAGS_YES += -g
+-OPT_CXXFLAGS_YES += -g
++#OPT_CFLAGS_YES += -g
++#OPT_CXXFLAGS_YES += -g
+ 
+diff '--color=auto' --unified --recursive --text src.orig/configure/os/CONFIG_SITE.linux-aarch64.linux-aarch64 src.new/configure/os/CONFIG_SITE.linux-aarch64.linux-aarch64
+--- src.orig/configure/os/CONFIG_SITE.linux-aarch64.linux-aarch64	2024-06-14 17:31:14.171738420 +0100
++++ src.new/configure/os/CONFIG_SITE.linux-aarch64.linux-aarch64	2024-06-14 17:33:09.186210961 +0100
+@@ -7,6 +7,6 @@
+ # in case you want to attach gdb to the process or examine a core-dump.
+ # This does cost disk space, but not memory as debug symbols are not
+ # loaded into RAM when the binary is loaded.
+-OPT_CFLAGS_YES += -g
+-OPT_CXXFLAGS_YES += -g
++#OPT_CFLAGS_YES += -g
++#OPT_CXXFLAGS_YES += -g
+ 
+diff '--color=auto' --unified --recursive --text src.orig/configure/os/CONFIG_SITE.linux-x86_64.linux-x86_64 src.new/configure/os/CONFIG_SITE.linux-x86_64.linux-x86_64
+--- src.orig/configure/os/CONFIG_SITE.linux-x86_64.linux-x86_64	2024-06-14 17:31:14.174738509 +0100
++++ src.new/configure/os/CONFIG_SITE.linux-x86_64.linux-x86_64	2024-06-14 17:33:14.149362842 +0100
+@@ -7,8 +7,8 @@
+ # in case you want to attach gdb to the process or examine a core-dump.
+ # This does cost disk space, but not memory as debug symbols are not
+ # loaded into RAM when the binary is loaded.
+-OPT_CFLAGS_YES += -g
+-OPT_CXXFLAGS_YES += -g
++#OPT_CFLAGS_YES += -g
++#OPT_CXXFLAGS_YES += -g
+ 
+ # Uncomment the followings lines to build with CLANG instead of GCC.
+ #
+diff '--color=auto' --unified --recursive --text src.orig/configure/os/CONFIG_SITE.linux-x86.linux-x86 src.new/configure/os/CONFIG_SITE.linux-x86.linux-x86
+--- src.orig/configure/os/CONFIG_SITE.linux-x86.linux-x86	2024-06-14 17:31:14.172738449 +0100
++++ src.new/configure/os/CONFIG_SITE.linux-x86.linux-x86	2024-06-14 17:33:25.184178354 +0100
+@@ -7,8 +7,8 @@
+ # in case you want to attach gdb to the process or examine a core-dump.
+ # This does cost disk space, but not memory as debug symbols are not
+ # loaded into RAM when the binary is loaded.
+-OPT_CFLAGS_YES += -g
+-OPT_CXXFLAGS_YES += -g
++#OPT_CFLAGS_YES += -g
++#OPT_CXXFLAGS_YES += -g
+ 
+ # Uncomment the followings lines to build with CLANG instead of GCC.
+ #

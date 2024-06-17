@@ -1,0 +1,311 @@
+diff '--color=auto' --unified --recursive --text src.orig/configure/CONFIG src.new/configure/CONFIG
+--- src.orig/configure/CONFIG	2024-06-14 13:52:39.421998634 +0100
++++ src.new/configure/CONFIG	2024-06-14 15:59:45.051097318 +0100
+@@ -20,14 +20,14 @@
+     # Essential for the EPICS build system, see convertRelease.pl
+     $(error EPICS_BASE must be set in a configure/RELEASE file)
+   endif
+-  CONFIG ?= $(EPICS_BASE)/configure
++  CONFIG ?= $(EPICS_BASE)/lib/epics/configure
+ endif
+ 
+ # Provide a default if the user hasn't set EPICS_HOST_ARCH
+ #
+ ifeq ($(origin EPICS_HOST_ARCH), undefined)
+   # Bootstrapping ...
+-  EHA := $(firstword $(wildcard $(EPICS_BASE)/lib/perl/EpicsHostArch.pl \
++  EHA := $(firstword $(wildcard $(EPICS_BASE)/share/perl5/vendor_perl/EpicsHostArch.pl \
+         $(TOP)/src/tools/EpicsHostArch.pl))
+   # NB: We use a simply expanded variable here for performance:
+   export EPICS_HOST_ARCH := $(shell perl $(EHA))
+diff '--color=auto' --unified --recursive --text src.orig/configure/CONFIG_APP_INCLUDE src.new/configure/CONFIG_APP_INCLUDE
+--- src.orig/configure/CONFIG_APP_INCLUDE	2024-06-14 13:52:39.430998841 +0100
++++ src.new/configure/CONFIG_APP_INCLUDE	2024-06-14 16:29:13.438344929 +0100
+@@ -13,17 +13,17 @@
+ 
+ define  RELEASE_FLAGS_template
+   export $(1)
+-  $(1)_HOST_BIN = $$(strip $$($(1)))/bin/$(EPICS_HOST_ARCH)
+-  $(1)_HOST_LIB = $$(strip $$($(1)))/lib/$(EPICS_HOST_ARCH)
+-  $(1)_BIN = $$(wildcard $$(strip $$($(1)))/bin/$(T_A))
+-  $(1)_LIB = $$(wildcard $$(strip $$($(1)))/lib/$(T_A))
++  $(1)_HOST_BIN = $$(strip $$($(1)))/lib/epics/bin/$(EPICS_HOST_ARCH)
++  $(1)_HOST_LIB = $$(strip $$($(1)))/lib/epics/lib/$(EPICS_HOST_ARCH)
++  $(1)_BIN = $$(wildcard $$(strip $$($(1)))/lib/pics/bin/$(T_A))
++  $(1)_LIB = $$(wildcard $$(strip $$($(1)))/lib/epics/lib/$(T_A))
+   SHRLIB_SEARCH_DIRS += $$($(1)_LIB)
+-  RELEASE_INCLUDES += $$(addprefix -I,$$(wildcard $$(strip $$($(1)))/include/compiler/$(CMPLR_CLASS)))
+-  RELEASE_INCLUDES += $$(addprefix -I,$$(wildcard $$(strip $$($(1)))/include/os/$(OS_CLASS)))
+-  RELEASE_INCLUDES += $$(addprefix -I,$$(wildcard $$(strip $$($(1)))/include))
+-  RELEASE_DBD_DIRS += $$(wildcard $$(strip $$($(1)))/dbd)
+-  RELEASE_DB_DIRS += $$(wildcard $$(strip $$($(1)))/db)
+-  RELEASE_PERL_MODULE_DIRS += $$(wildcard $$(strip $$($(1)))/lib/perl)
++  RELEASE_INCLUDES += $$(addprefix -I,$$(wildcard $$(strip $$($(1)))/include/epics/compiler/$(CMPLR_CLASS)))
++  RELEASE_INCLUDES += $$(addprefix -I,$$(wildcard $$(strip $$($(1)))/include/epics/os/$(OS_CLASS)))
++  RELEASE_INCLUDES += $$(addprefix -I,$$(wildcard $$(strip $$($(1)))/include/epics))
++  RELEASE_DBD_DIRS += $$(wildcard $$(strip $$($(1)))/lib/epics/dbd)
++  RELEASE_DB_DIRS += $$(wildcard $$(strip $$($(1)))/lib/epics/db)
++  RELEASE_PERL_MODULE_DIRS += $$(wildcard $$(strip $$($(1)))/share/perl5/vendor_perl)
+ endef
+ $(foreach top, $(RELEASE_TOPS), \
+     $(eval $(call RELEASE_FLAGS_template,$(top))))
+diff '--color=auto' --unified --recursive --text src.orig/configure/CONFIG_BASE src.new/configure/CONFIG_BASE
+--- src.orig/configure/CONFIG_BASE	2024-06-14 13:52:39.430998841 +0100
++++ src.new/configure/CONFIG_BASE	2024-06-14 13:53:02.243527911 +0100
+@@ -10,11 +10,11 @@
+ #---------------------------------------------------------------
+ # EPICS Base directories
+ 
+-EPICS_BASE_HOST_BIN = $(EPICS_BASE)/bin/$(EPICS_HOST_ARCH)
+-EPICS_BASE_HOST_LIB = $(EPICS_BASE)/lib/$(EPICS_HOST_ARCH)
++EPICS_BASE_HOST_BIN = $(EPICS_BASE)/lib/epics/bin/$(EPICS_HOST_ARCH)
++EPICS_BASE_HOST_LIB = $(EPICS_BASE)/lib/epics/lib/$(EPICS_HOST_ARCH)
+ ifdef T_A
+-  EPICS_BASE_LIB    = $(EPICS_BASE)/lib/$(T_A)
+-  EPICS_BASE_BIN    = $(EPICS_BASE)/bin/$(T_A)
++  EPICS_BASE_LIB    = $(EPICS_BASE)/lib/epics/lib/$(T_A)
++  EPICS_BASE_BIN    = $(EPICS_BASE)/lib/epics/bin/$(T_A)
+ endif
+ 
+ #---------------------------------------------------------------
+diff '--color=auto' --unified --recursive --text src.orig/configure/CONFIG_COMMON src.new/configure/CONFIG_COMMON
+--- src.orig/configure/CONFIG_COMMON	2024-06-14 13:52:39.431998864 +0100
++++ src.new/configure/CONFIG_COMMON	2024-06-14 13:53:02.244527934 +0100
+@@ -58,19 +58,19 @@
+ INSTALL_LOCATION            = $(TOP)
+ INSTALL_ABSOLUTE            = $(abspath $(INSTALL_LOCATION))
+ 
+-INSTALL_LOCATION_LIB        = $(INSTALL_LOCATION)/lib
+-INSTALL_LOCATION_BIN        = $(INSTALL_LOCATION)/bin
++INSTALL_LOCATION_LIB        = $(INSTALL_LOCATION)/lib/epics/lib
++INSTALL_LOCATION_BIN        = $(INSTALL_LOCATION)/lib/epics/bin
+ 
+ INSTALL_HOST_BIN            = $(INSTALL_LOCATION_BIN)/$(EPICS_HOST_ARCH)
+ INSTALL_HOST_LIB            = $(INSTALL_LOCATION_LIB)/$(EPICS_HOST_ARCH)
+ 
+-INSTALL_INCLUDE             = $(INSTALL_LOCATION)/include
+-INSTALL_DOC                 = $(INSTALL_LOCATION)/doc
+-INSTALL_HTML                = $(INSTALL_LOCATION)/html
+-INSTALL_TEMPLATES           = $(INSTALL_LOCATION)/templates
+-INSTALL_DBD                 = $(INSTALL_LOCATION)/dbd
+-INSTALL_DB                  = $(INSTALL_LOCATION)/db
+-INSTALL_CONFIG              = $(INSTALL_LOCATION)/configure
++INSTALL_INCLUDE             = $(INSTALL_LOCATION)/include/epics
++INSTALL_DOC                 = $(INSTALL_LOCATION)/share/doc/epics
++INSTALL_HTML                = $(INSTALL_LOCATION)/share/doc/epics/html
++INSTALL_TEMPLATES           = $(INSTALL_LOCATION)/share/epics/templates
++INSTALL_DBD                 = $(INSTALL_LOCATION)/lib/epics/dbd
++INSTALL_DB                  = $(INSTALL_LOCATION)/lib/epics/db
++INSTALL_CONFIG              = $(INSTALL_LOCATION)/lib/epics/configure
+ 
+ #-------------------------------------------------------
+ # These are default settings that may be overridden later
+diff '--color=auto' --unified --recursive --text src.orig/configure/CONFIG_FILE_TYPE src.new/configure/CONFIG_FILE_TYPE
+--- src.orig/configure/CONFIG_FILE_TYPE	2024-06-14 13:52:39.431998864 +0100
++++ src.new/configure/CONFIG_FILE_TYPE	2024-06-14 13:53:02.244527934 +0100
+@@ -45,22 +45,22 @@
+ # points to the TOP of the module providing these files.
+ 
+ FILE_TYPE += ADL
+-INSTALL_ADL = $(INSTALL_LOCATION)/adl
++INSTALL_ADL = $(INSTALL_LOCATION)/lib/epics/adl
+ 
+ FILE_TYPE += ALH
+-INSTALL_ALH = $(INSTALL_LOCATION)/alh
++INSTALL_ALH = $(INSTALL_LOCATION)/lib/epics/alh
+ 
+ FILE_TYPE += CFG
+-INSTALL_CFG = $(INSTALL_LOCATION)/cfg
++INSTALL_CFG = $(INSTALL_LOCATION)/lib/epics/cfg
+ 
+ FILE_TYPE += EDL
+-INSTALL_EDL = $(INSTALL_LOCATION)/edl
++INSTALL_EDL = $(INSTALL_LOCATION)/lib/epics/edl
+ 
+ FILE_TYPE += PERL_MODULES
+-INSTALL_PERL_MODULES = $(INSTALL_LOCATION_LIB)/perl
++INSTALL_PERL_MODULES = $(INSTALL_LOCATION)/share/perl5/vendor_perl
+ 
+ FILE_TYPE += PKGCONFIG
+-INSTALL_PKGCONFIG = $(INSTALL_LOCATION_LIB)/pkgconfig
++INSTALL_PKGCONFIG = $(INSTALL_LOCATION)/lib/pkgconfig
+ 
+ INSTALLS_CFG = $(CFG:%= $(INSTALL_CFG)/%)
+ DIRECTORY_TARGETS += $(foreach type, $(FILE_TYPE),$(INSTALL_$(type)))
+diff '--color=auto' --unified --recursive --text src.orig/configure/CONFIG_LIBCOM_MODULE src.new/configure/CONFIG_LIBCOM_MODULE
+--- src.orig/configure/CONFIG_LIBCOM_MODULE	2024-06-14 13:52:39.432998887 +0100
++++ src.new/configure/CONFIG_LIBCOM_MODULE	2024-06-14 13:53:02.244527934 +0100
+@@ -9,7 +9,7 @@
+ # Windows can need these paths to be quoted
+ YACC = "$(EPICS_BASE_HOST_BIN)/antelope$(HOSTEXE)"
+ LEX  = "$(EPICS_BASE_HOST_BIN)/e_flex$(HOSTEXE)" \
+-        -S$(EPICS_BASE)/include/flex.skel.static
++        -S$(EPICS_BASE)/include/epics/flex.skel.static
+ 
+ # Default stack size for osiThread
+ OSITHREAD_USE_DEFAULT_STACK = NO
+diff '--color=auto' --unified --recursive --text src.orig/configure/RULES_DIRS src.new/configure/RULES_DIRS
+--- src.orig/configure/RULES_DIRS	2024-06-14 13:52:39.433998909 +0100
++++ src.new/configure/RULES_DIRS	2024-06-14 15:39:55.953986503 +0100
+@@ -82,6 +82,7 @@
+    $(addprefix $(DIVIDER),$(word 3, $(subst $(DIVIDER), ,$(notdir $@)))))
+ 
+ $(DIRS) $(dirActionTargets) $(dirArchTargets) $(dirActionArchTargets):
++	$(ECHO) "Making $@..."
+ 	$(MAKE) -C $(dirPart) $(actionArchPart)
+ 
+ # before-action rules are run once prior to recursing through the
+diff '--color=auto' --unified --recursive --text src.orig/modules/ca/src/perl/Makefile src.new/modules/ca/src/perl/Makefile
+--- src.orig/modules/ca/src/perl/Makefile	2024-06-14 13:52:39.478999941 +0100
++++ src.new/modules/ca/src/perl/Makefile	2024-06-14 14:40:26.848990297 +0100
+@@ -80,6 +80,9 @@
+ 	$(PERL) $(XSUBPP) -typemap $(EXTUTILS)/typemap $< > $@_new && $(MV) $@_new $@
+ 
+   $(INSTALL_PERL_MODULES)/$(PERL_ARCHPATH)/%: %
+-	$(ECHO) "Installing loadable shared library $@"
++	$(ECHO) "Installing perl loadable shared library $@"
+ 	@$(INSTALL_LIBRARY) -d -m $(LIB_PERMISSIONS) $< $(INSTALL_PERL_MODULES)/$(PERL_ARCHPATH)
++
++  # $(INSTALL_SHRLIB)/$(PERL_ARCHPATH)/%: %
++ 	# $(ECHO) "skipping loadable shared library $@"
+ endif
+diff '--color=auto' --unified --recursive --text src.orig/modules/database/src/tools/epics-base-arch.pc@ src.new/modules/database/src/tools/epics-base-arch.pc@
+--- src.orig/modules/database/src/tools/epics-base-arch.pc@	2024-06-14 13:52:39.536001248 +0100
++++ src.new/modules/database/src/tools/epics-base-arch.pc@	2024-06-14 13:53:02.357530586 +0100
+@@ -1,8 +1,8 @@
+ # standard variables
+ prefix=@FINAL_LOCATION@
+ exec_prefix=${prefix}
+-bindir=${prefix}/bin/@ARCH@
+-libdir=${prefix}/lib/@ARCH@
++bindir=${prefix}/lib/epics/bin/@ARCH@
++libdir=${prefix}/lib/epics/lib/@ARCH@
+ 
+ # non-standard variables
+ 
+@@ -17,14 +17,14 @@
+ 
+ # Directories
+ 
+-includedir_osi=${prefix}/include
+-includedir_osd=${prefix}/include/os/@OS_CLASS@
+-includedir_comp=${prefix}/include/compiler/@CMPLR_CLASS@
++includedir_osi=${prefix}/include/epics
++includedir_osd=${prefix}/include/epics/os/@OS_CLASS@
++includedir_comp=${prefix}/include/epics/compiler/@CMPLR_CLASS@
+ 
+ includedirs=${includedir_osi} ${includedir_osd} ${includedir_comp}
+ 
+-dbddir=${prefix}/dbd
+-dbdir=${prefix}/db
++dbddir=${prefix}/lib/epics/dbd
++dbdir=${prefix}/lib/epics/db
+ 
+ # Tool chain
+ 
+diff '--color=auto' --unified --recursive --text src.orig/modules/database/src/tools/epics-base.pc@ src.new/modules/database/src/tools/epics-base.pc@
+--- src.orig/modules/database/src/tools/epics-base.pc@	2024-06-14 13:52:39.536001248 +0100
++++ src.new/modules/database/src/tools/epics-base.pc@	2024-06-14 13:53:02.357530586 +0100
+@@ -1,8 +1,8 @@
+ # standard variables
+ prefix=@FINAL_LOCATION@
+ exec_prefix=${prefix}
+-bindir=${prefix}/bin/@ARCH@
+-libdir=${prefix}/lib/@ARCH@
++bindir=${prefix}/lib/epics/bin/@ARCH@
++libdir=${prefix}/lib/epics/lib/@ARCH@
+ 
+ # non-standard variables
+ 
+@@ -14,14 +14,14 @@
+ 
+ # Directories
+ 
+-includedir_osi=${prefix}/include
+-includedir_osd=${prefix}/include/os/@OS_CLASS@
+-includedir_comp=${prefix}/include/compiler/@CMPLR_CLASS@
++includedir_osi=${prefix}/include/epics
++includedir_osd=${prefix}/include/epics/os/@OS_CLASS@
++includedir_comp=${prefix}/include/epics/compiler/@CMPLR_CLASS@
+ 
+ includedirs=${includedir_osi} ${includedir_osd} ${includedir_comp}
+ 
+-dbddir=${prefix}/dbd
+-dbdir=${prefix}/db
++dbddir=${prefix}/lib/epics/dbd
++dbdir=${prefix}/lib/epics/db
+ 
+ Name: epics-base
+ Version: @EPICS_VERSION@.@EPICS_REVISION@.@EPICS_MODIFICATION@.@EPICS_PATCH_LEVEL@
+diff '--color=auto' --unified --recursive --text src.orig/modules/normativeTypes/configure/CONFIG src.new/modules/normativeTypes/configure/CONFIG
+--- src.orig/modules/normativeTypes/configure/CONFIG	2024-06-14 13:52:39.636003540 +0100
++++ src.new/modules/normativeTypes/configure/CONFIG	2024-06-14 16:37:42.427197280 +0100
+@@ -2,7 +2,7 @@
+ 
+ # You might want to change this to some shared set of rules, e.g.
+ # RULES=/path/to/epics/support/modules/rules/x-y
+-RULES=$(EPICS_BASE)
++RULES=$(EPICS_BASE)/lib/epics
+ 
+ include $(TOP)/configure/RELEASE
+ -include $(TOP)/configure/RELEASE.$(EPICS_HOST_ARCH)
+diff '--color=auto' --unified --recursive --text src.orig/modules/pva2pva/configure/CONFIG src.new/modules/pva2pva/configure/CONFIG
+--- src.orig/modules/pva2pva/configure/CONFIG	2024-06-14 13:52:39.714005328 +0100
++++ src.new/modules/pva2pva/configure/CONFIG	2024-06-14 16:37:51.500335531 +0100
+@@ -3,7 +3,7 @@
+ # Do not make changes to this file!
+ 
+ # Allow user to override where the build rules come from
+-RULES = $(EPICS_BASE)
++RULES = $(EPICS_BASE)/lib/epics
+ 
+ # RELEASE files point to other application tops
+ include $(TOP)/configure/RELEASE
+diff '--color=auto' --unified --recursive --text src.orig/modules/pvAccess/configure/CONFIG src.new/modules/pvAccess/configure/CONFIG
+--- src.orig/modules/pvAccess/configure/CONFIG	2024-06-14 13:52:39.646003769 +0100
++++ src.new/modules/pvAccess/configure/CONFIG	2024-06-14 16:37:57.053010222 +0100
+@@ -3,7 +3,7 @@
+ # Do not make changes to this file!
+ 
+ # Allow user to override where the build rules come from
+-RULES = $(EPICS_BASE)
++RULES = $(EPICS_BASE)/lib/epics
+ 
+ # RELEASE files point to other application tops
+ include $(TOP)/configure/RELEASE
+diff '--color=auto' --unified --recursive --text src.orig/modules/pvaClient/configure/CONFIG src.new/modules/pvaClient/configure/CONFIG
+--- src.orig/modules/pvaClient/configure/CONFIG	2024-06-14 13:52:39.732005740 +0100
++++ src.new/modules/pvaClient/configure/CONFIG	2024-06-14 16:38:05.103959629 +0100
+@@ -3,7 +3,7 @@
+ # Do not make changes to this file!
+ 
+ # Allow user to override where the build rules come from
+-RULES = $(EPICS_BASE)
++RULES = $(EPICS_BASE)/lib/epics
+ 
+ # RELEASE files point to other application tops
+ include $(TOP)/configure/RELEASE
+diff '--color=auto' --unified --recursive --text src.orig/modules/pvData/configure/CONFIG src.new/modules/pvData/configure/CONFIG
+--- src.orig/modules/pvData/configure/CONFIG	2024-06-14 13:52:39.676004457 +0100
++++ src.new/modules/pvData/configure/CONFIG	2024-06-14 16:23:47.320476396 +0100
+@@ -3,7 +3,7 @@
+ # Do not make changes to this file!
+ 
+ # Allow user to override where the build rules come from
+-RULES = $(EPICS_BASE)
++RULES = $(EPICS_BASE)/lib/epics
+ 
+ # RELEASE files point to other application tops
+ include $(TOP)/configure/RELEASE
+diff '--color=auto' --unified --recursive --text src.orig/modules/pvDatabase/configure/CONFIG src.new/modules/pvDatabase/configure/CONFIG
+--- src.orig/modules/pvDatabase/configure/CONFIG	2024-06-14 13:52:39.701005030 +0100
++++ src.new/modules/pvDatabase/configure/CONFIG	2024-06-14 16:38:14.039974739 +0100
+@@ -3,7 +3,7 @@
+ # Do not make changes to this file!
+ 
+ # Allow user to override where the build rules come from
+-RULES = $(EPICS_BASE)
++RULES = $(EPICS_BASE)/lib/epics
+ 
+ # RELEASE files point to other application tops
+ include $(TOP)/configure/RELEASE
