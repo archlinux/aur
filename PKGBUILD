@@ -10,7 +10,7 @@ pkgname=(
   libxml2-docs
 )
 pkgver=2.13.0
-pkgrel=3
+pkgrel=4
 pkgdesc="XML C parser and toolkit"
 url="https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home"
 arch=(x86_64)
@@ -55,7 +55,9 @@ prepare() {
   # https://gitlab.gnome.org/GNOME/libxml2/-/issues/733
   # https://github.com/systemd/systemd/issues/33302
   git cherry-pick -n aa90cb0c578bd189089cd1fe195faf85040ac98b \
-                     c04d9b1b87eaf5c12f70173762f8c81c34e59aeb
+                     c04d9b1b87eaf5c12f70173762f8c81c34e59aeb \
+                     1ff484339e98b9adc992478f2786c3db174c8a32 \
+                     3c7c831c7c10ee3b68a039da138abf38ec4ab994
 
   # Do not run fuzzing tests
   git apply -3 ../0001-HACK-Don-t-run-fuzzing-tests.patch
