@@ -1,21 +1,15 @@
 pkgbase = openvpn3
 	pkgdesc = OpenVPN 3 Linux client
-	pkgver = 22_rc_4f37952340
+	pkgver = 22_dev
 	pkgrel = 1
 	url = https://codeberg.org/OpenVPN/openvpn3-linux
 	arch = x86_64
 	arch = aarch64
 	license = AGPL3
-	makedepends = autoconf-archive
-	makedepends = git
 	makedepends = python-docutils
 	makedepends = python-jinja
-	makedepends = bash
 	makedepends = meson
-	makedepends = pcre2
-	makedepends = xz
-	makedepends = libffi
-	makedepends = zlib
+	depends = glib2>=2.56
 	depends = jsoncpp>=0.10.5
 	depends = libcap-ng>=0.7.5
 	depends = lz4>=1.8.4
@@ -26,20 +20,16 @@ pkgbase = openvpn3
 	depends = python-systemd
 	depends = tinyxml2>=2.1.0
 	depends = libnl>=3.2.29
-	depends = gdbuspp-git
+	depends = gdbuspp
 	optdepends = openssl: OpenSSL version
 	optdepends = mbedtls: mbed TLS version
 	optdepends = polkit>=0.112: for systemd-resolved integration
 	optdepends = repkg: Automatically rebuild the package on dependency updates
-	source = git+https://codeberg.org/OpenVPN/openvpn3-linux.git#commit=4f37952340
-	source = git+https://github.com/OpenVPN/openvpn3.git
-	source = git+https://github.com/chriskohlhoff/asio.git
+	source = https://swupdate.openvpn.net/community/releases/openvpn3-linux-22_dev.tar.xz
 	source = openvpn3.rule
 	source = openvpn3.install
 	source = sysusers-openvpn3.conf
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = ad8f373814bfbefd12f9824d57badef4535f6c1fde68d2c73d7ee14863547cb6
 	sha256sums = ec0b8e28ae77b4b074d3eb8a084626e6dcfc587a07bef5d53fe1c6e160c0fc01
 	sha256sums = a5879d9e637658f5127e849d17f4050bae1f82fa9b25f05bbbbb531867120e8b
 	sha256sums = 045e914bb6fff5a082314dfc805bb511c9a80170619fa1e94a07825fa977c90a
