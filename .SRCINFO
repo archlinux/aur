@@ -1,0 +1,37 @@
+pkgbase = r-cmdstanr
+	pkgdesc = Lightweight interface to Stan. Alternative to RStan.
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://stan-dev.r-universe.dev/cmdstanr
+	arch = any
+	license = BSD-3-Clause AND LicenseRef-StanDev AND CC-BY-4.0
+	checkdepends = r-testthat>=2.1.0
+	checkdepends = r-bayesplot
+	checkdepends = r-ggplot2
+	checkdepends = r-knitr>=1.37
+	checkdepends = r-loo>=2.0.0
+	checkdepends = r-rmarkdown
+	checkdepends = r-rcpp
+	makedepends = r-knitr
+	depends = r
+	depends = cmdstan
+	depends = r-checkmate
+	depends = r-data.table
+	depends = r-jsonlite>=1.2.0
+	depends = r-posterior>=1.4.1
+	depends = r-processx>=3.5.0
+	depends = r-r6>=2.4.0
+	depends = r-withr>=2.5.0
+	depends = r-rlang>=0.4.7
+	optdepends = r-bayesplot
+	optdepends = r-ggplot2
+	optdepends = r-knitr>=1.37
+	optdepends = r-loo>=2.0.0
+	optdepends = r-rmarkdown
+	optdepends = r-rcpp
+	source = https://stan-dev.r-universe.dev/src/contrib/cmdstanr_0.8.1.tar.gz
+	source = BSD-3-Clause.txt::https://raw.githubusercontent.com/stan-dev/cmdstanr/master/LICENSE.md
+	b2sums = daced7015735f6fd53c3898379ff10a6ca17f6ddeb58e385b43aeb6070ff7911d4c3c74b3276e8548a23e6e309f50a5aa519e1609c2dec4346936c010602d56e
+	b2sums = 103db25a67ccbd2c5ce9f1b9e4eaed6f4405629511a8d827aae09b5374ba6d9ef6268e4f311638f2c5e31701afa9a705ba9900cd625c2240df97fbd1f743fc25
+
+pkgname = r-cmdstanr
