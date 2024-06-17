@@ -70,6 +70,7 @@ makedepends=(
 optdepends=(
   'new-session-manager: for session management'
   'calf-ladspa: default chorus plugin used in new file templates'
+  'lmms-git: provides veal.so (instead of calf-ladspa)'
   'ladspa-plugins: package group for plugins normally included in binary releases'
   'vst-plugins: more plugins'
 )
@@ -80,8 +81,7 @@ source=("git+https://github.com/kmatheussen/radium"
 )
 sha256sums=('SKIP'
             'f627730ff7a819e8cc5ac5c2b5f1fb2f2237327db6ea5442c55a23c1ce82ef14'
-            'SKIP'
-           )
+            '0decfc3adcba836004ac34d970a83d4d0b69743334a586f42be53b3de7bdd5a4')
 install=radium.install
 
 prepare() {
@@ -100,14 +100,11 @@ prepare() {
   # fix for binutils 2.40
   patch -p0 < "$srcdir/build_linux_common.patch"
   
-  # This tweak edits new file template and demo songs to be compatible with chorus plugin from calf-ladspa package
+  # This tweak edits new file template and demo songs to be compatible with chorus plugin from calf-ladspa package or with veal.so from lmms>=1.3
   # New Demosong also needs fixes for LADSPA-Plugins
-  # !! NOTE TO LMMS USERS !!
-  # !! Comment next line out if you have LMMS installed as it already comes with their own version of Calf plugins !!
   for file in bin/sounds/*.rad; do sed -i -e 's/Calf MultiChorus LADSPA/Calf Multi Chorus LADSPA/g' "$file"; done
   for file in bin/sounds/*.RAD; do sed -i -e 's/Calf MultiChorus LADSPA/Calf Multi Chorus LADSPA/g' "$file"; done
   sed -ie "s/C\* Eq - 10-band equalizer/C\* Eq10 - 10-band equaliser/g" bin/sounds/ROMANCE2.RAD 
-  # See comment on calf-ladspa AUR page then on how to let Radium load Calf from LMMS package 
 
   sed -i "/cd libpd-master/s|$|\nsed -i '/LINUXCFLAGS/s/=/= --Wno-error=implicit-function-declaration/' pure-data/extra/makefile |" bin/packages/build.sh
   sed -i "/cd libpd-master/s|$|\nsed -i '/define CFLAGS/s/-Wall/-Wall -Wno-error=implicit-function-declaration/' make.scm |" bin/packages/build.sh

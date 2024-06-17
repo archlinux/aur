@@ -57,6 +57,7 @@ pkgbase = radium-git
 	depends = ladspa
 	optdepends = new-session-manager: for session management
 	optdepends = calf-ladspa: default chorus plugin used in new file templates
+	optdepends = lmms-git: provides veal.so (instead of calf-ladspa)
 	optdepends = ladspa-plugins: package group for plugins normally included in binary releases
 	optdepends = vst-plugins: more plugins
 	provides = radium
@@ -67,6 +68,6 @@ pkgbase = radium-git
 	source = build_linux_common.patch
 	sha256sums = SKIP
 	sha256sums = f627730ff7a819e8cc5ac5c2b5f1fb2f2237327db6ea5442c55a23c1ce82ef14
-	sha256sums = SKIP
+	sha256sums = 0decfc3adcba836004ac34d970a83d4d0b69743334a586f42be53b3de7bdd5a4
 
 pkgname = radium-git
