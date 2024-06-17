@@ -6,14 +6,13 @@
 pkgbase=tuned
 pkgname=("${pkgbase}" "${pkgbase}-ppd")
 pkgver=2.23.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Daemon that performs monitoring and adaptive configuration of devices in the system'
 arch=('any')
 url="https://github.com/redhat-performance/${pkgbase}"
 license=('GPL')
 depends=('dbus-glib' 'ethtool' 'gawk' 'hdparm' 'polkit' 'python-configobj' 'python-dbus' 'python-gobject' 'python-linux-procfs' 'python-perf' 'python-pyudev')
 makedepends=('desktop-file-utils')
-options=('!emptydirs')
 source=("https://github.com/redhat-performance/${pkgbase}/archive/v${pkgver}/${pkgbase}-${pkgver}.tar.gz")
 sha512sums=('b7d95b17ab38ac944e6e5b8b4345ddf65120a03ebb73cdb1795525c237852a8fa4223dcef6ce28189874e5010c8076816bd3646fd7f700983f2449400a2057d8')
 
@@ -45,6 +44,7 @@ package_tuned() {
 	cd "${pkgbase}-${pkgver}"
 
 	make DESTDIR="${pkgdir}" install
+	rm -rv "${pkgdir}"/{run,var}
 
 	python -m compileall -d /usr/lib "${pkgdir}/usr/lib"
 	python -O -m compileall -d /usr/lib "${pkgdir}/usr/lib"
@@ -55,6 +55,7 @@ package_tuned-ppd() {
 	depends=('tuned')
 	conflicts=('power-profiles-daemon')
 	backup=('etc/tuned/ppd.conf')
+	options=('!emptydirs')
 
 	cd "${pkgbase}-${pkgver}"
 

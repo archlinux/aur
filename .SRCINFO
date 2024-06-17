@@ -1,7 +1,7 @@
 pkgbase = tuned
 	pkgdesc = Daemon that performs monitoring and adaptive configuration of devices in the system
 	pkgver = 2.23.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/redhat-performance/tuned
 	arch = any
 	license = GPL
@@ -17,7 +17,6 @@ pkgbase = tuned
 	depends = python-linux-procfs
 	depends = python-perf
 	depends = python-pyudev
-	options = !emptydirs
 	source = https://github.com/redhat-performance/tuned/archive/v2.23.0/tuned-2.23.0.tar.gz
 	sha512sums = b7d95b17ab38ac944e6e5b8b4345ddf65120a03ebb73cdb1795525c237852a8fa4223dcef6ce28189874e5010c8076816bd3646fd7f700983f2449400a2057d8
 
@@ -41,4 +40,5 @@ pkgname = tuned-ppd
 	pkgdesc = Daemon that allows applications to easily transition to TuneD from power-profiles-daemon (PPD)
 	depends = tuned
 	conflicts = power-profiles-daemon
+	options = !emptydirs
 	backup = etc/tuned/ppd.conf
