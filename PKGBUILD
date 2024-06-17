@@ -1,7 +1,7 @@
 # Maintainer: M Hickford <mirth.hickford@gmail.com>
 # Maintainer: Brainos <brainos233@gmail.com>
 pkgname=git-credential-oauth
-pkgver=0.11.3
+pkgver=0.12.1
 pkgrel=1
 pkgdesc='Git credential helper that securely authenticates to GitHub, GitLab, BitBucket, Gerrit and other forges using OAuth'
 arch=('any')
@@ -10,7 +10,7 @@ license=('Apache-2.0')
 makedepends=('go')
 conflicts=('git-credential-oauth-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hickford/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('fe54bc6053c7696d2ce990698cf469e2463266a71dab6615ab6b557c9eecc5e7')
+sha256sums=('22afa94526b7da02c520fda36a531616e8f53bc6c34c1438e929337c990c65fc')
 
 prepare(){
   cd "$pkgname-$pkgver"
