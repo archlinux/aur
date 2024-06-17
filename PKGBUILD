@@ -1,7 +1,8 @@
 # Maintainer: Ludvig Hozman <ludvig.hozman@gmail.com>
 
 pkgname=plex-desktop
-pkgver=1.93.0.144
+pkgver=1.94.1.155
+_pkghash=f1e7f457
 pkgrel=1
 pkgdesc="Plex desktop client for linux"
 arch=('x86_64')
@@ -56,22 +57,22 @@ depends=(libgl
   wayland
 
 )
-source=("https://artifacts.plex.tv/plex-desktop-stable/1.93.0.144-9b2f4a13/linux/Plex-1.93.0.144-9b2f4a13-linux-x86_64.tar.bz2"
+source=("https://artifacts.plex.tv/plex-desktop-stable/$pkgver-$_pkghash/linux/Plex-$pkgver-$_pkghash-linux-x86_64.tar.bz2"
   "http://ftp.us.debian.org/debian/pool/main/libw/libwebp/libwebp6_0.6.1-2.1+deb11u2_amd64.deb"
   "https://github.com/flathub/tv.plex.PlexDesktop/raw/master/tv.plex.PlexDesktop.desktop"
   "https://github.com/flathub/tv.plex.PlexDesktop/raw/master/tv.plex.PlexDesktop.png"
 )
-sha256sums=('d665babdabaed34af8c8c2434b56c3269deb661f084ba80e0684b6115ae1859c'
-  '8abc2b1ca77a458bbbcdeb6af5d85316260977370fa2518d017222b3584d9653'
-  '2215f6bb3a2bbe50ceb3bedcb93f53d11f6a51ec7512f08f68af91da8253261b'
-  '565178841c318fb4926acf65a68df6dae484c0b705be6dd736858e7408a261d5')
-noextract=('Plex-1.93.0.144-9b2f4a13-linux-x86_64.tar.bz2')
+sha256sums=('9914c464b39c0254b74e7c4926c7b680412dbb1d71b5d1fca5846c39507c73d1'
+            '8abc2b1ca77a458bbbcdeb6af5d85316260977370fa2518d017222b3584d9653'
+            '2215f6bb3a2bbe50ceb3bedcb93f53d11f6a51ec7512f08f68af91da8253261b'
+            '565178841c318fb4926acf65a68df6dae484c0b705be6dd736858e7408a261d5')
+noextract=('Plex-$pkgver-$_pkghash-linux-x86_64.tar.bz2')
 
 package() {
   cd $srcdir
 
   install -d "${pkgdir}/opt/${pkgname}"
-  tar --no-same-owner -xvf $srcdir/Plex-1.93.0.144-9b2f4a13-linux-x86_64.tar.bz2 -C $pkgdir/opt/${pkgname}
+  tar --no-same-owner -xvf $srcdir/Plex-$pkgver-$_pkghash-linux-x86_64.tar.bz2 -C $pkgdir/opt/${pkgname}
   tar -xvf $srcdir/data.tar.xz ./usr/lib/x86_64-linux-gnu/libwebp.so.6.0.2
   install -Dm644 usr/lib/x86_64-linux-gnu/libwebp.so.6.0.2 ${pkgdir}/opt/${pkgname}/lib/libwebp.so.6
 
