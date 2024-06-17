@@ -3,12 +3,12 @@
 pkgname=oblivion-desktop
 _pkgver=0.23.15-beta
 pkgver="${_pkgver//-/_}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial Warp Client"
 arch=('x86_64')
 url="https://github.com/bepass-org/oblivion-desktop"
 license=("LicenseRef-${pkgname}")
-_electron=electron26
+_electron=electron27
 depends=('bash' "${_electron}")
 makedepends=('gendesk' 'npm')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz"
