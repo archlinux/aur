@@ -2,15 +2,15 @@
 
 pkgname=wg++
 pkgver=5.2
-pkgrel=1
+pkgrel=2
 pkgdesc='WebGrab+Plus is a Freeware, closed-source multi-site incremental XMLTV EPG grabber'
 arch=('any')
 url="http://webgrabplus.com/"
 license=('custom')
 depends=('dotnet-runtime-8.0' 'unzip' 'libxml2' 'curl' 'wget')
-source=("http://webgrabplus.com/sites/default/files/download/SW/V5.2.0/WebGrabPlus_V5.2_install.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::http://webgrabplus.com/sites/default/files/download/SW/V5.2.0/WebGrabPlus_V5.2_install.tar_0.gz"
 	'wgpp.sh')
-sha256sums=('dd472d58a84114d42776d3e04738f962b7a89e150dbd828d0db137a445ff8f1b'
+sha256sums=('4b8862672d79280037806075c573ffc8ad4703b470058b374ed1e09914c008ff'
             'ea58bc3aaa40c549808e185ed85356a3823490b9a37fd617cd7801358144b6cd')
 
 prepare() {
