@@ -5,8 +5,8 @@ _android_arch=aarch64
 
 pkgname=android-${_android_arch}-libtasn1
 pkgver=4.19.0
-pkgrel=1
-pkgdesc="The ASN.1 library used in GNUTLS (android)"
+pkgrel=2
+pkgdesc="The ASN.1 library used in GNUTLS (Android ${_android_arch})"
 arch=('any')
 url="http://www.gnu.org/software/libtasn1"
 license=("GPL3, LGPL")
@@ -22,7 +22,7 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}"/libtasn1-${pkgver}
+    cd "${srcdir}/libtasn1-${pkgver}"
     source android-env ${_android_arch}
 
     export CFLAGS="${CFLAGS} -D_FORTIFY_SOURCE=2 -D__USE_FORTIFY_LEVEL=2"
@@ -30,13 +30,15 @@ build() {
 
     android-${_android_arch}-configure \
         --disable-doc
+    make $MAKEFLAGS
 }
 
 package() {
-    cd "${srcdir}"/libtasn1-${pkgver}
+    cd "${srcdir}/libtasn1-${pkgver}"
     source android-env ${_android_arch}
 
     make DESTDIR="$pkgdir" install
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    rm -r "${pkgdir}/${ANDROID_PREFIX_BIN}"
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
