@@ -5,7 +5,7 @@
 pkgname="sm64coopdx-git"
 pkgdesc="A fork of sm64ex-coop with more features, customizability and power to the Lua API"
 
-_region="us" # change this (as well as the 2nd checksum in line 25) if you want to use a different ROM
+_region="us" # change this (as well as the 2nd checksum in line 28) if you want to use a different ROM
 
 pkgver=r3689.30ccad3
 pkgrel=1
