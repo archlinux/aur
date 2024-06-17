@@ -1,0 +1,26 @@
+pkgbase = outlook-for-linux-bin
+	pkgdesc = Unofficial Microsoft Outlook for Linux client (binary version)
+	pkgver = 1.3.13
+	pkgrel = 1
+	url = https://github.com/mahmoudbahaa/outlook-for-linux
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = GPL3
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	provides = outlook-for-linux
+	conflicts = outlook-for-linux
+	conflicts = outlook-for-linux-appimage
+	conflicts = outlook-for-linux-git
+	conflicts = outlook-for-linux-wbundled-electron
+	options = !strip
+	source_x86_64 = https://github.com/mahmoudbahaa/outlook-for-linux/releases/download/v1.3.13-outlook/outlook-for-linux_1.3.13_amd64.deb
+	b2sums_x86_64 = dba96578f8798154826b5224012a055e0bbb4309005f270d1ccabb81c01555d075ebd4ba78d479828d72addf5f5da2b7c7ea210609adca214b4550163d5c7a46
+	source_aarch64 = https://github.com/mahmoudbahaa/outlook-for-linux/releases/download/v1.3.13-outlook/outlook-for-linux_1.3.13_arm64.deb
+	b2sums_aarch64 = 67ffbcc53ee3f2889a3d722f5bfbc96e818c47ecb56db9022e8ece21f3cddd9171b16302b82cec6ad8bf43c79fca53517db5b50a1de053947c6c7953d39eedc8
+	source_armv7h = https://github.com/mahmoudbahaa/outlook-for-linux/releases/download/v1.3.13-outlook/outlook-for-linux_1.3.13_armv7l.deb
+	b2sums_armv7h = 8de8a54e2a4a9de0b51b98193ba158c7aa088ff60957ed1fd06cd6d75a5eb3e4d05a1e083ccf9508109e1b6c55d7b3881d42ae7d11260d0411b934ec0cab6d50
+
+pkgname = outlook-for-linux-bin
