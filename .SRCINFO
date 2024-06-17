@@ -1,7 +1,7 @@
 pkgbase = libgmp-static
 	pkgdesc = A free library for arbitrary precision arithmetic, but only includes libgmp.a and libgmpxx.a
 	pkgver = 6.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gmplib.org
 	arch = x86_64
 	license = LGPL3

@@ -3,7 +3,7 @@
 
 pkgname=libgmp-static
 pkgver=6.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A free library for arbitrary precision arithmetic, but only includes libgmp.a and libgmpxx.a'
 arch=('x86_64')
 depends=("gmp>=$pkgver")
@@ -13,13 +13,25 @@ options=(!lto)
 source=("https://gmplib.org/download/gmp/gmp-$pkgver.tar.lz")
 sha512sums=('b70f3603ab40270fa6e9a7ee1dc0f91477e45803d3ee2f22af924af89dcd18b483c900685310c9e69cee91dc1b6dec00cfec6a8a111022d0122b5427209a4a2d')
 
+build() {
+    cd gmp-$pkgver
+
+    export CFLAGS+=' -fPIC'
+    export CPPFLAGS+=' -DPIC'
+
+    ./configure --prefix=/usr --enable-static --disable-shared --enable-cxx
+    make
+}
+
+check() {
+    cd gmp-$pkgver
+    make check
+}
+
 package() {
     cd gmp-$pkgver
 
-    ./configure --prefix=$pkgdir/usr --enable-static --disable-shared --enable-cxx CFLAGS=-fPIC CPPFLAGS=-DPIC
-    make
-    make check
-    make install
+    DESTDIR="$pkgdir" make install
 
     rm -rf $pkgdir/usr/include
     rm -rf $pkgdir/usr/share
