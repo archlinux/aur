@@ -5,7 +5,7 @@
 
 pkgname=nheko
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop client for the Matrix protocol"
 arch=('x86_64')
 url="https://nheko.im/nheko-reborn/nheko"
@@ -14,7 +14,7 @@ depends=(qt6-base qt6-svg qt6-quickcontrols2 qt6-multimedia qtkeychain-qt6 \
          qt6-declarative qt6-imageformats coeurl mtxclient lmdb cmark libolm hicolor-icon-theme \
          kdsingleapplication gst-plugins-bad-libs 'org.freedesktop.secrets')
 makedepends=("git" "cmake" "gcc" "fontconfig" "qt6-tools" "nlohmann-json" "asciidoc")
-optdepends=('qt-jdenticon: Auto-generated profile pictures (identicons)'
+optdepends=('qt6-jdenticon: Auto-generated profile pictures (identicons)'
             'kimageformats: Extends the formats nheko supports for image attachments'
             'gst-plugins-base-libs: VoIP/Video calls' 
             'gst-plugins-good: VoIP/Video calls'

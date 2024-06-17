@@ -1,7 +1,7 @@
 pkgbase = nheko
 	pkgdesc = Desktop client for the Matrix protocol
 	pkgver = 0.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nheko.im/nheko-reborn/nheko
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -29,7 +29,7 @@ pkgbase = nheko
 	depends = kdsingleapplication
 	depends = gst-plugins-bad-libs
 	depends = org.freedesktop.secrets
-	optdepends = qt-jdenticon: Auto-generated profile pictures (identicons)
+	optdepends = qt6-jdenticon: Auto-generated profile pictures (identicons)
 	optdepends = kimageformats: Extends the formats nheko supports for image attachments
 	optdepends = gst-plugins-base-libs: VoIP/Video calls
 	optdepends = gst-plugins-good: VoIP/Video calls
