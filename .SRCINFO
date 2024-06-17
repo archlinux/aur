@@ -1,6 +1,6 @@
 pkgbase = pingpath
 	pkgdesc = ping wrapper to display path
-	pkgver = 0.3.r10.c74d438
+	pkgver = 0.3.r11.41dc33a
 	pkgrel = 1
 	url = https://github.com/yvs2014/pingpath
 	arch = x86_64
