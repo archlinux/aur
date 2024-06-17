@@ -4,7 +4,7 @@
 
 pkgname=spatialindex
 pkgver=1.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Extensible framework that supports robust spatial indexing methods and sophisticated spatial queries'
 arch=(x86_64)
 url="https://libspatialindex.github.io/"

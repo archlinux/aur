@@ -1,0 +1,14 @@
+pkgbase = spatialindex
+	pkgdesc = Extensible framework that supports robust spatial indexing methods and sophisticated spatial queries
+	pkgver = 1.9.3
+	pkgrel = 2
+	url = https://libspatialindex.github.io/
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = gcc-libs
+	source = git+https://github.com/libspatialindex/libspatialindex#commit=1896a183afdff3f5845742ce3027553a88e13c3a
+	sha256sums = SKIP
+
+pkgname = spatialindex
