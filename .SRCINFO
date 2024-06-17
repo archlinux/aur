@@ -11,6 +11,9 @@ pkgbase = mattermost-desktop-git
 	makedepends = git
 	makedepends = asar
 	makedepends = rpm-tools
+	makedepends = moreutils
+	depends = electron29
+	depends = libxcrypt-compat
 	depends = alsa-lib
 	depends = gtk3
 	depends = libnotify
@@ -25,7 +28,9 @@ pkgbase = mattermost-desktop-git
 	conflicts = mattermost-desktop
 	source = git+https://github.com/mattermost/desktop.git#branch=master
 	source = mattermost-desktop.desktop
+	source = mattermost-desktop.sh
 	sha256sums = SKIP
-	sha256sums = 9e60ac9cc5a9cbebccb4180e7de947968aa49858812b5623812a1ab651a91093
+	sha256sums = 29d8bdc503ec71d69efa8b73655a230df00c18667c875a73cb8de31a6d86dd2a
+	sha256sums = 1c2bf48b6397d04a5a536c5c9f4960db53249c838c380f03f808c612b00ba4c6
 
 pkgname = mattermost-desktop-git
