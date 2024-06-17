@@ -1,6 +1,6 @@
 pkgbase = qt6-jdenticon
 	pkgdesc = Qt6 / C++14 Port of Jdenticon
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/Nheko-Reborn/qt-jdenticon
 	arch = i686
@@ -10,8 +10,9 @@ pkgbase = qt6-jdenticon
 	arch = armv7h
 	arch = aarch64
 	license = MIT
+	makedepends = cmake
 	depends = qt6-base
-	source = qt6-jdenticon-0.3.0.tar.gz::https://github.com/Nheko-Reborn/qt-jdenticon/archive/refs/tags/v0.3.0.tar.gz
-	b2sums = c4cbeba7848791b2386ac474ca7412b361ee949a126f10cdb523210a8415b436c365a3c056ca3fa9c196835f6bfc92b24a01f2906e62897b88af2e80a83d3bb3
+	source = qt6-jdenticon-0.3.1.tar.gz::https://github.com/Nheko-Reborn/qt-jdenticon/archive/refs/tags/v0.3.1.tar.gz
+	b2sums = 1556db9843b9f5e06989ac87250ea1812e17f3d1cbf7dcfa8671b0c29712df496fabdf169364c51a261f020aad49c92b9131db872f8918c65987f6202d96e68c
 
 pkgname = qt6-jdenticon
