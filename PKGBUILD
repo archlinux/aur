@@ -2,7 +2,7 @@
 # Contributor: Alexandre Bouvier <contact@amb.tf>
 
 pkgname=xemu
-pkgver=0.7.123
+pkgver=0.7.127
 pkgrel=1
 pkgdesc="Original Xbox emulator (fork of XQEMU)"
 arch=(x86_64)
@@ -51,7 +51,7 @@ source=(
 	'nv2a_vsh_cpu::git+https://github.com/abaire/nv2a_vsh_cpu.git'
 	'use-system-libs.patch'
 )
-b2sums=('6cf0aa6231505bb5d4a775a5172c0f7aa489ecbefabbd0c56cbb36e2a71604c44334554b2332d913f67e7d2eaf0a331a0ff8b3f778e79eed15424bb0c222c394'
+b2sums=('b3f3524d9a247a5843a155ebe3d6bfaa8728516dafd39402aa0f950d805bc955c797b69226cbed566eda0b55a5be2d58b69ae9fdf8b00b64280d252e8620d6b6'
         'SKIP'
         'SKIP'
         'SKIP'
