@@ -21,7 +21,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/thisismypassport/shrinko8/archive/v${pkgver}.tar.gz"
   '__init__.py.template'
   'pyproject.toml.template'
-  'shrinko8.py.template'
+  'shrinko8'
   'test_cart.p8'
 )
 
@@ -63,11 +63,6 @@ build() {
 
   echo >&2 'Building the wheel'
   python -m build --wheel --no-isolation
-
-  echo >&2 'Building the executable'
-  mkdir -pv bin
-  j2 -f env -o bin/shrinko8 '../shrinko8.py.template' - <<< \
-    "site_packages=$(_site_packages)"
 }
 
 check() {
@@ -80,7 +75,7 @@ check() {
   export PYTHONPATH
 
   echo >&2 'Running minification test'
-  python "${srcdir}/${pkgname}-${pkgver}/bin/shrinko8" \
+  python "${srcdir}/shrinko8" \
     -m "${srcdir}/test_cart.p8" test_cart_minified.p8
   if [[ "$(wc -c < 'test_cart_minified.p8')" -gt 116 ]]; then
     printf >&2 '%s\n' 'Unexpected minification output:' '==='
@@ -90,7 +85,7 @@ check() {
   fi
 
   echo >&2 'Running PNG generation test'
-  python "${srcdir}/${pkgname}-${pkgver}/bin/shrinko8" \
+  python "${srcdir}/shrinko8" \
     -m "${srcdir}/test_cart.p8" test_cart.p8.png
 }
 
@@ -100,7 +95,7 @@ package() {
   python -I -m installer --destdir="${pkgdir}" dist/*.whl
 
   echo >&2 'Packaging the executable'
-  install -D -m 755 -t "${pkgdir}/usr/bin" "bin/${pkgname}"
+  install -D -m 755 -t "${pkgdir}/usr/bin" "../${pkgname}"
 
   echo >&2 'Packaging the README'
   install -D -m 644 -t "${pkgdir}/usr/share/doc/${pkgname}" \
