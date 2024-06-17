@@ -1,7 +1,7 @@
-diff --color '--color=auto' --unified --unified --recursive --text libhelium-1.8.10/meson.build altered/meson.build
---- libhelium-1.8.10/meson.build	2024-02-02 19:28:31.000000000 +0100
-+++ altered/meson.build	2024-02-05 19:49:36.677996127 +0100
-@@ -107,19 +107,3 @@
+diff --color '--color=auto' --unified --unified --recursive --text libhelium-1.8.11-1/meson.build altered/meson.build
+--- libhelium-1.8.11-1/meson.build	2024-03-11 04:41:55.000000000 +0100
++++ altered/meson.build	2024-06-17 18:39:45.240158631 +0200
+@@ -101,19 +101,3 @@
  if get_option('gidoc') or get_option('valadoc')
      subdir('doc')
  endif
@@ -9,7 +9,7 @@ diff --color '--color=auto' --unified --unified --recursive --text libhelium-1.8
 -# GSettings schemas, merged from tau-gsettings-schemas since
 -# it's now standard for all Helium-based apps.
 -
--settings_schemas = [ 'data/com.fyralabs.desktop.appearance.gschema.xml' ]
+-settings_schemas = ['data/com.fyralabs.desktop.appearance.gschema.xml']
 -
 -gnome.compile_schemas(depend_files: files(settings_schemas))
 -
