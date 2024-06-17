@@ -1,0 +1,24 @@
+pkgbase = ratatouille.lv2
+	pkgdesc = A guitar amp neural model and impulse response loader and mixer LV2 plugin
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://github.com/brummer10/Ratatouille.lv2
+	arch = aarch64
+	arch = x86_64
+	groups = lv2-plugins
+	groups = pro-audio
+	license = BSD-3-Clause
+	checkdepends = lv2lint
+	makedepends = lv2
+	makedepends = xxd
+	depends = cairo
+	depends = fftw
+	depends = glibc
+	depends = gcc-libs
+	depends = libsndfile
+	depends = libx11
+	optdepends = lv2-host: for loading the LV2 plugin
+	source = https://github.com/brummer10/Ratatouille.lv2/releases/download/v0.4/Ratatouille.lv2-v0.4-src.tar.xz
+	sha256sums = 35a072473a9c6d354c1d9a01f710497690c53684a5ff83d6654f41828983bd7a
+
+pkgname = ratatouille.lv2
