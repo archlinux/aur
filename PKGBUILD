@@ -4,7 +4,7 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-libopenmpt
-pkgver=0.7.7
+pkgver=0.7.8
 pkgrel=1
 arch=('any')
 pkgdesc="A library to render tracker music to a PCM audio stream (Android ${_android_arch})"
@@ -19,7 +19,7 @@ depends=("android-${_android_arch}-flac"
 makedepends=('autoconf-archive')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://lib.openmpt.org/files/libopenmpt/src/libopenmpt-$pkgver+release.autotools.tar.gz")
-md5sums=('be9743fdf1cca7989f02c02454d91805')
+md5sums=('a620528300b864ded72eeb449e68dedc')
 
 prepare() {
     cd "${srcdir}/libopenmpt-$pkgver+release.autotools"
@@ -48,6 +48,6 @@ package() {
 
     make DESTDIR="$pkgdir" install
     rm -rf "$pkgdir/${ANDROID_PREFIX_SHARE}"
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
