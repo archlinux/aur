@@ -2,13 +2,13 @@
 pkgname=geo-osm-tiles
 pkgname_cap=Geo-OSM-Tiles
 pkgver=0.04
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility that enables download of OSM tiles (downloadosmtiles.pl)"
 arch=('any')
 url="https://metacpan.org/release/ROTKRAUT/Geo-OSM-Tiles-0.04/view/downloadosmtiles.pl"
 license=('Perl')
 #groups=('base-devel')
-depends=('perl')
+depends=('perl' 'perl-yaml')
 makedepends=('make')
 source=("https://cpan.metacpan.org/authors/id/R/RO/ROTKRAUT/${pkgname_cap}-${pkgver}.tar.gz")
 sha512sums=('bdb28b23176dfca07dc0b0bc21adbd7ce75f3dba965c05f920886c254a978ecc40b8ac65e2268f5ffb47d6df1038d59bc0817ccf91d9cdb277ce0492b6ace760')
