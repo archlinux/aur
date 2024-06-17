@@ -1,17 +1,14 @@
 pkgbase = fcitx5-hazkey
 	pkgdesc = Japanese input method for fcitx5, powered by azooKey engine
 	pkgver = 0.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/7ka-Hiira/fcitx5-hazkey
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = cmake
-	makedepends = swift-language
-	depends = fcitx5
+	depends = fcitx5>=5.0.4
 	depends = swift-language
-	conflicts = fcitx5-hazkey
-	conflicts = fcitx5-hazkey-git
 	source = https://github.com/7ka-Hiira/fcitx5-hazkey/archive/refs/tags/0.0.2.tar.gz
 	sha256sums = e1c47548f99fce3f9a7294f5735b369bcd279b7c19e9119bcead0b940aed500d
 
