@@ -4,9 +4,9 @@
 pkgname=typora-plugin
 _pkgname=typora
 _typora_ver=1.8.10
-_plugin_ver=1.9.2
+_plugin_ver=1.9.4
 pkgver=${_typora_ver}+plugin+${_plugin_ver}
-pkgrel=2
+pkgrel=1
 pkgdesc="A minimal markdown editor and reader. with obgnail/typora_plugin plugin."
 arch=('x86_64')
 license=('custom:"Copyright (c) 2015 Abner Lee All Rights Reserved."')
@@ -30,7 +30,7 @@ source=(
 sha512sums=(
     '6560774e283129fa556a916d412903893388194625472062a36dd84d771ae261974b0c6a3b4642b081e8e19a7bb9477720e00f39efa4934aa8301001127e69a6'
     'de9c883c63f3ea35bd551c8761e605f8e1a3468943e000abcbf94bb0c5cbb5f0f6c7fa4d49ab39c177f167e0e3d0b061c861bf828627b4a34f7f1589119c3d04'
-    '5b84610047b1b8447ce00eb7527e28ec47610c96999592a86c9ddd39f34b19e05137af5b360e6b9e8e371de332b4354332fd50d29f0d2a72eb5a1208c40717ae')
+    '027329b78e2236ac14c39adf644ffeb2ae4dda1c3eb801c2090d77f401a32067a89551895af8567ac3721ca79174dbb916ced4d9075902bc093e1b0ef8292b87')
 
 _patch_plugin() {
   tar xvf ${_plugin_ver}.tar.gz -C "$pkgdir/"
