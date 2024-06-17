@@ -1,7 +1,7 @@
 pkgbase = epics-base
 	pkgdesc = Experimental Physics and Industrial Control System
 	pkgver = 7.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://epics-controls.org
 	arch = any
 	groups = epics

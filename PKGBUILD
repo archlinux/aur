@@ -3,7 +3,7 @@
 
 pkgname='epics-base'
 pkgver=7.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Experimental Physics and Industrial Control System"
 arch=('any')
 url="https://epics-controls.org"
@@ -24,7 +24,6 @@ sha512sums=('f72e4f7b27f39a18540346184ef185b7fb3ecab4df4e4f66b86c44c39a35a1a236a
             '394b023fe3003e61701c8c31d44c17281297a3b67f3bbe604e9191f38267986c34b06fe24eae5e778a29b466b022bdce5d4d0f4061da9c91a44467f1e0d266a3'
             'd8337a9ee5a9c1ca2c1aa3ee8e45c0507f9386a590474e0345ff903ec7ebd56feed739c46a56c6dced56129ca4d6e783b72d01a25f6346daaf7ce34127fd9903')
 validpgpkeys=('4B688BF5CAF9452CBD5BE86FD306120EEACB4576') # Andrew Johnson (Argonne)
-_epics_host_arch=
 
 prepare() {
     cd "base-${pkgver}"
@@ -94,7 +93,7 @@ package() {
     # install bin files and link non internal binaries to system path
     install -dm755 "${EPICS_BASE}/bin/${EPICS_HOST_ARCH}" "${pkgdir}/usr/bin"
     cp -P "bin/${EPICS_HOST_ARCH}"/* "${EPICS_BASE}/bin/${EPICS_HOST_ARCH}"
-    for bin in caget caput cainfo camonitor caRepeater casw pvget pvinfo pvlist pvput pvxcall pvxget pvxinfo pvxmonitor pvxput pvxvct; do
+    for bin in caget caput cainfo camonitor caRepeater casw pvget pvinfo pvlist pvput; do
         ln -sr "${EPICS_BASE}/bin/${EPICS_HOST_ARCH}/${bin}" "${pkgdir}/usr/bin"
     done
 
