@@ -7,7 +7,7 @@
 
 pkgname=ganttproject
 _version=3.3
-_build=3300
+_build=3309
 pkgver=$_version.$_build
 pkgrel=1
 pkgdesc="A project scheduling application featuring gantt chart, resource management, calendaring."
@@ -37,5 +37,5 @@ package() {
 	ln -s "/opt/$pkgname/ganttproject" "$pkgdir/usr/bin/ganttproject"
 }
 
-sha256sums=('2938e7937ea4bad16d47cb63da21eab5e2f21f9c8e292919bbf0f8e108162bd7'
+sha256sums=('f0b20048709bf035c3307f6af5e5d4f137841220301fc8358003da753552aae4'
             '7f80539115a2ffa518516671596b7e35659d46c91ac39133cc5accda9dec3862')
