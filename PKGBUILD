@@ -1,9 +1,9 @@
 # Maintainer: EinfxchFinn <finn.kuenstner@gmail.com>
 pkgname=vesktop_electron
 _pkgname=Vesktop
-pkgdesc="Vesktop gives you the performance of web Discord and the comfort of Discord Desktop, using the system provided Electron"
+pkgdesc="Vesktop gives you the performance of web Discord and the comfort of Discord Desktop, using the Electron provided by the system"
 pkgver=1.5.2
-pkgrel=3
+pkgrel=5
 arch=('x86_64' 'aarch64')
 url="https://github.com/Vencord/Vesktop"
 license=('GPL3')

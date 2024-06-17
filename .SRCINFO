@@ -1,7 +1,7 @@
 pkgbase = vesktop_electron
-	pkgdesc = Vesktop gives you the performance of web Discord and the comfort of Discord Desktop, using the system provided Electron
+	pkgdesc = Vesktop gives you the performance of web Discord and the comfort of Discord Desktop, using the Electron provided by the system
 	pkgver = 1.5.2
-	pkgrel = 3
+	pkgrel = 5
 	url = https://github.com/Vencord/Vesktop
 	arch = x86_64
 	arch = aarch64
