@@ -1,12 +1,18 @@
 pkgbase = ax-usb-nic-dkms
 	pkgdesc = Kernel module for ASIX USB Ethernet Controller
-	pkgver = 3.1.0
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://www.asix.com.tw/en/support/download
 	arch = any
 	license = GPL2
 	depends = dkms
-	source = asix_usb_nic_linux_driver_v3.1.0.tar.bz2::https://www.asix.com.tw/en/support/download/file/1735
-	sha256sums = 91fefbc25b0672d2089d8fc0aa7114c83e559374c793cd549b1f3678faa0fc8b
+	source = asix_usb_nic_linux_driver_v3.2.0.tar.bz2::https://www.asix.com.tw/en/support/download/file/1783
+	source = ax-usb-nic.modprobe.conf
+	source = dkms.conf
+	source = 0001-Fix-building-on-6.9.patch
+	sha256sums = 39d3f5d3a3fcc7a641f55514a610bf12f243509f4dbb6bd7ae7101dd30110e82
+	sha256sums = 652e3715724de0c1893ffbdfc48a66c7c09e82015429f10254869934dea40b55
+	sha256sums = 222bfd44b45b317f7dd856dc11c64afd33eb6f5bbe5e1a46851b93a3b53f1751
+	sha256sums = 3fbd56b450d850e3bd3b513ded95328e529fd49a43481c2161cea4c9c09922bc
 
 pkgname = ax-usb-nic-dkms
