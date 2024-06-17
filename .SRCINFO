@@ -1,6 +1,6 @@
 pkgbase = cairo-dock-core-wayland-git
 	pkgdesc = Light eye-candy fully themable animated dock with wayland support
-	pkgver = 3.5.99.alpha2.20240421.2baa3a90
+	pkgver = 3.5.99.beta1.20240504.13fb1516
 	pkgrel = 1
 	url = https://github.com/Cairo-Dock/cairo-dock-core
 	arch = i686
