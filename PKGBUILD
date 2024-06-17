@@ -9,19 +9,41 @@ arch=('x86_64')
 
 url="https://github.com/mattermost/desktop"
 license=('Apache')
+_electron=electron29
 
-makedepends=('jq' 'nodejs' 'npm' 'git' 'asar' 'rpm-tools')
-depends=('alsa-lib' 'gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'libutil-linux' 'libappindicator-gtk3' 'libsecret')
+makedepends=('jq' 'nodejs-lts-iron' 'npm' 'git' 'asar' 'rpm-tools' 'moreutils')
+depends=($_electron 'libxcrypt-compat' 'alsa-lib' 'gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'libutil-linux' 'libappindicator-gtk3' 'libsecret')
 optdepends=()
 
 conflicts=('mattermost-desktop')
 provides=("${_pkgname}")
 
-source=('git+https://github.com/mattermost/desktop.git#branch=master' ${_pkgname}.desktop)
-sha256sums=('SKIP' '9e60ac9cc5a9cbebccb4180e7de947968aa49858812b5623812a1ab651a91093')
+source=('git+https://github.com/mattermost/desktop.git#branch=master' ${_pkgname}.desktop ${_pkgname}.sh)
+sha256sums=('SKIP'
+            '9e60ac9cc5a9cbebccb4180e7de947968aa49858812b5623812a1ab651a91093'
+            '1c2bf48b6397d04a5a536c5c9f4960db53249c838c380f03f808c612b00ba4c6')
 
 prepare() {
+
     cd 'desktop'
+
+    sed -e "s/@ELECTRON@/$_electron/" "../$_pkgname.sh" > "$_pkgname.sh"
+
+    local _electronVersion="$(< "/usr/lib/$_electron/version")"
+
+    jq '.linux["target"] = [ "dir" ]' electron-builder.json | sponge electron-builder.json
+
+
+    jq '	.devDependencies["electron"] = $electronVersion |
+		del(.devDependencies["electron-rebuild"]) |
+		.config.target = $electronVersion |
+		.config.runtime = $electronRuntime' \
+			--arg electronRuntime "$_electron" \
+			--arg electronVersion "$_electronVersion" \
+			package.json |
+		sponge package.jsons
+	  sed -i -e '/package:/s/tar.gz deb rpm/dir/' package.json
+
 
     _npmargs="--cache $srcdir/npm-cache --no-audit --no-fund"
 
@@ -38,22 +60,15 @@ build() {
 }
 
 package() {
-    cd 'desktop'
+  cd 'desktop'
 
-    cd release/linux-unpacked
-    install -d -m 755 "${pkgdir}"/usr/lib/mattermost
+  install -Dm0644 -t "$pkgdir/usr/lib/$_pkgname/" release/linux-unpacked/resources/app.asar
+	cp -a release/linux-unpacked/resources/app.asar.unpacked "$pkgdir/usr/lib/$_pkgname/"
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/$_pkgname/" LICENSE.txt
+	install -Dm0644 src/assets/linux/app_icon.png "$pkgdir/usr/share/icons/$_pkgname.png"
+	install -Dm0755 "$_pkgname.sh" "$pkgdir/usr/bin/$_pkgname"
+	install -Dm0644 -t "$pkgdir/usr/share/applications/" "$srcdir/$_pkgname.desktop"
 
-    cp -r * "$pkgdir/usr/lib/mattermost"
-
-    cd "$pkgdir/usr/lib/mattermost"
-
-    install -d -m 755 "$pkgdir/usr/bin"
-    ln -s /usr/lib/mattermost/${_pkgname} "$pkgdir/usr/bin/$_pkgname"
-
-    install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-
-    install -Dm644 "$srcdir/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
-    install -Dm644 "$pkgdir/usr/lib/mattermost/app_icon.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 }
 
 pkgver() {
