@@ -4,7 +4,7 @@ pkgbase = luajit-symlinks
 	pkgrel = 1
 	arch = any
 	depends = luajit
-	provides = lua5.1
-	conflicts = lua5.1
+	provides = lua51
+	conflicts = lua51
 
 pkgname = luajit-symlinks

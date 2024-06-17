@@ -4,8 +4,8 @@ pkgrel=1
 pkgdesc='Runs luajit if lua5.1 is called'
 arch=('any')
 depends=('luajit')
-provides=('lua5.1')
-conflicts=('lua5.1')
+provides=('lua51')
+conflicts=('lua51')
 
 package() {
   install -dm755 "$pkgdir/usr/bin"
