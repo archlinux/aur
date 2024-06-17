@@ -2,13 +2,17 @@
 # Maintainer: Dan Denkijin <dandenkijin at gmail dot com>
 
 pkgname=riverwm-utils
-pkgver=0.0.7.r8.gab7e631
-pkgrel=2
+pkgver=0.0.10.r3.gbed817b
+pkgrel=1
 pkgdesc="Utilities for the River Wayland compositor"
 arch=(any)
 url="https://github.com/NickHastings/${pkgname}"
 license=(GPLv3)
-makedepends=('git' 'python-installer' 'python-build' 'python-wheel')
+makedepends=('git'
+             'python-installer'
+             'python-build'
+             'python-wheel'
+             'python-pywayland')
 source=("git+${url}.git")
 md5sums=('SKIP')
 pkgver() {
@@ -17,7 +21,7 @@ pkgver() {
 }
 build() {
 	cd $srcdir/$pkgname
-  	python -m build --wheel --no-isolation 
+  	python -m build --wheel --no-isolation
 }
 package() {
  	cd $srcdir/$pkgname
