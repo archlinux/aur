@@ -3,7 +3,7 @@
 
 pkgname="aider-chat"
 _pkgname="aider"
-pkgver=0.37.0
+pkgver=0.38.0
 pkgrel=1
 pkgdesc="AI pair programming in your terminal"
 url="https://github.com/paul-gauthier/aider"
@@ -54,7 +54,7 @@ optdepends=(
   "python-soundfile: portaudio support"
 )
 source=("$pkgname::git+$url.git#tag=v$pkgver")
-b2sums=('be804f50ab081e23d771b3304b8d9451492fa985ea6edc466e8ede1f63241d05c357ad02f2790b7cbf427aada15ac5d7f7b534a2b062e8451f1b126ef55e88e3')
+b2sums=('98eed584a14cf57e1d22b83e6d8cca0dffae2013a8accd2dc9e74bb04dbc983e02b56cbd1fc4f87b2a586db1418e4474be4fd0dd16d65f22ccb2046e46970d6a')
 
 prepare() {
   cd "$pkgname"
@@ -74,7 +74,7 @@ check() {
 
   # Deselect some tree-sitter tests failing due the following exception:
   #   tree_sitter_languages/core.pyx:14: TypeError
-  pytest --deselect tests/test_repomap.py
+  pytest --deselect aider/tests/test_repomap.py
 }
 
 package() {
