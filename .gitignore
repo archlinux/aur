@@ -1,0 +1,10 @@
+clap/
+clap-helpers/
+clap-juce-extensions/
+chowdsp_utils/
+chowmatrix/
+chowmatrix-git-*.pkg.tar.*
+foleys_gui_magic/
+JUCE/
+pkg/
+src/

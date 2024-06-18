@@ -1,12 +1,11 @@
- 
 [Desktop Entry]
 Encoding=UTF-8
 Version=1.0
 Type=Application
 Terminal=false
-Exec=/usr/local/bin/chowmatrix
+Exec=ChowMatrix
 Name=Chow Matrix
+Comment=A digital delay/echo
 MimeType=application
 Categories=AudioVideo;Audio;AudioEditing;X-Recorders;X-Multitrack;X-Jack;
-Comment=A digital delay/echo
 Icon=chowmatrix
