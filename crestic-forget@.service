@@ -1,0 +1,6 @@
+[Unit]
+Description=crestic %I forget
+
+[Service]
+KillSignal=SIGINT
+ExecStart=/usr/bin/crestic %I forget
