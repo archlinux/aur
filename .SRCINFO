@@ -7,7 +7,7 @@ pkgbase = profilex
 	license = BSD
 	depends = gcc
 	depends = qt5-base
-	source = https://github.com/felipealfonsog/ProFileX/archive/refs/tags/v.0.0.2.tar.gz
+	source = https://github.com/felipealfonsog/ProFileX/archive/refs/tags/v0.0.2.tar.gz
 	sha256sums = 7192de2452e54a574ae811c14fbdb8f9babe068d6e75b247f0f64ecf78c30394
 
 pkgname = profilex
