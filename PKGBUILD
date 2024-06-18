@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cortile
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Auto tiling manager with hot corner support for EWMH compliant window managers using the X11 window system."
 arch=('x86_64' 'aarch64')
 url="https://github.com/leukipp/cortile"
@@ -39,7 +39,7 @@ package() {
   cd "$pkgname-$pkgver"
   install -Dm755 "build/$pkgname" -t "$pkgdir/usr/bin/"
   install -Dm644 "assets/services/$pkgname.service" -t "$pkgdir/usr/lib/systemd/user/"
-  cp -r assets/scripts "$pkgdir/usr/share/doc/$pkgname"
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+  cp -r assets/scripts "$pkgdir/usr/share/doc/$pkgname"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
