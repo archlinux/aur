@@ -9,40 +9,46 @@ pkgdesc='Build Legacy-Free OS Images'
 arch=('any')
 url='https://github.com/systemd/mkosi'
 license=('LGPL2.1')
-depends=('python'
-         'bubblewrap')
-makedepends=('python-build'
-             'python-installer'
-             'python-setuptools'
-             'python-setuptools-scm'
-             'python-wheel'
-             'pandoc'
-             'git')
-optdepends=('dnf: build Fedora or Mageia images'
-            'apt: build Debian or Ubuntu images'
-            'debian-archive-keyring: build Debian images'
-            'ubuntu-keyring: build Ubuntu images'
-            'arch-install-scripts: build Arch images'
-            'zypper-git: build openSUSE images'
-            'gnupg: sign images'
-            'xz: compress images with xz'
-            'pxz: compress images with xz more efficiently'
-            'zstd: compress images with zstd'
-            'btrfs-progs: raw_btrfs and subvolume output formats'
-            'dosfstools: build bootable images'
-            'squashfs-tools: raw_squashfs output format'
-            'e2fsprogs: raw_ext4 output format'
-            'xfsprogs: raw_xfs output format'
-            'tar: tar output format'
-            'cpio: cpio output format'
-            'cryptsetup: add dm-verity partitions'
-            'python-cryptography: sign verity data'
-            # I don’t understand whether ovmf or edk2-ovmf is needed… let’s point to both for now
-            'ovmf: run bootable images in QEMU'
-            'edk2-ovmf: run bootable images in QEMU'
-            'qemu: run bootable images in QEMU'
-            'sbsigntools: sign EFI binaries for UEFI SecureBoot'
-            'systemd-ukify: build bootable images')
+depends=(
+    'bubblewrap'
+    'python'
+)
+makedepends=(
+    'git'
+    'pandoc'
+    'python-build'
+    'python-installer'
+    'python-setuptools'
+    'python-setuptools-scm'
+    'python-wheel'
+)
+optdepends=(
+    'apt: build Debian or Ubuntu images'
+    'arch-install-scripts: build Arch images'
+    'btrfs-progs: raw_btrfs and subvolume output formats'
+    'cpio: cpio output format'
+    'cryptsetup: add dm-verity partitions'
+    'debian-archive-keyring: build Debian images'
+    'dnf: build Fedora or Mageia images'
+    'dosfstools: build bootable images'
+    'e2fsprogs: raw_ext4 output format'
+    'edk2-ovmf: run bootable images in QEMU'
+    'gnupg: sign images'
+    # I don’t understand whether ovmf or edk2-ovmf is needed… let’s point to both for now
+    'ovmf: run bootable images in QEMU'
+    'pxz: compress images with xz more efficiently'
+    'python-cryptography: sign verity data'
+    'qemu: run bootable images in QEMU'
+    'sbsigntools: sign EFI binaries for UEFI SecureBoot'
+    'squashfs-tools: raw_squashfs output format'
+    'systemd-ukify: build bootable images'
+    'tar: tar output format'
+    'ubuntu-keyring: build Ubuntu images'
+    'xfsprogs: raw_xfs output format'
+    'xz: compress images with xz'
+    'zstd: compress images with zstd'
+    'zypper-git: build openSUSE images'
+)
 provides=('mkosi')
 conflicts=('mkosi')
 source=('git+https://github.com/systemd/mkosi.git#branch=main')
