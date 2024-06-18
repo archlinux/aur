@@ -1,13 +1,14 @@
 pkgbase = backseat-signed
 	pkgdesc = Authenticate cryptographic links from a signed derivate to its source input.
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://crates.io/crates/backseat-signed
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = cargo
 	depends = gcc-libs
 	depends = glibc
+	depends = openssl
 	source = backseat-signed-0.1.0.tar.gz::https://static.crates.io/crates/backseat-signed/backseat-signed-0.1.0.crate
 	b2sums = 2b0ed792ea4e360a4c7bd94c9795d7731e995c41e8434673e52b39264d5f15cbb4ab10c450bf65793087483f0ba1f4bf678e9705ab64c9ec4575cf4fad3b5606
 
