@@ -24,7 +24,7 @@ unset _pkgtype
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=6.9.4
+pkgver=6.9.5
 pkgrel=1
 pkgdesc='Linux'
 url='https://www.kernel.org'
@@ -56,7 +56,7 @@ source+=(
   "config-$pkgver"::https://gitlab.archlinux.org/archlinux/packaging/packages/linux/-/raw/main/config
 )
 sha256sums+=(
-  '272800e0d1a7d01a78bce95a3aaf5c80816f50eb15c517d7003e58355760ecc2' #####
+  'a51fb4ab5003a6149bd9bf4c18c9b1f0f4945c272549095ab154b9d1052f95b1' #####
   'SKIP'
   'SKIP'
 )
@@ -99,8 +99,8 @@ fi
 
 if [[ "${_build_v3::1}" == "t" ]]; then
   export KCFLAGS="-march=x86-64-v3 -mtune=generic -O3"
-  export HOSTCFLAGS="-march=x86-64-v3 -mtune=generic -O3"
-  export HOSTCXXFLAGS="-march=x86-64-v3 -mtune=generic -O3"
+  #export HOSTCFLAGS="-march=x86-64-v3 -mtune=generic -O3"
+  #export HOSTCXXFLAGS="-march=x86-64-v3 -mtune=generic -O3"
 fi
 
 export KBUILD_BUILD_HOST=archlinux
