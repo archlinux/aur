@@ -1,7 +1,7 @@
 # Maintainer: Akatsuki Rui <akiirui@outlook.com>
 
 pkgname=v2ray-domain-list-china
-pkgver=20240613162204
+pkgver=20240616122257
 pkgrel=1
 pkgdesc="A list of domains to be used as geosites for routing purpose in Project V"
 arch=('any')
