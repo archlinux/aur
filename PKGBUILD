@@ -1,14 +1,14 @@
 # Maintainer: Hayate Nakamura <hayatehay.njb at gmail dot com>
 
 pkgname=anthy-unicode
-pkgver=1.0.0.20211224
-pkgrel=5
+pkgver=1.0.0.20240502
+pkgrel=1
 pkgdesc='Hiragana text to Kana Kanji mixed text Japanese input method'
 arch=('x86_64')
 url='https://github.com/fujiwarat/anthy-unicode'
 license=('LGPL' 'GPL')
 source=("${url}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('8971129df716b4cb21c5c9fb24a98388381d8172004126f68c037d47721b0fd9ab9cb0b6ef73414e62bf9d832c59f09743546da72366c7692bfd146a05bf800d')
+sha512sums=('835f7cbd5c3afc3dcd7002b77c94a5c69e67f970584c223b47329ece011148cbc4e9f65332c00bbdbe2f407a2daa7f9e10067a182a27d07074e0f1406bb3bbc2')
 makedepends=('emacs')
 provides=('anthy')
 conflicts=('anthy')
