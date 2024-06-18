@@ -1,7 +1,7 @@
 pkgbase = asmx
 	pkgdesc = Multi-CPU Assembler
 	pkgver = 2.0b5
-	pkgrel = 1
+	pkgrel = 1.1
 	url = http://xi6.com/projects/asmx/
 	arch = i686
 	arch = x86_64
@@ -10,8 +10,10 @@ pkgbase = asmx
 	makedepends = patch
 	source = http://xi6.com/files/asmx-2.0b5.zip
 	source = Makefile.patch
+	source = asmx.c.patch
 	md5sums = 9e9125592d12bfae1b0b8015f32dcc5b
 	md5sums = 5d28a84fca8c75a77d8bb7009d226cf2
+	md5sums = 2a3d3b43c1784eb6a2dae7335725ea6b
 
 pkgname = asmx
 
