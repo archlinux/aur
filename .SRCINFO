@@ -1,17 +1,17 @@
 pkgbase = perl-xml-rpc
 	pkgdesc = Pure Perl implementation for an XML-RPC client and server
-	pkgver = 1.1
+	pkgver = 2.1
 	pkgrel = 1
 	url = https://metacpan.org/release/XML-RPC
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	depends = perl-libwww
-	depends = perl-xml-treepp
+	depends = perl-lwp-protocol-https>=0
+	depends = perl-xml-treepp>=0
+	depends = perl-libwww>=0
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/C/CA/CAVAC/XML-RPC-1.1.tar.gz
-	md5sums = 9386a80df38f838a29420a922429496e
-	sha512sums = 163ec99c6c7dd75db5389320d6aeace56ba9313870f6c5c9633669f413ac2f0feace9c472ac35d51cef092d36e7a2ac306d19478b8257233ad5a6ddb5401c00e
+	source = http://search.cpan.org/CPAN/authors/id/C/CA/CAVAC/XML-RPC-2.1.tar.gz
+	md5sums = ed163a5c26c28a6f8350892ee544e713
+	sha512sums = 9aefdc1b816165224c91b3018bbb7a275b3c3c9151c4804cf6ccf55e90d20d0bf763341e8704f0e0ea2ad9716c757177628539c4af126894f0175457976091e5
 
 pkgname = perl-xml-rpc
-
