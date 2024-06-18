@@ -23,8 +23,8 @@ prepare() {
             mv include/tensorflow/c/LICENSE LICENSE
             ;;
         arm)
-            mv -f lib/libtensorflow.so.1.15.2 lib/libtensorflow.so
-            mv -f lib/libtensorflow_framework.so.1.15.2 lib/libtensorflow_framework.so
+            mv -f "lib/libtensorflow.so.${pkgver}" lib/libtensorflow.so
+            mv -f "lib/libtensorflow_framework.so.${pkgver}" lib/libtensorflow_framework.so
             ;;
     esac
 }
