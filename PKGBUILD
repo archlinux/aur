@@ -1,12 +1,12 @@
 # Maintainer: Santiago Burgos <santiago.burgos1089@gmail.com>
 
 pkgname=sticky
-pkgver=1.20
-pkgrel=2
+pkgver=1.21
+pkgrel=1
 pkgdesc="A sticky notes app for the Linux desktop"
 arch=('any')
 url="https://github.com/linuxmint/sticky"
-license=('GPL2')
+license=(''GPL-2.0-or-later'')
 #groups=('x-apps')
 depends=(
     'gtk3'
@@ -19,7 +19,7 @@ makedepends=(
     'meson'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('3f95351e82b916e7d89ec707e9e327231e8fc63b36740c32561b27242d6c009d')
+sha256sums=('d6e44c4d7cc506859eca95333d7ce355fbcd59618975806bd27d032c40f43553')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -28,7 +28,7 @@ prepare() {
     sed -i "s/__DEB_VERSION__/${pkgver//+*/}/g" "usr/lib/$pkgname/$pkgname.py"
 
     # Fix license path
-    sed -i 's|common-licenses/GPL|licenses/common/GPL/license.txt|g' \
+    sed -i 's|common-licenses/GPL|licenses/spdx/GPL-2.0-or-later.txt|g' \
       "usr/lib/$pkgname/$pkgname.py"
 }
 

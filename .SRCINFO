@@ -1,17 +1,17 @@
 pkgbase = sticky
 	pkgdesc = A sticky notes app for the Linux desktop
-	pkgver = 1.20
-	pkgrel = 2
+	pkgver = 1.21
+	pkgrel = 1
 	url = https://github.com/linuxmint/sticky
 	arch = any
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = meson
 	depends = gtk3
 	depends = gspell
 	depends = python-gobject
 	depends = python-xapp
 	depends = xapp
-	source = sticky-1.20.tar.gz::https://github.com/linuxmint/sticky/archive/refs/tags/1.20.tar.gz
-	sha256sums = 3f95351e82b916e7d89ec707e9e327231e8fc63b36740c32561b27242d6c009d
+	source = sticky-1.21.tar.gz::https://github.com/linuxmint/sticky/archive/refs/tags/1.21.tar.gz
+	sha256sums = d6e44c4d7cc506859eca95333d7ce355fbcd59618975806bd27d032c40f43553
 
 pkgname = sticky
