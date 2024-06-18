@@ -1,14 +1,15 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: pfm <vorticity at mail dot ru>
 
 pkgname=python-eliot
 pkgver=1.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Logging that tells you why it happened'
 arch=('any')
 url='https://github.com/itamarst/eliot'
 license=('Apache')
-depends=('python-six' 'python-zope-interface' 'python-pyrsistent' 'python-boltons')
+depends=('python' 'python-six' 'python-zope-interface' 'python-pyrsistent' 'python-boltons')
 makedepends=(
 	'python-setuptools'
 	'python-build'

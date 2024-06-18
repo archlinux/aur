@@ -1,7 +1,7 @@
 pkgbase = python-eliot
 	pkgdesc = Logging that tells you why it happened
 	pkgver = 1.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/itamarst/eliot
 	arch = any
 	license = Apache
@@ -13,6 +13,7 @@ pkgbase = python-eliot
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-sphinx
+	depends = python
 	depends = python-six
 	depends = python-zope-interface
 	depends = python-pyrsistent
