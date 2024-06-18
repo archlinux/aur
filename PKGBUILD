@@ -20,9 +20,12 @@ sha256sums_aarch64=("aa78f8be149682b93c4888f3207d7fe3068cc4cb31314bea75864f69269
 prepare() {
     case $CARCH in
         x86_64|aarch64)
-            mv include/tensorflow/c/LICENSE LICENSE;;
+            mv include/tensorflow/c/LICENSE LICENSE
+            ;;
         arm)
-            mv -f lib/libtensorflow.so.1.15.2 lib/libtensorflow.so;;
+            mv -f lib/libtensorflow.so.1.15.2 lib/libtensorflow.so
+            mv -f lib/libtensorflow_framework.so.1.15.2 lib/libtensorflow_framework.so
+            ;;
     esac
 }
 
