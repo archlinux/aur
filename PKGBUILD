@@ -4,7 +4,7 @@
 _name=ChowMatrix
 _pkgname=${_name,,}
 pkgname=$_pkgname-git
-pkgver=v1.3.0.r7.ge78920a
+pkgver=1.3.0.r7.ge78920a
 pkgrel=1
 pkgdesc='A multi-format delay effect plugin and standalone app providing an expandable tree of delay lines, each with individual controls'
 arch=(x86_64)
@@ -42,7 +42,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd $_pkgname
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -77,13 +77,13 @@ package() {
     -t "$pkgdir"/usr/bin
   # LV2 bundle
   install -Dm 644 $pkgname-build/${_name}_artefacts/Release/LV2/$_name.lv2/*.ttl \
-    -t "$pkgdir"/usr/lib/lv2
+    -t "$pkgdir"/usr/lib/lv2/$_name.lv2
   install -Dm 755 $pkgname-build/${_name}_artefacts/Release/LV2/$_name.lv2/*.so \
-    -t "$pkgdir"/usr/lib/lv2
+    -t "$pkgdir"/usr/lib/lv2/$_name.lv2
   # VST3 bundle
   install -Dm 755 \
     $pkgname-build/${_name}_artefacts/Release/VST3/$_name.vst3/Contents/$CARCH-linux/*.so \
-    -t "$pkgdir"/usr/lib/vst3/
+    -t "$pkgdir"/usr/lib/vst3/$_name.vst3/Contents/$CARCH-linux
   # CLAP plugin
   install -Dm 755 $pkgname-build/${_name}_artefacts/Release/CLAP/$_name.clap \
     -t "$pkgdir"/usr/lib/clap/
