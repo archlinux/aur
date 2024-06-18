@@ -4,7 +4,7 @@
 pkgname=photoprism
 pkgver=240531.60b3a4628
 _pkgver=$(echo "$pkgver" | sed 's|\.|-|')
-pkgrel=1
+pkgrel=2
 pkgdesc="Personal Photo Management powered by Go and Google TensorFlow."
 arch=('x86_64' 'arm' 'aarch64')
 url="https://github.com/${pkgname}/${pkgname}"
@@ -32,7 +32,7 @@ sha256sums=('e5c0e2dcc9c1bb1773776281a328540093386d577946aeee5e21d1e099758864'
             '5a7e0f788b1df05f13abb167385063a60c9c5b21486d24c12d6676ac580623bd'
             '0aa3f0b94865d2b28d9ecc9e3da14f45525b476b7bdf49f2b2139978908b1c48'
             '4b8c263a4970b6b42eefc48191a3608eefb94640916d3fe12381267306ea77ec'
-            '2471e7cc560c601d0d3e2d265bab84253ac874b764adfd24818f562fdb4efe84')
+            '183071393262906f6416e27c14d2519fe537614e62866c2a93270b47355d97ae')
 
 build() {
     cd "${pkgname}-${_pkgver}"
@@ -56,6 +56,7 @@ package() {
     install -Dm644 *.{service,timer}  -t "${pkgdir}/usr/lib/systemd/system"
     install -Dm644 "${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
     install -Dm644 "${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+    install -Dm644 "defaults.yml"        "${pkgdir}/etc/${pkgname}/defaults.yml"
 
     cd "${pkgname}-${_pkgver}"
     install -Dm755 "${pkgname}"          "${pkgdir}/usr/bin/${pkgname}"

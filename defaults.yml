@@ -1,5 +1,5 @@
-ConfigPath: /etc/photoprism
 AssetsPath: /usr/share/photoprism
+ConfigPath: /var/lib/photoprism/config
 ImportPath: /var/lib/photoprism/import
 OriginalsPath: /var/lib/photoprism/originals
 StoragePath: /var/lib/photoprism/storage
