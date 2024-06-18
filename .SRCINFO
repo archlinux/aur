@@ -1,5 +1,5 @@
 pkgbase = photoprism
-	pkgdesc = Personal Photo Management powered by Go and Google TensorFlow.
+	pkgdesc = AI-Powered Photos App for the Decentralized Web
 	pkgver = 240531.60b3a4628
 	pkgrel = 2
 	url = https://github.com/photoprism/photoprism
