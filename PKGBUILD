@@ -2,11 +2,11 @@
 # Contributor: piratecarrot <39475419+piratecarrot@users.noreply.github.com>
 pkgname=gama
 pkgver=2.30
-pkgrel=3
+pkgrel=4
 pkgdesc="package dedicated to the adjustment of surveying networks."
 arch=('i686' 'x86_64')
 url="https://www.gnu.org/software/gama/"
-license=('GPL')
+license=('GPL-3.0-or-later')
 depends=('expat' 'glibc' 'sqlite' 'gcc-libs')
 options=(!debug)
 source=("https://ftpmirror.gnu.org/${pkgname}/${pkgname}-${pkgver}.tar.gz")
