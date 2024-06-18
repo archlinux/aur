@@ -4,8 +4,11 @@
 
 pkgname=nym-vpnd
 pkgver=0.1.6
+# upstream version
+_pkgver=0.1.6
+_release_tag=nym-vpn-core-v0.1.6
 pkgrel=1
-pkgdesc='NymVPN daemon'
+pkgdesc='NymVPN daemon as a systemd service'
 arch=('x86_64')
 url='https://github.com/nymtech/nym-vpn-client'
 license=('GPL-3.0-only')
@@ -13,11 +16,12 @@ depends=('glibc' 'gcc-libs' 'dbus' 'libnftnl' 'libmnl')
 makedepends=('rust' 'cargo' 'go' 'protobuf')
 provides=('nym-vpnd')
 conflicts=('nym-vpnd')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/nym-vpn-core-v$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_release_tag.tar.gz"
     'nym-vpnd.service')
-sha256sums=('ff4be517ed9bc3346bff655477df860e6f7debd5138a0c72f417c94eea3091db'
+sha256sums=(
+    'ff4be517ed9bc3346bff655477df860e6f7debd5138a0c72f417c94eea3091db' 
     'e8e234098c198ba3d0692543922fc53434f9a4355338d01c5a8dd5abfb97d255')
-_srcdir="nym-vpn-client-nym-vpn-core-v$pkgver"
+_srcdir="nym-vpn-client-$_release_tag"
 
 prepare() {
   pushd "$_srcdir"
