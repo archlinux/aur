@@ -3,7 +3,7 @@
 
 _gemname=fastlane
 pkgname=$_gemname
-pkgver=2.220.0
+pkgver=2.221.0
 pkgrel=1
 pkgdesc='The easiest way to automate beta deployments and releases for your iOS and Android apps'
 arch=(any)
@@ -17,7 +17,7 @@ source=(
   fastlane
 )
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('a3cfd005f3ebc8a4865e520c070be40678780c546508627f6fdfe77a23addc93'
+sha256sums=('efacd2891a0fec4bce41be7c7dd00beb7fa94ae89aa1a1445cff6c4fae53a246'
             'feb1a15a8120dd3de709d73287fd4a754dbbfb05fa839f4927b3b7d6ea9b5ee3')
 
 package() {
