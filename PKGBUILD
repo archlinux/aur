@@ -1,34 +1,56 @@
-# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Maintainer:
+# Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Simon Zack <simonzack@gmail.com>
 # Contributor: Toasty <toastyyogurttime@gmail.com>
 # Contributor: Stephen304 <stephen304@gmail.com>
-_name=cups-of-caffeine
-pkgname=caffeine
+
+_name="cups-of-caffeine"
+_pkgname="caffeine"
+pkgname="$_pkgname"
 pkgver=2.9.12
-pkgrel=1
-pkgdesc="Keep your computer awake."
-arch=(any)
+pkgrel=2
+pkgdesc="Keep your computer awake"
 url="https://launchpad.net/caffeine"
-license=('GPL3')
-depends=(python-xlib python-gobject python-ewmh)
-makedepends=('python-setuptools')
-optdepends=('libayatana-appindicator: caffeine-indicator (tray applet) support')
-source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-$pkgver.tar.gz")
-md5sums=('4645f84314d7d35fd94387b9f0b6c1d4')
+license=('GPL-3.0-or-later')
+arch=('any')
+
+depends=(
+  'python'
+  'python-setuptools'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-wheel'
+)
+optdepends=(
+  'libayatana-appindicator: caffeine-indicator (tray applet) support'
+)
+
+_pkgsrc="$_name-$pkgver"
+_pkgext="tar.gz"
+source=("$_pkgname-$pkgver.$_pkgext"::"https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.$_pkgext")
+sha256sums=('84ee54e83e8007b4a455b5f3e61ce97c0332c064fe5b39abd29f821f9d438f83')
 
 build() {
-  cd "$srcdir/${_name}-${pkgver}"
-  python setup.py build
+  cd "$_pkgsrc"
+  python -m build --no-isolation --wheel --skip-dependency-check
 }
 
 check() {
-  cd "$srcdir/${_name}-${pkgver}"
+  cd "$_pkgsrc"
   python setup.py check
 }
 
 package() {
-  cd "$srcdir/${_name}-${pkgver}"
-  python setup.py install --root="$pkgdir" --optimize=1
-  cd "$pkgdir"
-  chmod -R +rx *
+  depends+=(
+    'python-xlib'
+    'python-gobject'
+
+    ## AUR
+    'python-ewmh'
+  )
+
+  cd "$_pkgsrc"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
