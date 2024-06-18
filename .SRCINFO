@@ -1,6 +1,6 @@
 pkgbase = gcr-git
 	pkgdesc = A library for bits of crypto UI and parsing
-	pkgver = 4.1.0+r23+160601e7
+	pkgver = 4.3.0+r5+g78e5f89
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/gcr
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = gcr-git
 	makedepends = meson
 	makedepends = vala
 	makedepends = libxslt
+	makedepends = glib2-devel
 	depends = glib2
 	depends = libgcrypt
 	depends = libsecret
