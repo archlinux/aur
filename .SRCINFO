@@ -1,7 +1,7 @@
 pkgbase = python-pdfknife
 	pkgdesc = Command line tools to manipulate PDF files
 	pkgver = 0.2.4
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/sciunto-org/PDFknife
 	arch = any
 	license = BSD
@@ -11,7 +11,7 @@ pkgbase = python-pdfknife
 	depends = pdftk
 	depends = poppler
 	depends = ghostscript
-	depends = python-pypdf
+	depends = python-pypdf2
 	source = https://files.pythonhosted.org/packages/ee/e9/9036196f374f0d6e049a870d740e6c6e04fcaf00f702661445dfe04b71d4/pdfknife-0.2.4.tar.gz
 	sha256sums = 0be2a5857084f2d6bca176b0c13b91777ee519fd3fa29b14995a4fa4bba5c9ac
 

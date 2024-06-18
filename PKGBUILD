@@ -3,12 +3,12 @@
 
 pkgname=python-pdfknife
 pkgver=0.2.4
-pkgrel=4
+pkgrel=5
 pkgdesc="Command line tools to manipulate PDF files"
 arch=('any')
 url="https://github.com/sciunto-org/PDFknife"
 license=('BSD')
-depends=('python' 'pdftk' 'poppler' 'ghostscript' 'python-pypdf')
+depends=('python' 'pdftk' 'poppler' 'ghostscript' 'python-pypdf2')
 makedepends=('python-setuptools')
 checkdepends=('python-nose')
 source=(https://files.pythonhosted.org/packages/ee/e9/9036196f374f0d6e049a870d740e6c6e04fcaf00f702661445dfe04b71d4/pdfknife-${pkgver}.tar.gz)
