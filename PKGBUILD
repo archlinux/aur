@@ -11,7 +11,7 @@ options=('!emptydirs')
 depends=('perl>=5.005')
 makedepends=('perl-ipc-run')
 url='https://metacpan.org/dist/Module-Signature'
-source=('http://search.cpan.org/CPAN/authors/id/A/AU/AUDREYT/Module-Signature-0.88.tar.gz')
+source=('https://cpan.metacpan.org/authors/id/A/AU/AUDREYT/Module-Signature-0.88.tar.gz')
 md5sums=('af534a2d5cb4dd55e4cc1ded88d97e77')
 sha512sums=('624d7508b7854e05c50915b9192552fddd17e22043f2b330c02c34ad44dd01cb0ffd657fcd4e5333324b2ce9a05e044772e80c3ae061608f91d8101d00b3666c')
 _distdir="Module-Signature-0.88"
