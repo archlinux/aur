@@ -2,7 +2,7 @@
 
 pkgname=clifm-bin
 _pkgname="${pkgname%-bin}"
-pkgver=1.18
+pkgver=1.19
 pkgrel=1
 pkgdesc="The command line file manager (binary version)"
 arch=('i686' 'x86_64' 'armv7h')
@@ -26,7 +26,7 @@ optdepends=(
 source_x86_64=("${_pkgname}-${pkgver}-linux-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x86_64.tar.gz")
 #source_i686=("${_pkgname}-${pkgver}-linux-i686.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-i686.tar.gz")
 #source_armv7h=("${_pkgname}-${pkgver}-linux-armv7h.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-armv7h.tar.gz")
-sha256sums_x86_64=('8dfa7d5c4a1463c7359dcc8021f2f24b3321c03d6c222e1c7fcfd3e37d4fdda8')
+sha256sums_x86_64=('44dcabc0bc8ffcf9f2dcaf010399b170f503710696ca928b76b8930501fbaa54')
 #sha256sums_i686=('13e06aae37ff7b0d611b0d56f3a053095c7585424185c696a9960760f7920ef6')
 #sha256sums_armv7h=('ba1946d76f8a75164cc4398910e877ce698e54781c65173586114003125c8f0a')
 
