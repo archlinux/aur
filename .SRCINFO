@@ -1,0 +1,12 @@
+pkgbase = r-paran
+	pkgdesc = Implementation of Horns technique for evaluating components retained in PCA or FA.
+	pkgver = 1.5.3
+	pkgrel = 1
+	url = https://cran.r-project.org/package=paran
+	arch = any
+	license = GPL-2.0-only
+	depends = r
+	source = https://cran.r-project.org/src/contrib/paran_1.5.3.tar.gz
+	b2sums = 82c854c5b1638cbd29afd6afa1167948f15490fc3d15ed6f4d63a25a9c377bf88736b63bf9e05ae3d516edb921a005630f2e7883be0a42c43c3f19bba5bdeffc
+
+pkgname = r-paran
