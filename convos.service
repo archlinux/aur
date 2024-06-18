@@ -1,13 +1,15 @@
-Create a separate file convos.service and place it in the same directory as the PKGBUILD
-convos.service content:
 [Unit]
 Description=Convos IRC client
 After=network.target
+
 [Service]
 ExecStart=/usr/bin/env perl /usr/share/convos/script/convos daemon
 WorkingDirectory=/usr/share/convos
 Restart=on-failure
 Environment=PERL5LIB=/usr/share/convos/lib/perl5
+Environment=MOJO_HOME=/usr/share/convos
+Environment=MOJO_MODE=production
+
 [Install]
 WantedBy=multi-user.target
 

@@ -14,19 +14,20 @@ makedepends=('git' 'cpanminus')
 checkdepends=('perl-test-deep')
 source=("git+https://github.com/convos-chat/convos.git"
 		"convos.service")
-sha256sums=('SKIP' 
-		'453f0e3404114d97c3b4ddc9f9ae3de559d827c63e2710170735d3317973ccca')
+sha256sums=('SKIP' '453f0e3404114d97c3b4ddc9f9ae3de559d827c63e2710170735d3317973ccca')
 build() {
-	cd "$srcdir/convos"
-		./script/convos install
-		cpanm Mojolicious::Commands
+    cd "$srcdir/convos"
+    ./script/convos install
+    cpanm --local-lib="$pkgdir/usr/share/convos" Mojolicious::Commands
+}
+package() {
+    cd "$srcdir/convos"
+    install -d "$pkgdir/usr/bin"
+    install -d "$pkgdir/usr/share/convos"
+    install -Dm755 script/convos "$pkgdir/usr/bin/convos"
+    cp -r . "$pkgdir/usr/share/convos"
+    install -Dm644 "$srcdir/convos.service" "$pkgdir/usr/lib/systemd/system/convos.service"
+    find "$srcdir/convos" -name '*.pm' -exec install -Dm644 {} "$pkgdir/usr/share/convos/lib/perl5/{}" \;
+    sed -i 's|Environment=PERL5LIB=.*|Environment=PERL5LIB=/usr/share/convos/lib/perl5|g' "$pkgdir/usr/lib/systemd/system/convos.service"
 }
 
-package() {
-	cd "$srcdir/convos"
-		install -d "$pkgdir/usr/bin"
-		install -d "$pkgdir/usr/share/convos"
-		install -Dm755 script/convos "$pkgdir/usr/bin/convos"
-		cp -r . "$pkgdir/usr/share/convos"
-		install -Dm644 "$srcdir/convos.service" "$pkgdir/usr/lib/systemd/system/convos.service"
-}
