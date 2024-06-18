@@ -1,11 +1,10 @@
 pkgbase = treefetch
 	pkgdesc = A plant-based system fetch tool made with Rust
 	pkgver = 2.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/angelofallars/treefetch
 	arch = x86_64
 	license = GPL-3.0-only
-	makedepends = rust
 	makedepends = cargo
 	depends = gcc-libs
 	depends = glibc
