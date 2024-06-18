@@ -3,9 +3,9 @@
 pkgname=polycule-git
 _name=polycule
 _appid=business.braid.polycule
-pkgver=1ac50db
-pkgrel=4
-pkgdesc="A simple and beautiful matrix client written in Flutter."
+pkgver=2a3712e
+pkgrel=5
+pkgdesc="A geeky and efficient [matrix] client for power users."
 # Flutter officially supports amd64 and AArch64
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/polycule_client/polycule"
@@ -19,8 +19,6 @@ depends=(
   'xdg-user-dirs'
   # for e2ee
   'libolm'
-  # flutter_file_picker - see https://github.com/miguelpruivo/flutter_file_picker/blob/master/lib/src/linux/file_picker_linux.dart#L115
-  'zenity'
   # sqlite encryption
   'openssl'
 )
