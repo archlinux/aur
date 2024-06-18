@@ -1,6 +1,6 @@
 pkgbase = v2raya-bin
 	pkgdesc = A web GUI client of Project V which supports VMess, VLESS, SS, SSR, Trojan, Tuic and Juicity protocols
-	pkgver = 2.2.5.1
+	pkgver = 2.2.5.2
 	pkgrel = 1
 	url = https://github.com/v2rayA/v2rayA
 	install = .INSTALL
@@ -20,17 +20,17 @@ pkgbase = v2raya-bin
 	sha1sums = 6ff514cd4e70e897d1593d08538406b0c009c3bb
 	sha1sums = 661ca46bfcfc21fa455a0dfadb773a74952d52a9
 	sha1sums = 5c51b3e670733d6d1cf22e1cb5fe45305f4b8014
-	sha1sums = f4abf270b2ce588a4e8ab4b5ccdc9168b96791fe
-	source_i686 = v2raya_2.2.5.1::https://apt.v2raya.org/static/v2raya_linux_x86_2.2.5.1
-	sha1sums_i686 = c9baca18b6991492526efca8814179fb60cf9f51
-	source_x86_64 = v2raya_2.2.5.1::https://apt.v2raya.org/static/v2raya_linux_x64_2.2.5.1
-	sha1sums_x86_64 = e9d2bc196071a5614b6d8eb1b89212fda15c7980
-	source_armv7h = v2raya_2.2.5.1::https://apt.v2raya.org/static/v2raya_linux_armv7_2.2.5.1
-	sha1sums_armv7h = 03dc2b77d0d4bd75ea9673e8d6632faa0b1634ad
-	source_armv6h = v2raya_2.2.5.1::https://apt.v2raya.org/static/v2raya_linux_armv6_2.2.5.1
-	sha1sums_armv6h = db5e0db0bf870c235618ea1a0febc79e64305982
-	source_aarch64 = v2raya_2.2.5.1::https://apt.v2raya.org/static/v2raya_linux_arm64_2.2.5.1
-	sha1sums_aarch64 = 93ee68ad6ce331faab934abd075b94a77630cbbc
+	sha1sums = a0e7e6d0575b668e1bcea7ee13abfb6e3facada1
+	source_i686 = v2raya_2.2.5.2::https://apt.v2raya.org/static/v2raya_linux_x86_2.2.5.2
+	sha1sums_i686 = 8ea27fbe482c4de05595a6f5bbc74b94c24cb98a
+	source_x86_64 = v2raya_2.2.5.2::https://apt.v2raya.org/static/v2raya_linux_x64_2.2.5.2
+	sha1sums_x86_64 = c185df5020c983925f7945642faff4fde97edc91
+	source_armv7h = v2raya_2.2.5.2::https://apt.v2raya.org/static/v2raya_linux_armv7_2.2.5.2
+	sha1sums_armv7h = 7a01bec749817d3b7cba9698b5f2504d8bcb7687
+	source_armv6h = v2raya_2.2.5.2::https://apt.v2raya.org/static/v2raya_linux_armv6_2.2.5.2
+	sha1sums_armv6h = a962fd8754b93f4a04ee53471c821c568d432e8f
+	source_aarch64 = v2raya_2.2.5.2::https://apt.v2raya.org/static/v2raya_linux_arm64_2.2.5.2
+	sha1sums_aarch64 = 61a4b8b0a371af72ae83a5f411b2b7cfb74be581
 
 pkgname = v2raya-bin
 	depends = v2ray>=5.0.0
