@@ -1,9 +1,9 @@
 # Maintainer: tarball <bootctl@gmail.com>
-# Contributors: Claudia Pellegrino <aur ät cpellegrino.de>
+# Contributor: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=shpool
-pkgver=0.6.1
-pkgrel=3
+pkgver=0.6.2
+pkgrel=1
 pkgdesc='Think tmux, then aim... lower'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://github.com/shell-pool/shpool'
@@ -12,7 +12,7 @@ depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
 checkdepends=('fish' 'less' 'zsh')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('0e12a2c4c1a9113c271f88eb32c278b232ae74c88927829c03d10fac4246349843b14752b702e337b70f6fdcc30f948f5819e736c3f6b6913f28b3426b021c39')
+sha512sums=('36a7d6d656a5724d6c32a8d5cc4a425771398b7a1ab6928b95fed1ed36399e7b91bce6ce5ca5c9a62e030f6409b3af2d0fbd5ee97bd37912f62f471f7221e135')
 
 build() {
   cd $pkgname-$pkgver
