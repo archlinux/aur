@@ -23,9 +23,6 @@ post_install() {
 			-u admin \
 			-p admin \
 			-m ffplayout@example.org \
-			--log-path=/var/log/ffplayout \
-			--hls-path=/usr/share/ffplayout/public \
-			--storage-path=/var/lib/ffplayout/tv-media \
 			--shared-storage
 
 		chown -R ${sysUser}: "/usr/share/ffplayout"
