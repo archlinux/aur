@@ -1,25 +1,29 @@
 # Maintainer: Eugene 'Vindex' Stulin <tech.vindex@gmail.com>
+PROJECT=fileformat
+DESCR="A tool for recognizing file formats."
+makedepends=("bash" "chrpath" "findutils" "glib2")
+depends=("glib2")
+pkgver=0.4.1
+pkgrel=0
+license=("BSL-1.0 or GPL-3+")
 
-pkgname=fileformat
-pkgver=0.4.0
-pkgrel=1
-pkgdesc="Tool for recognizing file formats."
-arch=('x86_64')
-url="https://gitlab.com/os-18/$pkgname"
-license=('Boost or GPL3')
-makedepends=('make' 'bash' 'chrpath' 'lsb-release' 'glib2' 'amalthea-ldc2')
-depends=('amalthea-ldc2' 'glib2')
-pkgfile=$pkgname-$pkgver.tar.gz
-source=("$pkgfile::$url/-/archive/v$pkgver/$pkgfile")
-sha256sums=('6140ee5387ed6857124484543ac19acbd8131ecfd94ee69e9ad4557d3d92e20b')
+DC=
+DC_PKG=
+
+pkgname=${PROJECT}
+pkgdesc="${DESCR}"
+arch=("any")
+url="https://gitlab.com/os-18/${PROJECT}"
+TARBALL=$pkgname-$pkgver.tar.gz
+source=("$TARBALL::$url/-/archive/v$pkgver/${PROJECT}-v$pkgver.tar.gz")
+sha256sums=("c6a3dcaca2d20385e560a7ad7764818043be33129ba946359b593d58a2d9521b")
 
 build() {
-    cd "$pkgname-v$pkgver"
-    make || return 1
+    cd "${PROJECT}-v$pkgver"
+    make DC=${DC} || return 1
 }
 
 package() {
-    cd "$pkgname-v$pkgver"
-    make DESTDIR="$pkgdir" PREFIX=usr install || return 1
+    cd "${PROJECT}-v$pkgver"
+    make DESTDIR=$pkgdir install DC=${DC} || return 1
 }
-
