@@ -6,7 +6,7 @@ pkgbase=qt6-base
 pkgname=(qt6-base
          qt6-xcb-private-headers)
 pkgver=6.7.1
-pkgrel=4
+pkgrel=1
 arch=(x86_64)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
