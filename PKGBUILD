@@ -11,22 +11,23 @@ url="https://github.com/honjow/sk-holoiso-config.git"
 license=('MIT')
 makedepends=('git')
 depends=(
-    'amdgpu-test-scripts-common-git'
-    'amd-s2idle-analysis-script-git'
-    'cage'
-    'expect'
-    'efibootmgr'
-    'fpaste'
-    'fzf'
-    'glow'
-    'gum'
-    'just'
-    'libcec'
-    'man-db'
-    'python-systemd'
-    'refind'
-    'wlr-randr'
-    'zram-generator'
+    amdgpu-test-scripts-common-git
+    amd-s2idle-analysis-script-git
+    cage
+    expect
+    efibootmgr
+    fpaste
+    fzf
+    glow
+    gnu-efi
+    gum
+    just
+    libcec
+    man-db
+    python-systemd
+    refind
+    wlr-randr
+    zram-generator
 )
 provides=(sk-chos-addon)
 conflicts=(sk-chos-addon-git)

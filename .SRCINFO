@@ -15,6 +15,7 @@ pkgbase = sk-chos-addon
 	depends = fpaste
 	depends = fzf
 	depends = glow
+	depends = gnu-efi
 	depends = gum
 	depends = just
 	depends = libcec
