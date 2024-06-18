@@ -1,6 +1,6 @@
 pkgbase = argc-git
 	pkgdesc = An elegant command-line argument parser (git)
-	pkgver = 1.18.0.r0.g97ec93b
+	pkgver = 1.19.0.r0.g355a3e1
 	pkgrel = 1
 	url = https://github.com/sigoden/argc
 	arch = x86_64
