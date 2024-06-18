@@ -3,15 +3,15 @@
 # Use `systemctl edit photoprism` instead!
 
 [Unit]
+Description=Photoprism Service
+Documentation=https://docs.photoprism.app
 After=network.target
-Description=Photoprism
+
+[Service]
+User=photoprism
+Restart=on-failure
+RestartSec=10
+ExecStart=/usr/bin/photoprism start
 
 [Install]
 WantedBy=multi-user.target
-
-[Service]
-ExecStart=/usr/bin/photoprism start
-Restart=always
-RestartSec=10
-
-User=photoprism

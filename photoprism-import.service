@@ -7,5 +7,5 @@ After=network.target
 Description=Import to Photoprism
 
 [Service]
-ExecStart=/usr/bin/photoprism import
 User=photoprism
+ExecStart=/usr/bin/photoprism import

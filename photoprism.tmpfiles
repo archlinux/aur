@@ -1,1 +1,5 @@
-Z /var/lib/photoprism 0755 photoprism photoprism -
+d /var/lib/photoprism           0755 photoprism photoprism -
+d /var/lib/photoprism/import    0755 photoprism photoprism -
+d /var/lib/photoprism/originals 0755 photoprism photoprism -
+d /var/lib/photoprism/storage   0755 photoprism photoprism -
+Z /var/lib/photoprism           -    photoprism photoprism -

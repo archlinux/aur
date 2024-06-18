@@ -1,2 +1,1 @@
-#Type Name          ID           GECOS                 Home directory       Shell
-u     photoprism    -            "Photoprism"
+u photoprism - "PhotoPrism" /var/lib/photoprism /usr/bin/nologin
