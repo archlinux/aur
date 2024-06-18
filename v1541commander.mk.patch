@@ -1,0 +1,17 @@
+--- src/bin/v1541commander/v1541commander.mk.orig	2020-02-09 22:24:30.894752928 +0100
++++ src/bin/v1541commander/v1541commander.mk	2020-02-09 22:26:55.341078141 +0100
+@@ -14,8 +14,7 @@
+ v1541commander_posix_CXXFLAGS?= -fPIC
+ v1541commander_INCLUDES= -I$(v1541commander_PPSRCDIR)
+ v1541commander_CXXFLAGS= -fno-exceptions -fno-rtti
+-v1541commander_PKGDEPS:= Qt5Core Qt5Gui	Qt5Widgets Qt5Network \
+-	1541img >= 1.1 1541img < 2
++v1541commander_PKGDEPS:= Qt5Core Qt5Gui	Qt5Widgets Qt5Network
+ v1541commander_ICONSIZES:= 16x16 32x32 48x48 256x256
+ v1541commander_MIMEICONS:= v1541commander-d64 v1541commander-zipcode \
+ 	v1541commander-lynx v1541commander-prg
+@@ -56,4 +55,3 @@
+ 
+ clean::
+ 	rm -fr $(v1541commander_SRCDIR)$(PSEP)qm
+-
