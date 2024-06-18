@@ -1,0 +1,15 @@
+pkgbase = elles-git
+	pkgdesc = A nicer /bin/ls
+	pkgver = 0.1.0.r12.g7a54d93
+	pkgrel = 1
+	url = https://github.com/arp242/elles
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = glibc
+	provides = elles
+	conflicts = elles
+	source = git+https://github.com/arp242/elles.git
+	sha256sums = SKIP
+
+pkgname = elles-git
