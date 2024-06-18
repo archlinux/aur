@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=impala
-pkgver=0.1.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="TUI for managing wifi"
 url="https://github.com/pythops/impala"
@@ -11,7 +11,7 @@ makedepends=('cargo')
 arch=('x86_64')
 license=('GPL-3.0')
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('41b7148755944e306afab6d15b93f03975f2a18aa653468f4f50dcf9f4812670dd3b3271c4327d9b832a3736ed6f48632b9a5ab5898bc9a5de9fe028ba08c083')
+sha512sums=('ebeae179c1080a5293c27d7e901061c2353b6c68dd2908003233699183c956743f1a7eee4fb208c5c8c43386ca24e13dc34b3273f9f54d87591c1148b8e50292')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
