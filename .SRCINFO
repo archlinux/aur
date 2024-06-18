@@ -1,6 +1,6 @@
 pkgbase = clifm
 	pkgdesc = The command line file manager
-	pkgver = 1.18
+	pkgver = 1.19
 	pkgrel = 1
 	url = https://github.com/leo-arch/clifm
 	arch = i686
@@ -25,7 +25,7 @@ pkgbase = clifm
 	optdepends = udevil: (un)mount storage devices
 	optdepends = udisks2: (un)mount storage devices
 	provides = clifm
-	source = clifm-1.18.tar.gz::https://github.com/leo-arch/clifm/archive/v1.18.tar.gz
-	sha256sums = b3293074a62542c0ba54bd246391f9e38e0d48ea80c222bf8112469cb97a550c
+	source = clifm-1.19.tar.gz::https://github.com/leo-arch/clifm/archive/v1.19.tar.gz
+	sha256sums = 98fe9a1d26b02d661440787ae811363c97da537a11fd3df78ff98d40f42dc487
 
 pkgname = clifm
