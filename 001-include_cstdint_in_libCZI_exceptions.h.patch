@@ -1,0 +1,10 @@
+--- a/src/CZIlib/CZI/libCZI_exceptions.h	2024-06-14 22:38:26.000000000 +0200
++++ b/src/CZIlib/CZI/libCZI_exceptions.h	2024-06-18 23:04:02.361552050 +0200
+@@ -24,6 +24,7 @@
+ 
+ #include <exception>
+ #include <stdexcept>
++#include <cstdint>
+ 
+ namespace libCZI
+ {
