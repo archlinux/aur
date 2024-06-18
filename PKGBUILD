@@ -3,7 +3,7 @@
 pkgname=python-pyproject-patcher
 _gitpkgname=pyproject-patcher
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 # shellcheck disable=SC2016  # Not meant to expand
 pkgdesc='Collection of convenience functions to patch `pyproject.toml` in place'
 arch=('any')
@@ -54,7 +54,7 @@ package() {
 
   echo >&2 'Packaging the documentation'
   install -D -m 644 -t "${pkgdir}/usr/share/doc/${pkgname}" \
-    'README.md'
+    'README.md' 'USAGE.md'
 
   echo >&2 'Packaging the license'
   install -D -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" \
