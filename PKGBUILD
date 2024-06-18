@@ -51,13 +51,14 @@ build() {
 }
 
 package() {
-    install -Dm644 "${pkgname}.service"  "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
-    install -Dm644 "${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
-    install -Dm644 "${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
-    install -Dm644 "defaults.yml"        "${pkgdir}/etc/${pkgname}/defaults.yml"
+    install -Dm644 "${pkgname}.service"      "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+    install -Dm644 "${pkgname}.sysusers"     "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+    install -Dm644 "${pkgname}.tmpfiles"     "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+    install -Dm644 "${pkgname}.user.service" "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
+    install -Dm644 "defaults.yml"            "${pkgdir}/etc/${pkgname}/defaults.yml"
 
     cd "${pkgname}-${_pkgver}"
-    install -Dm755 "${pkgname}"          "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm755 "${pkgname}"              "${pkgdir}/usr/bin/${pkgname}"
 
     cd assets
     find {locales,profiles,static,templates} -type f -exec install -Dm644 {} "${pkgdir}/usr/share/${pkgname}/"{} \;
