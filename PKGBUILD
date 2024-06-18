@@ -5,7 +5,7 @@
 
 _pkgname=iniparser
 pkgname=iniparser-git
-pkgver=4.1.r80.rgf00e027
+pkgver=4.2.4
 pkgrel=1
 epoch=1
 pkgdesc='A free stand-alone ini file parsing library written in portable ANSI C'
@@ -13,7 +13,7 @@ arch=('x86_64')
 url="https://github.com/ndevilla/iniparser"
 license=('MIT')
 depends=('glibc')
-makedepends=('git' 'chrpath')
+makedepends=('cmake' 'doxygen' 'git')
 provides=("${_pkgname}" 'libiniparser.so')
 conflicts=("${_pkgname}")
 source=("git+$url.git")
@@ -24,14 +24,11 @@ pkgver() {
 }
 
 build() {
-  make -C $_pkgname
+  cmake -B build -DCMAKE_INSTALL_PREFIX=/usr "$_pkgname"
+  cmake --build build
 }
 
 package() {
-  cd "$_pkgname"
-  install -Dm644 src/{iniparser.h,dictionary.h} -t  "${pkgdir}/usr/include/"
-  install -Dm755 libiniparser.so.1 -t "${pkgdir}/usr/lib"
-  ln -sf "libiniparser.so.1" "${pkgdir}/usr/lib/libiniparser.so"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  chrpath -d "${pkgdir}"/usr/lib/libiniparser.so
+  DESTDIR="$pkgdir" cmake --install build
+  install -Dm644 "$_pkgname/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
