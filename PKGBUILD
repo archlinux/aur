@@ -1,6 +1,6 @@
 # Maintainer: Antonio Voza <vozaanthony {at} gmail {dot} com>
 pkgname=nerd-fonts-noto-sans-mono-extended
-pkgver=3.1.0
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="Noto Sans Mono including Condensed variants. Sourced directly from Google, patched with the Nerd Fonts Patcher"
 arch=('any')
@@ -9,18 +9,17 @@ license=('custom')
 makedepends=('git' 'python' 'fontforge' 'subversion' 'parallel')
 conflicts=('nerd-fonts-noto' 'nerd-fonts-noto-sans-mono')
 provides=('nerd-fonts-noto-sans-mono-extended')
-source=("svn+https://github.com/googlefonts/noto-fonts/trunk/hinted/ttf/NotoSansMono"
-        "font-patcher-$pkgver::https://github.com/ryanoasis/nerd-fonts/releases/download/v$pkgver/FontPatcher.zip" "svn+https://github.com/ryanoasis/nerd-fonts/tags/v$pkgver/src/glyphs")
-sha256sums=('SKIP'
-            '73cbf6cd548a69d64a5db5910a22b7eddfdee8ae1ae187616ae748e4c7f16ea4'
-            'SKIP')
+source=("https://github.com/notofonts/latin-greek-cyrillic/releases/download/NotoSansMono-v2.014/NotoSansMono-v2.014.zip"
+        "font-patcher-$pkgver::https://github.com/ryanoasis/nerd-fonts/releases/download/v$pkgver/FontPatcher.zip")
+sha512sums=('a7bda86990d13cfffbb8bd3edadb19348a1db20349af3cbaedf478e4cb8e30f486c24f40d8f9e3b690267295e882909420bae3c34edc8cb2e693f61f55e74f4d'
+            '1def6b9fd7802fba21fb7c56757272facc967fffa7391ccbd21113d457185bf1005769b611ba419797f262a5ec89ae3b9c266f858a68221a1ed73e52fc0b98fc')
 
 build() {
   # patch fonts
   mkdir -p "$srcdir/patched"
   printf "%b" "\e[1;33m==> WARNING: \e[0mNow patching all fonts. This will take very long...\n"
   # patch fonts quiet with complete single-width glyphs
-  parallel -j$(nproc) python font-patcher --glyphdir "$srcdir/glyphs/" -q -c -s {} -out "$srcdir/patched" ::: "$srcdir/NotoSansMono"/*.ttf
+  parallel -j$(nproc) python font-patcher --glyphdir "$srcdir/src/glyphs/" -q -c -s {} -out "$srcdir/patched" ::: "$srcdir/NotoSansMono/hinted/ttf"/*.ttf
 }
 
 package() {
