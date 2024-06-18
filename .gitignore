@@ -1,1 +1,5 @@
-*
+*.zst
+*.gz
+pkg/
+src/
+fin-git/

@@ -1,13 +1,19 @@
 pkgbase = fin-git
-	pkgdesc = Zero-configuration, concurrent plugin manager for the fish shell in one file
-	pkgver = r10.8486731
+	pkgdesc = A minimal but good-looking login manager for Linux/Unix
+	pkgver = r112.23e4e32
 	pkgrel = 1
-	url = https://github.com/fisherman/fin
-	arch = any
-	license = MIT
+	url = https://github.com/FyshOS/fin
+	arch = x86_64
+	arch = armv7h
+	license = BSD-3-Clause
 	makedepends = git
-	source = git+https://github.com/fisherman/fin.git
-	md5sums = SKIP
+	makedepends = go
+	depends = libx11
+	provides = fin
+	conflicts = fin
+	source = fin-git::git+https://github.com/FyshOS/fin.git#branch=main
+	source = display_manager
+	sha256sums = SKIP
+	sha256sums = ee917d55042f78b8bb03f5467e5233e3e2ddc2fe01e302bc53b218003fe22275
 
 pkgname = fin-git
-
