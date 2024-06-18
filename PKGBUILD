@@ -3,7 +3,7 @@
 # Contributor: Reto Brunner <brunnre8@gmail.com>
 
 pkgname=mkosi-git
-pkgver=22.r57.g80debc1e64
+pkgver=23.1.r11.g6972f9efba
 pkgrel=1
 pkgdesc='Build Legacy-Free OS Images'
 arch=('any')
@@ -12,6 +12,7 @@ license=('LGPL2.1')
 depends=(
     'bubblewrap'
     'python'
+    'util-linux'
 )
 makedepends=(
     'git'
@@ -23,27 +24,38 @@ makedepends=(
     'python-wheel'
 )
 optdepends=(
+    'acl: manage ACLs'
     'apt: build Debian or Ubuntu images'
     'arch-install-scripts: build Arch images'
+    'archlinux-keyring: build Arch images'
     'btrfs-progs: raw_btrfs and subvolume output formats'
+    'ca-certificates: mount common CA certificates into images'
+    'curl: build openSUSE images'
     'cpio: cpio output format'
     'cryptsetup: add dm-verity partitions'
     'debian-archive-keyring: build Debian images'
     'dnf: build Fedora or Mageia images'
     'dosfstools: build bootable images'
+    'dpkg: build Debian images'
     'e2fsprogs: raw_ext4 output format'
     'edk2-ovmf: run bootable images in QEMU'
     'gnupg: sign images'
-    # I don’t understand whether ovmf or edk2-ovmf is needed… let’s point to both for now
-    'ovmf: run bootable images in QEMU'
-    'pxz: compress images with xz more efficiently'
+    'grub: install GRUB in images'
+    'kmod: manage kernel module dependencies'
+    'pacman: build Arch images'
+    'pesign: sign EFI binaries for UEFI SecureBoot'
     'python-cryptography: sign verity data'
-    'qemu: run bootable images in QEMU'
+    'qemu-base: run bootable images in QEMU'
+    'reprepro: manage APT repositories'
     'sbsigntools: sign EFI binaries for UEFI SecureBoot'
+    'socat: proxy to QEMU VMs'
     'squashfs-tools: raw_squashfs output format'
+    'swtpm: emulate TPM in QEMU'
     'systemd-ukify: build bootable images'
     'tar: tar output format'
     'ubuntu-keyring: build Ubuntu images'
+    'virt-firmware: manage virtualized firmware in QEMU'
+    'virtiofsd: boot directory trees in QEMU'
     'xfsprogs: raw_xfs output format'
     'xz: compress images with xz'
     'zstd: compress images with zstd'
