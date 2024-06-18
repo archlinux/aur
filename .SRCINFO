@@ -1,5 +1,5 @@
 pkgbase = dconf2nix
-	pkgdesc = Convert Dconf files (e.g. Gnome Shell) to Nix, as expected by Home Manager
+	pkgdesc = Convert dconf files (e.g. GNOME Shell) to Nix, as expected by Home Manager
 	pkgver = 0.1.1
 	pkgrel = 4
 	url = https://github.com/gvolpe/dconf2nix
