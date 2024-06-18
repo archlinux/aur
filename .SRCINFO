@@ -1,7 +1,7 @@
 pkgbase = python-click-params
 	pkgdesc = A bunch of useful click parameter types
-	pkgver = 0.4.1
-	pkgrel = 2
+	pkgver = 0.5.0
+	pkgrel = 1
 	url = https://click-params.readthedocs.io/en/stable
 	arch = any
 	license = Apache
@@ -16,9 +16,7 @@ pkgbase = python-click-params
 	depends = python-click>=7.0
 	depends = python-click<9.0
 	depends = python-validators
-	source = click_params.tar.gz::https://github.com/click-contrib/click_params/archive/7bed8d7405bafa542e3c9be58c308f04408f1c99.tar.gz
-	source = build.patch
-	sha256sums = 25848b84c9b4408cad5ac2a91a256f57b6bf6130bef66a289dc21d11f33a76cb
-	sha256sums = 88d3ec9f7d3b1e22088ad8dd3e57f57aa5772e4a17177903e58195868fe44c72
+	source = click_params.tar.gz::https://github.com/click-contrib/click_params/archive/refs/tags/0.5.0.tar.gz
+	sha256sums = 72cde26bf956fbed43ccfced780a7f10d62f940c17297fa777f9e4a122cb7627
 
 pkgname = python-click-params
