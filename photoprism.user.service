@@ -8,6 +8,7 @@ Restart=on-failure
 RestartSec=10
 Environment=PHOTOPRISM_DEFAULTS_YAML=%E/photoprism/defaults.yml
 Environment=PHOTOPRISM_CONFIG_PATH=%E/photoprism
+Environment=PHOTOPRISM_ASSETS_PATH=/usr/share/photoprism
 ExecStartPre=/usr/bin/mkdir -p %E/photoprism ; /usr/bin/touch %E/photoprism/defaults.yml
 ExecStart=/usr/bin/photoprism start
 
