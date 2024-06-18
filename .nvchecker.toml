@@ -1,0 +1,5 @@
+[firefox-extension-hohser]
+source = "github"
+github = "pistom/hohser"
+prefix = "v."
+use_latest_release = true
