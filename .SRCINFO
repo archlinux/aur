@@ -1,6 +1,6 @@
 pkgbase = argc
 	pkgdesc = An elegant command-line argument parser
-	pkgver = 1.18.0
+	pkgver = 1.19.0
 	pkgrel = 1
 	url = https://github.com/sigoden/argc
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = argc
 	license = Apache-2.0
 	makedepends = cargo
 	depends = gcc-libs
-	source = argc-1.18.0.tar.gz::https://github.com/sigoden/argc/archive/v1.18.0.tar.gz
-	sha512sums = e70306fb991fc58ea8c2c7483b04103464588249061626b2422ac6a1a685494f9c63f4a4f4e03541b8ab920616fd1921751374d17b4b2f034e2a570ed9e429dd
+	source = argc-1.19.0.tar.gz::https://github.com/sigoden/argc/archive/v1.19.0.tar.gz
+	sha512sums = 30523a8d0dfcbbae0abb026d5d2353230f443954f0db2065fb4fe059e395b254d2562ad19662cef85552c0919bc37f1b76ca91fabd71215bdefcf7b3325ee06b
 
 pkgname = argc
