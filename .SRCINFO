@@ -1,0 +1,11 @@
+pkgbase = photoprism-facenet
+	pkgdesc = PhotoPrism's facenet pre-training model
+	pkgver = 20210716.180236
+	pkgrel = 1
+	url = https://github.com/photoprism/photoprism
+	arch = any
+	license = AGPL-3.0-or-later
+	source = https://dl.photoprism.org/tensorflow/facenet.zip
+	sha256sums = bf9ae0945d2ac53ac3db27082162d2b9dda5ba2c564c0e4c4f539f31f8b670af
+
+pkgname = photoprism-facenet
