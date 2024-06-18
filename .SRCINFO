@@ -1,6 +1,6 @@
 pkgbase = retrovirtualmachine
 	pkgdesc = Emulator for ZX Spectrum (including Pentagon and TK models), Amstrad CPC (including Plus models), MSX-1, Colecovision SEGA SG-1000 and Sega Master System machines
-	pkgver = 2.1.14
+	pkgver = 2.1.15
 	pkgrel = 1
 	url = https://www.retrovirtualmachine.org
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = retrovirtualmachine
 	depends = libxi
 	depends = hicolor-icon-theme
 	depends = libglvnd
-	source = retrovirtualmachine-2.1.14.deb::https://static.retrovm.org/release/2.1.14/RetroVirtualMachine.2.1.14.Linux.x64.deb
-	sha256sums = 4d3833df1ef592f1d62d98f085599bf8faa864779c71188b173b7b16bd539814
+	source = retrovirtualmachine-2.1.15.deb::https://static.retrovm.org/release/2.1.15/RetroVirtualMachine.2.1.15.Linux.x64.deb
+	sha256sums = 869b4f096b320f5288850ab2c052eb6215e33268f2815e3889227546e6ca84db
 
 pkgname = retrovirtualmachine

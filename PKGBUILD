@@ -2,7 +2,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=retrovirtualmachine
-pkgver=2.1.14
+pkgver=2.1.15
 pkgrel=1
 pkgdesc="Emulator for ZX Spectrum (including Pentagon and TK models), Amstrad CPC (including Plus models), MSX-1, Colecovision SEGA SG-1000 and Sega Master System machines"
 url="https://www.retrovirtualmachine.org"
@@ -14,7 +14,7 @@ depends=('libxinerama'
          'libglvnd')
 makedepends=('tar')
 source=("${pkgname}-${pkgver}.deb::https://static.retrovm.org/release/$pkgver/RetroVirtualMachine.${pkgver}.Linux.x64.deb")
-sha256sums=('4d3833df1ef592f1d62d98f085599bf8faa864779c71188b173b7b16bd539814')
+sha256sums=('869b4f096b320f5288850ab2c052eb6215e33268f2815e3889227546e6ca84db')
 
 package() {
   tar xvf data.tar.xz -C "${pkgdir}/"
