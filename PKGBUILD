@@ -25,6 +25,9 @@ build() {
 package() {
   cd "$srcdir/ProFileX-v.${pkgver}"
 
+  # Ensure the build directory exists
+  mkdir -p build
+
   # Install the executable to the package directory
   install -Dm755 build/proFileX "$pkgdir/usr/bin/proFileX"
 
