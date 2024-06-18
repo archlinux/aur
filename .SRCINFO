@@ -1,6 +1,6 @@
 pkgbase = kvantum-theme-catppuccin-git
 	pkgdesc = Soothing pastel theme for Kvantum
-	pkgver = r5.04be2ad
+	pkgver = r8.c853816
 	pkgrel = 1
 	url = https://github.com/catppuccin/Kvantum
 	arch = any

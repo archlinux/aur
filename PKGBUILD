@@ -5,7 +5,7 @@
 
 _pkgname=Kvantum
 pkgname=kvantum-theme-catppuccin-git
-pkgver=r5.04be2ad
+pkgver=r8.c853816
 pkgrel=1
 pkgdesc="Soothing pastel theme for Kvantum"
 arch=('any')
@@ -23,7 +23,7 @@ pkgver() {
 }
 
 package() {
-  cd "$_pkgname/src" || exit 1
+  cd "$_pkgname/themes" || exit 1
   install -dm755 "$pkgdir/usr/share/Kvantum"
-  cp -r Catppuccin-* "$pkgdir/usr/share/Kvantum"
+  cp -r catppuccin-* "$pkgdir/usr/share/Kvantum"
 }
