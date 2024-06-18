@@ -1,6 +1,6 @@
 pkgbase = samarium
 	pkgdesc = A dynamic, interpreted language that is transpiled to Python
-	pkgver = 0.5.3
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/samarium-lang/Samarium
 	arch = any
@@ -8,10 +8,11 @@ pkgbase = samarium
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-poetry-core
+	makedepends = git
 	depends = python>=3.9
-	depends = python-dahlia
-	depends = python-crossandra
-	source = samarium-0.5.3.tar.gz::https://files.pythonhosted.org/packages/source/s/samarium/samarium-0.5.3.tar.gz
-	sha512sums = 63f93d140392e9ff31fbe1fe3ad296a712db4bad7120b1f39c775fd1de68d0ec3b59d427146bd1c1a3532cd89362353e48548e3116e36e6c05a000061583295f
+	depends = python-dahlia>=3.0.0
+	depends = python-crossandra>=2.2.1
+	source = samarium-0.6.1.tar.gz::https://files.pythonhosted.org/packages/source/s/samarium/samarium-0.6.1.tar.gz
+	sha512sums = c1b3e40f162ac0e70316a3a0b7cfe588756e36098a0a851b7ceb29d5cf3fe2ce8e447804d398390655a7866b5b7741a468fa005a26f6ab355fd3f3059bda7b06
 
 pkgname = samarium
