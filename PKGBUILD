@@ -1,8 +1,8 @@
-# Contributor: Anonymous
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: CpanBot <cpanbot at sch bme hu>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-object-destroyer'
-pkgver='2.01'
+pkgver='2.02'
 pkgrel='1'
 pkgdesc="Make objects with circular references DESTROY normally"
 arch=('any')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('perl>=5.006')
 makedepends=()
 url='https://metacpan.org/release/Object-Destroyer'
-source=('https://search.cpan.org/CPAN/authors/id/A/AD/ADAMK/Object-Destroyer-2.01.tar.gz')
-md5sums=('092ab6314bc5dc366ba2437a9739e194')
-sha512sums=('ee507d8e2e7d0661c6e1a0842f95495a36d79087083d7aa870233b854face37914c796bbe009782cf08e98696ea6a4da0f55b7e4007a2463b42f16329e3a26c3')
-_distdir="Object-Destroyer-2.01"
+source=('http://search.cpan.org/CPAN/authors/id/S/SI/SIMBABQUE/Object-Destroyer-2.02.tar.gz')
+md5sums=('aad9be3ed0f1a14a7a6f07a934459378')
+sha512sums=('22fb0de192414182d13f20f3d331bf1f69258a6cdda42e84d929a29862b5c3bbd73ddbf45c2ed55ae064618a28c0e101bc8267ea8553720000aebdc865eaf108')
+_distdir="Object-Destroyer-2.02"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
