@@ -13,6 +13,9 @@ LAST=$(jq -r <<<$RELEASES '
     | select(contains("beta") == false)
     | select(contains("rc") == false)
     | select(contains("a") == false)
+    | select(contains("b") == false)
+    | select(contains("c") == false)
+    | select(contains("d") == false)
     | [split(".")[] | tonumber] ]
   | sort[-1]
   | join(".")
