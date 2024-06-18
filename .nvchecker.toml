@@ -1,0 +1,5 @@
+[firefox-extension-accept-language-per-site]
+source = "github"
+github = "sorz/accept-language-per-site"
+prefix = "v"
+use_latest_release = true
