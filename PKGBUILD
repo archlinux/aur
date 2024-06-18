@@ -1,7 +1,7 @@
 # Maintainer: Yongchun Jiang <JSpringYC@gmail.com>
 
 pkgname=1panel-stable-bin
-pkgver=v1.10.2_lts
+pkgver=v1.10.10_lts
 pkgrel=1
 pkgdesc="1Panel is a modern and open source Linux panel."
 arch=("x86_64" "aarch64")
