@@ -1,0 +1,16 @@
+pkgbase = defyne-git
+	pkgdesc = Work-in-progress Fyne IDE
+	pkgver = r218.3973335
+	pkgrel = 1
+	url = https://github.com/fyne-io/defyne
+	arch = x86_64
+	arch = armv7h
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = go
+	provides = defyne
+	conflicts = defyne
+	source = defyne-git::git+https://github.com/fyne-io/defyne#branch=main
+	sha256sums = SKIP
+
+pkgname = defyne-git
