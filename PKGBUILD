@@ -1,27 +1,28 @@
 # Maintainer: Konstantin Shalygin <k0ste@k0ste.ru>
 # Contributor: Konstantin Shalygin <k0ste@k0ste.ru>
 
-pkgname='libyang'
-pkgver='2.2.8'
+pkgname='libyang2'
+pkgver='2.1.148'
 pkgrel='1'
 pkgdesc='A YANG data modelling language parser and toolkit written (and providing API) in C'
-url="https://github.com/CESNET/${pkgname}"
+provides=('libyang')
+url="https://github.com/CESNET/libyang"
 arch=('x86_64' 'aarch64' 'armv7h')
 license=('BSD')
 depends=('pcre2')
 makedepends=('cmake' 'doxygen' 'graphviz')
 checkdepends=('cmocka')
-conflicts=('libyang-git' 'libyang-devel-git')
-source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('301e134acbaa1f3eb1e5db0a996ce4bc9ff32de61c98f5fe3192e6cc84429dd3')
+conflicts=('libyang-git' 'libyang-devel-git' 'libyang')
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('77a0aaaeb3df720aeb70d6896e32e2c2be099d48df73e3cfb52567051af3e44b')
 
 prepare() {
-  cd "${pkgname}-${pkgver}"
+  cd "libyang-${pkgver}"
   mkdir build
 }
 
 build() {
-  cd "${pkgname}-${pkgver}/build"
+  cd "libyang-${pkgver}/build"
   cmake .. \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
@@ -31,12 +32,12 @@ build() {
 }
 
 check() {
-  cd "${pkgname}-${pkgver}/build"
+  cd "libyang-${pkgver}/build"
   ctest
 }
 
 package() {
-  cd "${pkgname}-${pkgver}/build"
+  cd "libyang-${pkgver}/build"
   make DESTDIR="${pkgdir}" install
-  install -Dm644 "../LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 "../LICENSE" -t "${pkgdir}/usr/share/licenses/libyang"
 }
