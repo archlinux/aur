@@ -62,7 +62,7 @@ post_upgrade() {
 pre_remove() {
 
 	if [ -d /run/systemd/system ]; then
-		for service in $(systemctl list-units --type service --all --no-legend | grep 'ffplayout' | awk '{print $1}'); do
+		for service in $(systemctl list-units --type service --all --no-legend --plain | grep 'ffplayout' | awk '{print $1}'); do
 			systemctl stop "$service" >/dev/null || true
 		done
 	fi

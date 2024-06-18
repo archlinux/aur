@@ -1,5 +1,5 @@
 pkgname=ffplayout-unstable-git
-pkgver=r2108.88d187a
+pkgver=r2120.9f42270
 pkgrel=1
 pkgdesc="24/7 playout based on rust and ffmpeg"
 arch=('x86_64')
@@ -23,12 +23,11 @@ replaces=('ffplayout' 'ffplayout-git')
 install='ffplayout.install'
 
 source=(
-  #"${pkgname}::git+https://github.com/jb-alvarado/ffplayout.git"
-  "${pkgname}::git+https://github.com/jb-alvarado/ffplayout.git#branch=single-app"
+  "${pkgname}::git+https://github.com/jb-alvarado/ffplayout.git"
   'ffplayout.install'
 )
 sha256sums=('SKIP'
-            '16316fba52e8d67f8737688ffbda4d39a847c5e4596d7ef12f92719d3340a7c5')
+            '50f9f274738df674d56e0690e513d637d09155df32fe80e398047d6af2e762cc')
 
 pkgver() {
   cd ${pkgname}
@@ -47,14 +46,10 @@ prepare() {
   export RUSTUP_TOOLCHAIN=stable
   rustup target add x86_64-unknown-linux-musl
 
-  git clone "https://github.com/ffplayout/ffplayout-frontend.git" "frontend"
+  git submodule update --init
+  git submodule update --remote --merge
 
-  cd frontend
-
-  git checkout "e8532ba8d095ae83886df39ba53e9595b124f9c0"
-
-  # git submodule update --init
-  # git submodule update --remote --merge
+  cd ffplayout-frontend
   npm install
 }
 
