@@ -2,7 +2,7 @@
 
 pkgname=python-facedancer
 _gitpkgname=facedancer
-pkgver=2.9.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc='Implement your own USB device in Python using Cynthion or GreatFET hardware'
 arch=('any')
@@ -22,6 +22,7 @@ makedepends=(
   'python-setuptools'
   'python-sphinx'
   'python-sphinx_rtd_theme'
+  'python-sphinxcontrib-apidoc'
   'python-wheel'
 )
 optdepends=(
@@ -33,22 +34,14 @@ optdepends=(
 
 source=(
   "${_gitpkgname}-${pkgver}.tar.gz::https://github.com/greatscottgadgets/facedancer/archive/${pkgver}.tar.gz"
-  'github-pr-78-86d6016.patch'
 )
 
 sha512sums=(
-  '10002558fac6f8e2187e2d8dca584adf52643eccf74ab9ba354c6dc420d764e52fe32c8694849f81a49d01d461f5cd0d55572a62c0cc992c9a51ef5601dc2942'
-  'b6aa0083fcfd086de69a1cf59bce9470bb437c2103cd0972ed800fbcfcbc5a4d909b1ea5c1d342d2c28cde91ec82c62146c0f9946c070ca4b8674f5526996e11'
+  '9ae5efdb430ea743be4f1dedb0db2aec93b540ccef852a8b2d893a13d30a18ece11f3aab9af5acf8034fd0e678d586a04146f34c658c3529f714ed3574f77035'
 )
 
 prepare() {
   cd "${_gitpkgname}-${pkgver}"
-
-  echo >&2 'Adding documentation'
-  # See also: https://github.com/greatscottgadgets/facedancer/pull/86
-  # Remove this patch once a stable release of v3.0.0 or newer
-  # has been tagged on GitHub
-  patch -p1 < '../github-pr-78-86d6016.patch'
 
   echo >&2 'Pinning version number'
   export pkgver
@@ -66,7 +59,10 @@ build() {
   python -m build --wheel --no-isolation
 
   echo >&2 'Generating documentation'
-  make -C docs singlehtml
+  _site_packages="$(python -c 'import site; print(site.getsitepackages()[0])')"
+  python -m installer --destdir=tmp_install dist/*.whl
+  PYTHONPATH="${PWD}/tmp_install/${_site_packages}" \
+    make -C docs singlehtml
 }
 
 package() {
@@ -81,10 +77,10 @@ package() {
   cp -R --preserve=mode -t "${pkgdir}/usr/share/doc/${pkgname}" \
     docs/build/singlehtml/{index.html,_static}
 
-  echo >&2 'Packaging applets and examples'
+  echo >&2 'Packaging examples'
   mkdir -p "${pkgdir}/usr/share/${pkgname}"
   cp -R --preserve=mode -t "${pkgdir}/usr/share/${pkgname}" \
-    examples legacy-applets
+    examples
 
   echo >&2 'Packaging the license'
   install -D -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" \
