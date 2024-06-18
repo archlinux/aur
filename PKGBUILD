@@ -1,15 +1,15 @@
 # Maintainer: Nanaka Hiira <hiira plus archlinux at hiira dot dev>
 pkgname=fcitx5-hazkey
-pkgver=0.0.2
-pkgrel=2
+pkgver=0.0.3
+pkgrel=1
 pkgdesc="Japanese input method for fcitx5, powered by azooKey engine"
 arch=('x86_64' 'aarch64')
 url="https://github.com/7ka-Hiira/fcitx5-hazkey"
 license=('MIT')
-depends=('fcitx5>=5.0.4' 'swift-language')
-makedepends=('cmake')
-source=("https://github.com/7ka-Hiira/fcitx5-hazkey/archive/refs/tags/0.0.2.tar.gz")
-sha256sums=('e1c47548f99fce3f9a7294f5735b369bcd279b7c19e9119bcead0b940aed500d')
+depends=('fcitx5>=5.0.4')
+makedepends=('cmake' 'swift-language')
+source=("https://github.com/7ka-Hiira/fcitx5-hazkey/archive/refs/tags/0.0.3.tar.gz")
+sha256sums=('469153cbd9a4d4d2d2a14d345a562363507870a398c8bfd00edf5ee10d5cc5d3')
 
 build() {
 	cd "$pkgname-$pkgver"
