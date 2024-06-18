@@ -2,7 +2,7 @@
 # Contributor: Philippe.seraphin <philippe(dot)seraphin(at)infomaniak(dot)com>
 _pkgname=auxilium
 pkgname=$_pkgname-git
-pkgver=0.0.25
+pkgver=0.0.26
 pkgrel=1
 pkgdesc="Tool for parse args in many shell (bash, ksh,zsh)"
 arch=(any)
@@ -17,7 +17,7 @@ conflicts=("$_pkgname")
 replaces=()
 backup=()
 install=
-source=("${_pkgname}::git+https://salsa.debian.org/openstack-team/third-party/${_pkgname}.git#commit=d733fdc01b13a1bc9c311dbd3fc0e7d0d2490aa3")
+source=("${_pkgname}::git+https://salsa.debian.org/openstack-team/third-party/${_pkgname}.git#commit=1fd91ee14b2b1536237c3bb0951bdcf92c09bcb1")
 md5sums=('SKIP')
 
 build()
