@@ -1,5 +1,5 @@
 pkgbase = nym-vpnd-bin
-	pkgdesc = NymVPN daemon
+	pkgdesc = NymVPN daemon as a systemd service
 	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/nymtech/nym-vpn-client
