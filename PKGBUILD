@@ -4,7 +4,7 @@
 pkgname=photoprism
 pkgver=240531.60b3a4628
 _pkgver=$(echo "$pkgver" | sed 's|\.|-|')
-pkgrel=2
+pkgrel=3
 pkgdesc="AI-Powered Photos App for the Decentralized Web"
 arch=('x86_64' 'arm' 'aarch64')
 url="https://github.com/${pkgname}/${pkgname}"
@@ -27,7 +27,7 @@ source=("${pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.g
 sha256sums=('e5c0e2dcc9c1bb1773776281a328540093386d577946aeee5e21d1e099758864'
             '5a7e0f788b1df05f13abb167385063a60c9c5b21486d24c12d6676ac580623bd'
             '0aa3f0b94865d2b28d9ecc9e3da14f45525b476b7bdf49f2b2139978908b1c48'
-            '4b8c263a4970b6b42eefc48191a3608eefb94640916d3fe12381267306ea77ec'
+            '9121b27be5728b3eb34dc694ddbecc6d291a4a6906db978552927b4f8f83019d'
             '183071393262906f6416e27c14d2519fe537614e62866c2a93270b47355d97ae')
 
 build() {
