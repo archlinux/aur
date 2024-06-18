@@ -20,15 +20,11 @@ optdepends=("darktable: for RAW to JPEG conversion"
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("${pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.gz"
-        "${pkgname}-import.service"
-        "${pkgname}-import.timer"
         "${pkgname}.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles"
         "defaults.yml")
 sha256sums=('e5c0e2dcc9c1bb1773776281a328540093386d577946aeee5e21d1e099758864'
-            '8fd8b7f3c8aa45f599d55305fefcf44dcc5b37616ce96280826f4ddab6036c99'
-            'ca4bfbddf0a550f215f28e31de56eb9ac60777f65aa7b89433155aa7998388e8'
             '5a7e0f788b1df05f13abb167385063a60c9c5b21486d24c12d6676ac580623bd'
             '0aa3f0b94865d2b28d9ecc9e3da14f45525b476b7bdf49f2b2139978908b1c48'
             '4b8c263a4970b6b42eefc48191a3608eefb94640916d3fe12381267306ea77ec'
@@ -53,7 +49,7 @@ build() {
 }
 
 package() {
-    install -Dm644 *.{service,timer}  -t "${pkgdir}/usr/lib/systemd/system"
+    install -Dm644 "${pkgname}.service"  "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
     install -Dm644 "${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
     install -Dm644 "${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
     install -Dm644 "defaults.yml"        "${pkgdir}/etc/${pkgname}/defaults.yml"
