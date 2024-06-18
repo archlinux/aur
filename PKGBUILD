@@ -1,7 +1,7 @@
 # Maintainer: Ben DeCamp <ben_decamp@outlook.com>
 pkgname=asmx
-pkgver=2.0b5
-pkgrel=1.1
+pkgver=2.0.0
+pkgrel=1
 epoch=
 pkgdesc="Multi-CPU Assembler"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -9,7 +9,7 @@ url="http://xi6.com/projects/asmx/"
 license=()
 groups=()
 depends=()
-makedepends=('patch')
+makedepends=()
 checkdepends=()
 optdepends=()
 provides=()
@@ -19,17 +19,11 @@ backup=()
 options=()
 install=
 changelog=
-source=("http://xi6.com/files/asmx-$pkgver.zip"
-        "Makefile.patch"
-        "asmx.c.patch")
+source=("http://xi6.com/files/asmx-$pkgver.zip")
 noextract=()
-md5sums=('9e9125592d12bfae1b0b8015f32dcc5b'
-         '5d28a84fca8c75a77d8bb7009d226cf2'
-         '2a3d3b43c1784eb6a2dae7335725ea6b')
+md5sums=('1ae9e1d7b6ff14a5ce564682e2b58d9f')
 
 prepare() {
-	patch $srcdir/src/Makefile Makefile.patch
-	patch $srcdir/src/asmx.c asmx.c.patch
 }
 
 package() {
