@@ -1,13 +1,14 @@
 # Maintainer: Eldred Habert <me@eldred.fr>
 pkgname=python-click-params
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A bunch of useful click parameter types"
 arch=('any')
 url="https://click-params.readthedocs.io/en/stable"
 license=(Apache)
 groups=()
-depends=(python 'python-click>=7.0' 'python-click<9.0' python-validators)
+# Normally validators 0.22 is required, but Arch only provides 0.20.2 (flagged a few months ago)
+depends=('python>=3.8' 'python-click>=7.0' 'python-click<9.0' 'python-validators>=0.20' 'python-validators<0.23' 'python-deprecated>=1.2.14' 'python-deprecated<2')
 makedepends=(python-build python-installer python-wheel 'python-poetry-core>=1.0.0' python-poetry-plugin-export 'python-platformdirs<5.0' 'python-platformdirs>=3.9.1')
 optdepends=()
 source=("click_params.tar.gz::https://github.com/click-contrib/click_params/archive/refs/tags/$pkgver.tar.gz")
