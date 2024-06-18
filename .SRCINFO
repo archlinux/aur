@@ -12,6 +12,7 @@ pkgbase = nym-vpnd-bin
 	depends = libmnl
 	provides = nym-vpnd
 	conflicts = nym-vpnd
+	options = !debug
 	source = https://github.com/nymtech/nym-vpn-client/releases/download/nym-vpn-core-v0.1.6/nym-vpn-core-v0.1.6_linux_x86_64.tar.gz
 	source = nym-vpnd.service
 	sha256sums = 81e5ef209f625700b3b87a6406d4e61a9b02c6d9cd846fccb82aff81dc2b7347
