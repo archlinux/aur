@@ -134,7 +134,7 @@ function helmrelease() {
         ;;
       *)
         if [[ -f "$1" ]]; then
-          if [[ -v yaml ]]; then
+          if [[ -n "$yaml" ]]; then
             sourceParameter="$1"
           else
             yaml=$(cat "$1")
