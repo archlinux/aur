@@ -25,14 +25,21 @@ build() {
 package() {
   cd "$srcdir/ProFileX-v.${pkgver}"
 
-  # Ensure the build directory exists
+  # Ensure the build directory exists and change into it
   mkdir -p build
+  cd build || exit 1
+
+  # Run qmake to generate Makefile based on proFileX.pro
+  qmake ../proFileX.pro
+
+  # Compile the project using make
+  make
 
   # Install the executable to the package directory
-  install -Dm755 build/proFileX "$pkgdir/usr/bin/proFileX"
+  install -Dm755 proFileX "$pkgdir/usr/bin/proFileX"
 
   # Install license and README
-  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 "$srcdir/ProFileX-v.${pkgver}/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 
   # Create desktop entry
   cat <<EOF > "$pkgdir/usr/share/applications/proFileX.desktop"
