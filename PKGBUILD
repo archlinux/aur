@@ -1,18 +1,18 @@
 # Maintainer: Eugene 'Vindex' Stulin <tech.vindex@gmail.com>
 PROJECT=fileformat
 DESCR="A tool for recognizing file formats."
-makedepends=("bash" "chrpath" "findutils" "glib2")
+makedepends=("bash" "chrpath" "findutils" "glib2" "ldc")
 depends=("glib2")
 pkgver=0.4.1
 pkgrel=0
 license=("BSL-1.0 or GPL-3+")
 
-DC=
-DC_PKG=
+DC=ldc2
+DC_PKG=ldc
 
 pkgname=${PROJECT}
 pkgdesc="${DESCR}"
-arch=("any")
+arch=("x86_64")
 url="https://gitlab.com/os-18/${PROJECT}"
 TARBALL=$pkgname-$pkgver.tar.gz
 source=("$TARBALL::$url/-/archive/v$pkgver/${PROJECT}-v$pkgver.tar.gz")
