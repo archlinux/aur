@@ -34,5 +34,6 @@ pkgname = pat-aur-host-git
 	depends = ninja-jobserver
 	optdepends = seccomp-filtered-run: seccomp filters.
 	optdepends = sshfs: remote connection.
+	optdepends = systemd: cgroups support.
 	provides = pat-aur-host
 	conflicts = pat-aur-host

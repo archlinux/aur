@@ -39,6 +39,7 @@ package_pat-aur-host-git() {
 	optdepends+=(
 		'seccomp-filtered-run: seccomp filters.'
 		'sshfs: remote connection.'
+		'systemd: cgroups support.'
 	)
 	provides=(${_pkgname}-host)
 	conflicts=(${_pkgname}-host)
