@@ -2,7 +2,7 @@
 
 _pkgname=returns
 pkgname="python-$_pkgname"
-pkgver=0.22.0
+pkgver=0.23.0
 pkgrel=1
 pkgdesc="Make your functions return something meaningful, typed, and safe"
 arch=('any')
@@ -19,8 +19,8 @@ optdepends=(
   'mypy: For mypy compatibility'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dry-python/returns/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('c39a2b9510b676499134f0010f9af5e83ac15678456779d06fe9a2fe3b3ed94c')
-b2sums=('b34e84a5ef59b6f8b1577b7de1116ebd255faef10511d471c35c9ab3b0bc6740f6a66c781482a5d982ce61c91ad8ea2330e4bdafa95ace51e817b67704a1bf2a')
+sha256sums=('985d75574ae187d31de5f100a635ada4da19ae258a22f91eb17d7ee9dce19cd0')
+b2sums=('206530e91d07af54958aec28f83765af589dfdccc731676c6eb8cde47013952e9fe44d55bff12943ad9c7e96996df436f2b52063d59d92f7a739dcb37f4078b0')
 
 build() {
   cd "$_pkgname-$pkgver"
