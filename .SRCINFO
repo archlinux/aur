@@ -6,7 +6,10 @@ pkgbase = photoprism-tensorflow-avx-bin
 	arch = x86_64
 	license = Apache-2.0
 	provides = photoprism-tensorflow
+	provides = tensorflow115
 	conflicts = photoprism-tensorflow
+	conflicts = tensorflow115
+	replaces = tensorflow115
 	source = https://dl.photoprism.org/tensorflow/amd64/libtensorflow-amd64-avx-1.15.2.tar.gz
 	sha256sums = 00f2ea3828be9b8048e2fa0bf8e7c940c41a5cf504fe1c7e412f3fe5715995e0
 
