@@ -3,7 +3,7 @@ pkgname=sk-chos-addon-git
 _basename=sk-chos-tool
 _pkgname=sk-chos-addon
 _reponame=sk-chos-config
-pkgver=v1.9.1.r3.gcf475a1
+pkgver=1.9.1.r4.gc5655b2
 pkgrel=1
 pkgdesc="Addon for sk-chimeros"
 arch=('any')
@@ -41,7 +41,7 @@ install=sk-chos-addon.install
 pkgver() {
     cd "$srcdir/$_reponame"
     # printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 prepare() {
