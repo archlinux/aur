@@ -1,0 +1,11 @@
+pkgbase = lettercell
+	pkgdesc = An interpreter for the LetterCell esoteric programming language.
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = x86_64
+	arch = arm
+	license = MIT
+	source = https://github.com/LogicleQ/lettercell
+	sha256sums = SKIP
+
+pkgname = lettercell
