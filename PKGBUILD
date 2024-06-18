@@ -2,7 +2,7 @@
 
 _pkgname_prefix=globalprotect-openconnect
 pkgname="${_pkgname_prefix}-git"
-pkgver="2.3.1"
+pkgver="2.3.2"
 pkgrel=1
 pkgdesc="A GUI for GlobalProtect VPN, based on OpenConnect, supports the SSO authentication method."
 arch=(x86_64 aarch64)
@@ -19,8 +19,8 @@ install=gp.install
 source_x86_64=("https://github.com/yuezk/GlobalProtect-openconnect/releases/download/v${pkgver}/globalprotect-openconnect_${pkgver}_x86_64.bin.tar.xz")
 source_aarch64=("https://github.com/yuezk/GlobalProtect-openconnect/releases/download/v${pkgver}/globalprotect-openconnect_${pkgver}_aarch64.bin.tar.xz")
 
-sha256sums_x86_64=("3f50723b3468bb2609b5f4531996f60757bfdfe1b5c671534605708b21cf7cc7")
-sha256sums_aarch64=("dec8425085e7b3a9619542570d563949a60f0a2420b9d09dca76bd3f86e9ab10")
+sha256sums_x86_64=("3ad69fdfb787c4f5767d46cb30243b9c4f6704572f506ad6aea8dba9db675fc8")
+sha256sums_aarch64=("39a7ab205d203e0dcf8df6f5165fcebbfcbbd84c106072d5754ae9f4f95d1fe9")
 
 options=('!strip')
 
