@@ -5,7 +5,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-libnghttp3
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 arch=('any')
 pkgdesc="HTTP/3 library written in C (Android ${_android_arch})"
@@ -15,7 +15,7 @@ depends=('android-ndk')
 makedepends=('android-cmake')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/ngtcp2/nghttp3/releases/download/v${pkgver}/nghttp3-${pkgver}.tar.xz")
-md5sums=('7bb5c4e3c39e76931c64ea94d6f8cda8')
+md5sums=('7c0e8e8e6c216be39a9b7ce648ad061a')
 
 prepare() {
     cd "${srcdir}/nghttp3-$pkgver"
@@ -37,8 +37,8 @@ package() {
     cd "${srcdir}/nghttp3-$pkgver"
     source android-env ${_android_arch}
 
-    make DESTDIR="$pkgdir" install
-    rm -rf "$pkgdir/${ANDROID_PREFIX_SHARE}"
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    make DESTDIR="${pkgdir}" install
+    rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
