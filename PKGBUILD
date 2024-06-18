@@ -1,6 +1,6 @@
 # Maintainer: Eldred Habert <arch@eldred.fr>
 pkgname=hugetracker-bin
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc='The music composition suite for the Nintendo Game Boy'
 arch=('x86_64')
@@ -8,7 +8,7 @@ url='https://nickfa.ro/index.php?title=HUGETracker'
 license=('custom:public domain')
 provides=('hugetracker')
 conflicts=('hugetracker')
-makedepends=()
+makedepends=(unzip)
 # `rgbds` is shelled out to at runtime, but namcap doesn't know that.
 # The program also explicitly makes calls to `fontconfig` and `pango`, so mark them
 # explicitly, despite namcap's complaints.
@@ -17,7 +17,7 @@ depends=(fontconfig gdk-pixbuf2 glib2 glibc gtk2 libx11 pango 'rgbds>=0.5.0' sdl
 optdepends=('ffmpeg: "Export song" functionality')
 source=("hUGETracker-$pkgver.zip::https://github.com/SuperDisk/hUGETracker/releases/download/v$pkgver/hUGETracker-$pkgver-linux.zip"
         LICENSE)
-sha256sums=('b7dc3b448ebc36063dc42e13ec2f2ac0d8c5628023f94251a002d98c36e4386e'
+sha256sums=('4e6b0e84b975eb53f6e6582d2d05e1121b93658b7c76bc910b9eb1b332297c81'
             '89e3f0dbfb531db8d9ba1b20865407b35a0aad5b3f5468bd8527a17a5026e836')
 noextract=('hUGETracker-$pkgver.zip')
 
