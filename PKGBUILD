@@ -3,7 +3,7 @@
 
 pkgname=python-pdfknife
 pkgver=0.2.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Command line tools to manipulate PDF files"
 arch=('any')
 url="https://github.com/sciunto-org/PDFknife"
@@ -16,7 +16,7 @@ sha256sums=('0be2a5857084f2d6bca176b0c13b91777ee519fd3fa29b14995a4fa4bba5c9ac')
 
 
 package() {
-  cd "$srcdir/PDFknife-$pkgver"
+  cd "$srcdir/pdfknife-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
