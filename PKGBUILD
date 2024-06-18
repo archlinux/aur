@@ -1,6 +1,6 @@
 # Maintainer: Felipe Alfonso Gonzalez <f.alfonso@res-ear.ch>
 pkgname=profilex
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="ProFileX is a Linux file management tool with a Qt-based GUI."
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gcc' 'qt5-base')
 
 source=("https://github.com/felipealfonsog/ProFileX/archive/refs/tags/v.${pkgver}.tar.gz")
 
-sha256sums=('39d090e2aae7ba20e7efaa7e840578171b0b969464689cb57bf3c948d061ff4d')
+sha256sums=('ff2e32dbcd41de33b4f405b32053b7d9ffc48db2b2178e837f8e042cdcaa6a73')
 
 build() {
   cd "$srcdir/ProFileX-v.${pkgver}"
