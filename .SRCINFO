@@ -1,15 +1,17 @@
 pkgbase = perl-http-tinyish
 	pkgdesc = HTTP::Tiny compatible HTTP client wrappers
-	pkgver = 0.17
+	pkgver = 0.19
 	pkgrel = 1
-	url = http://search.cpan.org/dist/HTTP-Tinyish/
+	url = https://metacpan.org/release/HTTP-Tinyish
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	depends = perl-file-which
-	depends = perl-ipc-run3
-	source = http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/HTTP-Tinyish-0.17.tar.gz
-	sha256sums = 47bd111e474566d733c41870e2374c81689db5e0b5a43adc48adb665d89fb067
+	depends = perl-file-which>=0
+	depends = perl-ipc-run3>=0
+	depends = perl>=5.8.1
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/HTTP-Tinyish-0.19.tar.gz
+	md5sums = 2db74d1dbfaa2d66a2f6d5570b68c0ac
+	sha512sums = cfc20e7b526c91a9baf8d049753762c35033c5e1bdf5b5239ba7695c2b0319e1e41bc669f617fc7e61ef8fcfaddbcdd299fad2c406d9cb166be304c401401010
 
 pkgname = perl-http-tinyish
-
