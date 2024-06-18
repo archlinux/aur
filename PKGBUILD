@@ -1,6 +1,6 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname="pdf-xchange"
-pkgver="10.3.0.386"
+pkgver="10.3.1.387"
 pkgrel="1"
 pkgdesc="Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more."
 license=('Custom')
@@ -19,7 +19,7 @@ _redactpatterns="$_commonfiles/RedactPatterns"
 _tesseract="$_commonfiles/Tesseract"
 
 source=("$pkgname-$pkgver.msi::$_downloadsource/$_x64file")
-sha256sums=('cfcc959a9512016fd626cb12793da02f4fcd2ce6978c8ce42cc751d802b46ed1')
+sha256sums=('4a7862b4f3296a1f22ffcf8b26c0197e817b30aa33e04ef87e5a69c1ce0a6356')
 
 prepare()
 {
@@ -41,8 +41,15 @@ package()
 
  mkdir -p "$pkgdir${_installdir}/$pkgname"
 
+ install -Dm644 "$srcdir/FID_MSAL_DLL_Microsoft_Identity_Client_Broker_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/MSAL/Microsoft.Identity.Client.Broker.dll"
+ install -Dm644 "$srcdir/FID_MSAL_DLL_Microsoft_Identity_Client_Desktop_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/MSAL/Microsoft.Identity.Client.Desktop.dll"
  install -Dm644 "$srcdir/FID_MSAL_DLL_Microsoft_Identity_Client_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/MSAL/Microsoft.Identity.Client.dll"
+ install -Dm644 "$srcdir/FID_MSAL_DLL_Microsoft_Identity_Client_NativeInterop_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/MSAL/Microsoft.Identity.Client.NativeInterop.dll"
  install -Dm644 "$srcdir/FID_MSAL_DLL_Microsoft_IdentityModel_Abstractions_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/MSAL/Microsoft.IdentityModel.Abstractions.dll"
+ install -Dm644 "$srcdir/FID_MSAL_DLL_Microsoft_Web_WebView2_Core_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/MSAL/Microsoft.Web.WebView2.Core.dll"
+ install -Dm644 "$srcdir/FID_MSAL_DLL_Microsoft_Web_WebView2_WinForms_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/MSAL/Microsoft.Web.WebView2.WinForms.dll"
+ install -Dm644 "$srcdir/FID_MSAL_DLL_Microsoft_Web_WebView2_Wpf_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/MSAL/Microsoft.Web.WebView2.Wpf.dll"
+ install -Dm644 "$srcdir/FID_MSAL_RT_x64" "$pkgdir${_installdir}/$pkgname/${_programname}/MSAL/runtimes/win-x64/native/msalruntime.dll"
  install -Dm644 "$srcdir/FID_MSAL_DLL_System_Buffers_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/MSAL/System.Buffers.dll"
  install -Dm644 "$srcdir/FID_MSAL_DLL_System_Diagnostics_DiagnosticSource_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/MSAL/System.Diagnostics.DiagnosticSource.dll"
  install -Dm644 "$srcdir/FID_MSAL_DLL_System_Memory_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/MSAL/System.Memory.dll"
@@ -101,8 +108,10 @@ package()
  install -Dm644 "$srcdir/FID_RMS_fi_FI" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.fi-FI.xcl"
  install -Dm644 "$srcdir/FID_RMS_fr_FR" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.fr-FR.xcl"
  install -Dm644 "$srcdir/FID_RMS_gl_ES" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.gl-ES.xcl"
+ install -Dm644 "$srcdir/FID_RMS_he_IL" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.he-IL.xcl"
  install -Dm644 "$srcdir/FID_RMS_hr_HR" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.hr-HR.xcl"
  install -Dm644 "$srcdir/FID_RMS_hu_HU" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.hu-HU.xcl"
+ install -Dm644 "$srcdir/FID_RMS_it_IT" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.it-IT.xcl"
  install -Dm644 "$srcdir/FID_RMS_ja_JP" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.ja-JP.xcl"
  install -Dm644 "$srcdir/FID_RMS_ko_KR" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.ko-KR.xcl"
  install -Dm644 "$srcdir/FID_RMS_lt_LT" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.lt-LT.xcl"
@@ -190,6 +199,7 @@ package()
  install -Dm644 "$srcdir/FID_CC_he_IL" "$pkgdir${_installdir}/$pkgname/${_languages}/ColorConvert.he-IL.xcl"
  install -Dm644 "$srcdir/FID_CC_hr_HR" "$pkgdir${_installdir}/$pkgname/${_languages}/ColorConvert.hr-HR.xcl"
  install -Dm644 "$srcdir/FID_CC_hu_HU" "$pkgdir${_installdir}/$pkgname/${_languages}/ColorConvert.hu-HU.xcl"
+ install -Dm644 "$srcdir/FID_CC_it_IT" "$pkgdir${_installdir}/$pkgname/${_languages}/ColorConvert.it-IT.xcl"
  install -Dm644 "$srcdir/FID_CC_ja_JP" "$pkgdir${_installdir}/$pkgname/${_languages}/ColorConvert.ja-JP.xcl"
  install -Dm644 "$srcdir/FID_CC_ko_KR" "$pkgdir${_installdir}/$pkgname/${_languages}/ColorConvert.ko-KR.xcl"
  install -Dm644 "$srcdir/FID_CC_lt_LT" "$pkgdir${_installdir}/$pkgname/${_languages}/ColorConvert.lt-LT.xcl"
@@ -335,8 +345,10 @@ package()
  install -Dm644 "$srcdir/FID_IF_es_ES" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.es-ES.xcl"
  install -Dm644 "$srcdir/FID_IF_fi_FI" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.fi-FI.xcl"
  install -Dm644 "$srcdir/FID_IF_fr_FR" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.fr-FR.xcl"
+ install -Dm644 "$srcdir/FID_IF_he_IL" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.he-IL.xcl"
  install -Dm644 "$srcdir/FID_IF_hr_HR" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.hr-HR.xcl"
  install -Dm644 "$srcdir/FID_IF_hu_HU" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.hu-HU.xcl"
+ install -Dm644 "$srcdir/FID_IF_it_IT" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.it-IT.xcl"
  install -Dm644 "$srcdir/FID_IF_ja_JP" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.ja-JP.xcl"
  install -Dm644 "$srcdir/FID_IF_ko_KR" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.ko-KR.xcl"
  install -Dm644 "$srcdir/FID_IF_lt_LT" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.lt-LT.xcl"
@@ -584,6 +596,7 @@ package()
  install -Dm644 "$srcdir/FID_SAN_he_IL" "$pkgdir${_installdir}/$pkgname/${_languages}/Sanitize.he-IL.xcl"
  install -Dm644 "$srcdir/FID_SAN_hr_HR" "$pkgdir${_installdir}/$pkgname/${_languages}/Sanitize.hr-HR.xcl"
  install -Dm644 "$srcdir/FID_SAN_hu_HU" "$pkgdir${_installdir}/$pkgname/${_languages}/Sanitize.hu-HU.xcl"
+ install -Dm644 "$srcdir/FID_SAN_it_IT" "$pkgdir${_installdir}/$pkgname/${_languages}/Sanitize.it-IT.xcl"
  install -Dm644 "$srcdir/FID_SAN_ja_JP" "$pkgdir${_installdir}/$pkgname/${_languages}/Sanitize.ja-JP.xcl"
  install -Dm644 "$srcdir/FID_SAN_ko_KR" "$pkgdir${_installdir}/$pkgname/${_languages}/Sanitize.ko-KR.xcl"
  install -Dm644 "$srcdir/FID_SAN_lt_LT" "$pkgdir${_installdir}/$pkgname/${_languages}/Sanitize.lt-LT.xcl"
@@ -711,6 +724,7 @@ package()
  install -Dm644 "$srcdir/FID_U3D_he_IL" "$pkgdir${_installdir}/$pkgname/${_languages}/U3DPlugin.he-IL.xcl"
  install -Dm644 "$srcdir/FID_U3D_hr_HR" "$pkgdir${_installdir}/$pkgname/${_languages}/U3DPlugin.hr-HR.xcl"
  install -Dm644 "$srcdir/FID_U3D_hu_HU" "$pkgdir${_installdir}/$pkgname/${_languages}/U3DPlugin.hu-HU.xcl"
+ install -Dm644 "$srcdir/FID_U3D_it_IT" "$pkgdir${_installdir}/$pkgname/${_languages}/U3DPlugin.it-IT.xcl"
  install -Dm644 "$srcdir/FID_U3D_ja_JP" "$pkgdir${_installdir}/$pkgname/${_languages}/U3DPlugin.ja-JP.xcl"
  install -Dm644 "$srcdir/FID_U3D_ko_KR" "$pkgdir${_installdir}/$pkgname/${_languages}/U3DPlugin.ko-KR.xcl"
  install -Dm644 "$srcdir/FID_U3D_lt_LT" "$pkgdir${_installdir}/$pkgname/${_languages}/U3DPlugin.lt-LT.xcl"
