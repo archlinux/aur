@@ -2,20 +2,27 @@
 pkgname=kawaii-player
 _pkgname=kawaii_player
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 _pkgrel=1
 pkgdesc="Multimedia player, media library manager and portable media server with PC-to-PC casting feature"
 arch=(any)
 url="https://github.com/kanishka-linux/kawaii-player"
 license=('GPL3')
-depends=('libnotify' 'mpv' 'sqlite' 'python' 'python-pyqt5' 'socat' 'qt5-webengine' 'curl' 'mplayer' 'ffmpegthumbnailer'
+depends=('mpv' 'sqlite' 'python' 'python-pyqt5' 'socat' 'qt5-webengine' 'curl' 'mplayer' 'ffmpegthumbnailer'
          'python-beautifulsoup4' 'python-certifi' 'python-dbus' 'python-lxml' 'python-mutagen' 'python-opengl'
-         'python-pillow' 'python-pycurl' 'python-pyqtwebengine' 'wget' 'python-setuptools')
+         'python-pillow' 'python-pycurl' 'python-pyqtwebengine' 'wget' 'python-setuptools' 'libnotify')
 optdepends=('python-pympv: modern opengl-render API for libmpv'
+			'mpv: MPV media player'
             'libtorrent-rasterbar: torrent streaming'
             'youtube-dl: YouTube streaming'
-            'xorg-server-xvfb: run in headless mode' 'vlc')
-makedepends=('git' 'cython0' 'python')
+            'xorg-server-xvfb: run in headless mode'
+			'python-dbus: MPRIS D-Bus support'
+			'openssl: SSL/TLS support'
+			'ffmpeg: extracting and converting subtitles'
+			'xvfb: run in headless mode'
+			'python-vlc: VLC media player'
+			'vlc: VLC media player')
+makedepends=('git' 'cython' 'python')
 conflicts=('kawaii-player-git')
 install=$pkgname.install
 source=("https://github.com/kanishka-linux/${pkgname}/archive/refs/tags/v${pkgver}-${_pkgrel}.tar.gz")
