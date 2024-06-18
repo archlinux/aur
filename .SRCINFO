@@ -1,0 +1,14 @@
+pkgbase = r-phia
+	pkgdesc = Analysis of model terms based on multiple comparisons of factor contrasts.
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=phia
+	arch = any
+	license = GPL-3.0-or-later
+	depends = r
+	depends = r-car
+	optdepends = r-lme4
+	source = https://cran.r-project.org/src/contrib/phia_0.3-1.tar.gz
+	b2sums = 5f341001bce60fab53f5051fdaf0781a47a829637441e7bf4d6df0d9ca460225015c5cd428fcfc5bcedad59bb393b15460b93fa6d0eb9f7a339d7f7d250939e7
+
+pkgname = r-phia
