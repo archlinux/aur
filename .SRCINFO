@@ -1,0 +1,22 @@
+pkgbase = fynedesk-git
+	pkgdesc = An easy to use Linux/Unix desktop environment following material design
+	pkgver = r1291.bb9b5f6
+	pkgrel = 1
+	url = https://fyshos.com/desktop/
+	arch = x86_64
+	arch = armv7h
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = go
+	depends = libx11
+	optdepends = arandr: for modifying display settings
+	optdepends = xorg-xbacklight: for laptop brightness
+	optdepends = brightnessctl: for laptop brightness
+	optdepends = connman-gtk: used for configuring Wi-Fi network settings
+	optdepends = picom: for compositor support
+	provides = fynedesk
+	conflicts = fynedesk
+	source = fynedesk-git::git+https://github.com/FyshOS/fynedesk.git#branch=develop
+	sha256sums = SKIP
+
+pkgname = fynedesk-git
