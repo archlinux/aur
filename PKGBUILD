@@ -1,6 +1,5 @@
-# Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
-# Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
-
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 pkgname=collision
 _app_id=dev.geopjr.Collision
 pkgver=3.8.0
