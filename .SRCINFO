@@ -1,0 +1,11 @@
+pkgbase = photoprism-nasnet
+	pkgdesc = PhotoPrism's nasnet pre-training model
+	pkgver = 20200722.072055
+	pkgrel = 1
+	url = https://github.com/photoprism/photoprism
+	arch = any
+	license = AGPL-3.0-or-later
+	source = https://dl.photoprism.org/tensorflow/nasnet.zip
+	sha256sums = a0e1ad8d5a5a0ff9efc4b3ed89898bf008563ee36cacd0c804a384f8fc661588
+
+pkgname = photoprism-nasnet
