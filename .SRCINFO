@@ -1,7 +1,7 @@
 pkgbase = kawaii-player
 	pkgdesc = Multimedia player, media library manager and portable media server with PC-to-PC casting feature
 	pkgver = 6.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kanishka-linux/kawaii-player
 	install = kawaii-player.install
 	arch = any
@@ -38,7 +38,6 @@ pkgbase = kawaii-player
 	optdepends = python-dbus: MPRIS D-Bus support
 	optdepends = openssl: SSL/TLS support
 	optdepends = ffmpeg: extracting and converting subtitles
-	optdepends = xvfb: run in headless mode
 	optdepends = python-vlc: VLC media player
 	optdepends = vlc: VLC media player
 	conflicts = kawaii-player-git

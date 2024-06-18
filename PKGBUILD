@@ -2,7 +2,7 @@
 pkgname=kawaii-player
 _pkgname=kawaii_player
 pkgver=6.0.0
-pkgrel=2
+pkgrel=3
 _pkgrel=1
 pkgdesc="Multimedia player, media library manager and portable media server with PC-to-PC casting feature"
 arch=(any)
@@ -19,7 +19,6 @@ optdepends=('python-pympv: modern opengl-render API for libmpv'
 			'python-dbus: MPRIS D-Bus support'
 			'openssl: SSL/TLS support'
 			'ffmpeg: extracting and converting subtitles'
-			'xvfb: run in headless mode'
 			'python-vlc: VLC media player'
 			'vlc: VLC media player')
 makedepends=('git' 'cython' 'python')
