@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('qt5-base' 'qt5-svg')
 
 source=(https://github.com/artemvlas/veretino/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=(fb1e0820547beb1c832b7c2635c5399013f6ceaadf1e25c691be2ef6bfca43cc)
+sha256sums=(2a57578588253a812c92457b8be914fba8c6b84761116534d3ae9c65b29cfe98)
 
 build() {
 	cd "$pkgname-$pkgver"
