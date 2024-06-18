@@ -1,6 +1,6 @@
 pkgbase = python-pylibjpeg-openjpeg
 	pkgdesc = A J2K and JP2 plugin for pylibjpeg
-	pkgver = 2.2.2
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/pydicom/pylibjpeg-openjpeg
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = python-pylibjpeg-openjpeg
 	makedepends = poetry
 	makedepends = python-installer
 	depends = python-numpy
-	source = python-pylibjpeg-openjpeg::git+https://github.com/pydicom/pylibjpeg-openjpeg.git#tag=v2.2.2
-	sha512sums = 15d7f7bc894decf9d3fd87b94f69e4d5a2dccde2bdcc80ad460b2fc5d4d25698e2daa2ec0ae823ed432a15b990a4e41f65636c7799d6e36d8896e2791130ccdf
+	source = python-pylibjpeg-openjpeg-2.3.0::git+https://github.com/pydicom/pylibjpeg-openjpeg.git#tag=v2.3.0
+	sha512sums = decc546b5d97309ac20338be0f2c4a827854991d89cd162d36dfba6a6f49f946999c3552b16f1fd7170cc0397c7d418bb1e0106dca2ec051d847e30ab7c80523
 
 pkgname = python-pylibjpeg-openjpeg

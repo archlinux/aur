@@ -2,7 +2,7 @@
 
 _pkgname=pylibjpeg-openjpeg
 pkgname=python-pylibjpeg-openjpeg
-pkgver=2.2.2
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='A J2K and JP2 plugin for pylibjpeg'
 arch=('x86_64')
@@ -17,22 +17,22 @@ makedepends=(
   poetry
   python-installer
 )
-source=("${pkgname}::git+https://github.com/pydicom/pylibjpeg-openjpeg.git#tag=v${pkgver}")
-sha512sums=('15d7f7bc894decf9d3fd87b94f69e4d5a2dccde2bdcc80ad460b2fc5d4d25698e2daa2ec0ae823ed432a15b990a4e41f65636c7799d6e36d8896e2791130ccdf')
+source=("${pkgname}-${pkgver}::git+https://github.com/pydicom/pylibjpeg-openjpeg.git#tag=v${pkgver}")
+sha512sums=('decc546b5d97309ac20338be0f2c4a827854991d89cd162d36dfba6a6f49f946999c3552b16f1fd7170cc0397c7d418bb1e0106dca2ec051d847e30ab7c80523')
 
 prepare() {
-  cd "${pkgname}"
+  cd "${pkgname}-${pkgver}"
   git submodule update --init --recursive
 }
 
 build() {
-  cd "${pkgname}"
+  cd "${pkgname}-${pkgver}"
   poetry build --format wheel
 }
 
 package() {
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  cd "${pkgname}"
+  cd "${pkgname}-${pkgver}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
   # remove tests files
