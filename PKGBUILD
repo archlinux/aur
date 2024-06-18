@@ -23,9 +23,6 @@ source=("http://xi6.com/files/asmx-$pkgver.zip")
 noextract=()
 md5sums=('1ae9e1d7b6ff14a5ce564682e2b58d9f')
 
-prepare() {
-}
-
 package() {
     make INSTALL_DIR="$pkgdir/usr/local/bin/" install
 }
