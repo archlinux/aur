@@ -1,6 +1,6 @@
 pkgbase = python-collectd-transmission
 	pkgdesc = A python plugin for collectd to get stats from a runnning transmission server
-	pkgver = 3.3
+	pkgver = 3.5
 	pkgrel = 1
 	url = https://pypi.org/project/collectd-transmission/#description
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-collectd-transmission
 	makedepends = python-wheel
 	depends = python
 	depends = python-transmissionrpc
-	source = collectd_transmission-3.3::git+https://github.com/LevitatingBusinessMan/collectd_transmission.git#branch=bump_transmission_rpc_version
-	sha256sums = SKIP
+	source = https://files.pythonhosted.org/packages/source/c/collectd_transmission/collectd_transmission-3.5.tar.gz
+	sha256sums = dd397950194064f38bd8a14b5d12e967c470f547d18172599c26f06b0ab66993
 
 pkgname = python-collectd-transmission
