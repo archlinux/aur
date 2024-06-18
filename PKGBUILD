@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur [at] kokakiwi [dot] net>
 
 pkgname=pokete
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc='A terminal based Pokemon like game'
 url='https://lxgr-linux.github.io/pokete'
@@ -11,9 +11,9 @@ depends=('python' 'python-scrap_engine' 'alsa-lib')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lxgr-linux/pokete/archive/refs/tags/$pkgver.tar.gz"
         0001-archlinux-Use-standard-path-for-libplaysound.so-load.patch)
-sha256sums=('302d51385f4a0f2fedc0d0368a49d5aa7020ad80cae47a69fde5919ebcb974fb'
+sha256sums=('19d9b7a526fdaacdc0e656407f4ccc0545f8fc6ab2beb292d15b686ec90fbc06'
             'f31450329ce84f9cafefec1aee87a48490c55c0ca788d60719b0b7b3e9567824')
-b2sums=('029aebe9ed2c86f8b6ed740f83bbd6cf9b61a02e3e81c54ffd43709c0fbccb22e4c79013149b10e55d5f32ea7d53aee001ffe607e9a95ed48a5a9bb5ee54252a'
+b2sums=('bb3f0c5321ed1cf071206fc2d37c6b47f5ada134f804fc2ca434ebf61d9761fdb4c96c5cc473c099d7a1203a76b5c1ef660d4de88777f3f04a51ab6ff5a4353c'
         '77d924d077aef11d7c852833772af1c3e01c3a6623a036638cd151e28c014a68a19ed91ad75d77b4191c50a1beab5619bc2bed6480d246ef0a42b26eae2024a2')
 
 prepare() {
