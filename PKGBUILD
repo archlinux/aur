@@ -1,4 +1,4 @@
-# Maintainer: Konstantin Shalygin <k0ste@k0ste.ru>
+# Maintainer: Frank Villaro-Dixon <f@vi-di.fr>
 # Contributor: Konstantin Shalygin <k0ste@k0ste.ru>
 
 pkgname='libyang2'
