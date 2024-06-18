@@ -4,7 +4,7 @@
 pkgname=i3pystatus-git
 pkgdesc="i3status replacement written in python for the i3 window manager"
 pkgver=3.35.r407.gf3c539a
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/enkore/i3pystatus"
 license=('MIT')
@@ -24,17 +24,20 @@ makedepends=('git' 'python-setuptools')
 checkdepends=('python-pytest-runner' 'python-mock')
 provides=('i3pystatus')
 conflicts=('i3pystatus')
-source=("$pkgname::git+$url")
-md5sums=('SKIP')
+source=("$pkgname::git+$url"
+        "buds_tests.patch::https://github.com/enkore/i3pystatus/pull/869.patch")
+md5sums=('SKIP'
+         'cc131e013287c8864620a19d55d99d70')
 
 pkgver() {
 	cd "$pkgname"
 	git describe --long --tags | sed 's/-/.r/;s/-/./'
 }
 
-# prepare () {
-#         cd "$pkgname"
-# }
+prepare () {
+        cd "$pkgname"
+        patch -Np1 -i ../buds_tests.patch
+}
 
 build() {
 	cd "$pkgname"
