@@ -2,13 +2,13 @@
 # Maintainer: Francois Boulogne <devel at sciunto dot org>
 
 pkgname=python-pdfknife
-pkgver=0.2.2
-pkgrel=2
+pkgver=0.2.4
+pkgrel=1
 pkgdesc="Command line tools to manipulate PDF files"
 arch=('any')
 url="https://github.com/sciunto-org/PDFknife"
-license=('GPL3')
-depends=('python' 'pdfjam' 'pdftk' 'poppler' 'ghostscript')
+license=('BSD')
+depends=('python' 'pdfjam' 'pdftk' 'poppler' 'ghostscript' 'python-pypdf')
 makedepends=('python-setuptools')
 checkdepends=('python-nose')
 source=(https://github.com/sciunto-org/PDFknife/archive/${pkgver}.tar.gz)
