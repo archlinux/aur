@@ -2,7 +2,7 @@
 
 pkgname=kor
 # renovate: datasource=github-releases depName=yonahd/kor
-pkgver=0.4.2
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Kubernetes Orphaned Resources Finder'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$url/archive/v$pkgver/${pkgname}-$pkgver.tar.gz")
-b2sums=('67860beefa9a0a299d327b42d19dd682f2850acf161725a90780904119357428874a213e4973bfe821be286e488ade5bf032c9bd478dc3d97ffd21f4ce8b090c')
+b2sums=('3722a80034f157a1f5941cec870b232203fe0af86949a4aabb60dbf9d49dde8801c6b5c619b1732e49a56bbd9efea230376bd4f442f0710e68d85afff983fcd8')
 
 prepare() {
   cd $pkgname-$pkgver
