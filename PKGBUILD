@@ -3,7 +3,7 @@
 
 pkgname='liteloader-qqnt-telegram-theme-bin'
 _pkgname='LiteLoaderQQNT-Telegram-Theme'
-pkgver='4.3.1'
+pkgver='4.3.2'
 pkgrel=1
 pkgdesc="LiteLoaderQQNT 插件，高仿 Telegram 风格的 QQNT 主题"
 arch=('any')
@@ -14,8 +14,8 @@ provides=("liteloader-qqnt-telegram-theme-bin")
 conflicts=("liteloader-qqnt-telegram-theme-bin")
 
 source=("${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${_pkgname}.zip")
-sha256sums=('4b28e08a80ac67e19173a4cd2cc87dc2f85806f669a6aea522c9ab3eaf5b7e42')
-b2sums=('7e76cabe78f653a1bd94425fbae8e1439ac0307ef307180c24fd2af6d6e0a3c6b9a05dc95d70bf86b659f4a155d111e9a0be9a0a4818a896a1970d033beb13ab')
+sha256sums=('2f4a25bb1b289ce80e958e5d82fed0f0df499ba6afdd78e03fae12403f325526')
+b2sums=('9f2c669b884631f6561a1bcfb0f6c27a7770ee0fa7b4f0509460164b46f46949eaecf8c1b6eeffa9272234cdb735249622890d197965d66b61e7795d79ce99ef')
 
 package() {
     mkdir -p "${pkgdir}/opt/LiteLoader/plugins/${_pkgname}"
