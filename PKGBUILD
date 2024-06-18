@@ -2,12 +2,12 @@
 
 pkgbase=tensorrt
 pkgname=('tensorrt' 'python-tensorrt')
-pkgver=10.0.1.6
+pkgver=10.1.0.27
 _cudaver=12.4
 _protobuf_ver=3.20.1
 _pybind11_ver=2.9.2
-_onnx_graphsurgeon_ver=0.5.1
-_polygraphy_ver=0.49.10
+_onnx_graphsurgeon_ver=0.5.2
+_polygraphy_ver=0.49.12
 _tensorflow_quantization_ver=0.2.0
 pkgrel=1
 pkgdesc='A platform for high-performance deep learning inference on NVIDIA hardware'
@@ -29,8 +29,8 @@ source=("https://developer.nvidia.com/downloads/compute/machine-learning/tensorr
         '020-tensorrt-fix-python.patch'
         'TensorRT-SLA.txt')
 noextract=("protobuf-cpp-${_protobuf_ver}.tar.gz")
-sha256sums=('a5cd2863793d69187ce4c73b2fffc1f470ff28cfd91e3640017e53b8916453d5'
-            '94f0ea80b9772248c16a18ce0edeeae860dd047fcf3a1a8e434e2f2b57f30f33'
+sha256sums=('606436ed219c72d1a25a889b2b0ae5cb5a68499dd6f944da4cabb3c34c067d55'
+            '52afa7bf384524ff990ebe211e175684a1cc1e9a3f456ba6bc64c6492a4cae0a'
             'SKIP'
             'SKIP'
             'SKIP'

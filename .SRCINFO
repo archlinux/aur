@@ -1,6 +1,6 @@
 pkgbase = tensorrt
 	pkgdesc = A platform for high-performance deep learning inference on NVIDIA hardware
-	pkgver = 10.0.1.6
+	pkgver = 10.1.0.27
 	pkgrel = 1
 	url = https://developer.nvidia.com/tensorrt/
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = tensorrt
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	noextract = protobuf-cpp-3.20.1.tar.gz
-	source = https://developer.nvidia.com/downloads/compute/machine-learning/tensorrt/10.0.1/tars/TensorRT-10.0.1.6.Linux.x86_64-gnu.cuda-12.4.tar.gz
-	source = git+https://github.com/NVIDIA/TensorRT.git#tag=v10.0.1
+	source = https://developer.nvidia.com/downloads/compute/machine-learning/tensorrt/10.1.0/tars/TensorRT-10.1.0.27.Linux.x86_64-gnu.cuda-12.4.tar.gz
+	source = git+https://github.com/NVIDIA/TensorRT.git#tag=v10.1.0
 	source = protobuf-protocolbuffers::git+https://github.com/protocolbuffers/protobuf.git
 	source = cub-nvlabs::git+https://github.com/NVlabs/cub.git
 	source = git+https://github.com/onnx/onnx-tensorrt.git
@@ -29,8 +29,8 @@ pkgbase = tensorrt
 	source = 010-tensorrt-use-local-protobuf-sources.patch
 	source = 020-tensorrt-fix-python.patch
 	source = TensorRT-SLA.txt
-	sha256sums = a5cd2863793d69187ce4c73b2fffc1f470ff28cfd91e3640017e53b8916453d5
-	sha256sums = 94f0ea80b9772248c16a18ce0edeeae860dd047fcf3a1a8e434e2f2b57f30f33
+	sha256sums = 606436ed219c72d1a25a889b2b0ae5cb5a68499dd6f944da4cabb3c34c067d55
+	sha256sums = 52afa7bf384524ff990ebe211e175684a1cc1e9a3f456ba6bc64c6492a4cae0a
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -58,6 +58,6 @@ pkgname = python-tensorrt
 	optdepends = python-protobuf: for polygraphy and tensorflow-quantization python modules
 	optdepends = python-tensorflow-cuda: for polygraphy python module
 	optdepends = python-tf2onnx: for tensorflow-quantization python module
-	provides = python-onnx-graphsurgeon=0.5.1
-	provides = python-polygraphy=0.49.10
+	provides = python-onnx-graphsurgeon=0.5.2
+	provides = python-polygraphy=0.49.12
 	provides = python-tensorflow-quantization=0.2.0
