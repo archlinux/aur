@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 pkgname=rime-minecraft-dict
-pkgver=1.20.4
-pkgrel=2
+pkgver=1.21.0
+pkgrel=1
 pkgdesc="Minecraft dict for RIME"
 arch=('any')
 url="https://github.com/Kimiblock/rime-minecraft-dict"
