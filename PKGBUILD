@@ -2,7 +2,7 @@
 
 pkgname=sourcegit-bin
 _name=${pkgname%-bin}
-pkgver=8.16
+pkgver=8.17
 pkgrel=1
 pkgdesc="GUI client for GIT users"
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=('libicns')
 source=("https://github.com/sourcegit-scm/sourcegit/releases/download/v${pkgver}/${_name}_${pkgver}.linux-x64.tar.gz"
         'sourcegit.desktop'
         'LICENSE')
-sha256sums=('9936f4e1b222a9925a3e91d82a86d016b894f9194d6bbfdd97db1574802db249'
+sha256sums=('9558171a8613b08fc64d85879f028179d55104e9a5133137ce17b6bbca1c38c1'
             '3488ee13a4ca1bae85c35f866d046304d8716a64c46cadb2576cb8b4ae44b058'
             '6cef41c8a297f46faafe40016ffcce9d968b3722048b81cd768fdbaa1be02ca1')
 
