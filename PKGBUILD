@@ -8,7 +8,7 @@ url="https://github.com/felipealfonsog/ProFileX"
 license=('BSD')
 depends=('gcc' 'qt5-base')
 
-source=("https://github.com/felipealfonsog/ProFileX/archive/refs/tags/v${pkgver}.tar.gz")
+source=("https://github.com/felipealfonsog/ProFileX/archive/refs/tags/v.${pkgver}.tar.gz")
 
 sha256sums=('7192de2452e54a574ae811c14fbdb8f9babe068d6e75b247f0f64ecf78c30394')
 
