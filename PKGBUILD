@@ -1,0 +1,66 @@
+# Maintainer: Keeyou <keeyou-cn@outlook.com>
+# Contributor: Keeyou <keeyou-cn@outlook.com>
+
+pkgname=yass-proxy-qt5
+pkgver=1.11.2
+pkgrel=1
+_pkgver=1.11.2
+_pkgrel=1
+pkgdesc="lightweight http/socks proxy"
+arch=(x86_64)
+url="https://github.com/Chilledheart/yass"
+license=(GPL-2.0-only)
+depends=(gcc-libs glibc qt5-base zlib libnghttp2 c-ares gperftools)
+optdepends=(gtk-update-icon-cache qt5-wayland)
+makedepends=(gcc binutils git ninja perl pkg-config cmake qt5-tools curl go)
+checkdepends=(curl)
+provides=(yass-proxy)
+conflicts=(yass-proxy-git yass-proxy yass-proxy-gtk3 yass-proxy-qt6)
+source=("https://github.com/Chilledheart/yass/releases/download/${_pkgver}/yass-${_pkgver}.tar.bz2"
+        )
+sha256sums=('51e59bb5feecbd4ff79dbaefbbf62836421eb259b5c2bba234f7b5f1a8128b02')
+
+prepare() {
+  SRC_DIR="${srcdir}/yass-${_pkgver}"
+  pushd $SRC_DIR
+  cd tools
+  go build
+  cd ..
+  popd
+}
+
+build(){
+  SRC_DIR="${srcdir}/yass-${_pkgver}"
+  pushd $SRC_DIR
+  rm -rf build
+  mkdir build
+  cd build
+  cmake .. -DCMAKE_BUILD_TYPE=Release -G Ninja -DBUILD_TESTS=on \
+    -DUSE_TCMALLOC=on -DUSE_SYSTEM_TCMALLOC=on \
+    -DUSE_SYSTEM_ZLIB=on -DUSE_SYSTEM_CARES=on -DUSE_SYSTEM_NGHTTP2=on \
+    -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_SYSCONFDIR=/etc \
+    -DGUI=ON -DUSE_QT5=on -DCLI=off -DSERVER=off \
+    -DUSE_LIBCXX=off -DENABLE_GOLD=off -DENABLE_LTO=off
+  ninja yass yass_test
+  cd ..
+
+  popd
+}
+
+check() {
+  SRC_DIR="${srcdir}/yass-${_pkgver}"
+  pushd $SRC_DIR
+  ./build/yass_test
+  popd
+}
+
+package(){
+  SRC_DIR="${srcdir}/yass-${_pkgver}"
+  pushd $SRC_DIR
+
+  install -Dm644 ./build/LICENSE ${pkgdir}/usr/share/licenses/yass/LICENSE
+  DESTDIR=${pkgdir} ninja -C build install
+  rm -rf ${pkgdir}/usr/share/doc
+
+  popd
+}
