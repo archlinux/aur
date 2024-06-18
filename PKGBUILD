@@ -49,7 +49,7 @@ prepare() {
   git submodule update --init
   git submodule update --remote --merge
 
-  cd ffplayout-frontend
+  cd frontend
   npm install
 }
 
