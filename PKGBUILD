@@ -13,7 +13,7 @@ source=("https://github.com/felipealfonsog/ProFileX/archive/refs/tags/v.${pkgver
 sha256sums=('7192de2452e54a574ae811c14fbdb8f9babe068d6e75b247f0f64ecf78c30394')
 
 build() {
-  cd "$srcdir/src/ProFileX-v.${pkgver}"
+  cd "$srcdir/ProFileX-v.${pkgver}"
 
   # Run qmake to generate Makefile based on proFileX.pro
   qmake proFileX.pro
@@ -23,7 +23,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/src/ProFileX-v.${pkgver}"
+  cd "$srcdir/ProFileX-v.${pkgver}"
 
   # Install the executable to the package directory
   install -Dm755 build/proFileX "$pkgdir/usr/bin/proFileX"
