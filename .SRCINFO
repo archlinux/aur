@@ -1,12 +1,14 @@
 pkgbase = xsp
 	pkgdesc = A simple webserver based on mono - provides ASP.NET support
 	pkgver = 4.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mono/xsp
 	install = xsp.install
 	arch = i686
 	arch = x86_64
 	license = custom
+	depends = bash
+	depends = glibc
 	depends = mono
 	depends = sqlite
 	options = !makeflags

@@ -1,15 +1,15 @@
-# $Id: PKGBUILD 308160 2017-10-17 17:36:56Z jelle $
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Daniel Isenmann <daniel@archlinux.org>
 # Contributor: Tobias Kieslich <tobias@justdreams.de>
 
 pkgname=xsp
 pkgver=4.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple webserver based on mono - provides ASP.NET support"
 arch=('i686' 'x86_64')
 license=('custom')
 url="https://github.com/mono/xsp"
-depends=('mono' 'sqlite')
+depends=('bash' 'glibc' 'mono' 'sqlite')
 options=(!makeflags)
 install=${pkgname}.install
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/mono/xsp/archive/${pkgver}.tar.gz
