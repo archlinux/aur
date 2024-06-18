@@ -1,0 +1,19 @@
+pkgbase = photoprism-tensorflow-cpu-bin
+	pkgdesc = PhotoPrism Tensorflow 1.15 with cpu base support
+	pkgver = 1.15.2
+	pkgrel = 1
+	url = https://github.com/tensorflow/tensorflow
+	arch = x86_64
+	arch = arm
+	arch = aarch64
+	license = Apache-2.0
+	provides = photoprism-tensorflow
+	conflicts = photoprism-tensorflow
+	source_x86_64 = https://dl.photoprism.org/tensorflow/amd64/libtensorflow-amd64-1.15.2.tar.gz
+	sha256sums_x86_64 = 6d9002dcf271a9c8ee18ce1170db7362d920dc50f74ab3b96de0ec3e829e9f37
+	source_arm = https://dl.photoprism.org/tensorflow/arm/libtensorflow-arm-1.15.2.tar.gz
+	sha256sums_arm = a7685f592fb6491610d001154678a28cec77ca1f8710cac12f77ac02ea2ac01d
+	source_aarch64 = https://dl.photoprism.org/tensorflow/arm64/libtensorflow-arm64-1.15.2.tar.gz
+	sha256sums_aarch64 = aa78f8be149682b93c4888f3207d7fe3068cc4cb31314bea75864f6926942519
+
+pkgname = photoprism-tensorflow-cpu-bin
