@@ -11,7 +11,7 @@ options=('!emptydirs')
 depends=('perl>=5.8.0')
 makedepends=('perl-module-install')
 checkdepends=('perl-io-stringy')
-url='http://search.cpan.org/dist/Text-MicroTemplate'
+url='https://metacpan.org/dist/Text-MicroTemplate'
 source=('http://search.cpan.org/CPAN/authors/id/K/KA/KAZUHO/Text-MicroTemplate-0.24.tar.gz')
 md5sums=('8dcce521bace009b87a30a445da15000')
 sha512sums=('5a024cf2a1a20131d823fadf8e5e7575a694e69ba73d9f96ff9151eab36f62278896c030b7f78b0665ad49c1b2afaff34aae06f16f37dd8d65e301cb950d4a05')
