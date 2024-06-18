@@ -3,7 +3,7 @@ pkgname=sk-chos-addon-git
 _basename=sk-chos-tool
 _pkgname=sk-chos-addon
 _reponame=sk-chos-config
-pkgver=r627.7d38a27
+pkgver=r636.84ed40b
 pkgrel=1
 pkgdesc="Addon for sk-chimeros"
 arch=('any')
@@ -11,22 +11,23 @@ url="https://github.com/honjow/sk-chos-config.git"
 license=('MIT')
 makedepends=('git')
 depends=(
-    'amdgpu-test-scripts-common-git'
-    'amd-s2idle-analysis-script-git'
-    'cage'
-    'expect'
-    'efibootmgr'
-    'fpaste'
-    'fzf'
-    'glow'
-    'gum'
-    'just'
-    'libcec'
-    'man-db'
-    'python-systemd'
-    'refind'
-    'wlr-randr'
-    'zram-generator'
+    amdgpu-test-scripts-common-git
+    amd-s2idle-analysis-script-git
+    cage
+    expect
+    efibootmgr
+    fpaste
+    fzf
+    glow
+    gnu-efi
+    gum
+    just
+    libcec
+    man-db
+    python-systemd
+    refind
+    wlr-randr
+    zram-generator
 )
 provides=(sk-chos-addon)
 conflicts=(sk-chos-addon)
