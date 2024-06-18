@@ -1,7 +1,7 @@
 pkgbase = oblivion-desktop-bin
 	pkgdesc = Unofficial Warp Client for Windows/Mac/Linux
 	pkgver = 0.23.15_beta
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bepass-org/oblivion-desktop
 	arch = x86_64
 	license = custom:oblivion-desktop
@@ -18,8 +18,8 @@ pkgbase = oblivion-desktop-bin
 	provides = oblivion-desktop
 	conflicts = oblivion-desktop
 	source = oblivion-desktop-0.23.15-beta.deb::https://github.com/bepass-org/oblivion-desktop/releases/download/v0.23.15-beta/oblivion-desktop-linux-amd64.deb
-	source = https://github.com/bepass-org/oblivion-desktop/blob/main/LICENSE.md
+	source = oblivion-desktop-LICENSE::https://github.com/bepass-org/oblivion-desktop/blob/main/LICENSE.md
 	sha256sums = 7e6d8d9aed8f724b68265c20fd785715de009bdfd23da3f245a9ea68fb0c0ea4
-	sha256sums = 0983abed9371adc8958c321bf8d8036324b4a2e8cc324682b0fe0c699e63a009
+	sha256sums = 3a4fceb841e4f82361cf60ad29f42ac6490771e4a82e3d1aec0b3facd8ae76a4
 
 pkgname = oblivion-desktop-bin
