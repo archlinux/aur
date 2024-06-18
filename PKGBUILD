@@ -3,7 +3,7 @@
 
 pkgname='openwebrx-plus'
 _pkgname='openwebrx'
-pkgver='1.2.60'
+pkgver='1.2.61'
 pkgrel='1'
 pkgdesc='Open source, multi-user SDR receiver software with a web interface'
 arch=('any')
@@ -68,7 +68,7 @@ source=(
     'openwebrx-plus.tmpfiles'
 )
 sha256sums=(
-    '3e29d817f144c8b6740bf64a6d055a23ef79684d9419eed3727d5385b2d415e4'
+    '29d2f6a6eb345db713e5629832379b80d4a1fb68479b285ebb5cb2853a7a40a5'
     '4ec6dec1df40a1f3db62a2add760f97cf870d65a2c1d5b63cd9b22704754f997'
     'eea488bd3f4c76b46bffbf3c88691818f93ad73db98c18659856d1690b0deade'
 )
@@ -84,7 +84,7 @@ package() {
     cd "$srcdir/openwebrx-$pkgver"
     python setup.py install --prefix=/usr --root="$pkgdir" --skip-build --optimize=1
 
-    for config in bands.json bookmarks.json openwebrx.conf; do
+    for config in bands.json bands-*.json bookmarks.json openwebrx.conf; do
         install -Dm 0644 ${config} ${pkgdir}/etc/openwebrx/${config}
     done
     for config in bookmarks.d/*; do
