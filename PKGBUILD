@@ -2,7 +2,7 @@
 
 pkgname=printmyfonts
 _pkgname=PrintMyFonts
-pkgver=23.6.13
+pkgver=24.3.21
 pkgrel=1
 pkgdesc="A tool to show, print, and/or export an arbitraty text in any font."
 arch=('i686' 'x86_64')
@@ -14,39 +14,40 @@ makedepends=('binutils')
 if [[ $CARCH == 'i686' ]]
 then
 	_CARCH='i386'
-	source=("${pkgname}-${pkgver}.zip::https://www.sttmedia.com/downloads/${_pkgname}Deb.zip"
+	source=("${pkgname}-${pkgver}-${CARCH}.zip::https://www.sttmedia.com/downloads/${_pkgname}Deb.zip"
 	"LICENSE")
-sha256sums=('4640bab0525b8719f040237df261ced6aaf8fa35efe77db12ff24f3243738ca9'
-            '43d89c84fdb729e7b5e1006dcb97161594ddaab4bb2d5dca0f73b2b2e308c57d')
+	sha256sums=('090e1448d9d6239d1761d1e5275f1c39de3745704522577c52cc5a2d6869e94e'
+                    '645c06b84421e972693c3e2e47758d2e9a22bdf43ffb56b703bd1beec1710d4c')
 fi
 
 if [[ $CARCH == 'x86_64' ]]
 then
 	_CARCH='amd64'
-	source=("${pkgname}-${pkgver}.zip::https://www.sttmedia.com/downloads/${_pkgname}Deb64.zip"
+	source=("${pkgname}-${pkgver}-${CARCH}.zip::https://www.sttmedia.com/downloads/${_pkgname}Deb64.zip"
 	"LICENSE")
-sha256sums=('34e4c71cb8095ce1e99a33ab7f9f6bc9924e22e7a8659094147972fcdb50cc30'
-            '43d89c84fdb729e7b5e1006dcb97161594ddaab4bb2d5dca0f73b2b2e308c57d')
+	sha256sums=('f6349b8fee215f5e225a33593620bd3d8939c8a2add31144590f6c9ab7314a0b'
+		    '645c06b84421e972693c3e2e47758d2e9a22bdf43ffb56b703bd1beec1710d4c')
+
 fi
 
 prepare() {
 	cd "${srcdir}"
 
-	# If "${pkgname}-${pkgver}" doesn't exists, create it.
-	[ -d "${pkgname}-${pkgver}" ] || mkdir "${pkgname}-${pkgver}"
+	# If "${pkgname}-${pkgver}-${CARCH}" doesn't exists, create it.
+	[ -d "${pkgname}-${pkgver}-${CARCH}" ] || mkdir "${pkgname}-${pkgver}-${CARCH}"
 
 	# Extract the .deb file
-	ar x ${pkgname}_${pkgver}-1_${_CARCH}.deb --output "${pkgname}-${pkgver}"
+	ar x ${pkgname}_${pkgver}-1_${_CARCH}.deb --output "${pkgname}-${pkgver}-${CARCH}"
 	
 	# Remove unnecessary files
-	rm "${pkgname}-${pkgver}"/{control.tar.gz,debian-binary}
+	rm "${pkgname}-${pkgver}-${CARCH}"/{control.tar.gz,debian-binary}
 
 	# Extract the installation files
-	tar -Jxf "${pkgname}-${pkgver}"/data.tar.xz -C "${pkgname}-${pkgver}"
+	tar -Jxf "${pkgname}-${pkgver}-${CARCH}"/data.tar.xz -C "${pkgname}-${pkgver}-${CARCH}"
 }
 
 package() {
-	cd "${pkgname}-${pkgver}"
+	cd "${pkgname}-${pkgver}-${CARCH}"
 
 	# Create the necessary directories
 	install -dm755 "${pkgdir}/usr/bin"
