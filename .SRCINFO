@@ -1,13 +1,15 @@
 pkgbase = python-pycddl
 	pkgdesc = Deserialize CBOR and/or do CDDL schema validation
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/pycddl/
 	arch = any
 	license = MIT
 	makedepends = python-maturin
 	makedepends = python-build
 	makedepends = python-installer
+	depends = gcc-libs
+	depends = glibc
 	depends = python
 	source = https://files.pythonhosted.org/packages/source/p/pycddl/pycddl-0.6.1.tar.gz
 	sha512sums = 63e2f26347092b3f3fab9e46cca7c1a1716cfc8e6c3820d5aba942ba96ad22a1a3bff3e7ed6b6dcbb84b388a07ad82aad4849c45687003f6b11454ceae890458
