@@ -1,16 +1,15 @@
 pkgbase = perl-stat-lsmode
-	pkgdesc = format file modes like the ls -l command does
-	pkgver = 0.50
+	pkgdesc = format file modes like the C<ls -l> command does
+	pkgver = 0.51
 	pkgrel = 1
-	url = http://search.cpan.org/dist/Stat-lsMode
+	url = https://metacpan.org/release/Stat-lsMode
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	depends = perl
+	depends = perl>=5.006
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/M/MJ/MJD/Stat-lsMode-0.50.tar.gz
-	md5sums = bf7e558fd0d668dffb2dcd62d21ef635
-	sha512sums = dec0617efbf65b64d348519e9e591ccf34cd50d857ba253feef8099ffd7bfc6f89f0e57fa90b4c4f3f2f3e02aa07ae66b3aac194276364269b73e5b5dbe8b9f4
+	source = http://search.cpan.org/CPAN/authors/id/A/AR/ARISTOTLE/Stat-lsMode-0.51.tar.gz
+	md5sums = 7d34325a85c815c2ca744b414048b2fe
+	sha512sums = d1838efb8c6c6b27981247a5380335b167fd92cabbe0492b687ac245b55ddc8628256ef60ee0ec69753b0f4ec8977b547cc4baeac5f88637a7f11bd8467e9ec9
 
 pkgname = perl-stat-lsmode
-
