@@ -1,10 +1,10 @@
 pkgbase = hypnotix
 	pkgdesc = An IPTV streaming application with support for live TV, movies and series.
-	pkgver = 4.4
+	pkgver = 4.5
 	pkgrel = 1
 	url = https://github.com/linuxmint/hypnotix
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	depends = circle-flags
 	depends = dconf
 	depends = hicolor-icon-theme
@@ -17,7 +17,7 @@ pkgbase = hypnotix
 	depends = python-unidecode
 	depends = xapp
 	depends = yt-dlp
-	source = hypnotix-4.4.tar.gz::https://github.com/linuxmint/hypnotix/archive/refs/tags/4.4.tar.gz
-	sha256sums = caff394f57a96e784329338feeb39ea0f62b1cbca7b6eec637f013eced67adca
+	source = hypnotix-4.5.tar.gz::https://github.com/linuxmint/hypnotix/archive/refs/tags/4.5.tar.gz
+	sha256sums = eb7b74a42f7bf647b457501585128dbb21024a08f2c2dde96adf7fb31fb1ee4c
 
 pkgname = hypnotix
