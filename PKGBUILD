@@ -35,6 +35,11 @@ package() {
   # Compile the project using make
   make
 
+  # Create necessary directories for the package structure
+  mkdir -p "$pkgdir/usr/bin"
+  mkdir -p "$pkgdir/usr/share/applications"
+  mkdir -p "$pkgdir/usr/share/doc/$pkgname"
+
   # Install the executable to the package directory
   install -Dm755 proFileX "$pkgdir/usr/bin/proFileX"
 
