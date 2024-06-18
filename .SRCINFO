@@ -1,6 +1,6 @@
 pkgbase = openwebrx-plus-git
 	pkgdesc = Open source, multi-user SDR receiver software with a web interface
-	pkgver = 1.2.60.r1.g0a6225a1
+	pkgver = 1.2.61.r2.g78db155d
 	pkgrel = 1
 	url = https://luarvique.github.io/ppa/
 	install = openwebrx-plus.install
