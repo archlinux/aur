@@ -1,0 +1,13 @@
+pkgbase = photoprism-tensorflow-avx2-bin
+	pkgdesc = PhotoPrism Tensorflow 1.15 with cpu avx2 support
+	pkgver = 1.15.2
+	pkgrel = 1
+	url = https://github.com/tensorflow/tensorflow
+	arch = x86_64
+	license = Apache-2.0
+	provides = photoprism-tensorflow
+	conflicts = photoprism-tensorflow
+	source = https://dl.photoprism.org/tensorflow/amd64/libtensorflow-amd64-avx2-1.15.2.tar.gz
+	sha256sums = ceee74baa813ffb0c88cbcef24d27adb8cfe6d35e31258d2e467ead1f2bb0a34
+
+pkgname = photoprism-tensorflow-avx2-bin
