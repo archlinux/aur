@@ -18,6 +18,7 @@ pkgbase = nymvpn-x-bin
 	optdepends = nym-vpnd: NymVPN daemon as a systemd service
 	provides = nymvpn-x
 	conflicts = nymvpn-x
+	options = !debug
 	source = https://github.com/nymtech/nym-vpn-client/releases/download/nightly-x/nymvpn-x_0.1.2-dev_linux_x64
 	source = nymvpn-x-wrapper.sh
 	source = nymvpn-x.desktop
