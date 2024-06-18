@@ -1,0 +1,17 @@
+pkgbase = watchit-appimage
+	pkgdesc = WatchIt is a movie playback system that allows users to filter, search, and play movies.
+	pkgver = 1.0.0.beta.0
+	pkgrel = 1
+	url = https://github.com/WatchItDev/watchit-app
+	arch = x86_64
+	license = AGPL-3.0
+	depends = hicolor-icon-theme
+	options = !strip
+	source = watchit::https://github.com/WatchItDev/watchit-app/releases/download/v1.0.0-beta.0/watchit-1.0.0-beta.0.AppImage
+	source = https://github.com/WatchItDev/watchit-app/releases/download/v1.0.0-beta.0/watchit_1.0.0-beta.0_amd64.deb
+	source = desktoppatch.patch
+	sha256sums = d2bab55cd99a1db456d9921b77f9fa809a498bf4b1cb1e4d90f907332d2cefcb
+	sha256sums = ea7763256bda3b3805f1024130db7d53f4a23e82121b384af02333e99054aef8
+	sha256sums = 426706b37c7f96eb0f4e3a5c20ae28a8c92101025e9efd6a4178775286a8f2af
+
+pkgname = watchit-appimage

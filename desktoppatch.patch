@@ -1,0 +1,10 @@
+--- watchit.desktop	2024-06-13 18:59:05.000000000 -0400
++++ watchit2.desktop	2024-06-18 11:23:41.946179401 -0400
+@@ -1,6 +1,6 @@
+ [Desktop Entry]
+ Name=watchit
+-Exec=/opt/watchit/watchit %U
++Exec=/usr/bin/watchit %U
+ Terminal=false
+ Type=Application
+ Icon=watchit
