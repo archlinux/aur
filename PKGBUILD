@@ -1,3 +1,4 @@
+# maintainer: username227 { gfrank227 [at] gmail [dot] com }
 pkgname=watchit-appimage
 _pkgname=watchit
 _pkgver=1.0.0-beta.0
