@@ -2,7 +2,7 @@
 
 pkgname=snap-pac-grub
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Pacman hook to update GRUB entries for grub-btrfs after snap-pac made snapshots'
 arch=('any')
 license=('MIT')
@@ -16,7 +16,7 @@ validpgpkeys=('56C3E775E72B0C8B1C0C1BD0B5DB77409B11B601')
 
 package() {
     install -Dm755 -t "$pkgdir/usr/share/libalpm/scripts" grub-mkconfig
-    install -Dm644 -t "$pkgdir/usr/share/libalpm/hooks" zz-snap-pac-grub-post.hook
+    install -Dm644 -t "$pkgdir/usr/share/libalpm/hooks" zz-snap-pac-postz-grub.hook
     install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
 
