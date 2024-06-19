@@ -1,6 +1,6 @@
 pkgbase = musicfree-desktop-git
 	pkgdesc = 插件化、定制化、无广告的免费音乐播放器
-	pkgver = 0.0.3.r2.gba906a2
+	pkgver = 0.0.4.r0.g62c1095
 	pkgrel = 1
 	url = http://musicfree.upup.fun/
 	arch = any
@@ -10,7 +10,8 @@ pkgbase = musicfree-desktop-git
 	makedepends = nvm
 	makedepends = git
 	makedepends = gcc
-	makedepends = base-devel
+	makedepends = curl
+	makedepends = cmake
 	depends = electron25
 	depends = libvips
 	depends = nodejs
