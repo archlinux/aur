@@ -3,18 +3,18 @@
 
 pkgname=juicefs-oss
 _pkgname=juicefs
-pkgver=1.2.0dev
+pkgver=1.2.0
 _pkgver=$(echo $pkgver | sed -E 's/^([0-9\.]+)([^0-9].*)?$/\1-\2/' | sed -E 's/-$//')
 pkgrel=1
 pkgdesc="A distributed POSIX file system built on top of Redis and S3. (FOSS version)"
 arch=('x86_64')
 url="https://github.com/juicedata/juicefs"
-license=('AGPL3')
+license=('Apache-2.0')
 conflicts=('juicefs')
 depends=('glibc')
 makedepends=('go')
 source=("juicefs-$_pkgver.tar.gz::https://github.com/juicedata/juicefs/archive/refs/tags/v$_pkgver.tar.gz")
-sha256sums=('ace6b0e0b3c6cd16bd16fbec3da595ea3062ca619b58d13aafb63fbf48407515')
+sha256sums=('661cf04d83b06e676cbce7a33a37d742787b098c7703ed528b1456391b6017ec')
 
 prepare() {
   cd "$_pkgname-$_pkgver"
