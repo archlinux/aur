@@ -5,7 +5,7 @@
 _pkgbase=yt6801
 pkgname=yt6801-dkms
 pkgver=1.0.28
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel module for Motorcomm YT6801 ethernet controller (DKMS)"
 arch=('x86_64')
 url="https://deb.tuxedocomputers.com/ubuntu/pool/main/t/tuxedo-yt6801/"
@@ -21,10 +21,12 @@ package() {
   cd ${srcdir}
   # change dkms.conf to CRLF
   find . -type f -exec dos2unix {} \;
-  # awk '{ sub("\r$", ""); if ($0 !~ "REMAKE_INITRD") print }' dkms.conf > dkms_lf.conf
+  
+  # Filter out REMAKE_INITRD from dkms.conf
+  awk '{ if ($0 !~ "REMAKE_INITRD") print }' dkms.conf > dkms_filtered.conf
 
   # Copy dkms.conf
-  install -Dm644 dkms.conf ${pkgdir}/usr/src/${_fullname}/dkms.conf
+  install -Dm644 dkms_filtered.conf ${pkgdir}/usr/src/${_fullname}/dkms.conf
 
   # Copy sources (including Makefile)
   install -Dm644 ${srcdir}/*.c ${pkgdir}/usr/src/${_fullname}/
