@@ -1,0 +1,13 @@
+pkgbase = reproblas
+	pkgdesc = Reproducible Basic Linear Algebra Subprograms
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://bebop.cs.berkeley.edu/reproblas/
+	arch = x86_64
+	license = custom
+	makedepends = python
+	depends = openmpi
+	source = reproblas-2.1.0.tar.gz::https://bebop.cs.berkeley.edu/reproblas/include/download.php?filetype=tar.gz
+	sha256sums = f0c6b219691b3c5a07c442e22ca0485f37454c2e4847a8872ba4e46190d439c2
+
+pkgname = reproblas
