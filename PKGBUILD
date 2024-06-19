@@ -11,14 +11,49 @@ pkgdesc='Privacy-focused web browser developed by Mullvad VPN and the Tor Projec
 arch=(x86_64)
 url=https://mullvad.net/en/browser
 license=(GPL-3.0-or-later MPL-2.0)
-depends=(dbus-glib ffmpeg gtk3 libpulse libxt mime-types nss ttf-font)
+depends=(
+  alsa-lib
+  at-spi2-core
+  bash
+  cairo
+  dbus
+  dbus-glib
+  ffmpeg
+  fontconfig
+  freetype2
+  gcc-libs
+  gdk-pixbuf2
+  glib2
+  glibc
+  gtk3
+  hicolor-icon-theme
+  libpulse
+  libx11
+  libxcb
+  libxcomposite
+  libxcursor
+  libxdamage
+  libxext
+  libxfixes
+  libxi
+  libxrandr
+  libxrender
+  libxss
+  libxt
+  libxtst
+  mime-types
+  nspr
+  nss
+  pango
+  ttf-font
+)
 optdepends=(
   'hunspell-en_US: Spell checking, American English'
   'libnotify: Notification integration'
   'networkmanager: Location detection via available WiFi networks'
-  'pulseaudio: Audio support'
   'speech-dispatcher: Text-to-Speech'
-  'xdg-desktop-portal: Screensharing with Wayland')
+  'xdg-desktop-portal: Screensharing with Wayland'
+)
 provides=(mullvad-browser=$pkgver mullvad-browser)
 conflicts=(mullvad-browser)
 
