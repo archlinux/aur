@@ -1,6 +1,6 @@
 pkgbase = thrive
 	pkgdesc = the evolution game Thrive.
-	pkgver = 0.6.7
+	pkgver = 0.6.7.1
 	pkgrel = 1
 	url = https://revolutionarygamesstudio.com/
 	arch = x86_64
@@ -28,12 +28,12 @@ pkgbase = thrive
 	depends = glibc
 	depends = libxcursor
 	depends = fontconfig
-	source = git+https://github.com/Revolutionary-Games/Thrive.git#tag=v0.6.7
+	source = git+https://github.com/Revolutionary-Games/Thrive.git#tag=v0.6.7.1
 	source = git+https://github.com/Revolutionary-Games/RevolutionaryGamesCommon.git
 	source = git+https://github.com/jrouwe/JoltPhysics.git
 	source = git+https://github.com/cameron314/concurrentqueue.git
 	source = 4.2.2.stable.mono.zip::https://github.com/godotengine/godot/releases/download/4.2.2-stable/Godot_v4.2.2-stable_mono_export_templates.tpz
-	sha256sums = 7a2c77b9bd9f534294a9ddee8c82781d039b2146293e82983ac6b3204a071824
+	sha256sums = 21259ee2a6f30801f12656be82d597f5acb919ec3e2471b8f0dc1527abbfec21
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

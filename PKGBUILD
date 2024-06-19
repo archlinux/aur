@@ -2,7 +2,7 @@ _godot_repo=https://github.com/godotengine/godot/releases/download
 _godot=4.2.2
 
 pkgname=thrive
-pkgver=0.6.7
+pkgver=0.6.7.1
 pkgrel=1
 pkgdesc="the evolution game Thrive."
 arch=("x86_64")
@@ -21,7 +21,7 @@ source=(
     "git+https://github.com/cameron314/concurrentqueue.git"
     "$_godot.stable.mono.zip::$_godot_repo/$_godot-stable/Godot_v$_godot-stable_mono_export_templates.tpz"
 )
-sha256sums=('7a2c77b9bd9f534294a9ddee8c82781d039b2146293e82983ac6b3204a071824'
+sha256sums=('21259ee2a6f30801f12656be82d597f5acb919ec3e2471b8f0dc1527abbfec21'
             'SKIP'
             'SKIP'
             'SKIP'
