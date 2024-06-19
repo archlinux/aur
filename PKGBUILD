@@ -1,40 +1,59 @@
-# Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=krdc-git
-pkgver=15.12.2.r28.g0891645
+_pkgname=krdc
+pkgver=24.01.90.r112.g7a0de69
 pkgrel=1
-pkgdesc='Remote Desktop Client (frameworks branch)'
-url='http://kde.org/applications/internet/krdc/'
-arch=('i686' 'x86_64')
-license=('GPL' 'LGPL' 'FDL')
-depends=('telepathy-qt5' 'kcmutils' 'kdnssd' 'knotifyconfig' 'libvncserver')
-makedepends=('extra-cmake-modules' 'git' 'kdoctools' 'kdelibs4support')
-optdepends=('freerdp: RDP support'
-            'kdebase-keditbookmarks: to edit bookmarks')
-provides=(kdenetwork-krdc)
-conflicts=(kdenetwork-krdc)
-source=('git://anongit.kde.org/krdc.git')
-md5sums=('SKIP')
+pkgdesc='Remote Desktop Client'
+url='https://apps.kde.org/krdc/'
+arch=(x86_64)
+license=(GPL-2.0-or-later LGPL-2.0-or-later)
+depends=(gcc-libs
+         glibc
+         kactivities5
+         kbookmarks5
+         kcmutils5
+         kcompletion5
+         kconfig5
+         kconfigwidgets5
+         kcoreaddons5
+         kdnssd5
+         ki18n5
+         kio5
+         knotifications5
+         knotifyconfig5
+         kwidgetsaddons5
+         kwallet5
+         kxmlgui5
+         qt5-base)
+makedepends=(extra-cmake-modules
+             freerdp2
+             kdoctools5
+             libvncserver)
+optdepends=('libvncserver: VNC support'
+            'libssh: VNC support'
+            'freerdp2: RDP support'
+            'keditbookmarks: to edit bookmarks')
+groups=(kde-applications
+        kde-network)
+source=(git+https://invent.kde.org/network/krdc)
+sha256sums=('SKIP')
+provides=(${_pkgname})
+conflicts=(${_pkgname})
 
 pkgver() {
-  cd krdc
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd $_pkgname
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-  mkdir -p build
-  cd build
-  cmake ../krdc \
-    -DHAVE_XFREERDP=ON \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
+  cmake -B build -S $_pkgname \
     -DBUILD_TESTING=OFF
-  make
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
