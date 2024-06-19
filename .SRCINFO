@@ -1,7 +1,7 @@
 pkgbase = python-lazy-loader
 	pkgdesc = Populate library namespace without incurring immediate import costs
 	pkgver = 0.4
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/scientific-python/lazy_loader
 	arch = any
 	license = BSD-3-Clause
@@ -12,7 +12,7 @@ pkgbase = python-lazy-loader
 	makedepends = python-installer
 	makedepends = python-setuptools
 	depends = python
-	source = lazy_loader-0.4.tar.gz::https://github.com/scientific-python/lazy_loader/archive/refs/tags/v0.4.tar.gz
-	sha512sums = 02ab8734dca77f53d742e2cf992f921ea2e440bd92a073a853b37aac69bb107484d25065565d85c68f4ba7e67f068321365bf82e0cb962ea58735515c1aa9c3b
+	source = lazy-loader-0.4.tar.gz::https://github.com/scientific-python/lazy_loader/archive/refs/tags/v0.4.tar.gz
+	sha512sums = 3512488bbb3f1699adcbcc7461715d208191b02f8b43b77cc73e703600b13aa7bed62575ffc98ab210ccdb05e8004d5f8f22eaca33fc780afbc1474c15ace8c2
 
 pkgname = python-lazy-loader
