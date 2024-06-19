@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fsolauncher-bin
 _pkgname="FreeSO Launcher"
-pkgver=1.12.1_prod.20
+pkgver=1.12.1_prod.21
 _electronversion=30
 pkgrel=1
 pkgdesc="Official FreeSO Launcher made with Electron"
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/${pkgver//_/-}/${pkgname%-bin}-${pkgver//_/-}.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('5338eb5acf34fba4a556c9af821501de704eaf8e9ec225a1b470db10ff2cc710'
+sha256sums=('d9d5b6075cb0a07ab451a152927c4aaca91582b3ccc6a74d38e9c9a0f1c34bf0'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
