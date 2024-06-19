@@ -1,0 +1,18 @@
+--- a/CMakeLists.txt	2024-06-18 12:27:37.142560543 +0200
++++ b/CMakeLists.txt	2024-06-19 09:03:16.868031710 +0200
+@@ -19,12 +19,12 @@
+ add_definitions(-DCLK=1)
+ add_definitions(-DPACKAGE_NAME="${PROJECT_NAME}")
+ add_definitions(-DVERSION="${PROJECT_VERSION}")
+-add_definitions(-DICONDIR="${CMAKE_INSTALL_PREFIX}/GNUstep/Apps/FSViewer.app")
++add_definitions(-DICONDIR="${CMAKE_INSTALL_PREFIX}/lib/GNUstep/Applications/FSViewer.app")
+ add_definitions(-DLOCALEDIR="${CMAKE_INSTALL_PREFIX}/share/locale")
+ 
+ install(TARGETS ${EXECUTABLE} DESTINATION bin)
+-install(DIRECTORY xpm DESTINATION GNUstep/Apps/FSViewer.app)
+-install(DIRECTORY tiff DESTINATION GNUstep/Apps/FSViewer.app)
++install(DIRECTORY xpm DESTINATION lib/GNUstep/Applications/FSViewer.app)
++install(DIRECTORY tiff DESTINATION lib/GNUstep/Applications/FSViewer.app)
+ 
+ #add_subdirectory(src/regexp)
+ #add_subdirectory(src)

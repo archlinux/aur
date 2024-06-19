@@ -1,0 +1,20 @@
+pkgbase = fsviewer
+	pkgdesc = A NeXT FileViewer lookalike for Window Maker
+	pkgver = 2024.06.18
+	pkgrel = 1
+	url = https://github.com/roblillack/fsviewer
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL-2.0-or-later
+	makedepends = cmake
+	depends = windowmaker
+	options = !debug
+	source = fsviewer-2024.06.18.tar.gz::https://github.com/roblillack/fsviewer/archive/525e78f9f2b66d6b22e99806e6cc7fc5300699bb.tar.gz
+	source = fsviewer-lib.patch
+	b2sums = db1f350d40e51c8db7c2e048c53606cbb0153bc167102dbccfcd631a0605c21609512db706924a2af519443e04c0a9bdf08da80f8b6bea6c16359bcd89338559
+	b2sums = c4433f9607e6d13ac60785fe0d5e0bdbd31200a99ed9f213f05e463acd0370879bec55826cad2297793e80427fde0781a0444fb391e2735e20bce3e762da1ac0
+
+pkgname = fsviewer
