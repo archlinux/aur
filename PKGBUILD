@@ -5,9 +5,10 @@ pkgrel=1
 pkgdesc="A cross platform, vulkan terminal emulator written in rust (git development version)"
 arch=('x86_64')
 url="https://github.com/nuIIpointerexception/vterm"
-license=('MPL2')
+license=('MPL-2.0')
 depends=(
-	"vulkan-icd-loader"
+	"gcc-libs"
+	"glibc"
 )
 makedepends=(
 	"git"
@@ -25,6 +26,7 @@ pkgver() {
 }
 
 prepare() {
+	cd "$srcdir/${pkgname}"
 	rustup override set nightly
 }
 
@@ -40,6 +42,6 @@ check() {
 
 package() {
 	cd "$srcdir/${pkgname}"
-	install -Dm0755 -t "$pkgdir/usr/bin/" "target/x86_64-unknown-linux-gnu/release/vterm"
+	install -Dm0755 -t "$pkgdir/usr/bin/" "target/$CARCH-unknown-linux-gnu/release/vterm"
 	install -Dm644 "assets/linux/vterm.desktop" "$pkgdir/usr/share/applications/vterm.desktop"
 }

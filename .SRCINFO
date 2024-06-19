@@ -4,13 +4,14 @@ pkgbase = vterm-git
 	pkgrel = 1
 	url = https://github.com/nuIIpointerexception/vterm
 	arch = x86_64
-	license = MPL2
+	license = MPL-2.0
 	makedepends = git
 	makedepends = cargo
 	makedepends = rustup
 	makedepends = vulkan-headers
 	makedepends = just
-	depends = vulkan-icd-loader
+	depends = gcc-libs
+	depends = glibc
 	source = vterm-git::git+https://github.com/nuIIpointerexception/vterm.git
 	sha256sums = SKIP
 
