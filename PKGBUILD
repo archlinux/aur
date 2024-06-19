@@ -1,6 +1,6 @@
 # Maintainer: stein.cadwal@proton.me
 pkgname=vterm-git
-pkgver=r6.0dee7de
+pkgver=r11.bbf8e18
 pkgrel=1
 pkgdesc="A cross platform, vulkan terminal emulator written in rust (git development version)"
 arch=('x86_64')
@@ -41,5 +41,5 @@ check() {
 package() {
 	cd "$srcdir/${pkgname}"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "target/x86_64-unknown-linux-gnu/release/vterm"
-	# install -Dm644 "extra/linux/Vterm.desktop" "$pkgdir/usr/share/applications/vterm.desktop"
+	install -Dm644 "assets/linux/vterm.desktop" "$pkgdir/usr/share/applications/vterm.desktop"
 }
