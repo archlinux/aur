@@ -2,12 +2,13 @@
 
 pkgname=pcsx-redux-git
 _pkgname=pcsx-redux
-pkgver=r5164.eb231149
+pkgver=r5949.1712d1da
 pkgrel=1
 pkgdesc='Modern fork of the pcsxr PlayStation 1 emulator focused on reverse engineering and homebrew development'
 arch=('x86_64' 'aarch64')
 url='https://github.com/grumpycoders/pcsx-redux.git'
 license=('GPL2')
+options=('!lto')
 depends=('ffmpeg'
          'glfw'
          'libuv'
@@ -17,7 +18,6 @@ depends=('ffmpeg'
          'capstone'
          'curl'
          )
-options=('!buildflags')
 makedepends=('git'
              'make'
              'pkg-config'
@@ -143,7 +143,6 @@ prepare() {
   cd third_party/luv
   git submodule init
   git config submodule.deps/lua-compat-5.3.url "$srcdir/lua-compat-5.3"
-
   git -c protocol.file.allow=always submodule update deps/lua-compat-5.3
 }
 
