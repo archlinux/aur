@@ -3,10 +3,10 @@
 _pkgname=swiftly
 pkgname=swiftly-bin
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Swift toolchain installer and manager, written in Swift."
 arch=('x86_64' 'aarch64')
-url="https://swift-server.github.io/swiftly/"
+url="https://swiftlang.github.io/swiftly/"
 license=('apache')
 depends=('util-linux-libs' 'libxml2' 'ncurses')
 optdepends=('python39: required for REPL' 'gnupg: required for toolchain verification')
