@@ -2,12 +2,12 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=sshesame-git
-pkgver=0.0.25.r0.gb3fe49a
+pkgver=0.0.33.r0.g1a16fdc
 pkgrel=1
 pkgdesc="A fake SSH server that lets everyone in and logs their activity"
 arch=('x86_64')
 url='https://github.com/jaksi/sshesame'
-license=('Apache')
+license=('Apache-2.0')
 depends=('glibc')
 makedepends=('git' 'go')
 source=("sshesame::git+https://github.com/jaksi/sshesame")
