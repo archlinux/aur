@@ -1,18 +1,19 @@
 pkgbase = dnsdiag
 	pkgdesc = DNS Measurement, Troubleshooting and Security Auditing Toolset
-	pkgver = 2.1.0
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://dnsdiag.org
 	arch = any
-	license = BSD
+	license = BSD-2-Clause
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python
-	depends = python-dnspython
-	depends = python-requests
-	depends = python-requests-toolbelt
+	depends = python-cryptography
 	depends = python-cymruwhois
-	source = dnsdiag-2.1.0.tar.gz::https://github.com/farrokhi/dnsdiag/archive/refs/tags/v2.1.0.tar.gz
-	sha256sums = 2e755179cc648959e71d00f739eee4b1564d3f3844ec0587d10425b2e1c46960
+	depends = python-dnspython
+	depends = python-h2
+	depends = python-httpx
+	source = dnsdiag-2.5.0.tar.gz::https://github.com/farrokhi/dnsdiag/archive/refs/tags/v2.5.0.tar.gz
+	sha256sums = c79e2895c8661f607a5a20a3e814042f152bb489d05e450ccdd889222b87f38f
 
 pkgname = dnsdiag
