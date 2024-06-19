@@ -1,6 +1,6 @@
 pkgbase = python-drizzlepac
 	pkgdesc = AstroDrizzle for HST images
-	pkgver = 3.7.0
+	pkgver = 3.7.0.1
 	pkgrel = 1
 	url = http://www.stsci.edu/scientific-community/software/drizzlepac.html
 	arch = i686
@@ -28,9 +28,9 @@ pkgbase = python-drizzlepac
 	makedepends = python-installer
 	makedepends = python-astropy>=5.0.4
 	makedepends = python-markupsafe
-	source = https://files.pythonhosted.org/packages/source/d/drizzlepac/drizzlepac-3.7.0.tar.gz
+	source = https://files.pythonhosted.org/packages/source/d/drizzlepac/drizzlepac-3.7.0.1.tar.gz
 	source = https://raw.githubusercontent.com/spacetelescope/drizzlepac/master/tests/hap/ACSWFC3ListDefault50.csv
-	md5sums = 8cc6fdeab3a8483033d4e10267ea6a09
+	md5sums = 9f8853a7e6d4bfaf49af6699d2377980
 	md5sums = acaf7d8bcf0f6244042bba0df3d03679
 
 pkgname = python-drizzlepac

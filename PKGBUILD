@@ -1,9 +1,10 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
+
 pkgbase=python-drizzlepac
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=3.7.0
+pkgver=3.7.0.1
 pkgrel=1
 pkgdesc="AstroDrizzle for HST images"
 arch=('i686' 'x86_64')
@@ -53,7 +54,7 @@ checkdepends=('python-pytest'
 #              'python-crds'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
        "https://raw.githubusercontent.com/spacetelescope/drizzlepac/master/tests/hap/ACSWFC3ListDefault50.csv")
-md5sums=('8cc6fdeab3a8483033d4e10267ea6a09'
+md5sums=('9f8853a7e6d4bfaf49af6699d2377980'
          'acaf7d8bcf0f6244042bba0df3d03679')
 
 get_pyinfo() {
