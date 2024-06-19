@@ -3,7 +3,7 @@
 pkgbase=bitwuzla
 pkgname=("${pkgbase}" "${pkgbase}-doc")
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='SMT solver for the theories of fixed-size bit-vectors, floating-point arithmetic, arrays and uninterpreted functions and their combinations'
 arch=('x86_64')
 url='https://bitwuzla.github.io'
@@ -18,9 +18,11 @@ makedepends=(
     'cmake'
     'cython'
     'doxygen'
+    'gtest' # Needed even with --nocheck
     'meson>=0.64'
     'ninja'
     'python-breathe'
+    'python-pytest' # Needed even with --nocheck
     'python-sphinx'
     'python-sphinx-tabs'
     'python-sphinx_rtd_theme'
@@ -28,7 +30,6 @@ makedepends=(
     'python>=3.7'
     'symfpu-cvc5'
 )
-checkdepends=('gtest' 'python-pytest')
 optdepends=(
     'cryptominisat5: Support for the CryptoMiniSat SAT solver'
     'python>=3.7: Python bindings'

@@ -1,19 +1,19 @@
 pkgbase = bitwuzla
 	pkgdesc = SMT solver for the theories of fixed-size bit-vectors, floating-point arithmetic, arrays and uninterpreted functions and their combinations
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitwuzla.github.io
 	arch = x86_64
 	license = MIT
-	checkdepends = gtest
-	checkdepends = python-pytest
 	makedepends = cadical>=1.5.0
 	makedepends = cmake
 	makedepends = cython
 	makedepends = doxygen
+	makedepends = gtest
 	makedepends = meson>=0.64
 	makedepends = ninja
 	makedepends = python-breathe
+	makedepends = python-pytest
 	makedepends = python-sphinx
 	makedepends = python-sphinx-tabs
 	makedepends = python-sphinx_rtd_theme
