@@ -1,4 +1,5 @@
 # Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
+# Contributor: crian <crian84 at gmail dot com>
 pkgbase = auto-cpufreq-git
 	pkgdesc = Automatic CPU speed & power optimizer
 	pkgver = 2.3.0.r16.ga7df94d
