@@ -1,0 +1,13 @@
+_info() {
+    echo "--> A system reboot is required after installation to automatically load the loongson-gnu-toolchain environment variable. <--"
+    echo "--> 安装后需要重启系统，才能自动加载 loongson-gnu-toolchain 环境变量。<--"
+}
+
+post_install() {
+    _info
+}
+
+post_upgrade() {
+    _info
+}
+

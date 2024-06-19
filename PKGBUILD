@@ -13,13 +13,13 @@ provides=(${pkgbase%-bin} loongson-gcc)
 conflicts=(${pkgbase%-bin} loongson-gcc)
 depends=(
     bash
-    gcc-libs
     perl
     python)
 makedepends=()
 source=("${pkgbase%-bin}-${pkgver%%_*}-${CARCH}-loongarch64-linux-gnu-${pkgver#*_}-1.tar.xz::${url}/${pkgbase%-bin}-${pkgver%%_*}-${CARCH}-loongarch64-linux-gnu-${pkgver#*_}-1.tar.xz")
 sha256sums=('ae348afcd27a7c0fa6a58f1358842a3dbef8a4851ed018b43ddc4dac676649b8')
 options=(!strip !emptydirs !debug)
+install=${pkgname}.install
 noextract=(${pkgbase%-bin}-${pkgver%%_*}-${CARCH}-loongarch64-linux-gnu-${pkgver#*_}-1.tar.xz)
 
 package() {
