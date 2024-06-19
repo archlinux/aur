@@ -1,0 +1,26 @@
+pkgbase = python-uaibot
+	pkgdesc = A browser-based robotic simulator
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://uaibot.github.io/
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-numpy
+	depends = python-httplib2
+	depends = python-cvxopt
+	depends = python-pywavefront
+	depends = python-numpy-stl
+	depends = python-plotly
+	depends = python-scipy
+	depends = python-colour
+	depends = python-setuptools
+	depends = python-collada
+	depends = ipython
+	source = https://files.pythonhosted.org/packages/source/u/uaibot/uaibot-0.0.2.tar.gz
+	sha256sums = 2860efb2a099af1498a65d2ec89c46f6fdffdbcabc19879bfae70916204f90c4
+
+pkgname = python-uaibot
