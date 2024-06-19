@@ -1,6 +1,6 @@
 pkgbase = dprint
 	pkgdesc = Pluggable and configurable code formatting platform
-	pkgver = 0.46.2
+	pkgver = 0.46.3
 	pkgrel = 1
 	url = https://github.com/dprint/dprint
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = dprint
 	provides = dprint
 	conflicts = dprint-bin
 	options = !lto
-	source = dprint-0.46.2.tar.gz::https://github.com/dprint/dprint/archive/0.46.2.tar.gz
-	sha256sums = 034d9462527ba26967f63977a0e50790ad90564d6a30288c8da92e6c5cf88f9d
+	source = dprint-0.46.3.tar.gz::https://github.com/dprint/dprint/archive/0.46.3.tar.gz
+	sha256sums = 3eb92d7f47c90065879abedf661e6008258eed9b081ddecf083678048da2482e
 
 pkgname = dprint
