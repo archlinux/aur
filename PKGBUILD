@@ -4,7 +4,7 @@
 
 pkgname=krdc-git
 _pkgname=krdc
-pkgver=24.01.90.r112.g7a0de69
+pkgver=24.07.70.r58.g7a0de69
 pkgrel=1
 pkgdesc='Remote Desktop Client'
 url='https://apps.kde.org/krdc/'
@@ -46,7 +46,11 @@ conflicts=(${_pkgname})
 
 pkgver() {
   cd $_pkgname
-  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+  major=$(grep -m1 "VERSION_MAJOR" CMakeLists.txt | cut -d'"' -f2)
+  minor=$(grep -m1 "VERSION_MINOR" CMakeLists.txt | cut -d'"' -f2)
+  micro=$(grep -m1 "VERSION_MICRO" CMakeLists.txt | cut -d'"' -f2)
+  blame=$(git blame CMakeLists.txt | grep -m1 "VERSION_MINOR" | cut -d' ' -f1)
+  printf "%s.%s.%s.r%s.g%s" $major $minor $micro $(git rev-list --count $blame..HEAD) "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
