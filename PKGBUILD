@@ -1,17 +1,19 @@
-# Maintainer:  Vincent Grande <shoober420@gmail.com>
+# Maintainer: a821 at (nospam) mail de
+# Contributor:  Vincent Grande <shoober420@gmail.com>
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Geoffroy Carrier <geoffroy.carrier@koon.fr>
 # Contributor: congyiwu <congyiwu AT gmail DOT com>
 
 pkgname=json-c-git
-pkgver=0.15
+pkgver=r1340.6e481aa
 pkgrel=1
+epoch=1
 pkgdesc="A JSON implementation in C"
 url="https://github.com/json-c/json-c/wiki"
 license=(MIT)
 arch=(x86_64)
 depends=(glibc)
-makedepends=(git cmake)
+makedepends=(git cmake ninja)
 provides=(libjson-c.so json-c)
 conflicts=(json-c)
 source=("git+https://github.com/json-c/json-c")
@@ -19,33 +21,28 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd json-c
-  
-  git describe --tags --always | sed 's/-/+/g'
+  # no tags are reachable from HEAD
+  printf "r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
-prepare() {
-  cd json-c
-}
 
 build() {
-  CFLAGS+=" $CPPFLAGS"
-  CXXFLAGS+=" $CPPFLAGS"
-
-  cmake -Hjson-c -Bbuild \
+  cmake -S json-c -B build -G Ninja \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+    -DBUILD_STATIC_LIBS=OFF \
     -DENABLE_THREADING=ON \
     -DENABLE_RDRAND=OFF
   cmake --build build
 }
 
-#check() {
-#  cmake --build build --target test
-#}
+check() {
+  ctest --output-on-failure --stop-on-failure --test-dir build
+}
 
 package() {
-  DESTDIR="$pkgdir" cmake --build build --target install
+  DESTDIR="$pkgdir" cmake --install build
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 json-c/COPYING
 }
 
