@@ -1,6 +1,6 @@
 #Maintainer: Maxb0tbeep <max@polygonal.place)
 pkgname=projman
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A project manager CLI tool for organization and convenience"
 arch=(x86_64)
@@ -12,11 +12,11 @@ source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 md5sums=(SKIP)
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  nimble build -d:release
+	cd "$srcdir/$pkgname-$pkgver"
+	nimble build -d:release
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  install -Dm755 "build/$pkgname" "$pkgdir/usr/bin/${pkgname}"
+	cd "$srcdir/$pkgname-$pkgver"
+	install -Dm755 "build/$pkgname" "$pkgdir/usr/bin/${pkgname}"
 }
