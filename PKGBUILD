@@ -2,9 +2,9 @@
 _pkgname=musicfree
 pkgname="${_pkgname}-desktop-bin"
 _appname=MusicFreeDesktop
-pkgver=0.0.3
+pkgver=0.0.4
 _electronversion=25
-pkgrel=5
+pkgrel=1
 pkgdesc="插件化、定制化、无广告的免费音乐播放器"
 arch=('x86_64')
 url="http://musicfree.upup.fun/"
@@ -25,7 +25,7 @@ source=(
     "${pkgname}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_appname%Desktop}-${pkgver}-linux-amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('49341709db01fae878cb1df11c7e90cb131fd830ce2ea0bf74c2d8d5890a8671'
+sha256sums=('1b97b9479aed56c89d0bbfa68354b1dd14c02d91e3e77c6c96b6468645ad0cbd'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
