@@ -335,7 +335,6 @@ function launch() {
 	else
 		dbusProxy
 		echo "Launching WeChat UOS..."
-		sleep 0.1
 		execApp
 	fi
 }
