@@ -2,7 +2,7 @@
 pkgname=conduit-bin
 _pkgname=${pkgname/-bin/}
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="stable, binary, static versions of the Conduit server (Matrix protocol)"
 arch=('x86_64' 'aarch64')
 url="https://conduit.rs"
@@ -17,8 +17,8 @@ source=(
   'tmpfiles.conf'
   'sysusers.conf'
 )
-source_x86_64=("${_pkgname}::https://gitlab.com/api/v4/projects/famedly%2Fconduit/jobs/artifacts/master/raw/x86_64-unknown-linux-musl?job=artifacts")
-source_aarch64=("${_pkgname}::https://gitlab.com/api/v4/projects/famedly%2Fconduit/jobs/artifacts/master/raw/aarch64-unknown-linux-musl?job=artifacts")
+source_x86_64=("${_pkgname}::https://gitlab.com/api/v4/projects/famedly%2Fconduit/jobs/artifacts/v${pkgver}/raw/x86_64-unknown-linux-musl?job=artifacts")
+source_aarch64=("${_pkgname}::https://gitlab.com/api/v4/projects/famedly%2Fconduit/jobs/artifacts/v${pkgver}/raw/aarch64-unknown-linux-musl?job=artifacts")
 
 package() {
   install -vDm644 "${_pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
