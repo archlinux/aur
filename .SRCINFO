@@ -34,7 +34,7 @@ pkgbase = davinci-resolve-studio
 	conflicts = davinci-resolve-beta
 	conflicts = davinci-resolve-studio-beta
 	options = !strip
-	source = DaVinci_Resolve_Studio_18.6.6_Linux.zip::https://swr.cloud.blackmagicdesign.com/DaVinciResolve/v18.6.6/DaVinci_Resolve_Studio_18.6.6_Linux.zip?verify=1718654786-8uFBYOaipeLNESsn6SMeiAesIBp%2B9Xrja2gg5K6E9tI%3D
+	source = DaVinci_Resolve_Studio_18.6.6_Linux.zip::https://swr.cloud.blackmagicdesign.com/DaVinciResolve/v18.6.6/DaVinci_Resolve_Studio_18.6.6_Linux.zip?verify=1718829978-icdm9AdbCPjAag798lKsFF0sA%2B4B6CwuvpJFRV2Xx2s%3D
 	sha256sums = 27c33c942fec19533cf81fd5ebd19706e8c0fd92c6ad4da47402171b885d38e4
 
 pkgname = davinci-resolve-studio

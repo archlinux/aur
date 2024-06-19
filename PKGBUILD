@@ -181,8 +181,6 @@ prepare()
 
   ln -s "${srcdir}/squashfs-root/BlackmagicRAWPlayer/BlackmagicRawAPI" "${srcdir}/squashfs-root/bin/"
 
-  mv "${srcdir}/squashfs-root/libs/libc++.so.1" "${srcdir}/squashfs-root/libs/libc++.so.1.orig"
-
   # Disable old libs
   mkdir ${srcdir}/squashfs-root/libs/disabled-libraries
   mv ${srcdir}/squashfs-root/libs/libglib* ${srcdir}/squashfs-root/libs/disabled-libraries
