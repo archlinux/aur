@@ -12,7 +12,7 @@ pkgname=davinci-resolve
 major_version=18.6
 minor_version=6
 pkgver=${major_version}.${minor_version}
-pkgrel=3
+pkgrel=4
 
 if [ "$pkgname" == "davinci-resolve" ]; then
   # Variables for FREE edition
@@ -180,8 +180,6 @@ prepare()
   done < <(find . -type f '(' -name "*.desktop" -o -name "*.directory" -o -name "*.directory" -o -name "*.menu" ')' -print0)
 
   ln -s "${srcdir}/squashfs-root/BlackmagicRAWPlayer/BlackmagicRawAPI" "${srcdir}/squashfs-root/bin/"
-
-  mv "${srcdir}/squashfs-root/libs/libc++.so.1" "${srcdir}/squashfs-root/libs/libc++.so.1.orig"
 
   # Disable old libs
   mkdir ${srcdir}/squashfs-root/libs/disabled-libraries
