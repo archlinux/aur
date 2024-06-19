@@ -118,9 +118,9 @@ function execApp() {
 	if [[ ${wechatXserverPatch} = 1 ]]; then
 		xhost +
 	fi
-	if [ ! -d "${busDir}/bus" ]; then
+	if [ ! -S "${busDir}/bus" ]; then
 		echo "[Warn] Waiting for D-Bus proxy..."
-		while [ ! -d "${busDir}/bus" ]; do
+		while [ ! -S "${busDir}/bus" ]; do
 			sleep 0.1s
 		done
 	fi
@@ -243,21 +243,16 @@ function execApp() {
 }
 
 function dbusProxy() {
-	mkdir "${busDir}/bus" -p
+	rm "${busDir}" -r
+	mkdir "${busDir}" -p
 	echo "Starting D-Bus Proxy..."
-	systemd-run --user --same-dir -P \
-		-p BindPaths="${XDG_DATA_HOME}"/WeChat_Data/.flatpak-info:/.flatpak-info \
-		-p BindPaths="${XDG_DATA_HOME}"/WeChat_Data/.flatpak-info:"${XDG_RUNTIME_DIR}/.flatpak-info" \
-		-- \
+	systemd-run --user \
 		env -i xdg-dbus-proxy \
 			"${DBUS_SESSION_BUS_ADDRESS}" \
 			"${busDir}/bus" \
 			--log \
 			--call=org.freedesktop.portal.Desktop=*=* \
-			--talk=org.gnome.Shell.Screenshot \
-			--talk=org.freedesktop.portal.Screenshot \
 			--broadcast=org.freedesktop.portal.*=@/org/freedesktop/portal/*
-	sleep 1s
 }
 
 function execAppUnsafe() {

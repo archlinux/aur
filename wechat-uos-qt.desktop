@@ -13,8 +13,14 @@ Keywords=wechat;weixin;we;w;
 Keywords[zh_CN]=微;微信;wechat;weixin;we;w;
 X-GNOME-SingleWindow=true
 SingleMainWindow=true
-Actions=nosandbox;opendir;xhost;
+Actions=quit;nosandbox;opendir;xhost;
 StartupWMClass=wechat
+
+[Desktop Action quit]
+Name=Quit
+Name[zh_CN]=退出
+Exec=/usr/bin/killall wechat
+Icon=application-exit
 
 [Desktop Action nosandbox]
 Name=Disable Sandbox (Temporarily)
