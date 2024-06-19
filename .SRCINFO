@@ -1,6 +1,6 @@
 pkgbase = qwlroots-git
 	pkgdesc = Qt and QML bindings for wlroots.
-	pkgver = r232.dd9c126
+	pkgver = 0.2.0.alpha1.r3.gc9fed5e
 	pkgrel = 1
 	url = https://github.com/vioken/qwlroots
 	arch = x86_64

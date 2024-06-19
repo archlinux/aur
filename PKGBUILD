@@ -1,7 +1,7 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=qwlroots-git
-pkgver=r232.dd9c126
+pkgver=0.2.0.alpha1.r3.gc9fed5e
 pkgrel=1
 pkgdesc='Qt and QML bindings for wlroots.'
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd qwlroots
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
