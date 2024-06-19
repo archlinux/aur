@@ -1,7 +1,7 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=waylib-git
-pkgver=r287.fca3d43
+pkgver=0.2.0.alpha1.r24.g06aaad1
 pkgrel=1
 pkgdesc='A wrapper for wlroots based on Qt.'
 arch=('x86_64' 'aarch64')
@@ -15,16 +15,16 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd waylib
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   cd waylib
-  cmake -B . -G Ninja -DCMAKE_INSTALL_PREFIX=/usr
-  cmake --build .
+  cmake -B build -G Ninja -DCMAKE_INSTALL_PREFIX=/usr
+  cmake --build build
 }
 
 package() {
-  cd waylib
+  cd waylib/build
   DESTDIR="$pkgdir" ninja install
 }
