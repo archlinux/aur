@@ -1,7 +1,7 @@
 # Maintainer: TingPing tingping@tingping.se
 
 pkgname=hexchat-git
-pkgver=2.16.1.r2.g94efa378
+pkgver=2.16.2.r3.gb544ac33
 pkgrel=1
 pkgdesc='A GTK+ based IRC client'
 arch=('i686' 'x86_64' 'armv6h')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('gtk2' 'openssl' 'dbus-glib' 'luajit' 'python-cffi'
          'libcanberra' 'libnotify' 'libproxy' 'pciutils'
          'hicolor-icon-theme' 'desktop-file-utils' 'sound-theme-freedesktop' 'iso-codes')
-makedepends=('git' 'perl' 'python' 'meson')
+makedepends=('git' 'perl' 'python' 'meson' 'glib2-devel')
 optdepends=('enchant: for spell check'
             'perl: for perl plugin'
             'python: for python plugin')
