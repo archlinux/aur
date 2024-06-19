@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=go-hass-agent-bin
-pkgver=9.3.0
+pkgver=9.4.0
 pkgrel=1
 pkgdesc="A Home Assistant， native app integration for desktop/laptop devices."
 arch=(
@@ -19,9 +19,9 @@ depends=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_arm.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
-sha256sums_aarch64=('5cf8bee99961b86e8e682acaac38e034c41890ca5010d3c30e349ba8fe96a675')
-sha256sums_armv7h=('18f4e83a99ffa27f2ff223de867ef283a7f540493b8d6f3299a408a397a79027')
-sha256sums_x86_64=('59f2d48400da1151ef5195d587763cfd52fcf4f1633ec2934947771a9f52d4fe')
+sha256sums_aarch64=('4cf29e66f4dc39b56ad340416bd3ce94505f2623c938b1abd73952fbbc34a8a9')
+sha256sums_armv7h=('4be4813a51b759d00e19e1c6365190093b232335b149523bc160fc997328ba34')
+sha256sums_x86_64=('9935de80ddeb03ff566c4c1759ccc942b2436f273a79c71bf30614d06f489511')
 build() {
     bsdtar -xf "${srcdir}/data."*
 }
