@@ -23,8 +23,8 @@ _vmapps=(victoria-logs victoria-metrics vmagent vmalert vmalert-tool vmauth vmba
 
 build() {
   cd $_name-$pkgver
-  CGO_ENABLED=1 GOOS=linux GOARCH=amd64 GO111MODULE=on CGO_CPPFLAGS="${CPPFLAGS}" CGO_CFLAGS="${CFLAGS}" CGO_CXXFLAGS="${CXXFLAGS}" CGO_LDFLAGS="${LDFLAGS}" \
-
+  CGO_CPPFLAGS="${CPPFLAGS}" CGO_CFLAGS="${CFLAGS}" CGO_CXXFLAGS="${CXXFLAGS}" CGO_LDFLAGS="${LDFLAGS}" \
+  
   go build -trimpath \
     -buildmode=pie \
     -mod=readonly \
