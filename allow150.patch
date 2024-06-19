@@ -1,0 +1,38 @@
+--- panel-plugin/pulseaudio-button.c.orig	2024-06-19 07:04:49.590982932 -0300
++++ panel-plugin/pulseaudio-button.c	2024-06-19 07:13:20.814537211 -0300
+@@ -300,12 +300,7 @@
+   gdouble           volume_step = pulseaudio_config_get_volume_step (button->config) / 100.0;
+   gdouble           new_volume;
+ 
+-  if (event->direction == 1)  // decrease volume
+-    new_volume = volume - volume_step;
+-  else if (event->direction == 0)  // increase volume
+-    new_volume = MIN (volume + volume_step, MAX (volume, 1.0));
+-  else
+-    new_volume = volume;
++  new_volume = volume + (1.0 - 2.0 * event->direction) * volume_step;
+ 
+   if (is_mic)
+     pulseaudio_volume_set_volume_mic (button->volume, new_volume);
+--- panel-plugin/pulseaudio-plugin.c.orig	2024-06-19 07:07:08.359062820 -0300
++++ panel-plugin/pulseaudio-plugin.c	2024-06-19 07:23:49.667356116 -0300
+@@ -362,7 +362,7 @@
+   pulseaudio_debug ("%s pressed", keystring);
+ 
+   if (strcmp (keystring, PULSEAUDIO_PLUGIN_RAISE_VOLUME_KEY) == 0) {
+-    pulseaudio_volume_set_volume (pulseaudio_plugin->volume, MIN (volume + volume_step, MAX (volume, 1.0)));
++    pulseaudio_volume_set_volume (pulseaudio_plugin->volume, volume + volume_step);
+ #ifdef HAVE_LIBNOTIFY
+     /* Also send notification when volume is already at 100% */
+     if (notify && volume > 1.0 - 2e-3)
+--- panel-plugin/pulseaudio-notify.c.orig	2024-06-19 08:53:10.006672022 -0300
++++ panel-plugin/pulseaudio-notify.c	2024-06-19 08:59:42.788831339 -0300
+@@ -225,7 +225,7 @@
+     {
+       notify_notification_set_hint (notification,
+                                     "value",
+-                                    g_variant_new_int32 (MIN (100, volume_i)));
++                                    g_variant_new_int32 (MIN (100, (gint) round (volume_i * 100 / 150) )));
+       notify_notification_set_hint (notification,
+                                     "x-canonical-private-synchronous",
+                                     g_variant_new_string(""));
