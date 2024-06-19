@@ -118,6 +118,12 @@ function execApp() {
 	if [[ ${wechatXserverPatch} = 1 ]]; then
 		xhost +
 	fi
+	if [ ! -d "${busDir}/bus" ]; then
+		echo "[Warn] Waiting for D-Bus proxy..."
+		while [ ! -d "${busDir}/bus" ]; do
+			sleep 0.1s
+		done
+	fi
 	touch "${XDG_DATA_HOME}"/WeChat_Data/.flatpak-info
 	cameraDect
 	importEnv
@@ -237,7 +243,7 @@ function execApp() {
 }
 
 function dbusProxy() {
-	mkdir "${busDir}" -p
+	mkdir "${busDir}/bus" -p
 	echo "Starting D-Bus Proxy..."
 	systemd-run --user --same-dir -P \
 		-p BindPaths="${XDG_DATA_HOME}"/WeChat_Data/.flatpak-info:/.flatpak-info \
