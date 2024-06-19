@@ -1,5 +1,5 @@
 pkgname=ruffle-bin
-pkgver=2024.05.19
+pkgver=2024.06.18
 pkgrel=1
 _pkgrel_x86_64=1
 _pkgrel_i386=1
@@ -13,30 +13,30 @@ license=('Apache' 'MIT')
 depends=('gtk3' 'libxcb' 'zlib' 'libxcb' 'alsa-lib' 'libxkbcommon-x11')
 makedepends=('unzip')
 conflicts=(ruffle-git)
-sha256sums_i386=('3fd04c151f2e07fa913742617bf6efd896ab09484e991b4ba8b0799fb5b34587'
-                 '4ee7e6ee5abd0a274bb1241ede2f3da1278691ab15fa80e4d94102dd68762f26')
-sha256sums_pentium4=('3fd04c151f2e07fa913742617bf6efd896ab09484e991b4ba8b0799fb5b34587'
-                     '4ee7e6ee5abd0a274bb1241ede2f3da1278691ab15fa80e4d94102dd68762f26')
-sha256sums_i686=('3fd04c151f2e07fa913742617bf6efd896ab09484e991b4ba8b0799fb5b34587'
-                 '4ee7e6ee5abd0a274bb1241ede2f3da1278691ab15fa80e4d94102dd68762f26')
-sha256sums_x86_64=('8e2b94875de9955b5d5cbdf5b48d8a9e59539fafc1a6579e928da42ec2cfeb88'
-                   '4ee7e6ee5abd0a274bb1241ede2f3da1278691ab15fa80e4d94102dd68762f26')
-sha256sums_aarch64=('aa0c8dc3b64cea877824d010c24ff9afb6cf6e0cd2f17e096faa34d7d7427e9c'
-                    '4ee7e6ee5abd0a274bb1241ede2f3da1278691ab15fa80e4d94102dd68762f26')
+sha256sums_i386=('aef27f8b595a9f8c35669a1176c6741401924a601a27ce92de893e36c407cf55'
+                 'SKIP')
+sha256sums_pentium4=('aef27f8b595a9f8c35669a1176c6741401924a601a27ce92de893e36c407cf55'
+                     'SKIP')
+sha256sums_i686=('aef27f8b595a9f8c35669a1176c6741401924a601a27ce92de893e36c407cf55'
+                 'SKIP')
+sha256sums_x86_64=('18ec66341ee0bb26f709d348f09abe0970f063ff61728a2a17aa4f2a97404d5f'
+                   'SKIP')
+sha256sums_aarch64=('0ce3678165a68bdec8ec62247d0fd6cefa35b982a31c4b6100af374dba68fd76'
+                    'SKIP')
 source_x86_64=("https://gitlab.com/linuxbombay/ruffle-linux/binaries/ruffle-$pkgver/-/raw/main/ruffle-x64.tar.xz" 
-"https://gitlab.com/linuxbombay/ruffle-linux/ruffle/-/archive/ruffle-$pkgver/ruffle-$pkgver.tar.bz2")
+"git+https://gitlab.com/linuxbombay/ruffle-linux/ruffle.git")
 
 source_i386=("https://gitlab.com/linuxbombay/ruffle-linux/binaries/ruffle-$pkgver/-/raw/main/ruffle-i686.tar.xz" 
-"https://gitlab.com/linuxbombay/ruffle-linux/ruffle/-/archive/ruffle-$pkgver/ruffle-$pkgver.tar.bz2")
+"git+https://gitlab.com/linuxbombay/ruffle-linux/ruffle.git")
 
 source_pentium4=("https://gitlab.com/linuxbombay/ruffle-linux/binaries/ruffle-$pkgver/-/raw/main/ruffle-i686.tar.xz" 
-"https://gitlab.com/linuxbombay/ruffle-linux/ruffle/-/archive/ruffle-$pkgver/ruffle-$pkgver.tar.bz2")
+"git+https://gitlab.com/linuxbombay/ruffle-linux/ruffle.git")
 
 source_i686=("https://gitlab.com/linuxbombay/ruffle-linux/binaries/ruffle-$pkgver/-/raw/main/ruffle-i686.tar.xz" 
-"https://gitlab.com/linuxbombay/ruffle-linux/ruffle/-/archive/ruffle-$pkgver/ruffle-$pkgver.tar.bz2")
+"git+https://gitlab.com/linuxbombay/ruffle-linux/ruffle.git")
 
 source_aarch64=("https://gitlab.com/linuxbombay/ruffle-linux/binaries/ruffle-$pkgver/-/raw/main/ruffle-arm64.tar.xz" 
-"https://gitlab.com/linuxbombay/ruffle-linux/ruffle/-/archive/ruffle-$pkgver/ruffle-$pkgver.tar.bz2")
+"git+https://gitlab.com/linuxbombay/ruffle-linux/ruffle.git")
 
 package() {
     install -dm755 "$pkgdir/usr/bin"
