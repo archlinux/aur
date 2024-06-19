@@ -1,0 +1,13 @@
+pkgbase = yt6801-dkms
+	pkgdesc = Kernel module for Motorcomm YT6801 ethernet controller (DKMS)
+	pkgver = 1.0.28
+	pkgrel = 1
+	url = https://deb.tuxedocomputers.com/ubuntu/pool/main/t/tuxedo-yt6801/
+	arch = x86_64
+	license = GPL-2.0-or-later
+	depends = dkms
+	depends = dos2unix
+	source = yt6801-1.0.28.tar.gz::https://deb.tuxedocomputers.com/ubuntu/pool/main/t/tuxedo-yt6801//tuxedo-yt6801_1.0.28.orig.tar.gz
+	sha256sums = 5ccc8392fee345eb89b6a94b596ce1637ebda0490f1915dcaa78137ec9564f9e
+
+pkgname = yt6801-dkms
