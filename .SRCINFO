@@ -1,6 +1,6 @@
 pkgbase = kontur-diag-plugin
 	pkgdesc = Diag.Plugin is an extension for web browsers that allows users to install cryptographic programs for SKB Kontur services.
-	pkgver = 3.1.0.210
+	pkgver = 3.1.2.373
 	pkgrel = 1
 	url = https://help.kontur.ru/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = kontur-diag-plugin
 	makedepends = sed
 	makedepends = coreutils
 	depends = gtk3
-	source = https://api.kontur.ru/drive/v1/public/diag/files/diag.plugin-3.1.0.210-1.x86_64.000865.rpm
-	sha256sums = bd5070f3a3ee21456fe378480f353f4457089f88e69efc47ed48de9100052ebf
+	source = https://api.kontur.ru/drive/v1/public/diag/files/diag.plugin-3.1.2.373-1.x86_64.001814.rpm
+	sha256sums = ed1ae3c20ae8dd8c1c52fe86b1d8dc132f0918fd061debe87dff057b26fdd849
 
 pkgname = kontur-diag-plugin
