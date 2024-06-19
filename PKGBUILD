@@ -29,9 +29,16 @@ package() {
 
     install -Dm0755 /dev/stdin "${pkgdir}/etc/profile.d/${pkgname%-bin}.sh" << EOF
 #!/bin/sh
+# loongson gnu toolchain
+
 [ -d /opt/loogson/${pkgname%-bin}/bin ] && append_path '/opt/loogson/${pkgname%-bin}/bin'
 
 export PATH
+EOF
+    install -Dm0755 /dev/stdin "${pkgdir}/etc/profile.d/${pkgname%-bin}.csh" << EOF
+# loongson gnu toolchain
+
+setenv PATH "${PATH}:/opt/loogson/${pkgname%-bin}/bin"
 EOF
 }
 
