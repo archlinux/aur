@@ -1,0 +1,33 @@
+pkgbase = python-stcal
+	pkgdesc = STScI tools and algorithms used in calibration pipelines
+	pkgver = 1.7.1
+	pkgrel = 1
+	url = https://stcal.readthedocs.io
+	arch = i686
+	arch = x86_64
+	license = BSD-3-Clause
+	checkdepends = python-pytest-doctestplus
+	checkdepends = python-opencv
+	checkdepends = python-scipy
+	makedepends = python-setuptools-scm>=3.4
+	makedepends = cython>=0.29.21
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-numpy
+	makedepends = python-sphinx-asdf
+	makedepends = python-stsci_rtd_theme
+	makedepends = python-gwcs
+	source = https://files.pythonhosted.org/packages/source/s/stcal/stcal-1.7.1.tar.gz
+	md5sums = ab83cae0aa418a4c747e7fc78fbe7cb0
+
+pkgname = python-stcal
+	depends = python>=3.10
+	depends = python-gwcs>=0.18.1
+	depends = python-scipy>=1.7.2
+	depends = python-opencv>=4.6.0.66
+	optdepends = python-stcal-doc: Documentation for stcal
+
+pkgname = python-stcal-doc
+	pkgdesc = Documentation for Python STCal
+	arch = any
