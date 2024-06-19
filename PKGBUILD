@@ -6,8 +6,8 @@ pkgname=('systemd-fml'
          'systemd-resolvconf-fml'
          'systemd-sysvcompat-fml'
          'systemd-ukify-fml')
-pkgdesc='systemd-stable with machine id from hw patch: https://github.com/systemd/systemd/pull/32086'
-_tag='255.7'
+pkgdesc='systemd with machine id from hw patch: https://github.com/systemd/systemd/pull/32086'
+_tag='256.1'
 # Upstream versioning is incompatible with pacman's version comparisons so we
 # replace tildes with the empty string to make sure pacman's version comparing
 # does the right thing for rc versions:
@@ -15,7 +15,7 @@ _tag='255.7'
 # 1
 # ➜ vercmp 255rc1 255
 # -1
-pkgver="${_tag/~/}"
+pkgver="${_tag/[-~]/}"
 pkgrel=1
 arch=('x86_64')
 license=('LGPL-2.1-or-later')
@@ -33,7 +33,7 @@ validpgpkeys=('63CDA1E5D3FC22B998D20DD6327F26951A015CC4'  # Lennart Poettering <
               'A9EA9081724FFAE0484C35A1A81CEA22BC8C7E2E'  # Luca Boccassi <luca.boccassi@gmail.com>
               '9A774DB5DB996C154EBBFBFDA0099A18E29326E1'  # Yu Watanabe <watanabe.yu+github@gmail.com>
               '5C251B5FC54EB2F80F407AAAC54CA336CFEB557E') # Zbigniew Jędrzejewski-Szmek <zbyszek@in.waw.pl>
-source=("$pkgbase-stable::git+https://github.com/systemd/systemd-stable#tag=v${_tag}"
+source=("$pkgbase::git+https://github.com/systemd/systemd#tag=v${_tag}"
         '0001-Use-Arch-Linux-device-access-groups.patch'
         '0002_added_machine_id_firmware_option.patch'
         # bootloader files
@@ -55,9 +55,9 @@ source=("$pkgbase-stable::git+https://github.com/systemd/systemd-stable#tag=v${_
         '30-systemd-udev-reload.hook'
         '30-systemd-update.hook')
 
-sha512sums=('224648e176fe48d0cb96ac740b4f239e7ddbbb6aed6299976f1df2d5825757021c7be243d187446c274715214c8175bf925ebb27eece18a02ce1884bac2c1f20'
+sha512sums=('1ba38dd45cd910c7a2b4c7f23f982c5b0e5b13cd5874571ebc9b609ff85c058cecdb61019141ef2010fd4882c3ffc5a13a2b0d6370db4067ad90c28b83de6760'
             '3ccf783c28f7a1c857120abac4002ca91ae1f92205dcd5a84aff515d57e706a3f9240d75a0a67cff5085716885e06e62597baa86897f298662ec36a940cf410e'
-            'd2535a89e9b2326cd82e18ed4cc0e3acfb2dbac2431f64f4b9e1a4eb2fc54b4572a3ce6e480952bf5e920bb485e174eccb365667d4e433d235e5ef0649438d1c'
+            'fdebd3f46e3eb9821c78c29d176ff6f91ed383e948a8f06122fda41a9fb0e194374d27bb5b3cbc0e657460e4b9e614dc4937f074094893de2525265173afa364'
             '61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648'
             'c416e2121df83067376bcaacb58c05b01990f4614ad9de657d74b6da3efa441af251d13bf21e3f0f71ddcb4c9ea658b81da3d915667dc5c309c87ec32a1cb5a5'
             '5a1d78b5170da5abe3d18fdf9f2c3a4d78f15ba7d1ee9ec2708c4c9c2e28973469bc19386f70b3cf32ffafbe4fcc4303e5ebbd6d5187a1df3314ae0965b25e75'
@@ -86,7 +86,20 @@ _reverts=(
 )
 
 prepare() {
-  cd "$pkgbase-stable"
+  cd "$pkgbase"
+
+  local _c _l
+  for _c in "${_backports[@]}"; do
+    if [[ "${_c}" == *..* ]]; then _l='--reverse'; else _l='--max-count=1'; fi
+    git log --oneline "${_l}" "${_c}"
+    git cherry-pick --mainline 1 --no-commit "${_c}"
+  done
+  for _c in "${_reverts[@]}"; do
+    if [[ "${_c}" == *..* ]]; then _l='--reverse'; else _l='--max-count=1'; fi
+    git log --oneline "${_l}" "${_c}"
+    git revert --mainline 1 --no-commit "${_c}"
+  done
+
 
   # Replace cdrom/dialout/tape groups with optical/uucp/storage
   patch -Np1 -i ../0001-Use-Arch-Linux-device-access-groups.patch
@@ -112,9 +125,7 @@ build() {
 
   local _meson_options=(
     -Dversion-tag="${_meson_version}-arch"
-    # We use the version without tildes as the shared library tag because
-    # pacman looks at the shared library version.
-    -Dshared-lib-tag="${_meson_version/~/}"
+    -Dshared-lib-tag="${_meson_version}"
     -Dmode="${_meson_mode}"
 
     -Dapparmor=disabled
@@ -133,6 +144,7 @@ build() {
 
     -Ddbuspolicydir=/usr/share/dbus-1/system.d
     -Ddefault-dnssec=no
+    -Ddefault-hierarchy=unified
     -Ddefault-kill-user-processes=false
     -Ddefault-locale='C.UTF-8'
     -Dlocalegen-path=/usr/bin/locale-gen
@@ -152,7 +164,7 @@ build() {
     -Dsbat-distro-url="https://aur.archlinux.org/pkgbase/${pkgname}"
   )
 
-  arch-meson "$pkgbase-stable" build "${_meson_options[@]}" $MESON_EXTRA_CONFIGURE_OPTIONS
+  arch-meson "${pkgbase}" build "${_meson_options[@]}" $MESON_EXTRA_CONFIGURE_OPTIONS
 
   meson compile -C build "${_meson_compile[@]}"
 }
@@ -168,9 +180,10 @@ package_systemd-fml() {
     'GPL-2.0-or-later' # udev
     'MIT-0' # documentation and config files
   )
-  depends=('acl' 'libacl.so' 'bash' 'cryptsetup' 'libcryptsetup.so' 'dbus'
-           'dbus-units' 'kbd' 'kmod' 'libkmod.so' 'hwdata' 'libcap' 'libcap.so'
-           'libgcrypt' 'libxcrypt' 'libcrypt.so' 'systemd-libs' 'libidn2' 'lz4' 'pam'
+  depends=("systemd-libs=${pkgver}"
+           'acl' 'libacl.so' 'bash' 'cryptsetup' 'libcryptsetup.so' 'dbus'
+           'dbus-units' 'kbd' 'kmod' 'hwdata' 'libcap' 'libcap.so'
+           'libgcrypt' 'libxcrypt' 'libcrypt.so' 'libidn2' 'lz4' 'pam'
            'libelf' 'libseccomp' 'libseccomp.so' 'util-linux' 'libblkid.so'
            'libmount.so' 'xz' 'pcre2' 'audit' 'libaudit.so'
            'openssl' 'libcrypto.so' 'libssl.so')
@@ -290,7 +303,7 @@ package_systemd-libs-fml() {
 
 package_systemd-resolvconf-fml() {
   pkgdesc='systemd resolvconf replacement (for use with systemd-resolved)'
-  depends=('systemd')
+  depends=("systemd=${pkgver}")
   provides=('openresolv' 'resolvconf')
   provides+=("systemd-resolvconf=$pkgver")
   conflicts=('resolvconf')
@@ -308,7 +321,7 @@ package_systemd-sysvcompat-fml() {
   provides=("systemd-sysvcompat=$pkgver")
   conflicts=('sysvinit')
   conflicts+=('systemd-sysvcompat')
-  depends=('systemd')
+  depends=("systemd=${pkgver}")
 
   install -D -m0644 -t "$pkgdir"/usr/share/man/man8 \
     build/man/{halt,poweroff,reboot,shutdown}.8
@@ -325,7 +338,7 @@ package_systemd-ukify-fml() {
   provides=('ukify')
   provides+=("systemd-ukify=$pkgver")
   conflicts=('systemd-ukify')
-  depends=('binutils' 'python-cryptography' 'python-pefile' 'systemd')
+  depends=("systemd=${pkgver}" 'binutils' 'python-cryptography' 'python-pefile')
   optdepends=('python-pillow: Show the size of splash image'
               'sbsigntools: Sign the embedded kernel')
 
