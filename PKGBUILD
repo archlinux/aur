@@ -1,6 +1,6 @@
 # Maintainer: zccrs <zhangjide@deepin.org>
 pkgname=treeland-git
-pkgver=0.1.1.r84.g459ec74
+pkgver=0.2.2.r151.gdd0b4f0
 pkgrel=1
 sourcename=treeland
 sourcetars=("$sourcename"_"$pkgver".tar.xz)
@@ -24,16 +24,16 @@ pkgver() {
 
 build() {
   cd $sourcedir
-  cmake -GNinja \
+  cmake -B build -GNinja \
       -DCMAKE_INSTALL_LIBEXECDIR=libexec \
       -DCMAKE_INSTALL_LIBDIR=lib \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_BUILD_TYPE=Release
 
-  cmake --build .
+  cmake --build build
 }
 
 package() {
-  cd $sourcedir
+  cd $sourcedir/build
   DESTDIR="$pkgdir" ninja install
 }
