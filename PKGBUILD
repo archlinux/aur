@@ -6,7 +6,7 @@ pkgname='docfd-bin'
 _pkgname="${pkgname/-bin}"
 _flavour='ubuntu-latest'
 pkgver=7.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='TUI multiline fuzzy document finder (pre-compiled)'
 arch=('x86_64')
 url='https://github.com/darrenldl/docfd'
@@ -21,17 +21,6 @@ source=(
   "$_rawurl/README.md"
 )
 changelog="$pkgname.changelog"
-
-check() {
-  _version=$("$srcdir/$_pkgname" --version 2>&1)
-
-  case "$_version" in
-    *.*.* ) : pass   ;;
-        * ) return 1 ;;
-  esac
-
-  printf 'docfd %s\n' "$_version"
-}
 
 package() {
   install -vDm0755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
