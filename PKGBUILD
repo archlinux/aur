@@ -1,27 +1,26 @@
-# Maintainer: SpaghettiCat <d_the_m101 at yahoo dot co dot uk>
+# Maintainer : silverhikari <kerrickethan@gmail.com>
+# Contributor: SpaghettiCat <d_the_m101 at yahoo dot co dot uk>
 # Based on "gargoyle" package maintained by:
 #     Beej <beej@beej.us>
 #     Michael Smith <michael at diglumi dot com>
 #     Marcin Skory <armitage at q84fh dot net>
 #     with Contribution of Eric Forgeot < http://ifiction.free.fr >
 pkgname=gargoyle-git
-pkgver=2022.1.r563.gbde657b4
+pkgver=2022.1.r697.gbe5d331d
 pkgrel=1
 pkgdesc="Interactive Fiction multi-interpreter that supports all major IF formats (development version)"
-arch=('i686' 'x86_64' 'armv6h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/garglk/garglk"
-license=('GPL')
-depends=('sdl2_mixer' 'sdl2' 'freetype2' 'qt5-base' 'fontconfig' 'libjpeg' 'libpng')
-makedepends=('cmake' 'pkgconfig' 'desktop-file-utils' 'git' 'fmt')
+license=('GPL-2.0-only' 'GPL-2.0-or-later' 'Artistic-2.0' 'GPL-3.0-only' 'MIT' 'BSD-3-Clause' 'OFL-1.1')
+depends=('sdl2_mixer' 'sdl2' 'freetype2' 'qt6-base' 'fontconfig' 'libjpeg' 'libpng' 'zlib' 'hicolor-icon-theme' 'fmt')
+makedepends=('cmake' 'pkgconfig' 'desktop-file-utils' 'git')
 optdepends=('speech-dispatcher: text-to-speech support')
-provides=('gargoyle-git')
+provides=('gargoyle')
 conflicts=('gargoyle-mod' 'gargoyle')
 replaces=('gargoyle-mod' 'gargoyle')
-groups=(inform)
-source=("$pkgname::git+https://github.com/garglk/garglk.git" "gargoyle-git.install")
-install=${pkgname}.install
-sha512sums=('SKIP'
-            '1fa602865745c1c9801178ee9b24be86215f2af4f9ee3f4f3b3c0606a87aba32a67c9c5343b481332c8fc97ff6c1a5e447f074d116c0cc5b255af35098096e6e')
+backup=('etc/garglk.ini')
+source=("$pkgname::git+https://github.com/garglk/garglk.git")
+sha512sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
@@ -29,12 +28,22 @@ pkgver() {
 }
 
 build() {
-	cmake -S "${pkgname}" -B "build" -DWITH_TTS=DYNAMIC -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr"
+	cmake -S "${pkgname}" -B "build" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_LIBEXECDIR=lib -DWITH_TTS=DYNAMIC -DCMAKE_INSTALL_PREFIX="/usr"
 	cmake --build "build"
 }
 
 package() {
-	cmake --install "build"
-	# Install default config
-	install -Dm755 "$srcdir/${pkgname}/garglk/garglk.ini" "$pkgdir/etc/garglk.ini"
+	DESTDIR="$pkgdir" cmake --install "build"
+	cd "gargoyle-git"
+	sed -n '/Copyright (c)/,/DEALINGS IN THE SOFTWARE\./p' \
+        terps/git/README.txt > terps/git/LICENSE
+	local license_dir="$pkgdir/usr/share/licenses/$pkgname"
+    install -Dm644 "$srcdir/$pkgname/License.txt" "$license_dir/LICENSE"
+    install -Dm644 "$srcdir/$pkgname/licenses/BSD-2-Clause.txt" "$license_dir/BSD-2-Clause.txt"
+    install -Dm644 "$srcdir/$pkgname/licenses/Go Mono.txt" "$license_dir/BSD-3-Clause-Go-Mono.txt"
+    install -Dm644 "$srcdir/$pkgname/terps/advsys/LICENSE" "$license_dir/BSD-3-Clause-AdvSys.txt"
+    install -Dm644 "$srcdir/$pkgname/terps/git/LICENSE" "$license_dir/MIT-Git.txt"
+    install -Dm644 "$srcdir/$pkgname/terps/glulxe/LICENSE" "$license_dir/MIT-Glulxe.txt"
+    install -Dm644 "$srcdir/$pkgname/licenses/Charis SIL.txt" "$license_dir/OFL-1.1.txt"
+    install -Dm644 "$srcdir/$pkgname/garglk/garglk.ini" -t "$pkgdir/etc/"
 }
