@@ -1,16 +1,16 @@
 pkgbase = gke-kubeconfiger-bin
 	pkgdesc = Setup kubeconfigs for all accessible GKE clusters.
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/zebradil/gke-kubeconfiger
 	license = MIT
 	conflicts = gke-kubeconfiger
 	provides = gke-kubeconfiger
 	arch = aarch64
-	source_aarch64 = https://github.com/Zebradil/gke-kubeconfiger/releases/download/0.3.0/gke-kubeconfiger_linux_arm64.tar.gz
-	sha256sums_aarch64 = ad51e9a65736074ddb9e68d65cef7ed00e649a101a1f094723d242d76ea0c414
+	source_aarch64 = https://github.com/Zebradil/gke-kubeconfiger/releases/download/0.3.1/gke-kubeconfiger_linux_arm64.tar.gz
+	sha256sums_aarch64 = 14f39efbb94188a0d5e29972228de1876baf25c3e41cbbce417041789cc6d8d6
 	arch = x86_64
-	source_x86_64 = https://github.com/Zebradil/gke-kubeconfiger/releases/download/0.3.0/gke-kubeconfiger_linux_amd64.tar.gz
-	sha256sums_x86_64 = 25d0557f7652fcb1ac47dfaf2075922ea8541e4b699e021aec329b94ad538cd2
+	source_x86_64 = https://github.com/Zebradil/gke-kubeconfiger/releases/download/0.3.1/gke-kubeconfiger_linux_amd64.tar.gz
+	sha256sums_x86_64 = 2e787261b35ce468defdb78abe55b6d36ddc3de6d9037532111360470a0a8b44
 	
 pkgname = gke-kubeconfiger-bin
