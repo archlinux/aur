@@ -15,6 +15,7 @@ pkgbase = power-profiles-daemon-git
 	makedepends = meson
 	makedepends = git
 	makedepends = python-argparse-manpage
+	depends = glib2-devel
 	depends = glib2
 	depends = python-gobject
 	depends = python-shtab
