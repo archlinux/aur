@@ -1,13 +1,14 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=(
   'colloid-gtk-theme-git'
+  'colloid-catppuccin-gtk-theme-git'
   'colloid-dracula-gtk-theme-git'
   'colloid-everforest-gtk-theme-git'
   'colloid-gruvbox-gtk-theme-git'
   'colloid-nord-gtk-theme-git'
 )
 pkgbase=colloid-gtk-theme-git
-pkgver=2024.04.14.r0.g2949b6a7
+pkgver=2024.06.18.r1.ga21570fd
 pkgrel=1
 pkgdesc="Gtk theme for Linux"
 arch=('any')
@@ -39,6 +40,17 @@ package_colloid-gtk-theme-git() {
   # Firefox theme
   install -d "$pkgdir/usr/share/doc/${pkgname%-git}"
   cp -r src/other/firefox "$pkgdir/usr/share/doc/${pkgname%-git}/"
+}
+
+package_colloid-catppuccin-gtk-theme-git() {
+  pkgdesc="Gtk Catppuccin theme for Linux"
+  provides=("${pkgname%-git}")
+  conflicts=("${pkgname%-git}")
+
+  cd Colloid-gtk-theme
+  install -d "$pkgdir/usr/share/themes"
+  ./install.sh -t all --tweaks catppuccin -d "$pkgdir/usr/share/themes"
+  ./install.sh -t all -s compact --tweaks catppuccin normal -d "$pkgdir/usr/share/themes"
 }
 
 package_colloid-dracula-gtk-theme-git() {
