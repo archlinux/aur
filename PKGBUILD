@@ -5,7 +5,7 @@
 _pkgname=another-redis-desktop-manager
 
 pkgname="${_pkgname}-appimage"
-pkgver=1.6.4
+pkgver=1.6.6
 pkgrel=1
 pkgdesc="A faster, better and more stable redis desktop manager"
 arch=('x86_64')
@@ -22,7 +22,7 @@ source_x86_64=(
     "https://raw.githubusercontent.com/qishibo/AnotherRedisDesktopManager/v${pkgver}/LICENSE"
 )
 noextract=("${_appimage}")
-sha512sums_x86_64=('b0bfb0786ff04099e64dafe07af54843a1e8857c893182375a2b6b467ad2167166cd1e862d37d42b805d4d4074be6a43c41f8bb090dfed55445c0bae2d220b99'
+sha512sums_x86_64=('eeb3edebcc44954305d2796c8015b3daa5158ed75dd7b9c92d41c5a4b1e1ef178e65ba46d74b56ee51d5cdda0310d22c2a9eb916a8533fb33db5a0af4cf2862a'
                    'e29fec88dbf2d53b863c1660c30546921288e1abc4006d6d20b04cbc9fe66e83517bde2f595ae39510963fbd36f9f8e27bc3fa2895cac10b416dd6f6d0829072')
 
 prepare() {
