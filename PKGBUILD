@@ -2,7 +2,7 @@
 
 pkgname=kissat
 pkgver=3.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A keep it simple and clean bare metal SAT solver written in C"
 arch=('x86_64')
 url="https://fmv.jku.at/kissat"
@@ -33,7 +33,6 @@ package() {
     # Binaries
     install -D -m755 "build/kissat" "$pkgdir/usr/bin/kissat"
     install -D -m755 "build/kitten" "$pkgdir/usr/bin/kitten"
-    install -D -m755 "build/tissat" "$pkgdir/usr/bin/tissat"
 
     # Shared libraries
     install -D -m755 "build/libkissat.so" "$pkgdir/usr/lib/libkissat.so"
