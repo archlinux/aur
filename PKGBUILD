@@ -2,7 +2,7 @@
 
 pkgname=xfel
 pkgver=1.3.2
-pkgrel=3
+pkgrel=10
 epoch=
 pkgdesc="Tiny FEL tools for allwinner SOC, support RISC-V D1 chip."
 arch=(x86_64
@@ -19,7 +19,7 @@ provides=()
 conflicts=(xfel-git)
 replaces=()
 backup=()
-options=('!strip')
+options=()
 install=
 changelog=
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
