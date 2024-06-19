@@ -1,7 +1,7 @@
 # Maintainer: Chris Lane <aur at chrislane dot com>
 
 pkgname=mods
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="AI for the command line, built for pipelines"
 url="https://github.com/charmbracelet/mods"
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('git' 'go')
 depends=('glibc')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/charmbracelet/mods/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('c7e602d96282feb257ca197520ba7dae8d0f706c11ba8a7eeb8a00c342d85479b7f2621d00ab0203f29bfb8728a00d18a614b9db3188737699a5f1a92fd3f054')
+sha512sums=('74861781cf916b560fbe3429b82020ffd1cd8e21074b24a7b68675efa369452b49cc19211565563a364b0b148319cd9f9da7a63d07f7411448da18104055991c')
 
 prepare(){
   cd "$pkgname-$pkgver"
@@ -30,6 +30,8 @@ build() {
   go mod download
 
   go build -o build ./...
+
+  "build/$pkgname" man | gzip > "build/$pkgname.1.gz"
 }
 
 check() {
@@ -39,7 +41,9 @@ check() {
 
 package() {
   cd "$pkgname-$pkgver"
+
   install -Dm755 "build/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 "build/$pkgname.1.gz" "$pkgdir/usr/share/man/man1/$pkgname.1.gz"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 

@@ -1,6 +1,6 @@
 pkgbase = mods
 	pkgdesc = AI for the command line, built for pipelines
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/charmbracelet/mods
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = mods
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	source = mods-1.4.0.tar.gz::https://github.com/charmbracelet/mods/archive/refs/tags/v1.4.0.tar.gz
-	sha512sums = c7e602d96282feb257ca197520ba7dae8d0f706c11ba8a7eeb8a00c342d85479b7f2621d00ab0203f29bfb8728a00d18a614b9db3188737699a5f1a92fd3f054
+	source = mods-1.4.1.tar.gz::https://github.com/charmbracelet/mods/archive/refs/tags/v1.4.1.tar.gz
+	sha512sums = 74861781cf916b560fbe3429b82020ffd1cd8e21074b24a7b68675efa369452b49cc19211565563a364b0b148319cd9f9da7a63d07f7411448da18104055991c
 
 pkgname = mods
