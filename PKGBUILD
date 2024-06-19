@@ -8,22 +8,22 @@ provides=("${_pkgname}" "tensorflow115")
 conflicts=("${_pkgname}" "tensorflow115")
 replaces=("tensorflow115")
 pkgdesc="PhotoPrism Tensorflow 1.15 with cpu base support"
-arch=('x86_64' 'arm' 'aarch64')
+arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/tensorflow/tensorflow"
 license=('Apache-2.0')
 source_x86_64=("https://dl.photoprism.org/tensorflow/amd64/libtensorflow-amd64-${pkgver}.tar.gz")
-source_arm=("https://dl.photoprism.org/tensorflow/arm/libtensorflow-arm-${pkgver}.tar.gz")
 source_aarch64=("https://dl.photoprism.org/tensorflow/arm64/libtensorflow-arm64-${pkgver}.tar.gz")
+source_armv7h=("https://dl.photoprism.org/tensorflow/arm/libtensorflow-arm-${pkgver}.tar.gz")
 sha256sums_x86_64=("6d9002dcf271a9c8ee18ce1170db7362d920dc50f74ab3b96de0ec3e829e9f37")
-sha256sums_arm=("a7685f592fb6491610d001154678a28cec77ca1f8710cac12f77ac02ea2ac01d")
 sha256sums_aarch64=("aa78f8be149682b93c4888f3207d7fe3068cc4cb31314bea75864f6926942519")
+sha256sums_armv7h=("a7685f592fb6491610d001154678a28cec77ca1f8710cac12f77ac02ea2ac01d")
 
 prepare() {
     case $CARCH in
         x86_64|aarch64)
             mv include/tensorflow/c/LICENSE LICENSE
             ;;
-        arm)
+        armv7h)
             mv -f "lib/libtensorflow.so.${pkgver}" lib/libtensorflow.so
             mv -f "lib/libtensorflow_framework.so.${pkgver}" lib/libtensorflow_framework.so
             ;;
