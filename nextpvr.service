@@ -1,0 +1,10 @@
+[Unit]
+Description=NextPVR video channel recording
+
+[Install]
+WantedBy=default.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/nextpvr
+
