@@ -1,6 +1,6 @@
 pkgname=mingw-w64-bullet
 pkgver=3.25
-pkgrel=1
+pkgrel=2
 pkgdesc="A 3D Collision Detection and Rigid Body Dynamics Library for games and animation (mingw-w64)"
 arch=('any')
 url="http://www.bulletphysics.com/Bullet/"
@@ -26,6 +26,7 @@ build() {
       -DBUILD_BULLET2_DEMOS=OFF \
       -DBUILD_OPENGL3_DEMOS=OFF \
       -DBUILD_UNIT_TESTS=OFF \
+      -DBULLET2_MULTITHREADING=ON \
       -DBUILD_EXTRAS=OFF \
       -DINSTALL_LIBS=1 \
       -DUSE_GLUT=0 \
