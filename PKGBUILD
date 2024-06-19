@@ -2,7 +2,7 @@
 
 pkgname="lettercell"
 pkgver="1.0.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="An interpreter for the LetterCell esoteric programming language."
 arch=("x86_64" "arm")
 license=("MIT")
@@ -14,6 +14,7 @@ build(){
 	cd ${srcdir}/git
 	git clone ${source}
 	cd lettercell
+	git reset --hard 8346c6b --quiet
 	make build
 }
 

@@ -1,7 +1,7 @@
 pkgbase = lettercell
 	pkgdesc = An interpreter for the LetterCell esoteric programming language.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	arch = arm
 	license = MIT
