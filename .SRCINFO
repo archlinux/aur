@@ -1,7 +1,7 @@
 pkgbase = liquidprompt
 	pkgdesc = A useful adaptive prompt for Bash & Zsh
 	pkgver = 2.2.0_release
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nojhan/liquidprompt
 	arch = any
 	license = AGPL3
@@ -26,7 +26,7 @@ pkgbase = liquidprompt
 	optdepends = docker: Show Docker status
 	optdepends = podman: Show Podman status
 	optdepends = lxc: Show LXC status
-	optdepends = nodeenv: Show nodeenv virtual environment status
+	optdepends = python-nodeenv: Show nodeenv virtual environment status
 	optdepends = nvm: Show NVM virtual environment status
 	optdepends = terraform: Show Terraform workspace status
 	optdepends = python-virtualenv: Show Python virtual environment status

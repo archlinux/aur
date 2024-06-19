@@ -2,7 +2,7 @@
 pkgname=liquidprompt
 pkgver=2.2.0_release
 _pkgver=${pkgver%_*}
-pkgrel=1
+pkgrel=2
 pkgdesc="A useful adaptive prompt for Bash & Zsh"
 arch=("any")
 url="https://github.com/nojhan/liquidprompt"
@@ -29,7 +29,7 @@ optdepends=("acpi: Battery and temperature status"
             "docker: Show Docker status"
             "podman: Show Podman status"
             "lxc: Show LXC status"
-            "nodeenv: Show nodeenv virtual environment status"
+            "python-nodeenv: Show nodeenv virtual environment status"
             "nvm: Show NVM virtual environment status"
             "terraform: Show Terraform workspace status"
             "python-virtualenv: Show Python virtual environment status")
