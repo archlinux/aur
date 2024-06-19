@@ -3,9 +3,10 @@
 # Maintainer: otuva <onralpakin@gmail.com>
 # Maintainer: PopeRigby <poperigby@mailbox.org>
 # Maintainer: ilario <iochesonome@gmail.com>
+# Maintainer: archisman <apandada1ATgmail.com>
 
 pkgname=safeeyes
-pkgver=2.1.6
+pkgver=2.1.9
 pkgrel=1
 pkgdesc="A Free and Open Source tool for Linux users to reduce and prevent repetitive strain injury (RSI)."
 arch=("any")
@@ -24,7 +25,7 @@ depends=("alsa-utils"
 makedepends=("python-setuptools" "python-pip")
 optdepends=("xprintidle: for Smart Pause plugin" "python-croniter: for Health Stats plugin" "wlrctl: for Do Not Disturb plugin in Wayland")
 source=(safeeyes-$pkgver.tar.gz::"https://github.com/slgobinath/SafeEyes/archive/v$pkgver.tar.gz")
-sha1sums=('d10bae9be3f76c4da165baff96c671e67156e1bb')
+sha1sums=('30bfa2755cd6b3345885f4ac0dd792c98a3fbfd4')
 
 package() {
     cd "$srcdir/SafeEyes-$pkgver"
