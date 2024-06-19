@@ -3,7 +3,7 @@
 
 pkgname='python-cymruwhois'
 pkgver=1.6
-pkgrel=3
+pkgrel=4
 pkgdesc='Client for the whois.cymru.com service'
 arch=('any')
 url='https://pythonhosted.org/cymruwhois'

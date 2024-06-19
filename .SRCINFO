@@ -1,7 +1,7 @@
 pkgbase = python-cymruwhois
 	pkgdesc = Client for the whois.cymru.com service
 	pkgver = 1.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://pythonhosted.org/cymruwhois
 	arch = any
 	license = MIT
