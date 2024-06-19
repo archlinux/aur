@@ -1,4 +1,4 @@
-# Maintainer: Babak Rasouli <b@bak.rasouli>
+# Maintainer: waveplate <dissahc@pm.me>
 pkgname=img2irc
 pkgver=1.0.4
 pkgrel=2
