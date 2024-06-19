@@ -1,7 +1,7 @@
 pkgbase = xfce4-pulseaudio-plugin-allow150
 	pkgdesc = Pulseaudio plugin for the Xfce4 panel with patches to allow 150% volume
 	pkgver = 0.4.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://goodies.xfce.org/projects/panel-plugins/xfce4-pulseaudio-plugin
 	arch = x86_64
 	groups = xfce4-goodies
@@ -14,6 +14,7 @@ pkgbase = xfce4-pulseaudio-plugin-allow150
 	depends = libcanberra
 	optdepends = pavucontrol: default pulseaudio mixer
 	provides = xfce4-pulseaudio-plugin
+	conflicts = xfce4-pulseaudio-plugin
 	source = https://archive.xfce.org/src/panel-plugins/xfce4-pulseaudio-plugin/0.4/xfce4-pulseaudio-plugin-0.4.8.tar.bz2
 	source = allow150.patch
 	sha256sums = bd742b207c39c221e91c57c9c9be2839eb802d1b1ee01a02b7427cd02d3f0348
