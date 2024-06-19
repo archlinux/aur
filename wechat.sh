@@ -175,6 +175,7 @@ function execApp() {
 	-p BindReadOnlyPaths=/usr/bin/true:/usr/bin/lsblk \
 	-p BindReadOnlyPaths=/opt/wechat-uos-qt/files:/usr/lib/license \
 	-p BindReadOnlyPaths=-/run/systemd/resolve/stub-resolv.conf \
+	-p Environment=PATH=/usr/bin \
 	-- \
 	bwrap \
 		--dev /dev \
@@ -188,11 +189,11 @@ function execApp() {
 		--bind /tmp /tmp \
 		--bind /usr /usr \
 		--ro-bind /etc /etc \
-		--symlink usr/lib /lib \
-		--symlink usr/lib64 /lib64 \
-		--symlink usr/bin /bin \
-		--symlink usr/bin /sbin \
-		--bind /opt /opt \
+		--ro-bind-try /lib /lib \
+		--ro-bind-try /lib64 /lib64 \
+		--ro-bind-try /bin /bin \
+		--ro-bind-try /sbin /sbin \
+		--ro-bind-try /opt /opt \
 		--bind "${busDir}/bus" "${XDG_RUNTIME_DIR}/bus" \
 		--ro-bind "${XDG_RUNTIME_DIR}/pulse" \
 			"${XDG_RUNTIME_DIR}/pulse" \
@@ -239,9 +240,7 @@ function dbusProxy() {
 	mkdir "${busDir}" -p
 	bwrap \
 		--new-session \
-		--symlink /usr/lib64 /lib64 \
 		--ro-bind /usr/lib /usr/lib \
-		--ro-bind /usr/lib64 /usr/lib64 \
 		--ro-bind /usr/bin /usr/bin \
 		--bind "${XDG_RUNTIME_DIR}" "${XDG_RUNTIME_DIR}" \
 		--ro-bind-try "${XDG_DATA_HOME}"/WeChat_Data/.flatpak-info \
