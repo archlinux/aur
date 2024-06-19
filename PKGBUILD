@@ -98,6 +98,7 @@ package() {
   cd $pkgname
   make DESTDIR="$pkgdir" PAM_MODULE_DIR=usr/lib/security install
 
+  install -Dm644 misc/systemd/services/* "$pkgdir/usr/lib/systemd/user/"
   install -Dm644 ../deepin-daemon.sysusers "$pkgdir/usr/lib/sysusers.d/deepin-daemon.conf"
 }
 
