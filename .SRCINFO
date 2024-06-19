@@ -1,6 +1,6 @@
 pkgbase = deepin-daemon-git
 	pkgdesc = Daemon handling the DDE session settings
-	pkgver = 6.0.32.r0.g44e230bc
+	pkgver = 6.0.40.r2.g3945d685
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/dde-daemon
 	install = deepin-daemon-git.install
@@ -73,12 +73,10 @@ pkgbase = deepin-daemon-git
 	provides = deepin-daemon
 	conflicts = deepin-daemon
 	source = deepin-daemon-git::git+https://github.com/linuxdeepin/dde-daemon
-	source = deepin-daemon-fix-vanilla-libinput.patch
-	source = ddcutil-2.patch
+	source = dde-daemon.patch
 	source = deepin-daemon.sysusers
 	sha512sums = SKIP
-	sha512sums = 08986beb83c6340578060e39916501816280b85478a97892f2cd545150702be2670c3d0f30edb4ecb7af8fb020132ad4926b6d2950a087d6d39982cd8988d0f2
-	sha512sums = 01412b8d70e5f1c4bf86acaa9e1ddeb955f7f34d168515ced08d030a8316fb76ab26a0ff09a8cffb199e0edbb54a3de7bb2e89fcdb2b412ad61b2bad9a0bb475
+	sha512sums = fb62b918a6d35c591d405084c46510522f78e350928f9b875a324d464ef6cc30ee3cea87ba444cd3edc4658e1e6eaeaf84bd28036ea1ad5a7e8aba6544f05c8c
 	sha512sums = 808c02d4fec4cbbb01119bbb10499090199e738b7dd72c28a57dde098eef6132723f3434c151f79e21d9f788c7f7bae8046573ac93ba917afe0e803fbffa6d5a
 
 pkgname = deepin-daemon-git

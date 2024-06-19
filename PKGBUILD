@@ -2,7 +2,7 @@
 
 pkgname=deepin-daemon-git
 _pkgname=deepin-daemon
-pkgver=6.0.32.r0.g44e230bc
+pkgver=6.0.40.r2.g3945d685
 pkgrel=1
 pkgdesc='Daemon handling the DDE session settings'
 arch=('x86_64' 'aarch64')
@@ -63,12 +63,10 @@ provides=($_pkgname)
 groups=('deepin-git')
 install="$pkgname.install"
 source=("$pkgname::git+https://github.com/linuxdeepin/dde-daemon"
-        deepin-daemon-fix-vanilla-libinput.patch
-        ddcutil-2.patch
+        dde-daemon.patch
         'deepin-daemon.sysusers')
 sha512sums=('SKIP'
-            '08986beb83c6340578060e39916501816280b85478a97892f2cd545150702be2670c3d0f30edb4ecb7af8fb020132ad4926b6d2950a087d6d39982cd8988d0f2'
-            '01412b8d70e5f1c4bf86acaa9e1ddeb955f7f34d168515ced08d030a8316fb76ab26a0ff09a8cffb199e0edbb54a3de7bb2e89fcdb2b412ad61b2bad9a0bb475'
+            'fb62b918a6d35c591d405084c46510522f78e350928f9b875a324d464ef6cc30ee3cea87ba444cd3edc4658e1e6eaeaf84bd28036ea1ad5a7e8aba6544f05c8c'
             '808c02d4fec4cbbb01119bbb10499090199e738b7dd72c28a57dde098eef6132723f3434c151f79e21d9f788c7f7bae8046573ac93ba917afe0e803fbffa6d5a')
 
 pkgver() {
@@ -78,15 +76,9 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  patch -p1 -i ../$_pkgname-fix-vanilla-libinput.patch
-  # Fix build with ddcutils 2
-  patch -p1 -i ../ddcutil-2.patch
-
-  # https://github.com/linuxdeepin/developer-center/discussions/3327
-  sed -i 's#/usr/libexec#/usr/lib#' keybinding/shortcuts/system_shortcut.go
-  sed -i 's#${PREFIX}/libexec/#${PREFIX}/lib/#;s#${DESTDIR}/lib#${DESTDIR}${PREFIX}/lib#' Makefile
-
-  sed -i 's|/etc/os-version|/etc/uos-version|' keybinding/shortcuts/shortcut_manager.go
+  patch -p1 -i ../dde-daemon.patch
+  rm -rf system/uadp
+  rm -rf session/uadpagent
 }
 
 build() {
@@ -97,7 +89,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-  
+
   # make -C network/nm_generator gen-nm-code
   make
 }
