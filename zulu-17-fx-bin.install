@@ -1,0 +1,53 @@
+# Based on java17-openjdk package
+# https://gitlab.archlinux.org/archlinux/packaging/packages/java17-openjdk/-/blob/582950f9492887cb1ff241e623067fd1f02dd35d/install_jdk-openjdk.sh
+
+THIS_JDK='zulu-17-fx'
+
+fix_default() {
+  if [ ! -x /usr/bin/java ]; then
+    /usr/bin/archlinux-java unset
+    echo ""
+  else
+    /usr/bin/archlinux-java get
+  fi
+}
+
+post_install() {
+  default=$(fix_default)
+  case ${default} in
+    "")
+      /usr/bin/archlinux-java set ${THIS_JDK}
+      ;;
+    ${THIS_JDK})
+      # Nothing
+      ;;
+    *)
+      echo "Default Java environment is already set to '${default}'"
+      echo "See 'archlinux-java help' to change it"
+      ;;
+  esac
+
+  if [ ! -f /etc/ssl/certs/java/cacerts ]; then
+    /usr/bin/update-ca-trust
+  fi
+}
+
+post_upgrade() {
+  default=$(fix_default)
+  if [ -z "${default}" ]; then
+    /usr/bin/archlinux-java set ${THIS_JDK}
+  fi
+
+  if [ ! -f /etc/ssl/certs/java/cacerts ]; then
+    /usr/bin/update-ca-trust
+  fi
+}
+
+pre_remove() {
+  if [ "x$(fix_default)" = "x${THIS_JDK}" ]; then
+    # Check JRE is still available
+    if [ -x /usr/lib/jvm/${THIS_JDK}/bin/java ]; then
+      /usr/bin/archlinux-java unset
+    fi
+  fi
+}

@@ -1,0 +1,34 @@
+pkgbase = zulu-17-fx-bin
+	pkgdesc = Azul Zulu Builds of OpenJDK With OpenJFX are open source, TCK-tested and certified builds of OpenJDK.
+	pkgver = 17.0.11
+	pkgrel = 1
+	url = https://www.azul.com/downloads
+	install = zulu-17-fx-bin.install
+	arch = x86_64
+	license = LicenseRef-Zulu
+	depends = ca-certificates-utils
+	depends = java-environment-common
+	depends = java-runtime-common
+	provides = java-environment=17
+	provides = java-environment-openjdk=17
+	provides = java-runtime=17
+	provides = java-runtime-openjdk=17
+	provides = java-runtime-headless=17
+	provides = java-runtime-headless-openjdk=17
+	provides = java-openjfx=17
+	backup = etc/zulu-17-fx-bin/logging.properties
+	backup = etc/zulu-17-fx-bin/management/jmxremote.access
+	backup = etc/zulu-17-fx-bin/management/management.properties
+	backup = etc/zulu-17-fx-bin/net.properties
+	backup = etc/zulu-17-fx-bin/security/java.policy
+	backup = etc/zulu-17-fx-bin/security/java.security
+	backup = etc/zulu-17-fx-bin/security/policy/limited/default_local.policy
+	backup = etc/zulu-17-fx-bin/security/policy/limited/default_US_export.policy
+	backup = etc/zulu-17-fx-bin/security/policy/limited/exempt_local.policy
+	backup = etc/zulu-17-fx-bin/security/policy/unlimited/default_local.policy
+	backup = etc/zulu-17-fx-bin/security/policy/unlimited/default_US_export.policy
+	backup = etc/zulu-17-fx-bin/sound.properties
+	source = zulu-17-fx-bin.tar.gz::https://cdn.azul.com/zulu/bin/zulu17.50.19-ca-fx-jdk17.0.11-linux_x64.tar.gz
+	sha256sums = 8ece39ac3cf9896d897faa1bee798bcb2739cdb9843a2234f5c65f9a34c64e0e
+
+pkgname = zulu-17-fx-bin
