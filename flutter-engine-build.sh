@@ -89,11 +89,13 @@ EOF
 		--with_tags \
 		--output-json='gclient-sync.json' \
 		--shallow \
-		--no-bootstrap
+		--no-bootstrap \
+	|| { >&2 echo '`gclient.py sync` command failed.'; return 1; }
 
 	sed -i "s/'python3'/'$_python_exec'/" 'src/flutter/DEPS'
 
-	gclient.py runhooks
+	gclient.py runhooks \
+		|| { >&2 echo '`gclient.py runhooks` command failed.'; return 1; }
 
 	cd 'src'
 
@@ -149,7 +151,8 @@ _build_flutter_engine() {
 	|| { >&2 echo '`gn gen` command failed.'; return 1; }
 
 	sed -i 's|ldflags}|ldflags} -fuse-ld=lld|g' "$outdir/out/$_flutter_outdir/toolchain.ninja" # use system linker
-	ninja -v -C "$outdir/out/$_flutter_outdir" || { >&2 echo 'Flutter engine build failed.'; return 1; }
+	ninja -v -C "$outdir/out/$_flutter_outdir" \
+		|| { >&2 echo 'Flutter engine build failed.'; return 1; }
 
 	#export PATH+=":${srcdir}/src/flutter/lib/web_ui/dev"
 	#felt build
