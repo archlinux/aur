@@ -1,7 +1,7 @@
 pkgbase = python-pyvistaqt
 	pkgdesc = Qt support for PyVista
 	pkgver = 0.11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pyvista/pyvistaqt
 	arch = any
 	license = MIT
