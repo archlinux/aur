@@ -1,5 +1,5 @@
 pkgbase = photoprism-tensorflow-cpu-bin
-	pkgdesc = PhotoPrism Tensorflow 1.15 with cpu base support
+	pkgdesc = PhotoPrism Tensorflow 1.15 with CPU base support (no AVX/AVX2)
 	pkgver = 1.15.2
 	pkgrel = 1
 	url = https://github.com/tensorflow/tensorflow
