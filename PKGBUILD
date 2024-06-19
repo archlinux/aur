@@ -5,6 +5,7 @@ pkgbase="${_pkgbase}"
 pkgname=(
   "riven-original"
   "riven-original-data"
+  "riven-original-strategyguide"
   "riven-original-makingof"
 )
 pkgdesc="'Riven: The Sequel to Myst' is a 1997 point-and-click puzzle adventure game with superb landscape immersion. This is the original game, not the remake."
@@ -16,7 +17,7 @@ arch=('any')
 url='https://cyan.com/games/riven/'
 epoch="0"
 pkgver='1.2_20030721_dvd' # Obtained from the file 'Read Instructions First'.
-pkgrel=4
+pkgrel=5
 _newestoriginalver='1.2_20231231_dvd' # Assumed highest possible version number of 'riven' that is for the original game.
 makedepends=(
   'dos2unix'    # To convert text files with Mac and DOS new line standard to Unix new line standard.
@@ -29,16 +30,20 @@ options+=('emptydirs')
 
 source=(
   'riven.dvd.iso::https://archive.org/download/riven_202001/Riven.iso'
+  'riven-strategy-guide.pdf::https://www.allthingsuru.com/AllThingsUru/pdf/Riven%20The%20Sequel%20to%20Myst%20Prima%20Official%20eGuide.pdf'
   'riven.sh'
   'riven.desktop'
+  'license-strategy-guide.txt'
   'license-note.txt'
 )
 
 sha256sums=(
-  '90f4e43a4fcb6cddc50497eccd235b79590beaa4bf8e432ddb87755b8fbab0fe'
-  'ee6a4ba3dbd61e7d0fb14476b64df0aced66a5486f4cfee3c9f09eb944e7852b'
-  '7b4d5fb2f60281cbd4c031f99923f8122ff7dd5996ce395cba99e498309dc270'
-  'f92e92e57ae86a3d490c81d965e5d51779afef61c869ed4c9d9e0b6411c1789c'
+  '90f4e43a4fcb6cddc50497eccd235b79590beaa4bf8e432ddb87755b8fbab0fe'  # riven.dvd.iso
+  '523a9f5c9d29d05a9eb90339ac676f4b2f352e0317f399cc5ed71f7d6bfe731e'  # riven-strategy-guide.pdf
+  'ee6a4ba3dbd61e7d0fb14476b64df0aced66a5486f4cfee3c9f09eb944e7852b'  # riven.sh
+  '7b4d5fb2f60281cbd4c031f99923f8122ff7dd5996ce395cba99e498309dc270'  # riven.desktop
+  'bb8aa13d8598a8c2e8466183481cd5b849afec44ce54ff68327a7650c8bdc99a'  # license-strategy-guide.txt
+  'f92e92e57ae86a3d490c81d965e5d51779afef61c869ed4c9d9e0b6411c1789c'  # license-note.txt
 )
 
 prepare() {
@@ -115,6 +120,7 @@ package_riven-original-data() {
   license=('LicenseRef-proprietary:Cyan Worlds')
   optdepends=(
     "riven-original: To actually launch the game just by executing '/usr/bin/riven'."
+    "riven-original-strategyguide: For help when you are stuck."
     "scummvm: To play the game by manually launching ScummVM and adding the game to ScummVM."
   )
   provides=("riven-data=${pkgver}")
@@ -146,6 +152,23 @@ package_riven-original-data() {
   install -v -D -m644 "${srcdir}/build/Riven_license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/Riven_license.txt"
 
   ln -sv "/usr/share/licenses/${pkgname}/Riven_license.txt" "${pkgdir}/usr/share/doc/${_pkgbase}/Riven_license.txt"
+}
+
+package_riven-original-strategyguide() {
+  pkgdesc="Help guide for the point-and-click adventure/ puzzle game 'Riven: The Sequel to Myst'. This is the strategy guide for the original game, not the remake."
+  url='https://www.allthingsuru.com/AllThingsUru/pdf/Riven%20The%20Sequel%20to%20Myst%20Prima%20Official%20eGuide.pdf'
+  license=('LicenseRef-proprietary:Prima Games')
+  optdepends=(
+    "riven-original: To actually launch the game just by executing '/usr/bin/riven'."
+    "riven-original-data: The game data files, to be played with ScummVM."
+  )
+  provides=("riven-strategyguide=${pkgver}")
+  conflicts=("riven-strategyguide<=${_newestoriginalver}")
+  replaces=("riven-strategyguide<=${_newestoriginalver}")
+
+  install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgbase}" "${srcdir}/riven-strategy-guide.pdf"
+  install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${srcdir}/license-strategy-guide.txt"
+  ln -svr "${pkgdir}/usr/share/licenses/${pkgname}/license-strategy-guide.txt" "${pkgdir}/usr/share/doc/${_pkgbase}/license-strategy-guide.txt"
 }
 
 package_riven-original-makingof() {

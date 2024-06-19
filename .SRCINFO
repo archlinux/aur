@@ -1,7 +1,7 @@
 pkgbase = riven-original
 	pkgdesc = 'Riven: The Sequel to Myst' is a 1997 point-and-click puzzle adventure game with superb landscape immersion. This is the original game, not the remake.
 	pkgver = 1.2_20030721_dvd
-	pkgrel = 4
+	pkgrel = 5
 	epoch = 0
 	url = https://cyan.com/games/riven/
 	arch = any
@@ -13,12 +13,16 @@ pkgbase = riven-original
 	makedepends = optipng
 	options = emptydirs
 	source = riven.dvd.iso::https://archive.org/download/riven_202001/Riven.iso
+	source = riven-strategy-guide.pdf::https://www.allthingsuru.com/AllThingsUru/pdf/Riven%20The%20Sequel%20to%20Myst%20Prima%20Official%20eGuide.pdf
 	source = riven.sh
 	source = riven.desktop
+	source = license-strategy-guide.txt
 	source = license-note.txt
 	sha256sums = 90f4e43a4fcb6cddc50497eccd235b79590beaa4bf8e432ddb87755b8fbab0fe
+	sha256sums = 523a9f5c9d29d05a9eb90339ac676f4b2f352e0317f399cc5ed71f7d6bfe731e
 	sha256sums = ee6a4ba3dbd61e7d0fb14476b64df0aced66a5486f4cfee3c9f09eb944e7852b
 	sha256sums = 7b4d5fb2f60281cbd4c031f99923f8122ff7dd5996ce395cba99e498309dc270
+	sha256sums = bb8aa13d8598a8c2e8466183481cd5b849afec44ce54ff68327a7650c8bdc99a
 	sha256sums = f92e92e57ae86a3d490c81d965e5d51779afef61c869ed4c9d9e0b6411c1789c
 
 pkgname = riven-original
@@ -38,10 +42,21 @@ pkgname = riven-original-data
 	url = https://archive.org/details/riven_202001
 	license = LicenseRef-proprietary:Cyan Worlds
 	optdepends = riven-original: To actually launch the game just by executing '/usr/bin/riven'.
+	optdepends = riven-original-strategyguide: For help when you are stuck.
 	optdepends = scummvm: To play the game by manually launching ScummVM and adding the game to ScummVM.
 	provides = riven-data=1.2_20030721_dvd
 	conflicts = riven-data<=1.2_20231231_dvd
 	replaces = riven-data<=1.2_20231231_dvd
+
+pkgname = riven-original-strategyguide
+	pkgdesc = Help guide for the point-and-click adventure/ puzzle game 'Riven: The Sequel to Myst'. This is the strategy guide for the original game, not the remake.
+	url = https://www.allthingsuru.com/AllThingsUru/pdf/Riven%20The%20Sequel%20to%20Myst%20Prima%20Official%20eGuide.pdf
+	license = LicenseRef-proprietary:Prima Games
+	optdepends = riven-original: To actually launch the game just by executing '/usr/bin/riven'.
+	optdepends = riven-original-data: The game data files, to be played with ScummVM.
+	provides = riven-strategyguide=1.2_20030721_dvd
+	conflicts = riven-strategyguide<=1.2_20231231_dvd
+	replaces = riven-strategyguide<=1.2_20231231_dvd
 
 pkgname = riven-original-makingof
 	pkgdesc = Movie 'The Making of Riven', a point-and-click immersive puzzle adventure game. This is for the original game, not the remake.
