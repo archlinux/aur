@@ -1,10 +1,10 @@
 pkgbase = vterm-git
 	pkgdesc = A cross platform, vulkan terminal emulator written in rust (git development version)
-	pkgver = r6.0dee7de
+	pkgver = r11.bbf8e18
 	pkgrel = 1
 	url = https://github.com/nuIIpointerexception/vterm
 	arch = x86_64
-	license = MIT
+	license = MPL2
 	makedepends = git
 	makedepends = cargo
 	makedepends = rustup

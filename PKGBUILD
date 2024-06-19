@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="A cross platform, vulkan terminal emulator written in rust (git development version)"
 arch=('x86_64')
 url="https://github.com/nuIIpointerexception/vterm"
-license=('MIT')
+license=('MPL2')
 depends=(
 	"vulkan-icd-loader"
 )
