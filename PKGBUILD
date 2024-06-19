@@ -1,9 +1,9 @@
 # Contributor: Calimero <calimeroteknik@free.fr>
 # Contributor: jerry73204 <jerry73204@gmail.com>
-# Maintainer: David Hummel <david dot hummel at gmail point com>
+# Maintainer: David Hummel <hummeltech@sherpaguru.com>
 
 pkgname=('mod_tile-git' 'renderd-git')
-pkgver=0.7.0.r64.g1f81434
+pkgver=0.8.0.beta.r0.ge89046b
 pkgrel=1
 pkgdesc='A daemon and apache module for rendering and serving Mapnik raster tiles'
 arch=('i686' 'x86_64')
@@ -56,7 +56,7 @@ check() {
 
 package_mod_tile-git() {
   conflicts=('mod_tile')
-  depends=('apache' 'apr' 'cairo' 'curl' 'glib2')
+  depends=('apache' 'apr' 'cairo' 'curl' 'glib2' 'iniparser')
   install="${pkgname}.install"
   pkgdesc='An Apache 2 module to deliver map tiles'
   provides=('mod_tile')

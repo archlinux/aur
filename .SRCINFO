@@ -1,6 +1,6 @@
 pkgbase = mod_tile-git
 	pkgdesc = A daemon and apache module for rendering and serving Mapnik raster tiles
-	pkgver = 0.7.0.r64.g1f81434
+	pkgver = 0.8.0.beta.r0.ge89046b
 	pkgrel = 1
 	url = https://github.com/openstreetmap/mod_tile
 	arch = i686
@@ -36,6 +36,7 @@ pkgname = mod_tile-git
 	depends = cairo
 	depends = curl
 	depends = glib2
+	depends = iniparser
 	provides = mod_tile
 	conflicts = mod_tile
 
