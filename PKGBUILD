@@ -5,7 +5,7 @@
 # https://mullvad.net/en/help/verifying-mullvad-browser-signature
 
 pkgname=mullvad-browser-bin
-pkgver=13.0.16
+pkgver=13.5
 pkgrel=1
 pkgdesc='Privacy-focused web browser developed by Mullvad VPN and the Tor Project'
 arch=(x86_64)
@@ -75,7 +75,7 @@ validpgpkeys=(
 )
 changelog='mullvad-browser.changelog'
 
-sha256sums=('fbc8eeaf615cf9f86b58ef71c9a4aec335199cb2e14cffeecf5e7e117e84ecae'
+sha256sums=('5b3d6060ad42a9f2b869aecad8f47cc0ac7b55cbc02eab98280daf7ad50075e5'
             'SKIP'
             '0fbfcc63591c661fd73de462a123e6daeae01d7ebc5981c8793227369d77b565'
             '9bb24b8e210112b1222d028285c6d68ab599f8382b2b108ab69284948bb4ac70')
@@ -111,15 +111,4 @@ package() {
 
   ln -sf /opt/mullvad-browser/MullvadBrowser/Docs/Licenses \
     "$pkgdir/usr/share/licenses/mullvad-browser"
-
-  # TODO: this will be fixed upstream from 13.5 onwards
-  cat >"$pkgdir/opt/mullvad-browser/defaults/pref/autoconfig.js" <<EOF
-pref("general.config.filename", "aur.cfg");
-pref("general.config.obscure_value", 0);
-EOF
-
-  cat >"$pkgdir/opt/mullvad-browser/aur.cfg" <<EOF
-// Prevent the browser from creating ~/UpdateInfo
-lockPref("app.update.auto", false);
-EOF
 }
