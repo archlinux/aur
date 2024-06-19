@@ -1,0 +1,20 @@
+pkgbase = xdg-desktop-portal-termfilechooser-fix-for-lf-git
+	pkgdesc = xdg-desktop-portal backend for your favorite terminal file chooser with fix for lf
+	pkgver = r11.6acc64b
+	pkgrel = 1
+	url = https://github.com/boydaihungst/xdg-desktop-portal-termfilechooser
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = scdoc
+	makedepends = git
+	depends = xdg-desktop-portal
+	depends = libinih
+	optdepends = lf: for choosing files
+	optdepends = kitty: default terminal for launching ranger
+	provides = xdg-desktop-portal-impl
+	conflicts = xdg-desktop-portal-termfilechooser-git
+	source = xdg-desktop-portal-termfilechooser-fix-for-lf-git::git+https://github.com/boydaihungst/xdg-desktop-portal-termfilechooser.git#branch=fix-for-lf
+	sha512sums = SKIP
+
+pkgname = xdg-desktop-portal-termfilechooser-fix-for-lf-git
