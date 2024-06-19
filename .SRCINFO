@@ -1,0 +1,69 @@
+pkgbase = python-jwst
+	pkgdesc = Library for calibration of science observations from the James Webb Space Telescope
+	pkgver = 1.14.0
+	pkgrel = 1
+	url = https://jwst-pipeline.readthedocs.io
+	arch = i686
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = python-setuptools-scm>=3.4
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-numpy
+	makedepends = python-sphinx-automodapi
+	makedepends = python-sphinxcontrib-jquery
+	makedepends = python-sphinx_rtd_theme
+	makedepends = python-pytest-doctestplus
+	makedepends = python-bayesicfitting
+	makedepends = python-drizzle
+	makedepends = python-jsonschema
+	makedepends = python-photutils
+	makedepends = python-poppy
+	makedepends = python-spherical_geometry
+	makedepends = python-scikit-image
+	makedepends = python-stcal
+	makedepends = python-stdatamodels
+	makedepends = python-stpipe
+	makedepends = python-synphot
+	makedepends = python-tweakwcs
+	makedepends = python-wiimatch
+	makedepends = graphviz
+	makedepends = texlive-latexextra
+	source = https://files.pythonhosted.org/packages/source/j/jwst/jwst-1.14.0.tar.gz
+	md5sums = 15c9b8ce5bd0858ce09d7773e1c11d9a
+
+pkgname = python-jwst
+	depends = python-asdf>=3.1.0
+	depends = python-astropy>=5.3
+	depends = python-bayesicfitting>=3.0.1
+	depends = python-crds>=11.17.14
+	depends = python-drizzle>=1.15.0
+	depends = python-gwcs>=0.21.0
+	depends = python-numpy>=1.22
+	depends = python-opencv>=4.6.0.66
+	depends = python-photutils>=1.5.0
+	depends = python-psutil>=5.7.2
+	depends = python-poppy>=1.0.2
+	depends = python-pyparsing>=2.2.1
+	depends = python-requests>=2.22
+	depends = python-scikit-image>=0.19
+	depends = python-scipy>=1.7.2
+	depends = python-spherical_geometry>=1.2.22
+	depends = python-stcal>=1.7.0
+	depends = python-stdatamodels>=1.10.1
+	depends = python-stpipe>=0.5.2
+	depends = python-stsci.image>=2.3.5
+	depends = python-stsci.imagestats>=1.6.3
+	depends = python-synphot>=1.2
+	depends = python-tweakwcs>=0.8.6
+	depends = python-asdf-astropy>=0.3.0
+	depends = python-wiimatch>=0.2.1
+	depends = python-packaging>20.0
+	depends = python-importlib-metadata>=4.11.4
+	depends = python-jsonschema>=4.8
+	optdepends = python-jwst-doc: Documentation for Python JWST
+
+pkgname = python-jwst-doc
+	pkgdesc = Documentation for Python JWST Pipeline
+	arch = any
