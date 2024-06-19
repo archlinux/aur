@@ -12,6 +12,12 @@ Restart = on-failure
 RestartSec = 5
 TimeoutStopSec = 10
 
+CacheDirectory=netbird
+ConfigurationDirectory=netbird
+LogsDirectory=netbird
+RuntimeDirectory=netbird
+StateDirectory=netbird
+
 [Install]
 WantedBy = multi-user.target
 
