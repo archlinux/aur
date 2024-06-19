@@ -1,7 +1,8 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
+
 _pyname=drizzlepac
 pkgname=python-${_pyname}-doc
-pkgver=3.7.0
+pkgver=3.7.0.1
 pkgrel=1
 pkgdesc="Documentation for DrizzlePac"
 arch=('any')
@@ -32,7 +33,7 @@ source=("https://github.com/spacetelescope/${_pyname}/archive/${pkgver}.tar.gz"
 #       "https://raw.githubusercontent.com/spacetelescope/drizzlepac/master/doc/source/ZoomSkyCellCombo.png"
         'fix_catalog_generation_title_level.patch')
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
-md5sums=('d9dfab42ba28ebaa904b5e4a515163c9'
+md5sums=('7e72d0d8dfee48f0542f1c117630c938'
          'eb046975b52452d799021218eb414cfb')
 
 prepare() {
