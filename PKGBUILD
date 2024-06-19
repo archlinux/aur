@@ -1,7 +1,7 @@
 # Maintainer:
 
 pkgname=powershell-lts-bin
-_pkgver=7.4.2
+_pkgver=7.4.3
 pkgver=${_pkgver/-/.}
 pkgrel=1
 pkgdesc='PowerShell Core is a cross-platform (Windows, Linux, and macOS) automation and configuration tool/framework'
@@ -21,7 +21,7 @@ source=(
 )
 
 sha512sums=(
-	"76ea7ba72734fa4c58342905751bdff1a28dd06cd6b0736f363ff45dfe1f0a03c607336e5d44084474625ef3d05419feeb854090844d5aa55c072d01584ad6ce"
+	"b70201346b3211e7e45eb63606344d6a4b73144ef37afa01e5b8aed1e10ef797401812908cfb24ec2e30e91d74261f540dfa58d55c19e77db82fc3c5ec02a2aa"
 	"07f5fc69a6d9417049e4f53fbfc96c26c79d0ed33c6e161b3543bc5690476ecdac612aeede9ecff4352bea70ae32bd2fae8b0af0839b986aa1f728f8a9fcfce3"
 )
 
