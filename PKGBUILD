@@ -5,7 +5,7 @@ pkgname="stm32cubeide"
 pkgver=1.15.1
 _pkgver_ext=1.15.1_21094_20240412_1041
 _pkg_file_name=en.st-stm32cubeide_1.15.1_21094_20240412_1041_amd64.sh.zip
-pkgrel=1
+pkgrel=2
 pkgdesc="Integrated Development Environment for STM32"
 arch=("x86_64")
 makedepends=('imagemagick')
@@ -21,11 +21,11 @@ options=(!strip)
 # Extract actual direct download link */
 _curl_useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
                         AppleWebKit/537.36 (KHTML, like Gecko) \
-                        Chrome/120.0.0.0 \
+                        Chrome/124.0.0.0 \
                         Safari/537.36"
 _curl_useragent="$(printf '%s' "$_curl_useragent" | sed 's/[[:space:]]\+/ /g')"
 _useragent_escaped="${_curl_useragent// /\\ }"
-_curl_req_url="https://www.st.com/content/st_com_cx/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-ides/stm32cubeide/_jcr_content/get-software/get-software-table-body.nocache.html/st-site-cx/components/containers/product/get-software-table-body.html"
+_curl_req_url="https://www.st.com/content/st_com_cx/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-ides/stm32cubeide/_jcr_content/get-software/getsw-table-nli.nocache.html/st-site-cx/components/containers/product/get-software-table-body.html"
 
 _curl_req="$(curl -s --compressed -H "$_curl_useragent" "$_curl_req_url")"
 _pkg_url="$(grep -m 1 "${_pkg_file_name}" <<< "$_curl_req")"
