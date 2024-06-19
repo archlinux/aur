@@ -18,6 +18,7 @@ build() {
 
     sed -i 's/CC = cc/CC = gcc/' config.mk
     sed -i 's/BUILD_MPI = false/BUILD_MPI = true/' config.mk
+    echo 'CFLAGS += -fPIC' >> config.mk
 
     patch -p1 scripts/cogapp/cogapp.py < "../../reproblas-deprecated-imp.patch"
     make update
