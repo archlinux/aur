@@ -4,10 +4,10 @@
 # Contributor: Pablo Lezaeta <prflr88@gmail.com>
 pkgname=hfsutils
 pkgver=3.2.6_p16
-pkgrel=3
+pkgrel=4
 pkgdesc="HFS Access utils"
 arch=('x86_64')
-license=('GPL2')
+license=('GPL-2.0-or-later')
 url="https://www.mars.org/home/rob/proj/hfs/"
 depends=(glibc sh tcl tk)
 source=(
