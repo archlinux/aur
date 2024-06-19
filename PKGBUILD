@@ -1,8 +1,8 @@
 # Maintainer: zotan <aur@zotan.email>
 
 pkgname=runitor-bin
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="A command runner with healthchecks.io integration"
 arch=('x86_64' 'aarch64')
 url="https://github.com/bdd/runitor"
@@ -10,10 +10,10 @@ license=('0BSD')
 
 case "$CARCH" in
 	aarch64) _pkgarch="arm64"
-		 sha512sums=('612ddb598227b41d2465713a2a7f50ab125c4eafe56f893290ddf9b1287db4547d5a08db68536af9d3b4ea0ae625baafa1eaf3a6ba8e41bfdf7449e79b86dd02')
+		 sha512sums=('8b945a85f18c5374a51bbab0c4ee4c8ba4df78dc8ae4726fe24c851842bd15ad36297694fb9e23c2ae59560c1c931bc534af79a1e92970d62844ba9ed4c63fcc')
 		 ;;
 	x86_64)  _pkgarch="amd64"
-		 sha512sums=('8800d3402ac23f88636d5b137d564401c6fe5f4b127eb3d029b02d5f6bc25d50a3f029ccfc36965d07a78280d365d204bb1ab9a41950ea49add10f3af6a96419')
+		 sha512sums=('74f746d01cb0bf4bc23442dbece16ce9228244b270bfe788e5bd69835b332a286141dcef263f29503eeec4c95298d0ea33a006c0c7e195ac3f87fbfa39ff5b6e')
 		 ;;
 esac
 
