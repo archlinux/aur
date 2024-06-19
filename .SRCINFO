@@ -1,0 +1,20 @@
+pkgbase = lastsimilarious
+	pkgdesc = A music streaming player that personalizes your listening experience based on Last.fm's powerful recommendations.
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/aseni-teso/lastsimilarious
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = base-devel
+	depends = python-requests
+	depends = python-pylast
+	depends = python-beautifulsoup4
+	depends = python-dotenv
+	depends = python-mpv
+	depends = mpv
+	depends = yt-dlp
+	provides = lastsimilarious
+	source = https://github.com/aseni-teso/lastsimilarious/releases/download/0.1.3/LastSimilarious_v0.1.3_release.tar.gz
+	sha256sums = 0480efe09d3e766cf9a57211a5bfa7c8421003038db8fe46aac354b828c9a067
+
+pkgname = lastsimilarious
