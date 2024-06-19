@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=musicfree-desktop
 _appname=MusicFreeDesktop
-pkgver=0.0.3
+pkgver=0.0.4
 _electronversion=25
 _nodeversion=18
-pkgrel=5
+pkgrel=1
 pkgdesc="插件化、定制化、无广告的免费音乐播放器"
 arch=('any')
 url="http://musicfree.upup.fun/"
@@ -13,7 +13,7 @@ _pluginurl="https://gitee.com/maotoumao/MusicFreePlugins/raw/master/plugins.json
 license=('GPL-3.0-only')
 conflicts=("${pkgname}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
     'libvips'
     'nodejs'
 )
@@ -22,14 +22,13 @@ makedepends=(
     'npm'
     'nvm'
     'curl'
-    'base-devel'
     'gcc'
 )
 source=(
     "${pkgname%-git}.git::git+${_ghurl}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('0b2816bbc40e1f2d561aa79667da5bbb99e4bb6b835767b5fc43e346dfb6c804'
+sha256sums=('8384a070cf5f13685f0816e2093aaf2c315993f03c26c70a2530c9dfa9acfb6c'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -62,8 +61,8 @@ build() {
     else
         echo "Your network is OK."
     fi
-    npm install
-    npm run package
+    NODE_ENV=development npm install
+    NODE_ENV=production npm run package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
