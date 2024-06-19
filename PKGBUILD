@@ -1,20 +1,42 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=netbird-ui
-pkgver=0.27.10
+pkgver=0.28.0
 pkgrel=1
 pkgdesc='Official GUI for the Netbird client'
 url='https://netbird.io'
 arch=(i686 pentium4 x86_64 arm armv7h armv6h aarch64 riscv64)
-license=(BSD)
+license=(BSD-3-Clause)
 
-depends=(netbird gtk3 libayatana-appindicator)
-makedepends=('go>=1.20')
+depends=(
+  at-spi2-core
+  ayatana-ido
+  cairo
+  gdk-pixbuf2
+  glib2
+  glibc
+  gtk3
+  harfbuzz
+  libayatana-appindicator
+  libayatana-indicator
+  libdbusmenu-glib
+  libglvnd
+  libx11
+  libxcursor
+  libxi
+  libxinerama
+  libxrandr
+  libxxf86vm
+  netbird
+  pango
+  zlib
+)
+makedepends=(go)
 
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/netbirdio/netbird/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('d5a0f2af7e340a8df334906850401caf2d5498df832dc82a3153b2031f2ed897')
+sha256sums=('a68b71c6308106618aba72e8f74c7d121499cb326e4bc7fa640fd6b5be632a2d')
 
 prepare() {
   cd "$srcdir/netbird-$pkgver"
