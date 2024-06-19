@@ -10,7 +10,7 @@ arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/${pkgname}/${pkgname}"
 license=('AGPL-3.0-or-later')
 depends=("libvips" "openjpeg2" "photoprism-facenet" "photoprism-nasnet" "photoprism-nsfw" "photoprism-tensorflow")
-makedepends=("go" "libvips" "npm" "openjpeg2" "photoprism-tensorflow")
+makedepends=("go" "npm")
 optdepends=("darktable: for RAW to JPEG conversion"
             "ffmpeg: for video transcoding and thumbnail extraction"
             "imagemagick: for image conversion"
