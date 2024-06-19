@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=deckboard-bin
 _pkgname=Deckboard
-pkgver=3.0.0
+pkgver=3.0.1
 _electronversion=29
 pkgrel=1
 pkgdesc="Control your PC with your phone in easy way possible."
@@ -24,7 +24,7 @@ makedepends=(
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 source=("${pkgname%-bin}.sh")
 sha256sums=('2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-sha256sums_x86_64=('ecf6562fe2169fb0dcf6bf2c93b68b21b833f7b5f631e4502993761cd45b44c2')
+sha256sums_x86_64=('a47071ae659d85134ae08bdbd660cdc0fbc515d209d0e4ff232db57b79e7d1c2')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
