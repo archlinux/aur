@@ -26,7 +26,6 @@ makedepends=(
     'python-sphinx_rtd_theme'
     'python-sphinxcontrib-bibtex'
     'python>=3.7'
-    'python-sphinx'
     'symfpu-cvc5'
 )
 checkdepends=('gtest' 'python-pytest')

@@ -19,7 +19,6 @@ pkgbase = bitwuzla
 	makedepends = python-sphinx_rtd_theme
 	makedepends = python-sphinxcontrib-bibtex
 	makedepends = python>=3.7
-	makedepends = python-sphinx
 	makedepends = symfpu-cvc5
 	depends = gcc-libs
 	depends = glibc
