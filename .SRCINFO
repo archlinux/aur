@@ -1,6 +1,6 @@
 pkgbase = python-pymctranslate
 	pkgdesc = A library of block mappings that can be used to convert from any Minecraft format into any other Minecraft format
-	pkgver = 1.2.24
+	pkgver = 1.2.26
 	pkgrel = 1
 	url = https://github.com/gentlegiantJGC/PyMCTranslate
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-pymctranslate
 	depends = python
 	depends = python-amulet-nbt
 	depends = python-numpy
-	source = git+https://github.com/gentlegiantJGC/PyMCTranslate.git#commit=948fbcfd9779c6b29682460a4518e1f813be7ba3
+	source = git+https://github.com/gentlegiantJGC/PyMCTranslate.git#commit=c2a1ce7f32a925fd0091ec1b2342bcc0d353843d
 	sha256sums = SKIP
 
 pkgname = python-pymctranslate
