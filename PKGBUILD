@@ -1,15 +1,14 @@
 # Maintainer: David Wells <drwells.aur at fastmail dot com>
-
 # Contributor: Florian Dang <florian dot coin at gmail dot com>
 
 pkgname=deal-ii
 _realname=dealii
-pkgver=9.5.1
+pkgver=9.5.2
 pkgrel=1
 pkgdesc="An Open Source Finite Element Differential Equations Analysis Library"
 arch=("i686" "x86_64")
-url="http://www.dealii.org/"
-license=('LGPL')
+url="https://www.dealii.org/"
+license=('LGPL-2.1-or-later')
 # deal.II depends on Kokkos which is implicitly provided by Trilinos. Trilinos
 # does not yet support configuration with an external copy of Kokkos so do not
 # yet depend on that package.
@@ -44,11 +43,20 @@ optdepends=(
       )
 makedepends=('cmake')
 install=deal-ii.install
-source=(https://github.com/dealii/dealii/releases/download/v$pkgver/${_realname}-$pkgver.tar.gz)
-sha1sums=('a94989a9e4c3b8599aceacf71d7156621c1d7426')
+source=(https://github.com/dealii/dealii/releases/download/v$pkgver/${_realname}-$pkgver.tar.gz
+       sundials-7.patch)
+sha1sums=('126183aaaf75eaa1b4c3812f6e44aa32a60f4da1'
+          'caf299701c7be38a2bdd367ff254ec370af79f96')
 # where to install deal.II: change to something else (e.g., /opt/deal.II/)
 # if desired.
 _installation_prefix=/usr
+
+prepare() {
+  # Avoid errors on multiple runs by deleting the new header before possibly
+  # re-creating it
+  rm -f dealii-$pkgver/include/deal.II/sundials/sundials_types.h
+  patch --strip=1 --input=$(pwd)/../sundials-7.patch --directory=dealii-$pkgver
+}
 
 build() {
   # Since deal.II relies on a relatively large number of packages that are
@@ -142,7 +150,8 @@ build() {
 check() {
     cd "${srcdir}/build"
     # workaround a bug by setting the number of jobs to 1 (though this still
-    # runs in parallel)
+    # runs in parallel). Also permit the p4est test to oversubscribe
+    export PRTE_MCA_rmaps_default_mapping_policy=:oversubscribe
     make -j1 test
 }
 

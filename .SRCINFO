@@ -1,12 +1,12 @@
 pkgbase = deal-ii
 	pkgdesc = An Open Source Finite Element Differential Equations Analysis Library
-	pkgver = 9.5.1
+	pkgver = 9.5.2
 	pkgrel = 1
-	url = http://www.dealii.org/
+	url = https://www.dealii.org/
 	install = deal-ii.install
 	arch = i686
 	arch = x86_64
-	license = LGPL
+	license = LGPL-2.1-or-later
 	makedepends = cmake
 	depends = boost
 	depends = trilinos
@@ -33,7 +33,9 @@ pkgbase = deal-ii
 	optdepends = tbb: High level abstract threading library
 	optdepends = suitesparse: A collection of sparse matrix libraries
 	optdepends = zlib: Compression library implementing the deflate compression method found in gzip and PKZIP
-	source = https://github.com/dealii/dealii/releases/download/v9.5.1/dealii-9.5.1.tar.gz
-	sha1sums = a94989a9e4c3b8599aceacf71d7156621c1d7426
+	source = https://github.com/dealii/dealii/releases/download/v9.5.2/dealii-9.5.2.tar.gz
+	source = sundials-7.patch
+	sha1sums = 126183aaaf75eaa1b4c3812f6e44aa32a60f4da1
+	sha1sums = caf299701c7be38a2bdd367ff254ec370af79f96
 
 pkgname = deal-ii
