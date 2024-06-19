@@ -9,8 +9,8 @@ pkgname=(
   libxml2
   libxml2-docs
 )
-pkgver=2.13.0
-pkgrel=5
+pkgver=2.13.1
+pkgrel=1
 pkgdesc="XML C parser and toolkit"
 url="https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home"
 arch=(x86_64)
@@ -33,7 +33,7 @@ source=(
   https://www.w3.org/XML/Test/xmlts20130923.tar.gz
   0001-HACK-Don-t-run-fuzzing-tests.patch
 )
-b2sums=('5373f8063ac8d1515841141f52aa7fb144e0ca1602ccdf9cdaf2ebf6e98f49ef45e62bbfbc828395dde0656281f75bd017d8a96ad7dbd076baf4c046907806e2'
+b2sums=('38e69153c8f1a7a52673f7c51d0861217178a22e278026d8874e9916a842466a98be02c318a28b05afebda69505d71e16d607995f63808585dc47153e261eaf0'
         '63a47bc69278ef510cd0b3779aed729e1b309e30efa0015d28ed051cc03f9dfddb447ab57b07b3393e8f47393d15473b0e199c34cb1f5f746b15ddfaa55670be'
         '151e84ee17051eeecfa8c62a7376ff269860f3ff6d33fb92209ff5f8dc9576a5648bbe9ffc96317695c069760ccfecaa3e6f19fb7a7c2e9f039a146d7fc8a516')
 
@@ -42,15 +42,6 @@ prepare() {
 
   # Use xmlconf from conformance test suite
   ln -s ../xmlconf
-
-  # Cherry-pick fixes from 2.13 branch
-  # https://gitlab.gnome.org/GNOME/libxml2/-/issues/731
-  # https://gitlab.gnome.org/GNOME/libxml2/-/issues/732
-  # https://gitlab.gnome.org/GNOME/libxml2/-/issues/733
-  # https://gitlab.gnome.org/GNOME/libxml2/-/issues/734
-  # https://gitlab.gnome.org/GNOME/libxml2/-/issues/737
-  # https://gitlab.gnome.org/GNOME/libxml2/-/issues/738
-  git cherry-pick -n v2.13.0..def06f376e1fefcc666a4daef687f87ad25f6793
 
   # Do not run fuzzing tests
   git apply -3 ../0001-HACK-Don-t-run-fuzzing-tests.patch
