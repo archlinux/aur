@@ -7,7 +7,7 @@ pkgname=('systemd-fml'
          'systemd-sysvcompat-fml'
          'systemd-ukify-fml')
 pkgdesc='systemd with machine id from hw patch: https://github.com/systemd/systemd/pull/32086'
-_tag='256.1'
+_tag='256'
 # Upstream versioning is incompatible with pacman's version comparisons so we
 # replace tildes with the empty string to make sure pacman's version comparing
 # does the right thing for rc versions:
@@ -55,7 +55,7 @@ source=("$pkgbase::git+https://github.com/systemd/systemd#tag=v${_tag}"
         '30-systemd-udev-reload.hook'
         '30-systemd-update.hook')
 
-sha512sums=('1ba38dd45cd910c7a2b4c7f23f982c5b0e5b13cd5874571ebc9b609ff85c058cecdb61019141ef2010fd4882c3ffc5a13a2b0d6370db4067ad90c28b83de6760'
+sha512sums=('0a82b5708d1025dbe12a722e3b7e946c5136a17ea2d9b73afba02da474873b3373cd7c1c4eff8bd612c2b16321f31a6109e3c34e548e48ae88fa5bb3fab00383'
             '3ccf783c28f7a1c857120abac4002ca91ae1f92205dcd5a84aff515d57e706a3f9240d75a0a67cff5085716885e06e62597baa86897f298662ec36a940cf410e'
             'fdebd3f46e3eb9821c78c29d176ff6f91ed383e948a8f06122fda41a9fb0e194374d27bb5b3cbc0e657460e4b9e614dc4937f074094893de2525265173afa364'
             '61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648'
@@ -303,7 +303,7 @@ package_systemd-libs-fml() {
 
 package_systemd-resolvconf-fml() {
   pkgdesc='systemd resolvconf replacement (for use with systemd-resolved)'
-  depends=("systemd=${pkgver}")
+  depends=("systemd-fml=${pkgver}")
   provides=('openresolv' 'resolvconf')
   provides+=("systemd-resolvconf=$pkgver")
   conflicts=('resolvconf')
@@ -321,7 +321,7 @@ package_systemd-sysvcompat-fml() {
   provides=("systemd-sysvcompat=$pkgver")
   conflicts=('sysvinit')
   conflicts+=('systemd-sysvcompat')
-  depends=("systemd=${pkgver}")
+  depends=("systemd-fml=${pkgver}")
 
   install -D -m0644 -t "$pkgdir"/usr/share/man/man8 \
     build/man/{halt,poweroff,reboot,shutdown}.8
@@ -338,7 +338,7 @@ package_systemd-ukify-fml() {
   provides=('ukify')
   provides+=("systemd-ukify=$pkgver")
   conflicts=('systemd-ukify')
-  depends=("systemd=${pkgver}" 'binutils' 'python-cryptography' 'python-pefile')
+  depends=("systemd-fml=${pkgver}" 'binutils' 'python-cryptography' 'python-pefile')
   optdepends=('python-pillow: Show the size of splash image'
               'sbsigntools: Sign the embedded kernel')
 
