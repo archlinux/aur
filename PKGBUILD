@@ -30,7 +30,7 @@ options+=('emptydirs')
 
 source=(
   'riven.dvd.iso::https://archive.org/download/riven_202001/Riven.iso'
-  'riven-strategy-guide.pdf::https://www.allthingsuru.com/AllThingsUru/pdf/Riven%20The%20Sequel%20to%20Myst%20Prima%20Official%20eGuide.pdf'
+  'riven-strategy-guide.pdf::https://www.allthingsuru.com/AllThingsUru/pdf/Riven%20The%20Sequel%20to%20Myst%20Prima%20Official%20eGuide.pdf' # http://web.archive.org/web/20231001122618/https://www.allthingsuru.com/AllThingsUru/pdf/Riven%20The%20Sequel%20to%20Myst%20Prima%20Official%20eGuide.pdf
   'riven.sh'
   'riven.desktop'
   'license-strategy-guide.txt'
