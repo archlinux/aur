@@ -1,19 +1,15 @@
 pkgbase = build2
 	pkgdesc = build2 build system
-	pkgver = 0.16.0
-	pkgrel = 2
+	pkgver = 0.17.0
+	pkgrel = 1
 	url = https://build2.org/
 	arch = x86_64
 	license = MIT
 	makedepends = chrpath
 	depends = gcc-libs
 	depends = glibc
-	depends = sqlite3
-	source = https://download.build2.org/0.16.0/build2-toolchain-0.16.0.tar.xz
-	source = https://github.com/build2/libpkg-config/commit/c8978943.patch
-	source = https://github.com/build2/libpkg-config/commit/604eb708.patch
-	sha256sums = 23793f682a17b1d95c80bbd849244735ed59a3e27361529aa4865d2776ff8adc
-	sha256sums = 5b3fdcb4ec53c487aa005224ddbc6db02f078f01c1de530839cc8146026b6a7e
-	sha256sums = 29c2eeff019c6d8b0ffd1bfcf74a02aacf96a2d3dd6df24e2b0b2d0b76d93f00
+	depends = sqlite
+	source = https://download.build2.org/0.17.0/build2-toolchain-0.17.0.tar.xz
+	sha256sums = 3722a89ea86df742539d0f91bb4429fd46bbf668553a350780a63411b648bf5d
 
 pkgname = build2
