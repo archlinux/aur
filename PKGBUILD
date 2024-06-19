@@ -16,6 +16,8 @@ build() {
     cd "${srcdir}/${_srcname}"
 
     # -O3 is upstream default and well tested
+    # -shared with _one_ dash is on purpose
+    # --no-options and --kitten with _two dashes too
     ./configure --no-options \
 		-shared \
 		--kitten
