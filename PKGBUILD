@@ -7,16 +7,12 @@ pkgname=('systemd-fml'
          'systemd-sysvcompat-fml'
          'systemd-ukify-fml')
 pkgdesc='systemd with machine id from hw patch: https://github.com/systemd/systemd/pull/32086'
-_tag='256'
-# Upstream versioning is incompatible with pacman's version comparisons so we
-# replace tildes with the empty string to make sure pacman's version comparing
-# does the right thing for rc versions:
-# ➜ vercmp 255~rc1 255
-# 1
-# ➜ vercmp 255rc1 255
-# -1
+_tag='256.1'
+# Upstream versioning is incompatible with pacman's version comparisons, one
+# way or another. So we replace dashes and tildes with the empty string to
+# make sure pacman's version comparing does the right thing for rc versions:
 pkgver="${_tag/[-~]/}"
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('LGPL-2.1-or-later')
 url='https://www.github.com/systemd/systemd'
@@ -54,8 +50,7 @@ source=("$pkgbase::git+https://github.com/systemd/systemd#tag=v${_tag}"
         '30-systemd-tmpfiles.hook'
         '30-systemd-udev-reload.hook'
         '30-systemd-update.hook')
-
-sha512sums=('0a82b5708d1025dbe12a722e3b7e946c5136a17ea2d9b73afba02da474873b3373cd7c1c4eff8bd612c2b16321f31a6109e3c34e548e48ae88fa5bb3fab00383'
+sha512sums=('1ba38dd45cd910c7a2b4c7f23f982c5b0e5b13cd5874571ebc9b609ff85c058cecdb61019141ef2010fd4882c3ffc5a13a2b0d6370db4067ad90c28b83de6760'
             '3ccf783c28f7a1c857120abac4002ca91ae1f92205dcd5a84aff515d57e706a3f9240d75a0a67cff5085716885e06e62597baa86897f298662ec36a940cf410e'
             'fdebd3f46e3eb9821c78c29d176ff6f91ed383e948a8f06122fda41a9fb0e194374d27bb5b3cbc0e657460e4b9e614dc4937f074094893de2525265173afa364'
             '61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648'
@@ -79,6 +74,19 @@ _meson_mode='release'
 _meson_compile=()
 _meson_install=()
 
+if ((_systemd_UPSTREAM)); then
+  _meson_version="${pkgver}"
+  _meson_mode='developer'
+  pkgname+=('systemd-tests')
+  makedepends+=('libarchive')
+  optdepends_upstream=('libarchive: convert DDIs to tarballs')
+  if ((_systemd_QUIET)); then
+    _meson_install=('--quiet')
+  else
+    _meson_compile=('--verbose')
+  fi
+fi
+
 _backports=(
 )
 
@@ -86,7 +94,7 @@ _reverts=(
 )
 
 prepare() {
-  cd "$pkgbase"
+  cd "${pkgbase}"
 
   local _c _l
   for _c in "${_backports[@]}"; do
@@ -99,7 +107,6 @@ prepare() {
     git log --oneline "${_l}" "${_c}"
     git revert --mainline 1 --no-commit "${_c}"
   done
-
 
   # Replace cdrom/dialout/tape groups with optical/uucp/storage
   patch -Np1 -i ../0001-Use-Arch-Linux-device-access-groups.patch
@@ -133,6 +140,7 @@ build() {
     -Dxenctrl=disabled
     -Dbpf-framework=enabled
     -Dima=false
+    -Dinstall-tests=true
     -Dlibidn2=enabled
     -Dlz4=enabled
     -Dman=enabled
@@ -169,9 +177,9 @@ build() {
   meson compile -C build "${_meson_compile[@]}"
 }
 
-#check() {
-#  meson test -C build --print-errorlogs
-#}
+check() {
+  meson test -C build --print-errorlogs
+}
 
 package_systemd-fml() {
   pkgdesc='system and service manager'
@@ -180,7 +188,7 @@ package_systemd-fml() {
     'GPL-2.0-or-later' # udev
     'MIT-0' # documentation and config files
   )
-  depends=("systemd-libs=${pkgver}"
+  depends=("systemd-libs-fml=${pkgver}"
            'acl' 'libacl.so' 'bash' 'cryptsetup' 'libcryptsetup.so' 'dbus'
            'dbus-units' 'kbd' 'kmod' 'hwdata' 'libcap' 'libcap.so'
            'libgcrypt' 'libxcrypt' 'libcrypt.so' 'libidn2' 'lz4' 'pam'
@@ -255,6 +263,10 @@ package_systemd-fml() {
 
   # files shipped with systemd-resolvconf
   rm "$pkgdir"/usr/{bin/resolvconf,share/man/man1/resolvconf.1}
+
+  # tests shipped with systemd-tests (for upstream)
+  install -d -m0755 systemd-tests/
+  mv "$pkgdir"/usr/lib/systemd/tests systemd-tests/
 
   # avoid a potential conflict with [core]/filesystem
   rm "$pkgdir"/usr/share/factory/etc/{issue,nsswitch.conf}
@@ -331,6 +343,14 @@ package_systemd-sysvcompat-fml() {
   for tool in halt poweroff reboot shutdown; do
     ln -s systemctl "$pkgdir"/usr/bin/$tool
   done
+}
+
+package_systemd-tests() {
+  pkgdesc='systemd tests'
+  depends=("systemd-fml=${pkgver}")
+
+  install -d -m0755 "$pkgdir"/usr/lib/systemd
+  mv systemd-tests/tests "$pkgdir"/usr/lib/systemd/tests
 }
 
 package_systemd-ukify-fml() {
