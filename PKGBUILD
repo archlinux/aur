@@ -1,16 +1,28 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=fotema
-pkgver=1.8.4
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Photo gallery for Linux"
 arch=('x86_64')
 url="https://github.com/blissd/fotema"
 license=('CC0-1.0 AND CC-BY-2.0 AND CC-BY-4.0 AND CC-BY-NC-SA-4.0 AND CC-BY-SA-4.0 AND GFDL-1.3-or-later AND GPL-3.0-or-later')
-depends=('ffmpeg' 'glycin' 'libadwaita' 'libheif')
-makedepends=('cargo' 'clang' 'gtk3' 'meson' 'mold')
+depends=(
+  'ffmpeg'
+  'glycin'
+  'libadwaita'
+  'libheif'
+  'libshumate'
+)
+makedepends=(
+  'cargo'
+  'clang'
+  'gtk3'
+  'meson'
+  'mold'
+)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         'i18n.patch')
-sha256sums=('6f3180ff970536970aa5ab89b48efc5d4bba8714ae55cae40e2b2142d8ab4493'
+sha256sums=('6dfa325aff79bb8792ae974477ac0acd1789c938973416d95b4ce601098afbc5'
             'ebe2f2c74ca282a918c748e7e1e08b0e8f3ec964244746c299211df38e7da396')
 
 prepare() {
