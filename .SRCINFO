@@ -1,15 +1,15 @@
 pkgbase = goodix-gt7868q-dkms
 	pkgdesc = The Goodix GT7868Q kernel modules (DKMS)
-	pkgver = 0.1.0.r0.g239ab0f
-	pkgrel = 1
+	pkgver = 0.1.1.r0.g17720c7
+	pkgrel = 2
 	url = https://github.com/ty2/goodix-gt7868q-linux-driver
 	arch = any
 	license = GPL2
 	makedepends = git
 	depends = dkms
-	provides = goodix-gt7868q=0.1.0.r0.g239ab0f
+	provides = goodix-gt7868q=0.1.1.r0.g17720c7
 	conflicts = goodix-gt7868q
-	source = git+https://github.com/ty2/goodix-gt7868q-linux-driver#tag=0.1.0
+	source = git+https://github.com/ty2/goodix-gt7868q-linux-driver#tag=0.1.1
 	sha256sums = SKIP
 
 pkgname = goodix-gt7868q-dkms
