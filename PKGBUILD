@@ -31,7 +31,7 @@ package() {
 
     # inserting executable into
     mkdir -p "$pkgdir/usr/bin"
-    ln -sf "/opt/TETR.IO/tetrio-desktop" "$pkgdir/usr/bin/$pkgname"
+    ln -sf "/opt/TETR.IO/TETR.IO" "$pkgdir/usr/bin/$pkgname"
 
     install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     chmod -R go-w "$pkgdir"
