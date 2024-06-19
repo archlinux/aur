@@ -1,12 +1,31 @@
-## 6.0.1
+## 7.0.0
 
-- Fixed random UI freezes when updating search field
+- Added discard mode to multi-file view
 
-    - This is due to a race condition in the search cancellation mechanism that
-      may cause UI fiber to starve and wait forever for a cancellation
-      acknowledgement
+- Changed to using thin bars as pane separators, i.e. tmux style
 
-    - This mechanism was put in place for asynchronous search since 4.0.0
+- Added `g` and `G` key bindings for going to top and bottom of document list respectively
 
-    - As usual with race conditions, this only manifests under some specific
-      timing by chance
+- Added `-l`/`--files-with-match` and `--files-without-match` for printing just paths
+  in non-interactive mode
+
+- Grouped print key bindings under print mode
+
+- Added more print key bindings
+
+- Grouped reload key bindings under reload mode
+
+- Added fixes to ensure Docfd does not exit until all printing is done
+
+- Slimmed down memory usage by switching to OCaml 5.2 which enables use of `Gc.compact`
+
+    - Still no auto-compaction yet, however, will need to wait for a future
+      OCaml release
+
+- Added `h` key binding to rotate key binding info grid
+
+- Added exact, prefix and suffix search syntax from fzf
+
+- Fixed extraneous document path print in non-interactive mode when documents have no search results
+
+- Added "explicit spaces" token `~` to match spaces
