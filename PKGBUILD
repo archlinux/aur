@@ -1,10 +1,10 @@
 # maintainer: Lara Maia <lara@craft.net.br>
 
 pkgname=backup-conf
-pkgdesc='This script create a backup of your config files in a tree format on current folder'
+pkgdesc='Create a backup of your config files in tree format on the current folder'
 url="https://github.com/ShyPixie/$pkgname"
-pkgver=5.2.1
-pkgrel=2
+pkgver=5.2.2
+pkgrel=1
 license=('GPL')
 arch=('any')
 install='backup-conf.install'
@@ -20,8 +20,8 @@ optdepends=('diffutils: the default diff tool'
 source=("https://github.com/ShyPixie/$pkgname/archive/v$pkgver.tar.gz"
        "backup-conf.install")
 
-sha256sums=('c95b20650210c0c5e30fb0c08a17c8147af2484c2f016d6d353f967f599d4261'
-            '851c6ba4ecbabb25111b0b0e0389117eb287ca134abe52489bff1e66eb2f9551')
+sha256sums=('81ee7e9a5c0abc3a6e15876427a1b50c73afed9e472ad6514dd5efb62e23e0ac'
+            'e014f65a320da2bc0f4578f8a6f58baf0df919b89a271ba1308d0fb3fa5273d9')
 
 build() {
     cd $pkgname-$pkgver
