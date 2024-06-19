@@ -238,16 +238,10 @@ function execApp() {
 
 function dbusProxy() {
 	mkdir "${busDir}" -p
-	bwrap \
-		--new-session \
-		--ro-bind /usr/lib /usr/lib \
-		--ro-bind /usr/bin /usr/bin \
-		--bind "${XDG_RUNTIME_DIR}" "${XDG_RUNTIME_DIR}" \
-		--ro-bind-try "${XDG_DATA_HOME}"/WeChat_Data/.flatpak-info \
-			/.flatpak-info \
-		--ro-bind-try "${XDG_DATA_HOME}"/WeChat_Data/.flatpak-info \
-			"${XDG_RUNTIME_DIR}/.flatpak-info" \
-		--die-with-parent \
+	echo "Starting D-Bus Proxy..."
+	systemd-run --user --same-dir -P \
+		-p BindPaths="${XDG_DATA_HOME}"/WeChat_Data/.flatpak-info:/.flatpak-info \
+		-p BindPaths="${XDG_DATA_HOME}"/WeChat_Data/.flatpak-info:"${XDG_RUNTIME_DIR}/.flatpak-info" \
 		-- \
 		env -i xdg-dbus-proxy \
 			"${DBUS_SESSION_BUS_ADDRESS}" \
@@ -257,6 +251,7 @@ function dbusProxy() {
 			--talk=org.gnome.Shell.Screenshot \
 			--talk=org.freedesktop.portal.Screenshot \
 			--broadcast=org.freedesktop.portal.*=@/org/freedesktop/portal/*
+	sleep 1s
 }
 
 function execAppUnsafe() {
@@ -319,7 +314,7 @@ function launch() {
 	moeDect
 	#lnDir
 	if [[ $@ =~ "--actions" ]] && [[ $@ =~ "debug-shell" ]]; then
-		launchTarget="bash"
+		launchTarget="/usr/bin/bash"
 	else
 		launchTarget="/opt/wechat-uos-qt/files/wechat"
 	fi
@@ -328,16 +323,12 @@ function launch() {
 	else
 		sdOption="-t"
 	fi
-	if [[ $@ =~ "--actions" ]] && [[ $@ =~ "gamescope" ]]; then
-		export QT_SCREEN_SCALE_FACTOR=2
-		launchTarget="gamescope -F fsr --sharpness 0 -S integer -- /opt/wechat-uos-qt/files/wechat"
-	fi
 	if [[ ${trashAppUnsafe} = 1 ]]; then
 		echo "Launching WeChat UOS (unsafe)..."
 		execAppUnsafe
 	else
+		dbusProxy
 		echo "Launching WeChat UOS..."
-		dbusProxy &
 		sleep 0.1
 		execApp
 	fi
