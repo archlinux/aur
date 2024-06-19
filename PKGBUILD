@@ -3,8 +3,8 @@
 
 pkgname='python-runtype'
 _pkgname="${pkgname#python-}"
-pkgver=0.4.2
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 pkgdesc='Python utilities for run-time type validation and multiple dispatch'
 arch=('any')
 license=('MIT')  # SPDX-License-Identifier: MIT
@@ -35,23 +35,19 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  # Let's be more verbose if standard output is a TTY
-  test -t 1 && _v='v' || _v=''
-
-  install "-${_v}Dm0644" LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-  for mdfile in {CHANGES,README}.md; do
-    install "-${_v}Dm0644" "$mdfile" "$pkgdir/usr/share/doc/$pkgname/$mdfile"
-  done
-
-  install "-${_v}Dm0644" docs/_build/man/runtype.7 "$pkgdir/usr/share/man/man7/${pkgname}.7"
+  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
+    LICENSE
+  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
+    {CHANGES,README}.md
+  install -vDm0644 docs/_build/man/runtype.7 \
+    "$pkgdir/usr/share/man/man7/${pkgname}.7"
 }
 
 sha256sums=(
-  'f9c4fe31a70f8385dd1c92606b1f7a5c3b89f4d76e0f801537005c04241ddaca'
+  'c3e315f98413f099996932b070309db237141be4099d478723cabda8d8b3cef4'
 )
 b2sums=(
-  '31095c51075b1dffca87d5b611992c6abb1c1973a8df36a1fc09997ddafbcb3790f05d00a335e79736fa1933a6156f1e363bb9710bbd987a53d43e6b318a91bb'
+  '94aea1075e87e6ebb70a9ea7eaaef4e7bc6dee6cd82b450cb5af71e49b8da0f3b547296b29fe91d46551a6cb6227c65b780687b5c33d72e3088c4e92a36a2fce'
 )
 
 # eof
