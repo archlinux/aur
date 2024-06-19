@@ -5,7 +5,6 @@ pkgbase = goby-community
 	url = https://gobies.org/
 	arch = x86_64
 	license = unknown
-	makedepends = unzip
 	makedepends = libcap
 	depends = atk
 	depends = gtk3

@@ -15,7 +15,6 @@ depends=(
 	"libpcap"
 )
 makedepends=(
-	'unzip'
 	"libcap"
 	)
 source=(
@@ -30,7 +29,7 @@ sha256sums=(
 )
 prepare() {
 	cd "${srcdir}"
-	unzip -q -o $_pkgname-linux-x64-$pkgver-Community.zip
+	bsdtar -xpf $_pkgname-linux-x64-$pkgver-Community.zip
 }
 
 package() {
