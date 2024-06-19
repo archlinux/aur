@@ -23,23 +23,41 @@ function _hr_mangle_search_results() {
   echo "${results[@]}"
 }
 
-function _hr_charts() {
-  local -a charts
+function _hr_chart_folders() {
+  local -a chartSources
   local originalSearchPath="${words[CURRENT]}"
   local searchPath="${originalSearchPath}"
   local replacedTilde=false
   searchPath="$(_hr_clean_search_path "$searchPath")"
-  charts=( $(fd ${searchPath:+--search-path="${searchPath}"} -t f Chart.yaml -X dirname) )
-  charts=( $(_hr_mangle_search_results "$originalSearchPath" "${charts[@]}") )
+  chartSources=( $(fd ${searchPath:+--search-path="${searchPath}"} -t f Chart.yaml -X dirname) )
+  chartSources=( $(_hr_mangle_search_results "$originalSearchPath" "${chartSources[@]}") )
   _wanted sources expl 'Helm Chart source' \
-    _multi_parts -f / charts
+    _multi_parts -f / chartSources
+}
+
+function _hr_chart_tarballs() {
+  local -a chartTarballs
+  local originalSearchPath="${words[CURRENT]}"
+  local searchPath="${originalSearchPath}"
+  local replacedTilde=false
+  searchPath="$(_hr_clean_search_path "$searchPath")"
+  chartTarballs=( $(fd ${searchPath:+--search-path="${searchPath}"} --no-ignore -t f -e tgz -e tar) )
+  chartTarballs=( $(for tarball in "${chartTarballs[@]}"; do tar --wildcards -atf "$tarball" \*/Chart.yaml &>/dev/null && echo "$tarball"; done) )
+  chartTarballs=( $(_hr_mangle_search_results "$originalSearchPath" "${chartTarballs[@]}") )
+  _wanted sources expl 'Helm Chart tarballs' \
+    _multi_parts -f / chartTarballs
+}
+
+function _hr_charts() {
+  _alternative 'chart_folders:Helm Chart source:_hr_chart_folders' \
+    'chart_tars:Helm Chart tarballs:_hr_chart_tarballs'
 }
 function _hr_yamls() {
   local -a hrs
   local originalSearchPath="${words[CURRENT]}"
   local searchPath="${originalSearchPath}"
   searchPath="$(_hr_clean_search_path "$searchPath")"
-  hrs=( $(fd ${searchPath:+--search-path="${searchPath}"} -t f -e yaml -e yml -X rg '^kind: HelmRelease$' -l | sed "s#^$HOME/#~/#g; s#^\./##") )
+  hrs=( $(fd ${searchPath:+--search-path="${searchPath}"} -t f -e yaml -e yml -X rg '^kind: HelmRelease$' -l) )
   hrs=( $(_hr_mangle_search_results "$originalSearchPath" "${hrs[@]}") )
   _wanted yamls expl 'HelmRelease yaml' \
     _multi_parts -f / hrs
