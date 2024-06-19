@@ -1,0 +1,10 @@
+--- brick_james-0.2.3/pyproject.toml	2023-07-30 19:59:02.000000000 +0100
++++ brick_james-0.2.3/pyproject.toml	2024-06-19 21:56:24.281638122 +0100
+@@ -6,6 +6,6 @@
+     "matplotlib",
+     "emcee",
+     "corner",
+-    "jupyter"
++    "jupyter-core"
+ ]
+ build-backend = "setuptools.build_meta"

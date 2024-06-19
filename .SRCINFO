@@ -1,0 +1,24 @@
+pkgbase = python-brick-james
+	pkgdesc = Bayesian R-Matrix Inference Code Kit
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://pypi.org/project/brick-james/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-jupyter-core
+	makedepends = python-corner
+	makedepends = python-numpy
+	makedepends = python-matplotlib
+	depends = python
+	provides = python-brick
+	provides = brick
+	source = https://files.pythonhosted.org/packages/00/4c/3d1682432744d06f66b817bbcdb9c992bb3ba4feb1edfcd5dbd4284efb13/brick_james-0.2.3.tar.gz
+	source = pyproject.patch
+	sha256sums = 0649c11a48b70ff7fd849f4d6a12fc05d77ece8e170643ebaad658f4d3ba1102
+	sha256sums = 5f64716da0e25d66a01772ff8b50e11380e4503eb6654228d9eba205a1341b12
+
+pkgname = python-brick-james
