@@ -1,0 +1,14 @@
+pkgbase = projman
+	pkgdesc = A project manager CLI tool for organization and convenience
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/Maxb0tbeep/projman
+	arch = x86_64
+	license = GPLv3
+	makedepends = nim
+	makedepends = git
+	provides = projman
+	source = https://gitlab.com/Maxb0tbeep/projman/-/archive/1.0.0/projman-1.0.0.tar.gz
+	md5sums = SKIP
+
+pkgname = projman
