@@ -9,7 +9,6 @@ arch=('any')
 license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl>=5.008' 'perl-tcl>=1' 'tk')
-makedepends=()
 url='http://search.cpan.org/dist/Tkx'
 source=('https://cpan.metacpan.org/authors/id/C/CA/CAC/Tkx-1.10.tar.gz')
 md5sums=('edbb92ced28998612fd1e3a864be0887')
