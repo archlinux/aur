@@ -1,7 +1,7 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=nextpnr-ice40-nightly
-pkgver=20240618_nextpnr_0.7_40_g61cc5259
+pkgver=20240619_nextpnr_0.7_43_ga29a17f8
 pkgrel=1
 epoch=1
 pkgdesc="nextpnr portable FPGA place and route tool - for ice40"
@@ -26,7 +26,7 @@ conflicts=(
 replaces=()
 provides=("nextpnr-ice40=$(cut -d _ -f 3 <<< "${pkgver}")")
 source=(
-	"nextpnr::git+https://github.com/YosysHQ/nextpnr.git#commit=61cc5259"
+	"nextpnr::git+https://github.com/YosysHQ/nextpnr.git#commit=a29a17f8"
 )
 sha256sums=(
 	"SKIP"
