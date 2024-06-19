@@ -12,26 +12,27 @@ arch=(x86_64)
 license=(GPL-2.0-or-later LGPL-2.0-or-later)
 depends=(gcc-libs
          glibc
-         kactivities5
-         kbookmarks5
-         kcmutils5
-         kcompletion5
-         kconfig5
-         kconfigwidgets5
-         kcoreaddons5
-         kdnssd5
-         ki18n5
-         kio5
-         knotifications5
-         knotifyconfig5
-         kwidgetsaddons5
-         kwallet5
-         kxmlgui5
-         qt5-base)
+         plasma-activities
+         kbookmarks
+         kcmutils
+         kcompletion
+         kconfig
+         kconfigwidgets
+         kcoreaddons
+         kdnssd
+         ki18n
+         kio
+         knotifyconfig
+         kstatusnotifieritem
+         kwidgetsaddons
+         kwallet
+         kxmlgui
+         qt6-base)
 makedepends=(extra-cmake-modules
              freerdp2
-             kdoctools5
-             libvncserver)
+             kdoctools
+             libvncserver
+             git)
 optdepends=('libvncserver: VNC support'
             'libssh: VNC support'
             'freerdp2: RDP support'
