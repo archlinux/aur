@@ -1,7 +1,7 @@
-# Maintainer: VVL <me@ivvl.ru>
+# Maintainer: Vladislav Minakov <v@minakov.pro>
 
 pkgname=onlyoffice-documentserver-bin
-pkgver=8.0.1
+pkgver=8.1.0
 pkgrel=2
 pkgdesc="Online office suite comprising viewers and editors for texts, spreadsheets and presentations"
 arch=('x86_64')
@@ -14,13 +14,13 @@ optdepends=(
 )
 conflicts=('onlyoffice-documentserver')
 license=('AGPL')
-source=("https://github.com/ONLYOFFICE/DocumentServer/releases/download/v${pkgver}/onlyoffice-documentserver.x86_64.rpm"
+source=("$pkgname-$pkgver.rpm::https://github.com/ONLYOFFICE/DocumentServer/releases/download/v${pkgver}/onlyoffice-documentserver.x86_64.rpm"
         "onlyoffice-fileconverter.service"
         "onlyoffice-docservice.service"
         "onlyoffice-documentserver.sysusers"
         "onlyoffice-documentserver.tmpfiles"
         "local.json")
-sha512sums=('8f8e509f379e39709548d4b24ecdaa1d0d731bc7232524e88dee661843b3afe7b63852aee91569c150fc8589a6fe52f2bc03d8c079f5965a813bcbc04e92c8da'
+sha512sums=('9c9d9e1cf697ea6feb44075c7d70eaaebeb5b1ee19732da8e25d1dc584d019a0f0fdcaee7f6db517edfe912b56911ea114fa3ad56df20ba205da48a0636f34b2'
             '329adb3a5191e8982b4131dab7ddba7ef700f8bdfd4a39f7021ad9a983105dcb97e46ab798b015e0586a15a1f3454d89000a251e1b0bac4dd2d8a682cce82b4f'
             '3df1f5339b394eef1b27317f5d0e7786d2cb8dbbd13cddb22047567c3703f384d95f092fc34ce3031aeb895f013d7c0686ce968e1fae7f1f24473c1a6615f7ad'
             'c7c23c5a7014e3251dfd86312d1d1e5c2d88f26ddc5aa967285202fd3ebf62c0a10c009b1cc5ad1b78e13fa0bc2eda515616d8af02325db434c0b2113c5b1ecb'
