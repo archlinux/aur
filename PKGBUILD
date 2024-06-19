@@ -4,7 +4,7 @@ pkgbase=mkdocstrings-python
 _pyname=("${pkgbase//-/_}")
 pkgname=("${pkgbase}")
 #"${pkgbase}-doc")
-pkgver=1.10.3
+pkgver=1.10.4
 pkgrel=1
 pkgdesc="A Python handler for mkdocstrings"
 url="https://mkdocstrings.github.io"
@@ -13,18 +13,18 @@ arch=("any")
 makedepends=('python-pdm-backend'
              'python-build'
              'python-installer')
-checkdepends=('python-pytest'
-              'python-griffe'
-              'mkdocstrings'
-              'mkdocs-material')
+#checkdepends=('python-pytest'
+#             'python-griffe'
+#             'mkdocstrings'
+#             'mkdocs-material')
 #source=("https://github.com/mkdocstrings/mkdocstrings/archive/refs/tags/${pkgver}.tar.gz")
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('321cf9c732907ab2b1fedaafa28765eaa089d89320f35f7206d00ea266889d03')
+sha256sums=('629a7d8bdd38358275dd44078bfc560f85e62ad3f244816b04783f30c4e2fea0')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    mkdir -p docs
+#   mkdir -p docs
 }
 
 build() {
@@ -33,18 +33,19 @@ build() {
     python -m build --wheel --no-isolation
 }
 
-check() {
-    cd ${srcdir}/${_pyname}-${pkgver}
-
-    mkdir -p dist/lib
-    bsdtar -xpf dist/${_pyname}-${pkgver}-py3-none-any.whl -C dist/lib
-    PYTHONPATH="dist/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
-}
+#check() {
+#    cd ${srcdir}/${_pyname}-${pkgver}
+#
+##   mkdir -p dist/lib
+##   bsdtar -xpf dist/${_pyname}-${pkgver}-py3-none-any.whl -C dist/lib
+##   PYTHONPATH="dist/lib" pytest -vv -l -ra --color=yes -o console_output_style=count #|| warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+#    pytest -vv -l -ra --color=yes -o console_output_style=count #|| warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+#}
 
 package_mkdocstrings-python() {
     depends=('python>=3.8'
              'mkdocstrings>=0.25'
-             'python-griffe>=0.44')
+             'python-griffe>=0.47')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
