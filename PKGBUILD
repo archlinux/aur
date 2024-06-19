@@ -3,8 +3,9 @@
 
 pkgname=xfce4-pulseaudio-plugin-allow150
 _pkgname=${pkgname/-allow150*/}
+provides=($_pkgname)
 pkgver=0.4.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Pulseaudio plugin for the Xfce4 panel with patches to allow 150% volume"
 arch=('x86_64')
 url="https://goodies.xfce.org/projects/panel-plugins/xfce4-pulseaudio-plugin"
