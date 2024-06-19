@@ -5,7 +5,7 @@ _pkgname=bypass-paywalls-chrome-clean
 _archivename="${_pkgname}-master"
 _source="https://github.com/bpc-clone/bpc_updates/releases/download/latest/${_archivename}.zip"
 pkgname=chromium-bypass-paywalls-clean
-pkgver=3.7.1.1
+pkgver=3.7.1.6
 pkgrel=1
 pkgdesc="Chromium extension to bypass paywalls"
 url="https://github.com/bpc-clone/bpc_updates"
@@ -14,9 +14,7 @@ install=$pkgname.install
 license=(MIT)
 makedepends=(curl jq)
 source=("${_pkgname}-${pkgver}.zip::${_source}")
-# Skip, since a newer version may exist upstream which overwrites the previous version.
-# We trust Github, right? :P
-sha256sums=('SKIP')
+sha256sums=('17dd92e7d9105e59a016bce84bf977a6116e45eaf41384678cdcefa9a3583a45')
 
 pkgver() {
     curl -L "${_source}" | bsdtar -xOf - "${_archivename}/manifest.json" | jq -r .version
