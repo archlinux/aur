@@ -1,0 +1,21 @@
+pkgbase = python-pyodoo
+	pkgdesc = Interact with Odoo servers using XML-RPC
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/muflone/pyodoo
+	arch = any
+	license = GPL-3.0-or-later
+	checkdepends = python-pytest
+	checkdepends = python-requests
+	checkdepends = python-xlrd
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	optdepends = python-xlrd: Support for SqlExcelQuery
+	options = !emptydirs
+	source = https://github.com/muflone/pyodoo/releases/download/0.7.1/pyodoo-0.7.1.tar.gz
+	sha256sums = a378f9db41d02b62b66e3e4afd0920ad121f98ec80ff61bb3d94c66bdb285094
+
+pkgname = python-pyodoo
