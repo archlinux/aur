@@ -1,0 +1,2 @@
+d /var/lib/n8n 0755 n8n n8n - -
+Z /var/lib/n8n -    n8n n8n - -

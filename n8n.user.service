@@ -1,0 +1,12 @@
+[Unit]
+Description = n8n service
+After = network-online.target
+
+[Service]
+Restart = on-failure
+RestartSec = 5
+EnvironmentFile = -%E/n8n/n8n.env
+ExecStart = /usr/bin/n8n
+
+[Install]
+WantedBy = default.target
