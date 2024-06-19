@@ -22,6 +22,7 @@ pkgbase = photoprism
 	optdepends = ffmpeg: for video transcoding and thumbnail extraction
 	optdepends = imagemagick: for image conversion
 	optdepends = libheif: for HEIC/HEIF image conversion
+	optdepends = mariadb: for MySQL database driver
 	optdepends = perl-image-exiftool: for extracting metadata
 	optdepends = rawtherapee: for RAW to JPEG conversion
 	provides = photoprism

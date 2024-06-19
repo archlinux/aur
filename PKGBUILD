@@ -15,6 +15,7 @@ optdepends=("darktable: for RAW to JPEG conversion"
             "ffmpeg: for video transcoding and thumbnail extraction"
             "imagemagick: for image conversion"
             "libheif: for HEIC/HEIF image conversion"
+            "mariadb: for MySQL database driver"
             "perl-image-exiftool: for extracting metadata"
             "rawtherapee: for RAW to JPEG conversion")
 provides=("${pkgname}")
