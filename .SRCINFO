@@ -1,0 +1,16 @@
+pkgbase = photoprism-tensorflow-nvidia-jetson-bin
+	pkgdesc = PhotoPrism Tensorflow 1.15 with NVIDIA jetson nano support
+	pkgver = 1.15.2
+	pkgrel = 1
+	url = https://github.com/tensorflow/tensorflow
+	arch = aarch64
+	license = Apache-2.0
+	provides = photoprism-tensorflow
+	provides = tensorflow115
+	conflicts = photoprism-tensorflow
+	conflicts = tensorflow115
+	replaces = tensorflow115
+	source = https://dl.photoprism.org/tensorflow/nvidia-jetson/libtensorflow-jetson-nano-1.15.2.tar.gz
+	sha256sums = 1b51b462094e79422268248f3ac33363d38224df9cee48e9a86a5b28c475c95f
+
+pkgname = photoprism-tensorflow-nvidia-jetson-bin
