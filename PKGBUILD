@@ -1,6 +1,6 @@
 pkgname=ruffle-bin
 pkgver=2024.06.18
-pkgrel=1
+pkgrel=2
 _pkgrel_x86_64=1
 _pkgrel_i386=1
 _pkgrel_i668=1
@@ -24,31 +24,30 @@ sha256sums_x86_64=('18ec66341ee0bb26f709d348f09abe0970f063ff61728a2a17aa4f2a9740
 sha256sums_aarch64=('0ce3678165a68bdec8ec62247d0fd6cefa35b982a31c4b6100af374dba68fd76'
                     'SKIP')
 source_x86_64=("https://gitlab.com/linuxbombay/ruffle-linux/binaries/ruffle-$pkgver/-/raw/main/ruffle-x64.tar.xz" 
-"git+https://gitlab.com/linuxbombay/ruffle-linux/ruffle.git")
+"git+https://gitlab.com/linuxbombay/ruffle-linux/ruffle-packaging.git")
 
 source_i386=("https://gitlab.com/linuxbombay/ruffle-linux/binaries/ruffle-$pkgver/-/raw/main/ruffle-i686.tar.xz" 
-"git+https://gitlab.com/linuxbombay/ruffle-linux/ruffle.git")
+"git+https://gitlab.com/linuxbombay/ruffle-linux/ruffle-packaging.git")
 
 source_pentium4=("https://gitlab.com/linuxbombay/ruffle-linux/binaries/ruffle-$pkgver/-/raw/main/ruffle-i686.tar.xz" 
-"git+https://gitlab.com/linuxbombay/ruffle-linux/ruffle.git")
+"git+https://gitlab.com/linuxbombay/ruffle-linux/ruffle-packaging.git")
 
 source_i686=("https://gitlab.com/linuxbombay/ruffle-linux/binaries/ruffle-$pkgver/-/raw/main/ruffle-i686.tar.xz" 
-"git+https://gitlab.com/linuxbombay/ruffle-linux/ruffle.git")
+"git+https://gitlab.com/linuxbombay/ruffle-linux/ruffle-packaging.git")
 
 source_aarch64=("https://gitlab.com/linuxbombay/ruffle-linux/binaries/ruffle-$pkgver/-/raw/main/ruffle-arm64.tar.xz" 
-"git+https://gitlab.com/linuxbombay/ruffle-linux/ruffle.git")
+"git+https://gitlab.com/linuxbombay/ruffle-linux/ruffle-packaging.git")
 
 package() {
     install -dm755 "$pkgdir/usr/bin"
-    install -dm755 "$pkgdir/usr/share/pixmaps"
-    for dir in ruffle-*/ ; do mv "${dir}" "$pkgname" ;done   
+    install -dm755 "$pkgdir/usr/share/pixmaps"   
 
     # Link to binary
     cp "$srcdir/ruffle" "$pkgdir/usr/bin"
     
     # Desktop Entry
-    cp -r "$srcdir/$pkgname/ruffle.svg" "$pkgdir/usr/share/pixmaps"
-    install -Dm644 "$srcdir/$pkgname/ruffle.desktop" \
+    cp -r "$srcdir/ruffle-packaging/ruffle.svg" "$pkgdir/usr/share/pixmaps"
+    install -Dm644 "$srcdir/ruffle-packaging/ruffle.desktop" \
     "$pkgdir/usr/share/applications/ruffle.desktop"
     sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/ruffle.desktop"
 }
