@@ -4,7 +4,7 @@
 # Helper: paulequilibrio
 pkgname=gdevelop-bin
 _pkgname=GDevelop
-pkgver=5.3.201
+pkgver=5.4.203
 _electronversion=18
 pkgrel=1
 pkgdesc="A full-featured, no-code, open-source game development software."
@@ -19,6 +19,7 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
+    'java-runtime'
 )
 makedepends=(
     'fuse2'
@@ -32,13 +33,14 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-5-${pkgver}-arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-5-${pkgver}.AppImage")
 sha256sums=('0620d885ddbc88e952f99090d767de08671b6a81e5c10900ef5b949531460b92'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
-sha256sums_aarch64=('c13a55107699bce8a2bb48a4107252d3cd07ff497a5357806cd87250b4f587db')
-sha256sums_x86_64=('db0ea744e99224fd0550b58760f0a52b52bae8fac06ed405a9f62af50f82f444')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+sha256sums_aarch64=('1248d24578f792bb1db8c17dfb5bbe3ab1dc26a7ad6134e59b6cfd61e62f875b')
+sha256sums_x86_64=('2d6c5517f141598a7e0bfbce4bbad781f309985610fbc6a00b79dd76d6df7f35')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname} 5|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
