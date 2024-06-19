@@ -5,12 +5,12 @@
 # Contributor: SleepyDog
 
 pkgname=glew-git
-pkgver=2.2.0.r41.g5a2307f
+pkgver=2.2.0.r57.gb323ebf
 pkgrel=1
 pkgdesc="The OpenGL Extension Wrangler Library"
 arch=('i686' 'x86_64')
 url="https://github.com/nigels-com/glew"
-license=('BSD' 'MIT' 'GPL')
+license=('BSD-3-Clause' 'MIT' 'GPL-2.0-or-later')
 depends=('libxmu' 'libxi' 'glu')
 makedepends=('git' 'python')
 provides=('glew' 'libGLEW.so')
