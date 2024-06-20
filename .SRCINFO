@@ -1,0 +1,19 @@
+pkgbase = ia64-linux-gnu-glibc
+	pkgdesc = GNU C Library and headers (ia64) (from linux-ia64 project)
+	pkgver = 2.39
+	pkgrel = 1
+	url = https://github.com/linux-ia64/glibc-ia64
+	arch = any
+	license = GPL
+	license = LGPL
+	makedepends = ia64-linux-gnu-gcc-bootstrap
+	makedepends = python
+	depends = ia64-linux-gnu-linux-api-headers
+	options = !emptydirs
+	options = !strip
+	options = staticlibs
+	options = !lto
+	source = git+https://github.com/linux-ia64/glibc-ia64.git
+	sha256sums = SKIP
+
+pkgname = ia64-linux-gnu-glibc
