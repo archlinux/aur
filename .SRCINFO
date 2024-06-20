@@ -1,43 +1,37 @@
 pkgbase = perl-plack
-	pkgdesc = Perl Superglue for Web frameworks and Web Servers
+	pkgdesc = Perl/CPAN Module Plack: Perl Superglue for Web frameworks and Web Servers (PSGI toolkit)
 	pkgver = 1.0051
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Plack
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	checkdepends = perl-authen-simple-passwd
+	checkdepends = perl-test-requires
+	checkdepends = perl-test-tcp>=2.15
 	checkdepends = perl-cgi-compile
 	checkdepends = perl-cgi-emulate-psgi
 	checkdepends = perl-fcgi
-	checkdepends = perl-fcgi-procmanager
-	checkdepends = perl-http-request-ascgi
-	checkdepends = perl-io-handle-util
-	checkdepends = perl-log-dispatch
-	checkdepends = perl-log-dispatch-array
-	checkdepends = perl-lwp-protocol-http10
-	checkdepends = perl-mime-types
+	checkdepends = perl-log-log4perl
 	checkdepends = perl-module-refresh
 	makedepends = perl-file-sharedir-install
-	depends = perl
-	depends = perl-apache-logformat-compiler
-	depends = perl-cookie-baker
-	depends = perl-devel-stacktrace
-	depends = perl-devel-stacktrace-ashtml
-	depends = perl-file-sharedir
+	depends = perl>=5.12.0
+	depends = perl-apache-logformat-compiler>=0.33
+	depends = perl-cookie-baker>=0.07
+	depends = perl-devel-stacktrace>=1.23
+	depends = perl-devel-stacktrace-ashtml>=0.11
+	depends = perl-file-sharedir>=1.00
 	depends = perl-filesys-notify-simple
-	depends = perl-hash-multivalue
-	depends = perl-http-entity-parser
-	depends = perl-http-headers-fast
-	depends = perl-http-message
-	depends = perl-stream-buffered
-	depends = perl-test-tcp
+	depends = perl-http-entity-parser>=0.25
+	depends = perl-http-headers-fast>=0.18
+	depends = perl-http-message>=5.814
+	depends = perl-hash-multivalue>=0.05
+	depends = perl-stream-buffered>=0.02
 	depends = perl-try-tiny
-	depends = perl-uri
-	depends = perl-www-form-urlencoded
+	depends = perl-uri>=1.59
+	depends = perl-www-form-urlencoded>=0.23
 	options = !emptydirs
-	options = purge
-	source = https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/Plack-1.0051.tar.gz
-	sha256sums = bebde91c42298ed6ec8e6c82b21433a1b49aa39412c247f3905b80f955acf77b
+	source = http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Plack-1.0051.tar.gz
+	md5sums = 0b3e573458b37ad69069fc8cb307b6b8
+	sha512sums = be4b03f4b2cc6766be4ad06b1405e4513d475676ce8be7b3fd8bcb48cbfeedb7aef67df14a353f49d6b97ecd769f87b0f0787898148c849949f6936486c7ad5b
 
 pkgname = perl-plack
