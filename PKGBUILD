@@ -8,7 +8,7 @@
 # basic info
 _pkgname="telegram-desktop"
 pkgname="$_pkgname-git"
-pkgver=5.0.2.r2.g0033ad7
+pkgver=5.1.8.r12.g60ca689
 pkgrel=1
 pkgdesc='Official Telegram Desktop client'
 url="https://github.com/telegramdesktop/tdesktop"
@@ -44,9 +44,7 @@ _main_package() {
     xxhash
 
     ## implicit
-    #gcc-libs
     #glib2
-    #glibc
     #hicolor-icon-theme
     #libjpeg.so # libjpeg-turbo
     #libpipewire
@@ -68,6 +66,7 @@ _main_package() {
     extra-cmake-modules
     fmt
     git
+    glib2-devel
     gobject-introspection
     ninja
   )
