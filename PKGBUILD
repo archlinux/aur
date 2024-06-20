@@ -2,7 +2,8 @@
 
 pkgname='python-sklearn-crfsuite'
 _proj_name="${pkgname#python-}"
-pkgver='0.3.6'
+_proj_name="${_proj_name//-/_}"
+pkgver='0.5.0'
 pkgrel=1
 pkgdesc='CRFsuite wrapper with similar to scikit-learn interface'
 arch=(any)
@@ -16,8 +17,8 @@ depends=(
   'python')
 optdepends=()
 makedepends=('python-build' 'python-installer' 'python-wheel')
-source=("https://files.pythonhosted.org/packages/source/${_proj_name::1}/$_proj_name/$_proj_name-$pkgver.tar.gz")
-sha256sums=('2f59aad3055e01a778a79a6352891cac04788e8b52688aa5bc8b11be7717861e')
+source=("https://files.pythonhosted.org/packages/source/${_proj_name::1}/${_proj_name}/${_proj_name}-${pkgver}.tar.gz")
+sha256sums=('136cb941ff5f7ce62a2c378988d1123ac1037241e73999ae404509a2135078e9')
 _tardir="${_proj_name}-${pkgver}"
 
 build() {

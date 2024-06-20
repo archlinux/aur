@@ -1,6 +1,6 @@
 pkgbase = python-sklearn-crfsuite
 	pkgdesc = CRFsuite wrapper with similar to scikit-learn interface
-	pkgver = 0.3.6
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/TeamHG-Memex/sklearn-crfsuite
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-sklearn-crfsuite
 	depends = python-tabulate
 	depends = python-crfsuite>=0.8.3
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/s/sklearn-crfsuite/sklearn-crfsuite-0.3.6.tar.gz
-	sha256sums = 2f59aad3055e01a778a79a6352891cac04788e8b52688aa5bc8b11be7717861e
+	source = https://files.pythonhosted.org/packages/source/s/sklearn_crfsuite/sklearn_crfsuite-0.5.0.tar.gz
+	sha256sums = 136cb941ff5f7ce62a2c378988d1123ac1037241e73999ae404509a2135078e9
 
 pkgname = python-sklearn-crfsuite
