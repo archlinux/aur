@@ -1,0 +1,15 @@
+pkgbase = ani-dl
+	pkgdesc = Download and watch animes in VF and VOSTFR (aka french versions)
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/B0SEmc/ani-dl
+	arch = any
+	license = GPL3
+	makedepends = rust
+	makedepends = cargo
+	depends = yt-dlp
+	depends = mpv
+	source = ani-dl-1.1.0.tar.gz::https://crates.io/api/v1/crates/ani-dl/1.1.0/download
+	sha256sums = SKIP
+
+pkgname = ani-dl
