@@ -4,7 +4,7 @@
 
 _npmname=dockerfile-language-server-nodejs
 pkgname=dockerfile-language-server
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='Language server for Dockerfiles'
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=('npm')
 replaces=('dockerfile-language-server-bin' 'nodejs-dockerfile-language-server-nodejs')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
-sha256sums=('02ac128649abe554de722dc45090bf7c1cd2770fc7597f65f1b73571f2d3d87a')
+sha256sums=('2e6a287dcf5de6be2a1c01f149a8c3717fa0bc8a689cc355d94198081779d067')
 noextract=("$pkgname-$pkgver.tgz")
 
 PURGE_TARGETS=('CHANGELOG.md')
