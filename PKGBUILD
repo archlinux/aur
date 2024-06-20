@@ -3,13 +3,14 @@
 _pkgname="sdiff-gtk"
 pkgname="$_pkgname"
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK+ frontend for Stable Diffusion"
 url="https://github.com/jzbor/sdiff-gtk"
 license=('MIT')
 arch=('any')
 
 depends=(
+  'gtk3'
   'python'
   'python-gobject'
   'python-pillow'

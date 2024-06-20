@@ -1,7 +1,7 @@
 pkgbase = sdiff-gtk
 	pkgdesc = GTK+ frontend for Stable Diffusion
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jzbor/sdiff-gtk
 	arch = any
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = sdiff-gtk
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-poetry
+	depends = gtk3
 	depends = python
 	depends = python-gobject
 	depends = python-pillow
