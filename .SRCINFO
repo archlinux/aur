@@ -1,11 +1,11 @@
 pkgbase = libkarma
 	pkgdesc = Network access library for the Rio Karma
 	pkgver = 0.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.freakysoft.de/libkarma/
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = glibc
 	depends = libusb-compat
 	depends = taglib
