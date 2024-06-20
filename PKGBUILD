@@ -2,8 +2,8 @@
 _pkgname=antares
 pkgname="${_pkgname}-sql-bin"
 _appname=Antares
-pkgver=0.7.24
-_electronversion=26
+pkgver=0.7.25
+_electronversion=30
 pkgrel=1
 pkgdesc="A modern, fast and productivity driven SQL client with a focus in UX."
 arch=(
@@ -27,14 +27,15 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('7b960bb0bed7d2228b6a8a879558c97906cc041ab14ab1d1089959902f386613'
-            '05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a')
-sha256sums_aarch64=('eafcf40a34ea71e56c7e73f15d5ed5b06d7d75a6c8b154be5e26168106587f35')
-sha256sums_armv7h=('27031a9cd31466067b1a0a7f0d3f45cce35050479be6510fb78f8fdd165a1dde')
-sha256sums_x86_64=('3e6c556c1d5074fb6fec7d324273bb28ecc53dc06fbbd6cfe978026f0b5d5f0d')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+sha256sums_aarch64=('8f034d2b66835b340415a46d8ee39bcd580d770fc9f477eca9d8390d4460afe4')
+sha256sums_armv7h=('abdbf3b2bb3d3714b15da0f037afa041e8c618078c5429b923e5fcce33ea8705')
+sha256sums_x86_64=('2fc20e1cf5880b945d0dde7da1dbb79d38b0ceb6c9c309eb60d6fed168a909f5')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
