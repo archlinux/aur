@@ -8,7 +8,7 @@ url="https://github.com/YingFengTingYu/PopStudio_Old"
 license=('Apache-2.0')
 provides=("popstudio")
 depends=()
-makedepends=('unzip')
+makedepends=('dotnet-sdk')
 
 source=("$pkgname-$pkgver.zip::https://github.com/YingFengTingYu/PopStudio_Old/archive/refs/tags/v5.0.tar.gz")
 sha256sums=('01db73db3bd2bb170113c1250e4455129a97610538dacc7035507b536cdfbbd3')
