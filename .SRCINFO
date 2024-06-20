@@ -1,7 +1,7 @@
 pkgbase = rxvt
 	pkgdesc = A colour vt102 terminal emulator
 	pkgver = 2.7.10
-	pkgrel = 8
+	pkgrel = 9
 	url = http://rxvt.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -13,6 +13,8 @@ pkgbase = rxvt
 	depends = libxcb
 	depends = libxdmcp
 	source = http://downloads.sourceforge.net/rxvt/rxvt-2.7.10.tar.gz
+	source = rxvt-2.7.10-no-i-push.patch
 	md5sums = 302c5c455e64047b02d1ef19ff749141
+	md5sums = 8200902ba1ca359da15bee1baa2c3c86
 
 pkgname = rxvt

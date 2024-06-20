@@ -1,0 +1,27 @@
+diff -rauN rxvt-2.7.10/src/ptytty.c rxvt-2.7.10-no-i-push-patch/src/ptytty.c
+--- rxvt-2.7.10/src/ptytty.c	2002-09-19 09:40:39.000000000 +0200
++++ rxvt-2.7.10-no-i-push-patch/src/ptytty.c	2024-06-20 12:19:06.273743088 +0200
+@@ -27,10 +27,11 @@
+  * Try to be self-contained except for the above autoconfig'd defines
+  */
+ 
+-#include <stdio.h>
+ #ifdef HAVE_STDLIB_H
++#define _GNU_SOURCE /* for grantpt */
+ # include <stdlib.h>
+ #endif
++#include <stdio.h>
+ #ifdef HAVE_SYS_TYPES_H
+ # include <sys/types.h>
+ #endif
+@@ -47,8 +48,10 @@
+ # include <sys/ioctl.h>
+ #endif
+ #if defined(PTYS_ARE_PTMX) && !defined(__CYGWIN32__)
++#if defined(I_PUSH)
+ # include <sys/stropts.h>      /* for I_PUSH */
+ #endif
++#endif
+ 
+ 
+ #ifdef DEBUG_TTY
