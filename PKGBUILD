@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=woocommerce-pos
 _pkgname=WooCommerce-POS
-pkgver=1.6.1
+pkgver=1.6.2
 _electronversion=30
 _nodeversion=20
 pkgrel=1
@@ -27,7 +27,7 @@ source=(
     "expo.git::git+https://github.com/wcpos/managed-expo.git"
     "${pkgname}.sh"
 )
-sha256sums=('a416ae762799be21f1e1fe0d6ab1161a161ff8c01ea4279e2d09ecc946558a31'
+sha256sums=('8f25dc488ca9fd5f840724550e0af47a97687c092aca48821524f91d387d9ba2'
             'SKIP'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
