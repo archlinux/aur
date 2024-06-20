@@ -1,0 +1,14 @@
+pkgbase = byp4xx
+	pkgdesc = A tool to bypass 4xx HTTP responses
+	pkgver = v0.122.b337580
+	pkgrel = 1
+	url = https://github.com/lobuhi/byp4xx
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	options = !debug
+	source = git+https://github.com/lobuhi/byp4xx.git
+	sha256sums = SKIP
+
+pkgname = byp4xx
