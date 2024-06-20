@@ -3,7 +3,7 @@
 
 pkgname=mescc-tools
 pkgver=1.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="tools for binary bootstrapping"
 arch=(x86_64)
 license=('GPL-3.0-or-later')
@@ -22,6 +22,7 @@ prepare() {
 
 build() {
   cd mescc-tools
+  CFLAGS+=" -Wl,-z,now"
   make
 }
 

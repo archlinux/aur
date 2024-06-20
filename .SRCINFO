@@ -1,7 +1,7 @@
 pkgbase = mescc-tools
 	pkgdesc = tools for binary bootstrapping
 	pkgver = 1.5.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/oriansj/mescc-tools
 	arch = x86_64
 	license = GPL-3.0-or-later
