@@ -13,6 +13,8 @@ pkgbase = ksnip-git
 	depends = hicolor-icon-theme
 	depends = kimageannotator-qt5
 	depends = qt5-x11extras
+	provides = ksnip
+	conflicts = ksnip
 	source = git+https://github.com/ksnip/ksnip.git
 	sha256sums = SKIP
 

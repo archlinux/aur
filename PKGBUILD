@@ -14,6 +14,8 @@ url="https://github.com/ksnip/ksnip"
 license=("GPL-2.0-or-later")
 depends=(hicolor-icon-theme kimageannotator-qt5 qt5-x11extras)
 makedepends=(cmake extra-cmake-modules git ninja qt5-tools)
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
 source=("git+$url.git")
 sha256sums=('SKIP')
 
