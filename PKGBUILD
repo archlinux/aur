@@ -5,7 +5,7 @@
 
 pkgname=asciinema-git
 pkgver=3.0.0rc.2.r25.g530b947
-pkgrel=1
+pkgrel=2
 pkgdesc="Record and share your terminal sessions"
 arch=('x86_64')
 url="https://github.com/asciinema/asciinema"
@@ -16,7 +16,7 @@ conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=("$pkgname::git+${url}.git")
 sha256sums=('SKIP')
-options=(!lto)
+options=(!lto !debug)
 
 pkgver() {
   cd $pkgname
@@ -33,11 +33,20 @@ build() {
   cd $pkgname
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --all-features
+  ASCIINEMA_GEN_DIR="$srcdir" cargo build --frozen --release --all-features
 }
 
 package() {
   install -Dm755 $pkgname/target/release/asciinema -t "${pkgdir}/usr/bin"
+  install -Dm644 man/*.1 -t "${pkgdir}/usr/share/man/man1"
+
+  pushd completion
+  install -Dm644 asciinema.fish -t "${pkgdir}/usr/share/fish/completions"
+  install -Dm644 asciinema.bash "${pkgdir}/usr/share/bash-completion/completions/asciinema"
+  install -Dm644 _asciinema -t "${pkgdir}/usr/share/zsh/functions/Completion/Unix"
+  # not sure where these files should go; copying them to the dir below
+  install -Dm644 *.ps1 *.elv -t "${pkgdir}/usr/share/${pkgname}/completion"
+  popd
 }
 
 # vim:set ts=2 sw=2 et:
