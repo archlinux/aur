@@ -8,8 +8,8 @@ pkgbase = gost-v3-bin
 	license = MIT
 	provides = gost-v3-bin=3.0.0.20240613
 	conflicts = gost
-	source_x86_64 = https://github.com/go-gost/gost/releases/download/v3.0.0-nightly.20240613/gost_3.0.0-nightly.20240613_linux_amd64.tar.gz
-	sha256sums_x86_64 = ddcb99b8eabf1e2f165680f628a20dd84b4d5bd17823474d8163deb438e3a906
-	source_i386 = https://github.com/go-gost/gost/releases/download/v3.0.0-nightly.20240613/gost_3.0.0-nightly.20240613_linux_386.tar.gz
+	source_x86_64 = https://github.com/go-gost/gost/releases/download/v3.0.0-nightly.20240618/gost_3.0.0-nightly.20240618_linux_amd64.tar.gz
+	sha256sums_x86_64 = 2f05ae78edaec9a0b8769f0a76dcceadba9c9cec20e9223b5a1a8e67faa82b95
+	source_i386 = https://github.com/go-gost/gost/releases/download/v3.0.0-nightly.20240618/gost_3.0.0-nightly.20240618_linux_386.tar.gz
 
 pkgname = gost-v3-bin
