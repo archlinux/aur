@@ -13,10 +13,10 @@ pkgname=(buildbot buildbot-worker buildbot-docs buildbot-common
          python-buildbot-react-console-view python-buildbot-react-grid-view
          python-buildbot-react-wsgi-dashboards)
 # https://github.com/buildbot/buildbot/releases
-pkgver=3.11.3
+pkgver=3.11.4
 # Pin tags manually until a stable pacman version includes the following fix
 # https://gitlab.archlinux.org/pacman/pacman/-/commit/9548d6cc765b1a8dcf933e8b1b89d0bcc3e50209
-_tag=718e46e7c09015454f80156bd0cc4f13bc71972c
+_tag=843db9122e34d3675a107b8d908d8e37882982b7
 _bb_contrib_commit=4c8615db51253f0be4bfd08210a3aaf903a74b4f
 pkgrel=1
 arch=(any)

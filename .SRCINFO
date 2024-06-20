@@ -1,5 +1,5 @@
 pkgbase = buildbot
-	pkgver = 3.11.3
+	pkgver = 3.11.4
 	pkgrel = 1
 	url = https://buildbot.net
 	arch = any
@@ -45,7 +45,7 @@ pkgbase = buildbot
 	makedepends = python-sphinx_rtd_theme
 	makedepends = git
 	makedepends = yarn
-	source = git+https://github.com/buildbot/buildbot.git?signed#tag=718e46e7c09015454f80156bd0cc4f13bc71972c
+	source = git+https://github.com/buildbot/buildbot.git?signed#tag=843db9122e34d3675a107b8d908d8e37882982b7
 	source = git+https://github.com/buildbot/buildbot-contrib.git#commit=4c8615db51253f0be4bfd08210a3aaf903a74b4f
 	source = buildbot-contrib-systemd-common.patch::https://github.com/buildbot/buildbot-contrib/pull/22.patch
 	source = disable-flaky-tests.diff
