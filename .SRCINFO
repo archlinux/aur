@@ -1,0 +1,18 @@
+pkgbase = ia64-linux-gnu-gcc-bootstrap
+	pkgdesc = The GNU Compiler Collection. Bootstrap for toolchain building (ia64)
+	pkgver = 14.1.0
+	pkgrel = 1
+	arch = any
+	makedepends = ia64-linux-gnu-binutils
+	makedepends = ia64-linux-gnu-linux-api-headers
+	provides = ia64-linux-gnu-gcc
+	conflicts = ia64-linux-gnu-gcc
+	options = !emptydirs
+	options = !strip
+	source = https://ftp.gnu.org/gnu/gcc/gcc-14.1.0/gcc-14.1.0.tar.xz
+	source = https://ftp.gnu.org/gnu/gcc/gcc-14.1.0/gcc-14.1.0.tar.xz.sig
+	validpgpkeys = D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62
+	sha256sums = e283c654987afe3de9d8080bc0bd79534b5ca0d681a73a11ff2b5d3767426840
+	sha256sums = SKIP
+
+pkgname = ia64-linux-gnu-gcc-bootstrap
