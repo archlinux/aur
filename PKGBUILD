@@ -1,7 +1,7 @@
 # Maintainer: Huayu ZHANG <zhanghuayu1233@gmail.com>
 
 pkgname=bochs-gdb-stub
-pkgver=2.7
+pkgver=2.8
 pkgrel=1
 pkgdesc="A portable x86 PC emulation software package with gdbstub"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('gcc-libs' 'libxrandr' 'libxpm' 'gtk2')
 replaces=("bochs-gdb")
 conflicts=("bochs-gdb")
 source=("http://downloads.sourceforge.net/sourceforge/bochs/bochs-$pkgver.tar.gz")
-sha256sums=('a010ab1bfdc72ac5a08d2e2412cd471c0febd66af1d9349bc0d796879de5b17a')
+sha256sums=('a85b13aff7d8411f7a9f356ba6c33b5f5dc1fbb107eb5018cc23a62639da0059')
 
 prepare() {
     cd "$srcdir/bochs-$pkgver"
