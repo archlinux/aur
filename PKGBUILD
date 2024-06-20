@@ -3,7 +3,7 @@
 
 pkgname=xxd-standalone
 pkgver=9.1.0496
-pkgrel=1
+pkgrel=2
 pkgdesc="Hexdump utility from vim"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://www.vim.org"
@@ -15,8 +15,8 @@ source=("xxd-${pkgver}.c::https://raw.githubusercontent.com/vim/vim/v${pkgver}/s
         "xxd-${pkgver}.1::https://raw.githubusercontent.com/vim/vim/v${pkgver}/runtime/doc/xxd.1"
         "xxd-${pkgver}-Makefile::https://raw.githubusercontent.com/vim/vim/v${pkgver}/src/xxd/Makefile"
         "https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/xxd-LICENSE")
-sha256sums=('cae7b6acfdafc6602e2e81d330c5c329833d7aa9217e84cf1e68e7d020fbd3e7'
-            '2e12c5a5c63ad0a1eb323452caa1ea6f853b0a6fedbfae99ddd4d26d486a8b87'
+sha256sums=('7d9863a7e2035fb2e1932cab053a12e38880a9fd52819c51610389929f601570'
+            'e307332f2c92cd447aa03b7ab4fb145e42cb6d39200fbf1e0d26b3bc4a0d8078'
             '7e9621ada1c17f6fae14e106a502642c8ad1ed3551beb2278b925d73c9f04159'
             '2ac99e6ff2ee077cfec2133d0d5d2d4f14b156994c4c1896703cda98c2d21845')
 # check versions at https://github.com/vim/vim/tree/master/src/xxd
