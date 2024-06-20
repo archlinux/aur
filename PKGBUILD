@@ -1,7 +1,7 @@
 # Maintainer: Hu Butui <hot123tea123@gmail.com>
 
 _pkgname=parameters
-_pkgver=0.21.7
+_pkgver=0.22.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -127,8 +127,8 @@ optdepends=(
   r-wrs2
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('96bbcf277b2ab87132b962ad6d60eb2b')
-b2sums=('3e9d736fbf6195e2e3f9bf2219d7f4d7149f3dc68175bb74d65486fbab21366aa061f0154b1ef59245279292339870e1aa763d5ff3903cda430aed375d3dfa12')
+md5sums=('adb0fa9af924223431417ba80010aef0')
+b2sums=('055d59a0152c7120f284bebcda00a3daa9563e151c272132cdba1532880cf3fa7ffc62c02f32aeaaf8127b2716b3d9a200dada58bfc81fdf27433ceb0cef9548')
 
 build() {
   mkdir build
