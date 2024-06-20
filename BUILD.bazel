@@ -52,8 +52,11 @@ mozc_cc_library(
     ],
     deps = [
         ":uim_header",
+        "@com_google_absl//absl/log",
+        "@com_google_absl//absl/log:check",
         "//base:port",
         "//base:vlog",
+        "//base:log_file",
         "//base:util",
         "//client",
         "//protocol:commands_cc_proto",

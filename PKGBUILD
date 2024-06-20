@@ -3,21 +3,21 @@
 
 ## NOTE: This doens't support kill_line feature of uim.
 
-# renovate: aur-sync depName=mozc 1c122d76c79d8731e07c3cf57a6766b9c151d7e4
+# renovate: aur-sync depName=mozc 0161f20aed96e832c88f1aba7efbc0ecff0eb24c
 
 _uimmozcrev="7beac7ba000e0459a4dc933f3873b521664d2665"
-_mozcrev="c50bd32a0931d558797d71cfc11091ee17c55ac1"
+_mozcrev="7967c42e5585d0789fe6565bf366afba8b31fcbf"
 
 pkgname=uim-mozc
 _pkgname=mozc
-pkgver=2.30.5448.102
+pkgver=2.30.5490.102
 pkgrel=1
 pkgdesc="uim plugin module for Mozc"
 arch=('i686' 'x86_64')
 url="https://github.com/e-kato/macuim"
 license=('BSD')
 groups=('mozc-im')
-depends=('mozc>=2.30.5448.102' 'uim')
+depends=('mozc>=2.30.5490.102' 'uim')
 install=${pkgname}.install
 makedepends=('bazel' 'git' 'python')
 source=(
@@ -30,8 +30,8 @@ source=(
 sha1sums=('SKIP'
           'SKIP'
           '7547e5cae4df8b516580c882bc975d8a70251db1'
-          '44fe1eac88f560b63b09f46f9bf556582c12a2ef'
-          'ec966e854038f3175266370d6b1fbd2a78b4f5a7')
+          'eff91b1139561bb5e2f90936776b8e796e7506a7'
+          '279a05a3e6339c388744f16952ccd798ab9989a8')
 
 prepare() {
   cd "${srcdir}/${_pkgname}/"
@@ -58,7 +58,7 @@ build() {
 
   unset ANDROID_NDK_HOME
   export JAVA_HOME='/usr/lib/jvm/java-11-openjdk/'
-  bazel build unix/uim:uim-mozc unix/icons --config oss_linux --compilation_mode opt --experimental_cc_shared_library
+  bazel build unix/uim:uim-mozc unix/icons --config oss_linux --compilation_mode opt --cxxopt=-Wno-uninitialized --host_cxxopt=-Wno-uninitialized --experimental_cc_shared_library
 }
 
 package() {
