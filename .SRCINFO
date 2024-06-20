@@ -1,6 +1,6 @@
 pkgbase = atmos-weather-bin
 	pkgdesc = A lightweight weather app for receiving alerts and forecasts in the US.
-	pkgver = 2.1.1
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://atticuscornett.github.io/AtmosWeather/
 	arch = aarch64
@@ -8,15 +8,15 @@ pkgbase = atmos-weather-bin
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = electron29
-	provides = atmos-weather=2.1.1
+	provides = atmos-weather=2.1.2
 	conflicts = atmos-weather
 	source = atmos-weather.sh
 	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
-	source_aarch64 = atmos-weather-2.1.1-aarch64.deb::https://github.com/atticuscornett/AtmosWeather/releases/download/v2.1.1/atmos-weather_2.1.1_arm64.deb
-	sha256sums_aarch64 = 63ffefed203fb9a6b61493faba262020b62fd959d0dc9f732a65ce7dce82ce71
-	source_armv7h = atmos-weather-2.1.1-armv7h.deb::https://github.com/atticuscornett/AtmosWeather/releases/download/v2.1.1/atmos-weather_2.1.1_armv7l.deb
-	sha256sums_armv7h = 7ada30a0d71c7a614ec67f570ff6d9e561edd1a3356a4cdff6474e7642a8fae6
-	source_x86_64 = atmos-weather-2.1.1-x86_64.deb::https://github.com/atticuscornett/AtmosWeather/releases/download/v2.1.1/atmos-weather_2.1.1_amd64.deb
-	sha256sums_x86_64 = d7c73a1ee6e22fea7f6ef41d098acbad8787c31888dec55a8ad4f5e3a70830b3
+	source_aarch64 = atmos-weather-2.1.2-aarch64.deb::https://github.com/atticuscornett/AtmosWeather/releases/download/v2.1.2/atmos-weather_2.1.2_arm64.deb
+	sha256sums_aarch64 = 961522aba50cf8d5a3fc57eb8fcf7f8973d895bc1c98f6fe6efc0081ffbfeb4b
+	source_armv7h = atmos-weather-2.1.2-armv7h.deb::https://github.com/atticuscornett/AtmosWeather/releases/download/v2.1.2/atmos-weather_2.1.2_armv7l.deb
+	sha256sums_armv7h = f851649a3df70c78eaa089a7885474a96c807189c9ffbad3768aafef69e33c38
+	source_x86_64 = atmos-weather-2.1.2-x86_64.deb::https://github.com/atticuscornett/AtmosWeather/releases/download/v2.1.2/atmos-weather_2.1.2_amd64.deb
+	sha256sums_x86_64 = 93465c681deee6da12d1e30adad5b6359a72b33f3feb3de80476360171956ae5
 
 pkgname = atmos-weather-bin
