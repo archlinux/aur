@@ -1,14 +1,16 @@
 pkgbase = python-pydns
 	pkgdesc = A module for looking up DNS entries in Python applications
-	pkgver = 3.2.1
+	pkgver = 4.0.2
 	pkgrel = 1
 	url = https://launchpad.net/py3dns
 	arch = any
 	license = Python
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-flit
 	depends = python
-	source = https://launchpad.net/py3dns/trunk/3.2.1/+download/py3dns-3.2.1.tar.gz
-	md5sums = 35a441081a1acfa0cf78e7ccc2ff9449
+	source = https://launchpad.net/py3dns/trunk/4.0.2/+download/py3dns-4.0.2.tar.gz
+	md5sums = 1623680ae77bd4723ed75996cb85c48e
 
 pkgname = python-pydns
-
