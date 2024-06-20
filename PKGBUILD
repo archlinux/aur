@@ -1,8 +1,8 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=mpd-notification
-pkgver=0.8.7
-pkgrel=3
+pkgver=0.9.0
+pkgrel=1
 pkgdesc='Notify about tracks played by mpd'
 arch=('i686' 'x86_64')
 url='https://github.com/eworm-de/mpd-notification'
@@ -11,14 +11,8 @@ makedepends=('systemd' 'discount')
 license=('GPL')
 validpgpkeys=('BD84DE71F493DF6814B0167254EDC91609BC9183')
 source=("https://www.eworm.de/download/${pkgname}/${pkgname}-${pkgver}.tar.xz"{,.asc})
-sha256sums=('017ba30f402b41cba66571023893175056ef2b989b1b939c202abc0167988606'
+sha256sums=('40ff3d52d5341b1337c68fcb32ebc7d04a02cbe76221b6f08e452278b88c94ea'
             'SKIP')
-
-prepare() {
-  cd ${pkgname}-${pkgver}/
-
-  sed -i 's|-liniparser|-I/usr/include/iniparser -liniparser|' Makefile
-}
 
 build() {
 	cd ${pkgname}-${pkgver}/
