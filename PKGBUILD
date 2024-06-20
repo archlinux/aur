@@ -7,7 +7,7 @@ pkgver=0.6.r448.gc726c4d7
 pkgrel=1
 pkgdesc="Getting Things GNOME! is a personal tasks and TODO-list items organizer for GNOME"
 arch=('any')
-url="https://wiki.gnome.org/Apps/GTG"
+url="https://github.com/getting-things-gnome/gtg"
 license=('GPL-3.0-or-later')
 depends=(
   'gtk4'
