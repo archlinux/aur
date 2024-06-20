@@ -1,7 +1,7 @@
 pkgbase = swbis
 	pkgdesc = software packaging -- again
 	pkgver = 1.13.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.gnu.org/software/swbis/
 	arch = i686
 	arch = x86_64

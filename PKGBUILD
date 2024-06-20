@@ -1,7 +1,7 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 pkgname=swbis
 pkgver=1.13.3
-pkgrel=3
+pkgrel=4
 pkgdesc="software packaging -- again"
 arch=(i686 x86_64)
 url='https://www.gnu.org/software/swbis/'
@@ -19,6 +19,7 @@ patch -Np0 -i ../automake.patch
 build(){
 cd "$pkgname-$pkgver"
 CFLAGS="$CFLAGS -Wno-error=implicit-function-declaration -Wno-int-conversion"
+LDFLAGS+=' -Wl,-z,shstk'
 ./configure --prefix=/usr --libexecdir=/usr/lib 
 make -j1 # https://savannah.gnu.org/support/index.php?111050
 }
