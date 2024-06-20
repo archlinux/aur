@@ -41,6 +41,6 @@ package() {
     install -Dm644 config.json                "${pkgdir}/etc/${_pkgname}/config.json"
 
     cd "${_pipname}-${pkgver}"
-    install -Dm644 LICENSE                    "${pkgdir}/usr/share/license/${pkgname}/LICENSE"
+    install -Dm644 LICENSE                    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     python -m installer --destdir="${pkgdir}" dist/*.whl
 }
