@@ -1,14 +1,14 @@
 pkgbase = pinfo-git
 	pkgdesc = A hypertext info file viewer
-	pkgver = 0.6.13.r8.g3d76eec
+	pkgver = 0.6.13.r37.g47a01b5
 	pkgrel = 1
-	url = https://github.com/baszoetekouw/pinfo
+	url = https://github.com/nicolarevelant/pinfo
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-only
 	depends = ncurses
 	depends = readline
 	conflicts = pinfo
-	source = pinfo-git::git+https://github.com/baszoetekouw/pinfo.git
+	source = pinfo-git::git+https://github.com/nicolarevelant/pinfo.git
 	sha256sums = SKIP
 
 pkgname = pinfo-git

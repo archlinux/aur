@@ -1,26 +1,29 @@
-# Maintainer: Nicola Revelant <nicolarevelant44@gmail.com>
+# Maintainer: Nicola Revelant <nicolarevelant@outlook.com>
 
 pkgname=pinfo-git
-pkgver=0.6.13.r8.g3d76eec
+pkgver=0.6.13.r37.g47a01b5
 pkgrel=1
 pkgdesc="A hypertext info file viewer"
-
 arch=('x86_64')
-url="https://github.com/baszoetekouw/pinfo"
-license=('GPL')
+url="https://github.com/nicolarevelant/pinfo"
+license=('GPL-2.0-only')
 depends=('ncurses' 'readline')
 conflicts=('pinfo')
-source=("$pkgname"::"git+https://github.com/baszoetekouw/pinfo.git")
+source=("$pkgname"::"git+$url.git")
 sha256sums=('SKIP')
+
+pkgver() {
+	cd "$pkgname"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
 	cd "$pkgname"
-	[ -x configure ] || ./autogen.sh
-	[ -f Makefile ] || ./configure --prefix=/usr --sysconfdir=/etc
-	make
+	arch-meson build
+	meson compile -C build
 }
 
 package() {
 	cd "$pkgname"
-	make DESTDIR="$pkgdir" install
+	DESTDIR="$pkgdir" meson install -C build
 }
