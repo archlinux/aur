@@ -1,5 +1,5 @@
 pkgbase = thegraph-cli
-	pkgdesc = CLI for building for and deploying to The Graph protocol
+	pkgdesc = CLI for building and deploying to The Graph protocol
 	pkgver = 0.75.0
 	pkgrel = 1
 	url = https://github.com/graphprotocol/graph-tooling/tree/main/packages/cli
