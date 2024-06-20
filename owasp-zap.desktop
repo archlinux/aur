@@ -1,0 +1,9 @@
+[Desktop Entry]
+Categories=System;Security;
+Type=Application
+Name=ZAP
+GenericName=Attack Proxy
+Comment=Zed Attack Proxy
+Exec=/usr/bin/zaproxy
+Path=/usr/share/zaproxy/
+Icon=owasp-zap
