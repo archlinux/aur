@@ -2,8 +2,8 @@
 
 _pkgname=flet
 pkgname=python-${_pkgname}
-pkgver=0.22.1
-pkgrel=2
+pkgver=0.23.1
+pkgrel=1
 pkgdesc='Easily build realtime web, mobile and desktop apps in your favorite language and securely share them with your team.'
 url="https://${_pkgname}.dev/"
 license=('Apache')
@@ -36,14 +36,14 @@ source=(
 	"flutter-engine::git+https://github.com/flutter/engine.git"
 	'git+https://chromium.googlesource.com/chromium/tools/depot_tools.git'
 	'flet-linux.patch')
-sha256sums=('f20c270cf5d9a1eaa0ef87a17438a137ad01689f8bbd0854d01e6b0bcb672d77'
+sha256sums=('070e3bc4758bd3db341d5f0b08c5d3e302b96318fe6b3561a6400d84d7b095f7'
             'SKIP'
             'SKIP'
             'SKIP'
             'af9718b926a07ac8e8689a2c623fe6921d88d0bcd52263f63848d11175e3b828')
 
 _srcdir="${_pkgname}-${pkgver}"
-_engine_version=3.19.6
+_engine_version=3.22.2
 
 prepare() {
 	cd "${_srcdir}"
