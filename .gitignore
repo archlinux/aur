@@ -1,0 +1,4 @@
+allow-locked-remote-desktop/
+pkg/
+src/
+*.tar.zst

@@ -1,0 +1,13 @@
+pkgbase = gnome-shell-extension-allow-locked-remote-desktop-git
+	pkgdesc = Allow locked Remote Desktop for GNOME Shell
+	pkgver = 2024.04.08.g198a9a5
+	pkgrel = 1
+	url = https://github.com/jikamens/allow-locked-remote-desktop
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = git
+	depends = gnome-shell
+	source = git+https://github.com/jikamens/allow-locked-remote-desktop.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-allow-locked-remote-desktop-git
