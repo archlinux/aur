@@ -1,18 +1,17 @@
 # Maintainer: oi_wtf <brainpower at mailbox dot org>
 
 pkgname=sfml-git
-pkgver=2.6.0.r637.g9d1d9cde
+pkgver=2.6.1.r975.gf05baef52
 pkgrel=1
 pkgdesc="A simple, fast, cross-platform, and object-oriented multimedia API"
 arch=('i686' 'x86_64')
 url="http://www.sfml-dev.org/"
-license=('zlib')
-depends=('libsndfile' 'libxrandr' 'libxcursor' 'libjpeg' 'openal' 'glew' 'freetype2' 'xcb-util-image')
-makedepends=('mesa' 'cmake' 'doxygen' 'git')
-provides=('sfml')
+license=('Zlib')
+depends=('libsndfile' 'libxrandr' 'openal' 'glew' 'freetype2' 'libx11' 'libxcursor' 'libxi')
+makedepends=('mesa' 'cmake' 'doxygen' 'systemd' 'ninja' 'git')
+provides=('libsfml-window.so' 'libsfml-network.so' 'libsfml-system.so'
+          'libsfml-audio.so' 'libsfml-graphics.so' 'sfml')
 conflicts=('sfml')
-replaces=('sfml')
-options=('debug')
 
 source=("git+https://github.com/SFML/SFML.git")
 sha256sums=('SKIP')
@@ -27,26 +26,23 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/SFML"
 
-  cmake -DCMAKE_INSTALL_PREFIX=/usr . \
-        -DCMAKE_BUILD_TYPE=RelWithDebugInfo \
-        -DBUILD_SHARED_LIBS=ON \
-        -DSFML_BUILD_DOC=OFF \
-        -DSFML_BUILD_EXAMPLES=OFF \
-        -DSFML_INSTALL_PKGCONFIG_FILES=ON
-        # prints a warning if pkg-config not supported
-  make
-  make doc
+  cmake -B build -S SFML -G Ninja \
+      -DCMAKE_INSTALL_PREFIX=/usr \
+      -DSFML_USE_SYSTEM_DEPS=ON \
+      -DSFML_BUILD_EXAMPLES=OFF \
+      -DSFML_BUILD_DOC=OFF \
+      -DSFML_INSTALL_PKGCONFIG_FILES=ON \
+      -DSFML_PKGCONFIG_INSTALL_PREFIX=/usr/share/pkgconfig \
+      -DBUILD_SHARED_LIBS=ON
+  ninja -C build
+  #ninja -C build doc
 }
 
 package() {
-  cd "$srcdir/SFML"
+  DESTDIR="$pkgdir/" ninja -C build install
 
-  make DESTDIR="$pkgdir/" install
-
-  install -Dm644 ./license.md ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md
-
+  install -Dm644 SFML/license.md ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md
 }
 
 # vim:set ts=2 sw=2 et:
