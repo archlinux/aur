@@ -46,7 +46,17 @@ function manageDirs() {
 function detectXauth() {
 	if [ ! ${XAUTHORITY} ]; then
 		echo '[Warn] No ${XAUTHORITY} detected! Do you have any X server running?'
-		export XAUTHORITY="/$(uuidgen)/$(uuidgen)"
+		export XAUTHORITYpath="/$(uuidgen)/$(uuidgen)"
+		if [[ "${LANG}" =~ 'zh_CN' ]]; then
+			zenity --title "未找到 XAUTHORITY" --icon=image-missing-symbolic --default-cancel --question --text="解锁 X 服务器以继续?"
+		else
+			zenity --title "XAUTHORITY not found" --icon=image-missing-symbolic --default-cancel --question --text="Unlock X Server to continue?"
+		fi
+		if [ $? = 0 ]; then
+			xhost +
+		fi
+	else
+		export XAUTHORITYpath="${XAUTHORITY}"
 	fi
 	if [[ ! ${DISPLAY} ]]; then
 		echo '[Warn] No ${DISPLAY} detected! Do you have any X server running?'
@@ -204,7 +214,7 @@ function execApp() {
 		--ro-bind "${XDG_RUNTIME_DIR}/pulse" \
 			"${XDG_RUNTIME_DIR}/pulse" \
 		--bind "${XDG_DATA_HOME}"/WeChat_Data "${HOME}" \
-		--ro-bind-try "${XAUTHORITY}" "${XAUTHORITY}" \
+		--ro-bind-try "${XAUTHORITYpath}" "${XAUTHORITYpath}" \
 		--unshare-all \
 		--share-net \
 		--unshare-user \

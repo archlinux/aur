@@ -1,7 +1,7 @@
 pkgbase = wechat-uos-bwrap
 	pkgdesc = WeChat Qt
 	pkgver = 1.0.0.241
-	pkgrel = 13
+	pkgrel = 14
 	url = https://weixin.qq.com/
 	arch = x86_64
 	arch = aarch64
@@ -62,7 +62,7 @@ pkgbase = wechat-uos-bwrap
 	source = license.tar.gz
 	source = user-dirs.dirs
 	source = wechat.env
-	md5sums = ace65d4d0d6400811ac8a9d258cf8792
+	md5sums = b37b118d665c0f35b10278dbcc0956b8
 	md5sums = c7f3d732d481f86717bf9bbdab5d6023
 	md5sums = 600e74549ce2258c045d5c2f7689ea63
 	md5sums = dfc069e6c8d9dbaa90fe388cab4002c9
