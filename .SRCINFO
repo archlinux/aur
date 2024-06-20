@@ -1,0 +1,15 @@
+pkgbase = guile-commonmark-git
+	pkgdesc = Guile library for parsing CommonMark
+	pkgver = 0.1.r45.g538ffea
+	pkgrel = 1
+	url = https://github.com/OrangeShark/guile-commonmark
+	arch = any
+	license = LGPL3
+	makedepends = autoconf
+	makedepends = pkg-config
+	depends = guile
+	conflicts = guile-commonmark
+	source = guile-commonmark-git::git+https://github.com/OrangeShark/guile-commonmark/
+	sha512sums = SKIP
+
+pkgname = guile-commonmark-git
