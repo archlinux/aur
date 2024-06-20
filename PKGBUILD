@@ -23,6 +23,7 @@ sha256sums=('ccf6defc4884d580a4b813cc40323a0389ffc9aa4bdc55f3764a46b235dfe1e0'
 # In clang-16, there seems to be no problem without this option specified.
 # (The -ffat-lto-objects option is planned to be supported from clang-17.)
 [[ $CC =~ gcc ]] && export LTOFLAGS+=" -ffat-lto-objects"
+unset LD
 # musl build for openssl-sys
 export PKG_CONFIG_ALLOW_CROSS=1
 export RUSTUP_TOOLCHAIN=stable
