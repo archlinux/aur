@@ -12,13 +12,14 @@ _pkgname=kubo
 _old_pkgname=go-ipfs
 pkgname="${_pkgname}-git"
 pkgver=0.29.0.r10.ge9fbc28
-pkgrel=1
-pkgdesc="An IPFS implementation in Go"
+pkgrel=2
+pkgdesc="IPFS implementation in Go"
 url="https://github.com/ipfs/kubo"
 arch=('x86_64')
 license=('MIT AND Apache-2.0')
 depends=('glibc')
 makedepends=('go' 'git')
+optdepends=('fuse2: for mounting/advanced use')
 provides=("${_pkgname}" 'ipfs' "${_old_pkgname}")
 conflicts=("${_pkgname}" "${_old_pkgname}" "${_old_pkgname}-git")
 replaces=("${_old_pkgname}-git")
@@ -35,18 +36,21 @@ prepare() {
   sed -i 's|/usr/local/bin/ipfs|/usr/bin/ipfs|' misc/systemd/*.service
   sed -i '/^User=ipfs$/d' misc/systemd/*.service
   sed -i '/^Group=ipfs$/d' misc/systemd/*.service
+  go mod download
 }
 
 build() {
   cd "${_pkgname}"
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  export CGO_LDFLAGS="$LDFLAGS"
+  export CGO_CFLAGS="$CFLAGS"
+  export CGO_CPPFLAGS="$CPPFLAGS"
+  export CGO_CXXFLAGS="$CXXFLAGS"
+  export CGO_REQUIRED="1"
+  export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw -ldflags '-compressdwarf=false -linkmode=external'"
   make build
   cmd/ipfs/ipfs commands completion bash > ipfs-completion.bash
   cmd/ipfs/ipfs commands completion fish > ipfs-completion.fish
+  cmd/ipfs/ipfs commands completion zsh > ipfs-completion.zsh
 }
 
 package() {
@@ -58,6 +62,7 @@ package() {
 
   install -Dm 644 ipfs-completion.bash "${pkgdir}/usr/share/bash-completion/completions/ipfs"
   install -Dm 644 ipfs-completion.fish "${pkgdir}/usr/share/fish/vendor_completions.d/ipfs.fish"
+  install -Dm 644 ipfs-completion.zsh "${pkgdir}/usr/share/zsh/site-functions/_ipfs"
 
   install -Dm 644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE-MIT
   install -Dm 644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE-APACHE
