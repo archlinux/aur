@@ -18,8 +18,8 @@ sha256sums=('bbad8cf99e11a32f30491625b956ef1f22f39d1973ada4988c9202f2e194870a'
 
 build() {
     cd "${pkgname}-${pkgver}"
-    npm ci
-    npm run tauri build
+    npm ci --cache cache
+    npm run --cache cache tauri build
 }
 
 package() {
