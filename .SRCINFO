@@ -20,7 +20,7 @@ pkgbase = python-pyvips
 	depends = python-cffi
 	depends = python-numpy
 	depends = python-pkgconfig
-	source = pyvips-2.2.2.tar.gz::https://github.com/libvips/pyvips/archive/refs/tags/v2.2.2.tar.gz
-	sha256sums = 89f5b0cae73720f0a52d872c4ee0a43a1bc40f02565c07b2d7558aaeead23bf8
+	source = pyvips-2.2.3.tar.gz::https://github.com/libvips/pyvips/archive/refs/tags/v2.2.3.tar.gz
+	sha256sums = d70f21a557523404884dd2a192505227e1e6a50ed74315d73c416489b43e9414
 
 pkgname = python-pyvips
