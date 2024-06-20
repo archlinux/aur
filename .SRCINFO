@@ -8,6 +8,7 @@ pkgbase = guile-reader
 	license = GPL
 	makedepends = gperf
 	makedepends = git
+    makedepends = gcc9-bin
 	depends = guile
 	options = !strip
 	source = http://download.savannah.nongnu.org/releases/guile-reader/guile-reader-0.6.3.tar.gz
