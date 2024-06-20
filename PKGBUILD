@@ -3,10 +3,10 @@
 # Contributor: David Dent <thewinch@gmail.com>
 # Contributor: orbisvicis <orbisvicis@gmail.com>
 # Maintainer: Fritz Engelbrecht <fritz.engl+arch@gmail.com>
-# Maintainer: David Hummel <david dot hummel at gmail point com>
+# Maintainer: David Hummel <hummeltech@sherpaguru.com>
 
 pkgname=mapnik-git
-pkgver=4.0.0.r0.g85801bd
+pkgver=4.0.0.r2.ge7d0b85
 pkgrel=1
 pkgdesc='Free Toolkit for developing mapping applications. Above all Mapnik is about rendering beautiful maps (git version)'
 arch=('i686' 'x86_64')
