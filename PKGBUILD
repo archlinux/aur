@@ -1,13 +1,13 @@
 # Maintainer: Bruno Silva <brunofernandes at ua dot pt>
 
 ## useful links
-# http://alphaplot.sourceforge.net/
+# https://alphaplot.sourceforge.io/
 # https://github.com/narunlifescience/AlphaPlot
 
 _pkgname="alphaplot"
 pkgname="$_pkgname-git"
-pkgver=1.02.r19.gda97d1fa
-pkgrel=2
+pkgver=1.02.r23.g9170e6d5
+pkgrel=1
 pkgdesc="Application for Scientific Data Analysis and Visualization, fork of SciDavis / QtiPlot"
 url="https://github.com/narunlifescience/AlphaPlot"
 arch=('i686' 'x86_64')
@@ -54,5 +54,5 @@ build() {
 package() {
   cd "$_pkgsrc"
   # Note: DESTDIR is ignored
-  make INSTALL_ROOT="${pkgdir}" install
+  make INSTALL_ROOT="$pkgdir" install
 }

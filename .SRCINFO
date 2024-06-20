@@ -1,7 +1,7 @@
 pkgbase = alphaplot-git
 	pkgdesc = Application for Scientific Data Analysis and Visualization, fork of SciDavis / QtiPlot
-	pkgver = 1.02.r19.gda97d1fa
-	pkgrel = 2
+	pkgver = 1.02.r23.g9170e6d5
+	pkgrel = 1
 	url = https://github.com/narunlifescience/AlphaPlot
 	arch = i686
 	arch = x86_64
