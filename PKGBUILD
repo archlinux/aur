@@ -3,17 +3,17 @@
 
 pkgname=syngestures
 _pkgname=syngesture
-pkgver=1.0.1
-pkgrel=5
+pkgver=2.0.0
+_commit=77b2e29d0c842b3c8d6bf004d3e9ef499f87cbbc
+pkgrel=1
 pkgdesc="Swipes and gestures for Linux with the MT multitouch protocol"
-arch=('x86_64')
 url="https://github.com/mqudsi/syngesture"
 license=('MIT')
+arch=('x86_64')
 makedepends=('cargo' 'git')
-depends=('evtest')
 optdepends=("wmctrl: needed for syngestures-switch-ws for X11 and Wayland compatible workspace switching"
             "xdotool: simulates keyboard and mouse actions for Xorg or XWayland based apps")
-source=("git+$url.git#tag=$pkgver"
+source=("git+$url.git#commit=$_commit"
         "$pkgname.desktop"
         "$pkgname.toml"
         "$pkgname-switch-ws")
@@ -28,13 +28,6 @@ prepare() {
   export CARGO_HOME="$srcdir/CARGO_HOME"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
-  # Patch config location
-  cd src
-  sed -i 's|PathBuf::from(PREFIX.unwrap_or("/usr/local"))|PathBuf::from(PREFIX.unwrap_or("/etc"))|' config.rs &&
-  sed -i 's|format!("{}/etc/syngestures.toml", prefix.display())|format!("{}/syngestures.toml", prefix.display())|' config.rs &&
-  sed -i 's|format!("{}/etc/syngestures.d/\*.toml", prefix.display())|format!("{}/syngestures.d/*.toml", prefix.display())|' config.rs
-  sed -i 's|let global_config = prefix.join("etc/syngestures.toml");|let global_config = prefix.join("syngestures.toml");\n|' config.rs &&
-  sed -i 's|let global_config_dir = prefix.join("etc/syngestures.d");|let global_config_dir = prefix.join("syngestures.d");\n|' config.rs
 }
 
 build() {

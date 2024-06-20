@@ -1,17 +1,16 @@
 pkgbase = syngestures
 	pkgdesc = Swipes and gestures for Linux with the MT multitouch protocol
-	pkgver = 1.0.1
-	pkgrel = 5
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://github.com/mqudsi/syngesture
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	makedepends = git
-	depends = evtest
 	optdepends = wmctrl: needed for syngestures-switch-ws for X11 and Wayland compatible workspace switching
 	optdepends = xdotool: simulates keyboard and mouse actions for Xorg or XWayland based apps
 	backup = etc/syngestures.toml
-	source = git+https://github.com/mqudsi/syngesture.git#tag=1.0.1
+	source = git+https://github.com/mqudsi/syngesture.git#commit=77b2e29d0c842b3c8d6bf004d3e9ef499f87cbbc
 	source = syngestures.desktop
 	source = syngestures.toml
 	source = syngestures-switch-ws
