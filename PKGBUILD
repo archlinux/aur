@@ -7,8 +7,8 @@ _electron=electron29
 _nodejs="20.9.0"
 
 pkgname=${_pkgname}-electron
-pkgver=1.90.1.24165
-pkgrel=3
+pkgver=1.90.2.24171
+pkgrel=1
 pkgdesc="VS Code without MS branding/telemetry/licensing. - System-wide Electron edition"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/VSCodium/vscodium"
