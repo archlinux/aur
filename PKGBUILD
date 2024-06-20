@@ -6,22 +6,21 @@
 # Contributor: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 
 pkgname=ksnip-git
-pkgver=1.11.0_r2770.g99327370
+pkgver=1.10.1.r71.gc0c5ae2
 pkgrel=1
 pkgdesc='Qt-based screenshot tool that provides many annotation features'
 arch=($CARCH)
-url="https://github.com/ksnip/${pkgname%-git}"
-license=(GPL2)
-depends=(hicolor-icon-theme kimageannotator-qt5-git qt5-x11extras)
-makedepends=(cmake extra-cmake-modules ninja qt5-tools)
-source=("git+https://github.com/ksnip/${pkgname%-git}.git")
+url="https://github.com/ksnip/ksnip"
+license=("GPL-2.0-or-later")
+depends=(hicolor-icon-theme kimageannotator-qt5 qt5-x11extras)
+makedepends=(cmake extra-cmake-modules git ninja qt5-tools)
+source=("git+$url.git")
 sha256sums=('SKIP')
-
 
 pkgver() {
   cd ${pkgname%-git}
-  _ver="$(grep -m1 "project(${pkgname%-git}" CMakeLists.txt | sed -e 's/.* //' -e 's/-/./g' -e 's/)//')"
-  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+  git describe --long --tags --abbrev=7 --exclude='*[A-Za-z][A-Za-z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
