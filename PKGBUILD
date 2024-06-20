@@ -3,17 +3,17 @@
 
 _pkgname=syngestures
 pkgname=$_pkgname-git
-pkgver=1.0.1
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="Swipes and gestures for Linux with the MT multitouch protocol (latest commit)"
-arch=('x86_64')
 url="https://github.com/mqudsi/syngesture"
 license=('MIT')
+arch=('x86_64')
 makedepends=('cargo' 'git')
 optdepends=("wmctrl: needed for syngestures-switch-ws for X11 and Wayland compatible workspace switching"
             "xdotool: simulates keyboard and mouse actions for Xorg or XWayland based apps")
-provides=($_pkgname)
-conflicts=($_pkgname)
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git"
         "$_pkgname.desktop"
         "$_pkgname.toml"
@@ -22,7 +22,7 @@ sha256sums=('SKIP'
             '244d8dc40c0bb6eea28a05c22b4a6950bbf0ecfc358cbc4c1500aae805f87883'
             '56496557c63baa472dc426ee0215c80b63859983bc6977078e34266bda5fce7b'
             '587366d03b3e70f8cbdd78f557bdf5191ff9937f9f86afa0d7ff78c490b015d8')
-backup=("usr/local/etc/$pkgname.toml")
+backup=("etc/$pkgname.toml")
 
 pkgver() {
   cd $_pkgname
