@@ -1,6 +1,6 @@
 pkgbase = python-pycachesim-git
 	pkgdesc = Python Cache Hierarchy Simulator
-	pkgver = r84
+	pkgver = r125
 	pkgrel = 1
 	url = https://github.com/RRZE-HPC/pycachesim
 	arch = i686

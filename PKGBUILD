@@ -23,6 +23,8 @@ pkgver() {
 package() {
   cd ${srcdir}/pycachesim
 
+	CFLAGS+=" -Wno-error=incompatible-pointer-types"
+
   # install package
   python setup.py install --root="${pkgdir}"
 
