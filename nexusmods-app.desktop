@@ -4,7 +4,6 @@ GenericName=The future of modding with Nexus Mods.
 Comment=The future of modding with Nexus Mods.
 Exec=/opt/nexusmods-app/NexusMods.App
 Terminal=false
-MimeType=x-scheme-handler/nxm
 Type=Application
 Icon=nexusmods-app
 Categories=Game;

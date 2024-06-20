@@ -1,7 +1,7 @@
 pkgbase = nexusmods-app-bin
 	pkgdesc = A mod installer, creator and manager for all your popular games.
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Nexus-Mods/NexusMods.App
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -17,7 +17,7 @@ pkgbase = nexusmods-app-bin
 	source = nexusmods-app.desktop
 	source = https://github.com/Nexus-Mods/NexusMods.App/raw/v0.5.2/src/NexusMods.App.UI/Assets/nexus-logo.svg
 	sha256sums = f2e0e28fd3a9b4b646ecafd4c14775187f876e59db512e020259d35ad80a689d
-	sha256sums = 0ff4c4f6557901799a846796f48049f69cf7f59ab24a4f924da436f29fa6c497
+	sha256sums = 076952d155049f2625eebd1565b60e5a4bcd1190424fd9db5e38b98d55f0c2cb
 	sha256sums = 5a22eccfb001eacbf2756f2e21fa371dbafd9e84b20bb6a484d781bde33089cb
 
 pkgname = nexusmods-app-bin
