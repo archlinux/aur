@@ -1,9 +1,9 @@
 # Maintainer: Logicle (LogicleQ) <logiclight123@yahoo.com>
 
 pkgname="lettercell"
-pkgver="1.0.0"
-pkgrel="2"
-pkgdesc="An interpreter for the LetterCell esoteric programming language."
+pkgver="1.1.0"
+pkgrel="1"
+pkgdesc="An esoteric programming language which looks like a jumble of letters."
 arch=("x86_64" "arm")
 license=("MIT")
 source=("https://github.com/LogicleQ/lettercell")
@@ -14,7 +14,7 @@ build(){
 	cd ${srcdir}/git
 	git clone ${source}
 	cd lettercell
-	git reset --hard 8346c6b --quiet
+	git reset --hard ffc209b --quiet
 	make build
 }
 
