@@ -1,6 +1,6 @@
 pkgbase = zephyr-node-bin
 	pkgdesc = This package provides the Zephyr protocol node software and a cli wallet.
-	pkgver = 1.0.4
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/ZephyrProtocol/zephyr
 	arch = x86_64
