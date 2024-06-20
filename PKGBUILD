@@ -2,7 +2,7 @@
 # Contributor: Daniel Greve <greve.daniel.l@gmail.com>
 
 pkgname=xxd-standalone
-pkgver=9.1.0023
+pkgver=9.1.0496
 pkgrel=1
 pkgdesc="Hexdump utility from vim"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
