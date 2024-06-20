@@ -7,6 +7,6 @@ pkgbase = bbmp-bin
 	license = GPL
 	depends = mpd
 	source = https://github.com/dgrisham/bbmp/releases/download/v0.1.3/bbmp
-	sha256sums = 3d36dd8c1dd97ac566c746dbfe48d0912da11082c670b31668e4019de1ffe365
+	sha256sums = 3f8e61a9de4596cc99cf5f9ab8bfa7196e7b49c8130a43bc0b009064e73e7da6
 
 pkgname = bbmp-bin
