@@ -7,7 +7,7 @@ pkgver=r7017.c9e1548ef
 pkgrel=2
 pkgdesc='Sega Saturn emulator'
 arch=('i686' 'x86_64' 'pentium4')
-url="fcare.github.io"
+url="https://github.com/FCare/Kronos"
 _repo='https://github.com/FCare/Kronos'
 license=('GPL2')
 provides=('kronos')
@@ -25,7 +25,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "${_pkgname}"
-    echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
