@@ -1,7 +1,7 @@
 # Maintainer: SelfRef <arch@selfref.dev>
 _basename=xfce-winxp-tc
 pkgname=('xfce-winxp-tc-git' 'libwintc-git')
-pkgver=r305.021f624
+pkgver=r317.52980c3
 pkgrel=1
 pkgdesc="Windows XP Total Conversion for XFCE"
 arch=('x86_64' 'aarch64')
@@ -18,6 +18,9 @@ makedepends=(
 	'lightdm'
 	'libpulse'
 	'sqlite'
+	'glib2-devel'
+	'libcanberra'
+	'webkit2gtk-4.1'
 )
 optdepends=(
 	'lightdm: LightDM theme'
