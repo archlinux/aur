@@ -1,0 +1,15 @@
+pkgbase = untangle-git
+	pkgdesc = Tool to extract files from DoubleFine LPAK bundle as found in Day of the Tentacle Remastered.
+	pkgver = 0.1.r1.20181128.210085c
+	pkgrel = 1
+	url = http://github.com/fleger/untangle
+	arch = any
+	license = MPL-2.0
+	makedepends = git
+	depends = python>=3.7
+	provides = untangle=0.1.r1.20181128.210085c
+	conflicts = untangle
+	source = untangle::git+https://github.com/fleger/untangle.git
+	sha256sums = SKIP
+
+pkgname = untangle-git
