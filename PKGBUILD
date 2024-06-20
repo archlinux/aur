@@ -30,5 +30,5 @@ build() {
 
 package() {
 	cd "$_basename"/decoder/build/linux
-	make DESTDIR="$pkgdir" install
+	make DESTDIR="$pkgdir" DEF_SO_PERM=755 install
 }
