@@ -1,11 +1,12 @@
 pkgbase = indicator-sensors
 	pkgdesc = Hardware sensor monitor AppIndicator (temperatures, fan speeds, voltages, ...)
 	pkgver = 1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alexmurray/indicator-sensors
 	install = indicator-sensors.install
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
+	makedepends = glib2-devel
 	makedepends = gnome-common
 	makedepends = intltool
 	depends = ayatana-ido
