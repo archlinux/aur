@@ -1,0 +1,103 @@
+--- a/docs/extinction.rst	2024-05-30 04:10:24.000000000 +0800
++++ b/docs/extinction.rst	2024-06-20 16:04:58.043545307 +0800
+@@ -66,9 +66,24 @@
+ 
+     fig, ax = plt.subplots(2, 1, sharex=True)
+     for model in SUPPORTED_EXTINCTION_MODELS:
+-        ext = AtmosphericExtinction(model=model)
+-        ax[0].plot(ext.spectral_axis, ext.extinction_mag, label=model)
+-        ax[1].plot(ext.spectral_axis, ext.transmission)
++        # use local dat if no network whild doc building
++        try:
++            ext = AtmosphericExtinction(model=model)
++            ax[0].plot(ext.spectral_axis, ext.extinction_mag, label=model)
++            ax[1].plot(ext.spectral_axis, ext.transmission)
++        except Exception:
++            from astropy.table import Table, vstack, QTable
++            from astropy import units as u
++            t = Table.read(f'{model}extinct.dat', format="ascii", names=['wavelength', 'extinction'])
++            extinction = u.Magnitude(
++                t['extinction'].data,
++                u.MagUnit(u.dimensionless_unscaled)
++            ).to(u.dimensionless_unscaled)
++            ext_spectral_axis = t['wavelength'].data * u.angstrom
++            ext_transmission = extinction
++            ext_extinction_mag = extinction.to(u.mag(u.dimensionless_unscaled))
++            ax[0].plot(ext_spectral_axis, ext_extinction_mag, label=model)
++            ax[1].plot(ext_spectral_axis, ext_transmission)
+     ax[0].legend(fancybox=True, shadow=True)
+     ax[1].set_xlabel("Wavelength (Angstroms)")
+     ax[0].set_ylabel("Extinction (mag)")
+@@ -88,7 +103,9 @@
+     from specreduce.calibration_data import AtmosphericTransmission, SUPPORTED_EXTINCTION_MODELS
+ 
+     fig, ax = plt.subplots()
+-    ext_default = AtmosphericTransmission()
++    # use local dat if no network
++    try: ext_default = AtmosphericTransmission()
++    except Exception: ext_default = AtmosphericTransmission(data_file="atm_trans_am1.0.dat")
+     ext_custom = AtmosphericTransmission(data_file="atm_transmission_secz1.5_1.6mm.dat")
+     ax.plot(ext_default.spectral_axis, ext_default.transmission, label=r"sec $z$ = 1; 1 mm H$_{2}$O", linewidth=1)
+     ax.plot(ext_custom.spectral_axis, ext_custom.transmission, label=r"sec $z$ = 1.5; 1.6 mm H$_{2}$O", linewidth=1)
+--- a/docs/specphot_standards.rst	2024-05-30 04:10:24.000000000 +0800
++++ b/docs/specphot_standards.rst	2024-06-20 16:04:38.610261453 +0800
+@@ -159,8 +159,28 @@
+ 
+     fig, ax = plt.subplots()
+     ax.step(s1.spectral_axis, s1.flux, label="MAST", where="mid")
+-    ax.step(s2.spectral_axis, s2.flux, label="SNFactory", where="mid")
+-    ax.step(s3.spectral_axis, s3.flux, label="ESO", where="mid")
++    # use local dat if no network whild doc building
++    try:
++        ax.step(s2.spectral_axis, s2.flux, label="SNFactory", where="mid")
++        ax.step(s3.spectral_axis, s3.flux, label="ESO", where="mid")
++    except Exception:
++        from astropy.table import Table, vstack, QTable
++        from astropy import units as u
++        from specutils import Spectrum1D
++        def load_onedstdsoffline(dat):
++            t = Table.read(dat, format="ascii", names=['wavelength', 'ABmag', 'binsize'])
++            spectral_axis = t['wavelength'].data * u.angstrom
++            flux = t['ABmag'].data * u.ABmag
++            flux = flux.to(u.mJy)  # convert to linear flux units
++            spectrum = Spectrum1D(spectral_axis=spectral_axis, flux=flux)
++            return spectrum
++
++        s2 = load_onedstdsoffline('LTT9491.dat')
++        s3 = load_onedstdsoffline('ltt9491.dat')
++
++        ax.step(s2.spectral_axis, s2.flux, label="SNFactory", where="mid")
++        ax.step(s3.spectral_axis, s3.flux, label="ESO", where="mid")
++
+     ax.set_yscale('log')
+     ax.set_xlabel(f"Wavelength ({s1.spectral_axis.unit})")
+     ax.set_ylabel(f"Flux ({s1.flux.unit})")
+--- a/specreduce/utils/synth_data.py	2024-05-30 04:10:25.000000000 +0800
++++ b/specreduce/utils/synth_data.py	2024-06-20 16:36:48.552247332 +0800
+@@ -153,6 +153,8 @@
+             tilt_func=model_deg2
+         )
+         fig = plt.figure(figsize=(10, 6))
++        # Doc built in offline mode
++        # To see output images, visit here: https://specreduce.readthedocs.io/en/latest/api/specreduce.utils.synth_data.make_2d_arc_image.html#specreduce.utils.synth_data.make_2d_arc_image
+         plt.imshow(im)
+ 
+     The FITS WCS standard implements ideal world coordinate functions based on the physics
+@@ -213,6 +215,8 @@
+         plt.plot(pix_array, resid)
+         plt.xlabel("Pixel")
+         plt.ylabel("Correction (Angstrom)")
++        # Doc built in offline mode
++        # To see output images, visit here: https://specreduce.readthedocs.io/en/latest/api/specreduce.utils.synth_data.make_2d_arc_image.html#specreduce.utils.synth_data.make_2d_arc_image
+         plt.show()
+ 
+         nlin_im = make_2d_arc_image(
+@@ -235,6 +239,8 @@
+         # subtracting the linear simulation from the non-linear one shows how the
+         # positions of lines diverge between the two cases
+         plt.imshow(nlin_im.data - lin_im.data)
++        # Doc built in offline mode
++        # To see output images, visit here: https://specreduce.readthedocs.io/en/latest/api/specreduce.utils.synth_data.make_2d_arc_image.html#specreduce.utils.synth_data.make_2d_arc_image
+         plt.show()
+ 
+     """
