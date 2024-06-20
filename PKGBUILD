@@ -5,7 +5,7 @@
 
 pkgname=ffmpeg-amd-full-git
 _srcname=ffmpeg
-pkgver=7.1.r115820.g959cb2e2e3
+pkgver=7.1.r115881.g0ae157b360
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for AMD; git version)'
 arch=('x86_64')
@@ -21,7 +21,7 @@ depends=('alsa-lib' 'aom' 'aribb24' 'avisynthplus' 'bzip2' 'celt' 'codec2'
          'libvdpau' 'libvorbis' 'libvpx' 'libx11' 'libxcb' 'libxext' 'libxml2' 'libxv'
          'libwebp' 'lilv' 'lv2' 'ocl-icd' 'openal' 'opencore-amr' 'openh264' 'openjpeg2'
          'libopenmpt' 'opus' 'qrencode' 'quirc-git' 'rav1e' 'rubberband' 'rtmpdump' 'sdl2' 'smbclient' 'snappy'
-         'sndio' 'speex' 'spirv-tools' 'srt' 'svt-av1' 'svt-hevc' 'svt-vp9' 'tesseract'
+         'sndio' 'speex' 'spirv-tools' 'srt' 'svt-av1' 'svt-hevc' 'tesseract'
          'twolame' 'v4l-utils' 'vapoursynth' 'vid.stab' 'vmaf' 'vulkan-icd-loader' 'x264'
          'x265' 'xvidcore' 'xz' 'zeromq' 'zimg' 'zlib' 'zvbi'
          'libaribcaption' 'chromaprint-fftw' 'davs2' 'flite1' 'libklvanc' 'librist'
@@ -35,8 +35,6 @@ conflicts=('ffmpeg')
 _svt_hevc_ver='ed80959ebb5586aa7763c91a397d44be1798587c'
 _svt_vp9_ver='3b9a3fa43da4cc5fe60c7d22afe2be15341392ea'
 source=("git+https://git.ffmpeg.org/ffmpeg.git"
-        #"005-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"
-        #"006-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
         "010-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/master-0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
         "020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
         "030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/${_svt_vp9_ver}/ffmpeg_plugin/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch"
@@ -61,7 +59,7 @@ prepare() {
     #patch -Np1 -i "006-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/010-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
-    patch -d ffmpeg -Np1 -i "${srcdir}/030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
+    #patch -d ffmpeg -Np1 -i "${srcdir}/030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/050-ffmpeg-fix-segfault-with-avisynthplus.patch"
 }
@@ -165,7 +163,6 @@ build() {
         --enable-libsrt \
         --enable-libssh \
         --enable-libsvtav1 \
-        --enable-libsvtvp9 \
         --disable-libtensorflow \
         --enable-libtesseract \
         --enable-libtheora \
