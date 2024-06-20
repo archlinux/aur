@@ -17,7 +17,7 @@ pkgbase = kronos-git
 	depends = sdl2
 	provides = kronos
 	conflicts = kronos
-	source = kronos::git+https://github.com/FCare/Kronos
+	source = kronos::git+https://github.com/FCare/Kronos.git
 	md5sums = SKIP
 
 pkgname = kronos-git
