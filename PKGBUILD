@@ -9,8 +9,8 @@ url='https://github.com/StarLabsLtd/coreboot-configurator'
 arch=('x86_64')
 provides=("$_pkgname")
 license=('GPL2')
-makedepends=('ninja' 'meson' 'git')
-depends=('nvramtool' 'yaml-cpp' 'qt5-base')
+makedepends=('ninja' 'meson' 'git' 'inkscape')
+depends=('nvramtool' 'yaml-cpp' 'qt5-base' 'qt5-svg')
 source=('git+https://github.com/StarLabsLtd/coreboot-configurator.git')
 sha256sums=('SKIP')
 
