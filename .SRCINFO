@@ -1,0 +1,13 @@
+pkgbase = libhdhomerun-git
+	pkgdesc = Library and command line utility for interfacing with HDHomeRun device, from git
+	pkgver = 20231109.r46.e8f29fd
+	pkgrel = 1
+	url = https://github.com/Silicondust/libhdhomerun
+	arch = x86_64
+	license = LGPL
+	provides = libhdhomerun
+	conflicts = libhdhomerun
+	source = git+https://github.com/Silicondust/libhdhomerun.git
+	sha512sums = SKIP
+
+pkgname = libhdhomerun-git
