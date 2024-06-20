@@ -12,7 +12,7 @@
 _pkgname="kotatogram-desktop"
 pkgname="$_pkgname-git"
 pkgver=1.4.14.r4897.g0c4ceba
-pkgrel=3
+pkgrel=4
 pkgdesc='Experimental fork of Telegram Desktop'
 url="https://github.com/kotatogram/kotatogram-desktop"
 license=('GPL-3.0-only')
@@ -65,6 +65,7 @@ _main_package() {
     'cmake'
     'extra-cmake-modules'
     'git'
+    'glib2-devel'
     'meson'
     'microsoft-gsl'
     'ninja'

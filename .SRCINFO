@@ -1,7 +1,7 @@
 pkgbase = kotatogram-desktop-git
 	pkgdesc = Experimental fork of Telegram Desktop
 	pkgver = 1.4.14.r4897.g0c4ceba
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/kotatogram/kotatogram-desktop
 	arch = x86_64
 	license = GPL-3.0-only
@@ -9,6 +9,7 @@ pkgbase = kotatogram-desktop-git
 	makedepends = cmake
 	makedepends = extra-cmake-modules
 	makedepends = git
+	makedepends = glib2-devel
 	makedepends = meson
 	makedepends = microsoft-gsl
 	makedepends = ninja
