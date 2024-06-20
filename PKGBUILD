@@ -1,7 +1,8 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=radio
-pkgver=1.0.13
+pkgver=1.0.14
+_commit=e2637eec7575c098994bbb775fc04770cdceadd0
 pkgrel=1
 pkgdesc='Simple Radio for Linux'
 url="https://github.com/alexkdeveloper/radio"
@@ -10,7 +11,6 @@ arch=('x86_64' 'aarch64')
 depends=('gstreamer' 'json-glib' 'libadwaita' 'libgee' 'libpulse' 'libsoup')
 makedepends=('git' 'meson' 'vala')
 checkdepends=('appstream-glib')
-_commit=e296ed021718050fe87d01406d1458828afbb61b
 source=("git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 
