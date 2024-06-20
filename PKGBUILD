@@ -3,7 +3,7 @@
 
 pkgname=txt2epub
 pkgver=0.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Convert one or more plain text files into an EPUB document'
 arch=('any')
 makedepends=('pcre')
