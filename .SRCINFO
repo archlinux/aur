@@ -1,12 +1,12 @@
 pkgbase = gitpin
 	pkgdesc = ssl certificate pinning for git
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/kmille/gitpin
 	arch = x86_64
 	license = GPL3
 	makedepends = go
-	source = https://github.com/kmille/gitpin/archive/refs/tags/v0.2.1.tar.gz
-	sha256sums = 6c68d3e5dd3531d626b6ee64f3e123c68e4860f71c5514c78817dadeee050b05
+	source = https://github.com/kmille/gitpin/archive/refs/tags/v0.2.2.tar.gz
+	sha256sums = 7f021644ca0b9695f25c9a3db23d0b59ef584f891114c1cde7977c01a1da91ab
 
 pkgname = gitpin

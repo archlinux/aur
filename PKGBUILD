@@ -1,7 +1,7 @@
 # Maintainer: kmille github@androidloves.me
 
 pkgname=gitpin
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="ssl certificate pinning for git"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 makedepends=(go)
 depends=()
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6c68d3e5dd3531d626b6ee64f3e123c68e4860f71c5514c78817dadeee050b05')
+sha256sums=('7f021644ca0b9695f25c9a3db23d0b59ef584f891114c1cde7977c01a1da91ab')
 
 
 build() {
