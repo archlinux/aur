@@ -1,0 +1,12 @@
+pkgbase = hyprtheme
+	pkgdesc = Stupidly simple Hyprland theme swapper.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/Javatrix/hyprtheme
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	source = https://github.com/Javatrix/hyprtheme/archive/refs/tags/v1.1.tar.gz
+	sha256sums = db9e5c5cdef8997e9bae1474d4a9d1ebecb1ab91b5b8e67aad01cf55d169fff6
+
+pkgname = hyprtheme
