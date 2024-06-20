@@ -4,9 +4,9 @@
 
 pkgname=aerospike-client-c-libevent
 pkgver=6.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The Aerospike C client provides a C interface for interacting with the Aerospike Database."
-arch=('any')
+arch=('x86_64')
 url="https://github.com/aerospike/aerospike-client-c"
 license=('apache')
 depends=('libevent' 'python')
