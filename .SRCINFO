@@ -1,10 +1,12 @@
 pkgbase = pinfo-git
 	pkgdesc = A hypertext info file viewer
 	pkgver = 0.6.13.r37.g47a01b5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nicolarevelant/pinfo
 	arch = x86_64
 	license = GPL-2.0-only
+	makedepends = git
+	makedepends = meson
 	depends = ncurses
 	depends = readline
 	conflicts = pinfo
