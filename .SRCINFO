@@ -1,7 +1,7 @@
 pkgbase = guile-reader
 	pkgdesc = a simple framework for building readers for GNU Guile
 	pkgver = 0.6.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.nongnu.org/guile-reader
 	arch = i686
 	arch = x86_64

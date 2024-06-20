@@ -3,7 +3,7 @@
 pkgname=guile-reader
 _gitname=guile-reader
 pkgver=0.6.3
-pkgrel=2
+pkgrel=3
 pkgdesc="a simple framework for building readers for GNU Guile"
 url="http://www.nongnu.org/guile-reader"
 arch=('i686' 'x86_64')
