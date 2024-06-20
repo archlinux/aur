@@ -1,0 +1,24 @@
+pkgbase = python-configspace
+	pkgdesc = Creation and manipulation of parameter configuration spaces for automated algorithm configuration and hyperparameter tuning
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/automl/ConfigSpace
+	arch = any
+	license = BSD-3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = cython
+	depends = python
+	depends = python-numpy
+	depends = python-pyparsing
+	depends = python-scipy
+	depends = python-typing_extensions
+	depends = python-more-itertools
+	depends = python-oldest-supported-numpy
+	options = !strip
+	source = https://files.pythonhosted.org/packages/source/C/ConfigSpace/ConfigSpace-0.7.1.tar.gz
+	b2sums = edfb23f46fd08d2001308de64596da83ca5436248f32618d15b7f000c0a8512dcb8945346dc4ed57f284d8ab35490eb90bee1931b3b2b534bfa13dbdfe9abcd1
+
+pkgname = python-configspace
