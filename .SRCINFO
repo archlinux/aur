@@ -8,6 +8,7 @@ pkgbase = gogextract-git
 	makedepends = git
 	depends = libzip
 	provides = gogextract
+	conflicts = gogextract
 	source = git+https://framagit.org/IroAlexis/gogextract.git
 	sha256sums = SKIP
 

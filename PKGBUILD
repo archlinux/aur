@@ -11,6 +11,7 @@ license=('GPL-3.0-or-later')
 depends=('libzip')
 makedepends=('git')
 provides=("${_pkgname}")
+conflicts=('gogextract')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
