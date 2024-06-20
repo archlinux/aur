@@ -1,7 +1,7 @@
 pkgbase = theseus-ship
 	pkgdesc = Wayland and X11 Compositor for the KDE Plasma desktop (formerly kwinft)
-	pkgver = 6.0.0
-	pkgrel = 3
+	pkgver = 6.1.0
+	pkgrel = 1
 	url = https://github.com/winft/theseus-ship
 	install = theseus-ship.install
 	arch = x86_64
@@ -45,16 +45,16 @@ pkgbase = theseus-ship
 	depends = qt6-multimedia
 	depends = wrapland
 	optdepends = qt6-virtualkeyboard: virtual keyboard support
-	provides = como=0.1.0
-	provides = kwin=6.0.0
-	provides = kwinft=6.0.0
-	provides = theseus-ship=6.0.0
+	provides = como=0.2.0
+	provides = kwin=6.1.0
+	provides = kwinft=6.1.0
+	provides = theseus-ship=6.1.0
 	conflicts = como
 	conflicts = kwin
 	conflicts = theseus-ship
-	source = como-0.1.0.tar.gz::https://github.com/winft/como/archive/refs/tags/v0.1.0.tar.gz
-	source = theseus-ship-6.0.0.tar.gz::https://github.com/winft/theseus-ship/archive/refs/tags/v6.0.0.tar.gz
-	sha256sums = 49d9b8b8b8197f4443f8eae71db8adecf51da73c221a4712d0d8cc46b9fdc09f
-	sha256sums = ffd8cf6c0b48cda918a74df372c55f42e00c9151420b4148b5e9f67ae05a05d5
+	source = como-0.2.0.tar.gz::https://github.com/winft/como/archive/refs/tags/v0.2.0.tar.gz
+	source = theseus-ship-6.1.0.tar.gz::https://github.com/winft/theseus-ship/archive/refs/tags/v6.1.0.tar.gz
+	sha256sums = 24a43c5cb49760eb89f0414aa03f0007441fb2b8ef934e9ccb39af01646a27a9
+	sha256sums = dd3bb31644636e4d3e855df36b4467b20312184ac2b5462594c211107f36824c
 
 pkgname = theseus-ship

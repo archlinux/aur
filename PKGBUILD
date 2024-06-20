@@ -6,13 +6,13 @@
 # https://github.com/winft/wrapland
 
 # options
-: ${_pkgver_como:=0.1.0}
+: ${_pkgver_como:=0.2.0}
 
 # basic info
 _pkgname="theseus-ship"
 pkgname="$_pkgname"
-pkgver=6.0.0
-pkgrel=3
+pkgver=6.1.0
+pkgrel=1
 pkgdesc="Wayland and X11 Compositor for the KDE Plasma desktop (formerly kwinft)"
 url="https://github.com/winft/theseus-ship"
 license=("LGPL-2.1-only")
@@ -90,10 +90,8 @@ source=(
   "$_pkgsrc_como.$_pkgext"::"https://github.com/winft/como/archive/refs/tags/v$_pkgver_como.$_pkgext"
   "$_pkgsrc_theseus.$_pkgext"::"https://github.com/winft/theseus-ship/archive/refs/tags/v$pkgver.$_pkgext"
 )
-sha256sums=(
-  '49d9b8b8b8197f4443f8eae71db8adecf51da73c221a4712d0d8cc46b9fdc09f'
-  'ffd8cf6c0b48cda918a74df372c55f42e00c9151420b4148b5e9f67ae05a05d5'
-)
+sha256sums=('24a43c5cb49760eb89f0414aa03f0007441fb2b8ef934e9ccb39af01646a27a9'
+            'dd3bb31644636e4d3e855df36b4467b20312184ac2b5462594c211107f36824c')
 
 build() {
   export CC=clang
