@@ -2,8 +2,8 @@
 
 pkgname="lettercell-git"
 pkgver="1.0.0"
-pkgrel="1"
-pkgdesc="An interpreter for the LetterCell esoteric programming language."
+pkgrel="2"
+pkgdesc="An esoteric programming language which looks like a jumble of letters."
 arch=("x86_64" "arm")
 license=("MIT")
 source=("https://github.com/LogicleQ/lettercell")
