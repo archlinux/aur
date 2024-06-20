@@ -1,0 +1,15 @@
+pkgbase = thegraph-cli
+	pkgdesc = CLI for building for and deploying to The Graph protocol
+	pkgver = 0.75.0
+	pkgrel = 1
+	url = https://github.com/graphprotocol/graph-tooling/tree/main/packages/cli
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	depends = libsecret
+	provides = graph
+	noextract = graph-cli-0.75.0.tgz
+	source = https://registry.npmjs.org/@graphprotocol/graph-cli/-/graph-cli-0.75.0.tgz
+	sha256sums = bb0983b4642f1309b8455a015b5c2ccc5ee628398e669414d339d0d963b3c052
+
+pkgname = thegraph-cli
