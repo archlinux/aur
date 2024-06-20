@@ -188,7 +188,7 @@ package_systemd-fml() {
     'GPL-2.0-or-later' # udev
     'MIT-0' # documentation and config files
   )
-  depends=("systemd-lib-fml=${pkgver}"
+  depends=("systemd-lib"
            'acl' 'libacl.so' 'bash' 'cryptsetup' 'libcryptsetup.so' 'dbus'
            'dbus-units' 'kbd' 'kmod' 'hwdata' 'libcap' 'libcap.so'
            'libgcrypt' 'libxcrypt' 'libcrypt.so' 'libidn2' 'lz4' 'pam'
@@ -315,7 +315,7 @@ package_systemd-libs-fml() {
 
 package_systemd-resolvconf-fml() {
   pkgdesc='systemd resolvconf replacement (for use with systemd-resolved)'
-  depends=("systemd-fml=${pkgver}")
+  depends=("systemd")
   provides=('openresolv' 'resolvconf')
   provides+=("systemd-resolvconf=$pkgver")
   conflicts=('resolvconf')
@@ -333,7 +333,7 @@ package_systemd-sysvcompat-fml() {
   provides=("systemd-sysvcompat=$pkgver")
   conflicts=('sysvinit')
   conflicts+=('systemd-sysvcompat')
-  depends=("systemd-fml=${pkgver}")
+  depends=("systemd")
 
   install -D -m0644 -t "$pkgdir"/usr/share/man/man8 \
     build/man/{halt,poweroff,reboot,shutdown}.8
@@ -347,7 +347,7 @@ package_systemd-sysvcompat-fml() {
 
 package_systemd-tests() {
   pkgdesc='systemd tests'
-  depends=("systemd-fml=${pkgver}")
+  depends=("systemd")
 
   install -d -m0755 "$pkgdir"/usr/lib/systemd
   mv systemd-tests/tests "$pkgdir"/usr/lib/systemd/tests
@@ -358,7 +358,7 @@ package_systemd-ukify-fml() {
   provides=('ukify')
   provides+=("systemd-ukify=$pkgver")
   conflicts=('systemd-ukify')
-  depends=("systemd-fml=${pkgver}" 'binutils' 'python-cryptography' 'python-pefile')
+  depends=("systemd" 'binutils' 'python-cryptography' 'python-pefile')
   optdepends=('python-pillow: Show the size of splash image'
               'sbsigntools: Sign the embedded kernel')
 
