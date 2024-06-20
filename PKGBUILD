@@ -2,7 +2,7 @@
 # Contributor: Christos Tsirigotis <tsirif \at/ gmail \dot/ com>
 pkgname=nccl-git
 _name="${pkgname%%-git}"
-pkgver=2.21.5.1.r0.ab2b89c
+pkgver=2.22.3.1.r0.178b6b7
 pkgrel=1
 pkgdesc='Library for NVIDIA multi-GPU and multi-node collective communication primitives'
 arch=('x86_64')
@@ -31,13 +31,13 @@ build() {
                        -gencode=arch=compute_90,code=compute_90"
 
   export CXXFLAGS+=" -ffat-lto-objects"
-  make -j CXX=/opt/cuda/bin/g++ CUDA_HOME=/opt/cuda PREFIX=/usr src.build
+  make CXX=$NVCC_CCBIN CUDA_HOME=/opt/cuda PREFIX=/usr src.build
 }
 
 
 package() {
   cd "${_name}"
-  make PREFIX="${pkgdir}"/usr install
+  make CUDA_HOME=/opt/cuda PREFIX="${pkgdir}"/usr install
 
   # fix permission on static lib
   chmod 644 "${pkgdir}"/usr/lib/libnccl_static.a
