@@ -1,0 +1,13 @@
+pkgbase = pigfetch
+	pkgdesc = Fetch with ... PIGS!
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Justiks1337/pigfetch
+	arch = x86_64
+	license = MIT
+	depends = openssl
+	depends = gcc-libs
+	source = git+https://github.com/Justiks1337/pigfetch.git
+	sha256sums = SKIP
+
+pkgname = pigfetch
