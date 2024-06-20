@@ -3,7 +3,7 @@
 
 _pkgname=kronos
 pkgname=$_pkgname-git
-pkgver=r7017.c9e1548ef
+pkgver=r.7017.c9e1548ef
 pkgrel=2
 pkgdesc='Sega Saturn emulator'
 arch=('i686' 'x86_64' 'pentium4')

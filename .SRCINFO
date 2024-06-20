@@ -1,6 +1,6 @@
 pkgbase = kronos-git
 	pkgdesc = Sega Saturn emulator
-	pkgver = r7017.c9e1548ef
+	pkgver = r.7017.c9e1548ef
 	pkgrel = 2
 	url = https://github.com/FCare/Kronos
 	arch = i686
