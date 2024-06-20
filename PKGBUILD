@@ -5,7 +5,7 @@
 
 pkgname=palemoon-bin
 epoch=1
-pkgver=33.1.1
+pkgver=33.2.0
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('x86_64')
@@ -27,7 +27,7 @@ source=(palemoon.desktop
 #      "https://rm-us.palemoon.org/release/palemoon-${pkgver}.linux-x86_64-gtk2.tar.xz"{,.sig}) # US link
 # link to latest tarball: http://linux.palemoon.org/download/mainline/
 sha256sums=('6fa2786e1828684a6783d340690f75382d1dcd02ce8533dad4f3f4f8b076dad7'
-            '944f44c3c66b2fdb200bd7189399f739deb238b029b4f589456024a1398b162b'
+            'b0bfc0c987ac4a275a825718ce0d874f3471e0158cab6b9a132a9d3fe7bb0a5c'
             'SKIP')
 validpgpkeys=('439F46F42C6AE3D23CF52E70865E6C87C65285EC' # T. Wine
               '3DAD8CD107197488D2A2A0BD40481E7B8FCF9CEC') # Moonchild, see https://forum.palemoon.org/viewtopic.php?f=1&t=7176
