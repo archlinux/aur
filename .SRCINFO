@@ -1,0 +1,36 @@
+pkgbase = xwayland-run
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://gitlab.freedesktop.org/ofourdan/xwayland-run
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = meson
+	depends = python
+	optdepends = xorg-xwayland: X11 server
+	options = !debug
+	source = https://gitlab.freedesktop.org/ofourdan/xwayland-run/-/archive/0.0.3/xwayland-run-0.0.3.tar.gz
+	b2sums = 24217acf433948976a5af2471972fed6734caa3a6266dc5ab50e7039b8a352f1b3000e727463eab03c516eb9b7df9a662105e7b2fb23e6113e68a11f717d1872
+
+pkgname = xwayland-run
+	pkgdesc = Set of small utilities revolving around running Xwayland (Weston)
+	optdepends = xorg-xwayland: X11 server
+	optdepends = weston: Wayland compositor
+
+pkgname = xwayland-run-cage
+	pkgdesc = Set of small utilities revolving around running Xwayland (Cage)
+	optdepends = xorg-xwayland: X11 server
+	optdepends = cage: Wayland compositor
+
+pkgname = xwayland-run-gnome-kiosk
+	pkgdesc = Set of small utilities revolving around running Xwayland (Gnome Kiosk)
+	optdepends = xorg-xwayland: X11 server
+
+pkgname = xwayland-run-kwin
+	pkgdesc = Set of small utilities revolving around running Xwayland (KWin)
+	optdepends = xorg-xwayland: X11 server
+	optdepends = kwin: Wayland compositor
+
+pkgname = xwayland-run-mutter
+	pkgdesc = Set of small utilities revolving around running Xwayland (Mutter)
+	optdepends = xorg-xwayland: X11 server
+	optdepends = mutter: Wayland compositor
