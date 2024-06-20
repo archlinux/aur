@@ -2,7 +2,7 @@
 # Contributor: George Kiselyov <i[dot]am[at]kiselyov-george[dot]ru>
 
 pkgname=spnxclient
-pkgver=1.1.1.5
+pkgver=1.1.1.53
 pkgrel=0
 arch=('any')
 pkgdesc="ACS Sphinx client module"
@@ -10,8 +10,9 @@ url="https://www.sigur.com/download/"
 license=('custom')
 source=("https://www.sigur.com/dl/spnxclient_${pkgver}-${pkgrel}_all.deb"
         "spnx-client.desktop")
-sha256sums=('c8556e883c74c9716b16b3f2871c6385a2f21f92d7e2f5b1308748a4fe0ad34b'
+sha256sums=('464e2e36cb0ab3513c5d3bd9be50e523865ed6e0ec42deeccb14318c5795d4e4'
             '6ba598b7bac9667cf3520222f1b2201f2fb7f37b96ee9c6de7222bd6bf360552')
+depends=(systemd-libs bash java-runtime lib32-libudev0-shim lib32-glibc pcsclite glibc)
 
 prepare() {
   cd "${srcdir}"
