@@ -1,0 +1,11 @@
+pkgbase = ia64-linux-gnu-linux-api-headers
+	pkgdesc = Kernel headers sanitized for use in userspace (IA64) (from linux-ia64 project)
+	pkgver = 6.9_epic2
+	pkgrel = 1
+	url = https://github.com/linux-ia64/linux-ia64
+	arch = any
+	license = GPL2
+	source = git+https://github.com/linux-ia64/linux-ia64.git
+	sha256sums = SKIP
+
+pkgname = ia64-linux-gnu-linux-api-headers
