@@ -1,6 +1,6 @@
 pkgbase = waylyrics
 	pkgdesc = the furry way to show desktop lyrics
-	pkgver = 0.3.11
+	pkgver = 0.3.12
 	pkgrel = 1
 	url = https://waylyrics.github.io/waylyrics/waylyrics/
 	arch = x86_64
@@ -18,8 +18,8 @@ pkgbase = waylyrics
 	depends = opencc
 	optdepends = xdg-desktop-portal: file dialog to import LRC
 	options = !lto
-	source = waylyrics-0.3.11.tar.gz::https://github.com/waylyrics/waylyrics/archive/refs/tags/v0.3.11.tar.gz
-	sha256sums = e98120bd059a4e9c7910da545bcaf9b93144ceb2d1f262a574d7b895a5328f28
+	source = waylyrics-0.3.12.tar.gz::https://github.com/waylyrics/waylyrics/archive/refs/tags/v0.3.12.tar.gz
+	sha256sums = 66d47ab3451a7a25177c53bbc6d7121dcb2730678ca6ca591cc396c36c7669f8
 
 pkgname = waylyrics
 	depends = openssl
