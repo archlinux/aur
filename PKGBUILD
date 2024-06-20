@@ -9,7 +9,7 @@
 
 _pkgname="debhelper"
 pkgname="$_pkgname"
-pkgver=13.15.3
+pkgver=13.16
 pkgrel=1
 pkgdesc="A collection of programs that can be used in a debian/rules file to automate common tasks"
 url="https://salsa.debian.org/debian/debhelper"
