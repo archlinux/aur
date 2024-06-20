@@ -3,7 +3,7 @@
 
 pkgname=shedskin
 pkgver=0.9.8
-pkgrel=2
+pkgrel=3
 pkgdesc='Python to C++ compiler'
 arch=('any')
 url='https://shedskin.github.io/'
@@ -17,10 +17,13 @@ prepare() {
   sed -i 's:bin/python:usr/bin/python:' "$pkgname/scripts/$pkgname"
 }
 
+build() {
+  cd "$pkgname"
+
+  python setup.py build
+}
 package() {
   cd "$pkgname"
 
-  python setup.py install --root="$pkgdir"/
+  python setup.py install --root="$pkgdir" --optimize=1
 }
-
-# vim: ts=2 sw=2 et:
