@@ -1,7 +1,7 @@
 # Maintainer : neroices <me@slce.moe>
 
 pkgname=r-quick-share-bin
-pkgver=0.7.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc='Rust implementation of NearbyShare/QuickShare from Android for Linux.'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('webkit2gtk' 'gtk3' 'libayatana-appindicator')
 provides=('r-quick-share')
 conflicts=('r-quick-share')
 source=("https://github.com/Martichou/rquickshare/releases/download/v${pkgver}/r-quick-share_${pkgver}_amd64.deb")
-sha256sums=('9c9f026e52eb0ba9b37ce170907284bb4902a56940ce1d10551160916a97744d')
+sha256sums=('061c8369fcac4dca58e8732a07525d90eb99bd4c75e669fb90434de34cab102d')
 
 package() {
     bsdtar -xf "data.tar.gz" -C "$pkgdir"
