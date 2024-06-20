@@ -1,0 +1,15 @@
+pkgbase = perl-algorithm-munkres
+	pkgdesc = Perl/CPAN Module Algorithm::Munkres
+	pkgver = 0.08
+	pkgrel = 1
+	url = https://metacpan.org/release/Algorithm-Munkres
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TP/TPEDERSE/Algorithm-Munkres-0.08.tar.gz
+	md5sums = 56349287513f955002720c8e2523582b
+	sha512sums = 3dcb9cd3caf6fb71c4a6463fbf5d1897f8675be9e095a4c1c30a4fdd2b635d46ac8e7db7ff660ba3c2a361cf4d020905c1cc121e3a6802b9b89a3999d8b41278
+
+pkgname = perl-algorithm-munkres
