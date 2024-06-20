@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=realm-studio-bin
 _pkgname="Realm Studio"
-pkgver=15.2.0
+pkgver=15.2.1
 _electronversion=27
 pkgrel=1
 pkgdesc='A tool, any developer or system administrator would use when building and maintaining their app built on the Realm Mobile Platform.'
@@ -22,7 +22,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /.}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('316545d5b49b5f8b51c4f491169fbedf33839f02f0549174cb2c15f89f73eb49'
+sha256sums=('7b7b94cb119dbab42ffbe605a8425688ba4a7f137d0c96bb4134ae9a37092690'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
