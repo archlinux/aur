@@ -2,7 +2,7 @@
 
 pkgname=aurvote
 pkgver=1.9
-pkgrel=4
+pkgrel=5
 pkgdesc="Tool to vote for favorite AUR packages"
 url="https://github.com/archlinuxfr/aurvote"
 license=('GPL')
