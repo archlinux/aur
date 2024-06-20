@@ -1,0 +1,20 @@
+pkgbase = i686-linux-gnu-binutils
+	pkgdesc = A set of programs to assemble and manipulate binary and object files for the i686-linux-gnu target
+	pkgver = 2.33.1
+	pkgrel = 2
+	url = http://www.gnu.org/software/binutils/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = zlib
+	options = !emptydirs
+	options = !docs
+	source = http://mirrors.kernel.org/gnu/binutils/binutils-2.33.1.tar.xz
+	source = https://mirrors.kernel.org/gnu/binutils/binutils-2.33.1.tar.xz.sig
+	source = libiberty-ignore-cflags.patch
+	validpgpkeys = 3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F
+	sha256sums = ab66fc2d1c3ec0359b8e08843c9f33b63e8707efdff5e4cc5c200eae24722cbf
+	sha256sums = SKIP
+	sha256sums = 8b2aea00e98f7c311b1d0fb14e4b435a03c65fde32bc992c924edb6fa7b83c9c
+
+pkgname = i686-linux-gnu-binutils
