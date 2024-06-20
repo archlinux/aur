@@ -12,7 +12,7 @@ _tag='256.1'
 # way or another. So we replace dashes and tildes with the empty string to
 # make sure pacman's version comparing does the right thing for rc versions:
 pkgver="${_tag/[-~]/}"
-pkgrel=5
+pkgrel=6
 arch=('x86_64')
 license=('LGPL-2.1-or-later')
 url='https://www.github.com/systemd/systemd'
@@ -188,8 +188,7 @@ package_systemd-fml() {
     'GPL-2.0-or-later' # udev
     'MIT-0' # documentation and config files
   )
-  depends=("systemd-lib"
-           'acl' 'libacl.so' 'bash' 'cryptsetup' 'libcryptsetup.so' 'dbus'
+  depends=('acl' 'libacl.so' 'bash' 'cryptsetup' 'libcryptsetup.so' 'dbus'
            'dbus-units' 'kbd' 'kmod' 'hwdata' 'libcap' 'libcap.so'
            'libgcrypt' 'libxcrypt' 'libcrypt.so' 'libidn2' 'lz4' 'pam'
            'libelf' 'libseccomp' 'libseccomp.so' 'util-linux' 'libblkid.so'
@@ -315,7 +314,6 @@ package_systemd-libs-fml() {
 
 package_systemd-resolvconf-fml() {
   pkgdesc='systemd resolvconf replacement (for use with systemd-resolved)'
-  depends=("systemd")
   provides=('openresolv' 'resolvconf')
   provides+=("systemd-resolvconf=$pkgver")
   conflicts=('resolvconf')
@@ -333,7 +331,6 @@ package_systemd-sysvcompat-fml() {
   provides=("systemd-sysvcompat=$pkgver")
   conflicts=('sysvinit')
   conflicts+=('systemd-sysvcompat')
-  depends=("systemd")
 
   install -D -m0644 -t "$pkgdir"/usr/share/man/man8 \
     build/man/{halt,poweroff,reboot,shutdown}.8
@@ -347,7 +344,6 @@ package_systemd-sysvcompat-fml() {
 
 package_systemd-tests() {
   pkgdesc='systemd tests'
-  depends=("systemd")
 
   install -d -m0755 "$pkgdir"/usr/lib/systemd
   mv systemd-tests/tests "$pkgdir"/usr/lib/systemd/tests
@@ -358,7 +354,7 @@ package_systemd-ukify-fml() {
   provides=('ukify')
   provides+=("systemd-ukify=$pkgver")
   conflicts=('systemd-ukify')
-  depends=("systemd" 'binutils' 'python-cryptography' 'python-pefile')
+  depends=('binutils' 'python-cryptography' 'python-pefile')
   optdepends=('python-pillow: Show the size of splash image'
               'sbsigntools: Sign the embedded kernel')
 
