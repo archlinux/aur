@@ -1,6 +1,6 @@
 pkgbase = dnf-plugins-core
 	pkgdesc = Core DNF Plugins
-	pkgver = 4.7.0
+	pkgver = 4.8.0
 	pkgrel = 1
 	url = https://github.com/rpm-software-management/dnf-plugins-core
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = dnf-plugins-core
 	backup = etc/dnf/plugins/post-transaction-actions.conf
 	backup = etc/dnf/plugins/versionlock.conf
 	backup = etc/dnf/plugins/versionlock.list
-	source = https://github.com/rpm-software-management/dnf-plugins-core/archive/4.7.0/dnf-plugins-core-4.7.0.tar.gz
-	sha256sums = 52d21a781dad9af6611d5d10ef4c7ead82bd6040e219dced78dc65d340e18833
+	source = https://github.com/rpm-software-management/dnf-plugins-core/archive/4.8.0/dnf-plugins-core-4.8.0.tar.gz
+	sha256sums = b5772aab995caf6d64779876271d2939f89df0deb749952f47ec2d831cc3fc55
 
 pkgname = dnf-plugins-core
