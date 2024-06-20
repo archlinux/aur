@@ -5,7 +5,6 @@
 # https://alphaplot.sourceforge.io/
 # https://github.com/narunlifescience/AlphaPlot
 
-## basic info
 _pkgname="alphaplot"
 pkgname="$_pkgname"
 pkgver=1.02
@@ -36,7 +35,6 @@ _pkgext="tar.gz"
 source=("$_pkgname-$pkgver.$_pkgext"::"$url/archive/refs/tags/$pkgver.$_pkgext")
 sha256sums=('90952b2036b9d25b31c0c8fb34c47ff700bb2847234dda42d900070fc60d3c61')
 
-# common functions
 build() {
   cd "$_pkgsrc"
   # Note: PREFIX is not used
