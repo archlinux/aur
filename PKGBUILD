@@ -2,14 +2,14 @@
 # Contributor: (XavierCLL) Xavier Corredor <xavier.corredor.llano (a) gmail.com>
 
 pkgname=ksvnupdater
-pkgver=2.3.2
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Utility oriented to KDE translation teams. You can have various local repository copies, generate projects for Lokalize, checks and corrections using Pology and more."
 arch=('x86_64' 'i686')
 url="http://www.eloihr.net/ksvnupdater"
 license=('GPL-2.0-or-later')
-depends=('kfilemetadata5' 'kio5' 'knotifications5' 'kitemviews5' 'kiconthemes5' 'karchive5' 'qt5-base' 'subversion')
-makedepends=('extra-cmake-modules' 'kdoctools5')
+depends=('ktextwidgets' 'kfilemetadata' 'kio' 'knotifications' 'kitemviews' 'kiconthemes' 'karchive' 'qt6-base' 'subversion')
+makedepends=('extra-cmake-modules' 'kdoctools')
 optdepends=('git: download Scripty and Pology binaries'
             'lokalize: file translations'
             'kdiff3: conflict merge'
@@ -21,8 +21,8 @@ optdepends=('git: download Scripty and Pology binaries'
             'poxml: creating documentation'
             'hashdeep: downloading documentation files')
 source=(https://www.eloihr.net/ksvnupdater/files/ksvnupdater-$pkgver.tar.bz2)
-md5sums=('0ab15b1936736c7e26b649bc81ed5855')
-sha1sums=('5f95b36263959ca47258e66085bfd948ed67caaf')
+md5sums=('69b91bea8b920746ac41ef3dfd7cd1f3')
+sha1sums=('6fd755daff9d5da053f0e59d6491daad65b86010')
 
 build() {
   cd "$pkgname-$pkgver"
