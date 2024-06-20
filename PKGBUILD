@@ -79,6 +79,12 @@ prepare() {
   patch -p1 -i ../dde-daemon.patch
   rm -rf system/uadp
   rm -rf session/uadpagent
+
+  # https://github.com/linuxdeepin/developer-center/discussions/3327
+  sed -i 's#/usr/libexec#/usr/lib#' keybinding/shortcuts/system_shortcut.go
+  sed -i 's#${PREFIX}/libexec/#${PREFIX}/lib/#;s#${DESTDIR}/lib#${DESTDIR}${PREFIX}/lib#' Makefile
+
+  sed -i 's|/etc/os-version|/etc/uos-version|' keybinding/shortcuts/shortcut_manager.go
 }
 
 build() {
