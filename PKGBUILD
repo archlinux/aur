@@ -3,7 +3,7 @@
 pkgbase=at32-work-bench-bin
 pkgname=at32-work-bench
 pkgver=1.0.09
-pkgrel=0
+pkgrel=1
 # epoch=1
 pkgdesc="AT32 MCU 图形化配置软件，生成初始化 C 代码(目前仅支持 AT32F421 系列)"
 arch=('x86_64')
@@ -54,7 +54,7 @@ EOF
     find "${pkgdir}/" -type f -exec chmod 644 "{}" \;
     find "${pkgdir}/" -type d -exec chmod 755 "{}" \;
 
-    cd "${pkgdir}/"/opt/artery32/${pkgname}/AT32_Work_Bench/
+    chmod 775 "${pkgdir}/opt/artery32/${pkgname}/AT32_Work_Bench/"
+    cd "${pkgdir}/opt/artery32/${pkgname}/AT32_Work_Bench/"
     chmod +x AT32_Work_Bench*
-
 }
