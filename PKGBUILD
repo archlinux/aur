@@ -41,6 +41,7 @@ build() {
 package() {
   install -Dm644 $pkgname.toml -t "$pkgdir/etc"
   install -Dm644 $pkgname.desktop -t "$pkgdir/usr/share/applications"
+  install -Dm644 $_pkgname/README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm644 $_pkgname/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm755 $pkgname-switch-ws -t "$pkgdir/usr/bin"
   install -Dm755 $_pkgname/target/release/$pkgname -t "$pkgdir/usr/bin"
