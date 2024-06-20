@@ -1,7 +1,7 @@
 pkgbase = systemd-fml
 	pkgdesc = systemd with machine id from hw patch: https://github.com/systemd/systemd/pull/32086
 	pkgver = 256.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
 	license = LGPL-2.1-or-later
@@ -97,7 +97,7 @@ pkgname = systemd-fml
 	license = CC0-1.0
 	license = GPL-2.0-or-later
 	license = MIT-0
-	depends = systemd-libs-fml=256.1
+	depends = systemd-lib=256.1
 	depends = acl
 	depends = libacl.so
 	depends = bash
@@ -194,7 +194,7 @@ pkgname = systemd-libs-fml
 
 pkgname = systemd-resolvconf-fml
 	pkgdesc = systemd resolvconf replacement (for use with systemd-resolved)
-	depends = systemd-fml=256.1
+	depends = systemd=256.1
 	provides = openresolv
 	provides = resolvconf
 	provides = systemd-resolvconf=256.1
@@ -203,14 +203,14 @@ pkgname = systemd-resolvconf-fml
 
 pkgname = systemd-sysvcompat-fml
 	pkgdesc = sysvinit compat for systemd
-	depends = systemd-fml=256.1
+	depends = systemd=256.1
 	provides = systemd-sysvcompat=256.1
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
 
 pkgname = systemd-ukify-fml
 	pkgdesc = Combine kernel and initrd into a signed Unified Kernel Image
-	depends = systemd-fml=256.1
+	depends = systemd=256.1
 	depends = binutils
 	depends = python-cryptography
 	depends = python-pefile
