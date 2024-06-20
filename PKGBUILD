@@ -3,12 +3,12 @@
 _appname=86BoxManager
 pkgname=86box-manager-bin
 pkgver=1.7.6.0e
-pkgrel=2
+pkgrel=3
 pkgdesc="A (cross-platform) configuration manager for the 86Box emulator"
 arch=('x86_64')
 url="https://github.com/RetBox/86BoxManagerX"
 license=('MIT')
-depends=('libice' 'libsm')
+depends=('dotnet-runtime-6.0' 'libice' 'libsm')
 optdepends=('86box>=3.0: emulator')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")

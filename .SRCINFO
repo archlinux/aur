@@ -1,10 +1,11 @@
 pkgbase = 86box-manager-bin
 	pkgdesc = A (cross-platform) configuration manager for the 86Box emulator
 	pkgver = 1.7.6.0e
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/RetBox/86BoxManagerX
 	arch = x86_64
 	license = MIT
+	depends = dotnet-runtime-6.0
 	depends = libice
 	depends = libsm
 	optdepends = 86box>=3.0: emulator
