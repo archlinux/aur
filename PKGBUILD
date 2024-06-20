@@ -8,7 +8,7 @@
 
 pkgname=rxvt
 pkgver=2.7.10
-pkgrel=7
+pkgrel=8
 pkgdesc='A colour vt102 terminal emulator'
 arch=('i686' 'x86_64')
 url='http://rxvt.sourceforge.net/'
