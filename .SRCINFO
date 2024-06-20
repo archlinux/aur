@@ -1,6 +1,6 @@
 pkgbase = corlink-server
 	pkgdesc = The corlink license server for the corlink project.
-	pkgver = 1.2.0
+	pkgver = 2.0.0
 	pkgrel = 2
 	url = https://github.com/ruby-network/corlink/license
 	arch = x86_64
