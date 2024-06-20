@@ -1,0 +1,14 @@
+pkgbase = sgsd
+	pkgdesc = Simple Graphical Shutdown Dialog.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Rooyca/sgsd
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = python
+	depends = tk
+	source = https://github.com/Rooyca/sgsd/archive/refs/tags/1.0.0.tar.gz
+	sha256sums = 0edd731872826509eca66da6ffe5c564141fef2eda5a951b40e5560d33af6ed2
+
+pkgname = sgsd
