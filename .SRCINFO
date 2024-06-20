@@ -1,0 +1,13 @@
+pkgbase = popstudio
+	pkgdesc = Extracts and converts various file types found in PopCap games.
+	pkgver = 5.0
+	pkgrel = 1
+	url = https://github.com/YingFengTingYu/PopStudio_Old
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = dotnet-sdk
+	provides = popstudio
+	source = popstudio-5.0.zip::https://github.com/YingFengTingYu/PopStudio_Old/archive/refs/tags/v5.0.tar.gz
+	sha256sums = 01db73db3bd2bb170113c1250e4455129a97610538dacc7035507b536cdfbbd3
+
+pkgname = popstudio
