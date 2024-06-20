@@ -1,13 +1,13 @@
 pkgbase = uconv-c
 	pkgdesc = General unit converter for the command line
-	pkgver = 0.0.3
+	pkgver = 0.0.4
 	pkgrel = 1
 	url = https://github.com/kevinboone/uconv
 	install = readme.install
 	arch = x86_64
 	license = GPL3
 	provides = uconv-c
-	source = uconv-0.0.3.tar.gz::https://github.com/kevinboone/uconv/archive/0.0.3.tar.gz
-	sha256sums = 93bcfe602c4ab6222708823088d8784b54ad6c0f646d31748b66696e6fa28a7a
+	source = uconv-0.0.4.tar.gz::https://github.com/kevinboone/uconv/archive/0.0.4.tar.gz
+	sha256sums = 52f609773711b71631474c596deb6d59314589ff15fc7966e4400a69179198af
 
 pkgname = uconv-c

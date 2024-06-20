@@ -6,7 +6,7 @@
 _pkgname=uconv
 pkgname=${_pkgname}-c
 
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc='General unit converter for the command line'
 arch=('x86_64')
@@ -15,7 +15,7 @@ license=('GPL3')
 provides=("${pkgname}")
 install='readme.install'
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('93bcfe602c4ab6222708823088d8784b54ad6c0f646d31748b66696e6fa28a7a')
+sha256sums=('52f609773711b71631474c596deb6d59314589ff15fc7966e4400a69179198af')
 
 build() {
   make -C "${_pkgname}-${pkgver}"
