@@ -1,7 +1,7 @@
 pkgbase = opera-developer
 	pkgdesc = A fast and secure web browser and Internet suite - developer stream
 	pkgver = 113.0.5201.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.opera.com/computer
 	arch = x86_64
 	license = custom:opera
@@ -15,7 +15,7 @@ pkgbase = opera-developer
 	depends = desktop-file-utils
 	depends = shared-mime-info
 	depends = hicolor-icon-theme
-	optdepends = opera-developer-ffmpeg-codecs: playback of proprietary video/audio
+	optdepends = opera-developer-ffmpeg-codecs-bin: additional support for proprietary codecs for opera-developer, extracted directly from the chromium-ffmpeg snap (higly recomended)
 	optdepends = upower: opera battery save
 	provides = opera
 	source = https://get.geo.opera.com/pub/opera-developer/113.0.5201.0/linux/opera-developer_113.0.5201.0_amd64.deb

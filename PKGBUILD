@@ -2,7 +2,7 @@
 
 pkgname=opera-developer
 pkgver=113.0.5201.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast and secure web browser and Internet suite - developer stream'
 arch=('x86_64')
 url='https://www.opera.com/computer'
@@ -10,7 +10,7 @@ license=('custom:opera')
 provides=('opera')
 depends=('gtk3' 'alsa-lib' 'libnotify' 'curl' 'nss' 'libxss' 'ttf-font' 'desktop-file-utils' 'shared-mime-info' 'hicolor-icon-theme')
 optdepends=(
-    'opera-developer-ffmpeg-codecs: playback of proprietary video/audio'
+    'opera-developer-ffmpeg-codecs-bin: additional support for proprietary codecs for opera-developer, extracted directly from the chromium-ffmpeg snap (higly recomended)'
     'upower: opera battery save'
 )
 source=(
