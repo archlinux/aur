@@ -2,7 +2,7 @@
 _appname=codium
 _pkgname="vs${_appname}"
 pkgname="${_pkgname}-electron-bin"
-pkgver=1.90.1.24165
+pkgver=1.90.2.24171
 _electronversion=29
 pkgrel=1
 pkgdesc="VS Code without MS branding/telemetry/licensing.Prebuild and System-wide Electron edition"
@@ -16,7 +16,6 @@ _ghurl="https://github.com/VSCodium/vscodium"
 license=("MIT")
 provides=(
     "${_pkgname}=${pkgver}"
-    "${_appname}=${pkgver}"
 )
 conflicts=(
     "${pkgname%-bin}"
@@ -45,9 +44,9 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/downloa
 sha256sums=('ed289092386002771285e3423f66f49af65ff918e1b667b517d977fa4fe1f057'
             'a9c673c3ae09a9a0dbb68e1c9f5e7f4dbedda3bc3642777f881d64261f8d0f00'
             'b7b6327d20247b5b03607696d83869222b2ca9dd20eafcac95d5307c03ae3a70')
-sha256sums_aarch64=('69a109443854afc703ab19f2cb6f09567761532b6e3d1bbb025ad9f849f72143')
-sha256sums_armv7h=('5b82486f7ba54eb907bbc686c14a427ab3880fc945ab402bdb0144572a90253c')
-sha256sums_x86_64=('ccbf9c6a9eb3b9d413b2949c30f62ce5b37d51817a870a4552137dd4dfabec42')
+sha256sums_aarch64=('62fb5074b628572447f86b14a1d5f03a3198212694a9fa181e8f68ad7805a55e')
+sha256sums_armv7h=('42222d4f0d01bf20058618b31d2d0d4c1b7b6c16de5ee78d16b225ed6bb14fbc')
+sha256sums_x86_64=('69c57d841e1e0132e7fcda0a92148836f4c58f1f1f8bd3228e999ba9ffd475fc')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
