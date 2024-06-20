@@ -10,7 +10,7 @@ pkgbase = python-asgi-middleware-static-file
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-aiofiles
-	source = asgi-middleware-static-file-0.6.1.tar.gz::https://github.com/rexzhang/asgi-middleware-static-file/archive/refs/tags/v0.6.1.tar.gz
-	sha256sums = a0e61cf04f5ceb4438c0aa34f315fef9566a48b78e9b08bd9d44aab34aed41d6
+	source = asgi-middleware-static-file-0.6.1.tar.gz::https://files.pythonhosted.org/packages/source/A/ASGIMiddlewareStaticFile/ASGIMiddlewareStaticFile-0.6.1.tar.gz
+	sha256sums = 3bd2c8cfce4bdcb00ef570cd84d072e9f004d159568e6d1bbc72438d9936ca2a
 
 pkgname = python-asgi-middleware-static-file
