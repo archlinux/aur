@@ -698,7 +698,7 @@ pkgname = tesseract-data-best-ori
 	conflicts = tesseract-data-ori
 
 pkgname = tesseract-data-best-osd
-	pkgdesc = Best performing Tesseract OCR LSTM data (yor)
+	pkgdesc = Best performing Tesseract OCR LSTM data (osd)
 	provides = tesseract-data-osd
 	conflicts = tesseract-data-osd
 

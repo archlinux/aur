@@ -30,7 +30,7 @@ package_tesseract-data-best-osd() {
 	provides=(tesseract-data-osd)
 	conflicts=(tesseract-data-osd)
 	local lang=${pkgname##*-}
-	pkgdesc+=" ($lang)"
+	pkgdesc+=" (osd)"
 	cd "$_archive_dir"
 	install -Dm0644 -t "$pkgdir/usr/share/$_pkgname/" $lang.*
 }
