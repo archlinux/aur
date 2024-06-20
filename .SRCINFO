@@ -1,19 +1,19 @@
 pkgbase = angular-electron-bin
 	pkgdesc = Bootstrap and package your project with Angular 15 and Electron 23 (Typescript + SASS + Hot Reload) for creating Desktop applications.
-	pkgver = 2.3.0
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://github.com/malacration/sap-front
 	arch = x86_64
 	license = MIT
 	makedepends = gendesk
 	depends = electron23
-	provides = angular-electron=2.3.0
+	provides = angular-electron=2.4.1
 	conflicts = angular-electron
-	source = angular-electron-2.3.0.tar.gz::https://github.com/malacration/sap-front/releases/download/v2.3.0/angular-electron-12.0.0.tar.gz
-	source = LICENSE-2.3.0.md::https://raw.githubusercontent.com/malacration/sap-front/v2.3.0/LICENSE.md
-	source = angular-electron-2.3.0.png::https://raw.githubusercontent.com/malacration/sap-front/v2.3.0/src/assets/icons/favicon.512x512.png
+	source = angular-electron-2.4.1.tar.gz::https://github.com/malacration/sap-front/releases/download/v2.4.1/angular-electron-12.0.0.tar.gz
+	source = LICENSE-2.4.1.md::https://raw.githubusercontent.com/malacration/sap-front/v2.4.1/LICENSE.md
+	source = angular-electron-2.4.1.png::https://raw.githubusercontent.com/malacration/sap-front/v2.4.1/src/assets/icons/favicon.512x512.png
 	source = angular-electron.sh
-	sha256sums = ed940cc6d8e987fc508a89fdb9827b0a7096e0c22127e2535a86d3c9d53fee2a
+	sha256sums = 8c5a09d43950407c9c0b1449ab39801c72284f66892f94452f41c7c41dfd8bd7
 	sha256sums = 00df8834a94ab4d44c7c7d6557cce6af143ed0019a80c682b5a03d0cea8187b4
 	sha256sums = e88e5f0dc9ca423464c686e2100c7ff48e88474401f099086151a3b13be52c4b
 	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051

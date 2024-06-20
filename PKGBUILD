@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=angular-electron-bin
 _pkgname="Angular Electron"
-pkgver=2.3.0
+pkgver=2.4.1
 _pkgver=12.0.0
 _electronversion=23
 pkgrel=1
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/malacration/sap-front/v${pkgver}/src/assets/icons/favicon.512x512.png"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ed940cc6d8e987fc508a89fdb9827b0a7096e0c22127e2535a86d3c9d53fee2a'
+sha256sums=('8c5a09d43950407c9c0b1449ab39801c72284f66892f94452f41c7c41dfd8bd7'
             '00df8834a94ab4d44c7c7d6557cce6af143ed0019a80c682b5a03d0cea8187b4'
             'e88e5f0dc9ca423464c686e2100c7ff48e88474401f099086151a3b13be52c4b'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
@@ -32,7 +32,7 @@ build() {
         -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -f -n -q --categories="Development" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
+    gendesk -f -n -q --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
