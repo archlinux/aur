@@ -2,7 +2,7 @@
 # Contributor: criptixo <therealcriptixo@gmail.com>
 pkgname=waveterm-bin
 _pkgname=Wave
-pkgver=0.7.5
+pkgver=0.7.6
 _electronversion=30
 pkgrel=1
 pkgdesc='An open-source, cross-platform terminal for seamless workflows.Use system-wide electron.'
@@ -17,12 +17,13 @@ source=(
     "${pkgname%-bin}-${pkgver}.pacman::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-x64-${pkgver}.pacman"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('46b7b3aa4e5e7f19b89977b18ff18a4a5e166a56c566fb0171ad6865f01172fe'
-            '05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a')
+sha256sums=('da068ba8bb93be29c0d13ad376892a49cc5bab085d37edbad2dad67b12d21cdd'
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     sed "s|/opt/${_pkgname}/${_pkgname}|${pkgname%-bin}|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g;s|TerminalEmulator|TerminalEmulator;Utility|g" \

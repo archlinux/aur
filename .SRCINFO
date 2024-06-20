@@ -1,14 +1,14 @@
 pkgbase = waveterm-bin
 	pkgdesc = An open-source, cross-platform terminal for seamless workflows.Use system-wide electron.
-	pkgver = 0.7.5
+	pkgver = 0.7.6
 	pkgrel = 1
 	url = https://www.waveterm.dev
 	arch = x86_64
 	license = Apache-2.0
 	depends = electron30
-	source = waveterm-0.7.5.pacman::https://github.com/wavetermdev/waveterm/releases/download/v0.7.5/Wave-linux-x64-0.7.5.pacman
+	source = waveterm-0.7.6.pacman::https://github.com/wavetermdev/waveterm/releases/download/v0.7.6/Wave-linux-x64-0.7.6.pacman
 	source = waveterm.sh
-	sha256sums = 46b7b3aa4e5e7f19b89977b18ff18a4a5e166a56c566fb0171ad6865f01172fe
-	sha256sums = 05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a
+	sha256sums = da068ba8bb93be29c0d13ad376892a49cc5bab085d37edbad2dad67b12d21cdd
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = waveterm-bin
