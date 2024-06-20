@@ -1,6 +1,6 @@
 pkgbase = dnsi
 	pkgdesc = A tool to investigate the DNS
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/NLnetLabs/dnsi
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = dnsi
 	makedepends = cargo
 	depends = glibc
 	depends = gcc-libs
-	source = https://github.com/NLnetLabs/dnsi/archive/refs/tags/v0.1.0.tar.gz
-	md5sums = a1cfe0f4fe7e3df28c18ad517994eb2a
-	sha1sums = 2fd288a9fa0281a60fda45440eea3d60b205c705
-	sha256sums = 89075d6957e31af278bb05e719a42a522b60afad84527af3718d36f20f328a79
-	sha384sums = bd18171e41dbb0bcb1557f6b8300a5425f8e7827515b8bbc4a475926400584f893a399c0a6b6cfd459ed9ecd30c79fde
-	sha512sums = 08693c5b9be6b6e042465173110dfad4b04774dacc5c4aef27e2240a3eadaf8b7565779029cbbb2077b9b453b68925c81993aff2f3acb23f402f391b780f0797
+	source = https://github.com/NLnetLabs/dnsi/archive/refs/tags/v0.2.0.tar.gz
+	md5sums = 8197a51f3e3b47147d41a70ff3c2a3ff
+	sha1sums = e2ca04194ef6cff358b580153747c94f8cabdadc
+	sha256sums = 65dc7724838ec9405996f13f6aa1ba15a8f486d5abe56a46d06ed31bafd06c18
+	sha384sums = 25c5f110c144c42ad6bcc8e223b3674aca8f5127ccd12cce3d09c0f8d5a746152bafaa9dc53f60ae4891e1144dadb6e5
+	sha512sums = 6e3522a934877737f9b02ac20b0b810f5dad3236984d98071010d078d4d096fa6f41c2101d6e3a505fa9ccdbe82b6db845b24831376798b8fc1f556bbefcd2f6
 
 pkgname = dnsi
