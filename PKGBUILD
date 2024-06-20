@@ -2,7 +2,7 @@
 # Contributor: darkgrin <darkgrin at yahoo dot com>
 pkgname=subs2srs
 pkgver=29.7
-pkgrel=7
+pkgrel=8
 pkgdesc="A small utility that allows you to create Anki (flash card software) import files based on your favorite foreign language movies and TV shows to aid in the language learning process."
 arch=('any')
 url="http://subs2srs.sourceforge.net/"
@@ -10,12 +10,12 @@ license=('GPL')
 depends=('mono' 'ffmpeg' 'mp3gain' 'mkvtoolnix-cli')
 optdepends=('anki' 'noto-fonts-cjk: display japanese characters')
 makedepends=('p7zip' 'icoutils')
-source=("${pkgname}_v${pkgver}.zip::https://sourceforge.net/projects/${pkgname}/files/${pkgname}/${pkgname}_v${pkgver}/${pkgname}_v${pkgver}.zip/download"
+source=("${pkgname}_v${pkgver}.zip::https://github.com/nihil-admirari/${pkgname}-net48-builds/releases/download/2023-02-23-13-35/subs2srs_v${pkgver}.zip"
         "${pkgname}.sh"
         "${pkgname}.desktop"
         "subsretimer.desktop"
         "90-avoid-microsoft-sans-serif.conf")
-sha256sums=('b6731c6c02b63315669f1ad28587052af39dff3e7aba9dd6bcb49a9667b075d1'
+sha256sums=('70b71f73b26e35cf0d202522656142432d75287a0910907d8f023271cd5f200b'
             'e47c9f7e1216230fecf316591b182a8fe65b13f4781564accfdae2911098425c'
             '3b66602d3be448b2305f3bb8908f2f8ee814fd40e1594c74520a383d79d69175'
             '9fb5d61ad017cecd536b6d1ab76ad8e4488f82a34b28306aadce9ff0ccb9735c'
