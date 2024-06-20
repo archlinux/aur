@@ -20,7 +20,12 @@ depends=(
     python-pbr
     python-notify-py
 )
-makedepends=(python-build python-installer python-wheel twine)
+makedepends=(
+    python-build
+    python-installer
+    python-wheel
+    twine
+)
 checkdepends=(
     python-inquirer
     python-notify-py

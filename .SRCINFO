@@ -1,6 +1,6 @@
 pkgbase = python-togglcli
 	pkgdesc = Command line tool and set of Python wrapper classes for interacting with toggl's API
-	pkgver = 2.4.4
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/auhau/toggl-cli
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-togglcli
 	depends = python-click-completion
 	depends = python-pbr
 	depends = python-notify-py
-	source = https://github.com/AuHau/toggl-cli/archive/refs/tags/v2.4.4.tar.gz
-	sha512sums = 32c28e5f396bb0d084f0ee43f7ca78ac54494b795b23ee41a2d1e7c4c2bf57d794025359620af653ebd35c4f2d02b358d40a4606c41fb9bc2ba76114e2969ce7
+	source = https://github.com/AuHau/toggl-cli/archive/refs/tags/v3.0.1.tar.gz
+	sha512sums = e2d4ca6ee8cf5d1b8489ae1e1dfd21812313823a8d13b29f8a92462c43b163879e39b32f9176ba090e2a6a69eae9013d8fc8448eef3c15b8edc81a374ab2e354
 
 pkgname = python-togglcli
