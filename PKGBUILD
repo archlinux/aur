@@ -3,12 +3,12 @@
 
 pkgname=syslog-notify
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Pop-up display for system log messages"
 arch=('i686' 'x86_64')
 url="http://jtniehof.github.com/syslog-notify"
 license=('GPL')
-depends=('libnotify')
+depends=('glib2' 'glibc' 'libnotify')
 install=${pkgname}.install
 source=($pkgname-$pkgver.tar.gz::https://github.com/jtniehof/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz
        ${pkgname}.patch)
