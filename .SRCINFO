@@ -1,6 +1,6 @@
 pkgbase = pokefinder
 	pkgdesc = Cross platform Pokémon RNG tool
-	pkgver = 4.1.2
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://github.com/Admiral-Fish/PokeFinder
 	arch = x86_64
@@ -8,12 +8,15 @@ pkgbase = pokefinder
 	makedepends = cmake
 	makedepends = git
 	makedepends = python
+	makedepends = qt6-tools
 	depends = qt6-base
-	source = pokefinder-4.1.2::git+https://github.com/Admiral-Fish/PokeFinder.git#tag=v4.1.2
+	source = pokefinder-4.2.0::git+https://github.com/Admiral-Fish/PokeFinder.git#tag=v4.2.0
+	source = 0001-Add-missing-include-to-JirachiPattern.cpp-392.patch::https://github.com/Admiral-Fish/PokeFinder/commit/2cb1b049cabdf0d1b32c8cf29bf6c9d9c5c55cb0.patch
 	source = git+https://gitlab.com/bzip2/bzip2
 	source = git+https://github.com/ColinDuquesnoy/QDarkStyleSheet
 	source = git+https://github.com/Admiral-Fish/EncounterTableGenerator
-	sha256sums = SKIP
+	sha256sums = e0eb9a52d6ce8bc9a6f7a4d791a9fb4d6ae469f5a94bd259d09380bb7b0684a3
+	sha256sums = 6dc2bb77ab6b9e90d7581476ff93294f8ccacc20b7609c5c4b035fec719875fa
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

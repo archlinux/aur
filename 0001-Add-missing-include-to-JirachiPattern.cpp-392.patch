@@ -1,0 +1,24 @@
+From 2cb1b049cabdf0d1b32c8cf29bf6c9d9c5c55cb0 Mon Sep 17 00:00:00 2001
+From: leo60228 <leo@60228.dev>
+Date: Thu, 6 Jun 2024 02:29:11 -0400
+Subject: [PATCH] Add missing #include to JirachiPattern.cpp (#392)
+
+---
+ Source/Core/Gen3/Tools/JirachiPattern.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Source/Core/Gen3/Tools/JirachiPattern.cpp b/Source/Core/Gen3/Tools/JirachiPattern.cpp
+index 9832bbe1..86d8b7f0 100644
+--- a/Source/Core/Gen3/Tools/JirachiPattern.cpp
++++ b/Source/Core/Gen3/Tools/JirachiPattern.cpp
+@@ -19,6 +19,7 @@
+ 
+ #include "JirachiPattern.hpp"
+ #include <Core/RNG/LCRNG.hpp>
++#include <algorithm>
+ 
+ /**
+  * @brief Does the advance from playing the cutscene
+-- 
+2.45.1
+
