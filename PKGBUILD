@@ -3,7 +3,7 @@
 pkgbase=ente
 _pkgbase=ente-photos
 pkgname=(ente-server ente-web) 
-pkgver=0.8.94
+pkgver=0.9.0
 pkgrel=0
 pkgdesc="End to End Encrypted alternative to Google Photos" 
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=("${_pkgbase}-$pkgver.tar.gz::$url/archive/refs/tags/photos-v${pkgver}.ta
         "git+https://github.com/ente-io/PhotoSwipe.git"
         "git+https://github.com/abhinavkgrd/ffmpeg.wasm.git")
 backup=('etc/ente/configurations/local.yaml')
-sha256sums=('b09f380bf15d9dd8744adf32770caee3fbfb05c215b9d137541a12d0d5f2db14'
+sha256sums=('3283d33a833ba1bb31e3110c4e54e52b8ef78d3d83b122de02b3f57842bee04d'
             'd632886a9068ee4a2cdd6bccbd7cf87dc196660b45a0888d5b50f4565365af1c'
             '49f07f3e3519b242b12aaa7d8d10c5e1fa934a6ccdf8bfda0bd41c55654c37c2'
             'eb8f5dbec1e34ef68b733cb73d93cb854e81fea278727b5f914dab2d578371e0'
