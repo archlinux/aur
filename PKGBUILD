@@ -1,8 +1,8 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=flightcore
-pkgver=2.21.4
-_commit=7e7c8d31bf3d84c15da72ef0bc3c8a34429b1bee
+pkgver=2.22.0
+_commit=3ac321d71cd66300b358612b0f39edfd14c1845c
 pkgrel=1
 pkgdesc="Installer/Updater/Launcher for Northstar"
 url="https://github.com/R2NorthstarTools/FlightCore"
