@@ -15,7 +15,7 @@ depends=("python-aiofiles" "python-arrow" "python-asgi-middleware-static-file" "
 optdepends=("python-bonsai: LDAP support"
             "python-brotli: response compress support")
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-source=("${_pipname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/dd/fb/bd8ddceee111f97605bbf60f9d3fa286640173b06772298fc57f12c4820c/${_pipname}-${pkgver}.tar.gz"
+source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pipname::1}/${_pipname}/${_pipname}-${pkgver}.tar.gz"
         "${_pkgname}.service"
         "${_pkgname}.user.service"
         "${_pkgname}.sysusers"
