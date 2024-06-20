@@ -1,11 +1,20 @@
 pkgbase = hoarder
+	pkgdesc = A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search
 	pkgver = 0.14.0
 	pkgrel = 5
 	url = https://github.com/hoarder-app/hoarder
 	arch = x86_64
+	arch = aarch64
 	license = AGPL-3.0-or-later
 	makedepends = git
-	makedepends = pnpm
+	depends = chromium
+	depends = nodejs
+	depends = pnpm
+	depends = redis
+	optdepends = meilisearch: for full text search
+	optdepends = ollama: for automatic tagging
+	optdepends = hoarder-cli: hoarder cli tool
+	backup = etc/hoarder/hoarder.env
 	source = hoarder::git+https://github.com/hoarder-app/hoarder.git#tag=v0.14.0
 	source = hoarder.env
 	source = hoarder.sysusers
@@ -24,18 +33,3 @@ pkgbase = hoarder
 	sha256sums = ebbca6d919fdb201177a816e6a9a9d634f2ee3df222a1d43d38b9a280b593544
 
 pkgname = hoarder
-	pkgdesc = A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search
-	depends = chromium
-	depends = nodejs
-	depends = pnpm
-	depends = redis
-	optdepends = meilisearch: for full text search
-	optdepends = ollama: for automatic tagging
-	optdepends = hoarder-cli: hoarder cli tool
-	provides = hoarder
-	backup = etc/hoarder/hoarder.env
-
-pkgname = hoarder-cli
-	pkgdesc = A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search (cli tool)
-	depends = nodejs
-	provides = hoarder-cli

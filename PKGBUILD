@@ -1,22 +1,26 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
-pkgbase=hoarder
-pkgname=("${pkgbase}" "${pkgbase}-cli")
+pkgname=hoarder
 pkgver=0.14.0
 pkgrel=5
-_pkgdesc="A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search"
-arch=("x86_64")
-url="https://github.com/${pkgbase}-app/${pkgbase}"
+pkgdesc="A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search"
+arch=("x86_64" "aarch64")
+url="https://github.com/${pkgname}-app/${pkgname}"
 license=('AGPL-3.0-or-later')
-makedepends=("git" "pnpm")
-source=("${pkgbase}::git+${url}.git#tag=v${pkgver}"
-        "${pkgbase}.env"
-        "${pkgbase}.sysusers"
-        "${pkgbase}.target"
-        "${pkgbase}.tmpfiles"
-        "${pkgbase}-browser.service"
-        "${pkgbase}-web.service"
-        "${pkgbase}-workers.service")
+backup=("etc/${pkgname}/${pkgname}.env")
+depends=("chromium" "nodejs" "pnpm" "redis")
+optdepends=("meilisearch: for full text search"
+            "ollama: for automatic tagging"
+            "${pkgname}-cli: ${pkgname} cli tool")
+makedepends=("git")
+source=("${pkgname}::git+${url}.git#tag=v${pkgver}"
+        "${pkgname}.env"
+        "${pkgname}.sysusers"
+        "${pkgname}.target"
+        "${pkgname}.tmpfiles"
+        "${pkgname}-browser.service"
+        "${pkgname}-web.service"
+        "${pkgname}-workers.service")
 sha256sums=('d863c41bdaab0ad697c94a75678308c6b692a402958658f4e2882f82a77e14af'
             '02ba5c278843be0dc98a172a16e172dd5f2245dd7e91608fc3a53f9e5be2ee7a'
             'bb7cf9d047374376137a9ec5ac5ad653d3569a834de8ccc3e8a6f04a870bc01e'
@@ -34,7 +38,7 @@ build() {
     export PUPPETEER_SKIP_DOWNLOAD="true"
 
     # build web
-    cd "${pkgbase}"
+    cd "${pkgname}"
     pnpm install
     cd packages/db
     pnpm dlx @vercel/ncc build migrate.ts -o ../../db_migrations
@@ -45,43 +49,21 @@ build() {
     # build workers
     cd ../..
     pnpm deploy --node-linker=isolated --filter @hoarder/workers --prod workers
-
-    # build cli
-    cd apps/cli
-    pnpm run build
 }
 
-package_hoarder() {
-    pkgdesc="${_pkgdesc}"
-    backup=("etc/${pkgbase}/${pkgbase}.env")
-    depends=("chromium" "nodejs" "pnpm" "redis")
-    provides=("${pkgbase}")
-    optdepends=("meilisearch: for full text search"
-                "ollama: for automatic tagging"
-                "${pkgbase}-cli: ${pkgbase} cli tool")
-
+package() {
     install -Dm644 *.{service,target}  -t "${pkgdir}/usr/lib/systemd/system"
-    install -Dm644 "${pkgbase}.env"       "${pkgdir}/etc/${pkgbase}/${pkgbase}.env"
-    install -Dm644 "${pkgbase}.sysusers"  "${pkgdir}/usr/lib/sysusers.d/${pkgbase}.conf"
-    install -Dm644 "${pkgbase}.tmpfiles"  "${pkgdir}/usr/lib/tmpfiles.d/${pkgbase}.conf"
-    install -Dm644 "${pkgbase}/README.md" "${pkgdir}/usr/share/doc/${pkgbase}/README.md"
+    install -Dm644 "${pkgname}.env"       "${pkgdir}/etc/${pkgname}/${pkgname}.env"
+    install -Dm644 "${pkgname}.sysusers"  "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+    install -Dm644 "${pkgname}.tmpfiles"  "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+    install -Dm644 "${pkgname}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
-    cp -r --preserve=mode "${pkgbase}/apps/web/.next/standalone" "${pkgdir}/usr/share/${pkgbase}"
-    cp -r --preserve=mode "${pkgbase}/db_migrations"             "${pkgdir}/usr/share/${pkgbase}/db_migrations"
-    cp -r --preserve=mode "${pkgbase}/workers"                   "${pkgdir}/usr/share/${pkgbase}/apps/workers"
-    cp -r --preserve=mode "${pkgbase}/apps/web/.next/static"     "${pkgdir}/usr/share/${pkgbase}/apps/web/.next/static"
-    cp -r --preserve=mode "${pkgbase}/apps/web/public"           "${pkgdir}/usr/share/${pkgbase}/apps/web/public"
+    cp -r --preserve=mode "${pkgname}/apps/web/.next/standalone" "${pkgdir}/usr/share/${pkgname}"
+    cp -r --preserve=mode "${pkgname}/db_migrations"             "${pkgdir}/usr/share/${pkgname}/db_migrations"
+    cp -r --preserve=mode "${pkgname}/workers"                   "${pkgdir}/usr/share/${pkgname}/apps/workers"
+    cp -r --preserve=mode "${pkgname}/apps/web/.next/static"     "${pkgdir}/usr/share/${pkgname}/apps/web/.next/static"
+    cp -r --preserve=mode "${pkgname}/apps/web/public"           "${pkgdir}/usr/share/${pkgname}/apps/web/public"
 
-    ln -s                 "/var/lib/${pkgbase}/cache"            "${pkgdir}/usr/share/${pkgbase}/apps/web/.next/cache"
-    echo "SERVER_VERSION=$pkgver" >                              "${pkgdir}/usr/share/${pkgbase}/version"
-}
-
-package_hoarder-cli() {
-    pkgdesc="${_pkgdesc} (cli tool)"
-    depends=("nodejs")
-    provides=("${pkgbase}-cli")
-
-    install -Dm755 "${pkgbase}/apps/cli/dist/index.mjs" "${pkgdir}/usr/share/${pkgbase}/apps/cli/index.mjs"
-    install -dm755 "${pkgdir}/usr/bin"
-    ln -s "/usr/share/${pkgbase}/apps/cli/index.mjs" "${pkgdir}/usr/bin/${pkgbase}"
+    ln -s                 "/var/lib/${pkgname}/cache"            "${pkgdir}/usr/share/${pkgname}/apps/web/.next/cache"
+    echo "SERVER_VERSION=$pkgver" >                              "${pkgdir}/usr/share/${pkgname}/version"
 }
