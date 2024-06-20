@@ -1,14 +1,14 @@
 # Maintainer: let <let@notlet.dev>
 
 pkgname=stormfetch
-pkgver=3.0.r0.g2af3ab1
+pkgver=5.0.r0.g8c380db
 pkgrel=1
 pkgdesc='A simple linux fetch program written in go and bash'
 arch=('any')
 url='https://gitlab.com/CapCreeperGR/stormfetch'
 license=('MIT')
 
-makedepends=('go')
+makedepends=('go' 'make')
 depends=('bash')
 
 # no longer needed
@@ -23,15 +23,13 @@ sha256sums=('SKIP')
 
 build() {
 	cd "$srcdir/stormfetch"
-	go build -o out stormfetch
+        make SYSCONFDIR=/etc
 }
 
 package() {
-	install -Dm755 "$srcdir/stormfetch/out" "$pkgdir/usr/bin/stormfetch"
+        cd "$srcdir/stormfetch"
+        make DESTDIR="$pkgdir" PREFIX=/usr SYSCONFDIR=/etc install
 	install -Dm644 "$srcdir/stormfetch/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-	mkdir -p "$pkgdir/etc"
-	cp -r "$srcdir/stormfetch/config" "$pkgdir/etc/stormfetch"
 }
 
 pkgver() {
