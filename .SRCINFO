@@ -1,0 +1,18 @@
+pkgbase = ia64-linux-gnu-binutils
+	pkgdesc = GNU binutils for IA64 (Itanium)
+	pkgver = 2.42
+	pkgrel = 1
+	url = https://www.gnu.org/software/binutils/
+	arch = aarch64
+	arch = x86_64
+	license = GPL
+	makedepends = setconf
+	depends = libelf
+	depends = zlib
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.42.tar.xz
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.42.tar.xz.sig
+	validpgpkeys = 3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F
+	sha256sums = f6e4d41fd5fc778b06b7891457b3620da5ecea1006c6a4a41ae998109f85a800
+	sha256sums = SKIP
+
+pkgname = ia64-linux-gnu-binutils
