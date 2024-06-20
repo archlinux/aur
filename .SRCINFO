@@ -1,7 +1,7 @@
 pkgbase = gb-studio-bin
 	pkgdesc = Visual retro game maker
-	pkgver = 3.2.1
-	pkgrel = 2
+	pkgver = 4.0.0
+	pkgrel = 1
 	url = https://gbstudio.dev
 	arch = x86_64
 	license = MIT
@@ -18,7 +18,7 @@ pkgbase = gb-studio-bin
 	replaces = gb-studio
 	options = !strip
 	options = !emptydirs
-	source = gb-studio-bin-3.2.1-2.deb::https://github.com/chrismaltby/gb-studio/releases/download/v3.2.1/gb-studio-linux-debian.deb
-	sha512sums = 376babcecfd5b762221a379cbca0db148127ad7e29e9847771cc1b4b7d536d74de9a9389c769ad06376e1f0b59645edbf78469f83aef6433019308e1e9095e8f
+	source = gb-studio-bin-4.0.0-1.deb::https://github.com/chrismaltby/gb-studio/releases/download/v4.0.0/gb-studio-linux-x86_64.deb
+	sha512sums = 301042b766584f485663b2475b40fda98b982eeee24f68d1a6fb29663a28db69fbeda942436f6f2a36601c83c5ed554d7f679a9ca28f2c53479a594788053d01
 
 pkgname = gb-studio-bin
