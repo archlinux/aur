@@ -1,0 +1,5 @@
+/src/
+/pkg/
+/microsoft-edge-dev_*.deb
+/*.log
+/*.pkg.tar*
