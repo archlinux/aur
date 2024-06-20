@@ -1,7 +1,7 @@
 # Maintainer: Karl Ludwig Brennan <karlludwigbrennan@outlook.com>
 
 pkgname=llvm-mingw-w64-toolchain-ucrt-bin
-pkgver=20240606
+pkgver=20240619
 pkgrel=1
 pkgdesc="LLVM/Clang/LLD based mingw-w64 toolchain (UCRT) targeting i686, x86-64, armv7, and aarch64"
 _crt=ucrt
@@ -12,7 +12,7 @@ depends=()
 provides=('llvm-mingw-w64-toolchain' 'mingw-w64-binutils' 'mingw-w64-crt' 'mingw-w64-gcc' 'mingw-w64-headers' 'mingw-w64-winpthreads')
 conflicts=('mingw-w64-binutils' 'mingw-w64-crt' 'mingw-w64-gcc' 'mingw-w64-headers' 'mingw-w64-winpthreads')
 source=("https://github.com/mstorsjo/llvm-mingw/releases/download/${pkgver}/llvm-mingw-${pkgver}-${_crt}-ubuntu-20.04-x86_64.tar.xz")
-sha256sums=('9470422f05cbb5685dc301e02a63eb0e346d20d48da1b380942e42a35e9c4252')
+sha256sums=('27d33157cc252c29ad6f777a96a0d94176fea1b534ff09b5071485def143b90e')
 
 options=(!strip)
 
