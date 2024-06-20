@@ -2,9 +2,9 @@
 # Maintainer: Chandler Klüser <chandler.kluser@gmail.com>
 
 pkgname=amiberry
-pkgver=553ab56afd1f54255bf99549f99f247da75e03af
+pkgver=779090b2837af408e2fac804bee869452db4cdea
 pkgrel=1
-epoch=20240605
+epoch=20240619
 pkgdesc="Amiga Emulator for ARM Boards (amd64 build)"
 arch=('x86_64')
 url="https://github.com/BlitterStudio/amiberry"
