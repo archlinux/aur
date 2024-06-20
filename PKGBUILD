@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='Cross platform Pokémon RNG tool'
 arch=(x86_64)
 url='https://github.com/Admiral-Fish/PokeFinder'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=(
     'qt6-base'
 )
