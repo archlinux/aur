@@ -1,0 +1,13 @@
+pkgbase = gnome-shell-extension-s76-scheduler
+	pkgdesc = Tiny GNOME extension that updates process priorities using the System76 Scheduler
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ossianwinter/s76-scheduler
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = git
+	depends = gnome-shell
+	source = git+https://github.com/ossianwinter/s76-scheduler.git#tag=v0.1.0
+	sha256sums = 08a7fdecd3a2c9d90330af100a5a34837be157f67e5ad0d3fa99655c6e470596
+
+pkgname = gnome-shell-extension-s76-scheduler
