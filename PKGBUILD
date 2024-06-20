@@ -1,6 +1,6 @@
 # Maintainer: Daniel Kuehn <daniel@kuehn.foo>
 pkgname=wordgen
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='A CLI random word generator.'
 arch=('x86_64')
@@ -9,12 +9,12 @@ license=('AGPL-3.0-or-later')
 makedepends=('go')
 options=('!strip' '!debug')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('8f4d8067a5e45da72a7cfbe9bdb8dafb1a3910ef539dd665c0e3c31b511f1837')
+sha256sums=('6854b1e82023f8111b2940610f558b6c48ac769fefd8e4f7c88210e2e1f326a7')
 
 build() {
 	cd "$srcdir/cli-$pkgver"
 
-	go build -o "bin/wordgen" -trimpath -ldflags="-s -w -X main.version=v$pkgver -buildid=" .
+	go build -o "bin/wordgen" -trimpath -ldflags="-s -w -buildid=" .
 }
 
 package() {
