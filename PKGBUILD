@@ -8,6 +8,7 @@ url="https://github.com/OrangeShark/guile-commonmark"
 license=('LGPL3')
 depends=('guile')
 makedepends=('autoconf' 'pkg-config')
+provides=('guile-commonmark')
 conflicts=('guile-commonmark')
 source=("guile-commonmark-git::git+https://github.com/OrangeShark/guile-commonmark/")
 sha512sums=(SKIP)

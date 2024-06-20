@@ -8,6 +8,7 @@ pkgbase = guile-commonmark-git
 	makedepends = autoconf
 	makedepends = pkg-config
 	depends = guile
+	provides = guile-commonmark
 	conflicts = guile-commonmark
 	source = guile-commonmark-git::git+https://github.com/OrangeShark/guile-commonmark/
 	sha512sums = SKIP
