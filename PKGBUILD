@@ -2,7 +2,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=networkmanager-openvpn
-pkgver=1.10.4
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="NetworkManager VPN plugin for OpenVPN"
 url="https://networkmanager.dev/docs/vpn/"
@@ -23,14 +23,14 @@ makedepends=(
   python
 )
 optdepends=(
-  'libnma-gtk4: GUI support (GTK 4)'
-  'libnma: GUI support (GTK 3)'
+  "libnma-gtk4: GUI support (GTK 4)"
+  "libnma: GUI support (GTK 3)"
 )
-source=(
-  # Can't locate the public key (ihuguet@redhat.com, 07F9AEC86144386D9576210B66A44781B4EBC2D0)
-  "git+https://gitlab.gnome.org/GNOME/NetworkManager-openvpn.git#tag=$pkgver"
+source=("git+https://gitlab.gnome.org/GNOME/NetworkManager-openvpn.git?signed#tag=$pkgver")
+b2sums=('45c3b6f6c240af1b7c368aa7c7d613cc2cb67216a3f6cbb3438d524095e9fa22d81fd8c51dd4541d62845feb239e3dcea5d0ba88b2047399f5138bfe20876cec')
+validpgpkeys=(
+  07F9AEC86144386D9576210B66A44781B4EBC2D0 # Íñigo Huguet <ihuguet@redhat.com>
 )
-b2sums=('5498e9d65e2bdc2e2b473e80e1379b44aa8041bfef88d345c74e24760c28c32a164fe48f353039b5415aa94b2ecee4a44e72741510de8994a9eb2aff33cbd1c1')
 
 prepare() {
   cd NetworkManager-openvpn
