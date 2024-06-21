@@ -1,7 +1,7 @@
 # Maintainer: leaty <dev@leaty.net>
 _pkgname=tuxtrain
 pkgname=$_pkgname-git
-pkgver=v0.0.4.r18.g315579e
+pkgver=0.0.4.r18.g315579e
 pkgrel=1
 pkgdesc='An easy-to-use generic trainer for Linux'
 url='https://github.com/leaty/tuxtrain'
