@@ -4,7 +4,7 @@
 
 _pkgname=lenovolegionlinux
 pkgname=${_pkgname}-dkms-git
-pkgver=r255.3d941cc
+pkgver=r255.0e9b861
 pkgrel=0
 pkgdesc="LenovoLegionLinux (LLL) DKMS module"
 arch=("x86_64")
