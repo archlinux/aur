@@ -5,8 +5,8 @@ pkgname='python-can_ada-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
 _srcdir="${_srcname}"
-pkgver=1.2.0.r0.g378192b
-pkgrel=2
+pkgver=1.3.0.r0.gbe08bd7
+pkgrel=1
 pkgdesc='Python bindings for Ada, a fast and WHATWG spec-compliant URL parser (built from latest commit)'
 arch=('aarch64' 'x86_64')
 url="https://github.com/TkTech/$_srcname"
@@ -57,8 +57,8 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install -Dm0644 LICENSE   "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -vDm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -vDm0644 LICENSE   "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # eof
