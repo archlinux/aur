@@ -1,4 +1,4 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Adam Schadler <ajschadler@gmail.com>
 
 _cranname=future.callr
 _cranver=0.8.2
