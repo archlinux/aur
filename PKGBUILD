@@ -3,7 +3,7 @@
 pkgname='gnome-break-timer-git'
 _pkgname=${pkgname%-git}
 pkgver=3.1.0_6_gc13c273
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="The new typing break for GNOME, (replaces gnome-typing-break-bzr & drwright)"
 arch=('x86_64' 'i686')
@@ -19,7 +19,6 @@ conflicts=('gnome-typing-break-bzr')
 replaces=('gnome-typing-break-bzr')
 backup=()
 options=(!makeflags)
-install="$pkgname.install"
 changelog=
 source=("git+https://gitlab.gnome.org/GNOME/gnome-break-timer.git"
         "$pkgname.install")
