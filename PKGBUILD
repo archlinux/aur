@@ -5,7 +5,7 @@
 
 pkgname=ffmpeg-amd-full-git
 _srcname=ffmpeg
-pkgver=7.1.r115881.g0ae157b360
+pkgver=7.1.r115967.g35df214a72
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for AMD; git version)'
 arch=('x86_64')
@@ -25,7 +25,7 @@ depends=('alsa-lib' 'aom' 'aribb24' 'avisynthplus' 'bzip2' 'celt' 'codec2'
          'twolame' 'v4l-utils' 'vapoursynth' 'vid.stab' 'vmaf' 'vulkan-icd-loader' 'x264'
          'x265' 'xvidcore' 'xz' 'zeromq' 'zimg' 'zlib' 'zvbi'
          'libaribcaption' 'chromaprint-fftw' 'davs2' 'flite1' 'libklvanc' 'librist'
-         'opencv2' 'shine' 'uavs3d-git' 'vo-amrwbenc' 'xavs' 'xavs2' 'xevd' 'xeve')
+         'opencv2' 'shine' 'uavs3d-git' 'vo-amrwbenc' 'xavs' 'xavs2' 'xevd' 'xeve' 'vvenc')
 makedepends=('git' 'clang' 'amf-headers' 'nasm' 'opencl-headers'
              'vulkan-headers' 'decklink-sdk')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
@@ -175,6 +175,7 @@ build() {
         --enable-libvo-amrwbenc \
         --enable-libvorbis \
         --enable-libvpx \
+        --enable-libvvenc \
         --enable-libwebp \
         --enable-libx264 \
         --enable-libx265 \
