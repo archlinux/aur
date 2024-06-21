@@ -3,7 +3,7 @@
 pkgname=basedpyright-git
 _pkgname=basedpyright
 pkgver=v1.13.0.r1.g19aa64eeb
-pkgrel=1
+pkgrel=2
 pkgdesc="Fork of pyright, a static type checker for Python, with various improvements and new features"
 arch=('any')
 url="https://github.com/DetacHead/basedpyright"
@@ -37,6 +37,12 @@ package() {
   install -Dm644 CONTRIBUTING.md "${pkgdir}/usr/share/doc/${_pkgname}/CONTRIBUTING.md"
   cp -r docs "${pkgdir}/usr/share/doc/${_pkgname}/docs"
   install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+
+  # Run JS scripts directly, without nodejs_wheel
+  _pyver=$(python -c 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}")')
+  rm "${pkgdir}/usr/bin/basedpyright" "${pkgdir}/usr/bin/basedpyright-langserver"
+  ln -s ../lib/python${_pyver}/site-packages/${_pkgname}/index.js "${pkgdir}/usr/bin/basedpyright"
+  ln -s ../lib/python${_pyver}/site-packages/${_pkgname}/langserver.index.js "${pkgdir}/usr/bin/basedpyright-langserver"
 }
 
 # vim:set ts=2 sw=2 et:
