@@ -15,12 +15,10 @@ source=("intel-driver-compiler-npu.deb::https://github.com/intel/linux-npu-drive
 	"intel-level-zero-npu.deb::https://github.com/intel/linux-npu-driver/releases/download/v${main_ver}/intel-level-zero-npu_${pkgver//_/-}_ubuntu22.04_amd64.deb"
 	"LICENSE::https://raw.githubusercontent.com/intel/linux-npu-driver/main/LICENSE.md")
 noextract=("${source[@]%%::*}")
-sha256sums=(
-	'a87eb96ec6793eea1af4f086b3f2f5b84047f1d71a66d6501d7add368b1c5621'
-	'3c6726a7440a8bba930bc7e13d484e705e8a8ce26c934d1c9616c001f0224800'
-	'273f0de82c6f143e141da5850207c925a96554db8eb478f1fb19926ed954e375'
-	'9cd7b75cc0af6941de80c7fccd3f63217de5c0691b63fb1319b73d1e033c9c4f'
-	)
+b2sums=('SKIP' # Intel does not provide checksums for binary packages
+	'SKIP'
+	'SKIP'
+  'SKIP')
 
 prepare() {
   cd "$srcdir"
