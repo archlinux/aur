@@ -2,7 +2,7 @@
 
 pkgname=beakerlib
 pkgver=1.30
-pkgrel=1
+pkgrel=2
 pkgdesc="Shell-level integration testing library, providing convenience functions which simplify writing, running and analysis of integration and blackbox tests."
 arch=('i686' 'x86_64')
 url="https://github.com/beakerlib/beakerlib"
@@ -10,7 +10,7 @@ license=('GPL2')
 depends=()
 makedepends=('perl')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/beakerlib/beakerlib/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('bd06fc61b32d9caf4324587706a8363e37e771355da8297d0c5ba0023ae31098')
+sha256sums=('9161dd08ca7a9066d2d85ff6911b7c8271fbd6ba76d5fe168f2ad3e705bd2615')
 
 _srcdir="${pkgname}-${pkgver}"
 
@@ -27,7 +27,7 @@ build() {
 package() {
 	cd "${_srcdir}"
 	make DESTDIR="${pkgdir}/usr" install
-	
+
 	mkdir -p "${pkgdir}/usr/lib/tmpfiles.d"
 	install -m0644 "dist/${pkgname}-tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 }
