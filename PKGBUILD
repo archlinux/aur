@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc='Set the system timezone based on IP geolocation'
 url=https://github.com/cdown/tzupdate
 arch=('x86_64')
+options=(!lto)
 license=('MIT')
 makedepends=('cargo')
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
