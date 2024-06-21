@@ -4,7 +4,7 @@
 
 pkgname=collectd
 pkgver=5.12.0
-pkgrel=15
+pkgrel=16
 pkgdesc='Daemon which collects system performance statistics periodically'
 url='https://collectd.org/'
 arch=('x86_64' 'aarch64')
@@ -61,6 +61,10 @@ build() {
 	cd ${pkgname}-${pkgver}
         # fix nut plugin build
         export CFLAGS="$CFLAGS -Wno-incompatible-pointer-types"
+        # quick fix for https://github.com/collectd/collectd/issues/4310
+        # libgcrypt-config is gone
+        export GCRYPT_CPPFLAGS="$(pkg-config libgcrypt --cflags)"
+        export GCRYPT_LIBS="$(pkg-config libgcrypt --libs)"
 	./configure \
 		--prefix=/usr \
 		--sysconfdir=/etc \
