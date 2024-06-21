@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=spatstat.sparse
-_pkgver=3.0-3
+_pkgver=3.1-0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Sparse Three-Dimensional Arrays and Linear Algebra Utilities"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -15,8 +15,8 @@ depends=(
   r-tensor
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e62ca18fd36d242b176578688725cac4')
-b2sums=('6deebdb86f1114c12de7150e145ac027f6bc1baade132a01a562e727be2c387bb89618d751046727d9b0b5547bda1938d5ac71607ac4e3bb63d8a23ad55c6583')
+md5sums=('71232a1e22adaed3cdc53ed73903eeaf')
+b2sums=('ead7a137c127f9160fc767e80239ada7ccb242cb2312128ac4b5210b8f0b5646525f4e6b602e15ceca1b6b73f14620c748fb866be3426e44fc766674f4af20fa')
 
 build() {
   mkdir build
