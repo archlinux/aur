@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/Rogdham/python-xz"
 license=('MIT')
 depends=('python' 'python-typing_extensions')
-makedepends=('git' 'python-setuptools' 'python-pytest' 'python-installer' 'python-setuptools-scm' 'python-wheel' 'python-pytest-cov')
+makedepends=('git' 'python-build' 'python-pytest' 'python-installer' 'python-setuptools-scm' 'python-wheel' 'python-pytest-cov')
 options=(!emptydirs)
 source=("${pkgname}-${pkgver}::git+https://github.com/Rogdham/python-xz#tag=v${pkgver}")
 provides=("python-xz")
