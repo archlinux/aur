@@ -1,5 +1,6 @@
 *.otf
 *.ttf
 *.zst
+*LICENSE
 pkg/
 src/
