@@ -28,5 +28,5 @@ package() {
   install -D -m 644 *.h -t $pkgdir/usr/include/libhdhomerun/
   install -D -m 755 libhdhomerun.so $pkgdir/usr/lib/libhdhomerun.so
   install -D -m 755 hdhomerun_config $pkgdir/usr/bin/hdhomerun_config
-  install -D -m 755 hdhomerun_config $pkgdir/usr/bin/hdhomerun_discover_example
+  install -D -m 755 hdhomerun_discover_example $pkgdir/usr/bin/hdhomerun_discover_example
 }
