@@ -1,4 +1,5 @@
-# Maintainer: piernov <piernov@piernov.org>
+# Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
+# Contributor: piernov <piernov@piernov.org>
 
 pkgname=python-tensorflow-addons-cuda-git
 pkgver=r1490.14af819a
@@ -8,7 +9,7 @@ url="https://github.com/tensorflow/addons"
 arch=('any')
 license=('APACHE')
 depends=('tensorflow-cuda' 'python-tensorflow' 'python-typeguard' 'cuda' 'cudnn')
-makedepends=('python-setuptools' 'bazel4' 'rsync' 'python-pip')
+makedepends=('python-setuptools' 'bazel6' 'rsync' 'python-pip')
 source=("git+https://github.com/tensorflow/addons.git"
 	"bazel-cuda-build-fix.patch"
 	"fix_cuda.patch"
