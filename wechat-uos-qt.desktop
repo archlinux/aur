@@ -13,7 +13,7 @@ Keywords=wechat;weixin;we;w;
 Keywords[zh_CN]=微;微信;wechat;weixin;we;w;
 X-GNOME-SingleWindow=true
 SingleMainWindow=true
-Actions=quit;nosandbox;opendir;xhost;
+Actions=quit;nosandbox;opendir;
 StartupWMClass=wechat
 
 [Desktop Action quit]
@@ -33,8 +33,3 @@ Name=Open WeChat Data
 Name[zh_CN]=打开数据目录
 Exec=/usr/bin/wechat-uos-qt --actions opendir
 #Icon=application-exit
-
-[Desktop Action xhost]
-Name=Unlock XServer
-Name[zh_CN]=解除 Xserver 限制
-Exec=env wechatXserverPatch=1 /usr/bin/wechat-uos-qt
