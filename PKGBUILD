@@ -2,14 +2,15 @@
 
 pkgbase=scrap_engine-git
 pkgname=python-scrap_engine-git
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.4.1
+pkgrel=1
 arch=(any)
 url="https://github.com/lxgr-linux/scrap_engine"
 license=('GPL3')
 depends=('python')
 makedepends=('git' 'python-setuptools' 'python-wheel' 'python-pip')
 provides=('python-scrap_engine')
+conflicts=('python-scrap_engine')
 pkgdesc="Python scrap_engine module"
 source=("$pkgbase"::'git+https://github.com/lxgr-linux/scrap_engine')
 md5sums=('SKIP')
