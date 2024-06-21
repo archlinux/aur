@@ -1,7 +1,7 @@
 # Maintainer: Thomas Letan <lthms@soap.coffee>
 
 pkgname=octez-smart-rollup-node
-pkgver=20.0
+pkgver=20.1
 pkgrel=4
 pkgdesc='Unofficial binary release for the octez-smart-rollup-node from Octez'
 url=https://gitlab.com/tezos/tezos
@@ -14,12 +14,12 @@ makedepends=(
   'systemd'
 )
 source=(
-  "$pkgname-$pkgver-$pkgrel::https://gitlab.com/tezos/tezos/-/package_files/130338946/download"
+  "$pkgname-$pkgver-$pkgrel::https://gitlab.com/tezos/tezos/-/package_files/133746818/download"
   "$pkgname.sysusers"
   "$pkgname.tmpfiles"
   "$pkgname@.service"
 )
-sha512sums=('73c90d297e766f409e455ef2c605192d2f495a248018c02f1df0f625a0d6970e86f0fb7fa49a0d701c318cb4ed1375df2c0d14b5a21d0992910eccf442342004'
+sha512sums=('4f8aec8dc0d57f7e5b835d62d04855eb50ab374be31a5ac2cf37b27f85b0a9ca42fbaf24911704223620423535daff575c22e5d5790bf0ebd6f89ae1cb13e267'
             '4c7f574d08436ac8e5acbfc47a5a895c0401b44e96391bf6489fe80174e04982a6fd618a45db47c4994f30d3db95827417d849b98f02cb9b27266897cd64cf31'
             '1bfdc8af0663d18abcda427995198bd1948bb85c3b05f1e769a02530d70e0858d3a5d2d5d1d21294bb8a7a68cac023ca6f8ee13440fabc79dcb40dde8761ee56'
             '83ec9dc8bfe009962d3d882fb917ed1b4da2e1593acf7f7b1480550734530b0e66058ecb73edd0f05edb9787ce99719c974a84d29b65083f26b326cac797ea87')
