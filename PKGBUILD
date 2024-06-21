@@ -2,7 +2,7 @@
 # Maintainer: Jonas Lähnemann <jonas at pdi-berlin dot de>
 pkgname=python-pyxem
 pkgshort=pyxem
-pkgver=0.18.0
+pkgver=0.19.1
 pkgrel=0
 pkgdesc="Python library for multi-dimensional diffraction microscopy extending HyperSpy"
 arch=('any')
@@ -44,4 +44,5 @@ package() {
   cd "$srcdir/$pkgshort-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
-md5sums=('1e912c12b1e8501d1784c5c461e353f0')
+
+md5sums=('c8535a68c3bc2a9c21d7f01518ea8937')
