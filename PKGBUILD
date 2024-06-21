@@ -8,7 +8,7 @@ pkgname=(
 _pkgver_game="2"
 pkgver="${_pkgver_game}"
 pkgrel=1
-epoch=0
+epoch=1
 arch=(
   'any'
 )
