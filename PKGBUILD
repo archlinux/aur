@@ -1,7 +1,7 @@
 # Maintainer: Christopher Kaster <me@atomicptr.de>
 # Contributor: Hanna Rose <imhxnna@gmail.com>
 
-pkgver=2024_05
+pkgver=2024_06
 
 _srcname=odin
 pkgname=odin-bin
@@ -21,11 +21,10 @@ source=(
   "https://github.com/odin-lang/Odin/releases/download/dev-$pkgver_fixed/odin-ubuntu-amd64-dev-$pkgver_fixed.zip"
 )
 sha256sums=(
-  "32d99c1d7fdbb491a633e3fba67a06faea9000c181f3346040012b42b44144e2"
+  "2e183a4d58ec22b3906f30264def857447e2ef5dc6759883fa60f9258ddb6155"
 )
 
 build() {
-  unzip "${srcdir}/dist.zip"
   cd "${srcdir}/dist"
   patchelf --replace-needed libedit.so.2 libedit.so.0 libLLVM-17.so.1
   chmod +x odin
