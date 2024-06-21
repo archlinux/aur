@@ -1,7 +1,8 @@
 pkgbase = keyguard
 	pkgdesc = Alternative client for the Bitwarden platform, created to provide the best user experience possible.
 	pkgver = 20240620
-	pkgrel = 2
+	pkgrel = 3
+	url = https://github.com/AChep/keyguard-app.git
 	arch = x86_64
 	license = custom
 	makedepends = jdk17-openjdk
