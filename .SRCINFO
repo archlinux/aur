@@ -1,0 +1,12 @@
+pkgbase = deltachat2
+	pkgdesc = Delta Chat client library for Python
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://pypi.org/project/deltachat2/
+	arch = any
+	license = MPL-2.0
+	depends = python
+	source = https://files.pythonhosted.org/packages/5e/3d/649e83759ce6ab72913a7688d6ab7a12c8f3041597daf95972e03a91e45f/deltachat2-0.6.2.tar.gz
+	sha256sums = 82cbc30684f5c673bf5786326a79c817831df9f21cb0ce665eeeb6f79655013a
+
+pkgname = deltachat2
