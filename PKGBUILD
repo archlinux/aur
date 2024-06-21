@@ -1,4 +1,4 @@
-# Maintainer: David Hummel <david dot hummel at gmail point com>
+# Maintainer: David Hummel <hummeltech@sherpaguru.com>
 
 pkgbase=extension-bitwarden-git
 pkgname=('brave-extension-bitwarden-git'
@@ -7,7 +7,7 @@ pkgname=('brave-extension-bitwarden-git'
          'firefox-extension-bitwarden-git'
          'librewolf-extension-bitwarden-git'
          'opera-extension-bitwarden-git')
-pkgver=2024.5.2.r15117.g419c107
+pkgver=2024.6.3.r15281.ge8cccd6
 pkgrel=1
 pkgdesc='Bitwarden browser extensions'
 arch=('any')
