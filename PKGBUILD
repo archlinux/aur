@@ -4,7 +4,7 @@
 #
 pkgname=python-hyperspy-gui-ipywidgets
 pkginst=hyperspy_gui_ipywidgets
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="ipywidgets (jupyter) GUI elements for HyperSpy" 
 arch=('any')
@@ -37,4 +37,4 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
-md5sums=('c392181c5f7c29f3b14e85f64ca20966')
+md5sums=('18a6cf3148099f4e688e90f6de853694')
