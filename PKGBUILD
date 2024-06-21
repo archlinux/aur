@@ -9,7 +9,7 @@ url="https://github.com/tensorflow/addons"
 arch=('any')
 license=('APACHE')
 depends=('tensorflow-cuda' 'python-tensorflow' 'python-typeguard' 'cuda' 'cudnn')
-makedepends=('python-setuptools' 'bazel6' 'rsync' 'python-pip')
+makedepends=('python-setuptools' 'bazel' 'rsync' 'python-pip')
 source=("git+https://github.com/tensorflow/addons.git"
 	"bazel-cuda-build-fix.patch"
 	"fix_cuda.patch"
