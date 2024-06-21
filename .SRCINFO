@@ -4,7 +4,6 @@ pkgbase = python-xz
 	pkgrel = 1
 	url = https://github.com/Rogdham/python-xz
 	arch = any
-	license = MIT
 	makedepends = git
 	makedepends = python-pytest
 	makedepends = python-installer
@@ -12,6 +11,7 @@ pkgbase = python-xz
 	makedepends = python-wheel
 	makedepends = python-pytest-cov
 	depends = python
+	depends = python-typing_extensions
 	provides = python-xz
 	options = !emptydirs
 	source = python-xz-0.5.0::git+https://github.com/Rogdham/python-xz#tag=v0.5.0
