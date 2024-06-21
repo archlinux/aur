@@ -13,9 +13,9 @@
  /**
 --- a/libavformat/utils.c
 +++ b/libavformat/utils.c
-@@ -57,6 +57,13 @@ int ff_unlock_avformat(void)
-     return ff_mutex_unlock(&avformat_mutex) ? -1 : 0;
- }
+@@ -44,6 +44,13 @@
+  * various utility functions for use within FFmpeg
+  */
  
 +// Chromium: We use the internal field first_dts vvv
 +int64_t av_stream_get_first_dts(const AVStream *st)

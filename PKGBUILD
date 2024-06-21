@@ -4,7 +4,7 @@
 # Contributor: DrZaius <lou at fakeoutdoorsman.com>
 
 pkgname=ffmpeg-git
-pkgver=7.1.r115045.g86e418ffd7
+pkgver=7.1.r115973.g127545350f
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (git version)'
 arch=('x86_64')
@@ -14,63 +14,70 @@ depends=(
   alsa-lib
   aom
   bzip2
+  cairo
+  dav1d
   fontconfig
+  freetype2
   fribidi
+  glib2
+  glibc
   gmp
   gnutls
   gsm
+  harfbuzz
   jack
   lame
-  libass.so
+  libass
   libavc1394
-  libbluray.so
-  libbs2b.so
-  libdav1d.so
+  libbluray
+  libbs2b
   libdrm
-  libfreetype.so
+  libdvdnav
+  libdvdread
   libgl
   libiec61883
-  libjxl.so
+  libjxl
   libmodplug
-  libopenmpt.so
+  libopenmpt
+  libplacebo
   libpulse
-  librav1e.so
   libraw1394
-  librsvg-2.so
+  librsvg
   libsoxr
   libssh
   libtheora
-  libva.so
-  libva-drm.so
-  libva-x11.so
+  libva
   libvdpau
-  libvidstab.so
-  libvorbisenc.so
-  libvorbis.so
-  libvpl.so
-  libvpx.so
+  libvorbis
+  libvpl
+  libvpx
   libwebp
   libx11
-  libx264.so
-  libx265.so
   libxcb
   libxext
   libxml2
   libxv
-  libxvidcore.so
-  libzimg.so
   ocl-icd
   opencore-amr
   openjpeg2
   opus
+  rav1e
+  rubberband
   sdl2
+  snappy
   speex
   srt
   svt-av1
   v4l-utils
+  vapoursynth
+  vid.stab
   vmaf
   vulkan-icd-loader
+  x264
+  x265
+  xvidcore
   xz
+  zimg
   zlib
 )
 makedepends=(
@@ -78,6 +85,7 @@ makedepends=(
   avisynthplus
   clang
   ffnvcodec-headers
+  frei0r-plugins
   git
   ladspa
   mesa
@@ -86,9 +94,11 @@ makedepends=(
   vulkan-headers
 )
 optdepends=('avisynthplus: for AviSynthPlus support'
+            'frei0r-plugins: for Frei0r video effects support'
             'ladspa: for LADSPA filters'
-            'nvidia-utils: for Nvidia NVDEC/NVENC support'
-            'vpl-runtime: for Intel Quick Sync Video')
+            'nvidia-utils: for NVIDIA NVDEC/NVENC support'
+            'vpl-runtime: for Intel Quick Sync Video'
+)
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavutil.so' 'libpostproc.so' 'libswresample.so' 'libswscale.so'
           'ffmpeg')
@@ -98,8 +108,8 @@ source=('git+https://git.ffmpeg.org/ffmpeg.git'
         '050-ffmpeg-fix-segfault-with-avisynthplus.patch'
         '060-ffmpeg-fix-nvidia-vulkan-decoding-segfault.patch')
 sha256sums=('SKIP'
-            'b54b47f4f3837ddc41227bd2202ea3c62e2ddb06c6cfbd7a9adc304d641d79ba'
-            '0e277c0d5e33612ca7a11025958133b17bfbe23168b0aee5bd07f674f6fd7440'
+            '67e87527ba853c2b59fa5efd9e116c157f0abb18a40e3bc55673cf0d98364923'
+            'e97272668cd16493e520f0188eea265e2372c98b3c09585781e7a453ddb5478f'
             'f2f73793a45c9dffb033f23c1b10a612abe6528cbd06c04b06e8189d1ef208be')
 
 prepare() {
@@ -123,12 +133,12 @@ build() {
         --disable-debug \
         --disable-static \
         --disable-stripping \
-        --disable-htmlpages \
         --enable-amf \
         --enable-avisynth \
         --enable-cuda-llvm \
         --enable-lto \
         --enable-fontconfig \
+        --enable-frei0r \
         --enable-gmp \
         --enable-gnutls \
         --enable-gpl \
@@ -139,9 +149,12 @@ build() {
         --enable-libbs2b \
         --enable-libdav1d \
         --enable-libdrm \
+        --enable-libdvdnav \
+        --enable-libdvdread \
         --enable-libfreetype \
         --enable-libfribidi \
         --enable-libgsm \
+        --enable-libharfbuzz \
         --enable-libiec61883 \
         --enable-libjack \
         --enable-libjxl \
@@ -152,9 +165,12 @@ build() {
         --enable-libopenjpeg \
         --enable-libopenmpt \
         --enable-libopus \
+        --enable-libplacebo \
         --enable-libpulse \
         --enable-librav1e \
         --enable-librsvg \
+        --enable-librubberband \
+        --enable-libsnappy \
         --enable-libsoxr \
         --enable-libspeex \
         --enable-libsrt \
@@ -179,8 +195,10 @@ build() {
         --enable-opencl \
         --enable-opengl \
         --enable-shared \
+        --enable-vapoursynth \
         --enable-version3 \
         --enable-vulkan
+
     make
     make tools/qt-faststart
 }
