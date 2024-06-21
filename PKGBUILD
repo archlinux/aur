@@ -6,7 +6,7 @@ pkgname="steam-rom-manager-bin"
 _pkgdesc="An app for managing ROMs in Steam"
 pkgdesc="${_pkgdesc} (extracted from Debian package)"
 
-pkgver=2.5.12
+pkgver=2.5.14
 pkgrel=1
 
 arch=(x86_64)
