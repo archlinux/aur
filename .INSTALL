@@ -1,0 +1,8 @@
+post_install() {
+    cat << EOF
+See /usr/share/tuxtrain/ directory for existing trainers.
+You may copy relevant trainers into the /etc/tuxtrain/ directory.
+Note: Trainers and their features are disabled by default.
+      You should edit them to enable chosen features.
+EOF
+}
