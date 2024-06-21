@@ -8,8 +8,8 @@
 # Contributor: Paul Mattal <paul@archlinux.org>
 
 pkgname=ffmpeg-libfdk_aac
-pkgver=7.0
-pkgrel=3
+pkgver=7.0.1
+pkgrel=1
 epoch=2
 pkgdesc='Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)'
 arch=(x86_64)
@@ -61,7 +61,7 @@ depends=(
   libxext
   libxml2
   libxv
-  mbedtls
+  mbedtls2
   ocl-icd
   onevpl
   opencore-amr
@@ -122,12 +122,12 @@ provides=(
 options=(
   debug
 )
-_tag=fa053f314a0150bebe073438867e454182909c53
+_tag=47f70eda3e2ff003a787e512afd07b0c266f7a70
 source=(
   git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=${_tag}
   add-av_stream_get_first_dts-for-chromium.patch
 )
-b2sums=('4b2057fb68a0137bf149779beee3b7066835216a830896d4de4d31d0c00c2ab13419d4a3f0ccba1ab6d0cb063bdc91f2fc35d5916ddd65288c327880cbdefc41'
+b2sums=('d2d6a645509e697932dc8f7a57719e069299e53eb37cda7bf01fd94c9e9956e5532dc5c923fa86d72d0e3a051a7f405e768c73c66ca8aea29271923a17222e03'
         '555274228e09a233d92beb365d413ff5c718a782008075552cafb2130a3783cf976b51dfe4513c15777fb6e8397a34122d475080f2c4483e8feea5c0d878e6de')
 validpgpkeys=(DD1EC9E8DE085C629B3E1846B18E8928B3948D64) # Michael Niedermayer <michael@niedermayer.cc>
 
@@ -142,6 +142,7 @@ pkgver() {
 }
 
 build() {
+  export PKG_CONFIG_PATH='/usr/lib/mbedtls2/pkgconfig'
   cd ffmpeg
   ./configure \
     --prefix=/usr \
