@@ -1,0 +1,5 @@
+*.otf
+*.ttf
+*.zst
+pkg/
+src/
