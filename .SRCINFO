@@ -9,6 +9,6 @@ pkgbase = geteltorito
 	depends = perl
 	noextract = geteltorito.pl
 	source = https://github.com/rainer042/geteltorito/blob/main/geteltorito.pl
-	sha256sums = 378a6305edb9397978e60b7908a85dd8c2546f2808cb845552d5e4a8ba9baab3
+	sha256sums = f1d03a5c295546adc62b2758cfc2327cacae01ba994bb8f522c3779226d915cf
 
 pkgname = geteltorito
