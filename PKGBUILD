@@ -8,12 +8,12 @@
 
 pkgname=subtitlecomposer
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Video subtitle editor'
 arch=('i686' 'x86_64')
 url="https://invent.kde.org/multimedia/${pkgname}"
 license=('GPL')
-depends=('qt6-declarative' 'qt6-5compat' 'kcoreaddons' 'ktextwidgets' 'kio' 'sonnet' 'kcodecs' 'kxmlgui' 'ki18n' 'ffmpeg' 'openal')
+depends=('qt6-declarative' 'qt6-5compat' 'kcoreaddons' 'ktextwidgets' 'kio' 'sonnet' 'kcodecs' 'kxmlgui' 'ki18n' 'ffmpeg4.4' 'openal')
 checkdepends=('xorg-server-xvfb')
 makedepends=('extra-cmake-modules' 'jack' 'blas')
 
@@ -45,6 +45,7 @@ prepare() {
 }
 
 build() {
+  export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
   cmake -S "${srcdir}/${_tar}" -B "${srcdir}/build" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
