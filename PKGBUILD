@@ -1,7 +1,7 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 # Contributor: drakkan <nicola.murino at gmail dot com>
 pkgname=sftpgo
-pkgver=2.6.1
+pkgver=2.6.2
 pkgrel=1
 pkgdesc='Full-featured and highly configurable SFTP, HTTP/S, FTP/S and WebDAV server - S3, Google Cloud Storage, Azure Blob'
 arch=('i686' 'x86_64' 'aarch64')
