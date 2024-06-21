@@ -156,7 +156,7 @@ _set_vars() {
   fi
 
   export CPPFLAGS="-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0 -DNDEBUG -D_NDEBUG"
-  _common_cflags="${_GLIBC_LIBS_COMMON} -march=x86-64 -mtune=generic -O2 -pipe -fno-semantic-interposition -fno-strict-aliasing -fomit-frame-pointer -fwrapv -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -Wno-error=return-mismatch -Wno-error=int-conversion -w"
+  _common_cflags="${_GLIBC_LIBS_COMMON} -march=x86-64 -mtune=native -O2 -pipe -fno-semantic-interposition -fno-strict-aliasing -fomit-frame-pointer -fwrapv -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -Wno-error=return-mismatch -Wno-error=int-conversion -w"
 
   _LTO_FLAGS="-flto -fdevirtualize-at-ltrans -flto-partition=one -Wl,-flto"
   #_GCC_NATIVE_FLAGS="-floop-nest-optimize -fgraphite-identity -floop-strip-mine " # gcc-latest is not compiled with libisl which is needed for graphite, but not currently used
