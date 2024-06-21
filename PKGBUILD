@@ -2,7 +2,7 @@
 
 pkgname=ayugram-desktop
 pkgver=5.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Desktop Telegram client with good customization and Ghost mode."
 arch=("x86_64")
 url="https://github.com/AyuGram/AyuGramDesktop"
@@ -177,4 +177,6 @@ build() {
 }
 package() {
     DESTDIR="$pkgdir" cmake --install build
+    sed -i 's|/usr/bin/com.ayugram.desktop|/usr/bin/ayugram-desktop|' \
+        "$pkgdir/usr/share/dbus-1/services/com.ayugram.desktop.service"
 }
