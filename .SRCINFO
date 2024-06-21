@@ -1,0 +1,20 @@
+pkgbase = geek-life-bin
+	pkgdesc = The CLI To-Do List / Task Manager for Geeks
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/ajaxray/geek-life
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = geek-life
+	conflicts = geek-life
+	source = https://github.com/ajaxray/geek-life/raw/v0.1.2/README.md
+	source = https://github.com/ajaxray/geek-life/raw/v0.1.2/LICENSE
+	sha256sums = d045e6fa7556b2991dda0cc378c3b8fe54168649d0a6a5256d159a073bc3add0
+	sha256sums = 4dc3bfa897198794928f7d9667394f29f8ebcf6c35deba8ff00ed8d4c22e64d2
+	source_x86_64 = geek-life-0.1.2::https://github.com/ajaxray/geek-life/releases/download/v0.1.2/geek-life_linux-amd64
+	sha256sums_x86_64 = bf8ea9c7df37adb18db10a015cf485d63b06bab488a04a71f1ddd8732c3c3d70
+	source_aarch64 = geek-life-0.1.2::https://github.com/ajaxray/geek-life/releases/download/v0.1.2/geek-life_linux-arm64
+	sha256sums_aarch64 = 5dde0fa9f635b830b16adc0faa1d85a613ff08e307cfecfd51b836f8c1e7d33a
+
+pkgname = geek-life-bin
