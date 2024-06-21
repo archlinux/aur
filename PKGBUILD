@@ -6,7 +6,7 @@
 
 _pkgname="xboxdrv"
 pkgname="$_pkgname-git"
-pkgver=0.8.9.r0.g25a1dcb
+pkgver=0.8.11.r0.gf3dfdc6
 pkgrel=1
 pkgdesc="Userspace Xbox gamepad driver and input remapper"
 url="https://github.com/xiota/xboxdrv"
@@ -27,8 +27,8 @@ depends=(
   #systemd-libs
 )
 makedepends=(
-  'boost'
   'git'
+  'glib2-devel'
   'pkg-config'
   'scons'
 )
@@ -59,6 +59,9 @@ pkgver() {
 
 build() {
   cd "$_pkgsrc"
+
+  printf '%s' "$pkgver" > VERSION
+
   scons \
     LINKFLAGS="$LDFLAGS" \
     CXXFLAGS="$CPPFLAGS $CXXFLAGS" \
