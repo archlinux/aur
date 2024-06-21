@@ -1,0 +1,13 @@
+_info() {
+    echo "  --> Note: img2kvm needs to be uploaded to PVE to be used, running it on Arch Linux will prompt that the qm command cannot be found. <--"
+    echo "  --> 注意：img2kvm 需要上传到 PVE 上使用，Arch Linux 上运行会提示找不到 qm 命令。<--"
+}
+
+post_install() {
+    _info
+}
+
+post_upgrade() {
+    _info
+}
+
