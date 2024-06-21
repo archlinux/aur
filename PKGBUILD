@@ -4,7 +4,7 @@
 # https://github.com/openvinotoolkit/openvino/issues/452#issuecomment-722941119
 
 pkgname=openvino-git
-pkgver=2024.1.0.r264.gc6c94bdca19
+pkgver=2024.2.0.r275.g6a7c44220f0
 pkgrel=1
 pkgdesc='A toolkit for developing artificial inteligence and deep learning applications (git version)'
 arch=('x86_64')
@@ -15,13 +15,12 @@ optdepends=('intel-compute-runtime: for Intel GPU plugin'
             'ocl-icd: for Intel GPU plugin'
             'level-zero-loader: for Intel NPU plugin'
             'snappy: for tensorflow frontend'
-            'protobuf: for tensorflow, paddle and onnx frontends'
             'python: for Python API'
             'python-numpy: for Python API'
-            'cython: for Python API')
+            'python-packaging: for Python API'
+            'python-pillow: for Python API')
 makedepends=('git' 'git-lfs' 'cmake' 'opencl-clhpp' 'opencl-headers' 'ocl-icd' 'opencv'
-             'snappy' 'python' 'python-setuptools' 'cython' 'fdupes' 'patchelf'
-             'shellcheck')
+             'snappy' 'python' 'python-setuptools' 'fdupes' 'patchelf' 'shellcheck')
 provides=('openvino' 'intel-openvino-git')
 conflicts=('openvino' 'intel-openvino-git')
 replaces=('intel-openvino-git')
@@ -134,6 +133,11 @@ pkgver() {
 }
 
 build() {
+    # fix warning: "_FORTIFY_SOURCE" redefined
+    # note: upstream forces _FORTIFY_SOURCE=2
+    export CFLAGS="${CFLAGS/-Wp,-D_FORTIFY_SOURCE=?/}"
+    export CXXFLAGS="${CXXFLAGS/-Wp,-D_FORTIFY_SOURCE=?/}"
+    
     # note: does not accept 'None' build type
     cmake -B build -S openvino \
         -G 'Unix Makefiles' \
