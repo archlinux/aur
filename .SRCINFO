@@ -1,6 +1,6 @@
 pkgbase = tuxtrain-git
 	pkgdesc = An easy-to-use generic trainer for Linux
-	pkgver = v0.0.4.r18.g315579e
+	pkgver = 0.0.4.r18.g315579e
 	pkgrel = 1
 	url = https://github.com/leaty/tuxtrain
 	install = .INSTALL
@@ -9,7 +9,7 @@ pkgbase = tuxtrain-git
 	makedepends = git
 	makedepends = rust
 	makedepends = cargo
-	provides = tuxtrain=v0.0.4
+	provides = tuxtrain=0.0.4
 	conflicts = tuxtrain
 	source = tuxtrain::git+https://github.com/leaty/tuxtrain.git
 	sha256sums = SKIP
