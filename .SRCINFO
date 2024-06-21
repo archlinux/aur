@@ -1,16 +1,15 @@
 pkgbase = deltachat-cursed
 	pkgdesc = Delta Chat client for the command line
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/adbenitez/deltachat-cursed
 	arch = any
 	license = GPL
-	makedepends = python-setuptools
 	depends = python-notify-py
 	depends = python-urwid_readline
-	depends = python-deltachat
+	depends = python-deltachat2
 	depends = python-emoji
-	source = https://files.pythonhosted.org/packages/df/7e/85dcd4b7f84ede4d9ff2983234bd89e6fa095b9517fc1a43a5bec97a7040/deltachat_cursed-0.8.0.tar.gz
-	sha256sums = cd6915d3acfeeabe00bb9d0e8878aee19e48060d4fd090323ae6920171981440
+	source = https://files.pythonhosted.org/packages/9f/3f/0acb29bbb76720a1071809b2118cc5b1e734f8d6ddf08b5904c4d594a5e4/deltachat-cursed-0.9.0.tar.gz
+	sha256sums = 3a8f7e061f591a9091ae437a91a845de5ffb792719d0f1e644aa7e846250886d
 
 pkgname = deltachat-cursed
