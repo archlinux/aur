@@ -1,8 +1,8 @@
 # Maintainer: nafets227 <nafets227@users.noreply.github.com>
 pkgname=vdr-softhddevice-drm
 pkgver=r705.c1cd90c
-pkgrel=1
-_vdrapi=2.6.6
+pkgrel=2
+_vdrapi=2.6.7
 pkgdesc="VDR output plugin for software HD based on DRM interface"
 #url="https://github.com/zillevdr/vdr-plugin-softhddevice-drm.git"
 arch=('x86_64' 'aarch64')
