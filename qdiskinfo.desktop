@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=QDiskInfo
+Version=1.0
+Exec=QDiskInfo
+Type=Application
+Comment=S.M.A.R.T. utility for reading and monitoring disk drive status
+Icon=qdiskinfo
+Terminal=false
+Categories=System;Qt

@@ -1,0 +1,20 @@
+pkgbase = qdiskinfo
+	pkgdesc = CrystalDiskInfo alternative for Linux
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/edisionnano/QDiskInfo
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = imagemagick
+	depends = qt6-base
+	depends = qt6-svg
+	depends = smartmontools
+	depends = polkit
+	depends = hicolor-icon-theme
+	source = qdiskinfo-0.2.tar.gz::https://github.com/edisionnano/QDiskInfo/archive/refs/tags/0.2.tar.gz
+	source = qdiskinfo.desktop
+	sha256sums = e4c0d352c75ca0dd8f152b09e17c7542aebd1d320e5fee8e9bd8c35cb1d3cbb2
+	sha256sums = 4754bf3c5c718723ed47a06772134a393a8b8996eeb3ee75c2711811d140ff8a
+
+pkgname = qdiskinfo
