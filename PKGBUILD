@@ -8,8 +8,8 @@
 
 _pkgname=hyprland
 pkgname=$_pkgname-hidpi-xprop-git
-pkgver=0.41.1.r21.1f5fd7e6
-pkgrel=1
+pkgver=0.41.1.r52.fabc30df
+pkgrel=2
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
 arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
 url="https://github.com/hyprwm/Hyprland"
@@ -118,7 +118,6 @@ pkgver() {
 build() {
   cd Hyprland
 
-  export CXXFLAGS="-w" # suppress all compiler warnings
   mkdir -p build && cd build
   cmake -G Ninja -DCMAKE_BUILD_TYPE=None -DCMAKE_SKIP_RPATH=ON -DCMAKE_INSTALL_PREFIX=/usr ..
   ninja
@@ -127,12 +126,9 @@ build() {
 package() {
   cd Hyprland
   find src \( -name '*.h' -o -name '*.hpp' \) -exec install -Dm0644 {} "$pkgdir/usr/include/hyprland/{}" \;
-  pushd subprojects/wlroots-hyprland/include
-  find . -name '*.h' -exec install -Dm0644 {} "$pkgdir/usr/include/hyprland/wlroots-hyprland/{}" \;
-  popd
-  pushd subprojects/wlroots-hyprland/build/include
-  find . -name '*.h' -exec install -Dm0644 {} "$pkgdir/usr/include/hyprland/wlroots-hyprland/{}" \;
-  popd
+  meson install -C subprojects/wlroots-hyprland/build --destdir "${pkgdir}/tmpwlr"
+  cp -R ${pkgdir}/tmpwlr/usr/local/include/hyprland ${pkgdir}/usr/include/
+  rm -rf ${pkgdir}/tmpwlr
   mkdir -p "$pkgdir/usr/include/hyprland/protocols"
   cp protocols/*.h* "$pkgdir/usr/include/hyprland/protocols"
   install -Dm0644 -t "$pkgdir/usr/share/pkgconfig" build/hyprland.pc
@@ -149,7 +145,5 @@ package() {
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
   install -Dm0644 subprojects/wlroots-hyprland/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-wlroots-hyprland"
   install -Dm0644 subprojects/udis86/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-udis86"
-  find subprojects/wlroots-hyprland/build -name 'libwlroots.so.*' -type f -execdir \
-    install -Dm0755 -t "$pkgdir/usr/lib/" {} \;
 }
 # vi: et ts=2 sw=2
