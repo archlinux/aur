@@ -1,0 +1,25 @@
+post_install() {
+  echo "Run 'systemctl restart systemd-binfmt' in order to make the wine binfmt available on your system."
+  inform_patches
+}
+
+post_remove() {
+  echo "binfmt binary formats will be updated at reboot"
+}
+
+post_upgrade() {
+  inform_patches
+}
+
+inform_patches() {
+  echo "Remember to export WINEESYNC=1 to use Esync or WINEFSYNC=1 to use Fsync"
+  #echo "To use the Wayland output driver, you must either disable Xwayland, or unset the DISPLAY variable: 'unset DISPLAY' or 'export DISPLAY=' in your WINE launcher"
+  echo "Set WINE_DISABLE_GLCHILD_HACK=1 to disable the hack which enables flipping in osu!"
+  echo ""
+  echo "Please be aware winepulse.drv will negotiate the lowest possible period size with your audio server"
+  echo "This currently results in a 5ms period size with Pipewire, and 1 frame with Pulseaudio"
+  echo "The environment variables 'STAGING_AUDIO_PERIOD' and 'STAGING_AUDIO_DURATION' modify this behavior (units: 10000 is 1ms)"
+  echo ""
+
+  echo "For other interesting environment variables, see https://wiki.winehq.org/Wine-Staging_Environment_Variables"
+}
