@@ -1,9 +1,9 @@
 # Maintainer: Christopher Schnick <crschnick@xpipe.io>
 
-_fullver="10.0-16"
+_fullver="10.0-17"
 pkgname="xpipe-ptb"
 pkgver="10.0"
-pkgrel="16"
+pkgrel="17"
 epoch=1
 pkgdesc="XPipe (Public Test Build) releases"
 arch=('x86_64' 'aarch64')
@@ -33,7 +33,7 @@ provides=()
 conflicts=()
 replaces=()
 backup=()
-options=(!debug)
+options=(!debug !strip)
 install=
 changelog="${pkgname}.changelog"
 source=("logo_48x48.png" "logo_256x256.png" "${pkgname}.desktop")
