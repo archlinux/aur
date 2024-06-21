@@ -1,0 +1,20 @@
+pkgbase = python-xz
+	pkgdesc = Pure Python implementation of the XZ file format with random access support
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/Rogdham/python-xz
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-pytest
+	makedepends = python-installer
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	makedepends = python-pytest-cov
+	depends = python
+	provides = python-xz
+	options = !emptydirs
+	source = python-xz-0.5.0::git+https://github.com/Rogdham/python-xz#tag=v0.5.0
+	sha256sums = 2650dddf025a2fa1646773304a7195e0d9d906316256cb6c78019585e18852c6
+
+pkgname = python-xz
