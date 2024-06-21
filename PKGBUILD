@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=python-usb-protocol
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc='Utilities, data structures, constants, parsers, and tools for working with USB data'
 arch=('any')
@@ -27,7 +27,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/greatscottgadgets/python-usb-protocol/archive/${pkgver}.tar.gz"
 )
 
-sha512sums=('289e69ee456b6e3157b9ea8acc41dc2533bb29a34ad239dc98138eae85ab7f0b44b1819864333976768f38cc1b16bd47edd1124b6a47bd492fade9b9b1256e2b')
+sha512sums=('70a2ed606b98b09fd088a21a55646a9399ffa70d024d6e1e25bf15d0322c64ce049d662bf0b489d8478abd0fec5b2b745a8e7f17ebf938b21cafb2d4822439b9')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -38,7 +38,7 @@ prepare() {
 from pyproject_patcher import patch_in_place
 with patch_in_place('pyproject.toml') as toml:
     toml.set_project_version_from_env('pkgver')
-    toml.remove_setuptools_git_versioning_section()
+    toml.tools.setuptools_git_versioning.remove()
 EOF
 }
 
@@ -53,6 +53,11 @@ build() {
   python -m installer --destdir=tmp_install dist/*.whl
   PYTHONPATH="${PWD}/tmp_install/${_site_packages}" \
     make -C docs singlehtml
+}
+
+check() {
+  cd "${pkgname}-${pkgver}"
+  python -m unittest discover -v
 }
 
 package() {

@@ -1,6 +1,6 @@
 pkgbase = python-usb-protocol
 	pkgdesc = Utilities, data structures, constants, parsers, and tools for working with USB data
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/greatscottgadgets/python-usb-protocol
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-usb-protocol
 	makedepends = python-wheel
 	depends = python
 	depends = python-construct
-	source = python-usb-protocol-0.9.0.tar.gz::https://github.com/greatscottgadgets/python-usb-protocol/archive/0.9.0.tar.gz
-	sha512sums = 289e69ee456b6e3157b9ea8acc41dc2533bb29a34ad239dc98138eae85ab7f0b44b1819864333976768f38cc1b16bd47edd1124b6a47bd492fade9b9b1256e2b
+	source = python-usb-protocol-0.9.1.tar.gz::https://github.com/greatscottgadgets/python-usb-protocol/archive/0.9.1.tar.gz
+	sha512sums = 70a2ed606b98b09fd088a21a55646a9399ffa70d024d6e1e25bf15d0322c64ce049d662bf0b489d8478abd0fec5b2b745a8e7f17ebf938b21cafb2d4822439b9
 
 pkgname = python-usb-protocol
