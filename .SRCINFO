@@ -1,0 +1,24 @@
+pkgbase = r-future.callr
+	pkgdesc = Implementation of the Future API on top of the callr package
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=future.callr
+	arch = any
+	license = LGPL-2.1-or-later
+	checkdepends = r-globals
+	checkdepends = r-future.apply
+	checkdepends = r-listenv
+	checkdepends = r-markdown
+	checkdepends = r-r.rsp
+	depends = r
+	depends = r-future>=1.33.0
+	depends = r-callr>=2.0.3
+	optdepends = r-globals
+	optdepends = r-future.apply
+	optdepends = r-listenv
+	optdepends = r-markdown
+	optdepends = r-r.rsp
+	source = https://cran.r-project.org/src/contrib/future.callr_0.8.2.tar.gz
+	b2sums = 29d0f095658ea7481b4a4aab543b64a7e00b0120df42b6242c8ac7eb37701b6fea600e88e4cefbfe962e0b7189266fc747dc587d7618aa5332c71b6948941da1
+
+pkgname = r-future.callr
