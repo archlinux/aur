@@ -1,0 +1,154 @@
+From 802bfb627eb05a1ee655854dd261800061322b9a Mon Sep 17 00:00:00 2001
+From: Simon H <howroydlsu@gmail.com>
+Date: Sun, 11 Feb 2024 17:59:59 +0000
+Subject: [PATCH] Python 3.12 compatibility (#164)
+
+* Removed depreciated `imp` and replaced with `importlib`
+
+* Updated meta classifiers to include newer Python versions
+
+* Added Python3.12 into github workflow action
+
+* Updated workflow to test all versions we say we do
+
+* Tidied mixed markup styles
+
+* Assed Windows and MacOS to tests
+
+* Updated depreciated setup-python action to v5
+
+* Adding Python3.12 to Action
+
+* Removed my test branch from Actions
+---
+ .github/workflows/ci.yml | 20 ++++++++------------
+ README.md                | 28 +++++++++++-----------------
+ setup.py                 | 24 ++++++++++++++++++++++--
+ 3 files changed, 41 insertions(+), 31 deletions(-)
+
+diff --git a/README.md b/README.md
+index 06f922d..16ca26c 100644
+--- a/README.md
++++ b/README.md
+@@ -1,13 +1,12 @@
+-pynmea2
+-=======
++# pynmea2
+ 
+ `pynmea2` is a python library for the [NMEA 0183](http://en.wikipedia.org/wiki/NMEA_0183) protocol
+ 
+ `pynmea2` is based on [`pynmea`](https://code.google.com/p/pynmea/) by Becky Lewis
+ 
+-The `pynmea2` homepage is located at http://github.com/Knio/pynmea2
++The `pynmea2` homepage is located at <http://github.com/Knio/pynmea2>
+ 
+- ### Compatibility
++## Compatibility
+ 
+ `pynmea2` is compatable with Python 2.7 and Python 3.4+
+ 
+@@ -15,18 +14,19 @@ The `pynmea2` homepage is located at http://github.com/Knio/pynmea2
+ [![Build status](https://github.com/Knio/pynmea2/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/Knio/pynmea2/actions/workflows/ci.yml?query=branch%3Amaster+)
+ [![Coverage status](https://img.shields.io/coveralls/github/Knio/pynmea2/master.svg?style=flat)](https://coveralls.io/r/Knio/pynmea2?branch=master)
+ 
+-### Installation
++## Installation
+ 
+ The recommended way to install `pynmea2` is with
+ [pip](http://pypi.python.org/pypi/pip/):
+ 
+-    pip install pynmea2
++```bash
++pip install pynmea2
++```
+ 
+ [![PyPI version](https://img.shields.io/pypi/v/pynmea2.svg?style=flat)](https://pypi.org/project/pynmea2/)
+ [![PyPI downloads](https://img.shields.io/pypi/dm/pynmea2.svg?style=flat)](https://pypi.org/project/pynmea2/)
+ 
+-Parsing
+--------
++## Parsing
+ 
+ You can parse individual NMEA sentences using the `parse(data, check=False)` function, which takes a string containing a
+ NMEA 0183 sentence and returns a `NMEASentence` object. Note that the leading '$' is optional and trailing whitespace is ignored when parsing a sentence.
+@@ -91,8 +91,7 @@ For example, `latitude` and `longitude` properties exist as helpers to access th
+ "-19°29′02.7000″"
+ ```
+ 
+-Generating
+-----------
++## Generating
+ 
+ You can create a `NMEASentence` object by calling the constructor with talker, message type, and data fields:
+ 
+@@ -101,7 +100,6 @@ You can create a `NMEASentence` object by calling the constructor with talker, m
+ >>> msg = pynmea2.GGA('GP', 'GGA', ('184353.07', '1929.045', 'S', '02410.506', 'E', '1', '04', '2.6', '100.00', 'M', '-33.9', 'M', '', '0000'))
+ ```
+ 
+-
+ and generate a NMEA string from a `NMEASentence` object:
+ 
+ ```python
+@@ -109,9 +107,7 @@ and generate a NMEA string from a `NMEASentence` object:
+ '$GPGGA,184353.07,1929.045,S,02410.506,E,1,04,2.6,100.00,M,-33.9,M,,0000*6D'
+ ```
+ 
+-
+-File reading example
+---------
++## File reading example
+ 
+ See [examples/read_file.py](/examples/read_file.py)
+ 
+@@ -129,9 +125,7 @@ for line in file.readlines():
+         continue
+ ```
+ 
+-
+-pySerial device example
+----------
++## `pySerial` device example
+ 
+ See [examples/read_serial.py](/examples/read_serial.py)
+ 
+diff --git a/setup.py b/setup.py
+index facd391..d9d3eb8 100644
+--- a/setup.py
++++ b/setup.py
+@@ -1,7 +1,24 @@
++import importlib.machinery
++import importlib.util
++
+ from setuptools import setup
+ 
+-import imp
+-_version = imp.load_source("pynmea2._version", "pynmea2/_version.py")
++
++def load_source(modname, filename):
++    """Load a source file and return its module object.
++
++    From: https://docs.python.org/3.12/whatsnew/3.12.html#imp
++    """
++    loader = importlib.machinery.SourceFileLoader(modname, filename)
++    spec = importlib.util.spec_from_file_location(modname, filename, loader=loader)
++    module = importlib.util.module_from_spec(spec)
++    # The module is always executed and not cached in sys.modules.
++    # Uncomment the following line to cache the module.
++    # sys.modules[module.__name__] = module
++    loader.exec_module(module)
++    return module
++
++_version = load_source("pynmea2._version", "pynmea2/_version.py")
+ 
+ setup(
+     name='pynmea2',
+@@ -29,6 +46,9 @@
+         'Programming Language :: Python :: 3.7',
+         'Programming Language :: Python :: 3.8',
+         'Programming Language :: Python :: 3.9',
++        'Programming Language :: Python :: 3.10',
++        'Programming Language :: Python :: 3.11',
++        'Programming Language :: Python :: 3.12',
+         'Programming Language :: Python :: Implementation :: PyPy',
+         'Topic :: Scientific/Engineering :: GIS',
+         'Topic :: Software Development :: Libraries :: Python Modules',

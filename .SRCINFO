@@ -1,7 +1,7 @@
 pkgbase = python-pynmea2
 	pkgdesc = Python library for parsing the NMEA 0183 protocol (GPS)
-	pkgver = 1.19.0
-	pkgrel = 1
+	pkgver = 1.19.1
+	pkgrel = 2
 	url = https://github.com/Knio/pynmea2
 	arch = any
 	license = MIT
@@ -9,7 +9,9 @@ pkgbase = python-pynmea2
 	makedepends = git
 	makedepends = python-setuptools
 	source = pynmea2::git+https://github.com/Knio/pynmea2.git#commit=5d3d2013bff9c5bce2e14132d21fff865b1e58fd
+	source = python312.patch
 	sha256sums = SKIP
+	sha256sums = 9041ded58cca5f817f9c8a91987c914a0df0be940618a3a0974a291cd76a0a2b
 
 pkgname = python-pynmea2
 	depends = python
