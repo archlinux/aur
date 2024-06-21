@@ -1,7 +1,7 @@
 # Maintainer: Kazuya Takei <myself@attakei.net>
 
 pkgname=firebase-tools-bin
-pkgver=13.11.2
+pkgver=13.11.3
 pkgrel=1
 pkgdesc=" The Firebase Command Line Tools (bundled official standalone binary)"
 arch=('x86_64')
@@ -16,18 +16,18 @@ depends=(
 conflicts=('firebase-tools')
 options=('!strip' '!debug')
 source=(
-    "firebase-tools-linux-13.11.2::https://github.com/firebase/firebase-tools/releases/download/v13.11.2/firebase-tools-linux"
-    "LICENSE-13.11.2::https://github.com/firebase/firebase-tools/raw/v13.11.2/LICENSE"
+    "firebase-tools-linux-13.11.3::https://github.com/firebase/firebase-tools/releases/download/v13.11.3/firebase-tools-linux"
+    "LICENSE-13.11.3::https://github.com/firebase/firebase-tools/raw/v13.11.3/LICENSE"
     )
 md5sums=(
-    '517876a61917a6ff07123a91befcec48'
+    '4d7bf7dced8a4947c4d6b9186e1c7a0a'
     '6ea8f4d1de9a164d33ffe95483a58af4'
     )
 
 package() {
-    binPath=${srcdir}/firebase-tools-linux-13.11.2
+    binPath=${srcdir}/firebase-tools-linux-13.11.3
     chmod +x ${binPath}
-    install -Dm644 "${srcdir}/LICENSE-13.11.2" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/LICENSE-13.11.3" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm755 "${binPath}" "${pkgdir}/usr/bin/firebase"
     rm ${srcdir}/firebase-tools-linux-*
     rm ${srcdir}/LICENSE-*
