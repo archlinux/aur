@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=spatstat.data
-_pkgver=3.0-4
+_pkgver=3.1-2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Datasets for 'spatstat' Family"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -20,8 +20,8 @@ optdepends=(
   r-spatstat.random
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('21d5a23ffd441d3568230fc5bff15015')
-b2sums=('549579e633c1211cfb015e26d791860166ad5c5f4d9189f5a434638e141d0cce0af3a4210d28b00aae63f6bb64ad8bb1099f5d3e32b88fea75da3377a0ffd514')
+md5sums=('7c470bc7cc15481b511aef3d56dd5dd4')
+b2sums=('8ec801f70e815c3913b1356f9c2abbfd33fdd24d4da07be89c67eb3877f678ef1f130a94de9a86942ddaa4dc0bde73112b302f4e47432fe0769bf467427aa66e')
 
 build() {
   mkdir build
