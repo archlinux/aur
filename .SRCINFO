@@ -1,11 +1,12 @@
 pkgbase = gtksourceview2
 	pkgdesc = A text widget that extends the standard gtk+ 2.x
 	pkgver = 2.10.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://download.gnome.org/sources/gtksourceview
 	arch = x86_64
 	license = GNU
 	makedepends = intltool
+	makedepends = glib2-devel
 	depends = harfbuzz
 	depends = glibc
 	depends = cairo

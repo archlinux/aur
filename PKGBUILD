@@ -2,13 +2,13 @@
 # Contributor: Jason Kercher <jkercher43 at gmail>
 pkgname=gtksourceview2
 pkgver=2.10.5
-pkgrel=3
+pkgrel=4
 pkgdesc="A text widget that extends the standard gtk+ 2.x"
 arch=(x86_64)
 url="https://download.gnome.org/sources/gtksourceview"
 license=(GNU)
 depends=(harfbuzz glibc cairo bash python gtk2 at-spi2-core pango libxml2 glib2 fontconfig freetype2 gdk-pixbuf2)
-makedepends=('intltool')
+makedepends=('intltool' 'glib2-devel')
 checkdepends=()
 provides=()
 source=("$url/2.10/gtksourceview-$pkgver.tar.gz")
