@@ -41,5 +41,5 @@ build() {
 }
 
 package() {
-  install -D -m0755 "$srcdir/$_pkgname/keyring" "$pkgdir/usr/bin/keyring"
+  install -D -m0755 "$srcdir/$_pkgname/keyring" "$pkgdir/usr/bin/kc"
 }
