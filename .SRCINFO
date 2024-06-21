@@ -1,6 +1,6 @@
 pkgbase = dynamicarray
 	pkgdesc = Dynamic arrays in C
-	pkgver = 2.3.0
+	pkgver = 2.3.2
 	pkgrel = 3
 	url = https://gitlab.com/deadgirl/dynamicarray
 	arch = x86_64

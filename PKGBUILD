@@ -1,6 +1,6 @@
 # Maintainer: Madison Lynch <madi@mxdi.xyz>
 pkgname='dynamicarray'
-pkgver=2.3.0
+pkgver=2.3.2
 pkgrel=3
 pkgdesc="Dynamic arrays in C"
 arch=('x86_64')
