@@ -5,9 +5,7 @@ pkgname=img2kvm-rs-git
 pkgver=r1.e742a8f
 pkgrel=1
 pkgdesc="A utility that convert disk image in Proxmox VE."
-arch=('x86_64'
-    'aarch64'
-    'riscv64')
+arch=('x86_64')
 url="https://github.com/ywjno/img2kvm-rs"
 license=('MIT')
 provides=(${pkgbase%-git} ${pkgbase%-rs-git})
