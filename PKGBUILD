@@ -2,13 +2,23 @@
 
 pkgname=ruby-cucumber-compatibility-kit
 pkgver=12.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Kit to check compatibility with official cucumber implementation"
 arch=(any)
 url='https://github.com/cucumber/compatibility-kit'
 license=(MIT)
-depends=(ruby-cucumber-messages ruby-rake ruby-rspec)
-makedepends=(npm)
+depends=(
+  ruby
+  ruby-cucumber-messages
+)
+makedepends=(
+  npm
+)
+checkdepends=(
+  ruby-bundler
+  ruby-rake
+  ruby-rspec
+)
 options=(!emptydirs)
 source=(https://github.com/cucumber/compatibility-kit/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
 sha256sums=('b6762501353ff053fc02c32040d863e812434a80d6372160563520ea72b031c9')
