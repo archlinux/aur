@@ -1,9 +1,9 @@
-# Maintainer: Luís Ferreira < org dot aurorafoss at luis, backwards>
+# Contributor: Luís Ferreira < org dot aurorafoss at luis, backwards>
 # Contributor: Artem Vorotnikov <artem@vorotnikov.me>
 
 pkgname="ruby-cabin"
-pkgver=0.8.1
-pkgrel=2
+pkgver=0.9.0
+pkgrel=1
 pkgdesc='Experiments in structured and contextual logging'
 arch=(any)
 url='https://github.com/jordansissel/ruby-cabin'
@@ -13,7 +13,7 @@ makedepends=('rubygems')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/${pkgname#*-}-$pkgver.gem)
 noextract=("${pkgname#*-}-$pkgver.gem")
-sha512sums=('c047b3e20614fab2a007362ebc811434a83552471133e696a0c3d4b1c9449dca3e562e1951c7364d2c4f563315466c57c6969398731da752f78ed60c156a4bd3')
+sha256sums=('91c5394289e993e7037a6c869e3f212f31a5984d2b1811ac934f591c87446b2c')
 
 package() {
   local _gemdir
