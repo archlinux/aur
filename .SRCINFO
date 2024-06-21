@@ -1,6 +1,6 @@
 pkgbase = texturepacker
 pkgdesc = Sprite sheet creator and image optimizer
-pkgver = 7.3.0
+pkgver = 7.4.0
 pkgrel = 1
 url = https://www.codeandweb.com/texturepacker
 install = texturepacker.install
@@ -15,6 +15,6 @@ depends = qt5-svg
 depends = qt5-declarative
 depends = qt5-imageformats
 depends = qt5-quickcontrols
-source = https://www.codeandweb.com/download/texturepacker/7.3.0/TexturePacker-7.3.0.deb
-sha256sums = d22e8b0eb2c1bd314a0b9916d8f5cfdc17ba6e8508259d1f775246e85a12d644
+source = https://www.codeandweb.com/download/texturepacker/7.4.0/TexturePacker-7.4.0.deb
+sha256sums = bfe6b38c822c726a7bd960778248b408a6fecfe158b2e271231f63bdd7ecfaa3
 pkgname = texturepacker
