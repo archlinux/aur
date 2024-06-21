@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-gpu-profile-selector-git
 _uuid=GPU_profile_selector@lorenzo9904.gmail.com
-pkgver=gnome.45.r1.g45fee10
-pkgrel=2
+pkgver=gnome.46.r2.g323ff94
+pkgrel=1
 epoch=1
 pkgdesc="Provides a simple way to switch between GPU profiles on NVIDIA Optimus systems"
 arch=('any')
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd GPU_profile_selector
-  git describe --long --tags | sed 's/^gnome-44-v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -26,7 +26,6 @@ build() {
      --extra-source=img \
      --extra-source=lib \
      --extra-source=ui \
-     --extra-source=prefs.xml \
      --force
 }
 
