@@ -1,18 +1,18 @@
 pkgbase = comic-shanns-nerd
 	pkgdesc = Nerd font version of Comic Shanns
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/jaxvanyang/comic-shanns-nerd
 	arch = any
 	license = MIT
 	provides = comic-shanns-nerd
 	conflicts = comic-shanns-nerd
-	source = https://github.com/jaxvanyang/comic-shanns-nerd/releases/download/v2.0.0/ComicShannsNerdFont-Regular.otf
-	source = https://github.com/jaxvanyang/comic-shanns-nerd/releases/download/v2.0.0/ComicShannsNerdFont-Regular.ttf
-	source = https://github.com/jaxvanyang/comic-shanns-nerd/raw/v2.0.0/LICENSE
-	sha256sums = d2c2ca944cb21ed9f7d8cddd912f0c859931e7865d589324708a323a2a68cf88
-	sha256sums = 585ca7606c559a74a0199e3034ae4843540983c8d8dbb6394c5dd530ea8569e6
-	sha256sums = 6a8855512749568a12153c13b328bb1b8d1eefb89e7b997777667c988db11055
+	source = ComicShannsNerdFont-Regular-v2.1.0.otf::https://github.com/jaxvanyang/comic-shanns-nerd/releases/download/v2.1.0/ComicShannsNerdFont-Regular.otf
+	source = ComicShannsNerdFont-Regular-v2.1.0.ttf::https://github.com/jaxvanyang/comic-shanns-nerd/releases/download/v2.1.0/ComicShannsNerdFont-Regular.ttf
+	source = comic-shanns-nerd-2.1.0.LICENSE::https://github.com/jaxvanyang/comic-shanns-nerd/raw/v2.1.0/LICENSE
+	sha256sums = a212e28abdca7afd2a47d91431e072ccd0e2b1f786cbf025d24438454e24f5a8
+	sha256sums = f043fbbfefb4af3ba2aa341d2d550b730d9c81cfd0826aca889d3a60a76708ef
+	sha256sums = 97613451616be37592e731fb14ee99749516fd360bd360bcd2d39b66d4931d0b
 
 pkgname = otf-comic-shanns-nerd
 	pkgdesc = Nerd font version of Comic Shanns (OTF)
