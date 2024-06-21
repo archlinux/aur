@@ -20,11 +20,9 @@ replaces=('gnome-typing-break-bzr')
 backup=()
 options=(!makeflags)
 changelog=
-source=("git+https://gitlab.gnome.org/GNOME/gnome-break-timer.git"
-        "$pkgname.install")
+source=("git+https://gitlab.gnome.org/GNOME/gnome-break-timer.git")
 noextract=()
-sha256sums=('SKIP'
-            'b9f8bdaa058b458951112febd3210674a78cf8cbd1fa48ef6b166ccd55603da8') 
+sha256sums=('SKIP')
 pkgver() {
   cd $srcdir/$_pkgname
   echo $(git describe | sed 's#-#_#g;s#v##')

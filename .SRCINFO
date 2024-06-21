@@ -25,8 +25,6 @@ pkgbase = gnome-break-timer-git
 	replaces = gnome-typing-break-bzr
 	options = !makeflags
 	source = git+https://gitlab.gnome.org/GNOME/gnome-break-timer.git
-	source = gnome-break-timer-git.install
 	sha256sums = SKIP
-	sha256sums = b9f8bdaa058b458951112febd3210674a78cf8cbd1fa48ef6b166ccd55603da8
 
 pkgname = gnome-break-timer-git
