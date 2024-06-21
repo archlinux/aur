@@ -16,7 +16,7 @@ pkgbase = yai-bin
 	sha256sums_i686 = 93cc10dec1af0ff622b533c6b81072e417da656aab04cde7ba57cf915c16312a
 	source_aarch64 = yai-0.6.0.tar.gz::https://github.com/ekkinox/yai/releases/download/0.6.0/yai_0.6.0_linux_arm64.tar.gz
 	sha256sums_aarch64 = 79ba33f268cfa8fa12171b9cc4420da80ad67baea31e6bcfb0d021f738193c85
-	source_armv6h = yai-0.6.0.tar.gz::https://github.com/ekkinox/yai/releases/download/0.6.0/yai_0.6.0_linux_armv64.tar.gz
+	source_armv6h = yai-0.6.0.tar.gz::https://github.com/ekkinox/yai/releases/download/0.6.0/yai_0.6.0_linux_armv6.tar.gz
 	sha256sums_armv6h = e2826fb28bf03c1682b6a9d543646c5239e6ceba2ab77a8f6808d35e56d3ff97
 
 pkgname = yai-bin
