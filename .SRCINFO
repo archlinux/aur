@@ -1,0 +1,18 @@
+pkgbase = ruby-faraday-excon
+	pkgdesc = Faraday adapter for Excon
+	pkgver = 1.1.0
+	pkgrel = 2
+	url = https://github.com/lostisland/faraday-excon
+	arch = any
+	license = MIT
+	checkdepends = ruby-rspec
+	checkdepends = ruby-faraday
+	checkdepends = ruby-webmock
+	checkdepends = ruby-multipart-parser
+	makedepends = ruby-rspec
+	depends = ruby
+	options = !emptydirs
+	source = https://github.com/lostisland/faraday-excon/archive/v1.1.0/faraday-excon-v1.1.0.tar.gz
+	sha512sums = 4296d94ccaa482b6c37e0e9596c4a4bdc809c899818d40e6a29adb64f49a75a76f107ac7082cdc3527e195b4fc6f2fbfc72ca46258fc595987eed73e2878130c
+
+pkgname = ruby-faraday-excon
