@@ -1,7 +1,7 @@
 pkgbase = colordf
 	pkgdesc = Colored and configurable version of df
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Calendulish/colordf
 	arch = x86_64
 	arch = i686
@@ -11,6 +11,6 @@ pkgbase = colordf
 	makedepends = util-linux-libs
 	makedepends = cmake
 	source = https://github.com/Calendulish/colordf/archive/v1.0.tar.gz
-	sha256sums = 39d14fcd96050bf920c7ff130e8e4b84fbf70dd82a0be8ba8b826dc87ff1776c
+	sha256sums = 50626f0ed82303f6968f6806cad6e943f24616a36ad945c243a1b2866ab141cd
 
 pkgname = colordf
