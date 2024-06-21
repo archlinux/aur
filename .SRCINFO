@@ -1,6 +1,6 @@
 pkgbase = gnunet-git
 	pkgdesc = A framework for secure peer-to-peer networking
-	pkgver = 0.21.1.r1.g2aded5e3a
+	pkgver = 0.21.2.r38.g604b2d10b
 	pkgrel = 1
 	url = http://gnunet.org
 	install = gnunet.install
@@ -23,6 +23,7 @@ pkgbase = gnunet-git
 	makedepends = texinfo
 	depends = brotli
 	depends = gettext
+	depends = gmp
 	depends = gnutls
 	depends = iptables
 	depends = jansson

@@ -6,7 +6,7 @@
 
 _appname='gnunet'
 pkgname="${_appname}-git"
-pkgver=0.21.1.r1.g2aded5e3a
+pkgver=0.21.2.r38.g604b2d10b
 pkgrel=1
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
@@ -14,10 +14,10 @@ url="http://${_appname}.org"
 license=('AGPL')
 conflicts=("${_appname}" "${_appname}-bin")
 provides=("${_appname}")
-depends=('brotli' 'gettext' 'gnutls' 'iptables' 'jansson' 'libcurl-gnutls'
-         'libextractor' 'libgcrypt' 'libidn2' 'libmicrohttpd' 'libsodium'
-         'libtool' 'libunistring' 'miniupnpc' 'nss' 'openssl' 'sqlite' 'which'
-         'zlib')
+depends=('brotli' 'gettext' 'gmp' 'gnutls' 'iptables' 'jansson'
+         'libcurl-gnutls' 'libextractor' 'libgcrypt' 'libidn2' 'libmicrohttpd'
+         'libsodium' 'libtool' 'libunistring' 'miniupnpc' 'nss' 'openssl'
+         'sqlite' 'which' 'zlib')
 makedepends=('bluez-libs' 'gettext' 'git' 'libpulse' 'libtool' 'opus'
              'pkgconfig' 'postgresql' 'python' 'python-sphinx'
              'python-sphinx-multiversion' 'python-sphinx_rtd_theme' 'recutils'
