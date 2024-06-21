@@ -1,13 +1,14 @@
 pkgbase = ruby-execjs
 	pkgdesc = Run JavaScript code from Ruby
 	pkgver = 2.9.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/rails/execjs
 	arch = any
 	license = MIT
+	checkdepends = nodejs
 	makedepends = ruby-rdoc
 	depends = ruby
-	depends = nodejs
+	optdepends = nodejs: Node.js runtime
 	options = !emptydirs
 	source = https://github.com/rails/execjs/archive/v2.9.1/execjs-2.9.1.tar.gz
 	sha256sums = 91355ddd70ae423254d0447a92c7fc94b037062e8d0fc1da7bd38971c6d92161

@@ -5,13 +5,15 @@
 _gemname=execjs
 pkgname=ruby-$_gemname
 pkgver=2.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Run JavaScript code from Ruby'
 arch=('any')
 url='https://github.com/rails/execjs'
 license=('MIT')
-depends=('ruby' 'nodejs')
+depends=('ruby')
+checkdepends=('nodejs')
 makedepends=('ruby-rdoc')
+optdepends=('nodejs: Node.js runtime')
 options=(!emptydirs)
 source=("${url}/archive/v${pkgver}/${_gemname}-${pkgver}.tar.gz")
 sha256sums=('91355ddd70ae423254d0447a92c7fc94b037062e8d0fc1da7bd38971c6d92161')
