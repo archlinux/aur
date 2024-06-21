@@ -1,0 +1,21 @@
+pkgbase = ergochat-ldap
+	pkgdesc = LDAP plugin for the IRC server Ergo
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/ergochat/ergo-ldap
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	backup = etc/ergochat/ldap-config.yaml
+	source = git+https://github.com/ergochat/ergo-ldap#tag=v0.0.1
+	sha256sums = 437928ad1b74432672442e1fe187d9d2987f93124150d663aafda2cab57963ab
+
+pkgname = ergochat-ldap
