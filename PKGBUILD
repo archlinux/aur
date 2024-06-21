@@ -12,7 +12,7 @@ changelog=
 install="${pkgname}.install"
 source=("https://github.com/rainer042/geteltorito/blob/main/geteltorito.pl")
 noextract=(${pkgname}.pl)
-sha256sums=('14b28a19286639a5444db307ac08041cfa9594be3d576dabe5d1b5184262de06')
+sha256sums=('378a6305edb9397978e60b7908a85dd8c2546f2808cb845552d5e4a8ba9baab3')
 
 package() {
   cd "${srcdir}/"
