@@ -1,3 +1,5 @@
+# shellcheck disable=SC2148,SC2154,SC2034
+
 # Maintainer: William Horvath <william at horvath dot blog>
 
 _where="${PWD:-$(pwd)}"
@@ -8,7 +10,7 @@ _where="${PWD:-$(pwd)}"
 ################################################################################################################################
 ################################################################################################################################
 
-wow64build=".wow64" ## set to nothing (empty) to make a non-wow64 build
+wow64build=".wow64" ## set to nothing (empty) to make a non-wow64 build, otherwise set to .wow64 (default)
 if [ -n "$wow64build" ]; then _wowname="wow64-"; else _wowname=""; fi
 
 ## these will do nothing if _autoupdate=false (default), the base is taken from the patch repo
@@ -25,13 +27,14 @@ _userpatches=false ## unimplemented for now
 ################################################################################################################################
 ################################################################################################################################
 
-pkgname=wine-osu-spectator-${_wowname}bin
+pkgname=wine-osu-spectator-"${_wowname}"bin
+
 pkgver=9.11${wow64build:-}
-pkgrel=1
+pkgrel=2
 
 pkgdesc="A compatibility layer for running Windows programs, but with osu! specific patches"
-provides=(wine-osu-spectator-${_wowname}bin)
-conflicts=(wine-osu-spectator-${_wowname}bin)
+provides=(wine-osu-spectator-"${_wowname}"bin)
+conflicts=(wine-osu-spectator-"${_wowname}"bin)
 
 install=wine.install
 url="http://www.winehq.com"
@@ -47,16 +50,21 @@ source=(
   wine-binfmt.conf
 
   https://github.com/mstorsjo/llvm-mingw/releases/download/nightly/llvm-mingw-nightly-ucrt-ubuntu-20.04-x86_64.tar.xz
-  https://kayari.org/gcc-latest/gcc-latest.deb # only used for wow64 builds
 )
 
 sha512sums=('9fd04c1b52de080d828e1c24783ab758ab7d68fb8bb44e701d536d9bc815dbbdc67bc69aab26993488cbc5fc2f80c65c9a257d7b4d321fb58ad190bd1433a8c5'
-            'cfc2ee43b1409096d64340ca62694393152baea28dc9e1df6f76b2ab8129e737bb916b0f1d36bf437da777a3bd1a9cb0529079439aecbc5b2c37645ea6d55bdf'
+            '755697df574bbdbcbbd29f87eccf0c38af6166fa73e066326b875f3fc5544ad72fd8d8280357e9594a0c029394d7a1ad8e19983efd8d33b50074451ea77bb91b'
             '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
             'bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285'
-            'SKIP' 'SKIP')
+            'SKIP')
 
-noextract=(gcc-latest.deb)
+noextract=()
+
+if [ -n "$wow64build" ]; then
+  source+=('https://kayari.org/gcc-latest/gcc-latest.deb')
+  sha512sums+=('SKIP')
+  noextract+=('gcc-latest.deb')
+fi
 
 depends=(
   fontconfig
@@ -139,7 +147,7 @@ if [ -z "${wow64build}" ]; then
   optdepends+=(lib32-giflib lib32-libpng lib32-libldap lib32-gnutls lib32-mpg123 lib32-openal lib32-v4l-utils lib32-libpulse lib32-alsa-plugins lib32-alsa-lib lib32-libjpeg-turbo lib32-libxcomposite lib32-libxinerama lib32-opencl-icd-loader lib32-libxslt lib32-gst-plugins-base-libs lib32-vkd3d lib32-sdl2)
 fi
 
-makedepends=(${makedepends[@]} ${depends[@]})
+makedepends=("${makedepends[@]}" "${depends[@]}")
 
 # exported at the start of every function
 _set_vars() {
@@ -156,7 +164,7 @@ _set_vars() {
   fi
 
   export CPPFLAGS="-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0 -DNDEBUG -D_NDEBUG"
-  _common_cflags="${_GLIBC_LIBS_COMMON} -march=x86-64 -mtune=native -O2 -pipe -fno-semantic-interposition -fno-strict-aliasing -fomit-frame-pointer -fwrapv -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -Wno-error=return-mismatch -Wno-error=int-conversion -w"
+  _common_cflags="${_GLIBC_LIBS_COMMON} -march=x86-64 -mtune=generic -O2 -pipe -fno-semantic-interposition -fno-strict-aliasing -fomit-frame-pointer -fwrapv -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -Wno-error=return-mismatch -Wno-error=int-conversion -w"
 
   _LTO_FLAGS="-flto -fdevirtualize-at-ltrans -flto-partition=one -Wl,-flto"
   #_GCC_NATIVE_FLAGS="-floop-nest-optimize -fgraphite-identity -floop-strip-mine " # gcc-latest is not compiled with libisl which is needed for graphite, but not currently used
@@ -189,7 +197,7 @@ _set_vars() {
 }
 
 prepare() { _set_vars;
-  cd "${_where}"
+  cd "${_where}" || _failure
 
   ## removes pkg dir if already existing
   rm -rf "${_where}"/pkg || true 
@@ -218,20 +226,20 @@ prepare() { _set_vars;
     ## Mainline setup
 
     if ! [ -d "${_where}"/wine ]; then
-      cd "${_where}"
+      cd "${_where}" || _failure
       git clone https://github.com/wine-mirror/wine.git
     fi
 
-    cd "${_where}"/wine
+    cd "${_where}"/wine || _failure
     git pull
 
     if [ "$_autoupdate" != "true" ]; then
-      git reset --hard $_wine_commit
+      git reset --hard "${_wine_commit}"
     fi
 
     _currcommit=$(git rev-parse HEAD)
 
-    if [ "$_currcommit" != "$_wine_commit" ]; then
+    if [ "$_currcommit" != "${_wine_commit}" ]; then
       msg2 "Wine mainline updated to: $_currcommit"
       sed -i "s/^_wine_commit=$_wine_commit$/_wine_commit=$_currcommit/g" "${_where}"/PKGBUILD
     else
@@ -241,46 +249,46 @@ prepare() { _set_vars;
     ## Staging setup
 
     if ! [ -d "${_where}"/wine-staging ]; then
-      cd "${_where}"
+      cd "${_where}" || _failure
       git clone https://github.com/wine-staging/wine-staging.git
     fi
 
-    cd "${_where}"/wine-staging
+    cd "${_where}"/wine-staging || _failure
     git pull
 
     if [ "$_autoupdate" != "true" ]; then
-      git reset --hard $_staging_commit
+      git reset --hard "${_staging_commit}"
     fi
 
     _currcommit=$(git rev-parse HEAD)
 
-    if [ "$_currcommit" != "$_staging_commit" ]; then
+    if [ "$_currcommit" != "${_staging_commit}" ]; then
       msg2 "Wine staging updated to: $_currcommit"
       sed -i "s/^_staging_commit=$_staging_commit$/_staging_commit=$_currcommit/g" "${_where}"/PKGBUILD
     else
       msg2 "Wine staging at: $_currcommit"
     fi
 
-    cd "${_where}"
+    cd "${_where}" || _failure
     cp -r "${_where}"/wine "${srcdir}"/"${pkgname}"
     cp -r "${_where}"/wine-staging "${srcdir}"/
-    cd "${srcdir}"
+    cd "${srcdir}" || _failure
 
     ## apply wine-staging patchset
 
-    pushd wine-staging/staging
-    ./patchinstall.py DESTDIR="${srcdir}/${pkgname}" --all $_disabled_staging
-    popd
+    pushd wine-staging/staging || _failure
+    ./patchinstall.py DESTDIR="${srcdir}/${pkgname}" --all "${_disabled_staging}"
+    popd || _failure
   
   fi # end ! _bundled_src
 
   ## Applying patches
   touch "${_where}"/patchlog.txt && printf "Patches applied:\n\n" > "${_where}"/patchlog.txt
 
-  cd "${srcdir}"/"${pkgname}"
+  cd "${srcdir}"/"${pkgname}" || _failure
   for patch in $(find "${srcdir}/wine-osu-patches" -type f -regex ".*\.patch" | sort); do
     shortname="${patch#"${srcdir}/wine-osu-patches/"}"
-    printf "\nApplying '${shortname}'\n\n" >> "${_where}"/patchlog.txt
+    printf "\nApplying %s\n\n" "${shortname}" >> "${_where}"/patchlog.txt
     msg2 "Applying '${shortname}'"
     patch -Np1 <"${patch}" >> "${_where}"/patchlog.txt
   done
@@ -300,16 +308,16 @@ prepare() { _set_vars;
   fi
   autoreconf -fiv
 
-  cd "${srcdir}"
+  cd "${srcdir}" || _failure
 
   ## Deleting old build directories (if existing)
-  if [ -z "${wow64build}" ]; then rm -rf $pkgname-32-build || true; mkdir $pkgname-32-build; fi
-  rm -rf $pkgname-64-build || true
-  mkdir $pkgname-64-build
+  if [ -z "${wow64build}" ]; then rm -rf "${pkgname}"-32-build || true; mkdir "${pkgname}"-32-build; fi
+  rm -rf "${pkgname}"-64-build || true
+  mkdir "${pkgname}"-64-build
 }
 
 buildwow64() { _set_vars;
-  cd "${srcdir}"
+  cd "${srcdir}" || _failure
 
   export PKG_CONFIG_LIBDIR=${srcdir}/llvm-mingw/x86_64-w64-mingw32/lib/pkgconfig:/usr/lib/pkgconfig:${srcdir}/llvm-mingw/i686-w64-mingw32/lib/pkgconfig:/usr/lib32/pkgconfig
   export PKG_CONFIG_PATH=$PKG_CONFIG_LIBDIR:$PKG_CONFIG_PATH_CUSTOM
@@ -317,12 +325,10 @@ buildwow64() { _set_vars;
   export x86_64_CC="ccache x86_64-w64-mingw32-clang"
   export CROSSCC="ccache x86_64-w64-mingw32-clang"
 
-  export SOURCE_DATE_EPOCH=0
-
   msg2 "Building Wine-64..."
-  cd "$srcdir/$pkgname-64-build"
-  ../$pkgname/configure \
-    --libdir=/opt/$pkgname/lib64 \
+  cd "${srcdir}"/"${pkgname}"-64-build || _failure
+  ../"${pkgname}"/configure \
+    --libdir=/opt/"${pkgname}"/lib64 \
     --enable-archs=x86_64,i386 \
     --with-mingw="ccache x86_64-w64-mingw32-clang" \
     "${_sharedopts[@]}"
@@ -331,7 +337,7 @@ buildwow64() { _set_vars;
 }
 
 buildregular() { _set_vars;
-  cd "${srcdir}"
+  cd "${srcdir}" || _failure
 
   export PKG_CONFIG_LIBDIR=${srcdir}/llvm-mingw/x86_64-w64-mingw32/lib/pkgconfig:/usr/lib/pkgconfig
   export PKG_CONFIG_PATH=$PKG_CONFIG_LIBDIR:$PKG_CONFIG_PATH_CUSTOM
@@ -339,12 +345,10 @@ buildregular() { _set_vars;
   export x86_64_CC="ccache x86_64-w64-mingw32-clang"
   export CROSSCC="ccache x86_64-w64-mingw32-clang"
 
-  export SOURCE_DATE_EPOCH=0
-
   msg2 "Building Wine-64..."
-  cd "$srcdir/$pkgname-64-build"
-  ../$pkgname/configure \
-    --libdir=/opt/$pkgname/lib64 \
+  cd "${srcdir}"/"${pkgname}"-64-build || _failure
+  ../"${pkgname}"/configure \
+    --libdir=/opt/"${pkgname}"/lib64 \
     --enable-win64 \
     "${_sharedopts[@]}" \
     --with-mingw="ccache x86_64-w64-mingw32-clang" 
@@ -352,8 +356,8 @@ buildregular() { _set_vars;
   make -j$(($(nproc) + 1))
 
   _wine32opts=(
-    --libdir=/opt/$pkgname/lib
-    --with-wine64="$srcdir/$pkgname-64-build"
+    --libdir=/opt/"${pkgname}"/lib
+    --with-wine64="${srcdir}"/"${pkgname}"-64-build
   )
 
   export PKG_CONFIG_LIBDIR=${srcdir}/llvm-mingw/i686-w64-mingw32/lib/pkgconfig:/usr/lib32/pkgconfig
@@ -362,11 +366,9 @@ buildregular() { _set_vars;
   export i386_CC="ccache i686-w64-mingw32-clang"
   export CROSSCC="ccache i686-w64-mingw32-clang"
 
-  export SOURCE_DATE_EPOCH=0
-
   msg2 "Building Wine-32..."
-  cd "$srcdir/$pkgname-32-build"
-  ../$pkgname/configure \
+  cd "${srcdir}"/"${pkgname}"-32-build || _failure
+  ../"${pkgname}"/configure \
     "${_sharedopts[@]}" \
     "${_wine32opts[@]}" \
     --with-mingw="ccache i686-w64-mingw32-clang"
@@ -376,7 +378,7 @@ buildregular() { _set_vars;
 
 build() {
   _sharedopts=(
-    --prefix=/opt/$pkgname
+    --prefix=/opt/"${pkgname}"
     --disable-tests
     --with-x
     --with-gstreamer
@@ -389,58 +391,72 @@ build() {
     --without-sane
   )
 
+  local _old_SOURCE_DATE_EPOCH="$SOURCE_DATE_EPOCH"
+
+  export SOURCE_DATE_EPOCH=0
+
   if [ -n "${wow64build}" ]; then
     buildwow64
-  else 
+  else
     buildregular
   fi
+
+  export SOURCE_DATE_EPOCH="$_old_SOURCE_DATE_EPOCH"
 }
 
 package() { _set_vars;
   if [ -z "${wow64build}" ]; then
     msg2 "Packaging Wine-32..."
-    cd "$srcdir/$pkgname-32-build"
+    cd "${srcdir}"/$pkgname-32-build || _failure
     make -j$(($(nproc) + 1)) \
-      prefix="$pkgdir/opt/$pkgname" \
-      libdir="$pkgdir/opt/$pkgname/lib" \
-      dlldir="$pkgdir/opt/$pkgname/lib/wine" install
+      prefix="${pkgdir}"/opt/"${pkgname}" \
+      libdir="${pkgdir}"/opt/"${pkgname}"/lib \
+      dlldir="${pkgdir}"/opt/"${pkgname}"/lib/wine install
   fi
 
   msg2 "Packaging Wine-64..."
-  cd "$srcdir/$pkgname-64-build"
+  cd "${srcdir}"/$pkgname-64-build || _failure
   make -j$(($(nproc) + 1)) \
-    prefix="$pkgdir/opt/$pkgname" \
-    libdir="$pkgdir/opt/$pkgname/lib64" \
-    dlldir="$pkgdir/opt/$pkgname/lib64/wine" install
+    prefix="${pkgdir}"/opt/"${pkgname}" \
+    libdir="${pkgdir}"/opt/"${pkgname}"/lib64 \
+    dlldir="${pkgdir}"/opt/"${pkgname}"/lib64/wine install
 
   ## Font aliasing settings for Win32 applications
   if ! [ -e "/usr/share/fontconfig/conf.avail/30-win32-aliases.conf" ] && ! [ -e "/usr/share/fontconfig/conf.default/30-win32-aliases.conf" ]; then
     install -d "${pkgdir}"/usr/share/fontconfig/conf.{avail,default}
-    install -m644 "$srcdir/30-win32-aliases.conf" "${pkgdir}/usr/share/fontconfig/conf.avail"
+    install -m644 "${srcdir}"/30-win32-aliases.conf "${pkgdir}/usr/share/fontconfig/conf.avail"
     ln -s ../conf.avail/30-win32-aliases.conf "${pkgdir}/usr/share/fontconfig/conf.default/30-win32-aliases.conf"
   fi
 
   ## Install wine binary format
   if ! [ -e "/usr/lib/binfmt.d/wine.conf" ]; then
-    install -Dm 644 "$srcdir/wine-binfmt.conf" "${pkgdir}/usr/lib/binfmt.d/wine.conf"
+    install -Dm 644 "${srcdir}"/wine-binfmt.conf "${pkgdir}/usr/lib/binfmt.d/wine.conf"
   fi
 
   ## Strip libs
-  for _f in $(find "${pkgdir}"/opt/"${pkgname}"/lib{,64} -type f '(' -iname '*.a' -or -iname '*.dll' -or -iname '*.so' -or -iname '*.sys' -or -iname '*.drv' -or -iname '*.exe' ')'); do
-    /usr/bin/strip --strip-unneeded "$_f" &>/dev/null && msg2 "${_f#"${_where}/pkg/${pkgname}"} stripped"
-  done
+  msg2 "Stripping unneeded symbols from libraries"
 
-  ## Force wine to use gcc-latest libraries (wow64)
+  find "${pkgdir}"/opt/"${pkgname}"/lib{,64} \
+    -type f '(' -iname '*.a' -or -iname '*.dll' -or -iname '*.so' -or -iname '*.sys' -or -iname '*.drv' -or -iname '*.exe' ')' \
+    -print0 \
+    | xargs -0 /usr/bin/strip --strip-unneeded &>/dev/null || true
+
+  ## Force our wine to use its own libraries
+  mv "${pkgdir}"/opt/"${pkgname}"/bin/{wine,_wine}
+  
   if [ -n "${wow64build}" ]; then
-    mv $pkgdir/opt/$pkgname/bin/wine{,32}
-    cp "${srcdir}"/winestart "$pkgdir/opt/$pkgname/bin/wine"
-    chmod +x "$pkgdir/opt/$pkgname/bin/wine"
-
-    ln -sf "$pkgdir/opt/$pkgname/bin/wine" "$pkgdir/opt/$pkgname/bin/wine64"
-    cp -r "${_where}"/gcc-latest/lib64/* "$pkgdir/opt/$pkgname/lib64/wine/x86_64-unix/"
+    ## Use libgcc from gcc-latest
+    ln -sf "${pkgdir}"/opt/"${pkgname}"/bin/_wine "${pkgdir}"/opt/"${pkgname}"/bin/_wine64
+    cp -r "${_where}"/gcc-latest/lib64/* "${pkgdir}"/opt/"${pkgname}"/lib64/wine/x86_64-unix/
+  else
+    mv "${pkgdir}"/opt/"${pkgname}"/bin/{wine64,_wine64}
   fi
 
-  cp "${_where}"/patchlog.txt "$pkgdir/opt/$pkgname"
+  cp "${srcdir}"/winestart "${pkgdir}"/opt/"${pkgname}"/bin/wine
+  cp "${srcdir}"/winestart "${pkgdir}"/opt/"${pkgname}"/bin/wine64
+  chmod +x "${pkgdir}"/opt/"${pkgname}"/bin/wine{,64}
+
+  cp "${_where}"/patchlog.txt "${pkgdir}"/opt/"${pkgname}"
 }
 
 exit_cleanup() {
@@ -449,6 +465,11 @@ exit_cleanup() {
     msg2 "_cleanbuildfolders=true, removing src and package folders."
     rm -rf "${_where}"/{src,pkg}
   fi
+}
+
+failure() {
+  msg2 "Something went wrong. Exiting"
+  exit 1
 }
 
 trap exit_cleanup EXIT

@@ -2,10 +2,12 @@
 
 # https://github.com/Frogging-Family/wine-tkg-git/blob/master/wine-tkg-git/wine-tkg-scripts/wine-tkg
 
+winebin=$(basename "$0")
+
 winebindir="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 
 export PATH="$winebindir:$PATH"
 
 export LD_LIBRARY_PATH="$winebindir/../lib64/wine/x86_64-unix:$winebindir/../lib64/wine/x86_64-windows:$winebindir/../lib64/wine/i386-windows:$winebindir/../lib/wine/i386-unix:$winebindir/../lib/wine/i386-windows:$LD_LIBRARY_PATH"
 
-wine32 "${@:1}"
+"_${winebin}" "${@:1}"
