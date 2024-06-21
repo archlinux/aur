@@ -2,7 +2,7 @@
 
 pkgname=keyguard
 pkgver=20240620
-pkgrel=1
+pkgrel=2
 pkgdesc="Alternative client for the Bitwarden platform, created to provide the best user experience possible."
 arch=('x86_64')
 license=('custom')
@@ -43,6 +43,7 @@ package() {
     # create link to /usr/bin
     mkdir -p "${pkgdir}"/usr/bin
     ln -s "${pkgdir}/opt/keyguard/bin/Keyguard" "${pkgdir}/usr/bin/keyguard"
+    install -d "${pkgdir}"/usr/bin
 
     # create .desktop file and install
     cat > "${srcdir}/keyguard.desktop" << EOL
@@ -51,7 +52,7 @@ package() {
     Name=Keyguard
     Comment=Alternative client for the Bitwarden platform
     Path=/opt/keyguard/bin
-    Exec=/usr/bin/keyguard
+    Exec=/opt/keyguard/bin/Keyguard
     Icon=keyguard
     Terminal=false
     Cateogories=Utility
