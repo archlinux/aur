@@ -114,10 +114,12 @@ function cameraDect() {
 	bwCamPar=""
 	for camera in $(ls /dev/video*); do
 		if [ -e ${camera} ]; then
-			echo "[Info] Binding camera ${camera}"
 			bwCamPar="${bwCamPar} --dev-bind ${camera} ${camera}"
 		fi
 	done
+	if [[ ${bwCamPar} =~ dev-bind ]]; then
+		echo "[Info] Camera bound"
+	fi
 }
 
 function execApp() {
@@ -129,10 +131,13 @@ function execApp() {
 		xhost +
 	fi
 	if [ ! -S "${busDir}/bus" ]; then
-		echo "[Warn] Waiting for D-Bus proxy..."
+		echo "[Info] Waiting for D-Bus proxy..."
+		counter=0
 		while [ ! -S "${busDir}/bus" ]; do
+			counter=$(expr ${counter} + 1)
 			sleep 0.1s
 		done
+		echo "[Info] D-Bus proxy took $(expr ${counter} / 10) seconds to launch"
 	fi
 	touch "${XDG_DATA_HOME}"/WeChat_Data/.flatpak-info
 	cameraDect
@@ -253,9 +258,12 @@ function execApp() {
 }
 
 function dbusProxy() {
+	if [[ $(lsof -t "${busDir}/bus") ]]; then
+		kill $(lsof -t "${busDir}/bus")
+	fi
 	rm "${busDir}" -r
 	mkdir "${busDir}" -p
-	echo "Starting D-Bus Proxy..."
+	echo "Starting D-Bus Proxy @ ${busDir}..."
 	systemd-run --user \
 		env -i xdg-dbus-proxy \
 			"${DBUS_SESSION_BUS_ADDRESS}" \
