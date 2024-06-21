@@ -2,7 +2,7 @@
 
 pkgname=intel-npu-driver-bin
 pkgver=1.5.0.20240619_9582784383
-pkgrel=1
+pkgrel=2
 main_ver=$(echo $pkgver | cut -d'.' -f1-3)
 pkgdesc="Intel(R) NPU (Neural Processing Unit) Driver"
 arch=(x86_64)
