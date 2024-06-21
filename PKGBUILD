@@ -4,8 +4,8 @@ pkgname=(
 #  'python-jaraco.packaging-docs'
 )
 pkgbase=python-jaraco.packaging
-_name=${pkgname#python-}
-pkgver=10.1.0
+_name=${pkgbase#python-}
+pkgver=10.2.0
 pkgrel=1
 pkgdesc="Tools to supplement packaging Python releases"
 arch=('any')
@@ -24,12 +24,15 @@ makedepends=(
 #  'python-sphinx-lint'  ## docs
   'python-wheel'
 )
-#checkdepends=(
-#  'python-pip'
-#  'python-pytest'
-#)
+checkdepends=(
+  'python-docutils'
+  'python-domdf-python-tools'
+  'python-pip'
+  'python-pytest'
+  'python-sphinx'
+)
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('788d09f091acda45573e6b61399f5a3d15b17b3da5940f6405c9811854484491')
+sha256sums=('0fca87ef97005d0c97bc60828abb8f380e746d0dfaf87adf02cc556296b0c24f')
 
 build() {
   cd "$_name-$pkgver"
@@ -43,13 +46,19 @@ build() {
 #  rm -rf html/.{doctrees,buildinfo}
 }
 
-#check() {
-#  cd "$_name-$pkgver"
-#  pytest
-#}
+check() {
+  cd "$_name-$pkgver"
+  pytest
+}
 
 package_python-jaraco.packaging() {
-  optdepends=('python-jaraco.packaging-docs: offline docs')
+  optdepends=(
+  'python-docutils: Sphinx plugin'
+  'python-domdf-python-tools: Sphinx plugin'
+#  'python-jaraco.packaging-docs: offline docs'
+  'python-sphinx: Sphinx plugin'
+  'python-virtualenv: pypa/build#266'
+)
 
   cd "$_name-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
