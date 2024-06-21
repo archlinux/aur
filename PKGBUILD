@@ -1,7 +1,5 @@
 # Maintainer: William Horvath <william at horvath dot blog>
 
-PKGEXT='.pkg.tar.xz'
-COMPRESSXZ=(xz -9 -c -z - --threads=0)
 _where="${PWD:-$(pwd)}"
 
 ################################################################################################################################
@@ -11,6 +9,7 @@ _where="${PWD:-$(pwd)}"
 ################################################################################################################################
 
 wow64build=".wow64" ## set to nothing (empty) to make a non-wow64 build
+if [ -n "$wow64build" ]; then _wowname="wow64-"; else _wowname=""; fi
 
 ## these will do nothing if _autoupdate=false (default), the base is taken from the patch repo
 _wine_commit=8c64979dcb2673659adacf39733e24d42b7fc01d
@@ -26,18 +25,18 @@ _userpatches=false ## unimplemented for now
 ################################################################################################################################
 ################################################################################################################################
 
-pkgname=wine-osu-spectator-wow64-bin
+pkgname=wine-osu-spectator-${_wowname}bin
 pkgver=9.11${wow64build:-}
 pkgrel=1
 
 pkgdesc="A compatibility layer for running Windows programs, but with osu! specific patches"
-provides=(wine-osu)
-conflicts=(wine-osu)
+provides=(wine-osu-spectator-${_wowname}bin)
+conflicts=(wine-osu-spectator-${_wowname}bin)
 
 install=wine.install
 url="http://www.winehq.com"
 arch=(x86_64)
-license=(LGPL)
+license=(LGPL ISC)
 
 options=('!buildflags' 'staticlibs' 'ccache' '!lto' '!debug' '!strip')
 
@@ -211,7 +210,7 @@ prepare() { _set_vars;
 
   if [ "${_bundled_src}" != "true" ]; then # skip this stuff if we are using bundled
     ## removes wine/staging dirs if already existing
-    rm -rf "${srcdir}"/{wine-osu,wine-staging} || true
+    rm -rf "${srcdir}"/{${pkgname:?},wine-staging} || true
 
     _wine_commit=$(cat "${srcdir}"/wine-osu-patches/wine-commit)
     _staging_commit=$(cat "${srcdir}"/wine-osu-patches/staging-commit)
