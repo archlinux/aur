@@ -16,7 +16,7 @@ source=("${url}/archive/v${pkgver}/mod_tile-${pkgver}.tar.gz"
         'renderd-postgresql.service'
         'renderd.sysusers'
         'renderd.tmpfiles')
-sha256sums=('0bda4e8c0fdba7a1fa84d4b6d6bd564a5f8a71836b96a74a5f00a6f28eac1bf9'
+sha256sums=('7988335986d9dadc5275cd955c5af14d3648addb68b16866bb79f27aa76797e3'
             '7bb1c67f92e9d253cecbb2f17048fba151a67e470c231fc33605937917b0567a'
             'd6c009e95380d8a9be41f0bd077638cb6adbebb74fff238a2bfc9fbbb3ed49fa'
             'cd6871cdb3e640912c95499e97fe1a2496ba95f102ec65f112bcd546ba736514'
