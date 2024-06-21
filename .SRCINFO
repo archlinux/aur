@@ -1,6 +1,6 @@
 pkgbase = msdf-atlas-gen-git
 	pkgdesc = MSDF font atlas generator
-	pkgver = 1.2.2.r23.gb67fb96
+	pkgver = 1.3.r0.gc27de59
 	pkgrel = 1
 	url = https://github.com/Chlumsky/msdf-atlas-gen
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = msdf-atlas-gen-git
 	depends = freetype2
 	depends = zlib
 	depends = msdfgen
-	provides = msdf-atlas-gen=1.2.2.r23.gb67fb96
+	provides = msdf-atlas-gen=1.3.r0.gc27de59
 	conflicts = msdf-atlas-gen
 	source = msdf-atlas-gen-git::git+https://github.com/Chlumsky/msdf-atlas-gen.git
 	sha256sums = SKIP
