@@ -1,0 +1,27 @@
+From 5daf0765235db81d39e237ec04291b4628f046bc Mon Sep 17 00:00:00 2001
+From: Nobuhiro Iwamatsu <iwamatsu@nigauri.org>
+Date: Mon, 4 Oct 2021 09:26:22 +0900
+Subject: [PATCH] Fix build with glibc 2.22
+
+Reference: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=811892
+Signed-off-by: Nobuhiro Iwamatsu <iwamatsu@nigauri.org>
+---
+ apps/CMakeLists.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/apps/CMakeLists.txt b/apps/CMakeLists.txt
+index 7d25596..6a5ee5f 100644
+--- a/apps/CMakeLists.txt
++++ b/apps/CMakeLists.txt
+@@ -4,6 +4,8 @@ include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/lib )
+ add_subdirectory ( obex_test )
+ add_subdirectory ( ircp )
+ 
++add_definitions ( -D_POSIX_C_SOURCE=200112L -D_BSD_SOURCE)
++
+ set ( OPENOBEX_COMMON_APPS
+   irxfer
+   irobex_palm3
+-- 
+GitLab
+

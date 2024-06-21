@@ -1,0 +1,32 @@
+From 8e30bff036a47ca27c4f41d14f40f6a0fb9cba06 Mon Sep 17 00:00:00 2001
+From: Nobuhiro Iwamatsu <iwamatsu@nigauri.org>
+Date: Mon, 4 Oct 2021 09:29:21 +0900
+Subject: [PATCH] Fix segfault in obex-check-device
+
+Reference: https://bugs.launchpad.net/ubuntu/+source/libopenobex/+bug/1539694
+Reference: http://pkgs.fedoraproject.org/cgit/rpms/openobex.git/commit/?id=d6edf6ce3dbeff34d7053462e4b41e6e824cc38e
+Reference: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=825106
+
+Signed-off-by: Nobuhiro Iwamatsu <iwamatsu@nigauri.org>
+---
+ udev/obex-check-device.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/udev/obex-check-device.c b/udev/obex-check-device.c
+index 9eb4769..df160ca 100644
+--- a/udev/obex-check-device.c
++++ b/udev/obex-check-device.c
+@@ -62,8 +62,8 @@ int main (int argc, char **argv)
+ 	unsigned long vendor;
+ 	unsigned long product;
+ 
+-	if (argc < 2)
+-		return 0;
++	if (argc < 3)
++		return EXIT_FAILURE;
+ 
+ 	vendor = strtoul(argv[1], NULL, 16);
+ 	product = strtoul(argv[2], NULL, 16);
+-- 
+GitLab
+
