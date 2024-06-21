@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Value=1.0
+Type=Application
+Name=Maniac Mansion
+Comment=Maniac Mansion, release 3 of the original game data from 1989.
+Exec=maniac-mansion
+Categories=Game;AdventureGame
+Path=/usr/lib/maniac-mansion

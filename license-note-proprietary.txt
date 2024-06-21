@@ -1,0 +1,6 @@
+The game "Maniac Mansion" has been extracted from the game "Day of the Tentacle Remastered", which is property of their creators:
+
+* LucasArts Entertainment Company, LLC/ Lucasfilm Games/ Lucasfilm Ltd. (for "Maniac Mansion" and "Day of the Tentacle"),
+* Double Fine Productions, Est. 2000. (for the remastering of "Day of the Tentacle").
+
+No license file for the game could be found in the downloaded data. Assume all rights reserved to the creators.
