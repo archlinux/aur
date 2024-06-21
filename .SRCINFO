@@ -1,0 +1,18 @@
+pkgbase = python-ta
+	pkgdesc = A Technical Analysis library for financial time series datasets.
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/bukosabino/ta
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-numpy
+	depends = python-pandas
+	source = python-ta-0.11.0.tar.gz::https://github.com/bukosabino/ta/archive/refs/tags/0.11.0.tar.gz
+	sha512sums = 9d596ea586b748399339be237a47b34ac22f4882b57fd47c3a48b77a3360c066cea9f2f232b1fb8323e1c33559e8ff6e0cd19da2b323be573dade3395f5b45ce
+
+pkgname = python-ta
