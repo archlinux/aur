@@ -1,15 +1,16 @@
 pkgbase = expat-git
 	pkgdesc = A stream-oriented XML parser library written in C
-	pkgver = 2.5.0.r67.g76640353
+	pkgver = 2.6.2.r55.g4c3f8641
 	pkgrel = 1
 	url = https://libexpat.github.io/
 	arch = i686
 	arch = x86_64
-	license = custom
+	license = MIT
 	makedepends = git
 	makedepends = cmake
 	depends = glibc
-	provides = expat=2.5.0.r67.g76640353
+	provides = expat=2.6.2.r55.g4c3f8641
+	provides = libexpat.so
 	conflicts = expat
 	source = git+https://github.com/libexpat/libexpat.git
 	sha256sums = SKIP
