@@ -2,11 +2,11 @@
 
 pkgname=extract-artwork
 pkgver=0.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc='extract artwork from media files '
 arch=('i685' 'x86_64')
 url='https://github.com/eworm-de/extract-artwork'
-depends=('ffmpeg')
+depends=('ffmpeg' 'libavformat.so' 'libavutil.so')
 makedepends=('discount')
 license=('GPL')
 validpgpkeys=('BD84DE71F493DF6814B0167254EDC91609BC9183')
