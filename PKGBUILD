@@ -1,7 +1,7 @@
-# Maintainer: Joey Pabalinas <alyptik@protonmail.com>
-# Contributor: Mathieu Bacou <mathieu@bacou.me>
-# Contributor: Allan McRae <allan@archlinux.org>
-# Committer: dorphell <dorphell@gmx.net>
+# Maintainer: Mathieu Bacou <mathieu at bacou dot me>
+# Contributor: Joey Pabalinas <alyptik at protonmail dot com>
+# Contributor: Allan McRae <allan at archlinux dot org>
+# Committer: dorphell <dorphell at gmx dot net>
 
 pkgname=screen-git
 # screen will report its version as 4.99.0.
