@@ -19,7 +19,7 @@ pkgname=(
 )
 _pkgname=gnome-control-center
 pkgver=46.2
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME's main interface to configure various aspects of the desktop with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/gnome-control-center"
 license=(GPL-2.0-or-later)
@@ -82,10 +82,9 @@ depends=(
 makedepends=(
   docbook-xsl
   git
+  glib2-devel
   meson
   modemmanager
-  python
-  python-packaging
 )
 checkdepends=(
   python-dbusmock
