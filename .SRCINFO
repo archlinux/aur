@@ -1,0 +1,13 @@
+pkgbase = warpdl
+	pkgdesc = A powerful and versatile cross-platform download manager.
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/warpdl/warpdl
+	arch = any
+	license = MIT
+	makedepends = go>=1.21
+	optdepends = ffmpeg
+	source = warpdl-1.0.4.tar.gz::https://github.com/warpdl/warpdl/archive/refs/tags/1.0.4.tar.gz
+	sha256sums = d389d74f25328dd2a812ac2f17e14082eaeef71280b9ed8f8163caf54cd26f8a
+
+pkgname = warpdl
