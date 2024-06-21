@@ -1,6 +1,6 @@
 --- a/libavutil/vulkan.c
 +++ b/libavutil/vulkan.c
-@@ -607,6 +607,9 @@ int ff_vk_exec_add_dep_frame(FFVulkanContext *s, FFVkExecContext *e, AVFrame *f,
+@@ -606,6 +606,9 @@ int ff_vk_exec_add_dep_frame(FFVulkanCon
      uint32_t *queue_family_dst;
      VkAccessFlagBits *access_dst;
  

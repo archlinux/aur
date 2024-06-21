@@ -2,8 +2,8 @@
 # Contributor: Jan Koppe <post@jankoppe.de>
 
 pkgname=ffmpeg-decklink
-pkgver=6.1.1
-pkgrel=4
+pkgver=7.0.1
+pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (decklink enabled)'
 arch=('x86_64')
@@ -13,63 +13,70 @@ depends=(
   alsa-lib
   aom
   bzip2
+  cairo
+  dav1d
   fontconfig
+  freetype2
   fribidi
+  glib2
+  glibc
   gmp
   gnutls
   gsm
+  harfbuzz
   jack
   lame
-  libass.so
+  libass
   libavc1394
-  libbluray.so
-  libbs2b.so
-  libdav1d.so
+  libbluray
+  libbs2b
   libdrm
-  libfreetype.so
+  libdvdnav
+  libdvdread
   libgl
   libiec61883
-  libjxl.so
+  libjxl
   libmodplug
-  libopenmpt.so
+  libopenmpt
+  libplacebo
   libpulse
-  librav1e.so
   libraw1394
-  librsvg-2.so
+  librsvg
   libsoxr
   libssh
   libtheora
-  libva.so
-  libva-drm.so
-  libva-x11.so
+  libva
   libvdpau
-  libvidstab.so
-  libvorbisenc.so
-  libvorbis.so
-  libvpl.so
-  libvpx.so
+  libvorbis
+  libvpl
+  libvpx
   libwebp
   libx11
-  libx264.so
-  libx265.so
   libxcb
   libxext
   libxml2
   libxv
-  libxvidcore.so
-  libzimg.so
   ocl-icd
   opencore-amr
   openjpeg2
   opus
+  rav1e
+  rubberband
   sdl2
+  snappy
   speex
   srt
   svt-av1
   v4l-utils
+  vapoursynth
+  vid.stab
   vmaf
   vulkan-icd-loader
+  x264
+  x265
+  xvidcore
   xz
+  zimg
   zlib
 )
 makedepends=(
@@ -77,6 +84,7 @@ makedepends=(
   avisynthplus
   clang
   ffnvcodec-headers
+  frei0r-plugins
   ladspa
   mesa
   nasm
@@ -85,9 +93,11 @@ makedepends=(
   decklink-sdk
 )
 optdepends=('avisynthplus: for AviSynthPlus support'
+            'frei0r-plugins: for Frei0r video effects support'
             'ladspa: for LADSPA filters'
-            'nvidia-utils: for Nvidia NVDEC/NVENC support'
-            'vpl-runtime: for Intel Quick Sync Video')
+            'nvidia-utils: for NVIDIA NVDEC/NVENC support'
+            'vpl-runtime: for Intel Quick Sync Video'
+)
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavutil.so' 'libpostproc.so' 'libswresample.so' 'libswscale.so'
           'ffmpeg')
@@ -96,18 +106,12 @@ source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         '040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch'
         '050-ffmpeg-fix-segfault-with-avisynthplus.patch'
         '060-ffmpeg-fix-nvidia-vulkan-decoding-segfault.patch'
-        '090-ffmpeg-vulkan-headers1.3.279-fix.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/fef22c87ada4517441701e6e61e062c9f4399c8e'
-        '100-ffmpeg-nvenc-replace-deprecated-format-specifiers.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/43b417d516b0fabbec1f02120d948f636b8a018e'
-        '110-ffmpeg-nvenc-support-sdk-12.2-bit-depth-api.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/06c2a2c425f22e7dba5cad909737a631cc676e3f'
         'LICENSE')
-sha256sums=('8684f4b00f94b85461884c3719382f1261f0d9eb3d59640a1f4ac0873616f968'
+sha256sums=('bce9eeb0f17ef8982390b1f37711a61b4290dc8c2a0c1a37b5857e85bfb0e4ff'
             'SKIP'
-            '7d5ce8058b143bae1be10a06d79ac0f1a72daf00cf648309450d83bea249a6b1'
-            '0e277c0d5e33612ca7a11025958133b17bfbe23168b0aee5bd07f674f6fd7440'
-            'f2f73793a45c9dffb033f23c1b10a612abe6528cbd06c04b06e8189d1ef208be'
-            'c2ef9c35082ed2e5989428d086b7bfef1dfe9e0a85e6d259daf46f369f115483'
-            '8b5b6173c63d3dc280ba4110d91b1f303e1d0a1996956d51567962f570f770e5'
-            '8d7549121dfa6a3784f3cfbc30d8a4c997aaa17ce5e703e7a93b1f9a464134b4'
+            '62509a98460d3d48afcb0ce26250def7dfed124b82acc95a3b84a2802910c1fa'
+            'b0ce071f0d9c7c5eff8e7e654e30c6f4377aa137797aeb54338c2c3a93d5472c'
+            '4a8972bc6eae02ed9f473938b6e4d9dfa544274143dd735903073ca89633b721'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 
@@ -115,9 +119,6 @@ prepare() {
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/050-ffmpeg-fix-segfault-with-avisynthplus.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/060-ffmpeg-fix-nvidia-vulkan-decoding-segfault.patch"
-    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/090-ffmpeg-vulkan-headers1.3.279-fix.patch"
-    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/100-ffmpeg-nvenc-replace-deprecated-format-specifiers.patch"
-    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/110-ffmpeg-nvenc-support-sdk-12.2-bit-depth-api.patch"
 }
 
 build() {
@@ -129,12 +130,12 @@ build() {
         --disable-debug \
         --disable-static \
         --disable-stripping \
-        --disable-htmlpages \
         --enable-amf \
         --enable-avisynth \
         --enable-cuda-llvm \
         --enable-lto \
         --enable-fontconfig \
+        --enable-frei0r \
         --enable-gmp \
         --enable-gnutls \
         --enable-gpl \
@@ -145,9 +146,12 @@ build() {
         --enable-libbs2b \
         --enable-libdav1d \
         --enable-libdrm \
+        --enable-libdvdnav \
+        --enable-libdvdread \
         --enable-libfreetype \
         --enable-libfribidi \
         --enable-libgsm \
+        --enable-libharfbuzz \
         --enable-libiec61883 \
         --enable-libjack \
         --enable-libjxl \
@@ -158,9 +162,12 @@ build() {
         --enable-libopenjpeg \
         --enable-libopenmpt \
         --enable-libopus \
+        --enable-libplacebo \
         --enable-libpulse \
         --enable-librav1e \
         --enable-librsvg \
+        --enable-librubberband \
+        --enable-libsnappy \
         --enable-libsoxr \
         --enable-libspeex \
         --enable-libsrt \
@@ -185,6 +192,7 @@ build() {
         --enable-opencl \
         --enable-opengl \
         --enable-shared \
+        --enable-vapoursynth \
         --enable-version3 \
         --enable-vulkan \
         --enable-decklink \
