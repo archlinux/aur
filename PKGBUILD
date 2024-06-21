@@ -5,7 +5,7 @@ pkgname=(
 )
 pkgbase=python-jaraco.packaging
 _name=${pkgbase#python-}
-pkgver=10.2.0
+pkgver=10.2.1
 pkgrel=1
 pkgdesc="Tools to supplement packaging Python releases"
 arch=('any')
@@ -32,7 +32,7 @@ checkdepends=(
   'python-sphinx'
 )
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0fca87ef97005d0c97bc60828abb8f380e746d0dfaf87adf02cc556296b0c24f')
+sha256sums=('dadb62c64a46cee6f641cff34285cef1603816f1ca1ce08200b6a898c9f68448')
 
 build() {
   cd "$_name-$pkgver"
@@ -48,7 +48,7 @@ build() {
 
 check() {
   cd "$_name-$pkgver"
-  pytest
+  PYTHONPATH=./ pytest
 }
 
 package_python-jaraco.packaging() {
