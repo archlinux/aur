@@ -3,7 +3,7 @@
 _gemname='faraday-em_synchrony'
 pkgname="ruby-${_gemname}"
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Faraday adapter for EM::Synchrony'
 arch=('any')
 url="https://github.com/lostisland/${_gemname}"

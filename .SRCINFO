@@ -1,0 +1,17 @@
+pkgbase = ruby-faraday-em_synchrony
+	pkgdesc = Faraday adapter for EM::Synchrony
+	pkgver = 1.0.0
+	pkgrel = 2
+	url = https://github.com/lostisland/faraday-em_synchrony
+	arch = any
+	license = MIT
+	checkdepends = ruby-faraday
+	checkdepends = ruby-webmock
+	checkdepends = ruby-multipart-parser
+	makedepends = ruby-rspec
+	depends = ruby
+	options = !emptydirs
+	source = https://github.com/lostisland/faraday-em_synchrony/archive/v1.0.0/faraday-em_synchrony-v1.0.0.tar.gz
+	sha512sums = c9f4751c08d45f8c9a0342c978dc9459b396f7f1fe9729915e5a614060900be9d7a285b607871547ee66ac13a1aba2169b2e436ef7791656842a0536fd70fd10
+
+pkgname = ruby-faraday-em_synchrony
