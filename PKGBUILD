@@ -18,7 +18,7 @@
 
 pkgname=mutter-x11-scaling
 pkgver=46.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Window manager and compositor for GNOME with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -84,9 +84,9 @@ makedepends=(
   egl-wayland
   gi-docgen
   git
+  glib2-devel
   gobject-introspection
   meson
-  python-packaging
   sysprof
   wayland-protocols
 )
@@ -134,7 +134,6 @@ build() {
   arch-meson mutter build "${meson_options[@]}"
   meson compile -C build
 }
-
 
 package() {
   provides=(mutter libmutter-14.so)
