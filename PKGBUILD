@@ -3,7 +3,7 @@
 
 pkgname=ratarmount
 pkgver=0.15.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Mount tar files via fusepy. Supports Recursive Mounting, Compressed Files, Read-Only Bind Mounting, Union Mounting and Write Overlays. A fast random access alternative to archivemount."
 arch=(any)
 url="https://github.com/mxmlnkn/$pkgname"
@@ -23,15 +23,18 @@ makedepends=(
 	'python-wheel'
 	'python-setuptools'
 )
+
 optdepends=(
-	'pragzip: Option 1 for support for gzip-compressed tar files'
-	'python-indexed-gzip: Option 2 for support for gzip-compressed tar files'
-	'python-indexed-zstd: Support for zstd-compressed tar files'
 	'python-indexed-bzip2: Support for bzip2-compressed tar files'
+	'python-rapidgzip: Support for gzip-compressed tar files'
+	'python-indexed-gzip: Option 2 for support for gzip-compressed tar files'
+	'python-xz: Support for xz-compressed tar files' 
+	'lzmaffi: Option 2 for support for xz-compressed tar files'
+	'python-indexed-zstd: Support for zstd-compressed tar files'
 	'python-rarfile: Support for rar-compressed tar files'
-	'lzmaffi: Option 1 for support for xz-compressed tar files'
-	'python-xz: Option 2 for support for xz-compressed tar files' 
+	'python-libarchive-c: Support for 7z, ar, cab, compress, cpio, iso, lrzip, lzma, lz4, lzip, lzo, warc, xar; (no random access)'
 )
+
 _pkg_ext='.tar.gz'
 source=("${pkgname}-${pkgver}${_pkg_ext}::${url}/archive/refs/tags/v${pkgver}${_pkg_ext}")
 b2sums=('516253edbd22904af78e519bb66323c008fee013c293f7755bb935da0daa9dae165b01f316655308ee9af99c9538b9b5c3c6e4ae623ae864e74c31efa2a9599d')
