@@ -1,8 +1,8 @@
 # Maintainer: David Hummel <hummeltech@sherpaguru.com>
 
 pkgname=('mod_tile' 'renderd')
-pkgver=0.7.1
-pkgrel=2
+pkgver=0.7.2
+pkgrel=1
 pkgdesc='A daemon and apache module for rendering and serving Mapnik raster tiles'
 arch=('i686' 'x86_64')
 url='https://github.com/openstreetmap/mod_tile'
@@ -12,13 +12,11 @@ optdepends=('ceph-libs: RADOS tile storage support'
 makedepends=('apache' 'apr' 'boost' 'cairo' 'cmake' 'glib2' 'iniparser' 'mapnik')
 checkdepends=('jq')
 source=("${url}/archive/v${pkgver}/mod_tile-${pkgver}.tar.gz"
-        "v0.7.1_fixes.patch::${url}/compare/v0.7.1...dc02baf62777ba95375b55b1c27f5897502f09e9.patch"
         'renderd.service'
         'renderd-postgresql.service'
         'renderd.sysusers'
         'renderd.tmpfiles')
-sha256sums=('b42bd91136625b06b32d3d2e33637fa55599fba7858eb0e1725d3d143eb2dfab'
-            '2069005af1477c1c97341362b740a8dbc67c2de0c6c4b9e51736b6c52a9a0e06'
+sha256sums=('0bda4e8c0fdba7a1fa84d4b6d6bd564a5f8a71836b96a74a5f00a6f28eac1bf9'
             '7bb1c67f92e9d253cecbb2f17048fba151a67e470c231fc33605937917b0567a'
             'd6c009e95380d8a9be41f0bd077638cb6adbebb74fff238a2bfc9fbbb3ed49fa'
             'cd6871cdb3e640912c95499e97fe1a2496ba95f102ec65f112bcd546ba736514'
@@ -30,8 +28,6 @@ prepare() {
     rm -rf mod_tile
   fi
   mv mod_tile-${pkgver} mod_tile
-  cd mod_tile || exit
-  patch -Np1 < ../v0.7.1_fixes.patch
 }
 
 build() {
