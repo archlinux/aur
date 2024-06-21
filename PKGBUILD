@@ -151,7 +151,7 @@ _set_vars() {
     _GLIBC_LIBS_NATIVE="-Wl,-rpath,/opt/$pkgname/lib64/wine/x86_64-unix -static-libgcc -static-libstdc++"
   else
     export PATH="${srcdir}/llvm-mingw/bin":"${PATH}"
-    _GLIBC_LIBS=""
+    _GLIBC_LIBS_COMMON=""
     _GLIBC_LIBS_NATIVE=""
   fi
 
@@ -195,7 +195,7 @@ prepare() { _set_vars;
   rm -rf "${_where}"/pkg || true 
 
   ## rename downloaded llvm-mingw
-  mv "${srcdir}"/llvm-mingw-nightly-ucrt-ubuntu-20.04-x86_64 "${srcdir}"/llvm-mingw
+  mv "$(find "${srcdir}" -maxdepth 1 -type d -iregex ".*llvm-mingw-nightly.*")" "${srcdir}"/llvm-mingw
 
   ## extract gcc-latest
   if [ -n "${wow64build}" ]; then
@@ -335,6 +335,9 @@ buildregular() { _set_vars;
 
   export PKG_CONFIG_LIBDIR=${srcdir}/llvm-mingw/x86_64-w64-mingw32/lib/pkgconfig:/usr/lib/pkgconfig
   export PKG_CONFIG_PATH=$PKG_CONFIG_LIBDIR:$PKG_CONFIG_PATH_CUSTOM
+
+  export x86_64_CC="ccache x86_64-w64-mingw32-clang"
+  export CROSSCC="ccache x86_64-w64-mingw32-clang"
 
   export SOURCE_DATE_EPOCH=0
 
