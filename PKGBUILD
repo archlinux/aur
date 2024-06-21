@@ -1,4 +1,4 @@
-# Maintainer: David Hummel <david dot hummel at gmail point com>
+# Maintainer: David Hummel <hummeltech@sherpaguru.com>
 
 pkgname='ekpar2'
 pkgver=0.7.1
