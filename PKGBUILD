@@ -1,4 +1,4 @@
-# Maintainer: Joaquin Colonnello <joaquincolonnello@hotmail.com>
+# Maintainer: Joaquin Colonnello <joaquincolonnello [at] hotmail [dot] com>
 
 pkgname=python-indexed-bzip2
 pkgver=1.6.0
