@@ -1,9 +1,10 @@
 # Maintainer: Marius Hirt <marius-hirt@web.de>
 pkgname=k8sgpt
-pkgver=0.3.35
-pkgrel=2
+pkgver=0.3.37
+_commit=3f80bba
+pkgrel=1
 pkgdesc='A tool for scanning your Kubernetes clusters, diagnosing, and triaging issues in simple English.'
-arch=('x86_64' 'arm64' 'i386')
+arch=('x86_64')
 url='https://k8sgpt.ai/'
 license=('Apache-2.0')
 provides=('k8sgpt')
@@ -14,14 +15,13 @@ source=(
 )
 
 sha256sums=(
-    '1f35e61e60f35a1ddcb3a806f93fa2e0465599a508d080326c59e394186cb1d8'
+    '30cf355e51c3baa2a62c690ff57eaf1ac4b88e1b6898626a4dd61670bc435822'
 )
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 
     export CGO_ENAGBLED=0
-    export GOPATH="${srcdir}"
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -32,7 +32,7 @@ build() {
         -buildmode=pie \
         -mod=readonly \
         -modcacherw \
-        -ldflags "-s -w -X main.version=${pkgver} -X main.date=$(date +%FT%TZ) -compressdwarf=false -linkmode external" \
+        -ldflags "-s -w -X main.version=${pkgver} -X main.commit=${_commit} -X main.date=$(date +%FT%TZ)" \
         ./main.go
 }
 

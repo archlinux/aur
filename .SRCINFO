@@ -1,7 +1,7 @@
 pkgbase = k8sgpt
 	pkgdesc = A tool for scanning your Kubernetes clusters, diagnosing, and triaging issues in simple English.
-	pkgver = 0.3.35
-	pkgrel = 2
+	pkgver = 0.3.37
+	pkgrel = 1
 	url = https://k8sgpt.ai/
 	arch = x86_64
 	arch = arm64
@@ -10,7 +10,7 @@ pkgbase = k8sgpt
 	makedepends = go
 	provides = k8sgpt
 	conflicts = k8sgpt
-	source = k8sgpt-0.3.35.tar.gz::https://github.com/k8sgpt-ai/k8sgpt/archive/refs/tags/v0.3.35.tar.gz
-	sha256sums = 1f35e61e60f35a1ddcb3a806f93fa2e0465599a508d080326c59e394186cb1d8
+	source = k8sgpt-0.3.37.tar.gz::https://github.com/k8sgpt-ai/k8sgpt/archive/refs/tags/v0.3.37.tar.gz
+	sha256sums = 30cf355e51c3baa2a62c690ff57eaf1ac4b88e1b6898626a4dd61670bc435822
 
 pkgname = k8sgpt
