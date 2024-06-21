@@ -5,14 +5,14 @@ pkgver=0.6
 pkgrel=1
 pkgdesc="A El Torito boot image extractor"
 arch=(any)
-url="https://github.com/rainer042/geteltorito/blob/main/geteltorito.pl"
+url="https://raw.githubusercontent.com/rainer042/geteltorito/main/geteltorito.pl"
 license=('GPL2')
 depends=('perl')
 changelog=
 install="${pkgname}.install"
-source=("https://github.com/rainer042/geteltorito/blob/main/geteltorito.pl")
+source=("https://raw.githubusercontent.com/rainer042/geteltorito/main/geteltorito.pl")
 noextract=(${pkgname}.pl)
-sha256sums=('f1d03a5c295546adc62b2758cfc2327cacae01ba994bb8f522c3779226d915cf')
+sha256sums=('378a6305edb9397978e60b7908a85dd8c2546f2808cb845552d5e4a8ba9baab3')
 
 package() {
   cd "${srcdir}/"
