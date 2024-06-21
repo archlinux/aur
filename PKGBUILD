@@ -4,7 +4,7 @@ _pname=${pkgbase#python-}
 _pyname=${_pname/-/_}
 pkgname=("python-${_pname}")
 #"python-${_pname}-doc")
-pkgver=1.9.1
+pkgver=1.9.2
 pkgrel=1
 pkgdesc="Utilities to execute code blocks in Markdown files"
 arch=('any')
@@ -19,7 +19,7 @@ checkdepends=('python-pytest'
               'mkdocs-material'
               'python-markupsafe')   # 'pymdown-extensions' required by mkdocs-material
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('9bf1b93be9b1a56d6dbb7f64ac6c5d0c')
+md5sums=('142158c736e5786de16f6b01d7f3209b')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
