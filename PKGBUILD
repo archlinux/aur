@@ -3,7 +3,7 @@
 _gemname='faraday-em_http'
 pkgname="ruby-${_gemname}"
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='About Faraday adapter for EventMachine::HttpRequest'
 arch=('any')
 url="https://github.com/lostisland/${_gemname}"
