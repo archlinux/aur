@@ -1,9 +1,9 @@
 # Maintainer: Emil Bay <archlinux@tixz.dk>
 pkgname=nethermind-ethereum-bin
 _pkgname=nethermind
-pkgver=1.26.0
-_pkgver=1.26.0
-_commit=0068729c
+pkgver=1.27.0
+_pkgver=1.27.0
+_commit=220b5b85
 pkgrel=1
 pkgdesc='A robust execution client for Ethereum node operators. Binary distribution.'
 arch=('x86_64' 'aarch64')
@@ -20,17 +20,17 @@ source_aarch64=(
 	"https://github.com/NethermindEth/nethermind/releases/download/${_pkgver}/nethermind-${_pkgver}-${_commit}-linux-arm64.zip"
 	"https://nethdev.blob.core.windows.net/builds/nethermind-${_pkgver}-${_commit}-linux-arm64.zip.asc"
 )
-md5sums_x86_64=('9dd1c64756bb721061c4a513490f076e'
+md5sums_x86_64=('159ef227c61e39b2448aee95a71a5d2b'
                 'SKIP')
-md5sums_aarch64=('f1593abfe7f5c5b188bdc39ee777340c'
+md5sums_aarch64=('be1c88493d03405d786b6f7f5db022f8'
                  'SKIP')
-sha256sums_x86_64=('de8ee183ff25e277387fb45ab80cb0ec3bfd053bc5383ac9a38d8663c8bcd2d1'
+sha256sums_x86_64=('6c4a1655295ae22e67437602198c8b1142758958288253f9810dd234b664f028'
                    'SKIP')
-sha256sums_aarch64=('fb3c9136a3cd48546a18e76d5457845c4829b7a4d4a8fbb1e7b83a001d503553'
+sha256sums_aarch64=('7b83d9b36de7eb751a19ea88c4acaf7d28918672867f2b5d4cbf315198626dcc'
                     'SKIP')
-b2sums_x86_64=('b52a45024ab427bb5c6a41c23fab799792ab63768c8e8ecc01bfdfc025077d2d92d44a042b60570d728cfd8ae7ed525939da3aeb368817604ac44fcf4c2883fd'
+b2sums_x86_64=('33d65819f7769df73e8b22915f865d1a92d1031811d396482d141e9a885ecee0a44ddc118c60ab2de890b8deda0b3c2084cec256ca3c6635d6852de6730cb431'
                'SKIP')
-b2sums_aarch64=('665ba292017c7061f52abd3c8d1c8969d653b388c31f8bcc88ba56d645090d5c0c92849a49996b6b5bd76e0788790641fd0923a887baaca79a4c8b3787f51e3b'
+b2sums_aarch64=('3b12bf20b4d59d055201858c1c9788fc477db00f4ec0471bf1eab81f62b504e4103f3de8645061c859c3be3ffa8b05612c05bfdd818fed8cba1766b0d97f6f24'
                 'SKIP')
 # Can be acquired with `gpg --receive-keys CB6DA407 34E353C6` (listed at the bottom of https://downloads.nethermind.io/)
 validpgpkeys=('6942FB745ECE67D86CDA45704770A0C134E353C6' 'EECCEA1473108E3222D76722D39BE1DDCB6DA407')
