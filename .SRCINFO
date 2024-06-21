@@ -1,5 +1,5 @@
 pkgbase = dotlink
-	pkgdesc = Automated deployment of dotfiles to local or remote locations
+	pkgdesc = Python script to automate deployment of dotfile from git repos to local and remote hosts
 	pkgver = 2.1
 	pkgrel = 2
 	url = https://github.com/jreese/dotlink

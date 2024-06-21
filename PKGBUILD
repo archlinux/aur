@@ -1,15 +1,10 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: John Reese <john@noswap.com>
-# Upstream URL: https://github.com/jreese/dotlink
-#
-# For improvements/fixes to this package, please send a pull request:
-# https://github.com/jreese/arch
-
 
 pkgname=dotlink
 pkgver=2.1
 pkgrel=2
-pkgdesc="Automated deployment of dotfiles to local or remote locations"
+pkgdesc="Python script to automate deployment of dotfile from git repos to local and remote hosts"
 arch=('any')
 url="https://github.com/jreese/dotlink"
 license=('MIT')
