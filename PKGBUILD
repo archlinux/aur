@@ -35,10 +35,15 @@ build() {
 
 check() {
     cd "${pkgname}-${pkgver}"
-    python runCmdStanTests.py -j$_threads src/test
+    #python runCmdStanTests.py -j$_threads src/test
+    ./test-all.sh $_threads
 }
 
 package() {
+    # Cleanup
+    find "${srcdir}/${pkgname}-${pkgver}" -name '*.o' -delete
+
+    # Install
     mkdir -p "${pkgdir}/opt" "${pkgdir}/usr/bin"
     cp -a --no-preserve=ownership "${pkgname}-${pkgver}" "${pkgdir}/opt/cmdstan"
     ln -s "/opt/cmdstan/bin/stanc" "${pkgdir}/usr/bin/stanc"
