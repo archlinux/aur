@@ -1,0 +1,18 @@
+pkgbase = brother-dcp-j1050dw
+	pkgdesc = LPR driver and CUPS wrapper for Brother DCP-J1050DW
+	pkgver = 3.5.0
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=fr&lang=fr&prod=dcpj1050dw_eu_as
+	install = brother-dcp-j1050dw.install
+	arch = i686
+	arch = x86_64
+	license = EULA
+	depends = perl
+	depends = cups
+	optdepends = brscan5
+	optdepends = brscan-skey
+	source = https://download.brother.com/welcome/dlf105351/dcpj1050dwpdrv-3.5.0-1.i386.rpm
+	sha256sums = a2f3ec8ab53186d7476b4487f0c719e4e04b225d238526fd7c7f2f0b139c5d55
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-dcp-j1050dw
