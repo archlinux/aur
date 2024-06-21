@@ -12,8 +12,8 @@ depends=('glib2' 'python-xmltodict')
 makedepends=('meson')
 source=("$pkgname::git+https://codeberg.org/OpenVPN/gdbuspp.git")
 sha256sums=('SKIP')
-provides=("$pkgname")
-conflicts=("$pkgname")
+provides=("gdbuspp")
+conflicts=("gdbuspp")
 
 pkgver() {
   cd "$srcdir/$pkgname"
