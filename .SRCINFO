@@ -1,6 +1,6 @@
 pkgbase = aerospike-client-python
 	pkgdesc = Aerospike Client Library for Python
-	pkgver = 15.0.0
+	pkgver = 15.0.1
 	pkgrel = 1
 	url = https://www.aerospike.com/docs/client/python
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = aerospike-client-python
 	depends = python-setuptools
 	depends = openssl
 	depends = aerospike-client-c-libuv
-	source = https://files.pythonhosted.org/packages/source/a/aerospike/aerospike-15.0.0.tar.gz
+	source = https://files.pythonhosted.org/packages/source/a/aerospike/aerospike-15.0.1.tar.gz
 	source = aerospike-client-python.patch
-	sha512sums = e4a285fa7123edcbbb93dcf763889f3cd879840675706503f832e83a7897e6bdf735993af825a5eb3bcab07cb3124af05cacf201d7225985c1d8d392ae205479
+	sha512sums = 820b0d621e36eaecafceaff97ab67703448fe2500a834d515c40c4875864e5835e535a2bed24fb3855fb4de01761f13c7c4e131d3a6404eef22ad977ca04576a
 	sha512sums = f635d2b42e6d1144acbc3f26e002f49b8be45a310977e3db537f06ccb21d74c31443f8279b709f57d1425d244aad8c65533a1815bec6d91ff77075b959b915f1
 
 pkgname = aerospike-client-python
