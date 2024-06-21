@@ -1,9 +1,10 @@
 pkgbase = ente-desktop-appimage
 	pkgdesc = Secure backups for photos and videos
-	pkgver = 1.6.63
+	pkgver = 1.7.1
 	pkgrel = 1
 	url = https://ente.io/
 	arch = x86_64
+	arch = arm64
 	license = GPL
 	depends = libnotify
 	depends = libappindicator-gtk3
@@ -11,9 +12,9 @@ pkgbase = ente-desktop-appimage
 	depends = fuse3
 	depends = fuse-common
 	depends = libsecret
-	noextract = ente-1.6.63-x86_64.AppImage
+	noextract = ente-1.7.1-x86_64.AppImage
 	options = !strip
-	source_x86_64 = ente-1.6.63-x86_64.AppImage::https://github.com/ente-io/photos-desktop/releases/download/v1.6.63/ente-1.6.63-x86_64.AppImage
-	sha256sums_x86_64 = 2b6acd2c7b73ca1f7fcb9e1dcf4979f17627cec8cffaa1a5e8e1fd084c51da35
+	source_x86_64 = ente-1.7.1-x86_64.AppImage::https://github.com/ente-io/photos-desktop/releases/download/v1.7.1/ente-1.7.1-x86_64.AppImage
+	sha256sums_x86_64 = bbe37dacf41a98ac06eb2c70f91f37443d786c2dc71f4e77029ddd35c2bc7926
 
 pkgname = ente-desktop-appimage
