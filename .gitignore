@@ -1,6 +1,6 @@
 # packages
 stremio-service*.deb*
-stremio-service-bin-*-x86_64.pkg.tar.zst
+stremio-service*-*.pkg*
 
 # build dirs
 pkg/
