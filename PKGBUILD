@@ -1,6 +1,6 @@
 pkgname=nzp-bin
 pkgver=2.0.0indev20240619071813
-pkgrel=1
+pkgrel=2
 pkgdesc='Nazi Zombies: Portable, a Call of Duty: Zombies "de-make" powered by various enhanced forks of the Quake engine'
 arch=('x86_64' 'i686' 'i386' 'aarch64' 'armv7l')
 url="https://gitlab.com/linuxbombay/nzp"
