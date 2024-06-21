@@ -3,7 +3,7 @@
 
 pkgname=gnome-shell-extension-screen-rotate
 _reponame=gnome-shell-extension-screen-autorotate
-pkgver=19
+pkgver=20
 pkgrel=1
 pkgdesc="A GNOME extension to enable screen rotation regardless of touch mode. Fork of Screen Autorotate by Kosmospredanie."
 arch=("any")
@@ -12,7 +12,7 @@ license=("GPL")
 depends=("gnome-shell" "iio-sensor-proxy")
 conflicts=("gnome-shell-extension-screen-autorotate")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('117008299b27f490f4ed817e7c68da5b3a7c269df50cbb60e8ae57ad8045bfcd4164a03771ed81612e1bed2b615adb8531315c3645bfc12e8c91b76624a4060a')
+b2sums=('a3dcac6235abec69a6acf00f8d9ee1112153e13011238e98f537c790352f6dd3b89a3d5fd1cfc921ccd3a0f68c5d59579297372aa94f445843dae57429a118ef')
 
 package() {
   install -d "$pkgdir/usr/share/gnome-shell/extensions" \
