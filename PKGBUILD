@@ -1,4 +1,4 @@
-# Maintainer: sukanka <su975853527 AT gmail dot com>
+# Contributer: sukanka <su975853527 AT gmail dot com>
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=citespace
@@ -11,10 +11,10 @@ license=('unknown')
 depends=('java-runtime>=11.0.11')
 makedepends=('p7zip' 'libicns')
 optdepends=('mysql: for data cleansing')
-source=("${pkgname}-${pkgver}.dmg::${url}/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBLytjbHc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--d31a60a35531492e0e73b8348f8b1640dcf462fd/CiteSpace-${pkgver}.dmg?disposition=attachment"
+source=("${pkgname}-${pkgver}.dmg::https://zenlayer.dl.sourceforge.net/project/citespace/6.3.R1%20Basic%20%282.14.2024%20-%2012.31.2025%29/CiteSpace-6.3.1.dmg?viasf=1"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('b328fbdb644dd8fc09fcfc0c179c84cb4f2e2654bb633fc768a6243c9cdcb774'
+sha256sums=('c52f18cc9c714f080935be13e054cec36ebcb988e6f1385185c7329d3297aaaf'
             '5256f6866d830da93fd5439d45ae8b35f45806d19e7c86830e8d2db07fa5c83d'
             '1956b9cf79dc93834adcdff147337bbdbe9810074997e2e89c31073025baa902')
 
