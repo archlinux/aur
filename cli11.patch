@@ -1,9 +1,9 @@
 diff --git a/src/cmdstan/stansummary.cpp b/src/cmdstan/stansummary.cpp
-index eec4f5b2..a5e0b475 100644
+index a0cf2b1..e51b8f8 100644
 --- a/src/cmdstan/stansummary.cpp
 +++ b/src/cmdstan/stansummary.cpp
-@@ -52,18 +52,21 @@ Options:
-   std::vector<std::string> filenames;
+@@ -57,21 +57,23 @@ Options:
+   std::vector<std::string> requested_params_vec;
 
    CLI::App app{"Allowed options"};
 -  app.add_option("--sig_figs,-s", sig_figs, "Significant figures, default 2.",
@@ -23,9 +23,22 @@ index eec4f5b2..a5e0b475 100644
        ->check(CLI::NonexistentPath);
 -  app.add_option("--percentiles,-p", percentiles_spec, "Percentiles to report.",
 -                 true);
--  app.add_option("input_files", filenames, "Sampler csv files.", true)
 +  app.add_option("--percentiles,-p", percentiles_spec, "Percentiles to report.")
 +      ->capture_default_str();
+   app.add_option("--include_param,-i", requested_params_vec,
+                  "Include the named parameter in the output. By default all "
+-                 "are included.",
+-                 true)
++                 "are included.")
++      ->capture_default_str()
+       ->transform([](auto str) {
+         // allow both 'theta.1' and 'theta[1]' style.
+         std::string token(str);
+@@ -79,7 +81,8 @@ Options:
+         return token;
+       })
+       ->take_all();
+-  app.add_option("input_files", filenames, "Sampler csv files.", true)
 +  app.add_option("input_files", filenames, "Sampler csv files.")
 +      ->capture_default_str()
        ->required()
