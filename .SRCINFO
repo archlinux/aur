@@ -1,10 +1,13 @@
 pkgbase = r-dofuture
 	pkgdesc = Combines the best methods of both future and foreach for parallelization.
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=doFuture
 	arch = any
 	license = LGPL-2.1-or-later
+	checkdepends = r-dorng>=1.8.2
+	checkdepends = r-markdown
+	checkdepends = r-r.rsp
 	depends = r
 	depends = r-foreach>=1.5.0
 	depends = r-future>=1.32.0

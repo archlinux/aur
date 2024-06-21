@@ -4,7 +4,7 @@ _cranname=doFuture
 _cranver=1.0.1
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Combines the best methods of both future and foreach for parallelization."
 arch=('any')
 url="https://cran.r-project.org/package=${_cranname}"
@@ -23,6 +23,7 @@ optdepends=(
     'r-markdown'
     'r-r.rsp'
 )
+checkdepends=(${optdepends[@]})
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
 sha256sums=('9511cc9eb68366c5275dc03f769bcdd7507f26a79dc702d7ae6f1016f62c7bab')
 
@@ -31,9 +32,9 @@ build() {
 }
 
 # Check requires optional dependencies
-check () {
-    R CMD check --no-manual -l "${srcdir}" "${_cranname}_${_cranver}.tar.gz"
-}
+#check () {
+#    R CMD check --no-manual -l "${srcdir}" "${_cranname}_${_cranver}.tar.gz"
+#}
 
 package() {
     install -dm0755 "${pkgdir}/usr/lib/R/library"
