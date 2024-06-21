@@ -30,7 +30,6 @@ package() {
 install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
     ln -sf "/opt/$_pkgname/$_pkgname" "${pkgdir}/usr/bin/$_pkgname"
 }
-
 sha256sums=('0c9daf652ca76bd6433572e431ac7bd0f20958e9c542e60f6389bd56936fedc1')
 sha256sums_x86_64=('5cdf317b54b5a690ee9613c941c9b6ac1a811faf15e41466c492f4d36ff6f413')
 sha256sums_aarch64=('9cdbcdefb6f19d31426cddec8f1ec796a02b64de2f5d6c41880b4a50195057d1')
