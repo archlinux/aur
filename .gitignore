@@ -1,7 +1,3 @@
-# Ignore makepkg generated folders and files
-*.pkg.tar.xz
-*.src.tar.gz
-# Ignore temporary files
 *~
 src
 pkg

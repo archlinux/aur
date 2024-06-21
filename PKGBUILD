@@ -11,8 +11,8 @@
 _pkgname=kubo
 _old_pkgname=go-ipfs
 pkgname="${_pkgname}-git"
-pkgver=0.29.0.r10.ge9fbc28
-pkgrel=2
+pkgver=0.29.0.r13.g11bfb3c
+pkgrel=1
 pkgdesc="IPFS implementation in Go"
 url="https://github.com/ipfs/kubo"
 arch=('x86_64')
