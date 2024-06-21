@@ -1,7 +1,7 @@
 pkgbase = keyring-cli-bin
 	pkgdesc = A very basic cli keyring tool to use accross various OS.
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vbouchaud/keyring
 	arch = x86_64
 	arch = aarch64

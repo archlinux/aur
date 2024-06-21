@@ -3,7 +3,7 @@
 pkgname=keyring-cli-bin
 pkgdesc="A very basic cli keyring tool to use accross various OS."
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url="https://github.com/vbouchaud/keyring"
 license=('MPL2')
@@ -25,5 +25,5 @@ source_aarch64=(
 )
 
 package() {
-    install -D -m0755 "${srcdir}/keyring" "${pkgdir}/usr/bin/keyring"
+    install -D -m0755 "${srcdir}/keyring" "${pkgdir}/usr/bin/kc"
 }
