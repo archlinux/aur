@@ -1,6 +1,7 @@
 # Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
 # Contributor: piernov <piernov@piernov.org>
-
+provides = python-tensorflow-addons
+conflicts = python-tensorflow-addons
 pkgname=python-tensorflow-addons-cuda-git
 pkgver=r1490.14af819a
 pkgrel=1
