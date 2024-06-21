@@ -6,7 +6,7 @@
 
 pkgname=akkoma
 pkgver=3.10.4
-pkgrel=4
+pkgrel=5
 pkgdesc='Akkoma is a faster-paced fork of Pleroma'
 url='https://akkoma.dev/AkkomaGang/akkoma'
 license=('AGPL' 'CCPL:cc-by-4.0' 'CCPL:cc-by-sa-4.0')
@@ -26,7 +26,11 @@ source=('akkoma.sysusers'
 sha256sums=('0247ee5cc24049ebc37a00634aad8ed9a44d0f9a399a1373284375f5c861a089'
             'ae5bd0e7ee501c4535a52650574a69ca0ba9b60315ec3b7c8a1d98a8246cea6b'
             '790df34a2c2fe838696f15bf190221758b5cad74da7f528e5698614fcb332d52'
-            'SKIP')
+            '6f87d35a52ce59cc822cd2bc8db481170e0a0b2d26d1316f00c0ac9d879e620a')
+prepare()
+{
+  export MIX_ENV=prod
+}
 build() {
     cd "${pkgname}"
     mix local.hex --force
