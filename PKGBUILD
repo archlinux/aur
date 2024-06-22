@@ -10,29 +10,34 @@ _where="${PWD:-$(pwd)}"
 ################################################################################################################################
 ################################################################################################################################
 
-wow64build=".wow64" ## set to nothing (empty) to make a non-wow64 build, otherwise set to .wow64 (default)
-if [ -n "$wow64build" ]; then _wowname="wow64-"; else _wowname=""; fi
+wow64build=".wow64" ## set to "" (empty) to make a non-wow64 build, otherwise set to .wow64 (default)
 
-## these will do nothing if _autoupdate=false (default), the base is taken from the patch repo
-_wine_commit=8c64979dcb2673659adacf39733e24d42b7fc01d
-_staging_commit=5ecb89298f735f22264e7f201f827be37dcd7621
+## should be empty unless you want a custom commit, the commits are taken from the patchbase repository by default
+_desired_wine_commit=
+_desired_staging_commit=
 
 _cleanbuildfolders=false
 _autoupdate=false
 _disabled_staging="" ## e.g. "-W Compiler_Warnings -W user32-. . ."
-_bundled_src=false ## unused for this pkgbuild
 
-_userpatches=false ## unimplemented for now
+## to use this, create a "custompatches" folder in the top-level PKGBUILD directory and place your patches there.
+## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the custompatches folder
+## manually if you wish to use them alongside your own patches.
+_custompatches=false
 
 ################################################################################################################################
 ################################################################################################################################
+
+if [ -n "$wow64build" ]; then _wowname="wow64-"; else _wowname=""; fi
 
 pkgname=wine-osu-spectator-"${_wowname}"bin
 
 pkgver=9.11${wow64build:-}
-pkgrel=2
+pkgrel=3
 
 pkgdesc="A compatibility layer for running Windows programs, but with osu! specific patches"
+if [ -n "$wow64build" ]; then pkgdesc+=" (WoW64 version)"; fi
+
 provides=(wine-osu-spectator-"${_wowname}"bin)
 conflicts=(wine-osu-spectator-"${_wowname}"bin)
 
@@ -44,7 +49,7 @@ license=(LGPL ISC)
 options=('!buildflags' 'staticlibs' 'ccache' '!lto' '!debug' '!strip')
 
 source=(
-  git+https://github.com/whrvt/wine-osu-patches.git#tag=06-20-2024-8c64979d-5ecb8929
+  git+https://github.com/whrvt/wine-osu-patches.git#tag=06-21-2024-6c5d17af-593249dc
   winestart # wow64 gcc-latest LD_LIBRARY_PATH shenanigans, LD_RUN_PATH and other methods did not seem to work
   30-win32-aliases.conf
   wine-binfmt.conf
@@ -52,15 +57,30 @@ source=(
   https://github.com/mstorsjo/llvm-mingw/releases/download/nightly/llvm-mingw-nightly-ucrt-ubuntu-20.04-x86_64.tar.xz
 )
 
-sha512sums=('9fd04c1b52de080d828e1c24783ab758ab7d68fb8bb44e701d536d9bc815dbbdc67bc69aab26993488cbc5fc2f80c65c9a257d7b4d321fb58ad190bd1433a8c5'
-            '755697df574bbdbcbbd29f87eccf0c38af6166fa73e066326b875f3fc5544ad72fd8d8280357e9594a0c029394d7a1ad8e19983efd8d33b50074451ea77bb91b'
-            '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
-            'bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285'
-            'SKIP')
-
+sha512sums=(
+  '05bdd8ed7595dcb96f3dab60d0df66fe766a0b811d40692d022267e45f0f62a1d8592b2a42189b83cee3dc8ac0ea7aed8f1e2ad0d3f8c30923852ae97f794c52'
+  '755697df574bbdbcbbd29f87eccf0c38af6166fa73e066326b875f3fc5544ad72fd8d8280357e9594a0c029394d7a1ad8e19983efd8d33b50074451ea77bb91b'
+  '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
+  'bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285'
+  'SKIP'
+)
 noextract=()
 
-if [ -n "$wow64build" ]; then
+if [ -n "${_desired_wine_commit}" ]; then
+  source+=("git+https://gitlab.winehq.org/wine/wine.git#commit=${_desired_wine_commit}")
+else
+  source+=('git+https://gitlab.winehq.org/wine/wine.git')
+fi
+sha512sums+=('SKIP')
+
+if [ -n "${_desired_staging_commit}" ]; then
+  source+=("git+https://github.com/wine-staging/wine-staging.git#commit=${_desired_staging_commit}")
+else
+  source+=('git+https://github.com/wine-staging/wine-staging.git')
+fi
+sha512sums+=('SKIP')
+
+if [ -n "${wow64build}" ]; then
   source+=('https://kayari.org/gcc-latest/gcc-latest.deb')
   sha512sums+=('SKIP')
   noextract+=('gcc-latest.deb')
@@ -164,12 +184,12 @@ _set_vars() {
   fi
 
   export CPPFLAGS="-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0 -DNDEBUG -D_NDEBUG"
-  _common_cflags="${_GLIBC_LIBS_COMMON} -march=x86-64 -mtune=generic -O2 -pipe -fno-semantic-interposition -fno-strict-aliasing -fomit-frame-pointer -fwrapv -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -Wno-error=return-mismatch -Wno-error=int-conversion -w"
+  _common_cflags="${_GLIBC_LIBS_COMMON} -march=x86-64 -mtune=native -O2 -pipe -fno-strict-aliasing -fomit-frame-pointer -fwrapv -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -Wno-error=return-mismatch -Wno-error=int-conversion -w"
 
-  _LTO_FLAGS="-flto -fdevirtualize-at-ltrans -flto-partition=one -Wl,-flto"
+  #_LTO_FLAGS="-flto -fdevirtualize-at-ltrans -flto-partition=one -Wl,-flto" # not currently used
   #_GCC_NATIVE_FLAGS="-floop-nest-optimize -fgraphite-identity -floop-strip-mine " # gcc-latest is not compiled with libisl which is needed for graphite, but not currently used
   #_OPTIMIZE_HARDER_FLAGS="-fipa-pta -fgcse-sm -fgcse-las -fira-loop-pressure -fsched-pressure -fsched-spec-load" # not currently used
-  _native_common_cflags="${_LTO_FLAGS} ${_GLIBC_LIBS_NATIVE}"
+  _native_common_cflags="${_GLIBC_LIBS_NATIVE}"
 
   _GCC_FLAGS="${_common_cflags} ${_native_common_cflags} ${CPPFLAGS}"
   _LD_FLAGS="${_GCC_FLAGS} -Wl,-O2,--sort-common,--as-needed"
@@ -215,82 +235,86 @@ prepare() { _set_vars;
     fi
     ln -s "${_where}"/gcc-latest "${srcdir}"/gcc-latest
   fi
-
-  if [ "${_bundled_src}" != "true" ]; then # skip this stuff if we are using bundled
-    ## removes wine/staging dirs if already existing
-    rm -rf "${srcdir}"/{${pkgname:?},wine-staging} || true
-
-    _wine_commit=$(cat "${srcdir}"/wine-osu-patches/wine-commit)
-    _staging_commit=$(cat "${srcdir}"/wine-osu-patches/staging-commit)
-
-    ## Mainline setup
-
-    if ! [ -d "${_where}"/wine ]; then
-      cd "${_where}" || _failure
-      git clone https://github.com/wine-mirror/wine.git
-    fi
-
-    cd "${_where}"/wine || _failure
-    git pull
-
-    if [ "$_autoupdate" != "true" ]; then
-      git reset --hard "${_wine_commit}"
-    fi
-
-    _currcommit=$(git rev-parse HEAD)
-
-    if [ "$_currcommit" != "${_wine_commit}" ]; then
-      msg2 "Wine mainline updated to: $_currcommit"
-      sed -i "s/^_wine_commit=$_wine_commit$/_wine_commit=$_currcommit/g" "${_where}"/PKGBUILD
-    else
-      msg2 "Wine mainline at: $_currcommit"
-    fi
-
-    ## Staging setup
-
-    if ! [ -d "${_where}"/wine-staging ]; then
-      cd "${_where}" || _failure
-      git clone https://github.com/wine-staging/wine-staging.git
-    fi
-
-    cd "${_where}"/wine-staging || _failure
-    git pull
-
-    if [ "$_autoupdate" != "true" ]; then
-      git reset --hard "${_staging_commit}"
-    fi
-
-    _currcommit=$(git rev-parse HEAD)
-
-    if [ "$_currcommit" != "${_staging_commit}" ]; then
-      msg2 "Wine staging updated to: $_currcommit"
-      sed -i "s/^_staging_commit=$_staging_commit$/_staging_commit=$_currcommit/g" "${_where}"/PKGBUILD
-    else
-      msg2 "Wine staging at: $_currcommit"
-    fi
-
-    cd "${_where}" || _failure
-    cp -r "${_where}"/wine "${srcdir}"/"${pkgname}"
-    cp -r "${_where}"/wine-staging "${srcdir}"/
-    cd "${srcdir}" || _failure
-
-    ## apply wine-staging patchset
-
-    pushd wine-staging/staging || _failure
-    ./patchinstall.py DESTDIR="${srcdir}/${pkgname}" --all "${_disabled_staging}"
-    popd || _failure
   
-  fi # end ! _bundled_src
+  _patchbase_wine_commit=$(cat "${srcdir}"/wine-osu-patches/wine-commit)
+  _patchbase_staging_commit=$(cat "${srcdir}"/wine-osu-patches/staging-commit)
+
+  if [ -z "${_desired_wine_commit}" ]; then
+    _desired_wine_commit=$_patchbase_wine_commit
+  fi
+
+  if [ -z "${_desired_staging_commit}" ]; then
+    _desired_staging_commit=$_patchbase_staging_commit
+  fi
+
+  ## Mainline setup
+
+  ## Rename our working copy of the wine source
+  mv "${srcdir}"/wine "${srcdir}"/"${pkgname}" || _failure
+
+  if [ "$_autoupdate" != "true" ]; then
+    cd "${srcdir}"/"${pkgname}" || _failure
+    git reset --hard "${_desired_wine_commit}" || _failure
+    cd "${srcdir}" || _failure
+  fi
+
+  if [ "${_desired_wine_commit}" != "${_patchbase_wine_commit}" ]; then
+    msg2 "Wine mainline updated to: $_desired_wine_commit"
+  else
+    msg2 "Wine mainline at: $_patchbase_wine_commit"
+  fi
+
+  ## Staging setup
+
+  if [ "$_autoupdate" != "true" ]; then
+    cd "${srcdir}"/wine-staging || _failure
+    git reset --hard "${_desired_staging_commit}" || _failure
+    cd "${srcdir}" || _failure
+  fi
+
+  if [ "${_desired_staging_commit}" != "${_patchbase_staging_commit}" ]; then
+    msg2 "Wine staging updated to: $_desired_staging_commit"
+  else
+    msg2 "Wine staging at: $_patchbase_staging_commit"
+  fi
+
+  cd "${srcdir}" || _failure
+
+  ## Patching setup
+
+  touch "${_where}"/patchlog.txt || _failure
+  printf "Wine commit:%s\nStaging commit:%s\n" "${_desired_wine_commit}" "${_desired_staging_commit}" > "${_where}"/patchlog.txt
+
+  ## Apply wine-staging patchset
+
+  msg2 "Applying staging patches"
+  printf "\nApplying staging patches\n\n" >> "${_where}"/patchlog.txt
+  pushd wine-staging/staging || _failure
+  # shellcheck disable=SC2086
+  ./patchinstall.py DESTDIR="${srcdir}"/"${pkgname}" --all $_disabled_staging >> "${_where}"/patchlog.txt
+  popd || _failure
 
   ## Applying patches
-  touch "${_where}"/patchlog.txt && printf "Patches applied:\n\n" > "${_where}"/patchlog.txt
 
+  if [ "${_custompatches}" = "true" ]; then
+    if ! [ -d "${_where}/custompatches" ]; then _failure "_custompatches=true but custompatches directory not found."; fi
+    patchdir="${_where}/custompatches"
+  else
+    patchdir="${srcdir}/wine-osu-patches"
+  fi
+
+  printf "\nApplying other patches\n\n" >> "${_where}"/patchlog.txt
   cd "${srcdir}"/"${pkgname}" || _failure
-  for patch in $(find "${srcdir}/wine-osu-patches" -type f -regex ".*\.patch" | sort); do
-    shortname="${patch#"${srcdir}/wine-osu-patches/"}"
+  for patch in $(find "${patchdir}" -type f -regex ".*\.patch" | sort); do
+    shortname="${patch#"${patchdir}/"}"
     printf "\nApplying %s\n\n" "${shortname}" >> "${_where}"/patchlog.txt
     msg2 "Applying '${shortname}'"
-    patch -Np1 <"${patch}" >> "${_where}"/patchlog.txt
+    patch -Np1 <"${patch}" >> "${_where}"/patchlog.txt || 
+      if [ "${_custompatches}" != "true" ]; then 
+        _failure "An error occurred applying ${shortname}, check patchlog.txt for info."
+      else
+        _failure "An error occurred applying custompatches/${shortname}, check patchlog.txt for info."
+      fi
   done
 
   ## make tools/make_makefiles happy
@@ -330,8 +354,8 @@ buildwow64() { _set_vars;
   ../"${pkgname}"/configure \
     --libdir=/opt/"${pkgname}"/lib64 \
     --enable-archs=x86_64,i386 \
-    --with-mingw="ccache x86_64-w64-mingw32-clang" \
-    "${_sharedopts[@]}"
+    "${_sharedopts[@]}" \
+    --with-mingw="ccache x86_64-w64-mingw32-clang"
 
   make -j$(($(nproc) + 1))
 }
@@ -456,6 +480,9 @@ package() { _set_vars;
   cp "${srcdir}"/winestart "${pkgdir}"/opt/"${pkgname}"/bin/wine64
   chmod +x "${pkgdir}"/opt/"${pkgname}"/bin/wine{,64}
 
+  ## Clean patchlog dirnames and add to package
+  sed -i "s|${where}\/||g" "${_where}"/patchlog.txt
+
   cp "${_where}"/patchlog.txt "${pkgdir}"/opt/"${pkgname}"
 }
 
@@ -467,8 +494,10 @@ exit_cleanup() {
   fi
 }
 
-failure() {
-  msg2 "Something went wrong. Exiting"
+# shellcheck disable=SC2120
+_failure() {
+  if [ -n "$*" ]; then msg "$*"; fi
+  error "Exiting."
   exit 1
 }
 

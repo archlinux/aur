@@ -1,7 +1,7 @@
 pkgbase = wine-osu-spectator-wow64-bin
-	pkgdesc = A compatibility layer for running Windows programs, but with osu! specific patches
+	pkgdesc = A compatibility layer for running Windows programs, but with osu! specific patches (WoW64 version)
 	pkgver = 9.11.wow64
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.winehq.com
 	install = wine.install
 	arch = x86_64
@@ -97,21 +97,28 @@ pkgbase = wine-osu-spectator-wow64-bin
 	optdepends = dosbox
 	provides = wine-osu-spectator-wow64-bin
 	conflicts = wine-osu-spectator-wow64-bin
+	noextract = gcc-latest.deb
 	options = !buildflags
 	options = staticlibs
 	options = ccache
 	options = !lto
 	options = !debug
 	options = !strip
-	source = git+https://github.com/whrvt/wine-osu-patches.git#tag=06-20-2024-8c64979d-5ecb8929
+	source = git+https://github.com/whrvt/wine-osu-patches.git#tag=06-21-2024-6c5d17af-593249dc
 	source = winestart
 	source = 30-win32-aliases.conf
 	source = wine-binfmt.conf
 	source = https://github.com/mstorsjo/llvm-mingw/releases/download/nightly/llvm-mingw-nightly-ucrt-ubuntu-20.04-x86_64.tar.xz
-	sha512sums = 9fd04c1b52de080d828e1c24783ab758ab7d68fb8bb44e701d536d9bc815dbbdc67bc69aab26993488cbc5fc2f80c65c9a257d7b4d321fb58ad190bd1433a8c5
+	source = git+https://gitlab.winehq.org/wine/wine.git
+	source = git+https://github.com/wine-staging/wine-staging.git
+	source = https://kayari.org/gcc-latest/gcc-latest.deb
+	sha512sums = 05bdd8ed7595dcb96f3dab60d0df66fe766a0b811d40692d022267e45f0f62a1d8592b2a42189b83cee3dc8ac0ea7aed8f1e2ad0d3f8c30923852ae97f794c52
 	sha512sums = 755697df574bbdbcbbd29f87eccf0c38af6166fa73e066326b875f3fc5544ad72fd8d8280357e9594a0c029394d7a1ad8e19983efd8d33b50074451ea77bb91b
 	sha512sums = 6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb
 	sha512sums = bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
 	sha512sums = SKIP
 
 pkgname = wine-osu-spectator-wow64-bin
