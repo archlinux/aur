@@ -16,7 +16,7 @@ pkgname=(
 'vala-panel-appmenu-common-git'
 )
 
-makedepends=('meson' 'vala' 'gtk3' 'libwnck3' 'appmenu-glib-translator' 'git')
+makedepends=('meson' 'vala' 'gtk3' 'libwnck3' 'appmenu-glib-translator' 'git' 'glib2-devel')
 
 if (("${_disable_mate}" == 0));then
 	_opts+=(-Dmate=enabled)
@@ -51,7 +51,7 @@ fi
 
 _pkgbase=vala-panel-appmenu
 pkgbase=${_pkgbase}-xfce-git
-pkgver=24.02.r32.gbada552
+pkgver=24.05.r2.g7631683
 pkgrel=1
 pkgdesc="AppMenu (Global Menu) plugin"
 url="https://gitlab.com/vala-panel-project/vala-panel-appmenu"
