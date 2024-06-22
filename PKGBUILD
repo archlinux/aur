@@ -19,7 +19,7 @@ build() {
 }
 
 package() {
-    cd "$srcdir/${pkgname}-${pkgver}"
+    cd "$srcdir/chronograph-${pkgver}"
     make DESTDIR="$pkgdir/" install
     install -Dm755 /dev/null "$pkgdir/usr/bin/chronograph-launcher"
     echo '#!/usr/bin/env python' > "$pkgdir/usr/bin/chronograph-launcher"
