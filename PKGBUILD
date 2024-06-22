@@ -1,7 +1,7 @@
 # Maintainer: Lev Babiev <harley at hosers dot org>
 
 pkgname=sfwbar
-pkgver=1.0_beta14
+pkgver=1.0_beta15
 pkgrel=1
 
 pkgdesc='S* Floating Window taskBar'
@@ -21,14 +21,11 @@ optdepends=(
     'libmpdclient: music player daemon control',
     'libxkbcommon: xkb layout conversion support'
     )
-makedepends=(
-    'git'
-    'meson'
-    )
+makedepends=('meson')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 
-sha256sums=('e5fa6147e3a58e9440b24b8f1ef2378ae088631b8013ecf7770e984f97c5eeb4')
+sha256sums=('e7b45b810659ddb4c1877c486e6c2e40830473ff2e562a9176b149eae1fa8b5f')
 
 build() {
     cd "$pkgname-$pkgver"
