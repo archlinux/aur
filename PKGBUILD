@@ -2,7 +2,7 @@
 # Repo:       https://github.com/Mikescher/firefox-sync-client
 
 pkgname=ffsclient-bin
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 
 pkgdesc="A cli to access firefox-sync data"
