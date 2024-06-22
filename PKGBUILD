@@ -4,7 +4,7 @@
 _pkgmain=backports.csv
 pkgname=python-$_pkgmain
 pkgver=1.0.7
-pkgrel=8
+pkgrel=9
 pkgdesc="Backport of Python 3 csv module."
 arch=('any')
 url="https://github.com/ryanhiebert/backports.csv"
@@ -28,4 +28,6 @@ build() {
 package() {
   cd "$srcdir/$_pkgmain-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
+  install -m755 -d "$pkgdir/usr/share/doc/$pkgname"
+  install -m644 -t "$pkgdir/usr/share/doc/$pkgname/" README.rst HISTORY.rst
 }
