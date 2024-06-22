@@ -8,7 +8,7 @@ shopt -s extglob
 
 pkgname=pandoc-static-git
 _pkgname="${pkgname%-static-git}"
-pkgver=3.2.r31.gd01f2ac51
+pkgver=3.2.r112.g2b60b1a1b
 pkgrel=1
 pkgdesc='Conversion between markup formats (static build, dynamic Lua support)'
 url='https://pandoc.org'
@@ -25,14 +25,8 @@ sha512sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname"
-    eval "$(git for-each-ref --shell --sort=creatordate \
-        --format 'git tag --force %(refname:lstrip=-1)rc %(refname)' \
-        'refs/**/rc/*' | tail -n1)"
-    git tag --force \
-      "$(awk -F' *: *' '$1 ~ /^[Vv]ersion/ { print $2 }' *.cabal)"-rc \
-      "$(git blame -p -L /^[Vv]ersion:/,+1 *.cabal | head -n1 | cut -d' ' -f1)"
-    git describe --tags --long --match '[0-9]*' --match 'v[0-9]*' \
-        | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --tags --long --match 'pandoc-cli-*' \
+        | sed 's/^pandoc-cli-//;s/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
