@@ -9,5 +9,11 @@ pkgbase = paczf
 	depends = paru
 	depends = pacman
 	depends = less
+	source = https://codeberg.org/bankenstein/paczf/src/branch/master/pacget
+	source = https://codeberg.org/bankenstein/paczf/src/branch/master/pacls
+	source = https://codeberg.org/bankenstein/paczf/src/branch/master/pacrm
+	sha256sums = fc4a82e390bf48b0d340872de32021ea22907ba53ba7dc988ebdd31ac6b4eac1
+	sha256sums = 3c9c39497a0a137010583559a3d6cd62d035115f22040f35599b84616b1ba208
+	sha256sums = a4350cc08ded162336399608a929adc28efea96b3e5ed70281b2d71b71f9b844
 
 pkgname = paczf
