@@ -2,7 +2,7 @@
 
 pkgname=obs-studio-tytan652
 pkgver=30.1.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integrations. Plus my bind interface PR, and sometimes backported fixes"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -16,7 +16,7 @@ _pythonver=3.12
 depends=(
   "alsa-lib" # Deps of ALSA plugin and CEF
   "curl" # Deps of OBS Studio and rtmp-services plugin
-  "ffmpeg-obs>=6" # Deps of OBS Studio and FFmpeg plugin
+  "ffmpeg-obs>=7" # Deps of OBS Studio and FFmpeg plugin
   "fontconfig" # Deps of Freetype2 plugin
   "freetype2" # Deps of Freetype2 plugin
   "ftl-sdk" # Deps of Outputs plugin
@@ -138,6 +138,11 @@ prepare() {
   git config submodule.plugins/obs-browser.url $srcdir/obs-browser
   git config submodule.plugins/obs-websocket.url $srcdir/obs-websocket
   git -c protocol.file.allow=always submodule update
+
+  # obs-ffmpeg: Fix incompatible-pointer-types with FFmpeg 7
+  git cherry-pick -n 8dbad9ac2974f9db776838e3f87c57c15291e983
+  # linux-v4l2: Fix deprecation with FFmpeg 7 
+  git cherry-pick -n 7d4501131a9e0014b23035168648a6175f7e7025
 
   patch -Np1 -i "$srcdir/0001-Add_finder_for_uthash.patch"
   patch -Np1 -i "$srcdir/0002-Use_system_uthash.patch"
