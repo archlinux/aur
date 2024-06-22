@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.9.5.arch1
+pkgver=6.9.6.arch1
 pkgrel=1
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
@@ -37,32 +37,6 @@ source=(
   
   0001-acpi-proc-idle-skip-dummy-wait.patch
 
-  0027-mt76_-mt7921_-Disable-powersave-features-by-default.patch
-  
-#  0001-linux6.8.y-bore5.1.0.patch
-  
-  0032-Bluetooth-btusb-Add-a-new-PID-VID-0489-e0f6-for-MT7922.patch
-  0035-Add_quirk_for_polling_the_KBD_port.patch
-  
-  "0001-sched-ext.patch"::"https://raw.githubusercontent.com/cachyos/kernel-patches/master/6.9/sched/0001-sched-ext.patch"
-
-#  0001-ALSA-PCI-HDA-Adjust-G814JZR-to-use-SPI-init-for-amp.patch
-  0002-hid-asus-use-hid-for-brightness-control-on-keyboard.patch
-  0003-Debugging.patch
-  0004-asus-wmi-don-t-error-out-if-platform_profile-already.patch
-  0005-hid-asus-add-USB_DEVICE_ID_ASUSTEK_DUO_KEYBOARD.patch
-  
-  0001-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
-  0002-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
-
-  v2-0005-platform-x86-asus-wmi-don-t-allow-eGPU-switching-.patch
-
-  0038-mediatek-pci-reset.patch
-  0040-workaround_hardware_decoding_amdgpu.patch
-
-  0001-platform-x86-asus-wmi-Support-2023-ROG-X16-tablet-mo.patch
-  amd-tablet-sfh.patch
-
   0001-v4-platform-x86-asus-wmi-add-support-for-2024-ROG-Mini-LED.patch
   0002-v4-platform-x86-asus-wmi-add-support-for-Vivobook-GPU-MUX.patch
   0003-v4-platform-x86-asus-wmi-add-support-variant-of-TUF-RGB.patch
@@ -79,6 +53,43 @@ source=(
   0003-HID-asus-add-ROG-Ally-N-Key-ID-and-keycodes.patch
   0004-HID-asus-add-ROG-Z13-lightbar.patch
   
+  ## upstream no longer has these patches...
+  #0002-hid-asus-use-hid-for-brightness-control-on-keyboard.patch
+  #0003-Debugging.patch
+  #0004-asus-wmi-don-t-error-out-if-platform_profile-already.patch
+  #0005-hid-asus-add-USB_DEVICE_ID_ASUSTEK_DUO_KEYBOARD.patch
+  #v2-0005-platform-x86-asus-wmi-don-t-allow-eGPU-switching-.patch
+  #0001-platform-x86-asus-wmi-Support-2023-ROG-X16-tablet-mo.patch
+  ## to here...
+  
+  ## but these instead...
+  0001-platform-x86-asus-wmi-add-debug-print-in-more-key-pl.patch
+  0002-platform-x86-asus-wmi-don-t-fail-if-platform_profile.patch
+  0003-asus-bios-refactor-existing-tunings-in-to-asus-bios-.patch
+  0004-asus-bios-add-panel-hd-control.patch
+  0005-asus-bios-add-dgpu-tgp-control.patch
+  0006-asus-bios-add-apu-mem.patch
+  0007-asus-bios-add-core-count-control.patch
+  #0008-asus-wmi-deprecate-bios-features.patch
+  v2-0001-hid-asus-use-hid-for-brightness-control-on-keyboa.patch
+  #0003-platform-x86-asus-wmi-add-macros-and-expose-min-max-.patch 
+  ## to here...
+  
+  0027-mt76_-mt7921_-Disable-powersave-features-by-default.patch
+  
+  0032-Bluetooth-btusb-Add-a-new-PID-VID-0489-e0f6-for-MT7922.patch
+  0035-Add_quirk_for_polling_the_KBD_port.patch
+  
+  0001-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
+  0002-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
+
+  0038-mediatek-pci-reset.patch
+  0040-workaround_hardware_decoding_amdgpu.patch
+
+  amd-tablet-sfh.patch
+
+  "0001-sched-ext.patch"::"https://raw.githubusercontent.com/cachyos/kernel-patches/master/6.9/sched/0001-sched-ext.patch"
+
   "sys-kernel_arch-sources-g14_files-0047-asus-nb-wmi-Add-tablet_mode_sw-lid-flip.patch"
   "sys-kernel_arch-sources-g14_files-0048-asus-nb-wmi-fix-tablet_mode_sw_int.patch"
 )
@@ -88,30 +99,14 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('c321c46401368774fc236f57095b205a5da57415f9a6008018902f9fd5eddfae'
+sha256sums=('5d4366e2b89998f274abe03557ef3bc78b58e47fc62c102d51e6f49e5ed96b4b'
             'SKIP'
-            'cf11fe18d60f2bf85fa0dd61a2fb1d59bf40f98db48dfae2244c5839c1281919'
+            'f11095f47da518ce4074be587438d30f424d98bcc5c59f7a1a8c00c58ddf5aa4'
             'SKIP'
-            'ccb010f9cf043f07dd2a2aba56cf2b7a82654dc7ee0b12a4984fcfed05d3e8ec'
+            'd6c1352567ed50b9a24062f93d575dfb6b744995d7ea029beb897480c992f706'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
             'f4e7fcd011f2691840d2c8c2361dca850a78ea33cc5c24d2e27c3e0294fd1dc5'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
-            'ed242f4be3f8eaade2a1d42157c5c6c86281917a08ae43221b088fafdc775ee7'
-            'a8e1e11a4ab1995cc4975c9b134a43ddfe7054ef0c965e52a7d8f9223e15c3e0'
-            '315d1839630b37894a626bbc2aea012618b2e1ccb6f9d8aa27c0a3ce5e90e99c'
-            'ecbd4fc71f04d391d6e3ec1d90ee84b04a026ae89c901257915e304aa4b3dd57'
-            '9152af5811a61dd196c520ac39792aebee325fda093ecf9acd19f80819cf8d7c'
-            '567efcbb400bf2dc7327a790839d2a441bd7ca9fb7f5b2b07591c4abc63554bf'
-            '6ab14523be3cadf4d495dd13b0ed12a1241118d93d8313f47a8dea6b1bf16df6'
-            'c9835e39798d97ba0ca48c0d2353d1182715d4bfc99964051993dacc8f59ba83'
-            '423380be1902da29e695cb201516751759050fc0a50914a0459f05e1f4614087'
-            'a00b952d53df9d3617d93e8fba4146a4d6169ebe79f029b3a55cca68f738d8ea'
-            '4912b1319e46ddd6670147f5e878b4aca8bcfbd7b5c852fe11e434e424666365'
-            '9f98765b43f5f31b33ed05f3611508113b02518e680ee82b251de80dae2e141d'
-            'd673d034fbcd80426fd8d9c6af56537c5fe5b55fe49d74e313474d7fc285ecc1'
-            'e41198b29cee4de7a5132d8df606f48c2d0f9c9076fe4230b00a33c7e0b22c71'
-            '1edb362a762c8858374027e30ff58ae0014e117fdc05cc7db6da50f80e7aab87'
-            '508f90cbe81a9a145cc540703470f1e6b5d21c7a7b9166d2ce6e56b401262b04'
             'feaf5f5fb62e25e2369f92f77e8327dcd4cb4cf4bc6d0c91d9c7bc40c0f4de46'
             'b9866121c69ce22b4651b3ef2a1956e6d0547e40a14d1224e2f367a4f716ca1a'
             '6f2f248a5ac9b1a37324cbce8d29a65b22a2b20d4b3564c0dc6063789ae733ba'
@@ -122,10 +117,27 @@ sha256sums=('c321c46401368774fc236f57095b205a5da57415f9a6008018902f9fd5eddfae'
             'f5b560d988c47033c44307da0b584599d1f59cc0028a594f4df87affffc219d5'
             'de85da760f6692b284e39aa78479904d6ee78b349f1e98d1d210777f9ef17581'
             '3be072ed798becd91bae66a75d09235c9cb5e84547b1f4eb7768e954ba109e92'
-            '93c9a77f6c25494cecbe6b236bd2179065d5f5db5589dabaa425134c1a8c3481'
+            '9c8679f5995b69b6778539f48f30142e5a357213cf9a04ee0877f50f859d1233'
             'c1d96328d96964c2ce3ef7609fb7c07e97eb136dfab9f6d4efcce072a5739838'
             '2414dc71174c90b92f975a7d16cabc99ba509397d843132764ea9ee91b643dc0'
             '107a08aa610d3ba3c7ecec301df2ea8f345bc74107fcf4dac96fe9e89a23dcf1'
+            '0ac28bb000cf2eb56f36d028588fd898dd8afa63ba247fcf326496570c2fe87e'
+            'f45f61b9e023bf0224d70f76c73c0f667193a9915ba6ae9586046a9c4d73b8a0'
+            '9de67962522d07b9babe7c97e4240bb267939c2c6c97bb91d64ed14123f81e3f'
+            '9884ce2c34d9520e343dbaf33ef1d053deeb752c12bd595ec5c96a17859131d4'
+            'cc7d6594d152b95d3edc82f4a01317881f94dd365b28264805840e33a523b4c6'
+            '5b6a2f1ac22c55f43cd7e7b8b79b7ee8a76d58acd74abecc3102b2c32ed15576'
+            '6f5325bf096668d25a9bcf7fdd9fc574fc1c16640f2d163c54b87527ed961d83'
+            'b7422349428f0476477167f81d9cd9e3692f7ca7345eb6e1f861a0994f9a366e'
+            'ed242f4be3f8eaade2a1d42157c5c6c86281917a08ae43221b088fafdc775ee7'
+            'a8e1e11a4ab1995cc4975c9b134a43ddfe7054ef0c965e52a7d8f9223e15c3e0'
+            '315d1839630b37894a626bbc2aea012618b2e1ccb6f9d8aa27c0a3ce5e90e99c'
+            'a00b952d53df9d3617d93e8fba4146a4d6169ebe79f029b3a55cca68f738d8ea'
+            '4912b1319e46ddd6670147f5e878b4aca8bcfbd7b5c852fe11e434e424666365'
+            'd673d034fbcd80426fd8d9c6af56537c5fe5b55fe49d74e313474d7fc285ecc1'
+            'e41198b29cee4de7a5132d8df606f48c2d0f9c9076fe4230b00a33c7e0b22c71'
+            '508f90cbe81a9a145cc540703470f1e6b5d21c7a7b9166d2ce6e56b401262b04'
+            'b6e59b42ae96d69430aa78e5f7c5212e2092e7a17a9cd67575c76d79a68f28e1'
             '15e912a66e4bbce1cf0450f1dc6610653df29df8dd6d5426f9c1b039490436c8'
             '444f2d86de8c2177655b01596f939f99c2e7abfa8efad8a509e0a334f42dfa85')
 

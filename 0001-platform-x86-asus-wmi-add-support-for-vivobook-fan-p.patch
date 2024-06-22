@@ -1,14 +1,8 @@
-From 8cab59d3fb33f17e3b3fa4937c5d4bf0b59e6b12 Mon Sep 17 00:00:00 2001
-From: Mohamed Ghanmi <mohamed.ghanmi@supcom.tn>
-Date: Fri, 12 Apr 2024 00:56:39 +0100
-Subject: [PATCH] platform/x86: asus-wmi: add support for vivobook fan profiles
-
 Add support for vivobook fan profiles wmi call on the ASUS VIVOBOOK
 to adjust power limits.
 
-These fan profiles have a different device id than the ROG series.
-and different order. This reorders the existing modes and adds a new
-full speed mode available on these laptops.
+These fan profiles have a different device id than the ROG series
+and different order. This reorders the existing modes.
 
 As part of keeping the patch clean the throttle_thermal_policy_available
 boolean stored in the driver struct is removed and
@@ -18,27 +12,28 @@ Signed-off-by: Mohamed Ghanmi <mohamed.ghanmi@supcom.tn>
 Co-developed-by: Luke D. Jones <luke@ljones.dev>
 Signed-off-by: Luke D. Jones <luke@ljones.dev>
 ---
- drivers/platform/x86/asus-wmi.c            | 100 +++++++++++----------
+ drivers/platform/x86/asus-wmi.c            | 125 ++++++++++++---------
  include/linux/platform_data/x86/asus-wmi.h |   1 +
- 2 files changed, 55 insertions(+), 46 deletions(-)
+ 2 files changed, 76 insertions(+), 50 deletions(-)
 
 diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
-index 2d2b4eca7fd8..439d330fb80b 100644
+index 3c61d75a3..2e3d8d8fb 100644
 --- a/drivers/platform/x86/asus-wmi.c
 +++ b/drivers/platform/x86/asus-wmi.c
-@@ -97,6 +97,11 @@ module_param(fnlock_default, bool, 0444);
+@@ -97,6 +97,12 @@ module_param(fnlock_default, bool, 0444);
  #define ASUS_THROTTLE_THERMAL_POLICY_OVERBOOST	1
  #define ASUS_THROTTLE_THERMAL_POLICY_SILENT	2
  
 +#define ASUS_THROTTLE_THERMAL_POLICY_DEFAULT_VIVO	0
++#define ASUS_THROTTLE_THERMAL_POLICY_SILENT_VIVO	1
 +#define ASUS_THROTTLE_THERMAL_POLICY_OVERBOOST_VIVO	2
-+#define ASUS_THROTTLE_THERMAL_POLICY_SILENT_VIVO		1
-+#define ASUS_THROTTLE_THERMAL_POLICY_FULLSPEED		3
++
++#define PLATFORM_PROFILE_MAX 2
 +
  #define USB_INTEL_XUSB2PR		0xD0
  #define PCI_DEVICE_ID_INTEL_LYNXPOINT_LP_XHCI	0x9c31
  
-@@ -285,8 +290,8 @@ struct asus_wmi {
+@@ -293,8 +299,8 @@ struct asus_wmi {
  	u32 kbd_rgb_dev;
  	bool kbd_rgb_state_available;
  
@@ -48,7 +43,7 @@ index 2d2b4eca7fd8..439d330fb80b 100644
  
  	bool cpu_fan_curve_available;
  	bool gpu_fan_curve_available;
-@@ -3153,7 +3158,7 @@ static int fan_curve_get_factory_default(struct asus_wmi *asus, u32 fan_dev)
+@@ -3152,7 +3158,7 @@ static int fan_curve_get_factory_default(struct asus_wmi *asus, u32 fan_dev)
  	int err, fan_idx;
  	u8 mode = 0;
  
@@ -57,7 +52,7 @@ index 2d2b4eca7fd8..439d330fb80b 100644
  		mode = asus->throttle_thermal_policy_mode;
  	/* DEVID_<C/G>PU_FAN_CURVE is switched for OVERBOOST vs SILENT */
  	if (mode == 2)
-@@ -3360,7 +3365,7 @@ static ssize_t fan_curve_enable_store(struct device *dev,
+@@ -3359,7 +3365,7 @@ static ssize_t fan_curve_enable_store(struct device *dev,
  		 * For machines with throttle this is the only way to reset fans
  		 * to default mode of operation (does not erase curve data).
  		 */
@@ -66,7 +61,7 @@ index 2d2b4eca7fd8..439d330fb80b 100644
  			err = throttle_thermal_policy_write(asus);
  			if (err)
  				return err;
-@@ -3577,8 +3582,8 @@ static const struct attribute_group asus_fan_curve_attr_group = {
+@@ -3576,8 +3582,8 @@ static const struct attribute_group asus_fan_curve_attr_group = {
  __ATTRIBUTE_GROUPS(asus_fan_curve_attr);
  
  /*
@@ -77,7 +72,7 @@ index 2d2b4eca7fd8..439d330fb80b 100644
   */
  static int asus_wmi_custom_fan_curve_init(struct asus_wmi *asus)
  {
-@@ -3619,38 +3624,31 @@ static int asus_wmi_custom_fan_curve_init(struct asus_wmi *asus)
+@@ -3618,38 +3624,13 @@ static int asus_wmi_custom_fan_curve_init(struct asus_wmi *asus)
  }
  
  /* Throttle thermal policy ****************************************************/
@@ -110,33 +105,16 @@ index 2d2b4eca7fd8..439d330fb80b 100644
 -	u8 value;
 +	u8 value = asus->throttle_thermal_policy_mode;
  	u32 retval;
-+	bool vivo;
 +	int err;
  
 -	value = asus->throttle_thermal_policy_mode;
-+	vivo = asus->throttle_thermal_policy_dev == ASUS_WMI_DEVID_THROTTLE_THERMAL_POLICY_VIVO;
-+	if (vivo) {
-+		switch (value) {
-+		case ASUS_THROTTLE_THERMAL_POLICY_DEFAULT:
-+			value = ASUS_THROTTLE_THERMAL_POLICY_DEFAULT_VIVO;
-+			break;
-+		case ASUS_THROTTLE_THERMAL_POLICY_OVERBOOST:
-+			value = ASUS_THROTTLE_THERMAL_POLICY_OVERBOOST_VIVO;
-+			break;
-+		case ASUS_THROTTLE_THERMAL_POLICY_SILENT:
-+			value = ASUS_THROTTLE_THERMAL_POLICY_SILENT_VIVO;
-+			break;
-+		default:
-+			break;
-+		}
-+	}
- 
+-
 -	err = asus_wmi_set_devstate(ASUS_WMI_DEVID_THROTTLE_THERMAL_POLICY,
 +	err = asus_wmi_set_devstate(asus->throttle_thermal_policy_dev,
  				    value, &retval);
  
  	sysfs_notify(&asus->platform_device->dev.kobj, NULL,
-@@ -3680,7 +3678,7 @@ static int throttle_thermal_policy_write(struct asus_wmi *asus)
+@@ -3679,7 +3660,7 @@ static int throttle_thermal_policy_write(struct asus_wmi *asus)
  
  static int throttle_thermal_policy_set_default(struct asus_wmi *asus)
  {
@@ -145,54 +123,112 @@ index 2d2b4eca7fd8..439d330fb80b 100644
  		return 0;
  
  	asus->throttle_thermal_policy_mode = ASUS_THROTTLE_THERMAL_POLICY_DEFAULT;
-@@ -3690,9 +3688,14 @@ static int throttle_thermal_policy_set_default(struct asus_wmi *asus)
- static int throttle_thermal_policy_switch_next(struct asus_wmi *asus)
- {
+@@ -3691,7 +3672,7 @@ static int throttle_thermal_policy_switch_next(struct asus_wmi *asus)
  	u8 new_mode = asus->throttle_thermal_policy_mode + 1;
-+	bool vivo;
  	int err;
  
 -	if (new_mode > ASUS_THROTTLE_THERMAL_POLICY_SILENT)
-+	vivo = asus->throttle_thermal_policy_dev == ASUS_WMI_DEVID_THROTTLE_THERMAL_POLICY_VIVO;
-+	if (!vivo && new_mode > ASUS_THROTTLE_THERMAL_POLICY_SILENT)
-+		new_mode = ASUS_THROTTLE_THERMAL_POLICY_DEFAULT;
-+
-+	if (vivo && new_mode > ASUS_THROTTLE_THERMAL_POLICY_FULLSPEED)
++	if (new_mode > PLATFORM_PROFILE_MAX)
  		new_mode = ASUS_THROTTLE_THERMAL_POLICY_DEFAULT;
  
  	asus->throttle_thermal_policy_mode = new_mode;
-@@ -3725,13 +3728,17 @@ static ssize_t throttle_thermal_policy_store(struct device *dev,
- 	struct asus_wmi *asus = dev_get_drvdata(dev);
- 	u8 new_mode;
- 	int result;
-+	bool vivo;
- 	int err;
- 
- 	result = kstrtou8(buf, 10, &new_mode);
+@@ -3730,7 +3711,7 @@ static ssize_t throttle_thermal_policy_store(struct device *dev,
  	if (result < 0)
  		return result;
  
 -	if (new_mode > ASUS_THROTTLE_THERMAL_POLICY_SILENT)
-+	vivo = asus->throttle_thermal_policy_dev == ASUS_WMI_DEVID_THROTTLE_THERMAL_POLICY_VIVO;
-+	if (vivo && new_mode > ASUS_THROTTLE_THERMAL_POLICY_FULLSPEED)
-+		return -EINVAL;
-+	else if (!vivo && new_mode > ASUS_THROTTLE_THERMAL_POLICY_SILENT)
++	if (new_mode > PLATFORM_PROFILE_MAX)
  		return -EINVAL;
  
  	asus->throttle_thermal_policy_mode = new_mode;
-@@ -3748,7 +3755,10 @@ static ssize_t throttle_thermal_policy_store(struct device *dev,
+@@ -3747,10 +3728,56 @@ static ssize_t throttle_thermal_policy_store(struct device *dev,
  	return count;
  }
  
 -// Throttle thermal policy: 0 - default, 1 - overboost, 2 - silent
 +/*
 + * Throttle thermal policy: 0 - default, 1 - overboost, 2 - silent
-+ * VIVOBOOK: 3 - fans full speed
 + */
  static DEVICE_ATTR_RW(throttle_thermal_policy);
  
  /* Platform profile ***********************************************************/
-@@ -3814,7 +3824,7 @@ static int platform_profile_setup(struct asus_wmi *asus)
++static int asus_wmi_platform_profile_to_vivo(struct asus_wmi *asus,
++						  int mode)
++{
++	bool vivo;
++
++	vivo = asus->throttle_thermal_policy_dev == ASUS_WMI_DEVID_THROTTLE_THERMAL_POLICY_VIVO;
++
++	if (vivo) {
++		switch (mode) {
++		case ASUS_THROTTLE_THERMAL_POLICY_DEFAULT:
++			return ASUS_THROTTLE_THERMAL_POLICY_DEFAULT_VIVO;
++		case ASUS_THROTTLE_THERMAL_POLICY_OVERBOOST:
++			return ASUS_THROTTLE_THERMAL_POLICY_OVERBOOST_VIVO;
++		case ASUS_THROTTLE_THERMAL_POLICY_SILENT:
++			return ASUS_THROTTLE_THERMAL_POLICY_SILENT_VIVO;
++		}
++	}
++
++	return mode;
++
++}
++
++static int asus_wmi_platform_profile_mode_from_vivo(struct asus_wmi *asus,
++						  int mode)
++{
++	bool vivo;
++
++	vivo = asus->throttle_thermal_policy_dev == ASUS_WMI_DEVID_THROTTLE_THERMAL_POLICY_VIVO;
++
++	if (vivo) {
++		switch (mode) {
++		case ASUS_THROTTLE_THERMAL_POLICY_DEFAULT_VIVO:
++			return ASUS_THROTTLE_THERMAL_POLICY_DEFAULT;
++		case ASUS_THROTTLE_THERMAL_POLICY_OVERBOOST_VIVO:
++			return ASUS_THROTTLE_THERMAL_POLICY_OVERBOOST;
++		case ASUS_THROTTLE_THERMAL_POLICY_SILENT_VIVO:
++			return ASUS_THROTTLE_THERMAL_POLICY_SILENT;
++		}
++	}
++
++	return mode;
++
++}
++
+ static int asus_wmi_platform_profile_get(struct platform_profile_handler *pprof,
+ 					enum platform_profile_option *profile)
+ {
+@@ -3758,10 +3785,9 @@ static int asus_wmi_platform_profile_get(struct platform_profile_handler *pprof,
+ 	int tp;
+ 
+ 	asus = container_of(pprof, struct asus_wmi, platform_profile_handler);
+-
+ 	tp = asus->throttle_thermal_policy_mode;
+ 
+-	switch (tp) {
++	switch (asus_wmi_platform_profile_mode_from_vivo(asus, tp)) {
+ 	case ASUS_THROTTLE_THERMAL_POLICY_DEFAULT:
+ 		*profile = PLATFORM_PROFILE_BALANCED;
+ 		break;
+@@ -3775,6 +3801,7 @@ static int asus_wmi_platform_profile_get(struct platform_profile_handler *pprof,
+ 		return -EINVAL;
+ 	}
+ 
++
+ 	return 0;
+ }
+ 
+@@ -3800,7 +3827,7 @@ static int asus_wmi_platform_profile_set(struct platform_profile_handler *pprof,
+ 		return -EOPNOTSUPP;
+ 	}
+ 
+-	asus->throttle_thermal_policy_mode = tp;
++	asus->throttle_thermal_policy_mode = asus_wmi_platform_profile_to_vivo(asus, tp);
+ 	return throttle_thermal_policy_write(asus);
+ }
+ 
+@@ -3813,7 +3840,7 @@ static int platform_profile_setup(struct asus_wmi *asus)
  	 * Not an error if a component platform_profile relies on is unavailable
  	 * so early return, skipping the setup of platform_profile.
  	 */
@@ -201,7 +237,7 @@ index 2d2b4eca7fd8..439d330fb80b 100644
  		return 0;
  
  	dev_info(dev, "Using throttle_thermal_policy for platform_profile support\n");
-@@ -4229,7 +4239,7 @@ static void asus_wmi_handle_event_code(int code, struct asus_wmi *asus)
+@@ -4228,7 +4255,7 @@ static void asus_wmi_handle_event_code(int code, struct asus_wmi *asus)
  	if (code == NOTIFY_KBD_FBM || code == NOTIFY_KBD_TTP) {
  		if (asus->fan_boost_mode_available)
  			fan_boost_mode_switch_next(asus);
@@ -210,7 +246,7 @@ index 2d2b4eca7fd8..439d330fb80b 100644
  			throttle_thermal_policy_switch_next(asus);
  		return;
  
-@@ -4401,7 +4411,7 @@ static umode_t asus_sysfs_is_visible(struct kobject *kobj,
+@@ -4436,7 +4463,7 @@ static umode_t asus_sysfs_is_visible(struct kobject *kobj,
  	else if (attr == &dev_attr_fan_boost_mode.attr)
  		ok = asus->fan_boost_mode_available;
  	else if (attr == &dev_attr_throttle_thermal_policy.attr)
@@ -219,7 +255,7 @@ index 2d2b4eca7fd8..439d330fb80b 100644
  	else if (attr == &dev_attr_ppt_pl2_sppt.attr)
  		devid = ASUS_WMI_DEVID_PPT_PL2_SPPT;
  	else if (attr == &dev_attr_ppt_pl1_spl.attr)
-@@ -4693,16 +4703,15 @@ static int asus_wmi_add(struct platform_device *pdev)
+@@ -4745,16 +4772,15 @@ static int asus_wmi_add(struct platform_device *pdev)
  	else if (asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_TUF_RGB_MODE2))
  		asus->kbd_rgb_dev = ASUS_WMI_DEVID_TUF_RGB_MODE2;
  
@@ -241,7 +277,7 @@ index 2d2b4eca7fd8..439d330fb80b 100644
  	err = platform_profile_setup(asus);
  	if (err)
  		goto fail_platform_profile_setup;
-@@ -4797,7 +4806,6 @@ static int asus_wmi_add(struct platform_device *pdev)
+@@ -4849,7 +4875,6 @@ static int asus_wmi_add(struct platform_device *pdev)
  fail_input:
  	asus_wmi_sysfs_exit(asus->platform_device);
  fail_sysfs:
@@ -250,7 +286,7 @@ index 2d2b4eca7fd8..439d330fb80b 100644
  fail_platform_profile_setup:
  	if (asus->platform_profile_support)
 diff --git a/include/linux/platform_data/x86/asus-wmi.h b/include/linux/platform_data/x86/asus-wmi.h
-index 3eb5cd6773ad..982a637744ec 100644
+index 3eb5cd677..982a63774 100644
 --- a/include/linux/platform_data/x86/asus-wmi.h
 +++ b/include/linux/platform_data/x86/asus-wmi.h
 @@ -64,6 +64,7 @@

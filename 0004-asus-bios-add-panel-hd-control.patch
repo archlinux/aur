@@ -1,0 +1,57 @@
+From 4a50aed36c4c202688226653511af52f5a4915e1 Mon Sep 17 00:00:00 2001
+From: "Luke D. Jones" <luke@ljones.dev>
+Date: Sun, 2 Jun 2024 13:44:22 +1200
+Subject: [PATCH 4/8] asus-bios: add panel-hd control
+
+Signed-off-by: Luke D. Jones <luke@ljones.dev>
+---
+ drivers/platform/x86/asus-bios.c           | 6 +++++-
+ include/linux/platform_data/x86/asus-wmi.h | 1 +
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/platform/x86/asus-bios.c b/drivers/platform/x86/asus-bios.c
+index c245a48c4072..9af7a8da9c05 100644
+--- a/drivers/platform/x86/asus-bios.c
++++ b/drivers/platform/x86/asus-bios.c
+@@ -126,7 +126,8 @@ static ssize_t pending_reboot_show(struct kobject *kobj,
+ static struct kobj_attribute pending_reboot = __ATTR_RO(pending_reboot);
+ 
+ static bool asus_bios_requires_reboot(struct kobj_attribute *attr) {
+-	return !strcmp(attr->attr.name, "gpu_mux_mode");
++	return !strcmp(attr->attr.name, "gpu_mux_mode") ||
++		!strcmp(attr->attr.name, "panel_hd_mode");
+ }
+ 
+ /*
+@@ -445,6 +446,7 @@ ATTR_GROUP_ENUM_INT_RO(charge_mode, "charge_mode", ASUS_WMI_DEVID_CHARGE_MODE, 0
+ ATTR_GROUP_BOOL_RW(boot_sound, "boot_sound", ASUS_WMI_DEVID_BOOT_SOUND, "Set the boot POST sound");
+ ATTR_GROUP_BOOL_RW(mcu_powersave, "mcu_powersave", ASUS_WMI_DEVID_MCU_POWERSAVE, "Set MCU powersaving mode");
+ ATTR_GROUP_BOOL_RW(panel_od, "panel_overdrive", ASUS_WMI_DEVID_PANEL_OD, "Set the panel refresh overdrive");
++ATTR_GROUP_BOOL_RW(panel_hd_mode, "panel_hd_mode", ASUS_WMI_DEVID_PANEL_HD, "Set the panel HD mode to UHD<0> or FHD<1>");
+ ATTR_GROUP_BOOL_RO(egpu_connected, "egpu_connected", ASUS_WMI_DEVID_EGPU_CONNECTED, "Show the eGPU connection status");
+ 
+ static int asus_fw_attr_add(void)
+@@ -533,6 +535,8 @@ static int asus_fw_attr_add(void)
+ 		sysfs_create_group(&asus_bios.fw_attr_kset->kobj, &mcu_powersave_attr_group);
+ 	if (asus_wmi_is_present(ASUS_WMI_DEVID_PANEL_OD))
+ 		sysfs_create_group(&asus_bios.fw_attr_kset->kobj, &panel_od_attr_group);
++	if (asus_wmi_is_present(ASUS_WMI_DEVID_PANEL_HD))
++		sysfs_create_group(&asus_bios.fw_attr_kset->kobj, &panel_hd_mode_attr_group);
+ 
+ 	return 0;
+ 
+diff --git a/include/linux/platform_data/x86/asus-wmi.h b/include/linux/platform_data/x86/asus-wmi.h
+index 525cb7c803fe..c93068afc2b6 100644
+--- a/include/linux/platform_data/x86/asus-wmi.h
++++ b/include/linux/platform_data/x86/asus-wmi.h
+@@ -67,6 +67,7 @@
+ #define ASUS_WMI_DEVID_THROTTLE_THERMAL_POLICY 0x00120075
+ 
+ /* Misc */
++#define ASUS_WMI_DEVID_PANEL_HD		0x0005001C
+ #define ASUS_WMI_DEVID_PANEL_OD		0x00050019
+ #define ASUS_WMI_DEVID_CAMERA		0x00060013
+ #define ASUS_WMI_DEVID_LID_FLIP		0x00060062
+-- 
+2.45.1
+

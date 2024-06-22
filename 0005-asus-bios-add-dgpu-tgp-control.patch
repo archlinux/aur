@@ -1,0 +1,105 @@
+From 59d69aba37bc9ca2a22a2c44d8a5dd8600d2a35c Mon Sep 17 00:00:00 2001
+From: "Luke D. Jones" <luke@ljones.dev>
+Date: Sun, 2 Jun 2024 14:32:15 +1200
+Subject: [PATCH 5/8] asus-bios: add dgpu tgp control
+
+Signed-off-by: Luke D. Jones <luke@ljones.dev>
+---
+ drivers/platform/x86/asus-bios.c           |  8 +++++++
+ drivers/platform/x86/asus-bios.h           | 25 ++++++++++++++++++++++
+ include/linux/platform_data/x86/asus-wmi.h |  3 +++
+ 3 files changed, 36 insertions(+)
+
+diff --git a/drivers/platform/x86/asus-bios.c b/drivers/platform/x86/asus-bios.c
+index 9af7a8da9c05..d453f02a22fd 100644
+--- a/drivers/platform/x86/asus-bios.c
++++ b/drivers/platform/x86/asus-bios.c
+@@ -53,6 +53,7 @@ MODULE_ALIAS("wmi:"ASUS_NB_WMI_EVENT_GUID);
+ #define NVIDIA_BOOST_MAX	25
+ #define NVIDIA_TEMP_MIN		75
+ #define NVIDIA_TEMP_MAX		87
++#define NVIDIA_GPU_POWER_MAX	70
+ 
+ /* Tunables provided by ASUS for gaming laptops */
+ struct rog_tunables {
+@@ -441,6 +442,9 @@ ATTR_GROUP_PPT_RW(nv_dynamic_boost, "nv_dynamic_boost", ASUS_WMI_DEVID_NV_DYN_BO
+ 		nv_boost_default, 5, nv_boost_max, 1, "Set the Nvidia dynamic boost limit");
+ ATTR_GROUP_PPT_RW(nv_temp_target, "nv_temp_target", ASUS_WMI_DEVID_NV_THERM_TARGET,
+ 		nv_temp_default, 75, nv_temp_max, 1, "Set the Nvidia max thermal limit");
++ATTR_GROUP_INT_VALUE_ONLY_RO(dgpu_base_tgp, "dgpu_base_tgp", ASUS_WMI_DEVID_DGPU_BASE_TGP, "Read the base TGP value")
++ATTR_GROUP_INT_RW(dgpu_tgp, "dgpu_tgp", ASUS_WMI_DEVID_DGPU_SET_TGP,
++		70, 0, NVIDIA_GPU_POWER_MAX, 1, "Set the additional TGP on top of the base TGP");
+ 
+ ATTR_GROUP_ENUM_INT_RO(charge_mode, "charge_mode", ASUS_WMI_DEVID_CHARGE_MODE, 0, 0, "0;1;2", "Show the current mode of charging");
+ ATTR_GROUP_BOOL_RW(boot_sound, "boot_sound", ASUS_WMI_DEVID_BOOT_SOUND, "Set the boot POST sound");
+@@ -526,6 +530,10 @@ static int asus_fw_attr_add(void)
+ 			sysfs_create_group(&asus_bios.fw_attr_kset->kobj, &nv_dynamic_boost_attr_group);
+ 	if (asus_wmi_is_present(ASUS_WMI_DEVID_NV_THERM_TARGET))
+ 			sysfs_create_group(&asus_bios.fw_attr_kset->kobj, &nv_temp_target_attr_group);
++	if (asus_wmi_is_present(ASUS_WMI_DEVID_DGPU_BASE_TGP))
++			sysfs_create_group(&asus_bios.fw_attr_kset->kobj, &dgpu_base_tgp_attr_group);
++	if (asus_wmi_is_present(ASUS_WMI_DEVID_DGPU_SET_TGP))
++			sysfs_create_group(&asus_bios.fw_attr_kset->kobj, &dgpu_tgp_attr_group);
+ 
+ 	if (asus_wmi_is_present(ASUS_WMI_DEVID_CHARGE_MODE))
+ 		sysfs_create_group(&asus_bios.fw_attr_kset->kobj, &charge_mode_attr_group);
+diff --git a/drivers/platform/x86/asus-bios.h b/drivers/platform/x86/asus-bios.h
+index acae11698a07..7c4176ab757a 100644
+--- a/drivers/platform/x86/asus-bios.h
++++ b/drivers/platform/x86/asus-bios.h
+@@ -112,6 +112,22 @@ static ssize_t _attrname##_##_prop##_show(struct kobject *kobj,	\
+ static struct kobj_attribute attr_##_attrname##_##_prop = 	\
+ 	__ASUS_ATTR_RO(_attrname, _prop);
+ 
++/* Requires current_value show&|store */
++#define __ATTR_GROUP_INT_VALUE_ONLY(_attrname, _fsname, _dispname)	\
++__ATTR_SHOW_FMT(display_name, _attrname, "%s\n", _dispname); 		\
++static struct kobj_attribute attr_##_attrname##_type = 			\
++			__ASUS_ATTR_RO_AS(type, int_type_show);		\
++static struct attribute *_attrname##_attrs[] = {			\
++				&attr_##_attrname##_current_value.attr,	\
++				&attr_##_attrname##_display_name.attr,	\
++				&attr_##_attrname##_type.attr,		\
++				NULL					\
++};									\
++static const struct attribute_group _attrname##_attr_group = {		\
++				.name = _fsname,			\
++				.attrs = _attrname##_attrs		\
++};
++
+ /* Int style min/max range, base macro. Requires current_value show&|store */
+ #define __ATTR_GROUP_INT(_attrname, _fsname, _default,		\
+ 				_min, _max, _incstep, _dispname)\
+@@ -155,6 +171,15 @@ static const struct attribute_group _attrname##_attr_group = {		\
+ 		.attrs = _attrname##_attrs				\
+ };
+ 
++#define ATTR_GROUP_INT_VALUE_ONLY_RO(_attrname, _fsname, _wmi, _dispname)	\
++__ATTR_CURRENT_INT_RO(_attrname, _wmi);						\
++__ATTR_GROUP_INT_VALUE_ONLY(_attrname, _fsname, _dispname);
++
++#define ATTR_GROUP_INT_RW(_attrname, _fsname, _wmi, _default, _min,		\
++				_max, _incstep, _dispname)			\
++__ATTR_CURRENT_INT_RW(_attrname, _min, _max, _wmi);				\
++__ATTR_GROUP_INT(_attrname, _fsname, _default, _min, _max, _incstep, _dispname);
++
+ #define ATTR_GROUP_BOOL_RO(_attrname, _fsname, _wmi, _dispname)	\
+ __ATTR_CURRENT_INT_RO(_attrname, _wmi);				\
+ __ATTR_GROUP_ENUM(_attrname, _fsname, "0;1", _dispname);
+diff --git a/include/linux/platform_data/x86/asus-wmi.h b/include/linux/platform_data/x86/asus-wmi.h
+index c93068afc2b6..71f3f1d67479 100644
+--- a/include/linux/platform_data/x86/asus-wmi.h
++++ b/include/linux/platform_data/x86/asus-wmi.h
+@@ -128,6 +128,9 @@
+ /* dgpu on/off */
+ #define ASUS_WMI_DEVID_DGPU		0x00090020
+ 
++#define ASUS_WMI_DEVID_DGPU_BASE_TGP	0x00120099
++#define ASUS_WMI_DEVID_DGPU_SET_TGP	0x00120098
++
+ /* gpu mux switch, 0 = dGPU, 1 = Optimus */
+ #define ASUS_WMI_DEVID_GPU_MUX		0x00090016
+ #define ASUS_WMI_DEVID_GPU_MUX_VIVO	0x00090026
+-- 
+2.45.1
+

@@ -1,0 +1,160 @@
+From ae58c8b2e60a5feff3cf833d7f572414758d06c2 Mon Sep 17 00:00:00 2001
+From: "Luke D. Jones" <luke@ljones.dev>
+Date: Sun, 2 Jun 2024 14:44:31 +1200
+Subject: [PATCH 6/8] asus-bios: add apu-mem
+
+Signed-off-by: Luke D. Jones <luke@ljones.dev>
+---
+ drivers/platform/x86/asus-bios.c           | 116 +++++++++++++++++++++
+ include/linux/platform_data/x86/asus-wmi.h |   1 +
+ 2 files changed, 117 insertions(+)
+
+diff --git a/drivers/platform/x86/asus-bios.c b/drivers/platform/x86/asus-bios.c
+index d453f02a22fd..bcb053b57102 100644
+--- a/drivers/platform/x86/asus-bios.c
++++ b/drivers/platform/x86/asus-bios.c
+@@ -425,6 +425,120 @@ static ssize_t egpu_enable_current_value_store(struct kobject *kobj,
+ WMI_SHOW_INT(egpu_enable_current_value, "%d\n", ASUS_WMI_DEVID_EGPU);
+ ATTR_GROUP_BOOL_CUSTOM(egpu_enable, "egpu_enable", "Enable the eGPU (also disables dGPU)");
+ 
++/* Device memory available to APU */
++
++static ssize_t apu_mem_current_value_show(struct kobject *kobj,
++				struct kobj_attribute *attr, char *buf)
++{
++	int err;
++	u32 mem;
++
++	err = asus_wmi_get_devstate_dsts(ASUS_WMI_DEVID_APU_MEM, &mem);
++	if (err)
++		return err;
++
++	switch (mem) {
++	case 256:
++		mem = 0;
++		break;
++	case 258:
++		mem = 1;
++		break;
++	case 259:
++		mem = 2;
++		break;
++	case 260:
++		mem = 3;
++		break;
++	case 261:
++		mem = 4;
++		break;
++	case 262:
++		/* This is out of order and looks wrong but is correct */
++		mem = 8;
++		break;
++	case 263:
++		mem = 5;
++		break;
++	case 264:
++		mem = 6;
++		break;
++	case 265:
++		mem = 7;
++		break;
++	default:
++		mem = 4;
++		break;
++	}
++
++	return sysfs_emit(buf, "%d\n", mem);
++}
++
++static ssize_t apu_mem_current_value_store(struct kobject *kobj,
++				struct kobj_attribute *attr,
++				const char *buf, size_t count)
++{
++	int result, err;
++	u32 requested, mem;
++
++	result = kstrtou32(buf, 10, &requested);
++	if (result)
++		return result;
++
++	switch (requested) {
++	case 0:
++		mem = 0;
++		break;
++	case 1:
++		mem = 258;
++		break;
++	case 2:
++		mem = 259;
++		break;
++	case 3:
++		mem = 260;
++		break;
++	case 4:
++		mem = 261;
++		break;
++	case 5:
++		mem = 263;
++		break;
++	case 6:
++		mem = 264;
++		break;
++	case 7:
++		mem = 265;
++		break;
++	case 8:
++		/* This is outof order and looks wrong but is correct */
++		mem = 262;
++		break;
++	default:
++		return -EIO;
++	}
++
++	err = asus_wmi_set_devstate(ASUS_WMI_DEVID_APU_MEM, mem, &result);
++	if (err) {
++		pr_warn("Failed to set apu_mem: %d\n", err);
++		return err;
++	}
++
++	pr_info("APU memory changed to %dGB, reboot required\n", requested);
++	sysfs_notify(kobj, NULL, attr->attr.name);
++
++	asus_set_reboot_and_signal_event();
++
++	return count;
++}
++
++static ssize_t apu_mem_possible_values_show(struct kobject *kobj,
++					struct kobj_attribute *attr, char *buf)
++{
++	return sysfs_emit(buf, "0;1;2;3;4;5;6;7;8\n");
++}
++ATTR_GROUP_ENUM_CUSTOM(apu_mem, "apu_mem", "Set the available system memory for the APU to use");
++
+ /* Simple attribute creation */
+ ATTR_GROUP_ENUM_INT_RW(thermal_policy, "thermal_policy", ASUS_WMI_DEVID_THROTTLE_THERMAL_POLICY, 0, 3, "0;1;2", "Fan stuff todo");
+ ATTR_GROUP_PPT_RW(ppt_pl1_spl, "ppt_pl1_spl", ASUS_WMI_DEVID_PPT_PL1_SPL,
+@@ -534,6 +648,8 @@ static int asus_fw_attr_add(void)
+ 			sysfs_create_group(&asus_bios.fw_attr_kset->kobj, &dgpu_base_tgp_attr_group);
+ 	if (asus_wmi_is_present(ASUS_WMI_DEVID_DGPU_SET_TGP))
+ 			sysfs_create_group(&asus_bios.fw_attr_kset->kobj, &dgpu_tgp_attr_group);
++	if (asus_wmi_is_present(ASUS_WMI_DEVID_APU_MEM))
++			sysfs_create_group(&asus_bios.fw_attr_kset->kobj, &apu_mem_attr_group);
+ 
+ 	if (asus_wmi_is_present(ASUS_WMI_DEVID_CHARGE_MODE))
+ 		sysfs_create_group(&asus_bios.fw_attr_kset->kobj, &charge_mode_attr_group);
+diff --git a/include/linux/platform_data/x86/asus-wmi.h b/include/linux/platform_data/x86/asus-wmi.h
+index 71f3f1d67479..da0e423ecb06 100644
+--- a/include/linux/platform_data/x86/asus-wmi.h
++++ b/include/linux/platform_data/x86/asus-wmi.h
+@@ -130,6 +130,7 @@
+ 
+ #define ASUS_WMI_DEVID_DGPU_BASE_TGP	0x00120099
+ #define ASUS_WMI_DEVID_DGPU_SET_TGP	0x00120098
++#define ASUS_WMI_DEVID_APU_MEM		0x000600C1
+ 
+ /* gpu mux switch, 0 = dGPU, 1 = Optimus */
+ #define ASUS_WMI_DEVID_GPU_MUX		0x00090016
+-- 
+2.45.1
+

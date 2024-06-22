@@ -1,0 +1,48 @@
+From 7a08b0a6a1b47ad7c3e84a14f433c5909ec13679 Mon Sep 17 00:00:00 2001
+From: "Luke D. Jones" <luke@ljones.dev>
+Date: Fri, 24 May 2024 10:54:36 +1200
+Subject: [PATCH 2/8] platform/x86: asus-wmi: don't fail if platform_profile
+ already registered
+
+On some newer laptops it appears that an AMD driver can register a
+platform_profile handler. If this happens then the asus_wmi driver would
+error with -EEXIST when trying to register its own handler.
+
+We can safely continue loading the driver instead of bombing out.
+
+Signed-off-by: Luke D. Jones <luke@ljones.dev>
+---
+ drivers/platform/x86/asus-wmi.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
+index 4c129881ce28..7d87ff68f418 100644
+--- a/drivers/platform/x86/asus-wmi.c
++++ b/drivers/platform/x86/asus-wmi.c
+@@ -3836,8 +3836,13 @@ static int platform_profile_setup(struct asus_wmi *asus)
+ 		asus->platform_profile_handler.choices);
+ 
+ 	err = platform_profile_register(&asus->platform_profile_handler);
+-	if (err)
++	if (err == -EEXIST) {
++		pr_warn("%s, a platform_profile handler is already registered\n", __func__);
++		return 0;
++	} else if (err) {
++		pr_err("%s, failed at platform_profile_register: %d\n", __func__, err);
+ 		return err;
++	}
+ 
+ 	asus->platform_profile_support = true;
+ 	return 0;
+@@ -4713,7 +4718,7 @@ static int asus_wmi_add(struct platform_device *pdev)
+ 		throttle_thermal_policy_set_default(asus);
+ 
+ 	err = platform_profile_setup(asus);
+-	if (err)
++	if (err && err != -EEXIST)
+ 		goto fail_platform_profile_setup;
+ 
+ 	err = asus_wmi_sysfs_init(asus->platform_device);
+-- 
+2.45.1
+
