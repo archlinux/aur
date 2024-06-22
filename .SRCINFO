@@ -6,9 +6,9 @@ pkgbase = vscode-js-debug
 	arch = any
 	license = MIT
 	makedepends = git
+	makedepends = npm
 	depends = nodejs
-	depends = npm
-	source = vscode-js-debug-1.90.0.tar.gz::https://github.com/microsoft/vscode-js-debug/archive/refs/tags/v1.90.0.tar.gz
+	source = git+https://github.com/microsoft/vscode-js-debug.git#tag=v1.90.0
 	sha256sums = SKIP
 
 pkgname = vscode-js-debug
