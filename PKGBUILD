@@ -1,7 +1,7 @@
 # Contributor: Julian Hornich <julianhornich@googlemail.com>
 
 pkgname=kerncraft-git
-pkgrel=1
+pkgrel=2
 pkgver=r1268
 pkgdesc="Loop Kernel Analysis and Performance Modeling Toolkit"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ depends=('python'
          'python-pyparsing'
          'python-networkx'
          'python-psutil')
-makedepends=('git')
+makedepends=('git' 'python-setuptools')
 optdepends=('intel-compiler-base' 'gcc' 'python-matplotlib')
 source=('git+https://github.com/RRZE-HPC/kerncraft.git')
 sha256sums=('SKIP')
