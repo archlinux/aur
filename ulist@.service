@@ -1,5 +1,5 @@
 [Unit]
-Description=ulist
+Description=ulist %I
 After=network.target
 
 [Service]
@@ -14,11 +14,11 @@ ProtectControlGroups=true
 ProtectKernelTunables=true
 ProtectSystem=strict
 ReadWritePaths=/var/spool/postfix/maildrop/
-RuntimeDirectory=ulist
+RuntimeDirectory=ulist-%i
 RuntimeDirectoryMode=0755
-StateDirectory=ulist
+StateDirectory=ulist-%i
 StateDirectoryMode=0750
-EnvironmentFile=/etc/ulist/ulist.conf
+EnvironmentFile=/etc/ulist/ulist-%i.conf
 ExecStart=/usr/bin/ulist
 
 [Install]
