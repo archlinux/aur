@@ -20,6 +20,7 @@ depends=(
 	"python-unidecode"
 	"python-deprecation"
 	"python-decouple"
+	"python-thefuzz"
 	"python-devgoldyutils"
 	"python-mov-cli-test"
 
@@ -28,7 +29,7 @@ depends=(
 	"fzf"
 )
 optdepends=(
-	"python-lxml: For faster beautifulsoup parser."
+	"python-lxml: For a faster beautifulsoup parser."
 
 	"vlc: Optional media player."
 
