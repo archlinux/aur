@@ -16,6 +16,11 @@ source=("git+https://github.com/david-christiansen/prop-menu-el")
 b2sums=('SKIP')
 _gitname="prop-menu-el"
 
+pkgver() {
+  cd $_gitname
+  git log -1 --format='%cd' --date=short | tr -d -- '-'
+}
+
 package() {
   cd $_gitname
 
