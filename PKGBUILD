@@ -11,7 +11,7 @@ depends=(
   'glibc' 'gcc-libs' 'bash' 'libusb' 'libgl' 'glu'
   'freeglut' 'python'
 )
-makedepends=('cmake' 'libxmu' 'cython0' 'python-numpy')
+makedepends=('cmake' 'libxmu' 'cython0' 'python-numpy' 'git' 'python-setuptools')
 optdepends=('opencv: support for python demos'
             'python-matplotlib: support for python demos')
 provides=('libfreenect')
