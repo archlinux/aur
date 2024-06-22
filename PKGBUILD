@@ -2,7 +2,7 @@
 # Submitter: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.32.r16522.e8899bf9fc
+pkgver=0.0.32.r16618.bceaf46e2f
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=(x86_64)
@@ -12,8 +12,10 @@ depends=(
   alsa-lib
   glew
   glu
-  libavcodec.so
-  libavutil.so
+  # Use bundled FFMPEG for now since we use FFMPEG 6.0
+  #libavcodec.so
+  #libavutil.so
+  #libswscale.so
   libevdev
   libgl
   libice
@@ -21,7 +23,6 @@ depends=(
   libpng
   libpulse
   libsm
-  libswscale.so
   libx11
   libxext
   openal
@@ -77,7 +78,7 @@ prepare() {
   git config submodule.3rdparty/llvm/llvm.url ../llvm
   
   SUBMODULES=($(git config --file .gitmodules --get-regexp path | \
-    awk '!/ffmpeg/ && !/libpng/ && !/zlib/ && !/curl/ && !/llvm/ && !/glslang/ && !/pugixml/ '))
+    awk '!/libpng/ && !/zlib/ && !/curl/ && !/llvm/ && !/glslang/ && !/pugixml/ '))
 
   # We need to convert from a relative folder path to a https://github.com path
   for ((i=0;i<${#SUBMODULES[@]};i+=2))
@@ -108,7 +109,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_SKIP_RPATH=ON \
     -DUSE_NATIVE_INSTRUCTIONS=OFF \
-    -DUSE_SYSTEM_FFMPEG=ON \
+    -DUSE_SYSTEM_FFMPEG=OFF \
     -DUSE_SYSTEM_LIBPNG=ON \
     -DUSE_SYSTEM_ZLIB=ON \
     -DUSE_SYSTEM_CURL=ON \
