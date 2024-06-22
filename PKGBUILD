@@ -1,32 +1,42 @@
-# Maintainer: dudemanguy <random342@airmail.cc>
+# Maintainer: Dudemanguy <random342@airmail.cc>
 # Contributor: Vaporeon <vaporeon@tfwno.gf>
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=gtk2-patched-filechooser-icon-view
 pkgver=2.24.33
-pkgrel=3
+pkgrel=4
 pkgdesc="GTK2 patched with ahodesuka's filechooser-icon-view patch"
 url="https://github.com/Dudemanguy/gtk/tree/gtk2-filechooser-icon-view"
 arch=(x86_64)
+license=(LGPL-2.1-or-later)
 depends=(
   atk
   cairo
   desktop-file-utils
+  fontconfig
+  gdk-pixbuf2
+  glib2
+  glibc
   gtk-update-icon-cache
   libcups
   librsvg
+  libx11
   libxcomposite
   libxcursor
   libxdamage
+  libxext
+  libxfixes
   libxi
   libxinerama
   libxrandr
+  libxrender
   pango
   shared-mime-info
 )
 makedepends=(
   git
+  glib2-devel
   gobject-introspection
   gtk-doc
 )
@@ -41,32 +51,26 @@ provides=(
   libg{d,t}k-x11-2.0.so
 )
 conflicts=('gtk2')
-license=('LGPL')
 install=gtk2.install
-_commit=68631945733158f164427db84f01301d7e875763  # tags/2.24.33^0
 source=(
-  "git+https://gitlab.gnome.org/GNOME/gtk.git#commit=$_commit"
+  "git+https://gitlab.gnome.org/GNOME/gtk.git#tag=$pkgver"
   gtkrc
   gtk-query-immodules-2.0.hook
-  xid-collision-debug.patch
+  0001-Lower-severity-of-XID-collision-warnings.patch
   gtk2-filechooser-icon-view.patch
 )
-b2sums=('SKIP'
+b2sums=('1b18d1cfef55466209cf93be45af15dc058a8b74d13ab590cfc7f0b09b0584adc62d4330aaed65185c0142cc8c326e4274c8e75e0af94bec5be3cfcca105c1e6'
         '0583436972edcebb09ce6c3f445f6ea4d7f92132da0ef317ee93665b646061ba261281b0186ed6655e63bbb668c58e37f6987919d4c054ccda19ca034aa718dc'
         '9c531f9f605e1739e13c39c1cac22daddd9574f3082f18bcf0b9dfaa4c41f2485d55be03a9ed12fb4504d509f0d5ac63980a9d9349e3f80a06595c6430c78096'
-        'c35b2f16ea3402f41a7a5ac83a93b423e46f9355e11186742402887ba94fc58e9a5c1d7fc55141fab72f230a973c5ac6346090b225a5eff9e416e397bd1b1ec4'
+        '45ecc976d9eb9d990fc204230aa052a6d1b2bdfdc94788be37d576ab262a1da49855eb46ecd4bfce4efde6e2f817a1660c6d1fa756be3b372f7f8d13b0ef0fd0'
         '3bfc017cdb94f604b6d211747641cc6564955c0f4108654cea11dc19a574854ee0d56019f34faa577f3b92708a2c7b57b4a1a2146c9d7772bf0a567288be60a6')
-
-pkgver() {
-  cd gtk
-  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
-}
 
 prepare() {
   cd gtk
-  git apply -3 ../xid-collision-debug.patch
+  git apply -3 ../0001-Lower-severity-of-XID-collision-warnings.patch
   git apply -3 ../gtk2-filechooser-icon-view.patch
-  NOCONFIGURE=1 ./autogen.sh
+  sed -i '/AM_INIT_AUTOMAKE/s/]/ foreign]/' configure.ac
+  autoreconf -fvi
 }
 
 build() {
@@ -77,6 +81,8 @@ build() {
     --with-xinput=yes
     --disable-gtk-doc
   )
+
+  CFLAGS+=" -Wno-error=implicit-int -Wno-error=incompatible-pointer-types"
 
   cd gtk
   ./configure "${configure_options[@]}"
