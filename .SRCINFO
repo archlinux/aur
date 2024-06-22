@@ -1,7 +1,7 @@
 pkgbase = python-pytorch
 	pkgdesc = Tensors and Dynamic neural networks in Python with strong GPU acceleration
 	pkgver = 2.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pytorch.org
 	arch = x86_64
 	license = BSD
