@@ -2,7 +2,7 @@
 
 pkgname=flashmq
 _pkgname=FlashMQ
-pkgver=1.0.2
+pkgver=1.15.2
 pkgrel=1
 pkgdesc="FlashMQ is a light-weight MQTT broker/server, designed to take good advantage of multi-CPU environments"
 arch=('any')
@@ -12,12 +12,12 @@ provides=(${pkgname})
 conflicts=(${pkgname} ${pkgname}-git)
 #replaces=(${pkgname})
 depends=()
-makedepends=(cmake ninja sed docbook2x libxslt)
+makedepends=(cmake ninja sed libxslt)
 backup=()
 options=('!strip')
 #install=${pkgname}.install
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('76c80440eb2718e0ee15609c701afbab13fe556956927ff082fb866da39ac896')
+sha256sums=('c55d69b91c55bcee9e1c3719128b299c5189b7da481ee78b8ddd7838404031fc')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}/"
@@ -28,7 +28,6 @@ build() {
     ninja -C build
 
     cd man
-    sed -i 's#docbook2x-man#db2x_docbook2man#g' Makefile
     make -j
 }
 
