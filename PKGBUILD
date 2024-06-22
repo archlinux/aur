@@ -2,9 +2,9 @@
 # Contributer: Alpin <alpin 'at' alpindale 'dot' dev>
 # Author: LostRuins (concedo), YellowRoseCx
 pkgname=koboldcpp-hipblas
-_pkgver=1.67
+_pkgver=1.68
 pkgver=$_pkgver.yr0
-pkgrel=2
+pkgrel=1
 pkgdesc="An easy-to-use AI text-generation software for GGML and GGUF models (with HIPBLAS, for ROCM)"
 arch=('x86_64')
 url="https://github.com/YellowRoseCx/koboldcpp-rocm"
@@ -24,7 +24,7 @@ optdepends=(
 provides=("koboldcpp=$_pkgver" "koboldcpp-rocm=$_pkgver")
 conflicts=('koboldcpp')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/YellowRoseCx/koboldcpp-rocm/archive/refs/tags/v$pkgver-ROCm.tar.gz")
-sha256sums=('ad1490d792ad26d5d9f065166f726b91b058b41509282ee362ed84065b545668')
+sha256sums=('018cf3df027dfd72bba406dadd979a3375a16e3c35b4f71d817823704c763df6')
 
 build() {
   cd "$srcdir/koboldcpp-rocm-$pkgver-ROCm"
