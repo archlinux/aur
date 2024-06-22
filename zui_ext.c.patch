@@ -1,0 +1,11 @@
+--- "zui_ext (old).c"	2024-06-22 17:40:55.209449819 +0200
++++ zui_ext.c	2024-06-22 17:49:52.774575838 +0200
+@@ -498,7 +498,7 @@
+ 			if (show_label) {
+ 				int TEXT_COL = current->ops.theme.TEXT_COL;
+ 				current->ops.theme.TEXT_COL = current->ops.theme.LABEL_COL;
+-				zui_text(label, ZUI_ALIGN_RIGHT, "");
++				zui_text(label, ZUI_ALIGN_RIGHT, 0x0); //patch: originally assigned "" (char[1]) which is illegal since char[1] doesn't strictly speaking cast to int.
+ 				current->ops.theme.TEXT_COL = TEXT_COL;
+ 			}
+ 			else {

@@ -1,0 +1,36 @@
+pkgbase = armorpaint
+	pkgdesc = Software for 3D PBR texture painting
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://armorpaint.org/
+	arch = i686
+	arch = x86_64
+	license = Zlib
+	makedepends = binutils
+	makedepends = git
+	makedepends = clang
+	makedepends = make
+	makedepends = gcc
+	makedepends = vulkan-headers
+	makedepends = libxinerama
+	makedepends = libxrandr
+	makedepends = libxi
+	depends = alsa-lib
+	depends = opengl-driver
+	depends = gtk3
+	conflicts = armorpaint
+	conflicts = armorpaint-git
+	source = git+https://github.com/armory3d/armortools#tag=23.08
+	source = armorpaint.sh
+	source = armorpaint.desktop
+	source = armorpaint.png
+	source = zui_ext.c.patch
+	source = zui_nodes.c.patch
+	md5sums = da1fc6cb5f29938dc18113e690c0621f
+	md5sums = 74001d6c572fc79c96d0bee24427f7ba
+	md5sums = efecf7e2db8570fe494f47703927d67d
+	md5sums = 67cf4a0cb08c66c4a68c677885e8ac99
+	md5sums = 4d78293d603442d3e4ccf3afe2db53a8
+	md5sums = 6d39eb7502da5c7bf4b74c4caa197630
+
+pkgname = armorpaint

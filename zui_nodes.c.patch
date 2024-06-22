@@ -1,0 +1,38 @@
+--- "zui_nodes (old).c"	2024-06-22 17:20:15.573260998 +0200
++++ zui_nodes.c	2024-06-22 18:23:27.557218816 +0200
+@@ -408,7 +408,7 @@
+ 			current->_w = w;
+ 			// char **texts = Std.isOfType(but->data, Array) ? [for (s in cast(but->data, Array<Dynamic>)) zui_tr(s)] : zui_enum_texts(node->type);
+ 			zui_handle_t *but_handle = zui_nest(nhandle, buti);
+-			but_handle->position = but->default_value;
++			but_handle->position = *((int*)but->default_value); //patch: attempting to assign void pointer to integer is not strictly allowed, unfucked it a bit. Typecast to int then dereference before assigning.
+ 			// but->default_value = zui_combo(but_handle, texts, zui_tr(but->name));
+ 			if (current->is_hovered && but->tooltip != NULL) zui_tooltip(zui_tr(but->tooltip));
+ 		}
+@@ -574,7 +574,7 @@
+ 		float from_x = from == NULL ? current->input_x : wx + ZUI_NODE_X(from) + ZUI_NODE_W(from);
+ 		float from_y = from == NULL ? current->input_y : wy + ZUI_NODE_Y(from) + ZUI_OUTPUT_Y(from->outputs, from->outputs_count, link->from_socket);
+ 		float to_x = to == NULL ? current->input_x : wx + ZUI_NODE_X(to);
+-		float to_y = to == NULL ? current->input_y : wy + ZUI_NODE_Y(to) + ZUI_INPUT_Y(canvas, to->inputs, to->inputs_count, link->to_socket) + ZUI_OUTPUTS_H(to->outputs, to->outputs_count) + ZUI_BUTTONS_H(to);
++		float to_y = to == NULL ? current->input_y : wy + ZUI_NODE_Y(to) + ZUI_INPUT_Y(canvas, to->inputs, to->inputs_count, link->to_socket) + ZUI_OUTPUTS_H(to->outputs_count, -1) + ZUI_BUTTONS_H(to); //patch: tries to assign zui_node_socket_t** to int, don't know why. fixed the line based on what the function appears to expect. It should compile, may have visual issues.
+ 
+ 		// Cull
+ 		float left = to_x > from_x ? from_x : to_x;
+@@ -626,7 +626,7 @@
+ 					else if (to == NULL && node->id != from->id) { // Snap to input
+ 						for (int k = 0; k < node->inputs_count; ++k) {
+ 							float sx = wx + ZUI_NODE_X(node);
+-							float sy = wy + ZUI_NODE_Y(node) + ZUI_INPUT_Y(canvas, inps, node->inputs_count, k) + ZUI_OUTPUTS_H(outs, node->outputs_count) + ZUI_BUTTONS_H(node);
++							float sy = wy + ZUI_NODE_Y(node) + ZUI_INPUT_Y(canvas, inps, node->inputs_count, k) + ZUI_OUTPUTS_H(node->outputs_count, -1) + ZUI_BUTTONS_H(node); //patch: see line 577 for logic, same fix
+ 							float rx = sx - ZUI_LINE_H() / 2;
+ 							float ry = sy - ZUI_LINE_H() / 2;
+ 							if (zui_input_in_rect(rx, ry, ZUI_LINE_H(), ZUI_LINE_H())) {
+@@ -715,7 +715,7 @@
+ 			if (current_nodes->link_drag == NULL) {
+ 				for (int j = 0; j < node->inputs_count; ++j) {
+ 					float sx = wx + ZUI_NODE_X(node);
+-					float sy = wy + ZUI_NODE_Y(node) + ZUI_INPUT_Y(canvas, inps, node->inputs_count, j) + ZUI_OUTPUTS_H(outs, node->outputs_count) + ZUI_BUTTONS_H(node);
++					float sy = wy + ZUI_NODE_Y(node) + ZUI_INPUT_Y(canvas, inps, node->inputs_count, j) + ZUI_OUTPUTS_H(node->outputs_count, -1) + ZUI_BUTTONS_H(node); //patch see line 577, same fix
+ 					if (zui_input_in_rect(sx - ZUI_LINE_H() / 2, sy - ZUI_LINE_H() / 2, ZUI_LINE_H(), ZUI_LINE_H())) {
+ 						// Already has a link - disconnect
+ 						for (int k = 0; k < canvas->links_count; ++k) {
