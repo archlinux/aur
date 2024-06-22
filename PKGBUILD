@@ -3,7 +3,7 @@
 pkgbase=cloud-fs-bin
 pkgname=clouddrive
 pkgver=0.7.6
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="CloudDrive - Unlocking the Unlimited Possibilities of Cloud Storage"
 arch=('x86_64' 'aarch64')
@@ -81,14 +81,14 @@ ExecStartPre=/usr/bin/sleep 5
 ExecStart=/usr/bin/mount -t davfs http://localhost:19798/dav /media/clouddrive-dav
 # -o uid=%i,gid=%i
 ExecStopPre=/usr/bin/sync /media/clouddrive-dav
-ExecStop=/usr/bin/fusermount -u /media/clouddrive-dav
+ExecStop=/usr/bin/fusermount3 -u /media/clouddrive-dav
 RemainAfterExit=true
 
 [Install]
 WantedBy=multi-user.target
 EOF
 
-    install -Dm644 /dev/stdin "${pkgdir}/etc/systemd/system/docker.service.d/clear_mount_propagation_flags_clouddirve.conf" << EOF
+    install -Dm644 /dev/stdin "${pkgdir}/etc/systemd/system/docker.service.d/clear_mount_propagation_flags_clouddrive.conf" << EOF
 [Service]
 MountFlags=shared
 EOF
