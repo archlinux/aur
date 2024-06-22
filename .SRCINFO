@@ -1,0 +1,19 @@
+pkgbase = gocloc-bin
+	pkgdesc = A little fast cloc(Count Lines Of Code)
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/hhatto/gocloc
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	provides = gocloc
+	conflicts = gocloc
+	source_x86_64 = gocloc-0.5.2.tar.gz::https://github.com/hhatto/gocloc/releases/download/v0.5.2/gocloc_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 25e39c6b64280678e0f072773846b2afecf803898f3f93cf67c0b5e6d2e8017c
+	source_i686 = gocloc-0.5.2.tar.gz::https://github.com/hhatto/gocloc/releases/download/v0.5.2/gocloc_Linux_i386.tar.gz
+	sha256sums_i686 = a15cad3cff436cdf706aed2b0e8cc1b1119e2c9aa022aa305ce7720eaca11b39
+	source_aarch64 = gocloc-0.5.2.tar.gz::https://github.com/hhatto/gocloc/releases/download/v0.5.2/gocloc_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 4ba6de50c3f9f83542ac629ec3d2d716b8131163c98f1cf1c05eb70733e22541
+
+pkgname = gocloc-bin
