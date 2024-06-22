@@ -1,9 +1,9 @@
 # Maintainer: Daniel Kamil Kozar <dkk089@gmail.com>
 pkgname=tuxracer
 pkgver=0.61
-pkgrel=2
+pkgrel=3
 pkgdesc="The Tux racing game - original version"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://tuxracer.sourceforge.net/"
 license=('GPL2')
 depends=('tcl' 'libx11' 'libxi' 'libxext' 'libxmu' 'libxt' 'mesa' 'glu'
@@ -43,13 +43,19 @@ build() {
   # requires compiling with optimization". this causes the script to revert to
   # the default location of /lib/cpp for the preprocessor, which causes the rest
   # of the configuration to fail, as it does not exist. therefore, append
-  # CPPFLAGS to CFLAGS and CXXFLAGS before passing them to configure and leave
-  # CPPFLAGS empty. this is not foolproof and bound to break, but works so far.
-  CFLAGS="${CFLAGS} ${CPPFLAGS}" \
-    CXXFLAGS="${CXXFLAGS} ${CPPFLAGS}" \
+  # CPPFLAGS to CFLAGS and leave CPPFLAGS empty. this is not foolproof and
+  # bound to break, but works so far.
+
+  # specify std=c89 as newer gccs default to newer standards which leads to
+  # errors when compiling this code.
+  # specify host explicitly as config.guess doesn't know about x86_64, tracing
+  # through that script shows that it would end up with a value like the one
+  # below anyway.
+  CFLAGS="-std=c89 ${CFLAGS} ${CPPFLAGS}" \
     CPPFLAGS="" \
-    ./configure --prefix=/usr --with-data-dir=/usr/share/tuxracer
-  
+    ./configure --host=$(uname -m)-unknown-linux \
+      --prefix=/usr --with-data-dir=/usr/share/tuxracer
+
   make
 }
 
