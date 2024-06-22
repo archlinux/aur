@@ -1,14 +1,14 @@
 # Maintainer: Tobias Boesch <tobias.boesch at googlemail.com>
 
 pkgname=('fs2-knossos-dotnet')
-pkgver=v1.1.0
+pkgver=v1.2.0
 _extpkgname='Knossos.NET'
 pkgrel=1
 pkgdesc="A multi platform launcher for Freespace 2 Open using .NET 6.0 and AvaloniaUI"
 arch=('x86_64')
 url='https://github.com/KnossosNET/Knossos.NET'
-_commit='7b201a0bdcc3c01a602ecd13ffd5f33fd1537008'  # Upstream only signs commits, not tags. Using commit to be able to verify the source.
-                                                    # https://github.com/KnossosNET/Knossos.NET/commit/7b201a0bdcc3c01a602ecd13ffd5f33fd1537008
+_commit='03c80a134185bee635cc05948a9f7254e4e9c38b'  # Upstream only signs commits, not tags. Using commit to be able to verify the source.
+                                                    # https://github.com/KnossosNET/Knossos.NET/commit/03c80a134185bee635cc05948a9f7254e4e9c38b
 license=('GPL-3.0-only')
 makedepends=(
   'dotnet-sdk-6.0'
