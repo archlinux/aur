@@ -1,6 +1,7 @@
 # Maintainer: Neko <demeruza@yahoo.fr>
 # Maintainer: Christian Hesse <mail@eworm.de>
 
+base='systemd'
 pkgbase='nosystemd-boot-artix'
 pkgname='nosystemd-boot-artix'
 _tag='256.1'
@@ -98,7 +99,7 @@ _targets=(
   )
 
 prepare() {
-  cd "${pkgbase}"
+  cd "${base}"
 
   # add upstream repository for cherry-picking
   git remote add -f upstream ../systemd
@@ -177,7 +178,7 @@ build() {
     -Dsbat-distro-url="https://archlinux.org/packages/core/x86_64/${pkgname}/"
   )
 
-  arch-meson "${pkgbase}" build "${_meson_options[@]}" $MESON_EXTRA_CONFIGURE_OPTIONS
+  arch-meson "${base}" build "${_meson_options[@]}" $MESON_EXTRA_CONFIGURE_OPTIONS
 
   meson compile -C build "${_meson_compile[@]}"
 }
