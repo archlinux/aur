@@ -1,14 +1,16 @@
 # Maintainer: Cody P Schafer <dev@codyps.com>
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot con >
 # Contributor: Alexander Matyukhin <matalex1991@gmail.com>
 pkgname=obnc
 pkgver=0.17.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Oberon compiler"
 arch=('i686' 'x86_64' 'aarch64')
 license=('GPL')
 url="http://miasap.se/obnc/"
 source=("http://miasap.se/obnc/downloads/obnc_${pkgver}.tar.gz")
 depends=("gc" "sh" "awk" "sdl")
+options=(!buildflags)
 md5sums=('b49487449419f25b5bf97cf5bb2276f6')
 sha256sums=('f672663e295df6daba53ac59a0280011732b0e7f95078d7944aa8c328b5f47ec')
 sha384sums=('25d8c7ee80d6ceb28249e527f82a91bca5f898bddea31cead0801d98c5266ba6a519dedbb376ab764774f585c3a325dd')
