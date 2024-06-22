@@ -2,7 +2,7 @@
 # Helpful URL: https://github.com/rogerfar/rdt-client
 
 pkgname='rdt-client'
-pkgver=2.0.37
+pkgver=2.0.79
 pkgrel=1
 pkgdesc='Real-Debrid Torrent Client'
 arch=(any)
@@ -31,7 +31,7 @@ source=(
 )
 
 noextract=('RealDebridClient.zip')
-sha512sums=('637017f5cc884d45a0bd1012bb071f2e87255ea8fddc71ff0cf8cba6e43e8c4f1901d8e7d9ea00e656ec5694e76ebc5bfa9a75a8c70692f1b6d633d96ea8fc08'
+sha512sums=('edab82facfea15c0aed48b3b5735519a14f696b98d3306ad31fa5658c95a36644d2e1daf526651fb756340d1959a160091333c3d8c15d69cafa37adce78eae36'
             '526154379ef5972bac6db1d170d6f4c68f06c720ff70f355d7ba7fdb8208c549880fa1378eb3db3e358f02383b44240060ceb2ceb312bd24afffb88864960261'
             '67330f3202bf1696d706c297b7121a267a1b17064b167fea134ed76162bd1e42355970068f950b8ede7eb4a822f49825ece8b95b132087a3397645480545d312'
             '67a6587c3eb4953fcce2d329d71a15739c536bdf928d14db7d9cae5ecb63c913e6a05841f4207f0f72dd896c4b6937ed690ea340d83440b0eb92b3ca34609071'
