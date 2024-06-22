@@ -1,13 +1,13 @@
 pkgbase = gnome-shell-extension-forge
 	pkgdesc = Tiling and Window Manager for Gnome-Shell
-	pkgver = 80
+	pkgver = 83
 	pkgrel = 1
 	url = https://github.com/forge-ext/forge
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = git
 	depends = gnome-shell
-	source = git+https://github.com/forge-ext/forge.git#tag=v46-80
-	sha256sums = 39e5e5d03a757e2afa65b26bc454a472f2ed127804da2b8c37cd719e42e0ece2
+	source = git+https://github.com/forge-ext/forge.git#tag=v46-83
+	sha256sums = 53463ae08311732a8b8863a214c5d8f0dcb960d2d9cd44053676534b42d0f14c
 
 pkgname = gnome-shell-extension-forge
