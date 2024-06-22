@@ -2,7 +2,7 @@
 # Maintainer: Goldy <goldy@devgoldy.xyz>
 _pkgname=mov-cli-files
 pkgname=python-mov-cli-files
-pkgver="1.1.0"
+pkgver="1.1.1"
 pkgrel=1
 pkgdesc="A mov-cli v4 plugin for watching files on your device."
 arch=("x86_64" "i686")
