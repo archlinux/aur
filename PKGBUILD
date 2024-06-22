@@ -2,7 +2,7 @@
 # Contributor: Stefan Tatschner <stefan@rumpelsepp.org>
 
 pkgname=meli
-pkgver=0.8.5
+pkgver=0.8.6
 pkgrel=1
 pkgdesc='A MUA for the terminal aiming for configurability and extensibility with sane defaults'
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(dbus-glib)
 makedepends=(cargo
              mandoc)
 source=("$pkgname-$pkgver.tag.gz::https://git.meli.delivery/meli/meli/archive/v$pkgver.tar.gz")
-sha256sums=('21db41935d0b16b3b52c03f5374dcffe84984c861f736f592027d4ce7be30499')
+sha256sums=('4d59309bfd8420556bb452092086958b40dcf7755e1363bdc64f4c0d19a14970')
 
 prepare() {
 	cd "$pkgname"
