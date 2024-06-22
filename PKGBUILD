@@ -1,7 +1,7 @@
 # Maintainer: Christopher Snowhill <kode54@gmail.com>
 pkgname=deadbeef-plugins-kode54-git
 pkgver=r91.1820899
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of plugins for DeaDBeeF (Git version)"
 url="https://bitbucket.org/losnoco/deadbeef_plugins"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL2'
          'LGPL2.1'
          'ZLIB'
          'proprietary')
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 depends=('deadbeef' 'zlib' 'libbass' 'libbassmidi' 'libbass_mpc' 'libbassflac' 'libbassopus'
          'libbasswv' 'libopenmpt' 'vgmstream-git' 'libmgba')
 source=('git+https://bitbucket.org/losnoco/deadbeef_plugins.git')
