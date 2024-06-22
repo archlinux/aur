@@ -15,6 +15,6 @@ package() {
     install -Dm755 pacrm ${pkgdir}/usr/bin/pacrm
     install -Dm755 pacls ${pkgdir}/usr/bin/pacls
 }
-sha256sums=('ba0c99f5d9b2b46914cf96db094e6d6aac3b6b4cef5de499fa8896220ef3646f'
-            '16cd68f4d8b839b11501034a52dbb987598eee23f541e437acef54243e78a8f5'
-            'b7a9072a76508c8d1be0cb9e6793548b0fae320382d7797f6869942a5983feac')
+sha256sums=('ac78da5772bda56251894fcfc3a43ef279702372e2e01877c793f8a983c0fe71'
+            'fdedcdf3e0bd01187e67b8e98096e51201a0d928a6ed34be2bfbbf538ea0e3d5'
+            'ba0bc52c365aaf73a18e6681407cd435b39907e25fa7e8536be64da9b723bf51')
