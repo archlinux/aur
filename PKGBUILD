@@ -1,7 +1,7 @@
 # Maintainer : Karl-Felix Glatzer <karl[dot]glatzer[at]gmx[dot]de>
 
 pkgname=mingw-w64-ffmpeg
-pkgver=6.1.1
+pkgver=7.0.1
 pkgrel=1
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (mingw-w64)"
@@ -10,48 +10,50 @@ url="https://ffmpeg.org"
 license=('GPL-3.0-only')
 depends=(
   'mingw-w64-aom'
-  'mingw-w64-crt'
   'mingw-w64-bzip2'
+  'mingw-w64-crt'
+  'mingw-w64-cairo'
+  'mingw-w64-dav1d'
   'mingw-w64-fontconfig'
   'mingw-w64-fribidi'
   'mingw-w64-gmp'
-  'mingw-w64-gnutls'
   'mingw-w64-gsm'
   'mingw-w64-harfbuzz'
-  'mingw-w64-libjxl'
   'mingw-w64-lame'
   'mingw-w64-libass'
   'mingw-w64-libbluray'
   'mingw-w64-libbs2b'
-  'mingw-w64-cairo'
-  'mingw-w64-dav1d'
+  'mingw-w64-libdvdnav'
+  'mingw-w64-libdvdread'
+  'mingw-w64-libjxl'
   'mingw-w64-libmodplug'
   'mingw-w64-libopenmpt'
+  'mingw-w64-libplacebo'
+  'mingw-w64-librsvg'
   'mingw-w64-libsoxr'
+  'mingw-w64-libssh'
   'mingw-w64-libtheora'
-  'mingw-w64-vid.stab'
-  'mingw-w64-libwebp'
-  'mingw-w64-libxml2'
-  'mingw-w64-vmaf'
   'mingw-w64-libvorbis'
   'mingw-w64-libvpx'
+  'mingw-w64-libwebp'
+  'mingw-w64-libxml2'
+  'mingw-w64-mbedtls2'
+  'mingw-w64-vid.stab'
+  'mingw-w64-vmaf'
   'mingw-w64-opencore-amr'
   'mingw-w64-openjpeg2'
   'mingw-w64-opus'
-  'mingw-w64-libplacebo'
   'mingw-w64-rav1e'
-  'mingw-w64-librsvg'
-  'mingw-w64-libssh'
   'mingw-w64-sdl2'
   'mingw-w64-snappy'
   'mingw-w64-speex'
   'mingw-w64-srt'
   'mingw-w64-vulkan-icd-loader'
   'mingw-w64-x264'
+  'mingw-w64-x265'
   'mingw-w64-xvidcore'
   'mingw-w64-zimg'
   'mingw-w64-zlib'
-  'mingw-w64-x265'
 )
 # 'mingw-w64-rubberband'
 # 'mingw-w64-vapoursynth'
@@ -60,12 +62,12 @@ depends=(
 options=(!strip !buildflags staticlibs)
 makedepends=('mingw-w64-amf-headers' 'mingw-w64-avisynthplus' 'mingw-w64-frei0r-plugins' 'mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-vulkan-headers' 'git' 'yasm')
 # 'mingw-w64-opencl-headers'
-_tag=6f4048827982a8f48f71f551a6e1ed2362816eec
+_tag=47f70eda3e2ff003a787e512afd07b0c266f7a70
 #source=("git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver}"
 source=(git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=${_tag}
         add-av_stream_get_first_dts-for-chromium.patch
         configure.patch)
-b2sums=('SKIP'
+b2sums=('d2d6a645509e697932dc8f7a57719e069299e53eb37cda7bf01fd94c9e9956e5532dc5c923fa86d72d0e3a051a7f405e768c73c66ca8aea29271923a17222e03'
         '555274228e09a233d92beb365d413ff5c718a782008075552cafb2130a3783cf976b51dfe4513c15777fb6e8397a34122d475080f2c4483e8feea5c0d878e6de'
         '7171cf5055c4356f9aeb42a5bb550b3380cad20fff8dc4e9114d4fbb17e95bfe40c1057c3b7188641a1d7b9d026105e3eb0175789d7af30c5999793dfddf97fb')
 validpgpkeys=(DD1EC9E8DE085C629B3E1846B18E8928B3948D64) # Michael Niedermayer <michael@niedermayer.cc>
@@ -77,19 +79,7 @@ prepare() {
 
   patch -Np1 -i "${srcdir}/configure.patch"
 
-  # FS#79281: fix assembling with binutil as >= 2.41
-  git cherry-pick -n effadce6c756247ea8bae32dc13bb3e6f464f0eb
-  # FS#77813: fix playing ogg files with mplayer
-  git cherry-pick -n cbcc817353a019da4332ad43deb7bbc4e695d02a
   patch -Np1 -i "${srcdir}"/add-av_stream_get_first_dts-for-chromium.patch # https://crbug.com/1251779
-  # use non-deprecated nvenc GUID for conftest
-  git cherry-pick -n 03823ac0c6a38bd6ba972539e3203a592579792f
-  git cherry-pick -n d2b46c1ef768bc31ba9180f6d469d5b8be677500
-  # Fix VDPAU vo
-  git cherry-pick -n e9c93009fc34ca9dfcf0c6f2ed90ef1df298abf7
-  # Fix bug in av_fft_end
-  git cherry-pick -n a562cfee2e214252f8b3f516527272ae32ef9532
-  git cherry-pick -n 250471ea1745fc703eb346a2a662304536a311b1
 }
 
 pkgver() {
@@ -105,6 +95,8 @@ build() {
     # avoid multiple definitions error
     export LDFLAGS="$LDFLAGS -Wl,--allow-multiple-definition"
 
+    export PKG_CONFIG_PATH_CUSTOM="/usr/${_arch}/lib/mbedtls2/pkgconfig"
+
     "${srcdir}"/ffmpeg/configure \
       --prefix="/usr/${_arch}" \
       --enable-cross-compile \
@@ -117,7 +109,6 @@ build() {
       --enable-amf \
       --enable-fontconfig \
       --enable-gmp \
-      --enable-gnutls \
       --enable-gpl \
       --enable-avisynth \
       --enable-lto \
@@ -126,6 +117,8 @@ build() {
       --enable-libbluray \
       --enable-libbs2b \
       --enable-libdav1d \
+      --enable-libdvdnav \
+      --enable-libdvdread \
       --enable-libfreetype \
       --enable-frei0r \
       --enable-libfribidi \
@@ -158,6 +151,7 @@ build() {
       --enable-libxml2 \
       --enable-libxvid \
       --enable-libzimg \
+      --enable-mbedtls \
       --enable-opengl \
       --enable-zlib \
       --enable-shared \
@@ -165,6 +159,10 @@ build() {
       --enable-vulkan \
       --disable-doc \
       --x86asmexe=yasm
+
+      # fix linking of mbedtls
+      sed -i -e 's/-lmbedtls/-lmbedtls -lmbedx509 -lmbedcrypto/' ./ffbuild/config.mak
+      sed -i -e 's/-lmbedtls/-lmbedtls -lmbedx509 -lmbedcrypto/' ./ffbuild/config.sh
 
 # Requires vsscript (which depends on cross compiling vapoursynth python modules)
 #      --enable-vapoursynth \
