@@ -1,7 +1,7 @@
 # Maintainer: Neko <demeruza@yahoo.fr>
 # Maintainer: Christian Hesse <mail@eworm.de>
 
-pkgbase='systemd'
+pkgbase='nosystemd-boot-artix'
 pkgname='nosystemd-boot-artix'
 _tag='256.1'
 # Upstream versioning is incompatible with pacman's version comparisons, one

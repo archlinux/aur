@@ -1,4 +1,4 @@
-pkgbase = systemd
+pkgbase = nosystemd-boot-artix
 	pkgver = 256.1
 	pkgrel = 1
 	url = https://www.github.com/systemd/systemd
