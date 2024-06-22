@@ -7,6 +7,6 @@ pkgbase = beerfetch
 	license = GPL
 	depends = bash
 	source = https://github.com/mrgreen3/beerfetch/archive/refs/heads/main.tar.gz
-	sha256sums = 09192b02879860610707aae9219861811acd29984ab8aa62fbb2c9b0de28b5e5
+	sha256sums = 5434ecd1280a9efec27a425f01288a2526aafe5565edd289c874b8a71c658a26
 
 pkgname = beerfetch
