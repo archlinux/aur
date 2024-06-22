@@ -10,6 +10,7 @@ _tag='256.1'
 # make sure pacman's version comparing does the right thing for rc versions:
 pkgver="${_tag/[-~]/}"
 pkgrel=1
+pkgdesc='systemd-boot but without systemd, intended for Artix Linux users'
 arch=('x86_64')
 license=('LGPL-2.1-or-later')
 url='https://www.github.com/Demelza/nosystemd-boot-artix'
