@@ -20,8 +20,10 @@ pkgbase = jellyfin-media-player-git
 	provides = jellyfin-media-player
 	conflicts = jellyfin-media-player
 	source = git+https://github.com/jellyfin/jellyfin-media-player.git
+	source = enable-automatic-cert-bundle-detect.patch
 	source = disable-update-check.patch
 	sha256sums = SKIP
+	sha256sums = 2900ec8f52cde50d94f5d357a9b90caa25100f6dc84fddf5c8f6653aa90e1d5b
 	sha256sums = 23727ef8f727ac17af228f29aa5508230caac9d02f37d6c12908fcf50d4f382a
 
 pkgname = jellyfin-media-player-git
