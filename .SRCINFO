@@ -1,6 +1,6 @@
 pkgbase = meshtastic-python
 	pkgdesc = Python CLI and API for talking to Meshtastic devices
-	pkgver = 2.3.9
+	pkgver = 2.3.11
 	pkgrel = 1
 	url = https://github.com/meshtastic/python/
 	arch = any
@@ -22,9 +22,9 @@ pkgbase = meshtastic-python
 	depends = python-tabulate
 	depends = python-timeago
 	optdepends = python-pytap2: TUN tunnel support
-	source = meshtastic-python-2.3.9.tar.gz::https://github.com/meshtastic/python/archive/refs/tags/2.3.9.tar.gz
-	source = https://github.com/meshtastic/python/commit/fa1a3d7901c9148779bef0f9161daa5a66b8f78a.patch
-	sha256sums = 33a370de0580be5c8921151f6941814871402474b85ae397a47289d019b0ac0b
-	sha256sums = 5b3f11022a71dcf85348b6e029ecead74f1ce191963771850535765a445a7363
+	source = meshtastic-python-2.3.11.tar.gz::https://github.com/meshtastic/python/archive/refs/tags/2.3.11.tar.gz
+	source = https://github.com/meshtastic/python/commit/9ac5aeeaf0ab0fc5d21025465c29b808684c4c47.patch
+	sha256sums = 3f8fad28480dd913cb473fb162f768a0701d789f6cc90812f66a264bdd16c49b
+	sha256sums = 25add067f2090e963ad76513536199d0bdca6cc46c28d18ff0ae8ef8cb0b8dc2
 
 pkgname = meshtastic-python
