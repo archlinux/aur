@@ -6,7 +6,7 @@ pkgname=kwin-no-explicit-sync
 _pkgname=kwin
 pkgver=6.1.0
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=3.1
+pkgrel=3.2
 pkgdesc='An easy to use, but flexible, composited Window Manager(with a simple patch to disable explicit sync)'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
@@ -77,6 +77,7 @@ depends=(
     xcb-util-wm
 )
 makedepends=(
+    git
     extra-cmake-modules
     kdoctools
     krunner
