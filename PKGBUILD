@@ -5,7 +5,7 @@
 
 pkgname=bigloo-devel
 pkgver=4.6a
-pkgrel=2
+pkgrel=3
 epoch=1
 _suffix=unstable
 pkgdesc="Fast scheme compiler"
@@ -23,7 +23,7 @@ provides=("bigloo=$pkgver")
 source=("ftp://ftp-sop.inria.fr/indes/fp/Bigloo/${pkgname%-devel}-${_suffix}.tar.gz"
         "bigloo-emacs.patch"
         "Correct-string-type-declaration-in-SSL-library.patch::https://patch-diff.githubusercontent.com/raw/manuel-serrano/bigloo/pull/117.patch")
-sha256sums=('c6c3e2f80398864e1454e5a3f03794d069a641b2c7dc46bf2f2de6355557f4e2'
+sha256sums=('cd0d3c177e4611dfec862a542581579b7751cb2249caf194624be50ae186ab52'
             '80356c27b58a302775f75e848a89ab2d588796a548f4ce7a20df048e215deab0'
             'b47500aa8fcdfa0133729aa6e0b0b71f0d1904e433b16bb1541b9c7e42908d88')
 
