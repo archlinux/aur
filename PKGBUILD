@@ -8,7 +8,7 @@ pkgname=information-image
 pkgver=1.0.2
 pkgrel=1
 pkgdesc="A tool for transforming files and text into images and vice versa"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/aureumapes/information-image"
 license=('MIT')
 makedepends=('go>=1.22')

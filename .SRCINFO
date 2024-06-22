@@ -3,7 +3,7 @@ pkgbase = information-image
 	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/aureumapes/information-image
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = go>=1.22
 	source = information-image-1.0.2.tar.gz::https://github.com/aureumapes/information-image/archive/v1.0.2.tar.gz
