@@ -1,15 +1,16 @@
-# Maintainer: Patrick McCarty <pnorcks at gmail dot com>
+# Maintainer: Kyle Manna <kyle at kyle manna dot com>
 
-pkgname='bmap-tools'
-pkgver=3.7
+pkgname='bmaptool'
+replaces=('bmap-tools')
+pkgver=3.8.0
 pkgrel=1
 pkgdesc="Tool optimized for copying largely sparse files using information from a block map (bmap) file"
 arch=('any')
-url='https://github.com/intel/bmap-tools'
+url='https://github.com/yoctoproject/bmaptool'
 license=('GPL2')
 depends=('python' 'python-setuptools' 'python-six')
-source=("https://github.com/intel/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('bcbdf9461ea34b0e62fa533fba0f50ae87a76fffa33e8e3bcef3ef3e9ea851d0')
+source=("https://github.com/yoctoproject/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('3c741ccdd5049b5cb6983bc186f7be8040a132ed7e9c2afda4d9e7390888163c')
 
 build() {
   cd $pkgname-$pkgver
