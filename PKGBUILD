@@ -52,7 +52,7 @@ fi
 
 pkgname=ffmpeg-obs
 pkgver=7.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('x86_64' 'aarch64')
 url=https://ffmpeg.org/
@@ -289,7 +289,7 @@ depends+=("librist>=$_libristver")
 _args+=(--enable-librist)
 
 ## Add upstream feature for x86_64 build
-if [[ $CARCH == 'x86_64' ]]; then
+if [[  ${CARCH/%_v?/} == "x86_64" ]]; then
   _args+=(--enable-lto --enable-libsvtav1)
   depends+=("svt-av1>=$_svtav1ver")
 else
@@ -297,7 +297,7 @@ else
 fi
 
 ## Add upstream feature for i686 and x86_64 build
-if [[ $CARCH == "i686" || $CARCH == "x86_64" ]]; then
+if [[ $CARCH == "i686" ||  ${CARCH/%_v?/} == "x86_64" ]]; then
   _args+=(--enable-libvmaf)
   depends+=("vmaf>=$_vmafver")
 fi
@@ -349,9 +349,9 @@ if [[ $FFMPEG_OBS_SVT == 'ON' ]]; then
     "040-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/${_svt_vp9_ver}/ffmpeg_plugin/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch"
   )
   sha256sums+=(
-    'e8fdc940474f3819b9a8d30cab8164774584c051322acb6194bcb03d56e8175a'
+    '9047e18d34716812d4ea7eafc1d0fd8b376d922a4b6b4dc20237662fcaf0c996'
     'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
-    '0433016c8523c7ce159523946a76c8fa06a926f33f94b70e8de7c2082d14178c'
+    '59da61f2b2c556fbe0cdbf84bcc00977ee3d2447085decb21f6298226559f2aa'
   )
   _args+=(--enable-libsvthevc --enable-libsvtvp9)
   provides+=(ffmpeg-svt-hevc ffmpeg-svt-vp9)
