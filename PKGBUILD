@@ -10,7 +10,7 @@ unset _pkgtype
 # basic info
 _pkgname=sourcetrail
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=2024.3.1
+pkgver=2024.6.1
 pkgrel=1
 pkgdesc='Interactive source explorer for C/C++ and Java'
 url='https://github.com/xiota/sourcetrail'
@@ -25,7 +25,8 @@ _main_package() {
 
     'boost-libs'
     'java-runtime'
-    'qt5-svg'
+    'qt6-5compat'
+    'qt6-svg'
     'sqlite'
     'tinyxml'
   )
@@ -34,13 +35,12 @@ _main_package() {
     "lld"
 
     'boost'
-    'catch2'
     'cmake'
     'git'
     'jdk-openjdk'
     'maven'
     'ninja'
-    'qt5-base'
+    'qt6-base'
 
     'gendesk'
     'imagemagick'
@@ -56,7 +56,7 @@ _main_package() {
 
 # stable package
 _main_stable() {
-  _commit='f1fa5403ac22abb0da9a32f7a0f2cca597f83455'
+  _commit='6a9036068d79175cafe3ba35a647a40fc3aefb4e'
 
   _pkgsrc="$_pkgname"
   source=("$_pkgsrc"::"git+$url.git#commit=$_commit")
