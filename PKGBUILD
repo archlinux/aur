@@ -2,7 +2,7 @@
 # Maintainer: Blacktop <https://github.com/blacktop>
 
 pkgname='ipswd-bin'
-pkgver=3.1.500
+pkgver=3.1.501
 pkgrel=1
 pkgdesc='ipsw - Daemon'
 url='https://github.com/blacktop/ipsw'
@@ -12,11 +12,11 @@ provides=('ipsw')
 conflicts=('ipsw')
 backup=('etc/ipsw.conf')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/blacktop/ipsw/releases/download/v3.1.500/ipswd_3.1.500_linux_arm64.tar.gz")
-sha256sums_aarch64=('7360a17fb74fdde984a956d688fdddc8b2cc950d8e87961b0f3baf4fac2ed965')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/blacktop/ipsw/releases/download/v3.1.501/ipswd_3.1.501_linux_arm64.tar.gz")
+sha256sums_aarch64=('8e7e257833b7ebd47a08dcacd7b4ec211a3a0631afcf6b89497b935898c808ea')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/blacktop/ipsw/releases/download/v3.1.500/ipswd_3.1.500_linux_x86_64.tar.gz")
-sha256sums_x86_64=('60473ce7b22b05f14d10595fe16dc2a50ed042db34eccccda211151bafbaa1d8')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/blacktop/ipsw/releases/download/v3.1.501/ipswd_3.1.501_linux_x86_64.tar.gz")
+sha256sums_x86_64=('b122c40d294b7c6b8d2f993142c0c1508a3ddaecad3ab971ffe347959bcec6ee')
 
 package() {
   # bin
