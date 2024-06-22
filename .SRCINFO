@@ -1,6 +1,6 @@
 pkgbase = speedata-publisher
 	pkgdesc = a database publishing software that creates high-quality layouted PDFs fully automatically
-	pkgver = 4.19.9
+	pkgver = 4.19.10
 	pkgrel = 1
 	url = https://github.com/speedata/publisher
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = speedata-publisher
 	depends = ttf-camingocode
 	provides = libsplib.so
 	provides = luaglue.so
-	source = https://github.com/speedata/publisher/archive/v4.19.9/publisher-4.19.9.tar.gz
-	sha256sums = 6cb1317d7dfe34fbbd35d1374ef0907ceca93ab0837157003f65de7799b77ef4
+	source = https://github.com/speedata/publisher/archive/v4.19.10/publisher-4.19.10.tar.gz
+	sha256sums = a07ac43d322e48e06e5cebb0f1e23c0be428aac7732287e3718f905255ff24e7
 
 pkgname = speedata-publisher
