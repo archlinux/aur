@@ -3,7 +3,7 @@
 pkgname=uwsgitop-git
 pkgver=20240401
 pkgrel=3
-pkgdesc="uWSGI stats viewer"
+pkgdesc="top-like app for monitoring uWSGI instances"
 arch=('any')
 url="http://github.com/unbit/uwsgitop.git"
 license=('MIT')

@@ -1,5 +1,5 @@
 pkgbase = uwsgitop-git
-	pkgdesc = uWSGI stats viewer
+	pkgdesc = top-like app for monitoring uWSGI instances
 	pkgver = 20240401
 	pkgrel = 3
 	url = http://github.com/unbit/uwsgitop.git
