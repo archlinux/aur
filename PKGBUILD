@@ -3,7 +3,7 @@
 #Contributor: yochananmarqos <mark dot wagie at tutanota dot com>
 
 pkgname=winegui
-pkgver=2.4.3
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="A user-friendly WINE graphical interface (build from source)"
 arch=('x86_64')
@@ -29,7 +29,7 @@ makedepends=(
 	'ninja'
 )
 source=("https://winegui.melroy.org/downloads/WineGUI-Source-v$pkgver.tar.gz")
-sha256sums=('928d1e30244a7b315be298123d6a04aba45dfb18f3aa4085cd5800519b722314')
+sha256sums=('cfca143bb51dbc0dcb50b2a7b68bb229c32e4323880dcba6e6afe3cda3c860c7')
 
 build() {
 	cmake -GNinja -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_BUILD_TYPE=Release -B build_prod
