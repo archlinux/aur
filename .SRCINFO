@@ -1,6 +1,6 @@
 pkgbase = winegui-bin
 	pkgdesc = A user-friendly WINE graphical interface
-	pkgver = 2.4.3
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://gitlab.melroy.org/melroy/winegui
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = winegui-bin
 	depends = wine
 	provides = winegui
 	conflicts = winegui
-	source = winegui-bin-2.4.3.tar.gz::https://winegui.melroy.org/downloads/WineGUI-v2.4.3.tar.gz
-	md5sums = 974e5eef12ecd134e128f5dd9e44d554
+	source = winegui-bin-2.5.0.tar.gz::https://winegui.melroy.org/downloads/WineGUI-v2.5.0.tar.gz
+	md5sums = 53c513106c7ac3ab5ac24f96d055bbaf
 
 pkgname = winegui-bin
