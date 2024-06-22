@@ -1,17 +1,17 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=programmers-turkish-f
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc='Variant of the Turkish-F layout with symbols and usage adapted from Programmer Dvorak'
 arch=(any)
 url='https://github.com/alerque/programmers-turkish-f'
-license=('custom')
-depends=('kbd' 'libxslt')
-makedepends=('coreutils' 'programmers-dvorak')
+license=(BSD-3-Clause)
+depends=(kbd libxslt)
+makedepends=(coreutils)
 source=("https://github.com/alerque/$pkgname/archive/$pkgver.tar.gz"
         'LICENSE')
-sha256sums=('0a54614e1340ed92d4c6d2bd86cd4213a8c3bd39f1eabb9502d5fe53cef5e4b1'
+sha256sums=('0c3144063d62c3e7a5c4e28d0cefa508519a25e29fd476d90ad1ea6c1648eb11'
             '123675c594fe0349a7c27b124cf03715d293af60047d1916c657ac25d0f86ce8')
 
 package() {
