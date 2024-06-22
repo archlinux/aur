@@ -1,12 +1,12 @@
 # Maintainer: Julian Pollinger <julian@pollinger.dev>
 pkgname=cvc5
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source automatic theorem prover for Satisfiability Modulo Theories (SMT) problems"
 arch=(x86_64)
 url="https://github.com/cvc5/cvc5"
 license=('BSD3')
-depends=('gmp' 'cadical-pic' 'libpoly-git' 'symfpu-cvc5' 'libedit' 'libbsd')
+depends=('gmp' 'cadical' 'libpoly-git' 'symfpu-cvc5' 'libedit' 'libbsd')
 optdepends=('python-cvc5: Python bindings for cvc5')
 makedepends=('bash' 'gcc' 'cmake' 'python3' 'python-tomli' 'python-pyparsing'  'python-scikit-build' 'cython' 'java-environment')
 checkdepends=('cmake')
