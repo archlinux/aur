@@ -1,0 +1,15 @@
+pkgbase = python-decouple
+	pkgdesc = Strict separation of config from code.
+	pkgver = 3.8
+	pkgrel = 1
+	url = https://github.com/HBNetwork/python-decouple
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	provides = python-decouple
+	source = python-decouple-3.8.zip::https://github.com/HBNetwork/python-decouple/archive/refs/tags/v3.8.zip
+	md5sums = SKIP
+
+pkgname = python-decouple
