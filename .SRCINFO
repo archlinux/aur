@@ -1,7 +1,7 @@
 pkgbase = vlc-luajit
 	pkgdesc = Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility
-	pkgver = 3.0.20
-	pkgrel = 9
+	pkgver = 3.0.21
+	pkgrel = 1
 	url = https://www.videolan.org/vlc/
 	arch = x86_64
 	arch = aarch64
@@ -65,7 +65,7 @@ pkgbase = vlc-luajit
 	makedepends = vcdimager
 	makedepends = wayland-protocols
 	makedepends = x264>=0.164
-	makedepends = x265>=3.5
+	makedepends = x265>=3.6
 	makedepends = xosd
 	makedepends = zvbi
 	makedepends = lua51
@@ -76,7 +76,7 @@ pkgbase = vlc-luajit
 	depends = cairo
 	depends = dbus
 	depends = faad2
-	depends = ffmpeg>=6
+	depends = ffmpeg>=7
 	depends = fontconfig
 	depends = freetype2
 	depends = fribidi
@@ -179,21 +179,21 @@ pkgbase = vlc-luajit
 	optdepends = twolame: TwoLAME mpeg2 encoder plugin
 	optdepends = vcdimager: navigate VCD with libvcdinfo
 	optdepends = x264>=0.164: H264 encoding
-	optdepends = x265>=3.5: HEVC/H.265 encoder
+	optdepends = x265>=3.6: HEVC/H.265 encoder
 	optdepends = zvbi: VBI/Teletext/webcam/v4l2 capture/decoding
-	provides = vlc=3.0.20
+	provides = vlc=3.0.21
 	conflicts = vlc
 	conflicts = vlc-dev
 	conflicts = vlc-plugin
 	conflicts = vlc-stable-git
 	options = !emptydirs
-	source = https://download.videolan.org/vlc/3.0.20/vlc-3.0.20.tar.xz
+	source = https://download.videolan.org/vlc/3.0.21/vlc-3.0.21.tar.xz
 	source = update-vlc-plugin-cache.hook
 	source = taglib-2.patch
-	source = fix-incompatible-pointer-types.patch
-	sha512sums = 02e58fb52dd75bf483ac4b298aecf86463b13d4782173d164adba6e4552d9262ff5e2ee1cbe1bce2c8a809801b79f328c6a8c475d34ae62aefaea02ae5ade406
+	source = add-ffmpeg7-support.patch
+	sha512sums = cb1af76c8056648c331d7e6e0680d161ed1849eb635987504f45eae02531e9b432651034317fa7e02b0722905dfb9f0f5dad67b5924cc62edcaf0d173ac36aee
 	sha512sums = b247510ffeadfd439a5dadd170c91900b6cdb05b5ca00d38b1a17c720ffe5a9f75a32e0cb1af5ebefdf1c23c5acc53513ed983a736e8fa30dd8fad237ef49dd3
 	sha512sums = ea0d1e1dfed16dac8f9027eb55d987dee59630568b9744ceb42bfa134ea9295252d83574f3d793a76a5be3b02661c1731ed366003b6b55b2d7f02fde70586ff3
-	sha512sums = e41c99b08f85ee4e393fa9c7189f76edfe7160e3877d6f56e56de93d752bf15a28502de1417c0ed8008fa348a1e2480b9df0bd33acabe251df00ed2a92618740
+	sha512sums = dc155f70ae6a800cea2fd8a9167c0fec0b67b695cbe5bf7bb7f1ca76247100ddb8493e7ce6a9ff5e35686d20b79408960a367156955fab892357bc1fb91e2bfe
 
 pkgname = vlc-luajit

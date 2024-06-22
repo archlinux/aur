@@ -1,11 +1,11 @@
 # Maintainer: tytan652 <tytan652[at]tytanium[dot]xyz>
 
 pkgname=vlc-luajit
-_vlcver=3.0.20
+_vlcver=3.0.21
 # optional fixup version including hyphen
 _vlcfixupver=
 pkgver=${_vlcver}${_vlcfixupver//-/.r}
-pkgrel=9
+pkgrel=1
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility'
 url='https://www.videolan.org/vlc/'
 arch=('x86_64' 'aarch64')
@@ -28,7 +28,7 @@ _protobufver=25
 _taglibver=2
 _srtver=1.5
 _x264ver=0.164
-_x265ver=3.5
+_x265ver=3.6
 depends=(
   'a52dec'
   "abseil-cpp>=$_abseilcppver"
@@ -37,7 +37,7 @@ depends=(
   'cairo'
   'dbus'
   'faad2'
-  "ffmpeg>=6"
+  "ffmpeg>=7"
   'fontconfig'
   'freetype2'
   'fribidi'
@@ -218,11 +218,11 @@ options=('!emptydirs')
 source=(https://download.videolan.org/${_name}/${_vlcver}/${_name}-${_vlcver}${_vlcfixupver}.tar.xz
         'update-vlc-plugin-cache.hook'
         'taglib-2.patch'
-        'fix-incompatible-pointer-types.patch') # https://code.videolan.org/videolan/vlc/-/merge_requests/4645
-sha512sums=('02e58fb52dd75bf483ac4b298aecf86463b13d4782173d164adba6e4552d9262ff5e2ee1cbe1bce2c8a809801b79f328c6a8c475d34ae62aefaea02ae5ade406'
+        'add-ffmpeg7-support.patch') # https://code.videolan.org/videolan/vlc/-/merge_requests/5574
+sha512sums=('cb1af76c8056648c331d7e6e0680d161ed1849eb635987504f45eae02531e9b432651034317fa7e02b0722905dfb9f0f5dad67b5924cc62edcaf0d173ac36aee'
             'b247510ffeadfd439a5dadd170c91900b6cdb05b5ca00d38b1a17c720ffe5a9f75a32e0cb1af5ebefdf1c23c5acc53513ed983a736e8fa30dd8fad237ef49dd3'
             'ea0d1e1dfed16dac8f9027eb55d987dee59630568b9744ceb42bfa134ea9295252d83574f3d793a76a5be3b02661c1731ed366003b6b55b2d7f02fde70586ff3'
-            'e41c99b08f85ee4e393fa9c7189f76edfe7160e3877d6f56e56de93d752bf15a28502de1417c0ed8008fa348a1e2480b9df0bd33acabe251df00ed2a92618740')
+            'dc155f70ae6a800cea2fd8a9167c0fec0b67b695cbe5bf7bb7f1ca76247100ddb8493e7ce6a9ff5e35686d20b79408960a367156955fab892357bc1fb91e2bfe')
 
 prepare() {
   cd ${_name}-${_vlcver}
@@ -260,6 +260,8 @@ fi
 
 build() {
   cd ${_name}-${_vlcver}
+
+  export CFLAGS+=' -Wno-error=incompatible-pointer-types'
 
   export CFLAGS+=" -I/usr/include/samba-4.0"
   export CPPFLAGS+=" -I/usr/include/samba-4.0 -ffat-lto-objects"
