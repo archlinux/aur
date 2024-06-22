@@ -72,8 +72,8 @@ _subarch=40
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=6.1
-_minor=92
-_rtpatchver=32
+_minor=94
+_rtpatchver=33
 _clr=${_major}.92-155
 _gcc_more_v='20240221.2'
 _srcname=linux-${_major}.${_minor}
@@ -334,9 +334,9 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('9019f427bfdc9ced5bc954d760d37ac08c0cdffb45ad28087fc45a73e64336c9'
+sha256sums=('38ea71ad22ae0187fd8ee5ff879b33b0d9bd58161ac9a3e868ae0b4c66b95369'
             'SKIP'
-            '383c24b86b73747cab70550d92f1b8f6a9d98aca965b698ef0b6cd2d09350a03'
+            '59fe14dee6478dae0caf496a1df57d55c5170c7a581513ac50a67da40d7f5c79'
             'SKIP'
             '1d3ac3e581cbc5108f882fcdc75d74f7f069654c71bad65febe5ba15a7a3a14f')
 
