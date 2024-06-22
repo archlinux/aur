@@ -481,7 +481,7 @@ package() { _set_vars;
   chmod +x "${pkgdir}"/opt/"${pkgname}"/bin/wine{,64}
 
   ## Clean patchlog dirnames and add to package
-  sed -i "s|${where}\/||g" "${_where}"/patchlog.txt
+  sed -i "s|${_where}\/||g" "${_where}"/patchlog.txt
 
   cp "${_where}"/patchlog.txt "${pkgdir}"/opt/"${pkgname}"
 }
