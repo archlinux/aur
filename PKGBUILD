@@ -1,4 +1,5 @@
-# Maintainer: seth <g3tchoo at proton dot me>
+# Maintainer: seth <getchoo at tuta dot io>
+# Contributor: HurricanePootis <hurricanepootis@protonmail.com>
 
 pkgname=lightmaputil-git
 pkgver=r44.6b38f5d
@@ -6,8 +7,9 @@ pkgrel=1
 pkgdesc="A simple command line utility to tell you if your lightmaps are too high resolution"
 arch=('x86_64')
 url="https://github.com/treacherousfiend/LightmapUtil"
-license=('custom:none')
-makedepends=('git' 'cmake') # 'bzr', 'git', 'mercurial' or 'subversion'
+license=('CC0-1.0')
+makedepends=('git' 'cmake')
+depends=('glibc' 'gcc-libs')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+https://github.com/treacherousfiend/LightmapUtil")
@@ -20,16 +22,18 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
-  mkdir -p build
-  cd build
-  cmake -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    ..
-  make
+	cd "$srcdir"
+
+	cmake -B build \
+	-S "${pkgname%-git}" \
+	-DCMAKE_BUILD_TYPE=None \
+	-DCMAKE_INSTALL_PREFIX=/usr
+
+	cmake --build build
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}/build"
-  make install DESTDIR="${pkgdir}"
+	cd "$srcdir"
+
+	DESTDIR="$pkgdir" cmake --install build
 }
