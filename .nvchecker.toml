@@ -1,0 +1,4 @@
+[git-superprune]
+source = "github"
+github = "graysonarts/git-superprune"
+use_max_tag = true
