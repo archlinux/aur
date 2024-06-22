@@ -2,18 +2,20 @@
 
 pkgname=backblaze-b2
 _pkgname=b2
-pkgver=3.13.0
+pkgver=4.0.3
 pkgrel=1
 pkgdesc='Backblaze B2 Command Line Client'
 url='https://github.com/Backblaze/B2_Command_Line_Tool'
 depends=('python'
+         'python-argcomplete>=2'
          'python-arrow>=1.0.2'
-         'python-b2sdk>=1.18.0'
+         'python-b2sdk>=2.4.1'
          'python-docutils>=0.19'
          'python-class-registry>=4.0.5'
          'python-rst2ansi=0.1.5'
          'python-tabulate>=0.8.10'
-         'python-argcomplete>=2'
+         'python-tqdm>=4.65.0'
+         'python-platformdirs>=3.11.0'
         )
 makedepends=('python-pip'
              'python-build'
@@ -27,22 +29,17 @@ license=('MIT')
 arch=('any')
 
 source=("https://github.com/Backblaze/B2_Command_Line_Tool/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('2053425a729459119fc88e24396dfcdab7f35f2db8604c5f2903cc34feb76d38')
+sha256sums=('f4e3f1c82c9762f889bb2dd6690d4f3d1d5696888fe772bc986d475caf6186d2')
 
 build() {
     cd ${srcdir}/${_pkgname}-${pkgver}
-
-    # This requriement seems overly strict, relax
-    sed -i -e 's:\(arrow>=.*\),.*:\1:' requirements.txt
-    sed -i -e 's:\(docutils==.*\):docutils>=0.16:' requirements.txt
-    sed -i -e 's:\(tabulate==.*\):tabulate<0.10:' requirements.txt
-    sed -i -e "s:'\(setuptools_scm\)<.*':'\1':" setup.py
 
     python -m build --wheel --no-isolation
 }
 
 package() {
     cd ${srcdir}/${_pkgname}-${pkgver}
+
     python -m installer --destdir="$pkgdir" dist/*.whl
 
     # uu-coreutils messes up the directory permissions (644, expect 755)
