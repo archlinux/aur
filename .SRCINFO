@@ -6,6 +6,7 @@ pkgbase = gogextract-yepoleb-git
 	arch = any
 	license = MIT
 	provides = gogextract
+	conflicts = gogextract
 	source = git+https://github.com/Yepoleb/gogextract.git
 	sha256sums = SKIP
 

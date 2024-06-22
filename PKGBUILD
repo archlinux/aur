@@ -8,6 +8,7 @@ arch=('any')
 url="https://github.com/Yepoleb/gogextract"
 license=('MIT')
 provides=('gogextract')
+conflicts=('gogextract')
 source=('git+https://github.com/Yepoleb/gogextract.git')
 sha256sums=('SKIP')
 
