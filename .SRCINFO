@@ -7,5 +7,6 @@ pkgbase = tetris-tui-git
 	license = GPL3
 	makedepends = git
 	makedepends = cargo
+	makedepends = rust
 
 pkgname = tetris-tui-git

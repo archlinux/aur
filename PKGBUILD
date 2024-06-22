@@ -8,7 +8,7 @@ arch=('x86_64')
 url='https://github.com/abusch8/Tetris'
 license=('GPL3')
 depends=()
-makedepends=('git' 'cargo')
+makedepends=('git' 'cargo' 'rust')
 
 build() {
     cd $pkgname
