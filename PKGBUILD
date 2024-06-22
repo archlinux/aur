@@ -5,11 +5,12 @@
 pkgbase=libavio
 pkgname=('libavio' 'python-avio')
 pkgver=3.1.2
-pkgrel=2
+pkgrel=3
 url='https://github.com/sr99622/libavio'
 license=('Apache-2.0')
 arch=('i686' 'x86_64')
 makedepends=('cmake'
+             'ffmpeg4.4'
              'git'
              'libavcodec.so'
              'libavformat.so'
@@ -37,6 +38,7 @@ pkgver() {
 
 build() {
 	cd ${srcdir}/${pkgbase}
+	export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
 	cmake -B build-so \
 		-D CMAKE_BUILD_TYPE=Release \
 		-D CMAKE_INSTALL_PREFIX=/usr \
