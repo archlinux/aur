@@ -1,4 +1,5 @@
-# Maintainer: Florian Pritz <bluewind@xinu.at>
+# Maintainer: Frederik “Freso” S. Olesen <archlinux@freso.dk>
+# Contributor: Florian Pritz <bluewind@xinu.at>
 # Contributor: fzerorubigd <fzero@rubi.gd>
 _pkgmain=backports.csv
 pkgname=python-$_pkgmain
