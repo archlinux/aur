@@ -1,0 +1,12 @@
+pkgbase = information-image
+	pkgdesc = A tool for transforming files and text into images and vice versa
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/aureumapes/information-image
+	arch = x86_64
+	license = MIT
+	makedepends = go>=1.22
+	source = information-image-1.0.2.tar.gz::https://github.com/aureumapes/information-image/archive/v1.0.2.tar.gz
+	sha256sums = f2585a0d4c9f152a25d1bc35090e5302693759c2dd81f9dcc549e4751bceb31c
+
+pkgname = information-image
