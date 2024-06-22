@@ -19,6 +19,7 @@ depends=(
 	"python-inquirer"
 	"python-unidecode"
 	"python-deprecation"
+	"python-decouple"
 	"python-devgoldyutils"
 	"python-mov-cli-test"
 

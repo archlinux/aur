@@ -17,6 +17,7 @@ pkgbase = mov-cli
 	depends = python-inquirer
 	depends = python-unidecode
 	depends = python-deprecation
+	depends = python-decouple
 	depends = python-devgoldyutils
 	depends = python-mov-cli-test
 	depends = nano
