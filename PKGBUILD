@@ -2,13 +2,13 @@
 
 pkgname=gpu-screen-recorder-git
 pkgver=r625.df83c8a
-pkgrel=1
+pkgrel=2
 pkgdesc='A shadowplay-like screen recorder for Linux. The fastest screen recorder for Linux'
 arch=('x86_64')
 url="https://git.dec05eba.com/gpu-screen-recorder"
 license=('GPL3')
 makedepends=('meson')
-depends=('ffmpeg' 'libglvnd' 'libxcomposite' 'libxrandr' 'libxfixes' 'libxi' 'libx11' 'libpulse' 'libva' 'libdrm' 'libcap' 'wayland')
+depends=('ffmpeg' 'libglvnd' 'libxcomposite' 'libxrandr' 'libxfixes' 'libxdamage' 'libxi' 'libx11' 'libpulse' 'libva' 'libdrm' 'libcap' 'wayland')
 optdepends=(
     'nvidia-utils: Required to record your screen on NVIDIA'
     'libxnvctrl: Required when using the -oc option to overclock the NVIDIA GPU to workaround NVIDIA p2 state bug'
