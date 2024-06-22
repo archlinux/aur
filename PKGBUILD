@@ -4,11 +4,11 @@
 _pkgmain=backports.csv
 pkgname=python-$_pkgmain
 pkgver=1.0.7
-pkgrel=7
+pkgrel=8
 pkgdesc="Backport of Python 3 csv module."
 arch=('any')
 url="https://github.com/ryanhiebert/backports.csv"
-license=('BSD')
+license=('PSF-2.0')
 depends=('python')
 makedepends=(
   'python-build'
@@ -28,5 +28,4 @@ build() {
 package() {
   cd "$srcdir/$_pkgmain-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm644 LICENSE.rst "$pkgdir/usr/share/licenses/$pkgname/LICENSE.rst"
 }
