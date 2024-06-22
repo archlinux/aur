@@ -3,14 +3,14 @@
 _pkgname='armortools'
 pkgname='armorpaint'
 pkgver=0.9
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="Software for 3D PBR texture painting"
 url="https://armorpaint.org/"
 license=('Zlib')
 depends=('alsa-lib' 'opengl-driver' 'gtk3')
-makedepends=('binutils' 'git' 'clang' 'make' 'gcc' 'vulkan-headers' 'libxinerama' 'libxrandr' 'libxi')
-conflicts=('armorpaint' 'armorpaint-git')
+makedepends=('binutils' 'git' 'clang' 'make' 'gcc' 'vulkan-headers' 'libxinerama' 'xrandr' 'libxi')
+conflicts=('armorpaint-git')
 source=("git+https://github.com/armory3d/armortools#tag=23.08"
         "armorpaint.sh"
         "armorpaint.desktop"

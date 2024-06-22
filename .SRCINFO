@@ -1,7 +1,7 @@
 pkgbase = armorpaint
 	pkgdesc = Software for 3D PBR texture painting
 	pkgver = 0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://armorpaint.org/
 	arch = i686
 	arch = x86_64
@@ -13,12 +13,11 @@ pkgbase = armorpaint
 	makedepends = gcc
 	makedepends = vulkan-headers
 	makedepends = libxinerama
-	makedepends = libxrandr
+	makedepends = xrandr
 	makedepends = libxi
 	depends = alsa-lib
 	depends = opengl-driver
 	depends = gtk3
-	conflicts = armorpaint
 	conflicts = armorpaint-git
 	source = git+https://github.com/armory3d/armortools#tag=23.08
 	source = armorpaint.sh
