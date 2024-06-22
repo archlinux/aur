@@ -1,8 +1,9 @@
 pkgbase = pikaur
 	pkgdesc = AUR helper which asks all questions before installing/building. Inspired by pacaur, yaourt and yay.
-	pkgver = 1.22
+	pkgver = 1.22.1
 	pkgrel = 1
 	url = https://github.com/actionless/pikaur
+	changelog = CHANGELOG
 	arch = any
 	license = GPL3
 	makedepends = python-wheel
@@ -20,7 +21,7 @@ pkgbase = pikaur
 	optdepends = pacman-contrib: to use in pacman hook/systemd timer for cleaning up pikaur cache
 	provides = pikaur
 	conflicts = pikaur-git
-	source = pikaur-1.22.tar.gz::https://github.com/actionless/pikaur/archive/1.22.tar.gz
-	b2sums = 6c846d3f74f53e3aebb1ef7fe916978dd0117788614bbde870a9e49a43aded6748a04e7df4ccb15aab4fd55cf545b1f1b51cc9062e5ae036719b769c029639e8
+	source = pikaur-1.22.1.tar.gz::https://github.com/actionless/pikaur/archive/1.22.1.tar.gz
+	b2sums = 59166418b2b407dc3374e11d9095adcc79d173f4a2dde961407af74fc57eaddb2cba2f393f23177624d0681d55e7d8f32fb1469e95eb1007e0ffa6153bab3240
 
 pkgname = pikaur
