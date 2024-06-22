@@ -1,6 +1,6 @@
 # Maintainer: Dominicentek <dominicentekgaming@gmail.com>
 pkgname=saturn-studio
-pkgver=1.4
+pkgver=1.4.0.1
 pkgrel=1
 pkgdesc="A cross-platform SFM-like video editor for Super Mario 64. Fork of Saturn by sm64rise."
 arch=('x86_64')

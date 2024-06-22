@@ -1,6 +1,6 @@
 pkgbase = saturn-studio
 	pkgdesc = A cross-platform SFM-like video editor for Super Mario 64. Fork of Saturn by sm64rise.
-	pkgver = 1.4
+	pkgver = 1.4.0.1
 	pkgrel = 1
 	arch = x86_64
 	makedepends = gcc
