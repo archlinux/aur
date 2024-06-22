@@ -1,6 +1,6 @@
 pkgbase = flashmq
 	pkgdesc = FlashMQ is a light-weight MQTT broker/server, designed to take good advantage of multi-CPU environments
-	pkgver = 1.0.2
+	pkgver = 1.15.2
 	pkgrel = 1
 	url = https://github.com/halfgaar/FlashMQ
 	arch = any
@@ -8,13 +8,12 @@ pkgbase = flashmq
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = sed
-	makedepends = docbook2x
 	makedepends = libxslt
 	provides = flashmq
 	conflicts = flashmq
 	conflicts = flashmq-git
 	options = !strip
-	source = FlashMQ-1.0.2.tar.gz::https://github.com/halfgaar/FlashMQ/archive/refs/tags/v1.0.2.tar.gz
-	sha256sums = 76c80440eb2718e0ee15609c701afbab13fe556956927ff082fb866da39ac896
+	source = FlashMQ-1.15.2.tar.gz::https://github.com/halfgaar/FlashMQ/archive/refs/tags/v1.15.2.tar.gz
+	sha256sums = c55d69b91c55bcee9e1c3719128b299c5189b7da481ee78b8ddd7838404031fc
 
 pkgname = flashmq
