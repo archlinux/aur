@@ -1,6 +1,6 @@
 pkgbase = rustow-git
 	pkgdesc = Rustow is a replacement of GNU Stow written in Rust. It support most of the features of Stow with some extensions.
-	pkgver = 0.4.beta.r7.g858b15e
+	pkgver = 1.0.r0.g6c9a9ab
 	pkgrel = 1
 	url = https://gitlab.com/Erenoit/rustow
 	arch = any
