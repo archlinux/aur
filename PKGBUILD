@@ -377,7 +377,7 @@ if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
     zvbi lv2 lilv libmysofa openal
     libomxil-bellagio 'rockchip-mpp' #'pocketsphinx'
     lcms2 libraw1394 openvino libaribcaption opencv2
-    qrencoder quirc xevd xeve
+    qrencode quirc xevd xeve
   )
   _args+=(
     --enable-sndio --disable-rpath --enable-gray --enable-chromaprint --enable-gcrypt
