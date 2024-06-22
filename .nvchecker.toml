@@ -1,4 +1,0 @@
-["python-backports.csv"]
-source = "git"
-git = "https://github.com/ryanhiebert/backports.csv.git"
-include_regex = '^\d((?:\d|\.)+)\d$'
