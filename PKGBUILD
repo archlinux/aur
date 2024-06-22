@@ -2,12 +2,12 @@
 # Contributor: Lubosz Sarnecki <lubosz@gmail.com>
 _pkgname=libretro-mesen
 pkgname=$_pkgname-git
-pkgver=0.9.9.r324.gd25d60fc
+pkgver=0.9.9.r336.g91db6be6
 pkgrel=1
 pkgdesc="Nintendo Entertainment System core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://www.mesen.ca/"
-license=('GPL3')
+license=('GPL-3.0-only')
 groups=('libretro')
 depends=('gcc-libs' 'glibc' 'libretro-core-info')
 makedepends=('git')
