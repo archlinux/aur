@@ -1,6 +1,6 @@
 pkgbase = python-jaraco.packaging
 	pkgdesc = Tools to supplement packaging Python releases
-	pkgver = 10.2.1
+	pkgver = 10.2.2
 	pkgrel = 1
 	url = https://github.com/jaraco/jaraco.packaging
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = python-jaraco.packaging
 	makedepends = python-wheel
 	depends = python-build
 	depends = python-jaraco.context
-	source = jaraco.packaging-10.2.1.tar.gz::https://github.com/jaraco/jaraco.packaging/archive/refs/tags/v10.2.1.tar.gz
-	sha256sums = dadb62c64a46cee6f641cff34285cef1603816f1ca1ce08200b6a898c9f68448
+	source = jaraco.packaging-10.2.2.tar.gz::https://github.com/jaraco/jaraco.packaging/archive/refs/tags/v10.2.2.tar.gz
+	sha256sums = d7adf9e4be8a4f3dd669f146450ede2f6a04f79c208f5e742ba41784a536d3ed
 
 pkgname = python-jaraco.packaging
 	optdepends = python-docutils: Sphinx plugin

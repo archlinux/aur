@@ -5,7 +5,7 @@ pkgname=(
 )
 pkgbase=python-jaraco.packaging
 _name=${pkgbase#python-}
-pkgver=10.2.1
+pkgver=10.2.2
 pkgrel=1
 pkgdesc="Tools to supplement packaging Python releases"
 arch=('any')
@@ -32,7 +32,7 @@ checkdepends=(
   'python-sphinx'
 )
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('dadb62c64a46cee6f641cff34285cef1603816f1ca1ce08200b6a898c9f68448')
+sha256sums=('d7adf9e4be8a4f3dd669f146450ede2f6a04f79c208f5e742ba41784a536d3ed')
 
 build() {
   cd "$_name-$pkgver"
