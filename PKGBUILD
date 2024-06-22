@@ -389,7 +389,7 @@ if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
     --enable-libzvbi --enable-lv2 --enable-libmysofa --enable-openal
     --enable-omx --enable-rkmpp #--enable-pocketsphinx
     --enable-lcms2 --enable-libopenvino --enable-libaribcaption --enable-libopencv
-    --enable-libqrencode --enable-libquirc --disable-libtorch --enable-libxevd -enable-libxeve
+    --enable-libqrencode --enable-libquirc --disable-libtorch --enable-libxevd --enable-libxeve
   )
   provides+=(ffmpeg-full)
 else
