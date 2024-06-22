@@ -1,11 +1,11 @@
 # Maintainer: rilian-la-te <ria.freelander@gmail.com>
 
-makedepends=('meson' 'glib2' 'git')
+makedepends=('meson' 'glib2' 'git' 'glib2-devel')
 
 _pkgbase=vala-panel-appmenu
 pkgname=vala-panel-appmenu-registrar-git
 _path=subprojects/registrar
-pkgver=0.7.6
+pkgver=24.05.r2.g7631683
 pkgrel=1
 pkgdesc="Small utility to hold DBusMenu menus"
 provides=(vala-panel-appmenu-registrar)
