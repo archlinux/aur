@@ -28,7 +28,7 @@
 		assetUrlPrefix: '\/assets',
 		runModeIsProd:  true ,
 		customEmojis: {"codeberg":":codeberg:","forgejo":":forgejo:","git":":git:","gitea":":gitea:","github":":github:","gitlab":":gitlab:","gogs":":gogs:"},
-		csrfToken: 'KkQkvcd7JaxdsUz95BeEviUL3sM6MTcxOTA4Nzg5MzA3NjE4NzExOA',
+		csrfToken: 'Psgd6BdvhsVFnvSo3Qp3AzTkRnw6MTcxOTA4ODY2ODQzMjgxMjI2NQ',
 		pageData: {},
 		notificationSettings: {"EventSourceUpdateTime":10000,"MaxTimeout":60000,"MinTimeout":10000,"TimeoutStep":10000}, 
 		enableTimeTracking:  true ,
@@ -75,7 +75,7 @@
 
 	
 </head>
-<body hx-headers='{"x-csrf-token": "KkQkvcd7JaxdsUz95BeEviUL3sM6MTcxOTA4Nzg5MzA3NjE4NzExOA"}' hx-swap="outerHTML" hx-ext="morph" hx-push-url="false">
+<body hx-headers='{"x-csrf-token": "Psgd6BdvhsVFnvSo3Qp3AzTkRnw6MTcxOTA4ODY2ODQzMjgxMjI2NQ"}' hx-swap="outerHTML" hx-ext="morph" hx-push-url="false">
 	
 
 	<div class="full height">
@@ -360,7 +360,7 @@
 		'submitForm':  null ,
 		'viewType': "branch",
 		'refName': "master",
-		'commitIdShort': "ddf1156197",
+		'commitIdShort': "eb58279a6b",
 		'tagName': "",
 		'branchName': "master",
 		'noTag':  null ,
@@ -502,7 +502,7 @@
 					
 					<a class="ui mini basic button" href="/bankenstein/paczf/raw/branch/master/pacrm">Raw</a>
 					
-						<a class="ui mini basic button" href="/bankenstein/paczf/src/commit/ddf115619767b1528b74ea5608f24df5bd2d01b3/pacrm">Permalink</a>
+						<a class="ui mini basic button" href="/bankenstein/paczf/src/commit/eb58279a6bd8795f7f28221f6e073294fb9a24b8/pacrm">Permalink</a>
 					
 					
 						<a class="ui mini basic button" href="/bankenstein/paczf/blame/branch/master/pacrm">Blame</a>
@@ -564,10 +564,10 @@
 				</table>
 				<div class="code-line-menu tippy-target">
 					
-						<a class="item ref-in-new-issue" role="menuitem" data-url-issue-new="/bankenstein/paczf/issues/new" data-url-param-body-link="/bankenstein/paczf/src/commit/ddf115619767b1528b74ea5608f24df5bd2d01b3/pacrm" rel="nofollow noindex">Reference in a new issue</a>
+						<a class="item ref-in-new-issue" role="menuitem" data-url-issue-new="/bankenstein/paczf/issues/new" data-url-param-body-link="/bankenstein/paczf/src/commit/eb58279a6bd8795f7f28221f6e073294fb9a24b8/pacrm" rel="nofollow noindex">Reference in a new issue</a>
 					
-					<a class="item view_git_blame" role="menuitem" href="/bankenstein/paczf/blame/commit/ddf115619767b1528b74ea5608f24df5bd2d01b3/pacrm">View git blame</a>
-					<a class="item copy-line-permalink" role="menuitem" data-url="/bankenstein/paczf/src/commit/ddf115619767b1528b74ea5608f24df5bd2d01b3/pacrm">Copy permalink</a>
+					<a class="item view_git_blame" role="menuitem" href="/bankenstein/paczf/blame/commit/eb58279a6bd8795f7f28221f6e073294fb9a24b8/pacrm">View git blame</a>
+					<a class="item copy-line-permalink" role="menuitem" data-url="/bankenstein/paczf/src/commit/eb58279a6bd8795f7f28221f6e073294fb9a24b8/pacrm">Copy permalink</a>
 				</div>
 				
 			

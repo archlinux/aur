@@ -1,7 +1,7 @@
 pkgbase = paczf
 	pkgdesc = A TUI frontend for pacman/paru using fzf
 	pkgver = 1.0.0
-	pkgrel = 0
+	pkgrel = 1
 	arch = any
 	license = MPL-2.0
 	depends = sh
@@ -10,10 +10,10 @@ pkgbase = paczf
 	depends = pacman
 	depends = less
 	source = https://codeberg.org/bankenstein/paczf/src/branch/master/pacget
-	source = https://codeberg.org/bankenstein/paczf/src/branch/master/paclist
+	source = https://codeberg.org/bankenstein/paczf/src/branch/master/pacls
 	source = https://codeberg.org/bankenstein/paczf/src/branch/master/pacrm
-	sha256sums = 3a97fae6b466d8abb5be4fc7fcfc955dd049b31fa7ee74a1ba9316a56306fe7a
-	sha256sums = 18d5358434a641338cd65c59ed57e1105c86172bcbd4abd98f1827399d26c6fb
-	sha256sums = dce18e52948722a00555da5b3fb872d6f4de9d179322ddf7fc90b4fa13e682e1
+	sha256sums = ba0c99f5d9b2b46914cf96db094e6d6aac3b6b4cef5de499fa8896220ef3646f
+	sha256sums = 16cd68f4d8b839b11501034a52dbb987598eee23f541e437acef54243e78a8f5
+	sha256sums = b7a9072a76508c8d1be0cb9e6793548b0fae320382d7797f6869942a5983feac
 
 pkgname = paczf

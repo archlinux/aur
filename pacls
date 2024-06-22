@@ -3,7 +3,7 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
-	<title>paczf/paclist at master - bankenstein/paczf - Codeberg.org</title>
+	<title>paczf/pacls at master - bankenstein/paczf - Codeberg.org</title>
 	<link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoiQ29kZWJlcmcub3JnIiwic2hvcnRfbmFtZSI6IkNvZGViZXJnLm9yZyIsInN0YXJ0X3VybCI6Imh0dHBzOi8vY29kZWJlcmcub3JnLyIsImljb25zIjpbeyJzcmMiOiJodHRwczovL2NvZGViZXJnLm9yZy9hc3NldHMvaW1nL2xvZ28ucG5nIiwidHlwZSI6ImltYWdlL3BuZyIsInNpemVzIjoiNTEyeDUxMiJ9LHsic3JjIjoiaHR0cHM6Ly9jb2RlYmVyZy5vcmcvYXNzZXRzL2ltZy9sb2dvLnN2ZyIsInR5cGUiOiJpbWFnZS9zdmcreG1sIiwic2l6ZXMiOiI1MTJ4NTEyIn1dfQ==">
 	<meta name="author" content="bankenstein">
 	<meta name="description" content="paczf - A TUI frontend for pacman/paru using fzf">
@@ -28,7 +28,7 @@
 		assetUrlPrefix: '\/assets',
 		runModeIsProd:  true ,
 		customEmojis: {"codeberg":":codeberg:","forgejo":":forgejo:","git":":git:","gitea":":gitea:","github":":github:","gitlab":":gitlab:","gogs":":gogs:"},
-		csrfToken: 'BIw21esGohMfVjv6QMDr1xdBtg86MTcxOTA4Nzg5Mjg1MzQ5MjkzMg',
+		csrfToken: 'CmWp5UbcTbdcNEC62oYH4cwqVn06MTcxOTA4ODY2ODIxNzcwNjM4Mw',
 		pageData: {},
 		notificationSettings: {"EventSourceUpdateTime":10000,"MaxTimeout":60000,"MinTimeout":10000,"TimeoutStep":10000}, 
 		enableTimeTracking:  true ,
@@ -59,8 +59,8 @@
 	</noscript>
 	
 	
-		<meta property="og:title" content="paczf/paclist at master">
-		<meta property="og:url" content="https://codeberg.org//bankenstein/paczf/src/branch/master/paclist">
+		<meta property="og:title" content="paczf/pacls at master">
+		<meta property="og:url" content="https://codeberg.org//bankenstein/paczf/src/branch/master/pacls">
 		
 	
 	<meta property="og:type" content="object">
@@ -75,7 +75,7 @@
 
 	
 </head>
-<body hx-headers='{"x-csrf-token": "BIw21esGohMfVjv6QMDr1xdBtg86MTcxOTA4Nzg5Mjg1MzQ5MjkzMg"}' hx-swap="outerHTML" hx-ext="morph" hx-push-url="false">
+<body hx-headers='{"x-csrf-token": "CmWp5UbcTbdcNEC62oYH4cwqVn06MTcxOTA4ODY2ODIxNzcwNjM4Mw"}' hx-swap="outerHTML" hx-ext="morph" hx-push-url="false">
 	
 
 	<div class="full height">
@@ -123,7 +123,7 @@
 					<svg viewBox="0 0 16 16" class="svg octicon-person" aria-hidden="true" width="16" height="16"><path d="M10.561 8.073a6 6 0 0 1 3.432 5.142.75.75 0 1 1-1.498.07 4.5 4.5 0 0 0-8.99 0 .75.75 0 0 1-1.498-.07 6 6 0 0 1 3.431-5.142 3.999 3.999 0 1 1 5.123 0M10.5 5a2.5 2.5 0 1 0-5 0 2.5 2.5 0 0 0 5 0"/></svg> Register
 				</a>
 			
-			<a class="item" rel="nofollow" href="/user/login?redirect_to=%2fbankenstein%2fpaczf%2fsrc%2fbranch%2fmaster%2fpaclist">
+			<a class="item" rel="nofollow" href="/user/login?redirect_to=%2fbankenstein%2fpaczf%2fsrc%2fbranch%2fmaster%2fpacls">
 				<svg viewBox="0 0 16 16" class="svg octicon-sign-in" aria-hidden="true" width="16" height="16"><path d="M2 2.75C2 1.784 2.784 1 3.75 1h2.5a.75.75 0 0 1 0 1.5h-2.5a.25.25 0 0 0-.25.25v10.5c0 .138.112.25.25.25h2.5a.75.75 0 0 1 0 1.5h-2.5A1.75 1.75 0 0 1 2 13.25Zm6.56 4.5h5.69a.75.75 0 0 1 0 1.5H8.56l1.97 1.97a.749.749 0 0 1-.326 1.275.75.75 0 0 1-.734-.215L6.22 8.53a.75.75 0 0 1 0-1.06l3.25-3.25a.749.749 0 0 1 1.275.326.75.75 0 0 1-.215.734Z"/></svg> Sign In
 			</a>
 		
@@ -134,7 +134,7 @@
 
 
 
-<div role="main" aria-label="paczf/paclist at master" class="page-content repository file list ">
+<div role="main" aria-label="paczf/pacls at master" class="page-content repository file list ">
 	<div class="secondary-nav">
 
 	<div class="ui container">
@@ -360,7 +360,7 @@
 		'submitForm':  null ,
 		'viewType': "branch",
 		'refName': "master",
-		'commitIdShort': "ddf1156197",
+		'commitIdShort': "eb58279a6b",
 		'tagName': "",
 		'branchName': "master",
 		'noTag':  null ,
@@ -369,11 +369,11 @@
 		'enableFeed':  true ,
 		'rssURLPrefix': '\/bankenstein\/paczf/rss/branch/',
 		'branchURLPrefix': '\/bankenstein\/paczf/src/branch/',
-		'branchURLSuffix': '/paclist',
+		'branchURLSuffix': '/pacls',
 		'tagURLPrefix': '\/bankenstein\/paczf/src/tag/',
-		'tagURLSuffix': '/paclist',
+		'tagURLSuffix': '/pacls',
 		'repoLink': "/bankenstein/paczf",
-		'treePath': "paclist",
+		'treePath': "pacls",
 		'branchNameSubURL': "branch/master",
 		'noResults': "No results found.",
 	};
@@ -417,7 +417,7 @@
 				
 				
 					<span class="breadcrumb repo-path tw-ml-1">
-						<a class="section" href="/bankenstein/paczf/src/branch/master" title="paczf">paczf</a><span class="breadcrumb-divider">/</span><span class="active section" title="paclist">paclist</span></span>
+						<a class="section" href="/bankenstein/paczf/src/branch/master" title="paczf">paczf</a><span class="breadcrumb-divider">/</span><span class="active section" title="pacls">pacls</span></span>
 				
 			</div>
 			<div class="tw-flex tw-items-center">
@@ -439,14 +439,14 @@
 			<a class="muted author-wrapper" title="Martin Bogdanov" href="/bankenstein"><strong>Martin Bogdanov</strong></a>
 		
 	
-	<a rel="nofollow" class="ui sha label " href="/bankenstein/paczf/commit/ddf115619767b1528b74ea5608f24df5bd2d01b3">
-		<span class="shortsha">ddf1156197</span>
+	<a rel="nofollow" class="ui sha label " href="/bankenstein/paczf/commit/eb58279a6bd8795f7f28221f6e073294fb9a24b8">
+		<span class="shortsha">eb58279a6b</span>
 		
 	</a>
 	
 
 	
-	<span class="grey commit-summary" title="first commit"><span class="message-wrapper"><a href="/bankenstein/paczf/commit/ddf115619767b1528b74ea5608f24df5bd2d01b3" class="default-link muted">first commit</a></span>
+	<span class="grey commit-summary" title="rename to avoid conflict with pacman-contrib"><span class="message-wrapper"><a href="/bankenstein/paczf/commit/eb58279a6bd8795f7f28221f6e073294fb9a24b8" class="default-link muted">rename to avoid conflict with pacman-contrib</a></span>
 		
 	</span>
 
@@ -455,7 +455,7 @@
 			
 				
 					<div class="text grey age">
-						<relative-time prefix="" tense="past" datetime="2024-06-22T22:43:25+03:00" data-tooltip-content data-tooltip-interactive="true">2024-06-22 22:43:25 +03:00</relative-time>
+						<relative-time prefix="" tense="past" datetime="2024-06-22T23:37:16+03:00" data-tooltip-content data-tooltip-interactive="true">2024-06-22 23:37:16 +03:00</relative-time>
 					</div>
 				
 			
@@ -500,21 +500,21 @@
 			
 				<div class="ui buttons tw-mr-1">
 					
-					<a class="ui mini basic button" href="/bankenstein/paczf/raw/branch/master/paclist">Raw</a>
+					<a class="ui mini basic button" href="/bankenstein/paczf/raw/branch/master/pacls">Raw</a>
 					
-						<a class="ui mini basic button" href="/bankenstein/paczf/src/commit/ddf115619767b1528b74ea5608f24df5bd2d01b3/paclist">Permalink</a>
+						<a class="ui mini basic button" href="/bankenstein/paczf/src/commit/eb58279a6bd8795f7f28221f6e073294fb9a24b8/pacls">Permalink</a>
 					
 					
-						<a class="ui mini basic button" href="/bankenstein/paczf/blame/branch/master/paclist">Blame</a>
+						<a class="ui mini basic button" href="/bankenstein/paczf/blame/branch/master/pacls">Blame</a>
 					
-					<a class="ui mini basic button" href="/bankenstein/paczf/commits/branch/master/paclist">History</a>
+					<a class="ui mini basic button" href="/bankenstein/paczf/commits/branch/master/pacls">History</a>
 					
 				</div>
-				<a download href="/bankenstein/paczf/raw/branch/master/paclist"><span class="btn-octicon" data-tooltip-content="Download file"><svg viewBox="0 0 16 16" class="svg octicon-download" aria-hidden="true" width="16" height="16"><path d="M2.75 14A1.75 1.75 0 0 1 1 12.25v-2.5a.75.75 0 0 1 1.5 0v2.5c0 .138.112.25.25.25h10.5a.25.25 0 0 0 .25-.25v-2.5a.75.75 0 0 1 1.5 0v2.5A1.75 1.75 0 0 1 13.25 14Z"/><path d="M7.25 7.689V2a.75.75 0 0 1 1.5 0v5.689l1.97-1.969a.749.749 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 6.78a.749.749 0 1 1 1.06-1.06z"/></svg></span></a>
+				<a download href="/bankenstein/paczf/raw/branch/master/pacls"><span class="btn-octicon" data-tooltip-content="Download file"><svg viewBox="0 0 16 16" class="svg octicon-download" aria-hidden="true" width="16" height="16"><path d="M2.75 14A1.75 1.75 0 0 1 1 12.25v-2.5a.75.75 0 0 1 1.5 0v2.5c0 .138.112.25.25.25h10.5a.25.25 0 0 0 .25-.25v-2.5a.75.75 0 0 1 1.5 0v2.5A1.75 1.75 0 0 1 13.25 14Z"/><path d="M7.25 7.689V2a.75.75 0 0 1 1.5 0v5.689l1.97-1.969a.749.749 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 6.78a.749.749 0 1 1 1.06-1.06z"/></svg></span></a>
 				<a id="copy-content" class="btn-octicon " data-tooltip-content="Copy content"><svg viewBox="0 0 16 16" class="svg octicon-copy" aria-hidden="true" width="14" height="14"><path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"/><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"/></svg></a>
 				
 					
-						<a class="btn-octicon" href="/bankenstein/paczf/rss/branch/master/paclist" data-tooltip-content="RSS Feed">
+						<a class="btn-octicon" href="/bankenstein/paczf/rss/branch/master/pacls" data-tooltip-content="RSS Feed">
 							<svg viewBox="0 0 16 16" class="svg octicon-rss" aria-hidden="true" width="14" height="14"><path d="M2.002 2.725a.75.75 0 0 1 .797-.699C8.79 2.42 13.58 7.21 13.974 13.201a.75.75 0 0 1-1.497.098 10.5 10.5 0 0 0-9.776-9.776.747.747 0 0 1-.7-.798ZM2.84 7.05h-.002a7 7 0 0 1 6.113 6.111.75.75 0 0 1-1.49.178 5.5 5.5 0 0 0-4.8-4.8.75.75 0 0 1 .179-1.489M2 13a1 1 0 1 1 2 0 1 1 0 0 1-2 0"/></svg>
 						</a>
 					
@@ -564,10 +564,10 @@
 				</table>
 				<div class="code-line-menu tippy-target">
 					
-						<a class="item ref-in-new-issue" role="menuitem" data-url-issue-new="/bankenstein/paczf/issues/new" data-url-param-body-link="/bankenstein/paczf/src/commit/ddf115619767b1528b74ea5608f24df5bd2d01b3/paclist" rel="nofollow noindex">Reference in a new issue</a>
+						<a class="item ref-in-new-issue" role="menuitem" data-url-issue-new="/bankenstein/paczf/issues/new" data-url-param-body-link="/bankenstein/paczf/src/commit/eb58279a6bd8795f7f28221f6e073294fb9a24b8/pacls" rel="nofollow noindex">Reference in a new issue</a>
 					
-					<a class="item view_git_blame" role="menuitem" href="/bankenstein/paczf/blame/commit/ddf115619767b1528b74ea5608f24df5bd2d01b3/paclist">View git blame</a>
-					<a class="item copy-line-permalink" role="menuitem" data-url="/bankenstein/paczf/src/commit/ddf115619767b1528b74ea5608f24df5bd2d01b3/paclist">Copy permalink</a>
+					<a class="item view_git_blame" role="menuitem" href="/bankenstein/paczf/blame/commit/eb58279a6bd8795f7f28221f6e073294fb9a24b8/pacls">View git blame</a>
+					<a class="item copy-line-permalink" role="menuitem" data-url="/bankenstein/paczf/src/commit/eb58279a6bd8795f7f28221f6e073294fb9a24b8/pacls">Copy permalink</a>
 				</div>
 				
 			
