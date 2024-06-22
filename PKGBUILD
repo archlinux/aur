@@ -3,7 +3,7 @@
 pkgname=fwallet
 _name=fwallet
 _appid=business.braid.f_wallet
-pkgver=1.1.5
+pkgver=1.1.6
 pkgrel=1
 pkgdesc="A beautiful cross-platform wallet application."
 # Flutter officially supports amd64 and AArch64
@@ -17,10 +17,6 @@ depends=(
   'libsecret'
   # path_provider
   'xdg-user-dirs'
-  # for e2ee
-  'libolm'
-  # flutter_file_picker - see https://github.com/miguelpruivo/flutter_file_picker/blob/master/lib/src/linux/file_picker_linux.dart#L115
-  'zenity'
 )
 makedepends=(
   # the Flutter tool
@@ -38,7 +34,7 @@ source=(
   "${_name}-v${pkgver}.tar.gz::https://gitlab.com/TheOneWithTheBraid/f_wallet/-/archive/v${pkgver}/f_wallet-v${pkgver}.tar.gz"
 )
 # this is a git build, we do not want to pin to a version
-sha256sums=('68aa600b9c42f957927bd9472f85224750e606a4b7c2150c1fc39eb6cfaa2dd8')
+sha256sums=('ef8f4f3555fcfc54ef69b87a52ca0af733289b0b81c016a41bdf270409c295cc')
 
 # ensure we have the proper Dart architecture name for the current CARCH
 case "${CARCH}" in
