@@ -7,7 +7,6 @@ pkgdesc="html5 client for the spice protocol."
 arch=('any')
 url="https://gitlab.freedesktop.org/spice/spice-html5"
 license=('GPL')
-makedepends=('make')
 source=("https://gitlab.freedesktop.org/spice/$pkgname/-/archive/$pkgname-$pkgver/$pkgname-$pkgname-$pkgver.tar.gz")
 
 package() {

@@ -5,7 +5,6 @@ pkgbase = spice-html5
 	url = https://gitlab.freedesktop.org/spice/spice-html5
 	arch = any
 	license = GPL
-	makedepends = make
 	source = https://gitlab.freedesktop.org/spice/spice-html5/-/archive/spice-html5-0.3.0/spice-html5-spice-html5-0.3.0.tar.gz
 	sha256sums = 90fa3b30cda272471104af0b61ea08f2194048455133889a28a8bed0c00e3527
 
