@@ -18,37 +18,33 @@ makedepends=(
   'boost'
   'cli11'
   'tbb'
-  # needed when making  doc
+  # needed to make doc
   'doxygen'
+  'stanmath'
 )
 provides=("cmdstan")
 source=("stanc-${pkgver}.tar.gz::https://github.com/stan-dev/cmdstan/archive/refs/tags/v${pkgver}.tar.gz"
   "stan-${pkgver}.tar.gz::https://github.com/stan-dev/stan/archive/refs/tags/v${pkgver}.tar.gz"
-  "stanmath-${_mathver}.tar.gz::https://github.com/stan-dev/math/archive/refs/tags/v${_mathver}.tar.gz"
   cli11.patch
   local
 )
 sha512sums=('6d4305abcab29bb352530795f32f9a85d6f85dc9373059ea14782272f6ac92dd13cfcb1f13f6af79514d51566c1e7bb64d62ff58d26118d62c53c2df1f3c41d8'
-            '36a6694c7fbebb3e7bb659ba754ae7a95703750a23b6ec1a0130cf39d251bae68662da74dd21e687bb81d9d2881cdbc5688973af103ae7fcf769f2c0aeb4eec3'
-            '43749bbf7504821b56638db56063e4da62a019b93216609c9f6b8e024ba8037a861eb8224dabe46a403e0938df01a97d731158dfb50c5ef8c8096507a4068c8a'
-            'c9ad30e8dcb9264315c7078f8f4495417e6937b0207b043776e1fab2acd10704d5518ae04aa535827d17178311014bbe1555692aec0833b7c039e9af1e6c5ad5'
-            '545b9672f7422ecb1ee20b57ea64bdea994e8bfdf88b7926df130a68eeb94020b34bd7f0868d32d2b8882781af4c43399e3fa7a3e05f8895915d719bc0b822c5')
+  '36a6694c7fbebb3e7bb659ba754ae7a95703750a23b6ec1a0130cf39d251bae68662da74dd21e687bb81d9d2881cdbc5688973af103ae7fcf769f2c0aeb4eec3'
+  'c9ad30e8dcb9264315c7078f8f4495417e6937b0207b043776e1fab2acd10704d5518ae04aa535827d17178311014bbe1555692aec0833b7c039e9af1e6c5ad5'
+  'b0ed660067f8266adc4eff0c8ef50ef2da0bdb4c161a82e02b6898b84a81740ca6968ec686b4a13140102a57aee23f9b3df1208ca460120db9e3325e1903c7b4')
 
 prepare() {
   cp -rf "${srcdir}/stan-${pkgver/_/-}"/* "${srcdir}/cmdstan-${pkgver/_/-}/stan/"
-  sed -i "${srcdir}/math-${_mathver/_/-}"/stan/math/rev/functor/kinsol_data.hpp \
-    -e "s|sundials_context.h>|sundials_context.hpp>|"
-  sed -i "${srcdir}/math-${_mathver/_/-}"/stan/math/rev/functor/cvodes_integrator{,_adjoint}.hpp \
-    -e "s|realtype|sunrealtype|g"
-  sed -i "${srcdir}/math-${_mathver/_/-}"/stan/math/rev/functor/idas_service.hpp \
-    -e "s|RCONST|SUN_RCONST|g"
 
   cd "${srcdir}/cmdstan-${pkgver/_/-}"
-  patch --strip=1 <${srcdir}/cli11.patch
-  cp -rf "${srcdir}/math-${_mathver/_/-}"/* stan/lib/stan_math
+
   cp ${srcdir}/local make/local
   cp ${srcdir}/local stan/make/local
+  patch --strip=1 <${srcdir}/cli11.patch
   sed -i 's|CLI11/CLI11.hpp|CLI/CLI.hpp|g' src/cmdstan/stansummary.cpp
+
+  # to use stanmath
+  sed -i '/include $(MATH)/d' stan/makefile makefile
 }
 build() {
   cd "${srcdir}/cmdstan-${pkgver/_/-}"
