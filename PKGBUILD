@@ -1,13 +1,13 @@
 # Maintainer: maintuner (Zackaruz)
 pkgname=outline-client-appimage-wayland
-pkgver=1.7.0
-pkgrel=2
+pkgver=1.13.1
+pkgrel=1
 pkgdesc="The Outline clients use the popular Shadowsocks protocol, and lean on the Cordova and Electron frameworks."
 arch=(x86_64)
 conflicts=('outline-client-appimage')
 url="https://getoutline.org"
 license=("Apache License 2.0")
-source=("Outline-Client.AppImage::https://github.com/Jigsaw-Code/outline-releases/raw/master/client/stable/Outline-Client.AppImage"
+source=("Outline-Client.AppImage::https://s3.amazonaws.com/outline-releases/client/linux/stable/Outline-Client.AppImage"
         "outline-client16.png"
         "outline-client24.png"
         "outline-client32.png"
@@ -39,7 +39,7 @@ package() {
   ln -s "/opt/outline-client/outline-wayland-launcher.sh" "${pkgdir}/usr/bin/outline-client-wayland"
 }
 
-md5sums=('ea45b7b11b41a411e054dc1c4b92cde1'
+md5sums=('d08f9261decd01989f4695977396f872'
          '0a93de3e384697183c80dd8f2d9a7d4c'
          '1119ddab3f312c7c8a6411f9fb345f18'
          'a7fbc709d197494b461f2afb7841249e'
