@@ -1,0 +1,18 @@
+pkgbase = certigo-bin
+	pkgdesc = A utility to examine and validate certificates in a variety of formats
+	pkgver = 1.16.0
+	pkgrel = 1
+	url = https://github.com/square/certigo
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = certigo
+	conflicts = certigo
+	source = https://github.com/square/certigo/raw/v1.16.0/README.md
+	source = https://github.com/square/certigo/raw/v1.16.0/LICENSE
+	sha256sums = 2da0fd0ed400bb17da58ab4e8887daad1feece1fd81dbdd6ad8a0567844d139d
+	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+	source_x86_64 = certigo-1.16.0::https://github.com/square/certigo/releases/download/v1.16.0/certigo-linux-amd64
+	sha256sums_x86_64 = 6d84c3801b216b26504d9bb1356f8b7a2d5b6aa8a2df281af0c011dc9a8307ab
+
+pkgname = certigo-bin

@@ -1,0 +1,10 @@
+*.tar.*
+*.orig
+*.rej
+*.swp
+*.part
+src
+pkg
+certigo*
+LICENSE
+README.md
