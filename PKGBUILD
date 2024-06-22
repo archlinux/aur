@@ -15,7 +15,7 @@ license=('Zlib')
 depends=('libgl' 'libxkbcommon')
 makedepends=('mesa' 'cmake' 'doxygen' 'vulkan-headers' 'vulkan-icd-loader'
              'extra-cmake-modules' 'wayland-protocols' 'libxi' 'libxrandr'
-             'libxcursor' 'libxinerama' 'git')
+             'libxcursor' 'libxinerama' 'git' 'ninja')
 conflicts=('glfw' 'glfw-x11' 'glfw-wayland')
 provides=('glfw' 'glfw-x11' 'glfw-wayland')
 replaces=('glfw-x11-git' 'glfw-wayland-git')

@@ -19,6 +19,7 @@ pkgbase = glfw-git
 	makedepends = libxcursor
 	makedepends = libxinerama
 	makedepends = git
+	makedepends = ninja
 	depends = libgl
 	depends = libxkbcommon
 	optdepends = libgl: for OpenGL support
