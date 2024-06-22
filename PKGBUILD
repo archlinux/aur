@@ -2,12 +2,12 @@
 # Contributor: Matthias Lamers <aussieevil@hotmail.com>
 pkgname=ohrrpgce
 pkgver=wip.r13561
-pkgrel=1
+pkgrel=2
 pkgdesc="A role playing game creation engine"
 arch=(i686 x86_64)
 license=(GPL)
 url="http://rpg.hamsterrepublic.com/ohrrpgce/Main_Page"
-depends=('sdl2_mixer' 'openeuphoria' 'libxpm' 'libxrandr' 'ncurses' 'xterm')
+depends=('sdl2_mixer' 'openeuphoria' 'libxpm' 'libxrandr' 'ncurses' 'xterm' 'libxinerama')
 makedepends=('subversion' 'freebasic' 'scons')
 optdepends=('timidity-freepats: midi music support')
 source=(svn+https://rpg.hamsterrepublic.com/source/wip#revision=r13561)
