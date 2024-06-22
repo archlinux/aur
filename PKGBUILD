@@ -1,6 +1,6 @@
 pkgname=arch-os-manager
 pkgver=r41.0c8b930
-pkgrel=1
+pkgrel=2
 pkgdesc="Arch OS System Manager"
 arch=('any')
 url="https://github.com/murkl/arch-os-manager"
@@ -20,8 +20,8 @@ package() {
     mkdir -p "${pkgdir}/opt/${pkgname}"
     mkdir -p "${pkgdir}/usr/bin"
     mkdir -p "${pkgdir}/usr/share/applications"
-    cp -r "${srcdir}/${pkgname}/"* "$pkgdir/opt/${pkgname}/"
-    cp arch-os.desktop "${pkgdir}/usr/share/applications/"
+    cp -rf "${srcdir}/${pkgname}/"* "$pkgdir/opt/${pkgname}/"
+    cp -f arch-os.desktop "${pkgdir}/usr/share/applications/"
     chmod +x "${pkgdir}/opt/${pkgname}/arch-os"
     ln -s /opt/${pkgname}/arch-os "${pkgdir}/usr/bin/"
 }
