@@ -1,12 +1,12 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=gpu-screen-recorder-git
-pkgver=r625.df83c8a
-pkgrel=2
+pkgver=r631.42e5930
+pkgrel=1
 pkgdesc='A shadowplay-like screen recorder for Linux. The fastest screen recorder for Linux'
 arch=('x86_64')
 url="https://git.dec05eba.com/gpu-screen-recorder"
-license=('GPL3')
+license=('GPL-3.0-only')
 makedepends=('meson')
 depends=('ffmpeg' 'libglvnd' 'libxcomposite' 'libxrandr' 'libxfixes' 'libxdamage' 'libxi' 'libx11' 'libpulse' 'libva' 'libdrm' 'libcap' 'wayland')
 optdepends=(
@@ -20,7 +20,7 @@ optdepends=(
 provides=('gpu-screen-recorder')
 conflicts=('gpu-screen-recorder')
 source=("${pkgname}-${pkgver}.tar.gz::https://dec05eba.com/snapshot/gpu-screen-recorder.git.${pkgver}.tar.gz")
-sha512sums=('7bd3a6b9d6ab4dabf44573d0e64ff9161280514d2c3c2c937249033aca5d8ec10a139e4044a7023017bad89a9830011566c0628df17514cf51a47f91b143ac0e')
+sha512sums=('b01a9a13e439a022cc835bc810381e8f8ab9b906478e51f425be82cd56134a2cd30603875b7c5cc162bc22a9671002a2c25b3fb5cea4d23c3b99f4850d334a22')
 install="${pkgname}.install" # setcap cap_sys_admin (gsr-kms-server), setcap cap_sys_nice (gpu-screen-recorder)
 
 build() {
