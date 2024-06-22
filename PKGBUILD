@@ -1,7 +1,7 @@
 # Maintainer: metamuffin <metamuffin@disroot.org>
 
 pkgname=gnix
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="a simple stupid http reverse proxy"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -13,7 +13,7 @@ source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/metamuffin/gnix/archive/v
         "gnix.service"
         "config.yaml"
         "sysusers.conf")
-sha256sums=('22695c58c334c43f027b153c6e6ec7dfb6d092f5597be787789ecc2135811902'
+sha256sums=('be5c0c6f5ff6fe206061709ac52f09fccfa5345030036604f3f2eba90df74a08'
             'a80df54a4e44960decf43ad618dc1afef9cc498370460362e91646ac3f95358e'
             'dae3df7d0d521b075d16ab518bc321a63bc0ca7822b814aed6e00402577d380b'
             '9e03be16b1b3dd4c0d0e5feb5c31221758b68a54bad5ba7232e8565d766ea620')
