@@ -11,7 +11,7 @@ license=('GPL3')
 depends=()
 makedepends=('bash' 'git')
 source=("git+$url.git#commit=$_symfpucommit")
-sha256sums=('SKIP')
+sha256sums=('eb0eeda22c5ff9345c94249cc880dae57ac5eb42992675143150ec1814052955')
 provides=("symfpu=$pkgver")
 
 pkgver() {

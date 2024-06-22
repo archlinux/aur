@@ -9,6 +9,6 @@ pkgbase = symfpu-cvc5
 	makedepends = git
 	provides = symfpu=r20230627.e6ac3af
 	source = git+https://github.com/cvc5/symfpu.git#commit=e6ac3af9c2c574498ea171c957425b407625448b
-	sha256sums = SKIP
+	sha256sums = eb0eeda22c5ff9345c94249cc880dae57ac5eb42992675143150ec1814052955
 
 pkgname = symfpu-cvc5
