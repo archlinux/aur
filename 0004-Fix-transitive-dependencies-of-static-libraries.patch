@@ -1,7 +1,7 @@
-From 843c76c9b005938e5921c667af64c64afaf8bf6b Mon Sep 17 00:00:00 2001
+From df6d45f475bac9a57feceebe06f4cf94f8b20b42 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Thu, 5 Nov 2020 21:59:33 +0100
-Subject: [PATCH 04/16] Fix transitive dependencies (of static libraries)
+Subject: [PATCH 04/18] Fix transitive dependencies (of static libraries)
 
 The dependencies of these libraries are not reliably picked up by their
 corresponding find modules. This change allows adding the required
@@ -93,10 +93,10 @@ index d0c27a9f0f7..64e14c584c2 100644
  unset(__freetype_target_name)
  unset(__freetype_found)
 diff --git a/cmake/FindWrapSystemHarfbuzz.cmake b/cmake/FindWrapSystemHarfbuzz.cmake
-index 07b3405bc07..10fb738d7cb 100644
+index d989c93e440..faa070f5ce8 100644
 --- a/cmake/FindWrapSystemHarfbuzz.cmake
 +++ b/cmake/FindWrapSystemHarfbuzz.cmake
-@@ -73,7 +73,7 @@ find_package_handle_standard_args(WrapSystemHarfbuzz
+@@ -80,7 +80,7 @@ find_package_handle_standard_args(WrapSystemHarfbuzz
  if(WrapSystemHarfbuzz_FOUND)
      add_library(WrapSystemHarfbuzz::WrapSystemHarfbuzz INTERFACE IMPORTED)
      target_link_libraries(WrapSystemHarfbuzz::WrapSystemHarfbuzz
@@ -132,5 +132,5 @@ index 2f55ab49500..bcf0bdbb42e 100644
          Qt::CorePrivate
          Qt::SqlPrivate
 -- 
-2.45.1
+2.45.2
 
