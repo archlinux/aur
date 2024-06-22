@@ -1,6 +1,6 @@
 pkgbase = forkgram
 	pkgdesc = Fork of Telegram Desktop messaging app.
-	pkgver = 5.0.1
+	pkgver = 5.1.8
 	pkgrel = 2
 	url = https://github.com/Forkgram/tdesktop
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = forkgram
 	makedepends = fmt
 	makedepends = mm-common
 	makedepends = perl-xml-parser
-	makedepends = python-packaging
+	makedepends = glib2-devel
 	makedepends = dos2unix
 	depends = hunspell
 	depends = ffmpeg
@@ -55,9 +55,9 @@ pkgbase = forkgram
 	conflicts = forkgram-bin
 	conflicts = telegram-desktop
 	options = !debug
-	source = frk-v5.0.1::git+https://github.com/forkgram/tdesktop.git#tag=v5.0.1
+	source = frk-v5.1.8::git+https://github.com/forkgram/tdesktop.git#tag=v5.1.8
 	source = forkgram.desktop
-	sha512sums = 5e50c9376b1e567773acbc8cfdd8948350733de059713df210fe9571395230c75ba14f9fa079e96578bb6e3e33a4425a95c9222d3a22610b95dca5faf52f9b86
+	sha512sums = cdd7423777ed8da795e413522fcf6f1afc8affe62ca2610eba9b07e05f78bfea94fd00ebe610837a605df8127c61b2ebf14680078af6df325a74cc377633f2a2
 	sha512sums = d6d54a5a396c0a84645ca5f38cd2d0c774d1a00f081cdf6151228b581ff1c05234550d4829aab4fe2221dec8e0477199da5a0cb1bc3a60fa1fbfe0336db365dd
 
 pkgname = forkgram
