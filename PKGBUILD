@@ -13,7 +13,7 @@ source=(
 package() {
     install -Dm755 pacget ${pkgdir}/usr/bin/pacget
     install -Dm755 pacrm ${pkgdir}/usr/bin/pacrm
-    install -Dm755 paclist ${pkgdir}/usr/bin/pacls
+    install -Dm755 pacls ${pkgdir}/usr/bin/pacls
 }
 sha256sums=('ba0c99f5d9b2b46914cf96db094e6d6aac3b6b4cef5de499fa8896220ef3646f'
             '16cd68f4d8b839b11501034a52dbb987598eee23f541e437acef54243e78a8f5'
