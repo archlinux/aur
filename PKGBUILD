@@ -20,7 +20,10 @@ optdepends=(
     'libmpdclient: music player daemon control',
     'libxkbcommon: xkb layout conversion support'
     )
-makedepends=('meson')
+makedepends=(
+    'meson'
+    'git'
+    )
 conflicts=('sfwbar')
 provides=('sfwbar')
 
