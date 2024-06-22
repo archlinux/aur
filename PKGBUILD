@@ -18,7 +18,7 @@
 
 pkgname=mutter-x11-scaling
 pkgver=46.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Window manager and compositor for GNOME with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
