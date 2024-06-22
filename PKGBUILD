@@ -2,21 +2,21 @@
 # Contributor: Wayne Hartmann (DH4) <wayne@bitstorm.pw>
 
 pkgname=ttf-wps-fonts
-pkgver=1.0
-pkgrel=5
+pkgver=2.0
+pkgrel=1
 pkgdesc="Symbol fonts required by wps-office."
 arch=(any)
-license=("custom")
+license=("custom:EULA")
 depends=()
 makedepends=()
-url="https://github.com/IamDH4/ttf-wps-fonts"
-source=("$pkgname.zip::https://github.com/IamDH4/$pkgname/archive/master.zip"
+url="https://github.com/ferion11/ttf-wps-fonts"
+source=("$pkgname.tar.gz::https://github.com/ferion11/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
         "license.txt")
-sha1sums=('cbc7d2c733b5d3461f3c2200756d4efce9e951d5'
+sha1sums=('fb270373c3bbea55ee80b56dd27de9f87f79607e'
           '6134a63d775540588ce48884e8cdc47d4a9a62f3')
 
 package() {
-  install -d "$pkgdir/usr/share/fonts/wps-fonts"
-  install -m644 "$srcdir/$pkgname-master/"*.{ttf,TTF} "$pkgdir/usr/share/fonts/wps-fonts/"
-  install -Dm644 "$srcdir/"license.txt "$pkgdir/usr/share/licenses/$pkgname/license.txt"
+  install -d "${pkgdir}/usr/share/fonts/wps-fonts"
+  install -m644 ${srcdir}/${pkgname}-${pkgver}/*.ttf "${pkgdir}/usr/share/fonts/wps-fonts/"
+  install -Dm644 "${srcdir}/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
 }

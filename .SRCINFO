@@ -1,14 +1,13 @@
 pkgbase = ttf-wps-fonts
 	pkgdesc = Symbol fonts required by wps-office.
-	pkgver = 1.0
-	pkgrel = 5
-	url = https://github.com/IamDH4/ttf-wps-fonts
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/ferion11/ttf-wps-fonts
 	arch = any
-	license = custom
-	source = ttf-wps-fonts.zip::https://github.com/IamDH4/ttf-wps-fonts/archive/master.zip
+	license = custom:EULA
+	source = ttf-wps-fonts.tar.gz::https://github.com/ferion11/ttf-wps-fonts/archive/refs/tags/v2.0.tar.gz
 	source = license.txt
-	sha1sums = cbc7d2c733b5d3461f3c2200756d4efce9e951d5
+	sha1sums = fb270373c3bbea55ee80b56dd27de9f87f79607e
 	sha1sums = 6134a63d775540588ce48884e8cdc47d4a9a62f3
 
 pkgname = ttf-wps-fonts
-
