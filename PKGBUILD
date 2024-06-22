@@ -2,19 +2,19 @@
 # Contributor: Will Price <will.price94@gmail.com>
 
 pkgname=ttf-sudo
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="A font for programmers and command line users"
 arch=('any')
-url="https://www.kutilek.de/sudo-font/"
+url="https://www.kutilek.de/sudo-font"
 license=('OFL-1.1')
 source=("${pkgname}-${pkgver}.zip::https://github.com/jenskutilek/sudo-font/releases/download/v${pkgver}/sudo.zip")
-sha256sums=('161a8d81f882063fe54302c3fe0b2ce9bfc14065b6e1457278595826c41d6dc3')
+sha256sums=('b7e2e9c6a22daf0139d759bea2fdefe745cc8b69ba216e6dab660a710dcb1eed')
 
 package() {
   cd sudo
-  install -Dm644 -t "${pkgdir}/usr/share/fonts/TTF/" *.ttf
-  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" OFL.txt
+  install -Dm644 *.ttf -t "${pkgdir}/usr/share/fonts/TTF"
+  install -Dm644 OFL.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim:set ts=2 sw=2 et:
