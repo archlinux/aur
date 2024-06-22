@@ -1,6 +1,6 @@
 pkgbase = colloid-gtk-theme-git
 	pkgdesc = Gtk theme for Linux
-	pkgver = 2024.06.18.r2.g57f10cc
+	pkgver = 2024.06.18.r4.gdfff1a7
 	pkgrel = 1
 	url = https://github.com/vinceliuice/Colloid-gtk-theme
 	install = colloid-gtk-theme.install

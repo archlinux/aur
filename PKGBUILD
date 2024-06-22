@@ -8,7 +8,7 @@ pkgname=(
   'colloid-nord-gtk-theme-git'
 )
 pkgbase=colloid-gtk-theme-git
-pkgver=2024.06.18.r2.g57f10cc
+pkgver=2024.06.18.r4.gdfff1a7
 pkgrel=1
 pkgdesc="Gtk theme for Linux"
 arch=('any')
@@ -34,8 +34,8 @@ package_colloid-gtk-theme-git() {
 
   cd Colloid-gtk-theme
   install -d "$pkgdir/usr/share/themes"
-  ./install.sh -t all --tweaks normal -d "$pkgdir/usr/share/themes"
-  ./install.sh -t all -s compact --tweaks normal -d "$pkgdir/usr/share/themes"
+  ./install.sh -t all -d "$pkgdir/usr/share/themes"
+  ./install.sh -t all -s compact -d "$pkgdir/usr/share/themes"
 
   # Firefox theme
   install -d "$pkgdir/usr/share/doc/${pkgname%-git}"
@@ -49,8 +49,8 @@ package_colloid-catppuccin-gtk-theme-git() {
 
   cd Colloid-gtk-theme
   install -d "$pkgdir/usr/share/themes"
-  ./install.sh -t all --tweaks catppuccin normal -d "$pkgdir/usr/share/themes"
-  ./install.sh -t all -s compact --tweaks catppuccin normal -d "$pkgdir/usr/share/themes"
+  ./install.sh -t all --tweaks catppuccin -d "$pkgdir/usr/share/themes"
+  ./install.sh -t all -s compact --tweaks catppuccin -d "$pkgdir/usr/share/themes"
 }
 
 package_colloid-dracula-gtk-theme-git() {
@@ -60,8 +60,8 @@ package_colloid-dracula-gtk-theme-git() {
 
   cd Colloid-gtk-theme
   install -d "$pkgdir/usr/share/themes"
-  ./install.sh -t all --tweaks dracula normal -d "$pkgdir/usr/share/themes"
-  ./install.sh -t all -s compact --tweaks dracula normal -d "$pkgdir/usr/share/themes"
+  ./install.sh -t all --tweaks dracula -d "$pkgdir/usr/share/themes"
+  ./install.sh -t all -s compact --tweaks dracula -d "$pkgdir/usr/share/themes"
 }
 
 package_colloid-everforest-gtk-theme-git() {
@@ -71,8 +71,8 @@ package_colloid-everforest-gtk-theme-git() {
 
   cd Colloid-gtk-theme
   install -d "$pkgdir/usr/share/themes"
-  ./install.sh -t all --tweaks everforest normal -d "$pkgdir/usr/share/themes"
-  ./install.sh -t all -s compact --tweaks everforest normal -d "$pkgdir/usr/share/themes"
+  ./install.sh -t all --tweaks everforest -d "$pkgdir/usr/share/themes"
+  ./install.sh -t all -s compact --tweaks everforest -d "$pkgdir/usr/share/themes"
 }
 
 package_colloid-gruvbox-gtk-theme-git() {
@@ -82,8 +82,8 @@ package_colloid-gruvbox-gtk-theme-git() {
 
   cd Colloid-gtk-theme
   install -d "$pkgdir/usr/share/themes"
-  ./install.sh -t all --tweaks gruvbox normal -d "$pkgdir/usr/share/themes"
-  ./install.sh -t all -s compact --tweaks gruvbox normal -d "$pkgdir/usr/share/themes"
+  ./install.sh -t all --tweaks gruvbox -d "$pkgdir/usr/share/themes"
+  ./install.sh -t all -s compact --tweaks gruvbox -d "$pkgdir/usr/share/themes"
 }
 
 package_colloid-nord-gtk-theme-git() {
@@ -93,6 +93,6 @@ package_colloid-nord-gtk-theme-git() {
 
   cd Colloid-gtk-theme
   install -d "$pkgdir/usr/share/themes"
-  ./install.sh -t all --tweaks nord normal -d "$pkgdir/usr/share/themes"
-  ./install.sh -t all -s compact --tweaks nord normal -d "$pkgdir/usr/share/themes"
+  ./install.sh -t all --tweaks nord -d "$pkgdir/usr/share/themes"
+  ./install.sh -t all -s compact --tweaks nord -d "$pkgdir/usr/share/themes"
 }
