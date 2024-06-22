@@ -1,0 +1,12 @@
+pkgbase = beerfetch
+	pkgdesc = A very basic bash version of neofetch
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/mrgreen3/beerfetch
+	arch = any
+	license = GPL
+	depends = bash
+	source = https://github.com/mrgreen3/beerfetch/archive/refs/heads/main.tar.gz
+	sha256sums = 09192b02879860610707aae9219861811acd29984ab8aa62fbb2c9b0de28b5e5
+
+pkgname = beerfetch
