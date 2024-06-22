@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt6-serialport
 	pkgdesc = Provides access to hardware and virtual serial ports (mingw-w64)
-	pkgver = 6.7.1
+	pkgver = 6.7.2
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = mingw-w64-qt6-serialport
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.7/6.7.1/submodules/qtserialport-everywhere-src-6.7.1.tar.xz
-	sha256sums = e543a3788bfd522f2e4a111ba568214f1f5be6e55f08318c2dcd376124ea5886
+	source = https://download.qt.io/official_releases/qt/6.7/6.7.2/submodules/qtserialport-everywhere-src-6.7.2.tar.xz
+	sha256sums = 21c34cd1161cb5197bcec662d26a17647b59b6fdff5c364576883c42dbd3b4fc
 
 pkgname = mingw-w64-qt6-serialport
