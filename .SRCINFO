@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt6-scxml-static
 	pkgdesc = Static and runtime integration of SCXML models into Qt6 code (mingw-w64)
-	pkgver = 6.7.1
+	pkgver = 6.7.2
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = mingw-w64-qt6-scxml-static
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.7/6.7.1/submodules/qtscxml-everywhere-src-6.7.1.tar.xz
-	sha256sums = 022d415284e889bd6687ea57f91853a12e39f254bc8f125ecee6a19b5167b24f
+	source = https://download.qt.io/official_releases/qt/6.7/6.7.2/submodules/qtscxml-everywhere-src-6.7.2.tar.xz
+	sha256sums = 20ecf93506d48f27b492ad3dd9d88830e08d642faec3071ce53396a8ae05c86f
 
 pkgname = mingw-w64-qt6-scxml-static
