@@ -1,9 +1,8 @@
 pkgbase = cgoban3
 	pkgdesc = A KGS client and SGF editor
 	pkgver = 3.5.144
-	pkgrel = 2
-	url = https://gokgs.com/
-	install = cgoban3.install
+	pkgrel = 3
+	url = https://www.gokgs.com/
 	arch = any
 	license = Freeware
 	depends = desktop-file-utils
@@ -14,11 +13,9 @@ pkgbase = cgoban3
 	source = cgoban3
 	source = cgoban3.png
 	source = cgoban3.desktop
-	source = cgoban3-edit.desktop
-	sha256sums = SKIP
-	sha256sums = f4ad321e3aed07002581b70686c5f5298190c647f63dd4b3fa848a9756fb6f98
+	sha256sums = 7a137f690536dd912d0e1ffeaf71f63c33c1ad6860a0c7e011f2aae6ad3c9056
+	sha256sums = e1ba41f3a461f1a67818f25518a53106c30add18e9b37ca2558ae05fbf67e362
 	sha256sums = a87ecc7d285cf19ab176a437dfb22ab8841eff2f64348cc432557d879347d510
-	sha256sums = b781072cbb5ac56c102992c92307153c14842c5d9e7a6a6bbf7e397d7b714598
-	sha256sums = 909931d5694a205a05c602250b6b6c319cf599799dc9b1d69df0becfb768406d
+	sha256sums = 62348a1f2a4559159d2262409d948e4eb514f5b244d069fc78fa44383ae5a025
 
 pkgname = cgoban3
