@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Arch OS
-Exec=arch-os
+Exec=arch-os --kitty
 Icon=/opt/arch-os-manager/docs/logo.svg
 Type=Application
 Terminal=false
