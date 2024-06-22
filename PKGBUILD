@@ -3,7 +3,7 @@
 pkgname=obs-studio-rc
 _pkgver=30.2.0-beta4
 pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgrel=2
 epoch=8
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
@@ -18,7 +18,7 @@ _pythonver=3.12
 depends=(
   "alsa-lib" # Deps of ALSA plugin and CEF
   "curl" # Deps of OBS Studio and rtmp-services plugin
-  "ffmpeg-obs>=6" # Deps of OBS Studio and FFmpeg plugin
+  "ffmpeg-obs>=7" # Deps of OBS Studio and FFmpeg plugin
   "fontconfig" # Deps of Freetype2 plugin
   "freetype2" # Deps of Freetype2 plugin
   "gcc-libs" # Deps of any C++ related binary

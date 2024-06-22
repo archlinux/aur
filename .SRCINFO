@@ -1,7 +1,7 @@
 pkgbase = obs-studio-rc
 	pkgdesc = Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration
 	pkgver = 30.2.0_beta4
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 8
 	url = https://github.com/obsproject/obs-studio
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = obs-studio-rc
 	makedepends = cef-minimal-obs=103.0.0_5060_shared_textures_2594+g17f8588+chromium_103.0.5060.134_1
 	depends = alsa-lib
 	depends = curl
-	depends = ffmpeg-obs>=6
+	depends = ffmpeg-obs>=7
 	depends = fontconfig
 	depends = freetype2
 	depends = gcc-libs
