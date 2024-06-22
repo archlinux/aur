@@ -1,7 +1,7 @@
 # Maintainer: hexchain <i at hexchain dot org>
 
 pkgname=pcm
-pkgver=202403
+pkgver=202405
 pkgrel=1
 pkgdesc="Processor Counter Monitor"
 url="https://github.com/intel/pcm"
@@ -13,7 +13,7 @@ source=(
     "$pkgname::git+$url#tag=$pkgver"
     "simdjson::git+https://github.com/simdjson/simdjson.git"
 )
-b2sums=('97f89caea83ffcbc56383bd7889bbaa348407d0c6b9a529c82adf2580296b65d2ce5dd4431de41f196dbfe972f21e11b345423de007f94fb09e311df415c2c1a'
+b2sums=('aa0c3d0b69c46a9098899fd8ef93962029309bcbd99a5a511fd079e3e0f055c1afa0ae2e988637fd13a25ee533189dcae3d12cd689d6578582d0a2707844e21c'
         'SKIP')
 
 prepare() {
