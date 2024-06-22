@@ -1,7 +1,7 @@
 # Maintainer: VCalV
 pkgname=qlipmon
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="clipboard manager with rofi plugin and dbus interface"
 arch=('x86_64')
 url="https://github.com/vcalv/qlipmon"
@@ -10,8 +10,11 @@ groups=()
 depends=(qt5-base)
 makedepends=()
 checkdepends=()
-optdepends=('rofi: for rofi integration')
-provides=(qlipmon)
+optdepends=(
+	'rofi: for rofi integration'
+	'systemd: automate start'
+)
+provides=(qlipmon=${pkgver})
 conflicts=(qlipmon-git)
 replaces=()
 backup=()
