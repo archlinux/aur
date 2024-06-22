@@ -5,7 +5,7 @@
 # the upstream generated binary version.
 
 pkgname=mattermost-plugin-calls
-pkgver=0.27.0
+pkgver=0.28.2
 pkgrel=1
 epoch=1
 pkgdesc='enables voice calling and screen sharing functionality in Mattermost channels'
@@ -15,9 +15,11 @@ license=(MIT)
 makedepends=(jq)
 options=(!strip)
 _plugin="com.mattermost.${pkgname##*-}"
-_archive="$_plugin-$pkgver"
-source=("$url/releases/download/v$pkgver/$_archive.tar.gz")
-sha256sums=('5af633abe6faf1890667b4b229e3ee7773b2771c661fa2e500ef67f7b57c86d9')
+_archive="$pkgname-v$pkgver-linux-amd64"
+source=("$url/releases/download/v$pkgver/$_archive.tar.gz"{,.asc})
+sha256sums=('d48baa7cdde523032c24a88ba655d42cf5f7087bcf16fefc53178d2da8de5fe6'
+            'SKIP')
+validpgpkeys=(C55881B80F69E863B85AD5D1D1B54B47A5CEFEC4) # Mattermost, Inc. <support@mattermost.com>
 
 # BEGIN boilerplate mattermost plugin version clamping, see also other packages in group
 # 1. Call respective function helper in package() *after* cd'ing to the source directory
