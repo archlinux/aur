@@ -51,8 +51,8 @@ if [[ -z "$FFMPEG_OBS_VULKAN" ]]; then
 fi
 
 pkgname=ffmpeg-obs
-pkgver=6.1.1
-pkgrel=10
+pkgver=7.0.1
+pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('x86_64' 'aarch64')
 url=https://ffmpeg.org/
@@ -73,7 +73,7 @@ _vidstabver=1.1.1
 _vmafver=3
 _vulkanver=1.3.279
 _x264ver=0.164
-_x265ver=3.5
+_x265ver=3.6
 depends=(
   "aom>=$_aomver"
   "srt>=$_srtver"
@@ -97,6 +97,8 @@ depends=(
   libbluray
   libbs2b
   libdrm
+  libdvdnav
+  libdvdread
   libgl
   libiec61883
   "libjxl>=$_libjxlver"
@@ -157,10 +159,9 @@ makedepends=(
 optdepends=(
   'avisynthplus: AviSynthPlus support'
   'frei0r-plugins: Frei0r video effects support'
-  'intel-media-sdk: Intel QuickSync support (legacy)'
   'ladspa: LADSPA filters'
   'nvidia-utils: Nvidia NVDEC/NVENC support'
-  'onevpl-intel-gpu: Intel QuickSync support'
+  'vpl-runtime: Intel QuickSync support'
 )
 provides=(
   "ffmpeg=$pkgver"
@@ -174,7 +175,7 @@ provides=(
   libswscale.so
 )
 conflicts=(ffmpeg)
-_tag=e38092ef9395d7049f871ef4d5411eb410e283e0
+_tag=af25a4bfd2503caf3ee485b27b99b620302f5718
 _deps_tag=2023-11-03
 source=(
   "ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}"
@@ -214,6 +215,8 @@ _args=(
   --enable-libbs2b
   --enable-libdav1d
   --enable-libdrm
+  --enable-libdvdnav
+  --enable-libdvdread
   --enable-libfreetype
   --enable-libfribidi
   --enable-libgsm
@@ -338,8 +341,8 @@ fi
 
 if [[ $FFMPEG_OBS_SVT == 'ON' ]]; then
   depends+=(svt-hevc svt-vp9)
-  _svt_hevc_ver='6cca5b932623d3a1953b165ae6b093ca1325ac44'
-  _svt_vp9_ver='43ef8e5e96932421858762392adbbab57c84aebf'
+  _svt_hevc_ver='ed80959ebb5586aa7763c91a397d44be1798587c'
+  _svt_vp9_ver='3b9a3fa43da4cc5fe60c7d22afe2be15341392ea'
   source+=(
     "020-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/master-0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
     "030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
@@ -374,6 +377,7 @@ if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
     zvbi lv2 lilv libmysofa openal
     libomxil-bellagio 'rockchip-mpp' #'pocketsphinx'
     lcms2 libraw1394 openvino libaribcaption opencv2
+    qrencoder quirc xevd xeve
   )
   _args+=(
     --enable-sndio --disable-rpath --enable-gray --enable-chromaprint --enable-gcrypt
@@ -385,16 +389,11 @@ if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
     --enable-libzvbi --enable-lv2 --enable-libmysofa --enable-openal
     --enable-omx --enable-rkmpp #--enable-pocketsphinx
     --enable-lcms2 --enable-libopenvino --enable-libaribcaption --enable-libopencv
+    --enable-libqrencode --enable-libquirc --disable-libtorch --enable-libxevd -enable-libxeve
   )
   provides+=(ffmpeg-full)
 else
   _args+=(--disable-sndio) # sndio is not present when upstream package is built
-fi
-
-## Manage extra flags
-if [[ $FFMPEG_OBS_CUDA == 'ON' ]]; then
-  _args+=(--extra-cflags='-I/opt/cuda/include')
-  _args+=(--extra-ldflags='-L/opt/cuda/lib64')
 fi
 
 ## Check if nonfree licence is enabled
@@ -408,29 +407,10 @@ fi
 prepare() {
   cd ffmpeg
 
-  ## {avcodec,tests}: rename the bundled Mesa AV1 vulkan video headers
-  git cherry-pick -n fef22c87ada4517441701e6e61e062c9f4399c8e
-
-  ## avcodec/nvenc: stop using long deprecated format specifiers
-  git cherry-pick -n 3481f8d99fc44f5516957e774b7f2da74c33beb8
-
-  ## avcodec/nvenc: support SDK 12.2 bit depth API
-  git cherry-pick -n 38346298973e3869d895e0ad3ca3b19dc598c5c8
-
   ### ffmpeg-full changes
 
   ## Fix segfault with avisynthplus
   sed -i 's/RTLD_LOCAL/RTLD_DEEPBIND/g' libavformat/avisynth.c
-
-  if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
-    # Fix lensfun detection
-    git cherry-pick -n e1c1dc8347f13104bc21e4100fcf4d4dddf5e5d8
-  fi
-  
-  if [[ $FFMPEG_OBS_VULKAN == 'ON' ]]; then
-    # Fix compilation with glslang
-    git cherry-pick -n e43615fc2ab27d562ed7e087803f4a364a7d1175
-  fi
 
   ### Arch Linux changes
 
@@ -461,8 +441,15 @@ prepare() {
 build() {
   cd ffmpeg
 
+  ## Manage extra flags and paths
+  if [[ $FFMPEG_OBS_CUDA == 'ON' ]]; then
+    export CFLAGS+=' -isystem/opt/cuda/include'
+    export LDFLAGS+=' -L/opt/cuda/lib64'
+  fi
+
   if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
     export PKG_CONFIG_PATH="${PKG_CONFIG_PATH:+${PKG_CONFIG_PATH}:}/opt/intel/openvino/runtime/lib/intel64/pkgconfig"
+    export CFLAGS+=' -Wno-error=incompatible-pointer-types'
   fi
 
   ./configure "${_args[@]}"
