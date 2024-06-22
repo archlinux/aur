@@ -4,20 +4,29 @@
 _pkgmain=backports.csv
 pkgname=python-$_pkgmain
 pkgver=1.0.7
-pkgrel=6
+pkgrel=7
 pkgdesc="Backport of Python 3 csv module."
 arch=('any')
 url="https://github.com/ryanhiebert/backports.csv"
 license=('BSD')
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-wheel'
+  'python-setuptools'
+)
 options=(!emptydirs)
-source=($pkgname-$pkgver.zip::https://github.com/ryanhiebert/backports.csv/archive/${pkgver}.zip)
+source=("$pkgname-$pkgver.zip::https://github.com/ryanhiebert/backports.csv/archive/${pkgver}.zip")
+b2sums=('78462bc5d80097fe64bde1113784235be74ba92e48fadba7d3358048beaabd0139e85dd0dbf2aad7f4d669fcbf4ade53f20ded5c5ed460990875acd32ea0f358')
+
+build() {
+  cd "$srcdir/$_pkgmain-$pkgver"
+  python -m build --wheel --no-isolation
+}
 
 package() {
   cd "$srcdir/$_pkgmain-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE.rst "$pkgdir/usr/share/licenses/$pkgname/LICENSE.rst"
 }
-
-sha256sums=('fab7a2ce7bd149cf73144b48dc6c14c85917e2b711c04e9808573816ded3a2ee')
