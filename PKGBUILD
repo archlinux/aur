@@ -2,7 +2,7 @@
 
 _pyname=django-huey
 pkgname=python-$_pyname
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='An extension for django and huey that supports multi queue management'
 arch=(any)
@@ -16,7 +16,7 @@ makedepends=(python-{build,installer,wheel}
 checkdepends=(python-pytest)
 _archive="$_pyname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('98c794258da239f33c3bb4f40557467399ce20b0190d12f059f9f94a05cf58d4')
+sha256sums=('10cbde18f1a32fad3424af9404401b1ac331bbc28cf909a1e620b71eb36b2b51')
 
 build() {
 	cd "$_archive"
