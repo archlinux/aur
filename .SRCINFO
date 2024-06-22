@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt6-webchannel
 	pkgdesc = Provides access to QObject or QML objects from HTML clients for seamless integration of Qt applications with HTML/JavaScript clients (mingw-w64)
-	pkgver = 6.7.1
+	pkgver = 6.7.2
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = mingw-w64-qt6-webchannel
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.7/6.7.1/submodules/qtwebchannel-everywhere-src-6.7.1.tar.xz
-	sha256sums = b9d995edfce90bce04635305936e49a8ae61196d74bcce0f09d26b285d2dcc6f
+	source = https://download.qt.io/official_releases/qt/6.7/6.7.2/submodules/qtwebchannel-everywhere-src-6.7.2.tar.xz
+	sha256sums = ac5d96607b10e7de546eaf93bb9f65c0fd631ef9b91ef8a794e26fd57db4501c
 
 pkgname = mingw-w64-qt6-webchannel
