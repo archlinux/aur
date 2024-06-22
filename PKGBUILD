@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-libnghttp2
-pkgver=1.61.0
+pkgver=1.62.1
 pkgrel=1
 pkgdesc='Framing layer of HTTP/2 is implemented as a reusable C library (mingw-w64)'
 arch=(any)
@@ -10,7 +10,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-configure')
 options=(staticlibs !strip !buildflags)
 source=(https://github.com/nghttp2/nghttp2/releases/download/v$pkgver/nghttp2-$pkgver.tar.xz)
-sha256sums=('c0e660175b9dc429f11d25b9507a834fb752eea9135ab420bb7cb7e9dbcc9654')
+sha256sums=('2345d4dc136fda28ce243e0bb21f2e7e8ef6293d62c799abbf6f633a6887af72')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
