@@ -1,7 +1,7 @@
 pkgbase = nosystemd-boot-artix
 	pkgver = 256.1
 	pkgrel = 1
-	url = https://www.github.com/systemd/systemd
+	url = https://www.github.com/Demelza/nosystemd-boot-artix
 	arch = x86_64
 	license = LGPL-2.1-or-later
 	makedepends = acl

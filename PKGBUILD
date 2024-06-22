@@ -11,7 +11,7 @@ pkgver="${_tag/[-~]/}"
 pkgrel=1
 arch=('x86_64')
 license=('LGPL-2.1-or-later')
-url='https://www.github.com/systemd/systemd'
+url='https://www.github.com/Demelza/nosystemd-boot-artix'
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
              'intltool' 'iptables' 'kmod' 'libcap' 'libidn2' 'libgcrypt'
              'libmicrohttpd' 'libxcrypt' 'libxslt' 'util-linux' 'linux-api-headers'
