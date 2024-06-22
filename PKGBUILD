@@ -1,8 +1,8 @@
 # Maintainer: robertfoster
 _name=mediapipe
-_py=cp311
+_py=cp312
 pkgname=python-mediapipe-bin
-pkgver=0.10.11
+pkgver=0.10.14
 pkgrel=1
 pkgdesc="A cross-platform, customizable ML solutions for live and streaming media"
 arch=('x86_64')
@@ -24,10 +24,10 @@ depends=('absl-py'
 )
 makedepends=('python-installer' 'python-wheel')
 
-source=("https://files.pythonhosted.org/packages/c9/e4/3e645a8f87577553194a2a15383a60d61b8381cf864e903e43e4c6eb58e0/${_name//-/_}-$pkgver-$_py-${_py}-manylinux_2_17_x86_64.manylinux2014_x86_64.whl")
+source=("https://files.pythonhosted.org/packages/11/73/07c6dcbb322f86e2b8526e0073456dbdd2813d5351f772f882123c985fda/${_name//-/_}-$pkgver-$_py-${_py}-manylinux_2_17_x86_64.manylinux2014_x86_64.whl")
 
 package() {
   python -m installer --destdir="$pkgdir" *.whl
 }
 
-sha256sums=('ea751e043909ba7bbe27e7afdbcdafd79723d50ef4165afcaae431ab428eea13')
+sha256sums=('9b1e72d754cd9e1b4b88d80ec9ead2f1cbe8424b7f883d3bda53341b982a9f8b')
