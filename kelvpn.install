@@ -1,0 +1,8 @@
+pre_upgrade() {
+    systemctl is-active KelVPNService.service --quiet && systemctl stop KelVPNService.service
+}
+
+post_upgrade() {
+    systemctl daemon-reload
+    systemctl is-enabled --quiet KelVPNService.service && systemctl start KelVPNService.service
+}
