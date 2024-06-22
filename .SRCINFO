@@ -1,7 +1,7 @@
 pkgbase = kwin
 	pkgdesc = An easy to use, but flexible, composited Window Manager
 	pkgver = 6.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://kde.org/plasma-desktop/
 	install = kwin.install
 	arch = x86_64
