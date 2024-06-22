@@ -1,8 +1,9 @@
 # Maintainer: seth <getchoo at tuta dot io>
+# Contributor: hurricanepootis <hurricanepootis@protonmail.com>
 
 pkgname=joshuto
 pkgver=0.9.8
-pkgrel=1
+pkgrel=2
 pkgdesc="ranger-like terminal file manager written in Rust"
 arch=('x86_64')
 url="https://github.com/kamiyaa/joshuto"
@@ -28,6 +29,9 @@ build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+  # fix lto
+  export CFLAGS+=" -ffat-lto-objects"
+  export CXXFLAGS+=" -ffat-lto-objects"
 
   cargo build --frozen --release --all-features 
 }
