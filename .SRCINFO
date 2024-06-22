@@ -5,5 +5,7 @@ pkgbase = tetris-tui-git
 	url = https://github.com/abusch8/Tetris
 	arch = x86_64
 	license = GPL3
+	makedepends = git
+	makedepends = cargo
 
 pkgname = tetris-tui-git
