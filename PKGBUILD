@@ -2,8 +2,8 @@
 # Contributor: Mort Yao <soi@mort.ninja>
 
 pkgname=emacs-idris-mode-git
-pkgver=20150609
-pkgrel=4
+pkgver=20240619
+pkgrel=1
 pkgdesc="Major mode for editing Idris."
 arch=('any')
 url="https://github.com/idris-hackers/idris-mode"
@@ -17,6 +17,11 @@ install=$pkgname.install
 source=("git+https://github.com/idris-hackers/idris-mode")
 b2sums=('SKIP')
 _gitname="idris-mode"
+
+pkgver() {
+  cd $_gitname
+  git log -1 --format='%cd' --date=short | tr -d -- '-'
+}
 
 package() {
   cd $_gitname
