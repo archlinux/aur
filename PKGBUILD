@@ -2,11 +2,11 @@
 # Contributor: Eschwartz <eschwartz93@gmail.com>
 
 pkgname=winetricks-git
-pkgver=20230212.r16.ga1d5f915
+pkgver=20240105.r38.g8ffdb53f
 pkgrel=1
 pkgdesc='Script to install various redistributable runtime libraries in Wine.'
 url='http://wiki.winehq.org/winetricks'
-license=('LGPL')
+license=('LGPL-2.1-or-later')
 arch=('any')
 depends=('wine' 'cabextract' 'unzip' 'xorg-xmessage')
 makedepends=('git')
