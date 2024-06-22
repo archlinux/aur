@@ -1,11 +1,8 @@
-# Contributor: Florian Pritz <bluewind@xinu.at>
-# Contributor: Kevin Piche <kevin@archlinux.org>
-# Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 # Maintainer: Radu Potop <radu@wooptoo.com>
 
 projname=zim-desktop-wiki
 pkgname=zim-dev
-pkgver=0.75.2.59.g4e6c9
+pkgver=0.75.2.79.ga637
 pkgrel=1
 pkgdesc="Zim desktop wiki. Develop branch"
 arch=(any)
@@ -33,7 +30,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$projname"
-    echo "$(git describe --abbrev=4 --always --tags | sed 's/-/./g')"
+    git describe --abbrev=4 --always --tags | sed 's/-/./g'
 }
 
 check() {

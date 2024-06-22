@@ -1,6 +1,6 @@
 pkgbase = zim-dev
 	pkgdesc = Zim desktop wiki. Develop branch
-	pkgver = 0.75.2.59.g4e6c9
+	pkgver = 0.75.2.79.ga637
 	pkgrel = 1
 	url = https://zim-wiki.org/
 	arch = any
