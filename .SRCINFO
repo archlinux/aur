@@ -1,6 +1,6 @@
 pkgbase = lightmaputil-git
 	pkgdesc = A simple command line utility to tell you if your lightmaps are too high resolution
-	pkgver = r44.6b38f5d
+	pkgver = r65.394c0ea
 	pkgrel = 1
 	url = https://github.com/treacherousfiend/LightmapUtil
 	arch = x86_64

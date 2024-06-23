@@ -2,7 +2,7 @@
 # Contributor: HurricanePootis <hurricanepootis@protonmail.com>
 
 pkgname=lightmaputil-git
-pkgver=r44.6b38f5d
+pkgver=r65.394c0ea
 pkgrel=1
 pkgdesc="A simple command line utility to tell you if your lightmaps are too high resolution"
 arch=('x86_64')
