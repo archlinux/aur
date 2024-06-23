@@ -1,13 +1,13 @@
 # Maintainer: Vova K <v1mkss.m@gmai.com>
-pkgname=xmcl-launcher
-_pkgname=xmcl-launcher
+pkgname=xmcl-minecraft
+_pkgname=xmcl-minecraft
 pkgver=0.44.9
 pkgrel=2
 pkgdesc="X Minecraft Launcher - Modern Minecraft Launcher"
 arch=('x86_64' 'aarch64')
 url="https://xmcl.vercel.app/"
 license=('MIT')
-provides=('xmcl-launcher')
+provides=('xmcl-minecraft')
 
 source_x86_64=(
     "https://github.com/Voxelum/x-minecraft-launcher/releases/download/v${pkgver}/xmcl-${pkgver}-amd64.deb"
