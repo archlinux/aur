@@ -6,12 +6,29 @@ pkgbase=greetd-qtgreet
 pkgname=('greetd-qtgreet' 'greetd-qtgreet-qt6')
 _pkgname=QtGreet
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Qt based greeter for greetd'
 arch=('aarch64' 'x86_64')
 url="https://gitlab.com/marcusbritanicus/$_pkgname"
-license=('GPL3')
-makedepends=('meson' 'ninja' 'qt5-base' 'dfl-wayqt' 'dfl-login1' 'dfl-applications' 'dfl-utils' 'qt6-base' 'dfl-wayqt-qt6' 'dfl-login1-qt6' 'dfl-applications-qt6' 'dfl-utils-qt6' 'mpv' 'wlroots')
+license=('GPL-3.0-only')
+makedepends=('meson'
+            'ninja'
+            'qt5-base'
+            'dfl-wayqt'
+            'dfl-login1'
+            'dfl-applications'
+            'dfl-utils'
+            'qt6-base'
+            'dfl-wayqt-qt6'
+            'dfl-login1-qt6'
+            'dfl-applications-qt6'
+            'dfl-utils-qt6'
+            'mpv'
+            'wlroots')
+backup=("etc/qtgreet/config.ini"
+        "etc/qtgreet/sway.cfg"
+        "etc/qtgreet/users.conf"
+        "etc/qtgreet/wayfire.ini")
 source=("$pkgbase-$pkgver.tar.gz::$url/-/archive/v$pkgver/$_pkgname-v$pkgver.tar.gz")
 sha256sums=('a9e79d4ab498b54b02f246e67781a4622049eb77f507a4120e8a12298081d453')
 
@@ -27,14 +44,26 @@ build() {
 }
 
 package_greetd-qtgreet() {
-  depends=('qt5-base' 'dfl-wayqt' 'dfl-login1' 'dfl-applications' 'dfl-utils' 'mpv' 'wlroots')
+  depends=('qt5-base'
+          'dfl-wayqt'
+          'dfl-login1'
+          'dfl-applications'
+          'dfl-utils'
+          'mpv'
+          'wlroots')
   optdepends=('wayfire')
   cd "${_pkgname}-v${pkgver}"
   DESTDIR="${pkgdir}" ninja -C .build install
 }
 
 package_greetd-qtgreet-qt6() {
-  depends=('qt6-base' 'dfl-wayqt-qt6' 'dfl-login1-qt6' 'dfl-applications-qt6' 'dfl-utils-qt6' 'mpv' 'wlroots')
+  depends=('qt6-base'
+          'dfl-wayqt-qt6'
+          'dfl-login1-qt6'
+          'dfl-applications-qt6'
+          'dfl-utils-qt6'
+          'mpv'
+          'wlroots')
   optdepends=('wayfire')
   cd "${_pkgname}-v${pkgver}"
   DESTDIR="${pkgdir}" ninja -C .build-qt6 install
