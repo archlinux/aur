@@ -5,7 +5,7 @@
 
 pkgname=glib2-patched-thumbnailer
 pkgver=2.80.0
-pkgrel=2
+pkgrel=3
 pkgdesc="GLib2 patched with ahodesuka's thumbnailer patch."
 url="https://gist.github.com/Dudemanguy/d199759b46a79782cc1b301649dec8a5"
 arch=(x86_64)
@@ -102,6 +102,23 @@ package() {
     "$pkgdir/usr/share/glib-2.0/codegen"
   python -O -m compileall -d /usr/share/glib-2.0/codegen \
     "$pkgdir/usr/share/glib-2.0/codegen"
+
+  # Remove glib2-devel files
+  rm -rf $pkgdir/usr/bin/gdbus-codegen
+  rm -rf $pkgdir/usr/bin/glib-{mkenums,genmarshal}
+  rm -rf $pkgdir/usr/bin/gresource
+  rm -rf $pkgdir/usr/bin/gtester{,-report}
+
+  rm -rf $pkgdir/usr/share/gdb/
+  rm -rf $pkgdir/usr/share/glib-2.0/gdb/
+  rm -rf $pkgdir/usr/share/glib-2.0/codegen/
+
+  rm -rf $pkgdir/usr/share/bash-completion/completions/gresource
+
+  rm -rf $pkgdir/usr/share/man/man1/gdbus-codegen.1
+  rm -rf $pkgdir/usr/share/man/man1/glib-{mkenums,genmarshal}.1
+  rm -rf $pkgdir/usr/share/man/man1/gresource.1
+  rm -rf $pkgdir/usr/share/man/man1/gtester{,-report}.1
 }
 
 # vim:set sw=2 sts=-1 et:
