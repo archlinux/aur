@@ -1,6 +1,6 @@
 # Maintainer: Nathan Craddock <contact@nathancraddock.com>
 pkgname=zf
-pkgver=0.9.0
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="a commandline fuzzy finder designed for filtering filepaths"
 arch=('x86_64')
@@ -9,7 +9,7 @@ makedepends=('git' 'zig')
 provides=(zf)
 url="https://github.com/natecraddock/zf"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('a40caf5b9ed2c45a703b10d214f513cfc004489330db8202d3834ba9c824ee92')
+sha256sums=('61a4db245213f0319dfb34758f5c9c00d4945d7ae6187a6220e88ebef95e4494')
 
 build() {
     cd "$pkgname-$pkgver"

@@ -1,6 +1,6 @@
 pkgbase = zf
 	pkgdesc = a commandline fuzzy finder designed for filtering filepaths
-	pkgver = 0.9.0
+	pkgver = 0.9.2
 	pkgrel = 1
 	url = https://github.com/natecraddock/zf
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = zf
 	makedepends = git
 	makedepends = zig
 	provides = zf
-	source = zf-0.9.0.tar.gz::https://github.com/natecraddock/zf/archive/refs/tags/0.9.0.tar.gz
-	sha256sums = a40caf5b9ed2c45a703b10d214f513cfc004489330db8202d3834ba9c824ee92
+	source = zf-0.9.2.tar.gz::https://github.com/natecraddock/zf/archive/refs/tags/0.9.2.tar.gz
+	sha256sums = 61a4db245213f0319dfb34758f5c9c00d4945d7ae6187a6220e88ebef95e4494
 
 pkgname = zf
