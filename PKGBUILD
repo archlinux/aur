@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: TDY <tdy@gmx.com>
 pkgname=git-cola
-pkgver=4.7.1
+pkgver=4.8.0
 pkgrel=1
 pkgdesc="The highly caffeinated Git GUI"
 arch=('any')
@@ -27,7 +27,11 @@ makedepends=(
   'python-wheel'
   'rsync'
 )
-checkdepends=('appstream' 'desktop-file-utils')
+checkdepends=(
+  'appstream'
+  'desktop-file-utils'
+#  'garden-tools'  ## TODO
+)
 optdepends=(
   'python-pygments: syntax highlighting'
   'python-pyinotify: file system change monitoring'
@@ -35,7 +39,7 @@ optdepends=(
   'tk: to use the built-in ssh-askpass handler'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/git-cola/git-cola/archive/v$pkgver.tar.gz")
-sha256sums=('998c5c22899547da3904768e5e996cda9e4dfe56f87b786dadf19360f9bedd18')
+sha256sums=('e333172d3a7a0d92bf55cfd407c357ed95af38de43f3bd9bd6b3e3f9f8421b11')
 
 prepare() {
   cd "$pkgname-$pkgver"
