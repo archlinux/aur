@@ -2,7 +2,7 @@
 
 pkgname=cbang
 pkgver=1.8.0
-pkgrel=3
+pkgrel=4
 pkgdesc="a library of cross-platform C++ utilities"
 arch=('x86_64')
 url="https://github.com/CauldronDevelopmentLLC/cbang"
@@ -31,15 +31,18 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/CauldronDevelopmentLLC/cbang/archive/refs/tags/$pkgver.tar.gz"
   "0001_v8_sandbox_enable.patch"
   "0002_include_cstdint.patch"
+  "0003_ScriptOrigin.patch"
 )
 sha256sums=('4be28b0aa0d024e5c9fd274264bed7f82551219414c12c45e35afd8946f6e7d7'
             '75eff0bcd04293990f8dfb0771562356ccac2a7f40a06df0c0ba515fcdf4126a'
-            'a2e16d999e58856fe9885243235d711afc0b2260c0c0b346b59aa4b948209d5c')
+            'a2e16d999e58856fe9885243235d711afc0b2260c0c0b346b59aa4b948209d5c'
+            '8b1beb7ef9e4aba856d5fc14f0de0bf7eeb321dcfc7ce1a8c64a3ae3b4363c9b')
 
 prepare() {
 	cd "$pkgname-$pkgver"
 	patch -p1 -i "../0001_v8_sandbox_enable.patch"
 	patch -p1 -i "../0002_include_cstdint.patch"
+	patch -p1 -i "../0003_ScriptOrigin.patch"
 }
 
 build() {

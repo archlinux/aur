@@ -1,0 +1,12 @@
+diff -ruN a/src/cbang/js/v8/Context.cpp b/src/cbang/js/v8/Context.cpp
+--- a/src/cbang/js/v8/Context.cpp	2024-06-22 23:08:04.373333324 -0400
++++ b/src/cbang/js/v8/Context.cpp	2024-06-22 23:09:31.949999983 -0400
+@@ -51,7 +51,7 @@
+   string filename = src.getName();
+   if (!filename.empty()) origin = Value::createString(filename);
+ 
+-#if V8_MAJOR_VERSION < 10
++#if V8_MAJOR_VERSION < 10 || (V8_MAJOR_VERSION >= 12 && V8_MINOR_VERSION > 6)
+   v8::ScriptOrigin sOrigin(origin);
+ #else
+   v8::ScriptOrigin sOrigin(Value::getIso(), origin);
