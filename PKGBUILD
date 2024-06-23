@@ -24,9 +24,10 @@ prepare() {
     cd "$_gitname-$pkgver" || exit 1
 
     # Iterate thorugh the required packages and versions to fetch them in advance
-    # Read from dub.selections.json and print them as "package,version"
+    # Read from dub.selections.json and print them as "package@version"
     for line in $(jq -r '.versions | keys[] as $k | "\($k)@\(.[$k])"' <dub.selections.json); do
         # Fetch each package at the required version
+        # Expected format is: package@version
         dub fetch --cache=local "$line"
     done
 }
