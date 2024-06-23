@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=velociraptor
-_pkgver=1.14.0
+_pkgver=1.14.2
 pkgname=r-${_pkgname,,}
-pkgver=1.14.0
+pkgver=1.14.2
 pkgrel=1
 pkgdesc='Toolkit for Single-Cell Velocity'
 arch=('any')
@@ -42,7 +42,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('22d20f79268851829aa741e2749b845e6157525c713b12c0de632a389e49276b')
+sha256sums=('ae230600361516fad508a08359ddb91145224d48614591b17cc624cfa503260a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
