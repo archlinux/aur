@@ -10,7 +10,7 @@ url="https://github.com/tomhea/flip-jump"
 license=("BSD-2-Clause")
 depends=("python" "python-sly")
 makedepends=("git" "python-poetry")
-source=("${_pkgname}::git+${url}.git")
+source=("git+$url")
 sha256sums=("SKIP")
 
 pkgver() {

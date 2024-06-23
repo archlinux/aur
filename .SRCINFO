@@ -10,7 +10,7 @@ pkgbase = flip-jump-git
 	depends = python
 	depends = python-sly
 	provides = flip-jump
-	source = flip-jump::git+https://github.com/tomhea/flip-jump.git
+	source = git+https://github.com/tomhea/flip-jump
 	sha256sums = SKIP
 
 pkgname = flip-jump-git
