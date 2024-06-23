@@ -1,0 +1,14 @@
+pkgbase = listenbrainz-playlist-uploader-git
+	pkgdesc = A tool for uploading playlists to ListenBrainz with feedback
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Serene-Arc/listenbrainz-playlist-uploader
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	options = debug
+	options = !strip
+	source = listenbrainz-playlist-uploader-git::git+https://github.com/Serene-Arc/listenbrainz-playlist-uploader.git
+	sha256sums = SKIP
+
+pkgname = listenbrainz-playlist-uploader-git
