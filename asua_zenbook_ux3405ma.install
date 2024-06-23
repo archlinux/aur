@@ -5,11 +5,23 @@ regenerate_grub_config() {
     fi
 }
 
+regenerate_initramfs() {
+    if command -v mkinitcpio > /dev/null 2>&1; then
+        echo "Regenerating initramfs..."
+        mkinitcpio --allpresets
+    fi
+}
+
 post_install() {
     regenerate_grub_config
+    regenerate_initramfs
 }
 
 post_remove() {
     regenerate_grub_config
+    regenerate_initramfs
+}
 
+post_upgrade() {
+    regenerate_initramfs
 }

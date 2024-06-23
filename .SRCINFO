@@ -10,7 +10,10 @@ pkgbase = zenbook-sound-fix-ux3405ma
 	makedepends = acpica
 	depends = grub
 	source = git+https://github.com/smallcms/asus_zenbook_ux3405ma.git
+	source = mkinitcpio_zenbook_ux3405ma.conf
 	md5sums = SKIP
+	md5sums = e0bf81584f54c895b1ca5bf770883333
 	sha256sums = SKIP
+	sha256sums = 1c8caf87b37cde3f1e46e5a061acdcc6159bca26b291cfd5913ef8e985de9dd1
 
 pkgname = zenbook-sound-fix-ux3405ma
