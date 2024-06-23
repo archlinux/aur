@@ -1,11 +1,11 @@
 pkgbase = httperf-git
 	pkgdesc = The HTTP load generator
 	pkgver = r204.gde8cd6a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/httperf/httperf
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = git
 	depends = openssl
 	provides = httperf=r204.gde8cd6a

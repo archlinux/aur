@@ -2,11 +2,11 @@
 
 pkgname=httperf-git
 pkgver=r204.gde8cd6a
-pkgrel=1
+pkgrel=2
 pkgdesc="The HTTP load generator"
 arch=('i686' 'x86_64')
 url="https://github.com/httperf/httperf"
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('openssl')
 makedepends=('git')
 provides=("httperf=$pkgver")
