@@ -1,0 +1,14 @@
+pkgbase = azure2
+	pkgdesc = Bayesian R-Matrix Inference Code
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://azure.nd.edu/
+	arch = any
+	makedepends = root
+	makedepends = qt5-base
+	makedepends = qwt
+	provides = azure2
+	source = AZURE2-qt5-patched.zip
+	sha256sums = SKIP
+
+pkgname = azure2
