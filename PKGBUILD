@@ -13,12 +13,12 @@ source=('git+https://github.com/abusch8/Tetris')
 sha256sums=('SKIP')
 
 build() {
-    cd Tetris
+    cd "$srcdir/Tetris"
     make
 }
 
 package() {
-    cd Tetris
+    cd "$srcdir/Tetris"
     make clean install
 }
 
