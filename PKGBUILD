@@ -8,11 +8,11 @@
 pkgname=libmodsecurity2
 _name=modsecurity
 pkgver=2.9.7
-pkgrel=3
+pkgrel=4
 pkgdesc='A cross platform web application firewall engine for Apache, IIS and Nginx, v2 branch'
 arch=('x86_64')
 url='https://github.com/SpiderLabs/ModSecurity/tree/v2/master'
-license=('APACHE')
+license=('Apache-2.0')
 depends=(
   'apache'
   'apr-util'
@@ -29,6 +29,7 @@ depends=(
   'glibc'
   'gdbm'
 )
+makedepends=('gcc13')
 provides=('libmodsecurity' 'modsecurity')
 conflicts=("libmodsecurity")
 source=("https://github.com/SpiderLabs/ModSecurity/releases/download/v${pkgver}/${_name}-${pkgver}.tar.gz")
@@ -41,6 +42,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
+  export CC="gcc-13" CXX="g++-13"
   ./configure \
     --prefix=/usr \
     --enable-standalone-module \
@@ -59,6 +61,7 @@ build() {
 
 package() {
   cd "${srcdir}/${_name}-${pkgver}"
+  export CC="gcc-13" CXX="g++-13"
   make DESTDIR="${pkgdir}" install
   mkdir -p "${pkgdir}/usr/lib/httpd/modules"
   cp "${pkgdir}/usr/lib/mod_security2.so" "${pkgdir}/usr/lib/httpd/modules/mod_security2.so"
