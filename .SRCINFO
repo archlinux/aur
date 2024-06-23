@@ -1,0 +1,10 @@
+pkgbase = slowcgi-portable-git
+	pkgdesc = Run CGI scripts on FastCGI webservers. A port from OpenBSD.
+	pkgver = 7.2
+	pkgrel = 1
+	arch = any
+	license = ISC
+	source = git+https://github.com/adaugherity/slowcgi-portable
+	sha256sums = SKIP
+
+pkgname = slowcgi-portable-git
