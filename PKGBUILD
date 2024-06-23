@@ -22,7 +22,7 @@ sha256sums=('SKIP')
 build() {
 	cd "${pkgname}"
 
-	QTWAYLANDSCANNER="/usr/lib/qt6/bin/qtwaylandscanner" cmake -GNinja -B build \
+	QTWAYLANDSCANNER="/usr/lib/qt6/qtwaylandscanner" cmake -GNinja -B build \
 		-DCMAKE_BUILD_TYPE="RelWithDebInfo"
 
 	cmake --build build
