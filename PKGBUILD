@@ -1,7 +1,7 @@
 # Maintainer: 3Jl0y_PYCCKUi <3jl0y_pycckui at riseup dot net>
 
 pkgname=ntfysh
-pkgver=2.8.0
+pkgver=2.11.0
 pkgrel=1
 pkgdesc="Send push notifications to your phone or desktop using PUT/POST "
 arch=("x86_64")
@@ -13,13 +13,13 @@ backup=('etc/ntfy/server.yml' 'etc/ntfy/client.yml')
 source=("$pkgname::git+https://github.com/binwiederhier/ntfy.git#tag=v$pkgver"
 	"ntfy.sysusers"
         )
-b2sums=('SKIP'
+b2sums=('df22c8fff5b13d40880c0b5cbd5ce5644ac67e0a11a32faa7ad2b097850e10ad3dc904e3183504ebe841c7f5c1d72947423c7fbf585cb4d6d41a2e2911c47c4d'
         '958bdfc80eeb8ed62508593a94b379d7c099373a4ed2af3eaeedebdca05519378e2bc20940950db4f848be0575cebe16bcb79b794133e8f4467418f8e34278ca')
 
 build() {
 	cd "${pkgname}"
 
-    mkdir "$srcdir/fakehome"
+    mkdir -p "$srcdir/fakehome"
     HOME="$srcdir/fakehome"
 
     # web-deps target
