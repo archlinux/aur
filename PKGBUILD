@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=canvasXpress
-_pkgver=1.46.9-1
+_pkgver=1.50.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Visualization Package for CanvasXpress in R"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -43,8 +43,8 @@ optdepends=(
   r-tidyr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f25e77795fcb5dc87488793b343c60e0')
-b2sums=('ea4dedf9e4347aa6040407e2895e34f842050ce46416a5e8967d1fef459e6b5a55a10d4695fd3ebcb000980ec5503956602baa75d064e7c01de3d3f1a642a50c')
+md5sums=('63f11ad0c72cefacd72928c6378b9e7f')
+b2sums=('ef5768059f83f428c3a8f74af08671c96d6013826035bb0f98102adbecd8dd6c40d0c0aa3a83f8367bb9cc3316daa23929d991fbb24d765be9791d183234efa8')
 
 build() {
   mkdir build
