@@ -3,7 +3,7 @@
 
 pkgname=joshuto
 pkgver=0.9.8
-pkgrel=2
+pkgrel=3
 pkgdesc="ranger-like terminal file manager written in Rust"
 arch=('x86_64')
 url="https://github.com/kamiyaa/joshuto"
@@ -22,6 +22,7 @@ sha256sums=('877d841b2e26d26d0f0f2e6f1dab3ea2fdda38c345abcd25085a3f659c24e013')
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
+  export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
