@@ -2,7 +2,7 @@
 
 pkgbase='pokete-git'
 pkgname='pokete-git'
-pkgver=0.9.2.r13.g91a796b
+pkgver=0.9.2.r24.gaff2fb5
 pkgrel=1
 pkgdesc="A terminal based Pokemon like game"
 arch=(any)
@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/$pkgbase"
-  ./gen_wiki.py
+  ./util.py wiki
   cd ./playsound
   echo ":: Building sound module..."
   go build -ldflags "-s -w" -buildmode=c-shared -o ./libplaysound.so
@@ -29,10 +29,5 @@ build() {
 
 package() {
   cd "${srcdir}/$pkgbase"
-  install -dm755 "$pkgdir/usr/share/pokete"
-  install -dm755 "$pkgdir/usr/bin/"
-  install -Dm644 ./assets/pokete.desktop "$pkgdir/usr/share/applications/pokete.desktop"
-  cp -r ./* "$pkgdir/usr/share/pokete"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/pokete/LICENSE"
-  ln -s "/usr/share/pokete/pokete.py" "$pkgdir/usr/bin/"
+  ./util.py install "$pkgdir/usr"
 }
