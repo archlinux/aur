@@ -11,7 +11,7 @@
 pkgname=gnome-terminal-transparency
 _pkgname=gnome-terminal
 pkgver=3.52.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The GNOME Terminal Emulator with background transparency"
 url="https://wiki.gnome.org/Apps/Terminal"
 arch=(x86_64)
@@ -42,6 +42,7 @@ depends=(
 )
 makedepends=(
   docbook-xsl
+  glib2-devel
   gnome-shell
   libnautilus-extension
   meson
