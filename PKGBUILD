@@ -5,20 +5,35 @@
 
 pkgname=lix
 pkgver=0.10.23
-pkgrel=2
+pkgrel=3
+pkgdesc="An action-puzzle game inspired by Lemmings"
+url="https://www.lixgame.com/"
 changelog=.CHANGELOG
+license=('custom:CC0')
+
+_gitname=LixD
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/SimonN/LixD/archive/v$pkgver.tar.gz"
         "$pkgname-music-1.1.zip::https://www.lixgame.com/dow/lix-music.zip")
 sha512sums=('e267686793aa21b765db3c3cc1e1e6df4451645bf341280ba3987fe6dd09d6577a7d72b9e4474b15fc43d67e7fe87903325bd782602f3bfa69e68eb1f9627124'
             '280fd25a479ac8dd24475b014234270a12ab34edca7fb2f7ce4b768259111b1e7626d3ba37ac13d810f0653d23d7c9f212776e94d2c0b31a0de580864771ce9f')
 
-_gitname=LixD
-pkgdesc="An action-puzzle game inspired by Lemmings"
-arch=('i686' 'x86_64')
-url="https://www.lixgame.com/"
-license=('custom:CC0')
-depends=('allegro' 'enet' 'hicolor-icon-theme' 'd-runtime')
-makedepends=('git' 'd-compiler' 'dub' 'jq')
+arch=(
+    i686
+    x86_64
+)
+depends=(
+    allegro
+    d-runtime
+    enet
+    hicolor-icon-theme
+)
+makedepends=(
+    d-compiler
+    dub
+    git
+    jq
+    pkgconf # https://github.com/SimonN/LixD/issues/469#issuecomment-2174416422
+)
 
 prepare() {
     cd "$_gitname-$pkgver" || exit 1
