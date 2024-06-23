@@ -1,7 +1,7 @@
 # Maintainer: Vincent Bernardoff <vb AT luminar DOT eu DOT org>
 
 pkgname=ngnk-git
-pkgver=r3111.ba0e0ba
+pkgver=r4241.e4b2dc4d
 pkgrel=1
 pkgdesc="simple fast vector programming language"
 arch=('armv7h' 'aarch64' 'i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=()
 source=('git+https://codeberg.org/ngn/k.git'
         'license.patch')
 sha256sums=('SKIP'
-            '35eeb5c22ee06ccebfdc93632962166978f4b3a809321b4231aed04ce6c0ac12')
+            '61b833a1de88f9b737db7e089a2d1bca33ba70a11c3b8fb13b8afc273fe32558')
 
 pkgver() {
   cd k
@@ -25,7 +25,7 @@ prepare() {
 
 build() {
   cd k
-  make k-libc
+  make k
 }
 
 check() {

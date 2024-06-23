@@ -1,6 +1,6 @@
 pkgbase = ngnk-git
 	pkgdesc = simple fast vector programming language
-	pkgver = r3111.ba0e0ba
+	pkgver = r4241.e4b2dc4d
 	pkgrel = 1
 	url = https://codeberg.org/ngn/k
 	arch = armv7h
@@ -11,6 +11,6 @@ pkgbase = ngnk-git
 	source = git+https://codeberg.org/ngn/k.git
 	source = license.patch
 	sha256sums = SKIP
-	sha256sums = 35eeb5c22ee06ccebfdc93632962166978f4b3a809321b4231aed04ce6c0ac12
+	sha256sums = 61b833a1de88f9b737db7e089a2d1bca33ba70a11c3b8fb13b8afc273fe32558
 
 pkgname = ngnk-git
