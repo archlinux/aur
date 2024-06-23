@@ -1,6 +1,6 @@
 pkgbase = twitch-indicator
 	pkgdesc = Twitch indicator for Linux. Tracks your followed channels and notifies when they go live.
-	pkgver = 1.7
+	pkgver = 1.8
 	pkgrel = 1
 	url = https://github.com/buzz/twitch-indicator
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = twitch-indicator
 	depends = python
 	depends = xapp
 	options = !emptydirs
-	source = git+https://github.com/buzz/twitch-indicator.git#tag=1.7
+	source = git+https://github.com/buzz/twitch-indicator.git#tag=1.8
 	md5sums = SKIP
 
 pkgname = twitch-indicator
