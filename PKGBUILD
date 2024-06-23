@@ -3,7 +3,7 @@
 pkgbase=python-specreduce
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Astropy coordinated package for Spectroscopic Reductions"
 arch=('any')
@@ -39,7 +39,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
 #        "${_datcom}-ltt9491.dat::https://github.com/astropy/specreduce-data/raw/${_datcom}/specreduce_data/reference_data/onedstds/eso/ctiostan/ltt9491.dat"
 #        'doc-use-local-data.patch'
 #        )
-md5sums=('45e44a550428602ecb5b4ba39847dd51')
+md5sums=('9cec99533fc540a622dad25660b1cbc3')
 
 get_pyinfo() {
      [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" || \
