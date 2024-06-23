@@ -1,6 +1,6 @@
 pkgbase = oblivion-desktop-git
 	pkgdesc = Unofficial Warp Client for Windows/Mac/Linux (GitHub Version)
-	pkgver = 0.25.2.beta.r1.gb2fe98c
+	pkgver = 0.28.0.beta.r4.g0ec7ace
 	pkgrel = 1
 	url = https://github.com/bepass-org/oblivion-desktop
 	arch = x86_64
