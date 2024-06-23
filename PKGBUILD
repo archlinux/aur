@@ -1,7 +1,7 @@
-# Maintainer: gee
+# Maintainer: billli11
 
 pkgname=reshade-shaders-git
-pkgver=r31.99b9732
+pkgver=r80.eed46c2
 pkgrel=1
 pkgdesc='A collection of post-processing shaders written in the ReShade FX shader language, to be used by vkBasalt'
 arch=('any')
@@ -18,59 +18,75 @@ pkgver() {
 }
 
 build() {
-  cd ${srcdir}/reshade-shaders
-  rm -rf    Shaders Textures build
-  mkdir -p  Shaders Textures build
-  cd build
+    local -A ini_array
+    local -a effect_lists
+    local line effect license shaders textures
 
-  folder=""
-  while read -r line
-  do
-    if [[ "$line" == "InstallPath"* ]]
-    then
-      folder=${line:38}
-    fi
-    if [[ "$line" == "DownloadUrl"* ]]
-    then
-      url=${line:12}
-      msg "Getting $url"
-      /usr/bin/curl  -L "$url" -o file.zip
-      /usr/bin/unzip file.zip
-      rm file.zip
-      mkdir -p ../Shaders/$folder
-      msg "$folder"
-      if [[ "$folder" == "akgunter" ]]
-      then
-        mv */{*/Shaders/*.*,README.MD,LICENSE.TXT} ../Shaders/$folder
-      elif [[ "$folder" == "CRT-Royale" ]]
-      then
-        mv crt-royale-reshade-master/{reshade-shaders/Shaders/*.*,README.MD,LICENSE.TXT} ../Shaders/$folder
-      elif [[ "$folder" == "CShade" ]]
-      then
-        mv CShade-main/{shaders/*,README.md,LICENSE} ../Shaders/$folder
-      else
-        mv */{Shaders/*.*,README.md} ../Shaders/$folder || true
-        mv */{LICENSE*,LICENSE*.*} ../Shaders/$folder || true
-        mv */Textures/*.* ../Textures || true
-      fi
-    fi
-  done < ../EffectPackages.ini
+    extract_effect() {
+        msg "Getting ${ini_array[name]}"
+        ini_array[shaders]="${ini_array[shaders]:-shaders}"
+        ini_array[textures]="${ini_array[textures]:-textures}"
+        mkdir -p "extract/${ini_array[name]}" "${ini_array[shaders]}" "${ini_array[textures]}"
+
+        (   cd "extract/${ini_array[name]}"
+            if ! /usr/bin/curl -L "${ini_array[url]}" -o "${ini_array[name]}.zip"; then
+                msg "Failed to download ${ini_array[url]}"
+                exit 1
+            fi
+            if ! /usr/bin/unzip "${ini_array[name]}.zip"; then
+                msg "Failed to extract ${ini_array[name]}.zip"
+                exit 1
+            fi
+
+            shaders="$(find . -mindepth 1 -type d -iname 'shaders'|head -n 1)"
+            [ -d "$shaders" ] && mv "$shaders/"* -t "../..//${ini_array[shaders]}"
+
+            while read -d '' -r license; do
+                mv "$license" -t "../../${ini_array[shaders]}"
+            done < <(find . -type f -iregex '.*/\(license.*\|.*\.md\)' -print0)
+
+            textures="$(find . -mindepth 1 -type d -iname 'textures'|head -n 1)"
+            [ -d "$textures" ] && mv "$textures/"* -t "../../${ini_array[textures]}"
+
+            msg done
+        )
+    }
+
+    [ -d "${srcdir}/build" ] && rm -r "${srcdir}/build"
+    mkdir -p "${srcdir}/build/"{shaders,textures,extract}
+    cd "${srcdir}/build"
+
+    { read -r
+    while read -r line; do
+        case "$line" in
+        "["*"]")
+            extract_effect
+            unset "ini_array[*]";;
+        "PackageName="*)
+            ini_array[name]="${line#PackageName=}";;
+        "InstallPath="*)
+            ini_array[shaders]="${line#*reshade-shaders\\}"
+            ini_array[shaders]="${ini_array[shaders],S}"
+            ini_array[shaders]="${ini_array[shaders]//\\/\/}";;
+        "TextureInstallPath="*)
+            ini_array[textures]="${line#*reshade-shaders\\}"
+            ini_array[textures]="${ini_array[textures],T}"
+            ini_array[textures]="${ini_array[textures]//\\/\/}";;
+        "DownloadUrl="*)
+            ini_array[url]="${line#DownloadUrl=}";;
+        esac
+    done
+    extract_effect
+    } < ../reshade-shaders/EffectPackages.ini
 }
 
 package() {
-  cd ${srcdir}/reshade-shaders
+    local file
+    cd "${srcdir}/build"
 
-  install -dm 755 "${pkgdir}/opt/reshade/shaders"
-  install -Dm 644 Shaders/*.*  "${pkgdir}/opt/reshade/shaders/"
-  cd Shaders
-  for dir in */
-  do
-    cd "$dir"
-    install -dm 755 "$pkgdir/opt/reshade/shaders/$dir"
-    install -Dm 644 *.*  "${pkgdir}/opt/reshade/shaders/$dir"
-    cd ..
-  done
-  cd ..
-  install -dm 755 "${pkgdir}/opt/reshade/textures"
-  install -Dm 644 Textures/*.* "${pkgdir}/opt/reshade/textures/"
+    install -dm 755 "${pkgdir}/opt/reshade/shaders"
+    install -dm 755 "${pkgdir}/opt/reshade/textures"
+    while read -d '' -r file; do
+        install -Dm 644 "$file" "${pkgdir}/opt/reshade/${file}"
+    done < <(find "shaders" "textures" -type f -print0)
 }
