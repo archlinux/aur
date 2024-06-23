@@ -21,6 +21,9 @@ package() {
     install -Dm755 $srcdir/asus_zenbook_ux3405ma/01_acpi $pkgdir/etc/grub.d/01_acpi
     install -Dm755 $srcdir/asus_zenbook_ux3405ma/fix_pop_crack_pop/pipewire/media-session.d/alsa-monitor.conf $pkgdir/etc/pipewire/media-session.d/alsa-monitor.conf
     install -Dm755 $srcdir/asus_zenbook_ux3405ma/fix_pop_crack_pop/pipewire/pipewire.conf.d/pwrate.conf $pkgdir/etc/pipewire/pipewire.conf.d/pwrate.conf
-    install -Dm755 $srcdir/asus_zenbook_ux3405ma/fix_pop_crack_pop/wireplumber/wireplumber.conf.d/51-disable-suspension.conf $pkgdir/etc/wireplumber/wireplumber.conf.d/51-disable-suspension.lua
+    # Wireplumber >= 0.5
+    install -Dm755 $srcdir/asus_zenbook_ux3405ma/fix_pop_crack_pop/wireplumber/wireplumber.conf.d/51-disable-suspension.conf $pkgdir/etc/wireplumber/wireplumber.conf.d/51-disable-suspension.conf
+    # Wireplumber < 0.5
+    install -Dm755 $srcdir/asus_zenbook_ux3405ma/fix_pop_crack_pop/wireplumber/main.lua.d/51-disable-suspension.lua $pkgdir/etc/wireplumber/wireplumber.conf.d/51-disable-suspension.lua
 }
 sha256sums=('SKIP')
