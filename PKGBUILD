@@ -27,7 +27,8 @@ build() {
 }
 
 pkgver() {
-    cd asus_zenbook_ux3405ma
+    cd asus_zenbook_ux3405ma        
+
     # Use the number of revisions since beginning of the history
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
@@ -36,14 +37,17 @@ package() {
     # GRUB systems
     install -Dm755 $srcdir/asus_zenbook_ux3405ma/ssdt-csc3551.aml $pkgdir/boot/ssdt-csc3551.aml
     install -Dm755 $srcdir/asus_zenbook_ux3405ma/01_acpi $pkgdir/etc/grub.d/01_acpi
+
     # systemd-boot
     install -Dm755 $srcdir/asus_zenbook_ux3405ma/ssdt-csc3551.aml $pkgdir/etc/initcpio/acpi_override/ssdt-csc3551.aml
     install -Dm755 $srcdir/mkinitcpio_zenbook_ux3405ma.conf $pkgdir/etc/mkinitcpio.conf.d/zenbook_ux3405ma.conf
 
     install -Dm755 $srcdir/asus_zenbook_ux3405ma/fix_pop_crack_pop/pipewire/media-session.d/alsa-monitor.conf $pkgdir/etc/pipewire/media-session.d/alsa-monitor.conf
     install -Dm755 $srcdir/asus_zenbook_ux3405ma/fix_pop_crack_pop/pipewire/pipewire.conf.d/pwrate.conf $pkgdir/etc/pipewire/pipewire.conf.d/pwrate.conf
+    
     # Wireplumber >= 0.5
     install -Dm755 $srcdir/asus_zenbook_ux3405ma/fix_pop_crack_pop/wireplumber/wireplumber.conf.d/51-disable-suspension.conf $pkgdir/etc/wireplumber/wireplumber.conf.d/51-disable-suspension.conf
+    
     # Wireplumber < 0.5
     install -Dm755 $srcdir/asus_zenbook_ux3405ma/fix_pop_crack_pop/wireplumber/main.lua.d/51-disable-suspension.lua $pkgdir/etc/wireplumber/wireplumber.conf.d/51-disable-suspension.lua
 }
