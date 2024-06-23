@@ -1,0 +1,5 @@
+[python-holoviews]
+source = "github"
+github = "holoviz/holoviews"
+use_latest_release = "true"
+prefix = "v"
