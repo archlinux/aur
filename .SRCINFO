@@ -1,7 +1,7 @@
 pkgbase = openhd-git
 	pkgdesc = Open-source digital FPV system
-	pkgver = 2.6.0.r1.gd19b2c9
-	pkgrel = 1
+	pkgver = 2.6.0.r9.g6360d3f
+	pkgrel = 2
 	url = https://openhdfpv.org
 	arch = any
 	license = GPL3

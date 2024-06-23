@@ -2,8 +2,8 @@
 
 pkgname=openhd-git
 _reponame=OpenHD
-pkgver=2.6.0.r1.gd19b2c9
-pkgrel=1
+pkgver=2.6.0.r9.g6360d3f
+pkgrel=2
 pkgdesc='Open-source digital FPV system'
 arch=(any)
 url='https://openhdfpv.org'
@@ -22,6 +22,11 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "$_reponame"
 	git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+	cd "$_reponame"
+	git submodule update --init --recursive
 }
 
 build() {
