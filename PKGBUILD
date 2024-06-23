@@ -14,6 +14,7 @@ source=("emulationstation-de-stable-3.0-AUR_${pkgver}-${pkgrel}.tar.gz::https://
 md5sums=('22e68ec4cc7db84718625bd5e6b9d80d')
 
 build() {
+        export CXXFLAGS=""
         cmake -DAUR_BUILD=on -B emulationstation-de-stable-3.0-AUR -S emulationstation-de-stable-3.0-AUR
         make -C emulationstation-de-stable-3.0-AUR -j6
 }
