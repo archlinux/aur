@@ -30,7 +30,8 @@ makedepends=(
 checkdepends=(
   'appstream'
   'desktop-file-utils'
-#  'garden-tools'  ## TODO
+  'garden-tools'
+  'python-pytest'
 )
 optdepends=(
   'python-pygments: syntax highlighting'
@@ -62,7 +63,7 @@ check() {
   appstreamcli validate --no-net share/metainfo/*.appdata.xml || :
 
   # Run the unit tests
-#  GIT_CONFIG_NOSYSTEM=true LC_ALL="C.UTF-8" make test V=2
+  GIT_CONFIG_NOSYSTEM=true LC_ALL="C.UTF-8" make test V=2
 }
 
 package() {
