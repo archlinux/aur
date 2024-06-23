@@ -19,7 +19,7 @@ optdepends=(
     'trizen: needed for AUR support (second in priority)'
     'pamac-cli: needed for AUR support (third in priority)')
 conflicts=()
-source=("git://github.com/cubanpit/$_pkgname")
+source=("git+https://github.com/cubanpit/$_pkgname")
 md5sums=('SKIP')
 
 pkgver() {
