@@ -6,7 +6,7 @@
 
 pkgname=xmrig-donateless
 _pkgname='xmrig'
-pkgver=6.21.2
+pkgver=6.21.3
 pkgrel=1
 pkgdesc='RandomX, KawPow, CryptoNight, AstroBWT and GhostRider unified CPU/GPU miner and RandomX benchmark - No Donate Version'
 url='https://github.com/xmrig/xmrig'
@@ -25,7 +25,7 @@ conflicts=('xmrig')
 source=(https://github.com/xmrig/${_pkgname}/archive/v${pkgver}/${_pkgname}-${pkgver}.tar.gz
         xmrig@.service
         xmrig.sysusers)
-sha256sums=('68b4be51e99687bad15d5bf4ac9eed79a080ba89141f7363457a957ce9304e4d'
+sha256sums=('5d76fb19190956c564b405119315bc93db4ed8062b251d5e96bed70c5fa8033c'
             'bbc54b04a7da5ea473eb7d976307eb995fbfd96f0d012f1553b8c487182d9fb3'
             'd8f499302fb2b642fe02586c81c410a299e0a6e133aef1cc1c783bcdcb3f44f6')
 
