@@ -1,0 +1,15 @@
+pkgbase = flip-jump-git
+	pkgdesc = The single instruction language - Flip a bit, then Jump
+	pkgver = 1.2.2.r0.gaa01b31
+	pkgrel = 1
+	url = https://github.com/tomhea/flip-jump
+	arch = any
+	license = BSD-2-Clause
+	makedepends = git
+	makedepends = python-poetry
+	depends = python
+	depends = python-sly
+	source = flip-jump::git+https://github.com/tomhea/flip-jump.git
+	sha256sums = SKIP
+
+pkgname = flip-jump-git
