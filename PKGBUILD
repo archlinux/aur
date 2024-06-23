@@ -30,4 +30,5 @@ package() {
     cd "${_pkgname}" || exit 1
     python -m installer --destdir="${pkgdir}" dist/*.whl
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    install -Dm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
 }
