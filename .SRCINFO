@@ -7,6 +7,7 @@ pkgbase = python-holoviews
 	license = BSD-3-Clause
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-hatchling
 	makedepends = python-wheel
 	depends = python-panel
 	depends = python-colorcet
