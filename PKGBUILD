@@ -19,6 +19,6 @@ build() {
 
 package() {
     cd "$srcdir/Tetris"
-    make clean install
+    make DESTDIR="$pkgdir" install
 }
 
