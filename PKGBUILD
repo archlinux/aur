@@ -1,6 +1,6 @@
 # Maintainer: Leonid Murin (Dasperal) <Dasperal1 at gmail dot com>
 pkgname=russian-doom-git
-pkgver=r4765.e97fdcbe
+pkgver=6.3~62_fdb9f62
 pkgrel=1
 pkgdesc="A limit-removing source port of Doom, Heretic and Hexen with enhancements and Russian translation (git version)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -15,16 +15,15 @@ b2sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/russian-doom"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    ver=$(cmake -P ./cmake/UpdateRevision.cmake "git" 2>&1)
+    echo "${ver//-/_}"
 }
 
 build() {
     # Upstream forces `-O2` for 'Release' build type
     cmake -S "russian-doom" -B "build" \
     -D CMAKE_BUILD_TYPE="Release" \
-    -D CMAKE_INSTALL_PREFIX="/usr" \
-    -D RD_BUILD_VERSION_OVERWRITE="$pkgver" \
-    -D RD_GIT_NO_HASH="ON"
+    -D CMAKE_INSTALL_PREFIX="/usr"
     cmake --build "build"
 }
 
