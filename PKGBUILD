@@ -4,21 +4,37 @@
 # shellcheck disable=SC2034,SC2154
 
 pkgname=lix-git
-_pkgname=${pkgname%-git}
 pkgver=0.10.21.r1712198474.629c7121
 pkgrel=1
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+pkgdesc="An action-puzzle game inspired by Lemmings"
+url="https://www.lixgame.com/"
+license=('custom:CC0')
+
+_pkgname=${pkgname%-git}
 source=("$pkgname::git+https://github.com/SimonN/lix-unstable.git"
         "$pkgname-music-1.1.zip::https://www.lixgame.com/dow/lix-music.zip")
 sha512sums=('SKIP'
             '280fd25a479ac8dd24475b014234270a12ab34edca7fb2f7ce4b768259111b1e7626d3ba37ac13d810f0653d23d7c9f212776e94d2c0b31a0de580864771ce9f')
-pkgdesc="An action-puzzle game inspired by Lemmings"
-arch=('i686' 'x86_64')
-url="https://www.lixgame.com/"
-license=('custom:CC0')
-depends=('allegro' 'enet' 'hicolor-icon-theme' 'd-runtime')
-makedepends=('git' 'd-compiler' 'dub' 'jq')
+
+arch=(
+    'i686'
+    'x86_64'
+)
+depends=(
+    allegro
+    d-runtime
+    enet
+    hicolor-icon-theme
+)
+makedepends=(
+    d-compiler
+    dub
+    git
+    jq
+    pkgconf # https://github.com/SimonN/LixD/issues/469#issuecomment-2174416422
+)
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 
 pkgver() {
     # https://wiki.archlinux.org/index.php/VCS_package_guidelines#Git
@@ -38,14 +54,11 @@ prepare() {
     cd "$pkgname" || exit 1
 
     # Iterate thorugh the required packages and versions to fetch them in advance
-    # Read from dub.selections.json and print them as "package,version"
-    for line in $(jq -r '.versions | keys[] as $k | "\($k),\(.[$k])"' <dub.selections.json); do
-
-        # Split each dependency at the ','
-        IFS=',' read -ra dep <<< "$line"
-
+    # Read from dub.selections.json and print them as "package@version"
+    for line in $(jq -r '.versions | keys[] as $k | "\($k)@\(.[$k])"' <dub.selections.json); do
         # Fetch each package at the required version
-        dub fetch --cache=local "${dep[0]}@${dep[1]}"
+        # Expected format is: package@version
+        dub fetch --cache=local "$line"
     done
 }
 
