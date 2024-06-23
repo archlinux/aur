@@ -1,7 +1,7 @@
 pkgbase = regexploit
 	pkgdesc = Find regular expressions which are vulnerable to ReDoS
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/doyensec/regexploit
 	arch = any
 	license = APACHE
@@ -13,4 +13,3 @@ pkgbase = regexploit
 	sha256sums = 1abd5f6a92fd0959ddf13c5e84246935d21c5cd173e8d38bcf58c24eb24cd36f
 
 pkgname = regexploit
-
