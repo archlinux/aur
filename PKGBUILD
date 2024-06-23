@@ -2,7 +2,7 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=roundcubemail-git
-pkgver=1.5rc.r105.g16c2a76fe
+pkgver=1.6beta.r609.g7a3e91a9d
 pkgrel=1
 pkgdesc="A PHP web-based mail client"
 arch=('any')
@@ -33,8 +33,6 @@ prepare() {
     program/lib/Roundcube/rcube_config.php
 
   sed -i 's!"dest": "program/js/tinymce"!"dest": "program/js/tinymce/langs"!' jsdeps.json
-
-  mv composer.json-dist composer.json
 
 }
 
