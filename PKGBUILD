@@ -2,7 +2,7 @@
 # Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=feedbackd-git
-pkgver=0.3.0.r0.gbf6928e
+pkgver=0.4.0.r0.g09396c7
 pkgrel=1
 pkgdesc="A daemon to provide haptic, visual, and audio feedback on events"
 url="https://source.puri.sm/Librem5/feedbackd"
@@ -24,7 +24,7 @@ makedepends=(
 	gi-docgen
 	python-docutils
 	cmake	
-	gmobile
+	libgmobile	
 )
 source=("git+${url}.git")
 sha256sums=('SKIP')
