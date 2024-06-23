@@ -7,15 +7,6 @@ url="https://gitlab.com/garden-rs/garden"
 license=('GPL-3.0-or-later')
 depends=('gcc-libs')
 makedepends=('cargo')
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
 source=("https://gitlab.com/garden-rs/garden/-/archive/v${pkgver}/garden-v${pkgver}.tar.gz")
 sha256sums=('efb51f16cd9bc76169076c5f039f9cd5f9e5522ffa81c07b29ccdcf4c8daf768')
 
