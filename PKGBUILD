@@ -1,6 +1,6 @@
 # Maintainer: 46620 <46620osu@gmail.com>
 pkgname='revanced-integrations-bin'
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc='Integrations containing helper classes for ReVanced. Originally maintained by Vanced.'
 arch=('any')
@@ -11,7 +11,7 @@ provides=('revanced-integrations')
 conflicts=('revanced-integrations')
 source=("integrations-${pkgver}.apk::${url}/releases/download/v${pkgver}/revanced-integrations-${pkgver}.apk"
         "${url}/raw/v${pkgver}/LICENSE")
-sha256sums=('bb88f0dd554797ada54f9dcd9c98d12d98ea54c6498fd467f83419c2d218bb43'
+sha256sums=('4262e3dcdd35a778a88df54bf23ebd2cde5f7c39bc79cedd57d6cc9f6a99eb09'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 
 package() {
