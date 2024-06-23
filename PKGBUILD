@@ -1,7 +1,7 @@
 # vim:ts=4:sw=4:expandtab
 # Maintainer: milaq <micha.laqua@gmail.com>
 pkgname=xmousepasteblock-git
-pkgver=1.4.r1.c4ee870d
+pkgver=1.4.r0.gc4ee870
 pkgrel=1
 pkgdesc='Userspace tool to disable middle mouse button paste in Xorg'
 arch=('i686' 'x86_64')
