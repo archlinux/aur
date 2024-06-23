@@ -1,0 +1,5 @@
+[python-handcalcs]
+source = "github"
+github = "connorferster/handcalcs"
+use_latest_release = "true"
+prefix = "v."
