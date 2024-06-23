@@ -26,7 +26,15 @@ sha512sums=('SKIP')
 pkgver() {
     cd "$_pkgname"
     git describe --tags --long --match 'pandoc-cli-*' \
-        | sed 's/^pandoc-cli-//;s/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+        | sed 's/^pandoc-cli-//;s/^v//' \
+        | awk -F- \
+        'BEGIN { OFS="" }
+        {
+            revcount=$(NF-1)
+            sha=$NF
+            NF=(NF-2)
+            printf "%s.r%s.%s\n", $0, revcount, sha
+        }'
 }
 
 prepare() {
