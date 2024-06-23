@@ -9,10 +9,11 @@ url='https://github.com/outfoxxed/quickshell'
 license=('GPL')
 depends=('qt6-declarative' 'qt6-base' 'jemalloc' 'qt6-svg')
 optdepends=(
-   'libxcb: X11 support'
-   'wayland-protocols: Wayland support'
-   'wayland: Wayland support'
-   'libpipewire: Pipewire support'
+	'libxcb: X11 support'
+	'qt6-wayland: Wayland support'
+	'wayland-protocols: Wayland support'
+	'wayland: Wayland support'
+	'libpipewire: Pipewire support'
 )
 makedepends=('ninja' 'cmake' 'pkgconf')
 source=("git+https://github.com/outfoxxed/quickshell.git")

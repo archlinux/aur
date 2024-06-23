@@ -14,6 +14,7 @@ pkgbase = quickshell
 	depends = jemalloc
 	depends = qt6-svg
 	optdepends = libxcb: X11 support
+	optdepends = qt6-wayland: Wayland support
 	optdepends = wayland-protocols: Wayland support
 	optdepends = wayland: Wayland support
 	optdepends = libpipewire: Pipewire support
