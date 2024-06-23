@@ -1,6 +1,6 @@
 [Unit]
 Description=Squeezelite Player
-After=network.target
+After=network.target sound.target
 
 [Service]
 Nice=-10
