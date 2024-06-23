@@ -12,7 +12,7 @@ pkgbase = python-esutil
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-numpy
-	source = https://github.com/esheldon/esutil/archive/0.6.14.tar.gz
+	source = esutil-0.6.14.tar.gz::https://github.com/esheldon/esutil/archive/0.6.14.tar.gz
 	sha512sums = b59646c15e147ee87111bff1fd3826469994024b70578b47174fd56795a2ba059c57bf2aef913f94f8599e8243a21f0f3532f51b266dd178f872002297ca7147
 
 pkgname = python-esutil

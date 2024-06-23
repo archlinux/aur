@@ -10,7 +10,7 @@ license=(GPL-2.0-or-later)
 depends=(python-numpy)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest python-scipy)
-source=(${url}/archive/${pkgver}.tar.gz)
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
 sha512sums=('b59646c15e147ee87111bff1fd3826469994024b70578b47174fd56795a2ba059c57bf2aef913f94f8599e8243a21f0f3532f51b266dd178f872002297ca7147')
 
 build() {
