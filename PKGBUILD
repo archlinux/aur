@@ -2,17 +2,17 @@
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname=tuner
-pkgver=1.5.1
-pkgrel=5
-pkgdesc="Minimalist radio station player. Geared towards RadioBrowser"
+pkgver=1.5.2
+pkgrel=1
+pkgdesc="GNU/Linux app to discover and play internet radio stations. Geared towards RadioBrowser"
 arch=('x86_64' 'i686')
-url="https://github.com/louis77/$pkgname"
+url="https://codeberg.org/$pkgname/$pkgname"
 license=('GPL-3.0-only')
-depends=('granite' 'libsoup' 'gst-plugins-good' 'gst-plugins-bad-libs' 'geoclue' 'geocode-glib')
+depends=('granite' 'gst-plugins-bad-libs' 'gst-plugins-good')
 optdepends=('gst-libav: play AAC[+] streams')
 makedepends=('meson' 'vala')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('bbb5e7c97da1ee495651d85aca33c2fe58daba81906ae247e12b6a41b1ed7592')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/louis77/$pkgname/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('68c57e2aaf7ed98c1717e40fc98637ee5c1c0e5f279d1667c796dcaed6bedd45')
 
 build() {
   arch-meson "${pkgname}-${pkgver}" 'build'
