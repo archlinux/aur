@@ -3,7 +3,7 @@
 
 _gemname=rubyntlm
 pkgname=ruby-$_gemname
-pkgver=0.6.4
+pkgver=0.6.5
 pkgrel=1
 pkgdesc='Ruby/NTLM library.'
 arch=(any)
