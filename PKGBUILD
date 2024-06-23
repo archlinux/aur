@@ -2,7 +2,7 @@
 # Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=osmo-sip-connector-git
-pkgver=1.6.3.r6.g6122400
+pkgver=1.6.3.r11.gaafbfd3
 pkgrel=1
 pkgdesc="Gateway between the MNCC Interface of OsmoMSC and OsmoNITB and an external SIP trunk"
 url="https://osmocom.org/projects/osmo-sip-conector"
