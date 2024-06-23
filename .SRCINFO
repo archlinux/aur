@@ -1,7 +1,7 @@
 pkgbase = xbae
 	pkgdesc = A Motif widget set containing the XbaeMatrix, XbaeCaption, and XbaeInput extensions
 	pkgver = 4.60.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://xbae.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -13,4 +13,3 @@ pkgbase = xbae
 	md5sums = 9690059474bb05191dccd041ff5052bd
 
 pkgname = xbae
-

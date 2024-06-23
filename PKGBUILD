@@ -3,7 +3,7 @@
 
 pkgname=xbae
 pkgver=4.60.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A Motif widget set containing the XbaeMatrix, XbaeCaption, and XbaeInput extensions"
 arch=('i686' 'x86_64')
 url="http://xbae.sourceforge.net/"
@@ -15,6 +15,8 @@ md5sums=('9690059474bb05191dccd041ff5052bd')
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   ./configure --prefix=/usr --mandir=/usr/share/man
+  sed -i -e "s|xbaeEventToRowColumn(mw|xbaeEventToRowColumn((Widget)mw|g" src/Methods.c
+  sed -i -e "s|1000|(XtPointer)1000|g" examples/tests/leak2.c
   make
 }
 
