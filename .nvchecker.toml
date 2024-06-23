@@ -1,0 +1,5 @@
+[python-fmpy]
+source = "github"
+github = "CATIA-Systems/FMPy"
+use_latest_release = "true"
+prefix = "v"

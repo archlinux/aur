@@ -3,7 +3,7 @@
 _base=FMPy
 pkgname=python-${_base,,}
 _gitcommit=04aa5fd1aa86af25caa37b7f9a710d240890ca4e
-pkgver=0.3.20
+pkgver=0.3.21
 pkgrel=1
 pkgdesc="Simulate Functional Mockup Units (FMUs) in Python"
 url="https://github.com/CATIA-Systems/${_base}"
@@ -22,8 +22,8 @@ source=(git+${url}.git#commit=${_gitcommit}
   git+https://github.com/ludocode/mpack.git
   git+https://github.com/modelica/Reference-FMUs.git)
 sha512sums=('SKIP'
-            'SKIP'
-            'SKIP')
+  'SKIP'
+  'SKIP')
 
 prepare() {
   cd ${_base}
@@ -54,10 +54,8 @@ check() {
   test-env/bin/python -m installer dist/*.whl
   PATH="${srcdir}/${_base}/test-env/bin:$PATH"
   test-env/bin/python -m pytest tests \
-    -k 'not cmake and not simulate and not create_juypter_notebook and not cswrapper' \
-    --ignore=test_fmu_container.py \
-    --ignore=tests/test_fmu_container.py \
-    --ignore=tests/test_validation.py
+    -k 'not cmake and not simulate and not cswrapper and not create_juypter_notebook' \
+    --ignore=tests/test_fmu_container.py
 }
 
 package() {
