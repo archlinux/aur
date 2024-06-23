@@ -1,13 +1,13 @@
 pkgbase = osmo-sip-connector
 	pkgdesc = Gateway between the MNCC Interface of OsmoMSC and OsmoNITB and an external SIP trunk
 	pkgver = 1.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://osmocom.org/projects/osmo-sip-conector
 	arch = i686
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
-	license = GPL
+	license = AGPL-3.0-or-later
 	depends = libosmocore
 	depends = talloc
 	depends = sofia-sip
