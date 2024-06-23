@@ -2,7 +2,7 @@
 
 pkgname=python-litestar
 _pkgname=${pkgname#python-}
-pkgver=2.9.0
+pkgver=2.9.1
 pkgrel=1
 pkgdesc="Production-ready, Light, Flexible and Extensible ASGI API framework"
 arch=(any)
@@ -93,7 +93,7 @@ optdepends=(
   'python-sqlalchemy: SQLAlchemy integration'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('19217654a588aaf64a983ea8dfd6ed52a28ee07a06771cea0186ecc7a4eae61c')
+sha256sums=('25c6c5b71a5747b0a3567f782fbeacc62cdc508ad0d6235bc6b91af4a5516ea7')
 
 _archive="$_pkgname-$pkgver"
 
