@@ -10,6 +10,7 @@ pkgbase = python-mov-cli-youtube
 	makedepends = python-wheel
 	makedepends = python-installer
 	depends = python
+	depends = mov-cli
 	depends = python-pytubefix
 	depends = yt-dlp
 	provides = mov-cli-youtube

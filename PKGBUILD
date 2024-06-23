@@ -13,6 +13,7 @@ makedepends=(
 )
 depends=(
 	"python"
+	"mov-cli"
 	"python-pytubefix"
 	"yt-dlp"
 )
