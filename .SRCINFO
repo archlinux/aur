@@ -1,0 +1,19 @@
+pkgbase = xmcl-launcher
+	pkgdesc = X Minecraft Launcher - Modern Minecraft Launcher
+	pkgver = 0.44.9
+	pkgrel = 2
+	url = https://xmcl.vercel.app/
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = xmcl-launcher
+	source_x86_64 = https://github.com/Voxelum/x-minecraft-launcher/releases/download/v0.44.9/xmcl-0.44.9-amd64.deb
+	source_x86_64 = xmcl.png
+	sha256sums_x86_64 = faeb8ff117a2c4f0cb702a71a04d00cd9b2ae1bf68690f93dc3e63250f16e941
+	sha256sums_x86_64 = 7292bbcf951bba1e34d265925c1ca5f786198a3b289a081e134e0e59b743e742
+	source_aarch64 = https://github.com/Voxelum/x-minecraft-launcher/releases/download/v0.44.9/xmcl-0.44.9-arm64.deb
+	source_aarch64 = xmcl.png
+	sha256sums_aarch64 = c0d7990a3c7bab348d31d9c6318292b67878eb8e41e1af09c34b2d0d188940d4
+	sha256sums_aarch64 = 7292bbcf951bba1e34d265925c1ca5f786198a3b289a081e134e0e59b743e742
+
+pkgname = xmcl-launcher

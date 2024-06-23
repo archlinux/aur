@@ -1,0 +1,9 @@
+#Clean build
+pkg/
+src/
+app-*
+xmcl-*
+
+#Text Editors || IDE
+.zed/
+.idea/
