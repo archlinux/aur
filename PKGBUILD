@@ -30,7 +30,7 @@ else
   pkgname=(gnome-shell-performance gnome-shell-performance-docs)
 fi
 pkgver=46.2
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Next generation desktop shell | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://wiki.gnome.org/Projects/GnomeShell"
@@ -63,6 +63,7 @@ makedepends=(
   evolution-data-server
   gi-docgen
   git
+  glib2-devel
   gnome-control-center
   gobject-introspection
   meson

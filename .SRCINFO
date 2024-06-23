@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-performance
 	pkgdesc = Next generation desktop shell | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync
 	pkgver = 46.2
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://wiki.gnome.org/Projects/GnomeShell
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = gnome-shell-performance
 	makedepends = evolution-data-server
 	makedepends = gi-docgen
 	makedepends = git
+	makedepends = glib2-devel
 	makedepends = gnome-control-center
 	makedepends = gobject-introspection
 	makedepends = meson
