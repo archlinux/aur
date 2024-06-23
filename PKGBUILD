@@ -3,10 +3,10 @@
 
 pkgname=yuki-iptv
 pkgver=0.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="IPTV player with EPG support (Astroncia IPTV fork)"
 arch=('any')
-url="https://codeberg.org/Ame-chan-angel/yuki-iptv"
+url="https://codeberg.org/liya/yuki-iptv"
 license=('GPL3')
 makedepends=('make')
 depends=('python' 'qt6-base' 'mpv' 'python-pyqt6' 'python-pillow' 'python-gobject' 'python-unidecode'
