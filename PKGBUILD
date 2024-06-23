@@ -14,7 +14,7 @@ makedepends=(
   'qt5-base'
   'qwt'
 )
-source=("${_pkgname}-patched.zip")
+source=("file://${_pkgname}-patched.zip")
 sha256sums=('SKIP')
 
 #The sources are to be provided manually as the package is not public
