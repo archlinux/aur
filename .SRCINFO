@@ -1,0 +1,12 @@
+pkgbase = candle
+	pkgdesc = An interpreted esoteric Language
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/aureumapes/candle
+	arch = any
+	license = MIT
+	makedepends = go>=1.21
+	source = candle-1.0.0.tar.gz::https://github.com/aureumapes/candle/archive/v1.0.0.tar.gz
+	sha256sums = 602d418b0a618b270b4266e1c261ab2e22a8b211d4d936351ba9368b8d913e0a
+
+pkgname = candle
