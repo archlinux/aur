@@ -8,13 +8,13 @@
 
 pkgbase=handbrake-git
 pkgname=(handbrake-git handbrake-cli-git)
-pkgver=1.7.3.r6.g057d5e768
+pkgver=1.8.1.r0.ge9ff2bdf1
 pkgrel=1
 pkgdesc="Multithreaded video transcoder. Enabled: x265, nvenc, fdk-aac, qsv, vce, numa, hardened. Last stable branch"
 arch=(i686 x86_64)
 url="https://handbrake.fr/"
 license=(GPL2)
-source=("${pkgname%-git}::git+https://github.com/HandBrake/HandBrake.git#branch=1.7.x"
+source=("${pkgname%-git}::git+https://github.com/HandBrake/HandBrake.git#branch=1.8.x"
         'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/AMF-1.4.30-slim.tar.gz'
         'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/dav1d-1.3.0.tar.bz2'
         'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/fdk-aac-2.0.2.tar.gz'
