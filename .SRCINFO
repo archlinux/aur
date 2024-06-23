@@ -1,0 +1,16 @@
+pkgbase = tsshd
+	pkgdesc = The `tssh --udp` works like `mosh`, and the `tsshd` works like `mosh-server`.
+	pkgver = 0.1.0
+	pkgrel = 1
+	epoch = 0
+	url = https://trzsz.github.io/
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	makedepends = go>=1.20.3
+	provides = tsshd
+	source = https://github.com/trzsz/tsshd/archive/refs/tags/v0.1.0.tar.gz
+	md5sums = 585c077052ac187c2092089dacb2a5f5
+
+pkgname = tsshd
