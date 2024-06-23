@@ -1,6 +1,6 @@
 pkgbase = python-vispy
 	pkgdesc = Interactive visualization in Python
-	pkgver = 0.14.2
+	pkgver = 0.14.3
 	pkgrel = 1
 	url = https://vispy.org
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = python-vispy
 	optdepends = python-wxpython: wx
 	optdepends = python-meshio: io
 	optdepends = python-pillow: io
-	source = vispy-0.14.2.tar.gz::https://github.com/vispy/vispy/archive/v0.14.2.tar.gz
-	sha512sums = 1182ed867d0077db4f19a9a0bbb78c28a229a33e7b7d319b05c7db3486c01fcf4e30b75474a88a69325e2681d70b9f5059a39c74bd16195ade7e9628b753f4c6
+	source = vispy-0.14.3.tar.gz::https://github.com/vispy/vispy/archive/v0.14.3.tar.gz
+	sha512sums = 933e83dfc16ddadbdbf968a633d2cc5d6ef72846662ab3787123958fe7e9eea653a9bfa7c43b86b954dacffc6ea3e2f54eb5612a31ccafe73ffb9bc14251ecf1
 
 pkgname = python-vispy
