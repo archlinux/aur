@@ -1,0 +1,13 @@
+pkgbase = python-spacy-pl_core_news_lg
+	pkgdesc = Polish pretrained model for spaCy (large)
+	pkgver = 3.7.0
+	pkgrel = 1
+	url = https://spacy.io/models/pl#section-pl_core_news_lg
+	arch = any
+	license = CCPL
+	makedepends = python-setuptools
+	depends = python-spacy
+	source = https://github.com/explosion/spacy-models/releases/download/pl_core_news_lg-3.7.0/pl_core_news_lg-3.7.0.tar.gz
+	b2sums = a6c369077a36080f6f41686583aa7394739a72569b8a046ca293b4e34f71fb3ec09f146dc45e3b52bddfd7b60454609714572a4ce687886c2cb45daa21fe5cb9
+
+pkgname = python-spacy-pl_core_news_lg
