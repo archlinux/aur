@@ -2,29 +2,39 @@
 
 _name="cclib"
 pkgname="python-${_name}"
-pkgver=1.8
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="A library for parsing and interpreting the results of computational chemistry packages."
 arch=("any")
 url="http://cclib.github.io"
 license=("BSD-3-Clause")
-makedepends=("python-setuptools")
-depends=("python-importlib-metadata"
-         "python-packaging"
+makedepends=("python-build"
+             "python-installer"
+             "python-setuptools"
+             "python-versioningit"
+             "python-wheel")
+depends=("python-packaging"
          "python-periodictable"
          "python-scipy")
-optdepends=('python-openbabel: for generating `OBMol`s of results'
-            'python-biopython: for generating `BioPython.Atom`s of parsed results'
-            'python-pandas: for generating DataFrames of parsed results'
-            'psi4: for Psi4 bridge'
+optdepends=('psi4: for Psi4 bridge'
             'python-ase: for ASE bridge'
-            'python-h5py: for reading proatom densities from horton'
+            'python-biopython: for generating `BioPython.Atom`s of parsed results'
+            'python-iodata: for reading proatom densities from horton'
+            'python-openbabel: for generating `OBMol`s of results'
+            'python-pandas: for generating DataFrames of parsed results'
+            'python-pyquante2: for computing grid-based quantities with cube output'
             'python-pyscf: for PySCF bridge')
-source=("https://github.com/${_name}/${_name}/archive/v${pkgver}.tar.gz")
-sha256sums=('8b4c4b0f43168374e7aa4e3b433f0b1d0c443dbb73562ab09e705d7c4e61c5e2')
+source=("https://github.com/${_name}/${_name}/releases/download/v${pkgver}/${_name}-${pkgver}.tar.gz")
+sha256sums=('d10aa2352479fcdaa86cc32055a8ae7f98ce26523ea928944ab2256f0875d605')
+
+build() {
+  cd "${srcdir}/${_name}-${pkgver}"
+  sed -i "s/versioningit~=2.0/versioningit/" pyproject.toml
+  python -m build --wheel --no-isolation
+}
 
 package() {
   cd "${srcdir}/${_name}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1
-  install -D -m644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+  python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -D -m644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 }
