@@ -2,19 +2,19 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-io-compress-lzma'
-pkgver='2.206'
+pkgver='2.212'
 pkgrel='1'
 pkgdesc="Write lzma files/buffers"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-compress-raw-lzma>=2.206' 'perl-io-compress>=0')
+depends=('perl-compress-raw-lzma>=2.212' 'perl-io-compress>=0')
 makedepends=()
 url='https://metacpan.org/release/IO-Compress-Lzma'
-source=('http://search.cpan.org/CPAN/authors/id/P/PM/PMQS/IO-Compress-Lzma-2.206.tar.gz')
-md5sums=('8f484d7a8fce2cde3379f3c210ad06b5')
-sha512sums=('f0f1f5ab3ba03b08d8905dcd166fe7591bc955517f42b20300a709dd5cec2f7db9cd7bec3547df95124772879eb6349b810a52f25b351eff4f626026a6e8e043')
-_distdir="IO-Compress-Lzma-2.206"
+source=('http://search.cpan.org/CPAN/authors/id/P/PM/PMQS/IO-Compress-Lzma-2.212.tar.gz')
+md5sums=('e4d82e1072caa3b6b0065ef3fbd27c30')
+sha512sums=('2b773ce3175b165a1db6a572a188ec3dfb4fe9fe46b083bc2d2c3a0461360657100c2f7779ce81687ef95a20c75e3446024fe54ca6c3615b296baead8b602dbc')
+_distdir="IO-Compress-Lzma-2.212"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
