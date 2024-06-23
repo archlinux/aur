@@ -7,7 +7,7 @@ _pkgtype="-git"
 _pkgname="openems"
 pkgbase="$_pkgname${_pkgtype:-}"
 pkgver=0.0.36.r15.g1ccf094
-pkgrel=2
+pkgrel=3
 pkgdesc="A free and open source EC-FDTD solver"
 url="https://github.com/thliebig/openEMS"
 license=('GPL-3.0-or-later')
@@ -28,6 +28,9 @@ _depends_openems=(
 )
 _depends_python_openems=(
   'python'
+  'python-h5py'
+  'python-matplotlib'
+  'python-numpy'
 
   # AUR
   'python-csxcad'
