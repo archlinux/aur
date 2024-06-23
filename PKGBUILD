@@ -28,7 +28,7 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
-        sed -i'' 's|LIBDIR ?= /lib/security|LIBDIR ?= /usr/lib/security|g' src/Makefile
+	sed -i 's|Werror|Werror -Wno-error=deprecated-declarations|;s|LIBDIR ?= /lib/security|LIBDIR ?= /usr/lib/security|g' src/Makefile
         sed -n '/^License/,/^--$/p' README.txt | grep -v -e '^License' -e '^-\+' > LICENSE
 }
 
