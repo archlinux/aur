@@ -21,7 +21,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g')
+  echo $(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g')
 }
 
 build() {
