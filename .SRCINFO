@@ -16,6 +16,7 @@ pkgbase = osmo-trx-git
 	depends = limesuite
 	depends = talloc
 	depends = fftw
+	provides = osmo-trx=1.6.0.r9.ga118d98e
 	conflicts = osmo-trx
 	backup = etc/osmocom/osmo-trx-uhd.cfg
 	backup = etc/osmocom/osmo-trx-lms.cfg

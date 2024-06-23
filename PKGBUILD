@@ -16,6 +16,7 @@ depends=('libosmocore'
          'fftw')
 makedepends=('git' 'boost')
 conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}=${pkgver}")
 backup=('etc/osmocom/osmo-trx-uhd.cfg'
         'etc/osmocom/osmo-trx-lms.cfg'
         'etc/osmocom/osmo-trx-ipc.cfg')
