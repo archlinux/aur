@@ -1,8 +1,8 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=bezier
 pkgname=python-${_base}
-pkgver=2023.7.28
-pkgrel=2
+pkgver=2024.6.20
+pkgrel=1
 pkgdesc="Helper for Bézier Curves, Triangles, and Higher Order Objects"
 arch=(x86_64)
 url="https://github.com/dhermes/${_base}"
@@ -15,11 +15,11 @@ optdepends=('python-matplotlib: for plot helper support'
   'python-scipy: for convex hull support'
   'python-sympy: for symbolic support')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('beec5c3c9f903a81f02cb491a6c0abdf5d0ad8fb0b9a19a30403113b68b4eee1968c2a4ed1e1dbd4b90e9b35316865cbc6350a6799251a1b087c333117dc5492')
+sha512sums=('add582a0e9724c1952fcb99f2727af71e54f537aeae319b1d9445089423d9d67da599303b190b944a48c155a0e21123861b0506b9aa7f458e689ae0a92c4161a')
 
 build() {
   cd ${_base}-${pkgver}
-  CFLAGS="-Wno-incompatible-pointer-types"
+  CFLAGS="-Wno-incompatible-pointer-types -Wno-implicit-function-declaration -Wno-int-conversion"
   BEZIER_IGNORE_VERSION_CHECK=1 \
     BEZIER_INSTALL_PREFIX=/usr \
     TARGET_NATIVE_ARCH=OFF \

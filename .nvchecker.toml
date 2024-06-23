@@ -1,0 +1,4 @@
+[python-bezier]
+source = "github"
+github = "dhermes/bezier"
+use_max_tag = "true"
