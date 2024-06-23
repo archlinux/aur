@@ -5,7 +5,7 @@
 
 pkgname=openscad-git
 _pkg="${pkgname%-git}"
-pkgver=r11070.6db5adc
+pkgver=r11091.9b9adabc
 pkgrel=1
 pkgdesc="The programmers solid 3D CAD modeller"
 arch=('x86_64')
@@ -76,4 +76,5 @@ package() {
 	install -Dm644 "resources/icons/openscad.desktop" "$pkgdir/usr/share/applications/openscad.desktop"
 	install -Dm644 "resources/icons/openscad-128.png" "$pkgdir/usr/share/pixmaps/openscad.png"
 }
+
 
