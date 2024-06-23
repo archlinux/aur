@@ -1,0 +1,57 @@
+diff --git a/src/model/NodeModel.cpp b/src/model/NodeModel.cpp
+index 47a83e0..e16a8c4 100644
+--- a/src/model/NodeModel.cpp
++++ b/src/model/NodeModel.cpp
+@@ -5,12 +5,14 @@
+ #include "utils/nodes.h"
+ #include "utils/ColorScheme.h"
+ 
+-NodeModel::NodeModel(int nodeSource, QObject *parent)
++NodeModel::NodeModel(int nodeSource, QObject *parent, bool nogui)
+         : QAbstractTableModel(parent)
+         , m_nodeSource(nodeSource)
+-        , m_offline(QIcon(":/assets/images/expired_icon.png"))
+-        , m_online(QIcon(":/assets/images/confirmed_icon.png"))
+ {
++    if (!nogui) {
++        this->m_offline = QIcon(":/assets/images/expired_icon.png");
++        this->m_online = QIcon(":/assets/images/confirmed_icon.png");
++    }
+ }
+ 
+ void NodeModel::clear() {
+diff --git a/src/model/NodeModel.h b/src/model/NodeModel.h
+index 54d6c43..2bb1cc7 100644
+--- a/src/model/NodeModel.h
++++ b/src/model/NodeModel.h
+@@ -19,7 +19,7 @@ public:
+         COUNT
+     };
+ 
+-    explicit NodeModel(int nodeSource, QObject *parent = nullptr);
++    explicit NodeModel(int nodeSource, QObject *parent = nullptr, bool nogui = false);
+ 
+     int rowCount(const QModelIndex &parent) const override;
+     int columnCount(const QModelIndex &parent) const override;
+diff --git a/src/utils/nodes.cpp b/src/utils/nodes.cpp
+index 246dbf5..982eab8 100644
+--- a/src/utils/nodes.cpp
++++ b/src/utils/nodes.cpp
+@@ -13,8 +13,8 @@ Nodes::Nodes(AppContext *ctx, QNetworkAccessManager *networkAccessManager, QObje
+         m_ctx(ctx),
+         m_networkAccessManager(networkAccessManager),
+         m_connection(WowletNode()),
+-        modelWebsocket(new NodeModel(NodeSource::websocket, this)),
+-        modelCustom(new NodeModel(NodeSource::custom, this)) {
++        modelWebsocket(new NodeModel(NodeSource::websocket, this, ctx->cmdargs->isSet("daemon"))),
++        modelCustom(new NodeModel(NodeSource::custom, this, ctx->cmdargs->isSet("daemon"))) {
+     this->loadConfig();
+ }
+ 
+@@ -414,4 +414,4 @@ int Nodes::modeHeight(const QList<WowletNode> &nodes) {
+     }
+ 
+     return mode_height;
+-}
+\ No newline at end of file
++}

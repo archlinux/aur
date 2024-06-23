@@ -1,7 +1,7 @@
 pkgbase = wowlet-git
 	pkgdesc = a free Wownero desktop wallet
 	pkgver = 4.1.1.r2.g330edac
-	pkgrel = 4
+	pkgrel = 6
 	url = https://git.wownero.com/wowlet/wowlet
 	arch = x86_64
 	license = BSD
@@ -36,6 +36,8 @@ pkgbase = wowlet-git
 	source = git+https://github.com/ethereum-lists/tokens
 	source = git+https://github.com/monero-project/supercop
 	source = git+https://git.wownero.com/wownero/RandomWOW
+	source = daemon-gui-crash-fix.patch
+	source = miniupnpc-use-gnu-extensions.patch
 	source = wownero-include-cstdint.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -47,6 +49,8 @@ pkgbase = wowlet-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 9e6b6339e667a8103351ad347a7d99c2cd9b70c22e2d690dfcadfa1aa7dc5909
 	sha256sums = 4ed7d996e36cf4cb6406ce70042e424f718e32b262b7cbf112fd9fb2708976d2
+	sha256sums = f2ff167063ab715e2eedc8bdc2be800519df6a2bb3ebaf6689c84e269cc55f82
 
 pkgname = wowlet-git

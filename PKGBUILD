@@ -2,9 +2,9 @@
 # Contributor: wowario <wowario[at]protonmail[dot]com>
 
 pkgname=wowlet-git
-_pkgname=wowlet
+_pkgname=${pkgname%-git}
 pkgver=4.1.1.r2.g330edac
-pkgrel=4
+pkgrel=6
 pkgdesc='a free Wownero desktop wallet'
 arch=('x86_64')
 license=('BSD')
@@ -24,6 +24,8 @@ source=("git+https://git.wownero.com/wowlet/wowlet"
         "git+https://github.com/ethereum-lists/tokens"
         "git+https://github.com/monero-project/supercop"
         "git+https://git.wownero.com/wownero/RandomWOW"
+        "daemon-gui-crash-fix.patch"
+        "miniupnpc-use-gnu-extensions.patch"
         "wownero-include-cstdint.patch")
 
 sha256sums=('SKIP'
@@ -36,7 +38,9 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            4ed7d996e36cf4cb6406ce70042e424f718e32b262b7cbf112fd9fb2708976d2)
+            9e6b6339e667a8103351ad347a7d99c2cd9b70c22e2d690dfcadfa1aa7dc5909
+            4ed7d996e36cf4cb6406ce70042e424f718e32b262b7cbf112fd9fb2708976d2
+            f2ff167063ab715e2eedc8bdc2be800519df6a2bb3ebaf6689c84e269cc55f82)
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -53,11 +57,13 @@ prepare() {
   git config submodule.contrib/quirc.url "$srcdir/quirc"
   git config submodule.wownero.url "$srcdir/wownero"
   git -c protocol.file.allow=always submodule update
+  patch -Np1 < "${srcdir}/daemon-gui-crash-fix.patch" || [ $? -eq 1 ]
 
   (
     cd wownero
     git submodule init
     git config submodule.external/rapidjson.url "$srcdir/rapidjson"
+    git config submodule.external/miniupnp.url "$srcdir/miniupnp"
     git config submodule.external/trezor-common.url "$srcdir/trezor-common"
     git config submodule.external/supercop.url "$srcdir/supercop"
     git config submodule.external/randomwow.url "$srcdir/RandomWOW"
@@ -69,6 +75,11 @@ prepare() {
       git submodule init
       git config submodule.thirdparty/gtest.url "$srcdir/googletest"
       git -c protocol.file.allow=always submodule update
+    )
+
+    (
+      cd external/miniupnp
+      patch -Np1 < "${srcdir}/miniupnpc-use-gnu-extensions.patch" || [ $? -eq 1 ]
     )
 
     (

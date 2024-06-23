@@ -1,0 +1,13 @@
+diff --git a/miniupnpc/CMakeLists.txt b/miniupnpc/CMakeLists.txt
+index 8850a57..a89abc6 100644
+--- a/miniupnpc/CMakeLists.txt
++++ b/miniupnpc/CMakeLists.txt
+@@ -50,6 +50,8 @@ endif ()
+ # Suppress noise warnings
+ if (MSVC)
+   target_compile_definitions(miniupnpc-private INTERFACE _CRT_SECURE_NO_WARNINGS)
++else()
++  add_compile_options(-D_GNU_SOURCE)
+ endif()
+ 
+ configure_file (${CMAKE_CURRENT_SOURCE_DIR}/miniupnpcstrings.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/miniupnpcstrings.h)
