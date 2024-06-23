@@ -55,7 +55,6 @@ depends=(
   xorg-xinput
   xorg-xwayland-hidpi-xprop
 )
-depends+=(libdisplay-info.so)
 makedepends=(
   cmake
   gdb

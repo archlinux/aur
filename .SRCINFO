@@ -59,7 +59,6 @@ pkgbase = hyprland-hidpi-xprop-git
 	depends = xcb-util-wm
 	depends = xorg-xinput
 	depends = xorg-xwayland-hidpi-xprop
-	depends = libdisplay-info.so
 	optdepends = cmake: to build and install plugins using hyprpm
 	optdepends = cpio: to build and install plugins using hyprpm
 	optdepends = meson: to build and install plugins using hyprpm
