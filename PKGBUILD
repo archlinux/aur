@@ -9,9 +9,9 @@ license=('MIT')
 url='https://github.com/hoyon/mpv-mpris'
 depends=(
   'mpv'
-  'ffmpeg' 'libavformat.so'
-  'glibc' # libc.so
-  'glib2' 'libgio-2.0.so' 'libglib-2.0.so' 'libgobject-2.0.so'
+  'ffmpeg'
+  'glibc'
+  'glib2'
 )
 makedepends=('git')
 checkdepends=(
@@ -44,6 +44,11 @@ check() {
 }
 
 package() {
+  depends+=(
+    'libavformat.so'
+    'libgio-2.0.so' 'libglib-2.0.so' 'libgobject-2.0.so'
+  )
+
   cd mpv-mpris
   install -Dm755 mpris.so "${pkgdir}/usr/share/mpv/scripts/mpris.so"
 
