@@ -26,7 +26,7 @@ build() {
   mkdir -p build
   cd build
   
-  cmake ../melonDS --debug-output \
+  cmake ../melonDS \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DUSE_QT6=ON
