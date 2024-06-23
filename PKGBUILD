@@ -1,8 +1,8 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=resources
-pkgver=1.4.0
-_commit=fd5eba73feff9ae329b484c3d07aade53e3a2f75
+pkgver=1.5.0
+_commit=19ca84f1a3f61cd8f3c1af1d898753904c4035f7
 pkgrel=1
 pkgdesc="Monitor your system resources and processes"
 url="https://github.com/nokyan/resources"
