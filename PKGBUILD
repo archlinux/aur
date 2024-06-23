@@ -1,6 +1,6 @@
 # Maintainer: Starry Wang <starry.wang@suse.com>
 pkgname=hangar
-pkgver=1.7.3
+pkgver=1.8.3
 pkgrel=1
 epoch=
 pkgdesc="Command line utility to mirror container images"
