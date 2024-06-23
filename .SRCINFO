@@ -9,6 +9,7 @@ pkgbase = flip-jump-git
 	makedepends = python-poetry
 	depends = python
 	depends = python-sly
+	provides = flip-jump
 	source = flip-jump::git+https://github.com/tomhea/flip-jump.git
 	sha256sums = SKIP
 

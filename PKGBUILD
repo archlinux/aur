@@ -4,14 +4,14 @@ pkgname=flip-jump-git
 pkgver=1.2.2.r0.gaa01b31
 pkgrel=1
 pkgdesc="The single instruction language - Flip a bit, then Jump"
-# python should work on any arch distribution?
-arch=('any')
+arch=("any")
+provides=("flip-jump")
 url="https://github.com/tomhea/flip-jump"
-license=('BSD-2-Clause')
-depends=('python' 'python-sly')
-makedepends=('git' 'python-poetry')
+license=("BSD-2-Clause")
+depends=("python" "python-sly")
+makedepends=("git" "python-poetry")
 source=("${_pkgname}::git+${url}.git")
-sha256sums=('SKIP')
+sha256sums=("SKIP")
 
 pkgver() {
     git -C "${_pkgname}" describe --long --tags | sed "s/-/.r/;s/-/./g"
