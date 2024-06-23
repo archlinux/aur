@@ -9,7 +9,7 @@ pkgbase = osmo-sip-connector-git
 	arch = armv7h
 	license = AGPL-3.0-or-later
 	makedepends = git
-	depends = libosmocore
+	depends = libosmocore-git
 	depends = talloc
 	depends = sofia-sip
 	provides = osmo-sip-connector=1.6.3.r6.g6122400

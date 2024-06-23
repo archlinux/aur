@@ -8,7 +8,7 @@ pkgdesc="Gateway between the MNCC Interface of OsmoMSC and OsmoNITB and an exter
 url="https://osmocom.org/projects/osmo-sip-conector"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=('AGPL-3.0-or-later')
-depends=('libosmocore' 'talloc' 'sofia-sip')
+depends=('libosmocore-git' 'talloc' 'sofia-sip')
 makedepends=('git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver}")
