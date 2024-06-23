@@ -1,0 +1,4 @@
+[bezier]
+source = "github"
+github = "dhermes/bezier"
+use_latest_release = "true"

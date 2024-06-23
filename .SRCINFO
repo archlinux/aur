@@ -1,6 +1,6 @@
 pkgbase = bezier
 	pkgdesc = Library for Bezier curves and triangles
-	pkgver = 2023.7.28
+	pkgver = 2024.6.20
 	pkgrel = 1
 	url = https://github.com/dhermes/bezier
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = bezier
 	makedepends = gcc-fortran
 	makedepends = cmake
 	depends = gcc-libs
-	source = bezier-2023.7.28.tar.gz::https://github.com/dhermes/bezier/archive/2023.7.28.tar.gz
-	sha512sums = beec5c3c9f903a81f02cb491a6c0abdf5d0ad8fb0b9a19a30403113b68b4eee1968c2a4ed1e1dbd4b90e9b35316865cbc6350a6799251a1b087c333117dc5492
+	source = bezier-2024.6.20.tar.gz::https://github.com/dhermes/bezier/archive/2024.6.20.tar.gz
+	sha512sums = add582a0e9724c1952fcb99f2727af71e54f537aeae319b1d9445089423d9d67da599303b190b944a48c155a0e21123861b0506b9aa7f458e689ae0a92c4161a
 
 pkgname = bezier
