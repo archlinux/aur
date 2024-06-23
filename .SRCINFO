@@ -1,7 +1,7 @@
 pkgbase = melonds
 	pkgdesc = DS emulator, sorta
 	pkgver = 0.9.5
-	pkgrel = 5
+	pkgrel = 6
 	url = http://melonds.kuribo64.net/
 	arch = x86_64
 	arch = i686
@@ -17,10 +17,12 @@ pkgbase = melonds
 	makedepends = extra-cmake-modules
 	depends = libepoxy
 	depends = libslirp
-	depends = qt5-base
-	depends = qt5-multimedia
+	depends = qt6-base
+	depends = qt6-multimedia
 	depends = sdl2
 	source = git+https://github.com/melonDS-emu/melonDS.git#tag=0.9.5
+	source = dont-fix-libslirp-interface.patch
 	sha256sums = SKIP
+	sha256sums = 1c157d21f89a750140727b2906abbd340a7e21257dd7eaeebdc60cf71ed82770
 
 pkgname = melonds
