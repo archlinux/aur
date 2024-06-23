@@ -13,8 +13,6 @@ source=('git+https://github.com/abusch8/Tetris')
 sha256sums=('SKIP')
 
 build() {
-    echo "$(pwd)"
-    echo "$srcdir"
     cd "$srcdir/Tetris"
     make
 }
