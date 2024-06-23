@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=infisical
-pkgver=0.22.6
+pkgver=0.23.2
 pkgrel=1
 pkgdesc="Fetch and inject secrets into any framework in local development"
 url="https://github.com/Infisical/infisical"
@@ -10,14 +10,14 @@ license=(LicenseRef-Custom)
 depends=(glibc)
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/infisical-cli/v$pkgver.tar.gz")
-sha256sums=('6d785d6d30f0d50c7ae680fffd941180d450f4b488b954200b162aed95c34994')
+sha256sums=('81f52d14776124cd86d4ed4c2b898857cc81928ccb2d0a8a8e1da0832ba3ff0d')
 
 _archive="$pkgname-infisical-cli-v$pkgver"
 
 prepare() {
   cd "$_archive/cli"
 
-  go mod download -x
+  GOFLAGS="-mod=readonly" go mod vendor -v
 }
 
 build() {
@@ -27,10 +27,17 @@ build() {
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
   export CGO_LDFLAGS="$LDFLAGS"
-  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  export GOFLAGS="-buildmode=pie -mod=vendor -modcacherw -buildvcs=false"
 
-  local ld_flags="-linkmode external -X github.com/Infisical/infisical-merge/packages/util.CLI_VERSION=$pkgver"
-  go build -v -buildvcs=false -ldflags "$ld_flags" -o infisical .
+  local ld_flags=" \
+    -compressdwarf=false \
+    -linkmode=external  \
+    -X github.com/Infisical/infisical-merge/packages/util.CLI_VERSION=$pkgver \
+  "
+  go build -v \
+    -ldflags "$ld_flags" \
+    -o infisical \
+    .
 
   # Completions
   ./infisical completion bash > infisical.bash
@@ -49,8 +56,7 @@ check() {
     go list ./... \
       | grep -v 'github.com/Infisical/infisical-merge/detect' \
       | grep -v 'github.com/Infisical/infisical-merge/packages/cmd' \
-      | grep -v 'github.com/Infisical/infisical-merge/test' \
-      | sort
+      | grep -v 'github.com/Infisical/infisical-merge/test'
   )
   # shellcheck disable=SC2086
   go test -v $unit_tests
