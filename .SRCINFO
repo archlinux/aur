@@ -1,6 +1,6 @@
 pkgbase = python-celerite
 	pkgdesc = Scalable 1D Gaussian Processes
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://celerite.readthedocs.io
 	arch = i686
@@ -11,16 +11,17 @@ pkgbase = python-celerite
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = pybind11
-	makedepends = python-breathe
-	makedepends = python-sphinx_rtd_theme
-	makedepends = doxygen
+	makedepends = pybind11>=2.4
 	makedepends = python-numpy
-	source = https://files.pythonhosted.org/packages/source/c/celerite/celerite-0.4.2.tar.gz
-	md5sums = 17ab6df03e11fd4c2d91e909613dd4b2
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = python-breathe
+	makedepends = doxygen
+	source = https://files.pythonhosted.org/packages/source/c/celerite/celerite-0.4.3.tar.gz
+	md5sums = 130fa89192eae7efbff48f4737016a04
 
 pkgname = python-celerite
-	depends = python>=3.6
+	depends = python>=3.9
 	depends = python-numpy
 	depends = pybind11
 	optdepends = python-autograd: For computing gradients in celerite models
@@ -28,3 +29,4 @@ pkgname = python-celerite
 
 pkgname = python-celerite-doc
 	pkgdesc = Documentation for Python celerite
+	arch = any

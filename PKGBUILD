@@ -2,7 +2,7 @@
 pkgbase=python-celerite
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Scalable 1D Gaussian Processes"
 arch=('i686' 'x86_64')
@@ -12,42 +12,37 @@ makedepends=('python-setuptools-scm'
              'python-wheel'
              'python-build'
              'python-installer'
-             'pybind11'
-             'python-breathe'
+             'pybind11>=2.4'
+             'python-numpy'
+             'python-sphinx'
              'python-sphinx_rtd_theme'
-             'doxygen'
-             'python-numpy')
+             'python-breathe'
+             'doxygen')
 checkdepends=('python-pytest')  # python-numpy
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('17ab6df03e11fd4c2d91e909613dd4b2')
+md5sums=('130fa89192eae7efbff48f4737016a04')
 
 get_pyver() {
-    python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))'
+    python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
 }
 
-prepare() {
-    cd ${srcdir}/${_pyname}-${pkgver}
-
-    sed -i "/oldest-supported-numpy/s/, \"oldest-supported-numpy\"//" pyproject.toml
-}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
     python -m build --wheel --no-isolation
 
     msg "Building Docs"
-    cd ${srcdir}/${_pyname}-${pkgver}/docs
-    PYTHONPATH="../build/lib.linux-${CARCH}-$(get_pyver)" make html
+    PYTHONPATH="../build/lib.linux-${CARCH}-cpython-$(get_pyver)" make -C docs html
 }
 
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    PYTHONPATH="build/lib.linux-${CARCH}-$(get_pyver)" pytest || warning "Tests failed"
+    PYTHONPATH="build/lib.linux-${CARCH}-cpython-$(get_pyver)" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 }
 
 package_python-celerite() {
-    depends=('python>=3.6' 'python-numpy' 'pybind11')
+    depends=('python>=3.9' 'python-numpy' 'pybind11')
     optdepends=('python-autograd: For computing gradients in celerite models'
                 'python-celerite-doc: Documentation for celerite')
     cd ${srcdir}/${_pyname}-${pkgver}
