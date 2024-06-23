@@ -1,19 +1,18 @@
 pkgbase = perl-devel-checkos
-	pkgdesc = check what OS we're running on
-	pkgver = 1.81
+	pkgdesc = unknown
+	pkgver = 2.04
 	pkgrel = 1
-	url = http://search.cpan.org/dist/Devel-CheckOS
+	url = https://metacpan.org/release/Devel-CheckOS
 	arch = any
+	license = GPL2
 	license = PerlArtistic
-	license = GPL
-	makedepends = perl-extutils-makemaker
-	depends = perl>=5.006
+	license = Artistic2.0
 	depends = perl-file-find-rule>=0.28
-	depends = perl-data-compare>=1.21
+	depends = perl-test-warnings>=0
+	depends = perl>=5.6.0
 	options = !emptydirs
-	options = purge
-	source = http://search.cpan.org/CPAN/authors/id/D/DC/DCANTRELL/Devel-CheckOS-1.81.tar.gz
-	sha512sums = 359a48002d196bbc66006cf9a79d8995050b7fd2bae6dedbad4c182f23be9c7b1f8977f796833a22b42cff1ecaa6380895883952236c8c5bb4dee7cdf4072a39
+	source = http://search.cpan.org/CPAN/authors/id/D/DC/DCANTRELL/Devel-CheckOS-2.04.tar.gz
+	md5sums = 19f2608a513508522d2b75a24030af8e
+	sha512sums = efb2d723a704cabf1eda2521629f9cf1cf915ee45ab8bd8a81db11fba25fa2d3e5cb3fbb6252307cc3423b5edf775339a08141a8b9d2d06ad568a7b3bbc8c81b
 
 pkgname = perl-devel-checkos
-
