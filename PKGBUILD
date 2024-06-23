@@ -1,7 +1,7 @@
 # Maintainer: Mark Collins <tera_1225 hat hotmail dote com>
 pkgname=owasp-core-ruleset
 _name=coreruleset
-pkgver=4.2.0
+pkgver=4.3.0
 pkgrel=1
 pkgdesc="OWASP ModSecurity Core Rule Set"
 arch=('any')
@@ -10,7 +10,7 @@ license=('Apache-2.0')
 depends=(apache modsecurity)
 source=("${pkgname}-${pkgver}.zip::https://github.com/coreruleset/coreruleset/archive/refs/tags/v${pkgver}.zip"
         "${pkgname}.install")
-sha256sums=('6b9cc7af41a5fdf21ce9e7badb091056286d7718567538e81c0c6c009dd1b774'
+sha256sums=('76421a140cc82ce83f58531a04eee7b36a1ddee832d0871301f5bb70bb84ad75'
             '9e2bd146b6608d0b1e1b786e35f5f8ea8eefc2a149854876f92127e0536d0e09')
 
 package() {
