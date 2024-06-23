@@ -1,11 +1,15 @@
+regenerate_grub_config() {
+    if command -v grub-mkconfig > /dev/null 2>&1; then
+        echo "Regenerating GRUB configuration..."
+        grub-mkconfig -o /boot/grub/grub.cfg
+    fi
+}
+
 post_install() {
-    echo "Regenerating GRUB configuration..."
-    
-    grub-mkconfig -o /boot/grub/grub.cfg
+    regenerate_grub_config
 }
 
 post_remove() {
-    echo "Regenerating GRUB configuration after removal..."
+    regenerate_grub_config
 
-    grub-mkconfig -o /boot/grub/grub.cfg
 }
