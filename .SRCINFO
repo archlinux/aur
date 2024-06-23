@@ -1,6 +1,6 @@
 pkgbase = csxcad-git
 	pkgdesc = A C++ library to describe geometrical objects and their properties
-	pkgver = 0.6.3.r2.gc6a1587
+	pkgver = 0.6.3.r4.g9257bf1
 	pkgrel = 2
 	url = https://github.com/thliebig/CSXCAD
 	arch = i686
@@ -22,6 +22,8 @@ pkgbase = csxcad-git
 	depends = vtk
 	depends = fparser
 	depends = python
+	depends = python-matplotlib
+	depends = python-numpy
 	source = csxcad::git+https://github.com/thliebig/CSXCAD
 	sha256sums = SKIP
 
@@ -36,6 +38,8 @@ pkgname = csxcad-git
 pkgname = python-csxcad-git
 	pkgdesc = A C++ library to describe geometrical objects and their properties - python module
 	depends = python
+	depends = python-matplotlib
+	depends = python-numpy
 	depends = csxcad
 	provides = python-csxcad
 	conflicts = python-csxcad

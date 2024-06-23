@@ -6,7 +6,7 @@ _pkgtype="-git"
 # basic info
 _pkgname="csxcad"
 pkgbase="$_pkgname${_pkgtype:-}"
-pkgver=0.6.3.r2.gc6a1587
+pkgver=0.6.3.r4.g9257bf1
 pkgrel=2
 pkgdesc="A C++ library to describe geometrical objects and their properties"
 url="https://github.com/thliebig/CSXCAD"
@@ -23,6 +23,8 @@ _depends_csxcad=(
 )
 _depends_python_csxcad=(
   'python'
+  'python-matplotlib'
+  'python-numpy'
 )
 
 depends=(
