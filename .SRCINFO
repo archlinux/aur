@@ -1,5 +1,5 @@
 pkgbase = tsshd
-	pkgdesc = The `tssh --udp` works like `mosh`, and the `tsshd` works like `mosh-server`.
+	pkgdesc = The 'tssh --udp' works like 'mosh', and the 'tsshd' works like 'mosh-server'.
 	pkgver = 0.1.0
 	pkgrel = 1
 	epoch = 0
