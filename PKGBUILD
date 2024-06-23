@@ -8,7 +8,7 @@ pkgdesc="GSM Radio Modem based on a fork of the OpenBTS Transceiver program"
 url="https://osmocom.org/projects/osmotrx"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=('AGPL-3.0-only')
-depends=('libosmocore'
+depends=('libosmocore-git'
          'libusb'
          'libuhd' # --with-uhd
          'limesuite' # --with-lms
