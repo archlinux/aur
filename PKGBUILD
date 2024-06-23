@@ -1,14 +1,18 @@
-# Maintainer: Thomas Simatic <thomas.sim@mailo.com>
-pkgname="i3-scratchpad-git"
-pkgver=1.1
+# Maintainer: emilylime <emilyyyylime+aur@gmail.com>
+# Contributor: Thomas Simatic <thomas.sim@mailo.com>
+pkgname="sway-scratchpad-git"
+pkgver=2.0
 pkgrel=1
-pkgdesc="The Swiss Army Knife of floating i3 windows"
+pkgdesc="The Swiss Army Knife of floating i3/Sway windows"
 arch=(any)
+url="https://github.com/emilyyyylime/sway-scratchpad"
 license=('Unlicense')
-depends=(i3-wm wmctrl bash xdotool)
-optdepends=('rxvt-unicode: for terminal programs support')
+depends=(bash jq coreutils)
+makedepends=(git)
+optdepends=()
+provides=(i3-scratchpad-git)
 
-source=("git+https://gitlab.com/aquator/i3-scratchpad.git")
+source=("git+https://github.com/emilyyyylime/sway-scratchpad.git")
 md5sums=(SKIP)
 
 pkgver() {
@@ -18,5 +22,5 @@ pkgver() {
 
 package() {
     cd ${pkgname%-git}
-    install -Dm 755 i3-scratchpad -t "$pkgdir"/usr/bin
+    install -Dm 755 ${pkgname%-git} -t "$pkgdir"/usr/bin
 }

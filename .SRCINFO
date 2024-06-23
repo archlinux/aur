@@ -1,16 +1,16 @@
-pkgbase = i3-scratchpad-git
-	pkgdesc = The Swiss Army Knife of floating i3 windows
-	pkgver = 1.1
+pkgbase = sway-scratchpad-git
+	pkgdesc = The Swiss Army Knife of floating i3/Sway windows
+	pkgver = 2.0
 	pkgrel = 1
+	url = https://github.com/emilyyyylime/sway-scratchpad
 	arch = any
 	license = Unlicense
-	depends = i3-wm
-	depends = wmctrl
+	makedepends = git
 	depends = bash
-	depends = xdotool
-	optdepends = rxvt-unicode: for terminal programs support
-	source = git+https://gitlab.com/aquator/i3-scratchpad.git
+	depends = jq
+	depends = coreutils
+	provides = i3-scratchpad-git
+	source = git+https://github.com/emilyyyylime/sway-scratchpad.git
 	md5sums = SKIP
 
-pkgname = i3-scratchpad-git
-
+pkgname = sway-scratchpad-git
