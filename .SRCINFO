@@ -1,8 +1,8 @@
 pkgbase = dgsh-git
 	pkgdesc = Directed Graph Shell
-	pkgver = r1549.df703ef
+	pkgver = r1568.e51fb99911
 	pkgrel = 1
-	url = http://www.dmst.aueb.gr/dds/sw/dgsh/
+	url = https://www2.dmst.aueb.gr/dds/sw/dgsh/
 	arch = any
 	license = Apache
 	checkdepends = check
@@ -22,8 +22,7 @@ pkgbase = dgsh-git
 	makedepends = bison
 	makedepends = rsync
 	optdepends = graphviz: visualize graphs
-	source = git://github.com/dspinellis/dgsh.git
+	source = git+https://github.com/dspinellis/dgsh.git
 	md5sums = SKIP
 
 pkgname = dgsh-git
-

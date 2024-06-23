@@ -1,10 +1,10 @@
 # Maintainer: Lucas Werkmeister <mail@lucaswerkmeister.de>
 pkgname=dgsh-git
-pkgver=r1549.df703ef
+pkgver=r1568.e51fb99911
 pkgrel=1
 pkgdesc="Directed Graph Shell"
 arch=('any')
-url="http://www.dmst.aueb.gr/dds/sw/dgsh/"
+url="https://www2.dmst.aueb.gr/dds/sw/dgsh/"
 license=('Apache')
 depends=()
 makedepends=(
@@ -30,7 +30,7 @@ checkdepends=(
 optdepends=(
     'graphviz: visualize graphs'
 )
-source=('git://github.com/dspinellis/dgsh.git')
+source=('git+https://github.com/dspinellis/dgsh.git')
 md5sums=('SKIP')
 
 pkgver() {
