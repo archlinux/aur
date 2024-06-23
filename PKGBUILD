@@ -4,7 +4,7 @@ _CUDA_ARCH_LIST="6.0;6.1;6.2;7.0;7.2;7.5;8.0;8.6;8.6;8.9;9.0;9.0+PTX"
 _pkgname=mmcv
 pkgname=(python-mmcv python-mmcv-full)
 pkgver=2.2.0
-pkgrel=1
+pkgrel=3
 epoch=1
 pkgdesc='OpenMMLab Computer Vision Foundation'
 arch=('x86_64')
@@ -45,8 +45,6 @@ build() {
   python -m build --wheel --no-isolation
 
   cd "${srcdir}/${_pkgname}-full-${pkgver}"
-  CC=/opt/cuda/bin/gcc \
-  CXX=/opt/cuda/bin/g++ \
   FORCE_CUDA=1 \
   MMCV_WITH_OPS=1 \
   TORCH_CUDA_ARCH_LIST=${_CUDA_ARCH_LIST} \
