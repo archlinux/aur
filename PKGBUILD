@@ -17,10 +17,18 @@ makedepends=(
   'python-build'
   'python-installer'
   'python-wheel'
-  'python-jupyter-core'
-  'python-corner'
   'python-numpy'
   'python-matplotlib'
+)
+depends=(
+  'python-jupyter-core'
+  'python-corner'
+  'python-seaborn'
+  'python-lmfit'
+  'python-multiprocess'
+  'python-tqdm'
+  'ipython'
+  'azure2'
 )
 source=(
   "https://files.pythonhosted.org/packages/00/4c/3d1682432744d06f66b817bbcdb9c992bb3ba4feb1edfcd5dbd4284efb13/${_pkgname}-${pkgver}.tar.gz"
