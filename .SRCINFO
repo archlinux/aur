@@ -10,7 +10,7 @@ pkgbase = curse-downloader-git
 	depends = python-appdirs
 	depends = python-requests
 	depends = tk
-	source = curse-downloader-git::git+git://github.com/portablejim/curseDownloader.git
+	source = curse-downloader-git::git+https://github.com/portablejim/curseDownloader.git
 	source = curse-downloader.sh
 	source = curse-updater.sh
 	sha256sums = SKIP
@@ -18,4 +18,3 @@ pkgbase = curse-downloader-git
 	sha256sums = a3f0badb7f52a1e634a00b6360ce44031fc53055013af9276dbebaa711e5c40e
 
 pkgname = curse-downloader-git
-
