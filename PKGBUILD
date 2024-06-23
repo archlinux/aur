@@ -3,17 +3,24 @@
 
 pkgname=driftnet-git
 _gitname=driftnet
-pkgver=v1.3.0.r2.gc64d118
+pkgver=v1.5.0.r22.gd7922b1
 pkgrel=1
 pkgdesc="Driftnet watches network traffic, and picks out and displays JPEG and GIF images for display"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url=https://github.com/deiv/driftnet
-license=('GPL3')
-depends=('libpcap' 'libjpeg' 'libpng12' 'giflib' 'gtk2' 'libwebsockets')
+license=('GPL-2.0-only')
+depends=('libpcap'
+	 'libjpeg'
+	 #'libungif'
+	 'giflib'
+	 'libpng'
+	 'libwebp'
+	 'libwebsockets'
+	 'gtk3'
+)
 makedepends=(git)
 conflicts=('driftnet')
-options=(!emptydirs !libtool)
-source=('git://github.com/deiv/driftnet.git')
+source=('git+https://github.com/deiv/driftnet.git')
 md5sums=('SKIP')
 
 pkgver() {
@@ -23,9 +30,8 @@ pkgver() {
 
 build() {
   local _gitdir=$srcdir/$_gitname
+
   cd $_gitdir
-  git clean -dfx
-  git reset --hard
   autoreconf -fi
   ./configure --prefix=/usr
   make
@@ -33,5 +39,6 @@ build() {
 
 package() {
   cd $srcdir/$_gitname
+
   make DESTDIR=$pkgdir install
 }

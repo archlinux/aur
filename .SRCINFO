@@ -1,25 +1,24 @@
 pkgbase = driftnet-git
 	pkgdesc = Driftnet watches network traffic, and picks out and displays JPEG and GIF images for display
-	pkgver = v1.3.0.r2.gc64d118
+	pkgver = v1.5.0.r22.gd7922b1
 	pkgrel = 1
 	url = https://github.com/deiv/driftnet
 	arch = i686
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
-	license = GPL3
+	license = GPL2
 	makedepends = git
 	depends = libpcap
 	depends = libjpeg
-	depends = libpng12
-	depends = giflib
-	depends = gtk2
+	depends = libpng
+	depends = libwebp
 	depends = libwebsockets
+	depends = gtk3
 	conflicts = driftnet
 	options = !emptydirs
 	options = !libtool
-	source = git://github.com/deiv/driftnet.git
+	source = git+https://github.com/deiv/driftnet.git
 	md5sums = SKIP
 
 pkgname = driftnet-git
-
