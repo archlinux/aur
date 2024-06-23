@@ -1,14 +1,16 @@
 pkgbase = perl-parse-pmfile
 	pkgdesc = parses .pm file as PAUSE does
-	pkgver = 0.43
+	pkgver = 0.47
 	pkgrel = 1
-	url = http://search.cpan.org/dist/Parse-PMFile/
+	url = https://metacpan.org/release/Parse-PMFile
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	depends = perl-json-pp
-	source = http://search.cpan.org/CPAN/authors/id/I/IS/ISHIGAKI/Parse-PMFile-0.43.tar.gz
-	sha256sums = be61e807204738cf0c52ed321551992fdc7fa8faa43ed43ff489d0c269900623
+	makedepends = perl-extutils-makemaker-cpanfile>=0.09
+	depends = perl>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/I/IS/ISHIGAKI/Parse-PMFile-0.47.tar.gz
+	md5sums = d8c08a5af7456c8bc7bbfbc4ea14591d
+	sha512sums = a273c1e52d1f4e6249af2af9a1d96b5d97424a934efcf1d9da5ccaea86a519714b148f172b764503911a380603522745ccc1c59f9d37122b053d692a68e3cf43
 
 pkgname = perl-parse-pmfile
-
