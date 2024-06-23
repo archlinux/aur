@@ -1,0 +1,4 @@
+[python-esutil]
+source = "github"
+github = "esheldon/esutil"
+use_latest_release = "true"
