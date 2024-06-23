@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ente-auth
-pkgdesc="2FA app with free end-to-end encrypted backup and sync"
-pkgver=3.0.13
+pkgdesc="Open source 2FA authenticator, with end-to-end encrypted backups"
+pkgver=3.0.17
 pkgrel=1
 _flutter_ver=3.22.2
 arch=('x86_64' 'aarch64')
@@ -31,14 +31,14 @@ source=("git+https://github.com/ente-io/ente.git#tag=auth-v$pkgver"
         'git+https://github.com/abhinavkgrd/ffmpeg.wasm.git'
         'git+https://github.com/ente-io/PhotoSwipe.git'
         'ente_auth.desktop')
-sha256sums=('b9a40bf55736fb3673c8afa3e2b0fade7bd735be26dcc17ed37c39482c0b40e1'
+sha256sums=('635c56166b49b0fd5d42ecaf92fc80ac8771899f864a4c0227c13ab72e10bdd5'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '55bc5058368c60b521b9f183c6ac8a73ca6bafbf775399fb9a8c91bd67a3e246')
+            '92368080b3a0381ede798c4fc76bce22dc3b4bdc0f2c01b317bb20f77aaf4fd6')
 
 prepare() {
   cd ente/auth
@@ -92,6 +92,7 @@ package() {
 
   install -Dm644 assets/icons/auth-icon.png "$pkgdir/usr/share/pixmaps/ente_auth.png"
   install -Dm644 "$srcdir/ente_auth.desktop" -t "$pkgdir/usr/share/applications/"
+  install -Dm644 linux/packaging/ente_auth.appdata.xml -t "$pkgdir/usr/share/metainfo/"
 
   # Remove insecure RUNPATH pointing to build dir
 #  chrpath --delete "$pkgdir/opt/$pkgname"/lib/*.so
