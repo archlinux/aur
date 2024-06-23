@@ -2,7 +2,7 @@
 # Maintainer: Stefan Sielaff <aur AT stefan-sielaff DOT de>
 
 pkgname=logitechmediaserver-bin
-pkgver=8.5.1
+pkgver=8.5.2
 pkgrel=1
 pkgdesc="Slimserver for Logitech Squeezebox players. This server is also called Logitech Media Server)"
 arch=(i686 x86_64 arm armv6h armv7h aarch64)
@@ -12,7 +12,7 @@ depends=(perl)
 install=logitechmediaserver.install
 source=("https://downloads.lms-community.org/LogitechMediaServer_v${pkgver}/logitechmediaserver-${pkgver}.tgz"
         'logitechmediaserver-bin.service')
-sha256sums=('2b44cda81e3965c11498fae920215026761205043978d003ba8f236a90055a7c'
+sha256sums=('159c259a7345b105871e7a31eb971e05ef1e3d37e01b40f9f787d50ddde583ac'
             '47e79654df21e4f16274966d4fbc41978ebfac69e987da7d9f30bb0f98ec9d01')
 
 prepare() {
