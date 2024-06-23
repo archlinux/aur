@@ -23,7 +23,7 @@ _disabled_staging="" ## e.g. "-W Compiler_Warnings -W user32-. . ."
 ## to use this, create a "custompatches" folder in the top-level PKGBUILD directory and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the custompatches folder
 ## manually if you wish to use them alongside your own patches.
-_custompatches=false
+_custompatches=true
 
 ################################################################################################################################
 ################################################################################################################################
@@ -33,7 +33,7 @@ if [ -n "$wow64build" ]; then _wowname="wow64-"; else _wowname=""; fi
 pkgname=wine-osu-spectator-"${_wowname}"bin
 
 pkgver=9.11${wow64build:-}
-pkgrel=3
+pkgrel=4
 
 pkgdesc="A compatibility layer for running Windows programs, but with osu! specific patches"
 if [ -n "$wow64build" ]; then pkgdesc+=" (WoW64 version)"; fi
@@ -446,16 +446,12 @@ package() { _set_vars;
     dlldir="${pkgdir}"/opt/"${pkgname}"/lib64/wine install
 
   ## Font aliasing settings for Win32 applications
-  if ! [ -e "/usr/share/fontconfig/conf.avail/30-win32-aliases.conf" ] && ! [ -e "/usr/share/fontconfig/conf.default/30-win32-aliases.conf" ]; then
-    install -d "${pkgdir}"/usr/share/fontconfig/conf.{avail,default}
-    install -m644 "${srcdir}"/30-win32-aliases.conf "${pkgdir}/usr/share/fontconfig/conf.avail"
-    ln -s ../conf.avail/30-win32-aliases.conf "${pkgdir}/usr/share/fontconfig/conf.default/30-win32-aliases.conf"
-  fi
+  install -d "${pkgdir}"/usr/share/fontconfig/conf.{avail,default}
+  install -m644 "${srcdir}"/30-win32-aliases.conf "${pkgdir}/usr/share/fontconfig/conf.avail/30-win32-aliases-"${_wowname}"spec.conf"
+  ln -s ../conf.avail/30-win32-aliases.conf "${pkgdir}/usr/share/fontconfig/conf.default/30-win32-aliases-"${_wowname}"spec.conf"
 
   ## Install wine binary format
-  if ! [ -e "/usr/lib/binfmt.d/wine.conf" ]; then
-    install -Dm 644 "${srcdir}"/wine-binfmt.conf "${pkgdir}/usr/lib/binfmt.d/wine.conf"
-  fi
+  install -Dm 644 "${srcdir}"/wine-binfmt.conf "${pkgdir}/usr/lib/binfmt.d/wine-"${_wowname}"spec.conf"
 
   ## Strip libs
   msg2 "Stripping unneeded symbols from libraries"
