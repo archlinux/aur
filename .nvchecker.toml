@@ -1,0 +1,4 @@
+[pypy3-pip]
+source = "github"
+github = "pypa/pip"
+use_max_tag = "true"
