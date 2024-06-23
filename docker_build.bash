@@ -9,7 +9,7 @@ docker run --rm \
   --env BUILD_USER_UID=$(id -u) \
   --env ROOTLESS=${ROOTLESS:-no} \
   --volume $(pwd):/mnt/project \
-  implementing/builder makepkg
+  implementing/builder:latest makepkg
 
 # The pkgver will be updated; so we restore it.
 git checkout PKGBUILD
