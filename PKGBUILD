@@ -4,7 +4,7 @@
 pkgname=bitcoin-gold-git
 _gitname=BTCGPU
 pkgver=0.17.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A peer-to-peer network based digital currency. This package provides bitcoin-gold-core binaries: bgoldd, bgold-qt, bgold-tx, and bgold-cli"
 arch=('any')
 url="https://bitcoingold.org/"
@@ -14,12 +14,12 @@ makedepends=('qt5-base' 'qt5-tools' 'pkg-config' 'git' 'boost-libs' 'boost' 'gcc
 provides=('bgold' 'bgold-qt' 'bgoldd' 'bgold-tx' 'bgold-cli')
 
 # Use the 0.15 branch because master is the staging branch according to h4x3rotab on Slack channel.
-source=('git://github.com/BTCGPU/BTCGPU.git#branch=0.17'
+source=('git+https://github.com/BTCGPU/BTCGPU.git#branch=0.17'
         'deque.patch'
         'qpainterpath.patch::https://github.com/bitcoin/bitcoin/commit/79b0a69e09c1a912122e6431ea3c530cc292c690.patch')
 sha256sums=('SKIP'
             '45e0f557f46ba5769e3aaaf91599b8190e5844bba65a3a83b40e3a8cf411b62d'
-            '475b6c0e7bc8d797020bdfc048a6b66e0513482fd469d6da2a599d3811f81f52')
+            '6ff385b67936c152ae3f618076196b626c770937486be7c08b4ddaf333b5d721')
 
 pkgver() {
   cd "$srcdir/$_gitname"
