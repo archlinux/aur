@@ -2,7 +2,7 @@
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 pkgname=collision
 _app_id=dev.geopjr.Collision
-pkgver=3.8.0
+pkgver=3.8.1
 pkgrel=1
 pkgdesc="Check hashes for your files. A simple GUI tool to generate, compare and verify MD5, SHA1 & SHA256 hashes"
 arch=('x86_64')
@@ -10,12 +10,11 @@ url="https://collision.geopjr.dev"
 license=('BSD-2-Clause')
 depends=('gc' 'libadwaita' 'pcre2')
 makedepends=('crystal' 'gobject-introspection' 'shards' 'spglib')
-checkdepends=('appstream')
 optdepends=('python-nautilus: Add a shortcut to the Nautilus right-click menu')
 conflicts=("$pkgname-hashes" 'hashbrown')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/GeopJr/Collision/archive/v$pkgver.tar.gz"
         'Makefile.patch')
-sha256sums=('0ea9e4f15f072a6befaf64b6f75cad01c34d9d892698d9ac5731853154f58f06'
+sha256sums=('05984af79c3edbe924871f6ca34eaa6e32f97065d834b69d6253a0ce6d87a1dd'
             'da920ec69e57f780613fddfa1cd0c9bb2b39a3cba6350f9060c2e91c5b15d3b5')
 
 prepare() {
