@@ -23,7 +23,7 @@ _disabled_staging="" ## e.g. "-W Compiler_Warnings -W user32-. . ."
 ## to use this, create a "custompatches" folder in the top-level PKGBUILD directory and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the custompatches folder
 ## manually if you wish to use them alongside your own patches.
-_custompatches=true
+_custompatches=false
 
 ################################################################################################################################
 ################################################################################################################################
