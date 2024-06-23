@@ -1,7 +1,7 @@
 pkgbase = pinocchio
 	pkgdesc = Dynamic computations using Spatial Algebra
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/stack-of-tasks/pinocchio
 	arch = i686
 	arch = x86_64
@@ -24,11 +24,13 @@ pkgbase = pinocchio
 	source = https://github.com/stack-of-tasks/pinocchio/releases/download/v3.0.0/pinocchio-3.0.0.tar.gz
 	source = https://github.com/stack-of-tasks/pinocchio/releases/download/v3.0.0/pinocchio-3.0.0.tar.gz.sig
 	source = pinocchio-valgrind.patch::https://github.com/stack-of-tasks/pinocchio/pull/2264.patch
+	source = pinocchio3-hpp-compat.patch::https://github.com/stack-of-tasks/pinocchio/pull/2284.patch
 	validpgpkeys = A031AD35058955293D54DECEC45D22EF408328AD
 	validpgpkeys = 1462AF00C9CF3C9E7AFC905E63380359F089A579
 	sha256sums = 0e49f3d92e303fe109bc8b329513708a03cdb734a90cb7734821ed2978de8d10
 	sha256sums = SKIP
 	sha256sums = 38031f5ec850a44ec1a1a19fb82cffb880ea0527a56897ea3d66f0c4c8f3af4e
+	sha256sums = 3059bb74fcf58f9d815e3b80ab2e798269cec106198f06a7f720fe3074ef3aab
 
 pkgname = pinocchio
 
