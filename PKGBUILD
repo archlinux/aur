@@ -2,7 +2,7 @@
 
 pkgname=ruby-cucumber-compatibility-kit
 pkgver=15.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Kit to check compatibility with official cucumber implementation"
 arch=(any)
 url='https://github.com/cucumber/compatibility-kit'
@@ -26,6 +26,7 @@ b2sums=('03e4e353263e774462a4dd63404909dbbb0c235718a6a4e7a35c0ca6931adbedb579fd4
 prepare() {
   cd compatibility-kit-$pkgver/ruby
   sed -i 's|~>|>=|' cucumber-compatibility-kit.gemspec
+  sed -i "s/, '< 25'//" cucumber-compatibility-kit.gemspec
 }
 
 build() {
