@@ -1,10 +1,10 @@
 pkgname=garden-tools
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Garden grows and cultivates collections of Git trees"
 arch=('x86_64')
 url="https://gitlab.com/garden-rs/garden"
-license=('GPL-3.0-or-later')
+license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("https://gitlab.com/garden-rs/garden/-/archive/v${pkgver}/garden-v${pkgver}.tar.gz")
@@ -41,4 +41,6 @@ package() {
     "$pkgdir/usr/share/fish/vendor_completions.d/"
   install -Dm644 _garden -t \
     "$pkgdir/usr/share/zsh/site-functions/"
+
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
