@@ -8,5 +8,7 @@ pkgbase = tetris-tui-git
 	makedepends = git
 	makedepends = cargo
 	makedepends = rust
+	source = git+https://github.com/abusch8/Tetris
+	sha256sums = SKIP
 
 pkgname = tetris-tui-git

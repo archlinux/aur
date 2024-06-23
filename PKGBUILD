@@ -9,14 +9,16 @@ url='https://github.com/abusch8/Tetris'
 license=('GPL3')
 depends=()
 makedepends=('git' 'cargo' 'rust')
+source=('git+https://github.com/abusch8/Tetris')
+sha256sums=('SKIP')
 
 build() {
-    cd $pkgname
+    cd Tetris
     make
 }
 
 package() {
-    cd $pkgname
+    cd Tetris
     make clean install
 }
 
