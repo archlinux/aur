@@ -1,9 +1,9 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 # Contributor: Anatoly Bashmakov <anatoly at posteo dot net>
 
 pkgname=ruby-prawn-svg
 _pkgname=${pkgname#ruby-}
-pkgver=0.34.2
+pkgver=0.35.0
 pkgrel=1
 pkgdesc="SVG renderer for Prawn Ruby PDF library"
 arch=(any)
@@ -16,19 +16,16 @@ depends=(
   ruby-prawn
   ruby-rexml
 )
-makedepends=(rubygems)
+makedepends=(
+  git
+  rubygems
+)
 checkdepends=(ruby-rspec)
 options=(!emptydirs)
-source=(
-  "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-  "fix-gem-files.patch"
-)
-sha256sums=(
-  '1324f8a1657ec4964d38364dda7e7eeeb5181dd22d095735928ffc7522f2435c'
-  'fd1e6dee91c543bcd3f6f7be7b482fc4503f01533e5042625ae25f2210bf8521'
-)
+source=("git+$url.git#tag=v$pkgver")
+sha256sums=('41e75900839f44bcbe43688ede5070a0a0a6e4be738f183eee2bf587b900665d')
 
-_archive="$_pkgname-$pkgver"
+_archive="$_pkgname"
 
 prepare() {
   cd "$_archive"
@@ -36,13 +33,8 @@ prepare() {
   # Update gemspec/Gemfile to allow newer version of the dependencies
   sed -i -E 's|~>|>=|g' "$_pkgname.gemspec"
 
-  patch --forward --strip=1 --input="$srcdir/fix-gem-files.patch"
-
-  # Remove files potentially left over from previous builds
-  rm -rf tmp_install
-  rm -rf spec/sample_output/*.pdf
-  rm -f Gemfile.lock
-  rm -f "$_pkgname-$pkgver.gem"
+  cat /dev/null > Gemfile.lock
+  sed -i '/rubocop/d' Gemfile
 }
 
 build() {
