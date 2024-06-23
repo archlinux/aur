@@ -9,7 +9,7 @@ pkgname=('xapp-thumbnailers-common'
          'xapp-jxl-thumbnailer')
 pkgbase=xapp-thumbnailers
 pkgver=1.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Thumbnailers for GTK Desktop Environments"
 arch=('any')
 url="https://github.com/linuxmint/xapp-thumbnailers"
@@ -93,7 +93,7 @@ package_xapp-gimp-thumbnailer() {
 }
 
 package_xapp-jxl-thumbnailer() {
-  pkgdesc="GIMP thumbnailer"
+  pkgdesc="JPEG XL thumbnailer"
   depends=('python-xapp' 'libjxl' 'xapp-thumbnailers-common')
 
   cd "$pkgbase-$pkgver"

@@ -1,7 +1,7 @@
 pkgbase = xapp-thumbnailers
 	pkgdesc = Thumbnailers for GTK Desktop Environments
 	pkgver = 1.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linuxmint/xapp-thumbnailers
 	arch = any
 	license = GPL-3.0-or-later
@@ -46,7 +46,7 @@ pkgname = xapp-gimp-thumbnailer
 	depends = xapp-thumbnailers-common
 
 pkgname = xapp-jxl-thumbnailer
-	pkgdesc = GIMP thumbnailer
+	pkgdesc = JPEG XL thumbnailer
 	depends = python-xapp
 	depends = libjxl
 	depends = xapp-thumbnailers-common
