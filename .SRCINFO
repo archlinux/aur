@@ -1,0 +1,24 @@
+pkgbase = mtk-uartboot-rs
+	pkgdesc = A third-party tool to load and execute binaries over UART for Mediatek SoCs.
+	pkgver = 0.1.1
+	pkgrel = 0
+	url = https://github.com/981213/mtk_uartboot
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = AGPL-3.0-or-later
+	makedepends = git
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	provides = mtk-uartboot-rs
+	provides = mtk-uartboot
+	conflicts = mtk-uartboot-rs
+	conflicts = mtk-uartboot
+	options = !strip
+	options = !debug
+	options = !lto
+	source = mtk_uartboot-0.1.1.tar.gz::https://github.com/981213/mtk_uartboot/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = aabff77ccd52ca5bc32cad03aa1d64e3568418f9c94883f8e8043a50f05ac65c
+
+pkgname = mtk-uartboot-rs
