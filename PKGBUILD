@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc="Geph connects you with the censorship-free Internet, even when nothing else works"
 arch=('x86_64')
 url="https://github.com/geph-official/gephgui-wry"
+options=('!lto')
 license=('custom')
 depends=(
   webkit2gtk
