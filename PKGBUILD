@@ -1,4 +1,5 @@
 # Maintainer: Thomas Holden <thomas@tholden.no>
+# Contributor: Paul <paul@mirliton.io>
 pkgname=zenbook-sound-fix-ux3405ma
 pkgver=r14.d14e262
 pkgrel=1
