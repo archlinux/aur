@@ -1,0 +1,14 @@
+pkgbase = mine-imator-bin
+	pkgdesc = 3D movie maker based on the sandbox game Minecraft (Mineimator)
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://www.mineimator.com/
+	arch = x86_64
+	license = custom
+	depends = libtiff5
+	provides = mine-imator
+	conflicts = mine-imator
+	source = https://www.mineimator.com/version/2.0.2/Mine-imator%202.0.2.deb
+	sha256sums = 07e34811d6ab68b528f5f0ba2bfc028d2985737dd5354924e3960f443fb4cb8f
+
+pkgname = mine-imator-bin
