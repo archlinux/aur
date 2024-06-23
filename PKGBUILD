@@ -1,7 +1,7 @@
 # Maintainer: hexchain <arch at hexchain dot org>
 
 pkgname=go-dnscollector
-pkgver=0.43.0
+pkgver=0.46.0
 pkgrel=1
 pkgdesc="Ingestor, aggregator and analyzer for your DNS traffic"
 url="https://github.com/dmachard/go-dnscollector"
@@ -9,18 +9,19 @@ license=('MIT')
 arch=('x86_64')
 depends=('glibc')
 makedepends=('go')
+options=(!debug)
 backup=(etc/go-dnscollector/config.yml)
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/dmachard/go-dnscollector/archive/refs/tags/v$pkgver.tar.gz"
     go-dnscollector.service
 )
-b2sums=('2894e55f03174c3bf155836b249109b724086bbf633e7de78e0f1dda80842c7c799372c27e902a3fec470a8fc2ddea24dc630dd0eb6d86befcf87e73385a357b'
+b2sums=('854adb1b0b3e03689d0b3ddbd53b2452355c142bb752247cb68418b9c56b3abccf6e85d71e69ebb85bc2be25d401f972ce9898ff539f53f3a9dffedc3dfa54db'
         'fbe5c63e637d832b94ee5b35732df8d1fafa9f790062820504108ebaa8b0be4f52d864478cfeb42d1db52058e98c912d6690635a3604ba16adb03a6f6ac92062')
 
 prepare() {
     mkdir -p "$srcdir/build"
     export GOPATH="$srcdir/build"
-    export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw"
+    export GOFLAGS="-mod=readonly -modcacherw"
 
     cd "$srcdir/go-dnscollector-$pkgver"
     go mod download
@@ -31,8 +32,8 @@ build() {
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
-    export GOPATH="$srcdir"
-    export GOLDFLAGS="-linkmode=external -compressdwarf=false -X main.Version=$pkgver"
+    export GOPATH="$srcdir/build"
+    export GOLDFLAGS="-linkmode=external -extldflags \"${LDFLAGS}\" -X main.Version=$pkgver"
     export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw"
 
     cd "$srcdir/go-dnscollector-$pkgver"
