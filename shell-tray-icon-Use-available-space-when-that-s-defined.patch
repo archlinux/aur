@@ -1,0 +1,113 @@
+From: =?utf-8?b?Ik1hcmNvIFRyZXZpc2FuIChUcmV2acOxbyki?= <mail@3v1n0.net>
+Date: Wed, 1 May 2024 04:18:50 +0200
+Subject: shell-tray-icon: Use available space when that's defined
+
+Fixes: https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/7613
+(cherry picked from commit b10bfe1f9ce2b7794103f54bcf249f935678b5f7)
+
+Origin: https://gitlab.gnome.org/3v1n0/gnome-shell/-/commits/tray-offscreen-xwindows
+Bug-Ubuntu: https://bugs.launchpad.net/bugs/2012388
+---
+ src/shell-tray-icon.c |  4 ++++
+ src/tray/na-xembed.c  | 29 +++++++++++++++++++++++++++++
+ src/tray/na-xembed.h  |  4 ++++
+ 3 files changed, 37 insertions(+)
+
+diff --git a/src/shell-tray-icon.c b/src/shell-tray-icon.c
+index 3eee5f5..e1ff1cd 100644
+--- a/src/shell-tray-icon.c
++++ b/src/shell-tray-icon.c
+@@ -185,6 +185,10 @@ shell_tray_icon_allocate (ClutterActor          *actor,
+ 
+   CLUTTER_ACTOR_CLASS (shell_tray_icon_parent_class)->allocate (actor, box);
+ 
++  na_xembed_set_available_size (NA_XEMBED (tray_icon->tray_child),
++                                roundf (clutter_actor_box_get_width (box)),
++                                roundf (clutter_actor_box_get_height (box)));
++
+   /* Find the actor's new coordinates in terms of the stage.
+    */
+   clutter_actor_get_transformed_position (actor, &wx, &wy);
+diff --git a/src/tray/na-xembed.c b/src/tray/na-xembed.c
+index 69690f1..447c1cb 100644
+--- a/src/tray/na-xembed.c
++++ b/src/tray/na-xembed.c
+@@ -43,6 +43,8 @@ struct _NaXembedPrivate
+   int request_height;
+   int current_width;
+   int current_height;
++  int available_width;
++  int available_height;
+   int resize_count;
+   int xembed_version;
+ 
+@@ -141,6 +143,8 @@ na_xembed_end_embedding (NaXembed *xembed)
+   priv->current_width = 0;
+   priv->current_height = 0;
+   priv->resize_count = 0;
++  priv->available_width = -1;
++  priv->available_height = -1;
+   g_clear_handle_id (&priv->resize_id, g_source_remove);
+ }
+ 
+@@ -186,6 +190,11 @@ na_xembed_synchronize_size (NaXembed *xembed)
+   width = priv->request_width;
+   height = priv->request_height;
+ 
++  if (priv->available_width >= 0)
++    width = priv->available_width;
++  if (priv->available_height >= 0)
++    height = priv->available_height;
++
+   XMoveResizeWindow (xdisplay,
+                      priv->socket_window,
+                      x, y,
+@@ -747,6 +756,10 @@ na_xembed_class_init (NaXembedClass *klass)
+ static void
+ na_xembed_init (NaXembed *xembed)
+ {
++  NaXembedPrivate *priv = na_xembed_get_instance_private (xembed);
++
++  priv->available_width = -1;
++  priv->available_height = -1;
+ }
+ 
+ void
+@@ -811,6 +824,22 @@ na_xembed_get_size (NaXembed *xembed,
+     *height = priv->request_height;
+ }
+ 
++void
++na_xembed_set_available_size (NaXembed *xembed,
++                              int       width,
++                              int       height)
++{
++  NaXembedPrivate *priv = na_xembed_get_instance_private (xembed);
++
++  if (priv->available_width == width && priv->available_height == height)
++    return;
++
++  priv->available_width = width;
++  priv->available_height = height;
++
++  na_xembed_resize (xembed);
++}
++
+ void
+ na_xembed_get_root_position (NaXembed *xembed,
+                              int      *x,
+diff --git a/src/tray/na-xembed.h b/src/tray/na-xembed.h
+index ea8f9f4..751da97 100644
+--- a/src/tray/na-xembed.h
++++ b/src/tray/na-xembed.h
+@@ -59,6 +59,10 @@ void na_xembed_get_size (NaXembed *xembed,
+ 			 int      *width,
+ 			 int      *height);
+ 
++void na_xembed_set_available_size (NaXembed *xembed,
++				   int       width,
++				   int       height);
++
+ void na_xembed_set_background_color (NaXembed           *xembed,
+ 				     const ClutterColor *color);
+ 

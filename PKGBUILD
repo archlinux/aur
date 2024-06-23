@@ -30,7 +30,7 @@ else
   pkgname=(gnome-shell-performance gnome-shell-performance-docs)
 fi
 pkgver=46.2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Next generation desktop shell | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://wiki.gnome.org/Projects/GnomeShell"
@@ -79,9 +79,26 @@ _commit=568152c22247efbb66cd13c15a638bf2d36bfadb  # tags/46.2^0
 source=(
   "git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
   "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
+  "build-Add-explicit-dependency-on-Xfixes.patch"
+  "shell-tray-icon-Trigger-a-relayout-when-the-underneath-xe.patch"
+  "shell-tray-icon-Use-available-space-when-that-s-defined.patch"
+  "tray-na-xembed-Destroy-socket-window-when-ending-the-embe.patch"
+  "tray-na-xembed-Use-XShape-to-remove-input-on-socket-windo.patch"
 )
+sha256sums=('51bfde603207878ba74aa79e003c23307d46ff310a11d04c3f0386cae4ca4132'
+            'SKIP'
+            '512e3116ae9eea5b9d36092cd05074da86d37c911144f3d66df95da0d2d60353'
+            'a3eda616996980f6f27c58c6b0d9c0d51094e7ad9c52f809a2a7f8eac9a2fbd9'
+            '612dcb05347295893771396c8cfb993ec66871f04b9b6b93e188369cb12bdf2c'
+            'fcfec78b92f027e73958cc3e4b740d38db719b8185c79b040571a297d42056b1'
+            '9c51c48b3b7c6e5851630eb74289ab7897abca9226a89075a8b225fda2bda255')
 b2sums=('dbc32a609c1ee2f59ce777f2af4a541b376d5e53bded7d4b6ddfa0a913db503fc429fa0f9b8c8068b9e00382383e669ea6cbf553caa2348666cdc33bee8ad4ad'
-        'SKIP')
+        'SKIP'
+        'bcd22b41f9ed65db461bab3460954b15345c3f72fb4da99cae702627d69bef25c8689464cb3ac37ef23b38ea90b18cf2486a947aa9f8dae4f69915367ee3db16'
+        'f8e7d2e5e7717b8610d53393dab97e0af181d8eed3d95988357347f57864e88f5339ce67f22ccef86d30d19c8a03b02e5938bc23c23db37f41e67482a133c3b4'
+        'd13b586f9be8e4088f8cefa3c63e4e1143f8b7206a8c05fc4646dbdf2e931260da531ad2d2393c47e85e7a6f64dd76b36ea9884ce16246246bf116c657f90163'
+        'f054d5dd341c45ed2accf06f3755096fb1e96aca04106fcda725115eee8e7c8dfc5b27e4ecd93df020524988a9559a25a052b2fa16d7ec48c178a4329ab7932a'
+        'be45ea9d9c793ed9ba7f7cdbdaefc13868619db0502d73ba1ed3a3f2dd8b40d72c42facbce9598245fc802ad042e785a4515b6ea04015104eec88a0035cf8129')
 
 pkgver() {
   cd $_pkgname
@@ -123,6 +140,15 @@ prepare() {
 
   git reset --hard
   git cherry-pick --abort || true
+
+  # https://github.com/ubuntu/gnome-shell-extension-appindicator/issues/439
+  # https://bugs.launchpad.net/ubuntu/+source/gnome-shell-extension-appindicator/+bug/2012388
+  msg2 "Patching with the shell tray icon patches..."
+  patch -Np1 -i ../build-Add-explicit-dependency-on-Xfixes.patch
+  patch -Np1 -i ../shell-tray-icon-Trigger-a-relayout-when-the-underneath-xe.patch
+  patch -Np1 -i ../shell-tray-icon-Use-available-space-when-that-s-defined.patch
+  patch -Np1 -i ../tray-na-xembed-Destroy-socket-window-when-ending-the-embe.patch
+  patch -Np1 -i ../tray-na-xembed-Use-XShape-to-remove-input-on-socket-windo.patch
 
   # git remote add verde https://gitlab.gnome.org/verdre/gnome-shell.git || true
   # git fetch verde
