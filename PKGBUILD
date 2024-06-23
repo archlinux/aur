@@ -2,7 +2,7 @@
 # Contributor: Michel Zou <xantares09@hotmail.com>
 _base=FMPy
 pkgname=python-${_base,,}
-_gitcommit=04aa5fd1aa86af25caa37b7f9a710d240890ca4e
+_gitcommit=9e9493cc89119963fc13fb36f289f2d40d96d22d
 pkgver=0.3.21
 pkgrel=1
 pkgdesc="Simulate Functional Mockup Units (FMUs) in Python"
@@ -22,8 +22,8 @@ source=(git+${url}.git#commit=${_gitcommit}
   git+https://github.com/ludocode/mpack.git
   git+https://github.com/modelica/Reference-FMUs.git)
 sha512sums=('SKIP'
-  'SKIP'
-  'SKIP')
+            'SKIP'
+            'SKIP')
 
 prepare() {
   cd ${_base}
