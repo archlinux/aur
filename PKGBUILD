@@ -31,7 +31,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  bazel build -c opt :${pkgname%-git}.par
+  bazel build -c opt :${pkgname%-git}_zip
 }
 
 check() {
@@ -45,5 +45,5 @@ package() {
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE.md"
   install -Dm644 "install/systemd/${pkgname%-git}@.service" "${pkgdir}/usr/lib/systemd/user/${pkgname%-git}@.service"
   install -Dm644 "install/systemd/${pkgname%-git}@.timer" "${pkgdir}/usr/lib/systemd/user/${pkgname%-git}@.timer"
-  install -Dm755 "bazel-bin/${pkgname%-git}.par" "${pkgdir}/usr/bin/${pkgname%-git}.par"
+  install -Dm755 "bazel-bin/${pkgname%-git}.zip" "${pkgdir}/usr/bin/${pkgname%-git}.zip"
 }
