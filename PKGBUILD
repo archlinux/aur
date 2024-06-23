@@ -2,13 +2,13 @@
 
 pkgname=sof
 pkgver=6.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Simple and fast calculate size of directories"
 license=(GPL3)
 url="https://codeberg.org/balaraz/sof"
 arch=(x86_64)
 depends=(gcc-libs)
-makedepends=(cmake ninja tclap gzip)
+makedepends=(cmake ninja gcc tclap gzip)
 provides=(sof)
 conflicts=()
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
@@ -18,6 +18,7 @@ package() {
 		cd ./sof
 		cmake -Bbuild -G Ninja \
 				-DCMAKE_BUILD_TYPE=Release \
+				-DCMAKE_CXX_COMPILER=g++ \
 				-DVERSION=${pkgver}
 		cmake --build ./build
 		DESTDIR="$pkgdir" cmake --install ./build --prefix=/usr
