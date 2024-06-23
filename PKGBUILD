@@ -5,9 +5,10 @@ pkgname=('xapp-thumbnailers-common'
          'xapp-raw-thumbnailer'
          'xapp-vorbiscomment-thumbnailer'
          'xapp-appimage-thumbnailer'
-         'xapp-gimp-thumbnailer')
+         'xapp-gimp-thumbnailer'
+         'xapp-jxl-thumbnailer')
 pkgbase=xapp-thumbnailers
-pkgver=1.2.4
+pkgver=1.2.5
 pkgrel=1
 pkgdesc="Thumbnailers for GTK Desktop Environments"
 arch=('any')
@@ -15,7 +16,7 @@ url="https://github.com/linuxmint/xapp-thumbnailers"
 license=('GPL-3.0-or-later')
 makedepends=('meson')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('88107e5fe431ab28724e1ad4888981a58581ed4b0764937ce1d4f069ae7b3b40')
+sha256sums=('7b7f9829497cc519dd6fa0b0687b3b1718ff2aeecad2ae5c3ef5585dd0db71a6')
 
 build() {
   arch-meson "$pkgbase-$pkgver" build
@@ -24,7 +25,7 @@ build() {
 
 package_xapp-thumbnailers-common() {
   pkgdesc="Common files for XApp thumbnailers"
-  depends=('python' 'python-pillow')
+  depends=('gdk-pixbuf2' 'python-gobject' 'python-pillow')
 
   meson install -C build --destdir "$pkgdir"
 
@@ -84,6 +85,16 @@ package_xapp-appimage-thumbnailer() {
 package_xapp-gimp-thumbnailer() {
   pkgdesc="GIMP thumbnailer"
   depends=('gimp' 'xapp-thumbnailers-common')
+
+  cd "$pkgbase-$pkgver"
+  install -Dm755 "files/usr/bin/$pkgname" -t "$pkgdir/usr/bin/"
+  install -Dm644 "files/usr/share/thumbnailers/$pkgname.thumbnailer" -t \
+    "$pkgdir/usr/share/thumbnailers/"
+}
+
+package_xapp-jxl-thumbnailer() {
+  pkgdesc="GIMP thumbnailer"
+  depends=('python-xapp' 'libjxl' 'xapp-thumbnailers-common')
 
   cd "$pkgbase-$pkgver"
   install -Dm755 "files/usr/bin/$pkgname" -t "$pkgdir/usr/bin/"

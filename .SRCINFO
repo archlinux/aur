@@ -1,17 +1,18 @@
 pkgbase = xapp-thumbnailers
 	pkgdesc = Thumbnailers for GTK Desktop Environments
-	pkgver = 1.2.4
+	pkgver = 1.2.5
 	pkgrel = 1
 	url = https://github.com/linuxmint/xapp-thumbnailers
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = meson
-	source = xapp-thumbnailers-1.2.4.tar.gz::https://github.com/linuxmint/xapp-thumbnailers/archive/refs/tags/1.2.4.tar.gz
-	sha256sums = 88107e5fe431ab28724e1ad4888981a58581ed4b0764937ce1d4f069ae7b3b40
+	source = xapp-thumbnailers-1.2.5.tar.gz::https://github.com/linuxmint/xapp-thumbnailers/archive/refs/tags/1.2.5.tar.gz
+	sha256sums = 7b7f9829497cc519dd6fa0b0687b3b1718ff2aeecad2ae5c3ef5585dd0db71a6
 
 pkgname = xapp-thumbnailers-common
 	pkgdesc = Common files for XApp thumbnailers
-	depends = python
+	depends = gdk-pixbuf2
+	depends = python-gobject
 	depends = python-pillow
 
 pkgname = xapp-mp3-thumbnailer
@@ -42,4 +43,10 @@ pkgname = xapp-appimage-thumbnailer
 pkgname = xapp-gimp-thumbnailer
 	pkgdesc = GIMP thumbnailer
 	depends = gimp
+	depends = xapp-thumbnailers-common
+
+pkgname = xapp-jxl-thumbnailer
+	pkgdesc = GIMP thumbnailer
+	depends = python-xapp
+	depends = libjxl
 	depends = xapp-thumbnailers-common
