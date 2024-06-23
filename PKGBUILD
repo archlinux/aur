@@ -3,7 +3,7 @@
 _name="cclib"
 pkgname="python-${_name}"
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for parsing and interpreting the results of computational chemistry packages."
 arch=("any")
 url="http://cclib.github.io"
@@ -27,9 +27,13 @@ optdepends=('psi4: for Psi4 bridge'
 source=("https://github.com/${_name}/${_name}/releases/download/v${pkgver}/${_name}-${pkgver}.tar.gz")
 sha256sums=('d10aa2352479fcdaa86cc32055a8ae7f98ce26523ea928944ab2256f0875d605')
 
-build() {
+prepare() {
   cd "${srcdir}/${_name}-${pkgver}"
   sed -i "s/versioningit~=2.0/versioningit/" pyproject.toml
+}
+
+build() {
+  cd "${srcdir}/${_name}-${pkgver}"
   python -m build --wheel --no-isolation
 }
 
