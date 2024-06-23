@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TargetSearch
-_pkgver=2.6.1
+_pkgver=2.6.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -20,8 +20,8 @@ optdepends=(
   r-tinytest
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b8359f73368ac86678ec3019e9c4ddd7')
-b2sums=('a350a84c7c5999f37097913d52e36cc3302e2467fa093df2d6a73f6f6d2adeb08f7fe68b3f3efcc97ef684af6aeca5c34868ab2837038cda15c22502b0067fe4')
+md5sums=('fec77104e789d246f454fb960fa5a034')
+b2sums=('21f770676280781e986529b44c5066b1829906965e2cbdf1d5f53b88eeec75148488c4d38f48f222aa0116ee23ea3441113f49198c027b782de7a68aa606b7d8')
 
 build() {
   mkdir build
