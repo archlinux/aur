@@ -2,7 +2,7 @@
 
 _name="cclib"
 pkgname="python-${_name}-git"
-pkgver=1.8.1.r4748.6832e465
+pkgver=1.8.2.r4972.ea13e497
 pkgrel=1
 pkgdesc="A library for parsing and interpreting the results of computational chemistry packages. (git version)"
 arch=("any")
@@ -12,6 +12,7 @@ makedepends=("git"
              "python-build"
              "python-installer"
              "python-setuptools"
+             "python-versioningit"
              "python-wheel")
 checkdepends=("psi4"
               "python-biopython"
@@ -35,6 +36,11 @@ sha256sums=('SKIP')
 
 prepare() {
   git -C "${srcdir}/${_name}" clean -dfx
+
+  cd "${srcdir}/${_name}"
+
+  # remove upper version restriction on versioningit
+  sed -i "s/versioningit~=2.0/versioningit/" pyproject.toml
 }
 
 build() {

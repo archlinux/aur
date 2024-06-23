@@ -1,6 +1,6 @@
 pkgbase = python-cclib-git
 	pkgdesc = A library for parsing and interpreting the results of computational chemistry packages. (git version)
-	pkgver = 1.8.1.r4748.6832e465
+	pkgver = 1.8.2.r4861.21f75e95
 	pkgrel = 1
 	url = http://cclib.github.io
 	arch = any
@@ -15,6 +15,7 @@ pkgbase = python-cclib-git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-versioningit
 	makedepends = python-wheel
 	depends = python-packaging
 	depends = python-periodictable
