@@ -12,6 +12,7 @@ pkgbase = osmo-sip-connector-git
 	depends = libosmocore
 	depends = talloc
 	depends = sofia-sip
+	provides = osmo-sip-connector=1.6.3.r6.g6122400
 	conflicts = osmo-sip-connector
 	backup = etc/osmocom/osmo-sip-connector.cfg
 	source = git+https://gitea.osmocom.org/cellular-infrastructure/osmo-sip-connector.git
