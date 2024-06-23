@@ -2,7 +2,7 @@
 # Co-Maintainer: danvj <geral@danvj.pt>
 
 pkgname=utopia
-pkgver=1.3.230
+pkgver=1.3.426
 pkgrel=1
 pkgdesc='Client for Utopia, an "Anti Orwellian Ecosystem"'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('other')
 source=(https://update.u.is/downloads/linux/utopia-latest.amd64.deb)
 depends=(libx11 libglvnd libpulse fontconfig)
 optdepends=(gst-plugins-base gst-plugins-ugly gst-plugins-good gst-plugins-bad)
-sha256sums=('ce27db82817d8337cdb17cb0bf6f5078b835fd9f83d97d55a8e025a947f33acf')
+sha256sums=('96e1c9b7017ba7342ebcac9558906717d6f6bab9653a77da0a962beb0e4bd0f6')
 
 build() {
   ar -x ${srcdir}/utopia-latest.amd64.deb

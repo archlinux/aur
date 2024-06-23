@@ -1,6 +1,6 @@
 pkgbase = utopia
 	pkgdesc = Client for Utopia, an "Anti Orwellian Ecosystem"
-	pkgver = 1.3.230
+	pkgver = 1.3.426
 	pkgrel = 1
 	url = https://u.is
 	arch = x86_64
@@ -14,6 +14,6 @@ pkgbase = utopia
 	optdepends = gst-plugins-good
 	optdepends = gst-plugins-bad
 	source = https://update.u.is/downloads/linux/utopia-latest.amd64.deb
-	sha256sums = ce27db82817d8337cdb17cb0bf6f5078b835fd9f83d97d55a8e025a947f33acf
+	sha256sums = 96e1c9b7017ba7342ebcac9558906717d6f6bab9653a77da0a962beb0e4bd0f6
 
 pkgname = utopia
