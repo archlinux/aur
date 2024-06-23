@@ -112,7 +112,7 @@ makedepends=(
 if [ -n "$_enable_check" ]; then
   checkdepends=(gnome-session xorg-server-xvfb pipewire-session-manager python-dbusmock zenity)
 fi
-_commit=485fa00f1a871b6c0bc0436a6b2bb3f8d46ea28a  # tags/46.2^6
+_commit=485fa00f1a871b6c0bc0436a6b2bb3f8d46ea28a  # tags/46.2^14
 source=("git+$url.git#commit=$_commit"
         'mr1441.patch'
         'mr3373.patch'
