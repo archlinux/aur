@@ -2,7 +2,7 @@
 # Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=osmo-trx-git
-pkgver=1.6.0.r9.ga118d98e
+pkgver=1.6.0.r33.g132ec745
 pkgrel=1
 pkgdesc="GSM Radio Modem based on a fork of the OpenBTS Transceiver program"
 url="https://osmocom.org/projects/osmotrx"
