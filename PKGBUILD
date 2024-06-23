@@ -3,9 +3,8 @@
 _pkgname=iminuit
 pkgbase="python-${_pkgname}"
 pkgname=("python-${_pkgname}" "python-${_pkgname}-docs")
-pkgver=2.25.2
-_commit=5b7bd08d66e8431378e95cbf172106c8424f0d80
-pkgrel=2
+pkgver=2.26.0
+pkgrel=1
 pkgdesc="Python interface for MINUIT, a physics analysis tool for function minimization."
 arch=('x86_64')
 url="https://iminuit.readthedocs.io"
@@ -33,10 +32,10 @@ makedepends=(
 checkdepends=('python-pytest' 'python-scipy' 'python-tabulate')
 options=(!emptydirs)
 source=(
-  "${pkgbase}::git+https://github.com/scikit-hep/iminuit#commit=$_commit"
+  "${pkgbase}::git+https://github.com/scikit-hep/iminuit#tag=v$pkgver"
   "${pkgbase}-root::git+https://github.com/root-project/root.git"
 )
-sha256sums=('e56605220e64561e04197037fcb45500a057e5a3873c67606ef9b328ef8c8ee9'
+sha256sums=('79469b8fea28c14f00ca2794ba2ad3384221168ea9120ca910aa41c7a512f513'
             'SKIP')
 
 _get_pyver () {

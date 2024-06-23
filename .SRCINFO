@@ -1,7 +1,7 @@
 pkgbase = python-iminuit
 	pkgdesc = Python interface for MINUIT, a physics analysis tool for function minimization.
-	pkgver = 2.25.2
-	pkgrel = 2
+	pkgver = 2.26.0
+	pkgrel = 1
 	url = https://iminuit.readthedocs.io
 	arch = x86_64
 	license = GPL
@@ -28,9 +28,9 @@ pkgbase = python-iminuit
 	makedepends = python-sphinx_rtd_theme
 	makedepends = python-scikit-build-core
 	options = !emptydirs
-	source = python-iminuit::git+https://github.com/scikit-hep/iminuit#commit=5b7bd08d66e8431378e95cbf172106c8424f0d80
+	source = python-iminuit::git+https://github.com/scikit-hep/iminuit#tag=v2.26.0
 	source = python-iminuit-root::git+https://github.com/root-project/root.git
-	sha256sums = e56605220e64561e04197037fcb45500a057e5a3873c67606ef9b328ef8c8ee9
+	sha256sums = 79469b8fea28c14f00ca2794ba2ad3384221168ea9120ca910aa41c7a512f513
 	sha256sums = SKIP
 
 pkgname = python-iminuit
