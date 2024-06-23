@@ -21,9 +21,8 @@ sha256sums=('SKIP')
 
 build() {
 	cd "${pkgname}"
-  export PATH=$PATH:/usr/lib/qt6/bin
 
-	cmake -GNinja -B build \
+	QTWAYLANDSCANNER="/usr/lib/qt6/bin" cmake -GNinja -B build \
 		-DCMAKE_BUILD_TYPE="RelWithDebInfo"
 
 	cmake --build build
