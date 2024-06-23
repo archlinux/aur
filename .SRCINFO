@@ -14,8 +14,7 @@ pkgbase = cleanupdate-git
 	optdepends = yay: needed for AUR support (first in priority)
 	optdepends = trizen: needed for AUR support (second in priority)
 	optdepends = pamac-cli: needed for AUR support (third in priority)
-	source = git://github.com/cubanpit/cleanupdate
+	source = git+https://github.com/cubanpit/cleanupdate
 	md5sums = SKIP
 
 pkgname = cleanupdate-git
-
