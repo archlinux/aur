@@ -1,13 +1,13 @@
 # Maintainer: Jake <aur@ja-ke.tech.de>
 
 pkgname=hyperion.ng-git
-pkgver=2.0.15.r130.1fd40571
+pkgver=2.0.15.r139.df7366a6
 pkgrel=1
 pkgdesc="The reworked version (next generation) of Hyperion, ambient light software"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/hyperion-project/hyperion.ng"
 license=('MIT')
-depends=('libusb' 'libcec' 'protobuf' 'python' 'qt5-serialport' 'qt5-x11extras' 'avahi' 'mbedtls' 'flatbuffers')
+depends=('libusb' 'libcec' 'protobuf' 'python' 'qt6-base' 'qt6-serialport' 'libxkbcommon' 'avahi' 'mbedtls' 'flatbuffers' 'libftdi' 'libjpeg-turbo')
 optdepends=('xorg-server: X11 grabbing')
 makedepends=('cmake')
 provides=('hyperion' 'hyperion.ng')
@@ -38,6 +38,7 @@ build() {
   test -d build || mkdir build
   cd build
   cmake -DCMAKE_BUILD_TYPE=Release \
+        -DQT_DIR=/usr/lib/cmake/Qt6 \
         -DPROTOBUF_PROTOC_EXECUTABLE=/usr/bin/protoc \
         -DUSE_SYSTEM_PROTO_LIBS=OFF \
         -DUSE_SYSTEM_MBEDTLS_LIBS=ON \
