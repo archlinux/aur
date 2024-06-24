@@ -1,0 +1,35 @@
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+    -   id: check-added-large-files
+        args: ['--maxkb=5']
+    -   id: check-merge-conflict
+        args: ['--assume-in-merge']
+    -   id: check-vcs-permalinks
+        args: ['--additional-github-domain', 'gitlab.archlinux.org']
+    -   id: check-yaml
+    -   id: end-of-file-fixer
+    -   id: fix-byte-order-marker
+    -   id: forbid-submodules
+    -   id: mixed-line-ending
+    -   id: trailing-whitespace
+-   repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.10.0.1
+    hooks:
+    -   id: shellcheck
+        types: [file]
+        types_or: [bash, pkgbuild]
+        args: ['--shell=bash', '--exclude=SC2034,SC2154,SC2164']
+-   repo: https://github.com/openstack/bashate
+    rev: 2.1.1
+    hooks:
+    -   id: bashate
+        types: [bash]
+        args: ['--ignore', 'E003,E005,E006']
+-   repo: https://gitlab.archlinux.org/freso/namcap
+    rev: 5c258eea3637348d9eee87af4f5edb835b21bb09
+    hooks:
+    -   id: namcap-system
+        args: ['-i']
+        verbose: true
