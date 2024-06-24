@@ -1,0 +1,23 @@
+pkgbase = mingw-w64-libdvdread
+	pkgdesc = Library for reading DVD video disks (mingw-w64)
+	pkgver = 6.1.3
+	pkgrel = 2
+	url = https://www.videolan.org/developers/libdvdnav.html
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = mingw-w64-configure
+	makedepends = mingw-w64-gcc
+	depends = mingw-w64-crt
+	optdepends = mingw-w64-libdvdcss: Decoding encrypted DVDs
+	options = !strip
+	options = !buildflags
+	options = !libtool
+	options = staticlibs
+	source = git+https://code.videolan.org/videolan/libdvdread.git#tag=6.1.3
+	source = autotools.patch
+	validpgpkeys = 65F7C6B4206BD057A7EB73787180713BE58D1ADC
+	b2sums = bdc0a6fcbc75dfe000f618cab1e2c736762a1d54c68851207c471a7177080c48964d2b7e4dc96dbdbacdadb42f022a2d3c6e097e83b612b9bbe2641240c5f38d
+	b2sums = 90f064b0bf210847cdbd80e2093fa073d020224fbe0036c976f0f6a8c7cab308ed13ed01f5aeea71942da16a8d01ed3e669b26da80e7ce991b3766253bf0bfb9
+
+pkgname = mingw-w64-libdvdread

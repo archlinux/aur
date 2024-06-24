@@ -1,0 +1,42 @@
+diff -ruN libdvdread/configure.ac patched/configure.ac
+--- libdvdread/configure.ac	2024-06-23 20:00:38.172329517 +0200
++++ patched/configure.ac	2024-06-23 20:08:14.795469825 +0200
+@@ -63,6 +63,9 @@
+   [*mingw32* | *cygwin*], [AC_CHECK_FUNCS(gettimeofday)])
+ 
+ AS_CASE([$host],
++  [*mingw32* | *cygwin*], LDFLAGS="-no-undefined ${wl}-no-undefined ${wl}-export-all-symbols $LDFLAGS")
++
++AS_CASE([$host],
+   [*-os2-*], LDFLAGS="-no-undefined -Zbin-files $LDFLAGS")
+ 
+ AS_CASE([$host],
+diff -ruN libdvdread/ltmain.sh patched/ltmain.sh
+--- libdvdread/ltmain.sh	2024-06-23 20:00:46.528382574 +0200
++++ patched/ltmain.sh	2024-06-23 20:01:30.805131258 +0200
+@@ -8063,6 +8063,12 @@
+ 	    deplibs="$deplib $deplibs"
+ 	    continue
+ 	  fi
++          case $deplib in
++          *.dll.a)
++	    deplibs="$deplib $deplibs"
++	    continue
++          ;;
++          esac
+ 	  case $linkmode in
+ 	  lib)
+ 	    # Linking convenience modules into shared libraries is allowed,
+diff -ruN libdvdread/m4/libtool.m4 patched/m4/libtool.m4
+--- libdvdread/m4/libtool.m4	2024-06-23 20:00:46.625042143 +0200
++++ patched/m4/libtool.m4	2024-06-23 20:08:18.265215100 +0200
+@@ -3482,7 +3482,8 @@
+   # Base MSYS/MinGW do not provide the 'file' command needed by
+   # func_win32_libid shell function, so use a weaker test based on 'objdump',
+   # unless we find 'file', for example because we are cross-compiling.
+-  if ( file / ) >/dev/null 2>&1; then
++  # func_win32_libid assumes BSD nm, so disallow it if using MS dumpbin.
++  if ( test "$lt_cv_nm_interface" = "BSD nm" && file / ) >/dev/null 2>&1; then
+     lt_cv_deplibs_check_method='file_magic ^x86 archive import|^x86 DLL'
+     lt_cv_file_magic_cmd='func_win32_libid'
+   else
