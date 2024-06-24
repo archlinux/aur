@@ -3,7 +3,7 @@
 # Contributor: witchymary
 
 pkgname=aegisub-arch1t3cht-git
-pkgver=3.2.2.r1181.80491bacb
+pkgver=3.2.2.r1183.cb930ab6b
 pkgrel=1
 pkgdesc="A general-purpose subtitle editor with ASS/SSA support (arch1t3cht fork)"
 arch=('x86_64')
@@ -131,7 +131,8 @@ prepare() {
   arch-meson --buildtype="${BUILDTYPE}" \
     -D b_lto=false \
     -D default_audio_output="${AEGISUB_AUR_DEFAULT_AUDIO_OUTPUT}" \
-    --force-fallback-for=ffms2 -D ffms2:default_library=static ${MESON_FLAGS} \
+    --force-fallback-for=ffms2 -D ffms2:default_library=static \
+    -D bestsource:default_library=static ${MESON_FLAGS} \
     build
 }
 
@@ -142,6 +143,6 @@ build() {
 
 package() {
   cd "${pkgname}"
-  meson install -C build --destdir "${pkgdir}"
+  meson install --skip-subprojects bestsource -C build --destdir "${pkgdir}"
   install -Dm644 LICENCE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
