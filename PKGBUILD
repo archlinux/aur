@@ -12,7 +12,7 @@ url="https://github.com/juicedata/juicefs"
 license=('Apache')
 conflicts=('juicefs')
 depends=('glibc' 'fuse2')
-makedepends=('go>=1.20' 'go<1.22' 'git')
+makedepends=('go' 'git')
 source=("juicefs-$_pkgver.tar.gz::https://github.com/juicedata/juicefs/archive/refs/tags/v$_pkgver.tar.gz")
 sha256sums=('661cf04d83b06e676cbce7a33a37d742787b098c7703ed528b1456391b6017ec')
 prepare() {
