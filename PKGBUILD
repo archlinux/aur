@@ -1,7 +1,7 @@
 # Maintainer: Yurenev Nikolay <yurnik2004 at gmail.com>
 
 pkgname='zvm'
-pkgver='0.5.3'
+pkgver='0.5.6'
 pkgrel='1'
 pkgdesc='Version manager for Zig compilers'
 arch=('x86_64' 'armv7h')
