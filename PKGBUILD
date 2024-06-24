@@ -3,7 +3,7 @@
 
 _pkgbase=svtplay-dl
 pkgname="${_pkgbase}-git"
-pkgver=4.7.r4.gb3fd51d
+pkgver=4.89.r0.g18b5b4f5
 pkgrel=1
 pkgdesc="Media downloader for play sites (e.g. SVT Play)"
 arch=('any')
