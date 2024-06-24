@@ -3,22 +3,16 @@
 # Contributor: Danilo <aur at dbrgn dot ch>
 
 pkgname=spatialindex
-pkgver=1.9.3
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc='Extensible framework that supports robust spatial indexing methods and sophisticated spatial queries'
 arch=(x86_64)
 url="https://libspatialindex.github.io/"
 license=(MIT)
 depends=(gcc-libs)
 makedepends=(git cmake)
-_commit=1896a183afdff3f5845742ce3027553a88e13c3a  # tags/1.9.3
-source=("git+https://github.com/libspatialindex/libspatialindex#commit=$_commit")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd libspatialindex
-  git describe --tags | sed 's/-/+/g'
-}
+source=("git+https://github.com/libspatialindex/libspatialindex#tag=$pkgver")
+sha256sums=('a0442c281e57e60ce3b91c6a449da835c764c18aa6d6ed59be0b1e38223ad6b7')
 
 build() {
   mkdir build && cd build
