@@ -1,7 +1,7 @@
 pkgbase = prometheus-apple-refurbed
 	pkgdesc = A simple prometheus scraper written in NodeJS to scrape apples refurbed products
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CommanderRedYT/prometheus-apple-refurbed
 	arch = any
 	license = MIT

@@ -2,7 +2,7 @@
 pkgname=prometheus-apple-refurbed
 
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple prometheus scraper written in NodeJS to scrape apples refurbed products"
 
 arch=('any')
@@ -22,5 +22,5 @@ package() {
 
   install -D -m 644 "${srcdir}/${pkgname}-tags-${pkgver}/prometheus-apple-refurbed.service" ${pkgdir}/usr/lib/systemd/system/prometheus-apple-refurbed.service
   install -D -m 644 "${srcdir}/${pkgname}-tags-${pkgver}/prometheus-apple-refurbed.conf" ${pkgdir}/etc/conf.d/prometheus-apple-refurbed.conf
-  install -D -m 644 "${srcdir}/${pkgname}-tags-${pkgver}/prometheus-apple-refurbed.sysusers" ${pkgdir}/usr/lib/sysusers.d/prometheus-apple-refurbed.sysusers
+  install -D -m 644 "${srcdir}/${pkgname}-tags-${pkgver}/prometheus-apple-refurbed.sysusers" ${pkgdir}/usr/lib/sysusers.d/prometheus-apple-refurbed.conf
 }
