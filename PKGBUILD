@@ -4,18 +4,18 @@
 
 _pkgname=renpy
 pkgname=${_pkgname}-git
-pkgver=8.2.0.24012702.r40.g9133530
+pkgver=8.2.3.24061702.r356.ga8ffb16
 pkgrel=1
 pkgdesc="Visual novel engine Ren'Py along with its platdeps libs (dev channel)"
 arch=('i686' 'x86_64')
 license=('MIT')
 url='http://www.renpy.org'
 depends=(
-	'glibc' 'ffmpeg' 'fribidi' 'harfbuzz' 'freetype2' 'libpng'
-	'python-pygame-sdl2' 'sdl2' 'sdl2_image' 'sdl2_mixer' 
+	'glibc' 'ffmpeg6.1' 'fribidi' 'harfbuzz' 'freetype2' 'libpng'
+	'python-pygame-sdl2' 'sdl2' 'sdl2_image' 'sdl2_mixer'
 	'sdl2_gfx' 'sdl2_ttf' 'python-future' 'python-ecdsa')
 makedepends=(
-	'cython0' 'python-setuptools-scm' 'python-sphinx' 'python-sphinx_rtd_dark_mode' 
+	'cython0' 'python-setuptools-scm' 'python-sphinx_rtd_dark_mode'
 	'python-sphinx_rtd_theme' 'git' 'python-build' 'python-installer' 'python-wheel')
 provides=('renpy' 'python-renpy')
 conflicts=('renpy')
@@ -40,24 +40,27 @@ pkgver() {
 build() {
 	cd "$_pkgname"
 
+	export CFLAGS+=' -I/usr/include/ffmpeg6.1 -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration'
+	export RENPY_DEPS_INSTALL='/usr/include/ffmpeg6.1:/usr/lib/ffmpeg6.1:/usr'
+
 	pushd 'module'
 		python -m build --wheel --no-isolation
-		rm -rf "$srcdir/tempinstall"
-		python -m installer --destdir="$srcdir/tempinstall" dist/*.whl
+		#rm -rf "$srcdir/tempinstall"
+		#python -m installer --destdir="$srcdir/tempinstall" dist/*.whl
 	popd
-	
+
 	# build docs
-	cd 'sphinx'
-	mkdir -p 'source/inc'
-	
-	local python_version="$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')"
-	PYTHONPATH="$srcdir/tempinstall/usr/lib/python${python_version}/site-packages" python ../renpy.py .
-	RENPY_NO_FIGURES=1 sphinx-build -E -a source ../doc -j ${SPHINX_JOBS:-auto}
+	#cd 'sphinx'
+	#mkdir -p 'source/inc'
+
+	#local python_version="$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')"
+	#PYTHONPATH="$srcdir/tempinstall/usr/lib/python${python_version}/site-packages" python ../renpy.py .
+	#RENPY_NO_FIGURES=1 sphinx-build -E -a source ../doc -j ${SPHINX_JOBS:-auto}
 }
 
 package() {
 	depends+=('python-pefile' 'python-requests' 'python-rsa' 'python-six')
-	
+
 	#pack data
 	mkdir -p "$pkgdir/"{usr/share/{$_pkgname,doc/$_pkgname},}
 
@@ -66,10 +69,10 @@ package() {
 
 	cd "$_pkgname"
 	cp -r 'sdk-fonts' 'launcher' 'renpy' 'renpy.py' 'the_question' 'tutorial' 'gui' "$pkgdir/usr/share/$_pkgname"
-	cp -r doc/* "$pkgdir/usr/share/doc/$_pkgname"
+	#cp -r doc/* "$pkgdir/usr/share/doc/$_pkgname"
 	install -D -m644 'launcher/game/images/logo.png' "$pkgdir/usr/share/pixmaps/${_pkgname}.png"
 	install -D -m644 'sphinx/source/license.rst' "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-	
+
 	install -d -m755 "$pkgdir/usr/share/renpy/lib/py3-linux-x86_64"
 	ln -s '/usr/bin/renpy' "$pkgdir/usr/share/renpy/lib/py3-linux-x86_64"
 
