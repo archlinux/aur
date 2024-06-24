@@ -1,45 +1,45 @@
-# Maintainer: Guilhem Saurel <saurel@laas.fr>
+# Maintainer: Guilhem Saurel <guilhem.saurel@laas.fr>
 
+_org='gepetto'
 _pkgname=gepetto-viewer
-_pkgver=4.11.0
-pkgname=${_pkgname}-git
-pkgver=4.11.0.r599.5582d7a
+_pkgver=5.0.0
+pkgname=$_pkgname-git
+pkgver=5.0.0.r723.cc3dd87
 pkgrel=1
 pkgdesc="Graphical Interface for Pinocchio and HPP."
 arch=('i686' 'x86_64')
-url="https://github.com/gepetto/$pkgname"
-license=('BSD')
-depends=('openscenegraph' 'urdfdom' 'osgqt' 'boost')
-makedepends=('cmake' 'boost' 'urdfdom' 'git')
+url="https://github.com/$_org/$_pkgname"
+license=('BSD-2-Clause')
+depends=('openscenegraph' 'urdfdom' 'osgqt' 'boost-libs')
+makedepends=('cmake' 'boost' 'git')
 optdepends=('openscenegraph-dae: load DAE files')
 conflicts=($_pkgname)
 provides=($_pkgname)
-source=("$_pkgname"::"git://github.com/gepetto/$_pkgname.git")
+source=("$_pkgname"::"git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$_pkgname"
-    echo "$_pkgver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    echo "$_pkgver.r$(git -C "$_pkgname" rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-    cd "$_pkgname"
-    git submodule update --init
+    git -C "$_pkgname" checkout devel
+    git -C "$_pkgname" submodule update --init --recursive
 }
 
 build() {
-    cd "$_pkgname"
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib .
-    make
+    cmake -B build -S $_pkgname \
+        -DCMAKE_INSTALL_LIBDIR=lib \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -Wno-dev
+    cmake --build build
 }
 
 check() {
-    cd "$_pkgname"
-    make test
+    cmake --build build -t test
 }
 
 package() {
-    cd "$_pkgname"
-    make DESTDIR="$pkgdir/" install
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    DESTDIR="$pkgdir/" cmake --build build -t install
+    install -Dm644 "$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
