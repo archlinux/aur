@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yank-note
 _pkgname=yn
-pkgver=3.70.4
+pkgver=3.71.1
 _electronversion=28
 _nodeversion=18
 pkgrel=1
@@ -21,7 +21,6 @@ makedepends=(
     'npm'
     'yarn'
     'nvm'
-    'base-devel'
     'gcc'
     'curl'
 )
@@ -29,7 +28,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('8e032a875ff20a90d384af31d8f4a6cc6dbb515d84be7fc152df94075eb6adf3'
+sha256sums=('4687a98f84c828c65d8e2d5f7762626796bdec6d192b8c62390b78f91e190fd5'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -41,7 +40,7 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|yank.note|g" \
+        -e "s|@cfgdirname@|${pkgname//-/.}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
@@ -64,12 +63,12 @@ build() {
         echo "Your network is OK."
     fi
     sed "s|icon.icns|icon.png|g" -i electron-builder.json
-    yarn install --cache-folder "${srcdir}/.yarn_cache"
-    yarn run electron-rebuild
-    npx node scripts/download-pandoc.js
-    npx node scripts/download-plantuml.js
-    yarn run build
-    yarn run electron-builder -l --dir
+    NODE_ENV=developmentyarn install --cache-folder "${srcdir}/.yarn_cache"
+    NODE_ENV=development yarn run electron-rebuild
+    NODE_ENV=development npx node scripts/download-pandoc.js
+    NODE_ENV=development npx node scripts/download-plantuml.js
+    NODE_ENV=production yarn run build
+    NODE_ENV=production yarn run electron-builder -l --dir
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
