@@ -1,7 +1,7 @@
 pkgbase = motoko
 	pkgdesc = Based on Go modules, update a dependency to a major version.
 	pkgver = 0.2.6
-	pkgrel = 4
+	pkgrel = 1
 	url = https://github.com/ldez/motoko
 	arch = x86_64
 	arch = i686
