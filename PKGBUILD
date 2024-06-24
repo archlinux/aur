@@ -2,8 +2,8 @@
 
 pkgbase=gcc-snapshot
 pkgname=({gcc,gcc-libs,lib32-gcc-libs,gcc-ada,gcc-d,gcc-fortran,gcc-go,gcc-m2,gcc-objc,gcc-rust,lto-dump,libgccjit}-snapshot)
-pkgver=15.0.1.snapshot20240616
-_pkgver=15-20240616
+pkgver=15.0.1.snapshot20240623
+_pkgver=15-20240623
 _majorver=${_pkgver//-*}
 _snapshot=${_pkgver#*-}
 _realver=${pkgver//.s*}
@@ -19,7 +19,7 @@ makedepends=(binutils doxygen gcc-ada gcc-d git lib32-glibc lib32-gcc-libs pytho
 checkdepends=(dejagnu expect inetutils python-pytest tcl)
 options=(!emptydirs !lto)
 _libdir=usr/lib/gcc/${CHOST}/${_realver}
-source=(https://ftp.gwdg.de/pub/misc/gcc/snapshots/${_pkgver}/gcc-${_pkgver}.tar.xz
+source=(https://ftp.fu-berlin.de/unix/languages/gcc/snapshots/${_pkgver}/gcc-${_pkgver}.tar.xz
         git+https://repo.or.cz/isl.git#branch=maint
         https://gmplib.org/download/gmp/gmp-${_gmpver}.tar.xz{,.sig}
         https://ftp.gnu.org/gnu/mpc/mpc-${_mpcver}.tar.gz
@@ -33,7 +33,7 @@ validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.
               D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62  # Jakub Jelinek <jakub@redhat.com>
               343C2FF0FBEE5EC2EDBEF399F3599FF828C67298  # nisse@lysator.liu.se
               A534BE3F83E241D918280AEB5831D11A0D4DB02A) # vincent@vinc17.net
-sha256sums=('8e34ba90f4ad8b5480d695a56031590508ab0d9dfc085900ff331da71db99b68'
+sha256sums=('68b1668dd58cd81397b6ea8f40869e4dc61a6aefe0f181ea5c3e05515646f7e2'
             'SKIP'
             'a3c2b80201b89e68616f4ad30bc66aee4927c3ce50e33929ca819d5c43538898'
             'SKIP'
