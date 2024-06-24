@@ -1,7 +1,7 @@
 pkgbase = phoc-git
 	pkgdesc = Display compositor designed for phones
-	pkgver = r2367.d91407e
-	pkgrel = 1
+	pkgver = r2394.14cfc32
+	pkgrel = 2
 	url = https://gitlab.gnome.org/World/Phosh/phoc
 	arch = x86_64
 	arch = aarch64
@@ -30,7 +30,7 @@ pkgbase = phoc-git
 	depends = dconf
 	depends = cairo
 	depends = wayland
-	depends = gmobile
+	depends = libgmobile
 	optdepends = xorg-wayland: run X clients under phoc
 	provides = phoc
 	conflicts = phoc
@@ -50,5 +50,5 @@ pkgname = phoc-git
 	depends = dconf
 	depends = cairo
 	depends = wayland
-	depends = gmobile
+	depends = libgmobile
 	depends = libwlroots.so=12

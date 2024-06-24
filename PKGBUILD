@@ -4,14 +4,14 @@
 
 pkgname=phoc-git
 _pkgname=phoc
-pkgver=r2367.d91407e
-pkgrel=1
+pkgver=r2394.14cfc32
+pkgrel=2
 pkgdesc='Display compositor designed for phones'
 arch=(x86_64 aarch64)
 url='https://gitlab.gnome.org/World/Phosh/phoc'
 license=(GPL3)
 depends=(gnome-desktop wlroots gsettings-desktop-schemas pixman libinput libxcb libxkbcommon
-	 json-glib glib2 dconf cairo wayland gmobile)
+	 json-glib glib2 dconf cairo wayland libgmobile)
 checkdepends=(xorg-server-xvfb xorg-xauth mutter pixman)
 makedepends=(cmake meson git wayland-protocols python-jinja python-pygments python-typogrify libgirepository)
 optdepends=('xorg-wayland: run X clients under phoc')
