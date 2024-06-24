@@ -1,0 +1,20 @@
+pkgbase = dbxcli-bin
+	pkgdesc = A command line client for Dropbox built using the Go SDK
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/dropbox/dbxcli
+	arch = x86_64
+	arch = arm
+	license = Apache
+	provides = dbxcli
+	conflicts = dbxcli
+	source = https://github.com/dropbox/dbxcli/raw/v3.0.0/README.md
+	source = https://github.com/dropbox/dbxcli/raw/v3.0.0/LICENSE
+	sha256sums = a6352344b8f07d4504b3c750adfe3c1e1ed07b1a351362e80d0cd6761782f4c0
+	sha256sums = 0d70849e238c190dfcfac96d23d9808c2336cb1ba0550182311d7a496a9c313d
+	source_x86_64 = dbxcli-3.0.0::https://github.com/dropbox/dbxcli/releases/download/v3.0.0/dbxcli-linux-amd64
+	sha256sums_x86_64 = 3ff6e29675095063a5ba7101115cf7f809f3deddf14998ac61bf7a0330d736cb
+	source_arm = dbxcli-3.0.0::https://github.com/dropbox/dbxcli/releases/download/v3.0.0/dbxcli-linux-arm
+	sha256sums_arm = 806584e4758e59d753c1d7ed0fe97a7ae43fec0240c3bf4d388360bb51daf346
+
+pkgname = dbxcli-bin
