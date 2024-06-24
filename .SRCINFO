@@ -1,20 +1,20 @@
 pkgbase = ffbox-bin
 	pkgdesc = An user-friendly ffmpeg GUI.一个多媒体转码百宝箱/一个 FFmpeg 的套壳
-	pkgver = 4.0
-	pkgrel = 2
+	pkgver = 4.1
+	pkgrel = 1
 	url = https://github.com/ttqftech/FFBox
 	arch = x86_64
 	license = LicenseRef-custom
+	depends = electron24-bin
 	depends = ffmpeg
-	depends = gtk3
-	depends = nspr
-	depends = nss
-	provides = ffbox=4.0
+	provides = ffbox=4.1
 	conflicts = ffbox
 	options = !strip
-	source = ffbox-4.0.deb::https://github.com/ttqftech/FFBox/releases/download/v4.0/Linux_x86-64_FFBox_4.0.deb
-	source = LICENSE-4.0::https://raw.githubusercontent.com/ttqftech/FFBox/v4.0/LICENSE
-	sha256sums = eb1a0d0afbde1288ca9ffa5876a18a40c6027e9587a6c943f8fa702b4e18afcc
+	source = ffbox-4.1.deb::https://github.com/ttqftech/FFBox/releases/download/v4.1/Linux_x86-64_FFBox_4.1.deb
+	source = LICENSE-4.1::https://raw.githubusercontent.com/ttqftech/FFBox/v4.1/LICENSE
+	source = ffbox.sh
+	sha256sums = dbb2ed4528277b4be78c894740f1478ab1ba0299548ac4f8bd76877a17d4e6e7
 	sha256sums = 67ed2b6388724e58664564bf21e73eb1e00dbfe513c70fff71f20517e38dfbca
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = ffbox-bin
