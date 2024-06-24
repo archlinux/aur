@@ -1,16 +1,16 @@
-pkgbase = bonsai-coreutils-git
-	pkgdesc = New core utilities for a new era.
-	pkgver = r173.c97201f
-	pkgrel = 8
-	url = https://git.tebibyte.media/bonsai/coreutils
+pkgbase = harakit-git
+	pkgdesc = New utilities for a new era.
+	pkgver = r292.4b3333d
+	pkgrel = 1
+	url = https://git.tebibyte.media/bonsai/harakit
 	arch = any
 	license = AGPL
 	makedepends = rust
 	makedepends = rust-bindgen
-	provides = bonsai-coreutils
-	source = git+https://git.tebibyte.media/bonsai/coreutils.git
+	replaces = bonsai-coreutils-git
+	source = git+https://git.tebibyte.media/bonsai/harakit.git
 	source = bonsai.sh
 	md5sums = SKIP
 	md5sums = ae17ace590d882d9c9701ba4cecbeefe
 
-pkgname = bonsai-coreutils-git
+pkgname = harakit-git

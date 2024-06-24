@@ -1,18 +1,18 @@
 # Maintainer: Emma Tebibyte <emma@tebibyte.media>
 
-_repo=coreutils
-_pkgname=bonsai-$_repo
+_repo=harakit
+_pkgname=$_repo
 pkgname=$_pkgname-git
-pkgver=r173.c97201f
-pkgrel=8
-pkgdesc="New core utilities for a new era."
+pkgver=r292.4b3333d
+pkgrel=1
+pkgdesc="New utilities for a new era."
 arch=('any')
-url="https://git.tebibyte.media/bonsai/coreutils"
+url="https://git.tebibyte.media/bonsai/$_repo"
 license=('AGPL')
 depends=()
 makedepends=('rust' 'rust-bindgen')
-provides=('bonsai-coreutils')
-source=("git+https://git.tebibyte.media/bonsai/coreutils.git" "bonsai.sh")
+replaces=('bonsai-coreutils-git')
+source=("git+https://git.tebibyte.media/bonsai/$_repo.git" "bonsai.sh")
 md5sums=(
 	SKIP
 	ae17ace590d882d9c9701ba4cecbeefe
