@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=notepad--
 _pkgname=NotePad--
-pkgver=2.16
+pkgver=2.17
 pkgrel=1
 pkgdesc="一个国产跨平台、轻量级的文本编辑器，是替换notepad++的一种选择。其内置强大的代码对比功能，让你丢掉付费的beyond compare。"
 arch=('x86_64')
@@ -18,7 +18,6 @@ makedepends=(
     'gcc'
     'cmake'
     'ninja'
-    'base-devel'
     'qt5-tools'
     'qt5-xmlpatterns'
     'qscintilla-qt5'
@@ -26,7 +25,7 @@ makedepends=(
 source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/${pkgname//--/}-v${pkgver}.tar.gz"
 )
-sha256sums=('80f979d60948805adcb45224bb71f7ef7c3837eb3b899be5a9eaa8aae710e88b')
+sha256sums=('8e65e233ec1e098138115af90c44ed8be948aaf8350eb0b2835e22d0c7c8ba2b')
 build() {
     cd "${srcdir}/${pkgname}-${pkgname//--/}-v${pkgver}"
     sed "s|intptr_t|__intptr_t|g" -i src/qscint/src/xmlMatchedTagsHighlighter.cpp
