@@ -1,13 +1,13 @@
 pkgbase = zola
 	pkgdesc = An opinionated static site generator
-	pkgver = 0.19.0
+	pkgver = 0.19.1
 	pkgrel = 1
 	url = https://github.com/getzola/zola
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = zola-0.19.0.tar.gz::https://github.com/getzola/zola/archive/v0.19.0.tar.gz
-	sha256sums = 0c1651e06608eab31d0fb60d5a2d8afc94cff6644f34c6b6bda31eb76e79a7a0
+	source = zola-0.19.1.tar.gz::https://github.com/getzola/zola/archive/v0.19.1.tar.gz
+	sha256sums = 9926c3e7c64ee20a48dc292785c5a29f387c1fab639005ced894982f9c3d7258
 
 pkgname = zola
