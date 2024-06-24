@@ -1,7 +1,7 @@
 pkgbase = rnm
 	pkgdesc = Bulk rename utility
 	pkgver = 4.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/neurobin/rnm
 	arch = i686
 	arch = x86_64
@@ -9,9 +9,8 @@ pkgbase = rnm
 	makedepends = jpcre2
 	depends = gmp
 	depends = pcre2
-	source = https://github.com/neurobin/rnm/archive/4.0.9.tar.gz
+	source = https://github.com/neurobin/rnm/archive/refs/tags/4.0.9.tar.gz
 	validpgpkeys = 3331 6137 5B22 27AC F7AA 6351 A4A2 CA5B 6BDA A871
 	md5sums = bcf369f37b15682a855b6d115d35323d
 
 pkgname = rnm
-
