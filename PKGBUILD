@@ -4,7 +4,8 @@
 pkgname=upower-nocritical
 _pkgname=upower
 pkgver=1.90.4
-pkgrel=1
+pkgrel=2
+provides=(upower)
 pkgdesc="Abstraction for enumerating power devices, listening to device events and querying history and statistics (With a patch to disable low battery action)"
 arch=('i686' 'x86_64')
 url="http://upower.freedesktop.org"

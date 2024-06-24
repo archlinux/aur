@@ -1,7 +1,7 @@
 pkgbase = upower-nocritical
 	pkgdesc = Abstraction for enumerating power devices, listening to device events and querying history and statistics (With a patch to disable low battery action)
 	pkgver = 1.90.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://upower.freedesktop.org
 	arch = i686
 	arch = x86_64
@@ -27,6 +27,7 @@ pkgbase = upower-nocritical
 	depends = libimobiledevice
 	depends = libplist
 	optdepends = usbmuxd: Read charge status of iOS devices
+	provides = upower
 	conflicts = upower
 	backup = etc/UPower/UPower.conf
 	source = git+https://gitlab.freedesktop.org/upower/upower.git#tag=v1.90.4
@@ -45,4 +46,5 @@ pkgname = upower-nocritical
 	depends = libglib-2.0.so
 	depends = libgobject-2.0.so
 	depends = libgio-2.0.so
+	provides = upower
 	provides = libupower-glib.so
