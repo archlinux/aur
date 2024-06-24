@@ -14,7 +14,7 @@ install=alchemy.install
 # template end;
 # template start; name=deps; version=1.0;
 depends=('glu' 'libgl' 'libiconv' 'libidn' 'libjpeg-turbo' 'libpng' 'libxml2' 'libxss' 'mesa' 'nss' 'openal' 'sdl2' 'vlc' 'zlib')
-makedepends=('gcc' 'python-pip' 'git')
+makedepends=('gcc' 'python-pip' 'python-virtualenv' 'git')
 optdepends=(
   'alsa-lib: ALSA support'
   'freealut: OpenAL support'
@@ -31,11 +31,11 @@ optdepends=(
   'xdg-desktop-portal: File picker portal')
 # template end;
 pkgname=alchemy-next-viewer-nosystemd-git
-pkgver=7.1.3.55266.2a64c7b773
+pkgver=7.1.9.57091.d3b9714206
 pkgrel=1
 provides=('alchemy-viewer')
 # template start; name=source; version=1.0;
-source=("${pkgname}"::'git+https://git.alchemyviewer.org/alchemy/viewer.git#branch='"${AL_BRANCH_OVERRIDE:-main}")
+source=("${pkgname}"::'git+https://github.com/AlchemyViewer/Alchemy.git#branch='"${AL_BRANCH_OVERRIDE:-main}")
 sha256sums=('SKIP')
 # template end;
 # Not included as a dependency as it is impossible to update the package otherwise
