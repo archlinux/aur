@@ -1,7 +1,7 @@
 # Maintainer: Fernandez Ludovic <lfernandez dot dev at gmail dot com>
 
 pkgname='motoko'
-pkgver=0.2.6
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Based on Go modules, update a dependency to a major version.'
 url='https://github.com/ldez/motoko'
@@ -15,8 +15,8 @@ makedepends=('git' 'go')
 optdepends=()
 
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/ldez/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('1db11bf6154d06822c0aab4021d584883523804d15606928d1712830bf4987e550ab1dbc444f5f964a462abdeb6449416b0497d802fdb7fedb3e94b894a4e7c3')
-b2sums=('79569026a00df23e6a8edbb3d9383139febae607f74291a37067f0b1dedd9c8ffa26a553f0b5c858593dc74301091937a64df41a186cd79dd3ebabde454c1fe2')
+sha512sums=('e81df683d3b8b3dddf75fe1fbb9df20d12d4998e7a32a5a02a16a95e882dad341342dd2b3424371d9a7d13f815973ba8706ac7dd524191d2562fbf273a9b00d8')
+b2sums=('188cf567e910a02833cd93d0db9a22fb9259f40823b67bd00ab02312a0666b2a4e2df699f7ae6ad022ec269adcbedd989fcd0e5d98c4c04ec1d68f9f354a3edd')
 
 build() {
 	cd "${pkgname}-${pkgver}"
