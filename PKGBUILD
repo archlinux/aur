@@ -3,7 +3,7 @@ pkgname=revezone
 pkgver=1.0.0_alpha.18
 _electronversion=25
 _nodeversion=18
-pkgrel=5
+pkgrel=6
 pkgdesc="A new way to use Excalidraw. A lightweight productivity tool to build Second Brain that integrates Notion-like note-taking and enhanced Excalidraw whiteboarding features."
 arch=('any')
 url="https://revezone.com/"
@@ -40,10 +40,10 @@ build() {
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${pkgname}" --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
+    gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    #export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     #export ELECTRONVERSION="${_electronversion}"
@@ -61,8 +61,8 @@ build() {
     fi
     #sed "s|--linux|-l --dir|g" -i package.json
     sed "/- deb/d;/- snap/d;s|- AppImage|- dir|g" -i electron-builder.yml
-    pnpm install
-    pnpm run build:linux
+    NODE_ENV=development pnpm install
+    NODE_ENV=production pnpm run build:linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
