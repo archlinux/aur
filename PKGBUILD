@@ -2,7 +2,7 @@
 _base=myokit
 pkgname=python-${_base}
 pkgdesc="A modeling and simulation tool for cardiac cellular electrophysiology"
-pkgver=1.36.1
+pkgver=1.37.0
 pkgrel=1
 arch=(any)
 url="https://github.com/${_base}/${_base}"
