@@ -1,13 +1,11 @@
-diff --color --unified --recursive --no-dereference MUMPS_5.7.1_OLD/Makefile MUMPS_5.7.1/Makefile
---- MUMPS_5.7.1_OLD/Makefile	2024-05-02 05:15:09.000000000 -0500
-+++ MUMPS_5.7.1/Makefile	2024-05-05 12:46:48.251359439 -0500
+--- MUMPS_5.7.2_OLD/Makefile	2024-06-17 03:20:17.000000000 -0500
++++ MUMPS_5.7.2/Makefile	2024-06-23 20:46:47.364189647 -0500
 @@ -2,6 +2,8 @@
- #  This file is part of MUMPS 5.7.1, released
- #  on Thu May  2 10:15:09 UTC 2024
+ #  This file is part of MUMPS 5.7.2, released
+ #  on Mon Jun 17 08:20:17 UTC 2024
  #
-+export VERSION   = 5.7.1
++export VERSION   = 5.7.2
 +export SOVERSION = 5.7
  topdir = .
  libdir = $(topdir)/lib
  
-Only in MUMPS_5.7.1_OLD: .SRCINFO
