@@ -1,9 +1,9 @@
 # Maintainer: zotan <aur@zotan.email>
 
 pkgname=iceshrimp.net-git
-pkgver=v2024.1.alpha+54d3c4e
-pkgrel=1
-pkgdesc="The Iceshrimp .NET rewrite. Caution: This is alpha software, do not use with production database"
+pkgver=v2024.1.alpha+6a5ae73
+pkgrel=2
+pkgdesc="The Iceshrimp .NET rewrite. Caution: This is alpha software. It likely won't eat your data, but stability isn't guaranteed."
 arch=(x86_64 aarch64)
 url="https://iceshrimp.dev/iceshrimp/iceshrimp.net"
 license=(EUPL)
@@ -31,7 +31,7 @@ source=(
 )
 
 sha512sums=('SKIP'
-            'babc4f6f37f32446c9ef24ce39dc1f935a412032dc1d8ac1f3fed4237ba883b4bc6688469962459ea09ee3a8858a8981efb8c20e339e609c2dd69deb9524bdf5'
+            'cfb7adf7e9f0d9d05ab89b2237ddf1ef4135ed9dde463e96c7cd94e03e497a85c77a795ac20c09214a2364e675c88e65ac119f6de82a08f5c2d64d657c4b3fc0'
             '9adf1781842ae7ff2779ca561f06ab2b6fb93e206698084283986627aba69b0fd4482ccbed3daebb2517e5966c326604e1cc57618589f331a966fee2db63815d'
             '0665aa7af2b2aa4405289ce9119439ddcc6b9e6c81dc8e3b9ed5d8ecdc4a39d49c950d41d3098ce99fe294ce51a2dee55ec7248c1756783b0e9aad0bde4654fa'
             '0a0467df278f3bd739114725b373f5ec6c7296f609f0a9bcb4f8142b44856fc63e32f76390adf757005035dc691a4c54a662cc8a287572b61e215c29e3d3cbf2'

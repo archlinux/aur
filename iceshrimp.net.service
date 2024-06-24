@@ -12,6 +12,10 @@ User=iceshrimp
 Group=iceshrimp
 
 Environment="ICESHRIMP_CONFIG=/etc/iceshrimp.net/configuration.ini"
+Environment="MALLOC_TRIM_THRESHOLD_=131072"
+
+# Running in a memory constrained environment? Add the below line to the [Service] Section of an override file (systemctl edit iceshrimp.net.service) to trade higher CPU time for less memory usage:
+#Environment="DOTNET_gcServer=0"
 
 WorkingDirectory=/usr/share/iceshrimp.net
 SyslogIdentifier=iceshrimp.net
