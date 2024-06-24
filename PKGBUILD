@@ -3,7 +3,7 @@
 _base=pylibssh
 pkgname=python-${_base}
 pkgver=1.2.0.post4
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings specific to Ansible use case for libssh"
 arch=(x86_64)
 url="https://github.com/ansible/${_base}"
