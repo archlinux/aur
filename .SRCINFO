@@ -1,0 +1,19 @@
+pkgbase = spicetify-extensions-rxri-git
+	pkgdesc = Add some spice with extensions to make spotify more enjoyable
+	pkgver = r30.9168bc5
+	pkgrel = 1
+	url = https://github.com/rxri/spicetify-extensions
+	arch = any
+	license = MIT
+	makedepends = git
+	provides = spicetify-extensions-rxri
+	provides = spicetify-extensions-charlies
+	conflicts = spicetify-extensions-rxri
+	conflicts = spicetify-extensions-charlies
+	source = spicetify-extensions-rxri::git+https://github.com/rxri/spicetify-extensions
+	source = spicetify-extensions-rxri.hook
+	sha256sums = SKIP
+	sha256sums = 120eecd10a3bb10d557be719a5a7971e6f601d86986ceef4523f6deb926012fe
+
+pkgname = spicetify-extensions-rxri-git
+	depends = spicetify
