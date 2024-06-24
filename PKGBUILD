@@ -1,7 +1,7 @@
 # Maintainer: Herald Yu <yuhr123@gmail.com>
 pkgname=juicefs-bin
 _pkgname=juicefs
-pkgver=1.1.2
+pkgver=1.2.0
 _pkgver=$(echo $pkgver | sed -E 's/^([0-9\.]+)([^0-9].*)?$/\1-\2/' | sed -E 's/-$//')
 pkgrel=1
 pkgdesc="A distributed POSIX file system built on top of Redis and S3 (Community Edition)."
@@ -10,7 +10,7 @@ url="https://github.com/juicedata/juicefs"
 license=('Apache')
 conflicts=('juicefs')
 source=("juicefs-$_pkgver.tar.gz::https://github.com/juicedata/juicefs/releases/download/v$_pkgver/juicefs-$_pkgver-linux-amd64.tar.gz")
-sha256sums=('52d3f50c9591bfd96e480e0afa919a1f6f06dbf2ceb1d0afebc5694a9a16df71')
+sha256sums=('28d6360c58b19627b07ea7c9f831c2162911f6eef7165289ff9bda465e256e0a')
 
 package() {
   install -Dm755 $_pkgname "$pkgdir"/usr/bin/$_pkgname
