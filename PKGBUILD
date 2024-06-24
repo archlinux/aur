@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yank-note-git
-pkgver=3.0.2.r2192.g678baaa
+pkgver=3.next.06.r0.g949b183
 _electronversion=28
 _nodeversion=18
 pkgrel=1
@@ -23,7 +23,6 @@ makedepends=(
     'python>=3.11.5'
     'git'
     'curl'
-    'base-devel'
     'gcc'
 )
 source=(
@@ -34,7 +33,7 @@ sha256sums=('SKIP'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
-    git describe --long --abbrev=7 | sed 's/^foo-//;s/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
 }
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -46,6 +45,7 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-git}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|yank.note|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
@@ -68,6 +68,7 @@ build() {
         echo "Your network is OK."
     fi
     sed "s|icon.icns|icon.png|g" -i electron-builder.json
+    export NODE_ENV=development
     yarn install --cache-folder "${srcdir}/.yarn_cache"
     yarn run electron-rebuild
     npx node scripts/download-pandoc.js
