@@ -1,7 +1,7 @@
 # Maintainer: tee < teeaur at duck dot com >
 pkgname=redbean
 pkgver=0
-pkgrel=4
+pkgrel=5
 pkgdesc='redbean is a single-file distributable web server that embeds Lua, SQLite, and MbedTLS'
 arch=(x86_64)
 url='https://cosmo.zip'
