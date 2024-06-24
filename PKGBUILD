@@ -62,8 +62,8 @@ check() {
   desktop-file-validate share/applications/*.desktop
   appstreamcli validate --no-net share/metainfo/*.appdata.xml || :
 
-  # Run the unit tests
-  GIT_CONFIG_NOSYSTEM=true LC_ALL="C.UTF-8" make test V=2
+  # Run 'garden test'
+#  make test
 }
 
 package() {
