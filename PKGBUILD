@@ -4,7 +4,7 @@ _pkgname=GhostChat
 pkgver=3.2.1
 _electronversion=31
 _nodeversion=20
-pkgrel=1
+pkgrel=2
 pkgdesc="A standalone, multiplatform Twitch.tv chat as overlay on windowed/windowed fullscreen applications."
 arch=('any')
 url="https://github.com/Enubia/ghost-chat"
@@ -59,7 +59,7 @@ build() {
     else
         echo "Your network is OK."
     fi
-    sed "s|out\/release\/\${version}|release|g;s|\/\/ ||g;s|AppImage|dir|g" -i electron-builder.config.js
+    sed "s|out\/release\/\${version}|release|g;s|\/\/ ||g;s|AppImage|dir|g" -i electron-builder.config.cjs
     cp public/icons/icon-512x125.png public/icons/icon-512x512.png
     NODE_ENV=development pnpm install --no-lockfile
     NODE_ENV=production pnpm run release
