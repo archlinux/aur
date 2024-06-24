@@ -2,7 +2,7 @@
 _base=numba-mpi
 pkgname=python-${_base}
 pkgdesc="Numba @njittable MPI wrappers tested on Linux, macOS and Windows"
-pkgver=0.42
+pkgver=0.43
 pkgrel=1
 arch=(any)
 url="https://github.com/${_base}/${_base}"
@@ -11,7 +11,7 @@ depends=(python-numba python-mpi4py python-psutil)
 makedepends=(python-build python-installer python-setuptools-scm python-wheel)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('11653563fb5661a8ceb401ae36046469ea20dd9e7a7bdecc49c1f946d398795ab568873ba2773c7e8112b7cc44f466afeb234d05152043d7098ac5f96c6a7d7b')
+sha512sums=('12de7f5eb9e6c32da7ba06c581134270468ad4201ece1d63f3e49a879e81582231457262d608756d02904e9239e354e5f325dcaebf05451948f5debf3eb18d1f')
 
 build() {
   cd ${_base}-${pkgver}
