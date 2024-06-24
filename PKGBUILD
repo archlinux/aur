@@ -4,7 +4,7 @@
 # Contributor: Jiawen Geng
 pkgname=github-desktop-git
 _pkgname="GitHub Desktop"
-pkgver=release.2.9.10.r4701.g2303fa5
+pkgver=release.2.9.10.r4702.g4608cf8
 _electronversion=30
 _nodeversion=20
 pkgrel=1
@@ -17,6 +17,7 @@ provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
     "electron${_electronversion}"
     'perl'
+    'curl'
     'libsecret'
 )
 makedepends=(
@@ -70,8 +71,9 @@ build() {
         echo "Your network is OK."
     fi
     rm -rf dist node_mudules out
-    yarn install --cache-folder "${srcdir}/.yarn_cache"
-    yarn run build:prod
+	sed -e '/compile:prod/s/4096/4096 --openssl-legacy-provider/' -i package.json
+    NODE_ENV=development yarn install --cache-folder "${srcdir}/.yarn_cache"
+    NODE_ENV=production yarn run build:prod
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
