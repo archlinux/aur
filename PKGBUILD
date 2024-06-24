@@ -1,9 +1,9 @@
-# Maintainer: DDoSolitary <DDoSolitary@gmail.com>
+# Contributor: DDoSolitary <DDoSolitary@gmail.com>
 # Contributor: Carsten Feuls <archlinux@carstenfeuls.de>
 
 _gemname=typhoeus
 pkgname=ruby-$_gemname
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='Parallel HTTP library on top of libcurl multi.'
 arch=(any)
@@ -21,4 +21,4 @@ package() {
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
   install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-sha512sums=('f48a99fd554f4d06d37a0a804ee79dd8423d9bff765394537ab0edba615e132d25660a6eb455e8628f59bd56c7ea26f4a195827d5287a53e58e3aeb394477284')
+sha256sums=('1c17db8364bd45ab302dc61e460173c3e69835896be88a3df07c206d5c55ef7c')
