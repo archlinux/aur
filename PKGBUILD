@@ -1,43 +1,34 @@
-# Maintainer: Famiu Haque <famiuhaque@gmail.com>
+# Contributor: Famiu Haque <famiuhaque@gmail.com>
 
 pkgname=docopt.cpp-static-git
-pkgver=0.6.2.r104.42ebcec
+pkgver=0.6.3.r5.g400e6dd
 pkgrel=1
-pkgdesc="C++11 port of docopt (with static libraries)"
-arch=('i686' 'x86_64')
-url="https://github.com/docopt/docopt.cpp/"
-license=('MIT')
-makedepends=('git' 'cmake>=3.1.0')
+pkgdesc="C++11 port of docopt (static libraries)"
+arch=('x86_64')
+url="https://github.com/docopt/docopt.cpp"
+license=('MIT' 'BSL-1.0')
+makedepends=('git' 'cmake')
 conflicts=('docopt' 'docopt.cpp')
 provides=('docopt.cpp')
-source=("git://github.com/docopt/docopt.cpp.git")
+source=("git+${url}.git")
 options=('staticlibs')
 sha512sums=('SKIP')
 
-pkgver()
-{
+pkgver() {
   cd docopt.cpp
-  echo "0.6.2.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./g'
 }
 
-prepare()
-{
-  mkdir -p build
-}
-
-build()
-{
-  cd build
-  cmake ../docopt.cpp \
+build() {
+  cmake -B build -S docopt.cpp \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib
-  make
+  make -C build
 }
 
-package()
-{
+package() {
   make -C build DESTDIR="${pkgdir}" install
   cd docopt.cpp
-  install -Dm644 LICENSE-MIT ${pkgdir}/usr/share/licenses/docopt.cpp-static-git/LICENSE
+  install -Dm644 LICENSE-MIT -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
