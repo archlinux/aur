@@ -5,14 +5,14 @@
 _pkgbase='systemd'
 pkgname='efistub'
 pkgdesc='UEFI files to use with UKI'
-pkgver=255.4
-pkgrel=2
+pkgver=256.1
+pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
 makedepends=('docbook-xsl' 'gperf' 'intltool' 'python-jinja' 'python-lxml' 'python-pyelftools' 'git' 'meson')
 options=('strip')
-source=("https://github.com/systemd/systemd-stable/archive/refs/tags/v$pkgver.zip")
-b2sums=('2f6585c951a0ac6554b34faaa3724547bb6932d17f26940b6c657bc789b91e4931014ccdb29913b5d092c7b1ef5fa71daea9b8045300b478746bb07f51829665')
+source=("https://github.com/systemd/systemd/archive/refs/tags/v$pkgver.zip")
+b2sums=('c5e6a7dda4f1cf4bc21a8de67aa4ad9033c00ebc1f8ece90cb5dc1381ffaf8d6887b749944f3ebbb73c2a61aee5b1767ac86e21e3a5719916dffa95360aaf80c')
 
 build() {
   local _meson_options=(
@@ -86,7 +86,7 @@ build() {
 	-Dsysext=false
 	-Dtimedated=false
 	-Dtimesyncd=false
-	-Dqrencode=disable
+	-Dqrencode=disabled
 	-Dquotacheck=false
 	-Duserdb=false
 	-Dutmp=false
@@ -103,11 +103,11 @@ build() {
     -Dsbat-distro-version="${pkgver}"
   )
 
-  meson setup "$_pkgbase-stable-$pkgver" build "${_meson_options[@]}"
+  meson setup "$_pkgbase-$pkgver" build "${_meson_options[@]}"
   ninja -C build -- src/boot/efi/linuxx64.efi.stub
 }
 
 package() {
-  install -d "$pkgdir/usr/lib/gummiboot"
-  cp build/src/boot/efi/linuxx64.{efi,elf}.stub "$pkgdir/usr/lib/gummiboot"
+  install -d "$pkgdir/usr/lib/elogind/boot/efi"
+  cp build/src/boot/efi/linuxx64.{efi,elf}.stub "$pkgdir/usr/lib/elogind/boot/efi"
 }
