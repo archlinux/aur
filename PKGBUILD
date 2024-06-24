@@ -3,7 +3,7 @@
 
 pkgname=imhex-bin
 pkgver=1.34.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Hex Editor for Reverse Engineers, Programmers and people who value their retinas when working at 3 AM. "
 arch=("x86_64")
 url="https://github.com/WerWolv/ImHex"
@@ -12,8 +12,8 @@ depends=(glfw mbedtls freetype2 libglvnd dbus gtk3 curl fmt yara nlohmann-json z
 makedepends=(git)
 provides=(imhex)
 conflicts=(imhex)
-source=("$url/releases/download/v$pkgver/imhex-$pkgver-ArchLinux-x86_64.pkg.tar.zst")
-md5sums=(8540c4e052f0813c49fca3b694cc0e96)
+source=("$url/releases/download/v$pkgver/imhex-$pkgver-2-ArchLinux-x86_64.pkg.tar.zst")
+md5sums=('2401a21cc1068d551f8b8a6e6917a0c4')
 
 package() {
     install -Dm755 "$srcdir/usr/bin/imhex" "$pkgdir/usr/bin/imhex"
