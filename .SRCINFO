@@ -1,0 +1,15 @@
+pkgbase = ruby-resolv
+	pkgdesc = Thread-aware DNS resolver library in Ruby.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/ruby/resolv
+	arch = any
+	license = Ruby
+	license = BSD-2-Clause
+	checkdepends = ruby-test-unit-ruby-core
+	depends = ruby
+	options = !emptydirs
+	source = https://github.com/ruby/resolv/archive/v0.4.0/resolv-0.4.0.tar.gz
+	sha256sums = 20fa8d7c5b78ba843c56341dde420f6b321ed8c38a0895588a2d29da31bc7c0e
+
+pkgname = ruby-resolv
