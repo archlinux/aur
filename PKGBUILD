@@ -4,8 +4,8 @@
 # Contributor: PedroHLC <root@pedrohlc.com>
 
 pkgname=gamescope
-pkgver=3.14.18
-pkgrel=2
+pkgver=3.14.22
+pkgrel=1
 pkgdesc='SteamOS session compositing window manager'
 arch=(x86_64)
 url=https://github.com/ValveSoftware/gamescope
@@ -16,7 +16,6 @@ depends=(
   libavif
   libcap.so
   libdecor
-  libdisplay-info.so
   libdrm
   libinput
   libpipewire-0.3.so
@@ -32,7 +31,6 @@ depends=(
   libxres
   libxtst
   libxxf86vm
-  openvr
   sdl2
   seatd
   vulkan-icd-loader
@@ -43,6 +41,7 @@ depends=(
 )
 makedepends=(
   benchmark
+  cmake # for openvr
   git
   glslang
   meson
@@ -50,27 +49,51 @@ makedepends=(
   vulkan-headers
   wayland-protocols
 )
-_tag=420eb91387a484fd7b1ea71449091f0480d9e538
+_tag=3b69847e15c84c0a4f93e82c2eb16b623f9765b9
 source=(
   git+https://github.com/ValveSoftware/gamescope.git#tag=${_tag}
+  git+https://github.com/Joshua-Ashton/wlroots.git
+  git+https://gitlab.freedesktop.org/emersion/libliftoff.git
+  git+https://github.com/Joshua-Ashton/vkroots.git
+  git+https://gitlab.freedesktop.org/emersion/libdisplay-info.git
+  git+https://github.com/ValveSoftware/openvr.git
   git+https://github.com/Joshua-Ashton/reshade.git
   git+https://github.com/KhronosGroup/SPIRV-Headers.git
 )
-b2sums=('bcdfcfdb7636d10c9d4450e03b252669a6ce9d5d21d241cde12bbf29feffaaf72bb785dce96682f43c25e0797cd6e5d13677e247d7c921e63ca1c27c8af04cb0'
+b2sums=('5f2fd5a052da71a8daf8518e306d0bfc49802f7e246cc3d9f454dce6a482eadc2c43db5c5458bd9ad4074c18bcd4ccad91da14a92f2df17671667c47da7b55c2'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
         'SKIP'
         'SKIP')
 
 prepare() {
   cd gamescope
-
-  # Use shared libs, remove submodules to avoid fallback
-  git rm subprojects/{libdisplay-info,openvr}
-
   meson subprojects download
+
+  git submodule init subprojects/wlroots
+  git config submodule.subprojects/wlroots.url ../wlroots
+
+  git submodule init subprojects/libliftoff
+  git config submodule.subprojects/libliftoff.url ../libliftoff
+
+  git submodule init subprojects/vkroots
+  git config submodule.subprojects/vkroots.url ../vkroots
+
+  git submodule init subprojects/libdisplay-info
+  git config submodule.subprojects/libdisplay-info.url ../libdisplay-info
+
+  git submodule init subprojects/openvr
+  git config submodule.subprojects/openvr.url ../openvr
+
   git submodule init src/reshade
   git config submodule.src/reshade.url ../reshade
+
   git submodule init thirdparty/SPIRV-Headers
   git config submodule.thirdparty/SPIRV-Headers.url ../SPIRV-Headers
+
   git -c protocol.file.allow=always submodule update
 }
 
@@ -81,7 +104,7 @@ pkgver() {
 
 build() {
   arch-meson gamescope build \
-    -Dforce_fallback_for=wlroots,libliftoff,vkroots,glm,stb \
+    -Dforce_fallback_for=wlroots,libliftoff,vkroots,glm,stb,libdisplay-info \
     -Dpipewire=enabled
   meson compile -C build
 }
