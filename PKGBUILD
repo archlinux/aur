@@ -9,7 +9,7 @@ pkgname=(
   mutter-text-input-v1-docs
 )
 pkgver=46.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Window manager and compositor for GNOME with text-input-v1 support"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
