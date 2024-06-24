@@ -3,7 +3,7 @@
 
 pkgname=rgss_script_editor-git
 pkgver=54_e7483ee
-pkgrel=2
+pkgrel=3
 pkgdesc="Script editor for Scripts.rxdata (RPG Maker XP)"
 url="https://github.com/Ancurio/rgss_script_editor"
 arch=('any')
@@ -27,6 +27,7 @@ build() {
 package() {
   cd "${srcdir}/rgss_script_editor"
   install -Dm755 bin/rgss_script_editor "$pkgdir/usr/bin/rgss_script_editor"
+  install -Dm0644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
