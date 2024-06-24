@@ -1,45 +1,44 @@
 # Maintainer: Guilhem Saurel <saurel@laas.fr>
 
+_org='gepetto'
 _pkgname=gepetto-viewer-corba
-_pkgver=5.5.1
-pkgname=${_pkgname}-git
-pkgver=5.5.1.r648.a4cc0c8
+_pkgver=5.8.0
+pkgname=$_pkgname-git
+pkgver=5.8.0.r755.35df70e
 pkgrel=1
 pkgdesc="Graphical Interface for Pinocchio and HPP."
 arch=('i686' 'x86_64')
-url="https://github.com/gepetto/$_pkgname"
-license=('BSD')
+url="https://github.com/$_org/$_pkgname"
+license=('BSD-2-Clause')
 depends=('gepetto-viewer-git' 'python-omniorbpy')
 makedepends=('cmake' 'boost' 'git')
 conflicts=($_pkgname)
 provides=($_pkgname)
-source=("$_pkgname"::"git://github.com/gepetto/$_pkgname.git")
+source=("$_pkgname"::"git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$_pkgname"
-    echo "$_pkgver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    echo "$_pkgver.r$(git -C "$_pkgname" rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-    cd "$_pkgname"
-    git submodule update --init
-    mkdir build
+    git -C "$_pkgname" checkout devel
+    git -C "$_pkgname" submodule update --init --recursive
 }
 
 build() {
-    cd "$_pkgname/build"
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib ..
-    make
+    cmake -B build -S $_pkgname \
+        -DCMAKE_INSTALL_LIBDIR=lib \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -Wno-dev
+    cmake --build build
 }
 
 check() {
-    cd "$_pkgname/build"
-    make test
+    cmake --build build -t test
 }
 
 package() {
-    cd "$_pkgname/build"
-    make DESTDIR="$pkgdir/" install
-    install -Dm644 ../COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    DESTDIR="$pkgdir/" cmake --build build -t install
+    install -Dm644 "$_pkgname/COPYING" "$pkgdir/usr/share/licenses/$_pkgname/COPYING"
 }
