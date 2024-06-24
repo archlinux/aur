@@ -1,26 +1,34 @@
 pkgbase = python-trezor-agent
 	pkgdesc = Using hardware wallets as SSH/GPG agent
-	pkgver = 0.14.4
+	pkgver = 0.14.8
 	pkgrel = 1
 	url = https://github.com/romanz/trezor-agent
 	arch = any
 	license = LGPL3
-	makedepends = python-build
-	makedepends = python-installer
 	makedepends = python-setuptools
-	makedepends = python-wheel
-	depends = python-docutils
-	depends = python-shutilwhich
-	depends = python-trezor
+	depends = libusb
+	depends = python
+	depends = python-bech32
 	depends = python-configargparse
+	depends = python-construct-classes
+	depends = python-cryptography
 	depends = python-daemon
+	depends = python-docutils
 	depends = python-ecdsa
-	depends = python-pynacl
+	depends = python-hidapi
 	depends = python-mnemonic
 	depends = python-pymsgbox
+	depends = python-pynacl
 	depends = python-semver
+	depends = python-simple-rlp
+	depends = python-trezor>=0.13
 	depends = python-unidecode
-	source = python-trezor-agent-0.14.4.tar.gz::https://github.com/romanz/trezor-agent/archive/v0.14.4.tar.gz
-	sha256sums = cbab620a1e21fed8089fcb7682c9d37500f0b60a5fb6e2d4d56ec261c67dabe6
+	depends = python-wheel
+	depends = trezor-udev
+	optdepends = gnupg>=2.1.11: encrypt and sign with Trezor
+	source = python-trezor-agent-0.14.8.tar.gz::https://github.com/romanz/trezor-agent/archive/v0.14.8.tar.gz
+	source = setup-drop-shutil-backport-dep.patch
+	sha256sums = 1216a567b528267f2089280484adc17d9c51cbc63b3bf2a0b33c2c4f622873d9
+	sha256sums = 5d5478d92d666066a6aa4e43c51109150841b9d10075ba622b2e0c1ccbb8b29c
 
 pkgname = python-trezor-agent
