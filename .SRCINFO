@@ -1,8 +1,8 @@
 pkgbase = ilorest
 	pkgdesc = HPE RESTful Interface Tool
 	pkgver = 5.1.0.0_19
-	pkgrel = 1
-	url = https://support.hpe.com/connect/s/softwaredetails?language=en_US&softwareId=MTX_a718a30ca4a94396b64b331e00
+	pkgrel = 2
+	url = https://support.hpe.com/connect/s/softwaredetails?language=en_US&softwareId=MTX_4ea61a305658443cbb4fefef14
 	changelog = ChangeLog
 	arch = x86_64
 	groups = hpproliant
