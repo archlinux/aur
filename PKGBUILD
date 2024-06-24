@@ -4,15 +4,15 @@
 
 pkgname=guile-bytestructures
 _pkgname=bytestructures
-pkgver=2.0.1
-pkgrel=3
+pkgver=2.0.2
+pkgrel=1
 pkgdesc='Structured access to bytevector contents.'
 arch=('x86_64')
 url="https://github.com/TaylanUB/scheme-bytestructures"
 license=('GPL-3.0-or-later')
 depends=('guile')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/TaylanUB/scheme-${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fd5787a4bfa463a1efb736adf969b291abc0333c1d477e0de61c58e528c33950')
+sha256sums=('b0681daa006c80efd2fce5dc174ac439d44be8a9c2e70938e497efad08cd5659')
 
 build() {
 	cd "${srcdir}/scheme-${_pkgname}-${pkgver}"
