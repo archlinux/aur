@@ -1,6 +1,6 @@
 pkgbase = coppeliasim-bin
 	pkgdesc = Robotic Simulation software from Coppelia Robotics. Formally known as VReP.
-	pkgver = 4.6.0.rev16
+	pkgver = 4.7.0.rev2
 	pkgrel = 1
 	url = http://www.coppeliarobotics.com/
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = coppeliasim-bin
 	provides = vrep
 	provides = coppeliasim
 	conflicts = coppeliasim
-	noextract = coppeliasim-4.6.0.rev16.tar.xz
+	noextract = coppeliasim-4.7.0.rev2.tar.xz
 	options = !strip
-	source = coppeliasim-4.6.0.rev16.tar.xz::https://www.coppeliarobotics.com/files/V4_6_0_rev16/CoppeliaSim_Edu_V4_6_0_rev16_Ubuntu22_04.tar.xz
-	sha256sums = 2d2af2402a22438c858703237c6e42e3c7d47ef9c302242ea8f56cea8bf79251
+	source = coppeliasim-4.7.0.rev2.tar.xz::https://www.coppeliarobotics.com/files/V4_7_0_rev2/CoppeliaSim_Edu_V4_7_0_rev2_Ubuntu22_04.tar.xz
+	sha256sums = 095c3060c8b0104f1d6d0064e24e09df8dec24128ee8e6ee38eaf016a7cf8608
 
 pkgname = coppeliasim-bin

@@ -3,7 +3,7 @@
 
 pkgname=coppeliasim-bin
 _name=coppeliasim
-pkgver=4.6.0.rev16
+pkgver=4.7.0.rev2
 _pkgver=${pkgver//./_}
 pkgrel=1
 pkgdesc="Robotic Simulation software from Coppelia Robotics. Formally known as VReP."
@@ -15,9 +15,9 @@ depends=('ffmpeg')
 conflicts=('coppeliasim')
 options=(!strip)
 provides=('vrep' 'coppeliasim')
-source=("${_name}-${pkgver}.tar.xz::https://www.coppeliarobotics.com/files/V4_6_0_rev16/CoppeliaSim_Edu_V${_pkgver}_Ubuntu22_04.tar.xz")
+source=("${_name}-${pkgver}.tar.xz::https://www.coppeliarobotics.com/files/V4_7_0_rev2/CoppeliaSim_Edu_V${_pkgver}_Ubuntu22_04.tar.xz")
 noextract=("${source[0]%%::*}")
-sha256sums=('2d2af2402a22438c858703237c6e42e3c7d47ef9c302242ea8f56cea8bf79251')
+sha256sums=('095c3060c8b0104f1d6d0064e24e09df8dec24128ee8e6ee38eaf016a7cf8608')
 
 package() {
     install -d "${pkgdir}/usr/"{bin,share/doc}
@@ -27,7 +27,7 @@ package() {
 
     # Extract everything but documentation into /opt, and docs into
     # /usr/share/doc, and ensure they're owned by root in the fakeroot env
-    helpFiles="CoppeliaSim_Edu_V${_pkgver}_Ubuntu22_04/helpFiles"
+    helpFiles="CoppeliaSim_Edu_V${_pkgver}_Ubuntu22_04/manual"
     bsdtar -C "${pkgdir}/opt/${_name}/" --strip-components=1 \
         --exclude="${helpFiles}" --uid 0 --gid 0 \
         -xvJf "${srcdir}/${noextract[0]}"
