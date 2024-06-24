@@ -1,5 +1,5 @@
 pkgbase = guile-bytestructures
-	pkgdesc = Structured access library to bytevector contents for Guile
+	pkgdesc = Structured access to bytevector contents.
 	pkgver = 2.0.1
 	pkgrel = 3
 	url = https://github.com/TaylanUB/scheme-bytestructures
