@@ -1,5 +1,6 @@
 *.tar.zst
 *.pacman
+go-gsgm
 src/
 pkg/
 LICENSE

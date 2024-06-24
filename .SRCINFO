@@ -1,6 +1,6 @@
 pkgbase = go-gsgm
 	pkgdesc = Gnu Single Game Manager,Linux端的游戏库管理工具,主要与 Lutris 一起使用,相辅相成,Go 版本。
-	pkgver = 0.1.1
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/Jguer/yay
 	arch = x86_64
@@ -10,7 +10,9 @@ pkgbase = go-gsgm
 	provides = gsgm
 	conflicts = go-gsgm
 	conflicts = gsgm
-	source = go-gsgm-0.1.1.pacman::https://github.com/XDwanj/go-gsgm/releases/download/v0.1.1/go-gsgm-0.1.1-1-x86_64.pkg.tar.zst
-	sha256sums = 546e9c46d0296038c2cda8c5cfa53098a6234de43c7b857a0121d83053f0613c
+	source = https://github.com/XDwanj/go-gsgm/releases/download/v0.1.3/go-gsgm
+	source = https://raw.githubusercontent.com/XDwanj/go-gsgm/master/LICENSE
+	sha256sums = eaff837fb0e66f53ee62d8d9f58f4f5d930646ab4804e4cb69169f69fccb4d41
+	sha256sums = 4002f795f7119311fc2413ef76e823dc38b3a59864c472c323c65089e1fd7861
 
 pkgname = go-gsgm
