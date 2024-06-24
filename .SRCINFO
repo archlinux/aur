@@ -7,8 +7,7 @@ pkgbase = juicefs
 	arch = aarch64
 	arch = arm64
 	license = Apache
-	makedepends = go>=1.20
-	makedepends = go<1.22
+	makedepends = go
 	makedepends = git
 	depends = glibc
 	depends = fuse2
