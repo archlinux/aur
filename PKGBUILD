@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=baize-toolbox-git
 _pkgname="白泽工具箱"
-pkgver=0.0.1.beta2.r0.g9bd648a
-_electronversion=29
+pkgver=0.0.1.beta4.r0.gd1e4abd
+_electronversion=31
 _nodeversion=18
 pkgrel=1
 pkgdesc="白泽工具箱是一款功能强大的多媒体工具，为用户提供了多种多样的多媒体处理功能。"
@@ -13,11 +13,8 @@ license=("LGPL-3.0-only")
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
-    #"electron${_electronversion}"
+    "electron${_electronversion}"
     'ffmpeg'
-    'nss'
-    'gtk3'
-    'nspr'
 )
 makedepends=(
     'npm'
@@ -29,9 +26,10 @@ makedepends=(
 )
 source=(
     "${pkgname%-git}.git::git+${_ghurl}.git"
-    #"${pkgname%-git}.sh"
+    "${pkgname%-git}.sh"
 )
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
@@ -43,13 +41,14 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 build() {
-    #sed -e "s|@electronversion@|${_electronversion}|" \
-    #    -e "s|@appname@|${pkgname%-git}|g" \
-    #    -e "s|@runname@|app.asar|g" \
-    #    -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
-    #    -i "${srcdir}/${pkgname%-git}.sh"
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-git}|g" \
+        -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-git}|g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
+        -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-git} --no-sandbox %U"
+    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-git} --no-sandbox %U"
     cd "${srcdir}/${pkgname%-git}.git"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
@@ -69,20 +68,15 @@ build() {
         echo "Your network is OK."
     fi
     sed "/- AppImage/d;/- snap/d;s|- deb|- dir|g" -i electron-builder.yml
-    pnpm install
-    pnpm run build:linux
+    NODE_ENV=development pnpm install
+    NODE_ENV=production pnpm run build:linux
 }
 package() {
-    #install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    #install -Dm644 "${srcdir}/${pkgname%-git}.git/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    #cp -r "${srcdir}/${pkgname%-git}.git/dist/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname%-git}"
-    #install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}/app.asar.unpacked/resources/linux"
-    #ln -sf "/usr/bin/ffmpeg" "${pkgdir}/usr/lib/${pkgname%-git}/app.asar.unpacked/resources/linux/ffmpeg"
-    install -Dm755 -d "${pkgdir}/"{opt/"${pkgname%-git}",usr/bin}
-    cp -r "${srcdir}/${pkgname%-git}.git/dist/linux-"*/* "${pkgdir}/opt/${pkgname%-git}"
-    ln -sf "/opt/${pkgname%-git}/${pkgname%-git}" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm755 -d "${pkgdir}/opt/${pkgname%-git}/resources/app.asar.unpacked/resources/linux"
-    ln -sf "/usr/bin/ffmpeg" "${pkgdir}/opt/${pkgname%-git}/resources/app.asar.unpacked/resources/linux/ffmpeg"
+    install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
+    cp -r "${srcdir}/${pkgname%-git}.git/dist/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname%-git}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}/app.asar.unpacked/resources/linux"
+    ln -sf "/usr/bin/ffmpeg" "${pkgdir}/usr/lib/${pkgname%-git}/app.asar.unpacked/resources/linux/ffmpeg"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/resources/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/dist/linux-"*/LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}"
