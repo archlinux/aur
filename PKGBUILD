@@ -1,7 +1,7 @@
 # Maintainer: Pando85 <pando855@gmail.com>
 
 pkgname=timer-rs
-pkgver=0.7.4
+pkgver=0.7.5
 pkgrel=1
 pkgdesc="Simple countdown terminal alarm"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -13,7 +13,7 @@ depends=('gcc-libs'
 makedepends=('cargo'
              'git')
 source=("git+$url.git#tag=v${pkgver}?signed")
-validpgpkeys=('C15CDDF9318F14398300B917C6CB8A1793CA3F94')
+validpgpkeys=('CD1DB60B2C8465FD50028EF6D381D73787B45B3E')
 sha512sums=('SKIP')
 
 prepare() {
