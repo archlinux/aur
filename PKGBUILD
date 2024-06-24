@@ -2,9 +2,9 @@
 
 _name="Pogo"
 pkgname=tango-${_name,,}
-pkgver=9.9.0
+pkgver=9.9.2
 _jarfile="${_name}-${pkgver}.jar"
-pkgrel=2
+pkgrel=1
 pkgdesc="The TANGO code generator. It allows to define a TANGO class model"
 arch=('any')
 url="https://gitlab.com/tango-controls/${_name}"
@@ -16,21 +16,22 @@ source=(
   launcher
 )
 sha256sums=(
-  'dad9ec461d97737588fb0e9eebc91ac953bdf308d55de0b6b4dada208dd4456d'
+  'bd52a3515fee99c4bfb2262691285c31ecb29d3018fa64aaddeeca55c33cadb7'
   '49f16c646996c55fa65f66b8eb8c948950834a93e9a75c71c9fd1b110d401eee'
 )
 
 prepare() {
   sed -i "s/jar_file/$_jarfile/" launcher
   sed -i "s/package_name/$pkgname/" launcher
-  sed -i "s/9.8.5-SNAPSHOT/$pkgver/" ${_name,,}-${pkgver}/pom.xml
-  sed -i "s/9.8.5-SNAPSHOT/$pkgver/" ${_name,,}-${pkgver}/org.tango.pogo/pom.xml
-  sed -i "s/9.8.5-SNAPSHOT/$pkgver/" ${_name,,}-${pkgver}/org.tango.pogo.gui/pom.xml
+  sed -i "s/9.9.1-SNAPSHOT/$pkgver/" ${_name,,}-${pkgver}/pom.xml
+  sed -i "s/9.9.1-SNAPSHOT/$pkgver/" ${_name,,}-${pkgver}/org.tango.pogo/pom.xml
+  sed -i "s/9.9.1-SNAPSHOT/$pkgver/" ${_name,,}-${pkgver}/org.tango.pogo.gui/pom.xml
 }
 
 build() {
   cd ${_name,,}-${pkgver}
-  mvn package
+  export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+  mvn clean package
 }
 
 package() {
