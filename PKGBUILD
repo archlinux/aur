@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=netron-git
 _pkgname=Netron
-pkgver=7.7.0.r4.g1411066
-_electronversion=30
+pkgver=7.7.4.r7.g9532db0
+_electronversion=31
 _nodeversion=20
 pkgrel=1
 pkgdesc="Visualizer for neural network, deep learning and machine learning models"
@@ -74,8 +74,8 @@ build() {
     rm -rf dist node_modules
     sed 's|"AppImage", "snap"|"dir"|g' -i package.json
     sed '/python -m pip/d;/--mac /d;/--win /d;/--linux snap/d;s|--linux appimage --x64|-l --dir|g' -i package.js
-    npm install
-    npm run build
+    NODE_ENV=development npm install
+    NODE_ENV=production npm run build
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
