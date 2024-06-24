@@ -1,6 +1,6 @@
 pkgbase = ksvnupdater
 	pkgdesc = Utility oriented to KDE translation teams. You can have various local repository copies, generate projects for Lokalize, checks and corrections using Pology and more.
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = http://www.eloihr.net/ksvnupdater
 	arch = x86_64
@@ -27,8 +27,8 @@ pkgbase = ksvnupdater
 	optdepends = python-pyenchant: spell checking functionality (needs a dictionary)
 	optdepends = poxml: creating documentation
 	optdepends = hashdeep: downloading documentation files
-	source = https://www.eloihr.net/ksvnupdater/files/ksvnupdater-3.0.0.tar.bz2
-	md5sums = 69b91bea8b920746ac41ef3dfd7cd1f3
-	sha1sums = 6fd755daff9d5da053f0e59d6491daad65b86010
+	source = https://www.eloihr.net/ksvnupdater/files/ksvnupdater-3.0.1.tar.bz2
+	md5sums = a6bbe55189b67008a1f235791c9a7111
+	sha1sums = 01ce45f0185d70f9051ab968264248319c439fcd
 
 pkgname = ksvnupdater
