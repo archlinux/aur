@@ -4,8 +4,8 @@
 # Add dotnet directory to PATH, according to docs it must be added, plus VSCode C# Dev Kit doesn't work without this.
 # See https://learn.microsoft.com/en-us/dotnet/core/install/linux-scripted-manual#set-environment-variables-system-wide
 case "$PATH" in
-    *"$$DOTNET_ROOT"* ) true ;;
-    * ) PATH="$PATH:$$DOTNET_ROOT" ;;
+    *"$DOTNET_ROOT"* ) true ;;
+    * ) PATH="$PATH:$DOTNET_ROOT" ;;
 esac
 
 # Add dotnet tools directory to PATH
