@@ -60,18 +60,18 @@ conflicts=(duckstation)
 source=(
     git+"$url".git
     git+https://github.com/google/shaderc.git#tag=v2024.1
-    git+https://github.com/KhronosGroup/SPIRV-Cross.git#tag=vulkan-sdk-1.3.280.0
+    git+https://github.com/KhronosGroup/SPIRV-Cross.git#tag=vulkan-sdk-1.3.283.0
     duckstation-qt.desktop
     duckstation-qt.sh)
 sha256sums=('SKIP'
             'f1dbf3270fc21bf6871ae8693ddfb467ce142009d3371fd407512b956c25ace0'
-            '45eb9bf96f0527fbab522800f816d4eac0e835ddb34e4381769158ae6b54ae00'
+            '9c2a148a1e4c7ca16ab54991980ed6393c1c21794081083f2779d880b3dbf1d4'
             'ec2d7358f81598390a8ceca2d1974be3e5f7c45602b550c89a1e9323ab45474b'
             '4e1c4ff072f0bf7df589b5c7160b0a4add5de326abd7570a2d1a4657f09e47a6')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-    git checkout 966cce1581f92313bbc44be182a4b120a547bd30
+
     git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
