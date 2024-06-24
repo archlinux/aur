@@ -1,7 +1,7 @@
 pkgbase = osmo-qcdiag-git
 	pkgdesc = Osmocom tool for Qualcomm DIAG
-	pkgver = r97.aea8cb8
-	pkgrel = 2
+	pkgver = r102.5b01f0b
+	pkgrel = 1
 	url = https://osmocom.org/projects/osmo-qcdiag
 	arch = x86_64
 	arch = i686
@@ -9,9 +9,9 @@ pkgbase = osmo-qcdiag-git
 	makedepends = git
 	depends = libosmocore-git
 	depends = libqmi
-	provides = osmo-qcdiag=r97.aea8cb8
+	provides = osmo-qcdiag=r102.5b01f0b
 	conflicts = osmo-qcdiag
-	source = git+https://gitea.osmocom.org/phone-side/osmo-qcdiag.git
+	source = git+https://gerrit.osmocom.org/osmo-qcdiag.git
 	sha256sums = SKIP
 
 pkgname = osmo-qcdiag-git

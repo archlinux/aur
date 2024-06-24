@@ -1,8 +1,8 @@
 # Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
 
 pkgname=osmo-qcdiag-git
-pkgver=r97.aea8cb8
-pkgrel=2
+pkgver=r102.5b01f0b
+pkgrel=1
 pkgdesc="Osmocom tool for Qualcomm DIAG"
 arch=('x86_64' 'i686')
 url="https://osmocom.org/projects/osmo-qcdiag"
@@ -11,7 +11,7 @@ depends=('libosmocore-git' 'libqmi')
 makedepends=('git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver}")
-source=("git+https://gitea.osmocom.org/phone-side/osmo-qcdiag.git")
+source=("git+https://gerrit.osmocom.org/osmo-qcdiag.git")
 sha256sums=('SKIP')
 
 pkgver() {
