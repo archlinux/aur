@@ -1,13 +1,13 @@
 # Maintainer: Willy Micieli <micieli@vivaldi.net>
 pkgname=commiter
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 epoch=1
 arch=('any')
 pkgdesc="A rust program to ensure commit quality for cargo project"
 url="https://github.com/otechdo/commiter"
 license=('GPL3')
-depends=('rustup' 'git')
+depends=('rustup' 'git' 'zuu')
 makedepends=('cargo')
 provides=('commiter')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
