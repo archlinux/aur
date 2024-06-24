@@ -39,7 +39,6 @@ optdepends=(
 	'xdg-desktop-portal-hyprland: File picker portal (example)')
 provides=('alchemy-viewer')
 # The release url format changes often, please keep this comment for easy switching.
-# https://github.com/AlchemyViewer/Alchemy/releases/download/7.1.9.2492-beta/Alchemy_Beta_7_1_9_2492_x86_64.tar.xz
 source=('https://github.com/AlchemyViewer/Alchemy/releases/download/'"${pkgver}-${_ci_name}"'/'"${_pkgfolder}.tar.xz")
 sha256sums=('7d09a1b6042d00668f679c9112a456159f21d4221edcc1588bde2ab4855a7a89')
 package() {
