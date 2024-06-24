@@ -3,7 +3,7 @@
 pkgbase=python-mike
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Manage multiple versions of your MkDocs-powered documentation"
 arch=('any')
@@ -16,15 +16,15 @@ makedepends=('python-setuptools')
 checkdepends=('python-pytest'
               'python-importlib-metadata'
               'python-importlib_resources'
+#             'python-pytest-xdist'
               'python-pyparsing'
               'python-shtab'
-              'python-yaml'
               'python-verspec'
               'mkdocs'
               'git')
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 source=("https://github.com/jimporter/mike/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('0e4b1ad447017562868dd91318ac6f2a')
+md5sums=('bee9ae3c467305a08b10d2119b6ec84e')
 
 get_pyinfo() {
      [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" || \
