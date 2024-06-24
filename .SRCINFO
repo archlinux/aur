@@ -1,21 +1,21 @@
 pkgbase = fleur
 	pkgdesc = A full-potential linearized augmented planewave code
-	pkgver = 6.1
-	pkgrel = 2
+	pkgver = 7.1
+	pkgrel = 1
 	url = https://www.flapw.de
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = cmake
+	makedepends = ninja
 	makedepends = gcc-fortran
 	makedepends = python
 	makedepends = vim
 	depends = libxml2
-	depends = hdf5
-	depends = scalapack
+	depends = elpa
 	depends = libxc
 	depends = fftw
-	source = https://iffgit.fz-juelich.de/fleur/fleur/-/archive/MaX-R6.1/fleur-MaX-R6.1.tar.bz2
-	sha256sums = f15f7c0b5af262b79f3dc699199767cc33d73463ec574a4e377cf576e491218b
+	source = https://iffgit.fz-juelich.de/fleur/fleur/-/archive/MaX-R7.1/fleur-MaX-R7.1.tar.bz2
+	sha256sums = e501bf146ca01889cd07234faf0e8b4deb78035d1a7783ea658a3a9ccc4bf781
 
 pkgname = fleur
