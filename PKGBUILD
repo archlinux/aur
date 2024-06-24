@@ -1,31 +1,38 @@
-# Maintainer: adytzu2007 <adrian.bacircea@gmail.com>
-
+# Maintainer: Alexandre Bouvier <contact@amb.tf>
+# Contributor: adytzu2007 <adrian.bacircea@gmail.com>
 pkgname=cryptopp
-pkgver=8.7.0
+pkgver=8.9.0
 pkgrel=1
-pkgdesc="Crypto++ Library is a free C++ class library of cryptographic schemes."
-arch=(x86_64)
-url="https://www.cryptopp.com"
-license=('custom')
-depends=('gcc-libs')
-makedepends=('git')
-provides=("${pkgname}")
-conflicts=("${pkgname}")
-source=(
-  "https://github.com/weidai11/cryptopp/releases/download/CRYPTOPP_${pkgver//./_}/${pkgname}${pkgver//./}.zip"
+pkgdesc="A free C++ class library of cryptographic schemes"
+arch=('x86_64')
+url="https://www.cryptopp.com/"
+license=('BSL-1.0')
+depends=('gcc-libs' 'glibc')
+provides=('libcryptopp.so')
+source=("https://www.cryptopp.com/cryptopp${pkgver//./}.zip"{,.sig})
+b2sums=(
+	'95fe0585cff826587a301dd3df863c39cba889d407bb70ae7b35a4f9a0f7f5fef83b1c65cb95923a05f8ae91f18ed20e88738e8bb081a3f9c8c49c2d67d44ecc'
+	'SKIP'
 )
-sha256sums=(
-  'd0d3a28fcb5a1f6ed66b3adf57ecfaed234a7e194e42be465c2ba70c744538dd'
-)
+validpgpkeys=('B8CC19802062211A508B2F5CCE0586AF1F8E37BD') # Jeffrey Walton
+
+prepare() {
+	make PREFIX=/usr libcryptopp.pc
+}
 
 build() {
-  cd "$srcdir"
-  make all
+	make dynamic
+	if ((CHECKFUNC)); then
+		make cryptest.exe
+	fi
+}
+
+check() {
+	make test
 }
 
 package() {
-  cd "$srcdir"
-  make PREFIX="/usr" DESTDIR="$pkgdir/" cryptopp.pc install
-  install -m 644 -Dt "$pkgdir/usr/lib/pkgconfig" "$srcdir/libcryptopp.pc"
-  install -m 644 -Dt "$pkgdir/usr/share/licenses/${pkgname}" "$srcdir/License.txt"
+	# shellcheck disable=SC2154
+	make DESTDIR="$pkgdir" PREFIX=/usr install-lib
+	install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname License.txt
 }
