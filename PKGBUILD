@@ -20,6 +20,7 @@ depends=('libosmocore'
          'c-ares')
 makedepends=('git')
 conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}=${pkgver}")
 backup=('etc/osmocom/osmo-sgsn.cfg'
         'etc/osmocom/osmo-gtphub.cfg')
 source=("git+https://gitea.osmocom.org/cellular-infrastructure/${pkgname%-git}.git")

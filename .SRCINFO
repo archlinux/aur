@@ -19,6 +19,7 @@ pkgbase = osmo-sgsn-git
 	depends = libgtp.so
 	depends = talloc
 	depends = c-ares
+	provides = osmo-sgsn=1.11.1.r2.gf2545b1b8
 	conflicts = osmo-sgsn
 	backup = etc/osmocom/osmo-sgsn.cfg
 	backup = etc/osmocom/osmo-gtphub.cfg
