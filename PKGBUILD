@@ -10,7 +10,6 @@ url="https://github.com/emacsorphanage/haxe-mode"
 license=('GPL-3.0-or-later')
 depends=('emacs')
 install=$pkgname.install
-#source=(http://people.debian.org/~jps/misc/haxe-mode.el)
 source=(https://raw.githubusercontent.com/emacsorphanage/haxe-mode/0.3.3/haxe-mode.el)
 md5sums=('9f322aa78c9fad5c390267e6c8b6a5d7')
 
