@@ -1,7 +1,7 @@
 # Maintainer: ABOhiccups <info@abohiccups.com>
 pkgname=project-plus-netplay
-pkgver='v2.5.2'
-_tagname='2.5.2'
+pkgver='v3.0'
+_tagname='3.0'
 pkgrel='1'
 pkgdesc="A Mod of Super Smash Bros. Brawl with Netplay."
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
 	"$_launcher::$_url/download/$pkgver/$_launcher"
 	"$_sd::$_url/download/$pkgver/$_sd"
 )
-sha256sums=('a734b439e063f301e79d8acbfb8c448f0e998cee557685d4db7f25209a68da83' '1b9dce2fb0eac3ad8cc809826b3b6bfd4ce30dbfc394eaa586e35dcd356fd189' '121d08f8fcbf2fc24d5b48481f387398f24be30de3eb66fb510cb9f5a67f4657')
+sha256sums=('9e642211d6a8374b2ca47fdc4b08767d3307f3b4ff6e3b3e24326a13fdad022d' 'de78a2a1c47722ab165a36d29e849075e7920e925194eb8ee25f0dafab3cd01c' '52a551279955b2c25bd7180bbaab4f7570eea0d5be59c2da5d4996ae7e3fae92')
 
 prepare() {
 	chmod +x "$srcdir/$_package"
