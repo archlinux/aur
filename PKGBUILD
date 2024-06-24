@@ -3,7 +3,7 @@
 
 pkgname=azure-dev-cli-bin
 _pkgname=azure-dev-cli
-pkgver=1.5.0
+pkgver=1.9.3
 pkgrel=1
 pkgdesc="A developer-centric command-line interface tool for creating Azure applications."
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=("azure-dev-cli")
 provides=("azure-dev-cli")
 _architecture="amd64"
 source=("$_pkgname-$pkgver-$CARCH.tar.gz::https://github.com/Azure/azure-dev/releases/download/${_pkgname}_${pkgver}/azd-linux-${_architecture}.tar.gz")
-sha256sums=("b50c96afd2491d189f4f7d82379aa372d2aa743a12d691c7aabc845463d8fd75")
+sha256sums=("9689f9d29c6cba548651dd0de31f939346e2df1509115f2918341911e339e85c")
 options=(!strip)
 
 package() {
