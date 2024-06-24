@@ -13,6 +13,7 @@ sha256sums=('846f8bd80988a891be2c7fecb2d6faf2b459f61788164b628a7a69a1461ec811' S
 prepare() {
   cd "${srcdir}"/PyFMI-PyFMI-${pkgver}
   patch -p1 -i "${srcdir}"/setuptools.patch
+  curl -L https://github.com/modelon-community/PyFMI/commit/8c018ef7d3bb955804f3197d54f4e6f906e7c7a9.patch | patch -p1 || :
 }
 
 build() {
