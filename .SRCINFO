@@ -1,5 +1,5 @@
 pkgbase = eyeofsauron-git
-	pkgdesc = Optimize system performance for games
+	pkgdesc = Using webcams and microphone in your Physics classes
 	pkgver = 0.0.1.r0.gdb4fc90
 	pkgrel = 1
 	url = https://github.com/wwmm/eyeofsauron

@@ -3,7 +3,7 @@
 pkgname=eyeofsauron-git
 pkgver=0.0.1.r0.gdb4fc90
 pkgrel=1
-pkgdesc='Optimize system performance for games'
+pkgdesc='Using webcams and microphone in your Physics classes'
 arch=(x86_64 i686)
 url='https://github.com/wwmm/eyeofsauron'
 license=('GPL3')
