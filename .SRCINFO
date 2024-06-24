@@ -1,0 +1,15 @@
+pkgbase = cloning
+	pkgdesc = A rust program to clone directory content
+	pkgver = 2.0.0
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/otechdo/cloning
+	arch = any
+	license = GPL3
+	makedepends = cargo
+	depends = rustup
+	provides = cloning
+	source = cloning-2.0.0.tar.gz::https://static.crates.io/crates/cloning/cloning-2.0.0.crate
+	sha256sums = f15d612b9b1a8a61993b474de9e07b6ad9964fda2f5748a845f10d053f795297
+
+pkgname = cloning
