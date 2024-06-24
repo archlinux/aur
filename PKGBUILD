@@ -5,12 +5,12 @@
 # Contributor: Mitmischer
 
 pkgname=ultrastardx-git
-pkgver=r1147.6bb2a06e
+pkgver=r1538.80adde2e
 pkgrel=1
 pkgdesc='Free and open source karaoke game. (GIT)'
 arch=('i686' 'x86_64')
 url="http://usdx.eu/"
-license=('GPL')
+license=('GPL-2.0-only')
 depends=('ffmpeg' 'lua' 'portaudio' 'sdl2' 'sdl2_gfx' 'sdl2_mixer' 'sdl2_net'
          'sdl2_ttf' 'sdl2_image' 'ttf-dejavu' 'gnu-free-fonts' 'wqy-microhei' 'portmidi'
          'pkg-config' 'autoconf' 'automake')

@@ -1,12 +1,12 @@
 pkgbase = ultrastardx-git
 	pkgdesc = Free and open source karaoke game. (GIT)
-	pkgver = r1147.6bb2a06e
+	pkgver = r1538.80adde2e
 	pkgrel = 1
 	url = http://usdx.eu/
 	arch = i686
 	arch = x86_64
 	groups = usdx
-	license = GPL
+	license = GPL-2.0-only
 	makedepends = git
 	makedepends = fpc
 	depends = ffmpeg
