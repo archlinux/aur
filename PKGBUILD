@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=locfit
-_pkgver=1.5-9.9
+_pkgver=1.5-9.10
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,8 +17,8 @@ optdepends=(
   r-interp
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('60e6ca00a2b3fbff15f0dbdc0e7f2646')
-b2sums=('0b110401d4ceb48c0a289b7bf4c2666e9ed843ad073c811406549521160e6d9ee7bc1f8c2be42634151d72e68fc94926ae785e8cc1a56c781b5bbaffc9930e98')
+md5sums=('47205bb4bf32dc99304f231fe5b3181e')
+b2sums=('fa8c7af6fef68539753f22bf29de596a120f8bb825d3c479618c5f53291fdca4cd04ab395bb02b9bfe16b60fe25fe35f13300bf0d5f30ea6636d6806dd55e2ce')
 
 build() {
   mkdir build
