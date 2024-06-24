@@ -1,7 +1,7 @@
 pkgbase = python-enzyme
 	pkgdesc = Python module to parse metadata in video files.
-	pkgver = 0.5.0
-	pkgrel = 3
+	pkgver = 0.5.1
+	pkgrel = 1
 	url = https://github.com/Diaoul/enzyme
 	arch = any
 	license = Apache
@@ -11,7 +11,7 @@ pkgbase = python-enzyme
 	makedepends = python-wheel
 	depends = python
 	conflicts = python-enzyme-git
-	source = https://files.pythonhosted.org/packages/source/e/enzyme/enzyme-0.5.0.tar.gz
-	sha512sums = fa8eadbb9cc5bcc18362496342b8d3f42398ed77ed42a51bf186665a4664050f6ef0dcfbbe7e4d5cfe2f0e1c5f19981a87780b3f8c1e2eeeaa47eaf7c0b55d5d
+	source = https://files.pythonhosted.org/packages/source/e/enzyme/enzyme-0.5.1.tar.gz
+	sha512sums = 8632cce142a805e47d2dccb951d5028cfd2bf07dd82f5bb4b8bb70e118731771226fcf66328f47da6031be61c059adec6456354ae278f00ae294a8a58b6e626a
 
 pkgname = python-enzyme
