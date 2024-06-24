@@ -1,6 +1,6 @@
 pkgbase = python-scoring-matrices
 	pkgdesc = Dependency free, Cython-compatible scoring matrices to use with biological sequences.
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/althonos/scoring-matrices
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = python-scoring-matrices
 	makedepends = python-build
 	makedepends = python-installer
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/s/scoring-matrices/scoring-matrices-0.2.1.tar.gz
-	sha256sums = a678e047b63ca4043ec23f6f13752d6b0e78b7383a939cc6229d96f12055a511
+	source = https://files.pythonhosted.org/packages/source/s/scoring-matrices/scoring-matrices-0.2.2.tar.gz
+	sha256sums = 2192df3f5f8ecd144071858cc287c958d2a842cdc8cc082c13755dfefe2f66b8
 
 pkgname = python-scoring-matrices
