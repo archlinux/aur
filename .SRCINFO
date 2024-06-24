@@ -1,6 +1,6 @@
 pkgbase = dida-bin
 	pkgdesc = Official Dida client, a todo list.
-	pkgver = 2.0.20
+	pkgver = 2.0.30
 	pkgrel = 1
 	url = https://dida365.com/home
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = dida-bin
 	depends = electron19
 	optdepends = noto-fonts-emoji: for emoji support
 	provides = dida
-	source = dida_2.0.20.deb::https://cdn.dida365.cn/download/linux/linux_deb_x64/dida-2.0.20-amd64.deb
+	source = dida_2.0.30.deb::https://cdn.dida365.cn/download/linux/linux_deb_x64/dida-2.0.30-amd64.deb
 	source = dida.sh
-	sha512sums = b7c7782de9b73d6e35abe3ac99942ab3799e48d78c65423bc5fc83fd0749ed0679ca63c13617c6a9d348d5043c3a57835c824ed88c71d1931d7f346bfc871dba
+	sha512sums = f2c32ac427e8e7e257a61871e5705b416da9148bb7ceb8f457afcbdf1e68031241b2e0e6a3aa56a89aa559fa6309096b34cf8f5d6154832aa4cb7fa17ef196ab
 	sha512sums = 218ff1e8c89d1567c214d0fec91745606ab48077bb24168a2b18b28f9c69a6918d34c38fe6a70e8aeaee3b6df448e7174c343924e6fa875ba1a583cc656c91ba
 
 pkgname = dida-bin
