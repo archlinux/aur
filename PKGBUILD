@@ -1,6 +1,6 @@
 _name=fibers
 pkgname=guile-$_name-git
-pkgver=v1.0.0.r25.gb86405a
+pkgver=v1.3.1.r24.gf92e5cb
 pkgrel=1
 pkgdesc="Concurrent ML-like concurrency for Guile"
 arch=(any)
@@ -8,7 +8,7 @@ license=(LGPL3+)
 makedepends=(git)
 depends=("guile>=2.1.7")
 provides=("guile-$_name")
-source=(git://github.com/wingo/$_name.git)
+source=(git+https://github.com/wingo/$_name.git)
 url="https://github.com/wingo/fibers"
 md5sums=(SKIP)
 # shows warnings for .go files
