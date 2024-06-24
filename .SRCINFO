@@ -1,6 +1,6 @@
 pkgbase = dotnet-core-bin
 	pkgver = 8.0.6.sdk302
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
 	arch = armv7h
@@ -8,7 +8,7 @@ pkgbase = dotnet-core-bin
 	license = MIT
 	options = staticlibs
 	source = dotnet.sh
-	sha512sums = e61b9e3e5a2305646a616d598378230c9755c5dd5363692cc363f8f4add3807563c324dd86f3a7ae9d358c82d730608e7b293935a2b6c81c0c0f62d752a0a1cf
+	sha512sums = 9141318f016e98781585f2cfbbfbf1a43096e81a5f9cd6b05283cf76c49cbe0037264dadfdef2495b256c1759e14189a616063fea78652289796f092f9f6409d
 	source_x86_64 = https://download.visualstudio.microsoft.com/download/pr/dd6ee0c0-6287-4fca-85d0-1023fc52444b/874148c23613c594fc8f711fc0330298/dotnet-sdk-8.0.302-linux-x64.tar.gz
 	sha512sums_x86_64 = 43d0ea1df12c15a0e47560d2a84857ab50eb04ac693ab41413c04c591719101c4c8165e052a42a66719c67bd07ac299ca47edbb4944a2901df765042e56b316f
 	source_armv7h = https://download.visualstudio.microsoft.com/download/pr/6a909983-cf0f-4b23-823d-8db56fdb344f/6455cb1f9a9a0eebc8fa541d08d7717c/dotnet-sdk-8.0.302-linux-arm.tar.gz
@@ -58,7 +58,7 @@ pkgname = dotnet-sdk-bin
 	optdepends = aspnet-targeting-pack-bin: Build ASP.NET Core applications
 	provides = dotnet-sdk-bin
 	provides = dotnet-sdk=8.0.6.sdk302
-	provides = dotnet-sdk-8.0
+	provides = dotnet-sdk-8.0=8.0.6.sdk302
 	conflicts = dotnet-sdk-bin
 	conflicts = dotnet-sdk=8.0.6.sdk302
 	conflicts = dotnet-sdk-8.0
