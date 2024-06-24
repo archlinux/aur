@@ -1,6 +1,6 @@
 # Maintainer: Bart Libert <bart plus aur at libert dot email>
 pkgname=paho-mqtt-cpp
-pkgver=1.3.2
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Eclipse Paho MQTT C++ client library'
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=(paho-mqtt-c openssl gcc-libs glibc)
 makedepends=(cmake)
 conflicts=(${pkgname}-git)
 source=("${pkgname}-${pkgver}::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c271d521287f417102b447b3d1e8d17be0e0f6a3b0b653334ebcd2ccd20d1e46')
+sha256sums=('758c504b585402fbeb47822e52897239bbd53b4236ac3908cc040e09d2a8d8e1')
 
 build() {
     cmake -B build -S "${srcdir}/${pkgname//-/.}-${pkgver}" \
