@@ -3,7 +3,7 @@
 pkgname='prm-bin'
 _pkgname="${pkgname%-bin}"
 pkgver=3.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Pull Request Manager for Maintainers'
 url='https://ldez.github.io/prm/'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
