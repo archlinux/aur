@@ -4,7 +4,7 @@ pkgname=python-pycapnp
 _name=pycapnp
 pkgver=2.0.0
 _commit=78dd54e64155c7b4513008b5295803d6dab9fde8
-pkgrel=1
+pkgrel=2
 pkgdesc="A cython wrapping of the C++ Cap'n Proto library"
 url="https://github.com/capnproto/pycapnp"
 license=(BSD-2-Clause)
@@ -17,7 +17,7 @@ depends=(
 makedepends=(
   git
   capnproto
-  cython0
+  cython
   python-build
   python-installer
   python-pkgconfig
@@ -29,12 +29,19 @@ checkdepends=(
   python-pytest-asyncio
 )
 optdepends=('python-jinja: for capnpc-cython')
-source=(git+$url#commit=$_commit)
-sha512sums=('7ea804afbe5afd05ae7295fc7e7c2f5dfb4688b2bebb97a69a1bac619382057882e8bd359956ba9ff1fbee7398024a38b9fb083586d1dee69a8a95b0157f48e4')
+source=(git+$url#commit=$_commit
+        cython3.patch)
+sha512sums=('7ea804afbe5afd05ae7295fc7e7c2f5dfb4688b2bebb97a69a1bac619382057882e8bd359956ba9ff1fbee7398024a38b9fb083586d1dee69a8a95b0157f48e4'
+            '75f48922b25f622715a8a3cccb167e134acac27e0a9c8c70f5ca379f6c67491cc216299ab21283dc94c9ed5ef826ee761ea05745de8cb66d2f30751f25a0b392')
 
 pkgver() {
   cd $_name
   git describe --tags | sed 's/^[vV]//;s/-/+/g'
+}
+
+prepare() {
+  cd $_name
+  patch -p1 -i ../cython3.patch
 }
 
 build() {
