@@ -1,6 +1,6 @@
 pkgbase = dida365
 	pkgdesc = Todo list, checklist and task manager app, Linux desktop application
-	pkgver = 2.0.20
+	pkgver = 2.0.30
 	pkgrel = 1
 	url = https://www.dida365.com/about/download
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = dida365
 	depends = alsa-lib
 	depends = gtk3
 	depends = nss
-	source = dida-2.0.20.deb::https://cdn.dida365.cn/download/linux/linux_deb_x64/dida-2.0.20-amd64.deb
+	source = dida-2.0.30.deb::https://cdn.dida365.cn/download/linux/linux_deb_x64/dida-2.0.30-amd64.deb
 	source = LICENSE
-	sha256sums = 20b8b201a913de429788d3d818a6cc2fc89df3a03fd9ab8492c669531c78e369
+	sha256sums = f654c4869a036ee6235d094963f1e8f193705d597299627a1b758849393d1259
 	sha256sums = e409ffec880f4b6578f03d0bc9f6fd3207bb6777c27f3e9f77c6ad54ebb312a2
 
 pkgname = dida365
