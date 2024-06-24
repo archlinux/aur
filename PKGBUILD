@@ -1,6 +1,6 @@
 
 pkgname=ttf-senty-free
-pkgver=20231011.49acf683
+pkgver=20240624.a9d64d16
 pkgrel=1
 pkgdesc="Senty Chinese handwritten font collection from Hanyi."
 arch=('any')
@@ -58,6 +58,7 @@ source=("LICENSE.html::https://www.sentyfont.com/terms%20and%20conditions.htm"
 'https://www.sentyfont.com/index_htm_files/SentyCaramel.ttf'
 'https://www.sentyfont.com/index_htm_files/SentyChalk.ttf'
 'https://www.sentyfont.com/index_htm_files/SentyChocolate.ttf'
+'https://www.sentyfont.com/index_htm_files/SentyCloud.ttf'
 'https://www.sentyfont.com/index_htm_files/SentyCreek.ttf'
 'https://www.sentyfont.com/index_htm_files/SentyDew.ttf'
 'https://www.sentyfont.com/index_htm_files/SentyDonut.ttf'
@@ -71,9 +72,10 @@ source=("LICENSE.html::https://www.sentyfont.com/terms%20and%20conditions.htm"
 'https://www.sentyfont.com/index_htm_files/SentySigua.ttf'
 'https://www.sentyfont.com/index_htm_files/SentyTamarind.ttf'
 'https://www.sentyfont.com/index_htm_files/SentyVanilla.ttf'
-'https://www.sentyfont.com/index_htm_files/SentyWEN2017.ttf')
+'https://www.sentyfont.com/index_htm_files/SentyWEN2017.ttf'
+'https://www.sentyfont.com/index_htm_files/SentyWatermelon.ttf')
 sha256sums=(
-"2ca158e667c1733c22065ef0760e2e97e1d52865cc1a247145d6117f0c43fa7c"
+'2ca158e667c1733c22065ef0760e2e97e1d52865cc1a247145d6117f0c43fa7c'
 '8e9b8b909f85e76047b748fa72d12006b686c96240e7760e3067904c8e853482'
 '7c7c13f7518c5952a2da73e27e3795b704c1eb681422cb29d28cb1fdbcff1416'
 '06c45af868758af5c42a17f0af07e5048aec498aa0aee6dea4e3f808f1ca8770'
@@ -122,13 +124,14 @@ sha256sums=(
 'd6bf0047b9952d336dfa1788b146c121c63bd93b55384c867541e50854a0a82d'
 'fc5feefba4a72901788a5c3101b2a04635b128716490000a15bd558a7939f737'
 '26aee174df5485957aeb6b02686e515917933da23a6c20f33c5fffab92129f09'
-'8893b4b1ebac84822f37e57ade13c271260e7f25f85bcd94f47b4a3aa85d1726'
+'469982640e85398208435be7022c90d1ebf98a1c44bc68d85971c2a56d1668bf'
 'e3f107d4ff19f91da1d40f16f021cedc7afecc60d3eda075d7f9d89ba8dcd9b8'
 'fcc9d1ced3a1251b3aeeba37b65cd26481365e04b4f705977a6cff360f0e085e'
+'4da537680351abdbaa2ff34dc2b57ee3d892bdd46a494a069b20c7c701455a29'
 '94a489cd30df83afe53ee5fdbd82273bd2a8086dfe20b806d7ab8a5d9f26dfca'
 'd99e869485ce731fb9380b1b56f92a8129518d45de5ebb1ccb5144c38a0e15c0'
 '9aa898bd514973e6e6dbaa6ef52a82db98c2a8b9d58af7f4c339f69b4d44483f'
-'c1c0d88cd5174666c01fbf84762e4c0882e9501df3683ea2f03e31b3367bfd47'
+'76ea1d4ada72756878e995d4ceb7c5bee0d350bec561296979cfeee1880985d3'
 '175329833c2b0438bb61ca11828dd6a867ad94f26e80dd27216edf3d37733cf3'
 'dec59596bfaa8814d2eb8ee58faa58e88bdb1106ee67edc295dc2f0ad6b515d6'
 '6ebb95bc5e6a83fdb6f8c4c2df96c6cdd8e1744d1354f689ab253722c88a8828'
@@ -138,7 +141,8 @@ sha256sums=(
 'a29e29ebf6e8fdd4ec211407ce8860daad9c17dcbec14697b5e5736d5598d034'
 '5d71d0a21a2009a47ec61c9d93ffca024ac65f9e6266dfffe8eb740adcdcc505'
 'd35e61655552c6c4524a5ca93477a460dddd8a238ca1821dd6d5894e17348ad1'
-'bd49c8a948c296da8fe5534abb5be66c12e8a17918bd29716c29ed5fda0333fc')
+'bd49c8a948c296da8fe5534abb5be66c12e8a17918bd29716c29ed5fda0333fc'
+'e519f09aa4451013448849e1eff265ab02f0d0327ce203522353d993a9769267')
 
 
 
