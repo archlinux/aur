@@ -1,6 +1,6 @@
 pkgbase = eternalterminal
 	pkgdesc = Remote terminal for the busy and impatient
-	pkgver = 6.2.8
+	pkgver = 6.2.9
 	pkgrel = 1
 	url = https://mistertea.github.io/EternalTerminal/
 	arch = x86_64
@@ -12,8 +12,10 @@ pkgbase = eternalterminal
 	depends = libsodium
 	depends = protobuf
 	depends = curl
-	source = https://github.com/MisterTea/EternalTerminal/archive/et-v6.2.8.tar.gz
-	sha256sums = 6c1a23a2fe9229a882622378126d4482ae67328a5ca8ef660f14034401711764
+	source = https://github.com/MisterTea/EternalTerminal/archive/et-v6.2.9.tar.gz
+	source = fix_arch_build_6.2.9.patch
+	sha256sums = 13bfb2722b011b5f0a28fa619508deca96deec9eee5e42b922add0c166d8185a
+	sha256sums = ecec55efdd30f51812f83d3a40937dabd2ea8305c1ab3a9375b2c35fc0156e0c
 
 pkgname = eternalterminal-client
 	pkgdesc = Re-Connectable Terminal connection. Includes only the client.

@@ -5,7 +5,7 @@ _ghname='EternalTerminal'
 _tarname='et'
 pkgbase='eternalterminal'
 pkgname=('eternalterminal-client' 'eternalterminal-server' 'eternalterminal')
-pkgver='6.2.8'
+pkgver='6.2.9'
 pkgrel=1
 arch=('x86_64')
 depends=(
@@ -18,9 +18,10 @@ url='https://mistertea.github.io/EternalTerminal/'
 license=('Apache')
 
 source=(
-		"https://github.com/MisterTea/${_ghname}/archive/${_tarname}-v${pkgver}.tar.gz"
+    "https://github.com/MisterTea/${_ghname}/archive/${_tarname}-v${pkgver}.tar.gz"
+    "fix_arch_build_6.2.9.patch"
 )
-sha256sums=('6c1a23a2fe9229a882622378126d4482ae67328a5ca8ef660f14034401711764')
+sha256sums=('13bfb2722b011b5f0a28fa619508deca96deec9eee5e42b922add0c166d8185a' 'ecec55efdd30f51812f83d3a40937dabd2ea8305c1ab3a9375b2c35fc0156e0c')
 pkgdesc='Remote terminal for the busy and impatient'
 
 prepare() {
@@ -28,6 +29,9 @@ prepare() {
 
 	msg2 'Preparing directories'
 	mkdir -p build
+
+	msg2 'Applying patches'
+	patch -p1 <"${srcdir}/fix_arch_build_6.2.9.patch"
 }
 
 build() {
