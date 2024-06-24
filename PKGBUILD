@@ -4,13 +4,13 @@
 _pkgname=celeste
 pkgname="${_pkgname}-client-bin"
 _appname=com.hunterwittenborn.Celeste
-pkgver=0.8.1
-_snap="a9zAmHVl4doDwIGkptVyA7VI7fMlPPpE_34"
+pkgver=0.8.3
+_snap="a9zAmHVl4doDwIGkptVyA7VI7fMlPPpE_36"
 pkgrel=1
 pkgdesc="GUI file synchronization client that can sync with any cloud provider "
 arch=('x86_64')
 url="https://github.com/hwittenborn/celeste"
-license=('GPL-3.0-only')
+license=('GPL-3.0-or-later')
 provides=(
     "${pkgname%-bin}=${pkgver}"
     "${_pkgname}=${pkgver}"

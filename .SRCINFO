@@ -1,18 +1,18 @@
 pkgbase = celeste-client-bin
 	pkgdesc = GUI file synchronization client that can sync with any cloud provider
-	pkgver = 0.8.1
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://github.com/hwittenborn/celeste
 	arch = x86_64
-	license = GPL-3.0-only
+	license = GPL-3.0-or-later
 	makedepends = squashfs-tools
 	depends = libadwaita
 	depends = rclone
-	provides = celeste-client=0.8.1
-	provides = celeste=0.8.1
+	provides = celeste-client=0.8.3
+	provides = celeste=0.8.3
 	conflicts = celeste-client
 	conflicts = celeste
-	source = celeste-client-0.8.1.snap::https://api.snapcraft.io/api/v1/snaps/download/a9zAmHVl4doDwIGkptVyA7VI7fMlPPpE_34.snap
+	source = celeste-client-0.8.3.snap::https://api.snapcraft.io/api/v1/snaps/download/a9zAmHVl4doDwIGkptVyA7VI7fMlPPpE_36.snap
 	sha256sums = fd2a6eb205b028060f3e7c1703d1c0a46f2b470c1f6c17c637d2ed4e1f25ab69
 
 pkgname = celeste-client-bin
