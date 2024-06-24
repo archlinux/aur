@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=draw.io
 pkgname="${_pkgname//./}-desktop-git"
-pkgver=24.4.13.r8.g2052b1e
+pkgver=24.6.1.r2.g1ae1a3f
 _electronversion=30
 _nodeversion=20
 pkgrel=1
@@ -63,16 +63,16 @@ build() {
         export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
         export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
         export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
-        sed "s|github.com|mirror.ghproxy.com\/https:\/\/github.com|g" -i .gitmodules
+        sed "s|github.com|github.moeyy.xyz\/https:\/\/github.com|g" -i .gitmodules
     else
         echo "Your network is OK."
     fi
     sed "s|--publish always|--publish never|g" -i package.json
     sed "48,60d;s|\"target\": \"AppImage\", \"arch\": \[|\"target\": \"dir\"|g" -i electron-builder-linux-mac.json
     git submodule update --depth=1 --init --recursive
-    yarn install --cache-folder "${srcdir}/.yarn_cache"
-    yarn run sync
-    yarn run release-linux
+    NODE_ENV=development yarn install --cache-folder "${srcdir}/.yarn_cache"
+    NODE_ENV=development yarn run sync
+    NODE_ENV=production yarn run release-linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
