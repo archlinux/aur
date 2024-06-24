@@ -1,0 +1,12 @@
+pkgbase = phasher
+	pkgdesc = Simple CLI program hashing passwords into PHC strings
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/chardoncs/phasher
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+
+pkgname = phasher
