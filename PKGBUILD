@@ -6,7 +6,7 @@ pkgname="${_pkgname}-git"
 pkgver=0.5.0.r2.507c0aa
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver}")
-pkgrel=1
+pkgrel=2
 pkgdesc='ssh-agent compatible agent using TPM backed keys'
 arch=('x86_64')
 url=https://github.com/Foxboron/ssh-tpm-agent
@@ -32,14 +32,13 @@ pkgver() {
 
 _go_build() {
   go build -x -v \
-        -buildmode=pie \
+        ${GOFLAGS} \
         -pkgdir=$(mktemp -d -p $(pwd)) \
-        -modcacherw \
         -ldflags "\
                   -linkmode=external \
                   -extldflags '${LDFLAGS}' \
                   -X main.commit=$(git rev-parse --short HEAD) \
-                  -X main.date=$(date -u +%Y%m%d.%H%M%S) \
+                  -X main.date=$(git log -1 --format=%cd --date=iso-strict) \
                   -X main.version=$(git describe --always --tags --abbrev=0).$(git rev-parse --short HEAD)\
                  " \
     -o "$1" \
@@ -48,9 +47,10 @@ _go_build() {
 
 build() {
   cd "${srcdir}/${_repo_name}"
+  mkdir bin
   for i in agent keygen add hostkeys
   do
-    _go_build "ssh-tpm-${i}.bin" "./cmd/ssh-tpm-${i}"
+    _go_build "bin/ssh-tpm-${i}" "./cmd/ssh-tpm-${i}"
   done
 }
 
