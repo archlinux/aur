@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=coal-launcher-bin
 _pkgname="Coal Launcher"
-pkgver=1.3.5
+pkgver=1.3.6
 _electronversion=22
 pkgrel=1
 pkgdesc="A client to view and play games from the AB Coal website"
@@ -19,13 +19,14 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Bobuxstation/Coal-Launcher/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('597c2a7d313781c2ce5eac9276ba7085ce013f44bd2ee4ce31a5475d8ad5c739'
+sha256sums=('df1eb128b16c9c7d7bdd449a4d2bf6eb12d9aa9d46d55ba4a3e9b1eb8ad2f301'
             '0133c8e5890f9f848adde48b40a9c61dcff249ea3c0f5bcf6567901e7a697c49'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
