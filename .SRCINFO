@@ -1,5 +1,5 @@
 pkgbase = envman-bin
-	pkgdesc = Manage decentralized StepLib Step (script) collections
+	pkgdesc = Manage Environment Variable collections
 	pkgver = 2.4.3
 	pkgrel = 1
 	url = https://github.com/bitrise-io/envman
