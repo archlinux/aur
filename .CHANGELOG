@@ -1,6 +1,54 @@
 Version history
 ===============
 
+
+
+0.10.24
+-------
+
+2024-06-24
+
+Shorten and easen Pipe Dream. It's now a better second introductory level.
+
+Change the author in Proxima's levels to Proxima. Existing checkmarks
+convert automatically whenever Proxima is the only author. Existing checkmarks
+become "?!" for Proxima's co-authored levels.
+
+Remove pack descriptions (`_english.X.txt` and `_german.X.txt`) from the
+level tree. Lix has never displayed them since 2016.
+
+Draw cyan trigger area rectangles one pixel lower. They now look like they
+match the lix's lowermost foot pixel. (As before, cyan trigger area rectangles
+appear in the editor and during play when you activate the splat ruler.)
+
+Many internal refactorings, e.g., to prepare multiple spritesheets for
+future physics changes.
+
+
+
+0.10.23
+-------
+
+2024-06-02
+
+Keep visible land in-place when you open or close the replay tweaker. Before,
+when you opened or closed the tweaker, the land scrolled left or right.
+
+Fix #476: Chat messages appear in the chatters' player colors. Observers
+will continue to chat in white.
+
+On Windows, Lix shows a native dialog box when an exception flies out of main,
+e.g., when you lack important files that Lix needs to run. You can screenshot
+the dialog box or copy the error from `user/log.txt`.
+
+Move some multiplayer maps: For each player count (2p, 3p, ..., 8p),
+whenever an author directory held only only one map at player count,
+that that map is now in a directory `other/` at that player count.
+
+Add Sunny Day at the Beach, a multiplayer map by Blitz for 2p-5p.
+
+
+
 0.10.22
 -------
 

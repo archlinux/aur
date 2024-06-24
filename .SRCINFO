@@ -1,7 +1,7 @@
 pkgbase = lix
 	pkgdesc = An action-puzzle game inspired by Lemmings
-	pkgver = 0.10.23
-	pkgrel = 3
+	pkgver = 0.10.24
+	pkgrel = 1
 	url = https://www.lixgame.com/
 	changelog = .CHANGELOG
 	arch = i686
@@ -16,9 +16,9 @@ pkgbase = lix
 	depends = d-runtime
 	depends = enet
 	depends = hicolor-icon-theme
-	source = lix-0.10.23.src.tar.gz::https://github.com/SimonN/LixD/archive/v0.10.23.tar.gz
+	source = lix-0.10.24.src.tar.gz::https://github.com/SimonN/LixD/archive/v0.10.24.tar.gz
 	source = lix-music-1.1.zip::https://www.lixgame.com/dow/lix-music.zip
-	sha512sums = e267686793aa21b765db3c3cc1e1e6df4451645bf341280ba3987fe6dd09d6577a7d72b9e4474b15fc43d67e7fe87903325bd782602f3bfa69e68eb1f9627124
+	sha512sums = 12a36e189a085f67b6c9605317eac454c803a9b598011df1f76f944ca4c9fffe964d5f1278e03e2ee6592824f7d928966012b8ca47e2e78fa6a65a1f9ee45368
 	sha512sums = 280fd25a479ac8dd24475b014234270a12ab34edca7fb2f7ce4b768259111b1e7626d3ba37ac13d810f0653d23d7c9f212776e94d2c0b31a0de580864771ce9f
 
 pkgname = lix
