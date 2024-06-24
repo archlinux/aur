@@ -2,13 +2,13 @@
 
 pkgname=cargo-mommy
 pkgver=0.3.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Mommy's here to support you when running cargo~"
 url='https://github.com/Gankra/cargo-mommy'
 license=('Apache-2.0' 'MIT')
 arch=('x86_64' 'i686' 'arm' 'aarch64')
-depends=('gcc-libs' 'glibc')
-makedepends=('git' 'cargo')
+depends=('gcc-libs' 'glibc' 'cargo')
+makedepends=('git')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 sha256sums=('9ed71fe85dd1edc1f19217c87a58bbc035dc4c69b037cfec52d8ed8406561f78')
 
