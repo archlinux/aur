@@ -1,28 +1,44 @@
-# Maintainer: Stefan Tatschner <stefan@rumpelsepp.org>
-# Contributor: Sven Schneider <archlinux.sandmann@googlemail.com>
-
+# Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname='python-aenum'
-_pkgname='aenum'
-pkgver=3.0.0
+_module='aenum'
+pkgver='3.1.15'
 pkgrel=1
-pkgdesc="Advanced Enumerations, NamedTuples, and NamedConstants for Python"
+pkgdesc="Advanced Enumerations (compatible with Python's stdlib Enum)"
+url="https://pypi.org/project/aenum"
+depends=(python)
+checkdepends=()
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+license=('BSD-3-Clause')
 arch=('any')
-url="https://bitbucket.org/stoneleaf/aenum"
-license=('BSD')
-makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/11/82/7f1df9994e1d46533bd9e77484c440347b7dba349ca2ce6eb4f06ddd38ae/aenum-3.0.0.tar.gz")
-sha256sums=('17cd8cfed1ee4b617198c9fabbabd70ebd8f01e54ac29cd6c3a92df14bd86656')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-${pkgver}.tar.gz"
+   https://patch-diff.githubusercontent.com/raw/ethanfurman/aenum/pull/36.patch
+   https://raw.githubusercontent.com/ethanfurman/aenum/master/aenum/test_v37.py)
+
+sha256sums=('8cbd76cd18c4f870ff39b24284d3ea028fbe8731a58df3aa581e434c575b9559'
+            '9151a5147b8d72bda40f62078d0780bb6926a045137f6bcd7137ef04a051a649'
+            '666be366ac8b8089d005581cdddfd8acef1b73d61b01c53d5fe079daa7cc8325')
+
+prepare() {
+    cd "${_module}-${pkgver}"
+    patch -p1 < ../36.patch
+    rm aenum/_py2.py
+}
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  python3 setup.py build
+    cd "${_module}-${pkgver}"
+    python -m build -wnx
 }
 
 package() {
-  depends=("python")
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-
-  python3 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-  install -Dm644 aenum/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cd "${_module}-${pkgver}"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
+    local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+    rm "${pkgdir}/${site_packages}/aenum/test_v3.py"
+    install -D -m644 aenum/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
+check() {
+    cd "${_module}-${pkgver}"
+    cp ../test_v37.py aenum/
+    python -m aenum.test
+}
