@@ -1,5 +1,6 @@
 #Maintainer: Cyan Lin <xusine at outlook dot com>
 
+pkgbase=surfer-waveform
 pkgname=surfer-waveform-git-bin
 pkgver=0.3.0.r{}.{}
 pkgrel=1

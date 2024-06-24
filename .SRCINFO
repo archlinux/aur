@@ -1,4 +1,4 @@
-pkgbase = surfer-waveform-git-bin
+pkgbase = surfer-waveform
 	pkgdesc = A waveform viewer with a focus on a snappy usable interface, and extensibility.
 	pkgver = 0.3.0.r559.6d5bead3
 	pkgrel = 1
