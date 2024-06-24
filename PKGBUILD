@@ -6,31 +6,23 @@
 
 _pkgname=stellarium
 pkgname=${_pkgname}-lite
-pkgver=24.1
+pkgver=24.2
 pkgrel=1
 pkgdesc="Stellarium without GPS and Telescope Control support (no gpsd and libindi dependencies)"
 arch=(x86_64)
 url="https://${_pkgname}.org"
 license=(GPL2)
-depends=('libpng' 'libglvnd' 'freetype2' 'openssl' 'calcmysky>=0.3'
-         'qt6-charts' 'qt6-multimedia' 'qt6-webengine' 'nlopt') # 'qxlsx'
-makedepends=('cmake' 'ninja' 'mesa' 'qt6-tools')
+depends=(nlopt libpng libglvnd freetype2 openssl 'calcmysky>=0.3'
+ qt6-charts qt6-multimedia qt6-webengine ) # 'qxlsx'
+makedepends=(cmake ninja mesa qt6-tools)
 optdepends=('man-db: manual pages for stellarium')
 conflicts=(${_pkgname})
 source=(https://github.com/Stellarium/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz{,.asc})
 validpgpkeys=('79151C2E6351E7278DA1A730BF38D4D02A328DFF') # Alexander Wolf <alex.v.wolf@gmail.com>
-md5sums=('240f71a2a707d7b5cf321b20963cc82e'
-         'SKIP')
-sha256sums=('5a48fb2c5b17c9ebfa23153604f470dc87a5eab5fafb0510f71e115ac76072a8'
-            'SKIP')
-
-#prepare() {
-#  # FIXME: https://github.com/Stellarium/stellarium/issues/3132#issuecomment-1485304021
-#  # sed -i 's/SOURCE_SUBDIR QXlsx/SOURCE_SUBDIR QXlsxQt${QT_VERSION_MAJOR}/' ${pkgname}-${pkgver}/CMakeLists.txt
-#  # TODO: https://github.com/Stellarium/stellarium/issues/3038
-#  cd ${pkgname}-${pkgver}
-#  patch -p1 -i ../indi-2.0.patch
-#}
+md5sums=('27a7cd3ab9421cb73790db6022f7c5aa'
+  'SKIP')
+sha256sums=('e6d8ee0792b7f77486b700d4669d0dd0c349319f379758ad643d76165d1d56d2'
+  'SKIP')
 
 build() {
   PATH="/usr/bin/core_perl/:$PATH"
