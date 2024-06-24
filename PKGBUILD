@@ -1,7 +1,7 @@
 # Maintainer: Kainoa Kanter <kainoa@t1c.dev>
 
 pkgname=cohesion-git
-pkgrel=1
+pkgrel=2
 pkgver=1.0.5.r0.g9c3b682
 pkgdesc="Notion client for Linux"
 arch=(x86_64)
@@ -80,7 +80,6 @@ package() {
 
 	cp -r data/icons/* "${pkgdir}/usr/share/icons"
     install -Dm 644 "data/io.github.brunofin.Cohesion.desktop" "${pkgdir}/usr/share/applications/cohesion.desktop"
-    install -Dm 644 "data/io.github.brunofin.Cohesion.appdata.xml" "${pkgdir}/usr/share/mime/packages/cohesion.xml"
 
     install -Dm 644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
     install -Dm 644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
