@@ -8,10 +8,10 @@ pkgdesc="Osmocom's  Serving GPRS Support Node for 2G and 3G packet-switched mobi
 url="https://osmocom.org/projects/osmosgsn"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=(GPL)
-depends=('libosmocore'
-         'libosmoabis.so' # from libosmo-abis
-         'libosmonetif.so' # from libosmo-netif
-         'libosmo-sigtran.so' # from libosmo-sccp
+depends=('libosmocore-git'
+         'libosmo-abis-git'
+         'libosmo-netif-git'
+         'libosmo-sccp-git'
          'libosmo-gsup-client.so' # from osmo-hlr
          'libosmo-ranap.so' # from osmo-iuh
          'libasn1c.so' # from libasn1c
