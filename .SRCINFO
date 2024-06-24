@@ -1,0 +1,16 @@
+pkgbase = python-smpplib
+	pkgdesc = SMPP (Short Message Peer-to-Peer) library for Python
+	pkgver = 2.2.3
+	pkgrel = 1
+	url = https://github.com/python-smpplib/python-smpplib
+	arch = any
+	license = LGPL-2.1-or-later
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://github.com/python-smpplib/python-smpplib/archive/refs/tags/2.2.3.tar.gz
+	sha256sums = 58f51dd279779475e313d5a4c16f4fb9125eeafd680f088bbd575ff8b385c3e3
+
+pkgname = python-smpplib
