@@ -2,7 +2,7 @@
 _base=npx
 pkgname=python-${_base}
 pkgdesc="Some useful extensions for NumPy"
-pkgver=0.1.2
+pkgver=0.1.6
 pkgrel=1
 arch=(any)
 url="https://github.com/sigma-py/${_base}"
@@ -11,7 +11,7 @@ depends=(python-numpy)
 makedepends=(python-build python-setuptools python-installer python-wheel)
 checkdepends=(python-pytest-codeblocks)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('f15b206a27426e3dfadc44b945a36919d926e4bdf52b0cf2c5e20c7153157401bb58d026ae7b0f445a77915623b5770a48456a1b4e24cee1e3c0cd4459179e6d')
+sha512sums=('40fd2e764afb2f8566f07e1c533929e7c2893d2ecc7e91e32f7dd559598de3c5b21318686ec4fcef6053752951e2526de835d0f66aa7f0479b9cca24140da011')
 
 build() {
   cd ${_base}-${pkgver}

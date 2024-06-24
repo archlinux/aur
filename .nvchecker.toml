@@ -1,0 +1,5 @@
+[python-npx]
+source = "github"
+github = "sigma-py/npx"
+use_latest_release = "true"
+prefix = "v"
