@@ -11,6 +11,8 @@ pkgbase = python-niaaml
 	makedepends = python-poetry-core
 	depends = python-niapy
 	depends = python-scikit-learn
+	depends = python-typer
+	depends = python-loguru
 	source = NiaAML-2.1.0.tar.gz::https://github.com/firefly-cpp/NiaAML/archive/2.1.0.tar.gz
 	sha512sums = 05123a5fd145a924169c0e6ab55a0ba1bec6c1053701c827e36e629576a8fcbfa7e7f160b9ecea6d79a0dc16dd77a5f2b208907db8ba8404e975c05fb1746635
 
