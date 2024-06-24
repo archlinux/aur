@@ -1,6 +1,6 @@
 pkgbase = snage-bin
 	pkgdesc = A tool for managing change logs.
-	pkgver = 0.5.15
+	pkgver = 0.5.16
 	pkgrel = 1
 	url = https://github.com/FACT-Finder/snage
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = snage-bin
 	provides = snage
 	conflicts = snage
 	options = !strip
-	source = snage-0.5.15.tar.gz::https://github.com/FACT-Finder/snage/releases/download/v0.5.15/snage-0.5.15.tar.gz
-	sha256sums = 7e24c1f63a0c2fac6833f47e8881c673d0839fc396ae28ee7fe506893ea206bc
+	source = snage-0.5.16.tar.gz::https://github.com/FACT-Finder/snage/releases/download/v0.5.16/snage-0.5.16.tar.gz
+	sha256sums = 246a6d72a03c84a9b22a9840714cd3bdf7d715f968da235de1069dd16c373ff7
 
 pkgname = snage-bin
