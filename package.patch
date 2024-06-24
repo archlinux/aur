@@ -1,0 +1,32 @@
+diff -Naur pvs/polyversal pvs-install/polyversal
+--- pvs/polyversal	2024-03-11 20:55:04.000000000 -0700
++++ pvs-install/polyversal	2024-06-23 23:31:31.723455156 -0700
+@@ -9,7 +9,7 @@
+ progname="$(basename "$0")"
+ readonly progname
+ 
+-DATADIR=$(dirname "$0")
++DATADIR=${XDG_DATA_HOME:-$HOME/.local/share}/polyversal-patcher
+ readonly DATADIR
+ 
+ # Protontricks versions earlier than this minversion will cause issues that are hard to make sense of.
+@@ -255,6 +255,7 @@
+ # Logging is output to a new .log file within 'logs/' under the same directory
+ # as this script.
+ logdir=${DATADIR}/logs
++mkdir -p "$logdir" || echo "unable to create output log directory '$logdir'"
+ logname="${logdir}/polyversal-${exectime}"  # minus the .log so we can add -wine
+ if $mode_filelog; then
+   # https://stackoverflow.com/questions/3173131/redirect-copy-of-stdout-to-log-file-from-within-bash-script-itself
+diff -Naur pvs/Polyversal.desktop pvs-install/Polyversal.desktop
+--- pvs/Polyversal.desktop	2024-03-11 20:55:04.000000000 -0700
++++ pvs-install/Polyversal.desktop	2024-06-23 23:22:55.617642364 -0700
+@@ -2,7 +2,7 @@
+ [Desktop Entry]
+ Name=Polyversal Patcher
+ Comment=Helper script for installing CoZ patches with Proton
+-Exec=bash "$(dirname "%k")"/polyversal --log
++Exec=polyversal --log
+ Terminal=false
+ Type=Application
+ Categories=Game,

@@ -1,0 +1,18 @@
+pkgbase = polyversal-patcher
+	pkgdesc = A utility script for installing Committee of Zero patches for Science Adventure titles
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://github.com/CommitteeOfZero/polyversal-coz-linux-patcher
+	arch = any
+	license = MIT
+	depends = bash
+	depends = curl
+	depends = protontricks
+	optdepends = flatpak: fall back on Flatpak Protontricks in case of system Protontricks failure
+	optdepends = zenity: for running in GUI mode
+	source = Polyversal-v2_1_1.tar.gz::https://github.com/CommitteeOfZero/polyversal-coz-linux-patcher/releases/download/2.1.1/Polyversal-v2_1_1.tar.gz
+	source = package.patch
+	sha512sums = 6387dc4b727ddd28f714199a6eca17a0713172a78a16bfef87b0e30f9cfc5d6d0e95265774d8f7419261d9aa3e737cdbf65988a79ea23528b6a01ea3fbe80d64
+	sha512sums = fa8cda7b7e66a1c4aca27a3ad5f0f7e2a720cdb5b788011c102328c5bd7bbe61fb80549d7c14bbcbe4e5b8801a43de651971c6dd2173c8f3991548b64501dcc1
+
+pkgname = polyversal-patcher
