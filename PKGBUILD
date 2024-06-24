@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=pocket-casts
 pkgname="${_pkgname}-desktop-bin"
-pkgver=0.7.0
-_electronversion=27
-pkgrel=6
+pkgver=0.8.0
+_electronversion=31
+pkgrel=1
 pkgdesc="The Pocket Casts webapp, packaged for the Linux Desktop."
 arch=(
     'aarch64'
@@ -20,22 +20,22 @@ options=(
     '!strip'
     '!emptydirs'
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${_pkgname}--v${pkgver}--arm64.deb")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${_pkgname}--v${pkgver}--amd64.deb")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_arm64.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
 source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/felicianotech/pocket-casts-desktop-app/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('5478e5a98666c41de828fb7f50c3ea53b05755b7bda7d11211c6b1406d3046ba'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-sha256sums_aarch64=('fc8248c7503e195a85029db63e7ed9befbe2aa361cbc628589116df129f56f7b')
-sha256sums_x86_64=('979c2ce0a73188eb5218942949af538de97dc0a6e71581c927858399b1b82d37')
+sha256sums_aarch64=('6584baab027e634fa784e852afe8571301680f27f43a6371abe9bddf145a80f7')
+sha256sums_x86_64=('5dd1eaba14135410159fffd438007d80907b67f0735806135dbbff82beda0dac')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
         -e "s|@cfgdirname@|${_pkgname}|g" \
-        -e "s|@options@||g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed "s|${_pkgname} %U|${pkgname%-bin} %U|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
