@@ -2,7 +2,7 @@
 # Old Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 pkgname=cork-rs-bin
 pkgver=0.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line calculator for hex-lovers"
 arch=('x86_64')
 url="https://github.com/reddocmd/cork"
