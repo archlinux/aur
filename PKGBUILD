@@ -6,6 +6,7 @@ pkgdesc='Nazi Zombies: Portable, a Call of Duty: Zombies "de-make" powered by va
 arch=('x86_64' 'i686' 'aarch64' 'armv7l')
 url="https://gitlab.com/linuxbombay/nzp"
 license=('GPL2')
+depends=('sdl2' 'yad' 'rsync')
 makedepends=('unzip')
 _pkgrel_x86_64=1
 _pkgrel_aarch64=1
