@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=zui-bin
 _pkgname=Zui
-pkgver=1.7.0
-_electronversion=28
+pkgver=1.8.0
+_electronversion=30
 pkgrel=1
 pkgdesc="A powerful desktop application for exploring and working with data. The official front-end to the Zed lake."
 arch=('x86_64')
@@ -24,13 +24,14 @@ source=(
     "LICENSE-${pkgver}.txt::https://raw.githubusercontent.com/brimdata/zui/v${pkgver}/apps/zui/LICENSE.txt"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('33c4c1e6f24e5a36f9bb5996986174520a1128aa37ad4a6eb0c9be1a06573ad6'
+sha256sums=('8cf73c53176b7b052151288fff13378ea809a896c4dbedf3d30ecf325479a40c'
             'e3d24db419fcb44a1dab91f351b8203e74e8501ea11c4be82ad3cc05070cad9f'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
