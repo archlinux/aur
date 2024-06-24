@@ -7,19 +7,19 @@ pkgname=(
   "$pkgbase-agent"
   "$pkgbase-token-generator"
 )
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc='Securely connect devices and services, even in restricted networks'
 url='https://narrowlink.com'
 arch=(i686 x86_64 armv7h aarch64)
-makedepends=(cargo)
+makedepends=(cargo mold)
 depends=(glibc gcc-libs)
 
 source=(
   "$pkgbase-$pkgver.tar.gz::https://github.com/narrowlink/narrowlink/archive/refs/tags/$pkgver.tar.gz"
   "$pkgbase.service.in"
 )
-sha256sums=('a846fcf93311907b33a73035cbbc9b3d702048d4ce96a4e5a08f76866f53012a'
+sha256sums=('6682e742431fa3496cbfd550039c6fe46c87fbce6a74d0d2c227cae38e8e2dd3'
             'b60d1792b67d877064fd8164177f2d5dca7e220e42e0679f53216a4ec8a6f46d')
 
 prepare() {
@@ -32,12 +32,15 @@ build() {
   cd "$pkgbase-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+  # credit to Sergey A. https://aur.archlinux.org/packages/aichat#comment-959940
+  export RUSTFLAGS="${RUSTFLAGS:-} -C link-arg=-fuse-ld=mold"
   cargo build --frozen --release --all-features
 }
 
 check() {
   cd "$pkgbase-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
+  export RUSTFLAGS="${RUSTFLAGS:-} -C link-arg=-fuse-ld=mold"
   cargo test --frozen --all-features
 }
 

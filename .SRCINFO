@@ -1,6 +1,6 @@
 pkgbase = narrowlink
 	pkgdesc = Securely connect devices and services, even in restricted networks
-	pkgver = 0.2.5
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://narrowlink.com
 	arch = i686
@@ -8,11 +8,12 @@ pkgbase = narrowlink
 	arch = armv7h
 	arch = aarch64
 	makedepends = cargo
+	makedepends = mold
 	depends = glibc
 	depends = gcc-libs
-	source = narrowlink-0.2.5.tar.gz::https://github.com/narrowlink/narrowlink/archive/refs/tags/0.2.5.tar.gz
+	source = narrowlink-0.2.6.tar.gz::https://github.com/narrowlink/narrowlink/archive/refs/tags/0.2.6.tar.gz
 	source = narrowlink.service.in
-	sha256sums = a846fcf93311907b33a73035cbbc9b3d702048d4ce96a4e5a08f76866f53012a
+	sha256sums = 6682e742431fa3496cbfd550039c6fe46c87fbce6a74d0d2c227cae38e8e2dd3
 	sha256sums = b60d1792b67d877064fd8164177f2d5dca7e220e42e0679f53216a4ec8a6f46d
 
 pkgname = narrowlink
