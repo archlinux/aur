@@ -1,47 +1,64 @@
-# Maintainer: sukanka <su975853527 at gmail dot com>
-
-
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: sukanka <su975853527 at gmail dot com>
 pkgname=baidu-translate-client-bin
-_pkgname=baidu-translate-client
-pkgver=1.6.1
+_zhsname="百度翻译"
+pkgver=1.7.0
+_electronversion=11
 pkgrel=1
-pkgdesc="baidu translate "
-arch=('x86_64' 'aarch64')
-url="https://fanyi.baidu.com/"
-license=('unknown')
-depends=('electron11')
-makedepends=('p7zip' 'icoutils' 'imagemagick')
-provides=(${_pkgname} "baidu-translate")
-source=(
-  "${_pkgname}-${pkgver}.exe::https://fanyiapp.cdn.bcebos.com/fanyi-client/pkg/win/${pkgver}/%E7%99%BE%E5%BA%A6%E7%BF%BB%E8%AF%91_Setup_${pkgver}.exe"
-  "$_pkgname.sh"
-  "${_pkgname}.desktop"
+pkgdesc="Baidu translate.${_zhsname}"
+arch=(
+    'aarch64'
+    'x86_64'
 )
-sha512sums=('f71a122a79e5c08b442545ab41c7090b80afc56267d7f892755768c0ec9e8823dc19a7f58217c0e510f36493503d53acdb9de616a1de253fdac22268d90d4a7b'
-            'aa355b8f4e9d7be24bd3ec6f25a22d127db6faba0acfd3a36c3e97a74c8ac3f3272cb8b5bc8003a1c686173794b1f12a2a4c9ab28de39e92d927b5b54a919e95'
-            'e5a812e44922d8ac3cee4c0029d38ea21b610cce00711b82ff8ef6e98e9327292a9ce4d34d265744de048cb76863d12d557f3452fef645e7cb795d474135dd0d')
-
-
-prepare(){
-  cd $srcdir
-  7z e ${_pkgname}-${pkgver}.exe -aoa
-  wrestool -x --output=${srcdir} -t14 ${_pkgname}-${pkgver}.exe
-  convert "*.ico" -thumbnail 16x16 -alpha on -background none -flatten "${_pkgname}.png"
-
-  7z x app-64.7z resources/   -aoa
-  rm -rf ${srcdir}/resources/*.exe
-  cd ${srcdir}/resources/app.asar.unpacked/node_modules/@baidu/fanyi-iohook/builds/
-  rm -rf electron-v85-{win32-{x64,ia32},darwin-{x64,arm64}}
+url="https://fanyi.baidu.com/"
+license=('LicenseRef-custom')
+provides=(
+    "${pkgname%-bin}=${pkgver}"
+    "${pkgname%-client-bin}=${pkgver}"
+)
+conflicts=("${pkgname%-bin}")
+depends=(
+    "electron${_electronversion}"
+    'libxkbcommon-x11'
+)
+makedepends=(
+    'p7zip'
+    'icoutils'
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.exe::https://fanyiapp.cdn.bcebos.com/fanyi-client/pkg/win/${pkgver}/%E7%99%BE%E5%BA%A6%E7%BF%BB%E8%AF%91_Setup_${pkgver}.exe"
+    "${pkgname%-bin}.desktop"
+    "LICENSE-${pkgver}.html::https://fanyi.baidu.com/static/webpage/agreement.html"
+    "${pkgname%-bin}.sh"
+)
+sha256sums=('77b54aa77b98df4d2c4d9746520ba3b2fef23e13aae918ee4fbdbdc5bd6ea388'
+            '2229396e7ba87154026501bcd4bff88ee565b5b72c933e48f8707b6065f1f770'
+            'ffa785eb66c6abf12217bc9dbf447c56bb15e2a1ff038da7c8c1b8e5f57ce2fb'
+            '05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a')
+build(){
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@runname@|app.asar|g" \
+        -e "s|@options@|--disable-gpu-sandbox|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
+    7z e "${srcdir}/${pkgname%-bin}-${pkgver}.exe" -aoa
+    wrestool -x --output="${srcdir}" -t14 "${srcdir}/${pkgname%-bin}-${pkgver}.exe"
+    icotool -i 5 -x "${srcdir}/"*.ico -o "${srcdir}/${pkgname%-bin}.png"
+    case "${CARCH}" in
+      aarch64)
+        bsdtar -xf "${srcdir}/app-32.7z"
+        ;;
+      x86_64)
+        bsdtar -xf "${srcdir}/app-64.7z"
+        ;;
+    esac
+    rm -rf "${srcdir}/resources/app.asar.unpacked/node_modules/@baidu/fanyi-iohook/builds/"electron-*-{win32-*,darwin-*}
 }
 package(){
-    cd $srcdir
-    install -Dm755 ${srcdir}/${_pkgname}.sh  ${pkgdir}/usr/bin/${_pkgname}
-    install -Dm644 ${_pkgname}.desktop ${pkgdir}/usr/share/applications/${_pkgname}.desktop
-    install -Dm644 ${_pkgname}.png ${pkgdir}/usr/share/icons/hicolor/16x16/apps/${_pkgname}.png
-
-    install -d ${pkgdir}/usr/lib/${_pkgname}/
-    cp -r  ${srcdir}/resources/* ${pkgdir}/usr/lib/${_pkgname}/
-    chmod -R a+rx ${pkgdir}/usr/lib/${_pkgname}/app.asar.unpacked/
-
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -r "${srcdir}/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.html"
+    install -Dm644 "${srcdir}/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+    install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
-# vim: ts=2 sw=2 et:
