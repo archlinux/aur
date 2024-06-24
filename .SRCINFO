@@ -1,7 +1,8 @@
 pkgbase = cryptobox
 	pkgdesc = A script that makes it easy to create, mount and unmount encrypted images in Linux using LUKS
-	pkgver = 20211115.r14.d939c56
+	pkgver = 1.0
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/prurigro/cryptobox
 	arch = any
 	license = MIT
@@ -9,7 +10,7 @@ pkgbase = cryptobox
 	depends = coreutils
 	depends = cryptsetup
 	depends = util-linux
-	source = git://github.com/prurigro/cryptobox.git#branch=master
-	sha512sums = SKIP
+	source = https://github.com/prurigro/cryptobox/archive/refs/tags/v1.0.tar.gz
+	sha512sums = 3e7b3c11fbc07027797c7e8d28f27a5d52ea13c4f677973778e2559b192ac405f8af22b9de3c2b5dfb9c2bfbfb9b01a17cc2b8c25936474be9421b1978a44aa3
 
 pkgname = cryptobox
