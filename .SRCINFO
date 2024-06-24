@@ -1,0 +1,14 @@
+pkgbase = python-refurbished
+	pkgdesc = Python packace to access the products information available on the Apple Certified Refurbished section of the Apple Store.
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/zmoog/refurbished
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-price-parser
+	source = https://github.com/zmoog/refurbished/archive/refs/tags/v0.11.0.tar.gz
+	sha256sums = ce563b66fe7b70bb8478fdf962ad3cf027986e6f1e37948dbaa16c46072d6b94
+
+pkgname = python-refurbished
