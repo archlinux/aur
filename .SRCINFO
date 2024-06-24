@@ -1,6 +1,6 @@
 pkgbase = ai-browser-git
 	pkgdesc = Client app for ChatGPT, Gemini and Claude with Monaco Editor integration.
-	pkgver = 1.0.8.r0.g1800e7d
+	pkgver = 1.1.1.r0.g7cb16b8
 	pkgrel = 1
 	url = https://github.com/Jun-Murakami/AI-Browser
 	arch = any
@@ -10,11 +10,11 @@ pkgbase = ai-browser-git
 	makedepends = nvm
 	makedepends = gendesk
 	depends = electron28
-	provides = ai-browser=1.0.8
+	provides = ai-browser=1.1.1
 	conflicts = ai-browser
 	source = ai-browser.git::git+https://github.com/Jun-Murakami/AI-Browser.git
 	source = ai-browser.sh
 	sha256sums = SKIP
-	sha256sums = 41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = ai-browser-git
