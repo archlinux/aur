@@ -2,7 +2,7 @@
 pkgname=wordpress-studio-git
 _appname=Studio
 _pkgname="WordPress ${_appname}"
-pkgver=1.0.3.r4.g547c532
+pkgver=1.0.5.beta1.r0.g76eb0cf
 _electronversion=29
 _nodeversion=20
 pkgrel=1
@@ -66,8 +66,8 @@ build() {
     else
         echo "Your network is OK."
     fi
-    npm install
-    npm run package
+    NODE_ENV=development npm install
+    NODE_ENV=production npm run package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
