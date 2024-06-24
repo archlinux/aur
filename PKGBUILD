@@ -4,7 +4,7 @@ _name="QCEngine"
 _pkgname="qcengine"
 pkgname="python-${_pkgname}"
 pkgver=0.29.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Quantum chemistry program executor and IO standardizer (QCSchema) for quantum chemistry"
 arch=("any")
 url="http://docs.qcarchive.molssi.org/projects/QCEngine/en/stable/"
@@ -25,7 +25,7 @@ optdepends=(
 )
 checkdepends=("python-msgpack" "python-pytest")
 source=("https://github.com/MolSSI/${_name}/archive/v${pkgver}.tar.gz")
-sha256sums=('7d84cff53077345282cdf438e8ddfef8d006ed722a3fd0d2c25e2d7ff4e69cf9')
+sha256sums=('a790f733d9132675636216011286415872ce815e6a4e7f7029ccde8c90293bfc')
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"

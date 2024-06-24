@@ -1,7 +1,7 @@
 pkgbase = python-qcengine
 	pkgdesc = Quantum chemistry program executor and IO standardizer (QCSchema) for quantum chemistry
 	pkgver = 0.29.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://docs.qcarchive.molssi.org/projects/QCEngine/en/stable/
 	arch = any
 	license = MIT
@@ -22,6 +22,6 @@ pkgbase = python-qcengine
 	optdepends = rdkit
 	optdepends = xtb
 	source = https://github.com/MolSSI/QCEngine/archive/v0.29.0.tar.gz
-	sha256sums = 7d84cff53077345282cdf438e8ddfef8d006ed722a3fd0d2c25e2d7ff4e69cf9
+	sha256sums = a790f733d9132675636216011286415872ce815e6a4e7f7029ccde8c90293bfc
 
 pkgname = python-qcengine
