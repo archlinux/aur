@@ -1,6 +1,6 @@
 pkgbase = tdl-bin
 	pkgdesc = A Telegram downloader/tools written in Golang
-	pkgver = 0.17.1
+	pkgver = 0.17.2
 	pkgrel = 1
 	url = https://docs.iyear.me/tdl
 	arch = aarch64
@@ -8,15 +8,15 @@ pkgbase = tdl-bin
 	arch = i686
 	arch = x86_64
 	license = AGPL-3.0-or-later
-	provides = tdl=0.17.1
+	provides = tdl=0.17.2
 	conflicts = tdl
-	source_aarch64 = tdl-0.17.1-aarch64.tar.gz::https://github.com/iyear/tdl/releases/download/v0.17.1/tdl_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 44b6e283cd977899468b2953e621fbb7d6849391a104a79a72f2be0df1e18d50
-	source_armv7h = tdl-0.17.1-armv7h.tar.gz::https://github.com/iyear/tdl/releases/download/v0.17.1/tdl_Linux_armv7.tar.gz
-	sha256sums_armv7h = d656cd48f12b8c3c984e63534bce3f7f86c3e915639dc3f839461bb038b416b6
-	source_i686 = tdl-0.17.1-i686.tar.gz::https://github.com/iyear/tdl/releases/download/v0.17.1/tdl_Linux_32bit.tar.gz
-	sha256sums_i686 = 7968835bc32e8ba0d4b128d07d570e6296ce416c5247608f8b783f4be0ac12c9
-	source_x86_64 = tdl-0.17.1-x86_64.tar.gz::https://github.com/iyear/tdl/releases/download/v0.17.1/tdl_Linux_64bit.tar.gz
-	sha256sums_x86_64 = aa553b3109cb1bf7320a0e125de0c08e76c29ef9690ef6a7e0208374b3a73b93
+	source_aarch64 = tdl-0.17.2-aarch64.tar.gz::https://github.com/iyear/tdl/releases/download/v0.17.2/tdl_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 3f84026e3d75505cbbb1693b842a39cbc6d060731aac17bcbce49f66c7861328
+	source_armv7h = tdl-0.17.2-armv7h.tar.gz::https://github.com/iyear/tdl/releases/download/v0.17.2/tdl_Linux_armv7.tar.gz
+	sha256sums_armv7h = 2ed3886320f010733368297a8ec5c18495ca98c5cf9573f5006ae928c4ba5ede
+	source_i686 = tdl-0.17.2-i686.tar.gz::https://github.com/iyear/tdl/releases/download/v0.17.2/tdl_Linux_32bit.tar.gz
+	sha256sums_i686 = b85863f40aa910358e9f02ea4296bc60a220d7093a0f82ef5364df38a3c09c56
+	source_x86_64 = tdl-0.17.2-x86_64.tar.gz::https://github.com/iyear/tdl/releases/download/v0.17.2/tdl_Linux_64bit.tar.gz
+	sha256sums_x86_64 = 71fa7497c9ef6bbaaf939d2a980abc23f4a91242cbd83c59459da9edf288585f
 
 pkgname = tdl-bin

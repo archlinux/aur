@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: ab5_x <lxl66566@gmail.com>
 pkgname=tdl-bin
-pkgver=0.17.1
+pkgver=0.17.2
 pkgrel=1
 pkgdesc="A Telegram downloader/tools written in Golang"
 arch=(
@@ -19,10 +19,10 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_ghurl}/releases/do
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_Linux_armv7.tar.gz")
 source_i686=("${pkgname%-bin}-${pkgver}-i686.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_Linux_32bit.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_Linux_64bit.tar.gz")
-sha256sums_aarch64=('44b6e283cd977899468b2953e621fbb7d6849391a104a79a72f2be0df1e18d50')
-sha256sums_armv7h=('d656cd48f12b8c3c984e63534bce3f7f86c3e915639dc3f839461bb038b416b6')
-sha256sums_i686=('7968835bc32e8ba0d4b128d07d570e6296ce416c5247608f8b783f4be0ac12c9')
-sha256sums_x86_64=('aa553b3109cb1bf7320a0e125de0c08e76c29ef9690ef6a7e0208374b3a73b93')
+sha256sums_aarch64=('3f84026e3d75505cbbb1693b842a39cbc6d060731aac17bcbce49f66c7861328')
+sha256sums_armv7h=('2ed3886320f010733368297a8ec5c18495ca98c5cf9573f5006ae928c4ba5ede')
+sha256sums_i686=('b85863f40aa910358e9f02ea4296bc60a220d7093a0f82ef5364df38a3c09c56')
+sha256sums_x86_64=('71fa7497c9ef6bbaaf939d2a980abc23f4a91242cbd83c59459da9edf288585f')
 package() {
 	install -Dm755 "${srcdir}/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
 	install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
