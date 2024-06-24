@@ -10,7 +10,7 @@ pkgrel=1
 pkgdesc="GDB interface utility for MIPS processors, including PIC32"
 url="https://github.com/$_gitauthor/$_gitname"
 license=('GPL2')
-source=("git://github.com/$_gitauthor/$_gitname.git#branch=$_gitbranch")
+source=("git+https://github.com/$_gitauthor/$_gitname.git#branch=$_gitbranch")
 validpgpkeys=('F0FE029614EA35BC9E4F9768A6ECFD0C40839755') # David Manouchehri
 sha512sums=('SKIP')
 arch=('i686' 'x86_64')
