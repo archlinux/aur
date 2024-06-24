@@ -1,16 +1,16 @@
 # Maintainer: fossdd <fossdd@pwned.life>
 pkgname=gmobile-git
 _pkgname=gmobile
-pkgver=0.1.0.r21.0a1af70
-pkgrel=2
+pkgver=0.2.1.r0.ca8db41
+pkgrel=3
 pkgdesc="Functions useful in mobile related, glib based projects"
 arch=('x86_64')
 url="https://gitlab.gnome.org/World/Phosh/gmobile"
 license=('GPL-3.0')
 depends=('glib2' 'json-glib' 'gobject-introspection')
 makedepends=('git' 'meson')
-provides=($_pkgname)
-conflicts=($_pkgname)
+provides=(lib$_pkgname)
+conflicts=(lib$_pkgname)
 source=("git+$url.git")
 md5sums=('SKIP')
 
