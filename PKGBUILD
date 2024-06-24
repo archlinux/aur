@@ -1,7 +1,7 @@
 # Maintainer: Pando85 <pando855@gmail.com>
 
 pkgname=rash
-pkgver=1.10.2
+pkgver=1.10.3
 pkgrel=1
 pkgdesc="Declarative shell scripting using Rust native bindings"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -11,7 +11,7 @@ depends=('gcc-libs')
 makedepends=('cargo'
              'git')
 source=("git+https://github.com/rash-sh/rash.git#tag=v${pkgver}?signed")
-validpgpkeys=('C15CDDF9318F14398300B917C6CB8A1793CA3F94')
+validpgpkeys=('CD1DB60B2C8465FD50028EF6D381D73787B45B3E')
 sha512sums=('SKIP')
 
 prepare() {
