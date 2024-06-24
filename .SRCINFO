@@ -1,6 +1,6 @@
 pkgbase = stabilitymatrix
 	pkgdesc = Multi-Platform Package Manager for Stable Diffusion
-	pkgver = 2.11.0
+	pkgver = 2.11.2
 	pkgrel = 1
 	url = https://github.com/LykosAI/StabilityMatrix
 	arch = any
