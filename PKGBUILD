@@ -4,7 +4,7 @@
 _pkgname="across"
 pkgname="$_pkgname"
 pkgver=0.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="The next GUI client for v2ray core"
 url="https://github.com/ArkToria/ACross"
 license=('GPL-3.0-only')
@@ -48,6 +48,10 @@ prepare() {
   sed -E \
     -e '/zxing-cpp/{n;s&^(\s*VERSION) [0-9\.]+$&\1 '"${_ver_zxing}"'&}' \
     -i "$_pkgsrc/CMakeLists.txt"
+
+  sed -E \
+    -e '/always_print_primitive_fields/s&\balways_print_primitive_fields\b&always_print_fields_with_no_presence&' \
+    -i "$_pkgsrc/src/models/serializetools.cpp"
 }
 
 build() {
