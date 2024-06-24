@@ -4,24 +4,26 @@
 # Contributor: Benjamin Hedrich <kiwisauce (a) pagenotfound (dot) de>
 
 pkgname=tvheadend-git
-pkgver=4.3.r2300.g1212b94
+pkgver=4.3.r2340.gc8435a0
 pkgrel=1
 pkgdesc='TV streaming server and DVR'
 #arch=(x86_64)
 arch=(aarch64 arm armv6h armv7h i686 x86_64)
 url=https://tvheadend.org/
-license=(GPL3)
-depends=(avahi ffmpeg libdvbcsa libfdk-aac libhdhomerun libogg libtheora libvorbis libvpx
-         openssl opus pcre2 pngquant uriparser x264 x265)
+license=(GPL-3.0-or-later)
+depends=(
+  avahi ffmpeg libdvbcsa libfdk-aac libhdhomerun libogg libtheora libvorbis libvpx
+  openssl opus pcre2 pngquant uriparser x264 x265)
 makedepends=(git python)
 optdepends=('xmltv: alternative source of programme listings')
 options=(!buildflags !strip emptydirs)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("$pkgname::git+https://github.com/tvheadend/tvheadend.git"
-        tmpfile.conf
-        tvheadend.service
-        user.conf)
+source=(
+  "$pkgname::git+https://github.com/tvheadend/tvheadend.git"
+  tmpfile.conf
+  tvheadend.service
+  user.conf)
 sha256sums=('SKIP'
             'b01fa913421e67e40bc1aa5da079e30cb1d8c20913133ded1ad651d6ce84b9b6'
             'a8e95cd2ec5626a47f49c0aa1f8524d6e155809cfbf6504b9a1484afdf62cfb7'
@@ -34,6 +36,7 @@ pkgver() {
 build() {
   cd $pkgname
 
+  # Change "--disable-libav" to "--enable-libav" when ffmpeg 7 is supported (https://github.com/tvheadend/tvheadend/pull/1690)
   ./configure \
     --datadir=/var/lib \
     --disable-ffmpeg_static \
@@ -47,7 +50,7 @@ build() {
     --disable-libx264_static \
     --disable-libx265_static \
     --enable-avahi \
-    --enable-libav \
+    --disable-libav \
     --enable-pngquant \
     --enable-vaapi \
     --enable-zlib \
@@ -61,7 +64,7 @@ build() {
 package() {
   make -C $pkgname DESTDIR="$pkgdir/" install
 
-  install -Dm644 tmpfile.conf         "$pkgdir/usr/lib/tmpfiles.d/tvheadend.conf"
+  install -Dm644 tmpfile.conf "$pkgdir/usr/lib/tmpfiles.d/tvheadend.conf"
   install -Dm644 tvheadend.service -t "$pkgdir/usr/lib/systemd/system"
-  install -Dm644 user.conf            "$pkgdir/usr/lib/sysusers.d/tvheadend.conf"
+  install -Dm644 user.conf "$pkgdir/usr/lib/sysusers.d/tvheadend.conf"
 }

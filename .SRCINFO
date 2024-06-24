@@ -1,6 +1,6 @@
 pkgbase = tvheadend-git
 	pkgdesc = TV streaming server and DVR
-	pkgver = 4.3.r2300.g1212b94
+	pkgver = 4.3.r2340.gc8435a0
 	pkgrel = 1
 	url = https://tvheadend.org/
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = tvheadend-git
 	arch = armv7h
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = python
 	depends = avahi
