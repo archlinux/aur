@@ -1,6 +1,6 @@
 pkgbase = rust-docs
 	pkgdesc = Rust documentations.
-	pkgver = 1.78.0
+	pkgver = 1.79.0
 	pkgrel = 1
 	epoch = 1
 	url = https://www.rust-lang.org/
@@ -12,11 +12,11 @@ pkgbase = rust-docs
 	options = docs
 	options = !strip
 	options = !debug
-	source_x86_64 = https://static.rust-lang.org/dist/rust-docs-1.78.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = ddd1917e2c07d1d67e10c81617b5bfa7cec37c6f6a72d1007a99b947b44a1b5b
-	source_i686 = https://static.rust-lang.org/dist/rust-docs-1.78.0-i686-unknown-linux-gnu.tar.gz
-	sha256sums_i686 = d32dab9e5cb367f6062f23e1336c9f1f2fc0ab7029e194fac2ac227182d41870
-	source_aarch64 = https://static.rust-lang.org/dist/rust-docs-1.78.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 9e6a312aebdbf1427566dfba97c6dd01ac8935ea8cd921b967631fcac90b79c7
+	source_x86_64 = https://static.rust-lang.org/dist/rust-docs-1.79.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 6e83c45cabc5f7d8b3244ca16b02ab553a07aa642c483dd387cf8227866e0f88
+	source_i686 = https://static.rust-lang.org/dist/rust-docs-1.79.0-i686-unknown-linux-gnu.tar.gz
+	sha256sums_i686 = 05a3c2ceba1fb0b9e8468f2a584c5a27bb2bd187fbf3686a1a3514d800ea09d3
+	source_aarch64 = https://static.rust-lang.org/dist/rust-docs-1.79.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = e158692878faf4b3d7ac582ae43a46d203688fd7055c83c3612120b2c8823d90
 
 pkgname = rust-docs
