@@ -1,5 +1,6 @@
 *.bz2
 *.log
 *.tar.zst
+*.xz
 /pkg/
 /src/
