@@ -1,6 +1,6 @@
 pkgbase = platypush-git
 	pkgdesc = A general-purpose, event-driven, plugin-based platform for automation-as-code
-	pkgver = 1.1.0.r68.ga754b06f
+	pkgver = 1.1.0.r70.g1a21671d
 	pkgrel = 1
 	url = https://platypush.tech
 	arch = any
