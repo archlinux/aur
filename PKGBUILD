@@ -71,8 +71,14 @@ prepare() {
   git reset --hard ${_lastbranch}
 
   if [[ -n "$_clangbuild" ]]; then
-    msg "Building with clang"
+    echo "Building with clang"
     export CC=clang CXX=clang++
+  fi
+
+  if [[ $CARCH == "armv7h" ]]; then
+    echo "Patching for gcc14 bug for armv7h"
+    sed -i 's/class CGameLoop : protected CThread/class CGameLoop : virtual protected CThread/' \
+        "$srcdir/$_gitname/xbmc/cores/RetroPlayer/playback/GameLoop.h"
   fi
 }
 
