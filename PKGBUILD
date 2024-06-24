@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=doBy
-_pkgver=4.6.21
+_pkgver=4.6.22
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,7 +17,6 @@ depends=(
   r-ggplot2
   r-microbenchmark
   r-modelr
-  r-pbkrtest
   r-rlang
   r-tibble
   r-tidyr
@@ -28,11 +27,12 @@ optdepends=(
   r-lme4
   r-markdown
   r-multcomp
+  r-pbkrtest
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0430aff54f4be6fa47c7eca903d2f81b')
-b2sums=('b2d58dbdf2e24b9ff21b8e27300414a001a35d9029adcc3d6aca12f88aca1dca690031b7867e178c6aee765d5d2d536a4be78b6a94dec2ef9ebad4b484883d5a')
+md5sums=('201bc49e09e3c5cb9c30af8ea41c3e5e')
+b2sums=('790d22508da5a122445700bbe3252b017308ed11859e242d68239122fa5853a2907ba3556a7e7dc027f88dfc42040141ed73c5e76333d8a47f8a4575e96adec0')
 
 build() {
   mkdir build

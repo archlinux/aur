@@ -1,6 +1,6 @@
 pkgbase = r-doby
 	pkgdesc = Groupwise Statistics, LSmeans, Linear Estimates, Utilities
-	pkgver = 4.6.21
+	pkgver = 4.6.22
 	pkgrel = 1
 	url = https://cran.r-project.org/package=doBy
 	arch = any
@@ -12,7 +12,6 @@ pkgbase = r-doby
 	depends = r-ggplot2
 	depends = r-microbenchmark
 	depends = r-modelr
-	depends = r-pbkrtest
 	depends = r-rlang
 	depends = r-tibble
 	depends = r-tidyr
@@ -21,9 +20,10 @@ pkgbase = r-doby
 	optdepends = r-lme4
 	optdepends = r-markdown
 	optdepends = r-multcomp
+	optdepends = r-pbkrtest
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/doBy_4.6.21.tar.gz
-	md5sums = 0430aff54f4be6fa47c7eca903d2f81b
-	b2sums = b2d58dbdf2e24b9ff21b8e27300414a001a35d9029adcc3d6aca12f88aca1dca690031b7867e178c6aee765d5d2d536a4be78b6a94dec2ef9ebad4b484883d5a
+	source = https://cran.r-project.org/src/contrib/doBy_4.6.22.tar.gz
+	md5sums = 201bc49e09e3c5cb9c30af8ea41c3e5e
+	b2sums = 790d22508da5a122445700bbe3252b017308ed11859e242d68239122fa5853a2907ba3556a7e7dc027f88dfc42040141ed73c5e76333d8a47f8a4575e96adec0
 
 pkgname = r-doby
