@@ -1,14 +1,14 @@
 pkgbase = discord_arch_electron
-	pkgdesc = Discord using system provided electron for increased security and performance
+	pkgdesc = Discord using system provided electron30 for increased security and performance
 	pkgver = 0.0.57
-	pkgrel = 1
+	pkgrel = 2
 	url = https://discord.com
 	install = discord_arch_electron.install
 	arch = any
 	license = custom
 	makedepends = asar
 	makedepends = curl
-	depends = electron
+	depends = electron30
 	depends = libxss
 	optdepends = libpulse: Pulseaudio support
 	optdepends = libappindicator-gtk3: Systray indicator support
