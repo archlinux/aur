@@ -1,7 +1,7 @@
 pkgbase = labwc-menu-generator-git
 	pkgdesc = Desktop-independent menu generator for OpenBox/labwc
 	pkgver = r24.c2d46a1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/labwc/labwc-menu-generator
 	arch = x86_64
 	license = GPL2

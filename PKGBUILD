@@ -4,7 +4,7 @@ pkgname=labwc-menu-generator-git
 pkgdesc='Desktop-independent menu generator for OpenBox/labwc'
 url=https://github.com/labwc/labwc-menu-generator
 pkgver=r24.c2d46a1
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 makedepends=(git perl meson)
 depends=(glib2)
@@ -29,11 +29,10 @@ build () {
 	meson compile -C _build
 }
 
-check () {
-	# FIXME: Tests are currently failing, but the program seems to work when installed.
-	return
-	meson test -C _build
-}
+# FIXME: Tests are currently failing, but the program seems to work when installed.
+# check () {
+# 	meson test -C _build
+# }
 
 package () {
 	meson install -C _build --destdir "$pkgdir"
