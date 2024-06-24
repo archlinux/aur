@@ -18,8 +18,8 @@ provides=(rye)
 conflicts=(rye)
 source=("rye-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 source_x86_64=("rye-$pkgver-x86_64-linux.gz::$url/releases/download/$pkgver/rye-x86_64-linux.gz")
-sha256sums=('a5dfb435e5aab92388d8950d8772c753a15b34593916279d1e7edb64a9277340')
-sha256sums_x86_64=('ea78a7776733a5d7b91e65101f96bc8eb3026b7b1a4570ef2266cd4a054fd531')
+sha256sums=('380c23fd0a667393bbe15effa55f4ce51a29811761c42b793c24a5b695d0baec')
+sha256sums_x86_64=('446cc0e56f1e34823c5eaf2be9e48bc28106ff748a97cd259fcbb01235fcdaf5')
 
 package() {
   install -Dm755 "rye-$pkgver-x86_64-linux" "$pkgdir/usr/bin/rye"
