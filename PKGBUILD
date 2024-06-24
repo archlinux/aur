@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Richard PALO <richard.palo@free.fr>
 pkgname=python-sql
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Library to write SQL queries"
 arch=(any)
@@ -10,7 +10,7 @@ license=(BSD)
 depends=(python)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 source=(https://foss.heptapod.net/tryton/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('6e62370e3637f43a9a30c06e5acf3ef164761cc0baaa11c6816c6118524e4b6ab2ed88be971277fde42154b86e778c29efb6f0a03765c28a68004a2a441f563d')
+sha512sums=('9ccf3f6a584d3ceae9b4f65e2921c8b469732988f6493060ef59bd4a9c82f098aee180d42da2d19e056bac556519d07022cfb5da300fc53aaa4587e3711acfaf')
 
 build() {
   cd ${pkgname}-${pkgver}
