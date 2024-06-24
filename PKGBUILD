@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=sofie-chef-bin
 _appname=SofieChef
-pkgver=0.3.4
+pkgver=0.3.5
 _electronversion=26
 pkgrel=1
 pkgdesc="Disrupting the industry & stirring pots"
@@ -21,7 +21,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/nrkno/sofie-chef/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('20bb65e00c6be652279480d92b4bf7b93883cf152689c9b21cdeb287930bc42c'
+sha256sums=('f837fca12412cc48027c3a350e73c398c6e92cd0e89bc19bfd02ba2c737e5505'
             'ac26e60681c9ba6ec5eddf9b1afa3442d8ada9d77fe42b4515c42a2a15392c44'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
