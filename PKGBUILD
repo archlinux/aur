@@ -1,7 +1,7 @@
 _pkgname="spicetify-extensions-rxri"
 pkgname="$_pkgname-git"
 pkgver=r30.9168bc5
-pkgrel=1
+pkgrel=2
 pkgdesc="Add some spice with extensions to make spotify more enjoyable"
 arch=("any")
 url="https://github.com/rxri/spicetify-extensions"
@@ -22,7 +22,7 @@ pkgver() {
 }
 
 package() {
-    depends=("spicetify")
+    depends=("spicetify-cli")
     cd "$srcdir/$_pkgname"
     local file extension
     for file in ./*/*.js
