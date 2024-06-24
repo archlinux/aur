@@ -70,6 +70,10 @@ prepare() {
   _lastbranch=$(git branch --all --sort='-*authordate' | tail -2 | head -1)
   git reset --hard ${_lastbranch}
 
+  echo "=============================="
+  echo "Building branch ${_lastbranch}"
+  echo "=============================="
+
   if [[ -n "$_clangbuild" ]]; then
     echo "Building with clang"
     export CC=clang CXX=clang++
@@ -77,6 +81,7 @@ prepare() {
 
   if [[ $CARCH == "armv7h" ]]; then
     echo "Patching for gcc14 bug for armv7h"
+    # Error: bad immediate value for 8-bit offset
     sed -i 's/class CGameLoop : protected CThread/class CGameLoop : virtual protected CThread/' \
         "$srcdir/$_gitname/xbmc/cores/RetroPlayer/playback/GameLoop.h"
   fi
