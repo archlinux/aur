@@ -1,7 +1,7 @@
 # Maintainer: Aaron Bishop <erroneous@gmail.com>
 
 pkgname=perl-crypt-openssl-aes
-pkgver=0.19
+pkgver=0.21
 pkgrel=1
 pkgdesc="Perl/CPAN Module Crypt::OpenSSL::AES"
 arch=('x86_64' 'i686')
@@ -11,7 +11,7 @@ depends=("openssl" "perl-crypt-openssl-guess")
 checkdepends=("perl-file-which")
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/T/TI/TIMLEGGE/Crypt-OpenSSL-AES-${pkgver}.tar.gz")
-sha256sums=('35a8af2ebdc26280a4f5916c1a97c3431e7cbef3e7451e1e917f7cce4d8c9c59')
+sha256sums=('0f699d73703af4e54446295dce395f66b95efc4c6ba45d4c69eff12d668792ee')
 
 build() {
   cd Crypt-OpenSSL-AES-${pkgver}
