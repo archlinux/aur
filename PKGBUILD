@@ -1,4 +1,5 @@
-# Maintainer: Yurenev Nikolay <yurnik2004 at gmail.com>
+# Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
+#Contributor: Yurenev Nikolay <yurnik2004 at gmail.com>
 
 pkgname='zvm'
 pkgver='0.7.3'
