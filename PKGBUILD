@@ -1,7 +1,7 @@
 # Maintainer: iamawacko <iamawacko@protonmail.com>
 
 pkgname=entropy
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="CLI tool that will scan your codebase for high entropy lines, which are often secrets. "
 makedepends=('go')
@@ -9,7 +9,7 @@ arch=('any')
 url='https://github.com/EwenQuim/entropy'
 license=('MIT')
 source=(https://github.com/EwenQuim/entropy/archive/v$pkgver.tar.gz)
-sha512sums=('068402a43b3c9ef20dee9044bffe4ef695dbbf9a618f2aa223cb165b586714f1fcb416a6f3827c497656fbfcbeb537cf18d35b038363c1c2a056c2c0de5af7a3')
+sha512sums=('0a35bca73a57d217708dd503615e9b24de45bb0eb3b09ef5d60c9890391459bb822adad794b66a355e26ad33d3adfe7be96d6e8b08db751b29e94cd3ad7ca00d')
 
 prepare(){
   cd "$pkgname-$pkgver"
