@@ -1,0 +1,16 @@
+pkgbase = commiter
+	pkgdesc = A rust program to ensure commit quality for cargo project
+	pkgver = 1.0.0
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/otechdo/commiter
+	arch = any
+	license = GPL3
+	makedepends = cargo
+	depends = rustup
+	depends = git
+	provides = commiter
+	source = commiter-1.0.0.tar.gz::https://static.crates.io/crates/commiter/commiter-1.0.0.crate
+	sha256sums = 5797a91dbf9ae2a68556c018bc098a430237ab163fb564485067ff469cf23352
+
+pkgname = commiter
