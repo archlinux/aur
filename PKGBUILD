@@ -2,7 +2,7 @@
 _base=py-pde
 pkgname=python-${_base}
 pkgdesc="Python package for solving partial differential equations"
-pkgver=0.39.0
+pkgver=0.40.0
 pkgrel=1
 arch=(any)
 url="https://github.com/zwicker-group/${_base}"
