@@ -4,7 +4,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt6-base-headless
-_qtver=6.7.1
+_qtver=6.7.2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64)
@@ -37,7 +37,7 @@ _pkgfn=qtbase
 source=(git+https://code.qt.io/qt/$_pkgfn#tag=v$pkgver
         qt6-base-cflags.patch
         qt6-base-nostrip.patch)
-sha256sums=('bc68440a69a331b6b79b3c36acc8346b5dc0aad1b53536fe363860af31dd494b'
+sha256sums=('9ca28c2614cc755c65e1f817e61cb3b88549f46300d84ed34faf01717f8c24e5'
             '5411edbe215c24b30448fac69bd0ba7c882f545e8cf05027b2b6e2227abc5e78'
             '4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094')
 
@@ -47,6 +47,9 @@ prepare() {
 
   cd $_pkgfn
   git cherry-pick -n f05cf3f11f4e42e05d069b5d9249d4b9aff41ffe # Fix locale issues
+  git cherry-pick -n a8ef8ea55014546e0e835cd0eacf694919702a11 # https://bugreports.qt.io/browse/QTBUG-124386
+  git cherry-pick -n 062f701a11d2c46660f5c5edd73f245477918a47 # Fix dependencies in pc files
+  git cherry-pick -n 5ee9da89af7efe31ac45858bf1eb04e5155a3b50 # Fix dependencies in pc files
 }
 
 build() {
