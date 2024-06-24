@@ -1,7 +1,7 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=ktailctl
-pkgver=0.16.0
+pkgver=0.16.1
 pkgrel=1
 arch=(x86_64 aarch64)
 url='https://github.com/f-koehler/KTailctl'
@@ -18,7 +18,7 @@ depends=(
   kirigami
   kirigami-addons
   knotifications
-  nlohmann-json
+  qqc2-desktop-style
   qt6-base
   qt6-declarative
   qt6-svg
@@ -29,14 +29,15 @@ makedepends=(
   extra-cmake-modules
   git
   go
+  nlohmann-json
 )
 
 # git tag is used by the cmake script to determine app version
 source=(git+$url.git#tag=v$pkgver)
-sha256sums=('17e37f1acabfb2ec90032b8f94eca67a03e322a030a039537b0ce260d65a01de')
+sha256sums=('723f441785feb409eff395dccb9695e6533a1d0c1d21b0e8acd4412b22023229')
 
 prepare() {
-  cd KTailctl/tailwrap
+  cd KTailctl/src/wrapper
   go mod vendor
 }
 
@@ -50,4 +51,5 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+  install -Dm755 build/bin/libktailctl_config.so -t "$pkgdir/usr/lib/"
 }
