@@ -1,0 +1,20 @@
+pkgbase = stepman-bin
+	pkgdesc = Manage decentralized StepLib Step (script) collections
+	pkgver = 0.17.0
+	pkgrel = 1
+	url = https://github.com/bitrise-io/stepman
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = stepman
+	conflicts = stepman
+	source = https://github.com/bitrise-io/stepman/raw/0.17.0/README.md
+	source = https://github.com/bitrise-io/stepman/raw/0.17.0/LICENSE
+	sha256sums = a6f4e5eef34a61a1fe87cbc06109bf3d077b9eb7fa945d70c95c5643dea9ed0c
+	sha256sums = a0379118157469b6a466bf070c8986ffbca0874d10bb4950e0c6018544914414
+	source_x86_64 = stepman-0.17.0::https://github.com/bitrise-io/stepman/releases/download/0.17.0/stepman-Linux-x86_64
+	sha256sums_x86_64 = fc65a04eb9cc9d1f48b4b426fff75ec433ed2ca9c7babd05bcb5892a5a6cc83b
+	source_aarch64 = stepman-0.17.0::https://github.com/bitrise-io/stepman/releases/download/0.17.0/stepman-Linux-arm64
+	sha256sums_aarch64 = bf8809cdd565c55ae7868db121181f817e16cbf4de88a5767a1f55dbdc0025ba
+
+pkgname = stepman-bin
