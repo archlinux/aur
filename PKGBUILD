@@ -1,7 +1,7 @@
 # Maintainer: Aikawa Yataro <aikawayataro at protonmail dot com>
 
 pkgname=cmake-pkg
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc="pkg-config clone for CMake packages."
 arch=('any')
@@ -11,7 +11,7 @@ depends=('cmake')
 makedepends=('zig')
 
 source=("https://gitlab.com/yataro/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('9135a517b32daa7a67f10626f7e45cc618e07e105e9d5a2acba8f65150befb6f')
+sha256sums=('2396ec1fa5fecb676443b101cf4c35040164c9930456e0b82a7770578a28cb1e')
 
 
 
