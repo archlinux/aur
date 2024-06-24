@@ -3,7 +3,7 @@
 # Contributor: adament <adament@adament.net>
 # Contributor: Jamie Magee <jamie dot magee at gmail dot com>
 pkgname=stavekontrolden
-pkgver=2.8.108
+pkgver=2.8.109
 pkgrel=1
 pkgdesc="Stavekontrolden Danish dictionaries; for use with nuspell/hunspell, hyphen, libmythes, LibreOffice, and OpenOffice"
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=('libarchive' 'coreutils' 'findutils')
 provides=('libreoffice-extension-da_dk' 'openoffice-extension-da_dk' 'hunspell-da' 'hyphen-da' 'mythes-da')
 conflicts=("${provides[@]}")
 source=("https://stavekontrolden.dk/dictionaries/da_DK/da_DK-$pkgver.oxt")
-b2sums=('4d783d144ae2b3e26bbf7b3219df7d71e8adec43de92f7114204ea0bd1ab2cc9550750d3d4739359b2e3c354cef978d07bdaebf1eb11cd563a417be7a485c6d7')
+b2sums=('3ad2c9d357fca57b6c874e7fd0f955d2d7f87d0d2b9ab32d19990efd944569deda502253b30357dfba93badfd5881617ef153e26023a8157ec58b89fc269d68d')
 
 package() {
   # LibreOffice extension
