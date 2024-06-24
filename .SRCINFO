@@ -1,0 +1,13 @@
+pkgbase = python-price-parser
+	pkgdesc = Extract price amount and currency symbol from a raw text string
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://github.com/scrapinghub/price-parser
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/scrapinghub/price-parser/archive/refs/tags/0.3.4.tar.gz
+	sha256sums = 4b1ca4ba20cf1dc661aee9376a5525fe3727b37a59ef5ee0f56c089e5ff52c73
+
+pkgname = python-price-parser
