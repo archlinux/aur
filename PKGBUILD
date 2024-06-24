@@ -2,12 +2,12 @@
 # Contributor: David Birks <david at tellus dot space>
 # Contributor: Jeff Henson <jeff at henson dot io>
 pkgname=mullvad-vpn-beta
-_pkgver=2024.3
-_channel=stable
+_pkgver=2024.4
+_channel=beta
 _rel=1
-#pkgver=${_pkgver}.${_channel}${_rel}  # beta
-pkgver=${_pkgver}.${_channel}  # stable
-pkgrel=3
+pkgver=${_pkgver}.${_channel}${_rel}  # beta
+#pkgver=${_pkgver}.${_channel}  # stable
+pkgrel=1
 _nodeversion=20
 pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
 arch=('x86_64')
@@ -18,18 +18,17 @@ makedepends=('cargo' 'git' 'go' 'libxcrypt-compat' 'nvm' 'protobuf')
 provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
 install="${pkgname%-beta}.install"
-_commit=7db2c76522e29b4acd8f461fc87f794954c6df95
+_commit=e9043f890c56b4d0db50851e3fa4db10f230118e
 source=(
-  # tag signed by Oskar Nyberg (raksooo), public key not uploaded yet
-#  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}${_rel}"  # beta
-  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}"  # stable
+  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}${_rel}"  # beta
+#  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}"  # stable
   "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_commit}?signed"
   'no-rpm.diff'
   'no-publish.diff'
   "${pkgname%-beta}.sh"
 )
-sha256sums=('8064e0181b1d30352f25eab563bade47b2fd157ca9646b97aff928241d9870ea'
-            '76015a774788a2274d29e3fa1e06cb752a8488f24a973b5143d8659d5b290e9c'
+sha256sums=('e683b4f046c8e554777a6c1d3666c7328635f8f98b05a546e23a6b466a411aa2'
+            'f097255f0d415597cce88ae7a8de24440a533620a932d492fbe4e84c76f7c8d1'
             'ea35edffea2cbbb05586abce19581fdd9f133801ed47e6af30fa64a29c5cf116'
             '968967efff8e9588f15c382825b609cf89d54c47e0632e92e9ef2354aa46f31b'
             '2262346cb57deb187fe32a88ccd873dab669598889269088e749197c6e88954f')
@@ -63,11 +62,11 @@ prepare() {
 
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 
   pushd wireguard/libwg
   export GOPATH="$srcdir/gopath"
-  mkdir -p "../../build/lib/$CARCH-unknown-linux-gnu"
+  mkdir -p "../../build/lib/$(rustc -vV | sed -n 's/host: //p')"
   go mod download -x
   popd
 
@@ -99,7 +98,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -v -o "../../build/lib/$CARCH-unknown-linux-gnu"/libwg.a -buildmode c-archive
+  go build -v -o "../../build/lib/$(rustc -vV | sed -n 's/host: //p')"/libwg.a -buildmode c-archive
   popd
 
   # Clean module cache for makepkg -C
