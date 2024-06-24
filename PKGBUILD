@@ -2,7 +2,7 @@
 # Contributor: Jason Nader <jason *add-dot-here* nader *you-know-what-goes-here* protonmail.com>
 pkgname=httptoolkit-git
 _pkgname="HTTP Toolkit Desktop"
-pkgver=1.15.0.r0.g01e0ddb
+pkgver=1.17.2.r0.ga636092
 _electronversion=29
 _nodeversion=20
 pkgrel=1
@@ -24,8 +24,9 @@ makedepends=(
     'git'
     'nvm'
     'gendesk'
-    'base-devel'
     'gcc'
+    'cmake'
+    'curl'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
@@ -34,7 +35,7 @@ sha256sums=('SKIP'
             '24c1c5b90cba47cd3d7a3ff11a934fcdbb499f8c56423d22009ef33a775e2d21')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
-    git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
 }
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -46,10 +47,11 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-git}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --categories="Development" --name="${_pkgname}" --exec="${pkgname%-git} %U"
+    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
@@ -67,8 +69,8 @@ build() {
         echo "Your network is OK."
     fi
     sed '/"deb",/d;/"rpm",/d;/"AppImage",/d;s|"zip"|"dir"|g' -i package.json
-    npm install
-    npm run build
+    NODE_ENV=development npm install
+    NODE_ENV=production npm run build
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
