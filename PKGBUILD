@@ -32,7 +32,7 @@ source=(
     "GodSVG-${_pkgver}.zip::${_url}/releases/download/v${_pkgver}/GodSVG.Linux.zip"
     "LICENSE::${_url}/raw/main/LICENSE"
     "godsvg.png::https://raw.githubusercontent.com/MewPurPur/GodSVG/main/visual/icon.png"
-    "godsvg.desktop::https://aur.archlinux.org/cgit/aur.git/plain/godsvg.desktop?h=godsvg-bin"
+    "godsvg.desktop"
 )
 sha256sums=('59ed79c724cd065e34197dfc41da1d52f0598434b0618a750633170ece384e15'
             'a2e1a9795671794be3a25bd921a16f0fa9819ede1ead54a13da6edb34bfc0ee1'
