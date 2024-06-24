@@ -2,7 +2,7 @@
 # Contributor: Pylogmon <pylogmon@outlook.com>
 _pkgname=pot
 pkgname="${_pkgname}-translation-git"
-pkgver=2.7.9.r7.gd6ff01c
+pkgver=3.0.0.r1.gc57a14d
 _nodeversion=18
 pkgrel=1
 pkgdesc="一个跨平台的划词翻译软件 | A cross-platform software for text translation."
@@ -27,22 +27,22 @@ depends=(
 )
 makedepends=(
     'nvm'
-    'pnpm'
+    'pnpm>=8.5.0'
     'npm'
     'git'
     'gendesk'
-    'rust>=1.69.0'
-    'base-devel'
+    'rust>=1.79.0'
+    'curl'
 )
 source=(
     "${pkgname%-git}.git::git+${_ghurl}.git"
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '44a5d65890e900259c4c9047d799ed8bf66c3baae9d5366ab9ad975f33d653d7')
+            'ee36c7f3eedf44465a8d50d263dcb0da274961586ae847ab59dcb7a70850c712')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
-    git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
 }
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -53,17 +53,22 @@ _ensure_local_nvm() {
 build() {
     sed "s|@runname@|${_pkgname}|g" -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${_pkgname}-translation-git" --categories="Office" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
+    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Office" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
+    export npm_config_build_from_source=true
+    #export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
+    #export ELECTRONVERSION="${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
     pnpm config set store-dir "${srcdir}/.pnpm_store"
     pnpm config set cache-dir "${srcdir}/.pnpm_cache"
     pnpm config set link-workspace-packages true
-    export CARGO_HOME="${srcdir}/.cargo"
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
-        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
-        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
-        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+        export npm_config_registry=https://registry.npmmirror.com
+        export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
+        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
+        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
         export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
 	    export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
     else
@@ -73,9 +78,9 @@ build() {
     sed "s|icon.ico|icon.png|g" -i src-tauri/webview.arm64.json
     sed "s|icon.ico|icon.png|g" -i src-tauri/webview.x64.json
     sed "s|icon.ico|icon.png|g" -i src-tauri/webview.x86.json
-    pnpm install --force
+    NODE_ENV=development pnpm install --force
     #仅输出deb
-    pnpm tauri build -b deb
+    NODE_ENV=production pnpm tauri build -b deb
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
