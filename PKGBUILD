@@ -2,12 +2,12 @@
 
 _pyname=google-cloud-bigquery
 pkgname=python-google-cloud-bigquery
-pkgver=3.23.1
+pkgver=3.25.0
 pkgrel=1
 pkgdesc='Google BigQuery API client library'
 arch=(any)
 url=https://github.com/googleapis/python-bigquery
-license=(Apache)
+license=(Apache-2.0)
 depends=(
   python-dateutil
   python-google-api-core
@@ -38,7 +38,7 @@ optdepends=(
 changelog=CHANGELOG.md
 # source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 source=(${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pyname::1}/${_pyname}/${_pyname}-${pkgver}.tar.gz)
-b2sums=(ded1c9e2a40a58b812a58cac90db91c1c1a0e78aa6a87b6fa6860e6c26ac170aa9636ddeb446b6fe98a53bf99d5268963127a7c07458b981137ab422bff827fc)
+b2sums=(f1528c392a061a360c2c67e2f0bb54fbfc68b362368f137d231001d19fd362cfef1cc253f698621d872046887f618db99b7dafbf0a61dbcb28efbbdb6334f245)
 
 build() {
   cd ${_pyname}-${pkgver}
@@ -56,12 +56,14 @@ package() {
     --destdir="${pkgdir}" \
     dist/*.whl
   
-  install -Dm644 README.rst -t "${pkgdir}"/usr/share/doc/${pkgname}
+  install -Dm644 -t "${pkgdir}"/usr/share/doc/${pkgname} README.rst
   # install -Dm644 docs/_build/google-cloud-bigquery.1 -t "${pkgdir}"/usr/share/man/man1
   install -d "${pkgdir}"/usr/share/licenses/${pkgname}
-  ln -s \
-    ${_site}/google_cloud_bigquery-${pkgver}.dist-info/LICENSE \
-    "${pkgdir}"/usr/share/licenses/${pkgname}/
+  ln -sr -t "${pkgdir}"/usr/share/licenses/${pkgname} \
+    "${pkgdir}"${_site}/google_cloud_bigquery-${pkgver}.dist-info/LICENSE
+#  ln -s \
+#    ${_site}/google_cloud_bigquery-${pkgver}.dist-info/LICENSE \
+#    "${pkgdir}"/usr/share/licenses/${pkgname}
 }
 
 # vim: ts=2 sw=2 et:
