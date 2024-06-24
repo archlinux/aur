@@ -1,6 +1,6 @@
 pkgname=rewards-theater-obs-git
 _pkgname=RewardsTheater
-pkgver=1.0.5+10+gcb3f491
+pkgver=1.0.7+2+gda91ecc
 pkgrel=1
 pkgdesc="An OBS plugin that lets your viewers redeem videos or sounds on stream via channel points."
 
