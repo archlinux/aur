@@ -10,7 +10,7 @@
 
 _pkgname=gamescope
 pkgname=${_pkgname}-git
-pkgver=3.14.18.r22.gfd67152
+pkgver=3.14.22.r1.g5ee5959
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager'
 arch=(x86_64)
@@ -24,7 +24,6 @@ depends=(
     libavif
     libcap.so
     libdecor
-    libdisplay-info.so
     libdrm
     libinput
     libpipewire-0.3.so
@@ -58,28 +57,67 @@ makedepends=(
     vulkan-headers
     wayland-protocols
 )
-source=('git+https://github.com/ValveSoftware/gamescope.git')
-b2sums=('SKIP')
+source=(
+    'git+https://github.com/ValveSoftware/gamescope.git'
+    'git+https://github.com/Joshua-Ashton/wlroots.git'
+    'git+https://gitlab.freedesktop.org/emersion/libliftoff.git'
+    'git+https://github.com/Joshua-Ashton/vkroots.git'
+    'git+https://gitlab.freedesktop.org/emersion/libdisplay-info.git'
+    'git+https://github.com/ValveSoftware/openvr.git'
+    'git+https://github.com/Joshua-Ashton/reshade.git'
+    'git+https://github.com/KhronosGroup/SPIRV-Headers.git'
+)
+
+b2sums=(
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+)
 
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 prepare() {
-    cd $_pkgname
-    # This really should be a pacman feature...
+    cd "$_pkgname"
+
+    # Add custom patches if needed
     for src in "${source[@]}"; do
         src="${src%%::*}"
         src="${src##*/}"
         [[ $src = *.patch ]] || continue
         echo "Applying patch $src..."
-        git apply "../$src"
+        git apply -v "../$src"
     done
-    meson subprojects download
-    git submodule init
-    git -c protocol.file.allow=always submodule update
 
-    # Use Arch provided libdisplay-info, do use other subprojects as is
-    rm -rf subprojects/libdisplay-info
+    meson subprojects download
+
+    git submodule init subprojects/wlroots
+    git config submodule.subprojects/wlroots.url ../wlroots
+
+    git submodule init subprojects/libliftoff
+    git config submodule.subprojects/libliftoff.url ../libliftoff
+
+    git submodule init subprojects/vkroots
+    git config submodule.subprojects/vkroots.url ../vkroots
+
+    git submodule init subprojects/libdisplay-info
+    git config submodule.subprojects/libdisplay-info.url ../libdisplay-info
+
+    git submodule init subprojects/openvr
+    git config submodule.subprojects/openvr.url ../openvr
+
+    git submodule init src/reshade
+    git config submodule.src/reshade.url ../reshade
+
+    git submodule init thirdparty/SPIRV-Headers
+    git config submodule.thirdparty/SPIRV-Headers.url ../SPIRV-Headers
+
+    git -c protocol.file.allow=always submodule update
 }
 
 pkgver() {
@@ -89,9 +127,9 @@ pkgver() {
 
 build() {
     arch-meson "${_pkgname}" build \
-        -Dforce_fallback_for=stb,wlroots,vkroots,libliftoff \
+        -Dforce_fallback_for=stb,wlroots,vkroots,libliftoff,glm,libdisplay-info \
         -Dpipewire=enabled
-    meson compile -C build
+    ninja -C build
 }
 
 package() {
