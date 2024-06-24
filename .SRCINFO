@@ -1,0 +1,13 @@
+pkgbase = prometheus-apple-refurbed
+	pkgdesc = A simple prometheus scraper written in NodeJS to scrape apples refurbed products
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/CommanderRedYT/prometheus-apple-refurbed
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	source = prometheus-apple-refurbed-0.1.0.tar.gz::https://github.com/CommanderRedYT/prometheus-apple-refurbed/archive/tags/0.1.0.tar.gz
+	sha256sums = 784d497b6babbda8f4f7cd80206695569d3053f4bed796688110ce5422e29b22
+
+pkgname = prometheus-apple-refurbed
