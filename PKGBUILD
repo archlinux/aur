@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nats-js-client-bin
-pkgver=0.1.3
+pkgver=0.1.4
 _electronversion=26
 pkgrel=1
 pkgdesc="Gui for nats.js client"
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}-Linux-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('80ee80a99bbb56727a60804ce5952d686da5533476e80948c23e918469de62c3'
+sha256sums=('8b1cc222d6cc9fa5d3aea25b58eca870200967e8f161a743ee1b051ffeee7b9e'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
