@@ -2,29 +2,32 @@
 
 pkgname=intel-npu-driver-bin
 pkgver=1.5.0.20240619_9582784383
-pkgrel=2
+pkgrel=3
 main_ver=$(echo $pkgver | cut -d'.' -f1-3)
 pkgdesc="Intel(R) NPU (Neural Processing Unit) Driver"
 arch=(x86_64)
 url="https://github.com/intel/linux-npu-driver"
 license=('MIT')
-depends=('onetbb' 'level-zero-headers' 'level-zero-loader')
+depends=('glibc' 'gcc-libs' 'openssl' 'onetbb')
 provides=('intel-driver-compiler-npu' 'intel-fw-npu' 'intel-level-zero-npu')
 source=("intel-driver-compiler-npu.deb::https://github.com/intel/linux-npu-driver/releases/download/v${main_ver}/intel-driver-compiler-npu_${pkgver//_/-}_ubuntu22.04_amd64.deb"
 	"intel-fw-npu.deb::https://github.com/intel/linux-npu-driver/releases/download/v${main_ver}/intel-fw-npu_${pkgver//_/-}_ubuntu22.04_amd64.deb"
 	"intel-level-zero-npu.deb::https://github.com/intel/linux-npu-driver/releases/download/v${main_ver}/intel-level-zero-npu_${pkgver//_/-}_ubuntu22.04_amd64.deb"
 	"LICENSE::https://raw.githubusercontent.com/intel/linux-npu-driver/main/LICENSE.md")
 noextract=("${source[@]%%::*}")
-b2sums=('SKIP' # Intel does not provide checksums for binary packages
-	'SKIP'
-	'SKIP'
-  'SKIP')
+# Intel does not provide checksums for binary packages
+b2sums=(
+    'SKIP'
+    'SKIP'
+	  'SKIP'
+    'SKIP')
 
 prepare() {
   cd "$srcdir"
   mkdir -p intel-driver-compiler-npu intel-fw-npu intel-level-zero-npu
   bsdtar -xf intel-driver-compiler-npu.deb -C intel-driver-compiler-npu
   bsdtar -xf intel-fw-npu.deb -C intel-fw-npu
+  chmod 755 -R intel-fw-npu
   bsdtar -xf intel-level-zero-npu.deb -C intel-level-zero-npu
 }
 
@@ -36,8 +39,9 @@ package() {
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   
   mkdir -p "${pkgdir}/etc/udev/rules.d"
-  echo 'SUBSYSTEM==\"accel\", KERNEL==\"accel*\", GROUP=\"render\", MODE=\"0660\"' > "${pkgdir}/etc/udev/rules.d/10-intel-npu.rules"
+  echo 'SUBSYSTEM=="accel", KERNEL=="accel*", GROUP="render", MODE="0660"' > "${pkgdir}/etc/udev/rules.d/10-intel-npu.rules"
 
   chown root:root -R "${pkgdir}/"
-  chmod 755 -R "${pkgdir}/"
+  chmod a+r "${pkgdir}/usr/lib/firmware/updates/intel/vpu/vpu_37xx_v0.0.bin"
+  chmod a+r "${pkgdir}/usr/lib/firmware/updates/intel/vpu/vpu_40xx_v0.0.bin"
 }
