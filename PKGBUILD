@@ -32,7 +32,7 @@ package() {
   # set types and make directories
   _types=('hunspell' 'hyphen' 'mythes')
   for type in "${_types[@]}"; do
-    install -dm755 "${pkgdir}"/usr/share/$type
+    install -dm755 "${pkgdir}"/usr/share/"$type"
   done
 
   _link_dir=../../lib/libreoffice/share/extensions/da_DK
@@ -53,8 +53,8 @@ package() {
   install -dm755 "${pkgdir}"/usr/share/myspell/dicts
   pushd "$pkgdir"/usr/share/myspell/dicts > /dev/null
     for type in "${_types[@]}"; do
-      for file in "${pkgdir}"/usr/share/$type/*; do
-        ln -Ls ../../$type/"$(basename $file)" .
+      for file in "${pkgdir}"/usr/share/"$type"/*; do
+        ln -Ls ../../"$type"/"$(basename "$file")" .
       done
     done
   popd > /dev/null
