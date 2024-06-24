@@ -3,9 +3,9 @@
 # NOTE: Please fill out the license field for your package! If it is unknown,
 # then please put 'unknown'.
 
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: aureumapes <auruemapes@duck.com>
 pkgname=candlelang-git
-pkgver=v1.0.0.3.gba37215
+pkgver=v1.0.1
 pkgrel=1
 pkgdesc="The latest git vcersion of Candlelang"
 arch=("x86_64" "aarch64")
@@ -18,20 +18,20 @@ sha256sums=('SKIP')
 validpgpkeys=()
 
 pkgver() {
-	cd "$srcdir/$pkgname"
+	cd $srcdir/$pkgname
 
-	version=$(git describe --tags --long | sed -e "s/-/./g")
+	version=$(git describe --tags --abbrev=0)
 
 	echo "${version}"
 }
 
 build() {
-	cd "$srcdir/$pkgname"
+	cd $srcdir/$pkgname
 	go generate
 	go build
 }
 
 package() {
-	cd "$srcdir/$pkgname"
-	install -vDm777 -t "$pkgdir/usr/bin" candle
+	cd $srcdir/$pkgname
+	install -vDm777 -t $pkgdir/usr/bin candle
 }
