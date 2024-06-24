@@ -2,7 +2,7 @@
 
 pkgname=cohesion-git
 pkgrel=3
-pkgver=1.0.5.r0.g9c3b682
+pkgver=r157.g9c3b682
 pkgdesc="Notion client for Linux"
 arch=(x86_64)
 url="https://github.com/brunofin/cohesion"
@@ -40,7 +40,7 @@ getnvm() {
 
 pkgver() {
     cd "${srcdir}/${pkgname%-git}" || exit
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
