@@ -4,7 +4,7 @@
 # Contributor: yochananmarqos
 
 pkgname=notepadnext
-pkgver=0.7
+pkgver=0.8
 pkgrel=1
 pkgdesc="Cross-platform reimplementation of Notepad++"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=("$pkgname::git+$url#tag=v$pkgver"
         'git+https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System'
         'git+https://github.com/editorconfig/editorconfig-core-qt'
         'git+https://github.com/itay-grudev/SingleApplication'
-        'git+https://gitlab.freedesktop.org/uchardet/uchardet')
+	'git+https://gitlab.freedesktop.org/uchardet/uchardet.git/')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
