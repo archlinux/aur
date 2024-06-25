@@ -1,11 +1,11 @@
-# Maintainer: Bipin Kumar <bipin@ccmb.res.in>
+# Maintainer: Bipin Kumar <kbipinkumar@pm.me>
 
 pkgname=rnalysis
 _name=RNAlysis
-pkgver=3.11
-pkgrel=1
+pkgver=3.12.0
+pkgrel=2
 pkgdesc='Python-based software for analyzing RNA sequencing data. https://doi.org/10.1101/2022.11.25.517851'
-_pkgdesc='Python-based software with GUI for analyzing RNA sequencing data'
+_pkgdesc='Python-based GUI tool for analyzing RNA sequencing data'
 arch=(any)
 url=https://github.com/GuyTeichman/RNAlysis
 license=(MIT)
@@ -49,10 +49,12 @@ depends=(
          'python-pairwisedist'
          'python-aiolimiter'
          'python-pyvis'
+         'python-nest-asyncio'
         )
 
 makedepends=(
              'python-pip'
+             'git'
              'gendesk'
              'twine'
              'python-setuptools'
@@ -70,31 +72,39 @@ makedepends=(
             'python-coverage'
              )
 
-source=(${_name}-${pkgver}.tar.gz::https://github.com/GuyTeichman/RNAlysis/archive/refs/tags/V"${pkgver}".tar.gz
-        )
+#source=(${_name}-${pkgver}.tar.gz::https://github.com/GuyTeichman/RNAlysis/archive/refs/tags/V"${pkgver}".tar.gz
+       # )
+source=("git+https://github.com/GuyTeichman/RNAlysis.git#tag=V$pkgver"
+	)
 
-sha256sums=('373c393d35397402eccf78daba05d17a4a2e6fde0f4f957ec47c790a57cdfd9c')
+#sha256sums=('03eb4e19a306e746e6f7d42bb2f77b72ec07b2cafbf54a941ff0038f72b57b16')
+sha256sums=('e724cf9dadb7f1e9ed29606f518fa46f2a61715d6345786282c8e91cfc660abe')
+
 
 prepare() {
-    cd "$_name-$pkgver"
+    #cd "$_name-$pkgver"
+    cd "$_name"
     gendesk --exec='/usr/bin/rnalysis-gui' --pkgname "$_name" --pkgdesc "$_pkgdesc" -n --icon=RNAlysis --categories=Science
 }
 
 build() {
-    cd "$_name-$pkgver"
+    #cd "$_name-$pkgver"
+    cd "$_name"
     python -m build --wheel --no-isolation
 }
 
 check(){
 
     export QT_DEBUG_PLUGINS=1
-    cd "$_name-$pkgver"
+    #cd "$_name-$pkgver"
+    cd "$_name"
     python setup.py pytest | tee check.log
 }
 
 package() {
 
-    cd "$_name-$pkgver"
+    #cd "$_name-$pkgver"
+    cd "$_name"
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
     install -Dm644 RNAlysis.desktop -t "$pkgdir"/usr/share/applications/

@@ -1,11 +1,12 @@
 pkgbase = rnalysis
 	pkgdesc = Python-based software for analyzing RNA sequencing data. https://doi.org/10.1101/2022.11.25.517851
-	pkgver = 3.11
-	pkgrel = 1
+	pkgver = 3.12.0
+	pkgrel = 2
 	url = https://github.com/GuyTeichman/RNAlysis
 	arch = any
 	license = MIT
 	makedepends = python-pip
+	makedepends = git
 	makedepends = gendesk
 	makedepends = twine
 	makedepends = python-setuptools
@@ -60,7 +61,8 @@ pkgbase = rnalysis
 	depends = python-pairwisedist
 	depends = python-aiolimiter
 	depends = python-pyvis
-	source = RNAlysis-3.11.tar.gz::https://github.com/GuyTeichman/RNAlysis/archive/refs/tags/V3.11.tar.gz
-	sha256sums = 373c393d35397402eccf78daba05d17a4a2e6fde0f4f957ec47c790a57cdfd9c
+	depends = python-nest-asyncio
+	source = git+https://github.com/GuyTeichman/RNAlysis.git#tag=V3.12.0
+	sha256sums = e724cf9dadb7f1e9ed29606f518fa46f2a61715d6345786282c8e91cfc660abe
 
 pkgname = rnalysis
