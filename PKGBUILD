@@ -9,8 +9,8 @@ _pkgname='xf86-input-wacom'
 _pkgvariantsuffix='-nosystemd'
 _vcssuffix='-git'
 pkgname="${_pkgname}${_pkgvariantsuffix}${_vcssuffix}"
-pkgver=1.2.2.r2320.20240415.418e38f
-pkgrel=1
+pkgver=1.2.2+2.r2322.20240624.f70c7de
+pkgrel=2
 pkgdesc="X.Org Wacom tablet driver. Without systemd dependency. Git checkout."
 arch=(
   'i686'
@@ -27,6 +27,7 @@ depends=(
 makedepends=(
   'git'
   'xorg-server-devel'
+  'xorg-util-macros'
 )
 conflicts=(
   "${_pkgname}"
