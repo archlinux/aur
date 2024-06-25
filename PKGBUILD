@@ -1,5 +1,5 @@
 # Maintainer: Krzysiu <KrzysiuN@proton.me>
-pkgname=HFSUtils 
+pkgname=hfsutils-git
 pkgver=r30.7c696d3
 pkgrel=1
 pkgdesc=""
@@ -9,8 +9,8 @@ license=(APPLE)
 #groups=()
 depends=(git libdispatch libbsd)
 makedepends=(cmake clang)
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=("${pkgname}")
+conflicts=("${pkgname}")
 #replaces=()
 #backup=()
 #options=()
