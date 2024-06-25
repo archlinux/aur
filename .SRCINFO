@@ -1,6 +1,6 @@
 pkgbase = bichon-git
-	pkgdesc = Tool to determine whether the X server in use is Xwayland
-	pkgver = 0+442.gd69c5e0bf9
+	pkgdesc = TUI for reviewing GitLab merge requests
+	pkgver = r461.f4c9d17
 	pkgrel = 1
 	url = https://gitlab.com/bichon-project/bichon
 	arch = x86_64

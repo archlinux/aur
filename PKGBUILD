@@ -1,10 +1,10 @@
-# Maintainer: Eric Engestrom <aur@engestrom.ch>
+# Contributor: Eric Engestrom <aur@engestrom.ch>
 
 _pkgname=bichon
 pkgname=$_pkgname-git
-pkgver=0+442.gd69c5e0bf9
+pkgver=r461.f4c9d17
 pkgrel=1
-pkgdesc="Tool to determine whether the X server in use is Xwayland"
+pkgdesc="TUI for reviewing GitLab merge requests"
 arch=(x86_64)
 url=https://gitlab.com/bichon-project/bichon
 license=(Apache)
@@ -15,14 +15,12 @@ conflicts=($_pkgname)
 provides=($_pkgname)
 
 pkgver() {
-  cd "$_pkgname" || exit 1
-  set -o pipefail
-  git describe --tags --abbrev=10 | sed 's/-/+/; s/-/./' ||
-  printf "0+%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=10 HEAD)"
+  cd "$_pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
-  cd "$_pkgname" || exit 1
+  cd "$_pkgname"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -32,6 +30,6 @@ build() {
 }
 
 package() {
-  cd "$_pkgname" || exit 1
+  cd "$_pkgname"
   GOBIN="$pkgdir"/usr/bin/ go install
 }
