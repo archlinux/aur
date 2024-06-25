@@ -1,7 +1,7 @@
 pkgbase = python-wbdata
 	pkgdesc = A library to access World Bank data
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/oliversherouse/wbdata
 	arch = any
 	license = GPL-2.0-or-later
@@ -20,8 +20,8 @@ pkgbase = python-wbdata
 	depends = python-dateparser
 	depends = python-decorator
 	optdepends = python-pandas
-	optdepends = python-mkdocs
-	optdepends = python-mkdocstrings
+	optdepends = mkdocs
+	optdepends = mkdocstrings
 	source = python-wbdata-1.0.0.tar.gz::https://github.com/oliversherouse/wbdata/archive/refs/tags/v1.0.0.tar.gz
 	sha256sums = df9044539f3c8747ab5ca94ae5c56674b8547417e8c47e515bf14efc57e29beb
 
