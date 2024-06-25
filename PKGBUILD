@@ -2,18 +2,18 @@
 
 _pkgname=perl-scripts
 pkgname=outguess-png-git
-pkgver=22.07.r7.gf6bc547
+pkgver=23.09.r133.g50403e9
 pkgrel=1
 pkgdesc="Hide arbitrary data into the pixels of a PNG image (steganographic tool)."
 arch=('any')
 url="https://github.com/trizen/${_pkgname}"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 makedepends=('git')
 
-provides=()
-conflicts=()
+provides=("outguess-png=$pkgver")
+conflicts=("outguess-png")
 
-depends=('perl>=5.20.0' 'perl-gd')
+depends=('perl>=5.20.0' 'perl-imager')
 
 source=("git+https://github.com/trizen/${_pkgname}.git")
 sha512sums=('SKIP')
@@ -25,5 +25,5 @@ pkgver() {
 
 package() {
     cd "$_pkgname"
-    install -D -m 755 "Image/outguess-png.pl" "$pkgdir/usr/bin/outguess-png.pl"
+    install -D -m 755 "Image/outguess-png-imager.pl" "$pkgdir/usr/bin/outguess-png.pl"
 }
