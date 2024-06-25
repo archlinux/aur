@@ -1,6 +1,6 @@
 pkgbase = zget-git
 	pkgdesc = Zeroconf based peer to peer file transfer.
-	pkgver = 0.11.1+18.r135.20170727.0e4309e
+	pkgver = 0.11.1+19.r136.20240613.89a4063
 	pkgrel = 1
 	url = https://github.com/nils-werner/zget
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = zget-git
 	depends = python-requests
 	depends = python-six
 	depends = python-zeroconf
-	provides = zget=0.11.1+18.r135.20170727.0e4309e
+	provides = zget=0.11.1+19.r136.20240613.89a4063
 	conflicts = zget
 	source = zget::git+https://github.com/nils-werner/zget.git
 	sha256sums = SKIP

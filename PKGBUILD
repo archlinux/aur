@@ -3,7 +3,7 @@
 
 pkgname=zget-git
 _gitname=zget
-pkgver=0.11.1+18.r135.20170727.0e4309e
+pkgver=0.11.1+19.r136.20240613.89a4063
 pkgrel=1
 pkgdesc="Zeroconf based peer to peer file transfer."
 arch=('any')
