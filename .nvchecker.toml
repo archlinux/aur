@@ -1,0 +1,5 @@
+[kubescape]
+source = "github"
+github = "kubescape/kubescape"
+prefix = "v"
+use_latest_release = true
