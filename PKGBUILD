@@ -13,9 +13,8 @@ provides=('zig=0.11.0')
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/tristanisham/zvm/archive/refs/tags/v$pkgver.tar.gz"
 )
-md5sums=(
-    'b30cfc445e2047deb00a6b32284b31c7'
-)
+
+md5sums=('a8799ced35da762284a97f080558daca')
 
 build() {
     cd $pkgname-$pkgver
