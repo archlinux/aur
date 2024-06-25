@@ -1,7 +1,7 @@
 pkgbase = darling-bin
 	pkgdesc = Darwin/macOS emulation layer for Linux
 	pkgver = 0.1.20230310
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/darlinghq/darling
 	install = darling-bin.install
 	arch = x86_64
@@ -26,6 +26,7 @@ pkgbase = darling-bin
 	depends = libxext
 	depends = libxkbfile
 	depends = libxrandr
+	optdepends = libtiff5: Library for manipulation of TIFF images
 	provides = darling
 	conflicts = darling
 	conflicts = darling-git

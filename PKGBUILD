@@ -4,7 +4,7 @@
 _pkgname=darling
 pkgname=$_pkgname-bin
 pkgver=0.1.20230310
-pkgrel=0
+pkgrel=1
 pkgdesc="Darwin/macOS emulation layer for Linux"
 arch=('x86_64')
 url="https://github.com/darlinghq/darling"
@@ -32,6 +32,7 @@ depends=(
   libxext
   libxkbfile
   libxrandr)
+optdepends=('libtiff5: Library for manipulation of TIFF images')
 source=("$url/releases/download/v${pkgver}_update_sources_11_5/${_pkgname}_${pkgver}.jammy_amd64.deb")
 sha512sums=('f15bc3b0fa5754d1dfcd5d76c1c24adbf64fd53c2ec880d85df7551a3ecb522299f58a1ad8203618a372fd3b1ccd339e6074d57066b8d55fc2b7f614f61cd9bc')
 options=('!strip')
