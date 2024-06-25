@@ -10,7 +10,7 @@ pkgname=(
   "${pkgbase}-doc"
 )
 pkgver=1.9.0+209.r4885.20240613.e0c63ec8c
-pkgrel=1
+pkgrel=2
 pkgdesc="Osmocom core library (functions relating to mobile communication standards). Compiled without systemd logging dependency."
 arch=(
   'i686'
@@ -21,6 +21,7 @@ license=('GPL-2.0-or-later')
 makedepends=(
   'autoconf'
   'automake'
+  'doxygen'  # to build the documentation.
   'gcc'
   'git'
   'libtool'
@@ -28,7 +29,6 @@ makedepends=(
   'make'
   'pkg-config'
   'python'
-  # Probably something missing for building the documentation.
 )
 source=("${_pkgname}::git+https://gitea.osmocom.org/osmocom/libosmocore.git")
 sha256sums=('SKIP')
@@ -84,12 +84,14 @@ _package_main() {
   pkgdesc="${pkgdesc}"
   arch=("${arch[@]}")
   depends=(
+    'glibc'
     'gnutls'
     'libmnl'
     'libusb'
     'liburing'
     'lksctp-tools'
     'pcsclite'
+    'sh'
     'talloc'
   )
   optdepends=(
@@ -110,8 +112,10 @@ _package_main() {
   cd "${srcdir}/${_pkgname}"
 
   make DESTDIR="${pkgdir}" install
-  msg2 "Removing documentation ..."
-  rm -R "${pkgdir}/usr/share/doc"
+  if [ -d "${pkgdir}/usr/share/doc" ]; then
+    msg2 "Removing documentation ..."
+    rm -R "${pkgdir}/usr/share/doc"
+  fi
 
   msg2 "Installing license ..."
   install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}"  COPYING
