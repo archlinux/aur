@@ -1,0 +1,19 @@
+pkgbase = fx2eeprom-git
+	pkgdesc = FX2 EZ USB eeprom reader/writer for libusb
+	pkgver = r7.9b36acd
+	pkgrel = 1
+	url = https://github.com/ribalda/fx2eeprom
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = GPL-2.0-or-later
+	makedepends = git
+	depends = glibc
+	depends = libusb
+	optdepends = fxload: fxload firmware loader. Used with udev or devfs/hotplug.
+	provides = fx2eeprom
+	conflicts = fx2eeprom
+	source = fx2eeprom-git::git+https://github.com/ribalda/fx2eeprom.git
+	sha256sums = SKIP
+
+pkgname = fx2eeprom-git
