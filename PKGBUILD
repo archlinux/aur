@@ -1,17 +1,17 @@
 # Maintainer: j.r <j.r@jugendhacker.de>
 _pkgname=caas
 pkgname=$_pkgname-git
-pkgver=r309.7353030
+pkgver=r317.7229815
 pkgrel=1
 pkgdesc="A web service for checking and visualising compliance status of XMPP servers."
 arch=('any')
 url="https://compliance.conversations.im/"
-license=('BSD')
-depends=('java-runtime=11' 'bash')
-makedepends=('git' 'java-environment=11' 'maven')
+license=('BSD-3-Clause')
+depends=('java-runtime>=11' 'bash')
+makedepends=('git' 'java-environment>=11' 'maven')
 provides=("$_pkgname-web" "$_pkgname-app")
 conflicts=("$_pkgname")
-source=('git+https://github.com/iNPUTmice/caas.git' 'caas-web' 'caas-app')
+source=('git+https://codeberg.org/iNPUTmice/caas.git' 'caas-web' 'caas-app')
 md5sums=('SKIP'
          '91c4ab642924e048946ccc867a5c2a5b'
          '0fb28640305ef611f32efad761a97810')
