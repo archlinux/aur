@@ -10,9 +10,9 @@ _opt_BUILD_PY=0
 
 # 0 for download vcpkg, set _opt_VCPKG_COMMIT_ID
 # 1 for system vcpkg, ignore _opt_VCPKG_COMMIT_ID
-_opt_SYS_VCPKG=1
-_opt_VCPKG_COMMIT_ID='#commit=14e7bb4ae24616ec54ff6b2f6ef4e8659434ea44'
-#_opt_VCPKG_COMMIT_ID=''
+_opt_SYS_VCPKG=0
+#_opt_VCPKG_COMMIT_ID='#commit=14e7bb4ae24616ec54ff6b2f6ef4e8659434ea44'
+_opt_VCPKG_COMMIT_ID=''
 
 # 0 for Sciter
 # 1 for Flutter
@@ -38,6 +38,7 @@ _dpr=('gtk3' 'xdotool' 'libxcb' 'libxfixes' 'alsa-lib' 'libva' 'libvdpau' 'libap
 depends=("${_dpr[@]}" 'pulseaudio' 'gst-plugins-base-libs')
 depends+=('hicolor-icon-theme' 'xdg-utils')
 depends+=('xdg-user-dirs')
+depends+=('glibc' 'gcc-libs' 'glib2' 'libxtst' 'libepoxy' 'gdk-pixbuf2' 'cairo' 'at-spi2-core' 'dbus' 'gstreamer' 'pango' 'libx11' 'fontconfig' 'libxkbcommon' 'libpulse')
 _mdp=('unzip' 'git' 'cmake' 'gcc' 'curl' 'wget' 'yasm' 'nasm' 'zip' 'make' 'pkg-config' 'clang') # from Readme.MD
 makedepends=("${_mdp[@]}" 'rust' 'python' 'python-yaml' 'python-toml')
 makedepends+=('ninja') # vcpkg build can use the latest ninja
@@ -50,15 +51,15 @@ source=(
   "git+${_giturl}.git"
 )
 _vcs=(
-  'https://cmake.org/files/v3.18/cmake-3.18.4-Linux-x86_64.tar.gz'
-  'ninja-linux-1.10.1.zip::https://github.com/ninja-build/ninja/releases/download/v1.10.1/ninja-linux.zip'
-  'webmproject-libvpx-v1.11.0.tar.gz::https://github.com/webmproject/libvpx/archive/v1.11.0.tar.gz'
+  #'https://cmake.org/files/v3.18/cmake-3.18.4-Linux-x86_64.tar.gz'
+  #'ninja-linux-1.10.1.zip::https://github.com/ninja-build/ninja/releases/download/v1.10.1/ninja-linux.zip'
+  #'webmproject-libvpx-v1.11.0.tar.gz::https://github.com/webmproject/libvpx/archive/v1.11.0.tar.gz'
 )
 if [ "${_opt_SYS_VCPKG}" -ne 0 ]; then
   makedepends+=('vcpkg')
   _vcs+=(
-    'libjpeg-turbo-libjpeg-turbo-2.1.4.tar.gz::https://github.com/libjpeg-turbo/libjpeg-turbo/archive/2.1.4.tar.gz'
-    'webmproject-libvpx-v1.12.0.tar.gz::https://github.com/webmproject/libvpx/archive/v1.12.0.tar.gz'
+    #'libjpeg-turbo-libjpeg-turbo-2.1.4.tar.gz::https://github.com/libjpeg-turbo/libjpeg-turbo/archive/2.1.4.tar.gz'
+    #'webmproject-libvpx-v1.12.0.tar.gz::https://github.com/webmproject/libvpx/archive/v1.12.0.tar.gz'
   )
 else
   source+=("git+https://github.com/microsoft/vcpkg${_opt_VCPKG_COMMIT_ID}")
@@ -85,19 +86,11 @@ else
   fi
 fi
 md5sums=('SKIP'
-         'f03d67965c0b747d230df09695447c14'
-         '93117b3d99986e97628df58f2471c208'
-         '82e5e527336b41281a582204db1f3457'
-         '357dc26a802c34387512a42697846d16'
-         '10cf85debdd07be719a35ca3bfb8ea64'
+         'SKIP'
          '74dc171bf2cfc1ada56b6e284adabca8'
          'a63659fb966758db9fe95e5aae89757a')
 sha256sums=('SKIP'
-            '149e0cee002e59e0bb84543cf3cb099f108c08390392605e944daeb6594cbc29'
-            '7ee7f467a1a747c5b5e02342904af9c24e84df4ca993541f1c4d0f113cab27aa'
-            '965e51c91ad9851e2337aebcc0f517440c637c506f3a03948062e3d5ea129a83'
-            'a78b05c0d8427a90eb5b4eb08af25309770c8379592bb0b8a863373128e6143f'
-            'f1acc15d0fd0cb431f4bf6eac32d5e932e40ea1186fe78e074254d6d003957bb'
+            'SKIP'
             'db6742a20626d0d2a089eb41ad61b9b2138b996679911e9c8268c1f896191f97'
             'b3a05ffca1f57afa48bd006d732969146dafa164c71390070623ba569977f9d3')
 _vcs=("${_vcs[@]%%::*}")
@@ -136,7 +129,9 @@ _prepare_vc() {
     cp -pr "${_vcp}" .
   fi
   mkdir -p 'vcpkg/downloads'
-  cp -p "${_vcs[@]}" 'vcpkg/downloads'
+  if [ "${#_vcs[@]}" -gt 0 ]; then
+    cp -p "${_vcs[@]}" 'vcpkg/downloads'
+  fi
 
   # Check commit ID
   if [ "${_opt_SYS_VCPKG}" -eq 0 ] && [ ! -z "${_opt_VCPKG_COMMIT_ID}" ]; then
@@ -181,6 +176,8 @@ _dpr_check() {
     for((f=0; f<"${#_dpr[@]}"; f++)); do
       if [ "${_dpr[f]}" != "${depends[f]}" ]; then
         echo 'Flag package out of date: Update _dpr from res/PKGBUILD/depends=()'
+        set +u
+        false
       fi
     done
   )
@@ -268,7 +265,11 @@ prepare() {
     if [ "${_opt_SYS_FLUTTER}" -ne 0 ]; then
       set +u; msg2 'Copy /opt/flutter'; set -u
       rm -rf 'flutter'
-      cp -pr '/opt/flutter' .
+      if [ -d '/opt/flutter' ]; then
+        cp -pr '/opt/flutter' .
+      else
+        cp -pr '/usr/lib/flutter' .
+      fi
     fi
     if [ ! -d 'flutter_rust_bridge' ]; then
       ln -s "flutter_rust_bridge-${_FRBVER}" 'flutter_rust_bridge'
@@ -321,18 +322,19 @@ build() {
     dart pub global activate ffigen --version 5.0.1
     pushd "${srcdir}/flutter_rust_bridge/frb_codegen"; nice cargo install --path . ; popd
     pushd flutter ; flutter clean; flutter pub get ; popd
-    ~/.cargo/bin/flutter_rust_bridge_codegen --rust-input ./src/flutter_ffi.rs --dart-output ./flutter/lib/generated_bridge.dart
+    local _CGdefault=~/.cargo
+    "${CARGO_HOME:-${_CGdefault}}"/bin/flutter_rust_bridge_codegen --rust-input ./src/flutter_ffi.rs --dart-output ./flutter/lib/generated_bridge.dart
     if [ "${_opt_BUILD_PY}" -ne 0 ]; then
       nice ./build.py --hwcodec --flutter
     else
       git checkout src/ui/common.tis
-      if ! \
+      #if ! \
       nice cargo build --features hwcodec,flutter --lib --release
-      then
-        set +u; msg2 'Move patch, get out the way (dynamic fix for unnecessary __builtin_va_list)'; set -u
-        sed -E -e '/__builtin_va_list/ s:^:// :g' -i target/release/build/pam-sys-*/out/bindings.rs
-        nice cargo build --features hwcodec,flutter --lib --release
-      fi
+      #then
+      #  set +u; msg2 'Move patch, get out the way (dynamic fix for unnecessary __builtin_va_list)'; set -u
+      #  sed -E -e '/__builtin_va_list/ s:^:// :g' -i target/release/build/pam-sys-*/out/bindings.rs
+      #  nice cargo build --features hwcodec,flutter --lib --release
+      #fi
       pushd flutter
       nice flutter build linux --release
       popd
