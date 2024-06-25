@@ -6,15 +6,15 @@
 _pkgname=upower
 pkgname="${_pkgname}-nocritical-nosystemd-git"
 pkgver=1.90.4+10.r1708.20240523.669a1c2
-pkgrel=1
-pkgdesc="Abstraction for enumerating power devices, listening to device events and querying history and statistics (with a patch to disable low battery action). Built without systemd dependencies. Latest Git checkout."
+pkgrel=2
+pkgdesc="Abstraction for enumerating power devices, listening to device events and querying history and statistics. Built without systemd dependencies. Latest Git checkout."
 arch=(
   'i686'
   'x86_64'
 )
 url="http://upower.freedesktop.org"
 license=(
-  'GPL2'
+  'GPL-2.0-or-later'
 )
 depends=(
   'gcc-libs'
