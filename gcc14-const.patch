@@ -1,0 +1,12 @@
+diff --unified --recursive --text a/mariadb/mariadb_cursor.c b/mariadb/mariadb_cursor.c
+--- a/mariadb/mariadb_cursor.c	2024-06-25 21:05:52.292093978 +0200
++++ b/mariadb/mariadb_cursor.c	2024-06-25 21:06:22.698913747 +0200
+@@ -1125,7 +1125,7 @@
+ {
+     int rc;
+     MYSQL *db;
+-    const char *statement;
++    char *statement;
+     size_t statement_len= 0;
+ 
+     MARIADB_CHECK_CONNECTION(self->connection, NULL);
