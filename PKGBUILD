@@ -4,8 +4,8 @@
 
 _pkgname=pandoc
 pkgname=$_pkgname-sile-git
-_pkgver=3.2
-pkgver=3.2.r14.g9c87deb
+_pkgver=3.2.1
+pkgver=3.2.1.r11.g85463e389
 pkgrel=1
 pkgdesc='Conversion between markup formats (sile fork, static build)'
 url='https://pandoc.org'
@@ -35,17 +35,21 @@ sha256sums=('SKIP')
 
 prepare() {
 	cd "$pkgname"
-	stack config set resolver lts-22.19 # ghc-9.6.4
-	echo 'compiler: ghc-9.6.5' >> stack.yaml
+	stack config set resolver lts-22.22 # ghc-9.6.5
 }
 
 pkgver() {
 	cd "$pkgname"
-	git tag --force \
-		"$(awk -F' *: *' '$1 ~ /^[Vv]ersion/ { print $2 }' *.cabal)" \
-		"$(git blame -p -L /^[Vv]ersion:/,+1 *.cabal | head -n1 | cut -d' ' -f1)"
-	git describe --long --tags --abbrev=7 --always HEAD --match "[0-9].[0-9]*" |
-		sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --tags --long --match 'pandoc-cli-*' \
+		| sed 's/^pandoc-cli-//;s/^v//' \
+		| awk -F- \
+			'BEGIN { OFS="" }
+			{
+				revcount=$(NF-1)
+					sha=$NF
+					NF=(NF-2)
+					printf "%s.r%s.%s\n", $0, revcount, sha
+			}'
 }
 
 build() {
