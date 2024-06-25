@@ -5,7 +5,7 @@
 
 pkgname=antlr2
 pkgver=2.7.7
-pkgrel=12
+pkgrel=13
 arch=('x86_64')
 url="https://www.antlr2.org/"
 pkgdesc='Language recognition tool providing a framework to build grammatical parsers'
@@ -42,7 +42,7 @@ package() {
   cd antlr-${pkgver}/lib/cpp
   make prefix="${pkgdir}/usr" install
 
-  install -Dm644 ../../antlr/antlr.jar "${pkgdir}"/usr/share/java/antlr2.jar
+  install -Dm644 "${srcdir}"/antlr-${pkgver}/antlr.jar "${pkgdir}"/usr/share/java/antlr2.jar
   install -Dm755 "${srcdir}"/runantlr2.sh "${pkgdir}"/usr/bin/runantlr2
   install -Dm644 "${srcdir}"/antlr-${pkgver}/LICENSE.txt \
     "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
