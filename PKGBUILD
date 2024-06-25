@@ -1,12 +1,13 @@
 # Maintainer: Miguel Revilla <yo at miguelrevilla dot com>
 
 pkgname=libodb-boost
-pkgver=2.5.0b25
+pkgver=2.5.0b27
+_pkgver=2.5.0-b.27
 pkgrel=1
 pkgdesc="The ODB boost profile library"
 url="https://www.codesynthesis.com/products/odb/"
 arch=('i686' 'x86_64')
-depends=('build2' 'boost-libs')
+depends=('build2' 'boost-libs' 'libodb')
 options=('!libtool')
 license=('GPL3')
 
@@ -21,12 +22,11 @@ build() {
 	config.cxx=${CXX:-g++} \
 	config.cc.coptions="-O3 $CXXFLAGS" \
 	config.bin.lib=shared \
-	config.install.root=${pkgdir}/usr
+	config.install.root=${pkgdir}/usr \
+	config.install.relocatable=true
 
 	cd gcc-${GPPVER}
-	bpkg add https://pkg.cppget.org/1/beta
-	bpkg fetch --trust-yes
-	bpkg build --trust-yes ${pkgname} ?sys:libodb
+	bpkg build --trust-yes ${pkgname}/${_pkgver}@https://pkg.cppget.org/1/beta ?sys:libodb
 }
 
 package() {
@@ -35,8 +35,6 @@ package() {
 	cd "${srcdir}/${pkgname}-${pkgver}/gcc-${GPPVER}"
 
 	bpkg install ${pkgname}
-
-	for f in ${pkgdir}/usr/lib/pkgconfig/*.pc; do sed -i "s|${pkgdir}||" ${f}; done
 
 	mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}/
 	mv ${pkgdir}/usr/share/doc/${pkgname}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/
