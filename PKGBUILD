@@ -1,12 +1,12 @@
 # Maintainer: Mazhar Hussain <realmazharhussain@gmail.com>
 pkgname=gdm-tools-git
-pkgver=1.1+3+g8428fac
+pkgver=1.2.r7.g4294817
 pkgrel=1
 epoch=1
-pkgdesc="Tools(set-gdm-theme,gnomeconf2gdm) for theming/personlizing Gnome Login Manager (GDM)"
+pkgdesc="Tools for theming/personalizing Gnome Login Manager (GDM)"
 arch=(any)
 url="https://github.com/realmazharhussain/gdm-tools"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('bash' 'dconf' 'glib2' 'gdm')
 makedepends=('git')
 provides=('gdm-tools' 'set-gdm-theme' 'gnomeconf2gdm')
@@ -16,8 +16,8 @@ source=("$pkgname"::'git+https://github.com/realmazharhussain/gdm-tools.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
-  git describe --tags --long | sed -e 's/^v//' -e 's/-/+/g'
+  cd "$pkgname"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
