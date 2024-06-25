@@ -5,9 +5,9 @@
 
 _pkgname=upower
 pkgname="${_pkgname}-nocritical-nosystemd-git"
-pkgver=1.90.4+6.r1704.20240424.544eba5
-pkgrel=2
-pkgdesc="Abstraction for enumerating power devices, listening to device events and querying history and statistics (With a patch to disable low battery action). Built without systemd dependencies. Latest Git checkout."
+pkgver=1.90.4+10.r1708.20240523.669a1c2
+pkgrel=1
+pkgdesc="Abstraction for enumerating power devices, listening to device events and querying history and statistics (with a patch to disable low battery action). Built without systemd dependencies. Latest Git checkout."
 arch=(
   'i686'
   'x86_64'
@@ -24,6 +24,7 @@ depends=(
   'libusb'
 )
 makedepends=(
+  'cmp_version'
   'docbook-xsl'
   'git'
   'gobject-introspection'
@@ -60,23 +61,19 @@ conflicts=(
 backup=(
   'etc/UPower/UPower.conf'
 )
+install="upower-nocritical.install"
 source=(
   "${_pkgname}::git+https://gitlab.freedesktop.org/upower/upower.git"
-  "0001-Add-a-critical-action-Ignore.patch"
+  "$install"
 )
 sha256sums=(
   "SKIP"                                                              # Upstream source
-  "04b87837be843ebd07a1d39ae95f77e883208fef0145fa3086690fdb61b81c10"  # 0001-Add-a-critical-action-Ignore.patch
+  "1ac1dc94cde495c3d2e4a1ca449db23195fab2b0b5e053d3beb2c3c9fde219c6"  # $install
 )
 options+=('emptydirs')
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
-
-  for _patch in "${srcdir}/0001-Add-a-critical-action-Ignore.patch"; do
-    msg2 "Applying patch '$(basename "${_patch}")'"
-    patch -N -p1 --follow-symlinks -i "${_patch}"
-  done
 
   git log > "${srcdir}/git.log"
 }

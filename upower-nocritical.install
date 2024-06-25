@@ -1,0 +1,37 @@
+_print_risky_action_guard_note()
+{
+  printf '\n'
+  printf '%s\n' "======== Update note for upower-nocritical (ACTION REQUIRED) ========"
+  printf '\n'
+  printf '%s\n' "Upstream has now added support for the option"
+  printf '%s\n' ""
+  printf '%s\n' "    CriticalPowerAction=Ignore"
+  printf '%s\n' ""
+  printf '%s\n' "in /etc/UPower/UPower.conf. No patch anymore is needed."
+  printf '%s\n' "(See https://gitlab.freedesktop.org/upower/upower/-/merge_requests/224.)"
+  printf '%s\n' ""
+  printf '%s\n' "However, to be able to use it, a guard setting has been added too"
+  printf '%s\n' "which needs to be set:"
+  printf '%s\n' ""
+  printf '%s\n' "    AllowRiskyCriticalPowerAction=true"
+  printf '%s\n' ""
+  printf '%s\n' "needs to be set in /etc/UPower/UPower.conf, otherwise HybridSleep"
+  printf '%s\n' "will be executed."
+  printf '%s\n' ""
+  printf '%s\n' "You probably need to adjust /etc/UPower/UPower.conf in order to"
+  printf '%s\n' "use CriticalPowerAction=Ignore or CriticalPowerAction=Suspend."
+  printf '\n'
+  printf '%s\n' "============= End of Update note for upower-nocritical. ============="
+  printf '\n'
+}
+
+post_upgrade() {
+  _newver="$1"
+  _oldver="$2"
+
+  if [ "$(cmp-version "${_oldver}" '1.90.4+10.r1708.20240523' )" -eq "-1" ]; then  # Take action only if old version is old enough,
+    if [ "$(cmp-version '1.90.4+6.r1704.20240424' "${_newver}")" -eq "-1" ]; then  # take action only if new version is new enough. (We narrow down: Somewhere in between here the upstream change happened.)
+      _print_risky_action_guard_note
+    fi
+  fi
+}
