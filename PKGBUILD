@@ -9,7 +9,7 @@ pkgver=2.0.13
 pkgrel=1
 pkgdesc="A minimalistic libc subset for use with initramfs"
 arch=(x86_64 aarch64 i686)
-url="https://mirrors.kernel.org/pub/linux/libs/klibc/"
+url="https://mirrors.kernel.org/pub/linux/libs/klibc"
 license=('GPL')
 depends=(perl)
 makedepends=(linux-api-headers)
@@ -18,7 +18,7 @@ validpgpkeys=(
   'AC2B29BD34A6AFDDB3F68F35E7BFC8EC95861109' # Ben Hutchings <bwh@kernel.org>
 )
 source=(
-  "https://mirrors.kernel.org/pub/linux/libs/klibc/2.0/${pkgname}-${pkgver}.tar."{xz,sign}
+  "$url/2.0/${pkgname}-${pkgver}.tar."{xz,sign}
 )
 sha256sums=('d673a294f742d59368222ff5c38462d81098c55063799de6fb8a7ba3d4af0436'
             'SKIP')
