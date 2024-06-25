@@ -1,5 +1,5 @@
 pkgbase = bunsen-utilities-git
-	pkgdesc = Collection of utility scripts
+	pkgdesc = Small scripts to use with BunsenLabs.
 	pkgver = r741.28dd596
 	pkgrel = 3
 	url = https://github.com/BunsenLabs/bunsen-utilities

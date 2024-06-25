@@ -3,7 +3,7 @@
 pkgname=bunsen-utilities-git
 pkgver=r741.28dd596
 pkgrel=3
-pkgdesc="Collection of utility scripts"
+pkgdesc="Small scripts to use with BunsenLabs."
 arch=('any')
 url="https://github.com/BunsenLabs/bunsen-utilities"
 license=('GPL-3.0-or-later')
