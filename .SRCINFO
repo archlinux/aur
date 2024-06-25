@@ -1,27 +1,30 @@
 pkgbase = subliminal
 	pkgdesc = Python library and CLI tool for searching and downloading subtitles.
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/Diaoul/subliminal
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = python-setuptools
-	depends = python-guessit>3.0.0
-	depends = python-babelfish>=0.5.2
-	depends = python-enzyme>=0.4.1
+	depends = python-guessit>=3.0.0
+	depends = python-babelfish>=0.6.1
+	depends = python-enzyme>=0.5.0
+	depends = python-platformdirs>=3
 	depends = python-beautifulsoup4>=4.4.0
+	depends = python-pysubs2>=1.7
 	depends = python-requests>=2.0
-	depends = python-click>=4.0
-	depends = python-dogpile.cache>=0.6.0
-	depends = python-stevedore>=1.20.0
-	depends = python-chardet>=2.3.0
-	depends = python-pysrt>=1.0.1
-	depends = python-six>=1.9.0
-	depends = python-appdirs>=1.3
+	depends = python-click>=8.0
+	depends = python-click-option-group>=0.5.0
+	depends = python-dogpile.cache>=1.0
+	depends = python-stevedore>=3.0
+	depends = python-chardet>=5.0
+	depends = python-srt>=3.5
+	depends = python-tomli>=2
 	depends = python-rarfile>=2.7
-	depends = python-pytz>=2012c
-	source = https://files.pythonhosted.org/packages/source/s/subliminal/subliminal-2.1.0.tar.gz
-	md5sums = bd1193a10f2229ef04883977817930ae
+	source = https://files.pythonhosted.org/packages/source/s/subliminal/subliminal-2.2.0.tar.gz
+	sha256sums = f103380d1e2ef09b7cb194beff5bf4a19492d5f3bbf336dec03a7451c992a593
+	sha512sums = 5df2074c422885535cf6d12a8f561015fd22e0538bce2098060857b2022935a8edd776713434c7c542973e9ef3606bebc6d7b540f8fec61e61a7e5cf8c5803cb
+	b2sums = 6a54666c7366b35134f782f0a96d134f95b9905e5342ebe242381dcafee9b4c2ed6029c4f578e75b6329015872e4806e77a77e5054966c4b1ec40ce6b9643027
 
 pkgname = subliminal
