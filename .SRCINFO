@@ -1,6 +1,6 @@
 pkgbase = postsrsd-git
 	pkgdesc = Provides the Sender Rewriting Scheme (SRS) via TCP-based lookup tables for Postfix
-	pkgver = 2.0.9+8.r205.20240506.g639eaea
+	pkgver = 2.0.9+9.r206.20240611.g240af96
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/roehling/postsrsd
@@ -15,7 +15,7 @@ pkgbase = postsrsd-git
 	depends = bash
 	depends = glibc
 	depends = openssl
-	provides = postsrsd=2.0.9+8.r205.20240506.g639eaea
+	provides = postsrsd=2.0.9+9.r206.20240611.g240af96
 	conflicts = postsrsd
 	backup = etc/postsrsd/postsrsd.conf
 	backup = etc/default/postsrsd
