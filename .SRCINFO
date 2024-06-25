@@ -1,0 +1,17 @@
+pkgbase = HFSUtils-git
+	pkgver = r30.7c696d3
+	pkgrel = 1
+	url = https://github.com/GramNaTosterze/hfs
+	arch = x86_64
+	license = APPLE
+	makedepends = cmake
+	makedepends = clang
+	depends = git
+	depends = libdispatch
+	depends = libbsd
+	provides = HFSUtils
+	conflicts = HFSUtils
+	source = HFSUtils-git::git+https://github.com/GramNaTosterze/hfs
+	sha256sums = SKIP
+
+pkgname = HFSUtils-git
