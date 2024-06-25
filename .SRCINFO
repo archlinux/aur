@@ -1,6 +1,6 @@
 pkgbase = suscan-git
 	pkgdesc = SUScan is a graphical signal analysis tool
-	pkgver = r1149.390fb68
+	pkgver = r1190.23e97c6
 	pkgrel = 1
 	url = https://github.com/BatchDrake/suscan
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = suscan-git
 	optdepends = libvolk
 	provides = suscan
 	conflicts = suscan
-	source = suscan-git::git+https://github.com/BatchDrake/suscan.git#branch=develop
+	source = suscan-git::git+https://github.com/BatchDrake/suscan.git
 	md5sums = SKIP
 
 pkgname = suscan-git

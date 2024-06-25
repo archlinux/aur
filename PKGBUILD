@@ -3,7 +3,7 @@
 # Contributor: Julio Diez <juliosddr@gmail.com>
 
 pkgname=suscan-git
-pkgver=r1149.390fb68
+pkgver=r1190.23e97c6
 pkgrel=1
 pkgdesc="SUScan is a graphical signal analysis tool"
 arch=("any")
@@ -14,7 +14,7 @@ makedepends=("git" "cmake")
 optdepends=("libvolk")
 provides=("suscan")
 conflicts=("suscan")
-source=("$pkgname::git+https://github.com/BatchDrake/suscan.git#branch=develop")
+source=("$pkgname::git+https://github.com/BatchDrake/suscan.git")
 md5sums=('SKIP')
 
 pkgver() {
