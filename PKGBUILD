@@ -4,7 +4,7 @@
 
 _pkgname='audio-offset-finder'
 pkgname="${_pkgname}-git"
-pkgver=0.5.3.r160.20240516.23e6339
+pkgver=0.5.4.r184.20240620.8c0a128
 pkgrel=1
 pkgdesc="A simple tool for finding the offset of an audio file within another file."
 arch=('any')
