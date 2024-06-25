@@ -1,5 +1,5 @@
 pkgbase = upower-nocritical-nosystemd-git
-	pkgdesc = Transitional package to switch to 'upower-nosystemd-git', since the Ingore action is now included in upstream git.
+	pkgdesc = Transitional package to switch to 'upower-nosystemd-git', since the Ingore action is now included in upstream git. This package can be deleted now.
 	pkgver = 1.90.4+10.r1708.20240523.669a1c2
 	pkgrel = 3
 	url = http://upower.freedesktop.org
