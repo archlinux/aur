@@ -1,5 +1,4 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
-# Co-Maintainer: alphazo <archlinux-1229 at notracking dot email>
 pkgname=proton-mail-bin
 _pkgver=1.0.4-beta
 pkgver=${_pkgver//-/.}
@@ -23,7 +22,7 @@ optdepends=(
   'xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)'
 )
 provides=("${pkgname%-bin}")
-conflicts=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}" 'protonmail-desktop')
 source=("ProtonMail-desktop-${_pkgver}.deb::https://proton.me/download/mail/linux/ProtonMail-desktop-beta.deb")
 sha256sums=('298feb8e2268cce416dbb158963cb937554ab8aae8273dd5e3ce433da1f4d496')
 
