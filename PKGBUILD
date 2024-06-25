@@ -3,7 +3,7 @@
 _pkgname="baca-ereader"
 pkgname="$_pkgname-git"
 pkgver=0.1.17.r0.g13ee794
-pkgrel=1
+pkgrel=2
 pkgdesc="TUI Ebook Reader"
 url="https://github.com/wustho/baca"
 license=("GPL-3.0-only")
@@ -18,7 +18,6 @@ conflicts=(
 depends=(
   'python-appdirs'
   'python-beautifulsoup4'
-  'python-fuzzywuzzy'
   'python-peewee'
   'python-rich'
 
@@ -27,6 +26,7 @@ depends=(
   # 'python-kdtree'
   'python-markdownify'
   'python-textual'
+  'python-thefuzz'
 )
 makedepends=(
   'git'
@@ -93,7 +93,4 @@ package() {
   install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" "README.epub"
   install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" "$srcdir/baca_fit.png"
   install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" "$srcdir/pretty_yes_no_cap.png"
-
-  # license
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" "LICENSE"
 }
