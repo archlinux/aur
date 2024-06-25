@@ -1,19 +1,23 @@
-# Maintainer: TeaHouseLab(aka. Tsingkwai) <tsingkwai at ruzh dot top>
-pkgname="ctcontainer"
-pkgver="22"
-pkgrel="22"
-pkgdesc="A container manager which enable you to experience otherlinux distro with xorg/xwayland and pulseaudio support"
-arch=("x86_64")
-url="https://ruzhtw.top/pages/projects/CenterLinux/ctcontainer"
+# Contributor: TeaHouseLab(aka. Tsingkwai) <tsingkwai at ruzh dot top>
+
+pkgname=ctcontainer
+pkgver=r3.11ee89c
+pkgrel=1
+pkgdesc="container manager which enable you to experience otherlinux distro with xorg/xwayland and pulseaudio support"
+arch=("any")
+url="https://github.com/kwaitsing/ctcontainer"
 depends=("fish" "sudo" "util-linux" "xorg-xhost" "pulseaudio")
-license=("GPL-3.0 License")
-provides=("ctcontainer")
-source=("https://cdngit.ruzhtw.top/ctcontainer/ctcontainer")
+makedepends=("git")
+license=("GPL-3.0-only")
+source=(git+https://github.com/kwaitsing/ctcontainer.git)
 sha256sums=("SKIP")
+
+pkgver() {
+	cd "$pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
 package() {
-	mkdir -p "${pkgdir}/usr/bin"
-	cp "${srcdir}/ctcontainer" "${pkgdir}/usr/bin/ctcontainer"
-	chmod +x "${pkgdir}/usr/bin/ctcontainer"
-	rm ../ctcontainer
-	}
+	install -Dm755 ${pkgname}/ctcontainer -t "${pkgdir}"/usr/bin/
+}
 
