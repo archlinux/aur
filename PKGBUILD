@@ -2,9 +2,9 @@
 # Contributor: Keeyou <keeyou-cn@outlook.com>
 
 pkgname=yass-proxy-qt5
-pkgver=1.11.2
+pkgver=1.11.3
 pkgrel=1
-_pkgver=1.11.2
+_pkgver=1.11.3
 _pkgrel=1
 pkgdesc="lightweight http/socks proxy"
 arch=(x86_64)
@@ -18,7 +18,7 @@ provides=(yass-proxy)
 conflicts=(yass-proxy-git yass-proxy yass-proxy-gtk3 yass-proxy-qt6)
 source=("https://github.com/Chilledheart/yass/releases/download/${_pkgver}/yass-${_pkgver}.tar.bz2"
         )
-sha256sums=('51e59bb5feecbd4ff79dbaefbbf62836421eb259b5c2bba234f7b5f1a8128b02')
+sha256sums=('f20af0321432e5e50ba3855e555fa02529cc032111c82f4670e711bad7372a2e')
 
 prepare() {
   SRC_DIR="${srcdir}/yass-${_pkgver}"
