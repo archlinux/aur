@@ -1,6 +1,6 @@
 pkgbase = gsa
 	pkgdesc = Greenbone Security Assistant
-	pkgver = 23.0.0
+	pkgver = 23.1.0
 	pkgrel = 1
 	url = https://github.com/greenbone/gsa
 	arch = x86_64
@@ -19,10 +19,10 @@ pkgbase = gsa
 	depends = libmicrohttpd
 	depends = openvas-scanner
 	backup = etc/default/gsad
-	source = gsa-23.0.0.tar.gz::https://github.com/greenbone/gsa/archive/v23.0.0.tar.gz
+	source = gsa-23.1.0.tar.gz::https://github.com/greenbone/gsa/archive/v23.1.0.tar.gz
 	source = gsad.service
 	source = gsad
-	sha512sums = d2dfe12777a8b7610ebc1e7eceb079d38ae1f83085c5a411c115950e55254c82151f77ce16d12342d40b457999f50348a48e66f236a83d145697f68ef9caf993
+	sha512sums = 4055fb847dc364886d29ea2b013605cd9b61e4700b5a7629cf239a65d61c07beb56b405bf616d7406d68e060ec7da46b017845a41c765802ab2466347ca36ded
 	sha512sums = 6c65e3ea08b427cd1773c346b054b7b1a3e95d06d6d4070603e97f92b59f9dd465e94992cd6b5927192bc9b859c1268d1cda8d92d4067264389a7a0a578b9d30
 	sha512sums = 27542d6e194d8fe4ef37364f387293d69f4c7002f2b380b8a21ae995122531ccbce6ca689f0768c463252d33cf0b1735343cbe61eac51947fbec0e05a45e1d1b
 
