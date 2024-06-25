@@ -1,7 +1,7 @@
 # Maintainer: Moabeat <moabeat@berlin.de>
 
 pkgname=beaver-notes
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
 epoch=
 pkgdesc="A privacy-focused, cross-platform note-taking application."
@@ -14,7 +14,7 @@ makedepends=('asar' 'npm' 'yarn' 'nodejs' 'libxcrypt-compat')
 provides=('beaver-notes')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Daniele-rolli/Beaver-Notes/archive/refs/tags/$pkgver.tar.gz"
         "beaver-notes.desktop")
-sha256sums=("ec8bf4038172a37263e068bba56322320d6da89570a3cb93e4bddd809c2c75cb"
+sha256sums=("baa830f3fe71c3b49e26c9d932132c7d05ae1dd7c26118410190e13e45c8f314"
             "88c929e920a36084f5257c6d77eee2e75e6b27938c52205c55c25e08bfe89420")
 
 prepare() {
