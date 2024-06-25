@@ -2,12 +2,13 @@
 
 pkgbase = geant4
 	pkgdesc = A simulation toolkit for particle physics interactions.
-	pkgver = 11.2.1
+	pkgver = 11.2.2
 	pkgrel = 1
 	url = http://geant4.cern.ch/
 	install = geant4.install
 	arch = x86_64
 	license = custom: http://geant4.cern.ch/license/
+	depends = clhep
 	depends = cmake>=3.16
 	depends = xerces-c>=3
 	depends = qt6-base
@@ -34,9 +35,9 @@ pkgbase = geant4
 	optdepends = geant4-saiddata: Data files from evaluated cross-sections in SAID data-base
 	conflicts = geant4_devel
 	options = !emptydirs
-	source = http://geant4-data.web.cern.ch/releases/geant4-v11.2.1.tar.gz
+	source = http://geant4-data.web.cern.ch/releases/geant4-v11.2.2.tar.gz
 	source = geant4.install
-	sha256sums = 835db6543d5cb2e801675958965be96877f66d6907bb521954b598b785deae5e
+	sha256sums = d24f65735b8a0a039c00f9434991e99ef119b86c510d0f2ab21155db82a3491d
 	sha256sums = 0eae153900d995603b0b465c9f17225ba76dd8118377507916fc709360482058
 
 pkgname = geant4

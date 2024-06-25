@@ -1,6 +1,6 @@
 # Maintainer: Luis Sarmiento < Luis.Sarmiento-ala-nuclear.lu.se >
 pkgname='geant4'
-pkgver=11.2.1
+pkgver=11.2.2
 _pkgver=v${pkgver}
 pkgrel=1
 pkgdesc="A simulation toolkit for particle physics interactions."
@@ -40,7 +40,7 @@ options=('!emptydirs')
 install="${pkgname}.install"
 source=("http://geant4-data.web.cern.ch/releases/${pkgname}-${_pkgver}.tar.gz"
         "${pkgname}.install")
-sha256sums=('835db6543d5cb2e801675958965be96877f66d6907bb521954b598b785deae5e'
+sha256sums=('d24f65735b8a0a039c00f9434991e99ef119b86c510d0f2ab21155db82a3491d'
             '0eae153900d995603b0b465c9f17225ba76dd8118377507916fc709360482058')
 
 ## Remove this if you want to keep an even smaller package
