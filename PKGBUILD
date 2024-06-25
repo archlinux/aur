@@ -1,5 +1,4 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
-# Co-Maintainer: alphazo <archlinux-1229 at notracking dot email>
 pkgname=proton-mail
 pkgver=1.0.4
 pkgrel=1
