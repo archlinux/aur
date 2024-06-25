@@ -1,7 +1,7 @@
 # Contributor: Mateusz Galazyn <carbolymer at gmail.com>
 
 pkgrel=1
-pkgver=r643.ee93f79
+pkgver=r669.0785d87
 pkgname=zsh-zim-git
 pkgdesc="ZIM - Zsh IMproved"
 url="https://github.com/zimfw/zimfw"
@@ -60,10 +60,12 @@ package() {
   cp -f zshrc "$pkgdir/etc/zsh/zshrc"
 
   # patch zwc file with hardcoded paths
-  patching=('login_init.zsh' 'init.zsh')
+  patching=('init.zsh')
+  # use ${HOME} in needle used in patching
+  pkgdir_replaced_home="${pkgdir/$HOME/\${HOME\}}"  
   for entry in "${patching[@]}"; do
     echo "Patching build paths occurrence in: ${entry}"
-    sed -i "s/${pkgdir//\//\\/}//g" "${ZIM_HOME}/${entry}"
+    sed -i "s/${pkgdir_replaced_home//\//\\/}//g" "${ZIM_HOME}/${entry}"
   done
   ( cd "${ZIM_HOME}" && patch < "${startdir}/zimfw.zsh.patch" )
   find ${ZIM_HOME} -iname "*.old" -type f -exec rm -f \{\} \;
