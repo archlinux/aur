@@ -42,7 +42,7 @@ _install_static=true ## .a libs which may be required for external programs such
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the custompatches folder
 ## manually if you wish to use them alongside your own patches.
 ## also recommended to set _desired_wine_commit and _desired_staging_commit if this is used
-_custompatches=false
+_custompatches=true
 
 ################################################################################################################################
 ################################################################################################################################
@@ -152,6 +152,7 @@ makedepends=(autoconf bison ccache perl fontforge flex
   sane
   gsm
   vulkan-headers
+  libvulkan.so=1-64
   samba
   opencl-headers
   nasm
@@ -185,7 +186,7 @@ optdepends=(
 
 if [ "${wow64build}" != "true" ]; then
   depends+=(lib32-fontconfig lib32-lcms2 lib32-libxml2 lib32-libxcursor lib32-libxrandr lib32-libxdamage lib32-libxi lib32-gettext lib32-freetype2 lib32-glu lib32-libsm lib32-gcc-libs lib32-libpcap lib32-faudio)
-  makedepends+=(lib32-giflib lib32-libpng lib32-gnutls lib32-libxinerama lib32-libxcomposite lib32-libxmu lib32-libxxf86vm lib32-libldap lib32-mpg123 lib32-openal lib32-v4l-utils lib32-libpulse lib32-alsa-lib lib32-libxcomposite lib32-mesa lib32-mesa-libgl lib32-opencl-icd-loader lib32-libxslt lib32-sdl2 lib32-libcups)
+  makedepends+=(libvulkan.so=1-32 lib32-giflib lib32-libpng lib32-gnutls lib32-libxinerama lib32-libxcomposite lib32-libxmu lib32-libxxf86vm lib32-libldap lib32-mpg123 lib32-openal lib32-v4l-utils lib32-libpulse lib32-alsa-lib lib32-libxcomposite lib32-mesa lib32-mesa-libgl lib32-opencl-icd-loader lib32-libxslt lib32-sdl2 lib32-libcups)
   optdepends+=(lib32-giflib lib32-libpng lib32-libldap lib32-gnutls lib32-mpg123 lib32-openal lib32-v4l-utils lib32-libpulse lib32-alsa-plugins lib32-alsa-lib lib32-libjpeg-turbo lib32-libxcomposite lib32-libxinerama lib32-opencl-icd-loader lib32-libxslt lib32-gst-plugins-base-libs lib32-vkd3d lib32-sdl2)
 fi
 
