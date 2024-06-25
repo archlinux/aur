@@ -1,5 +1,5 @@
 pkgbase = nginx-quic-libressl
-	pkgdesc = Lightweight HTTP server and IMAP/POP3 proxy server, HTTP/3 QUIC branch
+	pkgdesc = Lightweight HTTP server and IMAP/POP3 proxy server
 	pkgver = 1.26.1
 	pkgrel = 1
 	url = https://nginx.org
@@ -35,7 +35,7 @@ pkgbase = nginx-quic-libressl
 	source = logrotate
 	sha256sums = de8ceed587130b2957bc55f666d361e818db95ef9038445e9f390fff44ca6555
 	sha256sums = 7b031dac64a59eb6ee3304f7ffb75dad33ab8c9d279c847f92c89fb846068f97
-	sha256sums = 05fdc0c0483410944b988d7f4beabb00bec4a44a41bd13ebc9b78585da7d3f9b
+	sha256sums = adb4a2b5176be3a3bf39666584f7a0a7f10b1b1aca927c189c1910c789d6d13c
 	sha256sums = b9af19a75bbeb1434bba66dd1a11295057b387a2cbff4ddf46253133909c311e
 
 pkgname = nginx-quic-libressl
