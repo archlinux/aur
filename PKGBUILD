@@ -1,13 +1,13 @@
-# Maintainer: Integral <integral@murena.io>
+# Maintainer: Integral <integral@member.fsf.org>
 
 pkgname=qefientrymanager
 _srcname=QEFIEntryManager
 pkgver=0.3.0
-pkgrel=4
+pkgrel=6
 pkgdesc="A userspace cross-platform EFI boot entry management GUI App based on Qt"
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/Inokinoki/${_srcname}"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('qt6-base' 'qt6-wayland' 'efivar' 'hicolor-icon-theme')
 makedepends=('git' 'cmake')
 source=(
