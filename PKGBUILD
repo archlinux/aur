@@ -33,7 +33,7 @@ esac
 pkgname="${_pkgname}-${_pkgvariant}-git"
 epoch=0
 pkgver=4.3.0+10.r13411.20240622.e67044c8e
-pkgrel=1
+pkgrel=2
 pkgdesc="A GTK based e-mail client. Latest git checkout, built against '${_TOOLKIT}'. Patched to use charset supersets to decode titles and to display protected headers."
 arch=(
   'i686'
@@ -64,6 +64,7 @@ depends=(
 )
 makedepends=(
   'git'
+  'glib2-devel'
   'python>=3'
   'spamassassin'
   # dependencies for plugins:

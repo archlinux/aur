@@ -1,13 +1,14 @@
 pkgbase = claws-mail-protectedheaders-git
 	pkgdesc = A GTK based e-mail client. Latest git checkout, built against 'gtk3'. Patched to use charset supersets to decode titles and to display protected headers.
 	pkgver = 4.3.0+10.r13411.20240622.e67044c8e
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = https://www.claws-mail.org/
 	arch = i686
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
+	makedepends = glib2-devel
 	makedepends = python>=3
 	makedepends = spamassassin
 	makedepends = bogofilter
