@@ -1,0 +1,14 @@
+pkgbase = hyprsources-git
+	pkgdesc = A tool for managing sourcefiles in hyprland
+	pkgver = 1.0.r4.a9a697e
+	pkgrel = 1
+	url = http://github.com/andrwui/hyprsources
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = go
+	provides = hyprsources
+	source = git+http://github.com/andrwui/hyprsources
+	sha256sums = SKIP
+
+pkgname = hyprsources-git
