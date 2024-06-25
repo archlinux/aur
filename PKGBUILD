@@ -9,10 +9,10 @@ _pkgbase=nginx
 _commit=dd5bc1844be3
 _libressl_ver=3.9.2
 pkgbase=nginx-quic-libressl
-pkgname=(nginx-quic-libressl nginx-quic-libressl-src)
+pkgname=($pkgbase $pkgbase-src)
 pkgver=1.26.1
 pkgrel=1
-pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, HTTP/3 QUIC branch'
+pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server'
 arch=('i686' 'x86_64')
 url='https://nginx.org'
 license=('BSD-2-Clause-Views AND OpenSSL')
@@ -36,7 +36,7 @@ source=("hg+https://hg.nginx.org/nginx#revision=$_commit"
         "logrotate")
 sha256sums=('de8ceed587130b2957bc55f666d361e818db95ef9038445e9f390fff44ca6555'
             '7b031dac64a59eb6ee3304f7ffb75dad33ab8c9d279c847f92c89fb846068f97'
-            '05fdc0c0483410944b988d7f4beabb00bec4a44a41bd13ebc9b78585da7d3f9b'
+            'adb4a2b5176be3a3bf39666584f7a0a7f10b1b1aca927c189c1910c789d6d13c'
             'b9af19a75bbeb1434bba66dd1a11295057b387a2cbff4ddf46253133909c311e')
 
 _common_flags=(
@@ -94,15 +94,14 @@ build() {
   export LDFLAGS="$LDFLAGS"
 
   if [[ $CC == "clang" ]];then
-    _cc_opt="-flto"
+    _cc_opt="-flto $CPPFLAGS $CFLAGS"
     _ld_opt="-flto -fuse-ld=lld $LDFLAGS"
   else
-    _cc_opt=""
-    _ld_opt="$LDFLAGS"
-
     # Disable some warnings that make Boringssl fail to compile due to a forced -Werror in CMakeLists.txt
     # -Wno-array-bounds: 2022-05-21 for compatiblity with GCC 12.1 (https://bugs.chromium.org/p/boringssl/issues/detail?id=492&sort=-modified)
     export CFLAGS="$CFLAGS -Wno-stringop-overflow -Wno-array-parameter -Wno-array-bounds"
+    _cc_opt="$CPPFLAGS $CFLAGS"
+    _ld_opt="$LDFLAGS"
   fi
 
 #  cd ${srcdir}/boringssl
@@ -142,7 +141,7 @@ package_nginx-quic-libressl() {
   cd nginx
   make DESTDIR="$pkgdir" install
 
-  sed -e 's|\<user\s\+\w\+;|user html;|g' \
+  sed -e 's|\<user\s\+\w\+;|user http;|g' \
     -e '44s|html|/usr/share/nginx/html|' \
     -e '54s|html|/usr/share/nginx/html|' \
     -i "$pkgdir"/etc/nginx/nginx.conf
