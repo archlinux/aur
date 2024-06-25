@@ -4,7 +4,7 @@
 pkgbase=rustdesk-bin
 pkgname=(rustdesk-bin)
 pkgver=1.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk!"
 url="https://github.com/rustdesk/rustdesk"
 license=('GPL3')
@@ -12,14 +12,28 @@ arch=('x86_64')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 depends=(
+    'at-spi2-core'
+    'cairo'
+    'dbus'
+    'fontconfig'
+    'gcc-libs'
+    'gdk-pixbuf2'
+    'glib2'
+    'glibc'
     'gstreamer'
     'gst-plugins-base-libs'
     'gtk3'
+    'libepoxy'
     'libpulse'
     'libva'
     'libvdpau'
+    'libx11'
     'libxcb'
+    'libxkbcommon'
     'libxfixes'
+    'libxtst'
+    'pango'
+    'pam'
     'xdg-utils'
     'xdotool'
     'hicolor-icon-theme'
@@ -29,7 +43,7 @@ optdepends=(
     'libayatana-appindicator: tray icon'
 )
 options=('!strip' '!lto' '!debug')
-source=("${pkgbase%-bin}-${pkgver}-$CARCH.pkg.tar.zst::$url/releases/download/${pkgver/_/-}/rustdesk-${pkgver/_/-}-$CARCH.pkg.tar.zst")
+source=("${pkgbase%-bin}-${pkgver}-$CARCH.pkg.tar.zst::$url/releases/download/${pkgver/_/-}/rustdesk-${pkgver/_/-}-0-$CARCH.pkg.tar.zst")
 sha256sums=('SKIP')
 
 prepare() {
