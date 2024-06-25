@@ -5,7 +5,7 @@ _use_pcap=${_use_pcap-y}
 
 _pkgname=phantomsocks
 pkgname=phantomsocks-ipv6-git
-pkgver=r309.05daf2a
+pkgver=r314.45a6f83
 pkgrel=1
 pkgdesc="A cross-platform proxy client/server for Linux/Windows/macOS (resolve both ipv4 and ipv6 dns record)"
 arch=(i686 x86_64)
@@ -20,7 +20,7 @@ depends=('systemd' 'jq')
 
 install=$_pkgname.install
 source=(
-    "git+${url}.git#branch=domain_as_address"
+    "git+${url}.git"
     "$_pkgname-init.sh"
     "$_pkgname.service")
 sha256sums=('SKIP'

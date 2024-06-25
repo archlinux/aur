@@ -1,6 +1,6 @@
 pkgbase = phantomsocks-ipv6-git
 	pkgdesc = A cross-platform proxy client/server for Linux/Windows/macOS (resolve both ipv4 and ipv6 dns record)
-	pkgver = r309.05daf2a
+	pkgver = r314.45a6f83
 	pkgrel = 1
 	url = https://github.com/detiam/phantomsocks
 	install = phantomsocks.install
@@ -14,7 +14,7 @@ pkgbase = phantomsocks-ipv6-git
 	provides = phantomsocks
 	conflicts = phantomsocks
 	replaces = phantomsocks
-	source = git+https://github.com/detiam/phantomsocks.git#branch=domain_as_address
+	source = git+https://github.com/detiam/phantomsocks.git
 	source = phantomsocks-init.sh
 	source = phantomsocks.service
 	sha256sums = SKIP
