@@ -1,5 +1,5 @@
 # Maintainer: Krzysiu <KrzysiuN@proton.me>
-pkgname=HFSUtils-git 
+pkgname=HFSUtils 
 pkgver=r30.7c696d3
 pkgrel=1
 pkgdesc=""
