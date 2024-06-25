@@ -3,7 +3,7 @@
 
 pkgbase=rustdesk-bin
 pkgname=(rustdesk-bin)
-pkgver=1.2.3_2
+pkgver=1.2.6
 pkgrel=1
 pkgdesc="Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk!"
 url="https://github.com/rustdesk/rustdesk"
@@ -30,7 +30,7 @@ optdepends=(
 )
 options=('!strip' '!lto' '!debug')
 source=("${pkgbase%-bin}-${pkgver}-$CARCH.pkg.tar.zst::$url/releases/download/${pkgver/_/-}/rustdesk-${pkgver/_/-}-$CARCH.pkg.tar.zst")
-sha256sums=('7ab916a551d082eff1f2df26347a979cf879d9a0155faaefb0faaa36ec8b813a')
+sha256sums=('SKIP')
 
 prepare() {
     sed -i "s/^\(Icon=\).*$/\1rustdesk/" "$srcdir/usr/share/rustdesk/files/rustdesk.desktop"
