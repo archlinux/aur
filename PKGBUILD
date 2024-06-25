@@ -2,7 +2,7 @@
 pkgname=gdm-settings-git
 pkgdesc="A settings app for Gnome's Login Manager, GDM"
 url="https://gdm-settings.github.io"
-pkgver=v4.3.r17.g4949544
+pkgver=4.3.r17.g4949544
 pkgrel=1
 arch=(any)
 license=(AGPL-3.0-or-later)
@@ -16,7 +16,7 @@ md5sums=(SKIP)
 
 pkgver() {
   cd "$pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
