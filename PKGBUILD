@@ -4,8 +4,8 @@
 _gitname=hourglass
 _author=sgpthomas
 pkgname=("${_gitname}-git")
-pkgver=r287.09d8011
-pkgrel=3
+pkgver=r288.d4c5cff
+pkgrel=1
 pkgdesc="A simple clock application that provides stopwatches, alarms, and timers designed for Pantheon Shell"
 arch=('i686' 'x86_64')
 url="https://github.com/${_author}/${_gitname}"
