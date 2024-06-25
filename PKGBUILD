@@ -53,14 +53,18 @@ makedepends=(
 )
 # _tag=62d425164d383fcde498b17b0af5d00bfa92aed4
 _branch="sk-gamescope"
-source=("git+https://github.com/3003n/gamescope.git#branch=${_branch}"
+source=("git+https://github.com/3003n/gamescope.git#tag=${_tag}"
         "git+https://github.com/nothings/stb.git#commit=af1a5bc352164740c1cc1354942b1c6b72eacb8a"
+        "git+https://github.com/Joshua-Ashton/wlroots.git"
+        "git+https://gitlab.freedesktop.org/emersion/libliftoff.git"
         "git+https://github.com/Joshua-Ashton/GamescopeShaders.git#tag=v0.1"
         "git+https://github.com/Joshua-Ashton/reshade.git"
         "git+https://github.com/KhronosGroup/SPIRV-Headers.git"
         )
 
 b2sums=('SKIP'
+        'SKIP'
+        'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -100,11 +104,9 @@ pkgver() {
 build() {
   export LDFLAGS="$LDFLAGS -lrt"
   arch-meson gamescope build \
-    -Dforce_fallback_for=stb,libliftoff,wlroots \
+    -Dforce_fallback_for=stb,libliftoff,wlroots,vkroots \
     -Dpipewire=enabled \
-    -Denable_openvr_support=false \
-    -Dwlroots:backends=drm,libinput,x11 \
-    -Dwlroots:renderers=gles2,vulkan
+    -Denable_openvr_support=false
   ninja -C build
 }
 
