@@ -3,8 +3,8 @@
 
 pkgname=ueberzugpp
 pkgver=2.9.6
-pkgrel=1
-pkgdesc="Command line util which allows to display images in combination with X11 written in C++"
+pkgrel=2
+pkgdesc="Command line utility which allows to display images in the terminal, written in C++"
 arch=(x86_64 aarch64 powerpc64le)
 url="https://github.com/jstkdng/ueberzugpp"
 license=("GPL-3.0-or-later")
