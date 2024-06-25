@@ -1,19 +1,19 @@
-# Maintainer: Mubashir Haroon <mubashirmusab at gmail dot com>
+# Contributor: Mubashir Haroon <mubashirmusab at gmail dot com>
 # Contributor: Husam Bilal <me@husam.dev>
 
 pkgname=clipman-git
-pkgver=1.6.1.r0.g52602f2
+pkgver=1.6.4.r1.g0e1d363
 pkgrel=1
 pkgdesc="A simple clipboard manager for Wayland"
-url="https://github.com/yory8/clipman"
+url="https://github.com/chmouel/clipman"
 depends=("wl-clipboard>=2.0")
 makedepends=("go" "git")
 provides=("clipman")
 conflicts=("clipman")
-license=("GPL3")
+license=("GPL-3.0-only")
 arch=("x86_64" "i686")
 md5sums=("SKIP")
-source=("${pkgname}::git+https://github.com/yory8/clipman.git")
+source=("${pkgname}::git+https://github.com/chmouel/clipman.git")
 
 pkgver() {
   cd "$pkgname"
