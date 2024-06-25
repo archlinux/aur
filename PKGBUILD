@@ -16,7 +16,7 @@ pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, HTTP/3 QUIC branch'
 arch=('i686' 'x86_64')
 url='https://nginx.org'
 license=('BSD-2-Clause-Views AND OpenSSL')
-depends=('geoip' 'libxcrypt' 'pcre2' 'zlib' 'glibc')
+depends=('geoip' 'libxcrypt' 'pcre2' 'zlib' 'glibc' 'mailcap')
 makedepends=('cmake' 'git' 'go' 'mercurial')
 backup=('etc/nginx/fastcgi.conf'
         'etc/nginx/fastcgi_params'

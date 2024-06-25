@@ -16,6 +16,7 @@ pkgbase = nginx-quic-libressl
 	depends = pcre2
 	depends = zlib
 	depends = glibc
+	depends = mailcap
 	provides = nginx
 	provides = nginx-mainline
 	conflicts = nginx
