@@ -1,16 +1,12 @@
 pkgbase = mpd-rich-presence-bin
 	pkgdesc = Service to display the currently playing song in MPD as your Discord Rich Presence.
-	pkgver = 0.7.1
+	pkgver = 0.8.0
 	pkgrel = 1
+	url = https://github.com/nekowinston/mpd-rich-presence
+	arch = x86_64
 	license = MIT
 	depends = mpd
-	conflicts = mpd-rich-presence
-	provides = mpd-rich-presence
-	arch = aarch64
-	source_aarch64 = https://github.com/nekowinston/mpd-rich-presence/releases/download/v0.7.1/mpd-rich-presence_0.7.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 3a9a3ca1b03f7e163305414f616136fa14c454122a0e19d04f86d150399777ad
-	arch = x86_64
-	source_x86_64 = https://github.com/nekowinston/mpd-rich-presence/releases/download/v0.7.1/mpd-rich-presence_0.7.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 7eade16015f13fe9269e8e6b98f2fe18a2aaf82534ab48a4b68f4853afa10503
-	
+	source = mpd-rich-presence-bin_0.8.0_x86_64.tar.gz::https://github.com/nekowinston/mpd-rich-presence/releases/download/v0.8.0/mpd-rich-presence_0.8.0_linux_amd64.tar.gz
+	sha256sums = a590d056a4dbe713995187a699bf2ddec7756970ee1cb954d9fb168d7d198503
+
 pkgname = mpd-rich-presence-bin
