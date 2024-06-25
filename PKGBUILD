@@ -1,29 +1,21 @@
-# Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
+# Maintainer: Nikos Toutountzoglou <nikos dot toutou at protonmail dot com>
 
 pkgname=srt-xtransmit
-pkgver=0.1.0
-pkgrel=3
+pkgver=v0.1.0.r76.gf43cfff
+pkgrel=1
 pkgdesc="Secure Reliable Transport (SRT) transmission utility used for internal testing and performance evaluation."
 url="https://github.com/maxsharabayko/srt-xtransmit"
-arch=(x86_64)
-license=(MPL2)
-depends=(
-	srt
-	gcc-libs
-	openssl
-)
-makedepends=(
-	cmake
-	git
-	ninja
-)
-_commit=c08393a2ddbee32557990d13dc705a6f15821b22 # tags/v0.1.0
+arch=('x86_64')
+license=()
+depends=('srt' 'gcc-libs' 'openssl')
+makedepends=('cmake' 'git' 'ninja')
+_commit=f43cfffed1adf387eb99a8eacfb6e033adad15d9 # tags/v0.1.0
 source=("git+https://github.com/maxsharabayko/srt-xtransmit#commit=$_commit")
-b2sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
 	cd srt-xtransmit
-	git describe --tags | sed 's/^v//;s/[^-]*-g/r&/;s/-/+/g'
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
