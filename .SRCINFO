@@ -1,7 +1,7 @@
 pkgbase = r-mumin
 	pkgdesc = Multi-Model Inference
-	pkgver = 1.47.5
-	pkgrel = 3
+	pkgver = 1.48.4
+	pkgrel = 2
 	url = https://cran.r-project.org/package=MuMIn
 	arch = any
 	license = GPL-2.0-only
@@ -9,8 +9,9 @@ pkgbase = r-mumin
 	optdepends = r-gamm4
 	optdepends = r-geepack
 	optdepends = r-lme4
-	source = https://cran.r-project.org/src/contrib/MuMIn_1.47.5.tar.gz
-	md5sums = e733ab93b8e3cff6e827c04634f54976
-	b2sums = 82ca98c89b4efcd8d6b3c57feef7f9e343936f30d4a640c89057c7bd93638ac79b2aef8e8ba7c4718cd1c96e1409f1230795229381bd040fb6f196b16023b5cc
+	optdepends = r-performance
+	source = https://cran.r-project.org/src/contrib/MuMIn_1.48.4.tar.gz
+	md5sums = 2df3a28a9214d4f926a4ef1fa7f98143
+	b2sums = e3c62139d5e915d47e3fb16877fb905d8922301a50cd7c1b6230400ff4899ee9ee8e298b096f987a2a0767cebddac02ee0bd5ada2decdaaa50ace8cd7df27c57
 
 pkgname = r-mumin
