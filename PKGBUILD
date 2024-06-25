@@ -4,13 +4,11 @@
 ## useful links
 # https://dolphin-emu.org
 # https://github.com/dolphin-emu/dolphin
-# https://github.com/shiiion/dolphin
 
 ## options
 : ${_debugfast:=false}
 
 : ${_build_clang:=true}
-: ${_build_mold:=false}
 
 : ${_build_debugfast:=false}
 : ${_build_avx:=false}
@@ -24,10 +22,10 @@ unset _pkgtype
 # basic info
 _pkgname="dolphin-emu-primehack"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=1.0.7a.r0.g03117e2947
+pkgver=1.1.2.r8.g7c6cd79
 pkgrel=1
 pkgdesc='A Gamecube and Wii emulator with mouselook controls'
-url="https://github.com/shiiion/dolphin"
+url="https://github.com/xiota/dolphin-primehack"
 license=('GPL-2.0-or-later')
 arch=(x86_64)
 
@@ -79,33 +77,50 @@ _main_package() {
   makedepends+=(
     cmake
     git
+    ninja
     python
   )
 
   options=(!emptydirs)
 
-  if [[ "${_build_clang::1}" == "t" ]] ; then
+  if [[ "${_build_clang::1}" == "t" ]]; then
     makedepends+=(
       clang
+      lld
       llvm
     )
   else
     options+=(!lto)
   fi
 
-  if [[ "${_build_mold::1}" == "t" ]] ; then
-    makedepends+=(mold)
-  elif [[ "${_build_clang::1}" == "t" ]] ; then
-    makedepends+=(lld)
-  fi
-
-  if [[ "${_build_git::1}" != "t" ]] ; then
+  if [[ "${_build_git::1}" != "t" ]]; then
     _main_stable
   else
     _main_git
   fi
 
   _source_dolphin_emu
+}
+
+# stable package
+_main_stable() {
+  :
+}
+
+# git package
+_main_git() {
+  provides=("$_pkgname")
+  conflicts=("$_pkgname")
+
+  _pkgsrc="xiota.primehack"
+  source=("$_pkgsrc"::"git+$url.git")
+  sha256sums+=('SKIP')
+
+  pkgver() {
+    cd "$_pkgsrc"
+    git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+      | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
+  }
 }
 
 # submodules
@@ -120,17 +135,20 @@ _source_dolphin_emu() {
     #'khronosgroup.spirv-cross'::'git+https://github.com/KhronosGroup/SPIRV-Cross.git'
     #'libsdl-org.sdl'::'git+https://github.com/libsdl-org/SDL.git'
     #'libusb'::'git+https://github.com/libusb/libusb.git'
-    #'lsalzman.enet'::'git+https://github.com/lsalzman/enet.git'
+    #'libusb.hidapi'::'git+https://github.com/libusb/hidapi.git'
     #'lz4'::'git+https://github.com/lz4/lz4.git'
     #'mozilla.cubeb'::'git+https://github.com/mozilla/cubeb.git'
     #'randy408.libspng'::'git+https://github.com/randy408/libspng.git'
-    #'cyan4973.xxhash'::'git+https://github.com/Cyan4973/xxHash.git'
 
+    'cyan4973.xxhash'::'git+https://github.com/Cyan4973/xxHash.git'
     'epezent.implot'::'git+https://github.com/epezent/implot.git'
     'gpuopen-librariesandsdks.vulkanmemoryallocator'::'git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git'
+    'lsalzman.enet'::'git+https://github.com/lsalzman/enet.git'
     'mgba-emu.mgba'::'git+https://github.com/mgba-emu/mgba.git'
     'retroachievements.rcheevos'::'git+https://github.com/RetroAchievements/rcheevos.git'
+    'syoyo.tinygltf'::'git+https://github.com/syoyo/tinygltf.git'
     'zlib-ng'::'git+https://github.com/zlib-ng/zlib-ng.git'
+    'zlib-ng.minizip-ng'::'git+https://github.com/zlib-ng/minizip-ng.git'
   )
   sha256sums+=(
     #'SKIP'
@@ -146,8 +164,11 @@ _source_dolphin_emu() {
     #'SKIP'
     #'SKIP'
     #'SKIP'
-    #'SKIP'
 
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -160,7 +181,6 @@ _source_dolphin_emu() {
     local _submodules=(
       #'bylaws.libadrenotools'::'Externals/libadrenotools'
       #'curl'::'Externals/curl/curl'
-      #'cyan4973.xxhash'::'Externals/xxhash/xxHash'
       #'dolphin-emu.ext-win-ffmpeg'::'Externals/FFmpeg-bin'
       #'dolphin-emu.ext-win-qt'::'Externals/Qt'
       #'fmtlib.fmt'::'Externals/fmt/fmt'
@@ -168,103 +188,53 @@ _source_dolphin_emu() {
       #'khronosgroup.spirv-cross'::'Externals/spirv_cross/SPIRV-Cross'
       #'libsdl-org.sdl'::'Externals/SDL/SDL'
       #'libusb'::'Externals/libusb/libusb'
-      #'lsalzman.enet'::'Externals/enet/enet'
+      #'libusb.hidapi'::'Externals/hidapi/hidapi-src'
       #'lz4'::'Externals/lz4/lz4'
       #'mozilla.cubeb'::'Externals/cubeb/cubeb'
       #'randy408.libspng'::'Externals/libspng/libspng'
 
+      'cyan4973.xxhash'::'Externals/xxhash/xxHash'
       'epezent.implot'::'Externals/implot/implot'
       'gpuopen-librariesandsdks.vulkanmemoryallocator'::'Externals/VulkanMemoryAllocator'
+      'lsalzman.enet'::'Externals/enet/enet'
       'mgba-emu.mgba'::'Externals/mGBA/mgba'
       'retroachievements.rcheevos'::'Externals/rcheevos/rcheevos'
+      'syoyo.tinygltf'::'Externals/tinygltf/tinygltf'
       'zlib-ng'::'Externals/zlib-ng/zlib-ng'
+      'zlib-ng.minizip-ng'::'Externals/minizip-ng/minizip-ng'
     )
     _submodule_update
   )
 }
 
-# stable package
-_main_stable() {
-  :
-}
-
-# git package
-_main_git() {
-  provides=("$_pkgname")
-  conflicts=("$_pkgname")
-
-  _pkgsrc="$_pkgname"
-  source=(
-    "$_pkgname"::"git+$url.git"
-    "primehack-rename.patch"
-  )
-  sha256sums+=(
-    'SKIP'
-    '632cb45fc540536f615caf72c0736682fa30776a10bf42dd94bae417845c213d'
-  )
-
-  pkgver() {
-    cd "$_pkgsrc"
-
-    local _regex='^.* scm_rev_str = ".*\[v([0-9\.]+[^\]]*)\]".*$'
-    local _file='Source/Core/Common/Version.cpp'
-
-    local _line=$(grep -Esm1 "$_regex" "$_file")
-    local _line_num=$(grep -Ensm1 "$_regex" "$_file" | cut -d':' -f1)
-
-    local _version=$(sed -E "s@$_regex@\1@" <<< "$_line")
-
-    local _commit=$(git blame -L $_line_num,+1 -- "$_file" | awk '{print $1;}')
-
-    local _revision=$(git rev-list --count --cherry-pick $_commit...HEAD)
-    local _hash=$(git rev-parse --short HEAD)
-
-    printf "%s.r%s.g%s" "$_version" "$_revision" "$_hash"
-  }
-}
-
 # common functions
 prepare() {
   _submodule_update() {
-    for _module in "${_submodules[@]}" ; do
+    local _module
+    for _module in "${_submodules[@]}"; do
       git submodule init "${_module##*::}"
-      git submodule set-url "${_module##*::}" "${srcdir}/${_module%%::*}"
+      git submodule set-url "${_module##*::}" "$srcdir/${_module%::*}"
       git -c protocol.file.allow=always submodule update "${_module##*::}"
     done
   }
 
-  apply-patch() {
-    printf '\nApplying patch %s\n' "$1"
-    patch -Np1 -F100 -i "$1"
-  }
-
   _prepare_dolphin_emu
-
-  # primehack-rename: copy files
-  local _data_path="$_pkgsrc/Data"
-  for i in -nogui.6 .6 .desktop .png .svg ; do
-    cp --reflink=auto -- "$_data_path/dolphin-emu${i}" "$_data_path/primehack${i}"
-  done
-
-  _data_path="$_pkgsrc/Data/Sys/Resources"
-  cp --reflink=auto -- "$_data_path/dolphin_logo.png" "$_data_path/primehack_logo.png"
-  cp --reflink=auto -- "$_data_path/dolphin_logo@2x.png" "$_data_path/primehack_logo@2x.png"
-
-  # primehack-rename: patch source
-  pushd "$_pkgsrc"
-  #git -c user.name="tmp" -c user.email="tmp@example.com" am "$srcdir/primehack-rename.patch"
-  apply-patch "$srcdir/primehack-rename.patch"
-  popd
 
   # Delete gcc specific options
   sed '/_ARCHIVE_/d' -i "$srcdir/$_pkgsrc/CMakeLists.txt"
 }
 
 build() {
+  # Fix version string
+  local _pkgver=$(pkgver)
+  sed -Ez \
+    -e 's@\n\s+execute_process\([^\(\)]+\bdescribe [^\(\)]*--dirty\b[^\(\)]+\)@\n\nset(DOLPHIN_WC_DESCRIBE "'"${_pkgver:?}"'")@' \
+    -i "$srcdir/$_pkgsrc/CMake/ScmRevGen.cmake"
+
   local _cmake_options=(
     -B build
-    -S "$_pkgname"
-
+    -S "$_pkgsrc"
+    -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DDISTRIBUTOR='aur.archlinux.org'
@@ -286,15 +256,15 @@ build() {
     -Wno-dev
   )
 
-  if [ "${_debugfast::1}" == "t" ] ; then
+  if [ "${_debugfast::1}" == "t" ]; then
     _cmake_options+=(-DFASTLOG=ON)
   fi
 
-  if [[ "${_build_clang::1}" == "t" ]] ; then
-    export AR=llvm-ar
-    export NM=llvm-nm
-    export CC=clang
-    export CXX=clang++
+  if [[ "${_build_clang::1}" == "t" ]]; then
+    export CC CXX LDFLAGS
+    CC=clang
+    CXX=clang++
+    LDFLAGS="$(echo "$LDFLAGS" | sed -E 's@-fuse-ld=\S+\s*@ @g;s@\s+@ @g') -fuse-ld=lld"
 
     _cmake_options+=(
       -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON
@@ -304,15 +274,10 @@ build() {
     _cmake_options+=(-DENABLE_LTO=OFF)
   fi
 
-  if [[ "${_build_mold::1}" == "t" ]] ; then
-    export LDFLAGS+=" -fuse-ld=mold"
-  elif [[ "${_build_clang::1}" == "t" ]] ; then
-    export LDFLAGS+=" -fuse-ld=lld"
-  fi
-
-  if [[ "${_build_avx::1}" == "t" ]] ; then
-    export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
-    export CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
+  if [[ "${_build_avx::1}" == "t" ]]; then
+    export CFLAGS CXXFLAGS
+    CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
+    CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
   fi
 
   cmake "${_cmake_options[@]}"
@@ -325,6 +290,8 @@ package() {
   # To use, symlink to /usr/lib/udev/rules.d/
   install -Dm644 "$srcdir/$_pkgsrc/Data/51-usb-device.rules" \
     -t "$pkgdir/usr/share/primehack/"
+
+  rm -rf "$pkgdir"/usr/{include,lib/libdiscord-rpc.a}
 }
 
 # execute
