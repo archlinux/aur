@@ -12,7 +12,7 @@ sha256sums=('e0bc339f36ec22080a8a270ea87976f7b277ce4e3e9e383fba51548f83aa4d0b')
 
 build () {
   cd "$srcdir"/mixmod-${pkgver}
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_UNITY_BUILD=ON .
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_UNITY_BUILD=ON -DMIXMOD_ENABLE_OPENMP=OFF .
   make
 }
 
