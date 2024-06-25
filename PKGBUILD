@@ -10,7 +10,6 @@
 : ${_build_unittests:=false}
 
 : ${_build_clang:=true}
-: ${_build_mold:=false}
 
 : ${_build_debugfast:=true}
 : ${_build_avx:=false}
@@ -24,7 +23,7 @@ unset _pkgtype
 # basic info
 _pkgname="dolphin-emu"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=5.0.r21593.g222a393
+pkgver=5.0.r21770.gc536754
 pkgrel=1
 pkgdesc='A Gamecube and Wii emulator'
 url="https://github.com/dolphin-emu/dolphin"
@@ -96,16 +95,11 @@ _main_package() {
   if [[ "${_build_clang::1}" == "t" ]]; then
     makedepends+=(
       clang
+      lld
       llvm
     )
   else
     options+=(!lto)
-  fi
-
-  if [[ "${_build_mold::1}" == "t" ]]; then
-    makedepends+=(mold)
-  elif [[ "${_build_clang::1}" == "t" ]]; then
-    makedepends+=(lld)
   fi
 
   if [[ "${_build_git::1}" != "t" ]]; then
@@ -283,10 +277,10 @@ build() {
   fi
 
   if [[ "${_build_clang::1}" == "t" ]]; then
-    export AR=llvm-ar
-    export NM=llvm-nm
-    export CC=clang
-    export CXX=clang++
+    export CC CXX LDFLAGS
+    CC=clang
+    CXX=clang++
+    LDFLAGS="$(echo "$LDFLAGS" | sed -E 's@-fuse-ld=\S+\s*@ @g;s@\s+@ @g') -fuse-ld=lld"
 
     _cmake_options+=(
       -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON
@@ -296,15 +290,10 @@ build() {
     _cmake_options+=(-DENABLE_LTO=OFF)
   fi
 
-  if [[ "${_build_mold::1}" == "t" ]]; then
-    export LDFLAGS+=" -fuse-ld=mold"
-  elif [[ "${_build_clang::1}" == "t" ]]; then
-    export LDFLAGS+=" -fuse-ld=lld"
-  fi
-
   if [[ "${_build_avx::1}" == "t" ]]; then
-    export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
-    export CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
+    export CFLAGS CXXFLAGS
+    CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
+    CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
   fi
 
   cmake "${_cmake_options[@]}"

@@ -1,6 +1,6 @@
 pkgbase = dolphin-emu-debugfast-git
 	pkgdesc = A Gamecube and Wii emulator
-	pkgver = 5.0.r21593.g222a393
+	pkgver = 5.0.r21770.gc536754
 	pkgrel = 1
 	url = https://github.com/dolphin-emu/dolphin
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = dolphin-emu-debugfast-git
 	makedepends = ninja
 	makedepends = python
 	makedepends = clang
-	makedepends = llvm
 	makedepends = lld
+	makedepends = llvm
 	depends = alsa-lib
 	depends = bluez-libs
 	depends = curl
