@@ -1,0 +1,18 @@
+pkgbase = python-shelved-cache
+	pkgdesc = A persistent cache implementation for Python cachetools.
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/mariushelf/shelved_cache
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry
+	depends = python
+	depends = python-cachetools
+	source = python-shelved-cache-0.3.1.tar.gz::https://github.com/mariushelf/shelved_cache/archive/refs/tags/0.3.1.tar.gz
+	sha256sums = 21f8ba0fff0917277a12de8274d99a7287b90b571ea38f58fe9057c07b292a9c
+
+pkgname = python-shelved-cache

@@ -1,0 +1,25 @@
+# Maintainer: Aseem Athale <athaleaseem@gmail.com>
+
+_pkgname=shelved_cache
+pkgname=python-shelved-cache
+pkgver=0.3.1
+pkgrel=1
+pkgdesc="A persistent cache implementation for Python cachetools."
+arch=('any')
+url="https://github.com/mariushelf/shelved_cache"
+license=('MIT')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'python-poetry')
+depends=('python' 'python-cachetools')
+source=("$pkgname-$pkgver.tar.gz"::${url}/archive/refs/tags/${pkgver}.tar.gz)
+sha256sums=('21f8ba0fff0917277a12de8274d99a7287b90b571ea38f58fe9057c07b292a9c')
+
+build() {
+    cd "$_pkgname-$pkgver"
+    python -m build --wheel --no-isolation
+}
+
+package() {
+    cd "$_pkgname-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+}
