@@ -1,0 +1,25 @@
+pkgbase = glsmac-git
+	pkgdesc = Unofficial open-source OpenGL/SDL2 reimplementation of Sid Meiers Alpha Centauri ( + Alien Crossfire )
+	pkgver = 0.3.852e3a77
+	pkgrel = 1
+	url = https://github.com/afwbkbc/glsmac
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = git
+	makedepends = cmake
+	makedepends = base-devel
+	depends = glew
+	depends = sdl2
+	depends = gcc-libs
+	depends = libglvnd
+	depends = yaml-cpp
+	depends = sdl2_image
+	depends = glibc
+	depends = freetype2
+	depends = uuid
+	depends = sh
+	provides = glsmac
+	source = glsmac-git::git+https://github.com/afwbkbc/glsmac.git
+	sha256sums = SKIP
+
+pkgname = glsmac-git
