@@ -5,13 +5,13 @@ _pkgname=ledger-live
 pkgname="${_pkgname}-git"
 pkgdesc="Maintain your Ledger devices (git-main)"
 _electron='electron30'
-pkgver=2.82.0.r0.ga27c42b
+pkgver=2.82.1.r0.g2614225
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/LedgerHQ/ledger-live'
 license=('MIT')
 depends=('ledger-udev' "${_electron}")
-makedepends=('git' 'node-gyp' 'pnpm' 'nvm')
+makedepends=('git' 'node-gyp' 'pnpm>=8' 'pnpm<9' 'nvm')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${pkgname}::git+${url}#branch=main"
