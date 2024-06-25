@@ -28,7 +28,7 @@ esac
 
 pkgname="${_pkgname}-${_pkgvariant}-git"
 epoch=0
-pkgver=3.20.0+91.r11802.20240516.4636eae6c
+pkgver=3.21.0+2.r11815.20240610.e6f6d119d
 pkgrel=1
 pkgdesc="A GTK based e-mail client. Latest git checkout, built against '${_TOOLKIT}'. Patched to use charset supersets to decode titles and to display protected headers."
 arch=(
