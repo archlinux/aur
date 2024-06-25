@@ -1,0 +1,25 @@
+pkgbase = python-failprint
+	pkgdesc = Run a command, print its output only if it fails.
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://pawamoy.github.io/failprint
+	arch = any
+	license = ISC
+	checkdepends = python-pytest-timeout
+	checkdepends = python-hypothesis
+	checkdepends = python-colorama
+	checkdepends = python-ansimarkup
+	checkdepends = python-jinja
+	checkdepends = python-ptyprocess
+	makedepends = python-pdm-backend
+	makedepends = python-build
+	makedepends = python-installer
+	source = https://files.pythonhosted.org/packages/source/f/failprint/failprint-1.0.2.tar.gz
+	sha256sums = ee27b21f2c4974a38d8b172d639b1ae8c9d07f66158774c78f1abfe69ae289e6
+
+pkgname = python-failprint
+	depends = python>=3.8
+	depends = python-ansimarkup
+	depends = python-jinja>=2.11
+	depends = python-ptyprocess
+	depends = python-typing_extensions
