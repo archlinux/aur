@@ -1,0 +1,14 @@
+pkgbase = zoomer
+	pkgdesc = Simple zoom application
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://git.herisson.ovh/tonitch/zoomer
+	arch = any
+	license = MIT
+	makedepends = gcc
+	depends = sdl2
+	depends = scrot
+	source = zoomer-0.0.2::https://git.herisson.ovh/tonitch/zoomer/archive/v0.0.2.tar.gz
+	sha256sums = 3f6eede12d73a310cbaed8b2467cb6aaea94a449b93f00a1f25602cb2b10445b
+
+pkgname = zoomer
