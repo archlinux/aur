@@ -1,4 +1,5 @@
 /src/
 /pkg/
+/*.log
 /wlroots-hidpi-xprop/
 /*.pkg.tar*
