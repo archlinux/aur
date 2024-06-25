@@ -1,7 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
-# Co-Maintainer: alphazo <archlinux-1229 at notracking dot email>
-pkgname=protonmail-desktop  ## TODO: Rename to proton-mail
-_pkgver=1.0.4-beta  ## TODO: Drop beta from pkgver afer next point release
+pkgname=protonmail-desktop
+_pkgver=1.0.4-beta
 pkgver=${_pkgver//-/.}
 pkgrel=2
 pkgdesc="Proton official desktop application for Proton Mail and Proton Calendar"
@@ -23,8 +22,6 @@ optdepends=(
   'trash-cli: file deletion support (trash-put)'
   'xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)'
 )
-provides=('proton-mail')
-conflicts=('proton-mail')
 source=("proton-mail-${pkgver%.beta}.tar.gz::https://github.com/ProtonMail/inbox-desktop/releases/download/v${pkgver%.beta}/inbox-desktop-${pkgver%.beta}-source.zip"
         'proton-mail.desktop')
 noextract=("${source[@]%%::*}")
