@@ -1,6 +1,6 @@
 pkgbase = drawio-desktop-appimage
 	pkgdesc = Diagram drawing application built on web technology
-	pkgver = 24.5.3
+	pkgver = 24.6.1
 	pkgrel = 1
 	url = https://www.diagrams.net/
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = drawio-desktop-appimage
 	depends = hicolor-icon-theme
 	conflicts = drawio-desktop
 	options = !strip
-	source_x86_64 = drawio-24.5.3.AppImage::https://github.com/jgraph/drawio-desktop/releases/download/v24.5.3/drawio-x86_64-24.5.3.AppImage
-	sha512sums_x86_64 = ecb3393d5e286ac9b174d259dcdf1b427dff164890ed26c65f0bc84fa9d70c84dddc9827d02c4b0bd739876dbd5d9ab00714c2585cb5311efe44eb1e3b040f7c
-	source_aarch64 = drawio-24.5.3.AppImage::https://github.com/jgraph/drawio-desktop/releases/download/v24.5.3/drawio-arm64-24.5.3.AppImage
-	sha512sums_aarch64 = b4cd6287c22df79c822b4d0f58180eddcd0c34dc0eecabbfb3e01f6a7a75eaec0c0a3018a0a7e98461fc82331e6d7e814316b4b116d30caddc7d1c232b05124f
+	source_x86_64 = drawio-24.6.1.AppImage::https://github.com/jgraph/drawio-desktop/releases/download/v24.6.1/drawio-x86_64-24.6.1.AppImage
+	sha512sums_x86_64 = 50c7ffe9ce3f70dc9a385c1d768a55b7e952999894dc3bf440974d561498bd2fc9ddc8bcfbc1225ade1a2608670b9162bb41ca3e39365386693143fb43505688
+	source_aarch64 = drawio-24.6.1.AppImage::https://github.com/jgraph/drawio-desktop/releases/download/v24.6.1/drawio-arm64-24.6.1.AppImage
+	sha512sums_aarch64 = 084c3a42a295f69ad82a93181712653f94ffea2a03798aa2451d4a969a2d39b2022f68acb241eced3b9142c41d209c0b5f4287f68aaae2bb2dfe978cf020b9e3
 
 pkgname = drawio-desktop-appimage
