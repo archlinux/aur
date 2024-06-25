@@ -3,7 +3,7 @@
 pkgname=bunsen-pipemenus-git
 pkgver=r452.5e4e8c4
 pkgrel=2
-pkgdesc="Collection of Openbox pipemenus from BunsenLabs Linux"
+pkgdesc="Various Openbox and jgmenu pipemenus"
 arch=('any')
 url="https://github.com/BunsenLabs/bunsen-pipemenus"
 license=('GPL-3.0-or-later')

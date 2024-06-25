@@ -1,5 +1,5 @@
 pkgbase = bunsen-pipemenus-git
-	pkgdesc = Collection of Openbox pipemenus from BunsenLabs Linux
+	pkgdesc = Various Openbox and jgmenu pipemenus
 	pkgver = r452.5e4e8c4
 	pkgrel = 2
 	url = https://github.com/BunsenLabs/bunsen-pipemenus
