@@ -42,7 +42,7 @@ _install_static=true ## .a libs which may be required for external programs such
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the custompatches folder
 ## manually if you wish to use them alongside your own patches.
 ## also recommended to set _desired_wine_commit and _desired_staging_commit if this is used
-_custompatches=true
+_custompatches=false
 
 ################################################################################################################################
 ################################################################################################################################
