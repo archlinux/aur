@@ -1,6 +1,6 @@
 pkgbase = phasher
 	pkgdesc = Simple CLI program hashing passwords into PHC strings
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/chardoncs/phasher
 	arch = x86_64

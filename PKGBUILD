@@ -1,7 +1,7 @@
 # Maintainer: Charles Dong <chardon_cs@proton.me>
 
 pkgname=phasher
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Simple CLI program hashing passwords into PHC strings"
 arch=("x86_64" "aarch64")
@@ -38,7 +38,7 @@ build() {
 
 	pushd $srcroot
 
-	cargo install $pkgname --locked --target-dir $srcroot/ --root $srcroot/
+	cargo install ${pkgname}@${pkgver} --locked --target-dir $srcroot/ --root $srcroot/
 }
 
 package() {
