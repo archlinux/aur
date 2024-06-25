@@ -6,10 +6,10 @@
 pkgname=pandoc-crossref-static-git
 _pkgname="${pkgname%-static-git}"
 pkgver=0.3.17.1.r2.g6307fca
-_pandoc_type=stock
-_pandoc_ver=3.2
-_pandoc_commit=12de77958fc4bb97707f63cb9d9194f3b050a6f6
-pkgrel=1
+_pandoc_type=version
+_pandoc_ver=3.2.1
+_pandoc_commit=501d7cc02d8ed694e32f26756bc433250d34b193
+pkgrel=2
 pkgdesc="Pandoc filter for cross-references (static build)"
 url="https://github.com/lierdakil/pandoc-crossref"
 license=("GPL-2.0-or-later")
@@ -20,7 +20,9 @@ replaces=('pandoc-crossref-bin' 'pandoc-crossref-static' 'pandoc-crossref-lite')
 depends=("pandoc=$_pandoc_ver")
 makedepends=('git' 'stack' 'pandoc' 'yq')
 source=("$pkgname::git+$url.git")
-sha256sums=('SKIP')
+source+=(fix-tests.patch)
+sha256sums=('SKIP'
+            'cf79ae03433da133706e011b21869fdc5c44786cb848837c024905953fe5b7b8')
 
 pkgver() {
     cd "$pkgname"
@@ -58,6 +60,15 @@ prepare() {
     cd "$pkgname"
     stack config set resolver lts-22.22 # ghc-9.6.5
 
+    _bumpVer citeproc 0.8.1.1
+    _bumpVer commonmark-extensions 0.2.5.5
+    _bumpVer djot 0.1.2.1
+    _bumpVer emojis 0.1.4.1
+    _bumpVer pandoc-lua-engine 0.3
+    _bumpVer skylighting 0.14.2
+    _bumpVer skylighting-core 0.14.2
+    _bumpVer typst 0.5.0.4
+
     # if pandoc updates break the golden tests, cf
     # https://github.com/lierdakil/pandoc-crossref/pull/403#issuecomment-1732434519
     # for how to bump
@@ -75,6 +86,14 @@ prepare() {
     _pandoc_bound=$(awk -F. '/[0-9]+\./{$NF++;print}' OFS=. <<<"${_pandoc_ver}")
     sed -i "/pandoc.*< \?$_pandoc_ver/s#< \?[0-9.]*#<$_pandoc_bound#" \
         pandoc-crossref.cabal package.yaml
+
+    # See https://github.com/lierdakil/pandoc-crossref/pull/443
+    # Broken golden tests due to:
+    # - Graphics are now wrapped in \pandocbounded
+    # jgm/pandoc@26b25a4428815b04c255e33e95ee86ca7b6ee30e
+    # - Figures are now resized by \linewidth, not \textwidth
+    # jgm/pandoc@7e7735bb6b41c6f76ed3a03d06f7e1fe7dca299d
+    patch -p1 -i ../fix-tests.patch
 }
 
 check() {
