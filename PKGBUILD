@@ -1,19 +1,17 @@
 pkgname=python-pyfmi
-pkgver=2.13.0
+pkgver=2.13.1
 pkgrel=1
 pkgdesc="A package for working with dynamic models compliant with the FMI standard."
-url="http://www.pyfmi.org"
+url="https://github.com/modelon-community/PyFMI"
 arch=('x86_64')
 license=('LGPL')
 makedepends=('python-setuptools' 'cython')
 depends=('fmilib' 'python-scipy' 'python-assimulo')
-source=("https://github.com/modelon/PyFMI/archive/PyFMI-${pkgver}.tar.gz" setuptools.patch)
-sha256sums=('846f8bd80988a891be2c7fecb2d6faf2b459f61788164b628a7a69a1461ec811' SKIP)
+source=("https://github.com/modelon/PyFMI/archive/PyFMI-${pkgver}.tar.gz")
+sha256sums=('c6453baa45229fd720eb26b4423d6632e5e9703123dd7a7852af1e5d0488f2e1')
 
 prepare() {
   cd "${srcdir}"/PyFMI-PyFMI-${pkgver}
-  patch -p1 -i "${srcdir}"/setuptools.patch
-  curl -L https://github.com/modelon-community/PyFMI/commit/8c018ef7d3bb955804f3197d54f4e6f906e7c7a9.patch | patch -p1 || :
 }
 
 build() {
