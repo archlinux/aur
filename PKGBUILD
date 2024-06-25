@@ -2,7 +2,7 @@
 
 pkgname="wlroots-nvidia"
 pkgver="0.17.3"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Modular Wayland compositor library, with fix for nvidia flickering"
 license=("MIT")
 
