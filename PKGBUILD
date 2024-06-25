@@ -1,28 +1,36 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=twa
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc='Tiny web auditor with strong opinions'
-arch=('any')
+arch=(any)
 url=https://github.com/trailofbits/twa
-license=('MIT')
-depends=('bash' 'bind-tools' 'curl' 'jq' 'netcat')
-checkdepends=('shellcheck' 'testssl.sh')
-optdepends=('testssl.sh')
-source=("$url/archive/v$pkgver/twa-v$pkgver.tar.gz")
-sha512sums=('e4ef063941451e296d883527daf8fa41a2f710bf7552e73c9cd731631dbfd7f0b8d95e36f62280990a9bcce6f68d0e64eb170eeb6f8eb16643d6733a3c992a84')
+license=(MIT)
+depends=(
+  bash
+  bind-tools
+  curl
+  jq
+  netcat
+)
+makedepends=(git)
+checkdepends=(
+  shellcheck
+  testssl.sh
+)
+optdepends=('testssl.sh: for testssl-based checks')
+source=("git+$url.git#tag=v$pkgver")
+b2sums=('e4c36068f0bf957abbeb2f11b6c0addb401415275cbb5795ad461f8f71bf64a7ec9453979c27e9162dad9e402b30009db4a22cff5c1041ba46ea902dd38cbeba')
 
 check() {
-  cd twa-$pkgver
+  cd twa
   ./util/test
 }
 
 package() {
-  cd twa-$pkgver
+  cd twa
   install -Dt "$pkgdir"/usr/bin tscore twa
   install -Dm644 -t "$pkgdir"/usr/share/man/man1 twa.1
   install -Dm644 -t "$pkgdir"/usr/share/licenses/twa LICENSE
 }
-
-# vim:set ts=2 sw=2 et:
