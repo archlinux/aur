@@ -1,0 +1,16 @@
+pkgbase = resize-images-git
+	pkgdesc = Command-line batch-processing tool for easily scaling down images.
+	pkgver = 23.09.r133.g50403e9
+	pkgrel = 1
+	url = https://github.com/trizen/perl-scripts
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = perl>=5.36.0
+	depends = perl-imager
+	provides = resize-images=23.09.r133.g50403e9
+	conflicts = resize-images
+	source = git+https://github.com/trizen/perl-scripts.git
+	sha512sums = SKIP
+
+pkgname = resize-images-git
