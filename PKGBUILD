@@ -1,35 +1,46 @@
 # Maintainer: Presence <dan465 at mail dot com>
 
 pkgname=pyobd
-pkgver=1.16
+pkgver=1.17
 pkgrel=1
 pkgdesc="An OBD-II compliant car diagnostic tool"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/barracuda-fsh/pyobd"
-license=('GPL')
-depends=('python-wxpython' 'python-pyserial' 'python-numpy' 'python-tornado' 'python-pint' 'hicolor-icon-theme')
-install=pyobd.install
-source=(https://github.com/barracuda-fsh/pyobd/archive/refs/tags/v${pkgver}.tar.gz
-        pyobd
-        pyobd.desktop
-        pyobd.png)
-sha256sums=('a10a09113dc20e28938f58a54337ae69577405a4e01795441eb1dc0b5f08cdef'
-            '78399115ad17dedfaf6d0391e8bc5cf11575b0dcab4beff8103bbabe094d998f'
-            'cc7c1e48b320fad408a49e876ceb841c19cbd921ebe58a25966eb224daef7e22'
-            '14d0d90dcda38c339dc8397f004923075f6d4fce37b7c8539021f4a77b3a86fd')
+license=('GPL-2.0-only')
+makedepends=('pyinstaller' 'pyside6-tools' 'icoutils' 
+	'python-wxpython' 'python-pyserial' 'python-numpy'
+	'python-tornado' 'python-pint' 'pyside6' 'icoutils'
+	'gendesk')
+depends=('glibc' 'hicolor-icon-theme' 'zlib')
+source=(https://github.com/barracuda-fsh/pyobd/archive/refs/tags/v${pkgver}.tar.gz)
+sha256sums=('0bd0dd2bdb9d64f6c097f372f946e14c6ccf3bf97cd40ef6cc7742d92bf75fd0')
+
+build() {
+    cd "$srcdir/${pkgname}-${pkgver}"
+    pyinstaller --onefile -w -i pyobd.ico --add-data "pyobd.ico:." pyobd.py
+    gendesk -f --pkgname=$pkgname \
+    --pkgdesc="$pkgdesc" \
+    --name=$pkgname \
+    --exec=$pkgname \
+    --icon=$pkgname \
+    --terminal=false \
+    --categories=Development,Utilities
+
+    mkdir -p "$srcdir/icons"
+    icotool -x pyobd.ico -o "$srcdir/icons"
+}
 
 package() {
     cd "$srcdir/${pkgname}-${pkgver}"
 
-    install -Dm644 "$srcdir/pyobd.desktop"  "$pkgdir/usr/share/applications/$pkgname.desktop"
-    install -Dm644 "$srcdir/pyobd.png"      "$pkgdir/usr/share/icons/hicolor/32x32/apps/$pkgname.png"
-    install -Dm644 "COPYING"                "$pkgdir/usr/share/licenses/$pkgname/COPYING"
-    install -Dm644 "pyobd.ico"              "$pkgdir/usr/lib/$pkgname/pyobd.ico"
-    install -Dm755 "$srcdir/pyobd"          "$pkgdir/usr/bin/pyobd"
-
-    mkdir -p "$pkgdir/usr/lib/$pkgname/obd/protocols/"
-    install -m644 -t "$pkgdir/usr/lib/$pkgname/" *.py
-    install -m644 -t "$pkgdir/usr/lib/$pkgname/obd/" obd/*.py
-    install -m644 -t "$pkgdir/usr/lib/$pkgname/obd/protocols/" obd/protocols/*.py
+    install -Dm755 "dist/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -Dm644 "$srcdir/${pkgname}-${pkgver}/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+    cd "$srcdir/icons"
+    export num=1
+    for size in {16,24,32,48,64,72,96,128,256};
+    do
+    	install -Dm644 ${pkgname}_${num}_${size}x${size}x32.png "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/$pkgname.png"
+    	export num=$(($num+1))
+    done
 }
 

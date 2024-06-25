@@ -1,4 +1,0 @@
-#!/bin/sh
-
-cd /usr/lib/pyobd
-python3 pyobd.py
