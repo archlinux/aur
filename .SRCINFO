@@ -1,0 +1,14 @@
+pkgbase = vault-unseal-git
+	pkgdesc = Auto-unseal utility for Hashicorp Vault
+	pkgver = 0.5.1.r7.b6f44d4
+	pkgrel = 1
+	url = https://github.com/lrstanley/vault-unseal
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = make
+	makedepends = go
+	source = vault-unseal::git+https://github.com/lrstanley/vault-unseal.git
+	sha256sums = SKIP
+
+pkgname = vault-unseal-git
