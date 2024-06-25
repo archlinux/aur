@@ -1,0 +1,31 @@
+diff -ru libbdplus-0.2.0.orig/configure.ac libbdplus-0.2.0/configure.ac
+--- libbdplus-0.2.0.orig/configure.ac	2024-06-25 11:09:23.266636039 -0300
++++ libbdplus-0.2.0/configure.ac	2024-06-25 11:16:14.246607863 -0300
+@@ -109,26 +109,7 @@
+ ])
+ 
+ dnl gcrypt check
+-
+-AC_ARG_WITH(libgcrypt-prefix,
+-            AC_HELP_STRING([--with-libgcrypt-prefix=PFX],
+-                           [prefix where libgcrypt is installed (optional)]),
+-     libgcrypt_config_prefix="$withval", libgcrypt_config_prefix="")
+-if test x$libgcrypt_config_prefix != x ; then
+-   if test x${LIBGCRYPT_CONFIG+set} != xset ; then
+-      LIBGCRYPT_CONFIG=$libgcrypt_config_prefix/bin/libgcrypt-config
+-   fi
+-fi
+-
+-AC_PATH_PROG(LIBGCRYPT_CONFIG, libgcrypt-config, no)
+-if test x"$LIBGCRYPT_CONFIG" = xno; then
+-  AC_MSG_ERROR([libgcrypt not found on system])
+-else
+-  LIBGCRYPT_CFLAGS=`$LIBGCRYPT_CONFIG --cflags`
+-  LIBGCRYPT_LIBS=`$LIBGCRYPT_CONFIG --libs`
+-  AC_SUBST(LIBGCRYPT_CFLAGS)
+-  AC_SUBST(LIBGCRYPT_LIBS)
+-fi
++PKG_CHECK_MODULES([LIBGCRYPT], [libgcrypt])
+ AC_FUNC_STRERROR_R
+ 
+ dnl use re-entrant version of gcrypt_error() from gpg-error

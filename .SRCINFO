@@ -1,13 +1,15 @@
 pkgbase = libbdplus
 	pkgdesc = Library for handling the BD+ protection scheme on bluray discs
 	pkgver = 0.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.videolan.org/developers/libbdplus.html
 	arch = i686
 	arch = x86_64
 	license = LGPL
 	depends = libaacs>=0.7.0
 	source = ftp://ftp.videolan.org/pub/videolan/libbdplus/0.2.0/libbdplus-0.2.0.tar.bz2
+	source = gcrypt.diff
 	sha256sums = b93eea3eaef33d6e9155d2c34b068c505493aa5a4936e63274f4342ab0f40a58
+	sha256sums = dbb9aa44fe544dea398f8eb144783794127593126427b7eb49a3850721018d9f
 
 pkgname = libbdplus
