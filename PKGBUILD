@@ -2,9 +2,9 @@
 
 _name="Astor"
 pkgname=${_name,,}
-pkgver=7.5.6
+pkgver=7.5.7
 _jarfile="${_name}-${pkgver}-jar-with-dependencies.jar"
-pkgrel=2
+pkgrel=1
 pkgdesc="A graphical Tango control system administration tool"
 arch=("any")
 url="https://gitlab.com/tango-controls/${_name}"
@@ -16,7 +16,7 @@ source=(
   launcher astor.desktop
 )
 sha256sums=(
-  "38c320b9a551c64007438071beecaf19092be70e3e0af4adfcc171ba7b66dee0"
+  "94e8a9d75ee922d3b445587bc9a3025a392f2d92e9178bb1633b2aa8b8a33074"
   "49f16c646996c55fa65f66b8eb8c948950834a93e9a75c71c9fd1b110d401eee"
   "af5373fa86149fe10becc1effe6f82df250f8d48b71135412319c8701b304bb3"
 )
@@ -29,7 +29,7 @@ prepare() {
 build() {
   cd ${_name}-${pkgver}
   export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
-  mvn clean package
+  mvn clean package --quiet
 }
 
 package() {

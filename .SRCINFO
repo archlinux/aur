@@ -1,7 +1,7 @@
 pkgbase = astor
 	pkgdesc = A graphical Tango control system administration tool
-	pkgver = 7.5.6
-	pkgrel = 2
+	pkgver = 7.5.7
+	pkgrel = 1
 	url = https://gitlab.com/tango-controls/Astor
 	arch = any
 	license = GPL-3.0-or-later
@@ -10,10 +10,10 @@ pkgbase = astor
 	depends = java-runtime=17
 	depends = sh
 	depends = hicolor-icon-theme
-	source = https://gitlab.com/tango-controls/Astor/-/archive/7.5.6/Astor-7.5.6.tar.gz
+	source = https://gitlab.com/tango-controls/Astor/-/archive/7.5.7/Astor-7.5.7.tar.gz
 	source = launcher
 	source = astor.desktop
-	sha256sums = 38c320b9a551c64007438071beecaf19092be70e3e0af4adfcc171ba7b66dee0
+	sha256sums = 94e8a9d75ee922d3b445587bc9a3025a392f2d92e9178bb1633b2aa8b8a33074
 	sha256sums = 49f16c646996c55fa65f66b8eb8c948950834a93e9a75c71c9fd1b110d401eee
 	sha256sums = af5373fa86149fe10becc1effe6f82df250f8d48b71135412319c8701b304bb3
 
