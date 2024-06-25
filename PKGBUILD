@@ -1,7 +1,7 @@
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname=nanonote
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='Minimalist note taking application'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('hicolor-icon-theme' 'qt5-base')
 makedepends=('extra-cmake-modules' 'git' 'python-jinja' 'python-pyaml' 'qt5-tools')
 source=("git+${url}.git#tag=${pkgver}")
-sha256sums=('SKIP')
+sha256sums=('f64550fe2a918ee1e6149a08e3169be99962a4546b4c57308c1326fb6760dde1')
 
 
 prepare() {
