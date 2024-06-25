@@ -1,0 +1,24 @@
+pkgbase = algolia-bin
+	pkgdesc = Interact with and configure Algolia applications
+	pkgver = 1.6.11
+	pkgrel = 1
+	url = https://github.com/algolia/cli
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv6h
+	license = MIT
+	provides = algolia
+	conflicts = algolia
+	source = https://github.com/algolia/cli/raw/v1.6.11/README.md
+	sha256sums = d74bc42be4cbafb48fd96d7cbd7759b14ecbfec843de1755b1ed1f0dd55d4c5a
+	source_x86_64 = https://github.com/algolia/cli/releases/download/v1.6.11/algolia_1.6.11_linux_amd64.tar.gz
+	sha256sums_x86_64 = ef892f73cf0574501ab02f091843c77c09a41ab33e8a5278b21d5b74723e3a2b
+	source_i686 = https://github.com/algolia/cli/releases/download/v1.6.11/algolia_1.6.11_linux_386.tar.gz
+	sha256sums_i686 = 55138fa98d45decba19f0218ee13739b6fd01a24b5d54f828fd53a66bc88cac9
+	source_aarch64 = https://github.com/algolia/cli/releases/download/v1.6.11/algolia_1.6.11_linux_arm64.tar.gz
+	sha256sums_aarch64 = a161e1f066cbdb5348228b6e5cad052c4c7da9217f390a1e73e60653d408599c
+	source_armv6h = https://github.com/algolia/cli/releases/download/v1.6.11/algolia_1.6.11_linux_armv6.tar.gz
+	sha256sums_armv6h = 4f6f133d284c2b442e9ea8e918eb0cbfdf5bd85e907cadc736ef0306311b3cd1
+
+pkgname = algolia-bin
