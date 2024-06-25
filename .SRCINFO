@@ -1,0 +1,24 @@
+pkgbase = mediago-git
+	pkgdesc = 视频在线提取工具 流媒体下载 m3u8下载
+	pkgver = 2.2.3.beta.0.r2.gbcb7084
+	pkgrel = 1
+	url = https://downloader.caorushizi.cn/
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = git
+	makedepends = nvm
+	makedepends = gendesk
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = curl
+	makedepends = pnpm
+	depends = electron30
+	provides = mediago=2.2.3.beta.0
+	conflicts = mediago
+	source = mediago.git::git+https://github.com/caorushizi/mediago.git
+	source = mediago.sh
+	sha256sums = SKIP
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+
+pkgname = mediago-git
