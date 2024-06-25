@@ -3,15 +3,16 @@
 # thanks to txtsd <aur.archlinux@ihavea.quest> for contributing some parts of the PKGBUILD code
 
 pkgname=openmw-git
-pkgver=0.48.0.r4764.g012d10703f
+pkgver=0.48.0.r5496.g8471cfb576
 pkgrel=1
 pkgdesc="An open-source engine reimplementation for the role-playing game Morrowind."
 arch=('i686' 'x86_64' 'aarch64')
 url="http://www.openmw.org"
-license=('GPL3' 'MIT' 'custom')
-depends=('openal' 'openscenegraph-openmw-git' 'mygui-openmw' 'bullet-dp' 'qt6-base' 'qt6-tools' 'ffmpeg' 'sdl2' 'unshield' 'libxt' 'boost-libs' 'luajit' 'recastnavigation-openmw' 'yaml-cpp' 'sqlite')
-optdepends=('openscenegraph-openmw-git: experimental performance enhancements for OpenMW that are too controversial to be included in the general purpose OSG project')
-makedepends=('git' 'cmake' 'boost' 'debugedit')
+license=(' 	GPL-3.0-or-later' 'MIT' 'custom')
+# openmw doesn't work with ffmpeg 7 , only reliable solution for now is to use ffmpeg4.4 instead
+# see https://gitlab.com/OpenMW/openmw/-/issues/8035 and https://gitlab.com/OpenMW/openmw/-/issues/7182
+depends=('openal' 'openscenegraph-openmw-git' 'mygui-openmw' 'bullet-dp' 'qt6-base' 'qt6-svg' 'ffmpeg4.4' 'sdl2' 'unshield' 'libxt' 'boost-libs' 'luajit' 'recastnavigation-openmw' 'yaml-cpp' 'sqlite')
+makedepends=('git' 'cmake' 'boost' 'debugedit' 'qt6-tools')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=('git+https://gitlab.com/OpenMW/openmw.git')
@@ -46,6 +47,8 @@ pkgver() {
 
 build() {
 
+  # Use Workaround for ffmpeg4.4 from https://gitlab.com/OpenMW/openmw/-/issues/6631#note_848732223
+  export PKG_CONFIG_LIBDIR='/usr/lib/ffmpeg4.4/pkgconfig/'
   cmake \
         -B _build \
         -S "${srcdir}/${pkgname%-git}"  \
