@@ -15,6 +15,3 @@ pkgname = python-duty
 	depends = python>=3.8
 	depends = python-failprint>1.0.0
 	optdepends = python-duty-doc: Documentation for python duty
-	provides = python-python-duty=1.4.0
-	conflicts = python-python-duty
-	replaces = python-python-duty

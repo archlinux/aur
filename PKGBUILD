@@ -41,9 +41,6 @@ build() {
 package_python-duty() {
     depends=('python>=3.8' 'python-failprint>1.0.0')
     optdepends=('python-duty-doc: Documentation for python duty')
-    replaces=("python-${pkgname}")
-    provides=("python-${pkgname}=${pkgver}")
-    conflicts=("python-${pkgname}")
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
