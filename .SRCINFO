@@ -1,7 +1,7 @@
 pkgbase = yuzu-appimage
 	pkgdesc = An experimental open-source Nintendo Switch emulator/debugger, GUI version, already compiled
 	pkgver = 20240304
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/LightningMods/def-not-yuzu/
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = yuzu-appimage
 	conflicts = yuzu-early-access-appimage
 	replaces = yuzu-early-access-appimage
 	options = !strip
-	source = https://github.com/LightningMods/def-not-yuzu/releases/download/x.xx/yuzu-mainline-20240304-537296095.AppImage
+	source = yuzu-mainline-20240304-537296095.AppImage::https://gitlab.archlinux.org/alphajack/citra-yuzu/-/raw/main/yuzu-mainline-20240304-537296095.AppImage?ref_type=heads&inline=false
 	source = yuzu.desktop
 	source = yuzu.svg
 	b2sums = b52ae63cc9f626488800ddc072e9395289128072eea0dabd8e3448e6df835984ff3bbca22307324b333b974c6ddd50a63c9826bf710158f37842e969616a380c

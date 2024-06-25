@@ -5,7 +5,7 @@ pkgname="yuzu-appimage"
 _commit="537296095"
 pkgver="20240304"
 
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="An experimental open-source Nintendo Switch emulator/debugger, GUI version, already compiled"
 url="https://github.com/LightningMods/def-not-yuzu/"
@@ -23,8 +23,8 @@ optdepends=("qt5-multimedia: for QT5 support"
             "vulkan-radeon: for Vulkan support on AMD"
             "nvidia-utils: for Vulkan support on NVIDIA"
             "vulkan-mesa-layers: additional vulkan layers")
-#source=("https://gitlab.archlinux.org/alphajack/citra-yuzu/-/raw/main/yuzu-mainline-$pkgver-$_commit.AppImage?ref_type=heads&inline=false"
-source=("https://github.com/LightningMods/def-not-yuzu/releases/download/x.xx/yuzu-mainline-$pkgver-$_commit.AppImage"
+#source=("yuzu-mainline-$pkgver-$_commit.AppImage::https://github.com/LightningMods/def-not-yuzu/releases/download/x.xx/yuzu-mainline-$pkgver-$_commit.AppImage"
+source=("yuzu-mainline-$pkgver-$_commit.AppImage::https://gitlab.archlinux.org/alphajack/citra-yuzu/-/raw/main/yuzu-mainline-$pkgver-$_commit.AppImage?ref_type=heads&inline=false"
         "yuzu.desktop"
         "yuzu.svg")
 b2sums=('b52ae63cc9f626488800ddc072e9395289128072eea0dabd8e3448e6df835984ff3bbca22307324b333b974c6ddd50a63c9826bf710158f37842e969616a380c'
