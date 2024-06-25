@@ -1,12 +1,13 @@
 pkgbase = emoji-keyboard-bin
 	pkgdesc = Virtual keyboard like emoji palette (binary release)
 	pkgver = 4.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/OzymandiasTheGreat/emoji-keyboard
 	arch = x86_64
 	license = MIT
 	depends = libayatana-appindicator
 	depends = webkit2gtk
+	depends = xdotool
 	provides = emoji-keyboard
 	conflicts = emoji-keyboard
 	source = https://github.com/OzymandiasTheGreat/emoji-keyboard/releases/download/v4.0.0/emoji-keyboard_4.0.0_amd64.deb

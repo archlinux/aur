@@ -3,12 +3,12 @@
 _pkgname=emoji-keyboard
 pkgname=$_pkgname-bin
 pkgver=4.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Virtual keyboard like emoji palette (binary release)'
 url="https://github.com/OzymandiasTheGreat/emoji-keyboard"
 license=('MIT')
 arch=('x86_64')
-depends=('libayatana-appindicator' 'webkit2gtk')
+depends=('libayatana-appindicator' 'webkit2gtk' 'xdotool')
 conflicts=("$_pkgname")
 provides=("$_pkgname")
 source=("$url/releases/download/v$pkgver/${_pkgname}_${pkgver}_amd64.deb"
@@ -27,4 +27,8 @@ package() {
   install -Dm644 app-icon.svg "$pkgdir/$_icdr/scalable/$_pkgname.svg"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
   mv "$pkgdir/$_icdr/256x256@2" "$pkgdir/$_icdr/256x256"
+# Fix directory permissions
+  find $pkgdir/usr -type f -exec chmod 644 {} \;
+  find $pkgdir/usr -type d -exec chmod 755 {} \;
+  chmod +x $pkgdir/usr/bin/$_pkgname
 }
