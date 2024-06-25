@@ -6,7 +6,7 @@
 _pkgname=upower
 pkgname="${_pkgname}-nosystemd-git"
 pkgver=1.90.4+10.r1708.20240523.669a1c2
-pkgrel=1
+pkgrel=2
 pkgdesc="Abstraction for enumerating power devices, listening to device events and querying history and statistics. Built without systemd dependencies. Latest Git checkout."
 arch=(
   'i686'
@@ -57,7 +57,7 @@ provides=(
 )
 conflicts=(
   "${_pkgname}"
-  "${_pkgname}-nocritical-nosystemd-git"
+  "${_pkgname}-nocritical-nosystemd-git<1.90.4+10.r1708"
 )
 replaces=(
   "${_pkgname}-nocritical-nosystemd-git<=1.90.4+10.r1708.20240523.669a1c2"
