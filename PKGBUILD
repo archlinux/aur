@@ -4,7 +4,7 @@
 
 pkgname=pokerth
 pkgver=1.1.2
-pkgrel=38
+pkgrel=39
 
 pkgdesc="Client to online Poker game written in C++/Qt"
 arch=('i686' 'x86_64')
@@ -73,7 +73,8 @@ package() {
   install -D pokerth "$pkgdir/usr/bin/pokerth"
   # added for icons 2024-06-26 Mailaender 
   install -Dm644 pokerth.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/pokerth.png"
-  install -Dm644 pokerth.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/pokerth.svg"  install -D -m644 docs/pokerth.1 "$pkgdir/usr/share/man/man1/pokerth.1"
+  install -Dm644 pokerth.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/pokerth.svg"
+  install -D -m644 docs/pokerth.1 "$pkgdir/usr/share/man/man1/pokerth.1"
   install -D -m644 data/data-copyright.txt "$pkgdir/usr/share/licenses/pokerth/data-copyright.txt"
   rm -f "$pkgdir/usr/share/pokerth/data/data-copyright.txt"
 }
