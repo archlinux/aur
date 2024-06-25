@@ -1,13 +1,13 @@
 pkgbase = 0ad-git
 	pkgdesc = Cross-platform, 3D and historically-based real-time strategy game - built from git development version.
-	pkgver = A26.r1378.ge1cea2a398
+	pkgver = A26.r1414.g2a7be7d946
 	pkgrel = 1
 	epoch = 1
 	url = http://play0ad.com/
 	arch = i686
 	arch = x86_64
 	license = GPL-2.0-or-later
-	license = CCPL
+	license = LicenseRef-CCPL
 	makedepends = boost
 	makedepends = cmake
 	makedepends = mesa
