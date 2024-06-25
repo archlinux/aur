@@ -6,7 +6,7 @@
 _pkgname=upower
 pkgname="${_pkgname}-nocritical-nosystemd-git"
 pkgver=1.90.4+10.r1708.20240523.669a1c2
-pkgrel=3
+pkgrel=4
 pkgdesc="Transitional package to switch to '${_pkgname}-nosystemd-git', since the Ingore action is now included in upstream git. This package can be deleted now."
 arch=(
   'any'
