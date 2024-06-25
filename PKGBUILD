@@ -1,29 +1,41 @@
-# Maintainer: Miguel Revilla <yo@miguelrevilla.com>
-# Contributor: Miguel Revilla <yo@miguelrevilla.com>
+# Maintainer: Miguel Revilla <yo at miguelrevilla dot com>
 
 pkgname=libodb-sqlite
-pkgver=2.4.0
+pkgver=2.5.0b27
+_pkgver=2.5.0-b.27
 pkgrel=1
 pkgdesc="The ODB SQLite runtime library"
+url="https://www.codesynthesis.com/products/odb/"
 arch=('i686' 'x86_64')
-depends=('libodb' 'sqlite')
-url="http://www.codesynthesis.com/products/odb/"
-options=(!libtool)
-license=('GPL')
-source=("http://www.codesynthesis.com/download/odb/2.4/libodb-sqlite-${pkgver}.tar.bz2")
-md5sums=('4415627849cd7d9f5dac7a160b245d4c')
+depends=('build2' 'libodb')
+options=('!libtool')
+license=('GPL3')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}"
+	mkdir -p "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 
-  ./configure --prefix=/usr --libdir=/usr/lib/odb --with-pkgconfigdir=/usr/lib/pkgconfig --with-libodb=/usr/lib
-  make ECHO=echo
+	GPPVER="$(${CXX:-g++} --version | grep 'g++ (GCC)' | sed 's/g++ (GCC) //' | sed 's/\s.*$//')"
+
+	bpkg create -d gcc-${GPPVER} cc \
+	config.cxx=${CXX:-g++} \
+	config.cc.coptions="-O3 $CXXFLAGS" \
+	config.bin.lib=shared \
+	config.install.root=${pkgdir}/usr \
+	config.install.relocatable=true
+
+	cd gcc-${GPPVER}
+	bpkg build --trust-yes ${pkgname}/${_pkgver}@https://pkg.cppget.org/1/beta ?sys:libodb ?sys:libsqlite3
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
 
-  make ECHO=echo DESTDIR="${pkgdir}" install
+	GPPVER="$(${CXX:-g++} --version | grep 'g++ (GCC)' | sed 's/g++ (GCC) //' | sed 's/\s.*$//')"
+	cd "${srcdir}/${pkgname}-${pkgver}/gcc-${GPPVER}"
 
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+	bpkg install ${pkgname}
+
+	mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}/
+	mv ${pkgdir}/usr/share/doc/${pkgname}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/
 }
