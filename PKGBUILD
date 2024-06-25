@@ -1,7 +1,7 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=icestorm-nightly
-pkgver=20240624_c23e99c
+pkgver=20240625_738af82
 pkgrel=1
 epoch=1
 pkgdesc="Lattice iCE40 FPGAs Bitstream Documentation"
@@ -16,7 +16,7 @@ makedepends=("git" "make" "gcc")
 conflicts=("icestorm-git")
 replaces=()
 source=(
-	"icestorm::git+https://github.com/YosysHQ/icestorm.git#commit=c23e99c"
+	"icestorm::git+https://github.com/YosysHQ/icestorm.git#commit=738af82"
 )
 sha256sums=(
 	"SKIP"
