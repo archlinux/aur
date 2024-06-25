@@ -2,16 +2,16 @@
 
 _pkgname=perl-scripts
 pkgname=markdown2pdf-git
-pkgver=22.07.r30.g073bec7
+pkgver=23.09.r132.g345abfd
 pkgrel=1
 pkgdesc="Markdown to PDF converter with syntax highlighting, using md2html (md4c), highlight and wkhtmltopdf."
 arch=('any')
 url="https://github.com/trizen/${_pkgname}"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 makedepends=('git')
 
-provides=()
-conflicts=()
+provides=("markdown2pdf=${pkgver}")
+conflicts=('markdown2pdf')
 
 depends=('perl>=5.10.0' 'perl-html-tree' 'perl-ipc-run3' 'wkhtmltopdf' 'highlight' 'md4c')
 
