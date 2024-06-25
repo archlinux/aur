@@ -2,14 +2,14 @@
 
 pkgname=tidal-dl-ng
 _pkgname=${pkgname//-/_}
-pkgver=0.15.4
+pkgver=0.15.6
 pkgrel=1
 pkgdesc='A tool for downloading music and albums from TIDAL'
 arch=(any)
 url='https://pypi.org/project/tidal-dl-ng/'
 license=(AGPL-3.0-only)
 depends=(
-    'python>=3.10'
+    'python>=3.11'
     'python-requests'
     'python-mutagen'
     'python-pycryptodome'
@@ -36,7 +36,7 @@ source=(
     "tidal-dl-ng"
     "tidal-dl-ng-gui"
 )
-sha256sums=('d3402c7b9af6903642d16aedcc5773ecfccd61f270c8a8539e531a32e574051a'
+sha256sums=('da638672088130a18aa6f3af0f181f96739af5a8d90b19e26c835f72cfc3de80'
             '1d2f9b06b7bba762f9a8770b163e001e5044a38b9d5befa8ea44fa3c98bcf172'
             'ecdc2868d0df9fa41e3bca50f3f0bcfede7543b54700f45b2095b9662da6dd9c')
 
