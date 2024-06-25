@@ -4,8 +4,8 @@
 # Contributor: Jamie Magee <jamie dot magee at gmail dot com>
 pkgname=stavekontrolden
 pkgver=2.8.112
-pkgrel=1
-pkgdesc="Stavekontrolden Danish dictionaries; for use with nuspell/hunspell, hyphen, libmythes, LibreOffice, and OpenOffice"
+pkgrel=2
+pkgdesc='Danish dictionaries; for use with multiple programs'
 arch=('any')
 url='https://stavekontrolden.dk/'
 license=('GPL-3.0-only AND (GPL-2.0-only AND LGPL-2.1-only AND MPL-1.1)')
