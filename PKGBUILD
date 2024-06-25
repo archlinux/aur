@@ -3,8 +3,8 @@
 # All my PKGBUILDs are managed at https://github.com/thomaseizinger/pkgbuilds
 
 pkgname=photoprism-bin
-pkgver="240528"
-_commit="977d6c0de"
+pkgver="240531"
+_commit="60b3a4628"
 pkgrel=0
 epoch=
 pkgdesc="Personal Photo Management powered by Go and Google TensorFlow "
@@ -41,8 +41,8 @@ sha256sums=('18fb59d0ee09f6b9d95666e8c6fdd1b151fae985c18befb11b86e0fc1884b7d7'
             'ec6f438c9818f982fb2aaa1895a8b07abb41a3c2befd1c3baa2fecbc2d6cc721'
             '76de44acbdfd3f818b9549b77daf187fb740ceccd3c01d42d8308d5edcf49d6c'
             'ca4bfbddf0a550f215f28e31de56eb9ac60777f65aa7b89433155aa7998388e8')
-sha256sums_x86_64=('459879b4c25094e157f34a423ca9e0550207a9819308cf58bf198f50b1203e98')
-sha256sums_aarch64=('3792c8b5e3e2e5aa34c50b29348a8a3160d6d4d577145eb155a46098fda1d8fc')
+sha256sums_x86_64=('1859df8e95c054fb4ff9c9de80ed0db96a1126f91d3e57946628fa92008229eb')
+sha256sums_aarch64=('16d5ef94dd733bd46db49b10c25a019b9510e690d40efee1d691c20a72263044')
 noextract=()
 validpgpkeys=()
 
