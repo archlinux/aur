@@ -1,32 +1,41 @@
-# Maintainer: Miguel Revilla <yo@miguelrevilla.com>
-# Contributor: Miguel Revilla <yo@miguelrevilla.com>
+# Maintainer: Miguel Revilla <yo at miguelrevilla dot com>
 
 pkgname=libodb
-pkgver=2.4.0
+pkgver=2.5.0b27
+_pkgver=2.5.0-b.27
 pkgrel=1
 pkgdesc="The ODB common runtime library"
+url="https://www.codesynthesis.com/products/odb/"
 arch=('i686' 'x86_64')
-depends=('gcc-libs')
-url="http://www.codesynthesis.com/products/odb/"
+depends=('build2')
 options=('!libtool')
-license=('GPL')
-source=("http://www.codesynthesis.com/download/odb/2.4/libodb-${pkgver}.tar.bz2")
-md5sums=('ae3842876f4f30c78e9d71fcf945ff7a')
+license=('GPL3')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}"
+	mkdir -p "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 
-  ./configure --prefix=/usr --libdir=/usr/lib/odb --with-pkgconfigdir=/usr/lib/pkgconfig
-  make ECHO=echo
+	GPPVER="$(${CXX:-g++} --version | grep 'g++ (GCC)' | sed 's/g++ (GCC) //' | sed 's/\s.*$//')"
+
+	bpkg create -d gcc-${GPPVER} cc \
+	config.cxx=${CXX:-g++} \
+	config.cc.coptions="-O3 $CXXFLAGS" \
+	config.bin.lib=shared \
+	config.install.root=${pkgdir}/usr \
+	config.install.relocatable=true
+
+	cd gcc-${GPPVER}
+	bpkg build --trust-yes ${pkgname}/${_pkgver}@https://pkg.cppget.org/1/beta
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
 
-  make ECHO=echo DESTDIR="${pkgdir}" install
+	GPPVER="$(${CXX:-g++} --version | grep 'g++ (GCC)' | sed 's/g++ (GCC) //' | sed 's/\s.*$//')"
+	cd "${srcdir}/${pkgname}-${pkgver}/gcc-${GPPVER}"
 
-  install -d -m 755 "${pkgdir}"/etc/ld.so.conf.d
-  echo "/usr/lib/odb" > "${pkgdir}"/etc/ld.so.conf.d/${pkgname}.conf
+	bpkg install ${pkgname}
 
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+	mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}/
+	mv ${pkgdir}/usr/share/doc/${pkgname}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/
 }
