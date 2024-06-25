@@ -1,15 +1,15 @@
 pkgbase = zig-bin
 	pkgdesc = a general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software
 	pkgver = 0.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ziglang.org/
 	arch = x86_64
 	arch = pentium4
 	arch = aarch64
 	arch = armv7h
 	arch = riscv64
-	license = GPL
-	provides = zig
+	license = MIT
+	provides = zig=0.13.0
 	conflicts = zig
 	source_x86_64 = https://ziglang.org/download/0.13.0/zig-linux-x86_64-0.13.0.tar.xz
 	sha256sums_x86_64 = d45312e61ebcc48032b77bc4cf7fd6915c11fa16e4aad116b66c9468211230ea

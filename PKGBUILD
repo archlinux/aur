@@ -2,12 +2,12 @@
 
 pkgname=zig-bin
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='a general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software'
 arch=('x86_64' 'pentium4' 'aarch64' 'armv7h' 'riscv64')
 url='https://ziglang.org/'
-license=('GPL')
-provides=('zig')
+license=('MIT')
+provides=("zig=$pkgver")
 conflicts=('zig')
 source_x86_64=("https://ziglang.org/download/$pkgver/zig-linux-x86_64-$pkgver.tar.xz")
 source_pentium4=("https://ziglang.org/download/$pkgver/zig-linux-x86-$pkgver.tar.xz")
