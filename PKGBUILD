@@ -2,7 +2,7 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 pkgname=sigdigger-git
-pkgver=r930.5097e66
+pkgver=r1089.36a1626
 pkgrel=1
 pkgdesc="Qt-based digital signal analyzer, using Suscan core and Sigutils DSP library"
 arch=(any)
