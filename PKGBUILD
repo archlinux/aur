@@ -3,7 +3,7 @@
 
 pkgname="aider-chat"
 _pkgname="aider"
-pkgver=0.39.0
+pkgver=0.40.0
 pkgrel=1
 pkgdesc="AI pair programming in your terminal"
 url="https://github.com/paul-gauthier/aider"
@@ -54,7 +54,7 @@ optdepends=(
   "python-soundfile: portaudio support"
 )
 source=("$pkgname::git+$url.git#tag=v$pkgver")
-b2sums=('d8d796e74393f548828280ba0251946217a053a00357ae25729c71fe78c2a55535271ed4a5d94a2848d7ddb3e93d640489f8e1a3a79f1f1fcbe0f5b5c8774263')
+b2sums=('53d048534618e28d9ef65efa81dc5ed032187b4a2780af65abf80628a5847abd75fadad48afa2dc8b245b1dbcacf5bd71f4c86f8d1a0f9672f24bea3f4be83ac')
 
 prepare() {
   cd "$pkgname"
