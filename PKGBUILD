@@ -25,7 +25,7 @@ _renderer=gles
 
 pkgbase=kodi-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r65618.f0b18b55c57
+pkgver=r66261.ec8ec2a4869
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -39,7 +39,7 @@ makedepends=(
   'pipewire' 'python-pycryptodomex' 'python-pillow' 'python-pybluez'
   'python-simplejson' 'shairplay' 'smbclient' 'sndio' 'spdlog' 'taglib'
   'tinyxml' 'swig' 'upower' 'giflib' 'rapidjson' 'ghostscript' 'meson' 'gtest'
-  'graphviz' 'pcre' 'tinyxml2' 'libdisplay-info'
+  'graphviz' 'pcre' 'tinyxml2' 'libdisplay-info' 'exiv2'
   # cmake/scripts/linux/Install.cmake calls distutils
   # python 3.12 does no longer come with distutils on board
   'python-setuptools'
@@ -193,7 +193,7 @@ package_kodi-git() {
     'mariadb-libs' 'mesa' 'libpipewire' 'python-pillow' 'python-pycryptodomex'
     'python-simplejson' 'shairplay' 'smbclient' 'sndio' 'spdlog' 'sqlite'
     'taglib' 'tinyxml' 'libxrandr' 'libxkbcommon' 'waylandpp' 'libinput'
-    'pcre' 'tinyxml2' 'libdisplay-info'
+    'pcre' 'tinyxml2' 'libdisplay-info' 'exiv2'
   )
   [[ -n "$_clangbuild" ]] && depends+=('glu')
 
