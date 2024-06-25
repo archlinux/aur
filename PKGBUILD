@@ -1,7 +1,7 @@
 # Maintainer: Gaël PORTAY <gael.portay@gmail.com>
 
 pkgname=iamroot-armhf
-pkgver=22
+pkgver=23
 pkgrel=1
 pkgdesc='Emulating the syscall chroot(2) in an unpriviliged process (armhf)'
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('armv7-eabihf-glibc-bleeding-edge-toolchain'
 checkdepends=('shellcheck')
 options=('!strip')
 source=("https://github.com/gportay/${pkgname%-armhf}/archive/v$pkgver.tar.gz")
-sha256sums=('09e7f9c52007090aceb53831103aba9d3ee72df3b41ce9c0ddb76f573a446e8c')
+sha256sums=('f33087f278f02cb94c25c9e6d97b288f9deed61f3b959615a6c20ebabbd0390d')
 validpgpkeys=('8F3491E60E62695ED780AC672FA122CA0501CA71')
 
 prepare() {
