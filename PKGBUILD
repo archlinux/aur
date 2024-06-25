@@ -3,19 +3,33 @@
 # Contributor: Kazuo Teramoto <kaz.rag at gmail.com>
 
 pkgname=afew-git
-pkgver=2.0.0.r38.gf581330
+_pkgname=${pkgname%-git}
+pkgver=3.0.1.r63.g65227fa
 pkgrel=1
 epoch=1
 pkgdesc='Initial tagging script for notmuch mail'
 arch=(any)
 url=https://github.com/afewmail/afew
-license=('custom:BSD')
-depends=('notmuch' 'python-chardet' 'python-dkim' 'python-setuptools')
-makedepends=('git' 'python-freezegun' 'python-setuptools-scm' 'python-sphinx')
-provides=('afew')
-conflicts=('afew')
+license=(ISC)
+depends=(
+  notmuch
+  python-chardet
+  python-dkim
+  python-setuptools
+)
+makedepends=(
+  git
+  python-build
+  python-installer
+  python-setuptools-scm
+  python-sphinx
+  python-wheel
+)
+checkdepends=(python-freezegun)
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 source=("git+$url.git")
-md5sums=('SKIP')
+b2sums=(SKIP)
 
 pkgver() {
   cd afew
@@ -23,22 +37,24 @@ pkgver() {
 }
 
 build() {
-  cd afew
-  python setup.py build egg_info
-  export SETUPTOOLS_SCM_PRETEND_VERSION=1
-  python setup.py build_sphinx -b man --version $pkgver
+  cd "$_pkgname"
+  python -m build --wheel --skip-dependency-check --no-isolation
+  PYTHONPATH="build:$PYTHONPATH" sphinx-build -b man docs build
 }
 
 check() {
-  cd afew
-  python -m unittest discover afew/tests
+  cd "$_pkgname"
+  python -m unittest discover "$_pkgname"/tests
 }
 
 package() {
-  cd afew
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm644 -t "$pkgdir"/usr/share/man/man1 build/sphinx/man/afew.1
-  install -Dm644 -t "$pkgdir"/usr/share/licenses/afew LICENSE
-}
+  cd "$_pkgname"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 -t "$pkgdir"/usr/share/man/man1 build/"$_pkgname".1
 
-# vim:set ts=2 sw=2 et:
+  # Symlink license file
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  install -d "$pkgdir"/usr/share/licenses/$pkgname
+  ln -s "$site_packages"/"$_pkgname"-$pkgver.dist-info/LICENSE \
+    "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+}
