@@ -1,15 +1,15 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 _name="scikit-misc"
 pkgname="python-${_name}"
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Miscellaenous tools for scientific computing"
 arch=('x86_64')
 url="https://github.com/has2k1/${_name}"
-license=('BSD')
+license=('BSD-3-Clause')
 depends=(
-  "python>=3.9"
-  "python-numpy>=1.22.3"
+  "python>=3.10"
+  "python-numpy>=2.0.0"
   "blas-openblas"
 )
 makedepends=(
@@ -22,6 +22,7 @@ makedepends=(
   "meson-python"
   "cython"
   "gcc-fortran" # Alternative compilers are also supported
+  "git"
 )
 optdepends=(
   "python-yaml: Better output during compilation"
@@ -31,17 +32,17 @@ checkdepends=(
 )
 
 source=(
-  "${_name}-${pkgver}.tar.gz"::"${url}/archive/refs/tags/v${pkgver}.tar.gz"
+  "${_name}-${pkgver}"::"git+${url}#tag=v${pkgver}"
 )
+
 sha256sums=(
-  "7d5367253f2b17e330dcf0fe7afad7a6986bd6e747d45bd4727a67b7ac68cb0a"
+  '488afbf88dad2b6a72afd8e445c3a607e06e4e740abadf399467f5c943eaa502'
 )
+
 _archive="${_name}-${pkgver}"
 
 prepare() {
   cd "${_archive}"
-  # Remove older (specific) numpy requirement
-  sed -r -i 's/(numpy)==/\1>=/' pyproject.toml
   # Disable coverage during check()
   sed -i -e 's/--cov=skmisc --cov-report=xml//' pyproject.toml
   # Append version info manually
