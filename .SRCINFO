@@ -1,6 +1,6 @@
 pkgbase = chunghwa-post-webatm
 	pkgdesc = WebATM plugin for Chunghwa Post (中華郵政 WebATM 元件)
-	pkgver = 1.2307.31.1
+	pkgver = 1.2406.11.1
 	pkgrel = 1
 	epoch = 1
 	url = https://webatm.post.gov.tw/
@@ -14,9 +14,9 @@ pkgbase = chunghwa-post-webatm
 	depends = gnutls
 	depends = pcsclite
 	depends = sh
-	source = ATMSetup-1.2307.31.1.msi::https://webatm.post.gov.tw/postatm/cab/ATMSetup.msi
+	source = ATMSetup-1.2406.11.1.msi::https://webatm.post.gov.tw/postatm/cab/ATMSetup.msi
 	source = chunghwa-post-webatm
-	sha256sums = bccd273d60d3a9cb2b4221ee797ac596aa7d9917ed2c96b072e28e45088684bd
+	sha256sums = 8e72448a6cc78821ea5d7e84ce92399fc2a26ad9226effb403396af68db3c615
 	sha256sums = 2a21dba5dea4132d3693cf3d6332cee2f3a0be650f0e19e76ece27cd834abb75
 
 pkgname = chunghwa-post-webatm
