@@ -2,10 +2,10 @@
 pkgname=gdm-settings-git
 pkgdesc="A settings app for Gnome's Login Manager, GDM"
 url="https://gdm-settings.github.io"
-pkgver=4.3+17+g4949544
+pkgver=v4.3.r17.g4949544
 pkgrel=1
 arch=(any)
-license=(AGPL3)
+license=(AGPL-3.0-or-later)
 depends=(gdm libadwaita glib2-devel python-gobject gettext polkit)
 makedepends=(git meson blueprint-compiler gobject-introspection)
 checkdepends=(appstream)
@@ -15,8 +15,8 @@ source=("$pkgname"::"git+https://github.com/gdm-settings/gdm-settings.git")
 md5sums=(SKIP)
 
 pkgver() {
-  cd "$srcdir/$pkgname"
-  git describe --tags --long | sed -e 's/^v//' -e 's/-/+/g'
+  cd "$pkgname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
