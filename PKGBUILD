@@ -1,17 +1,18 @@
 # Maintainer: Nanaka Hiira <hiira plus archlinux at hiira dot dev>
 pkgname=fcitx5-hazkey-bin
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="Japanese input method for fcitx5, powered by azooKey engine"
 arch=('x86_64')
 url="https://github.com/7ka-Hiira/fcitx5-hazkey"
 license=('MIT')
 depends=('fcitx5>=5.0.4')
+optdepends=('vulkan-driver: Zenzai neural conversion support')
 conflicts=('fcitx5-hazkey' 'fcitx5-hazkey-git')
 provides=('fcitx5-hazkey')
-source=("https://github.com/7ka-Hiira/fcitx5-hazkey/releases/download/0.0.3/fcitx5-hazkey-0.0.3-x86_64.tar.gz"
+source=("https://github.com/7ka-Hiira/fcitx5-hazkey/releases/download/$pkgver/fcitx5-hazkey-$pkgver-x86_64.tar.gz"
 		"LICENSE")
-sha256sums=('a27423e1bf66ca4b892bce12fda4a56bbb742dfd0ca1bea5bcbdb05a94b140ff'
+sha256sums=('46803034de7c93fdc2b2f1ed954d6480882008a871dc23f1f8384f1fd6c0b8c9'
 			'36ae30a03484d88f0f90e1985750b0a3f43521bf0a5c8112354bec2de60e0c5b')
 options=(!strip)
 
