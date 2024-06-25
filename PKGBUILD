@@ -7,7 +7,7 @@ pkgdesc="Gnu Single Game Manager,Linux端的游戏库管理工具,主要与 Lutr
 arch=(
     'x86_64'
 )
-url="https://github.com/Jguer/yay"
+url="https://github.com/XDwanj/go-gsgm"
 license=('GPL-3.0')
 depends=(
     'lutris>0.5.14'
@@ -25,7 +25,7 @@ source=(
     "https://raw.githubusercontent.com/XDwanj/go-gsgm/master/LICENSE"
 )
 sha256sums=('eaff837fb0e66f53ee62d8d9f58f4f5d930646ab4804e4cb69169f69fccb4d41'
-            '4002f795f7119311fc2413ef76e823dc38b3a59864c472c323c65089e1fd7861')
+'4002f795f7119311fc2413ef76e823dc38b3a59864c472c323c65089e1fd7861')
 
 prepare() {
     cd "$srcdir"
