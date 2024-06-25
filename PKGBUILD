@@ -2,6 +2,7 @@
 
 pkgname=odb
 pkgver=2.5.0b27
+_pkgver=2.5.0-b.27
 pkgrel=1
 pkgdesc="C++ Object-Relational Mapping compiler"
 url="https://www.codesynthesis.com/products/odb/"
@@ -26,7 +27,7 @@ build() {
 	config.install.relocatable=true
 
 	cd odb-gcc-${GPPVER}
-	yes | bpkg build --trust-yes odb@https://pkg.cppget.org/1/beta
+	yes | bpkg build --trust-yes odb/${_pkgver}@https://pkg.cppget.org/1/beta
 }
 
 package() {
