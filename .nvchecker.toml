@@ -1,0 +1,5 @@
++[fjordlauncher-bin]
++source = "github"
++github = "unmojang/FjordLauncher"
++include_regex = "\\d+\\.\\d+"
++use_latest_release = true
