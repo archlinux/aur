@@ -1,6 +1,6 @@
 pkgbase = r-nloptr
 	pkgdesc = R Interface to NLopt
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=nloptr
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = r-nloptr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-xml2
-	source = https://cran.r-project.org/src/contrib/nloptr_2.1.0.tar.gz
-	sha256sums = 5ead4257c9ec20045644c1d80a2bbbfef1aa9bfb8c2bbba189c56a7747eb6fac
+	source = https://cran.r-project.org/src/contrib/nloptr_2.1.1.tar.gz
+	sha256sums = 4cdaf55dfdeb090119f2c2ca77f617962524654da4511bacd650f62bb6dad8ea
 
 pkgname = r-nloptr
