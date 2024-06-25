@@ -3,12 +3,12 @@
 # Contributor: Brian F.G. <bidulock@openss7.org>
 pkgname=accel-ppp
 pkgver=1.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="High performance PPTP/L2TP/PPPoE/IPoE server"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/apps/trac/accel-ppp/"
 license=('GPL')
-depends=('openssl>=1.0.0' 'pcre>=8.30' 'libnl' 'lua51')
+depends=('openssl>=1.0.0' 'pcre>=8.30' 'lua51')
 makedepends=('cmake>=2.6' 'net-snmp>=5.x')
 optdepends=('accel-ppp-ipoe-dkms' 'accel-ppp-vlanmon-dkms' 'logrotate')
 conflicts=('accel-ppp-git')
