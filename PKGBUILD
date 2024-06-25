@@ -10,7 +10,7 @@ pkgver() {
 }
 
 _pkgver=$(_pkgver)
-pkgver=20240429
+pkgver=20240624
 pkgname=jabref-latest
 pkgrel=1
 pkgdesc="GUI frontend for BibTeX, written in Java; latest main (master) version from git"
@@ -33,7 +33,7 @@ source=(Jabref-${_pkgver}.tgz::https://builds.jabref.org/main/JabRef-5.14-portab
         JabRef.desktop
         JabRef.svg)
 sha256sums=('SKIP'
-            '5420fc1b814ef6776f2dfe845676b9c41e36118413e2a2d30fe0694d7a67743e'
+            '68664af2717c2be847dcc219ff34e9a86721e5441f60a6b11472abb50c1fdeff'
             '857807c9240181f5d7e783898e94e523beaba8b6b55617931141cbffba41c70d'
             '81a9ce53092525d1ba964435a0558654441a85e818581453a50df1045017c131'
             '84408ddc8c6e41e4367f3b6cd171909fb1cf7ac808495f3a8033b64a2ff4c40b')
