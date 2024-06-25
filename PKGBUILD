@@ -22,10 +22,9 @@ options=('lto')
 
 #source=("git+https://github.com/h2o/h2o.git"
 source=("git+https://github.com/h2o/h2o.git?commit=${_commit}?signed/"
-        "neverbleed-fix-when-lacking-engines.patch"
+#        "neverbleed-fix-when-lacking-engines.patch"
 	'h2o.service')
 sha256sums=('SKIP'
-            '982e4e93d91dd39682b4e8106a5507bc89ba675e437f3c39fe1e0132483c45de'
             '7fccdeb1a89134b48674764dc243f8967eb1234679e401af93e210fbf0934b62')
 backup=('etc/h2o.conf')
 provides=('h2o' 'libh2o')
