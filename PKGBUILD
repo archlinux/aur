@@ -2,15 +2,15 @@
 
 pkgname=gitwrk-git
 _pkgname=gitwrk
-pkgver=v1.0.8.r0.g904fcd8
-pkgrel=2
+pkgver=v1.0.11.r3.gd3a53e2
+pkgrel=1
 arch=('i686' 'x86_64')
-url="https://github.com/unravela/gitwrk"
+url="https://github.com/sn3d/gitwrk"
 license=("MIT")
 
 pkgdesc='GitWrk is a small CLI tool that helps you with monthly reports by extracting working hours directly from git repository.'
 
-source=("$_pkgname::git://github.com/unravela/gitwrk.git")
+source=("$_pkgname::git+https://github.com/sn3d/gitwrk.git")
 sha512sums=('SKIP')
 makedepends=('go' 'git')
 provides=('gitwrk')
@@ -27,7 +27,7 @@ build() {
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-    go build -o $_pkgname ./cmd/
+    go build -o $_pkgname ./cmd/gitwrk/
 }
 
 package() {

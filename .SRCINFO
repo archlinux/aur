@@ -1,16 +1,15 @@
 pkgbase = gitwrk-git
 	pkgdesc = GitWrk is a small CLI tool that helps you with monthly reports by extracting working hours directly from git repository.
-	pkgver = v1.0.8.r0.g904fcd8
-	pkgrel = 2
-	url = https://github.com/unravela/gitwrk
+	pkgver = v1.0.11.r3.gd3a53e2
+	pkgrel = 1
+	url = https://github.com/sn3d/gitwrk
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	makedepends = git
 	provides = gitwrk
-	source = gitwrk::git://github.com/unravela/gitwrk.git
+	source = gitwrk::git+https://github.com/sn3d/gitwrk.git
 	sha512sums = SKIP
 
 pkgname = gitwrk-git
-
