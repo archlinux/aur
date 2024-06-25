@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Co-Maintainer: alphazo <archlinux-1229 at notracking dot email>
 pkgname=protonmail-desktop
-_pkgver=1.0.3-beta
+_pkgver=1.0.4-beta
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Proton official desktop application for Proton Mail and Proton Calendar"
@@ -21,7 +21,7 @@ optdepends=(
   'xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)'
 )
 source=("ProtonMail-desktop-${_pkgver}.deb::https://proton.me/download/mail/linux/ProtonMail-desktop-beta.deb")
-sha256sums=('a296af5695d0980fd50d9f8afe4d0d245c101d4509860f9b526ff0f04aeda29c')
+sha256sums=('298feb8e2268cce416dbb158963cb937554ab8aae8273dd5e3ce433da1f4d496')
 
 package() {
   bsdtar -xvf data.tar.xz -C "$pkgdir/"
