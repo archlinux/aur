@@ -14,7 +14,7 @@ pkgrel=1
 pkgdesc="Optimized HTTP server with support for HTTP/1.x and HTTP/2"
 arch=('i686' 'x86_64' 'aarch64')
 # if you want websocket support, you'll also need aur/wslay
-depends=('libuv' 'zlib' 'libwslay' 'libcap' 'brotli' 'bcc' 'sh' 'glibc' 'gcc-libs' 'libressl')
+depends=('libuv' 'zlib' 'libwslay' 'libcap' 'brotli' 'bcc' 'sh' 'glibc' 'gcc-libs')
 makedepends=('bison' 'cmake' 'libtool' 'make' 'pkg-config' 'ruby' 'libaegis' 'git')
 url="https://github.com/h2o/h2o"
 license=('MIT')
@@ -43,7 +43,7 @@ prepare() {
         git submodule update --init --recursive
         
         # libressl-3.8(OPENSSL_NO_ENGINE)
-        git apply ${srcdir}/neverbleed-fix-when-lacking-engines.patch
+        #git apply ${srcdir}/neverbleed-fix-when-lacking-engines.patch
 
 	# set CMake minimal version to 3.9 to set CMP0039 to new
 	sed -i 's/VERSION 2.8.12/VERSION 3.9/g' CMakeLists.txt
@@ -55,7 +55,8 @@ prepare() {
 #        fi
         export CFLAGS="$CFLAGS $LTOFLAGS"
         export CXXFLAGS="$CXXFLAGS $LTOFLAGS"
-        export LDFLAGS="$LDFLAGS $LTOFLAGS -Wl,-rpath,/usr/lib/libressl"
+        #export LDFLAGS="$LDFLAGS $LTOFLAGS -Wl,-rpath,/usr/lib/libressl"
+        export LDFLAGS="$LDFLAGS $LTOFLAGS"
 
         cmake \
                 -DCMAKE_BUILD_TYPE=Release \
@@ -72,10 +73,10 @@ prepare() {
                 -DWITHOUT_LIBS=off \
                 -DWITH_H2OLOG=on \
                 -DBUILD_SHARED_LIBS=on \
-                -DOPENSSL_ROOT_DIR=/usr/lib/libressl \
-                -DOPENSSL_INCLUDE_DIR=/usr/include/libressl \
-                -DOPENSSL_LIBRARIES=/usr/lib/libressl \
                 .
+#                -DOPENSSL_ROOT_DIR=/usr/lib/libressl \
+#                -DOPENSSL_INCLUDE_DIR=/usr/include/libressl \
+#                -DOPENSSL_LIBRARIES=/usr/lib/libressl \
 }
 
 build() {
