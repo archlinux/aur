@@ -1,6 +1,6 @@
 pkgbase = suwidgets-git
 	pkgdesc = Sigutils-related widgets
-	pkgver = r84.afa1b80
+	pkgver = r377.f7571f7
 	pkgrel = 1
 	url = https://github.com/BatchDrake/SuWidgets
 	arch = i686
@@ -8,13 +8,12 @@ pkgbase = suwidgets-git
 	license = custom
 	makedepends = git
 	makedepends = gcc
-	depends = qt5-base
+	depends = qt6-base
 	depends = sigutils
 	depends = fftw
 	provides = suwidgets
 	conflicts = suwidgets
-	source = suwidgets-git::git+https://github.com/BatchDrake/SuWidgets.git
+	source = suwidgets-git::git+https://github.com/BatchDrake/SuWidgets.git#branch=develop
 	sha1sums = SKIP
 
 pkgname = suwidgets-git
-

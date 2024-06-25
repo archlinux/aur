@@ -2,7 +2,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 pkgname=suwidgets-git
-pkgver=r282.42c7842
+pkgver=r377.f7571f7
 pkgrel=1
 pkgdesc="Sigutils-related widgets"
 arch=(i686 x86_64)
