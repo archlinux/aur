@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="The ODB SQLite runtime library"
 url="https://www.codesynthesis.com/products/odb/"
 arch=('i686' 'x86_64')
-depends=('build2' 'libodb')
+depends=('build2' 'libodb' 'sqlite')
 options=('!libtool')
 license=('GPL3')
 

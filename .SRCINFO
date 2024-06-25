@@ -8,6 +8,7 @@ pkgbase = libodb-sqlite
 	license = GPL3
 	depends = build2
 	depends = libodb
+	depends = sqlite
 	options = !libtool
 
 pkgname = libodb-sqlite
