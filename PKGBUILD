@@ -13,8 +13,16 @@ optdepends=(
   'hunspell: the spell checking libraries and apps'
   'hyphen: for use of hyphenation rules'
   'libmythes: for use of thesaurus dictionary')
-makedepends=('libarchive' 'coreutils' 'findutils')
-provides=('libreoffice-extension-da_dk' 'openoffice-extension-da_dk' 'hunspell-da' 'hyphen-da' 'mythes-da')
+makedepends=(
+  'libarchive'
+  'coreutils'
+  'findutils')
+provides=(
+  'libreoffice-extension-da_dk'
+  'openoffice-extension-da_dk'
+  'hunspell-da'
+  'hyphen-da'
+  'mythes-da')
 conflicts=("${provides[@]}")
 source=("https://stavekontrolden.dk/dictionaries/da_DK/da_DK-$pkgver.oxt")
 b2sums=('2d18050d025e2cb8f3ed3435df8537c860fba9604912cfd79af746279fcd69e1cf368a950d1b48d29a6be1aa6a44c3a56e8339362e44cc39efe1a4782213e65a')
