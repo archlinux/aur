@@ -2,14 +2,14 @@
 
 pkgname=luminance
 _pkgname=Luminance
-pkgver=1.0.4
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A simple GTK application to control brightness of displays including external displays supporting DDC/CI"
 arch=('x86_64')
 url="https://github.com/sidevesh/$_pkgname"
 license=('GPL3')
 makedepends=('git')
-depends=('gtk3' 'ddcutil')
+depends=('gtk4' 'libadwaita' 'ddcutil')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("git+https://github.com/sidevesh/$_pkgname.git#tag=$pkgver" "git+https://github.com/ahshabbir/ddcbc-api.git")
