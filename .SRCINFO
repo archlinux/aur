@@ -1,11 +1,12 @@
 pkgbase = gnome-shell-extension-disconnect-wifi-git
 	pkgdesc = Adds a disconnect option for Wifi in status menu
-	pkgver = 31.r0.g35277ae
-	pkgrel = 2
+	pkgver = 32.r0.g4d93259
+	pkgrel = 1
 	url = https://github.com/kgshank/gse-disconnect-wifi
 	arch = any
 	license = GPL-3.0-or-later
-	depends = gnome-shell<=1:44.6
+	makedepends = git
+	depends = gnome-shell
 	provides = gnome-shell-extension-disconnect-wifi
 	conflicts = gnome-shell-extension-disconnect-wifi
 	source = git+https://github.com/kgshank/gse-disconnect-wifi.git
