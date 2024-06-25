@@ -1,0 +1,22 @@
+pkgbase = cdncheck-bin
+	pkgdesc = A utility to detect various technology for a given IP address
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/projectdiscovery/cdncheck
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = arm
+	license = MIT
+	provides = cdncheck
+	conflicts = cdncheck
+	source_x86_64 = https://github.com/projectdiscovery/cdncheck/releases/download/v1.1.0/cdncheck_1.1.0_linux_amd64.zip
+	sha256sums_x86_64 = 99459178dc8908ff603a0a9306b3801b89e49f808203a5ace8306d6d6ad213aa
+	source_i686 = https://github.com/projectdiscovery/cdncheck/releases/download/v1.1.0/cdncheck_1.1.0_linux_386.zip
+	sha256sums_i686 = fb3ab041cdb5b936b8647e6344f8bff5f0d9c2afbe8356a498197edcf122397e
+	source_aarch64 = https://github.com/projectdiscovery/cdncheck/releases/download/v1.1.0/cdncheck_1.1.0_linux_arm64.zip
+	sha256sums_aarch64 = 9295395f069e379f44f025039e0726bd788773fb5337e46673f0e76286adaeb7
+	source_arm = https://github.com/projectdiscovery/cdncheck/releases/download/v1.1.0/cdncheck_1.1.0_linux_arm.zip
+	sha256sums_arm = 40df5a65f44c63aada9832248e1e2e7efd811323793564079e0879dd1b348ad0
+
+pkgname = cdncheck-bin
