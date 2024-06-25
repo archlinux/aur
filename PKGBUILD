@@ -22,7 +22,8 @@ build() {
 	config.cxx=${CXX:-g++} \
 	config.cc.coptions="-O3 -DODB_GCC_PLUGIN_DIR $CXXFLAGS" \
 	config.bin.rpath=${pkgdir}/usr/lib \
-	config.install.root=${pkgdir}/usr
+	config.install.root=${pkgdir}/usr \
+	config.install.relocatable=true
 
 	cd odb-gcc-${GPPVER}
 	yes | bpkg build --trust-yes odb@https://pkg.cppget.org/1/beta
