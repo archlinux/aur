@@ -2,7 +2,7 @@
 
 pkgname=python-jiter
 _pkgname=${pkgname#python-}
-pkgver=0.4.2
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Fast iterable JSON parser"
 arch=(x86_64)
@@ -24,7 +24,7 @@ checkdepends=(
   python-pytest
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('3308f266e77b72bb4e5766a1d4a1765ebed757c52eb5bccf37617e7b032850ae')
+sha256sums=('5b831a82deb4fec481eb90fcd0ebb5bb61181a9687db1efcb73ab627ac0c37c6')
 
 _archive="$_pkgname-$pkgver"
 

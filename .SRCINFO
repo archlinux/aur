@@ -1,6 +1,6 @@
 pkgbase = python-jiter
 	pkgdesc = Fast iterable JSON parser
-	pkgver = 0.4.2
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/pydantic/jiter
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = python-jiter
 	depends = gcc-libs
 	depends = glibc
 	depends = python
-	source = python-jiter-0.4.2.tar.gz::https://github.com/pydantic/jiter/archive/v0.4.2.tar.gz
-	sha256sums = 3308f266e77b72bb4e5766a1d4a1765ebed757c52eb5bccf37617e7b032850ae
+	source = python-jiter-0.5.0.tar.gz::https://github.com/pydantic/jiter/archive/v0.5.0.tar.gz
+	sha256sums = 5b831a82deb4fec481eb90fcd0ebb5bb61181a9687db1efcb73ab627ac0c37c6
 
 pkgname = python-jiter
