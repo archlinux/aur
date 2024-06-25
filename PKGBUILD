@@ -1,29 +1,28 @@
-# Maintainer: éclairevoyant
+# Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
+# Contributor: éclairevoyant
 # Contributor: David Husička <contact at bydave dot net>
 
 pkgbase=libdxvk
 pkgname=('libdxvk' 'lib32-libdxvk')
-pkgver=2.3
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Native Linux port of DXVK to allow usage without WINE"
 arch=(x86_64)
 url="https://github.com/doitsujin/dxvk"
-license=(ZLIB)
+license=(Zlib)
 depends=(sdl2 vulkan-icd-loader lib32-sdl2 lib32-vulkan-icd-loader)
 makedepends=(git glslang meson)
 provides=(libdxvk libdxvk_dxgi.so libdxvk_d3d9.so libdxvk_d3d11.so)
-source=(
-	"git+$url.git?signed#tag=922ce7b2ded0b8142a8fa428ac19c2ab265d963f"
+source=("git+$url.git?signed#tag=v${pkgver}"
 	"git+https://github.com/Joshua-Ashton/mingw-directx-headers.git"
 	"git+https://github.com/KhronosGroup/Vulkan-Headers.git"
 	"git+https://github.com/KhronosGroup/SPIRV-Headers.git"
-	"git+https://gitlab.freedesktop.org/JoshuaAshton/libdisplay-info.git"
-)
-b2sums=('SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP')
+	"git+https://gitlab.freedesktop.org/JoshuaAshton/libdisplay-info.git")
+sha256sums=('203b336366b16612b01bc5c220bdeeee633e6fdbf15f23559c826eac7b59beeb'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 validpgpkeys=('273D040B5113B886D1A090D4C8CC613427A31C99') # Philip Rebohle <philip.rebohle@tu-dortmund.de>
 
 prepare() {
@@ -37,7 +36,7 @@ prepare() {
 }
 
 build() {
-	dxvk/package-native.sh $pkgver build --no-package
+	dxvk/package-native.sh $pkgver build --no-package --build-id
 }
 
 package_libdxvk() {
