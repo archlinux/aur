@@ -1,7 +1,7 @@
 pkgbase = xf86-input-joystick-git
 	pkgdesc = X.Org input driver that translates joystick input to mouse and keyboard events. (Do not use for games with native joystick support or XI2 applications. See manpage.) Latest git checkout.
-	pkgver = 1.6.4+3.r301.20240513.06a4edc
-	pkgrel = 2
+	pkgver = 1.6.4+4.r302.20240604.5f68205
+	pkgrel = 1
 	url = https://gitlab.freedesktop.org/xorg/driver/xf86-input-joystick
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = xf86-input-joystick-git
 	makedepends = X-ABI-XINPUT_VERSION>=24.2
 	makedepends = X-ABI-XINPUT_VERSION<25
 	depends = glibc
-	provides = xf86-input-joystick=1.6.4+3.r301.20240513.06a4edc
+	provides = xf86-input-joystick=1.6.4+4.r302.20240604.5f68205
 	conflicts = xf86-input-joystick
 	conflicts = X-ABI-XINPUT_VERSION<24.2
 	conflicts = X-ABI-XINPUT_VERSION>=25
