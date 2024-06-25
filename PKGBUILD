@@ -5,8 +5,8 @@
 # Contributor: Jonathan Thomas <jonathan@openshot.org>
 
 pkgname=libopenshot
-pkgver=0.3.2
-pkgrel=13
+pkgver=0.3.3
+pkgrel=1
 pkgdesc="A video editing, animation, and playback library for C++, Python, and Ruby"
 arch=(x86_64)
 url="https://github.com/openshot/libopenshot"
@@ -40,8 +40,8 @@ makedepends=(
 )
 provides=(libopenshot.so)
 source=($url/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-sha512sums=('8891077af28a4db6bc3a7cd078ce5570a8f62e0795c13b0fff795eba60c3e977ece70247033ee4017c9785592355b7421655246a5d6807a5790bd18927739795')
-b2sums=('5bc371481ddf69b5de909963cb83d1128066280e1259ae8b23f7ef5450f3da00ef1137dcefe2978e10d1a51931529f104aebdf0601be4b066c7ed371ea43439e')
+sha512sums=('c8ac8e14296a69d7989e8bd6d259a802b7d436df144d9f9e3024f19f137f1b3081cc2e93cbd46ed5dd45cb0cef6cfde634fa532ff485517b72b1113a8cc8892d')
+b2sums=('b82f79666c386e69630f2be60ed1771cea6ece83592ac29c30e05a97b289b0281d23b51b0e320eb208d09535882c5e2acb122b29852bb1bf75d9d821891d9047')
 
 prepare() {
 # protobuf 23 requiers C++17
