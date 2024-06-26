@@ -1,0 +1,11 @@
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!ClassiCube.desktop
+!PKGBUILD
+!.SRCINFO
+!ClassiCubeLauncher
+!sdl2-dialog.patch
+
