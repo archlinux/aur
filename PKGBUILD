@@ -3,7 +3,7 @@
 _gitname=pam_p11
 pkgname=pam_p11-git
 pkgver=pam_p11.0.6.0.r0.ga6d8605
-pkgrel=3
+pkgrel=4
 pkgdesc="PAM module for using crpytographic PKCS11 tokens such as smart cards and usb crypto tokens for local authentication."
 arch=('i686' 'x86_64')
 url="https://github.com/OpenSC/OpenSC/wiki/pam_p11-simple-RSA-authentication-with-PKCS%2311-modules"
@@ -24,7 +24,7 @@ build() {
   cd "$srcdir/$_gitname"
   mkdir -p m4
   ./bootstrap
-  ./configure --libdir=/usr/lib --disable-static
+  ./configure --libdir=/usr/lib --datarootdir=/usr/share --disable-static
   make
 }
 
