@@ -2,7 +2,7 @@
 # Co-Maintainer: Slimbook <dev at slimbook dot es>
 pkgname=slimbookamdcontroller
 pkgver=0.4beta
-pkgrel=1
+pkgrel=2
 pkgdesc="Application for the performance management of AMD processors"
 arch=('any')
 url="https://github.com/Slimbook-Team/slimbookamdcontroller"
@@ -34,4 +34,7 @@ package() {
   # App permissions
   chmod +x "$pkgdir/usr/lib/systemd/system-sleep/$pkgname"
   chmod -R 755 "$pkgdir/usr/share/$pkgname/src/"
+
+  # Remove invalid Python 3.8 bytecode
+  find "$pkgdir/usr/share/$pkgbase/src/" -type d -name "__pycache__" -prune -exec rm -rf {} \;
 }
