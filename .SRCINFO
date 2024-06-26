@@ -1,12 +1,12 @@
 pkgbase = python-justbytes
 	pkgdesc = computing with and displaying bytes
 	pkgver = 0.15
-	pkgrel = 5
+	pkgrel = 6
 	url = https://pypi.org/project/justbytes/
 	arch = any
 	license = GPL2
 	license = GPL3
-	checkdepends = python-nose
+	checkdepends = python-pytest
 	checkdepends = python-hypothesis
 	checkdepends = python-pylint
 	makedepends = python-setuptools
