@@ -2,7 +2,7 @@
 
 pkgname=packetry-git
 pkgver=r573.cd3be8d
-pkgrel=1
+pkgrel=2
 pkgdesc='USB 2.0 protocol analysis app for use with Cynthion'
 arch=('x86_64')
 url='https://github.com/greatscottgadgets/packetry'
@@ -56,7 +56,9 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   echo >&2 'Building executable'
-  cargo build --frozen --release --features step-decoder
+  # The `step-decoder`, `record-ui-test`, and `debug-region-map`
+  # features are only for debugging.
+  cargo build --frozen --release
 
   echo >&2 'Generating documentation'
   make -C docs man singlehtml
