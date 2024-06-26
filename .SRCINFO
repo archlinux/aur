@@ -1,0 +1,13 @@
+pkgbase = kaze-icon-theme-git
+	pkgdesc = Kaze icon theme for KDE
+	pkgver = r2.3d2d0f0
+	pkgrel = 1
+	url = https://github.com/2O48/Kaze.git
+	arch = any
+	makedepends = git
+	depends = breeze
+	provides = kaze-icon-theme
+	source = git+https://github.com/2O48/Kaze.git
+	b2sums = SKIP
+
+pkgname = kaze-icon-theme-git
