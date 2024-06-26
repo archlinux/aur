@@ -1,6 +1,6 @@
 # Maintainer: B0SE
 pkgname=ani-dl
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 depends=('yt-dlp' 'mpv')
 makedepends=('rust' 'cargo')
