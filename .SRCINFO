@@ -1,6 +1,6 @@
 pkgbase = fluent-gtk-theme
 	pkgdesc = Fluent design GTK theme
-	pkgver = 2024.04.28
+	pkgver = 2024.06.12
 	pkgrel = 1
 	url = https://github.com/vinceliuice/Fluent-gtk-theme
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = fluent-gtk-theme
 	optdepends = fluent-cursor-theme: Matching cursor theme
 	options = !strip
 	options = !debug
-	source = fluent-gtk-theme-2024.04.28.tar.gz::https://github.com/vinceliuice/Fluent-gtk-theme/archive/refs/tags/2024-04-28.tar.gz
-	b2sums = f4e32cd41dd0a3cbb9cdaa48fba2d3c019353403176e9df889b72638d5f3d5a035b94ec1d366143bf8a30895fedab76af1bdca6c3abf2c8bec5e94cd819ee5ca
+	source = fluent-gtk-theme-2024.06.12.tar.gz::https://github.com/vinceliuice/Fluent-gtk-theme/archive/refs/tags/2024-06-12.tar.gz
+	b2sums = 03dc7baf28268fc15981a1d95843e890ec561a2a6a50b3684e5b0eb675302ea5c34aab1c3b44258a9292f50fd50171eaac33570d7f2dbf6e3b220d6f80222d7d
 
 pkgname = fluent-gtk-theme

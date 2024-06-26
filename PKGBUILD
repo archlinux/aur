@@ -1,6 +1,6 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=fluent-gtk-theme
-pkgver=2024.04.28
+pkgver=2024.06.12
 pkgrel=1
 pkgdesc='Fluent design GTK theme'
 arch=(any)
@@ -12,7 +12,7 @@ optdepends=('gtk-engine-murrine: GTK2 theme support'
             'fluent-icon-theme: Matching icon theme'
 			'fluent-cursor-theme: Matching cursor theme')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver//./-}.tar.gz")
-b2sums=('f4e32cd41dd0a3cbb9cdaa48fba2d3c019353403176e9df889b72638d5f3d5a035b94ec1d366143bf8a30895fedab76af1bdca6c3abf2c8bec5e94cd819ee5ca')
+b2sums=('03dc7baf28268fc15981a1d95843e890ec561a2a6a50b3684e5b0eb675302ea5c34aab1c3b44258a9292f50fd50171eaac33570d7f2dbf6e3b220d6f80222d7d')
 
 package () {
 	cd "Fluent-gtk-theme-${pkgver//./-}"
