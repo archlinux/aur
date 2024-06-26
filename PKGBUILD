@@ -2,19 +2,18 @@
 # Contributor: Henri Derycke <nheir.kim@gmail.com>
 
 pkgname=bluez-alsa-git
-_pkgname="${pkgname%-git}"
-pkgver=3.1.0.r97.gd5abf39
+pkgver=4.2.0.r17.g14670ed
 pkgrel=1
 pkgdesc="Bluetooth audio ALSA backend"
 arch=('x86_64'
       'aarch64'
       'armv6h'
       'armv7h')
-url="https://github.com/Arkq/${_pkgname}"
+url="https://github.com/Arkq/${pkgname%-git}"
 license=('MIT')
 depends=('alsa-lib' 
          'bluez-libs'
-         'glib2'
+         'glib2-devel'
          'libfdk-aac' 
          'sbc'
          'systemd')
@@ -27,26 +26,24 @@ optdepends=('lame: build with mp3 support'
             'ncurses: build with hcitop tool'
             'readline: build with bluealsa-rfcomm tool'
             'spandsp: build mSBC codec support')
-source=("$pkgname::git+https://github.com/Arkq/${_pkgname}.git")
+source=("${pkgname}::git+https://github.com/Arkq/${pkgname%-git}.git")
 sha512sums=('SKIP')
 install=bluealsa.install
 
 pkgver() {
-  cd "$pkgname"
+  cd "${pkgname}"
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  sed -i 's|bluez.service|bluetooth.service|' "${pkgname}/misc/systemd/bluealsa.service.in"
 }
 
 build() {
   local flags
   
   cd "${pkgname}"
-  autoreconf --install
-  # See https://github.com/Arkq/bluez-alsa/wiki/Installation-from-source#3-configure-the-build-directory
-  # for options details
+  autoreconf --install --force
+  # Options details:
+  # https://github.com/Arkq/bluez-alsa/wiki/Installation-from-source#3-configure-the-build-directory
+  # Table of additional dependencies:
+  # https://github.com/Arkq/bluez-alsa/wiki/Installation-from-source#additional-dependencies
   flags=(#--with-libopenaptx
          #--enable-ldac
          #--enable-mp3lame
@@ -56,7 +53,11 @@ build() {
          #--enable-a2dpconf
          #--enable-cli
          #--enable-rfcomm
+         #--enable-faststream
          #--enable-hcitop
+         #--enable-lc3plus
+         #--enable-lc3-swb
+         #--enable-midi
          #--enable-upower
          #--enable-debug
          --enable-aac
