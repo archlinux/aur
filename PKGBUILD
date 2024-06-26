@@ -137,12 +137,13 @@ prepare() {
 }
 
 build() {
-  export QT4DIR="${srcdir}"/${_pkgfqn}
-  export LD_LIBRARY_PATH=${QT4DIR}/lib:${LD_LIBRARY_PATH}
+  export QT4DIR="${srcdir}"/build
+  export LD_LIBRARY_PATH="${QT4DIR}/lib:${LD_LIBRARY_PATH}"
 
-  cd ${_pkgfqn}
+  mkdir build || true
+  cd build
 
-  ./configure -confirm-license -opensource \
+  ../${_pkgfqn}/configure -confirm-license -opensource \
     -prefix /usr \
     -bindir /usr/lib/qt4/bin \
     -headerdir /usr/include/qt4 \
@@ -177,9 +178,9 @@ build() {
 }
 
 package() {
-  cd ${_pkgfqn}
+  make -C build INSTALL_ROOT="${pkgdir}" install
 
-  make INSTALL_ROOT="${pkgdir}" install
+  cd ${_pkgfqn}
 
   # install missing icons and desktop files
   install -D -m644 src/gui/dialogs/images/qtlogo-64.png "${pkgdir}"/usr/share/icons/hicolor/64x64/apps/qt4logo.png
