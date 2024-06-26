@@ -1,0 +1,23 @@
+pkgbase = python-gnews-git
+	pkgdesc = A library that provides an API to search for articles on Google News and returns a usable JSON response.
+	pkgver = r172.a322163
+	pkgrel = 1
+	url = https://github.com/ranahaani/gnews
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-feedparser
+	depends = python-beautifulsoup4
+	depends = python-dnspython
+	depends = python-requests
+	provides = python-gnews
+	conflicts = python-gnews
+	source = git+https://github.com/ranahaani/gnews.git
+	sha256sums = SKIP
+
+pkgname = python-gnews-git
