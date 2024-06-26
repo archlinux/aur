@@ -1,20 +1,20 @@
 # Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
 
-_pkgname=yai
-pkgname=${_pkgname}-bin
+_pkgname="yai"
+pkgname="${_pkgname}-bin"
 pkgver=0.6.0
 pkgrel=1
 pkgdesc="Your AI powered terminal assistant"
 arch=('x86_64' 'i686' 'aarch64' 'armv6h')
 url="https://github.com/ekkinox/${_pkgname}"
 license=('MIT')
-conflicts=("${_pkgname}")
 provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
-source_x86_64=("${_pkgsrc}.tar.gz::${url}/releases/download/${pkgver}/${_pkgname}_${pkgver}_linux_amd64.tar.gz")
-source_i686=("${_pkgsrc}.tar.gz::${url}/releases/download/${pkgver}/${_pkgname}_${pkgver}_linux_386.tar.gz")
-source_aarch64=("${_pkgsrc}.tar.gz::${url}/releases/download/${pkgver}/${_pkgname}_${pkgver}_linux_arm64.tar.gz")
-source_armv6h=("${_pkgsrc}.tar.gz::${url}/releases/download/${pkgver}/${_pkgname}_${pkgver}_linux_armv6.tar.gz")
+source_x86_64=("${url}/releases/download/${pkgver}/${_pkgname}_${pkgver}_linux_amd64.tar.gz")
+source_i686=("${url}/releases/download/${pkgver}/${_pkgname}_${pkgver}_linux_386.tar.gz")
+source_aarch64=("${url}/releases/download/${pkgver}/${_pkgname}_${pkgver}_linux_arm64.tar.gz")
+source_armv6h=("${url}/releases/download/${pkgver}/${_pkgname}_${pkgver}_linux_armv6.tar.gz")
 sha256sums_x86_64=('aaa88b3b5222fca3090f7d3fc04bc2c07f174055f68618800e7333c9afd323b5')
 sha256sums_i686=('93cc10dec1af0ff622b533c6b81072e417da656aab04cde7ba57cf915c16312a')
 sha256sums_aarch64=('79ba33f268cfa8fa12171b9cc4420da80ad67baea31e6bcfb0d021f738193c85')
