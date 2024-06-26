@@ -1,6 +1,8 @@
-# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Maintainer: Daringcuteseal <daringcuteseal at gmail dot com>
+
 pkgname=firefox-extension-gnome-shell-integration
-pkgver=11.1
+pkgver=12
 pkgrel=1
 pkgdesc='GNOME shell integration addon for firefox.'
 arch=('any')
