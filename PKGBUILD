@@ -20,3 +20,5 @@ package() {
   install -Dm644 org.bleachbit.BleachBit-Root.desktop -t "${pkgdir}/usr/share/applications/"
   install -Dm644 org.bleachbit.BleachBit-Root.policy -t "${pkgdir}/usr/share/polkit-1/actions/"
 }
+sha256sums=('c2b05ba8d099ede8a39fbce96bd88a4833f37d66459aa3762665346c171a86b2'
+            '069611921297e3ab09222f594be8214e3722f2218bc48325c78758fae71f535f')
