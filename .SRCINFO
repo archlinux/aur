@@ -1,0 +1,9 @@
+pkgbase = glasskube-latest-bin
+	pkgdesc = The next generation Package Manager for Kubernetes.
+	pkgver = v0.10.1
+	pkgrel = 1
+	url = https://github.com/glasskube/glasskube
+	arch = x86_64
+	license = Apache-2.0
+
+pkgname = glasskube-latest-bin
