@@ -104,6 +104,10 @@ prepare() {
   sed -i "/^QMAKE_LIBDIR\s/s|=|= /usr/lib32|g" mkspecs/common/linux32.conf
   sed -i "s|common/linux.conf|common/linux32.conf|" mkspecs/linux-g++-32/qmake.conf
 
+  # Reduce warning verbosity
+  sed -i "s|-Wall -W||" mkspecs/common/gcc-base.conf
+  sed -i "s|-Wall -W||" mkspecs/linux-lsb-g++/qmake.conf
+
   # Fix building with GCC6 (Fedora)
   patch -p1 -i "${srcdir}"/qt4-gcc6.patch
 
