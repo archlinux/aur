@@ -13,8 +13,8 @@
 #
 # SOME MORE NOTES:
 #
-# This package is huge. The download alone is a barely-compressed 110GB .tar.gz (extracts to ~110GB)
-# and the final zstd-compressed package is another 88GB. Reserve at least 400GB in total for building.
+# This package is huge. The download alone is a barely-compressed 115GB .tar.gz (extracts to ~115GB)
+# and the final zstd-compressed package is another 90GB. Reserve at least 432GB in total for building.
 #
 # It can also take several hours to build, being mostly limited by I/O and single-thread
 # performance. `namcap` takes another hour, make sure you're not running that automatically.
@@ -27,40 +27,77 @@
 
 pkgname=vitis
 _srcname=FPGAs_AdaptiveSoCs_Unified
-pkgver=2023.2
-_more_ver=1013_2256
-pkgrel=2
+pkgver=2024.1
+_more_ver=0522_2023
+pkgrel=1
 pkgdesc="FPGA/CPLD design suite for Xilinx devices"
 url="https://www.xilinx.com/products/design-tools/vitis.html"
 arch=('x86_64')
 license=('custom')
-makedepends=('python')
-depends=('ncurses5-compat-libs'
-         'libxcrypt-compat'     # ?
-         'libpng12'             # ?
-         'lib32-libpng12'       # ?
-         'gtk2'                 # or gtk3?
-         'gcc'                  # for Vitis
-         'git'                  # for Vitis
-         'unzip'                # for Vitis
-         'cpio'                 # ?
-         'inetutils'            # ?
+makedepends=('gawk' 'python')
+# depends+optdepends revised using find-libdeps minus find-libprovides.
+# This may result in too few dependencies if the tools do not set up their
+# lib paths appropriately.
+depends=(
+    'gcc-libs'                  # libgcc_s.so.1 libgomp.so.1 libstdc++.so.6
+    'gtk2'                      # libgdk-x11-2.0.so.0 libgtk-x11-2.0.so.0
+    'gtk3'                      # libgdk-3.so.0 libgtk-3.so.0
+    ## According to toplevel installLibs.sh:
+    'gcc'                       # for Vitis
+    'git'                       # for Vitis
+    'inetutils'                 # `hostname` for setupEnv.sh
+    'libxcrypt-compat'          # needed by setup tools
+    'ncurses5-compat-libs'      # albeit provided internally
+    'unzip'                     # for Vitis
+    'zip'                       # for Vitis
+    ## The following are required but presumably satisfied indirectly:
+    'at-spi2-core'              # libatk-1.0.so.0 libatk-bridge-2.0.so.0 libatspi.so.0
+    'cairo'                     # libcairo-gobject.so.2 libcairo.so.2
+    'e2fsprogs'                 # libcom_err.so.2
+    'fontconfig'                # libfontconfig.so.1
+    'freetype2'                 # libfreetype.so.6
+    'gdbm'                      # libgdbm_compat.so.4
+    'gdk-pixbuf2'               # libgdk_pixbuf-2.0.so.0
+    'glibc'                     # libc.so libm.so
+    'keyutils'                  # libkeyutils.so.1
+    'libglvnd'                  # (via gtk3) libEGL.so.1 libGL.so.1
+    'libxft'                    # libXft.so.2
+    'libxrandr'                 # libXrandr.so.2
+    'pango'                     # libpango-1.0.so.0 libpangocairo-1.0.so.0 libpangoft2-1.0.so.0
+    'util-linux-libs'           # libuuid.so.1
 )
-optdepends=('fxload'
-            'digilent.adept.runtime'
-            'digilent.adept.utilities'
-            'xorg-xprop: for Vitis/Vivado startfile.py and Vitis IDE (xdg-mime and xdg-settings)'
-            'xorg-xlsclients: for Vitis xsct unless -nodisp'
-            'xorg-server-xvfb: for Vitis xsct as fallback X11 display'
-            'dbus: for Vitis xsct if Xvfb is used'
-            'graphviz: AIE tools'
-            'libxss: AIE tools'
-            'make: AIE tools'
-            'net-tools: AIE tools'
-            'openssl: AIE tools'
-            'matlab: Model Composer'
-            'qt4: Model Composer'       # ?
-            'python'
+optdepends=(
+    # 'cpio'                      # no longer needed?
+    'dbus: for Vitis xsct if Xvfb is used'
+    'digilent.adept.runtime'
+    'digilent.adept.utilities'
+    'fxload'
+    'graphviz: AIE tools'
+    # 'lib32-libpng12'            # no longer needed?
+    # 'libpng12'                  # no longer needed?
+    'libxss: AIE tools'
+    'make: AIE tools'
+    'matlab: Model Composer'
+    'net-tools: AIE tools'
+    'openssl: AIE tools'
+    'python'
+    # 'qt4: Model Composer'       # no longer needed?
+    'xorg-server-xvfb: for Vitis xsct as fallback X11 display'
+    'xorg-xlsclients: for Vitis xsct unless -nodisp'
+    'xorg-xprop: for Vitis/Vivado startfile.py and Vitis IDE (xdg-mime and xdg-settings)'
+    ## Required by some installed (but possibly unused) binaries:
+    'alsa-lib'                  # libasound.so.2
+    'ffmpeg4.4'                 # libavcodec.so.58 libavformat.so.58
+    'glu'                       # libGLU.so.1
+    'lib32-glibc'               # lib32/ld-linux.so.2 lib32/libc.so lib32/libm.so
+    'lib32-zlib'                # lib32/libz.so.1
+    'libice'                    # libICE.so.6
+    'libsecret'                 # libsecret-1.so.0
+    'libsm'                     # libSM.so.6
+    'libstdc++5'                # libstdc++.so.5
+    'libxkbfile'                # libxkbfile.so.1
+    'libyaml'                   # libyaml-0.so.2
+    'python2'                   # libpython2.7.so.1.0
 )
 provides=(vivado)
 conflicts=(vivado)
@@ -68,11 +105,11 @@ source=("file:///${_srcname}_${pkgver}_${_more_ver}.tar.gz"
         'spoof_homedir.c')
 
 # checksum from https://www.xilinx.com/support/download.html
-md5sums=('64d64e9b937b6fd5e98b41811c74aab2'
+md5sums=('372c0b184e32001137424e395823de3c'
          '69d14ad64f6ec44e041eaa8ffcb6f87c')
 
 # takes forever for probably minimal gain
-options=('!strip')
+options=('!strip' '!debug')
 
 prepare() {
     mkdir -p "$srcdir/installer_temp"
@@ -121,7 +158,7 @@ package() {
         "${_relocator%/*}"/environment-setup-*
     find "$pkgdir/opt/Xilinx" -name '*settings64*' -type f \
         -exec sed -i -e "s|$pkgdir||g" '{}' \+
-    find "$pkgdir/opt/Xilinx/Vitis/${pkgver}"/tps/lnx64/lopper-*/env \
+    find "$pkgdir"/opt/Xilinx/*/"${pkgver}"/tps/lnx64/lopper-*/env \
         -maxdepth 2 -type f \
         -exec sed -i -e "s|$pkgdir||g" '{}' \+
 
@@ -137,7 +174,26 @@ package() {
     find "$pkgdir/opt/Xilinx" -name Ubuntu -type d | \
     while read udir; do
         ddir=${udir%/*}/Default
-        test -d "$ddir" || ln -s Ubuntu "$ddir"
+        test -d "$ddir" || ln -sfTv Ubuntu "$ddir"
+    done
+
+    # Symptom: Vitis cannot even launch a browser.
+    # Reason: Vitis packages lots of libstdc++.so.6 versions,
+    # none of which are recent enough for Archlinux.
+    # Workaround: Replace libstdc++.so.6 with symlinks to the system version.
+    # For thoroughness, extend this to libgcc_s.so.1 and libgomp.so.1.
+    # To limit side effects, restrict to libs with /Default/ in their path.
+    # Note: This does not find stuff below the Default symlinks created above,
+    # but our targets are not there anyway.
+    find "$pkgdir/opt/Xilinx" \( -false $(printf ' -o -name %s' \
+        libstdc++.so.6 libgcc_s.so.1 libgomp.so.1) \) -path '*/Default/*' | \
+    while read lib; do
+      _libarch=$(readelf -h "$lib" 2>/dev/null | awk '$1=="Machine:" {print $NF}')
+      case $_libarch in
+        (X86-64) ln -sfTv /usr/lib/"${lib##*/}" "$lib" ;;
+        (80386) ln -sfTv /usr/lib32/"${lib##*/}" "$lib"         # 0 matches
+          echo "W: Add lib32-gcc-libs to optdepends" >&2 ;;
+      esac
     done
 
     # clean up artefacts
