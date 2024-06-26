@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com> / ihipop <ihipop at gmail dot com>
 _pkgname=eudic
 pkgname="eusoft-${_pkgname}-bin"
-pkgver=2024.03.01
+pkgver=2024.06.07
 pkgrel=1
 pkgdesc="权威的英语词典软件,英语学习者必备的工具,支持学习笔记、生词本多平台同步,让你随时随地学英语."
 arch=('x86_64')
@@ -28,7 +28,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('5b5e107fc99b700bfb519d2ecaf6877bbf117ceee7cc8f784c784e0be8b0a2a3'
-            '12ec1b3e4be99eee9c2d5fb55c196d2294c1b112e137927c61f81efb0e308f75'
+            '9c1dde62844990b3c8f5425bd6ef50e82118a16594e3fe8aac924539e20a9870'
             '2c777ba40c497000e2d5ba172ccee54dd006e1db2c3626ea2cf47dccd476632e')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
