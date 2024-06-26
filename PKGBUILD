@@ -15,7 +15,11 @@ url='https://www.ibm.com/products/ilog-cplex-optimization-studio/cplex-optimizer
 license=('custom')
 depends=('gcc-libs')
 options=('!strip')
-
+optdepends=(
+	'python310: for Python 3.10 bindings'
+	'python39: for Python 3.9 bindings'
+	'python38: for Python 3.8 bindings'
+)
 _arch_upper=${arch^}
 _basename="cplex_studio${_pkgver}.linux_${arch}"
 _installer="${_basename}.bin"
@@ -76,6 +80,23 @@ package() {
 	# Constraint Optimizer headers.
 	install -dm755 "${pkgdir}/usr/include/ilcp"
 	install -m644 "./cpoptimizer/include/ilcp/"*.h "${pkgdir}/usr/include/ilcp"
+	
+	# Install Python bindings.
+	if pacman -Qq python38 >/dev/null 2>&1; then
+		cd "./cplex/python/3.8/${_archdir}/"
+		python3.8 setup.py install --root="${pkgdir}/" --optimize=1
+		cd "../../../../"
+	fi
+	if pacman -Qq python39 >/dev/null 2>&1; then
+		cd "./cplex/python/3.9/${_archdir}/"
+		python3.9 setup.py install --root="${pkgdir}/" --optimize=1
+		cd "../../../../"
+	fi
+	if pacman -Qq python310 >/dev/null 2>&1; then
+		cd "./cplex/python/3.10/${_archdir}/"
+		python3.10 setup.py install --root="${pkgdir}/" --optimize=1
+		cd "../../../../"
+	fi
 
 	# Install license.
 	install -dm755 "${pkgdir}/usr/share/licenses/cplex"
