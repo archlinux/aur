@@ -1,13 +1,15 @@
 pkgbase = minivmac
-	pkgdesc = a miniature early Macintosh emulator
+	pkgdesc = A miniature early Macintosh emulator
 	pkgver = 36.04
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gryphel.com/c/minivmac/
 	arch = x86_64
+	arch = i686
+	arch = aarch64
 	license = GPL2
+	depends = bash
 	depends = libx11
 	source = minivmac-36.04.tgz::https://www.gryphel.com/d/minivmac/minivmac-36.04/minivmac-36.04.src.tgz
 	sha256sums = 9b7343cec87723177a203e69ad3baf20f49b4e8f03619e366c4bf2705167dfa4
 
 pkgname = minivmac
-
