@@ -1,15 +1,16 @@
 # Maintainer: Vendicated <vendicated at riseup dot net>
+# Co-Maintainer Aiden <amb at aspy dot dev>
 
 pkgname=armcord-git
 pkgdesc="ArmCord dev build using the system electron. ArmCord is a custom client designed to enhance your Discord experience while keeping everything lightweight"
-pkgver=r756.81273de
+pkgver=r1190.b4f8871
 pkgrel=1
 
 arch=("x86_64" "aarch64")
 url="https://github.com/ArmCord/ArmCord"
 license=("custom:OSL-3.0")
 
-makedepends=("git" "nodejs" "npm")
+makedepends=("git" "nodejs" "yarn-pnpm-corepack")
 depends=("electron")
 optdepends=(
   'libnotify: Notifications'
@@ -39,8 +40,8 @@ pkgver() {
 
 build() {
   cd "$pkgname"
-  npx pnpm install --frozen-lockfile --ignore-scripts
-  npm run packageQuick
+  pnpm install --frozen-lockfile --ignore-scripts
+  pnpm run packageQuick
 }
 
 package() {
