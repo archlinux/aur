@@ -864,3 +864,16 @@ Improvements:
 Fixes:
 - We improved the reliability of the CalDAV (and iCloud) sync to be more robust to special characters in the event filename.
 - A problem updating Google Out-of-Office and Working location events has been rectified.
+
+=== Morgen 3.5.1
+Improvements:
+- Task due dates displayed in the calendar can now be merged with corresponding scheduled tasks when both start at the same time. This reduces visual clutter.
+- When generating a scheduled task from a due date displayed in the all day section by using Block on the calendar, Morgen will time block it at a time when you are free.
+- For tasks imported from an integrated source, you can now quickly copy the link of the original task. This allows you to easily share the link or paste it in a browser of your choice.
+- We improved speed to launch and quit Morgen.
+ 
+Fixes:
+- Scheduled tasks generated from due dates using the Block on the calendar option now respect your default preferences, such as privacy and busy/free settings.
+- In the previous version, links to task sources in Todoist, Notion, and Clickup could not be opened on macOS in instances when the native third-party app was not installed. This has been rectified.
+- We fixed an issue that was causing a flickering of events.
+
