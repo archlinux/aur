@@ -6,7 +6,7 @@ _pkgname=typora
 _typora_ver=1.9.3
 _plugin_ver=1.9.13
 pkgver=${_typora_ver}_plugin_${_plugin_ver}
-pkgrel=1
+pkgrel=2
 pkgdesc="一款 Markdown 编辑器和阅读器（with typora_plugin）"
 arch=('x86_64')
 license=('custom:"Copyright (c) 2015 Abner Lee All Rights Reserved."')
@@ -59,4 +59,15 @@ package() {
 	sed -i '/Change Log/d' "$pkgdir/usr/share/applications/typora.desktop"
 	# fix permissions
 	find "$pkgdir" -type d -exec chmod 755 {} \;
+	# activation
+	resources_dir=$pkgdir/usr/share/typora/resources
+	pd_dir=$resources_dir/page-dist
+	js_file=$pd_dir/static/js/LicenseIndex.180dd4c7.4da8909c.chunk.js
+	sed -i 's/e.hasActivated="true"==e.hasActivated/e.hasActivated="true"=="true"/g' "$js_file"
+	# remove activation window
+	license_html=$pd_dir/license.html
+	sed -i 's%</body></html>%</body><script>window.onload=function(){setTimeout(()=>{window.close();},5);}</script></html>%g' "$license_html"
+	# change unredistered notification
+	pannel_file=$resources_dir/locales/zh-Hans.lproj/Panel.json
+	sed -i 's/"UNREGISTERED":"未激活"/"UNREGISTERED":"已激活"/g' "$pannel_file"
 }
