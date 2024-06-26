@@ -1,0 +1,18 @@
+--- quarto-cli-1.4.556.original/src/core/deno-dom.ts	2024-06-27 08:15:10.000000000 +1200
++++ quarto-cli-1.4.556/src/core/deno-dom.ts	2024-06-27 10:02:37.434536479 +1200
+@@ -98,13 +98,13 @@
+         const genericParse = (
+           parser: (
+             srcBuf: Uint8Array,
+-            srcLength: number,
++            srcLength: bigint,
+             returnBuf: Uint8Array,
+           ) => void,
+           srcHtml: string,
+         ): string => {
+           const encodedHtml = utf8Encoder.encode(srcHtml);
+-          parser(encodedHtml, encodedHtml.length, returnBufSizeLen);
++          parser(encodedHtml, BigInt(encodedHtml.length), returnBufSizeLen);
+ 
+           const outBufSize = Number(
+             new DataView(returnBufSizeLenRaw).getBigUint64(0, !isBigEndian),
