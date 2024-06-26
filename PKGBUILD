@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=musicfree-desktop
 _appname=MusicFreeDesktop
-pkgver=0.0.4
+pkgver=0.0.5
 _electronversion=25
 _nodeversion=18
 pkgrel=1
@@ -28,7 +28,7 @@ source=(
     "${pkgname%-git}.git::git+${_ghurl}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('8384a070cf5f13685f0816e2093aaf2c315993f03c26c70a2530c9dfa9acfb6c'
+sha256sums=('03b69810cb003cd16cc8f857e9e88286196351d43b507624821665efa933a5d3'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
