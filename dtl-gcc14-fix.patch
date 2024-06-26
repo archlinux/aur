@@ -1,0 +1,12 @@
+diff --unified --recursive --text MuseScore.orig/thirdparty/dtl/dtl/Diff.hpp MuseScore.new/thirdparty/dtl/dtl/Diff.hpp
+--- MuseScore.orig/thirdparty/dtl/dtl/Diff.hpp	2024-06-26 12:49:45.470748346 -0400
++++ MuseScore.new/thirdparty/dtl/dtl/Diff.hpp	2024-06-26 12:52:01.074393929 -0400
+@@ -162,7 +162,7 @@
+             return trivial;
+         }
+         
+-        void enableTrivial () const {
++        void enableTrivial () {
+             this->trivial = true;
+         }
+         

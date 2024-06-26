@@ -4,9 +4,10 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Cristian Maureira <saint@archlinux.cl>
 # Contributor: Dr.Egg <rwhite@archlinux.us>
+# Contributor: Assarsson
 
 pkgname=musescore3-git
-pkgver=3.7.0.r20092.7d7b79d
+pkgver=3.7.0.r20212.2160c86
 pkgrel=1
 pkgdesc='Create, play and print beautiful sheet music (Jojo Schmitz fork)'
 arch=(x86_64)
@@ -41,12 +42,14 @@ makedepends=(
   texlive-core
 )
 optdepends=('lame: MP3 export')
-_commit="7d7b79d2b9fb47db01883b355131cc44ff972ce8"
+_commit="2160c86bf2ca0db48eeeec8ca15a667b58bd2f65"
 source=(
   "git+https://github.com/Jojo-Schmitz/MuseScore.git#commit=$_commit"
+  "dtl-gcc14-fix.patch"
 )
 sha256sums=(
   SKIP
+  '84cd977e5aa7b8bdc3e3652cfd8dda125bc100a919c6dd023c5bef0e6239f112'
 )
 
 pkgver() {
@@ -81,6 +84,11 @@ build() {
 
 package() {
   make DESTDIR="${pkgdir}" install -C build
+}
+
+prepare() {
+  cd MuseScore
+  patch --strip=1 --input=../dtl-gcc14-fix.patch
 }
 
 # vim: ts=2 sw=2 et:
