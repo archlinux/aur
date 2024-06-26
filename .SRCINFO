@@ -15,6 +15,7 @@ pkgbase = customfetch-git
 	optdepends = ttf-liberation: Font to be used for GUI (recommended)
 	conflicts = customfetch
 	conflicts = customfetch-bin
+	conflicts = customfetch-nogui-git
 	source = git+https://github.com/Toni500github/customfetch.git
 	sha256sums = SKIP
 

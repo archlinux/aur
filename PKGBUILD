@@ -12,7 +12,7 @@ makedepends=('base-devel')
 optdepends=(
 	"ttf-liberation: Font to be used for GUI (recommended)"
 )
-conflicts=('customfetch' 'customfetch-bin')
+conflicts=('customfetch' 'customfetch-bin' 'customfetch-nogui-git')
 source=("git+${url}.git")
 sha256sums=("SKIP")
 
