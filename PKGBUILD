@@ -80,6 +80,10 @@ prepare() {
   patch -p1 -i "${srcdir}"/moc-boost-workaround.patch
 
   # http://blog.martin-graesslin.com/blog/2014/06/where-are-my-systray-icons/
+  rm -f src/gui/util/qabstractsystemtrayiconsys.cpp \
+    src/gui/util/qabstractsystemtrayiconsys_p.h \
+    src/gui/util/qxembedsystemtrayicon_x11.cpp \
+    src/gui/util/qxembedsystemtrayicon_x11_p.h || true
   patch -p1 -i "${srcdir}"/kubuntu_14_systemtrayicon.diff
 
   # FS#45106
