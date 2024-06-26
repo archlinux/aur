@@ -1,0 +1,39 @@
+pkgbase = python-chalk
+	pkgdesc = A declarative drawing API in Python
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://chalk-diagrams.github.io
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-hypothesis
+	checkdepends = python-colour
+	checkdepends = python-pillow
+	checkdepends = python-svgwrite
+	checkdepends = python-chalk-planar
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	source = https://files.pythonhosted.org/packages/source/c/chalk_diagrams/chalk_diagrams-0.2.2.tar.gz
+	source = 0.2.2-test_envelope.py::https://github.com/chalk-diagrams/chalk/raw/v0.2.2/tests/test_envelope.py
+	source = 0.2.2-test_reverse_trail.py::https://github.com/chalk-diagrams/chalk/raw/v0.2.2/tests/test_reverse_trail.py
+	sha256sums = 2c7ebebc4c09d00a27d91955d9294962fa0ea676b2a3d098ac3d22b3b6e70af0
+	sha256sums = ac032fc511f48f18ed71da9b14a24fc2c5bc725fcbf981590529cb6eaafb78d2
+	sha256sums = b21a60b21169ea657041ec195c891801ac24dd902c9779b10b8220b7971e064c
+
+pkgname = python-chalk
+	depends = python>=3.7
+	depends = python-toolz
+	depends = python-colour
+	depends = python-svgwrite
+	depends = python-pillow
+	depends = python-loguru
+	depends = python-chalk-planar
+	depends = python-typing_extensions
+	depends = python-importlib-metadata
+	optdepends = python-pylatex: tikz
+	optdepends = python-cairo: png
+	optdepends = python-cairosvg: svg
+	provides = python-chalk-diagrams=0.2.2
+	conflicts = python-chalk-diagrams
