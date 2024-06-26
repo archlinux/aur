@@ -1,27 +1,26 @@
 # Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
 
-_pkgname=ascii-image-converter
-pkgname=${_pkgname}-bin
+_pkgname="ascii-image-converter"
+pkgname="${_pkgname}-bin"
 pkgver=1.13.1
 pkgrel=1
 pkgdesc="Convert images into ASCII art and print them out to the console"
 arch=('x86_64' 'i686' 'aarch64' 'armv6h')
 url="https://github.com/TheZoraiz/${_pkgname}"
-license=('Apache')
+license=('Apache-2.0')
 depends=('glibc')
-conflicts=("${_pkgname}")
 provides=("${_pkgname}")
-_pkgsrc="${_pkgname}-${pkgver}"
-source_x86_64=("${_pkgsrc}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_Linux_amd64_64bit.tar.gz")
-source_i686=("${_pkgsrc}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_Linux_i386_32bit.tar.gz")
-source_aarch64=("${_pkgsrc}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_Linux_arm64_64bit.tar.gz")
-source_armv6h=("${_pkgsrc}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_Linux_armv6_32bit.tar.gz")
+conflicts=("${_pkgname}")
+source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_Linux_amd64_64bit.tar.gz")
+source_i686=("${url}/releases/download/v${pkgver}/${_pkgname}_Linux_i386_32bit.tar.gz")
+source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_Linux_arm64_64bit.tar.gz")
+source_armv6h=("${url}/releases/download/v${pkgver}/${_pkgname}_Linux_armv6_32bit.tar.gz")
 sha256sums_x86_64=('5652d8b7ba9efa71837c473d32d223a8a77264bc6e003ae311719a8644df3c56')
 sha256sums_i686=('3e9e2f92781f8bac27d3b75813f422f48bf898322836c5219ae1bb00ab46709f')
 sha256sums_aarch64=('7b50c9ff641fb8f10e330aa7c4ce047feb6ac0ba3ceaa7df5674e1974439fd71')
 sha256sums_armv6h=('b374ef0c2a22a402fc79036c6ae842742b69adddd7f031f5321ae224b0aa9d56')
 
-case "$CARCH" in
+case "${CARCH}" in
   x86_64)
     _arch="amd64_64bit"
     ;;
@@ -35,7 +34,7 @@ case "$CARCH" in
     _arch="armv6_32bit"
     ;;
   *)
-    echo "Unsupported architecture: $CARCH"
+    echo "Unsupported architecture: ${CARCH}"
     exit 1
     ;;
 esac
