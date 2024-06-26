@@ -1,6 +1,6 @@
 [Desktop Entry]
-Name=Tuta Mail Desktop
-Exec=/opt/tutanota-desktop/tutanota-desktop --no-sandbox %U
+Name=Tuta Mail
+Exec=/opt/tutanota-desktop/tutanota-desktop
 Terminal=false
 Type=Application
 Icon=tutanota-desktop

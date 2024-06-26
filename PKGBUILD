@@ -2,7 +2,7 @@
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 # Contributor: ganthern <https://github.com/ganthern>
 pkgname=tutanota-desktop
-pkgver=230.240603.0
+pkgver=232.240626.0
 pkgrel=1
 pkgdesc="Official Tutanota email client"
 arch=('x86_64')
@@ -14,10 +14,10 @@ source=("git+https://github.com/tutao/tutanota.git#tag=$pkgname-release-$pkgver"
         'git+https://github.com/P-H-C/phc-winner-argon2.git'
         'git+https://github.com/open-quantum-safe/liboqs.git'
         "$pkgname.desktop")
-sha256sums=('a0d03083a6c310a84bbde055343d9dc77d0ec57033d12e4d3c9dc48aae72cbe5'
+sha256sums=('7b3001657547adf72d0e50593578e0528019cad0bd03c30c33dde96a15637240'
             'SKIP'
             'SKIP'
-            '669bff831e12ff91e62eef1b0dbad7e9458b255d90eee456b6d2a50f149d819b')
+            'd6fef99f41fe18008e44b5930aee26dc2f79ef753d770cbdb946d9e17ac9b7d7')
 
 _ensure_local_nvm() {
   # let's be sure we are starting clean
