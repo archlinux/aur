@@ -23,7 +23,6 @@ pkgbase = odio
 	depends = neroaacenc-bin
 	depends = libodiosacd
 	depends = lsdvd
-	depends = gsettings-desktop-schemas
 	depends = gtk3
 	depends = glib2
 	depends = hicolor-icon-theme
