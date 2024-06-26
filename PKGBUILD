@@ -1,33 +1,33 @@
 # Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
 
-_pkgname=speedtest-go
-pkgname=${_pkgname}-bin
+_pkgname="speedtest-go"
+pkgname="${_pkgname}-bin"
 pkgver=1.7.7
 pkgrel=1
-pkgdesc="CLI and Go API to Test Internet Speed using speedtest.net"
+pkgdesc="CLI and Go API to test internet speed using speedtest.net"
 arch=('x86_64' 'i686' 'aarch64' 'armv5h' 'armv6h' 'armv7h' 'riscv64' 'loong64'
       'ppc64' 'ppc64le' 's390x' 'mips' 'mipsel' 'mips64' 'mips64el')
 url="https://github.com/showwin/${_pkgname}"
 license=('MIT')
-conflicts=("${_pkgname}")
 provides=("${_pkgname}")
-_pkgsrc="${_pkgname}-${pkgver}"
-source_x86_64=("${_pkgsrc}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_x86_64.tar.gz")
-source_i686=("${_pkgsrc}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_i386.tar.gz")
-source_aarch64=("${_pkgsrc}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_arm64.tar.gz")
-source_armv5h=("${_pkgsrc}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_armv5.tar.gz")
-source_armv6h=("${_pkgsrc}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_armv6.tar.gz")
-source_armv7h=("${_pkgsrc}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_armv7.tar.gz")
-source_riscv64=("${_pkgsrc}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_riscv64.tar.gz")
-source_loong64=("${_pkgsrc}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_loong64.tar.gz")
-source_ppc64=("${_pkgsrc}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_ppc64.tar.gz")
-source_ppc64le=("${_pkgsrc}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_ppc64le.tar.gz")
-source_s390x=("${_pkgsrc}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_s390x.tar.gz")
+conflicts=("${_pkgname}")
+_pkgsrc="${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_"
+source_x86_64=("${_pkgsrc}x86_64.tar.gz")
+source_i686=("${_pkgsrc}i386.tar.gz")
+source_aarch64=("${_pkgsrc}arm64.tar.gz")
+source_armv5h=("${_pkgsrc}armv5.tar.gz")
+source_armv6h=("${_pkgsrc}armv6.tar.gz")
+source_armv7h=("${_pkgsrc}armv7.tar.gz")
+source_riscv64=("${_pkgsrc}riscv64.tar.gz")
+source_loong64=("${_pkgsrc}loong64.tar.gz")
+source_ppc64=("${_pkgsrc}ppc64.tar.gz")
+source_ppc64le=("${_pkgsrc}ppc64le.tar.gz")
+source_s390x=("${_pkgsrc}s390x.tar.gz")
 # Change 'hardfloat' to 'softfloat' if necessary
-source_mips=("${_pkgsrc}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_mips_hardfloat.tar.gz")
-source_mipsel=("${_pkgsrc}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_mipsle_hardfloat.tar.gz")
-source_mips64=("${_pkgsrc}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_mips64_hardfloat.tar.gz")
-source_mips64el=("${_pkgsrc}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_mips64le_hardfloat.tar.gz")
+source_mips=("${_pkgsrc}mips_hardfloat.tar.gz")
+source_mipsel=("${_pkgsrc}mipsle_hardfloat.tar.gz")
+source_mips64=("${_pkgsrc}mips64_hardfloat.tar.gz")
+source_mips64el=("${_pkgsrc}mips64le_hardfloat.tar.gz")
 sha256sums_x86_64=('8345b54198a15ee066d084a15b5ab757d39f6bfc1459e31631b8a6a976bbc69a')
 sha256sums_i686=('6657e8c22b788e0a75c374f41d2521218eadc24d6ec4c9d43eff5e588243eb7d')
 sha256sums_aarch64=('11db73962ea6113af78aea5912ffa7b561c6a2dbb97bb24734f379b6118cd888')
