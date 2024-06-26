@@ -1,0 +1,19 @@
+pkgbase = libilbm-git
+	pkgdesc = Parser library built on top of libiff, for ILBM: IFF Interleaved BitMap format
+	pkgver = r75+586f582
+	pkgrel = 1
+	url = https://github.com/svanderburg/libilbm
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = help2man
+	makedepends = git
+	depends = libiff
+	provides = libilbm=r75+586f582
+	conflicts = libilbm
+	source = git+https://github.com/svanderburg/libilbm.git
+	sha256sums = SKIP
+
+pkgname = libilbm-git
