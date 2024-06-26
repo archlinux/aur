@@ -3,7 +3,7 @@ pkgname=revezone
 pkgver=1.0.0_alpha.18
 _electronversion=25
 _nodeversion=18
-pkgrel=6
+pkgrel=7
 pkgdesc="A new way to use Excalidraw. A lightweight productivity tool to build Second Brain that integrates Notion-like note-taking and enhanced Excalidraw whiteboarding features."
 arch=('any')
 url="https://revezone.com/"
@@ -15,10 +15,11 @@ depends=(
 )
 makedepends=(
     'nvm'
-    'pnpm'
+    'yarn'
     'npm'
     'gendesk'
     'git'
+    'curl'
 )
 source=(
     "${pkgname}.git::git+${_ghurl}#tag=${pkgver//_/-}"
@@ -48,9 +49,8 @@ build() {
     #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     #export ELECTRONVERSION="${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
-    pnpm config set store-dir "${srcdir}/.pnpm_store"
-    pnpm config set cache-dir "${srcdir}/.pnpm_cache"
-    pnpm config set link-workspace-packages true
+    mkdir -p "${srcdir}/.electron-gyp"
+    touch "${srcdir}/.electron-gyp/.yarnrc"
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
         export npm_config_registry=https://registry.npmmirror.com
         export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
@@ -61,8 +61,9 @@ build() {
     fi
     #sed "s|--linux|-l --dir|g" -i package.json
     sed "/- deb/d;/- snap/d;s|- AppImage|- dir|g" -i electron-builder.yml
-    NODE_ENV=development pnpm install
-    NODE_ENV=production pnpm run build:linux
+    sed "s|is.dev|!is.dev|g" -i src/main/index.ts
+    NODE_ENV=development yarn install --cache-folder "${srcdir}/.yarn_cache"
+    NODE_ENV=production yarn run build:linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
