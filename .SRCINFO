@@ -8,6 +8,7 @@ pkgbase = v2raya-bin
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
+	arch = riscv64
 	arch = loong64
 	license = AGPL3
 	provides = v2raya
@@ -29,6 +30,8 @@ pkgbase = v2raya-bin
 	sha1sums_armv7h = 32073254feb88b5514e5b5256bbc80ae69f3505a
 	source_aarch64 = v2raya_aarch64_2.2.5.6::https://apt.v2raya.org/static/v2raya_linux_arm64_2.2.5.6
 	sha1sums_aarch64 = e3685d34b8cb74a5a195e57c593c79c1cad0134a
+	source_riscv64 = v2raya_riscv64_2.2.5.6::https://apt.v2raya.org/static/v2raya_linux_riscv64_2.2.5.6
+	sha1sums_riscv64 = febf3c7988fe3041ad6408aa8c0a21afbe3a5f6a
 	source_loong64 = v2raya_loong64_2.2.5.6::https://apt.v2raya.org/static/v2raya_linux_loongarch64_2.2.5.6
 	sha1sums_loong64 = bde55767cda1ee9222806ddff2d7761be1c53de2
 
