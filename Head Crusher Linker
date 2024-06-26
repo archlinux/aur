@@ -1,0 +1,7 @@
+#!/bin/sh
+home_dir_user=$USER
+
+if [ ! -d "/home/${home_dir_user}/5db5/PluginData/Head Crusher/Presets" ]; then
+    mkdir -p /home/${home_dir_user}/5db5/PluginData/Head\ Crusher
+    ln -sf /usr/lib/5db5/Presets /home/${home_dir_user}/5db5/PluginData/Head\ Crusher/Presets
+fi
