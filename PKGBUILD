@@ -2,8 +2,8 @@
 
 pkgname=morphosis
 pkgver=1.3
-pkgrel=1
-pkgdesc='Turn text into ASCII banners'
+pkgrel=2
+pkgdesc='Convert your documents'
 arch=('any')
 url='https://gitlab.gnome.org/World/morphosis'
 license=('GPL3')

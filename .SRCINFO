@@ -1,7 +1,7 @@
 pkgbase = morphosis
-	pkgdesc = Turn text into ASCII banners
+	pkgdesc = Convert your documents
 	pkgver = 1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/World/morphosis
 	arch = any
 	license = GPL3
