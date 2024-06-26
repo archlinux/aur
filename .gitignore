@@ -1,8 +1,4 @@
-*.tar.*
-*.orig
-*.rej
-*.swp
-*.part
-src
-pkg
-mercator
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore

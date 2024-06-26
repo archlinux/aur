@@ -1,23 +1,24 @@
 # Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
 
-_pkgname=mercator
-pkgname=${_pkgname}-git
-pkgver=0.2.0.r10.37de51a
+_pkgname="mercator"
+pkgname="${_pkgname}-git"
+pkgver=0.2.0.r10.g37de51a
 pkgrel=1
 pkgdesc="A TUI OpenStreetMap explorer"
 arch=('any')
 url="https://github.com/mrusme/${_pkgname}"
 license=('GPL-3.0-or-later')
+depends=('glibc')
 makedepends=('git' 'go')
+provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
-provides=("${_pkgname}")
 _pkgsrc="${_pkgname}"
 source=("${_pkgsrc}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgsrc}"
-  printf "%s" "$(git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
+  git describe --long --abbrev=7 | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
