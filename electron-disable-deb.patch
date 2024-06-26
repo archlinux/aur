@@ -2,7 +2,7 @@ diff --git a/package.json b/package.json
 index 2996f8b..e1bd547 100644
 --- a/package.json
 +++ b/package.json
-@@ -106,7 +106,7 @@
+@@ -118,7 +118,7 @@
      ],
      "linux": {
        "category": "Utility",
