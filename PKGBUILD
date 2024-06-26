@@ -1,27 +1,33 @@
 # Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
 
-_pkgname=grafterm
-pkgname=${_pkgname}-git
-pkgver=0.2.0.r6.b4f1144
+_pkgname="grafterm"
+pkgname="${_pkgname}-git"
+pkgver=0.2.0.r6.gb4f1144
 pkgrel=1
 pkgdesc="Metrics dashboards on terminal (a grafana inspired terminal version)"
 arch=('any')
 url="https://github.com/slok/${_pkgname}"
-license=('Apache')
+license=('Apache-2.0')
+depends=('glibc')
 makedepends=('git' 'go')
+provides=("${_pkgname}=${pkgver%%.r*}")
+conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}"
 source=("${_pkgsrc}::git+${url}.git")
-conflicts=("${_pkgname}")
-provides=("${_pkgname}=${pkgver%%.r*}")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgsrc}"
-  printf "%s" "$(git describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
+  git describe --long --abbrev=7 | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   go build "./cmd/${_pkgname}"
 }
 
