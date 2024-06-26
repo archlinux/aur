@@ -1,6 +1,4 @@
 [python-cliapp-fiw]
-source = "git"
-git = "http://git.liw.fi/cliapp"
-prefix = "cliapp-"
-exclude_regex = "version_.*"
-use_max_tag = true
+source = "jq"
+url = "https://sources.debian.org/api/src/python-cliapp"
+filter = ".versions | map(.version) | .[]"
