@@ -1,0 +1,15 @@
+pkgbase = specfitter-git
+	pkgdesc = A program for gamma-ray spectroscopy or similar data analysis
+	pkgver = r272.114dab2
+	pkgrel = 1
+	url = https://e-j-w.github.io/specfitter.html
+	install = specFitter.install
+	arch = any
+	license = GPL3
+	depends = gtk3
+	source = git+https://github.com/e-j-w/SpecFitter.git
+	source = specFitter.install
+	sha256sums = SKIP
+	sha256sums = 7cb2699788cdc2bccb9d4cd5a7dc5addd5e6da6eab16e82d23f755b712b2c900
+
+pkgname = specfitter-git
