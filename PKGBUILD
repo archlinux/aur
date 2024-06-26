@@ -3,7 +3,7 @@
 pkgbase=python-stpipe
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.5.2
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Framework for calibration pipeline software"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('python-setuptools-scm>=3.4'
              'python-build'
              'python-installer'
              'python-sphinx-automodapi'
-             'python-stsci_rtd_theme'
+             'python-sphinx_rtd_theme'
              'python-numpydoc'
              'python-crds'
              'graphviz')
@@ -23,7 +23,7 @@ checkdepends=('python-pytest-doctestplus'
 #             'python-jwst'
               'python-stdatamodels')   # crds already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('bb8b7d9e638b5f98e9b62125ad1bdb78')
+md5sums=('2f2cd655009733d4b8199bf8a6778810')
 
 get_pyinfo() {
      [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" || \
@@ -42,6 +42,9 @@ check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
     python -m installer --destdir=tmp_install dist/*.whl
+#   mkdir -p .crds/config/jwst
+#   touch .crds/config/jwst/server_config
+#   CRDS_PATH=".crds" \
 #   CRDS_PATH=".crds" CRDS_SERVER_URL="https://jwst-crds.stsci.edu" \
     PATH="tmp_install/usr/bin:${PATH}" PYTHONPATH="tmp_install/$(get_pyinfo site)" \
         pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
