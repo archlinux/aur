@@ -1,6 +1,6 @@
 # Maintainer: Willy Micieli <micieli@vivaldi.net>
 pkgname=commiter
-pkgver=1.3.0
+pkgver=2.0.0
 pkgrel=1
 epoch=1
 arch=('any')
@@ -11,7 +11,7 @@ depends=('rustup' 'git' 'zuu')
 makedepends=('cargo')
 provides=('commiter')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('c9a1513924e0807626ccfd134149bfd417d5e8bc2898896634f5b0502fa92142')
+sha256sums=('12fe1e4a7d4270b4a5379871981c0e67f0ce090c46091d2718998c8d90cd75d6')
 
 
 build() {
