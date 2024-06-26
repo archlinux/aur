@@ -12,6 +12,7 @@ pkgbase = customfetch-git
 	depends = bash
 	depends = gtk3
 	depends = gtkmm3
+	optdepends = ttf-liberation: Font to be used for GUI (recommended)
 	conflicts = customfetch
 	conflicts = customfetch-bin
 	source = git+https://github.com/Toni500github/customfetch.git
