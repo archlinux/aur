@@ -1,9 +1,10 @@
-# Maintainer: VitalyR <vr AT vitalyr DOT com>
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
+# Contributor: VitalyR <vr AT vitalyr DOT com>
+# Contributor: HurricanePootis <hurricanepootis@protonmail.com>
 # Contributor: Christer Solskogen <christer.solskogen@gmail.com>
 
 pkgname=lib32-sdl3-git
-pkgver=3.1.2.r242.g86b2f441c
+pkgver=3.1.1.r862.g80e64ef92
 pkgrel=1
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 3)"
 arch=('x86_64' 'i686')
