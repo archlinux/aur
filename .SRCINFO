@@ -1,11 +1,12 @@
 pkgbase = nemo-media-columns
 	pkgdesc = Media properties columns in Nemo
-	pkgver = 6.0.1
-	pkgrel = 3
+	pkgver = 6.2.0
+	pkgrel = 1
 	url = https://github.com/linuxmint/nemo-extensions
 	arch = any
 	license = GPL2
-	makedepends = python-distutils-extra
+	makedepends = python-setuptools
+	makedepends = glib2-devel
 	depends = nemo-python
 	depends = python-mutagen
 	depends = libgexiv2
@@ -14,9 +15,7 @@ pkgbase = nemo-media-columns
 	depends = python-pypdf
 	depends = python-stopit
 	options = !emptydirs
-	source = nemo-extensions-6.0.1.tar.gz::https://github.com/linuxmint/nemo-extensions/archive/6.0.1.tar.gz
-	source = pypdf.patch::https://github.com/linuxmint/nemo-extensions/commit/68b27d5ed9738008fc7e899fa4b0c7222ea9ddfb.patch
-	sha256sums = d7d0e78df10dc4240623a1daa7cd457cc4c31969c8a6ff1cdeca4b3ce66b5cdb
-	sha256sums = 40063e0b02469fef7aff2da3e4a9f7f5bc372ed86ea0219a4f975fbfa94343fe
+	source = nemo-extensions-6.2.0.tar.gz::https://github.com/linuxmint/nemo-extensions/archive/6.2.0.tar.gz
+	sha256sums = b1c7e3d269ed05f472c80c16cf3f12827cbb48cb05406b276be14060225dbbc3
 
 pkgname = nemo-media-columns
