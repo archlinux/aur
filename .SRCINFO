@@ -1,7 +1,7 @@
 pkgbase = libretro-minivmac-git
 	pkgdesc = Apple Macintosh II core
-	pkgver = r63.45edc82
-	pkgrel = 2
+	pkgver = r65.e7fcfef
+	pkgrel = 1
 	url = https://github.com/libretro/libretro-minivmac
 	arch = aarch64
 	arch = armv7h
@@ -10,11 +10,11 @@ pkgbase = libretro-minivmac-git
 	arch = pentium4
 	arch = x86_64
 	groups = libretro
-	license = GPL2
+	license = GPL-2.0-only
 	makedepends = git
 	depends = glibc
 	depends = libretro-core-info
-	provides = libretro-minivmac=r63.45edc82
+	provides = libretro-minivmac=65.e7fcfef
 	conflicts = libretro-minivmac
 	source = libretro-minivmac::git+https://github.com/libretro/libretro-minivmac.git
 	source = libretro-common::git+https://github.com/libretro/libretro-common.git

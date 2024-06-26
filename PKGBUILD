@@ -1,16 +1,16 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libretro-minivmac
 pkgname=$_pkgname-git
-pkgver=r63.45edc82
-pkgrel=2
+pkgver=r65.e7fcfef
+pkgrel=1
 pkgdesc="Apple Macintosh II core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/libretro/libretro-minivmac"
-license=('GPL2')
+license=('GPL-2.0-only')
 groups=('libretro')
 depends=('glibc' 'libretro-core-info')
 makedepends=('git')
-provides=("$_pkgname=$pkgver")
+provides=("$_pkgname=${pkgver#r}")
 conflicts=("$_pkgname")
 source=(
 	"$_pkgname::git+$url.git"
