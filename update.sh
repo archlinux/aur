@@ -51,8 +51,8 @@ if [[ $src_old_sum == $src_new_sum ]];then
 	echo "There is no update for both packages"
 else
 	echo "Updating the packages & pushing to the server"
-	#git add .
-	#git commit -m "$latest_ver"
-	#git push
+	git add .
+	git commit -m "$latest_ver"
+	git push
 fi
 
