@@ -10,7 +10,7 @@ depends=('acl>=2.2.23' 'fuse3>=3.2.3' 'openssl>=3.0.0' 'qrencode' 'zstd>=1.5.2')
 options=('!strip' '!emptydirs')
 
 pkgver=3.2.6_1
-pkgrel=2
+pkgrel=3
 source_x86_64=("http://download.proxmox.com/debian/pbs/dists/bookworm/pbs-no-subscription/binary-amd64/proxmox-backup-client_3.2.6-1_amd64.deb")
 sha512sums_x86_64=('fcfa12aa9283ff263c80916458530c4ada16d41dd62a72505bf7ef2e4249f6d4da9e039ed7e9d756f240bf95270d8618a67266a0a16f3fca14c379e5b5e06515')
 
@@ -21,6 +21,6 @@ package(){
 	# Extract package data
 	tar -xJ -f data.tar.xz -C "${pkgdir}"
 
-	install -D -m644 "usr/share/doc/proxmox-backup-client/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -D -m644 "${pkgdir}/usr/share/doc/proxmox-backup-client/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-AGPL3"
 
 }

@@ -1,7 +1,7 @@
 pkgbase = proxmox-backup-client-bin
 	pkgdesc = Client for Proxmox Backup Server (binary release from Debian)
 	pkgver = 3.2.6_1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pbs.proxmox.com
 	arch = i686
 	arch = x86_64
