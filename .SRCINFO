@@ -1,15 +1,14 @@
 pkgbase = proxmox-backup-client-bin
 	pkgdesc = Client for Proxmox Backup Server (binary release from Debian)
 	pkgver = 3.2.6_1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pbs.proxmox.com
 	arch = i686
 	arch = x86_64
 	license = AGPL3
 	depends = acl>=2.2.23
 	depends = fuse3>=3.2.3
-	depends = libssl3>=3.0.0
-	depends = openssl
+	depends = openssl>=3.0.0
 	depends = qrencode
 	depends = zstd>=1.5.2
 	conflicts = proxmox-backup-client
