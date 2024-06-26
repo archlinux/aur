@@ -3,7 +3,7 @@
 pkgname=backblaze-b2
 _pkgname=b2
 pkgver=4.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Backblaze B2 Command Line Client'
 url='https://github.com/Backblaze/B2_Command_Line_Tool'
 depends=('python'
@@ -17,10 +17,9 @@ depends=('python'
          'python-tqdm>=4.65.0'
          'python-platformdirs>=3.11.0'
         )
-makedepends=('python-pip'
-             'python-build'
+makedepends=('python-build'
              'python-installer'
-             'python-setuptools-scm'
+             'python-pdm-backend'
              'python-wheel'
             )
 
