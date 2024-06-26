@@ -6,9 +6,9 @@ pkgrel="1"
 pkgdesc="Ayatana System Indicators' common API functions"
 arch=("i686" "x86_64" "pentium4")
 url="https://github.com/AyatanaIndicators/libayatana-common"
-license=("GPL3")
-makedepends=("cmake" "cmake-extras" "glib2" "vala" "gobject-introspection" "intltool")
-depends=("dconf" "zenity")
+license=("GPL-3.0-or-later")
+makedepends=("cmake" "cmake-extras" "vala" "gobject-introspection" "intltool")
+depends=("dconf" "zenity" "glibc" "glib2")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AyatanaIndicators/$pkgname/archive/$pkgver.tar.gz")
 md5sums=("c2d55bad8c3c902cd01b6be842141498")
 
