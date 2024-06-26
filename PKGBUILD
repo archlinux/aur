@@ -3,7 +3,7 @@
 pkgname=oama-bin
 _pkgname="${pkgname%-bin}"
 pkgver=0.14
-pkgrel=3
+pkgrel=4
 pkgdesc="Provide OAuth2 renewal and authorization capabilities"
 arch=(x86_64 aarch64)
 url="https://github.com/pdobsan/${_pkgname}"
@@ -13,12 +13,15 @@ depends=()
 makedepends=()
 optdepends=(
             'gnome-keyring: Stores passwords and encryption keys'
+            'kwallet: Secure and unified container for user passwords'
+            'keepassxc: Cross-platform community-driven port of Keepass password manager'
             'gnupg: OpenPGP encryption and signing tool'
+            'mutt: Small but very powerful text-based mail client'
+            'neomutt: A version of mutt with added features'
             'msmtp: an SMTP client'
             'fdm: fetch and deliver mail'
             'offlineimap: Synchronizes emails between two repositories'
             'isync: IMAP and MailDir mailbox synchronizer'
-            'cronie: cron daemon to execute scheduled commands'
            )
 provides=(${_pkgname})
 conflicts=(mailctl-bin ${_pkgname} ${_pkgname}-git )
