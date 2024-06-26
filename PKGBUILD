@@ -8,7 +8,7 @@
 # Profile with xvfb-run, if possible
 : ${_build_pgo_xvfb:=false}
 
-_pkgver=11.14.0-1
+_pkgver=11.14.1-1
 _pkgrel=1
 
 pkgname=firedragon
@@ -85,7 +85,7 @@ source=(https://gitlab.com/api/v4/projects/55893651/packages/generic/firedragon/
   rustup.sh::https://sh.rustup.rs
   https://gitlab.com/garuda-linux/firedragon/settings/-/raw/master/firedragon.psd
   https://gitlab.com/garuda-linux/firedragon/settings/-/raw/master/firedragon.desktop)
-sha256sums=('7ef6798b20554820924007c721aac2da935b2a23324b18a9b70dcbf9a5045778'
+sha256sums=('b23aa519337381120f6a5f95bff8e4000c2f4cf4ae49e71a857302ce0b444115'
             '9516c36c145d365c3b65153d83a5b3b0dd8a319b5c30d47a390070892bd431b3'
             '168d16a027a81c311c58f9302858244dfa5517f0a95a8d3df1abbf9b93b9d455'
             'df27ed1e0da5b192224978dc2a593a97e18e6e22062c611fc32b277500324e62'
