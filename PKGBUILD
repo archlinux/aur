@@ -5,12 +5,12 @@
 pkgname=ruby-libvirt
 _gemname=$pkgname
 pkgver=0.8.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Ruby bindings for libvirt.'
 arch=(i686 x86_64)
 license=(LGPL-2.1-or-later)
 url=https://gitlab.com/libvirt/libvirt-ruby
-depends=(ruby libvirt)
+depends=(ruby libvirt glibc)
 makedepends=(rubygems ruby-rake ruby-rdoc)
 source=("${url}/-/archive/${pkgname}-${pkgver}/libvirt-ruby-${pkgname}-${pkgver}.tar.gz")
 sha256sums=('a218fea762585e890fce10bbdb11aa5a91646c29611f85c93a46c24b74a6983e')
