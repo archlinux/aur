@@ -323,7 +323,7 @@ prepare() { _set_vars;
 
   printf "\nApplying other patches\n\n" >> "${_where}"/patchlog.txt
   cd "${srcdir}"/"${pkgname}" || _failure
-  for patch in $(find "${patchdir}" -type f -regex ".*\.patch" | sort); do
+  for patch in $(find "${patchdir}" -type f -regex ".*\.patch" | LC_ALL=C sort -f); do
     shortname="${patch#"${patchdir}/"}"
     printf "\nApplying %s\n\n" "${shortname}" >> "${_where}"/patchlog.txt
     msg2 "Applying '${shortname}'"
