@@ -2,7 +2,7 @@
 # Co-Maintainer: Slimbook <dev at slimbook dot es>
 pkgname=slimbookintelcontroller
 pkgver=1.0beta
-pkgrel=1
+pkgrel=2
 pkgdesc="Application for the performance management of Intel processors"
 arch=('any')
 url="https://github.com/slimbook/slimbookintelcontroller"
@@ -28,4 +28,7 @@ package() {
 
   # App permissions
   chmod +x "$pkgdir/usr/lib/systemd/system-sleep/$pkgname"
+
+  # Remove invalid Python 3.8 bytecode
+  find "$pkgdir/usr/share/$pkgbase/src/" -type d -name "__pycache__" -prune -exec rm -rf {} \;
 }
