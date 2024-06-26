@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="A customizable and lightweight AUR helper, designed to be simple but powerful."
 arch=('x86_64' 'aarch64')
 url="https://github.com/BurntRanch/TabAUR"
-license=('GPL3')
+license=('GPL2')
 depends=('pacman' 'curl')
 makedepends=('base-devel' 'cmake')
 optdepends=(
@@ -26,12 +26,9 @@ prepare() {
     git submodule update --init --recursive
 }
 
-build() {
-    make -C "${srcdir}/${_pkgname}" DEBUG=0
-}
-
+# there is no need for build() because `make install` already builds and install TabAUR
 package() {
     cd "${srcdir}/${_pkgname}"
-    make install DESTDIR="${pkgdir}" PREFIX="/usr"
+    make install DESTDIR="${pkgdir}" PREFIX="/usr" DEBUG=0
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
