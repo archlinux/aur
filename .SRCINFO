@@ -1,0 +1,14 @@
+pkgbase = go-http-file-server
+	pkgdesc = Simple command line based HTTP file server to share local file system
+	pkgver = 1.18.1
+	pkgrel = 1
+	url = https://github.com/mjpclab/go-http-file-server
+	arch = any
+	license = MIT
+	makedepends = go>=1.18
+	provides = ghfs
+	conflicts = ghfs
+	source = go-http-file-server-1.18.1.tar.gz::https://github.com/mjpclab/go-http-file-server/archive/refs/tags/v1.18.1.tar.gz
+	sha256sums = 3acf2f36b5e7bc05f5ea04a2ce92cd1d9a009980ee14fd9246348a09f6cfab8e
+
+pkgname = go-http-file-server
