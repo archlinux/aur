@@ -5,7 +5,7 @@
 pkgname=python-watchdog-git
 pkgver=4.0.2.r1466.9f23b59
 pkgrel=1
-pkgdesc="Python API and shell utilities to monitor file system events"
+pkgdesc="Python library and shell utilities to monitor filesystem events."
 arch=('any')
 url='https://github.com/gorakhargosh/watchdog'
 license=('Apache-2.0')
