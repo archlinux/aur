@@ -1,4 +1,4 @@
-pkgbase = typora-plugin
+pkgbase = typora-with-plugin
 	pkgdesc = 一款 Markdown 编辑器和阅读器（with typora_plugin）
 	pkgver = 1.9.3_plugin_1.9.13
 	pkgrel = 1
@@ -19,4 +19,4 @@ pkgbase = typora-plugin
 	sha512sums = de9c883c63f3ea35bd551c8761e605f8e1a3468943e000abcbf94bb0c5cbb5f0f6c7fa4d49ab39c177f167e0e3d0b061c861bf828627b4a34f7f1589119c3d04
 	sha512sums = fa663f8403326c013c51c192fc887df5278f3f0dbe8cb1909cc84344760b3dfb0bf95f16c5879c6d6a917c2edf04e1ec9ab6b59d6ba50fdfe272e45de44f1bef
 
-pkgname = typora-plugin
+pkgname = typora-with-plugin

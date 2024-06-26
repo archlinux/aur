@@ -1,7 +1,7 @@
 # Maintainer: Jonas Bögle <aur@iwr.sh>
 # Contributor: Jonathan Duck <duckbrain30@gmail.com>
 
-pkgname=typora-plugin
+pkgname=typora-with-plugin
 _pkgname=typora
 _typora_ver=1.9.3
 _plugin_ver=1.9.13
