@@ -3,7 +3,7 @@
 pkgname=python-cynthion
 _gitpkgname=cynthion
 pkgver=0.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Python package and utilities for the Great Scott Gadgets Cynthion USB Test Instrument'
 arch=('any')
 url='https://github.com/greatscottgadgets/cynthion'
@@ -28,6 +28,9 @@ makedepends=(
   'python-sphinx'
   'python-sphinx_rtd_theme'
   'python-wheel'
+)
+optdepends=(
+  'python-facedancer: to run the included examples'
 )
 
 source=(
@@ -90,6 +93,11 @@ package() {
     README.md
   cp -R --preserve=mode -t "${pkgdir}/usr/share/doc/${pkgname}" \
     docs/build/singlehtml/{index.html,_images,_static}
+
+  echo >&2 'Packaging the examples'
+  mkdir -p "${pkgdir}/usr/share/${pkgname}"
+  cp -R --preserve=mode -t "${pkgdir}/usr/share/${pkgname}" \
+    cynthion/python/examples
 
   echo >&2 'Packaging the license'
   install -D -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" \
