@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=fresh
-_pkgver=0.2.0
+_pkgver=0.2.1
 pkgname=r-${_pkgname,,}
-pkgver=0.2.0
-pkgrel=4
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="Create Custom 'Bootstrap' Themes to Use in 'Shiny'"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -26,7 +26,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a92db254ae88e8371efac44efe2cf1f5be7cce62291fdf994ebd68c14dad079d')
+sha256sums=('5826072b9b37c683012d45e77247420a778eecdaec05947c6d507f4c3b2471a6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
