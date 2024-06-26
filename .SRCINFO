@@ -13,8 +13,8 @@ pkgbase = dump1090-tomswartz-git
 	conflicts = dump1090-git
 	conflicts = dump1090-fa-git
 	conflicts = dump1090-mutability-git
-	source = git://github.com/tomswartz07/dump1090.git
+	backup = usr/share/dump1090/config.js
+	source = git+https://github.com/tomswartz07/dump1090.git
 	md5sums = SKIP
 
 pkgname = dump1090-tomswartz-git
-
