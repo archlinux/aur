@@ -1,7 +1,7 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 pkgname=mockgen
 pkgver=0.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc='GoMock is a mocking framework for the Go programming language.'
 arch=('x86_64')
 url="https://github.com/uber-go/mock"
@@ -21,7 +21,7 @@ build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS} -Wl,-z,shstk"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   go build -o build ./...
 }
