@@ -8,6 +8,8 @@ pkgbase = vault-unseal-git
 	makedepends = git
 	makedepends = make
 	makedepends = go
+	provides = vault-unseal=0.5.1
+	conflicts = vault-unseal
 	source = vault-unseal::git+https://github.com/lrstanley/vault-unseal.git
 	sha256sums = SKIP
 
