@@ -10,6 +10,7 @@ url='https://github.com/girstlabs/grist-desktop'
 license=('Apache')
 provides=("${_app_name}")
 depends=('libxss' 'libxtst' 'libappindicator-gtk2' 'libnotify' 'libxcrypt-compat')
+options=(!debug)
 source=("${pkgname}-${pkgver}.AppImage::https://github.com/gristlabs/${_app_name}/releases/download/v${pkgver}/${_app_name}-linux-${pkgver}-x86_64.AppImage"
         "grist16.png"
         "grist32.png"
