@@ -6,7 +6,7 @@
 
 pkgname=qt4
 pkgver=4.8.7
-pkgrel=35
+pkgrel=36
 arch=(i686 x86_64)
 url="https://www.qt.io"
 license=(GPL-3.0-only LGPL-3.0-only GFDL-1.3-only)
@@ -24,6 +24,7 @@ optdepends=('postgresql-libs: PostgreSQL driver'
             'sni-qt: StatusNotifierItem (AppIndicators) support')
 replaces=('qt<=4.8.4')
 conflicts=(qt)
+options=('!lto') # Avoid static library issues
 _pkgfqn="qt-everywhere-opensource-src-${pkgver}"
 source=("https://src.fedoraproject.org/repo/pkgs/qt/${_pkgfqn}.tar.gz/d990ee66bf7ab0c785589776f35ba6ad/${_pkgfqn}.tar.gz"
         "qtconfig-qt4.desktop"
