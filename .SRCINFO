@@ -1,0 +1,18 @@
+pkgbase = libiff-git
+	pkgdesc = Parser for Electronic Arts' Interchange File Format (IFF)
+	pkgver = r83+b5f542a
+	pkgrel = 1
+	url = https://github.com/svanderburg/libiff
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = help2man
+	makedepends = git
+	provides = libiff=r83+b5f542a
+	conflicts = libiff
+	source = git+https://github.com/svanderburg/libiff.git
+	sha256sums = SKIP
+
+pkgname = libiff-git
