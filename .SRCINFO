@@ -1,6 +1,6 @@
 pkgbase = sourcegit
 	pkgdesc = GUI client for GIT users
-	pkgver = 8.17
+	pkgver = 8.18
 	pkgrel = 1
 	url = https://github.com/sourcegit-scm/sourcegit
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = sourcegit
 	depends = git
 	depends = git-credential-manager
 	depends = xdg-utils
-	source = sourcegit-8.17.tar.gz::https://github.com/sourcegit-scm/sourcegit/archive/refs/tags/v8.17.tar.gz
+	source = sourcegit-8.18.tar.gz::https://github.com/sourcegit-scm/sourcegit/archive/refs/tags/v8.18.tar.gz
 	source = sourcegit.desktop
-	sha256sums = 6f2d7f87e2c2f138197fffa8f16b9a6705bda8c7aa655325609a39465ec5173f
+	sha256sums = f24eee173dcb9b35b6ba68eda0868918bed67f1c2ad6af0009d1e8514e6a6ff2
 	sha256sums = 3488ee13a4ca1bae85c35f866d046304d8716a64c46cadb2576cb8b4ae44b058
 
 pkgname = sourcegit
