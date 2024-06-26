@@ -1,5 +1,5 @@
 _forkname=yaocccc
-pkgname=picom--yaoccc-git
+pkgname=picom-yaoccc-git
 _gitname=picom
 pkgver=1788__2023.02.13
 pkgrel=1
