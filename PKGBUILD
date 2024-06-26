@@ -38,6 +38,6 @@ package() {
     install -Dm644 "$srcdir/pokerogue.desktop" "$pkgdir/usr/share/applications/pokerogue.desktop"
 
     # Install icon
-    install -Dm644 "$srcdir/logo512.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/pokerogue.png"
+    install -Dm644 "$srcdir/logo512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/pokerogue.png"
 }
 
