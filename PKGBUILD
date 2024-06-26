@@ -3,9 +3,9 @@
 
 pkgbase="python-symbolica"
 pkgname=("python-symbolica")
-pkgver=0.6.0
-pkgrel=4
-pkgdesc="Symbolica is a blazing fast and modern computer algebra system which aims to handle huge expressions. It can easily be incorporated into existing projects using its Python, Rust or C++ bindings."
+pkgver=0.7.0
+pkgrel=1
+pkgdesc="Python library for woring with Symbolica, a fast and modern computer algebra system"
 arch=('x86_64')
 makedepends=()
 license=('Custome')
@@ -24,4 +24,4 @@ package() {
     mv $_folder/$_name-$pkgver $_folder/site-packages
 }
 
-sha256sums=('0508b996ba4f72981510a9f27bdb3ad01489fa82748772712232d6a08810bada')
+sha256sums=('4fbadb3aef26305768246305e79f77751be9fdb9df6a63cc4cb856de09126399')
