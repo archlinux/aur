@@ -1,14 +1,13 @@
 pkgbase = ringracers
 	pkgdesc = Kart racing video game originally based on the 3D Sonic the Hedgehog fangame Sonic Robo Blast 2
 	pkgver = 2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kartkrew.org
 	arch = x86_64
 	arch = aarch64
 	license = GPL2
 	makedepends = cmake
 	makedepends = ninja
-	makedepends = mold
 	depends = ringracers-data>=2.3
 	depends = curl
 	depends = zlib

@@ -4,13 +4,13 @@
 pkgname=ringracers
 pkgver=2.3
 _dataver=2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Kart racing video game originally based on the 3D Sonic the Hedgehog fangame Sonic Robo Blast 2"
 arch=('x86_64' 'aarch64')
 license=('GPL2')
 url='https://www.kartkrew.org'
 depends=("ringracers-data>=$_dataver" 'curl' 'zlib' 'libpng' 'libvorbis' 'libvpx' 'libyuv' 'sdl2')
-makedepends=('cmake' 'ninja' 'mold')
+makedepends=('cmake' 'ninja')
 _archive="RingRacers-$pkgver"
 
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/KartKrewDev/RingRacers/archive/refs/tags/v$pkgver.tar.gz"
@@ -26,7 +26,9 @@ build() {
   cd "$_archive"
   cmake -G Ninja -Wno-dev -B build \
     -DCMAKE_BUILD_TYPE='Release' \
-    -DCMAKE_LINKER_TYPE='MOLD' \
+    -DCMAKE_C_FLAGS="-g1 -O3" \
+    -DCMAKE_CXX_FLAGS=-"g1 -O3 -fpermissive" \
+    -DSRB2_CONFIG_DEV_BUILD=OFF \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DSRB2_SDL2_EXE_NAME="ringracers" \
     -DACSVM_INSTALL_LIB=OFF
