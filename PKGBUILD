@@ -2,7 +2,7 @@
 
 pkgname=fjordlauncher-bin
 pkgver=8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Prism Launcher fork with support for alternative auth servers"
 arch=('x86_64')
 url="https://github.com/unmojang/FjordLauncher"
@@ -25,5 +25,7 @@ package() {
     install -d "${pkgdir}/usr"
     tar -C "${pkgdir}/usr" -xvf FjordLauncher-Linux-Qt6-${pkgver}.tar.gz
     rm "${pkgdir}"/usr/manifest.txt
+    mv "${pkgdir}/usr/share/mime/packages/modrinth-mrpack-mime.xml" \
+       "${pkgdir}/usr/share/mime/packages/fjordlauncher-modrinth-mrpack-mime.xml"
     chown -R root:root "${pkgdir}/usr"  # files in tarball are not owned by root
 }

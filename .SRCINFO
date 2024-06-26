@@ -1,7 +1,7 @@
 pkgbase = fjordlauncher-bin
 	pkgdesc = Prism Launcher fork with support for alternative auth servers
 	pkgver = 8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/unmojang/FjordLauncher
 	arch = x86_64
 	license = GPL-3.0-only AND LGPL-3.0-or-later AND LGPL-2.0-or-later AND Apache-2.0 AND MIT AND BSD-2-Clause AND BSD-3-Clause AND LicenseRef-Batch AND OFL-1.1
