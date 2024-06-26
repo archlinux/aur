@@ -10,7 +10,6 @@ url="https://tari.in/www/software/ayatana-webmail/"
 license=("GPL-3.0-or-later")
 depends=("python-dbus" "glib2" "python" "gtk3" "gdk-pixbuf2" "hicolor-icon-theme" "dconf" "libnotify" "libcanberra" "gnome-keyring" "python-babel" "python-gobject" "python-psutil" "python-secretstorage" "python-urllib3")
 makedepends=("python-setuptools" "python-polib")
-install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=("5c202c540631443b8dead9c62cb49475")
 replaces=("unity-mail")
