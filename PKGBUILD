@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: George Rawlinson <george@rawlinson.net.nz>
 pkgname=air
-pkgver=1.52.2
+pkgver=1.52.3
 pkgrel=1
 pkgdesc="Live reload for Go apps"
 arch=(x86_64)
@@ -12,7 +12,7 @@ makedepends=(git)
 options=('!lto')
 _commit='32b22d6c7fb4a2d388e1da529e602b3e719ea971'
 source=("${pkgname}::git+${url}.git#commit=${_commit}")
-b2sums=('29d698d27c0669f761435f0f107da5d67d17712eb247a2ac1e765d10daaf472aa78398c3d0ff6abec9e91acd2fb3b8c78d11e814f8377247b05d288632db7687')
+b2sums=('SKIP')
 
 pkgver() {
   cd ${pkgname}
