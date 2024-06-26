@@ -2,13 +2,13 @@
 # Contributor: bjin <bjin@ctrl-d.org>
 # Contributor: Alynx Zhou <alynx.zhou@gmail.com>
 
-## useful links
+## links
 # https://gyroflow.xyz
 # https://github.com/gyroflow/gyroflow
 
 _pkgname="gyroflow"
 pkgname="$_pkgname-git"
-pkgver=1.5.4.r115.ga161c78b
+pkgver=1.5.4.r283.gd6622f2
 pkgrel=1
 pkgdesc="Video stabilization using gyroscope data"
 url="https://github.com/gyroflow/gyroflow"
@@ -25,7 +25,6 @@ depends=(
 makedepends=(
   'cargo'
   'clang'
-  'gendesk'
   'git'
   'opencl-headers'
   'p7zip'
@@ -41,42 +40,25 @@ conflicts=("$_pkgname")
 
 options=(!lto)
 
+install="$_pkgname.install"
+
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git")
 sha256sums=("SKIP")
 
 pkgver() {
   cd "$_pkgsrc"
-  git describe --long --tags --abbrev=8 --exclude='*[a-zA-Z][a-zA-Z]*' \
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
     | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cat <<EOF > "$_pkgname.sh"
-#!/usr/bin/env sh
-export LD_LIBRARY_PATH="/opt/$_pkgname"
-exec /opt/$_pkgname/$_pkgname "\$@"
-EOF
-
-  local _gendesk_options=(
-    -q -f -n
-    --pkgname="$_pkgname"
-    --pkgdesc="$pkgdesc"
-    --name="Gyroflow"
-    --exec="$_pkgname %u"
-    --icon="$_pkgname"
-    --terminal=false
-    --categories="Graphics;Photography;AudioVideo"
-    --mimetypes="video/mp4;video/mpeg"
-    --startupnotify=true
-  )
-
-  gendesk "${_gendesk_options[@]}"
+  _gen_scripts
 
   export RUSTUP_TOOLCHAIN=stable
 
   cd "$_pkgsrc"
-  cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
+  cargo fetch --target "${CARCH}-unknown-linux-gnu"
 }
 
 build() {
@@ -104,16 +86,83 @@ package() {
   # camera presets
   cp -a "$_pkgsrc/resources/camera_presets" "$pkgdir/opt/$_pkgname"
 
-  # script
-  install -Dm755 "$_pkgname.sh" "$pkgdir/usr/bin/$_pkgname"
+  # scripts
+  install -Dm755 gyroflow.sh "$pkgdir/usr/bin/gyroflow"
+  install -Dm755 gyroflow_init.sh "$pkgdir/usr/bin/gyroflow_init"
 
   # desktop file
-  install -Dm644 "$_pkgname.desktop" -t "$pkgdir/usr/share/applications/"
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
+[Desktop Entry]
+Type=Application
+Name=${_pkgname^}
+Comment=$pkgdesc
+Exec=$_pkgname %u
+Icon=$_pkgname
+Terminal=false
+StartupNotify=true
+Categories=Graphics;Photography;AudioVideo;
+MimeType=video/mp4;video/mpeg;
+END
 
   # icon
   install -Dm644 "$_pkgsrc/resources/icon.svg" "$pkgdir/usr/share/pixmaps/$_pkgname.svg"
 
-  # Make camera presets directory writable.
-  # gyroflow downloads and saves new presets to this directory.
-  find "$pkgdir/opt/$_pkgname/camera_presets" -type d -exec chmod 777 {} +
+  chmod -R u+rwX,go+rX,go-w "$pkgdir/"
+}
+_gen_scripts() {
+  cat > gyroflow.sh << 'END'
+#!/usr/bin/env bash
+
+source /usr/bin/gyroflow_init
+
+if ! grep -q '/usr/bin' <<< "$(which flutter)"; then
+  exec gyroflow "$@"
+fi
+END
+
+  cat > gyroflow_init.sh << 'END'
+#!/usr/bin/env bash
+
+export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
+
+APP_DIR="/opt/gyroflow"
+SAVE_DIR="$XDG_CACHE_HOME/gyroflow_local"
+MOUNT_DIR="$XDG_CACHE_HOME/gyroflow_sdk"
+
+if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
+  echo "$0 should not be executed directly."
+  exit 1
+fi
+
+if [ ! -e "$APP_DIR" ]; then
+  echo "$APP_DIR not found."
+  return 1
+fi
+
+_unionfs() {
+  if [ ! -e "$MOUNT_DIR/gyroflow" ]; then
+    mkdir -p "$SAVE_DIR"
+    mkdir -p "$MOUNT_DIR"
+
+    if ! unionfs -o cow -o umask=000 "$SAVE_DIR=RW:$APP_DIR=RO" "$MOUNT_DIR" > /dev/null 2>&1; then
+      echo "unionfs failed"
+      return 1
+    fi
+  fi
+}
+
+if grep -q gyroflow <<< $(groups); then
+  export APP_ROOT="$APP_DIR"
+elif _unionfs; then
+  if [ -e "$MOUNT_DIR/bin" ]; then
+    if ! grep -q "$MOUNT_DIR" <<< "$PATH"; then
+      export APP_ROOT="$MOUNT_DIR"
+    fi
+  fi
+fi
+
+if ! grep -q "$APP_ROOT" <<< "$PATH"; then
+  export PATH="$APP_ROOT:$PATH"
+fi
+END
 }
