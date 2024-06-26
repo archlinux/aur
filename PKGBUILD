@@ -1,16 +1,16 @@
-# Maintainer: Siavash Askari Nasr <ciavash@protonmail.com>
+# Submitter: Siavash Askari Nasr <ciavash@protonmail.com>
 
-_app_name=grist-electron
+_app_name=grist-desktop
 pkgname="${_app_name}-bin"
 pkgver=0.2.9
 pkgrel=1
-pkgdesc="Grist Desktop App, built with Electron, a modern relational spreadsheet. It combines the flexibility of a spreadsheet with the robustness of a database to organize your data and make you more productive."
+pkgdesc="Desktop Grist, packaged with Electron. Grist is a modern relational spreadsheet. It combines the flexibility of a spreadsheet with the robustness of a database."
 arch=('x86_64')
-url='https://github.com/paulfitz/grist-electron'
+url='https://github.com/girstlabs/grist-desktop'
 license=('Apache')
-provides=('grist-electron')
+provides=("${_app_name}")
 depends=('libxss' 'libxtst' 'libappindicator-gtk2' 'libnotify' 'libxcrypt-compat')
-source=("${pkgname}-${pkgver}.AppImage::https://github.com/paulfitz/${_app_name}/releases/download/v${pkgver}/${_app_name}-linux-${pkgver}-x86_64.AppImage"
+source=("${pkgname}-${pkgver}.AppImage::https://github.com/gristlabs/${_app_name}/releases/download/v${pkgver}/${_app_name}-linux-${pkgver}-x86_64.AppImage"
         "grist16.png"
         "grist32.png"
         "grist48.png"
