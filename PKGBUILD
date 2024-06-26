@@ -5,7 +5,7 @@
 
 # Maintainer: aureumapes <auruemapes@duck.com>
 pkgname=candlelang-git
-pkgver=cndl1.1.0_dev
+pkgver=candle1.1.1
 pkgrel=1
 pkgdesc="The latest git vcersion of Candlelang"
 arch=("x86_64" "aarch64")
