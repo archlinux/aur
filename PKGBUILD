@@ -7,10 +7,9 @@ pkgrel=1
 pkgdesc="Indicator and control applet for web services"
 arch=("any")
 url="https://tari.in/www/software/lampswitch"
-license=("GPL3")
-depends=("gobject-introspection" "gtk3" "python-gobject" "libayatana-appindicator" "desktop-file-utils")
+license=("GPL-3.0-or-later")
+depends=("gtk3" "python-gobject" "libayatana-appindicator" "python-psutil" "hicolor-icon-theme" "python" "glib2" "gdk-pixbuf2" "bash")
 makedepends=("python-setuptools" "python-polib")
-install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tari01/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=("b4f13c6b496d37324089dc3ad760698e")
 
