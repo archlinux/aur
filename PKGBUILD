@@ -1,18 +1,32 @@
-# Maintainer: Jni <jni.viens at protonmail dot com>
-pkgname=envman
-pkgver=1.1.0
+# Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: Jni <jni.viens at protonmail dot com>
+
+pkgname="envman"
+pkgver=2.4.3
 pkgrel=1
-pkgdesc="Manage your Environment Variable collections."
-arch=(x86_64)
-url="https://github.com/bitrise-io/envman"
+pkgdesc="Manage Environment Variable collections"
+arch=('any')
+url="https://github.com/bitrise-io/${pkgname}"
 license=('MIT')
-provides=(envman)
-source=(https://github.com/bitrise-io/envman/releases/download/$pkgver/$pkgname-Linux-$CARCH
-        https://raw.githubusercontent.com/bitrise-io/envman/master/LICENSE)
-md5sums=('ea369a4bb1acc001e891a2929377a04f'
-         '10c39cc7466456c17298b32d04bfa8d9')
+depends=('glibc')
+_pkgsrc="${pkgname}-${pkgver}"
+source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('842e54bebfcfc64b01888915365f67d8a3202653048d25d1b52fdb71d168c3cf')
+
+build() {
+  cd "${srcdir}/${_pkgsrc}"
+  [ -d "build" ] || mkdir "build"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build -o "build/${pkgname}" .
+}
 
 package() {
-  install -Dm644 "$srcdir/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm755 "$srcdir/$pkgname-Linux-$CARCH" "$pkgdir/usr/bin/envman"
+  cd "${srcdir}/${_pkgsrc}"
+  install -Dm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
