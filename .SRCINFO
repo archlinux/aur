@@ -1,0 +1,22 @@
+pkgbase = python-indic-nlp-library
+	pkgdesc = Resources and tools for Indian language Natural Language Processing.
+	pkgver = 0.92
+	pkgrel = 1
+	url = https://github.com/anoopkunchukuttan/indic_nlp_library
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-sphinx-argparse
+	depends = python-sphinx_rtd_theme
+	depends = python-morfessor
+	depends = python-pandas
+	depends = python-numpy
+	optdepends = python-urduhack
+	source = python-indic-nlp-library-0.92.tar.gz::https://github.com/anoopkunchukuttan/indic_nlp_library/archive/refs/tags/INDIC_NLP_0.92.tar.gz
+	sha256sums = b7881b028adad9ce3b5053d1a3e5bf51768d91d322ddb94f35dc6b8853407774
+
+pkgname = python-indic-nlp-library
