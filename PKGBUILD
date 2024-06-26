@@ -9,7 +9,7 @@ url="https://vital.audio"
 license=('custom')
 provides=('vital')
 # groups=('pro-audio' 'lv2-plugins' 'vst-plugins' 'vst3-plugins')
-depends=('alsa-lib>=1.0.16' 'freetype2>=2.2.1' 'gcc-libs' 'gcc>=3.3.1' 'glib2>=2.12.0' 'glibc>=2.17' 'libcurl-gnutls>=7.16.2' 'libgl' 'libglvnd' 'libsecret>=0.7')
+depends=('alsa-lib>=1.0.16' 'freetype2>=2.2.1' 'gcc-libs' 'gcc>=3.3.1' 'glib2>=2.12.0' 'glibc>=2.17' 'libcurl-gnutls>=7.16.2' 'libgl' 'libglvnd' 'libsecret>=0.7' 'zenity')
 # optdepends=('aarch64-linux-gnu-gcc>=5: support for aarch64')
 # options=('!strip' '!emptydirs')
 install=${pkgname}.install

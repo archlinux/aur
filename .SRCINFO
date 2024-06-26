@@ -16,6 +16,7 @@ pkgbase = vital-synth
 	depends = libgl
 	depends = libglvnd
 	depends = libsecret>=0.7
+	depends = zenity
 	provides = vital
 	source_x86_64 = vital-synth-1.5.5-1.deb::https://github.com/bonecountysheriff/VitalInstaller/releases/download/1.5.5/VitalInstaller.deb
 	sha512sums_x86_64 = 2dab6a8ae5b17d607acebcba971913612d03eb9f606dd9b4a5fca948824c05f077b9de56f5699057fd8cbc350efd0678aca8a3a07ea0cba14df743ebf542c629
