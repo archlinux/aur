@@ -8,6 +8,7 @@ pkgdesc="Simple command line based HTTP file server to share local file system"
 arch=('any')
 url="https://github.com/mjpclab/${pkgname}"
 license=('MIT')
+depends=('glibc')
 makedepends=('go>=1.18')
 provides=("${_binname}")
 conflicts=("${_binname}")
