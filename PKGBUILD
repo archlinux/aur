@@ -9,7 +9,7 @@ pkgver=4.8.7
 pkgrel=35
 arch=(i686 x86_64)
 url="https://www.qt.io"
-license=(GPL3 LGPL FDL custom)
+license=(GPL-3.0-only LGPL-3.0-only GFDL-1.3-only)
 pkgdesc="A cross-platform application and UI framework"
 depends=(sqlite ca-certificates fontconfig libgl libxrandr libxv libxi alsa-lib xdg-utils hicolor-icon-theme desktop-file-utils libmng dbus)
 makedepends=(patch postgresql-libs mariadb-libs unixodbc cups gtk2 libfbclient mesa)
@@ -201,8 +201,10 @@ package() {
     ln -s /usr/lib/qt4/bin/$(basename $b) "${pkgdir}"/usr/bin/$(basename $b)-qt4
   done
 
-  # install license addition
-  install -D -m644 LGPL_EXCEPTION.txt ${pkgdir}/usr/share/licenses/${pkgname}/LGPL_EXCEPTION.txt
+  # Install the licenses
+  install -D -m644 LICENSE.GPL3 "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE.GPL3
+  install -D -m644 LICENSE.LGPLv3 "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE.LGPLv3
+  install -D -m644 LICENSE.FDL "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE.FDL
 
   # Fix wrong libs path in pkgconfig files
   find "${pkgdir}/usr/lib/pkgconfig" -type f -name '*.pc' -exec perl -pi -e "s, -L${srcdir}/?\S+,,g" {} \;
