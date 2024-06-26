@@ -1,5 +1,5 @@
 # Maintainer: Vendicated <vendicated at riseup dot net>
-# Co-Maintainer Aiden <amb at aspy dot dev>
+# Co-Maintainer: Aiden <amb at aspy dot dev>
 
 pkgname=armcord-git
 pkgdesc="ArmCord dev build using the system electron. ArmCord is a custom client designed to enhance your Discord experience while keeping everything lightweight"
