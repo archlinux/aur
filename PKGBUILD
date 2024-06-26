@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=clusterSim
-_pkgver=0.51-3
+_pkgver=0.51-4
 pkgname=r-${_pkgname,,}
-pkgver=0.51.3
+pkgver=0.51.4
 pkgrel=1
 pkgdesc='Searching for Optimal Clustering Procedure for a Data Set'
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('01997dd2df58075c3791bbf3bd9245bbc40424c72ade2f194f7238004eca9a72')
+sha256sums=('764e7b89a4d71e394ba8baff409396e8a2229a199e7a7975ebf5d8def98272af')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
