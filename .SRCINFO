@@ -1,11 +1,11 @@
 pkgbase = python-symbolica
-	pkgdesc = Symbolica is a blazing fast and modern computer algebra system which aims to handle huge expressions. It can easily be incorporated into existing projects using its Python, Rust or C++ bindings.
-	pkgver = 0.6.0
-	pkgrel = 4
+	pkgdesc = Python library for woring with Symbolica, a fast and modern computer algebra system
+	pkgver = 0.7.0
+	pkgrel = 1
 	url = https://github.com/benruijl/symbolica
 	arch = x86_64
 	license = Custome
-	source = https://files.pythonhosted.org/packages/cp37/s/symbolica/symbolica-0.6.0-cp37-abi3-manylinux_2_34_x86_64.whl
-	sha256sums = 0508b996ba4f72981510a9f27bdb3ad01489fa82748772712232d6a08810bada
+	source = https://files.pythonhosted.org/packages/cp37/s/symbolica/symbolica-0.7.0-cp37-abi3-manylinux_2_34_x86_64.whl
+	sha256sums = 4fbadb3aef26305768246305e79f77751be9fdb9df6a63cc4cb856de09126399
 
 pkgname = python-symbolica
