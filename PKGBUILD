@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ResidualMatrix
-_pkgver=1.14.0
+_pkgver=1.14.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -25,8 +25,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0f397eb6efcbb7a3ad4faa8fa4a60861')
-b2sums=('017af800c4568058b0751f315f691a6f5f2b502e9e0ef5eafea63a474bdb226a762bdd628246d74c94f75fffa6b8153731a70c13a603176503cb3074caca2642')
+md5sums=('f63f88f7c12d199a0b2cd85be01e2b35')
+b2sums=('063c1d5947f5e7c4be472e8dcfdc3acf1b9df6ac96b0b7090be41924106885308c26a7dd059646adb37d09db6af133b073c7aaf766b059849afce936e96c0e1c')
 
 build() {
   mkdir build
