@@ -2,7 +2,7 @@
 _pkgname=musicfree
 pkgname="${_pkgname}-desktop-bin"
 _appname=MusicFreeDesktop
-pkgver=0.0.4
+pkgver=0.0.5
 _electronversion=25
 pkgrel=1
 pkgdesc="插件化、定制化、无广告的免费音乐播放器"
@@ -25,14 +25,13 @@ source=(
     "${pkgname}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_appname%Desktop}-${pkgver}-linux-amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('1b97b9479aed56c89d0bbfa68354b1dd14c02d91e3e77c6c96b6468645ad0cbd'
+sha256sums=('a5578c6b72fc79a4f80635c9f18d0efd05b7bb4dd5e15938ab6dd26889cd0882'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
         -e "s|@cfgdirname@|${_appname%Desktop}|g" \
-        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
