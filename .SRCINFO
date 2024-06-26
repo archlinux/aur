@@ -1,7 +1,7 @@
 pkgbase = chromium-bypass-paywalls-clean
 	pkgdesc = Chromium extension to bypass paywalls
 	pkgver = 3.7.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bpc-clone/bpc_updates
 	install = chromium-bypass-paywalls-clean.install
 	arch = any

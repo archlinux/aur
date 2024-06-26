@@ -6,11 +6,11 @@ _archivename="${_pkgname}-master"
 _source="https://github.com/bpc-clone/bpc_updates/releases/download/latest/${_archivename}.zip"
 pkgname=chromium-bypass-paywalls-clean
 pkgver=3.7.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Chromium extension to bypass paywalls"
 url="https://github.com/bpc-clone/bpc_updates"
 arch=('any')
-install=$pkgname.install
+install="${pkgname}.install"
 license=(MIT)
 makedepends=(jq)
 # You'll need remove existing source files to get an update
