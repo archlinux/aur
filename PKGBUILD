@@ -1,7 +1,6 @@
 # Maintainer: Toni500 <tonino512@linuxmail.org>
 pkgname="customfetch-nogui-git"
 _pkgname="customfetch"
-_PREFIX="/usr"
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="Highly customizable and fast system information fetch program (no GUI support)"
@@ -21,11 +20,11 @@ sha256sums=("SKIP")
 #}
 
 build() {
-    make -C "${srcdir}/${_pkgname}" DEBUG=0 GUI_SUPPORT=0 CUSTOMFETCH_DATA_DIR="${_PREFIX}/share/customfetch"
+    make -C "${srcdir}/${_pkgname}" DEBUG=0 GUI_SUPPORT=0
 }
 
 package() {
     cd "${srcdir}/${_pkgname}"
-    make install DESTDIR="${pkgdir}" PREFIX="${_PREFIX}" DEBUG=0 GUI_SUPPORT=0
+    make install DESTDIR="${pkgdir}" PREFIX="/usr" DEBUG=0 GUI_SUPPORT=0
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
