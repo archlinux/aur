@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=alabaster.matrix
-_pkgver=1.4.1
+_pkgver=1.4.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -35,8 +35,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0bf0bc01bd3b0178d9db7221f88353d0')
-b2sums=('648988e1825a4e004f75b18a8c5efb05da06d27897e257e36acf1577ee85ee5e0d81974afa1f354b6c4f0124c090282d4ff0db68cc627347e32d06412500285b')
+md5sums=('3782437cde78476758f0995332fce928')
+b2sums=('e62f51ff034b00e06517e0a40ae2ab7c8480ece22cb2492035f70ec3b2c76a97c720267eae6880d225e28a2d4938e4f629fd87f9b8063d7e70b1734899ca8912')
 
 build() {
   mkdir build
