@@ -1,6 +1,6 @@
 pkgbase = pipectl-git
 	pkgdesc = a simple named pipe management utility (git version)
-	pkgver = 0.4.2.r0.g27db00a
+	pkgver = 0.5.0.r0.g09b1445
 	pkgrel = 1
 	url = https://github.com/Ferdi265/pipectl
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = pipectl-git
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = scdoc
-	provides = pipectl=0.4.2
+	provides = pipectl=0.5.0
 	conflicts = pipectl
 	source = git+https://github.com/Ferdi265/pipectl
 	sha256sums = SKIP
