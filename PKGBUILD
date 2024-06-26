@@ -3,7 +3,7 @@
 _pkgname=gimp
 pkgname=${_pkgname}-devel
 pkgver=2.99.18
-pkgrel=5
+pkgrel=6
 pkgdesc="GNU Image Manipulation Program (Development version)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://www.gimp.org/"
@@ -13,7 +13,7 @@ depends=('gtk3' 'lcms2' 'libwmf' 'icu' 'enchant' 'libgexiv2' 'librsvg' 'desktop-
          'babl>=0.1.98' 'gegl>=0.4.48' 'cairo' 'python-gobject' 'appstream-glib' 'libxmu' 'graphviz')
 makedepends=('appstream' 'intltool' 'libxslt' 'glib-networking'
              'alsa-lib' 'curl' 'ghostscript' 'libxpm'
-             'libheif' 'libwebp' 'libmng' 'iso-codes' 'aalib' 'zlib' 'libjxl'
+             'libheif' 'libwebp' 'libmng' 'iso-codes' 'aalib' 'zlib' 'libjxl' 'libilbm'
              'gjs'  'luajit' 'meson' 'gobject-introspection'
              'xorg-server-xvfb' 'vala' 'highway' 'meson' 'qoi-headers'
              'cfitsio' 'gi-docgen' 'yelp-tools' 'glib2-devel')
@@ -24,6 +24,7 @@ optdepends=('alsa-lib: for MIDI event controller module'
             'ghostscript: for postscript support'
             'libxpm: XPM support'
             'libheif: HEIF support'
+            'libilbm: ILBM support'
             'libjxl: JPEG XL support'
             'libwebp: WebP support'
             'libmng: MNG support'
@@ -53,7 +54,6 @@ prepare() {
 
 build() {
   local meson_options=(
-    -Dilbm=disabled
     -Dg-ir-doc=true
   )
 
