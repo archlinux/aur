@@ -1,7 +1,7 @@
 # Maintainer: Hilton Medeiros <medeiros.hilton@gmail.com>
 _pkgname=sfxr-qt
 pkgname=sfxr-qt-bin
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Qt port of SFXR, a sound effect generator, to generate retro-gaming like sound effects"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('qt5-declarative' 'sdl' 'hicolor-icon-theme')
 provides=('sfxr-qt')
 conflicts=('sfxr-qt' 'sfxr-qt-git')
 source=("https://github.com/agateau/$_pkgname/releases/download/$pkgver/$_pkgname-$pkgver.tar.bz2")
-sha256sums=('3b34b509c307f2982a1882436bb96a7378445747cf1eeae230ba01e5b782f659')
+sha256sums=('a3f91312dc38b226b133c3778141232e3e10b374d2e844006f6c8494da1ac878')
 
 package() {
   cd "$_pkgname-$pkgver"
