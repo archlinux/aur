@@ -24,6 +24,8 @@ depends=(python-filelock
   python-colorama
   python-pyotp
   python-yaml
+  python-websocket-client
+  python-xlib
   python-rich) # python-sbvirtualdisplay python-pynose
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest-rerunfailures selenium-manager chromium)
