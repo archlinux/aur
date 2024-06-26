@@ -1,6 +1,6 @@
 pkgbase = r-txdbmaker
 	pkgdesc = Tools for making TxDb objects from genomic annotations
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/txdbmaker
 	arch = any
@@ -29,8 +29,8 @@ pkgbase = r-txdbmaker
 	optdepends = r-mirbase.db
 	optdepends = r-rmariadb
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/txdbmaker_1.0.0.tar.gz
-	md5sums = d2145305fc78518240d1d9cace6478b1
-	b2sums = 72f341676a93374d1f77c09a6cef707e54b102b5aea58e097e89144ef1389e3f15d8e051176e9a88a75645079e0da4704da354e5a7b3b7f49cd3b79053769263
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/txdbmaker_1.0.1.tar.gz
+	md5sums = 99f13e6f2a81156fc25e7679168fdb0f
+	b2sums = e3bd7c699f5e4480936590ed069dbdc94367689c5acb322190fcd09b92c9dad0cece1c97b583362888e4ed7f047ef7d0b295ffe59be4cae5fcfc2024488bb0db
 
 pkgname = r-txdbmaker
