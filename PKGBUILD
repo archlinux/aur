@@ -1,6 +1,6 @@
 # Maintainer: Thomas Jost <schnouki@schnouki.net>
 pkgname=pgweb-bin
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="Web-based PostgreSQL database browser written in Go"
 arch=(x86_64 aarch64)
@@ -15,8 +15,8 @@ sha256sums=('cc041317281beafc22ad7dd47f3f3ae3ca5006a3f873996bc611124fc3d439d0'
             'aa58ad72a5ea730b4c2ae292e02608d3df2b882c173520737fa4afb0faa89f29'
             'fd97b0358d87659770b8a4289d35bd9c02607807fdd53e09447829661dea7b1d'
             '5eae680e816a8124f0b227da33bf90637730a5ef2b32267b89344369f866c609')
-sha256sums_x86_64=('dece04583920594c6c0d5b12f7b2c23eb64ce0fd171ed8a9dae5e16712f7c7e7')
-sha256sums_aarch64=('757c9b7a720b49b57866a84bbaafc4733e93572e2cda8247041cbb7d907f553e')
+sha256sums_x86_64=('542cace3c14dc525ad6cf65894d72ce8cf468aa1322ab22c52ca3c8e7bc9c8f8')
+sha256sums_aarch64=('5b39e54d6311ded9cc05c50b2d51a4e7e8cd59779e55ca7cf81b4683dc7f7ad4')
 
 backup=('etc/conf.d/pgweb')
 install='pgweb.install'

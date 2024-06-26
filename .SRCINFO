@@ -1,13 +1,13 @@
 pkgbase = pgweb-bin
 	pkgdesc = Web-based PostgreSQL database browser written in Go
-	pkgver = 0.15.0
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://github.com/sosedoff/pgweb
 	install = pgweb.install
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	provides = pgweb=0.15.0
+	provides = pgweb=0.16.0
 	conflicts = pgweb
 	backup = etc/conf.d/pgweb
 	source = pgweb.install
@@ -18,9 +18,9 @@ pkgbase = pgweb-bin
 	sha256sums = aa58ad72a5ea730b4c2ae292e02608d3df2b882c173520737fa4afb0faa89f29
 	sha256sums = fd97b0358d87659770b8a4289d35bd9c02607807fdd53e09447829661dea7b1d
 	sha256sums = 5eae680e816a8124f0b227da33bf90637730a5ef2b32267b89344369f866c609
-	source_x86_64 = bin_0.15.0_amd64.zip::https://github.com/sosedoff/pgweb/releases/download/v0.15.0/pgweb_linux_amd64.zip
-	sha256sums_x86_64 = dece04583920594c6c0d5b12f7b2c23eb64ce0fd171ed8a9dae5e16712f7c7e7
-	source_aarch64 = bin_0.15.0_arm64.zip::https://github.com/sosedoff/pgweb/releases/download/v0.15.0/pgweb_linux_arm64.zip
-	sha256sums_aarch64 = 757c9b7a720b49b57866a84bbaafc4733e93572e2cda8247041cbb7d907f553e
+	source_x86_64 = bin_0.16.0_amd64.zip::https://github.com/sosedoff/pgweb/releases/download/v0.16.0/pgweb_linux_amd64.zip
+	sha256sums_x86_64 = 542cace3c14dc525ad6cf65894d72ce8cf468aa1322ab22c52ca3c8e7bc9c8f8
+	source_aarch64 = bin_0.16.0_arm64.zip::https://github.com/sosedoff/pgweb/releases/download/v0.16.0/pgweb_linux_arm64.zip
+	sha256sums_aarch64 = 5b39e54d6311ded9cc05c50b2d51a4e7e8cd59779e55ca7cf81b4683dc7f7ad4
 
 pkgname = pgweb-bin
