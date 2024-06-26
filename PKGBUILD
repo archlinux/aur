@@ -2,12 +2,12 @@
 
 _name=sardana
 pkgname=python-${_name}
-pkgver=3.4.4
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="Instrument control and data acquisition system"
-arch=('any')
+arch=("any")
 url="https://gitlab.com/sardana-org/${_name}"
-license=('LGPL')
+license=("LGPL-3.0-or-later")
 depends=(
   python-taurus itango python-lxml python-click python-pyqtgraph
   python-numpy python-h5py libibus python-pytest spyder
@@ -17,7 +17,7 @@ depends=(
 optdepends=(gedit gst-editing-services gom libgexiv2)
 makedepends=(python-setuptools)
 source=("${_name}-${pkgver}.tar.gz::https://gitlab.com/sardana-org/${_name}/-/archive/${pkgver}/${_name}-${pkgver}.tar.gz")
-sha256sums=('e5b71842ae1d7445d3365c6b4c236a5188bddd039dce52f6d3eb4cd069e54588')
+sha256sums=("4909172efc582290f5e46230e41cc0e9f3137a33eaa762a737c39cfa8d61b91f")
 
 build() {
   cd "${_name}-${pkgver}"
