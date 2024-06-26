@@ -1,7 +1,7 @@
 pkgbase = joymouse
 	pkgdesc = Control mice with the joystick.
 	pkgver = 0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.net/projects/joymouse-linux/
 	arch = i686
 	arch = x86_64
@@ -12,4 +12,3 @@ pkgbase = joymouse
 	md5sums = 083696c9c8cfd222ce6d9a72fdbb40b5
 
 pkgname = joymouse
-
