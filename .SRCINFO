@@ -1,28 +1,22 @@
 pkgbase = perl-dbix-class-schema-loader
 	pkgdesc = Create a DBIx::Class::Schema based on a database
-	pkgver = 0.07051
+	pkgver = 0.07052
 	pkgrel = 1
-	url = https://metacpan.org/dist/DBIx-Class-Schema-Loader
+	url = https://metacpan.org/release/DBIx-Class-Schema-Loader
 	arch = any
 	license = PerlArtistic
 	license = GPL
 	checkdepends = perl-test-deep>=0.107
 	checkdepends = perl-test-differences>=0.60
 	checkdepends = perl-test-exception>=0.31
-	checkdepends = perl-test-pod>=1.14
 	checkdepends = perl-test-warn>=0.21
-	makedepends = perl-config-any
-	makedepends = perl-config-general
-	makedepends = perl-dbd-sqlite>=1.29
-	makedepends = perl-moose>=1.12
-	makedepends = perl-moosex-markasmethods>=0.13
-	makedepends = perl-moosex-nonmoose>=0.25
-	makedepends = perl-namespace-autoclean>=0.09
+	depends = perl>=5.8.1
 	depends = perl-carp-clan
 	depends = perl-class-accessor-grouped>=0.10008
 	depends = perl-class-c3-componentised>=1.0008
 	depends = perl-class-inspector>=1.27
 	depends = perl-class-unload>=0.07
+	depends = perl-dbd-sqlite>=1.29
 	depends = perl-dbix-class>=0.08127
 	depends = perl-data-dump>=1.06
 	depends = perl-hash-merge>=0.12
@@ -31,13 +25,14 @@ pkgbase = perl-dbix-class-schema-loader
 	depends = perl-lingua-en-tagger>=0.23
 	depends = perl-mro-compat>=0.09
 	depends = perl-scope-guard>=0.20
-	depends = perl-string-camelcase>=0.02
+	depends = perl-string-camelcase>=0.04
 	depends = perl-string-toidentifier-en>=0.05
 	depends = perl-try-tiny
+	depends = perl-curry>=1.000000
 	depends = perl-namespace-clean>=0.23
-	depends = perl-curry
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/V/VE/VEESH/DBIx-Class-Schema-Loader-0.07051.tar.gz
-	md5sums = 701d09a648f217fedf1dff2feee0d7de
+	source = http://search.cpan.org/CPAN/authors/id/V/VE/VEESH/DBIx-Class-Schema-Loader-0.07052.tar.gz
+	md5sums = b393e72ffab55dc6ca5d159b4252abbb
+	sha512sums = 9cf027024ebf1f2b24ffa6626c05f2237f37f640b167ee3964d74340730f9e5490936a2f4262e47ea647c4561d0cab7f4b96a07f07c81ebc14dbf642267d7ee1
 
 pkgname = perl-dbix-class-schema-loader
