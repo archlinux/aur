@@ -9,7 +9,7 @@
 _pkgname="gyroflow"
 pkgname="$_pkgname-git"
 pkgver=1.5.4.r283.gd6622f2
-pkgrel=1
+pkgrel=2
 pkgdesc="Video stabilization using gyroscope data"
 url="https://github.com/gyroflow/gyroflow"
 license=("GPL-3.0-or-later")
@@ -79,6 +79,11 @@ build() {
 }
 
 package() {
+  depends+=(
+    # AUR
+    unionfs-fuse
+  )
+
   # program files
   install -Dm755 "$_pkgsrc/target/release/$_pkgname" "$pkgdir/opt/$_pkgname/$_pkgname"
   install -Dm755 "$_pkgsrc/target/release/libmdk.so.0" -t "$pkgdir/opt/$_pkgname/"
@@ -115,7 +120,7 @@ _gen_scripts() {
 
 source /usr/bin/gyroflow_init
 
-if ! grep -q '/usr/bin' <<< "$(which flutter)"; then
+if ! grep -q '/usr/bin' <<< "$(which gyroflow)"; then
   exec gyroflow "$@"
 fi
 END
@@ -127,7 +132,7 @@ export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
 
 APP_DIR="/opt/gyroflow"
 SAVE_DIR="$XDG_CACHE_HOME/gyroflow_local"
-MOUNT_DIR="$XDG_CACHE_HOME/gyroflow_sdk"
+MOUNT_DIR="$XDG_CACHE_HOME/gyroflow_mount"
 
 if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
   echo "$0 should not be executed directly."
@@ -153,8 +158,9 @@ _unionfs() {
 
 if grep -q gyroflow <<< $(groups); then
   export APP_ROOT="$APP_DIR"
+  export LD_LIBRARY_PATH="$APP_DIR"
 elif _unionfs; then
-  if [ -e "$MOUNT_DIR/bin" ]; then
+  if [ -e "$MOUNT_DIR" ]; then
     if ! grep -q "$MOUNT_DIR" <<< "$PATH"; then
       export APP_ROOT="$MOUNT_DIR"
     fi
@@ -163,6 +169,7 @@ fi
 
 if ! grep -q "$APP_ROOT" <<< "$PATH"; then
   export PATH="$APP_ROOT:$PATH"
+  export LD_LIBRARY_PATH="$APP_ROOT"
 fi
 END
 }

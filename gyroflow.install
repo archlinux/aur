@@ -2,7 +2,7 @@ post_install() {
   groupadd -f gyroflow_users
   setfacl -R -m "g:gyroflow_users:rwX" opt/gyroflow/camera_presets
 
-  echo "Add users to the 'gyroflow_users' group:"
+  echo "Users may be added to the 'gyroflow_users' group:"
   echo "   sudo usermod -a -G gyroflow_users [username]"
   echo
   echo "Warning: Do not store important data in '/opt/gyroflow'"
