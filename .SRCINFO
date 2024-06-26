@@ -1,4 +1,4 @@
-pkgbase = pkgbase
+pkgbase = powerjoular
 	pkgdesc = PowerJoular allows monitoring power consumption of multiple platforms and processes
 	pkgver = latest
 	pkgrel = 1
