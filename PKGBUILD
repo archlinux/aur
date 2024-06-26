@@ -2,24 +2,24 @@
 # Contributor: Sebastian Lau <lauseb644@gmail.com>
 
 pkgname=nemo-repairer
-pkgver=6.0.1
+pkgver=6.2.0
 pkgrel=1
 pkgdesc="Nemo extension for filename encoding repair"
 arch=('i686' 'x86_64')
 url="https://github.com/linuxmint/nemo-extensions"
 license=('GPL2')
 groups=('nemo-extensions')
-depends=('nemo>=3.2')
-makedepends=('intltool' 'meson' 'samurai')
+depends=('nemo')
+makedepends=('intltool' 'meson' 'samurai' 'glib2-devel')
 replaces=('nemo-filename-repairer')
 source=("nemo-extensions-$pkgver.tar.gz::https://github.com/linuxmint/nemo-extensions/archive/$pkgver.tar.gz")
-sha256sums=('d7d0e78df10dc4240623a1daa7cd457cc4c31969c8a6ff1cdeca4b3ce66b5cdb')
+sha256sums=('b1c7e3d269ed05f472c80c16cf3f12827cbb48cb05406b276be14060225dbbc3')
 
 
 build() {
   mkdir -p "${srcdir}/nemo-extensions-${pkgver}/${pkgname}"/builddir
   cd "${srcdir}/nemo-extensions-${pkgver}/${pkgname}"/builddir
-  meson --prefix=/usr \
+  meson setup --prefix=/usr \
         --libexecdir=lib/${pkgname} \
         --buildtype=plain \
         ..
