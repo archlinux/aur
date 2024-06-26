@@ -1,18 +1,46 @@
-# Maintainer: sineptic <sineptic0@gmail.com>
-pkgsubn=vimium
-pkgname=chromium-vimium
-pkgver=2.1.2
+# Maintainer: Fernando Mumbach <fermuch at cryptolab dot net>
+_pkgname=qq
+pkgname=$_pkgname-git
+pkgver=v0.1.3.alpha
 pkgrel=1
-pkgdesc="Browser extension that provides keyboard-based navigation (unpacked)"
-arch=('any')
-url="https://github.com/philc/vimium"
+pkgdesc="jq inspired interoperable config format transcoder with interactive querying; JSON/YAML/TOML/XML/... support; MIT license - git development version"
+arch=('i686' 'x86_64')
+url="https://github.com/JFryy/qq/"
 license=('MIT')
-source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+groups=()
+depends=()
+makedepends=('git' 'go' 'jq')
+optdepends=()
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+backup=()
+source=("$_pkgname::git+https://github.com/JFryy/qq.git")
+md5sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/$_pkgname"
+  git describe --tags | sed 's|-|.|g'
+}
+
+build() {
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
+  cd "$srcdir/$_pkgname"
+  go build -o "bin/${_pkgname}" "${srcdir}/${_pkgname}"
+}
+
+check() {
+  cd "${srcdir}/${_pkgname}"
+  ./tests/test.sh
+}
 
 package() {
-    mkdir -p "$pkgdir/usr/share/"
+  mkdir -p "${pkgdir}/usr/local/bin/"
 
-    cd "$pkgsubn-$pkgver"
-    cp -r --no-preserve=ownership . "$pkgdir/usr/share/$pkgname-$pkgver"
+  cd "${srcdir}/${_pkgname}"
+  install -Dm755 ./bin/qq "${pkgdir}/usr/local/bin/${pkgname}"
 }
