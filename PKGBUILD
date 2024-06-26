@@ -1,16 +1,22 @@
 # Maintainer: Lars Francke <lars.francke@stackable.tech>
 
+
+
 _pkgname=stackablectl
 pkgname="${_pkgname}-git"
-pkgver=0
+pkgver=stackablectl.24.3.6.r2.gc55f692
 pkgrel=1
 pkgdesc="Command line tool to interact with a Stackable Data Platform"
 arch=('x86_64')
-url="https://github.com/stackabletech/stackablectl/"
-license=('Apache')
-depends=('gcc-libs')
-makedepends=('go' 'rust' 'git')
-source=("$pkgname::git+https://github.com/stackabletech/stackablectl.git")
+url="https://github.com/stackabletech/stackable-cockpit/"
+license=('Apache-2.0')
+depends=('gcc-libs' 'glibc')
+makedepends=('go' 'cargo' 'git')
+
+# Needed due to https://github.com/briansmith/ring/issues/1444 & https://gitlab.archlinux.org/archlinux/packaging/packages/pacman/-/issues/20
+options=(!lto)
+
+source=("$pkgname::git+https://github.com/stackabletech/stackable-cockpit.git")
 b2sums=('SKIP')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
@@ -22,17 +28,20 @@ pkgver() {
 
 prepare() {
   cd "$pkgname"
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd "$pkgname"
-  cargo build --frozen --release --all-features
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release --all-features -p stackablectl
 }
 
 check() {
   cd "$pkgname"
-  cargo test --frozen --all-features
+  cargo test --frozen --all-features -p stackablectl
 }
 
 package() {
