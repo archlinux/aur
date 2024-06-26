@@ -6,12 +6,13 @@ pkgbase = ayatana-indicator-datetime
 	arch = i686
 	arch = x86_64
 	arch = pentium4
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = cmake-extras
-	makedepends = ayatana-indicator-messages>=0.9.0
 	makedepends = intltool
 	makedepends = properties-cpp
-	depends = libayatana-common>=0.9.9
+	depends = gstreamer
+	depends = util-linux-libs
+	depends = libayatana-common
 	depends = evolution-data-server
 	depends = libaccounts-glib
 	depends = libical
@@ -20,6 +21,7 @@ pkgbase = ayatana-indicator-datetime
 	depends = gcc-libs
 	depends = glibc
 	depends = libnotify
+	depends = ayatana-indicator-messages
 	source = ayatana-indicator-datetime-24.1.0.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-datetime/archive/24.1.0.tar.gz
 	md5sums = 4192b112491e7293c4d398572f0c998a
 
