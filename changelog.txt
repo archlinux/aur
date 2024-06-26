@@ -1,3 +1,13 @@
+* Wed Jun 26 2024 Yvaniak <yvaniak11 at gmail dot com> - 9.8.0-1
+  PeaZip 9.8.0 release brings new Themes, improved flat mode (display all archive
+  content at once), and the ability to directly extract all or selected items to
+  any path in bookmarks, history or breadcrumb without further confirmation.
+  Direct extraction is implemented in app's context menu in "Extract to" submenu,
+  and it is also available as command line switches for scripts and for system
+  integration (context menus, SendTo items, .desktop files, Automator scripts).
+  Sources are compiled with new Lazarus 3.2, and are still compatible with Lazarus
+  2.x line.
+
 * Fri Feb 15 2024 Yvaniak <yvaniak11 at gmail dot com> - 9.7.1-1
   9.7.1 release is a bug fix update over the previous version.
 
