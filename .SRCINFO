@@ -1,8 +1,8 @@
 pkgbase = typora-plugin
-	pkgdesc = A minimal markdown editor and reader. with obgnail/typora_plugin plugin.
-	pkgver = 1.9.3+plugin+1.9.13
+	pkgdesc = 一款 Markdown 编辑器和阅读器（with typora_plugin）
+	pkgver = 1.9.3_plugin_1.9.13
 	pkgrel = 1
-	url = https://typora.io/
+	url = https://typoraio.cn/
 	arch = x86_64
 	license = custom:"Copyright (c) 2015 Abner Lee All Rights Reserved."
 	depends = gtk3
