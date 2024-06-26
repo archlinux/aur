@@ -13,7 +13,8 @@ depends=('rtl-sdr')
 provides=('dump1090')
 conflicts=('dump1090-git' 'dump1090-fa-git' 'dump1090-mutability-git')
 makedepends=('git')
-source=('git://github.com/tomswartz07/dump1090.git')
+backup=('usr/share/dump1090/config.js')
+source=('git+https://github.com/tomswartz07/dump1090.git')
 md5sums=('SKIP')
  
 pkgver() {
