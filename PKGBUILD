@@ -6,9 +6,9 @@ pkgrel="1"
 pkgdesc="Ayatana Indicator showing session management, status and user switching"
 arch=("i686" "x86_64" "pentium4")
 url="https://github.com/AyatanaIndicators/ayatana-indicator-session"
-license=("GPL2" "GPL3")
+license=("GPL-2.0-or-later" "GPL-3.0-or-later")
 makedepends=("cmake-extras" "intltool")
-depends=("glib2" "systemd" "dconf" "libayatana-common>=0.9.5" "hicolor-icon-theme" "librda")
+depends=("glibc" "glib2" "systemd" "dconf" "libayatana-common>=0.9.5" "hicolor-icon-theme" "librda")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=("65adb16e5f0fd8798a9565a00a701f50")
 
