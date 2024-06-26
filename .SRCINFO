@@ -15,7 +15,7 @@ pkgbase = gr-cc1111-git
 	depends = swig
 	provides = gr-cc1111=r10.20141005.e6b5eb0
 	conflicts = gr-cc1111
-	source = gr-cc1111::git+git://github.com/funoverip/gr-cc1111.git
+	source = gr-cc1111::git+https://github.com/funoverip/gr-cc1111.git
 	sha256sums = SKIP
 
 pkgname = gr-cc1111-git

@@ -22,7 +22,7 @@ makedepends=(
 )
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}::git+git://github.com/funoverip/gr-cc1111.git")
+source=("${_pkgname}::git+https://github.com/funoverip/gr-cc1111.git")
 sha256sums=('SKIP')
 
 prepare() {
