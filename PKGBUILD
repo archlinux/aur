@@ -4,7 +4,7 @@
 pkgname=webfontkitgenerator
 pkgnamehyphenated=webfont-kit-generator
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Create @font-face kits easily'
 arch=('any')
 url='https://github.com/rafaelmardojai/webfontkitgenerator'

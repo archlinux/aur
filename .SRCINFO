@@ -1,7 +1,7 @@
 pkgbase = webfontkitgenerator
 	pkgdesc = Create @font-face kits easily
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rafaelmardojai/webfontkitgenerator
 	arch = any
 	license = GPL3
@@ -9,7 +9,7 @@ pkgbase = webfontkitgenerator
 	makedepends = meson
 	makedepends = git
 	makedepends = pkgconf
-	makedepende = blueprint-compiler
+	makedepends = blueprint-compiler
 	depends = gtk4
 	depends = gtksourceview5
 	depends = gst-python
