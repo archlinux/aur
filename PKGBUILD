@@ -1,35 +1,51 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=freerouting-zh-cn-git
-pkgver=1.5.0.r1.gc185fc4
+pkgver=1.9.0.r148.gfac1d13
 pkgrel=1
+_jrever=21
+_jdkver=21
 pkgdesc="Advanced PCB autorouter"
 arch=('any')
 url="https://github.com/freerouting/freerouting"
-license=('GPL3')
-provides=(${pkgname})
-conflicts=(${pkgname} ${pkgname%-git})
+license=('GPL-3.0-only')
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
 #replaces=(${pkgname})
-depends=()
-makedepends=('git' 'java-runtime>=11' 'gradle')
+depends=("java-runtime=${_jrever}")
+makedepends=('git' "java-environment-openjdk=${_jdkver}")
+optdepends=(
+    'eagle'
+    'easyeda'
+    'easyeda-pro'
+    'easyeda-router'
+    'lceda'
+    'lceda-pro'
+    'kicad'
+    'pcb-rnd')
 backup=()
-options=('!strip')
+options=('!strip' '!debug')
 #install=${pkgname}.install
 source=("${pkgname%-git}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
-    git describe --long --tags | sed 's/^v//g' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    ( set -o pipefail
+        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    )
 }
 
 build() {
-# don't forget to set active JDK to 11 version before running makepkg:
-# sudo archlinux-java set java-11-openjdk
+# don't forget to set active JDK to 21 version before running makepkg:
+# sudo archlinux-java set java-21-openjdk
 
     cd "${srcdir}/${pkgname%-git}"
+    export PATH="/usr/lib/jvm/java-${_jdkver}-openjdk/bin:$PATH"
 #     chmod +x gradlew
-    bash gradlew assemble
+#     ./gradlew assemble
+    ./gradlew dist
 }
 
 package() {
@@ -38,6 +54,7 @@ package() {
     install -Dm0644 build/libs/freerouting-executable.jar "${pkgdir}/usr/lib/freerouting/freerouting-executable-zh-cn.jar"
     install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-git}" << EOF
 #!/usr/bin/bash
+export PATH="/usr/lib/jvm/java-${_jdkver}-openjdk/bin/:\$PATH"
 
 java -jar /usr/lib/freerouting/freerouting-executable-zh-cn.jar -l zh "\$@"
 
@@ -47,6 +64,7 @@ EOF
 
     install -Dm0644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop" << EOF
 [Desktop Entry]
+Version=1.0
 Name=${pkgname%-git}
 Name[zh_CN]=自动布线器中文版
 Comment=${pkgdesc}
