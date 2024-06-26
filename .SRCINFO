@@ -1,6 +1,6 @@
 pkgbase = head-crusher
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://audioassault.mx/plugin/Head_Crusher
 	arch = x86_64
 	license = EULA
@@ -35,7 +35,7 @@ pkgbase = head-crusher
 	depends = zstd
 	provides = head-crusher
 	source = Head Crusher Linker
-	sha256sums = 6e6a18dc32759458e7eb657648b50cce2c239948340f1df9adb19ac8b223249f
+	sha256sums = 987365c4c1e253ecf222d813482b70320ad21ef7d2fdce446c167910a7dbd7c1
 
 pkgname = head-crusher-data-bin
 	pkgdesc = Saturator Plugin (Data Assets)

@@ -1,7 +1,7 @@
 pkgbase=head-crusher
 pkgname=('head-crusher-data-bin' 'head-crusher-lv2-bin' 'head-crusher-vst3-bin')
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://audioassault.mx/plugin/Head_Crusher"
 license=('EULA')
@@ -9,7 +9,7 @@ depends=('alsa-lib' 'bzip2' 'brotli' 'freetype2' 'glibc' 'graphite' 'harfbuzz' '
 makedepends=('xdg-user-dirs' 'unzip')
 provides=('head-crusher')
 source=('Head Crusher Linker')
-sha256sums=('6e6a18dc32759458e7eb657648b50cce2c239948340f1df9adb19ac8b223249f')
+sha256sums=('987365c4c1e253ecf222d813482b70320ad21ef7d2fdce446c167910a7dbd7c1')
 
 prepare () {
 	_archive="`xdg-user-dir DOWNLOAD`/HeadCrusherLinux.zip"
@@ -24,10 +24,10 @@ package_head-crusher-data-bin() {
     groups=('pro-audio')
 
     ## Make data assets dir
-    mkdir -p "$pkgdir/usr/lib/5db5/Presets"
+    mkdir -p "$pkgdir/usr/lib/5db5/Head Crusher/Presets"
 
     ## Copy assets to data directory
-    cp -r "$srcdir/Presets/"* "$pkgdir/usr/lib/5db5/Presets"
+    cp -r "$srcdir/Presets/"* "$pkgdir/usr/lib/5db5/Head Crusher/Presets"
 
     ## Install Head Crusher Linker Script
     install -Dm755 "$srcdir/Head Crusher Linker" "$pkgdir/usr/bin/Head Crusher Linker"
