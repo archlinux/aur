@@ -1,9 +1,9 @@
 [Desktop Entry]
+Type=Application
 Name=Session
+Comment=Private messaging from your desktop
+Icon=session-desktop
 Exec=session-desktop %U
 Terminal=false
-Type=Application
-Icon=session-desktop
-StartupWMClass=Session
-Comment=Private messaging from your desktop
 Categories=Network;
+StartupWMClass=Session
