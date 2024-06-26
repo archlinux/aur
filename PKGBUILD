@@ -7,12 +7,10 @@ pkgrel="1"
 pkgdesc="Keyboard Auto-Default"
 arch=("i686" "x86_64" "pentium4")
 url="https://tari.in/www/software/keyfault"
-license=("GPL3")
-depends=("libxss")
-makedepends=("libxss")
+license=("GPL-3.0-or-later")
+depends=("libxss" "glibc" "libx11")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tari01/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=("9a469bd07f0666754d11b907e400d835")
-options=("!emptydirs")
 
 build()
 {

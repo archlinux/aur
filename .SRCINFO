@@ -6,10 +6,10 @@ pkgbase = keyfault
 	arch = i686
 	arch = x86_64
 	arch = pentium4
-	license = GPL3
-	makedepends = libxss
+	license = GPL-3.0-or-later
 	depends = libxss
-	options = !emptydirs
+	depends = glibc
+	depends = libx11
 	source = keyfault-23.1.31.tar.gz::https://github.com/tari01/keyfault/archive/23.1.31.tar.gz
 	md5sums = 9a469bd07f0666754d11b907e400d835
 
