@@ -1,12 +1,12 @@
 pkgbase = nctl
 	pkgdesc = A CLI tool to interact with Nine API resources.
-	pkgver = 1.4.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/ninech/nctl/
 	arch = x86_64
 	license = Apache
 	makedepends = go
-	source = nctl-1.4.0.tar.gz::https://github.com/ninech/nctl/archive/v1.4.0.tar.gz
-	sha256sums = 074354177a9bb36efd8ea4ec0126fde671e7a2909e7bcaf75067473f63397f83
+	source = nctl-1.6.0.tar.gz::https://github.com/ninech/nctl/archive/v1.6.0.tar.gz
+	sha256sums = 6a6fdefefdc3be169ffeb8b254222903f994abbe5d1500a021b005eff21f91b1
 
 pkgname = nctl
