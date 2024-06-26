@@ -1,16 +1,17 @@
 pkgbase = python-motor
 	pkgdesc = The async Python driver for MongoDB and Tornado or asyncio
-	pkgver = 3.4.0
+	pkgver = 3.5.0
 	pkgrel = 1
 	url = https://github.com/mongodb/motor
 	arch = any
 	license = Apache-2.0
 	makedepends = python-build
+	makedepends = python-hatch-requirements-txt
+	makedepends = python-hatchling
 	makedepends = python-installer
-	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-pymongo
-	source = motor-3.4.0.tar.gz::https://github.com/mongodb/motor/archive/refs/tags/3.4.0.tar.gz
-	sha512sums = b15ed3922764e1172be963708b647b517de9b8da130a9f5543b4cdf99212094db1d113231f2a2bcb1814e18b810bd3d3e63062816c8d0c999a00f28c01262565
+	source = motor-3.5.0.tar.gz::https://github.com/mongodb/motor/archive/refs/tags/3.5.0.tar.gz
+	sha512sums = 45f127fe401c9e4fdbb1ed2aa618d0f50533381eb9f169c1f0489fd61484294a23eb2bfdb814e7b26395092035366efaee8096722e4bb3c565ebd6ead6d0305f
 
 pkgname = python-motor
