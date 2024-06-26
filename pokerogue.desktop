@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=PokeRogue App
+Comment=Electron desktop app for pokerogue.net
+Exec=/usr/bin/pokerogue
+Icon=pokerogue
+Type=Application
+Categories=Game;
