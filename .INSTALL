@@ -4,9 +4,9 @@ post_install() {
   cat <<EOF
 
 -----------------------------------------------------------------------------
-oama version 0.13.3
+oama version 0.14
 
-Get google always return a refresh_key even with private client_id,secret
+See release notes at: https://github.com/pdobsan/oama/releases/tag/0.14
 
 -----------------------------------------------------------------------------
 
