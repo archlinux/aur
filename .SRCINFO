@@ -1,0 +1,19 @@
+pkgbase = python-chalk-planar
+	pkgdesc = 2D planar geometry library for Python.
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://github.com/chalk-diagrams/planar
+	arch = any
+	license = BSD-3-Clause
+	checkdepends = python-pytest
+	checkdepends = python-nose
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/c/chalk_planar/chalk_planar-0.4.tar.gz
+	md5sums = 20c10fe5d5fc8405094c73e3f638ea76
+
+pkgname = python-chalk-planar
+	depends = python
+	optdepends = python-chalk-planar-doc: Documentation for chalk planar
+
+pkgname = python-chalk-planar-doc
+	pkgdesc = Documentation for chalk planar
