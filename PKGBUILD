@@ -20,8 +20,8 @@ source=("${_origin}/ubuntu_x86/moon"
         "${_origin}/ubuntu_x86/mooninfo"
         "https://github.com/tonyfettes/moonbit-archlinux/releases/download/v${pkgver}/core.zip"
         "moon.sh")
-sha256sums=('9d8844982bec84acd4503b337660ba2fb3a1e3e1892ddeadb204f1ed94f50d95'
-            '1b5fb50f91365a3abc6223b6cc3b47156b59acb25a8f9a6aeffd6a0549fc9534'
+sha256sums=('5c70b5f8d9a0546bde0e84cd58f1782c81a295b89b2f2dd6d637ffcbc4382768'
+            '89c667ab1eca25bf6dc8747d16cf0392744957f3b97845526b75c3428ecf81a6'
             'ecb879409f6963d5ddbb50ab65c39d3a6d19e61060b86c87dc6d8b0851527787'
             '5e394d2a2edbc629ef6094948c631abd4b3a9493732ad7faedf9d445759b7cab'
             '42690c962e4cd348a6605bfefef301c51234c583e38ba0d1ea8eadfc1f940bef'
