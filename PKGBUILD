@@ -3,7 +3,7 @@
 
 pkgname=webcatalog-bin
 _pkgname=webcatalog
-pkgver=57.0.1
+pkgver=57.1.0
 pkgrel=1
 pkgdesc="Turn Any Websites into Real Desktop Apps"
 arch=('x86_64' 'aarch64')
@@ -16,10 +16,10 @@ source=("${_pkgname}.patch")
 sha256sums=('8e13556f9eab7880fbc586d625147e7602d8d99cf0f23a6a130e0eb821a9a7fd')
 
 source_x86_64=("$_filename::https://cdn-2.webcatalog.io/$_pkgname/WebCatalog-$pkgver.AppImage")
-sha256sums_x86_64=('cfc82370bf8c03acae607640315d8386842178fd95e7298ffc640871cc1f1fde')
+sha256sums_x86_64=('de0def75ca08a556b149a653c3146e220090de5d55eb28fb684a01e2303efd36')
 
 source_aarch64=("$_filename::https://cdn-2.webcatalog.io/$_pkgname/WebCatalog-$pkgver-arm64.AppImage")
-sha256sums_aarch64=('78cf896c576379db6bf9eddf9738a9f9ec0983046745dd4175eabb16eb293240')
+sha256sums_aarch64=('f5f681ab4ea80705a7ff5e4e212a45cfd10a069ea28520641cba35eba7da3109')
 
 prepare() {
     cd "${srcdir}"
