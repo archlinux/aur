@@ -6,15 +6,15 @@ pkgdesc='DefiChain Wallet AppImage'
 _pkgbin=defi-wallet
 license=('MIT')
 url='https://github.com/BirthdayResearch/defichain-app'
-pkgver=v4.1.0
+pkgver=v4.1.1
 pkgrel=1
 arch=('x86_64')
 _package="DeFi-Wallet-${pkgver#v}.AppImage"
 provides=('defi-app')
 conflicts=('defi-app')
 source=("${url}/releases/download/${pkgver}/${_package}"{,.SHA256})
-sha256sums=('452f0858ab24fd288312cdce4eb5c85bcd506511b9b86ee5520d5c2961750f35'
-            '3fcf319d6b091d442efbcda86706b9f349fd4a7841e4543b7d730818f35bc9fd')
+sha256sums=('b912b9c56cc238f36395e250ea4a700cd4902d6aa917f9e6cd94c1c053f1bc75'
+            '3f4ba418af616ee26a811c8c3a3350c0ea298e03473b16532de75f97bcdc54ab')
 OPTIONS=(!strip)
 
 prepare() {
