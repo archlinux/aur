@@ -16,7 +16,7 @@ makedepends=('appstream' 'intltool' 'libxslt' 'glib-networking'
              'libheif' 'libwebp' 'libmng' 'iso-codes' 'aalib' 'zlib' 'libjxl'
              'gjs'  'luajit' 'meson' 'gobject-introspection'
              'xorg-server-xvfb' 'vala' 'highway' 'meson' 'qoi-headers'
-             'cfitsio' 'gi-docgen' 'yelp-tools')
+             'cfitsio' 'gi-docgen' 'yelp-tools' 'glib2-devel')
 checkdepends=('xorg-server-xvfb')
 #'gutenprint: for sophisticated printing only as gimp has built-in cups print support'
 optdepends=('alsa-lib: for MIDI event controller module'

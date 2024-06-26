@@ -36,6 +36,7 @@ pkgbase = gimp-devel
 	makedepends = cfitsio
 	makedepends = gi-docgen
 	makedepends = yelp-tools
+	makedepends = glib2-devel
 	depends = gtk3
 	depends = lcms2
 	depends = libwmf
