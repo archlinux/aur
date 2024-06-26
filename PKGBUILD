@@ -2,8 +2,8 @@
 
 _pkgname=fjordlauncher
 pkgname=${_pkgname}-git
-pkgver=8.4.r0.gd1b018e8d
-pkgrel=1
+pkgver=8.4.r1.gf4b787282
+pkgrel=2
 pkgdesc="Prism Launcher fork with support for alternative auth servers"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/unmojang/FjordLauncher"
@@ -60,4 +60,6 @@ check() {
 package() {
   cd "build"
   DESTDIR="${pkgdir}" cmake --install .
+  mv "${pkgdir}/usr/share/mime/packages/modrinth-mrpack-mime.xml" \
+     "${pkgdir}/usr/share/mime/packages/fjordlauncher-modrinth-mrpack-mime.xml"
 }
