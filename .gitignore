@@ -1,9 +1,4 @@
-*.tar.*
-*.orig
-*.rej
-*.swp
-*.part
-src
-pkg
-README.md
-LICENSE
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
