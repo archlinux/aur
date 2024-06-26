@@ -1,0 +1,15 @@
+pkgbase = grub2-theme-crt-amber-4k-git
+	pkgdesc = Retro Amber CRT Terminal styled GRUB Theme 4k upscale
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/aidan-gibson/CRT-Amber-GRUB-Theme-4k
+	install = grub2-theme-crt-amber-4k-git.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = grub
+	depends = ncurses
+	source = git+https://github.com/aidan-gibson/CRT-Amber-GRUB-Theme-4k.git
+	sha256sums = SKIP
+
+pkgname = grub2-theme-crt-amber-4k-git
