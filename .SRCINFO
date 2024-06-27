@@ -1,8 +1,8 @@
 pkgbase = newsboat-og
 	pkgdesc = An RSS/Atom feed reader for text terminals (old gen)
 	pkgver = 2.13.2
-	pkgrel = 1
-	url = https://newsboat.org/
+	pkgrel = 2
+	url = https://github.com/andreasbaumann/newsboat-og
 	arch = x86_64
 	arch = i486
 	arch = i686

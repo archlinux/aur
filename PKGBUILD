@@ -2,10 +2,10 @@
 
 pkgname=newsboat-og
 pkgver=2.13.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An RSS/Atom feed reader for text terminals (old gen)"
 arch=('x86_64' 'i486' 'i686' 'pentium4')
-url="https://newsboat.org/"
+url="https://github.com/andreasbaumann/newsboat-og"
 license=('MIT')
 depends=('curl' 'hicolor-icon-theme' 'json-c' 'libxml2' 'sqlite' 'stfl')
 makedepends=('asciidoc')
