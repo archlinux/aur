@@ -1,48 +1,40 @@
-# Maintainer: Timothy Redaelli <timothy.redaelli@gmail.com>
-pkgname=showtime-git
-pkgver=20130206
+# Maintainer: SelfRef <arch@selfref.dev>
+_basename=showtime
+pkgname=${_basename}-git
+pkgver=r125.75e44a6
 pkgrel=1
-pkgdesc="Media player for use on HTPC media centers."
-arch=('i686' 'x86_64')
-url="https://www.lonelycoder.com/showtime"
-license=('GPL3')
-depends=('gtk2' 'libxss' 'libxv' 'libcdio-paranoia' 'libvdpau' 'hicolor-icon-theme' 'desktop-file-utils')
-makedepends=('git' 'mesa' 'yasm')
-install=showtime.install
+pkgdesc="Video Player - Watch without distraction (git version)"
+arch=('x86_64')
+url="https://apps.gnome.org/Showtime/"
+license=('GPL')
+depends=('gtk4>=4.15' 'libadwaita>=1.5' 'python')
+makedepends=('git' 'meson')
+provides=("$_basename")
+conflicts=("$_basename")
+source=("$_basename::git+https://gitlab.gnome.org/GNOME/Incubator/showtime.git")
+sha256sums=('SKIP')
 
-_gitroot=https://github.com/andoma/showtime.git
-_gitname=showtime
+pkgver() {
+  cd "$_basename"
+  ( set -o pipefail
+    git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  )
+}
+
+prepare() {
+	meson subprojects download --sourcedir=$_basename
+}
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
+	arch-meson $_basename build
+	meson compile -C build
+}
 
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
-
-  sed -i -e 's/-Werror//g' -e 's/^\s*CFLAGS\s*=/CFLAGS +=/' Makefile support/*.mk
-  sed -i '/gtk-update-icon-cache/d' support/linux.mk
-
-  egrep -lrZ 'cdio/(cdda|paranoia).h' . | xargs -0 sed -i -e 's:cdio/cdda.h:cdio/paranoia/cdda.h:g' -e 's:cdio/cdda.h:cdio/paranoia/paranoia.h:g'
-
-  ./configure --prefix=/usr --release
-  make
+check() {
+	meson test -C build
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
-  make DESTDIR="$pkgdir/" prefix=/usr install
+	meson install -C build --destdir "$pkgdir"
 }
-
-# vim:set ts=2 sw=2 et:
