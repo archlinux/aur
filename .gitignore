@@ -1,0 +1,5 @@
+# Ignore makepkg generated directories/files
+nautilus-sendto/
+pkg/
+src/
+*.pkg.tar.zst

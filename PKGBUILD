@@ -5,11 +5,11 @@
 
 pkgname=nautilus-sendto
 pkgver=3.8.6+28+gc87aac4
-pkgrel=1
+pkgrel=2
 pkgdesc="Easily send files via mail"
 url="https://gitlab.gnome.org/Archive/nautilus-sendto"
 arch=(x86_64)
-license=(GPL)
+license=(GPL-2.0-or-later)
 depends=(glib2)
 makedepends=(gobject-introspection git meson appstream-glib)
 _commit=c87aac46c4893e09b1ced1cca8bb86b0a6823124  # master
@@ -23,6 +23,9 @@ pkgver() {
 
 prepare() {
   cd $pkgname
+
+  # Fix Meson 0.61+ build
+  sed -i -z "s/'appdata',\n\s\+//" src/meson.build
 }
 
 build() {
