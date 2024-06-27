@@ -1,10 +1,12 @@
 pkgbase = tilt-bin
 	pkgdesc = Local Kubernetes development with no stress
 	pkgver = 0.33.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tilt.dev
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
+	depends = gcc-libs
+	depends = glibc
 	provides = tilt
 	conflicts = tilt
 	source = https://github.com/tilt-dev/tilt/releases/download/v0.33.17/tilt.0.33.17.linux.x86_64.tar.gz
