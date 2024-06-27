@@ -1,0 +1,13 @@
+pkgbase = sxtetris
+	pkgdesc = A terminal Tetris game
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/shixinhuang99/sxtetris
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = sxtetris-1.1.0.tar.gz::https://github.com/shixinhuang99/sxtetris/archive/1.1.0.tar.gz
+	sha512sums = 196a075f8b5981f06c7b750039840b1d9602c08ac9896779cff20b11984d778bd71ddb57729462f2cc2745d1f1ea24322c9b7d7ff648bce57d389a7c50d3b4c2
+
+pkgname = sxtetris
