@@ -1,6 +1,6 @@
 pkgbase = tijolo-git
 	pkgdesc = Simple and fast keyboard focused IDE written in Crystal and GTK.
-	pkgver = 0.8.1+3+gf4cb1bf
+	pkgver = 0.8.1+13+g8b14d81
 	pkgrel = 1
 	url = https://github.com/hugopl/tijolo
 	arch = x86_64
@@ -27,6 +27,7 @@ pkgbase = tijolo-git
 	depends = gtk4
 	depends = harfbuzz
 	depends = cairo
+	provides = tijolo
 	conflicts = tijolo
 	source = tijolo-git::git+https://github.com/hugopl/tijolo.git
 	sha256sums = SKIP
