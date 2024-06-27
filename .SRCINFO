@@ -1,6 +1,6 @@
 pkgbase = picard-tools
 	pkgdesc = set of tools for working with next generation sequencing data in the BAM format
-	pkgver = 3.1.1
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://github.com/broadinstitute/picard
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = picard-tools
 	makedepends = git
 	makedepends = java-environment=17
 	depends = java-runtime=17
-	source = git+https://github.com/broadinstitute/picard.git#tag=3.1.1
-	sha256sums = SKIP
+	source = git+https://github.com/broadinstitute/picard.git#tag=3.2.0
+	sha256sums = 9c6e1cbc077ece20c8996ba107b93b144847557187e50efd792f8bf77b42177c
 
 pkgname = picard-tools

@@ -3,7 +3,7 @@
 
 pkgname=picard-tools
 _pkgname=picard
-pkgver=3.1.1
+pkgver=3.2.0
 pkgrel=1
 pkgdesc='set of tools for working with next generation sequencing data in the BAM format'
 arch=(any)
@@ -12,7 +12,7 @@ license=(MIT)
 depends=('java-runtime=17')
 makedepends=('ant' 'git' 'java-environment=17')
 source=("git+${url}.git#tag=${pkgver}")
-sha256sums=('SKIP')
+sha256sums=('9c6e1cbc077ece20c8996ba107b93b144847557187e50efd792f8bf77b42177c')
 build(){
   cd $_pkgname
   ./gradlew shadowJar
