@@ -1,19 +1,15 @@
-# Maintainer: Michael Nussbaum <michaelnussbaum08@gmail.com>
-# Co-Maintainer: Felix Golatofski <contact@xdfr.de>
-
+# Maintainer: Jenrikku (JkKU)
 pkgname=firefox-color
-pkgver=2.1.5
+pkgver=2.1.7
 pkgrel=1
-pkgdesc="Theming experiment for Firefox Quantum and beyond"
+pkgdesc="Build, save and share beautiful Firefox themes."
 url=https://github.com/mozilla/FirefoxColor
-arch=("any")
-license=("Mozilla Public License version 2.0")
-source=("https://addons.mozilla.org/firefox/downloads/file/1112089/firefox_color-$pkgver-fx.xpi")
+arch=('any')
+license=('MPL-2.0')
+source=("https://addons.mozilla.org/firefox/downloads/file/3643624/firefox_color-$pkgver.xpi")
 noextract=("${source##*/}")
-sha256sums=('dacba8f16eed45107c45c04bb9067863ac6bd1b3bd1ac9f9cb0c3f5b52119333')
+sha256sums=('b7fb07b6788f7233dd6223e780e189b4c7b956c25c40493c28d7020493249292')
 
 package() {
     install -Dm644 "${source##*/}" "$pkgdir/usr/lib/firefox/browser/extensions/FirefoxColor@mozilla.com.xpi"
 }
-
-# vim:set ts=2 sw=2 et:
