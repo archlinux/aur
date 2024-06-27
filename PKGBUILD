@@ -1,14 +1,14 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=jsonoid-discovery
-pkgver=0.20.1
+pkgver=0.30.0
 pkgrel=1
 pkgdesc='Distributed JSON schema discovery'
 arch=('any')
 url='https://github.com/dataunitylab/jsonoid-discovery'
 license=('MIT')
 depends=('java-runtime' 'sh')
-makedepends=('jdk8-openjdk' 'pandoc' 'sbt')
+makedepends=('jdk11-openjdk' 'pandoc' 'sbt')
 options=('!debug' '!strip')
 
 source=(
@@ -16,10 +16,8 @@ source=(
   'jsonoid.sh'
 )
 
-sha512sums=(
-  '3c22a404b1d62a2582e302a895399734cb938ac8cc692b8336bcdd7b78bdd352b57fb6ef27ea758008e2180bf13e852a92b79b39c3c90eecd1f91793bc5550e5'
-  'd496e686783c20addf51206e7c8ce5725fceff2816d8f3d5cf54b8bd322bb01d357e07d4103a4f09be1bd7e1ec77d8d6abf3d74cdfd74fc70d7610541e8e1b63'
-)
+sha512sums=('7d403868dd1dc886508d28db56bacd513ee2b4c0dc84551a3bf6ed788ea999fddc12445f3bd9975ed9f3e560398f44af158af290b9c0601d7c6719c0bcccd4d5'
+            'd496e686783c20addf51206e7c8ce5725fceff2816d8f3d5cf54b8bd322bb01d357e07d4103a4f09be1bd7e1ec77d8d6abf3d74cdfd74fc70d7610541e8e1b63')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -37,7 +35,7 @@ prepare() {
 
 build() {
   cd "${pkgname}-${pkgver}"
-  sbt -v --batch --java-home /usr/lib/jvm/java-8-openjdk \
+  sbt -v --batch --java-home /usr/lib/jvm/java-11-openjdk \
     assembly
   pandoc --standalone --to man jsonoid.1.md -o jsonoid.1
 }
