@@ -211,7 +211,8 @@ fi
 if [ -n "$_build_nvidia_open" ]; then
     source+=("nvidia-open-${_nv_ver}.tar.gz::https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/${_nv_ver}.tar.gz"
              "${_patchsource}/misc/nvidia/make-modeset-fbdev-default.patch"
-             "${_patchsource}/misc/nvidia/nvidia-open-gcc-ibt-sls.patch")
+             "${_patchsource}/misc/nvidia/nvidia-open-gcc-ibt-sls.patch"
+             "${_patchsource}/misc/nvidia/gsp-fix-stutter.patch")
 fi
 
 ## List of CachyOS schedulers
@@ -258,6 +259,7 @@ prepare() {
         src="${src%.zst}"
         [[ $src = make-modeset-fbdev-default.patch ]] && continue
         [[ $src = nvidia-open-gcc-ibt-sls.patch ]] && continue
+        [[ $src = gsp-fix-stutter.patch ]] && continue
         [[ $src = *.patch ]] || continue
         echo "Applying patch $src..."
         patch -Np1 < "../$src"
@@ -521,6 +523,8 @@ prepare() {
         patch -Np1 -i "${srcdir}/make-modeset-fbdev-default.patch" -d "${srcdir}/${_nv_open_pkg}/kernel-open"
         # Fix for https://bugs.archlinux.org/task/74886
         patch -Np1 --no-backup-if-mismatch -i "${srcdir}/nvidia-open-gcc-ibt-sls.patch" -d "${srcdir}/${_nv_open_pkg}"
+        # Fix for Stutters in KDE
+        patch -Np1 -i "${srcdir}/gsp-fix-stutter.patch" -d "${srcdir}/${_nv_open_pkg}"
     fi
 }
 
