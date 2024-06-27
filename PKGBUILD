@@ -14,7 +14,7 @@ depends=("${_base}-com=${_openfoam_version}" precice)
 makedepends=(git)
 source=("git+${url}.git#commit=${_gitcommit}")
 # validpgpkeys=('2A955D4FE358070072B117D56723BA104179BCE9') # Gerasimos Chourdakis <chourdak@in.tum.de>
-sha512sums=('SKIP')
+sha512sums=('ad77c1014fcacb26aca46291db55c36875d7168ceb5cea44d5497cab2f34c64a9ec0d528d57d893a241b658c73a8d7eb960de52b8b464098ffe71c12c7b3326d')
 
 prepare() {
   if [ -n "${WM_PROJECT_DIR}" ]; then
