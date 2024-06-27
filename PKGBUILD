@@ -4,23 +4,23 @@
 # Contributor: Peter Sutton (foxxy) <foxxy@foxdogstudios.com>
 
 pkgname=ngrok
-pkgver=3.11.0
-pkgrel=2
+pkgver=3.12.0
+pkgrel=1
 pkgdesc='A tunneling, reverse proxy for developing and understanding networked, HTTP services'
 url='https://ngrok.com'
 license=('LicenseRef-custom')
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 optdepends=('bash-completion: Bash completion support')
 source=("TERMS-OF-SERVICE.txt")
-source_x86_64=("https://bin.equinox.io/a/3MFEZKVpGkg/ngrok-v3-3.11.0-linux-amd64.tar.gz")
-source_i686=("https://bin.equinox.io/a/85jup5DKATu/ngrok-v3-3.11.0-linux-386.tar.gz")
-source_armv7h=("https://bin.equinox.io/a/3MypJXrphpd/ngrok-v3-3.11.0-linux-arm.tar.gz")
-source_aarch64=("https://bin.equinox.io/a/g7hNJHCT9q8/ngrok-v3-3.11.0-linux-arm64.tar.gz")
+source_x86_64=("https://bin.equinox.io/a/jH2ToWm5g3b/ngrok-v3-3.12.0-linux-amd64.tar.gz")
+source_i686=("https://bin.equinox.io/a/c5tXAaUtunf/ngrok-v3-3.12.0-linux-386.tar.gz")
+source_armv7h=("https://bin.equinox.io/a/bohZ3tG2XPE/ngrok-v3-3.12.0-linux-arm.tar.gz")
+source_aarch64=("https://bin.equinox.io/a/bceBRKqekcX/ngrok-v3-3.12.0-linux-arm64.tar.gz")
 sha256sums=('d1fce3c7e78d5f7e5307238ee5f371b7a10911aeb249e3358e945eaa8cf2f1b2')
-sha256sums_i686=('d2d9d0240fb20b5ab2d33fc87f71d312bff4fc568034c38be239713f9f514fcc')
-sha256sums_x86_64=('fd9deb93e4b4ba66847f577bb54a2d965cfd885681df62fd534713b3bfc5252b')
-sha256sums_armv7h=('779713078edc60bcc5fdc1e5acd9df4203c7ba122033fa06ad1907cf3babe350')
-sha256sums_aarch64=('3ff27e01e05961aaeaf1cc28db9738b0669108079389762669c8462e01c96e6c')
+sha256sums_i686=('fd6e49482743e653b4b617418434cf00d668e234d888701d17458e71d7e8721f')
+sha256sums_x86_64=('d6ebcfd61f46b9df43878fde55bcd0c5b3f556f2d2456d7af56b995726039b56')
+sha256sums_armv7h=('6742cdc484c9ab3a8aeccf06dff402d848eab710475506c3575190945f1f0e6d')
+sha256sums_aarch64=('038fd94b4b1797430588c47fd986de3aee7dd98ef9dcdd5ea8a4784ed5703b66')
 
 # In order to make Ngrok's built-in updater happy, we need to avoid modifying the binary
 options=(!strip)
