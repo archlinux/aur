@@ -2,17 +2,17 @@
 # Maintainer: Benjamin Radel <aur@radel.tk>
 # Contributor: Stefan Karner <stefan.karner@student.tuwien.ac.at>
 pkgname=dcpomatic
-pkgver=2.16.80
+pkgver=2.16.87
 pkgrel=1
 pkgdesc="A free, open-source program to generate Digital Cinema Packages (DCPs) from videos or images"
 arch=('i686' 'x86_64')
 url="https://dcpomatic.com/"
 #  CXXFLAGS="$CXXFLAGS  -I/usr/include/openjpeg-1.5/  -std=c++11"
-license=('GPL')
-depends=('libsub>=1.6.47' 'libcxml>=0.17.6' 'libdcp>=1.8.99' 'ffmpeg>=4.0.2' 'glib2' 'glu' 'imagemagick' 'libssh'  'wxwidgets-gtk3' 'wxwidgets-common' 'libzip' 'xz' 'libsndfile' 'libsamplerate' 'pangomm' 'rtaudio' 'x264' 'openssl' 'leqm-nrt>=0.0.2.r12.g30dcaea')
+license=('GPL-2.0-or-later')
+depends=('libsub>=1.6.49' 'libcxml>=0.17.6' 'libdcp>=1.8.100' 'ffmpeg>=4.0.2' 'glib2' 'glu' 'imagemagick' 'libssh'  'wxwidgets-gtk3' 'wxwidgets-common' 'libzip' 'xz' 'libsndfile' 'libsamplerate' 'pangomm' 'rtaudio' 'x264' 'openssl' 'leqm-nrt>=0.0.2.r12.g30dcaea')
 makedepends=('python' 'which' 'boost>=1.78.0' 'git')
 source=("${pkgname}-${pkgver}::git+git://git.carlh.net/git/${pkgname}.git#tag=v${pkgver}")
-sha256sums=('80edf00ed4b90ad9e7d454db7fb0a87fcfdf1b832210c0238cde62dbf33ba234')
+sha256sums=('9195111b2ae0a1a3208c2f651184700e0dda5ff3ca6b52e6d15e4762127a8229')
 
 
 prepare() {
