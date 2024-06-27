@@ -1,0 +1,19 @@
+pkgbase = showtime
+	pkgdesc = Video Player - Watch without distraction (git version)
+	pkgver = 47.alpha
+	pkgrel = 1
+	url = https://apps.gnome.org/Showtime/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = meson
+	depends = python
+	depends = gtk4>=4.15
+	depends = libadwaita>=1.5
+	depends = gst-plugin-gtk4
+	provides = showtime
+	conflicts = showtime
+	source = showtime::git+https://gitlab.gnome.org/GNOME/Incubator/showtime.git#commit=75e44a6c9d6eedde3a053af354693e20e4b3d91f
+	sha256sums = 539011b3cccee9837ecc3da06a7181f72a18aecf7f2c3675993853ded1af95a9
+
+pkgname = showtime
