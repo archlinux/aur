@@ -3,7 +3,7 @@
 
 pkgname=netradiant-custom-git
 _pkgname=netradiant-custom
-pkgver=latest.r13.gac7b4d3c
+pkgver=latest.r26.gafe9f620
 pkgrel=1
 pkgdesc='The open-source, cross-platform level editor for id Tech based games.'
 arch=('i686' 'x86_64')
