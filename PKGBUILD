@@ -1,7 +1,7 @@
 # Maintainer: Vincent Post <cent@spline.de>
 pkgname=xivlauncher-git
-pkgver=1.0.6.r15.g9438460
-pkgrel=4
+pkgver=1.0.9.r0.ged7bd94
+pkgrel=5
 epoch=1
 pkgdesc="Custom Launcher for Final Fantasy XIV Online (Crossplatform rewrite)"
 arch=('x86_64')
@@ -25,7 +25,6 @@ depends=(
     'libsm'
     'gcc-libs'
     'libpcap'
-    'faudio'
     'desktop-file-utils'
     'jxrlib'
 )
