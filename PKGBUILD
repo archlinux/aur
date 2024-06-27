@@ -3,7 +3,7 @@
 
 pkgname=zed-preview
 pkgver=0.142.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter'
 arch=(x86_64)
 url=https://zed.dev
@@ -50,8 +50,8 @@ prepare() {
 	export DO_STARTUP_NOTIFY="true"
 	export APP_ICON="zed"
 	export APP_NAME="Zed"
+	export APP_CLI="$_binname"
 	envsubst < "crates/zed/resources/zed.desktop.in" > zed.desktop
-	sed -i -e "s/Exec=zed/Exec=$_binname/g" zed.desktop
 	patch -p0 -i ../use-lib-not-libexec.patch
 }
 
