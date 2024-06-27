@@ -1,15 +1,17 @@
 _reponame=cparser
 pkgname="${_reponame}-git"
-pkgver=r3832.4ebb0b8
-pkgrel=1
+pkgver=r3947.51b173e6
+pkgrel=2
 pkgdesc='A c99 frontend to libfirm compiler library'
 url="http://pp.ipd.kit.edu/firm/Index"
 license=('GPL')
 arch=('any')
 depends=('libfirm-git')
 makedepends=('git')
-source=("${_reponame}::git+http://pp.ipd.kit.edu/git/${_reponame}.git")
+source=("${_reponame}::git+https://github.com/libfirm/cparser.git")
 md5sums=('SKIP')
+conflicts=('cparser')
+provides=("cparser=${pkgver}")
 
 pkgver() {
 	cd "$_reponame"

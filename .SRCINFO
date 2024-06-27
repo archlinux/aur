@@ -1,14 +1,15 @@
 pkgbase = cparser-git
 	pkgdesc = A c99 frontend to libfirm compiler library
-	pkgver = r3832.4ebb0b8
-	pkgrel = 1
+	pkgver = r3947.51b173e6
+	pkgrel = 2
 	url = http://pp.ipd.kit.edu/firm/Index
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = libfirm-git
-	source = cparser::git+http://pp.ipd.kit.edu/git/cparser.git
+	provides = cparser=r3947.51b173e6
+	conflicts = cparser
+	source = cparser::git+https://github.com/libfirm/cparser.git
 	md5sums = SKIP
 
 pkgname = cparser-git
-
