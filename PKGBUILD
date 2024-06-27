@@ -1,7 +1,7 @@
 # Maintainer: tytan652 <tytan652 at tytanium dot xyz>
 
 pkgname=obs-studio-rc
-_pkgver=30.2.0-beta4
+_pkgver=30.2.0-rc1
 pkgver=${_pkgver//-/_}
 pkgrel=2
 epoch=8
