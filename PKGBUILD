@@ -4,7 +4,7 @@ _pname=${pkgbase#python-}
 _pyname=${_pname/-/_}
 pkgname=("python-${_pname}")
 #"python-${_pname}-doc")
-pkgver=1.9.2
+pkgver=1.9.3
 pkgrel=1
 pkgdesc="Utilities to execute code blocks in Markdown files"
 arch=('any')
@@ -13,20 +13,49 @@ license=('ISC')
 makedepends=('python-pdm-backend'
              'python-build'
              'python-installer')
-#            'mkdocs'
+#            'mkdocs-material'
+#            'mkdocs-gen-files'
+#            'mkdocs-literate-nav'
+#            'mkdocs-coverage'
+#            'mkdocstrings-python'
+#            'mkdocs-git-committers-plugin-2'
+#            'python-markdown-callouts'
+#            'python-pygments-ansi-color'
+#            'python-diagrams'
+#            'python-matplotlib'
+#            'python-plotly'
+#            'python-pydeps'
+#            'python-rich'
+#            'python-drawsvg'
+#            'python-textual'
+#            'python-pytermgui'
+#            'python-chalk'
+#            'python-qrcode'
+#            'python-duty'
+#            'python-hyperbolic'
+#            'd2'
+#            'github-cli')
 checkdepends=('python-pytest'
               'python-markdown'
               'mkdocs-material'
               'python-markupsafe')   # 'pymdown-extensions' required by mkdocs-material
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('142158c736e5786de16f6b01d7f3209b')
+md5sums=('b5a5265bf74f5243f8a549342a38ade1')
+
+#prepare() {
+#    cd ${srcdir}/${_pyname}-${pkgver}
+#
+#    sed -i '$a use_directory_urls: false' mkdocs.yml
+#}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
     python -m build --wheel --no-isolation
 
 #   msg "Building Docs"
-#   mkdocs build
+#   mkdir -p dist/lib
+#   bsdtar -xpf dist/${_pyname/-/_}-${pkgver}-py3-none-any.whl -C dist/lib
+#   PYTHONPATH="dist/lib" mkdocs build
 }
 
 check() {
