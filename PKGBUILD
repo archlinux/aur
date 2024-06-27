@@ -1,7 +1,7 @@
-# Maintener: zeppelinlg <zeppelinlg DOT quenot AT gmail DOT com>
+# Contributor: zeppelinlg <zeppelinlg DOT quenot AT gmail DOT com>
 pkgname='perl-http-proxy'
 pkgver='0.304'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="HTTP proxy"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
@@ -26,16 +26,29 @@ prepare() {
 }
 
 build() {
-  export PERL_MM_USE_DEFAULT=1 export PERL_AUTOINSTALL=--skipdeps
-  { cd "$_dist_dir" &&
-    /usr/bin/perl Makefile.PL INSTALLDIRS=vendor &&
-    make &&
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
+      PERL_AUTOINSTALL=--skipdeps                            \
+      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
+      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+      MODULEBUILDRC=/dev/null
+
+  cd "$_dist_dir"
+    /usr/bin/perl Makefile.PL
+    make
+  )
+}
+
+check() {
+  cd "$_dist_dir"
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
     make test
-  } || return 1
+  )
 }
 
 package() {
-    cd "$_dist_dir"
-    find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
-    make DESTDIR="$pkgdir" install
+  cd "$_dist_dir"
+  make install
+
+  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
+

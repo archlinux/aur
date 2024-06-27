@@ -1,7 +1,7 @@
 pkgbase = perl-http-proxy
 	pkgdesc = HTTP proxy
 	pkgver = 0.304
-	pkgrel = 2
+	pkgrel = 3
 	url = http://search.cpan.org/dist/HTTP-Proxy
 	arch = i686
 	arch = x86_64
