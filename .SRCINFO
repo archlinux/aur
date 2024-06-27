@@ -1,13 +1,14 @@
 pkgbase = door-knocker
 	pkgdesc = Check availability of all portals provided by xdg-desktop-portal
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/tytan652/door-knocker
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
 	makedepends = meson
 	makedepends = blueprint-compiler
+	makedepends = glib2-devel
 	depends = glibc
 	depends = gcc-libs
 	depends = glib2
