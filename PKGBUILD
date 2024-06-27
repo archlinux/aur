@@ -2,7 +2,7 @@
 
 pkgname='tokyonight-gtk-theme-git'
 _reponame='Tokyo-Night-GTK-Theme'
-pkgver=r58.58a04f1d
+pkgver=r70.2f566d89
 pkgrel=1
 pkgdesc='A GTK theme based on the Tokyo Night colour palette.'
 arch=("any")
@@ -29,6 +29,6 @@ package() {
     install -D -m0644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 
     # install
-    cd theme
+    cd themes
     ./install.sh --dest "${dist}"
 }
