@@ -13,7 +13,7 @@ unset _pkgtype
 # basic info
 _pkgname="thorium-reader"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=2.4.2
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Cross-platform desktop reading app based on the Readium Desktop toolkit"
 url="https://github.com/edrlab/thorium-reader"
@@ -40,8 +40,8 @@ _main_package() {
 # stable package
 _main_stable() {
   _pkgsrc="$_pkgname"
-  source+=("$_pkgsrc"::"git+$url.git#tag=v${pkgver%%.r*}")
-  sha256sums+=('SKIP')
+  source=("$_pkgsrc"::"git+$url.git#tag=v${pkgver%%.r*}")
+  sha256sums=('SKIP')
 
   pkgver() {
     echo "${pkgver%%.r*}"
@@ -54,13 +54,17 @@ _main_git() {
   conflicts+=("$_pkgname")
 
   _pkgsrc="$_pkgname"
-  source+=("$_pkgsrc"::"git+$url.git")
-  sha256sums+=('SKIP')
+  source=("$_pkgsrc"::"git+$url.git#branch=develop")
+  sha256sums=('SKIP')
 
   pkgver() {
     cd "$_pkgsrc"
-    git describe --long --tags --abbrev=7 --exclude='*[a-z][a-z]*' \
-      | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+
+    local _tag=$(git tag | grep -Ev '[a-z]{2}' | grep '^v' | sort -rV | head -1)
+    local _version="${_tag#v}"
+    local _revision=$(git rev-list --count --cherry-pick "$_tag"...HEAD)
+    local _hash=$(git rev-parse --short=7 HEAD)
+    printf '%s.r%s.g%s' "${_version:?}" "${_revision:?}" "${_hash:?}"
   }
 }
 
@@ -94,18 +98,11 @@ build() {
 package() {
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << END
 #!/usr/bin/env sh
-XDG_CONFIG_HOME="\${XDG_CONFIG_HOME:-\$HOME/.config}"
-
-_FLAGS_FILE="\$XDG_CONFIG_HOME/${_pkgname}-flags.conf"
-
-if [ -r "\$_FLAGS_FILE" ]; then
-  _USER_FLAGS="\$(cat "\$_FLAGS_FILE")"
-fi
-
-if [[ \$EUID -ne 0 ]] || [[ \$ELECTRON_RUN_AS_NODE ]]; then
-    exec electron${_electron_version:-} /$_install_path/$_pkgname/app.asar \$_USER_FLAGS "\$@"
+if [ "\$#" -lt 1 ]; then
+  cd "/$_install_path/$_pkgname/"
+  exec electron${_electron_version:-} app.asar
 else
-    exec electron${_electron_version:-} /$_install_path/$_pkgname/app.asar --no-sandbox \$_USER_FLAGS "\$@"
+  exec electron${_electron_version:-} "/$_install_path/$_pkgname/app.asar" "\$@"
 fi
 END
 
@@ -114,8 +111,8 @@ END
 Type=Application
 Name=Thorium Reader
 Comment=Cross-platform desktop reading app based on the Readium Desktop toolkit
-Exec=thorium-reader %u
-Icon=thorium-reader
+Exec=$_pkgname %u
+Icon=$_pkgname
 Terminal=false
 StartupNotify=true
 Categories=Office;
