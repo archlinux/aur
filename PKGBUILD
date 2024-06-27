@@ -153,7 +153,7 @@ elif [ -n "$_use_llvm_lto" ]  ||  [[ "$_use_lto_suffix" = "n" ]]; then
     pkgbase=linux-$pkgsuffix
 fi
 _major=6.9
-_minor=6
+_minor=7
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -182,7 +182,7 @@ if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] || [ -n "$_use_k
 fi
 
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
-_nv_ver=555.52.04
+_nv_ver=555.58
 _nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 _nv_open_pkg="open-gpu-kernel-modules-${_nv_ver}"
 source=(
@@ -209,7 +209,7 @@ if [ -n "$_build_nvidia" ]; then
 fi
 
 if [ -n "$_build_nvidia_open" ]; then
-    source+=("nvidia-open-${_nv_ver}.tar.gz::https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/${_nv_ver}.tar.gz"
+    source+=("nvidia-open-${_nv_ver}.tar.gz::https://github.com/CachyOS/open-gpu-kernel-modules/archive/refs/tags/${_nv_ver}.tar.gz"
              "${_patchsource}/misc/nvidia/make-modeset-fbdev-default.patch"
              "${_patchsource}/misc/nvidia/nvidia-open-gcc-ibt-sls.patch")
 fi
@@ -747,8 +747,8 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('498da30f8f0c2c3812919eaca0dfa5679ab4517972182d2392e8833b9ca082b0d12777b6a35fd36228a21ac899ec4ee716e66b77e5625885415ccdab36cfb570'
-        '0862f1b55021956008dbaf9a9fa1825dd54c185ddad4f5ae2e14980377466a98f39c48c64ce634be46f4f8991b7bb10c5f41927e1e7c23aa78a58f2ad6b2e4cc'
+b2sums=('67b49d64f8ceba02dc1eade59991c683c81a533eec7105466d235898de2cee692aa5730d538a33bb04f1b0260e9dcbf63b332ddfab42a7d44425c9a9d8410d77'
+        'b289f0bedd8f81cc964ff9b1f03b19a0a87e4b7d78235129b5ea39f384ad623450687f5cfd6ae0fd14d1f02361f278ff8a45f148265f740e0bed984adc51e892'
         'b1e964389424d43c398a76e7cee16a643ac027722b91fe59022afacb19956db5856b2808ca0dd484f6d0dfc170482982678d7a9a00779d98cd62d5105200a667'
-        '17c3c7cba82903becb1bfbf2400ce3505263933fc80e72ec20154a29b31d8f5955c998932530e5369d181efdda3f6592546b80bb599718fe75d4973f97db0627'
+        '3e5aa97eeb6c2d5e3f250fc8ba037de64387416dd2f620c2699d1ccd0594c35e52153771a244ae36ee46e24dff1d184e0379c777cb5b1f0dc4705dfd53553d67'
         '8e0812b25e590f329a3809acef93d142643f2056e14d34f76d6d35dd395c16f88ab24df391d0568d82d555933920695b059f3cfc98a2e2ee554b42d23677a284')
