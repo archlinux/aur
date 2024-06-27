@@ -1,0 +1,14 @@
+pkgbase = lsp-ai
+	pkgdesc = A language server that performs completion using large language models (LLMs)
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/SilasMarvin/lsp-ai
+	arch = x86_64
+	license = MIT
+	makedepends = base-devel
+	makedepends = cargo
+	options = !lto
+	source = git+https://github.com/SilasMarvin/lsp-ai.git#tag=v0.3.0
+	sha1sums = 6bc8bedfa1f10daf7e1fd1bc2f7b015be3752773
+
+pkgname = lsp-ai
