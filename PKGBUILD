@@ -4,14 +4,14 @@
 pkgname=ostorybook
 _pkgname=oStorybook
 pkgver=6.00
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source Novel Writing Software for Novelists, Authors and Creative Writers"
 arch=(any)
 url="http://ostorybook.tuxfamily.org/v5/index.php?lng=en"
 license=(GPL)
 depends=('java-runtime>8')
 source=("https://download.tuxfamily.org/ostorybook/current/oStorybook-${pkgver}.zip")
-sha256sums=('0c8516e1761b72a2852dd55e08f6a6294d3c77b109492430dca226d11f819ebb')
+sha256sums=('be759f5890f0c6030b9efa4f79b5c5c499a1c437b3cfa1819a2d5c31dff9f0d4')
 options=('!strip')
 
 package()
@@ -19,7 +19,7 @@ package()
   rm -f "${_pkgname}-5.*.zip"
   install --mode 755 -D -T "${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
   install -D -t "${pkgdir}/usr/share/${pkgname}" ./*.*
-  cp -r Assistant "${pkgdir}/usr/share/${pkgname}"
+  #cp -r Assistant "${pkgdir}/usr/share/${pkgname}"
   cp -r lib "${pkgdir}/usr/share/${pkgname}"
   
   # Create Desktop file
