@@ -1,3 +1,5 @@
+# Maintainer: Loic Coyle <loic.coyle@hotmail.fr>
+
 _repo_name=ollama-copilot
 _repo_prefix='github.com/bernardo-bruning'
 pkgname="${_repo_name}-git"
@@ -36,7 +38,7 @@ build() {
     cd "${srcdir}/src/${_repo_prefix}/${_repo_name}"
     export GOPATH="${srcdir}"
     export PATH="${PATH}:${GOPATH}/bin"
-    go build -x -v -ldflags "-extldflags '${LDFLAGS}' -X main.commit=$(git rev-parse --short HEAD) -X main.date=$(date -u +%Y%m%d.%H%M%S) -X main.version=$(git describe --always --tags --abbrev=0).$(git rev-parse --short HEAD)" -o "${_repo_name}.bin"
+    go build -modcacherw -x -v -ldflags "-extldflags '${LDFLAGS}' -X main.commit=$(git rev-parse --short HEAD) -X main.date=$(date -u +%Y%m%d.%H%M%S) -X main.version=$(git describe --always --tags --abbrev=0).$(git rev-parse --short HEAD)" -o "${_repo_name}.bin"
 }
 
 package() {
