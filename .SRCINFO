@@ -1,7 +1,7 @@
 pkgbase = git-age-keyring-agent-bin
 	pkgdesc = git-age-keyring-agent is an agent for git-age to store keys in the OS keychain
 
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/prskr/git-age-keyring-agent
 	license = MIT
@@ -10,10 +10,10 @@ pkgbase = git-age-keyring-agent-bin
 	conflicts = git-age-keyring-agent
 	provides = git-age-keyring-agent
 	arch = aarch64
-	source_aarch64 = https://github.com/prskr/git-age-keyring-agent/releases/download/v0.1.5/git-age-keyring-agent_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 14e2dbc4bfa91afa137f86c0c991f84204159ce728edfedd3ed5c5ee8605baa5
+	source_aarch64 = https://github.com/prskr/git-age-keyring-agent/releases/download/v0.1.6/git-age-keyring-agent_Linux_arm64.tar.gz
+	sha256sums_aarch64 = c2961d82a6e80311b5f51dc7a0ce1537be23cbd57537150142e3a3062f94d6ad
 	arch = x86_64
-	source_x86_64 = https://github.com/prskr/git-age-keyring-agent/releases/download/v0.1.5/git-age-keyring-agent_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = a558acc5297dbc0d038e9c7a37a855dce4d6274a2e2f10fedb919aa67e68fe71
+	source_x86_64 = https://github.com/prskr/git-age-keyring-agent/releases/download/v0.1.6/git-age-keyring-agent_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = e3cdbcb27616845292222d0afa9ad46a3272a61d1ef734338b30acae560f8ee7
 	
 pkgname = git-age-keyring-agent-bin
