@@ -1,0 +1,16 @@
+pkgbase = python-hyperbolic
+	pkgdesc = A Python 3 library for constructing and drawing hyperbolic geometry
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/cduck/hyperbolic
+	arch = any
+	license = MIT
+	checkdepends = python-nose
+	checkdepends = python-numpy
+	makedepends = python-setuptools
+	source = https://github.com/cduck/hyperbolic/archive/refs/tags/2.0.0.tar.gz
+	md5sums = 0b735e0d312d500f252337fcdb63fa9e
+
+pkgname = python-hyperbolic
+	depends = python-numpy
+	depends = python-drawsvg
