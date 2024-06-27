@@ -1,0 +1,12 @@
+diff -rauN libfirm/scripts/irops.py libfirm-python-3.12-imp-patch/scripts/irops.py
+--- libfirm/scripts/irops.py	2024-06-27 06:37:35.000966001 +0200
++++ libfirm-python-3.12-imp-patch/scripts/irops.py	2024-06-27 06:39:54.087637450 +0200
+@@ -1,7 +1,7 @@
+ from jinjautil import export_filter, export
+ #from jinja2._compat import string_types use str instead
+ from filters import arguments
+-import imp
++#import imp
+ import sys
+ 
+ 

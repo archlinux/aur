@@ -1,7 +1,7 @@
 pkgbase = libfirm-git
 	pkgdesc = A c-lib for graph-based IR, optimizations and code gen for compilers
 	pkgver = 1.22.0.r1139.g95a238c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pp.ipd.kit.edu/firm/
 	arch = any
 	license = GPL
@@ -11,7 +11,11 @@ pkgbase = libfirm-git
 	options = staticlibs
 	source = libfirm::git+https://github.com/libfirm/libfirm.git
 	source = libfirm.pc
+	source = libfirm-python-3.12-imp.patch
+	source = libfirm-python-3.12-filter-backslash-regex.patch
 	md5sums = SKIP
 	md5sums = 39a7ef0417669487524b95460962f6c7
+	md5sums = f5b5339cdb17008b3f91763ca2cbdb0b
+	md5sums = 44b306970eb0509c141f65a8b1c9df39
 
 pkgname = libfirm-git

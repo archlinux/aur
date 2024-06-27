@@ -1,0 +1,12 @@
+diff -rauN libfirm/scripts/filters.py libfirm-python-3.12-filter-backslash-regex-patch/scripts/filters.py
+--- libfirm/scripts/filters.py	2024-06-27 06:37:35.000966001 +0200
++++ libfirm-python-3.12-filter-backslash-regex-patch/scripts/filters.py	2024-06-27 06:46:17.014317285 +0200
+@@ -6,7 +6,7 @@
+ 
+ 
+ def filtjoin(string, joinstring):
+-    args = re.split('\s*\n\s*', string)
++    args = re.split(r'\s*\n\s*', string)
+     if args[0] == '':
+         args = args[1:]
+     if len(args) > 0 and args[-1] == '':
