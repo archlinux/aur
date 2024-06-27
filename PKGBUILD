@@ -1,7 +1,7 @@
 # Maintainer: Mika Cousin <mika dot cousin at gmail dot com>
 
 pkgname=python-sacn
-pkgver=1.9.1
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="sACN / E1.31 module for easy handling of DMX data over ethernet"
 arch=(any)
@@ -10,7 +10,7 @@ license=(MIT)
 depends=("python" "python-pytest")
 makedepends=("python-setuptools")
 source=("sacn-$pkgver.tar.gz::https://github.com/Hundemeier/sacn/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("85d0b95ca307d254a111a22cf57c0737e671173a015b8eaa14cdf79779efd1ca")
+sha256sums=("5fdcdbc41cec82d55a18b90f4c0e324bd02856e4b47dcce06d1bb262cb1d5487")
 
 check() {
   cd "$srcdir/sacn-$pkgver"
