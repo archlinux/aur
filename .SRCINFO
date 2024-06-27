@@ -1,0 +1,15 @@
+pkgbase = python-pyransac3d
+	pkgdesc = A python tool for fitting primitives 3D shapes in point clouds using RANSAC algorithm
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/leomariga/pyRANSAC-3D
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-numpy
+	source = python-pyransac3d-0.6.0.tar.gz::https://github.com/leomariga/pyRANSAC-3D/archive/refs/tags/v0.6.0.tar.gz
+	sha512sums = 135b84e9da916fd0bc0200e966294a8690d980ea1357f926c95fecdc3de73b161dc1de9ec5a5d3d1e9b0f80a462964c6b89b4abc4aa5512dceafd53d4930bed6
+
+pkgname = python-pyransac3d
