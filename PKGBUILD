@@ -11,11 +11,11 @@ license=('MIT')
 provides=('routeros-upgrader')
 conflicts=('routeros-upgrader')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.binary::https://github.com/Marco98/routeros-upgrader/releases/download/v0.3.5/routeros-upgrader_0.3.5_linux_arm64")
-sha256sums_aarch64=('70169fb5ddd665f1f9398ca15b64243b9c46fcbb8543f18d3d2ac1e38ff97603')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Marco98/routeros-upgrader/releases/download/v0.3.5/routeros-upgrader_Linux_arm64.tar.gz")
+sha256sums_aarch64=('603e9d63bd15dd10dbebb0808fc3996540ad9b1a61122fc95bf9590257b7b12d')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.binary::https://github.com/Marco98/routeros-upgrader/releases/download/v0.3.5/routeros-upgrader_0.3.5_linux_amd64")
-sha256sums_x86_64=('6d1be05307cd0dd2dac4dafe9529b72b71250d13d6d7643bf771b666b352c45a')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Marco98/routeros-upgrader/releases/download/v0.3.5/routeros-upgrader_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('70c8ad6478e3a236e3a97bc71e677e859af05e85928379c5cf6d705d05123f26')
 
 package() {
   install -Dm755 "./routeros-upgrader" "${pkgdir}/usr/bin/routeros-upgrader"
