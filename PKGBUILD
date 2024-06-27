@@ -1,6 +1,7 @@
 # Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
 
-_pkgname="speedtest-go"
+_binname="speedtest"
+_pkgname="${_binname}-go"
 pkgname="${_pkgname}-bin"
 pkgver=1.7.7
 pkgrel=1
@@ -9,25 +10,24 @@ arch=('x86_64' 'i686' 'aarch64' 'armv5h' 'armv6h' 'armv7h' 'riscv64' 'loong64'
       'ppc64' 'ppc64le' 's390x' 'mips' 'mipsel' 'mips64' 'mips64el')
 url="https://github.com/showwin/${_pkgname}"
 license=('MIT')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-_pkgsrc="${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_"
-source_x86_64=("${_pkgsrc}x86_64.tar.gz")
-source_i686=("${_pkgsrc}i386.tar.gz")
-source_aarch64=("${_pkgsrc}arm64.tar.gz")
-source_armv5h=("${_pkgsrc}armv5.tar.gz")
-source_armv6h=("${_pkgsrc}armv6.tar.gz")
-source_armv7h=("${_pkgsrc}armv7.tar.gz")
-source_riscv64=("${_pkgsrc}riscv64.tar.gz")
-source_loong64=("${_pkgsrc}loong64.tar.gz")
-source_ppc64=("${_pkgsrc}ppc64.tar.gz")
-source_ppc64le=("${_pkgsrc}ppc64le.tar.gz")
-source_s390x=("${_pkgsrc}s390x.tar.gz")
+provides=("${_binname}")
+conflicts=("${_binname}")
+source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_x86_64.tar.gz")
+source_i686=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_i386.tar.gz")
+source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_arm64.tar.gz")
+source_armv5h=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_armv5.tar.gz")
+source_armv6h=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_armv6.tar.gz")
+source_armv7h=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_armv7.tar.gz")
+source_riscv64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_riscv64.tar.gz")
+source_loong64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_loong64.tar.gz")
+source_ppc64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_ppc64.tar.gz")
+source_ppc64le=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_ppc64le.tar.gz")
+source_s390x=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_s390x.tar.gz")
 # Change 'hardfloat' to 'softfloat' if necessary
-source_mips=("${_pkgsrc}mips_hardfloat.tar.gz")
-source_mipsel=("${_pkgsrc}mipsle_hardfloat.tar.gz")
-source_mips64=("${_pkgsrc}mips64_hardfloat.tar.gz")
-source_mips64el=("${_pkgsrc}mips64le_hardfloat.tar.gz")
+source_mips=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_mips_hardfloat.tar.gz")
+source_mipsel=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_mipsle_hardfloat.tar.gz")
+source_mips64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_mips64_hardfloat.tar.gz")
+source_mips64el=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_mips64le_hardfloat.tar.gz")
 sha256sums_x86_64=('8345b54198a15ee066d084a15b5ab757d39f6bfc1459e31631b8a6a976bbc69a')
 sha256sums_i686=('6657e8c22b788e0a75c374f41d2521218eadc24d6ec4c9d43eff5e588243eb7d')
 sha256sums_aarch64=('11db73962ea6113af78aea5912ffa7b561c6a2dbb97bb24734f379b6118cd888')
@@ -46,7 +46,7 @@ sha256sums_mips64el=('8b03346b676963c8bdb6f013e7744d2dc13d27ade2b3c22d024df7055b
 
 package() {
   cd "${srcdir}"
-  install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_binname}"
+  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_binname}/README.md"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_binname}/LICENSE"
 }
