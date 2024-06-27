@@ -1,7 +1,7 @@
 # Maintainer: Mark Collins <tera_1225 hat hotmail ðot com>
 # Partially adapted from https://github.com/wasta-linux/lameta-snap
 pkgname=lameta
-pkgver=2.3.4_beta
+pkgver=2.3.5_beta
 _electron=electron23
 pkgrel=1
 pkgdesc="The Metadata Editor for Transparent Archiving of language document materials"
@@ -23,9 +23,9 @@ source=(
 	"${pkgname}.desktop"
   'no_node_pin.patch'
 )
-sha256sums=('c00a64c9bd69c50408bdce84cc113d792ce42604c62b18381e627b833e595fd8'
+sha256sums=('c51a4ccdb5cc7f3a8703e43f9c57b0f7dd74c914568b65f0d5ce8a213b57d042'
             '874e1acc986076e9c876c6ccd2efc7ee0dcda322733c018fb8e3d0bf010b8791'
-            '7bc59aee62f8a77217d76ae42f6445ed51375f5c1c158c678aa56c208edbdc28')
+            '48d6dcffea39fa3fd55d70259affae884ee208821cc33452b7167d3a0b1db681')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver//_/-}"
@@ -38,6 +38,7 @@ build() {
 	cd "${srcdir}/${pkgname}-${pkgver//_/-}"
   yarn
   yarn build
+  yarn strings:compile
   yarn install --frozen-lockfile
 	./node_modules/.bin/electron-builder \
 	  --linux --x64 --dir \
