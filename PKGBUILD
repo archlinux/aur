@@ -1,52 +1,44 @@
 # Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
 
-_pkgname=figurine
-pkgname=${_pkgname}-git
-pkgver=1.3.0.r0.d51c245
-pkgrel=1
+_pkgname="figurine"
+pkgname="${_pkgname}-git"
+pkgver=1.3.0.r0.gd51c245
+pkgrel=2
 pkgdesc="Print your text in style"
-arch=('x86_64' 'aarch64' 'armv7h')
+arch=('any')
 url="https://github.com/arsham/${_pkgname}"
-license=('Apache')
-makedepends=('git' 'make' 'go')
-conflicts=("${_pkgname}")
+license=('Apache-2.0')
+depends=('glibc')
+makedepends=('git' 'go')
 provides=("${_pkgname}=${pkgver%%.r*}")
+conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}"
 source=("${_pkgsrc}::git+${url}.git")
 sha256sums=('SKIP')
 
-case "${CARCH}" in
-  x86_64)
-    _arch="amd64"
-    ;;
-   aarch64)
-    _arch="arm64"
-    ;;
-  armv7h)
-    _arch="arm"
-    ;;
-  *)
-    echo "Unsupported architecture: ${CARCH}"
-    exit 1
-    ;;
-esac
-
 pkgver() {
   cd "${_pkgsrc}"
-  printf "%s" "$(git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
+  git describe --long --tags --abbrev=7 | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "${srcdir}/${_pkgsrc}"
+  [ -d "build" ] || mkdir "build"
 }
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
-  make linux LINUX_ARCH="${_arch}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build -o "build/${pkgname}" .
 }
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
-  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-
-  cd "deploy"
-  bsdtar -xf "${_pkgname}_linux_${_arch}_v${pkgver%%.r*}.tar.gz"
-  install -Dm755 "deploy/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

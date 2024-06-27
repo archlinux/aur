@@ -1,8 +1,4 @@
-*.tar.*
-*.orig
-*.rej
-*.swp
-*.part
-src
-pkg
-figurine
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
