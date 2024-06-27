@@ -1,7 +1,7 @@
 pkgbase = megasync
 	pkgdesc = Official MEGA desktop application for syncing with MEGA Cloud Drive
 	pkgver = 5.3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/meganz/MEGAsync/
 	arch = x86_64
 	license = LicenseRef-Mega-Limited-Code-License
@@ -36,12 +36,10 @@ pkgbase = megasync
 	source = 010-megasync-freeimage-remove-obsolete-ffmpeg-macros.patch
 	source = 020-megasync-sdk-fix-cmake-dependencies-detection.patch
 	source = 030-megasync-app-fix-cmake-dependencies-detection.patch
-	source = 040-megasync-sdk-remove-invalid-mutex-method-call.patch
 	sha256sums = feb8c083afa82f9d888414b9a69370df50872b63cb33c3bf8d4f4a555fdb95fd
 	sha256sums = SKIP
 	sha256sums = 3df5d43ca1951c9e48dbb7f8e221bc8fff1a9fb1b7c934cb5ea7f195ae8f2e04
 	sha256sums = 2da83bb6a20aa19b58b4115646bacb9d76e2504b45b5094abeba94beac2301fb
 	sha256sums = a5883be2d00dbacaacf78231bfeeac27f4e8a471c3256370e94fec3e55b1d171
-	sha256sums = 68697633d839e05bbbf0a5bdb54c5568c85023535cbda30e8cf06b494c224d66
 
 pkgname = megasync
