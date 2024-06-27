@@ -72,7 +72,10 @@ sha512sums=('1d2a47bb8b838573a32f3719a7329fd744119c2c7efc5e5a4168b2bacfb09a3901a
 validpgpkeys=('34FF9526CFEF0E97A340E2E40FDE7BE0E88F5E48'  # Simon Ser
               '9DDA3B9FA5D58DD5392C78E652CB6609B22DA89A') # Drew DeVault
 conflicts=('sway')
-provides=('sway')
+provides=(
+  'sway'
+  'wayland-compositor'
+)
 
 prepare() {
   cd "sway-$pkgver"
