@@ -32,12 +32,10 @@ optdepends=(
 _gitname='FreeCAD'
 source=(
     "git+https://github.com/realthunder/FreeCAD.git#branch=LinkStable"
-    'patch_std_gnupp14.patch'
     'fix_invalid_escape_sequence.patch'
 )
 sha256sums=(
     'SKIP'
-    'd2a3a4c157741089c5ffbdd7c502be04414b8256081cd01208c94f2b0ed06ce3'
     '42ae25e9209b47299513be00dcf65611c213c8d76a1b26b88dbf15fa5a8b676f'
 )
 
@@ -49,7 +47,6 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/$_gitname"
-    # git apply < "$srcdir/patch_std_gnupp14.patch"
 
     # https://github.com/realthunder/FreeCAD/pull/1017
     git apply < "$srcdir/fix_invalid_escape_sequence.patch"
