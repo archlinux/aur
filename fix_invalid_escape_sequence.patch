@@ -1,0 +1,60 @@
+From d1a3f3b497b62fc071178e1dccf1e14d5025fe76 Mon Sep 17 00:00:00 2001
+From: gkatev <george_kate@hotmail.com>
+Date: Wed, 26 Jun 2024 14:55:47 +0300
+Subject: [PATCH] Fix invalid/unnecessary string escape sequences
+
+These invalid sequences are an issue because they result in SyntaxWarnings
+in Python 3.12. The one in StartPage is the one we're most interested in,
+as it appears quite prominently when opening FreeCAD.
+---
+ src/Ext/freecad/fc_cadquery/selectors.py | 6 +++---
+ src/Mod/Start/StartPage/StartPage.py     | 2 +-
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/Ext/freecad/fc_cadquery/selectors.py b/src/Ext/freecad/fc_cadquery/selectors.py
+index db13cf4068..5e4cb84a97 100644
+--- a/src/Ext/freecad/fc_cadquery/selectors.py
++++ b/src/Ext/freecad/fc_cadquery/selectors.py
+@@ -182,7 +182,7 @@ class ParallelDirSelector(BaseDirSelector):
+             Linear Edges
+             Planar Faces
+ 
+-        Use the string syntax shortcut \|(X|Y|Z) if you want to select
++        Use the string syntax shortcut |(X|Y|Z) if you want to select
+         based on a cardinal direction.
+ 
+         Example::
+@@ -555,7 +555,7 @@ class _SimpleStringSyntaxSelector(Selector):
+     def filter(self,objectList):
+         """
+             selects minimum, maximum, positive or negative values relative to a direction
+-            [+\|-\|<\|>\|] \<X\|Y\|Z>
++            [+|-|<|>|] <X|Y|Z>
+         """
+         return self.mySelector.filter(objectList)
+ 
+@@ -618,7 +618,7 @@ class StringSyntaxSelector(Selector):
+ 
+     ***Modifiers*** are ``('|','+','-','<','>','%')``
+ 
+-        :\|:
++        :|:
+             parallel to ( same as :py:class:`ParallelDirSelector` ). Can return multiple objects.
+         :#:
+             perpendicular to (same as :py:class:`PerpendicularDirSelector` )
+diff --git a/src/Mod/Start/StartPage/StartPage.py b/src/Mod/Start/StartPage/StartPage.py
+index 3a2165f7a3..dd70441024 100644
+--- a/src/Mod/Start/StartPage/StartPage.py
++++ b/src/Mod/Start/StartPage/StartPage.py
+@@ -148,7 +148,7 @@ def saveIcon(key,data,ext):
+     iconbank[key] = name
+     return name
+ 
+-_Re_Pattern = "<Property name=\"{}\".*?String value=\"(.*?)\"\/>"
++_Re_Pattern = "<Property name=\"{}\".*?String value=\"(.*?)\"/>"
+ _Re_CreatedBy = re.compile(_Re_Pattern.format("CreatedBy"))
+ _Re_Company = re.compile(_Re_Pattern.format("Company"))
+ _Re_License = re.compile(_Re_Pattern.format("License"))
+-- 
+2.45.2
+
