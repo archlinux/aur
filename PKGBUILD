@@ -10,7 +10,7 @@ license=(GPL3)
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal'
          'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'xxhash'
          'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'libxcomposite' 'libxdamage' 'abseil-cpp' 'libdispatch'
-         'openssl' 'protobuf' 'glib2' 'libsigc++-3.0' 'kcoreaddons')
+         'openssl' 'protobuf' 'glib2' 'libsigc++-3.0' 'kcoreaddons' 'jemalloc')
 makedepends=('chrpath')
 optdepends=('webkit2gtk: embedded browser features'
 	    'xdg-desktop-portal: desktop integration')

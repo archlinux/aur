@@ -29,6 +29,7 @@ pkgbase = materialgram-bin
 	depends = glib2
 	depends = libsigc++-3.0
 	depends = kcoreaddons
+	depends = jemalloc
 	optdepends = webkit2gtk: embedded browser features
 	optdepends = xdg-desktop-portal: desktop integration
 	provides = materialgram
