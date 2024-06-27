@@ -1,35 +1,37 @@
-# Maintainer: Davide Depau <davide@depau.eu>
+# Maintainer: Echo J. <aidas957 at gmail dot com>
+# Contributor: Davide Depau <davide@depau.eu>
 
 _pkgname=mkbootimg
-pkgname=$_pkgname-git
-pkgver=2020.05.18.r0.g8dd5b5b5
-pkgrel=2
+pkgname="${_pkgname}-git"
+pkgver=2022.11.09.r1.g9d010816
+pkgrel=1
 pkgdesc="Android mkbootimg + unpackbootimg, forked and updated (osm0sis)"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url="https://github.com/osm0sis/mkbootimg"
-license=('Apache')
-source=(${_pkgname}::git+https://github.com/osm0sis/mkbootimg.git)
+license=('Apache-2.0')
+license+=('BSD-3-Clause') # mincrypt license
+source=("${_pkgname}::git+https://github.com/osm0sis/mkbootimg.git")
 sha256sums=('SKIP')
-provides=($_pkgname unpackbootimg)
-conflicts=($_pkgname unpackbootimg)
+provides=("${_pkgname}" unpackbootimg)
+conflicts=("${_pkgname}" unpackbootimg)
+makedepends=(git)
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd "${_pkgname}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd "$srcdir/${_pkgname}"
-	sed s/-Werror/-W/g -i Makefile
-}
-
 build() {
-  cd "$srcdir/${_pkgname}"
+  cd "${_pkgname}"
   make
 }
 
 package() {
-  cd "$srcdir/${_pkgname}"
-	install -Dm755 mkbootimg "$pkgdir"/usr/bin/mkbootimg-osm0sis
-	install -Dm755 unpackbootimg "$pkgdir"/usr/bin/unpackbootimg
+  cd "${_pkgname}"
+
+  install -Dm755 mkbootimg "${pkgdir}/usr/bin/mkbootimg-osm0sis"
+  install -Dm755 unpackbootimg "${pkgdir}/usr/bin/unpackbootimg"
+
+  # Install the BSD license
+  install -Dm644 NOTICE "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
 }

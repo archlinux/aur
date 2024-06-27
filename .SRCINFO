@@ -1,13 +1,15 @@
 pkgbase = mkbootimg-git
 	pkgdesc = Android mkbootimg + unpackbootimg, forked and updated (osm0sis)
-	pkgver = 2020.05.18.r0.g8dd5b5b5
-	pkgrel = 2
+	pkgver = 2022.11.09.r1.g9d010816
+	pkgrel = 1
 	url = https://github.com/osm0sis/mkbootimg
 	arch = i686
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
-	license = Apache
+	license = Apache-2.0
+	license = BSD-3-Clause
+	makedepends = git
 	provides = mkbootimg
 	provides = unpackbootimg
 	conflicts = mkbootimg
@@ -16,4 +18,3 @@ pkgbase = mkbootimg-git
 	sha256sums = SKIP
 
 pkgname = mkbootimg-git
-

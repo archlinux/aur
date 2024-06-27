@@ -1,0 +1,5 @@
+# Ignore makepkg generated directories/files
+mkbootimg/
+pkg/
+src/
+*.pkg.tar.zst
