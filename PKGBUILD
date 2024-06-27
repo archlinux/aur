@@ -3,7 +3,7 @@
 pkgbase=ch343ser-git
 pkgname=(ch343ser-dkms-git libch343ser-git)
 pkgver=r42.05b4e1f
-pkgrel=1
+pkgrel=2
 pkgdesc="USB serial driver for ch342/ch343/ch344/ch347/ch347f/ch9101/ch9102/ch9103/ch9104, etc."
 arch=('any')
 url="https://github.com/WCHSoftGroup/ch343ser_linux"
@@ -75,9 +75,9 @@ ch343
 EOF
 
     # Blacklists conflicting module
-    install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modprobe.d/cdc_acm.conf" <<EOF
-blacklist cdc_acm
-EOF
+#     install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modprobe.d/cdc_acm.conf" <<EOF
+# blacklist cdc_acm
+# EOF
 }
 
 package_libch343ser-git() {
