@@ -1,14 +1,14 @@
 # Maintainer: Kainoa Kanter <kainoa@t1c.dev>
 
 pkgname=cohesion-git
-pkgrel=3
-pkgver=r157.g9c3b682
+pkgrel=1
+pkgver=r170.g0b018dc
 pkgdesc="Notion client for Linux"
 arch=(x86_64)
 url="https://github.com/brunofin/cohesion"
 license=("MIT")
 depends=(electron libxss nss gtk3 libxcrypt-compat libnotify)
-makedepends=(git jq)
+makedepends=(git)
 provides=(cohesion)
 conflicts=(cohestion)
 
@@ -45,25 +45,15 @@ pkgver() {
 
 prepare() {
     getnvm
-
     cd "${srcdir}/${pkgname%-git}" || exit
-
-    # use correct nodejs/npm versions
     nvm install lts/gallium
     nvm use lts/gallium
-
-    # add author (needed for electron-builder linux target)
-    cat package.json | jq '. += {"author": "Bruno Finger <bruno.k.finger@gmail.com>"}' | tee package.json
-    # install build dependencies
     npm install
 }
 
 build() {
     getnvm
-
     cd "${srcdir}/${pkgname%-git}" || exit
-
-    # We are not using the systems Electron as we need castlab's Electron.
     npm run build
 }
 
