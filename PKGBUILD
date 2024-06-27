@@ -1,17 +1,16 @@
 # Maintainer: David Vick <david@failedstatic.click>
 # Contributer: Mistle <tehmistle [at] gmx.com>
 pkgname=stash
-pkgver=0.26.1
+pkgver=0.26.2
 pkgrel=1
 pkgdesc="Locally hosted web-based app written in Go which organizes and serves your Adult Video"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/stashapp/stash"
-license=('AGPL3')
+license=('AGPL-3.0-only')
 depends=('glibc' 'ffmpeg')
 makedepends=('go>=2:1.19' 'golangci-lint' 'yarn')
 conflicts=('stash-bin')
 backup=(etc/conf.d/${pkgname})
-options=(!buildflags)
 source=("$pkgname::git+$url.git#tag=v${pkgver}"
 "stash.service"
 "stash-user.service"
@@ -35,8 +34,13 @@ prepare() {
 
 build() {
         cd "$pkgname"
+        export CGO_CPPFLAGS="${CPPFLAGS}"
+        export CGO_CFLAGS="${CFLAGS}"
+        export CGO_CXXFLAGS="${CXXFLAGS}"
+        export CGO_LDFLAGS="${LDFLAGS}"
+        export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
         make ui
-        OUTPUT=build/ make build-release
+        OUTPUT=build/ LDFLAGS= make build-release
 }
 
 
