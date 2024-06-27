@@ -4,11 +4,11 @@
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 # Contributor: Julian Schacher <jspp@posteo.net>
 
-_electron=electron28
+_electron=electron30
 _nodeversion=18
 pkgname=schildichat-desktop-git
 _pkgname=schildichat-desktop
-pkgver=1.11.36.sc.2.r0.48fb860
+pkgver=1.11.36.sc.3.r0.a1458b1
 pkgrel=1
 pkgdesc="A Matrix client based on Element with a more traditional instant messaging experience"
 arch=(x86_64)
@@ -16,7 +16,7 @@ url="https://schildi.chat"
 license=(Apache)
 conflicts=(schildichat-desktop schildichat-desktop-bin)
 provides=(schildichat-desktop=${pkgver})
-makedepends=(npm git yarn python rust tcl ${_electron} nvm libxcrypt-compat asar)
+makedepends=(npm git yarn python python-setuptools rust tcl ${_electron} nvm libxcrypt-compat asar)
 depends=(${_electron} libsecret)
 source=(git+https://github.com/SchildiChat/schildichat-desktop.git#branch=sc
         git+https://github.com/SchildiChat/matrix-js-sdk.git
