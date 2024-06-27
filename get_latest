@@ -13,7 +13,13 @@ const os = require('os');
 require('seajs');
 
 const file = "linuxQQDownload"
-const url = `https://cdn-go.cn/qq-web/im.qq.com_new/latest/rainbow/${file}.js`
+const indexUrl = "https://im.qq.com/linuxqq/index.shtml";
+var url;
+try {
+  url = syncRequest('GET', indexUrl).body.toString().match(new RegExp(`https?://[\\w\\.\\/\\-\\_]+/${file}\\.js\\?t=[0-9]+`))[0];
+} catch (err) {
+  url = `https://cdn-go.cn/qq-web/im.qq.com_new/latest/rainbow/${file}.js`;
+}
 const res = syncRequest('GET', url);
 
 fs.mkdtemp(path.join(os.tmpdir(), "/"), (err, directory) => {
