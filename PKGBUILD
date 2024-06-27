@@ -7,7 +7,7 @@
 _gitname="webkit2gtk"
 _pkgname="$_gitname-unstable"
 pkgname="$_pkgname"
-pkgver=2.45.3
+pkgver=2.45.4
 pkgrel=1
 pkgdesc="Web content engine for GTK"
 url="https://webkitgtk.org/"
@@ -32,7 +32,6 @@ depends=(
   hyphen
   icu
   libavif
-  libbacktrace
   libdrm
   libegl
   libepoxy
@@ -65,13 +64,11 @@ depends=(
   zlib
 )
 makedepends=(
-  clang
   cmake
-  gi-docgen
+  glib2-devel
   gobject-introspection
   gperf
   gst-plugins-bad
-  lld
   ninja
   python
   ruby
@@ -86,14 +83,14 @@ optdepends=(
   'gst-plugins-good: media decoding'
 )
 
-options=('!emptydirs')
+options=('!emptydirs' '!lto')
 
 _pkgsrc="webkitgtk-$pkgver"
 source=(
   "$url/releases/$_pkgsrc.tar.xz"{,.asc}
 )
 sha256sums=(
-  '9b5fbfa6c9ddc92508ca9f32cc8aa2e68cf50fcfada8f2f45775d559570713b3'
+  'bdc4c197a25c6fd8fd8e85b360842d490817b0326eba73149424687133d502ac'
   'SKIP'
 )
 
@@ -116,37 +113,32 @@ build() {
     -DCMAKE_INSTALL_LIBDIR=lib
     -DCMAKE_INSTALL_LIBEXECDIR=lib
     -DCMAKE_SKIP_RPATH=ON
-    -DUSE_AVIF=ON
     -DUSE_GTK4=ON
-    -DENABLE_MINIBROWSER=ON
+    -DUSE_LIBBACKTRACE=OFF
+    -DUSE_SOUP2=OFF
     -DENABLE_DOCUMENTATION=ON
+    -DENABLE_MINIBROWSER=ON
 
+    -DENABLE_DOCUMENTATION=OFF
     -DENABLE_WEB_RTC=ON
+    -DUSE_AVIF=ON
     -DUSE_GSTREAMER_WEBRTC=ON
     -DUSE_JPEGXL=ON
+
+    -Wno-dev
   )
 
-  # GCC with LTO fails to link libjavascriptcoregtk
-  #     /usr/bin/ld: /tmp/ccXxyWZV.ltrans0.ltrans.o: in function `ipint_table_size_validate':
-  #     <artificial>:(.text+0x49f0f): undefined reference to `ipint_extern_table_size'
-  #     /usr/bin/ld: /tmp/ccXxyWZV.ltrans0.ltrans.o: in function `ipint_table_fill_validate':
-  #     <artificial>:(.text+0x4a019): undefined reference to `ipint_extern_table_fill'
-  #     collect2: error: ld returned 1 exit status
-  export CC=clang CXX=clang++
-  export LDFLAGS+=" -fuse-ld=lld"
+  # JITted code crashes when CET is used
+  CFLAGS+=' -fcf-protection=none'
+  CXXFLAGS+=' -fcf-protection=none'
 
   # Produce minimal debug info: 4.3 GB of debug data makes the
   # build too slow and is too much to package for debuginfod
-  export CFLAGS+=' -g1'
-  export CXXFLAGS+=' -g1'
+  CFLAGS+=' -g1'
+  CXXFLAGS+=' -g1'
 
   cmake "${cmake_options[@]}"
   cmake --build build
-}
-
-check() {
-  cd "$_pkgsrc"
-  : cmake --build build --target tests
 }
 
 package() {
