@@ -9,7 +9,7 @@
 _pkgname="gyroflow"
 pkgname="$_pkgname-git"
 pkgver=1.5.4.r283.gd6622f2
-pkgrel=2
+pkgrel=3
 pkgdesc="Video stabilization using gyroscope data"
 url="https://github.com/gyroflow/gyroflow"
 license=("GPL-3.0-or-later")
@@ -40,8 +40,6 @@ conflicts=("$_pkgname")
 
 options=(!lto)
 
-install="$_pkgname.install"
-
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git")
 sha256sums=("SKIP")
@@ -53,7 +51,9 @@ pkgver() {
 }
 
 prepare() {
-  _gen_scripts
+  [ ! -e "$_pkgsrc/.cargo/config.toml" ] \
+    && [ -e "$_pkgsrc/.cargo/config" ] \
+    && mv "$_pkgsrc/.cargo/config" "$_pkgsrc/.cargo/config.toml"
 
   export RUSTUP_TOOLCHAIN=stable
 
@@ -62,15 +62,13 @@ prepare() {
 }
 
 build() {
-  # Currently Arch has both qt5 and qt6, and `/usr/bin/qmake` is qt5, this
-  # package needs qt6.
   export QMAKE="/usr/bin/qmake6"
-  # Use system libraries.
+
+  # Use system libraries
   export FFMPEG_DIR="/usr"
   export OPENCV_LINK_PATHS="/usr"
-  # See <https://github.com/gyroflow/gyroflow/blob/master/__env-linux.sh>.
-  # But I need to add `opencv_dnn` to build it.
   export OPENCV_LINK_LIBS="opencv_core,opencv_calib3d,opencv_features2d,opencv_imgproc,opencv_video,opencv_flann,opencv_dnn"
+
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
 
@@ -79,11 +77,6 @@ build() {
 }
 
 package() {
-  depends+=(
-    # AUR
-    unionfs-fuse
-  )
-
   # program files
   install -Dm755 "$_pkgsrc/target/release/$_pkgname" "$pkgdir/opt/$_pkgname/$_pkgname"
   install -Dm755 "$_pkgsrc/target/release/libmdk.so.0" -t "$pkgdir/opt/$_pkgname/"
@@ -92,8 +85,11 @@ package() {
   cp -a "$_pkgsrc/resources/camera_presets" "$pkgdir/opt/$_pkgname"
 
   # scripts
-  install -Dm755 gyroflow.sh "$pkgdir/usr/bin/gyroflow"
-  install -Dm755 gyroflow_init.sh "$pkgdir/usr/bin/gyroflow_init"
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << END
+#!/usr/bin/env sh
+export LD_LIBRARY_PATH="/opt/$_pkgname"
+exec /opt/$_pkgname/$_pkgname
+END
 
   # desktop file
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
@@ -112,64 +108,6 @@ END
   # icon
   install -Dm644 "$_pkgsrc/resources/icon.svg" "$pkgdir/usr/share/pixmaps/$_pkgname.svg"
 
+  # permissions
   chmod -R u+rwX,go+rX,go-w "$pkgdir/"
-}
-_gen_scripts() {
-  cat > gyroflow.sh << 'END'
-#!/usr/bin/env bash
-
-source /usr/bin/gyroflow_init
-
-if ! grep -q '/usr/bin' <<< "$(which gyroflow)"; then
-  exec gyroflow "$@"
-fi
-END
-
-  cat > gyroflow_init.sh << 'END'
-#!/usr/bin/env bash
-
-export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
-
-APP_DIR="/opt/gyroflow"
-SAVE_DIR="$XDG_CACHE_HOME/gyroflow_local"
-MOUNT_DIR="$XDG_CACHE_HOME/gyroflow_mount"
-
-if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
-  echo "$0 should not be executed directly."
-  exit 1
-fi
-
-if [ ! -e "$APP_DIR" ]; then
-  echo "$APP_DIR not found."
-  return 1
-fi
-
-_unionfs() {
-  if [ ! -e "$MOUNT_DIR/gyroflow" ]; then
-    mkdir -p "$SAVE_DIR"
-    mkdir -p "$MOUNT_DIR"
-
-    if ! unionfs -o cow -o umask=000 "$SAVE_DIR=RW:$APP_DIR=RO" "$MOUNT_DIR" > /dev/null 2>&1; then
-      echo "unionfs failed"
-      return 1
-    fi
-  fi
-}
-
-if grep -q gyroflow <<< $(groups); then
-  export APP_ROOT="$APP_DIR"
-  export LD_LIBRARY_PATH="$APP_DIR"
-elif _unionfs; then
-  if [ -e "$MOUNT_DIR" ]; then
-    if ! grep -q "$MOUNT_DIR" <<< "$PATH"; then
-      export APP_ROOT="$MOUNT_DIR"
-    fi
-  fi
-fi
-
-if ! grep -q "$APP_ROOT" <<< "$PATH"; then
-  export PATH="$APP_ROOT:$PATH"
-  export LD_LIBRARY_PATH="$APP_ROOT"
-fi
-END
 }
