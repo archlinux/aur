@@ -12,7 +12,7 @@
 
 _pkgname=cockroachdb
 pkgname="$_pkgname-bin"
-pkgver=24.1.0
+pkgver=24.1.1
 pkgrel=1
 pkgdesc="Cloud-native, distributed SQL database"
 url='https://www.cockroachlabs.com'
@@ -37,7 +37,7 @@ source=(
   "LICENSE.CCL-$pkgver"::"https://github.com/cockroachdb/cockroach/raw/v$pkgver/licenses/CCL.txt"
 )
 sha256sums=(
-  'f843c70f7ef2c7a77b0e0ce961515d693238bd15dc063229bb68342dd562cb10'
+  '81b3c57e95b8e0fd79b14ee5114332deb4fe97c10b61c4caad874c742b5a825c'
   '0384efdf47789c3548e7eff949c5c2c9c4ee95741f805a39cdb6f02035919889'
   '25ec687608539ef745809b39ed1af6f34520855d74db2a1367f6e6c6adbf43de'
 )
@@ -63,10 +63,10 @@ package() {
   chrpath -r /usr/lib/cockroachdb "$pkgdir/$_install_path/$_pkgname/lib/libgeos_c.so"
 
   # script
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/cockroach" << EOF
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/cockroach" << END
 #!/usr/bin/env sh
 exec /$_install_path/$_pkgname/cockroach "\$@"
-EOF
+END
 
   # user/group & owned directories
   install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/cockroach.conf" << END
