@@ -1,0 +1,16 @@
+pkgbase = geek-life-git
+	pkgdesc = The CLI To-Do List / Task Manager for Geeks
+	pkgver = 0.1.1.r17.g0dedb1a
+	pkgrel = 1
+	url = https://github.com/ajaxray/geek-life
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = geek-life=0.1.1
+	conflicts = geek-life
+	source = geek-life::git+https://github.com/ajaxray/geek-life.git
+	sha256sums = SKIP
+
+pkgname = geek-life-git
