@@ -1,11 +1,12 @@
-# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Maintainer: Echo J. <aidas957 at gmail dot com>
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Eduardo Romero <eduardo@archlinux.org>
 # Contributor: Tor Krill <tor@krill.nu>
 
 pkgname=nautilus-sendto
 pkgver=3.8.6+28+gc87aac4
-pkgrel=2
+pkgrel=3
 pkgdesc="Easily send files via mail"
 url="https://gitlab.gnome.org/Archive/nautilus-sendto"
 arch=(x86_64)

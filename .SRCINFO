@@ -1,7 +1,7 @@
 pkgbase = nautilus-sendto
 	pkgdesc = Easily send files via mail
 	pkgver = 3.8.6+28+gc87aac4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.gnome.org/Archive/nautilus-sendto
 	arch = x86_64
 	license = GPL-2.0-or-later
