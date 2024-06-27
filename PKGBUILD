@@ -55,13 +55,11 @@ source=(
     "XIVLauncher.Core::git+https://github.com/rankynbass/XIVLauncher.Core.git#tag=${_tag}"
     "XIVLauncher.desktop"
     "xivlauncher-rb"
-    "openssl_fix.cnf"
 )
 sha512sums=(
     'SKIP'
     '1d500eaa424fd484d96441252f6efa4239fedc37dc4a465c5a2d59478c82cb2d03913ad2fe2fb8bf140430cbe75b5b82dcad0a8b062790253401e8729a58f4df'
     '632b8f86e79b3e04b665d4b69ae9875d0ccde7e98fcaf7c252d531950feea78dc7aaac1557c0ff953e7f6abd73709d4c277f8a1d35c2f8ad8a925932b29c6843'
-    'f8e0e412481748ed4f0d25761af9d0e7ee89dd1e9912ca22b5aea7b90a431e1f9c3267d64478b3baf04a412a0ce7c2e7f8fb60e4648bf3af5fd0c2206a381549'
 )
 
 prepare() {
@@ -83,5 +81,4 @@ package() {
     install -D -m644 "${srcdir}/XIVLauncher.Core/misc/linux_distrib/512.png" "${pkgdir}/usr/share/pixmaps/xivlauncher-rb.png"
     cp -r "${srcdir}/build/." "${pkgdir}/opt/xivlauncher-rb/"
     cp "${srcdir}/xivlauncher-rb" "${pkgdir}/usr/bin/xivlauncher-rb"
-    cp "${srcdir}/openssl_fix.cnf" "${pkgdir}/opt/xivlauncher-rb/openssl_fix.cnf"
 }
