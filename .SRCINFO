@@ -7,9 +7,10 @@ pkgbase = showtime-git
 	license = GPL
 	makedepends = git
 	makedepends = meson
+	depends = python
 	depends = gtk4>=4.15
 	depends = libadwaita>=1.5
-	depends = python
+	depends = gst-plugin-gtk4
 	provides = showtime
 	conflicts = showtime
 	source = showtime::git+https://gitlab.gnome.org/GNOME/Incubator/showtime.git
