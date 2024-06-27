@@ -1,8 +1,8 @@
 # Maintainer: wxqwinner <wxqwinner@gmail.com>
 pkgname=script-communicator-bin
 _pkgname=script-communicator
-pkgver=6.05
-_pkgver=0${pkgver/./_}
+pkgver=6.06
+_pkgver=0${pkgver/./_}_1
 pkgrel=0
 pkgdesc="Scriptable data terminal which supports several interfaces."
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ source=("ScriptCommunicator_${_pkgver}_linux_64_bit.zip::https://sourceforge.net
         )
 
 sha256sums=(
-    '381c18f55faddb9a93d55f6a9d9733716fad507fd3b52cd546b2f2f3e320fc3b'
+    '568a2dc9cd78001f42deee0feb9a50cadb5914d521e8bfe37eb47d7b8b773875'
     'fe4902f479a21119a2d9387da6d637fc392fae06abbba3b52439fd6a18bc6c3c'
     'f36ca3633c09ffb894c6b9c43f20726376cee36472b121e067688e17247e09a7'
     'e67eb1cefba5a1635d316792eeda80ce76d73757a4a2f68ffe477ee2dc248822'
