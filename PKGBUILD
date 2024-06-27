@@ -52,7 +52,6 @@ depends=(
   xcb-util-keysyms
   xcb-util-renderutil
   xcb-util-wm
-  xorg-xinput
   xorg-xwayland-hidpi-xprop
 )
 makedepends=(
