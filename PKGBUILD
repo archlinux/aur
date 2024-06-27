@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pamr
-_pkgver=1.56.2
+_pkgver=1.56.2.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,8 +16,8 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a5cd60573771a8c9fc3ad9c41cd05157')
-b2sums=('db2269ec3fa48e78ef0a2045ae15d995f705a3c9bd94def418f9652e5076fb019c22ef31c662d92886466ef08c80130e8bcd461cf1cfe22d1e54b5d834e4e83c')
+md5sums=('f82a9d53ed7f7b4a619c7a134d4c7887')
+b2sums=('1e3e3adbbe226c4e2de0bc30d978c21b8c9500491ae19ea701078886ede907d8bf856943af83403c141cf4940c8eebd2bbd8a7755fddbd7c7b3653de7efd1767')
 
 build() {
   mkdir build
