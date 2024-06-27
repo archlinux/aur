@@ -9,12 +9,17 @@ url="https://github.com/linux-rdma/perftest"
 license=('GPL2' 'custom:OpenIB.org BSD')
 depends=('bash' 'rdma-core')
 makedepends=('git' 'autoconf' 'automake' 'libtool')
-source=("git+https://github.com/linux-rdma/perftest.git#tag=${pkgver//_/-}")
+source=("git+https://github.com/linux-rdma/perftest.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  git describe --tags | sed 's/^v//;s/-/./g;s/-/./'
+  git describe --tags | sed 's/^v//;s/-/./'
+}
+
+prepare() {
+  cd "$srcdir/$pkgname"
+  git checkout $(git describe --tags --abbrev=0)
 }
 
 build() {

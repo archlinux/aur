@@ -12,7 +12,7 @@ pkgbase = perftest
 	makedepends = libtool
 	depends = bash
 	depends = rdma-core
-	source = git+https://github.com/linux-rdma/perftest.git#tag=24.04.0.0.41
+	source = git+https://github.com/linux-rdma/perftest.git
 	sha256sums = SKIP
 
 pkgname = perftest
