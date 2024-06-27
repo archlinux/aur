@@ -28,9 +28,9 @@ source=(
     "$_pkgname.sh"
     "https://kkgithub.com/obgnail/typora_plugin/archive/refs/tags/${_plugin_ver}.tar.gz")
 sha512sums=(
-    'da7714d8a2ef228d1df13bf2a6862f3be3fad51238657e8ee48350380267ecfed29b391e0c66653e3b4322e3dada02d2bea6e1041f5230988358645ea0cf4b28  typora_1.9.3_amd64.deb'
+    'da7714d8a2ef228d1df13bf2a6862f3be3fad51238657e8ee48350380267ecfed29b391e0c66653e3b4322e3dada02d2bea6e1041f5230988358645ea0cf4b28'
     'de9c883c63f3ea35bd551c8761e605f8e1a3468943e000abcbf94bb0c5cbb5f0f6c7fa4d49ab39c177f167e0e3d0b061c861bf828627b4a34f7f1589119c3d04'
-    '32c1f5ad0d96cac918381f1f822b2730fb4979cb21340f545ee09b76feb5c0e459da764308dc9a8bef1aac20488f637e2d6092857d946a7ea321ff7f2c0f5240  1.9.14.tar.gz  1.9.14.tar.gz')
+    '32c1f5ad0d96cac918381f1f822b2730fb4979cb21340f545ee09b76feb5c0e459da764308dc9a8bef1aac20488f637e2d6092857d946a7ea321ff7f2c0f5240')
 
 _patch_plugin() {
   tar xvf ${_plugin_ver}.tar.gz -C "$pkgdir/"

@@ -34,7 +34,7 @@ do
 		echo "There is new version of " $type "  " $local_ver " --> " $latest_ver
 		wget $url
 		deb=$(echo $url | awk -F "/" '{print $NF}')
-		latest_sum=$(sha512sum $deb)
+		latest_sum=$(sha512sum $deb | cut -d " " -f 1 )
 		sed -i "s/$local_ver/$latest_ver/g" PKGBUILD
 		sed -i "s/$local_sum/$latest_sum/g" PKGBUILD
 		sed -i 's/pkgrel=[0-9]/pkgrel=1/g' PKGBUILD
