@@ -4,7 +4,7 @@ _pkgname=Final2x
 pkgver=1.2.0
 _date=2024-01-02
 _electronversion=27
-pkgrel=4
+pkgrel=5
 pkgdesc="2^x Image Super-Resolution"
 arch=('x86_64')
 license=('BSD-3-Clause')
@@ -22,6 +22,7 @@ depends=(
 )
 options=(
     '!strip'
+    '!emptydirs'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/${_date}/${_pkgname}-ubuntu-x64-deb.deb"
@@ -30,11 +31,12 @@ source=(
 )
 sha256sums=('e10fba1653ffc6d294ed845d05ddb8701d28c3a95d3cd65c35b0960af23c6056'
             '7b4e93ff707625a2632519b35d5891035356f551f18dd18539ad94c72f59286a'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
