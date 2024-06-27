@@ -202,7 +202,7 @@ if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] || [ -n "$_use_k
 fi
 
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
-_nv_ver=555.52.04
+_nv_ver=555.58
 _nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 _nv_open_pkg="open-gpu-kernel-modules-${_nv_ver}"
 source=(
@@ -229,7 +229,7 @@ if [ -n "$_build_nvidia" ]; then
 fi
 
 if [ -n "$_build_nvidia_open" ]; then
-    source+=("nvidia-open-${_nv_ver}.tar.gz::https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/${_nv_ver}.tar.gz"
+    source+=("nvidia-open-${_nv_ver}.tar.gz::https://github.com/CachyOS/open-gpu-kernel-modules/archive/refs/tags/${_nv_ver}.tar.gz"
              "${_patchsource}/misc/nvidia/make-modeset-fbdev-default.patch"
              "${_patchsource}/misc/nvidia/nvidia-open-gcc-ibt-sls.patch")
 fi
