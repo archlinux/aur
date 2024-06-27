@@ -1,6 +1,6 @@
 pkgbase = libjxl
 	pkgdesc = JPEG XL image format reference implementation
-	pkgver = 0.10.2
+	pkgver = 0.10.3
 	pkgrel = 1
 	url = https://jpeg.org/jpegxl/
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = libjxl
 	makedepends = doxygen
 	makedepends = graphviz
 	makedepends = xdg-utils
-	source = git+https://github.com/libjxl/libjxl.git#tag=v0.10.2
+	source = git+https://github.com/libjxl/libjxl.git#tag=v0.10.3
 	source = git+https://github.com/google/brotli.git
 	source = git+https://github.com/mm2/Little-CMS.git
 	source = git+https://github.com/google/googletest.git
@@ -34,7 +34,7 @@ pkgbase = libjxl
 	source = git+https://github.com/madler/zlib.git
 	source = libjxl-testdata::git+https://github.com/libjxl/testdata.git
 	source = git+https://github.com/libjpeg-turbo/libjpeg-turbo.git
-	sha256sums = SKIP
+	sha256sums = 55b9ed43559aaf5c2538813000bea6267437a84807a65c1d2d3314dd0d00de6f
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
