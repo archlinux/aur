@@ -1,15 +1,15 @@
 # Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
 
-_pkgname=algolia
-pkgname=${_pkgname}-bin
+_pkgname="algolia"
+pkgname="${_pkgname}-bin"
 pkgver=1.6.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Interact with and configure Algolia applications"
 arch=('x86_64' 'i686' 'aarch64' 'armv6h')
 url="https://github.com/${_pkgname}/cli"
 license=('MIT')
-conflicts=("${_pkgname}")
 provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 source=("${url}/raw/v${pkgver}/README.md")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.tar.gz")
 source_i686=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_386.tar.gz")
@@ -50,6 +50,6 @@ package() {
 
   cd "completions"
   install -Dm644 "${_pkgname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
-  install -Dm644 "${_pkgname}.zsh" "${pkgdir}/usr/share/zsh/site-functions/${_pkgname}"
   install -Dm644 "${_pkgname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
+  install -Dm644 "${_pkgname}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
 }
