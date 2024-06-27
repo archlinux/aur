@@ -6,7 +6,7 @@
 
 pkgname=nas
 pkgver=1.9.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Network Audio System is a network transparent, client/server audio transport system. Provides libaudio2.so.'
 arch=('i686' 'x86_64')
 url='http://radscan.com/nas.html'
@@ -25,12 +25,25 @@ sha256sums=('b7884afb38feec03a196bd3b7e9c47b803c830ecd10d7455e9c97e122c37944c'
 backup=('etc/conf.d/nasd'
         'etc/nas/nasd.conf')
 
+prepare() {
+	cd "${pkgname}-${pkgver}"
+	sed -i 's/unset CFLAGS LDFLAGS; //' 'config/Imakefile'
+}
+
 build() {
-	cd "${pkgname}-${pkgver}"	
+	cd "${pkgname}-${pkgver}"
+
+	export CFLAGS+=' -Wno-error=implicit-function-declaration -Wno-error=implicit-int'
 
 	xmkmf
 	make Makefiles
-	for f in $(find . -type f -name "Makefile"); do sed -i -r 's/ar clq/ar cq/' "$f"; done
+	for f in $(find . -type f -name "Makefile"); do
+		sed -i -r 's/ar clq/ar cq/' "$f"
+		sed -E -i \
+			-e 's/ CDEBUGFLAGS =.*/ CDEBUGFLAGS = $\(CFLAGS\)/' \
+			-e 's/ CFLAGS =.*/ CFLAGS += $\(CCOPTIONS\) $\(THREADS_CFLAGS\) $\(MODULE_CFLAGS\) $\(ALLDEFINES\)/' \
+			"$f"
+	done
 	make cleandir
 	make includes
 	make depend

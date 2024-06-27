@@ -1,7 +1,7 @@
 pkgbase = nas
 	pkgdesc = Network Audio System is a network transparent, client/server audio transport system. Provides libaudio2.so.
 	pkgver = 1.9.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://radscan.com/nas.html
 	arch = i686
 	arch = x86_64
