@@ -2,7 +2,7 @@
 
 _pkgname="envman"
 pkgname="${_pkgname}-git"
-pkgver=2.2.11.r22.gca81d0a
+pkgver=2.4.3.r2.gca81d0a
 pkgrel=1
 pkgdesc="Manage Environment Variable collections"
 arch=('any')
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgsrc}"
-  git describe --long --abbrev=7 | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {

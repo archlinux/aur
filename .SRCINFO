@@ -1,6 +1,6 @@
 pkgbase = envman-git
 	pkgdesc = Manage Environment Variable collections
-	pkgver = 2.2.11.r22.gca81d0a
+	pkgver = 2.4.3.r2.gca81d0a
 	pkgrel = 1
 	url = https://github.com/bitrise-io/envman
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = envman-git
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	provides = envman=2.2.11
+	provides = envman=2.4.3
 	conflicts = envman
 	source = envman::git+https://github.com/bitrise-io/envman.git
 	sha256sums = SKIP
