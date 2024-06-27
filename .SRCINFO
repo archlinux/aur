@@ -5,8 +5,8 @@ pkgbase = vault-unseal
 	url = https://github.com/lrstanley/vault-unseal
 	arch = any
 	license = MIT
-	makedepends = make
 	makedepends = go
+	depends = glibc
 	source = vault-unseal-0.5.1.tar.gz::https://github.com/lrstanley/vault-unseal/archive/refs/tags/v0.5.1.tar.gz
 	sha256sums = ca5272f691c2374aac11d5318c7faf928ba7c9a3eea51197a58810b97bc7a761
 
