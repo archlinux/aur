@@ -1,0 +1,17 @@
+pkgbase = perl-struct-diff
+	pkgdesc = Perl/CPAN Module Struct::Diff: Recursive diff for nested perl structures
+	pkgver = 0.98
+	pkgrel = 1
+	url = https://metacpan.org/release/Struct-Diff
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.008
+	depends = perl-algorithm-diff>=1.19
+	depends = perl-clone
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MI/MIXAS/Struct-Diff-0.98.tar.gz
+	md5sums = 78c861fea740d5f685ea9cb636240166
+	sha512sums = 43d4636b777f4a19c7b4c92f887e829a1fba1e2b0aa44eb814b7435d19bde22d55f7893d41c5b91a866bc64d3882d6ba470344d5255e0a90ebd1c2a18b8776f1
+
+pkgname = perl-struct-diff
