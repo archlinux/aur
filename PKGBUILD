@@ -7,12 +7,12 @@
 pkgname='python-yowsup'
 pkgdesc='The open source cross platform Whatsapp library powering Wazapp - Python 2'
 pkgver=3.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="The open source cross platform Whatsapp library powering Wazapp"
 url="https://github.com/tgalal/yowsup"
 arch=('any')
 license=('GPL')
-depends=('python' 'python-dateutil' 'python-axolotl' 'python-consonance-git' 'python-dissononce-git' 'python-appdirs')
+depends=('python' 'python-axolotl' 'python-consonance-git' 'python-dissononce-git' 'python-appdirs')
 makedepends=('python-setuptools' 'python-six')
 optdepends=('python-pillow: send images')
 conflicts=('yowsup-client-git' 'python-yowsup-git')

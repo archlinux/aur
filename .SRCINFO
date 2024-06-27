@@ -1,14 +1,13 @@
 pkgbase = python-yowsup
 	pkgdesc = The open source cross platform Whatsapp library powering Wazapp
 	pkgver = 3.3.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/tgalal/yowsup
 	arch = any
 	license = GPL
 	makedepends = python-setuptools
 	makedepends = python-six
 	depends = python
-	depends = python-dateutil
 	depends = python-axolotl
 	depends = python-consonance-git
 	depends = python-dissononce-git
