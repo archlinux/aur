@@ -1,14 +1,14 @@
 pkgbase = ocaml-intrinsics
 	pkgdesc = Library of intrinsics for OCaml
 	pkgver = 0.17.0
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/janestreet/ocaml_intrinsics
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	depends = ocaml>=5.1.0
-	depends = ocaml-ocaml_intrinsics_kernel>=0.17.0
+	depends = ocaml-intrinsics-kernel>=0.17.0
 	depends = dune>=3.11.0
 	options = !strip
 	source = ocaml-intrinsics-0.17.0.tar.gz::https://github.com/janestreet/ocaml_intrinsics/archive/v0.17.0.tar.gz

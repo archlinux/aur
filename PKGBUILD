@@ -3,13 +3,13 @@
 _projectname='ocaml_intrinsics'
 pkgname='ocaml-intrinsics'
 pkgver='0.17.0'
-pkgrel='2'
+pkgrel='3'
 epoch='1'
 pkgdesc='Library of intrinsics for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=5.1.0' 'ocaml-ocaml_intrinsics_kernel>=0.17.0' 'dune>=3.11.0')
+depends=('ocaml>=5.1.0' 'ocaml-intrinsics-kernel>=0.17.0' 'dune>=3.11.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 b2sums=('db536481d58851dbb96a1dc9070cc680fd558279c88ddce0176d168660be6dc8ee1bb7b67f877132163077c96773dad4b4c36c25db664511e833e0d5563ef4f9')
