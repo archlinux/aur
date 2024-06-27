@@ -1,0 +1,17 @@
+pkgbase = perl-parse-ansicolor-tiny
+	pkgdesc = Perl/CPAN Module Parse::ANSIColor::Tiny: Determine attributes of ANSI-Colored string
+	pkgver = 0.700
+	pkgrel = 1
+	url = https://metacpan.org/release/Parse-ANSIColor-Tiny
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-differences
+	checkdepends = perl-test-requires
+	depends = perl>=5.006
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RW/RWSTAUNER/Parse-ANSIColor-Tiny-0.700.tar.gz
+	md5sums = fc2c7aeadcbbfb755b3bb1db24e807b2
+	sha512sums = 39cc4c4a9401dde3e7133df79eccf1b8e9af444711642b037a29f0d4806838f3cf2924f008d53cd2a21336e401c75b894ef9b583f2c1694ea6835ba00aacfaa5
+
+pkgname = perl-parse-ansicolor-tiny
