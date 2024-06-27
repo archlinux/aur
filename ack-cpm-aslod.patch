@@ -1,0 +1,11 @@
+diff -rauN ack/plat/cpm/build-pkg.lua ack-cpm-aslod-patch/plat/cpm/build-pkg.lua
+--- ack/plat/cpm/build-pkg.lua	2024-06-27 12:39:33.165046338 +0200
++++ ack-cpm-aslod-patch/plat/cpm/build-pkg.lua	2024-06-27 12:40:19.785047941 +0200
+@@ -19,6 +19,7 @@
+ installable {
+ 	name = "pkg",
+ 	map = {
++		"util/amisc+aslod-pkg",
+ 		"+tools",
+ 		"+libs",
+         "./include+pkg",

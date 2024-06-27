@@ -2,16 +2,19 @@
 # Submitter: Alastair Feille <me@alastair.se>
 
 pkgname=ack-git
-pkgver=6.0pre5.r9.gd0bfee1
-pkgrel=1
+pkgver=dev.r0.gd43c7bd00
+pkgrel=2
 pkgdesc="The Amsterdam Compiler Kit"
 arch=('i686' 'x86_64')
 url="http://tack.sourceforge.net/"
 license=('BSD')
 depends=('glibc')
-makedepends=('git' 'flex' 'bison' 'ed')
-source=("git+https://github.com/davidgiven/ack")
-md5sums=('SKIP')
+makedepends=('git' 'flex' 'bison' 'ed' 'lua')
+source=("git+https://github.com/davidgiven/ack"
+        'ack-cpm-aslod.patch'
+        )
+md5sums=('SKIP'
+         'def54bc99c19c95bbfa134ef4d3be9cf')
 
 _gitrepo=${pkgname%-git}
 
@@ -23,10 +26,15 @@ pkgver() {
   )
 }
 
+prepare() {
+	cd "${srcdir}/${_gitrepo}"
+	patch -Np1 < "$srcdir/ack-cpm-aslod.patch"
+}
+
 build() {
 	cd "${srcdir}/${_gitrepo}"
 
-	make DEFAULT_PLATFORM="linux386" ACK_TEMP_DIR="${srcdir}"
+	make -r CFLAGS="" DEFAULT_PLATFORM="linux386" ACK_TEMP_DIR="${srcdir}"
 }
 
 package(){
@@ -35,7 +43,7 @@ package(){
 
 	cd "${srcdir}/${_gitrepo}"
 
-	make PREFIX="${pkgdir}"/usr ACK_TEMP_DIR="${srcdir}" install
+	make -r PREFIX="${pkgdir}"/usr ACK_TEMP_DIR="${srcdir}" install
 
 	install -D -m0644 "${srcdir}/${_gitrepo}"/Copyright "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
