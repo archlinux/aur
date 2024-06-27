@@ -7,7 +7,7 @@
 
 pkgname=minivmac
 pkgver=36.04
-pkgrel=3
+pkgrel=5
 pkgdesc="A miniature early Macintosh emulator"
 arch=('x86_64' 'i686') 
 url="https://www.gryphel.com/c/minivmac/"
@@ -16,6 +16,8 @@ _api="sdl"
 license=('GPL2')
 depends=('bash' 'libx11' 'sdl')
 source=(${pkgname}-${pkgver}.tgz::"${_url_d}/${pkgname}-${pkgver}/$pkgname-$pkgver.src.tgz"
+        minivmac.desktop
+        minivmac.png
         blanks-1.1.zip::"${_url_d}/extras/blanks/blanks-1.1.zip"
         clipin-1.1.0.zip::"${_url_d}/extras/clipin/clipin-1.1.0.zip"
         clipout-1.1.0.zip::"${_url_d}/extras/clipout/clipout-1.1.0.zip"
@@ -25,6 +27,8 @@ source=(${pkgname}-${pkgver}.tgz::"${_url_d}/${pkgname}-${pkgver}/$pkgname-$pkgv
         minivmac.man::"https://raw.githubusercontent.com/ajacocks/minivmac-aur/beta/minivmac.man"
         importfl-1.2.2.zip::"${_url_d}/extras/importfl/importfl-1.2.2.zip")
 sha256sums=('9b7343cec87723177a203e69ad3baf20f49b4e8f03619e366c4bf2705167dfa4'
+            'b7790404a7ef404234cf25d5e29c0e830827841c02519999f321e330c02366ac'
+            'f003d3c5a92442f3f143153879a7a21e301d447e850ebba119605a2a733f6e2b'
             '3c3040148c0e128a8402ac0fa3494098b0dee7df7bd06b26e9196c5dd1addff3'
             'ef4912e9d10471ddfc1e4976ccf98d0bf76e9ef5ad2f8748c548d44714127223'
             '29c5e3c2604f9e6e9dcaf48cc716c17f8a89333fcf37770878c40382b62c4d92'
@@ -43,22 +47,32 @@ build() {
   for _model in 128K 512Ke Plus SE Classic SEFDHD II; do
     model_lower=$(echo $_model | tr '[:upper:]' '[:lower:]')
     # In common 1080p monitors, the magnify options work well
-    [ $_model = II ] && option_mf=2 || option_mf=3
+    #[ $_model = II ] && option_mf=2 || option_mf=3
     echo Architecture is $CARCH.
     if [ "${CARCH}" = "x86_64" ]; then
-      ./setup_t -t lx64 -m ${_model} $OPTIONS -mf "${option_mf}" -magnify 1 | bash
+      ./setup_t -t lx64 -m ${_model} $OPTIONS | bash
     elif [ "${CARCH}" = "i686" ]; then
-      ./setup_t -t lx86 -m ${_model} $OPTIONS -mf "${option_mf}" -magnify 1 | bash
+      ./setup_t -t lx86 -m ${_model} $OPTIONS | bash
     else
       echo "Architecture $CARCH is not supported by this PKGBUILD."
       exit 1
     fi
     make
     mv minivmac bin/"minivmac-$model_lower"
+    sed -e "s;^Exec=.*;Exec=/usr/bin/minivmac-${model_lower};" \
+        -e "s;^Name=.*;Name=Mini vMac ${_model};" \
+        ${srcdir}/${pkgname}.desktop > ${srcdir}/minivmac-${model_lower}.desktop
   done
 }
 
 package() {
+  # icon and desktop entry
+  install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  for _model in 128K 512Ke Plus SE Classic SEFDHD II; do
+    model_lower=$(echo $_model | tr '[:upper:]' '[:lower:]')
+    install -Dm644 "${srcdir}/${pkgname}-${model_lower}.desktop" "${pkgdir}/usr/share/applications/${pkgname}-${model_lower}.desktop"
+  done
+  install -Dm644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/${pkgname}.png"
   cd ${pkgname}
   # install docs
   install -dm755 "$pkgdir"/usr/share/doc/$pkgname
@@ -73,8 +87,12 @@ package() {
   cd -
   # create a disk storage directory
   install -dm755 "$pkgdir"/usr/share/$pkgname/disks
-  # install man page
-  install -Dm755 minivmac.man "$pkgdir"/usr/share/man/man1/$pkgname.1
+  # install man pages
+  install -Dm755 minivmac.man "${pkgdir}/usr/share/man/man1/$pkgname.1"
+  for _model in 128K 512Ke Plus SE Classic SEFDHD II; do
+    model_lower=$(echo $_model | tr '[:upper:]' '[:lower:]')
+    ln -s "${pkgdir}/usr/share/man/man1/$pkgname.1" "${pkgdir}/usr/share/man/man1/$pkgname-${model_lower}.1"
+  done
   # create a ROM storage directory
   install -dm755 "$pkgdir"/usr/share/$pkgname/roms
   # Extras
