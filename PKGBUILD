@@ -1,9 +1,9 @@
 _reponame=cparser
 pkgname="${_reponame}-git"
 pkgver=r3947.51b173e6
-pkgrel=3
+pkgrel=4
 pkgdesc='A c99 frontend to libfirm compiler library'
-url="https://github.com/libfirm/"
+url="https://pp.ipd.kit.edu/firm/"
 license=('GPL')
 arch=('any')
 depends=('libfirm-git')
