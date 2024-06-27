@@ -23,7 +23,6 @@ depends=(
   hyprutils
   hyprcursor
   hyprlang
-  hyprwayland-scanner
   libdisplay-info
   libdrm
   libglvnd
@@ -58,6 +57,7 @@ makedepends=(
   cmake
   gdb
   git
+  hyprwayland-scanner-git
   jq
   make
   meson
