@@ -1,0 +1,14 @@
+pkgbase = melonprimeds-bin
+	pkgdesc = Modded version of melonDS emulator to play Metroid Hunters
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/makidoll/melonPrimeDS
+	arch = x86_64
+	license = GPL-3.0-only
+	options = !strip
+	source = https://github.com/makidoll/melonPrimeDS/releases/download/mph-1.2/melonPrimeDS-1.2-x86_64.AppImage
+	source = https://raw.githubusercontent.com/makidoll/melonPrimeDS/metroid-prime-hunters/LICENSE
+	sha512sums = 10b58497509fe256b4d79c5931ef0248481deccfe67178c8ff1ba815727c50305bac782529bff8016b0dcfa57bae489a73478622d6d3be7740c9c3fc458eefa6
+	sha512sums = 7633623b66b5e686bb94dd96a7cdb5a7e5ee00e87004fab416a5610d59c62badaf512a2e26e34e2455b7ed6b76690d2cd47464836d7d85d78b51d50f7e933d5c
+
+pkgname = melonprimeds-bin
