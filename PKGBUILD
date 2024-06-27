@@ -1,8 +1,8 @@
 # Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
 
 pkgname=newsboat-og
-pkgver=2.13.1
-pkgrel=2
+pkgver=2.13.2
+pkgrel=1
 pkgdesc="An RSS/Atom feed reader for text terminals (old gen)"
 arch=('x86_64' 'i486' 'i686' 'pentium4')
 url="https://newsboat.org/"
@@ -16,7 +16,7 @@ replaces=('newsbeuter')
 conflicts=('newsboat')
 options=('!makeflags')
 source=("https://github.com/andreasbaumann/$pkgname/archive/r$pkgver.tar.gz")
-sha256sums=('074228c0597f20ac72aff0b99685e5af4b28b428adafbbd8a1f207a156eb63c9')
+sha256sums=('b6646c92e87590b8780111a03ecda139faa846c1fb030bf02f0d89edbff9b8cc')
 
 build() {
   cd $pkgname-r$pkgver
