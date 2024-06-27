@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=tsibble
-_pkgver=1.1.4
+_pkgver=1.1.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -44,8 +44,8 @@ optdepends=(
   r-timedate
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9e43ff1fa59c9385ba04a2bd04e04bbd')
-b2sums=('5982bfd2397704b440da7bcdc5288302a795b49c60b0f17ce8abc8da01baab5db47fa02f7a5ab314acd8fbc330fa73318dc11d1aa34eebe2b83e9153b99efc18')
+md5sums=('8df4a7144f1286f35ce2b099ad3d6230')
+b2sums=('6ddf26f9fd05abc23a7b439245355d691e3b3910408924284b3ceffed98a545e568ea74acb58a3f202ee80c6e5f477cb5991d7e918c9f8345c0b4ea18c41c4dc')
 
 build() {
   mkdir build
