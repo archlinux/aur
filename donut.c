@@ -16,5 +16,5 @@ t*d);o=x+80*y;N          =8*((g*a-G*h*e)
    (k%80?b[k]:10);R(.04,e,a);R(.02,d,
      c);usleep(15000);printf('\n'+(
         " donut.c! \x1b[23A"));}}
-           /*3D-spinning-donut*/
-
+          /*no math lib needed
+             .@a1k0n 2021.*/
