@@ -18,10 +18,10 @@
 ###############################################################################
 _phpbase="82"
 _suffix=""
-pkgver="8.2.19"
+pkgver="8.2.20"
 pkgrel="1"
 pkgbase="php82"
-pkgdesc="PHP 8.2.19 compiled as to not conflict with mainline php"
+pkgdesc="PHP 8.2.20 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1 "
 _build_apache_cfg="etc/httpd/conf/extra"
 _build_bundled_gd="0"
@@ -212,20 +212,20 @@ _sapi_depends=(
     "argon2"
 )
 _ext_depends_snmp=(
-    "php82=8.2.19"
+    "php82=8.2.20"
     "net-snmp"
     "openssl"
 )
 _ext_depends_ftp=(
-    "php82=8.2.19"
+    "php82=8.2.20"
     "openssl"
 )
 _ext_depends_intl=(
-    "php82=8.2.19"
+    "php82=8.2.20"
     "icu"
 )
 _ext_depends_imap=(
-    "php82=8.2.19"
+    "php82=8.2.20"
     "pam"
     "krb5"
     "c-client"
@@ -233,45 +233,45 @@ _ext_depends_imap=(
     "openssl"
 )
 _ext_depends_gd=(
-    "php82=8.2.19"
+    "php82=8.2.20"
     "gd"
 )
 _ext_depends_mysql=(
-    "php82=8.2.19"
-    "php82-pdo=8.2.19"
-    "php82-openssl=8.2.19"
+    "php82=8.2.20"
+    "php82-pdo=8.2.20"
+    "php82-openssl=8.2.20"
 )
 _ext_depends_dba=(
-    "php82=8.2.19"
+    "php82=8.2.20"
     "db5.3"
     "lmdb"
 )
 _ext_depends_odbc=(
-    "php82=8.2.19"
+    "php82=8.2.20"
     "unixodbc"
-    "php82-pdo=8.2.19"
+    "php82-pdo=8.2.20"
 )
 _ext_depends_pgsql=(
-    "php82=8.2.19"
+    "php82=8.2.20"
     "postgresql-libs"
-    "php82-pdo=8.2.19"
+    "php82-pdo=8.2.20"
 )
 _ext_depends_firebird=(
-    "php82=8.2.19"
+    "php82=8.2.20"
     "libfbclient"
-    "php82-pdo=8.2.19"
+    "php82-pdo=8.2.20"
 )
 _ext_depends_sqlite=(
-    "php82=8.2.19"
+    "php82=8.2.20"
     "sqlite"
-    "php82-pdo=8.2.19"
+    "php82-pdo=8.2.20"
 )
 _ext_depends_mbstring=(
-    "php82=8.2.19"
+    "php82=8.2.20"
     "oniguruma"
 )
 _ext_depends_openssl=(
-    "php82=8.2.19"
+    "php82=8.2.20"
     "krb5"
     "e2fsprogs"
     "openssl"
@@ -1531,7 +1531,7 @@ sha256sums=('e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b'
             '0b7e98dca9c996ec10cb9b3f6296bb7547c68797fd5f35006fdfd3e97700672d'
             'ba72fc64f77822755a469314160d5889d5298f4eb5758dd7939dac9b811afe52'
             '6d0ad9becb5470ce8e5929d7d45660b0f32579038978496317544c5310281a91'
-            'aecd63f3ebea6768997f5c4fccd98acbf897762ed5fc25300e846197a9485c13'
+            '4474cc430febef6de7be958f2c37253e5524d5c5331a7e1765cd2d2234881e50'
             '169d52d6fc78e24e88a5923715d965bc247a62697c59d06d468c1908eba1c189'
             '558e780e93dfa861a366c49b4d156d8fc43f17898f001ae6033ec63c33d5d41c'
             '40bcc1e5058602302198d0925e431495391d8469499593af477f59d84d32f764'
