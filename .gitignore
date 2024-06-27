@@ -1,9 +1,4 @@
-*.tar.*
-*.zip
-*.orig
-*.rej
-*.swp
-*.part
-src
-pkg
-go-http-file-server
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore

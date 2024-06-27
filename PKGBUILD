@@ -1,24 +1,25 @@
 # Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
 
+_binname="ghfs"
 _pkgname="go-http-file-server"
 pkgname="${_pkgname}-git"
-_binname="ghfs"
-pkgver=1.18.1.r0.78ce441
+pkgver=1.18.1.r0.g78ce441
 pkgrel=1
 pkgdesc="Simple command line based HTTP file server to share local file system"
 arch=('any')
 url="https://github.com/mjpclab/${_pkgname}"
 license=('MIT')
+depends=('glibc')
 makedepends=('git' 'go>=1.18')
-conflicts=("${_pkgname}")
-provides=("${_pkgname}=${pkgver%%.r*}")
+provides=("${_binname}=${pkgver%%.r*}")
+conflicts=("${_binname}")
 _pkgsrc="${_pkgname}"
 source=("${_pkgsrc}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgsrc}"
-  printf "%s" "$(git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
+  git describe --long --tags --abbrev=7 | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
