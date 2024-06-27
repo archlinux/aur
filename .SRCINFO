@@ -1,13 +1,13 @@
 pkgbase = python-qroundprogressbar
-	pkgdesc = Circular progress bar PyQt5 widget (ported from C++ project at: https://sourceforge.net/projects/qroundprogressbar)
+	pkgdesc = Circular progress bar PyQt6 widget (ported from C++ project at: https://sourceforge.net/projects/qroundprogressbar)
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ozmartian/QRoundProgressBar
 	arch = any
 	license = Apache
 	makedepends = git
 	makedepends = python-setuptools
-	depends = python-pyqt5
+	depends = python-pyqt6
 	provides = python-qroundprogressbar
 	source = git+https://github.com/ozmartian/QRoundProgressBar.git
 	md5sums = SKIP
