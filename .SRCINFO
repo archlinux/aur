@@ -10,13 +10,13 @@ pkgbase = dnsx-bin
 	license = MIT
 	provides = dnsx
 	conflicts = dnsx
-	source_x86_64 = dnsx-1.2.1.zip::https://github.com/projectdiscovery/dnsx/releases/download/v1.2.1/dnsx_1.2.1_linux_amd64.zip
+	source_x86_64 = https://github.com/projectdiscovery/dnsx/releases/download/v1.2.1/dnsx_1.2.1_linux_amd64.zip
 	sha256sums_x86_64 = 7ff88172c1b108d0ccb25a315bcf3f267be4b9d360586b7e9f8799ad89727478
-	source_i686 = dnsx-1.2.1.zip::https://github.com/projectdiscovery/dnsx/releases/download/v1.2.1/dnsx_1.2.1_linux_386.zip
+	source_i686 = https://github.com/projectdiscovery/dnsx/releases/download/v1.2.1/dnsx_1.2.1_linux_386.zip
 	sha256sums_i686 = 09a25943a4880f55d10a6aa11d81c32e3945adb9a8fbafad21a69b852a2a3978
-	source_aarch64 = dnsx-1.2.1.zip::https://github.com/projectdiscovery/dnsx/releases/download/v1.2.1/dnsx_1.2.1_linux_arm64.zip
+	source_aarch64 = https://github.com/projectdiscovery/dnsx/releases/download/v1.2.1/dnsx_1.2.1_linux_arm64.zip
 	sha256sums_aarch64 = fb96e9178c1b1e68a589b66398f268fc3836eb2c21fd346d11bb4f81cfa39044
-	source_arm = dnsx-1.2.1.zip::https://github.com/projectdiscovery/dnsx/releases/download/v1.2.1/dnsx_1.2.1_linux_arm.zip
+	source_arm = https://github.com/projectdiscovery/dnsx/releases/download/v1.2.1/dnsx_1.2.1_linux_arm.zip
 	sha256sums_arm = 40934243c659aff73f6f5cc502099b3f5725d2c4408b893bd66cd18c2385285b
 
 pkgname = dnsx-bin
