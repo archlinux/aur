@@ -35,13 +35,14 @@ check() {
 
 package() {
     cd "$_pkgsrc"
-    install -vDm755 "target/release/$pkgname" -t "$pkgdir/usr/bin/"
+    install -vDm755 "target/release/$_pkgname" -t "$pkgdir/usr/bin/"
     install -vDm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
     install -vDm644 README.md -t "$pkgdir/usr/share/doc/$_pkgname/"
-    install -vDm644 "target/release/_$pkgname" \
-        "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
-    install -vDm644 "target/release/$pkgname.bash" \
-        "$pkgdir/usr/share/bash-completion/completions/$pkgname"
-    install -vDm644 "target/release/$pkgname.fish" \
-        "$pkgdir/usr/share/fish/completions/$pkgname.fish"
+    install -vDm644 CHANGELOG.md -t "$pkgdir/usr/share/doc/$_pkgname/"
+    install -vDm644 "target/release/_$_pkgname" \
+        "$pkgdir/usr/share/zsh/site-functions/_$_pkgname"
+    install -vDm644 "target/release/$_pkgname.bash" \
+        "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
+    install -vDm644 "target/release/$_pkgname.fish" \
+        "$pkgdir/usr/share/fish/completions/$_pkgname.fish"
 }
