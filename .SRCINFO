@@ -8,7 +8,7 @@ pkgbase = azure2
 	makedepends = qt5-base
 	makedepends = qwt
 	provides = azure2
-	source = file://AZURE2-qt5-patched.zip
+	source = git+ssh://git@github.com/bhamnuclear/Azure2.git
 	sha256sums = SKIP
 
 pkgname = azure2

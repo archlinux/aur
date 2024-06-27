@@ -1,7 +1,8 @@
 # Maintainer: Filippo Falezza <filippo dot falezza at outlook dot it>
 
 pkgname='azure2'
-_pkgname='AZURE2-qt5'
+#_pkgname='AZURE2-qt5'
+_pkgname='Azure2'
 #_pkgname='brick'
 pkgver=1.0.0
 pkgrel=1
@@ -14,7 +15,10 @@ makedepends=(
   'qt5-base'
   'qwt'
 )
-source=("file://${_pkgname}-patched.zip")
+source=(
+  #"file://${_pkgname}-patched.zip"
+  "git+ssh://git@github.com/bhamnuclear/Azure2.git"
+  )
 sha256sums=('SKIP')
 
 #The sources are to be provided manually as the package is not public
@@ -24,7 +28,7 @@ build() {
   cd "${srcdir}/${_pkgname}"
   mkdir -p build
   cd build
-  cmake -DCMAKE_BUILD_TYPE=Release -DUSE_QWT=ON -DBUILD_LIBRARY=OFF -DCMAKE_INSTALL_PREFIX=/opt/Azure2 -DMINUIT2_INCLUDE_DIR=/usr/include/Minuit2 -DMINUIT2_LIBRARY_DIR=/usr/lib/root -DQWT_VERSION_STRING=6.2.0 -DQt5_DIR=/usr/lib/cmake/Qt5 -DQt5Widgets_DIR=/usr/lib/cmake/Qt5Widgets -DQt5PrintSupport_DIR=/usr/lib/cmake/Qt5PrintSupport -DQt5Gui_DIR=/usr/lib/cmake/Qt5Gui -DQt5Core_DIR=/usr/lib/cmake/Qt5Core -DROOT_DIR=/usr/lib/cmake/ROOT -Dnlohmann_json_DIR=/usr/share/cmake/nlohmann_json "${srcdir}/${_pkgname}"
+  cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DUSE_QWT=ON -DBUILD_LIBRARY=OFF -DCMAKE_INSTALL_PREFIX=/opt/Azure2 -DMINUIT2_INCLUDE_DIR=/usr/include/Minuit2 -DMINUIT2_LIBRARY_DIR=/usr/lib/root -DQWT_VERSION_STRING=6.2.0 -DQt5_DIR=/usr/lib/cmake/Qt5 -DQt5Widgets_DIR=/usr/lib/cmake/Qt5Widgets -DQt5PrintSupport_DIR=/usr/lib/cmake/Qt5PrintSupport -DQt5Gui_DIR=/usr/lib/cmake/Qt5Gui -DQt5Core_DIR=/usr/lib/cmake/Qt5Core -DROOT_DIR=/usr/lib/cmake/ROOT -Dnlohmann_json_DIR=/usr/share/cmake/nlohmann_json "${srcdir}/${_pkgname}"
   make
 
   cd "${srcdir}"
