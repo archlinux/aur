@@ -44,6 +44,7 @@ build() {
 package() {
     cd "${srcdir}/src/${_repo_prefix}/${_repo_name}"
     install -Dm755 "${srcdir}/src/${_repo_prefix}/${_repo_name}/${_repo_name}.bin" "${pkgdir}/usr/bin/${_repo_name}"
+    install -Dm644 "${startdir}/ollama-copilot.service" "${pkgdir}/usr/lib/systemd/system/ollama-copilot.service"
     # install -Dm644 "${srcdir}/src/${_repo_prefix}/${_repo_name}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     # for _file in *.md docs/*.md; do
