@@ -1,4 +1,5 @@
 # Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
+# Contributor: Robin < robin@blckct.io >
 _pkgname='devtoys'
 pkgname="${_pkgname}-bin"
 provides=(${_pkgname})
