@@ -1,21 +1,20 @@
 # Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
-_pkgname=cloudlist
-pkgname=${_pkgname}-bin
+_pkgname="cloudlist"
+pkgname="${_pkgname}-bin"
 pkgver=1.0.8
 pkgrel=1
 pkgdesc="Tool for listing Assets from multiple Cloud Providers"
 arch=('x86_64' 'i686' 'aarch64' 'arm')
 url="https://github.com/projectdiscovery/${_pkgname}"
 license=('MIT')
-conflicts=("${_pkgname}")
 provides=("${_pkgname}")
-_pkgsrc="${_pkgname}-${pkgver}"
-source_x86_64=("${_pkgsrc}.zip::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.zip")
-source_i686=("${_pkgsrc}.zip::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_386.zip")
-source_aarch64=("${_pkgsrc}.zip::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64.zip")
-source_arm=("${_pkgsrc}.zip::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm.zip")
+conflicts=("${_pkgname}")
+source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.zip")
+source_i686=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_386.zip")
+source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64.zip")
+source_arm=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm.zip")
 sha256sums_x86_64=('522042853a98d415bedddd0ec2c03b16803c4dc8345df1b3876f811e868bf1e7')
 sha256sums_i686=('8c16b363dfcfa5cc4a728df532ff51e9cc99794f776032bcc0510ac7ac70a48f')
 sha256sums_aarch64=('6c016b8435224207fbe8f5cd44a0a3a21a0dc2db3ebd0ce68a38780d24b7f42b')
