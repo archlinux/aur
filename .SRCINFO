@@ -10,7 +10,8 @@ pkgbase = blinker-git
 	makedepends = nvm
 	makedepends = npm
 	makedepends = gcc
-	makedepends = base-devel
+	makedepends = cmake
+	makedepends = curl
 	depends = electron28
 	depends = nodejs
 	provides = blinker=2.1.1.r4.g721406b
@@ -19,6 +20,6 @@ pkgbase = blinker-git
 	source = blinker.git::git+https://github.com/mrkpatchaa/blinker.git
 	source = blinker.sh
 	sha256sums = SKIP
-	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = blinker-git
