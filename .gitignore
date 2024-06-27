@@ -1,0 +1,6 @@
+*.pkg.tar.*
+*.tar.*
+*.log
+ollama-copilot/
+pkg/
+src/
