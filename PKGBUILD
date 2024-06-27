@@ -25,7 +25,7 @@ prepare() {
 
 build() {
   cd k
-  make k
+  make k libk.so
 }
 
 check() {
@@ -38,4 +38,6 @@ package() {
   install -Dm755 k "$pkgdir/usr/bin/ngnk"
   install -Dm644 -t "$pkgdir/usr/lib/ngnk/" repl.k
   install -Dm644 -t "$pkgdir/usr/lib/ngnk/" g.k
+  install -Dm644 -t "$pkgdir/usr/include/" k.h
+  install -Dm755 -t "$pkgdir/usr/lib/" libk.so
 }
