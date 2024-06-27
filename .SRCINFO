@@ -1,6 +1,6 @@
 pkgbase = biome
 	pkgdesc = Formatter, linter, and more for Javascript, Typescript, JSON, and CSS
-	pkgver = 1.8.2
+	pkgver = 1.8.3
 	pkgrel = 1
 	url = https://biomejs.dev
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = biome
 	depends = gcc-libs
 	depends = glibc
 	replaces = rome
-	source = https://github.com/biomejs/biome/archive/cli/v1.8.2/biome-cli-v1.8.2.tar.gz
-	sha256sums = 8f90b36de4aa65b671ff9f09df72b35ae97c0429be48b2bd51fe4423d9f2a0f2
+	source = https://github.com/biomejs/biome/archive/cli/v1.8.3/biome-cli-v1.8.3.tar.gz
+	sha256sums = 8e263bbc1ff644036409471f10320870510025fa1850912a02b1abcfc92ced79
 
 pkgname = biome
