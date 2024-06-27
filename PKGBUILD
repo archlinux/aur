@@ -1,32 +1,44 @@
 # Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
 
-_pkgname=mayhem
-pkgname=${_pkgname}-git
-pkgver=1.2.3.r0.83d625d
+_pkgname="mayhem"
+pkgname="${_pkgname}-git"
+pkgver=1.2.3.r0.g83d625d
 pkgrel=1
 pkgdesc="A minimal TUI-based task tracker"
 arch=('any')
 url="https://github.com/BOTbkcd/${_pkgname}"
 license=('MIT')
-depends=('sqlite')
+depends=('glibc' 'sqlite')
 makedepends=('git' 'go')
+provides=("${_pkgname}=${pkgver%%.r*}")
+conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}"
 source=("${_pkgsrc}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgname}"
-  printf "%s" "$(git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
+  cd "${_pkgsrc}"
+  git describe --long --tags --abbrev=7 | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "${srcdir}/${_pkgsrc}"
+  [ -d "build" ] || mkdir "build"
 }
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
-  go build -o "${srcdir}/${_pkgsrc}/${_pkgname}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build -o "build/${_pkgname}" .
 }
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
-  install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm755 "build/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
