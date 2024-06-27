@@ -22,6 +22,7 @@ depends=(
 makedepends=(
   docbook-xsl
   git
+  glib2-devel
   gobject-introspection
   gtk-doc
   meson
