@@ -118,6 +118,6 @@ package_ch34xsercfg-git() {
     cd "$srcdir/${pkgbase}/demo/param_config"
 
     gcc ch34x_demo_param_config.c -lch34xcfg -lch343 -lch9344 -o ch34xsercfg
-    install -Dm644 ch34xsercfg -t "${pkgdir}/usr/bin/"
+    install -Dm755 ch34xsercfg -t "${pkgdir}/usr/bin/"
 
 }
