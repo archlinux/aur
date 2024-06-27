@@ -1,13 +1,13 @@
 pkgbase = opencommit
-	pkgdesc = Auto-generate impressive commits with AI in 1 second
-	pkgver = 3.0.4
+	pkgdesc = Auto-generate meaningful commits in a second
+	pkgver = 3.0.16
 	pkgrel = 1
 	url = https://github.com/di-sukharev/opencommit
 	arch = x86_64
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	source = https://registry.npmjs.org/opencommit/-/opencommit-3.0.4.tgz
-	sha256sums = b8e937da3dfa7366aff05b425a6c006cc0e10b77e9aec35471ed39e6554b04da
+	source = https://registry.npmjs.org/opencommit/-/opencommit-3.0.16.tgz
+	sha256sums = 874c928b95209e5652c10d82e493f591a39a5c5f22068742ab2bae8f5bb85c3c
 
 pkgname = opencommit
