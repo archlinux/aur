@@ -1,7 +1,8 @@
 # Maintainer: _ <_@_._>
 
 pkgname=riichi-city-bin
-pkgver=2.1.3
+pkgver=2.1.4
+_pkgver_suffix=._1
 pkgrel=1
 pkgdesc="Competitive urban-style Japanese mahjong platform"
 arch=('x86_64')
@@ -13,12 +14,12 @@ depends=('libsecret')
 install="${pkgname}.install"
 source=("riichi-city.desktop"
         "icon.png::https://www.mahjong-jp.com/static/img/tool/download/role11/awaken_5.png"
-        "riichi-city-bin-${pkgver}.zip::https://d3qgi0t347dz44.cloudfront.net/release/linuxpack/default_prod_Linux_${pkgver}.zip"
+        "riichi-city-bin-${pkgver}.zip::https://d3qgi0t347dz44.cloudfront.net/release/linuxpack/default_prod_Linux_${pkgver}${_pkgver_suffix}.zip"
         "riichi-city-terms.pdf"
         "riichi-city-bin.install")
 sha256sums=('4f8204227f3f7548a277df299b634dc5e7e5dba4de5742c04abb5abaf49dc720'
             '796cbe29af70f4b5067cbd224b66f717d910c6102addae526afc880baebf9a61'
-            '60d20dfb9dbe80600bb9ce00a03bd6d3c1ff15e051b26b0450b8c3b889abdc4a'
+            '4c5f015e0a6d8632d21bb8e214132e8c1cf29164b9d108959e66aba380b6f132'
             'd1efb5dec4c56b1fd2d89b966e0096a2817767c3884a499ae33f116ab5f78fd5'
             '5bde9d74e3d6137475f8acf3d55fe938dca78aecf45797af67b84ab0283c4f29')
 
@@ -29,7 +30,7 @@ package() {
 
     basedir="${pkgdir}/opt/riichi-city/"
     install -d "${basedir}" "${pkgdir}/usr/bin"
-    cd "${srcdir}/default_prod_Linux_${pkgver}"
+    cd "${srcdir}/default_prod_Linux_${pkgver}${_pkgver_suffix}"
     cp -a "Mahjong-JP_Data" "${basedir}/"
     install -Dm755 Mahjong-JP.x86_64 "${basedir}/Mahjong-JP"
     ln -s "/opt/riichi-city/Mahjong-JP" "${pkgdir}/usr/bin/riichi-city"
