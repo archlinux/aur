@@ -22,6 +22,6 @@ pkgbase = xfce4-power-manager-devel
 	provides = xfce4-power-manager=4.19.3
 	conflicts = xfce4-power-manager
 	source = https://archive.xfce.org/src/xfce/xfce4-power-manager/4.19/xfce4-power-manager-4.19.3.tar.bz2
-	sha256sums = 2ab6ef1f6e63401b13aa78a70c709a76e6f5dea5e89c3022519f4135bb273170
+	sha256sums = 32cc96dcfb49bff03a60f4cc68fed3419fcabf4aeffd73633e900e98340e350c
 
 pkgname = xfce4-power-manager-devel

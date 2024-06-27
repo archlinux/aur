@@ -19,7 +19,7 @@ optdepends=('xfce4-panel: Xfce panel plugin support')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("https://archive.xfce.org/src/xfce/xfce4-power-manager/${pkgver%.*}/xfce4-power-manager-${pkgver}.tar.bz2")
-sha256sums=('2ab6ef1f6e63401b13aa78a70c709a76e6f5dea5e89c3022519f4135bb273170')
+sha256sums=('32cc96dcfb49bff03a60f4cc68fed3419fcabf4aeffd73633e900e98340e350c')
 
 build() {
   cd "${_pkgname}-${pkgver}"
