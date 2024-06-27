@@ -1,68 +1,108 @@
-# Maintainer: Alynx Zhou <alynx.zhou@gmail.com>
-pkgname=gyroflow
-# Hyphens are not allowed in `pkgver`.
-_pkgver=1.5.2
-pkgver=${_pkgver//-/_}
+# Maintainer:
+# Contributor: Alynx Zhou <alynx.zhou@gmail.com>
+
+## links
+# https://gyroflow.xyz
+# https://github.com/gyroflow/gyroflow
+
+_pkgname="gyroflow"
+pkgname="$_pkgname"
+pkgver=1.5.4
 pkgrel=1
 pkgdesc="Video stabilization using gyroscope data"
+url="https://github.com/gyroflow/gyroflow"
+license=("GPL-3.0-or-later")
 arch=("x86_64")
-url="https://gyroflow.xyz/"
-license=("GPL3")
-depends=("libc++" "qt6-base" "qt6-quick3d" "qt6-declarative" "qt6-3d" "pulseaudio" "libxkbcommon" "opencv" "opencl-driver" "ocl-icd" "vulkan-driver" "libva" "ffmpeg")
-makedepends=("cargo" "opencl-headers")
-source=("https://github.com/${pkgname}/${pkgname}/archive/refs/tags/v${_pkgver}.tar.gz"
-        "gyroflow.desktop"
-        "gyroflow-fix-opencv-4-8.patch")
-sha512sums=('13a89648586294563ebeb8bdb1f493ec21b5102fd0d9f43596dcb3252593fe305c7c1fd442681e798c8ab72dbbcebfa80e556f1c3cdb38bc9b0074392d1cc747'
-            '03279c2568350619f1cbdd88960e77773f55bafa4da81de4fb9276743fa66ff11edd0149af9caae7ecba3afa3b8704217552634973373aaaf98f20f64fa95a84'
-	    'e277d0aaf3851d474c16ac3e0a615deb9e911d8245ae6f3692e8b32f5ff412b9528ddb6377066760ce18695be819b529e596fdc885ca67ee88931ace1abf54d6')
+
+depends=(
+  'ffmpeg'
+  'libc++'
+  'ocl-icd'
+  'opencv'
+  'qt6-declarative'
+)
+makedepends=(
+  'cargo'
+  'clang'
+  'git'
+  'opencl-headers'
+  'p7zip'
+)
+optdepends=(
+  'opencl-driver: OpenCL driver for GPU accelerated stabilization'
+  'libva-mesa-driver: VAAPI video acceleration for NVIDIA and AMD GPU'
+  'intel-media-driver: VAAPI video acceleration for Intel GPU'
+)
+
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
+
+options=(!lto)
+
+_commit=d6622f281fc72e8b68d5a5db9dacef49f7331678 # 1.5.4.r283
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git#commit=$_commit")
+sha256sums=('SKIP')
 
 prepare() {
-	cd "${pkgname}-${_pkgver}"
+  [ ! -e "$_pkgsrc/.cargo/config.toml" ] \
+    && [ -e "$_pkgsrc/.cargo/config" ] \
+    && mv "$_pkgsrc/.cargo/config" "$_pkgsrc/.cargo/config.toml"
 
-	patch --forward --strip=1 --input="${srcdir}/gyroflow-fix-opencv-4-8.patch"
+  export RUSTUP_TOOLCHAIN=stable
 
-	cargo update
-	cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
+  cd "$_pkgsrc"
+  cargo fetch --target "${CARCH}-unknown-linux-gnu"
 }
 
 build() {
-	cd "${pkgname}-${_pkgver}"
+  export QMAKE="/usr/bin/qmake6"
 
-	# Currently Arch has both qt5 and qt6, and `/usr/bin/qmake` is qt5, this
-	# package needs qt6.
-	export QMAKE="/usr/bin/qmake6"
-	# Use system libraries.
-	export FFMPEG_DIR="/usr"
-	# Since 9eecb6c1ee89ea5d137758c5ada45e1c5895e636, if OPENCV_LINK_PATHS
-	# does not contain `vcpkg`, it will dynamically link to system opencv.
-	export OPENCV_LINK_PATHS="/usr"
-	# See <https://github.com/gyroflow/gyroflow/blob/master/__env-linux.sh>.
-	# But I need to add `opencv_dnn` to build it.
-	export OPENCV_LINK_LIBS="opencv_core,opencv_calib3d,opencv_features2d,opencv_imgproc,opencv_video,opencv_flann,opencv_dnn"
-	export RUSTUP_TOOLCHAIN=stable
-	export CARGO_TARGET_DIR=target
-	cargo build --frozen --release --all-features
+  # Use system libraries
+  export FFMPEG_DIR="/usr"
+  export OPENCV_LINK_PATHS="/usr"
+  export OPENCV_LINK_LIBS="opencv_core,opencv_calib3d,opencv_features2d,opencv_imgproc,opencv_video,opencv_flann,opencv_dnn"
+
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+
+  cd "$_pkgsrc"
+  cargo build --frozen --release --all-features
 }
 
-# It seems that runing tests will rebuild program again...
-# check() {
-# 	cd "${pkgname}-${_pkgver}"
-#
-# 	export RUSTUP_TOOLCHAIN=stable
-# 	cargo test --frozen --all-features
-# }
-
 package() {
-	cd "${pkgname}-${_pkgver}"
+  # program files
+  install -Dm755 "$_pkgsrc/target/release/$_pkgname" "$pkgdir/opt/$_pkgname/$_pkgname"
+  install -Dm755 "$_pkgsrc/target/release/libmdk.so.0" -t "$pkgdir/opt/$_pkgname/"
 
-	# Gyroflow currently has no compiling options for custom resource path,
-	# so I have to install it into `/opt` to put it together with camera
-	# presets.
-	install -Dm0755 "target/release/${pkgname}" "${pkgdir}/opt/${pkgname}/${pkgname}"
-	# I can't find any existing package for this file.
-	install -Dm0755 "target/release/libmdk.so.0" "${pkgdir}/opt/${pkgname}/libmdk.so.0"
-	cp -a "resources/camera_presets" "${pkgdir}/opt/${pkgname}"
-	install -Dm0644 "resources/icon.svg" "${pkgdir}/usr/share/pixmaps/${pkgname}.svg"
-	install -Dm0644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  # camera presets
+  cp -a "$_pkgsrc/resources/camera_presets" "$pkgdir/opt/$_pkgname"
+
+  # scripts
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << END
+#!/usr/bin/env sh
+export LD_LIBRARY_PATH="/opt/$_pkgname"
+exec /opt/$_pkgname/$_pkgname
+END
+
+  # desktop file
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
+[Desktop Entry]
+Type=Application
+Name=${_pkgname^}
+Comment=$pkgdesc
+Exec=$_pkgname %u
+Icon=$_pkgname
+Terminal=false
+StartupNotify=true
+Categories=Graphics;Photography;AudioVideo;
+MimeType=video/mp4;video/mpeg;
+END
+
+  # icon
+  install -Dm644 "$_pkgsrc/resources/icon.svg" "$pkgdir/usr/share/pixmaps/$_pkgname.svg"
+
+  # permissions
+  chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }
