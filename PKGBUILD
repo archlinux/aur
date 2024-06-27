@@ -1,15 +1,14 @@
 pkgname=lsp-ai
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A language server that performs completion using large language models (LLMs)'
 arch=('x86_64')
 license=('MIT')
 url='https://github.com/SilasMarvin/lsp-ai'
 source=("git+$url.git#tag=v0.3.0")
+depends=(gcc-libs)
 makedepends=(base-devel cargo)
 sha1sums=('6bc8bedfa1f10daf7e1fd1bc2f7b015be3752773')
-
-options=(!lto)
 
 pkgver() {
 	cd lsp-ai
@@ -18,11 +17,17 @@ pkgver() {
 
 prepare() {
 	cd lsp-ai
-	cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+	cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
 	cd lsp-ai
+
+	export RUST_MIN_STACK=16777216
+	export CFLAGS+=' -ffat-lto-objects'
+	export CXXFLAGS+=' -ffat-lto-objects'
+	export RUSTFLAGS+=" --remap-path-prefix $PWD=/"
+
 	cargo build --frozen --release --target-dir target
 }
 
