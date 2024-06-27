@@ -1,7 +1,7 @@
 # Maintainer: leo <douglarek at gmail dot com>
 _name=dae
 pkgname=$_name-git
-pkgver=0.6.0.r5.ged50de2
+pkgver=0.7.0rc1.r5.g64ebfea
 pkgrel=1
 pkgdesc="A Linux lightweight and high-performance transparent proxy solution based on eBPF."
 arch=('x86_64' 'aarch64')
@@ -37,9 +37,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/$_name"
-	export GOFLAGS="-buildmode=pie -trimpath -modcacherw"
-	export CFLAGS="-fno-stack-protector"
-	make VERSION="${pkgver}"
+	BUILD_ARGS="-buildmode=pie -modcacherw" CFLAGS="-fno-stack-protector" make VERSION="${pkgver}"
 }
 
 package() {
