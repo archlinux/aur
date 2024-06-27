@@ -1,0 +1,13 @@
+pkgbase = ollama-copilot-git
+	pkgdesc = Proxy that allows you to use ollama as a copilot like Github copilot.
+	pkgver = 0.1.r2.ad5a8c4
+	pkgrel = 1
+	url = https://github.com/bernardo-bruning/ollama-copilot
+	arch = any
+	makedepends = git
+	makedepends = go-pie
+	depends = glibc
+	source = ollama-copilot::git+https://github.com/bernardo-bruning/ollama-copilot
+	md5sums = SKIP
+
+pkgname = ollama-copilot-git
