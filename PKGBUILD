@@ -18,10 +18,10 @@
 ###############################################################################
 _phpbase="81"
 _suffix=""
-pkgver="8.1.28"
+pkgver="8.1.29"
 pkgrel="1"
 pkgbase="php81"
-pkgdesc="PHP 8.1.28 compiled as to not conflict with mainline php"
+pkgdesc="PHP 8.1.29 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1 "
 _build_apache_cfg="etc/httpd/conf/extra"
 _build_bundled_gd="0"
@@ -133,6 +133,7 @@ source=(
     "php-makefile-patcher.php"
     "php-apache.conf"
     "https://php.net/distributions/php-${pkgver}.tar.xz"
+    "libxml-21200-php-8.1.patch"
     "debian-php-8.1.patch"
     "php-phpinfo.patch"
     "timezonedb-guess.patch"
@@ -200,6 +201,7 @@ makedepends=(
 arch=(
 )
 _patches=(
+    "libxml-21200-php-8.1.patch"
     "debian-php-8.1.patch"
     "php-phpinfo.patch"
     "timezonedb-guess.patch"
@@ -212,20 +214,20 @@ _sapi_depends=(
     "argon2"
 )
 _ext_depends_snmp=(
-    "php81=8.1.28"
+    "php81=8.1.29"
     "net-snmp"
     "openssl"
 )
 _ext_depends_ftp=(
-    "php81=8.1.28"
+    "php81=8.1.29"
     "openssl"
 )
 _ext_depends_intl=(
-    "php81=8.1.28"
+    "php81=8.1.29"
     "icu"
 )
 _ext_depends_imap=(
-    "php81=8.1.28"
+    "php81=8.1.29"
     "pam"
     "krb5"
     "c-client"
@@ -233,45 +235,45 @@ _ext_depends_imap=(
     "openssl"
 )
 _ext_depends_gd=(
-    "php81=8.1.28"
+    "php81=8.1.29"
     "gd"
 )
 _ext_depends_mysql=(
-    "php81=8.1.28"
-    "php81-pdo=8.1.28"
-    "php81-openssl=8.1.28"
+    "php81=8.1.29"
+    "php81-pdo=8.1.29"
+    "php81-openssl=8.1.29"
 )
 _ext_depends_dba=(
-    "php81=8.1.28"
+    "php81=8.1.29"
     "db5.3"
     "lmdb"
 )
 _ext_depends_odbc=(
-    "php81=8.1.28"
+    "php81=8.1.29"
     "unixodbc"
-    "php81-pdo=8.1.28"
+    "php81-pdo=8.1.29"
 )
 _ext_depends_pgsql=(
-    "php81=8.1.28"
+    "php81=8.1.29"
     "postgresql-libs"
-    "php81-pdo=8.1.28"
+    "php81-pdo=8.1.29"
 )
 _ext_depends_firebird=(
-    "php81=8.1.28"
+    "php81=8.1.29"
     "libfbclient"
-    "php81-pdo=8.1.28"
+    "php81-pdo=8.1.29"
 )
 _ext_depends_sqlite=(
-    "php81=8.1.28"
+    "php81=8.1.29"
     "sqlite"
-    "php81-pdo=8.1.28"
+    "php81-pdo=8.1.29"
 )
 _ext_depends_mbstring=(
-    "php81=8.1.28"
+    "php81=8.1.29"
     "oniguruma"
 )
 _ext_depends_openssl=(
-    "php81=8.1.28"
+    "php81=8.1.29"
     "krb5"
     "e2fsprogs"
     "openssl"
@@ -503,8 +505,8 @@ _build_sapi() {
 # BUILD them all
 ################################################################################
 build() {
-    export CFLAGS="${CFLAGS} -fPIC"
-    export CXXFLAGS="${CXXFLAGS} -fPIC"
+    export CFLAGS="${CFLAGS} -fPIC -Wno-error=incompatible-pointer-types"
+    export CXXFLAGS="${CXXFLAGS} -fPIC -Wno-error=incompatible-pointer-types -std=c++17"
     export EXTENSION_DIR="/usr/lib/${pkgbase}/modules"
     if ((_build_openssl_v10_patch)); then
         export PHP_OPENSSL_DIR="/usr/lib/openssl-1.0"
@@ -1531,7 +1533,8 @@ sha256sums=('e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b'
             '0b7e98dca9c996ec10cb9b3f6296bb7547c68797fd5f35006fdfd3e97700672d'
             'ba72fc64f77822755a469314160d5889d5298f4eb5758dd7939dac9b811afe52'
             '6d0ad9becb5470ce8e5929d7d45660b0f32579038978496317544c5310281a91'
-            '95d0b2e9466108fd750dab5c30a09e5c67f5ad2cb3b1ffb3625a038a755ad080'
+            '288884af60581d4284baba2ace9ca6d646f72facbd3e3c2dd2acc7fe6f903536'
+            '69feec54fce25351b3c2a431a6e3b608ef11287b54f2289412f46106a17feb73'
             'd1778f038dd742400707307d6845c1dc40ea1962ff9676f880be88a5ebdd8577'
             '558e780e93dfa861a366c49b4d156d8fc43f17898f001ae6033ec63c33d5d41c'
             '40bcc1e5058602302198d0925e431495391d8469499593af477f59d84d32f764'
