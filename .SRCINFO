@@ -1,0 +1,16 @@
+pkgbase = acme-upstream-git
+	pkgdesc = Cross-assembler for MOS 6502, 6510, 4502, 65816, 65C02, 65CE02, R65C02, W65C02 and C64DTV2 CPUs - SourceForge upstream repo
+	pkgver = r376.bc5bc2a
+	pkgrel = 1
+	url = https://sourceforge.net/projects/acme-crossass/
+	arch = i686
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = git
+	provides = acme
+	conflicts = acme
+	conflicts = acme-git
+	source = git+https://github.com/uffejakobsen/acme.git
+	sha256sums = SKIP
+
+pkgname = acme-upstream-git
