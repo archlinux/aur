@@ -1,7 +1,7 @@
 # Maintainer: Nriver <6752679+Nriver@users.noreply.github.com>
 pkgname="zed-cn-bin"
 pkgver=0.141.2_20240627
-pkgrel=1
+pkgrel=2
 pkgdesc="Zed editor Chinese version"
 arch=('x86_64')
 url="https://github.com/Nriver/zed-translation"

@@ -2,7 +2,7 @@
 Name=Zed 中文版
 GenericName=编辑器应用
 Comment=Zed 中文版, 高性能多人代码编辑器, 由Atom和Tree-sitter的创造者开发
-Exec=zed
+Exec=zed-cn
 Icon=/usr/share/icons/zed-cn.png
 Terminal=false
 Type=Application
