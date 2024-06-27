@@ -19,7 +19,7 @@
 _phpbase="80"
 _suffix=""
 pkgver="8.0.30"
-pkgrel="1"
+pkgrel="2"
 pkgbase="php80"
 pkgdesc="PHP 8.0.30 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1 "
@@ -134,6 +134,8 @@ source=(
     "php-apache.conf"
     "https://php.net/distributions/php-${pkgver}.tar.xz"
     "php-libxml.patch"
+    "libxml-21200-php-8.0.patch"
+    "icu-74-php-7.4.patch"
     "debian-php-8.0.patch"
     "php-phpinfo.patch"
     "timezonedb-guess.patch"
@@ -202,6 +204,8 @@ arch=(
 )
 _patches=(
     "php-libxml.patch"
+    "libxml-21200-php-8.0.patch"
+    "icu-74-php-7.4.patch"
     "debian-php-8.0.patch"
     "php-phpinfo.patch"
     "timezonedb-guess.patch"
@@ -505,8 +509,8 @@ _build_sapi() {
 # BUILD them all
 ################################################################################
 build() {
-    export CFLAGS="${CFLAGS} -fPIC"
-    export CXXFLAGS="${CXXFLAGS} -fPIC"
+    export CFLAGS="${CFLAGS} -fPIC -Wno-error=incompatible-pointer-types"
+    export CXXFLAGS="${CXXFLAGS} -fPIC -Wno-error=incompatible-pointer-types -std=c++17"
     export EXTENSION_DIR="/usr/lib/${pkgbase}/modules"
     if ((_build_openssl_v10_patch)); then
         export PHP_OPENSSL_DIR="/usr/lib/openssl-1.0"
@@ -851,7 +855,7 @@ package_php80-cgi() {
 package_php80-apache() {
     _sapi="apache"
     _build_mod_php_so="libphp${_suffix_so}.so"
-    _build_mod_php_module="php_module${_suffix_so}"
+    _build_mod_php_module="php${_suffix_so}_module"
     _build_build_php_script_name="php${_suffix_so}-script"
     _apache_module_conf="${pkgbase}-module.conf"
     pkgdesc="Apache SAPI for ${pkgbase}"
@@ -1535,6 +1539,8 @@ sha256sums=('e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b'
             '6d0ad9becb5470ce8e5929d7d45660b0f32579038978496317544c5310281a91'
             '216ab305737a5d392107112d618a755dc5df42058226f1670e9db90e77d777d9'
             'e757f84d2d72ea39259450c32f3a83c72262da4294152ae3e9fbc0cada622bba'
+            '69feec54fce25351b3c2a431a6e3b608ef11287b54f2289412f46106a17feb73'
+            'eed71f5568665ad4353d83b696abf0e52c8202c6df7b32923595ac1969e2b5fe'
             'c9ab253399e58e24cf23cda5edd72a331b7b9aa9b2ac217b0ee04706cc67e93e'
             '558e780e93dfa861a366c49b4d156d8fc43f17898f001ae6033ec63c33d5d41c'
             '40bcc1e5058602302198d0925e431495391d8469499593af477f59d84d32f764'
