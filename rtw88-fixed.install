@@ -1,0 +1,15 @@
+post_install() {
+  cat<<EOF
+
+  This package blacklists in-kernel rtw88_* modules in a .conf under
+  /etc/modprobe.d, but you should unload conflicting ones to use this driver
+  right now:
+
+  # rmmod rtw88_...
+  And load the appropriate driver:
+  # modprobe rtw_...
+
+  See also: https://github.com/lwfinger/rtw88#important-information
+
+EOF
+}
