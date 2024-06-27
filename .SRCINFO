@@ -1,6 +1,6 @@
 pkgbase = qmmp-psf-git
 	pkgdesc = A plugin for Qmmp (2.1.0 or greater) which supports PSF file. Git version.
-	pkgver = r32.06f2d36
+	pkgver = r36.12e0d3e
 	pkgrel = 1
 	epoch = 0
 	url = https://github.com/TTK-qmmp/qmmp-psf
