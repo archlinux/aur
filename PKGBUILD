@@ -1,15 +1,15 @@
 # Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
 
-_pkgname=envman
-pkgname=${_pkgname}-bin
+_pkgname="envman"
+pkgname="${_pkgname}-bin"
 pkgver=2.4.3
 pkgrel=1
 pkgdesc="Manage Environment Variable collections"
 arch=('x86_64' 'aarch64')
 url="https://github.com/bitrise-io/${_pkgname}"
 license=('MIT')
-conflicts=("${_pkgname}")
 provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
 source=("${url}/raw/${pkgver}/README.md"
         "${url}/raw/${pkgver}/LICENSE")
