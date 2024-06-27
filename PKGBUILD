@@ -3,7 +3,7 @@
 
 pkgname='routeros-upgrader-bin'
 pkgver=0.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Mass-Upgrade Mikrotik RouterOS devices synchronized'
 url='https://github.com/Marco98/routeros-upgrader'
 arch=('aarch64' 'x86_64')
