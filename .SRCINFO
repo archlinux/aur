@@ -1,0 +1,31 @@
+pkgbase = ch9344ser-git
+	pkgdesc = This driver supports USB to quad serial ports chip ch9344 and USB to octal serial ports chip ch348.
+	pkgver = r36.c9640d2
+	pkgrel = 1
+	url = https://github.com/WCHSoftGroup/ch9344ser_linux
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = git
+	depends = dkms
+	depends = glibc
+	options = !strip
+	options = !debug
+	source = ch9344ser-git::git+https://github.com/WCHSoftGroup/ch9344ser_linux.git
+	sha256sums = SKIP
+
+pkgname = ch9344ser-dkms-git
+	pkgdesc = This driver supports USB to quad serial ports chip ch9344 and USB to octal serial ports chip ch348. (dkms).
+	arch = any
+	depends = dkms
+	optdepends = linux-headers: build the module against Arch kernel
+	optdepends = linux-ck-headers: build the module against Linux-ck kernel
+	optdepends = linux-lts-headers: build the module against LTS Arch kernel
+	provides = ch9344ser-dkms
+	conflicts = ch9344ser-dkms
+
+pkgname = libch9344ser-git
+	pkgdesc = This driver supports USB to quad serial ports chip ch9344 and USB to octal serial ports chip ch348. (dynamic lib).
+	arch = x86_64
+	depends = glibc
+	provides = libch9344ser
+	conflicts = libch9344ser
