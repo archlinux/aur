@@ -72,9 +72,9 @@ _subarch=40
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=6.1
-_minor=94
-_rtpatchver=33
-_clr=${_major}.92-155
+_minor=95
+_rtpatchver=34
+_clr=${_major}.92-156
 _gcc_more_v='20240221.2'
 _srcname=linux-${_major}.${_minor}
 pkgbase=linux-clear-preempt-rt
@@ -334,9 +334,9 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('38ea71ad22ae0187fd8ee5ff879b33b0d9bd58161ac9a3e868ae0b4c66b95369'
+sha256sums=('2960f0aa1d75665f39114ad3c272a999c54796e553a2355d0379f5188d14dfbd'
             'SKIP'
-            '59fe14dee6478dae0caf496a1df57d55c5170c7a581513ac50a67da40d7f5c79'
+            '3e1aa577bb3326e0f66e59a0b5b3dee3d7bb9112cdeddc9d2e799f631a92e9cf'
             'SKIP'
             '1d3ac3e581cbc5108f882fcdc75d74f7f069654c71bad65febe5ba15a7a3a14f')
 
