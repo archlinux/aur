@@ -5,6 +5,7 @@ pkgbase = envman
 	url = https://github.com/bitrise-io/envman
 	arch = any
 	license = MIT
+	makedepends = go
 	depends = glibc
 	source = envman-2.4.3.tar.gz::https://github.com/bitrise-io/envman/archive/refs/tags/2.4.3.tar.gz
 	sha256sums = 842e54bebfcfc64b01888915365f67d8a3202653048d25d1b52fdb71d168c3cf

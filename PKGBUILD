@@ -9,13 +9,18 @@ arch=('any')
 url="https://github.com/bitrise-io/${pkgname}"
 license=('MIT')
 depends=('glibc')
+makedepends=('go')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('842e54bebfcfc64b01888915365f67d8a3202653048d25d1b52fdb71d168c3cf')
 
-build() {
+prepare() {
   cd "${srcdir}/${_pkgsrc}"
   [ -d "build" ] || mkdir "build"
+}
+
+build() {
+  cd "${srcdir}/${_pkgsrc}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
