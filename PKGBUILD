@@ -1,7 +1,7 @@
 # Maintainer: Josef Zoller <josef@walterzollerpiano.com>
 pkgname=zed-preview-bin
 pkgver=0.142.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter"
 arch=('x86_64' 'aarch64')
 url="https://zed.dev"
@@ -13,7 +13,7 @@ depends=('alsa-lib' 'libasound.so'
          'libxcb'
          'libxkbcommon'
          'libxkbcommon-x11'
-         'openssl'
+         'openssl' 'libssl.so'
          'sqlite'
          'vulkan-driver'
          'vulkan-icd-loader'
