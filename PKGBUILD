@@ -4,7 +4,7 @@ pkgname="${_appname}-todo-desktop-bin"
 _pkgname=Meteor
 pkgver=2.0.1
 _electronversion=22
-pkgrel=4
+pkgrel=5
 pkgdesc="A meter based ToDo List. used Electron-Vue"
 arch=("x86_64")
 url="https://hideko.f5.si/project/meteor.html"
@@ -19,19 +19,24 @@ depends=(
 makedepends=(
     'gendesk'
 )
+options=(
+    '!strip'
+    '!emptydirs'
+)
 source=(
     "${pkgname%-bin}-${pkgver}.zip::${_ghurl}/releases/download/${pkgver}/${_pkgname}-linux-x64.zip"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('890bc15a4b63ced7fe71f0e18936280de582960ecde0bb91d62dfcd7544a9394'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --categories="Utility" --pkgname="${_appname}-todo-desktop-bin" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
+    gendesk -q -f -n --pkgdesc="${pkgdesc}" --categories="Utility" --pkgname="${pkgname%-bin}" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
