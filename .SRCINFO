@@ -1,0 +1,13 @@
+pkgbase = tage
+	pkgdesc = Turn based empire warfare in the terminal
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/jacopograndi/tage
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = tage-0.1.tar.gz::https://github.com/jacopograndi/tage/archive/v0.1.tar.gz
+	sha512sums = 5dedaf52240b9ac478c9af8a8ab5751d830062ae45365af199d9c28ddd9685e5ba5f32b9ed2141f93d607db17f8aa3e12bcab4f4d7f737b4eb2c3be16482e067
+
+pkgname = tage
