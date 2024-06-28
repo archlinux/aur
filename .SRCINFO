@@ -1,19 +1,22 @@
 pkgbase = hpp-statistics-git
 	pkgdesc = This package is part of the HPP software and provides a few tools for basic statistics. Devel branch.
-	pkgver = 1.1.r58.fe1a714
+	pkgver = 5.0.0.r174.3114940
 	pkgrel = 1
 	url = https://github.com/humanoid-path-planner/hpp-statistics
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = BSD-2-Clause
 	makedepends = cmake
 	makedepends = git
-	depends = hpp-util-git
-	optdepends = doxygen
+	makedepends = doxygen
+	makedepends = boost
+	depends = boost-libs
+	depends = gcc-libs
+	depends = glibc
+	depends = hpp-util
 	provides = hpp-statistics
 	conflicts = hpp-statistics
-	source = hpp-statistics::git://github.com/humanoid-path-planner/hpp-statistics.git
-	md5sums = SKIP
+	source = hpp-statistics::git+https://github.com/humanoid-path-planner/hpp-statistics.git
+	sha256sums = SKIP
 
 pkgname = hpp-statistics-git
-
