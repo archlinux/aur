@@ -4,7 +4,7 @@ pkgname="live-${_pkgname}-bin"
 _appname="Live radio"
 pkgver=1.2.1
 _electronversion=23
-pkgrel=9
+pkgrel=10
 pkgdesc="An Electron application with React and TypeScript.Streaming norwegian live radio"
 arch=('x86_64')
 url="https://github.com/JesperBry/live-radio-app"
@@ -19,11 +19,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('1454aaaa2bac0e6c8167bc570884165ae68602df10c2ba2b966ef0fc560307da'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
