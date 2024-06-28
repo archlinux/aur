@@ -1,3 +1,4 @@
+/.idea/
 /pkg
 /src
 minecraft-launcher-core-node
@@ -10,4 +11,3 @@ xmcl-*.deb
 *.part
 *.part.st
 LICENSE
-/.idea/
