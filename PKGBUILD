@@ -6,7 +6,7 @@
 _pkgname=cura
 pkgname=$_pkgname-bin
 pkgver=5.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc='State-of-the-art slicer app to prepare your 3D models for your 3D printer'
 url='https://ultimaker.com/software/ultimaker-cura'
 license=('LGPL3')
@@ -50,4 +50,5 @@ package() {
   install -Dm644 squashfs-root/cura-icon.png "$pkgdir/usr/share/pixmaps/cura-icon.png"
   install -dm755 "$pkgdir/opt"
   mv squashfs-root "$pkgdir/opt/ultimaker-cura"
+  rm "$pkgdir/opt/ultimaker-cura/libwayland-client.so.0" # Use the system version of libwayland-client.so.0 so it's compatible with the latest mesa
 }

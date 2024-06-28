@@ -1,7 +1,7 @@
 pkgbase = cura-bin
 	pkgdesc = State-of-the-art slicer app to prepare your 3D models for your 3D printer
 	pkgver = 5.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ultimaker.com/software/ultimaker-cura
 	arch = x86_64
 	license = LGPL3
