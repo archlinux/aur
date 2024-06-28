@@ -2,6 +2,7 @@
 # Contributor: mstmob
 # Contributor: xiota
 # Contributor: thorou
+# Contributor: sausix
 
 _pkgname=cura
 pkgname=$_pkgname-bin
@@ -50,5 +51,5 @@ package() {
   install -Dm644 squashfs-root/cura-icon.png "$pkgdir/usr/share/pixmaps/cura-icon.png"
   install -dm755 "$pkgdir/opt"
   mv squashfs-root "$pkgdir/opt/ultimaker-cura"
-  rm "$pkgdir/opt/ultimaker-cura/libwayland-client.so.0" # Use the system version of libwayland-client.so.0 so it's compatible with the latest mesa
+  rm "$pkgdir/opt/ultimaker-cura/libwayland-client.so.0" # Use the system version of libwayland-client.so.0 so it's compatible with the latest mesa (thanks sausix)
 }
