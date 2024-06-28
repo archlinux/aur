@@ -1,19 +1,29 @@
-# Maintainer: Francesco Minnocci <ascoli dot minnocci at gmail dot com>
+# Maintainer: Echo J. <aidas957 at gmail dot com>
+# Contributor: Francesco Minnocci <ascoli dot minnocci at gmail dot com>
 # Contributor: Daniel Bermond <dbermond@archlinux.org>
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 
 pkgname=python-simpleaudio
 _pkgname=py-simple-audio
 pkgver=1.0.4
-pkgrel=5
+pkgrel=6
 pkgdesc='A simple audio playback Python extension'
 arch=('x86_64' 'aarch64')
-url='https://github.com/hamiltron/py-simple-audio/'
+url="https://github.com/hamiltron/${_pkgname}"
 license=('MIT')
 depends=('alsa-lib' 'python')
 makedepends=('python-setuptools')
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/hamiltron/py-simple-audio/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('843f208fd9c2f644cfd5c2c6f795259c53846681fb4df662ab3e5cf2ec8aba28')
+source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
+        python312-crash-fix.patch)
+sha256sums=('843f208fd9c2f644cfd5c2c6f795259c53846681fb4df662ab3e5cf2ec8aba28'
+            'd24877c6512788b85ccc0dcdf1418aec547f048b17b7f771be958af50758fff8')
+
+prepare() {
+    cd "${_pkgname}-${pkgver}"
+
+    # Fix crash with Python 3.12+ (https://github.com/hamiltron/py-simple-audio/issues/72#issuecomment-1902610214)
+    patch --no-backup-if-mismatch -Np1 -i ../python312-crash-fix.patch
+}
 
 build() {
     cd "${_pkgname}-${pkgver}"
