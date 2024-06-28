@@ -4,7 +4,7 @@ pkgname="${_pkgname//_/-}-bin"
 _appname="Bitshares Airdrop tool"
 pkgver=0.3.31
 _electronversion=26
-pkgrel=5
+pkgrel=6
 pkgdesc="Fetch & analyse blockchain tickets. View leaderboards and user tickets. Calculate and perform provably fair airdrops."
 arch=('x86_64')
 url="https://github.com/BTS-CM/airdrop_tool"
@@ -12,7 +12,7 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}.deb"
@@ -21,18 +21,21 @@ source=(
 )
 sha256sums=('1e7ea870a92905605c2905f1193ba022e88c24d0fcc9e437b641e1bba37ced19'
             '48ecd55adc52c7a1ad9e3f699b9e2348bca9bb6797ce8ad4e9cbe38f7aa11c8a'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed "s|\"/opt/${_appname}/${_pkgname}\"|${pkgname%-bin} --no-sandbox|g;s|=${_pkgname}|=${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
     asar e "${srcdir}/opt/${_appname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    sed "42s|app.isPackaged|!app.isPackaged|g;53s|!app.isPackaged|app.isPackaged|g" -i "${srcdir}/app.asar.unpacked/dist/electron.js"
+    rm -rf "${srcdir}/app.asar.unpacked/dist/linux-"*
+    install -Dm755 -d "${srcdir}/app.asar.unpacked/dist/node_modules"
+    cp -r "${srcdir}/app.asar.unpacked/node_modules/beet-js" "${srcdir}/app.asar.unpacked/dist/node_modules"
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
 }
 package() {
