@@ -1,9 +1,9 @@
 # Maintainer: Rankyn Bass <rankyn@proton.me>
 pkgname=xivlauncher-rb
-pkgver=1.0.9.1
-pkgrel=2
+pkgver=1.1.0.1
+pkgrel=1
 epoch=2
-_tag=b8300c87d1340a20be69e6df35ddab105114aa96 # git rev-parse rb-v${pkgver}
+_tag=0794e8cefeeb460e57a6343e0d3643ae797bc9a4 # git rev-parse rb-v${pkgver}
 pkgdesc="Custom launcher for Final Fantasy XIV Online with RB Patches!"
 arch=('x86_64')
 url='https://github.com/rankynbass/XIVLauncher.Core/tree/RB-patched'
