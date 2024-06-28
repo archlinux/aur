@@ -1,0 +1,17 @@
+pkgbase = gomanagedocker-git
+	pkgdesc = A TUI tool to manage docker objects
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/ajayd-san/gomanagedocker
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	depends = docker
+	provides = gomanagedocker=1.2
+	conflicts = gomanagedocker
+	source = gomanagedocker::git+https://github.com/ajayd-san/gomanagedocker.git
+	sha256sums = SKIP
+
+pkgname = gomanagedocker-git
