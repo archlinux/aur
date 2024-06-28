@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=akuse
 _pkgname=Akuse
-pkgver=1.0.0
+pkgver=1.1.0
 _electronversion=26
 _nodeversion=20
 pkgrel=1
@@ -26,7 +26,7 @@ source=(
     "clientData.js"
     "${pkgname}.sh"
 )
-sha256sums=('d71d6e8642b5cb8e1f8a4d270b3a74a967cc560ba272aae6129542189fee49e4'
+sha256sums=('e3e0839569644ea2d5d0c9b422275147ede676be6180293a646a6082a5d0c5df'
             '091d0d9b3a06579647ed4c1989d7edff13754cec34fcdbb7fbc24529bd01ed48'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
@@ -63,8 +63,8 @@ build() {
     fi
     install -Dm644 "${srcdir}/clientData.js" -t "${srcdir}/${pkgname}.git/src/modules"
     sed "s|--linux|--dir|g" -i package.json
-    yarn install --cache-folder "${srcdir}/.yarn_cache"
-    yarn package:linux
+    NODE_ENV=development yarn install --cache-folder "${srcdir}/.yarn_cache"
+    NODE_ENV=production yarn package:linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
