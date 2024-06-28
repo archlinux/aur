@@ -2,49 +2,36 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Syboxez Blank <@Syboxez:matrix.org>
 
+_pkgtype="-git"
+
 _gitname="gtk"
-_pkgbase="gtk4"
-_pkgname=(
-  gtk4
-  gtk4-demos
-  gtk4-docs
-  gtk-update-icon-cache
-)
-
-pkgbase="$_pkgbase-git"
-for i in ${_pkgname[@]} ; do
-  pkgname+=("$i-git")
-done
-
-pkgver=4.13.6.1.r9.gee8a8007
+_pkgname="gtk4"
+pkgbase="$_pkgname${_pkgtype:-}"
+pkgver=4.15.1.r336.gf4509a6
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit"
 url="https://gitlab.gnome.org/GNOME/gtk"
-arch=(x86_64)
-license=(LGPL)
+license=('LGPL-2.1-or-later')
+arch=('x86_64')
+
 depends=(
-  adwaita-icon-theme
   cairo
-  cantarell-fonts
   dconf
-  desktop-file-utils
   fontconfig
   fribidi
   gdk-pixbuf2
   glib2
   graphene
   gst-plugins-bad-libs
+  gst-plugins-base-libs
+  gstreamer
   harfbuzz
-  iso-codes
   libcloudproviders
   libcolord
   libcups
-  libegl
   libepoxy
-  libgl
   libjpeg
   libpng
-  librsvg
   libtiff
   libx11
   libxcursor
@@ -55,19 +42,17 @@ depends=(
   libxinerama
   libxkbcommon
   libxrandr
-  libxrender
   pango
-  shared-mime-info
   tracker3
+  vulkan-icd-loader
   wayland
 )
 makedepends=(
-  docbook-xsl
-  gi-docgen
   git
+  glib2-devel
   gobject-introspection
   meson
-  python-docutils
+  python-docutils # rst2man
   python-gobject
   sassc
   shaderc
@@ -76,8 +61,9 @@ makedepends=(
 )
 checkdepends=(weston)
 
+_pkgsrc="$_gitname"
 source=(
-  "$_gitname"::"git+https://gitlab.gnome.org/GNOME/gtk.git"
+  "$_pkgsrc"::"git+https://gitlab.gnome.org/GNOME/gtk.git"
   gtk-update-icon-cache.{hook,script}
   gtk4-querymodules.{hook,script}
 )
@@ -90,8 +76,13 @@ sha256sums=(
 )
 
 pkgver() {
-  cd "$srcdir/$_gitname"
-  git describe --long --tags --abbrev=8 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  sed -E -e 's&^(\s*can_use_objcopy_for_resources) = \S+$&\1 = false&' \
+    -i "$_pkgsrc/meson.build"
 }
 
 build() {
@@ -99,13 +90,12 @@ build() {
     -D broadway-backend=true
     -D cloudproviders=enabled
     -D colord=enabled
-    -D gtk_doc=true
     -D man-pages=true
     -D tracker=enabled
   )
 
   CFLAGS+=" -DG_DISABLE_CAST_CHECKS"
-  arch-meson "$_gitname" build "${meson_options[@]}"
+  arch-meson "$_pkgsrc" build "${meson_options[@]}"
   meson compile -C build
 }
 
@@ -122,7 +112,8 @@ check() (
 )
 
 _pick() {
-  local p="$1" f d; shift
+  local p="$1" f d
+  shift
   for f; do
     d="$srcdir/$p/${f#$pkgdir/}"
     mkdir -p "$(dirname "$d")"
@@ -131,7 +122,7 @@ _pick() {
   done
 }
 
-package_gtk4-git() {
+_package_gtk4() {
   depends+=(gtk-update-icon-cache)
   optdepends=('evince: Default print preview command')
   provides+=(
@@ -142,7 +133,7 @@ package_gtk4-git() {
 
   meson install -C build --destdir "$pkgdir"
 
-  install -Dm644 /dev/stdin "$pkgdir/usr/share/gtk-4.0/settings.ini" <<END
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/gtk-4.0/settings.ini" << END
 [Settings]
 gtk-icon-theme-name = Adwaita
 gtk-theme-name = Adwaita
@@ -161,34 +152,12 @@ END
   _pick demo usr/share/man/man1/gtk4-{demo,demo-application,icon-browser,node-editor,widget-factory}.1
   _pick demo usr/share/metainfo/org.gtk.{Demo4,IconBrowser4,PrintEditor4,WidgetFactory4,gtk4.NodeEditor}.appdata.xml
 
-  _pick docs usr/share/doc
-
   # Built by GTK 4, shared with GTK 3
   _pick guic usr/bin/gtk4-update-icon-cache
   _pick guic usr/share/man/man1/gtk4-update-icon-cache.1
-
-
 }
 
-package_gtk4-demos-git() {
-  pkgdesc+=" (demo applications)"
-  depends=(gtk4)
-  provides+=(gtk4-demos)
-  conflicts+=(gtk4-demos)
-
-  mv demo/* "$pkgdir"
-}
-
-package_gtk4-docs-git() {
-  pkgdesc+=" (documentation)"
-  depends=()
-  provides+=(gtk4-docs)
-  conflicts+=(gtk4-docs)
-
-  mv docs/* "$pkgdir"
-}
-
-package_gtk-update-icon-cache-git() {
+_package_gtk-update-icon-cache() {
   pkgdesc="GTK icon cache updater"
   depends=(gdk-pixbuf2 librsvg hicolor-icon-theme)
   provides+=(gtk-update-icon-cache)
@@ -202,4 +171,14 @@ package_gtk-update-icon-cache-git() {
   install -D gtk-update-icon-cache.script "$pkgdir/usr/share/libalpm/scripts/gtk-update-icon-cache"
 }
 
-# vim:set sw=2 sts=-1 et:
+pkgname=(
+  "gtk4${_pkgtype:-}"
+  "gtk-update-icon-cache${_pkgtype:-}"
+)
+
+for _p in "${pkgname[@]}"; do
+  eval "package_$_p() {
+    $(declare -f "_package_${_p%$_pkgtype}")
+    _package_${_p%$_pkgtype}
+  }"
+done
