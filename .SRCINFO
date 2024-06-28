@@ -1,6 +1,6 @@
 pkgbase = python-nvidia-dali
 	pkgdesc = A library containing both highly optimized building blocks and an execution engine for data pre-processing in deep learning applications
-	pkgver = 1.38.0
+	pkgver = 1.39.0
 	pkgrel = 1
 	url = https://github.com/NVIDIA/DALI
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = python-nvidia-dali
 	optdepends = python-tensorflow
 	options = !emptydirs
 	options = !lto
-	source = python-nvidia-dali::git+https://github.com/NVIDIA/DALI.git#tag=v1.38.0
-	sha512sums = c86de9d8a9c82f74d85671e9de6452fc101be748a7eb65b51482a4647f0a387385e32cebe3cc9aba9fe5ce9e9df62a398a8bc89ff2bc5698013cc74435676b6f
+	source = python-nvidia-dali::git+https://github.com/NVIDIA/DALI.git#tag=v1.39.0
+	sha512sums = 84bb27be923d2e3c62f688deb7c0f072b8630560d437eb3a741a6ea4b2a34d8a685d4c65025278223957ddfb1b57f95f2dc6a3dc5b003163eb83663f42602797
 
 pkgname = python-nvidia-dali
