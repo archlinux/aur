@@ -1,0 +1,15 @@
+pkgbase = gocatcli-git
+	pkgdesc = The command line catalog tool for your offline data
+	pkgver = 1.0.3.r0.g90d66f0
+	pkgrel = 1
+	url = https://github.com/deadc0de6/gocatcli
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	makedepends = git
+	provides = gocatcli
+	conflicts = gocatcli
+	source = git+https://github.com/deadc0de6/gocatcli.git
+	sha256sums = SKIP
+
+pkgname = gocatcli-git
