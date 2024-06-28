@@ -1,4 +1,4 @@
-pkgbase = gomphotherium-bin
+pkgbase = gomphotherium-git
 	pkgdesc = A command line Mastodon client
 	pkgver = 0.4.0.r22.g6fe7127
 	pkgrel = 1
@@ -14,4 +14,4 @@ pkgbase = gomphotherium-bin
 	source = gomphotherium::git+https://github.com/mrusme/gomphotherium.git
 	sha256sums = SKIP
 
-pkgname = gomphotherium-bin
+pkgname = gomphotherium-git

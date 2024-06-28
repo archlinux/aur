@@ -1,7 +1,7 @@
 # Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
 
 _pkgname="gomphotherium"
-pkgname="${_pkgname}-bin"
+pkgname="${_pkgname}-git"
 pkgver=0.4.0.r22.g6fe7127
 pkgrel=1
 pkgdesc="A command line Mastodon client"
