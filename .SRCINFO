@@ -1,0 +1,17 @@
+pkgbase = flow-cli-git
+	pkgdesc = A command-line interface that provides useful utilities for building Flow applications
+	pkgver = 1.20.5
+	pkgrel = 1
+	url = https://docs.onflow.org/flow-cli
+	arch = any
+	license = Apache-2.0
+	makedepends = git
+	makedepends = make
+	makedepends = go
+	depends = glibc
+	provides = flow=1.20.5
+	conflicts = flow
+	source = flow-cli::git+https://github.com/onflow/flow-cli.git
+	sha256sums = SKIP
+
+pkgname = flow-cli-git
