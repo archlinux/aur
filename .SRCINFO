@@ -1,7 +1,7 @@
 pkgbase = blockdiag
 	pkgdesc = generates block-diagram image from text
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 3
 	url = http://blockdiag.com
 	arch = any
 	license = Apache
