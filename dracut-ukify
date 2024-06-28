@@ -195,6 +195,7 @@ done
 sanity_check 0
 
 if (( update_all )); then
+  declare -A kernels=()
   for candidate in /usr/lib/modules/*; do
     [ -f "$candidate/pkgbase" ] || continue
     if read -r pkgbase &> /dev/null < "$candidate/pkgbase"; then
