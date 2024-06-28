@@ -1,45 +1,7 @@
 pkgbase = mecano
 	pkgdesc = Minimalistic typing train
 	pkgver = 0.1.0
-	pkgrel = 1
-	epoch = 2
-	arch = x86_64
-	license = apache
-	makedepends = cargo
-	depends = glibc
-	source = https://github.com/alvarojsino813/mecano/archive/refs/tags/0.1.0.tar.gz
-	sha256sums = d67278e5a83f9f087f26f4bc1657833e902b48f948ce61e48abf9fdcad025b75
-
-pkgname = mecano
-pkgbase = mecano
-	pkgdesc = Minimalistic typing train
-	pkgver = 0.1.0
 	pkgrel = 2
-	arch = x86_64
-	license = apache
-	makedepends = cargo
-	depends = glibc
-	source = https://github.com/alvarojsino813/mecano/archive/refs/tags/0.1.0.tar.gz
-	sha256sums = d67278e5a83f9f087f26f4bc1657833e902b48f948ce61e48abf9fdcad025b75
-
-pkgname = mecano
-pkgbase = mecano
-	pkgdesc = Minimalistic typing train
-	pkgver = 0.1.0
-	pkgrel = 2
-	arch = x86_64
-	license = apache
-	makedepends = cargo
-	depends = glibc
-	source = https://github.com/alvarojsino813/mecano/archive/refs/tags/0.1.0.tar.gz
-	sha256sums = d67278e5a83f9f087f26f4bc1657833e902b48f948ce61e48abf9fdcad025b75
-
-pkgname = mecano
-pkgbase = mecano
-	pkgdesc = Minimalistic typing train
-	pkgver = 0.1.0
-	pkgrel = 2
-	epoch = 2
 	arch = x86_64
 	license = apache
 	makedepends = cargo
