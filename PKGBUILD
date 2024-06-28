@@ -12,7 +12,9 @@ source=(
 license=('apache')
 
 build() {
+   cd '$pkgname-$pkgver'
    cargo build --release --locked --target-dir=target
+   cd ..
 }
 
 package() { 
