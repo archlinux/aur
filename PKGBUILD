@@ -2,7 +2,7 @@
 pkgname=salesforce2sql-bin
 pkgver=0.10.0
 _electronversion=28
-pkgrel=3
+pkgrel=4
 pkgdesc="Electron app to convert a Salesforce org's schema into a similarly shaped database."
 arch=('x86_64')
 url="https://github.com/acrosman/Salesforce2Sql"
@@ -23,12 +23,13 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('5abdb9dfc1c43bb2fa6cc6e11bc98d049051d7589d3fe123d3184284fc9ccf49'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
-        -e "s|@options@||g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
 }
 package() {
