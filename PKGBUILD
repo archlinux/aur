@@ -6,7 +6,7 @@
 
 _pkgname=thunderbird
 pkgname=thunderbird-globalmenu
-pkgver=115.11.1
+pkgver=115.12.2
 pkgrel=1
 pkgdesc="Standalone mail and news reader from mozilla.org (With appmenu patch from Ubuntu)"
 install="$_pkgname.install"
@@ -17,7 +17,6 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 depends=(
 	dbus-glib
-	botan
 	ffmpeg
 	gtk3
 	appmenu-gtk-module
@@ -71,7 +70,7 @@ validpgpkeys=(
 	# Mozilla Software Releases <release@mozilla.com>
 	# https://blog.mozilla.org/security/2023/05/11/updated-gpg-key-for-signing-firefox-releases/
 	'14F26682D0916CDD81E37B6D61B7B526D98F0353')
-sha1sums=('7f53f00de4e71912cb210c9f8c3a42076e0e1e1f'
+sha1sums=('e810e53d1c53ee2ec6fec9f543715febc752f571'
           'SKIP'
           'b3ccca02959d94ef2a5db8f140ff96a2cd9724ef'
           '559ce09fee54c849ea4da2bf881da37f5fc0cac9'
