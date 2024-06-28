@@ -4,18 +4,17 @@
 # Contributor: Roberto Carvajal <roberto@archlinux.org>
 
 pkgname=multitail
-pkgver=7.1.2
+pkgver=7.1.3
 pkgrel=1
-pkgdesc="Lets you view one or multiple files like the original tail program"
+pkgdesc='View one or multiple files like the original tail program'
 arch=('x86_64')
-license=('GPL')
+license=('MIT')
 url="https://www.vanheusden.com/multitail"
-depends=('ncurses')
+depends=('glibc' 'bash' 'ncurses' 'perl')
 makedepends=('cmake')
 backup=('etc/multitail.conf')
-#source=("https://www.vanheusden.com/multitail/${pkgname}-${pkgver}.tgz")
 source=(https://github.com/folkertvanheusden/multitail/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('c8552e10093f0690b8baef84945753c878e234d7b3d0e3ff27e509ed5515998c')
+sha256sums=('f55732781f7319e137a3ff642a347af1aaf3ed5265ed12526bdd0666d708d805')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -33,7 +32,10 @@ package() {
   DESTDIR="$pkgdir" cmake --install build
   mv "$pkgdir"/{usr/,}etc
   mv "$pkgdir"/etc/multitail.conf{.new,}
-  mv "$pkgdir"/usr/share/doc/multitail{-VERSION=$pkgver,}
+  mv "$pkgdir"/usr/share/doc/multitail{-$pkgver,}
+
+  cd $pkgname-$pkgver
+  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/multitail/
 }
 
 # vim: ts=2 sw=2 et ft=sh
