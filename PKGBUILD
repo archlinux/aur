@@ -1,40 +1,45 @@
-# Maintainer: Guilhem Saurel <saurel@laas.fr>
+# Maintainer: Guilhem Saurel <guilhem.saurel@laas.fr>
 
+_org='humanoid-path-planner'
 _pkgname=hpp-pinocchio
-_pkgver=4.0.1
-pkgname=${_pkgname}-git
-pkgver=4.0.1.r177.338bb77
+_pkgver=5.0.0
+pkgname="$_pkgname-git"
+pkgver=5.0.0.r685.0549d72
 pkgrel=1
 pkgdesc="Refactoring of hpp-model using the kinematic tree of pinocchio"
 arch=('i686' 'x86_64')
-url="https://github.com/humanoid-path-planner/$_pkgname"
-license=('LGPL3')
-depends=('boost' 'pinocchio' 'assimp' 'hpp-util-git' 'hpp-fcl' 'resource-retriever')
-optdepends=('hpp-model' 'hpp-model-urdf' 'romeo_description' 'hpp_environments' 'doxygen')
-makedepends=('cmake' 'git')
+url="https://github.com/$_org/$_pkgname"
+license=('BSD-2-Clause')
+depends=('assimp' 'boost-libs' 'gcc-libs' 'glibc' 'hpp-environments' 'hpp-util')
+makedepends=('cmake' 'git' 'doxygen' 'boost')
 conflicts=($_pkgname)
 provides=($_pkgname)
-source=("$_pkgname"::"git://github.com/humanoid-path-planner/$_pkgname.git")
-md5sums=('SKIP')
+source=("$_pkgname"::"git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "$_pkgname"
-    echo "$_pkgver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    echo "$_pkgver.r$(git -C "$_pkgname" rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-    cd "$_pkgname"
-    git submodule update --init
-    git checkout devel
+    git -C "$_pkgname" checkout devel
+    git -C "$_pkgname" submodule update --init --recursive
 }
 
 build() {
-    cd "$_pkgname"
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib .
-    make
+    cmake -B build -S $_pkgname \
+        -DCMAKE_INSTALL_LIBDIR=lib \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DBUILD_DOCUMENTATION=ON \
+        -Wno-dev
+    cmake --build build
+}
+
+check() {
+    cmake --build build -t test
 }
 
 package() {
-    cd "$_pkgname"
-    make DESTDIR="$pkgdir/" install
+    DESTDIR="$pkgdir/" cmake --build build -t install
+    install -Dm644 "$_pkgname/COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
