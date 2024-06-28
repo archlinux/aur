@@ -1,0 +1,19 @@
+pkgbase = gomanagedocker-bin
+	pkgdesc = A TUI tool to manage docker objects
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/ajayd-san/gomanagedocker
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = docker
+	provides = gmd
+	conflicts = gmd
+	source = https://github.com/ajayd-san/gomanagedocker/raw/v1.2/README.md
+	source = https://github.com/ajayd-san/gomanagedocker/raw/v1.2/LICENSE
+	sha256sums = 96001f335fa20677bd7ba3d01164c4766aa3640fb6698a0f9625b99cc4ae61f0
+	sha256sums = fe87fdeb2a8066e6ad9a6c10c251a898b20139894a01f6ea8470aee593669858
+	source_x86_64 = https://github.com/ajayd-san/gomanagedocker/releases/download/v1.2/gomanagedocker_linux_amd64_v1.2.tar.gz
+	sha256sums_x86_64 = 9992038bacc84f049072fdb2347e5c68d948ad0a97880d3aa7e418eebe2dd65b
+
+pkgname = gomanagedocker-bin
