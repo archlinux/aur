@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-protobuf
 	pkgdesc = Protocol Buffers - Google's data interchange format (mingw-w64)
-	pkgver = 27.1
-	pkgrel = 2
+	pkgver = 27.2
+	pkgrel = 1
 	url = https://developers.google.com/protocol-buffers/
 	arch = any
 	license = BSD
@@ -12,7 +12,7 @@ pkgbase = mingw-w64-protobuf
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://github.com/protocolbuffers/protobuf/releases/download/v27.1/protobuf-27.1.tar.gz
-	sha256sums = 6fbe2e6f703bcd3a246529c2cab586ca12a98c4e641f5f71d51fde09eb48e9e7
+	source = https://github.com/protocolbuffers/protobuf/releases/download/v27.2/protobuf-27.2.tar.gz
+	sha256sums = e4ff2aeb767da6f4f52485c2e72468960ddfe5262483879ef6ad552e52757a77
 
 pkgname = mingw-w64-protobuf
