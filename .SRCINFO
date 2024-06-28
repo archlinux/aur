@@ -1,0 +1,16 @@
+pkgbase = cloudlist-git
+	pkgdesc = Tool for listing Assets from multiple Cloud Providers
+	pkgver = 1.0.8.r0.gebe1127
+	pkgrel = 1
+	url = https://github.com/projectdiscovery/cloudlist
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = cloudlist=1.0.8
+	conflicts = cloudlist
+	source = cloudlist::git+https://github.com/projectdiscovery/cloudlist.git
+	sha256sums = SKIP
+
+pkgname = cloudlist-git
