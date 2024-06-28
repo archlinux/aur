@@ -1,0 +1,12 @@
+pkgbase = aiac
+	pkgdesc = Artificial Intelligence Infrastructure-as-Code Generator
+	pkgver = 5.0.1
+	pkgrel = 1
+	url = https://github.com/gofireflyio/aiac
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = go
+	source = https://github.com/gofireflyio/aiac/archive/refs/tags/v5.0.1.tar.gz
+	sha256sums = 76062407f5e88c636bbea1e022b96378b3d73a4715ba296752f8de2374fa7e95
+
+pkgname = aiac
