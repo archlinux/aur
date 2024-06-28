@@ -2,7 +2,7 @@
 pkgname='mecano'
 pkgver='0.1.0'
 pkgrel='1'
-epoch='2'
+epoch='1'
 pkgdesc='Minimalistic typing train'
 arch=('x86_64')
 depends=('glibc')
@@ -13,7 +13,7 @@ source=(
 license=('apache')
 
 build() {
-   cd "$srcdir/$pkgname-$pkgver"
+   cd "$srcdir/$pkgname-$pkgver/"
    cargo build --release --target-dir=target
    cd ../..
 }
