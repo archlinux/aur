@@ -1,6 +1,6 @@
 pkgbase = devbox-bin
 	pkgdesc = A cli tool to easily create isolated shells and containers with nix.
-	pkgver = 0.11.1
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://www.jetpack.io/devbox/
 	arch = aarch64
@@ -10,15 +10,15 @@ pkgbase = devbox-bin
 	license = Apache-2.0
 	optdepends = docker
 	optdepends = nix
-	provides = devbox=0.11.1
+	provides = devbox=0.12.0
 	conflicts = devbox
-	source_aarch64 = devbox-0.11.1-aarch64.tar.gz::https://github.com/jetpack-io/devbox/releases/download/0.11.1/devbox_0.11.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = b133336e29f6f021888f17889dc1d42477dfc9e8a52fc8d58fc4e4a7d2fbcd24
-	source_armv7h = devbox-0.11.1-armv7h.tar.gz::https://github.com/jetpack-io/devbox/releases/download/0.11.1/devbox_0.11.1_linux_arm64.tar.gz
-	sha256sums_armv7h = b133336e29f6f021888f17889dc1d42477dfc9e8a52fc8d58fc4e4a7d2fbcd24
-	source_i686 = devbox-0.11.1-i686.tar.gz::https://github.com/jetpack-io/devbox/releases/download/0.11.1/devbox_0.11.1_linux_386.tar.gz
-	sha256sums_i686 = 7a8da6e86746769c12477542408c9e5dcb3a0a69f42635f1c79aa17d67488628
-	source_x86_64 = devbox-0.11.1-x86_64.tar.gz::https://github.com/jetpack-io/devbox/releases/download/0.11.1/devbox_0.11.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = d65d4d4de6df1f1888ef26ed48a4913c0f18654d6c7140e53bdbcb8f94f3471f
+	source_aarch64 = devbox-0.12.0-aarch64.tar.gz::https://github.com/jetpack-io/devbox/releases/download/0.12.0/devbox_0.12.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 2506d69ba36186045769077da85f4b825c848f0ac0bf3f3cf3c988eb1bfbf5ba
+	source_armv7h = devbox-0.12.0-armv7h.tar.gz::https://github.com/jetpack-io/devbox/releases/download/0.12.0/devbox_0.12.0_linux_arm64.tar.gz
+	sha256sums_armv7h = 2506d69ba36186045769077da85f4b825c848f0ac0bf3f3cf3c988eb1bfbf5ba
+	source_i686 = devbox-0.12.0-i686.tar.gz::https://github.com/jetpack-io/devbox/releases/download/0.12.0/devbox_0.12.0_linux_386.tar.gz
+	sha256sums_i686 = 647dee35af7f8dccc78a3de914e4412aefd3f81fd2e5e1a681873f0824335c6e
+	source_x86_64 = devbox-0.12.0-x86_64.tar.gz::https://github.com/jetpack-io/devbox/releases/download/0.12.0/devbox_0.12.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 07f08ff963f5b859920d5c6b79701a8a9491045b3cbb703ba582e53de82e328b
 
 pkgname = devbox-bin
