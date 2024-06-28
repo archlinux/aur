@@ -3,7 +3,7 @@
 _binname="gmd"
 _pkgname="gomanagedocker"
 pkgname="${_pkgname}-git"
-pkgver=1.2
+pkgver=1.2.r5.g4d7978c
 pkgrel=1
 pkgdesc="A TUI tool to manage docker objects"
 arch=('any')
