@@ -1,7 +1,7 @@
 # Maintainer: Rufus Deponian <rufus at deponian dot com>
 pkgname=logalize-bin
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and extensible log colorizer. Alternative to ccze. Pre-compiled."
 arch=('x86_64')
 url="https://github.com/deponian/logalize"
@@ -27,7 +27,7 @@ package() {
   install -Dm644 "${srcdir}/etc/logalize/logalize.yaml" "${pkgdir}/etc/logalize/logalize.yaml"
 
   # license
-  install -Dm644 "${srcdir}/usr/share/licenses/logalize/LICENSE" "${pkgdir}/usr/share/licenses/logalize/LICENSE"
+  install -Dm644 "${srcdir}/usr/share/licenses/logalize/LICENSE" "${pkgdir}/usr/share/licenses/logalize-bin/LICENSE"
 
   # docs
   install -Dm644 "${srcdir}/usr/share/doc/logalize/README" "${pkgdir}/usr/share/doc/logalize/README.md"
