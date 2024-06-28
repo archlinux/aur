@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=sanjuuni-ui
+Comment=ComputerCraft image/video converter
+Exec=sanjuuni-ui
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Icon=sanjuuni-ui
+Categories=Graphics;
+Keywords=sanjuuni;32vid;bimg;computercraft;
+StartupWMClass=sanjuuni-ui
