@@ -1,0 +1,17 @@
+pkgbase = neonmodem-git
+	pkgdesc = A BBS-style, multi-backend discussion board TUI
+	pkgver = 1.0.5.r0.gb2e8808
+	pkgrel = 1
+	url = https://github.com/mrusme/neonmodem
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = make
+	makedepends = go
+	depends = glibc
+	provides = neonmodem=1.0.5
+	conflicts = neonmodem
+	source = neonmodem::git+https://github.com/mrusme/neonmodem.git
+	sha256sums = SKIP
+
+pkgname = neonmodem-git
