@@ -1,6 +1,6 @@
 pkgbase = gbar-git
 	pkgdesc = Blazingly fast status bar written with GTK
-	pkgver = r238.b35ce3f
+	pkgver = r255.81b97f9
 	pkgrel = 1
 	url = https://github.com/scorpion-26/gBar
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = gbar-git
 	makedepends = meson
 	makedepends = ninja
 	makedepends = python-packaging
+	makedepends = glib2-devel
 	depends = cairo
 	depends = gdk-pixbuf2
 	depends = glib2
