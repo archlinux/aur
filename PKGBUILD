@@ -1,7 +1,7 @@
 # Maintainer: Blair Bonnett <blair dot bonnett at gmail dot com>
 
 pkgname=python-findpeaks
-pkgver=2.6.3
+pkgver=2.6.4
 pkgrel=1
 pkgdesc="Detection of peaks and valleys in vectors and images"
 url='https://erdogant.github.io/findpeaks/'
@@ -15,7 +15,7 @@ optdepends=(
   'python-opencv: for loading example images'
   'python-tabulate: to run example scripts'
 )
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-opencv' 'python-pytest')
 
 _pypi=findpeaks
@@ -27,11 +27,11 @@ source=(
   'include_example_datasets.patch'
 )
 sha256sums=(
-  'ee74e9fe7a4d5e4d7225c3d812951ac9eb4f39eef837bed6a5cc99ab8a5e5d19'
+  'caf1ae76e7ecc5bb1816474d111d272d7d7e931732769880162fec9fec4b1070'
   'cde41d4a434c2c8d0f7273283796e9d5ed621f6877556cc2504b271e6fe6b329'
   'ea0f10f39f73363fe5e41b6bac51b33b13213fc1770d510ac29d3dbac661e474'
   'a1a2c8894ce3d4246c37f6582278d5fe9bacc621e862795e8e171b5c40cc2d55'
-  '2d82888c63c3419cf71b242aaeb04fe0137c57e8b0d60028f82895f11330c76e'
+  'be8c49d4c8336151694c7ef03b33341d7754d6d43dd9d57f5f6b9b3fa6a48fe5'
 )
 
 prepare() {
