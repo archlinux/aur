@@ -1,0 +1,25 @@
+pkgbase = oxker-bin
+	pkgdesc = A simple TUI to view & control Docker containers
+	pkgver = 0.6.4
+	pkgrel = 1
+	url = https://github.com/mrjackwills/oxker
+	arch = x86_64
+	arch = aarch64
+	arch = armv6h
+	license = MIT
+	depends = gcc-libs
+	depends = docker
+	provides = oxker
+	conflicts = oxker
+	source = https://github.com/mrjackwills/oxker/raw/v0.6.4/README.md
+	source = https://github.com/mrjackwills/oxker/raw/v0.6.4/LICENSE
+	sha256sums = e864dea58dc1cc58ff4d47aadb653a976dda47fa310bf015ce2955053a00d5a5
+	sha256sums = b73cb1c664857dc71c358b7127f3601be7d625fa97fa2d7e3b1e09381e4d98f0
+	source_x86_64 = https://github.com/mrjackwills/oxker/releases/download/v0.6.4/oxker_linux_x86_64.tar.gz
+	sha256sums_x86_64 = df76340933c3a75b0ed5e7bb09ced1bb82b690f343be52ae12da18c356c7d977
+	source_aarch64 = https://github.com/mrjackwills/oxker/releases/download/v0.6.4/oxker_linux_aarch64.tar.gz
+	sha256sums_aarch64 = 2e92633c545abc9f59ba8e992689b5a035f4fd953a672c6c3ed8ebd0aa28f483
+	source_armv6h = https://github.com/mrjackwills/oxker/releases/download/v0.6.4/oxker_linux_armv6.tar.gz
+	sha256sums_armv6h = c7c772af60daee360651e41bc6c19ba20298dc93ae53f7d9cfbf0f723c24029e
+
+pkgname = oxker-bin
