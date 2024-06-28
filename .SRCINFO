@@ -1,0 +1,25 @@
+pkgbase = gomphotherium-bin
+	pkgdesc = A command line Mastodon client
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/mrusme/gomphotherium
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv6h
+	arch = armv7h
+	license = GPL-3.0-or-later
+	provides = gomphotherium
+	conflicts = gomphotherium
+	source_x86_64 = https://github.com/mrusme/gomphotherium/releases/download/v0.4.0/gomphotherium_0.4.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = b27dc0906c0f6a3f37b7897ecc4137447cea1a26c08e74d08965b25a4a021dd2
+	source_i686 = https://github.com/mrusme/gomphotherium/releases/download/v0.4.0/gomphotherium_0.4.0_linux_386.tar.gz
+	sha256sums_i686 = 48021ba334b445cecc94f8a8bceba9310e17708a93085ba1015d0e395ebb8cbc
+	source_aarch64 = https://github.com/mrusme/gomphotherium/releases/download/v0.4.0/gomphotherium_0.4.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 712696420c354585c75fea9789319c236478d5a7edfa1147ef987f0f9ef3c37e
+	source_armv6h = https://github.com/mrusme/gomphotherium/releases/download/v0.4.0/gomphotherium_0.4.0_linux_armv6.tar.gz
+	sha256sums_armv6h = d8b1c2d6b5cc07a43e9a60ac7344d4aec2ad33ab4519def72130ca26d7416254
+	source_armv7h = https://github.com/mrusme/gomphotherium/releases/download/v0.4.0/gomphotherium_0.4.0_linux_armv7.tar.gz
+	sha256sums_armv7h = 6886d9b596178f1f7e6d0247d5b8ff4f5fceac684d036058758c184db18b6eb6
+
+pkgname = gomphotherium-bin
