@@ -3,15 +3,14 @@
 # Maintainer: David Hummel <hummeltech@sherpaguru.com>
 
 pkgname=('mod_tile-git' 'renderd-git')
-pkgver=0.8.0.beta.r0.g1309fdc
+pkgver=0.8.0.beta.r4.gc4e3e62
 pkgrel=1
 pkgdesc='A daemon and apache module for rendering and serving Mapnik raster tiles'
 arch=('i686' 'x86_64')
 url='https://github.com/openstreetmap/mod_tile'
 license=('GPL-2.0-or-later')
-optdepends=('ceph-libs: RADOS tile storage support'
-            'libmemcached: Memcached tile storage support')
-makedepends=('apache' 'apr' 'cairo' 'cmake' 'git' 'glib2' 'iniparser' 'mapnik')
+optdepends=('libmemcached: Memcached tile storage support')
+makedepends=('apache' 'apr' 'cmake' 'git' 'glib2' 'iniparser' 'mapnik')
 checkdepends=('jq')
 source=('git+https://github.com/openstreetmap/mod_tile.git'
         'renderd.service'
@@ -43,7 +42,10 @@ build() {
     -DCMAKE_INSTALL_PREFIX:PATH=/usr \
     -DCMAKE_INSTALL_RUNSTATEDIR:PATH=/run \
     -DCMAKE_INSTALL_SYSCONFDIR:PATH=/etc \
-    -DENABLE_TESTS:BOOL=ON
+    -DENABLE_TESTS:BOOL=ON \
+    -DUSE_CAIRO:BOOL=OFF \
+    -DUSE_CURL:BOOL=OFF \
+    -DUSE_RADOS:BOOL=OFF
   cmake --build build
 }
 
@@ -56,7 +58,7 @@ check() {
 
 package_mod_tile-git() {
   conflicts=('mod_tile')
-  depends=('apache' 'apr' 'cairo' 'curl' 'glib2' 'iniparser')
+  depends=('apache' 'apr' 'glib2' 'iniparser')
   install="${pkgname}.install"
   pkgdesc='An Apache 2 module to deliver map tiles'
   provides=('mod_tile')
@@ -79,7 +81,7 @@ package_mod_tile-git() {
 package_renderd-git() {
   conflicts=('renderd')
   backup=('etc/renderd.conf')
-  depends=('cairo' 'curl' 'glib2' 'iniparser' 'mapnik')
+  depends=('glib2' 'iniparser' 'mapnik')
   pkgdesc='A daemon that renders map tiles using mapnik'
   provides=('renderd')
 
