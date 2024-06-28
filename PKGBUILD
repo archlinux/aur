@@ -42,7 +42,7 @@ _install_static=true ## .a libs which may be required for external programs such
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the custompatches folder
 ## manually if you wish to use them alongside your own patches.
 ## also recommended to set _desired_wine_commit and _desired_staging_commit if this is used
-_custompatches=true
+_custompatches=false
 
 ################################################################################################################################
 ################################################################################################################################
@@ -84,15 +84,15 @@ noextract=()
 
 ## don't needlessly add the wine-osu-patches repo if we explicitly specify custom ones
 if ! ([ -d "${_where}"/custompatches ] && [ "${_custompatches}" = "true" ]); then
-  source+=("git+https://github.com/whrvt/wine-osu-patches.git#tag=06-25-2024-f9af971b-7fc08a96")
-  sha512sums+=('3aaaf5e5e6a3cc5828c930b52b9e8d35de3b8042b6d79d0cae9205d207233bb0708be87a0bc5888ce7787aacd4c320226853221c64031427200816f3b6024fe2')
+  source+=("git+https://github.com/whrvt/wine-osu-patches.git#tag=06-28-2024-727472ab-1b9ef03b")
+  sha512sums+=('e571a88302d6d33b8c6b7e9f080d3be5953f870f6bc8cdb9318037023b7a7014f25e08ce3ef4b4d1d0e357ade2d9046a16f30a3846a9914e9d0f21584fa2bdd7')
   
   _custompatches="false" ## didn't have a custompatches dir
 fi
 
 if [ -n "${_desired_wine_commit}" ] && ! [ "${_custompatches}" = "true" ]; then
   source+=("git+https://gitlab.winehq.org/wine/wine.git#commit=${_desired_wine_commit}")
-  sha512sums+=('513716990592654a9cd500266da48e89c1cff5c2a225facedd4d52a468ee3423e4f6f7ba73bc9e4cdc195bba42b1d230d6dfb7b005d38112b9fd42cd6c40ad4d')
+  sha512sums+=('a77fdc757f3cb77ab146ae305916565a1d1558a763b98020d9bbb3557728723a7289d51df397014ccf4a375909dadc065bb2d37192af12596638ee144a149c55')
 else
   source+=('git+https://gitlab.winehq.org/wine/wine.git')
   sha512sums+=('SKIP')
@@ -100,7 +100,7 @@ fi
 
 if [ -n "${_desired_staging_commit}" ] && ! [ "${_custompatches}" = "true" ]; then
   source+=("git+https://github.com/wine-staging/wine-staging.git#commit=${_desired_staging_commit}")
-  sha512sums+=('1d29e6632312ea6ddf2db8bf65997a7832f53d7f304d6dfc549df5212b25b8995b55a54bd377bbf889649246582631254879569d5c76f663346d8064577d826d')
+  sha512sums+=('2b71a0147fcf8c54516201b747a836a820dfc6e281f3a5c5f8ec40e9de811d179ee66bf601258c35c7d4d3e3608997f3618badb36d62c69db5396bd7c4445130')
 else
   source+=('git+https://github.com/wine-staging/wine-staging.git')
   sha512sums+=('SKIP')
@@ -127,6 +127,7 @@ depends=(
 makedepends=(autoconf bison ccache perl fontforge flex
   gcc
   clang
+  llvm-libs
   llvm-mingw-w64-toolchain
   giflib
   libpng
@@ -187,7 +188,7 @@ optdepends=(
 
 if [ "${wow64build}" != "true" ]; then
   depends+=(lib32-fontconfig lib32-lcms2 lib32-libxml2 lib32-libxcursor lib32-libxrandr lib32-libxdamage lib32-libxi lib32-gettext lib32-freetype2 lib32-glu lib32-libsm lib32-gcc-libs lib32-libpcap lib32-faudio)
-  makedepends+=(libvulkan.so=1-32 lib32-giflib lib32-libpng lib32-gnutls lib32-libxinerama lib32-libxcomposite lib32-libxmu lib32-libxxf86vm lib32-libldap lib32-mpg123 lib32-openal lib32-v4l-utils lib32-libpulse lib32-alsa-lib lib32-libxcomposite lib32-mesa lib32-mesa-libgl lib32-opencl-icd-loader lib32-libxslt lib32-sdl2 lib32-libcups)
+  makedepends+=(lib32-llvm-libs libvulkan.so=1-32 lib32-giflib lib32-libpng lib32-gnutls lib32-libxinerama lib32-libxcomposite lib32-libxmu lib32-libxxf86vm lib32-libldap lib32-mpg123 lib32-openal lib32-v4l-utils lib32-libpulse lib32-alsa-lib lib32-libxcomposite lib32-mesa lib32-mesa-libgl lib32-opencl-icd-loader lib32-libxslt lib32-sdl2 lib32-libcups)
   optdepends+=(lib32-giflib lib32-libpng lib32-libldap lib32-gnutls lib32-mpg123 lib32-openal lib32-v4l-utils lib32-libpulse lib32-alsa-plugins lib32-alsa-lib lib32-libjpeg-turbo lib32-libxcomposite lib32-libxinerama lib32-opencl-icd-loader lib32-libxslt lib32-gst-plugins-base-libs lib32-vkd3d lib32-sdl2)
 fi
 
@@ -198,7 +199,7 @@ pkgver() {
   git describe --tags --abbrev=0 | cut -f2 -d'-'
 }
 
-# this is a bit hideous (env ls to not use some shell builtin)
+# this is a bit hideous, what could go wrong?
 (( __llvm_ver="$(env ls -1 /opt/llvm-mingw/lib/clang/)" )) || \
   _failure "A numbered folder in /opt/llvm-mingw/lib/clang/ wasn't found. Are you sure you have the llvm-mingw toolchain installed?"
 
@@ -377,9 +378,9 @@ buildwow64() { _set_vars;
     --libdir=/opt/"${pkgname}"/lib64 \
     --enable-archs=x86_64,i386 \
     "${_sharedopts[@]}" \
-    --with-mingw="ccache x86_64-w64-mingw32-clang"
+    --with-mingw="ccache x86_64-w64-mingw32-clang" || _failure "wine-64 configure failed"
 
-  make -j$(($(nproc) + 1))
+  make -j$(($(nproc) + 1)) || _failure
 }
 
 buildregular() { _set_vars;
@@ -397,9 +398,9 @@ buildregular() { _set_vars;
     --libdir=/opt/"${pkgname}"/lib64 \
     --enable-win64 \
     "${_sharedopts[@]}" \
-    --with-mingw="ccache x86_64-w64-mingw32-clang" 
+    --with-mingw="ccache x86_64-w64-mingw32-clang" || _failure "wine-64 configure failed"
 
-  make -j$(($(nproc) + 1))
+  make -j$(($(nproc) + 1)) || _failure "wine-64 compilation failed"
 
   _wine32opts=(
     --libdir=/opt/"${pkgname}"/lib
@@ -412,7 +413,7 @@ buildregular() { _set_vars;
   export i386_CC="ccache i686-w64-mingw32-clang"
   export CROSSCC="ccache i686-w64-mingw32-clang"
 
-  # fsync doesn't compile on i386 due to undefined atomic ops otherwise
+  # fsync doesn't compile on i386 due to undefined atomic ops otherwise (clang only, ntdll.so)
   export I386_LIBS="-latomic"
 
   msg2 "Building Wine-32..."
@@ -420,9 +421,9 @@ buildregular() { _set_vars;
   ../"${pkgname}"/configure \
     "${_sharedopts[@]}" \
     "${_wine32opts[@]}" \
-    --with-mingw="ccache i686-w64-mingw32-clang"
+    --with-mingw="ccache i686-w64-mingw32-clang" || _failure "wine-32 configure failed"
 
-  make -j$(($(nproc) + 1))
+  make -j$(($(nproc) + 1)) || _failure "wine-32 compilation failed"
 }
 
 build() {
@@ -465,7 +466,7 @@ package() { _set_vars;
     make -j$(($(nproc) + 1)) \
       prefix="${pkgdir}"/opt/"${pkgname}" \
       libdir="${pkgdir}"/opt/"${pkgname}"/lib \
-      dlldir="${pkgdir}"/opt/"${pkgname}"/lib/wine $_installtype
+      dlldir="${pkgdir}"/opt/"${pkgname}"/lib/wine $_installtype || _failure "wine-32 installation failed"
   fi
 
   msg2 "Packaging Wine-64..."
@@ -475,7 +476,7 @@ package() { _set_vars;
     CC="ccache gcc" CXX="ccache g++" \
     prefix="${pkgdir}"/opt/"${pkgname}" \
     libdir="${pkgdir}"/opt/"${pkgname}"/lib64 \
-    dlldir="${pkgdir}"/opt/"${pkgname}"/lib64/wine $_installtype
+    dlldir="${pkgdir}"/opt/"${pkgname}"/lib64/wine $_installtype || _failure "wine-64 installation failed"
 
   ## Font aliasing settings for Win32 applications
   install -d "${pkgdir}"/usr/share/fontconfig/conf.{avail,default}

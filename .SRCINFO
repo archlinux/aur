@@ -14,6 +14,7 @@ pkgbase = wine-osu-spectator-wow64
 	makedepends = flex
 	makedepends = gcc
 	makedepends = clang
+	makedepends = llvm-libs
 	makedepends = llvm-mingw-w64-toolchain
 	makedepends = giflib
 	makedepends = libpng
@@ -109,12 +110,14 @@ pkgbase = wine-osu-spectator-wow64
 	source = winestart
 	source = 30-win32-aliases.conf
 	source = wine-binfmt.conf
-	source = git+https://gitlab.winehq.org/wine/wine.git
-	source = git+https://github.com/wine-staging/wine-staging.git
+	source = git+https://github.com/whrvt/wine-osu-patches.git#tag=06-28-2024-727472ab-1b9ef03b
+	source = git+https://gitlab.winehq.org/wine/wine.git#commit=727472ab7d60e285a28fb67fd5e3e21907dd060a
+	source = git+https://github.com/wine-staging/wine-staging.git#commit=1b9ef03b2c2d6291a0c1aa8f584a1e8e9b4fd7a5
 	sha512sums = dc115ccc8d64afc213d2860a2f3516c31aa2891cd1005498123d86e7e44e0fcf876fbc68c89b201ce5291a12127cb7ff478e9374dbd2512b5d094802780be160
 	sha512sums = 6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb
 	sha512sums = bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285
-	sha512sums = SKIP
-	sha512sums = SKIP
+	sha512sums = e571a88302d6d33b8c6b7e9f080d3be5953f870f6bc8cdb9318037023b7a7014f25e08ce3ef4b4d1d0e357ade2d9046a16f30a3846a9914e9d0f21584fa2bdd7
+	sha512sums = a77fdc757f3cb77ab146ae305916565a1d1558a763b98020d9bbb3557728723a7289d51df397014ccf4a375909dadc065bb2d37192af12596638ee144a149c55
+	sha512sums = 2b71a0147fcf8c54516201b747a836a820dfc6e281f3a5c5f8ec40e9de811d179ee66bf601258c35c7d4d3e3608997f3618badb36d62c69db5396bd7c4445130
 
 pkgname = wine-osu-spectator-wow64
