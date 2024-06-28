@@ -1,10 +1,13 @@
 pkgbase = openocd-esp32-bin
 	pkgdesc = OpenOCD branch with ESP32 JTAG support
 	pkgver = 0.12.0_esp32_20240318
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/espressif/openocd-esp32
 	arch = x86_64
 	license = GPL-2.0-or-later AND GFDL-1.2-no-invariants-or-later
+	depends = libftdi-compat
+	depends = libusb
+	depends = hidapi
 	provides = openocd-esp32
 	conflicts = openocd
 	conflicts = openocd-esp32
