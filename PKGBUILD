@@ -3,7 +3,7 @@
 pkgname=hsh
 pkgver=0.0.2.97.g38846e6
 _gitcommit=38846e68eba7a77cce2ae88e7c1ba1741546debf
-pkgrel=2
+pkgrel=3
 pkgdesc="better shell"
 arch=('x86_64')
 url="https://github.com/GrayHatter/hsh"
@@ -39,4 +39,5 @@ package() {
   cd "$pkgname"
   cp -a build/* "$pkgdir"
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/$pkgname/LICENSE
 }
