@@ -1,0 +1,21 @@
+pkgbase = gomp-bin
+	pkgdesc = MPD client inspired by ncmpcpp with builtin cover-art view and LastFM integration
+	pkgver = 1.0.9
+	pkgrel = 1
+	url = https://github.com/aditya-K2/gomp
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	depends = glibc
+	provides = gomp
+	conflicts = gomp
+	source = https://github.com/aditya-K2/gomp/raw/v1.0.9/README.md
+	source = https://github.com/aditya-K2/gomp/raw/v1.0.9/LICENSE
+	sha256sums = 8edef2883055725b00c9569c6117821c86403eaf62a9e3d9bf30def08250e97a
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	source_x86_64 = gomp-1.0.9::https://github.com/aditya-K2/gomp/releases/download/v1.0.9/gomp-linux-amd64
+	sha256sums_x86_64 = e165819b895628f2437489df277e238daf47e3fef9f2ca16194d59bf56d44724
+	source_aarch64 = gomp-1.0.9::https://github.com/aditya-K2/gomp/releases/download/v1.0.9/gomp-linux-arm64
+	sha256sums_aarch64 = f8e1c439dd5192c0b5cf17715d9e015e8a58034f592c64cdfd72288d559dfd43
+
+pkgname = gomp-bin
