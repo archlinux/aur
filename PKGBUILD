@@ -1,6 +1,6 @@
 pkgname=mingw-w64-hdf5
-pkgver=1.14.4.2
-pkgrel=2
+pkgver=1.14.4.3
+pkgrel=1
 arch=('any')
 pkgdesc="General purpose library and file format for storing scientific data (mingw-w64)"
 url="http://www.hdfgroup.org/HDF5/"
@@ -9,13 +9,12 @@ depends=('mingw-w64-crt' 'mingw-w64-zlib' 'mingw-w64-libaec')
 makedepends=('mingw-w64-cmake' 'mingw-w64-wine')
 options=('!strip' '!buildflags' 'staticlibs')
 source=(https://github.com/HDFGroup/hdf5/archive/hdf5_$pkgver/hdf5-$pkgver.tar.gz)
-sha256sums=('44c47120e8beeb69f83b2de10203dceb6ef63f253b7859063a60205c8f48ab80')
+sha256sums=('690c1db7ba0fed4ffac61709236675ffd99d95d191e8920ee79c58d7e7ea3361')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "$srcdir/hdf5-hdf5_${pkgver}"
-  curl -L https://gitlab.archlinux.org/archlinux/packaging/packages/hdf5/-/raw/main/hdf5-fix-crash-partially-initialized-datatypes.patch | patch -p1
   curl -L https://github.com/HDFGroup/hdf5/pull/4466.patch | patch -p1
   curl -L https://github.com/HDFGroup/hdf5/pull/4473.patch | patch -p1
 }
