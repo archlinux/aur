@@ -1,0 +1,19 @@
+pkgbase = python-cloudevents
+	pkgdesc = Package cloudevents provides primitives to work with CloudEvents specification.
+	pkgver = 1.11.0
+	pkgrel = 1
+	url = https://github.com/cloudevents
+	arch = any
+	license = Apache-2.0
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-installer
+	makedepends = python-build
+	depends = python
+	depends = python-deprecation
+	depends = python-pydantic
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/source/c/cloudevents/cloudevents-1.11.0.tar.gz
+	sha256sums = 5be990583e99f3b08af5a709460e20b25cb169270227957a20b47a6ec8635e66
+
+pkgname = python-cloudevents
