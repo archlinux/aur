@@ -1,4 +1,4 @@
-pkgbase = inkdown
+pkgbase = inkdown-bin
 	pkgdesc = A WYSIWYG Markdown editor, improve reading and editing experience. and generate your Markdown files into online documents in the easiest and fastest way.
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -7,12 +7,12 @@ pkgbase = inkdown
 	arch = x86_64
 	license = AGPL-3.0-only
 	depends = electron29
-	conflicts = inkdown
-	source = inkdown.sh
+	conflicts = inkdown-bin
+	source = inkdown-bin.sh
 	sha256sums = 05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a
 	source_aarch64 = inkdown-1.0.0-aarch64.deb::https://github.com/1943time/inkdown/releases/download/v1.0.0/Inkdown-linux-arm64.deb
 	sha256sums_aarch64 = ff59ec4edfe0f0f6093f1e34dbb80be06a77f25fb328ac3d9e34dcd6bb0e43d3
 	source_x86_64 = inkdown-1.0.0-x86_64.deb::https://github.com/1943time/inkdown/releases/download/v1.0.0/Inkdown-linux-amd64.deb
 	sha256sums_x86_64 = b5bd823be0ecac89ad5cc4cf1c65f1d26ba72b74c5bdeeab04b495a4ed3ef3d6
 
-pkgname = inkdown
+pkgname = inkdown-bin

@@ -1,5 +1,5 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname=inkdown
+pkgname=inkdown-bin
 _pkgname=Inkdown
 pkgver=1.0.0
 _electronversion=29
