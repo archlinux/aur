@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rsparse
-_pkgver=0.5.1
+_pkgver=0.5.2
 pkgname=r-${_pkgname,,}
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc='Statistical Learning on Sparse Matrices'
 arch=('x86_64')
@@ -24,7 +24,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1fb2429a066bfd51d2618aa196b4111d7e768bf4920249366ddd402a2aa56d96')
+sha256sums=('d7632e153ae4f97199cf023fdddfb1906a93f1451700c98dd3722afa17ac8028')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

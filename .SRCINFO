@@ -1,6 +1,6 @@
 pkgbase = r-rsparse
 	pkgdesc = Statistical Learning on Sparse Matrices
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=rsparse
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = r-rsparse
 	depends = r-rhpcblasctl
 	optdepends = r-covr
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/rsparse_0.5.1.tar.gz
-	sha256sums = 1fb2429a066bfd51d2618aa196b4111d7e768bf4920249366ddd402a2aa56d96
+	source = https://cran.r-project.org/src/contrib/rsparse_0.5.2.tar.gz
+	sha256sums = d7632e153ae4f97199cf023fdddfb1906a93f1451700c98dd3722afa17ac8028
 
 pkgname = r-rsparse
