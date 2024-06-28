@@ -1,7 +1,7 @@
 # Maintainer: Ben Westover <kwestover.kw@gmail.com>
 
 pkgname='chia-cli-bin'
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 _pkgrel=1
 pkgdesc="A new blockchain and smart transaction platform that is easier to use, more efficient, and secure. - Binary Release, Without GUI"
@@ -16,8 +16,8 @@ replaces=('chia-bin-cli')
 options=('!strip')
 source_x86_64=("https://repo.chia.net/debian/pool/main/c/chia-blockchain-cli/chia-blockchain-cli_${pkgver}-${_pkgrel}_amd64.deb")
 source_aarch64=("https://repo.chia.net/debian/pool/main/c/chia-blockchain-cli/chia-blockchain-cli_${pkgver}-${_pkgrel}_arm64.deb")
-sha256sums_x86_64=('489435aca22442b028483e622b9ccefd72df431eb542e4138bf1176ff2eb24dc')
-sha256sums_aarch64=('f633c400202d4e37f8e0d318d64ffff9968ca99b3599a94fb41f5ef73cf3745f')
+sha256sums_x86_64=('3e27d941397a72a8153594f968eb8a73e7d332117843d8afab8cabcfe3dc87e1')
+sha256sums_aarch64=('2293be3e405e3c918239feb669906088b328ff7d63ce8afeeadbe78b1a95b53f')
 
 package() {
 	tar -xf data.tar.xz -C "$pkgdir"
