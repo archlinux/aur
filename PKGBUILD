@@ -6,13 +6,13 @@
 
 pkgname=libimobiledevice-git
 epoch=1
-pkgver=1.3.0.r224.g77c727b
+pkgver=1.3.0.r240.gd1a98e0
 pkgrel=1
 pkgdesc="Library that talks the protocols to support iPhone and iPod Touch devices on Linux"
 url="http://www.libimobiledevice.org/"
 arch=(x86_64)
 license=('LGPL-2.1-or-later')
-depends=('glibc' 'libplist-git' 'libusbmuxd-git' 'libimobiledevice-glue-git' 'openssl')
+depends=('glibc' 'libplist-git' 'libtatsu-git' 'libusbmuxd-git' 'libimobiledevice-glue-git' 'openssl')
 makedepends=('git' 'cython' 'python' 'python-setuptools')
 optdepends=('python: Python bindings')
 provides=(libimobiledevice-1.0.so "libimobiledevice=$pkgver")
