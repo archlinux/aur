@@ -1,10 +1,10 @@
 # Maintainer: Piroro-hs
 
 pkgname=ptyxis
-pkgver=46.3
+pkgver=46.4
 _vtever=0.76.3
-_vtecommit='036bc3ddcbb56f05c6ca76712a53b89dee1369e2'
-pkgrel=2
+_vtecommit='41b19080b5594300afc010e1ef7d838ab120603a'
+pkgrel=1
 pkgdesc='A terminal for a container-oriented desktop'
 arch=('x86_64')
 url='https://gitlab.gnome.org/chergert/ptyxis'
@@ -40,9 +40,9 @@ backup=()
 source=("$pkgname::git+$url#tag=$pkgver"
         "${pkgname}_vte::git+https://gitlab.gnome.org/GNOME/vte.git#commit=$_vtecommit"
         '0001-bundle-patched-vte.patch')
-sha256sums=('b0a9ab1c36d57b6c2816e2e1c1ed0e48630237797720f5474d0453d703c70b90'
-            '04cdba718e061063d1f8f623012769827e20561dcea735f5bd4d135c2579b10f'
-            'be0f5d53d73c53896055f6e35fe88dab343e27ad849ca032c7aa38f51498f713')
+sha256sums=('6382867bedd747dddf050e56a392ee79c66f6522118c67adf6908168915e0190'
+            '628e9202b3578a825e6a135508c711a0ea0c236579f4ec1afe5d11f3feecce90'
+            'b9eaf8fcf10b2f703bc4c355304517c62c6a5cc42c727f8e93cf9a4be5b4cf14')
 
 prepare() {
   rm -rf "$srcdir/$pkgname/subprojects"

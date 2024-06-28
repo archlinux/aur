@@ -6,7 +6,7 @@ index ce2961ae..9305da5d 100644
  project(
    'vte',
    ['c', 'cpp'],
--  version: '0.76.3',
+-  version: '0.76.4',
 +  version: '10000.76.3',
    license: ['LGPL-3.0-or-later', 'GPL-3.0-or-later'],
    default_options: [
