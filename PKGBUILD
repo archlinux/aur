@@ -1,0 +1,43 @@
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+pkgname=inkdown
+_pkgname=Inkdown
+pkgver=1.0.0
+_electronversion=29
+pkgrel=1
+pkgdesc="A WYSIWYG Markdown editor, improve reading and editing experience. and generate your Markdown files into online documents in the easiest and fastest way."
+arch=(
+    'aarch64'
+    'x86_64'
+)
+url="https://github.com/1943time/inkdown"
+license=('AGPL-3.0-only')
+conflicts=("${pkgname}")
+depends=(
+    "electron${_electronversion}"
+)
+source=(
+    "${pkgname}.sh"
+)
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-linux-arm64.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-linux-amd64.deb")
+sha256sums=('05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a')
+sha256sums_aarch64=('ff59ec4edfe0f0f6093f1e34dbb80be06a77f25fb328ac3d9e34dcd6bb0e43d3')
+sha256sums_x86_64=('b5bd823be0ecac89ad5cc4cf1c65f1d26ba72b74c5bdeeab04b495a4ed3ef3d6')
+build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
+    bsdtar -xf "${srcdir}/data."*
+    sed "s|/opt/${_pkgname}/${_pkgname}|${pkgname%-bin}|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g;s|Markdown|Markdown;Office|g" \
+        -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+}
+package() {
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -r "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/usr/share/icons/hicolor/0x0/apps/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+}
