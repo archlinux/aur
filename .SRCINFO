@@ -1,0 +1,13 @@
+pkgbase = resto
+	pkgdesc = Send pretty HTTP & API requests with TUI
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/abdfnx/resto
+	arch = any
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = resto-0.1.6.tar.gz::https://github.com/abdfnx/resto/archive/refs/tags/v0.1.6.tar.gz
+	sha256sums = 6d5a1f773b8f21926af786123f436753c80bbea2e2970a96775c4996fd63760a
+
+pkgname = resto
