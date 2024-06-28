@@ -1,15 +1,15 @@
 # Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
 
-_pkgname=grafterm
-pkgname=${_pkgname}-bin
+_pkgname="grafterm"
+pkgname="${_pkgname}-bin"
 pkgver=0.2.0
 pkgrel=1
 pkgdesc="Metrics dashboards on terminal (a grafana inspired terminal version)"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/slok/${_pkgname}"
-license=('Apache')
-conflicts=("${_pkgname}")
+license=('Apache-2.0')
 provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 source_x86_64=("${_pkgname}::${url}/releases/download/v${pkgver}/${_pkgname}-linux-amd64")
