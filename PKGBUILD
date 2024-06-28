@@ -2,7 +2,7 @@
 # Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
 pkgname=('vulkan-caps-viewer-x11' 'vulkan-caps-viewer-wayland')
 pkgbase=vulkan-caps-viewer
-pkgver=3.40
+pkgver=3.41
 pkgrel=1
 epoch=1
 pkgdesc="Vulkan Hardware Capability Viewer"
@@ -10,16 +10,10 @@ arch=('x86_64' 'aarch64')
 url="https://vulkan.gpuinfo.org"
 license=('LGPL-3.0-or-later')
 makedepends=('git' 'qt5-wayland' 'qt5-x11extras' 'vulkan-icd-loader')
-_commit=78eda4b0e3929371821bae8263fd087c21673d25  # tags/3.40^0
-source=("git+https://github.com/SaschaWillems/VulkanCapsViewer.git#commit=$_commit"
+source=("git+https://github.com/SaschaWillems/VulkanCapsViewer.git#tag=$pkgver"
         'git+https://github.com/KhronosGroup/Vulkan-Headers.git')
-sha256sums=('d413e09d8b3e9409e96cc1e7001f1acb5515d8f11af2b043e23ee48c06bcc95d'
+sha256sums=('dfb26d9d981733aa512024479c4f1bdb7831560a4741dc010b034bc45ef68e40'
             'SKIP')
-
-pkgver() {
-  cd VulkanCapsViewer
-  git describe --tags | sed 's/_fixed//;s/-/+/g'
-}
 
 prepare() {
 
@@ -55,7 +49,7 @@ build() {
 
 package_vulkan-caps-viewer-x11() {
   pkgdesc+=" (X11)"
-  depends=('hicolor-icon-theme' 'vulkan-icd-loader' 'qt5-x11extras')
+  depends=('hicolor-icon-theme' 'qt5-x11extras' 'vulkan-icd-loader')
   provides=('vulkan-caps-viewer')
   conflicts=('vulkan-caps-viewer')
 
@@ -68,7 +62,7 @@ package_vulkan-caps-viewer-x11() {
 
 package_vulkan-caps-viewer-wayland() {
   pkgdesc+=" (Wayland)"
-  depends=('hicolor-icon-theme' 'vulkan-icd-loader' 'qt5-wayland')
+  depends=('hicolor-icon-theme' 'qt5-wayland' 'vulkan-icd-loader')
   provides=('vulkan-caps-viewer')
   conflicts=('vulkan-caps-viewer')
 
