@@ -1,8 +1,8 @@
 # Maintainer: Christoph Haag <christoph.haag@collabora.com>
 
-pkgname=("openxr-loader-git" "openxr-headers-git" "openxr-layers-git" "openxr-utils-git" "openxr-git")
+pkgname=("openxr-loader-git" "openxr-layers-git" "openxr-utils-git")
 _dirname="openxr-loader"
-pkgver=1.0.33.r0.g820278f
+pkgver=1.1.38.r0.g650f751
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://github.com/KhronosGroup/OpenXR-SDK-Source'
@@ -39,32 +39,20 @@ build() {
 }
 
 package_openxr-loader-git() {
-  provides=("openxr-loader")
+  provides=("openxr-loader" 'openxr' 'openxr-git')
   pkgdesc='OpenXR loader'
   depends=("jsoncpp" "libx11")
-  conflicts=("openxr-loader")
+  conflicts=("openxr-loader" 'openxr' 'openxr-headers')
+  replaces=('openxr-headers-git' 'openxr-git' 'openxr-git')
   # "openxr")
 
   cd "$_dirname"-build
 
   make DESTDIR="$pkgdir" install
-  rm -rf "$pkgdir"/usr/include/
   rm -rf "$pkgdir"/usr/bin/
   rm -rf "$pkgdir"/usr/share/openxr
   rm -rf "$pkgdir"/usr/lib/*ApiLayer*
   rm -rf "$pkgdir"/usr/share/man/
-}
-
-package_openxr-headers-git() {
-  provides=("openxr-headers")
-  pkgdesc='OpenXR headers'
-
-  cd "$_dirname"-build
-
-  make DESTDIR="$pkgdir" install
-  rm -rf "$pkgdir"/usr/lib/
-  rm -rf "$pkgdir"/usr/share/
-  rm -rf "$pkgdir"/usr/bin/
 }
 
 package_openxr-layers-git() {
@@ -95,10 +83,5 @@ package_openxr-utils-git() {
   rm -rf "$pkgdir"/usr/include
   rm -rf "$pkgdir"/usr/share/
   rm -rf "$pkgdir"/usr/lib/
-}
-
-package_openxr-git() {
-  provides=("openxr")
-  depends=("openxr-loader-git" "openxr-headers-git" "openxr-utils-git" "openxr-layers-git")
 }
 

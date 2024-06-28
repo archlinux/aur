@@ -1,5 +1,5 @@
 pkgbase = openxr-loader-git
-	pkgver = 1.0.33.r0.g820278f
+	pkgver = 1.1.38.r0.g650f751
 	pkgrel = 1
 	url = https://github.com/KhronosGroup/OpenXR-SDK-Source
 	arch = i686
@@ -23,11 +23,14 @@ pkgname = openxr-loader-git
 	depends = jsoncpp
 	depends = libx11
 	provides = openxr-loader
+	provides = openxr
+	provides = openxr-git
 	conflicts = openxr-loader
-
-pkgname = openxr-headers-git
-	pkgdesc = OpenXR headers
-	provides = openxr-headers
+	conflicts = openxr
+	conflicts = openxr-headers
+	replaces = openxr-headers-git
+	replaces = openxr-git
+	replaces = openxr-git
 
 pkgname = openxr-layers-git
 	pkgdesc = OpenXR Layers, including XR_APILAYER_LUNARG_core_validation
@@ -42,10 +45,3 @@ pkgname = openxr-utils-git
 	depends = vulkan-icd-loader
 	depends = libx11
 	provides = openxr-utils
-
-pkgname = openxr-git
-	depends = openxr-loader-git
-	depends = openxr-headers-git
-	depends = openxr-utils-git
-	depends = openxr-layers-git
-	provides = openxr
