@@ -1,7 +1,7 @@
 pkgbase = paketkoll
 	pkgdesc = Fast integrity check for files installed by pacman
 	pkgver = 0.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/VorpalBlade/paketkoll
 	arch = x86_64
 	arch = i686
