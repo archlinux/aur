@@ -8,7 +8,7 @@ Group=outline
 
 Type=simple
 Environment="NODE_ENV=production"
-ExecStart=/usr/bin/node /usr/share/webapps/outline/index.js --name outline
+ExecStart=/usr/bin/yarn start
 WorkingDirectory=/usr/share/webapps/outline
 LimitNOFILE=1048576
 LimitNPROC=64

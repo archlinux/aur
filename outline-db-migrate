@@ -1,0 +1,1 @@
+cd /usr/share/webapps/outline                                                                                           yarn sequelize db:migrate --env=production-ssl-disabled

@@ -1,0 +1,9 @@
+post_install() {
+	  echo "install finished. Edit /etc/webapps/outline/config.env to config."
+	  echo "Be sure to include all of the values in the Required section and at least one authentication provider from the Optional section."
+	  echo "After config, run outline-db-create to init database; run outline-db-migrate to migrate database to newer version."
+}
+
+post_upgrade() {
+	echo "run outline-db-migrate to migrate database to newer version"
+}
