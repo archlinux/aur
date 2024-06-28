@@ -1,7 +1,7 @@
 # Maintainer: Arvid Norlander <VorpalBlade@users.noreply.github.com>
 pkgname=paketkoll-git
 _pkgname=${pkgname%-git}
-pkgver=0.1.3.r9.2fe1846
+pkgver=0.2.3.r0.1fa7ba2
 pkgrel=1
 pkgdesc="Fast integrity check for files installed by pacman"
 arch=(x86_64 i686 armv7h aarch64)
@@ -31,13 +31,13 @@ build() {
     cd "$srcdir/${_pkgname}"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --no-default-features --features=arch_linux
+    cargo build --frozen --release --no-default-features --features=arch_linux,json
 }
 
 check() {
     cd "$srcdir/${_pkgname}"
     export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --no-default-features --features=arch_linux
+    cargo test --frozen --no-default-features --features=arch_linux,json
 }
 
 package() {
