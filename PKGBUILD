@@ -1,14 +1,15 @@
-# Maintainer: Daniel Menelkir <dmenelkir at gmail dot com>
-# Old Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor: Daniel Menelkir <dmenelkir at gmail dot com>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname='fontpreview'
 pkgver=1.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Highly customizable and minimal font previewer written in bash'
 arch=('any')
 url='https://github.com/sdushantha/fontpreview'
 license=('MIT')
-depends=('fzf' 'imagemagick' 'sxiv' 'xdotool')
+depends=('fzf' 'imagemagick' 'nsxiv' 'xdotool')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=('5785ed96852b84e082c05af56d4811ea8a830ed714d683201a128436a32f7758')
 

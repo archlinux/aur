@@ -1,13 +1,13 @@
 pkgbase = fontpreview
 	pkgdesc = Highly customizable and minimal font previewer written in bash
 	pkgver = 1.0.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/sdushantha/fontpreview
 	arch = any
 	license = MIT
 	depends = fzf
 	depends = imagemagick
-	depends = sxiv
+	depends = nsxiv
 	depends = xdotool
 	source = fontpreview-1.0.6.tar.gz::https://github.com/sdushantha/fontpreview/archive/1.0.6.tar.gz
 	sha256sums = 5785ed96852b84e082c05af56d4811ea8a830ed714d683201a128436a32f7758
