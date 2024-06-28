@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=akuse-git
 _pkgname=Akuse
-pkgver=0.7.2.r17.g7c1922c
+pkgver=1.2.0.r0.g7d7fbc3
 _electronversion=25
 _nodeversion=18
 pkgrel=1
@@ -17,8 +17,9 @@ depends=(
 makedepends=(
     'gendesk'
     'npm'
-    'nodejs'
+    'nvm'
     'git'
+    'curl'
 )
 source=(
     "${pkgname//-/.}::git+${url}.git"
@@ -27,10 +28,10 @@ source=(
 )
 sha256sums=('SKIP'
             '091d0d9b3a06579647ed4c1989d7edff13754cec34fcdbb7fbc24529bd01ed48'
-            '61d56055897e9d71d68e185ac2de7c4cb2fbca16eb3fb0091703612c113441f3')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
-    git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
 }
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -42,10 +43,11 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-git}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-git}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-git} %U"
+    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
@@ -62,10 +64,11 @@ build() {
     else
         echo "Your network is OK."
     fi
+    sed "s|--linux|-l --dir|g" -i package.json
     install -Dm644 "${srcdir}/clientData.js" -t "${srcdir}/${pkgname//-/.}/src/modules"
-    npm cache clean --force
-    npm install --force
-    npm run pack
+    NODE_ENV=development npm cache clean --force
+    NODE_ENV=development npm install --force
+    NODE_ENV=production npm run package:linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
