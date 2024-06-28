@@ -2,6 +2,7 @@
 pkgname='mecano'
 pkgver='0.1.0'
 pkgrel='2'
+epoch='2'
 pkgdesc='Minimalistic typing train'
 arch=('x86_64')
 depends=('glibc')
