@@ -1,0 +1,12 @@
+pkgbase = datadash
+	pkgdesc = Visualize and graph data in the terminal
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/keithknott26/datadash
+	arch = any
+	license = MIT
+	makedepends = go
+	source = datadash-0.1.0.tar.gz::https://github.com/keithknott26/datadash/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 885e48bdf473110faa51aae511667174d1f84d9f36690db6830e62a8620e836b
+
+pkgname = datadash
