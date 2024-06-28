@@ -1,0 +1,13 @@
+pkgbase = logalize-bin
+	pkgdesc = Fast and extensible log colorizer. Alternative to ccze. Pre-compiled.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/deponian/logalize
+	arch = x86_64
+	license = MIT
+	conflicts = logalize
+	backup = etc/logalize/logalize.yaml
+	source = logalize-bin-0.1.2.tar.zst::https://github.com/deponian/logalize/releases/download/v0.1.2/logalize_0.1.2_linux_amd64.pkg.tar.zst
+	sha256sums = 3cfdb951e2513c84825a3399d20e558cbe08711f43af54e29148b43fda613d71
+
+pkgname = logalize-bin
