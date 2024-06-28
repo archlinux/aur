@@ -4,12 +4,13 @@
 
 pkgname=blockdiag
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="generates block-diagram image from text"
 url="http://blockdiag.com"
 license=('Apache')
 arch=('any')
 depends=('python-setuptools' 'python-funcparserlib' 'python-pillow' 'python-webcolors')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest' 'python-pycodestyle' 'python-reportlab' 'python-docutils'
               'python-wand' 'ghostscript' 'librsvg')
 optdepends=('python-reportlab: for PDF export'
