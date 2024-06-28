@@ -30,13 +30,13 @@ pkgbase = secondfaqtor
 	depends = gambas3-gb-desktop-x11>=3.15
 	depends = gambas3-gb-desktop-x11<3.99.0
 	depends = zbar
-	source = https://realityripple.com/Software/Applications/SecondFactor/For-Linux/AUR/SecondFaqtor-1.2.4.tar.bz2
-	source = https://realityripple.com/Software/Applications/SecondFactor/For-Linux/AUR/SecondFaqtor-1.2.4.tar.bz2.sig
+	source = https://realityripple.com/Software/Applications/SecondFactor/For-Linux/AUR/SecondFaqtor-1.2.5.tar.bz2
+	source = https://realityripple.com/Software/Applications/SecondFactor/For-Linux/AUR/SecondFaqtor-1.2.5.tar.bz2.sig
 	source = https://realityripple.com/Software/Applications/SecondFactor/For-Linux/AUR/secondfaqtor.desktop
 	source = https://realityripple.com/Software/Applications/SecondFactor/For-Linux/AUR/secondfaqtor.desktop.sig
 	validpgpkeys = 2BE391EF8EF9DB1E9BF546620B7C73813443493A
-	sha256sums = 3cfc8b93d148994e1f04142be9527b1e46f9726e57a021b5a6232c625aa8abba
-	sha256sums = ed4d705332a1a7aae7b1c27ad087336aa8f8e7be5b85d46daa1bba010c3ee4a5
+	sha256sums = 44ebe9abee0f281c100c8f45ea0b6ab64d46e1c0b01eccd5e512c48f748cfc23
+	sha256sums = 08b85ad576e20edf528ad7e8ee51e787267a4c0ff9fe66e02fa62cc1110e4f43
 	sha256sums = 70e6ce665d759ed7e6057ad3b5fbbd34413fdc50cbf7b813b4a80a83e8f3610d
 	sha256sums = 63d453bf8db7cfcbf1ec029a6ec57df9d35b66d35c908f206db6cf4f82514ac0
 

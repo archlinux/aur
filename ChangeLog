@@ -1,3 +1,6 @@
+* Fri Jun 28 2024 Andrew Sachen <webmaster@RealityRipple.com> 1.2.5
+- Fixed more potential no-profile bugs
+
 * Thu Jun 27 2024 Andrew Sachen <webmaster@RealityRipple.com> 1.2.4
 - Fixed import bug when no profiles exist
 
