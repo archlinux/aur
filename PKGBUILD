@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=beekeeper-studio-git
 _pkgname="Beekeeper Studio"
-pkgver=4.4.0.r1.g0ea794e
+pkgver=4.6.2.r79.g143d95b
 _electronversion=18
 _nodeversion=16
 pkgrel=1
@@ -73,8 +73,8 @@ build() {
     fi
         sed "/'snap',/d;/'deb',/d;s|'appImage'|'dir'|g" -i ./vue.config.js
         rm -rf ./dist_electron
-        yarn install --cache-folder "${srcdir}/.yarn_cache"
-        yarn run electron:build
+        NODE_ENV=development yarn install --cache-folder "${srcdir}/.yarn_cache"
+        NODE_ENV=production yarn run electron:build
     }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
