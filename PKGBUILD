@@ -1,16 +1,14 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=libvpl-tools-git
-pkgver=1.0.0.r0.g452ab25
+pkgver=1.1.0.r0.gdf0e9d8
 pkgrel=1
-pkgdesc='Intel Video Processing Library tools (git version)'
+pkgdesc='Tools for Intel Video Processing Library (git version)'
 arch=('x86_64')
 url='https://github.com/intel/libvpl-tools/'
 license=('MIT')
-depends=('libdrm' 'libva' 'libvpl-git' 'libx11' 'wayland')
-optdepends=('intel-media-sdk: runtime implementation for legacy Intel GPUs'
-            'vpl-gpu-rt: runtime implementation for Tiger Lake and newer GPUs')
-makedepends=('git' 'cmake' 'ninja' 'libpciaccess' 'wayland-protocols')
+depends=('libdrm' 'libva' 'libvpl-git' 'libx11' 'vpl-runtime' 'wayland')
+makedepends=('git' 'cmake' 'libpciaccess' 'wayland-protocols')
 provides=('libvpl-tools')
 conflicts=('libvpl-tools')
 source=('git+https://github.com/intel/libvpl-tools.git')
@@ -21,12 +19,18 @@ pkgver() {
 }
 
 build() {
+    # fix warning: "_FORTIFY_SOURCE" redefined
+    # note: upstream forces _FORTIFY_SOURCE=2
+    export CFLAGS="${CFLAGS/-Wp,-D_FORTIFY_SOURCE=?/}"
+    export CXXFLAGS="${CXXFLAGS/-Wp,-D_FORTIFY_SOURCE=?/}"
+    
     # NOTE: fails with 'None' build type
-    # NOTE: fails with 'Unix Makefiles' generator
+    export CFLAGS+=' -DNDEBUG'
+    export CXXFLAGS+=' -DNDEBUG'
     cmake -B build -S libvpl-tools \
-        -G 'Ninja' \
+        -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE:STRING='Release' \
-        -DCMAKE_INSTALL_PREFIX='/usr' \
+        -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DBUILD_TESTS:BOOL='ON' \
         -DTOOLS_ENABLE_OPENCL:BOOL='ON' \
         -DVPL_INSTALL_LICENSEDIR:PATH="share/licenses/${pkgname}" \
