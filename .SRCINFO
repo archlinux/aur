@@ -1,0 +1,19 @@
+pkgbase = perl-html-fromansi-tiny
+	pkgdesc = Perl/CPAN Module HTML::FromANSI::Tiny: Easily convert colored command line output to HTML
+	pkgver = 0.107
+	pkgrel = 1
+	url = https://metacpan.org/release/HTML-FromANSI-Tiny
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-differences
+	checkdepends = perl-test-requires
+	depends = perl>=5.006
+	depends = perl-html-parser
+	depends = perl-parse-ansicolor-tiny>=0.600
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RW/RWSTAUNER/HTML-FromANSI-Tiny-0.107.tar.gz
+	md5sums = fa753b4a1c26c7ab572f4a3bb3ecde28
+	sha512sums = 12858157c14ae808f59e4856fb62247f4f8073bb68e617cfc191f3615e22038041b9262a3e45926a61f4ec767b52057328845e378b5f0851d343c3c80a17ea1a
+
+pkgname = perl-html-fromansi-tiny
