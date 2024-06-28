@@ -1,0 +1,15 @@
+pkgbase = datadash-git
+	pkgdesc = Visualize and graph data in the terminal
+	pkgver = 0.1.0.r5.g89316c7
+	pkgrel = 1
+	url = https://github.com/keithknott26/datadash
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = go
+	provides = datadash=0.1.0
+	conflicts = datadash
+	source = datadash::git+https://github.com/keithknott26/datadash.git
+	sha256sums = SKIP
+
+pkgname = datadash-git
