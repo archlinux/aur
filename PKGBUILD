@@ -3,8 +3,8 @@
 # -*- sh -*-
 
 pkgname='dasel'
-pkgver=2.7.0
-pkgrel=3
+pkgver=2.8.0
+pkgrel=1
 pkgdesc='Select, put and delete data from JSON, TOML, YAML, XML and CSV files with a single command-line tool'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url='https://github.com/TomWright/dasel'
@@ -28,8 +28,8 @@ build() {
   # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
   #
   # ld(1) says: “Supported for i386 and x86-64.”
-  case "${CARCH:-unknown}" in
-    'x86_64' | 'i386' )
+  case "Z${CARCH:-unknown}" in
+    'Zx86_64' | 'Zi386' )
       export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
     ;;
     * ) : pass ;;
@@ -59,16 +59,14 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
 
-  install -vDm0755 dasel "$pkgdir/usr/bin/dasel"
-  install -vDm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-  for _doc in CHANGELOG CODE_OF_CONDUCT README; do
-    install -vDm0644 "$_doc.md" "$pkgdir/usr/share/doc/$pkgname/$_doc.md"
-  done
+  install -vDm0755 -t "$pkgdir/usr/bin" dasel
+  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
+    {CHANGELOG,CODE_OF_CONDUCT,README}.md
 
   "$pkgdir/usr/bin/dasel" man
 
-  install -vDm0644 *.1 -t "$pkgdir/usr/share/man/man1/"
+  install -vDm0644 -t "$pkgdir/usr/share/man/man1" *.1
 
   for _shell in bash fish zsh; do
     "$pkgdir/usr/bin/dasel" completion "$_shell" > "completion.$_shell"
@@ -83,10 +81,10 @@ package() {
 }
 
 sha256sums=(
-  '93546e10971ca74c3192940fe9435b48368cefa677cef8a7532b214c6d8b6c39'
+  '906f2bdb7866c58d16b7b3643f9ec19455384a9a4a50e1bf6bf59cd3914076a7'
 )
 b2sums=(
-  '27fdc70f998c389453c7b6c6ec59491f3482ff7df1a043499e985179c5a51f6b58328272d733eddb28009ada0dd206b0e4fed37ec6bc43229314a0c1906e215e'
+  '4c3603cacb592e0912b2fb552c44c26dd1578fbe1c9f4d88625098eeaeb3f7f61996bcde68020f122a53adafa2d35efbed81e60124a62eca0e27007df3e9a80a'
 )
 
 # eof

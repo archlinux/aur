@@ -1,9 +1,7 @@
-## [v2.7.0] - 2024-03-14
-
-### Added
-
-- `null()` function. [See docs](https://daseldocs.tomwright.me/functions/null)
+## [Unreleased]
 
 ### Fixed
 
-- Dasel now correctly handles `null` values.
+- Fixed a bug that could cause a panic. 
+- `type()` now returns `null` instead of `unknown` for null values.
+- Added YAML support for merge tag/aliases. Thanks to [pmeier](https://github.com/pmeier). [Issue 285](https://github.com/TomWright/dasel/issues/285).
