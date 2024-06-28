@@ -1,0 +1,26 @@
+pkgbase = dstask-bin
+	pkgdesc = Single binary terminal-based TODO manager with git-based sync + markdown notes per task
+	pkgver = 0.26.0
+	pkgrel = 1
+	url = https://github.com/naggie/dstask
+	arch = x86_64
+	arch = armv5h
+	license = MIT
+	provides = dstask
+	provides = dstask-import
+	conflicts = dstask
+	conflicts = dstask-import
+	source = https://github.com/naggie/dstask/raw/v0.26.0/README.md
+	source = https://github.com/naggie/dstask/raw/v0.26.0/LICENSE
+	sha256sums = be122b1ce86379d58aa7b9f6dc8e874e6038d093a6a93292422e759252651546
+	sha256sums = f1630544f9da6d125967a9224cee919b686a7b2b3ea37d7ecbfa8216b2837534
+	source_x86_64 = dstask-0.26.0::https://github.com/naggie/dstask/releases/download/v0.26.0/dstask-linux-amd64
+	source_x86_64 = dstask-import-0.26.0::https://github.com/naggie/dstask/releases/download/v0.26.0/dstask-import-linux-amd64
+	sha256sums_x86_64 = 7cb00054a26884b3d828e532665a44b66a337e0f597601cb342656635bf3d6c0
+	sha256sums_x86_64 = 40712eec79f0a1046303a825b36bdd95baf3b60fb40c2496e8791513a974b5d7
+	source_armv5h = dstask-0.26.0::https://github.com/naggie/dstask/releases/download/v0.26.0/dstask-linux-arm5
+	source_armv5h = dstask-import-0.26.0::https://github.com/naggie/dstask/releases/download/v0.26.0/dstask-import-linux-arm5
+	sha256sums_armv5h = f10e067d0a30c0adaa0a75557761b4e8c8f6119252e31ba20127ce8f8ff6a07a
+	sha256sums_armv5h = 4c6ef2e0cb93f758a558337938d3aa66f008a2a554dac58a4a0ebbe9107da2c3
+
+pkgname = dstask-bin
