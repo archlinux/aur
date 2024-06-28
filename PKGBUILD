@@ -1,9 +1,9 @@
 # Maintainer: zotan <aur@zotan.email>
 
 pkgname=iceshrimp.net-git
-pkgver=v2024.1.alpha+6a5ae73
-pkgrel=2
-pkgdesc="The Iceshrimp .NET rewrite. Caution: This is alpha software. It likely won't eat your data, but stability isn't guaranteed."
+pkgver=v2024.1.beta1.r0.g0e6caa6
+pkgrel=1
+pkgdesc="The Iceshrimp .NET rewrite"
 arch=(x86_64 aarch64)
 url="https://iceshrimp.dev/iceshrimp/iceshrimp.net"
 license=(EUPL)
@@ -39,9 +39,7 @@ sha512sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/iceshrimp.net"
-  #git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
-  echo -n "v2024.1.alpha+"
-  git rev-parse --short HEAD
+  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 rid() {
