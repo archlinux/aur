@@ -10,8 +10,8 @@ license=(MIT)
 pkgdesc='Modular Wayland compositor library (stable, with patches)'
 url=https://gitlab.freedesktop.org/wlroots/wlroots
 arch=(x86_64)
-provides=("libwlroots.so" "wlroots=${pkgver}")
-conflicts=('wlroots<0.18')
+provides=('libwlroots.so=12-64' "wlroots=${pkgver}")
+conflicts=('libwlroots.so=12-64')
 options=(debug)
 depends=(
 	glslang
