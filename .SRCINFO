@@ -1,6 +1,6 @@
 pkgbase = bed
 	pkgdesc = binary editor written in Go
-	pkgver = 0.2.4
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://github.com/itchyny/bed
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = bed
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = bed-0.2.4.tar.gz::https://github.com/itchyny/bed/archive/v0.2.4.tar.gz
-	sha256sums = 01d0a28a8e0b66dc73370de2c2b22368ca9c653bf6c7ae4b3bc2f13af42bc788
+	source = bed-0.2.5.tar.gz::https://github.com/itchyny/bed/archive/v0.2.5.tar.gz
+	sha256sums = a8fa1bddcf65fd3dd52ede2f3fc1cb2840420e9a24fb8fd8c950a9bab9d86f70
 
 pkgname = bed
