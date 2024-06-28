@@ -29,8 +29,8 @@ wow64build=true
 ##   - with _custompatches: uses master
 ##   - with patch repo: uses commit/tag from patch repo
 
-_desired_wine_commit=f9af971bd7d6799d54436ba9f7fa327b7edfbc77
-_desired_staging_commit=7fc08a960bcefc1e06a6d5587079648fdde9112f
+_desired_wine_commit=727472ab7d60e285a28fb67fd5e3e21907dd060a
+_desired_staging_commit=1b9ef03b2c2d6291a0c1aa8f584a1e8e9b4fd7a5
 
 _cleanbuildfolders=false
 _autoupdate=false
@@ -42,7 +42,7 @@ _install_static=true ## .a libs which may be required for external programs such
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the custompatches folder
 ## manually if you wish to use them alongside your own patches.
 ## also recommended to set _desired_wine_commit and _desired_staging_commit if this is used
-_custompatches=false
+_custompatches=true
 
 ################################################################################################################################
 ################################################################################################################################
@@ -54,7 +54,7 @@ pkgname=wine-osu-spectator"${_wowname}"
 pkgver=9.11
 # workaround for pkgrel overwritten by pkgver() (taken from TkG PKGBUILD), real is the eval one
 pkgrel=1
-eval pkgrel=5
+eval pkgrel=6
 
 pkgdesc="A compatibility layer for running Windows programs, but with osu! specific patches"
 if [ "$wow64build" = "true" ]; then pkgdesc+=" (WoW64 version)"; fi
@@ -90,7 +90,7 @@ if ! ([ -d "${_where}"/custompatches ] && [ "${_custompatches}" = "true" ]); the
   _custompatches="false" ## didn't have a custompatches dir
 fi
 
-if [ -n "${_desired_wine_commit}" ]; then
+if [ -n "${_desired_wine_commit}" ] && ! [ "${_custompatches}" = "true" ]; then
   source+=("git+https://gitlab.winehq.org/wine/wine.git#commit=${_desired_wine_commit}")
   sha512sums+=('513716990592654a9cd500266da48e89c1cff5c2a225facedd4d52a468ee3423e4f6f7ba73bc9e4cdc195bba42b1d230d6dfb7b005d38112b9fd42cd6c40ad4d')
 else
@@ -98,7 +98,7 @@ else
   sha512sums+=('SKIP')
 fi
 
-if [ -n "${_desired_staging_commit}" ]; then
+if [ -n "${_desired_staging_commit}" ] && ! [ "${_custompatches}" = "true" ]; then
   source+=("git+https://github.com/wine-staging/wine-staging.git#commit=${_desired_staging_commit}")
   sha512sums+=('1d29e6632312ea6ddf2db8bf65997a7832f53d7f304d6dfc549df5212b25b8995b55a54bd377bbf889649246582631254879569d5c76f663346d8064577d826d')
 else
@@ -126,7 +126,8 @@ depends=(
 
 makedepends=(autoconf bison ccache perl fontforge flex
   gcc
-  llvm-mingw-w64-toolchain-ucrt-bin 
+  clang
+  llvm-mingw-w64-toolchain
   giflib
   libpng
   gnutls
@@ -197,31 +198,34 @@ pkgver() {
   git describe --tags --abbrev=0 | cut -f2 -d'-'
 }
 
+# this is a bit hideous (env ls to not use some shell builtin)
+(( __llvm_ver="$(env ls -1 /opt/llvm-mingw/lib/clang/)" )) || \
+  _failure "A numbered folder in /opt/llvm-mingw/lib/clang/ wasn't found. Are you sure you have the llvm-mingw toolchain installed?"
+
 # exported at the start of every function
 _set_vars() {
   export PATH="/opt/llvm-mingw/bin":"${PATH}"
-  export LD_RUN_PATH="/opt/llvm-mingw/lib:/opt/llvm-mingw/x86_64-w64-mingw32/lib:/opt/llvm-mingw/i686-w64-mingw32/lib:/opt/llvm-mingw/lib/clang/18/lib/windows:$LD_RUN_PATH"
-  
+  export LD_RUN_PATH="/opt/llvm-mingw/lib:/opt/llvm-mingw/x86_64-w64-mingw32/lib:/opt/llvm-mingw/i686-w64-mingw32/lib:/opt/llvm-mingw/lib/clang/${__llvm_ver}/lib/windows:$LD_RUN_PATH"
 
   export CPPFLAGS="-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0 -DNDEBUG -D_NDEBUG"
-  _common_cflags="${_CPU_TARGET} -O2 -pipe -fno-strict-aliasing -fomit-frame-pointer -fwrapv -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -Wno-error=return-mismatch -Wno-error=int-conversion -w"
+  _common_cflags="${_CPU_TARGET} -O3 -pipe -fno-strict-aliasing -fomit-frame-pointer -fwrapv -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -Wno-error=return-mismatch -Wno-error=int-conversion -w"
 
-  #_LTO_FLAGS="-flto -fdevirtualize-at-ltrans -flto-partition=one -Wl,-flto" # not currently used
-  #_GCC_NATIVE_FLAGS="-floop-nest-optimize -fgraphite-identity -floop-strip-mine " # not currently used
-  #_OPTIMIZE_HARDER_FLAGS="-fipa-pta -fgcse-sm -fgcse-las -fira-loop-pressure -fsched-pressure -fsched-spec-load" # not currently used
+  _LTO_FLAGS="-ffat-lto-objects -flto=full -Wl,--flto=full"
+  #_GRAPHITE_FLAGS="-floop-nest-optimize -fgraphite-identity -floop-strip-mine " # not currently used
+  #_OPTIMIZE_HARDER_FLAGS="-fipa-pta -fgcse-sm -fgcse-las -fira-loop-pressure -fsched-pressure -fsched-spec-load" # gcc leftovers
 
-  _native_common_cflags="" # only for the non-mingw side
+  _native_common_cflags="${_LTO_FLAGS}" # only for the non-mingw side
 
   _GCC_FLAGS="${_common_cflags} ${_native_common_cflags} ${CPPFLAGS}"
   _LD_FLAGS="${_GCC_FLAGS} -Wl,-O2,--sort-common,--as-needed"
 
-  _CROSS_FLAGS="${_common_cflags} ${CPPFLAGS} -L/opt/llvm-mingw/lib -I/opt/llvm-mingw/include -I/opt/llvm-mingw/lib/clang/18/include -I/opt/llvm-mingw/generic-w64-mingw32/include -L/opt/llvm-mingw/x86_64-w64-mingw32/lib -L/opt/llvm-mingw/i686-w64-mingw32/lib -L/opt/llvm-mingw/lib/clang/18/lib/windows"
+  _CROSS_FLAGS="${_common_cflags} ${CPPFLAGS} -L/opt/llvm-mingw/lib -I/opt/llvm-mingw/include -I/opt/llvm-mingw/lib/clang/${__llvm_ver}/include -I/opt/llvm-mingw/generic-w64-mingw32/include -L/opt/llvm-mingw/x86_64-w64-mingw32/lib -L/opt/llvm-mingw/i686-w64-mingw32/lib -L/opt/llvm-mingw/lib/clang/${__llvm_ver}/lib/windows"
   _CROSS_LD_FLAGS="${_CROSS_FLAGS} -Wl,-O2,--sort-common,--as-needed,--file-alignment=4096"
 
   export STRIP="ccache strip"
 
-  export CC="ccache clang"
-  export CXX="ccache clang++"
+  export CC="ccache /usr/bin/clang"
+  export CXX="ccache /usr/bin/clang++"
   export CROSSCC="ccache x86_64-w64-mingw32-clang"
   export CROSSCC64="ccache x86_64-w64-mingw32-clang"
   export CROSSCC32="ccache i686-w64-mingw32-clang"
