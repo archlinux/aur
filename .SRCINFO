@@ -1,0 +1,15 @@
+pkgbase = openconnect-systemd-credentials-git
+	pkgdesc = OpenConnect VPN client Systemd Credentials integration helpers.
+	pkgver = r2.487771f
+	pkgrel = 1
+	url = https://github.com/s3rj1k/openconnect-systemd-credentials
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = gcc
+	makedepends = go
+	depends = openconnect
+	source = git+https://github.com/s3rj1k/openconnect-systemd-credentials.git#branch=main
+	md5sums = SKIP
+
+pkgname = openconnect-systemd-credentials-git
