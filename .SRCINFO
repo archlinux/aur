@@ -1,7 +1,7 @@
 pkgbase = python-av
 	pkgdesc = Pythonic bindings for FFmpeg
-	pkgver = 12.1.0
-	pkgrel = 2
+	pkgver = 12.2.0
+	pkgrel = 1
 	url = https://pyav.basswood-io.com
 	arch = x86_64
 	arch = i686
@@ -17,13 +17,11 @@ pkgbase = python-av
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	makedepends = pkgconf
-	depends = ffmpeg<=2:7
+	depends = ffmpeg6.1
 	depends = python
 	depends = python-numpy
 	depends = python-pillow
-	source = av-12.1.0.tar.gz::https://github.com/PyAV-Org/PyAV/archive/refs/tags/v12.1.0.tar.gz
-	source = python-av-bitstream-const.patch
-	b2sums = d83794a6d5f0137141ffcc1787b407285c98faa83598751171cf5013005d540adf65653d5b79d5ea7ce925523a1956b605339bc99f866d634c28e47794aa5782
-	b2sums = aa2e67f007494b424efb51534967c522ecd84eb66ae90428e8d5199fbb256e47a48930657d96fc31b11ec6863f8c9611ec6cb603d41ffb7f232abd9eda5ee067
+	source = av-12.2.0.tar.gz::https://github.com/PyAV-Org/PyAV/archive/refs/tags/v12.2.0.tar.gz
+	b2sums = 262f4aad4bc859c112fa5dd16a8cf95559227f1866659eff9f2808680cc817c3c611b7f59afe0214fc779f6c2cb2459cc75f0a4a17558aef9c190b7cf18a1fdf
 
 pkgname = python-av
