@@ -1,0 +1,17 @@
+pkgbase = gomphotherium-bin
+	pkgdesc = A command line Mastodon client
+	pkgver = 0.4.0.r22.g6fe7127
+	pkgrel = 1
+	url = https://github.com/mrusme/gomphotherium
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = make
+	makedepends = go>=1.19
+	depends = glibc
+	provides = gomphotherium=0.4.0
+	conflicts = gomphotherium
+	source = gomphotherium::git+https://github.com/mrusme/gomphotherium.git
+	sha256sums = SKIP
+
+pkgname = gomphotherium-bin
