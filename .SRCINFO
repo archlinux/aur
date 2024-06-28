@@ -1,7 +1,7 @@
 pkgbase = iceshrimp.net-git
-	pkgdesc = The Iceshrimp .NET rewrite. Caution: This is alpha software. It likely won't eat your data, but stability isn't guaranteed.
-	pkgver = v2024.1.alpha+6a5ae73
-	pkgrel = 2
+	pkgdesc = The Iceshrimp .NET rewrite
+	pkgver = v2024.1.beta1.r0.g0e6caa6
+	pkgrel = 1
 	url = https://iceshrimp.dev/iceshrimp/iceshrimp.net
 	install = iceshrimp.net.install
 	arch = x86_64
