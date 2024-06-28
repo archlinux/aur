@@ -1,7 +1,8 @@
 # Maintainer: Álvaro Jesús Baena Rosino <alvarojsino8 at gmail dot com>
 pkgname='mecano'
 pkgver='0.1.0'
-pkgrel='2'
+pkgrel='1'
+epoch='2'
 pkgdesc='Minimalistic typing train'
 arch=('x86_64')
 depends=('glibc')
