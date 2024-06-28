@@ -1,7 +1,7 @@
 # Maintainer: Vaporeon <vaporeon@vaporeon.io>
 pkgname=invader
-pkgver=0.53.8
-_commit=801548743499b3b29267979111d7703de6e25ba5
+pkgver=0.54.0
+_commit=5582135429d0557eb0fe422f251b9dad021709ac
 pkgrel=1
 pkgdesc="An open source toolkit for creating maps and assets for Halo: Combat Evolved"
 depends=('libtiff' 'libarchive' 'libsquish' 'flac' 'freetype2' 'libsamplerate'
