@@ -1,3 +1,6 @@
+* Thu Jun 27 2024 Andrew Sachen <webmaster@RealityRipple.com> 1.2.4
+- Fixed import bug when no profiles exist
+
 * Thu Jan 04 2024 Andrew Sachen <webmaster@RealityRipple.com> 1.2.3
 - Fixed Gambas 3.18 compatibility
 

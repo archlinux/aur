@@ -3,7 +3,7 @@
 pkgname=secondfaqtor
 _realname=SecondFaqtor
 pkgdesc="Two-Factor Authenticator"
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 arch=('any')
 url="https://realityripple.com/Software/Applications/SecondFactor/For-Linux/"
