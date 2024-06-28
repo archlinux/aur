@@ -9,6 +9,7 @@ pkgbase = everytime
 	makedepends = npm
 	makedepends = gendesk
 	makedepends = curl
+	makedepends = nvm
 	depends = electron28
 	depends = nodejs
 	provides = everytime

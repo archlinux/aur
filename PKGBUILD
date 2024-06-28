@@ -22,6 +22,7 @@ makedepends=(
     'npm'
     'gendesk'
     'curl'
+    'nvm'
 )
 options=(
     '!strip'
