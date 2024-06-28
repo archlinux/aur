@@ -2,7 +2,7 @@
 
 _pkgname=openweatherrefined
 pkgname=gnome-shell-extension-openweatherrefined
-pkgver=135
+pkgver=137
 pkgrel=1
 pkgdesc="Display weather for the current or a specified location in the GNOME shell"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL-3.0-or-later')
 depends=('dconf' 'gnome-shell')
 
 source=("${_pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('5d54bd39004bc458224032c2ff74038890b89fb8d2fe1ceefce2a3ee165d4592')
+sha256sums=('3b04f79c6c797d39d014352256d79a77c287bf6d5804790b67f8c23ed0a02b08')
 
 build() {
   cd "gnome-openweather-${pkgver}"
