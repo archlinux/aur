@@ -4,18 +4,18 @@
 # Contributor: Jan Hambrecht <jaham at gmx dot net>
 
 pkgname=spacenavd
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc='Free user-space driver for 6-dof space-mice (space navigator, space pilot, space traveller, ...)'
 arch=('x86_64')
 url='https://spacenav.sourceforge.net/'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 makedepends=("libx11")
 backup=('etc/spnavrc')
 source=("https://github.com/FreeSpacenav/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"
         "spacenavd.service")
-sha256sums=('94f28b56dcdb9e9439ea51a06fb1aae3ab5c5db3ca532d188c6d77d2148cc575'
-            'aeb15629aba253b76205e9a50dbc54fe35df5ab6b25a25da16ecb7f261e587d5')
+sha256sums=('4302836c31f7e0998ae7bb85e4d357b85cb8b9bcbc381abfaba4f647c5c2f726'
+            '8ec0531f98dabde894412c3e5d60870f776ed546c11873f190ea6f7ccf6ad956')
 
 build() {
   cd $pkgname-$pkgver

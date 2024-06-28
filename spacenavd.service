@@ -3,7 +3,7 @@ Description=Spacenav driver daemon
 
 [Service]
 Type=forking
-PIDFile=/var/run/spnavd.pid
+PIDFile=/run/spnavd.pid
 ExecStart=/usr/bin/spacenavd
 
 [Install]
