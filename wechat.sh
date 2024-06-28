@@ -166,6 +166,7 @@ function execApp() {
 	-p SystemCallFilter=~@raw-io \
 	-p SystemCallFilter=~@reboot \
 	-p SystemCallFilter=~@swap \
+	-p SystemCallErrorNumber=EPERM \
 	-p ProcSubset=pid \
 	-p RestrictAddressFamilies=AF_UNIX \
 	-p RestrictAddressFamilies=AF_INET \
