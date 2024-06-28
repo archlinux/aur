@@ -1,7 +1,7 @@
 pkgbase = vulkan-memory-allocator
 	pkgdesc = Easy to integrate Vulkan memory allocation library
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gpuopen.com/vulkan-memory-allocator/
 	arch = any
 	groups = vulkan-devel
