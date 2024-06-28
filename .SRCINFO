@@ -1,7 +1,7 @@
 pkgbase = ultimate-tic-tac-toe
 	pkgdesc = Play Ultimate Tic Tac Toe
-	pkgver = 0.2.0
-	pkgrel = 3
+	pkgver = 0.2.1
+	pkgrel = 1
 	url = https://github.com/Nokse22/ultimate-tic-tac-toe
 	arch = x86_64
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = ultimate-tic-tac-toe
 	makedepends = meson
 	depends = libadwaita
 	depends = python-gobject
-	source = git+https://github.com/Nokse22/ultimate-tic-tac-toe.git#commit=a9ae9da4d2bff3e3113a60825dc16d6f6f2bbf2a
+	source = git+https://github.com/Nokse22/ultimate-tic-tac-toe.git#commit=81b27061fe2b8c7685e270964777494fb58adb5a
 	sha256sums = SKIP
 
 pkgname = ultimate-tic-tac-toe
