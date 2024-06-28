@@ -4,12 +4,12 @@
 _pkgname=emoji-keyboard
 pkgname=$_pkgname-appimage
 pkgver=4.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Virtual keyboard-like emoji palette (AppImage release)"
 url="https://github.com/OzymandiasTheGreat/emoji-keyboard"
 license=('MIT')
 arch=('x86_64')
-depends=('fuse2')
+depends=('emoji-font' 'fuse2')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=('!strip')

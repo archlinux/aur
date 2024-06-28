@@ -1,10 +1,11 @@
 pkgbase = emoji-keyboard-appimage
 	pkgdesc = Virtual keyboard-like emoji palette (AppImage release)
 	pkgver = 4.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/OzymandiasTheGreat/emoji-keyboard
 	arch = x86_64
 	license = MIT
+	depends = emoji-font
 	depends = fuse2
 	provides = emoji-keyboard
 	conflicts = emoji-keyboard
