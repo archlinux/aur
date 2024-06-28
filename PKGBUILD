@@ -1,37 +1,37 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
-pkgname='cloudlist'
-pkgver=0.0.1
+pkgname="cloudlist"
+pkgver=1.0.8
 pkgrel=1
-pkgdesc='Tool for listing Assets from multiple Cloud Providers'
-arch=('x86_64' 'armv6h' 'aarch64')
-url='https://github.com/projectdiscovery/cloudlist'
+pkgdesc="Tool for listing Assets from multiple Cloud Providers"
+arch=('any')
+url="https://github.com/projectdiscovery/${pkgname}"
 license=('MIT')
+depends=('glibc')
 makedepends=('go')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('8ea13a80755e059bf38ca96e40012161cf6101567e9ae0f18cbf6c70b2810534')
+_pkgsrc="${pkgname}-${pkgver}"
+source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('e99290c7eab2a1328cdbafbf6d53bc8ce693fb201dc201224fffc5b2f4b9aaaf')
 
 prepare() {
-  export GOPATH="${srcdir}/gopath"
-  go clean -modcache
+  cd "${srcdir}/${_pkgsrc}"
+  [ -d "build" ] || mkdir "build"
 }
 
 build() {
+  cd "${srcdir}/${_pkgsrc}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-
-  cd "${pkgname}-${pkgver}"
-  go build -v -o "${pkgname}" ."/cmd/${pkgname}"
+  go build -o "build/${pkgname}" "./cmd/${pkgname}"
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
-  install -Dvm755 "${pkgname}" -t "${pkgdir}/usr/bin"
-  install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dvm644 'LICENSE.md' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd "${srcdir}/${_pkgsrc}"
+  install -Dm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
-
-# vim: ts=2 sw=2 et:
