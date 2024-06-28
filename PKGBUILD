@@ -3,7 +3,7 @@
 
 pkgname=ack-git
 pkgver=dev.r0.gd43c7bd00
-pkgrel=2
+pkgrel=3
 pkgdesc="The Amsterdam Compiler Kit"
 arch=('i686' 'x86_64')
 url="http://tack.sourceforge.net/"
@@ -34,7 +34,7 @@ prepare() {
 build() {
 	cd "${srcdir}/${_gitrepo}"
 
-	make -r CFLAGS="" DEFAULT_PLATFORM="linux386" ACK_TEMP_DIR="${srcdir}"
+	make -r CFLAGS="" DEFAULT_PLATFORM="linux386" ACK_TEMP_DIR="${srcdir}" PREFIX=/usr
 }
 
 package(){

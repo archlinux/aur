@@ -1,7 +1,7 @@
 pkgbase = ack-git
 	pkgdesc = The Amsterdam Compiler Kit
 	pkgver = dev.r0.gd43c7bd00
-	pkgrel = 2
+	pkgrel = 3
 	url = http://tack.sourceforge.net/
 	arch = i686
 	arch = x86_64
