@@ -2,7 +2,7 @@
 
 pkgname=cohesion-git
 pkgrel=1
-pkgver=r170.g0b018dc
+pkgver=r173.gda1c1d0
 pkgdesc="Notion client for Linux"
 arch=(x86_64)
 url="https://github.com/brunofin/cohesion"
