@@ -10,7 +10,7 @@ pkgbase = akuse-git
 	makedepends = nvm
 	makedepends = git
 	makedepends = curl
-	depends = electron25
+	depends = electron26
 	provides = akuse=1.2.0
 	conflicts = akuse
 	source = akuse.git::git+https://github.com/akuse-app/Akuse.git

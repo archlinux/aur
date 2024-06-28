@@ -2,8 +2,8 @@
 pkgname=akuse-git
 _pkgname=Akuse
 pkgver=1.2.0.r0.g7d7fbc3
-_electronversion=25
-_nodeversion=18
+_electronversion=26
+_nodeversion=20
 pkgrel=1
 pkgdesc="Simple and easy to use anime streaming desktop app without ads."
 arch=('any')
