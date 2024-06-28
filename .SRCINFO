@@ -1,0 +1,16 @@
+pkgbase = fast-ssh-bin
+	pkgdesc = Quickly connect to your services by navigating through your SSH config
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/Julien-R44/fast-ssh
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	depends = openssh
+	provides = fast-ssh
+	conflicts = fast-ssh
+	source_x86_64 = https://github.com/Julien-R44/fast-ssh/releases/download/v0.3.2/fast-ssh-v0.3.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 090b9e707cfa1fa5ca71a73e519d0d2dd89735a81aedb2cdbcbc705a575a1a0d
+
+pkgname = fast-ssh-bin
