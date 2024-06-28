@@ -5,6 +5,7 @@ pkgbase = emoji-keyboard-bin
 	url = https://github.com/OzymandiasTheGreat/emoji-keyboard
 	arch = x86_64
 	license = MIT
+	depends = emoji-font
 	depends = libayatana-appindicator
 	depends = webkit2gtk
 	depends = xdotool
