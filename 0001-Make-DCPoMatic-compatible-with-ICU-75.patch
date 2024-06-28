@@ -1,0 +1,125 @@
+From 94e94a67d0ac74957b9ee51d858a659979bf74f6 Mon Sep 17 00:00:00 2001
+From: Benjamin Radel <benjamin@radel.tk>
+Date: Fri, 28 Jun 2024 21:56:36 +0200
+Subject: [PATCH] Make DCPoMatic compatible with ICU >= 75
+
+ICU >= 75 uses c++17 features and therefore requires compilation with
+-std=c++17. However, this causes some namespace issues in
+src/wx/file_picker_ctrl.cc and
+src/wx/film_name_location_dialog.cc
+between boost::optional, boost::filesystem and the corresponding
+names from the std lib.
+
+The patch fixes this namespace issues and adds a version check in
+wscript to enable compilation with c++17, if icu >= 75 is detected.
+---
+ src/wx/file_picker_ctrl.cc          |  8 ++++----
+ src/wx/film_name_location_dialog.cc | 12 ++++++------
+ wscript                             |  6 ++++++
+ 3 files changed, 16 insertions(+), 10 deletions(-)
+
+diff --git a/src/wx/file_picker_ctrl.cc b/src/wx/file_picker_ctrl.cc
+index 7aa0bfb40..82978dad6 100644
+--- a/src/wx/file_picker_ctrl.cc
++++ b/src/wx/file_picker_ctrl.cc
+@@ -43,8 +43,8 @@ FilePickerCtrl::FilePickerCtrl(
+ 	bool open,
+ 	bool warn_overwrite,
+ 	std::string initial_path_key,
+-	optional<std::string> initial_filename,
+-	optional<filesystem::path> override_path
++	boost::optional<std::string> initial_filename,
++	boost::optional<boost::filesystem::path> override_path
+ 	)
+ 	: wxPanel (parent)
+ 	, _prompt (prompt)
+@@ -72,7 +72,7 @@ FilePickerCtrl::FilePickerCtrl(
+ 
+ 
+ void
+-FilePickerCtrl::set_filename(optional<string> filename)
++FilePickerCtrl::set_filename(boost::optional<string> filename)
+ {
+ 	if (filename) {
+ 		_file->SetLabel(std_to_wx(*filename));
+@@ -83,7 +83,7 @@ FilePickerCtrl::set_filename(optional<string> filename)
+ 
+ 
+ void
+-FilePickerCtrl::set_path(optional<boost::filesystem::path> path)
++FilePickerCtrl::set_path(boost::optional<boost::filesystem::path> path)
+ {
+ 	_path = path;
+ 
+diff --git a/src/wx/film_name_location_dialog.cc b/src/wx/film_name_location_dialog.cc
+index 05ffa7a68..6c54f1848 100644
+--- a/src/wx/film_name_location_dialog.cc
++++ b/src/wx/film_name_location_dialog.cc
+@@ -39,7 +39,7 @@ using namespace std;
+ using namespace boost;
+ 
+ 
+-optional<filesystem::path> FilmNameLocationDialog::_directory;
++boost::optional<boost::filesystem::path> FilmNameLocationDialog::_directory;
+ 
+ 
+ FilmNameLocationDialog::FilmNameLocationDialog (wxWindow* parent, wxString title, bool offer_templates)
+@@ -112,17 +112,17 @@ FilmNameLocationDialog::folder_changed ()
+ }
+ 
+ 
+-filesystem::path
++boost::filesystem::path
+ FilmNameLocationDialog::path () const
+ {
+-	filesystem::path p;
++	boost::filesystem::path p;
+ 	p /= wx_to_std (_folder->GetPath());
+ 	p /= wx_to_std (_name->GetValue());
+ 	return p;
+ }
+ 
+ 
+-optional<string>
++boost::optional<string>
+ FilmNameLocationDialog::template_name () const
+ {
+ 	if (!_use_template->GetValue() || _template_name->GetSelection() == -1) {
+@@ -139,7 +139,7 @@ FilmNameLocationDialog::template_name () const
+ bool
+ FilmNameLocationDialog::check_path ()
+ {
+-	if (filesystem::is_directory(path()) && !filesystem::is_empty(path())) {
++	if (boost::filesystem::is_directory(path()) && !boost::filesystem::is_empty(path())) {
+ 		if (!confirm_dialog (
+ 			    this,
+ 			    std_to_wx (
+@@ -150,7 +150,7 @@ FilmNameLocationDialog::check_path ()
+ 			    )) {
+ 			return false;
+ 		}
+-	} else if (filesystem::is_regular_file(path())) {
++	} else if (boost::filesystem::is_regular_file(path())) {
+ 		error_dialog (
+ 			this,
+ 			String::compose (wx_to_std(_("%1 already exists as a file, so you cannot use it for a film.")), path().c_str())
+diff --git a/wscript b/wscript
+index 5aeb4f1c3..744e45416 100644
+--- a/wscript
++++ b/wscript
+@@ -252,6 +252,12 @@ def configure(conf):
+                        lib=['icuio', 'icui18n', 'icudata', 'icuuc'],
+                        uselib_store='ICU')
+ 
++    # If ICU version > 75 we need stdc++17, otherwise we stick with stdc++11
++    if (conf.check_cfg(modversion='icu-i18n') >= '75'):
++        conf.env.append_value('CXXFLAGS', '-std=c++17')
++    else:
++        conf.env.append_value('CXXFLAGS', '-std=c++11')
++
+     # libsamplerate
+     conf.check_cfg(package='samplerate', args='--cflags --libs', uselib_store='SAMPLERATE', mandatory=True)
+ 
+-- 
+2.45.2
+

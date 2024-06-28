@@ -3,16 +3,19 @@
 # Contributor: Stefan Karner <stefan.karner@student.tuwien.ac.at>
 pkgname=dcpomatic
 pkgver=2.16.87
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, open-source program to generate Digital Cinema Packages (DCPs) from videos or images"
 arch=('i686' 'x86_64')
 url="https://dcpomatic.com/"
 #  CXXFLAGS="$CXXFLAGS  -I/usr/include/openjpeg-1.5/  -std=c++11"
 license=('GPL-2.0-or-later')
-depends=('libsub>=1.6.49' 'libcxml>=0.17.6' 'libdcp>=1.8.100' 'ffmpeg>=4.0.2' 'glib2' 'glu' 'imagemagick' 'libssh'  'wxwidgets-gtk3' 'wxwidgets-common' 'libzip' 'xz' 'libsndfile' 'libsamplerate' 'pangomm' 'rtaudio' 'x264' 'openssl' 'leqm-nrt>=0.0.2.r12.g30dcaea')
+depends=('libsub>=1.6.49' 'libcxml>=0.17.6' 'libdcp>=1.8.100' 'ffmpeg4.4' 'glib2' 'glu' 'icu' 'imagemagick' 'libssh'  'wxwidgets-gtk3' 'wxwidgets-common' 'libzip' 'xz' 'libsndfile' 'libsamplerate' 'pangomm' 'rtaudio' 'x264' 'openssl' 'leqm-nrt>=0.0.2.r12.g30dcaea')
 makedepends=('python' 'which' 'boost>=1.78.0' 'git')
-source=("${pkgname}-${pkgver}::git+git://git.carlh.net/git/${pkgname}.git#tag=v${pkgver}")
-sha256sums=('9195111b2ae0a1a3208c2f651184700e0dda5ff3ca6b52e6d15e4762127a8229')
+source=("${pkgname}-${pkgver}::git+git://git.carlh.net/git/${pkgname}.git#tag=v${pkgver}"
+'0001-Make-DCPoMatic-compatible-with-ICU-75.patch'
+)
+sha256sums=('9195111b2ae0a1a3208c2f651184700e0dda5ff3ca6b52e6d15e4762127a8229'
+            'df5ade6833feb7ce3b2d97b96b6c77594c64c4dc2b56e2d684997c881b8e3164')
 
 
 prepare() {
@@ -29,6 +32,8 @@ prepare() {
 
 
  build() {
+   # Current DoM is broken with ffmpeg 7, fallback on ffmpeg 4.4 for now
+   export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
    cd "${srcdir}/${pkgname}-${pkgver}"
    python waf configure --prefix=/usr --disable-tests
    python waf build
