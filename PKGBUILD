@@ -34,6 +34,7 @@ check() {
 
 package() {
   cd $pkgname-$pkgver
-  install -Dm0644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname"
+  # installation of license currently broken
+  # install -Dm0644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 }
