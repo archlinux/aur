@@ -19,7 +19,7 @@ StartupWMClass=wechat
 [Desktop Action quit]
 Name=Quit
 Name[zh_CN]=退出
-Exec=/usr/bin/killall wechat
+Exec=/usr/bin/wechat-uos-qt --actions quit
 Icon=application-exit
 
 [Desktop Action nosandbox]

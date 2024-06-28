@@ -14,9 +14,18 @@ function moeDect() {
 
 function sourceXDG() {
 	if [[ ! ${XDG_CONFIG_HOME} ]]; then
-		source "${HOME}"/.config/user-dirs.dirs
-		export XDG_CONFIG_HOME="${HOME}"/.config
+		if [ -f "${HOME}"/.config/user-dirs.dirs ]; then
+			source "${HOME}"/.config/user-dirs.dirs
+		fi
+		if [ ! ${XDG_CONFIG_HOME} ]; then
+			export XDG_CONFIG_HOME="${HOME}"/.config
+		fi
+		echo "[Info] Guessing XDG Config Home @ ${XDG_CONFIG_HOME}"
 	else
+		source "${XDG_CONFIG_HOME}"/user-dirs.dirs
+		echo "[Info] XDG Config Home @ ${XDG_CONFIG_HOME}"
+	fi
+	if [ -f "${XDG_CONFIG_HOME}"/user-dirs.dirs ]; then
 		source "${XDG_CONFIG_HOME}"/user-dirs.dirs
 	fi
 	if [[ ! ${XDG_DATA_HOME} ]]; then
@@ -137,12 +146,22 @@ function execApp() {
 			counter=$(expr ${counter} + 1)
 			sleep 0.1s
 		done
-		echo "[Info] D-Bus proxy took $(expr ${counter} / 10) seconds to launch"
+		echo "[Info] D-Bus proxy took $(expr ${counter} / 10)s to launch"
 	fi
 	touch "${XDG_DATA_HOME}"/WeChat_Data/.flatpak-info
 	cameraDect
 	importEnv
-	systemd-run --user ${sdOption} \
+	if [[ $(systemctl --user is-failed wechat-uos-qt.service) = failed ]]; then
+		echo "[Warning] WeChat failed last time"
+		systemctl --user reset-failed wechat-uos-qt.service
+	fi
+	if [[ $(systemctl --user is-active wechat-uos-qt.service) = active ]]; then
+		warnMulRunning wechat-uos-qt.service
+	fi
+	systemd-run \
+	--user \
+	${sdOption} \
+	-u wechat-uos-qt \
 	-p CPUWeight=50 \
 	-p IOWeight=40 \
 	-p IPAccounting=yes \
@@ -258,14 +277,30 @@ function execApp() {
 			"${launchTarget}"
 }
 
+function warnMulRunning() {
+	if [[ "${LANG}" =~ 'zh_CN' ]]; then
+		zenity --title "微信正在运行" --icon=utilities-system-monitor-symbolic --default-cancel --question --text="是否结束正在运行的服务 $@?"
+	else
+		zenity --title "WeChat is running" --icon=utilities-system-monitor-symbolic --default-cancel --question --text="Do you wish to terminate $@?"
+	fi
+	if [ $? = 0 ]; then
+		systemctl --user stop $@
+	fi
+}
+
 function dbusProxy() {
-	if [[ $(lsof -t "${busDir}/bus") ]]; then
-		kill $(lsof -t "${busDir}/bus")
+	if [[ $(systemctl --user is-failed wechat-dbus-proxy.service) = failed ]]; then
+		echo "[Warning] D-Bus proxy failed last time"
+		systemctl --user reset-failed wechat-dbus-proxy.service
+	fi
+	if [[ $(systemctl --user is-active wechat-dbus-proxy.service) = active ]]; then
+		echo "[Warning] Existing D-Bus proxy detected! Terminating..."
+		systemctl --user kill wechat-dbus-proxy.service
 	fi
 	rm "${busDir}" -r
 	mkdir "${busDir}" -p
 	echo "Starting D-Bus Proxy @ ${busDir}..."
-	systemd-run --user \
+	systemd-run --user -u wechat-dbus-proxy \
 		env -i xdg-dbus-proxy \
 			"${DBUS_SESSION_BUS_ADDRESS}" \
 			"${busDir}/bus" \
@@ -353,6 +388,14 @@ function launch() {
 	fi
 }
 
+function stopApp() {
+	systemctl --user stop wechat-dbus-proxy.service wechat-uos-qt.service
+}
+
+if [[ $@ = "--actions quit" ]]; then
+	stopApp $@
+	exit $?
+fi
 disableSandbox $@
 sourceXDG
 openDataDir $@
