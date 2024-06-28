@@ -6,6 +6,7 @@ pkgbase = luminance
 	arch = x86_64
 	license = GPL3
 	makedepends = git
+        depends = glib2
 	depends = gtk4
 	depends = libadwaita
 	depends = ddcutil

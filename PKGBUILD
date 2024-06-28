@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/sidevesh/$_pkgname"
 license=('GPL3')
 makedepends=('git')
-depends=('gtk4' 'libadwaita' 'ddcutil')
+depends=('glib2' 'gtk4' 'libadwaita' 'ddcutil')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("git+https://github.com/sidevesh/$_pkgname.git#tag=$pkgver" "git+https://github.com/ahshabbir/ddcbc-api.git")
