@@ -1,0 +1,24 @@
+pkgbase = clai-bin
+	pkgdesc = Command line artificial intelligence - Multi-vendor generation in your terminal
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://github.com/baalimago/clai
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = clai
+	conflicts = clai
+	source = https://github.com/baalimago/clai/raw/v1.4.2/README.md
+	source = https://github.com/baalimago/clai/raw/v1.4.2/LICENSE
+	sha256sums = 88c131c17034ff4d9657e5b37ecf622504e346e74192178dfa4c71409640df52
+	sha256sums = bc5378230a80daace8ac9ea68f538fb33997fd2abf0fa5d91905365b6b8924dc
+	source_x86_64 = clai-1.4.2::https://github.com/baalimago/clai/releases/download/v1.4.2/clai_linux-amd64_v1.4.2
+	sha256sums_x86_64 = 584289627753fe077b50b413fbb7de3ccdea17fc816a517c5cf529de75311d47
+	source_i686 = clai-1.4.2::https://github.com/baalimago/clai/releases/download/v1.4.2/clai_linux-386_v1.4.2
+	sha256sums_i686 = 8ad816fe68dc95f8df4f4f2b437286df33abe76b507e871a1c28bb0c2fc7fef5
+	source_aarch64 = clai-1.4.2::https://github.com/baalimago/clai/releases/download/v1.4.2/clai_linux-arm64_v1.4.2
+	sha256sums_aarch64 = afda1a31972f65bc54421baf21bea0d14d819eacd0506e25ed1b4bf70bca8fc4
+
+pkgname = clai-bin
