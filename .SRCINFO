@@ -1,6 +1,6 @@
 pkgbase = wg_tool
 	pkgdesc = Tool to administer wireguard VPN (server and user configs)
-	pkgver = 6.7.7
+	pkgver = 7.0.1
 	pkgrel = 1
 	url = https://github.com/gene-git/wg_tool
 	arch = any
@@ -11,14 +11,14 @@ pkgbase = wg_tool
 	makedepends = python-wheel
 	makedepends = python-hatch
 	makedepends = rsync
-	depends = python>3.9
-	depends = python-packaging
+	depends = python>=3.11
 	depends = python-netaddr
+	depends = python-cryptography
 	depends = python-tomli-w
 	depends = python-qrcode
 	depends = wireguard-tools
-	depends = python-tomli
-	source = git+https://github.com/gene-git/wg_tool#tag=6.7.7
+	depends = nftables
+	source = git+https://github.com/gene-git/wg_tool#tag=7.0.1
 	sha512sums = SKIP
 
 pkgname = wg_tool

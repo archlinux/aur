@@ -10,16 +10,15 @@ pkgname='wg_tool'
 pkgdesc='Tool to administer wireguard VPN (server and user configs)'
 _gitname='wg_tool'
 
-pkgver=6.7.7
+pkgver=7.0.1
 pkgrel=1
 url="https://github.com/gene-git/wg_tool"
 
 arch=(any)
 license=(MIT)
-# tomli only needed for python < 3.11
-depends=('python>3.9' 'python-packaging' 'python-netaddr' 
+depends=('python>=3.11' 'python-netaddr' 'python-cryptography' 
          'python-tomli-w' 'python-qrcode' 'wireguard-tools'
-         'python-tomli'
+         'nftables'
         )
 # To build docs uncommont sphinx/texlive
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-hatch' 'rsync'
