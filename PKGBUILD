@@ -1,8 +1,8 @@
 # Maintainer: Denis Proskurin <dpvpro // gmail // com>
 
 pkgname=incron-next
-pkgver=0.5.15
-pkgrel=2
+pkgver=0.5.17
+pkgrel=1
 pkgdesc="Maintainable fork for incron package. MRs are welcome"
 arch=('x86_64')
 url="https://github.com/dpvpro/incron-next"
