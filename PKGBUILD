@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=akuse
 _pkgname=Akuse
-pkgver=1.1.0
+pkgver=1.2.0
 _electronversion=26
 _nodeversion=20
 pkgrel=1
@@ -26,7 +26,7 @@ source=(
     "clientData.js"
     "${pkgname}.sh"
 )
-sha256sums=('e3e0839569644ea2d5d0c9b422275147ede676be6180293a646a6082a5d0c5df'
+sha256sums=('e41f598f49530c0921a4a56a593c067ac331fe977f10dbdf3dd32c431a64aa04'
             '091d0d9b3a06579647ed4c1989d7edff13754cec34fcdbb7fbc24529bd01ed48'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
@@ -39,7 +39,7 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${pkgname}|g" \
+        -e "s|@cfgdirname@|${pkgname}-beta|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
