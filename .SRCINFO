@@ -1,0 +1,24 @@
+pkgbase = resto-bin
+	pkgdesc = Send pretty HTTP & API requests with TUI
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/abdfnx/resto
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = arm
+	license = MIT
+	provides = resto
+	conflicts = resto
+	source = https://github.com/abdfnx/resto/raw/v0.1.6/README.md
+	sha256sums = c27ee477f19d49faec9d5891c04ad290bca2269963eecc6e012e53f63d38f5ab
+	source_x86_64 = https://github.com/abdfnx/resto/releases/download/v0.1.6/resto_linux_v0.1.6_amd64.zip
+	sha256sums_x86_64 = 727aec157821e6c5893e019407dcf0594959854d37effd0599db27adeb13ebec
+	source_i686 = https://github.com/abdfnx/resto/releases/download/v0.1.6/resto_linux_v0.1.6_386.zip
+	sha256sums_i686 = 0edff92b7244c35c94269b7b5e2054a6dc553b5d1f1a95cb0757828c7ab8b936
+	source_aarch64 = https://github.com/abdfnx/resto/releases/download/v0.1.6/resto_linux_v0.1.6_arm64.zip
+	sha256sums_aarch64 = c6e6678335ca8863d740bdf439daca218f89ce06fac66cbc486ff93d2ce91610
+	source_arm = https://github.com/abdfnx/resto/releases/download/v0.1.6/resto_linux_v0.1.6_arm.zip
+	sha256sums_arm = 1fec4d3f0ee7c8c7b33517814f8293c9cbb133cbc3de84f2e8d6c130fadf8d38
+
+pkgname = resto-bin
