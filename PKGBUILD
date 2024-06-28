@@ -3,13 +3,12 @@
 pkgname=goldendict-ng
 pkgver=24.05.05
 true_ver=24.05.05-LiXia.ecd1138c
-pkgrel=2
+pkgrel=3
 pkgdesc="The next generation GoldenDict (Supports Qt WebEngine & Qt6)."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/xiaoyifang/goldendict-ng"
 license=('GPL3')
 depends=(
-	ffmpeg
 	hunspell
 	libvorbis
 	libxtst
@@ -57,6 +56,7 @@ build(){
 		-DCMAKE_INSTALL_PREFIX='/usr' \
 		-DUSE_SYSTEM_FMT=ON \
 		-DUSE_SYSTEM_TOML=ON \
+		-DWITH_FFMPEG_PLAYER=OFF \
 		-Wno-dev
 	cmake --build build_dir
 }

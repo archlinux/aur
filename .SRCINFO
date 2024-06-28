@@ -1,7 +1,7 @@
 pkgbase = goldendict-ng
 	pkgdesc = The next generation GoldenDict (Supports Qt WebEngine & Qt6).
 	pkgver = 24.05.05
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/xiaoyifang/goldendict-ng
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,6 @@ pkgbase = goldendict-ng
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = qt6-tools
-	depends = ffmpeg
 	depends = hunspell
 	depends = libvorbis
 	depends = libxtst
