@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.9.6.arch1
+pkgver=6.9.7.arch1
 pkgrel=1
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
@@ -47,7 +47,7 @@ source=(
   0008-v4-platform-x86-asus-wmi-add-support-for-MCU-powersave.patch
   0009-v4-platform-x86-asus-wmi-add-clean-up-structs.patch
   
-  0001-HID-asus-fix-more-n-key-report-descriptors-if-n-key-.patch
+  #0001-HID-asus-fix-more-n-key-report-descriptors-if-n-key-.patch
   0001-platform-x86-asus-wmi-add-support-for-vivobook-fan-p.patch
   0002-HID-asus-make-asus_kbd_init-generic-remove-rog_nkey_.patch
   0003-HID-asus-add-ROG-Ally-N-Key-ID-and-keycodes.patch
@@ -99,9 +99,9 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('5d4366e2b89998f274abe03557ef3bc78b58e47fc62c102d51e6f49e5ed96b4b'
+sha256sums=('e4f588cd91eef9d461e5e14fdf9415feff8a72fbcc274089a0f768a58de001f8'
             'SKIP'
-            'f11095f47da518ce4074be587438d30f424d98bcc5c59f7a1a8c00c58ddf5aa4'
+            '64c589c6f1177bcbaf7f76ab54aa51785f96bf2e32d23407f871b0348388c85a'
             'SKIP'
             'd6c1352567ed50b9a24062f93d575dfb6b744995d7ea029beb897480c992f706'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
@@ -116,7 +116,6 @@ sha256sums=('5d4366e2b89998f274abe03557ef3bc78b58e47fc62c102d51e6f49e5ed96b4b'
             'c2c89baaf134c0151c3f7a3861d16194e32c91c7abc87f870733cab8c5b88389'
             'f5b560d988c47033c44307da0b584599d1f59cc0028a594f4df87affffc219d5'
             'de85da760f6692b284e39aa78479904d6ee78b349f1e98d1d210777f9ef17581'
-            '3be072ed798becd91bae66a75d09235c9cb5e84547b1f4eb7768e954ba109e92'
             '9c8679f5995b69b6778539f48f30142e5a357213cf9a04ee0877f50f859d1233'
             'c1d96328d96964c2ce3ef7609fb7c07e97eb136dfab9f6d4efcce072a5739838'
             '2414dc71174c90b92f975a7d16cabc99ba509397d843132764ea9ee91b643dc0'
@@ -137,7 +136,7 @@ sha256sums=('5d4366e2b89998f274abe03557ef3bc78b58e47fc62c102d51e6f49e5ed96b4b'
             'd673d034fbcd80426fd8d9c6af56537c5fe5b55fe49d74e313474d7fc285ecc1'
             'e41198b29cee4de7a5132d8df606f48c2d0f9c9076fe4230b00a33c7e0b22c71'
             '508f90cbe81a9a145cc540703470f1e6b5d21c7a7b9166d2ce6e56b401262b04'
-            'b6e59b42ae96d69430aa78e5f7c5212e2092e7a17a9cd67575c76d79a68f28e1'
+            'feb67a77e6df4837048647553c41fb608d53aee7ef3b80bc07deddef107ace93'
             '15e912a66e4bbce1cf0450f1dc6610653df29df8dd6d5426f9c1b039490436c8'
             '444f2d86de8c2177655b01596f939f99c2e7abfa8efad8a509e0a334f42dfa85')
 
