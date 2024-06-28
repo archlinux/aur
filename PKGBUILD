@@ -20,7 +20,12 @@ build() {
 
 check() {
   cd $pkgname-$pkgver
-  ./tests/scripts/test-linux.sh
+
+  if grep --quiet '^mail:' /etc/passwd; then
+    ./tests/scripts/test-linux.sh
+  else
+    ./tests/scripts/test-linux.sh test_no_acl
+  fi
 }
 
 package() {
