@@ -3,7 +3,7 @@
 _pkgname=emoji-keyboard
 pkgname=$_pkgname-bin
 pkgver=4.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Virtual keyboard like emoji palette (binary release)'
 url="https://github.com/OzymandiasTheGreat/emoji-keyboard"
 license=('MIT')
