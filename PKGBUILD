@@ -58,7 +58,7 @@ prepare() {
 
 build() {
   cd $gitname
-  arch-meson . build -D bpftool=disabled -D openrc=disabled
+  arch-meson . build -D openrc=disabled
   meson compile -C build
 }
 
