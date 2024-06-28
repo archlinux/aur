@@ -1,0 +1,37 @@
+--- rangoli-2.0/CMakeLists.txt	2024-06-27 17:22:38.731799199 -0700
++++ rangoli-2.0/CMakeLists.txt	2024-06-27 02:51:30.881408525 -0700
+@@ -53,7 +53,7 @@
+     DEFAULT_ACCENT_BLUE=115
+ )
+ 
+-find_package(Qt6 6.4 COMPONENTS Quick Svg REQUIRED) # QTBUG-55199
++find_package(Qt6 COMPONENTS Quick Svg Widgets REQUIRED)
+ 
+ set(HIDAPI_WITH_LIBUSB FALSE)
+ set(BUILD_SHARED_LIBS FALSE)
+@@ -61,4 +61,4 @@
+ find_package(HIDAPI REQUIRED)
+ include_directories(${HIDAPI_INCLUDE_DIRS})
+ add_subdirectory(src)
+-target_link_libraries(rangoli ${HIDAPI_LIBRARIES})
++target_link_libraries(rangoli PRIVATE Qt6::Widgets ${HIDAPI_LIBRARIES})
+--- rangoli-2.0/src/main.cpp	2023-03-24 23:40:11.000000000 -0700
++++ rangoli-2.0/src/main.cpp	2024-06-27 02:51:30.881408525 -0700
+@@ -11,7 +11,7 @@
+  * GNU General Public License for more details.
+  */
+ 
+-#include <QGuiApplication>
++#include <QApplication>
+ #include <QQmlApplicationEngine>
+ #include <QLocale>
+ #include <QIcon>
+@@ -53,7 +53,7 @@
+     KeyboardConfiguratorController keyboardConfiguratorController;
+     SettingsController settingsController;
+ 
+-    QGuiApplication app(argc, argv);
++    QApplication app(argc, argv);
+ 
+     qInfo() << "Platform:" << app.platformName();
+     qInfo() << "Qt" << qVersion();
