@@ -1,12 +1,13 @@
 pkgbase = blockdiag
 	pkgdesc = generates block-diagram image from text
 	pkgver = 3.1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = http://blockdiag.com
 	arch = any
 	license = Apache
 	checkdepends = python-pytest
 	checkdepends = python-docutils
+	checkdepends = python-reportlab
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel

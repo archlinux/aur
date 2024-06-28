@@ -4,14 +4,14 @@
 
 pkgname=blockdiag
 pkgver=3.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="generates block-diagram image from text"
 url="http://blockdiag.com"
 license=('Apache')
 arch=('any')
 depends=('python-setuptools' 'python-funcparserlib' 'python-pillow' 'python-webcolors')
 makedepends=('python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-pytest' 'python-docutils')
+checkdepends=('python-pytest' 'python-docutils' 'python-reportlab')
 optdepends=('python-reportlab: for PDF export'
             'python-docutils: for RST parser')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/yuzutech/blockdiag/archive/refs/tags/v$pkgver.tar.gz"
@@ -31,7 +31,7 @@ build() {
 
 check() {
   cd blockdiag-$pkgver
-  PYTHONDONTWRITEBYTECODE=1 pytest src/blockdiag/tests/ -k 'not node_shape_background.svg-svg-options292'
+  PYTHONDONTWRITEBYTECODE=1 pytest src/blockdiag/tests/
 }
 
 package() {
