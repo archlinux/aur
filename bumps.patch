@@ -32,3 +32,191 @@ index 3f48344b..fb4b1aeb 100644
      assert_array_almost_equal_nulp(py, poly(px), nulp=8)
  
  if __name__ == "__main__":
+
+From fa00b9499e8ef89e779a54085c6d2d9d3e8c72b3 Mon Sep 17 00:00:00 2001
+From: bbm <brian.maranville@nist.gov>
+Date: Mon, 17 Jun 2024 14:59:42 -0400
+Subject: [PATCH 1/3] use np.asarray(... type=float) instead of np.asfarray
+
+---
+ bumps/simplex.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/bumps/simplex.py b/bumps/simplex.py
+index 09b6ee91..e9485821 100644
+--- a/bumps/simplex.py
++++ b/bumps/simplex.py
+@@ -141,7 +141,7 @@ def simplex(f, x0=None, bounds=None, radius=0.05,
+ 
+     """
+     fcalls, func = wrap_function(f, bounds)
+-    x0 = np.asfarray(x0).flatten()
++    x0 = np.asarray(x0, dtype=float).flatten()
+     # print "x0",x0
+     N = len(x0)
+     rank = len(x0.shape)
+
+From 7e8e792d1a115788322ec00094f964b12e61e4f4 Mon Sep 17 00:00:00 2001
+From: bbm <brian.maranville@nist.gov>
+Date: Mon, 17 Jun 2024 15:00:10 -0400
+Subject: [PATCH 2/3] use np.nan instead of (now removed) np.NaN
+
+---
+ bumps/dream/formatnum.py | 10 +++++-----
+ bumps/dream/walk.py      |  4 ++--
+ bumps/fitproblem.py      |  6 +++---
+ bumps/formatnum.py       | 10 +++++-----
+ 4 files changed, 15 insertions(+), 15 deletions(-)
+
+diff --git a/bumps/dream/formatnum.py b/bumps/dream/formatnum.py
+index 2ee6036e..dd74833f 100644
+--- a/bumps/dream/formatnum.py
++++ b/bumps/dream/formatnum.py
+@@ -41,7 +41,7 @@
+ from __future__ import division
+ import math
+ 
+-from numpy import isinf, isnan, inf, NaN
++from numpy import isinf, isnan, inf, nan
+ 
+ __all__ = ['format_value', 'format_uncertainty',
+            'format_uncertainty_compact', 'format_uncertainty_pm',
+@@ -295,10 +295,10 @@ def test_compact():
+     # non-finite values
+     assert value_str(-inf, None) == "-inf"
+     assert value_str(inf, None) == "inf"
+-    assert value_str(NaN, None) == "NaN"
++    assert value_str(nan, None) == "NaN"
+ 
+     # bad or missing uncertainty
+-    assert value_str(-1.23567, NaN) == "-1.23567"
++    assert value_str(-1.23567, nan) == "-1.23567"
+     assert value_str(-1.23567, -inf) == "-1.23567"
+     assert value_str(-1.23567, -0.1) == "-1.23567"
+     assert value_str(-1.23567, 0) == "-1.23567"
+@@ -427,10 +427,10 @@ def test_pm():
+     # non-finite values
+     assert value_str(-inf, None) == "-inf"
+     assert value_str(inf, None) == "inf"
+-    assert value_str(NaN, None) == "NaN"
++    assert value_str(nan, None) == "NaN"
+ 
+     # bad or missing uncertainty
+-    assert value_str(-1.23567, NaN) == "-1.23567"
++    assert value_str(-1.23567, nan) == "-1.23567"
+     assert value_str(-1.23567, -inf) == "-1.23567"
+     assert value_str(-1.23567, -0.1) == "-1.23567"
+     assert value_str(-1.23567, 0) == "-1.23567"
+diff --git a/bumps/dream/walk.py b/bumps/dream/walk.py
+index 833cbb62..950e5a3b 100644
+--- a/bumps/dream/walk.py
++++ b/bumps/dream/walk.py
+@@ -10,12 +10,12 @@
+ 
+ __all__ = ["walk"]
+ 
+-from numpy import asarray, ones_like, NaN, isnan
++from numpy import asarray, ones_like, nan, isnan
+ 
+ from . import util
+ 
+ 
+-def walk(n=1000, mu=0, sigma=1, alpha=0.01, s0=NaN):
++def walk(n=1000, mu=0, sigma=1, alpha=0.01, s0=nan):
+     """
+     Mean reverting random walk.
+ 
+diff --git a/bumps/fitproblem.py b/bumps/fitproblem.py
+index 7753bcf4..896f808f 100644
+--- a/bumps/fitproblem.py
++++ b/bumps/fitproblem.py
+@@ -59,7 +59,7 @@
+ import warnings
+ 
+ import numpy as np
+-from numpy import inf, isnan, NaN
++from numpy import inf, isnan, nan
+ 
+ from . import parameter, bounds as mbounds
+ from .parameter import to_dict
+@@ -510,7 +510,7 @@ def _nllf_components(self):
+             info = (traceback.format_exc(),
+                     parameter.summarize(self._parameters))
+             logging.error("\n".join(info))
+-            return NaN, NaN, NaN
++            return nan, nan, nan
+ 
+     def __call__(self, pvec=None):
+         """
+@@ -772,7 +772,7 @@ def nllf_scale(problem):
+     measurements.  To first approximation, the uncertainty in $\chi^2_N$
+     is $k/(n-k)$
+     """
+-    dof = getattr(problem, 'dof', np.NaN)
++    dof = getattr(problem, 'dof', np.nan)
+     if dof <= 0 or np.isnan(dof) or np.isinf(dof):
+         return 1., 0.
+     else:
+diff --git a/bumps/formatnum.py b/bumps/formatnum.py
+index 3075f618..f0da2b51 100644
+--- a/bumps/formatnum.py
++++ b/bumps/formatnum.py
+@@ -41,7 +41,7 @@
+ from __future__ import division
+ import math
+ 
+-from numpy import isinf, isnan, inf, NaN
++from numpy import isinf, isnan, inf, nan
+ 
+ __all__ = ['format_value', 'format_uncertainty',
+            'format_uncertainty_compact', 'format_uncertainty_pm',
+@@ -294,10 +294,10 @@ def test_compact():
+     # non-finite values
+     assert value_str(-inf, None) == "-inf"
+     assert value_str(inf, None) == "inf"
+-    assert value_str(NaN, None) == "NaN"
++    assert value_str(nan, None) == "NaN"
+ 
+     # bad or missing uncertainty
+-    assert value_str(-1.23567, NaN) == "-1.23567"
++    assert value_str(-1.23567, nan) == "-1.23567"
+     assert value_str(-1.23567, -inf) == "-1.23567"
+     assert value_str(-1.23567, -0.1) == "-1.23567"
+     assert value_str(-1.23567, 0) == "-1.23567"
+@@ -426,10 +426,10 @@ def test_pm():
+     # non-finite values
+     assert value_str(-inf, None) == "-inf"
+     assert value_str(inf, None) == "inf"
+-    assert value_str(NaN, None) == "NaN"
++    assert value_str(nan, None) == "NaN"
+ 
+     # bad or missing uncertainty
+-    assert value_str(-1.23567, NaN) == "-1.23567"
++    assert value_str(-1.23567, nan) == "-1.23567"
+     assert value_str(-1.23567, -inf) == "-1.23567"
+     assert value_str(-1.23567, -0.1) == "-1.23567"
+     assert value_str(-1.23567, 0) == "-1.23567"
+
+From 891f759b49fdd7939c103761de8478881a7ca326 Mon Sep 17 00:00:00 2001
+From: bbm <brian.maranville@nist.gov>
+Date: Mon, 17 Jun 2024 15:43:27 -0400
+Subject: [PATCH 3/3] use np.asmatrix instead of np.mat (deprecated alias)
+
+---
+ bumps/pytwalk.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/bumps/pytwalk.py b/bumps/pytwalk.py
+index 021c3408..ceacedd4 100644
+--- a/bumps/pytwalk.py
++++ b/bumps/pytwalk.py
+@@ -14,7 +14,7 @@
+ __all__ = ["pytwalk"]
+ 
+ from numpy.random import uniform, normal
+-from numpy import ones, zeros, cumsum, shape, mat, cov, mean, ceil, matrix, sqrt
++from numpy import ones, zeros, cumsum, shape, asmatrix as mat, cov, mean, ceil, matrix, sqrt
+ from numpy import floor, exp, log, sum, pi, arange
+ 
+ # Some auxiliary functions and constants
+
