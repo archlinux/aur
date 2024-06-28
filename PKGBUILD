@@ -1,3 +1,4 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Martin Sandsmark <martin.sandsmark@kde.org>
 
 pkgname=zstr-git
@@ -5,7 +6,7 @@ pkgver=r127.755da78
 pkgrel=1
 pkgdesc='A C++ header-only ZLib wrapper'
 arch=('any')
-url='https://github.com/sandsmark/zstr'
+url='https://github.com/mateidavid/zstr'
 license=('MIT')
 depends=('zlib')
 makedepends=('git')
