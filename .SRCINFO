@@ -1,0 +1,22 @@
+pkgbase = inkdown-git
+	pkgdesc = A WYSIWYG Markdown editor, improve reading and editing experience.
+	pkgver = 1.0.0.r2.gfbd5b7e
+	pkgrel = 1
+	url = https://github.com/1943time/inkdown
+	arch = any
+	license = AGPL-3.0-only
+	makedepends = npm
+	makedepends = pnpm
+	makedepends = git
+	makedepends = nvm
+	makedepends = gendesk
+	makedepends = curl
+	depends = electron29
+	provides = inkdown=1.0.0
+	conflicts = inkdown
+	source = inkdown.git::git+https://github.com/1943time/inkdown.git
+	source = inkdown.sh
+	sha256sums = SKIP
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+
+pkgname = inkdown-git
