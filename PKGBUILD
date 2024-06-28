@@ -2,7 +2,7 @@
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 _base=ray
 pkgname=python-${_base}
-pkgver=2.30.0
+pkgver=2.31.0
 pkgrel=1
 pkgdesc="A fast and simple framework for building and running distributed
 applications"
@@ -38,7 +38,7 @@ optdepends=('python-pandas: for ray[data, tune, rllib]'
   'python-rich: for ray[rllib]'
 )
 source=(${_base}-${_base}-${pkgver}.tar.gz::${url}/archive/${_base}-${pkgver}.tar.gz)
-sha512sums=('b1458c2538b6ce515c2fc708d5799c16b39b874813d333bdbec87eb4ad2a8d8e8441dbb548f1ae75e1bb531e4e8c3104ad5e55be0654627ab553181852c7b5f5')
+sha512sums=('8d0430c9caa195e9b3e6a3bd431a8cd1869efbd80ef6719c4f65f4abb7a82585a11673a75df7268dc8534352b7cf8c565edab0044ceca601b971c302b961caa5')
 
 build() {
   cd ${_base}-${_base}-${pkgver}/python
