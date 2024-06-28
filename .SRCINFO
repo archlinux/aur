@@ -1,7 +1,7 @@
 pkgbase = scx-scheds
 	pkgdesc = Sched_ext schedulers
 	pkgver = 0.1.10
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/sched-ext/scx
 	arch = x86_64
 	license = GPL-2.0-only

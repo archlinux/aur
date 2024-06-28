@@ -5,7 +5,7 @@
 pkgname=scx-scheds
 gitname=scx
 pkgver=0.1.10
-pkgrel=6
+pkgrel=7
 pkgdesc='Sched_ext schedulers'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -26,6 +26,7 @@ _backports=(
 4558d5c3dd370e6a6250f9c9ded85f7a8e6594f0 # scx: update /etc/default/scx sample flags
 66dea6262be278fa833ee7f2a02834ce192724cb # scx.service: allow overriding scx variables
 3684b1601ce9f52fba9af3678d36b1bcc0966fd5 # Simplifying pacman-hooks
+22f13e22844d3e12590bc71492462dc7d40821a3 # meson: run cargo build in release mode when using plain buildtype
 )
 
 _reverts=(
