@@ -1,10 +1,10 @@
 pkgbase = python-transforms3d
 	pkgdesc = 3 dimensional spatial transformations for Python
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://matthew-brett.github.io/transforms3d/
 	arch = any
-	license = BSD
+	license = BSD-2-Clause
 	checkdepends = python-pytest
 	checkdepends = python-scipy
 	checkdepends = python-sympy
@@ -12,9 +12,10 @@ pkgbase = python-transforms3d
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	makedepends = python-versioneer
 	depends = python-numpy
 	optdepends = python-sympy: to run the algebraic derivations of some algorithms
-	source = transforms3d-0.4.1.tar.gz::https://github.com/matthew-brett/transforms3d/archive/0.4.1.tar.gz
-	sha256sums = 27ff96c6dcc12bebc6faddea15916c29727fb33be0f85dda7dc7d8b376c0deed
+	source = transforms3d-0.4.2.tar.gz::https://github.com/matthew-brett/transforms3d/archive/0.4.2.tar.gz
+	sha256sums = d92d8a5a959fbf1e625a58094076b600f4f2909e45b4c0218d3354927d2800e4
 
 pkgname = python-transforms3d

@@ -2,22 +2,22 @@
 
 pkgname=python-transforms3d
 pkgdesc="3 dimensional spatial transformations for Python"
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 url="https://matthew-brett.github.io/transforms3d/"
 arch=('any')
 depends=('python-numpy')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'python-versioneer')
 checkdepends=('python-pytest' 'python-scipy' 'python-sympy')
 optdepends=(
   'python-sympy: to run the algebraic derivations of some algorithms'
 )
-license=('BSD')
+license=('BSD-2-Clause')
 source=(
   "transforms3d-$pkgver.tar.gz::https://github.com/matthew-brett/transforms3d/archive/${pkgver}.tar.gz"
 )
 sha256sums=(
-  '27ff96c6dcc12bebc6faddea15916c29727fb33be0f85dda7dc7d8b376c0deed'
+  'd92d8a5a959fbf1e625a58094076b600f4f2909e45b4c0218d3354927d2800e4'
 )
 
 build() {
@@ -33,5 +33,7 @@ check() {
 package() {
   cd "transforms3d-${pkgver}"
   python -m installer --destdir="$pkgdir" dist/*.whl
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  rm -r "$pkgdir/$site_packages/transforms3d/tests/"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
