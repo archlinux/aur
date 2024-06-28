@@ -3,6 +3,7 @@ pkgbase = ugee-tablet
 	pkgver = 4.2.4
 	pkgrel = 2
 	url = https://www.ugee.com.cn/download/
+	install = PKGBUILD
 	arch = x86_64
 	license = custom: commercial
 	source = https://download.ugee.com.cn/upload/download/20240517/ugeeTablet-4.2.4-240410.tar.gz

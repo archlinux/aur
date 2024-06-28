@@ -15,6 +15,7 @@ optdepends=()
 conflicts=()
 provides=()
 #options=()
+install="PKGBUILD"
 sha256sums=('1f0682870be28e964798dc8083c762878a0ed430931706b2f58103c4fef840db')
 
 package()
@@ -26,4 +27,14 @@ package()
     cp -r "$srcdir/ugeeTablet-$pkgver-$_pkgver_sub2/App/usr" "$pkgdir"
     cp -r "$srcdir/ugeeTablet-$pkgver-$_pkgver_sub2/App/lib" "$pkgdir/usr"
     cp -r "$srcdir/ugeeTablet-$pkgver-$_pkgver_sub2/App/etc" "$pkgdir"
+}
+
+post_install()
+{
+    echo -en ":: \033[1m\033[33mA reboot is required after the installation!\033[0m\n"
+}
+
+post_upgrade()
+{
+    post_install
 }
