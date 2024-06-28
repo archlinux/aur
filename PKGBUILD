@@ -4,27 +4,27 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _pkgname=filehash
-_pkgver=2.4-5
+_pkgver=2.4-6
 pkgname=r-${_pkgname,,}
-pkgver=2.4.5
-pkgrel=1
-pkgdesc='Simple Key-Value Database'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Simple Key-Value Database"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
-  r
   r-digest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3b1ee2794dd61e525ee44db16611c65957691d77bb26ae481eba988bb55da22c')
+md5sums=('048b1076b582cd02298c317827b459f0')
+b2sums=('61a3aa8e268ad129d98da72963c24a97b5ff6f84776ea9bbd0a8617a88a7a66798ff316f18db7c34d30d424e62129cfc7fb22b512299ba99e65b3cb8c8046f09')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
