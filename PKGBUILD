@@ -31,6 +31,11 @@ build() {
   make
 }
 
+check() {
+  cd "${srcdir}/${_pkgsrc}"
+  go test ./...
+}
+
 package() {
   cd "${srcdir}/${_pkgsrc}"
   install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
