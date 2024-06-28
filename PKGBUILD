@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=libvpl-git
-pkgver=2.11.0.r0.g11a9bbd
+pkgver=2.12.0.r0.g0c13c41
 pkgrel=1
 pkgdesc='Intel Video Processing Library (git version)'
 arch=('x86_64')
@@ -23,6 +23,11 @@ pkgver() {
 }
 
 build() {
+    # fix warning: "_FORTIFY_SOURCE" redefined
+    # note: upstream forces _FORTIFY_SOURCE=2
+    export CFLAGS="${CFLAGS/-Wp,-D_FORTIFY_SOURCE=?/}"
+    export CXXFLAGS="${CXXFLAGS/-Wp,-D_FORTIFY_SOURCE=?/}"
+    
     export CFLAGS+=' -DNDEBUG'
     export CXXFLAGS+=' -DNDEBUG'
     cmake -B build -S libvpl \

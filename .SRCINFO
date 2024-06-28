@@ -1,6 +1,6 @@
 pkgbase = libvpl-git
 	pkgdesc = Intel Video Processing Library (git version)
-	pkgver = 2.11.0.r0.g11a9bbd
+	pkgver = 2.12.0.r0.g0c13c41
 	pkgrel = 1
 	url = https://intel.github.io/libvpl/
 	arch = x86_64
