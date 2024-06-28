@@ -1,19 +1,19 @@
 # Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
 
-_pkgname=nchess
-pkgname=${_pkgname}-git
+_pkgname="nchess"
+pkgname="${_pkgname}-git"
 pkgver=r32.7489711
-pkgrel=1
+pkgrel=2
 pkgdesc="Chess in the terminal, written in C99"
 arch=('any')
 url="https://github.com/billyvinning/${_pkgname}"
-license=('GPL')
-depends=('ncurses')
+license=('GPL-3.0-or-later')
+depends=('glibc' 'ncurses')
 makedepends=('git' 'make' 'gcc')
-_pkgsrc="${_pkgname}"
-source=("${_pkgsrc}::git+${url}.git")
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
+_pkgsrc="${_pkgname}"
+source=("${_pkgsrc}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -30,10 +30,5 @@ package() {
   cd "${srcdir}/${_pkgsrc}"
   install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 "README.rst" "$pkgdir/usr/share/doc/${_pkgname}/README.rst"
-  install -Dm644 "COPYING.rst" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.rst"
-}
-
-clean() {
-  cd "${srcdir}/${_pkgsrc}"
-  make clean
+  install -Dm644 "COPYING.rst" "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING.rst"
 }
