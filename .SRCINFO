@@ -1,13 +1,14 @@
 pkgbase = flow-cli-bin
 	pkgdesc = A command-line interface that provides useful utilities for building Flow applications
 	pkgver = 1.20.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.onflow.org/flow-cli
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
-	provides = flow-cli
-	conflicts = flow-cli
+	depends = glibc
+	provides = flow
+	conflicts = flow
 	source_x86_64 = https://github.com/onflow/flow-cli/releases/download/v1.20.5/flow-cli-v1.20.5-linux-amd64.tar.gz
 	sha256sums_x86_64 = 5ca568a7c57fd64bb9f74ebd94ba7385ec3fddd7adc0ae3cb81dd0a0104d22ed
 	source_aarch64 = https://github.com/onflow/flow-cli/releases/download/v1.20.5/flow-cli-v1.20.5-linux-arm64.tar.gz
