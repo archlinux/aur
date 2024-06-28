@@ -2,7 +2,7 @@
 
 pkgname=python-pytest-localftpserver
 pkgdesc='PyTest plugin providing a local FTP server'
-pkgver=1.2.0
+pkgver=1.3.2
 pkgrel=1
 arch=('any')
 url='https://pytest-localftpserver.readthedocs.io/'
@@ -16,17 +16,10 @@ makedepends=('python-build' 'python-installer' 'python-setuptools-scm' 'python-w
 _pypi=pytest_localftpserver
 source=(
   "https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/$_pypi-$pkgver.tar.gz"
-  'replace_wget.patch'
 )
 sha256sums=(
-  '099512c3d8a1ca24808df31d85b426d8653ca6f178d6d8f3c1898d302c053b3e'
-  'adbdf668a10a06ecb62dd1ba8502718959d0cc0d86f00584e7d9f3db4f34ce79'
+  'ee54a43c4782acefeb608596b5e8090ebaa7aa1e418855c72bb6da4dd832d3f3'
 )
-
-prepare() {
-  cd "$_pypi-$pkgver"
-  patch -p0 -i "$srcdir/replace_wget.patch"
-}
 
 build() {
   cd "$_pypi-$pkgver"
@@ -40,7 +33,10 @@ check() {
   test-env/bin/python -m installer "dist/$_pypi-$pkgver"-*.whl
 
   # Run tests which don't load environment variables.
-  test-env/bin/python -m pytest -v --ignore=tests/test_pytest_localftpserver_with_env_var.py
+  # Skip tests which fail because of use of a self-signed certificate.
+  test-env/bin/python -m pytest -v \
+    --ignore=tests/test_pytest_localftpserver_with_env_var.py \
+    -k "not test_get_file_paths and not test_file_upload_user and not test_file_upload_anon"
 
   # And then set the environment and run those tests.
   # The variables and values are taken from tox.ini
