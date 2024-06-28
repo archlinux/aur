@@ -5,7 +5,7 @@
 
 pkgname=sioyek-git
 pkgver=2.0.0.r893.ga3aeca4
-pkgrel=1
+pkgrel=2
 pkgdesc="PDF viewer for research papers and technical books."
 arch=(x86_64)
 license=(GPL3)
@@ -29,6 +29,7 @@ prepare() {
   cd "sioyek"
 
   patch --forward --strip=1 --input="${srcdir}/standard-path-mupdf-build.patch"
+  sed -i 's/<C-S-o>$/<C-S-O>/' pdf_viewer/keys.config
 }
 
 build() {
