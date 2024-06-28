@@ -3,7 +3,7 @@
 pkgname=python-foolscap
 _pkgname=${pkgname#python-}
 pkgver=23.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Remote object-messaging for Python+Twisted'
 arch=('any')
 url='https://github.com/warner/foolscap'
@@ -21,4 +21,5 @@ build() {
 package() {
     cd "${_pkgname}-${_pkgname}-${pkgver}"
     python -m installer --destdir=${pkgdir} dist/*.whl
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

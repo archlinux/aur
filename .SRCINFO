@@ -1,7 +1,7 @@
 pkgbase = python-foolscap
 	pkgdesc = Remote object-messaging for Python+Twisted
 	pkgver = 23.11.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/warner/foolscap
 	arch = any
 	license = MIT
