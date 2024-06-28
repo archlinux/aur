@@ -1,0 +1,13 @@
+pkgbase = cryptgo
+	pkgdesc = A terminal application to watch crypto prices
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/Gituser143/cryptgo
+	arch = any
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	source = cryptgo-1.1.1.tar.gz::https://github.com/Gituser143/cryptgo/archive/refs/tags/v1.1.1.tar.gz
+	sha256sums = 0d85c314c1fc350c9887a127131d33f8eb5ab0877973e0b321c252f7b5eb84e4
+
+pkgname = cryptgo
