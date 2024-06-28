@@ -9,6 +9,7 @@ pkgbase = libportal-inputcapture
 	checkdepends = python-pytest
 	checkdepends = xorg-server-xvfb
 	makedepends = gi-docgen
+	makedepends = glib2-devel
 	makedepends = git
 	makedepends = gjs
 	makedepends = gobject-introspection

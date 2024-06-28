@@ -17,6 +17,7 @@ arch=(x86_64)
 license=(LGPL3)
 makedepends=(
   gi-docgen
+  glib2-devel
   git
   gjs
   gobject-introspection
