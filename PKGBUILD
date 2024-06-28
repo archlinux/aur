@@ -2,13 +2,13 @@
 
 pkgname=python-caerus
 pkgdesc='Detection of favorable moments in time series data'
-pkgver=0.1.9
+pkgver=0.1.10
 pkgrel=1
 url='https://github.com/erdogant/caerus'
 arch=('any')
 license=('MIT')
 depends=('python-matplotlib' 'python-numpy' 'python-pandas' 'python-tqdm')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 
 _pypi=caerus
 source=(
@@ -18,10 +18,10 @@ source=(
   'include_example_datasets.patch'
 )
 sha256sums=(
-  '06b793c4537b663438270ea740c65eafe72d987ad18e942c85bab1bfc6a3a216'
+  'e2cac5a1f1c5cbdebfa687ccb969a64630510f597724a6590049d1ee79452353'
   '1c57af47f4ae1796643cfd654be48d87729061616ea909bd2c4b48a0c209b892'
   '080a583e30cb5fd695e195e8d7b1a65ebf44d396f61e2b124e53a04f42e9a0aa'
-  'f9cbf62d056435b88efb94ca8b19870400668bdf0fa4ea833551c3ff0eccec75'
+  '1b2bd7d977b84217f4f45a244b1f610d90fb20f77f2d24b84cae91c8eec847c4'
 )
 
 prepare() {

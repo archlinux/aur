@@ -38,7 +38,7 @@
 --- setup.py
 +++ setup.py
 @@ -13,7 +13,7 @@  wget library is no longer needed.
- with open("README.md", "r") as fh:
+ with open("README.md", "r", encoding="utf8") as fh:
      long_description = fh.read()
  setuptools.setup(
 -     install_requires=['wget','matplotlib','numpy','pandas','tqdm'],
