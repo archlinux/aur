@@ -1,0 +1,22 @@
+pkgbase = hpp-environments-git
+	pkgdesc = Environments and robot descriptions for HPP
+	pkgver = 5.0.0.r175.
+	pkgrel = 1
+	url = https://github.com/humanoid-path-planner/hpp-environments
+	arch = i686
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = cmake
+	makedepends = git
+	makedepends = doxygen
+	makedepends = boost
+	depends = boost-libs
+	depends = example-robot-data
+	depends = gcc-libs
+	depends = glibc
+	provides = hpp-environments
+	conflicts = hpp-environments
+	source = hpp-environments::git+https://github.com/humanoid-path-planner/hpp-environments.git
+	sha256sums = SKIP
+
+pkgname = hpp-environments-git
