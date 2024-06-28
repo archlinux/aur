@@ -5,7 +5,7 @@
 pkgname=python-laspy
 pkgdesc="Pythonic interface for .LAS LIDAR files"
 url="https://github.com/laspy/laspy"
-pkgver=2.5.3
+pkgver=2.5.4
 pkgrel=1
 arch=('any')
 license=('BSD-2-Clause')
@@ -30,14 +30,14 @@ makedepends=(
 checkdepends=('python-pytest')
 
 _pyname=laspy
-_commit=45b9202a3
+_commit=a32c7aa40
 source=(
   "git+$url#commit=$_commit?signed"
   'modify_doc_conf.patch'
 )
 sha256sums=(
   'SKIP'
-  '6da3d9fff0c082f310380a862e7d4eb2de7735bf5078768bf846703564b153db'
+  'b93fabcad532b5b7062ff8e659ded69167f27872f093023734a2cfca8b8d0d19'
 )
 validpgpkeys=('44B238524D21C5064D7081BD5022EF94BE848C51')
 

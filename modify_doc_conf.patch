@@ -4,8 +4,8 @@
      "sphinx.ext.napoleon",
      "sphinx.ext.intersphinx",
      "sphinx.ext.doctest",
--    "m2r2"
-+    "myst_parser"
+-    "m2r2",
++    "myst_parser",
      # 'sphinx_autodoc_typehints'
  ]
  

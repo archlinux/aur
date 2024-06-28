@@ -1,6 +1,6 @@
 pkgbase = python-laspy
 	pkgdesc = Pythonic interface for .LAS LIDAR files
-	pkgver = 2.5.3
+	pkgver = 2.5.4
 	pkgrel = 1
 	url = https://github.com/laspy/laspy
 	changelog = CHANGELOG.md
@@ -21,10 +21,10 @@ pkgbase = python-laspy
 	optdepends = python-laszip: LAZ support
 	optdepends = python-pyproj: CRS support
 	optdepends = python-requests: COPC support over HTTPS
-	source = git+https://github.com/laspy/laspy#commit=45b9202a3?signed
+	source = git+https://github.com/laspy/laspy#commit=a32c7aa40?signed
 	source = modify_doc_conf.patch
 	validpgpkeys = 44B238524D21C5064D7081BD5022EF94BE848C51
 	sha256sums = SKIP
-	sha256sums = 6da3d9fff0c082f310380a862e7d4eb2de7735bf5078768bf846703564b153db
+	sha256sums = b93fabcad532b5b7062ff8e659ded69167f27872f093023734a2cfca8b8d0d19
 
 pkgname = python-laspy
