@@ -30,6 +30,7 @@ depends=(
 makedepends=(
   gi-docgen
   git
+  glib2-devel
   gobject-introspection
   meson
   vala
