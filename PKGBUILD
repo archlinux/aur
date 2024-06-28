@@ -1,39 +1,42 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Arnaud Renevier <arno@renevier.net>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: David Runge <dvzrv@archlinux.org>
 
 pkgname=blockdiag
-pkgver=3.0.0
-pkgrel=3
-pkgdesc="blockdiag generates block-diagram image from text"
+pkgver=3.1.0
+pkgrel=1
+pkgdesc="generates block-diagram image from text"
 url="http://blockdiag.com"
 license=('Apache')
 arch=('any')
 depends=('python-setuptools' 'python-funcparserlib' 'python-pillow' 'python-webcolors')
-checkdepends=('python-nose' 'python-pycodestyle' 'python-reportlab' 'python-docutils'
+checkdepends=('python-pytest' 'python-pycodestyle' 'python-reportlab' 'python-docutils'
               'python-wand' 'ghostscript' 'librsvg')
 optdepends=('python-reportlab: for PDF export'
             'python-docutils: for RST parser')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/blockdiag/blockdiag/archive/$pkgver.tar.gz")
-sha512sums=('9eb5aa0d78dd546feafccdf66dbedbc8b8addb97ffa45f18396bfb8e144be3acfaa4493baf680922af87ff64194424b7378367f177b1a59c3b3898b5c235623c')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/yuzutech/blockdiag/archive/refs/tags/v$pkgver.tar.gz"
+        "https://github.com/yuzutech/blockdiag/commit/b051e49c1154f0166ddb5c51777f4da02087184f.patch")
+sha512sums=('9933bf68f4a4dfa5c18b3940f2d54acf37743032e5be437bc93a9333f6a6c3d62a0125e30b9cda44619cae71b46d045af758afabab0fbe8b4e765345b45370f8'
+            '76b51917285621ae7cfb922199386bece019dfe944d8ec165a8f4d2dd112d9fb2c6568b7f1652d597a4406baf9e2367a83f7e9ae6553a0e5d34fae6b389dbba4')
+
+prepare() {
+  cd blockdiag-$pkgver
+  patch --forward --strip=1 --input=../b051e49c1154f0166ddb5c51777f4da02087184f.patch
+}
 
 build() {
   cd blockdiag-$pkgver
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   cd blockdiag-$pkgver
-  python setup.py install --root="$PWD/tmp_install" --optimize=1
-  # https://github.com/blockdiag/blockdiag/issues/165
-  PYTHONPATH="$PWD/tmp_install/${site_packages}" nosetests -v -e "svg_sanitizes_url_on_error_test"
+  PYTHONDONTWRITEBYTECODE=1 pytest _build/lib/blockdiag/tests/
 }
 
 package() {
   cd blockdiag-$pkgver
-  python setup.py install --root="$pkgdir" \
-                          --optimize=1 \
-                          --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -vDm 644 {CHANGES,README}.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -vDm 644 "${pkgname}.1" -t "${pkgdir}/usr/share/man/man1/"
 }
