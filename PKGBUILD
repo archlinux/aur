@@ -4,7 +4,7 @@ _pname=${pkgbase#python-}
 _pyname=MyST-NB
 #_pyname=${_pname//-/_}
 pkgname=("python-${_pname}")
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Parse and execute ipynb files in Sphinx"
 arch=('any')
@@ -22,6 +22,7 @@ makedepends=('python-flit-core'
 #            'jupyter-nbformat')    # needs coconut
 checkdepends=('python-pytest-param-files'
               'python-pytest-regressions'
+#             'python-pytest-xdist'
               'python-beautifulsoup4'
 #             'python-importlib-metadata'
               'python-ipywidgets'
@@ -40,7 +41,7 @@ checkdepends=('python-pytest-param-files'
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 source=("https://github.com/executablebooks/MyST-NB/archive/refs/tags/v${pkgver}.tar.gz")
 #       'Makefile')
-md5sums=('5f46bd0e3a4f38e94be9c31df789aa98')
+md5sums=('061b5ad5a41c9b142522f1bf6e677b68')
 
 #prepare() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
@@ -63,7 +64,8 @@ check() {
 
     mkdir -p dist/lib
     bsdtar -xpf dist/${_pname/-/_}-${pkgver}-py3-none-any.whl -C dist/lib
-    PYTHONPATH="dist/lib:${PYTHONPATH}" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+    PYTHONPATH="dist/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4
+#   PYTHONPATH="dist/lib:${PYTHONPATH}" pytest -vv -l -ra --color=yes -o console_output_style=count #|| warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 #       --deselect=tests/test_execute.py::test_custom_convert_auto \
 #       --deselect=tests/test_execute.py::test_custom_convert_cache
 }
@@ -79,7 +81,7 @@ package_python-myst-nb() {
              'python-yaml'
              'python-typing_extensions'
              'python-ipykernel')
-    optdepends=('python-pre-commit: code_style'
+    optdepends=('pre-commit: code_style'
                 'python-alabaster: rtd'
                 'python-altair: rtd'
                 'python-bokeh: rtd'
