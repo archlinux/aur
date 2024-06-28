@@ -1,17 +1,16 @@
-# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Robert Wiklund <robert@wikro.org>
 # Contributor: carstene1ns <arch carsten-teibes de>
 
 pkgname=libpthread-stubs
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="This library provides weak aliases for pthread functions not provided in libc or otherwise available by default."
 arch=('i686' 'x86_64')
 url="http://xcb.freedesktop.org/dist/"
 license=('MIT')
 source=("http://xcb.freedesktop.org/dist/${pkgname}-${pkgver}.tar.gz")
-md5sums=('7d2734e604a3e2f6f665c420b835ab62')
-sha256sums=('50d5686b79019ccea08bcbd7b02fe5a40634abcfd4146b6e75c6420cc170e9d9')
+sha256sums=('593196cc746173d1e25cb54a93a87fd749952df68699aab7e02c085530e87747')
 
 build() {
   cd ${pkgname}-${pkgver}
