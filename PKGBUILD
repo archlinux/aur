@@ -1,12 +1,12 @@
 pkgname=mingw-w64-mbedtls2
 pkgver=2.28.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Portable cryptographic and SSL/TLS library, aka polarssl (mingw-w64)"
 arch=('any')
 url="https://tls.mbed.org"
-license=('Apache')
+license=('Apache-2.0')
 depends=('mingw-w64-crt')
-makedepends=('mingw-w64-cmake')
+makedepends=('mingw-w64-cmake' 'git')
 options=(!strip !buildflags staticlibs)
 _tag=19cd99c38606b827bafa99bc9b790e78476a4b95
 source=(git+https://github.com/ARMmbed/mbedtls.git#tag=${_tag}
