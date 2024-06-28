@@ -1,6 +1,6 @@
 pkgbase = jupyterlab-translate
 	pkgdesc = JupyterLab language pack translations helper
-	pkgver = 1.3.5
+	pkgver = 1.3.7
 	pkgrel = 1
 	url = https://github.com/jupyterlab/jupyterlab-translate
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = jupyterlab-translate
 	depends = python-hatchling
 	depends = python-polib
 	depends = python-requests
-	source = https://files.pythonhosted.org/packages/source/j/jupyterlab-translate/jupyterlab_translate-1.3.5.tar.gz
-	sha256sums = 4954fb5fb928ae272d33facd81e30e3aab48a569b00596e82775b5850a7c4c89
+	source = https://files.pythonhosted.org/packages/source/j/jupyterlab-translate/jupyterlab_translate-1.3.7.tar.gz
+	sha256sums = ce1663e5fc43456d345800e74fdc1023d3f4d1afa88d62b1e836b7342a4a0c61
 
 pkgname = jupyterlab-translate
