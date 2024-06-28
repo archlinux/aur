@@ -1,14 +1,13 @@
 pkgbase = freealchemist
 	pkgdesc = A simple arcade game
 	pkgver = 0.7
-	pkgrel = 3
+	pkgrel = 4
 	url = http://dakblog.wordpress.com/freealchemist/
 	arch = any
 	license = GPL-2.0-or-later
+	makedepends = python-setuptools
 	depends = python
-	depends = python-importlib-metadata
 	depends = python-pygame
-	depends = python-setuptools
 	source = https://github.com/dakk/FreeAlchemist/archive/44e7173219c30de3676110dc6ce5beea9e03cc33.zip
 	md5sums = 9a142c3464d857d6f246d1d898743816
 
