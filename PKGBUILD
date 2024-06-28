@@ -3,7 +3,7 @@
 pkgname=jupyterlab-language-pack-de-de
 pkgdesc='German (Germany) language pack for JupyterLab'
 url='https://github.com/jupyterlab/language-packs/tree/master/language-packs/jupyterlab-language-pack-de-DE'
-pkgver=4.1.post2
+pkgver=4.2.post1
 pkgrel=1
 arch=('any')
 license=('BSD-3-Clause')
@@ -15,7 +15,7 @@ source=(
   "https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/$_pypi-$pkgver.tar.gz"
 )
 sha256sums=(
-  '8e04a53676f37e9e977c4bd2d67df49ba4fbb53f74b6709deb8224fa5113908b'
+  '7ffc625c376bd974d040f38bdf455869f1dafcdd8d4606cb73488320c3b970a6'
 )
 
 build() {
