@@ -2,14 +2,14 @@
 _UpstreamPkgName=RIT-Rachana
 pkgname=${_UpstreamPkgName,,}-fonts
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Traditional orthography opentype font with definitive character set for Malayalam"
 url="https://gitlab.com/rit-fonts/${_UpstreamPkgName}"
 arch=(any)
 license=(custom:SIL)
 makedepends=(fontforge git python python-fonttools python-cffsubr)
 source=("${url}/-/archive/${pkgver}/${_UpstreamPkgName}-${pkgver}.tar.bz2")
-sha256sums=('642e7947e92e14646eb2501939513afcadfd1453b810e6b687cace530b162807')
+sha256sums=('673e72529ad0a078d4d52872c3c1d8f4cd937cde9e37d68a11468c321d49029b')
 
 build() {
   make -C ${_UpstreamPkgName}-${pkgver} otf
