@@ -1,12 +1,12 @@
 pkgbase = gt-100fxfloorboard
 	pkgdesc = GT-100 Fx FloorBoard midi editor software for the Boss GT-100 Guitar Amp Effects processor.
-	pkgver = 20221108
+	pkgver = 20240419
 	pkgrel = 1
 	url = https://fxfloorboard.sourceforge.io/info.php?model=gt-100
 	arch = x86_64
 	license = GPL3
 	provides = gt-100fxfloorboard
-	source = https://downloads.sourceforge.net/project/fxfloorboard/GT-100FxFloorboard/GT-100FxFloorBoard_linux-64.tar.gz
-	md5sums = 655ec4b32c412ca5c36d2be2d1a9c550
+	source = https://sourceforge.net/projects/fxfloorboard/files/GT-100FxFloorboard/GT-100FxFloorBoard_linux-64.tar.xz
+	b2sums = 19afa02a3413ef3f8a1ce77a3ff2ae117a1bfcf7202e53268285e32f431e2e0b79b3ae7c3424dad692151509d531341ea5fdda5ccffb404b54df06f2c1fbb3da
 
 pkgname = gt-100fxfloorboard
