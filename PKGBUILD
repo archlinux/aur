@@ -18,7 +18,7 @@ depends=(
   cairo
   dbus
   dbus-glib
-  ffmpeg
+  ffmpeg4.4
   fontconfig
   freetype2
   gcc-libs
