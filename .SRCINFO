@@ -1,0 +1,18 @@
+pkgbase = bitrise-git
+	pkgdesc = Run your bitrise.io automations offline
+	pkgver = 2.16.1.r5.ga8f85fc
+	pkgrel = 1
+	url = https://github.com/bitrise-io/bitrise
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	optdepends = envman: manage Environment Variable collections
+	optdepends = stepman: manage decentralized StepLib Step (script) collections
+	provides = bitrise=2.16.1
+	conflicts = bitrise
+	source = bitrise::git+https://github.com/bitrise-io/bitrise.git
+	sha256sums = SKIP
+
+pkgname = bitrise-git
