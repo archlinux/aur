@@ -2,7 +2,7 @@
 
 _pkgname="galaxybudsclient"
 pkgname="${_pkgname}-git"
-pkgver=r1276.03742b2
+pkgver=r1797.e2ffd828
 pkgrel=1
 pkgdesc="Unofficial manager for the Samsung Galaxy Buds, Buds+, Buds Live and Buds Pro. Master branch."
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -50,7 +50,7 @@ build() {
 	cd "$srcdir/${pkgname}"
   
   # Build
-  dotnet publish -r $DOTNETARCH -o "$srcdir/${pkgname}/bin" -c Release -p:PublishTrimmed=true -p:PublishSingleFile=true --self-contained true --no-restore "$srcdir/${pkgname}/GalaxyBudsClient/GalaxyBudsClient.csproj"
+  dotnet publish -r $DOTNETARCH -o "$srcdir/${pkgname}/bin" -c Release -p:PublishSingleFile=true --self-contained true --no-restore "$srcdir/${pkgname}/GalaxyBudsClient/GalaxyBudsClient.csproj"
 
   # Set exectuable bit
   cd bin
@@ -59,6 +59,6 @@ build() {
 
 package() {
   install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-  install -Dm644 "${srcdir}/${pkgname}/GalaxyBudsClient/Resources/icon_white.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+  install -Dm644 "${srcdir}/${pkgname}/GalaxyBudsClient/Resources/icon.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
   install -Dm755 "$srcdir/${pkgname}/bin/GalaxyBudsClient" "${pkgdir}/usr/bin/${_pkgname}"
 }
