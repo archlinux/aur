@@ -1,6 +1,6 @@
 # Maintainer: Mark Collins <tera_1225 [aaht] hotmail ðot com>
 pkgname=noseyparker
-pkgver=0.17.0
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="find secrets and sensitive information in textual data and Git history"
 arch=('x86_64')
@@ -11,17 +11,19 @@ depends=(
   'glibc'
 )
 makedepends=(
+  'boost'
 	'cargo'
 	'cmake'
   'pkgconfig' # Vectorscan dep
 )
 source=("${pkgname}-${pkgver}::${url}/archive/refs/tags/v${pkgver}.zip")
-sha256sums=('67d78cd8379217032c396b51e196d6e7fe17c103a9716c7ecc22336b3133d5ae')
+sha256sums=('ca85f5357c7fe8b16994a3a1e12acf941b90bc4823771fae076d16feb412a237')
 options=(!lto) # Vectorscan build fails with LTO
 build() {
 	cd "$srcdir/${pkgname}-${pkgver}"
 	export RUSTUP_TOOLCHAIN="stable"
   export CARGO_BUILD_DIR="target/release"
+  export BOOST_ROOT="/usr/include/boost/"
   cargo build --locked --profile "release" --features "release"
 }
 
