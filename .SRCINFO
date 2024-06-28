@@ -1,7 +1,7 @@
 pkgbase = frame-eth-bin
 	pkgdesc = System-wide Web3
 	pkgver = 0.6.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://frame.sh/
 	arch = aarch64
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = frame-eth-bin
 	conflicts = frame-eth-dev
 	conflicts = frame-eth-canary
 	source = frame-eth.sh
-	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 	source_aarch64 = frame-eth-0.6.9-aarch64.deb::https://github.com/floating/frame/releases/download/v0.6.9/frame_0.6.9_arm64.deb
 	sha256sums_aarch64 = e4c8238d08392f1c36791749e8e160222cf7c865bfe97a55912bd306f7bf1870
 	source_x86_64 = frame-eth-0.6.9-x86_64.deb::https://github.com/floating/frame/releases/download/v0.6.9/frame_0.6.9_amd64.deb
