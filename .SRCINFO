@@ -1,6 +1,6 @@
 pkgbase = r-ggpmisc
 	pkgdesc = Miscellaneous Extensions to 'ggplot2'
-	pkgver = 0.5.6
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ggpmisc
 	arch = any
@@ -29,15 +29,16 @@ pkgbase = r-ggpmisc
 	optdepends = r-broom.mixed
 	optdepends = r-gginnards
 	optdepends = r-ggrepel
+	optdepends = r-ggtext
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-vdiffr
-	source = https://cran.r-project.org/src/contrib/ggpmisc_0.5.6.tar.gz
+	source = https://cran.r-project.org/src/contrib/ggpmisc_0.6.0.tar.gz
 	source = fix-tests.patch
-	md5sums = 5d785d0914a1d0efba63b4ce6f89ab46
-	md5sums = b70e1e80a751c548eea21b0352b4f841
-	b2sums = d7550858ecd09ad7f60b9713e5cb2083f32acf38c02f60fbe404681cce20d2194036b7fa0a0e8e98d6696387e129377872ecbc052466f6a7c1e6fb0d86aa3218
-	b2sums = 2bf10f63af8340d7881f57bcd41b7586c1f9a5a02b43dad48db1bc9e9779c907a689adb65a169c30b3b1fd08ec6d7cf0239f36f055c6083ba569ed99714208d3
+	md5sums = deccb30d8937facf9f2a93615e2f4456
+	md5sums = 733f754ce3c1486851d08acad34f7dba
+	b2sums = 9a756ba7c4bcfd3ac9634f430d183cf72cfa8a86560b0cda3cd541866ca73fc9e8371091c1c238d9b63174b4e89ee635ce2f545b417692581564a63794622e34
+	b2sums = 0d6b5f2c056d6c4badfb880f3c47f7f1aa87c28f0d3c972a7df0e039ba0f68ffb6663ccafe790be759711a879d001aa53ed96ef9de2fd620382d31eb2b9a9c1b
 
 pkgname = r-ggpmisc

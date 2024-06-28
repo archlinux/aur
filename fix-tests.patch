@@ -1,8 +1,8 @@
 diff --git a/ggpmisc/tests/testthat/_snaps/stat-multcomp/stat-multcomp-noload-more.svg b/ggpmisc/tests/testthat/_snaps/stat-multcomp/stat-multcomp-noload-more.svg
-index a5be143..61eeafd 100644
+index 5f6a096..0b0cad2 100644
 --- a/ggpmisc/tests/testthat/_snaps/stat-multcomp/stat-multcomp-noload-more.svg
 +++ b/ggpmisc/tests/testthat/_snaps/stat-multcomp/stat-multcomp-noload-more.svg
-@@ -66,19 +66,19 @@
+@@ -70,21 +70,21 @@
  <text x='261.96' y='281.43' style='font-size: 7.11px; font-family: sans;' textLength='1.78px' lengthAdjust='spacingAndGlyphs'> </text>
  <text x='263.74' y='281.43' style='font-size: 7.11px; font-family: sans;' textLength='17.80px' lengthAdjust='spacingAndGlyphs'>0.001</text>
  <line x1='115.78' y1='250.49' x2='506.26' y2='250.49' style='stroke-width: 1.42;' />
@@ -14,7 +14,9 @@ index a5be143..61eeafd 100644
 -<text x='289.29' y='252.29' style='font-size: 7.11px; font-family: sans;' textLength='9.89px' lengthAdjust='spacingAndGlyphs'>66.</text>
 -<text x='299.18' y='252.29' style='font-size: 7.11px; font-family: sans;' textLength='3.95px' lengthAdjust='spacingAndGlyphs'>, </text>
 -<text x='303.13' y='252.29' style='font-size: 7.11px; font-style: italic; font-family: sans;' textLength='4.75px' lengthAdjust='spacingAndGlyphs'>P</text>
--<text x='308.61' y='253.61' style='font-size: 4.98px; font-family: sans;' textLength='10.52px' lengthAdjust='spacingAndGlyphs'>HSD</text>
+-<text x='308.61' y='253.61' style='font-size: 4.98px; font-family: sans;' textLength='3.60px' lengthAdjust='spacingAndGlyphs'>H</text>
+-<text x='312.21' y='253.61' style='font-size: 4.98px; font-family: sans;' textLength='3.32px' lengthAdjust='spacingAndGlyphs'>S</text>
+-<text x='315.53' y='253.61' style='font-size: 4.98px; font-family: sans;' textLength='3.60px' lengthAdjust='spacingAndGlyphs'>D</text>
 -<text x='319.13' y='252.29' style='font-size: 7.11px; font-family: sans;' textLength='1.78px' lengthAdjust='spacingAndGlyphs'> </text>
 -<text x='320.91' y='252.29' style='font-size: 7.11px; font-family: sans;' textLength='4.16px' lengthAdjust='spacingAndGlyphs'>&lt;</text>
 -<text x='325.07' y='252.29' style='font-size: 7.11px; font-family: sans;' textLength='1.78px' lengthAdjust='spacingAndGlyphs'> </text>
@@ -27,7 +29,9 @@ index a5be143..61eeafd 100644
 +<text x='287.31' y='252.29' style='font-size: 7.11px; font-family: sans;' textLength='13.85px' lengthAdjust='spacingAndGlyphs'>66.0</text>
 +<text x='301.16' y='252.29' style='font-size: 7.11px; font-family: sans;' textLength='3.95px' lengthAdjust='spacingAndGlyphs'>, </text>
 +<text x='305.11' y='252.29' style='font-size: 7.11px; font-style: italic; font-family: sans;' textLength='4.75px' lengthAdjust='spacingAndGlyphs'>P</text>
-+<text x='310.59' y='253.61' style='font-size: 4.98px; font-family: sans;' textLength='10.52px' lengthAdjust='spacingAndGlyphs'>HSD</text>
++<text x='310.59' y='253.61' style='font-size: 4.98px; font-family: sans;' textLength='3.60px' lengthAdjust='spacingAndGlyphs'>H</text>
++<text x='314.19' y='253.61' style='font-size: 4.98px; font-family: sans;' textLength='3.32px' lengthAdjust='spacingAndGlyphs'>S</text>
++<text x='317.51' y='253.61' style='font-size: 4.98px; font-family: sans;' textLength='3.60px' lengthAdjust='spacingAndGlyphs'>D</text>
 +<text x='321.11' y='252.29' style='font-size: 7.11px; font-family: sans;' textLength='1.78px' lengthAdjust='spacingAndGlyphs'> </text>
 +<text x='322.89' y='252.29' style='font-size: 7.11px; font-family: sans;' textLength='4.16px' lengthAdjust='spacingAndGlyphs'>&lt;</text>
 +<text x='327.04' y='252.29' style='font-size: 7.11px; font-family: sans;' textLength='1.78px' lengthAdjust='spacingAndGlyphs'> </text>

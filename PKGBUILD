@@ -4,7 +4,7 @@
 # Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 
 _pkgname=ggpmisc
-_pkgver=0.5.6
+_pkgver=0.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -41,6 +41,7 @@ optdepends=(
   r-broom.mixed
   r-gginnards
   r-ggrepel
+  r-ggtext
   r-knitr
   r-rmarkdown
   r-testthat
@@ -48,10 +49,10 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-tests.patch")
-md5sums=('5d785d0914a1d0efba63b4ce6f89ab46'
-         'b70e1e80a751c548eea21b0352b4f841')
-b2sums=('d7550858ecd09ad7f60b9713e5cb2083f32acf38c02f60fbe404681cce20d2194036b7fa0a0e8e98d6696387e129377872ecbc052466f6a7c1e6fb0d86aa3218'
-        '2bf10f63af8340d7881f57bcd41b7586c1f9a5a02b43dad48db1bc9e9779c907a689adb65a169c30b3b1fd08ec6d7cf0239f36f055c6083ba569ed99714208d3')
+md5sums=('deccb30d8937facf9f2a93615e2f4456'
+         '733f754ce3c1486851d08acad34f7dba')
+b2sums=('9a756ba7c4bcfd3ac9634f430d183cf72cfa8a86560b0cda3cd541866ca73fc9e8371091c1c238d9b63174b4e89ee635ce2f545b417692581564a63794622e34'
+        '0d6b5f2c056d6c4badfb880f3c47f7f1aa87c28f0d3c972a7df0e039ba0f68ffb6663ccafe790be759711a879d001aa53ed96ef9de2fd620382d31eb2b9a9c1b')
 
 prepare() {
   # fix snapshot tests
