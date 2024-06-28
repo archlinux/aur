@@ -1,20 +1,22 @@
 pkgbase = fex-emu-git
 	pkgdesc = Fast usermode x86 and x86-64 emulator for Arm64
-	pkgver = 2209+6.gc987e1ef44
+	pkgver = 2406+295.g58e949e148
 	pkgrel = 1
 	url = https://fex-emu.com
 	arch = aarch64
-	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = clang
+	makedepends = llvm
+	makedepends = python-setuptools
+	makedepends = pkgconf
 	depends = sdl2
 	depends = libepoxy
 	depends = squashfs-tools
 	depends = squashfuse
-	provides = fex-emu=2209
+	provides = fex-emu=2406
 	conflicts = fex-emu
 	source = git+https://github.com/FEX-Emu/FEX
 	source = git+https://github.com/catchorg/Catch2
@@ -31,8 +33,8 @@ pkgbase = fex-emu-git
 	source = git+https://github.com/Tessil/robin-map
 	source = git+https://github.com/Sonicadvance1/tiny-json
 	source = git+https://github.com/FEX-Emu/vixl
-	source = git+https://github.com/FEX-Emu/xbyak
-	source = git+https://github.com/FEX-Emu/xxhash
+	source = git+https://github.com/herumi/xbyak
+	source = git+https://github.com/Cyan4973/xxhash
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

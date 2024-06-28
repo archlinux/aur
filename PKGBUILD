@@ -1,14 +1,14 @@
 # Maintainer: Eric Engestrom <aur@engestrom.ch>
 
 pkgname=fex-emu-git
-pkgver=2209+6.gc987e1ef44
+pkgver=2406+295.g58e949e148
 pkgrel=1
 pkgdesc='Fast usermode x86 and x86-64 emulator for Arm64'
 url=https://fex-emu.com
-arch=(aarch64 x86_64)
+arch=(aarch64)
 license=(MIT)
-makedepends=(git cmake ninja clang)
-depends=(sdl2 libepoxy squashfs-tools squashfuse)
+makedepends=(git cmake ninja clang llvm python-setuptools)
+depends=(sdl2 libepoxy squashfs-tools squashfuse erofs-utils)
 source=("git+https://github.com/FEX-Emu/FEX"
         "git+https://github.com/catchorg/Catch2"
         "git+https://github.com/KhronosGroup/Vulkan-Headers"
@@ -21,11 +21,11 @@ source=("git+https://github.com/FEX-Emu/FEX"
         "git+https://github.com/Sonicadvance1/imgui"
         "git+https://github.com/FEX-Emu/jemalloc"
         "git+https://github.com/Sonicadvance1/json-maker"
-        "git+https://github.com/Tessil/robin-map"
+        "git+https://github.com/FEX-Emu/robin-map"
         "git+https://github.com/Sonicadvance1/tiny-json"
         "git+https://github.com/FEX-Emu/vixl"
-        "git+https://github.com/FEX-Emu/xbyak"
-        "git+https://github.com/FEX-Emu/xxhash"
+        "git+https://github.com/herumi/xbyak"
+        "git+https://github.com/Cyan4973/xxhash"
         )
 sha256sums=('SKIP'
             'SKIP'
@@ -53,7 +53,6 @@ prepare() {
   for f in \
     Catch2 \
     Vulkan-Headers \
-    cpp-optparse \
     drm-headers \
     fex-gcc-target-tests-bins \
     fex-gvisor-tests-bins \
@@ -71,6 +70,16 @@ prepare() {
   do
     git config submodule."External/$f".url "$srcdir/$f"
   done
+
+  git config submodule."External/jemalloc_glibc".url "$srcdir/jemalloc"
+
+  for f in \
+    cpp-optparse \
+    ;
+  do
+    git config submodule."Source/Common/$f".url "$srcdir/$f"
+  done
+
   git -c protocol.file.allow=always submodule update
 }
 
@@ -91,17 +100,13 @@ build() {
     FEX_OPTIONS+=(-D ENABLE_LLD=True)
   fi
 
-  if [ $CARCH = x86_64 ]
-  then
-    FEX_OPTIONS+=(-D ENABLE_X86_HOST_DEBUG=True)
-  fi
-
   CC=clang \
   CXX=clang++ \
   cmake \
     -S FEX -B build -G Ninja \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D CMAKE_BUILD_TYPE=Release \
+    -D FMT_INSTALL=False \
     "${FEX_OPTIONS[@]}"
   ninja -C build
 }
