@@ -6,7 +6,7 @@
 pkgname=emacs-apache-mode
 pkgver=2.0
 pkgrel=4
-pkgdesc="A major mode for editing apache config files with emacs"
+pkgdesc="A major mode for editing Apache configuration files with emacs"
 arch=('any')
 url="https://www.emacswiki.org/emacs/apache-mode.el"
 license=('GPL-2.0-or-later')

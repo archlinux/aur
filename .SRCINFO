@@ -1,5 +1,5 @@
 pkgbase = emacs-apache-mode
-	pkgdesc = A major mode for editing apache config files with emacs
+	pkgdesc = A major mode for editing Apache configuration files with emacs
 	pkgver = 2.0
 	pkgrel = 4
 	url = https://www.emacswiki.org/emacs/apache-mode.el
