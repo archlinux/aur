@@ -1,0 +1,18 @@
+pkgbase = fast-ssh-git
+	pkgdesc = Quickly connect to your services by navigating through your SSH config
+	pkgver = 0.3.2.r0.g7e62107
+	pkgrel = 1
+	url = https://github.com/Julien-R44/fast-ssh
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	depends = openssh
+	provides = fast-ssh=0.3.2
+	conflicts = fast-ssh
+	source = fast-ssh::git+https://github.com/Julien-R44/fast-ssh.git
+	sha256sums = SKIP
+
+pkgname = fast-ssh-git
