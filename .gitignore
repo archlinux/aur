@@ -1,0 +1,5 @@
+src
+pkg
+aiac
+*.tar.zst
+*.tar.gz
