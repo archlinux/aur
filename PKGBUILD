@@ -3,7 +3,7 @@
 
 pkgname=autenticacao-gov-pt-bin
 pkgver=3.12.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Portuguese Citizen Card Application (Portugal eID) - version with pre compiled binaries by AMA"
 arch=('x86_64')
 url="http://www.cartaodecidadao.pt/"
@@ -15,6 +15,7 @@ depends=('qt5-base'
          'qt5-graphicaleffects'
          'pcsclite'
          'openssl'
+         'openpace-git'
          'openssl-1.1'
          'ccid'
          'libzip'
@@ -28,7 +29,7 @@ makedepends=('zstd' 'tar' 'flatpak' 'ostree')
 optdepends=('plugin-autenticacao-gov-pt: Necessário para autenticações online'
 'autenticacao-gov-pt-pki: PKI que confirma a validade dos certificados dos CC'
 'ecce-gov-pt-certificates: Certificados da ECCE - quem assina dos certificados contidos em cartaodecidadao-pki')
-conflicts=('cartaodecidadao' 'cartaodecidadao-bin' 'autenticacao-gov-pt' 'openpace')
+conflicts=('cartaodecidadao' 'cartaodecidadao-bin' 'autenticacao-gov-pt')
 replaces=('cartaodecidadao-bin')
 
 source_x86_64=("https://github.com/amagovpt/autenticacao.gov/releases/download/v3.12.0/pteid-mw-3.12.0.flatpak"
@@ -73,6 +74,8 @@ package() {
   rm -rf "${pkgdir}"/usr/lib/pkgconfig/xml-security-c.pc
   rm -rf "${pkgdir}"/usr/share/man
   rm -rf "${pkgdir}"/usr/share/aclocal/libcurl*
+  rm -rf "${pkgdir}"/usr/lib/libeac*
+  rm -rf "${pkgdir}"/usr/lib/pkgconfig/libeac*
   rm -rf "${pkgdir}"/usr/lib/libcurl*
   rm -rf "${pkgdir}"/usr/lib/pkgconfig/libcjson.pc
   rm -rf "${pkgdir}"/usr/lib/pkgconfig/libcurl.pc
