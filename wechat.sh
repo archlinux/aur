@@ -279,12 +279,15 @@ function execApp() {
 
 function warnMulRunning() {
 	if [[ "${LANG}" =~ 'zh_CN' ]]; then
-		zenity --title "微信正在运行" --icon=utilities-system-monitor-symbolic --default-cancel --question --text="是否结束正在运行的服务 $@?"
+		zenity --title "微信正在运行" --icon=utilities-system-monitor-symbolic --default-cancel --question --text="是否结束正在运行的进程?"
 	else
-		zenity --title "WeChat is running" --icon=utilities-system-monitor-symbolic --default-cancel --question --text="Do you wish to terminate $@?"
+		zenity --title "WeChat is running" --icon=utilities-system-monitor-symbolic --default-cancel --question --text="Do you wish to terminate the running session?"
 	fi
 	if [ $? = 0 ]; then
 		systemctl --user stop $@
+	else
+		echo "[Critical] User denied session termination"
+		exit 114
 	fi
 }
 
