@@ -1,7 +1,7 @@
 pkgbase = sealcrypto
 	pkgdesc = Microsoft library for fully homomorphic encryption
 	pkgver = 4.1.2
-	pkgrel = 2
+	pkgrel = 1
 	url = https://www.microsoft.com/en-us/research/group/cryptography-research/
 	arch = x86_64
 	license = MIT

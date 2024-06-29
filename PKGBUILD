@@ -3,7 +3,7 @@
 # Maintainer: Benjamin Cheng <ben@bcheng.me>
 pkgname=sealcrypto
 pkgver=4.1.2
-pkgrel=2
+pkgrel=1
 pkgdesc='Microsoft library for fully homomorphic encryption'
 arch=('x86_64')
 url="https://www.microsoft.com/en-us/research/group/cryptography-research/"
