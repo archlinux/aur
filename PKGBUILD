@@ -2,14 +2,14 @@
 # Previous Maintainer: NicKoehler <grillinicolavocal at gmail dot com>
 
 pkgname=yarg
-pkgver=0.12.3
+pkgver=0.12.4
 pkgrel=1
 pkgdesc="YARG - Yet Another Rhythm Game inspired off of Rockband, Guitar Hero, Clone Hero, or similar."
 arch=("x86_64")
 url="https://github.com/YARC-Official/YARG"
 install=$pkgname.install
 license=('LGPL-3.0-only')
-depends=("hidapi" "systemd-libs")
+depends=("hidapi" "systemd-libs" "alsa-lib" "gtk3" "glib2")
 source=(
     "$pkgname"
     "$pkgname.desktop"
@@ -18,7 +18,7 @@ source=(
 )
 sha256sums=('b0d35e17a3100e8c423f4b00c591b7cc9f35f1629bf3c29322db478ad0507005'
             '56b58195f481e1a2e0ccf6bf5ff84f4a81bcf5befbb38a72e47b2b4c4652dcab'
-            '93449f09ed08bfad465778f4bce72f6315ccf156e2891f9e870f0c540503f889'
+            '773def9561cb3a74d70ee508b885257f7968ea31fbb6a43c70e9f0429ed9d4bd'
             'a5681bf9b05db14d86776930017c647ad9e6e56ff6bbcfdf21e5848288dfaf1b')
 
 
