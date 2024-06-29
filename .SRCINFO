@@ -1,6 +1,6 @@
 pkgbase = ttf-juisee
 	pkgdesc = A font family for programming synthesized JuliaMono and LINE Seed JP
-	pkgver = 0.0.6
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/yuru7/juisee
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = ttf-juisee
 	makedepends = python-ttfautohint-py
 	makedepends = python-setuptools
 	provides = ttf-font
-	source = ttf-juisee-0.0.6.tar.gz::https://github.com/yuru7/juisee/archive/refs/tags/v0.0.6.tar.gz
-	sha256sums = e1941e95de42f1e08b71e9f8d3525e196fc1ba626dc2fb9a018e5213699f0e41
+	source = ttf-juisee-0.1.0.tar.gz::https://github.com/yuru7/juisee/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = aeb61acf33bca563881203eeb9b5f90b2fb4e50bc2d062862b7c418d523cf345
 
 pkgname = ttf-juisee

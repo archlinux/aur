@@ -1,7 +1,7 @@
 # Maintainer: Shohei Maruyama <cheat.sc.linux@outlook.com>
 
 pkgname=ttf-juisee
-pkgver=0.0.6
+pkgver=0.1.0
 pkgrel=1
 pkgdesc='A font family for programming synthesized JuliaMono and LINE Seed JP'
 arch=('any')
@@ -10,7 +10,7 @@ license=('custom:OFL')
 provides=('ttf-font')
 makedepends=('fontforge' 'python-fonttools' 'python-ttfautohint-py' 'python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/yuru7/juisee/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e1941e95de42f1e08b71e9f8d3525e196fc1ba626dc2fb9a018e5213699f0e41')
+sha256sums=('aeb61acf33bca563881203eeb9b5f90b2fb4e50bc2d062862b7c418d523cf345')
 
 build() {
 	cd "juisee-${pkgver}"
