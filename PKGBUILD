@@ -1,8 +1,8 @@
 # Maintainer: Brian Gisseler <gissf1@gmail.com>
 # Contributor: Ian Denhardt <ian@zenhack.net>
 pkgname=arch-emerge-git
-pkgver=r47.47477e5
-pkgrel=2
+pkgver=r48.e463f1c
+pkgrel=1
 pkgdesc="A pacman frontend like Gentoo's emerge which manages packages based on a holistic view of the system"
 arch=('any')
 url="https://github.com/gissf1/arch-emerge"
