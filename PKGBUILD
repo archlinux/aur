@@ -7,7 +7,7 @@ _pluginame=typora_plugin
 _typora_ver=1.9.3
 _plugin_ver=1.9.15
 pkgver=${_typora_ver}_plugin_${_plugin_ver}
-pkgrel=3
+pkgrel=4
 pkgdesc="一款 Markdown 编辑器和阅读器（with typora_plugin）"
 arch=('x86_64')
 license=('custom:"Copyright (c) 2015 Abner Lee All Rights Reserved."')
@@ -24,7 +24,7 @@ backups=(
     'usr/share/typora/resources/plugin/global/settings/settings.user.toml'
     )
 _filename="${_pkgname}_${_typora_ver}_amd64.deb"
-_pluginfilename="$_plugin_ver"
+_pluginfilename="${_pluginame}-${_plugin_ver}"
 source=(
     "https://download2.typoraio.cn/linux/$_filename"
     "$_pkgname.sh"
@@ -35,9 +35,9 @@ sha512sums=(
     'f9d72f68442327f5096c43781d99bccdd0d7fbf48fc64f62f6311f7a7c8c02d1cc6b04bec54d80eaa7761f7cb8a1a85340e0cb83d98d5ad06906c4871184a69d')
 
 _patch_plugin() {
-  tar xvf ${_pluginfilename}.tar.gz -C "$pkgdir/"
-  mv $pkgdir/${_pluginname}/plugin $pkgdir/usr/share/typora/resources/
-  rm -rf $pkgdir/${_pluginname}
+  tar xvf ${_plugin_ver}.tar.gz -C "$pkgdir/"
+  mv $pkgdir/${_pluginfilename}/plugin $pkgdir/usr/share/typora/resources/
+  rm -rf $pkgdir/${_pluginfilename}
   sed -i 's@\(frame.js" defer="defer"></script>\)@\1<script src="./plugin/index.js" defer="defer"></script>@g' $pkgdir/usr/share/typora/resources/window.html
 }
 
