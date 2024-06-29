@@ -2,7 +2,7 @@
 _name=dae
 pkgname=$_name-git
 pkgver=0.7.0rc1.r5.g64ebfea
-pkgrel=1
+pkgrel=2
 pkgdesc="A Linux lightweight and high-performance transparent proxy solution based on eBPF."
 arch=('x86_64' 'aarch64')
 url="https://github.com/daeuniverse/dae"
@@ -37,7 +37,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/$_name"
-	BUILD_ARGS="-buildmode=pie -modcacherw" CFLAGS="-fno-stack-protector" make VERSION="${pkgver}"
+	CGO_ENABLED=1 BUILD_ARGS="-buildmode=pie -modcacherw" CFLAGS="-fno-stack-protector" make VERSION="${pkgver}"
 }
 
 package() {
