@@ -1,0 +1,47 @@
+# Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
+
+pkgname="cyme"
+pkgver=1.7.0
+pkgrel=1
+pkgdesc="List system USB buses and devices; a lib and modern cross-platform lsusb"
+arch=('any')
+url="https://github.com/tuna-f1sh/${pkgname}"
+license=('GPL-3.0-or-later')
+depends=('glibc' 'gcc-libs' 'libusb')
+makedepends=('cargo')
+_pkgsrc="${pkgname}-${pkgver}"
+source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('63ca7c5f473cbefb1fd07ba9b4f9693268d80560a778a001d82fab68bbd1552a')
+
+prepare() {
+  cd "${srcdir}/${_pkgsrc}"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+build() {
+  cd "${srcdir}/${_pkgsrc}"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release --all-features
+}
+
+check() {
+  cd "${srcdir}/${_pkgsrc}"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo test --frozen --all-features
+}
+
+package() {
+  cd "${srcdir}/${_pkgsrc}"
+  install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  cd "doc"
+  install -Dm644 "${pkgname}.1" "${pkgdir}/usr/share/man/man1/${pkgname}.1"
+  install -Dm644 "${pkgname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+  install -Dm644 "${pkgname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
+  install -Dm644 "_${pkgname}" "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
+  install -Dm644 "_${pkgname}.ps1" "${pkgdir}/usr/share/powershell/Modules/${pkgname}/${pkgname}.ps1"
+}

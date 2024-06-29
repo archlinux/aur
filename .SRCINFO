@@ -1,0 +1,15 @@
+pkgbase = cyme
+	pkgdesc = List system USB buses and devices; a lib and modern cross-platform lsusb
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/tuna-f1sh/cyme
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	depends = libusb
+	source = cyme-1.7.0.tar.gz::https://github.com/tuna-f1sh/cyme/archive/refs/tags/v1.7.0.tar.gz
+	sha256sums = 63ca7c5f473cbefb1fd07ba9b4f9693268d80560a778a001d82fab68bbd1552a
+
+pkgname = cyme
