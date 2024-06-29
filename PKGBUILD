@@ -9,7 +9,6 @@ arch=('x86_64')
 url="https://webui.me/"
 license=('MIT')
 depends=("glibc")
-conflicts=('webui')
 makedepends=("git" "make" "gcc")
 provides=("webui")
 conflicts=("webui")
