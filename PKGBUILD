@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=biomaRt
-_pkgver=2.60.0
+_pkgver=2.60.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -28,8 +28,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c0a5e3d450e119dfd62a5d665f6f596e')
-b2sums=('453c71d3dd75f1f118c6c55bf4551c4c5de3e9c09fbd70fad1d0f8e03cea29ad32e0b0ac221328a2809bdc393b372e947d7118425fe27ece4ab6291c22b55a6e')
+md5sums=('7fe8c3ba15c1a7832bd92406af61bccb')
+b2sums=('d70f5f53bb9f77e3d8793c3bb2fb8eae1ee63e088fb6df6896c8667a3a2f70ce125dae552eb7009384edad9a616c7d2363f5ec83f4ba32e1ee2d0a8b89351bf4')
 
 build() {
   mkdir build
