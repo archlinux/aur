@@ -4,29 +4,54 @@
 # Contributor: Mark Lee <mark at markelee dot com>
 
 pkgname=jupyterhub
-pkgver=4.1.5
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="Multi-user server for Jupyter notebooks"
 url="https://jupyter.org/hub"
 arch=(any)
 license=('BSD-3-Clause')
 depends=(
-  'ipython' 'nodejs-configurable-http-proxy' 'python-alembic'
-  'python-async_generator' 'python-certipy' 'python-entrypoints' 'python-jinja'
-  'python-jsonschema' 'python-jupyter_telemetry' 'python-oauthlib'
-  'python-packaging' 'python-pamela' 'python-prometheus_client' 'python-requests'
-  'python-sqlalchemy' 'python-tornado' 'python-traitlets'
+  'ipython'
+  'nodejs-configurable-http-proxy'
+  'python-alembic'
+  'python-certipy'
+  'python-dateutil'
+  'python-jinja'
+  'python-jupyter-events'
+  'python-oauthlib'
+  'python-packaging'
+  'python-pamela'
+  'python-prometheus_client'
+  'python-psutil'
+  'python-pydantic'
+  'python-requests'
+  'python-sqlalchemy'
+  'python-tornado'
+  'python-traitlets'
 )
 makedepends=(
-  'npm' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'yarn'
+  'npm'
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-setuptools-scm'
+  'python-wheel'
+  'yarn'
 )
 checkdepends=(
-  'jupyter-notebook' 'python-beautifulsoup4' 'python-pytest'
-  'python-pytest-rerunfailures' 'python-requests-mock' 'python-playwright'
+  'jupyter-notebook'
+  'python-beautifulsoup4'
+  'python-cryptography'
+  'python-jsonschema'
+  'python-pytest'
+  'python-pytest-rerunfailures'
+  'python-requests-mock'
+  'python-playwright'
 )
 optdepends=(
   'jupyter-notebook: standard notebook server'
   'jupyterlab: to use the JupyterLab interface'
+  'python-cryptography: encrypt authentication state'
   'python-pycurl: improved HTTP performance'
   'python-statsd: send metrics to a StatsD server'
 )
@@ -34,15 +59,16 @@ install=jupyterhub.install
 backup=(
   'etc/jupyterhub/jupyterhub_config.py'
 )
+
 source=(
-  "jupyterhub-${pkgver}.tar.gz::https://github.com/jupyterhub/jupyterhub/archive/${pkgver}.tar.gz"
+  "https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"
   'jupyterhub.service'
   'tests_use_random_ports.patch'
 )
 sha256sums=(
-  '750511c4956e2926625b1c9a6cc0e6e82e090a8b682e631c8117b2e104f94723'
+  '62847b38b1a4f4f6ffa0f5f355f4114a861b16bc45de55a0fb82df428da43b75'
   'f851dac9e098afa1dfcf30169b23414e7384559984eb7090aaf3c4f9c1c84997'
-  '32d010f9d7656429e02c62b1c28368a67c3c09c5a932c3ce7df83679613912ee'
+  'f5efb4d2e64fa9e98121b8ae0473a7366f8e727176addb0b92f568e3c6d5c66b'
 )
 
 prepare() {
@@ -60,9 +86,9 @@ build() {
   # installed' headers with 'Included with the jupyterhub package'.
   cd build/lib
   python -m jupyterhub --generate-config -f "$srcdir/default_config.py" -y True
-  local _srcdir_esc="${srcdir////\\/}"
+  local _srcdir_escaped="${srcdir////\\/}"
   sed -i "$srcdir/default_config.py" \
-    -e "s/${_srcdir_esc}\/jupyterhub-$pkgver/\/usr/" \
+    -e "s/${_srcdir_escaped}\/jupyterhub-$pkgver/\/usr/" \
     -e 's/#  Currently installed:/#  Included with the jupyterhub package:/'
 }
 
@@ -129,6 +155,8 @@ check() {
   python -m venv --system-site-packages test-env
   test-env/bin/python -m pip install --no-deps --ignore-installed 'pytest-asyncio>=0.17,<0.23'
   test-env/bin/python -m installer "dist/jupyterhub-$pkgver"-*.whl
+
+  test-env/bin/python ci/check_installed_data.py
   test-env/bin/python -m pytest -v jupyterhub "${testargs[@]}"
 }
 

@@ -1,12 +1,12 @@
 --- jupyterhub/tests/mocking.py
 +++ jupyterhub/tests/mocking.py
 
-@@ -241,6 +241,8 @@
+@@ -242,6 +242,8 @@
          if 'internal_certs_location' in kwargs:
              cert_location = kwargs['internal_certs_location']
              kwargs['external_certs'] = ssl_setup(cert_location, 'hub-ca')
 +        self.config.JupyterHub.hub_port = random_port()
 +        self.config.ConfigurableHTTPProxy.api_url = f'http://127.0.0.1:{random_port()}'
          super().__init__(*args, **kwargs)
- 
-     @default('subdomain_host')
+         if 'allow_all' not in self.config.Authenticator:
+             self.config.Authenticator.allow_all = True
