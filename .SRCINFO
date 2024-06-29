@@ -1,6 +1,6 @@
 pkgbase = glsmac-git
 	pkgdesc = Unofficial open-source OpenGL/SDL2 reimplementation of Sid Meiers Alpha Centauri ( + Alien Crossfire )
-	pkgver = 0.3.852e3a77
+	pkgver = 0.3.f239b59b
 	pkgrel = 1
 	url = https://github.com/afwbkbc/glsmac
 	arch = x86_64

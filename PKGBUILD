@@ -1,7 +1,7 @@
 # Maintainer: Markus Hartung <mail@hartmark.se>
 
 pkgname=glsmac-git
-pkgver=0.3.852e3a77
+pkgver=0.3.f239b59b
 pkgrel=1
 pkgdesc='Unofficial open-source OpenGL/SDL2 reimplementation of Sid Meier''s Alpha Centauri ( + Alien Crossfire )'
 arch=('x86_64')
@@ -37,8 +37,6 @@ package() {
 
     mkdir -p "$pkgdir/usr/share/glsmac"
     cp -dpr --no-preserve=ownership GLSMAC_data "$pkgdir/usr/share/glsmac/GLSMAC_data"
-    install -Dm755 build/bin/GLSMAC "$pkgdir/usr/share/glsmac/glsmac"
-    install -Dm755 ../../glsmac_bootstrap.sh "$pkgdir/usr/bin/glsmac"
 
-#    install -Dm755 build/bin/GLSMAC "$pkgdir/usr/bin/glsmac"
+    install -Dm755 build/bin/GLSMAC "$pkgdir/usr/bin/glsmac"
 }
