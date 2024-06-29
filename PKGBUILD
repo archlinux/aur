@@ -3,44 +3,42 @@
 # Contributor: Philipp Überbacher <murks at lavabit dot com>
 # Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
-_pkgbasename=klick
-pkgname=${_pkgbasename}-git
+_pkgname=klick
+pkgname=$_pkgname-git
 pkgver=0.13.0_pre.r174.c050710
-pkgrel=1
-pkgdesc="An advanced command-line based metronome for JACK"
-arch=('i686' 'x86_64')
+pkgrel=2
+pkgdesc='An advanced command-line based metronome for JACK'
+arch=(i686 x86_64)
 url="http://das.nasophon.de/klick/"
-license=('GPL')
-depends=('jack' 'liblo' 'rubberband')
-makedepends=('boost' 'git' 'scons')
-provides=("${_pkgbasename}")
-conflicts=("${_pkgbasename}")
-source=("${_pkgbasename}::git://github.com/dsacre/klick.git"
+license=(GPL-2.0-only)
+depends=(glibc gcc-libs)
+makedepends=(boost git jack liblo libsndfile rubberband scons)
+provides=($_pkgname)
+conflicts=($_pkgname)
+source=("$_pkgname::git+https://github.com/dsacre/klick.git"
         'klick-sconstruct-py3.patch')
 sha256sums=('SKIP'
             '29d59dfb3cae6b8e0e77362391280ef32a18b3f7e33413921917ce465c5543e9')
 
 pkgver() {
-  cd "${srcdir}/${_pkgbasename}"
-
+  cd $_pkgname
   local ver="$(grep ^version SConstruct | cut -f 2 -d "'" | sed -e 's/-/_/')"
   printf "%s.r%s.%s" "$ver" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "${srcdir}/${_pkgbasename}"
-
+  cd $_pkgname
   patch -p1 -N -i "${srcdir}"/klick-sconstruct-py3.patch
 }
 
 build() {
-  cd "${srcdir}/${_pkgbasename}"
-
+  cd $_pkgname
   scons PREFIX="/usr"
 }
 
 package() {
-  cd "${srcdir}/${_pkgbasename}"
-
+  depends+=(libjack.so liblo.so librubberband.so libsamplerate.so libsndfile.so)
+  cd $_pkgname
   scons DESTDIR="${pkgdir}" install
+  install -Dm644 doc/manual.html -t "$pkgdir"/usr/share/doc/$pkgname
 }
