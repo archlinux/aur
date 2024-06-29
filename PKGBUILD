@@ -2,7 +2,7 @@
 
 pkgname=mobsh
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for smooth git handover"
 arch=('x86_64' 'i686')
 url="https://github.com/remotemobprogramming/mob"
@@ -13,7 +13,7 @@ optdepends=('espeak-ng-espeak: Multi-lingual software speech synthesizer'
 makedepends=('go')
 conflicts=('mob')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('137a0c0ff498fa1e8ef8f58d1b009e306923a725d9ddb595b400c94e35fe0f53')
+sha256sums=('e3691205d54ff7f7c1091ce475e89e70d21c5b8718dd17ffb4b33bd353b58a8a')
 
 build() {
 	cd "mob-${pkgver}"
