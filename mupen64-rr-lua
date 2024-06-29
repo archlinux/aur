@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# set the prefix for Wine
+export WINEPREFIX="$HOME/.mupen64-rr-lua"
+
+# check if the game's user directory has been initialized
+if [ ! -d "$WINEPREFIX" ]; then
+    # create the directory for the wine prefix
+    mkdir -p "$WINEPREFIX" || exit 1
+
+    # initiaize the wine prefix
+    wineboot -i || exit 1
+
+    # install the required dependencies using winetricks
+    #winetricks -q dxvk || exit 1
+fi
+
+# run the game
+WINEDEBUG=-all wine /opt/mupen64-rr-lua/mupen64.exe "$@"

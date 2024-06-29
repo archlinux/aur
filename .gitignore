@@ -1,0 +1,14 @@
+# Source and package folders
+src/
+pkg/
+
+# Archives
+*.zip
+*.7z
+*.tar.gz
+
+# Icon files
+*.ico
+
+# Packages
+*.zst
