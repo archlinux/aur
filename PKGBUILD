@@ -22,5 +22,4 @@ package() {
    cp -r "$srcdir/$pkgname-$pkgver/dictionaries/" "$pkgdir/usr/share/$pkgname/"
    install -Dm755 "$srcdir/$pkgname-$pkgver/target/release/mecano" "$pkgdir/usr/bin/$pkgname"
 }
-
-sha256sums=('42e3621d2d847f707297ebfa4a67977ed64683db309d6819e9b3bd4f0c5355b3')
+sha256sums=('55ceb63314ce62521537d34c5938915ce90b382b1444ecf1f784422ddde2bd02')
