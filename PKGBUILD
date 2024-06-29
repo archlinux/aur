@@ -1,14 +1,15 @@
-# Maintainer: Klaus Alexander Seistrup <klaus@seistrup.dk>
 # -*- mode: sh -*-
+
+# Maintainer: Klaus Alexander Seistrup <klaus@seistrup.dk>
 
 _pkgname='mycorrhiza'
 pkgname="$_pkgname-git"
-pkgver=1.14.0.r17.g7ad8a06
+pkgver=1.15.0.r0.g719de9b
 pkgrel=1
 pkgdesc='Filesystem and git-based wiki engine written in Go using mycomarkup (built from latest commit)'
 arch=('aarch64' 'armv7h' 'x86_64')
 url="https://github.com/bouncepaw/$_pkgname"
-license=('AGPL-3.0-or-later')
+license=('AGPL-3.0-or-later')  # SPDX-License-Identifier: AGPL-3.0-or-later
 depends=('git' 'glibc')
 makedepends=('git' 'go')
 source=("git+$url.git")
@@ -42,8 +43,8 @@ build() {
   # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
   #
   # ld(1) says: “Supported for i386 and x86-64.”
-  case "${CARCH:-unknown}" in
-    'x86_64' | 'i386' )
+  case "Z${CARCH:-unknown}" in
+    'Zx86_64' | 'Zi386' )
       export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
     ;;
     * ) : pass ;;
@@ -62,6 +63,12 @@ build() {
     -modcacherw \
     -o build \
      .
+}
+
+check() {
+  cd "$_pkgname"
+
+  build/mycorrhiza -version
 }
 
 package() {
