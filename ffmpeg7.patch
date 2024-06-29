@@ -1,0 +1,738 @@
+From 0e935f9edb30fd905f14230af653930b5fe139e8 Mon Sep 17 00:00:00 2001
+From: Stephan Sundermann <stephansundermann@gmail.com>
+Date: Sat, 13 Apr 2024 13:07:58 +0200
+Subject: [PATCH] [ffmpeg] Use new audio DTS and ATMOS profiles
+
+---
+ .../VideoPlayer/DVDDemuxers/DVDDemux.cpp      | 20 +++++++++++++------
+ .../DVDInputStreams/InputStreamAddon.cpp      |  9 +++------
+ 2 files changed, 17 insertions(+), 12 deletions(-)
+
+diff --git a/xbmc/cores/VideoPlayer/DVDDemuxers/DVDDemux.cpp b/xbmc/cores/VideoPlayer/DVDDemuxers/DVDDemux.cpp
+index 63fb9264a8348..22fe7ba751f96 100644
+--- a/xbmc/cores/VideoPlayer/DVDDemuxers/DVDDemux.cpp
++++ b/xbmc/cores/VideoPlayer/DVDDemuxers/DVDDemux.cpp
+@@ -15,15 +15,15 @@ std::string CDemuxStreamAudio::GetStreamType()
+   std::string strInfo;
+   switch (codec)
+   {
+-    //! @todo: With ffmpeg >= 6.1 add new AC4 codec
+     case AV_CODEC_ID_AC3:
+       strInfo = "AC3 ";
+       break;
++    case AV_CODEC_ID_AC4:
++      strInfo = "AC4 ";
++      break;
+     case AV_CODEC_ID_EAC3:
+     {
+-      //! @todo: With ffmpeg >= 6.1 add new atmos profile case
+-      // "JOC" its EAC3 Atmos underlying profile, there is no standard codec name string
+-      if (StringUtils::Contains(codecName, "JOC"))
++      if (profile == FF_PROFILE_EAC3_DDP_ATMOS)
+         strInfo = "DD+ ATMOS ";
+       else
+         strInfo = "DD+ ";
+@@ -31,7 +31,6 @@ std::string CDemuxStreamAudio::GetStreamType()
+     }
+     case AV_CODEC_ID_DTS:
+     {
+-      //! @todo: With ffmpeg >= 6.1 add new DTSX profile cases
+       switch (profile)
+       {
+         case FF_PROFILE_DTS_96_24:
+@@ -49,6 +48,12 @@ std::string CDemuxStreamAudio::GetStreamType()
+         case FF_PROFILE_DTS_HD_HRA:
+           strInfo = "DTS-HD HRA ";
+           break;
++        case FF_PROFILE_DTS_HD_MA_X:
++          strInfo = "DTS-HD MA X ";
++          break;
++        case FF_PROFILE_DTS_HD_MA_X_IMAX:
++          strInfo = "DTS-HD MA X (IMAX) ";
++        break;
+         default:
+           strInfo = "DTS ";
+           break;
+@@ -62,7 +67,10 @@ std::string CDemuxStreamAudio::GetStreamType()
+       strInfo = "MP3 ";
+       break;
+     case AV_CODEC_ID_TRUEHD:
+-      strInfo = "TrueHD ";
++      if (profile == FF_PROFILE_TRUEHD_ATMOS)
++        strInfo = "TrueHD ATMOS ";
++      else
++        strInfo = "TrueHD ";
+       break;
+     case AV_CODEC_ID_AAC:
+     {
+diff --git a/xbmc/cores/VideoPlayer/DVDInputStreams/InputStreamAddon.cpp b/xbmc/cores/VideoPlayer/DVDInputStreams/InputStreamAddon.cpp
+index daf66ce0cd98b..902f38ade2708 100644
+--- a/xbmc/cores/VideoPlayer/DVDInputStreams/InputStreamAddon.cpp
++++ b/xbmc/cores/VideoPlayer/DVDInputStreams/InputStreamAddon.cpp
+@@ -762,14 +762,11 @@ int CInputStreamAddon::ConvertAudioCodecProfile(STREAMCODEC_PROFILE profile)
+     case DTSCodecProfileHDExpress:
+       return FF_PROFILE_DTS_EXPRESS;
+     case DTSCodecProfileHDMAX:
+-      //! @todo: with ffmpeg >= 6.1 set the appropriate profile
+-      return FF_PROFILE_UNKNOWN; // FF_PROFILE_DTS_HD_MA_X
++      return FF_PROFILE_DTS_HD_MA_X;
+     case DTSCodecProfileHDMAIMAX:
+-      //! @todo: with ffmpeg >= 6.1 set the appropriate profile
+-      return FF_PROFILE_UNKNOWN; // FF_PROFILE_DTS_HD_MA_X_IMAX
++      return FF_PROFILE_DTS_HD_MA_X_IMAX;
+     case DDPlusCodecProfileAtmos:
+-      //! @todo: with ffmpeg >= 6.1 set the appropriate profile
+-      return FF_PROFILE_UNKNOWN; // FF_PROFILE_EAC3_DDP_ATMOS
++      return FF_PROFILE_EAC3_DDP_ATMOS;
+     default:
+       return FF_PROFILE_UNKNOWN;
+   }
+From 99e565ae38a25c44397101d415d212869f4bba70 Mon Sep 17 00:00:00 2001
+From: Stephan Sundermann <stephansundermann@gmail.com>
+Date: Sat, 13 Apr 2024 10:31:36 +0200
+Subject: [PATCH] [settings] Remove VideoPlayerignoredtsinwav advanced setting
+
+---
+ xbmc/settings/AdvancedSettings.cpp | 2 --
+ xbmc/settings/AdvancedSettings.h   | 1 -
+ 2 files changed, 3 deletions(-)
+
+diff --git a/xbmc/settings/AdvancedSettings.cpp b/xbmc/settings/AdvancedSettings.cpp
+index 7b78c322997bc..c25addafca9fe 100644
+--- a/xbmc/settings/AdvancedSettings.cpp
++++ b/xbmc/settings/AdvancedSettings.cpp
+@@ -129,7 +129,6 @@ void CAdvancedSettings::Initialize()
+     return;
+ 
+   m_audioApplyDrc = -1.0f;
+-  m_VideoPlayerIgnoreDTSinWAV = false;
+ 
+   //default hold time of 25 ms, this allows a 20 hertz sine to pass undistorted
+   m_limiterHold = 0.025f;
+@@ -580,7 +579,6 @@ void CAdvancedSettings::ParseSettingsFile(const std::string &file)
+       GetCustomRegexps(pAudioExcludes, m_audioExcludeFromScanRegExps);
+ 
+     XMLUtils::GetFloat(pElement, "applydrc", m_audioApplyDrc);
+-    XMLUtils::GetBoolean(pElement, "VideoPlayerignoredtsinwav", m_VideoPlayerIgnoreDTSinWAV);
+ 
+     XMLUtils::GetFloat(pElement, "limiterhold", m_limiterHold, 0.0f, 100.0f);
+     XMLUtils::GetFloat(pElement, "limiterrelease", m_limiterRelease, 0.001f, 100.0f);
+diff --git a/xbmc/settings/AdvancedSettings.h b/xbmc/settings/AdvancedSettings.h
+index e9adb76b61d9f..4618d82d0d255 100644
+--- a/xbmc/settings/AdvancedSettings.h
++++ b/xbmc/settings/AdvancedSettings.h
+@@ -121,7 +121,6 @@ class CAdvancedSettings : public ISettingCallback, public ISettingsHandler
+ 
+     std::string m_audioDefaultPlayer;
+     float m_audioPlayCountMinimumPercent;
+-    bool m_VideoPlayerIgnoreDTSinWAV;
+     float m_limiterHold;
+     float m_limiterRelease;
+ 
+From 98db36cddf3646a104d1c1c35534f9b27935a620 Mon Sep 17 00:00:00 2001
+From: Stephan Sundermann <stephansundermann@gmail.com>
+Date: Thu, 11 Apr 2024 17:15:43 +0200
+Subject: [PATCH] [ffmpeg] Remove CrystalHD hw acceleration strings
+
+---
+ addons/resource.language.en_gb/resources/strings.po | 11 ++---------
+ 1 file changed, 2 insertions(+), 9 deletions(-)
+
+diff --git a/addons/resource.language.en_gb/resources/strings.po b/addons/resource.language.en_gb/resources/strings.po
+index 95cc956764204..9fa200c32a583 100644
+--- a/addons/resource.language.en_gb/resources/strings.po
++++ b/addons/resource.language.en_gb/resources/strings.po
+@@ -7317,10 +7317,7 @@ msgctxt "#13427"
+ msgid "Allow hardware acceleration - DXVA2"
+ msgstr ""
+ 
+-#: system/settings/settings.xml
+-msgctxt "#13428"
+-msgid "Allow hardware acceleration - CrystalHD"
+-msgstr ""
++#empty string with id 13428
+ 
+ #: system/settings/settings.xml
+ msgctxt "#13429"
+@@ -19459,11 +19456,7 @@ msgctxt "#36158"
+ msgid "Enable DXVA2 hardware decoding of video files."
+ msgstr ""
+ 
+-#. Description of setting with label #13428 "Allow hardware acceleration (CrystalHD)"
+-#: system/settings/settings.xml
+-msgctxt "#36159"
+-msgid "Enable CrystalHD decoding of video files."
+-msgstr ""
++#empty string with id 36159
+ 
+ #. Description of setting with label #13429 "Allow hardware acceleration (VDADecoder)"
+ #: system/settings/settings.xml
+From 025b9f96c1f23bf7df53e45de6344d1193b3dc2b Mon Sep 17 00:00:00 2001
+From: Stephan Sundermann <stephansundermann@gmail.com>
+Date: Thu, 11 Apr 2024 17:15:16 +0200
+Subject: [PATCH] [ffmpeg] Remove deprecated use av_stream_get_side_data
+
+---
+ .../DVDDemuxers/DVDDemuxFFmpeg.cpp            | 53 +++++++++++--------
+ 1 file changed, 32 insertions(+), 21 deletions(-)
+
+diff --git a/xbmc/cores/VideoPlayer/DVDDemuxers/DVDDemuxFFmpeg.cpp b/xbmc/cores/VideoPlayer/DVDDemuxers/DVDDemuxFFmpeg.cpp
+index 174df53f16023..f917bf719fcd3 100644
+--- a/xbmc/cores/VideoPlayer/DVDDemuxers/DVDDemuxFFmpeg.cpp
++++ b/xbmc/cores/VideoPlayer/DVDDemuxers/DVDDemuxFFmpeg.cpp
+@@ -1630,42 +1630,49 @@ CDemuxStream* CDVDDemuxFFmpeg::AddStream(int streamIdx)
+         st->colorRange = pStream->codecpar->color_range;
+         st->hdr_type = DetermineHdrType(pStream);
+ 
+-        // https://github.com/FFmpeg/FFmpeg/blob/release/5.0/doc/APIchanges
+-        size_t size = 0;
+-        uint8_t* side_data = nullptr;
++        // https://github.com/FFmpeg/FFmpeg/blob/release/7.0/doc/APIchanges
++        const AVPacketSideData* sideData = nullptr;
+ 
+         if (st->hdr_type == StreamHdrType::HDR_TYPE_DOLBYVISION)
+         {
+-          side_data = av_stream_get_side_data(pStream, AV_PKT_DATA_DOVI_CONF, &size);
+-          if (side_data && size)
++
++          sideData =
++              av_packet_side_data_get(pStream->codecpar->coded_side_data,
++                                      pStream->codecpar->nb_coded_side_data, AV_PKT_DATA_DOVI_CONF);
++          if (sideData && sideData->size)
+           {
+-            st->dovi = *reinterpret_cast<AVDOVIDecoderConfigurationRecord*>(side_data);
++            st->dovi = *reinterpret_cast<const AVDOVIDecoderConfigurationRecord*>(sideData->data);
+           }
+         }
+ 
+-        side_data = av_stream_get_side_data(pStream, AV_PKT_DATA_MASTERING_DISPLAY_METADATA, &size);
+-        if (side_data && size)
++        sideData = av_packet_side_data_get(pStream->codecpar->coded_side_data,
++                                           pStream->codecpar->nb_coded_side_data,
++                                           AV_PKT_DATA_MASTERING_DISPLAY_METADATA);
++        if (sideData && sideData->size)
+         {
+           st->masteringMetaData = std::make_shared<AVMasteringDisplayMetadata>(
+-              *reinterpret_cast<AVMasteringDisplayMetadata*>(side_data));
++              *reinterpret_cast<const AVMasteringDisplayMetadata*>(sideData->data));
+         }
+ 
+-        side_data = av_stream_get_side_data(pStream, AV_PKT_DATA_CONTENT_LIGHT_LEVEL, &size);
+-        if (side_data && size)
++        sideData = av_packet_side_data_get(pStream->codecpar->coded_side_data,
++                                           pStream->codecpar->nb_coded_side_data,
++                                           AV_PKT_DATA_CONTENT_LIGHT_LEVEL);
++        if (sideData && sideData->size)
+         {
+           st->contentLightMetaData = std::make_shared<AVContentLightMetadata>(
+-              *reinterpret_cast<AVContentLightMetadata*>(side_data));
++              *reinterpret_cast<const AVContentLightMetadata*>(sideData->data));
+         }
+ 
+-        uint8_t* displayMatrixSideData =
+-            av_stream_get_side_data(pStream, AV_PKT_DATA_DISPLAYMATRIX, nullptr);
+-        if (displayMatrixSideData)
++        sideData = av_packet_side_data_get(pStream->codecpar->coded_side_data,
++                                           pStream->codecpar->nb_coded_side_data,
++                                           AV_PKT_DATA_DISPLAYMATRIX);
++        if (sideData)
+         {
+-          const double tetha =
+-              av_display_rotation_get(reinterpret_cast<int32_t*>(displayMatrixSideData));
+-          if (!std::isnan(tetha))
++          const double theta =
++              av_display_rotation_get(reinterpret_cast<const int32_t*>(sideData->data));
++          if (!std::isnan(theta))
+           {
+-            st->iOrientation = ((static_cast<int>(-tetha) % 360) + 360) % 360;
++            st->iOrientation = ((static_cast<int>(-theta) % 360) + 360) % 360;
+           }
+         }
+ 
+@@ -2488,7 +2495,9 @@ StreamHdrType CDVDDemuxFFmpeg::DetermineHdrType(AVStream* pStream)
+ {
+   StreamHdrType hdrType = StreamHdrType::HDR_TYPE_NONE;
+ 
+-  if (av_stream_get_side_data(pStream, AV_PKT_DATA_DOVI_CONF, nullptr)) // DoVi
++  if (av_packet_side_data_get(pStream->codecpar->coded_side_data,
++                              pStream->codecpar->nb_coded_side_data,
++                              AV_PKT_DATA_DOVI_CONF)) // DoVi
+     hdrType = StreamHdrType::HDR_TYPE_DOLBYVISION;
+   else if (pStream->codecpar->color_trc == AVCOL_TRC_SMPTE2084) // HDR10
+     hdrType = StreamHdrType::HDR_TYPE_HDR10;
+@@ -2496,7 +2505,9 @@ StreamHdrType CDVDDemuxFFmpeg::DetermineHdrType(AVStream* pStream)
+     hdrType = StreamHdrType::HDR_TYPE_HLG;
+   // file could be SMPTE2086 which FFmpeg currently returns as unknown
+   // so use the presence of static metadata to detect it
+-  else if (av_stream_get_side_data(pStream, AV_PKT_DATA_MASTERING_DISPLAY_METADATA, nullptr))
++  else if (av_packet_side_data_get(pStream->codecpar->coded_side_data,
++                                   pStream->codecpar->nb_coded_side_data,
++                                   AV_PKT_DATA_MASTERING_DISPLAY_METADATA))
+     hdrType = StreamHdrType::HDR_TYPE_HDR10;
+ 
+   return hdrType;
+From 5fdd56c0816490fe4ae652a57275330da4cb451a Mon Sep 17 00:00:00 2001
+From: Stephan Sundermann <stephansundermann@gmail.com>
+Date: Thu, 11 Apr 2024 17:14:48 +0200
+Subject: [PATCH] [ffmpeg] Remove deprecated use of avcodec_close
+
+---
+ xbmc/cores/VideoPlayer/DVDDemuxers/DVDDemuxClient.cpp | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/xbmc/cores/VideoPlayer/DVDDemuxers/DVDDemuxClient.cpp b/xbmc/cores/VideoPlayer/DVDDemuxers/DVDDemuxClient.cpp
+index 0cdf8c3864ac3..477a2e82ece51 100644
+--- a/xbmc/cores/VideoPlayer/DVDDemuxers/DVDDemuxClient.cpp
++++ b/xbmc/cores/VideoPlayer/DVDDemuxers/DVDDemuxClient.cpp
+@@ -188,7 +188,6 @@ bool CDVDDemuxClient::ParsePacket(DemuxPacket* pkt)
+       if (!avcodec_open2(stream->m_context, stream->m_context->codec, nullptr))
+       {
+         avcodec_send_packet(stream->m_context, avpkt);
+-        avcodec_close(stream->m_context);
+       }
+     }
+     av_packet_free(&avpkt);
+From b1cea4df72cd07d47cc659b87a92dc6f4ed1a52f Mon Sep 17 00:00:00 2001
+From: Stephan Sundermann <stephansundermann@gmail.com>
+Date: Thu, 11 Apr 2024 17:13:36 +0200
+Subject: [PATCH] [ffmpeg] Remove deprecated use of FF_API_INTERLACED_FRAME
+
+---
+ .../DVDCodecs/Video/DVDVideoCodecDRMPRIME.cpp            | 5 +++--
+ .../VideoPlayer/DVDCodecs/Video/DVDVideoCodecFFmpeg.cpp  | 9 +++++----
+ xbmc/cores/VideoPlayer/DVDCodecs/Video/VAAPI.cpp         | 6 ++++--
+ xbmc/cores/VideoPlayer/DVDCodecs/Video/VTB.cpp           | 2 +-
+ 4 files changed, 13 insertions(+), 9 deletions(-)
+
+diff --git a/xbmc/cores/VideoPlayer/DVDCodecs/Video/DVDVideoCodecDRMPRIME.cpp b/xbmc/cores/VideoPlayer/DVDCodecs/Video/DVDVideoCodecDRMPRIME.cpp
+index eb2943bb8ccb9..4da0722d5c118 100644
+--- a/xbmc/cores/VideoPlayer/DVDCodecs/Video/DVDVideoCodecDRMPRIME.cpp
++++ b/xbmc/cores/VideoPlayer/DVDCodecs/Video/DVDVideoCodecDRMPRIME.cpp
+@@ -582,8 +582,9 @@ void CDVDVideoCodecDRMPRIME::SetPictureParams(VideoPicture* pVideoPicture)
+ 
+   pVideoPicture->iRepeatPicture = 0;
+   pVideoPicture->iFlags = 0;
+-  pVideoPicture->iFlags |= m_pFrame->interlaced_frame ? DVP_FLAG_INTERLACED : 0;
+-  pVideoPicture->iFlags |= m_pFrame->top_field_first ? DVP_FLAG_TOP_FIELD_FIRST : 0;
++  pVideoPicture->iFlags |= m_pFrame->flags & AV_FRAME_FLAG_INTERLACED ? DVP_FLAG_INTERLACED : 0;
++  pVideoPicture->iFlags |=
++      m_pFrame->flags & AV_FRAME_FLAG_TOP_FIELD_FIRST ? DVP_FLAG_TOP_FIELD_FIRST : 0;
+   pVideoPicture->iFlags |= m_pFrame->data[0] ? 0 : DVP_FLAG_DROPPED;
+ 
+   if (m_codecControlFlags & DVD_CODEC_CTRL_DROP)
+diff --git a/xbmc/cores/VideoPlayer/DVDCodecs/Video/DVDVideoCodecFFmpeg.cpp b/xbmc/cores/VideoPlayer/DVDCodecs/Video/DVDVideoCodecFFmpeg.cpp
+index d66378fa07886..9586d211e9156 100644
+--- a/xbmc/cores/VideoPlayer/DVDCodecs/Video/DVDVideoCodecFFmpeg.cpp
++++ b/xbmc/cores/VideoPlayer/DVDCodecs/Video/DVDVideoCodecFFmpeg.cpp
+@@ -792,12 +792,12 @@ CDVDVideoCodec::VCReturn CDVDVideoCodecFFmpeg::GetPicture(VideoPicture* pVideoPi
+   }
+   m_dropCtrl.Process(framePTS, m_pCodecContext->skip_frame > AVDISCARD_DEFAULT);
+ 
+-  if (m_pDecodedFrame->key_frame)
++  if (m_pDecodedFrame->flags & AV_FRAME_FLAG_KEY)
+   {
+     m_started = true;
+     m_iLastKeyframe = m_pCodecContext->has_b_frames + 2;
+   }
+-  if (m_pDecodedFrame->interlaced_frame)
++  if (m_pDecodedFrame->flags & AV_FRAME_FLAG_INTERLACED)
+     m_interlaced = true;
+   else
+     m_interlaced = false;
+@@ -1013,8 +1013,9 @@ bool CDVDVideoCodecFFmpeg::GetPictureCommon(VideoPicture* pVideoPicture)
+ 
+   pVideoPicture->iRepeatPicture = 0.5 * m_pFrame->repeat_pict;
+   pVideoPicture->iFlags = 0;
+-  pVideoPicture->iFlags |= m_pFrame->interlaced_frame ? DVP_FLAG_INTERLACED : 0;
+-  pVideoPicture->iFlags |= m_pFrame->top_field_first ? DVP_FLAG_TOP_FIELD_FIRST: 0;
++  pVideoPicture->iFlags |= m_pFrame->flags & AV_FRAME_FLAG_INTERLACED ? DVP_FLAG_INTERLACED : 0;
++  pVideoPicture->iFlags |=
++      m_pFrame->flags & AV_FRAME_FLAG_TOP_FIELD_FIRST ? DVP_FLAG_TOP_FIELD_FIRST : 0;
+ 
+   if (m_codecControlFlags & DVD_CODEC_CTRL_DROP)
+   {
+diff --git a/xbmc/cores/VideoPlayer/DVDCodecs/Video/VAAPI.cpp b/xbmc/cores/VideoPlayer/DVDCodecs/Video/VAAPI.cpp
+index fb7606e0d03c6..a62fa6273d995 100644
+--- a/xbmc/cores/VideoPlayer/DVDCodecs/Video/VAAPI.cpp
++++ b/xbmc/cores/VideoPlayer/DVDCodecs/Video/VAAPI.cpp
+@@ -3068,8 +3068,10 @@ bool CFFmpegPostproc::AddPicture(CVaapiDecodedPicture &inPic)
+   m_pFilterFrameIn->height = m_config.vidHeight;
+   m_pFilterFrameIn->linesize[0] = image.pitches[0];
+   m_pFilterFrameIn->linesize[1] = image.pitches[1];
+-  m_pFilterFrameIn->interlaced_frame = (inPic.DVDPic.iFlags & DVP_FLAG_INTERLACED) ? 1 : 0;
+-  m_pFilterFrameIn->top_field_first = (inPic.DVDPic.iFlags & DVP_FLAG_TOP_FIELD_FIRST) ? 1 : 0;
++  if (inPic.DVDPic.iFlags & DVP_FLAG_INTERLACED)
++    m_pFilterFrameIn->flags |= AV_FRAME_FLAG_INTERLACED;
++  if (inPic.DVDPic.iFlags & DVP_FLAG_TOP_FIELD_FIRST)
++    m_pFilterFrameIn->flags |= AV_FRAME_FLAG_TOP_FIELD_FIRST;
+ 
+   if (inPic.DVDPic.pts == DVD_NOPTS_VALUE)
+     m_pFilterFrameIn->pts = AV_NOPTS_VALUE;
+diff --git a/xbmc/cores/VideoPlayer/DVDCodecs/Video/VTB.cpp b/xbmc/cores/VideoPlayer/DVDCodecs/Video/VTB.cpp
+index 1f71f643d229a..567d63559d456 100644
+--- a/xbmc/cores/VideoPlayer/DVDCodecs/Video/VTB.cpp
++++ b/xbmc/cores/VideoPlayer/DVDCodecs/Video/VTB.cpp
+@@ -196,7 +196,7 @@ CDVDVideoCodec::VCReturn CDecoder::Decode(AVCodecContext* avctx, AVFrame* frame)
+ 
+   if(frame)
+   {
+-    if (frame->interlaced_frame)
++    if (frame->flags & AV_FRAME_FLAG_INTERLACED)
+       return CDVDVideoCodec::VC_FATAL;
+ 
+     if (m_renderBuffer)
+From 84f30fa0a9578dc65ffb824bd2286e451d7ec9a1 Mon Sep 17 00:00:00 2001
+From: Stephan Sundermann <stephansundermann@gmail.com>
+Date: Thu, 11 Apr 2024 17:11:32 +0200
+Subject: [PATCH] [ffmpeg] Update to 7.0
+
+---
+ cmake/modules/FindFFMPEG.cmake                |  16 +--
+ tools/buildsteps/windows/ffmpeg_options.txt   |   1 -
+ tools/depends/target/ffmpeg/CMakeLists.txt    |   6 +-
+ tools/depends/target/ffmpeg/FFMPEG-VERSION    |   4 +-
+ xbmc/cdrip/EncoderFFmpeg.cpp                  |   2 +-
+ xbmc/cdrip/EncoderFFmpeg.h                    |   2 +-
+ .../ActiveAE/ActiveAEResampleFFMPEG.cpp       | 110 +++++++++---------
+ .../DVDDemuxers/DVDDemuxFFmpeg.cpp            |  71 +----------
+ 8 files changed, 69 insertions(+), 143 deletions(-)
+
+diff --git a/cmake/modules/FindFFMPEG.cmake b/cmake/modules/FindFFMPEG.cmake
+index 76857b0ccab66..1223b779cc150 100644
+--- a/cmake/modules/FindFFMPEG.cmake
++++ b/cmake/modules/FindFFMPEG.cmake
+@@ -168,14 +168,14 @@ if(WITH_FFMPEG)
+   set(REQUIRED_FFMPEG_VERSION undef)
+ else()
+   # required ffmpeg library versions
+-  set(REQUIRED_FFMPEG_VERSION 6.0.0)
+-  set(_avcodec_ver ">=60.2.100")
+-  set(_avfilter_ver ">=9.3.100")
+-  set(_avformat_ver ">=60.3.100")
+-  set(_avutil_ver ">=58.2.100")
+-  set(_postproc_ver ">=57.1.100")
+-  set(_swresample_ver ">=4.10.100")
+-  set(_swscale_ver ">=7.1.100")
++  set(REQUIRED_FFMPEG_VERSION 7.0.0)
++  set(_avcodec_ver ">=61.3.100")
++  set(_avfilter_ver ">=10.1.100")
++  set(_avformat_ver ">=61.1.100")
++  set(_avutil_ver ">=59.8.100")
++  set(_postproc_ver ">=58.1.100")
++  set(_swresample_ver ">=5.1.100")
++  set(_swscale_ver ">=8.1.100")
+ endif()
+ 
+ # Allows building with external ffmpeg not found in system paths,
+diff --git a/tools/buildsteps/windows/ffmpeg_options.txt b/tools/buildsteps/windows/ffmpeg_options.txt
+index 5034ff26c4073..776c0b4b35ac0 100644
+--- a/tools/buildsteps/windows/ffmpeg_options.txt
++++ b/tools/buildsteps/windows/ffmpeg_options.txt
+@@ -1,5 +1,4 @@
+ --disable-avdevice
+---disable-crystalhd
+ --disable-cuda
+ --disable-cuvid
+ --disable-devices
+diff --git a/tools/depends/target/ffmpeg/CMakeLists.txt b/tools/depends/target/ffmpeg/CMakeLists.txt
+index 5cadafe29485b..8924dc8c7305b 100644
+--- a/tools/depends/target/ffmpeg/CMakeLists.txt
++++ b/tools/depends/target/ffmpeg/CMakeLists.txt
+@@ -92,14 +92,12 @@ elseif(CORE_SYSTEM_NAME STREQUAL android)
+     list(APPEND ffmpeg_conf --extra-cflags=-mno-stackrealign)
+   endif()
+ elseif(CORE_SYSTEM_NAME STREQUAL darwin_embedded)
+-  list(APPEND ffmpeg_conf --disable-crystalhd
+-                          --enable-videotoolbox
++  list(APPEND ffmpeg_conf --enable-videotoolbox
+                           --disable-filter=yadif_videotoolbox
+                           --target-os=darwin
+               )
+ elseif(CORE_SYSTEM_NAME STREQUAL osx)
+-  list(APPEND ffmpeg_conf --disable-crystalhd
+-                          --enable-videotoolbox
++  list(APPEND ffmpeg_conf --enable-videotoolbox
+                           --target-os=darwin
+                           --disable-securetransport
+               )
+diff --git a/tools/depends/target/ffmpeg/FFMPEG-VERSION b/tools/depends/target/ffmpeg/FFMPEG-VERSION
+index f2ba09402e25a..60b8887de3d17 100644
+--- a/tools/depends/target/ffmpeg/FFMPEG-VERSION
++++ b/tools/depends/target/ffmpeg/FFMPEG-VERSION
+@@ -1,5 +1,5 @@
+ LIBNAME=ffmpeg
+-VERSION=6.0.1
++VERSION=7.0.1
+ ARCHIVE=$(LIBNAME)-$(VERSION).tar.gz
+-SHA512=945e34840092dc0fd3824eb1af2be79868af2afb4fe13159b19a9bcfc464cc4d53243c13ff065199290e9393ddbf4b1c5c8abccf83a31a31d6c7490e499fd1fc
++SHA512=43b639b0bc0597e95dea2dce3e925f4b71ca8c4d9eadaef614941053e287f2d5c2e78d95413f0f7142da0f6ea1dbf443457e4fa1c2296cd8cf4081c185ed9c04
+ 
+diff --git a/xbmc/cdrip/EncoderFFmpeg.cpp b/xbmc/cdrip/EncoderFFmpeg.cpp
+index 85f5fa412e961..907d2591ddba7 100644
+--- a/xbmc/cdrip/EncoderFFmpeg.cpp
++++ b/xbmc/cdrip/EncoderFFmpeg.cpp
+@@ -235,7 +235,7 @@ void CEncoderFFmpeg::SetTag(const std::string& tag, const std::string& value)
+   av_dict_set(&m_formatCtx->metadata, tag.c_str(), value.c_str(), 0);
+ }
+ 
+-int CEncoderFFmpeg::avio_write_callback(void* opaque, uint8_t* buf, int buf_size)
++int CEncoderFFmpeg::avio_write_callback(void* opaque, const uint8_t* buf, int buf_size)
+ {
+   CEncoderFFmpeg* enc = static_cast<CEncoderFFmpeg*>(opaque);
+   if (enc->Write(buf, buf_size) != buf_size)
+diff --git a/xbmc/cdrip/EncoderFFmpeg.h b/xbmc/cdrip/EncoderFFmpeg.h
+index 48471a4b10f70..4e9f0f5bbbad4 100644
+--- a/xbmc/cdrip/EncoderFFmpeg.h
++++ b/xbmc/cdrip/EncoderFFmpeg.h
+@@ -33,7 +33,7 @@ class CEncoderFFmpeg : public CEncoder
+   bool Close() override;
+ 
+ private:
+-  static int avio_write_callback(void* opaque, uint8_t* buf, int buf_size);
++  static int avio_write_callback(void* opaque, const uint8_t* buf, int buf_size);
+   static int64_t avio_seek_callback(void* opaque, int64_t offset, int whence);
+ 
+   void SetTag(const std::string& tag, const std::string& value);
+diff --git a/xbmc/cores/AudioEngine/Engines/ActiveAE/ActiveAEResampleFFMPEG.cpp b/xbmc/cores/AudioEngine/Engines/ActiveAE/ActiveAEResampleFFMPEG.cpp
+index e897cbd3ea801..6fce0af9812f0 100644
+--- a/xbmc/cores/AudioEngine/Engines/ActiveAE/ActiveAEResampleFFMPEG.cpp
++++ b/xbmc/cores/AudioEngine/Engines/ActiveAE/ActiveAEResampleFFMPEG.cpp
+@@ -66,51 +66,7 @@ bool CActiveAEResampleFFMPEG::Init(SampleConfig dstConfig, SampleConfig srcConfi
+   AVChannelLayout dstChLayout = {};
+   AVChannelLayout srcChLayout = {};
+ 
+-  av_channel_layout_from_mask(&dstChLayout, m_dst_chan_layout);
+-  av_channel_layout_from_mask(&srcChLayout, m_src_chan_layout);
+-
+-  int ret = swr_alloc_set_opts2(&m_pContext, &dstChLayout, m_dst_fmt, m_dst_rate, &srcChLayout,
+-                                m_src_fmt, m_src_rate, 0, NULL);
+-
+-  if (ret)
+-  {
+-    CLog::Log(LOGERROR, "CActiveAEResampleFFMPEG::Init - create context failed");
+-    return false;
+-  }
+-
+-  if(quality == AE_QUALITY_HIGH)
+-  {
+-    av_opt_set_double(m_pContext, "cutoff", 1.0, 0);
+-    av_opt_set_int(m_pContext,"filter_size", 256, 0);
+-  }
+-  else if(quality == AE_QUALITY_MID)
+-  {
+-    // 0.97 is default cutoff so use (1.0 - 0.97) / 2.0 + 0.97
+-    av_opt_set_double(m_pContext, "cutoff", 0.985, 0);
+-    av_opt_set_int(m_pContext,"filter_size", 64, 0);
+-  }
+-  else if(quality == AE_QUALITY_LOW)
+-  {
+-    av_opt_set_double(m_pContext, "cutoff", 0.97, 0);
+-    av_opt_set_int(m_pContext,"filter_size", 32, 0);
+-  }
+-
+-  if (m_dst_fmt == AV_SAMPLE_FMT_S32 || m_dst_fmt == AV_SAMPLE_FMT_S32P)
+-  {
+-    av_opt_set_int(m_pContext, "output_sample_bits", m_dst_bits, 0);
+-  }
+-
+-  // tell resampler to clamp float values
+-  // not required for sink stage (remapLayout == true)
+-  if ((m_dst_fmt == AV_SAMPLE_FMT_FLT || m_dst_fmt == AV_SAMPLE_FMT_FLTP) &&
+-      (m_src_fmt == AV_SAMPLE_FMT_FLT || m_src_fmt == AV_SAMPLE_FMT_FLTP) &&
+-      !remapLayout && normalize)
+-  {
+-     av_opt_set_double(m_pContext, "rematrix_maxval", 1.0, 0);
+-  }
+-
+-  av_opt_set_double(m_pContext, "center_mix_level", centerMix, 0);
+-
++  bool hasMatrix = false;
+   if (remapLayout)
+   {
+     // one-to-one mapping of channels
+@@ -120,28 +76,19 @@ bool CActiveAEResampleFFMPEG::Init(SampleConfig dstConfig, SampleConfig srcConfi
+     m_dst_chan_layout = 0;
+     for (unsigned int out=0; out<remapLayout->Count(); out++)
+     {
+-      m_dst_chan_layout += ((uint64_t)1) << out;
++      m_dst_chan_layout += static_cast<uint64_t>(1) << out;
+       int idx = CAEUtil::GetAVChannelIndex((*remapLayout)[out], m_src_chan_layout);
+       if (idx >= 0)
+       {
+         m_rematrix[out][idx] = 1.0;
+       }
+     }
+-
+-    av_opt_set_int(m_pContext, "out_channel_count", m_dst_channels, 0);
+-    av_opt_set_int(m_pContext, "out_channel_layout", m_dst_chan_layout, 0);
+-
+-    if (swr_set_matrix(m_pContext, (const double*)m_rematrix, AE_CH_MAX) < 0)
+-    {
+-      CLog::Log(LOGERROR, "CActiveAEResampleFFMPEG::Init - setting channel matrix failed");
+-      return false;
+-    }
++    hasMatrix = true;
+   }
+   // stereo upmix
+   else if (upmix && m_src_channels == 2 && m_dst_channels > 2)
+   {
+     memset(m_rematrix, 0, sizeof(m_rematrix));
+-    av_channel_layout_uninit(&dstChLayout);
+     av_channel_layout_from_mask(&dstChLayout, m_dst_chan_layout);
+     for (int out=0; out<m_dst_channels; out++)
+     {
+@@ -171,15 +118,64 @@ bool CActiveAEResampleFFMPEG::Init(SampleConfig dstConfig, SampleConfig srcConfi
+       }
+     }
+ 
++    hasMatrix = true;
+     av_channel_layout_uninit(&dstChLayout);
++  }
++
++  av_channel_layout_from_mask(&dstChLayout, m_dst_chan_layout);
++  av_channel_layout_from_mask(&srcChLayout, m_src_chan_layout);
++
++  int ret = swr_alloc_set_opts2(&m_pContext, &dstChLayout, m_dst_fmt, m_dst_rate, &srcChLayout,
++                                m_src_fmt, m_src_rate, 0, NULL);
++
++  if (ret)
++  {
++    CLog::Log(LOGERROR, "CActiveAEResampleFFMPEG::Init - create context failed");
++    return false;
++  }
+ 
+-    if (swr_set_matrix(m_pContext, (const double*)m_rematrix, AE_CH_MAX) < 0)
++  if (hasMatrix)
++  {
++    if (swr_set_matrix(m_pContext, reinterpret_cast<const double*>(m_rematrix), AE_CH_MAX) < 0)
+     {
+       CLog::Log(LOGERROR, "CActiveAEResampleFFMPEG::Init - setting channel matrix failed");
+       return false;
+     }
+   }
+ 
++  if (quality == AE_QUALITY_HIGH)
++  {
++    av_opt_set_double(m_pContext, "cutoff", 1.0, 0);
++    av_opt_set_int(m_pContext, "filter_size", 256, 0);
++  }
++  else if (quality == AE_QUALITY_MID)
++  {
++    // 0.97 is default cutoff so use (1.0 - 0.97) / 2.0 + 0.97
++    av_opt_set_double(m_pContext, "cutoff", 0.985, 0);
++    av_opt_set_int(m_pContext, "filter_size", 64, 0);
++  }
++  else if (quality == AE_QUALITY_LOW)
++  {
++    av_opt_set_double(m_pContext, "cutoff", 0.97, 0);
++    av_opt_set_int(m_pContext, "filter_size", 32, 0);
++  }
++
++  if (m_dst_fmt == AV_SAMPLE_FMT_S32 || m_dst_fmt == AV_SAMPLE_FMT_S32P)
++  {
++    av_opt_set_int(m_pContext, "output_sample_bits", m_dst_bits, 0);
++  }
++
++  // tell resampler to clamp float values
++  // not required for sink stage (remapLayout == true)
++  if ((m_dst_fmt == AV_SAMPLE_FMT_FLT || m_dst_fmt == AV_SAMPLE_FMT_FLTP) &&
++      (m_src_fmt == AV_SAMPLE_FMT_FLT || m_src_fmt == AV_SAMPLE_FMT_FLTP) && !remapLayout &&
++      normalize)
++  {
++    av_opt_set_double(m_pContext, "rematrix_maxval", 1.0, 0);
++  }
++
++  av_opt_set_double(m_pContext, "center_mix_level", centerMix, 0);
++
+   if(swr_init(m_pContext) < 0)
+   {
+     CLog::Log(LOGERROR, "CActiveAEResampleFFMPEG::Init - init resampler failed");
+diff --git a/xbmc/cores/VideoPlayer/DVDDemuxers/DVDDemuxFFmpeg.cpp b/xbmc/cores/VideoPlayer/DVDDemuxers/DVDDemuxFFmpeg.cpp
+index 1aebc3dcbc6c0..174df53f16023 100644
+--- a/xbmc/cores/VideoPlayer/DVDDemuxers/DVDDemuxFFmpeg.cpp
++++ b/xbmc/cores/VideoPlayer/DVDDemuxers/DVDDemuxFFmpeg.cpp
+@@ -376,74 +376,7 @@ bool CDVDDemuxFFmpeg::Open(const std::shared_ptr<CDVDInputStream>& pInput, bool
+     if (iformat == nullptr)
+     {
+       // let ffmpeg decide which demuxer we have to open
+-      bool trySPDIFonly = (m_pInput->GetContent() == "audio/x-spdif-compressed");
+-
+-      if (!trySPDIFonly)
+-        av_probe_input_buffer(m_ioContext, &iformat, strFile.c_str(), NULL, 0, 0);
+-
+-      // Use the more low-level code in case we have been built against an old
+-      // FFmpeg without the above av_probe_input_buffer(), or in case we only
+-      // want to probe for spdif (DTS or IEC 61937) compressed audio
+-      // specifically, or in case the file is a wav which may contain DTS or
+-      // IEC 61937 (e.g. ac3-in-wav) and we want to check for those formats.
+-      if (trySPDIFonly || (iformat && strcmp(iformat->name, "wav") == 0))
+-      {
+-        AVProbeData pd;
+-        int probeBufferSize = 32768;
+-        std::unique_ptr<uint8_t[]> probe_buffer (new uint8_t[probeBufferSize + AVPROBE_PADDING_SIZE]);
+-
+-        // init probe data
+-        pd.buf = probe_buffer.get();
+-        pd.filename = strFile.c_str();
+-
+-        // read data using avformat's buffers
+-        pd.buf_size = avio_read(m_ioContext, pd.buf, probeBufferSize);
+-        if (pd.buf_size <= 0)
+-        {
+-          CLog::Log(LOGERROR, "{} - error reading from input stream, {}", __FUNCTION__,
+-                    CURL::GetRedacted(strFile));
+-          return false;
+-        }
+-        memset(pd.buf + pd.buf_size, 0, AVPROBE_PADDING_SIZE);
+-
+-        // restore position again
+-        avio_seek(m_ioContext , 0, SEEK_SET);
+-
+-        // the advancedsetting is for allowing the user to force outputting the
+-        // 44.1 kHz DTS wav file as PCM, so that an A/V receiver can decode
+-        // it (this is temporary until we handle 44.1 kHz passthrough properly)
+-        if (trySPDIFonly || (iformat && strcmp(iformat->name, "wav") == 0 && !CServiceBroker::GetSettingsComponent()->GetAdvancedSettings()->m_VideoPlayerIgnoreDTSinWAV))
+-        {
+-          // check for spdif and dts
+-          // This is used with wav files and audio CDs that may contain
+-          // a DTS or AC3 track padded for S/PDIF playback. If neither of those
+-          // is present, we assume it is PCM audio.
+-          // AC3 is always wrapped in iec61937 (ffmpeg "spdif"), while DTS
+-          // may be just padded.
+-          const AVInputFormat* iformat2 = av_find_input_format("spdif");
+-          if (iformat2 && iformat2->read_probe(&pd) > AVPROBE_SCORE_MAX / 4)
+-          {
+-            iformat = iformat2;
+-          }
+-          else
+-          {
+-            // not spdif or no spdif demuxer, try dts
+-            iformat2 = av_find_input_format("dts");
+-
+-            if (iformat2 && iformat2->read_probe(&pd) > AVPROBE_SCORE_MAX / 4)
+-            {
+-              iformat = iformat2;
+-            }
+-            else if (trySPDIFonly)
+-            {
+-              // not dts either, return false in case we were explicitly
+-              // requested to only check for S/PDIF padded compressed audio
+-              CLog::Log(LOGDEBUG, "{} - not spdif or dts file, falling back", __FUNCTION__);
+-              return false;
+-            }
+-          }
+-        }
+-      }
++      av_probe_input_buffer(m_ioContext, &iformat, strFile.c_str(), NULL, 0, 0);
+ 
+       if (!iformat)
+       {
+@@ -1353,7 +1286,7 @@ bool CDVDDemuxFFmpeg::SeekTime(double time, bool backwards, double* startpts)
+ 
+     if (ret >= 0)
+     {
+-      if (m_pFormatContext->iformat->read_seek)
++      if (!(m_pFormatContext->iformat->flags & AVFMT_NOTIMESTAMPS))
+         m_seekToKeyFrame = true;
+       m_currentPts = DVD_NOPTS_VALUE;
+     }

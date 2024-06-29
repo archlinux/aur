@@ -28,7 +28,7 @@ _clangbuild=
 
 pkgbase=kodi-ext-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r63207.f84cf8bcff3
+pkgver=21.0.1r65629.7508b879370
 pkgrel=1
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://kodi.tv"
@@ -60,6 +60,10 @@ _codename=master
 options=(!lto)
 source=("git+https://github.com/xbmc/xbmc.git#branch=$_codename")
 b2sums=('SKIP')
+for p in $(shopt -s nullglob; echo *.patch) ; do
+  source+=($p)
+  b2sums+=(SKIP)
+done
 
 prepare() {
 #  [[ -d kodi-build ]] && rm -rf kodi-build
@@ -73,6 +77,10 @@ prepare() {
   echo "=============================="
   echo "Building branch ${_lastbranch}"
   echo "=============================="
+
+  for p in $(shopt -s nullglob; echo $srcdir/*.patch) ; do
+    git apply -v "$p"
+  done
 
   if [[ -n "$_clangbuild" ]]; then
     echo "Building with clang"
