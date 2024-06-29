@@ -1,16 +1,14 @@
 # Maintainer: Álvaro Jesús Baena Rosino <alvarojsino8 at gmail dot com>
 pkgname='mecano'
-pkgver='0.1.0'
+pkgver='0.1.1'
 pkgrel='1'
-epoch='1'
 pkgdesc='Minimalistic typing train'
 arch=('x86_64')
-depends=('glibc')
 makedepends=('cargo')
 source=(
-   'https://github.com/alvarojsino813/mecano/archive/refs/tags/0.1.0.tar.gz'
+   'https://github.com/alvarojsino813/mecano/archive/refs/tags/0.1.1.tar.gz'
    )
-license=('apache')
+license=('unlicense')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver/"
@@ -26,3 +24,4 @@ package() {
 }
 
 sha256sums=('d67278e5a83f9f087f26f4bc1657833e902b48f948ce61e48abf9fdcad025b75')
+sha256sums=('42e3621d2d847f707297ebfa4a67977ed64683db309d6819e9b3bd4f0c5355b3')
