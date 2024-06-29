@@ -1,0 +1,17 @@
+pkgbase = omekasy-git
+	pkgdesc = Convert alphanumeric characters to various styles defined in Unicode
+	pkgver = 1.2.3.r23.g245ca0c
+	pkgrel = 1
+	url = https://github.com/ikanago/omekasy
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	provides = omekasy=1.2.3
+	conflicts = omekasy
+	source = omekasy::git+https://github.com/ikanago/omekasy.git
+	sha256sums = SKIP
+
+pkgname = omekasy-git
