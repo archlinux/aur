@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=Macarron
-_pkgver=1.8.0
+_pkgver=1.8.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -37,8 +37,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f0ab96828900fe45d5eb914afa5baf89')
-b2sums=('50a17512558616fdda67f672898a0d11cd2bf6ebcb8c57f41b77d22628abcefc5fc1b8752d4c1b8d37bcf9aaa785dbdc0e0e60a733b6260570a4d0ce494bef5d')
+md5sums=('f978641e44a979ff706b5722f183408f')
+b2sums=('d30b7ef1a7a9242d0f481be9c8a872c3a39da3353acb6febb91f9716ea8346da461eee911e092a42765d954d4489fde5bca3266d82cecbccd63c7c3f8811cd32')
 
 build() {
   mkdir build
