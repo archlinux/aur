@@ -6,21 +6,27 @@ version=$2
 cd ~/.minecraft/ || exit
 
 if [ "$action" == "load" ]; then
+    
+    if [ "$3" != "--overwrite" ]; then
+      if ! [ -e ./mods/.current ]; then
+          echo "Warning: version file not found. Maybe you haven't saved at least once yet?
+  If this is intended, use --overwrite to force operation" >&2
+          exit 1
+      elif ! diff -r --exclude=".current" ./mods/ ./modlib/"$(cat ./mods/.current 2>/dev/null)"/ > /dev/null 2>&1; then
+          echo "Warning: mismatch between last loaded/saved and current. Did you forgot to sync?
+  If this is intended, use --overwrite to force operation" >&2
+          exit 1
+      fi
+    fi
 
-    if ! [ -e ./mods/.current ] && [ "$3" != "--overwrite" ]; then
-        echo "Warning: version file not found. Maybe you haven't saved at least once yet?
-If this is intended, use --overwrite to force operation" >&2
-        exit 1
-    elif ! diff -r --exclude=".current" ./mods/ ./modlib/"$(cat ./mods/.current)"/ > /dev/null 2>&1 && [ "$3" != "--overwrite" ]; then
-        echo "Warning: mismatch between last loaded/saved and current. Did you forget to sync?
-If this is intended, use --overwrite to force operation" >&2
+    if ! [ -d ./modlib/"$version" ]; then
+        echo "Error: version $version not found"
         exit 1
     fi
 
-    echo "$version" > ~/.minecraft/mods/.current
-    rm -rf ./mods/
-    mkdir ./mods/
+    rm -rf ./mods/*
     cp -r ./modlib/"$version"/* ./mods/
+    echo "$version" > ~/.minecraft/mods/.current
 
 elif [ "$action" == "save" ] || [ "$action" == "sync" ]; then
 
@@ -37,6 +43,11 @@ If this is intended, use --overwrite to force operation" >&2
             exit 1
         fi
         version=$(cat ./mods/.current)
+        if ! [ -d ./modlib/"$version" ]; then
+            echo "Error: version file is pointing to a non-existance version ($version). Maybe it was deleted?
+To reconstruct the save, run 'mcmods save $version'"
+            exit 1
+        fi
     fi
 
     rm -rf ./modlib/"$version"
