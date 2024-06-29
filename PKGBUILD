@@ -26,7 +26,7 @@ unset _pkgtype
 # basic info
 _pkgname="pcsx2"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=1.7.5891.r0.g480bd2d
+pkgver=1.7.5944.r0.gd3bcfe0
 pkgrel=1
 pkgdesc='Sony PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
@@ -276,7 +276,7 @@ build() {
   AR=llvm-ar
   CC=clang
   CXX=clang++
-  LDFLAGS+=" -fuse-ld=lld"
+  LDFLAGS="$(echo "$LDFLAGS" | sed -E 's@\s*-(fuse-ld)=\S+\s*@ @g;s@\s+@ @g') -fuse-ld=lld"
 
   if [[ "${_build_avx::1}" == "t" ]]; then
     CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
@@ -310,7 +310,7 @@ package() {
   # script
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << END
 #!/usr/bin/env sh
-exec /opt/$_pkgname/$_pkgname-qt "$@"
+exec /opt/$_pkgname/$_pkgname-qt "\$@"
 END
 
   # launcher
