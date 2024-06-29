@@ -1,6 +1,6 @@
 pkgbase = gscreenshot
 	pkgdesc = A simple screenshot tool supporting multiple backends
-	pkgver = 3.5.0
+	pkgver = 3.5.1
 	pkgrel = 1
 	url = https://github.com/thenaterhood/gscreenshot
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = gscreenshot
 	optdepends = go-md2man: for generating the manpage at build (or use pandoc)
 	optdepends = slurp: for region selecton on Wayland
 	optdepends = wl-clipboard: Wayland clipboard support
-	source = https://github.com/thenaterhood/gscreenshot/archive/v3.5.0.tar.gz
-	sha256sums = d51ed7f7172cfb82ca404adfc9c3eaa82a441b9bdded4105e3c7c4e7e75562c9
+	source = https://github.com/thenaterhood/gscreenshot/archive/v3.5.1.tar.gz
+	sha256sums = 02ded69a416e63b6d78273758e93d5de00f109db8c2e02bbe52dedffd082dc21
 
 pkgname = gscreenshot
