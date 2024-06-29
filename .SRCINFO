@@ -1,0 +1,17 @@
+pkgbase = funzzy-git
+	pkgdesc = A lightweight generic purpose file watcher
+	pkgver = 1.2.0.r9.g5a92558
+	pkgrel = 1
+	url = https://github.com/cristianoliveira/funzzy
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	provides = funzzy=1.2.0
+	conflicts = funzzy
+	source = funzzy::git+https://github.com/cristianoliveira/funzzy.git
+	sha256sums = SKIP
+
+pkgname = funzzy-git
