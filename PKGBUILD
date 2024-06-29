@@ -7,7 +7,7 @@
 pkgname=agave
 pkgver=0.4.7
 pkgrel=12
-pkgdesc="Colorscheme designer tool for GNOME"
+pkgdesc="Legacy colorscheme designer tool for GNOME2"
 arch=('x86_64')
 url="https://web.archive.org/web/20170327063642/http://home.gna.org/colorscheme/"
 license=('GPL')
