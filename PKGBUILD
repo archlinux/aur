@@ -1,18 +1,18 @@
-# Maintainer: sineptic <sineptic0@gmail.com>
-pkgsubn=vimium
-pkgname=chromium-vimium
-pkgver=2.1.2
+# Maintainer: BlackFuffey <18765895345lb@example.com>
+pkgname=mcmodvcs
+pkgver=1.0
 pkgrel=1
-pkgdesc="Browser extension that provides keyboard-based navigation (unpacked)"
+pkgdesc="Simple VCS for managing Minecraft mods"
 arch=('any')
-url="https://github.com/philc/vimium"
+url="https://github.com/BlackFuffey/mcmodvcs"
 license=('MIT')
-source=("$url/archive/refs/tags/v$pkgver.tar.gz")
+depends=('bash')
+
+source=("mcmods.sh")
 sha256sums=('SKIP')
 
 package() {
-    mkdir -p "$pkgdir/usr/share/"
-
-    cd "$pkgsubn-$pkgver"
-    cp -r --no-preserve=ownership . "$pkgdir/usr/share/$pkgname-$pkgver"
+    mkdir -p "$pkgdir/usr/bin"
+    install -m755 "$srcdir/mcmods.sh" "$pkgdir/usr/bin/mcmods"
 }
+
