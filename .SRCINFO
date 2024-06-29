@@ -1,0 +1,21 @@
+pkgbase = tasks-git
+	pkgdesc = A simple task management application for the COSMIC desktop.
+	pkgver = r90.4eda3b7
+	pkgrel = 1
+	url = https://tasks.edfloreshz.dev
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	makedepends = just
+	depends = hicolor-icon-theme
+	depends = libxkbcommon
+	provides = tasks
+	conflicts = tasks
+	conflicts = cosmic-tasks-git
+	conflicts = orderly-git
+	source = git+https://github.com/edfloreshz/tasks.git
+	sha256sums = SKIP
+
+pkgname = tasks-git
