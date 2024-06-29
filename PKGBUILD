@@ -3,8 +3,8 @@
 # Contributor: Sergey Kostyaev <feo.me@ya.ru>
 
 pkgname=freelib-git
-pkgver=6.0.93.r33.g1e83b5f
-pkgrel=2
+pkgver=6.0.93.r45.ga611f14
+pkgrel=1
 pkgdesc="Freelib is book library manager"
 arch=(x86_64)
 url="https://github.com/petrovvlad/freeLib"
@@ -16,10 +16,8 @@ makedepends=(git cmake)
 provides=(freelib)
 conflicts=(freelib)
 source=("git+https://github.com/petrovvlad/freeLib.git"
-        #"git+https://github.com/stachenov/quazip.git"
         "freelib-SmtpClient-for-Qt::git+https://github.com/petrovvlad/SmtpClient-for-Qt.git")
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP')
 
 pkgver() {
@@ -30,7 +28,6 @@ pkgver() {
 prepare() {
   cd "freeLib"
   git submodule init
-  #git config submodule.freeLib/src/quazip.url     "${srcdir}/quazip"
   git config submodule.freeLib/src/SmtpClient.url "${srcdir}/freelib-SmtpClient-for-Qt"
   git -c protocol.file.allow=always submodule update
 }
