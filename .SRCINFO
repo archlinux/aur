@@ -1,0 +1,20 @@
+pkgbase = cmd-wrapped-bin
+	pkgdesc = Find out what the past year looks like in command line!
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/YiNNx/cmd-wrapped
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = cmd-wrapped
+	conflicts = cmd-wrapped
+	source = https://github.com/YiNNx/cmd-wrapped/raw/0.2.0/README.md
+	source = https://github.com/YiNNx/cmd-wrapped/raw/0.2.0/License
+	sha256sums = c1fdd5cc04674b5ebaea52291ff7e3953c769218cbfefb9b5195a17683925414
+	sha256sums = c0cfd6762582618b55f4ed97f737276b547dc2d2825e631df3db1e27fe591949
+	source_x86_64 = https://github.com/YiNNx/cmd-wrapped/releases/download/0.2.0/cmd-wrapped-linux-x86_64.zip
+	sha256sums_x86_64 = edf85fc05b545df04c1735c9dae063a132d7a1f6d5f6eeee0bdcfd6fb4213a4e
+	source_aarch64 = https://github.com/YiNNx/cmd-wrapped/releases/download/0.2.0/cmd-wrapped-linux-arm64.zip
+	sha256sums_aarch64 = ea873578cf1a799d76bab42fdb8ed700381b333fbf72cf184cc75fbc01d8664f
+
+pkgname = cmd-wrapped-bin
