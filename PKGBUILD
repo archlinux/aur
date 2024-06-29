@@ -3,16 +3,16 @@
 pkgname=sophus
 _pkgname=Sophus
 pkgver=1.24.6
-pkgrel=2
+pkgrel=3
 pkgdesc="C++ implementation of Lie Groups using Eigen"
 arch=('x86_64' 'i686')
-url="https://strasdat.github.io/Sophus/latest"
+url="https://github.com/strasdat/Sophus"
 license=('MIT')
 depends=('eigen' 'fmt')
-makedepends=('cmake')
+makedepends=('cmake' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('ceres-solver' 'python-pytest')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/strasdat/Sophus/archive/${pkgver}.tar.gz")
-sha256sums=('0f3e46a98817f9841634c5ed85eda8597340e9e4b85b3d9ceb587ac56028f33a')
+sha256sums=('3f3098bdac2c74d42a921dbfb0e5e4b23601739e35a1c1236c2807c399da960c')
 
 prepare() {
   cd $_pkgname-$pkgver
@@ -37,10 +37,10 @@ check() {
   source venv/bin/activate
   python -m pip install sympy==1.8 --ignore-installed
   python -m installer dist/*.whl
-  python -m pytest sophus_pybind/tests/sophusPybindTests.py
   pushd sympy
   sh run_tests.sh
   popd
+  python -m pytest sophus_pybind/tests/sophusPybindTests.py
   deactivate
 }
 
