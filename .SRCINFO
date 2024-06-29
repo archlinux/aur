@@ -7,11 +7,12 @@ pkgbase = ifm-git
 	license = GPL2
 	makedepends = tk
 	makedepends = help2man
+	makedepends = git
 	depends = tk
 	depends = perl
 	conflicts = ifm
 	options = docs
-	source = git://github.com/zocker-160/ifm.git
+	source = git+https://github.com/zocker-160/ifm.git
 	sha256sums = SKIP
 
 pkgname = ifm-git

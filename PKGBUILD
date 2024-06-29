@@ -10,19 +10,19 @@ arch=('x86_64')
 url="https://ifm.readthedocs.io/en/latest/intro.html"
 license=('GPL2')
 depends=('tk' 'perl')
-makedepends=('tk' 'help2man')
+makedepends=('tk' 'help2man' 'git')
 conflicts=('ifm')
-source=('git://github.com/zocker-160/ifm.git')
+source=('git+https://github.com/zocker-160/ifm.git')
 sha256sums=('SKIP')
 options=('docs')
 
 pkgver() {
-  cd $srcdir/$_gitname/
+  cd "$srcdir/$_gitname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd $srcdir/$_gitname/
+    cd "$srcdir/$_gitname"
 
     chmod +x ./autogen.sh
     ./autogen.sh
@@ -34,6 +34,6 @@ build() {
 }
 
 package() {
-    cd $srcdir/$_gitname/
+    cd "$srcdir/$_gitname"
     make DESTDIR=$pkgdir docdir=$pkgdir/usr/share/doc install
 }
