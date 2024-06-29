@@ -4,7 +4,7 @@ pkgname="mupen64-rr-lua-bin"
 pkgdesc="N64 TASing emulator with Lua scripting support"
 
 pkgver=1.1.7
-pkgrel=1
+pkgrel=2
 
 arch=(any)
 
@@ -12,7 +12,7 @@ url="https://github.com/mkdasher/mupen64-rr-lua-"
 license=("GPL-2.0-only")
 
 depends=(wine)
-makedepends=(gendesk icoutils imagemagick)
+makedepends=(gendesk icoutils)
 
 provides=(mupen64-rr-lua)
 
