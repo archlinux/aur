@@ -1,0 +1,14 @@
+pkgbase = python-etcpak-git
+	pkgdesc = A python wrapper for wolfpld/etcpak
+	pkgver = r40.c3b2dcb
+	pkgrel = 1
+	url = https://github.com/K0lb3/etcpak
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	provides = python-etcpak-git
+	source = git+https://github.com/K0lb3/etcpak.git
+	md5sums = SKIP
+
+pkgname = python-etcpak-git
