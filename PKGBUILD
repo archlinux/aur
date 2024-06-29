@@ -2,7 +2,7 @@
 _pkgname='mongodb-compass-isolated'
 _edition=' Isolated Edition'
 pkgname="$_pkgname-bin"
-_pkgver='1.43.0'
+_pkgver='1.43.3'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Isolated Edition - binary version'
@@ -11,7 +11,9 @@ url='https://www.mongodb.com/products/compass'
 license=('SSPL-1.0')
 depends=(
 	# electron
-	'c-ares' 'ffmpeg' 'gtk3' 'libevent' 'libxslt' 'minizip' 'nss' 're2' 'snappy'
+	'c-ares' 'dav1d' 'flac' 'fontconfig' 'freetype2' 'gcc-libs' 'glibc' 'gtk3'
+	'harfbuzz' 'icu' 'libdrm' 'libevent' 'libffi' 'libjpeg' 'libpng' 'libpulse'
+	'libwebp' 'libxml2' 'libxslt' 'minizip' 'nss' 'opus' 'zlib'
 	# compass
 	'krb5' 'libsecret' 'lsb-release'
 )
@@ -24,11 +26,11 @@ source=(
 	"$pkgname-$pkgver.rpm::https://downloads.mongodb.com/compass/$_betaprefix$_pkgname-$_pkgver.x86_64.rpm"
 	'mongodb-compass.conf'
 )
-sha512sums=('e66aef5df5d87c67df335863612f086887574f72c7d6fda00d385a0b372579f3b9d841cd6c297a4766763a8e1270333bbdb2ff5accadc793e2a6c05957a08463'
-            'f09a6026e8b963f4821454fa8c2da8c750c765f26010fbf54dfbecfd7451dda5466464bb15fada1252545366c94bf448dc0529c8bd8114f6f3834ae00176d3f1')
+b2sums=('e80dd0f6c2c0b5ff9f98e74341430ea59da9b8b13f14e74ec07c55cd9fe4e00737d15564c2181d01433d324bb4e596d5cc83d6a7e54b762428e52bdc6c0423b1'
+        '42535bfc10db335d685fad29aade1d091554a321fb4032b72db5699a450c6d701f630c45bb0d4cf9f456e77e3263a5aed49e843516cd3016d1a837ac5f1e6fec')
 
 check() {
-	"$srcdir/usr/lib/$_pkgname/MongoDB Compass$_edition" --no-sandbox --version | tee '/dev/stderr' | grep -q "^MongoDB Compass$_edition $pkgver$"
+	ELECTRON_OZONE_PLATFORM_HINT='auto' "$srcdir/usr/lib/$_pkgname/MongoDB Compass$_edition" --no-sandbox --version | tee '/dev/stderr' | grep -q "^MongoDB Compass$_edition $pkgver$"
 }
 
 package() {
