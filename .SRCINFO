@@ -1,0 +1,15 @@
+pkgbase = phylum
+	pkgdesc = Command line interface for the Phylum API
+	pkgver = 6.6.4
+	pkgrel = 1
+	url = https://phylum.io/
+	arch = any
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	depends = zlib
+	source = cli-6.6.4.tar.gz::https://github.com/phylum-dev/cli/archive/refs/tags/v6.6.4.tar.gz
+	sha256sums = 92943eaed3207e2dc4f1cd3b9216319d747c12a36bec9ace8aa84ddb8218cb92
+
+pkgname = phylum
