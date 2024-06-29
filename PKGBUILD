@@ -17,7 +17,7 @@ conflicts=('coreutils' 'coreutils-hybrid' 'coreutils-hybrid-git' 'b3sum' 'sha3su
 provides=('coreutils' 'b3sum' 'sha3sum')
 makedepends=('rust' 'cargo' 'python-sphinx')
 source=("https://ftp.gnu.org/gnu/$gnu_coreutils/$gnu_coreutils-$gnu_coreutils_version.tar.xz"
-        "$rust_uutils-$rust_uutils_version.tar.gz::$_url/archive/$rust_uutils_version.tar.gz")
+        "$rust_uutils-$rust_uutils_version.tar.gz::$url/archive/$rust_uutils_version.tar.gz")
 sha512sums=('2ca0deac4dc10a80fd0c6fd131252e99d457fd03b7bd626a6bc74fe5a0529c0a3d48ce1f5da1d3b3a7a150a1ce44f0fbb6b68a6ac543dfd5baa3e71f5d65401c'
             'e798a14a9d24b2ff857588336e4035817445850a1ed5216b1fa5b876082eb0693c7ae535d0106a7aab95690eb0369481308e877f60e39ae67a38b048e73574bd')
 

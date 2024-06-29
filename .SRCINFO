@@ -26,7 +26,7 @@ pkgbase = coreutils-uutils
 	conflicts = b3sum
 	conflicts = sha3sum
 	source = https://ftp.gnu.org/gnu/coreutils/coreutils-9.5.tar.xz
-	source = uutils-coreutils-0.0.27.tar.gz::https://www.gnu.org/software/coreutils//archive/0.0.27.tar.gz
+	source = uutils-coreutils-0.0.27.tar.gz::https://github.com/uutils/coreutils/archive/0.0.27.tar.gz
 	sha512sums = 2ca0deac4dc10a80fd0c6fd131252e99d457fd03b7bd626a6bc74fe5a0529c0a3d48ce1f5da1d3b3a7a150a1ce44f0fbb6b68a6ac543dfd5baa3e71f5d65401c
 	sha512sums = e798a14a9d24b2ff857588336e4035817445850a1ed5216b1fa5b876082eb0693c7ae535d0106a7aab95690eb0369481308e877f60e39ae67a38b048e73574bd
 
