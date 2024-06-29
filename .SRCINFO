@@ -1,0 +1,33 @@
+pkgbase = gnome-system-monitor-gtk3
+	pkgdesc = View current processes and monitor system state (last GTK3 release)
+	pkgver = 45.0.2
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/SystemMonitor
+	arch = x86_64
+	groups = gnome
+	license = GPL
+	makedepends = appstream-glib
+	makedepends = git
+	makedepends = meson
+	makedepends = yelp-tools
+	depends = cairo
+	depends = dconf
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibmm
+	depends = gtk3
+	depends = gtkmm3
+	depends = hicolor-icon-theme
+	depends = libgtop
+	depends = libhandy
+	depends = librsvg
+	depends = libsigc++
+	depends = pango
+	depends = polkit
+	depends = systemd
+	provides = gnome-system-monitor
+	conflicts = gnome-system-monitor
+	source = git+https://gitlab.gnome.org/GNOME/gnome-system-monitor.git#commit=e74545dbdebd8e591c1679181c5ff3d53c53386e
+	b2sums = SKIP
+
+pkgname = gnome-system-monitor-gtk3
