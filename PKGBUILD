@@ -10,17 +10,15 @@ fi
 # basic info
 _pkgname='pcsx2'
 pkgname="$_pkgname-latest-bin"
-pkgver=1.7.5870
+pkgver=1.7.5944
 pkgrel=1
 pkgdesc='Sony PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
 license=('GPL-3.0-only' 'LGPL-3.0-only')
-arch=(x86_64)
+arch=('x86_64')
 
 # main package
 _main_package() {
-  _update_version
-
   makedepends=(
     'patchelf'
   )
@@ -38,10 +36,6 @@ _main_package() {
 }
 
 # common functions
-pkgver() {
-  printf '%s' "${_pkgver:?}"
-}
-
 build() {
   # extract appimage
   chmod +x "$_appimage"
@@ -106,7 +100,12 @@ _update_version() {
   if [ "$_pkgver" != "${_pkgver_new:?}" ]; then
     _pkgver="${_pkgver_new:?}"
   fi
+
+  pkgver() {
+    printf '%s' "${_pkgver:?}"
+  }
 }
 
 # execute
+_update_version
 _main_package
