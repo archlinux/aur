@@ -3,7 +3,7 @@
 
 pkgname=zed-preview
 pkgver=0.142.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter'
 arch=(x86_64)
 url=https://zed.dev
@@ -43,6 +43,7 @@ sha256sums=('a1b29edb8840a33bed2155347c59754329679b0e9578130b2092f49ae7acfa18'
             '180f8f84cd4320a758225ccb016cd6fc46146f1e7ba6d2c3b75decee8b89989d')
 
 _binname=zeditor
+_appid=dev.zed.Zed
 
 prepare() {
 	cd "$_archive"
@@ -51,7 +52,8 @@ prepare() {
 	export APP_ICON="zed"
 	export APP_NAME="Zed"
 	export APP_CLI="$_binname"
-	envsubst < "crates/zed/resources/zed.desktop.in" > zed.desktop
+	export APP_ID="$_appid"
+	envsubst < "crates/zed/resources/zed.desktop.in" > $_appid.desktop
 	patch -p0 -i ../use-lib-not-libexec.patch
 }
 
@@ -82,6 +84,6 @@ package() {
 	cd "$_archive"
 	install -Dm0755 target/release/cli "$pkgdir/usr/bin/$_binname"
 	install -Dm0755 target/release/zed "$pkgdir/usr/lib/zed/zed-editor"
-	install -Dm0644 -t "$pkgdir/usr/share/applications/" "${pkgname%-preview}.desktop"
+	install -Dm0644 -t "$pkgdir/usr/share/applications/" "$_appid.desktop"
 	install -Dm0644 crates/zed/resources/app-icon.png "$pkgdir/usr/share/icons/${pkgname%-preview}.png"
 }
