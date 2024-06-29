@@ -4,9 +4,9 @@
 pkgname=typora-with-plugin
 _pkgname=typora
 _typora_ver=1.9.3
-_plugin_ver=1.9.14
+_plugin_ver=1.9.15
 pkgver=${_typora_ver}_plugin_${_plugin_ver}
-pkgrel=2
+pkgrel=1
 pkgdesc="一款 Markdown 编辑器和阅读器（with typora_plugin）"
 arch=('x86_64')
 license=('custom:"Copyright (c) 2015 Abner Lee All Rights Reserved."')
@@ -23,19 +23,20 @@ backups=(
     'usr/share/typora/resources/plugin/global/settings/settings.user.toml'
     )
 _filename="${_pkgname}_${_typora_ver}_amd64.deb"
+_pluginname="typora_plugin-${_plugin_ver}.tar.gz"
 source=(
     "https://download2.typoraio.cn/linux/$_filename"
     "$_pkgname.sh"
-    "https://kkgithub.com/obgnail/typora_plugin/archive/refs/tags/${_plugin_ver}.tar.gz")
+    "https://gh.api.99988866.xyz/https://github.com/obgnail/typora_plugin/archive/refs/tags/${_plugin_ver}.tar.gz")
 sha512sums=(
     'da7714d8a2ef228d1df13bf2a6862f3be3fad51238657e8ee48350380267ecfed29b391e0c66653e3b4322e3dada02d2bea6e1041f5230988358645ea0cf4b28'
     'de9c883c63f3ea35bd551c8761e605f8e1a3468943e000abcbf94bb0c5cbb5f0f6c7fa4d49ab39c177f167e0e3d0b061c861bf828627b4a34f7f1589119c3d04'
-    '32c1f5ad0d96cac918381f1f822b2730fb4979cb21340f545ee09b76feb5c0e459da764308dc9a8bef1aac20488f637e2d6092857d946a7ea321ff7f2c0f5240')
+    'f9d72f68442327f5096c43781d99bccdd0d7fbf48fc64f62f6311f7a7c8c02d1cc6b04bec54d80eaa7761f7cb8a1a85340e0cb83d98d5ad06906c4871184a69d')
 
 _patch_plugin() {
-  tar xvf ${_plugin_ver}.tar.gz -C "$pkgdir/"
-  mv $pkgdir/typora_plugin-${_plugin_ver}/plugin $pkgdir/usr/share/typora/resources/
-  rm -rf $pkgdir/typora_plugin-${_plugin_ver}
+  tar xvf ${_pluginname}.tar.gz -C "$pkgdir/"
+  mv $pkgdir/${_pluginname}/plugin $pkgdir/usr/share/typora/resources/
+  rm -rf $pkgdir/${_pluginname}
   sed -i 's@\(frame.js" defer="defer"></script>\)@\1<script src="./plugin/index.js" defer="defer"></script>@g' $pkgdir/usr/share/typora/resources/window.html
 }
 
