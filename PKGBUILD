@@ -9,7 +9,7 @@
 pkgbase=nvidia-470xx-utils
 pkgname=('nvidia-470xx-utils' 'opencl-nvidia-470xx' 'nvidia-470xx-dkms')
 pkgver=470.256.02
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom')
@@ -18,6 +18,8 @@ _pkg="NVIDIA-Linux-x86_64-${pkgver}"
 source=('nvidia-drm-outputclass.conf'
         'nvidia-470xx-utils.sysusers'
         'nvidia-470xx.rules'
+        'systemd-homed-override.conf'
+        'systemd-suspend-override.conf'
         "https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run"
         "kernel-6.4.patch"
         "kernel-6.5.patch"
@@ -29,7 +31,9 @@ source=('nvidia-drm-outputclass.conf'
 
 sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770'
             '4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499'
-            'e307e5fe005dfafee35c179c5f215e22a85dfd367a9b60d5092eee96f869d8ce4595fae33ce6febb74721974c6f781a53418ce1a3210768632347471ae3f5594'
+            '4e870d1ec819e74757a65762484a44fea2c71d090f0898c7f8c193fc8539c29f3b14ecec9d1216ed23d6978ade9e7376f81c7d8242b7005c8c067171eb6df40a'
+            'a0183adce78e40853edf7e6b73867e7a8ea5dabac8e8164e42781f64d5232fbe869f850ab0697c3718ebced5cde760d0e807c05da50a982071dfe1157c31d6b8'
+            '55def6319f6abb1a4ccd28a89cd60f1933d155c10ba775b8dfa60a2dc5696b4b472c14b252dc0891f956e70264be87c3d5d4271e929a4fc4b1a68a6902814cee'
             'a837946dd24d7945c1962a695f1f31965f3ceb6927f52cd08fd51b8db138b7a888bbeab69243f5c8468a7bd7ccd47f5dbdb48a1ca81264866c1ebb7d88628f88'
             'd9df8b13d5fbe4f456a31de3679fd11aca7cd88771f8f11a5cc8ab17bab05861823b26d2d467593e5b90967a2902db691ca832f09fe21a5975eb3e4d6275e00c'
             '40ea983c81851b8a20629a943f9692cc0e007c815f46dd3b63cf1d7a44ccbed1ac5f9a3110720de54b017b9f9c7f5cc534ec6e097bc02fa5bd1de6b0a730c803'
@@ -254,6 +258,14 @@ package_nvidia-470xx-utils() {
     install -Dm644 systemd/system/nvidia-resume.service "${pkgdir}/usr/lib/systemd/system/nvidia-resume.service"
     install -D     systemd/system-sleep/nvidia "${pkgdir}/usr/lib/systemd/system-sleep/nvidia"
     install -D     systemd/nvidia-sleep.sh "${pkgdir}/usr/bin/nvidia-sleep.sh"
+
+    # attempt to mitigate system freeze with systemd v256
+    install -Dm644 "${srcdir}"/systemd-homed-override.conf "${pkgdir}"/usr/lib/systemd/systemd-homed.service.d/10-nvidia-no-freeze-session.conf
+    install -Dm644 "${srcdir}"/systemd-suspend-override.conf "${pkgdir}"/usr/lib/systemd/systemd-suspend.service.d/10-nvidia-no-freeze-session.conf
+    install -Dm644 "${srcdir}"/systemd-suspend-override.conf "${pkgdir}"/usr/lib/systemd/systemd-suspend-then-hibernate.service.d/10-nvidia-no-freeze-session.conf
+    install -Dm644 "${srcdir}"/systemd-suspend-override.conf "${pkgdir}"/usr/lib/systemd/systemd-hibernate.service.d/10-nvidia-no-freeze-session.conf
+    install -Dm644 "${srcdir}"/systemd-suspend-override.conf "${pkgdir}"/usr/lib/systemd/systemd-hybrid-sleep.service.d/10-nvidia-no-freeze-session.conf
+
 
     # distro specific files must be installed in /usr/share/X11/xorg.conf.d
     install -Dm644 "${srcdir}/nvidia-drm-outputclass.conf" "${pkgdir}/usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf"
