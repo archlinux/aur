@@ -6,6 +6,6 @@ pkgbase = mecano
 	license = unlicense
 	makedepends = cargo
 	source = https://github.com/alvarojsino813/mecano/archive/refs/tags/0.1.1.tar.gz
-	sha256sums = 42e3621d2d847f707297ebfa4a67977ed64683db309d6819e9b3bd4f0c5355b3
+	sha256sums = 55ceb63314ce62521537d34c5938915ce90b382b1444ecf1f784422ddde2bd02
 
 pkgname = mecano
