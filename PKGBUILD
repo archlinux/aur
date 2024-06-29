@@ -79,7 +79,8 @@ prepare() {
   echo "=============================="
 
   for p in $(shopt -s nullglob; echo $srcdir/*.patch) ; do
-    git apply -v "$p"
+#    git apply -v "$p"
+    echo
   done
 
   if [[ -n "$_clangbuild" ]]; then
