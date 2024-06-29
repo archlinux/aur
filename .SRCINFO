@@ -1,7 +1,7 @@
 pkgbase = osaka-simulator
 	pkgdesc = A fanmade interactive Osaka simulator from hirahira.net for PC
 	pkgver = Aug_2003
-	pkgrel = 5
+	pkgrel = 6
 	url = http://web.archive.org/web/20230207145313/http://www.hirahira.net/products/tsu_hanFinal/index.html
 	arch = any
 	license = LicenseRef-OsakaSimulator
