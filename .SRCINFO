@@ -1,0 +1,14 @@
+pkgbase = thokr
+	pkgdesc = A sleek typing TUI with visualized results and historical logging
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/jrnxf/thokr
+	arch = any
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	source = thokr-0.4.1.tar.gz::https://github.com/jrnxf/thokr/archive/refs/tags/v0.4.1.tar.gz
+	sha256sums = 8ab9ebe95e2087eb8bf843c775e9d468daa14da031a72c90f799ade5cde9faa6
+
+pkgname = thokr
