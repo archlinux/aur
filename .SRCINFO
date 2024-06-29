@@ -1,0 +1,22 @@
+pkgbase = limine-snapper-sync-git
+	pkgdesc = Snapper integration for Limine bootloader.
+	pkgver = r12.8eca098
+	pkgrel = 1
+	url = https://gitlab.com/Zesko/limine-snapper-sync
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = maven
+	depends = bash
+	depends = java-runtime>=17
+	depends = limine
+	depends = snapper
+	depends = btrfs-progs
+	depends = inotify-tools
+	depends = dunst
+	optdepends = rsync: For restore
+	backup = etc/limine-snapper-sync.conf
+	source = git+https://gitlab.com/Zesko/limine-snapper-sync.git
+	sha1sums = SKIP
+
+pkgname = limine-snapper-sync-git
