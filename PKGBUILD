@@ -1,7 +1,7 @@
 # Maintainer: ahmetlii
 
 pkgname='organicmaps-git'
-pkgver=2024.01.09_5
+pkgver=2024.06.19_3
 pkgrel=1
 pkgdesc='A free offline maps app for travelers, tourists, hikers, and cyclists based on top of crowd-sourced OpenStreetMap data'
 arch=("x86_64" "aarch64" "riscv64")
