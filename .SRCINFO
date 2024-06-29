@@ -10,6 +10,7 @@ pkgbase = sdrpp-tetra-demodulator-git
 	makedepends = cmake
 	makedepends = sdrpp-headers-git
 	makedepends = libosmocore
+	makedepends = unzip
 	depends = sdrpp-git
 	provides = sdrpp-tetra-demodulator
 	conflicts = sdrpp-tetra-demodulator
