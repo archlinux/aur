@@ -1,7 +1,7 @@
 #Maintainer: Dylan Delgado <dylan1496@live.com>
 
 pkgname=fermat
-pkgver=7.5
+pkgver=7.6
 pkgrel=1
 pkgdesc='A computer algebra system for polynomial and matrix computation'
 url='http://home.bway.net/lewis/home.html'
@@ -10,7 +10,7 @@ arch=('x86_64')
 depends=('glibc')
 
 source=("http://home.bway.net/lewis/fermat64/Ferl7.tar.gz")
-sha256sums=('053b8fdb63a1baace3f035f118b9145a28927ab8d05452c7ed613ed8e5cdae9b')
+sha256sums=('7a6dac0d8ca7ac800b1da94ce54aa68ef5f871ff2dcd1673a37ee1e1a80ab4b5')
 
 package() {
 	  install -dm755 "${pkgdir}"/usr/bin
