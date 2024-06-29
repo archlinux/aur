@@ -3,17 +3,17 @@
 # Contributor: Karsten Pufahl <contact@karstenpufahl.de>
 
 pkgname=stm32cubef7
-pkgver=1.17.1
+pkgver=1.17.2
 pkgrel=1
 pkgdesc="Embedded software for STM32 F7 series"
 arch=('any')
 url="http://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32cube-embedded-software/stm32cubef7.html"
 license=(
-  'custom:ST SLA0044'
-  'Apache'
-  'BSD'
+  'LicenseRef-SLA0044'
+  'Apache-2.0'
+  'BSD-3-Clause'
   'MIT'
-  'Independent JPEG Group License'
+  'IJG'
 )
 groups=()
 depends=('bash' 'perl' 'python')
@@ -31,7 +31,7 @@ source=(
   'SLA0044.txt'
 )
 sha256sums=(
-  '0065ba7d23d5840c6654b24bfa50496bf7391861f6f7816020505edcc79727b1'
+  '6ffd00e46817f36c81bbe984de108c7cba5578963d1b82aedf1a7345e202aec4'
   '55ba65f78747449aef987ef7f4bfe27bf6927c0acdcca5eb5acc77c16d2dcc2e'
 )
 
