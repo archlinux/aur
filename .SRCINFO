@@ -1,0 +1,22 @@
+pkgbase = nanocl-bin
+	pkgdesc = Distributed System that simplifies the management of containers and virtual machines
+	pkgver = 0.15.0
+	pkgrel = 1
+	url = https://next-hat.com/nanocl
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = Apache-2.0
+	license = MIT
+	provides = nanocl
+	conflicts = nanocl
+	source = https://github.com/next-hat/nanocl/raw/nanocl-0.15.0/README.md
+	source = https://github.com/next-hat/nanocl/raw/nanocl-0.15.0/LICENSE-APACHE
+	source = https://github.com/next-hat/nanocl/raw/nanocl-0.15.0/LICENSE-MIT
+	sha256sums = 7e5c33e292e315210eb5c9ed3502d6fad6082d39aef0b153170820db4032136e
+	sha256sums = eb641414f479cd1268f880aecba2ef4e539ef7013a262d474a08d3197f385440
+	sha256sums = 3fba92360d6a716c68c72f0a0a0c696642170b324c4777663e18edf9c8b6aa6e
+	source_x86_64 = https://github.com/next-hat/nanocl/releases/download/nanocl-0.15.0/nanocl_0.15.0_amd64.tar.gz
+	sha256sums_x86_64 = 8b16872825b1cf9ad9e02fdf5db55542ea404c6ffc06cd51887e9a880bf58951
+
+pkgname = nanocl-bin
