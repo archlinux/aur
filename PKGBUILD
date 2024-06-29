@@ -10,7 +10,7 @@ noextract=("${_pkgname}-${pkgver}.tgz")
 sha256sums=('SKIP'
             'SKIP')
 arch=(any)
-pkgver=5.2.12
+pkgver=5.3.2
 pkgrel=1
 source=(
 	"${_pkgname}-${pkgver}.tgz"::"https://registry.npmjs.org/${_pkgname}/-/${_pkgname}-${pkgver}.tgz"

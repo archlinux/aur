@@ -1,14 +1,14 @@
 pkgbase = nodejs-vite
 	pkgdesc = Next generation frontend tooling. It's fast!
-	pkgver = 5.2.12
+	pkgver = 5.3.2
 	pkgrel = 1
 	url = https://github.com/vitejs/vite
 	arch = any
 	license = MIT
 	makedepends = npm
 	noextract = vite-.tgz
-	source = vite-5.2.12.tgz::https://registry.npmjs.org/vite/-/vite-5.2.12.tgz
-	source = LICENSE::https://github.com/vitejs/vite
+	source = vite-5.3.2.tgz::https://registry.npmjs.org/vite/-/vite-5.3.2.tgz
+	source = LICENSE::https://github.com/vitejs/vite/raw/main/LICENSE
 	sha256sums = SKIP
 	sha256sums = SKIP
 
