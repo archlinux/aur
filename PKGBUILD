@@ -9,7 +9,7 @@
 _pkgname=godot
 pkgname=godot3-mono
 pkgver=3.5.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Advanced cross-platform 2D and 3D game engine (3.x Branch Mono)'
 url='https://godotengine.org'
 license=(MIT)
@@ -96,7 +96,6 @@ build() {
 package() {
   # Make godot3-mono compataible with godot
   cd "$srcdir/$_pkgname-$pkgver-stable/misc/dist/linux"
-  gzip -9 godot.6
 
   sed -i 's/Godot Engine/Godot Engine 3 LTS Mono/g' org.godotengine.Godot.desktop
 
@@ -109,7 +108,7 @@ package() {
   cp -r bin/GodotSharp "$pkgdir/opt/$pkgname/GodotSharp"
   install -Dm755 "$srcdir/godot" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 misc/dist/linux/godot.6.gz "$pkgdir/usr/share/man/man6/$pkgname.6"
+  install -Dm644 misc/dist/linux/godot.6 "$pkgdir/usr/share/man/man6/$pkgname.6"
   install -Dm644 misc/dist/linux/org.godotengine.Godot.xml \
     "$pkgdir/usr/share/mime/packages/org.godotengine.Godot3-Mono.xml"
 }
