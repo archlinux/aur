@@ -11,7 +11,6 @@ arch=('i686' 'x86_64')
 url="https://springlobby.springrts.com/"
 license=('GPL-2.0-or-later')
 depends=('libx11' 'gcc-libs' 'hicolor-icon-theme' 'zlib' 'minizip' 'libpng' 'openal' 'curl' 'glibc' 'libnotify' 'wxwidgets-gtk3' 'wxwidgets-common' 'glib2' 'openssl' 'alure')
-optdepends=() 
 makedepends=('boost' 'cmake' 'git')
 conflicts=('springlobby')
 provides=('springlobby')
