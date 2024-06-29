@@ -2,14 +2,14 @@
 
 pkgname='kwin-scripts-kzones'
 pkgver=0.7
-pkgrel=2
+pkgrel=3
 pkgdesc='KDE KWin Script for snapping windows into zones'
 arch=('any')
 url='https://github.com/gerritdevriese/kzones'
 license=('GPL-3.0-only')
 depends=('kwin')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gerritdevriese/kzones/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b36078d275e7e4f6e391ca9bca485c2aaaa38fb8473726cdb18ff9963897a523')
+sha256sums=('baea1b5eb4d8e50be2023c09aa684f716b3e7fd0f371a6a7f062f3c4f0f5adad')
 
 package() {
 	cd "kzones-${pkgver}"
