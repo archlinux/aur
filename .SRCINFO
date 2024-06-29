@@ -1,6 +1,6 @@
 pkgbase = zed-git
 	pkgdesc = A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter
-	pkgver = 0.140.0.r15.gcfbf5dc
+	pkgver = 0.142.3.r48.ge650c01
 	pkgrel = 1
 	url = https://zed.dev
 	arch = x86_64
@@ -33,12 +33,10 @@ pkgbase = zed-git
 	optdepends = clang: improved C/C++ language support
 	optdepends = eslint: improved Javascript language support
 	optdepends = rust-analyzer: improved Rust language support
-	provides = zed=0.140.0.r15.gcfbf5dc
+	provides = zed=0.142.3.r48.ge650c01
 	conflicts = zed
 	replaces = zed-editor-git
 	source = zed-git::git+https://github.com/zed-industries/zed.git
-	source = use-lib-not-libexec.patch
 	sha256sums = SKIP
-	sha256sums = 180f8f84cd4320a758225ccb016cd6fc46146f1e7ba6d2c3b75decee8b89989d
 
 pkgname = zed-git
