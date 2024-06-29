@@ -2,6 +2,7 @@
 pkgname='mecano'
 pkgver='0.1.1'
 pkgrel='1'
+epoch='2'
 pkgdesc='Minimalistic typing train'
 arch=('x86_64')
 makedepends=('cargo')
@@ -18,8 +19,8 @@ build() {
 
 package() { 
    install -d "$pkgdir/usr/share/$pkgname/dictionaries"
-   install -Dm755 "$srcdir/$pkgname-$pkgver/mecano.toml" "$pkgdir/usr/share/$pkgname"
+   install -Dm755 "$srcdir/$pkgname-$pkgver/config.toml" "$pkgdir/usr/share/$pkgname/mecano.toml"
    cp -r "$srcdir/$pkgname-$pkgver/dictionaries/" "$pkgdir/usr/share/$pkgname/"
    install -Dm755 "$srcdir/$pkgname-$pkgver/target/release/mecano" "$pkgdir/usr/bin/$pkgname"
 }
-sha256sums=('025a3ccf453eb26ae95080e9190e44460e2e3e60e5fb4d0d0ff844863dc034c3')
+sha256sums=('5688cb1c5d370bdb61b95ae7f362ca50775aa3df3006334564865538a86c73ad')
