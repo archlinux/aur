@@ -2,12 +2,12 @@
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=g4music
-pkgver=3.6.2
-pkgrel=2
+pkgver=3.7.1
+pkgrel=1
 pkgdesc="Play your music elegantly"
 arch=('aarch64' 'x86_64')
 url="https://gitlab.gnome.org/neithern/g4music"
-license=('GPL-3.0-or-later')
+license=('GPL-3.0-only')
 depends=('dconf'
          'gdk-pixbuf2'
          'glib2'
@@ -25,7 +25,7 @@ optdepends=('gst-plugins-bad: "bad" plugin libraries'
             'gst-plugins-good: "good" plugin libraries'
             'gst-plugins-ugly: "ugly" plugin libraries')
 source=("${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-b2sums=('3f3d86b5d312fd273d4adbc77d74538a78dcae505004dc1fc2d5faa0e306c901034ba4135ca6b289124b0e2d5290372dd160041652beff0ff7a70b43df259f70')
+b2sums=('9ace75e38b21a2c6e269c0ae481eb7a1d86ea1639eb0f0dcdc4fae726efa93c19637d02d9caa7bbb87fa93dc6bdaa675e1ec3d53c6cc235a77deaa4884cc862a')
 
 build() {
   arch-meson "${pkgname}-v${pkgver}" build
