@@ -19,6 +19,7 @@ depends=('python'
         'python-pysocks'
         'python-requests'
         'python-requests-futures'
+        'python-torrequest'
         'python-stem'
         'python-torrequest')
 makedepends=('git' 'python-setuptools' 'python-installer' 'python-wheel' 'python-build')

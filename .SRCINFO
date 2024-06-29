@@ -18,6 +18,7 @@ pkgbase = sherlock-git
 	depends = python-pysocks
 	depends = python-requests
 	depends = python-requests-futures
+	depends = python-torrequest
 	depends = python-stem
 	depends = python-torrequest
 	source = git+https://github.com/sherlock-project/sherlock.git
