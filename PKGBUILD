@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/ab25cq/xyzsh"
 license=('MIT')
 depends=('glibc' 'ncurses' 'oniguruma')
-source=(http://osdn.net/projects/${pkgname}/downloads/60140/${pkgname}-${pkgver}.tgz gcc14.patch)
+source=(https://osdn.net/projects/${pkgname}/downloads/60140/${pkgname}-${pkgver}.tgz gcc14.patch)
 md5sums=('4fab43dbd794fb4af871ac6c9989526b'
 	 '084be8ed51601d02c72218d8f9034927')
 
