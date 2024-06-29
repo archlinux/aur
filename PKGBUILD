@@ -2,7 +2,7 @@
 _pkgname='mongodb-compass-beta'
 _edition=' Beta'
 pkgname="$_pkgname-bin"
-_pkgver='1.43.1-beta.2'
+_pkgver='1.43.3-beta.0'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - beta version - binary version'
@@ -11,7 +11,9 @@ url='https://www.mongodb.com/products/compass'
 license=('SSPL-1.0')
 depends=(
 	# electron
-	'c-ares' 'ffmpeg' 'gtk3' 'libevent' 'libxslt' 'minizip' 'nss' 're2' 'snappy'
+	'c-ares' 'dav1d' 'flac' 'fontconfig' 'freetype2' 'gcc-libs' 'glibc' 'gtk3'
+	'harfbuzz' 'icu' 'libdrm' 'libevent' 'libffi' 'libjpeg' 'libpng' 'libpulse'
+	'libwebp' 'libxml2' 'libxslt' 'minizip' 'nss' 'opus' 'zlib'
 	# compass
 	'krb5' 'libsecret' 'lsb-release'
 )
@@ -24,11 +26,11 @@ source=(
 	"$pkgname-$pkgver.rpm::https://downloads.mongodb.com/compass/$_betaprefix$_pkgname-$_pkgver.x86_64.rpm"
 	'mongodb-compass.conf'
 )
-sha512sums=('1413770a9dd09f9fcf7a8449d784abb7dc99fa4cbd3b1ceeae141c9d07ae616e22a4b6d66311a6c831d172ddaca2c5bdbcaff629791b6cef2787b4b65eba94c4'
-            'f09a6026e8b963f4821454fa8c2da8c750c765f26010fbf54dfbecfd7451dda5466464bb15fada1252545366c94bf448dc0529c8bd8114f6f3834ae00176d3f1')
+b2sums=('956295ceea657c4909a380cbf1fff4295b0fe6be21d2faec78210147822bfe4ab4e269042ad76973db2cdec0382bfc943312677d1bb51e78b47d303781e3e769'
+        '42535bfc10db335d685fad29aade1d091554a321fb4032b72db5699a450c6d701f630c45bb0d4cf9f456e77e3263a5aed49e843516cd3016d1a837ac5f1e6fec')
 
 check() {
-	"$srcdir/usr/lib/$_pkgname/MongoDB Compass$_edition" --no-sandbox --version | tee '/dev/stderr' | grep -q "^MongoDB Compass$_edition $pkgver$"
+	ELECTRON_OZONE_PLATFORM_HINT='auto' "$srcdir/usr/lib/$_pkgname/MongoDB Compass$_edition" --no-sandbox --version | tee '/dev/stderr' | grep -q "^MongoDB Compass$_edition $pkgver$"
 }
 
 package() {
