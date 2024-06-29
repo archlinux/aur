@@ -1,8 +1,8 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Arlo Siemsen <arkixml@gmail.com>
 pkgname=gridmgr-git
-pkgver=r30.44be97c
-pkgrel=4
+pkgver=r32.d30b31c
+pkgrel=1
 pkgdesc="command line tool which provides keyboard-bindable commands for easy window manipulation."
 arch=('i686' 'x86_64')
 url="http://nickbp.com/gridmgr/"
@@ -11,7 +11,7 @@ depends=('libxinerama' 'gcc-libs' 'libx11' 'glibc')
 provides=('gridmgr')
 conflicts=('gridmgr')
 makedepends=('git' 'cmake')
-source=("$pkgname::git+https://github.com/nickbp/gridmgr.git")
+source=("$pkgname::git+https://git.sr.ht/~nickbp/gridmgr")
 md5sums=('SKIP')
 
 pkgver() {
