@@ -38,8 +38,6 @@ build() {
 
 package() {
   cd "$srcdir/${pkgname%-git}"
-  cp -vr install/arch-linux/usr install/arch-linux/etc "$pkgdir"
+  cp -vr install/arch-linux/usr install/arch-linux/etc usr "$pkgdir"
 }
-
-
 
