@@ -1,0 +1,42 @@
+diff --git a/src/main/main.ts b/src/main/main.ts
+index 49ed99a0..83289649 100644
+--- a/src/main/main.ts
++++ b/src/main/main.ts
+@@ -206,9 +206,7 @@ const createWindow = async () => {
+     await installExtensions();
+   }
+ 
+-  const RESOURCES_PATH = app.isPackaged
+-    ? path.join(process.resourcesPath, 'assets')
+-    : path.join(__dirname, '../../assets');
++  const RESOURCES_PATH = path.join(__dirname, '../../../assets');
+ 
+   const getAssetPath = (...paths: string[]): string => {
+     return path.join(RESOURCES_PATH, ...paths);
+@@ -238,9 +236,7 @@ const createWindow = async () => {
+     'userDefines'
+   );
+ 
+-  const dependenciesPath = app.isPackaged
+-    ? path.join(process.resourcesPath, '../dependencies')
+-    : path.join(__dirname, '../../dependencies');
++  const dependenciesPath = path.join(__dirname, '../../../dependencies');
+ 
+   const getPlatformioPath = path.join(dependenciesPath, 'get-platformio.py');
+   const platformioStateTempStoragePath = path.join(
+@@ -327,13 +323,9 @@ const createWindow = async () => {
+   }
+   localApiServerEnv.PATH = PATH;
+ 
+-  const devicesPath = app.isPackaged
+-    ? path.join(process.resourcesPath, 'devices')
+-    : path.join(__dirname, '../../devices');
++  const devicesPath = path.join(__dirname, '../../../devices');
+ 
+-  const localesPath = app.isPackaged
+-    ? path.join(process.resourcesPath, 'i18n', 'locales')
+-    : path.join(__dirname, '../', 'i18n', 'locales');
++  const localesPath = path.join(__dirname, '../../../', 'i18n', 'locales');
+ 
+   logger.log('localesPath', { localesPath });
+ 

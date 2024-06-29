@@ -1,6 +1,6 @@
 pkgbase = expresslrs-configurator
 	pkgdesc = Cross platform configuration & build tool for the ExpressLRS radio link
-	pkgver = 1.6.1
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/ExpressLRS/ExpressLRS-Configurator
 	arch = x86_64
@@ -11,17 +11,17 @@ pkgbase = expresslrs-configurator
 	makedepends = npm>=6.0.0
 	makedepends = libxcrypt-compat
 	makedepends = yarn>=1.21.3
-	depends = electron20
+	depends = electron27
 	depends = platformio-core-udev
 	depends = python>=3.0.0
-	source = expresslrs-configurator-1.6.1.tar.gz::https://github.com/ExpressLRS/ExpressLRS-Configurator/archive/v1.6.1.tar.gz
+	source = expresslrs-configurator-1.7.0.tar.gz::https://github.com/ExpressLRS/ExpressLRS-Configurator/archive/v1.7.0.tar.gz
 	source = electron-launcher.sh
-	source = fix-i18n-location.diff
+	source = fix-resource-locations.diff
 	source = electron-builder-config.diff
-	sha512sums = 814382992a22a8c59e9dfbade10bbba930ca9085161f4ca7bb6cb9828910f6cbc4299d9b4afb81fe42cdc4782489fa9bd324cab92e908839d2e6f1fadc64ab28
-	sha512sums = c00d5973f4d9bb949edc498bd0a4577a394f6003b3337e12783a1febbb95579cfbda9fe53dc13a9ce5d029871b0c2bf95f30b0b95ae3116c684fa31f8779bfd1
-	sha512sums = b234a14ed809004165dbecec399521eea9ede8186a46f9565dfae2b37e429c2e6f23ce208443896f02eb4ce81ba09cbfd4ce943298300a336bda4cd134d2aded
-	sha512sums = 30576c2cc5e7c78e25090e6a00fa9a2d3fb91fc19b476f97104f6f7be3dc1851520e2596c4fb04d7eb284dc3866b373c83bf5715a8e0074453ed3ae270998513
+	b2sums = 199cf9d351b164ff3fe8a07396a479772c2a12de27475afbe32b18dac52295371a26abb55ffce0f00c29c3bb19af84a27cd2270049397272b25936d16a22fa22
+	b2sums = ac21805ec823b40ac925e1abec13edb8c4a3e5bbcfc65629b83e5923f4328dfccafb11c5c6895d8484cb730afce0a3977113d0d2266ba95d05216b4ea4077b4d
+	b2sums = 98ed125215ecc3a1a3e1dc52211cd65d713baad56573254ecb96ad6713f4f14c57f83ef97ff12f059d0058ce946e739e95d4a0ea9a07e3f60664547059ff1b3d
+	b2sums = fcf6859cdf2a2a71330b329add29328eb7a9075006383c627426ba43788ca4875f9108b8f1aa0da11f0bb6bb0d61a361aeb3f9666b69b54f7a2085fcf62640b5
 	depends_armv7h = lib32-gcc-libs
 	depends_armv7h = lib32-glibc
 

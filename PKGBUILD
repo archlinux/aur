@@ -2,28 +2,28 @@
 # Contributor: Erik Moldtmann <erik@moldtmann.de>
 _projectname='ExpressLRS-Configurator'
 pkgname="${_projectname,,}"
-pkgver='1.6.1'
+pkgver='1.7.0'
 pkgrel='1'
 pkgdesc='Cross platform configuration & build tool for the ExpressLRS radio link'
-# If you're running on armv7h or aarch64, use the electron20-bin package from the AUR for the electron20 dependency
-# If you're running on armv7h, you have to add it to the arch and source arrays of the electron20-bin AUR dependency
+# If you're running on armv7h or aarch64, use the electron27-bin package from the AUR for the electron27 dependency
+# If you're running on armv7h, you have to add it to the arch and source arrays of the electron27-bin AUR dependency
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/ExpressLRS/$_projectname"
 license=('GPL-3.0-only')
-_electronpkg='electron20'
+_electronpkg='electron27'
 depends=("$_electronpkg" 'platformio-core-udev' 'python>=3.0.0')
 depends_armv7h=('lib32-gcc-libs' 'lib32-glibc')
 makedepends=('nodejs>=16.0.0' 'npm>=6.0.0' 'libxcrypt-compat' 'yarn>=1.21.3')
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 	'electron-launcher.sh'
-	'fix-i18n-location.diff'
+	'fix-resource-locations.diff'
 	'electron-builder-config.diff'
 )
-sha512sums=('814382992a22a8c59e9dfbade10bbba930ca9085161f4ca7bb6cb9828910f6cbc4299d9b4afb81fe42cdc4782489fa9bd324cab92e908839d2e6f1fadc64ab28'
-            'c00d5973f4d9bb949edc498bd0a4577a394f6003b3337e12783a1febbb95579cfbda9fe53dc13a9ce5d029871b0c2bf95f30b0b95ae3116c684fa31f8779bfd1'
-            'b234a14ed809004165dbecec399521eea9ede8186a46f9565dfae2b37e429c2e6f23ce208443896f02eb4ce81ba09cbfd4ce943298300a336bda4cd134d2aded'
-            '30576c2cc5e7c78e25090e6a00fa9a2d3fb91fc19b476f97104f6f7be3dc1851520e2596c4fb04d7eb284dc3866b373c83bf5715a8e0074453ed3ae270998513')
+b2sums=('199cf9d351b164ff3fe8a07396a479772c2a12de27475afbe32b18dac52295371a26abb55ffce0f00c29c3bb19af84a27cd2270049397272b25936d16a22fa22'
+        'ac21805ec823b40ac925e1abec13edb8c4a3e5bbcfc65629b83e5923f4328dfccafb11c5c6895d8484cb730afce0a3977113d0d2266ba95d05216b4ea4077b4d'
+        '98ed125215ecc3a1a3e1dc52211cd65d713baad56573254ecb96ad6713f4f14c57f83ef97ff12f059d0058ce946e739e95d4a0ea9a07e3f60664547059ff1b3d'
+        'fcf6859cdf2a2a71330b329add29328eb7a9075006383c627426ba43788ca4875f9108b8f1aa0da11f0bb6bb0d61a361aeb3f9666b69b54f7a2085fcf62640b5')
 
 _sourcedirectory="$_projectname-$pkgver"
 
@@ -36,8 +36,8 @@ prepare() {
 	# Disable husky, as it only works with a cloned repo
 	sed -i '/husky install/d' 'package.json'
 
-	# Fix i18n directory location
-	patch --forward -p1 < "$srcdir/fix-i18n-location.diff"
+	# Fix resource directory locations
+	patch --forward -p1 < "$srcdir/fix-resource-locations.diff"
 
 	# Set system Electron version for ABI compatibility
 	sed -E -i 's|("electron": ").*"|\1'"$(cat "/usr/lib/$_electronpkg/version")"'"|' 'package.json'
