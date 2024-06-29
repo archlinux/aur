@@ -4,7 +4,7 @@ pkgname="osaka-simulator"
 pkgdesc="A fanmade interactive Osaka simulator from hirahira.net for PC"
 
 pkgver=Aug_2003
-pkgrel=6
+pkgrel=7
 
 arch=(any)
 
@@ -42,8 +42,8 @@ package() {
 	cd "Osaka Simulator FINAL"
 
 	# delete the bundled-in save file and configuration file
-	rm -f ../tsu_han.dat
-	rm -f ../tsu_han.cfg
+	rm -f tsu_han.dat
+	rm -f tsu_han.cfg
 
 	# copy the game's files
 	find . -type d -exec install -Dm755 -ggames -d "${pkgdir}/opt/osaka-simulator/{}" \;
