@@ -36,7 +36,7 @@ sha512sums=(
 
 _patch_plugin() {
   tar xvf ${_plugin_ver}.tar.gz -C "$pkgdir/"
-  mv $pkgdir/${_pluginfilename}/plugin $pkgdir/usr/share/typora/resources/
+  mv $pkgdir/$_pluginfilename/plugin $pkgdir/usr/share/typora/resources/
   rm -rf $pkgdir/${_pluginfilename}
   sed -i 's@\(frame.js" defer="defer"></script>\)@\1<script src="./plugin/index.js" defer="defer"></script>@g' $pkgdir/usr/share/typora/resources/window.html
 }
