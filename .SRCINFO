@@ -1,0 +1,25 @@
+pkgbase = starkli-bin
+	pkgdesc = A blazing fast CLI tool for Starknet powered by starknet-rs
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://book.starkli.rs
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = starkli
+	conflicts = starkli
+	source = https://github.com/xJonathanLEI/starkli/raw/v0.3.1/README.md
+	source = https://github.com/xJonathanLEI/starkli/raw/v0.3.1/LICENSE-APACHE
+	source = https://github.com/xJonathanLEI/starkli/raw/v0.3.1/LICENSE-MIT
+	sha256sums = c754365c41980e392e9c2e8d6c446b4856e1d7da6d4a95ac80debfb3de51cc56
+	sha256sums = 93ca65a55581bae536fc2e6bafc613f22fc1bec74b36081ea08ccb199fed4e48
+	sha256sums = ece393ef82b9a2c92affd94872d3b52064f8a82904f64861b93e49b1fc7833d5
+	source_x86_64 = https://github.com/xJonathanLEI/starkli/releases/download/v0.3.1/starkli-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 0ccc5edf01cc5d48a449b5e7b7994a5953bd193779fc1f39adba9cfa07af0543
+	source_aarch64 = https://github.com/xJonathanLEI/starkli/releases/download/v0.3.1/starkli-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 220e3cb9c7d670b489e3c93d00ce2d53de95c64340a997881984d8fd2c3f6ef4
+
+pkgname = starkli-bin
