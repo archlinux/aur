@@ -23,7 +23,7 @@ backups=(
     'usr/share/typora/resources/plugin/global/settings/settings.user.toml'
     )
 _filename="${_pkgname}_${_typora_ver}_amd64.deb"
-_pluginname="typora_plugin-${_plugin_ver}.tar.gz"
+_pluginname="typora_plugin-${_plugin_ver}"
 source=(
     "https://download2.typoraio.cn/linux/$_filename"
     "$_pkgname.sh"
