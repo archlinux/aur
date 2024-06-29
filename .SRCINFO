@@ -1,6 +1,6 @@
 pkgbase = browservice
 	pkgdesc = Browse the modern web on historical browsers
-	pkgver = 0.9.9.0
+	pkgver = 0.9.9.2
 	pkgrel = 1
 	url = https://github.com/ttalvitie/browservice
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = browservice
 	depends = fuse2
 	depends = fuse3
 	options = !strip
-	source = https://github.com/ttalvitie/browservice/releases/download/v0.9.9.0/browservice-v0.9.9.0-x86_64.AppImage
-	sha256sums = 13dc90a7c3285e971ca47b03f33b0ac7cc04133f38c862c436a7c7221e58b853
+	source = https://github.com/ttalvitie/browservice/releases/download/v0.9.9.2/browservice-v0.9.9.2-x86_64.AppImage
+	sha256sums = 8068217aa74a5d1afa37f46cbc27e9c9041b3d73ef184bdc2dbc17b8d3223707
 
 pkgname = browservice
