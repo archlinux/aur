@@ -1,0 +1,18 @@
+pkgbase = phylum-git
+	pkgdesc = Command line interface for the Phylum API
+	pkgver = 6.6.4.r0.g3b858ae
+	pkgrel = 1
+	url = https://phylum.io/
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	depends = zlib
+	provides = phylum=6.6.4
+	conflicts = phylum
+	source = cli::git+https://github.com/phylum-dev/cli.git
+	sha256sums = SKIP
+
+pkgname = phylum-git
