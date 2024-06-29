@@ -4,7 +4,7 @@ pkgname="osaka-simulator"
 pkgdesc="A fanmade interactive Osaka simulator from hirahira.net for PC"
 
 pkgver=Aug_2003
-pkgrel=4
+pkgrel=5
 
 arch=(any)
 
@@ -12,7 +12,7 @@ url="http://web.archive.org/web/20230207145313/http://www.hirahira.net/products/
 license=("LicenseRef-OsakaSimulator")
 
 depends=(wine winetricks)
-makedepends=(unzip gendesk icoutils)
+makedepends=(gendesk icoutils)
 
 provides=(osaka-simulator)
 
@@ -38,29 +38,31 @@ prepare() {
 }
 
 package() {
-	# make the required directory
-	mkdir -p "${pkgdir}/opt/osaka-simulator"
-
-	# copy the game's files
-	cp -r "Osaka Simulator FINAL"/* "${pkgdir}/opt/osaka-simulator"
+	# move to the source directory
+	cd "Osaka Simulator FINAL"
 
 	# delete the bundled-in save file and configuration file
-	rm -f "${pkgdir}/opt/osaka-simulator/tsu_han.dat"
-	rm -f "${pkgdir}/opt/osaka-simulator/tsu_han.cfg"
+	rm -f tsu_han.dat
+	rm -f tsu_han.cfg
+
+	# copy the game's files
+	find . -type d -exec install -Dm755 -ggames -d "${pkgdir}/opt/osaka-simulator/{}" \;
+	find . -type f \
+		-not -name "tsu_han.exe" \
+		-exec install -Dm644 -ggames {} "${pkgdir}/opt/osaka-simulator/{}" \;
+
+	install -Dm755 tsu_han.exe "${pkgdir}/opt/osaka-simulator/tsu_han.exe"
 
 	# copy the package's configuration file
-	install -Dm644 tsu_han.cfg "${pkgdir}/opt/osaka-simulator/tsu_han.cfg"
-
-	# set the ownership of the game's directory to root:games
-	chown -R root:games "${pkgdir}/opt/osaka-simulator"
+	install -Dm644 ../tsu_han.cfg "${pkgdir}/opt/osaka-simulator/tsu_han.cfg"
 
 	# copy the executable script
-	install -Dm755 osaka-simulator "${pkgdir}/usr/bin/osaka-simulator"
+	install -Dm755 ../osaka-simulator "${pkgdir}/usr/bin/osaka-simulator"
 
 	# copy the extracted icon and the generated .desktop file
-	install -Dm644 OsakaSimulator.png "${pkgdir}/usr/share/pixmaps/osaka-simulator.png"
-	install -Dm644 "Ayumu Kasuga's Mail Order Life.desktop" "${pkgdir}/usr/share/applications/osaka-simulator.desktop"
+	install -Dm644 ../OsakaSimulator.png "${pkgdir}/usr/share/pixmaps/osaka-simulator.png"
+	install -Dm644 ../"Ayumu Kasuga's Mail Order Life.desktop" "${pkgdir}/usr/share/applications/osaka-simulator.desktop"
 
 	# copy the license
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/osaka-simulator/LICENSE"
+	install -Dm644 ../LICENSE "${pkgdir}/usr/share/licenses/osaka-simulator/LICENSE"
 }
