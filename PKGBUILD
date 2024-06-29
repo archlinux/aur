@@ -2,7 +2,7 @@
 
 pkgname=python-apollo
 _gitpkgname=apollo
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='Microcontroller-based FPGA/JTAG programmer'
 arch=('any')
@@ -18,6 +18,7 @@ depends=(
 makedepends=(
   'python-build'
   'python-installer'
+  'python-pyproject-patcher'
   'python-setuptools'
   'python-wheel'
 )
@@ -35,13 +36,19 @@ source=(
   "${_gitpkgname}-${pkgver}.tar.gz::https://github.com/greatscottgadgets/apollo/archive/v${pkgver}.tar.gz"
 )
 
-sha512sums=(
-  '22b220d9d2ba0e003f38ef790ce50186a78433139eaa77e2728d0070d4bb1ee716ddfead459666c4c1b3b00a1961b110289b9633d7725e55f147d6831ab721d8'
-)
+sha512sums=('513e270d4ad180f6342c381d504ee5769638cf8a230e8c8cfd3ef6902042e8fa226d41a4af0d3b765b34453253a1a0272a8a1a13ac1204df002d0fedae293053')
 
 prepare() {
   cd "${_gitpkgname}-${pkgver}"
 
+  echo >&2 'Pinning version number'
+  export pkgver
+  python << 'EOF'
+from pyproject_patcher import patch_in_place
+with patch_in_place('pyproject.toml') as toml:
+    toml.set_project_version_from_env('pkgver')
+    toml.tools.setuptools_git_versioning.remove()
+EOF
 }
 
 build() {
@@ -63,7 +70,7 @@ check() {
 
   echo >&2 'Testing the executable'
   "tmp_install/usr/bin/${_gitpkgname}" info >actual.txt 2>&1 || true
-  if ! grep -qF 'No Apollo or valid LUNA device found' actual.txt; then
+  if ! grep -qF 'No Apollo device or stub interface found' actual.txt; then
     printf >&2 '%s\n' 'Unexpected test output:' '==='
     cat >&2 actual.txt
     printf >&2 '\n%s\n' '==='

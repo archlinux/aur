@@ -1,6 +1,6 @@
 pkgbase = python-apollo
 	pkgdesc = Microcontroller-based FPGA/JTAG programmer
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/greatscottgadgets/apollo
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = python-apollo
 	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-pyproject-patcher
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
@@ -19,7 +20,7 @@ pkgbase = python-apollo
 	optdepends = python-luna-usb: to use the flash-fast subcommand
 	optdepends = python-pyserial: to connect to an integrated logic analyzer
 	optdepends = python-usb-protocol: for flashing
-	source = apollo-1.0.3.tar.gz::https://github.com/greatscottgadgets/apollo/archive/v1.0.3.tar.gz
-	sha512sums = 22b220d9d2ba0e003f38ef790ce50186a78433139eaa77e2728d0070d4bb1ee716ddfead459666c4c1b3b00a1961b110289b9633d7725e55f147d6831ab721d8
+	source = apollo-1.0.4.tar.gz::https://github.com/greatscottgadgets/apollo/archive/v1.0.4.tar.gz
+	sha512sums = 513e270d4ad180f6342c381d504ee5769638cf8a230e8c8cfd3ef6902042e8fa226d41a4af0d3b765b34453253a1a0272a8a1a13ac1204df002d0fedae293053
 
 pkgname = python-apollo
