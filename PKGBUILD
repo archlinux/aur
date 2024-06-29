@@ -4,7 +4,7 @@
 pkgname=victoriametrics
 _name=VictoriaMetrics
 pkgver=1.101.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast, cost-effective and scalable time series database'
 arch=(x86_64)
 url='https://victoriametrics.github.io'
@@ -19,25 +19,30 @@ b2sums=('99b02ad20d601bb17b11c6bbe64430a25b57f274c512b6c4917e2ee9e6346275dd707fd
         '82b1c2b55b3c9f3d4deee12753820247ba1f4ac28a94cf16dad31ce091306875d392f7a7a0a56029d88101d7e75f7fefec392ac50d2447276850476f773d147d'
         '4405dc19795d2cbfa515e4750a2cad77c13611293176ff5aeec597f9905494902bd4496c1e90f1efe2d484e383adb39d034167673b9fe7de8b307b8cedf17b7f')
 
+_vmapps=(victoria-logs victoria-metrics vmagent vmalert vmalert-tool vmauth vmbackup vmctl vmrestore)
+
 build() {
   cd $_name-$pkgver
   CGO_ENABLED=1 GOOS=linux GOARCH=amd64 GO111MODULE=on CGO_CPPFLAGS="${CPPFLAGS}" CGO_CFLAGS="${CFLAGS}" CGO_CXXFLAGS="${CXXFLAGS}" CGO_LDFLAGS="${LDFLAGS}" \
+
   go build -trimpath \
     -buildmode=pie \
     -mod=readonly \
     -modcacherw \
     -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
-    -o bin/victoria-metrics \
-    ./app/victoria-metrics
+    -o bin/ \
+    ${_vmapps[@]/#/.\/app\/}
 }
 
 check() {
   cd $_name-$pkgver
-  go test ./app/victoria-metrics
+  go test ${_vmapps[@]/#/.\/app\/}
 }
 
 package() {
-  install -Dm 755 $_name-$pkgver/bin/victoria-metrics -t "$pkgdir"/usr/bin/
+  for app in ${_vmapps[@]}; do
+    install -Dm 755 $_name-$pkgver/bin/$app -t "$pkgdir"/usr/bin/
+  done
   install -Dm 644 victoriametrics.service -t "$pkgdir"/usr/lib/systemd/system/
   install -Dm 644 victoriametrics.default "$pkgdir"/etc/default/victoriametrics
 }
