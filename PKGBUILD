@@ -5,7 +5,7 @@
 
 _pkgname='sherlock'
 pkgname="${_pkgname}-git"
-pkgver=94b0afa07c283569575302fbe82b1eda95080dfe
+pkgver=r2404.501cb3d
 pkgrel=1
 pkgdesc='Hunt down social media accounts by username across social networks'
 arch=('any')
@@ -21,7 +21,7 @@ depends=('python'
         'python-requests-futures'
         'python-stem'
         'python-torrequest')
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python-setuptools' 'python-installer' 'python-wheel' 'python-build')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
@@ -30,17 +30,16 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  echo -e "#!/bin/sh\nexec python /usr/share/${_pkgname}/${_pkgname}.py \"\$@\"" > "${_pkgname}.sh"
+build() {
+    cd "${_pkgname}"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-  install -Dvm755 "${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
   cd "${_pkgname}"
-  install -Dvm644 {'docs/removed-sites.md','docs/sites.md','docs/README.md'} -t "${pkgdir}/usr/share/doc/${_pkgname}"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dvm644 'docs/removed-sites.md' 'docs/README.md' -t "${pkgdir}/usr/share/doc/${_pkgname}"
   install -Dvm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${_pkgname}"
-  install -dv "${pkgdir}/usr/share/${_pkgname}"
-  cp -afv "${_pkgname}/"* "${pkgdir}/usr/share/${_pkgname}"
 }
 
 # vim: ts=2 sw=2 et:

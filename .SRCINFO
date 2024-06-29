@@ -1,12 +1,15 @@
 pkgbase = sherlock-git
 	pkgdesc = Hunt down social media accounts by username across social networks
-	pkgver = 94b0afa07c283569575302fbe82b1eda95080dfe
+	pkgver = r2404.501cb3d
 	pkgrel = 1
 	url = https://github.com/sherlock-project/sherlock
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = python-setuptools
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-build
 	depends = python
 	depends = python-certifi
 	depends = python-colorama
