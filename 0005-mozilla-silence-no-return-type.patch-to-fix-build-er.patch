@@ -35,6 +35,7 @@ Subject: [PATCH] mozilla-silence-no-return-type.patch to fix build errors on
  .../audio_processing/audio_processing_impl.cc    |  4 +++-
  .../audio_processing/include/audio_processing.cc |  2 ++
  .../transient/transient_suppressor_impl.cc       |  1 +
+ .../goog_cc/goog_cc_network_control.cc           |  2 ++
  .../linux/wayland/screencast_portal.cc           |  1 +
  .../libwebrtc/modules/pacing/bitrate_prober.cc   |  1 +
  .../source/create_video_rtp_depacketizer.cc      |  1 +
@@ -43,7 +44,7 @@ Subject: [PATCH] mozilla-silence-no-return-type.patch to fix build errors on
  .../codecs/vp8/default_temporal_layers.cc        |  1 +
  .../codecs/vp8/temporal_layers_checker.cc        |  1 +
  .../video_stream_encoder_resource_manager.cc     |  1 +
- 38 files changed, 67 insertions(+), 5 deletions(-)
+ 39 files changed, 69 insertions(+), 5 deletions(-)
 
 diff --git a/gfx/skia/skia/include/codec/SkEncodedOrigin.h b/gfx/skia/skia/include/codec/SkEncodedOrigin.h
 index 19d083672f6b974e1df968bf4061b40002b01310..c1103223deaba0df7d97eb5ff71c0e78b3c41d03 100644
@@ -321,10 +322,10 @@ index 9438ae4d419a21030091ac88864330eb6db0b91b..bf7507ef0f3d5715c8910f4e63548520
      union_.fracSig = settings;
      return {RND_SIGNIFICANT, union_};
 diff --git a/js/src/irregexp/imported/regexp-parser.cc b/js/src/irregexp/imported/regexp-parser.cc
-index ea2a6c6d7a3c8d9e0f40945dd486f1ede5f5914d..3399076be5288a805218953443f73d5e578a9adc 100644
+index 965fc567b716ea7cb1c2fae3f66ed705badf3ae5..6d78b127e9a1447189b3686893f76d8003b78e33 100644
 --- a/js/src/irregexp/imported/regexp-parser.cc
 +++ b/js/src/irregexp/imported/regexp-parser.cc
-@@ -2649,6 +2649,7 @@ bool MayContainStrings(ClassSetOperandType type, RegExpTree* operand) {
+@@ -2769,6 +2769,7 @@ bool MayContainStrings(ClassSetOperandType type, RegExpTree* operand) {
        if (operand->IsClassRanges()) return false;
        return operand->AsClassSetExpression()->may_contain_strings();
    }
@@ -345,10 +346,10 @@ index dac03fe019d89482e91a29242b3027da80f28c8b..e18a04b4c5c95d1449662cfd8f7a7f97
  
  ResourceListener::~ResourceListener() {}
 diff --git a/third_party/libwebrtc/api/rtp_parameters.cc b/third_party/libwebrtc/api/rtp_parameters.cc
-index cf8b3ad3dcab8a802a2fb0a6b89d493417df98ba..5fbfd91517e95dc00eb563e440cdfb539be4ae26 100644
+index ad0f3c9396b47ce297455037bf4f05289fc73313..1732a74fd6bc9428c78159a57fe44d8dd8f1082a 100644
 --- a/third_party/libwebrtc/api/rtp_parameters.cc
 +++ b/third_party/libwebrtc/api/rtp_parameters.cc
-@@ -32,6 +32,7 @@ const char* DegradationPreferenceToString(
+@@ -33,6 +33,7 @@ const char* DegradationPreferenceToString(
        return "balanced";
    }
    RTC_CHECK_NOTREACHED();
@@ -370,11 +371,11 @@ index 374b438adcbe961ed0b3787ca6d9a362c220e2d1..d2371b273712ef432b85e45ec478bf6d
  
  int I420BufferInterface::ChromaWidth() const {
 diff --git a/third_party/libwebrtc/api/video_codecs/video_codec.cc b/third_party/libwebrtc/api/video_codecs/video_codec.cc
-index c6122d3f6ac3056ebcc654e1c268923f6057a738..1c78e6c0071a4ae36913d47e67d05389270f5095 100644
+index 82c9bfc8ea32126fb7a7059ad1c8f85198ea16f3..3bcd1f8cef640dc8da3643cb0c076d5e30991df2 100644
 --- a/third_party/libwebrtc/api/video_codecs/video_codec.cc
 +++ b/third_party/libwebrtc/api/video_codecs/video_codec.cc
-@@ -118,6 +118,7 @@ const char* CodecTypeToPayloadString(VideoCodecType type) {
-       return kPayloadNameGeneric;
+@@ -161,6 +161,7 @@ const char* CodecTypeToPayloadString(VideoCodecType type) {
+       return kPayloadNameH265;
    }
    RTC_CHECK_NOTREACHED();
 +  return "";
@@ -382,10 +383,10 @@ index c6122d3f6ac3056ebcc654e1c268923f6057a738..1c78e6c0071a4ae36913d47e67d05389
  
  VideoCodecType PayloadStringToCodecType(const std::string& name) {
 diff --git a/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc b/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc
-index 39c52a008181cd2cf5fb2b3589816dfd3f03a6ba..24df68f62d0f27d3f0e2e099f1f694fe2fd4e982 100644
+index e50b5086e87aea3cb26f4a40e6213644106e9caf..3dd34f1a2b708f7da72c35690e426a2fadab8d9f 100644
 --- a/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc
 +++ b/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc
-@@ -163,6 +163,7 @@ class VideoEncoderSoftwareFallbackWrapper final : public VideoEncoder {
+@@ -189,6 +189,7 @@ class VideoEncoderSoftwareFallbackWrapper final : public VideoEncoder {
          return fallback_encoder_.get();
      }
      RTC_CHECK_NOTREACHED();
@@ -393,7 +394,7 @@ index 39c52a008181cd2cf5fb2b3589816dfd3f03a6ba..24df68f62d0f27d3f0e2e099f1f694fe
    }
  
    // Updates encoder with last observed parameters, such as callbacks, rates,
-@@ -343,6 +344,7 @@ int32_t VideoEncoderSoftwareFallbackWrapper::Encode(
+@@ -382,6 +383,7 @@ int32_t VideoEncoderSoftwareFallbackWrapper::Encode(
        return fallback_encoder_->Encode(frame, frame_types);
    }
    RTC_CHECK_NOTREACHED();
@@ -439,10 +440,10 @@ index 5a970fb2ef1af8069b7dd0c52a993ea7d7e6e896..0feec89ab185ab214e1f24b05efab02f
  
  VideoStreamAdapter::RestrictionsOrState
 diff --git a/third_party/libwebrtc/call/rtp_payload_params.cc b/third_party/libwebrtc/call/rtp_payload_params.cc
-index e9bfb30ae3770d2e99f3d9c991ce5b859b865617..45126fb5102d86741b2fb0752575a0d4c4a261cd 100644
+index 4b63ebefb3ffabc917f7c2d20d8c821f18444412..37e0f08e143da3b278cf0452c6fee0de592fbbd7 100644
 --- a/third_party/libwebrtc/call/rtp_payload_params.cc
 +++ b/third_party/libwebrtc/call/rtp_payload_params.cc
-@@ -405,7 +405,7 @@ absl::optional<FrameDependencyStructure> RtpPayloadParams::GenericStructure(
+@@ -410,7 +410,7 @@ absl::optional<FrameDependencyStructure> RtpPayloadParams::GenericStructure(
      case VideoCodecType::kVideoCodecMultiplex:
        return absl::nullopt;
    }
@@ -464,10 +465,10 @@ index e8532a7a2669e717e79c49a1fd45020ca07dbced..c251629073b4c555c57d79d7fa7578a2
  
  }  // namespace
 diff --git a/third_party/libwebrtc/media/base/codec.cc b/third_party/libwebrtc/media/base/codec.cc
-index 70a8d90e25a3ece112d0628a7bbefda26b60b36e..3226aa95ec3bb764d0f498a34d6d7f97527e6075 100644
+index d18baf7132a1d4d1140645bf09f392d905b0df1a..0d8de3480cf730ec8c13688a09e7d1d65aec1555 100644
 --- a/third_party/libwebrtc/media/base/codec.cc
 +++ b/third_party/libwebrtc/media/base/codec.cc
-@@ -206,6 +206,7 @@ bool Codec::Matches(const Codec& codec,
+@@ -233,6 +233,7 @@ bool Codec::Matches(const Codec& codec) const {
        case Type::kVideo:
          return IsSameCodecSpecific(name, params, codec.name, codec.params);
      }
@@ -514,10 +515,10 @@ index a13e77461a15ad182ec5e6f8657823ed04f78291..398d4225131340ebf324e21e4ff46fa9
  
  }  // namespace
 diff --git a/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc b/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
-index c304453388e2b33826249a0b84d8d79699f4278c..6fca19ff17f1a63b919358616ce1f2787116adef 100644
+index 5f6dd59d026990a00447f747476299c87f8df276..736518f7c757170c757de08538f0c3d4e7796048 100644
 --- a/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
 +++ b/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
-@@ -99,6 +99,7 @@ GainControl::Mode Agc1ConfigModeToInterfaceMode(
+@@ -101,6 +101,7 @@ GainControl::Mode Agc1ConfigModeToInterfaceMode(
        return GainControl::kFixedDigital;
    }
    RTC_CHECK_NOTREACHED();
@@ -525,7 +526,7 @@ index c304453388e2b33826249a0b84d8d79699f4278c..6fca19ff17f1a63b919358616ce1f278
  }
  
  bool MinimizeProcessingForUnusedOutput() {
-@@ -166,7 +167,7 @@ int AudioFormatValidityToErrorCode(AudioFormatValidity validity) {
+@@ -168,7 +169,7 @@ int AudioFormatValidityToErrorCode(AudioFormatValidity validity) {
      case AudioFormatValidity::kInvalidChannelCount:
        return AudioProcessing::kBadNumberChannelsError;
    }
@@ -534,7 +535,7 @@ index c304453388e2b33826249a0b84d8d79699f4278c..6fca19ff17f1a63b919358616ce1f278
  }
  
  // Returns an AudioProcessing::Error together with the best possible option for
-@@ -2421,6 +2422,7 @@ void AudioProcessingImpl::InitializeNoiseSuppressor() {
+@@ -2425,6 +2426,7 @@ void AudioProcessingImpl::InitializeNoiseSuppressor() {
                return NsConfig::SuppressionLevel::k21dB;
            }
            RTC_CHECK_NOTREACHED();
@@ -574,6 +575,19 @@ index 90428464e3bca2e8b0268e977d03d27176aedf86..8f9f8ac3ee6b743cb1d025d0f3b4088b
  }
  
  }  // namespace
+diff --git a/third_party/libwebrtc/modules/congestion_controller/goog_cc/goog_cc_network_control.cc b/third_party/libwebrtc/modules/congestion_controller/goog_cc/goog_cc_network_control.cc
+index d8a0ce9d645c4554d4618846ea0423c27cba739f..b76e258e3ef9971e6e2a18b1823d12d6a741794c 100644
+--- a/third_party/libwebrtc/modules/congestion_controller/goog_cc/goog_cc_network_control.cc
++++ b/third_party/libwebrtc/modules/congestion_controller/goog_cc/goog_cc_network_control.cc
+@@ -95,6 +95,8 @@ BandwidthLimitedCause GetBandwidthLimitedCause(LossBasedState loss_based_state,
+     case LossBasedState::kDelayBasedEstimate:
+       return BandwidthLimitedCause::kDelayBasedLimited;
+   }
++  // just return something by default
++  return BandwidthLimitedCause::kLossLimitedBwe;
+ }
+ 
+ }  // namespace
 diff --git a/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc b/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc
 index 61ed84ebb532521ce9a4af69355807b04f228859..4d06c61ce6bffcd89b767932e9c7987cea6cceab 100644
 --- a/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc
@@ -587,10 +601,10 @@ index 61ed84ebb532521ce9a4af69355807b04f228859..4d06c61ce6bffcd89b767932e9c7987c
  
  ScreenCastPortal::ScreenCastPortal(CaptureType type, PortalNotifier* notifier)
 diff --git a/third_party/libwebrtc/modules/pacing/bitrate_prober.cc b/third_party/libwebrtc/modules/pacing/bitrate_prober.cc
-index 3151a35075e57bad9d344f45841b61b278577a1c..fe36a4f749cf91af662fea3a96474e1ebf7ad8f0 100644
+index 17729b57752b07f9ae44da717c136a05a72e89e1..ee1ca9a5b8f3dd01a4e0b8db3418fc664bd7d8fe 100644
 --- a/third_party/libwebrtc/modules/pacing/bitrate_prober.cc
 +++ b/third_party/libwebrtc/modules/pacing/bitrate_prober.cc
-@@ -69,6 +69,7 @@ bool BitrateProber::ReadyToSetActiveState(DataSize packet_size) const {
+@@ -84,6 +84,7 @@ bool BitrateProber::ReadyToSetActiveState(DataSize packet_size) const {
        return packet_size >=
               std::min(RecommendedMinProbeSize(), config_.min_packet_size.Get());
    }
@@ -599,10 +613,10 @@ index 3151a35075e57bad9d344f45841b61b278577a1c..fe36a4f749cf91af662fea3a96474e1e
  
  void BitrateProber::OnIncomingPacket(DataSize packet_size) {
 diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc
-index f1e4eddb4b9d8855f6accf24ef980cbc11d0077d..b3fde3cda3c7c636b8f37f3778fb3b735a61d66d 100644
+index 598a86d4adc7ac98636cf67705a05e71869b94da..b52fc1e14eb0842c3a374599477196e70e34355c 100644
 --- a/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc
 +++ b/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc
-@@ -38,6 +38,7 @@ std::unique_ptr<VideoRtpDepacketizer> CreateVideoRtpDepacketizer(
+@@ -47,6 +47,7 @@ std::unique_ptr<VideoRtpDepacketizer> CreateVideoRtpDepacketizer(
        return std::make_unique<VideoRtpDepacketizerGeneric>();
    }
    RTC_CHECK_NOTREACHED();
@@ -611,7 +625,7 @@ index f1e4eddb4b9d8855f6accf24ef980cbc11d0077d..b3fde3cda3c7c636b8f37f3778fb3b73
  
  }  // namespace webrtc
 diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
-index bdb79fe8ccc9c8c1dd58b5216030cd78aa13fe2a..bfb6754b4bc0947a9df185904f8fed66ea716c52 100644
+index 4972aa0802dbdc44e201f2bdd5c60cdb81ef48f4..8efa211ad46ca3200aade0340f9f7de7928ef8cf 100644
 --- a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
 +++ b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
 @@ -138,6 +138,7 @@ bool IsNonVolatile(RTPExtensionType type) {
@@ -623,10 +637,10 @@ index bdb79fe8ccc9c8c1dd58b5216030cd78aa13fe2a..bfb6754b4bc0947a9df185904f8fed66
  
  bool HasBweExtension(const RtpHeaderExtensionMap& extensions_map) {
 diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc
-index a0f1af5243a7f73f414d4401f27e1945235d3278..83ba1e5f60fe55db5fa8b953522ae7a9757e81df 100644
+index 9d2258dc66eddbfaf6c7eced1c2492ffb3c5951b..b4cb70f488118c5a931743313224413399987770 100644
 --- a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc
 +++ b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc
-@@ -45,6 +45,7 @@ namespace {
+@@ -47,6 +47,7 @@ namespace {
        return "audio_cn";
    }
    RTC_CHECK_NOTREACHED();
@@ -659,10 +673,10 @@ index 5aebd2c5268e8c58b07be4bc393f83ac5abd1c09..8d18446430ff4b7f6d0d669416e3493d
  
  TemporalLayersChecker::TemporalLayersChecker(int num_temporal_layers)
 diff --git a/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc b/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
-index 46db6867033faaa9be96738d2999a7010af75da7..4178664b9c47da2c9792858c60cc38f26ecdb7ab 100644
+index eaeb0d5a467194de607fec3ed7d39c23ed2d9077..b5434b96ac1899f5ef650f5de1e274d4e89e30da 100644
 --- a/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
 +++ b/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
-@@ -63,6 +63,7 @@ std::string ToString(VideoAdaptationReason reason) {
+@@ -64,6 +64,7 @@ std::string ToString(VideoAdaptationReason reason) {
        return "cpu";
    }
    RTC_CHECK_NOTREACHED();

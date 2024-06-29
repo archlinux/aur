@@ -12,13 +12,13 @@ Signed-off-by: Björn Bidar <bjorn.bidar@jolla.com>
  1 file changed, 5 insertions(+)
 
 diff --git a/Cargo.toml b/Cargo.toml
-index 27886bd8ff1ec0530f63498101d2fc33ce5c0cf4..7e1fb391e9fdff1b25ae20a0a249c9c7def6eb25 100644
+index 36341dd1aeb6ce372ad20c5e73830b8314eb03db..42228d5f3dfac3da24211eef6c000bdda3849dd6 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
-@@ -228,3 +228,8 @@ uniffi_bindgen = "=0.24.3"
- uniffi_build = "=0.24.3"
- uniffi_macros = "=0.24.3"
- weedle2 = "=4.0.0"
+@@ -243,3 +243,8 @@ gpu-descriptor = { git = "https://github.com/zakarumych/gpu-descriptor", rev = "
+ # There is not going to be new version of mio 0.6, mio now being >= 0.7.11.
+ [patch.crates-io.mio]
+ path = "third_party/rust/mio-0.6.23"
 +
 +# Package code v0.1.4 uses code "that will be rejected by a future version of Rust"
 +# Shut up such messages for now to make the build succeed

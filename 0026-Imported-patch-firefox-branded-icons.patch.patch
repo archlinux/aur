@@ -9,24 +9,24 @@ Subject: [PATCH] Imported patch firefox-branded-icons.patch
  2 files changed, 6 insertions(+)
 
 diff --git a/browser/branding/branding-common.mozbuild b/browser/branding/branding-common.mozbuild
-index 4e737310b37bc0bdbe4367e51c0f245eefbdbb50..0faf21fb931a0ed72495197d2152fd74bde6455e 100644
+index a38663a3dc1ebe0c0817945efc2f72018bc1b3c7..87a2340b828173d4bc0b5b32db3fde2011887d2b 100644
 --- a/browser/branding/branding-common.mozbuild
 +++ b/browser/branding/branding-common.mozbuild
-@@ -30,6 +30,9 @@ def FirefoxBranding():
+@@ -31,6 +31,9 @@ def FirefoxBranding():
          FINAL_TARGET_FILES.chrome.icons.default += [
-             'default128.png',
-             'default16.png',
-+            'default22.png',
-+            'default24.png',
-+            'default256.png',
-             'default32.png',
-             'default48.png',
-             'default64.png',
+             "default128.png",
+             "default16.png",
++            "default22.png",
++            "default24.png",
++            "default256.png",
+             "default32.png",
+             "default48.png",
+             "default64.png",
 diff --git a/browser/installer/package-manifest.in b/browser/installer/package-manifest.in
-index 359fcd671f0ebeba46e2556c99ec11ce067fe23e..93c0226117cbf72a8df46c08a569af5b7900c3dd 100644
+index b9950a85c2542de599f2d2bcb6eea20a658a5727..b736a26132105911f11e3e2bd08b6b3bc225b657 100644
 --- a/browser/installer/package-manifest.in
 +++ b/browser/installer/package-manifest.in
-@@ -223,10 +223,13 @@
+@@ -217,10 +217,13 @@
  @RESPATH@/chrome/toolkit.manifest
  #ifdef MOZ_GTK
  @RESPATH@/browser/chrome/icons/default/default16.png

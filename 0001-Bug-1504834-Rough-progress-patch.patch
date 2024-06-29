@@ -11,7 +11,7 @@ https://bugzilla.mozilla.org/show_bug.cgi?id=1504834#c5
  3 files changed, 15 insertions(+), 13 deletions(-)
 
 diff --git a/gfx/2d/DrawTargetSkia.cpp b/gfx/2d/DrawTargetSkia.cpp
-index b569438db44f5ba7869da4bc505f8950533cc8ec..1b6f70684886325d9b8b505b1f6f59a2dfb7023e 100644
+index 508dac3f6241aebe950dc702d1c2d9869d8d8b72..89fdbaa72636d5c3215281830447aae49e9d0764 100644
 --- a/gfx/2d/DrawTargetSkia.cpp
 +++ b/gfx/2d/DrawTargetSkia.cpp
 @@ -155,8 +155,7 @@ static IntRect CalculateSurfaceBounds(const IntSize& aSize, const Rect* aBounds,
@@ -25,7 +25,7 @@ index b569438db44f5ba7869da4bc505f8950533cc8ec..1b6f70684886325d9b8b505b1f6f59a2
  static bool VerifyRGBXFormat(uint8_t* aData, const IntSize& aSize,
                               const int32_t aStride, SurfaceFormat aFormat) {
 diff --git a/gfx/2d/Types.h b/gfx/2d/Types.h
-index e6f73eac3af55f46457dcaadec686a41eae2bd1d..c6833ddbcede70912d9ed4d7c341da3658d81f23 100644
+index caefacc116a0c8f366544c2a9d81c94d66f713e7..91090e59bb1c966374d95ce313cc1101a3f517db 100644
 --- a/gfx/2d/Types.h
 +++ b/gfx/2d/Types.h
 @@ -92,15 +92,8 @@ enum class SurfaceFormat : int8_t {

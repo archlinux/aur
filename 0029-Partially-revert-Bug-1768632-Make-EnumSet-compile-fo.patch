@@ -15,10 +15,10 @@ Signed-off-by: Björn Bidar <bjorn.bidar@jolla.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/mfbt/EnumSet.h b/mfbt/EnumSet.h
-index f7765c6f5c954f133f846ff27018c888a68f2284..7721d1d1facdebb2e78b63f58a56ac94357a6395 100644
+index 712e03d3f3d9b23ada1e77e422e193c31b16d598..024fa5fdeb203b1d1053a5c35881167dcba8b55f 100644
 --- a/mfbt/EnumSet.h
 +++ b/mfbt/EnumSet.h
-@@ -326,7 +326,7 @@ class EnumSet {
+@@ -336,7 +336,7 @@ class EnumSet {
      }
    }
  

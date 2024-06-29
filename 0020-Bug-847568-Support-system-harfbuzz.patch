@@ -8,7 +8,7 @@ Allow building against system-wide harfbuzz.
 Bug: https://bugzilla.mozilla.org/show_bug.cgi?id=847568
 Signed-off-by: Thomas Deutschmann <whissi@gentoo.org>
 ---
- config/system-headers.mozbuild  | 7 +++++++
+ config/system-headers.mozbuild  | 8 ++++++++
  dom/base/moz.build              | 3 +++
  gfx/moz.build                   | 4 +++-
  gfx/skia/generate_mozbuild.py   | 3 +++
@@ -18,31 +18,32 @@ Signed-off-by: Thomas Deutschmann <whissi@gentoo.org>
  netwerk/dns/moz.build           | 3 +++
  toolkit/library/moz.build       | 3 +++
  toolkit/moz.configure           | 8 ++++++++
- 10 files changed, 39 insertions(+), 1 deletion(-)
+ 10 files changed, 40 insertions(+), 1 deletion(-)
 
 diff --git a/config/system-headers.mozbuild b/config/system-headers.mozbuild
-index 4b61063cf92a2adabb7b552328420aefbfc93242..f35c684e9ef6693804d8e026d8ff3fa8236f6444 100644
+index de316e2027dfa8199e6b9d05d256254fb93eaa9c..4af5ccf20d07c73ef97acae493c14340cfa30603 100644
 --- a/config/system-headers.mozbuild
 +++ b/config/system-headers.mozbuild
-@@ -1238,6 +1238,13 @@ if CONFIG['OS_TARGET'] == 'Android':
-         'vr/gvr/capi/include/gvr.h',
+@@ -1253,6 +1253,14 @@ if CONFIG["OS_TARGET"] == "Android":
+         "vr/gvr/capi/include/gvr.h",
      ]
  
-+if CONFIG['MOZ_SYSTEM_HARFBUZZ']:
++
++if CONFIG["MOZ_SYSTEM_HARFBUZZ"]:
 +    system_headers += [
-+	'harfbuzz/hb-glib.h',
-+	'harfbuzz/hb-ot.h',
-+	'harfbuzz/hb.h',
++        "harfbuzz/hb-glib.h",
++        "harfbuzz/hb-ot.h",
++        "harfbuzz/hb.h",
 +    ]
 +
- if CONFIG['MOZ_JACK']:
+ if CONFIG["MOZ_JACK"]:
      system_headers += [
-         'jack/jack.h',
+         "jack/jack.h",
 diff --git a/dom/base/moz.build b/dom/base/moz.build
-index f5dfc1b1ae258491c635a0f7f767d67ec6574826..d158b81012bc5fabd5f2668d7674b3a2d1c60d88 100644
+index e2cf2dfb78c0d8f2ceb1a2ff58fd498a567dee45..fae8c8ff924c418e1d499ab7d508e41ecce3abf9 100644
 --- a/dom/base/moz.build
 +++ b/dom/base/moz.build
-@@ -608,6 +608,9 @@ FINAL_LIBRARY = "xul"
+@@ -615,6 +615,9 @@ FINAL_LIBRARY = "xul"
  if CONFIG["MOZ_WIDGET_TOOLKIT"] == "gtk":
      CXXFLAGS += CONFIG["MOZ_GTK3_CFLAGS"]
  
@@ -75,7 +76,7 @@ index 56ea317bedfc68d504248b5d3b79cd36e8bc388a..6cc19f84709bbe3be4ff830e3a6dd291
      "thebes",
      "ipc",
 diff --git a/gfx/skia/generate_mozbuild.py b/gfx/skia/generate_mozbuild.py
-index 39675ea9c2e939580f7e11fe17c10b0b49f4ed4c..6262eec29395c873bd1d10377a54b99ca16e92e5 100755
+index c161d24df853934a64ab363658c878e3257a8afb..8c7dd395b371a5a2347ffcd9133db56ecc55df0c 100755
 --- a/gfx/skia/generate_mozbuild.py
 +++ b/gfx/skia/generate_mozbuild.py
 @@ -91,6 +91,9 @@ if CONFIG['CC_TYPE'] in ('clang', 'clang-cl'):
@@ -89,7 +90,7 @@ index 39675ea9c2e939580f7e11fe17c10b0b49f4ed4c..6262eec29395c873bd1d10377a54b99c
      LOCAL_INCLUDES += [
          "/gfx/cairo/cairo/src",
 diff --git a/gfx/skia/moz.build b/gfx/skia/moz.build
-index 1d92936263a091eac0dc90fdb0038982e711d5c3..afef373e62af4273aa2b21f3fd3103dc5670ea00 100644
+index 83aa2957a938e762916fb32c5454fb4791db7c1b..0859316a1f09034e57792fa5505d072bae550acc 100644
 --- a/gfx/skia/moz.build
 +++ b/gfx/skia/moz.build
 @@ -601,6 +601,9 @@ if CONFIG['CC_TYPE'] in ('clang', 'clang-cl'):
@@ -103,10 +104,10 @@ index 1d92936263a091eac0dc90fdb0038982e711d5c3..afef373e62af4273aa2b21f3fd3103dc
      LOCAL_INCLUDES += [
          "/gfx/cairo/cairo/src",
 diff --git a/gfx/thebes/moz.build b/gfx/thebes/moz.build
-index 97f02d59f51a7e9b06a852963cf03a8463df09f0..3067b49c8d3d069e74acd2baa04eaaf2c95094f9 100644
+index 3d99906827c63cfafea5c0cd394732c9414ed730..acb7094e2a39e18681df294b0ac01e7b87a11b30 100644
 --- a/gfx/thebes/moz.build
 +++ b/gfx/thebes/moz.build
-@@ -292,6 +292,9 @@ LOCAL_INCLUDES += CONFIG["SKIA_INCLUDES"]
+@@ -302,6 +302,9 @@ LOCAL_INCLUDES += CONFIG["SKIA_INCLUDES"]
  
  DEFINES["GRAPHITE2_STATIC"] = True
  
@@ -117,7 +118,7 @@ index 97f02d59f51a7e9b06a852963cf03a8463df09f0..3067b49c8d3d069e74acd2baa04eaaf2
  
  include("/tools/fuzzing/libfuzzer-config.mozbuild")
 diff --git a/intl/unicharutil/util/moz.build b/intl/unicharutil/util/moz.build
-index 2bbd00415cae9d6a27b66d9eef50add3ada9ba96..f66bd37695d41eea709abea1239dfcd2cbb503d1 100644
+index 2396210428ee11b660fce0cbeba9a119b9f7bcb2..092baac6f79c65aff378a97149daa7844d327a49 100644
 --- a/intl/unicharutil/util/moz.build
 +++ b/intl/unicharutil/util/moz.build
 @@ -24,6 +24,9 @@ UNIFIED_SOURCES += [
@@ -131,10 +132,10 @@ index 2bbd00415cae9d6a27b66d9eef50add3ada9ba96..f66bd37695d41eea709abea1239dfcd2
  
  GeneratedFile(
 diff --git a/netwerk/dns/moz.build b/netwerk/dns/moz.build
-index 17612ff1b396891c8942f53d3f39fbca8bdca6cb..d6d51948da54c7fbca53662050d33019e7e0dea6 100644
+index c926d14707d15d06e24be4bda7577578904373c4..5082238fbcf9a275066e6878a67e29bbe830f169 100644
 --- a/netwerk/dns/moz.build
 +++ b/netwerk/dns/moz.build
-@@ -109,4 +109,7 @@ LOCAL_INCLUDES += [
+@@ -119,4 +119,7 @@ LOCAL_INCLUDES += [
      "/netwerk/protocol/http",
  ]
  
@@ -143,10 +144,10 @@ index 17612ff1b396891c8942f53d3f39fbca8bdca6cb..d6d51948da54c7fbca53662050d33019
 +
  USE_LIBS += ["icu"]
 diff --git a/toolkit/library/moz.build b/toolkit/library/moz.build
-index da1d8c47f83e2f23cd802615ab8fff822f6e05c8..7ee842def285a9a7fc805758e9f73494c0a59224 100644
+index 9fa86b386b613d3dde8429b2c479763ed435f36c..b0dfb79025db9b35ea00254001658c97c48b4539 100644
 --- a/toolkit/library/moz.build
 +++ b/toolkit/library/moz.build
-@@ -286,6 +286,9 @@ if CONFIG["MOZ_ANDROID_GOOGLE_VR"]:
+@@ -288,6 +288,9 @@ if CONFIG["MOZ_ANDROID_GOOGLE_VR"]:
          "-lgvr",
      ]
  
@@ -157,10 +158,10 @@ index da1d8c47f83e2f23cd802615ab8fff822f6e05c8..7ee842def285a9a7fc805758e9f73494
      OS_LIBS += CONFIG["MOZ_JPEG_LIBS"]
  
 diff --git a/toolkit/moz.configure b/toolkit/moz.configure
-index eb7ae84b5d65df80e23b8ab503ffe0576c2a30a0..5c461d746a7718befe988d48364ea5d74c0b6d48 100644
+index 26a624ed9948dd6a74173f71859617f808dcab3d..3ecba6340a007d7475cec011ad2a4e35f190fbcf 100644
 --- a/toolkit/moz.configure
 +++ b/toolkit/moz.configure
-@@ -678,6 +678,14 @@ def freetype2_combined_info(fontconfig_info, freetype2_info):
+@@ -685,6 +685,14 @@ def freetype2_combined_info(fontconfig_info, freetype2_info):
  
  set_define("MOZ_HAVE_FREETYPE2", depends_if(freetype2_info)(lambda _: True))
  

@@ -15,10 +15,10 @@ Signed-off-by: Björn Bidar <bjorn.bidar@jolla.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/build/moz.configure/lto-pgo.configure b/build/moz.configure/lto-pgo.configure
-index 879e08e7c3b1a00f8bf13cf48bfc345fc80abdb0..922610c3de0e91ff97efc3e9588e323b22440089 100644
+index 422f7e65b6dc94d223705f954682abe2046522b1..cc13fb566d419898171176d0bc2476fce34d9dda 100644
 --- a/build/moz.configure/lto-pgo.configure
 +++ b/build/moz.configure/lto-pgo.configure
-@@ -87,7 +87,7 @@ def pgo_flags(compiler, profdata, target_is_windows):
+@@ -134,7 +134,7 @@ def pgo_flags(
          return namespace(
              gen_cflags=["-fprofile-generate"],
              gen_ldflags=["-fprofile-generate"],

@@ -10,32 +10,31 @@ Signed-off-by: Thomas Deutschmann <whissi@gentoo.org>
 ---
  config/system-headers.mozbuild     |  6 ++++++
  gfx/graphite2/geckoextra/moz.build | 21 +++++++++++++++++++++
- gfx/graphite2/moz-gr-update.sh     |  7 ++++++-
  gfx/moz.build                      |  6 +++++-
  gfx/thebes/moz.build               |  5 ++++-
  old-configure.in                   | 21 +++++++++++++++++++++
  toolkit/library/moz.build          |  3 +++
  toolkit/moz.configure              | 13 +++++++++++++
- 8 files changed, 79 insertions(+), 3 deletions(-)
+ 7 files changed, 73 insertions(+), 2 deletions(-)
  create mode 100644 gfx/graphite2/geckoextra/moz.build
 
 diff --git a/config/system-headers.mozbuild b/config/system-headers.mozbuild
-index f35c684e9ef6693804d8e026d8ff3fa8236f6444..faac04e9d6ab8af7698aea7b3b0ec92a5b364227 100644
+index 4af5ccf20d07c73ef97acae493c14340cfa30603..4bd823dafcbcffcbae5479336ac2980a54f0fb8a 100644
 --- a/config/system-headers.mozbuild
 +++ b/config/system-headers.mozbuild
-@@ -1245,6 +1245,12 @@ if CONFIG['MOZ_SYSTEM_HARFBUZZ']:
- 	'harfbuzz/hb.h',
+@@ -1261,6 +1261,12 @@ if CONFIG["MOZ_SYSTEM_HARFBUZZ"]:
+         "harfbuzz/hb.h",
      ]
  
-+if CONFIG['MOZ_SYSTEM_GRAPHITE2']:
++if CONFIG["MOZ_SYSTEM_GRAPHITE2"]:
 +    system_headers += [
-+	'graphite2/Font.h',
-+	'graphite2/Segment.h',
++        "graphite2/Font.h",
++        "graphite2/Segment.h",
 +    ]
 +
- if CONFIG['MOZ_JACK']:
+ if CONFIG["MOZ_JACK"]:
      system_headers += [
-         'jack/jack.h',
+         "jack/jack.h",
 diff --git a/gfx/graphite2/geckoextra/moz.build b/gfx/graphite2/geckoextra/moz.build
 new file mode 100644
 index 0000000000000000000000000000000000000000..24e8d7a03274aa43ddbd64b4e740a476244b0bf0
@@ -63,36 +62,6 @@ index 0000000000000000000000000000000000000000..24e8d7a03274aa43ddbd64b4e740a476
 +AllowCompilerWarnings()
 +
 +FINAL_LIBRARY = 'gkmedias'
-diff --git a/gfx/graphite2/moz-gr-update.sh b/gfx/graphite2/moz-gr-update.sh
-index b91d9c161cc71e89024dad9fd87e358a147d3593..a97e6eb20322f952bd504b51faf92dc72735e943 100755
---- a/gfx/graphite2/moz-gr-update.sh
-+++ b/gfx/graphite2/moz-gr-update.sh
-@@ -1,6 +1,7 @@
- #!/bin/bash
- 
- # Script used to update the Graphite2 library in the mozilla source tree
-+# and bump version for --with-system-graphite2
- 
- # This script lives in gfx/graphite2, along with the library source,
- # but must be run from the top level of the mozilla-central tree.
-@@ -37,12 +38,16 @@ echo "See" $0 "for update procedure." >> gfx/graphite2/README.mozilla
- #find gfx/graphite2/ -name "*.cpp" -exec perl -p -i -e "s/<cstdio>/<stdio.h>/;s/Windows.h/windows.h/;" {} \;
- #find gfx/graphite2/ -name "*.h" -exec perl -p -i -e "s/<cstdio>/<stdio.h>/;s/Windows.h/windows.h/;" {} \;
- 
-+# chase version for --with-system-graphite2
-+perl -p -i -e "s/[0-9]+\,[0-9]+\,[0-9]+/$RELEASE/ and tr/./,/ \
-+  if /GR2_VERSION_REQUIRE/" old-configure.in
-+
- # summarize what's been touched
- echo Updated to $RELEASE.
- echo Here is what changed in the gfx/graphite2 directory:
- echo
- 
--hg stat gfx/graphite2
-+hg stat old-configure.in gfx/graphite2
- 
- echo
- echo If gfx/graphite2/src/files.mk has changed, please make corresponding
 diff --git a/gfx/moz.build b/gfx/moz.build
 index 6cc19f84709bbe3be4ff830e3a6dd29189048c6f..14b08dbac3e3f5d3df421d5dd6840673046d0486 100644
 --- a/gfx/moz.build
@@ -118,10 +87,10 @@ index 6cc19f84709bbe3be4ff830e3a6dd29189048c6f..14b08dbac3e3f5d3df421d5dd6840673
      "thebes",
      "ipc",
 diff --git a/gfx/thebes/moz.build b/gfx/thebes/moz.build
-index 3067b49c8d3d069e74acd2baa04eaaf2c95094f9..04c75cc7234d242fb56ca95da212e11ccf9c891e 100644
+index acb7094e2a39e18681df294b0ac01e7b87a11b30..f4ad9db9910672348d3c7382fe0b10906546f755 100644
 --- a/gfx/thebes/moz.build
 +++ b/gfx/thebes/moz.build
-@@ -290,7 +290,10 @@ if CONFIG["MOZ_WAYLAND"]:
+@@ -300,7 +300,10 @@ if CONFIG["MOZ_WAYLAND"]:
  
  LOCAL_INCLUDES += CONFIG["SKIA_INCLUDES"]
  
@@ -134,10 +103,10 @@ index 3067b49c8d3d069e74acd2baa04eaaf2c95094f9..04c75cc7234d242fb56ca95da212e11c
  if CONFIG["MOZ_SYSTEM_HARFBUZZ"]:
      CXXFLAGS += CONFIG["MOZ_HARFBUZZ_CFLAGS"]
 diff --git a/old-configure.in b/old-configure.in
-index 57a41cb1b28592b761c51d6fbdc6ec0ce4a54936..7d6b36c150eca93b035de97ade08a78e80dd4136 100644
+index 218048fa7398744d06a35ce8793cbc706f8712f8..687668a7c872be3771914a084892786cf164195d 100644
 --- a/old-configure.in
 +++ b/old-configure.in
-@@ -1141,6 +1141,27 @@ fi
+@@ -886,6 +886,27 @@ fi
  AC_DEFINE_UNQUOTED(MOZ_MACBUNDLE_ID,$MOZ_MACBUNDLE_ID)
  AC_SUBST(MOZ_MACBUNDLE_ID)
  
@@ -166,10 +135,10 @@ index 57a41cb1b28592b761c51d6fbdc6ec0ce4a54936..7d6b36c150eca93b035de97ade08a78e
  dnl = Child Process Name for IPC
  dnl ========================================================
 diff --git a/toolkit/library/moz.build b/toolkit/library/moz.build
-index 7ee842def285a9a7fc805758e9f73494c0a59224..1ac8cf64d8e079f7a1a0b57b2042d46285b2c766 100644
+index b0dfb79025db9b35ea00254001658c97c48b4539..48fb67c4c1ad47e7ba83cbfe94c133298f8e8b9c 100644
 --- a/toolkit/library/moz.build
 +++ b/toolkit/library/moz.build
-@@ -286,6 +286,9 @@ if CONFIG["MOZ_ANDROID_GOOGLE_VR"]:
+@@ -288,6 +288,9 @@ if CONFIG["MOZ_ANDROID_GOOGLE_VR"]:
          "-lgvr",
      ]
  
@@ -180,10 +149,10 @@ index 7ee842def285a9a7fc805758e9f73494c0a59224..1ac8cf64d8e079f7a1a0b57b2042d462
      OS_LIBS += CONFIG["MOZ_HARFBUZZ_LIBS"]
  
 diff --git a/toolkit/moz.configure b/toolkit/moz.configure
-index 5c461d746a7718befe988d48364ea5d74c0b6d48..c15d4dba75c3151fc44145bf5f114e16ca4c147f 100644
+index 3ecba6340a007d7475cec011ad2a4e35f190fbcf..c67be76b8fe11b78533c8a487b93aaea84e6e3d9 100644
 --- a/toolkit/moz.configure
 +++ b/toolkit/moz.configure
-@@ -678,6 +678,19 @@ def freetype2_combined_info(fontconfig_info, freetype2_info):
+@@ -685,6 +685,19 @@ def freetype2_combined_info(fontconfig_info, freetype2_info):
  
  set_define("MOZ_HAVE_FREETYPE2", depends_if(freetype2_info)(lambda _: True))
  

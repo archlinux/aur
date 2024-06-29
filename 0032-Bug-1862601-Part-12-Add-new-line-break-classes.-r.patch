@@ -1,0 +1,28 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Andr=C3=A9=20Bargull?= <andre.bargull@gmail.com>
+Date: Mon, 16 Oct 2023 08:58:43 +0300
+Subject: [PATCH] Bug 1862601 - Part 12: Add new line break classes. r?
+
+---
+ intl/lwbrk/LineBreaker.cpp | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/intl/lwbrk/LineBreaker.cpp b/intl/lwbrk/LineBreaker.cpp
+index 6f73035f42cbb729f26a752d83349415257f113e..29bde665ce18c1a9aa907138ec167f65173769c8 100644
+--- a/intl/lwbrk/LineBreaker.cpp
++++ b/intl/lwbrk/LineBreaker.cpp
+@@ -448,7 +448,13 @@ static int8_t GetClass(uint32_t u, LineBreakRule aLevel,
+       /* REGIONAL_INDICATOR = 39,           [RI] */ CLASS_CHARACTER,
+       /* E_BASE = 40,                       [EB] */ CLASS_BREAKABLE,
+       /* E_MODIFIER = 41,                   [EM] */ CLASS_CHARACTER,
+-      /* ZWJ = 42,                          [ZWJ]*/ CLASS_CHARACTER};
++      /* ZWJ = 42,                          [ZWJ]*/ CLASS_CHARACTER,
++      /* AKSARA = 43,                       [AK] */ CLASS_CHARACTER,
++      /* AKSARA_PREBASE = 44,               [AP] */ CLASS_CHARACTER,
++      /* AKSARA_START = 45,                 [AS] */ CLASS_CHARACTER,
++      /* VIRAMA_FINAL = 46,                 [VF] */ CLASS_CHARACTER,
++      /* VIRAMA = 47,                       [VI] */ CLASS_CHARACTER,
++  };
+ 
+   static_assert(U_LB_COUNT == mozilla::ArrayLength(sUnicodeLineBreakToClass),
+                 "Gecko vs ICU LineBreak class mismatch");

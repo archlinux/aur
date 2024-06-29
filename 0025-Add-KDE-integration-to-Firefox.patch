@@ -27,10 +27,10 @@ How to apply this patch:
  create mode 100644 browser/components/shell/nsUnixShellService.h
 
 diff --git a/browser/components/preferences/main.js b/browser/components/preferences/main.js
-index 201d3c32da2ddb8356ff549c83cdcc608b959222..fd5cdeef683053c6888acd78b197c689b6c65b2f 100644
+index 22bd3fe174a9b1f457ccc8548d1ce9900ffb6c4c..b6909824b731f3106a19c2d955342bb9dc2ff8f5 100644
 --- a/browser/components/preferences/main.js
 +++ b/browser/components/preferences/main.js
-@@ -297,6 +297,13 @@ var gMainPane = {
+@@ -298,6 +298,13 @@ var gMainPane = {
        }, backoffTimes[this._backoffIndex]);
      }
  
@@ -44,10 +44,10 @@ index 201d3c32da2ddb8356ff549c83cdcc608b959222..fd5cdeef683053c6888acd78b197c689
      this.initBrowserContainers();
      this.buildContentProcessCountMenuList();
  
-@@ -1750,6 +1757,17 @@ var gMainPane = {
-       }
+@@ -1765,6 +1772,17 @@ var gMainPane = {
+ 
        try {
-         shellSvc.setDefaultBrowser(false);
+         await shellSvc.setDefaultBrowser(false);
 +        if (kde_session == 1) {
 +          var shellObj = Components.classes["@mozilla.org/file/local;1"]
 +            .createInstance(Components.interfaces.nsILocalFile);
@@ -63,7 +63,7 @@ index 201d3c32da2ddb8356ff549c83cdcc608b959222..fd5cdeef683053c6888acd78b197c689
          console.error(ex);
          return;
 diff --git a/browser/components/shell/moz.build b/browser/components/shell/moz.build
-index fbcb6b9e1070040f682c8e89c0eace7b7658dddf..d68a08c67ec4c0c03e2eb7aba43e283795803118 100644
+index 82e5afade7ba82e720bc265de1b2d4ed10b7a243..98a2724b24a8a733f656382d2c0d2f53607500f7 100644
 --- a/browser/components/shell/moz.build
 +++ b/browser/components/shell/moz.build
 @@ -36,6 +36,8 @@ elif CONFIG["MOZ_WIDGET_TOOLKIT"] == "gtk":

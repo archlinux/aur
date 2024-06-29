@@ -2,21 +2,55 @@ From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Thomas Deutschmann <whissi@gentoo.org>
 Date: Mon, 6 Apr 2020 19:36:02 +0200
 Subject: [PATCH] Bug 559213 - Support system av1
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 
 Allow building against system-wide av1.
 
 Bug: https://bugzilla.mozilla.org/show_bug.cgi?id=1559213
 Signed-off-by: Thomas Deutschmann <whissi@gentoo.org>
+Signed-off-by: Björn Bidar <bjorn.bidar@jolla.com>
 ---
- config/external/moz.build        |  5 +++--
- config/system-headers.mozbuild   |  8 ++++++++
- dom/media/platforms/moz.build    |  5 +++++
- media/ffvpx/libavcodec/moz.build | 12 ++++++++----
- toolkit/moz.configure            | 20 ++++++++++++++++++--
- 5 files changed, 42 insertions(+), 8 deletions(-)
+ config/external/gkcodecs/gkcodecs.symbols |  2 ++
+ config/external/gkcodecs/moz.build        |  2 ++
+ config/external/moz.build                 |  5 +++--
+ config/system-headers.mozbuild            |  5 +++++
+ dom/media/platforms/moz.build             |  5 +++++
+ media/ffvpx/libavcodec/moz.build          | 14 ++++++++++----
+ toolkit/moz.configure                     | 20 ++++++++++++++++++--
+ 7 files changed, 45 insertions(+), 8 deletions(-)
 
+diff --git a/config/external/gkcodecs/gkcodecs.symbols b/config/external/gkcodecs/gkcodecs.symbols
+index 8aa191be9e30bd63d0ebf37a7278470c3519f5be..dc4b414889c41de8feb4963f60b8a8598f113bdc 100644
+--- a/config/external/gkcodecs/gkcodecs.symbols
++++ b/config/external/gkcodecs/gkcodecs.symbols
+@@ -1,4 +1,5 @@
+ # libaom symbols
++#ifndef MOZ_SYSTEM_AV1
+ aom_codec_av1_cx
+ aom_codec_av1_dx
+ aom_codec_build_config
+@@ -24,6 +25,7 @@ aom_img_free
+ aom_img_plane_height
+ aom_img_plane_width
+ aom_img_wrap
++#endif
+ #if defined(X86_WIN64)
+ aom_winx64_fstcw
+ #endif
+diff --git a/config/external/gkcodecs/moz.build b/config/external/gkcodecs/moz.build
+index 040f6809deca60533771b1397dbaaccfadfbc9a9..39712e816120ee63a2e4d13e0c31630f9da38e98 100644
+--- a/config/external/gkcodecs/moz.build
++++ b/config/external/gkcodecs/moz.build
+@@ -16,3 +16,5 @@ SHARED_LIBRARY_NAME = "gkcodecs"
+ SYMBOLS_FILE = "gkcodecs.symbols"
+ if CONFIG["MOZ_SYSTEM_LIBVPX"]:
+     DEFINES["MOZ_SYSTEM_LIBVPX"] = True
++if CONFIG["MOZ_SYSTEM_AV1"]:
++    DEFINES["MOZ_SYSTEM_AV1"] = True
 diff --git a/config/external/moz.build b/config/external/moz.build
-index fe765d1fa0130296b9b89129ad5bf5f55a885823..58396762e2e6950855816e4ce175b5cb29d4d5ce 100644
+index b6e174c5d65aec62d5057054593fb8506e3689f3..49fe67a7ada6857ad4af57755905075c4756ee59 100644
 --- a/config/external/moz.build
 +++ b/config/external/moz.build
 @@ -40,8 +40,9 @@ if not CONFIG["MOZ_SYSTEM_LIBVPX"]:
@@ -32,29 +66,26 @@ index fe765d1fa0130296b9b89129ad5bf5f55a885823..58396762e2e6950855816e4ce175b5cb
  if not CONFIG["MOZ_SYSTEM_PNG"]:
      external_dirs += ["media/libpng"]
 diff --git a/config/system-headers.mozbuild b/config/system-headers.mozbuild
-index 20145e89af1bbb02476d84340088bb7ceba7af8e..4b61063cf92a2adabb7b552328420aefbfc93242 100644
+index aa17660a106c0c7d99fc19aea2b0dac531dd6a9e..de316e2027dfa8199e6b9d05d256254fb93eaa9c 100644
 --- a/config/system-headers.mozbuild
 +++ b/config/system-headers.mozbuild
-@@ -1294,6 +1294,14 @@ if CONFIG['MOZ_ENABLE_LIBPROXY']:
-         'proxy.h',
+@@ -1304,6 +1304,11 @@ if CONFIG["MOZ_ENABLE_LIBPROXY"]:
+         "proxy.h",
      ]
  
-+if CONFIG['MOZ_SYSTEM_AV1']:
++if CONFIG["MOZ_SYSTEM_AV1"]:
 +    system_headers += [
-+        'aom/aom_decoder.h',
-+        'aom/aomdx.h',
-+        'aom/aom_image.h',
-+        'dav1d/dav1d.h',
++        "dav1d/dav1d.h",
 +    ]
 +
- if CONFIG['MOZ_SYSTEM_LIBVPX']:
+ if CONFIG["MOZ_SYSTEM_ICU"]:
      system_headers += [
-         'vpx_mem/vpx_mem.h',
+         "unicode/calendar.h",
 diff --git a/dom/media/platforms/moz.build b/dom/media/platforms/moz.build
-index c71f22a22eeead703192edfb710cc6113d42c11c..e91f57de9017e74436b03b769f04668d9dc2a869 100644
+index 9a4f19aa4b30ebb520300e05997bf12576d9f2ff..547040577d80d78a34068fd2a58b9e29b9faacab 100644
 --- a/dom/media/platforms/moz.build
 +++ b/dom/media/platforms/moz.build
-@@ -80,6 +80,11 @@ if CONFIG["MOZ_AV1"]:
+@@ -71,6 +71,11 @@ if CONFIG["MOZ_AV1"]:
          "agnostic/AOMDecoder.cpp",
          "agnostic/DAV1DDecoder.cpp",
      ]
@@ -67,10 +98,10 @@ index c71f22a22eeead703192edfb710cc6113d42c11c..e91f57de9017e74436b03b769f04668d
  if CONFIG["MOZ_OMX"]:
      EXPORTS += [
 diff --git a/media/ffvpx/libavcodec/moz.build b/media/ffvpx/libavcodec/moz.build
-index 845d0030229cc2a81eaa1a0ca341d0175af3d976..3b5d5153fc9f49ed729eb5685e8d677932af3920 100644
+index 6f09049a6068daafb1564bfa3d81a06e0754170d..07c0bab34951c160cdb7f51680fe549b58a1de2b 100644
 --- a/media/ffvpx/libavcodec/moz.build
 +++ b/media/ffvpx/libavcodec/moz.build
-@@ -118,10 +118,14 @@ if not CONFIG['MOZ_FFVPX_AUDIOONLY']:
+@@ -119,10 +119,16 @@ if not CONFIG['MOZ_FFVPX_AUDIOONLY']:
          'vp9recon.c',
          'vpx_rac.c',
      ]
@@ -81,6 +112,8 @@ index 845d0030229cc2a81eaa1a0ca341d0175af3d976..3b5d5153fc9f49ed729eb5685e8d6779
 +    if CONFIG["MOZ_SYSTEM_AV1"]:
 +        CFLAGS += CONFIG['MOZ_SYSTEM_LIBDAV1D_CFLAGS']
 +        OS_LIBS += CONFIG['MOZ_SYSTEM_LIBDAV1D_LIBS']
++        CFLAGS += CONFIG["MOZ_SYSTEM_LIBAOM_CFLAGS"]
++        OS_LIBS += CONFIG["MOZ_SYSTEM_LIBAOM_LIBS"]
 +    else:
 +        USE_LIBS += [
 +            'dav1d',
@@ -90,10 +123,10 @@ index 845d0030229cc2a81eaa1a0ca341d0175af3d976..3b5d5153fc9f49ed729eb5685e8d6779
          LOCAL_INCLUDES += ['/media/mozva']
          SOURCES += [
 diff --git a/toolkit/moz.configure b/toolkit/moz.configure
-index 8b462ecde463fc4ac31278d94daaad5e513d7c00..eb7ae84b5d65df80e23b8ab503ffe0576c2a30a0 100644
+index 7282b80d811eb74aa6b51b41aa1d47d3b36bde08..26a624ed9948dd6a74173f71859617f808dcab3d 100644
 --- a/toolkit/moz.configure
 +++ b/toolkit/moz.configure
-@@ -749,14 +749,29 @@ def av1(value):
+@@ -756,14 +756,29 @@ def av1(value):
      if value:
          return True
  
@@ -125,7 +158,7 @@ index 8b462ecde463fc4ac31278d94daaad5e513d7c00..eb7ae84b5d65df80e23b8ab503ffe057
  def dav1d_nasm(target):
      if target.cpu in ("x86", "x86_64"):
          return namespace(version="2.14", what="AV1")
-@@ -766,6 +781,7 @@ set_config("MOZ_DAV1D_ASM", dav1d_asm)
+@@ -773,6 +788,7 @@ set_config("MOZ_DAV1D_ASM", dav1d_asm)
  set_define("MOZ_DAV1D_ASM", dav1d_asm)
  set_config("MOZ_AV1", av1)
  set_define("MOZ_AV1", av1)

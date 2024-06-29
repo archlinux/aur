@@ -10,12 +10,12 @@ Signed-off-by: Thomas Deutschmann <whissi@gentoo.org>
  2 files changed, 25 insertions(+), 6 deletions(-)
 
 diff --git a/build/moz.configure/lto-pgo.configure b/build/moz.configure/lto-pgo.configure
-index 99355877447e48e8c7f8569794e99375ad5b254d..879e08e7c3b1a00f8bf13cf48bfc345fc80abdb0 100644
+index 5048b367e2686169f7d3f4644b7f629d1553004c..422f7e65b6dc94d223705f954682abe2046522b1 100644
 --- a/build/moz.configure/lto-pgo.configure
 +++ b/build/moz.configure/lto-pgo.configure
-@@ -83,11 +83,12 @@ set_config("PGO_PROFILE_PATH", pgo_profile_path)
- @imports("multiprocessing")
- def pgo_flags(compiler, profdata, target_is_windows):
+@@ -130,11 +130,12 @@ def pgo_flags(
+     compiler, linker, target, profdata, orderfile, target_is_windows, pgo_temporal
+ ):
      if compiler.type == "gcc":
 +        profile_use = "-fprofile-use"
          return namespace(
@@ -29,7 +29,7 @@ index 99355877447e48e8c7f8569794e99375ad5b254d..879e08e7c3b1a00f8bf13cf48bfc345f
  
      if compiler.type in ("clang-cl", "clang"):
 diff --git a/build/pgo/profileserver.py b/build/pgo/profileserver.py
-index 94f54cbd17369b2d9ebb6b808f8164a44f07589a..c37be30c21326b035cb1b67b090a89061c152dde 100755
+index aae5e7997dadbee823352d644e5c2330e077ac44..b38f03b0743d48c8a62ada6969d527250c5e3e53 100755
 --- a/build/pgo/profileserver.py
 +++ b/build/pgo/profileserver.py
 @@ -11,7 +11,7 @@ import subprocess
@@ -41,7 +41,7 @@ index 94f54cbd17369b2d9ebb6b808f8164a44f07589a..c37be30c21326b035cb1b67b090a8906
  from mozfile import TemporaryDirectory
  from mozhttpd import MozHttpd
  from mozprofile import FirefoxProfile, Preferences
-@@ -87,9 +87,22 @@ if __name__ == "__main__":
+@@ -97,9 +97,22 @@ if __name__ == "__main__":
      locations = ServerLocations()
      locations.add_host(host="127.0.0.1", port=PORT, options="primary,privileged")
  
@@ -67,7 +67,7 @@ index 94f54cbd17369b2d9ebb6b808f8164a44f07589a..c37be30c21326b035cb1b67b090a8906
  
      with TemporaryDirectory() as profilePath:
          # TODO: refactor this into mozprofile
-@@ -213,6 +226,11 @@ if __name__ == "__main__":
+@@ -220,6 +233,11 @@ if __name__ == "__main__":
              print("Firefox exited successfully, but produced a crashreport")
              sys.exit(1)
  

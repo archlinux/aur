@@ -5,14 +5,14 @@ Subject: [PATCH] Bug 1822730 - Add basic blob protocol handling for blob URIs
  that contain parsable http/s protocols
 
 ---
- .../mozapps/downloads/DownloadLastDir.sys.mjs   | 17 +++++++++++++++--
- 1 file changed, 15 insertions(+), 2 deletions(-)
+ toolkit/mozapps/downloads/DownloadLastDir.sys.mjs | 15 +++++++++++++--
+ 1 file changed, 13 insertions(+), 2 deletions(-)
 
 diff --git a/toolkit/mozapps/downloads/DownloadLastDir.sys.mjs b/toolkit/mozapps/downloads/DownloadLastDir.sys.mjs
-index 9fe90a0ecdc533593001d9a2763f8a21f393ce7d..2a2f524716c909dfa3f04b649b9f078fecd3d1f9 100644
+index dfd5d2cd26e7622bccc90e99e82a0c82e194376c..23e5deed63d8acb6cda0713ae6c371316a3e9879 100644
 --- a/toolkit/mozapps/downloads/DownloadLastDir.sys.mjs
 +++ b/toolkit/mozapps/downloads/DownloadLastDir.sys.mjs
-@@ -221,11 +221,13 @@ export class DownloadLastDir {
+@@ -221,8 +221,8 @@ export class DownloadLastDir {
  
    /**
     * Pre-processor to extract a domain name to be used with the content-prefs
@@ -23,12 +23,7 @@ index 9fe90a0ecdc533593001d9a2763f8a21f393ce7d..2a2f524716c909dfa3f04b649b9f078f
     *  - all file:/// URIs share the same folder
     *  - data: URIs share a folder per mime-type. If a mime-type is not
     *    specified text/plain is assumed.
-+   *  - blob: blob URIs are tested for http/https and the blob protocol
-+   *    is stripped.
-    * In any other case the original URL is returned as a string and ContentPrefs
-    * will do its usual parsing.
-    *
-@@ -234,6 +236,9 @@ export class DownloadLastDir {
+@@ -236,6 +236,9 @@ export class DownloadLastDir {
     */
    #cpsGroupFromURL(url) {
      if (typeof url == "string") {
@@ -38,7 +33,7 @@ index 9fe90a0ecdc533593001d9a2763f8a21f393ce7d..2a2f524716c909dfa3f04b649b9f078f
        url = new URL(url);
      } else if (url instanceof Ci.nsIURI) {
        url = URL.fromURI(url);
-@@ -241,6 +246,14 @@ export class DownloadLastDir {
+@@ -243,6 +246,14 @@ export class DownloadLastDir {
      if (!URL.isInstance(url)) {
        return url;
      }

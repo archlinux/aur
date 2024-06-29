@@ -1,4 +1,461 @@
 -------------------------------------------------------------------
+Tue Jun 11 09:21:24 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 127.0
+  https://www.mozilla.org/en-US/firefox/127.0/releasenotes
+  MFSA 2024-25 (bsc#1226027)
+  * CVE-2024-5687 (bmo#1889066)
+    An incorrect principal could have been used when opening new tabs
+  * CVE-2024-5688 (bmo#1895086)
+    Use-after-free in JavaScript object transplant
+  * CVE-2024-5689 (bmo#1389707)
+    User confusion and possible phishing vector via Firefox Screenshots
+  * CVE-2024-5690 (bmo#1883693)
+    External protocol handlers leaked by timing attack
+  * CVE-2024-5691 (bmo#1888695)
+    Sandboxed iframes were able to bypass sandbox restrictions to
+    open a new window
+  * CVE-2024-5692 (bmo#1837514, bmo#1891234)
+    Bypass of file name restrictions during saving
+  * CVE-2024-5693 (bmo#1891319)
+    Cross-Origin Image leak via Offscreen Canvas
+  * CVE-2024-5694 (bmo#1895055)
+    Use-after-free in JavaScript Strings
+  * CVE-2024-5695 (bmo#1895579)
+    Memory Corruption using allocation using out-of-memory conditions
+  * CVE-2024-5696 (bmo#1896555)
+    Memory Corruption in Text Fragments
+  * CVE-2024-5697 (bmo#1414937)
+    Website was able to detect when Firefox was taking a
+    screenshot of them
+  * CVE-2024-5698 (bmo#1828259)
+    Data-list could have overlaid address bar
+  * CVE-2024-5699 (bmo#1891349)
+    Cookie prefixes not treated as case-sensitive
+  * CVE-2024-5700 (bmo#1862809, bmo#1889355, bmo#1893388, bmo#1895123)
+    Memory safety bugs fixed in Firefox 127, Firefox ESR 115.12,
+    and Thunderbird 115.12
+  * CVE-2024-5701 (bmo#1890909, bmo#1891422, bmo#1893915,
+    bmo#1894047, bmo#1896024)
+    Memory safety bugs fixed in Firefox 127
+- removed obsolete mozilla-bmo1886378.patch
+
+-------------------------------------------------------------------
+Wed May 29 06:05:07 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 126.0.1
+  * Fixed an issue with reading tagged PDF documents in a screen reader
+    bmo#1894849
+  * Fixed not displaying localized text for non-en-US locales in the
+    Crash Reporter dialog box on macOS. (bmo#1896097)
+  * Fixed issues with drag-and-drop functionality on Linux. (bmo#1897115)
+  * Fixed an issue causing high GPU memory usage on certain versions
+    of AMD cards. (bmo#1897006)
+
+-------------------------------------------------------------------
+Tue May 28 15:05:14 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Backport upstream patches to fix build on aarch64 - boo#1225460
+  * mozilla-bmo1886378.patch
+
+-------------------------------------------------------------------
+Wed May 15 08:46:30 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 126.0
+  https://www.mozilla.org/en-US/firefox/126.0/releasenotes
+  MFSA 2024-21 (bsc#1224056)
+  * CVE-2024-4764 (bmo#1879093)
+    Use-after-free when audio input connected with multiple consumers
+  * CVE-2024-4367 (bmo#1893645)
+    Arbitrary JavaScript execution in PDF.js
+  * CVE-2024-4765 (bmo#1871109)
+    Web application manifests could have been overwritten via
+    hash collision
+  * CVE-2024-4766 (bmo#1871214, bmo#1871217)
+    Fullscreen notification could have been obscured on Firefox
+    for Android
+  * CVE-2024-4767 (bmo#1878577)
+    IndexedDB files retained in private browsing mode
+  * CVE-2024-4768 (bmo#1886082)
+    Potential permissions request bypass via clickjacking
+  * CVE-2024-4769 (bmo#1886108)
+    Cross-origin responses could be distinguished between script
+    and non-script content-types
+  * CVE-2024-4770 (bmo#1893270)
+    Use-after-free could occur when printing to PDF
+  * CVE-2024-4771 (bmo#1893891)
+    Failed allocation could lead to use-after-free
+  * CVE-2024-4772 (bmo#1870579)
+    Use of insecure rand() function to generate nonce
+  * CVE-2024-4773 (bmo#1875248)
+    URL bar could be cleared after network error
+  * CVE-2024-4774 (bmo#1886598)
+    Undefined behavior in ShmemCharMapHashEntry()
+  * CVE-2024-4775 (bmo#1887332)
+    Invalid memory access in the built-in profiler
+  * CVE-2024-4776 (bmo#1887343)
+    Window may remain disabled after file dialog is shown in
+    full-screen
+  * CVE-2024-4777 (bmo#1878199, bmo#1893340)
+    Memory safety bugs fixed in Firefox 126, Firefox ESR 115.11,
+    and Thunderbird 115.11
+  * CVE-2024-4778 (bmo#1838834, bmo#1889291, bmo#1889595,
+    bmo#1890204, bmo#1891545)
+    Memory safety bugs fixed in Firefox 126
+- requires NSS 3.100
+- removed obsolete mozilla-libproxy-fix.patch
+
+-------------------------------------------------------------------
+Mon Apr 29 18:17:48 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 125.0.3
+  * Fixed: Fixed an extra blank tab with an address of
+    `https://0.0.0.1` sometimes appearing when attempting to
+    launch Firefox when it is already running (bmo#1892612).
+  * Fixed: Fixed an issue that could cause incorrect font
+    selection in some situations for users with the Japanese
+    locale set (bmo#1892363).
+  * Fixed: Fixed text corruption when dragging text containing
+    unicode characters on Linux systems (bmo#1888202).
+  * Fixed: Fixed a correctness error when checking
+    `arguments.length` (and not using arguments otherwise) inside
+    of a generator or async function (bmo#1892699).
+  * Fixed: Fixed an issue that could lead to inconsistent focus
+    handling of `<select>` elements when opened (bmo#1893177).
+
+-------------------------------------------------------------------
+Wed Apr 24 08:43:53 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Fix build on Leap by requiring gcc13 which has been made available
+  as an update.
+
+-------------------------------------------------------------------
+Sun Apr 21 04:49:23 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 125.0.2
+  * The 125.0 and 125.0.1 releases were skipped due to problems
+    with a feature that proactively blocked downloads from
+    potentially untrustworthy URLs.
+  * New: Firefox now supports the AV1 codec for Encrypted Media
+    Extensions (EME), enabling higher-quality playback from video
+    streaming providers
+  * New: The Firefox PDF viewer now supports text highlighting.
+  * New: Firefox View now displays pinned tabs in the Open tabs
+    section. Tab indicators have also been added to Open tabs, so
+    users can do things like see which tabs are playing media and
+    quickly mute or unmute across windows. Indicators were also
+    added for bookmarks, tabs with notifications, and more!
+    their addresses upon submitting an address form, allowing
+    Firefox to autofill stored address information in the future.
+  * New: The URL Paste Suggestion feature provides a convenient
+    way for users to quickly visit URLs copied to the clipboard
+    in the address bar of Firefox. When the clipboard contains a
+    URL and the URL bar is focused, an autocomplete result
+    appears automatically. Activating the clipboard suggestion
+    will navigate the user to the URL with 1 click.
+  * New: Users of tab-specific Container add-ons can now search
+    in the Address Bar for tabs that are open in different
+    containers. Special thanks to volunteer contributor atararx
+    for kicking off the work on this feature!
+  * New: Firefox now provides an option to enable Web Proxy Auto-
+    Discovery (WPAD) while configured to use system proxy
+    settings.
+  * Changed: In a group of radio buttons where no option is
+    selected, the tab key now only reaches the first option
+    rather than cycling through all available options. The arrow
+    keys navigate between options as they do when there is a
+    selected option. This makes keyboard navigation more
+    efficient and consistent
+  * HTML5: Firefox now supports the `popover` global attribute
+    used for designating an element as a popover element. The
+    element won't be rendered until it is made visible, after
+    which it will appear on top of other page content.
+  * HTML5: WebAssembly multi-memory is now enabled by default.
+    Wasm multi-memory allows wasm modules to use and import
+    multiple independent linear memories. This enables more
+    efficient interoperability between modules and provides
+    better polyfills for upcoming wasm standards, such as the
+    component model.
+  * HTML5: Added support for Unicode Text Segmentation to
+    JavaScript.
+  * HTML5: Added support for `contextlost` and `contextrestored`
+    events on HTMLCanvasElement and OffscreenCanvas to allow user
+    code to recover from context loss with hardware accelerated
+    2d canvas.
+  * HTML5: Firefox now supports the
+    `navigator.clipboard.readText()` web API. A paste context
+    menu will appear for the user to confirm when attempting to
+    read clipboard data not provided by the same-origin page.
+  * HTML5: Added support for the `content-box` and `stroke-box`
+    keywords of the `transform-box` CSS property.
+  * HTML5: The `align-content` property now works in block
+    layout, allowing block direction alignment without needing a
+    flex or grid container.
+  * HTML5: Support for `SVGAElement.text` was removed in favor of
+    the more widely-implemented `SVGAElement.textContent` method.
+  * Developer: Following several requests, we have reintroduced
+    the option to disable the Pause Debugger Overlay
+    (`devtools.debugger.features.overlay`). This overlay appears
+    over the page content when the debugger pauses JavaScript
+    execution. In certain scenarios, the overlay can be
+    intrusive, making it challenging to interact with the page,
+    for instance, evaluating shades of color underneath.
+  * Developer: We've added a new drop-down menu button at the
+    bottom of the source view in the Debugger panel, specifically
+    designed for Source Map related actions. Users can now easily
+    disable or enable Source Maps support, open the Source Map
+    file in a new tab, switch between the original source and the
+    generated bundle, toggle the "open original source by
+    default" option, and view the Source Map status such as
+    errors, loading status, etc.
+    MFSA 2024-18 (bsc#1221327)
+  * CVE-2024-3852 (bmo#1883542)
+    GetBoundName in the JIT returned the wrong object
+  * CVE-2024-3853 (bmo#1884427)
+    Use-after-free if garbage collection runs during realm
+    initialization
+  * CVE-2024-3854 (bmo#1884552)
+    Out-of-bounds-read after mis-optimized switch statement
+  * CVE-2024-3855 (bmo#1885828)
+    Incorrect JIT optimization of MSubstr leads to out-of-bounds
+    reads
+  * CVE-2024-3856 (bmo#1885829)
+    Use-after-free in WASM garbage collection
+  * CVE-2024-3857 (bmo#1886683)
+    Incorrect JITting of arguments led to use-after-free during
+    garbage collection
+  * CVE-2024-3858 (bmo#1888892)
+    Corrupt pointer dereference in
+    js::CheckTracedThing<js::Shape>
+  * CVE-2024-3859 (bmo#1874489)
+    Integer-overflow led to out-of-bounds-read in the OpenType
+    sanitizer
+  * CVE-2024-3860 (bmo#1881417)
+    Crash when tracing empty shape lists
+  * CVE-2024-3861 (bmo#1883158)
+    Potential use-after-free due to AlignedBuffer self-move
+  * CVE-2024-3862 (bmo#1884457)
+    Potential use of uninitialized memory in MarkStack assignment
+    operator on self-assignment
+  * CVE-2024-3863 (bmo#1885855)
+    Download Protections were bypassed by .xrm-ms files on
+    Windows
+  * CVE-2024-3302 (bmo#1881183,
+    bmo#https://kb.cert.org/vuls/id/421644)
+    Denial of Service using HTTP/2 CONTINUATION frames
+  * CVE-2024-3864 (bmo#1888333)
+    Memory safety bug fixed in Firefox 125, Firefox ESR 115.10,
+    and Thunderbird 115.10
+  * CVE-2024-3865 (bmo#1881076, bmo#1884887, bmo#1885359,
+    bmo#1889049)
+    Memory safety bugs fixed in Firefox 125
+- requires
+  NSS 3.99
+  rust 1.76
+- add mozilla-libproxy-fix.patch to fix with-libproxy build variant
+
+-------------------------------------------------------------------
+Wed Apr  3 12:50:27 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Mozilla Firefox 124.0.2
+  https://www.mozilla.org/en-US/firefox/124.0.2/releasenotes/
+  * Fixed an issue where users with a large amount of bookmarks would
+    be unable to restore a bookmarks backup. (bmo#1884308)
+  * Fixed an issue that would cause open Firefox windows
+    to go blank or crash during video playback on sites such as
+    Netflix. (bmo#1883932)
+  * Fixed a crash that affected Linux AArch64 builds. (bmo#1866396)
+  * Fixed an issue where some users experienced difficulties loading
+    webpages due to changes made to the default AppArmor configuration
+    shipping in Ubuntu 24.04. (bmo#1884347)
+
+-------------------------------------------------------------------
+Fri Mar 22 09:53:26 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 124.0.1
+  https://www.mozilla.org/en-US/firefox/124.0.1/releasenotes/
+  MFSA 2024-15 (bsc#1221850)
+  * CVE-2024-29943 (bmo#1886849)
+    Out-of-bounds access via Range Analysis bypass
+  * CVE-2024-29944 (bmo#1886852)
+    Privileged JavaScript Execution via Event Handlers
+  Mozilla Firefox 124.0
+  https://www.mozilla.org/en-US/firefox/124.0/releasenotes/
+  MFSA 2024-12 (bsc#1221327)
+  * CVE-2024-2605 (bmo#1872920)
+    Windows Error Reporter could be used as a Sandbox escape vector
+  * CVE-2024-2606 (bmo#1879237)
+    Mishandling of WASM register values
+  * CVE-2024-2607 (bmo#1879939)
+    JIT code failed to save return registers on Armv7-A
+  * CVE-2024-2608 (bmo#1880692)
+    Integer overflow could have led to out of bounds write
+  * CVE-2023-5388 (bmo#1780432)
+    NSS susceptible to timing attack against RSA decryption
+  * CVE-2024-2609 (bmo#1866100)
+    Permission prompt input delay could expire when not in focus
+  * CVE-2024-2610 (bmo#1871112)
+    Improper handling of html and body tags enabled CSP nonce leakage
+  * CVE-2024-2611 (bmo#1876675)
+    Clickjacking vulnerability could have led to a user accidentally
+    granting permissions
+  * CVE-2024-2612 (bmo#1879444)
+    Self referencing object could have potentially led to a use-
+    after-free
+  * CVE-2024-2613 (bmo#1875701)
+    Improper handling of QUIC ACK frame data could have led to OOM
+  * CVE-2024-2614 (bmo#1685358, bmo#1861016, bmo#1880405, bmo#1881093)
+    Memory safety bugs fixed in Firefox 124, Firefox ESR 115.9,
+    and Thunderbird 115.9
+  * CVE-2024-2615 (bmo#1881074, bmo#1881650, bmo#1882438)
+    Memory safety bugs fixed in Firefox 124
+- requires
+  NSS = 3.98
+  rust-cbindgen >= 0.26
+
+-------------------------------------------------------------------
+Fri Mar  8 06:16:48 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 123.0.1
+  * Fixed the *Firefox Translation* language indicator in the
+    address bar displaying a colored square icon instead of the
+    language code icon. (bmo#1879415)
+  * Fixed a regression with the `onChange` event not firing when
+    clearing the value of a `textarea` HTML field.
+    (bmo#1881457)
+  * Fixed a regression in the JavaScript JIT engine incorrectly
+    inlining strings in some cases. (bmo#1882386)
+  * Fixed: Fixed low contrast of text when selecting rows in the
+    Developer tools' Storage panel. (bmo#1877090)
+
+-------------------------------------------------------------------
+Thu Feb 22 11:02:39 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 123.0
+  https://www.mozilla.org/en-US/firefox/123.0/releasenotes/
+  MFSA 2024-05 (bsc#1220048)
+  * CVE-2024-1546 (bmo#1843752)
+    Out-of-bounds memory read in networking channels
+  * CVE-2024-1547 (bmo#1877879)
+    Alert dialog could have been spoofed on another site
+  * CVE-2024-1554 (bmo#1816390)
+    fetch could be used to effect cache poisoning
+  * CVE-2024-1548 (bmo#1832627)
+    Fullscreen Notification could have been hidden by select element
+  * CVE-2024-1549 (bmo#1833814)
+    Custom cursor could obscure the permission dialog
+  * CVE-2024-1550 (bmo#1860065)
+    Mouse cursor re-positioned unexpectedly could have led to
+    unintended permission grants
+  * CVE-2024-1551 (bmo#1864385)
+    Multipart HTTP Responses would accept the Set-Cookie header
+    in response parts
+  * CVE-2024-1555 (bmo#1873223)
+    SameSite cookies were not properly respected when opening a
+    website from an external browser
+  * CVE-2024-1556 (bmo#1870414)
+    Invalid memory access in the built-in profiler
+  * CVE-2024-1552 (bmo#1874502)
+    Incorrect code generation on 32-bit ARM devices
+  * CVE-2024-1553 (bmo#1855686, bmo#1867982, bmo#1871498, bmo#1872296,
+    bmo#1873521, bmo#1873577, bmo#1873597, bmo#1873866, bmo#1874080,
+    bmo#1874740, bmo#1875795, bmo#1875906, bmo#1876425, bmo#1878211,
+    bmo#1878286)
+    Memory safety bugs fixed in Firefox 123, Firefox ESR 115.8,
+    and Thunderbird 115.8
+  * CVE-2024-1557 (bmo#1746471, bmo#1848829, bmo#1864011, bmo#1869175,
+    bmo#1869455, bmo#1869938, bmo#1871606)
+    Memory safety bugs fixed in Firefox 123
+- requires NSS 3.97
+
+-------------------------------------------------------------------
+Tue Feb 13 21:21:15 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 122.0.1
+  https://www.mozilla.org/en-US/firefox/122.0.1/releasenotes/
+  * Fixed the Library and Sidebar context menus only displaying
+    Multi-Account Containers icons in the "Open in New Container
+    Tab" menu. (bmo#1876518)
+  * Fixed an issue when clicking the Dismiss button in
+    notification pop-ups on Windows causing a webpage in a new tab.
+    (bmo#1848801)
+  * Fixed the yaru-remix system theme not applying correctly on
+    Linux. (bmo#1877002)
+  * Fixed adding an extra new line to a rule in the Developer
+    Tools' Inspector when copying it to the clipboard.
+    (bmo#1876220)
+  * Rolled back a keyboard behavior change made to the Developer
+    Tools' Rules view when validating a property name or input with
+    the Enter key.
+    This moves the focus to the next input, as was the behavior
+    in Firefox 121. (bmo#1877457)
+
+-------------------------------------------------------------------
+Tue Jan 30 13:51:25 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Recommend libfido2-udev on codestreams that exist, in order to try
+  to get security keys (e.g. Yubikeys) work out of the box. (bsc#1184272)
+
+-------------------------------------------------------------------
+Sat Jan 27 23:12:05 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- Fix file list
+
+-------------------------------------------------------------------
+Sun Jan 21 09:16:30 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 122.0
+  https://www.mozilla.org/en-US/firefox/122.0/releasenotes/
+  MFSA 2024-01 (bsc#1218955)
+  * CVE-2024-0741 (bmo#1864587)
+    Out of bounds write in ANGLE
+  * CVE-2024-0742 (bmo#1867152)
+    Failure to update user input timestamp
+  * CVE-2024-0743 (bmo#1867408)
+    Crash in NSS TLS method
+  * CVE-2024-0744 (bmo#1871089)
+    Wild pointer dereference in JavaScript
+  * CVE-2024-0745 (bmo#1871838)
+    Stack buffer overflow in WebAudio
+  * CVE-2024-0746 (bmo#1660223)
+    Crash when listing printers on Linux
+  * CVE-2024-0747 (bmo#1764343)
+    Bypass of Content Security Policy when directive unsafe-inline was set
+  * CVE-2024-0748 (bmo#1783504)
+    Compromised content process could modify document URI
+  * CVE-2024-0749 (bmo#1813463)
+    Phishing site popup could show local origin in address bar
+  * CVE-2024-0750 (bmo#1863083)
+    Potential permissions request bypass via clickjacking
+  * CVE-2024-0751 (bmo#1865689)
+    Privilege escalation through devtools
+  * CVE-2024-0752 (bmo#1866840)
+    Use-after-free could occur when applying update on macOS
+  * CVE-2024-0753 (bmo#1870262)
+    HSTS policy on subdomain could bypass policy of upper domain
+  * CVE-2024-0754 (bmo#1871605)
+    Crash when using some WASM files in devtools
+  * CVE-2024-0755 (bmo#1868456, bmo#1871445, bmo#1873701)
+    Memory safety bugs fixed in Firefox 122, Firefox ESR 115.7,
+    and Thunderbird 115.7
+- requires NSS 3.96.1
+- rebased patches
+
+-------------------------------------------------------------------
+Tue Jan  9 20:36:26 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 121.0.1
+  * Fixed unexpected line wrapping in some CJK contexts caused by
+    changes in ideographic space handling. bmo#1870973)
+  * Fixed a hang when loading sites containing column-based
+    layouts under some circumstances. bmo#1867784)
+  * Fixed missing rounded corners for videos playing over another
+    video. bmo#1869994)
+  * Fixed Firefox not closing properly and other applications being
+    unable to use a USB security key after being previously used
+    during a Firefox session. bmo#1863135)
+
+-------------------------------------------------------------------
 Wed Dec 20 12:59:57 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 121.0

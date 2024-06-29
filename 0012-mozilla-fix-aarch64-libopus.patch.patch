@@ -8,7 +8,7 @@ Subject: [PATCH] mozilla-fix-aarch64-libopus.patch
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/media/libopus/silk/arm/arm_silk_map.c b/media/libopus/silk/arm/arm_silk_map.c
-index 0b9bfec2ca974768c59e09f448aca81ceb1d8f60..f55a96da61ebf5074089afd3680a3c5234e70b82 100644
+index a91f79b59f70f4f892aa1e373a335571d1c83ae6..a6c4193efc71ddb2b9cd111eedc10bc17580c165 100644
 --- a/media/libopus/silk/arm/arm_silk_map.c
 +++ b/media/libopus/silk/arm/arm_silk_map.c
 @@ -28,7 +28,7 @@ POSSIBILITY OF SUCH DAMAGE.
