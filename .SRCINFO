@@ -1,14 +1,13 @@
 pkgbase = amber-secrets
 	pkgdesc = Manage secret values in-repo via public key cryptography
-	pkgver = 0.1.1
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/fpco/amber
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	depends = libsodium
 	conflicts = amber
-	source = amber-secrets-0.1.1.tar.gz::https://github.com/fpco/amber/archive/v0.1.1.tar.gz
-	sha256sums = 7c20e7953ac350cf70c1e964d8e2a43a1b3abf59452aee75724c85a9c04127c0
+	source = amber-secrets-0.1.6.tar.gz::https://github.com/fpco/amber/archive/v0.1.6.tar.gz
+	sha256sums = 26d112c27e4d4ee9ac188d4fc4d1f275502ff2fda033594229119a7542b12ebb
 
 pkgname = amber-secrets
