@@ -1,10 +1,9 @@
-diff -pNaru5 a/scripts/dkms.mkconf b/scripts/dkms.mkconf
---- a/scripts/dkms.mkconf	2022-02-27 22:34:12.217602790 -0500
-+++ b/scripts/dkms.mkconf	2022-02-27 22:35:26.478116353 -0500
-@@ -26,18 +26,11 @@ PACKAGE_VERSION="${pkgver}"
- PACKAGE_CONFIG="${pkgcfg}"
- NO_WEAK_MODULES="yes"
+diff -pNaru4 a/scripts/dkms.mkconf b/scripts/dkms.mkconf
+--- a/scripts/dkms.mkconf	2024-06-29 15:51:34.396511566 -0400
++++ b/scripts/dkms.mkconf	2024-06-29 15:52:22.466209823 -0400
+@@ -28,16 +28,9 @@ NO_WEAK_MODULES="yes"
  PRE_BUILD="configure
+   --disable-dependency-tracking
    --prefix=/usr
    --with-config=kernel
 -  --with-linux=\$(
@@ -20,9 +19,7 @@ diff -pNaru5 a/scripts/dkms.mkconf b/scripts/dkms.mkconf
    \$(
      [[ -n \"\${ICP_ROOT}\" ]] && \\
      {
-       echo --with-qat=\"\${ICP_ROOT}\"
-@@ -66,11 +59,11 @@ POST_BUILD="scripts/dkms.postbuild
-   -a \${arch}
+@@ -68,9 +61,9 @@ POST_BUILD="scripts/dkms.postbuild
    -k \${kernelver}
    -t \${dkms_tree}
  "
@@ -33,4 +30,3 @@ diff -pNaru5 a/scripts/dkms.mkconf b/scripts/dkms.mkconf
    [[ -r \${PACKAGE_CONFIG} ]] \\
    && source \${PACKAGE_CONFIG} \\
    && shopt -q -s extglob \\
-   && [[ \${ZFS_DKMS_DISABLE_STRIP,,} == @(y|yes) ]] \\

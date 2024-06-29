@@ -28,7 +28,7 @@ fi
 if [ "${_opt_UTIL}" -eq 1 ]; then
   pkgname+=("zfs-utils${_opt_git}")
 fi
-pkgver=2.1.99.r1298.g6fca6195cd
+pkgver=2.2.99.r537.gfd51786f86
 pkgrel=1
 _pkgver="${pkgver%%.r*}"
 #_commit="#branch=zfs-${_pkgver%.*}-release"
@@ -56,15 +56,15 @@ source+=(
   'zfs.initcpio.hook'
 )
 md5sums=('SKIP'
-         'f79ac000c5b50b6e270a3800eca0f198'
+         'f607f969110a7b36a7a45b28b1f4343d'
          'eca615c602740315333aedd417d83541'
          'fa15be4761c8a56ad0177d1a06a4c7f8')
 sha256sums=('SKIP'
-            '78426b72029177579a5fe8d1f9e187e10f5a327691d36d62f5e27dd4d68206bf'
+            '0b28be1e55248435739c9d68fd85acd969b150a5b6216fd63d05cf892e352dac'
             'da1cdc045d144d2109ec7b5d97c53a69823759d8ecff410e47c3a66b69e6518d'
             '9c20256093997f7cfa9e7eb5d85d4a712d528a6ff19ef35b83ad03fb1ceae3bc')
 b2sums=('SKIP'
-        'cb8e694cbe61db48eff3e94ac2e6c7b9f005038ab5ef76bf6e11ddfa257554509d433fbf9b6aeb7a9c8706a871346ba2aaa937ef31197fd93269afde3c0ec3bd'
+        'becb6d74105f79e41b653abe41e3666d0c67c5640de30a512a425deaed83a49113526e66930a30fb0f61d04867f7b9b5c562c8638ab095f0c1be5db46cab7950'
         '570e995bba07ea0fb424dff191180b8017b6469501964dc0b70fd51e338a4dad260f87cc313489866cbfd1583e4aac2522cf7309c067cc5314eb83c37fe14ff3'
         'e14366cbf680e3337d3d478fe759a09be224c963cc5207bee991805312afc49a49e6691f11e5b8bbe8dde60e8d855bd96e7f4f48f24a4c6d4a8c1bab7fc2bba0')
 
@@ -124,7 +124,7 @@ prepare() {
   #Date: Sun, 28 Oct 2018 15:01:58 -0400
   #Subject: [PATCH] only build the module in dkms.conf
   #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
-  # diff -pNaru5 'a' 'b' > '0001-only-build-the-module-in-dkms.conf.patch'
+  # diff -pNaru4 'a' 'b' > '0001-only-build-the-module-in-dkms.conf.patch'
   patch -Nup1 -i "${srcdir}/0001-only-build-the-module-in-dkms.conf.patch"
 
   # DKMS install customized all the way back to autoconf
