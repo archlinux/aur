@@ -14,14 +14,13 @@ else
   _CPU_TARGET="-march=native -mtune=native"
 fi
 
+wow64build=$(cat "${_where}/buildiswow64" || _failure "how")
+
 ################################################################################################################################
 ################################################################################################################################
 ### OPTIONS
 ################################################################################################################################
 ################################################################################################################################
-
-## set to true to make a wow64 build, anything else creates a regular lib32+lib64 build
-wow64build=true
 
 _disabled_staging="" ## e.g. "-W Compiler_Warnings -W user32-. . ."
 
@@ -75,12 +74,14 @@ source=(
   winestart
   30-win32-aliases.conf
   wine-binfmt.conf
+  buildiswow64
 )
 
 sha512sums=(
   'dc115ccc8d64afc213d2860a2f3516c31aa2891cd1005498123d86e7e44e0fcf876fbc68c89b201ce5291a12127cb7ff478e9374dbd2512b5d094802780be160'
   '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
   'bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285'
+  'SKIP'
 )
 noextract=()
 
