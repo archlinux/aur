@@ -4,7 +4,7 @@
 # Tested with Kernel 4.16, Dell D3000 SuperSpeed USB 3.0 Docking Station, 17e9:4318 DisplayLink
 
 pkgname='evdi-git'
-pkgver=1.14.2.r0.g9905b9b
+pkgver=1.14.5.r2.ge36efa8
 _pkgver="${pkgver%%.r*}"
 pkgrel=1
 pkgdesc='kernel module that enables management of multiple screens, primarily for DisplayLink USB VGA DVI HDMI DisplayPort video'
@@ -87,7 +87,8 @@ if ! :; then
 fi
 
   local _DKMS="${pkgdir}/usr/src/${pkgname%-git}-${_pkgver}"
-  install -Dpm644 module/* -t "${_DKMS}/"
+  #install -Dpm644 module/* -t "${_DKMS}/"
+  find 'module/' -type 'f' '!' -path '*/tests/*' -exec install -Dpm644 '{}' -t "${_DKMS}/" ';'
   make -j1 -C "${_DKMS}" clean
   rm -f "${_DKMS}/evdi.mod"
 }
