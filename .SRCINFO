@@ -10,7 +10,9 @@ pkgbase = funzzy-git
 	depends = glibc
 	depends = gcc-libs
 	provides = funzzy=1.2.0
+	provides = fzz=1.2.0
 	conflicts = funzzy
+	conflicts = fzz
 	source = funzzy::git+https://github.com/cristianoliveira/funzzy.git
 	sha256sums = SKIP
 

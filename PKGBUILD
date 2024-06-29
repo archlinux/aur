@@ -10,8 +10,8 @@ url="https://github.com/cristianoliveira/${_pkgname}"
 license=('MIT')
 depends=('glibc' 'gcc-libs')
 makedepends=('git' 'cargo')
-provides=("${_pkgname}=${pkgver%%.r*}")
-conflicts=("${_pkgname}")
+provides=("${_pkgname}=${pkgver%%.r*}" "fzz=${pkgver%%.r*}")
+conflicts=("${_pkgname}" 'fzz')
 _pkgsrc="${_pkgname}"
 source=("${_pkgsrc}::git+${url}.git")
 sha256sums=('SKIP')
