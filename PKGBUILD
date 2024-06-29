@@ -6,7 +6,7 @@
 _pkgname='sherlock'
 pkgname="${_pkgname}-git"
 pkgver=r2404.501cb3d
-pkgrel=1
+pkgrel=2
 pkgdesc='Hunt down social media accounts by username across social networks'
 arch=('any')
 url='https://github.com/sherlock-project/sherlock'
