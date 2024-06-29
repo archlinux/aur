@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mlr3tuning
-_pkgver=0.20.0
+_pkgver=1.0.0
 pkgname=r-${_pkgname,,}
-pkgver=0.20.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Tuning for 'mlr3'"
 arch=('any')
@@ -34,7 +34,7 @@ optdepends=(
   r-xgboost
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('23be363aabfeb4db3ebf994b78e29710526638143e054396a360a7deb0c32cf8')
+sha256sums=('86fdb59397b65288186cde667cf98dcf53868adf1def41d65e4e34db3cffac52')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
