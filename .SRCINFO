@@ -1,11 +1,10 @@
 pkgbase = resource-hacker
 	pkgdesc = A resource editor for 32/64-bit Windows applications
 	pkgver = 5.2.7
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.angusj.com/resourcehacker
 	arch = any
 	license = LicenseRef-ResourceHacker
-	makedepends = unzip
 	makedepends = gendesk
 	makedepends = icoutils
 	depends = wine

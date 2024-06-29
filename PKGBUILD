@@ -4,7 +4,7 @@ pkgname="resource-hacker"
 pkgdesc="A resource editor for 32/64-bit Windows applications"
 
 pkgver=5.2.7
-pkgrel=2
+pkgrel=3
 
 arch=(any)
 
@@ -12,7 +12,7 @@ url="http://www.angusj.com/resourcehacker"
 license=("LicenseRef-ResourceHacker")
 
 depends=(wine)
-makedepends=(unzip gendesk icoutils)
+makedepends=(gendesk icoutils)
 
 provides=(resource-hacker)
 
@@ -36,18 +36,14 @@ prepare() {
 }
 
 package() {
-	# make a directory for the Resource Hacker help & samples
-	mkdir -p "${pkgdir}/usr/share/resource-hacker/help"
-	mkdir -p "${pkgdir}/usr/share/resource-hacker/samples"
-
 	# copy all of Resource Hacker's files
 	install -Dm755 ResourceHacker.exe "${pkgdir}/usr/share/resource-hacker/ResourceHacker.exe"
 
 	install -Dm644 ReadMe.txt "${pkgdir}/usr/share/resource-hacker/ReadMe.txt"
 	install -Dm644 changes.txt "${pkgdir}/usr/share/resource-hacker/changes.txt"
 
-	install -Dm644 help/* "${pkgdir}/usr/share/resource-hacker/help"
-	install -Dm644 samples/* "${pkgdir}/usr/share/resource-hacker/samples"
+	find help -type f -exec install -Dm644 {} "${pkgdir}/usr/share/resource-hacker/{}" \;
+	find samples -type f -exec install -Dm644 {} "${pkgdir}/usr/share/resource-hacker/{}" \;
 
 	# copy the executable script
 	install -Dm755 resource-hacker "${pkgdir}/usr/bin/resource-hacker"
