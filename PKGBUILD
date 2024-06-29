@@ -4,7 +4,7 @@ pkgname="anituner"
 pkgdesc="Create, edit and convert Windows animated cursors"
 
 pkgver=2.0.0
-pkgrel=8
+pkgrel=9
 
 arch=(any)
 
@@ -12,7 +12,7 @@ url="https://www.gdgsoft.com/anituner"
 license=("LicenseRef-AniTuner")
 
 depends=(wine)
-makedepends=(unzip gendesk icoutils)
+makedepends=(gendesk icoutils)
 
 provides=(anituner)
 
@@ -37,9 +37,6 @@ prepare() {
 }
 
 package() {
-	# make a directory for the AniTuner samples
-	mkdir -p "${pkgdir}/usr/share/anituner/Samples"
-
 	# copy all of AniTuner's files
 	install -Dm755 AniTuner.exe "${pkgdir}/usr/share/anituner/AniTuner.exe"
 	install -Dm644 AniTunerPref.xml "${pkgdir}/usr/share/anituner/AniTunerPrefDefault.xml"
@@ -47,7 +44,7 @@ package() {
 	install -Dm644 AniTuner.chm "${pkgdir}/usr/share/anituner/AniTuner.chm"
 	install -Dm644 Readme.txt "${pkgdir}/usr/share/anituner/Readme.txt"
 
-	install -Dm644 Samples/* "${pkgdir}/usr/share/anituner/Samples"
+	find Samples -type f -exec install -Dm644 {} "${pkgdir}/usr/share/anituner/{}" \;
 
 	# copy the executable script
 	install -Dm755 anituner "${pkgdir}/usr/bin/anituner"

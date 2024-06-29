@@ -1,11 +1,10 @@
 pkgbase = anituner
 	pkgdesc = Create, edit and convert Windows animated cursors
 	pkgver = 2.0.0
-	pkgrel = 8
+	pkgrel = 9
 	url = https://www.gdgsoft.com/anituner
 	arch = any
 	license = LicenseRef-AniTuner
-	makedepends = unzip
 	makedepends = gendesk
 	makedepends = icoutils
 	depends = wine
