@@ -1,0 +1,20 @@
+pkgbase = qstopmotion
+	pkgdesc = Application for creating stop-motion animation movies
+	pkgver = 2.5.2
+	pkgrel = 3
+	url = http://qstopmotion.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = ninja
+	depends = ffmpeg
+	depends = libgphoto2
+	depends = qt5-multimedia
+	depends = qwt
+	depends = v4l-utils
+	source = https://downloads.sourceforge.net/qstopmotion/Version_2_5_2/qstopmotion-2.5.2-Source.tar.gz
+	source = qstopmotion.appdata.xml
+	sha256sums = 8f2054c9a7644ae40a5ceaebe576758f2ea87f5430f12d873f1b8eacf73b4671
+	sha256sums = fd0c4a63f3cd407143257141ab50cacd500821ded2ba1141a6b54def3490b3f1
+
+pkgname = qstopmotion

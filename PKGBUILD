@@ -2,7 +2,7 @@
 
 pkgname=qstopmotion
 pkgver=2.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Application for creating stop-motion animation movies'
 url='http://qstopmotion.org/'
 license=('GPL2')
