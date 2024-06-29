@@ -6,7 +6,7 @@
 # Contributor : Patrick McCarty  <pnorcks at gmail dot com>
 
 pkgname=osc
-pkgver=1.6.2
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Command line client for the openSUSE Build Service"
 arch=(any)
@@ -33,6 +33,7 @@ source=("https://github.com/openSUSE/${pkgname}/archive/${pkgver}.tar.gz"
         0006-Add-architecture-and-scheduler-maps.patch
         0007-Trap-any-kind-of-exception-during-plugin-parsing-eg-.patch
         0008-Fix-hdrmd5-check-of-downloaded-packages-from-DoD-rep.patch
+        0009-Add-buildlog-option-to-fetch-buildlog-not-relative-t.patch
        )
 
 
@@ -63,14 +64,15 @@ package() {
 
 }
 
-sha256sums=('05c6b0bd4dd093fe57a6760e284ef285a28e978f247d54cee5cd174d1ec9c5dd'
-            '878e66de3e15f3f070c63002990315dc6e54e1e864c85eead81c386453aeb24a'
-            '241e0f71d51cef7a53dd9024f725527164f002d0b9370385c3bc3e1d69a8f8ce'
-            'd0286a035fc4facc5a380f2523ab5a01106c903a3039fcf09cb9958c63137f5d'
-            '50f1955fc3080752abb94da9986ce676b7a6ace7016e4dc3380e825b95e45891'
-            '8e7fda9dca156604a48e918becaafe7f7f425cfd5ec7cc2e2de2d5aa73924ee0'
+sha256sums=('251ab981449209550b88bdab08ba108c104f430680b9a1ab2eb81a62bb0082d1'
+            'a0c2e3634fdbda99aa04cc39b26ca67b519ca9c99bdd9efb263f7d65ad772206'
+            'e189b7072386954c40d00876433261a107e167b00364d4c3ca03a33fd65da70a'
+            'b28c45b7a896b921665fc121921aaa8acb439e19c47c6f593d30441ecf53ea43'
+            '108925bfc7c346b65f410ead15e6848cf8ae4863193a95034a97aa92609b11cb'
+            'cd8d450ce8c79c2424278bb0cc0cf3a3dc9a2e5b4509ad41af0116172b59e162'
             '579b110f3dc03001b7eac3581264200612dac66c2186e6841eda3573f455daf1'
-            '73f4ae53567671c5c5bd3a524abfe1b8195e654726963c2e86fa56d5f0a125df'
-            '56b8e020440fdffcf5e9ee14b5d59a7309abbc708862c2e903ef2275c57cf401')
+            '6c63f30069ebf5a2d010bdd6a5e5329d9ad6faaf735831ea133cb9f652c7f8f3'
+            'f01d7d59bebe114f6031f297f78456bef96b7003f55fe7ac48827e1eca7138c1'
+            '82f6acd8dd601b74433562bbbb1a9b7157d43e23ca3c42e0eb163a978b29b816')
 
 # vim:set sts=2 ts=2 sw=2 et:

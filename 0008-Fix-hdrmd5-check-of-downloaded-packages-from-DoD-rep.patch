@@ -17,10 +17,10 @@ Signed-off-by: Björn Bidar <bjorn.bidar@jolla.com>
  1 file changed, 9 insertions(+), 7 deletions(-)
 
 diff --git a/osc/fetch.py b/osc/fetch.py
-index 8ed75a58c7e2caf5febb96cd862e0065f478b58a..90e8321575b1df8d91388314d1cecd4d281d9792 100644
+index 0cfbaf43cae2b01dbdfac431fbb215e6f61a4411..6a0f979d1d636e1d46b17871e273299b8de8bcb3 100644
 --- a/osc/fetch.py
 +++ b/osc/fetch.py
-@@ -270,14 +270,16 @@ class Fetcher:
+@@ -271,14 +271,16 @@ class Fetcher:
                          # mark it for downloading from the API
                          self.__add_cpio(i)
                      else:
