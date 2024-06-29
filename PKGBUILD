@@ -9,7 +9,7 @@ url='https://github.com/openstreetmap/mod_tile'
 license=('GPL-2.0-or-later')
 optdepends=('libmemcached: Memcached tile storage support')
 makedepends=('apache' 'apr' 'cmake' 'glib2' 'iniparser' 'mapnik')
-checkdepends=('jq')
+checkdepends=('curl' 'jq')
 source=("${url}/archive/v${pkgver}/mod_tile-${pkgver}.tar.gz"
         "v0.7.2_fixes.patch::${url}/compare/v${pkgver}...cda77b0a69fe1489f762ed72e89205381f9608af.patch"
         'renderd.service'

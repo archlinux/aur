@@ -6,6 +6,7 @@ pkgbase = mod_tile
 	arch = i686
 	arch = x86_64
 	license = GPL-2.0-or-later
+	checkdepends = curl
 	checkdepends = jq
 	makedepends = apache
 	makedepends = apr
