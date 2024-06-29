@@ -1,7 +1,7 @@
 pkgbase = nginx-mod-vts
 	pkgdesc = Nginx virtual host traffic status module
 	pkgver = 0.2.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/vozlt/nginx-module-vts
 	arch = x86_64
 	license = BSD-2-Clause

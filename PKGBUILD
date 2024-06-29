@@ -4,7 +4,7 @@
 _modname="nginx-module-vts"
 pkgname=nginx-mod-vts
 pkgver=0.2.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Nginx virtual host traffic status module"
 arch=('x86_64')
 makedepends=('nginx' 'nginx-src')
@@ -17,7 +17,7 @@ build() {
     cp -r /usr/src/nginx .
 
     cd nginx
-    ./configure --with-compat --add-dynamic-module=../$_modname-$pkgver
+    ./configure --with-ld-opt="$LDFLAGS" --with-compat --add-dynamic-module=../$_modname-$pkgver
     make modules
 }
 
