@@ -1,16 +1,18 @@
 pkgbase = webui
 	pkgdesc = Use any web browser as GUI, with your preferred language in the backend and HTML5 in the frontend, all in a lightweight portable lib.
-	pkgver = 2.4.2+36+ga994629f
+	pkgver = 2.5.0+beta.1+14+gb65608df
 	pkgrel = 1
 	url = https://webui.me/
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = zig
+	makedepends = make
+	makedepends = gcc
 	depends = openssl
 	depends = glibc
+	provides = webui
 	conflicts = webui-nossl
-	source = git+https://github.com/webui-dev/webui.git#commit=a994629f90454b78f83916a9911505e0d38d851e
+	source = git+https://github.com/webui-dev/webui.git#commit=b65608dfec1c4cb44e4f77a4724995f54cb99386
 	md5sums = SKIP
 
 pkgname = webui
