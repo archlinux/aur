@@ -3,8 +3,8 @@
 
 _pkgname='ov'
 pkgname="${_pkgname}-git"
-pkgver=0.33.3.r2.g8c70587
-pkgrel=2
+pkgver=0.35.0.r4.g0557a5c
+pkgrel=1
 epoch=1
 pkgdesc='Feature-rich terminal-based text pager (built from latest commit)'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
@@ -41,8 +41,8 @@ build() {
   # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
   #
   # ld(1) says: “Supported for i386 and x86-64.”
-  case "${CARCH:-unknown}" in
-    'x86_64' | 'i386' )
+  case "Z${CARCH:-unknown}" in
+    'Zx86_64' | 'Zi386' )
       export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
     ;;
     * ) : pass ;;
@@ -58,13 +58,16 @@ build() {
     -trimpath \
     -ldflags="-linkmode=external -X main.Version=$_ver -X main.Revision=$_rev" \
     -mod=readonly -modcacherw \
-    -o build
+    -o build \
+      .
 }
 
 check() {
   cd "$_pkgname"
 
-  go test
+  go test ./...
+
+  build/ov --version
 }
 
 package() {
