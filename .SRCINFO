@@ -1,0 +1,15 @@
+pkgbase = basteleur-font
+	pkgdesc = A typeface font from Velvetyne designed with the Tarot de Marseille in mind.
+	pkgver = 3.0
+	pkgrel = 1
+	url = https://velvetyne.fr/fonts/basteleur
+	arch = any
+	license = OFL-1.1
+	source = https://gitlab.com/velvetyne/basteleur/-/archive/f32302d63d46e9b996f329648b0f2df01c9190f5/basteleur-3.0.tar.bz2
+	sha256sums = d3fc7ebc549d1c3b0c01e398abca471cf63e2555c9eb8334b4bd75ef95a534c8
+
+pkgname = ttf-basteleur
+	provides = basteleur-font
+
+pkgname = otf-basteleur
+	provides = basteleur-font
