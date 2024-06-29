@@ -1,20 +1,22 @@
 # Maintainer: Shohei Maruyama <cheat.sc.linux@outlook.com>
 
 pkgname=ttf-juisee
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc='A font family for programming synthesized JuliaMono and LINE Seed JP'
 arch=('any')
 url='https://github.com/yuru7/juisee'
 license=('custom:OFL')
 provides=('ttf-font')
-makedepends=('fontforge' 'python-fonttools' 'python-ttfautohint-py')
+makedepends=('fontforge' 'python-fonttools' 'python-ttfautohint-py' 'python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/yuru7/juisee/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7703026ddee154d41bb7ced5df69ace4da561aa330e5c6f128c40a8b15ecee32')
+sha256sums=('5334e27482e608070ee993684150ede679b05dc12240d280f44df996f23f65a0')
 
 build() {
 	cd "juisee-${pkgver}"
 	fontforge --lang=py -script fontforge_script.py --slashed-zero --invisible-zenkaku-space
+	find build -type f -name '*.ttf' -exec python -m ttfautohint --dehint --no-info {} {} \;
+	python ./fonttools_script.py
 }
 
 package() {
