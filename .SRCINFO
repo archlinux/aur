@@ -1,0 +1,21 @@
+pkgbase = funzzy-bin
+	pkgdesc = A lightweight generic purpose file watcher
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/cristianoliveira/funzzy
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = funzzy
+	provides = fzz
+	conflicts = funzzy
+	conflicts = fzz
+	source = https://github.com/cristianoliveira/funzzy/raw/v1.2.0/README.md
+	source = https://github.com/cristianoliveira/funzzy/raw/v1.2.0/LICENSE
+	sha256sums = 664a5dd2ab9d108f624355085b5620a76fd06d952d9439ba1e28db6ede5afcfe
+	sha256sums = 06d192e34ed1d62acb191604c71067f6b40bda375e44f92b953bdb0ad7c524db
+	source_x86_64 = https://github.com/cristianoliveira/funzzy/releases/download/v1.2.0/funzzy-v1.2.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = d4c72afdda14cfaedf08ba7df14a31a049338952ab33e32dc88c191e2e3260c0
+
+pkgname = funzzy-bin
