@@ -1,0 +1,12 @@
+pkgbase = ttf-ds-digital
+	pkgdesc = A shareware TrueType font family that can be used for digital clocks and more
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.dafont.com/ds-digital.font
+	arch = any
+	license = custom
+	depends = fontconfig
+	source = ttf-ds-digital.zip::https://dl.dafont.com/dl/?f=ds_digital
+	sha256sums = ee0a02681563bd40a0fd0770784b82f30f331abf5ba22d606bbdd4c93a85ddef
+
+pkgname = ttf-ds-digital
