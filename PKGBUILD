@@ -12,7 +12,7 @@
 _fragment="${FRAGMENT:-#branch=master}"
 
 pkgname=upbge-git
-pkgver=143892.b5e8d115361
+pkgver=144753.0b7de393842
 pkgrel=1
 pkgdesc="Uchronia Project Blender Game Engine fork of Blender Game Engine"
 arch=('i686' 'x86_64')
@@ -32,7 +32,6 @@ optdepends=('cuda: CUDA support in Cycles'
             'intel-compute-runtime: Intel OpenCL FPGA kernels (all four needed)'
             'intel-graphics-compiler: Intel OpenCL FPGA kernels (all four needed)'
             'intel-oneapi-basekit: Intel OpenCL FPGA kernels (all four needed)'
-            'gcc12: Compile CUDA support in Cycles'
             'makepkg-cg: Control resources during compilation')
 makedepends+=('git' 'cmake' 'boost' 'mesa' 'llvm' 'clang' 'subversion')
 makedepends+=('wayland-protocols')
@@ -45,12 +44,18 @@ source=("upbge::git+https://github.com/UPBGE/upbge${_fragment}"
         'blender/dev_tools::git+https://github.com/blender/blender-dev-tools'
         'blender/assets::svn+https://svn.blender.org/svnroot/bf-blender/trunk/lib/assets'
         # Patches...
-        '0001-use-github.com-for-make-update-git.patch')
+        '0001-use-github.com-for-make-update-git.patch'
+        '0002-ffmpeg7.patch'
+        '0003-ffmpeg7-audaspace.patch'
+        '0004-numpy.patch')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '0bb8ac4cba0ac00999790087c51e601d185b78a96081f08a7c7afb8c0f4b0d7c')
+            '0bb8ac4cba0ac00999790087c51e601d185b78a96081f08a7c7afb8c0f4b0d7c'
+            '17d5fb1c4ddb9e95da590d2e43ae3f7ce2b02c3ec698b16ed2752e3b3e7840c0'
+            '847ffe878ede6ecae505d29a5feba9a998e8857fe99895ed4c2da5aaab813aa8'
+            'd8fb694a41ea1848f0d75250e5a3b7bdd84f82f1af9fcb68659cd4075cc818b3')
 
 pkgver() {
 	cd "$srcdir/upbge"
@@ -105,12 +110,9 @@ build() {
   # determine whether we can precompile CUDA kernels
   _CUDA_PKG=$(pacman -Qq cuda 2>/dev/null) || true
   if [ "$_CUDA_PKG" != "" ]; then
-    CUDAHOSTCXX=`which gcc-12`
-    PATH="/usr/lib/gcc/x86_64-pc-linux-gnu/12.3.0/:$PATH"
     # https://wiki.blender.org/wiki/Building_Blender/GPU_Binaries
     _CMAKE_FLAGS+=( -DWITH_CYCLES_CUDA_BINARIES=ON \
-                    -DWITH_COMPILER_ASAN=OFF \
-                    -DCMAKE_CUDA_HOST_COMPILER=`which gcc-12` )
+                    -DWITH_COMPILER_ASAN=OFF )
   fi
 
   # check for materialx
@@ -148,15 +150,6 @@ build() {
   if [[ -f "$srcdir/upbge/CMakeCache.txt" && -z "$KEEP_CMAKE_CACHE" ]]; then
     rm "$srcdir/upbge/CMakeCache.txt"
   fi
-
-  NUMPY_PY_INCLUDE="/usr/lib/python${_pyver}/site-packages/numpy/core/include/"
-  [[ -d "$NUMPY_PY_INCLUDE" ]] && (
-    _CMAKE_FLAGS+=( -DNUMPY_INCLUDE_DIR="$NUMPY_PY_INCLUDE" );
-    __CFLAGS="$CFLAGS -I$NUMPY_PY_INCLUDE"
-    __CXXFLAGS="$CXXFLAGS -I$NUMPY_PY_INCLUDE"
-    export CFLAGS="$__CFLAGS"
-    export CXXFLAGS="$__CXXFLAGS"
-  )
 
   export CFLAGS="$CFLAGS -fno-lto"
   export CXXFLAGS="$CXXFLAGS -fno-lto"
