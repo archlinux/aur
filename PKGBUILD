@@ -3,33 +3,35 @@
 pkgname=python-copier-templates-extensions
 pkgdesc='Jinja2 extension for Copier to use relative file paths'
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 url='https://github.com/copier-org/copier-templates-extensions'
-license=('custom:ISC')
+license=('ISC')
 arch=('any')
 
-# python-copier tries to import the git command from python-plumbum, which fails
-# if git is not installed. This should be in the dependencies of python-copier,
-# but put it here for now until that is fixed.
 depends=('git' 'python-copier' 'python-jinja')
-makedepends=('python-build' 'python-installer' 'python-pdm-pep517')
+makedepends=('python-build' 'python-installer' 'python-pdm-backend')
 checkdepends=('python-pytest')
 
 _pypi=copier-templates-extensions
 _pyname=copier_templates_extensions
 source=(
   "https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/$_pypi-$pkgver.tar.gz"
+  'fix_tests.patch'
 )
 sha256sums=(
   '48b3f5213ee913b931df40e4e9325b58b9c9a741f1052a7da1b247ed991f5150'
+  '2f590a59425163615202573296be7ecea20b11bd27a1239b2b47ab181fd51d17'
 )
 
 prepare() {
   cd "$_pypi-$pkgver"
 
-  # Initially, PEP639 used a new license-expression field, but a later revision
-  # reused the existing license field.
-  sed -i -e "s/license-expression/license/" pyproject.toml
+  # Upstream has updated this in the Git version but not in a release yet.
+  sed -i 's/pdm-pep517/pdm-backend/' pyproject.toml
+  sed -i 's/pdm\.pep517\.api/pdm.backend/' pyproject.toml
+
+  # Also fixed in Git but not released.
+  patch -p0 -i "$srcdir/fix_tests.patch"
 }
 
 build() {
