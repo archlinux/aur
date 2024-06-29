@@ -1,0 +1,26 @@
+pkgbase = easymc-launcher
+	pkgdesc = EasyMC Launcher. The free all-in-one solution for Minecraft.
+	pkgver = 1.6.14
+	pkgrel = 1
+	url = https://easymc.io
+	install = easymc-launcher.install
+	arch = x86_64
+	license = GPLv3
+	depends = desktop-file-utils
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = at-spi2-core
+	depends = libnotify
+	depends = libsecret
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	depends = util-linux-libs
+	depends = xdg-utils
+	optdepends = libappindicator-gtk3
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://cdn.easymc.io/launcher/linux-x64/v1.6.14/EasyMC_Setup_v1.6.14_x64.deb
+	sha512sums_x86_64 = fcc0ec3cad1292a8f281a20c7b28fd14a5334de2b50cf11108c22175d05d2f45528e56f95d478e97071fcf60662208f4c0926fddeb36d578f49b934c5914bb21
+
+pkgname = easymc-launcher
