@@ -1,7 +1,7 @@
 pkgbase = python-compress-pickle
 	pkgdesc = Standard pickle, wrapped with standard compression libraries
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lucianopaz/compress_pickle
 	arch = i686
 	arch = x86_64
