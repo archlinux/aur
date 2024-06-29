@@ -9,7 +9,7 @@ _noguipkgname="$_projectname-emu-nogui"
 _toolpkgname="$_projectname-emu-tool"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git" "$_toolpkgname-git")
-pkgver='5.0.r21606.g8ac22378a1'
+pkgver='5.0.r21785.gf49659fbfc'
 pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
@@ -17,9 +17,9 @@ arch=('x86_64' 'aarch64')
 url="https://$_mainpkgname.org"
 license=('GPL-2.0-or-later')
 depends=(
-	'alsa-lib' 'bluez-libs' 'bzip2' 'hidapi' 'libevdev' 'libgl' 'libpulse' 'libx11'
-	'libxi' 'libxrandr' 'lzo' 'mbedtls2' 'minizip-ng' 'pugixml' 'sfml' 'speexdsp'
-	'xz' 'zstd' 'cubeb' 'zlib-ng'
+	'alsa-lib' 'bluez-libs' 'bzip2' 'enet' 'hidapi' 'libevdev' 'libgl' 'libpulse'
+	'libx11' 'libxi' 'libxrandr' 'lz4' 'lzo' 'mbedtls2' 'minizip-ng' 'pugixml'
+	'sdl2' 'sfml' 'speexdsp' 'xz' 'zstd' 'cubeb' 'zlib-ng'
 	'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libcurl.so' 'libfmt.so'
 	'libminiupnpc.so' 'libsfml-network.so' 'libsfml-system.so' 'libspng.so'
 	'libswscale.so' 'libudev.so' 'libusb-1.0.so' 'libxxhash.so'
@@ -29,23 +29,23 @@ checkdepends=('gtest')
 optdepends=('pulseaudio: PulseAudio backend')
 options=('!lto')
 source=(
-	"$pkgname::git+https://github.com/$_mainpkgname/$_projectname"
-	"$pkgname-enet::git+https://github.com/lsalzman/enet.git"
-	"$pkgname-implot::git+https://github.com/epezent/implot.git"
-	"$pkgname-mgba::git+https://github.com/mgba-emu/mgba.git"
-	"$pkgname-rcheevos::git+https://github.com/RetroAchievements/rcheevos.git"
-	"$pkgname-tinygltf::git+https://github.com/syoyo/tinygltf.git"
-	"$pkgname-vma::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git"
+	"$pkgbase::git+https://github.com/$_mainpkgname/$_projectname"
+	"$pkgbase-implot::git+https://github.com/epezent/implot.git"
+	"$pkgbase-mgba::git+https://github.com/mgba-emu/mgba.git"
+	"$pkgbase-rcheevos::git+https://github.com/RetroAchievements/rcheevos.git"
+	"$pkgbase-tinygltf::git+https://github.com/syoyo/tinygltf.git"
+	"$pkgbase-vh::git+https://github.com/KhronosGroup/Vulkan-Headers.git"
+	"$pkgbase-vma::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git"
 )
-sha512sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+b2sums=('SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP')
 
-_sourcedirectory="$pkgname"
+_sourcedirectory="$pkgbase"
 
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"
@@ -54,18 +54,18 @@ prepare() {
 
 	# Provide submodules
 	declare -A _submodules=(
-		[enet]='enet/enet'
 		[implot]='implot/implot'
 		[mgba]='mGBA/mgba'
 		[rcheevos]='rcheevos/rcheevos'
 		[tinygltf]='tinygltf/tinygltf'
+		[vh]='Vulkan-Headers'
 		[vma]='VulkanMemoryAllocator'
 	)
 
 	for _submod in "${!_submodules[@]}"; do
 		_path="Externals/${_submodules[$_submod]}"
 		git submodule init "$_path"
-		git config "submodule.$_path.url" "$srcdir/$pkgname-$_submod/"
+		git config "submodule.$_path.url" "$srcdir/$pkgbase-$_submod/"
 		git -c protocol.file.allow=always submodule update "$_path"
 	done
 }
@@ -84,7 +84,6 @@ build() {
 	# CMAKE_BUILD_TYPE - the dolphin-emu package in the repos uses 'None' for some reason, so we use it as well
 	# USE_SYSTEM_LIBS - we want to use system libs where possible
 	# USE_SYSTEM_LIBMGBA - the current version of mgba in the repos is not compatible with Dolphin
-	# USE_SYSTEM_ENET - the current version of enet in the repos is not compatible with Dolphin
 	cmake -S '.' -B 'build/' -G Ninja \
 		-DCMAKE_BUILD_TYPE=None \
 		-DCMAKE_INSTALL_PREFIX='/usr' \
@@ -92,7 +91,6 @@ build() {
 		-DENABLE_AUTOUPDATE=OFF \
 		-DUSE_SYSTEM_LIBS=ON \
 		-DUSE_SYSTEM_LIBMGBA=OFF \
-		-DUSE_SYSTEM_ENET=OFF \
 		-Wno-dev
 	cmake --build 'build/'
 }
