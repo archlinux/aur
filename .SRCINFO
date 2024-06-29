@@ -1,0 +1,23 @@
+pkgbase = nura-note-bin
+	pkgdesc = Nuranote is an easy to use notes app
+	pkgver = 0.5.6
+	pkgrel = 1
+	url = https://linkify-44026.web.app/
+	install = nura-note-bin.install
+	arch = x86_64
+	license = GPLv3
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup
+	depends = pango
+	depends = webkit2gtk
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://github.com/NuraNote/NuraNote-releases/releases/download/0.5.6/nura-note_0.0.0_amd64.deb
+	sha512sums_x86_64 = d1d992367421748a8cdd91020fcc3b9d2e6d4a8d3ac36a1d78b4f15c7a9bdaeba3f8bc30d6df1b3ce56e62165ab0c29927bdb2dd3b30396997470d5c5240e5d4
+
+pkgname = nura-note-bin
