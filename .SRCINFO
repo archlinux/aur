@@ -1,5 +1,5 @@
 pkgbase = cadical
-	pkgdesc = A simple CDCL satisfiability solver
+	pkgdesc = Simple CDCL satisfiability solver
 	pkgver = 2.0.0
 	pkgrel = 1
 	url = http://fmv.jku.at/cadical/

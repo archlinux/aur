@@ -4,7 +4,7 @@
 pkgname=cadical
 pkgver=2.0.0
 pkgrel=1
-pkgdesc="A simple CDCL satisfiability solver"
+pkgdesc="Simple CDCL satisfiability solver"
 arch=('x86_64')
 url="http://fmv.jku.at/cadical/"
 license=('MIT')
