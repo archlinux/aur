@@ -1,0 +1,16 @@
+pkgbase = brother-mfc8950dw
+	pkgdesc = Brother MFC-8950DW LPD and CUPS driver
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://download.brother.com/
+	arch = i686
+	arch = x86_64
+	license = custom:brother
+	depends = cups
+	depends = ghostscript
+	depends = gsfonts
+	depends = lib32-glibc
+	source = https://download.brother.com/welcome/dlf006425/mfc8950dwcupswrapper-3.0.0-1.i386.deb
+	md5sums = 0f19ba503502e73fca1f96efad44f426
+
+pkgname = brother-mfc8950dw
