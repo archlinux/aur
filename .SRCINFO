@@ -1,8 +1,8 @@
-pkgbase = prismlauncher
-	pkgdesc = Minecraft launcher with ability to manage multiple instances.
-	pkgver = 8.4
-	pkgrel = 2
-	url = https://prismlauncher.org
+pkgbase = fjordlauncher
+	pkgdesc = Prism Launcher fork with support for alternative auth servers
+	pkgver = 8.4.1
+	pkgrel = 1
+	url = https://github.com/unmojang/FjordLauncher
 	arch = i686
 	arch = x86_64
 	arch = aarch64
@@ -31,7 +31,7 @@ pkgbase = prismlauncher
 	optdepends = xorg-xrandr: for older minecraft versions
 	optdepends = java-runtime=8: for older minecraft versions
 	optdepends = flite: minecraft voice narration
-	source = https://github.com/PrismLauncher/PrismLauncher/releases/download/8.4/PrismLauncher-8.4.tar.gz
-	sha256sums = a4df9059559df2e410ddf933e05fe4bffaa01631c6eeb55e63af4a2d0d719726
+	source = https://github.com/unmojang/FjordLauncher/releases/download/8.4.1/FjordLauncher-8.4.1.tar.gz
+	sha256sums = a10fe260522b0af1e57711e17c8bba26ddb41a0ce08324d04c71b31a9f4e1880
 
-pkgname = prismlauncher
+pkgname = fjordlauncher

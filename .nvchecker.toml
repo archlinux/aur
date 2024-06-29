@@ -1,5 +1,5 @@
-[prismlauncher]
+[fjordlauncher]
 source = "github"
-github = "PrismLauncher/PrismLauncher"
+github = "unmojang/FjordLauncher"
 include_regex = "\\d+\\.\\d+"
 use_latest_release = true
