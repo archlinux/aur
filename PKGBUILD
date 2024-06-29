@@ -1,24 +1,24 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=freeoffice
-pkgver=1068
+pkgver=1215
 pkgrel=1
 pkgdesc="A complete, reliable, lightning-fast and Microsoft Office-compatible office suite with a word processor, spreadsheet, and presentation graphics software."
 arch=('x86_64')
 url="http://www.freeoffice.com/"
-license=('custom')
+license=('LicenseRef-custom')
 depends=('libxrandr' 'libgl' 'xdg-utils' 'gtk-update-icon-cache'
          'desktop-file-utils' 'curl')
 makedepends=('chrpath')
 install="${pkgname}.install"
-source=("http://www.softmaker.net/down/softmaker-${pkgname}-2021-${pkgver}-amd64.tgz"
+source=("http://www.softmaker.net/down/softmaker-${pkgname}-2024-${pkgver}-amd64.tgz"
         "${pkgname}-textmaker"
         "${pkgname}-planmaker"
         "${pkgname}-presentations"
         "${pkgname}-textmaker.desktop"
         "${pkgname}-planmaker.desktop"
         "${pkgname}-presentations.desktop")
-sha256sums=('6f4d8af1f90d505ecfe2374a8a384ed83631c446cd7389c0e61e14a726c30d48'
+sha256sums=('7202768b9eac3f4835ca2d60545703189a9ad61648c112e6e2b50d6c3e62e90a'
             '0437328f3fddf93e18ad3df270971802c2e0fcaf3f030588c1301767a968da69'
             'c90e2575c71f03f0b627e4f6c70f437b9c40e5878bf9f553a4244b4a1f6dbd3c'
             'e6bc7608e58f44b55654c5d1fc93d442a400de638e2cbc6d5a3b3a8fbceaa0e4'
@@ -27,13 +27,13 @@ sha256sums=('6f4d8af1f90d505ecfe2374a8a384ed83631c446cd7389c0e61e14a726c30d48'
             '1c80fdb7cb4119cd08b892f033eb57a1b38bcc758f307c1621248009693f2f10')
 
 prepare() {
-  xz -d "freeoffice2021.tar.lzma"
+  xz -d "freeoffice2024.tar.lzma"
 }
 
 build() {
   [ -d "${pkgname}" ] && rm -rf "${pkgname}"
   mkdir "${pkgname}"
-  tar x -f "freeoffice2021.tar" -C "${pkgname}"
+  tar x -f "freeoffice2024.tar" -C "${pkgname}"
   # Remove insecure RPATH
   cd "${pkgname}"
   chrpath --delete "textmaker"
@@ -73,5 +73,5 @@ package() {
   install -m 755 -t "${pkgdir}/usr/share/applications" "${pkgname}-presentations.desktop"
   # Installing mime file
   install -d "${pkgdir}/usr/share/mime/packages"
-  install -m 644 -t "${pkgdir}/usr/share/mime/packages" "${srcdir}/${pkgname}/mime/softmaker-freeoffice21.xml"
+  install -m 644 -t "${pkgdir}/usr/share/mime/packages" "${srcdir}/${pkgname}/mime/softmaker-freeoffice24.xml"
 }
