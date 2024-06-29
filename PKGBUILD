@@ -3,7 +3,7 @@
 pkgname=oxdna-cuda-git
 pkgdesc="DNA/RNA/etc simulator, from lorenzo-rovigatti/oxDNA, with CUDA support and analysis tools."
 url="https://github.com/lorenzo-rovigatti/oxDNA"
-pkgver=v3.6.1.r28.g16e5d7c8
+pkgver=3.6.1.r30.g95bd2e0b
 arch=('x86_64')
 license=('GPL3')
 provides=('oxdna')
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "oxDNA"
-  git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 
