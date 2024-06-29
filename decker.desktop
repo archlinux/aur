@@ -6,3 +6,4 @@ Icon=/usr/share/pixmaps/decker.png
 Exec=decker
 Terminal=false
 Categories=Development;Education;
+MimeType=application/x-decker;
