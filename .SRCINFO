@@ -1,6 +1,6 @@
 pkgbase = duckstation
 	pkgdesc = Playstation emulator
-	pkgver = 0.1.6892
+	pkgver = 0.1.6937
 	pkgrel = 1
 	url = https://github.com/stenzek/duckstation
 	arch = x86_64
@@ -14,7 +14,6 @@ pkgbase = duckstation
 	makedepends = ninja
 	makedepends = qt6-tools
 	makedepends = qt6-wayland
-	makedepends = spirv-cross
 	makedepends = spirv-headers
 	makedepends = patchelf
 	makedepends = patchutils
@@ -24,9 +23,11 @@ pkgbase = duckstation
 	depends = sdl2
 	depends = glslang
 	depends = spirv-tools
+	source = duckstation::git+https://github.com/stenzek/duckstation.git#commit=d45e218da7ae28b21a3b8ca32a1b7fe31986138f
 	source = google.shaderc::git+https://github.com/google/shaderc.git
 	source = ianlancetaylor.libbacktrace::git+https://github.com/ianlancetaylor/libbacktrace.git
-	source = duckstation::git+https://github.com/stenzek/duckstation.git#commit=f1ff15f9c603be8363d2c50cfdb9c7da11d61bea
+	source = khronosgroup.spirv-cross::git+https://github.com/KhronosGroup/SPIRV-Cross.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
