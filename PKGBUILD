@@ -1,6 +1,6 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='beekeeper-studio'
-pkgver='4.3.4'
+pkgver='4.6.2'
 pkgrel='1'
 epoch='1'
 pkgdesc='Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more'
@@ -13,14 +13,12 @@ makedepends=('git' 'libxcrypt-compat' 'nodejs-lts-iron' 'npm' 'python' 'yarn')
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 	'electron-launcher.sh'
-	'cpu-features-fix.diff'
 	'electron-builder-config.diff'
 	'fix-argv.diff'
 )
-b2sums=('5af4cb94aba22f909dc56098f2fc1babc6fc7794f7702e42737f0a1f43ab3e49ca551da591cb31039e4145fec56c73de6b626668612ebd57a0197aa689834866'
+b2sums=('82c9805ce252282dc0f242c69f23cb1d95c5cff17ed2acdae1170bb92831a397641d750c2ee1433daa29d7c4775ea23b2d9dcf5bfe28ddd3d0234728429e13d6'
         '54b46275a83a6099b22bc511a6293178abccccad6d1cc36bf812166f93f75b1379a3201dac9ee85e05cf7c3b0de7e94829fd3fb619ccca513924ebf3101850f0'
-        'a9c56c31bf874308c09c54f3b9b94605a5de476f2db959984fcf1c16c3825d019f93f150559bb7c6fa8008c8ac3065b16e883561d9d9c7f9d09f753897028371'
-        'efede58d6b059899937409bbc3dac5751cdffd92342e66c746983f6b75a69002bb088ded6300acc2245d1274ef306aee7828a1ee13480915ddc4fd39e6329b32'
+        '4af548291a1e76b0f61eee042621c492b0324eab91b5885feab165b7c6b3613a6e438fabbebce2246a51c2c6411881f3f93806a2c9b28113a95d6fd94eb6d17c'
         '160220f17f5e6ae1ceed499587bb9e6d07d8b34934cdc6c12931c41c7cf5a9b255e569f47e49073351b96b43bfbdb0a4387f4dfadbeb341547e4cde302e81e51')
 
 _sourcedirectory="$pkgname-$pkgver"
@@ -28,7 +26,6 @@ _sourcedirectory="$pkgname-$pkgver"
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"
 
-	patch --forward -p1 < "$srcdir/cpu-features-fix.diff"
 	patch --forward -p1 < "$srcdir/electron-builder-config.diff"
 	patch --forward -p1 < "$srcdir/fix-argv.diff"
 
