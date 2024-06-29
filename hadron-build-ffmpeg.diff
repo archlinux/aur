@@ -1,5 +1,5 @@
 diff --git a/packages/hadron-build/lib/target.js b/packages/hadron-build/lib/target.js
-index c04862963..f15ddf60a 100644
+index 77ccd0107..33ab0ae4d 100644
 --- a/packages/hadron-build/lib/target.js
 +++ b/packages/hadron-build/lib/target.js
 @@ -7,7 +7,6 @@ const semver = require('semver');
@@ -10,11 +10,11 @@ index c04862963..f15ddf60a 100644
  const windowsInstallerVersion = require('./windows-installer-version');
  const debug = require('debug')('hadron-build:target');
  const which = require('which');
-@@ -197,7 +196,6 @@ class Target {
+@@ -196,7 +195,6 @@ class Target {
        arch: this.arch,
        electronVersion: this.electronVersion,
        sign: null,
 -      afterExtract: [ffmpegAfterExtract]
      };
  
-     if (this.platform === 'win32') {
+     validateBuildConfig(this.platform, this.pkg.config.hadron.build[this.platform]);

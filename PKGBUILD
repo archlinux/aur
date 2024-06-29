@@ -2,7 +2,7 @@
 _target='compass-isolated-beta'
 _edition=' Isolated Edition Beta'
 pkgname="mongodb-$_target"
-_pkgver='1.43.1-beta.2'
+_pkgver='1.43.3-beta.0'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Isolated Edition - beta version'
@@ -22,10 +22,10 @@ source=(
 	'fix-argv.diff'
 	'mongodb-compass.conf'
 )
-sha512sums=('0fcf20347b0fa034ac2936409ff80d7b5bdd337cb89b21a97192b9dee2dae6849fd1ea98b7b73aaf7254f79ce6b4953e0baf2077a6a8445d52f203a6a4ddd5dc'
-            '8672c4c3d5ee5638166c4dfcf998c43dabab8e109aced465028c3da8e06e9b67d43ad6d52bb2ae0d44e732a015c9bec5008e5bbd01e38be8c231bfdce9619061'
-            'd9122abe1d31f4781138eefaf103998740b2bf16fb4cf4f94f42f048fd562f53d5ab2f4e806d14f5d6b3563ac7e37d3db64935e90a29c5fb0b2c65db5e6fafaf'
-            'f09a6026e8b963f4821454fa8c2da8c750c765f26010fbf54dfbecfd7451dda5466464bb15fada1252545366c94bf448dc0529c8bd8114f6f3834ae00176d3f1')
+b2sums=('de87e44421ae9afdb5628bef839e2b8f20e6b822d131ff43ad90f08f1e7b817bd5697e852eb0e4998c1ce7d79e2fb005d5d07183ef46ddd0d1e1434b86717bbe'
+        '58f8f765318090e2a4b0de8ab77a3c4034cd652ab1a84fdf72d7582b6e9bdd5b1c2f209ea1c27720c2d67ff471d56756ab91e4b62efb7975b7197c4bdb04d34b'
+        'dfb2723ebea5a6f12d8a5dade5a98abb3645ad62f74c43dc05c7178b5257526a69c4a0353782c399a790d6d9c4d8438b0041863e8dbdf638f25bdf3fffbbb42f'
+        '42535bfc10db335d685fad29aade1d091554a321fb4032b72db5699a450c6d701f630c45bb0d4cf9f456e77e3263a5aed49e843516cd3016d1a837ac5f1e6fec')
 
 _sourcedirectory="compass-$_pkgver"
 
@@ -104,7 +104,11 @@ EOF
 
 	install -Dm644 "$srcdir/mongodb-compass.conf" "$pkgdir/etc/mongodb-compass.conf"
 
-	install -Dm644 "$srcdir/$_sourcedirectory/packages/compass/app-icons/linux/mongodb-compass.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+	if [[ "$_target" =~ -beta$ ]]; then
+		install -Dm644 "$srcdir/$_sourcedirectory/packages/compass/app-icons/linux/mongodb-compass-logo-beta.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+	else
+		install -Dm644 "$srcdir/$_sourcedirectory/packages/compass/app-icons/linux/mongodb-compass-logo-stable.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+	fi
 
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dm644 'LICENSE' "$pkgdir/usr/share/licenses/$pkgname/SSPL-1.0"
