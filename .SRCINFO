@@ -1,0 +1,14 @@
+pkgbase = omekasy
+	pkgdesc = Convert alphanumeric characters to various styles defined in Unicode
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://github.com/ikanago/omekasy
+	arch = any
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	source = omekasy-1.2.3.tar.gz::https://github.com/ikanago/omekasy/archive/refs/tags/v1.2.3.tar.gz
+	sha256sums = 68965748361c85cd37b809482b3ef18debb908d8a32ff1764f1583ca745489ed
+
+pkgname = omekasy
