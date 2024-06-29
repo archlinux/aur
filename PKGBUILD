@@ -4,12 +4,13 @@
 
 _where="${PWD:-$(pwd)}"
 
+# true: generic build; false: AUR native build (default); shouldn't need to touch this
 _generic_release=false
-if [ "${_generic_release}" = "true" ]; then # release package
+if [ "${_generic_release}" = "true" ]; then
   PKGEXT='.pkg.tar.xz'
   COMPRESSXZ=(xz -9 -c -z - --threads=0)
   _CPU_TARGET="-march=x86-64 -mtune=generic"
-else # aur pkgbuild
+else
   _CPU_TARGET="-march=native -mtune=native"
 fi
 
@@ -19,30 +20,31 @@ fi
 ################################################################################################################################
 ################################################################################################################################
 
-## set to true to make a wow64 build (default), anything else creates a regular lib32+lib64 build
+## set to true to make a wow64 build, anything else creates a regular lib32+lib64 build
 wow64build=true
 
-## these variables will follow this logic:
-##  set to a commit/tag:
-##   - with _custompatches or patch repo: uses given commit/tag
-##  unset/empty:
-##   - with _custompatches: uses master
-##   - with patch repo: uses commit/tag from patch repo
+_disabled_staging="" ## e.g. "-W Compiler_Warnings -W user32-. . ."
 
-_desired_wine_commit=727472ab7d60e285a28fb67fd5e3e21907dd060a
-_desired_staging_commit=1b9ef03b2c2d6291a0c1aa8f584a1e8e9b4fd7a5
-
-_cleanbuildfolders=false
-_autoupdate=false
-_disabled_staging="-W odbc-remove-unixodbc" ## e.g. "-W Compiler_Warnings -W user32-. . ."
-_strip_package=true
-_install_static=true ## .a libs which may be required for external programs such as winestreamproxy
+## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
+_patchbase_tag="06-29-2024-b87f3589-9ba0efb9"
 
 ## to use this, create a "custompatches" folder in the top-level PKGBUILD directory and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the custompatches folder
 ## manually if you wish to use them alongside your own patches.
-## also recommended to set _desired_wine_commit and _desired_staging_commit if this is used
+## also recommended to set _desired_wine_commit and _desired_staging_commit if this is used (see below)
 _custompatches=false
+
+## uses wine/staging master if empty, uses given commit or tag if set
+## only applies if _custompatches is true, otherwise overwritten by upstream commits from patchbase repo
+_desired_wine_commit=b87f35898d22b90e36970e0b1fce1172ba64eb15
+_desired_staging_commit=9ba0efb9da67ecd0aaa7e60fed5d27fbd8566951
+
+_strip_package=true
+_install_static=true ## .a libs which may be required for external programs such as winestreamproxy
+
+_autoupdate=false ## not completely tested
+
+_cleanbuildfolders=false ## removes src, pkg folders on exit (both failure and success)
 
 ################################################################################################################################
 ################################################################################################################################
@@ -51,10 +53,10 @@ if [ "$wow64build" = "true" ]; then _wowname="-wow64"; else _wowname=""; fi
 
 pkgname=wine-osu-spectator"${_wowname}"
 
-pkgver=9.11
+pkgver=9.12
 # workaround for pkgrel overwritten by pkgver() (taken from TkG PKGBUILD), real is the eval one
 pkgrel=1
-eval pkgrel=6
+eval pkgrel=1
 
 pkgdesc="A compatibility layer for running Windows programs, but with osu! specific patches"
 if [ "$wow64build" = "true" ]; then pkgdesc+=" (WoW64 version)"; fi
@@ -84,27 +86,25 @@ noextract=()
 
 ## don't needlessly add the wine-osu-patches repo if we explicitly specify custom ones
 if ! ([ -d "${_where}"/custompatches ] && [ "${_custompatches}" = "true" ]); then
-  source+=("git+https://github.com/whrvt/wine-osu-patches.git#tag=06-28-2024-727472ab-1b9ef03b")
-  sha512sums+=('e571a88302d6d33b8c6b7e9f080d3be5953f870f6bc8cdb9318037023b7a7014f25e08ce3ef4b4d1d0e357ade2d9046a16f30a3846a9914e9d0f21584fa2bdd7')
+  source+=("git+https://github.com/whrvt/wine-osu-patches.git#tag=${_patchbase_tag}")
+  sha512sums+=('SKIP')
   
   _custompatches="false" ## didn't have a custompatches dir
 fi
 
 if [ -n "${_desired_wine_commit}" ] && ! [ "${_custompatches}" = "true" ]; then
   source+=("git+https://gitlab.winehq.org/wine/wine.git#commit=${_desired_wine_commit}")
-  sha512sums+=('a77fdc757f3cb77ab146ae305916565a1d1558a763b98020d9bbb3557728723a7289d51df397014ccf4a375909dadc065bb2d37192af12596638ee144a149c55')
 else
   source+=('git+https://gitlab.winehq.org/wine/wine.git')
-  sha512sums+=('SKIP')
 fi
+sha512sums+=('SKIP')
 
 if [ -n "${_desired_staging_commit}" ] && ! [ "${_custompatches}" = "true" ]; then
   source+=("git+https://github.com/wine-staging/wine-staging.git#commit=${_desired_staging_commit}")
-  sha512sums+=('2b71a0147fcf8c54516201b747a836a820dfc6e281f3a5c5f8ec40e9de811d179ee66bf601258c35c7d4d3e3608997f3618badb36d62c69db5396bd7c4445130')
 else
   source+=('git+https://github.com/wine-staging/wine-staging.git')
-  sha512sums+=('SKIP')
 fi
+sha512sums+=('SKIP')
 
 depends=(
   fontconfig
@@ -244,8 +244,10 @@ _set_vars() {
 prepare() { _set_vars;
   cd "${_where}" || _failure
 
-  ## removes pkg dir if already existing
+  ## Removes pkg dir if already existing
   rm -rf "${_where}"/pkg || true
+
+  ## Source base re-configuration
 
   if [ "${_custompatches}" = "true" ]; then
     if [ -z "${_desired_wine_commit}" ]; then
@@ -261,11 +263,15 @@ prepare() { _set_vars;
     _patchbase_wine_commit=$(cat "${srcdir}"/wine-osu-patches/wine-commit)
     _patchbase_staging_commit=$(cat "${srcdir}"/wine-osu-patches/staging-commit)
 
-    if [ -z "${_desired_wine_commit}" ]; then
+    if [ "${_autoupdate}" != "true" ]; then
       _desired_wine_commit=$_patchbase_wine_commit
-    fi
-    if [ -z "${_desired_staging_commit}" ]; then
+      sed -i "s/^_desired_wine_commit=.*$/_desired_wine_commit=${_patchbase_wine_commit}/g" "${_where}/PKGBUILD"
+
       _desired_staging_commit=$_patchbase_staging_commit
+      sed -i "s/^_desired_staging_commit=.*$/_desired_staging_commit=${_patchbase_staging_commit}/g" "${_where}/PKGBUILD"
+    elif [ -z "${_desired_wine_commit}" ] || [ -z "${_desired_staging_commit}" ]; then
+      _desired_wine_commit=${_desired_wine_commit:-master}
+      _desired_staging_commit=${_desired_staging_commit:-master}
     fi
   fi
 
@@ -274,7 +280,7 @@ prepare() { _set_vars;
   ## Rename our working copy of the wine source
   mv "${srcdir}"/wine "${srcdir}"/"${pkgname}" || _failure
 
-  if [ "$_autoupdate" != "true" ]; then
+  if [ "${_autoupdate}" != "true" ]; then
     cd "${srcdir}"/"${pkgname}" || _failure
     git reset --hard "${_desired_wine_commit}" || _failure
     cd "${srcdir}" || _failure
@@ -288,7 +294,7 @@ prepare() { _set_vars;
 
   ## Staging setup
 
-  if [ "$_autoupdate" != "true" ]; then
+  if [ "${_autoupdate}" != "true" ]; then
     cd "${srcdir}"/wine-staging || _failure
     git reset --hard "${_desired_staging_commit}" || _failure
     cd "${srcdir}" || _failure
@@ -495,14 +501,14 @@ package() { _set_vars;
   fi
 
   if [ "${wow64build}" = "true" ]; then
-    ln -sf "${pkgdir}"/opt/"${pkgname}"/bin/wine "${pkgdir}"/opt/"${pkgname}"/bin/wine64
+    ln -sf /opt/"${pkgname}"/bin/wine "${pkgdir}"/opt/"${pkgname}"/bin/wine64
   fi
 
   cp "${srcdir}"/winestart "${pkgdir}"/opt/"${pkgname}"/bin/wine-osu"${_wowname}"
 
   ## Force our wine to use its own libraries
   install -d "${pkgdir}"/usr/bin
-  ln -s /opt/"${pkgname}"/bin/wine-osu"${_wowname}" "${pkgdir}"/usr/bin/wine-osu"${_wowname}"
+  ln -sf /opt/"${pkgname}"/bin/wine-osu"${_wowname}" "${pkgdir}"/usr/bin/wine-osu"${_wowname}"
   chmod +x "${pkgdir}"/opt/"${pkgname}"/bin/wine-osu"${_wowname}"
 
   ## Clean patchlog dirnames and add to package
