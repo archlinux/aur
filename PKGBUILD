@@ -1,6 +1,6 @@
 # Maintainers: XenHat <me at xenh.at>, luni3359
 pkgname=moonlight-qt-bin
-pkgver=6.0.0
+pkgver=6.0.1
 pkgrel=2
 pkgdesc="moonlight-qt bin from appimage"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("${pkgname%-bin}-$pkgver.AppImage::https://github.com/moonlight-stream/m
 _bin_name="${pkgname%-qt-bin}"
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
-sha256sums=('0a39bfe666089434a337297df84ebffd5358786752f1ac46e5f49269798b372e'
+sha256sums=('a963d5567378d0861977d466831303336e84687cbf1bbaf96aabb91af66b6768'
             '7dc324b4621067c01c1ea91570dec230fb43735f48f5f9eac91b0e487070a79d')
 options=(!strip)
 prepare() {
