@@ -1,0 +1,24 @@
+pkgbase = python-flexparser
+	pkgdesc = A parser by hgrecco
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/hgrecco/flexparser
+	arch = any
+	license = BSD-3-Clause
+	checkdepends = python-pytest-mpl
+	checkdepends = python-pytest-cov
+	checkdepends = python-pytest-subtests
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-ruff
+	makedepends = git
+	depends = python
+	depends = python-typing_extensions
+	depends = python-pytest7
+	source = python-flexparser::git+https://github.com/hgrecco/flexparser.git#tag=0.3.1
+	sha256sums = e3de6665dc91aba4d9657b86824f884a1069ae7e6c00796b2c8a6f09806b6029
+
+pkgname = python-flexparser
