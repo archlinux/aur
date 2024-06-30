@@ -29,8 +29,8 @@ if [ -n "$_disable_docs" ]; then
 else
   pkgname=(gnome-shell-performance gnome-shell-performance-docs)
 fi
-pkgver=46.2
-pkgrel=3
+pkgver=46.3.1
+pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://wiki.gnome.org/Projects/GnomeShell"
@@ -76,25 +76,25 @@ if [ -n "$_enable_check" ]; then
     xorg-server-xvfb
   )
 fi
-_commit=568152c22247efbb66cd13c15a638bf2d36bfadb  # tags/46.2^0
+_commit=52fd93196c1c61b34a571c9d7940fda22576e1c1  # tags/46.3.1^0
 source=(
   "git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
-  "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
+  "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git#commit=5f9768a2eac29c1ed56f1fbb449a77a3523683b6"
   "build-Add-explicit-dependency-on-Xfixes.patch"
   "shell-tray-icon-Trigger-a-relayout-when-the-underneath-xe.patch"
   "shell-tray-icon-Use-available-space-when-that-s-defined.patch"
   "tray-na-xembed-Destroy-socket-window-when-ending-the-embe.patch"
   "tray-na-xembed-Use-XShape-to-remove-input-on-socket-windo.patch"
 )
-sha256sums=('51bfde603207878ba74aa79e003c23307d46ff310a11d04c3f0386cae4ca4132'
-            'SKIP'
+sha256sums=('51302aa72f160948e2e45f8de6978666b268e18ddbc88f377a075e2309651076'
+            '587319b45ff7d989635aed0c3bd9ef834d6e53ae46788cb6ba083d42d7e63855'
             '512e3116ae9eea5b9d36092cd05074da86d37c911144f3d66df95da0d2d60353'
             'a3eda616996980f6f27c58c6b0d9c0d51094e7ad9c52f809a2a7f8eac9a2fbd9'
             '612dcb05347295893771396c8cfb993ec66871f04b9b6b93e188369cb12bdf2c'
             'fcfec78b92f027e73958cc3e4b740d38db719b8185c79b040571a297d42056b1'
             '9c51c48b3b7c6e5851630eb74289ab7897abca9226a89075a8b225fda2bda255')
-b2sums=('dbc32a609c1ee2f59ce777f2af4a541b376d5e53bded7d4b6ddfa0a913db503fc429fa0f9b8c8068b9e00382383e669ea6cbf553caa2348666cdc33bee8ad4ad'
-        'SKIP'
+b2sums=('1ab8d447e52f554634dc5d80628615e2628c2e9ee2f37c5c7b01cadf33c160f64c9fdd04a1fbe1b0bbc619d7128a5364ca650398c844e505d0783d4be5b223d6'
+        'e31ae379039dfc345e8032f7b9803a59ded075fc52457ba1553276d3031e7025d9304a7f2167a01be2d54c5e121bae00a2824a9c5ccbf926865d0b24520bb053'
         'bcd22b41f9ed65db461bab3460954b15345c3f72fb4da99cae702627d69bef25c8689464cb3ac37ef23b38ea90b18cf2486a947aa9f8dae4f69915367ee3db16'
         'f8e7d2e5e7717b8610d53393dab97e0af181d8eed3d95988357347f57864e88f5339ce67f22ccef86d30d19c8a03b02e5938bc23c23db37f41e67482a133c3b4'
         'd13b586f9be8e4088f8cefa3c63e4e1143f8b7206a8c05fc4646dbdf2e931260da531ad2d2393c47e85e7a6f64dd76b36ea9884ce16246246bf116c657f90163'
@@ -134,6 +134,9 @@ pick_mr() {
 }
 
 prepare() {
+  # Inject gvc
+  ln -s libgnome-volume-control gvc
+
   cd $_pkgname
 
   ### Adding and fetching remotes providing the selected merge-requests
@@ -181,10 +184,6 @@ prepare() {
   #   4. Merged: MR approved and it changes commited to master.
   #
   # Generally, a MR status oscillate between 2 and 3 and then becomes 4.
-
-  git submodule init
-  git submodule set-url subprojects/gvc "$srcdir/libgnome-volume-control"
-  git -c protocol.file.allow=always submodule update
 }
 
 build() {
@@ -195,6 +194,9 @@ build() {
 
   CFLAGS="${CFLAGS/-O2/-O3} -fno-semantic-interposition"
   LDFLAGS+=" -Wl,-Bsymbolic-functions"
+
+  # Inject gvc
+  export MESON_PACKAGE_CACHE_DIR="$srcdir"
 
   arch-meson $_pkgname build "${meson_options[@]}"
   meson compile -C build
