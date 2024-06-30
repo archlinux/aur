@@ -1,13 +1,14 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname=kelvpn
-pkgver=$(curl --silent 'https://pub.kelvpn.com/linux/master/latest/' | grep -oP 'KelVPN-\K\d+.\d+\-\d+' | tr '-' '.')
-pkgrel=2
+pkgver=$(curl --silent 'https://pub.kelvpn.com/linux/master/latest/' | grep -oP 'KelVPN-\K\d+.\d+\-\d+' | sed 's/-/./g')
+_pkgver=$(echo $pkgver | sed 's/\.\([^\.]*\)$/-\1/')
+pkgrel=3
 pkgdesc="KelVPN is a decentralized quantum-secure VPN service. It provides the highest level of protection for your network connection, including quantum threat protection."
 arch=('x86_64')
 url="https://kelvpn.com/"
 license=('custom')
 provides=("kelvpn")
-source=(https://pub.kelvpn.com/linux/master/KelVPN-7.6-6-amd64.deb)
+source=(https://pub.kelvpn.com/linux/master/KelVPN-$_pkgver-amd64.deb)
 sha256sums=('SKIP')
 install=$pkgname.install
 options=(!debug)
