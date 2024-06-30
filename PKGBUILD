@@ -1,6 +1,6 @@
 # Maintainer: Zesko
 pkgname="limine-snapper-sync-git"
-pkgver=r12.8eca098
+pkgver=r16.2b936e8
 pkgrel=1
 pkgdesc="Snapper integration for Limine bootloader."
 arch=("any")
@@ -19,8 +19,10 @@ optdepends=(
         'rsync: For restore'
 )
 makedepends=('git' 'maven')
-sha1sums=("SKIP")
+sha1sums=('SKIP')
 backup=(etc/limine-snapper-sync.conf)
+conflicts=('limine-snapper-sync')
+
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
@@ -31,13 +33,13 @@ pkgver() {
 build() {
     cd "$srcdir/${pkgname%-git}"
     mvn clean package
-    install -dm 755 usr/share/java/
-    install -Dm 644 target/limine-snapper-sync*.jar usr/share/java/
-
 }
 
 package() {
   cd "$srcdir/${pkgname%-git}"
-  cp -vr install/arch-linux/usr install/arch-linux/etc usr "$pkgdir"
+  src_path="install/arch-linux/"
+  install -dm 755 $src_path/usr/share/java/
+  install -Dm 644 target/limine-snapper-sync*.jar $src_path/usr/share/java/
+  cp -vr $src_path/usr $src_path/etc "$pkgdir"
 }
 
