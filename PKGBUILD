@@ -2,10 +2,10 @@
 
 pkgname=discord-electron-openasar
 _pkgname=discord
-pkgver=0.0.58+827
+pkgver=0.0.58+828
 _pkgver=${pkgver%%+*}
 pkgrel=1
-_electronver=30
+_electronver=31
 _electronname="electron${_electronver}"
 pkgdesc="Discord packaged with OpenAsar using system provided electron (v${_electronver}) for increased security and performance"
 arch=('x86_64')
@@ -16,7 +16,7 @@ license=('custom')
 options=('!strip')
 install="$pkgname.install"
 depends=("${_electronname}" 'libxss' 'unzip')
-makedepends=('git' 'asar' 'nodejs' 'curl' 'python-html2text')
+makedepends=('git' 'asar' 'nodejs' 'curl')
 optdepends=(
 	'libpulse: Pulseaudio support'
 	'libappindicator-gtk3: Systray indicator support'
@@ -27,11 +27,11 @@ optdepends=(
 source=("https://dl.discordapp.net/apps/linux/${_pkgver}/${_pkgname}-${_pkgver}.tar.gz"
 	'discord-launcher.sh'
 	'krisp-patcher.py' # original: https://github.com/sersorrel/sys/blob/main/hm/discord/krisp-patcher.py
-	"git+https://github.com/goosemod/openasar.git#commit=4f264d860a5a6a32e1862ce26178b9cf6402335d")
+	"git+https://github.com/goosemod/openasar.git#commit=5c875eb048e96543f1ec711fae522ace5e4a836c")
 sha512sums=('8efab6f4a476c05b620f3e95c082ae3f5423a2aaab310687f8b67711b0b34e7c82105e8c9ea5d4e0b92fc368443bc6a0e8970143d28ef7cb2d5f9e05f85b038d'
             '4497ff3df7e2c1e72eea09d6f36a80cabeabfd43bb03b0966795d45e10a02ea6b4c10407661092d057435e0d69d75e958a3dbb1dc5971a215ce09547ec56f666'
             '3c1021592fa856f3561072c76b5ee0b5a34a53bc230336e6d36827efb4866c9d801ef7abb24650d3a7210c61dd57f35e2812ae89226fc157cc8d9ffce032155f'
-            '055bbe5fbc63a715ab8357db8aabacad282e3d176b48e322d7133a5887291577687456bbfaf7b832d19f13b1a5a373e2c0f6f82664887509feb3c193ee4f1849')
+            '36b7747ec2dad8ddcc84533dbe2013eae7166affd9fdaa3b5c8571faf4e1361fda2aadde719df4d4d18a7da513be51fe8e0726dbf589ebe545a0abc12960bb22')
 
 # just in case I get the version wrong
 pkgver() {
@@ -50,8 +50,8 @@ prepare() {
 	sed -i -e "s|Exec=.*|Exec=/usr/bin/${_pkgname}|" ${_pkgname^}/$_pkgname.desktop
 
 	# create the license files
-	curl https://discord.com/terms | html2text >"${srcdir}"/LICENSE.md
-	curl https://discord.com/licenses | html2text >"${srcdir}"/OSS-LICENSES.md
+	curl -o LICENSE.html https://discord.com/terms
+	curl -o OSS-LICENSES.html https://discord.com/licenses
 }
 
 build() {
@@ -88,6 +88,6 @@ package() {
 	install -Dm 644 krisp-patcher.py "${pkgdir}"/usr/lib/${_pkgname}/
 
 	# install licenses
-	install -Dm 644 LICENSE.md "${pkgdir}"/usr/share/licenses/$_pkgname/LICENSE.md
-	install -Dm 644 OSS-LICENSES.md "${pkgdir}"/usr/share/licenses/$_pkgname/OSS-LICENSES.md
+	install -Dm 644 LICENSE.html "${pkgdir}"/usr/share/licenses/$_pkgname/LICENSE.html
+	install -Dm 644 OSS-LICENSES.html "${pkgdir}"/usr/share/licenses/$_pkgname/OSS-LICENSES.html
 }
