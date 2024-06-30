@@ -156,10 +156,10 @@ index 1661028be88b..e836a03e022f 100644
    /// The AST is only valid for the duration of the callback.
 diff --git a/clang-tools-extra/clangd/CodeLens.cpp b/clang-tools-extra/clangd/CodeLens.cpp
 new file mode 100644
-index 000000000000..b24bb725480d
+index 000000000000..4dae00853fdf
 --- /dev/null
 +++ b/clang-tools-extra/clangd/CodeLens.cpp
-@@ -0,0 +1,185 @@
+@@ -0,0 +1,190 @@
 +//===--- CodeLens.cpp --------------------------------------------*- C++-*-===//
 +//
 +// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
@@ -322,11 +322,12 @@ index 000000000000..b24bb725480d
 +    auto FindedRefs = findReferences(AST, Pos, Limit, Index);
 +    auto Refs = FindedRefs.References;
 +    Arg.locations.reserve(Refs.size());
++    size_t NotUsedRefs = 0u;
 +    for (auto &Ref : Refs) {
 +      if ((Ref.Attributes &
 +           (ReferencesResult::Declaration | ReferencesResult::Definition |
 +            ReferencesResult::Override)) != 0)
-+        continue;
++        NotUsedRefs++;
 +
 +      Arg.locations.emplace_back(std::move(Ref.Loc));
 +    }
@@ -336,7 +337,11 @@ index 000000000000..b24bb725480d
 +      auto NumRefs = llvm::utostr(Arg.locations.size());
 +      if (FindedRefs.HasMore)
 +        NumRefs += "+";
-+      Cmd.title = NumRefs + " ref(s)";
++      NumRefs += " ref(s)";
++      if (Arg.locations.size() == NotUsedRefs)
++        Cmd.title = "Unused " + NumRefs;
++      else
++        Cmd.title = NumRefs;
 +    }
 +    Cmd.argument = std::move(Arg);
 +    return CodeLens{Params.range, std::move(Cmd), std::nullopt};
