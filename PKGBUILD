@@ -1,7 +1,7 @@
 # Maintainer: Leo <i@setuid0.dev>
 _pkgname=google_re2
 pkgname=python-re2
-pkgver=1.1.20240601
+pkgver=1.1.20240702
 pkgrel=1
 epoch=
 pkgdesc="RE2 Python bindings"
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 noextract=()
-sha256sums=('3187f68855307754d49f398e583853d5b08d783d3fe662f6916b999075f7e095')
+sha256sums=('8788db69f6c93cb229df62c74b2d9aa8e64bf754e9495700f85812afa32efd2b')
 validpgpkeys=()
 
 build() {
