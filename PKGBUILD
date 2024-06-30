@@ -16,9 +16,10 @@ depends=('vapoursynth-plugin-mvtools'
          'vapoursynth-plugin-mvsfunc' 
          'vapoursynth-plugin-frameblender'
          'vapoursynth-plugin-adjust'
-         'vapoursynth-plugin-vsakarin-git')
+         'vapoursynth-plugin-vsakarin-git'
+         'python')
 optdepends=('vapoursynth-plugin-rife-ncnn-vulkan: RIFE-NCNN Vulkan support')
-makedepends=('rustup' 'python' 'gtk3' 'git')
+makedepends=('rustup' 'gtk3' 'git')
 source=("$pkgname::git+https://github.com/Hzqkii/smoothie-rs.git#branch=file-paths")
 sha256sums=('SKIP')
 provides=("smoothie-rs-linux")
