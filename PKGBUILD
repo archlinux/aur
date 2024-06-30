@@ -12,7 +12,7 @@ _pkgbase=gdal
 provides=('gdal')
 conflicts=('gdal')
 pkgname=(gdal-hdf4 python-gdal-hdf4)
-pkgver=3.9.0
+pkgver=3.9.1
 pkgrel=1
 pkgdesc="Translator library for raster and vector geospatial data formats"
 arch=(x86_64)
@@ -35,15 +35,8 @@ optdepends=('postgresql: when present while building, postgresql database suppor
 options=('!emptydirs')
 changelog=$pkgbase.changelog
 
-source=(https://download.osgeo.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.gz
-        https://github.com/OSGeo/gdal/commit/7b526b12.patch)
-#source=(https://github.com/OSGeo/${_pkgbase}/releases/download/v${pkgver}/${_pkgbase}-${pkgver}.tar.gz)
-md5sums=('d3780907608f381a4f662cb1480c7f97'
-        'c26d4b16750f3cddfc9e9884fa3210e1')  
-
-prepare() {
-  patch -d $_pkgbase-$pkgver -p1 < 7b526b12.patch # Fix build with C++20
-}
+source=(https://github.com/OSGeo/${_pkgbase}/releases/download/v${pkgver}/${_pkgbase}-${pkgver}.tar.gz)
+md5sums=('3a9642768f886434a28076e332495a4c')
 
 
 build() {
