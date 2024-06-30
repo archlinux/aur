@@ -1,25 +1,7 @@
 diff --git a/internal/app/migration.go b/internal/app/migration.go
-index 0f7b9f6b..d8e8b823 100644
+index d4b99581..c8eea212 100644
 --- a/internal/app/migration.go
 +++ b/internal/app/migration.go
-@@ -43,8 +43,6 @@ import (
- 
- // nolint:gosec
- func migrateKeychainHelper(locations *locations.Locations) error {
--	logrus.Info("Migrating keychain helper")
--
- 	settings, err := locations.ProvideSettingsPath()
- 	if err != nil {
- 		return fmt.Errorf("failed to get settings path: %w", err)
-@@ -55,6 +53,8 @@ func migrateKeychainHelper(locations *locations.Locations) error {
- 		return nil
- 	}
- 
-+	logrus.Info("Migrating keychain helper")
-+
- 	configDir, err := os.UserConfigDir()
- 	if err != nil {
- 		return fmt.Errorf("failed to get user config dir: %w", err)
 @@ -62,7 +62,7 @@ func migrateKeychainHelper(locations *locations.Locations) error {
  
  	b, err := os.ReadFile(filepath.Join(configDir, "protonmail", "bridge", "prefs.json"))
