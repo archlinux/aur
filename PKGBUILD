@@ -1,16 +1,16 @@
 # Maintainer: Sasheto-phizika
 
 pkgname=hyprscratch
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
-pkgdesc="Scratchpad funciontality for Hyprland"
-url="https://github.com/sasheto-phizika/hyprscratch"
+pkgdesc="Scratchpad functiontality for Hyprland"
+url="https://github.com/sashetophizika/hyprscratch"
 makedepends=('cargo')
 depends=('hyprland')
 arch=('x86_64')
 license=('MIT')
 source=("https://github.com/sasheto-phizika/hyprscratch/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f4197425decfc60bd1fb3f0a5d31bf4bf0e0b868884117b26be483ac1b1d20bb')
+sha256sums=('e4ffa47f912e5cc02300bd8e9d10a4a2070a9d212672f5446189e1a8333ba6b5')
 
 build() {
   cd "$pkgname-$pkgver"
