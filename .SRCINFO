@@ -1,0 +1,30 @@
+pkgbase = smoothie-rs-linux-filepaths-git
+	pkgdesc = Linux-Tested version of smoothie-rs with different filepaths for configs and temp files.
+	pkgver = Nightly_2024.01.08_14.47.r46.g5ccc2a2
+	pkgrel = 1
+	url = https://github.com/Hzqkii/smoothie-rs
+	arch = x86_64
+	license = GPL3
+	makedepends = rustup
+	makedepends = python
+	makedepends = gtk3
+	makedepends = git
+	depends = vapoursynth-plugin-mvtools
+	depends = vapoursynth-plugin-havsfunc
+	depends = vapoursynth
+	depends = ffmpeg
+	depends = vapoursynth-plugin-svpflow1
+	depends = ffms2
+	depends = vapoursynth-plugin-svpflow2-bin
+	depends = vapoursynth-plugin-mvsfunc
+	depends = vapoursynth-plugin-frameblender
+	depends = vapoursynth-plugin-adjust
+	depends = vapoursynth-plugin-vsakarin-git
+	optdepends = vapoursynth-plugin-rife-ncnn-vulkan: RIFE-NCNN Vulkan support
+	provides = smoothie-rs-linux
+	conflicts = smoothie-rs-linux
+	conflicts = smoothie-rs-linux-debug
+	source = smoothie-rs-linux-filepaths-git::git+https://github.com/Hzqkii/smoothie-rs.git#branch=file-paths
+	sha256sums = SKIP
+
+pkgname = smoothie-rs-linux-filepaths-git
