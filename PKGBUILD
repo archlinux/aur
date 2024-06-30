@@ -68,7 +68,7 @@ sha256sums=('SKIP'
             '9c2a148a1e4c7ca16ab54991980ed6393c1c21794081083f2779d880b3dbf1d4'
             '6463c6d54b99dddaa0f3da7a84926eb543672a4414dc2835bf35bb9eada9339f'
             'ec2d7358f81598390a8ceca2d1974be3e5f7c45602b550c89a1e9323ab45474b'
-            '4e1c4ff072f0bf7df589b5c7160b0a4add5de326abd7570a2d1a4657f09e47a6')
+            '221a8fc0d1f0cebdf281acc26484e98ebbb59f876e12fdef3f03cf91380e31f5')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
@@ -161,6 +161,7 @@ build() {
         -DCMAKE_SHARED_LINKER_FLAGS_INIT="-fuse-ld=lld" \
         -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
         -DCMAKE_PREFIX_PATH="$srcdir/deps/usr" \
+        -DCMAKE_BUILD_RPATH=/usr/lib/duckstation \
         -DCMAKE_SKIP_RPATH=ON \
         -DBUILD_NOGUI_FRONTEND=OFF \
         -DBUILD_QT_FRONTEND=ON \
