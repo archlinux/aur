@@ -1,8 +1,8 @@
 # Maintainer: yifwon <wyf9661 at gmail dot com>
 # Contributor: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="bilibili-appimage"
-_pkgver=1.13.6
-_subver=2
+_pkgver=1.14.0
+_subver=1
 release_tag="${_pkgver}-${_subver}"
 pkgver="${_pkgver}.${_subver}"
 pkgrel=1
@@ -13,14 +13,14 @@ license=('MIT')
 options=(!strip)
 conflicts=("${pkgname%-appimage}")
 depends=('zlib' 'hicolor-icon-theme' 'glibc')
-_install_path="/opt/appimages"
+_install_path="/opt/${pkgname}"
 source_x86_64=("${pkgname}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${release_tag}/${pkgname%-appimage}-${_pkgver}-x86_64.AppImage")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.AppImage::${url}/releases/download/v${release_tag}/${pkgname%-appimage}-${_pkgver}-arm64.AppImage")
 source_loong64=("${pkgname}-${pkgver}-loong64.AppImage::${url}/releases/download/v${release_tag}/${pkgname%-appimage}-${_pkgver}-loong64.AppImage")
 source=("LICENSE::https://raw.githubusercontent.com/msojocs/bilibili-linux/master/license")
-sha256sums_x86_64=('3aedbe58872d8c6d9af4ecb5c62fb8c9949e761cdb5524eb7eda0a07c1def9a9')
-sha256sums_aarch64=('876cd2af12f080319122528f2244080b14f6a77edfa835ccd7a6333c0c849d13')
-sha256sums_loong64=('7e491111d0898dc43078f43c6768c1f58803f63987fca0600961563f5db1bba9')
+sha256sums_x86_64=('7250692dcb3c4709cdb1afe12df14a5081a1dbaf4f4e04207a1c39e47cb9e5e5')
+sha256sums_aarch64=('d6af4df2ac6f4c23f0c7b961004fc9831a98b5daa67b059cdeb26a202c8d0a33')
+sha256sums_loong64=('416af72a0c2060cd694bb7d5af6adaf59748f53be74473f958f8dbbc4b88730c')
 sha256sums=('21668b8229199de1a523b82805c80d6e110a67fef5766aa7cc3c7df4416d1468')
 
 _appimage="${pkgname}-${pkgver}-${CARCH}.AppImage"
@@ -28,7 +28,7 @@ _appimage="${pkgname}-${pkgver}-${CARCH}.AppImage"
 prepare() {
     chmod a+x "${_appimage}"
     "./${_appimage}" --appimage-extract > /dev/null
-    sed 's|AppRun|/opt/appimages/bilibili.AppImage|g' -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
+    sed "s|AppRun|${_install_path}/bilibili.AppImage|g" -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
 }
 package() {
     install -Dm755 "${_appimage}" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"
