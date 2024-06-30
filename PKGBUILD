@@ -1,7 +1,7 @@
 # Maintainer: xstraok <xstraok@proton.me>
 
 pkgname=wavey-launcher-bin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A launcher for a specific anime game with auto-patching, discord rpc and time tracking"
 url="https://github.com/an-anime-team/wavey-launcher"
@@ -34,7 +34,7 @@ source=(
 )
 
 md5sums=(
-    '0f682ed0cc32d134cf04e85b12ab8b0e'
+    '7f5ee5c4551dbba637cc9cf61d3deab3'
     '04741898d8f21b114b9a7c18ba62771e'
     '1de2056ecd09de1ca59dd8a7c68552be'
 )

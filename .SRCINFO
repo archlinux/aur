@@ -1,6 +1,6 @@
 pkgbase = wavey-launcher-bin
 	pkgdesc = A launcher for a specific anime game with auto-patching, discord rpc and time tracking
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/an-anime-team/wavey-launcher
 	arch = x86_64
@@ -18,10 +18,10 @@ pkgbase = wavey-launcher-bin
 	optdepends = gamemode: Game Optimizations
 	optdepends = gamescope: a tool from Valve that allows for games to run in an isolated Xwayland instance
 	provides = wavey-launcher
-	source = wavey-launcher_1.0.0::https://github.com/an-anime-team/wavey-launcher/releases/download/1.0.0/wavey-launcher
+	source = wavey-launcher_1.0.1::https://github.com/an-anime-team/wavey-launcher/releases/download/1.0.1/wavey-launcher
 	source = icon.png
 	source = wavey-launcher.desktop
-	md5sums = 0f682ed0cc32d134cf04e85b12ab8b0e
+	md5sums = 7f5ee5c4551dbba637cc9cf61d3deab3
 	md5sums = 04741898d8f21b114b9a7c18ba62771e
 	md5sums = 1de2056ecd09de1ca59dd8a7c68552be
 
