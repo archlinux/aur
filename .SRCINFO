@@ -1,6 +1,6 @@
 pkgbase = g4music
 	pkgdesc = Play your music elegantly
-	pkgver = 3.7.1
+	pkgver = 3.7.2
 	pkgrel = 1
 	url = https://gitlab.gnome.org/neithern/g4music
 	arch = aarch64
@@ -23,7 +23,7 @@ pkgbase = g4music
 	optdepends = gst-plugins-base: "base" plugin libraries
 	optdepends = gst-plugins-good: "good" plugin libraries
 	optdepends = gst-plugins-ugly: "ugly" plugin libraries
-	source = https://gitlab.gnome.org/neithern/g4music/-/archive/v3.7.1/g4music-v3.7.1.tar.gz
-	b2sums = 9ace75e38b21a2c6e269c0ae481eb7a1d86ea1639eb0f0dcdc4fae726efa93c19637d02d9caa7bbb87fa93dc6bdaa675e1ec3d53c6cc235a77deaa4884cc862a
+	source = https://gitlab.gnome.org/neithern/g4music/-/archive/v3.7.2/g4music-v3.7.2.tar.gz
+	b2sums = 931423eff48169aef1ae2db80ade206f4ac0206411c8b7f5013fcd013557f033a5a74f68a378122f1da9395efa1bc1e73e80cfdf4155edfb1314a299a4501930
 
 pkgname = g4music

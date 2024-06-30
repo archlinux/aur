@@ -2,7 +2,7 @@
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=g4music
-pkgver=3.7.1
+pkgver=3.7.2
 pkgrel=1
 pkgdesc="Play your music elegantly"
 arch=('aarch64' 'x86_64')
@@ -25,7 +25,7 @@ optdepends=('gst-plugins-bad: "bad" plugin libraries'
             'gst-plugins-good: "good" plugin libraries'
             'gst-plugins-ugly: "ugly" plugin libraries')
 source=("${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-b2sums=('9ace75e38b21a2c6e269c0ae481eb7a1d86ea1639eb0f0dcdc4fae726efa93c19637d02d9caa7bbb87fa93dc6bdaa675e1ec3d53c6cc235a77deaa4884cc862a')
+b2sums=('931423eff48169aef1ae2db80ade206f4ac0206411c8b7f5013fcd013557f033a5a74f68a378122f1da9395efa1bc1e73e80cfdf4155edfb1314a299a4501930')
 
 build() {
   arch-meson "${pkgname}-v${pkgver}" build
