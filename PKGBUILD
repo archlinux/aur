@@ -1,23 +1,24 @@
-# Maintainer: tuftedocelot@fastmail.fm
-_pkgname=dswitcher
-pkgname=${_pkgname}-git
-pkgver=10
-pkgrel=3
+# Contributor: tuftedocelot@fastmail.fm
+
+pkgname=dswitcher-git
+pkgver=12.413c983
+pkgrel=1
 pkgdesc='Dmenu-based window switcher for EWHM-compliant X11 window managers'
 arch=('any')
 url="https://github.com/Antithesisx/dswitcher"
-license=('GPLv3')
+license=('GPL-3.0-or-later')
 depends=('wmctrl' 'dmenu')
 makedepends=('git')
-source=("git://github.com/Antithesisx/dswitcher.git")
+source=("${pkgname}::git+${url}.git")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$_pkgname"
-    git rev-list --count HEAD
+    cd "$pkgname"
+    echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 package() {
-    install -Dm 755 "$srcdir/$_pkgname/$_pkgname" "${pkgdir}/usr/bin/$_pkgname"
-    install -D -m644 "$srcdir/$_pkgname/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    cd "$pkgname"
+    install -Dm755 "dswitcher" -t "${pkgdir}/usr/bin"
+    install -Dm644 "README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
