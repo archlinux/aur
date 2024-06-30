@@ -1,78 +1,119 @@
-# Maintainer:  GodofGrunts <me@godofgrunts.xyz>
+# Maintainer:
+# Contributor: GodofGrunts <me@godofgrunts.xyz>
 
-pkgname=libresprite-git
-_pkgname=LibreSprite
-pkgver=1.0.beta.1.r1.g2e35e53fd
+_pkgname="libresprite"
+pkgname="$_pkgname-git"
+pkgver=1.0.r245.gc99d366
 pkgrel=1
-pkgdesc='fork of last GPL version of aseprite - git version'
-arch=('x86_64' 'i686')
+pkgdesc="Animated sprite editor and pixel art tool"
 url='https://github.com/LibreSprite/LibreSprite'
-license=('GPL')
-depends=('pixman' 'curl' 'lua' 'sdl2' 'sdl2_image' 'giflib' 'zlib' 'libpng' 'libjpeg-turbo' 'tinyxml' 'freetype2' 'libwebp')
-makedepends=('cmake' 'ninja' 'gtest' 'git')
+license=('GPL-2.0-only')
+arch=('x86_64' 'i686')
 
-source=("git+https://github.com/LibreSprite/LibreSprite.git"
-	"git+https://github.com/LibreSprite/duktape.git"
-	"git+https://github.com/aseprite/simpleini.git"
-	"git+https://github.com/aseprite/clip.git"
-	"git+https://github.com/aseprite/flic.git"
-	"git+https://github.com/dacap/observable.git"
-	"git+https://github.com/aseprite/undo.git"
-	"libresprite.desktop")
+depends=(
+  'curl'
+  'freetype2'
+  'giflib'
+  'libjpeg-turbo'
+  'libpng'
+  'libwebp'
+  'lua'
+  'pixman'
+  'sdl2'
+  'sdl2_image'
+  'tinyxml2'
+  'zlib'
+)
+makedepends=(
+  'cmake'
+  'git'
+  'gtest'
+)
 
-sha256sums=('SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'd246c14dc6c0d71d02aba337c15c23611c6e982687300c86167f37b9926af7ba')
+provides=(
+  libresprite
+)
+conflicts=(
+  aseprite
+  libresprite
+)
 
-conflicts=(aseprite aseprite-git aseprite-gpl libresprite)
+_pkgsrc="$_pkgname"
+source=(
+  "$_pkgsrc"::"git+https://github.com/LibreSprite/LibreSprite.git"
 
-_submodules=('duktape'
-	'simpleini'
-	'clip'
-	'flic'
-	'observable'
-	'undo')
+  'clip'::'git+https://github.com/aseprite/clip.git'
+  'duktape'::'git+https://github.com/libresprite/duktape.git'
+  'flic'::'git+https://github.com/aseprite/flic.git'
+  'observable'::'git+https://github.com/dacap/observable.git'
+  'simpleini'::'git+https://github.com/aseprite/simpleini.git'
+  'undo'::'git+https://github.com/aseprite/undo.git'
+)
 
-_submodules_path=('third_party/duktape'
-	'third_party/simpleini'
-	'src/clip'
-	'src/flic'
-	'src/observable'
-	'src/undo')
+sha256sums=(
+  'SKIP'
+
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+)
 
 pkgver() {
-	cd "$_pkgname"
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
-	cd "$_pkgname"
-	git submodule init
-	for (( i=0; i<${#_submodules[@]}; i++ )); do
-		git config submodule.${_submodules_path[$i]}.url "${srcdir}/${_submodules[$i]}"
-	done
-	git submodule update
+  cd "$_pkgsrc"
+  local _submodules=(
+    'clip'::'src/clip'
+    'duktape'::'third_party/duktape'
+    'flic'::'src/flic'
+    'observable'::'src/observable'
+    'simpleini'::'third_party/simpleini'
+    'undo'::'src/undo'
+  )
+  local _module
+  for _module in "${_submodules[@]}"; do
+    git submodule init "${_module##*::}"
+    git submodule set-url "${_module##*::}" "$srcdir/${_module%::*}"
+    git -c protocol.file.allow=always submodule update "${_module##*::}"
+  done
 }
 
 build() {
-	cd "$_pkgname"
-	mkdir -p build
-	cd build
-	cmake -DCMAKE_INSTALL_PREFIX=/usr -G Ninja ..
-	ninja libresprite
-}
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
 
+    -DCMAKE_INSTALL_PREFIX="/usr"
+    -Wno-dev
+  )
+
+  cmake "${_cmake_options[@]}"
+  cmake --build build
+}
 
 package() {
-	DESTDIR="$pkgdir" ninja install -C $_pkgname/build 
-	install -Dm644 "$srcdir/libresprite.desktop" \
-		"$pkgdir/usr/share/applications/libresprite.desktop"
-	install -Dm644 "$pkgdir/usr/share/libresprite/data/icons/ase64.png" \
-		"$pkgdir/usr/share/pixmaps/libresprite.png"
-}
+  DESTDIR="$pkgdir" cmake --install build
 
+  install -Dm644 "$pkgdir/usr/share/libresprite/data/icons/ase64.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
+
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
+[Desktop Entry]
+Type=Application
+Name=${_pkgname^}
+GenericName=Pixel Art Editor
+Keywords=aseprite
+Comment=$pkgdesc
+Exec=$_pkgname
+Icon=$_pkgname
+Terminal=false
+Categories=Graphics;2DGraphics;RasterGraphics;
+MimeType=image/bmp;image/gif;image/jpeg;image/png;image/x-pcx;image/x-tga;image/vnd.microsoft.icon;video/x-flic;image/webp;image/x-aseprite;
+END
+}
