@@ -7,9 +7,8 @@ pkgname=(
 )
 pkgbase=vencord-git
 _pkgname=Vencord
-_libdirname=vencord
 pkgver=1.9.3.r10.g5c05443
-pkgrel=2
+pkgrel=3
 pkgdesc="The cutest Discord client mod"
 arch=(any)
 url=https://vencord.dev
@@ -49,11 +48,11 @@ package_vencord-git() {
   install=vencord.install
   
   cd "$srcdir"/$_pkgname
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgbase/LICENSE
-  install -Dm644 README.md "$pkgdir"/usr/share/doc/$pkgbase/README.md
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/vencord/LICENSE
+  install -Dm644 README.md "$pkgdir"/usr/share/doc/vencord/README.md
   cd dist/
-  install -d "$pkgdir"/usr/lib/$pkgbase
-  cp -r -- vencord* preload* patcher* renderer* "$pkgdir"/usr/lib/$_libdirname
+  install -d "$pkgdir"/usr/lib/vencord
+  cp -r -- vencord* preload* patcher* renderer* "$pkgdir"/usr/lib/vencord
 }
 
 package_chromium-vencord-git() {
@@ -64,8 +63,8 @@ package_chromium-vencord-git() {
   install=vencord.install
   
   cd "$srcdir"/$_pkgname/dist/chromium-unpacked
-  install -d "$pkgdir"/usr/lib/"$pkgbase"-chromium
-  cp -r -- * "$pkgdir"/usr/lib/"$pkgbase"-chromium
+  install -d "$pkgdir"/usr/lib/vencord-chromium
+  cp -r -- * "$pkgdir"/usr/lib/vencord-chromium
 }
 
 package_firefox-vencord-git() {

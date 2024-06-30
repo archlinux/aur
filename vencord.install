@@ -1,6 +1,5 @@
 post_install() {
-	echo "
-To finish the installation, follow the following steps depending of the package you've installed:
+	echo "To finish the installation, follow the following steps depending of the package you've installed:
 
 Vesktop (replace the Vesktop's Vencord with the installed Vencord):
 1. Open Vesktop
@@ -15,6 +14,5 @@ Chromium browsers:
 3. Click "Load unpacked" and select the directory /usr/lib/vencord-chromium
 
 Firefox and Librewolf:
-Nothing to do, the extension should already be activated by default
-"
+Nothing to do, the extension should already be activated by default"
 }
