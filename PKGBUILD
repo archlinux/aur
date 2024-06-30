@@ -18,7 +18,7 @@ _name='compiz'
 _pkgname='compiz-easy-patch'
 pkgname="$_pkgname${_pkgtype:-}"
 pkgver=0.9.14.2
-pkgrel=5
+pkgrel=5.1
 pkgdesc="OpenGL compositing window manager. Includes friendly defaults, GWD theme selector and autostart for Xfce & MATE."
 url="https://launchpad.net/compiz"
 arch=('i686' 'x86_64')
@@ -94,6 +94,7 @@ _main_package() {
     "reverse-unity-config.patch"
     "screenshot-launch-fix.patch"
     "no-compile-gschemas.patch"
+    "vertexbuffer-crash-fix.patch"
     "compiz-easy-defaults.patch"
     "compiz-easy.gschema.override"
     "compiz-gtk-decorator-theme-selector"
@@ -109,6 +110,7 @@ _main_package() {
     '6ec9c04540ca1649c687d9ab2c8311caea7075831e2cffe719ec7958c9ebab7b'
     '89ee91a8ea6b1424ef76661ea9a2db43412366aacddc12d24a7adf5e04bfbc61'
     '4ab3277da201314b3f65e30128bc30704ddee584fdbbfc8d0d83c7e0de91fa9a'
+    'e27f686714d7666ceb839a2aa9ac4ca1b907f519791ccd3b2ea303921f402be1'
     '4d28bc2cefbfae77b9157f39876f5296b5edb7fb00de2a391a262688d2f7590c'
     'b549d6a61115ab0cbd6bf74be79cd449477aaadb6a9968743236e3ed3d93f668'
     '28d14e5ec0694b4a451540f35210eac5699e9daf1b00020bf59d8b0296d7d9bf'
@@ -175,6 +177,10 @@ prepare() {
   # Don't try to compile gschemas during make install
   patch -p1 -i "$srcdir/no-compile-gschemas.patch"
 
+  # vertex buffer patch (fix expo wobbly windows crash)
+  #https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/66215/diffs?commit_id=d0a0b3738fe16858024addcefa8fc917a5aa6fe0
+  patch -p1 -i "$srcdir/vertexbuffer-crash-fix.patch"
+
   # Easy defaults
   patch -p1 -i "$srcdir/compiz-easy-defaults.patch"
 }
@@ -203,7 +209,7 @@ build() {
 
   cmake "${_cmake_options[@]}"
 
-  # A race condition consistently causes build to fail with the following conditions:
+  # A race condition consistently causes build to fail in the following environment:
   # * processor has more than 4 threads
   # * compile folder is located on a spindle hdd
   # * MAKEFLAGS is configured to run more than 4 jobs at the same time
