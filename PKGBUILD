@@ -1,7 +1,7 @@
 # Maintainer: GANPI <some.kind@of.mail>
 pkgname=yarc-launcher
-pkgver=0.3.1
-pkgrel=2
+pkgver=0.3.2
+pkgrel=1
 pkgdesc='The official launcher for YARG (a.k.a. Yet Another Launcher or YAL)'
 arch=(x86_64)
 url=https://github.com/YARC-Official/YARC-Launcher
@@ -24,13 +24,13 @@ optdepends=(
 	'systemd-libs: access to HID devices (in-game)'
 )
 conflicts=($pkgname-bin)
-options=(!lto)
+options=(!debug !lto)
 source=(
 	$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz
 	$pkgname.desktop
 )
 sha256sums=(
-	ecf2dc2956bf3232165bd3783c57a1b80b2be685f7a85e655b9bea8621508b33
+	f9f4f3efaa5b6adc4aeefeb2711649d6617dc91b3a465e1145c6b9f4a19c5ace
 	d6cff5551389bbd5744179f169336c165ce1e9de65b34897c4ab5d40527a780e
 )
 
