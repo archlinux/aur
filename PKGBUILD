@@ -3,7 +3,7 @@
 
 pkgname=plasma6-runners-nordvpn
 reponame=NordVPNKrunner
-pkgver=3.1.0
+pkgver=3.1.2
 pkgrel=1
 pkgdesc="Nordvpn plasma 6 runner"
 arch=("any")
@@ -15,7 +15,7 @@ conflicts=('plasma5-runners-nordvpn')
 replaces=('plasma-runners-nordvpn')
 source=("https://github.com/alex1701c/${reponame}/archive/${pkgver}.tar.gz"
         "https://s1.nordcdn.com/nordvpn/media/1.170.0/images/global/favicon/apple-touch-icon-57x57.png")
-md5sums=('bd3ee4dc4d9682107246ef603e7f7199'
+md5sums=('37bd2d234d132e9fc24f7264b3a8ab62'
          '45c79777d364ca2cc1665165aca77ea6')
 
 build () {
