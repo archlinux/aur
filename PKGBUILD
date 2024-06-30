@@ -17,8 +17,8 @@
 # Marco Trevisan: <https://salsa.debian.org/gnome-team/mutter/-/blob/ubuntu/master/debian/patches/ubuntu/x11-Add-support-for-fractional-scaling-using-Randr.patch>
 
 pkgname=mutter-x11-scaling
-pkgver=46.2
-pkgrel=3
+pkgver=46.3
+pkgrel=1
 pkgdesc="Window manager and compositor for GNOME with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -93,13 +93,13 @@ makedepends=(
 source=(
   # Mutter tags use SSH signatures which makepkg doesn't understand
   "git+$url.git#tag=${pkgver/[a-z]/.&}"
-  "https://raw.githubusercontent.com/puxplaying/mutter-x11-scaling/7aa432d4366fdd5a2687a78848b25da4f8ab5c68/x11-Add-support-for-fractional-scaling-using-Randr.patch"
-  "https://raw.githubusercontent.com/puxplaying/mutter-x11-scaling/eff4767168c107ef268c7e8b32eaea41a224efb4/Support-Dynamic-triple-double-buffering.patch"
+  "https://raw.githubusercontent.com/puxplaying/mutter-x11-scaling/3ef55f2386127b793e07a57c27fd1cd3e43ad95b/x11-Add-support-for-fractional-scaling-using-Randr.patch"
+  "https://raw.githubusercontent.com/puxplaying/mutter-x11-scaling/3ef55f2386127b793e07a57c27fd1cd3e43ad95b/Support-Dynamic-triple-double-buffering.patch"
   "https://raw.githubusercontent.com/puxplaying/mutter-x11-scaling/eff4767168c107ef268c7e8b32eaea41a224efb4/mutter-fix-x11-restart.patch"
 )
-b2sums=('4b474f4bbb5ed15db053cba509c3f4b0d112a74359597dc1ab9af118b0e1360a20ccc6af89af3b248895e5dd95193c039cd3396b0fd2c71a0deadc3ff4e15920'
-        '2b1a70b961d70688396c072355accdd8a9fa5591feab7a22c849f54bcf2695cbe72267dc5e006385e95d114e8e7078045fa8b6a09d00c558eff04ec8dd38318a'
-        '35eeeb037ca337acca80485f26e7df43b8588458298b5bf015d19d6cb62423f4f2d948cfd92cf9efd0fcb3b1130e50ea14a7428abe8032845467f9b12baba5f3'
+b2sums=('b228db453c22a94783ceed71eb9489117e0576293f6daa37b7f20b6992b80ee4e67ebeee3b1cf474d306d2341e8d0e26b16820cec9d6c53132ddc7ffd4157634'
+        'ec2ade7ea383b4065c3b01df2c41b39f23b421160bcc848206ea134694b7bb9688cf786714f95d9d59440c9fffb82930b5d9befc498f98d82ec60fc9e840dee4'
+        'bdacfbbe1b5ed8d386a2a9fb44cb6a7a5c1fb70e7fd5d1fec199dd9a60ec1faa9ef1cb20674826a108fee188cc8d7b24eea7cea402ad47f191e0d3e1f28f940d'
         'ba4febdabc89a8c608d2a9621d02a21c05b315bb586f91d34b0369c07f3e051a6333d62dd97ab18d0c5b1c8f453696d4851c55fc82a50e8843ae45068ab178ca')
 
 prepare() {
