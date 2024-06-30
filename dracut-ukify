@@ -240,6 +240,14 @@ function gen_image() {
     ukify_args+=(--output "$image")
 
     local cmdline="${ukify_cmdline["$variant"]}"
+    if [ -z "${cmdline}" ]; then
+        for i in "${!ukify_args[@]}"; do
+            [[ "${ukify_args[i]}" = "--cmdline" ]] && break
+        done
+        if [ "${ukify_args[i]}" == "--cmdline" ]; then
+            cmdline="${ukify_args[i + 1]}"
+        fi
+    fi
     if [ -z "${cmdline}" ] && [ -f /etc/kernel/cmdline ]; then
         cmdline=$(parse_cmdline /etc/kernel/cmdline)
     fi
@@ -251,9 +259,9 @@ function gen_image() {
     fi
     if [ -n "${cmdline}" ]; then
       for i in "${!ukify_args[@]}"; do
-         [[ "${ukify_args[$i]}" = "--cmdline" ]] && break
+         [[ "${ukify_args[i]}" = "--cmdline" ]] && break
       done
-      if [ "${ukify_args[$i]}" == "--cmdline" ]; then
+      if [ "${ukify_args[i]}" == "--cmdline" ]; then
         # Global args contains cmdline, override it
         ukify_args[i + 1]="${cmdline}"
       else
