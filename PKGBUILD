@@ -3,7 +3,7 @@
 _pkgname=gamescope
 pkgname=gamescope-fml
 pkgver=3.14.22
-pkgrel=1
+pkgrel=2
 pkgdesc='SteamOS session compositing window manager with added patches'
 arch=(x86_64)
 url=https://github.com/ValveSoftware/gamescope
@@ -15,7 +15,7 @@ depends=(
   glibc
   glm
   libcap.so
-  libdisplay-info.so
+#  libdisplay-info.so
   libglvnd
   libdrm
   libinput
@@ -23,7 +23,6 @@ depends=(
   libpixman-1.so
   libseat.so
   libudev.so
-  libvulkan.so
   libx11
   libxcb
   libxcomposite
@@ -111,8 +110,8 @@ build() {
     -Davif_screenshots=enabled \
     -Dsdl2_backend=enabled \
     -Denable_gamescope=true \
-    -Denable_gamescope_wsi_layer=true
-#    -Denable_openvr_support=true
+    -Denable_gamescope_wsi_layer=true \
+    -Denable_openvr_support=false # TODO: enable this when fixed
   meson compile -C build
 }
 
