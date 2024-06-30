@@ -12,5 +12,6 @@ pkgbase = journalctl-desktop-notification
 	conflicts = journalctl-desktop-notification
 	backup = etc/journalctl-desktop-notification.conf
 	source = git+https://gitlab.com/Zesko/journalctl-desktop-notification.git
+	sha256sums = SKIP
 
 pkgname = journalctl-desktop-notification
