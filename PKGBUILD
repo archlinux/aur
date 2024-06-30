@@ -23,7 +23,7 @@ arch=('any')
 _main_package() {
   options=('!debug')
 
-  _dl_url="https://raw.githubusercontent.com/google/material-design-icons/master"
+  _dl_url="https://github.com/google/material-design-icons/raw/${pkgver#*.g}"
   _dl_files=(
     "font/MaterialIcons-Regular.ttf"
     "font/MaterialIconsOutlined-Regular.otf"
@@ -61,7 +61,7 @@ _package_ttf-material-icons() {
 
 # update version
 _update_version() {
-  : ${_pkgver:=${pkgver%%.r*}}
+  : ${_pkgver:=$pkgver}
 
   if [[ "${_autoupdate::1}" != "t" ]]; then
     return
