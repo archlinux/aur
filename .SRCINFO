@@ -1,7 +1,7 @@
 pkgbase = python2-pycparser
 	pkgdesc = C parser and AST generator written in Python
 	pkgver = 2.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eliben/pycparser
 	arch = any
 	license = BSD
