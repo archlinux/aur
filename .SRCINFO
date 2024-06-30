@@ -1,0 +1,22 @@
+pkgbase = customfetch-gui-git
+	pkgdesc = Highly customizable and fast system information fetch program (with GUI support)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Toni500github/customfetch
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = base-devel
+	depends = pciutils
+	depends = file
+	depends = bash
+	depends = gtk3
+	depends = gtkmm3
+	optdepends = ttf-liberation: Font to be used for GUI (recommended)
+	conflicts = customfetch
+	conflicts = customfetch-bin
+	conflicts = customfetch-git
+	source = git+https://github.com/Toni500github/customfetch.git
+	sha256sums = SKIP
+
+pkgname = customfetch-gui-git
