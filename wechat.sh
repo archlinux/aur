@@ -56,14 +56,7 @@ function detectXauth() {
 	if [ ! ${XAUTHORITY} ]; then
 		echo '[Warn] No ${XAUTHORITY} detected! Do you have any X server running?'
 		export XAUTHORITYpath="/$(uuidgen)/$(uuidgen)"
-		if [[ "${LANG}" =~ 'zh_CN' ]]; then
-			zenity --title "未找到 XAUTHORITY" --icon=image-missing-symbolic --default-cancel --question --text="解锁 X 服务器以继续?"
-		else
-			zenity --title "XAUTHORITY not found" --icon=image-missing-symbolic --default-cancel --question --text="Unlock X Server to continue?"
-		fi
-		if [ $? = 0 ]; then
-			xhost +
-		fi
+		xhost +
 	else
 		export XAUTHORITYpath="${XAUTHORITY}"
 	fi
