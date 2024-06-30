@@ -2,7 +2,7 @@
 
 pkgname=ntfysh
 pkgver=2.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Send push notifications to your phone or desktop using PUT/POST "
 arch=("x86_64")
 url="https://ntfy.sh"
@@ -20,6 +20,7 @@ build() {
 	cd "${pkgname}"
 
     mkdir -p "$srcdir/fakehome"
+    OLD_HOME=$HOME
     HOME="$srcdir/fakehome"
 
     # web-deps target
@@ -61,6 +62,8 @@ build() {
 		-tags sqlite_omit_load_extension,osusergo,netgo \
 		-ldflags \
 		"-linkmode=external -extldflags=-static -s -w -X main.version=${pkgver} -X main.commit=$(git rev-parse --short HEAD) -X main.date=$(date +%s)"
+
+    HOME=$OLD_HOME
 }
 
 package() {
