@@ -13,7 +13,7 @@ conflicts=("desk-exec")
 sha256sums_x86_64=("f4c1e7c674dc4dd4291e613648b78eed1329519e312fd1a890e55735a5bcc5ee")
 
 package() {
-    install -Dm755 "desk-exec" "$pkgdir/usr/bin/desk_exec"
+    install -Dm755 "desk-exec" "$pkgdir/usr/bin/desk-exec"
 
     install -Dm644 "dist/desk-exec.bash" "$pkgdir/usr/share/bash-completion/completions/desk-exec"
     install -Dm644 "dist/_desk-exec" "$pkgdir/usr/share/zsh/site-functions/_desk-exec"
