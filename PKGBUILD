@@ -24,7 +24,7 @@ package() {
 
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-    install -Dm755 "target/release/desk-exec" "$pkgdir/usr/bin/desk_exec"
+    install -Dm755 "target/release/desk-exec" "$pkgdir/usr/bin/desk-exec"
 
     install -Dm644 "target/release/dist/desk-exec.bash" "$pkgdir/usr/share/bash-completion/completions/desk-exec"
     install -Dm644 "target/release/dist/_desk-exec" "$pkgdir/usr/share/zsh/site-functions/_desk-exec"
