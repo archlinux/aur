@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-gnome-hdate-git
 	pkgdesc = Show Hebrew date in gnome-shell panel
-	pkgver = b1b4f30
+	pkgver = 9500f83
 	pkgrel = 1
 	url = https://github.com/amiad/gnome-hdate
 	arch = i686
@@ -12,8 +12,7 @@ pkgbase = gnome-shell-extension-gnome-hdate-git
 	depends = gnome-shell
 	provides = gnome-shell-extension-gnome-hdate
 	conflicts = gnome-shell-extension-gnome-hdate
-	source = git://github.com/amiad/gnome-hdate.git
+	source = git+https://github.com/amiad/gnome-hdate.git
 	md5sums = SKIP
 
 pkgname = gnome-shell-extension-gnome-hdate-git
-

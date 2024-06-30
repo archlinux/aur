@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-gnome-hdate-git
 _gitname=gnome-hdate
-pkgver=b1b4f30
+pkgver=9500f83
 pkgrel=1
 pkgdesc="Show Hebrew date in gnome-shell panel"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('libhdate' 'libhdate-glib' 'gnome-shell')
 makedepends=('git')
 conflicts=('gnome-shell-extension-gnome-hdate')
 provides=('gnome-shell-extension-gnome-hdate')
-source=('git://github.com/amiad/gnome-hdate.git')
+source=('git+https://github.com/amiad/gnome-hdate.git')
 # Because the sources are not static, skip Git checksum:
 md5sums=('SKIP')
 
