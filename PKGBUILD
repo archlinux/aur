@@ -22,8 +22,8 @@ depends=(
 makedepends=(
   'gtest'
   'meson'
-  'nlohmann-json'
   'ninja'
+  'nlohmann-json'
   'python-lsprotocol'
   'python-pygls'
 )
@@ -56,7 +56,7 @@ build() {
 }
 
 check() {
-  meson test -C build
+  meson test -C build --print-errorlogs
 }
 
 package() {
