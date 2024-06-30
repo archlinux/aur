@@ -2,17 +2,20 @@
 
 action=$1
 version=$2
+[ "$3" == "--overwrite" ]
+overwrite=$?;
 
-cd ~/.minecraft/ || exit
+
+cd ~/.minecraft/ || { echo "Error: cannot access ~/.minecraft"; exit 1; }
 
 if [ "$action" == "load" ]; then
     
-    if [ "$3" != "--overwrite" ]; then
+    if $overwrite; then
       if ! [ -e ./modlib/.current ]; then
           echo "Warning: version file not found. Maybe you haven't saved at least once yet?
   If this is intended, use --overwrite to force operation" >&2
           exit 1
-      elif ! diff -r --exclude=".current" ./mods/ ./modlib/"$(cat ./modlib/.current 2>/dev/null)"/ > /dev/null 2>&1; then
+      elif ! diff -r ./mods/ ./modlib/"$(cat ./modlib/.current 2>/dev/null)"/ > /dev/null 2>&1; then
           echo "Warning: mismatch between last loaded/saved and current. Did you forgot to sync?
   If this is intended, use --overwrite to force operation" >&2
           exit 1
@@ -26,17 +29,17 @@ if [ "$action" == "load" ]; then
 
     rm -rf ./mods/*
     cp -r ./modlib/"$version"/* ./mods/
-    echo "$version" > ~/.minecraft/mods/.current
+    echo "$version" > ./modlib/.current
 
 elif [ "$action" == "save" ] || [ "$action" == "sync" ]; then
 
     if [ "$version" == ".current" ]; then
-        echo "Error: Illegal version name"
+        echo "Error: Illegal version name" >&2
         exit 1
     fi
 
     if [ "$action" == "save" ]; then
-        if [ -d ~/.minecraft/modlib/"$version" ] && [ "$3" != "--overwrite" ]; then
+        if [ -d ./modlib/"$version" ] && $overwrite; then
             echo "Warning: $version is already present.
 If this is intended, use --overwrite to force operation" >&2
             exit 1
@@ -58,7 +61,6 @@ To reconstruct the save, run 'mcmods save $version'"
     rm -rf ./modlib/"$version"
     mkdir -p ./modlib/"$version"
     cp -r ./mods/* ./modlib/"$version"/
-    rm -f ./modlib/"$version"/.current
 
 elif [ "$action" == "current" ]; then
     if [ -e ./modlib/.current ]; then
@@ -69,7 +71,7 @@ elif [ "$action" == "current" ]; then
     fi
 
 elif [ "$action" == "list" ]; then
-    ls -1 ~/.minecraft/modlib/ | paste -sd " "
+    ls -1 ./modlib/ | paste -sd " "
 
 elif [ "$action" == "delete" ]; then
     if ! [ -d "./modlib/$version" ]; then
@@ -83,7 +85,7 @@ elif [ "$action" == "delete" ]; then
     if ! [ "$confirm" == "y" ] && ! [ "$confirm" == "Y" ]; then
         exit 0
     fi
-    rm -rf ~/.minecraft/modlib/"$version"
+    rm -rf ./modlib/"$version"
 
 elif [ "$action" == "help" ]; then
     echo "Usage: mcmods <action> {parameter} [flag]
