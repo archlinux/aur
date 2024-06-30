@@ -1,25 +1,31 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Caleb Maclennan <caleb@alerque.com>
 pkgname=ezra-bible-app
-pkgver=1.13.0
-pkgrel=2
-pkgdesc="A user-friendly Bible study tool focussing on topical study based on keywords/tags"
+pkgver=1.14.0
+pkgrel=1
+pkgdesc="A modern and user-friendly Bible app for desktops, tablets and mobiles focussing on topical study"
 arch=('x86_64')
-url="https://github.com/ezra-bible-app/ezra-bible-app"
+url="https://ezrabibleapp.net"
 license=('GPL-2.0-or-later')
-depends=('alsa-lib' 'gtk3' 'nodejs' 'nss')
-makedepends=('cmake' 'git' 'npm' 'subversion' 'unzip')
+depends=(
+  'alsa-lib'
+  'gtk3'
+  'nodejs'
+  'nss'
+)
+makedepends=(
+  'cmake'
+  'git'
+  'npm'
+  'python-setuptools'
+  'subversion'
+  'unzip'
+)
 conflicts=('ezra-project')
-_commit=48357d117fc0648f60b87efa6f4b1913118e4501  # tags/1.13.0^0
-source=("git+https://github.com/ezra-bible-app/ezra-bible-app.git#commit=$_commit"
+source=("git+https://github.com/ezra-bible-app/ezra-bible-app.git#tag=$pkgver"
         'git+https://github.com/ezra-project/apidocs.ezrabibleapp.net.git')
-sha256sums=('SKIP'
+sha256sums=('2604148540d474e035b0fb7a40e5a58aa23fc03eed7842de06c6659bd361aaed'
             'SKIP')
-
-pkgver() {
-  cd "$pkgname"
-  git describe --tags | sed 's/-/+/g'
-}
 
 prepare() {
   cd "$pkgname"
@@ -28,7 +34,7 @@ prepare() {
   git -c protocol.file.allow=always submodule update
 
   # Use latest version of Electron
-  sed -i "s/17.1.0/28.2.3/g" package.json
+  sed -i "s/17.1.0/31.1.0/g" package.json
 }
 
 build() {
