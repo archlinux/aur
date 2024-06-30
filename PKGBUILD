@@ -2,7 +2,7 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='inotify-info'
-pkgver='0.0.2'
+pkgver='0.0.3'
 pkgrel='1'
 pkgdesc='Linux inotify info reporting app'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('glibc' 'gcc-libs')
 conflicts=("${pkgname}-git")
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('bda59003afad192ea30276e9bba6506c0e5321aa628581fc3401f03f7314a7e0')
+sha256sums=('42b5def0068a8d4dfd42b3d4b5a53e2884554c09ad9b8ba5f917dc665c8d28bd')
 
 build() {
   cd "${pkgname}-${pkgver}"
