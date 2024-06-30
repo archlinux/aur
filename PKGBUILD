@@ -7,10 +7,10 @@
 # Based off the discord community repo PKGBUILD by Filipe Laíns (FFY00) <lains@archlinux.org>
 
 _pkgname=discord
-_electron=electron30
+_electron=electron
 pkgname=${_pkgname}_arch_electron
 pkgver=0.0.58
-pkgrel=1
+pkgrel=2
 pkgdesc="Discord using system provided ${_electron} for increased security and performance"
 arch=('any')
 provides=("${_pkgname}")
