@@ -1,8 +1,8 @@
 # Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
 
 pkgname=polly
-pkgver=17.0.6
-pkgrel=2
+pkgver=18.1.8
+pkgrel=1
 pkgdesc="High-level loop and data-locality optimizer and optimization infrastructure for LLVM"
 arch=('x86_64')
 url="https://polly.llvm.org/"
@@ -13,14 +13,13 @@ _source_base=https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkg
 source=($_source_base/polly-$pkgver.src.tar.xz{,.sig}
         $_source_base/llvm-$pkgver.src.tar.xz{,.sig}
         $_source_base/cmake-$pkgver.src.tar.xz{,.sig})
-sha256sums=('b4d39ab1cd65a8da234de0fa4a8a9b012aa48688168f4ea87fa5f3f42e03871c'
+sha256sums=('0366962199fa353ba1ed22f3ea61f337d682e8da75ba56fbbd4f7a49e2bc5127'
             'SKIP'
-            'b638167da139126ca11917b6880207cc6e8f9d1cbb1a48d87d017f697ef78188'
+            'f68cf90f369bc7d0158ba70d860b0cb34dbc163d6ff0ebc6cfa5e515b9b2e28d'
             'SKIP'
-            '807f069c54dc20cb47b21c1f6acafdd9c649f3ae015609040d6182cab01140f4'
+            '59badef592dd34893cd319d42b323aaa990b452d05c7180ff20f23ab1b41e837'
             'SKIP')
-validpgpkeys=('474E22316ABF4785A88C6E8EA2C794A986419D8A'  # Tom Stellard <tstellar@redhat.com>
-              'D574BD5D1D0E98895E3BF90044F2485E45D59042') # Tobias Hieta <tobias@hieta.se>
+validpgpkeys=('474E22316ABF4785A88C6E8EA2C794A986419D8A') # Tom Stellard <tstellar@redhat.com>
 
 prepare() {
   mv cmake{-$pkgver.src,}
