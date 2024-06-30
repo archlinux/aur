@@ -49,7 +49,7 @@ _srcurl="$(curl \
 
 DLAGENTS=("https::/usr/bin/curl \
             -gqb '' -C - --retry 3 --retry-delay 3 \
-            -H Host:\ sw.blackmagicdesign.com \
+            -H Host:\ swr.cloud.blackmagicdesign.com \
             -H Upgrade-Insecure-Requests:\ 1 \
             -H ${_useragent_escaped} \
             -H Accept:\ text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8 \
