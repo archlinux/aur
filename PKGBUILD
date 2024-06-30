@@ -7,6 +7,7 @@ pkgname=(
 )
 pkgbase=vencord-git
 _pkgname=Vencord
+_libdirname=vencord
 pkgver=1.9.3.r10.g5c05443
 pkgrel=1
 pkgdesc="The cutest Discord client mod"
@@ -52,7 +53,7 @@ package_vencord-git() {
   install -Dm644 README.md "$pkgdir"/usr/share/doc/$pkgbase/README.md
   cd dist/
   install -d "$pkgdir"/usr/lib/$pkgbase
-  cp -r -- vencord* preload* patcher* renderer* "$pkgdir"/usr/lib/$pkgbase
+  cp -r -- vencord* preload* patcher* renderer* "$pkgdir"/usr/lib/$_libdirname
 }
 
 package_chromium-vencord-git() {
