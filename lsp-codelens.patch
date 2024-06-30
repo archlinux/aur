@@ -1,5 +1,5 @@
 diff --git a/clang-tools-extra/clangd/CMakeLists.txt b/clang-tools-extra/clangd/CMakeLists.txt
-index 3911fb6c6c74..43272cbeb87f 100644
+index f49704157880..d2268348e62e 100644
 --- a/clang-tools-extra/clangd/CMakeLists.txt
 +++ b/clang-tools-extra/clangd/CMakeLists.txt
 @@ -68,6 +68,7 @@ add_clang_library(clangDaemon
@@ -11,7 +11,7 @@ index 3911fb6c6c74..43272cbeb87f 100644
    CompileCommands.cpp
    Compiler.cpp
 diff --git a/clang-tools-extra/clangd/ClangdLSPServer.cpp b/clang-tools-extra/clangd/ClangdLSPServer.cpp
-index f29dadde2b86..bcc3623b3187 100644
+index 7fd599d4e1a0..b9d8ccc8a985 100644
 --- a/clang-tools-extra/clangd/ClangdLSPServer.cpp
 +++ b/clang-tools-extra/clangd/ClangdLSPServer.cpp
 @@ -684,6 +684,11 @@ void ClangdLSPServer::onInitialize(const InitializeParams &Params,
@@ -84,7 +84,7 @@ index 8bcb29522509..165b4853a302 100644
    LSPBinder::OutgoingMethod<ApplyWorkspaceEditParams,
                              ApplyWorkspaceEditResponse>
 diff --git a/clang-tools-extra/clangd/ClangdServer.cpp b/clang-tools-extra/clangd/ClangdServer.cpp
-index 3f9fd0128194..7cc0942feb69 100644
+index 1c4c2a79b5c0..4c77fd19a2ab 100644
 --- a/clang-tools-extra/clangd/ClangdServer.cpp
 +++ b/clang-tools-extra/clangd/ClangdServer.cpp
 @@ -8,6 +8,7 @@
@@ -95,7 +95,7 @@ index 3f9fd0128194..7cc0942feb69 100644
  #include "Config.h"
  #include "Diagnostics.h"
  #include "DumpAST.h"
-@@ -1103,6 +1104,31 @@ void ClangdServer::diagnostics(PathRef File, Callback<std::vector<Diag>> CB) {
+@@ -1104,6 +1105,31 @@ void ClangdServer::diagnostics(PathRef File, Callback<std::vector<Diag>> CB) {
    WorkScheduler->runWithAST("Diagnostics", File, std::move(Action));
  }
  
@@ -156,10 +156,10 @@ index 1661028be88b..e836a03e022f 100644
    /// The AST is only valid for the duration of the callback.
 diff --git a/clang-tools-extra/clangd/CodeLens.cpp b/clang-tools-extra/clangd/CodeLens.cpp
 new file mode 100644
-index 000000000000..bf788e765416
+index 000000000000..72aff4c4c737
 --- /dev/null
 +++ b/clang-tools-extra/clangd/CodeLens.cpp
-@@ -0,0 +1,175 @@
+@@ -0,0 +1,178 @@
 +//===--- CodeLens.cpp --------------------------------------------*- C++-*-===//
 +//
 +// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
@@ -316,18 +316,21 @@ index 000000000000..bf788e765416
 +    auto FindedRefs = findReferences(AST, Pos, Limit, Index);
 +    auto Refs = FindedRefs.References;
 +    Arg.locations.reserve(Refs.size());
-+    bool ThisLocSkipped = false;
 +    for (auto &Ref : Refs) {
-+      if (!ThisLocSkipped && Ref.Loc.range.contains(Pos)) {
-+        ThisLocSkipped = true;
++      if ((Ref.Attributes &
++           (ReferencesResult::Declaration | ReferencesResult::Definition)) != 0)
 +        continue;
-+      }
++
 +      Arg.locations.emplace_back(std::move(Ref.Loc));
 +    }
-+    auto NumRefs = llvm::utostr(Arg.locations.size());
-+    if (FindedRefs.HasMore)
-+      NumRefs += "+";
-+    Cmd.title = NumRefs + " ref(s)";
++    if (Arg.locations.empty())
++      Cmd.title = "Unused";
++    else {
++      auto NumRefs = llvm::utostr(Arg.locations.size());
++      if (FindedRefs.HasMore)
++        NumRefs += "+";
++      Cmd.title = NumRefs + " ref(s)";
++    }
 +    Cmd.argument = std::move(Arg);
 +    return CodeLens{Params.range, std::move(Cmd), std::nullopt};
 +  }
@@ -370,7 +373,7 @@ index 000000000000..2dbfaf87baed
 +#endif
 \ No newline at end of file
 diff --git a/clang-tools-extra/clangd/Protocol.cpp b/clang-tools-extra/clangd/Protocol.cpp
-index 8aa18bb0058a..bb3c2ee79c66 100644
+index c08f80442eaa..471f467af5bd 100644
 --- a/clang-tools-extra/clangd/Protocol.cpp
 +++ b/clang-tools-extra/clangd/Protocol.cpp
 @@ -151,6 +151,12 @@ llvm::raw_ostream &operator<<(llvm::raw_ostream &OS, const Range &R) {
@@ -395,7 +398,7 @@ index 8aa18bb0058a..bb3c2ee79c66 100644
  
  llvm::json::Value toJSON(const CodeAction &CA) {
    auto CodeAction = llvm::json::Object{{"title", CA.title}};
-@@ -1667,5 +1675,37 @@ bool fromJSON(const llvm::json::Value &E, SymbolID &S, llvm::json::Path P) {
+@@ -1698,5 +1706,37 @@ bool fromJSON(const llvm::json::Value &E, SymbolID &S, llvm::json::Path P) {
  }
  llvm::json::Value toJSON(const SymbolID &S) { return S.str(); }
  
@@ -434,7 +437,7 @@ index 8aa18bb0058a..bb3c2ee79c66 100644
  } // namespace clangd
  } // namespace clang
 diff --git a/clang-tools-extra/clangd/Protocol.h b/clang-tools-extra/clangd/Protocol.h
-index 358d4c6feaf8..af5c0a7c9b9f 100644
+index a0f8b04bc4ff..91e309d1cf70 100644
 --- a/clang-tools-extra/clangd/Protocol.h
 +++ b/clang-tools-extra/clangd/Protocol.h
 @@ -225,6 +225,7 @@ struct Location {
@@ -455,7 +458,7 @@ index 358d4c6feaf8..af5c0a7c9b9f 100644
  
    /// The diagnostics that this code action resolves.
    std::optional<std::vector<Diagnostic>> diagnostics;
-@@ -1974,6 +1978,33 @@ struct ASTNode {
+@@ -2019,6 +2023,33 @@ struct ASTNode {
  llvm::json::Value toJSON(const ASTNode &);
  llvm::raw_ostream &operator<<(llvm::raw_ostream &, const ASTNode &);
  
