@@ -8,27 +8,15 @@ _target_triplet=aarch64-apple-darwin
 
 pkgname=theos-cctools-aarch64-git
 pkgdesc="Apple cctools port for Linux (theos,ios,aarch64)"
-pkgver=r262.3051881
-pkgrel=3
+pkgver=r321.856d7d1
+pkgrel=1
 arch=(x86_64)
 url="https://github.com/tpoechtrager/cctools-port"
 license=(custom:APSL)
 depends=(
-  #
-  theos
-  #
-  'clang>=3.4'
-  llvm
   util-linux-libs
-  #
-  libbsd              # aarch64-apple-darwin-vtool -> /usr/lib/libbsd.so.0
-  tapi-git            # .tdb stubs
-  uuid                # ld64 -random_uuid support
-  xar-tpoechtrage-git # ld64 -bitcode_bundle support
-  #
 )
-makedepends=(git)
-# "theos-git" optionally depends on "theos-ios-toolchain"
+makedepends=('clang>=3.4' git libdispatch tapi-git util-linux-libs)
 provides=(
   theos-ios-toolchain{,-git}
   "$_target_triplet"-binutils{,-git}
@@ -41,23 +29,6 @@ md5sums=('SKIP')
 pkgver() {
   cd "$srcdir/cctools-port/"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-cd "$srcdir/cctools-port/cctools/ld64/src/ld/"
-patch --verbose Snapshot.cpp <<"EOP"
---- Snapshot.cpp
-+++ Snapshot.cpp
-@@ -16,7 +16,7 @@
- #include <sys/stat.h>
- #include <libgen.h>
- #include <time.h>
--#include <Block.h>
-+#include <BlocksRuntime/Block.h>
- 
- #include "Snapshot.h"
- #include "Options.h"
-EOP
 }
 
 build() {
