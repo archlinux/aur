@@ -1,8 +1,9 @@
 # Maintainer: Jichi Zhang <jichi@1435.es>
+# Contributor: jinzhongjia <mail@nvimer.org>
 
 pkgname=intel-npu-driver-bin
 pkgver=1.5.0.20240619_9582784383
-pkgrel=3
+pkgrel=4
 main_ver=$(echo $pkgver | cut -d'.' -f1-3)
 pkgdesc="Intel(R) NPU (Neural Processing Unit) Driver"
 arch=(x86_64)
@@ -38,8 +39,8 @@ package() {
   bsdtar -xf intel-level-zero-npu/data.tar.gz -C "${pkgdir}/"
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   
-  mkdir -p "${pkgdir}/etc/udev/rules.d"
-  echo 'SUBSYSTEM=="accel", KERNEL=="accel*", GROUP="render", MODE="0660"' > "${pkgdir}/etc/udev/rules.d/10-intel-npu.rules"
+  mkdir -p "${pkgdir}/usr/lib/udev/rules.d"
+  echo 'SUBSYSTEM=="accel", KERNEL=="accel*", GROUP="render", MODE="0660"' > "${pkgdir}/usr/lib/udev/rules.d/10-intel-npu.rules"
 
   chown root:root -R "${pkgdir}/"
   chmod a+r "${pkgdir}/usr/lib/firmware/updates/intel/vpu/vpu_37xx_v0.0.bin"
