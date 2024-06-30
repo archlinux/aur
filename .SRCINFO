@@ -1,0 +1,13 @@
+pkgbase = zerotier-one-openrc
+	pkgdesc = OpenRC service for ZeroTier-One
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/zerotier/ZeroTierOne
+	arch = any
+	license = GPL3
+	depends = zerotier-one
+	depends = openrc
+	source = zerotier-one
+	b2sums = 29a323f2397cc20656b92ff7c2f5980045c41d6a6b78b7defc9a22de9cc4a47a4b65b44300afbfbf2227db7732c868b89103ab2202318ccfbb5b159808f7e0e9
+
+pkgname = zerotier-one-openrc

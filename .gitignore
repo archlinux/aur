@@ -1,0 +1,7 @@
+# Package files
+pkg/
+# Source files
+src/
+# Ready packages
+*.pkg.tar.*
+

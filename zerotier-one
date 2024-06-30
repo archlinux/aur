@@ -1,0 +1,18 @@
+#!/sbin/openrc-run
+
+command="/usr/sbin/zerotier-one"
+command_background="yes"
+pidfile="/run/zerotier-one.pid"
+
+depend() {
+    need net
+    after bootmisc
+}
+
+start_pre() {
+    checkpath --directory --owner zerotier-one:zerotier-one --mode 0755 /var/lib/zerotier-one
+}
+
+stop_post() {
+    rm -f /run/zerotier-one.pid
+}
