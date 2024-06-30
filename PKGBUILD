@@ -1,45 +1,39 @@
-# Maintainer: Cravix < dr dot neemous at gmail dot com >
+# Contributor: Cravix < dr dot neemous at gmail dot com >
 
 pkgname=limnoria-git
-_pkgname=Limnoria
-pkgver=20200131.11218.2f493625
+pkgver=2024.05.31.r3.g01cdfee53
 pkgrel=1
+epoch=1
 pkgdesc="An IRC bot based on Supybot, with sqlite3 support and other features (dev channel)"
 arch=('any')
 url="https://github.com/ProgVal/Limnoria"
-license=('3-clause BSD')
-depends=('python>=3.4')
-makedepends=('git')
-optdepends=("python-charade: Detect page's encoding"
-    "python-pytz: Enable Time plugin to calculate the time in specified timezone"
-    "python-dateutil: Enable Time plugin to parse the input time string"
-    "python-gnupg: GnuPG support"
+license=('BSD-3-Clause')
+depends=('python')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+optdepends=(
+    "python-chardet: to detect encoding of incoming IRC lines, if they are not in UTF-8"
+    "python-gnupg: for authenticated based on GPG tokens"
+    "python-pysocks: for SOCKS proxy (IRC via Tor)"
+    "python-cryptography: Fediverse plugin support"
     "python-feedparser: RSS plugin support"
-    "python-sqlalchemy: Aka plugin support"
-    "python-pysocks: SOCKS proxy support"
-    "python-mock: For testing only"
-    "python-cryptography: ECDSA support")
-conflicts=('limnoria' 'limnoria-python3' 'limnoria-python3-git')
-source=("git://github.com/ProgVal/$_pkgname.git")
+    "python-dateutil: enable fancy time string parsing in the Time plugin")
+conflicts=('limnoria')
+provides=('limnoria')
+source=("${pkgname}::git+${url}.git")
 md5sums=('SKIP')
-install=".install"
 
 pkgver() {
-    cd "${srcdir}/${_pkgname}"
-    timestamp="$(git log -n1 --format="%at")"
-    maj="$(date +"%Y%m%d" --date="@${timestamp}" -u)"
-    min="$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-    echo "${maj}.${min}"
+  cd $pkgname
+  git describe --long --tags | sed -r 's/master-([0-9-]+)-([0-9]+)-g(.+)/\1.r\2.g\3/;s/-/./g'
 }
 
 build() {
-    cd "$srcdir/$_pkgname"
-
-    python3 setup.py build
+  cd $pkgname
+  python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$srcdir/$_pkgname"
-
-    python3 setup.py install --root="$pkgdir" || return 1
+  cd $pkgname
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
