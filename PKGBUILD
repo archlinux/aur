@@ -1,9 +1,9 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgbase=ch343ser-git
-pkgname=(ch343ser-dkms-git libch343ser-git)
+pkgname=(ch343ser-dkms-git libch343ser-git ch34xsercfg-git)
 pkgver=r42.05b4e1f
-pkgrel=5
+pkgrel=6
 pkgdesc="USB serial driver for ch342/ch343/ch344/ch347/ch347f/ch9101/ch9102/ch9103/ch9104, etc."
 arch=('any')
 url="https://github.com/WCHSoftGroup/ch343ser_linux"
@@ -29,7 +29,7 @@ prepare()
 }
 
 package_ch343ser-dkms-git() {
-    pkgdesc+=" (dkms)."
+    pkgdesc+="= (dkms)."
     provides=(${pkgname%-git})
     conflicts=(${pkgname%-git})
     depends=(dkms)
@@ -102,4 +102,22 @@ package_libch343ser-git() {
     install -Dm644 libch34xcfg.so -t "${pkgdir}/usr/lib/"
     install -Dm644 ch343_lib.h -t "${pkgdir}/usr/include/"
     install -Dm644 ch34x_parse_cfg.h -t "${pkgdir}/usr/include/"
+#     install -Dm644 ch9344_lib.h -t "${pkgdir}/usr/include/"
+}
+
+
+package_ch34xsercfg-git() {
+    pkgdesc+=" (ch34xsercfg)."
+    provides=(${pkgname%-git})
+    conflicts=(${pkgname%-git})
+    depends=(glibc
+        libch343ser
+        libch9344ser)
+    arch=($CARCH)
+
+    cd "$srcdir/${pkgbase}/demo/param_config"
+
+    gcc ch34x_demo_param_config.c -lch34xcfg -lch343 -lch9344 -o ch34xsercfg
+    install -Dm755 ch34xsercfg -t "${pkgdir}/usr/bin/"
+
 }
