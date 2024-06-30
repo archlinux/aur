@@ -1,5 +1,5 @@
 pkgname=gatk
-pkgver=4.5.0.0
+pkgver=4.6.0.0
 pkgrel=1
 pkgdesc="Genome Analysis Toolkit https://doi.org/10.1101/gr.107524.110"
 arch=('any')
