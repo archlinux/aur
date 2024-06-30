@@ -1,8 +1,8 @@
 # Maintainer: ich <remove dashes in s-c--25-ni at gmail dot com>
 
 pkgname=libadwaita-without-adwaita-git
-pkgver=1.5.1
-pkgrel=13
+pkgver=1.5.2
+pkgrel=14
 url="https://gnome.pages.gitlab.gnome.org/libadwaita"
 pkgdesc='libadwaita; Includes a patch to not overwrite the system theme'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -20,8 +20,8 @@ sha256sums=(
     SKIP
 )
 
-depends=(gtk4 appstream glib2-devel)
-makedepends=(git meson gi-docgen sassc gobject-introspection vala pkg-config patch cmake meson libsass gcc)
+depends=(gtk4 appstream)
+makedepends=(git meson gi-docgen sassc gobject-introspection vala pkg-config patch cmake meson libsass gcc glib2-devel)
 
 build() {
   cd "${srcdir}/${pkgname}"
