@@ -12,7 +12,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 backup=("etc/${pkgname}.conf")
 source=('git+https://gitlab.com/Zesko/journalctl-desktop-notification.git')
-
+sha256sums=('SKIP')
 
 package() {
   cd "$srcdir/${pkgname}"
