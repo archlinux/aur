@@ -1,54 +1,54 @@
-# Maintainer: Marius Hirt <marius-hirt@web.de>
-_pkgname=zork++
-pkgname=zork++-git
-pkgver=0.8.6.r0.g50306c5
+# Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: Marius Hirt <marius-hirt@web.de>
+
+_pkgname="zork++"
+pkgname="${_pkgname}-git"
+pkgver=0.9.0.r2.g17b7321
 pkgrel=1
 pkgdesc="A modern C++ project manager and build system for modern C++"
-arch=('x86_64')
+arch=('any')
 url='https://github.com/zerodaycode/Zork'
 license=('MIT')
 depends=('glibc' 'gcc-libs')
-makedepends=('cargo' 'git')
-provides=('zork++')
-conflicts=('zork++')
-source=("$_pkgname::git+https://github.com/zerodaycode/Zork")
-sha256sums=(SKIP)
+makedepends=('git' 'cargo')
+# checkdepends=('clang' 'gcc')
+provides=("${_pkgname}=${pkgver%%.r*}")
+conflicts=("${_pkgname}")
+_pkgsrc="Zork"
+source=("${_pkgsrc}::git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/${_pkgname}"
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${_pkgsrc}"
+  git describe --long --tags --abbrev=7 | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-	pushd "${srcdir}/${_pkgname}/${_pkgname}"
-	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
-	popd
+  cd "${srcdir}/${_pkgsrc}/${_pkgname}"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-	export RUSTUP_TOOLCHAIN=stable
-	export CARGO_TARGET_DIR=target
-
-	pushd "${srcdir}/${_pkgname}/${_pkgname}"
-	cargo build --frozen --release --all-features
-	popd
+  cd "${srcdir}/${_pkgsrc}/${_pkgname}"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release --all-features
 }
 
 check() {
-	export RUSTUP_TOOLCHAIN=stable
-
-	pushd "${srcdir}/${_pkgname}/${_pkgname}"
-	# Integration tests would need clang and gcc, so we skip them
-	cargo test --release --frozen --all-features --bins
-	cargo test --release --frozen --all-features --lib
-	cargo test --release --frozen --all-features --doc
-	popd
+  cd "${srcdir}/${_pkgsrc}/${_pkgname}"
+  export RUSTUP_TOOLCHAIN=stable
+  # Integration tests would need clang20 and gcc, so we skip them
+  # cargo test --frozen --all-features
+  cargo test --release --frozen --all-features --bins
+  cargo test --release --frozen --all-features --lib
+  cargo test --release --frozen --all-features --doc
 }
 
 package() {
-	install -Dm644 "${srcdir}/${_pkgname}/LICENSE" \
-		"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-	install -Dm755 "${srcdir}/${_pkgname}/${_pkgname}/target/release/zork" \
-		"${pkgdir}/usr/bin/zork++"
+  cd "${srcdir}/${_pkgsrc}"
+  install -Dm755 "${_pkgname}/target/release/zork" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
