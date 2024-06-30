@@ -1,0 +1,16 @@
+pkgbase = wechat
+	pkgdesc = A meta package for WeChat
+	pkgver = 1
+	pkgrel = 1
+	url = https://weixin.qq.com/
+	arch = any
+	license = LicenseRef-proprietary
+	depends = wechat-uos-qt
+	optdepends = wechat-uos
+	replaces = wechat-universal-bwrap
+	replaces = wechat-beta-bwrap
+	options = !debug
+	options = !lto
+	options = !strip
+
+pkgname = wechat
