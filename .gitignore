@@ -1,7 +1,4 @@
-material-design-icons/
-
-pkg/
-src/
-
-*.tar
-*.tar.*
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore

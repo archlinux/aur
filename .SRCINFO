@@ -1,16 +1,29 @@
 pkgbase = material-icons-git
-	pkgdesc = Material design icons is the official icon set from Google.
-	pkgver = 4.0.0.r83.g6745d95590b
-	pkgrel = 3
+	pkgdesc = Material Design icons by Google
+	pkgver = 4.0.0.r94.gf2c8df1
+	pkgrel = 1
 	url = https://github.com/google/material-design-icons
 	arch = any
-	license = Apache
-	makedepends = git
-	provides = otf-material-icons=4.0.0.r83.g6745d95590b
-	provides = ttf-material-icons=4.0.0.r83.g6745d95590b
-	source = git+https://github.com/google/material-design-icons.git
+	license = Apache-2.0
+	options = !debug
+	source = MaterialIcons-Regular-4.0.0.ttf::https://raw.githubusercontent.com/google/material-design-icons/master/font/MaterialIcons-Regular.ttf
+	source = MaterialIconsOutlined-Regular-4.0.0.otf::https://raw.githubusercontent.com/google/material-design-icons/master/font/MaterialIconsOutlined-Regular.otf
+	source = MaterialIconsRound-Regular-4.0.0.otf::https://raw.githubusercontent.com/google/material-design-icons/master/font/MaterialIconsRound-Regular.otf
+	source = MaterialIconsSharp-Regular-4.0.0.otf::https://raw.githubusercontent.com/google/material-design-icons/master/font/MaterialIconsSharp-Regular.otf
+	source = MaterialIconsTwoTone-Regular-4.0.0.otf::https://raw.githubusercontent.com/google/material-design-icons/master/font/MaterialIconsTwoTone-Regular.otf
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = otf-material-icons-git
+	pkgdesc = metapackage - switch to ttf-material-icons-git
+	depends = ttf-material-icons-git
+	provides = otf-material-icons
+	conflicts = otf-material-icons
 
 pkgname = ttf-material-icons-git
+	pkgdesc = Material Design icons by Google - classic fonts
+	provides = ttf-material-icons
+	conflicts = ttf-material-icons
