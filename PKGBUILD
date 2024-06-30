@@ -1,4 +1,5 @@
-# Maintainer:  dreieck (https://aur.archlinux.org/account/dreieck)
+# Maintainer : MorsMortium <morsmortium@disroot.org>
+# Contributor: dreieck
 # Contributor: Callum Parsey
 # Contributor: Sefa Eyeoglu
 # Contributor: Kazutoshi Noguchi
@@ -6,7 +7,7 @@
 
 _pkgname="gtk3-nocsd"
 _gitname="${_pkgname}"
-_gituser='fredldotme'
+_gituser='MorsMortium'
 pkgname="${_pkgname}-git"
 pkgver=3.0.8+2.r84.20221015.a356bf7
 pkgrel=2
@@ -15,7 +16,7 @@ arch=(
   "i686"
   "x86_64"
 )
-url="https://github.com/${_gituser}/${_gitname}"
+url="https://codeberg.org/${_gituser}/${_gitname}"
 license=("LGPL2.1")
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
