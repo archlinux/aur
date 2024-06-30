@@ -5,7 +5,7 @@
 
 pkgname=ffmpeg-amd-full
 pkgver=7.0.1
-pkgrel=2
+pkgrel=3
 _svt_hevc_ver='ed80959ebb5586aa7763c91a397d44be1798587c'
 _svt_vp9_ver='3b9a3fa43da4cc5fe60c7d22afe2be15341392ea'
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for AMD)'
@@ -47,6 +47,8 @@ depends=(
     'libcdio-paranoia'
     'libdc1394'
     'libdrm'
+    'libdvdnav'
+    'libdvdread'
     'libfdk-aac'
     'libgcrypt'
     'libgl'
@@ -129,7 +131,8 @@ depends=(
     'xevd'
     'xeve'
 )
-makedepends=('clang'
+makedepends=('patchutils'
+             'clang'
              'nasm'
              'amf-headers'
              'opencl-headers'
@@ -147,6 +150,7 @@ source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         "030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/${_svt_vp9_ver}/ffmpeg_plugin/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch"
         "040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
         "050-ffmpeg-fix-segfault-with-avisynthplus.patch"
+        '070-ffmpeg-xeve0.5.1-support.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/3e6c7948626f19c46c1a630c788ea6bbd9e7fbcb'
         "LICENSE")
 sha256sums=('bce9eeb0f17ef8982390b1f37711a61b4290dc8c2a0c1a37b5857e85bfb0e4ff'
             'SKIP'
@@ -155,6 +159,7 @@ sha256sums=('bce9eeb0f17ef8982390b1f37711a61b4290dc8c2a0c1a37b5857e85bfb0e4ff'
             '59da61f2b2c556fbe0cdbf84bcc00977ee3d2447085decb21f6298226559f2aa'
             '62509a98460d3d48afcb0ce26250def7dfed124b82acc95a3b84a2802910c1fa'
             'b0ce071f0d9c7c5eff8e7e654e30c6f4377aa137797aeb54338c2c3a93d5472c'
+            '9c76e4c5af11afed32c588d5d900f2eaf1ca43fc2611365f661df16acde912d0'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 
@@ -165,6 +170,7 @@ prepare() {
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/050-ffmpeg-fix-segfault-with-avisynthplus.patch"
+    patch -d "ffmpeg-${pkgver}" -Np1 -i <(filterdiff -x a/libavcodec/version.h "070-ffmpeg-xeve0.5.1-support.patch")
 }
 
 build() {
@@ -214,6 +220,8 @@ build() {
         --enable-libdav1d \
         --enable-libdavs2 \
         --enable-libdc1394 \
+        --enable-libdvdnav \
+        --enable-libdvdread \
         --enable-libfdk-aac \
         --enable-libflite \
         --enable-libfontconfig \
