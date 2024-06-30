@@ -1,0 +1,17 @@
+pkgbase = mcman
+	pkgdesc = Powerful Minecraft Server Manager CLI. Docker and git support included.
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://github.com/ParadigmMC/mcman
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	depends = bzip2
+	optdepends = git: for git support
+	optdepends = docker: for docker support
+	source = mcman-0.4.4.tar.gz::https://github.com/ParadigmMC/mcman/archive/refs/tags/0.4.4.tar.gz
+	sha256sums = 060e4b980d1612e0c82dd2775f3c35bcebd5e6ca9999b90131e52d40e65fc95c
+
+pkgname = mcman
