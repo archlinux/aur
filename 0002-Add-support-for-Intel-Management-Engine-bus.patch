@@ -1,4 +1,4 @@
-From b977a08585515b82d225e1b811dc74c1640f842b Mon Sep 17 00:00:00 2001
+From b8dae24b8f4bf24c3d1aeccc3efef81fc0f8b08d Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Sat, 1 Jun 2019 21:17:15 +0200
 Subject: [PATCH 02/16] Add support for Intel Management Engine bus
@@ -16,7 +16,7 @@ the Microsoft Surface Books, Surface Pro 5 and 6, and Surface Laptops.
  6 files changed, 13 insertions(+)
 
 diff --git a/libwacom/libwacom-database.c b/libwacom/libwacom-database.c
-index 0f1b180..c4c4afb 100644
+index c5e2fcf..d9fc0c4 100644
 --- a/libwacom/libwacom-database.c
 +++ b/libwacom/libwacom-database.c
 @@ -132,6 +132,8 @@ bus_from_str (const char *str)
@@ -38,7 +38,7 @@ index 0f1b180..c4c4afb 100644
  	g_assert_not_reached ();
  }
 diff --git a/libwacom/libwacom.c b/libwacom/libwacom.c
-index b6d1f4c..fccdb5e 100644
+index c028bde..0d34227 100644
 --- a/libwacom/libwacom.c
 +++ b/libwacom/libwacom.c
 @@ -153,6 +153,10 @@ get_bus_vid_pid (GUdevDevice  *device,

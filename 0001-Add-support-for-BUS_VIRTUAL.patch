@@ -1,4 +1,4 @@
-From 90a64d7efe111a10b623e179b040bdf5c5e1d406 Mon Sep 17 00:00:00 2001
+From b89d3ac556baafbf88b34ae2feadbcffc87bc3e4 Mon Sep 17 00:00:00 2001
 From: Dorian Stoll <dorian.stoll@tmsp.io>
 Date: Sat, 27 Jun 2020 18:21:11 +0200
 Subject: [PATCH 01/16] Add support for BUS_VIRTUAL
@@ -21,7 +21,7 @@ Signed-off-by: Dorian Stoll <dorian.stoll@tmsp.io>
  6 files changed, 13 insertions(+)
 
 diff --git a/libwacom/libwacom-database.c b/libwacom/libwacom-database.c
-index 0dfb5f0..0f1b180 100644
+index eb47510..c5e2fcf 100644
 --- a/libwacom/libwacom-database.c
 +++ b/libwacom/libwacom-database.c
 @@ -130,6 +130,8 @@ bus_from_str (const char *str)
@@ -43,7 +43,7 @@ index 0dfb5f0..0f1b180 100644
  	g_assert_not_reached ();
  }
 diff --git a/libwacom/libwacom.c b/libwacom/libwacom.c
-index 349608d..b6d1f4c 100644
+index 1ffb910..c028bde 100644
 --- a/libwacom/libwacom.c
 +++ b/libwacom/libwacom.c
 @@ -149,6 +149,10 @@ get_bus_vid_pid (GUdevDevice  *device,
