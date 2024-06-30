@@ -8,10 +8,10 @@ pkgbase = libgnomecanvas
 	makedepends = pkg-config
 	makedepends = intltool
 	makedepends = python
+	makedepends = glib2-devel
 	depends = libglade
 	depends = libart-lgpl
 	source = https://download.gnome.org/sources/libgnomecanvas/2.30/libgnomecanvas-2.30.3.tar.bz2
 	sha256sums = 859b78e08489fce4d5c15c676fec1cd79782f115f516e8ad8bed6abcb8dedd40
 
 pkgname = libgnomecanvas
-
