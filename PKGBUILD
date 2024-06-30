@@ -1,5 +1,5 @@
 pkgname=nyaa-bin
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="A tui tool for browsing and downloading torrents"
 url='https://github.com/Beastwick18/nyaa/'
@@ -8,7 +8,7 @@ arch=('x86_64')
 license=('GPL-3.0-or-later')
 conflicts=('nyaa')
 provides=('nyaa')
-b2sums_x86_64=('cd7b56d702dd00da0cea08ba272fbf7d55376102aa324b712c72700b6f0f4c85d264c06eeff419265b57a70a95533166823182e8b80f81726dd69361f9011680')
+b2sums_x86_64=('b8ef2bf967d5b3b4ee9ceb21e4599bf311731335ba93773cd0758ae9c9462384e04e5304c6dd625ef2bf2c9f3d3f530df965533357a2a06bd09dafdbae9a2228')
 
 package() {
 	cd "$srcdir/"
