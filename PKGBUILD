@@ -8,7 +8,7 @@ pkgname=(
 pkgbase=vencord-bin
 _dirname=builds
 pkgver=1.9.3
-pkgrel=3
+pkgrel=4
 pkgdesc="The cutest Discord client mod"
 arch=(any)
 url=https://vencord.dev
@@ -43,7 +43,7 @@ package_chromium-vencord-bin() {
   
   cd "$srcdir"/$_dirname
   unzip extension-chrome.zip -d extension-chrome
-  install -d "$pkgdir"/usr/lib/vencord-chromium
+  install -dm755 "$pkgdir"/usr/lib/vencord-chromium
   cp -r -- extension-chrome/* "$pkgdir"/usr/lib/vencord-chromium
 }
 
