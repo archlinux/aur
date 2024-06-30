@@ -61,6 +61,7 @@ makedepends=(
 	fribidi
 	gdk-pixbuf2
 	git
+	glib2-devel
 	gobject-introspection
 	gtk-update-icon-cache
 	hicolor-icon-theme
