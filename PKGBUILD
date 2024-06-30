@@ -1,19 +1,20 @@
 # Maintainer:  Greg Minshall <minshall at umich dot edu>
 pkgname=pacjson
-pkgver=0.1.4
+pkgver=0.1.6
 pkgrel=1
-pkgdesc="tangle source code blocks in emacs orgmode files from the command line"
+pkgdesc="produce a JSON representation of pacman \"-S\" and/or \"-Q\" databases"
 arch=(any)
 url="https://sr.ht/~minshall/pacjson/"
 license=('MIT')
 # pass is technically "optdepends"; but, the functionality without it
 # is minimal
-depends=(emacs)
-makedepends=(asciidoc gawk git m4)
-checkdepends=(cram)
+depends=('pyalpm' 'python>=3.0')
+makedepends=('asciidoc' 'emacs' 'gawk' 'git' 'm4')
+checkdepends=()
 # git rev-parse in upstream repo:
-# git rev-parse 0.1.4
-_tag=71cd4460a2121599e46ef70bb22f714c0493cff5
+# git rev-parse 0.2.0
+
+_tag=68bd7d6e9d013470eb801535f23294c072ca77ac
 source=(git+https://git.sr.ht/~minshall/pacjson#tag=${_tag}?signed)
 validpgpkeys=(
     BB68C8D3A3D23B9B398FB50AC397C74C54A9EC4F # Greg Minshall <minshall@acm.org>
