@@ -156,7 +156,7 @@ index 1661028be88b..e836a03e022f 100644
    /// The AST is only valid for the duration of the callback.
 diff --git a/clang-tools-extra/clangd/CodeLens.cpp b/clang-tools-extra/clangd/CodeLens.cpp
 new file mode 100644
-index 000000000000..ed026f5a1a54
+index 000000000000..d53c5571e472
 --- /dev/null
 +++ b/clang-tools-extra/clangd/CodeLens.cpp
 @@ -0,0 +1,195 @@
@@ -322,6 +322,7 @@ index 000000000000..ed026f5a1a54
 +    auto FindedRefs = findReferences(AST, Pos, Limit, Index);
 +    auto Refs = FindedRefs.References;
 +    Arg.locations.reserve(Refs.size());
++    bool ThisLocSkipped = false;
 +    size_t NotUsedRefs = 0u;
 +    bool ThisLocSkipped = false;
 +    for (auto &Ref : Refs) {

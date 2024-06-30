@@ -176,7 +176,7 @@ sha256sums=('SKIP'
             '614dd012009facb502a7d44e07fc819aa95383c8917537c57968f76ba7881a94'  # doxygen-extra-render-trunk
             '8c42651b7636726efc02bb258fcc33ac3d7ae7db4b98c58df1b96494631dbe98'  # doxygen-more-fields
             '9e5dd128cedc8f37724d9c39c0f8f7efc826b0fd367f3a03c2564ff9f514ced7'  # hover-resolve-forward-params
-            '8eb521af7dc72987ad604026babba9ac3c75efdf1aef6251f535134229ed7126'  # lsp-codelens
+            '9a1a0ce822637e3350726a33fc371648fe80a9c20150ce4a92dd256679f34cfc'  # lsp-codelens
             '7eef87c878abf154548ed635cdc801004efff41facb7c0320ba31ebe50471316'  # postfix-completion-trunk
             'f719fb52edee98f54ba40786d2ecac6ef63f56797c8f52d4d7ce76a3825966eb'  # refactor-extract-function
             '2db1f319f850858ecebdcda1c1600d6dd523f171c5b019740298d43607d5fa00'  # inlay-hints-paddings
