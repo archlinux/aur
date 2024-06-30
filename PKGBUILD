@@ -2,7 +2,7 @@
 
 # shellcheck disable=SC1090
 pkgname=nvidia-patch
-pkgver=550.90.07
+pkgver=555.58
 pkgrel=1
 pkgdesc="install or reinstall to apply and update nvidia-patch by keylase, unlock nvfbc and nvenc limit"
 arch=('x86_64')
