@@ -13,7 +13,7 @@ arch=('i686' 'x86_64')
 url="http://golly.sourceforge.net/"
 license=('GPL')
 depends=('wxwidgets-gtk3' 'glu' 'sdl2')
-makedepends=('python3')
+makedepends=('python-setuptools')
 optdepends=('python3: for Python scripting support')
 source=("https://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}-src.tar.gz"
         "golly.desktop")
