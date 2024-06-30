@@ -1,4 +1,5 @@
-# Maintainer: Nicola Revelant <nicolarevelant@outlook.com>
+# Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
+# contributor: Nicola Revelant <nicolarevelant@outlook.com>
 # Contributor: Cyra Westmere <cyra@slowest.network>
 # Contributor: random-nick <random-nick@email.com>
 # Based on the official firefox package by:
@@ -7,7 +8,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=waterfox
-pkgver=G6.0.11
+pkgver=G6.0.16
 pkgrel=2
 pkgdesc='Fork of Mozilla Firefox featuring some privacy, usability, and speed enhancements.'
 arch=(x86_64)
@@ -59,10 +60,6 @@ options=(!emptydirs !makeflags !strip)
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/WaterfoxCo/Waterfox/archive/refs/tags/$pkgver.tar.gz"
 	"$pkgname.desktop"
-)
-b2sums=(
-	'861e981cd9a7a0a497e7f3a752a435d63825ae4227abfffbf8019387432b44eaf950360ff06968cf65f74d3f7396a3e168e9c8c97ba3be1f1bea14011746ba58'
-	'b40c9d21c97f1b1ac9cae61593427c18f2262e39484874ad2077be7484f929ad7785406541f1b964041f6cd43f1fdd5c98e4942af3586de67d7b9c50a829a996'
 )
 
 prepare () {
@@ -225,3 +222,5 @@ EOT
 		ln -srfv "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
 	fi
 }
+sha256sums=('368888c275559305ba781fccb1eac89cc8689e230a055d0ee18282c77bf9ed54'
+            '1edf74423d201cbfd4162353c2fa040bb29da9db1d3f46d7fd2eff0209140e85')
