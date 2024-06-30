@@ -7,12 +7,10 @@ pkgdesc="Highly customizable and fast system information fetch program"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Toni500github/customfetch"
 license=('GPL3')
-depends=('pciutils' 'file' 'bash' 'gtk3' 'gtkmm3')
+#depends=() # they are in the "base" meta-package anyway so basically no extra depends
 makedepends=('base-devel')
-optdepends=(
-	"ttf-liberation: Font to be used for GUI (recommended)"
-)
-conflicts=('customfetch' 'customfetch-bin' 'customfetch-nogui-git')
+#optdepends=() # still don't know
+conflicts=('customfetch-gui-git')
 source=("git+${url}.git")
 sha256sums=("SKIP")
 
@@ -22,11 +20,11 @@ sha256sums=("SKIP")
 #}
 
 build() {
-    make -C "${srcdir}/${_pkgname}" DEBUG=0 GUI_SUPPORT=1
+    make -C "${srcdir}/${_pkgname}" DEBUG=0 GUI_SUPPORT=0
 }
 
 package() {
     cd "${srcdir}/${_pkgname}"
-    make install DESTDIR="${pkgdir}" PREFIX="/usr" DEBUG=0 GUI_SUPPORT=1
+    make install DESTDIR="${pkgdir}" PREFIX="/usr" DEBUG=0 GUI_SUPPORT=0
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }

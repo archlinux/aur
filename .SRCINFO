@@ -7,15 +7,7 @@ pkgbase = customfetch-git
 	arch = aarch64
 	license = GPL3
 	makedepends = base-devel
-	depends = pciutils
-	depends = file
-	depends = bash
-	depends = gtk3
-	depends = gtkmm3
-	optdepends = ttf-liberation: Font to be used for GUI (recommended)
-	conflicts = customfetch
-	conflicts = customfetch-bin
-	conflicts = customfetch-nogui-git
+	conflicts = customfetch-git
 	source = git+https://github.com/Toni500github/customfetch.git
 	sha256sums = SKIP
 
