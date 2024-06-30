@@ -1,6 +1,6 @@
 pkgbase = nyaa
 	pkgdesc = A tui tool for browsing and downloading torrents
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/Beastwick18/nyaa/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = nyaa
 	provides = nyaa
 	conflicts = nyaa
 	options = !lto
-	source = nyaa-0.9.0.tar.gz::https://static.crates.io/crates/nyaa/nyaa-0.9.0.crate
-	b2sums = b5dac8ea829c80e60d4a9e106db68143b5c307220daee69ef67263034fb44ed70f74a6c67af0b5c20e48d80fe62bb78e3c266ccd264f0441b76ba61f4838c454
+	source = nyaa-0.9.1.tar.gz::https://static.crates.io/crates/nyaa/nyaa-0.9.1.crate
+	b2sums = 64a14832668dcf464abfd255ed699d297409074009a1ddf7e537022f13d48eedbb3321ed43586e93c1020e536c4f415830f9a186e4e038752c2bd274186e6967
 
 pkgname = nyaa
