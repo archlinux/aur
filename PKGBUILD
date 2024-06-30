@@ -1,14 +1,11 @@
 # SPDX-License-Identifier: AGPL-3.0
-#
-# Maintainer:  Pellegrino Prevete <cGVsbGVncmlub3ByZXZldGVAZ21haWwuY29tCg== | base -d>
-# Maintainer:  Truocolo <truocolo@aol.com>
+# Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
 # Contributor: Oskar Roesler <oskar at oskar-roesler dot de>
 
 _pkg="pycparser"
-_py="python2"
-pkgname="${_py}-${_pkg}"
+pkgname="${_pkg}"
 pkgver=2.21
-pkgrel=1
+pkgrel=2
 _pkgdesc=(
   'C parser and AST generator'
   'written in Python'
