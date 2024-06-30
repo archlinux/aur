@@ -12,13 +12,13 @@ _pkgrel_x86_64=1
 _pkgrel_aarch64=1
 _pkgrel_i686=1
 sha256sums_x86_64=('257206ab55eef91cd0482d425351a683bd23545cd805ea3bf086b9f4e19a8495'
-                   '489d2d1a4f894c2cc15da28dfc1920cb65da04378be83850ace18796b6cb07d2')
+                   'ed01baf0e9c94eb500c7bb960d79804d428891a2d47b05fe5912bbe3f77556ef')
 sha256sums_i686=('257206ab55eef91cd0482d425351a683bd23545cd805ea3bf086b9f4e19a8495'
-                 'a7538157b637cc3907fc8e096edc85b38752b70e63938e47776c66ebe34a16c8')
+                 '39a91dd197194f1eaca5ce8b184e7844811e940db85cdacdccd5a08f6381b490')
 sha256sums_aarch64=('257206ab55eef91cd0482d425351a683bd23545cd805ea3bf086b9f4e19a8495'
-                    '3729d84512e1c57173abcace8bcd51a1144b1135251fa9308708fb27336d463d')
+                    '4d7a1d6b5233da3fb7d5d2377c630af800b9f8c9d6de28bb1c32b0bb9248b9e7')
 sha256sums_armv7l=('257206ab55eef91cd0482d425351a683bd23545cd805ea3bf086b9f4e19a8495'
-                   '2d81d3c9af16f81df67c75713310c8ade8d8e1b76f92a466feaecde07f1460d1')
+                   '35ec420457ebe7283959d6e27b0885c6bac7b56a66fd475b8aeef73c3f3dd091')
 source_x86_64=("https://gitlab.com/linuxbombay/nzp/nzp-packaging/-/archive/$scriptver/nzp-packaging-$scriptver.tar.bz2" "https://gitlab.com/linuxbombay/nzp/binaries/$pkgver/-/raw/main/nzportable-linux64.zip")
 source_aarch64=("https://gitlab.com/linuxbombay/nzp/nzp-packaging/-/archive/$scriptver/nzp-packaging-$scriptver.tar.bz2" "https://gitlab.com/linuxbombay/nzp/binaries/$pkgver/-/raw/main/nzportable-linuxarm64.zip")
 source_armv7l=("https://gitlab.com/linuxbombay/nzp/nzp-packaging/-/archive/$scriptver/nzp-packaging-$scriptver.tar.bz2" "https://gitlab.com/linuxbombay/nzp/binaries/$pkgver/-/raw/main/nzportable-linuxarmhf.zip")
