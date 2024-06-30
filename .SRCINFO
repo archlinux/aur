@@ -12,7 +12,7 @@ pkgbase = python-django-auth-ldap
 	depends = python
 	depends = python-django
 	depends = python-ldap
-	source = https://github.com/django-auth-ldap/django-auth-ldap/archive/4.8.0.tar.gz
+	source = python-django-auth-ldap-4.8.0.tar.gz::https://github.com/django-auth-ldap/django-auth-ldap/archive/4.8.0.tar.gz
 	md5sums = d67ce6bb53584f83559cf2c6ea3dec8f
 
 pkgname = python-django-auth-ldap

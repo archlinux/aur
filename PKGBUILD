@@ -1,4 +1,5 @@
-
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Contributor: Xavier Corredor <xavier.corredor.llano (a) gmail.com>
 pkgname=python-django-auth-ldap
 _pkgname=django-auth-ldap
 pkgver=4.8.0
@@ -9,7 +10,7 @@ url="https://pypi.python.org/pypi/django-auth-ldap"
 license=('LGPL')
 depends=('python' 'python-django' 'python-ldap')
 makedepends=('python-build' 'python-installer' 'python-setuptools-scm' 'python-wheel')
-source=("https://github.com/django-auth-ldap/django-auth-ldap/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/django-auth-ldap/django-auth-ldap/archive/$pkgver.tar.gz")
 md5sums=('d67ce6bb53584f83559cf2c6ea3dec8f')
 
 package() {
