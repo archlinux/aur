@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=gomp-git
-pkgver=r362.0ef7646
+pkgver=r388.2432714
 pkgrel=1
 pkgdesc='MPD client inspired by ncmpcpp written in GO.'
 arch=('x86_64')
