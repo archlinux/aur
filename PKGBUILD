@@ -3,13 +3,13 @@
 
 pkgname=intel-npu-driver-bin
 pkgver=1.5.0.20240619_9582784383
-pkgrel=4
+pkgrel=5
 main_ver=$(echo $pkgver | cut -d'.' -f1-3)
 pkgdesc="Intel(R) NPU (Neural Processing Unit) Driver"
 arch=(x86_64)
 url="https://github.com/intel/linux-npu-driver"
 license=('MIT')
-depends=('glibc' 'gcc-libs' 'openssl' 'onetbb')
+depends=('glibc' 'gcc-libs' 'openssl' 'onetbb' 'level-zero-headers' 'level-zero-loader')
 provides=('intel-driver-compiler-npu' 'intel-fw-npu' 'intel-level-zero-npu')
 source=("intel-driver-compiler-npu.deb::https://github.com/intel/linux-npu-driver/releases/download/v${main_ver}/intel-driver-compiler-npu_${pkgver//_/-}_ubuntu22.04_amd64.deb"
 	"intel-fw-npu.deb::https://github.com/intel/linux-npu-driver/releases/download/v${main_ver}/intel-fw-npu_${pkgver//_/-}_ubuntu22.04_amd64.deb"
