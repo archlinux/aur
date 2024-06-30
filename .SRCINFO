@@ -1,7 +1,7 @@
 pkgbase = lanxchange
 	pkgdesc = Configuration-free, cross-platform file transfers for your local network
 	pkgver = 1.41
-	pkgrel = 2
+	pkgrel = 3
 	url = https://lanxchange.com
 	install = lanxchange.install
 	arch = any
