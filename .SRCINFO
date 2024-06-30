@@ -1,0 +1,18 @@
+pkgbase = mmv-c
+	pkgdesc = Rename multiple files with editor like to mmv-go
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/mcauley-penney/mmv-c/
+	arch = x86_64
+	license = MIT
+	makedepends = make
+	makedepends = gcc
+	depends = glibc
+	provides = mmv
+	conflicts = mmv-c-git
+	conflicts = mmv
+	conflicts = mmv-go
+	source = mmv-c.zip::https://github.com/mcauley-penney/mmv-c//archive/refs/heads/main.zip
+	sha256sums = SKIP
+
+pkgname = mmv-c
