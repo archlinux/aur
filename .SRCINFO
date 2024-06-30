@@ -1,6 +1,6 @@
 pkgbase = pacjson
 	pkgdesc = produce a JSON representation of pacman "-S" and/or "-Q" databases
-	pkgver = 0.1.6
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://sr.ht/~minshall/pacjson/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = pacjson
 	makedepends = m4
 	depends = pyalpm
 	depends = python>=3.0
-	source = git+https://git.sr.ht/~minshall/pacjson#tag=a630480b3289fc9d6e58ba55e33ca38bbdf5febc?signed
+	source = git+https://git.sr.ht/~minshall/pacjson#tag=68bd7d6e9d013470eb801535f23294c072ca77ac?signed
 	validpgpkeys = BB68C8D3A3D23B9B398FB50AC397C74C54A9EC4F
 	sha256sums = SKIP
 

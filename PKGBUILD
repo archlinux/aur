@@ -1,6 +1,6 @@
 # Maintainer:  Greg Minshall <minshall at umich dot edu>
 pkgname=pacjson
-pkgver=0.1.6
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="produce a JSON representation of pacman \"-S\" and/or \"-Q\" databases"
 arch=(any)
