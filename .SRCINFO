@@ -1,6 +1,6 @@
 pkgbase = btrfs-desktop-notification-git
-	pkgdesc = Btrfs notification appears when booting into snapshot on Overlayfs or BTRFS error appears from journalctl log
-	pkgver = r14.2aa0008
+	pkgdesc = It notifies you on Desktop when booting into snapshot or BTRFS warning/error message appears from dmesg log
+	pkgver = r18.df4d25e
 	pkgrel = 1
 	url = https://gitlab.com/Zesko/btrfs-desktop-notification.git
 	arch = any
