@@ -1,6 +1,6 @@
 pkgbase = iqtree
 	pkgdesc = Efficient phylogenomic software by maximum likelihood https://doi.org/10.1093/molbev/msaa015
-	pkgver = 2.3.4
+	pkgver = 2.3.5
 	pkgrel = 1
 	url = https://github.com/iqtree/iqtree2
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = iqtree
 	depends = boost-libs
 	depends = gcc-libs
 	depends = zlib
-	source = git+https://github.com/iqtree/iqtree2.git#tag=v2.3.4
-	md5sums = 21419f21cbb96e8ff3ba751fada9da8f
+	source = git+https://github.com/iqtree/iqtree2.git#tag=v2.3.5
+	md5sums = b4d4e485a5bc442dcb7a8f3682b16327
 
 pkgname = iqtree
