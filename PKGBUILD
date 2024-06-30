@@ -1,7 +1,7 @@
 pkgbase=archlinux-studio-utils
 pkgname=('archlinux-studio-utils-efistub' 'archlinux-studio-utils-efistub-intel-toggle' 'archlinux-studio-utils-pipewire')
 pkgver=r4.bb6a39f
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/usrmusicman/ArchLinuxStudioUtils"
 license=('EULA')
@@ -16,6 +16,7 @@ pkgver() {
 
 package_archlinux-studio-utils-efistub() {
     depends=('efibootmgr')
+    pkgdesc="EFI boot entry creation and removal tool"
 
     ## Install Script
     install -Dm755 "$pkgbase/efistub/script/efistub-manager" "$pkgdir/usr/bin/efistub-manager"
@@ -27,6 +28,7 @@ package_archlinux-studio-utils-efistub() {
 
 package_archlinux-studio-utils-efistub-intel-toggle() {
     depends=('efibootmgr')
+    pkgdesc="Intel XE driver toggle tool"
 
     ## Install Script (Intel Only)
     install -Dm755 "$pkgbase/efistub/script/xe-kernel-driver-toggle" "$pkgdir/usr/bin/xe-kernel-driver-toggle"
@@ -38,6 +40,7 @@ package_archlinux-studio-utils-efistub-intel-toggle() {
 
 package_archlinux-studio-utils-pipewire() {
     depends=('pipewire' 'kdialog')
+    pkgdesc="GUI pipewire session toggle tool"
 
     ## Install Script
     install -Dm755 "$pkgbase/pipewire/script/pipewire_audio_toggle" "$pkgdir/usr/bin/pipewire_audio_toggle"
