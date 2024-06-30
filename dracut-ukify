@@ -118,6 +118,10 @@ function sanity_check() {
   fi
 }
 
+function parse_cmdline() {
+	grep --invert-match '^[[:blank:]]*#[^!]' "$1" | tr '\n' ' '
+}
+
 declare -A kernels
 update_all=0
 
@@ -235,16 +239,26 @@ function gen_image() {
     ukify_args+=(--os-release "@$os_release")
     ukify_args+=(--output "$image")
 
-    if [ ! -z "${ukify_cmdline["$variant"]}" ]; then
+    local cmdline="${ukify_cmdline["$variant"]}"
+    if [ -z "${cmdline}" ] && [ -f /etc/kernel/cmdline ]; then
+        cmdline=$(parse_cmdline /etc/kernel/cmdline)
+    fi
+    if [ -z "${cmdline}" ] && [ -f /usr/lib/kernel/cmdline ]; then
+        cmdline=$(parse_cmdline /usr/lib/kernel/cmdline)
+    fi
+    if [ -z "${cmdline}" ] && [ -f /usr/lib/kernel/cmdline ]; then
+        cmdline=$(</proc/cmdline)
+    fi
+    if [ -n "${cmdline}" ]; then
       for i in "${!ukify_args[@]}"; do
          [[ "${ukify_args[$i]}" = "--cmdline" ]] && break
       done
       if [ "${ukify_args[$i]}" == "--cmdline" ]; then
         # Global args contains cmdline, override it
-        ukify_args[$((i + 1))]="${ukify_cmdline["$variant"]}"
+        ukify_args[i + 1]="${cmdline}"
       else
         # There is no global cmdline, append it
-        ukify_args+=("--cmdline" "${ukify_cmdline["$variant"]}")
+        ukify_args+=("--cmdline" "${cmdline}")
       fi
     fi
 
