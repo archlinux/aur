@@ -2,3 +2,6 @@
 source = "git"
 git = "https://github.com/buildbot/buildbot.git"
 prefix = "v"
+# 4.x not generally available yet?
+# https://github.com/buildbot/buildbot/issues/7743
+include_regex = "^v3\\..*"
