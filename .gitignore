@@ -1,0 +1,5 @@
+src/
+miband4-gtk
+miband4-gtk.desktop
+*.pkg.tar.zst
+pkg/
