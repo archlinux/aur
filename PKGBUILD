@@ -2,7 +2,7 @@
 # Maintainer: vuelto
 # Contributor: vuelto
 pkgname=nura-note-bin
-pkgver=0.5.6
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Nuranote is an easy to use notes app"
 arch=('x86_64')
@@ -11,8 +11,8 @@ license=('GPLv3')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source_x86_64=("https://github.com/NuraNote/NuraNote-releases/releases/download/0.5.6/nura-note_0.0.0_amd64.deb")
-sha512sums_x86_64=('d1d992367421748a8cdd91020fcc3b9d2e6d4a8d3ac36a1d78b4f15c7a9bdaeba3f8bc30d6df1b3ce56e62165ab0c29927bdb2dd3b30396997470d5c5240e5d4')
+source_x86_64=("https://github.com/NuraNote/NuraNote-releases/releases/download/1.0.0/nura-note_1.0.0_amd64.deb")
+sha512sums_x86_64=('b57a153d3e8932a6e228ae656e466e8edcb23437166f5a0cdc05d16d3f2b394d24198849133539847a6abd9177fb11363b44cb8c303b69623249676333acd2f1')
 
 package(){
 
