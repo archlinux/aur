@@ -2,14 +2,14 @@
 # Contributor: Murtuza Akhtari <inxsible at gmail dot com>
 
 pkgname=thinkalert
-pkgver=0.1
-pkgrel=3
+pkgver=0.2
+pkgrel=1
 pkgdesc="program for manipulating the ThinkLight LED on Thinkpad laptops. "
 arch=('i686' 'x86_64')
 url="https://github.com/floriandejonckheere/thinkalert"
 license=('unknown')
 source=("https://github.com/floriandejonckheere/thinkalert/archive/v${pkgver}.tar.gz")
-md5sums=('f71c5eccbf98d75053e0af2b4490257e')
+md5sums=('75cd15da2a4616548a286925e3663fc4')
 
 build()
 {
