@@ -1,16 +1,15 @@
 pkgbase = qt-ponies-git
 	pkgdesc = Desktop ponies in Qt
-	pkgver = v0.9.3.g882a8cf
-	pkgrel = 3
+	pkgver = 0.9.r3.g882a8cf
+	pkgrel = 1
 	url = https://github.com/myszha/qt-ponies
-	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-3.0-or-later
 	makedepends = git
 	depends = qt5-base
 	depends = libxfixes
 	provides = qt-ponies
-	source = git://github.com/myszha/qt-ponies.git
+	source = git+https://github.com/myszha/qt-ponies.git
 	source = qt-ponies-qt5.patch
 	source = qt-ponies-qt5.14.patch
 	sha256sums = SKIP
@@ -18,4 +17,3 @@ pkgbase = qt-ponies-git
 	sha256sums = cb7019e0dd6bdbf335ffd52748cd60a58e1ef15e81974b4db58fb5bee1db5f88
 
 pkgname = qt-ponies-git
-

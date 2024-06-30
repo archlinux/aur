@@ -1,19 +1,19 @@
-# Maintainer: Daniel Maslowski <info@oragnecms.org>
+# Contributor: Daniel Maslowski <info@oragnecms.org>
 # Contributor: mid-kid <esteve.varela@gmail.com>
 # based on https://github.com/aur-archive/qt-ponies-git/blob/master/PKGBUILD
 _gitname="qt-ponies"
 pkgname=qt-ponies-git
-pkgver=v0.9.3.g882a8cf
-pkgrel=3
+pkgver=0.9.r3.g882a8cf
+pkgrel=1
 pkgdesc="Desktop ponies in Qt"
-arch=("i686" "x86_64")
+arch=("x86_64")
 url="https://github.com/myszha/qt-ponies"
-license=('GPL')
+license=('GPL-3.0-or-later')
 depends=("qt5-base" "libxfixes")
 makedepends=("git")
 provides=("qt-ponies")
 source=(
-  "git://github.com/myszha/$_gitname.git"
+  "git+${url}.git"
   "qt-ponies-qt5.patch"
   "qt-ponies-qt5.14.patch"
 )
@@ -24,7 +24,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/$_gitname"
-  git describe --tags | sed 's|-|.|g'
+  git describe --tags --long | sed 's/^v//;s/-/.r/;s/-/./g'
 }
 
 prepare() {
