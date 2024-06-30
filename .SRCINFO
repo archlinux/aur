@@ -1,0 +1,14 @@
+pkgbase = desk-exec-git
+	pkgdesc = Execute programs defined in XDG desktop entries directly from the command line
+	pkgver = 0.1.2.r0.gc6a5c9a
+	pkgrel = 1
+	url = https://github.com/axertheaxe/desk-exec
+	arch = x86_64
+	license = Unlicense
+	makedepends = cargo
+	provides = desk-exec
+	conflicts = desk-exec
+	source = git+https://github.com/axertheaxe/desk-exec
+	sha256sums = SKIP
+
+pkgname = desk-exec-git
