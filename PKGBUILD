@@ -2,7 +2,7 @@
 # Maintainer: Marcin Rzeźnicki <marcin.rzeznicki@gmail.com>
 
 pkgname=haskell-language-server-static
-pkgver=2.8.0.0
+pkgver=2.9.0.0
 pkgrel=1
 pkgdesc="Official haskell ide support via language server (LSP). Successor of ghcide & haskell-ide-engine."
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('sh' 'zlib' 'gmp')
 provides=('haskell-language-server')
 conflicts=('haskell-language-server' 'haskell-language-server-git')
 source=("https://downloads.haskell.org/~hls/haskell-language-server-${pkgver}/haskell-language-server-${pkgver}-${arch}-linux-unknown.tar.xz")
-sha256sums=('03fcad7f155cd5abe041ec54eeab566f529b4af424272602c7da3c36ce55edf7')
+sha256sums=('8dfa3888230974c020b15adc75a06fd2e7d9c6b573f89f903113d1d45e49b5f8')
 options=(!strip)
 
 package() {
