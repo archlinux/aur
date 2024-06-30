@@ -1,6 +1,6 @@
 pkgbase = offpunk
 	pkgdesc = Fork of the command-line Gemini client AV-98 with added offline capabilities
-	pkgver = 2.2
+	pkgver = 2.3
 	pkgrel = 1
 	url = https://git.sr.ht/~lioploum/offpunk
 	arch = any
@@ -19,6 +19,7 @@ pkgbase = offpunk
 	optdepends = python-chardet: detect text encoding
 	optdepends = python-cryptography: better support of TOFU client certificates
 	optdepends = python-feedparser: required to parse RSS and Atom feeds
+	optdepends = python-lkml-html-clean: conversion of HTML
 	optdepends = python-pillow: image manipulation
 	optdepends = python-readability-lxml: conversion of HTML
 	optdepends = python-requests: for HTTP support
@@ -30,7 +31,7 @@ pkgbase = offpunk
 	conflicts = offpunk
 	conflicts = av-98-offline
 	noextract = offpunk
-	source = git+https://git.sr.ht/~lioploum/offpunk#tag=v2.2
+	source = git+https://git.sr.ht/~lioploum/offpunk#tag=v2.3
 	sha256sums = SKIP
 
 pkgname = offpunk
