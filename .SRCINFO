@@ -1,7 +1,7 @@
 pkgbase = python-xlmhglite
 	pkgdesc = A minimal fork of the original python-xlmhg package
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgver = 1.1.1
+	pkgrel = 1
 	url = https://github.com/GuyTeichman/xlmhglite
 	arch = x86_64
 	license = custom:BSD-3
@@ -22,7 +22,7 @@ pkgbase = python-xlmhglite
 	depends = python-scipy
 	depends = python
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/x/xlmhglite/xlmhglite-1.1.0.tar.gz
-	sha256sums = dbc56b92d812ec1feb252cf2e9c18b6bdbe1f0f8288fa93c5f8105ed9df09ab0
+	source = https://files.pythonhosted.org/packages/source/x/xlmhglite/xlmhglite-1.1.1.tar.gz
+	sha256sums = 01855fd1f6664d0ecdaa7d02c3ad9db15343192bfcd550f98ac3f8833fe74d49
 
 pkgname = python-xlmhglite

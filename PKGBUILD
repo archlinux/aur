@@ -2,8 +2,8 @@
 
 pkgname=python-xlmhglite
 _module=${pkgname#python-}
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc='A minimal fork of the original python-xlmhg package'
 arch=('x86_64')
 url="https://github.com/GuyTeichman/xlmhglite"
@@ -30,7 +30,7 @@ makedepends=(
             )
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('dbc56b92d812ec1feb252cf2e9c18b6bdbe1f0f8288fa93c5f8105ed9df09ab0')
+sha256sums=('01855fd1f6664d0ecdaa7d02c3ad9db15343192bfcd550f98ac3f8833fe74d49')
 
 build() {
     cd "$_module-$pkgver"
