@@ -1,0 +1,20 @@
+post_install() {
+	echo "
+To finish the installation, follow the following steps depending of the package you've installed:
+
+Vesktop (replace the Vesktop's Vencord with the installed Vencord):
+1. Open Vesktop
+2. Go to the Vesktop Settings category
+3. Scroll down all the way to the Vencord Location section
+4. Press "Change" and select the directory /usr/lib/vencord
+5. Fully close and restart Vesktop
+
+Chromium browsers:
+1. Head to chrome://extensions, or the equivalent of your browser if it doesn't work
+2. Enable "Developer Mode"
+3. Click "Load unpacked" and select the directory /usr/lib/vencord-chromium
+
+Firefox and Librewolf:
+Nothing to do, the extension should already be activated by default
+"
+}
