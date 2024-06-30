@@ -1,6 +1,6 @@
 # Maintainer: Score_Under <seejay 11@gmail com>
 pkgname=pdpmake-git
-pkgver=1.0.0.2.ge5a9cdd
+pkgver=2.0.0.3.g94ee7a8
 pkgrel=1
 pkgdesc="POSIX-conformant make implementation for testing makefile compatibility"
 arch=(x86_64)
@@ -24,5 +24,5 @@ build() {
 
 package() {
   cd "${pkgname%-git}"
-  install -Dm755 -- make "$pkgdir/usr/bin/pdpmake"
+  make install DESTDIR="$pkgdir" PREFIX=/usr
 }
