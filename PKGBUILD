@@ -2,7 +2,7 @@
 # Contributor: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=mingw-w64-libjxl
-pkgver=0.10.2
+pkgver=0.10.3
 pkgrel=1
 pkgdesc='JPEG XL image format reference implementation (mingw-w64)'
 arch=('any')
@@ -11,10 +11,15 @@ license=('BSD-3-Clause')
 depends=('mingw-w64-crt')
 options=(!strip !buildflags staticlibs)
 # TODO: Add dependency for gimp plugin
+# TODO: Add dependency for java bindings
 makedepends=('git' 'mingw-w64-cmake' 'mingw-w64-brotli' 'mingw-w64-gcc' 'mingw-w64-gdk-pixbuf2' 'mingw-w64-giflib'
 	     'mingw-w64-highway' 'mingw-w64-libjpeg-turbo' 'mingw-w64-libpng' 'mingw-w64-openexr')
 #	     'gtest' 'python' 'asciidoc' 'doxygen'
 #             'graphviz' 'xdg-utils')
+depends=('mingw-w64-brotli' 'mingw-w64-giflib' 'mingw-w64-highway' 'mingw-w64-libjpeg-turbo' 'mingw-w64-libpng' 'mingw-w64-openexr')
+optdepends=('mingw-w64-gdk-pixbuf2: for gdk-pixbuf loader')
+#            'mingw-w64-gimp: for gimp plugin'
+#            'java-runtime: for JNI bindings')
 source=("git+https://github.com/libjxl/libjxl.git#tag=v${pkgver}"
         'git+https://github.com/google/brotli.git'
         'git+https://github.com/mm2/Little-CMS.git'
@@ -26,7 +31,7 @@ source=("git+https://github.com/libjxl/libjxl.git#tag=v${pkgver}"
         'git+https://github.com/madler/zlib.git'
         'libjxl-testdata'::'git+https://github.com/libjxl/testdata.git'
         'git+https://github.com/libjpeg-turbo/libjpeg-turbo.git')
-sha256sums=('SKIP'
+sha256sums=('55b9ed43559aaf5c2538813000bea6267437a84807a65c1d2d3314dd0d00de6f'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -89,5 +94,5 @@ package() {
     DESTDIR="$pkgdir" cmake --install build-${_arch}
   done
 
-  install -D -m644 libjxl/{LICENSE,PATENTS} -t "${pkgdir}/usr/${_arch}/share/licenses/${pkgname}"
+  install -D -m644 libjxl/{LICENSE,PATENTS} -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
