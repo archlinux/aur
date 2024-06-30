@@ -1,6 +1,6 @@
 # Maintainer: BlackFuffey <18765895345lb@example.com>
 pkgname=mcmodvcs
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Simple VCS for managing Minecraft mods"
 arch=('any')

@@ -8,11 +8,11 @@ cd ~/.minecraft/ || exit
 if [ "$action" == "load" ]; then
     
     if [ "$3" != "--overwrite" ]; then
-      if ! [ -e ./mods/.current ]; then
+      if ! [ -e ./modlib/.current ]; then
           echo "Warning: version file not found. Maybe you haven't saved at least once yet?
   If this is intended, use --overwrite to force operation" >&2
           exit 1
-      elif ! diff -r --exclude=".current" ./mods/ ./modlib/"$(cat ./mods/.current 2>/dev/null)"/ > /dev/null 2>&1; then
+      elif ! diff -r --exclude=".current" ./mods/ ./modlib/"$(cat ./modlib/.current 2>/dev/null)"/ > /dev/null 2>&1; then
           echo "Warning: mismatch between last loaded/saved and current. Did you forgot to sync?
   If this is intended, use --overwrite to force operation" >&2
           exit 1
@@ -30,19 +30,24 @@ if [ "$action" == "load" ]; then
 
 elif [ "$action" == "save" ] || [ "$action" == "sync" ]; then
 
+    if [ "$version" == ".current" ]; then
+        echo "Error: Illegal version name"
+        exit 1
+    fi
+
     if [ "$action" == "save" ]; then
         if [ -d ~/.minecraft/modlib/"$version" ] && [ "$3" != "--overwrite" ]; then
             echo "Warning: $version is already present.
 If this is intended, use --overwrite to force operation" >&2
             exit 1
         fi
-        echo "$version" > ./mods/.current
+        echo "$version" > ./modlib/.current
     elif [ "$action" == "sync" ]; then
-        if ! [ -e ./mods/.current ]; then
+        if ! [ -e ./modlib/.current ]; then
             echo "Error: version file not found. Maybe you haven't saved at least once yet?" >&2
             exit 1
         fi
-        version=$(cat ./mods/.current)
+        version=$(cat ./modlib/.current)
         if ! [ -d ./modlib/"$version" ]; then
             echo "Error: version file is pointing to a non-existance version ($version). Maybe it was deleted?
 To reconstruct the save, run 'mcmods save $version'"
@@ -56,9 +61,9 @@ To reconstruct the save, run 'mcmods save $version'"
     rm -f ./modlib/"$version"/.current
 
 elif [ "$action" == "current" ]; then
-    if [ -e ./mods/.current ]; then
+    if [ -e ./modlib/.current ]; then
         
-      echo $(cat ./mods/.current), $(find "./mods" -type f | wc -l) mods
+      echo $(cat ./modlib/.current), $(find "./mods" -type f | wc -l) mods
     else
         echo "Error: version file not found. Maybe you haven't saved at least once yet?" >&2
     fi
