@@ -158,6 +158,11 @@ function execApp() {
 	if [[ $(systemctl --user is-active wechat-uos-qt.service) = active ]]; then
 		warnMulRunning wechat-uos-qt.service
 	fi
+	if [ ${XDG_SESSION_TYPE} = wayland ]; then
+		echo "[Info] Skipping Xhost operation"
+	else
+		xhost + #Unlock the XServer for X11 users
+	fi
 	systemd-run \
 	--user \
 	${sdOption} \
