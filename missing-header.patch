@@ -1,0 +1,12 @@
+diff --git a/src/droidbattles.h b/src/droidbattles.h
+index cabb437..f468225 100644
+--- a/src/droidbattles.h
++++ b/src/droidbattles.h
+@@ -41,6 +41,7 @@
+ #include <qdatetime.h>
+ #include <qpixmapcache.h>
+ #include <QPointer>
++#include <array>
+ 
+ // application specific includes
+ //#include "resource.h"
