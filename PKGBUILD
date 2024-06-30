@@ -2,7 +2,7 @@
 
 pkgname=duckstation-git
 _pkgname=duckstation
-pkgver=0.1.r6963.gccb76d1
+pkgver=0.1.r7019.g1963d80
 pkgdesc='A Sony PlayStation (PSX) emulator, focusing on playability, speed, and long-term maintainability (git version)'
 pkgrel=1
 arch=(x86_64 aarch64)
@@ -28,7 +28,6 @@ depends=(
     hicolor-icon-theme
     glslang
     spirv-tools
-    libbacktrace.so
 )
 makedepends=(
     git
@@ -61,11 +60,13 @@ source=(
     git+"$url".git
     git+https://github.com/google/shaderc.git#tag=v2024.1
     git+https://github.com/KhronosGroup/SPIRV-Cross.git#tag=vulkan-sdk-1.3.283.0
+    git+https://github.com/ianlancetaylor/libbacktrace.git#commit=ad106d5fdd5d960bd33fae1c48a351af567fd075
     duckstation-qt.desktop
     duckstation-qt.sh)
 sha256sums=('SKIP'
             'f1dbf3270fc21bf6871ae8693ddfb467ce142009d3371fd407512b956c25ace0'
             '9c2a148a1e4c7ca16ab54991980ed6393c1c21794081083f2779d880b3dbf1d4'
+            '6463c6d54b99dddaa0f3da7a84926eb543672a4414dc2835bf35bb9eada9339f'
             'ec2d7358f81598390a8ceca2d1974be3e5f7c45602b550c89a1e9323ab45474b'
             '4e1c4ff072f0bf7df589b5c7160b0a4add5de326abd7570a2d1a4657f09e47a6')
 
@@ -94,6 +95,15 @@ EOF
 }
 
 build() {
+    echo "Building libbacktrace..."
+
+    pushd libbacktrace
+    autoreconf -fi
+    CFLAGS="$CFLAGS -ffat-lto-objects" ./configure --prefix="$srcdir/deps/usr"
+    make
+    make install
+    popd
+
     echo "Building shaderc..."
 
     cmake -B build-shaderc -S shaderc \
