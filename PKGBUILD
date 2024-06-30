@@ -3,7 +3,7 @@
 
 _pkgname=sshs
 pkgname=sshs-bin
-pkgver="4.3.0"
+pkgver="4.4.0"
 pkgrel="1"
 pkgdesc="Terminal user interface for SSH (Binary)"
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ source_x86_64=("${_pkgname}::${url}/releases/download/${pkgver}/sshs-linux-amd64
 source_aarch64=("${_pkgname}::${url}/releases/download/${pkgver}/sshs-linux-arm64")
 
 sha256sums=('711a86d103b497d5dc01a1864ff8192885fdeb946fd6984dbba5367c058918a1')
-sha256sums_x86_64=("0b95bc5bcca89a4fe39799b52377670e28cdb4f7fd11fa15a26612cf4c381569")
-sha256sums_aarch64=("ccd6cc4f2e04e4c6a85a0ccc386153ea093d4015eb4486a1e10ad34a2ee5a7ae")
+sha256sums_x86_64=("77fd4e00a2f767ed9b238a5994606d02a78b3c5d9a271c4080317d64415fa259")
+sha256sums_aarch64=("6341a1ebc142cc9c141255df568bdabc1f3330b2b22c3d02df650028b8a087db")
 
 package() {
     install -Dvm755 "${srcdir}/sshs" "${pkgdir}/usr/bin/sshs"

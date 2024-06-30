@@ -1,8 +1,7 @@
-# ✨ What's New ✨
-- Support multiple config paths and add `/etc/ssh/ssh_config` as a default one
+✨ What's New ✨
 
-# 🐛 Bug fixes 🐛
-- Fixed cargo patch version and update dependencies by [@chenrui333](https://github.com/chenrui333) in [#79](https://github.com/quantumsheep/sshs/pull/79)
-- Don't restore the terminal two times which fixes restoring issues (Fixes [#80](https://github.com/quantumsheep/sshs/issues/80))
+- The search bar now also searches for hosts destination
+- Support for CTRL+J and CTRL+K key binds
+- This release and the future ones now contains a .deb of sshs
 
-See All the Changes: [Here's the full list of updates from version 4.2.1 to 4.3.0](https://github.com/quantumsheep/sshs/compare/4.2.1...4.3.0)
+See All the Changes: [Here's the full list of updates from version 4.3.0 to 4.4.0](https://github.com/quantumsheep/sshs/compare/4.3.0...4.4.0)
