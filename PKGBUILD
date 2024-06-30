@@ -8,7 +8,7 @@ pkgname=(
 pkgbase=vencord-git
 _pkgname=Vencord
 pkgver=1.9.3.r10.g5c05443
-pkgrel=3
+pkgrel=4
 pkgdesc="The cutest Discord client mod"
 arch=(any)
 url=https://vencord.dev
@@ -63,7 +63,7 @@ package_chromium-vencord-git() {
   install=vencord.install
   
   cd "$srcdir"/$_pkgname/dist/chromium-unpacked
-  install -d "$pkgdir"/usr/lib/vencord-chromium
+  install -dm755 "$pkgdir"/usr/lib/vencord-chromium
   cp -r -- * "$pkgdir"/usr/lib/vencord-chromium
 }
 
