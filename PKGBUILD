@@ -3,7 +3,7 @@
 # -*- sh -*-
 
 pkgname='dasel'
-pkgver=2.8.0
+pkgver=2.8.1
 pkgrel=1
 pkgdesc='Select, put and delete data from JSON, TOML, YAML, XML and CSV files with a single command-line tool'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
@@ -14,6 +14,9 @@ makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 options=('lto')
 changelog="$pkgname.changelog"
+
+# Used in LDFLAGS
+_majver="${pkgver/[.]*/}"
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -44,7 +47,7 @@ build() {
   go build \
     -buildmode=pie \
     -trimpath \
-    -ldflags="-linkmode=external -X internal.Version=$pkgver -X main.BuildDate=$(date -u '+%FT%TZ')" \
+    -ldflags="-linkmode=external -X github.com/tomwright/dasel/v$_majver/internal.Version=$pkgver" \
     -mod=readonly \
     -modcacherw \
     -o "$pkgname" ./cmd/dasel/main.go
@@ -54,6 +57,8 @@ check() {
   cd "$pkgname-$pkgver"
 
   go test ./...
+
+  ./dasel --version
 }
 
 package() {
@@ -81,10 +86,10 @@ package() {
 }
 
 sha256sums=(
-  '906f2bdb7866c58d16b7b3643f9ec19455384a9a4a50e1bf6bf59cd3914076a7'
+  'ba8da9569f38e7f33453c03ac988382291a01004a96c307d52cccadb9ef7837e'
 )
 b2sums=(
-  '4c3603cacb592e0912b2fb552c44c26dd1578fbe1c9f4d88625098eeaeb3f7f61996bcde68020f122a53adafa2d35efbed81e60124a62eca0e27007df3e9a80a'
+  '6d679afd498cb03882147a1e200514c5c6ba6b4668e73ccc04c52fd468fdc6066cf899aedd195e8263259b070400830fe4dd2747adc2a256cab9aeaa4d90fb56'
 )
 
 # eof
