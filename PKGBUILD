@@ -3,7 +3,7 @@
 
 pkgname=lanxchange
 pkgver=1.41
-pkgrel=2
+pkgrel=3
 pkgdesc="Configuration-free, cross-platform file transfers for your local network"
 arch=('any')
 url='https://lanxchange.com'
@@ -30,5 +30,5 @@ package() {
           --icon "${pkgname}"
   install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
   install -Dm644 img/logo.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-  chmod 777 "${pkgdir}/opt/lanxchange/"
+  chmod -R 777 "${pkgdir}/opt/lanxchange/"
 }
