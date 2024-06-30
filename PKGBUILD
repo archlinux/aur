@@ -6,6 +6,8 @@ _pkg="pycparser"
 pkgname="${_pkg}"
 pkgver=2.21
 pkgrel=2
+_py="python2"
+pkgname="${_py}-${_pkg}"
 _pkgdesc=(
   'C parser and AST generator'
   'written in Python'
