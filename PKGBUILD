@@ -2,7 +2,7 @@
 pkgname=snapper-snapshot-notification-git
 pkgver=r4.94a129c
 pkgrel=1
-pkgdesc="The Desktop notification will appear when booting into Btrfs snapshot using Overlayfs."
+pkgdesc="It is no longer supported. Install 'btrfs-desktop-notification' instead."
 arch=("any")
 url="https://gitlab.com/Zesko/snapper-snapshot-notification.git"
 license=("GPL3")
