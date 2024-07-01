@@ -24,7 +24,6 @@ build() {
 	export CGO_LDFLAGS="${LDFLAGS}"
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 	sed 's|$$INSTALLPREFIX$$|/usr|g' core/plugins.in > core/plugins.go
-	go build -o build
 	go build -a -o build/vib
 }
 
