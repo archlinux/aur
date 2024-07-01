@@ -1,13 +1,13 @@
-# Maintainer: slonkazoid <alifurkanyildiz@gmail.com>
+# Maintainer: slonkazoid <slonkazoid@slonk.ing>
 pkgdesc="GloriousEggroll's custom build of wine (this package installs to /opt)"
-pkgname=wine-ge-custom-bin
+pkgname=wine-ge-custom-bin-opt
 pkgver=GE_Proton8_26
 pkgrel=1
 epoch=1
 arch=('x86_64')
 license=('BSD' 'LGPL' 'zlib' 'MIT' 'MPL' 'custom')
-provides=("wine-ge-custom=${pkgver/_/.}")
-conflicts=('wine-ge-custom')
+provides=("wine-ge-custom-opt=${pkgver/_/.}")
+conflicts=('wine-ge-custom-opt')
 
 depends=(
   attr             lib32-attr
