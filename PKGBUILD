@@ -1,8 +1,9 @@
 # Maintainer: David Runge <dvzrv@archlinux.org>
+# Maintainer: Robin Candau <antiz@archlinux.org>
 
 pkgname=ansible-language-server
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Ansible Language Server"
 arch=(any)
 url="https://github.com/ansible/ansible-language-server"
