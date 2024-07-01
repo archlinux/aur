@@ -1,7 +1,7 @@
 pkgbase = dar
 	pkgdesc = A full featured command-line backup tool, short for Disk ARchive
-	pkgver = 2.7.14
-	pkgrel = 2
+	pkgver = 2.7.15
+	pkgrel = 1
 	url = http://dar.linux.free.fr/
 	arch = i686
 	arch = x86_64
@@ -19,9 +19,7 @@ pkgbase = dar
 	optdepends = librsync: for delta binary
 	options = !libtool
 	backup = etc/darrc
-	source = http://downloads.sourceforge.net/project/dar/dar/2.7.14/dar-2.7.14.tar.gz
-	source = dar-libgcrypt-fix.patch::https://github.com/Edrusb/DAR/commit/687249a4f55a222e6590dee413262e6ff2a54ec4.patch
-	sha512sums = 0436c67e0dbd8f5e96e01a0db48a469d80fb81a7c7f37aed98308bd55d60d699b21c755d95fa83891690231fd2510eaa6c6652fb99a1bad9c8210084031391d4
-	sha512sums = 90f3a6a34fa146bd153ac9b1e96ed14ad2df95da4176aa10a9b2ac2e4d36564a5533c19d263211dc411c15b5ef063ece0e67905cc60d3b2710f7c152564d2c00
+	source = http://downloads.sourceforge.net/project/dar/dar/2.7.15/dar-2.7.15.tar.gz
+	sha512sums = c35c47c5ef307e3a36394cff44b37de0b9e7ad95d2810de476197897d368fa20401d567b18b763d39663167ec2ca093e54535fb5741c99a8e4bf9b78a460eaba
 
 pkgname = dar
