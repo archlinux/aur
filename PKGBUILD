@@ -7,7 +7,7 @@
 pkgname=firefox-bin
 _pkgname=firefox
 pkgver=127.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Standalone web browser from mozilla.org - Static binaries from upstream"
 arch=('x86_64' 'i686')
 url="https://www.mozilla.org/en-US/firefox/new/"
@@ -62,7 +62,7 @@ package() {
   ln -Ts /usr/share/hyphen "$pkgdir"/opt/$pkgname/hyphenation
 
   # Use system certificates
-  #ln -sf /usr/lib/libnssckbi.so "$pkgdir"/opt/$pkgname/libnssckbi.so
+  ln -sf /usr/lib/libnssckbi.so "$pkgdir"/opt/$pkgname/libnssckbi.so
 
   # Disable update checks (managed by pacman)
   mkdir "$pkgdir"/opt/$pkgname/distribution
