@@ -1,18 +1,20 @@
 # Contributor: Calogero e Angelo Scarnà <info@codelinsoft.it>
 pkgname=lylibrary
-pkgver=3.0
+_pkgname=LyLibrary
+pkgver=3.1
 pkgrel=1
 pkgdesc="LyLibrary provides everything necessary to the books cataloguing, the loans management and the registration of the library readers." 
 url="http://www.codelinsoft.it/sito/2013-11-17-17-56-34/lylibrary.html#"
 arch=('i686' 'x86_64')
-depends=('qt5-base' 'qt5-connectivity' 'qt5-declarative' 'qt5-graphicaleffects' 'qt5-multimedia' 'qt5-svg' 'qt5-tools'  'qt5-translations' 'qt5-webkit' 'qt5-websockets' 'qt5-x11extras' 'qt5-xmlpatterns' 'mysql' )
+depends=('qt5-base' 'qt5-connectivity' 'qt5-declarative' 'qt5-graphicaleffects' 'qt5-multimedia' 'qt5-svg' 'qt5-tools'  'qt5-translations' 'qt5-websockets' 'qt5-x11extras' 'qt5-xmlpatterns' 'mariadb' )
 license=(LGPL)
-source=(http://www.codelinsoft.it/sito/download/categoria-linux/LyLibrary/lylibrary-3-0targz.raw)
-md5sums=("8b67a73af48e515d3d1af5b2c4d83d46")
+source=(git+https://github.com/kratos83/LyLibrary)
+md5sums=("SKIP")
 
 
 
 build() {
+mv ${_pkgname} ${pkgname}-${pkgver}
 cd "${srcdir}/${pkgname}-${pkgver}"
 cmake -DCMAKE_INSTALL_PREFIX=/opt -DWANT_QT5=ON
 make -j5
