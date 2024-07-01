@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+set -o pipefail
 _APPDIR=/opt/@appname@
 _RUNNAME="${_APPDIR}/@runname@"
 export LC_CTYPE=en_US.UTF-8
