@@ -1,6 +1,6 @@
 pkgbase = stormfetch
 	pkgdesc = A simple linux fetch program written in go and bash
-	pkgver = 5.0.r0.g8c380db
+	pkgver = 5.1.r1.g153758b
 	pkgrel = 1
 	url = https://gitlab.com/CapCreeperGR/stormfetch
 	arch = any
