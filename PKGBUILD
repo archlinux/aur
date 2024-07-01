@@ -5,7 +5,7 @@
 
 pkgname=qt-dab
 pkgver=6.5
-pkgrel=1
+pkgrel=2
 _prefix=qt-dab-  # name of tarball and contents change from release to release
 _tagname=Qt-DAB- # tag names may differ from the application version
 _major=${pkgver::1}
@@ -21,14 +21,19 @@ optdepends=('airspy: Support for Airspy'
             'libad9361: Support for Pluto'
             'rtl-sdr: Support for RTL-SDR'
             'libsdrplay: Support for SDRplay')
-source=("https://github.com/JvanKatwijk/${pkgname}/archive/refs/tags/${_tagname}${pkgver}.tar.gz")
-sha256sums=('3890c128c05b10241be347428aa8a03b92e19ce5029f65e7a5e9dee073d193fb')
+source=("https://github.com/JvanKatwijk/${pkgname}/archive/refs/tags/${_tagname}${pkgver}.tar.gz"
+        "allow-qwt-6.3.0.patch")
+sha256sums=('3890c128c05b10241be347428aa8a03b92e19ce5029f65e7a5e9dee073d193fb'
+            '5036f4b069f9f222eb20feb1d72a3417dabc67093ce4e62a35c8702447ca50dd')
 
 prepare() {
 	cd "${_prefix}${_tagname}${pkgver}"
 
 	# The program is officially called Qt-DAB.
 	sed -i 's/Qt_DAB/Qt-DAB/g' ${_fullname}/${_fullname}.desktop
+
+	# Allow building against QWT 6.3.0
+	patch -p1 < "$srcdir"/allow-qwt-6.3.0.patch
 }
 
 build() {
