@@ -2,8 +2,8 @@
 # Maintainer: Rolv Apneseth <rolv.apneseth [at] gmail [dot] com>
 
 pkgname=wpaperd-git
-pkgver=r222.204b1c5
-pkgrel=2
+pkgver=r273.0066424
+pkgrel=1
 pkgdesc='Wallpaper daemon for Wayland.'
 arch=('x86_64')
 url='https://github.com/danyspin97/wpaperd'
@@ -23,8 +23,7 @@ pkgver() {
 prepare() {
     cd "${srcdir}/${pkgname}" || exit
     export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
-    cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
