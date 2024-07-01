@@ -1,5 +1,5 @@
 # Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
-# Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 _pkgname="bee"
 pkgname="${_pkgname}-bin"
