@@ -2,7 +2,7 @@
 
 _name='jupyter-server-proxy'
 pkgname="python-$_name"
-pkgver=4.2.0
+pkgver=4.3.0
 pkgrel=1
 pkgdesc="Jupyter notebook server extension to proxy web services"
 url="https://github.com/jupyterhub/jupyter-server-proxy"
@@ -11,7 +11,7 @@ makedepends=(python-build python-installer python-hatch-jupyter-builder python-h
 license=('BSD')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('e4397eed637279a16ca7ab7c87bf276dc4422545f2d1aff9a0d10e5ebc7f012b')
+sha256sums=('d14db5044dfc2e672f80b75b34df2c3439efd6fc90a7999aa37b0d592075ce70')
 
 build() {
     cd "${_name//-/_}-$pkgver"
