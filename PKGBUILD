@@ -5,7 +5,7 @@
  
 pkgname=thunderbird-bin
 _pkgname=thunderbird
-pkgver=115.12.1
+pkgver=115.12.2
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 pkgrel=1
@@ -20,28 +20,32 @@ optdepends=('hunspell: Spell checking'
 provides=("thunderbird=$pkgver")
 conflicts=('thunderbird')
 install=$pkgname.install
+options=(!strip !debug)
 source=(
   'thunderbird-bin.desktop'
   'vendor.js'
 )
 source_x86_64=(
-  thunderbird-$pkgver-x86_64.tar.bz2::https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/linux-x86_64/en-US/thunderbird-$pkgver.tar.bz2{,.asc}
+  thunderbird-$pkgver-x86_64.tar.bz2::https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/linux-x86_64/en-US/thunderbird-$pkgver.tar.bz2,
+  thunderbird-$pkgver-x86_64.tar.bz2.asc::https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/linux-x86_64/en-US/thunderbird-$pkgver.tar.bz2.asc
 )
 source_pentium4=(
-  thunderbird-$pkgver-pentium4.tar.bz2::https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/linux-i686/en-US/thunderbird-$pkgver.tar.bz2{,.asc}
+  thunderbird-$pkgver-pentium4.tar.bz2::https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/linux-i686/en-US/thunderbird-$pkgver.tar.bz2,
+  thunderbird-$pkgver-pentium4.tar.bz2.asc::https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/linux-i686/en-US/thunderbird-$pkgver.tar.bz2.asc
 )
 source_i686=(
-  thunderbird-$pkgver-i686.tar.bz2::https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/linux-i686/en-US/thunderbird-$pkgver.tar.bz2{,.asc}
+  thunderbird-$pkgver-i686.tar.bz2::https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/linux-i686/en-US/thunderbird-$pkgver.tar.bz2,
+  thunderbird-$pkgver-i686.tar.bz2.asc::https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/linux-i686/en-US/thunderbird-$pkgver.tar.bz2.asc
 )
 
 sha512sums=('6813e1dfd43c67ad7517714988ac27e7fdfe4857c8e6612c165a8aa89fa013c5ab4f270c13945010422d3bda82a7b7cd5496eaa5cb5524f6b2fa1732e59fd737'
             'aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5')
-sha512sums_x86_64=('d0a9fd7415931413cdf4c4f58c33d26194d6a88e617049585851fcb190b350caa7095ec315b4ad1e6e2607c0fccce96dfdeabab4c0acf863b5d8c79c7090cb9f'
-                   'd0a9fd7415931413cdf4c4f58c33d26194d6a88e617049585851fcb190b350caa7095ec315b4ad1e6e2607c0fccce96dfdeabab4c0acf863b5d8c79c7090cb9f')
-sha512sums_pentium4=('8633729764488ba5e6ddf6f3becc17d1510e17a11991326509c5ffe24f0e9f791b6e523adda44aa9b6e80a590cee4df71870d4ab545fc074a32627726bdf74da'
-                     '8633729764488ba5e6ddf6f3becc17d1510e17a11991326509c5ffe24f0e9f791b6e523adda44aa9b6e80a590cee4df71870d4ab545fc074a32627726bdf74da')
-sha512sums_i686=('8633729764488ba5e6ddf6f3becc17d1510e17a11991326509c5ffe24f0e9f791b6e523adda44aa9b6e80a590cee4df71870d4ab545fc074a32627726bdf74da'
-                 '8633729764488ba5e6ddf6f3becc17d1510e17a11991326509c5ffe24f0e9f791b6e523adda44aa9b6e80a590cee4df71870d4ab545fc074a32627726bdf74da')
+sha512sums_x86_64=('5a90d172d9f49fe1220aa0f36a44e6b7f60dac89801d037874fcc88d88f998a75081c32b5486064e5828d6735cc7ddc6a9cb1d837d3f2531d3cda761fb67eac0'
+                   'SKIP')
+sha512sums_pentium4=('bed5c8251f18a5930ac6c79d2d8be2e5170659a55889c4a2202d9c894253811f4ac676e33ceb5142bce6ec65ab7a61496909fd892bd61c56b1d081bff9257e4e'
+                     'SKIP')
+sha512sums_i686=('bed5c8251f18a5930ac6c79d2d8be2e5170659a55889c4a2202d9c894253811f4ac676e33ceb5142bce6ec65ab7a61496909fd892bd61c56b1d081bff9257e4e'
+                 'SKIP')
 
 validpgpkeys=(14F26682D0916CDD81E37B6D61B7B526D98F0353) # Mozilla Software Releases <release@mozilla.com>
 
