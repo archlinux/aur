@@ -1,6 +1,6 @@
 pkgbase = miru-git
 	pkgdesc = Bittorrent streaming software for cats. Stream anime torrents, real-time with no waiting for downloads.
-	pkgver = 5.1.1.r3.g33f9124
+	pkgver = 5.1.8.r0.gc344d54
 	pkgrel = 1
 	url = https://miru.watch/
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = miru-git
 	makedepends = gcc
 	makedepends = cmake
 	depends = electron29
-	provides = miru=5.1.1
+	provides = miru=5.1.8
 	conflicts = miru
 	source = miru.git::git+https://github.com/ThaUnknown/miru.git
 	source = miru.sh

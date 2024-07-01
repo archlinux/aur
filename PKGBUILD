@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: kyngs <aurmail at kyngs dot xyz>
 pkgname=miru-git
-pkgver=5.1.1.r3.g33f9124
+pkgver=5.1.8.r0.gc344d54
 _electronversion=29
 _nodeversion=18
 pkgrel=1
