@@ -2,7 +2,7 @@
 
 _pkgname=gocatcli
 pkgname="${_pkgname}-git"
-pkgver=1.0.3.r0.g90d66f0
+pkgver=1.0.3.r1.g9db735a
 pkgrel=1
 pkgdesc='The command line catalog tool for your offline data'
 arch=('x86_64')
@@ -21,11 +21,12 @@ pkgver() {
 
 build() {
   cd "${_pkgname}"
+  go mod tidy
   make build
 }
 
 package() {
-  install -Dm755 "build/${_pkgname}" "$pkgdir/usr/bin/${_pkgname}"
+  install -Dm755 "${srcdir}/${_pkgname}/bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
   install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
   install -Dm644 "${srcdir}/${_pkgname}/README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
