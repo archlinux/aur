@@ -1,0 +1,7 @@
+/.vscode/
+/src/
+/treetable/
+/pkg/
+*.log
+*.pkg.*
+*.tar.*

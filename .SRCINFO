@@ -1,0 +1,20 @@
+pkgbase = python-treetable-git
+	pkgdesc = Pretty-print ASCII tables with a tree-like structure
+	pkgver = r37.8ea894b
+	pkgrel = 1
+	url = https://github.com/adefossez/treetable
+	arch = any
+	license = Unlicense
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python
+	provides = python-treetable=r37.8ea894b
+	conflicts = python-treetable
+	source = treetable::git+https://github.com/adefossez/treetable.git
+	sha512sums = SKIP
+
+pkgname = python-treetable-git
