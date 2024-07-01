@@ -1,12 +1,10 @@
 [Desktop Entry]
-Version=1.1
+Encoding=UTF-8
+Value=1.0
 Type=Application
-Name=Flashpoint
+Name=Flashpoint Infinity
 Comment=Launcher for BlueMaxima's Flashpoint 
-Icon=/usr/share/pixmaps/flashpoint.png
-Exec=cd ~/.local/share/flashpoint && /opt/flashpoint/flashpoint-launcher
-Path=
-Actions=
-Categories=Game
-
-X-Desktop-File-Install-Version=0.26
+Icon=flashpoint
+Exec=/usr/bin/flashpoint-infinity
+Path=/opt/Flashpoint
+Categories=Game;

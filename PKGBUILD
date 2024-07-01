@@ -1,81 +1,59 @@
-# Maintainer: evdinowork <etaash.mathamsetty@gmail.com>
-
+# Maintainer: bbaster <bbaster at tutanota dot org>
 
 pkgname=flashpoint-launcher-bin
-pkgver=10.1.7
-pkgrel=3
-_dataver=1012
-pkgdesc="Launcher for BlueMaxima's Flashpoint"
+pkgver=13_20240425m
+_launcherver=${pkgver%_*}
+_timestamp=${pkgver#*_}
+pkgrel=1
+pkgdesc="Launcher for Flashpoint"
 arch=('x86_64')
-url="https://github.com/FlashpointProject/launcher"
+url="https://flashpointarchive.org/"
 license=('MIT')
-depends=('nss>=3.0'
-				 'tar'
-				 'php'
-				 'gtk3'
-				 'libxss'
-				 'wine'
-				 'qemu-system-x86'
-				 'wget')
-makedepends=('desktop-file-utils'
-				     'git'
-    				 'libarchive')
-optdepends=('flashplayer-standalone: native Flash support')
-conflicts=('flashpoint-bin' 'flashpoint-launcher-git')
-source=("flashpoint-data.7z::https://bluepload.unstable.life/selif/flashpoint-${_dataver}-linux-x64.7z"
-    "flashpoint.deb::https://github.com/FlashpointProject/launcher/releases/download/${pkgver}/Flashpoint-${pkgver}_linux-amd64.deb")
-noextract=("flashpoint-data.7z")
-backup=('opt/Flashpoint/Launcher/config.json'
-		'opt/Flashpoint/Launcher/preferences.json')
-sha512sums=('0b521337d40169ab502f433a107d9b7b7ca73512fb99b27ca547240a251f75e931ca8a6b4450b0dec610b14cb1d1ae1fc9599bb82e757d6cfa79cd76bf5fabe8'
-    '4e18eec49ff88fcf63177074afc638639cd26b980d6ac54d1b466c31150557a483398a4f9049496d84b3b9e5d511feb6204550f91ce11319b66f67959c53766a')
+depends=(
+    'pulseaudio'
+    'lib32-libxcomposite'
+    'gtk3'
+    'nss'
+    'php'
+    'wine'
+    'bash'
+)
+makedepends=(
+    'p7zip'
+)
+optdepends=(
+    'gtk2: native Flash support'
+    'libxt: native Flash support'
+)
+backup=('opt/Flashpoint/Launcher/config.json')
+source=("https://download.unstable.life/upload/fp${_launcherver//./}_linux_${_timestamp}.7z")
+noextract=("${source[0]##*/}") #bsdtar can't extract the package for some reason
+sha256sums=("b059a8076841a582229c90ced7bc016f08046613de105be057a9913ad6ae57d3")
 
-package(){
-	echo "Extracting Data files ..."
+prepare()
+{
+    7z x "${source[0]##*/}"
+}
+
+package()
+{
+    echo "Copying data files ..."
 	mkdir -vp "${pkgdir}/opt/Flashpoint/"
-#	rm ${srcdir}/flashpoint.7z
-#	cp -rp ${srcdir} ${pkgdir}/opt/Flashpoint/
+	cp -rp "${srcdir}/".* "${srcdir}/"* "${pkgdir}/opt/Flashpoint/"
+	
+    echo "Linking launcher..."
+    mkdir -vp "${pkgdir}/usr/bin"
+    ln -sv "/opt/Flashpoint/start-flashpoint.sh" "${pkgdir}/usr/bin/flashpoint-launcher"
 
-	echo "Extracting package data ..."
-	tar xf data.tar.xz -C "${pkgdir}"
-	mkdir -vp "${pkgdir}/opt/Flashpoint/Launcher"
-	cd "${pkgdir}/opt/Flashpoint"
-	mv $(ls | grep -v Launcher) "${pkgdir}/opt/Flashpoint/Launcher/"
-	cd "${srcdir}"
-
-	echo "Extracting Flashpoint data... (This will take some time)"
-	bsdtar -xf flashpoint-data.7z -C "${pkgdir}/opt/Flashpoint/" Data/* FPSoftware/* Server/* Plugins/* Legacy/*
-
-	echo "Creating Launcher..."
-	mkdir -vp "${pkgdir}/usr/bin"
-	printf \
-	"#!/usr/bin/env bash\n\n
-	cd /opt/Flashpoint/\n
-	/opt/Flashpoint/Launcher/flashpoint-launcher \$@" > "${pkgdir}/usr/bin/flashpoint-launcher"
-	chmod -v 777 "${pkgdir}/usr/bin/flashpoint-launcher"
-#	echo Linking launcher
-#	mkdir -vp ${pkgdir}/usr/bin
-#	ln -sv ${pkgdir}/opt/Flashpoint/flashpoint-launcher ${pkgdir}/usr/bin/
-
-	echo "Fixing desktop file ..."
-	desktop-file-edit "${pkgdir}/usr/share/applications/flashpoint-launcher.desktop" --set-key Categories --set-value "Game;"
-	desktop-file-edit "${pkgdir}/usr/share/applications/flashpoint-launcher.desktop" --set-key Exec --set-value "/usr/bin/flashpoint-launcher"
-
-#	install -dv ${pkgdir}/usr/share/licenses/
-	echo "Installing Licenses..."
-	mkdir -vp "${pkgdir}/usr/share/licenses/"
-	cp -r "${pkgdir}/opt/Flashpoint/Launcher/licenses/" "${pkgdir}/usr/share/licenses/Flashpoint"
-
-#	echo Making config and preferences writable by all ...
-#	touch "${pkgdir}/opt/Flashpoint/extConfig.json"
-#	chmod 666 "${pkgdir}/opt/Flashpoint/extConfig.json"
-#	touch "${pkgdir}/opt/Flashpoint/preferences.json"
-#	chmod 666 "${pkgdir}/opt/Flashpoint/preferences.json"
-#	touch "${pkgdir}/opt/Flashpoint/launcher.log"
-#	chmod 666 "${pkgdir}/opt/Flashpoint/launcher.log"
-	chmod -R 777 "${pkgdir}/opt/Flashpoint"
-	#chmod -vR 777 "${pkgdir}/opt/Flashpoint/Data"
-
-#	echo Installing data-files-installer ...
-#	install -Dm755 ${srcdir}/flashpoint-install-data-files.sh ${pkgdir}/usr/bin/flashpoint-install-data-files
+    echo "Installing licenses, desktop file and icon..."
+    mkdir -vp "${pkgdir}/usr/share/licenses"
+    cp -rp "${pkgdir}/opt/Flashpoint/Launcher/licenses/" "${pkgdir}/usr/share/licenses/Flashpoint"
+    install -Dm644 "${srcdir}/../flashpoint.desktop" "${pkgdir}/usr/share/applications/flashpoint.desktop"
+    install -Dm644 "${srcdir}/../icon.png" "${pkgdir}/usr/share/pixmaps/flashpoint.png"
+    
+    echo "Adding check to launch script..."    
+    sed -i -E '7s/(.*)/\1\n\
+if [[ "$(stat -c %U \/opt\/Flashpoint)" != "$USER" ]]\; then\
+\techo -e "WARNING: Flashpoint directory is not owned by current user! Expect issues. \
+Run \\"sudo USER=\\$USER chown -R \\$USER \/opt\/Flashpoint\/\\" to correct this."\nfi\n/g' "${pkgdir}/opt/Flashpoint/start-flashpoint.sh"
 }
