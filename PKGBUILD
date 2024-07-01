@@ -2,7 +2,7 @@
 # Contributor: Clever Cloud CI <ci@clever-cloud.com>
 
 pkgname=clever-tools
-pkgver=3.7.0
+pkgver=3.8.0
 pkgrel=1
 pkgdesc="Command Line Interface for Clever Cloud."
 arch=('any')
@@ -13,7 +13,7 @@ provides=("clever-tools-bin=${pkgver}")
 conflicts=("clever-tools-bin")
 options=(!strip)
 source=("https://github.com/CleverCloud/clever-tools/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('24c7b6cfa59f6841b4806c1b8f00faf21c4b10d2756ab8e6dbf647d1f82ac30b')
+sha256sums=('94f1af526d6344140760c7162de7f5e20389ac0e83d952c5b8f136d0e4f26fc5')
 
 prepare() {
 	cd "${srcdir}/clever-tools-${pkgver}"
