@@ -1,20 +1,20 @@
-# Maintainer: hcra <hcra at u53r dot space>
+# Maintainer: pvdp <pvdp@email.com>
+# Contributor: hcra <hcra at u53r dot space>
 # Contributor: Pico Paco Nano <founderofjp@gmail.com>
-# Contributpr: felix.s <felix.von.s@posteo.de>
+# Contributor: felix.s <felix.von.s@posteo.de>
 
 pkgname=weborf
-pkgver=0.19
+pkgver=1.2
 pkgrel=1
-pkgdesc="Minimal HTTP server to share your files"
+pkgdesc="Shares files using the HTTP protocol. Provides CLI. Allows using webdav."
 arch=('any')
-url="https://ltworf.github.io/weborf"
+url="https://codeberg.org/ltworf"
 license=('GPL3')
 depends=('openssl' 'file')
-makedepends=('findutils')
 optdepends=('qweborf: graphical user interface')
 conflicts=('weborf-git')
-source=(https://github.com/ltworf/weborf/releases/download/$pkgver/weborf_$pkgver.orig.tar.gz)
-sha256sums=('2129ac2244fe219f348507c442270ba8693ec3282fc39e61bdab892a8e0e75d4')
+source=(https://codeberg.org/ltworf/weborf/releases/download/$pkgver/weborf_$pkgver.orig.tar.gz)
+sha256sums=('eff00f5e0846f13a540a014b6e97ed4e6abcfd4e255a3f3dc7151832c7c50902')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
@@ -28,8 +28,4 @@ package() {
 
 	make DESTDIR="$pkgdir" install
 	cp -r "examples" "$pkgdir/usr/share/doc/$pkgname/"
-
-	cd "$pkgdir"
-	find lib -type f -exec install -D {} usr/{} \;
-	rm -r lib
 }

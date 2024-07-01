@@ -1,16 +1,15 @@
 pkgbase = weborf
-	pkgdesc = Minimal HTTP server to share your files
-	pkgver = 0.19
+	pkgdesc = Shares files using the HTTP protocol. Provides CLI. Allows using webdav.
+	pkgver = 1.2
 	pkgrel = 1
-	url = https://ltworf.github.io/weborf
+	url = https://codeberg.org/ltworf
 	arch = any
 	license = GPL3
-	makedepends = findutils
 	depends = openssl
 	depends = file
 	optdepends = qweborf: graphical user interface
 	conflicts = weborf-git
-	source = https://github.com/ltworf/weborf/releases/download/0.19/weborf_0.19.orig.tar.gz
-	sha256sums = 2129ac2244fe219f348507c442270ba8693ec3282fc39e61bdab892a8e0e75d4
+	source = https://codeberg.org/ltworf/weborf/releases/download/1.2/weborf_1.2.orig.tar.gz
+	sha256sums = eff00f5e0846f13a540a014b6e97ed4e6abcfd4e255a3f3dc7151832c7c50902
 
 pkgname = weborf
