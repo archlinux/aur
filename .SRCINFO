@@ -1,0 +1,25 @@
+pkgbase = std3d
+	pkgdesc = A 3d graphics editor and game engine.
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://www.cinfinity.info/
+	arch = x86_64
+	license = GPL2
+	depends = zlib
+	depends = gtk2
+	depends = libgl
+	depends = gtkglext
+	depends = freetype2
+	depends = bullet
+	depends = alsa-lib
+	depends = libvorbis
+	depends = libmad
+	depends = imagemagick
+	depends = stdconfig
+	source = https://www.cinfinity.info/src/std3d_0.2.tar.xz
+	source = https://www.cinfinity.info/src/std3d_0.2.tar.xz.sig
+	validpgpkeys = 337DBBBAB93B197BE445AF267EEF69820728EB48
+	sha256sums = 4d53a656ac7f09d1089ec8d1cfe49609240200528d6453a00bae11f1de8cf1c4
+	sha256sums = SKIP
+
+pkgname = std3d
