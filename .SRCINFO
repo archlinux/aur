@@ -1,0 +1,15 @@
+pkgbase = libosal
+	pkgdesc = libosal is an operating system abstraction layer Library. It's purpose is to write os-independent code for easy portability between different systems and architectures.
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/robert-burger/libosal
+	arch = x86_64
+	license = LGPL-3.0-only
+	makedepends = pkgconf
+	depends = glibc
+	provides = libosal
+	conflicts = libosal
+	source = libosal-0.0.3.tar.gz::https://github.com/robert-burger/libosal/archive/refs/tags/0.0.3-rev0.tar.gz
+	sha256sums = 6c66cb58275f6e5deb1810853d08e713f19d4076e7ac33ac302bf8420c94729d
+
+pkgname = libosal
