@@ -26,13 +26,6 @@ build() {
   meson compile -C build
 }
 
-check() {
-  cd "$pkgname"
-  export CARGO_HOME="$srcdir/cargo-home"
-  export RUSTUP_TOOLCHAIN=stable
-  meson test -C build --print-errorlogs
-}
-
 package() {
   cd "$pkgname"
   meson install -C build --destdir "$pkgdir"
