@@ -6,8 +6,8 @@
 
 pkgname=moodle
 pkgver=4.4.1
-_pkgver="stable4041"
-pkgrel=1
+_pkgver="stable404"
+pkgrel=2
 pkgdesc='An open-source software learning management system'
 arch=('any')
 url='https://moodle.org/'
