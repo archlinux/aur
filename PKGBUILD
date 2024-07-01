@@ -3,10 +3,11 @@
 
 pkgname=rustywind
 pkgver=0.22.0
-pkgrel=2
+pkgrel=3
 pkgdesc='CLI for organizing Tailwind CSS classes'
 arch=('any')
 url=https://github.com/avencera/rustywind
+OPTIONS=(!lto)
 license=('Apache')
 depends=('gcc-libs')
 makedepends=('rust')
