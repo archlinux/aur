@@ -1,7 +1,7 @@
 pkgbase = firefox-bin
 	pkgdesc = Standalone web browser from mozilla.org - Static binaries from upstream
 	pkgver = 127.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.mozilla.org/en-US/firefox/new/
 	arch = x86_64
 	license = MPL
