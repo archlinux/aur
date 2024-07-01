@@ -1,7 +1,7 @@
 # Maintainer: Tom Zander
 
 pkgname=flowee-pay
-pkgver=2024.05.0
+pkgver=2024.07.0
 options=(!lto)
 pkgrel=1
 pkgdesc="Flowee Payment solution"
@@ -9,19 +9,19 @@ arch=('x86_64' 'aarch64')
 url="http://flowee.org/"
 license=('GPL3')
 depends=('qt6-base' 'qt6-declarative' 'qt6-svg' 'qt6-shadertools' 'qt6-scxml' 'zxing-cpp' 'qt6-multimedia')
-makedepends=('boost' 'cmake' 'flowee>=2024.05.0' 'qt6-tools')
+makedepends=('boost' 'cmake' 'flowee>=2024.07.0' 'qt6-tools')
 provides=('flowee-pay')
 install=flowee-pay.install
 source=("https://codeberg.org/Flowee/pay/archive/$pkgver.tar.gz"
-    "https://flowee.org/products/pay/blockheaders-810000")
-sha256sums=('6cb53a149e7d0f61ee131899ab59210f8c80d9edaee9a73d27f320f06d17b24a'
-    '73b42d844639266afa8b9c8e31239e64c0890541b219dc6194c5d3d9a4b8354b')
+    "https://flowee.org/products/pay/blockheaders-850000")
+sha256sums=('888eca52cd53ed071127a69cdc9370226f6601d02a3ef539cc257c9e2b431a3c'
+    '4a98c3b655cfd7520b4d4f682d95e3a82e0f03fda4fa687d28f2127205d66047')
 
 build() {
-  ln -sf "$srcdir/blockheaders-810000" "$srcdir/blockheaders"
+  ln -sf "$srcdir/blockheaders-850000" "$srcdir/blockheaders"
   mkdir -p build
   cd build
-  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$pkgdir/usr/ ../pay
+  cmake -Dbuild_mobile_pay=OFF -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$pkgdir/usr/ ../pay
   make
 }
 
