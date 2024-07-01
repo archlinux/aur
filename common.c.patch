@@ -1,0 +1,12 @@
+--- src/gnucobol-3.2/libcob/common.c.0	2023-07-28 19:16:38.000000000 +0200
++++ /tmp/common.c	2024-07-01 18:01:56.173008192 +0200
+@@ -136,6 +136,9 @@
+ #if defined (WITH_XML2)
+ #include <libxml/xmlversion.h>
+ #include <libxml/xmlwriter.h>
++#include <libxml/uri.h>
++#include <libxml/parser.h>
++#include <libxml/tree.h>
+ #endif
+ 
+ #if defined (WITH_CJSON)
