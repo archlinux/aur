@@ -1,0 +1,11 @@
+diff --unified --recursive --text a/src/args.cc b/src/args.cc
+--- a/src/args.cc	2020-04-28 11:40:33.000000000 +0200
++++ b/src/args.cc	2024-07-01 11:07:32.919473704 +0200
+@@ -10,6 +10,7 @@
+ 
+ #include <stdlib.h>
+ 
++#include <cstdint>
+ #include <iostream>
+ #include <stdexcept>
+ #include <string>
