@@ -1,13 +1,12 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fooyin
 _pkgname=Fooyin
-pkgver=0.4.5
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A customisable music player"
 arch=('x86_64')
 url="https://github.com/ludouzi/fooyin"
 license=('GPL-3.0-only')
-conflicts=("${pkgname}")
 depends=(
     'qt6-base'
     'qt6-svg'
@@ -20,7 +19,6 @@ depends=(
 makedepends=(
     'gcc'
     'ninja'
-    'base-devel'
     'pkgconf'
     'cmake'
     'libpipewire'
@@ -35,12 +33,14 @@ options=(
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('d151807ccbff641caa791df45ee042ae508e45ec6e095af15d1f201d459e4ed8')
+sha256sums=('67f96e82e6e3464e47be0cb1965e7a3775c73e4e10acd2330b5d162fddccfc83')
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     cmake -S . -B build -G Ninja \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DBUILD_PCH=ON \
+        -DBUILD_WERROR=ON \
+        DINSTALL_HEADERS=ON \
         -DCMAKE_BUILD_TYPE=None
     cmake --build build -j$(nproc)
 }
