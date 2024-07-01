@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.0.3.r435.g059f548
+pkgver=0.1.0.r1.gaf3bbc3
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('x86_64')
@@ -60,7 +60,7 @@ prepare() {
 	git config submodule.externals/sirit.url ../$_pkgname-sirit
 	git config submodule.externals/tracy.url ../$_pkgname-tracy
 	git -c protocol.file.allow=always submodule update
-	sed -i '/VulkanMemoryAllocator/s/3.1.0//' CMakeLists.txt
+	sed -ri '/find_package/s/\b[.0-9]+\b//' CMakeLists.txt
 }
 
 build() {
