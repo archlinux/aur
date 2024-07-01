@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nostr-relay-tray-bin
-pkgver=1.3.0
+pkgver=1.4.0
 _electronversion=28
 pkgrel=1
 pkgdesc="A simple nostr relay tray."
@@ -17,7 +17,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/CodyTseng/nostr-relay-tray/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('9d8af50cbca1df7c0f98e2c5f1ea73a34547b3e67a7833daa8442a7faad34b1f'
+sha256sums=('f2748d8f83706f1205c8a249a15a944c0f9d7eec13a5d69179640fbf650741c3'
             '6aa57f1ed1b76d69cf0dbd1d68048c6a718a80589d762a8e2f2f2a389c802083'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
