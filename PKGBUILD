@@ -1,7 +1,7 @@
 # Maintainer: Livaco <livaco@livaco.dev>
 pkgname=crab-fetch-git
 pkgver=v0.3.1.r0.g5258a29
-pkgrel=1
+pkgrel=2
 pkgdesc="Extremely fast, featureful and customizable command-line fetcher."
 arch=('x86_64')
 url="https://github.com/LivacoNew/CrabFetch"
@@ -29,4 +29,5 @@ package() {
 	cd "${srcdir}/${pkgname}"
     # hardcoded "crabfetch" cus the package name is different
     install -Dm 755 ./target/release/crabfetch ${pkgdir}/usr/local/bin/crabfetch
+    install -Dm 755 ./LICENCE ${pkgdir}/usr/share/licenses/crabfetch/LICENCE
 }
