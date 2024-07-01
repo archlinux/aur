@@ -6,12 +6,12 @@
 pkgname=magpie-wm
 _pkgname=magpie
 pkgver=0.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Budgie's X11 window manager and compositor library forked from Mutter"
 url="https://github.com/BuddiesOfBudgie/magpie"
 arch=(x86_64)
 license=(GPL)
-depends=(colord dconf gnome-desktop gnome-settings-daemon graphene gsettings-desktop-schemas
+depends=(colord dconf glib2-devel gnome-desktop gnome-settings-daemon graphene gsettings-desktop-schemas
          lcms2 libcanberra libgudev libinput libsm libxkbcommon-x11 libxkbfile mutter pipewire 
          startup-notification)
 makedepends=(gobject-introspection meson sysprof xorg-server)
