@@ -2,12 +2,12 @@
 pkgname=minetest-regnum
 _pkgname=regnum
 _pkgauthor=1248
-pkgver=3.6.5
-_cdbrel=22677
+pkgver=3.6.6
+_cdbrel=25435
 pkgrel=1
 pkgdesc="Fight monsters, collect XP, craft battleaxes, armor, guns and lots more."
 license=("LGPLv2.1")
-sha256sums=('64ea5d1e782200f353e6ac22af34186ed58ffd01a2dc0a71bfdfe1d552ade5b8')
+sha256sums=('17f10cee41f9f0e93e8a8b22e9917d6706740d817e368910ee8e763b8fae88d6')
 
 arch=("any")
 url="https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/"
