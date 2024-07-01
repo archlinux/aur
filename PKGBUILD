@@ -6,7 +6,7 @@
 _pkgname='compiz'
 pkgname="$_pkgname-git"
 pkgver=0.9.14.2.r11.g8196e9c
-pkgrel=1
+pkgrel=2
 pkgdesc="Composite manager for Aiglx and Xgl, with plugins and CCSM"
 url="https://launchpad.net/compiz"
 arch=('i686' 'x86_64')
@@ -42,6 +42,15 @@ optdepends=(
   'xorg-xprop: grab various window properties for use in window matching rules'
 )
 
+provides=(
+  "ccsm=${pkgver:0:6}"
+  "compiz-bcop=${pkgver:0:6}"
+  "compiz-core=${pkgver:0:6}"
+  "compiz-plugins-extra=${pkgver:0:6}"
+  "compiz-plugins-main=${pkgver:0:6}"
+  "compizconfig-python=${pkgver:0:6}"
+  "libcompizconfig=${pkgver:0:6}"
+)
 conflicts=(
   'ccsm'
   'compiz-bcop'
@@ -54,18 +63,9 @@ conflicts=(
   'libcompizconfig'
   'simple-ccsm'
 )
-provides=(
-  "ccsm=${pkgver:0:6}"
-  "compiz-bcop=${pkgver:0:6}"
-  "compiz-core=${pkgver:0:6}"
-  "compiz-plugins-extra=${pkgver:0:6}"
-  "compiz-plugins-main=${pkgver:0:6}"
-  "compizconfig-python=${pkgver:0:6}"
-  "libcompizconfig=${pkgver:0:6}"
-)
 
-conflicts+=('compiz')
 provides+=("compiz=${pkgver:0:6}")
+conflicts+=('compiz')
 
 _pkgsrc="$_pkgname"
 source=(
@@ -85,6 +85,9 @@ source=(
 
   # Don't try to compile gschemas during make install
   "0005-no-compile-gschemas.patch"
+
+  # https://bugs.launchpad.net/compiz/+bug/2060620
+  "1001-fix-crash-in-vertexbuffer.patch"
 )
 sha256sums=(
   'SKIP'
@@ -94,6 +97,8 @@ sha256sums=(
   '16ddb6311ce42d958505e21ca28faae5deeddce02cb558d55e648380274ba4d9'
   '89ee91a8ea6b1424ef76661ea9a2db43412366aacddc12d24a7adf5e04bfbc61'
   '4ab3277da201314b3f65e30128bc30704ddee584fdbbfc8d0d83c7e0de91fa9a'
+
+  '859dca15821fac3b8d1e231d48932c0fad3f5d3f16cb53a8a761df2bd51b9d3a'
 )
 
 pkgver() {
