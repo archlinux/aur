@@ -9,7 +9,6 @@ url="https://github.com/mrjosh/helm-ls"
 license=(MIT)
 _binname=helm_ls
 conflicts=(helm-ls)
-conflicts=(helm-ls)
 provides=(helm-ls)
 source_x86_64=("$_binname-$pkgver::$url/releases/download/v$pkgver/helm_ls_linux_amd64")
 source=("https://raw.githubusercontent.com/mrjosh/helm-ls/v$pkgver/LICENSE")
