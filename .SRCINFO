@@ -1,6 +1,6 @@
 pkgbase = airwindows-git
 	pkgdesc = Airwindows plugins are modular, graphic-less, stripped-down, VST plugins for Mac and PC
-	pkgver = r225.a4343495
+	pkgver = r395.171fc8a1
 	pkgrel = 1
 	url = https://www.airwindows.com/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = airwindows-git
 	license = MIT
 	makedepends = git
 	makedepends = cmake
-	makedepends = steinberg-vst36
+	makedepends = vst2sdk
 	provides = airwindows
 	source = git+https://github.com/airwindows/airwindows.git
 	source = https://raw.githubusercontent.com/magnetophon/airwindows/master/plugins/LinuxVST/include/vstsdk/CMakeLists.txt

@@ -1,14 +1,16 @@
-# Maintainer: Teteros <teteros at teknik dot io>
+# Maintainer: Greg <galuise at giantg dot net>
+# Contributer: Teteros <teteros at teknik dot io>
 
 pkgname=airwindows-git
-pkgver=r225.a4343495
+pkgver=r395.171fc8a1
 pkgrel=1
 pkgdesc="Airwindows plugins are modular, graphic-less, stripped-down, VST plugins for Mac and PC"
 arch=(x86_64)
 url="https://www.airwindows.com/"
 license=(MIT)
 groups=(vst-plugins pro-audio)
-makedepends=(git cmake steinberg-vst36)
+#makedepends=(git cmake steinberg-vst36)
+makedepends=(git cmake vst2sdk)
 provides=("${pkgname%-*}")
 source=("git+https://github.com/${pkgname%-*}/${pkgname%-*}.git"
         "https://raw.githubusercontent.com/magnetophon/airwindows/master/plugins/LinuxVST/include/vstsdk/CMakeLists.txt")
@@ -24,13 +26,15 @@ prepare() {
   # Fix cmake build, see:
   # https://github.com/airwindows/airwindows/pull/5
   rm -f build/CMakeCache.txt
-  mkdir -p include/vstsdk build
+  mkdir -p include/vstsdk/vst2.x build
+  cp -r /usr/src/vst2sdk/pluginterfaces include/vstsdk/pluginterfaces
+  cp -r /usr/src/vst2sdk/public.sdk/source/vst2.x/* include/vstsdk/
   cp "${srcdir}/CMakeLists.txt" include/vstsdk/CMakeLists.txt
 }
 
 build() {
   cd "${pkgname%-*}/plugins/LinuxVST/build"
-  cmake -DVSTSDK_ROOT=/usr/include/vst36 -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-O3 -ffast-math" ..
+  cmake -DVSTSDK_ROOT=include/vstsdk -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-O3 -ffast-math" ..
   make || return 1
 }
 
