@@ -1,6 +1,6 @@
 pkgbase = pqrs-bin
 	pkgdesc = Command line tool for inspecting Parquet files
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/manojkarthick/pqrs
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = pqrs-bin
 	depends = gcc-libs
 	provides = pqrs
 	conflicts = pqrs
-	source_x86_64 = https://github.com/manojkarthick/pqrs/releases/download/v0.3.1/pqrs-0.3.1-x86_64-unknown-linux-gnu.zip
-	sha256sums_x86_64 = 329ed189fecb7e2919f8013db7b746905d0c735abc42048dec3f7695a84f732c
-	source_aarch64 = https://github.com/manojkarthick/pqrs/releases/download/v0.3.1/pqrs-0.3.1-aarch64-unknown-linux-gnu.zip
-	sha256sums_aarch64 = d1c5c74ebde7b24178de780e00e6d155a599f1fae928f59b19f8c3b158adb7d9
+	source_x86_64 = https://github.com/manojkarthick/pqrs/releases/download/v0.3.2/pqrs-0.3.2-x86_64-unknown-linux-gnu.zip
+	sha256sums_x86_64 = 51d471ee098eca5d9f6096a6c4b3324a3a8dd219cc79ae32607c2bb626453b5c
+	source_aarch64 = https://github.com/manojkarthick/pqrs/releases/download/v0.3.2/pqrs-0.3.2-aarch64-unknown-linux-gnu.zip
+	sha256sums_aarch64 = 8706cb0170b377dfb467fd0028f39fdba1aeb3b04ad6f9850b6821bbb2163a47
 
 pkgname = pqrs-bin
