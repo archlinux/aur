@@ -2,7 +2,7 @@
 
 pkgname=trayscale
 pkgver=0.12.5
-pkgrel=1
+pkgrel=2
 pkgdesc="An unofficial GUI wrapper for the Tailscale CLI client."
 arch=(i686 x86_64 aarch64)
 url="https://github.com/DeedleFake/trayscale"
@@ -12,7 +12,7 @@ makedepends=('go>=2:1.21.0' 'gobject-introspection')
 optdepends=('tailscale: provides daemon that manages connection')
 provides=(trayscale)
 source=("https://github.com/DeedleFake/trayscale/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('233a29d14d9f3bcd799b06a62055e47f0761f01faf7a1415df11257eadef3ae1')
+sha256sums=('adb2fa0d50f62b5bf7e433218d77964488181d8a89f87c95ec8ceb6ea2b80274')
 
 build() {
   cd "$pkgname-$pkgver"
