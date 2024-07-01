@@ -7,6 +7,7 @@ pkgbase = lsp-ai
 	license = MIT
 	makedepends = base-devel
 	makedepends = cargo
+	makedepends = git
 	depends = gcc-libs
 	source = git+https://github.com/SilasMarvin/lsp-ai.git#tag=v0.3.0
 	sha1sums = 6bc8bedfa1f10daf7e1fd1bc2f7b015be3752773

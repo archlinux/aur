@@ -7,7 +7,7 @@ license=('MIT')
 url='https://github.com/SilasMarvin/lsp-ai'
 source=("git+$url.git#tag=v0.3.0")
 depends=(gcc-libs)
-makedepends=(base-devel cargo)
+makedepends=(base-devel cargo git)
 sha1sums=('6bc8bedfa1f10daf7e1fd1bc2f7b015be3752773')
 
 pkgver() {
