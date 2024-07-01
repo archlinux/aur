@@ -1,6 +1,6 @@
 pkgbase = ffmpegfs
 	pkgdesc = FUSE-based transcoding filesystem with video support from many formats to MP4, WebM, OGG, MP3, OPUS, MOV, ProRes or WAV.
-	pkgver = 2.15
+	pkgver = 2.16
 	pkgrel = 1
 	url = https://nschlia.github.io/ffmpegfs/
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = ffmpegfs
 	depends = libdvdread
 	depends = libcue
 	depends = libchardet
-	source = https://github.com/nschlia/ffmpegfs/releases/download/v2.15/ffmpegfs-2.15.tar.gz
-	sha384sums = 1e720c1c4f36ed8a12bd463b257cbdda630eedc924870bf077281af99e6b0c5319292c3adf781867eed67f9287b5420c
+	source = https://github.com/nschlia/ffmpegfs/releases/download/v2.16/ffmpegfs-2.16.tar.gz
+	sha384sums = ef51eecc4434692ae57dcb464b2db85714b8296fc2f799f6e7ff02023ab32108be9560f6d18df07e114917ecd4b42d37
 
 pkgname = ffmpegfs
