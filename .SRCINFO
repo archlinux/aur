@@ -1,7 +1,7 @@
 pkgbase = mupen64-rr-lua-bin
 	pkgdesc = N64 TASing emulator with Lua scripting support
-	pkgver = 1.1.7
-	pkgrel = 2
+	pkgver = 1.1.8
+	pkgrel = 1
 	url = https://github.com/mkdasher/mupen64-rr-lua-
 	arch = any
 	license = GPL-2.0-only
@@ -10,9 +10,9 @@ pkgbase = mupen64-rr-lua-bin
 	depends = wine
 	provides = mupen64-rr-lua
 	source = Mupen64-RR_Repack21.7z::https://repack.skazzy3.com
-	source = https://raw.githubusercontent.com/mkdasher/mupen64-rr-lua-/1.1.7/winproject/mupen64.ico
+	source = https://raw.githubusercontent.com/mkdasher/mupen64-rr-lua-/1.1.8/winproject/mupen64.ico
 	source = mupen64-rr-lua
-	md5sums = 6df9383412c0afc1e62470a95db13fc9
+	md5sums = 50f0881a9f48865ea2781fe4091d01b8
 	md5sums = a22a06af7e7b9a325b18445f0154d74a
 	md5sums = SKIP
 
