@@ -23,7 +23,7 @@ build() {
 		"-X $gopkg/internal/common.gitCommit=$(git rev-parse --short HEAD)"
 	)
 
-	BUILDFLAGS=(
+	local BUILDFLAGS=(
 		-buildmode=pie
 		-trimpath
 		-mod=readonly
