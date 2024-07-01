@@ -5,12 +5,12 @@ pkgbase=open-cobol
 pkgname=('open-cobol')
 pkgver=3.2.1
 cobolver=3.2
-pkgrel=3
+pkgrel=4
 pkgdesc="COBOL compiler"
 url="https://www.gnu.org/software/gnucobol/"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 source=("$pkgname-$pkgver.tar.xz::https://sourceforge.net/projects/gnucobol/files/gnucobol/3.2/gnucobol-${cobolver}.tar.xz/download"
-	"https://www.itl.nist.gov/div897/ctg/suites/newcob.val.Z"
+	"https://eklausmeier.goip.de/pdf/newcob.val.Z"
 	"common.c.patch")
 license=("GPL")
 depends=("gcc" "db" "gmp" "json-c" "libxml2")
