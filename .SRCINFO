@@ -1,0 +1,19 @@
+pkgbase = ch34xsercfg-git
+	pkgdesc = USB serial driver for ch342/ch343/ch344/ch347/ch347f/ch9101/ch9102/ch9103/ch9104, etc. (ch34xsercfg)
+	pkgver = r42.05b4e1f
+	pkgrel = 6
+	url = https://github.com/WCHSoftGroup/ch343ser_linux
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	depends = glibc
+	depends = libch343ser
+	depends = libch9344ser
+	provides = ch34xsercfg
+	conflicts = ch34xsercfg
+	options = !strip
+	options = !debug
+	source = ch34xsercfg-git::git+https://github.com/WCHSoftGroup/ch343ser_linux.git
+	sha256sums = SKIP
+
+pkgname = ch34xsercfg-git
