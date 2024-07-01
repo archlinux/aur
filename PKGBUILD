@@ -5,7 +5,7 @@
 
 pkgbase=postgresql-git
 pkgname=('postgresql-libs-git' 'postgresql-docs-git' 'postgresql-git')
-pkgver=17.beta1.r20.g53785d2a2a
+pkgver=17.beta2.r55.ge26d313bad
 pkgrel=1
 pkgdesc='Sophisticated object-relational DBMS (Git version)'
 url='https://www.postgresql.org/'
@@ -44,6 +44,7 @@ makedepends=(
   'util-linux'
 )
 source=(git+https://git.postgresql.org/git/postgresql.git
+        libxml2-2.13-test-output.patch
         postgresql-run-socket.patch
         postgresql-perl-rpath.patch
         postgresql.pam
@@ -53,6 +54,7 @@ source=(git+https://git.postgresql.org/git/postgresql.git
         postgresql.sysusers
         postgresql.tmpfiles)
 sha512sums=('SKIP'
+            'c08f7b6905e2e1410266884fd4c2422a782bb6e73d36d99829e8fe543828705643dfea0cee4c9d2d5984e6590c2d0941fa8780258dc6005c73c50ef90aa6e4f8'
             '9f82c8e6982cc1ab4e5048c485a0c5a75fef32bf610bfeaccb8c4c28bb84ff0ebca8de83efc03044cf98275296babdcd9e12119f5320cedd899285e8a6f48b00'
             '524bafe0efd9ba9dc23af38deb3bfbf24c60368ad7cd89f525c3891dfe0beeb6aadd52a0465c64d70c841f7b554e35032d1ba1f461fd452b1dd73a0e4e75b400'
             '1e6183ab0eb812b3ef687ac2c26ce78f7cb30540f606d20023669ac00ba04075487fb72e4dc89cc05dab0269ff6aca98fc1167cc75669c225b88b592482fbf67'
@@ -71,6 +73,7 @@ prepare() {
   cd postgresql
   patch -p1 < ../postgresql-run-socket.patch
   patch -p1 < ../postgresql-perl-rpath.patch
+  patch -p5 < ../libxml2-2.13-test-output.patch
 }
 
 build() {
