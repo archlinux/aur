@@ -1,0 +1,20 @@
+pkgbase = ruby-trenni
+	pkgdesc = A fast native templating system that compiles directly to Ruby code
+	pkgver = 3.14.0
+	pkgrel = 3
+	url = https://github.com/ioquatix/trenni
+	arch = x86_64
+	license = MIT
+	checkdepends = ruby-bundler
+	checkdepends = ruby-rspec
+	makedepends = ruby-bake
+	makedepends = ruby-benchmark-ips
+	makedepends = ruby-covered
+	makedepends = ruby-nokogiri
+	makedepends = ruby-rack
+	depends = ruby
+	options = !emptydirs
+	source = https://github.com/ioquatix/trenni/archive/v3.14.0/ruby-trenni-3.14.0.tar.gz
+	sha256sums = 7c45d5d27f75843df66a8857d03db687220b748e9b92bb970bd7aaf3ab45dfab
+
+pkgname = ruby-trenni
