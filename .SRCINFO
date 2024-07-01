@@ -1,15 +1,15 @@
 pkgbase = minetest-tutorial
 	pkgdesc = Learn how to play Minetest.
-	pkgver = 3.3.0
+	pkgver = 3.4.0
 	pkgrel = 1
 	url = https://content.minetest.net/packages/Wuzzy/tutorial/
 	arch = any
 	license = GPLv2
 	makedepends = unzip
 	depends = minetest-common
-	noextract = tutorial-3.3.0.zip
+	noextract = tutorial-3.4.0.zip
 	options = !strip
-	source = tutorial-3.3.0.zip::https://content.minetest.net/packages/Wuzzy/tutorial/releases/13032/download/
-	sha256sums = a54b51bfad632d61127db728b4925fd800abe87094f3de9dda250f5dd0cedf5f
+	source = tutorial-3.4.0.zip::https://content.minetest.net/packages/Wuzzy/tutorial/releases/23089/download/
+	sha256sums = 9cb1154b471eb551dd22387b7e0becb99356f1c1ce30ddc3b03c66b87b1392a0
 
 pkgname = minetest-tutorial
