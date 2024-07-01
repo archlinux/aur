@@ -2,12 +2,12 @@
 pkgname=minetest-whynot
 _pkgname=whynot_game
 _pkgauthor=bell07
-pkgver=2023.12.22
-_cdbrel=22529
+pkgver=2024.05.25
+_cdbrel=25233
 pkgrel=1
 pkgdesc="Aims to get all existing high quality mods working together "
 license=("GPLv3")
-sha256sums=('0cfae9a7433f73371f547aecd9c8dfce2894334775ee5cc5ec1eacce0e5b2f7c')
+sha256sums=('45336f52e3b2f64d045c2ab38215a8be0e2df9a96c804f623f49b45c38f7a4cd')
 
 arch=("any")
 url="https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/"
