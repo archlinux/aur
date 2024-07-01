@@ -1,24 +1,25 @@
 # Maintainer: Allison Smith <a1yk@tilde.gree>
-# Contributor:
+# Contributor: jstoik1 <joshstoik@gmail.com>
 
 pkgname=refract-bin
-pkgver=0.11.4
+pkgver=0.11.5
 pkgrel=1
 pkgdesc="Guided AVIF/JPEG XL/WebP conversion for JPEG and PNG sources."
 arch=('x86_64')
 url="https://github.com/Blobfolio/refract"
 license=('WTFPL')
 depends=('gtk3')
+makedepends=('zstd')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=(
 	"https://github.com/Blobfolio/refract/releases/download/v${pkgver}/refract_${pkgver}-1_amd64.deb")
 sha512sums=(
-	'affc407ed8a85e108819c142da609a0236fc102d39645359f83ad8b4c5c2562874f7a224fd980d7b356664dbb3249835d178cbd211314575f84aa68c4bb1cc5e')
+	'7f8500661b292d6cb75bc0e55c0ad2bae7c70ef79e3ee7b81e9ebc9a1e38f177cdf603967be425dd57c56ab98cc0b037773aa8f6ae7e40ddad0e1693d67b8d57')
 
 package(){
 
 	# Extract package data
-	tar -xJ -f data.tar.xz -C "${pkgdir}"
+	tar -x --zstd -f data.tar.zst -C "${pkgdir}"
 
 }
