@@ -1,17 +1,20 @@
-# Maintainer: Martin Hundebøll <martin@hundeboll.net>
-_pkgname=tio
-pkgname=$_pkgname-git
-pkgver=1.36.r2.g8975c44
+# Maintainer: Nick Østergaard <oe.nick@gmail.com>
+# Co-maintainer: Kristopher James Kent <aur@kjkent.dev>
+# Contributor: Martin Hundebøll <martin@hundeboll.net>
+
+pkgname='tio-git'
+_pkgname="${pkgname%%-git}"
+pkgver='3.5.r1.g02cac07'
 pkgrel=1
-pkgdesc="The simple TTY terminal I/O application"
-url="http://tio.github.io"
+pkgdesc='A serial device I/O tool'
+url='https://github.com/tio/tio'
 arch=('x86_64' 'i686')
-license=('GPLv2')
-conflicts=('tio')
-provides=('tio')
-depends=('glibc' 'libinih')
+license=('GPL-2.0-or-later')
+conflicts=("$_pkgname")
+provides=("$_pkgname")
+depends=('glib2' 'lua')
 makedepends=('git' 'meson')
-source=("git+https://github.com/tio/tio.git")
+source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -21,7 +24,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  meson --prefix=/usr --buildtype=plain . build
+  meson setup --prefix=/usr --buildtype=plain . build
   meson compile -C build
 }
 
