@@ -1,6 +1,6 @@
 pkgbase = clapper
 	pkgdesc = A modern media player powered by GStreamer and built for the GNOME desktop environment.
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/Rafostar/clapper
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = clapper
 	provides = libclapper-0.0
 	provides = libclapper-gtk-0.0
 	conflicts = clapper
-	source = clapper-0.6.0::https://github.com/Rafostar/clapper/archive/0.6.0.tar.gz
-	md5sums = 49247b3ec760b24df08b38e50a697999
+	source = clapper-0.6.1::https://github.com/Rafostar/clapper/archive/0.6.1.tar.gz
+	md5sums = a550a4f20e3731ae778a6ab34f790e82
 
 pkgname = clapper

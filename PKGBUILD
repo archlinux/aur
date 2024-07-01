@@ -22,7 +22,7 @@
 _basename=clapper
 _libver=0.0
 pkgname="${_basename}"
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="A modern media player powered by GStreamer and built for the GNOME desktop environment."
 arch=(any)
@@ -55,7 +55,7 @@ optdepends=(
 source=("${_basename}-${pkgver}::https://github.com/Rafostar/${_basename}/archive/${pkgver}.tar.gz")
 provides=("${_basename}" "lib${_basename}-${_libver}" "lib${_basename}-gtk-${_libver}")
 conflicts=("${_basename}")
-md5sums=("49247b3ec760b24df08b38e50a697999")
+md5sums=("a550a4f20e3731ae778a6ab34f790e82")
 
 prepare() {
 	cd "${srcdir}/${_basename}-${pkgver}"
