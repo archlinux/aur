@@ -1,16 +1,16 @@
 # Maintainer: Iztech LLC <iztech@iztech.ru>
 pkgname=kt6-bin
 orgname=Iztech
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="Программа для управления калибраторами температуры серии КТ-6 производства ООО ИзТех"
 url="https://www.iztech.ru"
 license=(custom)
 depends=("qt5-base" "qt5-multimedia" "qt5-svg" "qt5-serialport" "qwt" "sqlite")
 arch=("x86_64")
-options=("strip")
+options=("strip" "!debug")
 source=("$url/content/files/app/$pkgname-linux-x86_64.tar.gz")
-md5sums=("7c6acb36d0add47827589c041d5556cb")
+md5sums=("bc6deecde60f537eec732e2ed09a109b")
 
 package() {
 	install -Dm755 "$srcdir/kt6" "$pkgdir/usr/bin/$pkgname"
