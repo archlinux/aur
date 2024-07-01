@@ -1,7 +1,7 @@
 # Maintainer: Carter Jamison <axertheaxe@proton.me>
 
 pkgname=desk-exec-bin
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Execute programs defined in XDG desktop entries directly from the command line"
 url="https://github.com/axertheaxe/desk-exec"
@@ -10,7 +10,7 @@ license=("Unlicense")
 arch=("x86_64")
 provides=("desk-exec")
 conflicts=("desk-exec")
-sha256sums_x86_64=("f4c1e7c674dc4dd4291e613648b78eed1329519e312fd1a890e55735a5bcc5ee")
+sha256sums_x86_64=("80cc14baf87f690283b7543c74c032a0946d70e7cf13e459849159bb5031fd68")
 
 package() {
     install -Dm755 "desk-exec" "$pkgdir/usr/bin/desk-exec"
