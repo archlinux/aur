@@ -94,7 +94,7 @@ md5sums=('b38c776100487dc67ce11400c0ea904e'
          'dfc069e6c8d9dbaa90fe388cab4002c9'
          '6b159c6e9d21a98925489bc37a9aea43'
          '38e98220da64adc1d8f9dc17d04b3a39'
-         '7c974b47186a4db2f82bb98e2db565f1')
+         '13cc9ba49f8341a25d84a32455f50e91')
 md5sums_x86_64=('2c2c8ec69b6b798b7ccaf873e27d977a')
 md5sums_aarch64=('c4d443515fe76ec35e792d43e9521887')
 md5sums_loong64=('c4d443515fe76ec35e792d43e9521887')
