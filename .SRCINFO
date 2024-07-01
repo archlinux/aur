@@ -4,10 +4,16 @@ pkgbase = bee-bin
 	pkgrel = 1
 	url = https://github.com/beego/bee
 	arch = x86_64
-	license = Apache
+	arch = i686
+	arch = arm
+	license = Apache-2.0
 	provides = bee
-	source = bee-bin-1.10.0.tar.gz::https://github.com/beego/bee/releases/download/v1.10.0/bee_1.10.0_linux_amd64.tar.gz
-	sha256sums = 3d46f5ea4657937a327141b6feadc61ce4a8dffc9f9cec8f0738299bfb15e29d
+	conflicts = bee
+	source_x86_64 = https://github.com/beego/bee/releases/download/v1.10.0/bee_1.10.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 3d46f5ea4657937a327141b6feadc61ce4a8dffc9f9cec8f0738299bfb15e29d
+	source_i686 = https://github.com/beego/bee/releases/download/v1.10.0/bee_1.10.0_linux_386.tar.gz
+	sha256sums_i686 = dfd08fd911a848adad36630040f3609ee0c656d0abe05139584fc5fb6ac26cde
+	source_arm = https://github.com/beego/bee/releases/download/v1.10.0/bee_1.10.0_linux_arm.tar.gz
+	sha256sums_arm = 78eeaca035949770dcaba4838bd0da0ac68346df71de4fe0f711f7cdd2c124e0
 
 pkgname = bee-bin
-
