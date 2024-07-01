@@ -2,7 +2,7 @@
 
 pkgname=ros2-iron-base
 pkgver=2024.04.23
-pkgrel=1
+pkgrel=2
 _rosdist="Iron Irwini"
 _rosdist_short_upper=${_rosdist%% *}
 _rosdist_short=${_rosdist_short_upper,}
@@ -47,6 +47,9 @@ prepare() {
     printf "Cloning ros2 repositories\n"
     mkdir -p $srcdir/ros2/src
     vcs import $srcdir/ros2/src < $srcdir/ros2-release-${_rosdist_short}-${pkgver//.}/ros2.repos
+
+    # Type error
+    git -C "$srcdir/ros2/src/ros2/ros2_tracing" cherry-pick -n 7e8d42e3816dc9f7dc268109a2bb9cc66cc4d4ee
 }
 
 build() {
