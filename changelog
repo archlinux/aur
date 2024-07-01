@@ -1,3 +1,10 @@
+2024-06-26 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 6.0.4.4-1:
+    Added support for bot groups in commands, such as @online, check wiki for more info (@JustArchi #3225).
+    Added Steam Summer Sale 2024 to sales blacklist (@nolddor #3226).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2024-06-01 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 6.0.3.4-1:
     Added POST /Api/Bot/{Bot}/AddLicense ASF API endpoint (@JustArchi).
