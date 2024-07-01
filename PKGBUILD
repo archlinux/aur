@@ -1,30 +1,36 @@
 # Maintainer: SelfRef <arch@selfref.dev>
 _basename=xfce-winxp-tc
 pkgname=('xfce-winxp-tc-git' 'libwintc-git')
-pkgver=r317.52980c3
+pkgver=r319.d631fe5
 pkgrel=1
 pkgdesc="Windows XP Total Conversion for XFCE"
 arch=('x86_64' 'aarch64')
 url="https://github.com/rozniak/xfce-winxp-tc"
 license=('GPL')
+depends=(
+	'python'
+	'sqlite'
+)
 makedepends=(
 	'git'
 	'cmake'
-	'python'
 	'python-packaging'
 	'xorg-xcursorgen'
 	'ruby-sass'
 	'garcon'
 	'lightdm'
 	'libpulse'
-	'sqlite'
 	'glib2-devel'
 	'libcanberra'
 	'webkit2gtk-4.1'
+	'libzip'
 )
 optdepends=(
 	'lightdm: LightDM theme'
+	'libcanberra: Sound theme'
 	'libpulse: Volume control in tray'
+	'webkit2gtk-4.1: Internet Explorer'
+	'libzip: Browsing ZIP files in Windows Explorer'
 )
 source=("${_basename}"::"git+https://github.com/rozniak/xfce-winxp-tc.git")
 md5sums=('SKIP')
