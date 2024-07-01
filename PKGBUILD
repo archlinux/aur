@@ -1,6 +1,7 @@
 # Maintainer: James Knight <james.d.knight@live.com>
 
 pkgname=releng-tool
+_pkgpyname=releng_tool
 pkgver=1.2.0
 _pkgtarget=v1.2
 pkgrel=1
@@ -38,8 +39,8 @@ optdepends=(
 )
 _base_url=https://github.com/releng-tool/releng-tool/releases/download
 source=(
-  $_base_url/$_pkgtarget/releng-tool-$pkgver.tar.gz
-  $_base_url/$_pkgtarget/releng-tool-$pkgver.tar.gz.asc
+  $_base_url/$_pkgtarget/$_pkgpyname-$pkgver.tar.gz
+  $_base_url/$_pkgtarget/$_pkgpyname-$pkgver.tar.gz.asc
 )
 sha512sums=(
   1a2d5d916c3e505d32c6e79b1052743dbdb7eb0fc3a5249b5f309c760ffc5bf4bafcc4261fbdfab725b5adf4c4c2235c771cb1f3049de02d8f284d742b996c5a
@@ -48,12 +49,12 @@ sha512sums=(
 validpgpkeys=(D04A27BA9305DBBD354E653902D3C27B922CCC13)
 
 build() {
-  cd $pkgname-$pkgver
+  cd $_pkgpyname-$pkgver
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $_pkgpyname-$pkgver
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -vDm644 scripts/completion/bash \
