@@ -1,7 +1,7 @@
 # Maintainer: Carter Jamison <axertheaxe@proton.me>
 
 pkgname=desk-exec
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Execute programs defined in XDG desktop entries directly from the command line"
 url="https://github.com/axertheaxe/desk-exec"
@@ -11,7 +11,7 @@ arch=("x86_64")
 provides=("desk-exec")
 conflicts=("desk-exec")
 makedepends=('cargo')
-sha256sums=("c04e6f333f4f8c82f3a545c8c9871aa6641b5c4694f1593706ce0ef4c3189cc4")
+sha256sums=("f35d649925bf8cae8fb669b3701e5ddc1e9b08249d9a41f89dc0489dc88d5d3e")
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
