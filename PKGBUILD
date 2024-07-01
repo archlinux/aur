@@ -1,8 +1,8 @@
 # Maintainer: Fernando Mumbach <fermuch at cryptolab dot net>
 _pkgname=qq
 pkgname=$_pkgname-git
-pkgver=v0.1.3.alpha
-pkgrel=2
+pkgver=v0.1.6.1.g4bda1a5
+pkgrel=1
 pkgdesc="jq inspired interoperable config format transcoder with interactive querying; JSON/YAML/TOML/XML/... support; MIT license - git development version"
 arch=('i686' 'x86_64')
 url="https://github.com/JFryy/qq/"
