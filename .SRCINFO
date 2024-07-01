@@ -1,6 +1,6 @@
 pkgbase = bilibili
 	pkgdesc = 基于哔哩哔哩官方客户端移植的Linux版本 支持漫游
-	pkgver = 1.13.6_2
+	pkgver = 1.14.0_1
 	pkgrel = 1
 	url = https://github.com/msojocs/bilibili-linux
 	arch = aarch64
@@ -12,13 +12,15 @@ pkgbase = bilibili
 	makedepends = unzip
 	makedepends = p7zip
 	makedepends = curl
+	makedepends = npm
+	makedepends = nvm
 	depends = electron21
 	depends = ffmpeg
 	provides = bilibili
 	conflicts = bilibili
-	source = bilibili-1.13.6_2.tar.gz::https://github.com/msojocs/bilibili-linux/archive/refs/tags/v1.13.6-2.tar.gz
+	source = bilibili-1.14.0_1.tar.gz::https://github.com/msojocs/bilibili-linux/archive/refs/tags/v1.14.0-1.tar.gz
 	source = bilibili.sh
-	sha256sums = ef57f7992912a4aa7f2e0da18070b687cbaea2a18d300372dbd511a1c5c68f47
+	sha256sums = f5b410a1a5c7da89298fe388f3cad6a6e48cc435b24009adac8aff64b8141f43
 	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = bilibili
