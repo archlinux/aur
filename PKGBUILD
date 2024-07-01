@@ -3,26 +3,22 @@
 _pkgname=gamescope
 pkgname=gamescope-fml
 pkgver=3.14.22
-pkgrel=3
+pkgrel=4
 pkgdesc='SteamOS session compositing window manager with added patches'
 arch=(x86_64)
 url=https://github.com/ValveSoftware/gamescope
-license=(BSD)
+license=(BSD-2-Clause BSD-3-Clause)
 conflicts=(gamescope)
 provides=(gamescope)
 depends=(
   gcc-libs
   glibc
-  glm
+  libavif
   libcap.so
-#  libdisplay-info.so
-  libglvnd
+  libdecor
   libdrm
   libinput
   libpipewire-0.3.so
-  libpixman-1.so
-  libseat.so
-  libudev.so
   libx11
   libxcb
   libxcomposite
@@ -35,18 +31,17 @@ depends=(
   libxres
   libxtst
   libxxf86vm
-  opengl-driver
-  openvr
   sdl2
+  seatd
   vulkan-icd-loader
   wayland
   xcb-util-errors
-  xcb-util-renderutil
   xcb-util-wm
   xorg-server-xwayland
 )
 makedepends=(
   benchmark
+  cmake # for openvr
   git
   glslang
   meson
@@ -56,19 +51,24 @@ makedepends=(
 )
 source=(
   git+https://github.com/ValveSoftware/gamescope.git#tag=${pkgver}
-  git+https://github.com/nothings/stb.git#commit=af1a5bc352164740c1cc1354942b1c6b72eacb8a
+  git+https://github.com/Joshua-Ashton/wlroots.git
+  git+https://gitlab.freedesktop.org/emersion/libliftoff.git
+  git+https://github.com/Joshua-Ashton/vkroots.git
+  git+https://gitlab.freedesktop.org/emersion/libdisplay-info.git
+  git+https://github.com/ValveSoftware/openvr.git
   git+https://github.com/Joshua-Ashton/reshade.git
-  git+https://github.com/Joshua-Ashton/GamescopeShaders.git#tag=v0.1
   git+https://github.com/KhronosGroup/SPIRV-Headers.git
   chimeraos.patch
 )
-
-sha256sums=('e891671d40025cf64444f70730d7eeb776a64884d500dd5d0a5bf326823fba27'
-            'e39e0c91b297bfd707afcda84ecdc15a08c22e2ad4c347fc3533b1ed98fb3f85'
-            'SKIP'
-            '03726f2fb44ae79e6a398e8f9aaaf8054800dda9b8298726157522fe5f7296b1'
-            'SKIP'
-            '916d94178e52e68da3d9ab67151f51978bf31a6804de23b2ccd591b509b1be85')
+b2sums=('5f2fd5a052da71a8daf8518e306d0bfc49802f7e246cc3d9f454dce6a482eadc2c43db5c5458bd9ad4074c18bcd4ccad91da14a92f2df17671667c47da7b55c2'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        '6b80233f7db7389526405b776f2d5d83848cafa3034350952026f10c041ce8bb48e0fbc4e5667eb63803870742112dfa4a67a21662616dac957a013e41215ef1')
 
 prepare() {
   cd "$srcdir/$_pkgname"
@@ -83,16 +83,29 @@ prepare() {
    
   #  meson subprojects download
   meson subprojects download
+
+  git submodule init subprojects/wlroots
+  git config submodule.subprojects/wlroots.url ../wlroots
+
+  git submodule init subprojects/libliftoff
+  git config submodule.subprojects/libliftoff.url ../libliftoff
+
+  git submodule init subprojects/vkroots
+  git config submodule.subprojects/vkroots.url ../vkroots
+
+  git submodule init subprojects/libdisplay-info
+  git config submodule.subprojects/libdisplay-info.url ../libdisplay-info
+
+  git submodule init subprojects/openvr
+  git config submodule.subprojects/openvr.url ../openvr
+
   git submodule init src/reshade
   git config submodule.src/reshade.url ../reshade
+
   git submodule init thirdparty/SPIRV-Headers
   git config submodule.thirdparty/SPIRV-Headers.url ../SPIRV-Headers
-  git -c protocol.file.allow=always submodule update
 
-  # make stb.wrap use our local clone
-  rm -rf subprojects/stb
-  git clone "$srcdir/stb" subprojects/stb
-  cp -av subprojects/packagefiles/stb/* subprojects/stb/ # patch from the .wrap we elided
+  git -c protocol.file.allow=always submodule update
 }
 
 pkgver() {
@@ -102,25 +115,13 @@ pkgver() {
 
 build() {
   arch-meson gamescope build \
-    -Dforce_fallback_for=stb,wlroots,vkroots,libliftoff,libdisplay-info \
-    -Dpipewire=enabled \
-    -Dinput_emulation=enabled \
-    -Ddrm_backend=enabled \
-    -Drt_cap=enabled \
-    -Davif_screenshots=enabled \
-    -Dsdl2_backend=enabled \
-    -Denable_gamescope=true \
-    -Denable_gamescope_wsi_layer=true \
-    -Denable_openvr_support=false # TODO: enable this when fixed
+    -Dforce_fallback_for=wlroots,libliftoff,vkroots,glm,stb,libdisplay-info \
+    -Dpipewire=enabled
   meson compile -C build
 }
 
 package() {
-  install -d "$pkgdir"/usr/share/gamescope/reshade
-  cp -r "$srcdir"/GamescopeShaders/* "$pkgdir"/usr/share/gamescope/reshade/
-  chmod -R 655 "$pkgdir"/usr/share/gamescope
-
   DESTDIR="${pkgdir}" meson install -C build \
     --skip-subprojects
-  install -Dm 644 gamescope/LICENSE -t "${pkgdir}"/usr/share/licenses/gamescope/
 }
+
