@@ -3,7 +3,7 @@
 pkgname=thinkpad-l860-gl-fcc-unlock-bin
 
 # I do not know how lenovo intends on versioning this, hopefully it's sane
-pkgver=3.0
+pkgver=3.1
 pkgrel=1
 
 pkgdesc='FCC Unlocking tool for the L860-GL/L860R+ in X1 Carbon Gen 10/11 and X1 Yoga Gen 7/8'
@@ -17,21 +17,21 @@ url='https://download.lenovo.com/pccbbs/mobiles'
 makedepends=()
 depends=('dmidecode')
 conflicts=()
-source=("${url}/n3xwp03w.zip"
-        "${url}/n3xwp03w.txt")
+source=("${url}/n3xwp04w.zip"
+        "${url}/n3xwp04w.txt")
 
-sha256sums=('41b273e6bc0427c8f7e169999e727c085da46e066644e16b04fa2ad3ea8fd6f0'
-            '3fceaccc4d7c2143ea7d76b0ad8d29f7d9cdc5b72afc2e26913f68e54c314c14')
+sha256sums=('e9be190c46a49ae47c14d59bdc0450e6541e93fa5a0243d9cb3c0affc6a6ee0e'
+            'e39144d17cc81146d024687be55819dba1a875352f06b5b1c7e7103fe5981ffb')
 
 install=$pkgname.install
 
 prepare() {
-    tar xf lenovo_wwan_fccunlock_package_release2.tar.gz
+    tar xf lenovo-wwan-unlock_ver2.1.tar.gz
 }
 
 # modified from fcc_unlock_setup.sh
 package() {
-    _srcdir=lenovo_wwan_fccunlock_package
+    _srcdir=lenovo-wwan-unlock
 
     ### Copy fcc unlock script for MM
     tar -zxf "$_srcdir/fcc-unlock.d.tar.gz" -C $_srcdir/
