@@ -9,6 +9,10 @@ pkgdesc="CLI client for the Sakura Cloud"
 arch=('x86_64' 'i686' 'aarch64' 'arm')
 url="https://github.com/sacloud/${_pkgname}"
 license=('Apache-2.0')
+optdepends=('bash-completion: for shell completions'
+            'zsh-completions: for shell completions')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_linux-amd64.zip")
 source_i686=("${url}/releases/download/v${pkgver}/${_pkgname}_linux-386.zip")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_linux-arm64.zip")
