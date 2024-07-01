@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=kangaroo
 pkgname="${_pkgname}-max-bin"
-pkgver=5.0.0.240601
+pkgver=5.1.0.240701
 pkgrel=1
 pkgdesc="A SQL client and admin tool for popular databases(SQLite/MySQL/PostgreSQL/...),support table design,query,model,sync,export/import etc,focus on comfortable,fun and developer friendly."
 arch=('x86_64')
@@ -25,13 +25,14 @@ depends=(
     'libadwaita'
     'libsoup'
     'editorconfig-core-c'
+    'unixodbc'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.pkg.tar.zst::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-multiple-${pkgver}-1-${CARCH}.pkg.tar.zst"
     "LICENSE.html::${url}/en/license/service-agreement.html"
 )
-sha256sums=('559430563edf05f13afd9b7edcab76e0a192a9255b14969210c9e1f3f699abb3'
-            '0289918a62e925f88c4405090efd04b14963b313fedf4612ca9bdfd5421b9da5')
+sha256sums=('669bea9d1807dac67cdec7c56b41e2e35d42e809fb38ee3d893edcab1c44458d'
+            '6b1cd9d2720d4d0ad22b5e42019e7596221e37b849a1c10baf5d5af16327b2f9')
 package() {
     cp -p -a "${srcdir}/usr" "${pkgdir}"
     rm -rf "${pkgdir}/usr/share/licenses/${_pkgname}"
