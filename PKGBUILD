@@ -2,7 +2,7 @@
 pkgname=fooyin-bin
 _pkgname=Fooyin
 _appname="org.${pkgname%-bin}.${pkgname%-bin}"
-pkgver=0.4.5
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A customisable music player"
 arch=('x86_64')
@@ -23,13 +23,10 @@ optdepends=(
     'sdl2: For the SDL2 audio output plugin'
     'pipewire: For the PipeWire audio output plugin'
 )
-options=(
-    '!strip'
-)
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}-mantic_amd64.deb"
 )
-sha256sums=('1f0d07eeb61502bd2bcc518cf51165c9d2550918e7bb6ad1fe172a15c50d5678')
+sha256sums=('b5ec6bac8e6a558cdd66215a4f3f86d3989919b16e1886e884d393b8925e1856')
 build() {
     bsdtar -xf "${srcdir}/data."*
     sed "s|${_appname}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${_appname}.desktop"
