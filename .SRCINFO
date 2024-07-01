@@ -1,12 +1,12 @@
 pkgbase = ambiant
 	pkgdesc = A green theme inspired by Ubuntu's Ambiance and Humanity
-	pkgver = 24.5.1
+	pkgver = 24.7.1
 	pkgrel = 1
 	url = https://tari.in/www/software/ambiant
 	arch = any
 	license = GPL-2.0-or-later
 	license = GPL-3.0-or-later
-	source = ambiant-24.5.1.tar.gz::https://github.com/tari01/ambiant/archive/24.5.1.tar.gz
-	md5sums = f82463e0f8320b8474c2c9d5a847e324
+	source = ambiant-24.7.1.tar.gz::https://github.com/tari01/ambiant/archive/24.7.1.tar.gz
+	md5sums = e4db02ccd59ef15f94e3eb30c46b2295
 
 pkgname = ambiant
