@@ -2,7 +2,7 @@
 # Contributor: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=quickwit
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc='A fast and cost-efficient distributed search engine for large-scale, immutable data'
 arch=('x86_64')
@@ -12,8 +12,8 @@ makedepends=('git' 'rust' 'cmake' 'clang' 'yarn' 'protobuf')
 depends=('gcc-libs' 'zlib' 'openssl')
 backup=('etc/quickwit.yaml')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/quickwit-oss/quickwit/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b23a597b8b18bb9826d4bbdef868ab7b2a9e47076efb356c5ef36b6e648ed2a9')
-b2sums=('04a26a9c06ac4f17f6d4bbf2bb547ef80e57201dc8b056382ec9211ce795957fbdf6f4cebba90a03bde567d40285b1f6769c35f8e966befa00e51fbda199031e')
+sha256sums=('aa9e932662e48447d814e36db657acd4c9a69beb97c16006e9cb5539585fd947')
+b2sums=('52f3f78a1b979222d4a117410697a85b80778568c2aa029d2e8aa704be4d6bd9e7ba86e8653d51a8debcaea30eb6ce89a4f925537364d5890375ddd5e04341ae')
 options=('!lto')
 
 prepare() {
