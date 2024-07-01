@@ -1,0 +1,18 @@
+pkgbase = perl-test-expectandcheck
+	pkgdesc = expect/check-style unit testing with object methods
+	pkgver = 0.06
+	pkgrel = 1
+	url = https://metacpan.org/release/Test-ExpectAndCheck
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-module-build
+	depends = perl
+	depends = perl-future
+	depends = perl-test-deep
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/P/PE/PEVANS/Test-ExpectAndCheck-0.06.tar.gz
+	md5sums = 135c7ec09ad7baa547198461562a206c
+
+pkgname = perl-test-expectandcheck
