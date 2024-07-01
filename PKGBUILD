@@ -4,7 +4,7 @@
 
 pkgname='perl-net-cups'
 pkgver='0.64'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Common Unix Printing System Interface"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
@@ -15,6 +15,12 @@ url='https://metacpan.org/release/Net-CUPS'
 source=('http://search.cpan.org/CPAN/authors/id/N/NI/NINE/Net-CUPS-0.64.tar.gz')
 sha256sums=('d7bc77ff0f62bf874c843c590eb12a80bbd44749a2fb74dbed445c35d0e85a85')
 _distdir="Net-CUPS-0.64"
+
+prepare() {
+  cd "$srcdir/$_distdir"
+  # Replace all instances of CUPS_IMAGE_ with CF_IMAGE_ in the source files
+  find . -type f -exec sed -i 's/CUPS_IMAGE_/CF_IMAGE_/g' {} +
+}
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \

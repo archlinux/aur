@@ -1,7 +1,7 @@
 pkgbase = perl-net-cups
 	pkgdesc = Common Unix Printing System Interface
 	pkgver = 0.64
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Net-CUPS
 	arch = i686
 	arch = x86_64
@@ -19,4 +19,3 @@ pkgbase = perl-net-cups
 	sha256sums = d7bc77ff0f62bf874c843c590eb12a80bbd44749a2fb74dbed445c35d0e85a85
 
 pkgname = perl-net-cups
-
