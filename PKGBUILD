@@ -1,14 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=deckboard-bin
 _pkgname=Deckboard
-pkgver=3.0.1
+pkgver=3.0.2
 _electronversion=29
 pkgrel=1
 pkgdesc="Control your PC with your phone in easy way possible."
-arch=(
-    #'i686'
-    'x86_64'
-)
+arch=('x86_64')
 url="https://deckboard.app/"
 _ghurl="https://github.com/rivafarabi/deckboard"
 license=('LicenseRef-custom')
@@ -20,11 +17,10 @@ depends=(
 makedepends=(
     'asar'
 )
-#source_i686=("${pkgname%-bin}-${pkgver}-i686.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_i386.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 source=("${pkgname%-bin}.sh")
 sha256sums=('2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-sha256sums_x86_64=('a47071ae659d85134ae08bdbd660cdc0fbc515d209d0e4ff232db57b79e7d1c2')
+sha256sums_x86_64=('3b3415bf62cf35a858131483e3e1135766c88a18c48a8af853285ed8df3cd6a9')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
