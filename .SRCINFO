@@ -1,0 +1,13 @@
+pkgbase = blender-plugin-rtcw-et-model-tools-git
+	pkgdesc = Support for MD3, MDC, MDS, MDM/MDX and TAG file formats for the 3D modeling software Blender.
+	pkgver = 1.0.rc3.r20.g6396ff0
+	pkgrel = 1
+	url = https://github.com/mino-git/rtcw-wet-blender-model-tools
+	arch = any
+	license = Unknown
+	makedepends = git
+	depends = blender
+	source = blender-plugin-rtcw-et-model-tools::git+https://github.com/mino-git/rtcw-wet-blender-model-tools#branch=master
+	sha256sums = SKIP
+
+pkgname = blender-plugin-rtcw-et-model-tools-git
