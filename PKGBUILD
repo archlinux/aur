@@ -24,7 +24,7 @@ package() {
 
     blender_scripts_dir=$(pacman -Ql blender | grep -Po '/usr/share/blender/[\d\.]+/scripts/$')
 
-	target_dir="${pkgdir}/${blender_scripts_dir}/addons/"
+    target_dir="${pkgdir}/${blender_scripts_dir}/addons/"
     mkdir -p "$target_dir"
 
     cp -R "./src/addons/rtcw_et_model_tools" "$target_dir"
