@@ -1,7 +1,7 @@
 pkgbase = megacmd
 	pkgdesc = MEGA Command Line Interactive and Scriptable Application
 	pkgver = 1.7.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/meganz/MEGAcmd
 	arch = x86_64
 	license = custom
@@ -16,7 +16,7 @@ pkgbase = megacmd
 	depends = libmediainfo
 	depends = pcre
 	depends = libuv
-	source = megacmd-1.7.0-3.tar.gz::https://github.com/meganz/MEGAcmd/archive/1.7.0_ArchLinux.tar.gz
+	source = megacmd-1.7.0-4.tar.gz::https://github.com/meganz/MEGAcmd/archive/1.7.0_ArchLinux.tar.gz
 	source = mega-sdk-e448c09e73a4496329f46e538f1f20143b618ed1.tar.gz::https://github.com/meganz/sdk/archive/e448c09e73a4496329f46e538f1f20143b618ed1.tar.gz
 	source = fix-ffmpeg-compile.patch
 	sha512sums = c1b058ef665cdff4c623a9b63643f9daf3fb0cd3875acdf96e3e01dfb5e8109b0ac39c1769755f2e8f8a6f82ecd8b300902665e2ac168363dd8dc9ca94d415b5

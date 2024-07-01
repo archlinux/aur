@@ -3,7 +3,7 @@
 
 pkgname=megacmd
 pkgver=1.7.0
-pkgrel=3
+pkgrel=4
 pkgdesc="MEGA Command Line Interactive and Scriptable Application"
 url="https://github.com/meganz/MEGAcmd"
 arch=('x86_64')
@@ -21,7 +21,7 @@ sha512sums=('c1b058ef665cdff4c623a9b63643f9daf3fb0cd3875acdf96e3e01dfb5e8109b0ac
             'e843e40f72c69b05669478f13b092c115e37505692df1e781724f4466fc56b2339aa44470dbaec16c1cb06816fc779c08f57037cf8bfcf6d8aa966e00c3bf013')
 
 prepare() {
-  cd "MEGAcmd-${pkgver}_Linux"
+  cd "MEGAcmd-${pkgver}_ArchLinux"
 
   rm -r sdk
   ln -sf "../sdk-${_sdkhash}" sdk
@@ -31,7 +31,7 @@ prepare() {
 }
 
 build() {
-  cd "MEGAcmd-${pkgver}_Linux"
+  cd "MEGAcmd-${pkgver}_ArchLinux"
 
   ./autogen.sh
   ./configure --prefix=/usr
@@ -39,7 +39,7 @@ build() {
 }
 
 package() {
-  cd "MEGAcmd-${pkgver}_Linux"
+  cd "MEGAcmd-${pkgver}_ArchLinux"
 
   make DESTDIR=${pkgdir} install
 
