@@ -1,6 +1,6 @@
 pkgbase = pispy-git
 	pkgdesc = A terminal-based tool for looking up stuff in PyPI
-	pkgver = 0.7.0.r0.g33f063e
+	pkgver = 0.8.0.r0.g6fa173b
 	pkgrel = 1
 	url = https://github.com/davep/pispy
 	arch = any
