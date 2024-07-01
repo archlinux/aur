@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Huenicorn
+Comment=Bias lighting driver for Philips Hue lights
+Exec=huenicorn
+Icon=/usr/share/icons/hicolor/scalable/apps/huenicorn.svg
+Terminal=false
+Type=Application
+Categories=Utility;
+
