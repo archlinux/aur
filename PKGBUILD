@@ -1,28 +1,21 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=key-rack
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
-pkgdesc="View and edit keys stored by apps."
+pkgdesc="View and edit app secrets"
 arch=('x86_64')
 url="https://gitlab.gnome.org/sophie-h/key-rack"
 license=('GPL-3.0-or-later')
 depends=('libadwaita')
 makedepends=('cargo' 'git' 'meson')
-checkdepends=('appstream-glib')
-_commit=0fdfa4587262408f6f20eebc2c47bcadfeaa665c  # 0.3.0
-source=("git+https://gitlab.gnome.org/sophie-h/key-rack.git#commit=${_commit}")
-sha256sums=('SKIP')
-
-#pkgver() {
-#  cd "$pkgname"
-#  git describe --tags | sed 's/-/+/g'
-#}
+source=("git+https://gitlab.gnome.org/sophie-h/key-rack.git#tag=$pkgver")
+sha256sums=('4f4fd53e206222b11eb0b4bcb1436b373cb6ec4cd483c91c972c4a9850e993d1')
 
 prepare() {
   cd "$pkgname"
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
@@ -33,7 +26,14 @@ build() {
   meson compile -C build
 }
 
+check() {
+  cd "$pkgname"
+  export CARGO_HOME="$srcdir/cargo-home"
+  export RUSTUP_TOOLCHAIN=stable
+  meson test -C build --print-errorlogs
+}
+
 package() {
   cd "$pkgname"
-  meson install -C build --no-rebuild --destdir "$pkgdir"
+  meson install -C build --destdir "$pkgdir"
 }
