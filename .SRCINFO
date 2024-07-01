@@ -23,8 +23,7 @@ pkgbase = fabaria
 	depends = zlib
 	depends = nspr
 	depends = lsb-release
-	source = https://www.codelinsoft.it/sito/download/categoria-linux/categoria-linux-fabariagest/fabariagest-2-0targz
+	source = git+https://github.com/kratos83/FabariaGest
 	md5sums = SKIP
 
 pkgname = fabaria
-
