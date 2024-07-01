@@ -5,6 +5,7 @@ pkgbase = helm-ls
 	url = https://github.com/mrjosh/helm-ls
 	arch = x86_64
 	license = MIT
+	checkdepends = yaml-language-server
 	makedepends = go
 	depends = glibc
 	options = !debug

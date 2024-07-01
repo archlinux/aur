@@ -11,7 +11,7 @@ url='https://github.com/mrjosh/helm-ls'
 license=(MIT)
 depends=(glibc)
 makedepends=(go)
-checkdeps=(yaml-language-server)
+checkdepends=(yaml-language-server)
 options=('!debug')
 # NOTE: submodules are required for check()
 source=("$pkgname::git+$url.git")
