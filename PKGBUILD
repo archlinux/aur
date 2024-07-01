@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dopamine-git
 _pkgname=Dopamine
-pkgver=3.0.0.preiew.25.r17.geb49a34
+pkgver=3.0.0.preiew.26.r0.ge83fda4
 _electronversion=25
-_nodeversion=16
+_nodeversion=18
 pkgrel=1
 pkgdesc="The audio player that keeps it simple"
 arch=('any')
@@ -21,15 +21,15 @@ makedepends=(
     'git'
     'nvm'
     'gendesk'
-    'base-devel'
     'gcc'
+    'cmake'
     'curl'
 )
 source=(
     "${pkgname//-/.}::git+${url}.git"
     "${pkgname%-git}.sh")
 sha256sums=('SKIP'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
@@ -48,7 +48,7 @@ build() {
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-git} %U"
+    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
@@ -66,8 +66,8 @@ build() {
         echo "Your network is OK."
     fi
     sed "s|'AppImage', 'deb', 'rpm', 'pacman', 'snap'|'dir'|g" -i electron-builder.config.js
-    npm install
-    npm run electron:linux
+    NODE_ENV=development npm install
+    NODE_ENV=production npm run electron:linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
