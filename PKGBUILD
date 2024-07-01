@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=altitude-metrix-wallet-bin
 _appname=Altitude-Metrix-Wallet
-pkgver=3.3.2
-_electronversion=25
-pkgrel=4
+pkgver=3.4.0
+_electronversion=31
+pkgrel=1
 pkgdesc="The Metrix wallet https://metrixcoin.com."
 arch=('x86_64')
 url="https://github.com/TheLindaProjectInc/Altitude"
@@ -12,7 +12,6 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'java-runtime'
     'nodejs'
 )
 makedepends=(
@@ -22,14 +21,14 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/${_appname}-linux-x64.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('1dd43d34b0c4e8870d099dbcaacfe09b8121f16453e336f446aeae1e79871301'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+sha256sums=('edaef493ad5cb503113c8d7678b6e0e1b74c5ea91367ecdc9c45ff2e04ad800a'
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
         -e "s|@cfgdirname@|${pkgname%-bin}|g" \
-        -e "s|@options@||g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
