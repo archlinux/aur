@@ -11,7 +11,7 @@ arch=(i686 x86_64)
 url="https://github.com/3v1n0/libfprint"
 license=(LGPL)
 depends=(libusb nss pixman gnutls openssl gobject-introspection glib2 libgusb pixman nss openssl)
-makedepends=(git meson gtk-doc pkgconf usbutils)
+makedepends=(git meson gtk-doc pkgconf usbutils glib2-devel)
 checkdepends=(cairo)
 optdepends=(
   "fprintd: D-Bus daemon that manages fingerprint readers"

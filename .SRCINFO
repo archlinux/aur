@@ -14,6 +14,7 @@ pkgbase = libfprint-vfs009x-git
 	makedepends = gtk-doc
 	makedepends = pkgconf
 	makedepends = usbutils
+	makedepends = glib2-devel
 	depends = libusb
 	depends = nss
 	depends = pixman
