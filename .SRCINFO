@@ -1,16 +1,20 @@
 pkgbase = hd-idle
 	pkgdesc = Utility program for spinning-down external disks after a period of idle time.
 	pkgver = 1.05
-	pkgrel = 4
+	pkgrel = 5
 	url = https://hd-idle.sourceforge.net/
+	arch = i686
+	arch = pentium4
 	arch = x86_64
-	license = GPL
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	arch = riscv64
+	license = GPL-2.0-or-later
 	depends = glibc
 	backup = etc/conf.d/hd-idle
 	source = https://downloads.sf.net/hd-idle/hd-idle-1.05.tgz
 	source = hd-idle.service
-	md5sums = 5fa72fe717bc80011a79d6740d2903f3
-	md5sums = 6e9162a075a7a99c3d10e9cde9c499df
 	sha256sums = 4efefe79d145b50e055582730d9d685e485da3df3dad90fef030036d52aa3a0c
 	sha256sums = fc0f9483fc2cf3e9e44a4f8d603357d9eb7037379d1bd5e0f6d838a9fca30b04
 

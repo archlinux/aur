@@ -1,19 +1,19 @@
-# Maintainer: Kyle Keen <keenerd@gmail.com>
+# Maintainer: tarball <bootctl@gmail.com>
+# Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Tilman Blumenbach <tilman@ax86.net>
+# Contributor: somini <dev@somini.xyz>
 
 pkgname=hd-idle
 pkgver=1.05
-pkgrel=4
+pkgrel=5
 pkgdesc='Utility program for spinning-down external disks after a period of idle time.'
-arch=('x86_64')
+arch=('i686' 'pentium4' 'x86_64' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 backup=(etc/conf.d/hd-idle)
-url="https://hd-idle.sourceforge.net/"
-license=('GPL')
+url='https://hd-idle.sourceforge.net/'
+license=('GPL-2.0-or-later')
 depends=('glibc')
 source=("https://downloads.sf.net/$pkgname/$pkgname-$pkgver.tgz"
         "hd-idle.service")
-md5sums=('5fa72fe717bc80011a79d6740d2903f3'
-         '6e9162a075a7a99c3d10e9cde9c499df')
 sha256sums=('4efefe79d145b50e055582730d9d685e485da3df3dad90fef030036d52aa3a0c'
             'fc0f9483fc2cf3e9e44a4f8d603357d9eb7037379d1bd5e0f6d838a9fca30b04')
 
