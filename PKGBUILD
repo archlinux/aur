@@ -3,7 +3,7 @@
 pkgbase=ch9344ser-git
 pkgname=(ch9344ser-dkms-git libch9344ser-git)
 pkgver=r36.c9640d2
-pkgrel=1
+pkgrel=4
 pkgdesc="This driver supports USB to quad serial ports chip ch9344 and USB to octal serial ports chip ch348."
 arch=('any')
 url="https://github.com/WCHSoftGroup/ch9344ser_linux"
@@ -41,7 +41,7 @@ package_ch9344ser-dkms-git() {
     rm -rf Makefile
     install -Dm755 /dev/stdin  Makefile <<EOF
 KERNELDIR := /lib/modules/\$(shell uname -r)/build
-obj-m := ch343.o
+obj-m := ch9344.o
 
 ifdef KERNELDIR
 all:
@@ -63,9 +63,9 @@ EOF
     install -Dm0644 /dev/stdin "${pkgdir}/usr/src/${pkgbase%-git}-${pkgver#r}/dkms.conf" <<EOF
 PACKAGE_NAME="ch9344ser"
 PACKAGE_VERSION="${pkgver}"
-MAKE[0]="make"
+MAKE[0]="make --uname_r=$kernelver"
+CLEAN="make clean"
 BUILT_MODULE_NAME[0]="ch9344"
-MAKEFILE="Makefile"
 DEST_MODULE_LOCATION[0]="/kernel/drivers/usb/serial"
 AUTOINSTALL="yes"
 EOF

@@ -1,7 +1,7 @@
 pkgbase = ch9344ser-git
 	pkgdesc = This driver supports USB to quad serial ports chip ch9344 and USB to octal serial ports chip ch348.
 	pkgver = r36.c9640d2
-	pkgrel = 1
+	pkgrel = 4
 	url = https://github.com/WCHSoftGroup/ch9344ser_linux
 	arch = any
 	license = GPL-2.0-or-later
