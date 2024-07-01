@@ -1,8 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=bss
 pkgname="${_pkgname}english-bin"
-pkgver=2.0_65
-pkgrel=7
+_pkgver=2.1.3
+_subver=70
+pkgver="${_pkgver}_${_subver}"
+pkgrel=1
 pkgdesc="白杉树背单词训练软件."
 arch=('x86_64')
 url="https://bailplus.github.io/bssenglish.pages/"
@@ -11,14 +13,14 @@ license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'python>=3.9'
+    'python>=3.7'
     'python-requests'
     'python-tqdm'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_v${pkgver%_65}_linux.deb"
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_v${_pkgver}_linux.deb"
 )
-sha256sums=('5a0c4292539f8c6f698fa2487ca626adb3014f5a835bec2431886e8dc6d51c4d')
+sha256sums=('37a74f30af509baf7eb1f9302290799e2ca42631a987da6a1f183b50a8245534')
 build() {
     bsdtar -xf "${srcdir}/data."*
     sed "s|usr/lib|opt|g" -i "${srcdir}/usr/lib/${pkgname%-bin}/${_pkgname}.py"
