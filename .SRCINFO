@@ -1,6 +1,6 @@
 pkgbase = webgal-terre-bin
 	pkgdesc = Galgame Editing. Redefined | 视觉小说编辑，再进化
-	pkgver = 4.5.2
+	pkgver = 4.5.3
 	pkgrel = 1
 	url = https://docs.openwebgal.com/guide/
 	arch = aarch64
@@ -13,16 +13,16 @@ pkgbase = webgal-terre-bin
 	depends = java-runtime
 	depends = alsa-lib
 	depends = gtk3
-	provides = webgal-terre=4.5.2
+	provides = webgal-terre=4.5.3
 	conflicts = webgal-terre
 	options = !strip
-	source = LICENSE-4.5.2::https://raw.githubusercontent.com/MakinoharaShoko/WebGAL_Terre/4.5.2/LICENSE
+	source = LICENSE-4.5.3::https://raw.githubusercontent.com/MakinoharaShoko/WebGAL_Terre/4.5.3/LICENSE
 	source = webgal-terre.sh
 	sha256sums = 1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5
-	sha256sums = 655567f68d80966c4d6daf8680f90f23f37eb0c9710e32ddf5620f3be113903f
-	source_aarch64 = webgal-terre-4.5.2-aarch64.zip::https://github.com/MakinoharaShoko/WebGAL_Terre/releases/download/4.5.2/WebGAL_Terre_Linux_Arm64_4.5.2.zip
-	sha256sums_aarch64 = 8e9da4746e337ab636dc4a0d068b529bc327154d778fe14b432ce42abcf6acdd
-	source_x86_64 = webgal-terre-4.5.2-x86_64.zip::https://github.com/MakinoharaShoko/WebGAL_Terre/releases/download/4.5.2/WebGAL_Terre_Linux_4.5.2.zip
-	sha256sums_x86_64 = cbf04c2bf1a6e93ad847e4c13f03b1601e8806fc6a35c94c4a682e0d0f0fa3cc
+	sha256sums = 227985f39b13b807400acaeaeff077939e3cd3583ddb4e25eefd35d6a615b62a
+	source_aarch64 = webgal-terre-4.5.3-aarch64.zip::https://github.com/MakinoharaShoko/WebGAL_Terre/releases/download/4.5.3/WebGAL_Terre_Linux_Arm64_4.5.3.zip
+	sha256sums_aarch64 = 571256cd3c91ea4d5bfe897618f2ee03973b49b9c4132ec1f4a47e5a35430275
+	source_x86_64 = webgal-terre-4.5.3-x86_64.zip::https://github.com/MakinoharaShoko/WebGAL_Terre/releases/download/4.5.3/WebGAL_Terre_Linux_4.5.3.zip
+	sha256sums_x86_64 = 0c30b94fcd1696f2f873b89b22ece80be70048a2cc1c1531ab1aa1ec8d389e43
 
 pkgname = webgal-terre-bin
