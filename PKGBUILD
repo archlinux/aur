@@ -2,7 +2,7 @@
 pkgbase=python-photutils
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.12.0
+pkgver=1.13.0
 #_pkgver=${pkgver/.0}
 pkgrel=1
 pkgdesc="Astropy Affiliated package for image photometry utilities"
@@ -17,6 +17,7 @@ makedepends=('cython>=3.0.0'
              'python-extension-helpers>=1'
              'python-numpy'
              'python-sphinx-astropy'
+             'python-matplotlib'
              'python-astropy'
              'python-rasterio'
              'python-scipy'
@@ -26,8 +27,8 @@ makedepends=('cython>=3.0.0'
 checkdepends=('python-pytest-astropy-header'
               'python-pytest-doctestplus'
               'python-pytest-remotedata'
+#             'python-pytest-xdist'
               'python-matplotlib'
-              'python-scikit-learn'
               'python-gwcs')    # scipy scikit-image shapely rasterio already in makedepends
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 source=("https://github.com/astropy/photutils/releases/download/${pkgver}/${_pyname}-${pkgver}.tar.gz")
@@ -43,7 +44,7 @@ source=("https://github.com/astropy/photutils/releases/download/${pkgver}/${_pyn
 #       "https://github.com/astropy/photutils-datasets/raw/main/data/spitzer_example_catalog.xml"
 #       "https://github.com/astropy/photutils-datasets/raw/main/data/spitzer_example_image.fits"
 #       'datasets-use-local.patch')
-md5sums=('4b73c16d02f55e6a1bac8e2d32510ab3')
+md5sums=('9190bfd23efb189e3aeb47094eb80d4c')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -72,14 +73,13 @@ check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 #   cd ${srcdir}/${_pyname}-${_pkgver}
 
-    pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count --remote-data=any
+    pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count --remote-data=any -p xdist -n 4
 }
 
 package_python-photutils() {
     depends=('python>=3.10' 'python-numpy>=1.23' 'python-astropy>=5.1')
     optdepends=('python-scipy>=1.8: To power a variety of features in several modules (strongly recommended)'
                 'python-scikit-image>=0.20: Used in deblend_sources for deblending segmented sources'
-                'python-scikit-learn>=1.1:  Used in DBSCANGroup to create star groups'
                 'python-matplotlib>=3.5: To power a variety of plotting features (e.g. plotting apertures'
                 'python-gwcs>=0.18: Used in make_gwcs to create a simple celestial gwcs object'
                 'python-bottleneck: Improves the performance of sigma clipping and other functionality that may require computing statistics on arrays with NaN values'
