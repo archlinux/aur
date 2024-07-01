@@ -3,7 +3,7 @@
 pkgbase=ch343ser-git
 pkgname=(ch343ser-dkms-git libch343ser-git)
 pkgver=r42.05b4e1f
-pkgrel=6
+pkgrel=7
 pkgdesc="USB serial driver for ch342/ch343/ch344/ch347/ch347f/ch9101/ch9102/ch9103/ch9104, etc."
 arch=('any')
 url="https://github.com/WCHSoftGroup/ch343ser_linux"
@@ -40,22 +40,47 @@ package_ch343ser-dkms-git() {
     cd "$srcdir/${pkgbase}/driver"
     rm -rf Makefile
     install -Dm755 /dev/stdin  Makefile <<EOF
-# KERNELDIR := /lib/modules/\$(shell uname -r)/build
-KERNELDIR:=/lib/modules/$(pui_arch)/build
-export KERNELDIR
 obj-m := ch343.o
 
-ifdef KERNELDIR
-all:
-	\$(MAKE) -C \$(KERNELDIR) M=\$(PWD) modules
-else
-all:
-	@echo "Error: KERNELDIR is undefined. Please specify KERNELDIR=\$(KERNELDIR)"
-	@exit 1
-endif
+KVER ?= \$(shell uname -r)
+KDIR ?= /lib/modules/$(KVER)/build
+VERSION ?= \$(shell cat VERSION)
+
+default:
+\$(MAKE) -C \$(KDIR) M=\$(CURDIR) modules
 
 clean:
-	\$(MAKE) -C \$(KERNELDIR) M=\$(PWD) clean
+\$(MAKE) -C \$(KDIR) M=\$(CURDIR) clean
+
+install:
+\$(MAKE) -C \$(KDIR) M=\$(CURDIR) modules_install
+
+load:
+-/sbin/rmmod ch343
+/sbin/insmod ch343.ko
+
+dkms.conf: dkms.conf.in
+sed "s/@@VERSION@@/\$(VERSION)/" $^ > \$@
+
+dkms-add: dkms.conf
+/usr/sbin/dkms add \$(CURDIR)
+
+dkms-build: dkms.conf
+/usr/sbin/dkms build ch343/\$(VERSION)
+
+dkms-install: dkms.conf
+/usr/sbin/dkms install ch343/\$(VERSION)
+
+dkms-remove: dkms.conf
+/usr/sbin/dkms remove ch343/\$(VERSION) --all
+
+modprobe-install:
+modprobe ch343
+
+modprobe-remove:
+modprobe -r ch343
+
+dev: modprobe-remove dkms-remove dkms-add dkms-builddkms-install modprobe-install
 EOF
     install -dm755 "${pkgdir}/usr/src/${pkgbase%-git}-${pkgver#r}/"
     for i in "${srcdir}/${pkgbase}/driver/"{Makefile,*.c,*.h}; do
@@ -64,12 +89,14 @@ EOF
 
     install -Dm0644 /dev/stdin "${pkgdir}/usr/src/${pkgbase%-git}-${pkgver#r}/dkms.conf" <<EOF
 PACKAGE_NAME="ch343ser"
-PACKAGE_VERSION="${pkgver}"
-MAKE[0]="make --uname_r=$kernelver"
+PACKAGE_VERSION="#MODULE_VERSION#"
+AUTOINSTALL="yes"
+
+MAKE[0]="make --uname_r=\$kernelver"
 CLEAN="make clean"
+
 BUILT_MODULE_NAME[0]="ch343"
 DEST_MODULE_LOCATION[0]="/kernel/drivers/usb/serial"
-AUTOINSTALL="yes"
 EOF
     # autoload
     install -Dm644 /dev/stdin "${pkgdir}/etc/modules-load.d/ch343.conf" <<EOF
