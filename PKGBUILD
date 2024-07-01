@@ -4,7 +4,7 @@
 
 _pkgname=armory
 pkgname="${_pkgname}"-cli
-pkgver=1.5.2
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="ARMORY 是翼辉信息自主研发的软件包管理工具."
 arch=('x86_64' 'aarch64')
