@@ -1,7 +1,7 @@
 # Maintainer: Tom Zander
 
 pkgname=flowee
-pkgver=2024.05.0
+pkgver=2024.07.0
 options=(!lto)
 pkgrel=1
 pkgdesc="Flowee provides the shortest path to Bitcoin Cash"
@@ -10,7 +10,8 @@ url="https://flowee.org/"
 license=('GPL3')
 depends=('boost-libs' 'libevent' 'openssl')
 makedepends=('boost' 'cmake' 'pkgconf')
-optdepends=('miniupnpc')
+optdepends=('miniupnpc' 'qt6-base')
+optmakedepends=('qt6-tools')
 provides=('flowee-hub' 'flowee-libs')
 backup=("etc/flowee/flowee.conf" "etc/flowee/rest-service.conf")
 install=flowee.install
@@ -18,7 +19,7 @@ source=("https://codeberg.org/Flowee/thehub/archive/$pkgver.tar.gz"
     "flowee.logrotate"
     "flowee.conf")
 
-sha256sums=("1ad13f5da4e8623998eaa295d3d4373400e56e54590927dbf042600e49862b28"
+sha256sums=("508f9290f5a4017a53db292e9860d1c2e03dc490e9966ec7c599e1d141aaa35f"
     "0438e1a44523aeb3bbecd60fd920ca7b2aacd267b5cf988ab77a44eb7c03929e"
     "59c1928ddb33fed1d4bf35df8fecd1dbdda0b308eac943503a2e3afb8c64bc89")
 
@@ -26,8 +27,8 @@ build() {
   mkdir -p build
   cd build
   cmake -DCMAKE_BUILD_TYPE=Release -Dbuild_apps=ON -DCMAKE_INSTALL_PREFIX=$pkgdir/usr/ ../thehub
-  echo '#define GIT_COMMIT_ID "f62acbed"' > include/build.h
-  echo '#define BUILD_DATE "2024-02-27 19:43:19 +0100"' >> include/build.h
+  echo '#define GIT_COMMIT_ID "9008b4a3"' > include/build.h
+  echo '#define BUILD_DATE "2024-06-29 20:18:35 +0200"' >> include/build.h
   make
 }
 
