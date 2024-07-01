@@ -1,22 +1,28 @@
-_pkgname=unfurl
-pkgname=unfurl-bin
+# Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: Namalsk
+
+_pkgname="unfurl"
+pkgname="${_pkgname}-bin"
 pkgver=0.4.3
 pkgrel=2
 pkgdesc="Pull out bits of URLs provided on stdin"
-arch=(x86_64)
-url="https://github.com/tomnomnom/unfurl"
-license=(MIT)
-provides=(unfurl)
-conflicts=(unfurl)
-source_x86_64=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$_pkgname-linux-amd64-$pkgver.tgz")
-source=("$pkgname-$pkgver-README.mkd::https://raw.githubusercontent.com/tomnomnom/unfurl/eb38934068048a8d4c691de203d62d9744c2a8df/README.mkd"
-        "$pkgname-$pkgver-LICENSE::https://raw.githubusercontent.com/tomnomnom/unfurl/19d91dbfe375b2623cc52f629b125d2630a30789/LICENSE")
-b2sums_x86_64=('31c816700f2e511d40760da2c1fd48942be5ebcdfdd5d041b77f039dd7f68ee43cad1c84b7a70da552a200e0de92a72acf5d29f24704a2a8af0f5919e9c17dda')
-b2sums=('e036aa36663fef86b357f55ecbbf080c25af30a4feabb3e796088ddc77a2ea29adfc7677ce031e554309e4311b9619f92aaeae1490a7fd0d1d244b35560a4fb4'
-        'c6ad443c99cef14f0f7c2164aae375a52516a3f075c73bade58a2e4300eee4ddf1f30235839a122b9fc93e532072272b68ec84317665a529786564b46cf9be16')
+arch=('x86_64' 'i686')
+url="https://github.com/tomnomnom/${_pkgname}"
+license=('MIT')
+depends=('glibc')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=(${url}/raw/v${pkgver}/{README.mkd,LICENSE})
+source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-linux-amd64-${pkgver}.tgz")
+source_i686=("${url}/releases/download/v${pkgver}/${_pkgname}-linux-386-${pkgver}.tgz")
+sha256sums=('5ab51bb0a64e4fa357ca17e4d3e52103b4863abd29d2ed0db9394b1870d97dab'
+            '2fb3b028c25279b9a6edb7f49d0203d991f51fdee868fec3fe93cd1a275ae748')
+sha256sums_x86_64=('a5d0aed73af8fc0fcbd999422addd0f644e62457bad89d508e295cd2accd71d6')
+sha256sums_i686=('e04f360ce6c35655c1dbf6de5106c137734ca49e4c5c760487d51261aad901b3')
 
 package() {
-	install -Dm755 $_pkgname -t "$pkgdir/usr/bin/"
-	install -Dm644 $pkgname-$pkgver-README.mkd "$pkgdir/usr/share/doc/$pkgname/README.md"
-	install -Dm644 $pkgname-$pkgver-LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "${srcdir}"
+  install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm644 "README.mkd" "${pkgdir}/usr/share/doc/${_pkgname}/README.mkd"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
