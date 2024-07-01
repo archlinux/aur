@@ -3,7 +3,7 @@
 
 pkgname=megacmd
 pkgver=1.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="MEGA Command Line Interactive and Scriptable Application"
 url="https://github.com/meganz/MEGAcmd"
 arch=('x86_64')
@@ -13,10 +13,10 @@ depends=('crypto++' 'sqlite' 'c-ares' 'ffmpeg' 'freeimage'
 makedepends=('git' 'autoconf')
 _sdkhash="e448c09e73a4496329f46e538f1f20143b618ed1"
 source=(
-    "${pkgname}-${pkgver}.tar.gz::https://github.com/meganz/MEGAcmd/archive/${pkgver}_ArchLinux.tar.gz"
+    "${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://github.com/meganz/MEGAcmd/archive/${pkgver}_ArchLinux.tar.gz"
     "mega-sdk-${_sdkhash}.tar.gz::https://github.com/meganz/sdk/archive/${_sdkhash}.tar.gz"
     "fix-ffmpeg-compile.patch")
-sha512sums=('9e29a318d062a7d01d2a7e7e7655ef3adf079f2ff64c2eee3c035816821f9c981411f3676c8749a6fc51c44fad06a1428b1db0d6b61f32be5e222553bd9bb0dd'
+sha512sums=('c1b058ef665cdff4c623a9b63643f9daf3fb0cd3875acdf96e3e01dfb5e8109b0ac39c1769755f2e8f8a6f82ecd8b300902665e2ac168363dd8dc9ca94d415b5'
             '9620bbc50db1ee4dd329f91cd5b34f7f8f9443f3d83258b76077c5cab7157fd2d31fc4e8ef18fbc07053d66eda0c9c722cfa9eb86c710c0b112a37da533b4bb5'
             'e843e40f72c69b05669478f13b092c115e37505692df1e781724f4466fc56b2339aa44470dbaec16c1cb06816fc779c08f57037cf8bfcf6d8aa966e00c3bf013')
 
