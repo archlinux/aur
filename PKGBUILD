@@ -3,8 +3,8 @@
 
 _pkgname=igt-gpu-tools
 pkgname="$_pkgname-git"
-pkgver=1.28+606.g17a41dcf1e
-pkgrel=4
+pkgver=1.28+1261.r13834.20240628.bf723cf88
+pkgrel=1
 pkgdesc="Collection of tools for development and testing of the DRM drivers."
 url="https://gitlab.freedesktop.org/drm/igt-gpu-tools"
 arch=(
@@ -99,6 +99,21 @@ prepare() {
     "-Doping=enabled"
   )
   meson setup --prefix /usr --libexecdir lib --sbindir bin --buildtype plain --auto-features enabled --wrap-mode nodownload "${_pkgname}" build "${MESON_OPTS[@]}"
+}
+
+pkgver () {
+  cd "${srcdir}/${_pkgname}"
+  _ver="$(git describe  --tags | sed 's|^v||' | sed 's|-[^-]*$||' | tr '-' '+')"
+  _rev="$(git rev-list --count HEAD)"
+  _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
+  _hash="$(git rev-parse --short HEAD)"
+
+  if [ -z "${_ver}" ]; then
+    error "Version could not be determined."
+    return 1
+  else
+    printf '%s' "${_ver}.r${_rev}.${_date}.${_hash}"
+  fi
 }
 
 build() {
