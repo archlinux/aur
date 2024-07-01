@@ -1,18 +1,35 @@
+# Maintainer: qvalentin
+# Maintainer: Elias Elwyn <a@jthv.ai>
+
 pkgname=helm-ls
-pkgver=0.0.14
+pkgver=0.0.17
 pkgrel=1
+_commit=bab4b4c745a472ee517967a71d21b2892f7f0307
 pkgdesc='Language server for Helm'
-arch=('i686' 'x86_64')
-license=('MIT')
+arch=(x86_64)
+url='https://github.com/mrjosh/helm-ls'
+license=(MIT)
 depends=(glibc)
-makedepends=('go')
-provides=(helm-ls)
-url=https://github.com/mrjosh/helm-ls
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mrjosh/helm-ls/archive/v${pkgver}.tar.gz")
-sha256sums=('8df2cd5eeaf21e046bcab843d8fc280d355c65627ca1d084486b986a2114fa94')
+makedepends=(go)
+checkdeps=(yaml-language-server)
+options=('!debug')
+# NOTE: submodules are required for check()
+source=("$pkgname::git+$url.git")
+md5sums=(SKIP)
+
+verify() {
+  cd "$pkgname"
+  # Check the commit hash of the tag - effectively verifies the source files
+  [ "$(git --git-dir . rev-list -n1 v$pkgver)" = "$_commit" ]
+}
+
+prepare() {
+  cd "$srcdir/$pkgname"
+  git checkout --quiet v$pkgver
+}
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname"
 
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -24,8 +41,15 @@ build() {
   make
 }
 
-package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  install -Dm755 bin/helm_ls -t "$pkgdir/usr/bin"
+check() {
+  cd "$srcdir/$pkgname"
+  # NOTE: cannot run `make test` as -buildmode=pie is not supported with -race
+  make integration-test-deps
+  go test ./... -tags=integration
 }
 
+package() {
+  cd "$srcdir/$pkgname"
+  install -Dm755 bin/helm_ls -t "$pkgdir/usr/bin"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+}
