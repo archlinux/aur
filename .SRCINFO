@@ -1,6 +1,6 @@
 pkgbase = labwc-wlroots-018-git
 	pkgdesc = stacking wayland compositor with look and feel from openbox (git version) (Highly experimental bleeding edge wlroots version)
-	pkgver = 0.7.2.r70.g4f3fa228
+	pkgver = 0.7.2.r114.g983ef4dc
 	pkgrel = 1
 	url = https://github.com/labwc/labwc
 	arch = x86_64
@@ -20,6 +20,8 @@ pkgbase = labwc-wlroots-018-git
 	provides = labwc
 	conflicts = labwc
 	source = git+https://github.com/labwc/labwc.git
+	source = labwc-atomic-modesetting-tearing.patch
 	md5sums = SKIP
+	md5sums = 63792a6012b41b164e3a9194d522f9ac
 
 pkgname = labwc-wlroots-018-git
