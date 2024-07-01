@@ -1,0 +1,16 @@
+pkgbase = unfurl-git
+	pkgdesc = Pull out bits of URLs provided on stdin
+	pkgver = 0.4.3.r0.g8f10d05
+	pkgrel = 1
+	url = https://github.com/tomnomnom/unfurl
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = unfurl=0.4.3
+	conflicts = unfurl
+	source = unfurl::git+https://github.com/tomnomnom/unfurl.git
+	sha256sums = SKIP
+
+pkgname = unfurl-git
