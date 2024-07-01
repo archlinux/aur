@@ -1,4 +1,5 @@
-# Maintainer: Kyle Keen <keenerd@gmail.com>
+# Maintainer: tarball <bootctl@gmail.com>
+# Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 # Contributor: Jason Chu <jason@archlinux.org>
@@ -7,10 +8,10 @@ pkgname=xdiskusage
 pkgver=1.60
 pkgrel=2
 pkgdesc="A user-friendly program to show you what is using up all your disk space"
-arch=('x86_64')
+arch=('i686' 'pentium4' 'x86_64' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 depends=('fltk')
 makedepends=('libxi')
-license=('GPL')
+license=('GPL-2.0-or-later')
 url="https://xdiskusage.sourceforge.net"
 options=(!emptydirs)
 source=("https://xdiskusage.sourceforge.net/$pkgname-$pkgver.tgz")
