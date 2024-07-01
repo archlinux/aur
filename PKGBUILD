@@ -6,7 +6,7 @@
 _pkgname='compiz'
 pkgname="$_pkgname"
 pkgver=0.9.14.2
-pkgrel=6
+pkgrel=7
 pkgdesc="Composite manager for Aiglx and Xgl, with plugins and CCSM"
 url="https://launchpad.net/compiz"
 arch=('i686' 'x86_64')
@@ -41,6 +41,15 @@ optdepends=(
   'xorg-xprop: grab various window properties for use in window matching rules'
 )
 
+provides=(
+  "ccsm=${pkgver:0:6}"
+  "compiz-bcop=${pkgver:0:6}"
+  "compiz-core=${pkgver:0:6}"
+  "compiz-plugins-extra=${pkgver:0:6}"
+  "compiz-plugins-main=${pkgver:0:6}"
+  "compizconfig-python=${pkgver:0:6}"
+  "libcompizconfig=${pkgver:0:6}"
+)
 conflicts=(
   'ccsm'
   'compiz-bcop'
@@ -52,15 +61,6 @@ conflicts=(
   'compizconfig-python'
   'libcompizconfig'
   'simple-ccsm'
-)
-provides=(
-  "ccsm=${pkgver:0:6}"
-  "compiz-bcop=${pkgver:0:6}"
-  "compiz-core=${pkgver:0:6}"
-  "compiz-plugins-extra=${pkgver:0:6}"
-  "compiz-plugins-main=${pkgver:0:6}"
-  "compizconfig-python=${pkgver:0:6}"
-  "libcompizconfig=${pkgver:0:6}"
 )
 
 _pkgsrc="$_pkgname-${pkgver%%.r*}"
@@ -83,14 +83,16 @@ source=(
   # Don't try to compile gschemas during make install
   "0005-no-compile-gschemas.patch"
 
+  # New upstream patches
   "0006-Drop-toggle-shaded-since-it-s-no-longer-included-in-.patch"
   "0007-64-bit-time-t-compat.patch"
 
-  #"1001-releasing-package-compiz-version-1-0.9.14.2-22.10.20.patch"
-  #"1002-releasing-package-compiz-version-1-0.9.14.2-22.10.20.patch"
+  # https://bugs.launchpad.net/compiz/+bug/2060620
+  "1001-fix-crash-in-vertexbuffer.patch"
 )
 sha256sums=(
   'cfa061e93b032275ff9e7041f582a8f6d5ae271cf8a89e6bc74e3d3635999d3c'
+
   '6ec9c04540ca1649c687d9ab2c8311caea7075831e2cffe719ec7958c9ebab7b'
   'f4897590b0f677ba34767a29822f8f922a750daf66e8adf47be89f7c2550cf4b'
   '16ddb6311ce42d958505e21ca28faae5deeddce02cb558d55e648380274ba4d9'
@@ -98,8 +100,8 @@ sha256sums=(
   '4ab3277da201314b3f65e30128bc30704ddee584fdbbfc8d0d83c7e0de91fa9a'
   '9b9e92a7174f2255f408d340dcb7b765211777cd92fe9ed17b5888ff13578291'
   '90969b7beba107a7146b11c3a60969b62c2be7a3e891d7dee913504ec6de759c'
-  #'3c7ed442af8ec99ab521afbd64cb97fc0ae5d2ec6b6506a8e79c7b65fda342c0'
-  #'f68b6ada12a720853d6abe04a623448e31bf2dae6c3a66d935c937bcf374cd19'
+
+  '859dca15821fac3b8d1e231d48932c0fad3f5d3f16cb53a8a761df2bd51b9d3a'
 )
 
 prepare() {
@@ -131,7 +133,6 @@ build() {
     -DCOMPIZ_PACKAGING_ENABLED=ON
     -DBUILD_GTK=ON
     -DBUILD_METACITY=ON
-    -DBUILD_KDE4=OFF
     -DCOMPIZ_DEFAULT_PLUGINS="composite,opengl,decor,resize,place,move,compiztoolbox,staticswitcher,regex,animation,wall,ccp"
 
     -DCOMPIZ_BUILD_TESTING=OFF
