@@ -5,7 +5,7 @@
 # Contributor: bilibili_xiaok <the_xiaok@qq.com>
 # Contributor: Vova K <v1mkss.m@gmail.com>
 pkgname=xmcl-launcher
-pkgver=0.44.10
+pkgver=0.44.11
 pkgrel=2
 pkgdesc="X Minecraft Launcher - 一个现代化的 Minecraft 启动器"
 arch=('x86_64' 'aarch64')
@@ -33,11 +33,11 @@ source_aarch64=(
 )
 
 sha256sums_x86_64=(
-    "fcbabacfc3d8b6a958b93c91cd929ceadecb627d88f249679ce60ad05350966b"
+    "fc851b3fdf39272bb278f925abcbf8a6b162e3fb18e99a2dad04aa1a3389bf9d"
     "4c56e72cc6784c4c2d870c307d74e7afa6c13b001bb52f9b255cd82ab709adcb"
 )
 sha256sums_aarch64=(
-    "b4c6c7a678da4d04ebf9cea92883003464e4487e3bf71dec314dbaf82fdb7755"
+    "e1010e1d1c6c86723aabd1224e96d4efb2afdda2a6aa78d41fbd8071f85134c9"
     "4c56e72cc6784c4c2d870c307d74e7afa6c13b001bb52f9b255cd82ab709adcb"
 )
 
@@ -49,8 +49,6 @@ package(){
 
 
 # OLD-CODE #
-
-
 #source=("git+https://github.com/Voxelum/x-minecraft-launcher.git#tag=v$pkgver"
 #        "git+https://github.com/Voxelum/minecraft-launcher-core-node"
 #        "LICENSE::https://raw.githubusercontent.com/Voxelum/x-minecraft-launcher/master/LICENSE"
