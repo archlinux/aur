@@ -40,20 +40,47 @@ package_ch9344ser-dkms-git() {
     cd "$srcdir/${pkgbase}/driver"
     rm -rf Makefile
     install -Dm755 /dev/stdin  Makefile <<EOF
-KERNELDIR := /lib/modules/\$(shell uname -r)/build
 obj-m := ch9344.o
 
-ifdef KERNELDIR
-all:
-	\$(MAKE) -C \$(KERNELDIR) M=\$(PWD) modules
-else
-all:
-	@echo "Error: KERNELDIR is undefined. Please specify KERNELDIR=\$(KERNELDIR)"
-	@exit 1
-endif
+KVER ?= \$(shell uname -r)
+KDIR ?= /lib/modules/$(KVER)/build
+VERSION ?= \$(shell cat VERSION)
+
+default:
+\$(MAKE) -C \$(KDIR) M=\$(CURDIR) modules
 
 clean:
-	\$(MAKE) -C \$(KERNELDIR) M=\$(PWD) clean
+\$(MAKE) -C \$(KDIR) M=\$(CURDIR) clean
+
+install:
+\$(MAKE) -C \$(KDIR) M=\$(CURDIR) modules_install
+
+load:
+-/sbin/rmmod ch9344
+/sbin/insmod ch9344.ko
+
+dkms.conf: dkms.conf.in
+sed "s/@@VERSION@@/\$(VERSION)/" $^ > \$@
+
+dkms-add: dkms.conf
+/usr/sbin/dkms add \$(CURDIR)
+
+dkms-build: dkms.conf
+/usr/sbin/dkms build ch9344/\$(VERSION)
+
+dkms-install: dkms.conf
+/usr/sbin/dkms install ch9344/\$(VERSION)
+
+dkms-remove: dkms.conf
+/usr/sbin/dkms remove ch9344/\$(VERSION) --all
+
+modprobe-install:
+modprobe ch9344
+
+modprobe-remove:
+modprobe -r ch9344
+
+dev: modprobe-remove dkms-remove dkms-add dkms-builddkms-install modprobe-install
 EOF
     install -dm755 "${pkgdir}/usr/src/${pkgbase%-git}-${pkgver#r}/"
     for i in "${srcdir}/${pkgbase}/driver/"{Makefile,*.c,*.h}; do
@@ -62,12 +89,14 @@ EOF
 
     install -Dm0644 /dev/stdin "${pkgdir}/usr/src/${pkgbase%-git}-${pkgver#r}/dkms.conf" <<EOF
 PACKAGE_NAME="ch9344ser"
-PACKAGE_VERSION="${pkgver}"
-MAKE[0]="make --uname_r=$kernelver"
+PACKAGE_VERSION="#MODULE_VERSION#"
+AUTOINSTALL="yes"
+
+MAKE[0]="make --uname_r=\$kernelver"
 CLEAN="make clean"
+
 BUILT_MODULE_NAME[0]="ch9344"
 DEST_MODULE_LOCATION[0]="/kernel/drivers/usb/serial"
-AUTOINSTALL="yes"
 EOF
     # autoload
     install -Dm644 /dev/stdin "${pkgdir}/etc/modules-load.d/ch9344.conf" <<EOF
