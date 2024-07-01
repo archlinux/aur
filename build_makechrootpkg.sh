@@ -2,6 +2,6 @@
 
 sudo rm -rvf ArchChroot
 mkdir ArchChroot
-mkarchroot ArchChroot/root base-devel
-makechrootpkg -c -r ArchChroot
-makepkg --printsrcinfo > .SRCINFO
+mkarchroot ArchChroot/root base-devel # devtools
+makechrootpkg -c -r ArchChroot # devtools
+makepkg --printsrcinfo > .SRCINFO # pacman
