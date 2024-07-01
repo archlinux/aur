@@ -144,13 +144,6 @@ function execApp() {
 	touch "${XDG_DATA_HOME}"/WeChat_Data/.flatpak-info
 	cameraDect
 	importEnv
-	if [[ $(systemctl --user is-failed wechat-uos-qt.service) = failed ]]; then
-		echo "[Warning] WeChat failed last time"
-		systemctl --user reset-failed wechat-uos-qt.service
-	fi
-	if [[ $(systemctl --user is-active wechat-uos-qt.service) = active ]]; then
-		warnMulRunning wechat-uos-qt.service
-	fi
 	if [ ${XDG_SESSION_TYPE} = wayland ]; then
 		echo "[Info] Skipping Xhost operation"
 	else
@@ -369,6 +362,13 @@ function launch() {
 	inputMethod
 	moeDect
 	#lnDir
+	if [[ $(systemctl --user is-failed wechat-uos-qt.service) = failed ]]; then
+		echo "[Warning] WeChat failed last time"
+		systemctl --user reset-failed wechat-uos-qt.service
+	fi
+	if [[ $(systemctl --user is-active wechat-uos-qt.service) = active ]]; then
+		warnMulRunning wechat-uos-qt.service
+	fi
 	if [[ $@ =~ "--actions" ]] && [[ $@ =~ "debug-shell" ]]; then
 		launchTarget="/usr/bin/bash"
 	else
