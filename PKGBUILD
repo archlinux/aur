@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=qcalc-bin
-_pkgname="Q Calc"
-pkgver=0.9.0
+_pkgname="QCalc"
+pkgver=0.9.1
 _electronversion=28
 pkgrel=1
 pkgdesc="Quasar Calculator"
@@ -17,11 +17,11 @@ makedepends=(
     'fuse2'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname// /.}-${pkgver-}.AppImage"
+    "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux.AppImage"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/from104/qcalc/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('93722e0eca3fc68192248658e4bb4d5599422f4f81452f586ca787967853fe39'
+sha256sums=('05cbf0aeebe3f95ed5b5c9758379690e7392943e443e1204d5754606762a9e08'
             '3987b48fb3c79907511fb74614201dbf40f9bff0cc691d4f2dbcad754cba519b'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
