@@ -4,10 +4,10 @@
 
 pkgname=xsp
 pkgver=4.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple webserver based on mono - provides ASP.NET support"
 arch=('i686' 'x86_64')
-license=('custom')
+license=('MIT')
 url="https://github.com/mono/xsp"
 depends=('bash' 'glibc' 'mono' 'sqlite')
 options=(!makeflags)
