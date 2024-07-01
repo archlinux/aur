@@ -1,12 +1,12 @@
 pkgbase = perl-cgi-simple
 	pkgdesc = A Simple totally OO CGI interface that is CGI.pm compliant
 	pkgver = 1.281
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://metacpan.org/dist/CGI-Simple
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-1.0-Perl
+	license = GPL-1.0-or-later
 	checkdepends = perl-test-nowarnings
 	checkdepends = perl-test-exception
 	checkdepends = perl-http-message

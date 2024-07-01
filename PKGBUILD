@@ -4,10 +4,10 @@
 pkgname='perl-cgi-simple'
 epoch='1'
 pkgver='1.281'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="A Simple totally OO CGI interface that is CGI.pm compliant"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl')
 checkdepends=('perl-test-nowarnings' 'perl-test-exception' 'perl-http-message' 'perl-test-version')
