@@ -1,16 +1,16 @@
 # Maintainer: Vladislav Minakov <v@minakov.pro>
 
 pkgname=angie-mod-njs
-pkgver=0.8.4
-pkgrel=2
+pkgver=0.8.5
+pkgrel=1
 pkgdesc='nginScript module for angie'
 arch=('x86_64')
 depends=('angie' 'libxslt')
 makedepends=('angie-src')
 url="https://github.com/nginx/njs"
 license=('CUSTOM')
-source=(njs-$pkgver.tar.gz::http://hg.nginx.org/njs/archive/$pkgver.tar.gz)
-sha256sums=('8191bff8491af9169a92e30e383ef8614717b0c6d40913d83b95051031e92321')
+source=(njs-$pkgver.tar.gz::https://github.com/nginx/njs/archive/refs/tags/$pkgver.tar.gz)
+sha256sums=('b5e38e1424d84e48c6ca1592a336bf1d110b8f27ff1d5ef492c6d312ea003491')
 
 prepare() {
 	mkdir -p build
