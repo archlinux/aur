@@ -2,14 +2,16 @@
 
 pkgname=systemd-godns
 pkgver=1.0.1
-pkgrel=19
+pkgrel=20
 pkgdesc="systemd for godns"
 #url="https://gitlab.com/corectrl/corectrl"
 license=('GPL3')
 arch=('any')
 
 depends=('godns-bin')
-
+conflicts=( 
+godns
+)
 #makedepends=('cmake>=3.3' 'qt5-tools' 'karchive' 'gcc>=8' 'extra-cmake-modules')
 #optdepends=(
 #	'vulkan-tools: For vulkaninfo'
