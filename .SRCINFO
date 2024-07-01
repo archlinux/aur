@@ -1,0 +1,16 @@
+pkgbase = stdconfig
+	pkgdesc = A standard configuration library, similar to glibc's getopt.
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://www.cinfinity.info/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	provides = libstdconfig.so=4-64
+	source = https://www.cinfinity.info/src/stdconfig_0.3.tar.xz
+	source = https://www.cinfinity.info/src/stdconfig_0.3.tar.xz.sig
+	validpgpkeys = 337DBBBAB93B197BE445AF267EEF69820728EB48
+	sha256sums = 6160f76fdd6a7a771f90208731d523233bce364bd1ccf7a8d5761fd3029b7bbe
+	sha256sums = SKIP
+
+pkgname = stdconfig
