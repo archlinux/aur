@@ -1,18 +1,18 @@
 pkgbase = perl-moosex-types
 	pkgdesc = Organise your Moose types in libraries
 	pkgver = 0.50
-	pkgrel = 2
+	pkgrel = 3
 	url = http://search.cpan.org/dist/MooseX-Types
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	makedepends = perl-moose
 	makedepends = perl-test-fatal
 	makedepends = perl-test-requires
 	makedepends = perl-module-build-tiny
-	depends = perl-carp-clan>=6.00
-	depends = perl-namespace-clean>=0.19
-	depends = perl-sub-install>=0.924
+	depends = perl-carp-clan
+	depends = perl-moose
+	depends = perl-namespace-clean
+	depends = perl-sub-install
 	depends = perl-sub-name
 	depends = perl-sub-exporter-formethods
 	options = !emptydirs
