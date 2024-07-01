@@ -22,16 +22,21 @@ optdepends=('ffmpeg: H264/AAC/MP3 decoding'
 options=(!strip)
 provides=("firefox=$pkgver")
 conflicts=('firefox')
-source_x86_64=("firefox-$pkgver-x86_64::http://archive.mozilla.org/pub/firefox/releases/$pkgver/linux-x86_64/en-US/firefox-$pkgver.tar.bz2")
-source_i686=("firefox-$pkgver-i686::http://archive.mozilla.org/pub/firefox/releases/$pkgver/linux-i686/en-US/firefox-$pkgver.tar.bz2")
+_archive="https://archive.mozilla.org/pub/firefox/releases"
+source_x86_64=("firefox-$pkgver-x86_64.tar.bz2::$_archive/$pkgver/linux-x86_64/en-US/firefox-$pkgver.tar.bz2"
+               "firefox-$pkgver-x86_64.tar.bz2.asc::$_archive/$pkgver/linux-x86_64/en-US/firefox-$pkgver.tar.bz2.asc")
+source_i686=("firefox-$pkgver-i686.tar.bz2::$_archive/$pkgver/linux-i686/en-US/firefox-$pkgver.tar.bz2"
+             "firefox-$pkgver-i686.tar.bz2.asc::$_archive/$pkgver/linux-i686/en-US/firefox-$pkgver.tar.bz2.asc")
 source=($_pkgname.sh
         $_pkgname.desktop
         policies.json)
 sha256sums=('9491f195066aa56f4f0bbc83e5f0581a460f4c34ee455ba24db312b540322703'
             'c64008cbf01956ce3dba693230670de58fa9487ad19f4ba76614af13beb1b8ef'
             '1c432537a46ffe64b3069bc2c2e7e069797223607b181e77492e74b38e90c730')
-sha256sums_x86_64=('9e200146236e2403d4be088b49a6c8de3294ff1aa000ebf385d42c593207954b')
-sha256sums_i686=('825248c30801f7b8cb271cd9725a699c0b3d68bdc176d58a46af5032ede4dcc5')
+sha256sums_x86_64=('9e200146236e2403d4be088b49a6c8de3294ff1aa000ebf385d42c593207954b'
+                   'SKIP')
+sha256sums_i686=('825248c30801f7b8cb271cd9725a699c0b3d68bdc176d58a46af5032ede4dcc5'
+                 'SKIP')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
 package() {
