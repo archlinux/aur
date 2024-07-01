@@ -6,7 +6,7 @@
 : ${_pkgtype:=-latest-bin}
 
 pkgname="glasskube$_pkgtype"
-pkgver=v0.10.1
+pkgver=v0.12.0
 pkgrel=1
 pkgdesc="The next generation Package Manager for Kubernetes."
 arch=("x86_64")
