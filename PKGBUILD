@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=uvg266
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='An open-source VVC encoder'
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=("git+https://github.com/ultravideo/uvg266.git#tag=v${pkgver}"
         'git+https://github.com/ultravideo/greatest.git'
         '010-uvg266-rename-vtm-decoder.patch'
         '020-uvg266-disable-uvg266-tests.patch')
-sha256sums=('SKIP'
+sha256sums=('f3a0de4b073e8fd8172d10617e640989928e0da8bec7727b35e41953fd85a40d'
             'SKIP'
             '7e262c2e95a33c1098187a2bb113c01dedc033fd96ceeed87e7aca6d2c57f5df'
             'c86cfb280a6217bfebb04581ac188bd5625003fcefdeb146b72fb9758a573aad')
