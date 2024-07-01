@@ -12,6 +12,7 @@ license=('GPL' 'custom')
 depends=('perl' 'perl-io-socket-ssl')
 makedepends=('nasm' 'yasm' 'rsync' 'gd' 'zlib')
 optdepends_x86_64=('lib32-glibc: transcoding on 64-bit systems' 'lib32-gcc-libs: transcoding on 64-bit systems')
+makedepends_aarch64=('wget')
 install=logitechmediaserver.install
 
 _vendorver=8.4
