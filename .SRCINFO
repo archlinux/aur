@@ -1,0 +1,14 @@
+pkgbase = lash-git
+	pkgdesc = Symlink manager for dotfiles - a GNU Stow alternative
+	pkgver = r21.ef251a9
+	pkgrel = 1
+	url = https://github.com/thialfi17/lash
+	arch = any
+	license = GPL3
+	makedepends = cargo
+	makedepends = git
+	provides = lash
+	source = git+https://github.com/thialfi17/lash
+	sha256sums = SKIP
+
+pkgname = lash-git
