@@ -1,6 +1,6 @@
 pkgbase = crab-fetch-git
-	pkgdesc = A highly configurable command-line fetch tool thats also performant.
-	pkgver = v0.2.0.r0.gdefb25d
+	pkgdesc = Extremely fast, featureful and customizable command-line fetcher.
+	pkgver = v0.3.0.r0.g36ce3a7
 	pkgrel = 1
 	url = https://github.com/LivacoNew/CrabFetch
 	arch = x86_64
