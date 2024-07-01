@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=final2x-bin
 _pkgname=Final2x
-pkgver=1.2.0
-_date=2024-01-02
+pkgver=1.3.0
+_date=2024-06-29
 _electronversion=27
 pkgrel=5
 pkgdesc="2^x Image Super-Resolution"
@@ -29,7 +29,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Tohrusky/Final2x/${_date}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e10fba1653ffc6d294ed845d05ddb8701d28c3a95d3cd65c35b0960af23c6056'
+sha256sums=('8466d1397278b3213db8209c59db9a1a4108ba080b84f6f9f9afbcedba2d7ad6'
             '7b4e93ff707625a2632519b35d5891035356f551f18dd18539ad94c72f59286a'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
