@@ -1,0 +1,23 @@
+pkgbase = budgie-screensaver
+	pkgdesc = Screensaver for the Budgie Desktop
+	pkgver = 5.1.0
+	pkgrel = 3
+	url = https://github.com/BuddiesOfBudgie/budgie-screensaver
+	arch = x86_64
+	groups = budgie
+	license = GPL2
+	makedepends = meson
+	makedepends = glib2-devel
+	makedepends = intltool
+	depends = dbus-glib
+	depends = libgnomekbd
+	depends = gnome-desktop
+	backup = etc/pam.d/budgie-screensaver
+	source = https://github.com/BuddiesOfBudgie/budgie-screensaver/releases/download/v5.1.0/budgie-screensaver-v5.1.0.tar.xz
+	source = https://github.com/BuddiesOfBudgie/budgie-screensaver/releases/download/v5.1.0/budgie-screensaver-v5.1.0.tar.xz.asc
+	validpgpkeys = 0E0D97562A4EC8BD8E329DCDAA7A2325E04B609B
+	validpgpkeys = 8A59B135826B2DA453B9707408AD7343E6BD4B56
+	sha256sums = 563ac3f845729e9e6d184d2dbf036ab3f51ff244c27f5b286cfcb89acc147f0c
+	sha256sums = SKIP
+
+pkgname = budgie-screensaver
