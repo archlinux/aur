@@ -8,7 +8,6 @@ arch=('any')
 url='https://github.com/thialfi17/lash'
 license=('GPL3')
 makedepends=('cargo' 'git')
-provides=('lash')
 source=("git+https://github.com/thialfi17/lash")
 sha256sums=('SKIP')
 
