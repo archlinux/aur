@@ -1,6 +1,26 @@
 Changelog
 =========
 
+**[5.0.1] ----- 2024-07-01** ::
+
+	      * Auto fix of resolv.conf (new option *--fix-dns-auto-start*)
+	        Network refresh often happens after sleep/resume (e.g. laptop lid close/open) or
+	        when a DHCP lease expires. If VPN is up and running
+	        when this occurs the /etc/resolv.conf file can be reset and then DNS will no longer use
+	        the vpn DNS but will then use whatever resolver DHCP provided by default.
+	        Earlier versions of wg-client offered a manual fix available
+	        by clicking the *VPN Start* button again or by using wg-client on command line.
+	        This is now done automatically using a daemon which can be started/stopped from command line
+	        using  the new options *--fix-dns-auto-start* and *--fix-dns-auto-stop*
+	        The GUI app does this whenever it starts wireguard.
+	      * *--version*
+	        Display wg-client version
+	      * NB version 5 has 2 additional dependencies:
+	        - openssl library for wg-fix-resolv.c
+	        - python-pynotify library available via github and AUR
+	    update Docs/Changelog.rst Docs/wg-client.pdf
+
+
 **[4.2.0] ----- 2024-04-17** ::
 
 	    Package update: "pacman -Qc wg_tool" now shows the Changelog
