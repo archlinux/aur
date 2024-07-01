@@ -2,8 +2,8 @@
 
 pkgbase=gcc-snapshot
 pkgname=({gcc,gcc-libs,lib32-gcc-libs,gcc-ada,gcc-d,gcc-fortran,gcc-go,gcc-m2,gcc-objc,gcc-rust,lto-dump,libgccjit}-snapshot)
-pkgver=15.0.1.snapshot20240623
-_pkgver=15-20240623
+pkgver=15.0.1.snapshot20240630
+_pkgver=15-20240630
 _majorver=${_pkgver//-*}
 _snapshot=${_pkgver#*-}
 _realver=${pkgver//.s*}
@@ -33,7 +33,7 @@ validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.
               D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62  # Jakub Jelinek <jakub@redhat.com>
               343C2FF0FBEE5EC2EDBEF399F3599FF828C67298  # nisse@lysator.liu.se
               A534BE3F83E241D918280AEB5831D11A0D4DB02A) # vincent@vinc17.net
-sha256sums=('68b1668dd58cd81397b6ea8f40869e4dc61a6aefe0f181ea5c3e05515646f7e2'
+sha256sums=('e5d214bafbce9fc30ac916603765f3bf4bd79faee4ad0d2693772b066638568f'
             'SKIP'
             'a3c2b80201b89e68616f4ad30bc66aee4927c3ce50e33929ca819d5c43538898'
             'SKIP'
