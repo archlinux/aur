@@ -2,7 +2,7 @@
 
 pkgname=python-tinygrad
 _name=${pkgname#python-}
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="You like pytorch? You like micrograd? You love tinygrad! <3"
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=('python-llvmlite: LLVM Backend Support'
 )
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('8a51478aa71e4306f2ba6858538c4ddd731be161cfa371a171d92108afed0e94')
+sha256sums=('8b75ab6dd35647642392adde00efbce370d36f1b71e593fbb948deb7a4249f7e')
 
 build() {
     cd "$_name-$pkgver"
