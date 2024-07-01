@@ -9,6 +9,6 @@ pkgbase = numatop
 	depends = numactl
 	depends = ncurses
 	source = https://github.com/intel/numatop/archive/refs/tags/v2.3.tar.gz
-	sha256sums = SKIP
+	sha256sums = 1bec45a2388c255bd9c65dbc12bb29173c4196e3f4cfa3ca3e8c96647d675e16
 
 pkgname = numatop

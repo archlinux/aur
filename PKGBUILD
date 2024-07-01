@@ -10,8 +10,7 @@ url="https://github.com/intel/numatop"
 license=('BSD-3-Clause')
 depends=('numactl' 'ncurses')
 source=("https://github.com/intel/numatop/archive/refs/tags/v${pkgver}.tar.gz")
-#sha256sums=('f0a4fbce717f82658be0c44168bf6d9ae3ee63465b23b580eab11d2532bdc142')
-sha256sums=('SKIP')
+sha256sums=('1bec45a2388c255bd9c65dbc12bb29173c4196e3f4cfa3ca3e8c96647d675e16')
 
 prepare()
 (
