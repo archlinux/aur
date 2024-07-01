@@ -5,7 +5,7 @@
 
 pkgname=nginx-mod-rtmp-zotanmew-git
 pkgver=1246.a5f44b6
-pkgrel=2
+pkgrel=3
 
 _modname="nginx-rtmp-module"
 _nginxver="$(/bin/nginx -v 2>&1 | grep -Eo '([[:digit:]]|\.)+')"
@@ -27,9 +27,10 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP')
 
-# Maxim Dounin <mdounin@mdounin.ru>
-# Konstantin Pavlov <thresh@nginx.com>
-validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8' '13C82A63B603576156E30A4EA0EA981B66B0D967')
+validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8'  # Maxim Dounin <mdounin@mdounin.ru>
+              '43387825DDB1BB97EC36BA5D007C8D7C15D87369'  # Roman Arutyunyan <r.arutyunyan@f5.com>
+              'D6786CE303D9A9022998DC6CC8464D549AF75C0A'  # Sergey Kandaurov <s.kandaurov@f5.com>
+              '13C82A63B603576156E30A4EA0EA981B66B0D967') # Konstantin Pavlov <thresh@nginx.com>
 
 pkgver() {
 	cd "$_modname"
