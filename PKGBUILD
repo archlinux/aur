@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgbase=ch343ser-git
-pkgname=(ch343ser-dkms-git libch343ser-git ch34xsercfg-git)
+pkgname=(ch343ser-dkms-git libch343ser-git)
 pkgver=r42.05b4e1f
 pkgrel=6
 pkgdesc="USB serial driver for ch342/ch343/ch344/ch347/ch347f/ch9101/ch9102/ch9103/ch9104, etc."
@@ -40,7 +40,9 @@ package_ch343ser-dkms-git() {
     cd "$srcdir/${pkgbase}/driver"
     rm -rf Makefile
     install -Dm755 /dev/stdin  Makefile <<EOF
-KERNELDIR := /lib/modules/\$(shell uname -r)/build
+# KERNELDIR := /lib/modules/\$(shell uname -r)/build
+KERNELDIR:=/lib/modules/$(pui_arch)/build
+export KERNELDIR
 obj-m := ch343.o
 
 ifdef KERNELDIR
@@ -63,9 +65,9 @@ EOF
     install -Dm0644 /dev/stdin "${pkgdir}/usr/src/${pkgbase%-git}-${pkgver#r}/dkms.conf" <<EOF
 PACKAGE_NAME="ch343ser"
 PACKAGE_VERSION="${pkgver}"
-MAKE[0]="make"
+MAKE[0]="make --uname_r=$kernelver"
+CLEAN="make clean"
 BUILT_MODULE_NAME[0]="ch343"
-MAKEFILE="Makefile"
 DEST_MODULE_LOCATION[0]="/kernel/drivers/usb/serial"
 AUTOINSTALL="yes"
 EOF
@@ -103,21 +105,4 @@ package_libch343ser-git() {
     install -Dm644 ch343_lib.h -t "${pkgdir}/usr/include/"
     install -Dm644 ch34x_parse_cfg.h -t "${pkgdir}/usr/include/"
 #     install -Dm644 ch9344_lib.h -t "${pkgdir}/usr/include/"
-}
-
-
-package_ch34xsercfg-git() {
-    pkgdesc+=" (ch34xsercfg)."
-    provides=(${pkgname%-git})
-    conflicts=(${pkgname%-git})
-    depends=(glibc
-        libch343ser
-        libch9344ser)
-    arch=($CARCH)
-
-    cd "$srcdir/${pkgbase}/demo/param_config"
-
-    gcc ch34x_demo_param_config.c -lch34xcfg -lch343 -lch9344 -o ch34xsercfg
-    install -Dm755 ch34xsercfg -t "${pkgdir}/usr/bin/"
-
 }
