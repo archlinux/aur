@@ -2,7 +2,7 @@
 
 pkgname=python-s3fs
 _pkgname=s3fs
-pkgver=2024.3.1
+pkgver=2024.6.0
 pkgrel=1
 pkgdesc="A python file interface to S3."
 arch=('any')
@@ -11,19 +11,19 @@ license=('BSD')
 depends=('python' 'python-aiobotocore' "python-fsspec=${pkgver}")
 checkdepends=('python-dask' 'python-flask-cors' 'python-moto' 'python-pytest' 'python-xarray' 'python-zarr')
 optdepends=()
-makedepends=('python-setuptools')
+makedepends=(python-build python-installer python-setuptools)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/fsspec/s3fs/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('a73776b44b6d1bcb5875ec7be25adc298a9ae0a18d96b4ba3f4ac64d9817265b')
+sha256sums=('88e858f0960a17df3062c22e2a9cf208edaba1d4f9c578595833143bff2bfff4')
 
 build(){
   cd "$_pkgname-$pkgver"
-  python setup.py build
+  python -m build -wn
 }
 
 package(){
   cd "$_pkgname-$pkgver"
   install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
 check(){
