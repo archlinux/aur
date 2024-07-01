@@ -1,0 +1,20 @@
+pkgbase = mingw-w64-protobuf-25
+	pkgdesc = Protocol Buffers - Google's data interchange format (mingw-w64)
+	pkgver = 25.3
+	pkgrel = 1
+	url = https://developers.google.com/protocol-buffers/
+	arch = any
+	license = BSD
+	makedepends = mingw-w64-cmake
+	makedepends = protobuf
+	depends = mingw-w64-zlib
+	depends = mingw-w64-abseil-cpp
+	provides = mingw-w64-protobuf
+	conflicts = mingw-w64-protobuf
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = https://github.com/protocolbuffers/protobuf/releases/download/v25.3/protobuf-25.3.tar.gz
+	sha256sums = d19643d265b978383352b3143f04c0641eea75a75235c111cc01a1350173180e
+
+pkgname = mingw-w64-protobuf-25
