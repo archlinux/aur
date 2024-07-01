@@ -5,7 +5,7 @@
 
 pkgname=nginx-mod-rtmp-zotanmew-git
 pkgver=1246.a5f44b6
-pkgrel=1
+pkgrel=2
 
 _modname="nginx-rtmp-module"
 _nginxver="$(/bin/nginx -v 2>&1 | grep -Eo '([[:digit:]]|\.)+')"
@@ -23,7 +23,7 @@ source=(
 	"http://nginx.org/download/nginx-$_nginxver.tar.gz.asc"
 	"$_modname::git+https://github.com/zotanmew/nginx-rtmp-module.git#branch=rebase"
 )
-sha256sums=('77a2541637b92a621e3ee76776c8b7b40cf6d707e69ba53a940283e30ff2f55d'
+sha256sums=('SKIP'
             'SKIP'
             'SKIP')
 
