@@ -13,7 +13,8 @@ pkgbase = mit8-bin
 	depends = sqlite
 	replaces = mit8
 	options = strip
+	options = !debug
 	source = https://www.iztech.ru/content/files/app/mit8-bin-linux-x86_64.tar.gz
-	md5sums = acf7106ab3dfc752e17e4e33c11fcefe
+	md5sums = aad0a05c116adc09c59033172cbfc37d
 
 pkgname = mit8-bin

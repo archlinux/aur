@@ -9,10 +9,10 @@ url="https://www.iztech.ru"
 license=(custom)
 depends=("qt5-base" "qt5-multimedia" "qt5-svg" "qt5-serialport" "qwt" "sqlite")
 arch=("x86_64")
-options=("strip")
+options=("strip" "!debug")
 replaces=("mit8")
 source=("$url/content/files/app/$pkgname-linux-x86_64.tar.gz")
-md5sums=("acf7106ab3dfc752e17e4e33c11fcefe")
+md5sums=("aad0a05c116adc09c59033172cbfc37d")
 
 
 package() {
