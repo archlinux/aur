@@ -1,13 +1,13 @@
 pkgbase = dayplan
 	pkgdesc = Utility to plan your day and track your time
-	pkgver = 0.9.6
+	pkgver = 0.9.8
 	pkgrel = 1
 	url = https://github.com/ja-he/dayplan
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = dayplan-0.9.6.tar.gz::https://github.com/ja-he/dayplan/archive/v0.9.6.tar.gz
-	sha256sums = cd49521d86b9c156ffbf07b72ba75634599254d09e8164b30153ad544156299a
+	source = dayplan-0.9.8.tar.gz::https://github.com/ja-he/dayplan/archive/v0.9.8.tar.gz
+	sha256sums = 2c169b348856515489c2c2f7b6dfa4d9b7c10b6d1d89f786bdd9e6c553314db7
 
 pkgname = dayplan
