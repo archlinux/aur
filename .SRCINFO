@@ -1,10 +1,10 @@
 pkgbase = python-eliot
 	pkgdesc = Logging that tells you why it happened
 	pkgver = 1.15.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/itamarst/eliot
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	checkdepends = python-pytest
 	checkdepends = python-hypothesis
 	checkdepends = python-testtools

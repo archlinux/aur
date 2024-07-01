@@ -4,11 +4,11 @@
 
 pkgname=python-eliot
 pkgver=1.15.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Logging that tells you why it happened'
 arch=('any')
 url='https://github.com/itamarst/eliot'
-license=('Apache')
+license=('Apache-2.0')
 depends=('python' 'python-six' 'python-zope-interface' 'python-pyrsistent' 'python-boltons')
 makedepends=(
 	'python-setuptools'
