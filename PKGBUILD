@@ -1,5 +1,6 @@
-# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Maintainer: Stefan Sielaff <aur AT stefan-sielaff DOT de>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Gaetan Bisson <bisson@archlinux.org>
 
 pkgname=logitechmediaserver
 pkgver=8.5.2
