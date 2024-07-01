@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=jimud-bin
 _pkgname=jiMUD
-pkgver=1.3.0
-_electronversion=29
+pkgver=1.4.0
+_electronversion=30
 pkgrel=1
 pkgdesc="MUD client for ShadowMUD.com, based on webclient"
 arch=("x86_64")
@@ -18,12 +18,13 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('1dfd2e6993a2badaf1478abc305c1b51fb0cf095f6fb93d73e4d79e0244b4620'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+sha256sums=('e33dd527e4b6cf1f90ac9ea8a9f3907b6a72f6e18bcb575495f70f5ad51a6c07'
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
