@@ -15,6 +15,6 @@ pkgbase = mit8_30-bin
 	options = strip
 	options = !debug
 	source = https://www.iztech.ru/content/files/app/mit8_30-bin-linux-x86_64.tar.gz
-	md5sums = 34d51fc86c8687bcc3bbe64df631bfd5
+	md5sums = e6bda8c7518eced0dab5ee2819cdb3a8
 
 pkgname = mit8_30-bin

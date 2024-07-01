@@ -12,7 +12,7 @@ arch=("x86_64")
 options=("strip" "!debug")
 replaces=("mit8_30")
 source=("$url/content/files/app/$pkgname-linux-x86_64.tar.gz")
-md5sums=("34d51fc86c8687bcc3bbe64df631bfd5")
+md5sums=("e6bda8c7518eced0dab5ee2819cdb3a8")
 
 package() {
 	install -Dm755 "$srcdir/mit8_30" "$pkgdir/usr/bin/$appname"
