@@ -1,10 +1,10 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=mousam
-pkgver=1.3.1
-_commit=2d57ba088972d532560b1055bd95bfa4b2680147
+pkgver=1.3.2
+_commit=d05573ba49cfd16e6d20e35c85ae27710a2cb9cc
 pkgrel=1
-pkgdesc='Beautiful and lightweight weather app build using Gtk4, Libadwaita and Python'
+pkgdesc='Weather at a Glance'
 url="https://github.com/amit9838/mousam"
 license=('GPL-3.0-or-later')
 arch=('x86_64' 'aarch64')
