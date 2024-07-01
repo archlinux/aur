@@ -3,7 +3,7 @@
 _pkgname=gamescope
 pkgname=gamescope-fml
 pkgver=3.14.22
-pkgrel=2
+pkgrel=3
 pkgdesc='SteamOS session compositing window manager with added patches'
 arch=(x86_64)
 url=https://github.com/ValveSoftware/gamescope
@@ -84,7 +84,7 @@ prepare() {
   #  meson subprojects download
   meson subprojects download
   git submodule init src/reshade
-  git config submodule.src/reshade.url "$srcdir/reshade"
+  git config submodule.src/reshade.url ../reshade
   git submodule init thirdparty/SPIRV-Headers
   git config submodule.thirdparty/SPIRV-Headers.url ../SPIRV-Headers
   git -c protocol.file.allow=always submodule update
