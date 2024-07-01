@@ -83,8 +83,8 @@ fi
 
 pkgbase=linux-manjaro-xanmod
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-_major=6.6
-pkgver=${_major}.9
+_major=6.9
+pkgver=${_major}.7
 _branch=6.x
 xanmod=1
 _sf_branch=main
@@ -93,7 +93,7 @@ pkgdesc='Linux Manjaro Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
-__commit="14b0a9c44b9aafe0efdd16bf79b81ddda1d703da" # 6.6.9
+__commit="7ae2ba409b5d010f43c6bb99d5498a94119bd598" # 6.7.12
 
 license=(GPL2)
 
@@ -103,7 +103,7 @@ makedepends=(
 )
 
 if [ "${_compiler}" = "clang" ]; then
-  makedepends+=(clang llvm lld python)
+  makedepends+=(clang llvm lld)
 fi
 options=('!strip')
 _srcname="linux-${pkgver}-xanmod${xanmod}"
@@ -121,11 +121,11 @@ for _patch in ${_patches[@]}; do
     source+=("${_patch}::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_commit}/trunk/${_patch}")
 done
         
-sha256sums=('d926a06c63dd8ac7df3f86ee1ffc2ce2a3b81a2d168484e76b5b389aba8e56d0'  # kernel tar.xz
+sha256sums=('24fa01fb989c7a3e28453f117799168713766e119c5381dac30115f18f268149'  # kernel tar.xz
             'SKIP'                                                              #        tar.sign
-            '674be54d39a405cd11d8cbd9c2604f5e6e7fedee6b37d307edbb8ac46bc6a27f'  # xanmod
+            '235f0c325080342fed184ec3d415a865293c66a6010965b6cd3c5cfe02f2c6d9'  # xanmod
             'a8b38eb482eb685944757182c4886404abc12703e5e56ec39c7d61298d17d71f'  # choose-gcc-optimization.sh
-            'ac7d476c2a4eff99929909e97263142770923e24decddedf04735867294d6e0e') # manjaro
+            '3dc4bea7a4ffda78d624f59821a0a075d4a9c1d1f7c5c8d7e3b0bcbf824f02c3') # manjaro
 
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
@@ -161,8 +161,7 @@ prepare() {
   # remove conflicting ones
   patchdir=../linux${_major//.}-$__commit
   rm $patchdir/0101-ZEN_Add_sysctl_and_CONFIG_to_disallow_unprivileged_CLONE_NEWUSER.patch
-  # fix patch order
-  mv $patchdir/000{1,0}-ALSA-hda-cs35l41-Support-ASUS-2023-laptops-with-miss.patch
+  rm $patchdir/v14.7-0001-HID-asus-fix-more-n-key-report-descriptors-if-.patch
   
   
   local _patch
@@ -255,8 +254,10 @@ prepare() {
       exit 1
     fi
   fi
-
+  
+  msg2 "make ${_compiler_flags} olddefconfig"
   make ${_compiler_flags} olddefconfig
+  #diff -u CONFIGS/xanmod/gcc/${_config} .config || :
 
   make -s kernelrelease > version
   msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
@@ -272,6 +273,7 @@ prepare() {
 build() {
   cd linux-${_major}
   make ${_compiler_flags} all
+  make -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1
 }
 
 _package() {
@@ -320,7 +322,7 @@ _package-headers() {
 
   msg2 "Installing build files..."
   install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
-    localversion.* version vmlinux
+    localversion.* version vmlinux tools/bpf/bpftool/vmlinux.h
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
@@ -329,7 +331,7 @@ _package-headers() {
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
   # required when DEBUG_INFO_BTF_MODULES is enabled
-  if [ -f "tools/bpf/resolve_btfids/resolve_btfids" ]; then install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids ; fi
+  install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
 
   msg2 "Installing headers..."
   cp -t "$builddir" -a include
