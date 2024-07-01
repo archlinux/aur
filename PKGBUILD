@@ -3,7 +3,7 @@
 
 pkgname=python-copier
 _name=${pkgname#python-}
-pkgver=9.2.0
+pkgver=9.3.0
 pkgrel=1
 pkgdesc='Library and command-line utility for rendering projects templates'
 arch=('any')
@@ -43,7 +43,7 @@ source=(
   "git+https://github.com/copier-org/copier.git#tag=v$pkgver"
 )
 sha256sums=(
-  'c802a669a970d50e1b516b0ab1f3e9474c70960a5530dd309af62fd0c39ea276'
+  '13bc259cc0b1ba0c9bccbcd5c3ea2c32f907c02735b5c65fd3243bc518cab000'
 )
 
 build() {
