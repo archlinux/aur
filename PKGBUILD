@@ -29,7 +29,7 @@ prepare() {
 }
 
 pkgver () {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_pkgbase}"
   _ver="$(git describe  --tags | sed 's|^v||' | sed 's|-[^-]*$||' | tr '-' '+')"
   _rev="$(git rev-list --count HEAD)"
   _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
@@ -39,7 +39,7 @@ pkgver () {
     error "Version could not be determined."
     return 1
   else
-    printf '%s' "${_ver}+r${_rev}.${_date}.${_hash}"
+    printf '%s' "${_ver}.r${_rev}.${_date}.${_hash}"
   fi
 }
 
