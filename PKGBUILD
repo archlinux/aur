@@ -3,7 +3,7 @@
 _pkgname=padauk
 pkgname=ttf-sil-$_pkgname
 _fname=${_pkgname^}
-pkgver=5.000
+pkgver=5.001
 pkgrel=1
 pkgdesc='Unicode font that supports the many diverse languages that use the Myanmar script'
 arch=(any)
@@ -12,7 +12,7 @@ license=(OFL)
 conflicts=('ttf-sil-fonts<=6')
 _archive="$_fname-$pkgver"
 source=("http://software.sil.org/downloads/r/$_pkgname/$_archive.zip")
-sha256sums=('f2c0aed534c13315cdb7ba4211ca6cccf2a5cf644208a00c5c2cc485cc19d51b')
+sha256sums=('b5fc878098fe6894a2a855539f0e3ec693683bd323595784f76666ad7f40db50')
 
 package() {
 	cd "$_archive"
