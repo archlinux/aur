@@ -7,14 +7,14 @@ pkgver() {
     cd "mcp2210-linux"
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
-pkgrel=2
-pkgdesc="A kernel module for Microchip MCP2210 USB-to-SPI bridge"
+pkgrel=3
+pkgdesc="A (probably outdated) kernel module for Microchip MCP2210 USB-to-SPI bridge"
 url="https://github.com/agalakhov/mcp2210-linux"
 license=("GPL")
 arch=('i686' 'x86_64' 'armv7h')
 depends=('linux')
 makedepends=('linux-headers')
-source=( git://github.com/daniel-santos/mcp2210-linux.git
+source=( git+https://github.com/daniel-santos/mcp2210-linux.git
          dkms.conf
        )
 sha256sums=('SKIP'
