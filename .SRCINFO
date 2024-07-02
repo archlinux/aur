@@ -15,7 +15,7 @@ pkgbase = zwm
 	depends = xcb-util-cursor
 	provides = zwm=0.1.3-1
 	conflicts = zwm
-	source = git+https://github.com/yazeed1s/zwm.git
+	source = zwm-git::git+https://github.com/yazeed1s/zwm.git
 	sha256sums = SKIP
 
 pkgname = zwm
