@@ -1,13 +1,13 @@
 pkgbase = upower-nosystemd-git
 	pkgdesc = Abstraction for enumerating power devices, listening to device events and querying history and statistics. Built without systemd dependencies. Latest Git checkout.
 	pkgver = 1.90.4+10.r1708.20240523.669a1c2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://upower.freedesktop.org
 	install = upower-nocritical.install
 	arch = i686
 	arch = x86_64
 	license = GPL-2.0-or-later
-	makedepends = cmp_version
+	makedepends = pacman
 	makedepends = docbook-xsl
 	makedepends = git
 	makedepends = gobject-introspection
@@ -38,7 +38,7 @@ pkgbase = upower-nosystemd-git
 	source = upower::git+https://gitlab.freedesktop.org/upower/upower.git
 	source = upower-nocritical.install
 	sha256sums = SKIP
-	sha256sums = 1ac1dc94cde495c3d2e4a1ca449db23195fab2b0b5e053d3beb2c3c9fde219c6
+	sha256sums = a1e260af0dd05ab9c933a8f0f8f8abf83e4faea5caba6b3750554d36422bb0b8
 
 pkgname = upower-nosystemd-git
 	depends = gcc-libs

@@ -29,8 +29,8 @@ post_upgrade() {
   _newver="$1"
   _oldver="$2"
 
-  if [ "$(cmp-version "${_oldver}" '1.90.4+10.r1708.20240523' )" -eq "-1" ]; then  # Take action only if old version is old enough,
-    if [ "$(cmp-version '1.90.4+6.r1704.20240424' "${_newver}")" -eq "-1" ]; then  # take action only if new version is new enough. (We narrow down: Somewhere in between here the upstream change happened.)
+  if [ "$(vercmp "${_oldver}" '1.90.4+10.r1708.20240523' )" -eq "-1" ]; then  # Take action only if old version is old enough,
+    if [ "$(vercmp '1.90.4+6.r1704.20240424' "${_newver}")" -eq "-1" ]; then  # take action only if new version is new enough. (We narrow down: Somewhere in between here the upstream change happened.)
       _print_risky_action_guard_note
     fi
   fi

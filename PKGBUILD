@@ -6,7 +6,7 @@
 _pkgname=upower
 pkgname="${_pkgname}-nosystemd-git"
 pkgver=1.90.4+10.r1708.20240523.669a1c2
-pkgrel=2
+pkgrel=3
 pkgdesc="Abstraction for enumerating power devices, listening to device events and querying history and statistics. Built without systemd dependencies. Latest Git checkout."
 arch=(
   'i686'
@@ -24,7 +24,7 @@ depends=(
   'libusb'
 )
 makedepends=(
-  'cmp_version'
+  'pacman' # for 'vercmp' in "$install"
   'docbook-xsl'
   'git'
   'gobject-introspection'
@@ -72,7 +72,7 @@ source=(
 )
 sha256sums=(
   "SKIP"                                                              # Upstream source
-  "1ac1dc94cde495c3d2e4a1ca449db23195fab2b0b5e053d3beb2c3c9fde219c6"  # $install
+  "a1e260af0dd05ab9c933a8f0f8f8abf83e4faea5caba6b3750554d36422bb0b8"  # $install
 )
 options+=('emptydirs')
 
