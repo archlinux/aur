@@ -27,6 +27,7 @@ pkgbase = paper2remarkable
 	depends = python-weasyprint>=51
 	depends = python-pycryptodome
 	depends = python-cssselect
+	depends = python-lxml-html-clean
 	optdepends = python-readabilipy: Improves output of web articles
 	source = https://files.pythonhosted.org/packages/source/p/paper2remarkable/paper2remarkable-0.9.12.tar.gz
 	sha256sums = b2280295ddc9adf69d9082189e9d4c1235bea63ba2143c80ebd0ec5805249b59
