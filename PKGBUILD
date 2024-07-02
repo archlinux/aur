@@ -1,25 +1,22 @@
-# Maintainer: Dan Nixon <dan@dan-nixon.com>
-pkgname=unipager-bin
-pkgver=1.0.3
+# Maintainer: f4iey <jules@f4iey.fr>
+pkgname=wfview-bin
+pkgver=1.64
 pkgrel=2
-pkgdesc="Universal POCSAG transmitter controller written in Rust."
+debrel=+b2
+pkgdesc="Interface for Icom Transceivers - binary version"
 arch=('x86_64')
-url="https://github.com/rwth-afu/unipager"
+url="https://wfview.org"
 license=('GPL3')
+depends=(hidapi opus portaudio qcustomplot qt5-base qt5-gamepad qt5-multimedia qt5-serialport) 
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
-source=(
-  "unipager-x86_64.tar.gz::https://github.com/rwth-afu/UniPager/releases/download/v${pkgver}/unipager-x86_64.tar.gz"
-  "unipager.service::https://raw.githubusercontent.com/rwth-afu/UniPager/v${pkgver}/debian/unipager.service"
-)
-sha256sums=(
-  '95d520059cb700732b867432040db671d1fdaa0420be05df0dedf84534604ec7'
-  'acfca4d2bf51c911b68837a315165987d7eb17665311118a23cefd63334f0897'
-)
+source=('http://ftp.debian.org/debian/pool/main/w/${pkgname%-bin}/${pkgname%-bin}_$pkgver-$pkgrel$debrel_amd64.deb')
+md5sums=(563c5cc43b9adff283e781e07f791f03)
 
 package() {
-  install -Dm 755 unipager "${pkgdir}/usr/bin/unipager"
-
-  install -Dm 644 unipager.service "${pkgdir}/usr/lib/systemd/system/unipager.service"
-  install -dDm 644 "${pkgdir}/var/lib/unipager"
+  cd $srcdir
+  tar -C $pkgdir/ -xvf data.tar.xz
+  cd $pkgdir  
+  chmod 755 usr/ usr/share/ usr/bin/ usr/share/doc/
+  chmod 755 usr/share/applications/ usr/share/pixmaps/
 }
