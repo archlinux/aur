@@ -1,15 +1,18 @@
 pkgbase = lightningcss-cli-bin
 	pkgdesc = Extremely fast CSS parser, transformer, and minifier written in Rust
 	pkgver = 1.25.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lightningcss.dev/
 	arch = x86_64
 	arch = aarch64
 	license = MPL-2.0
+	depends = glibc
+	depends = gcc-libs
 	options = !strip
-	source_x86_64 = https://registry.npmjs.org/lightningcss-cli-linux-x64-gnu/-/lightningcss-cli-linux-x64-gnu-1.25.1.tgz
+	options = !debug
+	source_x86_64 = lightningcss-cli-bin-1.25.1.tar.gz::https://registry.npmjs.org/lightningcss-cli-linux-x64-gnu/-/lightningcss-cli-linux-x64-gnu-1.25.1.tgz
 	sha256sums_x86_64 = 0df137f50e351ea7b1a9355770902854e3b66e3d9a5bbc1a339d9f750cc3ebb7
-	source_aarch64 = https://registry.npmjs.org/lightningcss-cli-linux-arm64-gnu/-/lightningcss-cli-linux-arm64-gnu-1.25.1.tgz
+	source_aarch64 = lightningcss-cli-bin-1.25.1.tar.gz::https://registry.npmjs.org/lightningcss-cli-linux-arm64-gnu/-/lightningcss-cli-linux-arm64-gnu-1.25.1.tgz
 	sha256sums_aarch64 = 1850fd9fda632fa0725e171d8644d6a4c6b45d643da93775a2e33babe4919954
 
 pkgname = lightningcss-cli-bin
