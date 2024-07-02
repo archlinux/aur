@@ -1,7 +1,7 @@
 # Maintainer: Eugene Babichenko <eugene.babichenko@gmail.com>
 
 pkgname=fixit
-pkgver=0.3.1_beta
+pkgver=0.4.0_beta
 _pkgver="${pkgver//_/-}"
 pkgrel=1
 url="https://github.com/eugene-babichenko/fixit"
@@ -10,7 +10,7 @@ license=('MIT')
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$_pkgver.tar.gz")
-sha256sums=('933e22908af08ddd4fe71a2d196158ebffb753a17937660d12a825e93c9fc677')
+sha256sums=('a43d360af71ff5027c78501555c1510a9b40f8c6e58c7460cc9e0158ce031d46')
 
 build() {
   cd "$pkgname-$_pkgver"
