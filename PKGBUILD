@@ -23,6 +23,6 @@ build() {
 
 package() {
   cd "${srcdir}"/Assimulo-Assimulo-$pkgver
-  python setup.py install --root=${pkgdir} --optimize=1 --extra-fortran-link-flags="-shared" --sundials-home=/usr --blas-home=/usr/lib --lapack-home=/usr --extra-fortran-compile-flags="-fallow-argument-mismatch" --extra-c-flags="-DNPY_NO_DEPRECATED_API=NPY_1_7_API_VERSION"
+  python setup.py install --root=${pkgdir} --optimize=1 --extra-fortran-link-flags="-shared" --sundials-home=/usr --blas-home=/usr/lib --lapack-home=/usr --extra-c-flags="-DNPY_NO_DEPRECATED_API=NPY_1_7_API_VERSION"
 }
 
