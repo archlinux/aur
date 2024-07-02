@@ -11,23 +11,26 @@
 # package, maintained by T. Borgert.
 
 pkgname=ros2-iron
-pkgver=2023.07.17
+pkgver=2024.04.23
 pkgrel=1
 pkgdesc="A set of software libraries and tools for building robot applications"
 url="https://docs.ros.org/en/iron/"
-arch=('any')
-license=('Apache')
+arch=(x86_64 armv7h aarch64)
+license=('Apache-2.0')
 depends=(
     'ros2-arch-deps'
     'lttng-ust'
     'qt6-base'
 )
+makedepends=(git)
 source=(
-    "ros2::git+https://github.com/ros2/ros2#tag=release-iron-20230717"
-    repos.patch
+    "ros2::git+https://github.com/ros2/ros2#tag=release-iron-20240423"
+    ros2_tracing.patch
 )
-sha256sums=('SKIP'
-            '85211e4653d2289bec5d1dd0dd17d468ab126236d697ca15a7219f282c25c906')
+sha256sums=(
+    'SKIP'
+    b6f77270bbd2d69dd69da249f6c31874ce1fa3cbf3d0b04f7e2d9d4602abbf1e
+)
 install=ros2-iron.install
 
 prepare() {
@@ -40,11 +43,11 @@ prepare() {
         exit 1
     fi
 
-    patch -p1 -d "$srcdir"/ros2 < repos.patch
-
     # Clone the repos
     mkdir -p "$srcdir"/ros2/src
     vcs import "$srcdir"/ros2/src < "$srcdir"/ros2/ros2.repos
+
+    patch -p1 -N -d "$srcdir"/ros2/src/ros2/ros2_tracing < ros2_tracing.patch
 }
 
 build() {
@@ -55,11 +58,11 @@ build() {
         _colcon_extra_args="--executor sequential"
     fi
 
-    ## For people with the old version of makepkg.conf
+    ## For people with the old old version of makepkg.conf
     unset CPPFLAGS
-    ## For people with the new version of makepkg.conf
-    CFLAGS="${CFLAGS//-Wp,-D_FORTIFY_SOURCE=2[[:space:]]}"
-    CXXFLAGS="${CXXFLAGS//-Wp,-D_FORTIFY_SOURCXXE=2[[:space:]]}"
+    ## For people with a newer version of makepkg.conf
+    CFLAGS="${CFLAGS//-Wp,-D_FORTIFY_SOURCE=[23][[:space:]]}"
+    CXXFLAGS="${CXXFLAGS//-Wp,-D_FORTIFY_SOURCXXE=[23][[:space:]]}"
 
     # Build
     colcon build --merge-install ${_colcon_extra_args} --packages-skip-by-dep python_qt_binding

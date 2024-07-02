@@ -1,17 +1,20 @@
 pkgbase = ros2-iron
 	pkgdesc = A set of software libraries and tools for building robot applications
-	pkgver = 2023.07.17
+	pkgver = 2024.04.23
 	pkgrel = 1
 	url = https://docs.ros.org/en/iron/
 	install = ros2-iron.install
-	arch = any
-	license = Apache
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = git
 	depends = ros2-arch-deps
 	depends = lttng-ust
 	depends = qt6-base
-	source = ros2::git+https://github.com/ros2/ros2#tag=release-iron-20230717
-	source = repos.patch
+	source = ros2::git+https://github.com/ros2/ros2#tag=release-iron-20240423
+	source = ros2_tracing.patch
 	sha256sums = SKIP
-	sha256sums = 85211e4653d2289bec5d1dd0dd17d468ab126236d697ca15a7219f282c25c906
+	sha256sums = b6f77270bbd2d69dd69da249f6c31874ce1fa3cbf3d0b04f7e2d9d4602abbf1e
 
 pkgname = ros2-iron
