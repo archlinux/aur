@@ -1,15 +1,15 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 _pyname=stsci.tools
 pkgname=python-${_pyname}-doc
-pkgver=4.1.0
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="Documentation for STScI utility functions"
 arch=('any')
 url="https://stscitools.readthedocs.io"
-license=('BSD')
+license=('BSD-3-Clause')
 makedepends=("python-${_pyname}=${pkgver}" 'python-numpydoc')
 source=("https://github.com/spacetelescope/${_pyname}/archive/${pkgver}.tar.gz")
-md5sums=('4fd2c7ad448f0dff3458dd1c2a581241')
+md5sums=('3c5c2e20ba3854556ef70c5ace0a9e8a')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}/doc
