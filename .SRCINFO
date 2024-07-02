@@ -1,6 +1,6 @@
 pkgbase = imaputils-git
 	pkgdesc = perl script for managing/searching mail on an IMAP servers from the command line
-	pkgver = r21.20240112.e00fc75
+	pkgver = r22.20240628.b210335
 	pkgrel = 1
 	url = https://sourceforge.net/projects/imaputils/
 	arch = any

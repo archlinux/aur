@@ -4,7 +4,7 @@
 _pkgname=imaputils
 pkgname="${_pkgname}-git"
 _oldpkgver=20191107 # This package was wrongly named `imaputils` despite that it is a git package. This is the last known version of the wrongly named one.
-pkgver=r21.20240112.e00fc75
+pkgver=r22.20240628.b210335
 pkgrel=1
 pkgdesc="perl script for managing/searching mail on an IMAP servers from the command line"
 arch=(
