@@ -2,8 +2,8 @@
 
 _pkgname="disman"
 pkgname="$_pkgname"
-pkgver=0.600.0
-pkgrel=2
+pkgver=0.601.0
+pkgrel=1
 pkgdesc='Qt/C++ display management library (kwinft)'
 url="https://github.com/winft/disman"
 license=('LGPL-2.1-only')
@@ -18,11 +18,8 @@ depends=(
   wrapland
 )
 makedepends=(
-  clang
   extra-cmake-modules
   git
-  lld
-  llvm
   microsoft-gsl
   ninja
 )
@@ -30,7 +27,7 @@ makedepends=(
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
-sha256sums=('bf584ab99b585f4d88a6e0310b71d5aab500361ae8369acab0d2a0cd1abe784c')
+sha256sums=('5c8277d50660b59ba731e0a9052521702b65717b72a298cf0ec37bfa8d5d8cc4')
 
 prepare() {
   sed -E \
@@ -44,10 +41,6 @@ prepare() {
 }
 
 build() {
-  export CC=clang
-  export CXX=clang++
-  export LDFLAGS+=" -fuse-ld=lld"
-
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"
