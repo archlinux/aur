@@ -1,0 +1,18 @@
+pkgbase = cargo-run-script-git
+	pkgdesc = A Cargo subcommand which allows you to define scripts for common project related tasks within your 'Cargo.toml'.
+	pkgver = r11.96df282
+	pkgrel = 1
+	url = https://github.com/JoshMcguigan/cargo-run-script
+	arch = x86_64
+	license = Apache-2.0
+	license = MIT
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = cargo
+	provides = cargo-run-script
+	conflicts = cargo-run-script
+	source = cargo-run-script-git::git+https://github.com/JoshMcguigan/cargo-run-script
+	sha256sums = SKIP
+
+pkgname = cargo-run-script-git
