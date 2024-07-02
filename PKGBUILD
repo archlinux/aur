@@ -7,7 +7,7 @@ pkgbase="${_pkgbase}${_vcssuffix}"
 pkgname=(
   "${pkgbase}"
 )
-pkgver=2.3.0+11.r388.20240617.78481ca
+pkgver=3.0.1+1.r398.20240701.05c9efa
 pkgrel=1
 pkgdesc="Browser based user interface for 'hhd' (\"Handheld Daemon\"). Latest git checkout."
 arch=(
