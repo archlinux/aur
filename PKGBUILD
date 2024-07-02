@@ -1,7 +1,7 @@
 # Maintainer: Sarat Chandra <me at saratchandra dot in>
 
 pkgname=doggo-bin
-pkgver=0.5.7
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Command-line DNS client for humans "
 arch=('x86_64' 'aarch64')
@@ -11,38 +11,42 @@ depends=()
 makedepends=()
 provides=('doggo')
 conflicts=('doggo')
-source_x86_64=("https://github.com/mr-karan/doggo/releases/download/v${pkgver}/doggo_${pkgver}_linux_amd64.tar.gz")
-source_aarch64=("https://github.com/mr-karan/doggo/releases/download/v${pkgver}/doggo_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('1c04d2563af449b8db791829535fe716db4732094b8fd169064c1f81e83fa9ab')
-sha256sums_aarch64=('fedce9bcbd11adc9ac876a06323ab26577bf6a8e78bb73346b25d5c9c960ffac')
+source_x86_64=("https://github.com/mr-karan/doggo/releases/download/v${pkgver}/doggo_${pkgver}_Linux_x86_64.tar.gz")
+source_aarch64=("https://github.com/mr-karan/doggo/releases/download/v${pkgver}/doggo_${pkgver}_Linux_arm64.tar.gz")
+sha256sums_x86_64=('61c931bc85c980a3d3638c24c979d793438c490a6d3224ff52fcac7f5c133b0f')
+sha256sums_aarch64=('4a64e13da739549aa52f63d9b69d01eebf0b47fd0fde0dac69ddaf70a7710200')
 
 package() {
     cd "${srcdir}"
 
+    # Determine the correct subfolder based on architecture
+    if [ "$CARCH" = "x86_64" ]; then
+        subfolder="doggo_${pkgver}_Linux_x86_64"
+    elif [ "$CARCH" = "aarch64" ]; then
+        subfolder="doggo_${pkgver}_Linux_arm64"
+    else
+        echo "Unsupported architecture: $CARCH"
+        exit 1
+    fi
+
     # Install doggo
-    install -D -m0755 doggo \
+    install -D -m0755 "${subfolder}/doggo" \
         "${pkgdir}/usr/bin/doggo"
 
-    # Install doggo-api
-    install -D -m0755 doggo-api.bin \
-        "${pkgdir}/usr/bin/doggo-api"
-
-    # Copy license.
+    # Copy license
     mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-    cp LICENSE \
+    cp "${subfolder}/LICENSE" \
         "${pkgdir}/usr/share/licenses/${pkgname}"
 
     # Copy README.md
     mkdir -p "${pkgdir}/usr/share/doc/${pkgname}"
-    cp README.md \
+    cp "${subfolder}/README.md" \
         "${pkgdir}/usr/share/doc/${pkgname}"
 
-    # Install completions.
-    mkdir -p "${pkgdir}/usr/share/zsh/site-functions/_doggo"
-    cp completions/doggo.zsh \
-        "${pkgdir}/usr/share/zsh/site-functions/_doggo"
+    # Install completions
+    mkdir -p "${pkgdir}/usr/share/zsh/site-functions"
+    "${pkgdir}/usr/bin/doggo" completions zsh > "${pkgdir}/usr/share/zsh/site-functions/_doggo"
 
     mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d"
-    cp completions/doggo.fish \
-        "${pkgdir}/usr/share/fish/vendor_completions.d/doggo.fish"
+    "${pkgdir}/usr/bin/doggo" completions fish > "${pkgdir}/usr/share/fish/vendor_completions.d/doggo.fish"
 }
