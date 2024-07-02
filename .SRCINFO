@@ -1,7 +1,7 @@
 pkgbase = mutter-performance
 	pkgdesc = A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync
 	pkgver = 46.3
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
@@ -76,14 +76,17 @@ pkgbase = mutter-performance
 	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=3998f8a422e89c6a64a79e2ce23f9389c0feb7f9
 	source = mr1441.patch
 	source = mr3373.patch
+	source = mr3567.patch
 	source = mr3751.patch
 	sha256sums = c6497a3045eed064eac55f0780b6a91f919b92450d083d81eaee3c65b13cdb9f
 	sha256sums = 649dac49f7655f4bd21deb244bb47f2b5a211caa29364d1155454eb155076dbb
 	sha256sums = 3e1f07b696ad37b1c639a524c092cd9259444bc6156542901ccaec936bea240f
+	sha256sums = dbaebf54c0c4cce77d9394334ee55fdeeae8c027f5782a34a94778943baef321
 	sha256sums = 9d925b810629074285388b5a1a9a88514a6cb45463a98ada6f66c2cba2ad9d2f
 	b2sums = b228db453c22a94783ceed71eb9489117e0576293f6daa37b7f20b6992b80ee4e67ebeee3b1cf474d306d2341e8d0e26b16820cec9d6c53132ddc7ffd4157634
 	b2sums = 8f5f7c4caae32f46d35f2cd73a0d00ddfde38c0b53e13d60c8a977362b8bfd6fc41f3af1a88353b6f2778d7d6d01881f14198b40532bcda53caf43aba7287804
 	b2sums = 71f10db4ebe04a787940c7048131eac67cffd3ec8e415cfc961b8041b881f272650581e9df273e2a8da23a50ec9151c790dc2d5ecc0309ab2847a22f8c922c9c
+	b2sums = 139cf3ae7dc9e0d9cd187950a6f5d246b0a16d2a7bf0c1179579e178826fa8e6f8a5d515145724ca7635af05d30d3e4098c34f83f0009bcc92fc04393062ab2c
 	b2sums = f720718049c1f9d0f338c203a5ae4520b5e7079b57e692ec95d8183705d7b7627ccd7d3d350d0010d0b225226641afccd699b65a81bd044fd32c441d413a0779
 
 pkgname = mutter-performance
