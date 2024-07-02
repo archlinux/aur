@@ -4,7 +4,7 @@
 pkgname=koboldcpp-hipblas
 _pkgver=1.69
 pkgver=$_pkgver.yr0
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy-to-use AI text-generation software for GGML and GGUF models (with HIPBLAS, for ROCM)"
 arch=('x86_64')
 url="https://github.com/YellowRoseCx/koboldcpp-rocm"
@@ -18,7 +18,7 @@ depends=(
   'hipblas'
 )
 optdepends=(
-  'customtkinter: for GUI launcher'
+  'python-customtkinter: for GUI launcher'
   'python-psutil: increasing the process CPU priority'
 )
 provides=("koboldcpp=$_pkgver" "koboldcpp-rocm=$_pkgver")
