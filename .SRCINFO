@@ -1,7 +1,7 @@
 pkgbase = yafu-git
 	pkgdesc = Automated integer factorization.
-	pkgver = r615.93a23e5
-	pkgrel = 2
+	pkgver = r617.5b17db8
+	pkgrel = 1
 	url = https://github.com/bbuhrow/yafu
 	arch = x86_64
 	license = MIT
@@ -17,11 +17,9 @@ pkgbase = yafu-git
 	source = git+https://github.com/bbuhrow/ytools.git
 	source = git+https://github.com/bbuhrow/ysieve.git
 	source = msieve::svn+svn://svn.code.sf.net/p/msieve/code/trunk
-	source = avx_ecm_main.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 2fa4529955996166f4d258e2cb1a93685a4a8485129314d44fa3e140ae97e595
 
 pkgname = yafu-git

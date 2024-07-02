@@ -2,8 +2,8 @@
 
 _pkgbase=yafu
 pkgname=yafu-git
-pkgrel=2
-pkgver=r615.93a23e5
+pkgrel=1
+pkgver=r617.5b17db8
 pkgdesc="Automated integer factorization."
 url=https://github.com/bbuhrow/yafu
 license=("MIT")
@@ -19,19 +19,17 @@ source=(
 	"git+https://github.com/bbuhrow/ytools.git"
 	"git+https://github.com/bbuhrow/ysieve.git"
 	msieve::"svn+svn://svn.code.sf.net/p/msieve/code/trunk"
-    "avx_ecm_main.patch"
 	)
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '2fa4529955996166f4d258e2cb1a93685a4a8485129314d44fa3e140ae97e595')
+            )
 
 prepare() {
 	cd ${srcdir}/yafu
 	sed -i "s%^LIBS += -lecm /users/buhrow/src%#LIBS += -lecm /users/buhrow/src%" Makefile
 	sed -i "s/^\#LIBS += -lecm -lgmp -lytools -lysieve/LIBS += -lecm -lgmp -lytools -lysieve/" Makefile
-    patch --forward --strip=1 --input=../avx_ecm_main.patch
 }
 
 pkgver() {
