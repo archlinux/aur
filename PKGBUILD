@@ -2,7 +2,7 @@
 
 pkgname=gpt4all-chat-git
 _gitname=gpt4all
-pkgver=r1809.0b63ad5e
+pkgver=r1903.1ce65e8e
 pkgrel=1
 pkgdesc="Cross platform Qt based GUI for GPT4All versions"
 arch=('x86_64')
@@ -70,5 +70,5 @@ package() {
   chmod 0755 "${pkgdir}/usr/bin/gpt4all-chat"
 
   cp "${srcdir}/gpt4all-chat.desktop" "${pkgdir}/usr/share/applications/"
-  cp ../icons/logo.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/gpt4all-chat.svg"
+  cp gpt4all/icons/gpt4all.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/gpt4all-chat.svg"
 }
