@@ -2,7 +2,7 @@
 
 _name=zsh-system-clipboard
 pkgname="${_name}-git"
-pkgver=r99.461cbbd
+pkgver=r128.2d94918
 pkgrel=1
 pkgdesc='Synchronize system clipboard with ZLE (Zsh Line Editor) registers'
 arch=('any')
@@ -25,7 +25,8 @@ pkgver() {
 
 package() {
 	cd "${_name}"
-	install -Dm644 "${_name}.zsh" -t "$pkgdir/usr/share/zsh/plugins/${_name}"
-	install -Dm644 README.md -t "$pkgdir/usr/share/doc/${_name}"
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${_name}"
+	install -vDm644 "${_name}.zsh" -t "$pkgdir/usr/share/zsh/plugins/${_name}"
+	ln -sv "${_name}.zsh" "$pkgdir/usr/share/zsh/plugins/${_name}/${_name}.plugin.zsh" # symlink for oh-my-zsh
+	install -vDm644 README.md -t "$pkgdir/usr/share/doc/${_name}"
+	install -vDm644 LICENSE -t "$pkgdir/usr/share/licenses/${_name}"
 }
