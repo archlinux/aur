@@ -1,6 +1,6 @@
 pkgbase = tabaur-bin
 	pkgdesc = A customizable and lightweight AUR helper, designed to be simple but powerful.
-	pkgver = 0.6.7
+	pkgver = 0.6.8
 	pkgrel = 1
 	url = https://github.com/BurntRanch/TabAUR
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = tabaur-bin
 	optdepends = tar: use AUR packages tarballs
 	conflicts = tabaur
 	conflicts = tabaur-git
-	source = https://github.com/BurntRanch/TabAUR/releases/download/v0.6.7/TabAUR-v0.6.7.tar.zst
+	source = https://github.com/BurntRanch/TabAUR/releases/download/v0.6.8/TabAUR-v0.6.8.tar.zst
 	sha256sums = 7b20cc048148ad86afcaf652811f0610f846a8d3a5902c6faf59ab7285714404
 
 pkgname = tabaur-bin
