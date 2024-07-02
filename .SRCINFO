@@ -1,6 +1,6 @@
 pkgbase = kazv-git
 	pkgdesc = A Qt5 matrix client.
-	pkgver = 0.3.0.r593.20240614.85ea79d
+	pkgver = 0.3.0.r610.20240622.24e94b8
 	pkgrel = 1
 	url = https://lily-is.land/kazv/kazv
 	arch = aarch64
@@ -29,7 +29,7 @@ pkgbase = kazv-git
 	depends = qt5-multimedia
 	depends = qt5-svg
 	depends = qt5-quickcontrols2
-	provides = kazv=0.3.0.r593.20240614.85ea79d
+	provides = kazv=0.3.0.r610.20240622.24e94b8
 	conflicts = kazv
 	source = kazv::git+https://lily-is.land/kazv/kazv.git
 	sha256sums = SKIP
