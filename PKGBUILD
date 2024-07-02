@@ -3,11 +3,11 @@
 pkgname=fabaria
 _pkgname=fabariagest
 pkgver=2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Gestionale aziendale." 
 url="https://www.codelinsoft.it/sito/2013-11-17-17-56-34/fabariagest.html"
-arch=('i686' 'x86_64')
-depends=('qt5-base' 'qt5-connectivity' 'qt5-declarative' 'qt5-graphicaleffects' 'qt5-multimedia' 'qt5-svg' 'qt5-tools'  'qt5-translations' 'qt5-webkit' 'qt5-websockets' 'qt5-x11extras' 'qt5-xmlpatterns' 'mysql' 'cmake' 'zlib' 'nspr' 'lsb-release' )
+arch=('x86_64')
+depends=('qt5-base' 'qt5-connectivity' 'qt5-declarative' 'qt5-graphicaleffects' 'qt5-multimedia' 'qt5-svg' 'qt5-tools'  'qt5-translations' 'qt5-webkit' 'qt5-websockets' 'qt5-x11extras' 'qt5-xmlpatterns' 'mariadb' 'cmake' 'zlib' 'nspr' 'lsb-release' )
 license=(LGPL)
 source=('git+https://github.com/kratos83/FabariaGest')
 md5sums=("SKIP")
