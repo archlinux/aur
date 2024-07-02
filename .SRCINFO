@@ -1,6 +1,6 @@
 pkgbase = kemai
 	pkgdesc = A QT6 client for Kimai time tracker
-	pkgver = 0.11.0
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://github.com/AlexandrePTJ/kemai
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = kemai
 	depends = spdlog
 	depends = libxss
 	depends = hicolor-icon-theme
-	source = https://github.com/AlexandrePTJ/kemai/archive/refs/tags/0.11.0.tar.gz
-	sha256sums = ee2049b0ac676e0a06dcd81caab997072b4a5dfbb4fb3dddb695d5291258509d
+	source = https://github.com/AlexandrePTJ/kemai/archive/refs/tags/0.11.1.tar.gz
+	sha256sums = cfb51ffd44e56cf67a5f9c6c6a9ae45efce1bf6f0b75c91c789da18a04711ff2
 
 pkgname = kemai
