@@ -15,7 +15,6 @@ optdepends=()
 makedepends=('libarchive')
 backup=()
 options=('!strip' '!debug')
-install=${pkgname}.install
 source=("${pkgname%-wine}-v${pkgver}.zip::http://www.stcmcudata.com/STCISP/${pkgname%-wine}-v${pkgver}.zip"
         "${pkgname%-wine}-tiny-v${pkgver}.zip::http://www.stcmcudata.com/STCISP/${pkgname%-wine}-v${pkgver}-tiny.zip"
         "stcai-isp-wine.install"
@@ -40,6 +39,7 @@ package_stcai-isp-wine() {
     export LC_CTYPE="zh_CN.UTF-8"
 
     pkgdesc="Wine STCAI-ISP 下载编程烧录软件"
+    install=${pkgname}.install
 
     _stc="opt/STCMCU"
     _ftname="wqy-microhei.ttc"
@@ -161,6 +161,7 @@ package_stcai-isp-tiny-wine() {
     export LC_CTYPE="zh_CN.UTF-8"
 
     pkgdesc="Wine STCAI-ISP 简化版下载编程烧录软件"
+    install=${pkgname}.install
 
     _stc="opt/STCMCU"
     _ftname="wqy-microhei.ttc"
