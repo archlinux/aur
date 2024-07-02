@@ -2,7 +2,7 @@
 
 _pkgname=python-replicate
 pkgname="${_pkgname}-git"
-pkgver=0.26.1.r221.20240621.a78cc1e
+pkgver=0.27.0+1.r230.20240628.ec459ed
 pkgrel=1
 pkgdesc="A library to run machine learning models in the cloud from your own code, without having to set up any servers."
 arch=(
