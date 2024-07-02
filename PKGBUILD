@@ -2,7 +2,7 @@
 # Contributer: Alpin <alpin 'at' alpindale 'dot' dev>
 # Author: LostRuins (concedo)
 pkgname=koboldcpp
-pkgver=1.69
+pkgver=1.69.1
 pkgrel=1
 pkgdesc="An easy-to-use AI text-generation software for GGML and GGUF models"
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=(
   'python-psutil: increasing the process CPU priority'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/LostRuins/koboldcpp/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8a7e590eceadcbda81bedeaa876033708d130b359adf6d66d25caa14c037a93f')
+sha256sums=('07d55e2407bbdf961f9ef192d8d4de4b23e8ad40a0a644125175adcfdf58cb77')
 
 build() {
   cd "$srcdir/koboldcpp-$pkgver"
