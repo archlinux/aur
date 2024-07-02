@@ -37,12 +37,6 @@ cat << EOF
 
         { "vendor": "System76, Inc", "model": "galu1" }
 
-    (!) If you experience Wifi or Thunderbolt issues after resuming from suspend, consider using the
-        included restart scripts:
-
-        ln -s /usr/lib/system76-driver/system76-nm-restart /lib/systemd/system-sleep/system76-nm-restart
-        ln -s /usr/lib/system76-driver/system76-thunderbolt-reload /lib/systemd/system-sleep/system76-thunderbolt-reload
-
 EOF
 }
 

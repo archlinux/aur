@@ -2,7 +2,7 @@
 # Contributor: ava1ar <mail(at)ava1ar(dot)me>
 # Contributor: Corey Hinshaw <corey(at)electrickite(dot)org>
 pkgname=system76-driver
-pkgver=20.04.90
+pkgver=20.04.92
 pkgrel=1
 pkgdesc="Universal driver for System76 computers"
 arch=('any')
@@ -53,21 +53,15 @@ checkdepends=(
   'python-pytest'
 )
 install="$pkgname.install"
-_commit=3bb15049bf78a25da77ede27681317da167acb60  # tags/20.04.90^0
 source=(
-  "git+https://github.com/pop-os/system76-driver.git#commit=${_commit}"
+  "git+https://github.com/pop-os/system76-driver.git#tag=$pkgver"
   'cli.patch'
   'wayland.patch'
   'actions.patch')
-sha256sums=('81df865a8a0adedc7d99d4360a1ee3f88fbc6384bfa7ce05a8941f70f77f9778'
+sha256sums=('7037c7f05b5549a81e0a81fb680f4196d12844253d29b827f4cfe3a96e17ccfa'
             'ef027346c439561dc01f906ae7bd961100aedf9125fd86bb0eb89a87b683fdc3'
             '2ffbd813744c0b99416947a2755767767af434758aa20dcfafefb49fb367d5d3'
             '3ade740c1681f8f33ef78e1e6c087e4002d14c888d7a5bf6bfbeb2aa70111119')
-
-pkgver() {
-  cd "$pkgname"
-  git describe --tags | sed 's/-/+/g'
-}
 
 prepare() {
   cd "$pkgname"
@@ -114,7 +108,8 @@ package() {
     "$pkgdir/usr/lib/systemd/system/system76.service"
 
   # Install scripts and configuration
-  install -m755 system76-{nm-restart,thunderbolt-reload} "$pkgdir/usr/lib/$pkgname/"
+  install -Dm755 system76-{nm-restart,thunderbolt-reload,atlantic-reload,virtual-hub} -t \
+    "$pkgdir/usr/lib/systemd/system-sleep/"
   install -Dm644 "com.system76.pkexec.$pkgname.policy" -t \
     "$pkgdir/usr/share/polkit-1/actions/"
 
