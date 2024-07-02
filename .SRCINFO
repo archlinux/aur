@@ -1,0 +1,13 @@
+pkgbase = bit4id-pki-manager
+	pkgdesc = Bit4ID PKI Manager application
+	pkgver = 1.4.10.682
+	pkgrel = 1
+	url = http://www.bit4id.com/
+	arch = x86_64
+	license = unknown
+	depends = bit4id-xpki
+	options = !strip
+	source = https://repository.infonotary.com/ra/Middleware/Bit4id/Linux/libbit4xpki-1.4.10-682-bit4id-user.x86_64.deb
+	md5sums = bee113c3dfeb52b805fe211739c697a8
+
+pkgname = bit4id-pki-manager
