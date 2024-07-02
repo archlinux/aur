@@ -2,9 +2,9 @@
 # Maintainer: xgjmibzr <xgjmibzr@gmail.com>
 
 pkgname=superslicer-prerelease-bin
-pkgver=2.5.59.8
+pkgver=2.5.60.0
 _pkgtag=$pkgver
-_appimage=SuperSlicer-ubuntu_18.04-$_pkgtag.AppImage
+_appimage=SuperSlicer-ubuntu_20.04-$_pkgtag.AppImage
 pkgrel=1
 epoch=1
 pkgdesc="G-code generator for 3D printers (Creality, RepRap, Makerbot, Ultimaker etc.) (binary AppImage)"
@@ -12,20 +12,20 @@ arch=("$CARCH")
 url="https://github.com/supermerill/SuperSlicer"
 license=('AGPL3')
 depends=('zlib' 'fuse2')
-options=('!strip')
+options=('!strip' '!debug')
 replaces=('slic3r++')
 provides=("superslicer=$epoch:$pkgver")
 conflicts=('superslicer' 'superslicer-git' 'superslicer-prerelease')
 source=("https://github.com/supermerill/SuperSlicer/releases/download/$_pkgtag/$_appimage"
 )
-sha256sums=('1041ef7707525cbbe7b4866c51f7a5b2403acb0a627cefe0541ae2bbbf07dc6f')
+sha256sums=('f6db9ecfd636c0177d65c6b6fcedd53b33c79e81d42f3f7574bd2c9b7c1e58cd')
 noextract=("${_appimage}")
 
 
 prepare() {
     chmod +x "${_appimage}"
-    ./"${_appimage}" --appimage-extract SuperSlicer.desktop
-    ./"${_appimage}" --appimage-extract resources/icons
+    "${srcdir}"/"${_appimage}" --appimage-extract SuperSlicer.desktop
+    "${srcdir}"/"${_appimage}" --appimage-extract 'resources/icons/SuperSlicer_*px.png'
 }
 
 build() {
@@ -45,8 +45,10 @@ package() {
             "${pkgdir}/usr/share/applications/SuperSlicer.desktop"
 
     # Icon images
-    install -dm755 "${pkgdir}/usr/share/"
-    cp -a "${srcdir}/squashfs-root/resources/icons" "${pkgdir}/usr/share/"
+    for i in 32 128 192 ; do
+        install -Dm 0644 "${srcdir}/squashfs-root/resources/icons/SuperSlicer_${i}px.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/SuperSlicer.png"
+    done
 
     # Symlink executable
     install -dm755 "${pkgdir}/usr/bin"
