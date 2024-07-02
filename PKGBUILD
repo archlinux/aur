@@ -1,10 +1,11 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 _name=pycddl
 pkgname=python-$_name
 pkgver=0.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Deserialize CBOR and/or do CDDL schema validation"
 license=('MIT')
-arch=('any')
+arch=('x86_64')
 url="https://pypi.org/project/pycddl/"
 depends=('gcc-libs' 'glibc' 'python')
 makedepends=('python-maturin' 'python-build' 'python-installer')
