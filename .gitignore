@@ -1,1 +1,4 @@
-/wuzz-bin
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
