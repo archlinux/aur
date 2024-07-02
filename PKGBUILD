@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=python-galois-git
 _name=galois
-pkgver=0.3.8.r0.g25baec4
+pkgver=0.3.10.r6.g4921897
 pkgrel=1
 epoch=1
 pkgdesc="A performant NumPy extension for Galois fields and their applications"
@@ -23,7 +23,7 @@ makedepends=(
 checkdepends=(python-pytest)
 provides=(python-galois)
 conflicts=(python-galois)
-source=($_name::git+https://github.com/mhostetter/galois.git)
+source=($_name::git+https://github.com/mhostetter/galois.git#branch=release/0.4.x)
 b2sums=(SKIP)
 
 pkgver() {
