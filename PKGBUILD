@@ -2,8 +2,8 @@
 _appname=affine
 pkgname="${_appname}-canary-bin"
 _pkgname=AFFiNE-canary
-pkgver=0.15.0_canary.23
-_electronversion=31
+pkgver=0.15.2_canary.2
+_electronversion=30
 pkgrel=1
 pkgdesc="A next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use.(Test Version,use system-wide electron)"
 arch=('x86_64')
@@ -30,7 +30,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/toeverything/AFFiNE/v${pkgver//_/-}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('2275f902ec58db9dbe564ac79623b7d86c7fac8d7c66e2c98dfc020a630f388a'
+sha256sums=('01f91a6859b998ab5037dc414e59810e6a4ed60a7f5bf664820220f48c24d310'
             '1cdeca52d4f740361f103926144eb8b3f265975b2337d4e27b3313f72465897f'
             'b54bb7aa14dd5725bc268921eeea9dee973dacbc13e0cea30e7d2adb5cd5a53f'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
