@@ -1,18 +1,20 @@
 # Maintainer:  dreieck
 # Contributor: Nils Werner <nils.werner@gmail.com>
 
-_pkgname=crestic
-pkgname="${_pkgname}-git"
-pkgver=1.0.0+6.r123.20240618.4c735ad
-pkgrel=1
-pkgdesc="Configurable restic wrapper. Lastest git checkout."
-arch=('any')
-url="https://github.com/nils-werner/${_pkgname}"
-license=('MIT')
-depends=(
-  'python>=3.6'
-  'restic'
+_pkgbase="crestic"
+_gitname="${_pkgbase}"
+_githubuser="nils-werner"
+pkgbase="${_pkgbase}-git"
+pkgname=(
+  "${_pkgbase}-git"
+  "${_pkgbase}-docs-git"
 )
+pkgver=1.0.0+6.r123.20240618.4c735ad
+pkgrel=2
+pkgdesc="Configurable restic wrapper. Lastest git checkout. Split package: Software and documentation."
+arch=('any')
+url="https://github.com/${_githubuser}/${_gitname}"
+license=('MIT')
 makedepends=(
   'git'
   'python-build'
@@ -26,18 +28,8 @@ makedepends=(
 #   'python-pytest-mypy'
 #   'python-pytest-pycodestyle' # Not available, so we skip `check()` for now.
 # )
-provides=(
-  "${_pkgname}=${pkgver}"
-  "python-${_pkgname}=${pkgver}"
-  "${_pkgname}-doc=${pkgver}"
-)
-conflicts=(
-  "${_pkgname}"
-  "python-${_pkgname}"
-  "${_pkgname}-doc"
-)
 source=(
-    "${_pkgname}::git+${url}.git"
+    "${_pkgbase}::git+${url}.git"
     "crestic-backup@.service"
     "crestic-backup@.timer"
     "crestic-forget@.service"
@@ -52,13 +44,13 @@ sha256sums=(
 )
 
 prepare() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_pkgbase}"
 
   git log > "${srcdir}/git.log"
 }
 
 pkgver () {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_pkgbase}"
   _ver="$(git describe --tags | sed -E -e 's|^[vV]||' -e 's|\-g[0-9a-f]*$||' | tr '-' '+')"
   _rev="$(git rev-list --count HEAD)"
   _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
@@ -73,18 +65,35 @@ pkgver () {
 }
 
 build () {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_pkgbase}"
   python -m build --wheel --no-isolation
 }
 
 # check() {
 #   # `python-pytest-pycodestyle` is needed but not in the repositories or the AUR, so whe skip for now.
-#   cd "${srcdir}/${_pkgname}"
+#   cd "${srcdir}/${_pkgbase}"
 # 
 #   pytest
 # }
 
-package() {
+package_crestic-git() {
+  pkgdesc="Configurable restic wrapper. Lastest git checkout."
+  depends=(
+    'python>=3.6'
+    'restic'
+  )
+  optdepends=(
+    "crestic-docs: Documentation for this software."
+  )
+  provides=(
+    "crestic=${pkgver}"
+    "python-crestic=${pkgver}"
+  )
+  conflicts=(
+    "crestic"
+    "python-crestic"
+  )
+
   cd "${srcdir}"
   install -Dvm 0644 crestic-backup@.service -t "$pkgdir"/usr/lib/systemd/system/
   install -Dvm 0644 crestic-backup@.timer -t "$pkgdir"/usr/lib/systemd/system/
@@ -95,13 +104,34 @@ package() {
   install -Dvm 0644 crestic-forget@.service -t "$pkgdir"/usr/lib/systemd/user/
   install -Dvm 0644 crestic-forget@.timer -t "$pkgdir"/usr/lib/systemd/user/
 
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_pkgbase}"
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dvm 0644 "${srcdir}/git.log" CHANGELOG.md README.md RELEASE.md -t "${pkgdir}/usr/share/doc/${_pkgname}"/
   install -Dvm 0644 LICENSE -t "${pkgdir}"/usr/share/licenses/"${pkgname}"/
-  ln -svr "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE "${pkgdir}/usr/share/doc/${_pkgname}"/LICENSE
+}
 
-  cp -rv docs "${pkgdir}/usr/share/doc/${_pkgname}/docs"
+package_crestic-docs-git() {
+  pkgdesc="Documentation for 'crestic'. Latest git checkout."
+  provides=(
+    "crestic-docs=${pkgver}"
+  )
+  conflicts=(
+    "crestic-docs"
+    "crestic-doc<=1.0.0+6.r123.20240618.4c735ad"  # Because we initially had 'crestic-doc' in the 'provides'-array of 'crestic-git', and now the package is split  out _and_ renamed to 'crestic-docs' (with 's' suffix).
+  )
+  replaces=(
+    "crestic-doc<=1.0.0+6.r123.20240618.4c735ad"  # Because we initially had 'crestic-doc' in the 'provides'-array of 'crestic-git', and now the package is split  out _and_ renamed to 'crestic-docs' (with 's' suffix).
+  )
+  optdepends=(
+    "crestic: The software this documentation is for."
+  )
+
+  cd "${srcdir}/${_pkgbase}"
+
+  install -Dvm 0644 "${srcdir}/git.log" CHANGELOG.md README.md RELEASE.md -t "${pkgdir}/usr/share/doc/${_pkgbase}"/
+  install -Dvm 0644 LICENSE -t "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+  ln -svr "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE "${pkgdir}/usr/share/doc/${_pkgbase}"/LICENSE
+
+  cp -rv docs "${pkgdir}/usr/share/doc/${_pkgbase}/docs"
 }

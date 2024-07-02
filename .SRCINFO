@@ -1,7 +1,7 @@
 pkgbase = crestic-git
-	pkgdesc = Configurable restic wrapper. Lastest git checkout.
+	pkgdesc = Configurable restic wrapper. Lastest git checkout. Split package: Software and documentation.
 	pkgver = 1.0.0+6.r123.20240618.4c735ad
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nils-werner/crestic
 	arch = any
 	license = MIT
@@ -9,14 +9,6 @@ pkgbase = crestic-git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = python>=3.6
-	depends = restic
-	provides = crestic=1.0.0+6.r123.20240618.4c735ad
-	provides = python-crestic=1.0.0+6.r123.20240618.4c735ad
-	provides = crestic-doc=1.0.0+6.r123.20240618.4c735ad
-	conflicts = crestic
-	conflicts = python-crestic
-	conflicts = crestic-doc
 	source = crestic::git+https://github.com/nils-werner/crestic.git
 	source = crestic-backup@.service
 	source = crestic-backup@.timer
@@ -29,3 +21,19 @@ pkgbase = crestic-git
 	sha256sums = ea0050225c6527f8ebcc146f6dd60e15dede64b5820e25d94e511f7c01594ffc
 
 pkgname = crestic-git
+	pkgdesc = Configurable restic wrapper. Lastest git checkout.
+	depends = python>=3.6
+	depends = restic
+	optdepends = crestic-docs: Documentation for this software.
+	provides = crestic=1.0.0+6.r123.20240618.4c735ad
+	provides = python-crestic=1.0.0+6.r123.20240618.4c735ad
+	conflicts = crestic
+	conflicts = python-crestic
+
+pkgname = crestic-docs-git
+	pkgdesc = Documentation for 'crestic'. Latest git checkout.
+	optdepends = crestic: The software this documentation is for.
+	provides = crestic-docs=1.0.0+6.r123.20240618.4c735ad
+	conflicts = crestic-docs
+	conflicts = crestic-doc<=1.0.0+6.r123.20240618.4c735ad
+	replaces = crestic-doc<=1.0.0+6.r123.20240618.4c735ad
