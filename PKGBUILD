@@ -1,7 +1,7 @@
 # Maintainer: Aikawa Yataro <aikawayataro at protonmail dot com>
 
 pkgname=sourcegit
-pkgver=8.18
+pkgver=8.19
 pkgrel=1
 pkgdesc="GUI client for GIT users"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('dotnet-sdk-8.0')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sourcegit-scm/sourcegit/archive/refs/tags/v$pkgver.tar.gz"
         'sourcegit.desktop')
-sha256sums=('f24eee173dcb9b35b6ba68eda0868918bed67f1c2ad6af0009d1e8514e6a6ff2'
+sha256sums=('95c0a9417c24fcb93d5ba3981c6171584f7f7c6c65ce762e66d9992527ccf9ed'
             '3488ee13a4ca1bae85c35f866d046304d8716a64c46cadb2576cb8b4ae44b058')
 
 
@@ -36,6 +36,6 @@ package() {
     ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
     install -Dm644 sourcegit.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
-    install -Dm644 "$pkgname-$pkgver/build/resources/_common/usr/share/icons/sourcegit.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
+    install -Dm644 "$pkgname-$pkgver/build/resources/_common/icons/sourcegit.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
     install -Dm644 "$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
