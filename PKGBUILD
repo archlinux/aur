@@ -2,20 +2,22 @@
 # Maintainer: Elias Elwyn <a@jthv.ai>
 
 pkgname=helm-ls
-pkgver=0.0.17
+pkgver=0.0.18
 pkgrel=1
-_commit=bab4b4c745a472ee517967a71d21b2892f7f0307
+_commit=dd0ae6da6b873921f18ffc301940999f9593fcb9
 pkgdesc='Language server for Helm'
-arch=(x86_64)
-url='https://github.com/mrjosh/helm-ls'
 license=(MIT)
+
+url='https://github.com/mrjosh/helm-ls'
+# NOTE: submodules are required for check()
+source=("$pkgname::git+$url.git")
+md5sums=(SKIP)
+
+arch=(x86_64)
 depends=(glibc)
 makedepends=(go)
 checkdepends=(yaml-language-server)
 options=('!debug')
-# NOTE: submodules are required for check()
-source=("$pkgname::git+$url.git")
-md5sums=(SKIP)
 
 verify() {
   cd "$pkgname"
