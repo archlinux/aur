@@ -1,6 +1,12 @@
 Changelog
 =========
 
+**[5.0.2] ----- 2024-07-01** ::
+
+	    Readme - clarify that gui starts the monitor daemon automatically
+	    update Docs/Changelog.rst Docs/wg-client.pdf
+
+
 **[5.0.1] ----- 2024-07-01** ::
 
 	      * Auto fix of resolv.conf (new option *--fix-dns-auto-start*)
