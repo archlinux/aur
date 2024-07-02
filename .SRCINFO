@@ -1,6 +1,6 @@
 pkgbase = syncthing-bin
 	pkgdesc = Open Source Continuous Replication / Cluster Synchronization Thing: binary.
-	pkgver = 1.27.8
+	pkgver = 1.27.9
 	pkgrel = 1
 	url = https://syncthing.net/
 	install = syncthing.install
@@ -11,15 +11,15 @@ pkgbase = syncthing-bin
 	license = MPL2
 	provides = syncthing=${pkgver}
 	conflicts = syncthing
-	source = syncthing-1.27.8.tar.gz::https://github.com/syncthing/syncthing/archive/refs/tags/v1.27.8.tar.gz
-	sha256sums = 39069757d23dcee6d46a67935b6d0e1eb54a63698b9e82bc7e5d71c2a52e2659
-	source_x86_64 = https://github.com/syncthing/syncthing/releases/download/v1.27.8/syncthing-linux-amd64-v1.27.8.tar.gz
-	sha256sums_x86_64 = c4ad23e9b1cecac50e895db567776671c12fb32e668c5894bfc5ed18eab5529b
-	source_aarch64 = https://github.com/syncthing/syncthing/releases/download/v1.27.8/syncthing-linux-arm64-v1.27.8.tar.gz
-	sha256sums_aarch64 = 32e90178895c96e3b2986e4267ebd45a32336a7f85dd630dc9c075c18f5636b8
-	source_armv7h = https://github.com/syncthing/syncthing/releases/download/v1.27.8/syncthing-linux-arm-v1.27.8.tar.gz
-	sha256sums_armv7h = 498f6a2d8b64d15fac849503ae987a83c612a4b66fa1d41a488009761cf67924
-	source_i686 = https://github.com/syncthing/syncthing/releases/download/v1.27.8/syncthing-linux-386-v1.27.8.tar.gz
-	sha256sums_i686 = 67681085fe97f2e9ab13f2c5a208e7c6f9641b10af2a18c1b2dff62f5fbc1caf
+	source = syncthing-1.27.9.tar.gz::https://github.com/syncthing/syncthing/archive/refs/tags/v1.27.9.tar.gz
+	sha256sums = 4ff5c5099aa75f022ec064b6e8fbf5785b81d7e9d5334491a6da56b4183be4df
+	source_x86_64 = https://github.com/syncthing/syncthing/releases/download/v1.27.9/syncthing-linux-amd64-v1.27.9.tar.gz
+	sha256sums_x86_64 = 590a3e0d85b06ac119b0b465f621a5f272d04a0de86a1b819ec0725f2a45b8fb
+	source_aarch64 = https://github.com/syncthing/syncthing/releases/download/v1.27.9/syncthing-linux-arm64-v1.27.9.tar.gz
+	sha256sums_aarch64 = c511fef100acf43c0caa5de36bbe2ca617a7f0c44ee21cd1aba83609cbdf302c
+	source_armv7h = https://github.com/syncthing/syncthing/releases/download/v1.27.9/syncthing-linux-arm-v1.27.9.tar.gz
+	sha256sums_armv7h = e66b321b33f168ca096662a765e64908277315d18ea359232d198fd72c0fd74b
+	source_i686 = https://github.com/syncthing/syncthing/releases/download/v1.27.9/syncthing-linux-386-v1.27.9.tar.gz
+	sha256sums_i686 = fc2e8abe5fbe7a15f575eec482da28178088f8352b5e02c9041bb460ec4a6164
 
 pkgname = syncthing-bin
