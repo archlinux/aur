@@ -3,7 +3,7 @@
 pkgname=tiledb
 _pkgname=TileDB
 pkgver=2.24.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The Universal Storage Engine"
 arch=('x86_64')
 url="https://tiledb.com/"
