@@ -1,7 +1,7 @@
 # Maintainer: Derek J. Clark <derekjohn dot clark at gmail dot com>
 pkgname=steam-removable-media-git
 _gitdir=steam-removable-media
-pkgver=23.12.r44.f145be1
+pkgver=24.07.r44.f145be1
 pkgrel=1
 pkgdesc="Automounts and imports removable media as a Steam library"
 arch=('any')
