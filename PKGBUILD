@@ -24,6 +24,6 @@ build() {
 
 package() {
 	cd ${_pkgname}-${pkgver}
-	install -Dm644 COPYING.unicode "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 COPYING.unicode "$pkgdir/usr/share/licenses/$pkgname/Unicode-DFS-2016.txt"
 	DESTDIR="$pkgdir" ninja install
 }
