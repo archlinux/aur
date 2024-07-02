@@ -2,7 +2,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=ludusavi
 _app_id="com.github.mtkennerly.$pkgname"
-pkgver=0.24.2
+pkgver=0.24.3
 pkgrel=1
 pkgdesc="Backup tool for PC game saves"
 arch=('x86_64')
@@ -29,14 +29,14 @@ optdepends=(
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$url/releases/download/v$pkgver/$pkgname-v$pkgver-legal.zip")
-sha256sums=('7995ae71d4678e0c2000d7b7468c259e1b12b63f03d21420a45cbf7507c53fa3'
-            '2ab0e5f7646c99ea9f896df1172f37abbd3363353bd5a992b2f3e6bcba3b0567')
+sha256sums=('14c60e7e550909aaedfaaa2998573aeb7ec46a6330ca517e0f6ab796aff4a11a'
+            '39bf114820d85da481326a11fdda39e6e8f3fd23c2b68937e09024e2c3622451')
 
 prepare() {
   cd "$pkgname-$pkgver"
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
