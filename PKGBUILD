@@ -8,7 +8,7 @@ url="https://github.com/siyia2/iso-commander"
 license=('GPL3')
 depends=('coreutils' 'glibc' 'readline' 'util-linux')
 optdepends=('ccd2iso: BIN/IMG conversion support' 'mdf2iso: MDF/MDS conversion support')
-md5sums=('d3000a9b93650d784cafbd06232d6a15')
+md5sums=('9332b6464a4243c3ec662a3a22e98136')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 
