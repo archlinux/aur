@@ -1,7 +1,7 @@
 # Maintainer: Frikilinux <frikilinux@gmail.com>
 
 pkgname=breezex-cursor-theme
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Extended KDE Cursor theme, Highly inspired on KDE Breeze"
 arch=('any')
@@ -9,12 +9,12 @@ url="https://github.com/ful1e5/BreezeX_Cursor"
 license=('GPL')
 depends=()
 makedepends=()
-source=("${url}/releases/download/v${pkgver}/BreezeX-Light.tar.gz"
-        "${url}/releases/download/v${pkgver}/BreezeX-Dark.tar.gz"
-        "${url}/releases/download/v${pkgver}/BreezeX-Black.tar.gz")
-sha256sums=('9f339954d999811a5760e4f51ff6c9b55d219444144f08bebbed994d9c52f0cf'
-            '9e4c5d02a2981568725d91a7d6b67440f0d327f92a3cc641bf103bfa0961853b'
-            'bf77913a2796c2e36e80efa8e31379db19c916312342e55a664ac6961c28656e')
+source=("${url}/releases/download/v${pkgver}/BreezeX-Light.tar.xz"
+        "${url}/releases/download/v${pkgver}/BreezeX-Dark.tar.xz"
+        "${url}/releases/download/v${pkgver}/BreezeX-Black.tar.xz")
+sha256sums=('40c1bdb224e611e03c9865a49a5b4f8131974cb6fab30af428c2a1a969484aa8'
+            '8cdf743466b0f1565fe5f290dd48ef4c02d91778458d0d3cc56437515255b653'
+            '773b75523748173409ee622841b0f74b1e80617a5c5b3dcbb53a7ac3d06cc233')
 package() {
   install -d "${pkgdir}/usr/share/icons"
   cp -r BreezeX-{Dark,Light,Black} "${pkgdir}/usr/share/icons"
