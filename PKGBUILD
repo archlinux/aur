@@ -1,7 +1,7 @@
 # Maintainer: Jan Hensel <ja_he@uni-bremen.de>
 pkgname=dayplan
 pkgver=0.9.11
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc="Utility to plan your day and track your time"
 license=('MIT')
@@ -11,7 +11,7 @@ makedepends=('go')
 optdepends=()
 backup=()
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('b0c9d46466524bc9798998e05a5e37b2022d6bfd812d19bcba37a0cf774695e3')
+sha256sums=('ce24b24b0bc66875e8611b1a4c808e86a98bafc8360838a0622fa510d105ee4d')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
