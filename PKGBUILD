@@ -2,7 +2,7 @@
 pkgname=codicefiscale
 _pkgname=CodiceFiscale
 pkgver=4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The tax code in Italy is an alphanumeric code with a fixed length of 16 characters, inspired by the use of library, which is used to uniquely identify the tax and administrative citizens."
 url="http://www.codelinsoft.it/sito/2013-11-17-17-56-34/codice-fiscale.html"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ sha256sums=("SKIP")
 build() {
 mv ${_pkgname} ${pkgname}-${pkgver}
 cd "${srcdir}/${pkgname}-${pkgver}"
-cmake -DCMAKE_INSTALL_PREFIX=/opt -DWANT_QT5=ON
+cmake -DCMAKE_INSTALL_PREFIX=/opt
 make -j5
 }
 
