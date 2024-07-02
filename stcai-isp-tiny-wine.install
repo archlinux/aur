@@ -1,15 +1,15 @@
 info() {
-    echo -e "STCAI-ISP 下载编程烧录软件"
+    echo -e "STCAI-ISP-TINY 下载编程烧录软件"
 }
 post_install() {
     info
 }
 post_upgrade() {
-    echo "deleting the stcai-isp bottle..."
-    find /home -maxdepth 2 -name ".stcai-isp" -exec rm -rf {} \;
+    echo "deleting the stcai-isp-tiny bottle..."
+    find /home -maxdepth 2 -name ".stcai-isp-tiny" -exec rm -rf {} \;
     info
 }
 pre_remove() {
-    echo "deleting the stcai-isp bottle..."
-    find /home -maxdepth 2 -name ".stcai-isp" -exec rm -rf {} \;
+    echo "deleting the stcai-isp-tiny bottle..."
+    find /home -maxdepth 2 -name ".stcai-isp-tiny" -exec rm -rf {} \;
 }

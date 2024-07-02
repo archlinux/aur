@@ -14,7 +14,7 @@ depends=('wine' 'wqy-microhei' 'winetricks' 'wine-mono' 'wine-gecko')
 optdepends=()
 makedepends=('libarchive')
 backup=()
-options=('!strip')
+options=('!strip' '!debug')
 install=${pkgname}.install
 source=("${pkgname%-wine}-v${pkgver}.zip::http://www.stcmcudata.com/STCISP/${pkgname%-wine}-v${pkgver}.zip"
         "${pkgname%-wine}-tiny-v${pkgver}.zip::http://www.stcmcudata.com/STCISP/${pkgname%-wine}-v${pkgver}-tiny.zip"
@@ -24,7 +24,7 @@ source=("${pkgname%-wine}-v${pkgver}.zip::http://www.stcmcudata.com/STCISP/${pkg
 sha256sums=('ccfa333783e09bdd02f1345ee02ef69df57d19f9c30373ee68e33ef153bbc827'
             '2d46b8beeb42e53b0fbbbf9210bdfccf2b02811e3945731de0e684cfec9b422f'
             'ddcf8bdd41c3bd5f1b004bff265516efe64e730be534a2e85f44c76c865b6bd4'
-            'ddcf8bdd41c3bd5f1b004bff265516efe64e730be534a2e85f44c76c865b6bd4'
+            '5b0dfb11fd800bde3147518f17e62f77041dba29cc4443e36d12324b6a5ebf4a'
             'c04d3cf704c9055e4b0bb010d946c5e90710677c459def826f762c8e9d717538')
 # noextract=("${pkgname%-wine}-v${pkgver}.zip"
 #             "${pkgname%-wine}-tiny-v${pkgver}.zip")
