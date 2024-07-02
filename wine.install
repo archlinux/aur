@@ -19,6 +19,7 @@ inform_patches() {
   echo "This currently results in a 5ms period size with Pipewire, and 1 frame with Pulseaudio"
   echo "The environment variables 'STAGING_AUDIO_PERIOD' and 'STAGING_AUDIO_DURATION' modify this behavior (units: 10000 is 1ms)"
   echo ""
-
+  echo "A minimal wine launcher is now installed to use directly as 'wine-osu(-wow64)', no need to specify a path"
+  echo ""
   echo "For other interesting environment variables, see https://wiki.winehq.org/Wine-Staging_Environment_Variables"
 }
