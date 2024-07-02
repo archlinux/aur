@@ -2,7 +2,7 @@
 
 # Maintainer: William Horvath <william at horvath dot blog>
 
-_where="${PWD:-$(pwd)}"
+_where="$(eval realpath "$(pwd)")"
 
 # true: generic build; false: AUR native build (default); shouldn't need to touch this
 _generic_release=false
@@ -41,7 +41,7 @@ _desired_staging_commit=9ba0efb9da67ecd0aaa7e60fed5d27fbd8566951
 _strip_package=true
 _install_static=true ## .a libs which may be required for external programs such as winestreamproxy
 
-_autoupdate=false ## not completely tested
+_autoupdate=false ## not functional yet
 
 _cleanbuildfolders=false ## removes src, pkg folders on exit (both failure and success)
 
@@ -71,10 +71,12 @@ license=(LGPL)
 options=('!buildflags' '!staticlibs' 'ccache' '!lto' '!debug' '!strip')
 
 source=(
-  winestart
-  30-win32-aliases.conf
-  wine-binfmt.conf
-  buildiswow64
+  "winestart"
+  "30-win32-aliases.conf"
+  "wine-binfmt.conf"
+  "buildiswow64"
+  "git+https://gitlab.winehq.org/wine/wine.git#commit=${_desired_wine_commit:-master}"
+  "git+https://github.com/wine-staging/wine-staging.git#commit=${_desired_staging_commit:-master}"
 )
 
 sha512sums=(
@@ -82,30 +84,18 @@ sha512sums=(
   '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
   'bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285'
   'SKIP'
+  'SKIP'
+  'SKIP'
 )
 noextract=()
 
 ## don't needlessly add the wine-osu-patches repo if we explicitly specify custom ones
-if ! ([ -d "${_where}"/custompatches ] && [ "${_custompatches}" = "true" ]); then
+if ! { [ -d "${_where}"/custompatches ] && [ "${_custompatches}" = "true" ] ; }; then
   source+=("git+https://github.com/whrvt/wine-osu-patches.git#tag=${_patchbase_tag}")
   sha512sums+=('SKIP')
   
   _custompatches="false" ## didn't have a custompatches dir
 fi
-
-if [ -n "${_desired_wine_commit}" ] && ! [ "${_custompatches}" = "true" ]; then
-  source+=("git+https://gitlab.winehq.org/wine/wine.git#commit=${_desired_wine_commit}")
-else
-  source+=('git+https://gitlab.winehq.org/wine/wine.git')
-fi
-sha512sums+=('SKIP')
-
-if [ -n "${_desired_staging_commit}" ] && ! [ "${_custompatches}" = "true" ]; then
-  source+=("git+https://github.com/wine-staging/wine-staging.git#commit=${_desired_staging_commit}")
-else
-  source+=('git+https://github.com/wine-staging/wine-staging.git')
-fi
-sha512sums+=('SKIP')
 
 depends=(
   fontconfig
@@ -158,6 +148,9 @@ makedepends=(autoconf bison ccache perl fontforge flex
   samba
   opencl-headers
   nasm
+  attr
+  gst-plugins-base-libs
+  gtk3
 )
 
 optdepends=(
@@ -176,7 +169,6 @@ optdepends=(
   libxinerama
   opencl-icd-loader
   libxslt
-  gst-plugins-base-libs
   vkd3d
   sdl2
   libgphoto2
@@ -188,8 +180,8 @@ optdepends=(
 
 if [ "${wow64build}" != "true" ]; then
   depends+=(lib32-fontconfig lib32-lcms2 lib32-libxml2 lib32-libxcursor lib32-libxrandr lib32-libxdamage lib32-libxi lib32-gettext lib32-freetype2 lib32-glu lib32-libsm lib32-gcc-libs lib32-libpcap)
-  makedepends+=(lib32-llvm-libs libvulkan.so=1-32 lib32-giflib lib32-libpng lib32-gnutls lib32-libxinerama lib32-libxcomposite lib32-libxmu lib32-libxxf86vm lib32-libldap lib32-mpg123 lib32-openal lib32-v4l-utils lib32-libpulse lib32-alsa-lib lib32-libxcomposite lib32-mesa lib32-mesa-libgl lib32-opencl-icd-loader lib32-libxslt lib32-sdl2 lib32-libcups)
-  optdepends+=(lib32-giflib lib32-libpng lib32-libldap lib32-gnutls lib32-mpg123 lib32-openal lib32-v4l-utils lib32-libpulse lib32-alsa-plugins lib32-alsa-lib lib32-libjpeg-turbo lib32-libxcomposite lib32-libxinerama lib32-opencl-icd-loader lib32-libxslt lib32-gst-plugins-base-libs lib32-vkd3d lib32-sdl2)
+  makedepends+=(lib32-gtk3 lib32-attr lib32-libxkbcommon lib32-llvm-libs libvulkan.so=1-32 lib32-giflib lib32-libpng lib32-gnutls lib32-libxinerama lib32-libxcomposite lib32-libxmu lib32-libxxf86vm lib32-libldap lib32-mpg123 lib32-openal lib32-v4l-utils lib32-libpulse lib32-alsa-lib lib32-gst-plugins-base-libs lib32-libxcomposite lib32-mesa lib32-mesa-libgl lib32-opencl-icd-loader lib32-libxslt lib32-sdl2 lib32-libcups)
+  optdepends+=(lib32-giflib lib32-libpng lib32-libldap lib32-gnutls lib32-mpg123 lib32-openal lib32-v4l-utils lib32-libpulse lib32-alsa-plugins lib32-alsa-lib lib32-libjpeg-turbo lib32-libxcomposite lib32-libxinerama lib32-opencl-icd-loader lib32-libxslt lib32-vkd3d lib32-sdl2)
 fi
 
 makedepends=("${makedepends[@]}" "${depends[@]}")
@@ -243,6 +235,7 @@ _set_vars() {
 }
 
 prepare() { _set_vars;
+  if [ "${_where}/src" != "${srcdir}" ]; then _failure "Something weird is going on with your PKGBUILD's path, exiting early to avoid tampering with your files."; fi
   cd "${_where}" || _failure
 
   ## Removes pkg dir if already existing
@@ -250,30 +243,18 @@ prepare() { _set_vars;
 
   ## Source base re-configuration
 
-  if [ "${_custompatches}" = "true" ]; then
-    if [ -z "${_desired_wine_commit}" ]; then
-      _desired_wine_commit="master"
-    fi
-    if [ -z "${_desired_staging_commit}" ]; then
-      _desired_staging_commit="master"
-    fi
+  _desired_wine_commit=${_desired_wine_commit:-master}
+  _desired_staging_commit=${_desired_staging_commit:-master}
 
-    _patchbase_wine_commit=$_desired_wine_commit
-    _patchbase_staging_commit=$_desired_staging_commit
-  else
+  if [ "${_custompatches}" != "true" ]; then
     _patchbase_wine_commit=$(cat "${srcdir}"/wine-osu-patches/wine-commit)
     _patchbase_staging_commit=$(cat "${srcdir}"/wine-osu-patches/staging-commit)
-
     if [ "${_autoupdate}" != "true" ]; then
       _desired_wine_commit=$_patchbase_wine_commit
-      sed -i "s/^_desired_wine_commit=.*$/_desired_wine_commit=${_patchbase_wine_commit}/g" "${_where}/PKGBUILD"
-
       _desired_staging_commit=$_patchbase_staging_commit
-      sed -i "s/^_desired_staging_commit=.*$/_desired_staging_commit=${_patchbase_staging_commit}/g" "${_where}/PKGBUILD"
-    elif [ -z "${_desired_wine_commit}" ] || [ -z "${_desired_staging_commit}" ]; then
-      _desired_wine_commit=${_desired_wine_commit:-master}
-      _desired_staging_commit=${_desired_staging_commit:-master}
     fi
+  else
+    msg "Using custom patches"
   fi
 
   ## Mainline setup
@@ -284,28 +265,32 @@ prepare() { _set_vars;
   if [ "${_autoupdate}" != "true" ]; then
     cd "${srcdir}"/"${pkgname}" || _failure
     git reset --hard "${_desired_wine_commit}" || _failure
+
+    if [ "${_custompatches}" = "true" ]; then
+      _patchbase_wine_commit=$(git rev-parse HEAD)
+    fi
+
+    sed -i "s/^_desired_wine_commit=.*$/_desired_wine_commit=${_patchbase_wine_commit}/g" "${_where}/PKGBUILD"
     cd "${srcdir}" || _failure
   fi
 
-  if [ "${_desired_wine_commit}" != "${_patchbase_wine_commit}" ]; then
-    msg2 "Wine mainline commit changed to: $_desired_wine_commit"
-  else
-    msg2 "Wine mainline at: $_patchbase_wine_commit"
-  fi
+  msg2 "Wine mainline at: $_patchbase_wine_commit"
 
   ## Staging setup
 
   if [ "${_autoupdate}" != "true" ]; then
     cd "${srcdir}"/wine-staging || _failure
     git reset --hard "${_desired_staging_commit}" || _failure
+
+    if [ "${_custompatches}" = "true" ]; then
+      _patchbase_staging_commit=$(git rev-parse HEAD)
+    fi
+
+    sed -i "s/^_desired_staging_commit=.*$/_desired_staging_commit=${_patchbase_staging_commit}/g" "${_where}/PKGBUILD"
     cd "${srcdir}" || _failure
   fi
 
-  if [ "${_desired_staging_commit}" != "${_patchbase_staging_commit}" ]; then
-    msg2 "Wine staging commit changed to: $_desired_staging_commit"
-  else
-    msg2 "Wine staging at: $_patchbase_staging_commit"
-  fi
+  msg2 "Wine staging at: $_patchbase_staging_commit"
 
   cd "${srcdir}" || _failure
 
@@ -318,10 +303,10 @@ prepare() { _set_vars;
 
   msg2 "Applying staging patches"
   printf "\nApplying staging patches\n\n" >> "${_where}"/patchlog.txt
-  pushd wine-staging/staging || _failure
+  pushd wine-staging/staging >/dev/null || _failure
   # shellcheck disable=SC2086
-  ./patchinstall.py DESTDIR="${srcdir}"/"${pkgname}" --all $_disabled_staging >> "${_where}"/patchlog.txt || _failure "Error applying staging patches, check patchlog.txt for info."
-  popd || _failure
+  ./patchinstall.py DESTDIR="${srcdir}"/"${pkgname}" --all $_disabled_staging &>> "${_where}"/patchlog.txt || _failure "Error applying staging patches, check patchlog.txt for info."
+  popd >/dev/null || _failure
 
   ## Applying patches
 
@@ -334,11 +319,12 @@ prepare() { _set_vars;
 
   printf "\nApplying other patches\n\n" >> "${_where}"/patchlog.txt
   cd "${srcdir}"/"${pkgname}" || _failure
+
   for patch in $(find "${patchdir}" -type f -regex ".*\.patch" | LC_ALL=C sort -f); do
     shortname="${patch#"${patchdir}/"}"
     printf "\nApplying %s\n\n" "${shortname}" >> "${_where}"/patchlog.txt
     msg2 "Applying '${shortname}'"
-    patch -Np1 <"${patch}" >> "${_where}"/patchlog.txt || 
+    patch -Np1 <"${patch}" &>> "${_where}"/patchlog.txt || 
       if [ "${_custompatches}" != "true" ]; then 
         _failure "An error occurred applying ${shortname}, check patchlog.txt for info."
       else
@@ -347,9 +333,10 @@ prepare() { _set_vars;
   done
 
   ## make tools/make_makefiles happy
-  git config user.email "wine@build.dev"
-  git config user.name "winebuild"
-  git add --all && git commit -m "makepkg"
+  git config user.email "wine@build.dev" &>/dev/null || true
+  git config user.name "winebuild" &>/dev/null || true
+  git add --all &>/dev/null || true
+  git commit --allow-empty -m "makepkg" &>/dev/null || true
 
   chmod +x tools/make_makefiles
   tools/make_makefiles
