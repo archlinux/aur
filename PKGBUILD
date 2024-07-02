@@ -1,7 +1,7 @@
 # Maintainer: Christopher Kaster <me@atomicptr.de>
 # Contributor: Hanna Rose <imhxnna@gmail.com>
 
-pkgver=2024_06
+pkgver=2024_07
 
 _srcname=odin
 pkgname=odin-bin
@@ -12,7 +12,7 @@ arch=("x86_64")
 url="https://odin-lang.org/"
 license=("BSD-2-Clause")
 depends=("clang" "llvm-libs" "libedit")
-makedepends=("unzip" "patchelf")
+makedepends=("unzip" "patchelf" "make")
 provides=("odin")
 conflicts=("odin" "odin-git")
 options=("staticlibs")
@@ -21,13 +21,19 @@ source=(
   "https://github.com/odin-lang/Odin/releases/download/dev-$pkgver_fixed/odin-ubuntu-amd64-dev-$pkgver_fixed.zip"
 )
 sha256sums=(
-  "2e183a4d58ec22b3906f30264def857447e2ef5dc6759883fa60f9258ddb6155"
+  "b34633fed0cca48eececbaf74d22b9e741316c037de4b42295747250f4256eee"
 )
 
 build() {
+  unzip "${srcdir}/dist.zip"
   cd "${srcdir}/dist"
   patchelf --replace-needed libedit.so.2 libedit.so.0 libLLVM-17.so.1
   chmod +x odin
+
+  # build libs
+  cd "${srcdir}/dist/vendor/cgltf/src" && make
+  cd "${srcdir}/dist/vendor/miniaudio/src" && make
+  cd "${srcdir}/dist/vendor/stb/src" && make
 }
 
 package() {
