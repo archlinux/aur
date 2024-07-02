@@ -4,7 +4,7 @@
 
 _pkgname="geeqie"
 pkgname="$_pkgname-git"
-pkgver=2.1.r260.gf1c1ccb9
+pkgver=2.4.r207.g1464215
 pkgrel=1
 pkgdesc='Lightweight image viewer'
 url="https://github.com/BestImageViewer/geeqie"
@@ -47,6 +47,7 @@ makedepends=(
   evince
   fbida
   gawk
+  glib2-devel
   graphviz
   imagemagick
   intltool
@@ -66,7 +67,6 @@ optdepends=(
   'gphoto2: command-line tools for various (plugin) operations'
   'imagemagick: command-line tools for various (plugin) operations'
   'librsvg: SVG rendering'
-  'libwebp: for WebP image format'
   'perl-image-exiftool: for the jpeg extraction plugin'
 )
 
@@ -74,14 +74,14 @@ provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
-source+=("$_pkgname"::"git+$url.git")
-sha256sums+=('SKIP')
+source=("$_pkgname"::"git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgsrc"
   _version=$(git tag | grep -Ev '^.*[A-Za-z]{2}.*$' | sort -V | tail -1)
   _revision=$(git rev-list --count --cherry-pick $_version...HEAD)
-  _hash=$(git rev-parse --short=8 HEAD)
+  _hash=$(git rev-parse --short=7 HEAD)
   printf '%s.r%s.g%s' "${_version#v}" "${_revision:?}" "${_hash:?}"
 }
 
@@ -106,6 +106,6 @@ build() {
   meson compile -C build
 }
 
-package(){
+package() {
   DESTDIR="$pkgdir" meson install -C build
 }
