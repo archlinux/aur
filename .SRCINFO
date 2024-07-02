@@ -1,0 +1,22 @@
+pkgbase = grantlee
+	pkgdesc = A string template engine based on the Django template system and written in Qt
+	pkgver = 5.3.1
+	pkgrel = 2
+	url = https://github.com/steveire/grantlee
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = git
+	makedepends = graphviz
+	depends = gcc-libs
+	depends = glibc
+	depends = qt5-base
+	depends = qt5-declarative
+	source = https://github.com/steveire/grantlee/releases/download/v5.3.1/grantlee-5.3.1.tar.gz
+	source = https://github.com/steveire/grantlee/releases/download/v5.3.1/grantlee-5.3.1.tar.gz.asc
+	validpgpkeys = FCA530E51EE4331C2DF16637D264C7B1D02D6509
+	sha256sums = ba288ae9ed37ec0c3622ceb40ae1f7e1e6b2ea89216ad8587f0863d64be24f06
+	sha256sums = SKIP
+
+pkgname = grantlee
