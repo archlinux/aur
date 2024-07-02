@@ -1,30 +1,38 @@
-# Maintainer: Daniel Nagy <danielnagy at gmx de>
+# Previous Maintainer: Daniel Nagy <danielnagy at gmx de>
+# Maintainer: s3rj1k <evasive dot gyron at gmail dot com>
+# Hint: don't forget to run `makepkg --printsrcinfo > .SRCINFO`
 
 pkgname=libinjection-git
-_gitname=libinjection
-pkgver=v3.6.0.4.g7250af6
+_pkgname=${pkgname%-git}
+pkgver=3.10.0.69.g73268cf
 pkgrel=1
-pkgdesc="SQL / SQLI tokenizer parser analyzer."
-url="https://github.com/client9/libinjection"
-arch=( 'i686' 'x86_64' )
-license=( 'BSD' )
-options=( "!strip" )
-depends=( "bash" )
-makedepends=( "rsync" )
-conflicts=( "$_gitname" )
-provides=( "$_gitname" )
-source=( "git+$url" )
-sha1sums=( 'SKIP' )
+pkgdesc="A library for detecting SQL injection attacks"
+arch=('x86_64')
+url="https://github.com/libinjection/libinjection"
+license=('BSD')
+options=("!strip")
+depends=('glibc')
+makedepends=('git' 'autoconf' 'automake' 'libtool')
+source=("git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$_gitname"
-    local ver="$(git describe --always)"
-    printf "%s" "${ver//-/.}"
+  cd "$srcdir/libinjection"
+  git describe --tags | sed 's/^v//;s/-/./g'
+}
+
+prepare() {
+  cd "$srcdir/libinjection"
+  ./autogen.sh
+}
+
+build() {
+  cd "$srcdir/libinjection"
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --disable-static
+  make
 }
 
 package() {
-  cd "$srcdir/$_gitname"
-  mkdir -p $pkgdir/usr/share/
-  rsync --exclude=.git --exclude=.gitignore --exclude=tests -a ./ \
-      "$pkgdir"/usr/share/$_gitname/
+  cd "$srcdir/libinjection"
+  make DESTDIR="$pkgdir/" install
 }
