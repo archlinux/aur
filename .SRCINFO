@@ -1,7 +1,7 @@
 pkgbase = mhuxd-git
 	pkgdesc = Linux daemon implementing the microHam keyer protocol.
 	pkgver = v0.50rc3.r99.gf11ac15
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/dj5qv/mhuxd
 	arch = any
 	license = GPL2
@@ -10,7 +10,7 @@ pkgbase = mhuxd-git
 	depends = libev
 	provides = mhuxd
 	backup = etc/conf.d/mhuxd
-	source = mhuxd-git::git://github.com/dj5qv/mhuxd.git
+	source = mhuxd-git::git+https://github.com/dj5qv/mhuxd.git
 	source = mhuxd.conf
 	source = mhuxd.logrotate
 	source = mhuxd.service
