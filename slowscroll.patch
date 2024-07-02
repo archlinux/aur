@@ -1,0 +1,17 @@
+diff --git a/clutter/clutter/clutter-event.c b/clutter/clutter/clutter-event.c
+index bcda1bb7b..7870ba85c 100644
+--- a/clutter/clutter/clutter-event.c
++++ b/clutter/clutter/clutter-event.c
+@@ -587,10 +587,10 @@ clutter_event_get_scroll_delta (const ClutterEvent *event,
+   g_return_if_fail (event->scroll.direction == CLUTTER_SCROLL_SMOOTH);
+ 
+   if (dx != NULL)
+-    *dx = event->scroll.delta_x;
++    *dx = event->scroll.delta_x * 0.2;
+ 
+   if (dy != NULL)
+-    *dy = event->scroll.delta_y;
++    *dy = event->scroll.delta_y * 0.2;
+ }
+ 
+ /**
