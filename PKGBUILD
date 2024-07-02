@@ -3,32 +3,31 @@
 _pkgname=lhs
 _pkgver=1.2.0
 pkgname=r-${_pkgname,,}
-pkgver=1.2.0
-pkgrel=1
-pkgdesc='Latin Hypercube Samples'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Latin Hypercube Samples"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
   r-rcpp
 )
 optdepends=(
-  r-assertthat
   r-doe.base
   r-knitr
   r-rmarkdown
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6b4b773c6b322f1ffb3e2ef49c244ec8a3958a0346a1cc8f42f0d0951e8b0724')
+md5sums=('f4d7ba180184a9401626d903aa04dda9')
+b2sums=('0576e49344ed462ecefbc6a391f58279c6f49521c0f0d956c5d46879f0d54d37a527322f93afe666cd0d6da01ff3668f78b6d35ca7f5fe83fa371a57e411c05e')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
