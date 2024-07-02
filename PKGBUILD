@@ -3,7 +3,7 @@
 # Author: LostRuins (concedo)
 pkgname=koboldcpp-cuda
 pkgver=1.69.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy-to-use AI text-generation software for GGML and GGUF models (with CUDA)"
 arch=('x86_64')
 url="https://github.com/LostRuins/koboldcpp"
@@ -17,7 +17,7 @@ depends=(
   'cuda'
 )
 optdepends=(
-  'customtkinter: for GUI launcher'
+  'python-customtkinter: for GUI launcher'
   'python-psutil: increasing the process CPU priority'
 )
 provides=("koboldcpp=$pkgver")
