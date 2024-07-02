@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mpc-qt-bin
-pkgver=23.12
+pkgver=24.06
 pkgrel=1
 pkgdesc="A clone of Media Player Classic reimplemented in Qt."
 arch=('x86_64')
@@ -23,8 +23,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-x64-${pkgver//./}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d4f19ef8ece49e5d7ab3a89f6aa0dea5aa7b209e9c0d975e062926c7a35b3f77'
-            '788f604679c21265524a4c5f388bee840ef8047e2f43e7e5c4b47416ea39f0f7')
+sha256sums=('0e7d65cb77a58a5a70ca04c14e641cfa55a04a71ffb0349fd5da3df403eeb5c6'
+            'ec193c200ad1c5a5aef051cc96cbb141729d4464754ab0c67112be4b31236dca')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
