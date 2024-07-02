@@ -5,9 +5,9 @@ pkgname=typora-with-plugin
 _pkgname=typora
 _pluginame=typora_plugin
 _typora_ver=1.9.3
-_plugin_ver=1.9.15
+_plugin_ver=1.9.17
 pkgver=${_typora_ver}_plugin_${_plugin_ver}
-pkgrel=4
+pkgrel=1
 pkgdesc="一款 Markdown 编辑器和阅读器（with typora_plugin）"
 arch=('x86_64')
 license=('custom:"Copyright (c) 2015 Abner Lee All Rights Reserved."')
@@ -32,7 +32,7 @@ source=(
 sha512sums=(
     'da7714d8a2ef228d1df13bf2a6862f3be3fad51238657e8ee48350380267ecfed29b391e0c66653e3b4322e3dada02d2bea6e1041f5230988358645ea0cf4b28'
     'de9c883c63f3ea35bd551c8761e605f8e1a3468943e000abcbf94bb0c5cbb5f0f6c7fa4d49ab39c177f167e0e3d0b061c861bf828627b4a34f7f1589119c3d04'
-    'f9d72f68442327f5096c43781d99bccdd0d7fbf48fc64f62f6311f7a7c8c02d1cc6b04bec54d80eaa7761f7cb8a1a85340e0cb83d98d5ad06906c4871184a69d')
+    '4da9df8a048e5ecdcb4e2a2ef53f255db4ff7d0c66b4a551edabc6f83163e361baf30410301a631426c7fa39ee491b6679bdb4c9b9daaad7cec2b625f9011694')
 
 _patch_plugin() {
   tar xvf ${_plugin_ver}.tar.gz -C "$pkgdir/"
