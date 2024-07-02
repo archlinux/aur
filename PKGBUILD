@@ -3,12 +3,13 @@
 _pkgname=aiohttp-zlib-ng
 pkgname=python-aiohttp-zlib-ng
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Enable zlib_ng on aiohttp"
 arch=(any)
 url="https://github.com/bdraco/aiohttp-zlib-ng"
 license=('Apache-2.0')
-depends=('python-aiohttp' 'python-isal')
+depends=('python-aiohttp' 'python-zlib-ng')
+optdepends=('python-isal')
 makedepends=('python-poetry-core' 'python-build' 'python-installer')
 checkdepends=('python-pytest-cov')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
