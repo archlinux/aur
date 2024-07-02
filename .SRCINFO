@@ -11,7 +11,7 @@ pkgbase = perl-cookie-baker
 	depends = perl-uri
 	depends = perl
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/K/KA/KAZEBURO/Cookie-Baker-0.12.tar.gz
+	source = https://cpan.metacpan.org/authors/id/K/KA/KAZEBURO/Cookie-Baker-0.12.tar.gz
 	md5sums = 7ab63698d2f24a8cfe31a7ea270e9d2d
 
 pkgname = perl-cookie-baker
