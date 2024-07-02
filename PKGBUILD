@@ -12,6 +12,6 @@ md5sums=("SKIP")
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-    install -Dm755 "./rah" "$pkgdir/usr/lib/rah"
+    install -Dm755 "./rah" "$pkgdir/usr/bin/rah"
     install -Dm644 "./rah.8" "$pkgdir/usr/man/man8/rah.8"
 }
