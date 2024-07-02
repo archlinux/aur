@@ -1,6 +1,7 @@
 *.xz
 *.gz
 *.zst
+*.tar
 pkg
 src
 vcs-repository
