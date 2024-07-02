@@ -1,21 +1,35 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Douglas Soares de Andrade <dsa@aur.archlinux.org>
 # Contributor: Angel 'angvp' Velasquez <angvp[at]archlinux.com.ve>
 
-pkgname=python-numpy
+pkgname=python-numpy1
 pkgver=1.26.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Scientific tools for Python"
 arch=('x86_64')
-license=('custom')
+license=('LicenseRef-custom')
 url="https://www.numpy.org/"
 depends=('cblas' 'lapack' 'python')
 optdepends=('blas-openblas: faster linear algebra')
 makedepends=('python-build' 'python-installer' 'meson-python' 'cmake' 'gcc-fortran' 'cython')
 checkdepends=('python-pytest' 'python-hypothesis')
+provides=("python-numpy=$pkgver")
+conflicts=('python-numpy')
 source=("https://github.com/numpy/numpy/releases/download/v$pkgver/numpy-$pkgver.tar.gz")
 sha512sums=('f7121ab4099fa0686f9c095d456baa4a5869d651d7b7a06385f885f329cf08f11024b5df5e7b4ee705970062a8102ec4f709512eabbfd5c9fccce4ef83b9c208')
+
+prepare() {
+  cd numpy-$pkgver
+
+  # Unpin the build system requirement to meson-python, so this package
+  # can be compatible to extra/meson-python, which is already on 0.16.0.
+  # The pin was never relevant for Linux anyway, as the reason upstream
+  # originally added the pin was to shotgun-debug a macOS build issue [1].
+  # [1]: https://github.com/numpy/numpy/pull/26365/files#r1586347845
+  sed -i -e 's/\(meson-python\)>[^"]*/\1/' pyproject.toml
+}
 
 build() {
   cd numpy-$pkgver
@@ -39,5 +53,5 @@ package() {
   cd numpy-$pkgver
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -D -m644 LICENSE.txt -t "$pkgdir"/usr/share/licenses/python-numpy/
+  install -D -m644 LICENSE.txt -t "$pkgdir"/usr/share/licenses/python-numpy1/
 }
