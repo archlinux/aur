@@ -15,14 +15,28 @@ package() {
   install -d "$pkgdir/opt"
   cp -r "$srcdir/Archipelago/" "$pkgdir/opt"
   mkdir -p "$pkgdir/usr/bin"
-
+  mkdir -p "$pkgdir/usr/share/applications"
   while IFS= read -r -d '' i; do
     file="${i##*/}"
+    # wrapper for binaries to run in the install dir
     cat <<EOF >"$pkgdir/usr/bin/$file"
 #!/bin/bash
 cd /opt/Archipelago
 ./$file
 EOF
     chmod +x "$pkgdir/usr/bin/$file"
+    # desktop entries
+    cat <<EOF >"$pkgdir/usr/share/applications/$file.desktop"
+[Desktop Entry]
+Version=1.0
+Exec=/opt/Archipelago/$file
+Path=/opt/Archipelago/
+Name=$file
+Type=Application
+Icon=/opt/Archipelago/icon.png
+Categories=Game;
+Keywords=multi-game;randomizer;
+EOF
+
   done < <(find "$pkgdir/opt/Archipelago" -maxdepth 1 -type f -name "Archipelago*" -executable -print0)
 }
