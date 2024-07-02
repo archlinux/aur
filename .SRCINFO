@@ -1,0 +1,16 @@
+pkgbase = deck-bin
+	pkgdesc = Configuration management and drift detection for Kong and Kong Enterprise
+	pkgver = 1.39.1
+	pkgrel = 1
+	url = https://github.com/Kong/deck
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = deck
+	conflicts = deck
+	source_x86_64 = https://github.com/Kong/deck/releases/download/v1.39.1/deck_1.39.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 0dd6386aef72d9b91f60d24a25cda6c438235655445d0e891c2582f3aec1bf35
+	source_aarch64 = https://github.com/Kong/deck/releases/download/v1.39.1/deck_1.39.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = b90a903b8c50c50f912eb736d8cfc4bf30bafb6ba2275df94c9c7c03c73a554b
+
+pkgname = deck-bin
