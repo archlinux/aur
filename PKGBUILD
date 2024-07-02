@@ -10,7 +10,7 @@ url='https://metacpan.org/release/POSIX-strftime-Compiler'
 license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
 depends=('perl')
 makedepends=('perl-module-build-tiny>=0.035')
-source=(http://search.cpan.org/CPAN/authors/id/K/KA/KAZEBURO/POSIX-strftime-Compiler-0.46.tar.gz)
+source=(https://cpan.metacpan.org/authors/id/K/KA/KAZEBURO/POSIX-strftime-Compiler-0.46.tar.gz)
 options=(!emptydirs)
 md5sums=('e64777d20d363a1b47acf85774d108da')
 

@@ -9,7 +9,7 @@ pkgbase = perl-posix-strftime-compiler
 	makedepends = perl-module-build-tiny>=0.035
 	depends = perl
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/K/KA/KAZEBURO/POSIX-strftime-Compiler-0.46.tar.gz
+	source = https://cpan.metacpan.org/authors/id/K/KA/KAZEBURO/POSIX-strftime-Compiler-0.46.tar.gz
 	md5sums = e64777d20d363a1b47acf85774d108da
 
 pkgname = perl-posix-strftime-compiler
