@@ -11,7 +11,7 @@ pkgbase = modprobed-db-git
 	optdepends = sudo
 	provides = modprobed-db
 	conflicts = modprobed-db
-	source = git://github.com/graysky2/modprobed-db
+	source = git+https://github.com/graysky2/modprobed-db
 	sha256sums = SKIP
 
 pkgname = modprobed-db-git
