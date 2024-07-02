@@ -10,8 +10,8 @@
 
 ### PACKAGE OPTIONS
 ## MERGE REQUESTS SELECTION
-# Merge Requests List: ()
-_merge_requests_to_use=()
+# Merge Requests List: ('3252')
+_merge_requests_to_use=('3252')
 
 ## Disable building the DOCS package (Enabled if not set)
 # Remember to unset this variable when producing .SRCINFO
@@ -30,7 +30,7 @@ else
   pkgname=(gnome-shell-performance gnome-shell-performance-docs)
 fi
 pkgver=46.3.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Next generation desktop shell | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://wiki.gnome.org/Projects/GnomeShell"
@@ -80,26 +80,17 @@ _commit=52fd93196c1c61b34a571c9d7940fda22576e1c1  # tags/46.3.1^0
 source=(
   "git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
   "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git#commit=5f9768a2eac29c1ed56f1fbb449a77a3523683b6"
-  "build-Add-explicit-dependency-on-Xfixes.patch"
-  "shell-tray-icon-Trigger-a-relayout-when-the-underneath-xe.patch"
-  "shell-tray-icon-Use-available-space-when-that-s-defined.patch"
-  "tray-na-xembed-Destroy-socket-window-when-ending-the-embe.patch"
-  "tray-na-xembed-Use-XShape-to-remove-input-on-socket-windo.patch"
+  'mr3252.patch'
+  'fix-tray-offscreen-xwindows.patch'
 )
 sha256sums=('51302aa72f160948e2e45f8de6978666b268e18ddbc88f377a075e2309651076'
             '587319b45ff7d989635aed0c3bd9ef834d6e53ae46788cb6ba083d42d7e63855'
-            '512e3116ae9eea5b9d36092cd05074da86d37c911144f3d66df95da0d2d60353'
-            'a3eda616996980f6f27c58c6b0d9c0d51094e7ad9c52f809a2a7f8eac9a2fbd9'
-            '612dcb05347295893771396c8cfb993ec66871f04b9b6b93e188369cb12bdf2c'
-            'fcfec78b92f027e73958cc3e4b740d38db719b8185c79b040571a297d42056b1'
-            '9c51c48b3b7c6e5851630eb74289ab7897abca9226a89075a8b225fda2bda255')
+            '29abd82509db22abb4ce1b3318c9d7bf6cc23ba28d0c222412c273d784eacf1d'
+            '065daaadcb037ebe4a449bc82a74d078243ec9a6f82e2c015d6ebcb7d95ee622')
 b2sums=('1ab8d447e52f554634dc5d80628615e2628c2e9ee2f37c5c7b01cadf33c160f64c9fdd04a1fbe1b0bbc619d7128a5364ca650398c844e505d0783d4be5b223d6'
         'e31ae379039dfc345e8032f7b9803a59ded075fc52457ba1553276d3031e7025d9304a7f2167a01be2d54c5e121bae00a2824a9c5ccbf926865d0b24520bb053'
-        'bcd22b41f9ed65db461bab3460954b15345c3f72fb4da99cae702627d69bef25c8689464cb3ac37ef23b38ea90b18cf2486a947aa9f8dae4f69915367ee3db16'
-        'f8e7d2e5e7717b8610d53393dab97e0af181d8eed3d95988357347f57864e88f5339ce67f22ccef86d30d19c8a03b02e5938bc23c23db37f41e67482a133c3b4'
-        'd13b586f9be8e4088f8cefa3c63e4e1143f8b7206a8c05fc4646dbdf2e931260da531ad2d2393c47e85e7a6f64dd76b36ea9884ce16246246bf116c657f90163'
-        'f054d5dd341c45ed2accf06f3755096fb1e96aca04106fcda725115eee8e7c8dfc5b27e4ecd93df020524988a9559a25a052b2fa16d7ec48c178a4329ab7932a'
-        'be45ea9d9c793ed9ba7f7cdbdaefc13868619db0502d73ba1ed3a3f2dd8b40d72c42facbce9598245fc802ad042e785a4515b6ea04015104eec88a0035cf8129')
+        'bacf1db67096ebd3690de2d0a01ee1b0ba1ea3094c7539eff05e398acc230164724b3c872e468ad992409501fb027026bfad35e387be150e4dafd6be81a68841'
+        '2d923a01c48b2ea5c25fe10e40cd81e8ed49c0adc0660211b1211529a5b98040dd0ae1a406e6f250b051e7db6d47e00a1ba7e9540cd5aecc466b92ee3d2aed4e')
 
 pkgver() {
   cd $_pkgname
@@ -110,23 +101,23 @@ pick_mr() {
   for mr in "${_merge_requests_to_use[@]}"; do
     if [ "$1" = "$mr" ]; then
       if [ "$2" = "merge" ] || [ -z "$2" ]; then
-        echo "Downloading then Merging $1..."
+        msg2 "Downloading then Merging $1..."
         curl -O "https://gitlab.gnome.org/GNOME/gnome-shell/-/merge_requests/$mr.diff"
         git apply "$mr.diff"
       elif [ "$3" = "revert" ]; then
-        echo "Reverting $1..."
+        msg2 "Reverting $1..."
         git revert "$2" --no-commit
       elif [ "$3" = "patch" ]; then
         if [ -e ../"$2" ]; then
-          echo "Patching with $2..."
+          msg2 "Patching with $2..."
           patch -Np1 -i ../"$2"
         else
-          echo "Downloading $mr as $2 then patching..."
+          msg2 "Downloading $mr as $2 then patching..."
           curl -O "https://gitlab.gnome.org/GNOME/gnome-shell/-/merge_requests/$mr.diff" -o "$2"
           patch -Np1 -i "$2"
         fi
       else
-        echo "ERROR: wrong argument given: $2"
+        msg2 "ERROR: wrong argument given: $2"
       fi
       break
     fi
@@ -147,12 +138,8 @@ prepare() {
 
   # https://github.com/ubuntu/gnome-shell-extension-appindicator/issues/439
   # https://bugs.launchpad.net/ubuntu/+source/gnome-shell-extension-appindicator/+bug/2012388
-  msg2 "Patching with the shell tray icon patches..."
-  patch -Np1 -i ../build-Add-explicit-dependency-on-Xfixes.patch
-  patch -Np1 -i ../shell-tray-icon-Trigger-a-relayout-when-the-underneath-xe.patch
-  patch -Np1 -i ../shell-tray-icon-Use-available-space-when-that-s-defined.patch
-  patch -Np1 -i ../tray-na-xembed-Destroy-socket-window-when-ending-the-embe.patch
-  patch -Np1 -i ../tray-na-xembed-Use-XShape-to-remove-input-on-socket-windo.patch
+  msg2 "Applying the shell tray icon patches..."
+  patch -Np1 -i ../fix-tray-offscreen-xwindows.patch
 
   # git remote add verde https://gitlab.gnome.org/verdre/gnome-shell.git || true
   # git fetch verde
@@ -184,6 +171,18 @@ prepare() {
   #   4. Merged: MR approved and it changes commited to master.
   #
   # Generally, a MR status oscillate between 2 and 3 and then becomes 4.
+
+  # Title: st/theme-node: Forget properties cache on theme changes
+  # Author: Daniel van Vugt <daniel.van.vugt@canonical.com>
+  # URL:  https://gitlab.gnome.org/GNOME/gnome-shell/-/merge_requests/3252
+  # Type: 3
+  # Status: 2
+  # Comment: Closes:
+  #          https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/7339
+  #          https://github.com/micheleg/dash-to-dock/issues/2243
+  #          https://github.com/micheleg/dash-to-dock/issues/2179
+  pick_mr '3252' 'mr3252.patch' 'patch'
+
 }
 
 build() {

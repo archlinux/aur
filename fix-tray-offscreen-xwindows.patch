@@ -1,0 +1,470 @@
+From 5b269c78afa74eabd3dcd9b479c4aa9f7a0f4f2f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Marco=20Trevisan=20=28Trevi=C3=B1o=29?= <mail@3v1n0.net>
+Date: Wed, 1 May 2024 22:33:43 +0200
+Subject: [PATCH 1/5] build: Add explicit dependency on Xfixes
+
+We use the xfixes extensions in tray icons but we rely on the dependency
+brought to us from other libraries as mutter but let's make it explicit
+
+(cherry picked from commit f0c5033b3ccd02a081dd18ac21d0b673474fe14f)
+
+Origin: https://gitlab.gnome.org/3v1n0/gnome-shell/-/commits/tray-offscreen-xwindows
+Bug-Ubuntu: https://bugs.launchpad.net/bugs/2012388
+Signed-off-by: Mingi Sung <sungmg@saltyming.net>
+---
+ meson.build          | 1 +
+ src/tray/meson.build | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 923a5228e..a9837fcda 100644
+--- a/meson.build
++++ b/meson.build
+@@ -88,6 +88,7 @@ mutter_dep = dependency(libmutter_pc, version: mutter_req)
+ polkit_dep = dependency('polkit-agent-1', version: polkit_req)
+ ibus_dep = dependency('ibus-1.0', version: ibus_req)
+ x11_dep = dependency('x11')
++xfixes_dep = dependency('xfixes')
+ schemas_dep = dependency('gsettings-desktop-schemas', version: schemas_req)
+ gnome_desktop_dep = dependency('gnome-desktop-4', version: gnome_desktop_req)
+ 
+diff --git a/src/tray/meson.build b/src/tray/meson.build
+index 1a86bcbab..2fc73f3a4 100644
+--- a/src/tray/meson.build
++++ b/src/tray/meson.build
+@@ -9,6 +9,6 @@ tray_sources = [
+ 
+ libtray = static_library('tray', tray_sources,
+   c_args: ['-DG_LOG_DOMAIN="notification_area"'],
+-  dependencies: [mutter_dep, mtk_dep],
++  dependencies: [mutter_dep, mtk_dep, xfixes_dep],
+   include_directories: conf_inc
+ )
+-- 
+2.45.2
+
+
+From 7dffc838ea6b137dbd80b0c4a5e0028b7ec59079 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Marco=20Trevisan=20=28Trevi=C3=B1o=29?= <mail@3v1n0.net>
+Date: Wed, 1 May 2024 04:20:42 +0200
+Subject: [PATCH 2/5] shell-tray-icon: Trigger a relayout when the underneath
+ xembeded size changes
+
+(cherry picked from commit 8ebb71d9fdb8990e4e9731cc7662dbf704ce42a8)
+
+Origin: https://gitlab.gnome.org/3v1n0/gnome-shell/-/commits/tray-offscreen-xwindows
+Bug-Ubuntu: https://bugs.launchpad.net/bugs/2012388
+Signed-off-by: Mingi Sung <sungmg@saltyming.net>
+---
+ src/shell-tray-icon.c |  4 ++++
+ src/tray/na-xembed.c  | 18 ++++++++++++++++++
+ src/tray/na-xembed.h  |  1 +
+ 3 files changed, 23 insertions(+)
+
+diff --git a/src/shell-tray-icon.c b/src/shell-tray-icon.c
+index 3eee5f5bf..1ec2239f8 100644
+--- a/src/shell-tray-icon.c
++++ b/src/shell-tray-icon.c
+@@ -261,6 +261,10 @@ shell_tray_icon_set_child (ShellTrayIcon *tray_icon,
+                       "window-created",
+                       G_CALLBACK (shell_tray_icon_window_created_cb),
+                       tray_icon);
++
++  g_signal_connect_object (tray_child, "reconfigured",
++                           G_CALLBACK (clutter_actor_queue_relayout),
++                           tray_icon, G_CONNECT_SWAPPED);
+ }
+ 
+ /*
+diff --git a/src/tray/na-xembed.c b/src/tray/na-xembed.c
+index 59b1071b8..378a411f9 100644
+--- a/src/tray/na-xembed.c
++++ b/src/tray/na-xembed.c
+@@ -88,6 +88,7 @@ G_DEFINE_TYPE_WITH_PRIVATE (NaXembed, na_xembed, G_TYPE_OBJECT)
+ enum {
+   PLUG_ADDED,
+   PLUG_REMOVED,
++  RECONFIGURED,
+   LAST_SIGNAL
+ };
+ 
+@@ -524,6 +525,15 @@ xembed_filter_func (MetaX11Display *x11_display,
+           }
+         break;
+       }
++    case ConfigureNotify:
++      {
++        XConfigureEvent *xce = &xevent->xconfigure;
++
++        if (xce->window == priv->socket_window)
++          g_signal_emit (xembed, signals[RECONFIGURED], 0);
++
++        break;
++      }
+     case DestroyNotify:
+       {
+         XDestroyWindowEvent *xdwe = &xevent->xdestroywindow;
+@@ -718,6 +728,14 @@ na_xembed_class_init (NaXembedClass *klass)
+                   NULL, NULL, NULL,
+                   G_TYPE_NONE, 0);
+ 
++  signals[RECONFIGURED] =
++    g_signal_new ("reconfigured",
++                  G_OBJECT_CLASS_TYPE (klass),
++                  G_SIGNAL_RUN_LAST,
++                  G_STRUCT_OFFSET (NaXembedClass, reconfigured),
++                  NULL, NULL, NULL,
++                  G_TYPE_NONE, 0);
++
+   props[PROP_X11_DISPLAY] =
+     g_param_spec_object ("x11-display",
+                          "x11-display",
+diff --git a/src/tray/na-xembed.h b/src/tray/na-xembed.h
+index ea8f9f44c..730c2cb3a 100644
+--- a/src/tray/na-xembed.h
++++ b/src/tray/na-xembed.h
+@@ -36,6 +36,7 @@ struct _NaXembedClass
+ 
+   void (* plug_added) (NaXembed *xembed);
+   void (* plug_removed) (NaXembed *xembed);
++  void (* reconfigured) (NaXembed *xembed);
+ };
+ 
+ MetaX11Display * na_xembed_get_x11_display (NaXembed *xembed);
+-- 
+2.45.2
+
+
+From b4fb27cbdc2be7a9d6e408a4332c8eecbb0c3b9b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Marco=20Trevisan=20=28Trevi=C3=B1o=29?= <mail@3v1n0.net>
+Date: Wed, 1 May 2024 04:18:50 +0200
+Subject: [PATCH 3/5] shell-tray-icon: Use available space when that's defined
+
+Fixes: https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/7613
+(cherry picked from commit b10bfe1f9ce2b7794103f54bcf249f935678b5f7)
+
+Origin: https://gitlab.gnome.org/3v1n0/gnome-shell/-/commits/tray-offscreen-xwindows
+Bug-Ubuntu: https://bugs.launchpad.net/bugs/2012388
+Signed-off-by: Mingi Sung <sungmg@saltyming.net>
+---
+ src/shell-tray-icon.c |  4 ++++
+ src/tray/na-xembed.c  | 29 +++++++++++++++++++++++++++++
+ src/tray/na-xembed.h  |  4 ++++
+ 3 files changed, 37 insertions(+)
+
+diff --git a/src/shell-tray-icon.c b/src/shell-tray-icon.c
+index 1ec2239f8..ddf40dde3 100644
+--- a/src/shell-tray-icon.c
++++ b/src/shell-tray-icon.c
+@@ -185,6 +185,10 @@ shell_tray_icon_allocate (ClutterActor          *actor,
+ 
+   CLUTTER_ACTOR_CLASS (shell_tray_icon_parent_class)->allocate (actor, box);
+ 
++  na_xembed_set_available_size (NA_XEMBED (tray_icon->tray_child),
++                                roundf (clutter_actor_box_get_width (box)),
++                                roundf (clutter_actor_box_get_height (box)));
++
+   /* Find the actor's new coordinates in terms of the stage.
+    */
+   clutter_actor_get_transformed_position (actor, &wx, &wy);
+diff --git a/src/tray/na-xembed.c b/src/tray/na-xembed.c
+index 378a411f9..e7c4b330a 100644
+--- a/src/tray/na-xembed.c
++++ b/src/tray/na-xembed.c
+@@ -42,6 +42,8 @@ struct _NaXembedPrivate
+   int request_height;
+   int current_width;
+   int current_height;
++  int available_width;
++  int available_height;
+   int resize_count;
+   int xembed_version;
+ 
+@@ -141,6 +143,8 @@ na_xembed_end_embedding (NaXembed *xembed)
+   priv->current_width = 0;
+   priv->current_height = 0;
+   priv->resize_count = 0;
++  priv->available_width = -1;
++  priv->available_height = -1;
+   g_clear_handle_id (&priv->resize_id, g_source_remove);
+ }
+ 
+@@ -186,6 +190,11 @@ na_xembed_synchronize_size (NaXembed *xembed)
+   width = priv->request_width;
+   height = priv->request_height;
+ 
++  if (priv->available_width >= 0)
++    width = priv->available_width;
++  if (priv->available_height >= 0)
++    height = priv->available_height;
++
+   XMoveResizeWindow (xdisplay,
+                      priv->socket_window,
+                      x, y,
+@@ -750,6 +759,10 @@ na_xembed_class_init (NaXembedClass *klass)
+ static void
+ na_xembed_init (NaXembed *xembed)
+ {
++  NaXembedPrivate *priv = na_xembed_get_instance_private (xembed);
++
++  priv->available_width = -1;
++  priv->available_height = -1;
+ }
+ 
+ void
+@@ -814,6 +827,22 @@ na_xembed_get_size (NaXembed *xembed,
+     *height = priv->request_height;
+ }
+ 
++void
++na_xembed_set_available_size (NaXembed *xembed,
++                              int       width,
++                              int       height)
++{
++  NaXembedPrivate *priv = na_xembed_get_instance_private (xembed);
++
++  if (priv->available_width == width && priv->available_height == height)
++    return;
++
++  priv->available_width = width;
++  priv->available_height = height;
++
++  na_xembed_resize (xembed);
++}
++
+ void
+ na_xembed_get_root_position (NaXembed *xembed,
+                              int      *x,
+diff --git a/src/tray/na-xembed.h b/src/tray/na-xembed.h
+index 730c2cb3a..a5a4faede 100644
+--- a/src/tray/na-xembed.h
++++ b/src/tray/na-xembed.h
+@@ -60,6 +60,10 @@ void na_xembed_get_size (NaXembed *xembed,
+ 			 int      *width,
+ 			 int      *height);
+ 
++void na_xembed_set_available_size (NaXembed *xembed,
++				   int       width,
++				   int       height);
++
+ void na_xembed_set_background_color (NaXembed           *xembed,
+ 				     const ClutterColor *color);
+ 
+-- 
+2.45.2
+
+
+From e6956f9b437156940f0baff6b413f2a2d98fd530 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Marco=20Trevisan=20=28Trevi=C3=B1o=29?= <mail@3v1n0.net>
+Date: Wed, 1 May 2024 05:56:48 +0200
+Subject: [PATCH 4/5] tray/na-xembed: Destroy socket window when ending the
+ embedding
+
+Currently when embedding a tray icon is ended we are leaving the X11
+socket window around as we don't really destroy it, while we're just
+listening for its child destruction.
+
+So, when embedding is ending we need to make sure that:
+ - If the plug window is still alive, move it back to its old parent
+   (normally that's the root window, but we query for it, to be sure)
+ - If the plug window has been already destroyed or reparented (by us or
+   by something else), we've to just destroy the socket window
+
+Fixes: https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/7614
+(cherry picked from commit 50a6e1e3ceb18e52f87534507ccd49884d7f53eb)
+
+Origin: https://gitlab.gnome.org/3v1n0/gnome-shell/-/commits/tray-offscreen-xwindows
+Bug-Ubuntu: https://bugs.launchpad.net/bugs/2012388
+Signed-off-by: Mingi Sung <sungmg@saltyming.net>
+---
+ src/tray/na-xembed.c | 35 ++++++++++++++++++++++++++++++++++-
+ 1 file changed, 34 insertions(+), 1 deletion(-)
+
+diff --git a/src/tray/na-xembed.c b/src/tray/na-xembed.c
+index e7c4b330a..17ce31541 100644
+--- a/src/tray/na-xembed.c
++++ b/src/tray/na-xembed.c
+@@ -35,6 +35,7 @@ struct _NaXembedPrivate
+   MetaX11Display *x11_display;
+   Window socket_window;
+   Window plug_window;
++  Window old_parent;
+ 
+   int root_x;
+   int root_y;
+@@ -139,7 +140,22 @@ na_xembed_end_embedding (NaXembed *xembed)
+ {
+   NaXembedPrivate *priv = na_xembed_get_instance_private (xembed);
+ 
++  if (priv->socket_window)
++    {
++      Display *xdisplay = meta_x11_display_get_xdisplay (priv->x11_display);
++
++      if (priv->plug_window && priv->old_parent)
++        XReparentWindow (xdisplay,
++                         priv->plug_window,
++                         priv->old_parent,
++                         0, 0);
++
++      XDestroyWindow (xdisplay, priv->socket_window);
++      priv->socket_window = None;
++    }
++
+   priv->plug_window = None;
++  priv->old_parent = None;
+   priv->current_width = 0;
+   priv->current_height = 0;
+   priv->resize_count = 0;
+@@ -413,6 +429,18 @@ na_xembed_add_window (NaXembed  *xembed,
+                        &socket_attrs);
+ 
+       XUnmapWindow (xdisplay, priv->plug_window); /* Shouldn't actually be necessary for XEMBED, but just in case */
++
++      if (!priv->old_parent)
++        {
++          g_autofree Window *children = NULL;
++          unsigned int n_children;
++          Window root;
++
++          if (!XQueryTree (xdisplay, priv->plug_window, &root, &priv->old_parent,
++                           &children, &n_children))
++            priv->old_parent = meta_x11_display_get_xroot (priv->x11_display);
++        }
++
+       XReparentWindow (xdisplay,
+                        priv->plug_window,
+                        priv->socket_window,
+@@ -550,10 +578,14 @@ xembed_filter_func (MetaX11Display *x11_display,
+         /* Note that we get destroy notifies both from SubstructureNotify on
+          * our window and StructureNotify on socket->plug_window
+          */
++        if (priv->socket_window && xdwe->window == priv->socket_window)
++          priv->socket_window = None;
++
+         if (priv->plug_window && (xdwe->window == priv->plug_window))
+           {
+             g_object_ref (xembed);
+             g_signal_emit (xembed, signals[PLUG_REMOVED], 0);
++            priv->plug_window = None;
+             na_xembed_end_embedding (xembed);
+             g_object_unref (xembed);
+           }
+@@ -618,6 +650,7 @@ xembed_filter_func (MetaX11Display *x11_display,
+           {
+             g_object_ref (xembed);
+             g_signal_emit (xembed, signals[PLUG_REMOVED], 0);
++            priv->old_parent = None;
+             na_xembed_end_embedding (xembed);
+             g_object_unref (xembed);
+           }
+@@ -683,7 +716,7 @@ na_xembed_finalize (GObject *object)
+   if (priv->x11_display && priv->event_func_id)
+     meta_x11_display_remove_event_func (priv->x11_display, priv->event_func_id);
+ 
+-  if (priv->plug_window)
++  if (priv->plug_window || priv->socket_window)
+     na_xembed_end_embedding (xembed);
+ 
+   G_OBJECT_CLASS (na_xembed_parent_class)->finalize (object);
+-- 
+2.45.2
+
+
+From 156b235bd28085739318ec50cc532062206c3a18 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Marco=20Trevisan=20=28Trevi=C3=B1o=29?= <mail@3v1n0.net>
+Date: Wed, 1 May 2024 22:34:58 +0200
+Subject: [PATCH 5/5] tray/na-xembed: Use XShape to remove input on socket
+ window
+
+We don't want this window to take any input as, a part from blocking the
+events on the shell representation itself, they may potentially make the
+plugged window to do anything with the event is processing (such as
+showing tooltips). And we don't want this since we only want to send to
+those windows only the synthetic events that we explicitly control.
+
+This was already the case before of commit ab60902058 but a similar
+approach was not replicated, leading to input events being fully
+processed from tray icons plugs.
+
+It requires adding an explicit build dependency on Xext, but this is
+something that mutter already depends on so not really a new dependency
+
+Fixes: https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/7613
+(cherry picked from commit 075f9d72459d08a711feca3dc3c51a14c5f73bdc)
+
+Origin: https://gitlab.gnome.org/3v1n0/gnome-shell/-/commits/tray-offscreen-xwindows
+Bug-Ubuntu: https://bugs.launchpad.net/bugs/2012388
+Signed-off-by: Mingi Sung <sungmg@saltyming.net>
+---
+ meson.build          |  1 +
+ src/tray/meson.build |  2 +-
+ src/tray/na-xembed.c | 15 +++++++++++++++
+ 3 files changed, 17 insertions(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index a9837fcda..3147edaf4 100644
+--- a/meson.build
++++ b/meson.build
+@@ -88,6 +88,7 @@ mutter_dep = dependency(libmutter_pc, version: mutter_req)
+ polkit_dep = dependency('polkit-agent-1', version: polkit_req)
+ ibus_dep = dependency('ibus-1.0', version: ibus_req)
+ x11_dep = dependency('x11')
++xext_dep = dependency('xext')
+ xfixes_dep = dependency('xfixes')
+ schemas_dep = dependency('gsettings-desktop-schemas', version: schemas_req)
+ gnome_desktop_dep = dependency('gnome-desktop-4', version: gnome_desktop_req)
+diff --git a/src/tray/meson.build b/src/tray/meson.build
+index 2fc73f3a4..c91e94044 100644
+--- a/src/tray/meson.build
++++ b/src/tray/meson.build
+@@ -9,6 +9,6 @@ tray_sources = [
+ 
+ libtray = static_library('tray', tray_sources,
+   c_args: ['-DG_LOG_DOMAIN="notification_area"'],
+-  dependencies: [mutter_dep, mtk_dep, xfixes_dep],
++  dependencies: [mutter_dep, mtk_dep, xfixes_dep, xext_dep],
+   include_directories: conf_inc
+ )
+diff --git a/src/tray/na-xembed.c b/src/tray/na-xembed.c
+index 17ce31541..1d179af87 100644
+--- a/src/tray/na-xembed.c
++++ b/src/tray/na-xembed.c
+@@ -24,6 +24,7 @@
+ #include "na-xembed.h"
+ 
+ #include <mtk/mtk-x11.h>
++#include <X11/extensions/shape.h>
+ #include <X11/extensions/Xfixes.h>
+ #include <X11/Xlib.h>
+ #include <X11/Xutil.h>
+@@ -388,6 +389,7 @@ na_xembed_add_window (NaXembed  *xembed,
+     {
+       XSetWindowAttributes socket_attrs;
+       XWindowAttributes plug_attrs;
++      int shape_major, shape_minor;
+       int result;
+ 
+       result = XGetWindowAttributes (xdisplay, priv->plug_window, &plug_attrs);
+@@ -445,6 +447,19 @@ na_xembed_add_window (NaXembed  *xembed,
+                        priv->plug_window,
+                        priv->socket_window,
+                        0, 0);
++
++      /* Set an empty input shape on the window so that the socket does not
++       * get any input. Without this we the tray may still get events and for
++       * example show tooltips on hover which we don't want.
++       * This is the quickest way to achieve this, without having to deal these
++       * windows with specific code in mutter.
++       */
++      if (XShapeQueryExtension (xdisplay, &shape_major, &shape_minor))
++        {
++          XShapeSelectInput (xdisplay, priv->socket_window, NoEventMask);
++          XShapeCombineRectangles (xdisplay, priv->socket_window, ShapeInput,
++                                   0, 0, NULL, 0, ShapeSet, 0);
++        }
+     }
+ 
+   priv->have_size = FALSE;
+-- 
+2.45.2
+

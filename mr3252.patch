@@ -1,0 +1,112 @@
+From 2599c432efdc16a4e4fe04fa7ac7a87ce6df8975 Mon Sep 17 00:00:00 2001
+From: Daniel van Vugt <daniel.van.vugt@canonical.com>
+Date: Thu, 28 Mar 2024 14:45:26 +0800
+Subject: [PATCH 1/2] st/theme-node: Forget properties cache before unref'ing
+ the theme
+
+Which the properties point into.
+
+Signed-off-by: Mingi Sung <sungmg@saltyming.net>
+---
+ src/st/st-theme-node.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/src/st/st-theme-node.c b/src/st/st-theme-node.c
+index 51e6d2174..b471ad72b 100644
+--- a/src/st/st-theme-node.c
++++ b/src/st/st-theme-node.c
+@@ -102,6 +102,7 @@ st_theme_node_dispose (GObject *gobject)
+ 
+   st_theme_node_paint_state_free (&node->cached_state);
+ 
++  maybe_free_properties (node);
+   g_clear_object (&node->theme);
+ 
+   G_OBJECT_CLASS (st_theme_node_parent_class)->dispose (gobject);
+@@ -117,8 +118,6 @@ st_theme_node_finalize (GObject *object)
+   g_strfreev (node->pseudo_classes);
+   g_free (node->inline_style);
+ 
+-  maybe_free_properties (node);
+-
+   g_clear_pointer (&node->font_desc, pango_font_description_free);
+ 
+   g_clear_pointer (&node->box_shadow, st_shadow_unref);
+-- 
+2.45.2
+
+
+From ebbebd4af1d6f3c2a2958ddd978220ac7d4c1771 Mon Sep 17 00:00:00 2001
+From: Daniel van Vugt <daniel.van.vugt@canonical.com>
+Date: Thu, 28 Mar 2024 14:58:54 +0800
+Subject: [PATCH 2/2] st/theme-node: Forget properties cache on stylesheet
+ change
+
+To avoid `node->properties` pointing to freed memory after each
+`st_theme_unload_stylesheet`, flush the cache that is `node->properties`.
+They will be reloaded as soon as they are required by `ensure_properties`.
+
+And yes `node->stylesheets_changed_id` already existed, but was unused.
+
+Why not just fix Croco? Croco does not use proper reference counting
+everywhere it should, and retrofitting it would be difficult due to the
+recursive nature of `CRDeclaration`.
+
+Closes: https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/7339
+... but mostly reported in
+https://github.com/micheleg/dash-to-dock/issues/2179 and its duplicates.
+
+Signed-off-by: Mingi Sung <sungmg@saltyming.net>
+---
+ src/st/st-theme-node-private.h |  2 +-
+ src/st/st-theme-node.c         | 14 ++++++++++++++
+ 2 files changed, 15 insertions(+), 1 deletion(-)
+
+diff --git a/src/st/st-theme-node-private.h b/src/st/st-theme-node-private.h
+index 02eb95e52..b8028925e 100644
+--- a/src/st/st-theme-node-private.h
++++ b/src/st/st-theme-node-private.h
+@@ -105,7 +105,7 @@ struct _StThemeNode {
+   int box_shadow_min_width;
+   int box_shadow_min_height;
+ 
+-  guint stylesheets_changed_id;
++  gulong stylesheets_changed_id;
+ 
+   CoglTexture *border_slices_texture;
+   CoglPipeline *border_slices_pipeline;
+diff --git a/src/st/st-theme-node.c b/src/st/st-theme-node.c
+index b471ad72b..31b27583c 100644
+--- a/src/st/st-theme-node.c
++++ b/src/st/st-theme-node.c
+@@ -75,6 +75,10 @@ maybe_free_properties (StThemeNode *node)
+       cr_declaration_destroy (node->inline_properties);
+       node->inline_properties = NULL;
+     }
++
++  g_clear_signal_handler (&node->stylesheets_changed_id, node->theme);
++
++  node->properties_computed = FALSE;
+ }
+ 
+ static void
+@@ -472,6 +476,16 @@ ensure_properties (StThemeNode *node)
+           node->n_properties = properties->len;
+           node->properties = (CRDeclaration **)g_ptr_array_free (properties, FALSE);
+         }
++
++      if (!node->stylesheets_changed_id)
++        {
++          node->stylesheets_changed_id =
++            g_signal_connect_object (node->theme,
++                                     "custom-stylesheets-changed",
++                                     G_CALLBACK (maybe_free_properties),
++                                     G_OBJECT (node),
++                                     G_CONNECT_SWAPPED);
++        }
+     }
+ }
+ 
+-- 
+2.45.2
+
