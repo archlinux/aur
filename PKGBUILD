@@ -2,7 +2,7 @@
 
 _npmname=bittorrent-tracker
 pkgname=webtorrent-$_npmname
-pkgver=11.1.0
+pkgver=11.1.1
 pkgrel=1
 
 pkgdesc="Simple, robust, BitTorrent tracker (client & server) implementation"
@@ -19,7 +19,7 @@ changelog="changelog.md"
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz"
 	"https://raw.githubusercontent.com/webtorrent/bittorrent-tracker/master/LICENSE")
 noextract=("${_npmname}-${pkgver}.tgz")
-b2sums=('1f50cdea530f3e3bb83b2ca7e4e987c5f351952ebe9d4a794d6f2a850c72d46681fc8957e4b23cd8ed72f33ed5491a15e3d88e75c5d08a6ace5e55597f071d53'
+b2sums=('f860b9dcbfb880bd229361d36ee3003ca019dbf0bbbb1e780df37051b3c50d6a107fb1222a71b2bdd514e83f3b42d9874d95eae9d1089a785c357e5ae7aa83db'
 	'3890a8cd095787f6ab383fe3ca0a0bf0999d80a7ea65627bb1a50f1c2690987f53e0619df5745ba47d6ef46d32e03573b5a52330a7c857220e4db96a33203019')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines

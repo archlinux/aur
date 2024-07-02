@@ -1,18 +1,13 @@
-# Name: v11.1.0 
-### URL: https://github.com/webtorrent/bittorrent-tracker/releases/tag/v11.1.0
-### published at '2024-05-22T21:58:49Z' by webtorrent-bot
+# Name: v11.1.1 
+### URL: https://github.com/webtorrent/bittorrent-tracker/releases/tag/v11.1.1
+### published at '2024-07-01T17:27:11Z' by webtorrent-bot
 ---
-# [11.1.0](https://github.com/webtorrent/bittorrent-tracker/compare/v11.0.2...v11.1.0) (2024-05-22)
+## [11.1.1](https://github.com/webtorrent/bittorrent-tracker/compare/v11.1.0...v11.1.1) (2024-07-01)
 
 
-### Bug Fixes
+### Performance Improvements
 
-* semantic release ([#520](https://github.com/webtorrent/bittorrent-tracker/issues/520)) ([428fb22](https://github.com/webtorrent/bittorrent-tracker/commit/428fb224f5666731332738032649f4448b2e1e4f))
-
-
-### Features
-
-* updated webrtc implementation ([#519](https://github.com/webtorrent/bittorrent-tracker/issues/519)) ([633d68a](https://github.com/webtorrent/bittorrent-tracker/commit/633d68a32c2c143fec0182317a9801dd1b64faef))
+* drop clone ([#523](https://github.com/webtorrent/bittorrent-tracker/issues/523)) ([83a24ce](https://github.com/webtorrent/bittorrent-tracker/commit/83a24ce77fb1a96b7fe4c383ce92d7c28fc165a7))
 
 
 
