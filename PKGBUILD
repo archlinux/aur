@@ -2,8 +2,9 @@
 # Maintainer: Integral <integral@member.fsf.org>
 
 pkgname=nekoray
-pkgver=3.26
-pkgrel=7
+pkgver=4.0.beta1
+_pkgver=${pkgver/.beta/-beta}
+pkgrel=1
 pkgdesc='Qt based cross-platform GUI proxy configuration manager (backend: v2ray / sing-box)'
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://matsuridayo.github.io"
@@ -24,11 +25,11 @@ optdepends=(
 )
 
 source=(
-	"git+https://github.com/MatsuriDayo/${pkgname}.git#tag=${pkgver}"
+	"git+https://github.com/MatsuriDayo/${pkgname}.git#tag=${_pkgver}"
 	"${pkgname}.desktop"
 )
 
-sha512sums=('87ad706771fd886c91be6a8a423eac95ef2b551db9b93f1a184c7cf899d311620d57304e38de0c5839d0ceee7dcb3870ba9d87ca910154d82c9cffff74dc9263'
+sha512sums=('ef2005cbdd99be3a7c596cbfed0ddac098949952a6cfbffb363d4fac50bddb54976d38558b3f9b339e4810255c729dfd34377e8f6eccf0ff643abdd9f036f343'
             'c8ad5a0cf5d813e1e35b827f92d526c022d529d34dd4019066b550c8f0dbdb89b0fb62e6bfc650e8c18acac826591e858eff3b2e5e6c6f5014f0f4b50f1fa88b')
 
 build() {
@@ -71,7 +72,7 @@ package() {
 	riscv64) core_srcdir=linux-riscv64 ;;
 	esac
 
-	install -Dm755 ${pkgname}/deployment/${core_srcdir}/{nekoray,nekobox}_core -t "${pkgdir}/usr/lib/${pkgname}/"
+	install -Dm755 ${pkgname}/deployment/${core_srcdir}/nekobox_core -t "${pkgdir}/usr/lib/${pkgname}/"
 
 	# app
 	install -Dm755 "${pkgname}/build/${pkgname}" -t "${pkgdir}/usr/lib/${pkgname}/"
