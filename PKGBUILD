@@ -3,7 +3,7 @@
 pkgbase=hqdfm-wine
 pkgname=hqdfm-wine
 pkgver=4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Wine 华秋 DFM 是一款高效的 PCB 设计软件，一键分析设计隐患，提供优化方案，输出 Gerber、BOM、坐标文件，让设计和制造更简单。"
 arch=('x86_64')
 url="https://dfm.elecfans.com"
@@ -102,24 +102,24 @@ EOF
     install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-wine}" << EOF
 #!/bin/bash
 export LC_CTYPE="zh_CN.UTF-8"
-export WINEARCH=win64 WINEPREFIX="$HOME/.${pkgname%-wine}/wine"
+export WINEARCH=win64 WINEPREFIX="\$HOME/.${pkgname%-wine}/wine"
 export WINEDLLOVERRIDES="mscoree,mshtml=,winemenubuilder.exe=d"
 
-if [ ! -d "$HOME"/.${pkgname%-wine} ] ; then
-    mkdir -pv "$HOME"/.${pkgname%-wine}/wine || exit 1
+if [ ! -d "\$HOME"/.${pkgname%-wine} ] ; then
+    mkdir -pv "\$HOME"/.${pkgname%-wine}/wine || exit 1
 
-    cp -rv /${_pname}/${pkgname%-wine}/regpatch.reg "$HOME"/.${pkgname%-wine}/wine || exit 1
+    cp -rv /${_pname}/${pkgname%-wine}/regpatch.reg "\$HOME"/.${pkgname%-wine}/wine || exit 1
 
-    cp -rv /${_pname}/${pkgname%-wine}/${pkgname%-wine}-v${pkgver}.exe "$HOME"/.${pkgname%-wine}/${pkgname%-wine} || exit 1
+    cp -rv /${_pname}/${pkgname%-wine}/${pkgname%-wine}-v${pkgver}.exe "\$HOME"/.${pkgname%-wine}/${pkgname%-wine} || exit 1
 fi
 
-if [ ! -f "$HOME"/.${pkgname%-wine}/regpatchok ] ; then
-    touch "$HOME"/.${pkgname%-wine}/regpatchok || exit 1
-    cd "$HOME"/.${pkgname%-wine}/wine && regedit regpatch.reg && wineserver -k
+if [ ! -f "\$HOME"/.${pkgname%-wine}/regpatchok ] ; then
+    touch "\$HOME"/.${pkgname%-wine}/regpatchok || exit 1
+    cd "\$HOME"/.${pkgname%-wine}/wine && regedit regpatch.reg && wineserver -k
     winetricks -q mfc42 vcrun2015 riched20
 fi
 
-wine "$HOME"/.${pkgname%-wine}/${pkgname%-wine} "\$@"
+wine "\$HOME"/.${pkgname%-wine}/${pkgname%-wine} "\$@"
 EOF
 
     install -Dm0644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname%-wine}.desktop" << EOF
