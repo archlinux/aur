@@ -1,6 +1,6 @@
 pkgbase = unnamed-sdvx-clone
 	pkgdesc = A game based on K-Shoot MANIA and Sound Voltex
-	pkgver = v0.5.0
+	pkgver = v0.6.0
 	pkgrel = 1
 	url = https://github.com/Drewol/unnamed-sdvx-clone
 	install = unnamed-sdvx-clone.install
@@ -19,7 +19,7 @@ pkgbase = unnamed-sdvx-clone
 	depends = mesa
 	depends = openssl
 	conflicts = unnamed-sdvx-clone-git
-	source = unnamed-sdvx-clone::git+https://github.com/Drewol/unnamed-sdvx-clone.git#tag=v0.5.0
-	sha256sums = SKIP
+	source = unnamed-sdvx-clone::git+https://github.com/Drewol/unnamed-sdvx-clone.git#tag=v0.6.0
+	sha256sums = 44b0ecb3c6e116d7cc47239f7bb1a6b487b62ef9c5f282228d2bd3be31b18cc6
 
 pkgname = unnamed-sdvx-clone

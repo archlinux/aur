@@ -3,7 +3,7 @@
 
 _pkgexec=usc-game
 pkgname=unnamed-sdvx-clone
-_pkgnum='0.5.0'
+_pkgnum='0.6.0'
 pkgver="v$_pkgnum"
 pkgrel=1
 
@@ -31,7 +31,7 @@ source=(
 	"$pkgname::git+https://github.com/Drewol/unnamed-sdvx-clone.git#tag=$pkgver"
 )
 
-sha256sums=('SKIP')
+sha256sums=('44b0ecb3c6e116d7cc47239f7bb1a6b487b62ef9c5f282228d2bd3be31b18cc6')
 
 prepare() {
 	cd "$srcdir/$pkgname"
