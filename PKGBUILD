@@ -36,7 +36,7 @@ _neovim="$NEOVIM_YOUCOMPLETEME"
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgname=vim-youcompleteme-git
-pkgver=r3173.45560628
+pkgver=r3210.b5fe27bb
 pkgrel=1
 pkgdesc='A code-completion engine for Vim'
 arch=('x86_64')
