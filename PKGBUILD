@@ -12,7 +12,7 @@
 ### PACKAGE OPTIONS
 ## MERGE REQUESTS SELECTION
 # Merge Requests List: ('579' '1441' '3373' '3567' '3751')
-_merge_requests_to_use=('1441' '3567' '3751')
+_merge_requests_to_use=('1441' '3751')
 
 ## Disable building the DOCS package (Enabled if not set)
 # Remember to unset this variable when producing .SRCINFO
@@ -33,7 +33,7 @@ else
 fi
 epoch=1
 pkgver=46.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64 aarch64)
@@ -128,6 +128,12 @@ b2sums=('b228db453c22a94783ceed71eb9489117e0576293f6daa37b7f20b6992b80ee4e67ebee
         '71f10db4ebe04a787940c7048131eac67cffd3ec8e415cfc961b8041b881f272650581e9df273e2a8da23a50ec9151c790dc2d5ecc0309ab2847a22f8c922c9c'
         '139cf3ae7dc9e0d9cd187950a6f5d246b0a16d2a7bf0c1179579e178826fa8e6f8a5d515145724ca7635af05d30d3e4098c34f83f0009bcc92fc04393062ab2c'
         'f720718049c1f9d0f338c203a5ae4520b5e7079b57e692ec95d8183705d7b7627ccd7d3d350d0010d0b225226641afccd699b65a81bd044fd32c441d413a0779')
+
+for mr in "${_merge_requests_to_use[@]}"; do
+  if [ '3567' = "$mr" ]; then
+    depends+=(gnome-settings-daemon-xwayland-scaling)
+  fi
+done
 
 pkgver() {
   cd $_pkgname
