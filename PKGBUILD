@@ -1,6 +1,6 @@
 # Maintainer: RiverOnVenus <error@zhui.dev>
 pkgname=flamelens-git
-pkgver=0.1.0.r4.g22d978f
+pkgver=0.1.0.r5.ge15be2f
 pkgrel=1
 pkgdesc="Flamegraph viewer in the terminal"
 arch=('x86_64')
@@ -32,6 +32,11 @@ build() {
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	cargo build --frozen --release --all-features
+}
+
+check() {
+	cd $pkgname
+	cargo test --frozen
 }
 
 package() {
