@@ -2,7 +2,7 @@
 # Co-maintainer: Nebulosa <nebulosa2007 at yandex dot ru>
 
 pkgname=cassette-git
-pkgver=0.1.4.r602.g646d223
+pkgver=0.1.4.r660.g74db83a
 pkgrel=1
 pkgdesc="GTK4/Adwaita application that allows you to use Yandex Music service on Linux operating systems"
 arch=(aarch64 x86_64)
@@ -15,7 +15,6 @@ depends=(
   glibc
   glib2
   gtk4
-  gst-plugins-good
   hicolor-icon-theme
   libadwaita
   libgee
@@ -25,10 +24,14 @@ depends=(
 )
 makedepends=(
   blueprint-compiler
-  gcc13
   git
   meson
   vala
+)
+optdepends=(
+  'gst-libav: nonfree media decoding'
+  'gst-plugins-bad: media decoding'
+  'gst-plugins-good: media decoding'
 )
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
@@ -41,12 +44,11 @@ pkgver() {
 }
 
 build() {
-  export CC=gcc-13
-  export CXX=g++-13
-  arch-meson ${pkgname%-git} build -Dprofile=development
+  arch-meson -Dprofile=development ${pkgname%-git} build
+  meson configure  build --no-pager
   meson compile -C build
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 }
