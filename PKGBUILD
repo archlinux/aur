@@ -3,28 +3,34 @@
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird
-pkgver=20240417
+pkgver=20240702
 pkgrel=1
-pkgdesc='Web browser built from scratch using the SerenityOS LibWeb engine'
+pkgdesc='Truly independent web browser'
 arch=(x86_64)
-url='https://github.com/SerenityOS/serenity'
+url='https://github.com/LadybirdBrowser/ladybird'
 license=(BSD)
-depends=(brotli less libgl python qt6-base qt6-multimedia qt6-svg qt6-wayland)
-makedepends=(cmake git ninja qt6-tools unzip)
+depends=(ffmpeg libgl qt6-base qt6-tools qt6-wayland qt6-multimedia ttf-liberation)
+makedepends=(git cmake ninja curl unzip zip tar autoconf-archive vcpkg)
 options=(!lto !debug)
-source=("git+$url#commit=c87e32154aac3a8942a44927f996887c398165fb" # 2024-04-17
+source=("git+$url#commit=09f76098b06804efb1f82f2244338ad4a97c9cfb" # 2024-07-02
+        "git+https://github.com/microsoft/vcpkg.git#commit=f7423ee180c4b7f40d43402c2feb3859161ef625" # 2024-06-15 (Toolchain/BuildVcpkg.sh)
         "ladybird.desktop")
 b2sums=('SKIP'
+        'SKIP'
         'SKIP')
 
 build() {
   cd "${srcdir}"
 
+  export VCPKG_ROOT="${srcdir}/vcpkg"
+
   cmake \
+    --preset default \
     -B build \
-    -S 'serenity/Ladybird' \
+    -S ladybird \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX='/usr' \
+    -DCMAKE_TOOLCHAIN_FILE="${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" \
     -GNinja \
     -Wno-dev
   ninja -C build
@@ -36,7 +42,7 @@ package() {
   DESTDIR="${pkgdir}" ninja -C build install
 
   install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  install -Dm644 "serenity/Base/res/icons/32x32/app-browser.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+  install -Dm644 "ladybird/Base/res/icons/32x32/app-browser.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 
-  install -Dm644 serenity/LICENSE -t "${pkgdir}/usr/share/licenses/ladybird/"
+  install -Dm644 ladybird/LICENSE -t "${pkgdir}/usr/share/licenses/ladybird/"
 }

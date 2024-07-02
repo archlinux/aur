@@ -1,27 +1,32 @@
 pkgbase = ladybird
-	pkgdesc = Web browser built from scratch using the SerenityOS LibWeb engine
-	pkgver = 20240417
+	pkgdesc = Truly independent web browser
+	pkgver = 20240702
 	pkgrel = 1
-	url = https://github.com/SerenityOS/serenity
+	url = https://github.com/LadybirdBrowser/ladybird
 	arch = x86_64
 	license = BSD
-	makedepends = cmake
 	makedepends = git
+	makedepends = cmake
 	makedepends = ninja
-	makedepends = qt6-tools
+	makedepends = curl
 	makedepends = unzip
-	depends = brotli
-	depends = less
+	makedepends = zip
+	makedepends = tar
+	makedepends = autoconf-archive
+	makedepends = vcpkg
+	depends = ffmpeg
 	depends = libgl
-	depends = python
 	depends = qt6-base
-	depends = qt6-multimedia
-	depends = qt6-svg
+	depends = qt6-tools
 	depends = qt6-wayland
+	depends = qt6-multimedia
+	depends = ttf-liberation
 	options = !lto
 	options = !debug
-	source = git+https://github.com/SerenityOS/serenity#commit=c87e32154aac3a8942a44927f996887c398165fb
+	source = git+https://github.com/LadybirdBrowser/ladybird#commit=09f76098b06804efb1f82f2244338ad4a97c9cfb
+	source = git+https://github.com/microsoft/vcpkg.git#commit=f7423ee180c4b7f40d43402c2feb3859161ef625
 	source = ladybird.desktop
+	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 
