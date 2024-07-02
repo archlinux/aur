@@ -1,6 +1,6 @@
 pkgbase = wind-bin
 	pkgdesc = Wind financial terminal, 万得金融终端
-	pkgver = 23.8.1.12060
+	pkgver = 24.2.1.06250
 	pkgrel = 1
 	url = http://www.wind.com.cn
 	install = wind-bin.install
@@ -9,9 +9,9 @@ pkgbase = wind-bin
 	depends = libidn11
 	depends = libxcrypt-compat
 	provides = wind
-	source = https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.wind.wft/com.wind.wft_23.8.1.12060_amd64.deb
+	source = https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.wind.wft/com.wind.wft_24.2.1.06250_amd64.deb
 	source = wind.sh
-	sha512sums = 2e600186f01ba53121fe0f69c869324b3653d8232b7c143d7911fbfbecdb8e220e025722664b4fd2d7ae7157939c2564e15ecdbd39abec4e494120a1a9c6afdc
+	sha512sums = 046c6a4117b4575828ee98bc0519751ee478d81b21af4f6e4e0fafb7b4c5eee10096b2924e0e01ff8dded0ea01aec8865cf0e3e4c745c8c8681db5536419f3b8
 	sha512sums = ccfa9c937df21012337c07dbcd8cbba977cb6cdad4e701d8396c260bc0876cd94d1bf57a8fd6b8dfac901c47bd4448f99232169bb3d10f49b16616caa7cc43a4
 
 pkgname = wind-bin
