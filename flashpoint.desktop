@@ -5,6 +5,6 @@ Type=Application
 Name=Flashpoint Infinity
 Comment=Launcher for BlueMaxima's Flashpoint 
 Icon=flashpoint
-Exec=/usr/bin/flashpoint-infinity
+Exec=/usr/bin/flashpoint-launcher
 Path=/opt/Flashpoint
 Categories=Game;
