@@ -3,7 +3,7 @@
 
 # FIXME: holyhammer fails to build with ocaml-num
 pkgname=hol
-pkgver=kananaskis.14
+pkgver=trindemossen.1
 pkgrel=1
 pkgdesc='HOL4 theorem-proving system'
 url='https://hol-theorem-prover.org/'
@@ -13,7 +13,7 @@ install="$pkgname.install"
 source=("https://github.com/HOL-Theorem-Prover/HOL/archive/${pkgver//./-}.tar.gz"
         #
        )
-md5sums=('f3172af328193b1bb18975e8eb307262')
+md5sums=('ca715375797791c035ebf67fdcd6d093')
 depends=('polyml' 'graphviz')
 provides=('hol')
 conflicts=('hol-git')
