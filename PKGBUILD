@@ -13,7 +13,8 @@ conflicts=(infonotary-scardmanager)
 optdepends=(
 	'ccid: generic USB Chip/Smart Card Interface Devices driver'
 	'omnikey_ifdokccid: driver for OmniKey smart card readers'
-	'bit4id-ipki: driver for T&S DS/2048 (L) smart cards'
+	'bit4id-ipki: Bit4ID Universal Middleware (Smart Card driver)'
+	'bit4id-xpki: Bit4ID Universal Middleware (Smart Card driver)'
 	'pcsclite: smartcard middleware library (pcscd)'
 	'pcsc-tools: smartcard tools (pcsc_scan)'
 	'opensc: a set of libraries and utilities to work with smart cards'
