@@ -11,6 +11,7 @@ pkgbase = mingw-w64-vulkan-tools
 	makedepends = mingw-w64-glslang
 	makedepends = mingw-w64-spirv-tools
 	makedepends = mingw-w64-wine
+	makedepends = mingw-w64-volk
 	depends = mingw-w64-vulkan-icd-loader
 	options = !buildflags
 	options = staticlibs
