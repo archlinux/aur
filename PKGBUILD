@@ -1,7 +1,7 @@
 # Maintainer: Jan Hensel <ja_he@uni-bremen.de>
 pkgname=dayplan
 pkgver=0.9.11
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 pkgdesc="Utility to plan your day and track your time"
 license=('MIT')
@@ -20,7 +20,7 @@ build() {
   go build -v \
     -gcflags "all=-trimpath=${PWD}" \
     -asmflags "all=-trimpath=${PWD}" \
-    -ldflags="-X '${source_root}/control/cli.version=v${pkgver}' -X '${source_root}/control/cli.hash=aur build from v${pkgver}'" \
+    -ldflags="-X '${source_root}/control/cli.version=v${pkgver}' -X '${source_root}/control/cli.hash=aur build from v${pkgver}-${pkgrel}'" \
     -buildmode=pie \
     cmd/dayplan.go
 }
