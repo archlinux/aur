@@ -3,7 +3,7 @@
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 _distname=Dist-Zilla
 pkgname=perl-dist-zilla
-pkgver=6.031
+pkgver=6.032
 pkgrel=1
 pkgdesc="distribution builder; installer not included!"
 arch=('any')
@@ -61,7 +61,7 @@ optdepends=('perl-archive-tar-wrapper: API wrapper around the tar utility'
             'perl-term-readline-gnu: GNU Readline XS library wrapper')
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/$_distname-$pkgver.tar.gz")
-md5sums=('7181498be16f4d54a16b567b26ee6ba5')
+md5sums=('54884dd4aeb045551e096c9623de0250')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
