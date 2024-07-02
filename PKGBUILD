@@ -1,20 +1,32 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-python-crontab
 _name=python-crontab
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Crontab module for reading and writing crontab files and accessing the system cron automatically and simply using a direct API."
 arch=('any')
 url="https://gitlab.com/doctormo/python-crontab"
 license=('GPL-3.0-or-later')
-depends=('python-dateutil')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-checkdepends=('python-pytest' 'python-tests')
-optdepends=('cronie'
-            'python-cron-descriptor: Ask for a translated string'
-            'python-croniter: Run a cron tab as a daemon')
+depends=(
+  'python-dateutil'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
+checkdepends=(
+  'python-pytest'
+  'python-tests'
+)
+optdepends=(
+  'cronie'
+  'python-cron-descriptor: Ask for a translated string'
+  'python-croniter: Run a cron tab as a daemon'
+)
 source=("$url/-/archive/v$pkgver/$_name-v$pkgver.tar.gz")
-sha256sums=('67f8c53163acc1491401de1983eddbcac7145e6295098381abe08cb3f175607a')
+sha256sums=('73dc1c91bccbd3949277bdbbc9b9c17784586f07ff920cbd7f83701c08b02b71')
 
 build() {
   cd "$_name-v$pkgver"
