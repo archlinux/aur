@@ -1,7 +1,7 @@
 pkgbase = backseat-signed
 	pkgdesc = Authenticate cryptographic links from a signed derivate to its source input.
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://crates.io/crates/backseat-signed
 	arch = x86_64
 	license = GPL-3.0-or-later

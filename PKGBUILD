@@ -2,7 +2,7 @@
 
 pkgname=backseat-signed
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc=' Authenticate cryptographic links from a signed derivate to its source input.'
 url='https://crates.io/crates/backseat-signed'
 arch=('x86_64')
@@ -19,12 +19,12 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgver
-  cargo build --frozen --release
+  RUSTFLAGS='-C link-args=-Wl,-z,shstk' cargo build --frozen --release
 }
 
 check() {
   cd $pkgname-$pkgver
-  cargo test --frozen
+  RUSTFLAGS='-C link-args=-Wl,-z,shstk' cargo test --frozen
 }
 
 package() {
