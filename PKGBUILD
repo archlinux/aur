@@ -4,12 +4,12 @@
 
 pkgname=('teleport' 'teleport-client')
 _pkgname=teleport
-pkgver=15.4.0
-pkgrel=2
+pkgver=16.0.3
+pkgrel=1
 pkgdesc="Modern SSH server for teams managing distributed infrastructure"
 arch=('i386' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/gravitational/teleport"
-license=('Apache')
+license=('AGPLv3')
 depends=('glibc' 'libbpf')
 makedepends=('go>=1.17.0' 'rustup' 'yarn' 'libbpf-static>=1.2.0' 'wasm-pack')
 provides=('tctl' 'tsh')
@@ -45,12 +45,14 @@ prepare() {
     cd "${srcdir}/${_go_srcpath}"
     for f in "${source[@]}"; do
         if [ "${f##*.}" = "patch" ]; then
-            msg "Aplying patch: ${f}"
+            msg "Applying patch: ${f}"
             patch -Np1 -i "${srcdir}/${f}"
         fi
     done
 
     rustup default $_rust_version
+
+    mkdir -p "${srcdir}/${_go_srcpath}/build"
 }
 
 build() {
@@ -99,9 +101,11 @@ package_teleport-client() {
 
     install -Dm755 build/tctl "${pkgdir}/usr/bin/tctl"
     install -Dm755 build/tsh "${pkgdir}/usr/bin/tsh"
+    install -Dm755 build/tbot "${pkgdir}/usr/bin/tbot"
+    install -Dm755 build/fdpass-teleport "${pkgdir}/usr/lib/teleport/fdpass-teleport"
 }
-sha512sums=('c49e85a0553ba6521d663982c39076099888abcc2ec8fb518a3f99c351c1570ba198c252d961bcd9986a594c1e2e964446c3e3301e16425938ec9e0998b1dcb6'
+sha512sums=('d9cba36541f1355e3d1f6ee34434ae2d2c37d7b743256cf525a6826dbebe727d956db409bf3f507343340aa83abc073fa9cabf7ca4e692a8808c142d8f64eef7'
             'bf13a77d1cdaa0c3e09034ede9acdf6834a7e21dbb18b0f9d8f46917be9772416edba7f0001cd38f6124564c0c31549f8d7048dd7a9f5ad76ff8e02f4451f044'
             '409116e201c40b7e0a379b316123500ab7691cbf441ecee048811885f97cd1185671676bb61bf36cb288399e8c0355a0a9f963ce7f94e44ba49e061187c9249e'
             '469249bebaa974e5e205c66c0459ed071b06a35aa9b94a3f34d3cbc5e75aa0f290d70ba8e5c63b49a6319a0f524a846ded459e07e3dde4c260e7668959821b96'
-            'a0ea7d029567244c4d2c970752955f27d157a848b6567e5521822df4ec7bcd4919436b03a602278681b043476e8171ce1da5e0f2e44d06f2c163cd8e82daab41')
+            '8e7092082e0ba074c1f055d895229d8554a3b0f308447ddef9355b18502425ce28392420d22479c1b7d1001a9d0673645a1b4a66ac57c8d1d60df1c2b59bb73d')
