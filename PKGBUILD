@@ -119,7 +119,7 @@ _pick() {
   done
 }
 
-package_mutter-slow-scroll() {
+package_mutter-touchpad-scroll-patch() {
   conflicts=(mutter)
   provides=(mutter libmutter-14.so)
 
