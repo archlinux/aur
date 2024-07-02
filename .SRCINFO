@@ -1,7 +1,7 @@
 pkgbase = paper2remarkable
 	pkgdesc = Easily download an academic paper and send it to a reMarkable.
 	pkgver = 0.9.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GjjvdBurg/paper2remarkable
 	install = paper2remarkable.install
 	changelog = paper2remarkable.changelog.md

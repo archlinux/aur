@@ -1,7 +1,7 @@
 # Maintainer: Falko Galperin <dr (dot) asasteghof (at) gmail (dot) com>
 pkgname=paper2remarkable
 pkgver=0.9.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Easily download an academic paper and send it to a reMarkable."
 arch=(any)
 url="https://github.com/GjjvdBurg/paper2remarkable"
