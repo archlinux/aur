@@ -2,7 +2,7 @@
 
 pkgname=systemd-godns
 pkgver=1.0.1
-pkgrel=25
+pkgrel=26
 pkgdesc="systemd for godns"
 #url="https://gitlab.com/corectrl/corectrl"
 license=('GPL3')
