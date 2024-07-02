@@ -3,7 +3,7 @@
 pkgbase=stc-isp-wine
 pkgname=(stcai-isp{,-tiny}-wine)
 pkgver=6.94E
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.stcmcudata.com/INDEX-CHANGE.HTM"
 license=('unknow')
@@ -122,24 +122,24 @@ EOF
     install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-wine}" << EOF
 #!/bin/bash
 export LC_CTYPE="zh_CN.UTF-8"
-export WINEARCH=win32 WINEPREFIX="$HOME/.${pkgname%-wine}/wine"
+export WINEARCH=win32 WINEPREFIX="\$HOME/.${pkgname%-wine}/wine"
 export WINEDLLOVERRIDES="mscoree,mshtml="
 
-if [ ! -d "$HOME"/.${pkgname%-wine} ] ; then
-    mkdir -p "$HOME"/.${pkgname%-wine}/wine || exit 1
+if [ ! -d "\$HOME"/.${pkgname%-wine} ] ; then
+    mkdir -p "\$HOME"/.${pkgname%-wine}/wine || exit 1
 
-    cp -r /${_stc}/${pkgname%-wine}/regpatch.reg "$HOME"/.${pkgname%-wine}/wine || exit 1
+    cp -r /${_stc}/${pkgname%-wine}/regpatch.reg "\$HOME"/.${pkgname%-wine}/wine || exit 1
 
-    ln -s /${_stc}/${pkgname%-wine}/${pkgname%-wine}-v${pkgver}.exe "$HOME"/.${pkgname%-wine}/${pkgname%-wine} || exit 1
+    ln -s /${_stc}/${pkgname%-wine}/${pkgname%-wine}-v${pkgver}.exe "\$HOME"/.${pkgname%-wine}/${pkgname%-wine} || exit 1
 fi
 
-if [ ! -f "$HOME"/.${pkgname%-wine}/regpatchok ] ; then
-    touch "$HOME"/.${pkgname%-wine}/regpatchok || exit 1
-    cd "$HOME"/.${pkgname%-wine}/wine && regedit regpatch.reg && wineserver -k
+if [ ! -f "\$HOME"/.${pkgname%-wine}/regpatchok ] ; then
+    touch "\$HOME"/.${pkgname%-wine}/regpatchok || exit 1
+    cd "\$HOME"/.${pkgname%-wine}/wine && regedit regpatch.reg && wineserver -k
     winetricks -q mfc42
 fi
 
-wine "$HOME"/.${pkgname%-wine}/${pkgname%-wine} "\$@"
+wine "\$HOME"/.${pkgname%-wine}/${pkgname%-wine} "\$@"
 EOF
 
     install -Dm0644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname%-wine}.desktop" << EOF
@@ -243,24 +243,24 @@ EOF
     install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-wine}" << EOF
 #!/bin/bash
 export LC_CTYPE="zh_CN.UTF-8"
-export WINEARCH=win32 WINEPREFIX="$HOME/.${pkgname%-wine}/wine"
+export WINEARCH=win32 WINEPREFIX="\$HOME/.${pkgname%-wine}/wine"
 export WINEDLLOVERRIDES="mscoree,mshtml="
 
-if [ ! -d "$HOME"/.${pkgname%-wine} ] ; then
-    mkdir -p "$HOME"/.${pkgname%-wine}/wine || exit 1
+if [ ! -d "\$HOME"/.${pkgname%-wine} ] ; then
+    mkdir -p "\$HOME"/.${pkgname%-wine}/wine || exit 1
 
-    cp -r /${_stc}/${pkgname%-wine}/regpatch.reg "$HOME"/.${pkgname%-wine}/wine || exit 1
+    cp -r /${_stc}/${pkgname%-wine}/regpatch.reg "\$HOME"/.${pkgname%-wine}/wine || exit 1
 
-    ln -s /${_stc}/${pkgname%-wine}/${pkgname%-wine}-v${pkgver}.exe "$HOME"/.${pkgname%-wine}/${pkgname%-wine} || exit 1
+    ln -s /${_stc}/${pkgname%-wine}/${pkgname%-wine}-v${pkgver}.exe "\$HOME"/.${pkgname%-wine}/${pkgname%-wine} || exit 1
 fi
 
-if [ ! -f "$HOME"/.${pkgname%-wine}/regpatchok ] ; then
-    touch "$HOME"/.${pkgname%-wine}/regpatchok || exit 1
-    cd "$HOME"/.${pkgname%-wine}/wine && regedit regpatch.reg && wineserver -k
+if [ ! -f "\$HOME"/.${pkgname%-wine}/regpatchok ] ; then
+    touch "\$HOME"/.${pkgname%-wine}/regpatchok || exit 1
+    cd "\$HOME"/.${pkgname%-wine}/wine && regedit regpatch.reg && wineserver -k
     winetricks -q mfc42
 fi
 
-wine "$HOME"/.${pkgname%-wine}/${pkgname%-wine} "\$@"
+wine "\$HOME"/.${pkgname%-wine}/${pkgname%-wine} "\$@"
 EOF
 
     install -Dm0644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname%-wine}.desktop" << EOF
