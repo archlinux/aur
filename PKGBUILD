@@ -1,7 +1,7 @@
 # Maintainer: Jesus Martin Ortega Martinez (madara125) <martin.ortega.arashi@gmail.com><jortega@condorbs.net>
 # Contributor: Kevin Muñoz (MrHacker) <kmunoz@condorbs.net><david.munozm@proton.me>
 pkgname=wazuh-agent
-pkgver=4.7.4
+pkgver=4.8.0
 _remRevision=1
 _prodver=${pkgver}-${_remRevision}
 pkgrel=1
@@ -41,9 +41,9 @@ validpgpkeys=(
 )
 
 source_aarch64=("https://packages.wazuh.com/4.x/yum/${pkgname}-${pkgver}-${pkgrel}.aarch64.rpm"
-                "${pkgname}-${pkgver}-${pkgrel}.aarch64.rpm.asc")
+                "${pkgname}-${pkgver}-${pkgrel}.aarch64.rpm.sig")
 source_x86_64=("https://packages.wazuh.com/4.x/yum/${pkgname}-${pkgver}-${pkgrel}.x86_64.rpm"
-                "${pkgname}-${pkgver}-${pkgrel}.x86_64.rpm.asc")
+                "${pkgname}-${pkgver}-${pkgrel}.x86_64.rpm.sig")
 
 backup=(
   'var/ossec/etc/client.keys'
@@ -51,9 +51,9 @@ backup=(
   'var/ossec/etc/ossec.conf'
 )
 
-sha512sums_x86_64=('fe0fae5ebd170a26309ae4710915b2bfeb4211328204150d2546b10a47585154166b02c86c7bb0f562155f440fd7213361d43c0e950b8588444776b99e0b7cb6'
+sha512sums_x86_64=('4e732801f52538f5a8fdb3e41b72e85f7cef02b076f6f61b4786a38584933119e4b7c4e56a976ee55c3a5330e3e0aa5d3f95b8cbf01c0d7e2f485561c16839fd'
                    'SKIP')
-sha512sums_aarch64=('00490595169a792a8dcc9a718f798c5136b8670e329a037c2fbeac5a600993e6888eb4bd2e198da2d613ea6d271529d5a93bfbdfa13dff5957596b22428c5aa0'
+sha512sums_aarch64=('dd4b059f6fde5759361b3d5401f62647e942d53586acd95cf720c5074d3882c20aa7ead50b470cdf1ea3ab78c586c6f0331f0eacac51a6f24e0a0ad09c3448b6'
                     'SKIP')
 
 install=$pkgname.install
