@@ -1,13 +1,13 @@
 pkgbase = desk-exec-bin
 	pkgdesc = Execute programs defined in XDG desktop entries directly from the command line
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/axertheaxe/desk-exec
 	arch = x86_64
 	license = Unlicense
 	provides = desk-exec
 	conflicts = desk-exec
-	source_x86_64 = https://github.com/axertheaxe/desk-exec/releases/download/v0.1.3/desk-exec-bin-0.1.3-x86_64.tar.gz
-	sha256sums_x86_64 = 80cc14baf87f690283b7543c74c032a0946d70e7cf13e459849159bb5031fd68
+	source_x86_64 = https://github.com/axertheaxe/desk-exec/releases/download/v0.1.4/desk-exec-0.1.4-x86_64.tar.gz
+	sha256sums_x86_64 = 7914b2f5781612420dde4acd55b85718d95cac6c7a8d7e50c65f6688a7e94d0c
 
 pkgname = desk-exec-bin
