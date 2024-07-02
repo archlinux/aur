@@ -1,0 +1,12 @@
+pkgbase = sddm-theme-mnmlst
+	pkgdesc = A very clean SDDM theme
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/lynix/sddm-theme-mnmlst
+	arch = any
+	license = MIT
+	depends = sddm
+	source = https://github.com/lynix/sddm-theme-mnmlst/archive/refs/tags/v1.0.tar.gz
+	sha256sums = 12e612f1b4479b663b7ff400d8183584fb99429122b68f11a0b72e996499ca14
+
+pkgname = sddm-theme-mnmlst
