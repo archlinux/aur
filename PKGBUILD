@@ -25,9 +25,9 @@ wow64build=$(cat "${_where}/buildiswow64" || _failure "how")
 _disabled_staging="" ## e.g. "-W Compiler_Warnings -W user32-. . ."
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="06-29-2024-b87f3589-9ba0efb9"
+_patchbase_tag="07-01-2024-17f052c3-0d4b9f2f"
 
-## to use this, create a "custompatches" folder in the top-level PKGBUILD directory and place your patches there.
+## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the custompatches folder
 ## manually if you wish to use them alongside your own patches.
 ## also recommended to set _desired_wine_commit and _desired_staging_commit if this is used (see below)
@@ -35,8 +35,8 @@ _custompatches=false
 
 ## uses wine/staging master if empty, uses given commit or tag if set
 ## only applies if _custompatches is true, otherwise overwritten by upstream commits from patchbase repo
-_desired_wine_commit=b87f35898d22b90e36970e0b1fce1172ba64eb15
-_desired_staging_commit=9ba0efb9da67ecd0aaa7e60fed5d27fbd8566951
+_desired_wine_commit=17f052c36a414a05fcb6a6e67bd3aac824fbed3e
+_desired_staging_commit=0d4b9f2f626073c8c9de44795e541b9518dc5a7b
 
 _strip_package=true
 _install_static=true ## .a libs which may be required for external programs such as winestreamproxy
@@ -48,6 +48,7 @@ _cleanbuildfolders=false ## removes src, pkg folders on exit (both failure and s
 ################################################################################################################################
 ################################################################################################################################
 
+if [ "${_custompatches}" != "true" ]; then _custompatches= ; fi
 if [ "$wow64build" = "true" ]; then _wowname="-wow64"; else _wowname=""; fi
 
 pkgname=wine-osu-spectator"${_wowname}"
@@ -55,7 +56,7 @@ pkgname=wine-osu-spectator"${_wowname}"
 pkgver=9.12
 # workaround for pkgrel overwritten by pkgver() (taken from TkG PKGBUILD), real is the eval one
 pkgrel=1
-eval pkgrel=1
+eval pkgrel=2
 
 pkgdesc="A compatibility layer for running Windows programs, but with osu! specific patches"
 if [ "$wow64build" = "true" ]; then pkgdesc+=" (WoW64 version)"; fi
@@ -93,8 +94,9 @@ noextract=()
 if ! { [ -d "${_where}"/custompatches ] && [ "${_custompatches}" = "true" ] ; }; then
   source+=("git+https://github.com/whrvt/wine-osu-patches.git#tag=${_patchbase_tag}")
   sha512sums+=('SKIP')
-  
-  _custompatches="false" ## didn't have a custompatches dir
+
+  ## didn't have a custompatches dir
+  _custompatches=
 fi
 
 depends=(
@@ -305,7 +307,8 @@ prepare() { _set_vars;
   printf "\nApplying staging patches\n\n" >> "${_where}"/patchlog.txt
   pushd wine-staging/staging >/dev/null || _failure
   # shellcheck disable=SC2086
-  ./patchinstall.py DESTDIR="${srcdir}"/"${pkgname}" --all $_disabled_staging &>> "${_where}"/patchlog.txt || _failure "Error applying staging patches, check patchlog.txt for info."
+  ./patchinstall.py DESTDIR="${srcdir}"/"${pkgname}" --all $_disabled_staging &>> "${_where}"/patchlog.txt || \
+      _failure "Error applying staging patches, check patchlog.txt for info."
   popd >/dev/null || _failure
 
   ## Applying patches
@@ -313,6 +316,8 @@ prepare() { _set_vars;
   if [ "${_custompatches}" = "true" ]; then
     if ! [ -d "${_where}/custompatches" ]; then _failure "_custompatches=true but custompatches directory not found."; fi
     patchdir="${_where}/custompatches"
+    echo -n "${_desired_wine_commit}" > "${patchdir}/wine-commit"
+    echo -n "${_desired_staging_commit}" > "${patchdir}/staging-commit"
   else
     patchdir="${srcdir}/wine-osu-patches"
   fi
@@ -324,12 +329,8 @@ prepare() { _set_vars;
     shortname="${patch#"${patchdir}/"}"
     printf "\nApplying %s\n\n" "${shortname}" >> "${_where}"/patchlog.txt
     msg2 "Applying '${shortname}'"
-    patch -Np1 <"${patch}" &>> "${_where}"/patchlog.txt || 
-      if [ "${_custompatches}" != "true" ]; then 
-        _failure "An error occurred applying ${shortname}, check patchlog.txt for info."
-      else
-        _failure "An error occurred applying custompatches/${shortname}, check patchlog.txt for info."
-      fi
+    patch -Np1 <"${patch}" &>> "${_where}"/patchlog.txt || \
+        _failure "An error occurred applying ${_custompatches:+custompatches/}${shortname}, check patchlog.txt for info."
   done
 
   ## make tools/make_makefiles happy
@@ -347,58 +348,36 @@ prepare() { _set_vars;
     tools/make_specfiles
   fi
   autoreconf -fiv
-
-  cd "${srcdir}" || _failure
-
-  ## Deleting old build directories (if existing)
-  if [ "${wow64build}" != "true" ]; then rm -rf "${pkgname}"-32-build || true; mkdir "${pkgname}"-32-build; fi
-  rm -rf "${pkgname}"-64-build || true
-  mkdir "${pkgname}"-64-build
 }
 
-buildwow64() { _set_vars;
+build64dir="${_where}/src/${pkgname}-64-build"
+build32dir="${_where}/src/${pkgname}-32-build"
+
+_build() { _set_vars;
   cd "${srcdir}" || _failure
 
-  export PKG_CONFIG_LIBDIR=/opt/llvm-mingw/x86_64-w64-mingw32/lib/pkgconfig:/usr/lib/pkgconfig:/opt/llvm-mingw/i686-w64-mingw32/lib/pkgconfig:/usr/lib32/pkgconfig
-  export PKG_CONFIG_PATH=$PKG_CONFIG_LIBDIR:$PKG_CONFIG_PATH_CUSTOM
-
-  export x86_64_CC="ccache x86_64-w64-mingw32-clang"
-  export CROSSCC="ccache x86_64-w64-mingw32-clang"
-
-  msg2 "Building Wine-64..."
-  cd "${srcdir}"/"${pkgname}"-64-build || _failure
-  ../"${pkgname}"/configure \
-    --libdir=/opt/"${pkgname}"/lib64 \
-    --enable-archs=x86_64,i386 \
-    "${_sharedopts[@]}" \
-    --with-mingw="ccache x86_64-w64-mingw32-clang" || _failure "wine-64 configure failed"
-
-  make -j$(($(nproc) + 1)) || _failure
-}
-
-buildregular() { _set_vars;
-  cd "${srcdir}" || _failure
+  rm -rf "${build64dir}" || true
+  mkdir "${build64dir}"
 
   export PKG_CONFIG_LIBDIR=/opt/llvm-mingw/x86_64-w64-mingw32/lib/pkgconfig:/usr/lib/pkgconfig
   export PKG_CONFIG_PATH=$PKG_CONFIG_LIBDIR:$PKG_CONFIG_PATH_CUSTOM
 
   export x86_64_CC="ccache x86_64-w64-mingw32-clang"
   export CROSSCC="ccache x86_64-w64-mingw32-clang"
-
-  msg2 "Building Wine-64..."
-  cd "${srcdir}"/"${pkgname}"-64-build || _failure
+  
+  msg2 "Building Wine-64"
+  cd "${build64dir}" || _failure
   ../"${pkgname}"/configure \
-    --libdir=/opt/"${pkgname}"/lib64 \
-    --enable-win64 \
     "${_sharedopts[@]}" \
-    --with-mingw="ccache x86_64-w64-mingw32-clang" || _failure "wine-64 configure failed"
+    "${_wine64opts[@]}" || _failure "Wine-64 configure failed"
 
-  make -j$(($(nproc) + 1)) || _failure "wine-64 compilation failed"
+  make -j$(($(nproc) + 1)) || _failure "Compilation failed; check ${build64dir}/config.log for more information"
 
-  _wine32opts=(
-    --libdir=/opt/"${pkgname}"/lib
-    --with-wine64="${srcdir}"/"${pkgname}"-64-build
-  )
+  ## don't build lib32 for wow64 builds
+  if [ "${wow64build}" = "true" ]; then return 0; fi
+
+  rm -rf "${build32dir}" || true
+  mkdir "${build32dir}"
 
   export PKG_CONFIG_LIBDIR=/opt/llvm-mingw/i686-w64-mingw32/lib/pkgconfig:/usr/lib32/pkgconfig
   export PKG_CONFIG_PATH=$PKG_CONFIG_LIBDIR:$PKG_CONFIG_PATH_CUSTOM
@@ -409,17 +388,18 @@ buildregular() { _set_vars;
   # fsync doesn't compile on i386 due to undefined atomic ops otherwise (clang only, ntdll.so)
   export I386_LIBS="-latomic"
 
-  msg2 "Building Wine-32..."
-  cd "${srcdir}"/"${pkgname}"-32-build || _failure
+  msg2 "Building Wine-32"
+  cd "${build32dir}" || _failure
   ../"${pkgname}"/configure \
     "${_sharedopts[@]}" \
-    "${_wine32opts[@]}" \
-    --with-mingw="ccache i686-w64-mingw32-clang" || _failure "wine-32 configure failed"
+    "${_wine32opts[@]}" || _failure "Wine-32 configure failed"
 
-  make -j$(($(nproc) + 1)) || _failure "wine-32 compilation failed"
+  make -j$(($(nproc) + 1)) || _failure "Compilation failed; check ${build32dir}/config.log for more information"
 }
 
 build() {
+
+
   _sharedopts=(
     --prefix=/opt/"${pkgname}"
     --disable-tests
@@ -434,14 +414,27 @@ build() {
     --without-sane
   )
 
+  _wine64opts=(
+    --libdir=/opt/"${pkgname}"/lib64
+    --with-mingw="ccache x86_64-w64-mingw32-clang"
+  )
+
+  if [ "${wow64build}" = "true" ]; then
+    _wine64opts+=(--enable-archs="x86_64,i386")
+  else
+    _wine64opts+=(--enable-win64)
+
+    _wine32opts=(
+      --libdir=/opt/"${pkgname}"/lib
+      --with-wine64="${build64dir}"
+      --with-mingw="ccache i686-w64-mingw32-clang" 
+    )
+  fi
+
   local _old_SOURCE_DATE_EPOCH="$SOURCE_DATE_EPOCH"
   export SOURCE_DATE_EPOCH=0
 
-  if [ "${wow64build}" = "true" ]; then
-    buildwow64
-  else
-    buildregular
-  fi
+  _build
 
   export SOURCE_DATE_EPOCH="$_old_SOURCE_DATE_EPOCH"
 }
@@ -454,22 +447,22 @@ package() { _set_vars;
   fi
 
   if [ "${wow64build}" != "true" ]; then
-    msg2 "Packaging Wine-32..."
-    cd "${srcdir}"/$pkgname-32-build || _failure
+    msg2 "Packaging Wine-32"
+    cd "${build32dir}" || _failure
     make -j$(($(nproc) + 1)) \
       prefix="${pkgdir}"/opt/"${pkgname}" \
       libdir="${pkgdir}"/opt/"${pkgname}"/lib \
-      dlldir="${pkgdir}"/opt/"${pkgname}"/lib/wine $_installtype || _failure "wine-32 installation failed"
+      dlldir="${pkgdir}"/opt/"${pkgname}"/lib/wine $_installtype || _failure "Wine-32 installation failed"
   fi
 
-  msg2 "Packaging Wine-64..."
-  cd "${srcdir}"/$pkgname-64-build || _failure
+  msg2 "Packaging Wine-64"
+  cd "${build64dir}"|| _failure
   # clang doesn't like static libs on lib64 for some reason, use gcc
   make -j$(($(nproc) + 1)) \
     CC="ccache gcc" CXX="ccache g++" \
     prefix="${pkgdir}"/opt/"${pkgname}" \
     libdir="${pkgdir}"/opt/"${pkgname}"/lib64 \
-    dlldir="${pkgdir}"/opt/"${pkgname}"/lib64/wine $_installtype || _failure "wine-64 installation failed"
+    dlldir="${pkgdir}"/opt/"${pkgname}"/lib64/wine $_installtype || _failure "Wine-64 installation failed"
 
   ## Font aliasing settings for Win32 applications
   install -d "${pkgdir}"/usr/share/fontconfig/conf.{avail,default}
