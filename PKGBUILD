@@ -2,27 +2,30 @@
 
 pkgname=libudev0-shim
 pkgver=1
-pkgrel=4
+_commit='dbaa13dd5cbcebb6aea6c652402c67f156548935'
+pkgrel=5
 pkgdesc='libudev.so.0 compatibility library for systems with newer udev versions'
 url='https://github.com/archlinux/libudev0-shim'
 arch=('x86_64')
-license=('GPL')
+license=('LGPL-2.1-or-later')
 provides=('libudev0')
 conflicts=('libudev0')
 depends=('systemd-libs')
-source=(${pkgname}.tar.gz::https://github.com/archlinux/libudev0-shim/archive/v${pkgver}.tar.gz)
-sha512sums=('794810b20be6391cb6af53c2c49705f8bd884dd6eb5d1fd5b659481a01490205cc60e0f1904c020fb0e59e984583762ba6775f977a78b95a40ba82eb93965387')
+makedepends=('git')
+source=("git+https://github.com/archlinux/libudev0-shim.git#commit=${_commit}")
+sha512sums=('37fdb46a6b0bd9c34e393ad4daf99d3d9c9568e06b295324d3508dba59758b1bd088859931b76966d5451a3c81cf3864abb45125e3268709de21dbc3a047fff1')
 
 build() {
-  cd ${pkgname}-${pkgver}
-  unset LDFLAGS
+  cd "${pkgname}"
+
   make
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
-  install -Dm 755 libudev.so.0.0.9999 -t "${pkgdir}/usr/lib"
-  ln -s libudev.so.0.0.9999 "${pkgdir}/usr/lib/libudev.so.0"
+  cd "${pkgname}"
+
+  install -Dm 0755 libudev.so.0.13.9999 -t "${pkgdir}/usr/lib"
+  ln -s libudev.so.0.13.9999 "${pkgdir}/usr/lib/libudev.so.0"
 }
 
 # vim: ts=2 sw=2 et:
