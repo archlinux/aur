@@ -1,6 +1,6 @@
 pkgbase = python-galois
 	pkgdesc = A performant NumPy extension for Galois fields and their applications
-	pkgver = 0.3.10
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/mhostetter/galois
 	arch = any
@@ -14,11 +14,7 @@ pkgbase = python-galois
 	depends = python-numpy
 	depends = python-numba
 	depends = python-typing_extensions
-	source = galois-0.3.10.tar.gz::https://github.com/mhostetter/galois/archive/refs/tags/v0.3.10.tar.gz
-	source = numpy-2.patch::https://patch-diff.githubusercontent.com/raw/mhostetter/galois/pull/550.patch
-	source = numpy-2-more-fixes.patch::https://github.com/mhostetter/galois/compare/numpy-2.0...iyanmv:galois:numpy-2.0.patch
-	b2sums = 9f507ed690ef4c54e2eb4692ee5889ff12cb4a67aef90a4c71a3a2e85fa88cd90c1821478bda53b397b1d107db2d6a57a8eb698c2824f8d52562e1622c4a699b
-	b2sums = a4c302671740a3b7eac9e6be3dd6bdc718d4f228bd2ffc9aa462eab73be2ee06042f0aad3c2d13a25960a1ac4fd30c8a09ffb9f71037a42c6b2b696536917374
-	b2sums = ab0cd1546020b68659e6f1f47868d010298043e498907fc0dc083622ae80f68458ea38a944049c647ed89315c36eabcdbfb0f1b29c30ae0b9ab1c34241f7a66e
+	source = galois-0.4.0.tar.gz::https://github.com/mhostetter/galois/archive/refs/tags/v0.4.0.tar.gz
+	b2sums = 2eb344ac75027ab77717babe8ad57ee6a98556dcd5d6505947356929da39b805f813508e2ef8e65e3c1aee2e7e299dfae29c1211939587906c9ca646c742683d
 
 pkgname = python-galois
