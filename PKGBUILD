@@ -3,7 +3,7 @@
 # Contributor: Sebastien Duthil <duthils at free dot fr>
 
 pkgname=factorio-demo
-pkgver=1.1.107
+pkgver=1.1.109
 pkgrel=1
 pkgdesc="A game in which you build and maintain factories"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(factorio.desktop
 )
 sha256sums=('61f62d75491147fbc6853cd7fa3a6f287227c3f5fc70dd9f4ec4083ebc31b743'
             'bc7f224b0fcc4cec82f5ca950b1c042251e27b0bcd0bf98f7945e09413a3c561'
-            '5cfa679053cd13873ee6becad9c253a3135af51226609b93b48b71028d358361')
+            '5dbb12b69643fd83dc0145c09411ecbc36b0f1f25d159ffcba44d626c4934288')
 
 # no modifications needed, the executable looks for:
 # - data in /usr/share/factorio
