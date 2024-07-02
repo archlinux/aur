@@ -1,7 +1,7 @@
 # Maintainer: Your Name <benjamin.voisin@ens-rennes.fr>
 pkgname=belenios
-pkgver=2.5
-pkgrel=4
+pkgver=2.5.1
+pkgrel=1
 pkgdesc="State-of-the-art secure, private and verifiable voting system"
 arch=('x86_64')
 url="https://gitlab.inria.fr/belenios/belenios.git"
@@ -9,15 +9,9 @@ license=('GPL')
 groups=()
 depends=('ocaml' 'opam' 'npm' 'nodejs')
 makedepends=('dune' 'git' 'gmp' 'libsodium' 'pkg-config' 'm4' 'sqlite3' 'openssl' 'curl' 'zip' 'unzip' 'ncurses' 'gd' 'cracklib' 'jq' 'sed')
-_tag=633ae1d008a0f16e86759dde376ed1532214b63f #git rev-parse $pkgver
+_tag=55f9dc8ea92a8ff60e4e93d3473bfd496e179616 #git rev-parse $pkgver
 source=( "$pkgname-$pkgver::git+https://gitlab.inria.fr/belenios/belenios.git#tag=$_tag")
 sha256sums=('SKIP')
-
-pkgver() {
-  cd "$srcdir/$pkgname-$pkgver"
-  git describe --long --abbrev=7 | sed -E 's/^([0-9]+\.[0-9]+).*$/\1/'
-}
-
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
