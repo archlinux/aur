@@ -3,7 +3,7 @@
 
 pkgname=helm-ls
 pkgver=0.0.18
-pkgrel=1
+pkgrel=2
 _commit=dd0ae6da6b873921f18ffc301940999f9593fcb9
 pkgdesc='Language server for Helm'
 license=(MIT)
@@ -15,7 +15,7 @@ md5sums=(SKIP)
 
 arch=(x86_64)
 depends=(glibc)
-makedepends=(go)
+makedepends=(git go)
 checkdepends=(yaml-language-server)
 options=('!debug')
 
