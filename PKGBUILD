@@ -1,7 +1,7 @@
 # Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=proton-mail-export
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Allows to export emails as eml files'
 arch=('x86_64')
