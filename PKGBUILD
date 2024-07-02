@@ -1,6 +1,6 @@
 # Maintainer: Laura Demkowicz-Duffy <dev@demkowiczduffy.co.uk>
 pkgname=protolint
-pkgver=0.49.8
+pkgver=0.50.2
 pkgrel=1
 pkgdesc="A pluggable linter and fixer to enforce Protocol Buffer style and conventions"
 arch=('x86_64')
@@ -12,8 +12,8 @@ source=(
 	"$url/releases/download/v$pkgver/${pkgname}_${pkgver}_linux_amd64.tar.gz"
 	"$pkgname-${pkgver}_repo.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('035f3fd1d6c50f223604ec4f99b5f9bbd9d4d9dae77a050a521fa651b287822e'
-            'fa84c2161936d6dd001b452cf6c59c8090c92fc022fca664c25b959ee33fb25a')
+sha256sums=('b48a9d3d453d74f394ab2070c6361af16ab4ec9cb9d54742fb4334d03b92075c'
+            '8314e7d295ff2f9f0e537d932c0036fb5e3352f14e09fa9c54dea52eded3fd7d')
 
 package() {
 	cd $srcdir
