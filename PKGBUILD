@@ -2,7 +2,7 @@
 pkgname=fooyin
 _pkgname=Fooyin
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A customisable music player"
 arch=('x86_64')
 url="https://github.com/ludouzi/fooyin"
@@ -27,9 +27,6 @@ optdepends=(
     'sdl2: For the SDL2 audio output plugin'
     'pipewire: For the PipeWire audio output plugin'
 )
-options=(
-    '!strip'
-)
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
@@ -40,7 +37,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DBUILD_PCH=ON \
         -DBUILD_WERROR=ON \
-        DINSTALL_HEADERS=ON \
+        -DINSTALL_HEADERS=ON \
         -DCMAKE_BUILD_TYPE=None
     cmake --build build -j$(nproc)
 }
