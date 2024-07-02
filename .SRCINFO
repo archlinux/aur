@@ -1,6 +1,6 @@
 pkgbase = webscreensaver-git
 	pkgdesc = Use any web page as your screensaver
-	pkgver = r60.fdf4b19
+	pkgver = r73.507c984
 	pkgrel = 1
 	url = https://github.com/lmartinking/webscreensaver
 	arch = any
@@ -11,6 +11,8 @@ pkgbase = webscreensaver-git
 	depends = python
 	optdepends = xscreensaver: run with xscreensaver
 	optdepends = xfce4-screensaver: run under xfce4
+	provides = webscreensaver
+	conflicts = webscreensaver
 	source = webscreensaver-git::git+https://github.com/lmartinking/webscreensaver.git
 	md5sums = SKIP
 
