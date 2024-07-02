@@ -2,7 +2,7 @@
 
 pkgname=h7toolpc-wine
 pkgver=2.2.5
-pkgrel=0
+pkgrel=1
 pkgdesc="Wine H7-TOOL 的 PC 上位机，支持串口、CAN、示波器、CMSIS-DAP、DS18B20、RTT Viewer、脱机烧录等"
 arch=('x86_64')
 url="http://www.armbbs.cn/forum.php?mod=viewthread&tid=95468"
@@ -121,38 +121,38 @@ EOF
 
     install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-wine}" << EOF
 #!/bin/bash
-export WINEARCH=win64 WINEPREFIX="$HOME/.${pkgname%-wine}/wine"
+export WINEARCH=win64 WINEPREFIX="\$HOME/.${pkgname%-wine}/wine"
 
-if [ ! -d "$HOME"/.${pkgname%-wine} ] ; then
-    mkdir -p "$HOME"/.${pkgname%-wine}/wine || exit 1
+if [ ! -d "\$HOME"/.${pkgname%-wine} ] ; then
+    mkdir -p "\$HOME"/.${pkgname%-wine}/wine || exit 1
 
-    cp -r /${armfly}/${pkgname%-wine}/app*.ini "$HOME"/.${pkgname%-wine} || exit 1
-    cp -r /${armfly}/${pkgname%-wine}/Backup "$HOME"/.${pkgname%-wine} || exit 1
-    cp -r /${armfly}/${pkgname%-wine}/Readback "$HOME"/.${pkgname%-wine} || exit 1
-    cp -r /${armfly}/${pkgname%-wine}/ini "$HOME"/.${pkgname%-wine} || exit 1
-    cp -r /${armfly}/${pkgname%-wine}/log "$HOME"/.${pkgname%-wine} || exit 1
-    cp -r /${armfly}/${pkgname%-wine}/Lua "$HOME"/.${pkgname%-wine} || exit 1
-    cp -r /${armfly}/${pkgname%-wine}/Trace "$HOME"/.${pkgname%-wine} || exit 1
-    cp -r /${armfly}/${pkgname%-wine}/regpatch.reg "$HOME"/.${pkgname%-wine}/wine || exit 1
+    cp -r /${armfly}/${pkgname%-wine}/app*.ini "\$HOME"/.${pkgname%-wine} || exit 1
+    cp -r /${armfly}/${pkgname%-wine}/Backup "\$HOME"/.${pkgname%-wine} || exit 1
+    cp -r /${armfly}/${pkgname%-wine}/Readback "\$HOME"/.${pkgname%-wine} || exit 1
+    cp -r /${armfly}/${pkgname%-wine}/ini "\$HOME"/.${pkgname%-wine} || exit 1
+    cp -r /${armfly}/${pkgname%-wine}/log "\$HOME"/.${pkgname%-wine} || exit 1
+    cp -r /${armfly}/${pkgname%-wine}/Lua "\$HOME"/.${pkgname%-wine} || exit 1
+    cp -r /${armfly}/${pkgname%-wine}/Trace "\$HOME"/.${pkgname%-wine} || exit 1
+    cp -r /${armfly}/${pkgname%-wine}/regpatch.reg "\$HOME"/.${pkgname%-wine}/wine || exit 1
 
-    ln -s /${armfly}/${pkgname%-wine}/${pkgname/pc-wine/PC}.exe "$HOME"/.${pkgname%-wine}/${pkgname%-wine} || exit 1
-    ln -s -T /${pkgdir}/${armfly}/${pkgname%-wine}/Driver "$HOME"/.${pkgname%-wine}/Driver || exit 1
-    ln -s -T /${armfly}/${pkgname%-wine}/EMMC "$HOME"/.${pkgname%-wine}/EMMC || exit 1
-    ln -s -T /${armfly}/${pkgname%-wine}/Help "$HOME"/.${pkgname%-wine}/Help || exit 1
-    ln -s -T /${armfly}/${pkgname%-wine}/USBBus "$HOME"/.${pkgname%-wine}/USBBus || exit 1
-    ln -s -T /${armfly}/${pkgname%-wine}/ChangeLog.txt "$HOME"/.${pkgname%-wine}/ChangeLog.txt || exit 1
+    ln -s /${armfly}/${pkgname%-wine}/${pkgname/pc-wine/PC}.exe "\$HOME"/.${pkgname%-wine}/${pkgname%-wine} || exit 1
+    ln -s -T /${pkgdir}/${armfly}/${pkgname%-wine}/Driver "\$HOME"/.${pkgname%-wine}/Driver || exit 1
+    ln -s -T /${armfly}/${pkgname%-wine}/EMMC "\$HOME"/.${pkgname%-wine}/EMMC || exit 1
+    ln -s -T /${armfly}/${pkgname%-wine}/Help "\$HOME"/.${pkgname%-wine}/Help || exit 1
+    ln -s -T /${armfly}/${pkgname%-wine}/USBBus "\$HOME"/.${pkgname%-wine}/USBBus || exit 1
+    ln -s -T /${armfly}/${pkgname%-wine}/ChangeLog.txt "\$HOME"/.${pkgname%-wine}/ChangeLog.txt || exit 1
 
-    regedit "$HOME"/.${pkgname%-wine}/wine/regpatch.reg
+    regedit "\$HOME"/.${pkgname%-wine}/wine/regpatch.reg
 #     winetricks -q hid
 #     winetricks -q comctl32
 #     winetricks -q comctl32ocx
 #     winetricks -q comdlg32ocx
-#     wine "$HOME"/.${pkgname%-wine}/Driver/stm32_vcp/VCP_V1.5.0_Setup_W7_x86_32bits.exe /S
-#     wine "$HOME"/.${pkgname%-wine}/Driver/WinUSB/zadig-2.5.exe
+#     wine "\$HOME"/.${pkgname%-wine}/Driver/stm32_vcp/VCP_V1.5.0_Setup_W7_x86_32bits.exe /S
+#     wine "\$HOME"/.${pkgname%-wine}/Driver/WinUSB/zadig-2.5.exe
     wineserver -k
 fi
 
-wine "$HOME"/.${pkgname%-wine}/${pkgname%-wine} -opengl "\$@"
+wine "\$HOME"/.${pkgname%-wine}/${pkgname%-wine} -opengl "\$@"
 EOF
 
     install -Dm0644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname%-wine}.desktop" << EOF
