@@ -1,22 +1,24 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgbase=python-stsci.tools
-_pyname=${pkgbase#python-}
-pkgname=("python-${_pyname}")
-pkgver=4.1.0
+_pname=${pkgbase#python-}
+_pyname=${_pname//./_}
+pkgname=("python-${_pname}")
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="Collection of STScI utility functions"
 arch=('any')
 url="https://stscitools.readthedocs.io"
-license=('BSD')
+license=('BSD-3-Clause')
 makedepends=('python-setuptools-scm'
              'python-wheel'
              'python-build'
              'python-installer')
-checkdepends=('python-pytest-doctestplus'
+checkdepends=('python-pytest-astropy-header'
+              'python-pytest-doctestplus'
               'python-astropy'
               'tk')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('00609412809dcf8fac9d890764a294c8')
+md5sums=('dc80e68dfb3238a2f4991d6ecacf2071')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
