@@ -2,11 +2,11 @@
 _pkgname=github-desktop
 _appname="GitHub Desktop"
 pkgname="${_pkgname}-zh-bin"
-pkgver=3.3.18_linux1
+pkgver=3.4.2_linux1
 #_zhpkgver="${pkgver%_linux2}"
 _zhpkgver=3.4.2
-_electronversion=28
-pkgrel=3
+_electronversion=30
+pkgrel=1
 pkgdesc="GUI for managing Git and GitHub.Chinese SC Version.Github Desktop 汉化版"
 arch=(
     'aarch64'
@@ -41,9 +41,9 @@ source=(
 sha256sums=('0faf5f118152dabbffe63ccc9e47222532f5290d2a30044df5f9b33801009477'
             '891d678cd6aa67c0712f663b5fee690f24d11d360795300814f7bf2eb91ba530'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-sha256sums_aarch64=('f159b64956491b8118de66813879f9274b566f768b300a98b88f46328682b3c4')
-sha256sums_armv7h=('bb2dede10f4b387ad8e50f790e5de8a5ae047f05da29baaad0f96096577daa6b')
-sha256sums_x86_64=('05755785c29e3e3f3b99a698d53d54d0b96e402eba066f5042264220e742b63b')
+sha256sums_aarch64=('55b3e34f3e316066953b7b8e1ba950350ad5126c77f87ffecbcfabd0ee796948')
+sha256sums_armv7h=('a7a4bdddbcb6686b7e1ff943c3c7ba92debfe60ef216e84ffacbc2e37e0cd654')
+sha256sums_x86_64=('a98e6b0af3a07f5fd9d345d9eb2027eb329d519fba9783c2b613d4e385cb2a17')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
