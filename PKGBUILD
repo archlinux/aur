@@ -1,7 +1,7 @@
 # Maintainer: Aleksandr Beliaev <trap000d at gmail dot com>
 
 pkgname=quarto-cli
-pkgver=1.4.557
+pkgver=1.5.52
 pkgrel=1
 _pkgbasename=quarto-cli
 _denodomver="0.1.35-alpha-artifacts"
@@ -18,17 +18,14 @@ options=(!strip)
 
 source=("${_pkgbasename}-${pkgver}.tar.gz::https://github.com/quarto-dev/quarto-cli/archive/refs/tags/v${pkgver}.tar.gz"
         "https://github.com/b-fuze/deno-dom/archive/refs/tags/v${_denodomver}.tar.gz"
-        "000_deno_1.41.diff"
         "001_deno_1.44.diff"
        )
 
-sha256sums=('efcd79f4ba9c4943f2b48ba5d148d7f72523b3ba7ce22445e3e788eb5779bdee'
+sha256sums=('4bcb12ea9afb9a54489d43dbf0a12751c4efa991c2e6fd1dce7ef4650cad41a4'
             '14fb042a6912041b9fda91fd643cf278764d075bc9539aa1e107475915cd896c'
-            'd09e82634e6b64359c54d3a99b8abb4503cea3c62ef30b46d02ffcfde718d36c'
             '522adaf045f39357918f174b7f5f005bd868ca9ca3526628114ba6a029870839')
 prepare() {
   cd "${srcdir}/${_pkgbasename}-${pkgver}"
-  patch -p1 < ../000_deno_1.41.diff
   patch -p1 < ../001_deno_1.44.diff
 }
 
