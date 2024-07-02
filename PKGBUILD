@@ -2,7 +2,7 @@
 # Contributer: Alpin <alpin 'at' alpindale 'dot' dev>
 # Author: LostRuins (concedo)
 pkgname=koboldcpp
-pkgver=1.68
+pkgver=1.69
 pkgrel=1
 pkgdesc="An easy-to-use AI text-generation software for GGML and GGUF models"
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=(
   'python-psutil: increasing the process CPU priority'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/LostRuins/koboldcpp/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8cd2920af8c6629073e24ef71f868cb55d42b37f578f32e1ec1eac9897f8707a')
+sha256sums=('8a7e590eceadcbda81bedeaa876033708d130b359adf6d66d25caa14c037a93f')
 
 build() {
   cd "$srcdir/koboldcpp-$pkgver"
@@ -51,6 +51,9 @@ package() {
   install -Dm644 "kcpp_sdui.embd" "$pkgdir/usr/share/koboldcpp/kcpp_sdui.embd"
   install -Dm644 "taesd.embd" "$pkgdir/usr/share/koboldcpp/taesd.embd"
   install -Dm644 "taesd_xl.embd" "$pkgdir/usr/share/koboldcpp/taesd_xl.embd"
+
+  install -d "$pkgdir/usr/share/koboldcpp/kcpp_adapters"
+  install -m644 "kcpp_adapters"/* "$pkgdir/usr/share/koboldcpp/kcpp_adapters/"
 
   install -Dm644 "koboldcpp.py" "$pkgdir/usr/share/koboldcpp/koboldcpp.py"
 
