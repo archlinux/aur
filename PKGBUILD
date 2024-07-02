@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=matlab
-_pkgver=1.0.4
+_pkgver=1.0.4.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=6
+pkgrel=1
 pkgdesc="'MATLAB' Emulation Package"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('618b1d0da2fe8d55c74aaf1d470138d2')
-b2sums=('2eae11813ce31fbfca0cb3b42ccc77a892070d3776e5156907f93c444b815e7a8e37c4fc771ce67d0fa5928c955ad4dea676915c819c565f140a128975d2b132')
+md5sums=('d69096742f7e29bd749f91060984195f')
+b2sums=('b790edd538eed00136aa277ba6b46d81622a0395bc4a8dd375fa83bb47e99c1390ea9808b2276da5b41cf4e4fb01388d5a1fa2102cc7abbebfcfca1a3af1eb03')
 
 build() {
   mkdir build
