@@ -1,6 +1,6 @@
 pkgbase = wg-info
 	pkgdesc = A better wireguard status script
-	pkgver = 60ceb5c
+	pkgver = 9b5c479
 	pkgrel = 1
 	url = https://github.com/asdil12/wg-info
 	arch = any

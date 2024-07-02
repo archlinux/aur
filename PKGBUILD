@@ -2,7 +2,7 @@
 # Maintainer: Lucas Magalhães <whoisroot@national.shitposting.agency>
 
 pkgname=wg-info
-pkgver=60ceb5c
+pkgver=9b5c479
 pkgrel=1
 pkgdesc="A better wireguard status script"
 arch=('any')
