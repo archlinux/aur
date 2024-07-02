@@ -176,16 +176,16 @@ EOF
 
 ACTION!="add|change", SUBSYSTEM!="usb_device", GOTO="h7tool_rules_end"
 
-# SUBSYSTEM=="gpio", MODE="0666", GROUP="plugdev", TAG+="uaccess"
+# SUBSYSTEM=="gpio", MODE="0666", GROUP="uucp", TAG+="uaccess"
 
 # SUBSYSTEM!="usb|tty|hidraw", GOTO="h7tool_rules_end"
 
 # Please keep this list sorted by VID:PID
 
 # H7-tool
-# ATTRS{idVendor}=="c251", ATTRS{idProduct}=="f00a", MODE="666", GROUP="plugdev", TAG+="uaccess"
+# ATTRS{idVendor}=="c251", ATTRS{idProduct}=="f00a", MODE="666", GROUP="uucp", TAG+="uaccess"
 # BUS=='usb',
-ATTRS{manufacturer}=="H7-TOOL By ARMFLY", MODE="0666", GROUP="plugdev", TAG+="uaccess"
+ATTRS{manufacturer}=="H7-TOOL By ARMFLY", MODE="0666", GROUP="uucp", TAG+="uaccess"
 
 LABEL="h7tool_rules_end"
 EOF
