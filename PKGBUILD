@@ -3,14 +3,14 @@
 
 _pkgname=hol
 pkgname=${_pkgname}-git
-pkgver=20200210
+pkgver=20240702
 pkgrel=1
 pkgdesc='HOL4 theorem-proving system'
 url='https://hol-theorem-prover.org/'
 arch=('x86_64')
 license=('BSD')
 install="${_pkgname}.install"
-source=("${_pkgname}::git://github.com/HOL-Theorem-Prover/HOL.git")
+source=("${_pkgname}::git+https://github.com/HOL-Theorem-Prover/HOL.git")
 md5sums=('SKIP')
 depends=('polyml' 'graphviz')
 provides=('hol')
