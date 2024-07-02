@@ -1,6 +1,14 @@
 Changelog
 =========
 
+**[5.1.0] ----- 2024-07-02** ::
+
+	    wg-fix-resolv.c: Generalize the file hashing and switch to SHA384
+	      The hash is used to compare two of the resolv.conf files for any changes
+	    Code tidy ups
+	    update Docs/Changelog.rst Docs/wg-client.pdf
+
+
 **[5.0.2] ----- 2024-07-01** ::
 
 	    Readme - clarify that gui starts the monitor daemon automatically
