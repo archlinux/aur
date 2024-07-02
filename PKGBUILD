@@ -2,7 +2,7 @@
 
 pkgname=desk-exec-git
 _pkgname=desk-exec
-pkgver=0.1.3.r3.g3c5c460
+pkgver=0.1.4.r0.ge7a2791
 pkgrel=1
 pkgdesc="Execute programs defined in XDG desktop entries directly from the command line"
 url="https://github.com/axertheaxe/desk-exec"
