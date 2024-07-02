@@ -1,6 +1,6 @@
 pkgbase = terser
 	pkgdesc = JavaScript parser, mangler and compressor toolkit for ES6+
-	pkgver = 5.31.0
+	pkgver = 5.31.1
 	pkgrel = 1
 	url = https://terser.org/
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = terser
 	provides = nodejs-terser
 	conflicts = nodejs-terser
 	replaces = nodejs-terser
-	source = https://registry.npmjs.org/terser/-/terser-5.31.0.tgz
+	source = https://registry.npmjs.org/terser/-/terser-5.31.1.tgz
 	sha256sums = 485ac24b164a826085bc6e02fbf2f0fb1792bbd4318de66e36367c11ad0ac596
 
 pkgname = terser
