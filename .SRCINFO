@@ -1,0 +1,20 @@
+pkgbase = python-zlib-ng
+	pkgdesc = A drop-in replacement for Python's zlib and gzip modules using zlib-ng
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/pycompression/python-zlib-ng
+	arch = any
+	license = PSF-2.0
+	checkdepends = python-tox
+	checkdepends = python-tests
+	checkdepends = python-pip
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = zlib-ng
+	source = python-zlib-ng-0.4.3.tar.gz::https://github.com/pycompression/python-zlib-ng/archive/v0.4.3.tar.gz
+	sha256sums = 6c17baa462950bc9b032eee69a498108c4a7693002e7400a0f78f9e02eb87343
+
+pkgname = python-zlib-ng
