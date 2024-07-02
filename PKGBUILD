@@ -17,6 +17,8 @@ pkgver() {
 build() {
 	cd go-ukify
 
+	export GOPATH="$srcdir"
+
 	local gopkg="${url#https://}"
 	local BUILDINFO=(
 		"-X $gopkg/internal/common.VERSION=$pkgver"
