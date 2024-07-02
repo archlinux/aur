@@ -11,7 +11,7 @@ _json_export=${TAGEDITOR_JSON_EXPORT:-OFF}
 
 _reponame=tageditor
 pkgname=tageditor-cli
-pkgver=3.9.0
+pkgver=3.9.1
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='A tag editor with command-line interface supporting MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus, FLAC and Matroska (GUI disabled)'
@@ -23,14 +23,11 @@ provides=("${pkgname%-cli}")
 [[ $_json_export == ON ]] && makedepends+=('reflective-rapidjson')
 checkdepends=('cppunit')
 url="https://github.com/Martchus/${_reponame}"
-source=("${_reponame}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz"
-        0001-Avoid-use-of-jq-argument-argjson-as-it-has-been-remo.patch)
-sha256sums=('ebafac24ab7c3833a018b5848b32d9fa2cfa01cafeff1b1ec1a6e30eb7415b1b'
-            SKIP)
+source=("${_reponame}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
+sha256sums=('744af89122ef621a49a96f3d3cfe9d25399a7f1cd2f027a383c503c43a8bdaed')
 
 prepare() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
-  patch -p1 -i ../0001-Avoid-use-of-jq-argument-argjson-as-it-has-been-remo.patch
 }
 
 build() {
