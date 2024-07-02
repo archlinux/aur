@@ -20,16 +20,14 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${_pkgname}"
   cmake . \
-        -DCMAKE_INSTALL_PREFIX:PATH=/usr \
-        -DCMAKE_INSTALL_LIBDIR=lib \
-        -DQT_DEFAULT_MAJOR_VERSION=6 \
+        -DQT_DIR=/usr/lib/cmake/Qt6
   make
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${_pkgname}"
   make DESTDIR="${pkgdir}" install
 }
 
