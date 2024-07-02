@@ -1,6 +1,6 @@
 _pkgname=ericw-tools
 pkgname=${_pkgname}-git
-pkgver=0.18.2.rc1.r2115.g9f7ba657
+pkgver=2.0.0.alpha8.r9.g04604b18
 pkgrel=1
 pkgdesc="Quake/Hexen 2 Map compiling tools"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://ericwa.github.io/ericw-tools"
 _giturl="https://github.com/ericwa/ericw-tools"
 license=('GPL3')
 depends=('embree3' 'groff' 'tbb')
-makedepends=('cmake' 'git' 'python-sphinx' 'python-sphinx-furo')
+makedepends=('cmake' 'git' 'python-sphinx' 'python-sphinx-furo' 'python-sphinx-autobuild')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 source=("${_pkgname}::git+${_giturl}.git#branch=brushbsp"
@@ -16,10 +16,8 @@ source=("${_pkgname}::git+${_giturl}.git#branch=brushbsp"
     "json::git+https://github.com/ArthurSonzogni/nlohmann_json_cmake_fetchcontent.git"
     "nanobench::git+https://github.com/martinus/nanobench"
     "pareto::git+https://github.com/alandefreitas/pareto.git"
-    "doctest::git+https://github.com/doctest/doctest"
 )
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -36,7 +34,6 @@ prepare() {
     git config submodule.3rdparty/json.url ../json
     git config submodule.3rdparty/nanobench.url ../nanobench
     git config submodule.3rdparty/pareto.url ../pareto
-    git config submodule.3rdparty/doctest.url ../doctest
     git submodule update
 }
 
@@ -48,7 +45,7 @@ build() {
 }
 
 package() {
-    _files=(qbsp vis light bspinfo bsputil)
+    _files=(qbsp vis light bspinfo bsputil lightpreview)
     for _i in "${_files[@]}"
     do
       install -Dm755 build/${_i}/${_i} "$pkgdir"/usr/bin/${_i}

@@ -4,4 +4,6 @@ pkg/*
 ericw-tools/*
 fmt/*
 googletest/*
+pareto/*
+nanobench/*
 json/*
