@@ -2,7 +2,7 @@
 
 pkgname=python-pillow_heif
 pkgver=0.17.0
-pkgrel=4
+pkgrel=1
 pkgdesc="Python bindings to libheif for working with HEIF images and plugin for Pillow."
 arch=('any')
 url="https://github.com/bigcat88/pillow_heif"
