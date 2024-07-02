@@ -1,7 +1,7 @@
 pkgbase = merkaartor-qt6-git
 	pkgdesc = Merkaartor openstreetmap mapping program. Qt6 build
 	pkgver = 0.19.0.r133.g5bd9cf7b
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.merkaartor.be/
 	arch = i686
 	arch = x86_64

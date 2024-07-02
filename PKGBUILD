@@ -2,7 +2,7 @@
 _pkgname=merkaartor
 pkgname=$_pkgname-qt6-git
 pkgver=0.19.0.r133.g5bd9cf7b
-pkgrel=1
+pkgrel=2
 pkgdesc='Merkaartor openstreetmap mapping program. Qt6 build'
 url='http://www.merkaartor.be/'
 arch=('i686' 'x86_64')
