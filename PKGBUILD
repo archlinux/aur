@@ -5,13 +5,13 @@
 
 pkgname=picom-ftlabs-git
 _gitname=picom
-pkgver=1430_8.rc2.21.gfd6ff82_2020.06.06
+pkgver=r2236_2024.02.17
 pkgrel=1
 pkgdesc="picom fork by FT-Labs including animations (git-version)"
 arch=(i686 x86_64)
 url="https://github.com/FT-Labs/${_gitname}"
 license=('MIT' 'MPL2')
-depends=('libgl' 'libev' 'pcre2' 'libx11' 'xcb-util-renderutil' 'libxcb' 'xcb-util-image' 'libxext'
+depends=('libgl' 'libev' 'pcre2' 'libx11' 'xcb-util-renderutil' 'libxcb' 'libepoxy' 'xcb-util-image' 'libxext'
          'pixman' 'libconfig' 'libdbus' 'hicolor-icon-theme')
 makedepends=('git' 'mesa' 'meson' 'asciidoc' 'uthash' 'xorgproto')
 optdepends=('dbus:          To control picom via D-Bus'
@@ -21,14 +21,25 @@ optdepends=('dbus:          To control picom via D-Bus'
 provides=('compton' 'compton-git' 'picom')
 conflicts=('compton' 'compton-git' 'picom')
 replaces=('compton-git')
-source=(git+"https://github.com/FT-Labs/${_gitname}.git#branch=next")
-md5sums=("SKIP")
+source=(
+  git+"https://github.com/FT-Labs/${_gitname}.git#branch=next"
+  "fix_ewmh_fullscreen.patch"
+)
+md5sums=(
+  "SKIP"
+  "30ff0e25e4bc91563f2f68b27762c9e2"
+)
 
 pkgver() {
     cd ${_gitname}
     _commits=$(git rev-list --count HEAD) # total commits is the most sane way of getting incremental pkgver
     _date=$(git log -1 --date=short --pretty=format:%cd)
-    printf "%s_%s\n" "${_commits}" "${_date}" | sed 's/-/./g'
+    printf "r%s_%s\n" "${_commits}" "${_date}" | sed 's/-/./g'
+}
+
+prepare() {
+  cd "${srcdir}/${_gitname}"
+  patch -d src -p1 < "${srcdir}/fix_ewmh_fullscreen.patch"
 }
 
 build() {
