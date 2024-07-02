@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=escrcpy
-pkgver=1.19.3
+pkgver=1.19.4
 _electronversion=30
 _nodeversion=20
 pkgrel=1
@@ -27,7 +27,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('b21bdc77419c742ec5c5ef1e58fc63009f3841cb9eff2c86f787ecbc9d3962bc'
+sha256sums=('2256ecff3043f4298ebbc8c0a12dcec55371c5d2751c8de66fb5791dc3f2036f'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
