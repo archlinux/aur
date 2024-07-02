@@ -2,8 +2,8 @@
 
 _pkgname="kdisplay"
 pkgname="$_pkgname"
-pkgver=6.0.0
-pkgrel=2
+pkgver=6.1.0
+pkgrel=1
 pkgdesc='Display management app and daemon (kwinft)'
 url="https://github.com/winft/kdisplay"
 license=('LGPL-2.1-only')
@@ -47,7 +47,7 @@ conflicts=("kscreen")
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
-sha256sums=('b1da715f9eb0cffb116ea9d0f756668da96848db562b4a2de5a524f321759537')
+sha256sums=('e118e8240ee0f1e2e212ddf123b89e46169f293f8c37c5ec06b1556425ab8032')
 
 build() {
   export CC=clang
