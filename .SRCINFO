@@ -1,21 +1,20 @@
 pkgbase = quaternion
 	pkgdesc = Qt-based IM client for the Matrix protocol
 	pkgver = 0.0.96.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/quotient-im/Quaternion
 	arch = aarch64
 	arch = i686
 	arch = x86_64
 	license = GPL-3.0-or-later
 	license = LGPL-2.1-or-later
+	makedepends = clang
 	makedepends = cmake
 	makedepends = git
 	makedepends = qt6-tools
-	makedepends = clang
-	makedepends = lld
-	depends = libolm.so
-	depends = qt6-multimedia
+	depends = libolm
 	depends = qt6-declarative
+	depends = qt6-multimedia
 	depends = qtkeychain-qt6
 	source = quaternion::git+https://github.com/quotient-im/Quaternion#tag=0.0.96.1
 	source = libquotient::git+https://github.com/quotient-im/libQuotient
@@ -23,8 +22,8 @@ pkgbase = quaternion
 	sha256sums = SKIP
 
 pkgname = quaternion
-	depends = libolm.so
-	depends = qt6-multimedia
+	depends = libolm
 	depends = qt6-declarative
+	depends = qt6-multimedia
 	depends = qtkeychain-qt6
 	depends = hicolor-icon-theme
