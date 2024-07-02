@@ -6,7 +6,7 @@
 
 _pkgname=radium
 pkgname=$_pkgname-git
-pkgver=7.4.76.r7.g0c86614
+pkgver=7.4.76.r24.g29c8c97
 pkgrel=1
 pkgdesc='A graphical music editor. A next generation tracker.'
 arch=(x86_64)
@@ -65,7 +65,6 @@ makedepends=(
   libxrandr
   qt5-tools
   vst2sdk
-  gcc13
 )
 optdepends=(
   'new-session-manager: for session management'
@@ -76,26 +75,13 @@ optdepends=(
 )
 options=( !strip )
 source=("git+https://github.com/kmatheussen/radium"
-        radium.install
         build_linux_common.patch
 )
 sha256sums=('SKIP'
-            'f627730ff7a819e8cc5ac5c2b5f1fb2f2237327db6ea5442c55a23c1ce82ef14'
             '0decfc3adcba836004ac34d970a83d4d0b69743334a586f42be53b3de7bdd5a4')
-install=radium.install
 
 prepare() {
   cd "$_pkgname"
-
-  export PATH=$(pwd):$PATH
-
-  # use gcc13 ...
-  ln -sf /usr/bin/cc-13 cc
-  ln -sf /usr/bin/gcc-13 gcc
-  ln -sf /usr/bin/c++-13 c++
-  ln -sf /usr/bin/g++-13 g++
-
-  export CC=gcc-13 CXX=g++-13
 
   # fix for binutils 2.40
   patch -p0 < "$srcdir/build_linux_common.patch"
@@ -118,8 +104,8 @@ pkgver() {
 build() {
   cd "$_pkgname"
   
-  export PATH=$(pwd):$PATH
   export INCLUDE_FAUSTDEV_BUT_NOT_LLVM=1
+  # export RADIUM_USE_CLANG=1
 
   RADIUM_QT_VERSION=5 RADIUM_VST2SDK_PATH=/usr/src/vst2sdk RADIUM_BUILD_LIBXCB=0 make packages
   RADIUM_QT_VERSION=5 RADIUM_VST2SDK_PATH=/usr/src/vst2sdk BUILDTYPE=RELEASE ./build_linux.sh
@@ -128,10 +114,11 @@ build() {
 package() {
   cd "$_pkgname"
 
+  # install.sh will create radium/ladspa dir and complain if something already exists. so we remove the existing symlink first
+  # (bin/ is the dir of the build output that gets copied to opt/radium by install.sh)
+  rm -f "bin/ladspa"
   # Install radium and its packages to /opt
   RADIUM_INSTALL_LIBXCB=0 ./install.sh "$pkgdir/opt"
-  # radium.install will link ladspa-path here so remove it
-  rm -rf $pkgdir/opt/radium/ladspa
 
   # Create startup script according to bin/packages/README
   mkdir -p "$pkgdir/usr/bin"
