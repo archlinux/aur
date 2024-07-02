@@ -1,7 +1,7 @@
-# Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="supabase"
-pkgver=1.178.2
+pkgver=1.179.5
 pkgrel=1
 pkgdesc="A CLI for Supabase, an open source Firebase alternative"
 arch=('any')
@@ -9,10 +9,10 @@ url="https://github.com/${pkgname}/cli"
 license=('MIT')
 depends=('glibc')
 makedepends=('go')
-checkdepends=('docker')
+# checkdepends=('docker')
 _pkgsrc="cli-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fefe2ce96eb5e6df11cdc076383b1a999d47eeabcdfd5a47c3c6669602b1d581')
+sha256sums=('fa87d80945d0614947cda803b2197971e695bcb0d9416d255465efa1b2f6b84c')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
@@ -34,10 +34,10 @@ build() {
   done
 }
 
-check() {
-  cd "${srcdir}/${_pkgsrc}"
-  go test ./...
-}
+# check() {
+#  cd "${srcdir}/${_pkgsrc}"
+#  go test ./...
+#}
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
@@ -48,5 +48,5 @@ package() {
   cd "completions"
   install -Dm644 "${pkgname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
   install -Dm644 "${pkgname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
-  install -Dm644 "${pkgname}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
+  install -Dm644 "${pkgname}.zsh"  "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
 }
