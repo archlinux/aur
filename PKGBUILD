@@ -11,7 +11,7 @@ makedepends=('git')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git" "snapper-snapshot-notification-git")
 backup=("etc/${pkgname}.conf")
-source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/Zesko/btrfs-desktop-notification/-/archive/Release-$pkgver/$pkgname-Release-$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/-/archive/Release-$pkgver/$pkgname-Release-$pkgver.tar.gz")
 sha256sums=('d19252c2fb17fcc1956241829c70ed086a29e85ba1a42b0ceea8877c0a2f099d')
 
 package() {
