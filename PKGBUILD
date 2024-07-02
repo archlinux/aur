@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=passwordsafe-bin
-pkgver=1.19.0
+pkgver=1.19.1
 pkgrel=1
 pkgdesc="Popular secure and convenient password manager"
 arch=("x86_64")
@@ -22,7 +22,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-ubuntu24-${pkgver%.0}-amd64.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/pwsafe/pwsafe/${pkgver}/LICENSE"
 )
-sha256sums=('686593be75d95bc8ac6bc1cc02c4311f79c9a80aba9a5aefd590d686efff3c8b'
+sha256sums=('52d6993a8ed852ede53600e5ae09389aed4be018c180e709d363268dd7465f98'
             '2d471d94ca72c38aeee8544cbceaa239e7cfd13fa766f8bee7a1dd8fa82c11c8')
 package() {
     bsdtar -xf "${srcdir}/data.tar.gz" -C "${pkgdir}"
