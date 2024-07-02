@@ -16,7 +16,7 @@ pkgname=(
   'pipewire-x11-bell-git'
   'pipewire-zeroconf-git'
 )
-pkgver=1.0.0.660.g37a8dd5cb
+pkgver=1.1.82.26.g1deffe757
 pkgrel=1
 pkgdesc='Low-latency audio/video router and processor (GIT version)'
 arch=('x86_64')
@@ -31,6 +31,7 @@ makedepends=(
   'dbus'
   'doxygen'
   'glib2'
+  'glib2-devel'
   'graphviz'
   'ffmpeg'
   'jack2'
