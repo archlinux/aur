@@ -11,13 +11,12 @@
 
 ## options
 
-
 ## basic info
 _pkgname="swift-language"
 pkgname="$_pkgname"
-_swiftver=swift-5.9.2-RELEASE
-pkgver=5.9.2
-pkgrel=2
+_swiftver=swift-5.10.1-RELEASE
+pkgver=5.10.1
+pkgrel=1
 pkgdesc="The Swift programming language and debugger"
 url="https://github.com/apple/swift"
 license=('Apache-2.0')
@@ -32,10 +31,10 @@ makedepends=(
 # utils/update_checkout/update-checkout-config.json
 source=(
   "git+https://github.com/apple/swift#tag=${_swiftver}"
-  '0001-arch-aur-patches.patch'
+  "0001-arch-aur-patches.patch"
 
   "apple-llvm-project"::"git+https://github.com/apple/llvm-project#tag=${_swiftver}"
-  "swift-argument-parser"::"git+https://github.com/apple/swift-argument-parser#tag=1.2.2"
+  "swift-argument-parser"::"git+https://github.com/apple/swift-argument-parser#tag=1.2.3"
   "swift-cmark"::"git+https://github.com/apple/swift-cmark#tag=${_swiftver}"
   "swift-corelibs-foundation"::"git+https://github.com/apple/swift-corelibs-foundation#tag=${_swiftver}"
   "swift-corelibs-libdispatch"::"git+https://github.com/apple/swift-corelibs-libdispatch#tag=${_swiftver}"
@@ -51,11 +50,11 @@ source=(
   # swift src to check afterwards
   "apple-indexstore-db"::"git+https://github.com/apple/indexstore-db#tag=${_swiftver}"
   "apple-sourcekit-lsp"::"git+https://github.com/apple/sourcekit-lsp#tag=${_swiftver}"
-  "swift-asn1"::"git+https://github.com/apple/swift-asn1#tag=0.7.0"
+  "swift-asn1"::"git+https://github.com/apple/swift-asn1#tag=1.0.0"
   "swift-atomics"::"git+https://github.com/apple/swift-atomics#tag=1.0.2"
-  "swift-certificates"::"git+https://github.com/apple/swift-certificates#tag=0.4.1"
-  "swift-collections"::"git+https://github.com/apple/swift-collections#tag=1.0.1"
-  "swift-crypto"::"git+https://github.com/apple/swift-crypto#tag=2.5.0"
+  "swift-certificates"::"git+https://github.com/apple/swift-certificates#tag=1.0.1"
+  "swift-collections"::"git+https://github.com/apple/swift-collections#tag=1.0.5"
+  "swift-crypto"::"git+https://github.com/apple/swift-crypto#tag=3.0.0"
   "swift-docc"::"git+https://github.com/apple/swift-docc#tag=${_swiftver}"
   "swift-docc-render-artifact"::"git+https://github.com/apple/swift-docc-render-artifact#tag=${_swiftver}"
   "swift-docc-symbolkit"::"git+https://github.com/apple/swift-docc-symbolkit#tag=${_swiftver}"
@@ -69,7 +68,7 @@ source=(
   "swift-system"::"git+https://github.com/apple/swift-system#tag=1.1.1"
   "swift-tools-support-core"::"git+https://github.com/apple/swift-tools-support-core#tag=${_swiftver}"
   "swift-xcode-playground-support"::"git+https://github.com/apple/swift-xcode-playground-support#tag=${_swiftver}"
-  "yams"::"git+https://github.com/jpsim/Yams#tag=5.0.1"
+  "yams"::"git+https://github.com/jpsim/Yams#tag=5.0.6"
 )
 sha256sums=(
   'SKIP'
@@ -117,9 +116,9 @@ sha256sums=(
 # termux had no trouble up to now, strip all executables and shared objects:
 # https://github.com/termux/termux-packages/blob/master/scripts/build/termux_step_massage.sh#L24
 # would be cool to not strip only the ones which really are necessary, but how?
-#options=(!strip)
+options=(!strip !lto)
 
-prepare () {
+prepare() {
   ln -sfP 'apple-indexstore-db' 'indexstore-db'
   ln -sfP 'apple-llvm-project' 'llvm-project'
   ln -sfP 'apple-sourcekit-lsp' 'sourcekit-lsp'
@@ -155,10 +154,14 @@ prepare () {
   ln -sfP 'swift-tools-support-core' 'tools-support-core'
   ln -sfP 'swift-xcode-playground-support' 'xcode-playground-support'
 
-  ( cd swift && patch -Np1 -F100 -i "${srcdir:?}/0001-arch-aur-patches.patch" )
+  cd swift
+  patch -Np1 -F100 -i "../0001-arch-aur-patches.patch"
 }
 
 build() {
+  export SWIFT_USE_LINKER=lld
+  LDFLAGS="${LDFLAGS//-Wl,-z,pack-relative-relocs/}"
+
   # Fix /usr/include error
   find "$srcdir/swift/stdlib/public/SwiftShims" -type f -print0 | xargs -0 sed -i 's|/usr/include/x86_64-linux-gnu|/usr/include|g'
   find "$srcdir/llvm-project/clang" -type f -print0 | xargs -0 sed -i 's|/usr/include/x86_64-linux-gnu|/usr/include|g'
@@ -190,8 +193,8 @@ package() {
   find "$pkgdir/$_install_path" -type f -name '*.syms' -delete
   find "$pkgdir/$_install_path" -type f -name '*-test' -delete
 
-  for i in swift swift sourcekit-lsp ; do
-    install -Dm644 /dev/stdin "$pkgdir/usr/bin/$i" <<END
+  for i in swift swift sourcekit-lsp; do
+    install -Dm644 /dev/stdin "$pkgdir/usr/bin/$i" << END
 #!/usr/bin/env sh
 exec "/$_install_path/bin/$i" "\$@"
 END
