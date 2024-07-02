@@ -29,7 +29,7 @@ pkgname=vitis
 _srcname=FPGAs_AdaptiveSoCs_Unified
 pkgver=2024.1
 _more_ver=0522_2023
-pkgrel=1
+pkgrel=2
 pkgdesc="FPGA/CPLD design suite for Xilinx devices"
 url="https://www.xilinx.com/products/design-tools/vitis.html"
 arch=('x86_64')
@@ -197,7 +197,37 @@ package() {
     done
 
     # clean up artefacts
-    rm -rf "$pkgdir/opt/Xilinx/.xinstall/"
+    rm -rf "$pkgdir/opt/Xilinx/.xinstall/" "$pkgdir/opt/Xilinx/xic/%HOME%"
+
+    # There are lots of files with useless x permissions.
+    # This looks weird and slows dependency checking.
+    # Remove x permissions in obvious cases. (*.tcl not considered obvious.)
+    ( set -f    # no globbing outside find
+      find "$pkgdir" \( -false $(printf ' -o -iname *.%s' \
+          a acd adoc aiff al avi avif bcmap bmp bs bsd btl bz2 \
+          c cc cdo cfg class cnf conf config cmake cpj cpp css csv cxx \
+          d dat db def diff do doc docs docx dst dtd dts dtsi dxc dxt \
+          enc f f90 features fs gif gmo gz gzip h hex hpp htm html hxx \
+          ico ipp in inc inf info info-[0-9] info-[0-9][0-9] ini \
+          jar java jfif jmod jpeg jpg js json \
+          l layout lcl lib lna log ltl lz lzma \
+          m make man manifest map markdown mat md mdd mdl mf mjs mk \
+          mo mod mp3 mpd msg mss \
+          ngc npy npz o obj ogg otf \
+          p padr paspd patch pb pc pcnm pdf pem pkg pkl png pm \
+          po policy ppm prj properties props proto psg pxd pyc pyi pyo \
+          rc rd rlx rsa rst rtd rules \
+          s sav sch scss sdb sdbl sdbx security sf sgm slx \
+          spec specs stamp sv svg svh svp \
+          tar tcc td templ template tex texi toml tpl ts tsx ttcl ttf txt \
+          ucf usg v vdb vdbl vdbx veo verif vh vhd vhdl vho vp vsix \
+          wav webp whl woff woff2 \
+          xchk xco xda xds xgd xit xlsx xml xng xsl xz yml yaml z zip) \
+          $(printf ' -o -iname %s' makefile makefile[_.]* readme*) \) \
+        -type f -exec chmod a-x {} +)
+    # Normalize permissions
+    find "$pkgdir" ! -type l ! -perm 755 ! -perm 644 \
+      -exec chmod -c u=rwX,go=rX {} +
 
     # Save space for subsequent packaging, checking etc
     cd ..
