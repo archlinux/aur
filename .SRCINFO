@@ -1,6 +1,6 @@
 pkgbase = wait_ex-git
 	pkgdesc = Replacement of Bash's wait with error handling
-	pkgver = 0.1.0.r2.g330d3cb
+	pkgver = 0.1.0.r3.g1557ace
 	pkgrel = 1
 	url = https://git.sr.ht/~mjaa/wait_ex
 	arch = x86_64

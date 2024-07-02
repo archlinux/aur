@@ -2,7 +2,7 @@
 
 _pkgname=wait_ex
 pkgname="$_pkgname-git"
-pkgver=0.1.0.r2.g330d3cb
+pkgver=0.1.0.r3.g1557ace
 pkgrel=1
 pkgdesc="Replacement of Bash's wait with error handling"
 arch=('x86_64')
@@ -30,7 +30,14 @@ pkgver() {
 
 build() {
 	cd "$_pkgname"
-	nimble -d:release build
+	# The options ensure private and total memory usage is as low as
+	# possible. Private usage is 340 kB. Resident set size is 1.0 MB.
+	# Private usage is calculated using following (with wait_ex running):
+	# `ps -eo size,command | sort -n -k 1,1 | cut -c1-80 | grep wait_ex`
+	# `-d:useMalloc` ensures that Nim doesn't preallocate a big heap, thus
+	# reducing private usage by about 500 kB.
+	nimble -o:wait_ex -d:danger --opt:size --threads:off --mm:arc \
+		--passC:-flto --passL:-flto -d:useMalloc build
 }
 
 package() {
