@@ -1,6 +1,6 @@
 pkgbase = libretro-flycast-git
 	pkgdesc = Sega Dreamcast, NAOMI, NAOMI 2, Atomiswave and System SP core (fork of reicast)
-	pkgver = 2.3.r2.g40cdef6c1
+	pkgver = 2.3.2.r120.g7d645541f
 	pkgrel = 1
 	url = https://github.com/flyinghead/flycast
 	arch = aarch64
@@ -29,7 +29,7 @@ pkgbase = libretro-flycast-git
 	provides = libretro-flycast
 	conflicts = libretro-flycast
 	source = flycast::git+https://github.com/flyinghead/flycast.git
-	source = Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
+	source = vulkan-headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
 	source = use-system-libs.patch
 	b2sums = SKIP
 	b2sums = SKIP
