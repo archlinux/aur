@@ -1,7 +1,8 @@
 # Contributor: Calogero e Angelo Scarnà <info@codelinsoft.it>
 pkgname=lylibrary
+_pkgname=LyLibrary
 pkgver=3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="LyLibrary provides everything necessary to the books cataloguing, the loans management and the registration of the library readers."
 url="http://www.codelinsoft.it/sito/2013-11-17-17-56-34/lylibrary.html#"
 arch=('x86_64')
@@ -13,6 +14,7 @@ md5sums=("SKIP")
 
 
 build() {
+mv ${_pkgname} ${pkgname}-${pkgver}
 cd "${srcdir}/${pkgname}-${pkgver}"
 cmake -DCMAKE_INSTALL_PREFIX=/opt/lylibrary -DCMAKE_INSTALL_LIBDIR=/opt/lylibrary/lib
 make -j5
