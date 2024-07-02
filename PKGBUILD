@@ -3,14 +3,13 @@
 _pkgname=velociraptor
 _pkgver=1.14.3
 pkgname=r-${_pkgname,,}
-pkgver=1.14.3
-pkgrel=1
-pkgdesc='Toolkit for Single-Cell Velocity'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Toolkit for Single-Cell Velocity"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
 license=('MIT')
 depends=(
-  r
   r-basilisk
   r-biocgenerics
   r-biocparallel
@@ -28,8 +27,6 @@ optdepends=(
   r-cowplot
   r-ggally
   r-ggplot2
-  r-graphics
-  r-grdevices
   r-knitr
   r-metr
   r-patchwork
@@ -42,15 +39,18 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a9946fd4b8bd9a01c3de53d64b2a53523c80b2014046eb0d56f86b9c8efc1345')
+md5sums=('8e3b3b1cacc7dc4445453e90fb38046d')
+b2sums=('cae671507759c21c2f88572eddbc581be8950090b153854c2c93dde5a84c98a980b16090666a0eed557008e4003c8eae5dabd41aea9baac284c29bf1978ef541')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
