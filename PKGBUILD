@@ -1,5 +1,5 @@
 pkgname=mingw-w64-vulkan-tools
-pkgver=1.3.269
+pkgver=1.3.285
 pkgrel=1
 arch=(any)
 url="https://www.khronos.org/vulkan/"
@@ -9,20 +9,18 @@ depends=(mingw-w64-vulkan-icd-loader)
 makedepends=(mingw-w64-cmake python mingw-w64-vulkan-headers mingw-w64-glslang mingw-w64-spirv-tools mingw-w64-wine)
 options=('!buildflags' 'staticlibs' '!strip')
 source=("https://github.com/KhronosGroup/Vulkan-Tools/archive/v${pkgver}.tar.gz")
-sha256sums=('029784dcc16154258499d97418142fb43d07a136bcefcaf0575bb7194068e381')
+sha256sums=('5153253f20296558000e730b0340b5a40fac212c91fb4ffe5bf490a8406d89c3')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
   cd "${srcdir}"/Vulkan-Tools-${pkgver}
-  curl -L https://github.com/KhronosGroup/Vulkan-Tools/pull/900.patch | patch -p1
+  curl -L https://github.com/KhronosGroup/Vulkan-Tools/pull/1004.patch | patch -p1
   for _arch in ${_architectures}; do
-    mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake -DBUILD_CUBE=ON -DBUILD_VULKANINFO=ON -DBUILD_ICD=OFF \
       -DGLSLANG_INSTALL_DIR=/usr/${_arch} -DGLSLANG_VALIDATOR=/usr/bin/${_arch}-glslang \
-      ..
-    make
-    popd
+      -B build-${_arch} .
+    make -C build-${_arch}
   done
 }
 
