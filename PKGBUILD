@@ -2,7 +2,7 @@
 # Contributer: Alpin <alpin 'at' alpindale 'dot' dev>
 # Author: LostRuins (concedo), YellowRoseCx
 pkgname=koboldcpp-hipblas
-_pkgver=1.68
+_pkgver=1.69
 pkgver=$_pkgver.yr0
 pkgrel=1
 pkgdesc="An easy-to-use AI text-generation software for GGML and GGUF models (with HIPBLAS, for ROCM)"
@@ -24,7 +24,7 @@ optdepends=(
 provides=("koboldcpp=$_pkgver" "koboldcpp-rocm=$_pkgver")
 conflicts=('koboldcpp')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/YellowRoseCx/koboldcpp-rocm/archive/refs/tags/v$pkgver-ROCm.tar.gz")
-sha256sums=('018cf3df027dfd72bba406dadd979a3375a16e3c35b4f71d817823704c763df6')
+sha256sums=('154bbc796ff0d67f8aacdb4d52c2993b0800e76e970a6d876d374c8a3e42a7be')
 
 build() {
   cd "$srcdir/koboldcpp-rocm-$pkgver-ROCm"
@@ -56,6 +56,9 @@ package() {
   install -Dm644 "kcpp_sdui.embd" "$pkgdir/usr/share/koboldcpp/kcpp_sdui.embd"
   install -Dm644 "taesd.embd" "$pkgdir/usr/share/koboldcpp/taesd.embd"
   install -Dm644 "taesd_xl.embd" "$pkgdir/usr/share/koboldcpp/taesd_xl.embd"
+
+  install -d "$pkgdir/usr/share/koboldcpp/kcpp_adapters"
+  install -m644 "kcpp_adapters"/* "$pkgdir/usr/share/koboldcpp/kcpp_adapters/"
 
   install -Dm644 "koboldcpp.py" "$pkgdir/usr/share/koboldcpp/koboldcpp.py"
 
