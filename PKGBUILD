@@ -22,8 +22,8 @@ source=("${pkgname%-wine}-v${pkgver}.zip::http://www.stcmcudata.com/STCISP/${pkg
         "icon.svg")
 sha256sums=('0df31c85113c31c85cb87921aa8f378af6252d16f6a301f8ab38b5e5559cc3b8'
             '147983cc306f11731d1ae8c2509984d1c057f22ca9b09a9dc2258b27fc024236'
-            'ddcf8bdd41c3bd5f1b004bff265516efe64e730be534a2e85f44c76c865b6bd4'
-            '5b0dfb11fd800bde3147518f17e62f77041dba29cc4443e36d12324b6a5ebf4a'
+            'b52b0ed04b26922dad6e00725cf84da0597cc15346c68202b4bd54274dbb0b39'
+            '33565feb7c5d7c5f50f4d0ea6c514e084776b72b662e21614bb95d7b26baa42f'
             'c04d3cf704c9055e4b0bb010d946c5e90710677c459def826f762c8e9d717538')
 # noextract=("${pkgname%-wine}-v${pkgver}.zip"
 #             "${pkgname%-wine}-tiny-v${pkgver}.zip")

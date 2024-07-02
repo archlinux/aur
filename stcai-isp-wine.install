@@ -1,5 +1,7 @@
 info() {
     echo -e "STCAI-ISP 下载编程烧录软件"
+    echo -e "非 root 用户需要将用户添加到 uucp 用户组:"
+    echo -e "sudo gpasswd -a \$USER uucp"
 }
 post_install() {
     info
