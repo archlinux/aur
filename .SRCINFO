@@ -1,11 +1,10 @@
 pkgbase = r-mlr3tuning
-	pkgdesc = Tuning for 'mlr3'
+	pkgdesc = Hyperparameter Optimization for 'mlr3'
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=mlr3tuning
 	arch = any
-	license = LGPL
-	depends = r
+	license = LGPL-3.0-only
 	depends = r-bbotk
 	depends = r-checkmate
 	depends = r-data.table
@@ -15,17 +14,20 @@ pkgbase = r-mlr3tuning
 	depends = r-paradox
 	depends = r-r6
 	optdepends = r-adagio
+	optdepends = r-future
 	optdepends = r-gensa
 	optdepends = r-irace
 	optdepends = r-knitr
+	optdepends = r-mlflow
 	optdepends = r-mlr3learners
 	optdepends = r-mlr3pipelines
 	optdepends = r-nloptr
 	optdepends = r-rmarkdown
-	optdepends = r-rpart
+	optdepends = r-rush
 	optdepends = r-testthat
 	optdepends = r-xgboost
 	source = https://cran.r-project.org/src/contrib/mlr3tuning_1.0.0.tar.gz
-	sha256sums = 86fdb59397b65288186cde667cf98dcf53868adf1def41d65e4e34db3cffac52
+	md5sums = 101dfefc442254f3a19f6677986d69fc
+	b2sums = 5a6dc48f55fa1c29db8845607cf4a15cd7f3f513f693684160cd62915696281a18c710ec9178c92da938efc8212711b38dc181b86378152281f5f3e428558910
 
 pkgname = r-mlr3tuning
