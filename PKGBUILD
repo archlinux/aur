@@ -2,7 +2,7 @@
 
 pkgname=duckstation-git
 _pkgname=duckstation
-pkgver=0.1.r7019.g1963d80
+pkgver=0.1.r7038.gf2066f9
 pkgdesc='A Sony PlayStation (PSX) emulator, focusing on playability, speed, and long-term maintainability (git version)'
 pkgrel=1
 arch=(x86_64 aarch64)
@@ -46,6 +46,7 @@ makedepends=(
     jack
     python
     spirv-headers
+    patchelf
 )
 optdepends=(
     'qt6-wayland: Wayland support'
@@ -61,12 +62,14 @@ source=(
     git+https://github.com/google/shaderc.git#tag=v2024.1
     git+https://github.com/KhronosGroup/SPIRV-Cross.git#tag=vulkan-sdk-1.3.283.0
     git+https://github.com/ianlancetaylor/libbacktrace.git#commit=ad106d5fdd5d960bd33fae1c48a351af567fd075
+    git+https://github.com/pytorch/cpuinfo.git#commit=05332fd802d9109a2a151ec32154b107c1e5caf9
     duckstation-qt.desktop
     duckstation-qt.sh)
 sha256sums=('SKIP'
             'f1dbf3270fc21bf6871ae8693ddfb467ce142009d3371fd407512b956c25ace0'
             '9c2a148a1e4c7ca16ab54991980ed6393c1c21794081083f2779d880b3dbf1d4'
             '6463c6d54b99dddaa0f3da7a84926eb543672a4414dc2835bf35bb9eada9339f'
+            '0e192b397f79a0f0567d32350cbe4f1b68177d7500222985167ae456465c77da'
             'ec2d7358f81598390a8ceca2d1974be3e5f7c45602b550c89a1e9323ab45474b'
             '221a8fc0d1f0cebdf281acc26484e98ebbb59f876e12fdef3f03cf91380e31f5')
 
@@ -92,9 +95,35 @@ EOF
     cd "$srcdir/SPIRV-Cross"
     # apply duckstation patch
     git apply "$srcdir/$_pkgname/scripts/spirv-cross-changes.patch"
+
+    cd "$srcdir/cpuinfo"
+    git apply "$srcdir/$_pkgname/scripts/cpuinfo-changes.patch"
 }
 
 build() {
+    echo "Building cpuinfo..."
+
+    cmake -B build-cpuinfo -S cpuinfo \
+        -G Ninja \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_C_COMPILER=clang \
+        -DCMAKE_CXX_COMPILER=clang++ \
+        -DCMAKE_EXE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
+        -DCMAKE_MODULE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
+        -DCMAKE_SHARED_LINKER_FLAGS_INIT="-fuse-ld=lld" \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCPUINFO_LIBRARY_TYPE=shared \
+        -DCPUINFO_RUNTIME_TYPE=shared \
+        -DCPUINFO_LOG_LEVEL=error \
+        -DCPUINFO_LOG_TO_STDIO=ON \
+        -DCPUINFO_BUILD_TOOLS=OFF \
+        -DCPUINFO_BUILD_UNIT_TESTS=OFF \
+        -DCPUINFO_BUILD_MOCK_TESTS=OFF \
+        -DCPUINFO_BUILD_BENCHMARKS=OFF \
+        -DUSE_SYSTEM_LIBS=ON
+    ninja -C build-cpuinfo
+    DESTDIR="$srcdir/deps" ninja -C build-cpuinfo install
+
     echo "Building libbacktrace..."
 
     pushd libbacktrace
@@ -174,6 +203,9 @@ package() {
     install -m 755 -d "${pkgdir}/usr/lib"
     cp -drv --no-preserve='ownership' build/bin "${pkgdir}/usr/lib/${_pkgname}"
 
+    # rpath
+    patchelf --force-rpath --set-rpath "/usr/lib/${_pkgname}" "${pkgdir}/usr/lib/${_pkgname}/$_pkgname-qt"
+
     # Move shared data to /usr/share/duckstation
     cd "${pkgdir}/usr/lib/${_pkgname}"
     install -m 755 -d "${pkgdir}/usr/share/${_pkgname}"
@@ -184,7 +216,9 @@ package() {
     done
 
     # Install bundled shaderc
-    install -vm644 "${srcdir}/deps/usr/lib/libshaderc_shared.so" "${srcdir}/deps/usr/lib/libspirv-cross-c-shared.so" \
+    install -vm644 "${srcdir}/deps/usr/lib/libshaderc_shared.so" \
+        "${srcdir}/deps/usr/lib/libspirv-cross-c-shared.so" \
+        "${srcdir}/deps/usr/lib/libcpuinfo.so" \
         "${pkgdir}/usr/lib/${_pkgname}"
 
     # Install additional license
