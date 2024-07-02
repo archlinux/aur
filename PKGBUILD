@@ -1,12 +1,12 @@
 # Maintainer: Răzvan Cojocaru <rzvncj@gmail.com>
 
 pkgname=gdbuspp-git
-pkgver=makepkg_7d80f553d64ec647
-pkgrel=1
+pkgver=1
+pkgrel=2
 pkgdesc="glib2 D-Bus C++ interface"
 arch=('x86_64')
 url="https://codeberg.org/OpenVPN/gdbuspp"
-license=('AGPLv3')
+license=('AGPL-3.0-only')
 groups=()
 depends=('glib2' 'python-xmltodict')
 makedepends=('meson')
