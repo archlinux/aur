@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=netpad-bin
 _pkgname=NetPad
-pkgver=0.7.1
+pkgver=0.7.2
 _electronversion=23
 pkgrel=1
 pkgdesc="A cross-platform C# editor and playground."
@@ -26,7 +26,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/tareqimbasher/NetPad/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('362df336b2521a7c4ad0b92be9074b1141c10c9823740e67e6a799e3eeb1c8e3'
+sha256sums=('e2a7137602b43e9507d4d0f5d3310bd059623303cb5bc09be0f4185c1bc2a393'
             '43485534798b716310ae2a0edeebb00e97ff0e42e5fde13ff2994e2bc82348f6'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
