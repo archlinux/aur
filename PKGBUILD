@@ -2,14 +2,21 @@
 
 _name="iodata"
 pkgname="python-${_name}-git"
-pkgver=1.0.0a2.r1341.6b9c6e0
+pkgver=1.0.0a4.r1532.0ca750f
 pkgrel=1
 pkgdesc="Python library for reading, writing, and converting computational chemistry file formats and generating input files. (git version)"
 arch=("any")
 url="https://iodata.readthedocs.io/en/latest/index.html"
 license=("LGPL-3.0")
-makedepends=("git" "python-setuptools")
-checkdepends=("python-pytest")
+makedepends=(
+  "git"
+  "python-build"
+  "python-installer"
+  "python-setuptools"
+  "python-setuptools-scm"
+  "python-wheel"
+)
+checkdepends=("python-pytest" "python-pytest-xdist")
 depends=("python-attrs" "python-numpy" "python-scipy")
 provides=("python-${_name}")
 conflicts=("python-${_name}")
@@ -22,22 +29,23 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_name}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${srcdir}/${_name}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 }
 
 check() {
   cd "${srcdir}/${_name}"
-  python -m pytest
+  # these require the package to be installed
+  python -m pytest -k 'not test_scripts'
 }
 
 pkgver() {
   cd "${srcdir}/${_name}"
-  _parent_ver=$(git describe --tags --abbrev=0)
+  _parent_ver=$(git describe --tags --abbrev=0 | tr -d 'v')
   _parent_major_ver=$(echo "${_parent_ver}" | cut -d "." -f 1)
   _parent_minor_ver=$(echo "${_parent_ver}" | cut -d "." -f 2)
   _parent_patch_ver=$(echo "${_parent_ver}" | cut -d "." -f 3)
