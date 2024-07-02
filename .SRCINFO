@@ -1,0 +1,21 @@
+pkgbase = hullcaster-git
+	pkgdesc = Terminal-based TUI podcast manager
+	pkgver = r327.caf9e5c
+	pkgrel = 1
+	url = https://github.com/gilcu3/hullcaster
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = GPL3
+	makedepends = cargo
+	makedepends = git
+	depends = sqlite>=3.23.0
+	depends = openssl>=1.1.0
+	provides = hullcaster
+	conflicts = hullcaster
+	options = !lto
+	backup = etc/hullcaster/config.toml
+	source = hullcaster::git+https://github.com/gilcu3/hullcaster.git#branch=master
+	sha256sums = SKIP
+
+pkgname = hullcaster-git
