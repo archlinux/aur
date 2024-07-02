@@ -1,6 +1,8 @@
 # h7toolpc-wine.install
 info() {
     echo -e "Wine H7-TOOL 的 PC 上位机，支持串口、CAN、示波器、CMSIS-DAP、DS18B20、RTT Viewer、脱机烧录等"
+    echo -e "非 root 用户需要将用户添加到 uucp 用户组:"
+    echo -e "  sudo gpasswd -a \$USER uucp"
 }
 post_install() {
     info

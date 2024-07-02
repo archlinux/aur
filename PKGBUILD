@@ -18,14 +18,14 @@ depends=(
 optdepends=()
 makedepends=(libarchive)
 backup=()
-options=()
+options=('!strip' '!debug')
 install=${pkgname}.install
 source=("${pkgname/pc-wine/PC_release}-${pkgver}.7z::https://img.anfulai.cn/bbs/95468/${pkgname/pc-wine/PC_release}(V${pkgver}).7z"
         "icons.tar.gz"
         "${pkgname}.install")
 sha256sums=('2465c51723f41a298632fa00d3ca170c7554ce5f828761c73d213da1d803f255'
             '6823224b5699dc17c41efdcbc8465554f007cb62cadea0aad9b67c08c5698142'
-            '078a64b4818c65daabe24ad31ead1912ee564b15da79084fa1c7d1a004f30cef')
+            'b7ed44498e84bae5f174fd0a4a56aea0298ce93bc9a5de8b1dfb41c067705d27')
 noextract=("icons.tar.gz")
 
 package() {
