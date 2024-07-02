@@ -1,0 +1,24 @@
+pkgbase = miuzcpc-git
+	pkgdesc = 一个私人音乐播放器，可以播放本地以及云端音乐，并且支持歌词展示。
+	pkgver = 1.0.1.r0.g763fc19
+	pkgrel = 1
+	url = https://github.com/miboqiang130/miuzcPC
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = git
+	makedepends = nvm
+	makedepends = gendesk
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = curl
+	makedepends = icoutils
+	depends = electron30
+	provides = miuzcpc=1.0.1
+	conflicts = miuzcpc
+	source = miuzcpc.git::git+https://github.com/miboqiang130/miuzcPC.git
+	source = miuzcpc.sh
+	sha256sums = SKIP
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+
+pkgname = miuzcpc-git
