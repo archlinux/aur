@@ -30,10 +30,6 @@ _main_package() {
     'libxrandr'
     'qt6-base'
     'sdl2'
-
-    ## shaderc
-    'glslang'
-    'spirv-tools'
   )
   makedepends=(
     ## compiler
@@ -51,9 +47,6 @@ _main_package() {
     'qt6-tools'
     'qt6-wayland'
 
-    ## shaderc
-    'spirv-headers'
-
     ## fixups
     'patchelf'
     'patchutils'
@@ -65,19 +58,10 @@ _main_package() {
     _source_duckstation_git
   fi
 
-  _src_backtrace="ianlancetaylor.libbacktrace"
-  _src_shaderc="google.shaderc"
-  _src_spirv_cross="khronosgroup.spirv-cross"
-  source+=(
-    "$_src_shaderc"::"git+https://github.com/google/shaderc.git"
-    "$_src_backtrace"::"git+https://github.com/ianlancetaylor/libbacktrace.git"
-    "$_src_spirv_cross"::"git+https://github.com/KhronosGroup/SPIRV-Cross.git"
-  )
-  sha256sums+=(
-    'SKIP'
-    'SKIP'
-    'SKIP'
-  )
+  _source_backtrace
+  [ "${_build_git::1}" = "t" ] && _source_cpuinfo
+  _source_shaderc
+  _source_spirv_cross
 }
 
 _source_duckstation() {
@@ -110,22 +94,74 @@ _source_duckstation_git() {
   }
 }
 
-_prepare_duckstation() {
-  sed -E -e 's&"shaderc_shared"&"'"shaderc-$_pkgname"'"&' \
-    -e 's&"spirv-cross-c-shared"&"'"spirv-cross-c-$_pkgname"'"&' \
-    -i "$_pkgsrc/src/util/gpu_device.cpp"
+_source_backtrace() {
+  source+=(
+    "ianlancetaylor.libbacktrace"::"git+https://github.com/ianlancetaylor/libbacktrace.git"
+  )
+  sha256sums+=(
+    'SKIP'
+  )
 }
+
+_source_cpuinfo() {
+  source+=(
+    "pytorch.cpuinfo"::"git+https://github.com/pytorch/cpuinfo.git"
+  )
+  sha256sums+=(
+    'SKIP'
+  )
+}
+
+_source_shaderc() {
+  depends+=(
+    'glslang'
+    'spirv-tools'
+  )
+  makedepends+=(
+    'patchutils'
+    'spirv-headers'
+  )
+
+  source+=(
+    "google.shaderc"::"git+https://github.com/google/shaderc.git"
+    #"khronosgroup.glslang"::"git+https://github.com/KhronosGroup/glslang.git"
+    #"khronosgroup.spirv-headers"::"git+https://github.com/KhronosGroup/SPIRV-Headers.git"
+    #"khronosgroup.spirv-tools"::"git+https://github.com/KhronosGroup/SPIRV-Tools.git"
+  )
+  sha256sums+=(
+    'SKIP'
+  )
+}
+
+_source_spirv_cross() {
+  source+=(
+    "khronosgroup.spirv-cross"::"git+https://github.com/KhronosGroup/SPIRV-Cross.git"
+  )
+  sha256sums+=(
+    'SKIP'
+  )
+}
+
+_prepare_backtrace() (
+  local _version_backtrace=$(grep -E -m1 'LIBBACKTRACE=' "$_pkgsrc/scripts/build-dependencies-linux.sh" | sed -E -e 's&^\s*LIBBACKTRACE=(\S+)$&\1&')
+  git -C "$srcdir/ianlancetaylor.libbacktrace" checkout -f "$_version_backtrace"
+)
+
+_prepare_cpuinfo() (
+  local _version_cpuinfo=$(grep -E -m1 'CPUINFO=' "$_pkgsrc/scripts/build-dependencies-linux.sh" | sed -E -e 's&^\s*CPUINFO=(\S+)$&\1&')
+  git -C "$srcdir/pytorch.cpuinfo" checkout -f "$_version_cpuinfo"
+)
 
 _prepare_shaderc() (
   local _version_shaderc=$(grep -E -m1 'SHADERC=' "$_pkgsrc/scripts/build-dependencies-linux.sh" | sed -E -e 's&^\s*SHADERC=(\S+)$&\1&')
 
-  git -C "$srcdir/$_src_shaderc" checkout -f "v$_version_shaderc"
+  git -C "$srcdir/google.shaderc" checkout -f "v$_version_shaderc"
 
   filterdiff "$srcdir/$_pkgsrc/scripts/shaderc-changes.patch" \
     | sed -E 's&non_sematic_debug_info&non_semantic_debug_info&' \
       > shaderc-changes.patch
 
-  cd "$_src_shaderc"
+  cd "$srcdir/google.shaderc"
   git apply "$srcdir/shaderc-changes.patch"
 
   sed -E -e '/\(glslc\)/d;/examples/d;/third_party/d' \
@@ -135,24 +171,36 @@ _prepare_shaderc() (
 _prepare_spirv_cross() (
   local _version_spirv_cross=$(grep -E -m1 'SPIRV_CROSS=' "$_pkgsrc/scripts/build-dependencies-linux.sh" | sed -E -e 's&^\s*SPIRV_CROSS=(\S+)$&\1&')
 
-  git -C "$srcdir/$_src_spirv_cross" checkout -f "$_version_spirv_cross"
+  git -C "$srcdir/khronosgroup.spirv-cross" checkout -f "$_version_spirv_cross"
 
   filterdiff "$srcdir/$_pkgsrc/scripts/spirv-cross-changes.patch" \
     > spirv-cross-changes.patch
 
-  cd "$_src_spirv_cross"
+  cd "khronosgroup.spirv-cross"
   git apply "$srcdir/spirv-cross-changes.patch"
 )
 
+_prepare_duckstation() {
+  sed -E -e 's&"shaderc_shared"&"'"shaderc-$_pkgname"'"&' \
+    -e 's&"spirv-cross-c-shared"&"'"spirv-cross-c-$_pkgname"'"&' \
+    -i "$_pkgsrc/src/util/gpu_device.cpp"
+}
+
 prepare() {
+  _prepare_backtrace
   _prepare_shaderc
-  _prepare_spirv_cross
+
+  if [ "${_build_git::1}" = "t" ]; then
+    _prepare_cpuinfo
+    _prepare_spirv_cross
+  fi
+
   _prepare_duckstation
 }
 
-_build_libbacktrace() (
+_build_backtrace() (
   echo "Building libbacktrace..."
-  cd "$_src_backtrace"
+  cd "ianlancetaylor.libbacktrace"
 
   autoreconf -fi
   ./configure
@@ -162,12 +210,37 @@ _build_libbacktrace() (
   install -Dm644 *.h -t "$srcdir/deps/include/"
 )
 
+_build_cpuinfo() {
+  echo "Building cpuinfo..."
+  local _cmake_cpuinfo=(
+    -B build_cpuinfo
+    -S pytorch.cpuinfo
+    -G Ninja
+
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCPUINFO_LIBRARY_TYPE=shared
+    -DCPUINFO_RUNTIME_TYPE=shared
+    -DCPUINFO_LOG_LEVEL=error
+    -DCPUINFO_LOG_TO_STDIO=ON
+    -DCPUINFO_BUILD_TOOLS=OFF
+    -DCPUINFO_BUILD_UNIT_TESTS=OFF
+    -DCPUINFO_BUILD_MOCK_TESTS=OFF
+    -DCPUINFO_BUILD_BENCHMARKS=OFF
+    -DUSE_SYSTEM_LIBS=ON
+    -Wno-dev
+  )
+
+  cmake "${_cmake_cpuinfo[@]}"
+  cmake --build build_cpuinfo
+  DESTDIR="$srcdir/deps" cmake --install build_cpuinfo
+}
+
 _build_shaderc() {
   echo "Building shaderc..."
-
   local _cmake_shaderc=(
     -B build_shaderc
-    -S "$_src_shaderc"
+    -S google.shaderc
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX=/usr
@@ -188,7 +261,7 @@ _build_spirv_cross() {
 
   local _cmake_spirv_cross=(
     -B build_spirv_cross
-    -S "$_src_spirv_cross"
+    -S "khronosgroup.spirv-cross"
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX=/usr
@@ -227,9 +300,15 @@ _build_duckstation() {
     -DLIBBACKTRACE_INCLUDE_DIR="$srcdir/deps/include"
     -DSHADERC_INCLUDE_DIR="$srcdir/deps/usr/include"
     -DSHADERC_LIBRARY="$srcdir/deps/usr/lib/libshaderc_shared.so"
-    -Dspirv_cross_c_shared_DIR="$srcdir/deps/usr/share/spirv_cross_c_shared/cmake"
     -Wno-dev
   )
+
+  if [ "${_build_git::1}" = "t" ]; then
+    _cmake_options+=(
+      -Dcpuinfo_DIR="$srcdir/deps/usr/share/cpuinfo/"
+      -Dspirv_cross_c_shared_DIR="$srcdir/deps/usr/share/spirv_cross_c_shared/cmake"
+    )
+  fi
 
   cmake "${_cmake_options[@]}"
   cmake --build build
@@ -251,9 +330,14 @@ _build_env() {
 build() {
   _build_env
 
-  _build_libbacktrace
+  _build_backtrace
   _build_shaderc
-  _build_spirv_cross
+
+  if [ "${_build_git::1}" = "t" ]; then
+    _build_cpuinfo
+    _build_spirv_cross
+  fi
+
   _build_duckstation
 }
 
@@ -268,12 +352,17 @@ package() {
   ls -l "$srcdir/deps/usr/lib/"
 
   local _shaderc_patched="$pkgdir/opt/$_pkgname/libshaderc-$_pkgname.so"
-  cp -L "$srcdir/deps/usr/lib/libshaderc_shared.so" "$_shaderc_patched"
+  install -Dm644 "$srcdir/deps/usr/lib/libshaderc_shared.so" "$_shaderc_patched"
   patchelf --set-soname "${_shaderc_patched##*/}" "$_shaderc_patched"
 
-  local _spirv_cross_patched="$pkgdir/opt/$_pkgname/libspirv-cross-c-$_pkgname.so"
-  install -Dm644 "$srcdir/deps/usr/lib/libspirv-cross-c-shared.so" "$_spirv_cross_patched"
-  patchelf --set-soname "${_spirv_cross_patched##*/}" "$_spirv_cross_patched"
+  if [ "${_build_git::1}" = "t" ]; then
+    local _spirv_cross_patched="$pkgdir/opt/$_pkgname/libspirv-cross-c-$_pkgname.so"
+    install -Dm644 "$srcdir/deps/usr/lib/libspirv-cross-c-shared.so" "$_spirv_cross_patched"
+    patchelf --set-soname "${_spirv_cross_patched##*/}" "$_spirv_cross_patched"
+
+    local _cpuinfo_patched="$pkgdir/opt/$_pkgname/libcpuinfo.so"
+    install -Dm644 "$srcdir/deps/usr/lib/libcpuinfo.so" "$_cpuinfo_patched"
+  fi
 
   # icon
   install -Dm644 "$pkgdir/opt/$_pkgname/resources/images/duck.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
