@@ -2,7 +2,7 @@
 
 _npmname=parse-torrent
 pkgname=$_npmname
-pkgver=11.0.16
+pkgver=11.0.17
 pkgrel=1
 
 pkgdesc="Parse a torrent identifier (magnet uri, .torrent file, info hash)"
@@ -18,7 +18,7 @@ makedepends=("npm" "jq")
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz"
 	"https://raw.githubusercontent.com/webtorrent/parse-torrent/master/LICENSE")
 noextract=("${_npmname}-${pkgver}.tgz")
-b2sums=('c751ab740885e652eeb1f9b5ebab403a121f5afb69be902ed580409e488148db29856725e342878e04f230426f3ff5773cfa934d83aa81301586107356e2caa2'
+b2sums=('246d358f22a32a2d56233b70229894263e2f904c0ef3920093683dac9365fe0157d733dcafbaa0e6534694d3f5b6bbc900eaea11ab1b106983b030c8a8e44f9d'
 	'3890a8cd095787f6ab383fe3ca0a0bf0999d80a7ea65627bb1a50f1c2690987f53e0619df5745ba47d6ef46d32e03573b5a52330a7c857220e4db96a33203019')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
