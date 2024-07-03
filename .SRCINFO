@@ -1,12 +1,12 @@
 pkgbase = syslog-notify
 	pkgdesc = Pop-up display for system log messages
 	pkgver = 0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://jtniehof.github.com/syslog-notify
 	install = syslog-notify.install
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = glib2
 	depends = glibc
 	depends = libnotify
