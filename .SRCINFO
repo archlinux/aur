@@ -1,0 +1,14 @@
+pkgbase = gss
+	pkgdesc = GNU Generic Security Service
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://www.gnu.org/software/gss/
+	arch = x86_64
+	license = GPL3
+	source = https://ftp.gnu.org/gnu/gss/gss-1.0.4.tar.gz
+	source = https://ftp.gnu.org/gnu/gss/gss-1.0.4.tar.gz.sig
+	validpgpkeys = B1D2BD1375BECB784CF4F8C4D73CF638C53C06BE
+	b2sums = fdcb59fa26c7bef917e2fd75bea58478b33342a516ecf80caeab5dfeebfeed80bbf87eec47415968dd0b326d10386237b167e7f6090066bc0ccf928f0ec53643
+	b2sums = SKIP
+
+pkgname = gss
