@@ -19,7 +19,7 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
-  CFLAGS="-O2 -Wall 'Wextra" LDFLAGS="" ./configure --prefix=/usr \
+  CFLAGS="-O2 -Wall Wextra" LDFLAGS="" ./configure --prefix=/usr \
                          --enable-threads=pthreads
   make
 }
