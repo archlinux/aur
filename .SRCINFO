@@ -1,0 +1,23 @@
+pkgbase = python-sqlalchemy1.4
+	pkgdesc = Python SQL toolkit and Object Relational Mapper
+	pkgver = 1.4.52
+	pkgrel = 1
+	url = https://www.sqlalchemy.org/
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-xdist
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = glibc
+	depends = python
+	depends = python-greenlet
+	optdepends = python-psycopg2: connect to PostgreSQL database
+	provides = python-sqlalchemy
+	conflicts = python-sqlalchemy
+	source = python-sqlalchemy1.4-1.4.52.tar.gz::https://github.com/sqlalchemy/sqlalchemy/archive/refs/tags/rel_1_4_52.tar.gz
+	sha512sums = d63ad982073eeeb094dd026ccf92907b829ee12c28a6f1092948077f0112695b1b22c28f9ad2eb7ff063ff8926cb416a1e45102df016ada5c1f866de373bb0e8
+
+pkgname = python-sqlalchemy1.4
