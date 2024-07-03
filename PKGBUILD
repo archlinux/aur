@@ -1,6 +1,6 @@
 # Maintainer: TeSSLa Community <info@tessla.io>
 pkgname=tessla
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="TeSSLa toolchain bundle"
 arch=(any)
@@ -10,12 +10,11 @@ optdepends=()
 makedepends=()
 license=(Apache)
 noextract=("tessla-${pkgver}.jar")
-# "tessla-${pkgver}.jar"::"https://git.tessla.io/tessla/tessla/builds/artifacts/master/raw/target/scala-3.2.2/tessla-assembly-${pkgver}.jar?job=deploy"
 source=(
-	"tessla-${pkgver}.jar"::"https://git.tessla.io/tessla/tessla/builds/1520/artifacts/raw/target/scala-3.2.2/tessla-assembly-${pkgver}.jar"
+	"tessla-${pkgver}.jar"::"https://git.tessla.io/tessla/tessla/builds/artifacts/master/raw/target/scala-3.3.1/tessla-assembly-${pkgver}.jar?job=deploy"
 	"tessla")
 sha256sums=(
-	'1f8f4b5406a2843e38655fad95ed1bfec5de1aacb46d0dbdb5f92088cc001ad3'
+	'588ca616fed051bc5ba1e35a81b3a9f2ba3d2bf553d456bb794de01dfa901e22'
 	'2d9931705d32832b11aaee1ed212f53bc62da1266ddd7db010e63861eb3c55c1')
 
 package() {
