@@ -4,7 +4,7 @@ _pkgname=netns-helper
 pkgname=${_pkgname}-git
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-pkgver=r81.a8ae0ab
+pkgver=r83.7cd2cbd
 pkgrel=1
 pkgdesc='Helper systemd services to create network namespaces for other programs and services.'
 url="https://gitlab.com/patlefort/${_pkgname}"
@@ -17,7 +17,7 @@ optdepends=(
 	'dnsmasq: DNS support'
 	'dhcpcd: DHCP support'
 	'openresolv: for dhcpcd')
-makedepends=('git' 'libxslt' 'docbook-xsl-ns' 'cmake')
+makedepends=('git' 'libxslt' 'docbook-xsl' 'cmake')
 sha256sums=('SKIP')
 source=("git+${url}.git")
 options=('!strip')
@@ -36,10 +36,10 @@ build() {
 }
 
 package() {
-	depends=('systemd' 'iproute2')
-	
+	depends+=('systemd' 'iproute2')
+
 	DESTDIR="${pkgdir}" cmake --install 'build'
-	
+
 	install -dm755 "${pkgdir}/etc/netns-helper/ns"
 	install -Dm644 "${_pkgname}/license.txt" -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 }
