@@ -1,0 +1,3 @@
+[gamescope]
+source = "git"
+git = "https://github.com/ValveSoftware/gamescope.git"
