@@ -4,7 +4,8 @@ pre_remove() {
 }
 
 post_remove() {
-    if [ -d /home/$SUDO_USER/.local/share/swiftly ]; then
-        rm -rf /home/$SUDO_USER/.local/share/swiftly
+    USER_HOME=$(getent passwd $SUDO_USER | cut -d: -f6)
+    if [ -d $USER_HOME/.local/share/swiftly ]; then
+        rm -rf $USER_HOME/.local/share/swiftly
     fi
 }
