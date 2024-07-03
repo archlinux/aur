@@ -1,7 +1,7 @@
 pkgbase = stklos
 	pkgdesc = Free R7RS Scheme system.
 	pkgver = 2.00
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.stklos.net
 	arch = i686
 	arch = x86_64

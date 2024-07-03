@@ -3,7 +3,7 @@
 
 pkgname=stklos
 pkgver=2.00
-pkgrel=3
+pkgrel=4
 pkgdesc="Free R7RS Scheme system."
 arch=('i686' 'x86_64')
 url="http://www.stklos.net"
@@ -19,7 +19,7 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
-  LDFLAGS="" ./configure --prefix=/usr \
+  CFLAGS="-O2 -Wall 'Wextra" LDFLAGS="" ./configure --prefix=/usr \
                          --enable-threads=pthreads
   make
 }
