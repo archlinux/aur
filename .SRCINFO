@@ -1,0 +1,17 @@
+pkgbase = mmv-origin
+	pkgver = 2.6
+	pkgrel = 1
+	url = https://github.com/rrthomas/mmv
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	depends = glibc
+	provides = mmv
+	conflicts = mmv
+	conflicts = mmv-c
+	conflicts = mmv-c-git
+	conflicts = mmv-go
+	source = https://github.com/rrthomas/mmv/releases/download/v2.6/mmv-2.6.tar.gz
+	sha256sums = SKIP
+
+pkgname = mmv-origin
