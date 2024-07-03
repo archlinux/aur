@@ -1,0 +1,4 @@
+[python-submitit]
+source = "github"
+github = "facebookincubator/submitit"
+use_max_tag = true

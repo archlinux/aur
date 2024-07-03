@@ -1,0 +1,25 @@
+pkgbase = python-submitit
+	pkgdesc = Python toolbox for submitting jobs to Slurm
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/facebookincubator/submitit
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	checkdepends = rsync
+	makedepends = python-build
+	makedepends = python-flit
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-cloudpickle
+	depends = python-ipdb
+	depends = python-numpy
+	depends = python-scikit-learn
+	depends = python-setuptools
+	optdepends = python-pytorch: to run the included example
+	source = submitit-1.5.1.tar.gz::https://github.com/facebookincubator/submitit/archive/1.5.1.tar.gz
+	sha512sums = 3e7589d1cf017080de46b561563ea209f1279c4b8e7b40f2a360824199cb31b556446f6b243989fe3394fc5c7e4d3058580bcc482498713cdbf453f4d2f23a86
+
+pkgname = python-submitit
