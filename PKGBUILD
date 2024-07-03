@@ -5,20 +5,20 @@
 # Contributor: Maximilian Kindshofer <maximilian@kindshofer.net>
 
 pkgname=(kitty-bitmap)
-pkgver=0.28.1
+pkgver=0.35.2
 pkgrel=1
 pkgdesc="A modern, hackable, featureful, OpenGL-based terminal emulator. Patched to support bitmap fonts."
 arch=('x86_64')
 url="https://github.com/kovidgoyal/kitty"
 license=('GPL3')
 depends=('python3' 'freetype2'  'fontconfig' 'wayland' 'libx11' 'libxkbcommon-x11' 'libxi' 'hicolor-icon-theme' 'libgl' 'libcanberra' 'dbus' 'kitty-terminfo')
-makedepends=('libxinerama' 'libxcursor' 'libxrandr' 'wayland-protocols' 'python-sphinx')
+makedepends=('libxinerama' 'libxcursor' 'libxrandr' 'wayland-protocols' 'python-sphinx' 'simde')
 optdepends=('imagemagick: viewing images with icat')
 provides=('kitty')
 conflicts=('kitty')
 source=("${pkgname/-bitmap}-${pkgver}.tar.gz::https://github.com/kovidgoyal/${pkgname/-bitmap/}/archive/v$pkgver.tar.gz" "Allow-bitmap-fonts.patch")
-sha512sums=('75462ac6e6b3c23de9966f73a40faad31a7583e30881a07e1906ca591f0865e0d762c5f59422ae8f66255d904ea80c54c709e52770587a3b5394b779fc39d861'
-            'SKIP')
+sha512sums=('c9a65a727017a81c1d3945092f3bfe4986caa94e0a56b5727b11885968a88a6b784cbbe8167b4a89da975ed233a7f379fbe9443ffe66bf3da99d8e6cfad380ad'
+            '10420b9bb3551a1a592a1b1b647c531a5f12ad04adfe9ad6d5f6ad0fc69962091a320e5c3c3adf30b3610cd765c54c98986cc9035cfaf05b9d12a172a2f3c697')
 
 prepare() {
   cd "$srcdir/${pkgname/-bitmap}-$pkgver"
