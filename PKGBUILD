@@ -3,7 +3,7 @@
 
 pkgname=terser
 pkgver=5.31.1
-pkgrel=1
+pkgrel=2
 pkgdesc='JavaScript parser, mangler and compressor toolkit for ES6+'
 arch=('any')
 url='https://terser.org/'

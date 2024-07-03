@@ -1,7 +1,7 @@
 pkgbase = terser
 	pkgdesc = JavaScript parser, mangler and compressor toolkit for ES6+
 	pkgver = 5.31.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://terser.org/
 	arch = any
 	license = BSD-2-Clause
