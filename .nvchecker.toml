@@ -1,0 +1,5 @@
+[mdcat]
+source = "git"
+git = "https://github.com/swsnr/mdcat.git"
+prefix = "mdcat-"
+exclude_regex = "mdless-.*"
