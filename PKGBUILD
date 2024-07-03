@@ -12,7 +12,7 @@ groups=('xfce4-devel')
 depends=('exo' 'garcon' 'libxfce4ui>=4.19.5' 'xfconf' 'libnotify' 'libcanberra'
          'colord' 'libxklavier' 'adwaita-icon-theme' 'gnome-themes-extra'
          'wayland' 'gtk-layer-shell')
-makedepends=('xf86-input-libinput')
+makedepends=('xf86-input-libinput' 'glib2-devel')
 optdepends=('python: xfce4-compose-mail -- "mailto:" URI handling')
 
 provides=("${_pkgname}=${pkgver}")

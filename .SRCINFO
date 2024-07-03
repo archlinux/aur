@@ -10,6 +10,7 @@ pkgbase = xfce4-settings-devel
 	groups = xfce4-devel
 	license = GPL2
 	makedepends = xf86-input-libinput
+	makedepends = glib2-devel
 	depends = exo
 	depends = garcon
 	depends = libxfce4ui>=4.19.5
