@@ -3,13 +3,13 @@
 _pkgname='pat-aur'
 pkgbase=${_pkgname}-git
 pkgname=(${_pkgname}-client-git ${_pkgname}-host-git)
-pkgver=r240.d674bb4
+pkgver=r258.ec21de9
 pkgrel=1
 pkgdesc='AUR helper and tool to build Arch Linux packages in clean containers.'
 url="https://gitlab.com/patlefort/${_pkgname}"
 license=('GPL3')
 depends=('elvish')
-makedepends=('git' 'libxslt' 'docbook-xsl-ns' 'rsync')
+makedepends=('git' 'libxslt' 'docbook-xsl' 'rsync')
 arch=('any')
 source=("git+${url}.git")
 sha256sums=('SKIP')

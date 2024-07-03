@@ -1,13 +1,13 @@
 pkgbase = pat-aur-git
 	pkgdesc = AUR helper and tool to build Arch Linux packages in clean containers.
-	pkgver = r240.d674bb4
+	pkgver = r258.ec21de9
 	pkgrel = 1
 	url = https://gitlab.com/patlefort/pat-aur
 	arch = any
 	license = GPL3
 	makedepends = git
 	makedepends = libxslt
-	makedepends = docbook-xsl-ns
+	makedepends = docbook-xsl
 	makedepends = rsync
 	depends = elvish
 	source = git+https://gitlab.com/patlefort/pat-aur.git
