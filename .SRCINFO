@@ -1,7 +1,7 @@
 pkgbase = timbl
 	pkgdesc = Tilburg Memory-Based Learner, implementations of k-nearest neighbour classification
 	pkgver = 6.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://languagemachines.github.io/timbl/
 	install = timbl.install
 	arch = i686

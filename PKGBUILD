@@ -3,7 +3,7 @@
 
 pkgname=timbl
 pkgver=6.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Tilburg Memory-Based Learner, implementations of k-nearest neighbour classification "
 arch=('i686' 'x86_64')
 url="https://languagemachines.github.io/timbl/"
@@ -20,6 +20,7 @@ md5sums=(3f21e3af24198a3bdcd3440e5d6b2d4e)
 
 build() {
   cd $srcdir/$pkgname-$pkgver
+  export CXXFLAGS="-std=c++17"
   bash bootstrap.sh
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
   make || return 1
