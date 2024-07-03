@@ -1,16 +1,16 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=beakerlib
-pkgver=1.30
-pkgrel=2
+pkgver=1.31
+pkgrel=1
 pkgdesc="Shell-level integration testing library, providing convenience functions which simplify writing, running and analysis of integration and blackbox tests."
 arch=('i686' 'x86_64')
 url="https://github.com/beakerlib/beakerlib"
 license=('GPL2')
-depends=()
-makedepends=('perl')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/beakerlib/beakerlib/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('9161dd08ca7a9066d2d85ff6911b7c8271fbd6ba76d5fe168f2ad3e705bd2615')
+depends=('perl')
+makedepends=()
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('8aeba4c8174c31b86241d88138e61d541adaf07128d8233be2dd4e199c61f7d2')
 
 _srcdir="${pkgname}-${pkgver}"
 
@@ -25,6 +25,8 @@ build() {
 }
 
 package() {
+	depends+=('util-linux' 'python')
+
 	cd "${_srcdir}"
 	make DESTDIR="${pkgdir}/usr" install
 
