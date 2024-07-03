@@ -2,7 +2,7 @@
 
 pkgbase=nvidia-open-beta
 pkgname=('nvidia-open-beta' 'nvidia-open-beta-dkms')
-pkgver=555.58
+pkgver=555.58.02
 pkgrel=1
 epoch=1
 pkgdesc='NVIDIA open GPU kernel modules (beta version)'
@@ -16,7 +16,7 @@ source=("https://github.com/NVIDIA/open-gpu-kernel-modules/archive/${pkgver}/nvi
         '120-nvidia-open-linux-rt-gift.patch'
         '130-nvidia-open-reproducible-build.patch'
         '140-nvidia-open-gcc-sls.patch')
-sha256sums=('e7168e6aeffb68e7a83135477b6cfd747013681cc5f5d19cc06f1d227750070f'
+sha256sums=('3ae5dd04a68cc5a7f7250941a17adf64bfebc00c0f9410f05dc5d55f0b747dc9'
             '9f9d058d09fe9187f00185e84eb243a3beabfaa7b619a6fcd2662ac2bf70aa5f'
             'b0f62a78f749ff3a104197c12b6d885352adcf35fb5ecf00c4cd4c51b4195e45'
             '7f13127b830723eef798d981929539fa28b558441836d9acefff7db198d561f2'
