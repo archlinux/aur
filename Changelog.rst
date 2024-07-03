@@ -1,6 +1,13 @@
 Changelog
 =========
 
+**[5.3.0] ----- 2024-07-03** ::
+
+	    wg-fix-resolv: chown(root) if write resolv.conf.saved.
+	      Fixes (benign) bug where owner of the file resolv.conf.saved can be user instead of root
+	    update Docs/Changelog.rst Docs/wg-client.pdf
+
+
 **[5.2.0] ----- 2024-07-02** ::
 
 	    When comparing file digests use strncmp() with known dynamic length not EVP_MAX_MD_SIZE
