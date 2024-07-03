@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/eglaysher/rlvm"
 license=('GPL-3.0-or-later')
 depends=('boost-libs>=1.46' 'glew' 'libmad' 'libogg' 'libvorbis' 'libpng'
-         'sdl_mixer' 'sdl_image' 'sdl_ttf' 'guichan' 'gtk2')
+         'sdl_mixer' 'sdl_image' 'sdl_ttf' 'guichan' 'gtk3')
 makedepends=('git' 'scons' 'boost')
 provides=('rlvm')
 conflicts=('rlvm')
