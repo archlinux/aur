@@ -1,35 +1,22 @@
 --- a/gpt4all-chat/CMakeLists.txt	2024-07-02 08:03:00.000000000 +0800
-+++ b/gpt4all-chat/CMakeLists.txt	2024-07-03 09:43:06.514027927 +0800
-@@ -91,17 +91,17 @@
++++ b/gpt4all-chat/CMakeLists.txt	2024-07-03 10:58:36.768672168 +0800
+@@ -90,6 +90,7 @@
+     list(APPEND CHAT_EXE_RESOURCES "${APP_ICON_RESOURCE}")
  endif()
  
++if(NOT LINUX)
  # Embedding model
--set(LOCAL_EMBEDDING_MODEL "nomic-embed-text-v1.5.f16.gguf")
--set(LOCAL_EMBEDDING_MODEL_MD5 "a5401e7f7e46ed9fcaed5b60a281d547")
--set(LOCAL_EMBEDDING_MODEL_PATH "${CMAKE_BINARY_DIR}/resources/${LOCAL_EMBEDDING_MODEL}")
--set(LOCAL_EMBEDDING_MODEL_URL "https://gpt4all.io/models/gguf/${LOCAL_EMBEDDING_MODEL}")
--message(STATUS "Downloading embedding model from ${LOCAL_EMBEDDING_MODEL_URL} ...")
--file(DOWNLOAD
--    "${LOCAL_EMBEDDING_MODEL_URL}"
--    "${LOCAL_EMBEDDING_MODEL_PATH}"
--    EXPECTED_HASH "MD5=${LOCAL_EMBEDDING_MODEL_MD5}"
--)
--message(STATUS "Embedding model downloaded to ${LOCAL_EMBEDDING_MODEL_PATH}")
-+#set(LOCAL_EMBEDDING_MODEL "nomic-embed-text-v1.5.f16.gguf")
-+#set(LOCAL_EMBEDDING_MODEL_MD5 "a5401e7f7e46ed9fcaed5b60a281d547")
-+#set(LOCAL_EMBEDDING_MODEL_PATH "${CMAKE_BINARY_DIR}/resources/${LOCAL_EMBEDDING_MODEL}")
-+#set(LOCAL_EMBEDDING_MODEL_URL "https://gpt4all.io/models/gguf/${LOCAL_EMBEDDING_MODEL}")
-+#message(STATUS "Downloading embedding model from ${LOCAL_EMBEDDING_MODEL_URL} ...")
-+#file(DOWNLOAD
-+#    "${LOCAL_EMBEDDING_MODEL_URL}"
-+#    "${LOCAL_EMBEDDING_MODEL_PATH}"
-+#    EXPECTED_HASH "MD5=${LOCAL_EMBEDDING_MODEL_MD5}"
-+#)
-+#message(STATUS "Embedding model downloaded to ${LOCAL_EMBEDDING_MODEL_PATH}")
+ set(LOCAL_EMBEDDING_MODEL "nomic-embed-text-v1.5.f16.gguf")
+ set(LOCAL_EMBEDDING_MODEL_MD5 "a5401e7f7e46ed9fcaed5b60a281d547")
+@@ -102,6 +103,7 @@
+     EXPECTED_HASH "MD5=${LOCAL_EMBEDDING_MODEL_MD5}"
+ )
+ message(STATUS "Embedding model downloaded to ${LOCAL_EMBEDDING_MODEL_PATH}")
++endif()
  if (APPLE)
      list(APPEND CHAT_EXE_RESOURCES "${LOCAL_EMBEDDING_MODEL_PATH}")
  endif()
-@@ -371,7 +371,7 @@
+@@ -371,7 +373,7 @@
      endif()
  endif()
  
