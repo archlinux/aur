@@ -1,0 +1,104 @@
+diff -ru nptyping-2.5.0.orig/nptyping/typing_.py nptyping-2.5.0/nptyping/typing_.py
+--- nptyping-2.5.0.orig/nptyping/typing_.py	2024-07-03 22:38:50.577272078 +0200
++++ nptyping-2.5.0/nptyping/typing_.py	2024-07-03 22:49:54.498619182 +0200
+@@ -84,27 +84,27 @@
+ Half = np.half
+ Single = np.single
+ Double = np.double
+-Float = np.float_
++Float = np.float64
+ LongDouble = np.longdouble
+-LongFloat = np.longfloat
++LongFloat = np.longdouble
+ ComplexFloating = np.complexfloating
+ Complex64 = np.complex64
+ Complex128 = np.complex128
+ CSingle = np.csingle
+-SingleComplex = np.singlecomplex
++SingleComplex = np.complex64
+ CDouble = np.cdouble
+-Complex = np.complex_
+-CFloat = np.cfloat
++Complex = np.complex128
++CFloat = np.complex128
+ CLongDouble = np.clongdouble
+-CLongFloat = np.clongfloat
+-LongComplex = np.longcomplex
++CLongFloat = np.clongdouble
++LongComplex = np.clongdouble
+ Flexible = np.flexible
+ Void = np.void
+ Character = np.character
+ Bytes = np.bytes_
+ Str = np.str_
+-String = np.string_
+-Unicode = np.unicode_
++String = np.bytes_
++Unicode = np.str_
+ 
+ dtypes = [
+     (Number, "Number"),
+diff -ru nptyping-2.5.0.orig/nptyping/typing_.pyi nptyping-2.5.0/nptyping/typing_.pyi
+--- nptyping-2.5.0.orig/nptyping/typing_.pyi	2024-07-03 22:38:50.577272078 +0200
++++ nptyping-2.5.0/nptyping/typing_.pyi	2024-07-03 22:49:54.498619182 +0200
+@@ -81,27 +81,27 @@
+ Half: TypeAlias = np.dtype[np.half]
+ Single: TypeAlias = np.dtype[np.single]
+ Double: TypeAlias = np.dtype[np.double]
+-Float: TypeAlias = np.dtype[np.float_]
++Float: TypeAlias = np.dtype[np.float64]
+ LongDouble: TypeAlias = np.dtype[np.longdouble]
+-LongFloat: TypeAlias = np.dtype[np.longfloat]
++LongFloat: TypeAlias = np.dtype[np.longdouble]
+ ComplexFloating: TypeAlias = np.dtype[np.complexfloating[Any, Any]]
+ Complex64: TypeAlias = np.dtype[np.complex64]
+ Complex128: TypeAlias = np.dtype[np.complex128]
+ CSingle: TypeAlias = np.dtype[np.csingle]
+-SingleComplex: TypeAlias = np.dtype[np.singlecomplex]
++SingleComplex: TypeAlias = np.dtype[np.complex64]
+ CDouble: TypeAlias = np.dtype[np.cdouble]
+-Complex: TypeAlias = np.dtype[np.complex_]
+-CFloat: TypeAlias = np.dtype[np.cfloat]
++Complex: TypeAlias = np.dtype[np.complex128]
++CFloat: TypeAlias = np.dtype[np.complex128]
+ CLongDouble: TypeAlias = np.dtype[np.clongdouble]
+-CLongFloat: TypeAlias = np.dtype[np.clongfloat]
+-LongComplex: TypeAlias = np.dtype[np.longcomplex]
++CLongFloat: TypeAlias = np.dtype[np.clongdouble]
++LongComplex: TypeAlias = np.dtype[np.clongdouble]
+ Flexible: TypeAlias = np.dtype[np.flexible]
+ Void: TypeAlias = np.dtype[np.void]
+ Character: TypeAlias = np.dtype[np.character]
+ Bytes: TypeAlias = np.dtype[np.bytes_]
+ Str: TypeAlias = np.dtype[np.str_]
+-String: TypeAlias = np.dtype[np.string_]
+-Unicode: TypeAlias = np.dtype[np.unicode_]
++String: TypeAlias = np.dtype[np.bytes_]
++Unicode: TypeAlias = np.dtype[np.str_]
+ 
+ dtype_per_name: Dict[str, np.dtype[Any]]
+ name_per_dtype: Dict[np.dtype[Any], str]
+diff -ru nptyping-2.5.0.orig/tests/test_mypy.py nptyping-2.5.0/tests/test_mypy.py
+--- nptyping-2.5.0.orig/tests/test_mypy.py	2024-07-03 22:38:50.580605453 +0200
++++ nptyping-2.5.0/tests/test_mypy.py	2024-07-03 22:49:54.505285928 +0200
+@@ -116,7 +116,7 @@
+ 
+ 
+             NDArray[Any, np.dtype[np.int_]]
+-            NDArray[Any, np.dtype[np.float_]]
++            NDArray[Any, np.dtype[np.float64]]
+             NDArray[Any, np.dtype[np.uint8]]
+             NDArray[Any, np.dtype[np.bool_]]
+         """
+diff -ru nptyping-2.5.0.orig/tests/test_ndarray.py nptyping-2.5.0/tests/test_ndarray.py
+--- nptyping-2.5.0.orig/tests/test_ndarray.py	2024-07-03 22:38:50.577272078 +0200
++++ nptyping-2.5.0/tests/test_ndarray.py	2024-07-03 22:49:54.501952555 +0200
+@@ -264,7 +264,7 @@
+ 
+     def test_types_with_numpy_dtypes(self):
+         self.assertIsInstance(np.array([42]), NDArray[Any, np.int_])
+-        self.assertIsInstance(np.array([42.0]), NDArray[Any, np.float_])
++        self.assertIsInstance(np.array([42.0]), NDArray[Any, np.float64])
+         self.assertIsInstance(np.array([np.uint8(42)]), NDArray[Any, np.uint8])
+         self.assertIsInstance(np.array([True]), NDArray[Any, np.bool_])
+ 
