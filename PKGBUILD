@@ -5,7 +5,7 @@
 
 # Maintainer: James Williams <jowilliams12000 at gmail dot com>
 pkgname=wallust
-pkgver=2.9.0
+pkgver=2.10.0
 pkgrel=1
 pkgdesc="generate colors from an image"
 arch=('any')
@@ -14,7 +14,7 @@ license=('custom:MIT')
 makedepends=('cargo')
 optdepends=('imagemagick')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('a802e217886fd9b6449865291ee5ef2057ce443d617db23958c5732bbc119dda')
+sha256sums=('1575f74615eb36ed5bb9070be7d3ee6dc841f272abf8b19e65953833ca1eae55')
 
 prepare() {
 	cd "$pkgname"-"$pkgver"
