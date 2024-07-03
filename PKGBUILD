@@ -2,21 +2,21 @@
 
 pkgname=numatop
 pkgver=2.3
-pkgrel=1
-_pkgrel=1
+pkgrel=2
 pkgdesc="Observation tool for NUMA systems"
 arch=('i686' 'x86_64')
 url="https://github.com/intel/numatop"
 license=('BSD-3-Clause')
-depends=('numactl' 'ncurses')
+depends=('numactl' 'ncurses' 'check')
 source=("https://github.com/intel/numatop/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('1bec45a2388c255bd9c65dbc12bb29173c4196e3f4cfa3ca3e8c96647d675e16')
+#sha256sums=('SKIP')
 
 prepare()
 (
 	cd "${srcdir}/${pkgname}-${pkgver}"
   ./autogen.sh
-  ./configure
+  #./configure
 )
 
 build()
