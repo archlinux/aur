@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-spdlog-git
 	pkgdesc = Very fast, header only, C++ logging library
-	pkgver = 1.8.1.r11.geebb921c
+	pkgver = 1.14.1.r1.gc3aed4b6
 	pkgrel = 1
 	url = https://github.com/gabime/spdlog/
 	arch = any
@@ -9,8 +9,7 @@ pkgbase = mingw-w64-spdlog-git
 	makedepends = mingw-w64-cmake
 	makedepends = mingw-w64-fmt
 	provides = mingw-w64-spdlog
-	source = mingw-w64-spdlog::git://github.com/gabime/spdlog.git
+	source = mingw-w64-spdlog::git+https://github.com/gabime/spdlog.git
 	sha512sums = SKIP
 
 pkgname = mingw-w64-spdlog-git
-
