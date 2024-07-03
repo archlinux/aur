@@ -1,0 +1,18 @@
+pkgbase = kawa-git
+	pkgdesc = Kawa is a JVM-based Scheme compiler
+	pkgver = 3.1.1.r104.ga852d3595
+	pkgrel = 1
+	url = http://www.gnu.org/software/kawa/
+	arch = i686
+	arch = x86_64
+	license = X11/MIT
+	makedepends = subversion
+	makedepends = texinfo
+	makedepends = git
+	depends = java-environment
+	provides = kawa
+	conflicts = kawa
+	source = git+https://gitlab.com/kashell/Kawa.git
+	md5sums = SKIP
+
+pkgname = kawa-git
