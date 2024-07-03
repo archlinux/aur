@@ -1,7 +1,7 @@
 # Maintainer: Jaco Malan <jacom@codelog.co.za>
 pkgname=unstoppableswap-gui-bin
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Graphical User Interface for trustless cross-chain XMR<>BTC Atomic Swaps."
 arch=('x86_64')
@@ -24,7 +24,7 @@ install=
 changelog=
 source=("https://github.com/UnstoppableSwap/unstoppableswap-gui/releases/download/v${pkgver}/unstoppableswap-gui_${pkgver}_amd64.deb")
 noextract=("unstoppableswap-gui_${pkgver}_amd64.deb")
-sha256sums=('35bfa2ab20fd5532abb1cb4bbe551b5027a713bdbdebed5bcf809523bf9b6828')
+sha256sums=('2c8d94ac79b2c5fe3308ca7ffbb9d980d04bfe3e92e80ef82c9225ce50b3f2a5')
 validpgpkeys=()
 
 prepare() {
