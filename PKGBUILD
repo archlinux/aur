@@ -2,7 +2,7 @@
 
 _pkgname=xfce4-settings
 pkgname=${_pkgname}-git
-pkgver=4.19.2+112+g091f2f23
+pkgver=4.19.2+114+geb3ca062
 pkgrel=1
 pkgdesc="Settings manager for xfce (git checkout)"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ groups=('xfce4-git')
 depends=('exo' 'libxfce4util' 'garcon' 'libxfce4ui>=4.19.5' 'xfconf' 'libnotify' 'colord'
          'libxklavier' 'adwaita-icon-theme' 'gnome-themes-extra' 'python'
          'gtk-layer-shell')
-makedepends=('git' 'xfce4-dev-tools')
+makedepends=('git' 'xfce4-dev-tools' 'glib2-devel')
 optdepends=('libcanberra: for sound control')
 provides=("${_pkgname}=${pkgver%%+*}")
 conflicts=("${_pkgname}")
