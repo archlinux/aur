@@ -1,9 +1,10 @@
 pkgbase = slow-scan-print
 	pkgdesc = This CLI program prints text at fixed intervals by character or line, and its name was inspired by SSTV (Slow-Scan TV).
 	pkgver = 0.2.2
-	pkgrel = 2
+	pkgrel = 3
 	arch = any
 	license = LGPL3
 	makedepends = cargo
+	options = !debug
 
 pkgname = slow-scan-print
