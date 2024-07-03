@@ -1,6 +1,6 @@
 pkgbase = mkinitcpio-ykfde-git
 	pkgdesc = Full disk encryption with Yubikey (Yubico key) - git checkout
-	pkgver = 0.7.6.r4.g7ac4c16
+	pkgver = 0.7.9.r6.g5bc09e3
 	pkgrel = 1
 	url = https://github.com/eworm-de/mkinitcpio-ykfde
 	install = mkinitcpio-ykfde.install
@@ -8,7 +8,7 @@ pkgbase = mkinitcpio-ykfde-git
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	makedepends = markdown
+	makedepends = discount
 	makedepends = systemd
 	depends = yubikey-personalization
 	depends = cryptsetup
@@ -18,8 +18,7 @@ pkgbase = mkinitcpio-ykfde-git
 	provides = mkinitcpio-ykfde
 	conflicts = mkinitcpio-ykfde
 	backup = etc/ykfde.conf
-	source = git://github.com/eworm-de/mkinitcpio-ykfde.git
+	source = git+https://github.com/eworm-de/mkinitcpio-ykfde.git
 	sha256sums = SKIP
 
 pkgname = mkinitcpio-ykfde-git
-

@@ -1,18 +1,18 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=mkinitcpio-ykfde-git
-pkgver=0.7.6.r4.g7ac4c16
+pkgver=0.7.9.r6.g5bc09e3
 pkgrel=1
 pkgdesc='Full disk encryption with Yubikey (Yubico key) - git checkout'
 arch=('i686' 'x86_64')
 url='https://github.com/eworm-de/mkinitcpio-ykfde'
 license=('GPL')
 depends=('yubikey-personalization' 'cryptsetup' 'iniparser' 'libarchive' 'keyutils')
-makedepends=('git' 'markdown' 'systemd')
+makedepends=('git' 'discount' 'systemd')
 conflicts=('mkinitcpio-ykfde')
 provides=('mkinitcpio-ykfde')
 install=mkinitcpio-ykfde.install
-source=('git://github.com/eworm-de/mkinitcpio-ykfde.git')
+source=('git+https://github.com/eworm-de/mkinitcpio-ykfde.git')
 sha256sums=('SKIP')
 backup=('etc/ykfde.conf')
 
