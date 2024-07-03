@@ -1,16 +1,17 @@
 pkgbase = wallust-git
 	pkgdesc = generate colors from an image
-	pkgver = 2.10.0.r47.g6b92027
+	pkgver = 3.0.0.beta.r49.ga60ebe1
 	pkgrel = 1
 	url = https://codeberg.org/explosion-mental/wallust
 	arch = any
 	license = custom:MIT
 	makedepends = cargo
 	makedepends = git
+	makedepends = make
 	optdepends = imagemagick
 	provides = wallust=$pkgver
 	conflicts = wallust
-	source = wallust-git::git+https://codeberg.org/explosion-mental/wallust#branch=dev
+	source = wallust::git+https://codeberg.org/explosion-mental/wallust#branch=dev
 	sha256sums = SKIP
 
 pkgname = wallust-git
