@@ -1,6 +1,6 @@
 pkgbase = zwm-git
 	pkgdesc = Minimal tiling window manager for X11
-	pkgver = 0.1.5.r2.g6a83b72
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/yazeed1s/zwm
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = zwm-git
 	depends = xcb-util-wm
 	depends = xcb-util-keysyms
 	depends = xcb-util-cursor
-	provides = zwm=0.1.5-1
+	provides = zwm
 	conflicts = zwm
 	source = zwm-git::git+https://github.com/yazeed1s/zwm.git
 	sha256sums = SKIP

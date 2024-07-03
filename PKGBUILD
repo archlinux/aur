@@ -2,7 +2,7 @@
 
 _pkgname_=zwm
 pkgname=${_pkgname_}-git
-pkgver=0.1.5.r2.g6a83b72
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Minimal tiling window manager for X11"
 arch=('i686' 'x86_64')
@@ -11,15 +11,15 @@ license=('BSD')
 depends=('bash' 'libxcb' 'xcb-util' 'xcb-util-wm' 'xcb-util-keysyms' 'xcb-util-cursor')
 makedepends=('git')
 source=("${pkgname}::git+https://github.com/yazeed1s/${_pkgname_}.git")
-provides=("${_pkgname_}=${pkgver%%.r*}-${pkgrel}")
+provides=("${_pkgname_}")
 conflicts=("${_pkgname_}")
 sha256sums=('SKIP')
 
 
-pkgver() {
-  cd ${pkgname}
-  git describe --long --tags | sed -r 's,^[^0-9]*,,;s,([^-]*-g),r\1,;s,[-_],.,g'
-}
+#pkgver() {
+#  cd ${pkgname}
+#  git describe --long --tags | sed -r 's,^[^0-9]*,,;s,([^-]*-g),r\1,;s,[-_],.,g'
+#}
 
 build() {
   	cd ${pkgname}
