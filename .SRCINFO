@@ -1,11 +1,14 @@
 pkgbase = mmv-origin
+	pkgdesc = a program to move/copy/link multiple files according to a set of wildcard patterns
 	pkgver = 2.6
 	pkgrel = 1
 	url = https://github.com/rrthomas/mmv
 	arch = x86_64
-	license = GPL
+	license = GPLv3
 	makedepends = gcc
+	makedepends = make
 	depends = glibc
+	depends = gc
 	provides = mmv
 	conflicts = mmv
 	conflicts = mmv-c
