@@ -12,7 +12,7 @@ groups=('xfce4-devel')
 depends=('exo' 'garcon' 'libxfce4ui' 'xfconf' 'libwnck3'
          'hicolor-icon-theme' 'desktop-file-utils' 'libdbusmenu-gtk3'
          'libxfce4windowing>=4.19.3' 'gtk-layer-shell')
-makedepends=('intltool' 'gtk-doc' 'gobject-introspection' 'vala' 'python') #for gdbus-codegen
+makedepends=('intltool' 'gtk-doc' 'gobject-introspection' 'vala' 'glib2-devel')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}" 'xfce4-statusnotifier-plugin')
 replaces=('xfce4-statusnotifier-plugin')
