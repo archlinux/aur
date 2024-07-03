@@ -1,0 +1,35 @@
+--- a/SConscript.gtk
++++ b/SConscript.gtk
+@@ -3,7 +3,7 @@
+ root_env = env.Clone()
+ root_env.Append(LIBS=["GL", "GLU"])
+ root_env.ParseConfig('sdl-config --cflags --libs')
+-root_env.ParseConfig('pkg-config --cflags --libs gtk+-2.0')
++root_env.ParseConfig('pkg-config --cflags --libs gtk+-3.0')
+ 
+ root_env.Append(
+   CXXFLAGS = [
+--- a/src/platforms/gtk/gtk_rlvm_instance.cc
++++ b/src/platforms/gtk/gtk_rlvm_instance.cc
+@@ -51,9 +51,6 @@
+ }  // namespace
+ 
+ GtkRLVMInstance::GtkRLVMInstance(int* argc, char** argv[]) : RLVMInstance() {
+-#if defined ENABLE_NLS
+-  gtk_set_locale();
+-#endif
+   gtk_init(argc, argv);
+ 
+ #if defined ENABLE_NLS
+@@ -69,9 +66,9 @@
+   GtkWidget* dialog = gtk_file_chooser_dialog_new(_("Select Game Directory"),
+                                                   NULL,
+                                                   GTK_FILE_CHOOSER_ACTION_OPEN,
+-                                                  GTK_STOCK_CANCEL,
++                                                  _("_Cancel"),
+                                                   GTK_RESPONSE_CANCEL,
+-                                                  GTK_STOCK_OPEN,
++                                                  _("_Open"),
+                                                   GTK_RESPONSE_ACCEPT,
+                                                   NULL);
+ 

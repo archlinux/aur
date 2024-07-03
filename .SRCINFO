@@ -17,10 +17,14 @@ pkgbase = rlvm
 	depends = sdl_image
 	depends = sdl_ttf
 	depends = guichan
-	depends = gtk2
+	depends = gtk3
 	source = https://github.com/eglaysher/rlvm/archive/38c808e33acb7f6273ecd764c6ad948424eb7626.tar.gz
-	source = memory.patch
+	source = includes.patch
+	source = warnings.patch
+	source = gtk+3.patch
 	sha256sums = 3c5a84d4c2ccf1693c2d3a23b51d8642c798bdf8bc189e5e0ac28ede27ec7dad
 	sha256sums = 05b4c17fe4132b3877b53ba34076c4f21b0982d40ec134400697a51f7ea52226
+	sha256sums = 9e7d10880051c11062b67ca9ac5f53bf7277588228f0103e93ac6cccb72e57cc
+	sha256sums = 6bf8a1d8cd64b05057859338132acef11db573c58adc3913679776b8d4a7b83a
 
 pkgname = rlvm
