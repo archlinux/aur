@@ -1,7 +1,7 @@
 pkgbase = nhex-git
 	pkgdesc = A next-generation IRC client inspired by HexChat
 	pkgver = r300.8022e1f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nhexirc/nhex
 	arch = x86_64
 	license = MIT
@@ -15,6 +15,7 @@ pkgbase = nhex-git
 	depends = webkit2gtk
 	provides = nhex
 	conflicts = nhex-bin
+	conflicts = nhex
 	options = !lto
 	source = git+https://github.com/nhexirc/nhex
 	source = nhex.desktop

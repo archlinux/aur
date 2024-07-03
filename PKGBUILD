@@ -1,9 +1,9 @@
-# Maintainer: Helle Vaanzinn <glitsj16@riseup.net>
+# Maintainer: username227 <gfrank227 [at] gmail [dot] com>
 
 _pkgname=nhex
 pkgname=${_pkgname}-git
 pkgver=r300.8022e1f
-pkgrel=1
+pkgrel=2
 pkgdesc="A next-generation IRC client inspired by HexChat"
 arch=(x86_64)
 url="https://github.com/nhexirc/nhex"
@@ -11,7 +11,7 @@ license=('MIT' 'MPL-2.0')
 depends=('gcc-libs' 'libsoup' 'webkit2gtk')
 makedepends=('npm' 'git' 'rust' 'nodejs')
 provides=("$_pkgname")
-conflicts=('nhex-bin')
+conflicts=('nhex-bin' 'nhex')
 source=('git+https://github.com/nhexirc/nhex'
 	'nhex.desktop')
 sha256sums=('SKIP'
