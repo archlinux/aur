@@ -1,11 +1,11 @@
-# Maintainer: spider-mario <spidermario@free.fr>
+# Maintainer: maksut <maksut.cagil@gmail.com>
+# Contributor: spider-mario <spidermario@free.fr>
 # Contributor: Saiki81 <saikia81 at hotmail dot com>
 # adapted from package: pianoteq-stage-trial-bin
-# adapted from pkgbuild creator: CrocoDuck <crocoduck dot oducks at gmail dot com> 
-
+# adapted from pkgbuild creator: CrocoDuck <crocoduck dot oducks at gmail dot com>
 
 pkgname=pianoteq-stage
-pkgver=8.2.2
+pkgver=8.3.1
 pkgrel=1
 pkgdesc="Virtual piano instrument using physical modelling synthesis. Both standalone and plugin versions."
 arch=('x86_64')
@@ -18,17 +18,17 @@ provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}" "pianoteq-stage-bin" "pianoteq-standard-trial-bin")
 # the source package must be downloaded manually
 # this can be done by going to the link here:
-# https://www.modartt.com/download?file=pianoteq_stage_linux_v822.7z
+# https://www.modartt.com/download?file=pianoteq_stage_linux_v831.7z
 source=("local://pianoteq_stage_linux_v${pkgver//./}.7z"
-        'https://www.pianoteq.com/images/logo/pianoteq_icon_128.png')
-b2sums=('7be7c1f4bd466df0f023a5f1956c63ced6a059e377783c2585050bc231c0153e50014491062634873b2f51858de14594ebdcee125100d398a3f8489c2fdf7b7e'
-        'bbb48b5b2bd5bbe52a39c84f42ea6c12a3633e4713e00d8132654ddf5adc5d7da1b7951c683cb11446ee847a388a775eb48591089a4e8dc69ed6d97cfc80d56d')
+	'https://www.pianoteq.com/images/logo/pianoteq_icon_128.png')
+b2sums=('a29faa4069f2abeedfaa13c8b0d6ace52640e13068bb63eb7710d0266f6f6a9a73a1ffc5bd17545dea0a84ae0434b1c96754ceb58f1bfece7b74674c89716b22'
+	'bbb48b5b2bd5bbe52a39c84f42ea6c12a3633e4713e00d8132654ddf5adc5d7da1b7951c683cb11446ee847a388a775eb48591089a4e8dc69ed6d97cfc80d56d')
 
-prepare(){
+prepare() {
 	gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name='pianoteq 8' --exec='"pianoteq 8"' --categories 'Audio;Sequencer;Midi;AudioVideoEditing;Music;AudioVideo;'
 }
 
-package(){
+package() {
 	_pianoteq_type="Pianoteq 8 STAGE"
 	archdir=x86-64bit
 	# Install program files:
