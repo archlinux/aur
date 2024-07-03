@@ -12,6 +12,7 @@ pkgbase = xfconf-devel
 	makedepends = gtk-doc
 	makedepends = vala
 	makedepends = gobject-introspection
+	makedepends = glib2-devel
 	depends = libxfce4util
 	provides = xfconf=4.19.2
 	conflicts = xfconf

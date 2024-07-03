@@ -10,7 +10,7 @@ url="https://docs.xfce.org/xfce/xfconf/start"
 license=('GPL2')
 groups=('xfce4-devel')
 depends=('libxfce4util')
-makedepends=('gtk-doc' 'vala' 'gobject-introspection')
+makedepends=('gtk-doc' 'vala' 'gobject-introspection' 'glib2-devel')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("https://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2")
