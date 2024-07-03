@@ -1,6 +1,6 @@
 # Maintainer: Jaco Malan <jacom@codelog.co.za>
 pkgname=unstoppableswap-gui-bin
-pkgver=0.5.3
+pkgver=0.6.2
 pkgrel=1
 epoch=
 pkgdesc="Graphical User Interface for trustless cross-chain XMR<>BTC Atomic Swaps."
