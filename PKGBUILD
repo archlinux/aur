@@ -1,4 +1,4 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Maintainer: balaraz <balaraz@tuta.io>
 
 pkgname=unity-test
 pkgver=2.5.2
