@@ -1,7 +1,7 @@
 # Maintainer: Yu-Hsuan Tu <dobe0331 at gmail dot com>
 _pkgname=metashape-pro
 pkgname=agisoft-${_pkgname}
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Photogrammetric processing of digital images and 3D spatial data generation software. Professional edition"
 arch=('x86_64')
@@ -27,7 +27,7 @@ source=("https://s3-eu-west-1.amazonaws.com/download.agisoft.com/${_pkgname}_${p
         "agisoft-psx-mime-icon-encoded.txt"
         "agisoft-psz-mime-icon-encoded.txt"
         "agisoft-3dv-mime-icon-encoded.txt")
-sha256sums=('f1ff08019425eef82df621e26d96356e35533165fc663dd0ebe9168eb79c35dd'
+sha256sums=('53031ebd1a613dacc7023d8f3dfc89033369e460b9cad7fc9fdb7059e0c4692d'
             '959eb21ce482a5b1f84a0e04ec6f0d53aaf679c84bce9f813b350afe5dd201ba'
             'ef484e2a60966a722d7989abdbb85464054c47dd56b2ce182b2c0c5602476599'
             'a5e29a00393d55a9b589e1fb30acb57a96ef26756507d2793e7f3494d5778ae3'
@@ -107,12 +107,12 @@ Categories=Science;ImageProcessing" > "$srcdir/agisoft-viewer.desktop"
     
     # Create icons for other resolutions
     for _res in 16 32 48 64; do
-        convert "$srcdir/agisoft-metashape-pro_128.png" -resize ${_res}x${_res} "$srcdir/agisoft-metashape-pro_${_res}.png"
-        convert "$srcdir/agisoft-network-monitor_128.png" -resize ${_res}x${_res} "$srcdir/agisoft-network-monitor_${_res}.png"
-        convert "$srcdir/agisoft-viewer_128.png" -resize ${_res}x${_res} "$srcdir/agisoft-viewer_${_res}.png"
-        convert "$srcdir/application-agisoft-psx_128.png" -resize ${_res}x${_res} "$srcdir/application-agisoft-psx_${_res}.png"
-        convert "$srcdir/application-agisoft-psz_128.png" -resize ${_res}x${_res} "$srcdir/application-agisoft-psz_${_res}.png"
-        convert "$srcdir/application-agisoft-3dv_128.png" -resize ${_res}x${_res} "$srcdir/application-agisoft-3dv_${_res}.png"
+        magick "$srcdir/agisoft-metashape-pro_128.png" -resize ${_res}x${_res} "$srcdir/agisoft-metashape-pro_${_res}.png"
+        magick "$srcdir/agisoft-network-monitor_128.png" -resize ${_res}x${_res} "$srcdir/agisoft-network-monitor_${_res}.png"
+        magick "$srcdir/agisoft-viewer_128.png" -resize ${_res}x${_res} "$srcdir/agisoft-viewer_${_res}.png"
+        magick "$srcdir/application-agisoft-psx_128.png" -resize ${_res}x${_res} "$srcdir/application-agisoft-psx_${_res}.png"
+        magick "$srcdir/application-agisoft-psz_128.png" -resize ${_res}x${_res} "$srcdir/application-agisoft-psz_${_res}.png"
+        magick "$srcdir/application-agisoft-3dv_128.png" -resize ${_res}x${_res} "$srcdir/application-agisoft-3dv_${_res}.png"
     done
     
     # Create executables for /usr/bin
