@@ -1,0 +1,16 @@
+pkgbase = mole-git
+	pkgdesc = CLI app to create SSH tunnels
+	pkgver = 2.0.0.r10.geaee4e5
+	pkgrel = 1
+	url = https://davrodpin.github.io/mole
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = mole=2.0.0
+	conflicts = mole
+	source = mole::git+https://github.com/davrodpin/mole.git
+	sha256sums = SKIP
+
+pkgname = mole-git
