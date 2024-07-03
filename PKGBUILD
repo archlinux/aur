@@ -1,7 +1,7 @@
 # Maintainer: Marco <marcomania2012 at gmail dot com>
 
 pkgname=kf6-servicemenus-imagetools
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc='KDE service menus for image file processing'
 arch=('any')
@@ -13,7 +13,7 @@ replaces=("kde-servicemenus-imagetools" "kf5-servicemenus-imagetools")
 
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums=('d0c5accc941e36f47fe43ed97d67ac6e315b6942a7598827d9ce869f898f5c42')
+sha256sums=('27408979256e056f7866e197b4d2c8174f973269ba6a5b9c2c8256a21f768b92')
 
 package() {
     cd "${srcdir}"
