@@ -1,12 +1,13 @@
 pkgbase = rah
 	pkgdesc = A simple AUR helper written in Rust
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://deadgirl.dev/projects/rah
 	arch = x86_64
 	license = MIT
 	depends = pacman
-	source = rah-1.0.0-amd64.tar.gz::https://deadgirl.dev/projects/rah/releases/rah-1.0.0-amd64.tar.gz
+	depends = git
+	source = rah-1.1.0-amd64.tar.gz::https://deadgirl.dev/projects/rah/releases/rah-1.1.0-amd64.tar.gz
 	md5sums = SKIP
 
 pkgname = rah
