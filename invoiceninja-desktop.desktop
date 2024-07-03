@@ -2,6 +2,7 @@
 Name=Invoice Ninja
 Exec=/usr/bin/invoiceninja
 Icon=invoiceninja
+StartupWMClass=invoiceninja
 Terminal=false
 X-MultipleArgs=false
 Type=Application
