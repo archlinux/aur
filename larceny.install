@@ -1,0 +1,10 @@
+post_install() {
+    find /usr/share/larceny/lib -name '*.fasl' -exec touch {} \;
+    find /usr/share/larceny/lib -name '*.slfasl' -exec touch {} \;
+}
+post_upgrade() {
+    find /usr/share/larceny/lib -name '*.fasl' -exec touch {} \;
+    find /usr/share/larceny/lib -name '*.slfasl' -exec touch {} \;
+}
+
+
