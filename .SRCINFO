@@ -1,18 +1,25 @@
 pkgbase = invoiceninja-desktop
-	pkgdesc = Desktop version for Invoice Ninja
-	pkgver = 5.0.125
+	pkgdesc = Desktop client for Invoice Ninja
+	pkgver = 5.0.160
 	pkgrel = 1
-	url = https://github.com/invoiceninja/admin-portal
 	arch = i686
 	arch = x86_64
-	license = unknown
-	makedepends = fvm-bin
+	license = custom
+	makedepends = fvm
 	makedepends = ninja
 	makedepends = clang
-	provides = invoiceninja-desktop
-	source = https://github.com/invoiceninja/admin-portal/archive/refs/tags/v5.0.125.tar.gz
+	makedepends = cmake
+	depends = gtk3
+	depends = glib2
+	depends = gcc-libs
+	depends = at-spi2-core
+	depends = libepoxy
+	depends = glibc
+	source = git+https://github.com/invoiceninja/admin-portal#tag=v5.0.160
 	source = invoiceninja-desktop.desktop
-	sha256sums = 407effc7dcb177fc3c864159a4bc5bc623d8994b42acd740f259d1c538453c91
-	sha256sums = beb5d95b727169634e0ee42bf4d4f556ac1fa2d2f73a9d9a61c29820c13dc1c6
+	source = invoiceninja
+	sha512sums = SKIP
+	sha512sums = b220664252bb698cb2ab496ea9dce20f300ff6fcfa8d1287dd82361d0f17221f71289049753f8fba38ccb68d371f8fa976ac0aae96c2dd59f1fec0bd12bd0484
+	sha512sums = 4eda066f7594e933de2953e38fe776302253e1032770d43ec640705a98cf81210eac826deef601b6b7b3243455a7f0bf15b4efab9cd7844322a39c9f418445ea
 
 pkgname = invoiceninja-desktop

@@ -1,38 +1,52 @@
-# Maintainer: xeruf <27jf at pm dot me>
-# Creator: Matthias De Bie <mattydebie@gmail.com>
+# Maintainer: Bitals <me at bitals dot xyz>
+# Contributor: xeruf <27jf at pm dot me>
+# Contributor: Matthias De Bie <mattydebie@gmail.com>
 
-_pkgname='invoiceninja-desktop'
+pkgname='invoiceninja-desktop'
 _repo='admin-portal'
-pkgname="${_pkgname}"
-pkgdesc="Desktop version for Invoice Ninja"
-pkgver=5.0.125
+pkgdesc="Desktop client for Invoice Ninja"
+pkgver=5.0.160
 pkgrel=1
-url="https://github.com/invoiceninja/$_repo"
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz" "invoiceninja-desktop.desktop")
-provides=("${_pkgname}")
-makedepends=(fvm-bin ninja clang)
+source=("git+https://github.com/invoiceninja/${_repo}#tag=v${pkgver}" "invoiceninja-desktop.desktop" "invoiceninja")
+makedepends=(fvm ninja clang cmake)
+depends=(gtk3
+  glib2
+  gcc-libs
+	at-spi2-core
+	libepoxy
+	glibc)
 arch=('i686' 'x86_64')
-license=('unknown')
-sha256sums=('407effc7dcb177fc3c864159a4bc5bc623d8994b42acd740f259d1c538453c91'
-            'beb5d95b727169634e0ee42bf4d4f556ac1fa2d2f73a9d9a61c29820c13dc1c6')
+license=('custom')
+sha512sums=('SKIP'
+            'b220664252bb698cb2ab496ea9dce20f300ff6fcfa8d1287dd82361d0f17221f71289049753f8fba38ccb68d371f8fa976ac0aae96c2dd59f1fec0bd12bd0484'
+            '4eda066f7594e933de2953e38fe776302253e1032770d43ec640705a98cf81210eac826deef601b6b7b3243455a7f0bf15b4efab9cd7844322a39c9f418445ea')
 
-package() {
-  mkdir -p "${pkgdir}/usr/share/applications"
-  install -m 655 invoiceninja-desktop.desktop "${pkgdir}/usr/share/applications/"
-
-  cd "${srcdir}/${_repo}-${pkgver}"
-  # See Repo Readme
+prepare() {
+  cd "${srcdir}/${_repo}"
   cp lib/.env.dart.example lib/.env.dart
-  echo Y | fvm use 3.7.12
+  fvm use 3.19.6 --force
+}
+
+build() {
+  cd "${srcdir}/${_repo}"
   fvm flutter build linux
   # TODO pass -Wno-dev to make
   # https://github.com/flutter/flutter/issues/115752
+}
+package() {
+  mkdir -p "${pkgdir}/usr/share/applications" "${pkgdir}/usr/bin/"
+  install -m 655 invoiceninja-desktop.desktop "${pkgdir}/usr/share/applications/"
+  install -m 755 invoiceninja "${pkgdir}/usr/bin/"
 
-  cd build/linux/x64/release
+  cd "${srcdir}/${_repo}"/build/linux/x64/release
+
+  mkdir -p "${pkgdir}/usr/share/icons/hicolor/192x192/apps"
+  install -m 655 bundle/data/flutter_assets/assets/images/icon.png "${pkgdir}/usr/share/icons/hicolor/192x192/apps/invoiceninja.png"
+
   dest="${pkgdir}/opt/${pkgname}"
-  mkdir -p "$dest" "${pkgdir}/usr/bin/"
+  mkdir -p "$dest"
+
   cp -r bundle/data "$dest"
   cp -r bundle/lib "$dest"
   install -m 755 bundle/invoiceninja "$dest"
-  install -m 755 bundle/invoiceninja "${pkgdir}/usr/bin/"
 }

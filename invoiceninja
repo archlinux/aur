@@ -1,0 +1,9 @@
+#!/bin/sh
+
+LANG=C.UTF-8
+
+installed_dir=/opt/invoiceninja-desktop
+LD_LIBRARY_PATH=${installed_dir}/lib
+export LD_LIBRARY_PATH
+
+${installed_dir}/invoiceninja "$@"
