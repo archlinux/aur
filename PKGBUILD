@@ -8,7 +8,7 @@
 
 _pkgname=xfce4-session
 pkgname=${_pkgname}-git
-pkgver=4.19.0+4+g9ea6f589
+pkgver=4.19.2+14+g6cab7463
 pkgrel=1
 pkgdesc="Xfce session manager (git checkout)"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -16,7 +16,7 @@ url="https://docs.xfce.org/xfce/xfce4-session/start"
 license=('GPL2')
 depends=('libxfce4ui' 'libwnck3' 'xfconf' 'libsm' 'polkit' 'xorg-iceauth'
          'xorg-xinit' 'xorg-xrdb' 'polkit-gnome' 'hicolor-icon-theme')
-makedepends=('git' 'xfce4-dev-tools')
+makedepends=('git' 'xfce4-dev-tools' 'glib2-devel')
 optdepends=('gnome-keyring: for keyring support when GNOME compatibility is enabled'
             'xfce4-screensaver: for locking screen with xflock4'
             'xscreensaver: for locking screen with xflock4'
