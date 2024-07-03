@@ -2,7 +2,7 @@
 # Contributor: Bart Verhoeven <nepherte at archlinux dot us>
 pkgname=timblserver
 pkgver=1.18
-pkgrel=1
+pkgrel=2
 pkgdesc="Tilburg Memory Based Learner Server."
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -17,6 +17,7 @@ md5sums=(518acd8e09f1c6e9816b9b942d35b601)
 
 build() {
   cd $srcdir/$pkgname-$pkgver
+  export CXXFLAGS="-std=c++17"
   bash bootstrap.sh
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
   make
