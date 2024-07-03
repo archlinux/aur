@@ -1,7 +1,7 @@
 # Maintainer: balaraz <balaraz@tuta.io>
 
 pkgname=unity-test
-pkgver=2.5.2
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="Simple unit testing for C"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/throwtheswitch/unity"
 license=('MIT')
 makedepends=('cmake>=3.12')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3786de6c8f389be3894feae4f7d8680a02e70ed4dbcce36109c8f8646da2671a')
+sha256sums=('aa4c9fb1ae5fc5242f914c65f3557e817e40cb37f04a31e5ff76d1ab89dbf674')
 
 build() {
 	cmake \
