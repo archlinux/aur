@@ -1,0 +1,13 @@
+pkgbase = chromap
+	pkgdesc = An ultrafast method for aligning and preprocessing high throughput chromatin profiles.
+	pkgver = chromap_0.2.6
+	pkgrel = 1
+	url = https://typoraio.cn/
+	arch = x86_64
+	license = custom:"Copyright (c) 2015 Abner Lee All Rights Reserved."
+	provides = chromap
+	conflicts = chromap
+	source = https://gh.api.99988866.xyz/https://github.com/haowenz/chromap/releases/download/0.2.6/chromap-0.2.6_x64-linux.tar.bz2
+	sha512sums = f25f2c3b8c3a5285478f5a30792f11ae287b644f6ca691696a871dc0c5a8cd529b6e2f54a457d1dbe6486967c7379c5788fde039e5666768e04e799829defe3d
+
+pkgname = chromap
