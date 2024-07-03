@@ -4,7 +4,7 @@
 pkgname=deal-ii
 _realname=dealii
 pkgver=9.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An Open Source Finite Element Differential Equations Analysis Library"
 arch=("i686" "x86_64")
 url="https://www.dealii.org/"
@@ -55,7 +55,7 @@ prepare() {
   # Avoid errors on multiple runs by deleting the new header before possibly
   # re-creating it
   rm -f dealii-$pkgver/include/deal.II/sundials/sundials_types.h
-  patch --strip=1 --input=$(pwd)/../sundials-7.patch --directory=dealii-$pkgver
+  patch --strip=1 --input="${srcdir}/../sundials-7.patch" --directory=dealii-$pkgver
 }
 
 build() {
