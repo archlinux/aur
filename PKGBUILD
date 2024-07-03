@@ -1,14 +1,14 @@
 # Maintainer: Fabien LEFEBVRE <contact@d1ceward.com>
 
 pkgname=docker-image-labeler
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Adds and removes labels from docker images'
 arch=('x86_64')
 url='https://github.com/dokku/docker-image-labeler'
 license=('BSD')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('5f5c7539869bd9dae92b1df6105826398afd6934bf0ec317e8ab2f722021bf4f')
+sha256sums=('ed5f748773f11970baf0097d9b479afaa21dd295c4d96239ffdd8f3bfa223c00')
 makedepends=('go')
 
 build() {
