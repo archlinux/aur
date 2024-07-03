@@ -1,11 +1,11 @@
 # Maintainer: Peter <peter@nexoid.at>
 pkgname=mosh-scheme
 pkgver=0.2.9_rc1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Mosh is a free and fast interpreter for Scheme as specified in the R6RS."
 arch=(x86_64 i686)
-url=""
+url="https://github.com/higepon/mosh"
 license=('unknown')
 groups=()
 depends=(oniguruma)

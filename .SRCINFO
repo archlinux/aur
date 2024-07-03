@@ -1,7 +1,8 @@
 pkgbase = mosh-scheme
 	pkgdesc = Mosh is a free and fast interpreter for Scheme as specified in the R6RS.
 	pkgver = 0.2.9_rc1
-	pkgrel = 1
+	pkgrel = 2
+	url = https://github.com/higepon/mosh
 	arch = x86_64
 	arch = i686
 	license = unknown
