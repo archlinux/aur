@@ -1,6 +1,6 @@
 pkgbase = xfdesktop-git
 	pkgdesc = A desktop manager for Xfce (git checkout)
-	pkgver = 4.19.1+138+gbbf702c8
+	pkgver = 4.19.2+107+g1d283aef
 	pkgrel = 1
 	url = https://docs.xfce.org/xfce/xfdesktop/start
 	arch = x86_64
@@ -11,13 +11,14 @@ pkgbase = xfdesktop-git
 	license = GPL2
 	makedepends = git
 	makedepends = xfce4-dev-tools
+	makedepends = glib2-devel
 	depends = thunar
 	depends = garcon
 	depends = hicolor-icon-theme
 	depends = libwnck3
 	depends = libxfce4windowing>=4.19.1
 	depends = gtk-layer-shell
-	provides = xfdesktop=4.19.1
+	provides = xfdesktop=4.19.2
 	conflicts = xfce4-menueditor
 	conflicts = xfdesktop
 	replaces = xfce4-menueditor

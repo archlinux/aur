@@ -2,7 +2,7 @@
 
 _pkgname=xfdesktop
 pkgname=${_pkgname}-git
-pkgver=4.19.1+138+gbbf702c8
+pkgver=4.19.2+107+g1d283aef
 pkgrel=1
 pkgdesc="A desktop manager for Xfce (git checkout)"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -11,7 +11,7 @@ license=('GPL2')
 groups=('xfce4-git')
 depends=('thunar' 'garcon' 'hicolor-icon-theme' 'libwnck3'
          'libxfce4windowing>=4.19.1' 'gtk-layer-shell')
-makedepends=('git' 'xfce4-dev-tools')
+makedepends=('git' 'xfce4-dev-tools' 'glib2-devel')
 conflicts=('xfce4-menueditor' "${_pkgname}")
 provides=("${_pkgname}=${pkgver%%+*}")
 replaces=('xfce4-menueditor')
