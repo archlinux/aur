@@ -1,6 +1,6 @@
 pkgbase = s7
 	pkgdesc = A Scheme implementation intended as an extension language for other applications.
-	pkgver = 20210101
+	pkgver = 10.11
 	pkgrel = 1
 	url = https://ccrma.stanford.edu/software/snd/snd/s7.html
 	arch = x86_64
@@ -9,8 +9,7 @@ pkgbase = s7
 	makedepends = git
 	makedepends = rsync
 	depends = glibc
-	source = https://ccrma.stanford.edu/software/s7/s7-01Jan21.tar.gz
-	md5sums = 1cff47a7f8908749ff96fef20c63a352
+	source = https://ccrma.stanford.edu/software/s7/s7.tar.gz
+	sha256sums = de072a1c023a287a4ce0c4e0f6cb8dd24e881fe787ffd990c61ec31e83084fd6
 
 pkgname = s7
-
