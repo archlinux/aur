@@ -1,0 +1,13 @@
+pkgbase = picrin-scheme-git
+	pkgdesc = Picrin is a lightweight R7RS scheme implementation written in pure C89.
+	pkgver = 0.4.r0.g7b725f45
+	pkgrel = 1
+	url = https://github.com/picrin-scheme/picrin
+	arch = x86_64
+	arch = i686
+	license = mit
+	makedepends = git
+	source = git+https://github.com/picrin-scheme/picrin.git
+	md5sums = SKIP
+
+pkgname = picrin-scheme-git
