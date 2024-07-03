@@ -21,11 +21,13 @@ prepare() {
 	for file in $(cat ./debian/patches/series); do
 		patch -Np1 -d ${pkgname}-${pkgver%_p*} <"debian/patches/$file"
 	done
+
+	cd "${pkgname}-${pkgver%_p*}"
+	autoreconf -fi
 }
 
 build() {
 	cd "${pkgname}-${pkgver%_p*}"
-	autoreconf -fi
 	CFLAGS="$CFLAGS -Wno-error=incompatible-pointer-types"
 	./configure --with-tcl --with-tk
 	make prefix=/usr
