@@ -1,4 +1,5 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 _pkgname="mole"
 pkgname="${_pkgname}-bin"
