@@ -1,13 +1,15 @@
---- a/gpt4all-chat/CMakeLists.txt	2024-05-21 06:06:27.000000000 +0800
-+++ b/gpt4all-chat/CMakeLists.txt	2024-05-25 11:23:20.302390597 +0800
-@@ -179,6 +179,10 @@
-     set_target_properties(chat PROPERTIES
-         OUTPUT_NAME gpt4all
-     )
-+else()
-+    set_target_properties(chat PROPERTIES
-+        OUTPUT_NAME gpt4all-chat
-+    )
- endif()
+--- a/gpt4all-chat/CMakeLists.txt	2024-07-02 08:03:00.000000000 +0800
++++ b/gpt4all-chat/CMakeLists.txt	2024-07-03 09:48:16.258687172 +0800
+@@ -286,7 +286,11 @@
+ target_link_libraries(chat
+     PRIVATE llmodel)
  
- if(METAL_SHADER_FILE)
+-
++if(LINUX)
++  set_target_properties(chat PROPERTIES
++    OUTPUT_NAME gpt4all-chat
++  )
++endif()
+ # -- install --
+ 
+ set(COMPONENT_NAME_MAIN ${PROJECT_NAME})
