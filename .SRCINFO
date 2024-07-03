@@ -1,6 +1,6 @@
 pkgbase = amdvlk-git
 	pkgdesc = AMD's standalone Vulkan driver
-	pkgver = 2023.Q4.3.r1.97d5243
+	pkgver = 2024.Q2.3.r0.10c37d4
 	pkgrel = 1
 	url = https://github.com/GPUOpen-Drivers
 	arch = x86_64
@@ -18,6 +18,7 @@ pkgbase = amdvlk-git
 	makedepends = repo
 	makedepends = directx-shader-compiler
 	makedepends = python-jinja
+	makedepends = python-ruamel-yaml
 	depends = vulkan-icd-loader
 	provides = vulkan-amdvlk
 	provides = amdvlk

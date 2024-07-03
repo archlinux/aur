@@ -4,7 +4,7 @@
 # Contributor: Adrià Cereto i Massagué <ssorgatem at gmail.com>
 
 pkgname=amdvlk-git
-pkgver=2023.Q4.3.r1.97d5243
+pkgver=2024.Q2.3.r0.10c37d4
 pkgrel=1
 pkgdesc="AMD's standalone Vulkan driver"
 arch=(x86_64)
@@ -13,7 +13,7 @@ license=('MIT')
 depends=('vulkan-icd-loader')
 provides=('vulkan-amdvlk' 'amdvlk' 'vulkan-driver')
 conflicts=('vulkan-amdvlk' 'amdvlk')
-makedepends=('xorgproto' 'xorg-server-devel' 'libxrandr' 'cmake' 'python' 'libxml2' 'wayland' 'libdrm' 'git' 'ninja' 'repo' 'directx-shader-compiler' 'python-jinja')
+makedepends=('xorgproto' 'xorg-server-devel' 'libxrandr' 'cmake' 'python' 'libxml2' 'wayland' 'libdrm' 'git' 'ninja' 'repo' 'directx-shader-compiler' 'python-jinja' 'python-ruamel-yaml')
 source=()
 sha256sums=()
 
