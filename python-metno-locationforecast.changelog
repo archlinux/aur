@@ -1,0 +1,7 @@
+## [1.2.0] - 2024-07-02
+
+A minor release adding some functionality.
+
+### Added
+
+- Adds ability to convert wind speeds to Beaufort scale
