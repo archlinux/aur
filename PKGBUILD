@@ -3,7 +3,7 @@
 
 pkgname='perl-tcl'
 pkgver='1.32'
-pkgrel='4'
+pkgrel='5'
 pkgdesc="Tcl extension module for Perl"
 arch=('i686' 'x86_64')
 license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
@@ -41,6 +41,8 @@ package() {
   make install
 
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  # set the library to be root-writable so it can be stripped
+  chmod 755 "$pkgdir"/usr/lib/perl*/*/vendor_perl/auto/Tcl/Tcl.so
 }
 
 # Local Variables:
