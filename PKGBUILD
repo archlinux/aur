@@ -11,12 +11,12 @@
 # https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+packages
 
 pkgname=mozillavpn
-pkgver=2.22.0
+pkgver=2.23.0~rc20240626151300
 pkgrel=1
 pkgdesc="Fast, secure, and easy to use VPN from the makers of Firefox"
 arch=('x86_64')
 url="https://vpn.mozilla.org"
-license=('MPL2')
+license=('MPL-2.0')
 options=('!lto')
 depends=(
     'dbus'
@@ -58,7 +58,7 @@ _debian_series="noble1"
 _dl_url="https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/mozillavpn"
 _pkgsrc="$pkgname-$pkgver"
 source=("$_dl_url/${pkgver}-${_debian_series}/mozillavpn_${pkgver}.orig.tar.gz")
-sha256sums=('e8c46a97ebfd01c0d59a96a3c33232d4ae2529d02e49fa7095bc47a58c3d9d68')
+sha256sums=('7d96b6317a79e9315d02f41c41cf658d4237ba1aa73787c49f81a4d732e27fac')
 
 build() {
     local _cmake_options=(

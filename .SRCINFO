@@ -1,11 +1,11 @@
 pkgbase = mozillavpn
 	pkgdesc = Fast, secure, and easy to use VPN from the makers of Firefox
-	pkgver = 2.22.0
+	pkgver = 2.23.0~rc20240626151300
 	pkgrel = 1
 	url = https://vpn.mozilla.org
 	install = mozillavpn.install
 	arch = x86_64
-	license = MPL2
+	license = MPL-2.0
 	makedepends = cargo
 	makedepends = clang
 	makedepends = cmake
@@ -34,7 +34,7 @@ pkgbase = mozillavpn
 	depends = wireguard-tools
 	optdepends = qt6-wayland: for Wayland support
 	options = !lto
-	source = https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/mozillavpn/2.22.0-noble1/mozillavpn_2.22.0.orig.tar.gz
-	sha256sums = e8c46a97ebfd01c0d59a96a3c33232d4ae2529d02e49fa7095bc47a58c3d9d68
+	source = https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/mozillavpn/2.23.0~rc20240626151300-noble1/mozillavpn_2.23.0~rc20240626151300.orig.tar.gz
+	sha256sums = 7d96b6317a79e9315d02f41c41cf658d4237ba1aa73787c49f81a4d732e27fac
 
 pkgname = mozillavpn
