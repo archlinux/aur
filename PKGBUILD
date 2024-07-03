@@ -6,7 +6,7 @@
 # Maintainer: Peter <craven@gmx.net>
 pkgname=rhizome-pi-scheme
 pkgver=0.57
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="rhizome/pi is a Scheme implementation (interpreter and compiler, compiler generates program in C language) conforming to R^5RS."
 arch=(x86_64 i686)
@@ -48,6 +48,12 @@ build() {
   sed -i 's/SHLIBDIR)"/SHLIBDIR) -m32"/' pi/compiler/Makefile
   sed -i "s|install -c -m 444 rhiz_cnf.h rhizome.h.*|install -c -m 444 rhiz_cnf.h rhizome.h ${pkgdir}/usr/include|" kappa/Makefile
   sed -i "s|install -c -m 444 rhiz_pi.h.*|install -c -m 444 rhiz_pi.h ${pkgdir}/usr/include|" pi/Makefile
+  sed -i "s|^main(int argc, char \*argv\[\])|int main(int argc, char \*argv\[\])|" pi/main.c
+  sed -i '1i #include <stdio.h>' pi/helper.c
+  sed -i '1i #include <string.h>' pi/dynload.c
+  sed -i '1i #include <stdio.h>' kappa/ldso.c
+  sed -i 's|sprintf(mes_buf, "%s", sys_siglist[n]);|sprintf(mes_buf, "%s", strsignal(n));|' pi/subr.c
+  sed -i '/sys_siglist/d' pi/subr.c
   cd pi
   make
 }
