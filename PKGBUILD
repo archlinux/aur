@@ -10,7 +10,7 @@ url="http://www.gnu.org/software/kawa/"
 conflicts=('kawa')
 provides=('kawa')
 depends=('java-environment')
-makedepends=('subversion' 'texinfo' 'git')
+makedepends=('texinfo' 'git')
 arch=('i686' 'x86_64')
 license=('X11/MIT')
 

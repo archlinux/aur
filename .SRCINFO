@@ -6,7 +6,6 @@ pkgbase = kawa-git
 	arch = i686
 	arch = x86_64
 	license = X11/MIT
-	makedepends = subversion
 	makedepends = texinfo
 	makedepends = git
 	depends = java-environment
