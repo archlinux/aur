@@ -2,7 +2,7 @@
 
 pkgname=flarectl-bin
 _pkgname="${pkgname%-bin}"
-pkgver=0.98.0
+pkgver=0.99.0
 pkgrel=1
 pkgdesc='CLI application for interacting with a Cloudflare account'
 arch=('x86_64')
@@ -13,7 +13,7 @@ license=('BSD')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${url}/download/v${pkgver}/${_pkgname}_${pkgver}_${_goos}_${_goarch}.tar.gz")
-b2sums=('9c0a2c8166a603b8db51225cfa1bd9be7ddbf630b206687e0f66f86836cef02a4360d5bdd93931b807f08a2bf92461963669555254fc50363faf50823a93923a')
+b2sums=('074d56ac00d33e80aa7373e69c5faa8a8bd9c8451e0efef78a536bcb73114bd3b4b36bef8f5f5f63aded985026bb6e47029396f7dd2b1f7971c740cd1be67dc6')
 
 package() {
 	install -D --mode 755 "${_pkgname}" --target-directory "${pkgdir}/usr/bin"
