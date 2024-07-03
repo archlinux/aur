@@ -1,0 +1,14 @@
+pkgbase = terraform-pug-bin
+	pkgdesc = A TUI for terraform power users
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/leg100/pug
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = unzip
+	noextract = ${pkgname/-bin/}_linux_amd64.zip
+	source = https://github.com/leg100/pug/releases/download/v0.3.2/terraform-pug_linux_amd64.zip
+	sha512sums = 8242e838ada8b78dcd2635824a6e695ff2754fd27850b8b1f8f219daee53c21f5879e7748fd3292cf55d5f153f4fd37a29436c44fad26b1cc51350970e942311
+	b2sums = 8f15719c39e776269dc0aca1af8c28fb7caffae2a706ce71c4635ea26ebcf2a3c506563d1ebed0a7c6c90002fff5f73f5298f315e19b671804c357c8088663f4
+
+pkgname = terraform-pug-bin
