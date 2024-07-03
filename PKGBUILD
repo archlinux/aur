@@ -4,7 +4,7 @@
 
 _pkgname=tumbler
 pkgname=${_pkgname}-git
-pkgver=4.19.0+1+g704de37
+pkgver=4.19.1+7+g6adedd8
 pkgrel=1
 pkgdesc="D-Bus service for applications to request thumbnails (git checkout)"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
@@ -13,7 +13,7 @@ license=('GPL2' 'LGPL')
 groups=('xfce4-git')
 depends=('gdk-pixbuf2' 'libxfce4util')
 makedepends=('ffmpegthumbnailer' 'freetype2' 'libgsf' 'libopenraw' 'poppler-glib'
-             'libgepub' 'xfce4-dev-tools' 'git')
+             'libgepub' 'xfce4-dev-tools' 'git' 'glib2-devel')
 optdepends=('ffmpegthumbnailer: for video thumbnails'
             'poppler-glib: for PDF thumbnails'
             'libgsf: for ODF thumbnails'
