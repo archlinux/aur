@@ -4,22 +4,23 @@ pkgbase=mkdocs-jupyter
 pkgname=("${pkgbase}")
 #"${pkgbase}-doc")
 _pyname=("${pkgbase//-/_}")
-pkgver=0.24.6
+pkgver=0.24.8
 pkgrel=1
 pkgdesc="Use Jupyter in mkdocs websites"
 url="https://mkdocs-jupyter.danielfrg.com"
-license=('Apache')
+license=('Apache-2.0')
 arch=("any")
 makedepends=('python-hatchling'
              'python-build'
              'python-installer')
 checkdepends=('python-pytest-cov'
+#             'python-pytest-xdist'
               'mkdocs-material'
               'python-jupytext'
               'jupyter-nbconvert')  # 'jupyter-nbclient' required by nbconvert
 #source=("https://github.com/mkdocstrings/mkdocstrings/archive/refs/tags/${pkgver}.tar.gz")
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('89fcbe8a9523864d5416de1a60711640b6bc2972279d2adf46ed2776c2d9ff7c')
+sha256sums=('09a762f484d540d9c0e944d34b28cb536a32869e224b460e2fc791b143f76940')
 
 build() {
     cd "${_pyname}-${pkgver}"
@@ -32,7 +33,7 @@ check() {
 
     mkdir -p dist/lib
     bsdtar -xpf dist/${_pyname/-/_}-${pkgver}-py3-none-any.whl -C dist/lib
-    PYTHONPATH="dist/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+    PYTHONPATH="dist/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4
 }
 
 package_mkdocs-jupyter() {
