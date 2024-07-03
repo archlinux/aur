@@ -1,0 +1,23 @@
+pkgbase = navicat-premium-lite
+	pkgdesc = Navicat Premium Lite
+	pkgver = 17.0.6
+	pkgrel = 1
+	url = https://www.navicat.com/products/navicat-premium-lite
+	arch = x86_64
+	arch = aarch64
+	license = sss
+	provides = navicat-premium-lite
+	source_x86_64 = navicat-premium-lite-en-x86_64-17.0.6.AppImage::https://dn.navicat.com/download/navicat17-premium-lite-en-x86_64.AppImage
+	source_x86_64 = navicat-premium-lite-cs-x86_64-17.0.6.AppImage::https://dn.navicat.com/download/navicat17-premium-lite-cs-x86_64.AppImage
+	sha256sums_x86_64 = 6fe5900c042a6371ecc6bba9d991c54eff7a0c6857a124374c286c66b3c9b579
+	sha256sums_x86_64 = 1a52a7a0c194e7af99f110e24f58d71992cfee90fa041c354bf4cd1a17fbc322
+	source_aarch64 = navicat-premium-lite-en-aarch64-17.0.6.AppImage::https://dn.navicat.com/download/navicat17-premium-lite-en-aarch64.AppImage
+	source_aarch64 = navicat-premium-lite-cs-aarch64-17.0.6.AppImage::https://dn.navicat.com/download/navicat17-premium-lite-cs-aarch64.AppImage
+	sha256sums_aarch64 = d31a9e1a8c4779899fbb7db19926132ea4723559a784aeb73915256dd2412ffb
+	sha256sums_aarch64 = 7b1d013d06efc2dbc944d72b5562a29d47f40e6b7cbdd69db7b2854f674f7dc2
+
+pkgname = navicat-premium-lite-en
+	pkgdesc = Navicat Premium Lite is a compact version of Navicat
+
+pkgname = navicat-premium-lite-cs
+	pkgdesc = Navicat Premium Lite 是 Navicat 的精简版
