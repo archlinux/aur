@@ -25,6 +25,9 @@ sha256sums=()
 validpgpkeys=()
 
 build() {
+	if [[ -d ${HOME}/.rustup ]]; then
+		ln -srfv ${HOME}/.rustup ${srcdir}/.rustup
+	fi
 	HOME=${srcdir} cargo install --version=${pkgver} slow-scan-print
 }
 
