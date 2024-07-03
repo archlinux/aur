@@ -1,13 +1,13 @@
 pkgbase = cmake-pkg
 	pkgdesc = pkg-config clone for CMake packages.
-	pkgver = 0.0.9
+	pkgver = 0.0.11
 	pkgrel = 1
 	url = https://gitlab.com/yataro/cmake-pkg/
 	arch = any
 	license = MIT
 	makedepends = zig
 	depends = cmake
-	source = https://gitlab.com/yataro/cmake-pkg/-/archive/v0.0.9/cmake-pkg-v0.0.9.tar.gz
-	sha256sums = 2396ec1fa5fecb676443b101cf4c35040164c9930456e0b82a7770578a28cb1e
+	source = https://gitlab.com/yataro/cmake-pkg/-/archive/v0.0.11/cmake-pkg-v0.0.11.tar.gz
+	sha256sums = fa70c287dbd9747084736e89eeed25cbabb902c8b722a755c27b44f7d20bad3a
 
 pkgname = cmake-pkg
