@@ -33,7 +33,7 @@ optdepends=(
 license=('MIT')
 arch=('any')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('68a09dc8393bd5ceff995cf60377d53e003f0035ddf2f6bc2e23fa46e3575380')
+sha256sums=('d0da684a64854fa7b2fc238ec79e6e6fecc7dc1898f8ba51eac75cf27caabf34')
 
 build() {
     cd $_pkgname-$pkgver
