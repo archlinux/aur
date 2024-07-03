@@ -1,7 +1,7 @@
 pkgbase = ticcutils
 	pkgdesc = Common library with functions for tools developed at Tilburg Centre for Cognition and Communication (Tilburg University) and Centre for Language and Speech Technology (Radboud University Nijmegen)
 	pkgver = 0.34
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LanguageMachines/ticcutils
 	arch = i686
 	arch = x86_64
