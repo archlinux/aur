@@ -12,6 +12,7 @@ pkgbase = xfce4-power-manager-devel
 	makedepends = xfce4-panel
 	makedepends = wayland
 	makedepends = wayland-protocols
+	makedepends = glib2-devel
 	depends = libxfce4ui
 	depends = upower
 	depends = libnotify
