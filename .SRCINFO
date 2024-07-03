@@ -1,0 +1,13 @@
+pkgbase = tclap-rc
+	pkgdesc = Header only, C++ 98 library to parse input program options
+	pkgver = 1.4.0_rc1
+	pkgrel = 1
+	url = http://tclap.sourceforge.net/
+	arch = any
+	license = MIT
+	makedepends = cmake
+	conflicts = tclap
+	source = https://deac-riga.dl.sourceforge.net/project/tclap/tclap-1.4.0-rc1.tar.bz2
+	sha256sums = 33e18c7828f76a9e5f2a00afe575156520e383693059ca9bc34ff562927e20c6
+
+pkgname = tclap-rc
