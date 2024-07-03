@@ -1,7 +1,7 @@
 # Maintainer: Meow0x7E <Meow0x7E@outlook.com>
 pkgname=slow-scan-print
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="This CLI program prints text at fixed intervals by character or line, and its name was inspired by SSTV (Slow-Scan TV)."
 arch=("any")
