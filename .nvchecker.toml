@@ -1,0 +1,5 @@
+[python-dora-search]
+source = "github"
+github = "facebookresearch/dora"
+prefix = "v"
+use_max_tag = true

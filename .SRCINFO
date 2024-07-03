@@ -1,0 +1,27 @@
+pkgbase = python-dora-search
+	pkgdesc = Dora The Explorer, a friendly experiment manager
+	pkgver = 0.1.12
+	pkgrel = 1
+	url = https://github.com/facebookresearch/dora
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = ipython
+	depends = python
+	depends = python-hydra-core
+	depends = python-omegaconf
+	depends = python-pytorch
+	depends = python-pytorch-lightning
+	depends = python-retrying
+	depends = python-submitit
+	depends = python-treetable
+	optdepends = python-hiplot: for HiPlot integration
+	optdepends = python-torchvision: to use the included examples
+	source = dora-0.1.12.tar.gz::https://github.com/facebookresearch/dora/archive/v0.1.12.tar.gz
+	sha512sums = 6fca5f81ef2c6e775958c5b443ff1c570dfc5577652f54cffeb38c1c953344e8ae4f3ec8a20b51729cf17acd5ff69720397c552123cc436e8e4bfd48c073ce9f
+
+pkgname = python-dora-search
