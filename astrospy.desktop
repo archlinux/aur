@@ -1,9 +1,7 @@
 [Desktop Entry]
-Encoding=UTF-8
 Name=AstroSpy
 Type=Application
-Comment=AstroSpy application
-Exec=mono --optimize=float32 /opt/sdrsharp/AstroSpy.exe
-Icon=astrospy
-GenericName=AstroSpy
-Categories=AudioVideo;Network;
+Comment=Radio Astronomy Analysis Tool for Airspy
+Exec=AstroSpy
+Icon=AstroSpy
+Categories=HamRadio;Network;
