@@ -1,6 +1,12 @@
 Changelog
 =========
 
+**[5.2.0] ----- 2024-07-02** ::
+
+	    When comparing file digests use strncmp() with known dynamic length not EVP_MAX_MD_SIZE
+	    update Docs/Changelog.rst Docs/wg-client.pdf
+
+
 **[5.1.0] ----- 2024-07-02** ::
 
 	    wg-fix-resolv.c: Generalize the file hashing and switch to SHA384
