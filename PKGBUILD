@@ -3,12 +3,13 @@
 
 pkgname='perl-tkx'
 pkgver='1.10'
-pkgrel='3'
+pkgrel='4'
 pkgdesc="Yet another Tk interface"
 arch=('any')
 license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl>=5.008' 'perl-tcl>=1' 'tk')
+checkdepends=('xorg-server-xvfb' 'ttf-font')
 url='http://search.cpan.org/dist/Tkx'
 source=('https://cpan.metacpan.org/authors/id/C/CA/CAC/Tkx-1.10.tar.gz')
 md5sums=('edbb92ced28998612fd1e3a864be0887')
@@ -31,7 +32,7 @@ build() {
 check() {
   cd "$srcdir/$_distdir"
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
+    xvfb-run make test
   )
 }
 
