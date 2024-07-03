@@ -1,7 +1,7 @@
 # Maintainer: Yu-Hsuan Tu <dobe0331 at gmail dot com>
 _pkgname=delighter
 pkgname=agisoft-${_pkgname}
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="A free stand-alone tool designed to remove shadows from model textures"
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=('!strip')
 install=${pkgname}.install
 source=("https://s3-eu-west-1.amazonaws.com/download.agisoft.com/${_pkgname}_${pkgver//./_}_amd64.tar.gz"
 	"agisoft-delighter-icon-encoded.txt")
-sha256sums=('a0ef9958acd030ddb065dda3c1e8557d00544f85ba8212ba006d45d9c6f6a5c3'
+sha256sums=('b2e51ee4cac3e09314cae07e9ec315415ebc2cd0c69e0a5ff60cedf7f5f14248'
             '6cc74a4ac8ec776ebea5eff2383ddaf2520bb0a47f7d2135a62277dbd9206921')
 
 build() {
@@ -47,8 +47,8 @@ Categories=Science;ImageProcessing" > "$srcdir/agisoft-delighter.desktop"
     
     # Create icons for other resolutions
     for _res in 16 32 48 64; do
-        convert "$srcdir/agisoft-delighter_128.png" -resize ${_res}x${_res} "$srcdir/agisoft-delighter_${_res}.png"
-        convert "$srcdir/application-agisoft-dlz_128.png" -resize ${_res}x${_res} "$srcdir/application-agisoft-dlz_${_res}.png"
+        magick "$srcdir/agisoft-delighter_128.png" -resize ${_res}x${_res} "$srcdir/agisoft-delighter_${_res}.png"
+        magick "$srcdir/application-agisoft-dlz_128.png" -resize ${_res}x${_res} "$srcdir/application-agisoft-dlz_${_res}.png"
     done
     
     # Create executables for /usr/bin
