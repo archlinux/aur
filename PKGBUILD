@@ -1,7 +1,8 @@
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: Peter <peter@nexoid.at>
+# Previous Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=femtolisp-git
 pkgver=r308.0bf4243
-pkgrel=1
+pkgrel=2
 #_contributor=JeffBezanson
 _contributor=lambdaconservatory
 pkgdesc="lightweight, robust, scheme-like lisp implementation"
@@ -22,6 +23,8 @@ pkgver() {
 
 build() {
   cd "${pkgname%-git}"
+  # see man wcwidth
+  sed -i '1i #define _XOPEN_SOURCE' string.c
   make -j1 -l release
 }
 
