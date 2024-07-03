@@ -44,8 +44,8 @@ $_OPTIONAL_GRPC"
 _pkgbase="localai"
 pkgbase="${_pkgbase}-git"
 pkgname=()
-pkgver=2.17.1.10.gba2d969c
-pkgrel=1
+pkgver=2.18.1.5.g97de2b65
+pkgrel=2
 pkgdesc="Self-hosted OpenAI API alternative - Open Source, community-driven and local-first."
 url="https://github.com/mudler/LocalAI"
 license=('MIT')
@@ -222,8 +222,6 @@ _build() {
   else
     _LLAMA_CPP_BACKEND="backend-assets/grpc/llama-cpp-avx2"
   fi
-  echo "DISABLE llama-cpp"
-  _LLAMA_CPP_BACKEND=""
   cat - << EOF
 
 BUILD: $1, GO_TAGS=$_GO_TAGS, OPTIONAL_MAKE_ARGS=$_OPTIONAL_MAKE_ARGS

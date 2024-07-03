@@ -1,7 +1,7 @@
 pkgbase = localai-git
 	pkgdesc = Self-hosted OpenAI API alternative - Open Source, community-driven and local-first.
-	pkgver = 2.17.1.10.gba2d969c
-	pkgrel = 1
+	pkgver = 2.18.1.5.g97de2b65
+	pkgrel = 2
 	url = https://github.com/mudler/LocalAI
 	arch = x86_64
 	license = MIT
@@ -35,7 +35,7 @@ pkgbase = localai-git
 	depends = python-torchaudio
 	depends = python-torchvision
 	provides = localai
-	provides = local-ai=2.17.1.10.gba2d969c
+	provides = local-ai=2.18.1.5.g97de2b65
 	conflicts = localai
 	conflicts = local-ai
 	backup = etc/localai/localai.conf
