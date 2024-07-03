@@ -9,7 +9,7 @@ url="https://github.com/google/ios-webkit-debug-proxy"
 arch=('i686' 'x86_64')
 license=('BSD-3-Clause')
 depends=('glibc' 'libimobiledevice' 'libplist' 'libusbmuxd' 'openssl')
-source=("https://github.com/google/ios-webkit-debug-proxy/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
+source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('6b7781294cc84d383c7e7ecd05af08ca8d9b2af7a49ba648178ae4d84837c52b')
 
 build() {
