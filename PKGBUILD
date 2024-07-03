@@ -1,14 +1,14 @@
 # Maintainer: Fabien LEFEBVRE <contact@d1ceward.com>
 
 pkgname=plugn
-pkgver=0.15.3
+pkgver=0.16.0
 pkgrel=1
 pkgdesc='Hook system that lets users extend your application with plugins'
 arch=('x86_64')
 url='https://github.com/dokku/plugn'
 license=('MIT')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('db1ea0c9017fa5444eff0134b45e9dbd25cd8c51ae279c66e7af78e6f11be667')
+sha256sums=('07fa067c1717e17e744b705a7bd9097d8f94c442a6784629b84b9861fa2cb386')
 makedepends=('go')
 
 build() {
