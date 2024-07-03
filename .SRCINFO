@@ -1,0 +1,16 @@
+pkgbase = qsaharaserver-git
+	pkgdesc = QSaharaServer Source Code
+	pkgver = 2015.r0.g4a5b814
+	pkgrel = 1
+	url = https://github.com/Muhmmad-Almuhmmah/QSaharaServer
+	arch = x86_64
+	license = unkonw
+	makedepends = git
+	makedepends = kickstart-git
+	depends = glibc
+	provides = qsaharaserver
+	conflicts = qsaharaserver
+	source = qsaharaserver::git+https://github.com/Muhmmad-Almuhmmah/QSaharaServer.git
+	sha256sums = SKIP
+
+pkgname = qsaharaserver-git
