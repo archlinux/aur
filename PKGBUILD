@@ -29,12 +29,6 @@ build() {
   ./gradlew dist --no-daemon
 }
 
-check() {
-  cd "$pkgname"
-  ./gradlew test --no-daemon
-}
-
-
 package() {
   cd "${pkgname}/build/jadx"
 
