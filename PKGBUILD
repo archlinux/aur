@@ -2,7 +2,7 @@
 
 pkgname=latex-tuda-ci
 _pkgname=tuda_latex_templates
-pkgver=3.38
+pkgver=3.40
 pkgrel=1
 pkgdesc='TUDa-CI for LaTeX from Technische Universität Darmstadt'
 arch=('any')
@@ -25,16 +25,15 @@ makedepends=(
 )
 replaces=('latex-tuddesign' 'latex-tuddesign-thesis' 'latex-tuddesign-fonts')
 source=("https://github.com/tudace/${_pkgname}/archive/v${pkgver}/${pkgver}-${_pkgname}.tar.gz")
-b2sums=('4b340e37997bc788afd29f5197b4eb2d2a35d6e828c6a0fa674db6ecc5c674ce365478add27251bd7a885817cb2fc4a0b3c036ab9edbba38f881148978ede896')
+b2sums=('eda75fa16ba027dfa70b5b5d30b847b8040b1844da9c78ec6c9fb20da1f6fc34f584344298a8019deb3d02baa44bc6447b22dd77e04b71e3e6dfc80e5740e81f')
 
 build() {
   cd ${_pkgname}-${pkgver}
-  # currently broken
-  # l3build doc
+  l3build doc
 }
 
 package() {
   cd ${_pkgname}-${pkgver}
-  l3build install --texmfhome ${pkgdir}/usr/share/texmf
+  l3build install --full --texmfhome ${pkgdir}/usr/share/texmf
   install -Dm644 LICENSE_info "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
