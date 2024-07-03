@@ -2,7 +2,7 @@
 
 pkgname=archipelagomw-bin
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Multi-Game Randomizer and Server"
 arch=("x86_64")
 url="https://github.com/ArchipelagoMW/Archipelago"
@@ -26,7 +26,8 @@ cd /opt/Archipelago
 EOF
     chmod +x "$pkgdir/usr/bin/$file"
     # desktop entries
-    cat <<EOF >"$pkgdir/usr/share/applications/$file.desktop"
+    if [ "$ARCHIPELAGO_ALL_DESKTOPS" = "1" ]; then
+      cat <<EOF >"$pkgdir/usr/share/applications/$file.desktop"
 [Desktop Entry]
 Version=1.0
 Exec=/opt/Archipelago/$file
@@ -37,6 +38,22 @@ Icon=/opt/Archipelago/icon.png
 Categories=Game;
 Keywords=multi-game;randomizer;
 EOF
+    fi
 
   done < <(find "$pkgdir/opt/Archipelago" -maxdepth 1 -type f -name "Archipelago*" -executable -print0)
+
+  if [ "$ARCHIPELAGO_ALL_DESKTOPS" != "1" ]; then
+    cat <<EOF >"$pkgdir/usr/share/applications/ArchipelagoLauncher.desktop"
+[Desktop Entry]
+Version=1.0
+Exec=/opt/Archipelago/ArchipelagoLauncher
+Path=/opt/Archipelago/
+Name=Archipelago Launcher
+Comment=Multi-Game Randomizer and Server
+Type=Application
+Icon=/opt/Archipelago/icon.png
+Categories=Game;
+Keywords=multi-game;randomizer;
+EOF
+  fi
 }
