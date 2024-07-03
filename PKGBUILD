@@ -21,7 +21,7 @@ optdepends=(
 install=qbittorrent-vuetorrent.install
 
 source=("${_pkgname}-$pkgver.zip::${url}/releases/download/v$pkgver/${_pkgname}.zip")
-sha512sums=('7db7b7df7f2309981c7e982dd2655cba958080c96c565eb26e8edc51d7b307740413259fa63ee947c01ba1a7548a8db7249dbaf773187063f45b0d3f65b1ffc9')
+sha512sums=('7ff613191675f59ebf73e1135b1e6dd88b175f583bdeeb743499a6f1614902a411df8f18204923df5f4a34c32ce9619c194fa63dd7155f815e40623c82ce2672')
 
 package() {
 	cd "$srcdir/vuetorrent"
