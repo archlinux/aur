@@ -1,6 +1,6 @@
 pkgname=chromap
 pkgver=0.2.6
-pkgrel=3
+pkgrel=4
 pkgdesc="An ultrafast method for aligning and preprocessing high throughput chromatin profiles. "
 arch=('x86_64')
 license=('custom:"Copyright (c) 2019 Haowen Zhang, Li Song, X. Shirley Liu, Heng Li"')
@@ -22,5 +22,5 @@ package() {
 	export LC_ALL=en_US.UTF-8
 
 	mkdir -p "$pkgdir/usr/bin"
-	tar -xf $_file_name -C "$pkgdir/usr/bin"
+	tar -xf $file_name -C "$pkgdir/usr/bin"
 }
