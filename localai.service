@@ -21,29 +21,30 @@ EnvironmentFile=-%S/%N/.env
 
 # start server
 ExecStart=/usr/bin/localai run \
+  --audio-path="%T/%N/audio" \
   --backend-assets-path="%S/%N" \
   --config-path="%S/%N" \
+  --external-grpc-backends=bark:%S/%N/backend-assets/grpc/python/bark/run.sh,coqui:%S/%N/backend-assets/grpc/python/coqui/run.sh,diffusers:%S/%N/backend-assets/grpc/python/diffusers/run.sh,parler-tts:%S/%N/backend-assets/grpc/python/parler-tts/run.sh,rerankers:%S/%N/backend-assets/grpc/python/rerankers/run.sh,sentencetransformers:%S/%N/backend-assets/grpc/python/sentencetransformers/run.sh,transformers:%S/%N/backend-assets/grpc/python/transformers/run.sh,transformers-musicgen:%S/%N/backend-assets/grpc/python/transformers-musicgen/run.sh \
+  --image-path="%T/%N/images" \
   --localai-config-dir="%S/%N/config" \
   --models-path="%S/%N/models" \
-  --audio-path="%T/%N/audio" \
-  --image-path="%T/%N/images" \
-  --upload-path="%T/%N/upload" \
-  --external-grpc-backends=bark:%S/%N/backend-assets/python/bark/run.sh,coqui:%S/%N/backend-assets/python/coqui/run.sh,diffusers:%S/%N/backend-assets/python/diffusers/run.sh,parler-tts:%S/%N/backend-assets/python/parler-tts/run.sh,rerankers:%S/%N/backend-assets/python/rerankers/run.sh,sentencetransformers:%S/%N/backend-assets/python/sentencetransformers/run.sh,transformers:%S/%N/backend-assets/python/transformers/run.sh,transformers-musicgen:%S/%N/backend-assets/python/transformers-musicgen/run.sh
+  --upload-path="%T/%N/upload"
 
 # create virtualenvs for python backends, recreate if localai is newer than venv
 # disabled python backends: autogptq exllama exllama2 mamba openvoice petals vall-e-x vllm
 ExecStartPost=bash -c 'sleep 3;\
-for i in bark coqui diffusers parler-tts rerankers sentencetransformers transformers transformers-musicgen; do \
-  bedir="%S/%N/backend-assets/python/$i"; \
+for i in bark coqui diffusers parler-tts rerankers \
+    sentencetransformers transformers transformers-musicgen; do \
+  bedir="%S/%N/backend-assets/grpc/python/$i"; \
   if test /usr/bin/localai -nt $bedir/venv; then rm -r $bedir/venv; fi; \
   if test ! -d $bedir/venv; then \
     echo "re/creating $bedir"; \
-    %S/%N/backend-assets/python/$i/install.sh; \
+    %S/%N/backend-assets/grpc/python/$i/install.sh; \
   fi; \
 done'
 
 # make some time for virtualenvs to be installed
-TimeoutStartSec=120
+TimeoutStartSec=180
 
 [Install]
 WantedBy=default.target
