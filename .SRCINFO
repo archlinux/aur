@@ -1,10 +1,10 @@
 pkgbase = chromap
 	pkgdesc = An ultrafast method for aligning and preprocessing high throughput chromatin profiles.
-	pkgver = chromap_0.2.6
-	pkgrel = 1
-	url = https://typoraio.cn/
+	pkgver = 0.2.6
+	pkgrel = 2
+	url = https://haowenz.github.io/chromap/
 	arch = x86_64
-	license = custom:"Copyright (c) 2015 Abner Lee All Rights Reserved."
+	license = custom:"Copyright (c) 2019 Haowen Zhang, Li Song, X. Shirley Liu, Heng Li"
 	provides = chromap
 	conflicts = chromap
 	source = https://gh.api.99988866.xyz/https://github.com/haowenz/chromap/releases/download/0.2.6/chromap-0.2.6_x64-linux.tar.bz2
