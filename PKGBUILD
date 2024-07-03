@@ -14,9 +14,13 @@ makedepends=('git' 'scons' 'boost')
 provides=('rlvm')
 conflicts=('rlvm')
 source=("git+https://github.com/eglaysher/rlvm.git"
-        "memory.patch")
+        "includes.patch"
+        "warnings.patch"
+        "gtk+3.patch")
 sha256sums=('SKIP'
-            '05b4c17fe4132b3877b53ba34076c4f21b0982d40ec134400697a51f7ea52226')
+            '05b4c17fe4132b3877b53ba34076c4f21b0982d40ec134400697a51f7ea52226'
+            '9e7d10880051c11062b67ca9ac5f53bf7277588228f0103e93ac6cccb72e57cc'
+            '6bf8a1d8cd64b05057859338132acef11db573c58adc3913679776b8d4a7b83a')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -25,7 +29,9 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_pkgname"
-  patch -Np1 -i "$srcdir/memory.patch"
+  patch -Np1 -i "$srcdir/includes.patch"
+  patch -Np1 -i "$srcdir/warnings.patch"
+  patch -Np1 -i "$srcdir/gtk+3.patch"
 }
 
 build() {
