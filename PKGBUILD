@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=COTAN
-_pkgver=2.4.3
+_pkgver=2.4.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -60,8 +60,8 @@ optdepends=(
   r-torch
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('348f8aca1deb5d63af8a0bfd7758e488')
-b2sums=('eb4555dfa6011a8d1ba12f04b3e2118f782ab7908c1aa7b0b6489483111ea4d9e57f139d571045be9c9fbddca426b62f69b04125875b5fd394b6c1122fb63cd2')
+md5sums=('0c1f4e1d52cc580a0131f6626b2a5809')
+b2sums=('d4fef8585e2eadb7912d9f29fcb979d6d0bd5671eb41ef465d410e032b3d6b3ff04dc6b41f05e69d05280fc700cdb5faf98336025b3502b2c500f12d61ecbb51')
 
 build() {
   mkdir build
