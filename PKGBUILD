@@ -12,6 +12,7 @@ groups=('xfce4-devel')
 depends=('libxfce4ui' 'libwnck3' 'xfconf' 'libsm' 'polkit' 'xorg-iceauth'
          'xorg-xinit' 'xorg-xrdb' 'polkit-gnome' 'hicolor-icon-theme'
          'libxfce4windowing>=4.19.2' 'gtk-layer-shell')
+makedepends=('glib2-devel')
 optdepends=('gnome-keyring: for keyring support when GNOME compatibility is enabled'
             'xfce4-screensaver: for locking screen with xflock4'
             'xscreensaver: for locking screen with xflock4'

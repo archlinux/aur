@@ -9,6 +9,7 @@ pkgbase = xfce4-session-devel
 	arch = aarch64
 	groups = xfce4-devel
 	license = GPL2
+	makedepends = glib2-devel
 	depends = libxfce4ui
 	depends = libwnck3
 	depends = xfconf
