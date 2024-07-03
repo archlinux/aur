@@ -1,7 +1,7 @@
 pkgbase = mbt
 	pkgdesc = Memory-based tagger-generator and tagger in one.
 	pkgver = 3.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://languagemachines.github.io/mbt
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = mbt
 	makedepends = libtool
 	makedepends = autoconf
 	makedepends = autoconf-archive
-	depends = ticcutils>=0.24
+	depends = ticcutils>=0.34
 	depends = timbl
 	depends = timblserver
 	options = !libtool

@@ -2,11 +2,11 @@
 # Contributor: Bart Verhoeven <nepherte at archlinux dot us>
 pkgname=mbt
 pkgver=3.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Memory-based tagger-generator and tagger in one."
 arch=('i686' 'x86_64')
 license=('GPL3')
-depends=('ticcutils>=0.24' 'timbl' 'timblserver')
+depends=('ticcutils>=0.34' 'timbl' 'timblserver')
 makedepends=('libtool' 'autoconf' 'autoconf-archive')
 options=(!libtool)
 url="https://languagemachines.github.io/mbt"
@@ -17,6 +17,7 @@ md5sums=(1baa7caf5f529187319f22a261c18e80)
 
 build() {
   cd $srcdir/$pkgname-$pkgver
+  export CXXFLAGS="-std=c++17"
   bash bootstrap.sh
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
   make
