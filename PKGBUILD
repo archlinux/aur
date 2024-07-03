@@ -5,7 +5,7 @@
 pkgname=qbittorrent-vuetorrent-bin
 _pkgname=vuetorrent
 pkgver=2.10.2
-pkgrel=1
+pkgrel=2
 
 pkgdesc='The sleekest looking WebUI for qBittorrent made with Vue.js!'
 arch=('any')
