@@ -1,11 +1,6 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# Maintainer: Peter <craven@gmx.net>
+# Maintainer: Peter <peter@nexoid.at>
 pkgname=mosh-scheme
-pkgver=0.2.7
+pkgver=0.2.9_rc1
 pkgrel=1
 epoch=
 pkgdesc="Mosh is a free and fast interpreter for Scheme as specified in the R6RS."
@@ -24,13 +19,14 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/$pkgname/mosh-$pkgver.tar.gz")
-md5sums=('268598897536ff352296a905879940ad')
+
+source=("https://github.com/higepon/mosh/releases/download/mosh-${pkgver/_/-}/mosh-${pkgver/_/-}.tar.gz")
+sha256sums=('9f11bd36e128e3f9990662b7b4a6bcf41ae325d41c538467b2ef0f0f574b841f')
 noextract=()
 validpgpkeys=()
 
 build() {
-	cd "mosh-$pkgver"
+	cd "mosh-${pkgver/_/-}"
 	./configure --prefix=/usr --program-suffix=-scheme
 	make
 }
@@ -41,6 +37,6 @@ build() {
 # }
 
 package() {
-	cd "mosh-$pkgver"
+	cd "mosh-${pkgver/_/-}"
 	make DESTDIR="$pkgdir/" install
 }

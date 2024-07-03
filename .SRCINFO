@@ -1,13 +1,12 @@
 pkgbase = mosh-scheme
 	pkgdesc = Mosh is a free and fast interpreter for Scheme as specified in the R6RS.
-	pkgver = 0.2.7
+	pkgver = 0.2.9_rc1
 	pkgrel = 1
 	arch = x86_64
 	arch = i686
 	license = unknown
 	depends = oniguruma
-	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/mosh-scheme/mosh-0.2.7.tar.gz
-	md5sums = 268598897536ff352296a905879940ad
+	source = https://github.com/higepon/mosh/releases/download/mosh-0.2.9-rc1/mosh-0.2.9-rc1.tar.gz
+	sha256sums = 9f11bd36e128e3f9990662b7b4a6bcf41ae325d41c538467b2ef0f0f574b841f
 
 pkgname = mosh-scheme
-
