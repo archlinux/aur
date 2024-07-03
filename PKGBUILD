@@ -14,7 +14,7 @@ provides=('nodejs-terser')
 conflicts=('nodejs-terser')
 replaces=('nodejs-terser')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
-sha256sums=('485ac24b164a826085bc6e02fbf2f0fb1792bbd4318de66e36367c11ad0ac596')
+sha256sums=('19dc9887c0c3d56be4fa3b11ee0f9d39899f801696d2e8f6e73ba0a2755a8157')
 
 package() {
   # based on https://wiki.archlinux.org/index.php/Node.js_package_guidelines as of 2021-09-30
