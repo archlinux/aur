@@ -1,7 +1,7 @@
 # Maintainer: Yu-Hsuan Tu <dobe0331 at gmail dot com>
 _pkgname=metashape
 pkgname=agisoft-${_pkgname}
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Photogrammetric processing of digital images and 3D spatial data generation software. Standard edition"
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=("https://s3-eu-west-1.amazonaws.com/download.agisoft.com/${_pkgname}_${p
         "agisoft-metashape-icon-encoded.txt"
         "agisoft-psx-mime-icon-encoded.txt"
 	"agisoft-psz-mime-icon-encoded.txt")
-sha256sums=('3de2b25f5bafa29a616eb119854b871d38d8a0e0d076652ee17884a1016988d9'
+sha256sums=('8087c0f0d72f64a42197b89461a891e71f974188c11b1e94d19c6b9d9a46ed3f'
             '959eb21ce482a5b1f84a0e04ec6f0d53aaf679c84bce9f813b350afe5dd201ba'
             '627df01b98f9f22b31d62ba039127b7809650990d1633e4190f1d9844830a0ff'
             'd44fb70962175505fd3bfc0e96670e5bf4092c80446e0142cc91a3e0033e1009')
@@ -66,9 +66,9 @@ Categories=Science;ImageProcessing" > "$srcdir/agisoft-metashape.desktop"
     
     # Create icons for other resolutions
     for _res in 16 32 48 64; do
-        convert "$srcdir/agisoft-metashape_128.png" -resize ${_res}x${_res} "$srcdir/agisoft-metashape_${_res}.png"
-        convert "$srcdir/application-agisoft-psx_128.png" -resize ${_res}x${_res} "$srcdir/application-agisoft-psx_${_res}.png"
-        convert "$srcdir/application-agisoft-psz_128.png" -resize ${_res}x${_res} "$srcdir/application-agisoft-psz_${_res}.png"
+        magick "$srcdir/agisoft-metashape_128.png" -resize ${_res}x${_res} "$srcdir/agisoft-metashape_${_res}.png"
+        magick "$srcdir/application-agisoft-psx_128.png" -resize ${_res}x${_res} "$srcdir/application-agisoft-psx_${_res}.png"
+        magick "$srcdir/application-agisoft-psz_128.png" -resize ${_res}x${_res} "$srcdir/application-agisoft-psz_${_res}.png"
     done
     
     # Create executables for /usr/bin
