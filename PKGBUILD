@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=cubble
-_pkgver=0.3.0
+_pkgver=0.3.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="A Vector Spatio-Temporal Data Structure for Data Analysis"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -52,15 +52,15 @@ optdepends=(
   r-vdiffr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
-        "enable-tests.patch")
-md5sums=('507beb3acc1807759c2f7cd7a1ab776b'
-         'e2b8a5680c7d062c94e3e483d68cd8e8')
-b2sums=('36484c35e063e59426a2cce4cca06c77c19f4c158473938421f93370d5f7c27f61cd1f60e118e6a5408d2d6e0be78e8ae85dd5b4b198e41e58c2e2837c9c3093'
-        'c26254ed7877e0693784ee5a43f391548c105f56c7f3d765bb78476e7e07e0c128173b2bfc3256ab453049e6dec280745565d9619a1df5440dea371fca9ea199')
+        "fix-tests.patch")
+md5sums=('dfa7f2f0eaf7caace20bef962832ac7b'
+         '17ad8728b51d3c54b73045a92dfeed49')
+b2sums=('8ab27717cc994b2cc93ea841ec11452fb2613790cec3e73b921b83d927de0ec738eac295886968d2d45d793e0b0c80ff96c564af9b7194745498ae68ad8678c0'
+        '9a0b54584f836fcaf883e071dddbca63c0bc17eb85ce9f9b62d4ce2c8db42fe3aac3549ed9f87627f5fd1a2daa3ade2408e79cee258a3066b86500787af26f14')
 
 prepare() {
-  # enable tests
-  patch -Np1 -i enable-tests.patch
+  # skip tests depending on r-stars
+  patch -Np1 -i fix-tests.patch
 }
 
 build() {

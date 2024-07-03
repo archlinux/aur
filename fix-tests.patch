@@ -1,0 +1,12 @@
+diff --git a/cubble/tests/testthat/test-as-cubble.R b/cubble/tests/testthat/test-as-cubble.R
+index adb1b6b..9ed3e85 100644
+--- a/cubble/tests/testthat/test-as-cubble.R
++++ b/cubble/tests/testthat/test-as-cubble.R
+@@ -36,6 +36,7 @@ test_that("as_cubble() works", {
+   dt <- climate_flat |>  sf::st_as_sf(coords = c("long", "lat"), crs = sf::st_crs("OGC:CRS84"))
+   expect_snapshot(dt |>  as_cubble(key = id, index = date))
+ 
++  skip_if_not_installed("stars")
+   # stars
+   tif <- system.file("tif/L7_ETMs.tif", package = "stars")
+   x <-  stars::read_stars(tif)
