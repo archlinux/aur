@@ -9,6 +9,7 @@ pkgbase = xfdesktop-devel
 	arch = armv7h
 	groups = xfce4-devel
 	license = GPL2
+	makedepends = glib2-devel
 	depends = thunar
 	depends = garcon
 	depends = hicolor-icon-theme

@@ -10,6 +10,7 @@ url="https://docs.xfce.org/xfce/xfdesktop/start"
 license=('GPL2')
 groups=('xfce4-devel')
 depends=('thunar' 'garcon' 'hicolor-icon-theme' 'libxfce4windowing>=4.19.3' 'gtk-layer-shell')
+makedepends=('glib2-devel')
 conflicts=('xfce4-menueditor' "${_pkgname}")
 provides=("${_pkgname}=${pkgver}")
 replaces=('xfce4-menueditor')
