@@ -1,10 +1,11 @@
-# Maintener: supdrewin <supdrewin at outlook dot com>
-# Co-Maintainer: Nikolay Bryskin <nbryskin@gmail.com>
+# Maintainer: Nikolay Bryskin <nbryskin@gmail.com>
+# Contributor: supdrewin <supdrewin at outlook dot com>
 # Contributor: Nathaniel van Diepen <eeems@eeems.email>
 
 
-pkgname=linux-enable-ir-emitter-git
-pkgver=5.2.4.r2.ge8de559
+pkgname=linux-enable-ir-emitter-5.2.4
+_gittag=5.2.4
+pkgver=5.2.4.r0.g5efaae8
 pkgrel=1
 pkgdesc="Enables infrared cameras that are not directly enabled out-of-the box"
 url="https://github.com/EmixamPP/linux-enable-ir-emitter"
@@ -19,7 +20,7 @@ depends=(python opencv fmt)
 
 install=linux-enable-ir-emitter.install
 
-source=("${pkgname}::git+${url}.git")
+source=("${pkgname}::git+${url}.git#tag=${_gittag}")
 sha256sums=('SKIP')
 
 pkgver() {
