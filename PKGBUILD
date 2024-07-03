@@ -2,7 +2,7 @@
 
 pkgname=freekill
 _upper_pkgname=FreeKill
-pkgver=0.4.15
+pkgver=0.4.19
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/Notify-ctrl/FreeKill'
@@ -13,7 +13,7 @@ depends=('qt6-declarative' 'qt6-multimedia' 'qt6-5compat'
   'readline' )
 makedepends=('cmake' 'qt6-tools' 'swig' 'clang')
 source=("${url}/releases/download/v${pkgver}/FreeKill-${pkgver}-source.tar.gz")
-sha256sums=('d5307b8baf34795890888bf82b1c56f5ef572126c7f0c875b0c33c8cb5f00c57')
+sha256sums=('c00d79e2e1dba5566b5d04d301251797ad9a698da590a865504a6c20fa28fa0b')
 
 prepare() {
   cd ${srcdir}/${_upper_pkgname}-${pkgver}
