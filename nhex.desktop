@@ -1,0 +1,10 @@
+[Desktop Entry]
+Categories=
+Comment=nhex
+Exec=env WEBKIT_DISABLE_DMABUF_RENDERER=1 nhex -%U
+Icon=nhex
+Name=nhex
+Terminal=false
+Type=Application
+MimeType=x-scheme-handler/irc;x-scheme-handler/ircs;
+Categories=GTK;Network;IRCClient;

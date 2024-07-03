@@ -1,0 +1,25 @@
+pkgbase = nhex
+	pkgdesc = A next-generation IRC client inspired by HexChat
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/nhexirc/nhex
+	arch = x86_64
+	license = MIT
+	license = MPL-2.0
+	makedepends = npm
+	makedepends = git
+	makedepends = rust
+	makedepends = nodejs
+	depends = gcc-libs
+	depends = libsoup
+	depends = webkit2gtk
+	provides = nhex
+	conflicts = nhex-bin
+	conflicts = nhex-git
+	options = !lto
+	source = https://github.com/nhexirc/nhex/archive/refs/tags/v0.5.2.tar.gz
+	source = nhex.desktop
+	sha256sums = 483d9a1f5320f3d329658c2a412bfdd32560ce14783dafd71a19c7d5d681915c
+	sha256sums = 23d57b49f521c3a238ce86baf08a3f862de1b1c19e08cc68ec6c96112c42d766
+
+pkgname = nhex
