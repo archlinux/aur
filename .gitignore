@@ -1,5 +1,5 @@
 /src
 /pkg
-/*.rpm
+/librtpkcs11ecp.so
 /*.zst
 

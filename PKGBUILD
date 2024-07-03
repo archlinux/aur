@@ -2,18 +2,19 @@
 
 pkgname=rutoken-pkcs
 pkgver=2.8.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Интерфейс RSALabs PKCS#11'
 arch=('x86_64')
 url='https://www.rutoken.ru/support/download/pkcs/'
 license=('proprietary')
 
 _file='librtpkcs11ecp.so'
-source=("http://download.rutoken.ru/Rutoken/PKCS11Lib/${pkgver}/Linux/x64/librtpkcs11ecp-${pkgver}-${pkgrel}.${arch}.rpm")
-sha256sums=('38a463ec35d9958fd91befdd544d2695daf8678cbe49107c9c08b8bf5daeb444')
+_dir="/opt/aktivco/rutokenecp/${arch}"
+source=("http://download.rutoken.ru/Rutoken/PKCS11Lib/${pkgver}/Linux/x64/librtpkcs11ecp.so")
+sha256sums=('638f894d8fe11c631d7c3e999d1555ae4ed74364a2a532515529c59eea5bb7de')
 
 package() {
-	mv "${srcdir}/usr/lib64" "${srcdir}/usr/lib"
-	cp -a "${srcdir}/opt" "${pkgdir}/"
-	cp -a "${srcdir}/usr" "${pkgdir}/"
+	install -D -t "${pkgdir}${_dir}" "${srcdir}/${_file}"
+	install -d "${pkgdir}/usr/lib"
+	ln -s "${_dir}/${_file}" "${pkgdir}/usr/lib/${_file}"
 }
