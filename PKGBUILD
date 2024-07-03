@@ -10,7 +10,7 @@ url="https://docs.xfce.org/xfce/tumbler/start"
 license=('GPL2' 'LGPL')
 groups=('xfce4-devel')
 depends=('gdk-pixbuf2' 'libxfce4util')
-makedepends=('python' 'ffmpegthumbnailer' 'poppler-glib' 'libgsf'
+makedepends=('glib2-devel' 'ffmpegthumbnailer' 'poppler-glib' 'libgsf'
              'libopenraw' 'freetype2' 'libgepub')
 optdepends=('ffmpegthumbnailer: for video thumbnails'
             'poppler-glib: for PDF thumbnails'
