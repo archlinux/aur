@@ -13,7 +13,6 @@ depends=(
     hwdata
     libavif
     libcap.so
-    libdisplay-info.so
     libdrm
     libdecor
     libliftoff.so
@@ -54,21 +53,26 @@ makedepends=(
 # _tag=62d425164d383fcde498b17b0af5d00bfa92aed4
 _branch="sk-gamescope"
 source=("git+https://github.com/3003n/gamescope.git#tag=${_tag}"
-        "git+https://github.com/nothings/stb.git#commit=af1a5bc352164740c1cc1354942b1c6b72eacb8a"
-        "git+https://github.com/Joshua-Ashton/wlroots.git"
-        "git+https://gitlab.freedesktop.org/emersion/libliftoff.git"
-        "git+https://github.com/Joshua-Ashton/GamescopeShaders.git#tag=v0.1"
-        "git+https://github.com/Joshua-Ashton/reshade.git"
-        "git+https://github.com/KhronosGroup/SPIRV-Headers.git"
-        )
+    "git+https://github.com/nothings/stb.git#commit=af1a5bc352164740c1cc1354942b1c6b72eacb8a"
+    "git+https://github.com/Joshua-Ashton/wlroots.git"
+    "git+https://gitlab.freedesktop.org/emersion/libliftoff.git"
+    "git+https://github.com/Joshua-Ashton/GamescopeShaders.git#tag=v0.1"
+    "git+https://github.com/Joshua-Ashton/vkroots.git"
+    "git+https://gitlab.freedesktop.org/emersion/libdisplay-info.git"
+    # "git+https://github.com/ValveSoftware/openvr.git"
+    "git+https://github.com/Joshua-Ashton/reshade.git"
+    "git+https://github.com/KhronosGroup/SPIRV-Headers.git"
+)
 
 b2sums=('SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP')
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP')
 
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -83,11 +87,30 @@ prepare() {
         echo "Applying patch $src..."
         git apply "../$src"
     done
+    
     meson subprojects download
+
+    git submodule init subprojects/wlroots
+    git config submodule.subprojects/wlroots.url "$srcdir/wlroots"
+
+    git submodule init subprojects/libliftoff
+    git config submodule.subprojects/libliftoff.url "$srcdir/libliftoff"
+
+    git submodule init subprojects/vkroots
+    git config submodule.subprojects/vkroots.url "$srcdir/vkroots"
+
+    git submodule init subprojects/libdisplay-info
+    git config submodule.subprojects/libdisplay-info.url "$srcdir/libdisplay-info"
+
+    # git submodule init subprojects/openvr
+    # git config submodule.subprojects/openvr.url "$srcdir/openvr"
+
     git submodule init src/reshade
     git config submodule.src/reshade.url "$srcdir/reshade"
+
     git submodule init thirdparty/SPIRV-Headers
     git config submodule.thirdparty/SPIRV-Headers.url ../SPIRV-Headers
+
     git -c protocol.file.allow=always submodule update
 
     # make stb.wrap use our local clone
@@ -102,12 +125,12 @@ pkgver() {
 }
 
 build() {
-  export LDFLAGS="$LDFLAGS -lrt"
-  arch-meson gamescope build \
-    -Dforce_fallback_for=stb,libliftoff,wlroots,vkroots \
-    -Dpipewire=enabled \
-    -Denable_openvr_support=false
-  ninja -C build
+    export LDFLAGS="$LDFLAGS -lrt"
+    arch-meson gamescope build \
+        -Dforce_fallback_for=stb,libliftoff,wlroots,vkroots,libdisplay-info \
+        -Dpipewire=enabled \
+        -Denable_openvr_support=false
+    ninja -C build
 }
 
 package() {
