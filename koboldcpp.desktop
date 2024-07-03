@@ -1,0 +1,9 @@
+[Desktop Entry]
+Comment=A simple one-file way to run various GGML and GGUF models with KoboldAI's UI
+Exec=/usr/bin/koboldcpp
+Icon=koboldcpp
+Name=KoboldCpp (Launcher)
+StartupNotify=true
+Terminal=true
+Type=Application
+Categories=Game;
