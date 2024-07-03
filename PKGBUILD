@@ -44,7 +44,7 @@ $_OPTIONAL_GRPC"
 _pkgbase="localai"
 pkgbase="${_pkgbase}-git"
 pkgname=()
-pkgver=2.16.0.139.g5116d561
+pkgver=2.17.1.10.gba2d969c
 pkgrel=1
 pkgdesc="Self-hosted OpenAI API alternative - Open Source, community-driven and local-first."
 url="https://github.com/mudler/LocalAI"
@@ -200,25 +200,20 @@ EOF
 
   # ROCM fixes
   cd "${srcdir}/${_pkgbase}-rocm"
-
-  # fix build error on ROCM by removing unsupported cf-protection from CMAKE_CXX_FLAGS
-  export CXXFLAGS+="$CXXFLAGS -fcf-protection=none"
-
   # fix llama and whisper build: --offload-arch, is deprecated, replace it with -DGPU_TARGETS
   for i in \
     backend/cpp/llama/llama.cpp/Makefile \
     sources/whisper.cpp/Makefile; do
       sed -ri 's/^(.+HIPFLAGS.+\+=).+offload-arch=.+$/\1 -DGPU_TARGETS="$(GPU_TARGETS)"/g' "$i"
   done
-
 }
 
 _build() {
   if [[ $_ENABLE_PYTHON = 1 ]]; then
     # generate grpc protobuf files for python and copy to backend-assets
     make BUILD_TYPE="$1" protogen-python
-    mkdir -p backend-assets
-    cp -a backend/python backend-assets/python
+    mkdir -p backend-assets/grpc
+    cp -a backend/python backend-assets/grpc/python
   fi
   if test "$1" = "cublas"; then
     _LLAMA_CPP_BACKEND="backend-assets/grpc/llama-cpp-cuda"
@@ -227,6 +222,8 @@ _build() {
   else
     _LLAMA_CPP_BACKEND="backend-assets/grpc/llama-cpp-avx2"
   fi
+  echo "DISABLE llama-cpp"
+  _LLAMA_CPP_BACKEND=""
   cat - << EOF
 
 BUILD: $1, GO_TAGS=$_GO_TAGS, OPTIONAL_MAKE_ARGS=$_OPTIONAL_MAKE_ARGS
@@ -259,8 +256,10 @@ build() {
     export ROCM_HOME="${ROCM_HOME:-/opt/rocm}"
     export ROCM_VERSION="$(cat $ROCM_HOME/.info/version)"
     export PATH="$ROC_HOME/bin:$PATH"
-    MAGMA_HOME="$ROCM_HOME" AMDGPU_TARGETS="$_AMDGPU_TARGETS" GPU_TARGETS="$_AMDGPU_TARGETS" \
-      _build hipblas
+    # fix build error on ROCM by removing unsupported cf-protection from CMAKE_CXX_FLAGS
+    CXXFLAGS="$CXXFLAGS -fcf-protection=none" MAGMA_HOME="$ROCM_HOME" \
+      AMDGPU_TARGETS="$_AMDGPU_TARGETS" GPU_TARGETS="$_AMDGPU_TARGETS" \
+        _build hipblas
   fi
 }
 
