@@ -19,7 +19,7 @@ package() {
     install -Dm755 "target/release/swaddle" "$pkgdir/usr/local/bin/swaddle"
 
     # Post-install instructions
-    echo "Swaddle has been installed. To integrate it with Sway, add the following line to your Sway configuration:"
+    echo "Swaddle has been installed. To integrate it with Sway / Hyprland, add the following line to your configuration:"
     echo "exec_always --no-startup-id /usr/local/bin/swaddle &"
-    echo "Then reload your Sway configuration or restart Sway."
+    echo "Then reload your configuration or restart Sway/Hyprland."
 }
