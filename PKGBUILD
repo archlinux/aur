@@ -4,7 +4,7 @@
 pkgname=mescc-tools
 pkgver=1.5.2
 pkgrel=3
-pkgdesc="tools for binary bootstrapping"
+pkgdesc="Bootstrapping tools for Janneke's MES"
 arch=(x86_64)
 license=('GPL-3.0-or-later')
 url="https://github.com/oriansj/mescc-tools"

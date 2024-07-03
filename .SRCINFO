@@ -1,5 +1,5 @@
 pkgbase = mescc-tools
-	pkgdesc = tools for binary bootstrapping
+	pkgdesc = Bootstrapping tools for Janneke's MES
 	pkgver = 1.5.2
 	pkgrel = 3
 	url = https://github.com/oriansj/mescc-tools
