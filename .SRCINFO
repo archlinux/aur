@@ -1,19 +1,14 @@
 pkgbase = vim-plug
 	pkgdesc = A vim plugin manager
-	pkgver = 0.11.0
+	pkgver = 0.13.0
 	pkgrel = 1
-	url = http://github.com/junegunn/vim-plug
-	install = vim-plug.install
+	url = https://github.com/junegunn/vim-plug
 	arch = any
 	license = MIT
 	depends = vim
 	provides = vim-plug
-	conflicts = vim-plug-git
-	source = https://github.com/junegunn/vim-plug/archive/0.11.0.tar.gz
-	source = LICENSE-MIT.txt
-	source = plug.vimrc
-	sha512sums = 79ff462790dad8e517a60f698d18e7038bc14f3f018c75a45d840d6f47c9987ee12cd84b44acb3b2fbc0d0e10ce9449aad51656c67d8b3ba675225e3c58459a2
-	sha512sums = aef00f3c6c9e529f40180f5e05a0c06dc614df3419969469baf574ed85611321c34415c3c731ffd5f6dfcf4ec9a34698b7851e2d9b5a46efa8de2410aa626fa8
-	sha512sums = 8e15c2074d0ce36daa0568167bcbcaf1038b8f65edcab661c9d41a9a18714b27accab28f5065408852329827ff4c84c03102c17bd542962cde1f057e88c4044c
+	conflicts = vim-plug
+	source = https://github.com/junegunn/vim-plug/archive/0.13.0/vim-plug-0.13.0.tar.gz
+	sha256sums = 682c8629d766236dc4c8bd16c545b8d9ca58cd06de2b1887b061d24c6b022903
 
 pkgname = vim-plug
