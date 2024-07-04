@@ -1,7 +1,7 @@
 # Maintainer: Marco <marcomania2012 at gmail dot com>
 
 pkgname=kf6-servicemenus-flacconvert
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc='KDE service menus for flac file converting'
 arch=('any')
@@ -13,7 +13,7 @@ replaces=("kde-servicemenus-flacconvert" "kf5-servicemenus-flacconvert")
 
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums=('7a5c701e94b8ecf6ca256e20a641100182e069bf5aa4313bdd94d565f9af7ddf')
+sha256sums=('05f78d02f171773f4b0c97cda1cf051700194835cb85328b0ffcec4e0d48db54')
 
 package() {
     cd "${srcdir}"
