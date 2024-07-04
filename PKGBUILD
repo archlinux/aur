@@ -1,11 +1,8 @@
-# Maintainer: Jonas Bögle <aur@iwr.sh>
-# Contributor: Jonathan Duck <duckbrain30@gmail.com>
-
 pkgname=typora-with-plugin
 _pkgname=typora
 _pluginame=typora_plugin
 _typora_ver=1.9.3
-_plugin_ver=1.9.18
+_plugin_ver=1.9.19
 pkgver=${_typora_ver}_plugin_${_plugin_ver}
 pkgrel=1
 pkgdesc="一款 Markdown 编辑器和阅读器（with typora_plugin）"
@@ -32,7 +29,7 @@ source=(
 sha512sums=(
     'da7714d8a2ef228d1df13bf2a6862f3be3fad51238657e8ee48350380267ecfed29b391e0c66653e3b4322e3dada02d2bea6e1041f5230988358645ea0cf4b28'
     'de9c883c63f3ea35bd551c8761e605f8e1a3468943e000abcbf94bb0c5cbb5f0f6c7fa4d49ab39c177f167e0e3d0b061c861bf828627b4a34f7f1589119c3d04'
-    'b4b3c7c1a68d2803562389bfa220b185db3f907b7df7eb97b54b7f33bc52558dd8c91ee938829e83e24b92fd4df018c29fc2e7e0f26ed630f7801c279e653bcc')
+    '766bbcb407d3f4e8c571cc689a2b25a0d4e5ebe1c24e9681defb8576f98bd653f26bf0e822501d95e22dc506b2bdc86b0963b622655bb16d414b931ff11c828f')
 
 _patch_plugin() {
   tar xvf ${_plugin_ver}.tar.gz -C "$pkgdir/"
