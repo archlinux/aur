@@ -5,7 +5,7 @@
 pkgname='feather-wallet'
 pkgver=2.6.7
 _pkgname=feather-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='A free Monero desktop wallet'
 license=('BSD-3-Clause')
 arch=('x86_64')
