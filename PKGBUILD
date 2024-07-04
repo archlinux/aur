@@ -25,6 +25,7 @@ build() {
   cd "$srcdir"/mpfr-${_pkgver}
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
+    export WINEARCH=foo
     ${_arch}-configure \
       --enable-shared \
       --disable-static \
