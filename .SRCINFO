@@ -1,7 +1,7 @@
 pkgbase = ruyi-bin
 	pkgdesc = The package manager for RuyiSDK.
 	pkgver = 0.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ruyisdk/ruyi
 	arch = x86_64
 	arch = arm64
@@ -13,7 +13,7 @@ pkgbase = ruyi-bin
 	depends = bzip2
 	depends = xz
 	depends = zstd
-	provides = ruyi=$pkgver
+	provides = ruyi
 	options = !strip
 	source_x86_64 = https://mirror.iscas.ac.cn/ruyisdk/ruyi/releases/0.13.0/ruyi.amd64
 	sha256sums_x86_64 = a639e2625642bdd8baa0f3f56cfbe25ad64f2fa04bee3f6330d6cb9bd2a75fdd
