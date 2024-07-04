@@ -52,7 +52,6 @@ package_radicle-node-bin() {
     pkgdesc+=" - node"
     provides=('radicle-node')
     conflicts=('radicle-node')
-    install=radicle-node-bin.install
 
     pushd "radicle-${_version}-$CARCH-unknown-linux-musl" >/dev/null
     install -Dm755 "bin/radicle-node" "$pkgdir/usr/bin/radicle-node"

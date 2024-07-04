@@ -33,6 +33,5 @@ pkgname = radicle-cli-bin
 
 pkgname = radicle-node-bin
 	pkgdesc = open source, peer-to-peer code collaboration stack built on Git - node
-	install = radicle-node-bin.install
 	provides = radicle-node
 	conflicts = radicle-node

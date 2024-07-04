@@ -1,6 +1,0 @@
-post_upgrade() {
-	echo
-	echo "  > There is a breaking change in the control socket command schema, so you'll have to stop your old node BEFORE updating the binaries, or use kill to stop it."
-	echo "  since you already updated, you’ll need to kill it now ¯\_(ツ)_/¯"
-	echo
-}
