@@ -1,0 +1,42 @@
+diff --git a/setup.py b/setup.py
+index 86c4a2b..772db9e 100644
+--- a/setup.py
++++ b/setup.py
+@@ -5,34 +5,30 @@ import os.path
+ 
+ 
+ # Grab the library location from the command line
+-libdir = None
++libdir = "--libdir=/usr/lib"
+ for argument in sys.argv:
+     if argument.startswith('--libdir='):
+         libdir = argument
+ if libdir is None:
+     print('Need to specify location of liblame')
+     sys.exit(1)
+-sys.argv.remove(libdir)
+ libdir = libdir[len('--libdir='):]
+ 
+ # Grab the include location from the command line
+-incdir = None
++incdir = "--incdir=/usr/include/lame"
+ for argument in sys.argv:
+     if argument.startswith('--incdir='):
+         incdir = argument
+ if incdir is None:
+     print('Need to specify location of liblame source')
+     sys.exit(1)
+-sys.argv.remove(incdir)
+ incdir = incdir[len('--incdir='):]
+ 
+ # Create the extension
+ lameenc = distutils.core.Extension(
+     'lameenc',
+     include_dirs=[incdir],
+-    libraries=['libmp3lame'] if sys.platform == 'win32' else [],
+-    extra_objects=
+-        [] if sys.platform == 'win32' else [os.path.join(libdir, 'libmp3lame.a')],
++    libraries=['libmp3lame'] if sys.platform == 'win32' else ['mp3lame'],
+     library_dirs=[libdir] if sys.platform == 'win32' else [],
+     sources=['lameenc.c']
+ )

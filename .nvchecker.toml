@@ -1,0 +1,5 @@
+[python-lameenc]
+source = "github"
+github = "chrisstaite/lameenc"
+prefix = "v"
+use_latest_release = true
