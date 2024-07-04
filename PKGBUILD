@@ -1,13 +1,13 @@
 # Maintainer: tee < teeaur at duck dot com >
 pkgname=polars-cli-bin
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="CLI interface for running SQL queries with Polars as backend"
 arch=(x86_64)
 url="https://github.com/pola-rs/polars-cli"
 license=('MIT')
 source=("https://github.com/pola-rs/polars-cli/releases/download/$pkgver/polars-cli-$pkgver-$arch-unknown-linux-gnu.tar.gz")
-b2sums=('22c54d9570263bea380afa75f99a55bb6f7c984ec74344175e68081d6863dd7349b64e694b2c7de9621d3506947a7cd735c20c50feea4c9d0991bc50c663f4ac')
+b2sums=('438f89a6aa4d797286e32f37395263c04555dad37b44ce5e8c61d05c32480d10fd30fd01920f8be15bfce6c96291fc857cab9aa7de42bbb45ccb0ea5309381f8')
 
 package() {
     install -Dm0755 polars -t "$pkgdir/usr/bin/"
