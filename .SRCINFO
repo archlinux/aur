@@ -1,0 +1,15 @@
+pkgbase = ack
+	pkgdesc = A Perl-based grep replacement, aimed at programmers with large trees of heterogeneous source code
+	pkgver = 3.7.0
+	pkgrel = 3
+	url = http://betterthangrep.com/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl-file-next
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/P/PE/PETDANCE/ack-v3.7.0.tar.gz
+	md5sums = 7daaf78636f9cbbebf42a6898d89f50f
+	sha256sums = ea7caa14f757de083310ed2cba298661ddcca5dee06ec8f18043ea625a79df20
+
+pkgname = ack
