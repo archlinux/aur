@@ -1,0 +1,15 @@
+pkgbase = manssh-git
+	pkgdesc = Manage your ssh alias configs easily
+	pkgver = 0.5.3.r1.ga7b987e
+	pkgrel = 1
+	url = https://github.com/xwjdsh/manssh
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = go
+	provides = manssh=0.5.3
+	conflicts = manssh
+	source = manssh::git+https://github.com/xwjdsh/manssh.git
+	sha256sums = SKIP
+
+pkgname = manssh-git
