@@ -2,7 +2,7 @@
 
 pkgname=modrinth-app
 pkgver=0.7.1
-pkgrel=5
+pkgrel=6
 pkgdesc='An unique, open source launcher that allows you to play your favorite mods, and keep them up to date, all in one neat little package.'
 url='https://modrinth.com/app'
 arch=('x86_64')
@@ -62,9 +62,9 @@ check() {
 
 package() {
     install -Dm755 "$srcdir"/modrinth-app "$pkgdir"/usr/bin/modrinth-app
-    install -Dm755 "$srcdir"/theseus-"$pkgver"/target/release/theseus_gui "$pkgdir"/opt/modrinth-app/modrinth-app
+    install -Dm755 "$srcdir"/olympus-"$pkgver"/target/release/theseus_gui "$pkgdir"/opt/modrinth-app/modrinth-app
     
-    install -Dm644 "$srcdir"/theseus-"$pkgver"/theseus_gui/src-tauri/icons/128x128.png "$pkgdir"/usr/share/icons/hicolor/128x128/apps/modrinth-app.png
-    install -Dm644 "$srcdir"/theseus-"$pkgver"/theseus_gui/src-tauri/icons/icon.png "$pkgdir"/usr/share/icons/hicolor/256x256@2/apps/modrinth-app.png
+    install -Dm644 "$srcdir"/olympus-"$pkgver"/theseus_gui/src-tauri/icons/128x128.png "$pkgdir"/usr/share/icons/hicolor/128x128/apps/modrinth-app.png
+    install -Dm644 "$srcdir"/olympus-"$pkgver"/theseus_gui/src-tauri/icons/icon.png "$pkgdir"/usr/share/icons/hicolor/256x256@2/apps/modrinth-app.png
     install -Dm644 modrinth-app.desktop "$pkgdir"/usr/share/applications/modrinth-app.desktop
 }
