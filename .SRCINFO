@@ -1,0 +1,15 @@
+pkgbase = tcli
+	pkgdesc = A utility app to help creating cogs for TCore
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/Tectone23/tcli
+	arch = any
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	depends = openssl
+	source = tcli-0.4.0.tar.gz::https://github.com/Tectone23/tcli/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = 99cc8699cbacc6186fc8d21acc3199e3532005f8fb8ec6a7a3c654ab37a45ba1
+
+pkgname = tcli
