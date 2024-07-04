@@ -1,0 +1,5 @@
+[kubectl-tree]
+source = "git"
+git = "https://github.com/ahmetb/kubectl-tree"
+prefix = "v"
+exclude_regex = ".*(pre|rc|alpha|beta).*"
