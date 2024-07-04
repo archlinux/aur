@@ -1,7 +1,7 @@
 pkgbase = python-amaranth-soc
 	pkgdesc = System on Chip toolkit for Amaranth
-	pkgver = 0.1a.r15.ge1b8428
-	pkgrel = 2
+	pkgver = 0.1a.r19.gd99c8ee
+	pkgrel = 1
 	url = https://github.com/amaranth-lang/amaranth-soc
 	arch = any
 	license = BSD-2
@@ -10,9 +10,10 @@ pkgbase = python-amaranth-soc
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools-scm
+	makedepends = python-pdm-backend
 	depends = python-amaranth
 	optdepends = python-paramiko: for remote builds
-	provides = python-amaranth-soc=0.1a.r15.ge1b8428
+	provides = python-amaranth-soc=0.1a.r19.gd99c8ee
 	source = git+https://github.com/amaranth-lang/amaranth-soc.git
 	sha256sums = SKIP
 

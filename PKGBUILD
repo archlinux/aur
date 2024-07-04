@@ -1,16 +1,16 @@
 # Maintainer: Scott Alfter <scott@alfter.us>
 
 _pkgname=amaranth-soc
-_git_commit=e1b842800533f44924f21c3867bc2290084d100f
+_git_commit=d99c8ee582a2159ea9df38bfe666c08019f7f464
 pkgname="python-$_pkgname"
-pkgver=0.1a.r15.ge1b8428
-pkgrel=2
+pkgver=0.1a.r19.gd99c8ee
+pkgrel=1
 pkgdesc="System on Chip toolkit for Amaranth"
 arch=(any)
 url="https://github.com/amaranth-lang/amaranth-soc"
 license=('BSD-2')
 depends=('python-amaranth')
-makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools-scm') # 'python-jschon')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools-scm' 'python-pdm-backend') # 'python-jschon')
 optdepends=('python-paramiko: for remote builds')
 # FIXME: symbiyosys
 provides=("python-$_pkgname=$pkgver")
