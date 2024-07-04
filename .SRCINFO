@@ -1,6 +1,6 @@
 pkgbase = clipse
 	pkgdesc = A configurable TUI clipboard manager for Unix.
-	pkgver = 1.0.0
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/savedra1/clipse
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = clipse
 	makedepends = go
 	optdepends = xclip
 	optdepends = wl-clipboard
-	source = clipse-1.0.0.tar.gz::https://github.com/savedra1/clipse/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = de6afb2fed2c0872bd2d08449432a91e13456aa27c5329fa7e35c291608aa53a
+	source = clipse-1.0.2.tar.gz::https://github.com/savedra1/clipse/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = cf3c8d25016fa6e078e8f82a0237245faec11c9f213ab397b249a7037091ef84
 
 pkgname = clipse
