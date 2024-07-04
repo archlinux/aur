@@ -17,7 +17,7 @@
 
 pkgname=libblkio
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="High-performance block device I/O library with C API"
 arch=(x86_64)
 url="https://gitlab.com/libblkio/libblkio"
@@ -28,7 +28,7 @@ license=(
   'Apache-2.0 OR BSD-3-Clause'                          # virtio-bindings
 )
 depends=(gcc-libs glibc)
-makedepends=(cargo git meson python-docutils)
+makedepends=(cargo git jq meson python-docutils)
 # Use this to get licensing info for all crates depended upon
 makedepends+=(cargo-license)
 ((_ARCH_TEST_EXTRA)) && checkdepends=(qemu-img)
@@ -88,6 +88,10 @@ package() {
   # meson install -C build --destdir "$pkgdir" # Doesn't work here. Work around it by calling ninja directly.
   DESTDIR="$pkgdir" ninja install -C build
   install -vDm 644 LICENSE{-MIT,.crosvm} -t "$pkgdir/usr/share/licenses/$pkgname"
-  # Dirty hack? FIXME
-  install -vDm 644 "$(find "$HOME/.cargo" | grep "rustix.*LLVM-exception")" -t "$pkgdir/usr/share/licenses/$pkgname"
+
+  # Install the required "uncommon" license from the rustix crate.
+  local _rustix_ver
+  _rustix_ver=$(cargo metadata --format-version=1 | jq -r '.packages[] | select(.name == "rustix") | .version')
+  install -vDm 644 "$(find "$HOME/.cargo/registry/src" -path "*rustix-$_rustix_ver/*LLVM-exception")" \
+    -t "$pkgdir/usr/share/licenses/$pkgname"
 }
