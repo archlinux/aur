@@ -1,0 +1,14 @@
+pkgbase = dbus-sharp-glib
+	pkgdesc = C# GLib implementation of D-Bus
+	pkgver = 0.6.0
+	pkgrel = 4
+	url = https://github.com/mono/dbus-sharp-glib/
+	arch = any
+	license = custom
+	makedepends = pkgconfig
+	depends = dbus-sharp>=0.8
+	options = !makeflags
+	source = https://github.com/mono/dbus-sharp-glib/releases/download/v0.6/dbus-sharp-glib-0.6.0.tar.gz
+	sha256sums = d5b44d3ffa419730df0a6a6fff1e6912c80bc364e4176444e48264853989ce3b
+
+pkgname = dbus-sharp-glib
