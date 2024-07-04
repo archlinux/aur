@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yank-note-git
-pkgver=3.next.06.r0.g949b183
+pkgver=3.0.2.r2267.g2703034
 _electronversion=28
 _nodeversion=18
 pkgrel=1

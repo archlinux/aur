@@ -1,6 +1,6 @@
 pkgbase = yank-note-git
 	pkgdesc = A highly extensible Markdown editor. Version control, AI completion, mind map, documents encryption, code snippet running, integrated terminal, chart embedding, HTML applets, Reveal.js, plug-in, and macro replacement.
-	pkgver = 3.next.06.r0.g949b183
+	pkgver = 3.0.2.r2267.g2703034
 	pkgrel = 1
 	url = https://yank-note.com/
 	arch = any
