@@ -1,10 +1,10 @@
 pkgbase = aerospike-client-python
 	pkgdesc = Aerospike Client Library for Python
 	pkgver = 15.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.aerospike.com/docs/client/python
 	arch = any
-	license = apache
+	license = Apache-2.0
 	depends = python
 	depends = python-setuptools
 	depends = openssl
