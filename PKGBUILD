@@ -1,7 +1,7 @@
 # Maintainer: Arnoldas Rauba (raubarno)
 
 pkgname=audra
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A bullet-hell Touhou fangame, written in Rust and Vulkan."
 arch=('x86_64')
@@ -9,8 +9,8 @@ url='https://codeberg.org/raubarno/audra'
 license=('GPL3')
 depends=('libxkbcommon-x11' 'vulkan-icd-loader')
 makedepends=('gcc' 'cmake' 'cargo' 'git' 'shaderc')
-source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/raubarno/audra/archive/v$pkgver.tar.gz")
-sha512sums=('68a5936c43c6cb19a49e55759d52cd9a09ae9f1bdb6991f1070330c65260642fdce84a0d313b75bdf4487f07c1ef18b7c9cf6644df62d98aa71f1dcf08668060')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha512sums=('b5708897d52ac9e4f08ec754b6e9e51c98ed84ab018644826bc834a6194cc24fe3363d473b96b56f1f228fa92aaed455624d8a957e69c5fd08120d89426f49d8')
 
 prepare() {
 	cd "$pkgname"
