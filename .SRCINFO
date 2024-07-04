@@ -1,6 +1,6 @@
 pkgbase = sunroof
 	pkgdesc = Sunroof is a Vesktop fork that gives you the performance of web Discord and the comfort of Discord Desktop, with additional plugins
-	pkgver = 1.6.0
+	pkgver = 1.6.1
 	pkgrel = 3
 	url = https://github.com/verticalsync/Sunroof
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = sunroof
 	source = https://github.com/verticalsync/Sunroof/archive/refs/tags/v1.5.8.tar.gz
 	source = me.verticalsync.sunroof.desktop
 	source = sunroof.sh
-	sha256sums = b788571cf9f4a3ca89cf2a50e0d160d7a24846ca56a9a1c2e6fd263962f9f265
+	sha256sums = b021131a858ef7b4773dd0695e8fc7b7f8b575baec8a9fcce633fbd10b5fffd7
 	sha256sums = 959683d191af774e3b3f35d2b2edf85d029628dff8b0a989cdaa1b4604f3fba9
 	sha256sums = 1bdc4d3b8454d3bffc0c454685b45179893fff5e1cfafde00417e839addb1685
 
