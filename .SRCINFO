@@ -1,0 +1,16 @@
+pkgbase = flog-git
+	pkgdesc = A fake log generator for common log formats
+	pkgver = 0.4.4.r1.g30610f1
+	pkgrel = 1
+	url = https://github.com/mingrammer/flog
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = flog=0.4.4
+	conflicts = flog
+	source = flog::git+https://github.com/mingrammer/flog.git
+	sha256sums = SKIP
+
+pkgname = flog-git
