@@ -1,17 +1,16 @@
 pkgbase = musializer-git
 	pkgdesc = Music Visualizer
-	pkgver = r256.0cc08f5
+	pkgver = r384.f106c92
 	pkgrel = 1
 	url = https://github.com/tsoding/musializer
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = libx11
-	makedepends = libxrandr
-	makedepends = libxinerama
-	makedepends = xorg-xinput
+	makedepends = raylib
 	depends = ffmpeg
 	source = git+https://github.com/tsoding/musializer
+	source = 0001-use-system-raylib.patch
 	sha256sums = SKIP
+	sha256sums = 34e0a1e75bdfc92f13c5f1d0772749d6805b58326bbff04d8aaaf46ac14677db
 
 pkgname = musializer-git

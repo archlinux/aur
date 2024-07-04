@@ -1,0 +1,39 @@
+From e0d9f9028d21b05cb7bf21b783de21a245dab670 Mon Sep 17 00:00:00 2001
+From: Liao Junxuan <mikeljx@126.com>
+Date: Thu, 4 Jul 2024 15:22:39 +0800
+Subject: [PATCH] use system raylib
+
+---
+ src_build/nob_linux.c  | 3 +--
+ src_build/nob_stage2.c | 1 -
+ 2 files changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/src_build/nob_linux.c b/src_build/nob_linux.c
+index 8900f6e..a1abfb3 100644
+--- a/src_build/nob_linux.c
++++ b/src_build/nob_linux.c
+@@ -59,8 +59,7 @@ bool build_musializer(void)
+                 "./src/ffmpeg_linux.c",
+                 "./src/musializer.c");
+             nob_cmd_append(&cmd,
+-                nob_temp_sprintf("-L./build/raylib/%s", MUSIALIZER_TARGET_NAME),
+-                "-l:libraylib.a");
++                "-lraylib");
+             nob_cmd_append(&cmd, "-lm", "-ldl", "-lpthread");
+         if (!nob_cmd_run_sync(cmd)) nob_return_defer(false);
+ #endif // MUSIALIZER_HOTRELOAD
+diff --git a/src_build/nob_stage2.c b/src_build/nob_stage2.c
+index 3765b89..bff1843 100644
+--- a/src_build/nob_stage2.c
++++ b/src_build/nob_stage2.c
+@@ -145,7 +145,6 @@ int main(int argc, char **argv)
+     }
+ 
+     if (strcmp(subcommand, "build") == 0) {
+-        if (!build_raylib()) return 1;
+ #ifndef MUSIALIZER_UNBUNDLE
+         if (!generate_resource_bundle()) return 1;
+ #endif // MUSIALIZER_UNBUNDLE
+-- 
+2.45.2
+

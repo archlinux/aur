@@ -1,7 +1,7 @@
 # Maintainer: Junxuan Liao <mikeljx at 126 dot com>
 _pkgname=musializer
 pkgname=$_pkgname-git
-pkgver=r256.0cc08f5
+pkgver=r384.f106c92
 pkgrel=1
 pkgdesc="Music Visualizer"
 arch=('x86_64')
@@ -10,17 +10,18 @@ license=('MIT')
 depends=('ffmpeg')
 makedepends=(
     'git'
-    'libx11'
-    'libxrandr'
-    'libxinerama'
-    'xorg-xinput'
+    'raylib'
     )
-source=("git+$url")
-sha256sums=('SKIP')
+source=(
+    "git+$url"
+    "0001-use-system-raylib.patch"
+)
+sha256sums=('SKIP'
+            '34e0a1e75bdfc92f13c5f1d0772749d6805b58326bbff04d8aaaf46ac14677db')
 
 prepare() {
 	cd "${srcdir}/${_pkgname}"
-    sed -i 's/\.\/resources/\/usr\/share\/'$_pkgname'\/&/' src/plug.c src/musializer.c
+    patch --forward --strip=1 --input=../0001-use-system-raylib.patch
 }
 
 pkgver() {
@@ -31,14 +32,12 @@ pkgver() {
 build() {
 	cd "${srcdir}/${_pkgname}"
     gcc -o nob nob.c
-    ./nob
+    ./nob build
 }
 
 package() {
 	cd "${srcdir}/${_pkgname}"
     install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    find resources -type f -exec \
-        install -Dm 644 '{}' "${pkgdir}/usr/share/musializer/{}" \;
     install -Dm 755 ./build/musializer "${pkgdir}"/usr/bin/musializer
 }
 
