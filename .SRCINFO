@@ -1,0 +1,18 @@
+pkgbase = udpreplay
+	pkgdesc = Replay UDP packets from a pcap file
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/rigtorp/udpreplay
+	arch = any
+	license = MIT
+	makedepends = make
+	makedepends = cmake>=3.5.0
+	makedepends = gcc
+	makedepends = libpcap
+	depends = glibc
+	depends = gcc-libs
+	depends = libpcap
+	source = udpreplay-1.1.0.tar.gz::https://github.com/rigtorp/udpreplay/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = 27ef2fc6d13e7dde7ec4f3ddc58e7c43daad047af968b10d6cb404746e02228b
+
+pkgname = udpreplay
