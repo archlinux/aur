@@ -1,7 +1,7 @@
 pkgbase = jbofihe-git
 	pkgdesc = Tools to operate on Lojban text (main feature: approximate translation to English)
 	pkgver = 0.43.19.gcc6fe66
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 2
 	url = https://github.com/lojban/jbofihe
 	arch = aarch64

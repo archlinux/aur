@@ -5,9 +5,9 @@
 # Contributor: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 
 pkgname=jbofihe-git
-pkgver=0.43.19.gcc6fe66
 epoch=2
-pkgrel=2
+pkgver=0.43.19.gcc6fe66
+pkgrel=3
 pkgdesc='Tools to operate on Lojban text (main feature: approximate translation to English)'
 arch=('aarch64' 'i686' 'x86_64')
 url="https://github.com/lojban/jbofihe"
@@ -56,6 +56,11 @@ package() {
   make DESTDIR="$pkgdir" install
 
   chmod -v 0644 "$pkgdir"/usr/share/man/man1/*.1
+
+  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
+    NEWS README README.*
+
+  cp -vfa contrib "$pkgdir/usr/share/doc/$pkgname/"
 }
 
 # vim:set ts=2 sw=2 et:
