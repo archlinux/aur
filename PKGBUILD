@@ -1,5 +1,5 @@
 pkgname=rustlings
-pkgver=5.6.1
+pkgver=6.0.0
 pkgrel=1
 pkgdesc="Small exercises to get you used to reading and writing Rust code!"
 arch=(x86_64)
@@ -10,7 +10,7 @@ makedepends=(cargo python git)
 provides=(rustlings)
 conflicts=(rustlings)
 install="rustlings.install"
-source=("rustlings-${pkgver}::git+https://github.com/rust-lang/rustlings.git#tag=${pkgver}")
+source=("rustlings-${pkgver}::git+https://github.com/rust-lang/rustlings.git#tag=v${pkgver}")
 md5sums=('SKIP')
 
 
