@@ -4,13 +4,14 @@
 
 pkgname=kontur-plugin
 pkgver=4.2.2.488
-pkgrel=1
+pkgrel=2
 pkgdesc='Kontur.Plugin is an extension for web browsers that allows users to perform cryptographic operations in SKB Kontur services.'
 arch=('x86_64')
 license=('proprietary')
 depends=(
     'gtk3'
     'cryptopro-csp-k1'
+    'jacartauc'
 )
 url='https://help.kontur.ru/plugin/'
 source=('https://help.kontur.ru/plugin/dist/kontur.plugin_amd64.deb')
