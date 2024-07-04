@@ -6,6 +6,7 @@ pkgbase = superlu_mt
 	arch = x86_64
 	license = BSD
 	makedepends = gcc-fortran
+	makedepends = cmake
 	depends = blas
 	options = staticlibs
 	source = https://github.com/xiaoyeli/superlu_mt/archive/refs/tags/v4.0.1.tar.gz
