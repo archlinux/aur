@@ -1,0 +1,4 @@
+[dma]
+source = "git"
+git = "https://github.com/corecode/dma.git"
+prefix = "v"
