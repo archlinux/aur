@@ -1,0 +1,5 @@
+[python-open-unmix-pytorch]
+source = "github"
+github = "sigsep/open-unmix-pytorch"
+prefix = "v"
+use_latest_release = true
