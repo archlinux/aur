@@ -1,7 +1,7 @@
 pkgbase = sleepy-launcher-git
-	pkgdesc = A Launcher for a specific anime game with auto-patching, discord rpc and time tracking
-	pkgver = r923.f14142a
-	pkgrel = 1
+	pkgdesc = Sleepy game launcher for Linux with telemetry disabling
+	pkgver = 1.0.0.r0.g820adcc
+	pkgrel = 2
 	url = https://github.com/an-anime-team/sleepy-launcher
 	arch = x86_64
 	license = GPL3
@@ -16,7 +16,7 @@ pkgbase = sleepy-launcher-git
 	optdepends = gamemode: Game Optimizations
 	optdepends = gamescope: a tool from Valve that allows for games to run in an isolated Xwayland instance
 	source = git+https://github.com/an-anime-team/sleepy-launcher
-	source = https://github.com/an-anime-team/sleepy-launcher/raw/main/assets/sleepy-launcher.desktop
+	source = sleepy-launcher.desktop
 	md5sums = SKIP
 	md5sums = SKIP
 

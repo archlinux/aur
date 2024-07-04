@@ -1,9 +1,9 @@
 # Maintainer: anispwyn <anisphia_wynn_palettia@proton.me>
 pkgname="sleepy-launcher-git"
 _pkgname="${pkgname%-git}"
-pkgver=r923.f14142a
-pkgrel=1
-pkgdesc="A Launcher for a specific anime game with auto-patching, discord rpc and time tracking"
+pkgver=1.0.0.r0.g820adcc
+pkgrel=2
+pkgdesc="Sleepy game launcher for Linux with telemetry disabling"
 arch=("x86_64")
 url="https://github.com/an-anime-team/sleepy-launcher"
 license=("GPL3")
@@ -23,7 +23,7 @@ optdepends=(
 )
 source=(
   "git+https://github.com/an-anime-team/sleepy-launcher"
-  "https://github.com/an-anime-team/sleepy-launcher/raw/main/assets/sleepy-launcher.desktop"
+  "sleepy-launcher.desktop"
 )
 noextract=()
 md5sums=('SKIP' 'SKIP')
@@ -67,4 +67,4 @@ package() {
   install -Dm644 "assets/images/icon.png" "${pkgdir}/usr/share/pixmaps/sleepy-launcher.png"
   install -Dm644 "assets/images/icon.png" "${pkgdir}/usr/share/icons/moe.launcher.sleepy-launcher.png"
   install -Dm644 "${srcdir}/sleepy-launcher.desktop" -t "${pkgdir}/usr/share/applications"
-}
+} 
