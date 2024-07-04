@@ -1,15 +1,16 @@
 # Maintainer: xiretza <xiretza+aur@xiretza.xyz>
+# Contributor: Scott Alfter <scott@alfter.us>
 
 _pkgname=amaranth-boards
 pkgname="python-$_pkgname-git"
-pkgver=r208.2d0a23b
+pkgver=r248.ad5a939
 pkgrel=1
 pkgdesc="Board definitions for Amaranth HDL"
 arch=(any)
 url="https://github.com/amaranth-lang/$_pkgname"
 license=('BSD')
 depends=('python')
-makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'python-setuptools-scm')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'python-setuptools-scm' 'python-pdm-backend')
 depends=('python-amaranth')
 provides=("python-nmigen-boards=$pkgver" "python-$_pkgname=$pkgver")
 conflicts=('python-nmigen-boards' "python-$_pkgname")
