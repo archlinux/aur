@@ -1,4 +1,4 @@
-# Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
+# Maintainer: Evangelos Foutras <foutrelis@archlinux.org>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 # Contributor: Thayer Williams <thayer@archlinux.org>
 
