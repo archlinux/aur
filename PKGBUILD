@@ -2,10 +2,10 @@
 _pkgname=transhell
 pkgname="spark-${_pkgname}"
 pkgver=1.1
-pkgrel=4
-pkgdesc="make bash shell i18n.from Spark Store. transhell 是一个bash国际化方案，可以让你的bash脚本拥有国际化的能力"
+pkgrel=5
+pkgdesc="让bash也可以国际化 let bash shell i18n"
 arch=("x86_64")
-url="https://gitee.com/spark-community-works-collections/transhell"
+url="https://gitee.com/shenmo7192/transhell"
 license=('LGPL-3.0-only')
 depends=('sh')
 source=("${pkgname}-${pkgver}.deb::${url}/releases/download/${pkgver}/${_pkgname}_${pkgver}_all.deb")
