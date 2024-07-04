@@ -2,7 +2,7 @@
 
 pkgname=python-cyclonedx-lib
 _gitpkgname=cyclonedx-python-lib
-pkgver=7.4.1
+pkgver=7.5.0
 pkgrel=1
 pkgdesc='Render and read CycloneDX, a lightweight BOM specification document format'
 arch=('any')
@@ -36,11 +36,11 @@ source=(
   "${_gitpkgname}-${pkgver}.tar.gz::https://github.com/CycloneDX/cyclonedx-python-lib/archive/refs/tags/v${pkgver}.tar.gz"
 )
 
-sha512sums=('ffa4a3e334f155670faed58bbf1f4676454af6923c2f99fba9cff62296950b17ce043823a5980094dc4f6d7cb2a01219d22bac90c07c3cebd4c414c47f06be31')
+sha512sums=('75c3ee497be08cf600f3b89d1e03f8a3e30836e1ce57e9d2fe4ee68a2b2902780656440e206f246ee8578e66f78432536cf3e1ede69f6aa7d5f6cf7de90ce7d9')
 
 prepare() {
   cd "${srcdir}/${_gitpkgname}-${pkgver}"
-  rm -rf dist # https://github.com/python-poetry/poetry/issues/1329
+  rm -rf dist  # https://github.com/pypa/build/issues/455
 
   # Consistently failing during `check` in a clean chroot, but passing
   # outside chroot. Also passing in upstream CI. Needs more analysis.
