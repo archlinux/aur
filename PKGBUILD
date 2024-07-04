@@ -1,4 +1,4 @@
-# Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
+# Maintainer: Evangelos Foutras <foutrelis@archlinux.org>
 # Contributor : Aaron Griffin <aaron@archlinux.org>
 
 pkgname=slim-themes
