@@ -1,0 +1,17 @@
+pkgbase = upg
+	pkgdesc = A very simple shell script designed to automate common tasks related to Linux package managers, along with some extras.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/Xatra1/upg
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = bash
+	source = https://github.com/Xatra1/upg/releases/download/v1.1/upg
+	source = https://github.com/Xatra1/upg/releases/download/v1.1/upg.1.gz
+	source = https://github.com/Xatra1/upg/raw/main/LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = upg
