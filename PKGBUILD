@@ -2,7 +2,7 @@
 # Contributor: Porous3247 <pqtb3v7t at jasonyip1 dot anonaddy dot me>
 
 pkgname=gohugo-extended-bin
-pkgver=0.128.1
+pkgver=0.128.2
 pkgrel=1
 pkgdesc="Hugo - The world's fastest framework for building websites (Extended Edition)"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ conflicts=('hugo')
 provides=('hugo')
 source_x86_64=("https://github.com/gohugoio/hugo/releases/download/v${pkgver}/hugo_extended_${pkgver}_linux-amd64.tar.gz")
 source_aarch64=("https://github.com/gohugoio/hugo/releases/download/v${pkgver}/hugo_extended_${pkgver}_linux-arm64.tar.gz")
-sha256sums_x86_64=('89953f65e74a7a88f31488e31f6389c61084f932e2276d78e5f6b8fb0df68bd2')
-sha256sums_aarch64=('2ddddc22c8f672add4341d41fede1297db3f4c046a33d2729baa5c4951610c43')
+sha256sums_x86_64=('a83253c155d76c197f1bee375662e3a2bc8c2335d2ffdfa7ec43e59c38c412c5')
+sha256sums_aarch64=('23f83541cf3dabef275263eb83c01da4cd969528637eccdfb946a46b2d6cf01e')
 
 build() {
   cd "${srcdir}"
