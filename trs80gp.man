@@ -1,0 +1,637 @@
+.\" Manpage for trs80gp
+.TH man 1 "Thu Jul 04 2024" "2.5.3" "trs80gp man page"
+.SH NAME
+trs80gp \- a Tandy/ Radio Shack computer emulator
+.SH SYNOPSIS
+trs80gp [ \fIoption\fR ] ...
+.SH DESCRIPTION
+trs80gp primarily emulates the "gray" line of TRS-80 computers made by Tandy in the late 1970s and early 1980s. They are known as the Model I, Model II, Model III, Model 4, Model 4P, Model 4D, Model 12, Model 16 and Model 6000. It is generally easier to use ordinary digits for the Model 1, Model 2 and Model 3. The Model 1, 3 and 4 are a line of compatible computers as is the Model 2, 12, 16 and 6000.
+
+Also emulated are the TRS-80 Micro Color Computer Model MC-10, TRS-80 Color Computer, TRS-80 DT-1 Data Terminal, TRS-80 Videotex and Electric Crayon external colour display.
+
+The emulator runs on Windows from XP all the way up to Windows 11. Included in the download are versions for MacOS, Linux and Raspberry Pi. They may not be at full feature parity with the Windows version but the emulator runs just fine under Wine. It should run well on any machine produced in the past decade.
+
+trs80gp provides accurate and near complete emulation with excellent programmer support. The source code is fully organic and hand-crafted by myself and my brother Peter.
+.SH OPTIONS
+.TP
+.B -m1
+Emulate Model I
+.TP
+.B -mj
+Emulate Japanese Model I
+.TP
+.B -m2
+Emulate Model II
+.TP
+.B -m3
+Emulate Model III (default)
+.TP
+.B -m3n
+Emulate Norcom Model III clone that fit in a Model I case
+.TP
+.B -m4
+Emulate Model 4 (same as -m4a)
+.TP
+.B -m4a
+Emulate Model 4 with 2 wait states per instruction
+.TP
+.B -m4b
+Emulate Model 4 with 1 wait state per instruction
+.TP
+.B -m4c
+Emulate Model 4 with no wait states per instruction
+.TP
+.B -m4ga
+Emulate Model 4 Gate Array
+.TP
+.B -m4p
+Emulate Model 4P
+.TP
+.B -m4d
+Emulate Model 4D
+.TP
+.B -m4ss
+Emulate Model 4 Student Station
+.TP
+.B -m12
+Emulate Model 12
+.TP
+.B -m16
+Emulate Model 16
+.TP
+.B -m6000
+Emulate Model 6000
+.TP
+.B -mc10
+Emulate Micro Color Computer Model MC-10
+.TP
+.B -mc
+Emulate Color Computer
+.TP
+.B -mdt1
+Emulate DT-1 Terminal
+.TP
+.B -mv
+Emulate Videotex Terminal
+.TP
+.B -mec
+Emulate Electric Crayon
+.TP
+.B -mx70
+Act like MX-70 Printer
+.TP
+.B -l1
+Run Level I BASIC ROM (Model I or III)
+.TP
+.B -l2
+Run Level II BASIC ROM (default) (Model I or III)
+.TP
+.B -rN
+Use ROM revision N (-r0, -r1, -r2, ...)
+.TP
+.B -nlc
+No lowercase for Model I
+.TP
+.B -lld
+Load Model I lowercase driver from cassette on startup
+.TP
+.B -nld
+Do not load Model I lowercase driver from cassette
+.TP
+.B -nsc
+Do not try to set the clock for the boot OS
+.TP
+.B -alt
+Use alternate character set
+.TP
+.B -charrom \fIfile\fR
+Use character generator ROM from file
+.TP
+.B -50
+Set frame rate to 50 Hz
+.SS -g\fIX\fR	Hires graphics
+.TP
+.B   -g0
+none
+.TP
+.B   -gt
+Tandy
+.TP
+.B   -gg
+Grafyx
+.TP
+.B   -gc
+Grafyx clone
+.TP
+.B   -gtp
+for Tandy with fixed PROMs for Model 2,3,12,16,6000.
+.TP
+.B   -gl
+for Model 1 Lowe Electronics 18
+.SS  -dd\fITYPE\fR
+Select Model I floppy doubler
+.TP
+.B   -ddx
+none
+.TP
+.B   -ddp
+Percom,
+.TP
+.B   -ddr
+Radio Shack
+.TP
+.B   -ddrp
+RS+Percom
+.TP
+.B   -ddd
+detect at boot
+.SS Emulation Options
+.TP
+.B -dx
+Disable floppy disk controller (boot into ROM BASIC).
+.TP
+.B -d\fIN\fRss
+Set drive \fIN\fR (0,1,2,3) single-sided only.
+.TP
+.B -d\fIN\fRds
+Set drive \fIN\fR (0,1,2,3) double-sided only.
+.TP
+.B -d\fIN\fRas
+Set drive \fIN\fR (0,1,2,3) to automatically act as single or double-sided.
+.TP
+.B -hx
+Disable hard drive controller
+.TP
+.B -mem \fIn\fR
+Emulate \fIn\fR KB of RAM
+.TP
+.B -mem \fItype\fR:\fIn\fR
+Emulate \fIn\fR KB of hyper/super/mega expansion RAM.
+.TP
+.B -mem16 \fIn\fR
+Emulate \fIn\fR KB of 68000 RAM
+.TP
+.B -memgap16 \fIb\fR \fIn\fR
+Unmap an \fIn\fR KB gap in 68000 RAM starting at KB \fIb\fR
+.TP
+.B -mmu16 \fIbits\fR
+Set number of extension \fIbits\fR in 68000 MMU (default 3)
+.TP
+.B -z180
+Use Z-180 as main CPU (Model 2) with XLR8er support (Model 4)
+.TP
+.B -mhz16 \fIn\fR
+Run 68000 at \fIn\fR MHz (default 8)
+.TP
+.B -rom \fIfile\fR
+Use ROM image from \fIfile\fR
+.TP
+.B -rom1 \fIfile\fR
+Map ROM image from \fIfile\fR to $3000 (Model 1 only)
+.TP
+.B -aft
+Aculab floppy tape (Model I only)
+.TP
+.B -80-grafix
+80-Grafix hires character generator (Model I only)
+.TP
+.B -80-grafix+
+80-Grafix+ hires character generator (Model I only)
+.TP
+.B -pcg-80
+PCG-80 hires character generator (Model I only)
+.TP
+.B -80-grafix3
+80-Grafix3 hires character generator (Model III only)
+.TP
+.B -omikron
+Omikron Mapper for Model I (for Omikron CP/M)
+.TP
+.B -omikron-a
+Omikron Mapper using version A ROM
+.TP
+.B -pak \fIfile\fR
+Use Colour Computer Program Pak (cartridge) ROM from \fIfile\fR.
+.SS Program/Media Selection
+.TP
+.B -c \fIfile\fR.cas
+Insert cassette \fIfile\fR.cas
+.TP
+.B -w \fIfile\fR.tape
+Insert floppy tape wafer \fIfile\fR.tape into next free drive
+.TP
+.B -d\fIN\fR \fIfile\fR.dsk
+Insert disk into drive \fIN\fR (0,1,2,3)
+.TP
+.B -d \fIfile\fR.dsk
+Insert disk into next free drive
+.TP
+.B -d dmk
+Insert unformatted disk into next free drive (.dmk format). (add -ds for double-sided and #N for tracks)
+.TP
+.B -d imd
+Insert unformatted disk into next free drive (.imd format)
+.TP
+.B -d \fI:name\fR
+Insert internal diskette \fI:name\fR into next free drive
+.TP
+.B -td
+Boot TRS-DOS (default)
+.TP
+.B -ld
+Boot LDOS or LS-DOS
+.TP
+.B -d0 -
+Don't insert TRS-DOS disk
+.TP
+.B -h \fIfile\fR.hdv
+Attach hard drive to next free slot
+.TP
+.B -h\fIN\fR \fIfile\fR.hdv
+Attach hard drive to slot \fIN\fR
+.TP
+.B -cs -csx
+Enable/disable cassette auto save
+.TP
+.B \fIfile\fR.dsk
+Insert disk into next free drive (also .dmk, .imd)
+.TP
+.B \fIfile\fR.tape
+Insert floppy tape wafer into next free drive
+.TP
+.B \fIfile\fR.ccc
+Insert Colour Computer Program Pak ROM (CoCo only)
+.TP
+.B :name
+Insert internal diskette or wafer into next free drive
+.TP
+.B file
+One or more files to load and execute after auto-boot. .cmd files are run from dos prompt. .cas, .bas and .bds files are loaded into ROM BASIC
+.SS Serial Port (RS-232) Options
+.TP
+.B -rx
+Disable RS-232
+.TP
+.B -r \fIhost\fR:\fIport\fR
+Connect serial port to TCP/IP \fIhost\fR, \fIport\fR endpoint.
+.TP
+.B -r @\fIport\fR
+Listen for TCP/IP connections on \fIport\fR for serial line. (also -rB for second and -rA for first serial port)
+.TP
+.B -r :mouse
+Emulate 2 button mouse on serial port
+.TP
+.B -r :mouse3
+Emulate 3 button mouse on serial port
+.TP
+.B -r :dt1
+Run DT-1 emulator attached to serial port.
+.TP
+.B -r :v
+Run Videotex emulator attached to serial port.
+.TP
+.B -r :loop
+Loopback device on serial port.
+.SS Printer Port Options
+.TP
+.B -p \fIhost\fR:\fIport\fR
+Connect printer port to TCP/IP \fIhost\fR, \fIport\fR endpoint.
+.TP
+.B -p @\fIport\fR
+Listen for TCP/IP connections on \fIport\fR for printer.
+.TP
+.B -p :mx70
+Run MX-70 emulator attached to printer port.
+.TP
+.B -p :ec
+Run Electric Crayon emulator attached to printer port.
+.TP
+.B -poff
+Printer appears powered off
+.TP
+.B -pp -ppx
+Enable/Disable printer window pop-up on print.
+.SS View Options
+.TP
+.B -va
+Authentic display (default)
+.TP
+.B -vs
+Sharp display
+.TP
+.B -vi
+Sharp display but only allows integer scaling
+.TP
+.B -vh
+Cheap display
+.TP
+.B -vN
+Scale cheap or sharp display up by N times
+.TP
+.B -vf
+Start in full-screen mode (use Alt+Enter to go windowed)
+.TP
+.B -vc #\fIRRGGBB\fR
+Set display colour to 24 bit colour value ("-vc - " for default)
+.TP
+.B -vd #\fIRRGGBB\fR
+Set beam conflict colour ("-vd -" for default)
+.TP
+.B -vb #\fIRRGGBB\fR
+Set border colour ("-vb -" for default)
+.TP
+.B -vr \fItype\fR
+Set 256 x 192 artifact colours, x off, s swapped, - default
+.TP
+.B -win \fIW\fRx\fIH\fR
+Set window width and height
+.TP
+.B -win full
+Start in full-screen mode (use Alt+Enter to go windowed)
+.TP
+.B -bd
+Turn beam debugging on
+.TP
+.B -na
+Turn off authentic display
+.TP
+.B -wtfs \fIN\fR
+Update window title only every Nth frame.
+.SS Sound Options
+.TP
+.B -s \fIhardware\fR
+Enable third party audio for model 1,3 or 4.
+    orch80: Orchestra 80
+    orch85: Orchestra 85
+    orch90: Orchestra 90
+    - Disable third party audio
+.TP
+B -mute
+Start with audio muted.
+.TP
+B -vol \fIN\fR
+Set audio volume percentage (0 to 100; -sv is synonymous)
+.TP
+B -su
+Turn off audio filtering (faster; slightly less accurate)
+.TP
+B -sx
+Disable all audio output
+.TP
+B -s1
+Force mono sound
+.TP
+B -s2
+Force stereo sound
+.TP
+B -sbg
+Mute audio if trs80gp does not have the focus
+.TP
+B -sfg
+Audio and sound effects always play (unlike -sbg)
+.TP
+B -sfmute
+Mute sound effects
+.TP
+B -sfv \fIN\fR
+Set sound effect volume percentage
+.TP
+B -sf f\fIx\fR \fIfile\fR.wav
+Use \fIfile\fR.wav for named sound effect f\fIx\fR:
+    spin-empty empty floppy drive motor on
+    spin-floppy floppy spinning in drive
+    step floppy drive seeking
+    relay-on cassette motor relay activating
+    relay-off cassette motor relay turning off
+.SS Automation Options
+.TP
+.B -turbo
+Run at top speed
+.TP
+.B -haste
+Run fast by drawing once per second (graphics/timing inaccurate)
+.TP
+.B -batch
+Have "Record" menu save files without prompting.
+.TP
+.B -fa \fIhex\fR
+Update FPS when Z-80 hits address
+.TP
+.B -ta \fIhex\fR
+Turbo for 5 frames at Z-80 address
+.TP
+.B -rand
+Initialize RAM and the R register with random data.
+.TP
+.B -ct -ctx
+Enable/disable cassette auto turbo
+.TP
+.B -dt -dtx
+Enable/disable floppy disk auto turbo
+.TP
+.B -ht -htx
+Enable/disable hard drive auto turbo
+.TP
+.B -wt -wtx
+Enable/disable wafer drive auto turbo
+.TP
+.B -pt -ptx
+Enable/disable printer auto turbo
+.TP
+.B -iat -iatx
+Enable/disable input/paste auto turbo
+.SS Keyboard, Joystick and Light Pen Input
+.TP
+.B -jx
+Disable joystick input
+.TP
+.B -js
+Swap joystick inputs
+.TP
+.B -kl log|phys
+Set keyboard layout to logical or physical
+.TP
+.B -kg -kgx
+Enable/disable key ghosting on keyboard input
+.TP
+.B -kt -ktx
+Enable/disable keyboard auto de-turbo
+.TP
+.B -kc
+Clustered key layout in software keyboard (Model 4 only)
+.TP
+.B -ks -ksx
+Enable/disable soft capslock (Model 2/12/16/6000 only)
+.TP
+.B -i \fIstr\fR
+Send \fIstr\fR as keyboard input (as if it were pasted)
+.TP
+.B -iy \fIstr\fR
+Send \fIstr\fR with current date/time substitution. %m,%d,%y - month, day, year, %h,%i,%s - hour, minute, second, %Y - 4 digit year
+.TP
+.B -if \fIfile\fR
+Send \fIfile\fR contents as keyboard input
+.TP
+.B -iw \fIstr\fR
+Wait until \fIstr\fR appears on screen
+.TP
+.B -ik row mask
+Set keyboard matrix row to mask
+.TP
+.B -ictl reset
+Reset the TRS-80
+.TP
+.B -id \fIN\fR
+Delay \fIN\fR frames
+.TP
+.B -itime \fIN\fR
+Give up on input after \fIN\fR frames of waiting (0 to never give up)
+.TP
+.B -ix
+Exit emulator when command line input has been sent
+.TP
+.B -is
+Save a screenshot
+.TP
+.B -ics
+Save a clean screenshot (no beam interference dropouts)
+.TP
+.B -it
+Write text VRAM to file
+.TP
+.B -ig
+Write hires graphics VRAM to file
+.TP
+.B -ic
+Write programmable character generator VRAM to file
+.TP
+.B -im dump \fIN\fR \fIfile\fR
+Save ASCII image of disk \fIN\fR to \fIfile\fR.
+.TP
+.B -im wp \fIN\fR on|off
+Enable or disable write protect on disk \fIN\fR
+.TP
+.B -im trackdump \fIN\fR \fIfile\fR
+Save ASCII image of disk track data of disk \fIN\fR to \fIfile\fR
+.TP
+.B -im insert \fIN\fR file\fR
+Insert disk image file\fR into drive N\fR
+.TP
+.B -im eject \fIN\fR 1
+Eject disk image in drive \fIN\fR with no prompting
+.TP
+.B -ip \fIhost\fR:\fIport\fR
+Read keyboard input from TCP/IP \fIhost\fR, \fIport\fR endpoint.
+.TP
+.B -ip @\fIport\fR
+Listen for TCP/IP connections on \fIport\fR for keyboard.
+.TP
+.B -ir audio
+Toggle audio recording (turn on if off, off if on)
+.TP
+.B -ir flash
+Toggle flash video recording
+.TP
+.B -ir video
+Toggle AVI video recording
+.TP
+.B -ir gif
+Toggle animated GIF recording
+.TP
+.B -ir mhz
+Toggle MHz recording
+.TP
+.B -lp
+Enable light pen emulation (1,3,4)
+.TP
+.B -esc-exits
+Pressing the escape key exits trs80gp
+.SS Programmer Help
+.TP
+.B -b \fIhex\fR
+Set debugger breakpoint (can use "-b hex" up to 4 times).
+.TP
+.B -b \fIlabel\fR
+Set breakpoint at \fIlabel\fR (if .bds file loaded)
+.TP
+.B -b \fIstart\fR:\fIend\fR
+Set breakpoints from \fIstart\fR to \fIend\fR (0:ffff can be handy)
+.TP
+.B -bm \fIhex\fR/\fIlabel\fR
+Set Z-80/6800/6809 memory access breakpoint. also -bmr or -bmw to trap only reads or writes
+.TP
+.B -bio \fIhex\fR/\fIlabel\fR
+Set Z-80 I/O access breakpoint. also -bior or -biow to trap only reads or writes
+.TP
+.B -b16 \fIhex\fR
+Set 68000 debugger breakpoint
+.TP
+.B -b16m \fIhex\fR/\fIlabel\fR
+Set 68000 memory access breakpoint. also -b16mr or -b16mw to trap only reads or writes
+.TP
+.B -l \fIfile\fR
+Load \fIfile\fR into memory but don't run it
+.TP
+.B -ls \fIfile\fR.bds
+Load symbols from \fIfile but don't load its data.
+.TP
+.B -ee
+Enable emulator extensions (debugging oriented)
+.TP
+.B -trace
+Start with tracing on (Record → Trace)
+.TP
+.B -nrs
+Don't load any built-in symbols/source code.
+.SS FreHD Emulation
+.TP
+.B -frehd
+Enable FreHD emulation
+.TP
+.B -frehd_dir \fIdir\fR
+Set directory used for FreHD external file import/export. Also enables FreHD emulation
+.TP
+.B -frehd_load fl
+Use boot block in file instead of the built-in one
+.TP
+.B -frehd_patch
+Apply FreHD auto-start patches to the ROM
+.TP
+.B -frehd_menu
+Use built-in FreHD menu program rather than frehd.rom in the -frehd_dir
+.SS Esoterica
+.TP
+.B -sync
+Try to maintain frame rate exactly (uses excessive CPU)
+.TP
+.B -trsnic
+Preliminary trsnic emulation (model 1,3,4 only)
+.TP
+.B -time render|frame|emulation
+Show timing in title bar
+.TP
+.B -showkey
+Show Windows key code in title bar
+.TP
+.B -showframe
+Show the frame number in title bar
+.TP
+.B -writerom
+Make ROM writeable (Model 1 and 3 only)
+.TP
+.B -m1_vblank
+VBLANK readable as bit 0 of port $FF (Model I only)
+.TP
+.B -x1hack
+Temporary fix for Xenix 1 boot error (and TRSDOS-16) (disables 68000 to Z-80 interrupt request through CTC1)
+.TP
+.B -mmu9f
+Model I 16 RAM bank 0 when bit 0 of port $9F set.
+.TP
+.B -t1hack
+Modification to when FDC switches to Type I status. Only useful to make TRSDOS-II RESTORE work.
+.RE
+.SH BUGS
+None known.
+.SH AUTHOR
+George and Peter Philips
