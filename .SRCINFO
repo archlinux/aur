@@ -1,0 +1,15 @@
+pkgbase = libsane-oki
+	pkgdesc = SANE drivers OKI multifunctional printers
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://www.oki.com/us/printing/support/drivers-and-utilities/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = sane
+	source_i686 = https://www.oki.com/us/printing/download/okimfpsdrv_1.7-0_i386_231226.deb
+	sha256sums_i686 = 95619a5329b25c0cae3cc91a8dfba7d303a489c1a3c34bb0d30c60bb8f5c748c
+	source_x86_64 = https://www.oki.com/us/printing/download/okimfpsdrv_1.7-0_amd64_231225.deb
+	sha256sums_x86_64 = 354fecb4e970747c9da21cd343e3a410b3e1b4c109f0e2bcff0a2918e3a77896
+
+pkgname = libsane-oki
