@@ -1,18 +1,18 @@
 pkgname=foxtelgo
 _pkgname=FoxtelGo
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="Unnofficial FoxtelGo desktop application"
 arch=('x86_64')
 url="https://gitlab.com/linuxbombay/foxtelgo"
 license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
-source=("$url/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
-sha256sums=('1d6036a07f298d1427d5f124490cba31c00bc1530b65938f1d744de2270c9ac1')
+source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
+sha256sums=('5e999320a755785c9ea537da9ca4b3ddaf036176e2a0fe3a84e21de3660099fc')
 
 
 package() {
-    for dir in application-$pkgver-$pkgrel ; do mv "${dir}" "$_pkgname" ;done
+    for dir in application-$pkgver; do [ -d "$dir" ] && mv "$dir" "$_pkgname"; done
     cd "$srcdir/$_pkgname"
     chmod +x $pkgname.sh
     ln -sf "/opt/libelectron/node_modules" "$srcdir/$_pkgname"
