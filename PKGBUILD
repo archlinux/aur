@@ -2,9 +2,10 @@
 
 pkgname=sing-box-alpha
 _pkgname=sing-box
-pkgver=1.10.0_alpha.19
-_pkgver=${pkgver//_/-}
-pkgrel=1
+pkgver=1.10.0alpha.19
+_pkgver=$(echo "$pkgver" | sed 's/\([0-9]\+\.[0-9]\+.[0-9]\+\)\(alpha\|beta\|rc\)/\1-\2/')
+pkgrel=3
+epoch=1
 
 pkgdesc='The universal proxy platform.'
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
