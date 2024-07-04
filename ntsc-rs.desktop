@@ -7,5 +7,6 @@ Comment=A video effect which emulates NTSC and VHS video artifacts.
 Exec=ntsc-rs-gui
 Icon=ntsc-rs
 Terminal=false
-Categories=Game;Application;
+Categories=AudioVideo;AudioVideoEditing;Video;Player;TV;
+Keywords=vhs;ntsc;media;video;audio;tv;
 StartupNotify=true
