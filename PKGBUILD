@@ -1,38 +1,42 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
-pkgname=scanrepo
-pkgver=0.4.0
+pkgname="scanrepo"
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="CLI tool that finds secrets accidentally committed to a git repo, eg passwords, private keys"
-arch=('x86_64')
+arch=('any')
 url='https://github.com/UKHomeOffice/repo-security-scanner'
 license=('MIT')
 depends=('glibc')
 makedepends=('go')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/UKHomeOffice/repo-security-scanner/archive/${pkgver}.tar.gz")
-sha256sums=('56338926727798a45c8dac8649953e638131ff77a2ad7ae8a7d2b12b0ecc60ac')
+_pkgsrc="repo-security-scanner-${pkgver}"
+source=("${_pkgsrc}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+sha256sums=('3f4dedb29fcf651047453ebd2993204186d7646ed44cf61bdcf3af9461479b2a')
 
 prepare() {
-  cd "repo-security-scanner-${pkgver}"
-  mkdir -p build/
+  cd "${srcdir}/${_pkgsrc}"
+  [ -d "build" ] || mkdir "build"
 }
 
 build() {
-  cd "repo-security-scanner-${pkgver}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
+  cd "${srcdir}/${_pkgsrc}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
-  export GOPATH="${srcdir}"/go
-  export PATH=$PATH:$GOPATH/bin
-  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-  go get -d -v ./...
-  go build -o build ./cmd/..
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build -o "build/${pkgname}" "./cmd/${pkgname}"
 }
 
+# check() {
+#   cd "${srcdir}/${_pkgsrc}"
+#   go test ./...
+# }
+
 package() {
-  cd "repo-security-scanner-${pkgver}"
-  install -Dm755 build/repo-security-scanner-${pkgver} "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  go clean -modcache # Clean go cache
+  cd "${srcdir}/${_pkgsrc}"
+  install -Dm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
