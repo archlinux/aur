@@ -1,7 +1,7 @@
 # Maintainer: Steffen Ridderbusch <steffen@robots.ox.ac.uk>
 # Contributor: Alastair Cooper <alastair@alastair87.me>
 pkgname='lunatask'
-pkgver=1.7.9
+pkgver=2.0.4
 pkgrel=0
 pkgdesc='lunatask.app (unofficial and *not* supported by Lunatask developers)'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('proprietary')
 
 _file=Lunatask-${pkgver}.AppImage
 source=(https://github.com/lunatask/lunatask/releases/download/v${pkgver}/${_file})
-sha512sums=('493627eb39ac1c5244ef6b600cba522d95b1677b3a4e1a15681c9c0b3d86c0c0440ac473fcd99bcfd1eafe790dd349c65619e0b64107ed285514b1b34275a205')
+sha512sums=('06132790a0ce5c5846ebe47a6ff0b0745182f7679a7572b307d3c5fcc5719bfd3af6cd0f9ab1a9d68660ad94f47d1afc8a181d96fa37015567f08093a38ef828')
 
 options=('!strip')
 
