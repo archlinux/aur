@@ -1,0 +1,15 @@
+pkgbase = firefox-librejs
+	pkgdesc = detects and blocks nonfree nontrivial JavaScript
+	pkgver = 7.21.1
+	pkgrel = 1
+	url = https://www.gnu.org/software/librejs/
+	arch = any
+	groups = firefox-addons
+	license = GPL3
+	checkdepends = jq
+	noextract = librejs-7.21.1.xpi
+	source = https://ftp.gnu.org/gnu/librejs/librejs-7.21.1.xpi
+	sha256sums = 60c5b1663ab2507dc12112e44076bb99c8feed0777b4d40ee74b9aef1b0c7256
+
+pkgname = firefox-librejs
+	depends = firefox
