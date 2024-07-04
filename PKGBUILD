@@ -3,7 +3,7 @@
 
 pkgname=aiksaurus
 pkgver=1.2.1
-pkgrel=9
+pkgrel=10
 pkgdesc="A cross-platform, open-source thesaurus"
 url="http://aiksaurus.sourceforge.net/"
 license=('GPL')
