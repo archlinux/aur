@@ -1,0 +1,12 @@
+pkgbase = autoconf2.13
+	pkgdesc = A GNU tool for automatically configuring source code (Legacy 2.1x version)
+	pkgver = 2.13
+	pkgrel = 8
+	url = https://www.gnu.org/software/autoconf/
+	arch = any
+	license = GPL2
+	depends = perl
+	source = https://ftp.gnu.org/gnu/autoconf/autoconf-2.13.tar.gz
+	sha256sums = f0611136bee505811e9ca11ca7ac188ef5323a8e2ef19cffd3edb3cf08fd791e
+
+pkgname = autoconf2.13

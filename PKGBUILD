@@ -5,7 +5,7 @@
 
 pkgname=autoconf2.13
 pkgver=2.13
-pkgrel=7
+pkgrel=8
 pkgdesc="A GNU tool for automatically configuring source code (Legacy 2.1x version)"
 arch=(any)
 url="https://www.gnu.org/software/autoconf/"
