@@ -2,12 +2,13 @@
 # Contributor: Marcell Pardavi <marcell.pardavi@gmail.com>
 
 pkgname=zed-preview
-pkgver=0.142.4
+_pkgname=${pkgname%-preview}
+pkgver=0.143.1
 pkgrel=1
 pkgdesc='A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter'
 arch=(x86_64)
 url=https://zed.dev
-_url="https://github.com/zed-industries/${pkgname%-preview}"
+_url="https://github.com/zed-industries/$_pkgname"
 license=(GPL-3.0-or-later AGPL-3.0-or-later Apache-2.0)
 depends=(alsa-lib libasound.so
          fontconfig
@@ -34,13 +35,11 @@ optdepends=('clang: improved C/C++ language support'
             'eslint: improved Javascript language support'
             'rust-analyzer: improved Rust language support')
 replaces=(zed-editor-preview)
-provides=("${pkgname%-preview}=$pkgver")
-conflicts=("${pkgname%-preview}")
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
 _archive="zed-$pkgver-pre"
-source=("$_url/archive/v$pkgver-pre/$_archive.tar.gz"
-        use-lib-not-libexec.patch)
-sha256sums=('ed1871604a887dd84ebad5a746904cd760799e088252ab85b89e11db56bd7360'
-            '180f8f84cd4320a758225ccb016cd6fc46146f1e7ba6d2c3b75decee8b89989d')
+source=("$_url/archive/v$pkgver-pre/$_archive.tar.gz")
+sha256sums=('c87d1b83e7189e109523f50477bf6c2e3b345e108ac36b1246dd861b468d03e5')
 
 _binname=zeditor
 _appid=dev.zed.Zed
@@ -54,7 +53,6 @@ prepare() {
 	export APP_CLI="$_binname"
 	export APP_ID="$_appid"
 	envsubst < "crates/zed/resources/zed.desktop.in" > $_appid.desktop
-	patch -p0 -i ../use-lib-not-libexec.patch
 }
 
 _srcenv() {
@@ -85,5 +83,5 @@ package() {
 	install -Dm0755 target/release/cli "$pkgdir/usr/bin/$_binname"
 	install -Dm0755 target/release/zed "$pkgdir/usr/lib/zed/zed-editor"
 	install -Dm0644 -t "$pkgdir/usr/share/applications/" "$_appid.desktop"
-	install -Dm0644 crates/zed/resources/app-icon.png "$pkgdir/usr/share/icons/${pkgname%-preview}.png"
+	install -Dm0644 crates/zed/resources/app-icon.png "$pkgdir/usr/share/icons/$_pkgname.png"
 }
