@@ -1,7 +1,7 @@
 # Maintainer: leaty <dev@leaty.net>
 _pkgname=tuxtrain
 pkgname=$_pkgname-git
-pkgver=0.0.4.r18.g315579e
+pkgver=0.0.4.r19.ga9207bb
 pkgrel=1
 pkgdesc='An easy-to-use generic trainer for Linux'
 url='https://github.com/leaty/tuxtrain'
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname"
-    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build () {

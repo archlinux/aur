@@ -1,6 +1,6 @@
 pkgbase = tuxtrain-git
 	pkgdesc = An easy-to-use generic trainer for Linux
-	pkgver = 0.0.4.r18.g315579e
+	pkgver = 0.0.4.r19.ga9207bb
 	pkgrel = 1
 	url = https://github.com/leaty/tuxtrain
 	install = .INSTALL
