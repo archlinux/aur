@@ -7,7 +7,6 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/kit-sdq/programming-lecture-eclipse-artemis/"
 license=('EPL')
 depends=('java-environment>=17' 'webkit2gtk')
-provides=('eclipse-java')
 install=artemis.install
 
 source_x86_64=("$pkgname-$pkgver-$CARCH.tar.gz::https://github.com/kit-sdq/programming-lecture-eclipse-artemis/releases/download/v$pkgver/Artemis_Grading_Linux_x86_64.zip" "artemis.desktop")
