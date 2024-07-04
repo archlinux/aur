@@ -2,7 +2,7 @@
 
 pkgname=libpurple-lurch
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Plugin for libpurple (Pidgin, Adium, etc) implementing OMEMO (using axolotl)'
 arch=('x86_64')
 url='https://github.com/gkdr/lurch'
