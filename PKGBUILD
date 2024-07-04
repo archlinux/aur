@@ -4,7 +4,7 @@
 _pkgname="vala-panel"
 pkgname="$_pkgname"
 pkgver=24.05
-pkgrel=3
+pkgrel=4
 pkgdesc="Panel for compositing window managers"
 url="https://gitlab.com/vala-panel-project/vala-panel"
 license=('LGPL-3.0-only')
@@ -26,9 +26,10 @@ depends=(
 )
 makedepends=(
   'git'
+  'glib2-devel'
+  'gobject-introspection'
   'meson'
   'vala'
-  'gobject-introspection'
 )
 optdepends=(
   'appmenu-glib-translator: sntray'
