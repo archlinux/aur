@@ -16,7 +16,7 @@ optdepends=('gtk-engine-murrine: GTK2 theme support'
 options=('!strip')
 install="$pkgname.install"
 source=("$pkgname-$_pkgver.tar.gz::https://github.com/vinceliuice/vimix-gtk-themes/archive/$_pkgver.tar.gz")
-sha256sums=('dd64d7a3d6b49f5a51290d93af41c0031943e3ff1edb8739ee13ad4593212059')
+sha256sums=('485de0ff418424587871e6000774ced40ca04a704c381504fccdddca07c66f9d')
 
 package() {
   cd "$pkgname-$_pkgver"
