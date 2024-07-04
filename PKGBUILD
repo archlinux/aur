@@ -31,7 +31,7 @@ prepare() {
 	cd "$pkgname-$pkgver"
 	# Submodules
 	cp -r ../CLI11-${_cli11}/* submodule/CLI11
-	cp -r ../function2-${_function2}* submodule/function2
+	cp -r ../function2-${_function2}/* submodule/function2
 	cp -r ../json-${_nlohmann_json}/* submodule/nlohmann_json
 	cp -r ../spdlog-${_spdlog}/* submodule/spdlog
 	cp -r ../srt-${_srt}/* submodule/srt
