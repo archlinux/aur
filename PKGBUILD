@@ -7,8 +7,8 @@
 _pkgbase=gdal
 pkgbase=gdal-libkml-filegdb
 pkgname=(gdal-libkml-filegdb python-gdal-libkml-filegdb)
-pkgver=3.9.0
-pkgrel=2
+pkgver=3.9.1
+pkgrel=1
 provides=('gdal')
 pkgdesc="A translator library for raster and vector geospatial data formats (with libkml and filegdb support)"
 arch=(x86_64)
@@ -23,14 +23,10 @@ makedepends=(cmake opencl-headers python-setuptools python-numpy
 # armadillo brunsli lerc libkml qb3 rasterlite2 sfcgal tiledb
 # ogdi
 changelog=$_pkgbase.changelog
-source=(https://download.osgeo.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz
-        https://github.com/OSGeo/gdal/commit/7b526b12.patch)
-b2sums=('5b1453b889768359d36c6da435b27f6d31bb1ba95cecfd05d525d63258100705778d2675219711d0c2ab0e2392dd0eabffa1af3ffd055ebfc14840aaa1e768c0'
-        '801eb649c20ef81d7590888589d4049eab4505fac6efbe1718d8bc9e01a35390b9d8cad090c3421ff90d769fe3f5aec4d1641409ecc5a434ba68c4c5d30eec85')
-
-prepare() {
-  patch -d $_pkgbase-$pkgver -p1 < 7b526b12.patch # Fix build with C++20
-}
+source=(https://download.osgeo.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz)
+b2sums=(
+    'a9c5c20b1bc704a331ea54f1575f655197075dde75fa6144cff43763d57d64b9bd6e3c7a40bedb919567b45185688b206a3cc13278d0605c5be0b895b403bbab'
+)
 
 build() {
   #-DCMAKE_CXX_STANDARD=20 \
