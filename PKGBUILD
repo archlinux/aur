@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=jsonoid-discovery
-pkgver=0.30.0
+pkgver=0.30.1
 pkgrel=1
 pkgdesc='Distributed JSON schema discovery'
 arch=('any')
@@ -16,7 +16,7 @@ source=(
   'jsonoid.sh'
 )
 
-sha512sums=('7d403868dd1dc886508d28db56bacd513ee2b4c0dc84551a3bf6ed788ea999fddc12445f3bd9975ed9f3e560398f44af158af290b9c0601d7c6719c0bcccd4d5'
+sha512sums=('215cf4ffb56fe951bd4c8af2216457c6f7d485097284ca642ba0c42c2fd47b5ae0d372b22c4efd1ecdf7fde6fb155896d968dc75650d5fb3c51439a4de2c6b84'
             'd496e686783c20addf51206e7c8ce5725fceff2816d8f3d5cf54b8bd322bb01d357e07d4103a4f09be1bd7e1ec77d8d6abf3d74cdfd74fc70d7610541e8e1b63')
 
 prepare() {
