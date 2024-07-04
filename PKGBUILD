@@ -1,7 +1,7 @@
 # Maintainer: Jacob McSwain <jacob@mcswain.dev>
 pkgname=cuttlefish-user-git
 epoch=1
-pkgver=r846.20230905.2bc891285
+pkgver=r6181.20240702.8b6907327
 pkgrel=1
 pkgdesc="Cuttlefish Android Virtual Device companion package contains set of tools and binaries required to boot up and manage Cuttlefish Android Virtual Device that are used in all deployments."
 arch=(any)
