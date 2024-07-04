@@ -1,4 +1,4 @@
-# Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
+# Maintainer: Evangelos Foutras <foutrelis@archlinux.org>
 # Contributor: Tobias Kieslich <tobias funnychar archlinux.org>
 
 pkgname=xfwm4-themes
