@@ -63,6 +63,7 @@ source=(
     git+https://github.com/KhronosGroup/SPIRV-Cross.git#tag=vulkan-sdk-1.3.283.0
     git+https://github.com/ianlancetaylor/libbacktrace.git#commit=ad106d5fdd5d960bd33fae1c48a351af567fd075
     git+https://github.com/pytorch/cpuinfo.git#commit=05332fd802d9109a2a151ec32154b107c1e5caf9
+    git+https://github.com/stenzek/discord-rpc#commit=842c15192041f8e71c512851834f4dadb1a554fb
     duckstation-qt.desktop
     duckstation-qt.sh)
 sha256sums=('SKIP'
@@ -70,6 +71,7 @@ sha256sums=('SKIP'
             '9c2a148a1e4c7ca16ab54991980ed6393c1c21794081083f2779d880b3dbf1d4'
             '6463c6d54b99dddaa0f3da7a84926eb543672a4414dc2835bf35bb9eada9339f'
             '0e192b397f79a0f0567d32350cbe4f1b68177d7500222985167ae456465c77da'
+            'f3851102c4986695acd2049b6111c52998e736abe075a680fb1bdc6f84c31cf4'
             'ec2d7358f81598390a8ceca2d1974be3e5f7c45602b550c89a1e9323ab45474b'
             '221a8fc0d1f0cebdf281acc26484e98ebbb59f876e12fdef3f03cf91380e31f5')
 
@@ -82,7 +84,7 @@ pkgver() {
 prepare() {
     cd "$srcdir/shaderc"
     # apply duckstation patch
-    git apply "$srcdir/$_pkgname/scripts/shaderc-changes.patch"
+    git apply "$srcdir/$_pkgname/scripts/deps/shaderc-changes.patch"
 
     # de-vendor libs and disable git versioning
     sed '/examples/d;/third_party/d' -i CMakeLists.txt
@@ -94,13 +96,28 @@ prepare() {
 EOF
     cd "$srcdir/SPIRV-Cross"
     # apply duckstation patch
-    git apply "$srcdir/$_pkgname/scripts/spirv-cross-changes.patch"
+    git apply "$srcdir/$_pkgname/scripts/deps/spirv-cross-changes.patch"
 
     cd "$srcdir/cpuinfo"
-    git apply "$srcdir/$_pkgname/scripts/cpuinfo-changes.patch"
+    git apply "$srcdir/$_pkgname/scripts/deps/cpuinfo-changes.patch"
 }
 
 build() {
+    echo "Building discord-rpc..."
+
+    cmake -B build-discord-rpc -S discord-rpc \
+        -G Ninja \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_C_COMPILER=clang \
+        -DCMAKE_CXX_COMPILER=clang++ \
+        -DCMAKE_EXE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
+        -DCMAKE_MODULE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
+        -DCMAKE_SHARED_LINKER_FLAGS_INIT="-fuse-ld=lld" \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DBUILD_SHARED_LIBS=ON
+    ninja -C build-discord-rpc
+    DESTDIR="$srcdir/deps" ninja -C build-discord-rpc install
+
     echo "Building cpuinfo..."
 
     cmake -B build-cpuinfo -S cpuinfo \
@@ -216,9 +233,11 @@ package() {
     done
 
     # Install bundled shaderc
-    install -vm644 "${srcdir}/deps/usr/lib/libshaderc_shared.so" \
+    install -vm755 \
+        "${srcdir}/deps/usr/lib/libshaderc_shared.so" \
         "${srcdir}/deps/usr/lib/libspirv-cross-c-shared.so" \
         "${srcdir}/deps/usr/lib/libcpuinfo.so" \
+        "${srcdir}/deps/usr/lib/libdiscord-rpc.so" \
         "${pkgdir}/usr/lib/${_pkgname}"
 
     # Install additional license

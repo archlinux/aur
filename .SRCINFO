@@ -57,6 +57,7 @@ pkgbase = duckstation-git
 	source = git+https://github.com/KhronosGroup/SPIRV-Cross.git#tag=vulkan-sdk-1.3.283.0
 	source = git+https://github.com/ianlancetaylor/libbacktrace.git#commit=ad106d5fdd5d960bd33fae1c48a351af567fd075
 	source = git+https://github.com/pytorch/cpuinfo.git#commit=05332fd802d9109a2a151ec32154b107c1e5caf9
+	source = git+https://github.com/stenzek/discord-rpc#commit=842c15192041f8e71c512851834f4dadb1a554fb
 	source = duckstation-qt.desktop
 	source = duckstation-qt.sh
 	sha256sums = SKIP
@@ -64,6 +65,7 @@ pkgbase = duckstation-git
 	sha256sums = 9c2a148a1e4c7ca16ab54991980ed6393c1c21794081083f2779d880b3dbf1d4
 	sha256sums = 6463c6d54b99dddaa0f3da7a84926eb543672a4414dc2835bf35bb9eada9339f
 	sha256sums = 0e192b397f79a0f0567d32350cbe4f1b68177d7500222985167ae456465c77da
+	sha256sums = f3851102c4986695acd2049b6111c52998e736abe075a680fb1bdc6f84c31cf4
 	sha256sums = ec2d7358f81598390a8ceca2d1974be3e5f7c45602b550c89a1e9323ab45474b
 	sha256sums = 221a8fc0d1f0cebdf281acc26484e98ebbb59f876e12fdef3f03cf91380e31f5
 
