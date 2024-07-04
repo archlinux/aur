@@ -1,7 +1,7 @@
 pkgname=(cartesi-machine)
 pkgver=0.18.0
-pkgrel=1
-pkgdesc='Cartesi Machine SDK'
+pkgrel=2
+pkgdesc='Cartesi Machine'
 arch=(any)
 options=(!lto)
 url='https://cartesi.io/'

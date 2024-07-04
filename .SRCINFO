@@ -1,6 +1,6 @@
 pkgbase = cartesi-machine
 	pkgdesc = Cartesi Machine
-	pkgver = 0.17.0
+	pkgver = 0.18.0
 	pkgrel = 2
 	url = https://cartesi.io/
 	arch = any
@@ -9,14 +9,12 @@ pkgbase = cartesi-machine
 	depends = lua
 	optdepends = lua-socket: GDB plugin support
 	options = !lto
-	source = machine-emulator-0.17.0.tar.gz::https://github.com/cartesi/machine-emulator/archive/refs/tags/v0.17.0.tar.gz
-	source = https://github.com/cartesi/machine-emulator/releases/download/v0.17.0/uarch-pristine-hash.c
-	source = https://github.com/cartesi/machine-emulator/releases/download/v0.17.0/uarch-pristine-ram.c
+	source = machine-emulator-0.18.0-test1.tar.gz::https://github.com/cartesi/machine-emulator/archive/refs/tags/v0.18.0-test1.tar.gz
+	source = https://github.com/cartesi/machine-emulator/releases/download/v0.18.0-test1/add-generated-files.diff
 	source = https://github.com/cartesi/image-kernel/releases/download/v0.20.0/linux-6.5.13-ctsi-1-v0.20.0.bin
 	source = https://github.com/cartesi/machine-emulator-tools/releases/download/v0.15.0/rootfs-tools-v0.15.0.ext2
-	sha256sums = 2b3336eaa17bbacae749a46eb3af66e9745bc8708c86b3e5ba760a2e3482b831
-	sha256sums = 0a02547680c126f564e0c4e7dc7878880ec519c4a3e20c9bd5a987827bc6a9ab
-	sha256sums = 418c7d59fb889305ff4b182357afef1472d530fdb6e3c8c80ce78791e16426cb
+	sha256sums = 10b3157c89dce5366dda49a15d9f7c5293e4df081f679bd869ef8546d4104ac2
+	sha256sums = 5ddb29d3a0259f9295dc303110d5b24a880e3db19fe77b2a0a1a0a89d3cf8b71
 	sha256sums = 65dd100ff6204346ac2f50f772721358b5c1451450ceb39a154542ee27b4c947
 	sha256sums = dee8f9b739814f0076cd629f1de98fd71a4b5bc57a417678f80422dc9ef85550
 
