@@ -1,17 +1,15 @@
 # Maintainer:
 
-## useful links
-# https://github.com/stenzek/duckstation/tags
-
 ## options
 : ${_build_avx:=false}
 : ${_build_git:=false}
 
 : ${_commit:=d45e218da7ae28b21a3b8ca32a1b7fe31986138f}
+: ${_scripts:=scripts}
 
 unset _pkgtype
 [[ "${_build_avx::1}" == "t" ]] && _pkgtype+="-avx"
-[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
+[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git" && _scripts="scripts/deps"
 
 # basic info
 _pkgname="duckstation"
@@ -56,12 +54,12 @@ _main_package() {
     _source_duckstation
   else
     _source_duckstation_git
+    _source_cpuinfo
+    _source_spirv_cross
   fi
 
   _source_backtrace
-  [ "${_build_git::1}" = "t" ] && _source_cpuinfo
   _source_shaderc
-  _source_spirv_cross
 }
 
 _source_duckstation() {
@@ -143,21 +141,21 @@ _source_spirv_cross() {
 }
 
 _prepare_backtrace() (
-  local _version_backtrace=$(grep -E -m1 'LIBBACKTRACE=' "$_pkgsrc/scripts/build-dependencies-linux.sh" | sed -E -e 's&^\s*LIBBACKTRACE=(\S+)$&\1&')
+  local _version_backtrace=$(grep -E -m1 'LIBBACKTRACE=' "$_pkgsrc/$_scripts/build-dependencies-linux.sh" | sed -E -e 's&^\s*LIBBACKTRACE=(\S+)$&\1&')
   git -C "$srcdir/ianlancetaylor.libbacktrace" checkout -f "$_version_backtrace"
 )
 
 _prepare_cpuinfo() (
-  local _version_cpuinfo=$(grep -E -m1 'CPUINFO=' "$_pkgsrc/scripts/build-dependencies-linux.sh" | sed -E -e 's&^\s*CPUINFO=(\S+)$&\1&')
+  local _version_cpuinfo=$(grep -E -m1 'CPUINFO=' "$_pkgsrc/$_scripts/build-dependencies-linux.sh" | sed -E -e 's&^\s*CPUINFO=(\S+)$&\1&')
   git -C "$srcdir/pytorch.cpuinfo" checkout -f "$_version_cpuinfo"
 )
 
 _prepare_shaderc() (
-  local _version_shaderc=$(grep -E -m1 'SHADERC=' "$_pkgsrc/scripts/build-dependencies-linux.sh" | sed -E -e 's&^\s*SHADERC=(\S+)$&\1&')
+  local _version_shaderc=$(grep -E -m1 'SHADERC=' "$_pkgsrc/$_scripts/build-dependencies-linux.sh" | sed -E -e 's&^\s*SHADERC=(\S+)$&\1&')
 
   git -C "$srcdir/google.shaderc" checkout -f "v$_version_shaderc"
 
-  filterdiff "$srcdir/$_pkgsrc/scripts/shaderc-changes.patch" \
+  filterdiff "$srcdir/$_pkgsrc/$_scripts/shaderc-changes.patch" \
     | sed -E 's&non_sematic_debug_info&non_semantic_debug_info&' \
       > shaderc-changes.patch
 
@@ -169,11 +167,11 @@ _prepare_shaderc() (
 )
 
 _prepare_spirv_cross() (
-  local _version_spirv_cross=$(grep -E -m1 'SPIRV_CROSS=' "$_pkgsrc/scripts/build-dependencies-linux.sh" | sed -E -e 's&^\s*SPIRV_CROSS=(\S+)$&\1&')
+  local _version_spirv_cross=$(grep -E -m1 'SPIRV_CROSS=' "$_pkgsrc/$_scripts/build-dependencies-linux.sh" | sed -E -e 's&^\s*SPIRV_CROSS=(\S+)$&\1&')
 
   git -C "$srcdir/khronosgroup.spirv-cross" checkout -f "$_version_spirv_cross"
 
-  filterdiff "$srcdir/$_pkgsrc/scripts/spirv-cross-changes.patch" \
+  filterdiff "$srcdir/$_pkgsrc/$_scripts/spirv-cross-changes.patch" \
     > spirv-cross-changes.patch
 
   cd "khronosgroup.spirv-cross"

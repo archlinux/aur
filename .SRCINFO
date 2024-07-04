@@ -27,8 +27,6 @@ pkgbase = duckstation
 	source = duckstation::git+https://github.com/stenzek/duckstation.git#commit=d45e218da7ae28b21a3b8ca32a1b7fe31986138f
 	source = ianlancetaylor.libbacktrace::git+https://github.com/ianlancetaylor/libbacktrace.git
 	source = google.shaderc::git+https://github.com/google/shaderc.git
-	source = khronosgroup.spirv-cross::git+https://github.com/KhronosGroup/SPIRV-Cross.git
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
