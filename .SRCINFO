@@ -9,7 +9,6 @@ pkgbase = artemis-grading-bin
 	license = EPL
 	depends = java-environment>=17
 	depends = webkit2gtk
-	provides = eclipse-java
 	source_x86_64 = artemis-grading-bin-4.9.0-x86_64.tar.gz::https://github.com/kit-sdq/programming-lecture-eclipse-artemis/releases/download/v4.9.0/Artemis_Grading_Linux_x86_64.zip
 	source_x86_64 = artemis.desktop
 	sha256sums_x86_64 = 61660e5cdb74f4ae57f0d261d9a97717e70cf619d1230c6044ba22df3d6ec3b6
