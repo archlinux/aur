@@ -1,6 +1,12 @@
 Changelog
 =========
 
+**[5.4.0] ----- 2024-07-03** ::
+
+	    wg-fix-resolv: simplify file_compare() which now returns bool
+	    update Docs/Changelog.rst Docs/wg-client.pdf
+
+
 **[5.3.0] ----- 2024-07-03** ::
 
 	    wg-fix-resolv: chown(root) if write resolv.conf.saved.
