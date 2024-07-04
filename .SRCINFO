@@ -1,0 +1,15 @@
+pkgbase = d-containers
+	pkgdesc = Containers for D backed by std.experimental.allocator
+	pkgver = 0.8.0
+	pkgrel = 10
+	url = https://github.com/dlang-community/containers
+	arch = x86_64
+	license = Boost
+	makedepends = meson
+	makedepends = ldc
+	makedepends = d-stdx-allocator
+	depends = liblphobos
+	source = d-containers-0.8.0.tar.gz::https://github.com/dlang-community/containers/archive/v0.8.0.tar.gz
+	sha512sums = cb3d5a02251922f920a32033bc5cca6d82b07e2a073d85bf729e71d6a3050deaf6c31b93b443c6287ad0ceb01ab5b3bc50b4d9c5df6066292175ceaf234f4c5c
+
+pkgname = d-containers
