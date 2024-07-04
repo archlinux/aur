@@ -1,6 +1,13 @@
 Changelog
 =========
 
+**[5.5.0] ----- 2024-07-04** ::
+
+	    wg-fix-resolv: tidy up code add mem_alloc() helper.
+	    No need to null terminate date read from file
+	    update Docs/Changelog.rst Docs/wg-client.pdf
+
+
 **[5.4.0] ----- 2024-07-03** ::
 
 	    wg-fix-resolv: simplify file_compare() which now returns bool
