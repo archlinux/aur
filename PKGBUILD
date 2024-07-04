@@ -11,8 +11,8 @@
 
 # Maintainer: alecksandr <sansepiol26@gmail.com>
 pkgname=except-c
-pkgver=2.0.0
-pkgrel=5
+pkgver=2.1.0
+pkgrel=6
 epoch=
 pkgdesc="This module offers a straightforward macro interface that facilitates seamless exception handling in
  the C programming language, drawing inspiration from the paradigm employed in Python."

@@ -1,7 +1,7 @@
 pkgbase = except-c
 	pkgdesc = This module offers a straightforward macro interface that facilitates seamless exception handling in the C programming language, drawing inspiration from the paradigm employed in Python.
-	pkgver = 2.0.0
-	pkgrel = 5
+	pkgver = 2.1.0
+	pkgrel = 6
 	url = https://github.com/alecksandr26/trycatch-c/archive/refs/tags/v1.2.0.tar.gz
 	arch = x86_64
 	license = MIT License
@@ -11,7 +11,7 @@ pkgbase = except-c
 	makedepends = binutils
 	makedepends = coreutils
 	optdepends = valgrind
-	source = except-c-2.0.0.tar.gz::https://github.com/alecksandr26/trycatch-c/archive/refs/tags/v1.2.0.tar.gz
+	source = except-c-2.1.0.tar.gz::https://github.com/alecksandr26/trycatch-c/archive/refs/tags/v1.2.0.tar.gz
 	md5sums = SKIP
 
 pkgname = except-c
