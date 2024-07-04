@@ -1,0 +1,20 @@
+pkgbase = ntsc-rs-gui-git
+	pkgdesc = ntsc-rs is a video effect which emulates NTSC and VHS video artifacts.
+	pkgver = 0.7.3.r365.751279a
+	pkgrel = 1
+	url = https://github.com/valadaptive/ntsc-rs
+	arch = x86_64
+	arch = aarch64
+	arch = armv7
+	license = GPL3
+	makedepends = cargo
+	makedepends = git
+	makedepends = rust
+	provides = ntsc-rs-gui
+	conflicts = ntsc-rs-gui
+	source = git+https://github.com/valadaptive/ntsc-rs.git
+	source = ntsc-rs.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = ntsc-rs-gui-git
