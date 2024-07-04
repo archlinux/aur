@@ -1,4 +1,4 @@
-# Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
+# Maintainer: Evangelos Foutras <foutrelis@archlinux.org>
 # Contributor: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
