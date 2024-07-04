@@ -1,40 +1,61 @@
-# Maintainer: spider-mario <spidermario@free.fr>
+# -*- mode: sh -*-
+
+# Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
+# Contributor: spider-mario <spidermario@free.fr>
 # Contributor: Baptiste Jonglez <baptiste--aur at jonglez dot org>
+
 pkgname=jbofihe-git
-pkgver=0.40
+pkgver=0.43.19.gcc6fe66
 epoch=2
 pkgrel=1
-pkgdesc="Tools to operate on Lojban text (main feature: approximate translation to English)."
-arch=('i686' 'x86_64')
+pkgdesc='Tools to operate on Lojban text (main feature: approximate translation to English)'
+arch=('aarch64' 'i686' 'x86_64')
 url="https://github.com/lojban/jbofihe"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=('glibc')
 makedepends=('git' 'perl')
-options=('!makeflags')
-source=(git+https://github.com/lojban/jbofihe)
-sha512sums=(SKIP)
+options=('lto' '!makeflags')
+source=("git+$url.git")
+sha256sums=(SKIP)
 
 pkgver() {
   cd jbofihe
+
   git describe --tags | sed -e 's/^[^0-9\-]*//' -e 'y/-/./'
 }
 
 build() {
   cd jbofihe
 
-  msg2 "Running config.pl..."
-
+  echo "Running config.pl…"
   perl config.pl --prefix=/usr
 
-  msg2 "Running make..."
+  # RFC-0023
+  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
+  #
+  # ld(1) says: “Supported for i386 and x86-64.”
+  case "Z${CARCH:-unknown}" in
+    'Zx86_64' | 'Zi386' )
+      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
+    ;;
+    * ) : pass ;;
+  esac
 
+  for _makefile in {.,dfasyn}/Makefile; do
+    sed -i 's/^CFLAGS=/CFLAGS+=-Wno-implicit-int -Wno-implicit-function-declaration $(LDFLAGS)/g' "$_makefile"
+  done
+
+  echo "Running make…"
   # There is a Perl script that expects the locale to be an English one.
-  LC_ALL=C make all
+  env LANG=C LC_ALL=C make all
 }
 
 package() {
   cd jbofihe
+
   make DESTDIR="$pkgdir" install
+
+  chmod -v 0644 "$pkgdir"/usr/share/man/man1/*.1
 }
 
 # vim:set ts=2 sw=2 et:
