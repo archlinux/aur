@@ -15,7 +15,7 @@ pkgname=(buildbot buildbot-worker buildbot-docs buildbot-common
 # https://github.com/buildbot/buildbot/releases
 pkgver=3.11.5
 _bb_contrib_commit=4c8615db51253f0be4bfd08210a3aaf903a74b4f
-pkgrel=1
+pkgrel=2
 arch=(any)
 url='https://buildbot.net'
 # https://github.com/buildbot/buildbot/blob/v3.10.1/master/setup.py says GPLv2, and does not mention "any later version"
@@ -24,7 +24,7 @@ checkdepends=(python-boto3 python-ldap3 python-lz4 python-treq python-txrequests
               python-moto python-docker python-parameterized python-subunit
               python-psutil python-ruamel-yaml python-markdown
               openssh chromium)
-makedepends=(python-twisted python-jinja python-msgpack python-zope-interface python-sqlalchemy
+makedepends=(python-twisted python-jinja python-msgpack python-zope-interface python-sqlalchemy1.4
              python-alembic python-dateutil python-txaio
              python-autobahn python-pyjwt python-yaml python-croniter python-unidiff
              python-importlib_resources python-packaging
@@ -158,7 +158,7 @@ check() {
 
 package_buildbot() {
   pkgdesc='The Continuous Integration Framework'
-  depends=(buildbot-common python python-twisted python-jinja python-msgpack python-zope-interface python-sqlalchemy
+  depends=(buildbot-common python python-twisted python-jinja python-msgpack python-zope-interface python-sqlalchemy1.4
            python-alembic python-dateutil python-txaio
            python-autobahn python-pyjwt python-yaml python-croniter python-unidiff python-importlib_resources python-packaging)
   optdepends=(
