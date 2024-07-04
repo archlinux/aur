@@ -2,7 +2,7 @@
 # Contributor: xiretza <xiretza+aur@xiretza.xyz>
 
 _pkgname=amaranth
-_git_commit=a0750b89c6060d9f809159a012a26cff4e22e69d
+_git_commit=eefca8323028a0616d2b50019d119fcf7dd3d200
 pkgname="python-$_pkgname"
 pkgver=0.5.0.r0.ga0750b8
 pkgrel=1
