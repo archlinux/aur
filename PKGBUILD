@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=atmos-weather-bin
 _pkgname="Atmos Weather"
-pkgver=2.1.2
+pkgver=2.2.0
 _electronversion=29
 pkgrel=1
 pkgdesc="A lightweight weather app for receiving alerts and forecasts in the US."
@@ -23,9 +23,9 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/downl
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_armv7l.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 sha256sums=('2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-sha256sums_aarch64=('961522aba50cf8d5a3fc57eb8fcf7f8973d895bc1c98f6fe6efc0081ffbfeb4b')
-sha256sums_armv7h=('f851649a3df70c78eaa089a7885474a96c807189c9ffbad3768aafef69e33c38')
-sha256sums_x86_64=('93465c681deee6da12d1e30adad5b6359a72b33f3feb3de80476360171956ae5')
+sha256sums_aarch64=('95dc820b871ef0b5515f2f49fe4e24b451ed4859733c944ae1ebc8443b36bf31')
+sha256sums_armv7h=('497af43dd7a441b18641b55d51b381d489c5792dc87acebb0dba6b622bc4a91e')
+sha256sums_x86_64=('4c1c670a63b8f359d345988a220db71bd99e9d0ecda0dfae2354bf721fa07561')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
