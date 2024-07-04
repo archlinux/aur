@@ -1,4 +1,4 @@
-# Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
+# Maintainer: Evangelos Foutras <foutrelis@archlinux.org>
 
 pkgname=('php-geoip' 'php-legacy-geoip')
 pkgver=1.1.1
