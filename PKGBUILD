@@ -3,39 +3,45 @@
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird-git
-pkgver=r60543.c87e32154a
+pkgver=r62318.176e3ba16a
 pkgrel=1
-pkgdesc='Web browser built from scratch using the SerenityOS LibWeb engine'
+pkgdesc='Truly independent web browser'
 arch=(x86_64)
-url='https://github.com/SerenityOS/serenity'
+url='https://github.com/LadybirdBrowser/ladybird'
 license=(BSD)
-depends=(brotli less libgl python qt6-base qt6-multimedia qt6-svg qt6-wayland)
 conflicts=(ladybird)
 provides=(ladybird)
-makedepends=(cmake git ninja qt6-tools unzip)
+depends=(ffmpeg libgl qt6-base qt6-tools qt6-wayland qt6-multimedia ttf-liberation)
+makedepends=(git cmake ninja curl unzip zip tar autoconf-archive vcpkg)
 options=('!lto' '!debug')
 source=(
   "git+$url"
+  "git+https://github.com/microsoft/vcpkg.git#commit=f7423ee180c4b7f40d43402c2feb3859161ef625" # 2024-06-15 (Toolchain/BuildVcpkg.sh)
   "ladybird.desktop"
 )
 sha256sums=(
   'SKIP'
   'SKIP'
+  'SKIP'
 )
 
 pkgver() {
-  cd serenity
+  cd ladybird
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
   cd "${srcdir}"
 
+  export VCPKG_ROOT="${srcdir}/vcpkg"
+
   cmake \
+    --preset default \
     -B build \
-    -S serenity/Ladybird \
+    -S ladybird \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_PREFIX='/usr' \
+    -DCMAKE_TOOLCHAIN_FILE="${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" \
     -GNinja \
     -Wno-dev
   ninja -C build
@@ -47,7 +53,7 @@ package() {
   DESTDIR="${pkgdir}" ninja -C build install
 
   install -Dm644 "ladybird.desktop" "${pkgdir}/usr/share/applications/ladybird.desktop"
-  install -Dm644 "serenity/Base/res/icons/32x32/app-browser.png" "${pkgdir}/usr/share/pixmaps/ladybird.png"
+  install -Dm644 "ladybird/Base/res/icons/32x32/app-browser.png" "${pkgdir}/usr/share/pixmaps/ladybird.png"
 
-  install -Dm644 serenity/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -Dm644 ladybird/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
