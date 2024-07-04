@@ -1,0 +1,14 @@
+pkgbase = d-mir-core
+	pkgdesc = Base software building blocks and conventions for libmir
+	pkgver = 1.1.14
+	pkgrel = 12
+	url = https://github.com/libmir/mir-core
+	arch = x86_64
+	license = custom:BSL
+	makedepends = meson
+	makedepends = ldc
+	depends = liblphobos
+	source = mir-core-1.1.14.tar.gz::https://github.com/libmir/mir-core/archive/v1.1.14.tar.gz
+	sha512sums = 393ee409d50c7c825407b19fb860cce21907eb12ae5575eb5cd223bf0d4c3186bf6f0a61d4f3c7d07c6741c9d1d8f9a3421f7735520bba6e4bb52a5c18cb55f1
+
+pkgname = d-mir-core
