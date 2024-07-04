@@ -1,0 +1,4 @@
+[open-unmix-umxse-weights]
+source = "jq"
+url = "https://zenodo.org/records/3786908/export/json"
+filter = ".metadata.version // .versions.index"
