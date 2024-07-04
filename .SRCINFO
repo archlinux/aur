@@ -1,0 +1,21 @@
+pkgbase = dion-bin
+	pkgdesc = Desktop application for dion.vc
+	pkgver = 5.11.1
+	pkgrel = 12103
+	url = https://diongo.ru
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = util-linux-libs
+	depends = libappindicator-gtk3
+	depends = libsecret
+	source = https://static.dion.vc/desktop_app/dion-bin_5.11.1_amd64.deb
+	sha256sums = 46a1123ea8e44584d8d4e6a52e51ccca90414f8ec2632ae4893ace9b4c8a98c5
+
+pkgname = dion-bin
