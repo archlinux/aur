@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tiny-rdm-git
 _pkgname="Tiny RDM"
-pkgver=1.1.12.r0.gc9becea
+pkgver=1.1.14.r0.gfdfd04d
 _nodeversion=18
 pkgrel=1
 pkgdesc="A modern lightweight cross-platform Redis desktop manager"
@@ -20,7 +20,7 @@ makedepends=(
     'git'
     'go'
     'gcc'
-    'base-devel'
+    'cmake'
     'wails'
 )
 options=(
@@ -38,7 +38,7 @@ _ensure_local_nvm() {
 }
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
-    git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
 }
 build() {
     _ensure_local_nvm
