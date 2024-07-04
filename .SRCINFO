@@ -8,7 +8,7 @@ pkgbase = qtile-plasma-git
 	makedepends = python-setuptools
 	makedepends = git
 	depends = qtile
-	source = qtile-plasma-git::git+://github.com/numirias/qtile-plasma.git
+	source = qtile-plasma-git::git+https://github.com/numirias/qtile-plasma.git
 	sha256sums = SKIP
 
 pkgname = qtile-plasma-git

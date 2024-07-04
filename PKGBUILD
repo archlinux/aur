@@ -8,7 +8,7 @@ license=('MIT')
 url='https://github.com/numirias/qtile-plasma'
 depends=('qtile')
 makedepends=('python-setuptools' 'git')
-source=("${pkgname}::git+://github.com/numirias/qtile-plasma.git")
+source=("${pkgname}::git://github.com/numirias/qtile-plasma.git")
 sha256sums=('SKIP')
 
 pkgver() {
