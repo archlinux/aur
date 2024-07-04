@@ -9,12 +9,12 @@ arch=('x86_64')
 depends=('ffmpeg' 'libvips>=8.13.3' 'openslide' 'opus' 'poppler-glib')
 license=('AGPL3')
 makedepends=('cmake' 'git' 'rust')
-md5sums=('25a497dd2de3dea2a10f9ded8c602aa4')
+md5sums=('060b490bf103c755cdb3d6a14816856e')
 options=('!lto')
 pkgdesc='A static site generator for audio producers'
 pkgname=faircamp
 pkgrel=1
-pkgver=0.14.0
+pkgver=0.15.0
 url='https://simonrepp.com/faircamp'
 
 source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/simonrepp/faircamp/archive/${pkgver}.tar.gz")
