@@ -8,7 +8,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=waterfox
-pkgver=G6.0.16
+pkgver=G6.0.17
 pkgrel=2
 pkgdesc='Fork of Mozilla Firefox featuring some privacy, usability, and speed enhancements.'
 arch=(x86_64)
@@ -222,5 +222,5 @@ EOT
 		ln -srfv "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
 	fi
 }
-sha256sums=('368888c275559305ba781fccb1eac89cc8689e230a055d0ee18282c77bf9ed54'
+sha256sums=('5090fceb677c1f1973b510c7cec93a930dfef5d03728506c78eb0573ce2dda19'
             '1edf74423d201cbfd4162353c2fa040bb29da9db1d3f46d7fd2eff0209140e85')
