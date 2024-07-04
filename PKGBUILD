@@ -2,7 +2,7 @@
 
 pkgname=modrinth-app
 pkgver=0.7.1
-pkgrel=4
+pkgrel=5
 pkgdesc='An unique, open source launcher that allows you to play your favorite mods, and keep them up to date, all in one neat little package.'
 url='https://modrinth.com/app'
 arch=('x86_64')
@@ -28,7 +28,7 @@ sha256sums=('bd202fcf47d9c15151f4e3ae385044914bb7012e1890dacdcdefaab65830bab4'
 options=('!lto')
 
 prepare() {
-    cd "theseus-${pkgver}"
+    cd "olympus-${pkgver}"
 
     export CARGO_TARGET_DIR=target
     export RUSTUP_TOOLCHAIN=stable
@@ -40,7 +40,7 @@ prepare() {
 }
 
 build() {
-    cd "theseus-${pkgver}/theseus_gui/"
+    cd "olympus-${pkgver}/theseus_gui/"
 
     export COREPACK_ENABLE_STRICT=0
     pnpm build
@@ -53,7 +53,7 @@ build() {
 }
 
 check() {
-    cd "theseus-${pkgver}"
+    cd "olympus-${pkgver}"
 
     export CARGO_TARGET_DIR=target
     export RUSTUP_TOOLCHAIN=stable
