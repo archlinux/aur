@@ -1,7 +1,7 @@
 # Maintainer: Christian Menard <christian.menard@tu-dresden.de>
 
 pkgname=lf-cli
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="The Lingua Franca compiler and command line tools"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('java-runtime=17' 'bash')
 conflicts=('lfc-bin' 'lf-cli-bin' 'lf-cli-nightly' 'lf-cli-nightly-bin')
 source=("https://github.com/lf-lang/lingua-franca/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('47eb8e962c690d00ff6da026b7be1a0148e4601a18cf214f2819ac421596f61cc5770b0468c82662f2b5dcec06563c946a5beff46850c1e04348be3db204ad2d')
+sha512sums=('dd105a81249f958530a20b4d1d28c8128c3a4e6cda50c1f7f3f5c305d23444847c6a3dea4423ae44295653114412fa86dd18b3626e91d53ab58b3da13ecde83e')
 
 package() {
     cd "${srcdir}/lingua-franca-${pkgver}"
