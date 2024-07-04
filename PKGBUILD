@@ -1,22 +1,26 @@
-# Maintainer: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
 # -*- sh -*-
+
+# Maintainer: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
 
 pkgname='python-whenever-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
-pkgver=0.5.1.r20.g6c2a928
-pkgrel=2
-pkgdesc='Foolproof datetimes for maintainable Python code (built from latest commit)'
-arch=('any')
+pkgver=0.6.1.r0.g66592b4
+pkgrel=1
+pkgdesc='Modern datetime library for Python (built from latest commit)'
+arch=('aarch64' 'x86_64')
 url="https://github.com/ariebovenberg/$_srcname"
 license=('MIT')  # SPDX-License-Identifier: MIT
 makedepends=(
   'git'
   'python-build'
   'python-installer'
+  'python-setuptools-rust'
   'python-wheel'
 )
 depends=(
+  'gcc-libs'
+  'glibc'
   'python'
 )
 source=("git+$url.git")
@@ -41,9 +45,10 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm0644 LICENSE       "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm0644 CHANGELOG.rst "$pkgdir/usr/share/$pkgname/doc/CHANGELOG.rst"
-  install -Dm0644 README.rst    "$pkgdir/usr/share/$pkgname/doc/README.rst"
+  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
+    LICENSE
+  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
+    CHANGELOG.rst README.md
 }
 
 # eof
