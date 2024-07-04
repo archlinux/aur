@@ -1,5 +1,5 @@
 pkgname=cross-mingw-w64-gdb
-pkgver=8.3.1
+pkgver=14.2
 pkgrel=1
 pkgdesc="The GNU Debugger (compiled to debug target mingw-w64)"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ depends=('ncurses' 'expat' 'xz' 'readline' 'source-highlight')
 makedepends=('gcc' 'texinfo')
 options=('staticlibs' '!buildflags')
 source=("http://ftp.gnu.org/gnu/gdb/gdb-${pkgver}.tar.xz")
-sha256sums=('1e55b4d7cdca7b34be12f4ceae651623aa73b2fd640152313f9f66a7149757c4')
+sha256sums=('2d4dd8061d8ded12b6c63f55e45344881e8226105f4d2a9b234040efa5ce7772')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -40,5 +40,3 @@ package() {
     rm -rf "$pkgdir"/usr/include
   done
 }
-
-# vim: set expandtab tabstop=4 :
