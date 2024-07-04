@@ -1,4 +1,4 @@
-# Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
+# Maintainer: Evangelos Foutras <foutrelis@archlinux.org>
 
 pkgname=polly
 pkgver=18.1.8
