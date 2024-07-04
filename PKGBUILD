@@ -4,7 +4,7 @@
 # Thanks to Fabio Lolix for the patch.
 
 pkgname=applewin-git
-pkgver=1.30.14.1.r1505.g7be12f5c
+pkgver=1.30.14.1.r1538.g1254c3ce
 pkgrel=1
 pkgdesc="AppleWin Linux port by Audetto - GIT version"
 arch=('x86_64')
@@ -29,8 +29,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'e9bb4b78a21d3fc3daeebeaf99c68e97f745e497b19d1a4eeaf2e115ab5cf4c3'
-            '3fc868e86a3e8520cfb366fce547aac4e6439eb0e6753156da3c3ce97e235c2e'
+            '3c85c5f62d94b5e50431d0eabd5b59f0416a3cbfc38cae169ed5deeca76744b7'
+            'a1ff883091cc0d80ae9830353f3ef3a9b451833814c39100b351a7a92677960f'
             'e3bbf57d2ad105c6211b0853fbb88f1c20d874d0a34b6ae263e2cf8c74e1568d')
 
 pkgver() {

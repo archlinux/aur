@@ -7,3 +7,4 @@ Exec=/usr/bin/qapple
 Icon=/usr/share/applewin/common/apple-logo.svg
 Terminal=False
 Categories=Game;Emulator
+StartupWMClass=qapple
