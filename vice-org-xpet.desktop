@@ -6,4 +6,4 @@ Exec=/usr/bin/xpet
 Terminal=false
 Icon=/usr/share/vice/common/PET_1024.svg
 Categories=Game;Emulator
-
+StartupWMClass=xpet

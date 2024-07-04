@@ -2,7 +2,7 @@
 # Contributor: Benjamin Hodgetts <ben@xnode.org>
 
 pkgname=vice-svn
-pkgver=r45188
+pkgver=r45202
 pkgrel=1
 pkgdesc="The Versatile Commodore Emulator 8-bits (PET/C64/C128/Plus4/Vic20) - Development version"
 arch=('i686' 'x86_64')
@@ -36,16 +36,16 @@ SID_1024.svg
 VIC20_1024.svg
 )
 sha256sums=('SKIP'
-            'c07cfcc5f710b96258ce194dfeef60ca15b8cdde84c7bbc529b1417f50c82fd1'
-            'c6362e948eb29aa392a0b0e43657e2d1a7440209919f4d724e60578b2e50195b'
+            'd124e0033f7ffb45ea3582c01971f8b51c429cd18df36abd75e21847da728a6a'
+            '2bf07e60c6bdf332f7d31c9ef1572953f96d5b540cd76c7d07be72769eb052c3'
             'dd58d7ab618a7d70ac336b8c44f38438305ba9b94a54635b393c7c281e91824d'
-            '2bee5fd315e9d95ff19a5c84df544e4e200f1f41e526b67bb19079a456cacde2'
-            '7b64750a8a22a462b38ed8e6d75dd05d85e2b55c744e3de6bfca0cea4ff98677'
-            'a4e82046aaca9f539f16a4f6c21198e4b64f9beac0e3b04bac877907494792ff'
-            '04ae1173821d948dff92bcd9e73db69f077cc738c33bf2e32eb0911ecd8a3156'
-            '63052bc74fced179de077435100e614a72c24b0fcbbceba16fdabc7f2a8174cc'
-            'a31f99bd268f40e06c6a7bb1028a1b0f5dac4296b8b5a243bf64961228c7ce97'
-            'b6548109bd5b557f8b0598541dac21a408f28631cd8ac814099d97160821ef3b'
+            '8c0a385123ddd7b968be4edda9a079c995d279c30b0ec90bbb5a0171f72ea7b9'
+            'dea9da4cb71dc85d53755b07bb9df04d09c2889c0eb905ca2823952a649ec4e1'
+            '0cf0ff49d5c23e923a29f70bbc2299b06f79204606761f9065c3d10231ed2e67'
+            'edb663a57b2fa4aadb87a1ec9e87b5e204638159b2fb65acfa145df0922b6f88'
+            '2b30f1a92dc456a838ab00d9860d7325bf61b1f402e542bda70f65a8e03b9d04'
+            'dedaf7ae2c1d5713997dae7d4e778c36bdbc698f8d07cca4c8ed7bc556a8fb44'
+            '4be98cd407cec01231cce3b9420c3b973a36c9442cd6b71b9569ad393f5a0801'
             '2f6b915b16d955ebf4af7458075ad55399e5fc134c5b228abc93542410764084'
             'cec437f3def18b45a4a3fceb6c8c6e8d8f3ff148f39bf33068f68e56c4a2412a'
             '09da7fee74f13667a4a1d869f1c1c4fe5fd0ace8b092c5ae846c3e4c3a09d584'

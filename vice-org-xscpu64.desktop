@@ -6,4 +6,4 @@ Exec=/usr/bin/xscpu64
 Terminal=false
 Icon=/usr/share/vice/common/SCPU_1024.svg
 Categories=Game;Emulator
-
+StartupWMClass=xscpu64

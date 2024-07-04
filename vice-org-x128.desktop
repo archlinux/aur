@@ -6,3 +6,4 @@ Exec=/usr/bin/x128
 Terminal=false
 Icon=/usr/share/vice/common/C128_1024.svg
 Categories=Game;Emulator
+StartupWMClass=x128

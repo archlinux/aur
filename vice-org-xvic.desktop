@@ -6,4 +6,4 @@ Exec=/usr/bin/xvic
 Terminal=false
 Icon=/usr/share/vice/common/VIC20_1024.svg
 Categories=Game;Emulator
-
+StartupWMClass=xvic

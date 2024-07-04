@@ -6,4 +6,4 @@ Exec=/usr/bin/xcbm2
 Terminal=false
 Icon=/usr/share/vice/common/CBM2_1024.svg
 Categories=Game;Emulator
-
+StartupWMClass=xcbm2

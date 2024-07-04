@@ -6,4 +6,4 @@ Exec=/usr/bin/x64dtv
 Terminal=false
 Icon=/usr/share/vice/common/DTV_1024.svg
 Categories=Game;Emulator
-
+StartupWMClass=x64dtv
