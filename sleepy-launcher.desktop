@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Sleepy Launcher
+Comment=Sleepy game launcher for Linux with telemetry disabling
+Exec=sleepy-launcher
+Terminal=false
+Type=Application
+Icon=sleepy-launcher
+StartupWMClass=moe.launcher.sleepy-launcher
+Categories=Game
