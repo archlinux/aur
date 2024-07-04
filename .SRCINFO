@@ -1,0 +1,16 @@
+pkgbase = wcurl-git
+	pkgdesc = a simple wrapper around curl to easily download files (git)
+	pkgver = r17.e4a7f67
+	pkgrel = 1
+	url = https://salsa.debian.org/debian/wcurl
+	arch = any
+	license = curl
+	makedepends = git
+	depends = curl
+	depends = sh
+	provides = wcurl
+	conflicts = wcurl
+	source = git+https://salsa.debian.org/debian/wcurl
+	sha256sums = SKIP
+
+pkgname = wcurl-git
