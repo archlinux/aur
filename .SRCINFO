@@ -1,6 +1,6 @@
 pkgbase = libkazv-git
 	pkgdesc = A matrix client sdk built upon lager and the value-oriented design it enables.
-	pkgver = 0.5.0+6.r445.20240628.9b9cd64
+	pkgver = 0.6.0.r454.20240704.9f25347
 	pkgrel = 1
 	url = https://lily-is.land/kazv/libkazv
 	arch = aarch64
@@ -23,7 +23,7 @@ pkgbase = libkazv-git
 	depends = nlohmann-json
 	depends = zug
 	optdepends = libhttpserver: For examples.
-	provides = libkazv=0.5.0+6.r445.20240628.9b9cd64
+	provides = libkazv=0.6.0.r454.20240704.9f25347
 	conflicts = libkazv
 	source = libkazv::git+https://lily-is.land/kazv/libkazv.git
 	sha256sums = SKIP
