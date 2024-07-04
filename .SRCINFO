@@ -1,6 +1,6 @@
 pkgbase = python-wandb
 	pkgdesc = A tool for visualizing and tracking your machine learning experiments
-	pkgver = 0.17.3
+	pkgver = 0.17.4
 	pkgrel = 1
 	url = https://wandb.ai
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = python-wandb
 	optdepends = python-soundfile: logging audios
 	provides = python-wandb
 	conflicts = python-wandb-git
-	source = python-wandb-0.17.3.tar.gz::https://github.com/wandb/wandb/archive/refs/tags/v0.17.3.tar.gz
-	sha256sums = 2e5704b131533862d68a2efcde082276948d32e38a8310d9ecb165517ba1bee3
+	source = python-wandb-0.17.4.tar.gz::https://github.com/wandb/wandb/archive/refs/tags/v0.17.4.tar.gz
+	sha256sums = 92ac27ce6f71954956c5fed46cc64c15b2679063f8fab9c335663143fa2cca5e
 
 pkgname = python-wandb
