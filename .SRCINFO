@@ -1,0 +1,13 @@
+pkgbase = clipp-git
+	pkgdesc = Modern C++ header only library to parse cmd arguments
+	pkgver = 1.2.3_6_g2c32
+	pkgrel = 1
+	url = https://github.com/muellan/clipp
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	source = git+https://github.com/muellan/clipp.git
+	sha256sums = SKIP
+
+pkgname = clipp-git
