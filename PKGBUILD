@@ -1,17 +1,17 @@
 # Maintainer: nl6720 <nl6720@archlinux.org>
 
 pkgname=mediawiki-extension-codemirror
-pkgver=1.41+r943+gf50f8e3
+pkgver=1.42+r1066+g77850cc
 pkgrel=1
-_mw='1.41'
-_commit='f50f8e343fdb47a38fdeb46ee2da8b7be0aa9634' # git rev-parse "REL${_mw/./_}"
+_mw='1.42'
+_commit='77850cc74976d1569193ec304cbd79dc8decddba' # git rev-parse "REL${_mw/./_}"
 pkgdesc='An extension for MediaWiki that provides syntax highlighting in the wikitext editor'
 arch=('any')
 url='https://www.mediawiki.org/wiki/Extension:CodeMirror'
 license=('GPL-2.0-or-later')
 makedepends=('git')
 source=("git+https://gerrit.wikimedia.org/r/mediawiki/extensions/CodeMirror.git#commit=${_commit}")
-sha512sums=('SKIP')
+sha512sums=('3626c3b3d9513862d763a57c8c2f712550bc2b1def57b4f8bf5e4cc92947dbfd517c7d7d09528f5e38b3419aeeda6cc22eb23b0b785f3ac2fd0f2ab21b686a9b')
 
 pkgver() {
 	cd "${srcdir}/CodeMirror"
