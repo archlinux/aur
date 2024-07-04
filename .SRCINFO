@@ -1,5 +1,5 @@
 pkgbase = himitsu
-	pkgdesc = Secret storage manager
+	pkgdesc = Secret storage manager (passwords, credentials, miscellaneous)
 	pkgver = 0.6
 	pkgrel = 1
 	url = https://himitsustore.org/

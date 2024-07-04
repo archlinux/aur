@@ -4,7 +4,7 @@
 pkgname=himitsu
 pkgver='0.6'
 pkgrel=1
-pkgdesc='Secret storage manager'
+pkgdesc='Secret storage manager (passwords, credentials, miscellaneous)'
 arch=(x86_64)
 url='https://himitsustore.org/'
 license=(GPL3)
