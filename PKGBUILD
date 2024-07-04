@@ -1,0 +1,31 @@
+# Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
+
+pkgname=open-unmix-umxl-weights
+pkgver=1.0.0
+pkgrel=1
+pkgdesc='Music separation model trained on a private dataset'
+arch=('any')
+url='https://zenodo.org/records/5069601'
+license=('CC-BY-NC-SA-4.0')
+
+source=(
+  "${url}/files/bass-2ca1ce51.pth"
+  "${url}/files/drums-69e0ebd4.pth"
+  "${url}/files/other-c8c5b3e6.pth"
+  "${url}/files/vocals-bccbd9aa.pth"
+)
+
+sha512sums=(
+  '4a300b9621613e2d7ed5f3cb9b413d1896760c0542e0ddab562b0e0959e2073cfdc5dad651a9071f1e89f7825c3fdf9af4ec952d1f559756ae28e12fac117488'
+  '46ff6acbd38a02812f7ac417a41e64c75d596200c6f2af54f25d052c3a4b7bfbc8b9d06d75525eaac546b5b07f5c020a7fe27178590f4954a3196203c5840430'
+  '1f3a9377b56ac14cc19789e3dd345586cd31fc834e6b5f72894b1183fec3428dca71788a06c247cb95d537ffcdec1d15fb4b3564607b74f3c6ff0a4b3a6bd51c'
+  '91cf634efa2d076792da1db8985d8a52a91ee19a4712a36886c16f916677d25d29867a91de8677837096e908200faa412cb9fffd797832875094d4c76d6cb70e'
+)
+
+package() {
+  install -D -m 644 -t "${pkgdir}/usr/share/${pkgname}" \
+    'bass-2ca1ce51.pth' \
+    'drums-69e0ebd4.pth' \
+    'other-c8c5b3e6.pth' \
+    'vocals-bccbd9aa.pth'
+}
