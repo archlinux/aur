@@ -1,0 +1,13 @@
+pkgbase = riff
+	pkgdesc = automatically provide external dependencies for Rust projects
+	pkgver = 1.0.3
+	pkgrel = 2
+	url = https://github.com/DeterminateSystems/riff
+	arch = x86_64
+	license = MPL2
+	depends = cargo
+	depends = nix
+	source = https://github.com/DeterminateSystems/riff/archive/v1.0.3/riff-1.0.3.tar.gz
+	sha256sums = 8e28c456a781f5e9d51d2e84f8823bf01ca85b69337a6d21d31fd435d1699e1b
+
+pkgname = riff

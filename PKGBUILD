@@ -3,7 +3,7 @@
 pkgname=riff
 _pkgname=${pkgname##rust-}
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='automatically provide external dependencies for Rust projects'
 arch=(x86_64)
 url="https://github.com/DeterminateSystems/$_pkgname"
