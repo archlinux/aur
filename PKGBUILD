@@ -1,14 +1,14 @@
-# Maintainer: Pieter Goetschalckx <3.14.e.ter at gmail dot com>
+# Contributor: Pieter Goetschalckx <3.14.e.ter at gmail dot com>
 # Contributors: Det, goetzc, Ner0, Lari Tikkanen, oke3, Flamelab, WAntilles
 
 pkgname=smplayer-git
-pkgver=22.7.0.rb364f4884
+pkgver=24.5.0.10283.r3.gc817337
 pkgrel=1
 pkgdesc='Media player with built-in codecs that can play virtually all video and audio formats'
 arch=('x86_64')
 url='https://www.smplayer.info/'
 license=('GPL')
-depends=('qt5-script' 'hicolor-icon-theme' 'libx11' 'zlib' 'gcc-libs')
+depends=('glibc' 'qt5-base' 'qt5-declarative' 'mpv' 'libx11' 'zlib' 'gcc-libs' 'hicolor-icon-theme')
 makedepends=('qt5-tools' 'git')
 optdepends=('smplayer-themes-svn: icon themes collection'
             'smplayer-skins-svn: skin themes collection'
@@ -24,7 +24,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  echo $(grep -m1 'Version' smplayer.spec | cut -d " " -f9).r$(git rev-parse --short HEAD) 
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
