@@ -6,7 +6,7 @@
 
 pkgbase=mutter-dynamic-buffering
 pkgname=(mutter-dynamic-buffering)
-pkgver=46.3
+pkgver=46.3.1
 pkgrel=1
 pkgdesc="Window manager and compositor for GNOME (with dynamic triple/double buffering)"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -84,7 +84,7 @@ source=(
   "$pkgname::git+$url.git#tag=${pkgver/[a-z]/.&}"
   'mr1441.patch'
 )
-b2sums=('b228db453c22a94783ceed71eb9489117e0576293f6daa37b7f20b6992b80ee4e67ebeee3b1cf474d306d2341e8d0e26b16820cec9d6c53132ddc7ffd4157634'
+b2sums=('7d9041df986220470c287fe65194ec6e4da8f15540140fb7e0c3fddc95ce6e9ec9fd4f691ed349a31af28e903c769c97d9817ac65c3cc424b002e095cf559606'
         '70e554f5338ed3619a863f77ae099c2ac1e619270a8f1d93e40778d209718b88751d3bfc730e08e346e3b8b5047c0033c36b9a4fc6021579de2a739973374de6')
 
 prepare() {
