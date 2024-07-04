@@ -1,4 +1,13 @@
 # Maintainer: Evan Goode <mail@evangoo.de>
+# Contributor: Sefa Eyeoglu <contact@scrumplex.net>
+# Contributor: txtsd <aur.archlinux@ihavea.quest>
+# Contributor: seth <getchoo at tuta dot io>
+# Contributor: fn2006 <usernamefn2006alreadyused@protonmail.com>
+# Contributor: Lenny McLennington <lennymclennington@protonmail.com>
+# Contributor: Elijah Gregg <lovetocode999@tilde.team>
+# Contributor: Miko <mikoxyzzz@gmail.com>
+# Contributor: Cheru Berhanu <aur attt cheru doot dev>
+# Contributor: dada513 <dada513@protonmail.com>
 
 pkgname=fjordlauncher-bin
 pkgver=8.4.1
