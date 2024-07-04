@@ -25,7 +25,7 @@ sha256sums=('2b5847b6a63118b9efe5c85548363c81ffe096b66c3b3675e953e26342ae4031'
             'SKIP'
             'eb2916131ae63b3bd1689f6a27dc0c2fadad73a5c5f2c828062c8a2c547e4a0d'
             '2c25ddf0ba6be01949842873fef4d285456321aaccd4ba95db61b69a4c580106'
-            '7a9ce949579a3b02d4b91b6835c4fb45adc5f743007572fb0e28e6433e48f3a5')
+            'bad277f45b35643592961425532f3af8db0519cb9c388fd9ac4f499bf2a95017')
 validpgpkeys=('474E22316ABF4785A88C6E8EA2C794A986419D8A') # Tom Stellard <tstellar@redhat.com>
 
 # Utilizing LLVM_DISTRIBUTION_COMPONENTS to avoid

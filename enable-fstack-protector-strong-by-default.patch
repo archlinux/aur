@@ -1,5 +1,5 @@
 From 75c02a21f954574675020e1d76391b4896211fc7 Mon Sep 17 00:00:00 2001
-From: Evangelos Foutras <evangelos@foutrelis.com>
+From: Evangelos Foutras <foutrelis@archlinux.org>
 Date: Sun, 24 Apr 2022 06:29:44 +0300
 Subject: [PATCH] Enable -fstack-protector-strong by default
 
