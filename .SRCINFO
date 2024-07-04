@@ -1,15 +1,14 @@
 pkgbase = emacs-android-git
 	pkgdesc = Emacs minor mode for Android application development
 	pkgver = 20190903
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/remvee/android-mode/
 	install = emacs-android-git.install
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = emacs
-	source = emacs-android-git::git://github.com/remvee/android-mode.git
+	source = emacs-android::git+https://github.com/remvee/android-mode.git
 	md5sums = SKIP
 
 pkgname = emacs-android-git
-
