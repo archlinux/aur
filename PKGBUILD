@@ -5,7 +5,7 @@
 
 pkgname=asunder
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="a graphical CD ripper and encoder"
 arch=('x86_64')
 url="http://littlesvr.ca/asunder/"
