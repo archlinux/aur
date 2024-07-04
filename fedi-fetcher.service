@@ -7,7 +7,7 @@ Type=simple
 User=fedi-fetcher
 Group=fedi-fetcher
 
-ExecStart=/usr/bin/fedi-fetcher -c /etc/fedi-fetcher/config.json --lock-file /run/fedi-fetcher/.lock --state-dir /var/lib/fedi-fetcher
+ExecStart=/usr/bin/fedi-fetcher -c /etc/fedi-fetcher/config.json --lock-file /run/fedi-fetcher/.lock --state-dir /var/lib/fedi-fetcher --log-format '%(message)s'
 
 RuntimeDirectory=fedi-fetcher
 StateDirectory=fedi-fetcher

@@ -1,7 +1,7 @@
 # Maintainer: Sir-Photch < sir-photch at posteo dot me >
 
 pkgname=fedi-fetcher
-pkgver=7.1.3
+pkgver=7.1.5
 pkgrel=1
 pkgdesc="FediFetcher is a tool for Mastodon that automatically fetches missing replies and posts from other fediverse instances, and adds them to your own Mastodon instance."
 arch=(any)
@@ -16,8 +16,8 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 	sysusers-fedi-fetcher.conf
 	tmpfiles-fedi-fetcher.conf
 	example-config.json)
-sha256sums=('e29529198dd3161b7095f16bb28eb9a668bb2925d94fc70c22f972b8470bd103'
-            '734d534342a0d5bdd70c1d339e50a6d2549b4a9bba96810396700a8114f75929'
+sha256sums=('7ef78a2a2c4a56601aa7291535f50ac1bb6781df43b27d513a6b625394d7558d'
+            'cac866add6470ea7781366fdaf1f1e57cdbc0d7965e2b8e36c42a2dd88a1acd7'
             '4f3d8a37de2a11a794afd6e1d10df9abfe8cb8a42297fa8451e3e86228523265'
             'eca9986a6e86b3208c2f786125f8a513037cd5a59dab2670e9439d57a2f7f595'
             'b97bfea3b64a666f199f46c979711c0d469cc2d34a35e61443ee42ff8096538b'
