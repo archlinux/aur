@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yank-note
 _pkgname=yn
-pkgver=3.71.1
+pkgver=3.72.2
 _electronversion=28
 _nodeversion=18
 pkgrel=1
@@ -23,12 +23,13 @@ makedepends=(
     'nvm'
     'gcc'
     'curl'
+    'cmake'
 )
 source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('4687a98f84c828c65d8e2d5f7762626796bdec6d192b8c62390b78f91e190fd5'
+sha256sums=('3251771d2f9a6e8ed78f4a2235843f81117b64ff8ce8223280b3fcf575ec3133'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -63,7 +64,7 @@ build() {
         echo "Your network is OK."
     fi
     sed "s|icon.icns|icon.png|g" -i electron-builder.json
-    NODE_ENV=developmentyarn install --cache-folder "${srcdir}/.yarn_cache"
+    NODE_ENV=development yarn install --cache-folder "${srcdir}/.yarn_cache"
     NODE_ENV=development yarn run electron-rebuild
     NODE_ENV=development npx node scripts/download-pandoc.js
     NODE_ENV=development npx node scripts/download-plantuml.js
