@@ -1,18 +1,18 @@
 pkgbase = wora-bin
 	pkgdesc = 🎧 A beautiful player for audiophiles.
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/hiaaryan/wora
 	arch = any
 	license = MIT
 	makedepends = fuse2
 	depends = electron30
-	provides = wora=0.3.1
+	provides = wora=0.3.2
 	conflicts = wora
-	source = wora-0.3.1.AppImage::https://github.com/hiaaryan/wora/releases/download/v0.3.1/Wora.v0.3.1.AppImage
-	source = LICENSE-0.3.1::https://raw.githubusercontent.com/hiaaryan/wora/v0.3.1/LICENSE
+	source = wora-0.3.2.AppImage::https://github.com/hiaaryan/wora/releases/download/v0.3.2/Wora.v0.3.2.AppImage
+	source = LICENSE-0.3.2::https://raw.githubusercontent.com/hiaaryan/wora/v0.3.2/LICENSE
 	source = wora.sh
-	sha256sums = 53dd993c02232f605b287e4e32e7fe3f3510e95de328742336a8fa5f9ba2f202
+	sha256sums = 9339298e4aa9fbcd28f705c04004a6e2c72af9e22535aaea99b8562ff958563c
 	sha256sums = 86fbdd9a279c101416a691536c3ab99e4c5e9a8d1c81074d82148bb66acce0e6
 	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 

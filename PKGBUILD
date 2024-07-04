@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=wora-bin
 _pkgname=Wora
-pkgver=0.3.1
+pkgver=0.3.2
 _electronversion=30
 pkgrel=1
 pkgdesc="🎧 A beautiful player for audiophiles."
@@ -21,7 +21,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/hiaaryan/wora/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('53dd993c02232f605b287e4e32e7fe3f3510e95de328742336a8fa5f9ba2f202'
+sha256sums=('9339298e4aa9fbcd28f705c04004a6e2c72af9e22535aaea99b8562ff958563c'
             '86fbdd9a279c101416a691536c3ab99e4c5e9a8d1c81074d82148bb66acce0e6'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
