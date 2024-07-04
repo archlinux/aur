@@ -1,4 +1,4 @@
-# Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
+# Maintainer: Evangelos Foutras <foutrelis@archlinux.org>
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 # Contributor: Aurelien Foret <orelien@chez.com>
 
