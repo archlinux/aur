@@ -14,13 +14,15 @@ optdepends=('postgresql-libs: PostgreSQL Database Support'
 	    'gnutls')
 backup=('etc/rsyslog.conf'
 	'etc/logrotate.d/rsyslog')
-options=('strip' 'zipman')
+options=('strip' 'zipman' 'emptydirs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rsyslog/rsyslog/archive/v${pkgver}.tar.gz"
-	'rsyslog.logrotate'
-	'rsyslog.conf'
+        "https://patch-diff.githubusercontent.com/raw/rsyslog/rsyslog/pull/5406.patch"
+        'rsyslog.logrotate'
+        'rsyslog.conf'
         'rsyslog.service')
 
 sha256sums=('455dca15a2c1241787c753b6b1e2c09e2daf73f1529a2ed47aceada030af8b09'
+            '6211753b8170cc9b778ddd5159aaff03d72878edecddab52d62a9d4893b7ef4c'
             '0f5bea3fd4dff2c9f097bf95768b2e1f6e9cfd9a08eab98bc3b3b4d2ed44119a'
             'bc7ea11a697c20cdaa6730cfa0b4465cef0fec0e3f6b39aeff8deae9756aafbb'
             '81b9f9b78395405b679849143a6709911d00e9317928fdb2a2540f52965847c2')
@@ -28,6 +30,7 @@ install=$pkgname.install
 
 build() {
   cd "$srcdir"/${pkgname}-${pkgver}
+  patch configure.ac ../5406.patch
   ./autogen.sh --prefix=/usr \
                --sbindir=/usr/bin \
                --enable-mysql \
@@ -54,4 +57,5 @@ package() {
   install -D -m644 "$srcdir"/${pkgname}.conf "$pkgdir"/etc/${pkgname}.conf
   install -D -m644 "$srcdir"/${pkgname}.logrotate "$pkgdir"/etc/logrotate.d/${pkgname}
   install -D -m644 "$srcdir"/${pkgname}.service "$pkgdir"/usr/lib/systemd/system/${pkgname}.service
+  install -dm755 "$pkgdir/var/spool/rsyslog"
 }
