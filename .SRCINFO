@@ -1,7 +1,7 @@
 pkgbase = gnome-break-timer-git
-	pkgdesc = The new typing break for GNOME, (replaces gnome-typing-break-bzr & drwright)
-	pkgver = 3.1.0_6_gc13c273
-	pkgrel = 3
+	pkgdesc = A break timer application for GNOME.
+	pkgver = 3.1.0_7_g472f2f1
+	pkgrel = 1
 	url = https://wiki.gnome.org/GnomeBreakTimer
 	arch = x86_64
 	arch = i686

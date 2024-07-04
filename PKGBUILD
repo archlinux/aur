@@ -2,10 +2,10 @@
 # Contributor: Phillip Wood <phillip.wood@dunelm.org.uk>
 pkgname='gnome-break-timer-git'
 _pkgname=${pkgname%-git}
-pkgver=3.1.0_6_gc13c273
-pkgrel=3
+pkgver=3.1.0_7_g472f2f1
+pkgrel=1
 epoch=
-pkgdesc="The new typing break for GNOME, (replaces gnome-typing-break-bzr & drwright)"
+pkgdesc="A break timer application for GNOME."
 arch=('x86_64' 'i686')
 url='https://wiki.gnome.org/GnomeBreakTimer'
 license=('GPL-3.0-or-later')
