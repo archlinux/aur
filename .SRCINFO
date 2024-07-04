@@ -1,6 +1,6 @@
 pkgbase = rustlings
 	pkgdesc = Small exercises to get you used to reading and writing Rust code!
-	pkgver = 6.0.0
+	pkgver = 6.0.1
 	pkgrel = 1
 	url = https://github.com/rust-lang/rustlings/
 	install = rustlings.install
@@ -12,7 +12,7 @@ pkgbase = rustlings
 	depends = gcc-libs
 	provides = rustlings
 	conflicts = rustlings
-	source = rustlings-6.0.0::git+https://github.com/rust-lang/rustlings.git#tag=v6.0.0
-	md5sums = 624c4d5bbf603dd7f687786ce67f20a1
+	source = rustlings-6.0.1::git+https://github.com/rust-lang/rustlings.git#tag=v6.0.1
+	md5sums = 4be1dece6a80283875c1faaedbf833ab
 
 pkgname = rustlings
