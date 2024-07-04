@@ -3,7 +3,7 @@
 pkgname=python-open-unmix-pytorch
 _gitpkgname=open-unmix-pytorch
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='PyTorch implementation of Open-Unmix, a music source separation toolkit'
 arch=('any')
 url='https://github.com/sigsep/open-unmix-pytorch'
@@ -46,6 +46,8 @@ optdepends=(
   # The python-stempeg dependency does nothing, because torchaudio no longer supports setting a global backend
   # 'python-stempeg'
 )
+provides=('python-open-unmix')
+conflicts=('python-open-unmix')
 
 source=(
   "${_gitpkgname}-${pkgver}.tar.gz::https://github.com/sigsep/open-unmix-pytorch/archive/v${pkgver}.tar.gz"

@@ -1,7 +1,7 @@
 pkgbase = python-open-unmix-pytorch
 	pkgdesc = PyTorch implementation of Open-Unmix, a music source separation toolkit
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sigsep/open-unmix-pytorch
 	arch = any
 	license = MIT
@@ -33,6 +33,8 @@ pkgbase = python-open-unmix-pytorch
 	optdepends = open-unmix-umxse-weights: UMX-SE, a speech enhancement model trained on the 28-speaker version of Voicebank+Demand
 	optdepends = python-musdb: enable the built-in trainer to use the MUSDB dataset
 	optdepends = python-museval: to use the evaluate.py script
+	provides = python-open-unmix
+	conflicts = python-open-unmix
 	source = open-unmix-pytorch-1.3.0.tar.gz::https://github.com/sigsep/open-unmix-pytorch/archive/v1.3.0.tar.gz
 	source = use-packaged-weights.patch
 	sha512sums = bb0f4069be17500907b1e496cfe7e3d77914aea66df7d40bd19be932f2b12160390ca36709233b99758ac19deef9dad9de1a24f3e3a88eee9253158fdcdbf3f2
