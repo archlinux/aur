@@ -1,0 +1,14 @@
+pkgbase = macse
+	pkgdesc = Multiple Alignment of Coding SEquences Accounting for Frameshifts and Stop Codons
+	pkgver = 2.07
+	pkgrel = 1
+	url = https://www.agap-ge2pop.org/macse/
+	arch = any
+	license = custom:unknown
+	makedepends = java-runtime
+	makedepends = bash
+	noextract = macse_v2.07.jar
+	source = https://www.agap-ge2pop.org/wp-content/uploads/macse/releases/macse_v2.07.jar
+	sha256sums = 96873a1465f1e1aa9d0c462d469eee6954d36e8639727f69f34a72fcb6583963
+
+pkgname = macse
