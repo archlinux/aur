@@ -1,7 +1,7 @@
 # Maintainer:  Rubin Simons <me@rubin55.org>
 
 pkgname=openshift-pipelines-bin
-pkgver=1.14.3
+pkgver=1.15.0
 pkgrel=1
 pkgdesc="Pipeline tools for OpenShift (tkn, tkn-pac, opc), binary release"
 provides=('tkn' 'tkn-pac' 'opc')
@@ -15,7 +15,7 @@ source=(
 )
 
 sha256sums=(
-    'c72e4d187c760377b21d397fda7520a60030a98596b5ce7f06e843adba38e91d'
+    '06320b6ebfbae7cabc8b3ce6346850e1c864627b8a8d36e3bcb72361edc382ea'
 )
 
 options=("!strip")
