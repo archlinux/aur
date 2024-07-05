@@ -4,14 +4,16 @@ pkgbase = as-tree-bin
 	pkgrel = 1
 	url = https://github.com/jez/as-tree
 	arch = x86_64
-	license = custom:BOML
+	license = custom:BOML-1.0
+	depends = glibc
 	depends = gcc-libs
 	provides = as-tree
 	conflicts = as-tree
-	source = as-tree-0.12.0.zip::https://github.com/jez/as-tree/releases/download/0.12.0/as-tree-0.12.0-linux.zip
-	source = LICENSE.md
-	sha256sums = adb3fa37c49bb137b772379a4c5e07c3ac9609871cd3058c376e32f9fb9ee434
+	source = https://github.com/jez/as-tree/raw/0.12.0/README.md
+	source = https://github.com/jez/as-tree/raw/0.12.0/LICENSE.md
+	sha256sums = 6acd0ebf5efd6da5cb3ebca3bb9d763c7367d45433bb93d47c34db64bff174e3
 	sha256sums = 8a1af140fdfbf5afd3df27f7e662f989c5b963a300020dfafce42033cae9e004
+	source_x86_64 = https://github.com/jez/as-tree/releases/download/0.12.0/as-tree-0.12.0-linux.zip
+	sha256sums_x86_64 = adb3fa37c49bb137b772379a4c5e07c3ac9609871cd3058c376e32f9fb9ee434
 
 pkgname = as-tree-bin
-
