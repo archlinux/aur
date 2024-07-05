@@ -1,0 +1,17 @@
+pkgbase = simdjson-git
+	pkgdesc = Parsing gigabytes of JSON per second
+	pkgver = 3.9.5.r2.gfeea2bce
+	pkgrel = 1
+	url = https://simdjson.org/
+	arch = i686
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = cmake
+	depends = gcc-libs
+	provides = simdjson=3.9.5.r2.gfeea2bce
+	conflicts = simdjson
+	source = git+https://github.com/simdjson/simdjson.git
+	sha256sums = SKIP
+
+pkgname = simdjson-git
