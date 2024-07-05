@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=e-search-bin
 _pkgname=eSearch
-pkgver=1.11.0
+pkgver=1.12.0
 _electronversion=22
-pkgrel=2
+pkgrel=1
 pkgdesc="截屏,离线OCR,搜索翻译,以图搜图,贴图,录屏,滚动截屏.Screenshot,OCR search,translate,search for picture paste the picture on the screen,screen recorder.Use system-wide electron."
 arch=('x86_64')
 url="https://esearch-app.netlify.app/"
@@ -21,18 +21,18 @@ depends=(
 options=(
     '!strip'
     '!emptydirs'
-    #'!staticlibs'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::https://github.com/xushengfeng/eSearch/releases/download/1.11.0/eSearch-1.11.0-linux-x64.deb"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('2a8924413943e458a77bdb8518bd2633ab0755f2dc66d6925981ed0dfb7b9c85'
-            '61d56055897e9d71d68e185ac2de7c4cb2fbca16eb3fb0091703612c113441f3')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
