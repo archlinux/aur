@@ -1,6 +1,6 @@
 pkgbase = cyan
 	pkgdesc = The Teal build system and project manager
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/teal-language/cyan
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = cyan
 	depends = lua-filesystem
 	depends = lua-tl
 	depends = teal
-	source = cyan-0.3.0.tar.gz::https://github.com/teal-language/cyan/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = 0a546efebd4c536cb181af8666bd3b63bfe37bb5041e79439ce308c16048200b
+	source = cyan-0.3.1.tar.gz::https://github.com/teal-language/cyan/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = e06affe2180cff8f7e05e970cbc8d685124950aa282797a7aba04d320c84e56f
 
 pkgname = cyan
