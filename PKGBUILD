@@ -23,7 +23,7 @@ conflicts=(
 
 
 provides=(
-	"optimus-manager=${pkgver}"
+	"optimus-manager"
 )
 
 
