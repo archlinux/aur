@@ -1,9 +1,10 @@
 pkgbase = yazi-git
 	pkgdesc = Blazing fast terminal file manager written in Rust, based on async I/O.
 	pkgver = 0.2.5.r22.gfdecf62
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sxyazi/yazi
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = cargo
 	makedepends = git
