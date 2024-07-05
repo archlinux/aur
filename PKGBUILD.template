@@ -2,7 +2,7 @@
 
 pkgname=juliaup-bin
 pkgver=":version:"
-pkgrel=1
+pkgrel=2
 pkgdesc="An experimental Julia version manager"
 arch=('x86_64' 'aarch64' 'i686')
 license=('MIT')
@@ -10,8 +10,9 @@ url="https://github.com/JuliaLang/juliaup"
 makedepends=("tar")
 conflicts=("juliaup" "julia" "julia-bin")
 provides=("julia")
-source=("${url}/releases/download/v$pkgver/juliaup-$pkgver-$CARCH-unknown-linux-musl-portable.tar.gz")
-sha256sums=('SKIP')
+source_x86_64=("${url}/releases/download/v$pkgver/juliaup-$pkgver-x86_64-unknown-linux-musl-portable.tar.gz")
+source_i686=("${url}/releases/download/v$pkgver/juliaup-$pkgver-i686-unknown-linux-musl-portable.tar.gz")
+source_aarch64=("${url}/releases/download/v$pkgver/juliaup-$pkgver-aarch64-unknown-linux-musl-portable.tar.gz")
 
 package() {
     install -d "${pkgdir}/usr/bin"

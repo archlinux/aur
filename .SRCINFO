@@ -1,7 +1,7 @@
 pkgbase = juliaup-bin
 	pkgdesc = An experimental Julia version manager
 	pkgver = 1.14.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JuliaLang/juliaup
 	arch = x86_64
 	arch = aarch64
@@ -12,7 +12,11 @@ pkgbase = juliaup-bin
 	conflicts = juliaup
 	conflicts = julia
 	conflicts = julia-bin
-	source = https://github.com/JuliaLang/juliaup/releases/download/v1.14.9/juliaup-1.14.9-x86_64-unknown-linux-musl-portable.tar.gz
-	sha256sums = SKIP
+	source_x86_64 = https://github.com/JuliaLang/juliaup/releases/download/v1.14.9/juliaup-1.14.9-x86_64-unknown-linux-musl-portable.tar.gz
+	sha256sums_x86_64 = 5cdf7b4828f8a3c43b09c1faf7f3b48c7ac87c413676c56df87b30419eaf26e2
+	source_aarch64 = https://github.com/JuliaLang/juliaup/releases/download/v1.14.9/juliaup-1.14.9-aarch64-unknown-linux-musl-portable.tar.gz
+	sha256sums_aarch64 = a0fc67959a0f65ba62f9136a0e2e49d953bc6fa27181bb695e5f2dc511d80836
+	source_i686 = https://github.com/JuliaLang/juliaup/releases/download/v1.14.9/juliaup-1.14.9-i686-unknown-linux-musl-portable.tar.gz
+	sha256sums_i686 = acfc5894e53917340ee326af94a2996a0a2dc4fbb14f6af5ec0b80826226e575
 
 pkgname = juliaup-bin
