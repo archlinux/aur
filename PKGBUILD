@@ -1,19 +1,19 @@
 # Maintainer: anispwyn <anisphia_wynn_palettia@proton.me>
 pkgname="sleepy-launcher-git"
 _pkgname="${pkgname%-git}"
-pkgver=1.0.0.r0.g820adcc
-pkgrel=2
+pkgver=1.0.0.r5.g9ac9f44
+pkgrel=1
 pkgdesc="Sleepy game launcher for Linux with telemetry disabling"
 arch=("x86_64")
 url="https://github.com/an-anime-team/sleepy-launcher"
 license=("GPL3")
 depends=(
-  git
-  p7zip
-  glibc
-  gtk4
-  libadwaita
-  xdelta3
+  "git"
+  "p7zip"
+  "glibc"
+  "gtk4"
+  "libadwaita"
+  "gstreamer"
 )
 makedepends=(rust)
 optdepends=(
@@ -42,10 +42,9 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/${_pkgname}"
-  git fetch --all
-  git checkout main  
-  git reset --hard origin/main
+  git checkout next 
   git submodule update --init --recursive --single-branch
+  git pull
 
 }
 
