@@ -1,0 +1,12 @@
+pkgbase = ttf-neospleen-nerd-font
+	pkgdesc = A modern monospaced font inspired by Spleen - Nerd Font
+	pkgver = 1.0.44
+	pkgrel = 1
+	url = https://github.com/mbwilding/NeoSpleen
+	arch = any
+	license = BSD-2-Clause
+	source = https://github.com/mbwilding/NeoSpleen/releases/download/1.0.44/NeoSpleen-NerdFont.ttf
+	b2sums = 4d33bc7b27e1d87632c6d151677ae030fb3c6f5007692556f043f888505fa391
+	b2sums = SKIP
+
+pkgname = ttf-neospleen-nerd-font
