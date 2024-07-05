@@ -2,12 +2,12 @@
 
 pkgname=hobbits
 pkgver=0.54.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-platform GUI for bit-based analysis, processing, and visualization"
 arch=('x86_64')
 url="https://github.com/Mahlet-Inc/hobbits"
 license=('MIT')
-makedepends=(cmake qt5-tools libusb ninja libpcap patchelf git)
+makedepends=(cmake qt5-tools libusb libpcap patchelf git)
 depends=("python" qt5-base)
 _dist_filename="$pkgname-$pkgver"
 source=(
