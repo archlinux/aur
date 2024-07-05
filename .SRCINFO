@@ -1,0 +1,18 @@
+pkgbase = espeak-ng
+	pkgdesc = Multi-lingual software speech synthesizer
+	pkgver = 1.51.1
+	pkgrel = 3
+	url = https://github.com/espeak-ng/espeak-ng
+	arch = x86_64
+	license = GPL3
+	makedepends = ruby-ronn-ng
+	depends = pcaudiolib
+	depends = libsonic
+	provides = espeak-ng-espeak
+	conflicts = espeak-ng-espeak
+	conflicts = espeak
+	replaces = espeak-ng-espeak
+	source = https://github.com/espeak-ng/espeak-ng/archive/1.51.1/espeak-ng-1.51.1.tar.gz
+	b2sums = 7b5a9d0613636942374b2b414fa5cffcbefe18083dc9aa79a6ac08cc3737cbef06808bf90f0c846ec33acf481797329fb6d2f013b6f67abd6a2dfcda0d3f9343
+
+pkgname = espeak-ng

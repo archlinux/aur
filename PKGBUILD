@@ -3,7 +3,7 @@
 
 pkgname=espeak-ng
 pkgver=1.51.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Multi-lingual software speech synthesizer'
 url=https://github.com/espeak-ng/espeak-ng
 arch=('x86_64')
