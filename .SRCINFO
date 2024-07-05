@@ -11,6 +11,6 @@ pkgbase = python-amply
 	makedepends = python-setuptools-scm
 	depends = python-pyparsing
 	source = https://files.pythonhosted.org/packages/source/a/amply/amply-0.1.6.tar.gz
-	b2sums = e6d9408625aed372839290756f7569f21aa648c37a8fc53ac4cb5f3707550d7d9cad02c7bbfdcae77512ea53ca0b64911c2e1a9d476b1bc5cefd46356f61dda8
+	sha256sums = 61421103ccf8e1066717115fe7917610d831d551c68d31a110876a5b6c78aea4
 
 pkgname = python-amply
