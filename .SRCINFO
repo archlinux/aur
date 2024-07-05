@@ -1,12 +1,12 @@
 pkgbase = eadui-font
 	pkgdesc = A color font with modern and historic modes emulating the medevial scribe Eadui Basan
-	pkgver = 3.000
+	pkgver = 3.001
 	pkgrel = 1
 	url = https://github.com/psb1558/Eadui-font
 	arch = any
 	license = OFL
-	source = eadui-3.000.zip::https://github.com/psb1558/Eadui-font/releases/download/v3.000/Eadui.zip
-	sha256sums = c6074b9e9f7415b01fef1ee0ab4e5568ab62294a68d027a76bbdcc2277f62678
+	source = eadui-3.001.zip::https://github.com/psb1558/Eadui-font/releases/download/v3.001/Eadui.zip
+	sha256sums = 9a388ae16fc0b5dd13fd8aa42d2f8a580959066bcd58021c45c40031cddae0eb
 
 pkgname = otf-eadui-cpal
 	provides = eadui-font
