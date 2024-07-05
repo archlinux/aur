@@ -2,8 +2,8 @@
 
 pkgname=webui-nossl
 _pkgname=webui
-pkgver=2.5.0+beta.1+14+gb65608df
-pkgrel=2
+pkgver=2.5.0+beta.1+28+g5f33f70d
+pkgrel=1
 pkgdesc="Use any web browser as GUI, with your preferred language in the backend and HTML5 in the frontend, all in a lightweight portable lib.(without ssl support)"
 arch=('x86_64')
 url="https://webui.me/"
@@ -12,7 +12,7 @@ depends=("glibc")
 makedepends=("git" "make" "gcc")
 provides=("webui")
 conflicts=("webui")
-_commit=b65608dfec1c4cb44e4f77a4724995f54cb99386
+_commit=5f33f70d64df1ecbb3f8eba7907705794c3e7d00
 source=("git+https://github.com/webui-dev/webui.git#commit=${_commit}")
 md5sums=('SKIP')
 
