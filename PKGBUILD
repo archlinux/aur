@@ -1,9 +1,9 @@
 pkgname=typora-with-plugin
 _pkgname=typora
 _pluginame=typora_plugin
-_typora_ver=1.9.3
-_plugin_ver=1.9.19
-pkgver=${_typora_ver}_plugin_${_plugin_ver}
+typora_ver=1.9.3
+typora_plugin_ver=1.9.20
+pkgver=${typora_ver}_plugin_${typora_plugin_ver}
 pkgrel=1
 pkgdesc="一款 Markdown 编辑器和阅读器（with typora_plugin）"
 arch=('x86_64')
@@ -20,29 +20,29 @@ backups=(
     'usr/share/typora/resources/plugin/global/settings/hotkey.user.toml'
     'usr/share/typora/resources/plugin/global/settings/settings.user.toml'
     )
-_filename="${_pkgname}_${_typora_ver}_amd64.deb"
-_pluginfilename="${_pluginame}-${_plugin_ver}"
+_filename="${_pkgname}_${typora_ver}_amd64.deb"
+_pluginfilename="${_pluginame}-${typora_plugin_ver}"
 source=(
     "https://download2.typoraio.cn/linux/$_filename"
     "$_pkgname.sh"
-    "https://gh.api.99988866.xyz/https://github.com/obgnail/typora_plugin/archive/refs/tags/${_plugin_ver}.tar.gz")
+    "https://gh.api.99988866.xyz/https://github.com/obgnail/typora_plugin/archive/refs/tags/${typora_plugin_ver}.tar.gz")
 sha512sums=(
     'da7714d8a2ef228d1df13bf2a6862f3be3fad51238657e8ee48350380267ecfed29b391e0c66653e3b4322e3dada02d2bea6e1041f5230988358645ea0cf4b28'
     'de9c883c63f3ea35bd551c8761e605f8e1a3468943e000abcbf94bb0c5cbb5f0f6c7fa4d49ab39c177f167e0e3d0b061c861bf828627b4a34f7f1589119c3d04'
     '766bbcb407d3f4e8c571cc689a2b25a0d4e5ebe1c24e9681defb8576f98bd653f26bf0e822501d95e22dc506b2bdc86b0963b622655bb16d414b931ff11c828f')
 
 _patch_plugin() {
-  tar xvf ${_plugin_ver}.tar.gz -C "$pkgdir/"
+  tar xvf ${typora_plugin_ver}.tar.gz -C "$pkgdir/"
   mv $pkgdir/$_pluginfilename/plugin $pkgdir/usr/share/typora/resources/
   rm -rf $pkgdir/${_pluginfilename}
   sed -i 's@\(frame.js" defer="defer"></script>\)@\1<script src="./plugin/index.js" defer="defer"></script>@g' $pkgdir/usr/share/typora/resources/window.html
 }
 
 package() {
-  export LC_ALL=en_US.UTF-8
+	export LC_ALL=en_US.UTF-8
 	# unpack archive
 	bsdtar -xf data.tar.xz -C "$pkgdir/"
-  _patch_plugin
+	_patch_plugin
 	# remove lintian overrides
 	rm -rf "$pkgdir/usr/share/lintian/"
 	# replace bin link with custom launch script
