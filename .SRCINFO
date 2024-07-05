@@ -6,6 +6,7 @@ pkgbase = linux-akulm
 	arch = any
 	license = GPL3
 	depends = pacman
+	depends = rsync
 	source = https://raw.githubusercontent.com/bebehei/akulm/master/akulm
 	source = https://raw.githubusercontent.com/bebehei/akulm/master/akulm-pre.hook
 	source = https://raw.githubusercontent.com/bebehei/akulm/master/akulm-post.hook
