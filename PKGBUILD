@@ -2,16 +2,16 @@
 
 _name=wio
 pkgname=$_name-wl
-pkgver=0.17.3
+pkgver=0.17.4
 pkgrel=1
 pkgdesc="Wayland compositor similar to Plan 9's rio"
 arch=(x86_64)
 url='https://gitlab.com/Rubo/wio'
 license=('custom')
 depends=(alacritty cage cairo "wlroots>=$pkgver")
-makedepends=(meson)
+makedepends=(meson wayland-protocols)
 source=("$url/-/archive/$pkgver/$_name-$pkgver.tar.gz")
-b2sums=('ef81eb9ade02a055a965591b218be6ff8bbed3ad5f88295c71ecc18de1cefe9d603a7500389f44757acdb795c348601786b955b8a7bcf0ef00b05c3fbed6337c')
+b2sums=('038f337704ab4c65a9c6d4478ea5937b038bf845683112dd018f434d736b6d3e39318a8f1afb459b375111109fe8d0bba9bf8fb500fae39215cb7ab217ddd342')
 
 build() {
     cd $_name-$pkgver
