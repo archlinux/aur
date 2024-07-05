@@ -1,7 +1,7 @@
 pkgbase = openscq30
 	pkgdesc = Cross platform application for controlling settings of Soundcore headphones
 	pkgver = 1.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Oppzippy/OpenSCQ30
 	arch = x86_64
 	arch = aarch64

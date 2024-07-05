@@ -11,7 +11,7 @@ _deps_gui=('libgtk-4.so' 'libadwaita-1.so')
 pkgbase=openscq30
 pkgname=("$pkgbase"-{cli,gui}) 
 pkgver=1.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross platform application for controlling settings of Soundcore headphones"
 arch=(x86_64 aarch64 armv7l)
 url="https://github.com/$_powner/$_pname"
@@ -69,7 +69,7 @@ package_openscq30-gui() {
 	ln -s "${pkgbase}_gui" "$pkgdir/usr/bin/$pkgname"
 	## Install resources
 	install -Dm0644 -t "$pkgdir/usr/share/metainfo/" "gui/resources/$_pkgid.metainfo.xml"
-	install -Dm0644 -t "$pkgdir/usr/share/icons/hicolor/scalable/" "gui/resources/$_pkgid.svg"
+	install -Dm0644 -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/" "gui/resources/$_pkgid.svg"
 	install -Dm0644 -t "$pkgdir/usr/share/applications/" "gui/resources/$_pkgid.desktop"
 	## Install locales
 	# shellcheck disable=SC2013
