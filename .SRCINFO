@@ -1,7 +1,7 @@
 pkgbase = goofcord-bin
 	pkgdesc = Take control of your Discord experience with GoofCord – the highly configurable and privacy first discord client.
 	pkgver = 1.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Milkshiift/GoofCord
 	arch = aarch64
 	arch = armv7h
