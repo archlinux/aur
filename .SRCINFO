@@ -1,7 +1,7 @@
 pkgbase = json-bash-git
 	pkgdesc = Command-line tool and bash library that creates JSON (latest git commit)
 	pkgver = 0.2.2.r17.g5aacc24
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/h4l/json.bash
 	arch = any
 	license = MIT
@@ -10,6 +10,7 @@ pkgbase = json-bash-git
 	provides = json-bash
 	provides = json.bash
 	conflicts = json-bash
+	conflicts = json.bash
 	source = git+https://github.com/h4l/json.bash.git
 	sha256sums = SKIP
 

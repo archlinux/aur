@@ -6,7 +6,7 @@ pkgname='json-bash-git'
 _pkgname="${pkgname/-git}"
 _srcname="${_pkgname/-/.}"
 pkgver=0.2.2.r17.g5aacc24
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc='Command-line tool and bash library that creates JSON (latest git commit)'
 arch=('any')
@@ -16,7 +16,7 @@ depends=('bash')
 makedepends=('git')
 #optdepends=('python: needed to run some of the documentation scripts')
 provides=("$_pkgname" "$_srcname")
-conflicts=("$_pkgname")
+conflicts=("$_pkgname" "$_srcname")
 source=("git+$url.git")
 sha256sums=('SKIP')
 
