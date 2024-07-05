@@ -8,8 +8,7 @@ url="https://github.com/mbwilding/NeoSpleen"
 license=("BSD-2-Clause")
 arch=("any")
 source=("https://github.com/mbwilding/NeoSpleen/releases/download/$pkgver/NeoSpleen-NerdFont.ttf")
-b2sums=('4d33bc7b27e1d87632c6d151677ae030fb3c6f5007692556f043f888505fa391'
-        'SKIP')
+b2sums=('6ce76cde67128662bf26c7a2c1dd6954236f8f87ca3dcacdbcc2bf61673d9cd80b193038b206df5848ab21ac64a3aba82ca084ea657c796d049e7efb1e8a40b0')
 
 package() {
     install -D -m 644 "NeoSpleen-NerdFont.ttf" -t "$pkgdir/usr/share/fonts/TTF"
