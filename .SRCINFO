@@ -1,13 +1,13 @@
 pkgbase = gaper-bin
 	pkgdesc = Builds and restarts a Go project when it crashes or some watched file changes
-	pkgver = 1.0.3
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/maxcnunes/gaper
 	arch = x86_64
 	license = MIT
 	provides = gaper
-	source = gaper-bin-1.0.3.tar.gz::https://github.com/maxcnunes/gaper/releases/download/v1.0.3/gaper_1.0.3_linux_amd64.tar.gz
-	sha256sums = 7aeb6764b63037be03e047e4ea079c6f9683fb9b476ba92560d07dc10f15b899
+	conflicts = gaper
+	source = https://github.com/maxcnunes/gaper/releases/download/v1.1.0/gaper_1.1.0_linux_amd64.tar.gz
+	sha256sums = bea60ca99695e46f506b4fb0bcbffa9039e504a2b95254853516618f75d1704a
 
 pkgname = gaper-bin
-

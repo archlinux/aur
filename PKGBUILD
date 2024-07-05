@@ -1,18 +1,22 @@
-# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
-pkgname=gaper-bin
-pkgver=1.0.3
+_pkgname="gaper"
+pkgname="${_pkgname}-bin"
+pkgver=1.1.0
 pkgrel=1
-pkgdesc='Builds and restarts a Go project when it crashes or some watched file changes'
+pkgdesc="Builds and restarts a Go project when it crashes or some watched file changes"
 arch=('x86_64')
-url="https://github.com/maxcnunes/gaper"
+url="https://github.com/maxcnunes/${_pkgname}"
 license=('MIT')
-provides=('gaper')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/gaper_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('7aeb6764b63037be03e047e4ea079c6f9683fb9b476ba92560d07dc10f15b899')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.tar.gz")
+sha256sums=('bea60ca99695e46f506b4fb0bcbffa9039e504a2b95254853516618f75d1704a')
 
 package() {
-  install -Dm755 "${srcdir}"/gaper "${pkgdir}/usr/bin/gaper"
-  install -Dm644 "${srcdir}"/LICENSE "${pkgdir}/usr/share/licenses/gaper/LICENSE"
+  cd "${srcdir}"
+  install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm644 "README.md"   "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -Dm644 "LICENSE"     "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
-# vim:set ts=2 sw=2 et:
