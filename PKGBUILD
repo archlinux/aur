@@ -3,12 +3,12 @@
 # Contributor: Giovanni Harting <539@idlegandalf.com>
 
 pkgname=cryptpad
-pkgver=2024.3.1
+pkgver=2024.6.0
 pkgrel=1
 pkgdesc="Realtime collaborative visual editor with zero knowlege server"
 arch=('any')
 url="https://github.com/$pkgname/$pkgname"
-license=(AGPL3)
+license=(AGPL-3.0-or-later)
 depends=(nodejs)
 makedepends=(npm git)
 optdepends=('nginx: HTTP server providing TLS'
@@ -21,7 +21,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         "$pkgname.service"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-sha256sums=('9149c55f09b245cde2d295efe1f373c394db7a7652ba32432d05dc11c2ddb697'
+sha256sums=('b8694fc5f76c47204e012956a0af64e8c19968ae479da00cfd9d371d4185d2da'
             '792da71f113aa15177a654e08a31dabd9be864ceb42f64d55cc46d18875c475b'
             '999a271d64b75c7c447fdb21486b27463c04679677e57ea9551a3b0429c618f6'
             '986c1a67e5a00b9a766798933f1774995736a0ed345427509bdc522ad71d7e93')
