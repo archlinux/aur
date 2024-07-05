@@ -5,13 +5,13 @@
 _gemname=taglib-ruby
 pkgname=ruby-$_gemname
 pkgver=1.1.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Ruby interface for the taglib C++ library'
 arch=(i686 x86_64)
 url='http://robinst.github.io/taglib-ruby/'
 license=(MIT)
 depends=(ruby taglib1)
-makedepends=(ruby-rdoc)
+makedepends=(ruby-rdoc patchelf)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
@@ -20,6 +20,12 @@ sha256sums=('2b13af2bb4649c1ea84bacb5b294872e9a1d323c429974c0f9f46a2007866c7b')
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
   env CONFIGURE_ARGS="--with-tag-include=/usr/include/taglib1 --with-tag-lib=/usr/lib/taglib1" gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  find "${pkgdir}/${_gemdir}/extensions/" \
+    -type f \
+    \( \
+      -iname "*.so" \
+    \) \
+    -exec patchelf --replace-needed libtag.so.2 libtag.so.1 "{}" +
   # remove unrepreducible files
   rm --force --recursive --verbose \
     "${pkgdir}/${_gemdir}/cache/" \
