@@ -1,6 +1,6 @@
 pkgbase = dnf5
 	pkgdesc = Next-generation RPM package management system
-	pkgver = 5.2.3.0
+	pkgver = 5.2.4.0
 	pkgrel = 1
 	url = https://github.com/rpm-software-management/dnf5
 	arch = x86_64
@@ -41,7 +41,7 @@ pkgbase = dnf5
 	options = !emptydirs
 	backup = etc/dnf/dnf.conf
 	backup = etc/dnf/libdnf5-plugins/actions.conf
-	source = https://github.com/rpm-software-management/dnf5/archive/5.2.3.0/dnf5-5.2.3.0.tar.gz
-	sha256sums = ab0c7bc37d52a94560421da0d42bb1b901a890977d58b203a6a92a1c3431fde4
+	source = https://github.com/rpm-software-management/dnf5/archive/5.2.4.0/dnf5-5.2.4.0.tar.gz
+	sha256sums = c6e83f9721f1b711262a50b25434b160f0e904bc006347d36fd37f1f50f10505
 
 pkgname = dnf5
