@@ -3,7 +3,7 @@ pkgver=1.0
 pkgrel=1
 pkgdesc="Battery level monitor"
 arch=('any')
-url="https://gitlab.com/yourusername/batterizer"
+url="https://gitlab.com/snake9132037/batterizer"
 license=('MIT')
 depends=('python' 'python-psutil')
 
