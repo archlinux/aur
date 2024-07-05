@@ -3,7 +3,7 @@
 
 _pkgname="mtkclient"
 pkgname="$_pkgname-git"
-pkgver=1.63.r116.g8e46df6
+pkgver=2.0.1.r29.ge34fc91
 pkgrel=1
 pkgdesc="Unofficial MTK reverse engineering and flash tool"
 url="https://github.com/bkerler/mtkclient"
@@ -15,14 +15,12 @@ depends=(
 )
 makedepends=(
   git
-  python-build
-  python-installer
-  python-setuptools
-  python-wheel
 )
 
 provides=("$_pkgname")
 conflicts=("$_pkgname")
+
+options=('!debug')
 
 _pkgsrc="$_pkgname"
 source=(
@@ -36,36 +34,28 @@ sha256sums=(
 
 pkgver() {
   cd mtkclient
-  git describe --long --tags --abbrev=7 \
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
     | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$_pkgsrc"
+  cd "$_pkgsrc/mtkclient"
 
-  sed -E -e 's&GPLv3 License&GNU General Public License v3 (GPLv3)&' -i pyproject.toml
-
-  cd "mtkclient"
   # Replace plugdev with uaccess and adbusers like upstream android-udev
-  patch -Np1 -i ../../udev.patch
-}
-
-build() {
-  cd "$_pkgsrc"
-  python -m build --wheel --no-isolation
+  patch -Np1 -i "$srcdir/udev.patch"
 }
 
 package() {
   depends+=(
     libusb
     pyside6
+    python-capstone
     python-colorama
+    python-keystone
     python-pycryptodome
     python-pycryptodomex
+    python-pyserial
     python-pyusb
-
-    python-keystone
-    python-capstone
     python-unicorn
 
     # AUR
@@ -73,8 +63,48 @@ package() {
     python-mock
   )
 
-  cd "$_pkgsrc"
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  # main files
+  install -dm755 "$pkgdir/opt/$_pkgname"
+  for i in mtk.py mtk_gui.py stage2.py examples mtkclient; do
+    cp -a "$_pkgsrc/$i" "$pkgdir/opt/$_pkgname/"
+  done
 
-  install -Dm644 mtkclient/Setup/Linux/51-edl.rules "$pkgdir/usr/lib/udev/rules.d/52-mtk-edl.rules"
+  # unwanted
+  for i in build Setup src Windows; do
+    rm -rf "$pkgdir/opt/$_pkgname/mtkclient/$i"
+  done
+
+  # udev rules
+  install -Dm644 "$_pkgsrc"/mtkclient/Setup/Linux/51-edl.rules "$pkgdir"/usr/lib/udev/rules.d/52-mtk-edl.rules
+
+  # scripts
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/mtk" << END
+#!/usr/bin/env sh
+exec python /opt/$_pkgname/mtk.py "\$@"
+END
+
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/mtk_gui" << END
+#!/usr/bin/env sh
+exec python /opt/$_pkgname/mtk_gui.py "\$@"
+END
+
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/stage2" << END
+#!/usr/bin/env sh
+exec python /opt/$_pkgname/stage2.py "\$@"
+END
+
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/brom_to_offs" << END
+#!/usr/bin/env sh
+exec python /opt/$_pkgname/mtkclient/Tools/brom_to_offs.py "\$@"
+END
+
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/da_parser" << END
+#!/usr/bin/env sh
+exec python /opt/$_pkgname/mtkclient/Tools/da_parser.py "\$@"
+END
+
+  python -m compileall "$pkgdir/opt/$_pkgname/"
+
+  # permissions
+  chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }
