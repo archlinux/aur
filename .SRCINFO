@@ -1,0 +1,21 @@
+pkgbase = youtube-downloader-git
+	pkgdesc = A YouTube video downloader application built with Next.js, Tailwind CSS, Electron, and Express.js
+	pkgver = 0.0.0.r2.gddcdcd7
+	pkgrel = 1
+	url = https://youtube-playlists.onrender.com/
+	arch = any
+	license = LicenseRef-custom
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = nvm
+	makedepends = curl
+	makedepends = git
+	depends = electron31
+	provides = youtube-downloader=0.0.0
+	conflicts = youtube-downloader
+	source = youtube-downloader.git::git+https://github.com/Emam546/youtube-downloader.git
+	source = youtube-downloader.sh
+	sha256sums = SKIP
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+
+pkgname = youtube-downloader-git
