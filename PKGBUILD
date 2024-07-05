@@ -1,5 +1,6 @@
 # Maintainer: Naoki Kanazawa <nk dot naoki912 at gmail dot com>
 pkgname=qtile-plasma-git
+_pkgname=qtile-plasma
 pkgver=v1.5.5.r1.g4b57f31
 pkgrel=2
 pkgdesc="A flexible, tree-based layout for Qtile"
@@ -8,7 +9,7 @@ license=('MIT')
 url='https://github.com/numirias/qtile-plasma'
 depends=('qtile')
 makedepends=('python-setuptools' 'git')
-source=("${pkgname}::git://github.com/numirias/qtile-plasma.git")
+source=("${_pkgname}::git://github.com/numirias/qtile-plasma.git")
 sha256sums=('SKIP')
 
 pkgver() {
