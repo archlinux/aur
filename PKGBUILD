@@ -5,7 +5,7 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-sdl2
 pkgver=2.30.4
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 2) (Android ${_android_arch})"
 url="https://www.libsdl.org"
@@ -82,9 +82,9 @@ package() {
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 
-    data_dir="${pkgdir}/${ANDROID_PREFIX_SHARE}/sdl2"
-    mkdir -p "${data_dir}"
-    cp -vf "${srcdir}/SDL2-${pkgver}/build/${clases_file_name}" "${data_dir}"
-    cp -rf android-project "${data_dir}/android-project"
-    cp -rf build-scripts "${data_dir}/build-scripts"
+    mkdir -p "${pkgdir}/${ANDROID_PREFIX_SHARE}/java"
+    cp -vf "${srcdir}/SDL2-${pkgver}/build/${clases_file_name}" "${pkgdir}/${ANDROID_PREFIX_SHARE}/java"
+    mkdir -p "${pkgdir}/${ANDROID_PREFIX_SHARE}/sdl2"
+    cp -rf android-project "${pkgdir}/${ANDROID_PREFIX_SHARE}/sdl2/android-project"
+    cp -rf build-scripts "${pkgdir}/${ANDROID_PREFIX_SHARE}/sdl2/build-scripts"
 }
