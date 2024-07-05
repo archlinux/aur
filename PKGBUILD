@@ -2,7 +2,7 @@
 
 pkgname=azure-dev-cli
 _pkgname=azure-dev
-pkgver=1.9.3
+pkgver=1.9.4
 pkgrel=1
 pkgdesc="Developer CLI that reduces the time it takes for you to get started on Azure"
 arch=(x86_64)
@@ -17,7 +17,7 @@ depends=(
 )
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/azure-dev-cli_$pkgver.tar.gz")
-sha256sums=('84c90505387f9014fc376d1dd141534edcd0b127d9fb6bcad70f4fb2b810bea1')
+sha256sums=('31c81a4ebfa6d691e3226491217ff2a7ea3525ac575424597f9787caaabbc247')
 
 _archive="$_pkgname-azure-dev-cli_$pkgver"
 
@@ -52,8 +52,7 @@ check() {
     go list ./... \
       | grep -v 'github.com/azure/azure-dev/cli/azd/internal/scaffold' \
       | grep -v 'github.com/azure/azure-dev/cli/azd/test/cmdrecord' \
-      | grep -v 'github.com/azure/azure-dev/cli/azd/test/functional' \
-      | sort
+      | grep -v 'github.com/azure/azure-dev/cli/azd/test/functional'
   )
   # shellcheck disable=SC2086
   go test -v $unit_tests
