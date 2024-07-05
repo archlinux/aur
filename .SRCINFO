@@ -1,0 +1,24 @@
+pkgbase = freecord-git
+	pkgdesc = A discord clone without discord api who can use discord with proxies.
+	pkgver = 1.0.0.beta.r0.gd86a52e
+	pkgrel = 1
+	url = https://github.com/MR-MKZ/Freecord
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = git
+	makedepends = nvm
+	makedepends = gendesk
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = curl
+	makedepends = asar
+	depends = electron30
+	provides = freecord=1.0.0.beta
+	conflicts = freecord
+	source = freecord.git::git+https://github.com/MR-MKZ/Freecord.git
+	source = freecord.sh
+	sha256sums = SKIP
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+
+pkgname = freecord-git
