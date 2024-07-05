@@ -1,0 +1,16 @@
+pkgbase = rpm-spec-language-server
+	pkgdesc = Language Server for RPM spec files
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/dcermak/rpm-spec-language-server
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	depends = python-specfile
+	depends = python-pygls
+	source = rpm-spec-language-server-0.0.1.tar.gz::https://github.com/dcermak/rpm-spec-language-server/archive/refs/tags/0.0.1.tar.gz
+	b2sums = 19cfff078b60ad1886e97396b668dfae5a983c024013d63a415734d76174f7aedc312a51775b0af0d96a45e0d80ca6752e6bacbcf382c53c8f94c758d718e453
+
+pkgname = rpm-spec-language-server
