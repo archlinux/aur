@@ -1,7 +1,7 @@
 # Maintainer:  Rubin Simons <me@rubin55.org>
 
 pkgname=openshift-developer-bin
-pkgver=3.15.0
+pkgver=3.16.1
 pkgrel=1
 pkgdesc="Developer tools for OpenShift (odo), binary release"
 provides=("odo")
@@ -14,7 +14,7 @@ source=(
 )
 
 sha256sums=(
-    'b9f4acd408839f55b39a5d72eb0fe2eabd293b6663834bec76a379709dfd0cbc'
+    'c271940c4b9d88f753423aae78984b7ef7a99ac9133154714b679f8b8b3bec8e'
 )
 
 options=("!strip")
