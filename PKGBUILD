@@ -9,20 +9,21 @@
 _pkgname=godot
 pkgname=godot3-mono
 pkgver=3.5.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Advanced cross-platform 2D and 3D game engine (3.x Branch Mono)'
 url='https://godotengine.org'
 license=(MIT)
 arch=(x86_64)
 makedepends=(gcc scons yasm alsa-lib pulseaudio nuget xorg-server-xvfb)
 depends=(embree3 freetype2 libglvnd libtheora libvorbis libvpx libwebp libwslay
-         libsquish libxcursor libxi libxinerama libxrandr miniupnpc opusfile dotnet-sdk)
+         libsquish libxcursor libxi libxinerama libxrandr opusfile mono mono-msbuild)
+	 #miniupnpc removed cause 2.2.8)
 optdepends=(pipewire-alsa pipewire-pulse)
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/godotengine/godot/archive/$pkgver-stable.tar.gz"
         "godot"
         "godot3-mono.patch")
 b2sums=('07ee037803e103f863e56a00c6106d00834870881ec75ecc43f947ea3d6e04a560763aa183661fa6437c4c8307f9231b250f2d51462057add1720d71d2ada827'
-        '3929ecb0ce01d4bf67df2f6ebf4ce2c92390c585c70c4aacfe283cf9978bf034884388d00d929f16e15adf3e65b95c7484bab9e64007b79a9a6c3e30d4b1da45'
+        '42f2bf8fc194700d865609ca5545447473edeb63598715243a9f199f42bc9e28ef3524232b4e65bf2e9e2b53b953373c9f40ba633cf7b50df47e861e3082bd94'
         'a5f2aeacb377ed177614c4226c5de6b8dfd68b818591d93786c5c8114c6b55d52c37d8fca5a291966ea01a2c5104ad2d242a7dbc71bc8bf5292f7f6c5107660a')
 
 prepare() {
@@ -40,8 +41,9 @@ build() {
   #  certs (FS#72762)
   #  enet (contains no upstreamed IPv6 support)
   #  recast, xatlas
+  #  miniupnpc updated to 2.2.8
   #  AUR: libwebm
-  local to_unbundle="embree freetype libogg libpng libsquish libtheora libvorbis libvpx libwebp miniupnpc opus pcre2 wslay zlib zstd"
+  local to_unbundle="embree freetype libogg libpng libsquish libtheora libvorbis libvpx libwebp opus pcre2 wslay zlib zstd"
   local system_libs=""
   for _lib in $to_unbundle; do
     system_libs+="builtin_"$_lib"=no "
@@ -103,9 +105,9 @@ package() {
   install -Dm644 misc/dist/linux/org.godotengine.Godot.desktop \
     "$pkgdir/usr/share/applications/org.godotengine.Godot3-mono.desktop"
   install -Dm644 icon.svg "$pkgdir/usr/share/pixmaps/$pkgname.svg"
-  install -Dm755 bin/godot.x11.opt.tools.64.mono "$pkgdir/opt/$pkgname/godot.x11.opt.tools.64.mono"
-  install -Dm755 bin/libmonosgen-2.0.so "$pkgdir/opt/$pkgname/libmonosgen-2.0.so"
-  cp -r bin/GodotSharp "$pkgdir/opt/$pkgname/GodotSharp"
+  install -Dm755 bin/godot.x11.opt.tools.64.mono "$pkgdir/usr/lib/$pkgname/godot.x11.opt.tools.64.mono"
+  install -Dm755 bin/libmonosgen-2.0.so "$pkgdir/usr/lib/$pkgname/libmonosgen-2.0.so"
+  cp -r bin/GodotSharp "$pkgdir/usr/lib/$pkgname/GodotSharp"
   install -Dm755 "$srcdir/godot" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 misc/dist/linux/godot.6 "$pkgdir/usr/share/man/man6/$pkgname.6"

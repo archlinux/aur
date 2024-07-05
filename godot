@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-/opt/godot3-mono/godot.x11.opt.tools.64.mono "$@"
+/usr/lib/godot3-mono/godot.x11.opt.tools.64.mono "$@"
