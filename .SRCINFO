@@ -1,7 +1,7 @@
 pkgbase = rgbepp
 	pkgdesc = Reference Genome based Exon Phylogeny Pipeline
-	pkgver = 0.0.1
-	pkgrel = 0
+	pkgver = 0.0.2
+	pkgrel = 1
 	url = https://github.com/starsareintherose/RGBEPP
 	arch = x86_64
 	license = GPL-2.0-only
@@ -16,7 +16,7 @@ pkgbase = rgbepp
 	depends = parallel
 	depends = findutils
 	depends = bash
-	source = https://github.com/starsareintherose/MiMi/archive/refs/tags/0.0.1.tar.gz
-	sha256sums = 66d179a7c82110f094cc414d4860601b8c28434875a30c05ec3841df52e086d1
+	source = https://github.com/starsareintherose/RGBEPP/archive/refs/tags/0.0.2.tar.gz
+	sha256sums = eb493da89ccba95d43b1f99e36fc793b787340fc203fc99a7eb3111bd2de2d65
 
 pkgname = rgbepp
