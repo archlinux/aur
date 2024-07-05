@@ -1,7 +1,7 @@
 # Maintainer: Vladislav Minakov <v@minakov.pro>
 
 pkgname=zitadel-bin
-pkgver=2.54.4
+pkgver=2.55.2
 pkgrel=1
 pkgdesc="Identity infrastructure, simplified for you"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=("zitadel-$pkgver.tar.gz::https://github.com/zitadel/zitadel/releases/dow
         "zitadel.tmpfiles"
         "config.yaml"
         "init.yaml")
-sha512sums=('1c92016a36deca876f0a6587b8a862cad44a2b7a567e65ba1a051eef03f6ec86f7b5005a7cb8b130361fd18a5298462c4d70feacea40e2df294bf00bb34befd4'
+sha512sums=('e378c8840f165342972c959d0d6aabc7e5c4af02c92e7443957f32a395ff8b4ce428f514ba45c9fa0a773a27a25c5ea444303d9cf89daf9a7020bc614218f4dc'
             '2d2a004537ff632daae1b9931764c1404495cf42ccf1bb96fbb7b6f47c0188b0f2da3e548fd7d90cebe5ab5045399729af3f1799564d11914df80dff244d10a5'
             'f497d8fdc43327a7bacc957b6c583a3dd81f3d1fe387869463cb23c5c0a8efcd04772f3fc528c528ebc6cb55d29e0d11ddf73bc7db7cf61655267b964bcc2f12'
             '7b847d89fb3d231d25a053b0a9a7fee2b184d17553b321fc403c86b122f349a65346a7e1522e1caa7e2c2dcef742358322e85ea1c2a0dd578e6e180a19553508'
