@@ -6,7 +6,7 @@ pkgname="${_pkgname}-client-bin"
 _appname=com.hunterwittenborn.Celeste
 pkgver=0.8.3
 _snap="a9zAmHVl4doDwIGkptVyA7VI7fMlPPpE_36"
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI file synchronization client that can sync with any cloud provider "
 arch=('x86_64')
 url="https://github.com/hwittenborn/celeste"
@@ -29,7 +29,7 @@ makedepends=(
 source=()
 
 source=("${pkgname%-bin}-${pkgver}.snap::https://api.snapcraft.io/api/v1/snaps/download/${_snap}.snap")
-sha256sums=('fd2a6eb205b028060f3e7c1703d1c0a46f2b470c1f6c17c637d2ed4e1f25ab69')
+sha256sums=('b8dc5d75c795930529018096523ade359aff22543a18c9eaeff8b20bbf0d7f38')
 build() {
     unsquashfs -f "${srcdir}/${pkgname%-bin}-${pkgver}.snap"
     sed "s|Exec=${_pkgname}|Exec=${pkgname%-bin}|g;s|Icon=${_appname}|Icon=${pkgname%-bin}|g" \
