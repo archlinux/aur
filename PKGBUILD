@@ -5,12 +5,12 @@ pkgdesc="a very cool, featureful fork of conduit"
 url="https://github.com/girlbossceo/conduwuit"
 license=("Apache-2.0")
 arch=("x86_64")
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 makedepends=("rust" "cargo" "git" "clang")
 depends=("gcc-libs" "glibc" "liburing")
 source=("git+https://github.com/girlbossceo/conduwuit#tag=v${pkgver}")
-md5sums=('f923006c08ad1ddfbddfde114cd963f4')
+md5sums=('4a7251a77a6918eed3f0acd38ecf9974')
 provides=("conduwuit")
 conflicts=()
 options=(!lto)
