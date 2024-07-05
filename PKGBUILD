@@ -1,7 +1,7 @@
 # Maintainer: Axel McLaren <scm(at)axml(dot)uk>
 
 pkgname=keepmenu
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="dmenu/rofi frontend for KeePass databases"
 arch=('any')
@@ -10,17 +10,19 @@ license=('GPL3')
 depends=('python' 'python-pykeepass' 'python-pynput')
 makedepends=('python-build' 'python-setuptools' 'python-installer' 'python-wheel' 'python-hatchling' 'python-hatch-vcs')
 optdepends=('dmenu: dmenu backend'
-            'rofi: rofi backend'
             'bemenu: bemenu backend'
+            'wmenu: wmenu backend'
+            'rofi: rofi backend'
             'wofi: wofi backend'
             'yofi: yofi backend'
+            'tofi: tofi backend'
             'xdotool: required for typing non-U.S. Unicode characters'
             'wtype: required for typing non-U.S. Unicode characters'
             'ydotool: required for typing non-U.S. Unicode characters'
             'pinentry: secure passphrase entry')
 
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz)
-sha256sums=('dd819e3d39d33a2c13cf585da6175ecf902d9da60397f7e0ebc3171431d4ba51')
+sha256sums=('2fb13c0e04649dfe647e7537963d3274811b09bcbb10e84ed1985fb70d057191')
 install=${pkgname}.install
 
 prepare() {
