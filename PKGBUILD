@@ -3,17 +3,18 @@
 # Contributor: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
 
 pkgname=nodejs-git
-pkgver=19.9.0.r1361.g6dcbf8b6166
+pkgver=22.4.0.r616.g88beb76e5c1
 pkgrel=1
 pkgdesc="JavaScript runtime built on Chrome's V8 JavaScript engine"
 arch=('i686' 'x86_64')
 url="https://nodejs.org/"
 license=('MIT')
-depends=('glibc' 'brotli' 'icu' 'libnghttp2' 'libuv' 'openssl' 'zlib')  # c-ares http-parser
+depends=('glibc' 'c-ares' 'brotli' 'icu' 'libnghttp2' 'libnghttp3' 'libngtcp2' 'libuv' 'openssl' 'sqlite' 'zlib')
 makedepends=('git' 'procps-ng' 'python')
 optdepends=('npm: nodejs package manager')
 provides=("nodejs=$pkgver")
 conflicts=('nodejs')
+options=('!lto')
 source=("git+https://github.com/nodejs/node.git")
 sha256sums=('SKIP')
 
@@ -35,9 +36,13 @@ build() {
     --with-intl=system-icu \
     --without-npm \
     --shared-brotli \
+    --shared-cares \
     --shared-libuv \
     --shared-nghttp2 \
+    --shared-nghttp3 \
+    --shared-ngtcp2 \
     --shared-openssl \
+    --shared-sqlite \
     --shared-zlib
   make
 }
