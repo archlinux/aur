@@ -9,7 +9,6 @@ arch=('x86_64' 'armv7h')
 url='https://github.com/tristanisham/zvm'
 license=('MIT')
 makedepends=('go')
-provides=('zig=0.11.0')
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/tristanisham/zvm/archive/refs/tags/v$pkgver.tar.gz"
 )
