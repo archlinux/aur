@@ -1,9 +1,9 @@
 # Maintainer: muttleyxd <mateusz [at] szychowski.it>
-_gittag=master-8f72ab3c
+_gittag=master-609f1513
 pkgname=clang-format-static-bin
-pkgver=11.8f72ab3c
+pkgver=12.609f1513
 pkgrel=1
-pkgdesc="clang-format x86_64 static binaries (3.9, 4, 5, 6, 7, 8, 9, 10, 11, 12, 12.0.1, 13, 14, 15, 16,  17)"
+pkgdesc="clang-format x86_64 static binaries (3.9, 4, 5, 6, 7, 8, 9, 10, 11, 12, 12.0.1, 13, 14, 15, 16, 17, 18)"
 arch=('x86_64')
 url="https://github.com/muttleyxd/clang-format-static-binaries"
 license=('Unlicense')
@@ -27,25 +27,27 @@ source=("archlinux-clang-format"
         "${_gittag}-clang-format-15::https://github.com/muttleyxd/clang-format-static-binaries/releases/download/$_gittag/clang-format-15_linux-amd64"
         "${_gittag}-clang-format-16::https://github.com/muttleyxd/clang-format-static-binaries/releases/download/$_gittag/clang-format-16_linux-amd64"
         "${_gittag}-clang-format-17::https://github.com/muttleyxd/clang-format-static-binaries/releases/download/$_gittag/clang-format-17_linux-amd64"
+        "${_gittag}-clang-format-18::https://github.com/muttleyxd/clang-format-static-binaries/releases/download/$_gittag/clang-format-18_linux-amd64"
         "${_gittag}-LICENSE.TXT.clang-8-and-lower::https://github.com/muttleyxd/clang-format-static-binaries/releases/download/$_gittag/LICENSE.TXT.clang-8-and-lower"
         "${_gittag}-LICENSE.TXT.clang-9-and-higher::https://github.com/muttleyxd/clang-format-static-binaries/releases/download/$_gittag/LICENSE.TXT.clang-9-and-higher")
 sha256sums=('6fe5f05f710d6c02a0c9d7af6aaa15a5353bff4142a622dc45dd1fd591ab9ce0'
-            'ad73b1c2e4ad902452531ad80f506fa907d6eaae0b656c1444df6816cdc5ec37'
-            '41d43b608a3fe17584dd6cd2197bfed5c2b6c09e32368901d140bc63e9f1bf5e'
-            '1676541e4cd1576e9a35c70883d7d3defd3d40d24939136fdcf4e9a1ba62747f'
-            '82ee16cceea913608f9acd3a6d768d39e4623ac7224c7f8549e81331ecec3e7c'
-            '6f187920a6b258f0fbf05980f65110b84b9014100c0fdb84309a53aa7848455c'
-            'b2c3661268693aa2b20ad94ea9f303055ab486d8be56312d8df41e6e9afcb5df'
-            'eb3cbe77dcdd03c7a585e313326aeef7df58c3cc18dab28e35cc213a11a4d9d8'
-            'c640d61668562676ca073ee6c498c0ed80bfdf28a7671d0800b83f656dde1c19'
-            'f1c282881cca41365def9f6de8f9a8f4465e1d3a92aa76bc1c39b8430bc74aa2'
-            '7234e5d7dab1b9a48ae6d47c90a9706baca5d32edce415d5066f2d0cffad8b65'
-            'ca92cae347ef6cc139c60b55d9ee5ef687ad561245cf214d07845cd46cd2a330'
-            'ee0bc0f6eea66bde25312e1a65e48c6ecd7c2f4460e928000eb51626dfe92eb7'
-            'fea65f0d01469422240dd97c62e78ec80d809405784e9d23398fdd2df4231328'
-            '126fcf572a63e8d675c8dc73bf6b38a35c3fa5ad771ca263c878e34f2cc8413a'
-            'c2f90f491a7c1e9e4a073639d3480622a15d3eee22ec209e56ac857c8d239b9d'
-            'feeca60279e7d3a3f9fb7181d76221720206d78e5003176bc155d8d6e4d532fb'
+            '710eaa58726c5b72c3056a032dd4695a7af9017f4dc1fb84f8a61bcf13cecf5b'
+            '612b117cdd08244349da42fdc68f45019f2c9f8c3c28cbb2bfbd5de93fa12a84'
+            '3f352412d91455fcebfe538484818d61bc14129d45d7cad5ca32e323ec858d71'
+            '42dbdac7de21a26b461ceb17ee7ad00b725108daec24d67601c3e624c34b9341'
+            '3dc2300180c546b11263d90450e5f2574e43712f8367aff572799b6154b21d66'
+            '16c171751deaf818c39014c2dfeb56f2793ed761057fcb17c5ebc2649eb544c5'
+            'c82261db7d60abffd4984646c860e3252fa4a7543e53f225e75bea5741251b7a'
+            '25a399b7a560db86ee486042a2a006fe10143f1625e055043f11268fddfda82b'
+            'fa435754e7b9c9aad92e10b098a1107634bd78b4c883252d57a1655d009b1a78'
+            '412034e286a43615681b6d412d766856768a6a33d18b27f88ac77cf6797ae3eb'
+            '48d0167b405e7c4c4d75ca7b06ee1923dffae959950551dd1cbffacb336794c2'
+            '82dc5da6007ca1368fa2404b7199c516f93318f221f3aa2b2efeaa6b4595937c'
+            'd94c4b6c2a1c3869d484f5f5bb5a9f8e5ba765637fa15e88c24a2c8dd208df30'
+            'a0384e50a830db756c6318fe9f62b6778dea1df16c5aeee1a16990f47ecac0b3'
+            'a4dc76a393b45411a0e7b4c7b728c91e23854ae258e1c6bcb84804a30e351121'
+            'f8f5910903207ff2cce5f3fc6211ffb1b3c2dd1eddfaa15cdeaa823efba4c0c1'
+            '2a6cd633f85e96a32f68cca3f1ac2ef63c677cae0f2b2a7f2a0c3f81a36a2353'
             '2050acfe8b8d5ae1ef971b6ab419cd9f46e3f2d779a09966105622b3112600d9'
             'ebcd9bbf783a73d05c53ba4d586b8d5813dcdf3bbec50265860ccc885e606f47')
 
@@ -70,6 +72,7 @@ package()
     cp -L "$srcdir/${_gittag}-clang-format-15" "$pkgdir/opt/clang-format-static/clang-format-15"
     cp -L "$srcdir/${_gittag}-clang-format-16" "$pkgdir/opt/clang-format-static/clang-format-16"
     cp -L "$srcdir/${_gittag}-clang-format-17" "$pkgdir/opt/clang-format-static/clang-format-17"
+    cp -L "$srcdir/${_gittag}-clang-format-18" "$pkgdir/opt/clang-format-static/clang-format-18"
     cp -L "$srcdir/${_gittag}-LICENSE.TXT.clang-8-and-lower" "$pkgdir/opt/clang-format-static/LICENSE.TXT.clang-8-and-lower"
     cp -L "$srcdir/${_gittag}-LICENSE.TXT.clang-9-and-higher" "$pkgdir/opt/clang-format-static/LICENSE.TXT.clang-9-and-higher"
     chmod 755 "$pkgdir/opt/clang-format-static/clang-format-3.9"
@@ -88,4 +91,5 @@ package()
     chmod 755 "$pkgdir/opt/clang-format-static/clang-format-15"
     chmod 755 "$pkgdir/opt/clang-format-static/clang-format-16"
     chmod 755 "$pkgdir/opt/clang-format-static/clang-format-17"
+    chmod 755 "$pkgdir/opt/clang-format-static/clang-format-18"
 }
