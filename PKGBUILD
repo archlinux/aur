@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=musicat-git
 _pkgname=Musicat
-pkgver=0.6.0.r0.gd34b50c
+pkgver=0.7.0.r1.gb3570da
+_nodeversion=18
 pkgrel=1
 pkgdesc="A sleek desktop music player and tagger for offline music 🪕 With experimental features like map view, GPT analysis, artist toolkit."
 arch=('any')
@@ -17,7 +18,7 @@ makedepends=(
     'npm'
     'git'
     'gendesk'
-    'base-devel'
+    'cmake'
     'gcc'
     'rust'
 )
@@ -27,7 +28,7 @@ source=(
 sha256sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
-    git describe --long --tags | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
 }
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -36,21 +37,24 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 build() {
-    gendesk -q -f -n --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-git} %U"
+    _ensure_local_nvm
+    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
     export npm_config_build_from_source=true
+    export npm_config_cache="${srcdir}/.npm_cache"
     export CARGO_HOME="${srcdir}/.cargo"
     HOME="${srcdir}/.electron-gyp"
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
         export npm_config_registry=https://registry.npmmirror.com
+        export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
         export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
 	    export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
     else
         echo "Your network is OK."
     fi
     sed "/cli-win32-x64-msvc/d" -i package.json
-    npm install
-    npx tauri build -b deb
+    NODE_ENV=development npm install
+    NODE_ENV=production npx tauri build -b deb
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname//-/.}/src-tauri/target/release/bundle/deb/${pkgname%-git}_"*/data/usr/bin/"${pkgname%-git}" -t "${pkgdir}/usr/bin"
