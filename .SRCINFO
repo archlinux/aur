@@ -1,13 +1,14 @@
 pkgbase = python-pymodes
 	pkgdesc = Python decoder for Mode S and ADS-B signals
 	pkgver = 2.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/junzis/pyModeS
 	arch = any
 	license = GPL3
 	makedepends = python-installer
 	makedepends = python-poetry
 	makedepends = cython
+	makedepends = python-setuptools
 	depends = python
 	depends = python-numpy
 	depends = python-pyzmq

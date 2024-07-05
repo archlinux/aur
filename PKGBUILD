@@ -3,15 +3,26 @@
 _basename=pymodes
 pkgname=python-${_basename}
 pkgver=2.17
-pkgrel=1
+pkgrel=2
 pkgdesc="Python decoder for Mode S and ADS-B signals"
 arch=('any')
 url="https://github.com/junzis/pyModeS"
 license=('GPL3')
 depends=('python' 'python-numpy' 'python-pyzmq' 'python-pyrtlsdr')
-makedepends=('python-installer' 'python-poetry' 'cython')
+makedepends=('python-installer' 'python-poetry' 'cython' 'python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_basename:0:1}/${_basename}/${_basename}-${pkgver}.tar.gz")
 sha256sums=('fe73e9ae3bfdb58416f42a08e4e1b132680bac46ff572815caae6eb47dc40941')
+
+prepare() {
+	# Temporary fix until next release
+	cd "$_basename-$pkgver"
+	echo "Patching build files"
+	sed \
+		-e 's/^from distutils\.core/from setuptools/' \
+		-e 's/^from distutils\./from setuptools./' \
+		-e 's/get_outputs/get_output_mapping/' -i build.py
+	sed -e '/^requires/s/]/, "setuptools>=69.1.1"]/' -i pyproject.toml
+}
 
 build() {
 	cd "$_basename-$pkgver"
