@@ -34,24 +34,16 @@ if [ -z "${ANDROID_MINIMUM_PLATFORM}" ]; then
 fi
 
 get_last() {
-    ls $1 | sort -V | tail -n 1
+    ls "$1" | sort -V | uniq | tail -n 1
 }
 
 if [ -z "${ANDROID_BUILD_TOOLS_REVISION}" ]; then
     export ANDROID_BUILD_TOOLS_REVISION=$(get_last "${ANDROID_HOME}/build-tools")
 fi
 
-if [ -z "${ANDROID_API_VERSION}" ]; then
-    export ANDROID_API_VERSION="android-${ANDROID_MINIMUM_PLATFORM}"
-fi
-
 if [ -z "${ANDROID_NDK_PLATFORM}" ]; then
     export ANDROID_NDK_PLATFORM="android-${ANDROID_MINIMUM_PLATFORM}"
 fi
-
-export ANDROID_SDK_PLATFORM="${ANDROID_HOME}/platforms/${ANDROID_API_VERSION}"
-export ANDROID_PLATFORM="${ANDROID_NDK_HOME}/platforms/${ANDROID_NDK_PLATFORM}"
-export ANDROID_PKGCONFIG="android-${_android_arch}-pkg-config"
 
 case "${_android_arch}" in
     aarch64)
@@ -91,6 +83,26 @@ case "${_android_arch}" in
         export ANDROID_ABI=${_android_arch}
         ;;
 esac
+
+if [ -z "${ANDROID_TARGET_PLATFORM}" ]; then
+    export ANDROID_TARGET_PLATFORM=$(find "${ANDROID_HOME}/platforms" -type f -name 'android.jar' \
+                                     | awk -F/ '{print $5}' | sed 's|android-||g' | sort -V | uniq | tail -n 1)
+
+    if [ -z "${ANDROID_TARGET_PLATFORM}" ]; then
+        export ANDROID_TARGET_PLATFORM=$(ls "${ANDROID_SYSROOT_LIB}" | /usr/bin/grep '[0-9]' | sort -V | uniq | tail -n 1)
+
+        [ -z "${ANDROID_TARGET_PLATFORM}" ] && export ANDROID_TARGET_PLATFORM=${ANDROID_MINIMUM_PLATFORM}
+    fi
+fi
+
+if [ -z "${ANDROID_API_VERSION}" ]; then
+    export ANDROID_API_VERSION="android-${ANDROID_TARGET_PLATFORM}"
+fi
+
+export ANDROID_SDK_PLATFORM="${ANDROID_HOME}/platforms/${ANDROID_API_VERSION}"
+export ANDROID_PLATFORM="${ANDROID_NDK_HOME}/platforms/${ANDROID_NDK_PLATFORM}"
+export ANDROID_SDK_JAR="${ANDROID_SDK_PLATFORM}/android.jar"
+export ANDROID_PKGCONFIG="android-${_android_arch}-pkg-config"
 
 export ANDROID_SYSROOT_LIB_API="${ANDROID_SYSROOT_LIB}/${ANDROID_MINIMUM_PLATFORM}"
 export ANDROID_CC="${ANDROID_TOOLS_COMPILER_PREFIX}clang"
@@ -156,7 +168,7 @@ check_ndk_version_ge_than() {
     older_ver=$(printf "${version}\n${ndk_ver}" | sort -V | head -n 1)
 
     if [ "${older_ver}" = "${ndk_ver}" ]; then
-        echo "ERROR: NDK version >= $version required."
+        echo "ERROR: NDK version >= ${version} required."
 
         return -1
     fi
