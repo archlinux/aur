@@ -2,27 +2,28 @@
 
 pkgname=perl-debug-adapter
 pkgver=1.0.9
-pkgrel=2
+pkgrel=3
 pkgdesc='Debug Adapter Protocol server for Perl'
-arch=(any)
+license=('MIT')
+
 url='https://github.com/Nihilus118/perl-debug-adapter'
-license=(MIT)
-depends=(nodejs perl perl-padwalker)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Nihilus118/perl-debug-adapter/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('3caf79271bbad6cd7adf294dd52d460f04322b1abce6142d353694e2dff53c5b')
+
+arch=(any)
+depends=(nodejs perl perl-padwalker sh)
 # makedepends=(npm)
 # https://github.com/nodejs/corepack#utility-commands
 _npm="corepack npm"
-_archive="$pkgname-$pkgver"
-source=("$_archive.tar.gz::https://github.com/Nihilus118/perl-debug-adapter/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=(3caf79271bbad6cd7adf294dd52d460f04322b1abce6142d353694e2dff53c5b)
 
 build() {
-  cd "$srcdir/$_archive"
+  cd "$srcdir/$pkgname-$pkgver"
   $_npm install --cache "$srcdir/npm-cache"
   $_npm run compile
 }
 
 package() {
-  cd "$srcdir/$_archive"
+  cd "$srcdir/$pkgname-$pkgver"
 
   # Install package
   $_npm install --global --install-links \
@@ -31,8 +32,7 @@ package() {
   find "$pkgdir/usr" -type d -execdir chmod 755 \{\} +
 
   # Install license
-  install -D --mode=644 \
-    --target-directory="$pkgdir/usr/share/licenses/$pkgname" LICENSE.md
+  install -Dm644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname"
 
   # Wrap nodejs
   rm "$pkgdir/usr/bin/$pkgname"
