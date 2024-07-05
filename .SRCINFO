@@ -1,0 +1,26 @@
+pkgbase = theia-bin
+	pkgdesc = Cloud and Desktop IDE Platform
+	pkgver = 1.51.0
+	pkgrel = 1
+	url = https://www.theia-ide.org/
+	arch = x86_64
+	license = EPL2
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = util-linux-libs
+	depends = libsecret
+	optdepends = libappindicator-gtk3: Systray indicator
+	provides = theia
+	conflicts = theia
+	options = !strip
+	source = TheiaIDE_x64_1.51.0.deb::https://download.eclipse.org/theia/ide/1.51.0/linux/TheiaIDE.deb
+	source = theia-bin-1.51.0-1.yml::https://download.eclipse.org/theia/ide/1.51.0/linux/latest-linux.yml
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = theia-bin
