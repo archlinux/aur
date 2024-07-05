@@ -1,13 +1,13 @@
 pkgbase = gnome-shell-extension-stocks-extension
 	pkgdesc = An extension to display stock quotes in GNOME Shell Panel
-	pkgver = 33
+	pkgver = 34
 	pkgrel = 1
 	url = https://github.com/cinatic/stocks-extension
 	arch = any
 	license = GPL
 	depends = gnome-shell
 	provides = gnome-shell-extension-stocks-extension
-	source = stocks-extension.zip::https://github.com/cinatic/stocks-extension/releases/download/v33/stocks-extension.zip
-	sha256sums = 02d28c222e7a295f3fa5e8ff78bdac422b9e903365fcc55ee993d20642fea929
+	source = gnome-shell-extension-stocks-extension-34.zip::https://github.com/cinatic/stocks-extension/releases/download/v34/stocks-extension.zip
+	sha256sums = 7e62115274c512295d025615c97d43af6f446f4b8665c1ca9eaa9cd2274f32e6
 
 pkgname = gnome-shell-extension-stocks-extension
