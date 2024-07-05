@@ -1,7 +1,7 @@
 pkgbase = rpmlint
 	pkgdesc = A tool for checking common errors in rpm packages
-	pkgver = 2.5.0
-	pkgrel = 3
+	pkgver = 2.6.0
+	pkgrel = 1
 	url = https://github.com/rpm-software-management/rpmlint
 	arch = any
 	license = GPL-2.0-only
@@ -32,7 +32,7 @@ pkgbase = rpmlint
 	optdepends = dash: for checking bashisms
 	optdepends = desktop-file-utils: for checking desktop entries
 	optdepends = python-pyenchant: for spell checking
-	source = rpmlint-2.5.0.tar.gz::https://github.com/rpm-software-management/rpmlint/archive/refs/tags/2.5.0.tar.gz
-	sha256sums = a9276782bd9ebca2337ae61a498d4d444e0dce003447409b2339b4cce67b6762
+	source = rpmlint-2.6.0.tar.gz::https://github.com/rpm-software-management/rpmlint/archive/2.6.0.tar.gz
+	sha256sums = d8c000be45ae59f78fa4ed0438e1d33520d189e1ff5033cd72c6c93adf4788f3
 
 pkgname = rpmlint
