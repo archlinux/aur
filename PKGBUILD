@@ -1,66 +1,91 @@
-# Maintainer: Marvin Dalheimer <me@marvin-dalheimer.de>
+# Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
+# Contributor: Marvin Dalheimer <me@marvin-dalheimer.de>
+_pkgname=godot
 pkgname=godot-mono-bin
 pkgver=4.2.2
-pkgrel=1
-pkgdesc="Godot is an advanced, feature packed, multi-platform 2D and 3D game engine. It provides a huge set of common tools, so you can just focus on making your game without reinventing the wheel."
-arch=("i686" "x86_64" "arm32" "arm64")
-url="https://www.godotengine.org"
+pkgrel=2
+pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine"
+arch=("x86_64" 'i686' 'armv7h' 'aarch64')
+url='https://godotengine.org'
 license=('MIT')
-provides=("godot" "godot-mono")
-conflicts=("godot-mono")
-depends=("dotnet-sdk")
-source=("godot-mono.desktop" "icons.tar.gz")
-source_i686=("$pkgname-$pkgver-i686.zip::https://github.com/godotengine/godot/releases/download/"$pkgver"-stable/Godot_v"$pkgver"-stable_mono_linux_x86_32.zip")
-source_x86_64=("$pkgname-$pkgver-x86_64.zip::https://github.com/godotengine/godot/releases/download/"$pkgver"-stable/Godot_v"$pkgver"-stable_mono_linux_x86_64.zip")
-source_arm32=("$pkgname-$pkgver-arm32.zip::https://github.com/godotengine/godot/releases/download/"$pkgver"-stable/Godot_v"$pkgver"-stable_mono_linux_arm32.zip")
-source_arm64=("$pkgname-$pkgver-arm64.zip::https://github.com/godotengine/godot/releases/download/"$pkgver"-stable/Godot_v"$pkgver"-stable_mono_linux_arm64.zip")
+makedepends=('rsync')
+depends=(libglvnd libxcursor libxi libxinerama libxrandr hicolor-icon-theme glibc libxrender libx11 bash libxext 'dotnet-sdk>=6.0')
+optdepends=('pipewire-alsa: for audio support'
+	    'pipewire-pulse: for audio support')
+provides=('godot')
+conflicts=('godot')
+source=("https://github.com/godotengine/godot/archive/refs/tags/${pkgver}-stable.tar.gz")
+source_x86_64=("https://github.com/godotengine/godot/releases/download/${pkgver}-stable/Godot_v${pkgver}-stable_mono_linux_x86_64.zip")
+source_i686=("https://github.com/godotengine/godot/releases/download/${pkgver}-stable/Godot_v${pkgver}-stable_mono_linux_x86_32.zip")
+source_armv7h=("https://github.com/godotengine/godot/releases/download/${pkgver}-stable/Godot_v${pkgver}-stable_mono_linux_arm32.zip")
+source_aarch64=("https://github.com/godotengine/godot/releases/download/${pkgver}-stable/Godot_v${pkgver}-stable_mono_linux_arm64.zip")
+sha256sums=('990b7b716656122364b1672508c516c898497c50216d7c00c60eeaf507685c0e')
+sha256sums_x86_64=('4fe073fd99dbcdba4a8bea786b76b25a4dfee2efa6f2aa0d4f40f443d09de3f4')
+sha256sums_i686=('9fa05bb03630b49761f55cdfb41b4ffe80cd1fb0110e7d0c1a9ea93d4938a7f1')
+sha256sums_armv7h=('a725bacf043ec33e6fa6c4afcf4ade73bf7e97908455985c1bc8492f9a924c51')
+sha256sums_aarch64=('32beab62973194f9da950d6800a7dd083b0f83547526338bcd0ba6210ee5fe68')
 
 package() {
-  mkdir -p "$pkgdir/opt/$pkgname"
-  mkdir -p "$pkgdir/usr/bin"
-  mkdir -p "$pkgdir/usr/share/icons/hicolor"
-  mkdir -p "$pkgdir/usr/share/applications"
+	cd "${srcdir}"
+	mkdir -p "$pkgdir/usr/bin"
+	case $arch in
+	x86_64)
+	install -Dm755 Godot_v${pkgver}-stable_mono_linux_x86_64/Godot_v${pkgver}-stable_mono_linux.x86_64 "$pkgdir/usr/lib/$pkgname/Godot_v${pkgver}-stable_mono_linux.x86_64"
+	ln -s "/usr/lib/$pkgname/Godot_v${pkgver}-stable_mono_linux.x86_64" "$pkgdir/usr/bin/godot"
+	rsync -a -r "$srcdir/Godot_v${pkgver}-stable_mono_linux_x86_64/GodotSharp" "$pkgdir/usr/lib/$pkgname/"
+	;;
+	i686)
+	install -Dm755 Godot_v${pkgver}-stable_mono_linux_x86_32/Godot_v${pkgver}-stable_mono_linux.x86_32 "$pkgdir/usr/lib/$pkgname/Godot_v${pkgver}-stable_mono_linux.x86_32"
+	ln -s "/usr/lib/$pkgname/Godot_v${pkgver}-stable_mono_linux.x86_32" "$pkgdir/usr/bin/godot"
+	rsync -a -r "$srcdir/Godot_v${pkgver}-stable_mono_linux_x86_32/GodotSharp" "$pkgdir/usr/lib/$pkgname/"
+	;;
+	armv7h)
+	install -Dm755 Godot_v${pkgver}-stable_mono_linux_arm32/Godot_v${pkgver}-stable_mono_linux.arm32 "$pkgdir/usr/lib/$pkgname/Godot_v${pkgver}-stable_mono_linux.arm32"
+	ln -s "/usr/lib/$pkgname/Godot_v${pkgver}-stable_mono_linux.arm32" "$pkgdir/usr/bin/godot"
+	rsync -a -r "$srcdir/Godot_v${pkgver}-stable_mono_linux_arm32/GodotSharp" "$pkgdir/usr/lib/$pkgname/"
+	;;
+	aarch64)
+	install -Dm755 Godot_v${pkgver}-stable_mono_linux_arm64/Godot_v${pkgver}-stable_mono_linux.arm64 "$pkgdir/usr/lib/$pkgname/Godot_v${pkgver}-stable_mono_linux.arm64"
+	ln -s "/usr/lib/$pkgname/Godot_v${pkgver}-stable_mono_linux.arm64" "$pkgdir/usr/bin/godot"
+	rsync -a -r "$srcdir/Godot_v${pkgver}-stable_mono_linux_arm64/GodotSharp" "$pkgdir/usr/lib/$pkgname/"
+	;;
+	esac
 
-  case $CARCH in
-    "i686")
-      cp -r "$srcdir/Godot_v${pkgver}-stable_mono_linux_x86_32" "$pkgdir/opt/$pkgname/godot"
-    ;;
-    "x86_64")
-      cp -r "$srcdir/Godot_v${pkgver}-stable_mono_linux_x86_64" "$pkgdir/opt/$pkgname/godot"
-    ;;
-    "arm32")
-      cp -r "$srcdir/Godot_v${pkgver}-stable_mono_linux_arm32" "$pkgdir/opt/$pkgname/godot"
-    ;;
-    "arm64")
-      cp -r "$srcdir/Godot_v${pkgver}-stable_mono_linux_arm64" "$pkgdir/opt/$pkgname/godot"
-    ;;
-  esac
-  
-  cp "$srcdir/godot-mono.desktop" "$pkgdir/usr/share/applications/godot-mono.desktop"
-  cp -a "$srcdir/icons/." "$pkgdir/usr/share/icons/hicolor"
+	cd "$srcdir/godot-$pkgver-stable"
+    install -Dm644 \
+        "${srcdir}/godot-${pkgver}-stable/icon.svg" \
+        "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
 
-  case $CARCH in
-    "i686")
-      chmod +x "$pkgdir/opt/$pkgname/godot/Godot_v${pkgver}-stable_mono_linux.x86_32"
-      ln -s "/opt/$pkgname/godot/Godot_v${pkgver}-stable_mono_linux.x86_32" "$pkgdir/usr/bin/godot-mono"
-    ;;
-    "x86_64")
-      chmod +x "$pkgdir/opt/$pkgname/godot/Godot_v${pkgver}-stable_mono_linux.x86_64"
-      ln -s "/opt/$pkgname/godot/Godot_v${pkgver}-stable_mono_linux.x86_64" "$pkgdir/usr/bin/godot-mono"
-    ;;
-    "arm32")
-      chmod +x "$pkgdir/opt/$pkgname/godot/Godot_v${pkgver}-stable_mono_linux.arm32"
-      ln -s "/opt/$pkgname/godot/Godot_v${pkgver}-stable_mono_linux.arm32" "$pkgdir/usr/bin/godot-mono"
-    ;;
-    "arm64")
-      chmod +x "$pkgdir/opt/$pkgname/godot/Godot_v${pkgver}-stable_mono_linux.arm64"
-      ln -s "/opt/$pkgname/godot/Godot_v${pkgver}-stable_mono_linux.arm64" "$pkgdir/usr/bin/godot-mono"
-    ;;
-  esac
-}
-md5sums=('c8ba9f7656b2c2db9a3ec385b3848bf5'
-         '3d33c4ec9dfa6fb0f58bfed3dbfb2f0f')
-md5sums_i686=('0b811577515133ab061c580d5c66c153')
-md5sums_x86_64=('d581cbbfe68afbdb7ab489f258067d18')
-md5sums_arm32=('4739d4fa43c2b79181aa38bb6b7fd46c')
-md5sums_arm64=('2b6bd937ed79bfa2195251074956417e')
+    install -Dm644 \
+	"${srcdir}/godot-${pkgver}-stable/LICENSE.txt" \
+	"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+    install -Dm644 \
+	"${srcdir}/godot-${pkgver}-stable/misc/dist/linux/godot.6" \
+	"${pkgdir}/usr/share/man/man6/godot.6"
+
+    install -Dm644 \
+	"${srcdir}/godot-${pkgver}-stable/misc/dist/linux/org.godotengine.Godot.xml" \
+	"${pkgdir}/usr/share/mime/packages/org.godoten#gine.Godot.xml"
+
+    install -Dm644 \
+	"${srcdir}/godot-${pkgver}-stable/misc/dist/linux/org.godotengine.Godot.desktop"\
+	"${pkgdir}/usr/share/applications/org.godotengine.Godot.desktop"
+
+    mkdir -p "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes"
+    install -Dm644 \
+        "${srcdir}/godot-${pkgver}-stable/misc/dist/document_icons/project.svg" \
+        "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/x-godot-project.svg"
+    install -Dm644 \
+        "${srcdir}/godot-${pkgver}-stable/misc/dist/document_icons/resource.svg" \
+        "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/x-godot-resource.svg"
+    install -Dm644 \
+        "${srcdir}/godot-${pkgver}-stable/misc/dist/document_icons/scene.svg" \
+        "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/x-godot-scene.svg"
+    install -Dm644 \
+        "${srcdir}/godot-${pkgver}-stable/misc/dist/document_icons/shader.svg" \
+        "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/x-godot-shader.svg"
+    install -Dm644 \
+        "${srcdir}/godot-${pkgver}-stable/misc/dist/document_icons/gdscript.svg" \
+        "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/x-gdscript.svg"
+	}
