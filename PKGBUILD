@@ -55,9 +55,9 @@ build() {
 package() {
   install -m755 -d "${pkgdir}"/usr/lib
   install -m755 -d "${pkgdir}"/usr/share/licenses/amdvlk-git
-  install -m755 -d "${pkgdir}"/etc/amd
 
   install -D -t "$pkgdir/usr/lib" builds/Release64/icd/amdvlk64.so
   install -D -m644 -t "${pkgdir}/usr/share/vulkan/icd.d" builds/Release64/icd/amd_icd64.json
+  install -D -m644 -t "${pkgdir}/usr/share/vulkan/implicit_layer.d" builds/Release64/icd/amd_icd64.json
   install -D -m644 -t "${pkgdir}/usr/share/licenses/amdvlk-git" drivers/xgl/LICENSE.txt
 }
