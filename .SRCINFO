@@ -1,7 +1,7 @@
 pkgbase = r-yaml
 	pkgdesc = Methods to Convert R Data to YAML and Back
-	pkgver = 2.3.8
-	pkgrel = 2
+	pkgver = 2.3.9
+	pkgrel = 1
 	url = https://cran.r-project.org/package=yaml
 	arch = x86_64
 	license = BSD-3-Clause
@@ -9,8 +9,8 @@ pkgbase = r-yaml
 	makedepends = re2c
 	depends = r
 	optdepends = r-runit
-	source = https://cran.r-project.org/src/contrib/yaml_2.3.8.tar.gz
-	md5sums = 25606fd9de01159019b5acd8d0410af7
-	b2sums = 9dc5d33660dbcaf326fe9239304c7884363f60966a2a60538c59f8281d3de5eb616a05081d74bb85d3b14dc4268c4fb43f5ae0bbda6e5e7e1ff09520fad7a280
+	source = https://cran.r-project.org/src/contrib/yaml_2.3.9.tar.gz
+	md5sums = 83d5766c6d82fe37e19e10953081d70d
+	b2sums = 0c7af342a6d7654f380b392fcde0b35341ceda8194971b5e302b38ba07702a110093fcd847d2e4b011993adc0ca4a6b04cdb88b387f9d218fe928eaed7576925
 
 pkgname = r-yaml
