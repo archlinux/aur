@@ -1,7 +1,7 @@
 # Maintainer: Rsplwe <i@rsplwe.com>
 
 pkgname=snipaste
-pkgver=2.9_Beta2
+pkgver=2.9.2_Beta
 pkgrel=2
 pkgdesc="Snip & Paste!"
 arch=('x86_64')
@@ -11,10 +11,10 @@ options=(!strip)
 depends=()
 makedepends=()
 source_x86_64=(
-	"$pkgname-$pkgver.AppImage::https://download.snipaste.com/archives/Snipaste-2.9-Beta2-x86_64.AppImage"
+	"$pkgname-$pkgver.AppImage::https://download.snipaste.com/archives/Snipaste-2.9.2-Beta-x86_64.AppImage"
 )
 sha256sums_x86_64=(
-	"549bf0dccd4e85f8e2fcfa08c67e2073d29c165e87d704585b93db7f5a79ae58"
+	"a15ebdb80063ce46d07706fed70451c6cce1af0238bb2ce1419e1a5c19f27a8f"
 )
 
 noextract=("$pkgname-$pkgver.AppImage")
