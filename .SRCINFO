@@ -7,7 +7,7 @@ pkgbase = python-pulp
 	license = BSD
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/P/PuLP/PuLP-2.8.0.tar.gz
-	b2sums = 4d4af731c75ff8bad878b09e9a9b90c6e482107cf14f65bf3a35ddf7b224985fa48139984c9cc35ca12d1f4f98e391486229140ec6eee04fb94428576519a212
+	source = pulp-2.8.0.tar.gz::https://github.com/coin-or/pulp/archive/refs/tags/2.8.0.tar.gz
+	sha256sums = dc0de97170f783b55bfdbd04ddf669f61aa09f8d485376ddbaef166bb051ef9f
 
 pkgname = python-pulp
