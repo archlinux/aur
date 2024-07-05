@@ -28,16 +28,16 @@ depends=(
 	python-pydantic
 	python-typeguard
 )
-makedepends=(python-setuptools python-packaging)
+makedepends=(python-build python-installer python-wheel)
 source=($pkgname-$pkgver.tar.gz::https://github.com/MultiQC/MultiQC/archive/refs/tags/v$pkgver.tar.gz)
 sha256sums=('b9055c561459bd7e0a4869a6c7d83c7d9f8f31310be6e4ceaaebcdf93c05ae73')
 
 build() {
-  cd "$srcdir/MultiQC-$pkgver"
-  python setup.py build
+  cd MultiQC-$pkgver
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/MultiQC-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  cd MultiQC-$pkgver
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
