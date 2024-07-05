@@ -1,0 +1,23 @@
+pkgbase = yaste-git
+	pkgdesc = Yet another super ₛᵢₘₚₗₑ text editor
+	pkgver = 1.1.0.r0.g613ea8c
+	pkgrel = 1
+	url = https://github.com/LuanRoger/yaste
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = git
+	makedepends = nvm
+	makedepends = gendesk
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = curl
+	depends = electron31
+	provides = yaste=1.1.0
+	conflicts = yaste
+	source = yaste.git::git+https://github.com/LuanRoger/yaste.git
+	source = yaste.sh
+	sha256sums = SKIP
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+
+pkgname = yaste-git
