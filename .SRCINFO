@@ -1,0 +1,22 @@
+pkgbase = rgbepp
+	pkgdesc = Reference Genome based Exon Phylogeny Pipeline
+	pkgver = 0.0.1
+	pkgrel = 0
+	url = https://github.com/starsareintherose/RGBEPP
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = make
+	depends = fastp
+	depends = diamond
+	depends = spades
+	depends = java-runtime
+	depends = macse
+	depends = parallel
+	depends = findutils
+	depends = bash
+	source = https://github.com/starsareintherose/MiMi/archive/refs/tags/0.0.1.tar.gz
+	sha256sums = 66d179a7c82110f094cc414d4860601b8c28434875a30c05ec3841df52e086d1
+
+pkgname = rgbepp
