@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=SAOImage DS9 
+GenericName=Image Viewer
+Comment=Astronomical Data Visualization Application
+Type=Application
+Exec=ds9 %F
+Icon=SAOImageDS9
+MimeType=application/fits;image/x-fits;
+Categories=Education;Science;Astronomy;
+Keywords=FITS;Astronomy;Viewer;

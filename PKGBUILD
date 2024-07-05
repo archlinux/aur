@@ -1,7 +1,7 @@
 # Maintainer: Zhijun Zhang <zhangzhijun23@mails.ucas.ac.cn>
 
 pkgname=ds9-git
-pkgver=v8.6b1
+pkgver=v8.6b2
 pkgrel=1
 pkgdesc="SAOImage DS9: Astronomical Data Visualization Application"
 url="https://github.com/SAOImageDS9/SAOImageDS9.git"
@@ -12,11 +12,11 @@ options=(!strip !lto)
 makedepends=(git gcc make automake autoconf zip)
 conflicts=('ds9' 'ds9-bin')
 source=($pkgname::git+$url
-        "ds9.desktop"
-        "ds9.png")
+        "SAOImageDS9.desktop"
+        "SAOImageDS9.svg")
 sha256sums=('SKIP'
-         'cf41109f31b9be057ab04a96613a59a87fb6cb3ed405fa93545f6bfd8fd98975'
-         'ff5f38cfdfd59aee262ae3443fddf35d644b8604c9d6ab07eb96a137ee0a0d28')
+         '568a1c327560a1fd0a4e1f0b631582f7ed421332ab6aa3336f2832347541f693'
+         'a9940c6d6d1ffd59a019518b803a2ac574e4aff0bf7503e4f4d61648c46b3c69')
 
 pkgver() {
   cd "$pkgname"
@@ -30,11 +30,10 @@ build() {
 }
 
 package() {
-    install -Dm644 ds9.desktop ${pkgdir}/usr/share/applications/ds9.desktop
-    install -Dm644 ${srcdir}/${pkgname}/ds9/doc/sun.png ${pkgdir}/usr/share/pixmaps/ds9.png
+    install -Dm644 SAOImageDS9.desktop ${pkgdir}/usr/share/applications/SAOImageDS9.desktop
+    install -Dm644 SAOImageDS9.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/SAOImageDS9.svg
 
     cd ${srcdir}/${pkgname}
     install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
     install -Dm755 ./bin/ds9 ${pkgdir}/usr/bin/ds9
-
 }
