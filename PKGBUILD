@@ -2,12 +2,12 @@
 _pkgname=godot
 pkgname=godot3-mono-bin
 pkgver=3.5.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Advanced cross-platform 2D and 3D game engine (3.X Branch Mono)"
 arch=("x86_64")
 url='https://godotengine.org'
 license=('MIT')
-depends=(libglvnd libxcursor libxi libxinerama libxrandr hicolor-icon-theme glibc libxrender libx11 bash libxext)
+depends=(libglvnd libxcursor libxi libxinerama libxrandr hicolor-icon-theme glibc libxrender libx11 bash libxext mono mono-msbuild)
 optdepends=(pipewire-alsa pipewire-pulse)
 source=("https://github.com/godotengine/godot/releases/download/${pkgver}-stable/Godot_v${pkgver}-stable_mono_x11_64.zip"
 	"https://github.com/godotengine/godot/archive/refs/tags/${pkgver}-stable.tar.gz")
