@@ -1,6 +1,6 @@
 pkgbase = mint-l-theme
 	pkgdesc = A collection of legacy mint themes.
-	pkgver = 1.9.7
+	pkgver = 1.9.8
 	pkgrel = 1
 	url = http://packages.linuxmint.com/pool/main/m/mint-l-theme
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = mint-l-theme
 	conflicts = mint-y-theme
 	conflicts = mint-cinnamon-themes
 	conflicts = mint-themes-legacy
-	source = mint-l-theme_1.9.7.tar.xz::http://packages.linuxmint.com/pool/main/m/mint-l-theme/mint-l-theme_1.9.7.tar.xz
-	sha256sums = 171f6071179fe8bd585491b5a417642b6a5d38e14b69592571258bc05ba98cd3
+	source = mint-l-theme_1.9.8.tar.xz::http://packages.linuxmint.com/pool/main/m/mint-l-theme/mint-l-theme_1.9.8.tar.xz
+	sha256sums = 1c1d2e0716d42936dc8a38802099de027a07eda173b66d52c40d4ff9c274e674
 
 pkgname = mint-l-theme
