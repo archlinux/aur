@@ -3,17 +3,12 @@ pkgbase = fac
 	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/mkchoi212/fac
-	arch = i686
-	arch = x86_64
-	arch = armv7h
-	arch = aarch64
+	arch = any
 	license = MIT
-	makedepends = git
 	makedepends = go
-	options = !strip
-	options = !emptydirs
-	source = https://github.com/mkchoi212/fac/archive/v2.0.0.tar.gz
+	depends = glibc
+	depends = git
+	source = fac-2.0.0.tar.gz::https://github.com/mkchoi212/fac/archive/refs/tags/v2.0.0.tar.gz
 	sha256sums = 0680c5f3984a6fd4a2bb79a7a527585b4beb93a29adbf1f277d2f79e0a28e227
 
 pkgname = fac
-
