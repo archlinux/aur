@@ -2,29 +2,26 @@
 
 pkgname=molequeue
 pkgver=0.9.0
-pkgrel=3
-pkgdesc="Desktop integration of high performance computing resources"
+pkgrel=4
+pkgdesc='Desktop integration of high performance computing resources'
 arch=(x86_64)
-url="http://www.openchemistry.org/"
-license=(custom)
-depends=(qt5-base)
-makedepends=(cmake)
-source=($pkgname-$pkgver.tar.gz::"https://github.com/OpenChemistry/molequeue/archive/$pkgver.tar.gz")
-sha256sums=('7dd234742c8d73be95281fedf4ed9d09648ecc351afb5f098cd32f48c3df3bd5')
-
-prepare() {
-  mkdir -p build
-}
+url='http://www.openchemistry.org/'
+license=(BSD-3-Clause)
+depends=(gcc-libs
+         glibc
+         qt5-base)
+makedepends=(cmake
+             git)
+source=(git+https://github.com/OpenChemistry/molequeue#tag=$pkgver)
+sha256sums=('3ef4ed58b137091f54d1f779c00f475c295b0abbc5d5112828c4ff29401cbb75')
 
 build() {
-  cd build
-  cmake ../$pkgname-$pkgver \
+  cmake -B build -S $pkgname \
     -DCMAKE_INSTALL_PREFIX=/usr
-  make
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
-  install -Dm644 "$srcdir"/$pkgname-$pkgver/LICENSE  -t "$pkgdir"/usr/share/licenses/$pkgname/
+  DESTDIR="$pkgdir" cmake --install build
+  install -Dm644 $pkgname/LICENSE  -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
