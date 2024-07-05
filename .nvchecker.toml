@@ -1,0 +1,4 @@
+[eadui-font]
+source = "git"
+git = "https://github.com/psb1558/Eadui-font.git"
+prefix = "v"
