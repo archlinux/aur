@@ -1,6 +1,6 @@
 # Maintainer: Tobias Bachmann <tobachmann@gmx.de>
 pkgname=fsleyes-widgets
-pkgver=0.14.4
+pkgver=0.14.5
 pkgrel=1
 pkgdesc="FSLeyes is the FSL image viewer, widgets is one of its dependent projects"
 arch=('any')
@@ -14,7 +14,7 @@ provides=()
 conflicts=()
 replaces=()
 source=("https://git.fmrib.ox.ac.uk/fsl/fsleyes/${pkgname#fsleyes-}/-/archive/${pkgver}/${pkgname#fsleyes-}-${pkgver}.tar.gz")
-sha256sums=('7a624f54bb958c9654d469c1b390c738235551a9a46be334dfad759362cf9b71')
+sha256sums=('b12d6247d50dfbc44bc2eea69fb0952a4d57aab1806bac667ec158a2712b2b02')
 
 build() {
   cd "$srcdir/${pkgname#fsleyes-}-$pkgver"
