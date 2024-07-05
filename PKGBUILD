@@ -3,14 +3,15 @@
 _pkgname=godot-mono
 pkgname=godot-mono
 pkgver=4.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine"
 arch=('x86_64')
 url="https://godotengine.org/"
 license=('MIT')
 depends=(embree3 freetype2 graphite harfbuzz harfbuzz-icu libglvnd libspeechd libsquish
    libtheora libvorbis libwebp libwslay libxcursor libxi libxinerama libxrandr
-   mbedtls2 miniupnpc pcre2 dotnet-sdk hicolor-icon-theme)
+   mbedtls2 pcre2 dotnet-sdk hicolor-icon-theme)
+   #miniupnpc removed due to 2.2.8 update
 makedepends=(alsa-lib gcc pulseaudio scons yasm nuget python git rsync python)
 optdepends=('pipewire-alsa: for audio support'
             'pipewire-pulse: for audio support')
@@ -52,7 +53,7 @@ build() {
     builtin_libwebp=no \
     builtin_wslay=yes \
     builtin_mbedtls=no \
-    builtin_miniupnpc=no \
+    builtin_miniupnpc=yes \
     builtin_pcre2=no \
     builtin_pcre2_with_jit=no \
     builtin_recastnavigation=yes \
