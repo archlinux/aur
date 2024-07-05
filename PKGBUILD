@@ -16,7 +16,7 @@ license=("MIT")
 source=("${pkgname}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/next-chat_${pkgver}_amd64.deb"
     'LICENSE::https://raw.githubusercontent.com/ChatGPTNextWeb/ChatGPT-Next-Web/main/LICENSE')
 sha256sums=('d5cac93ecae0cea7fda7a28af029dba91dd2a7da6ed5269de5f55757c1a21412'
-    'c840d06dc375a0003fd2a080b0d6be6afd958a1f5f637bfb00bd0c13ddfd2987')
+    'edc5ddb0ceb70e4c76021ddb6d17bb8f1bc59b03228bb17a7acfcf8a1b4afd99')
 
 prepare() {
     ar p ${pkgname}-${pkgver}.deb data.tar.gz | tar --zstd -x
