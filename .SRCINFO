@@ -1,7 +1,7 @@
 pkgbase = python-dora-search
 	pkgdesc = Dora The Explorer, a friendly experiment manager
 	pkgver = 0.1.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/facebookresearch/dora
 	arch = any
 	license = MIT
@@ -12,6 +12,7 @@ pkgbase = python-dora-search
 	makedepends = python-wheel
 	depends = ipython
 	depends = python
+	depends = python-hydra-colorlog
 	depends = python-hydra-core
 	depends = python-omegaconf
 	depends = python-pytorch

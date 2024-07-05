@@ -3,7 +3,7 @@
 pkgname=python-dora-search
 _gitpkgname=dora
 pkgver=0.1.12
-pkgrel=1
+pkgrel=2
 pkgdesc='Dora The Explorer, a friendly experiment manager'
 arch=('any')
 url='https://github.com/facebookresearch/dora'
@@ -11,6 +11,7 @@ license=('MIT')
 depends=(
   'ipython'
   'python'
+  'python-hydra-colorlog'
   'python-hydra-core'
   'python-omegaconf'
   'python-pytorch'
