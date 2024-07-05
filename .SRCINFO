@@ -1,6 +1,6 @@
 pkgbase = chatall
 	pkgdesc = Concurrently chat with ChatGPT, Bing Chat, Bard, Alpaca, Vicuna, Claude, ChatGLM, MOSS, 讯飞星火, 文心一言 and more, discover the best answers
-	pkgver = 1.80.106
+	pkgver = 1.82.107
 	pkgrel = 1
 	url = http://chatall.ai/
 	arch = any
@@ -10,12 +10,12 @@ pkgbase = chatall
 	makedepends = npm
 	makedepends = python
 	makedepends = curl
-	depends = electron30
+	depends = electron31
 	provides = chatall
 	conflicts = chatall
-	source = chatall-1.80.106.tar.gz::https://github.com/sunner/ChatALL/archive/refs/tags/v1.80.106.tar.gz
+	source = chatall.git::git+https://github.com/sunner/ChatALL.git#tag=v1.82.107
 	source = chatall.sh
-	sha256sums = 3379c6692eebe0104f080f37520b0c6b38f70ef0eaeec282be478c09228465e9
+	sha256sums = 466e35de0dfc8fe382011777a67d2a19782c77be643ed35f8b35cfd8ed2a4c37
 	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = chatall
