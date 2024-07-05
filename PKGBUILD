@@ -2,7 +2,7 @@
 # Maintainer: raininja < dandenkijin at gmail dot com >
 
 pkgname=clipse
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A configurable TUI clipboard manager for Unix."
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=(
   'wl-clipboard'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('cf3c8d25016fa6e078e8f82a0237245faec11c9f213ab397b249a7037091ef84')
+sha256sums=('5e2ca51a02298b2cc2edd48fd1b35f30470664c59ae96abf5ba97f4762512972')
 
 build() {
   export GOPATH="$srcdir"/gopath
