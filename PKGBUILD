@@ -1,8 +1,8 @@
 # Maintainer: dhruvasambrani <dhruvasambrani19 at gmail>
 
 pkgname=juliaup-bin
-pkgver="1.14.8"
-pkgrel=2
+pkgver="1.14.9"
+pkgrel=1
 pkgdesc="An experimental Julia version manager"
 arch=('x86_64' 'aarch64' 'i686')
 license=('MIT')
