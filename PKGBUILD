@@ -2,7 +2,7 @@
 # Forked from Vesktop
 
 ## options
-#: ${_electron_version:=29}
+#: ${_electron_version:=31}
 : ${_install_path:=usr/share}
 
 # basic info
