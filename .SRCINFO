@@ -6,7 +6,6 @@ pkgbase = ttf-neospleen
 	arch = any
 	license = BSD-2-Clause
 	source = https://github.com/mbwilding/NeoSpleen/releases/download/1.0.44/NeoSpleen.ttf
-	b2sums = 01d9e7f332ae4d0390e3f230e711fde44904d39965c310ab9319c1e5fcf1e1b4
-	b2sums = SKIP
+	b2sums = 6921d4b3bdf0b9180f3ff41ad84d55c56f22e39dcbba6b7077c1c3dd7fe65fc05ff507f801273c1bd37c014e1d299cdff6bce44f075fac68fc6bf52a3a9d9f13
 
 pkgname = ttf-neospleen
