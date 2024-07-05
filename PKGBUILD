@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pixelflasher
-pkgver=6.9.8.0
+pkgver=7.0.0.0
 pkgrel=1
 pkgdesc="Pixel phone flashing GUI utility with features."
 arch=('any')
@@ -32,9 +32,11 @@ optdepends=(
 )
 options=('!strip')
 source=("PixelFlasher-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-        'PixelFlasher.desktop')
-sha256sums=('67e878f48e33b7a9c085be9aa3f059d49063899e8f7bee7b8d6916d7a5a305ae'
-            '3f503e3e3b819562669e1d0a8a25043c478c8c1709b376642fd678caf3d8ee34')
+        'PixelFlasher.desktop'
+        'PixelFlasher.sh')
+sha256sums=('675da57788e896e5a439a604480d9708e98724c63c97d7170f0aefaf3b9b450a'
+            '3f503e3e3b819562669e1d0a8a25043c478c8c1709b376642fd678caf3d8ee34'
+            '345d09c6aa123e6d30d8156b042f4372764cbd92932ffcf978fe77a512c4502d')
 
 package() {
   cd "PixelFlasher-$pkgver"
@@ -49,8 +51,10 @@ package() {
   install -Dm644 images/pif/*.png -t "$pkgdir/opt/$pkgname/images/pif/"
 
   chmod +x "$pkgdir/opt/$pkgname/PixelFlasher.py"
-  install -d "$pkgdir/usr/bin"
-  ln -s  "/opt/$pkgname/PixelFlasher.py" "$pkgdir/usr/bin/PixelFlasher"
+#  install -d "$pkgdir/usr/bin"
+#  ln -s  "/opt/$pkgname/PixelFlasher.py" "$pkgdir/usr/bin/PixelFlasher"
+
+  install -Dm755 "$srcdir/PixelFlasher.sh" "$pkgdir/usr/bin/PixelFlasher"
 
   for i in 64 128 256; do
     install -Dm644 "images/icon-${i}.png" \
