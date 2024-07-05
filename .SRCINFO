@@ -1,5 +1,5 @@
 pkgbase = fac-bin
-	pkgdesc = Easy-to-use CUI for fixing git conflicts
+	pkgdesc = Easy-to-use command line tool for fixing git conflicts
 	pkgver = 2.0.0
 	pkgrel = 2
 	url = https://github.com/mkchoi212/fac
