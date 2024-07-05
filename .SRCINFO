@@ -1,0 +1,20 @@
+pkgbase = compasscad-bin
+	pkgdesc = Very good CAD software. plan out buildings, and show it off to your boss.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/zeankundev/CompassCAD
+	arch = x86_64
+	license = LicenseRef-UFOL-2.0
+	makedepends = asar
+	makedepends = npm
+	depends = electron31
+	provides = compasscad=1.1.0
+	conflicts = compasscad
+	source = compasscad-1.1.0.deb::https://github.com/zeankundev/CompassCAD/releases/download/1.1.0/compasscad_1.1.0_amd64.deb
+	source = LICENSE-1.1.0::https://raw.githubusercontent.com/zeankundev/CompassCAD/1.1.0/LICENSE
+	source = compasscad.sh
+	sha256sums = ab03bde2b9359448d1767ed71903418717608702135098e4159f9c58f3ad1d07
+	sha256sums = 2d59799d08c811b91b35bc6d0615c7b8b3e27f3e2dc676daa9abc1de4bc97c40
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+
+pkgname = compasscad-bin
