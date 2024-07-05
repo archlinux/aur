@@ -3,7 +3,7 @@
 # Contributor: Zhang Zongyu <zongyu@novazy.net>
 
 pkgname=swan-updown
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="swan-updown helps create XFRM interfaces on demand"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ license=('MIT')
 makedepends=('cargo')
 
 source=("https://github.com/6-6-6/swan-updown/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('d01d5c88bdc30244cece300183aba2ad38c04a161fb9d45fdc6a59a53a71d74974a59e08e17fdceed58d641fe069969532d37ac5dd5fdbe591059adb33163cca')
+sha512sums=('edfe6518a8f6274fab145aae2ab1be35d649595713299f099472218f0282f57b01886e8a31a93df91d9f6b72be877a04851975e49d15e47fa59bc6a0c36b39b0')
 build() {
   cd "$pkgname-$pkgver"
   cargo build --release
