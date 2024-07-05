@@ -1,7 +1,7 @@
 pkgbase = obs-studio-tytan652
 	pkgdesc = Free and open source software for video recording and live streaming. With everything except service integrations. Plus my bind interface PR, and sometimes backported fixes
 	pkgver = 30.1.2
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/obsproject/obs-studio
 	arch = x86_64
 	arch = aarch64
@@ -43,7 +43,7 @@ pkgbase = obs-studio-tytan652
 	depends = libxcb
 	depends = libxcomposite
 	depends = libxkbcommon
-	depends = mbedtls>=3.5.1
+	depends = mbedtls>=3.6
 	depends = pciutils
 	depends = qrcodegencpp-cmake
 	depends = qt6-base>=6.6.2
@@ -106,6 +106,7 @@ pkgbase = obs-studio-tytan652
 	source = 0001-Add_finder_for_uthash.patch
 	source = 0002-Use_system_uthash.patch
 	source = 0003-Update_to_libajantv2_17_legacy_path_only.patch
+	source = 0004-Max_tls_v1_2_mbedtls_3_6_0_workaround.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -114,5 +115,6 @@ pkgbase = obs-studio-tytan652
 	sha256sums = f4a56021a7f1c564f95b588d7c09b60a89efa2c1954c8a418cf6320b5a818542
 	sha256sums = 82b14439697b5c5947117afa1b973bad7ddd9ee2f09e5d1ac56a96d10e01c6b1
 	sha256sums = a7149e1d9a07270132cf8085d52225ed3200a78ea943cbf52d64b1b8f293e117
+	sha256sums = c397a8da291547c757a42f7727a5e6650aa70e6e531f2ef150356eb9eb1fb49c
 
 pkgname = obs-studio-tytan652

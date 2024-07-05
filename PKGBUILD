@@ -2,7 +2,7 @@
 
 pkgname=obs-studio-tytan652
 pkgver=30.1.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integrations. Plus my bind interface PR, and sometimes backported fixes"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -11,7 +11,7 @@ license=('GPL-2.0-or-later')
 _qtver=6.6.2
 _libajantv2ver=17.0.1
 _libdatachannelver=0.21
-_mbedtlsver=3.5.1
+_mbedtlsver=3.6
 _pythonver=3.12
 depends=(
   "alsa-lib" # Deps of ALSA plugin and CEF
@@ -117,6 +117,7 @@ source=(
   "0001-Add_finder_for_uthash.patch"
   "0002-Use_system_uthash.patch"
   "0003-Update_to_libajantv2_17_legacy_path_only.patch"
+  "0004-Max_tls_v1_2_mbedtls_3_6_0_workaround.patch"
 )
 sha256sums=(
   "SKIP"
@@ -127,6 +128,7 @@ sha256sums=(
   "f4a56021a7f1c564f95b588d7c09b60a89efa2c1954c8a418cf6320b5a818542"
   "82b14439697b5c5947117afa1b973bad7ddd9ee2f09e5d1ac56a96d10e01c6b1"
   "a7149e1d9a07270132cf8085d52225ed3200a78ea943cbf52d64b1b8f293e117"
+  "c397a8da291547c757a42f7727a5e6650aa70e6e531f2ef150356eb9eb1fb49c"
 )
 
 if [[ $CARCH == 'x86_64' ]]; then
@@ -147,6 +149,9 @@ prepare() {
   patch -Np1 -i "$srcdir/0001-Add_finder_for_uthash.patch"
   patch -Np1 -i "$srcdir/0002-Use_system_uthash.patch"
   patch -Np1 -i "$srcdir/0003-Update_to_libajantv2_17_legacy_path_only.patch"
+
+  # MbedTLS 3.6.0 broke stuff with TLS v1.3
+  patch -Np1 -i "$srcdir/0004-Max_tls_v1_2_mbedtls_3_6_0_workaround.patch"
 
   cd "$srcdir/obs-studio"
   ## Add network interface binding for RTMP on Linux (https://github.com/tytan652/obs-studio/commits/bind_iface_eyeballed)
