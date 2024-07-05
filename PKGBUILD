@@ -2,7 +2,7 @@
 
 pkgname=python-apollo
 _gitpkgname=apollo
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc='Microcontroller-based FPGA/JTAG programmer'
 arch=('any')
@@ -36,7 +36,7 @@ source=(
   "${_gitpkgname}-${pkgver}.tar.gz::https://github.com/greatscottgadgets/apollo/archive/v${pkgver}.tar.gz"
 )
 
-sha512sums=('513e270d4ad180f6342c381d504ee5769638cf8a230e8c8cfd3ef6902042e8fa226d41a4af0d3b765b34453253a1a0272a8a1a13ac1204df002d0fedae293053')
+sha512sums=('44537ab4d6b10ad594b10f625ac3431e37ce293067e1483fc19beafe37ded68fc3e2034dd06b0e63a14ea673e439c1ff612dc8814d531daeb63cf9c6143ea9c5')
 
 prepare() {
   cd "${_gitpkgname}-${pkgver}"
@@ -83,6 +83,10 @@ package() {
 
   echo >&2 'Packaging the wheel'
   python -I -m installer --destdir="${pkgdir}" dist/*.whl
+
+  echo >&2 'Packaging udev rules'
+  install -D -m 644 -t "${pkgdir}/usr/lib/udev/rules.d" \
+    misc/*.rules
 
   echo >&2 'Packaging the documentation'
   install -D -m 644 -t "${pkgdir}/usr/share/doc/${pkgname}" \
