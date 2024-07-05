@@ -12,7 +12,7 @@ license=("CC-BY-NC-4.0")
 conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
-    #'mecab'
+    'mecab'
     'java-runtime'
 )
 makedepends=(
