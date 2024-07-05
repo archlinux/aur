@@ -2,7 +2,7 @@
 # Contributor: Alexis Janon <kardyne -at- gmail -dot- com>
 
 pkgname=ttf-tabler-icons
-pkgver=3.8.0
+pkgver=3.9.0
 pkgrel=1
 pkgdesc="A set of over 5200 free high-quality icons"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://tabler.io/icons"
 license=('MIT')
 source=("https://github.com/tabler/tabler-icons/releases/download/v${pkgver}/tabler-icons-${pkgver}.zip"
         "${pkgname}-LICENSE::https://github.com/tabler/tabler-icons/raw/v${pkgver}/LICENSE")
-sha256sums=('aafa53c06536b64a33c92bd52c4ccbfa1cb93fd611abf82d435a1d6fb223855b'
+sha256sums=('df3d737a8a6b7ba1e51fdf2a1a93103933530db8c3fdb3d8f80d3e2f82f9c8ea'
             'd5a3f948ae5cb95bfc4d2f767ef2bf6a778815b0ddb2d1c48037744cf636518e')
 
 package() {
