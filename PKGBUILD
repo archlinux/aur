@@ -7,7 +7,8 @@ pkgdesc="Using ChatGPT/GPT-3.5/GPT-4 in the terminal"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/sigoden/aichat"
 license=('MIT' 'APACHE')
-conflicts=('aichat' 'aichat-git')
+conflicts=('aichat')
+provides=('aichat')
 # for license
 source=("https://github.com/sigoden/aichat/archive/refs/tags/v${pkgver}.tar.gz")
 source_aarch64=("https://github.com/sigoden/aichat/releases/download/v${pkgver}/aichat-v${pkgver}-aarch64-unknown-linux-musl.tar.gz")
