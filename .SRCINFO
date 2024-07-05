@@ -1,0 +1,18 @@
+pkgbase = simdutf-git
+	pkgdesc = Unicode validation and transcoding at billions of characters per second
+	pkgver = 5.2.8.r4.g768494ee
+	pkgrel = 1
+	url = https://simdutf.github.io/simdutf/
+	arch = i686
+	arch = x86_64
+	license = Apache-2.0
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = gcc-libs
+	provides = simdutf=5.2.8.r4.g768494ee
+	conflicts = simdutf
+	source = git+https://github.com/simdutf/simdutf.git
+	sha256sums = SKIP
+
+pkgname = simdutf-git
