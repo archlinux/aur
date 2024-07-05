@@ -3,7 +3,7 @@
 _name=tempest
 pkgname=python-tempest
 pkgver=39.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenStack Integration Testing'
 arch=(any)
 url='https://docs.openstack.org/tempest/'
@@ -17,23 +17,23 @@ depends=(python-pbr python-cliff python-jsonschema python-testtools
          python-prettytable python-urllib3 python-debtcollector
          python-defusedxml python-fasteners)
 checkdepends=(python-hacking python-oslotest)
-source=("$pkgname-$pkgver.tar.gz::https://opendev.org/openstack/tempest/archive/$pkgver.tar.gz")
-sha512sums=('59bbf2cc1d10a1316dbcc110022e71703d25ad62f7c5d9641ef6c46476953fa00eed203538213f12e73820324af846a797618cac3bec3c63f8d696ac41119af1')
+source=("https://tarballs.opendev.org/openstack/tempest/$_name-$pkgver.tar.gz")
+sha512sums=('4e60b7fe90b7943cb9208cab72188f3f3668fdc4fd90b4667e5f578f979f66dbc6e9a2486c47fb7f0f608ac8197b726da1fd6b7ded169d804705dc4e58eed256')
 
 export PBR_VERSION=$pkgver
 
 build() {
-  cd $_name
+  cd $_name-$pkgver
   python setup.py build
 }
 
 # Disabling due to test failures
 #check() {
-#  cd $_name
+#  cd $_name-$pkgver
 #  stestr --test-path tempest/tests run
 #}
 
 package() {
-  cd $_name
+  cd $_name-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1
 }
