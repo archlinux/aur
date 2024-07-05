@@ -5,8 +5,8 @@
 _target=riscv-none-elf
 pkgname=$_target-gcc
 pkgver=14.1.0
-pkgrel=1
-pkgdesc='The GNU Compiler Collection - cross compiler for RISC-V (bare-metal) target, stage 1'
+pkgrel=2
+pkgdesc='The GNU Compiler Collection - cross compiler for RISC-V (bare-metal) target'
 arch=(x86_64)
 url='https://gcc.gnu.org/'
 license=(GPL LGPL FDL)
@@ -30,19 +30,10 @@ prepare() {
   echo $pkgver > gcc/BASE-VER
 
   mkdir "$srcdir"/build-gcc
+  mkdir "$srcdir"/build-gcc-nano
 }
 
-build() {
-  # Credits @allanmcrae
-  # https://github.com/allanmcrae/toolchain/blob/f18604d70c5933c31b51a320978711e4e6791cf1/gcc/PKGBUILD
-  # TODO: properly deal with the build issues resulting from this
-  CFLAGS=${CFLAGS/-Werror=format-security/}
-  CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
-
-  cd "$srcdir"/build-gcc
-  export CFLAGS_FOR_TARGET="-Os -pipe"
-  export CXXFLAGS_FOR_TARGET="-Os -pipe"
-
+_build_gcc() {
   "$srcdir"/$_basedir/configure \
     --target=$_target \
     --prefix=/usr \
@@ -79,9 +70,39 @@ build() {
   make
 }
 
+build() {
+  # Credits @allanmcrae
+  # https://github.com/allanmcrae/toolchain/blob/f18604d70c5933c31b51a320978711e4e6791cf1/gcc/PKGBUILD
+  # TODO: properly deal with the build issues resulting from this
+  CFLAGS=${CFLAGS/-Werror=format-security/}
+  CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
+
+  cd "$srcdir"/build-gcc
+  export CFLAGS_FOR_TARGET="-g -Os -pipe"
+  export CXXFLAGS_FOR_TARGET="-g -Os -pipe"
+  _build_gcc
+
+  cd "$srcdir"/build-gcc-nano
+  export CFLAGS_FOR_TARGET="-g -Oz -pipe"
+  export CXXFLAGS_FOR_TARGET="-g -Oz -pipe -fno-exceptions"
+  _build_gcc
+}
+
 package() {
   cd "$srcdir"/build-gcc
   make DESTDIR="$pkgdir" install -j1
+
+  cd "$srcdir"/build-gcc-nano
+  make DESTDIR="$pkgdir.nano" install -j1
+  # we need only libstdc nano files
+  multilibs=( $("$pkgdir"/usr/bin/$_target-gcc -print-multi-lib 2>/dev/null) )
+  for multilib in "${multilibs[@]}"; do
+    dir="${multilib%%;*}"
+    from_dir="$pkgdir".nano/usr/$_target/lib/"$dir"
+    to_dir="$pkgdir"/usr/$_target/lib/"$dir"
+    cp -f "$from_dir"/libstdc++.a "$to_dir"/libstdc++_nano.a
+    cp -f "$from_dir"/libsupc++.a "$to_dir"/libsupc++_nano.a
+  done
 
   # strip host binaries
   find "$pkgdir"/usr/bin/ -type f -executable -exec strip '{}' \;
