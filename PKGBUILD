@@ -1,7 +1,7 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=python-ironicclient
-pkgver=5.6.0
+pkgver=5.7.0
 pkgrel=1
 pkgdesc='Python client library for Ironic'
 arch=(any)
@@ -16,7 +16,7 @@ checkdepends=(python-fixtures python-requests-mock python-oslotest
               python-testtools python-tempest python-stestr python-ddt
               python-openstackclient)
 source=("$pkgname-$pkgver.tar.gz::https://opendev.org/openstack/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('aa0c2f57a14af2b4cf23796f166fa63782c1cda16aa78f9430a19295a10070960bc684ad945df35ecafd1095bf5b739cbcce090fe4ddd07968ba4b0344e291d5')
+sha512sums=('0173c55f604ea537f7543f9e596ef78d5ac05c2379a24bd3c779748dbfcdff2b19c267da68a1e56a20805343455954e742292cd39787d9ff37cca5a3515e2c47')
 
 export PBR_VERSION=$pkgver
 
