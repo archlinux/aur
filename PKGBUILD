@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=chatall-git
 _pkgname=ChatALL
-pkgver=1.80.106.r0.g8b3e592
-_electronversion=30
+pkgver=1.82.107.r0.gf934d5c
+_electronversion=31
 _nodeversion=20
 pkgrel=1
 pkgdesc="Concurrently chat with ChatGPT, Bing Chat, Bard, Alpaca, Vicuna, Claude, ChatGLM, MOSS, 讯飞星火, 文心一言 and more, discover the best answers"
