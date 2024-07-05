@@ -1,0 +1,14 @@
+pkgbase = hdrecover
+	pkgdesc = Tool to encourage hard disks to reallocate bad sectors allowing data recovery
+	pkgver = 0.5
+	pkgrel = 1
+	url = http://sourceforge.net/projects/hdrecover/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = make
+	depends = glibc
+	source = http://netcologne.dl.sourceforge.net/project/hdrecover/hdrecover/hdrecover-0.5/hdrecover-0.5.tar.gz
+	md5sums = 1cbe15f790fe383a20375b97aa3e5d04
+
+pkgname = hdrecover
