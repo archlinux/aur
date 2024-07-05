@@ -1,7 +1,7 @@
 # Maintainer: Olivier Biesmans <o.aur@biesmans.fr>
 # Contributor: Florian Latifi <mail@florian-latifi.at>
 pkgname=gnome-shell-extension-stocks-extension
-pkgver=33
+pkgver=34
 pkgrel=1
 pkgdesc="An extension to display stock quotes in GNOME Shell Panel"
 arch=("any")
@@ -10,7 +10,7 @@ license=("GPL")
 provides=("gnome-shell-extension-stocks-extension")
 depends=("gnome-shell")
 source=("$pkgname-$pkgver.zip::$url/releases/download/v$pkgver/stocks-extension.zip")
-sha256sums=('2344b826d1080e7491b52b60a93074290d70dcfe2647c1477359168e2979995b')
+sha256sums=('7e62115274c512295d025615c97d43af6f446f4b8665c1ca9eaa9cd2274f32e6')
 
 package() {
   install -d "$pkgdir/usr/share/gnome-shell/extensions/stocks@infinicode.de" \
