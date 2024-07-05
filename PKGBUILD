@@ -1,6 +1,6 @@
 # Maintainer: Zesko
 pkgname="limine-snapper-sync-git"
-pkgver=r2.7b73c6a
+pkgver=0
 pkgrel=1
 pkgdesc="Snapper integration for Limine bootloader."
 arch=("any")
@@ -9,7 +9,7 @@ source=(git+$url.git)
 license=("GPL3")
 depends=(
        'bash'
-       'java-runtime>=17'
+       'java-environment>=17'
        'limine'
        'snapper'
        'btrfs-progs'
@@ -42,4 +42,3 @@ package() {
   install -Dm 644 target/limine-snapper-sync*.jar $src_path/usr/share/java/
   cp -vr $src_path/usr $src_path/etc "$pkgdir"
 }
-
