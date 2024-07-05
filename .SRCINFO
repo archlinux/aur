@@ -1,0 +1,12 @@
+pkgbase = mathjax2
+	pkgdesc = An open source JavaScript display engine for mathematics that works in all modern browsers
+	pkgver = 2.7.9
+	pkgrel = 2
+	url = https://www.mathjax.org/
+	arch = any
+	license = Apache-2.0
+	makedepends = git
+	source = git+https://github.com/mathjax/MathJax#tag=2.7.9
+	sha256sums = b6ef77c248f9b8b827da55f7520bf003048cd20b2ecc5fd83d8ee5b7d6c3046e
+
+pkgname = mathjax2
