@@ -9,14 +9,15 @@
 _pkgname=godot
 pkgname=godot3
 pkgver=3.5.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Advanced cross-platform 2D and 3D game engine (3.x Branch)'
 url='https://godotengine.org'
 license=(MIT)
 arch=(x86_64)
 makedepends=(gcc scons yasm alsa-lib pulseaudio)
 depends=(embree3 freetype2 libglvnd libtheora libvorbis libvpx libwebp libwslay
-         libsquish libxcursor libxi libxinerama libxrandr miniupnpc opusfile)
+         libsquish libxcursor libxi libxinerama libxrandr opusfile)
+	 #miniupnpc removed due to 2.2.8 update
 optdepends=(pipewire-alsa pipewire-pulse)
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/godotengine/godot/archive/$pkgver-stable.tar.gz"
         "godot3.patch")
@@ -38,8 +39,9 @@ build() {
   #  certs (FS#72762)
   #  enet (contains no upstreamed IPv6 support)
   #  recast, xatlas
+  #  miniupnpc updated to 2.2.8
   #  AUR: libwebm
-  local to_unbundle="embree freetype libogg libpng libsquish libtheora libvorbis libvpx libwebp miniupnpc opus pcre2 wslay zlib zstd"
+  local to_unbundle="embree freetype libogg libpng libsquish libtheora libvorbis libvpx libwebp opus pcre2 wslay zlib zstd"
   local system_libs=""
   for _lib in $to_unbundle; do
     system_libs+="builtin_"$_lib"=no "
