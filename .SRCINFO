@@ -17,7 +17,7 @@ pkgbase = optimus-manager-git
 	depends = xorg-xrandr
 	optdepends = bbswitch: alternatively switches GPUs by using standard Optimus ACPI calls
 	optdepends = acpi_call: alternatively switches GPUs by brute forcing ACPI calls
-	provides = optimus-manager=r728.97e4f15.python3.12
+	provides = optimus-manager
 	conflicts = bumblebee
 	conflicts = optimus-manager
 	backup = etc/optimus-manager/nvidia-enable.sh
