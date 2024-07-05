@@ -5,8 +5,9 @@ pkgbase = python-multipledispatch
 	url = https://github.com/mrocklin/multipledispatch
 	arch = any
 	license = BSD
-	makedepends = python-setuptools
-	depends = python>=3.4
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-six
 	source = multipledispatch-1.0.0.tar.gz::https://github.com/mrocklin/multipledispatch/archive/1.0.0.tar.gz
 	sha256sums = a9eb21390e5051ce28b2ee7acd02bb21885b9e2a4ce6e5fdbb1f338b48b54203
