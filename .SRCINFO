@@ -1,0 +1,13 @@
+pkgbase = s3-edit
+	pkgdesc = Edit directly a file on Amazon S3 in CLI
+	pkgver = 0.0.16
+	pkgrel = 1
+	url = https://github.com/tsub/s3-edit
+	arch = any
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = s3-edit-0.0.16.tar.gz::https://github.com/tsub/s3-edit/archive/refs/tags/v0.0.16.tar.gz
+	sha256sums = 899e233568186eb980d706401e26188f38e6197c76f9d7ff61738ad41d407a27
+
+pkgname = s3-edit
