@@ -3,7 +3,7 @@
 pkgname=obs-studio-rc
 _pkgver=30.2.0-rc1
 pkgver=${_pkgver//-/_}
-pkgrel=2
+pkgrel=3
 epoch=8
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
@@ -13,7 +13,7 @@ license=('GPL-2.0-or-later')
 _qtver=6.6.2
 _libajantv2ver=17.0.1
 _libdatachannelver=0.21
-_mbedtlsver=3.5.1
+_mbedtlsver=3.6
 _pythonver=3.12
 depends=(
   "alsa-lib" # Deps of ALSA plugin and CEF
@@ -115,6 +115,7 @@ source=(
   "obs-websocket::git+https://github.com/obsproject/obs-websocket.git"
   "ftl-sdk::git+https://github.com/microsoft/ftl-sdk.git"
   "supported-nv-codec-headers::git+https://github.com/FFmpeg/nv-codec-headers.git#tag=n12.1.14.0"
+  "0004-Max_tls_v1_2_mbedtls_3_6_0_workaround.patch"
 )
 sha256sums=(
   "SKIP"
@@ -122,6 +123,7 @@ sha256sums=(
   "SKIP"
   "SKIP"
   "SKIP"
+  "c397a8da291547c757a42f7727a5e6650aa70e6e531f2ef150356eb9eb1fb49c"
 )
 
 if [[ $CARCH == 'x86_64' ]]; then
@@ -134,6 +136,9 @@ prepare() {
   git config submodule.plugins/obs-websocket.url $srcdir/obs-websocket
   git config submodule.plugins/obs-outputs/ftl-sdk.url $srcdir/ftl-sdk
   git -c protocol.file.allow=always submodule update
+
+  # MbedTLS 3.6.0 broke stuff with TLS v1.3
+  patch -Np1 -i "$srcdir/0004-Max_tls_v1_2_mbedtls_3_6_0_workaround.patch"
 
   cd "$srcdir"
   make PREFIX="$srcdir/nv-prefix" -C supported-nv-codec-headers install

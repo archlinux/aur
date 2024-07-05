@@ -1,7 +1,7 @@
 pkgbase = obs-studio-rc
 	pkgdesc = Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration
 	pkgver = 30.2.0_rc1
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 8
 	url = https://github.com/obsproject/obs-studio
 	arch = x86_64
@@ -43,7 +43,7 @@ pkgbase = obs-studio-rc
 	depends = libxcb
 	depends = libxcomposite
 	depends = libxkbcommon
-	depends = mbedtls>=3.5.1
+	depends = mbedtls>=3.6
 	depends = pciutils
 	depends = qrcodegencpp-cmake
 	depends = qt6-base>=6.6.2
@@ -103,10 +103,12 @@ pkgbase = obs-studio-rc
 	source = obs-websocket::git+https://github.com/obsproject/obs-websocket.git
 	source = ftl-sdk::git+https://github.com/microsoft/ftl-sdk.git
 	source = supported-nv-codec-headers::git+https://github.com/FFmpeg/nv-codec-headers.git#tag=n12.1.14.0
+	source = 0004-Max_tls_v1_2_mbedtls_3_6_0_workaround.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = c397a8da291547c757a42f7727a5e6650aa70e6e531f2ef150356eb9eb1fb49c
 
 pkgname = obs-studio-rc
