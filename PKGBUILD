@@ -2,7 +2,7 @@
 
 pkgname=modrinth-app
 pkgver=0.7.1
-pkgrel=6
+pkgrel=7
 pkgdesc='An unique, open source launcher that allows you to play your favorite mods, and keep them up to date, all in one neat little package.'
 url='https://modrinth.com/app'
 arch=('x86_64')
@@ -18,17 +18,17 @@ optdepends=(
     'xorg-xrandr: for older minecraft versions'
 )
 source=(
-    "$pkgname-$pkgver.tar.gz::https://github.com/modrinth/olympus/archive/refs/tags/v${pkgver}.tar.gz"
+    "$pkgname-$pkgver.tar.gz::https://github.com/modrinth/code/archive/refs/tags/v${pkgver}.tar.gz"
     "modrinth-app.desktop"
     "modrinth-app"
 )
-sha256sums=('bd202fcf47d9c15151f4e3ae385044914bb7012e1890dacdcdefaab65830bab4'
+sha256sums=('38aa08025446e2ed6a2c76edeb83768695ce6cbe50d27c2df4e74791e8e8ca2f'
             'ad8f7ffea0435881acdd7ecb560443e281982727dc7c715885367e9466bc0a62'
             '5404b4e7b25903afe43ab2f2451be4b27f4823c6785327b166f2faa519fa38a9')
 options=('!lto')
 
 prepare() {
-    cd "olympus-${pkgver}"
+    cd "code-${pkgver}"
 
     export CARGO_TARGET_DIR=target
     export RUSTUP_TOOLCHAIN=stable
@@ -40,7 +40,7 @@ prepare() {
 }
 
 build() {
-    cd "olympus-${pkgver}/theseus_gui/"
+    cd "code-${pkgver}/theseus_gui/"
 
     export COREPACK_ENABLE_STRICT=0
     pnpm build
@@ -53,7 +53,7 @@ build() {
 }
 
 check() {
-    cd "olympus-${pkgver}"
+    cd "code-${pkgver}"
 
     export CARGO_TARGET_DIR=target
     export RUSTUP_TOOLCHAIN=stable
@@ -62,9 +62,9 @@ check() {
 
 package() {
     install -Dm755 "$srcdir"/modrinth-app "$pkgdir"/usr/bin/modrinth-app
-    install -Dm755 "$srcdir"/olympus-"$pkgver"/target/release/theseus_gui "$pkgdir"/opt/modrinth-app/modrinth-app
+    install -Dm755 "$srcdir"/code-"$pkgver"/target/release/theseus_gui "$pkgdir"/opt/modrinth-app/modrinth-app
     
-    install -Dm644 "$srcdir"/olympus-"$pkgver"/theseus_gui/src-tauri/icons/128x128.png "$pkgdir"/usr/share/icons/hicolor/128x128/apps/modrinth-app.png
-    install -Dm644 "$srcdir"/olympus-"$pkgver"/theseus_gui/src-tauri/icons/icon.png "$pkgdir"/usr/share/icons/hicolor/256x256@2/apps/modrinth-app.png
+    install -Dm644 "$srcdir"/code-"$pkgver"/theseus_gui/src-tauri/icons/128x128.png "$pkgdir"/usr/share/icons/hicolor/128x128/apps/modrinth-app.png
+    install -Dm644 "$srcdir"/code-"$pkgver"/theseus_gui/src-tauri/icons/icon.png "$pkgdir"/usr/share/icons/hicolor/256x256@2/apps/modrinth-app.png
     install -Dm644 modrinth-app.desktop "$pkgdir"/usr/share/applications/modrinth-app.desktop
 }
