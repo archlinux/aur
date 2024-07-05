@@ -3,24 +3,23 @@
 
 _gemname=asciidoctor-diagram-plantuml
 pkgname=ruby-$_gemname
-pkgver=1.2021.8
+pkgver=1.2024.5
 pkgrel=1
 pkgdesc='PlantUML JAR files wrapped in a Ruby gem'
 arch=(any)
 url='https://github.com/asciidoctor/asciidoctor-diagram'
-license=(MIT)
+license=('LGPL-3.0-only' 'GPL-2.0-or-later')
 depends=(ruby)
 makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('21169ef4daa7d5be64dba12d258747e8949fb03f')
+sha1sums=('2234f970dc31705954184822fc4f12f636cb0401')
 
 package() {
   local _gemdir="$(ruby -e 'puts Gem.default_dir')"
   gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
-  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/batik-all-license.txt" "$pkgdir/usr/share/licenses/$pkgname/batik-all-license.txt"
   install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/jlatexmath-license.txt" "$pkgdir/usr/share/licenses/$pkgname/jlatexmath-license.txt"
   install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/plantuml-license.txt" "$pkgdir/usr/share/licenses/$pkgname/plantuml-license.txt"
 }

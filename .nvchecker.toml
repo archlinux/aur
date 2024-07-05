@@ -1,0 +1,3 @@
+[ruby-asciidoctor-diagram-plantuml]
+source = "gems"
+gems = "asciidoctor-diagram-plantuml"
