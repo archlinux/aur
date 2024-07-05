@@ -1,0 +1,23 @@
+pkgbase = dcc-git
+	pkgdesc = dcc - a C compiler which explains errors to novice programmers
+	pkgver = 2.34.r381.f41dca3
+	pkgrel = 1
+	url = https://github.com/COMP1511UNSW/dcc
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = make
+	makedepends = zip
+	makedepends = help2man
+	depends = clang
+	depends = curl
+	depends = gcc
+	depends = gdb
+	depends = python3
+	depends = valgrind
+	provides = dcc
+	conflicts = dcc
+	source = git+https://github.com/COMP1511UNSW/dcc
+	sha256sums = SKIP
+
+pkgname = dcc-git
