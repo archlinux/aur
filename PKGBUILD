@@ -1,21 +1,21 @@
 # Maintainer: David Gonzalez <neko.eth0 AT gmail DOT com>
 # Contributor: Ricardo Band <email AT ricardo DOT band>
-_pkgver="11.1.0.0-5294"
-_folder_num="FOLDER09667202M"
-_folder_gpg="FOLDER09667198M"
+_pkgver="11.2.0.0-213"
+_folder_num="FOLDER11566538M"
+_folder_gpg="FOLDER11565201M"
 pkgname=dell-idractools
 pkgver=${_pkgver/-/.}
 pkgrel=1
 pkgdesc="Dell iDRAC Tools (RACADM, VMCLI, IPMI Tool)"
 arch=('x86_64')
-url='https://www.dell.com/support/home/en-us/drivers/driversdetails?driverid=xftc6&oscode=rhel8&productcode=poweredge-r7525'
+url='https://www.dell.com/support/home/en-us/drivers/driversdetails?driverid=j72j9&oscode=rhel8&productcode=poweredge-r7525'
 license=('GPL2' 'LGPL2')
 conflicts=(dell-srvadmin dell-mgmtstat)
 makedepends=(rpmextract)
 source=("https://dl.dell.com/${_folder_gpg}/1/Dell-iDRACTools-Web-LX-${_pkgver}_A00.tar.gz.sign"
         "https://dl.dell.com/${_folder_num}/1/Dell-iDRACTools-Web-LX-${_pkgver}_A00.tar.gz")
 sha256sums=('SKIP'
-            '57a0082a47f2729379bf397f85417e14b7c232b52cae8c1b90ed98b07613bb14')
+            '5df8cb37391eff84b473daff9c30f79e824440c5cf9d4fb8be3ceafb9a9a686a')
 validpgpkeys=("42550ABD1E80D7C1BC0BAD851285491434D8786F")
 
 # dl.dell.com doesn't like cURL
