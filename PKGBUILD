@@ -3,7 +3,7 @@
 pkgname=nvim-lazy
 pkgrel=1
 epoch=1
-pkgver=v11.9.2
+pkgver=v11.10.0
 pkgdesc="A modern plugin manager for Neovim."
 arch=("any")
 url="https://github.com/folke/lazy.nvim"
