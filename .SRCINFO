@@ -1,7 +1,7 @@
 pkgbase = i8kgui
 	pkgdesc = A Dell thermal management GUI to control fan speeds and monitor temperatures
 	pkgver = 0.8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/razman786/i8kgui
 	install = i8kgui.install
 	arch = any
@@ -20,6 +20,8 @@ pkgbase = i8kgui
 	optdepends = libsmbios: BIOS thermal management modes
 	optdepends = python-undervolt: CPU undervolting support
 	source = i8kgui-0.8.4.tar.gz::https://github.com/razman786/i8kgui/archive/refs/tags/v0.8.4.tar.gz
+	source = i8kgui.patch
 	sha256sums = 56a7abf15fa3981a9564320d453781f0873d1c8f1c982da1c4b4debdf69ed1cc
+	sha256sums = 34473bfb2ab37a0ae4182119d255cae9c993d35ab907884fbd43631e5afc616e
 
 pkgname = i8kgui

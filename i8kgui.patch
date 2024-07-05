@@ -1,0 +1,55 @@
+diff --unified --recursive --text a/i8kgui/i8kgui_thermal_control b/i8kgui/i8kgui_thermal_control
+--- a/i8kgui/i8kgui_thermal_control	2023-08-08 15:21:59.000000000 -0600
++++ b/i8kgui/i8kgui_thermal_control	2024-07-05 09:08:02.682388355 -0600
+@@ -47,11 +47,11 @@
+ # enable BIOS fan control
+ if [[ $status == "enable" ]]; then
+   # check i8kmon is available to stop
+-  if [[ -f "/etc/systemd/system/multi-user.target.wants/i8kmon.service" ]]; then
++  if [[ -f "/usr/lib/systemd/system/multi-user.target.wants/i8kmon.service" ]]; then
+     systemctl stop i8kmon.service
+   fi
+   # check dell-bios-fan-control is available to stop
+-  if [[ -f "/etc/systemd/system/multi-user.target.wants/dell-bios-fan-control.service" ]]; then
++  if [[ -f "/usr/lib/systemd/system/multi-user.target.wants/dell-bios-fan-control.service" ]]; then
+     systemctl stop dell-bios-fan-control.service
+   fi
+   # check smbios-thermal-ctl is available from libsmbios
+@@ -62,11 +62,11 @@
+ # disable BIOS fan control and enable i8kmon
+ elif [[ $status == "disable" ]]; then
+   # check dell-bios-fan-control is available to start - not all systems require this
+-  if [[ -f "/etc/systemd/system/multi-user.target.wants/dell-bios-fan-control.service" ]]; then
++  if [[ -f "/usr/lib/systemd/system/multi-user.target.wants/dell-bios-fan-control.service" ]]; then
+     systemctl start dell-bios-fan-control.service
+   fi
+   # check i8kmon is available to start
+-  if [[ -f "/etc/systemd/system/multi-user.target.wants/i8kmon.service" ]]; then
++  if [[ -f "/usr/lib/systemd/system/multi-user.target.wants/i8kmon.service" ]]; then
+     systemctl start i8kmon.service
+   fi
+ # get current thermal mode from libsmbios
+diff --unified --recursive --text a/i8kgui/polkit_actions/ubuntu/com.ubuntu.pkexec.i8kgui_thermal_control.policy b/i8kgui/polkit_actions/ubuntu/com.ubuntu.pkexec.i8kgui_thermal_control.policy
+--- a/i8kgui/polkit_actions/ubuntu/com.ubuntu.pkexec.i8kgui_thermal_control.policy	2023-08-08 15:21:59.000000000 -0600
++++ b/i8kgui/polkit_actions/ubuntu/com.ubuntu.pkexec.i8kgui_thermal_control.policy	2024-07-05 09:08:13.934800313 -0600
+@@ -12,7 +12,7 @@
+       <allow_inactive>yes</allow_inactive>
+       <allow_active>yes</allow_active>
+     </defaults>
+-    <annotate key="org.freedesktop.policykit.exec.path">I8KGUI_THERMAL_PATH/.local/bin/i8kgui_thermal_control</annotate>
++    <annotate key="org.freedesktop.policykit.exec.path">I8KGUI_THERMAL_PATH/usr/bin/i8kgui_thermal_control</annotate>
+     <annotate key="org.freedesktop.policykit.exec.allow_gui">true</annotate>
+   </action>
+ 
+diff --unified --recursive --text a/i8kgui/polkit_actions/ubuntu/com.ubuntu.pkexec.smbios-thermal-ctl.policy b/i8kgui/polkit_actions/ubuntu/com.ubuntu.pkexec.smbios-thermal-ctl.policy
+--- a/i8kgui/polkit_actions/ubuntu/com.ubuntu.pkexec.smbios-thermal-ctl.policy	2023-08-08 15:21:59.000000000 -0600
++++ b/i8kgui/polkit_actions/ubuntu/com.ubuntu.pkexec.smbios-thermal-ctl.policy	2024-07-05 09:08:21.654176599 -0600
+@@ -12,7 +12,7 @@
+       <allow_inactive>yes</allow_inactive>
+       <allow_active>yes</allow_active>
+     </defaults>
+-    <annotate key="org.freedesktop.policykit.exec.path">/usr/sbin/smbios-thermal-ctl</annotate>
++    <annotate key="org.freedesktop.policykit.exec.path">/usr/bin/smbios-thermal-ctl</annotate>
+     <annotate key="org.freedesktop.policykit.exec.allow_gui">true</annotate>
+   </action>
+ 
