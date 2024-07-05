@@ -2,8 +2,8 @@
 # Contributor: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=single-file-cli
-pkgver=2.0.43
-pkgrel=2
+pkgver=2.0.45
+pkgrel=1
 pkgdesc="CLI tool for saving a faithful copy of a complete web page in a single HTML file"
 arch=(any)
 url="https://github.com/gildas-lormeau/single-file-cli"
@@ -18,7 +18,7 @@ provides=(single-file)
 replaces=(single-file)
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('1533d10212a6f821c7fd79e1251660497a58d281138eb823d35a6426a7874143')
+sha256sums=('4f92b69fbf5e7f26e78f62a91c4a290d6f3d300e740ef42f1b6fd9eebeed5b70')
 
 package() {
   npm install -g \
