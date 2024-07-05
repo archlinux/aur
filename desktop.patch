@@ -1,0 +1,7 @@
+--- /contrib/linux/com.dosbox_x.DOSBox-X.desktop	2024-07-04 20:49:28.444640753 +0200
++++ /contrib/linux/com.dosbox_x.DOSBox-X.desktop	2024-07-04 20:52:06.260782891 +0200
+@@ -31,3 +31,4 @@
+ Type=Application
+ Categories=Game;Emulator
+ Keywords=PCjr;Tandy;PC98;PC-98
++StartupWMClass=dosbox-x
