@@ -1,6 +1,6 @@
 # Maintainer: Zesko
 pkgname="limine-snapper-sync-git"
-pkgver=0
+pkgver=r1.0903923
 pkgrel=1
 pkgdesc="Snapper integration for Limine bootloader."
 arch=("any")
