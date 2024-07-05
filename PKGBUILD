@@ -10,7 +10,7 @@ arch=("any")
 license=("BSD")
 url="https://github.com/coin-or/pulp"
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=($_name-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz)
 sha256sums=('dc0de97170f783b55bfdbd04ddf669f61aa09f8d485376ddbaef166bb051ef9f')
 
