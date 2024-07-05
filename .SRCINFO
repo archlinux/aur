@@ -1,19 +1,19 @@
 pkgbase = music-assistant-desktop-bin
 	pkgdesc = Music Assistant Companion App
-	pkgver = 0.0.33
+	pkgver = 0.0.67
 	pkgrel = 1
 	url = https://github.com/music-assistant/music-assistant-desktop
 	arch = x86_64
 	license = Apache-2.0
 	provides = music-assistant-companion
 	conflicts = music-assistant-desktop
-	source = squeezelite::https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.33/squeezelite-x86_64-unknown-linux-gnu
-	source = music-assistant-companion.png::https://raw.githubusercontent.com/music-assistant/music-assistant-desktop/v0.0.33/src-tauri/icons/128x128.png
-	source = music-assistant-companion.desktop::https://raw.githubusercontent.com/music-assistant/music-assistant-desktop/v0.0.33/musicassistant.desktop
-	source = music-assistant-desktop-bin-0.0.33::https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.33/music-assistant-companion-0.0.33
+	source = squeezelite::https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.67/squeezelite-x86_64-unknown-linux-gnu
+	source = music-assistant-companion.png::https://raw.githubusercontent.com/music-assistant/music-assistant-desktop/v0.0.67/src-tauri/icons/128x128.png
+	source = music-assistant-companion.desktop::https://raw.githubusercontent.com/music-assistant/music-assistant-desktop/v0.0.67/musicassistant.desktop
+	source = music-assistant-desktop-bin-0.0.67::https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.67/music-assistant-companion-0.0.67
 	md5sums = 4309dc5363be649ea1ba99cafebdc4fd
 	md5sums = 4d6cfc74a2b2d09a0f28c259d2a39eb7
 	md5sums = c1c710f0f2736214866afd8bb14aafd5
-	md5sums = a427f591002bcc59d6164f064b7c8248
+	md5sums = 5958de1eef4e8f149fd1eefd13c5e2cf
 
 pkgname = music-assistant-desktop-bin
