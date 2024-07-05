@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=vioplot
-_pkgver=0.4.0
+_pkgver=0.5.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Violin Plot"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -21,8 +21,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('88a2fe38c2c23da609a0931b5cd0b5de')
-b2sums=('55647bbacac0c3fa82ffe15d702cda47ba801adefe78c7debc0072ad2dd2a26ba9dfc36feeb393831de9ba1dc2f52bc5becf31b64fb07e59d4a4dc7f3451663d')
+md5sums=('425fb88d85d659deae811f4bde802bb0')
+b2sums=('8113cd0285e5b287adb52eaa2209b5442ee00ab654664ee40be8726551dbb7f9ec641929ab238dc674dcbc0c9ff860e365c930690b21d31f84b575db91a7ee77')
 
 build() {
   mkdir build
