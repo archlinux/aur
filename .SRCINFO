@@ -1,0 +1,13 @@
+pkgbase = hayagriva
+	pkgdesc = Format references and citations for your YAML-encoded or BibLaTeX bibliography files and query bibliographies using selectors.
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = https://github.com/typst/hayagriva
+	arch = any
+	license = Apache-2.0 OR MIT
+	makedepends = cargo
+	provides = hayagriva
+	source = hayagriva-0.5.3.tar.gz::https://github.com/typst/hayagriva/archive/refs/tags/v0.5.3.tar.gz
+	b2sums = 32bd05c2e98e25462662b9a8e390f1d621ba1d8c0348f632299b85cf6f38ffea67f1a15e86701a24a8d01c50a839576ef815da58b3ee6ec7e928170352da4708
+
+pkgname = hayagriva
