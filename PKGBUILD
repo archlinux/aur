@@ -1,17 +1,18 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: None
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-sparqlwrapper
-pkgver=1.8.5
-pkgrel=3
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="SPARQL Endpoint interface to Python"
 arch=('any')
 url="https://rdflib.github.io/sparqlwrapper/"
 license=('W3C')
-depends=('python')
+depends=('python' 'python-rdflib>=6.1.1')
 makedepends=('python-setuptools')
-checkdepends=('python-nose' 'python-rdflib-jsonld')
+optdepends=('pandas>=1.3.5: to use sparql_dataframe')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/RDFLib/sparqlwrapper/archive/$pkgver.tar.gz")
-sha512sums=('7637989bbf883824be5d277d6b0bd2c2ec8b628ded8a103f6da724b62977a5e9bd13f8ec8d9031de5f5028acfcbd599148dbab5ff3694261c1ec27295c34ee38')
+sha512sums=('6d1b684822ec587771342c2a21df01e306b5bd9b248ca075c6d060f51a831976d54449c8305c9f67fe2b9922ff77c38565555956ae9ed324bda11553932d86a0')
 
 build() {
   cd "$srcdir"/sparqlwrapper-$pkgver
@@ -20,7 +21,7 @@ build() {
 
 check() {
   cd "$srcdir"/sparqlwrapper-$pkgver
-  ./run_tests_py3.sh
+  python -m unittest test/test_wrapper.py -v
 }
 
 package() {

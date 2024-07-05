@@ -1,0 +1,3 @@
+[python-sparqlwrapper]
+source = "git"
+git = "https://github.com/RDFLib/sparqlwrapper.git"
