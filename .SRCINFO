@@ -1,6 +1,6 @@
 pkgbase = httptoolkit-git
 	pkgdesc = A beautiful, cross-platform & open-source HTTP(S) proxy, analyzer and client.
-	pkgver = 1.17.2.r0.ga636092
+	pkgver = 1.18.0.r1.g5172993
 	pkgrel = 1
 	url = https://httptoolkit.com/
 	arch = any
@@ -16,8 +16,10 @@ pkgbase = httptoolkit-git
 	depends = mercurial
 	depends = nodejs
 	depends = java-runtime
-	provides = httptoolkit=1.17.2
+	provides = httptoolkit=1.18.0
 	conflicts = httptoolkit
+	options = !strip
+	options = !emptydirs
 	source = httptoolkit.git::git+https://github.com/httptoolkit/httptoolkit-desktop.git
 	source = httptoolkit.sh
 	sha256sums = SKIP

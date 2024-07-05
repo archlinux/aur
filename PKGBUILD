@@ -2,7 +2,7 @@
 # Contributor: Jason Nader <jason *add-dot-here* nader *you-know-what-goes-here* protonmail.com>
 pkgname=httptoolkit-git
 _pkgname="HTTP Toolkit Desktop"
-pkgver=1.17.2.r0.ga636092
+pkgver=1.18.0.r1.g5172993
 _electronversion=29
 _nodeversion=20
 pkgrel=1
@@ -27,6 +27,10 @@ makedepends=(
     'gcc'
     'cmake'
     'curl'
+)
+options=(
+    '!strip'
+    '!emptydirs'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
@@ -55,22 +59,22 @@ build() {
     cd "${srcdir}/${pkgname//-/.}"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
-    #export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     #export ELECTRONVERSION="${_electronversion}"
-    export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
     HOME="${srcdir}/.electron-gyp"
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
         export npm_config_registry=https://registry.npmmirror.com
+        export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
         export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
         export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
     else
         echo "Your network is OK."
     fi
-    sed '/"deb",/d;/"rpm",/d;/"AppImage",/d;s|"zip"|"dir"|g' -i package.json
     NODE_ENV=development npm install
-    NODE_ENV=production npm run build
+    NODE_ENV=production npm run build:src
+    NODE_ENV=production npm run build:dir-only
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
