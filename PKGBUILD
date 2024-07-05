@@ -2,9 +2,9 @@
 
 pkgname=kde-service-menu-reimage-mod
 _pkgname=kde-service-menu-reimage
-pkgver=24.03.23
-_pkgver=${pkgver}-1729
-pkgrel=2
+pkgver=24.06.15
+_pkgver=${pkgver}-0159
+pkgrel=1
 arch=('any')
 license=('GPL')
 depends=('dolphin' 'kdialog' 'imagemagick' 'jhead')
