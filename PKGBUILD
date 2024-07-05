@@ -3,12 +3,12 @@
 
 _gemname=asciidoctor-diagram
 pkgname=ruby-$_gemname
-pkgver=2.2.1
+pkgver=2.3.1
 pkgrel=1
 pkgdesc='Asciidoctor diagramming extension'
 arch=(any)
 url='https://github.com/asciidoctor/asciidoctor-diagram'
-license=(MIT)
+license=('MIT')
 depends=(ruby asciidoctor ruby-rexml ruby-asciidoctor-diagram-ditaamini ruby-asciidoctor-diagram-plantuml)
 makedepends=(ruby-rdoc)
 optdepends=('ttf-font: font for diagram'
@@ -21,7 +21,7 @@ optdepends=('ttf-font: font for diagram'
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('86c662d17e7099e660763e57d68becd09f6cf786')
+sha1sums=('3f755c682491c325cc625f15dcf96a7e18d86db9')
 
 package() {
   local _gemdir="$(ruby -e 'puts Gem.default_dir')"
