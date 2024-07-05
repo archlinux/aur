@@ -2,7 +2,7 @@
 
 pkgname=python-ironicclient
 pkgver=5.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python client library for Ironic'
 arch=(any)
 url="https://docs.openstack.org/$pkgname/"
@@ -15,22 +15,22 @@ depends=(python-pbr python-platformdirs python-cliff python-dogpile.cache
 checkdepends=(python-fixtures python-requests-mock python-oslotest
               python-testtools python-tempest python-stestr python-ddt
               python-openstackclient)
-source=("$pkgname-$pkgver.tar.gz::https://opendev.org/openstack/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('0173c55f604ea537f7543f9e596ef78d5ac05c2379a24bd3c779748dbfcdff2b19c267da68a1e56a20805343455954e742292cd39787d9ff37cca5a3515e2c47')
+source=("https://tarballs.opendev.org/openstack/$pkgname/$pkgname-$pkgver.tar.gz")
+sha512sums=('f819a2be1301da821eb340da789dd188dea33fb48b2ea2f3ec740eb04b66cf121fc1f72f592e3f17cd38be30b9afedf4209dbe725eaa772938a9977a83e84506')
 
 export PBR_VERSION=$pkgver
 
 build() {
-  cd $pkgname
+  cd $pkgname-$pkgver
   python setup.py build
 }
 
 check() {
-  cd $pkgname
+  cd $pkgname-$pkgver
   stestr run
 }
 
 package() {
-  cd $pkgname
+  cd $pkgname-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1
 }
