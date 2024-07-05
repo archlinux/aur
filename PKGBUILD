@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=miteiru
 _pkgname=Miteiru
-pkgver=4.3.3
+pkgver=4.4.0
 _electronversion=21
 _nodeversion=16
 pkgrel=1
@@ -12,7 +12,7 @@ license=("CC-BY-NC-4.0")
 conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
-    'mecab'
+    #'mecab'
     'java-runtime'
 )
 makedepends=(
@@ -32,7 +32,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('4bad878a5ca5b14fb32a0d0b799cd8edcc1782f95e82d209b571c948b650a09d'
+sha256sums=('ef2140b172d1b23c444c760d9778dc86497d2120e8ba511495f0d83ee7393f3f'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
