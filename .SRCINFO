@@ -1,6 +1,6 @@
 pkgbase = gamescope-sk
 	pkgdesc = SteamOS session compositing window manager
-	pkgver = 3.14.22.sk.1.r0.ge02563d
+	pkgver = 3.14.23.sk
 	pkgrel = 2
 	url = https://github.com/ValveSoftware/gamescope
 	arch = x86_64
@@ -45,7 +45,7 @@ pkgbase = gamescope-sk
 	depends = xorg-server-xwayland
 	provides = gamescope
 	conflicts = gamescope
-	source = git+https://github.com/3003n/gamescope.git#tag=3.14.22-sk-1
+	source = git+https://github.com/3003n/gamescope.git#tag=3.14.23-sk-1
 	source = git+https://github.com/nothings/stb.git#commit=af1a5bc352164740c1cc1354942b1c6b72eacb8a
 	source = git+https://github.com/Joshua-Ashton/wlroots.git
 	source = git+https://gitlab.freedesktop.org/emersion/libliftoff.git
