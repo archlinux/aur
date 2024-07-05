@@ -1,11 +1,12 @@
 # Maintainer: Chris Zhang <develop@zcy.moe>
+# Maintainer: Xuanwo <aur@xuanwo.io>
 
 # basic info
 _pkgname="heptabase"
 _pkgname_capital="Heptabase"
 pkgname="$_pkgname-bin"
 _pkgext="AppImage"
-pkgver="1.32.20"
+pkgver="1.33.0"
 pkgrel=1
 pkgdesc="A visual note-taking tool for learning complex topics."
 url="https://heptabase.com"
@@ -14,7 +15,7 @@ license=('custom')
 source=(
     "https://github.com/heptameta/project-meta/releases/download/v$pkgver/$_pkgname_capital-$pkgver.$_pkgext"
 )
-sha512sums=('4561a4a9b2c84c64e6671af228f497c9f7486410e2519f36a73f64bb9d6f3ef85d9821290a2c4f46f3e0c8b7ef737e3c21dc1726ab901d02a442f5a3b4af033f')
+sha512sums=('898289c656286a32b19571ccfb23790677cfa8a78e455f2dc774a7d4bf7db92d702c545ca581f9a08d55878c1451ad7a4397eac31187819b90c7d3c88b676dcc')
 
 prepare() {
     _gen_script
