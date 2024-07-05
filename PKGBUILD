@@ -1,12 +1,12 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: HentaiShiroYuki <hentaishiroyuki at gmail dot com>
 # Contributor: Sofia Lima
-_pkgname=Vesktop
 pkgname=vesktop-bin
+_pkgname=Vesktop
 _appname=vencord-desktop
-pkgver=1.5.2
-_electronversion=29
-pkgrel=3
+pkgver=1.5.3
+_electronversion=31
+pkgrel=1
 pkgdesc="A cross platform electron-based desktop app aiming to give you a snappier Discord experience with Vencord pre-installed"
 arch=(
     'aarch64'
@@ -29,8 +29,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 source=("${pkgname%-bin}.sh")
 sha256sums=('2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-sha256sums_aarch64=('c26ed97b44bbc166565f928a5554c5ff57cb2d29d27729f408d4667eafd70a96')
-sha256sums_x86_64=('0a23dc166c305d168b5e4b67d8a4d111b878e2782c42560f6f5b87f5db06b105')
+sha256sums_aarch64=('5d30d57539ff75a2d1a449e2b0b95e6fa969e87e1cd82db2314b11acbf661bd9')
+sha256sums_x86_64=('cc7109e74a328e43f922f623aa82eafd8322967bc3fb14e467181cd12ae44b7e')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
