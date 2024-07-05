@@ -1,0 +1,5 @@
+[python-hydra-colorlog]
+source = "github"
+github = "facebookresearch/hydra"
+prefix = "v"
+use_latest_release = true

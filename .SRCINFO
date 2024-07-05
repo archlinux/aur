@@ -1,0 +1,21 @@
+pkgbase = python-hydra-colorlog
+	pkgdesc = Colored logs for Hydra logging
+	pkgver = 1.3.2
+	pkgrel = 1
+	url = https://github.com/facebookresearch/hydra-colorlog
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-pyproject-patcher
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-colorlog
+	depends = python-hydra-core
+	optdepends = python-omegaconf: to run the included example
+	source = hydra-1.3.2.tar.gz::https://github.com/facebookresearch/hydra/archive/v1.3.2.tar.gz
+	sha512sums = 09e700ed9ec043d6f4fc8be4475a513ccb9a7eb1bfa5f42b31785995b83c229f14191e222c445cc2de96611d42fec18e9b5c09a8da4e5c5a29b7be2e2e1cb66e
+
+pkgname = python-hydra-colorlog
