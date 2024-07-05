@@ -1,6 +1,6 @@
 pkgbase = shadps4-git
 	pkgdesc = Sony PlayStation 4 emulator
-	pkgver = 0.1.0.r1.gaf3bbc3
+	pkgver = 0.1.0.r20.g67af53f
 	pkgrel = 1
 	url = https://shadps4.net/
 	arch = x86_64
@@ -26,13 +26,15 @@ pkgbase = shadps4-git
 	depends = glslang>=14.2
 	depends = sdl3
 	depends = zlib-ng>=2.1.6
-	provides = shadps4=0.1.0.r1.gaf3bbc3
+	provides = shadps4=0.1.0.r20.g67af53f
 	conflicts = shadps4
 	source = shadps4::git+https://github.com/shadps4-emu/shadPS4.git
 	source = shadps4-discord-rpc::git+https://github.com/shadps4-emu/ext-discord-rpc.git
 	source = shadps4-sirit::git+https://github.com/shadps4-emu/sirit.git
 	source = shadps4-tracy::git+https://github.com/shadps4-emu/tracy.git
+	source = hwinfo::git+https://github.com/lfreist/hwinfo.git
 	source = shadps4.sh
+	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
