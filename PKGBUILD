@@ -2,8 +2,8 @@
 
 pkgname=python-cynthion
 _gitpkgname=cynthion
-pkgver=0.0.0
-pkgrel=4
+pkgver=0.1.0
+pkgrel=1
 pkgdesc='Python package and utilities for the Great Scott Gadgets Cynthion USB Test Instrument'
 arch=('any')
 url='https://github.com/greatscottgadgets/cynthion'
@@ -14,9 +14,11 @@ depends=(
   'python-apollo'
   'python-luna-usb'
   'python-luna-soc'
+  'python-pyfwup'
   'python-pygreat'
   'python-pyusb'
   'python-tomli'
+  'python-tqdm'
   'python-usb-protocol'
 )
 makedepends=(
@@ -35,34 +37,14 @@ optdepends=(
 
 source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
-  "github-pr-33.patch::${url}/pull/33.patch"
-  'github-pr-103.patch'
 )
 
 sha512sums=(
-  '6974bafca223dbe66510270ad91932c3e7fee12fbb629d0acde209e2b08e68fc95f514e42bd717e629701e21f251da347500b75e70e9bfe30806e0fa912314d3'
-  'SKIP'
-  '859497535674bb74d1ed6f4471d406a8355d3791cf6b8a3d79d2a0490c033127b0db1e0784814f4f9ed130ccf7c68e68acadfa31bf44fd30fd33265e958aa060'
+  '8f37f507056319b996ce4351003a1cc60d51eae0ebc595b88752147e8fe98128a83fcde6e854095fab773227799ae22fe89179c888d182a0f5802cda87f33980'
 )
 
 prepare() {
   cd "${_gitpkgname}-${pkgver}"
-
-  # Remove the following patch once upstream has merged PR #33 and
-  # included it in a stable release.
-  # See also:
-  # https://github.com/greatscottgadgets/cynthion/pull/33
-  echo >&2 'Adding documentation'
-  mkdir -p ../split
-  git mailsplit -o../split ../github-pr-33.patch
-  find ../split -type f | sort | xargs git apply
-
-  # Remove the following patch once a stable release of v0.1.0 or
-  # newer has been tagged on GitHub.
-  # See also:
-  # https://github.com/greatscottgadgets/cynthion/pull/103
-  echo >&2 'Applying compatibility patch for python-apollo v1.0.4'
-  patch -p1 < ../github-pr-103.patch
 
   echo >&2 'Pinning version number'
   export pkgver
@@ -100,6 +82,10 @@ package() {
 
   echo >&2 'Packaging the wheel'
   python -I -m installer --destdir="${pkgdir}" cynthion/python/dist/*.whl
+
+  echo >&2 'Packaging udev rules'
+  install -D -m 644 -t "${pkgdir}/usr/lib/udev/rules.d" \
+    cynthion/python/assets/*.rules
 
   echo >&2 'Packaging the documentation'
   install -D -m 644 -t "${pkgdir}/usr/share/doc/${pkgname}" \
