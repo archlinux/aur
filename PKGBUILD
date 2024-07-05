@@ -1,14 +1,14 @@
-# Maintainer: Hans-Nikolai Viessmann <hans AT viess DOT mn
+# Maintainer: Hans-Nikolai Viessmann <hans AT viess DOT mn>
 
 pkgname=musikcube-git
-pkgver=0.96.7.r5.g00cf3eb5
+pkgver=3.0.2.r13.g40a26d7f9
 pkgrel=1
 pkgdesc="a terminal-based cross-platform music player, audio engine, metadata indexer, and server"
 arch=('x86_64')
 url="https://github.com/clangen/musikcube"
 license=('BSD')
-depends=('faad2' 'ffmpeg' 'libev' 'libogg' 'libvorbis' 'flac' 'libmicrohttpd' 'lame'
-         'ncurses' 'boost' 'pulseaudio' 'libpulse' 'alsa-lib' 'curl')
+depends=('libogg' 'libvorbis' 'libmicrohttpd' 'ffmpeg' 'lame' 'ncurses' 'pulseaudio'
+         'libpulse' 'alsa-lib' 'curl' 'libev' 'taglib' 'libopenmpt' 'asio')
 makedepends=('cmake' 'git')
 provides=('musikcube')
 conflicts=('musikcube')
@@ -22,10 +22,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/${pkgname%-git}"
-    cmake -B build -S "${PWD}" \
-        -DCMAKE_BUILD_TYPE='None' \
-        -DCMAKE_SKIP_RPATH=YES \
-        -DCMAKE_INSTALL_PREFIX=/usr
+    cmake -B build -S "${PWD}" -DCMAKE_INSTALL_PREFIX=/usr
     make -C build
 }
 
