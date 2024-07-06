@@ -1,5 +1,6 @@
 _pkgname=hmcl-dev
 pkgname=hmcl-dev-bin
+pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular"
 pkgver=3.5.8
 pkgrel=249
 url="https://github.com/huanghongxun/HMCL"
