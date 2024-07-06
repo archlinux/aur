@@ -5,7 +5,7 @@
 _pkgname=ysfx
 pkgname=$_pkgname-git
 pkgver=0.0.0.r244.8077347
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Hosting library and plugin for JSFX (git version)'
 arch=(x86_64)
@@ -51,9 +51,8 @@ build() {
 
 package() {
   depends+=(libfontconfig.so libfreetype.so)
-  DESTDIR="$pkgdir" cmake --install $_pkgname-build
   install -vDm 755 \
     $_pkgname-build/ysfx_plugin_artefacts/Release/VST3/ysfx.vst3/Contents/$CARCH-linux/ysfx.so \
-    -t "$pkgdir"/usr/lib/vst3/ysfx.vst/Contents/$CARCH-linux
+    -t "$pkgdir"/usr/lib/vst3/ysfx.vst3/Contents/$CARCH-linux
   install -vDm 644 $_pkgname/README.md -t "$pkgdir"/usr/share/doc/$pkgname
 }
