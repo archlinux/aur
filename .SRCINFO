@@ -1,13 +1,14 @@
 pkgbase = protobufjson
 	pkgdesc = A simple CLI wrapper over the protobuf JSON API
-	pkgver = 0.1.0_alpha
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/hq6/ProtobufJson
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	depends = protobuf>=22.0
-	source = git+https://github.com/hq6/ProtobufJson.git#commit=ed6aecb8ae92d0fb130e316c0714337356f166e4
+	source = git+https://github.com/hq6/ProtobufJson.git#commit=0799936266f73d636bb0d27f532527e1b2862c1f
+	source = https://github.com/protocolbuffers/protobuf/releases/download/v21.2/protobuf-cpp-3.21.2.tar.gz
 	sha256sums = SKIP
+	sha256sums = c8944d00f72d850c91f1873213b09724c74a798ba3d5c23dc3c39f279a25c7d4
 
 pkgname = protobufjson
