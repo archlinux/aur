@@ -1,0 +1,17 @@
+*.*
+!.gitignore 
+!**/*.desktop
+!**/PKGBUILD
+!**/*.patch
+**/pkg
+**/src
+**/objects
+**/packed-refs
+**/elm-test
+**/refs
+**/config
+**/description
+**/FETCH_HEAD
+**/HEAD
+**/info
+**/*-v1
