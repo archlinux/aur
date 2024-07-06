@@ -18,7 +18,7 @@ pkgbase = theia-bin
 	provides = theia
 	conflicts = theia
 	options = !strip
-	source = TheiaIDE_x64_1.51.0.deb::https://download.eclipse.org/theia/ide/1.51.0/linux/TheiaIDE.deb
+	source = TheiaIDE_x64_1.51.0.deb::https://www.eclipse.org/downloads/download.php?file=/theia/ide/1.51.0/linux/TheiaIDE.deb&r=1
 	source = theia-bin-1.51.0-1.yml::https://download.eclipse.org/theia/ide/1.51.0/linux/latest-linux.yml
 	sha256sums = SKIP
 	sha256sums = SKIP
