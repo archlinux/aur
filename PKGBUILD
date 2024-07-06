@@ -7,7 +7,7 @@ _android_arch=armv7a-eabi
 pkgbase=android-${_android_arch}-harfbuzz
 pkgname=("android-${_android_arch}-harfbuzz"
          "android-${_android_arch}-harfbuzz-icu")
-pkgver=8.5.0
+pkgver=9.0.0
 pkgrel=1
 pkgdesc="OpenType text shaping engine (Android ${_android_arch})"
 arch=('any')
@@ -23,59 +23,50 @@ makedepends=('android-meson'
              'ragel')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/harfbuzz/harfbuzz/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('7ad8e4e23ce776efb6a322f653978b3eb763128fd56a90252775edb9fd327956')
+md5sums=('155d42a86f54b356dd384a735389f84c')
 
 prepare() {
     cd "${srcdir}/harfbuzz-${pkgver}"
-
-    sed -i 's|-no-undefined||g' src/Makefile.am
 }
 
 build() {
     cd "${srcdir}/harfbuzz-${pkgver}"
     source android-env ${_android_arch}
 
-    mkdir -p build-${_android_arch}-shared && pushd build-${_android_arch}-shared
-    android-${_android_arch}-meson \
+    android-${_android_arch}-meson build-shared \
         -D b_lto=false \
         -D graphite=enabled \
         -D tests=disabled \
-        -D docs=disabled \
-        ..
-    sed -i 's|-Wl,--no-undefined||g' build.ninja
-    ninja
-    popd
+        -D docs=disabled
+    sed -i 's|-Wl,--no-undefined||g' build-shared/build.ninja
+    ninja -C build-shared
 
-    mkdir -p build-${_android_arch}-static && pushd build-${_android_arch}-static
-    android-${_android_arch}-meson \
+    android-${_android_arch}-meson build-static \
         --default-library static \
         -D b_lto=false \
         -D graphite=enabled \
         -D tests=disabled \
-        -D docs=disabled \
-        ..
-    sed -i 's|-Wl,--no-undefined||g' build.ninja
-    ninja
-    popd
+        -D docs=disabled
+    sed -i 's|-Wl,--no-undefined||g' build-static/build.ninja
+    ninja -C build-static
 }
 
 package_android-armv7a-eabi-harfbuzz() {
+    cd "${srcdir}/harfbuzz-${pkgver}"
     source android-env ${_android_arch}
 
-    cd "${srcdir}/harfbuzz-${pkgver}/build-${_android_arch}-static"
-    DESTDIR="${pkgdir}" ninja install
-    cd "${srcdir}/harfbuzz-${pkgver}/build-${_android_arch}-shared"
-    DESTDIR="${pkgdir}" ninja install
+    DESTDIR="${pkgdir}" ninja -C build-shared install
+    DESTDIR="${pkgdir}" ninja -C build-static install
 
-    cp "${srcdir}/harfbuzz-${pkgver}/src/hb-ft.h" "${pkgdir}/${ANDROID_PREFIX_INCLUDE}/harfbuzz/"
-    rm -r "${pkgdir}"/${ANDROID_PREFIX_BIN}
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a || true
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
+    cp "src/hb-ft.h" "${pkgdir}/${ANDROID_PREFIX_INCLUDE}/harfbuzz/"
+    rm -r "${pkgdir}/${ANDROID_PREFIX_BIN}"
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
 
-    mkdir -p "${srcdir}/harfbuzz-${pkgver}/hb-icu"/${ANDROID_PREFIX}/{include/harfbuzz,lib/pkgconfig}
-    mv -vf "${pkgdir}/${ANDROID_PREFIX_LIB}"/libharfbuzz-icu* "${srcdir}/harfbuzz-${pkgver}/hb-icu/${ANDROID_PREFIX_LIB}"
-    mv -vf "${pkgdir}/${ANDROID_PREFIX_LIB}"/pkgconfig/harfbuzz-icu.pc "${srcdir}/harfbuzz-${pkgver}/hb-icu/${ANDROID_PREFIX_LIB}/pkgconfig"
-    mv -vf "${pkgdir}/${ANDROID_PREFIX_INCLUDE}"/harfbuzz/hb-icu.h "${srcdir}/harfbuzz-${pkgver}/hb-icu/${ANDROID_PREFIX_INCLUDE}/harfbuzz"
+    mkdir -p "hb-icu"/${ANDROID_PREFIX}/{include/harfbuzz,lib/pkgconfig}
+    mv -vf "${pkgdir}/${ANDROID_PREFIX_LIB}"/libharfbuzz-icu* "hb-icu/${ANDROID_PREFIX_LIB}"
+    mv -vf "${pkgdir}/${ANDROID_PREFIX_LIB}/pkgconfig/harfbuzz-icu.pc" "hb-icu/${ANDROID_PREFIX_LIB}/pkgconfig"
+    mv -vf "${pkgdir}/${ANDROID_PREFIX_INCLUDE}/harfbuzz/hb-icu.h" "hb-icu/${ANDROID_PREFIX_INCLUDE}/harfbuzz"
 }
 
 package_android-armv7a-eabi-harfbuzz-icu() {
