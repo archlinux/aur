@@ -3,17 +3,18 @@
 # Contributor: Maxime Morel <maxime@mmorel.eu>
 
 pkgname=opentrack
-pkgver=2023.2.0
-pkgrel=2
+pkgver=2023.3.0
+pkgrel=1
 pkgdesc="Head tracking software"
 arch=('x86_64')
 url="https://github.com/opentrack/opentrack/"
-license=('GPL3')
+license=('ISC')
 depends=('qt5-base' 'opencv')
 makedepends=('cmake' 'xplane-sdk-devel' 'wine' 'ninja' 'qt5-tools' 'procps-ng')
 optdepends=('onnxruntime: neuralnet tracker')
-source=("https://github.com/opentrack/opentrack/archive/opentrack-$pkgver.tar.gz" "opentrack.desktop")
-sha256sums=('10174ae9d19ee13d24cfbba18ace5593f4a5c933854b92c579c804a640101d32'
+source=("https://github.com/opentrack/opentrack/archive/opentrack-$pkgver.tar.gz" 
+        "opentrack.desktop")
+sha256sums=('ba5fea9da4b7d70162648e95ba6dcd8bed140519eb607a99a5daf1b00809f824'
             '96b4a633d40f399b927d159353cfaa679d2148156a3f04b5ea23b8d4b8e4bd3f')
 
 build() {
@@ -33,7 +34,10 @@ build() {
       -DCMAKE_BUILD_TYPE=Release \
       -DSDK_XPLANE=xplane_sdk \
       -DSDK_WINE=ON \
+      -DONNXRuntime_DIR=/usr/lib/cmake/onnxruntime \
+      -DONNXRuntime_INCLUDE_DIR=/usr/include/onnxruntime \
       -DCMAKE_INSTALL_PREFIX=/usr
+
   ninja
 }
 
