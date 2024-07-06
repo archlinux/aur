@@ -2,7 +2,7 @@
 
 # Maintainer: William Horvath <william at horvath dot blog>
 
-_where="$(eval realpath "$(pwd)")"
+_where="$(eval realpath "${PWD:-$(pwd)}")"
 
 # true: generic build; false: AUR native build (default); shouldn't need to touch this
 _generic_release=false
@@ -22,10 +22,10 @@ wow64build=$(cat "${_where}/buildiswow64" || _failure "how")
 ################################################################################################################################
 ################################################################################################################################
 
-_disabled_staging="" ## e.g. "-W Compiler_Warnings -W user32-. . ."
+_disabled_staging="-W user32-Mouse_Message_Hwnd" ## e.g. "-W Compiler_Warnings -W user32-. . ."
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="07-01-2024-17f052c3-0d4b9f2f"
+_patchbase_tag="07-06-2024-6f2466ea-0e802db6"
 
 ## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the custompatches folder
@@ -35,8 +35,8 @@ _custompatches=false
 
 ## uses wine/staging master if empty, uses given commit or tag if set
 ## only applies if _custompatches is true, otherwise overwritten by upstream commits from patchbase repo
-_desired_wine_commit=17f052c36a414a05fcb6a6e67bd3aac824fbed3e
-_desired_staging_commit=0d4b9f2f626073c8c9de44795e541b9518dc5a7b
+_desired_wine_commit=6f2466ea0c20245955d0d2b13b5162a1fe62815b
+_desired_staging_commit=0e802db66f4e3129ab2ab287c9202be29c5502ef
 
 _strip_package=true
 _install_static=true ## .a libs which may be required for external programs such as winestreamproxy
@@ -56,7 +56,7 @@ pkgname=wine-osu-spectator"${_wowname}"
 pkgver=9.12
 # workaround for pkgrel overwritten by pkgver() (taken from TkG PKGBUILD), real is the eval one
 pkgrel=1
-eval pkgrel=2
+eval pkgrel=3
 
 pkgdesc="A compatibility layer for running Windows programs, but with osu! specific patches"
 if [ "$wow64build" = "true" ]; then pkgdesc+=" (WoW64 version)"; fi
@@ -189,25 +189,20 @@ fi
 makedepends=("${makedepends[@]}" "${depends[@]}")
 
 pkgver() {
-  cd "${srcdir}"/"${pkgname}"
+  cd "${srcdir}/${pkgname}"
   git describe --tags --abbrev=0 | cut -f2 -d'-'
 }
-
-# this is a bit hideous, what could go wrong?
-(( __llvm_ver="$(env ls -1 /opt/llvm-mingw/lib/clang/)" )) || \
-  _failure "A numbered folder in /opt/llvm-mingw/lib/clang/ wasn't found. Are you sure you have the llvm-mingw toolchain installed?"
 
 # exported at the start of every function
 _set_vars() {
   export PATH="/opt/llvm-mingw/bin":"${PATH}"
-  export LD_RUN_PATH="/opt/llvm-mingw/lib:/opt/llvm-mingw/x86_64-w64-mingw32/lib:/opt/llvm-mingw/i686-w64-mingw32/lib:/opt/llvm-mingw/lib/clang/${__llvm_ver}/lib/windows:$LD_RUN_PATH"
 
   export CPPFLAGS="-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0 -DNDEBUG -D_NDEBUG"
   _common_cflags="${_CPU_TARGET} -O3 -pipe -fno-strict-aliasing -fomit-frame-pointer -fwrapv -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -Wno-error=return-mismatch -Wno-error=int-conversion -w"
 
-  _LTO_FLAGS="-ffat-lto-objects -flto=full -Wl,--flto=full"
-  #_GRAPHITE_FLAGS="-floop-nest-optimize -fgraphite-identity -floop-strip-mine " # not currently used
-  #_OPTIMIZE_HARDER_FLAGS="-fipa-pta -fgcse-sm -fgcse-las -fira-loop-pressure -fsched-pressure -fsched-spec-load" # gcc leftovers
+  _LTO_FLAGS="-fuse-linker-plugin -fdevirtualize-at-ltrans -flto-partition=one -ffat-lto-objects -flto -Wl,-flto"
+  #_GRAPHITE_FLAGS="-floop-nest-optimize -fgraphite-identity -floop-strip-mine"
+  #_OPTIMIZE_HARDER_FLAGS="-fipa-pta -fgcse-sm -fgcse-las -fira-loop-pressure -fsched-pressure -fsched-spec-load"
 
   _native_common_cflags="${_LTO_FLAGS}" # only for the non-mingw side
 
@@ -219,8 +214,8 @@ _set_vars() {
 
   export STRIP="ccache strip"
 
-  export CC="ccache /usr/bin/clang"
-  export CXX="ccache /usr/bin/clang++"
+  export CC="ccache gcc"
+  export CXX="ccache g++"
   export CROSSCC="ccache x86_64-w64-mingw32-clang"
   export CROSSCC64="ccache x86_64-w64-mingw32-clang"
   export CROSSCC32="ccache i686-w64-mingw32-clang"
@@ -348,10 +343,10 @@ prepare() { _set_vars;
     tools/make_specfiles
   fi
   autoreconf -fiv
-}
 
-build64dir="${_where}/src/${pkgname}-64-build"
-build32dir="${_where}/src/${pkgname}-32-build"
+  export build64dir="${srcdir}/${pkgname}-64-build"
+  export build32dir="${srcdir}/${pkgname}-32-build"
+}
 
 _build() { _set_vars;
   cd "${srcdir}" || _failure
@@ -369,9 +364,9 @@ _build() { _set_vars;
   cd "${build64dir}" || _failure
   ../"${pkgname}"/configure \
     "${_sharedopts[@]}" \
-    "${_wine64opts[@]}" || _failure "Wine-64 configure failed"
+    "${_wine64opts[@]}" || _failure "Wine-64 configure failed; check ${build64dir}/config.log for more information"
 
-  make -j$(($(nproc) + 1)) || _failure "Compilation failed; check ${build64dir}/config.log for more information"
+  make -j$(($(nproc) + 1)) || _failure "Compilation failed"
 
   ## don't build lib32 for wow64 builds
   if [ "${wow64build}" = "true" ]; then return 0; fi
@@ -386,15 +381,17 @@ _build() { _set_vars;
   export CROSSCC="ccache i686-w64-mingw32-clang"
 
   # fsync doesn't compile on i386 due to undefined atomic ops otherwise (clang only, ntdll.so)
-  export I386_LIBS="-latomic"
+  if [[ "${CC}" =~ "clang" ]]; then
+    export I386_LIBS="-latomic"
+  fi
 
   msg2 "Building Wine-32"
   cd "${build32dir}" || _failure
   ../"${pkgname}"/configure \
     "${_sharedopts[@]}" \
-    "${_wine32opts[@]}" || _failure "Wine-32 configure failed"
+    "${_wine32opts[@]}" || _failure "Wine-32 configure failed; check ${build32dir}/config.log for more information"
 
-  make -j$(($(nproc) + 1)) || _failure "Compilation failed; check ${build32dir}/config.log for more information"
+  make -j$(($(nproc) + 1)) || _failure "Compilation failed"
 }
 
 build() {
@@ -512,5 +509,9 @@ _failure() {
   error "Exiting."
   exit 1
 }
+
+# this is a bit hideous, what could go wrong?
+__llvm_ver="$(env ls -1 /opt/llvm-mingw/lib/clang/)" || \
+  _failure "A numbered folder in /opt/llvm-mingw/lib/clang/ wasn't found. Are you sure you have the llvm-mingw toolchain installed?"
 
 trap exit_cleanup EXIT
