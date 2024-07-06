@@ -42,7 +42,7 @@ build() {
   cd "$_pkgsrc/app"
   fvm install
 
-  fvm flutter --disable-telemetry
+  fvm flutter --disable-analytics
   #fvm flutter pub upgrade --major-versions
   fvm flutter pub get
   fvm flutter build linux --release
