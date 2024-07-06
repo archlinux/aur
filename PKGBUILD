@@ -24,7 +24,14 @@ makedepends=(unzip zip diffutils yasm mesa imake inetutils ccache
               mercurial clang llvm jack nodejs cbindgen nasm
              python-setuptools python-psutil python-zstandard git binutils lld dump_syms
              wasi-sdk
-optdepends=('networkmanager: Location detection via available WiFi networks' 'libnotify: Notification integration' 'pulseaudio: Audio support' 'speech-dispatcher: Text-to-Speech' 'hunspell-en_US: Spell checking, American English' 'xdg-desktop-portal: Screensharing with Wayland' 'libappindicator-gtk3: Global menu support for GTK apps' 'appmenu-gtk-module: Appmenu for GTK only')
+optdepends=(
+	'networkmanager: Location detection via available WiFi networks'
+	'libnotify: Notification integration'
+	'pulseaudio: Audio support' 'speech-dispatcher: Text-to-Speech'
+	'hunspell-en_US: Spell checking, American English' 
+	'xdg-desktop-portal: Screensharing with Wayland' 
+	'libappindicator-gtk3: Global menu support for GTK apps' 
+	'appmenu-gtk-module: Appmenu for GTK only')
 depends_x86_64=(ffmpeg)
 depends_aarch64=(ffmpeg)
 backup=('usr/lib/librewolf-nightly/librewolf.cfg'
