@@ -4,7 +4,7 @@
 pkgname=mldonkey
 _pkgver=3.1.7-2
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=4
 pkgdesc='A multi-network P2P client'
 arch=(x86_64)
 url='http://mldonkey.sourceforge.net/'
@@ -40,9 +40,15 @@ prepare() {
   patch -Np1 -i ../mldonkey-cpp17-byte-namespace.patch
   patch -Np1 -i ../mldonkey-fix-build-with-4.12.patch
   patch -Np1 -i ../mldonkey-fix-build.patch
+
+  # https://github.com/ygrek/mldonkey/issues/101
+  sed -i 's/sizeof( map->lanaddr )/sizeof( map->lanaddr ), NULL , 0/g' src/utils/net/upnp_stubs.c
 }
 
 build() {
+  # GCC 14, not reported yet
+  CFLAGS+=" -Wno-error=incompatible-pointer-types"
+
   cd "mldonkey-${_pkgver}"
   ./configure \
     --prefix=/usr \
