@@ -3,7 +3,7 @@
 # Contributor: Marcel Krüger <zauguin at gmail dot com>
 
 pkgname=stdman
-pkgver=2022.07.30
+pkgver=2024.07.05
 pkgrel=1
 pkgdesc="Formatted C++ stdlib man pages (cppreference)."
 arch=(any)
@@ -11,7 +11,7 @@ url="https://github.com/jeaye/stdman"
 license=('MIT')
 depends=('man')
 source=("${pkgname}-v${pkgver}.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('332383e5999e1ac9a6210be8b256608187bb7690a2bff990372e93c2ad4e76ff')
+sha256sums=('3cd652cb76c4fc7604c2b961a726788550c01065032bcff0a706b44f2eb0f75a')
 options=(!strip)
 
 build() {
