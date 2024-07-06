@@ -20,7 +20,7 @@ build() {
 }
 
 package() {
-  depends=("python-numpy" "python-pyaml" "python-tqdm" "python-soundfile" "python-stempeg")
+  depends=("python-numpy1" "python-pyaml" "python-tqdm" "python-soundfile" "python-stempeg")
 
   cd "${srcdir}/${_pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}"
