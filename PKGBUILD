@@ -3,8 +3,8 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-x265
-pkgver=3.5
-pkgrel=3
+pkgver=3.6
+pkgrel=1
 arch=('any')
 pkgdesc="Open Source H265/HEVC video encoder (Android ${_android_arch})"
 license=('GPL')
@@ -14,10 +14,10 @@ makedepends=('android-cmake'
              'nasm')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://bitbucket.org/multicoreware/x265_git/downloads/x265_${pkgver}.tar.gz")
-md5sums=('deb5df5cb2ec17bdbae6ac6bbc3b1eef')
+md5sums=('99997ecc8ee4d3575ba7715c759ad3bb')
 
 build() {
-    cd "${srcdir}"/x265_${pkgver}
+    cd "${srcdir}/x265_${pkgver}"
     source android-env ${_android_arch}
 
     if [[ "${_android_arch}" = armv7a-eabi || "${_android_arch}" = x86 ]]; then
@@ -37,7 +37,8 @@ build() {
         -DENABLE_CLI=FALSE \
         -DHIGH_BIT_DEPTH=TRUE \
         -DMAIN12=TRUE \
-        -DEXPORT_C_API=FALSE
+        -DEXPORT_C_API=FALSE \
+        -Wno-dev
     sed -i 's|-lpthread||g' build-12/CMakeFiles/x265-shared.dir/link.txt
     sed -i 's|-Wl,--no-undefined-version||g' build-12/CMakeFiles/x265-shared.dir/link.txt
     sed -i 's|-Wl,--no-undefined||g' build-12/CMakeFiles/x265-shared.dir/link.txt
@@ -53,7 +54,8 @@ build() {
         -DENABLE_ASSEMBLY=FALSE \
         -DENABLE_CLI=FALSE \
         -DHIGH_BIT_DEPTH=TRUE \
-        -DEXPORT_C_API=FALSE
+        -DEXPORT_C_API=FALSE \
+        -Wno-dev
     sed -i 's|-lpthread||g' build-10/CMakeFiles/x265-shared.dir/link.txt
     sed -i 's|-Wl,--no-undefined-version||g' build-10/CMakeFiles/x265-shared.dir/link.txt
     sed -i 's|-Wl,--no-undefined||g' build-10/CMakeFiles/x265-shared.dir/link.txt
@@ -75,7 +77,8 @@ build() {
         -DEXTRA_LIB='x265_main10.a;x265_main12.a' \
         -DEXTRA_LINK_FLAGS='-L.' \
         -DLINKED_10BIT=TRUE \
-        -DLINKED_12BIT=TRUE
+        -DLINKED_12BIT=TRUE \
+        -Wno-dev
     sed -i 's|-lpthread||g' build-8/CMakeFiles/x265-shared.dir/link.txt
     sed -i 's|-Wl,--no-undefined-version||g' build-8/CMakeFiles/x265-shared.dir/link.txt
     sed -i 's|-Wl,--no-undefined||g' build-8/CMakeFiles/x265-shared.dir/link.txt
@@ -83,10 +86,10 @@ build() {
 }
 
 package() {
-    cd "${srcdir}"/x265_${pkgver}
+    cd "${srcdir}/x265_${pkgver}"
     source android-env ${_android_arch}
 
     make -C build-8 DESTDIR="$pkgdir" install
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
