@@ -11,8 +11,8 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-protobuf
-pkgver=25.3
-pkgrel=2
+pkgver=27.2
+pkgrel=1
 arch=('any')
 pkgdesc="Protocol Buffers - Google's data interchange format (Android ${_android_arch})"
 url='https://developers.google.com/protocol-buffers/'
@@ -23,7 +23,7 @@ makedepends=('android-cmake')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/protocolbuffers/protobuf/archive/v$pkgver/protobuf-$pkgver.tar.gz"
         "https://github.com/protocolbuffers/protobuf/commit/2e62ef1e.patch")
-md5sums=('5e82b6696d6bcacc2e60313f187f3551'
+md5sums=('0ac311cc460fa11d8281c15a0069a9b0'
          'SKIP')
 
 prepare() {
