@@ -1,0 +1,25 @@
+pkgbase = libofa
+	pkgdesc = An open-source audio fingerprint by MusicIP
+	pkgver = 0.9.3
+	pkgrel = 10
+	url = https://github.com/tanob/libofa
+	arch = x86_64
+	license = GPL2
+	license = custom
+	depends = expat
+	depends = curl
+	depends = fftw
+	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/musicip-libofa/libofa-0.9.3.tar.gz
+	source = libofa-gcc4.patch
+	source = libofa-gcc4.3.patch
+	source = libofa-gcc4.5.patch
+	source = libofa-0.9.3-curl-7.21.patch
+	source = libofa-0.9.3-gcc-4.7.patch
+	sha256sums = 0216466153e92058c5202dea03390ddc7601d916b983f71ce4f4d034405590a0
+	sha256sums = 29955fe97cdb3cc2eb72b7b05f1ae38cc5c98b1740a0db96d61f51a13d380cd8
+	sha256sums = 99fb50907d98640b21a42d00fccee1fa33a02dfabf94a40374766fcc823f5dd3
+	sha256sums = 6557e9c5ff2a8e0d5f0a91d9faa0ac43b7278926631d45a504cd17fe07fd3c68
+	sha256sums = 2fa49ced7b47cf05641d1413965244693ffd514ec9d409a784b92751ae4d1c90
+	sha256sums = e0c28752df197ce38f9762aded5df12e1ba1181f721f42fddb83ec1178e90c58
+
+pkgname = libofa
