@@ -5,7 +5,7 @@ pkgbase=python-glymur
 _pyname=${pkgbase#python-}
 #_pyname=Glymur
 pkgname=('python-glymur' 'python-glymur-doc')
-pkgver=0.13.3
+pkgver=0.13.4
 #_commit="d0134123978678d33573d53a144ce1634e770e10"
 pkgrel=1
 pkgdesc="Tools for accessing JPEG2000 files"
@@ -20,6 +20,7 @@ makedepends=('python-setuptools'
              'python-sphinx_rtd_theme'
              'python-lxml')
 checkdepends=('python-pytest'
+#             'python-pytest-xdist'
               'python-numpy'
               'python-lxml'
 #             'openjpeg2'   # <- pillow <- skimage
@@ -40,7 +41,7 @@ source=("https://github.com/quintusdias/glymur/archive/refs/tags/v${pkgver}.tar.
 #       "https://raw.githubusercontent.com/quintusdias/glymur/master/docs/source/whatsnew/0.10.rst"
 #       "https://raw.githubusercontent.com/quintusdias/glymur/master/docs/source/whatsnew/0.11.rst"
 #       "https://raw.githubusercontent.com/quintusdias/glymur/master/docs/source/whatsnew/0.12.rst")
-md5sums=('f3ef3aceee1c2481cce0e945c90ca5ab')
+md5sums=('0cb3ec241723f010c941190bf5c44bd7')
 #        'SKIP'
 #        'SKIP'
 #        'SKIP'
@@ -84,7 +85,7 @@ check() {
 #   cd ${srcdir}/${_pyname}-${pkgver/.p/p}
 #   cd ${srcdir}/${_pyname}-${_commit}
 
-    pytest || warning "Tests failed" # -vv -ra --color=yes -o console_output_style=count
+    pytest || warning "Tests failed" # -vv -ra --color=yes -o console_output_style=count -p xdist -n 4
 #       tests/test_tiff2jp2.py::TestSuite::test_rgba_interface_big_endian
 #       tests/test_tiff2jp2.py::TestSuite::test_rgba_interface_big_endian_stripped
 #       tests/test_tiff2jp2.py::TestSuite::test_rgba_interface_big_endian_tiled
