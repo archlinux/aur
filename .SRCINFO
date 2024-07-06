@@ -1,7 +1,7 @@
 pkgbase = cheese-git
 	pkgdesc = Take photos and videos with your webcam, with fun graphical effects
 	pkgver = 44.1.r3.ga7af338
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.gnome.org/GNOME/cheese
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -9,6 +9,7 @@ pkgbase = cheese-git
 	makedepends = appstream-glib
 	makedepends = clutter-gst
 	makedepends = git
+	makedepends = glib2-devel
 	makedepends = gobject-introspection
 	makedepends = gst-plugins-bad
 	makedepends = meson
@@ -28,7 +29,7 @@ pkgname = cheese-git
 	depends = gstreamer
 	depends = gtk3
 	depends = libcanberra
-	depends = libcheese-git=44.1.r3.ga7af338-2
+	depends = libcheese-git=44.1.r3.ga7af338-3
 	provides = cheese
 	conflicts = cheese
 

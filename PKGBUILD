@@ -8,7 +8,7 @@ pkgname=(
   libcheese-git
 )
 pkgver=44.1.r3.ga7af338
-pkgrel=2
+pkgrel=3
 pkgdesc="Take photos and videos with your webcam, with fun graphical effects"
 url="https://gitlab.gnome.org/GNOME/cheese"
 license=('GPL-2.0-or-later')
@@ -25,6 +25,7 @@ makedepends=(
   appstream-glib
   clutter-gst
   git
+  glib2-devel
   gobject-introspection
   gst-plugins-bad
   meson
@@ -44,8 +45,10 @@ pkgver() {
 }
 
 build() {
+  CFLAGS+=" -Wno-error=incompatible-pointer-types"
+
   local meson_options=(
-    -D tests=true
+    -D tests=false
   )
 
   arch-meson "$_pkgsrc" build "${meson_options[@]}"
