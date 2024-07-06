@@ -1,9 +1,10 @@
-# Maintainer: Lucki <https://aur.archlinux.org/account/Lucki>
+# Maintainer:
+# Contributor: Lucki <https://aur.archlinux.org/account/Lucki>
 # Contributor in comments: Misc <https://aur.archlinux.org/account/misc/>
 # Contributor in comments: SajeOne <https://aur.archlinux.org/account/SajeOne/>
 # Contributor in email: tpenguinltg <https://aur.archlinux.org/account/tpenguinltg/>
 # shellcheck shell=bash
-# shellcheck disable=2034,2154
+# shellcheck disable=SC2034,SC2154
 
 pkgname=opsu-git
 _pkgname=${pkgname%-git}
@@ -32,12 +33,12 @@ optdepends=('ffmpeg: Background video playback')
 makedepends=('java-environment<17' 'java-web-start' 'gradle6' 'git')
 
 pkgver() {
-    cd "$pkgname" || exit
+    cd "$pkgname" || exit 1
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "$pkgname" || exit
+    cd "$pkgname" || exit 1
 
     # keep dependencies outside users home by setting GRADLE_USER_HOME
     GRADLE_USER_HOME="GRADLE_USER_HOME" gradle6 jar -PXDG=true -PexcludeFFmpeg
