@@ -13,7 +13,7 @@
 # Release notes: https://docs.nvidia.com/datacenter/tesla/index.html
 
 pkgname=nvidia-tesla-dkms
-pkgver=535.154.05
+pkgver=550.90.07
 pkgrel=2
 pkgdesc='NVIDIA driver sources for linux (tesla version)'
 arch=('x86_64')
@@ -27,11 +27,11 @@ _pkg="NVIDIA-Linux-${CARCH}-${pkgver}"
 source=("https://us.download.nvidia.com/tesla/${pkgver}/${_pkg}.run"
         '110-nvidia-change-dkms-conf.patch'
         '120-nvidia-linux-rt-gift.patch'
-	'gcc14.patch')
-sha256sums=('7e95065caa6b82de926110f14827a61972eb12c200e863a29e9fb47866eaa898'
+        'gcc14.patch')
+sha256sums=('51acf579d5a9884f573a1d3f522e7fafa5e7841e22a9cec0b4bbeae31b0b9733'
             'ac0c8c4ee6b0caa71b895cf8d8535ab4cebc68ac6b9b0b9c3cf28516e0846abd'
             '291bc6568e18496a4c2e732fd8616f6d536d8e9f3ab51f1959e3fc08f0de126b'
-	    'd422f47158f2812caccac366a4ffd230c449b44f63eaedaef6855bca6a9dba43')
+            'd422f47158f2812caccac366a4ffd230c449b44f63eaedaef6855bca6a9dba43')
 
 prepare() {
     # extract the source file
