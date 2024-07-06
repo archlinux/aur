@@ -1,6 +1,6 @@
 pkgbase = python-sunpy-sphinx-theme
 	pkgdesc = The sphinx theme for the SunPy website and documentation
-	pkgver = 2.0.12
+	pkgver = 2.0.13
 	pkgrel = 1
 	url = https://github.com/sunpy/sunpy-sphinx-theme
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = python-sunpy-sphinx-theme
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/s/sunpy_sphinx_theme/sunpy_sphinx_theme-2.0.12.tar.gz
+	source = https://files.pythonhosted.org/packages/source/s/sunpy_sphinx_theme/sunpy_sphinx_theme-2.0.13.tar.gz
 	source = Makefile
-	md5sums = ff07cc7b89234fed8bf7907d176a9549
+	md5sums = d0784c9651e1487cd28347479e3636dd
 	md5sums = a6aa4bc42b138d75f938065a0994c3e1
 
 pkgname = python-sunpy-sphinx-theme
