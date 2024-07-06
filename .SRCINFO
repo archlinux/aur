@@ -1,7 +1,7 @@
 pkgbase = haskell-drunken-bishop
 	pkgdesc = An implementation of the Drunken Bishop visual fingerprinting algorithm
 	pkgver = 0.1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hackage.haskell.org/package/drunken-bishop
 	arch = x86_64
 	license = BSD
@@ -11,6 +11,6 @@ pkgbase = haskell-drunken-bishop
 	source = https://hackage.haskell.org/packages/archive/drunken-bishop/0.1.0.0/drunken-bishop-0.1.0.0.tar.gz
 	source = setup.patch
 	sha256sums = fe1d43b691a4c49e264ae6d87838d2ec8249e7b4b2b5709f97d5fe8f20128784
-	sha256sums = 7def91926f2e4894a7e1d6abdcb822017bf417597ffbba09a4f7c5945ccfa3b3
+	sha256sums = 045bee9aea97917ff9a7275d467633f79b10d80d19117d3106ffd3a2e16af648
 
 pkgname = haskell-drunken-bishop
