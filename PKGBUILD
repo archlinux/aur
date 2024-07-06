@@ -2,8 +2,8 @@
 
 _pkgname=matrix-reminder-bot
 pkgname=python-matrix-reminder-bot
-pkgver=0.2.1
-pkgrel=3
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="Matrix bot to remind you about stuff."
 url="https://github.com/anoadragon453/matrix-reminder-bot"
 depends=('python' 'python-matrix-nio' 'python-markdown' 'python-yaml'
@@ -17,7 +17,7 @@ backup=('etc/matrix-reminder-bot/config.yaml')
 source=("https://github.com/anoadragon453/${_pkgname}/archive/v${pkgver}.tar.gz"
         "matrix-reminder-bot.service")
 
-sha256sums=('4cc8372e5ca5f814f0a71b2fa1cf28155475542da0e70b523b5bc85aaf1ef295'
+sha256sums=('53376614fb7c9061acf9b920ba00356fd0d0660d659bf829ed4323e1b7e17709'
             'ed58a6cb4c10418dfd32a306eba2a22909858881c2bb73eb49cbf7ecaad7bf7e')
 
 build() {
