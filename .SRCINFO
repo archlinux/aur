@@ -1,6 +1,6 @@
 pkgbase = perl-data-dumper-simple
 	pkgdesc = Easily dump variables with names
-	pkgver = 0.110.0
+	pkgver = 0.11
 	pkgrel = 1
 	url = http://search.cpan.org/dist/Data-Dumper-Simple/
 	arch = any
@@ -8,7 +8,6 @@ pkgbase = perl-data-dumper-simple
 	depends = perl-filter-simple
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/O/OV/OVID/Data-Dumper-Simple-0.11.tar.gz
-	md5sums = 0a3e67bf5bb6f2f39116bb92632631df
+	sha256sums = 3f3cfd278cbe118852d97a399de139a3dfce38c6e0f0c775a492d27e702f0c5e
 
 pkgname = perl-data-dumper-simple
-
