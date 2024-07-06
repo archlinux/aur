@@ -31,7 +31,8 @@ optdepends=(
 	'hunspell-en_US: Spell checking, American English' 
 	'xdg-desktop-portal: Screensharing with Wayland' 
 	'libappindicator-gtk3: Global menu support for GTK apps' 
-	'appmenu-gtk-module: Appmenu for GTK only')
+	'appmenu-gtk-module: Appmenu for GTK only'
+)
 depends_x86_64=(ffmpeg)
 depends_aarch64=(ffmpeg)
 backup=('usr/lib/librewolf-nightly/librewolf.cfg'
