@@ -1,0 +1,5 @@
+[python-diffq]
+source = "github"
+github = "facebookresearch/diffq"
+prefix = "v"
+use_max_tag = true
