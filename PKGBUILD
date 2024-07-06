@@ -9,20 +9,21 @@
 _pkgname=godot
 pkgname=godot3-mono
 pkgver=3.5.3
-pkgrel=4
+pkgrel=5
 pkgdesc='Advanced cross-platform 2D and 3D game engine (3.x Branch Mono)'
 url='https://godotengine.org'
 license=(MIT)
 arch=(x86_64)
 makedepends=(gcc scons yasm alsa-lib pulseaudio nuget xorg-server-xvfb)
 depends=(embree3 freetype2 libglvnd libtheora libvorbis libvpx libwebp libwslay
-         libsquish libxcursor libxi libxinerama libxrandr opusfile mono mono-msbuild)
-	 #miniupnpc removed cause 2.2.8)
+         libsquish libxcursor libxi libxinerama libxrandr opusfile mono mono-msbuild miniupnpc)
 optdepends=(pipewire-alsa pipewire-pulse)
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/godotengine/godot/archive/$pkgver-stable.tar.gz"
+	"https://gitlab.archlinux.org/archlinux/packaging/packages/godot/-/raw/main/miniupnpc-2.2.8.patch"
         "godot"
         "godot3-mono.patch")
 b2sums=('07ee037803e103f863e56a00c6106d00834870881ec75ecc43f947ea3d6e04a560763aa183661fa6437c4c8307f9231b250f2d51462057add1720d71d2ada827'
+        'ad308b3ed7fdd0ee305151c584e1a37c753dc5856b0afc631342c03f386a45723d2193d5a6937598a1b883d847dc3ac9c5f7db3d66ec3f9283f636e301235e50'
         '42f2bf8fc194700d865609ca5545447473edeb63598715243a9f199f42bc9e28ef3524232b4e65bf2e9e2b53b953373c9f40ba633cf7b50df47e861e3082bd94'
         'a5f2aeacb377ed177614c4226c5de6b8dfd68b818591d93786c5c8114c6b55d52c37d8fca5a291966ea01a2c5104ad2d242a7dbc71bc8bf5292f7f6c5107660a')
 
@@ -33,6 +34,7 @@ prepare() {
   # Make godot3-mono be installed with godot
   cd "$srcdir/$_pkgname-$pkgver-stable"
   patch -p1 < "$srcdir/godot3-mono.patch"
+  patch -p1 < "$srcdir/miniupnpc-2.2.8.patch"
 }
 
 build() {
@@ -41,9 +43,8 @@ build() {
   #  certs (FS#72762)
   #  enet (contains no upstreamed IPv6 support)
   #  recast, xatlas
-  #  miniupnpc updated to 2.2.8
   #  AUR: libwebm
-  local to_unbundle="embree freetype libogg libpng libsquish libtheora libvorbis libvpx libwebp opus pcre2 wslay zlib zstd"
+  local to_unbundle="embree freetype libogg libpng libsquish libtheora libvorbis libvpx libwebp opus pcre2 wslay zlib zstd miniupnpc"
   local system_libs=""
   for _lib in $to_unbundle; do
     system_libs+="builtin_"$_lib"=no "
