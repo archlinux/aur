@@ -1,7 +1,7 @@
 pkgbase = glslang-minimal-git
 	pkgdesc = OpenGL and OpenGL ES shader front end and validator, git version
-	pkgver = 14.1.0.r7.g32257786
-	pkgrel = 3
+	pkgver = 14.3.0.r10.g4a516f28a
+	pkgrel = 1
 	url = https://github.com/KhronosGroup/glslang
 	arch = x86_64
 	license = BSD

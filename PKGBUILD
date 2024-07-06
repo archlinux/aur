@@ -4,8 +4,8 @@
 
 pkgname=glslang-minimal-git
 _name=glslang
-pkgver=14.1.0.r7.g32257786
-pkgrel=3
+pkgver=14.3.0.r10.g4a516f28a
+pkgrel=1
 pkgdesc='OpenGL and OpenGL ES shader front end and validator, git version'
 arch=('x86_64')
 url='https://github.com/KhronosGroup/glslang'
@@ -49,9 +49,6 @@ package() {
   cmake --install cmake-build-shared/ -v --strip --prefix "$pkgdir/usr"
   cmake --install cmake-build-static/ -v --strip --prefix "$pkgdir/usr"
   
-  pushd "$pkgdir"/usr/bin
-  ln -s glslang glslangValidator
-  popd
   install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
