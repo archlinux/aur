@@ -3,7 +3,7 @@
 _pkgname=rust
 
 pkgname=mingw-w64-rust-bin
-pkgver=1.78.0
+pkgver=1.79.0
 pkgrel=1
 pkgdesc="Systems programming language focused on safety, speed and concurrency (official build, mingw-w64)"
 arch=('x86_64')
@@ -24,15 +24,15 @@ source=("https://static.rust-lang.org/dist/cargo-${pkgver}-x86_64-unknown-linux-
         "https://static.rust-lang.org/dist/rust-std-${pkgver}-x86_64-unknown-linux-gnu.tar.xz"{,.asc}
         "https://static.rust-lang.org/dist/rust-std-${pkgver}-i686-pc-windows-gnu.tar.xz"{,.asc}
         "https://static.rust-lang.org/dist/rust-std-${pkgver}-x86_64-pc-windows-gnu.tar.xz"{,.asc})
-sha256sums=('f8aacf7a101eb10dc000b8bf26de90a9d0ce678d02ccf70430ed20dd31ecec6b'
+sha256sums=('07fcadd27b645ad58ff4dae5ef166fd730311bbae8f25f6640fe1bfd2a1f3c3c'
             'SKIP'
-            '3994971e5923716d54e4b574ce238f04c4e20cda03990670f7cc3f87d36e5499'
+            'a04cf42022d0a5faf01c31082bfb1dde9c38409f0ca6da90a3e40faa03e797ae'
             'SKIP'
-            '95aece42a336f237c5bac5c5d9aca051b7f0bd3e6a64fb3c5828e6d0d3af2e8c'
+            '2c914483c0882d44af2e50a181cbd2c953d672d50b31aa669ee2346cade1f108'
             'SKIP'
-            '83644cc9e33452464c2895e67ccdc66eda1a0f182383a36d72df436150e0fb16'
+            '4984627aa1a576cd411e1fab17dc73946a8ed36ec043c094f2ee73afc4e6283d'
             'SKIP'
-            'b209af08b65a16a7e0835c48c1a5d2fa935b0c4e6dff717938207f1a9b1e69c5'
+            'd5e34f01306a29c8385502eb5fca3fe69e3faf8af94a70d39b5626f2ec6c39ee'
             'SKIP')
 validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE') # Rust Language (Tag and Release Signing Key) <rust-key@rust-lang.org>
 
@@ -104,7 +104,6 @@ package() {
   cat << EOF >> "${pkgdir}/opt/${_pkgname}/cargo/config"
 [target.i686-pc-windows-gnu]
 linker = "/usr/bin/i686-w64-mingw32-gcc"
-ar = "/usr/i686-w64-mingw32/bin/ar"
 EOF
   if pacman -T "mingw-w64-wine" ; then
     cat << EOF >> "${pkgdir}/opt/${_pkgname}/cargo/config"
@@ -120,7 +119,6 @@ EOF
   cat << EOF >> "${pkgdir}/opt/${_pkgname}/cargo/config"
 [target.x86_64-pc-windows-gnu]
 linker = "/usr/bin/x86_64-w64-mingw32-gcc"
-ar = "/usr/x86_64-w64-mingw32/bin/ar"
 EOF
   if pacman -T "mingw-w64-wine" ; then
     cat << EOF >> "${pkgdir}/opt/${_pkgname}/cargo/config"
