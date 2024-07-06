@@ -1,8 +1,7 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=deptry
-pkgver=0.16.1
-_commit=caa4e436cca5b15c1e63488f8594050cb21488d0
+pkgver=0.16.2
 pkgrel=1
 pkgdesc="Find unused, missing and transitive dependencies in a Python project"
 arch=(x86_64)
@@ -26,17 +25,10 @@ checkdepends=(
   python-pytest
   python-pytest-xdist
 )
-source=("$pkgname::git+$url.git?signed#commit=$_commit")
-sha256sums=('a2f3947b2f7214ff236037032983f96bbcf7e26e5811a49740b024c2c9cf2ca5')
-validpgpkeys=('968479A1AFF927E37D1A566BB5690EEEBB952194') # GitHub <noreply@github.com>
+source=("$pkgname::git+$url.git#tag=$pkgver")
+sha256sums=('dd59d1eaa00f1bda920efc417ff1c3d50f1a7bbd1b16265325da7415ce7b24cb')
 
 _archive="$pkgname"
-
-pkgver() {
-  cd "$_archive"
-
-  git describe --tags
-}
 
 build() {
   cd "$_archive"
@@ -63,6 +55,5 @@ package() {
   cd "$_archive"
 
   python -m installer --destdir="$pkgdir" dist/*.whl
-
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
