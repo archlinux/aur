@@ -1,0 +1,19 @@
+pkgbase = python-teroshdl
+	pkgdesc = A group of python dependencies for TerosHDL, an open source toolbox for HDL developers.
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/TerosTechnology/vscode-terosHDL
+	arch = any
+	license = GPL-3.0-only
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = yosys
+	depends = python-vunit_hdl>=4.4.1
+	depends = python-edalize>=0.2.5
+	depends = python-vsg>=3.3.0
+	optdepends = python-cocotb
+	source = python-teroshdl-3.0.0.tar.gz::https://files.pythonhosted.org/packages/source/t/teroshdl/teroshdl-3.0.0.tar.gz
+	sha256sums = 3a3437cfa2ca61e59543ab2303bc604c10102111d3121c9bbc3dd75bfdf8691a
+
+pkgname = python-teroshdl
