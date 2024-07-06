@@ -1,0 +1,15 @@
+pkgbase = vtm
+	pkgdesc = A text-based desktop environment that runs console applications in floating windows and allows remote access over tunnelling protocols such as SSH
+	pkgver = 0.9.85
+	pkgrel = 1
+	url = https://github.com/directvt/vtm
+	arch = any
+	license = MIT
+	makedepends = cmake
+	makedepends = gcc
+	depends = glibc
+	depends = gcc-libs
+	source = vtm-0.9.85.tar.gz::https://github.com/directvt/vtm/archive/v0.9.85.tar.gz
+	sha256sums = 44cf8cad62eecdc45dd67d7f21e594e5253824216d2f3be5519a48128f7fc163
+
+pkgname = vtm
