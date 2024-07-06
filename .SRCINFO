@@ -1,6 +1,6 @@
 pkgbase = privatebin-cli-bin
 	pkgdesc = A powerful CLI for creating and managing PrivateBin pastes with ease - binary package
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/gearnode/privatebin
 	install = privatebin-cli-bin.install
@@ -9,9 +9,9 @@ pkgbase = privatebin-cli-bin
 	license = ISC
 	provides = privatebin-cli
 	conflicts = privatebin-cli
-	source_x86_64 = privatebin-cli-bin-2.0.1.tar.gz::https://github.com/gearnode/privatebin/releases/download/v2.0.1/privatebin_2.0.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 9192e7d6f8eb78e1a511f7f1ce5a2854f923e363c4e3e30134a387b8f2305f03
-	source_aarch64 = privatebin-cli-bin-2.0.1.tar.gz::https://github.com/gearnode/privatebin/releases/download/v2.0.1/privatebin_2.0.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = cbf42d94a25f220330b76ce11deb4a185b385863bde9d2a72febf6fe3b1336ac
+	source_x86_64 = privatebin-cli-bin-2.0.2.tar.gz::https://github.com/gearnode/privatebin/releases/download/v2.0.2/privatebin_2.0.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = ed281014457eb14838cacea299cd04df59b1a332ec6de7563123d49bceecfd16
+	source_aarch64 = privatebin-cli-bin-2.0.2.tar.gz::https://github.com/gearnode/privatebin/releases/download/v2.0.2/privatebin_2.0.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = ed281014457eb14838cacea299cd04df59b1a332ec6de7563123d49bceecfd16
 
 pkgname = privatebin-cli-bin
