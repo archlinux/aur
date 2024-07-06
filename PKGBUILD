@@ -1,43 +1,46 @@
-# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
-# Based on work made by Dustin Falgout <dustin@antergos.com>
+# Maintainer:
+# Contributor: Frederic Bezies <fredbezies at gmail dot com>
 
-pkgname=brisk-menu-git
-_pkgname=brisk-menu
-_gitname=brisk
+_pkgname="brisk-menu"
+pkgname="$_pkgname-git"
 pkgver=0.6.2.r3.g71cced4
-pkgrel=2
-pkgdesc='Modern, efficient menu for the MATE Desktop Environment - git version'
+pkgrel=3
+pkgdesc="Modern, efficient menu for the MATE Desktop Environment"
+url="https://github.com/getsolus/brisk-menu"
+license=('GPL-2.0-or-later')
 arch=('i686' 'x86_64')
-url='https://github.com/getsolus/brisk-menu'
-license=('GPL2')
-groups=('mate')
-depends=('mate-panel' 'libnotify')
-makedepends=('gnome-common' 'gettext' 'itstool' 'vala>=0.36' 'meson' 'ninja')
-optdepends=('mozo: for menu edition'
-		'menulibre: for menu edition') 
-options=('!libtool' '!emptydirs' '!debug' '!lto')
-provides=('brisk-menu')
-conflicts=('brisk-menu')
-source=(git+https://github.com/getsolus/brisk-menu.git)
+
+depends=(
+  'libnotify'
+  'mate-panel'
+)
+makedepends=(
+  'git'
+  'glib2-devel'
+  'meson'
+  'ninja'
+)
+
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/brisk-menu"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -c2-48
-
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "$srcdir/brisk-menu"
-    meson --buildtype plain build --prefix=/usr --libexecdir=/usr/lib/${_pkgname}
+  CFLAGS="${CFLAGS/_FORTIFY_SOURCE=?/_FORTIFY_SOURCE=2}"
 
-    ninja -C build -j$(($(getconf _NPROCESSORS_ONLN)+1))
+  arch-meson "$_pkgsrc" build
+  meson compile -C build
 }
 
 package() {
-    cd "$srcdir/brisk-menu"
-    DESTDIR="$pkgdir" ninja -C build install
+  meson install -C build --destdir "$pkgdir"
 }
-
-
-

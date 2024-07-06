@@ -1,29 +1,20 @@
 pkgbase = brisk-menu-git
-	pkgdesc = Modern, efficient menu for the MATE Desktop Environment - git version
+	pkgdesc = Modern, efficient menu for the MATE Desktop Environment
 	pkgver = 0.6.2.r3.g71cced4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/getsolus/brisk-menu
 	arch = i686
 	arch = x86_64
-	groups = mate
-	license = GPL2
-	makedepends = gnome-common
-	makedepends = gettext
-	makedepends = itstool
-	makedepends = vala>=0.36
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = glib2-devel
 	makedepends = meson
 	makedepends = ninja
-	depends = mate-panel
 	depends = libnotify
-	optdepends = mozo: for menu edition
-	optdepends = menulibre: for menu edition
-	provides = brisk-menu
+	depends = mate-panel
+	provides = brisk-menu=0.6.2
 	conflicts = brisk-menu
-	options = !libtool
-	options = !emptydirs
-	options = !debug
-	options = !lto
-	source = git+https://github.com/getsolus/brisk-menu.git
+	source = brisk-menu::git+https://github.com/getsolus/brisk-menu.git
 	sha256sums = SKIP
 
 pkgname = brisk-menu-git
