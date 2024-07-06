@@ -2,8 +2,8 @@
 # Contributor: Aria Moradi <aria.moradi007 at gmail dot com>
 
 pkgname=rsiedit-bin
-pkgver=0.6.6
-pkgrel=2
+pkgver=0.6.7
+pkgrel=1
 pkgdesc="C# GUI application for manipulation of RSI files used in SS14."
 arch=("x86_64")
 url="https://github.com/space-wizards/RSIEdit"
@@ -11,21 +11,19 @@ license=("MIT")
 options=("!strip")
 source=("Editor_Linux_$pkgver.zip::$url/releases/download/v$pkgver/Editor_Linux.zip"
         "RSIEdit.desktop"
-	"RSIEdit.png")
-sha256sums=('9b9c6ac2c9a29da785c6947ef318589c04111dfd273ac024feb3da111fde3385'
+        "RSIEdit.png")
+sha256sums=('29a838a87ebdf915e3c54b9590de4540f53a8862cb89ddc7d4be0686a4f73097'
             '58c4554c6ada6b33d16f82a87301a2975f8ef2ca6247b3bab6bd8b8d76b92898'
             '56b7069383f1e839ce9aa14c8ca5e00bd089e3da85dd3ca774788d214c1fedea')
 
 package() {
-  install -Dm755 "$srcdir/Editor_Linux/Editor"			-t "$pkgdir/opt/RSIEdit"
-  install -Dm644 "$srcdir/Editor_Linux/libHarfBuzzSharp.so"	-t "$pkgdir/opt/RSIEdit"
-  install -Dm644 "$srcdir/Editor_Linux/libSkiaSharp.so"		-t "$pkgdir/opt/RSIEdit"
+  install -Dm755 "$srcdir/Editor_Linux/Editor" -t "$pkgdir/opt/RSIEdit"
+  install -Dm644 "$srcdir/Editor_Linux/libHarfBuzzSharp.so" -t "$pkgdir/opt/RSIEdit"
+  install -Dm644 "$srcdir/Editor_Linux/libSkiaSharp.so" -t "$pkgdir/opt/RSIEdit"
 
-  install -Dm644 "RSIEdit.desktop" 				-t "$pkgdir/usr/share/applications"
-  install -Dm644 "RSIEdit.png" 					-t "$pkgdir/usr/share/pixmaps"
+  install -Dm644 "RSIEdit.desktop" -t "$pkgdir/usr/share/applications"
+  install -Dm644 "RSIEdit.png" -t "$pkgdir/usr/share/pixmaps"
 
   mkdir -p "$pkgdir/usr/bin"
   ln -s "/opt/RSIEdit/Editor" "$pkgdir/usr/bin/rsiedit"
 }
-
-#vim: syntax=sh
