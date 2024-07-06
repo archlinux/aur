@@ -1,3 +1,5 @@
+# Maintainer: Versua7 <versua7@gmail.com>
+
 pkgname='tonelib-easycomp-bin'
 pkgver=2.0.0
 pkgrel=1
