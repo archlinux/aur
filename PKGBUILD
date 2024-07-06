@@ -1,81 +1,89 @@
-# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
+# Maintainer:
+# Contributor: Patrick Northon <northon_patrick3@yahoo.ca>
 
-pkgname=localsend
+## links
+# https://localsend.org/
+# https://github.com/localsend/localsend
+
+## options
+: ${_install_path:=opt}
+
+# basic info
+_pkgname="localsend"
+pkgname="$_pkgname"
 pkgver=1.14.0
-pkgrel=1
-pkgdesc='An open source cross-platform alternative to AirDrop.'
-url='https://localsend.org/'
-arch=('x86_64')
+pkgrel=2
+pkgdesc="An open source cross-platform alternative to AirDrop"
+url="https://github.com/localsend/localsend"
 license=('MIT')
-depends=('xdg-user-dirs' 'libayatana-appindicator')
-makedepends=('flutter-engine' 'git' 'yq' 'python' 'python311')
-source=(
-	"$pkgname-$pkgver.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
-	'flutter::git+https://github.com/flutter/flutter.git'
-	'flutter-engine::git+https://github.com/flutter/engine.git'
-	'git+https://chromium.googlesource.com/chromium/tools/depot_tools.git')
-sha256sums=('06dab4ced0c434d617e355dbe64f4cd793ddedd86939fd65b308590d122b3a06'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+arch=('x86_64')
 
-_srcdir="${pkgname}-${pkgver}"
-_engine_version=3.13.9
+depends=(
+  'libayatana-appindicator'
+)
+makedepends=(
+  'clang'
+  'cmake'
+  'fvm'
+  'git'
+  'lld'
+  'llvm'
+  'ninja'
+  'patchelf'
+)
 
-prepare() {
-	cd "${_srcdir}/app"
-	source '/opt/flutter-engine/pkgbuild-prepare.sh'
-}
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git#tag=v$pkgver")
+sha256sums=('SKIP')
 
 build() {
-	cd "${_srcdir}/app"
-	source '/opt/flutter-engine/pkgbuild-build.sh'
+  export FVM_CACHE_PATH="$SRCDEST/fvm-cache"
 
-	local dartpkg="$(yq -er .name 'pubspec.yaml')"
-	flutter create --project-name="${dartpkg}" --platforms=linux --no-pub --no-overwrite .
+  cd "$_pkgsrc/app"
+  fvm install
 
-	flutter clean
-	flutter pub get
-
-	flutter pub run build_runner build --release --delete-conflicting-outputs
-	flutter build linux --release
+  fvm flutter --disable-telemetry
+  #fvm flutter pub upgrade --major-versions
+  fvm flutter pub get
+  fvm flutter build linux --release
 }
 
 package() {
-	# Make opt dir
-	install -dm755 "${pkgdir}/opt/${pkgname}/"
+  cd "$_pkgsrc/app/build/linux/x64/release/bundle"
 
-	# Executable install
-	cd "${_srcdir}/app/build/linux/x64/release/bundle"
-	local execfile="$(find . -mindepth 1 -maxdepth 1 -type f -perm /111)"
-	install -Dm755 \
-		"${execfile}" \
-		"${pkgdir}/opt/${pkgname}/${pkgname}"
+  # app files
+  install -Dm755 "localsend_app" "$pkgdir/$_install_path/$_pkgname/$_pkgname"
+  cp --reflink=auto -r lib/ "$pkgdir/$_install_path/$_pkgname/"
+  cp --reflink=auto -r data/ "$pkgdir/$_install_path/$_pkgname/"
 
-	# Folders install
-	cp -r 'lib/' "${pkgdir}/opt/${pkgname}/"
-	cp -r 'data/' "${pkgdir}/opt/${pkgname}/"
+  # runpath
+  patchelf --force-rpath --set-rpath "/$_install_path/$_pkgname/lib" "$pkgdir/$_install_path/$_pkgname/$_pkgname"
+  for i in "$pkgdir/$_install_path/$_pkgname/lib"/*.so; do
+    patchelf --force-rpath --set-rpath "/$_install_path/$_pkgname/lib" "$i"
+  done
 
-	# Symlink executable
-	install -dm755 "${pkgdir}/usr/bin"
-	ln -s \
-		"/opt/${pkgname}/${pkgname}" \
-		"${pkgdir}/usr/bin/${pkgname}"
+  # symlink
+  install -dm755 "${pkgdir}/usr/bin"
+  ln -sfr "$pkgdir/$_install_path/$_pkgname/$_pkgname" "$pkgdir/usr/bin/${_pkgname}"
 
-	# Icon for .desktop
-	install -Dm644 \
-		"${srcdir}/${_srcdir}/app/build/flutter_assets/assets/img/logo-512.png" \
-		"${pkgdir}/usr/share/icons/${pkgname}.png"
+  # icon
+  install -Dm644 "$srcdir/$_pkgname/app/build/flutter_assets/assets/img/logo-512.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 
-	# .desktop file
-	install -Dm644 <(cat << EOF
+  # .desktop file
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
 [Desktop Entry]
 Type=Application
-Icon=${pkgname}
 Name=LocalSend
-Exec=/usr/bin/${pkgname}
-Comment=${pkgdesc}
+Comment=$pkgdesc
+Exec=$_pkgname
+Icon=$_pkgname
+Terminal=false
 Categories=Utility;Network;
-EOF
-	) "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+END
+
+  #license
+  install -Dm644 "$srcdir/$_pkgsrc/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
+
+  # permissions
+  chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }
