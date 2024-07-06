@@ -2,7 +2,7 @@
 
 pkgname=python-luna-usb
 _gitpkgname=luna
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Amaranth HDL framework for monitoring, hacking, and developing USB devices'
 arch=('any')
@@ -37,9 +37,7 @@ source=(
   "${_gitpkgname}-${pkgver}.tar.gz::https://github.com/greatscottgadgets/luna/archive/${pkgver}.tar.gz"
 )
 
-sha512sums=(
-  '2f8087c48d3ae59cce938ae6f7d6005b1f38d9d30a24017461f653aec97a47f607d730e3e62dc1eeb9e5fda6295d8d12689ce91fee07baba79f13c65afacc5c7'
-)
+sha512sums=('09e8df0f62ddcfbcf41cee48255f5c5c18e732f9011e0dacaef48cc80c6223f45092eaafe348632661f79a6033818d2af7fded8ef9b46cbd673af5579d708009')
 
 prepare() {
   cd "${_gitpkgname}-${pkgver}"
