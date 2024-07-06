@@ -1,6 +1,6 @@
 pkgbase = ht-term
 	pkgdesc = headless terminal: wrap any binary with a terminal interface
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/andyk/ht
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = ht-term
 	depends = gcc-libs
 	provides = ht
 	conflicts = ht
-	source = ht-0.2.0.tar.gz::https://github.com/andyk/ht/archive/v0.2.0.tar.gz
-	sha512sums = bbb15cb939854d6bb3479af2b7ec6cd36ee96e4f82a1d0625bf5ed052d56797d5a281a97cef45b734feac7a689898755329ce68259873deb905e030fcc9ff02f
+	source = ht-0.3.0.tar.gz::https://github.com/andyk/ht/archive/v0.3.0.tar.gz
+	sha512sums = f6e84d13de17834c673c75554b4737711483881388696b3f689ae9500ed0d3080b18ad4eb204f40c045f4a6bb09f945e9a127ce42d6d767f29c0ce94ea056e93
 
 pkgname = ht-term
