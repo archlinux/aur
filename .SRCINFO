@@ -1,6 +1,6 @@
 pkgbase = demoneditor-bin
 	pkgdesc = Enigma2 channel and satellite list editor.
-	pkgver = 3.9.1
+	pkgver = 3.10.2
 	pkgrel = 1
 	url = https://dyefremov.github.io/DemonEditor/
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = demoneditor-bin
 	depends = python-requests
 	optdepends = python-pillow
 	optdepends = python-chardet
-	source = https://github.com/DYefremov/DemonEditor/releases/download/3.9.1-b1/DemonEditor-3.9.1-Beta.deb
-	source = https://raw.githubusercontent.com/DYefremov/DemonEditor/3.9.1-b1/LICENSE
-	sha256sums = 78760a6fd97cf923f02dc03f960f7dc514cf85a22273a82e8771a79c45f389d1
+	source = https://github.com/DYefremov/DemonEditor/releases/download/3.10.2-b1/DemonEditor-3.10.2-Beta.deb
+	source = https://raw.githubusercontent.com/DYefremov/DemonEditor/3.10.2-b1/LICENSE
+	sha256sums = 77f3ce9adebec4fa539e68fbcdcde8d6b8f2155e95bdd9b227e4224c00708dd8
 	sha256sums = 2209a6597b6e8662386512435ffce07289926d496e7782c930285fcf9879deb6
 
 pkgname = demoneditor-bin
