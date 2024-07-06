@@ -12,23 +12,27 @@ pkgname=(
 	'opencl-nvidia-tesla'
 	'nvidia-settings-tesla'
 )
-pkgver=535.154.05
+pkgver=550.90.07
 pkgrel=1
 pkgdesc='NVIDIA drivers utilities (tesla version)'
 arch=('x86_64')
 url='https://www.nvidia.com/'
-license=('custom')
+license=('LicenseRef-custom')
 options=('!strip')
 _pkg="NVIDIA-Linux-${CARCH}-${pkgver}"
 source=("https://us.download.nvidia.com/tesla/${pkgver}/${_pkg}.run"
         'nvidia-drm-outputclass.conf'
         'nvidia-utils.sysusers'
         'nvidia.rules'
+        'systemd-homed-override.conf'
+        'systemd-suspend-override.conf'
         '120-nvidia-settings-change-desktop-paths.patch')
-sha256sums=('7e95065caa6b82de926110f14827a61972eb12c200e863a29e9fb47866eaa898'
+sha256sums=('51acf579d5a9884f573a1d3f522e7fafa5e7841e22a9cec0b4bbeae31b0b9733'
             'be99ff3def641bb900c2486cce96530394c5dc60548fc4642f19d3a4c784134d'
             'd8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167'
             '4fbfd461f939f18786e79f8dba5fdb48be9f00f2ff4b1bb2f184dbce42dd6fc3'
+            'c5aa7b8abe69e72bfdc6b9ee8afbfd350bcc557e894558f2e6e4087fa9aa0dd8'
+            '1d053c5078387021338cfc3a732bed61be1a20a549775573788e9134775c8149'
             '6f0f4a23706241e9e37e0fe30a09bd30ca29bb446d8fe7861cb4959f0a010ef4')
 
 # create soname links
@@ -69,6 +73,7 @@ package_nvidia-settings-tesla() {
     install -D -m644 nvidia-settings.png     -t "${pkgdir}/usr/share/icons/hicolor/128x128/apps"
     install -D -m644 nvidia-settings.desktop -t "${pkgdir}/usr/share/applications"
     install -D -m755 "libnvidia-gtk3.so.${pkgver}" -t "${pkgdir}/usr/lib"
+    install -D -m755 "libnvidia-wayland-client.so.${pkgver}" -t "${pkgdir}/usr/lib"
     
     # license
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
@@ -138,9 +143,7 @@ package_nvidia-utils-tesla() {
     install -D -m755 "libnvidia-cfg.so.${pkgver}"       -t "${pkgdir}/usr/lib"
     install -D -m755 "libnvidia-ml.so.${pkgver}"        -t "${pkgdir}/usr/lib"
     install -D -m755 "libnvidia-glvkspirv.so.${pkgver}" -t "${pkgdir}/usr/lib"
-    install -D -m755 "libnvidia-vulkan-producer.so.${pkgver}" -t "${pkgdir}/usr/lib"
-    ln -s "libnvidia-vulkan-producer.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-vulkan-producer.so.1"
-    ln -s libnvidia-vulkan-producer.so.1 "${pkgdir}/usr/lib/libnvidia-vulkan-producer.so"
+    install -D -m755 "libnvidia-gpucomp.so.${pkgver}"   -t "${pkgdir}/usr/lib"
     
     # Vulkan ICD
     install -D -m644 nvidia_icd.json    -t "${pkgdir}/usr/share/vulkan/icd.d"
@@ -177,9 +180,9 @@ package_nvidia-utils-tesla() {
     install -D -m755 nvidia-ngx-updater -t "${pkgdir}/usr/bin"
     install -D -m644 {,_}nvngx.dll -t "${pkgdir}/usr/lib/nvidia/wine"
     
-    # GBM
+    # Wayland/GBM
     install -D -m755 "libnvidia-allocator.so.${pkgver}" -t "${pkgdir}/usr/lib"
-    install -D -m755 libnvidia-egl-gbm.so.1.1.0         -t "${pkgdir}/usr/lib"
+    install -D -m755 libnvidia-egl-gbm.so.1.1.1         -t "${pkgdir}/usr/lib"
     install -D -m644 15_nvidia_gbm.json -t "${pkgdir}/usr/share/egl/egl_external_platform.d"
     install -d -m755 "${pkgdir}/usr/lib/gbm"
     ln -s "../libnvidia-allocator.so.${pkgver}" "${pkgdir}/usr/lib/gbm/nvidia-drm_gbm.so"
@@ -229,10 +232,14 @@ package_nvidia-utils-tesla() {
     install -D -m644 systemd/system/*.service -t "${pkgdir}/usr/lib/systemd/system"
     install -D -m755 systemd/system-sleep/nvidia -t "${pkgdir}/usr/lib/systemd/system-sleep"
     install -D -m755 systemd/nvidia-sleep.sh -t "${pkgdir}/usr/bin"
-    
-    # dynamic boost power management
     install -D -m755 nvidia-powerd -t "${pkgdir}/usr/bin"
     install -D -m644 nvidia-dbus.conf -t "${pkgdir}/usr/share/dbus-1/system.d"
+    install -D -m644 "${srcdir}/systemd-homed-override.conf" "${pkgdir}/usr/lib/systemd/system/systemd-homed.service.d/10-nvidia-no-freeze-session.conf"
+    local _dir
+    for _dir in systemd-{suspend{,-then-hibernate},hibernate,hybrid-sleep}.service.d
+    do
+        install -D -m644 "${srcdir}/systemd-suspend-override.conf" "${pkgdir}/usr/lib/systemd/system/${_dir}/10-nvidia-no-freeze-session.conf"
+    done
     
     # distro specific files must be installed in /usr/share/X11/xorg.conf.d
     install -D -m644 "${srcdir}/nvidia-drm-outputclass.conf" "${pkgdir}/usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf"
