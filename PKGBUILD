@@ -3,7 +3,7 @@
 
 pkgname=libutp
 pkgver=r99.fda9f4b
-pkgrel=1
+pkgrel=2
 _commit=fda9f4b3db97ccb243fcbed2ce280eb4135d705b
 pkgdesc='uTorrent Transport Protocol library'
 url='https://github.com/bittorrent/libutp'
