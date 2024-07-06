@@ -1,0 +1,20 @@
+pkgbase = gtk-engines
+	pkgdesc = Theme engines for GTK+ 2
+	pkgver = 2.21.0
+	pkgrel = 6
+	url = http://live.gnome.org/GnomeArt
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = pkg-config
+	makedepends = intltool
+	makedepends = gnome-common
+	makedepends = git
+	depends = gtk2>=2.24.0
+	conflicts = lighthouse-gtk2
+	conflicts = clearlooks-gtk2
+	replaces = lighthouse-gtk2
+	source = git+https://gitlab.gnome.org/Archive/gtk-engines.git#commit=e23eb81ade8c815dcd4da026ab7a2b7307a4f326
+	sha256sums = SKIP
+
+pkgname = gtk-engines
