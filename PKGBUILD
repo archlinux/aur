@@ -12,7 +12,7 @@ sha256sums=('bc606bb95f1bdea275bcd81efc7b563ee62e2df62cb37bd265f0facd7287dcca')
 
 package () {
     tar xf data.tar.xz -C "${pkgdir}"
-    install -D -m644 "${pkgdir}/usr/share/doc/tonelib-bassdrive/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 "${pkgdir}/usr/share/doc/tonelib-easycomp/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 post_install() {
