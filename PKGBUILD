@@ -2,7 +2,7 @@
 
 pkgname=python-tradingeconomics
 _pkg="${pkgname#python-}"
-pkgver=4.3.5
+pkgver=4.3.6
 pkgrel=1
 pkgdesc='A library providing an API allowing access to Trading Economics data.'
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL-3.0-only')
 depends=('python' 'python-pandas' 'python-websocket-client')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/t/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('ce7825180fb1e9f10dcad4aab0bcfebd9e90623e50c26e5282a925da6a65a151')
+sha256sums=('f8e9d690fc9e70bfe33341ce8f813144277259c055dcd49ca8b549233ddb66d8')
 
 build() {
 	cd "$_pkg-$pkgver"
@@ -21,6 +21,5 @@ build() {
 package() {
 	cd "$_pkg-$pkgver"
 	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir" dist/*.whl
-	install -d "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -s "$_site/$_pkg-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
