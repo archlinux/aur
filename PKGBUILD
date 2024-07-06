@@ -1,7 +1,7 @@
 # Maintainer: timofei302 <timofei302 at proton dot me>
 
 pkgname=hypersomnia-appimage
-pkgver=1.2.9078
+pkgver=1.2.9082
 pkgrel=1
 pkgdesc="Online shooter with relentless dynamics."
 arch=('x86_64')
