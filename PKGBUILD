@@ -1,0 +1,26 @@
+# Maintainer: Your Name <stefanov.m@ati.su>
+_basename=time-desktop
+pkgname=${_basename}-bin
+pkgver=0.0.1
+pkgrel=1
+pkgdesc="Time Desktop App"
+arch=('x86_64')
+url="https://time-apps.tinkoff.ru/production/on-premise/download-page/index.html"
+license=('Apache License, Version 2.0')
+depends=('glibc')
+source=("${url}/time-desktop-linux-x64.tar.gz" "time.desktop")
+sha256sums=('397494dc055e8426f29d3dfeef1e4635e671507cbc184c9f91d4fc680e17dc49')
+
+package() {
+    install -d "${pkgdir}/opt/${_basename}"
+    cp -r "${srcdir}/${_basename}-linux-x64/"* "${pkgdir}/opt/${_basename}/"
+    
+    install -d "${pkgdir}/usr/bin"
+    ln -s "/opt/${_basename}/time-desktop" "${pkgdir}/usr/bin/time-desktop"
+    
+    install -Dm644 "${srcdir}/${_basename}-linux-x64/app_icon.png" "${pkgdir}/usr/share/pixmaps/time-desktop.png"
+    install -Dm644 "${srcdir}/${_basename}-linux-x64/LICENSE.electron.txt" "${pkgdir}/usr/share/licenses/${_basename}/LICENSE"
+    
+    install -Dm644 "${srcdir}/time.desktop" "${pkgdir}/usr/share/applications/time.desktop"
+}
+

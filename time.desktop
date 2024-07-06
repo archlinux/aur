@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Time Desktop
+Comment=Time Management App
+Exec=/opt/time-desktop/time-desktop
+Icon=time-desktop
+Terminal=false
+Type=Application
+Categories=Utility;
