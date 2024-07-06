@@ -2,8 +2,9 @@
 
 pkgname=privatebin-cli
 _binname=privatebin
+_bindate=$(date --rfc-3339=date)
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A powerful CLI for creating and managing PrivateBin pastes with ease'
 arch=('x86_64' 'aarch64')
 url='https://github.com/gearnode/privatebin'
@@ -37,7 +38,11 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
   go build \
-    -ldflags "-linkmode external -extldflags $LDFLAGS -X 'main.cliVersion=$pkgver'" \
+    -ldflags "-linkmode external
+        -extldflags $LDFLAGS
+        -X 'main.version=$pkgver'
+        -X 'main.commit=$pkgrel'
+        -X 'main.date=$_bindate'" \
     -o $_binname cmd/privatebin/main.go cmd/privatebin/cfg.go
 }
 
