@@ -13,7 +13,7 @@ license=('CC-BY-SA-4.0')
 depends=('hicolor-icon-theme' 'gtk-update-icon-cache')
 options=('!strip')
 source=("$pkgname-$_pkgver.tar.gz::$url/archive/$_pkgver.tar.gz")
-sha256sums=('40060c869ae040b9bbef21b39e0eea2e10201749478e6c4047aeeab04b0ee659')
+sha256sums=('c848930afd1c25ebc5f6e16c6780688ac984918089b91017797fe45ea06f6013')
 
 prepare() {
    cd "$pkgname-$_pkgver"
