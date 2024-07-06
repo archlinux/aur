@@ -1,13 +1,12 @@
 pkgbase = synochat
 	pkgdesc = Synology Chat Client is the desktop client software of Synology Chat.
-	pkgver = 1.2.2_0222
+	pkgver = 1.2.3_0232
 	pkgrel = 1
 	url = https://www.synology.com/dsm/feature/chat
 	arch = x86_64
 	license = non-free
 	depends = desktop-file-utils
 	depends = hicolor-icon-theme
-	depends = libappindicator-gtk2
 	depends = scrot
 	depends = alsa-lib
 	depends = nss
@@ -15,7 +14,9 @@ pkgbase = synochat
 	depends = libxss
 	depends = harfbuzz
 	depends = pango
-	source = https://global.download.synology.com/download/Utility/ChatClient/1.2.2-0222/Ubuntu/x86_64/Synology%20Chat%20Client-1.2.2-0222.deb
-	sha512sums = 5f2f5c6bb27111df23115a76702d5e72d4975466a71e0416c434ad9d41c024e60afcdb49b442c7e0b6715a762d533bd8a944fb4b61b05a42af57feb849d440f0
+	optdepends = libappindicator-gtk2
+	optdepends = libappindicator-gtk3
+	source = https://global.synologydownload.com/download/Utility/ChatClient/1.2.3-0232/Ubuntu/x86_64/Synology%20Chat%20Client-1.2.3-0232.deb
+	sha512sums = f94117ef8b3bb299d96fbce6f7b802ae18cd436176502ea13864c79cc086169671ac6154901d3fd7ae57de11ddfa177d4bf148ae99bbd33963e3ec5317f2e4ef
 
 pkgname = synochat
