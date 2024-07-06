@@ -2,7 +2,7 @@
 
 pkgname=python-manilaclient
 pkgver=4.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Client library for OpenStack Manila API'
 arch=(any)
 url="http://docs.openstack.org/$pkgname"
@@ -14,22 +14,22 @@ depends=(python-oslo-config python-oslo-log python-oslo-serialization
          python-keystoneclient)
 checkdepends=(python-ddt python-fixtures python-mock python-stestr
               python-tempest python-testtools python-openstackclient)
-source=("$pkgname-$pkgver.tar.gz::https://opendev.org/openstack/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('49c206cfc9a57782e4edb48c236d50acc2a8966558b18e041feee3532b68148037a3c4e55f7bd2deaf1b3c9d2a3707c7bd32a3cc7311ffb99a2d08d2aead3a07')
+source=("https://tarballs.opendev.org/openstack/$pkgname/$pkgname-$pkgver.tar.gz")
+sha512sums=('e18d46cd072c5db18cde39c94ca5c46cf764a26ae5e770462615b64251fc7bcc9b6b72036ec592eecbf66b1fb7d761e6bb11e9a82fedf10c32c51de88ca98709')
 
 export PBR_VERSION=$pkgver
 
 build() {
-  cd $pkgname
+  cd $pkgname-$pkgver
   python setup.py build
 }
 
 check() {
-  cd $pkgname
+  cd $pkgname-$pkgver
   stestr run
 }
 
 package() {
-  cd $pkgname
+  cd $pkgname-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1
 }
