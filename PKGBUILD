@@ -1,4 +1,5 @@
-# Maintainer: Vladislav Nepogodin (vnepogodin) <nepogodin.vlad@gmail.com>
+#Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
+# Contributor: Vladislav Nepogodin (vnepogodin) <nepogodin.vlad@gmail.com>
 # Contributor: Kyle De'Vir (QuartzDragon) <kyle[dot]devir[at]mykolab[dot]com>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 # Contributor: Maxwell Anselm <silverhammermba+aur@gmail.com>
@@ -20,9 +21,9 @@ depends=(gtk3 libxt mime-types dbus-glib
          libvpx libwebp libjpeg zlib icu libevent pipewire)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils ccache
              rust xorg-server-xvfb
-             autoconf2.13 mercurial clang llvm jack nodejs cbindgen nasm
+              mercurial clang llvm jack nodejs cbindgen nasm
              python-setuptools python-psutil python-zstandard git binutils lld dump_syms
-             wasi-sdk-git)
+             wasi-sdk
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
@@ -31,8 +32,8 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'xdg-desktop-portal: Screensharing with Wayland'
             'libappindicator-gtk3: Global menu support for GTK apps'
             'appmenu-gtk-module: Appmenu for GTK only'
-            'plasma5-applets-window-appmenu: Appmenu for Plasma only')
-depends_x86_64=(ffmpeg4.4)
+            )
+depends_x86_64=(ffmpeg)
 depends_aarch64=(ffmpeg)
 backup=('usr/lib/librewolf-nightly/librewolf.cfg'
         'usr/lib/librewolf-nightly/distribution/policies.json')
