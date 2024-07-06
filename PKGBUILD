@@ -16,7 +16,7 @@ unset _pkgtype
 ## basic info
 _pkgname="ryujinx"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=1.1.1334
+pkgver=1.1.1340
 pkgrel=1
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
 url="https://github.com/Ryujinx/Ryujinx"
@@ -27,7 +27,7 @@ arch=(x86_64)
 _main_package() {
   makedepends=(
     'desktop-file-utils'
-    'dotnet-sdk>=8.0.6.sdk302' # AUR: dotnet-core-bin
+    'dotnet-sdk>=8.0.6.sdk302' # aur/dotnet-core-bin
   )
 
   options=('!strip' '!debug')
@@ -119,7 +119,7 @@ package() {
   install -Dm644 distribution/linux/mime/Ryujinx.xml "$pkgdir/usr/share/mime/packages/ryujinx.xml"
 
   # license
-  install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/"
+  install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
 
   # fix permissions
   #chmod -R u=rwX,go=rX "$pkgdir"
