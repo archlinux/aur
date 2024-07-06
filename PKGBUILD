@@ -3,7 +3,7 @@
 
 pkgname=physlock
 pkgver=13
-pkgrel=4
+pkgrel=5
 pkgdesc='Lightweight Linux console locking tool'
 url='https://github.com/muennich/physlock'
 license=(GPL2)

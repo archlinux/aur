@@ -1,0 +1,16 @@
+pkgbase = physlock
+	pkgdesc = Lightweight Linux console locking tool
+	pkgver = 13
+	pkgrel = 5
+	url = https://github.com/muennich/physlock
+	arch = x86_64
+	license = GPL2
+	depends = pam
+	optdepends = xss-lock: lock screen on suspend or after inactivity
+	backup = etc/pam.d/physlock
+	source = physlock-13.tar.gz::https://github.com/muennich/physlock/archive/v13.tar.gz
+	source = physlock.pam
+	sha256sums = 9ae4716a1e916f141e47a01b439133ca382281ebdcbec1e53f85da6771774bd6
+	sha256sums = de66118684a2ecec18017dd96e50a489f30465510250c007ced16f81fb542ba5
+
+pkgname = physlock
