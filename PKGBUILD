@@ -27,7 +27,8 @@ makedepends=(unzip zip diffutils yasm mesa imake inetutils ccache
 optdepends=(
 	'networkmanager: Location detection via available WiFi networks'
 	'libnotify: Notification integration'
-	'pulseaudio: Audio support' 'speech-dispatcher: Text-to-Speech'
+	'pulseaudio: Audio support' 
+	'speech-dispatcher: Text-to-Speech'
 	'hunspell-en_US: Spell checking, American English' 
 	'xdg-desktop-portal: Screensharing with Wayland' 
 	'libappindicator-gtk3: Global menu support for GTK apps' 
