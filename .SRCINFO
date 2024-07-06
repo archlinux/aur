@@ -1,0 +1,12 @@
+pkgbase = compress-pdf-gui
+	pkgdesc = A GUI script to compress PDF files using Zenity and Ghostscript in French
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = ghostscript
+	depends = zenity
+	depends = bc
+	depends = coreutils
+
+pkgname = compress-pdf-gui
