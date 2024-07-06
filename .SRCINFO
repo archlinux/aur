@@ -1,0 +1,20 @@
+pkgbase = gtkspell
+	pkgdesc = Provides word-processor-style highlighting and replacement of misspelled words in a GtkTextView widget
+	pkgver = 2.0.16
+	pkgrel = 9
+	url = http://gtkspell.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = gtk-doc
+	depends = gtk2
+	depends = enchant
+	source = https://downloads.sourceforge.net/sourceforge/gtkspell/gtkspell-2.0.16.tar.gz
+	source = https://downloads.sourceforge.net/sourceforge/gtkspell/gtkspell-2.0.16.tar.gz.asc
+	source = enchant-2.diff
+	validpgpkeys = 7C70E4D9927061BD840E82DB6BA6197569B23319
+	sha256sums = 8fc7dc560167b2cb7193e76aca625a152dc19b0ebf49816b78539cbb90d80d02
+	sha256sums = SKIP
+	sha256sums = 52e693590161bc285ec46a2beece802f47c7ede65ec0b72ffa224ab0db176bad
+
+pkgname = gtkspell

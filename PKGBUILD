@@ -3,7 +3,7 @@
 
 pkgname=gtkspell
 pkgver=2.0.16
-pkgrel=8
+pkgrel=9
 url="http://gtkspell.sourceforge.net/"
 pkgdesc="Provides word-processor-style highlighting and replacement of misspelled words in a GtkTextView widget"
 arch=('x86_64')
