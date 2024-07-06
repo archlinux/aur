@@ -1,5 +1,5 @@
 pkgname='tonelib-tube-warmth-bin'
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="ToneLib Tube Warmth – The vibrancy and warmth of the tube along with the digital precision and clarity"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://tonelib.net/tl-tubewarmth.html"
 depends=('gtk3' 'glib2' 'desktop-file-utils' 'alsa-lib' 'harfbuzz' 'fribidi' 'pango' 'freetype2')
 optdepends=('jack: JACK output')
 source=("${pkgname}-${pkgver}.deb::https://tonelib.net/download/ToneLib-TubeWarmth-amd64.deb")
-sha256sums=('635b02c780f344c913597f3b7237eada47914b3543624c90add87b37333ba273')
+sha256sums=('5c19f26282c2204d21bd0b7dd4adc31eb8e6e12923ce0c05de0e05e4604a64b8')
 
 package () {
     tar xf data.tar.xz -C "${pkgdir}"
