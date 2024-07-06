@@ -4,7 +4,7 @@ _pkgbase=iptables
 pkgbase=iptables-fullconenat
 pkgname=(iptables-fullconenat iptables-fullconenat-nft)
 pkgver=1.8.10
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc='Linux kernel packet control tool with FULLCONENAT support.'
 arch=(x86_64)
@@ -81,8 +81,8 @@ package_iptables-fullconenat() {
 package_iptables-fullconenat-nft() {
   pkgdesc+=' (using nft interface)'
   depends+=(nftables)
-  provides=(iptables iptables-fullconenat arptables ebtables)
-  conflicts=(iptables iptables-fullconenat arptables ebtables)
+  provides+=(iptables iptables-fullconenat arptables ebtables)
+  conflicts+=(iptables iptables-fullconenat arptables ebtables)
   backup+=(etc/{arp,eb}tables.conf)
 
   _package nft
