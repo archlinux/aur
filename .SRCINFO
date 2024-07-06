@@ -1,7 +1,7 @@
 pkgbase = godot-mono
 	pkgdesc = An advanced, feature packed, multi-platform 2D and 3D game engine
 	pkgver = 4.2.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://godotengine.org/
 	arch = x86_64
 	license = MIT
@@ -32,6 +32,7 @@ pkgbase = godot-mono
 	depends = libxinerama
 	depends = libxrandr
 	depends = mbedtls2
+	depends = miniupnpc
 	depends = pcre2
 	depends = dotnet-sdk
 	depends = hicolor-icon-theme
@@ -40,6 +41,8 @@ pkgbase = godot-mono
 	provides = godot
 	conflicts = godot
 	source = https://github.com/godotengine/godot/releases/download/4.2.2-stable/godot-4.2.2-stable.tar.xz
+	source = https://gitlab.archlinux.org/archlinux/packaging/packages/godot/-/raw/main/miniupnpc-2.2.8.patch
 	sha512sums = 4a623063be5488957e1ede7e45b6865f6cd61bc954ac311587b9e97bed848a4083c4a7225d0a81bca285d854d33be9b07d7d0c21465c9f25b90e92b08090429c
+	sha512sums = 3f1450d184a3923a64f569b73ba1695dc0c49374d5c068154d13ee08453421687d45da71adadb802164a716ec7e61c1702658f014b78f2dfd006f5c773318090
 
 pkgname = godot-mono
