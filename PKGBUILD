@@ -4,7 +4,7 @@
 # Contributor: Benjamin Hedrich <kiwisauce (a) pagenotfound (dot) de>
 
 pkgname=tvheadend-git
-pkgver=4.3.r2340.gc8435a0
+pkgver=4.3.r2342.g128d686
 pkgrel=1
 pkgdesc='TV streaming server and DVR'
 #arch=(x86_64)
@@ -29,6 +29,21 @@ sha256sums=('SKIP'
             'a8e95cd2ec5626a47f49c0aa1f8524d6e155809cfbf6504b9a1484afdf62cfb7'
             '35786e211d4cbf6de213f28e7382378f27f3bef17458e8533ad43fed06e7f202')
 
+_print_libav_option() {
+  local ffmpeg_supported ffmpeg_installed libav_option
+
+  # Compare major version numbers of ffmpeg
+  ffmpeg_supported="$(awk '$1 == "FFMPEG" { print $3 }' Makefile.ffmpeg | sed 's/^ffmpeg-//' | cut -d'.' -f1)"
+  ffmpeg_installed="$(pacman -Q ffmpeg | awk '{ print $2 }' | sed 's/^ *//;s/r.*[.]//;s/.*://' | cut -d'.' -f1)"
+  if ((ffmpeg_supported > 0 && ffmpeg_supported == ffmpeg_installed)); then
+    libav_option='--enable-libav'
+  else
+    libav_option='--disable-libav'
+  fi
+
+  echo -n "$libav_option"
+}
+
 pkgver() {
   git -C $pkgname describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
@@ -36,7 +51,10 @@ pkgver() {
 build() {
   cd $pkgname
 
-  # Change "--disable-libav" to "--enable-libav" when ffmpeg 7 is supported (https://github.com/tvheadend/tvheadend/pull/1690)
+  local libav_option
+  libav_option="$(_print_libav_option)"
+  printf 'Checking for libav (ffmpeg transcoding) support: %s\n' "$libav_option"
+
   ./configure \
     --datadir=/var/lib \
     --disable-ffmpeg_static \
@@ -49,8 +67,8 @@ build() {
     --disable-libvpx_static \
     --disable-libx264_static \
     --disable-libx265_static \
+    "$libav_option" \
     --enable-avahi \
-    --disable-libav \
     --enable-pngquant \
     --enable-vaapi \
     --enable-zlib \

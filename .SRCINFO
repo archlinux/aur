@@ -1,6 +1,6 @@
 pkgbase = tvheadend-git
 	pkgdesc = TV streaming server and DVR
-	pkgver = 4.3.r2340.gc8435a0
+	pkgver = 4.3.r2342.g128d686
 	pkgrel = 1
 	url = https://tvheadend.org/
 	arch = aarch64
