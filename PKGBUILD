@@ -3,7 +3,7 @@
 pkgname=eastl
 _pkgname=EASTL
 pkgver=3.21.12
-pkgrel=3
+pkgrel=4
 pkgdesc="Electronic Arts Standard Template Library. It is an extensive and robust implementation that has an emphasis on high performance."
 arch=('any')
 url="https://github.com/electronicarts/EASTL"
@@ -43,13 +43,8 @@ check() {
 package() {
   DESTDIR="$pkgdir" cmake --install build
 
-  install -Dm755 "${srcdir}/build/benchmark/EASTLBenchmarks" "${pkgdir}/usr/bin/EASTLBenchmarks"
-  install -Dm755 "${srcdir}/build/test/EASTLTest" "${pkgdir}/usr/bin/EASTLTest"
-
   install -Dm755 "${srcdir}/build/test/packages/EAAssert/libEAAssert.so" "${pkgdir}/usr/lib"
-  install -Dm755 "${srcdir}/build/test/packages/EAMain/libEAMain.so" "${pkgdir}/usr/lib"
   install -Dm755 "${srcdir}/build/test/packages/EAStdC/libEAStdC.so" "${pkgdir}/usr/lib"
-  install -Dm755 "${srcdir}/build/test/packages/EATest/libEATest.so" "${pkgdir}/usr/lib"
   install -Dm755 "${srcdir}/build/test/packages/EAThread/libEAThread.so" "${pkgdir}/usr/lib"
 
   install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
