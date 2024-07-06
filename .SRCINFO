@@ -2,7 +2,7 @@ pkgbase = dolphin-megasync-bin
 	pkgdesc = Extension for KDE based file managers to interact with Megasync
 	pkgver = 5.3.0
 	pkgrel = 1
-	url = http://mega.nz
+	url = https://mega.nz
 	arch = x86_64
 	license = custom
 	depends = megasync>=5.0
