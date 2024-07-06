@@ -2,7 +2,7 @@
 _basename=time-desktop
 pkgname=${_basename}-bin
 pkgver=6.21.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Time Desktop App"
 arch=('x86_64')
 url="https://time-apps.tinkoff.ru/production/on-premise/desktop/linux"

@@ -1,13 +1,14 @@
 pkgbase = time-desktop-bin
 	pkgdesc = Time Desktop App
-	pkgver = 0.0.1
-	pkgrel = 1
-	url = https://time-apps.tinkoff.ru/production/on-premise/download-page/index.html
+	pkgver = 6.21.0
+	pkgrel = 2
+	url = https://time-apps.tinkoff.ru/production/on-premise/desktop/linux
 	arch = x86_64
 	license = Apache License, Version 2.0
 	depends = glibc
-	source = https://time-apps.tinkoff.ru/production/on-premise/download-page/index.html/time-desktop-linux-x64.tar.gz
+	source = https://time-apps.tinkoff.ru/production/on-premise/desktop/linux/time-desktop-linux-x64.tar.gz
 	source = time.desktop
 	sha256sums = 397494dc055e8426f29d3dfeef1e4635e671507cbc184c9f91d4fc680e17dc49
+	sha256sums = 858a3b5d784c0e9499c83e8d580695514206556e8dc4877f54a14e4aa7903111
 
 pkgname = time-desktop-bin
