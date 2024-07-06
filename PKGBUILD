@@ -5,7 +5,7 @@ _pkgroot=vision_opencv
 _pkgname=cv_bridge
 pkgname=ros2-humble-cv-bridge
 pkgver=3.2.1
-pkgrel=9
+pkgrel=10
 pkgdesc="This contains CvBridge, which converts between ROS Image messages and OpenCV images."
 url="https://index.ros.org/p/cv_bridge/"
 license=('Apache-2.0' 'BSD-3-Clause')
@@ -25,6 +25,9 @@ prepare() {
   # JASPER is enabled by default on Arch Linux.
   sed -i "s/'tiff'\]/'tiff', 'jp2'\]/g" $srcdir/$_pkgroot-$pkgver/$_pkgname/test/conversions.py
 
+  # Fix for NumPy 2.0
+  sed -i "s/newbyteorder()/view(im.dtype.newbyteorder())/g" \
+         $srcdir/$_pkgroot-$pkgver/$_pkgname/python/cv_bridge/core.py
 }
 
 build() {
@@ -39,10 +42,10 @@ build() {
 
 check() {
   cd $srcdir/build
-  export LD_LIBRARY_PATH=$PWD/venv/opt/ros/humble/lib:$LD_LIBRARY_PATH
+  export LD_LIBRARY_PATH=$PWD/venv/opt/ros/humble/lib
   cmake --install . --prefix venv/opt/ros/humble
   source venv/opt/ros/humble/bin/activate
-  ctest -vv --output-on-failue
+  ctest --output-on-failure
   deactivate
 }
 
