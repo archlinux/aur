@@ -4,7 +4,7 @@
 _pkgname=xacro
 pkgname=ros2-humble-xacro
 pkgver=2.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to construct shorter and more readable XML files by using macros that expand to larger XML expressions"
 url="https://index.ros.org/p/xacro/"
 license=('BSD-3-Clause')
@@ -29,8 +29,8 @@ build() {
 }
 
 check() {
-  cd build
-  PYTHONPATH="$PWD/ament_cmake_python/xacro:$PYTHONPATH" ctest --output-on-failure
+  export PYTHONPATH=$PWD/ament_cmake_python/xacro:$PYTHONPATH
+  ctest --test-dir build --output-on-failure
 }
 
 package() {
