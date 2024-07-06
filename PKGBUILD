@@ -12,7 +12,7 @@
 _pkgname="localsend"
 pkgname="$_pkgname"
 pkgver=1.14.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An open source cross-platform alternative to AirDrop"
 url="https://github.com/localsend/localsend"
 license=('MIT')
@@ -42,7 +42,7 @@ build() {
   cd "$_pkgsrc/app"
   fvm install
 
-  fvm flutter --disable-analytics
+  fvm flutter --disable-telemetry
   #fvm flutter pub upgrade --major-versions
   fvm flutter pub get
   fvm flutter build linux --release
