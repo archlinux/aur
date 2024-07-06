@@ -4,7 +4,7 @@ _pkgroot=vision_opencv
 _pkgname=image_geometry
 pkgname=ros2-humble-image-geometry
 pkgver=3.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="This contains collection of methods for dealing with image and pixel geometry."
 url="https://index.ros.org/p/image_geometry/"
 license=('Apache-2.0' 'BSD-3-Clause')
@@ -24,7 +24,8 @@ build() {
 }
 
 check() {
-  ctest -vv --test-dir build --output-on-failue
+  export LD_LIBRARY_PATH=$srcdir/build
+  ctest --test-dir build --output-on-failure
 }
 
 package() {
