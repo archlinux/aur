@@ -4,7 +4,7 @@
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 
 pkgname=shedskin-git
-pkgver=0.9.9.pre1.r0.gecbdfb7f
+pkgver=0.9.9.r91.gd61b0e42
 pkgrel=1
 pkgdesc='Experimental (restricted) Python-to-C++ compiler (development version)'
 url='https://github.com/shedskin/shedskin'
@@ -36,4 +36,5 @@ package() {
 
   # Install the program.
   python setup.py install --root="$pkgdir" --optimize=1
+  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
