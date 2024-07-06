@@ -1,6 +1,12 @@
 Changelog
 =========
 
+**[5.6.0] ----- 2024-07-04** ::
+
+	    Improve comments and log more in wg-fix-resolv
+	    update Docs/Changelog.rst Docs/wg-client.pdf
+
+
 **[5.5.0] ----- 2024-07-04** ::
 
 	    wg-fix-resolv: tidy up code add mem_alloc() helper.
