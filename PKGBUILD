@@ -9,7 +9,7 @@ pkgname=(
 _pkgver_game="1.4.1"
 _pkgver_gog="2.1.0.2"
 pkgver=1.4.1+gog2.1.0.2
-pkgrel=7
+pkgrel=8
 epoch=1
 arch=(
   'i686'
@@ -114,6 +114,14 @@ package_day-of-the-tentacle-remastered-bin() {
     'lib32-alsa-lib'
     'lib32-libudev0-shim'
     'lib32-mesa-libgl'
+  )
+  optdepends_i686=(
+    'libxrandr: multi-monitor support'
+    'libxinerama: multi-monitor support'
+  )
+  optdepends_x86_64=(
+    'lib32-libxrandr: multi-monitor support'
+    'lib32-libxinerama: multi-monitor support'
   )
   provides=(
     "dott=20161228"  # Originally, this package was named 'dott', version 20161228.

@@ -1,7 +1,7 @@
 pkgbase = day-of-the-tentacle-remastered-gog-bin
 	pkgdesc = Day of the Tentacle Remastered. You need a GOG account and have purchased the file through GOG; PKGBUILD might ask you for GOG login.
 	pkgver = 1.4.1+gog2.1.0.2
-	pkgrel = 7
+	pkgrel = 8
 	epoch = 1
 	url = https://www.doublefine.com/games/day-of-the-tentacle-remastered
 	changelog = dott.changelog
@@ -40,6 +40,10 @@ pkgname = day-of-the-tentacle-remastered-bin
 	replaces = dott<=20161228
 	depends_i686 = alsa-lib
 	depends_i686 = mesa-libgl
+	optdepends_i686 = libxrandr: multi-monitor support
+	optdepends_i686 = libxinerama: multi-monitor support
 	depends_x86_64 = lib32-alsa-lib
 	depends_x86_64 = lib32-libudev0-shim
 	depends_x86_64 = lib32-mesa-libgl
+	optdepends_x86_64 = lib32-libxrandr: multi-monitor support
+	optdepends_x86_64 = lib32-libxinerama: multi-monitor support
