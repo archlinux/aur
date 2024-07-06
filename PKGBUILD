@@ -2,7 +2,7 @@
 
 pkgname="python-musdb"
 _pkgname=sigsep-mus-db
-pkgver=0.3.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="A python package to parse and process the MUSDB18 dataset"
 arch=("x86_64")
@@ -12,7 +12,7 @@ makedepends=("python-setuptools")
 depends=("python-numpy" "python-pyaml" "python-tqdm" "python-soundfile" "python-stempeg")
 
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/sigsep/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=("111de5b65c36af0ba31cfd188cf8fa563888db3a62865a6c48a686db763d8a54334f4521a709872ef4c86632480a73e8ba8c5b9706f528873462d7ceeb2e2b09")
+sha512sums=("602bd6ea5a46df120f620d739a8971459c1afdea38dc87aa6b83b96828fb923a404a8751c6f781cafbf7f156757c55473269e86e697a6edb3bd25d1f7b72199f")
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
