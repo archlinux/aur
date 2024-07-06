@@ -4,7 +4,7 @@
 # Contributor: Klemen Košir <klemen913@gmail.com>
 
 pkgname=cataclysm-dda-git
-pkgver=0.G.2024.01.09
+pkgver=0.G.2024.07.06
 _pkgver=0.G
 pkgrel=1
 pkgdesc="A post-apocalyptic roguelike."
@@ -46,9 +46,16 @@ build() {
 
   # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=109418
   # -Werror=maybe-uninitialized has false positives, including in gcc libs, so we disable it here.
-  CXXFLAGS="$CXXFLAGS -Wno-error=maybe-uninitialized" make PREFIX=/usr RELEASE=1 USE_XDG_DIR=1 LANGUAGES=all LTO=1 TESTS=0 RUNTESTS=0 LINTJSON=0 ASTYLE=0 PCH=0 LIBBACKTRACE=1
-  CXXFLAGS="$CXXFLAGS -Wno-error=maybe-uninitialized" make PREFIX=/usr RELEASE=1 USE_XDG_DIR=1 LANGUAGES=all LTO=1 TESTS=0 RUNTESTS=0 LINTJSON=0 ASTYLE=0 PCH=0 TILES=1 SOUND=1 LIBBACKTRACE=1
-  CXXFLAGS="$CXXFLAGS -Wno-error=maybe-uninitialized" make PREFIX=/usr LINTJSON=0 RELEASE=1 PCH=0 LIBBACKTRACE=1 object_creator
+  export LDFLAGS=${LDFLAGS/-Wl,-z,pack-relative-relocs}
+
+  # gold linker is used in LTO=1 builds, but it doesn't support `-z pack-relative-relocs` flag.
+  # https://rfc.archlinux.page/0023-pack-relative-relocs/
+  # https://gitlab.archlinux.org/archlinux/packaging/packages/pacman/-/issues/21
+  export CXXFLAGS="$CXXFLAGS -Wno-error=maybe-uninitialized"
+
+  make PREFIX=/usr RELEASE=1 USE_XDG_DIR=1 LANGUAGES=all LTO=1 TESTS=0 RUNTESTS=0 LINTJSON=0 ASTYLE=0 PCH=0 LIBBACKTRACE=1
+  make PREFIX=/usr RELEASE=1 USE_XDG_DIR=1 LANGUAGES=all LTO=1 TESTS=0 RUNTESTS=0 LINTJSON=0 ASTYLE=0 PCH=0 TILES=1 SOUND=1 LIBBACKTRACE=1
+  make PREFIX=/usr LINTJSON=0 RELEASE=1 PCH=0 LIBBACKTRACE=1 object_creator
 }
 
 package() {
