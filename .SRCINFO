@@ -1,7 +1,7 @@
 pkgbase = payme-git
-	pkgdesc = QR code generator (ASCII and PNG) for SEPA payments (built from latest commit)
-	pkgver = 1.2.1.r0.g3807082
-	pkgrel = 1
+	pkgdesc = QR code generator (ASCII and PNG) for SEPA payments (latest git commit)
+	pkgver = 1.2.2.r0.gffd6285
+	pkgrel = 2
 	url = https://github.com/jovandeginste/payme
 	arch = aarch64
 	arch = arm

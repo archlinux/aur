@@ -1,11 +1,12 @@
-# Maintainer: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
 # -*- sh -*-
+
+# Maintainer: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
 
 _pkgname='payme'
 pkgname="${_pkgname}-git"
-pkgver=1.2.1.r0.g3807082
-pkgrel=1
-pkgdesc='QR code generator (ASCII and PNG) for SEPA payments (built from latest commit)'
+pkgver=1.2.2.r0.gffd6285
+pkgrel=2
+pkgdesc='QR code generator (ASCII and PNG) for SEPA payments (latest git commit)'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url='https://github.com/jovandeginste/payme'
 license=('MIT')  # SPDX-License-Identifier: MIT
@@ -67,18 +68,16 @@ build() {
 check() {
   cd "$_pkgname"
 
+  build/payme --version
   go test ./...
 }
 
 package() {
   cd "$_pkgname"
 
-  # Be more verbose if standard output is a TTY
-  test -t 1 && _v='v' || _v=''
-
-  install "-${_v}Dm0755" "build/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-  install "-${_v}Dm0644" README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install "-${_v}Dm0644" LICENSE  "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -vDm0755 build/payme "$pkgdir/usr/bin/payme"
+  install -vDm0644 README.md   "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -vDm0644 LICENSE     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # Bash
   install "-${_v}Dm0644" _completion.bash \
