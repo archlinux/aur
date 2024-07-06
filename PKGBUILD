@@ -1,5 +1,5 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
-
+# Contributor:
 pkgname=c-intro-and-ref
 pkgver=0.0
 pkgrel=3
