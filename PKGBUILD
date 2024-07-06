@@ -8,7 +8,7 @@ _pkgname=jenkinsapi
 pkgbase=python-${_pkgname}
 pkgname=("python-${_pkgname}")
 pkgver=0.3.13
-pkgrel=4
+pkgrel=5
 pkgdesc="Python API for accessing resources on a Jenkins continuous-integration server"
 arch=('any')
 url="https://github.com/${_gituser}/${_pkgname}"
@@ -28,4 +28,5 @@ package_python-jenkinsapi() {
 
   cd "${_pkgname}-${pkgver}"
   python -m installer --destdir="$pkgdir" dist/*.whl
+  install -D -m644 license.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
