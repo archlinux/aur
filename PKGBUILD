@@ -1,18 +1,20 @@
+# Maintainer: Morgenstern <charles [at] charlesbwise [dot] com>
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-html-tokeparser-simple'
 pkgver='3.16'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Easy to use HTML::TokeParser interface"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl')
 options=('!emptydirs')
-depends=('perl-html-parser>=3.25' 'perl-sub-override')
+depends=('perl-html-parser>=3.25' 'perl-sub-override>=0')
 makedepends=()
-url='http://search.cpan.org/dist/HTML-TokeParser-Simple'
-source=('http://search.cpan.org/CPAN/authors/id/O/OV/OVID/HTML-TokeParser-Simple-3.16.tar.gz')
-md5sums=('c54b6d3a97a4d69959c912bc98c79a6e')
+checkdepends=('perl-test-pod'
+              'perl-test-pod-coverage')
+url='https://metacpan.org/release/HTML-TokeParser-Simple'
+source=('https://search.cpan.org/CPAN/authors/id/O/OV/OVID/HTML-TokeParser-Simple-3.16.tar.gz')
 sha512sums=('d13487cc86af7c7e90aa5b9006b989faedd6a8e06279aaf6a0f13bad613a1672b3fa280bf8f369236033104d3c092e62efa177595cc5e5c74cb966e0b12a205a')
 _distdir="HTML-TokeParser-Simple-3.16"
 
@@ -33,13 +35,13 @@ check() {
   cd "$srcdir/$_distdir"
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
     make test
+    make test TEST_FILES=xt/*.t
   )
 }
 
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
