@@ -1,5 +1,5 @@
 pkgname=('flang')
-pkgver=17.0.6
+pkgver=18.1.8
 pkgrel=1
 pkgdesc="ground-up implementation of a Fortran front end written in modern C++"
 arch=('x86_64')
@@ -11,14 +11,13 @@ _source_base=https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkg
 source=($_source_base/flang-$pkgver.src.tar.xz{,.sig}
         $_source_base/cmake-$pkgver.src.tar.xz{,.sig}
         $_source_base/clang-$pkgver.src.tar.xz{,.sig})
-sha256sums=('ca3bececb1ca31b993cdf837d2305e4c9af3b6c7acc93d8a2813cb6619d7640b'
+sha256sums=('3532b790760f83d5086b913c0ee2479b42605720090dd47f91f58512ab17493c'
             'SKIP'
-            '807f069c54dc20cb47b21c1f6acafdd9c649f3ae015609040d6182cab01140f4'
+            '59badef592dd34893cd319d42b323aaa990b452d05c7180ff20f23ab1b41e837'
             'SKIP'
-            'a78f668a726ae1d3d9a7179996d97b12b90fb76ab9442a43110b972ff7ad9029'
+            '5724fe0a13087d5579104cedd2f8b3bc10a212fb79a0fcdac98f4880e19f4519'
             'SKIP')
-validpgpkeys=('474E22316ABF4785A88C6E8EA2C794A986419D8A'  # Tom Stellard <tstellar@redhat.com>
-              'D574BD5D1D0E98895E3BF90044F2485E45D59042') # Tobias Hieta <tobias@hieta.se>
+validpgpkeys=('474E22316ABF4785A88C6E8EA2C794A986419D8A') # Tom Stellard <tstellar@redhat.com>
 
 prepare() {
   # https://github.com/llvm/llvm-project/issues/54128
