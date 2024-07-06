@@ -1,12 +1,13 @@
 pkgbase = python-paramiko-expect
 	pkgdesc = An expect-like extension for the Paramiko SSH library
 	pkgver = 0.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fgimian/paramiko-expect
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
+	depends = python-paramiko>=1.10.1
 	source = python-paramiko-expect-0.3.5.tar.gz::https://files.pythonhosted.org/packages/source/p/paramiko_expect/paramiko-expect-0.3.5.tar.gz
 	sha256sums = 45e107bc16ed68bd2f8878c3838be748d2e7969313dcb1bba9123eb2f603ad01
 

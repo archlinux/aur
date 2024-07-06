@@ -2,10 +2,12 @@ pkgname='python-paramiko-expect'
 _module='paramiko-expect'
 _src_folder='paramiko-expect-0.3.5'
 pkgver='0.3.5'
-pkgrel=1
+pkgrel=2
 pkgdesc="An expect-like extension for the Paramiko SSH library"
 url="https://github.com/fgimian/paramiko-expect"
-depends=('python')
+depends=('python'
+         'python-paramiko>=1.10.1'
+         )
 makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
