@@ -1,0 +1,16 @@
+pkgbase = netcf
+	pkgdesc = A library for configuring network interfaces
+	pkgver = 0.2.8
+	pkgrel = 9
+	url = https://pagure.io/netcf
+	arch = x86_64
+	license = LGPL
+	makedepends = gcc
+	depends = augeas>=0.7.4
+	depends = libxslt
+	depends = libxml2
+	depends = libnl
+	source = https://releases.pagure.org/netcf/netcf-0.2.8.tar.gz
+	sha256sums = fd81d607795547807150dfdb82bd164ab2569369ab48a30cb6b0d010d17b127c
+
+pkgname = netcf
