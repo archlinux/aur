@@ -1,13 +1,15 @@
 pkgbase = haskell-iconv
 	pkgdesc = String encoding conversion
 	pkgver = 0.4.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://code.haskell.org/iconv/
 	arch = x86_64
 	license = BSD
 	makedepends = ghc
 	depends = ghc-libs
 	source = https://hackage.haskell.org/packages/archive/iconv/0.4.1.3/iconv-0.4.1.3.tar.gz
+	source = https://hackage.haskell.org/package/iconv-0.4.1.3/revision/1.cabal
 	sha256sums = 36425168e3314bc83ba5ee95152872d52e94ee0f9503f3591f84d458e005b554
+	sha256sums = 4ed36bee4af30bc2948aa3dde8da5025f1c4a3bb878dea4c03553eab643b3700
 
 pkgname = haskell-iconv
