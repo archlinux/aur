@@ -6,11 +6,11 @@
 pkgname=python-eyed3
 pkgver=0.9.7
 #_eyed3_gitrev=6ae1554
-pkgrel=2
+pkgrel=3
 pkgdesc="A Python module and program for processing information about mp3 files"
 arch=('any')
 url="https://eyed3.nicfit.net/"
-license=('GPL')
+license=('GPL-3.0-or-later')
 makedepends=('python-setuptools')
 depends=('python-deprecation' 'python-filetype' 'python-packaging' 'python-requests' 'python-yaml')
 checkdepends=('python-factory-boy' 'python-pytest')

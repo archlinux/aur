@@ -1,10 +1,10 @@
 pkgbase = python-eyed3
 	pkgdesc = A Python module and program for processing information about mp3 files
 	pkgver = 0.9.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://eyed3.nicfit.net/
 	arch = any
-	license = GPL
+	license = GPL-3.0-or-later
 	checkdepends = python-factory-boy
 	checkdepends = python-pytest
 	makedepends = python-setuptools
