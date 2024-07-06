@@ -28,6 +28,8 @@ post_install() {
 
   echo "Users may be added to the 'flutter' group:"
   echo "   sudo usermod -a -G flutter [username]"
+  echo
+  echo "Warning: Do not store important data in '/opt/flutter'"
 }
 
 post_upgrade() {
@@ -35,11 +37,11 @@ post_upgrade() {
 }
 
 pre_install() {
-  chmod -R go-w opt/flutter
+  chmod -R u+rwX,go+rX,go-w opt/flutter
 }
 
 pre_upgrade() {
-  chmod -R go-w opt/flutter
+  chmod -R u+rwX,go+rX,go-w opt/flutter
 }
 
 pre_remove() {
@@ -53,16 +55,12 @@ pre_remove() {
     fi
   done
 
-  chmod -R go-w opt/flutter
+  chmod -R u+rwX,go+rX,go-w opt/flutter
 }
 
 post_remove() {
-  # leave opt directory to prevent data loss
-  echo "The 'flutter' directory may be removed, if not needed:"
-  echo "   sudo \rm -rf /opt/flutter"
-  echo
+  rm -rf opt/flutter
 
-  # leave group to prevent orphan permissions
-  echo "The 'flutter' group may also be removed:"
+  echo "If no longer needed, remove the 'flutter' group:"
   echo "   sudo groupdel flutter"
 }
