@@ -3,7 +3,7 @@
 
 pkgname=pywal-16-colors
 _gitname=pywal16
-pkgver=3.5.4
+pkgver=3.6.0
 pkgrel=1
 epoch=1
 pkgdesc='Generate and change color-schemes on the fly (fork that uses 16 colors)'
