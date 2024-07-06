@@ -1,7 +1,7 @@
 pkgbase = cronet
 	pkgdesc = The networking stack of Chromium put into a library
 	pkgver = 126.0.6478.126
-	pkgrel = 1
+	pkgrel = 2
 	url = https://chromium.googlesource.com/chromium/src/+/refs/heads/main/components/cronet
 	arch = x86_64
 	license = BSD-3-Clause
@@ -22,6 +22,7 @@ pkgbase = cronet
 	depends = zstd
 	depends = minizip
 	depends = double-conversion
+	depends = libc++
 	options = !lto
 	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-126.0.6478.126.tar.xz
 	source = chromium-125-system-zstd.patch::https://gitweb.gentoo.org/repo/gentoo.git/plain/www-client/chromium/files/chromium-125-system-zstd.patch?id=9549b6e8362e0a5a5cc950ca4f0604353ac87152

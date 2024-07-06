@@ -5,9 +5,10 @@
 
 pkgname=cronet
 pkgver=126.0.6478.126
-pkgrel=1
+pkgrel=2
 _manual_clone=0
 _system_clang=1
+_system_libcxx=1
 pkgdesc="The networking stack of Chromium put into a library"
 arch=('x86_64')
 url="https://chromium.googlesource.com/chromium/src/+/refs/heads/main/components/cronet"
@@ -143,6 +144,16 @@ _unwanted_bundled_libs=(
 depends+=(${_system_libs[@]})
 makedepends+=("${_system_make_libs[@]}")
 
+if (( _system_libcxx )); then
+  depends+=(
+    libc++
+  )
+  _unwanted_bundled_libs+=(
+    third_party/libc++
+    third_party/libc++abi
+  )
+fi
+
 prepare() {
   if (( _manual_clone )); then
     ./fetch-chromium-release $pkgver
@@ -233,9 +244,6 @@ build() {
     'symbol_level=0' # sufficient for backtraces on x86(_64)
     'treat_warnings_as_errors=false'
     'disable_fieldtrial_testing_config=true'
-    # Custom libc++ fixes the following error:
-    # ld.lld: error: undefined symbol: partition_alloc::internal::InternalAllocator<char>::deallocate(char*, unsigned long)
-    'use_custom_libcxx=true'
     'use_sysroot=false'
     'use_system_libffi=true'
     'enable_nacl=false'
@@ -259,6 +267,19 @@ build() {
     _flags+=(
       'rust_sysroot_absolute="/usr"'
       "rustc_version=\"$(rustc --version)\""
+    )
+  fi
+
+  if (( _system_libcxx )); then
+    _flags+=(
+      'use_custom_libcxx=false'
+    )
+
+    CXXFLAGS+=' -stdlib=libc++'
+    LDFLAGS+=' -stdlib=libc++'
+  else
+    _flags+=(
+      'use_custom_libcxx=true'
     )
   fi
 
