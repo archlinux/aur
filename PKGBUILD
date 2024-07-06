@@ -1,7 +1,7 @@
 # Maintainer: detiam <dehe_tian@outlook.com>
 
 pkgname=firefox-esr-extension-download-with-aria2
-pkgver=4.10.0.2694
+pkgver=4.10.0.2702
 pkgrel=1
 pkgdesc='The Aria2 Download Manager for Firefox ESR'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('firefox-esr')
 makedepends=('jq')
 groups=('firefox-esr-addons')
 source=("$pkgname::git+https://github.com/jc3213/download_with_aria2#tag=$pkgver")
-sha1sums=('31ca7f9dd5aa1bd848b2f5e4f50460ff9de36f23')
+sha1sums=('2fc36cb01d1c077cb2b2acff959a8f9db6cc622d')
 
 build() {
   cd "$pkgname"

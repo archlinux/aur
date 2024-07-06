@@ -1,6 +1,6 @@
 pkgbase = firefox-esr-extension-download-with-aria2
 	pkgdesc = The Aria2 Download Manager for Firefox ESR
-	pkgver = 4.10.0.2694
+	pkgver = 4.10.0.2702
 	pkgrel = 1
 	url = https://github.com/jc3213/download_with_aria2
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = firefox-esr-extension-download-with-aria2
 	license = LGPL-2.1-or-later
 	makedepends = jq
 	depends = firefox-esr
-	source = firefox-esr-extension-download-with-aria2::git+https://github.com/jc3213/download_with_aria2#tag=4.10.0.2694
-	sha1sums = 31ca7f9dd5aa1bd848b2f5e4f50460ff9de36f23
+	source = firefox-esr-extension-download-with-aria2::git+https://github.com/jc3213/download_with_aria2#tag=4.10.0.2702
+	sha1sums = 2fc36cb01d1c077cb2b2acff959a8f9db6cc622d
 
 pkgname = firefox-esr-extension-download-with-aria2
