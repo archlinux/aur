@@ -2,30 +2,29 @@
 # Contributor: Lionel Hernou <lionel.hernou@gmail.com>
 
 pkgname=netradiant-custom
-pkgver=20240309
-pkgrel=5
+pkgver=20240704
+pkgrel=1
 pkgdesc="The open-source, cross-platform level editor for id Tech based games (NetRadiant fork)"
 url="https://garux.github.io/NRC/"
-depends=('bash' 'gcc-libs' 'glib2' 'glibc' 'libjpeg-turbo' 'libpng' 'libxml2' 'qt5-base' 'zlib')
+depends=('gcc-libs' 'glib2' 'glibc' 'libjpeg-turbo' 'libpng' 'libxml2' 'qt5-base' 'zlib')
 optdepends=('xorg-xwayland: required to use the application on a Wayland session')
 makedepends=('git' 'svn' 'unzip' 'wget')
 provides=('h2data_nrc' 'mbspc_nrc' 'q2map_nrc' 'q3map2_nrc' 'qdata3_nrc')
-source=('git+https://github.com/Garux/netradiant-custom.git#commit=5daf2e265eb7b2218f9e433261f6e089c4ab65da'
+source=('git+https://github.com/Garux/netradiant-custom.git#commit=a2bdefccd353635a04a5ee6b6e6bcc6471650a27'
 'netradiant-custom.desktop')
 sha256sums=('SKIP'
 'ec1256d5eb657b1e17ebb4ce1280598077b9c350408f9d778f41d5a30b3924e4')
-license=('BSD-3-Clause' 'GPL-2.0-or-later' 'LGPL-2.1-or-later' 'Zlib')
+license=('Apache-2.0' 'BSD-3-Clause' 'GPL-2.0-or-later' 'LGPL-2.1-or-later' 'Zlib' 'LicenseRef-custom')
 arch=('i686' 'x86_64')
 
 build () {
-	# Work around a crash at startup or when displaying the textures browser:
-	# https://github.com/Garux/netradiant-custom/issues/186
-	export CXXFLAGS+=" -Wp,-U_GLIBCXX_ASSERTIONS"
-
 	cd "${srcdir}/${pkgname}/"
+
+	# Possible values for DOWNLOAD_GAMEPACKS are "free" (free gamepacks only), "all" (free + proprietary gamepacks downloaded from different locations)
+	# and "allinone" (free + proprietary gamepacks downloaded from a single archive, provided by the main NRC developper)
 	make \
-	RADIANT_ABOUTMSG="NetRadiant-custom ${pkgver}" \
-	DOWNLOAD_GAMEPACKS=yes # free gamepacks only, set to "all" for free + proprietary gamepacks
+		RADIANT_ABOUTMSG="NetRadiant-custom ${pkgver}" \
+		DOWNLOAD_GAMEPACKS=allinone
 }
 
 package () {
