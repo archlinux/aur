@@ -1,11 +1,11 @@
 pkgbase = nimf
 	pkgdesc = a lightweight, fast and extensible input method framework
-	pkgver = 1.3.5
+	pkgver = 1.3.7
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/hamonikr/nimf
 	arch = x86_64
-	license = LGPL3
+	license = LGPL-3.0-only
 	makedepends = anthy
 	makedepends = glib2-devel
 	makedepends = gtk-doc
@@ -26,7 +26,7 @@ pkgbase = nimf
 	depends = wayland-protocols
 	optdepends = brise: Rime schema repository
 	optdepends = noto-fonts-cjk: Google Noto CJK fonts
-	source = https://github.com/hamonikr/nimf/archive/v1.3.5/nimf-1.3.5.tar.gz
-	sha256sums = c52ed9a1cbc441c3026aa48346153b9a8711071765986269373143cd574cefca
+	source = https://github.com/hamonikr/nimf/archive/v1.3.7/nimf-1.3.7.tar.gz
+	sha256sums = 17fbe0628d1dce17abb5413e370237908fd668533ddc398bf7996d9a8fda5d21
 
 pkgname = nimf

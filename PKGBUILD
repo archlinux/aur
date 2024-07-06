@@ -4,13 +4,13 @@
 # Contributor: Hodong Kim <https://gitlab.com/hodong>
 
 pkgname=nimf
-pkgver=1.3.5
+pkgver=1.3.7
 pkgrel=1
 epoch=1
 pkgdesc='a lightweight, fast and extensible input method framework'
 arch=(x86_64)
 url="https://github.com/hamonikr/$pkgname"
-license=(LGPL3)
+license=(LGPL-3.0-only)
 depends=(gtk3
          libappindicator-gtk3
          libxkbcommon
@@ -33,7 +33,7 @@ optdepends=('brise: Rime schema repository'
             'noto-fonts-cjk: Google Noto CJK fonts')
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('c52ed9a1cbc441c3026aa48346153b9a8711071765986269373143cd574cefca')
+sha256sums=('17fbe0628d1dce17abb5413e370237908fd668533ddc398bf7996d9a8fda5d21')
 
 prepare() {
 	cd "$_archive"
