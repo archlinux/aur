@@ -1,0 +1,3 @@
+[python-paramiko-expect]
+source = "pypi"
+pypi = "paramiko_expect"
