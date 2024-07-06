@@ -4,7 +4,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-libjxl
-pkgver=0.10.2
+pkgver=0.10.3
 pkgrel=1
 arch=('any')
 pkgdesc="JPEG XL image format reference implementation (Android ${_android_arch})"
@@ -13,8 +13,10 @@ license=('BSD-3-Clause')
 depends=("android-${_android_arch}-brotli"
          "android-${_android_arch}-giflib"
          "android-${_android_arch}-highway"
+         "android-${_android_arch}-lcms2"
          "android-${_android_arch}-libjpeg-turbo"
          "android-${_android_arch}-libpng"
+         "android-${_android_arch}-libwebp"
          "android-${_android_arch}-openexr")
 makedepends=('git'
              'android-cmake'
@@ -27,7 +29,7 @@ optdepends=("android-${_android_arch}-gdk-pixbuf2: for gdk-pixbuf loader"
             "java-runtime: for JNI bindings")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/libjxl/libjxl/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('e383b622cb2caef4dfcc8047f5a0fe72')
+md5sums=('0fd3db8956a41d13b5e8eac4fe61d8d3')
 
 prepare() {
     cd "${srcdir}/libjxl-${pkgver}"
@@ -40,8 +42,8 @@ build() {
     cd "${srcdir}/libjxl-${pkgver}"
     source android-env ${_android_arch}
 
-    export CFLAGS="${CFLAGS} -DNDEBUG"
-    export CXXFLAGS="${CXXFLAGS} -DNDEBUG"
+    export CFLAGS="${CFLAGS} -DNDEBUG -I${ANDROID_PREFIX_INCLUDE}/glib-2.0 -I${ANDROID_PREFIX_INCLUDE}/gdk-pixbuf-2.0 -I${ANDROID_PREFIX_LIB}/glib-2.0/include"
+    export CXXFLAGS="${CXXFLAGS} -DNDEBUG -I${ANDROID_PREFIX_INCLUDE}/glib-2.0 -I${ANDROID_PREFIX_INCLUDE}/gdk-pixbuf-2.0 -I${ANDROID_PREFIX_LIB}/glib-2.0/include"
 
     android-${_android_arch}-cmake \
         -S . \
@@ -86,6 +88,6 @@ package() {
     source android-env ${_android_arch}
 
     make -C build DESTDIR="$pkgdir" install
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     mv "${pkgdir}/${ANDROID_PREFIX_SHARE}/java"/{org.jpeg.jpegxl,jpegxl}.jar
 }
