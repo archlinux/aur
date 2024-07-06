@@ -1,7 +1,7 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-kde
-_pkgver=6.0.15
+_pkgver=6.0.17
 pkgver=G${_pkgver}
 pkgrel=0
 pkgdesc="Customizable privacy conscious web browser with better integration with KDE and primary support for webextensions"
@@ -35,7 +35,6 @@ source=("git+https://github.com/BrowserWorks/Waterfox.git#tag=G$_pkgver"
         "fix-wayland-build.patch::$_filesurl/patches/fix-wayland-build.patch"
         "mach-depends.patch::$_filesurl/patches/mach-depends.patch"
         "rust-1.78.patch::$_filesurl/patches/rust-1.78.patch"
-        "rust-1.78_p2.patch::$_filesurl/patches/rust-1.78_p2.patch"
         )
 sha256sums=('SKIP'
             'ec32cbe949ed23bf7a61eef468a70a2e00e9fc448e4912c1200d110f5538d63a'
@@ -52,8 +51,7 @@ sha256sums=('SKIP'
             '0f9d1d22ec686639c31245fff7db837428e0880fd9ad698890ec81326be52ae0'
             '10714e2363c05bf611eec927807101a5babc94a0ab9b584ce8204a89d4f8b73a'
             '105fa659e4242c1b08bda0457bfddc28762bdd4a33e9bda05940ab38d26b334c'
-            'ada7f4258fa82d16f900d804cb362db6dfc156f35b0b0cfada864131d813d0db'
-            '95fd4efcf1d98193a5707892d15d4a1bb1debdbea4846ca9128fad64ad978686')
+            'ada7f4258fa82d16f900d804cb362db6dfc156f35b0b0cfada864131d813d0db')
 
 prepare() {
 
@@ -69,7 +67,6 @@ prepare() {
   patch -Np1 -i ../fix-wayland-build.patch
   patch -Np1 -i ../mach-depends.patch
   patch -Np1 -i ../rust-1.78.patch
-  patch -Np1 -i ../rust-1.78_p2.patch
 
   cat >../mozconfig <<END
 ac_add_options --enable-alsa
