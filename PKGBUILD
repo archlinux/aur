@@ -1,7 +1,7 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=flightcore-bin
-pkgver=2.21.1
+pkgver=2.23.0
 pkgrel=1
 pkgdesc="Installer/Updater/Launcher for Northstar (binary release)"
 url="https://github.com/R2NorthstarTools/FlightCore"
@@ -14,7 +14,7 @@ conflicts=("flightcore")
 _appimage=flight-core_${pkgver}_amd64.AppImage
 source=("$url/releases/download/v$pkgver/$_appimage"
         "$url/archive/refs/heads/main.zip")
-sha256sums=('954a0317a5533c5500fbef125f34f253c43cfb0f5b91a67281aa093aecac2747'
+sha256sums=('b10649c8e920599670c32a70ac35b3c062fbf6e5390deadd3f1ccec18a1167b5'
             'SKIP')
 
 prepare() {
