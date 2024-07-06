@@ -344,8 +344,8 @@ prepare() { _set_vars;
   fi
   autoreconf -fiv
 
-  export build64dir="${srcdir}/${pkgname}-64-build"
-  export build32dir="${srcdir}/${pkgname}-32-build"
+  export build64dir="${_where}/src/${pkgname}-64-build"
+  export build32dir="${_where}/src/${pkgname}-32-build"
 }
 
 _build() { _set_vars;
