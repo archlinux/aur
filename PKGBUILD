@@ -2,7 +2,7 @@
 
 pkgname=python-barbicanclient
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Client library for the Barbican Key Management API'
 arch=(any)
 url="https://docs.openstack.org/$pkgname/"
@@ -14,24 +14,24 @@ depends=(python-pbr python-requests python-cliff
 checkdepends=(python-fixtures python-requests-mock python-stestr
               python-testtools python-oslotest python-oslo-config
               python-openstackclient)
-source=("$pkgname-$pkgver.tar.gz::https://opendev.org/openstack/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('149dc8be226b7b37e5f3c412359e6d86697a6f9130853f3602bde2a26696a3d1485dd628e2e6b9ec7852996a55eaa9d3e76e9d65630247420e8a39fbd6d4995d')
+source=("https://tarballs.opendev.org/openstack/$pkgname/$pkgname-$pkgver.tar.gz")
+sha512sums=('b8f83951956e3c102f440794637994d3cbfe14e96ad17adea60b58494dbe9098e7376823f4094110ad43c9542abd864b2670e56abb7a6fd9335732f0e5cb6802')
 
 export PBR_VERSION=$pkgver
 
 build() {
-  cd $pkgname
+  cd $pkgname-$pkgver
   python setup.py build
 }
 
 check() {
-  cd $pkgname
+  cd $pkgname-$pkgver
   # Skip failing test: MismatchError: 0 != None
   sed -i '/test_should_show_usage_with_help_flag/a\        return' barbicanclient/tests/test_barbican.py
   stestr run
 }
 
 package() {
-  cd $pkgname
+  cd $pkgname-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1
 }
