@@ -1,7 +1,7 @@
 pkgbase = portproton
 	pkgdesc = Software for playing Microsoft Windows games and launchers
 	pkgver = 1.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://linux-gaming.ru
 	arch = x86_64
 	license = MIT
@@ -39,6 +39,7 @@ pkgbase = portproton
 	depends = lib32-libgpg-error
 	depends = lib32-gnutls
 	depends = lib32-freetype2
+	depends = perl-image-exiftool
 	depends = lib32-nss
 	depends = lib32-vulkan-driver
 	depends = lib32-vulkan-icd-loader
