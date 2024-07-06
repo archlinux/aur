@@ -4,7 +4,7 @@
 _pkgname="health"
 pkgname="$_pkgname"
 pkgver=0.95.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A health tracking app for the GNOME desktop"
 url="https://gitlab.gnome.org/World/Health"
 license=('GPL-3.0-or-later')
@@ -13,6 +13,7 @@ arch=('x86_64')
 depends=(
   'gtk4'
   'libadwaita'
+  'libsecret'
 )
 makedepends=(
   'blueprint-compiler'
@@ -29,6 +30,8 @@ source=("$_pkgname-$pkgver.$_pkgext"::"$url/-/archive/$pkgver/$_pkgsrc.$_pkgext"
 sha256sums=('bf712d2142824d209a7992107620b3d9523c6315f5c6689faa027b8cbcb26fd5')
 
 build() {
+  CFLAGS+=" -ffat-lto-objects"
+
   arch-meson "$_pkgsrc" build
   meson compile -C build
 }

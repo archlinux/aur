@@ -1,7 +1,7 @@
 pkgbase = health
 	pkgdesc = A health tracking app for the GNOME desktop
 	pkgver = 0.95.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/World/Health
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -10,6 +10,7 @@ pkgbase = health
 	makedepends = rust
 	depends = gtk4
 	depends = libadwaita
+	depends = libsecret
 	provides = gnome-health=0.95.0
 	conflicts = gnome-health
 	source = health-0.95.0.tar.gz::https://gitlab.gnome.org/World/Health/-/archive/0.95.0/Health-0.95.0.tar.gz
