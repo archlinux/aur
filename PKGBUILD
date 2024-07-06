@@ -1,22 +1,21 @@
-# Maintainer: jskier <jay @ jskier.com>
+# Maintainer: mdaniels5757 <arch at mdaniels dot me>
 # Contributor: jskier <jay @jskier.com>
 pkgname=keeper-secrets-manager-core
-pkgver=16.6.2
-pkgrel=2
-pkgdesc="CLI, SDK and interactive shell for Keeper® Password Manager."
+pkgver=16.6.4
+pkgrel=1
+pkgdesc="Python SDK for Keeper Secrets Manager"
 arch=('any')
-url="https://files.pythonhosted.org/packages/c8/7a/3900b2f690e0a2f106390c15af9b0f96d5abc4f77b56c34ea6f088a3c0d5"
+url="https://pypi.org/project/keeper-secrets-manager-core/"
 license=('MIT')
 depends=('python'
-	 'python-ecdsa'
-	 'python-requests'
-         'python-cryptography'
-	 'python-importlib-metadata'
-         'python-pytest'
-	 'python-setuptools'
+         'python-requests>=2.28.2'
+         'python-cryptography>=39.0.1'
+         'python-importlib-metadata>=6.0.0'
+         'python-pytest>=7.2.1'
+         'python-setuptools'
          )
-source=("$pkgname-$pkgver.tar.gz::$url/$pkgname-$pkgver.tar.gz")
-sha512sums=('ade7d454bb6fbb79e93d6fe52132934ad0aa3014359c67cde1ce11f669698831c1beca42642d2097aeb8fa00bdd9d1004c9a81c1a98c3d434a35c47e94862d66')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname//-/_}/${pkgname}-$pkgver.tar.gz")
+sha256sums=('9ac831df0666b9cbea625b5f7bb51fa96445ac4205750bc4cd2a5e0fc2e48be6')
 
 package() {
   cd "$pkgname-$pkgver"
