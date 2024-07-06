@@ -8,8 +8,8 @@ url="http://v2v.cc/~j/oggfwd/"
 pkgver=0.2
 pkgrel=3
 
-source=("http://www.v2v.cc/~j/ffmpeg2theora/${pkgname}/${pkgname}.tar.gz")
-md5sums=('8402d26a5a8ff318ef6ea01ec146c8cc')
+source=("oggfwd::git+https://r-w-x.org/oggfwd.git#commit=abf64e0b4a492e578459ec338b239d99b63d6eb1")
+md5sums=('SKIP')
 depends=('libshout')
 arch=('i686' 'x86_64')
 
