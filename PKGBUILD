@@ -1,7 +1,7 @@
 _pkgname=hmcl-dev
 pkgname=hmcl-dev-bin
 pkgver=3.5.8
-pkgrel=248
+pkgrel=249
 url="https://github.com/huanghongxun/HMCL"
 license=("GPL3")
 arch=('any')
@@ -12,7 +12,7 @@ source=("https://maven.aliyun.com/repository/central/org/glavo/hmcl/hmcl-dev/$pk
 noextract=("hmcl-dev-$pkgver.$pkgrel.jar"
         "start.sh"
         "hmcl-dev.desktop")
-sha256sums=("86b2b6099104e9484183a59aba20422635d99a6e1c415729ee2f29822b2403cf"
+sha256sums=("0154c4f510f40ca2aeba63df6b998f40c59dc787e50dec9e39e6baccbf2b7ae7"
             "b5c9aadd1b2172158f0b0ff07fdaf84721c002bb5cd1394c9f9fe4557533964d"
             "65370e5aa8edb5cb8a3c66b385a782370cc5d5c578f7e4073f66e17fbc98ff5d")
 
