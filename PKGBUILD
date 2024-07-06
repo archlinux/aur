@@ -2,12 +2,12 @@
 pkgname=vesktop_electron
 _pkgname=Vesktop
 pkgdesc="Vesktop gives you the performance of web Discord and the comfort of Discord Desktop, using the Electron provided by the system"
-pkgver=1.5.2
-pkgrel=5
+pkgver=1.5.3
+pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/Vencord/Vesktop"
 license=('GPL3')
-depends=('electron30')
+depends=('electron31')
 makedepends=('pnpm' 'git')
 optdepends=(
   'libnotify: Notifications'
@@ -20,14 +20,12 @@ conflicts=('vesktop' 'vesktop-bin' 'vesktop-git')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
         'vesktop.desktop'
         'vesktop.sh')
-sha256sums=('2795891c71d3ec39fd412cf1396a3172499b58619b2e7f92ce81de3db19d5de7'
+sha256sums=('615ed9275a03974a0c6486c0095cfcd0af246363a4f62ec0bdc985c763cc6334'
             'f279b1e469fb965cdf6dba9b4f428b0a7f28f414d84a47c6481b726adeb99c2b'
-            'a644d0eccfdf6d5e02cb5103711b2751d7dca6b7c689267262f2a8467a48143e')
+            '7b3853ee6574bda3d20f34df0b7977db5bd8d7b3a111e44caff2698a3cafae2b')
 prepare() {
-  # Accept any pnpm version
-  sed -i 's/"pnpm@.*/"pnpm@"\,/' "$srcdir/$_pkgname-$pkgver/package.json"
   # Use system's electron
-  sed -i '/linux/s/^/        "electronDist": "\/usr\/lib\/electron30",\n/' "$srcdir/$_pkgname-$pkgver/package.json"
+  sed -i '/linux/s/^/        "electronDist": "\/usr\/lib\/electron31",\n/' "$srcdir/$_pkgname-$pkgver/package.json"
 }
 
 build() {
