@@ -2,7 +2,7 @@
 
 pkgname=emacs-prop-menu-git
 pkgver=20150728
-pkgrel=3
+pkgrel=4
 pkgdesc="Compute pop-up menus from text and overlay properties"
 arch=('any')
 url="https://github.com/david-christiansen/prop-menu-el"
@@ -23,8 +23,8 @@ pkgver() {
 
 package() {
   cd $_gitname
-
+  emacs -batch -f batch-byte-compile *.el
   mkdir -p $pkgdir/usr/share/emacs/site-lisp/prop-menu
-  cp -R $srcdir/prop-menu-el/*.el $pkgdir/usr/share/emacs/site-lisp/prop-menu
+  install -Dm644 *.el *.elc $pkgdir/usr/share/emacs/site-lisp/prop-menu
 }
 
