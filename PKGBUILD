@@ -4,11 +4,11 @@
 # you also find the URL of a binary repository.
 
 _reponame=reflective-rapidjson
-_llvmver=17
+_llvmver=18
 pkgname=reflective-rapidjson-git
 _name=${pkgname%-git}
-pkgver=254.1ea5b1e
-pkgrel=3
+pkgver=257.743fd60
+pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Code generator for serializing/deserializing C++ objects to/from JSON using Clang and RapidJSON'
 license=('GPL')
