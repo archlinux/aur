@@ -1,7 +1,7 @@
 pkgbase = brisk-menu
 	pkgdesc = Modern, efficient menu for the MATE Desktop Environment.
 	pkgver = 0.6.2
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/getsolus/brisk-menu
 	arch = i686
@@ -11,9 +11,10 @@ pkgbase = brisk-menu
 	makedepends = gnome-common
 	makedepends = gettext
 	makedepends = itstool
-	makedepends = vala>=0.36
+	makedepends = vala
 	makedepends = meson
 	makedepends = ninja
+	makedepends = glib2-devel
 	depends = mate-panel
 	depends = libnotify
 	options = !debug
