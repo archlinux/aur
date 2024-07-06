@@ -1,6 +1,6 @@
 pkgbase = jitsi-meet-turnserver-bin
 	pkgdesc = Jitsi Meet Prosody Plugins binary
-	pkgver = 1.0.7874
+	pkgver = 1.0.8043
 	pkgrel = 1
 	url = https://jitsi.org/jitsi-meet/
 	install = jitsi.install
@@ -11,7 +11,7 @@ pkgbase = jitsi-meet-turnserver-bin
 	provides = jitsi-meet-turnserver
 	conflicts = jitsi-meet-turnserver
 	options = !strip
-	source = https://download.jitsi.org/stable/jitsi-meet-turnserver_1.0.7874-1_all.deb
-	sha256sums = c2bd4a70f39f3fe818f01a257c1e09aa0f1af4cebc112baa4601b964ba668996
+	source = https://download.jitsi.org/stable/jitsi-meet-turnserver_1.0.8043-1_all.deb
+	sha256sums = 922c4975c971144e9d16b68f2878c00bcda4b0a47c96e32d0705c124dbdbfb2c
 
 pkgname = jitsi-meet-turnserver-bin
