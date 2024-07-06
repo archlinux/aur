@@ -2,12 +2,12 @@
 
 pkgname=brisk-menu
 pkgver=0.6.2
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc='Modern, efficient menu for the MATE Desktop Environment.'
 arch=('i686' 'x86_64')
 url='https://github.com/getsolus/brisk-menu'
-license=('GPL2')
+license=('GPL-2.0-or-later')
 groups=('mate')
 depends=('mate-panel' 'libnotify')
 makedepends=('gnome-common' 'gettext' 'itstool' 'vala' 'meson' 'ninja' 'glib2-devel')
