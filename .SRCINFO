@@ -1,6 +1,6 @@
 pkgbase = core
 	pkgdesc = Common Open Research Emulator
-	pkgver = 9.0.3
+	pkgver = 9.1.0
 	pkgrel = 1
 	url = https://github.com/coreemu/core/
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = core
 	makedepends = imagemagick
 	makedepends = python-grpcio-tools
 	makedepends = python-poetry
+	makedepends = python-poetry-plugin-export
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
@@ -41,9 +42,9 @@ pkgbase = core
 	optdepends = mgen: Traffic generation
 	backup = etc/core/core.conf
 	backup = etc/core/logging.conf
-	source = core-9.0.3.tar.gz::https://github.com/coreemu/core/archive/release-9.0.3.tar.gz
+	source = core-9.1.0.tar.gz::https://github.com/coreemu/core/archive/release-9.1.0.tar.gz
 	source = core-daemon.service
-	sha512sums = fde41a6661ed429ecdbe1b88753bd6dbb9ac452f7d5a7a0d38a4668216a349ea14b841e5c8a112ab8b66b9abe332e1a41a819594aba2da1c167efaab2d6e104d
+	sha512sums = 406951369820381692962b08a70c8c030a8ab4898d7a54e804e55f7f3f1da9ea2f17408d4601f6b9c3432cca86868ad2a45d1802baae68593f8ccda971247f0f
 	sha512sums = e56f65a68804b0c7534d54fa116b53abe6922fb0aae13ee1073f76c0c7972b4832d12665d135159f7241d0f39d070ef510b4a7f05978118b6f00d737fda8dd46
 
 pkgname = core
