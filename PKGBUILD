@@ -1,20 +1,26 @@
 # Maintainer: Jeremy M. Reed <reeje76@gmail.com>
 pkgname=image-file-name-fixer
-pkgver=0.0.7
-pkgrel=1
+pkgver=0.0.9
+pkgrel=2
 pkgdesc="A tool to enforce a consistent naming scheme for image files."
 arch=('x86_64')
 url="https://github.com/jeremymreed/image-file-name-fixer"
 license=('MIT')
+options=('!lto')
 depends=()
 makedepends=('cargo' 'pandoc-cli')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jeremymreed/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('134585962318decbebeb9be48321cd94473438e319ade588d76910eb86ec4bd1980ca66b46af5450bc33167c29fdbf3efe17473f882fa9ac8c4b557de6c3f0bd')
+sha512sums=('dcc26ea86596924f1bdb1d6581326c80118f9009be3f1e3fe7ab335cd13adb90604714a3d50e9f9bea1b0bbf39e8d56c73ec2ed9fc099e935d643c5ba4feac0e')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's|host: ||p')"
+}
 
 build() {
   cd "$pkgname-$pkgver"
 
-  cargo build --release --locked
+  cargo build --release --frozen
   pandoc manpage/${pkgname}.1.md -s -t man -o manpage/${pkgname}.1
 }
 
