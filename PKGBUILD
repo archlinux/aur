@@ -39,9 +39,9 @@ build() {
   make
 }
 
-#check() {
-#  make check -C npth
-#}
+check() {
+  make check -C npth
+}
 
 package() {
   make DESTDIR="$pkgdir" install -C npth
