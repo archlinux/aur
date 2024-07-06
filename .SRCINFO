@@ -1,0 +1,24 @@
+pkgbase = gpgit
+	pkgdesc = A shell script that automates the process of signing Git sources via GPG
+	pkgver = 1.5.0
+	pkgrel = 3
+	epoch = 1
+	url = https://github.com/NicoHood/gpgit
+	arch = any
+	license = MIT
+	checkdepends = shellcheck
+	depends = bash
+	depends = gnupg
+	depends = git
+	depends = xz
+	optdepends = jq: Github API upload
+	optdepends = curl: Github API upload
+	optdepends = lzip: Compression option
+	optdepends = zstd: Compression option
+	source = gpgit-1.5.0.tar.xz::https://github.com/NicoHood/gpgit/releases/download/1.5.0/gpgit-1.5.0.tar.xz
+	source = gpgit-1.5.0.tar.xz.asc::https://github.com/NicoHood/gpgit/releases/download/1.5.0/gpgit-1.5.0.tar.xz.asc
+	validpgpkeys = 97312D5EB9D7AE7D0BD4307351DAE9B7C1AE9161
+	sha512sums = 3c7577d72ce74e5bab1f1ba752539d5977c5746c07d2f71fc61fdab50f9808dcab563070fd1c40f85a119e7edbecc6787a4e250921235e19e6eec0cc0c82a94d
+	sha512sums = SKIP
+
+pkgname = gpgit

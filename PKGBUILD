@@ -4,7 +4,7 @@
 pkgname=gpgit
 epoch=1
 pkgver=1.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A shell script that automates the process of signing Git sources via GPG"
 arch=('any')
 url="https://github.com/NicoHood/gpgit"
