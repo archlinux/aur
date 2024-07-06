@@ -1,12 +1,11 @@
 #Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
 # Contributor: Vladislav Nepogodin (vnepogodin) <nepogodin.vlad@gmail.com>
-# Contributor: Kyle De'Vir (QuartzDragon) <kyle[dot]devir[at]mykolab[dot]com>
+# Contributor: Kyle De'Vir (QuartzDragon) <kyle[dot]devir[at]mykolab[dot]co
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 # Contributor: Maxwell Anselm <silverhammermba+aur@gmail.com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
-
 pkgname=librewolf-hg
 _pkgname=librewolf-nightly
 __pkgname="Librewolf Nightly"
@@ -22,8 +21,7 @@ depends=(gtk3 libxt mime-types dbus-glib
 makedepends=(unzip zip diffutils yasm mesa imake inetutils ccache
              rust xorg-server-xvfb
               mercurial clang llvm jack nodejs cbindgen nasm
-             python-setuptools python-psutil python-zstandard git binutils lld dump_syms
-             wasi-sdk
+             python-setuptools python-psutil python-zstandard git binutils ld dump_syms wasi-sdk)
 optdepends=(
 	'networkmanager: Location detection via available WiFi networks'
 	'libnotify: Notification integration'
