@@ -2,7 +2,7 @@
 
 # Maintainer: William Horvath <william at horvath dot blog>
 
-_where="$(eval realpath "${PWD:-$(pwd)}")"
+_where="${startdir:-$(pwd)}"
 
 # true: generic build; false: AUR native build (default); shouldn't need to touch this
 _generic_release=false
@@ -76,7 +76,7 @@ source=(
   "30-win32-aliases.conf"
   "wine-binfmt.conf"
   "buildiswow64"
-  "git+https://gitlab.winehq.org/wine/wine.git#commit=${_desired_wine_commit:-master}"
+  "git+https://github.com/wine-mirror/wine.git#commit=${_desired_wine_commit:-master}"
   "git+https://github.com/wine-staging/wine-staging.git#commit=${_desired_staging_commit:-master}"
 )
 
@@ -195,6 +195,9 @@ pkgver() {
 
 # exported at the start of every function
 _set_vars() {
+  export build64dir="${_where}/src/${pkgname}-64-build"
+  export build32dir="${_where}/src/${pkgname}-32-build"
+
   export PATH="/opt/llvm-mingw/bin":"${PATH}"
 
   export CPPFLAGS="-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0 -DNDEBUG -D_NDEBUG"
@@ -343,9 +346,6 @@ prepare() { _set_vars;
     tools/make_specfiles
   fi
   autoreconf -fiv
-
-  export build64dir="${_where}/src/${pkgname}-64-build"
-  export build32dir="${_where}/src/${pkgname}-32-build"
 }
 
 _build() { _set_vars;
@@ -394,9 +394,7 @@ _build() { _set_vars;
   make -j$(($(nproc) + 1)) || _failure "Compilation failed"
 }
 
-build() {
-
-
+build() { _set_vars;
   _sharedopts=(
     --prefix=/opt/"${pkgname}"
     --disable-tests
