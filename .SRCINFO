@@ -4,7 +4,7 @@ pkgbase = nvidia-tesla-dkms
 	pkgrel = 2
 	url = https://www.nvidia.com/
 	arch = x86_64
-	license = custom
+	license = LicenseRef-custom
 	provides = nvidia=550.90.07
 	provides = nvidia-dkms=550.90.07
 	provides = nvidia-tesla=550.90.07

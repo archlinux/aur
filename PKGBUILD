@@ -18,7 +18,7 @@ pkgrel=2
 pkgdesc='NVIDIA driver sources for linux (tesla version)'
 arch=('x86_64')
 url='https://www.nvidia.com/'
-license=('custom')
+license=('LicenseRef-custom')
 provides=("nvidia=${pkgver}" "nvidia-dkms=${pkgver}" "nvidia-tesla=${pkgver}"
           'NVIDIA-MODULE')
 conflicts=('nvidia' 'nvidia-dkms')
