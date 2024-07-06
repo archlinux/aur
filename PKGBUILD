@@ -1,6 +1,7 @@
 # Maintainer: VIVID <vivid@headrat.org>
 
 pkgname=libg15render
+epoch=1
 pkgver=1.3.1
 pkgrel=1
 pkgdesc="Library to aid in drawing to Logitech G15 screens"
