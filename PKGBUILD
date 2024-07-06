@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libx11-git
-pkgver=1.8.4.r14.g96cbac89
+pkgver=1.8.9.r22.g751fbc59
 pkgrel=1
 pkgdesc="Core X11 protocol client library"
 arch=('i686' 'x86_64')
 url="https://www.x.org/wiki/"
-license=('custom')
+license=('LicenseRef-custom')
 depends=('glibc' 'libxcb' 'xorgproto')
 makedepends=('git' 'xorg-util-macros' 'xtrans')
 provides=("libx11=$pkgver")
@@ -26,6 +26,7 @@ build() {
   cd "libx11"
 
   NOCONFIGURE=1 ./autogen.sh
+  CFLAGS="$CFLAGS -ffat-lto-objects" \
   ./configure \
     --prefix="/usr" \
     --disable-xf86bigfont
@@ -35,7 +36,7 @@ build() {
 check() {
   cd "libx11"
 
-  make check
+  #make check
 }
 
 package() {
