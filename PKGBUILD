@@ -1,5 +1,5 @@
 pkgname='tonelib-noise-reducer-bin'
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="ToneLib Noise Reducer – Powerful, yet simple two-unit rack effect on guard of your mix clarity."
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://tonelib.net/tl-noisereducer.html"
 depends=('gtk3' 'glib2' 'desktop-file-utils' 'alsa-lib' 'harfbuzz' 'fribidi' 'pango' 'freetype2')
 optdepends=('jack: JACK output')
 source=("${pkgname}-${pkgver}.deb::https://tonelib.net/download/ToneLib-NoiseReducer-amd64.deb")
-sha256sums=('02999c47b24d6853b078f8a29744180e2a775fc32512fd43cc3e6d77bae3f2b0')
+sha256sums=('5cc1094bf9bd39f83c7c3eb7a6b06801c084f05d2a369b02bc330723811f6cbd')
 
 package () {
     tar xf data.tar.xz -C "${pkgdir}"
