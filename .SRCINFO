@@ -1,0 +1,18 @@
+pkgbase = gtk2-perl
+	pkgdesc = Perl bindings for GTK+ 2.x
+	pkgver = 1.24993
+	pkgrel = 6
+	url = http://gtk2-perl.sourceforge.net/
+	arch = x86_64
+	license = LGPL
+	checkdepends = ttf-dejavu
+	checkdepends = xorg-server-xvfb
+	makedepends = perl-extutils-pkgconfig
+	makedepends = perl-extutils-depends
+	depends = gtk2
+	depends = pango-perl
+	options = !emptydirs
+	source = https://downloads.sourceforge.net/sourceforge/gtk2-perl/Gtk2-1.24993.tar.gz
+	sha512sums = 320b10803394b196e0833ab998b854c7e184d6f291657c732a1fddb0c049d01ef192c73e6a095a87b18ff8cb9ac846fcb3682a2dd0c9c86076342e3ca7e55eb5
+
+pkgname = gtk2-perl
