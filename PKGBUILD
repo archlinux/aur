@@ -1,21 +1,22 @@
 # Maintainer: Marcin Serwin <marcin.serwin0@protonmail.com>
 
 pkgname=diohsc
-pkgver=0.1.14.5
-pkgrel=2
+pkgver=0.1.14.7
+pkgrel=1
 pkgdesc="Line-based command-oriented interactive client for the gemini protocol"
 url="https://mbays.sdf.org/diohsc"
 license=("GPL3")
 arch=('x86_64')
 depends=('ghc-libs' 'haskell-asn1-encoding' 'haskell-asn1-types' 'haskell-crypton' 'haskell-data-default-class' 'haskell-data-hash' 'haskell-drunken-bishop' 'haskell-hourglass' 'haskell-iconv' 'haskell-memory' 'haskell-mime' 'haskell-network' 'haskell-network-simple' 'haskell-network-uri' 'haskell-pem' 'haskell-regex-compat' 'haskell-rset' 'haskell-safe' 'haskell-temporary' 'haskell-terminal-size' 'haskell-tls' 'haskell-crypton-x509' 'haskell-crypton-x509-store' 'haskell-crypton-x509-validation')
-makedepends=('ghc' 'pandoc-cli' 'ed')
-source=("https://hackage.haskell.org/packages/archive/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz" "update-tls.patch")
-sha256sums=('d8036ea7a38d1ec410e11c0a46a553fbd61c32da38df77aec849f75f8515d6f5'
-            'c0e655d33b61f2edf3485033d70b8030cdd87629dbc0d064e147894bfe8f3e85')
+makedepends=('ghc' 'pandoc-cli')
+source=("https://hackage.haskell.org/packages/archive/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz" "remove-tls-2-code.patch")
+sha256sums=('f07b274166c0d59bab8eb05b1e1d05dda76d259524fe0c181f9534442eb8d26f'
+            'e131604e46af22a69582272649ec6d57cecb345047f91bfa95498578631d0ecc')
 
 prepare() {
   cd $pkgname-$pkgver
-  patch --forward --strip=1 --input="${srcdir}/update-tls.patch"
+  # Remove once haskell-tls is updated to version 2 in the extra
+  patch --forward --strip=1 --input="${srcdir}/remove-tls-2-code.patch"
 }
 
 build() {

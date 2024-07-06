@@ -1,0 +1,39 @@
+diff -u diohsc-0.1.14.7/ClientSessionManager.hs diohsc-0.1.14.7.fixed/ClientSessionManager.hs
+--- diohsc-0.1.14.7/ClientSessionManager.hs	2001-09-09 03:46:40.000000000 +0200
++++ diohsc-0.1.14.7.fixed/ClientSessionManager.hs	2024-07-06 11:28:52.110669625 +0200
+@@ -38,7 +38,6 @@
+     (\_ -> return Nothing)
+     insert
+     delete
+-    True
+     where
+     insert sid sd@SessionData{ sessionClientSNI = Just sni } = do
+         now <- timeCurrent
+@@ -46,8 +45,8 @@
+         modifyMVar_ sess $ return .
+             Map.insert (sni, fp) (expire,(sid,sd)) .
+             fromAscList . filter (\(_,(t,(_,_))) -> t >= now) . toAscList
+-        return Nothing
+-    insert _ _ = return Nothing
++        return ()
++    insert _ _ = return ()
+     delete sid =
+         modifyMVar_ sess $ return .
+             fromAscList . filter (\(_,(_,(sid',_))) -> sid /= sid') . toAscList
+Only in diohsc-0.1.14.7.fixed/: dist-newstyle
+diff -u diohsc-0.1.14.7/GeminiProtocol.hs diohsc-0.1.14.7.fixed/GeminiProtocol.hs
+--- diohsc-0.1.14.7/GeminiProtocol.hs	2001-09-09 03:46:40.000000000 +0200
++++ diohsc-0.1.14.7.fixed/GeminiProtocol.hs	2024-07-06 11:45:10.144375600 +0200
+@@ -214,11 +214,10 @@
+                 , clientShared = def
+                     { sharedCAStore = certStore
+                     , sharedSessionManager = sessionManager }
+-                , clientUseEarlyData = True  -- ^Send early data (RTT0) if server session allows it
+                 , clientWantSessionResume = session
+                 }
+         (sock,context) <- do
+-            let retryNoResume (HandshakeFailed (Error_Protocol _ HandshakeFailure))
++            let retryNoResume (HandshakeFailed (Error_Protocol (_, _, HandshakeFailure)))
+                         | isJust session = do
+                     -- Work around a mysterious problem seen with dezhemini+libssl:
+                     displayWarning [ "Handshake failure when resuming TLS session; retrying with full handshake." ]
