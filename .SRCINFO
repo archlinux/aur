@@ -19,6 +19,7 @@ pkgbase = librewolf-hg
 	makedepends = inetutils
 	makedepends = ccache
 	makedepends = rust
+	makedepends = mercurial
 	makedepends = xorg-server-xvfb
 	makedepends = mercurial
 	makedepends = clang
