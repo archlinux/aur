@@ -19,7 +19,7 @@ arch=('i686' 'x86_64')
 build() {
 	cd "$srcdir/${_pkgname}"
 	make oggfwd
-    gzip --keep oggfwd.1
+    gzip -fk oggfwd.1
 }
 
 package() {
