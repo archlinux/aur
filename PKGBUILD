@@ -3,7 +3,7 @@
 _name=OpenFIRE-App
 pkgname=openfireapp
 pkgver=2.0
-_rc='-rc5'
+_rc='-rc6'
 pkgrel=3
 pkgdesc='Configuration utility for the OpenFIRE lightgun system.'
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ makedepends=('cmake')
 install=$pkgname.install
 source=("https://github.com/TeamOpenFIRE/OpenFIRE-App/archive/refs/tags/v${pkgver}${_rc}.tar.gz"
         'org.TeamOpenFIRE.OpenFIREapp.desktop')
-md5sums=('47c42640fdc565248819e44645418253'
+md5sums=('becebad8451f9eaf2e1169fa4d03f1b0'
          'd8b6cd0884c57ff3d5df1142ec9ca30b')
 
 build() {
