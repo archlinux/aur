@@ -45,11 +45,10 @@ build() {
   make
 }
 
-#check() {
-#  cd "yash"
-
-#  make check
-#}
+check() {
+  cd "yash"
+  make check
+}
 
 package() {
   cd "yash"
