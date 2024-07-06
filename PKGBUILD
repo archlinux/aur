@@ -2,8 +2,7 @@
 # Contributor: William Aass Dahlen <cznk@protonmail.com>
 
 pkgname=azure-kubelogin
-pkgver=0.1.3
-_commit=308f96875c026012123a3b0e95c8fc5473e95a33
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="A Kubernetes credential (exec) plugin implementing azure authentication"
 arch=(x86_64)
@@ -15,22 +14,15 @@ makedepends=(
   go
 )
 conflicts=(kubelogin)
-source=("$pkgname::git+$url.git?signed#commit=$_commit")
-sha256sums=('eea093de28893769134fd147557317d555181e77ff4026d40f27e4d72fabb11f')
-validpgpkeys=('968479A1AFF927E37D1A566BB5690EEEBB952194') # GitHub <noreply@github.com>
+source=("$pkgname::git+$url.git#tag=v$pkgver")
+sha256sums=('ee1cd07c4d65a6887a944074750db4e5d8b2b4b677da0f1213bebaf600ef2e49')
 
 _archive="$pkgname"
-
-pkgver() {
-  cd "$_archive"
-
-  git describe --tags | sed 's/^v//'
-}
 
 prepare() {
   cd "$_archive"
 
-  go mod download -x
+  GOFLAGS="-mod=readonly" go mod vendor -v
 }
 
 build() {
@@ -40,9 +32,14 @@ build() {
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
   export CGO_LDFLAGS="$LDFLAGS"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  export GOFLAGS="-buildmode=pie -mod=vendor -modcacherw"
+  export GOPATH="$srcdir"
 
-  go build -v .
+  local ld_flags=" \
+    -compressdwarf=false \
+    -linkmode=external  \
+  "
+  go build -v -ldflags "$ld_flags" .
 
   # Completions
   ./kubelogin completion bash > kubelogin.bash
@@ -57,8 +54,7 @@ check() {
   local unit_tests=$(
     go list ./... \
       | grep -v 'github.com/Azure/kubelogin/pkg/internal/pop' \
-      | grep -v 'github.com/Azure/kubelogin/pkg/internal/token' \
-      | sort
+      | grep -v 'github.com/Azure/kubelogin/pkg/internal/token'
   )
   # shellcheck disable=SC2086
   go test -v $unit_tests
