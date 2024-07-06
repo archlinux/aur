@@ -1,6 +1,6 @@
 # Maintainer: Zesko
 pkgname="limine-snapper-sync-git"
-pkgver=r1.0903923
+pkgver=r12.13908ee
 pkgrel=1
 pkgdesc="Snapper integration for Limine bootloader."
 arch=("any")
@@ -16,7 +16,8 @@ depends=(
        'inotify-tools'
        'dunst')
 optdepends=(
-        'rsync: For restore'
+        'rsync: This is the second restore method'
+        'journalctl-desktop-notification: It notifies you on Desktop when an error occurs.'
 )
 makedepends=('git' 'maven')
 sha1sums=('SKIP')

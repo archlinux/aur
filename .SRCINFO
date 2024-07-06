@@ -1,6 +1,6 @@
 pkgbase = limine-snapper-sync-git
 	pkgdesc = Snapper integration for Limine bootloader.
-	pkgver = r1.0903923
+	pkgver = r12.13908ee
 	pkgrel = 1
 	url = https://gitlab.com/Zesko/limine-snapper-sync
 	arch = any
@@ -14,7 +14,8 @@ pkgbase = limine-snapper-sync-git
 	depends = btrfs-progs
 	depends = inotify-tools
 	depends = dunst
-	optdepends = rsync: For restore
+	optdepends = rsync: This is the second restore method
+	optdepends = journalctl-desktop-notification: It notifies you on Desktop when an error occurs.
 	conflicts = limine-snapper-sync
 	backup = etc/limine-snapper-sync.conf
 	source = git+https://gitlab.com/Zesko/limine-snapper-sync.git
