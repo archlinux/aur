@@ -1,12 +1,13 @@
 pkgname=imapdedup
-pkgver=20200515
+pkgver=20240131
 pkgrel=1
 pkgdesc="IMAP folder deduplicator"
 arch=(any)
 url="https://github.com/quentinsf/IMAPdedup"
 license=('GPL2')
 depends=('python')
-source=(git://github.com/quentinsf/IMAPdedup.git)
+makedepends=('git')
+source=("git+https://github.com/quentinsf/IMAPdedup.git")
 md5sums=('SKIP')
 
 package() {

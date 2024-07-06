@@ -1,13 +1,13 @@
 pkgbase = imapdedup
 	pkgdesc = IMAP folder deduplicator
-	pkgver = 20200515
+	pkgver = 20240131
 	pkgrel = 1
 	url = https://github.com/quentinsf/IMAPdedup
 	arch = any
 	license = GPL2
+	makedepends = git
 	depends = python
-	source = git://github.com/quentinsf/IMAPdedup.git
+	source = git+https://github.com/quentinsf/IMAPdedup.git
 	md5sums = SKIP
 
 pkgname = imapdedup
-
