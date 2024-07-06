@@ -1,6 +1,6 @@
 pkgbase = c-evo-dh
 	pkgdesc = C-evo: Distant Horizon, Empire Building Game
-	pkgver = 1.12
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://git.code.sf.net/p/c-evo-eh/code
 	arch = x86_64
@@ -18,8 +18,10 @@ pkgbase = c-evo-dh
 	depends = libx11
 	depends = at-spi2-core
 	depends = cairo
+	depends = bash
+	depends = hicolor-icon-theme
 	optdepends = sox: Needed for sounds if ffmpeg not installed
-	source = c-evo-dh-1.12::git+https://git.code.sf.net/p/c-evo-eh/code#tag=1.12
-	sha256sums = a93de3649e181feebcd3fa5abeda3743441e3788d1fd6e30b1bd6ebbc80a3077
+	source = c-evo-dh-2.0::git+https://git.code.sf.net/p/c-evo-eh/code#tag=2.0
+	sha256sums = 0f238ee98ab470b22c32d782492800d58f46e7abaab8f241455ccf43271fab8a
 
 pkgname = c-evo-dh
