@@ -3,7 +3,7 @@
 
 pkgname=clash-verge
 pkgver=1.7.2
-pkgrel=1
+pkgrel=4
 pkgdesc="A Clash Meta GUI based on Tauri, Continuation of Clash Verge"
 arch=('x86_64' 'aarch64')
 url="https://github.com/clash-verge-rev/clash-verge-rev"
@@ -65,6 +65,7 @@ package() {
 
 	install -d ${pkgdir}/usr/lib/${pkgname}/resources
 	ln -sf /etc/clash/Country.mmdb -t ${pkgdir}/usr/lib/${pkgname}/resources
+        ln -sf /usr/bin/clash-meta  ${pkgdir}/usr/bin/verge-mihomo
  	install -Dm755 src-tauri/target/release/resources/{clash-verge,install,uninstall}-service -t ${pkgdir}/usr/lib/${pkgname}/resources
 
 	install -Dm644 src-tauri/icons/icon.png ${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png
