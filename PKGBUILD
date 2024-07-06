@@ -1,3 +1,5 @@
+# Maintaner: Versua7 <Versua7@gmail.com>
+
 pkgname='tonelib-bass-drive-bin'
 pkgver=1.5.0
 pkgrel=1
