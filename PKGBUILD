@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Schleifer <js@nil.im>
 pkgname=('libobjfw' 'libobjfwrt' 'libobjfwtls' 'ofarc' 'ofdns' 'ofhash' 'ofhttp')
 pkgbase=objfw
-pkgver=1.1.2
+pkgver=1.1.5
 pkgrel=1
 pkgdesc="Portable, lightweight framework for the Objective-C language"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('LGPL3')
 groups=(objfw)
 makedepends=(clang)
 source=("https://objfw.nil.im/downloads/$pkgbase-$pkgver.tar.gz")
-sha256sums=(5d9f9a70d583298e780ae11fc75a7ae2beeef904b301e1bc4f4ffa8d7ee31d9f)
+sha256sums=(9d45d2009a0bb9b1a0918918e454b47b8161670df8016b5f3a85eccea91d8988)
 
 build() {
 	cd "$pkgbase-$pkgver"
@@ -75,7 +75,7 @@ package_libobjfwtls() {
 }
 
 package_ofarc() {
-	pkgdesc="Utility for handling ZIP, Tar and LHA archives"
+	pkgdesc="Utility for handling ZIP, Tar, LHA and Zoo archives"
 	depends=(glibc gcc-libs libobjfw libobjfwrt)
 
 	cd "$pkgbase-$pkgver"
