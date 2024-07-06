@@ -1,28 +1,30 @@
 # Maintainer: William Sutton <will at sutton-family dot org>
 
 pkgname=mtx-git
-_pkgname=MTX
-pkgver=20191126
-pkgrel=1
+_pkgname=mtx
+pkgver=r8.3dc2a38
+pkgrel=2
 pkgdesc="Tools used to view information about, and to control, Media Changer devices such as Tape and DVD/CD libraries."
 arch=('i686' 'x86_64')
-url="https://github.com/zombielinux/MTX"
+url="https://github.com/mtx-org/mtx"
 license=('GPL2')
 provides=('mtx')
 conflicts=('mtx')
 makedepends=('git')
-source=(git+https://github.com/zombielinux/MTX.git)
+source=(git+https://github.com/mtx-org/mtx.git)
 md5sums=('SKIP')
 
-#pkgver() {
-#  cd "${pkgname}"
-#  local ver="$(svnversion)"
-#  printf "r%s" "${ver//[[:alpha:]]}"
-#}
+pkgver() {
+  cd "${srcdir}/${_pkgname}/mtx"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+_CARCH=$CARCH
+[[ $CARCH = i?86 ]] && _CARCH=i686
 
 build() {
   cd "${srcdir}/${_pkgname}/mtx"
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --build=${_CARCH}-unknown-linux-gnu
   make
 }
 
