@@ -3,7 +3,7 @@
 # Contributor : Romain Gautier <romain.gautier@nimamoh.net>,Jameson Pugh <imntreal@gmail.com>
 
 pkgname=btrfsmaintenance
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc='Btrfs maintenance scripts'
 arch=(any)
@@ -12,7 +12,7 @@ license=(GPL-2.0-or-later)
 depends=(btrfs-progs)
 backup=(etc/default/btrfsmaintenance)
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
-sha256sums=('305998224fd8fa6bbca474d6fe8e23be9c2ae4d6f47e398a76b117e57a9d9056')
+sha256sums=('f41f5c8a697420c282c603d96f70b25a6f4d3bf330fa0249625bce256e0cce2e')
 
 prepare() {
   #sed -i 's| /usr/share| "'$pkgdir'"/usr/share|g' $pkgname-$pkgver/dist-install.sh
