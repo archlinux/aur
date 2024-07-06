@@ -1,13 +1,13 @@
 # Maintainer: Andrea Manenti <andrea [dot] manenti [at] yahoo [dot] com>
 
 pkgname=sdpb-git
-pkgver=1718.2443d6d5
+pkgver=2016.6418959a
 pkgrel=1
 pkgdesc="A semidefinite program solver for the conformal bootstrap"
 arch=(x86_64)
 license=('MIT')
 url="https://github.com/davidsd/sdpb"
-depends=('boost' 'libarchive' 'libxml2' 'mpfr' 'rapidjson' 'elemental-gmp-git' 'intel-oneapi-mkl')
+depends=('boost' 'libarchive' 'libxml2' 'mpfr' 'rapidjson' 'elemental-gmp-git' 'intel-oneapi-mkl' 'flint')
 optdepends=('openmpi')
 makedepends=('git' 'python')
 source=('git+https://github.com/davidsd/sdpb.git')
@@ -36,7 +36,7 @@ build () {
 package() {
         cd "$srcdir"/sdpb/build
 
-        for bin_name in sdp2functions spectrum pvm2functions sdp2input sdpb approx_objective outer_limits pvm2sdp
+        for bin_name in pmp2functions spectrum pmp2sdp sdp2input sdpb approx_objective outer_limits pvm2sdp
         do
             install -vDm 755 "$bin_name" "$pkgdir"/usr/bin/"$bin_name"
         done
