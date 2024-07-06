@@ -1,12 +1,14 @@
 pkgbase = oggfwd-git
 	pkgdesc = Pipes an ogg stream to an icecast server
 	pkgver = r19.506088e
-	pkgrel = 1
+	pkgrel = 2
 	url = http://v2v.cc/~j/oggfwd/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = libshout
+	conflicts = oggfwd
+	conflicts = oggfwd-bzr
 	source = oggfwd::git+https://r-w-x.org/oggfwd.git#branch=master
 	md5sums = SKIP
 

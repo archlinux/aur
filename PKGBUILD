@@ -6,9 +6,10 @@ _pkgname=oggfwd
 pkgname=oggfwd-git
 pkgdesc="Pipes an ogg stream to an icecast server"
 license=('GPL')
+conflicts=('oggfwd' 'oggfwd-bzr')
 url="http://v2v.cc/~j/oggfwd/"
 pkgver=r19.506088e
-pkgrel=1
+pkgrel=2
 
 source=("${_pkgname}::git+https://r-w-x.org/oggfwd.git#branch=master")
 md5sums=('SKIP')
