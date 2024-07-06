@@ -1,7 +1,7 @@
 # Maintainer: Antheas Kapenekakis <aur at antheas dot dev>
 pkgname=adjustor
-pkgver=3.1.0
-pkgrel=2
+pkgver=3.1.1
+pkgrel=1
 pkgdesc='Adjustor, a userspace program for managing the TDP of handheld devices.'
 arch=('x86_64')
 url='https://github.com/hhd-dev/adjustor'
@@ -21,6 +21,6 @@ build() {
 package() {
   cd "adjustor-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
-	# mkdir -p ${pkgdir}/usr/share/dbus-1/system.d/hhd-net.hadess.PowerProfiles.conf
+	# mkdir -p ${pkgdir}/usr/share/dbus-1/system.d/
   # install -m644 usr/share/dbus-1/system.d/hhd-net.hadess.PowerProfiles.conf ${pkgdir}/usr/share/dbus-1/system.d/hhd-net.hadess.PowerProfiles.conf
 }
