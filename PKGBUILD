@@ -3,7 +3,7 @@
 
 export GIT_LFS_SKIP_SMUDGE=1 # This is to prevent Git LFS errors
 pkgname=veloren
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc='The last stable release of an open-world, open-source multiplayer voxel RPG.'
 arch=('x86_64' 'i686')
@@ -17,7 +17,7 @@ conflicts=()
 _repo='https://gitlab.com/veloren/veloren.git'
 source=("$pkgname"::"git+$_repo#tag=v$pkgver")
 noextract=()
-sha512sums=('SKIP')
+sha512sums=('3785641aaa5b5849d44c6ac99dd414fd02aeba95cd12ccb3c52da64a9f92f8d8fe7cbdf04956d014b7823d925c1af21347cff2ccfeb8924563646afff274a4ee')
 
 prepare() {
     unset GIT_LFS_SKIP_SMUDGE

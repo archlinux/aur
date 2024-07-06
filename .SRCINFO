@@ -1,6 +1,6 @@
 pkgbase = veloren
 	pkgdesc = The last stable release of an open-world, open-source multiplayer voxel RPG.
-	pkgver = 0.15.0
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://veloren.net/
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = veloren
 	depends = pulseaudio-alsa
 	depends = vulkan-icd-loader
 	options = !strip
-	source = veloren::git+https://gitlab.com/veloren/veloren.git#tag=v0.15.0
-	sha512sums = SKIP
+	source = veloren::git+https://gitlab.com/veloren/veloren.git#tag=v0.16.0
+	sha512sums = 3785641aaa5b5849d44c6ac99dd414fd02aeba95cd12ccb3c52da64a9f92f8d8fe7cbdf04956d014b7823d925c1af21347cff2ccfeb8924563646afff274a4ee
 
 pkgname = veloren
