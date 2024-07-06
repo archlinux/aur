@@ -1,15 +1,22 @@
 pkgbase = npth-git
-	pkgdesc = New portable threads library
-	pkgver = 1.6
+	pkgdesc = The new GNU portable threads library
+	pkgver = npth.1.7.r5.g75c6839
 	pkgrel = 1
-	url = https://git.gnupg.org/cgi-bin/gitweb.cgi?p=npth.git
+	url = https://www.gnupg.org/software/npth/index.html
 	arch = x86_64
-	license = LGPL
-	makedepends = git
+	license = LGPL-2.1-or-later
+	depends = glibc
+	depends = sh
+	provides = libnpth.so
 	provides = npth
 	conflicts = npth
 	source = git://git.gnupg.org/npth.git
-	sha256sums = SKIP
+	validpgpkeys = D8692123C4065DEA5E0F3AB5249B39D24F25E3B6
+	validpgpkeys = 46CC730865BB5C78EBABADCF04376F3EE0856959
+	validpgpkeys = 031EC2536E580D8EA286A9F22071B08A33BD3F06
+	validpgpkeys = D238EA65D64C67ED4C3073F28A861B1C7EFD60D9
+	validpgpkeys = 6DAA6E64A76D2840571B4902528897B826403ADA
+	sha512sums = SKIP
+	b2sums = SKIP
 
 pkgname = npth-git
-
