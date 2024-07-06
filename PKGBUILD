@@ -1,20 +1,34 @@
+# Maintainer: Morgenstern <charles [at] charlesbwise [dot] com>
 # Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.27
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-html-treebuilder-xpath'
+_distdir="HTML-TreeBuilder-XPath-0.14"
 pkgver='0.14'
-pkgrel='3'
+pkgrel='4'
 pkgdesc="add XPath support to HTML::TreeBuilder"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl')
 options=('!emptydirs')
-depends=('perl-html-tree' 'perl-xml-xpathengine')
+depends=('perl-html-tree>=0' 'perl-xml-xpathengine>=0.12')
 makedepends=()
-url='http://search.cpan.org/dist/HTML-TreeBuilder-XPath'
-source=('http://search.mcpan.org/CPAN/authors/id/M/MI/MIROD/HTML-TreeBuilder-XPath-0.14.tar.gz')
-md5sums=('a3fa3b73ff51dd6ec63be394dcd2a3b5')
-sha512sums=('36d68ff08e4cac37e0d596fdcc7c1e84ba4fbecd23f41fccbce43e223750d35a1a7d51a3456397e3037c286fa093c3cd7dd825a07ea90a0c69ed6545ace4b727')
-_distdir="HTML-TreeBuilder-XPath-0.14"
+checkdepends=('perl-test-pod'
+              'perl-test-pod-coverage')
+url='https://metacpan.org/release/HTML-TreeBuilder-XPath'
+source=("${_distdir}.tar.gz::https://github.com/mirod/HTML--TreeBuilder--XPath/archive/master.tar.gz"
+        "script-tag-text-contents.patch::https://github.com/mirod/HTML--TreeBuilder--XPath/pull/3.patch")
+sha512sums=('3a42b601cab88728859d80798a7dfff2e7ec1f5cd955b184942845fd33083d5c3397c0509b3c37b0da43f96783397069f45503f9303fe15e0e773c29ef92c434'
+            '03ab8aa01f2e981013fd2afa13c6a5dc5cabe4f07a9f46f788221a5357a1c4fadf9ff97bac61ac6d503efa34408900c345781cb6bf93424ac889b29a7a5e9dd2')
+
+prepare() {
+  mv "${srcdir}/HTML--TreeBuilder--XPath-master" "${srcdir}/${_distdir}"
+  cd "$srcdir/$_distdir"
+
+  # Apply fix for omitted text contents of a script tag
+  # Reference: https://rt.cpan.org/Public/Bug/Display.html?id=90164
+  # Source: https://github.com/mirod/HTML--TreeBuilder--XPath/pull/3 
+  patch -Np1 -i ../script-tag-text-contents.patch
+}
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,7 +53,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
