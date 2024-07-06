@@ -17,10 +17,10 @@ license=(MPL GPL LGPL)
 url="https://librewolf-community.gitlab.io/"
 depends=(gtk3 libxt mime-types dbus-glib
          nss-hg ttf-font libpulse xorg-server-xwayland
-         libvpx libwebp libjpeg zlib icu libevent pipewire)
+         libvpx libwebp libjpeg zlib icu libevent pipewire mercurial)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils ccache
              rust xorg-server-xvfb
-              mercurial clang llvm jack nodejs cbindgen nasm
+               clang llvm jack nodejs cbindgen nasm
              python-setuptools python-psutil python-zstandard git binutils ld dump_syms wasi-sdk)
 optdepends=(
 	'networkmanager: Location detection via available WiFi networks'
