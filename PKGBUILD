@@ -3,7 +3,7 @@
 pkgname=clash-verge-rev-bin-concise
 _pkgname=clash-verge-rev
 pkgver=1.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Continuation of Clash Verge | A Clash Meta GUI based on Tauri without kernel"
 arch=('x86_64' 'aarch64')
 url="https://github.com/clash-verge-rev/clash-verge-rev"
@@ -20,7 +20,7 @@ sha512sums_aarch64=('2c957c1f6382fa1ba3e40eecd9b65e77279a0521d0e61287991fefdf0ec
 
 package() {
     tar xpf data.tar.gz -C ${pkgdir}
-    rm ${pkgdir}/usr/bin/clash-meta
-    rm ${pkgdir}/usr/bin/clash-meta-alpha
+    rm ${pkgdir}/usr/bin/verge-mihomo
+    rm ${pkgdir}/usr/bin/verge-mihomo-alpha
     chown -R root:root ${pkgdir}
 }
