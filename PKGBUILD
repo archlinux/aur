@@ -1,42 +1,57 @@
-# Maintainer: 
+# Maintainer:
 # Contributor: Mark Wagie <mark.wagie at proton dot me>
-pkgname=sticky-git
-pkgver=1.14.r3.g2cb2742
+
+_pkgname="sticky"
+pkgname="$_pkgname-git"
+pkgver=1.21.r0.gf713dc5
 pkgrel=1
 pkgdesc="A sticky notes app for the Linux desktop"
-arch=('any')
 url="https://github.com/collinss/sticky"
-license=('GPL2')
-depends=('gtk3' 'gspell' 'python-gobject' 'python-xapp' 'xapps')
-makedepends=('git')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=('git+https://github.com/collinss/sticky.git')
+license=('GPL-2.0-or-later')
+arch=('any')
+
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
+
+depends=(
+  'gspell'
+  'gtk3'
+  'python'
+  'python-gobject'
+  'python-xapp'
+  'xapp'
+)
+makedepends=(
+  'git'
+  'meson'
+  'ninja'
+)
+
+_pkgsrc="$_pkgname"
+source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
-  git describe --long --tags --exclude master* | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$_pkgsrc"
 
   # Set version in About dialog
-  sed -i "s/__DEB_VERSION__/${pkgver//+*/}/g" "usr/lib/${pkgname%-git}/${pkgname%-git}.py"
+  sed -i "s/__DEB_VERSION__/${pkgver//+*/}/g" "usr/lib/$_pkgname/$_pkgname.py"
 
   # Fix license path
-  sed -i 's|common-licenses/GPL|licenses/common/GPL/license.txt|g' \
-    "usr/lib/${pkgname%-git}/${pkgname%-git}.py"
+  # sed -i 's|common-licenses/GPL|licenses/common/GPL/license.txt|g' "usr/lib/$_pkgname/$_pkgname.py"
 }
 
 build() {
-  cd "$srcdir/${pkgname%-git}"
-  make
+  arch-meson "$_pkgsrc" build
+  meson compile -C build
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
-  cp -r etc usr "$pkgdir"
-  chmod +x "$pkgdir/usr/bin/${pkgname%-git}"
+  meson install -C build --destdir "$pkgdir"
 }
