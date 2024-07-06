@@ -1,0 +1,13 @@
+diff --git a/src/tuxedo_compatibility_check/tuxedo_compatibility_check.c b/src/tuxedo_compatibility_check/tuxedo_compatibility_check.c
+index 60bb902..d41883e 100644
+--- a/src/tuxedo_compatibility_check/tuxedo_compatibility_check.c
++++ b/src/tuxedo_compatibility_check/tuxedo_compatibility_check.c
+@@ -146,6 +146,8 @@ static const struct dmi_system_id tuxedo_dmi_string_match[] = {
+ };
+ 
+ bool tuxedo_is_compatible(void) {
++	return true;  // disable-compatibility-check
++
+ 	if (dmi_check_system(tuxedo_dmi_string_match)
+ 	    || (x86_match_cpu(skip_tuxedo_dmi_string_check_match)
+ 	    && !x86_match_cpu(force_tuxedo_dmi_string_check_match))) {
