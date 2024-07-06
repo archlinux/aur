@@ -6,18 +6,18 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-vapoursynth
-pkgver=R68
+pkgver=R69
 pkgrel=1
 arch=('any')
 pkgdesc="A video processing framework with simplicity in mind (Android ${_android_arch})"
 url='http://www.vapoursynth.com/'
 license=('LGPL2.1'
          'custom:OFL')
-depends=("zimg")
+depends=("android-${_android_arch}-zimg")
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/vapoursynth/vapoursynth/archive/refs/tags/${pkgver}.tar.gz")
-md5sums=('ac6e8ea4f92d86ae76e269c66f882773')
+md5sums=('87c61e60a1c3f23796121c635e472638')
 
 prepare() {
     cd "${srcdir}/vapoursynth-${pkgver}"
