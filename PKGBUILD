@@ -2,8 +2,8 @@
 
 pkgname=python-luna-soc
 _gitpkgname=luna-soc
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc='Amaranth HDL libary for building USB-capable SoC designs'
 arch=('any')
 url='https://github.com/greatscottgadgets/luna-soc'
@@ -34,9 +34,7 @@ source=(
   "${_gitpkgname}-${pkgver}.tar.gz::https://github.com/greatscottgadgets/luna-soc/archive/${pkgver}.tar.gz"
 )
 
-sha512sums=(
-  '9e697767365dd022dfb6440e5698c4f06bc01e6e9e5b0fcc4cec372dd065bc53dfec3c5369884b8897275fc54f00c49858f491390fb1054361f95c03051112e9'
-)
+sha512sums=('544f95acb79598806e460852b6311a49e789d165bf56dddaff209f202412dae6d0de92d18e840fb903164b967307be380d112bfab3dedd185cbfb581775bd696')
 
 prepare() {
   cd "${_gitpkgname}-${pkgver}"
