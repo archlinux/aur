@@ -14,7 +14,7 @@ license=('GPL2')
 groups=('xfce4')
 depends=('exo' 'garcon' 'libxfce4ui' 'xfconf' 'libwnck3' 'libdbusmenu-gtk3'
          'hicolor-icon-theme' 'desktop-file-utils')
-makedepends=('intltool' 'gobject-introspection' 'vala' 'xfce4-dev-tools')
+makedepends=('intltool' 'gobject-introspection' 'vala' 'xfce4-dev-tools' 'glib2-devel')
 provides=("$_realname=$pkgver")
 conflicts=("$_realname")
 source=("https://archive.xfce.org/src/xfce/$_realname/${pkgver%.*}/$_realname-$pkgver.tar.bz2"

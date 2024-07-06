@@ -11,6 +11,7 @@ pkgbase = xfce4-panel-compiz
 	makedepends = gobject-introspection
 	makedepends = vala
 	makedepends = xfce4-dev-tools
+	makedepends = glib2-devel
 	depends = exo
 	depends = garcon
 	depends = libxfce4ui
