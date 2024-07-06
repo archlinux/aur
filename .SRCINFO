@@ -1,18 +1,18 @@
 pkgbase = android-armv7a-eabi-vapoursynth
 	pkgdesc = A video processing framework with simplicity in mind (Android armv7a-eabi)
-	pkgver = R68
+	pkgver = R69
 	pkgrel = 1
 	url = http://www.vapoursynth.com/
 	arch = any
 	license = LGPL2.1
 	license = custom:OFL
 	makedepends = android-configure
-	depends = zimg
+	depends = android-armv7a-eabi-zimg
 	options = !strip
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/vapoursynth/vapoursynth/archive/refs/tags/R68.tar.gz
-	md5sums = ac6e8ea4f92d86ae76e269c66f882773
+	source = https://github.com/vapoursynth/vapoursynth/archive/refs/tags/R69.tar.gz
+	md5sums = 87c61e60a1c3f23796121c635e472638
 
 pkgname = android-armv7a-eabi-vapoursynth
