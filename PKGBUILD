@@ -1,4 +1,5 @@
 # Maintainer: Eric Torres <eric.torres@its-et.me>
+# Contributor: Michael Gebetsroither <m.gebetsr@gmail.com>
 pkgbase=regclient
 pkgname=(
   regclient-regctl
