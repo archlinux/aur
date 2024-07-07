@@ -2,8 +2,9 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=tree-sitter-cpp
-pkgver=0.22.0
-pkgrel=3
+pkgver=0.22.2
+pkgrel=0
+dep_c_ver=0.21.4
 pkgdesc="C++ grammar for tree-sitter"
 arch=('x86_64')
 url="https://github.com/tree-sitter/tree-sitter-cpp"
@@ -12,13 +13,13 @@ groups=('tree-sitter-grammars')
 depends=('gcc-libs')
 makedepends=('tree-sitter' 'tree-sitter-cli')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-       "tree-sitter-c-0.21.0.tar.gz::https://github.com/tree-sitter/tree-sitter-c/archive/refs/tags/v0.21.0.tar.gz")
-sha256sums=('f04d2f8cf2a5d22e5f819dbd49cdb6fc25b531debff464abfe0cab742c1148a5'
-           '6f0f5d1b71cf8ffd8a37fb638c6022fa1245bd630150b538547d52128ce0ea7e')
+       "tree-sitter-c-$dep_c_ver.tar.gz::https://github.com/tree-sitter/tree-sitter-c/archive/refs/tags/v$dep_c_ver.tar.gz")
+sha256sums=('9f8bdf286358ee513553bb97eae0234a85e4e1fc08eb6c0427d0db46631fd91a'
+           '19194c47a6faf81509aea338b96dd9b59ffd8a7f26bce6487cf4275065433870')
 
 prepare() {
 	mkdir -p "$pkgname-$pkgver"/node_modules
-        mv tree-sitter-c-0.21.0 tree-sitter-c
+        mv tree-sitter-c-$dep_c_ver tree-sitter-c
         mv tree-sitter-c "$pkgname-$pkgver"/node_modules/
 	cd "$pkgname-$pkgver"
 	tree-sitter generate
