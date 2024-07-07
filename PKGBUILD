@@ -2,7 +2,7 @@
 pkgname=traefik-certificate-manager
 pkgver=0.0.1
 pkgrel=1
-pkgdesc="a command-line tool for managing Traefik\'s acme.json configuration file"
+pkgdesc="A command-line tool for managing Traefik's acme.json configuration file"
 arch=('x86_64' 'aarch64')
 url="https://github.com/CastawayEGR/traefik-certificate-manager"
 license=('MIT')

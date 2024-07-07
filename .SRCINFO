@@ -1,5 +1,5 @@
 pkgbase = traefik-certificate-manager
-	pkgdesc = a command-line tool for managing Traefik\'s acme.json configuration file
+	pkgdesc = A command-line tool for managing Traefik's acme.json configuration file
 	pkgver = 0.0.1
 	pkgrel = 1
 	url = https://github.com/CastawayEGR/traefik-certificate-manager
