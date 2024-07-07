@@ -1,6 +1,6 @@
 # Maintainer: Lonny Wong <lonnywong@qq.com>
 pkgname="tssh"
-pkgver="0.1.20"
+pkgver="0.1.21"
 pkgrel=1
 epoch=0
 pkgdesc="Simple ssh client with trzsz ( trz / tsz ) support."
@@ -9,7 +9,7 @@ url="https://trzsz.github.io/ssh"
 license=("MIT")
 groups=()
 depends=()
-makedepends=("go>=1.20.3")
+makedepends=("go>=1.21.11")
 checkdepends=()
 optdepends=()
 provides=("tssh")
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/trzsz/trzsz-ssh/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
-md5sums=('38c9d8a4678e50cfed53ef9df7fa060d')
+md5sums=('692fa6f7e9c84a0c84c451c3ea6b3161')
 validpgpkeys=()
 
 build() {
