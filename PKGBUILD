@@ -11,7 +11,7 @@ pkgname=(
   "${_name}-sycl-f32-git"
   "${_name}-vulkan-git"
 )
-pkgver=b2698
+pkgver=b3334.r3.a8db2a9ce
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++"
 arch=('armv7h' 'aarch64' 'x86_64')
@@ -62,45 +62,44 @@ build() {
     -S .
     -DCMAKE_INSTALL_PREFIX=/usr
     -DCMAKE_BUILD_TYPE=Release
-    -DLLAMA_MPI=OFF
   )
 
   local _cmake_clblas_args=(
     "${_cmake_args[@]}"
-    -DLLAMA_CLBLAST=ON
+    -DGGML_CLBLAST=ON
   )
 
   local _cmake_cublas_args=(
     "${_cmake_args[@]}"
-    -DLLAMA_CUDA=ON
+    -DGGML_CUDA=ON
   )
 
   local _cmake_hipblas_args=(
     "${_cmake_args[@]}"
-    -DLLAMA_HIPBLAS=ON
+    -DGGML_HIPBLAS=ON
   )
 
   local _cmake_openblas_args=(
     "${_cmake_args[@]}"
-    -DLLAMA_BLAS=ON
-    -DLLAMA_BLAS_VENDOR=OpenBLAS
+    -DGGML_BLAS=ON
+    -DGGML_BLAS_VENDOR=OpenBLAS
   )
 
   local _cmake_sycl_32_args=(
     "${_cmake_args[@]}"
     -DCMAKE_C_COMPILER=icx
     -DCMAKE_CXX_COMPILER=icpx
-    -DLLAMA_SYCL=ON
+    -DGGML_SYCL=ON
   )
 
   local _cmake_sycl_16_args=(
     "${_cmake_sycl_32_args[@]}"
-    -DLLAMA_SYCL_F16=ON
+    -DGGML_SYCL_F16=ON
   )
 
   local _cmake_vulkan_args=(
     "${_cmake_args[@]}"
-    -DLLAMA_VULKAN=ON
+    -DGGML_VULKAN=ON
   )
 
   echo "Build ${pkgbase} with OPENBlas"
