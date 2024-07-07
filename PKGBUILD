@@ -1,7 +1,7 @@
 # Maintainer: Mckol <mckol363@gmail.com>
 
 pkgname=veloren-bin
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="The last stable release of an open-world, open-source multiplayer voxel RPG"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
     'server-cli-wrapper.sh'
 )
 noextract=('voxygen-wrapper.sh' 'server-cli-wrapper.sh')
-sha512sums=('1dd2741f471c4d29118d22ac33bd4ffc303917d1225acbf2b47909e835f2b3981a4fb73954933ee32ce8f2fdb2f1a525bcd1ae37219760a4a66591bc03a02715'
+sha512sums=('8a3648721ac969bfedd371546c8ecba7527cb2ece434273045f29abd55fd236da094611db97637a2094d6a3f83f18322ecd460bd9b7916a3446238211b0ffa63'
             'e35c852bfa8d80a78a4df50c09246e69431efe9ebc208bd3c2a864e7674ee1078ab0d2eb2b2ffc1b67847ab7125a38dd260d8964054f55cdf0305248ece9a11c'
             'a1ec4d3590af0f07be59c22de3de9402e7ed20eff7fb2b086773f04e8019a607a843a9ba0cf59df48431a5d9a3eb1d0c79272dced9a812c11ae7ed52e41bb0d2')
 
