@@ -2,12 +2,12 @@
 pkgname=totk-mod-manager-bin
 _pkgname=totk-mod-manager
 pkgver=0.9.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Open-source application, designed to assist players of Zelda: Tears of the Kingdom on the Yuzu emulator in managing mods for the game"
 arch=(x86_64)
 url="https://github.com/vasilvestre/totk-mod-manager-for-switch-emulators"
 license=('BSD-3-Clause')
-depends=(openssl-1.1)
+depends=(openssl-1.1 webkit2gtk)
 options=(!strip)
 provides=("totk-mod-manager")
 replaces=("totk-mod-manager" "totk-mod-manager-git")
