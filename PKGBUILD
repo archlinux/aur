@@ -2,7 +2,7 @@
 
 pkgbase=dxvk-git
 pkgname=('dxvk-mingw-git')
-pkgver=2.3.r11.ge00db245
+pkgver=2.3.1.r120.gfe9c875f
 pkgrel=1
 pkgdesc="A Vulkan-based compatibility layer for Direct3D 9/10/11 which allows running 3D applications on Linux using Wine. Windows DLL version)"
 arch=('x86_64')
@@ -24,7 +24,7 @@ sha256sums=("SKIP"
 "SKIP"
 "SKIP"
 "SKIP"
-"0f688815530ab5e8cc89b9b45d9b1d66cd8cd5a7770fb8249339af555a30dfe7"
+"778ec44acc09ac9c718354c9a96776b60bd4156dacf584e5c29b2c9697c76684"
 )
 
 
@@ -44,7 +44,7 @@ prepare() {
 }
 
 build() {
-    meson dxvk "build/x64" \
+    meson setup dxvk "build/x64" \
         --cross-file dxvk/build-win64.txt \
         --prefix "/usr/share/dxvk/x64" \
         --bindir "" --libdir "" \
@@ -52,7 +52,7 @@ build() {
         --strip
     ninja -C "build/x64"
 
-    meson dxvk "build/x32" \
+    meson setup dxvk "build/x32" \
         --cross-file dxvk/build-win32.txt \
         --prefix "/usr/share/dxvk/x32" \
         --bindir "" --libdir "" \
