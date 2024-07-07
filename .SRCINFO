@@ -1,0 +1,16 @@
+pkgbase = tran-git
+	pkgdesc = Securely transfer and send anything between computers with TUI
+	pkgver = 0.1.43.r116.g67eb418
+	pkgrel = 1
+	url = https://github.com/abdfnx/tran
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = tran=0.1.43
+	conflicts = tran
+	source = tran::git+https://github.com/abdfnx/tran.git
+	sha256sums = SKIP
+
+pkgname = tran-git
