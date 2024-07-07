@@ -1,0 +1,13 @@
+pkgbase = schildichat-web-bin
+	pkgdesc = SchildiChat is a Matrix client based on Element with a more traditional instant messaging experience.
+	pkgver = 1.11.36.sc.3
+	pkgrel = 1
+	url = https://schildi.chat
+	arch = x86_64
+	license = Apache
+	provides = schildichat-web
+	conflicts = schildichat-web
+	source = https://github.com/SchildiChat/schildichat-desktop/releases/download/v1.11.36-sc.3/schildichat-web-1.11.36-sc.3.tar.gz
+	sha256sums = f675038cf3bc2c0caa73b099bcb4cbad12a648f747d443a1dbb28f4446f3200d
+
+pkgname = schildichat-web-bin
