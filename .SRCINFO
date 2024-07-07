@@ -1,13 +1,13 @@
 pkgbase = twad-git
 	pkgdesc = Manage DOOM engines and mods with the terminal wad launcher
-	pkgver = 0.22.1.3
+	pkgver = v0.23.0.r0.g789baaf
 	pkgrel = 1
 	url = https://github.com/zmnpl/twad
 	arch = any
 	license = MIT
 	makedepends = go
 	makedepends = git
-	source = git+https://github.com/zmnpl/twad.git
+	source = git+https://github.com/zmnpl/twad.git#branch=rc
 	sha256sums = SKIP
 
 pkgname = twad-git
