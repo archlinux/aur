@@ -16,14 +16,14 @@ source=("$pkgname-$_pkgver.tar.gz::$url/archive/$_pkgver.tar.gz")
 sha256sums=('c848930afd1c25ebc5f6e16c6780688ac984918089b91017797fe45ea06f6013')
 
 prepare() {
-   cd "$pkgname-$_pkgver"
+   cd "Vimix-icon-theme-$_pkgver"
 
   # Disable running gtk-update-icon-cache
   sed -i '/gtk-update-icon-cache/d' install.sh
 }
 
 package() {
-  cd "$pkgname-$_pkgver"
+  cd "Vimix-icon-theme-$_pkgver"
   install -d "$pkgdir/usr/share/icons"
   ./install.sh -a -d "$pkgdir/usr/share/icons"
 
