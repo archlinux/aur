@@ -19,7 +19,7 @@
 _phpbase="81"
 _suffix=""
 pkgver="8.1.29"
-pkgrel="1"
+pkgrel="2"
 pkgbase="php81"
 pkgdesc="PHP 8.1.29 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1 "
@@ -74,8 +74,6 @@ pkgname=(
     "php81-embed"
     "php81-apache"
     "php81-litespeed"
-    "php81-pear"
-    "php81-pecl"
     "php81-phpdbg"
     "php81-xml"
     "php81-xsl"
@@ -129,11 +127,10 @@ pkgname=(
 )
 source=(
     "make-tests.patch"
-    "pear-config-patcher.php"
     "php-makefile-patcher.php"
     "php-apache.conf"
     "https://php.net/distributions/php-${pkgver}.tar.xz"
-    "libxml-21200-php-8.1.patch"
+    "libxml-21200-php-8.0.patch"
     "debian-php-8.1.patch"
     "php-phpinfo.patch"
     "timezonedb-guess.patch"
@@ -201,7 +198,7 @@ makedepends=(
 arch=(
 )
 _patches=(
-    "libxml-21200-php-8.1.patch"
+    "libxml-21200-php-8.0.patch"
     "debian-php-8.1.patch"
     "php-phpinfo.patch"
     "timezonedb-guess.patch"
@@ -291,7 +288,6 @@ _phpconfig="\
     --program-suffix=${_phpbase}${_suffix} \
     --with-config-file-scan-dir=/${_build_conf_d} \
     --enable-filter \
-    --with-pear \
     --enable-session \
     --with-mhash=/usr \
     --with-kerberos \
@@ -986,86 +982,6 @@ package_php81-litespeed() {
 # litespeed sapi end
 
 ###############################################################################
-# PEAR + PECL
-###############################################################################
-
-# PEAR
-package_php81-pear() {
-    pkgdesc="PHP Extension and Application Repository (PEAR) for ${pkgbase}"
-    depends=(
-        "${pkgbase}=${pkgver}"
-        "php${_phpbase}-xml${_suffix}=${pkgver}"
-        "php${_phpbase}-cli${_suffix}=${pkgver}"
-        "php${_phpbase}-phar${_suffix}=${pkgver}"
-    )
-    #backup=("${_build_sapi_ini_cli}/pear.conf")
-    install -d "${pkgdir}/usr/share/${pkgbase}/pear/htdocs"
-    install -d "${pkgdir}/usr/share/${pkgbase}/pear/data"
-    install -d "${pkgdir}/usr/share/${pkgbase}/pear/doc"
-    install -d "${pkgdir}/usr/share/${pkgbase}/pear/test"
-    install -d "${pkgdir}/usr/share/${pkgbase}/pear/cfg"
-    install -d "${pkgdir}/var/lib/${pkgbase}/pear/cache"
-    install -d "${pkgdir}/var/lib/${pkgbase}/pear/metadata"
-    install -d "${pkgdir}/var/lib/${pkgbase}/pear/download"
-    install -d "${pkgdir}/var/lib/${pkgbase}/pear/temp"
-    export PHP_PEAR_SYSCONF_DIR="${_build_sapi_ini_cli}"
-    pushd build-cli
-
-    cp "${srcdir}/php-${pkgver}/pear/install-pear-nozlib.phar" "pear/install-pear-nozlib.phar"
-
-    INSTALL_ROOT="${pkgdir}/" ./sapi/cli/php -n \
-        -d extension=modules/xml.so \
-        -d extension=modules/phar.so \
-        -d date.timezone=UTC -d memory_limit=64M -d short_open_tag=0 -d safe_mode=0 \
-        -d 'error_reporting=E_ALL&~E_DEPRECATED' -d detect_unicode=0 "pear/install-pear-nozlib.phar" \
-        -ds       "${_phpbase}${_suffix}" \
-        --php      "/usr/bin/${pkgbase}" \
-        --bin      "/usr/bin" \
-        --man      "/usr/share/man" \
-        --dir      "/usr/share/${pkgbase}/pear" \
-        --data     "/usr/share/${pkgbase}/pear/data" \
-        --doc      "/usr/share/${pkgbase}/pear/doc" \
-        --test     "/usr/share/${pkgbase}/pear/test" \
-        --www      "/usr/share/${pkgbase}/pear/htdocs" \
-        --config   "/usr/share/${pkgbase}/pear/cfg" \
-        --force
-    # fix pear.conf with unserialize
-    # first arg: path to pear.conf
-    # second arg: PEAR base /var path
-    ./sapi/cli/php -n ../pear-config-patcher.php \
-        "${pkgdir}/${_build_sapi_ini_cli}/pear.conf" \
-        "/var/lib/${pkgbase}/pear"
-    popd
-    # remove unneeded files
-    rm -rf "${pkgdir}"/.{channels,depdb,depdblock,filemap,lock,registry}
-    #rename binaries
-    for i in pear peardev pecl; do
-        _target="${pkgbase/php/$i}"
-        # fix hardcoded paths
-        sed "s|PHP=php|PHP=\"/usr/bin/${pkgbase}\"|g; s|\"/usr/bin/php\"|\"/usr/bin/${pkgbase}\"|g; s| -n | |g" \
-            -i "${pkgdir}/usr/bin/${i}"
-        if [[ "$i" == "pecl" ]]; then
-            echo "Moving ${pkgdir}/usr/bin/${i} => ${srcdir}/${pkgbase}-pecl-bin/"
-            mkdir -p "${srcdir}/${pkgbase}-pecl-bin/"
-            mv "${pkgdir}/usr/bin/pecl" "${srcdir}/${pkgbase}-pecl-bin/"
-        else
-            echo "Moving ${pkgdir}/usr/bin/${i} => ${pkgdir}/usr/bin/${_target}"
-            mv "${pkgdir}/usr/bin/${i}" "${pkgdir}/usr/bin/${_target}"
-        fi
-    done
-}
-# PEAR end
-
-# PECL
-package_php81-pecl() {
-    pkgdesc="PHP Extension Community Library (PECL) for ${pkgbase}"
-    depends=("php${_phpbase}-pear${_suffix}=${pkgver}")
-    _target="${pkgbase/php/pecl}"
-    install -D -m755 "${srcdir}/${pkgbase}-pecl-bin/pecl" "${pkgdir}/usr/bin/${_target}"
-}
-# PECL end
-
-###############################################################################
 # PHP Modules: First need
 ###############################################################################
 
@@ -1530,7 +1446,6 @@ package_php81-readline() {
 
 
 sha256sums=('e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b'
-            '0b7e98dca9c996ec10cb9b3f6296bb7547c68797fd5f35006fdfd3e97700672d'
             'ba72fc64f77822755a469314160d5889d5298f4eb5758dd7939dac9b811afe52'
             '6d0ad9becb5470ce8e5929d7d45660b0f32579038978496317544c5310281a91'
             '288884af60581d4284baba2ace9ca6d646f72facbd3e3c2dd2acc7fe6f903536'
