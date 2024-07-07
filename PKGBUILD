@@ -2,7 +2,7 @@
 
 pkgname=twad-git
 _pkgname=twad
-pkgver=v0.25.0
+pkgver=v0.26.0
 pkgrel=1
 pkgdesc='Manage DOOM engines and mods with the terminal wad launcher'
 arch=('any')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 pgkver() {
 	cd "${srcdir}"/${_pkgname}
 	#git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-  echo "v0.24.0"
+  echo "v0.26.0"
 }
 
 build() {

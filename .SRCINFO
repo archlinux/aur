@@ -1,6 +1,6 @@
 pkgbase = twad-git
 	pkgdesc = Manage DOOM engines and mods with the terminal wad launcher
-	pkgver = v0.25.0
+	pkgver = v0.26.0
 	pkgrel = 1
 	url = https://github.com/zmnpl/twad
 	arch = any
