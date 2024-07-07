@@ -3,12 +3,12 @@
 # Contributer: Paul <paul@mrarm.io>
 
 pkgname=mcpelauncher-linux
-pkgver=0.15.0
+pkgver=0.15.2
 pkgrel=1
 pkgdesc="Minecraft: Pocket Edition launcher for Linux"
 arch=('x86_64' 'i686')
 url="https://github.com/minecraft-linux/mcpelauncher-manifest"
-license=('GPL-3.0-only' 'custom')
+license=('GPL-3.0-only')
 makedepends_x86_64=('git' 'cmake' 'clang')
 depends_x86_64=('curl' 'libx11' 'zlib' 'libpng' 'libevdev' 'systemd' 'libxi' 'libegl' 'qt6-base' 'qt6-declarative' 'qt6-webengine' 'libuv')
 optdepends=('mcpelauncher-ui: GUI for Launcher')
@@ -51,7 +51,7 @@ source=(
   'git+https://github.com/minecraft-linux/android_core'
 )
 
-sha256sums=('3c92cefe081b7e2ba397f58fd52f538a880bdc7b4fb7144a60b7e610ba016e1c'
+sha256sums=('fed47a34e8847cfdf84d96bea01e34882f5e9285b5e4ee2c627f819dcded327f'
             'SKIP'
             'SKIP'
             'SKIP'
