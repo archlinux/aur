@@ -1,7 +1,7 @@
 pkgbase = android-aarch64-libsodium
 	pkgdesc = P(ortable|ackageable) NaCl-based crypto library (Android aarch64)
-	pkgver = 1.0.19
-	pkgrel = 2
+	pkgver = 1.0.20
+	pkgrel = 1
 	url = https://github.com/jedisct1/libsodium
 	arch = any
 	license = custom:ISC
@@ -11,7 +11,7 @@ pkgbase = android-aarch64-libsodium
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/jedisct1/libsodium/releases/download/1.0.19-RELEASE/libsodium-1.0.19.tar.gz
-	md5sums = 0d8e2233fc41be6d4c7ee36d5dfe9416
+	source = https://github.com/jedisct1/libsodium/releases/download/1.0.20-RELEASE/libsodium-1.0.20.tar.gz
+	md5sums = 597f2c7811f84e63e45e2277dfb5da46
 
 pkgname = android-aarch64-libsodium
