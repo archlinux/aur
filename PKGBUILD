@@ -9,6 +9,8 @@ arch=("any")
 url="https://github.com/Dyredhead/sapm"
 license=("MIT")
 makedepends=("git" "cargo")
+provides=("$_pkgname")
+conflicts=("$_pkgname" "${_pkgname}-bin")
 source=("git+https://github.com/Dyredhead/${_pkgname}.git")
 sha256sums=("SKIP")
 
