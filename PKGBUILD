@@ -57,6 +57,7 @@ check() {
   ./odin check examples/all -strict-style
 
   #./odin test tests/core/normal.odin -file -all-packages # I have to fix this because it's failing on the network test
+  python tests/core/download_assets.py tests/core/assets # temp fix 
   ./odin test tests/core/speed.odin -o:speed -file -all-packages
   ./odin test tests/vendor -all-packages
   ./odin test tests/internal -all-packages
