@@ -8,7 +8,7 @@ pkgbase = regclient
 	license = Apache
 	makedepends = go
 	makedepends = git
-	source = https://github.com/regclient/regclient/archive/v0.4.7/regclient-0.4.7.tar.gz
+	source = https://github.com/regclient/regclient/archive/v0.6.1/regclient-0.6.1.tar.gz
 	sha256sums = f2a87fb940f212d94547f4241d11f3392a0b3c13d5b7bc4584780d8aa80716ae
 
 pkgname = regclient-regctl
