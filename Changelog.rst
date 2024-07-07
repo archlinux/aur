@@ -1,6 +1,12 @@
 Changelog
 =========
 
+**[5.8.1] ----- 2024-07-07** ::
+
+	    Typo in version string
+	    update Docs/Changelog.rst Docs/wg-client.pdf
+
+
 **[5.7.0] ----- 2024-07-06** ::
 
 	    --status as root now displays ssh/resolv for other users if active
