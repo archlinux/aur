@@ -1,0 +1,48 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -78,8 +78,6 @@
+ AC_PROG_CC
+ AC_PROG_INSTALL
+ AC_PROG_CPP
+-AC_PATH_PROG(XMLLINT, xmllint, /usr/bin/xmllint)
+-AC_PATH_PROG(XSLTPROC, xsltproc, /usr/bin/xsltproc)
+ PKG_PROG_PKG_CONFIG
+ 
+ LT_INIT([disable-static win32-dll])
+@@ -554,20 +552,9 @@
+ libxslt/xsltconfig.h
+ libexslt/Makefile
+ libexslt/exsltconfig.h
+-xsltproc/Makefile
+ python/Makefile
+ python/setup.py
+ python/tests/Makefile
+-tests/Makefile
+-tests/xmlspec/Makefile
+-tests/multiple/Makefile
+-tests/xinclude/Makefile
+-tests/XSLTMark/Makefile
+-tests/docbook/Makefile
+-tests/fuzz/Makefile
+-doc/Makefile
+-doc/devhelp/Makefile
+-doc/EXSLT/devhelp/Makefile
+ libxslt.spec
+ ])
+ AC_CONFIG_FILES([xslt-config], [chmod +x xslt-config])
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,11 +1,11 @@
+ ACLOCAL_AMFLAGS = -I m4
+ 
+-SUBDIRS = libxslt libexslt xsltproc doc tests
++SUBDIRS = libxslt libexslt
+ if WITH_PYTHON
+ SUBDIRS += python
+ endif
+ 
+-DIST_SUBDIRS = libxslt libexslt xsltproc python doc tests
++DIST_SUBDIRS = libxslt libexslt python
+ 
+ confexecdir=$(libdir)
+ confexec_DATA = xsltConf.sh
