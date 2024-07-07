@@ -6,8 +6,8 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-libsodium
-pkgver=1.0.19
-pkgrel=2
+pkgver=1.0.20
+pkgrel=1
 arch=('any')
 pkgdesc="P(ortable|ackageable) NaCl-based crypto library (Android ${_android_arch})"
 url="https://github.com/jedisct1/libsodium"
@@ -15,11 +15,11 @@ license=('custom:ISC')
 depends=('android-ndk')
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://github.com/jedisct1/libsodium/releases/download/1.0.19-RELEASE/libsodium-${pkgver}.tar.gz")
-md5sums=('0d8e2233fc41be6d4c7ee36d5dfe9416')
+source=("https://github.com/jedisct1/libsodium/releases/download/${pkgver}-RELEASE/libsodium-${pkgver}.tar.gz")
+md5sums=('597f2c7811f84e63e45e2277dfb5da46')
 
 build() {
-    cd "${srcdir}/libsodium-stable"
+    cd "${srcdir}/libsodium-${pkgver}"
     source android-env ${_android_arch}
 
     # Platform specific patches
@@ -36,10 +36,10 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/libsodium-stable"
+    cd "${srcdir}/libsodium-${pkgver}"
     source android-env ${_android_arch}
 
     make DESTDIR="$pkgdir" install
-    ${ANDROID_STRIP} -g "$pkgdir/${ANDROID_PREFIX_LIB}"/*.a
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
 }
