@@ -1,8 +1,8 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 _name=pycddl
 pkgname=python-$_name
-pkgver=0.6.1
-pkgrel=3
+pkgver=0.6.2
+pkgrel=1
 pkgdesc="Deserialize CBOR and/or do CDDL schema validation"
 license=('MIT')
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://pypi.org/project/pycddl/"
 depends=('gcc-libs' 'glibc' 'python')
 makedepends=('python-maturin' 'python-build' 'python-installer')
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz) 
-sha512sums=('63e2f26347092b3f3fab9e46cca7c1a1716cfc8e6c3820d5aba942ba96ad22a1a3bff3e7ed6b6dcbb84b388a07ad82aad4849c45687003f6b11454ceae890458')
+sha512sums=('1026356558a49469c5b687302ff6670f84d86b8ff5b462cbab52f0645169bef0749532aa382c0afcb3dba9e65271f52d2bd5198aa13ae01b9026bdd04420d973')
 
 build() {
   cd "$srcdir/$_name-$pkgver"
