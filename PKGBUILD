@@ -34,7 +34,7 @@ package() {
 
   install -Dm644 License "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
-  install -Dm644 "$pkgdir"/usr/share/lmod/$pkgver/share/man/cat1/module.1 "$pkgdir"/usr/share/man/man1/module.1
+  install -Dm644 "$pkgdir"/usr/share/lmod/$pkgver/share/man/man1/module.1 "$pkgdir"/usr/share/man/man1/module.1
   rm -r "$pkgdir"/usr/share/lmod/$pkgver/share
 
   install -d "$pkgdir"/etc/profile.d
