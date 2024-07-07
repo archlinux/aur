@@ -1,7 +1,7 @@
 pkgbase = ffmpeg6.1
 	pkgdesc = Complete solution to record, convert and stream audio and video (legacy v6.1)
 	pkgver = 6.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ffmpeg.org
 	arch = x86_64
 	license = GPL-3.0-only
