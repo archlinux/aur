@@ -14,9 +14,11 @@ url='https://www.terabox.com/chinese/'
 
 depends=(
     'gtkmm3'
-    'nitrogen'
 )
-#'libappindicator-gtk3'
+
+optdepends=(
+    'libappindicator-gtk3'
+)
 
 # DEB package
 source=("https://data.nephobox.com/issue/terabox/Linux/${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
