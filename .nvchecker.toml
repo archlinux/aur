@@ -1,0 +1,3 @@
+[minitube]
+source = "git"
+git = "https://github.com/flaviotordini/minitube.git"
