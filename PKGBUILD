@@ -4,10 +4,10 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-openldap
-pkgver=2.6.7
-pkgrel=2
+pkgver=2.6.8
+pkgrel=1
 arch=('any')
-pkgdesc="Lightweight Directory Access Protocol (LDAP) (Android, ${_android_arch})"
+pkgdesc="Lightweight Directory Access Protocol (LDAP) (Android ${_android_arch})"
 url="https://www.openldap.org/"
 license=('custom')
 groups=('android-openldap-bootstrap')
@@ -21,11 +21,11 @@ makedepends=('android-configure'
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-${pkgver}.tgz"
         '0001-Add-missing-headers.patch')
-sha256sums=('cd775f625c944ed78a3da18a03b03b08eea73c8aabc97b41bb336e9a10954930'
+sha256sums=('48969323e94e3be3b03c6a132942dcba7ef8d545f2ad35401709019f696c3c4e'
             '0d8f2c1011678df0e42e9691ab66565ae1b45c9b97018a6069d57665392e2b0c')
 
 prepare() {
-    cd "${srcdir}/openldap-$pkgver"
+    cd "${srcdir}/openldap-${pkgver}"
     source android-env ${_android_arch}
 
     patch -Np1 -i ../0001-Add-missing-headers.patch
@@ -34,16 +34,12 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}/openldap-$pkgver"
+    cd "${srcdir}/openldap-${pkgver}"
     source android-env ${_android_arch}
 
     export CFLAGS="${CFLAGS} -DMDB_USE_ROBUST=0"
     export CXXFLAGS="${CXXFLAGS} -DMDB_USE_ROBUST=0"
     export CPPFLAGS="${CXXFLAGS}"
-    export AR=${ANDROID_AR}
-    export STRIP=${ANDROID_STRIP}
-    export OBJDUMP=${ANDROID_OBJDUMP}
-    export RANLIB=${ANDROID_RANLIB}
 
     android-${_android_arch}-configure \
         --libexecdir="${ANDROID_PREFIX_LIB}" \
@@ -62,12 +58,12 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/openldap-$pkgver"
+    cd "${srcdir}/openldap-${pkgver}"
     source android-env ${_android_arch}
 
-    make DESTDIR="$pkgdir" install
-    rm -rf "${pkgdir}"/${ANDROID_PREFIX_BIN}
-    rm -rf "${pkgdir}"/${ANDROID_PREFIX_SHARE}
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    make DESTDIR="${pkgdir}" install
+    rm -rf "${pkgdir}/${ANDROID_PREFIX_BIN}"
+    rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
