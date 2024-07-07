@@ -1,7 +1,7 @@
 # Maintainer: Santiago Burgos <santiago.burgos1089@gmail.com>
 
 pkgname=mintstick
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="A graphical tool that allows you to format USB sticks and create bootable USB sticks."
 arch=('any')
@@ -9,7 +9,6 @@ url="http://packages.linuxmint.com/pool/main/m/${pkgname}"
 license=(GPL)
 depends=(
     'coreutils'
-    'dbus-python'
     'desktop-file-utils'
     'dosfstools'
     'e2fsprogs'
@@ -21,6 +20,7 @@ depends=(
     'polkit'
     'procps-ng'
     'python'
+    'python-dbus'
     'python-gobject'
     'python-pyparted'
     'python-xapp'
@@ -36,7 +36,7 @@ conflicts=(
     'mintstick-git'
 )
 source=("${pkgname}-${pkgver}.tar.xz::${url}/${pkgname}_${pkgver}.tar.xz")
-sha256sums=('5db03a3a8b925b42d93a6dd1a3ae0149b15fc1f80b53a6ab42f8dc8a7adbf609')
+sha256sums=('19f18a13c136fc01cae0d276de6aac634c91bcde4edb165f7252e68f973ca798')
 
 package() {
     cd "$pkgname"
