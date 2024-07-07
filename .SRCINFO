@@ -1,6 +1,6 @@
 pkgbase = r-knitr
 	pkgdesc = A General-Purpose Package for Dynamic Report Generation in R
-	pkgver = 1.47
+	pkgver = 1.48
 	pkgrel = 1
 	url = https://cran.r-project.org/package=knitr
 	arch = any
@@ -39,8 +39,8 @@ pkgbase = r-knitr
 	optdepends = r-tikzdevice
 	optdepends = r-tinytex
 	optdepends = r-webshot
-	source = https://cran.r-project.org/src/contrib/knitr_1.47.tar.gz
-	md5sums = de57dc1e840f9dd138b6a73869e3de8e
-	b2sums = 9e56f15d2a5cc92d29092150c7626f6b6cdb15ab4b037b059aaf413505a670990119e1947be189f69f338c005ad15fab9e0b094010c9a2b5ef8eb01c89c1efae
+	source = https://cran.r-project.org/src/contrib/knitr_1.48.tar.gz
+	md5sums = 230565deedd16f98e50aea9bb083abe6
+	b2sums = b480acb9dff1029eaca5534ad1868158bf7bd0a5ba892ecdf9f9e669cdb42c6f0d611ee892c285a92cbf56aebc1fb511e1cd2659e0af4e413551454d7e785b17
 
 pkgname = r-knitr
