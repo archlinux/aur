@@ -1,8 +1,8 @@
 # Maintainer: Billy Yang <me@venti.love>
 _name=mcdreforged
 pkgname=python-${_name}
-pkgver=2.12.3
-pkgrel=2
+pkgver=2.13.0
+pkgrel=1
 pkgdesc="A rewritten version of MCDaemon, a python script to control your Minecraft server"
 arch=(any)
 url="https://github.com/Fallen-Breath/MCDReforged"
@@ -13,7 +13,7 @@ optdepends=('java-runtime: start Minecraft server')
 options=()
 install=
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
-sha256sums=('e963a5bb9bd34927fa2a1c3e2eea42166fa567ed352026c8d7c0a652896d9a37')
+sha256sums=('3ba276454939461f0a792d1c1dde2d4d744f49cf8d07171ed32285f67fd5584e')
 
 build() {
   cd "${_name}-${pkgver}"
