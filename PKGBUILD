@@ -1,7 +1,7 @@
 # Maintainer: Aleksey Maximov <amaxcz@gmail.com>
 
 pkgname=anthropic-claude-nativefier
-pkgver=1.0.5
+pkgver=1.0.10
 pkgrel=1
 pkgdesc="Anthropic Claude desktop app (electron)"
 arch=("armv7l" "i686" "x86_64")
@@ -26,7 +26,7 @@ build() {
     --browserwindow-options '{ "webPreferences": { "spellcheck": true } }' \
     --verbose \
     --single-instance \
-    --electron-version 30.0.6 \
+    --electron-version 31.1.0 \
     --honest \
     "${url}"
 
