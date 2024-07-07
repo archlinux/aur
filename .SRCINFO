@@ -1,6 +1,6 @@
 pkgbase = android-armv7a-eabi-gnutls
 	pkgdesc = A library which provides a secure layer over a reliable transport layer (Android armv7a-eabi)
-	pkgver = 3.8.5
+	pkgver = 3.8.6
 	pkgrel = 1
 	url = https://www.gnutls.org/
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = android-armv7a-eabi-gnutls
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://www.gnupg.org/ftp/gcrypt/gnutls/v3.8/gnutls-3.8.5.tar.xz
-	md5sums = 74b468201ef7e9035f78d44c3f0906c4
+	source = https://www.gnupg.org/ftp/gcrypt/gnutls/v3.8/gnutls-3.8.6.tar.xz
+	md5sums = 29d50ccec120cb486adca2b15b8cdd4b
 
 pkgname = android-armv7a-eabi-gnutls
