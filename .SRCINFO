@@ -1,0 +1,13 @@
+pkgbase = variant
+	pkgdesc = Turn your bash scripts into a modern, single-executable CLI app today
+	pkgver = 0.38.0
+	pkgrel = 1
+	url = https://github.com/mumoshu/variant
+	arch = any
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = variant-0.38.0.tar.gz::https://github.com/mumoshu/variant/archive/refs/tags/v0.38.0.tar.gz
+	sha256sums = 2b512bf12e3e87495a1892e0d64987b550706be833cd164472a51ca17d090f20
+
+pkgname = variant
