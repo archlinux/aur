@@ -7,6 +7,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 # pkgname=librewolf-hg
+pkgname=librewolf-hg
 _pkgname=librewolf-nightly
 __pkgname="Librewolf Nightly"
 pkgver=92.0a1.r655136.a8a4dfcadce5
