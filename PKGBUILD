@@ -2,7 +2,7 @@
 
 pkgname=python-stlib
 _name=${pkgname#python-}
-pkgver=2.0.3
+pkgver=2.1
 pkgrel=1
 pkgdesc="Async library that provides features related to Steam client and compatible stuffs"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ optdepends=('python-stlib-plugins: A set of official plugins for stlib')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'gcc')
 license=('GPL')
 source=("https://github.com/calendulish/$_name/archive/v$pkgver.tar.gz")
-sha256sums=('aaa4f7a50e7cfe84e717b2fd8893515212917d897687f2457f768e323da8f74e')
+sha256sums=('200c5ec3f37ca752f8f96015a1b12703f0f898613617a10681593eed19c3a893')
 
 build() {
     cd "$_name-$pkgver"
