@@ -68,7 +68,17 @@ Index: qt5ct/src/qt5ct/appearancepage.cpp
      if(m_ui->colorSchemeComboBox->count() == 0 ||
              !QFileInfo(m_ui->colorSchemeComboBox->currentData().toString()).isWritable())
      {
-@@ -378,11 +381,23 @@
+@@ -324,8 +327,7 @@
+     m_ui->styleComboBox->setCurrentText(style);
+ 
+     m_ui->customPaletteButton->setChecked(settings.value("custom_palette", false).toBool());
+-    QString colorSchemePath = settings.value("color_scheme_path").toString();
+-    colorSchemePath = Qt5CT::resolvePath(colorSchemePath); //replace environment variables
++    QString colorSchemePath = Qt5CT::resolvePath(settings.value("color_scheme_path").toString()); //replace environment variables
+ 
+     QDir("/").mkpath(Qt5CT::userColorSchemePath());
+     findColorSchemes(Qt5CT::userColorSchemePath());
+@@ -378,11 +380,23 @@
  {
      QDir dir(path);
      dir.setFilter(QDir::Files);
@@ -139,7 +149,17 @@ Index: qt5ct/src/qt5ct-common/qt5ct.cpp
      }
      paths << QLatin1String(QT5CT_DATADIR"/qt5ct/colors");
      paths.removeDuplicates();
-@@ -140,8 +143,15 @@
+@@ -121,6 +124,9 @@
+ 
+ QString Qt5CT::resolvePath(const QString &path)
+ {
++    if(path.isEmpty())
++        return path;
++
+     QString tmp = path;
+     tmp.replace("~", QStandardPaths::writableLocation(QStandardPaths::HomeLocation));
+     if(!tmp.contains("$"))
+@@ -140,8 +146,15 @@
      return tmp;
  }
  
@@ -202,18 +222,17 @@ Index: qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.cpp
  Q_LOGGING_CATEGORY(lqt5ct, "qt5ct", QtWarningMsg)
  
  //QT_QPA_PLATFORMTHEME=qt5ct
-@@ -73,6 +77,10 @@
+@@ -73,6 +77,9 @@
          QMetaObject::invokeMethod(this, "createFSWatcher", Qt::QueuedConnection);
  #endif
          QGuiApplication::setFont(m_generalFont);
 +        //don't override the value explicitly set by the user
-+        if (QQuickStyle::name().isEmpty() || QQuickStyle::name() == QLatin1String("Fusion")) {
++        if(QQuickStyle::name().isEmpty() || QQuickStyle::name() == QLatin1String("Fusion"))
 +            QQuickStyle::setStyle(QLatin1String("org.kde.desktop"));
-+        }
      }
      qCDebug(lqt5ct) << "using qt5ct plugin";
  #ifdef QT_WIDGETS_LIB
-@@ -79,6 +87,7 @@
+@@ -79,6 +86,7 @@
      if(!QStyleFactory::keys().contains("qt5ct-style"))
          qCCritical(lqt5ct) << "unable to find qt5ct proxy style";
  #endif
@@ -221,7 +240,7 @@ Index: qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.cpp
  }
  
  Qt5CTPlatformTheme::~Qt5CTPlatformTheme()
-@@ -185,6 +194,11 @@
+@@ -185,6 +193,11 @@
  }
  #endif
  
@@ -233,16 +252,35 @@ Index: qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.cpp
  void Qt5CTPlatformTheme::applySettings()
  {
      if(!QGuiApplication::desktopSettingsAware() || m_isIgnored)
-@@ -300,6 +314,8 @@
-     {
-         schemePath = Qt5CT::resolvePath(schemePath); //replace environment variables
-         m_palette = new QPalette(Qt5CT::loadColorScheme(schemePath, *QPlatformTheme::palette(SystemPalette)));
-+        if(Qt5CT::isKColorScheme(schemePath))
-+            qApp->setProperty("KDE_COLOR_SCHEME_PATH", schemePath);
-     }
+@@ -245,6 +258,9 @@
+     if(m_palette && m_usePalette)
+         QGuiApplication::setPalette(*m_palette); //apply palette
+ 
++    if(Qt5CT::isKColorScheme(m_schemePath))
++        qApp->setProperty("KDE_COLOR_SCHEME_PATH", m_schemePath);
++
+ #ifdef QT_WIDGETS_LIB
+     if(m_palette && m_usePalette && !m_update)
+         qApp->setPalette(*m_palette);
+@@ -295,12 +311,11 @@
+ 
+     settings.beginGroup("Appearance");
+     m_style = settings.value("style", "Fusion").toString();
+-    QString schemePath = settings.value("color_scheme_path").toString();
+-    if(!schemePath.isEmpty() && settings.value("custom_palette", false).toBool())
+-    {
+-        schemePath = Qt5CT::resolvePath(schemePath); //replace environment variables
+-        m_palette = new QPalette(Qt5CT::loadColorScheme(schemePath, *QPlatformTheme::palette(SystemPalette)));
+-    }
++    m_schemePath = settings.value("custom_palette", false).toBool()
++        ? Qt5CT::resolvePath(settings.value("color_scheme_path").toString()) //replace environment variables
++        : QString();
++    if(!m_schemePath.isEmpty())
++        m_palette = new QPalette(Qt5CT::loadColorScheme(m_schemePath, *QPlatformTheme::palette(SystemPalette)));
      m_iconTheme = settings.value("icon_theme").toString();
      //load dialogs
-@@ -414,3 +430,33 @@
+     if(!m_update)
+@@ -414,3 +429,17 @@
      content.replace(regExp, "\n");
      return content;
  }
@@ -252,28 +290,12 @@ Index: qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.cpp
 +//which leads KColorScheme to get the color scheme from kdeglobals which won't help us.
 +bool Qt5CTPlatformTheme::eventFilter(QObject *obj, QEvent *e)
 +{
-+    if(obj == qApp && e->type() == QEvent::DynamicPropertyChange)
-+    {
-+        QDynamicPropertyChangeEvent *ee = static_cast<QDynamicPropertyChangeEvent*>(e);
-+        if(ee->propertyName() == "KDE_COLOR_SCHEME_PATH")
-+        {
-+            if(qApp->property("KDE_COLOR_SCHEME_PATH").toString().isEmpty())
-+            {
-+                QSettings settings(Qt5CT::configFile(), QSettings::IniFormat);
-+                settings.beginGroup("Appearance");
-+                QString schemePath = settings.value("color_scheme_path").toString();
-+                if(!schemePath.isEmpty() && settings.value("custom_palette", false).toBool())
-+                {
-+                    schemePath = Qt5CT::resolvePath(schemePath); //replace environment variables
-+                    if(Qt5CT::isKColorScheme(schemePath))
-+                    {
-+                        qApp->setProperty("KDE_COLOR_SCHEME_PATH", schemePath);
-+                        applySettings();
-+                    }
-+                }
-+            }
-+        }
-+    }
++    if(obj == qApp &&
++            e->type() == QEvent::DynamicPropertyChange &&
++            static_cast<QDynamicPropertyChangeEvent*>(e)->propertyName() == "KDE_COLOR_SCHEME_PATH" &&
++            qApp->property("KDE_COLOR_SCHEME_PATH").toString().isEmpty() &&
++            Qt5CT::isKColorScheme(m_schemePath))
++        applySettings();
 +    return QObject::eventFilter(obj, e);
 +}
 Index: qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.h
@@ -295,3 +317,12 @@ Index: qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.h
  private slots:
      void applySettings();
  #ifdef QT_WIDGETS_LIB
+@@ -104,7 +107,7 @@
+     bool hasWidgets();
+ #endif
+     QString loadStyleSheets(const QStringList &paths);
+-    QString m_style, m_iconTheme, m_userStyleSheet, m_prevStyleSheet;
++    QString m_style, m_schemePath, m_iconTheme, m_userStyleSheet, m_prevStyleSheet;
+     QPalette *m_palette = nullptr;
+     QFont m_generalFont, m_fixedFont;
+     int m_doubleClickInterval;

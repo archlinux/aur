@@ -1,7 +1,7 @@
 pkgbase = qt5ct-kde
 	pkgdesc = Qt5 Configuration Utility, patched to work correctly with KDE applications
 	pkgver = 1.8
-	pkgrel = 5
+	pkgrel = 9
 	url = https://qt5ct.sourceforge.io/
 	arch = x86_64
 	license = BSD
@@ -13,6 +13,6 @@ pkgbase = qt5ct-kde
 	source = https://downloads.sourceforge.net/project/qt5ct/qt5ct-1.8.tar.bz2
 	source = qt5ct-shenanigans.patch
 	sha256sums = 23b74054415ea4124328772ef9a6f95083a9b86569e128034a3ff75dfad808e9
-	sha256sums = 9e752bd30d0c2329c0b7b05033f6a0e324a6d37b523ef50d167228e9ef8696a8
+	sha256sums = a9210ed2aa5d98c13033d3a670d4246dedb44b2ff7947c41c0d269278cc939ef
 
 pkgname = qt5ct-kde
