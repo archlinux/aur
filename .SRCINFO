@@ -1,0 +1,18 @@
+pkgbase = veeamblksnap-dkms-git
+	pkgdesc = Veeam Agent for Linux kernel modules (DKMS)
+	pkgver = 6.2
+	pkgrel = 1
+	url = https://repository.veeam.com/backup/linux/agent
+	install = veeamblksnap.install
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	makedepends = git
+	depends = dkms
+	conflicts = veeamblksnap
+	source = git+https://github.com/veeam/blksnap.git#branch=VAL-6.2
+	source = dkms.conf
+	sha256sums = SKIP
+	sha256sums = 8f230291a36d2de76bf8a8afb59f1497ff5f2c27a8b226c5306415514365928c
+
+pkgname = veeamblksnap-dkms-git
