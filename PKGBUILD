@@ -4,7 +4,7 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-gnutls
-pkgver=3.8.5
+pkgver=3.8.6
 pkgrel=1
 arch=('any')
 pkgdesc="A library which provides a secure layer over a reliable transport layer (Android ${_android_arch})"
@@ -21,7 +21,7 @@ makedepends=('android-configure'
 optdepends=("android-${_android_arch}-openssl: libgnutls-openssl")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://www.gnupg.org/ftp/gcrypt/gnutls/v${pkgver%.*}/gnutls-${pkgver}.tar.xz")
-md5sums=('74b468201ef7e9035f78d44c3f0906c4')
+md5sums=('29d50ccec120cb486adca2b15b8cdd4b')
 
 prepare() {
     cd "${srcdir}/gnutls-${pkgver}"
