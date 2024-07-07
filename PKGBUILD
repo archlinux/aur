@@ -12,7 +12,7 @@ license=("MIT")
 provides=("raptoreum")
 _filename="raptoreum-ubuntu22-${pkgver}-mainnet-"
 source=(
-    "https://github.com/Raptor3um/raptoreum/releases/download/$pkgver/$_filename.tar.gz"
+    "https://github.com/Raptor3um/raptoreum/releases/download/$pkgver-mainnet/$_filename.tar.gz"
 )
 sha256sums=(
     "09f35431cb821cfe054781394ce5c8bf959eb1b776f69f48e68f7a5b9e27c99a"
