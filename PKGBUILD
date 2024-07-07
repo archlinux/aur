@@ -18,10 +18,10 @@
 ###############################################################################
 _phpbase="82"
 _suffix=""
-pkgver="8.2.20"
+pkgver="8.2.21"
 pkgrel="1"
 pkgbase="php82"
-pkgdesc="PHP 8.2.20 compiled as to not conflict with mainline php"
+pkgdesc="PHP 8.2.21 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1 "
 _build_apache_cfg="etc/httpd/conf/extra"
 _build_bundled_gd="0"
@@ -74,8 +74,6 @@ pkgname=(
     "php82-embed"
     "php82-apache"
     "php82-litespeed"
-    "php82-pear"
-    "php82-pecl"
     "php82-phpdbg"
     "php82-xml"
     "php82-xsl"
@@ -129,7 +127,6 @@ pkgname=(
 )
 source=(
     "make-tests.patch"
-    "pear-config-patcher.php"
     "php-makefile-patcher.php"
     "php-apache.conf"
     "https://php.net/distributions/php-${pkgver}.tar.xz"
@@ -212,20 +209,20 @@ _sapi_depends=(
     "argon2"
 )
 _ext_depends_snmp=(
-    "php82=8.2.20"
+    "php82=8.2.21"
     "net-snmp"
     "openssl"
 )
 _ext_depends_ftp=(
-    "php82=8.2.20"
+    "php82=8.2.21"
     "openssl"
 )
 _ext_depends_intl=(
-    "php82=8.2.20"
+    "php82=8.2.21"
     "icu"
 )
 _ext_depends_imap=(
-    "php82=8.2.20"
+    "php82=8.2.21"
     "pam"
     "krb5"
     "c-client"
@@ -233,45 +230,45 @@ _ext_depends_imap=(
     "openssl"
 )
 _ext_depends_gd=(
-    "php82=8.2.20"
+    "php82=8.2.21"
     "gd"
 )
 _ext_depends_mysql=(
-    "php82=8.2.20"
-    "php82-pdo=8.2.20"
-    "php82-openssl=8.2.20"
+    "php82=8.2.21"
+    "php82-pdo=8.2.21"
+    "php82-openssl=8.2.21"
 )
 _ext_depends_dba=(
-    "php82=8.2.20"
+    "php82=8.2.21"
     "db5.3"
     "lmdb"
 )
 _ext_depends_odbc=(
-    "php82=8.2.20"
+    "php82=8.2.21"
     "unixodbc"
-    "php82-pdo=8.2.20"
+    "php82-pdo=8.2.21"
 )
 _ext_depends_pgsql=(
-    "php82=8.2.20"
+    "php82=8.2.21"
     "postgresql-libs"
-    "php82-pdo=8.2.20"
+    "php82-pdo=8.2.21"
 )
 _ext_depends_firebird=(
-    "php82=8.2.20"
+    "php82=8.2.21"
     "libfbclient"
-    "php82-pdo=8.2.20"
+    "php82-pdo=8.2.21"
 )
 _ext_depends_sqlite=(
-    "php82=8.2.20"
+    "php82=8.2.21"
     "sqlite"
-    "php82-pdo=8.2.20"
+    "php82-pdo=8.2.21"
 )
 _ext_depends_mbstring=(
-    "php82=8.2.20"
+    "php82=8.2.21"
     "oniguruma"
 )
 _ext_depends_openssl=(
-    "php82=8.2.20"
+    "php82=8.2.21"
     "krb5"
     "e2fsprogs"
     "openssl"
@@ -289,7 +286,6 @@ _phpconfig="\
     --program-suffix=${_phpbase}${_suffix} \
     --with-config-file-scan-dir=/${_build_conf_d} \
     --enable-filter \
-    --with-pear \
     --enable-session \
     --with-mhash=/usr \
     --with-kerberos \
@@ -984,86 +980,6 @@ package_php82-litespeed() {
 # litespeed sapi end
 
 ###############################################################################
-# PEAR + PECL
-###############################################################################
-
-# PEAR
-package_php82-pear() {
-    pkgdesc="PHP Extension and Application Repository (PEAR) for ${pkgbase}"
-    depends=(
-        "${pkgbase}=${pkgver}"
-        "php${_phpbase}-xml${_suffix}=${pkgver}"
-        "php${_phpbase}-cli${_suffix}=${pkgver}"
-        "php${_phpbase}-phar${_suffix}=${pkgver}"
-    )
-    #backup=("${_build_sapi_ini_cli}/pear.conf")
-    install -d "${pkgdir}/usr/share/${pkgbase}/pear/htdocs"
-    install -d "${pkgdir}/usr/share/${pkgbase}/pear/data"
-    install -d "${pkgdir}/usr/share/${pkgbase}/pear/doc"
-    install -d "${pkgdir}/usr/share/${pkgbase}/pear/test"
-    install -d "${pkgdir}/usr/share/${pkgbase}/pear/cfg"
-    install -d "${pkgdir}/var/lib/${pkgbase}/pear/cache"
-    install -d "${pkgdir}/var/lib/${pkgbase}/pear/metadata"
-    install -d "${pkgdir}/var/lib/${pkgbase}/pear/download"
-    install -d "${pkgdir}/var/lib/${pkgbase}/pear/temp"
-    export PHP_PEAR_SYSCONF_DIR="${_build_sapi_ini_cli}"
-    pushd build-cli
-
-    cp "${srcdir}/php-${pkgver}/pear/install-pear-nozlib.phar" "pear/install-pear-nozlib.phar"
-
-    INSTALL_ROOT="${pkgdir}/" ./sapi/cli/php -n \
-        -d extension=modules/xml.so \
-        -d extension=modules/phar.so \
-        -d date.timezone=UTC -d memory_limit=64M -d short_open_tag=0 -d safe_mode=0 \
-        -d 'error_reporting=E_ALL&~E_DEPRECATED' -d detect_unicode=0 "pear/install-pear-nozlib.phar" \
-        -ds       "${_phpbase}${_suffix}" \
-        --php      "/usr/bin/${pkgbase}" \
-        --bin      "/usr/bin" \
-        --man      "/usr/share/man" \
-        --dir      "/usr/share/${pkgbase}/pear" \
-        --data     "/usr/share/${pkgbase}/pear/data" \
-        --doc      "/usr/share/${pkgbase}/pear/doc" \
-        --test     "/usr/share/${pkgbase}/pear/test" \
-        --www      "/usr/share/${pkgbase}/pear/htdocs" \
-        --config   "/usr/share/${pkgbase}/pear/cfg" \
-        --force
-    # fix pear.conf with unserialize
-    # first arg: path to pear.conf
-    # second arg: PEAR base /var path
-    ./sapi/cli/php -n ../pear-config-patcher.php \
-        "${pkgdir}/${_build_sapi_ini_cli}/pear.conf" \
-        "/var/lib/${pkgbase}/pear"
-    popd
-    # remove unneeded files
-    rm -rf "${pkgdir}"/.{channels,depdb,depdblock,filemap,lock,registry}
-    #rename binaries
-    for i in pear peardev pecl; do
-        _target="${pkgbase/php/$i}"
-        # fix hardcoded paths
-        sed "s|PHP=php|PHP=\"/usr/bin/${pkgbase}\"|g; s|\"/usr/bin/php\"|\"/usr/bin/${pkgbase}\"|g; s| -n | |g" \
-            -i "${pkgdir}/usr/bin/${i}"
-        if [[ "$i" == "pecl" ]]; then
-            echo "Moving ${pkgdir}/usr/bin/${i} => ${srcdir}/${pkgbase}-pecl-bin/"
-            mkdir -p "${srcdir}/${pkgbase}-pecl-bin/"
-            mv "${pkgdir}/usr/bin/pecl" "${srcdir}/${pkgbase}-pecl-bin/"
-        else
-            echo "Moving ${pkgdir}/usr/bin/${i} => ${pkgdir}/usr/bin/${_target}"
-            mv "${pkgdir}/usr/bin/${i}" "${pkgdir}/usr/bin/${_target}"
-        fi
-    done
-}
-# PEAR end
-
-# PECL
-package_php82-pecl() {
-    pkgdesc="PHP Extension Community Library (PECL) for ${pkgbase}"
-    depends=("php${_phpbase}-pear${_suffix}=${pkgver}")
-    _target="${pkgbase/php/pecl}"
-    install -D -m755 "${srcdir}/${pkgbase}-pecl-bin/pecl" "${pkgdir}/usr/bin/${_target}"
-}
-# PECL end
-
-###############################################################################
 # PHP Modules: First need
 ###############################################################################
 
@@ -1528,10 +1444,9 @@ package_php82-readline() {
 
 
 sha256sums=('e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b'
-            '0b7e98dca9c996ec10cb9b3f6296bb7547c68797fd5f35006fdfd3e97700672d'
             'ba72fc64f77822755a469314160d5889d5298f4eb5758dd7939dac9b811afe52'
             '6d0ad9becb5470ce8e5929d7d45660b0f32579038978496317544c5310281a91'
-            '4474cc430febef6de7be958f2c37253e5524d5c5331a7e1765cd2d2234881e50'
+            '8cc44d51bb2506399ec176f70fe110f0c9e1f7d852a5303a2cd1403402199707'
             '169d52d6fc78e24e88a5923715d965bc247a62697c59d06d468c1908eba1c189'
             '558e780e93dfa861a366c49b4d156d8fc43f17898f001ae6033ec63c33d5d41c'
             '40bcc1e5058602302198d0925e431495391d8469499593af477f59d84d32f764'
