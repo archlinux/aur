@@ -1,10 +1,11 @@
 pkgbase = sunshine-bin
 	pkgdesc = A self-hosted game stream host for Moonlight.
 	pkgver = 0.23.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://app.lizardbyte.dev
 	arch = x86_64
 	license = GPL3
+	makedepends = patchelf
 	depends = avahi
 	depends = boost-libs
 	depends = curl
