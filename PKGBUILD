@@ -1,18 +1,41 @@
-# Maintainer: Jni <jni.viens at protonmail dot com>
-pkgname=stepman
-pkgver=0.9.19
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: Jni <jni.viens at protonmail dot com>
+
+pkgname="stepman"
+pkgver=0.17.0
 pkgrel=1
-pkgdesc="Manage decentralized StepLib Step (script) Collections."
-arch=(x86_64)
-url="https://github.com/bitrise-io/stepman"
+pkgdesc="Manage decentralized StepLib Step (script) collections"
+arch=('any')
+url="https://github.com/bitrise-io/${pkgname}"
 license=('MIT')
-provides=(stepman)
-source=(https://github.com/bitrise-io/stepman/releases/download/$pkgver/$pkgname-Linux-$CARCH
-        https://raw.githubusercontent.com/bitrise-io/stepman/master/LICENSE)
-md5sums=('97482b1f85b0c7216dd6c0486d8d045d'
-         '10c39cc7466456c17298b32d04bfa8d9')
+depends=('glibc')
+_pkgsrc="${pkgname}-${pkgver}"
+source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('70d78c8adadb6b8b945ffc6c626a158fcc417f500b612b513651a0f95dc27ea2')
+
+prepare() {
+  cd "${srcdir}/${_pkgsrc}"
+  [ -d "build" ] || mkdir "build"
+}
+
+build() {
+  cd "${srcdir}/${_pkgsrc}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build -o "build/${pkgname}" .
+}
+
+check() {
+  cd "${srcdir}/${_pkgsrc}"
+  go test ./...
+}
 
 package() {
-  install -Dm644 "$srcdir/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm755 "$srcdir/$pkgname-Linux-$CARCH" "$pkgdir/usr/bin/stepman"
+  cd "${srcdir}/${_pkgsrc}"
+  install -Dm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
