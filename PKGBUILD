@@ -4,7 +4,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-libksba
-pkgver=1.6.6
+pkgver=1.6.7
 pkgrel=1
 arch=('any')
 pkgdesc="A CMS and X.509 access library (Android ${_android_arch})"
@@ -14,7 +14,7 @@ depends=("android-${_android_arch}-libgpg-error")
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://gnupg.org/ftp/gcrypt/libksba/libksba-${pkgver}.tar.bz2")
-md5sums=('b84be832461d4704c227c3719288bfc9')
+md5sums=('7e736de467b67c7ea88de746c31ea12f')
 
 build() {
     cd "${srcdir}/libksba-${pkgver}/"
