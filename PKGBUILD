@@ -2,7 +2,7 @@
 
 _pkgname=gravel
 pkgname=$_pkgname-bin
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Cross-platform application launcher for Linux and Windows"
 arch=("x86_64")
@@ -12,8 +12,8 @@ depends=("libx11" "libxext" "libxft" "libxinerama" "libxcursor" "libxrender" "li
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=('!strip')
-source=("$url/releases/download/v$pkgver/gravel-x86_64.pkg.tar.zst")
-sha256sums=("014d3d0856fd8900ec9f4df0ce6bfab4597a3e86abeac45e7b1747808de97c35")
+source=("$url/releases/download/v$pkgver/gravel-arch-x86_64.pkg.tar.zst")
+sha256sums=("dbbc355633766f78a6c43138f5e35c1f12c0a9fa8f5066f7f234220573fc194b")
 
 package() {
 	cp -ar usr $pkgdir/usr
