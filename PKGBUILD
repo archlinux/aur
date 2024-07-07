@@ -5,7 +5,7 @@
 _pkgname=ysfx
 pkgname=$_pkgname-git
 pkgver=0.0.0.r244.8077347
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc='Hosting library and plugin for JSFX (git version)'
 arch=(x86_64)
@@ -45,7 +45,8 @@ build() {
         -B $_pkgname-build \
         -Wno-dev \
         -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/usr
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DYSFX_PLUGIN_COPY=OFF
   cmake --build $_pkgname-build
 }
 
