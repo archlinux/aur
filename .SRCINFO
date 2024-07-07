@@ -6,7 +6,7 @@ pkgbase = raptoreum-bin
 	arch = any
 	license = MIT
 	provides = raptoreum
-	source = https://github.com/Raptor3um/raptoreum/releases/download/1.3.17.06/raptoreum-ubuntu22-1.3.17.06.tar.gz
+	source = https://github.com/Raptor3um/raptoreum/releases/download/1.3.17.06/raptoreum-ubuntu22-1.3.17.06-mainnet-.tar.gz
 	sha256sums = 09f35431cb821cfe054781394ce5c8bf959eb1b776f69f48e68f7a5b9e27c99a
 
 pkgname = raptoreum-bin

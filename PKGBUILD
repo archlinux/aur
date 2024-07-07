@@ -10,7 +10,7 @@ arch=("any")
 url="https://github.com/Raptor3um/$_pkgname"
 license=("MIT")
 provides=("raptoreum")
-_filename="raptoreum-ubuntu22-${pkgver}"
+_filename="raptoreum-ubuntu22-${pkgver}-mainnet-"
 source=(
     "https://github.com/Raptor3um/raptoreum/releases/download/$pkgver/$_filename.tar.gz"
 )
