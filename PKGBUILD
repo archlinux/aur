@@ -7,7 +7,7 @@ pkgdesc="Highly customizable and fast system information fetch program (with GUI
 arch=('x86_64' 'aarch64')
 url="https://github.com/Toni500github/customfetch"
 license=('GPL3')
-depends=('pciutils' 'file' 'bash' 'gtk3' 'gtkmm3')
+depends=('pciutils' 'libprocps' 'gtk3' 'gtkmm3')
 makedepends=('base-devel')
 optdepends=(
 	"ttf-liberation: Font to be used for GUI (recommended)"
