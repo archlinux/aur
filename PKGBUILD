@@ -1,17 +1,22 @@
 # Maintainer: Mike Kazantsev <mk.fraggod@gmail.com>
 
+# Build is currently pinned to fixup commit, as there seem to be no maintained upstream atm
+_commit=d220fa864942253856752b1d9abadb8d1ed835be
+
 pkgname=telegram-tdlib-purple-minimal-git
-pkgver=0.8.1.r518.1cc2a5d
-pkgrel=2
+pkgver=0.8.1.r523.d220fa8
+pkgrel=1
 pkgdesc='libpurple/pidgin Telegram plugin implemented using official tdlib client library, packaged for bitlbee, without voip and image-processing dependencies'
 arch=(x86_64 aarch64)
-url='https://github.com/BenWiederhake/tdlib-purple'
+url='https://github.com/savoptik/tdlib-purple/'
 license=(GPL2)
 depends=(libpurple)
 makedepends=(cmake git gperf)
 conflicts=(telegram-tdlib-purple)
 provides=(telegram-tdlib-purple="${pkgver}")
-source=( $pkgname::git+"$url" td::git+https://github.com/tdlib/td.git )
+source=(
+	"$pkgname"::git+"$url#commit=$_commit"
+	td::git+https://github.com/tdlib/td.git )
 sha256sums=( SKIP SKIP )
 
 pkgver() {
