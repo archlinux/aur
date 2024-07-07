@@ -1,6 +1,6 @@
 pkgbase = sourcetrail
 	pkgdesc = Interactive source explorer for C/C++ and Java
-	pkgver = 2024.6.1
+	pkgver = 2024.7.3
 	pkgrel = 1
 	url = https://github.com/xiota/sourcetrail
 	arch = x86_64
@@ -13,19 +13,19 @@ pkgbase = sourcetrail
 	makedepends = jdk-openjdk
 	makedepends = maven
 	makedepends = ninja
-	makedepends = qt6-base
-	makedepends = gendesk
 	makedepends = imagemagick
 	makedepends = patchelf
 	depends = clang
 	depends = llvm-libs
 	depends = boost-libs
-	depends = java-runtime
 	depends = qt6-5compat
+	depends = qt6-base
 	depends = qt6-svg
 	depends = sqlite
 	depends = tinyxml
-	source = sourcetrail::git+https://github.com/xiota/sourcetrail.git#commit=6a9036068d79175cafe3ba35a647a40fc3aefb4e
+	optdepends = java-runtime
+	optdepends = python
+	source = sourcetrail::git+https://github.com/xiota/sourcetrail.git#commit=929d9dc65a5a62dc77486db6b52ae47cef6f7602
 	sha256sums = SKIP
 
 pkgname = sourcetrail
