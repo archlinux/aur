@@ -1,0 +1,12 @@
+pkgbase = mazesoba-continent-bin
+	pkgdesc = A Bluesky client with minimum window and miscellaneous toppings.
+	pkgver = 17
+	pkgrel = 1
+	url = https://github.com/kakakaya/mazesoba-continent
+	arch = x86_64
+	license = MIT
+	options = !strip
+	source = mazesoba-continent::https://github.com/kakakaya/mazesoba-continent/releases/download/v17/mazesoba-continent
+	b2sums = 377f95b39ee7cc73b643f7442834147f2909cf45546285aa394d02207933f8806b982fb167cac2ef6d7fc38a1bcbedddba79c54d57e8ae69bcb5186dc8593757
+
+pkgname = mazesoba-continent-bin
