@@ -1,10 +1,11 @@
 pkgbase = genx
 	pkgdesc = X-ray and Neutron reflectivity fitting software
-	pkgver = 3.6.23
+	pkgver = 3.6.25
 	pkgrel = 1
 	url = https://github.com/aglavic/genx
 	arch = x86_64
 	license = GPL v3
+	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
@@ -19,7 +20,7 @@ pkgbase = genx
 	depends = python-docutils
 	depends = python-numba
 	depends = python-orsopy
-	source = https://github.com/aglavic/genx/releases/download/v3.6.23/GenX-3.6.23.tar.gz
-	sha256sums = dead775b498270be707c28185ab051b095f2137c0ff2bb37059d8fb755efe4ad
+	source = https://github.com/aglavic/genx/releases/download/v3.6.25/GenX-3.6.25.tar.gz
+	sha256sums = f01d486fd860151be823406ba6948da36871f64d04b52a66c1d60195b4780c22
 
 pkgname = genx
