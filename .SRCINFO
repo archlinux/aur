@@ -1,7 +1,7 @@
 pkgbase = onscripter-gbk
 	pkgdesc = A game engine compatible to NScripter with GBK patch, which is used to create and perform visual novel games
 	pkgver = 8.951935b
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/natdon/ONScripter-CN
 	arch = i686
@@ -18,8 +18,7 @@ pkgbase = onscripter-gbk
 	depends = libjpeg-turbo
 	depends = libvorbis
 	depends = smpeg
-	source = onscripter-gbk::git://github.com/natdon/ONScripter-CN.git#commit=951935b05a
+	source = onscripter-gbk::git+https://github.com/natdon/ONScripter-CN.git#commit=951935b05a
 	md5sums = SKIP
 
 pkgname = onscripter-gbk
-
