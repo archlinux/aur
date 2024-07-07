@@ -1,0 +1,11 @@
+[Unit]
+Description=changedetection.io server
+After=network.target
+
+[Service]
+User=changedetectionio
+ExecStart=chromium --remote-debugging-port=5001 --headless=new
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target

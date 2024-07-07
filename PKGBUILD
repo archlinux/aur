@@ -1,8 +1,8 @@
 # Maintainer: Tristan Hill
 
 pkgname=changedetection.io
-pkgver=0.45.24
-pkgrel=2
+pkgver=0.45.25
+pkgrel=1
 pkgdesc='change monitoring of web pages'
 arch=(any)
 url='https://github.com/dgtlmoon/changedetection.io'
@@ -45,31 +45,28 @@ depends=(# ordered per https://github.com/dgtlmoon/changedetection.io/blob/maste
          python-pillow
          python-pytest-flask
          python-loguru
-         python-pysocks
-         # below for pyppeteer-ng
-         python-aenum
-         python-appdirs
-         python-typing_inspect
-         python-tqdm
-         python-websockets)
+         python-pysocks)
+optdepends=('python-playwright: for fetching pages with javascript')
 source=(https://github.com/dgtlmoon/changedetection.io/archive/refs/tags/$pkgver.tar.gz
         sysusers
         tmpfiles
-        service)
-sha512sums=('f51992bbf0b7eaf06dabc610564cc899f577a6800b373a1424827e6cd849dd27d302bf83266a1bc4473c1d0aa052c432cf749788865c7303a110d040f2de73ad'
+        service
+        chromium.service)
+sha512sums=('707097c0f1a31f0136671132ecfc3f1c3de262e626dd553c3750ee85160aeb811ecf4f3dfa70a4b6c4156c9bca7efb4aa90a1c205ec55fb21414a6e7a0a935f5'
             '5ef8b215bddc02b04d55d3699f27ad043461d8771591be2ebf0ed6390c58ab881426214173c8e1cc8bb36ecd7acebc5d69d760fc65b8a3b191b2116150748f53'
             '62a684e35c3b479b8ab139b2d79f83f408bede0d4e0f1e500ee75f13126456fa5b574d8cb826c8c56ff0da488dec4ed3562854d0f05d44814beaa3b726bcd318'
-            'd640ada5e7a0a82d551221a51c307abd37104361efe0ae4b805c58bd9092b21d8eb55e87e55cff8fb13bbb397ad98231edf1f6db99cfdb318de5e82cb0ed77bc')
+            'eecd4b25411f6f47b81dd6849aae233b0928e19342818b9c7857bf291850b2cefb33cd35aa5877be1675c9642a8feee53b35d2e318a255547ef4ce07a30c9e1b'
+            '2059c8cfdb1d371c02210af315a8ba098bda490bf149b1c8ac92f3a387118ea505836af0d2a6ae242c76bf56441f23a39eaa7e2ef8a1a1d19680c171cc42e7c2')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  sed -i 's/[>~=]=.*//' requirements.txt
+  sed -i 's/[>~=]=.*//; /pyppeteer/d' requirements.txt
   python setup.py install --root="$pkgdir" --optimize=1
   # command per https://wiki.archlinux.org/title/Python_package_guidelines (now removed from page?)
-  PIP_CONFIG_FILE=/dev/null pip install --isolated --target="$pkgdir/usr/lib/changedetection.io" --ignore-installed --no-deps pyppeteer-ng==2.0.0rc5 validators pyppeteerstealth
-  sed -Ei '/Requires-Dist: (aenum|typing_extensions|typing_inspect|websockets)/s/\(.*//' "$pkgdir"/usr/lib/changedetection.io/pyppeteer_ng-2.0.0rc5.dist-info/METADATA
+  PIP_CONFIG_FILE=/dev/null pip install --isolated --target="$pkgdir/usr/lib/changedetection.io" --ignore-installed --no-deps validators
   python -O -m compileall -s ${pkgdir} "${pkgdir}/usr/lib/changedetection.io"
   install -Dm644 "${srcdir}/sysusers" "${pkgdir}/usr/lib/sysusers.d/changedetection.io.conf"
   install -Dm644 "${srcdir}/tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/changedetection.io.conf"
   install -Dm644 "${srcdir}/service" "${pkgdir}/usr/lib/systemd/system/changedetection.io.service"
+  install -Dm644 "${srcdir}/chromium.service" "${pkgdir}/usr/lib/systemd/system/changedetection.io-chromium.service"
 }

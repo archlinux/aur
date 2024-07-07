@@ -5,6 +5,7 @@ After=network.target
 [Service]
 User=changedetectionio
 Environment="PYTHONPATH=/usr/lib/changedetection.io"
+Environment="PLAYWRIGHT_DRIVER_URL=http://localhost:5001"
 ExecStart=/usr/bin/changedetection.io -d /var/lib/changedetection.io
 Restart=on-abort
 
