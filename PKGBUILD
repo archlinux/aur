@@ -5,7 +5,7 @@ pkgname=sunshine-bin
 _pkgname=${pkgname%-bin}
 pkgver=0.23.1
 _gittag=v$pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc="A self-hosted game stream host for Moonlight."
 url="https://app.lizardbyte.dev"
 source=(
@@ -38,6 +38,7 @@ depends=('avahi'
 optdepends=('cuda: NvFBC capture support'
             'libcap'
             'libdrm')
+makedepends=('patchelf')
 conflicts=('sunshine')
 provides=('sunshine')
 b2sums=('1c357d77a1b24e70b122f34e14b3a54e57270f4ccbf2f2b6f9afc8b54e59ed4e9096bb8b9c7257d4ff93f2e8783763f8298b2461470d2e4bb149e070ea6b0238'
@@ -51,6 +52,7 @@ prepare() {
 
 package() {
     install -Dm755 "usr/bin/sunshine-v$pkgver" "$pkgdir/usr/bin/sunshine"
+    patchelf --replace-needed libminiupnpc.so.17 libminiupnpc.so.18 "$pkgdir/usr/bin/sunshine"
     install -Dm644 "$_pkgname-$pkgver.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
     cp -r "usr/lib" "usr/share" "$pkgdir/usr"
 }
