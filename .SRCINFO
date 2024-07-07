@@ -1,6 +1,6 @@
 pkgbase = py3status-amdfan
 	pkgdesc = Py3status module for monitoring fan and temp of amdgpu video cards
-	pkgver = 0.1.14
+	pkgver = 0.1.15
 	pkgrel = 1
 	url = https://github.com/mcgillij/py3status-amdfan
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = py3status-amdfan
 	depends = python
 	depends = py3status
 	depends = amdfan
-	source = https://github.com/mcgillij/py3status-amdfan/releases/download/0.1.14/py3status_amdfan-0.1.14.tar.gz
-	md5sums = e9c5cf31483a7368439421ad28d71dd8
+	source = https://github.com/mcgillij/py3status-amdfan/releases/download/0.1.15/py3status_amdfan-0.1.15.tar.gz
+	md5sums = 47eda0c0884a5fccf3bbbbc245462c9b
 
 pkgname = py3status-amdfan
