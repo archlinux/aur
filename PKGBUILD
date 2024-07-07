@@ -3,7 +3,7 @@
 _pkgname="flutter"
 pkgname="$_pkgname-bin"
 pkgver=3.22.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross platform widget toolkit for Dart (monolithic)"
 arch=("x86_64")
 url="https://github.com/flutter/flutter"

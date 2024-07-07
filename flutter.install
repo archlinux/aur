@@ -26,10 +26,15 @@ post_install() {
     fi
   done
 
-  echo "Users may be added to the 'flutter' group:"
-  echo "   sudo usermod -a -G flutter [username]"
+  echo "Flutter requires write permission into its install directory."
+  echo "This package redirects writes to '~/.cache/flutter_local'."
+  echo "Users should clear the cache themselves after upgrades."
   echo
-  echo "Warning: Do not store important data in '/opt/flutter'"
+  echo "Optionally, users may be given write permission to '/opt/flutter'"
+  echo "by adding them to the 'flutter' group:"
+  echo "        sudo usermod -a -G flutter [username]"
+  echo
+  echo "Warning: '/opt/flutter' will be wiped on upgrade and uninstall."
 }
 
 post_upgrade() {
@@ -48,10 +53,10 @@ pre_remove() {
   # remove extra permissions
   for i in ${_builders[@]} ${_groups[@]}; do
     if grep -q "group:$i" <<< $(getfacl -ac /opt/flutter 2> /dev/null); then
-      sudo setfacl -R -x "g:$i" /opt/flutter
+      setfacl -R -x "g:$i" /opt/flutter
     fi
     if grep -q "user:$i" <<< $(getfacl -ac /opt/flutter 2> /dev/null); then
-      sudo setfacl -R -x "u:$i" /opt/flutter
+      setfacl -R -x "u:$i" /opt/flutter
     fi
   done
 
@@ -62,5 +67,5 @@ post_remove() {
   rm -rf opt/flutter
 
   echo "If no longer needed, remove the 'flutter' group:"
-  echo "   sudo groupdel flutter"
+  echo "        sudo groupdel flutter"
 }
