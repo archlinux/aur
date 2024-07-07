@@ -12,7 +12,7 @@ Signed-off-by: Björn Bidar <bjorn.bidar@jolla.com>
  1 file changed, 68 insertions(+), 9 deletions(-)
 
 diff --git a/osc/commandline.py b/osc/commandline.py
-index 61186467b58123a9ce912fe59aa944c4ecede6a4..923463aacb3efd8b1a4b8a85edf3b1620b9756eb 100644
+index 382770677fa438586b4f1a38a8d9c82670d1f265..44c7b0613147f508e3c82fdf674e2b5346b0a0f8 100644
 --- a/osc/commandline.py
 +++ b/osc/commandline.py
 @@ -6355,6 +6355,10 @@ Please submit there instead, or use --nodevelproject to force direct submission.

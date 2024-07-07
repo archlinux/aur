@@ -9,7 +9,7 @@ Subject: [PATCH] Support synchronous copyproj
  2 files changed, 7 insertions(+)
 
 diff --git a/osc/commandline.py b/osc/commandline.py
-index b1bf93e3610ab74715ed07e2b63f13c43ac37da4..584d896e83d6eb2b3db44bf8621168a7ec16a6c3 100644
+index 3e894c2f283daccf31fda010f936b4ca0812b600..21d01bc22496f3fce1fa49c9b45f276ebadc2e2d 100644
 --- a/osc/commandline.py
 +++ b/osc/commandline.py
 @@ -2115,6 +2115,8 @@ class Osc(cmdln.Cmdln):
@@ -39,7 +39,7 @@ index b1bf93e3610ab74715ed07e2b63f13c43ac37da4..584d896e83d6eb2b3db44bf8621168a7
          print("done cp")
          print(r)
 diff --git a/osc/core.py b/osc/core.py
-index 2a5f62d760e09ffe4166470b7a9f60617c8bd964..437d49d4337628e3cc2575b87a77edde2d47a038 100644
+index e7f374e1530575f2f677aedb81d7dfb2eed99ebe..312d60d8b2c13432222970ea6afa70ace8135222 100644
 --- a/osc/core.py
 +++ b/osc/core.py
 @@ -3822,6 +3822,8 @@ def copy_prj(src_apiurl, src_project, dst_project,

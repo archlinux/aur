@@ -6,7 +6,7 @@
 # Contributor : Patrick McCarty  <pnorcks at gmail dot com>
 
 pkgname=osc
-pkgver=1.8.0
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="Command line client for the openSUSE Build Service"
 arch=(any)
@@ -14,6 +14,7 @@ url="https://github.com/openSUSE/osc"
 license=('GPL2')
 depends=('python'
          'python-cryptography'
+         'python-urllib3'
          'python-distro')
 makedepends=('python-setuptools')
 optdepends=('obs-build: required to run local builds'
@@ -64,15 +65,15 @@ package() {
 
 }
 
-sha256sums=('251ab981449209550b88bdab08ba108c104f430680b9a1ab2eb81a62bb0082d1'
+sha256sums=('4a231ed16cf40bc41110c3a400c43c9c09c507e3be1ade4cfde1b2fad5f8014b'
             'a0c2e3634fdbda99aa04cc39b26ca67b519ca9c99bdd9efb263f7d65ad772206'
-            'e189b7072386954c40d00876433261a107e167b00364d4c3ca03a33fd65da70a'
-            'b28c45b7a896b921665fc121921aaa8acb439e19c47c6f593d30441ecf53ea43'
-            '108925bfc7c346b65f410ead15e6848cf8ae4863193a95034a97aa92609b11cb'
-            'cd8d450ce8c79c2424278bb0cc0cf3a3dc9a2e5b4509ad41af0116172b59e162'
+            'dcdefaa9b1ddbefbbc9ee790018da4f710dc4cc2bdd3579e914957cf1560a980'
+            '35009761c7a68a4f983de0d2dbff45b76aa7b9dbb8618442a65fe5d3d2f7c24f'
+            'f9f08fd5712aa143ba046c7c8334cc3ca68a2e897a03d4ec7fe8f395d483d6f5'
+            '811230eb6515c546ef8259ca18006ad235c76e449c1f9ec1054f0028c6d12286'
             '579b110f3dc03001b7eac3581264200612dac66c2186e6841eda3573f455daf1'
-            '6c63f30069ebf5a2d010bdd6a5e5329d9ad6faaf735831ea133cb9f652c7f8f3'
+            'e5a5264f744ae2fdd6f7ad67f40134cbd6e402c3bdee1255112e7e80a01c8916'
             'f01d7d59bebe114f6031f297f78456bef96b7003f55fe7ac48827e1eca7138c1'
-            '82f6acd8dd601b74433562bbbb1a9b7157d43e23ca3c42e0eb163a978b29b816')
+            '42cafcdbcbf9f23a0300431264eae0786f31d805dcf239cf3efc8d24fe5be029')
 
 # vim:set sts=2 ts=2 sw=2 et:

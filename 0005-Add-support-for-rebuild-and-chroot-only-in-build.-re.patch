@@ -31,7 +31,7 @@ index 123e38d8e68271e4dc498bd5ff726b64e064bb57..2166c49f4ae6a5333593eea94f6d8c46
          buildargs.append('--no-checks')
      if not opts.no_changelog:
 diff --git a/osc/commandline.py b/osc/commandline.py
-index 83eddac6851c23926f692e2b91946d29d74adb6e..ed29cb12682f25de561734ffb7aae478a2e84c01 100644
+index d5a2b14b81704f669c537b4d27dd8b7c6fce7148..4ae93ba5c90fa7a0a0290c51c8469b14fa9eb43d 100644
 --- a/osc/commandline.py
 +++ b/osc/commandline.py
 @@ -7230,6 +7230,10 @@ Please submit there instead, or use --nodevelproject to force direct submission.
