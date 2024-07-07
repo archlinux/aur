@@ -1,6 +1,6 @@
 pkgbase = android-armv7a-eabi-libgpg-error
 	pkgdesc = Support library for libgcrypt (Android armv7a-eabi)
-	pkgver = 1.49
+	pkgver = 1.50
 	pkgrel = 1
 	url = https://www.gnupg.org
 	arch = any
@@ -11,12 +11,12 @@ pkgbase = android-armv7a-eabi-libgpg-error
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-1.49.tar.bz2
-	source = https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-1.49.tar.bz2.sig
+	source = https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-1.50.tar.bz2
+	source = https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-1.50.tar.bz2.sig
 	source = 0001-Unversioned-libs.patch
 	validpgpkeys = 6DAA6E64A76D2840571B4902528897B826403ADA
 	validpgpkeys = AC8E115BF73E2D8D47FA9908E98E9B2D19C6C8BD
-	sha256sums = 8b79d54639dbf4abc08b5406fb2f37e669a2dec091dd024fb87dd367131c63a9
+	sha256sums = 69405349e0a633e444a28c5b35ce8f14484684518a508dc48a089992fe93e20a
 	sha256sums = SKIP
 	sha256sums = d109aec757f631d3cda57d396f473338df4d74ee69d940445d474208efc38f17
 
