@@ -2,7 +2,7 @@
 # Contributor: djmattyg007 <internet@matthewgamble.net>
 
 pkgname=doggo
-pkgver=0.5.7
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='Command-line DNS Client for Humans.'
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('go')
 source=("${url}/archive/v${pkgver}.tar.gz")
 conflicts=('doggo-git')
 provides=('doggo')
-sha256sums=('3f70c40ccc9ffba539fd37c0ed8c5a1a0ab89f29815994826bfeb8e0b60e2eff')
+sha256sums=('d7b8c742680332b172ad64e4d625449537c89e2607b7d7fd83a34fdd737c039f')
 
 prepare(){
   cd "$pkgname-$pkgver"
@@ -34,6 +34,4 @@ package() {
   cd "$pkgname-$pkgver"
   install -Dm755 build/"$pkgname" "$pkgdir"/usr/bin/"$pkgname"
   install -Dm644 README.md "$pkgdir"/usr/share/doc/"$pkgname"/README.md
-  install -Dm644 completions/"${pkgname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}"
-  install -Dm644 completions/"${pkgname}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
 }
