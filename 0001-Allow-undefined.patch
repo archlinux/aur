@@ -1,0 +1,53 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -88,25 +88,6 @@
+ 
+ AC_CHECK_HEADERS(sys/types.h sys/time.h unistd.h)
+ 
+-dnl
+-dnl if the system support linker version scripts for symbol versioning
+-dnl then add it
+-dnl
+-AC_MSG_CHECKING([how to pass version script to the linker ($LD)])
+-VERSION_SCRIPT_FLAGS=none
+-if $LD --help 2>&1 | grep "version-script" >/dev/null 2>/dev/null; then
+-    dnl lld 16 defaults to --no-undefined-version but the version script
+-    dnl can contain symbols disabled by configuration options.
+-    VERSION_SCRIPT_FLAGS=''
+-    AX_APPEND_LINK_FLAGS([-Wl,--undefined-version], [VERSION_SCRIPT_FLAGS])
+-    AX_APPEND_FLAG([-Wl,--version-script=], [VERSION_SCRIPT_FLAGS])
+-elif $LD --help 2>&1 | grep "M mapfile" >/dev/null 2>/dev/null; then
+-    VERSION_SCRIPT_FLAGS="-Wl,-M -Wl,"
+-fi
+-AC_MSG_RESULT([$VERSION_SCRIPT_FLAGS])
+-AC_SUBST(VERSION_SCRIPT_FLAGS)
+-AM_CONDITIONAL([USE_VERSION_SCRIPT], [test "$VERSION_SCRIPT_FLAGS" != none])
+-
+ dnl Look for pthread.h, needed for testThreads
+ case $host in
+   *-mingw*) ;;
+--- a/libxslt/Makefile.am
++++ b/libxslt/Makefile.am
+@@ -51,11 +51,7 @@
+ 	win32config.h			\
+ 	libxslt.h
+ 
+-if USE_VERSION_SCRIPT
+-LIBXSLT_VERSION_SCRIPT = $(VERSION_SCRIPT_FLAGS)$(srcdir)/libxslt.syms
+-else
+ LIBXSLT_VERSION_SCRIPT =
+-endif
+ 
+ libxslt_la_LIBADD = $(LIBXML_LIBS) $(EXTRA_LIBS) $(LIBM)
+ libxslt_la_LDFLAGS =					\
+--- a/libexslt/Makefile.am
++++ b/libexslt/Makefile.am
+@@ -27,7 +27,7 @@
+ 
+ libexslt_la_CFLAGS = $(AM_CFLAGS) $(LIBGCRYPT_CFLAGS)
+ libexslt_la_LIBADD = $(top_builddir)/libxslt/libxslt.la $(LIBXML_LIBS) $(EXTRA_LIBS) $(LIBGCRYPT_LIBS) $(LIBM)
+-libexslt_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined \
++libexslt_la_LDFLAGS = $(AM_LDFLAGS) \
+ 		      -version-info $(LIBEXSLT_VERSION_INFO)
+ 
+ man_MANS = libexslt.3
