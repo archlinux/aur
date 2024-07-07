@@ -1,0 +1,13 @@
+pkgbase = tran
+	pkgdesc = Securely transfer and send anything between computers with TUI
+	pkgver = 0.1.43
+	pkgrel = 1
+	url = https://github.com/abdfnx/tran
+	arch = any
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = tran-0.1.43.tar.gz::https://github.com/abdfnx/tran/archive/refs/tags/v0.1.43.tar.gz
+	sha256sums = c71a980159299e7f1221b7b01e3214852eeba5121a0adc0e34c9dfd59b45f362
+
+pkgname = tran
