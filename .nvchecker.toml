@@ -1,0 +1,4 @@
+[keeper-commander]
+source = "git"
+git = "https://github.com/Keeper-Security/Commander.git"
+prefix = "v"
