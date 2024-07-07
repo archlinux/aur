@@ -1,7 +1,7 @@
 # Maintainer: Tomasz Pakuła <forest10pl@gmail.com>
 _reponame=boxflat
 pkgname=boxflat-git
-pkgver=0.0.1.r0.g17e3203
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="Adjust your Moza Racing gear settings"
 arch=('x86_64')
