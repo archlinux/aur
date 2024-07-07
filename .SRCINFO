@@ -1,14 +1,14 @@
 pkgbase = fish-git
 	pkgdesc = User friendly shell intended mostly for interactive use.
-	pkgver = 3.7.0.r1420.g776895274
+	pkgver = 3.7.1.r2151.g75da00df9
 	pkgrel = 1
 	epoch = 2
-	url = http://fishshell.com
+	url = https://github.com/fish-shell/fish-shell
 	install = fish.install
 	arch = i686
 	arch = x86_64
 	arch = arm
-	license = GPL2
+	license = GPL-2.0-or-later
 	checkdepends = expect
 	checkdepends = procps-ng
 	makedepends = cargo
