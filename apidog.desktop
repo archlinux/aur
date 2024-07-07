@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Apidog
+Comment=Design. Debug. Test. Document. Mock. Build APIs Faster & Together.
+Path=/opt/apidog
+Exec=/opt/apidog/apidog %U
+Icon=apidog
+Type=Application
+StartupNotify=true
+Categories=Development;Utility;
+StartupWMClass=apidog
+MimeType=x-scheme-handler/apidog
+
