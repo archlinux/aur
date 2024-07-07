@@ -1,7 +1,7 @@
 # Maintainer: Niels Huylebroeck <arch@nightwalkers.be>
 pkgname=sway-input-config
-pkgver=1.4.1
-pkgrel=2
+pkgver=1.4.2
+pkgrel=1
 license=("GPL3")
 pkgdesc="Sway Input Configurator"
 makedepends=(
@@ -14,7 +14,7 @@ depends=(
 arch=("i686" "x86_64")
 url="https://github.com/Sunderland93/sway-input-config"
 source=("https://codeload.github.com/Sunderland93/sway-input-config/zip/refs/tags/v$pkgver")
-sha256sums=('4d49e2f9384de50ec3973cc22bda148cb0e67778aa704b841e95a214b69c1534')
+sha256sums=('9c67e1bfbbd930ce3cac043a672d4df83e3b22e2d1bbcfa0a66edb041fa871bd')
 provides=("sway-input-config")
 conflicts=("sway-input-config")
 
