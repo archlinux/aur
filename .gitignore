@@ -1,4 +1,4 @@
 pkg
 src
-pascal-fc
-*.tar.xz
+pascal-fc*
+*.pkg.*

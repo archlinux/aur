@@ -1,14 +1,25 @@
---- pascal-fc/Makefile	2020-05-03 23:18:42.090959293 +0100
-+++ pascal-fc-new/Makefile	2020-05-03 23:19:35.934900459 +0100
-@@ -8,8 +8,8 @@
- 	fpc -Miso -g $<
- 
+diff --unified --recursive --text pascal-fc-1.orig/Makefile pascal-fc-1.new/Makefile
+--- pascal-fc-1.orig/Makefile	2024-07-07 21:22:09.379641877 +0100
++++ pascal-fc-1.new/Makefile	2024-07-07 21:23:11.395226477 +0100
+@@ -1,15 +1,16 @@
++FPC_FLAGS := -Miso -g -k"-z relro" -k"-z now" -k-pie -k"-z itb" -k"-z shstk"
+
+ all: pfccomp pint
+
+ pfccomp: pfccomp.pas
+-	fpc -Miso -g $<
++	fpc $(FPC_FLAGS) $<
+
+ pint: pint.pas
+-	fpc -Miso -g $<
++	fpc $(FPC_FLAGS) $<
+
  install: pfccomp pint
 -	install pint /usr/bin/
 -	install pfc /usr/bin/
 -	install pfccomp /usr/bin/
-+	install -D pint ${DESTDIR}/pint
-+	install -D pfc ${DESTDIR}/pfc
-+	install -D pfccomp ${DESTDIR}/pfccomp
- 
++	install -Dm0755 pint ${DESTDIR}/pint
++	install -Dm0755 pfc ${DESTDIR}/pfc
++	install -Dm0755 pfccomp ${DESTDIR}/pfccomp
+
  .PHONY: all install
