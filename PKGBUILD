@@ -1,7 +1,7 @@
 # Maintainer: Wolfgang Gehrhardt <gehwolf at freenet dot de>
 
 pkgname=elos
-pkgver=0.57.3
+pkgver=0.59.2
 pkgrel=1
 pkgdesc="An event logging system"
 arch=('x86_64')
@@ -43,6 +43,7 @@ package() {
   # No need to override plugin search path, use compile default /usr/lib/elos/
   _editConfig 'del(.root.elos.ClientInputs.PluginSearchPath)'
   _editConfig 'del(.root.elos.EventLogging.PluginSearchPath)'
+  _editConfig 'del(.root.elos.Scanner.PluginSearchPath)'
   _editConfig 'del(.root.elos.Scanner.Path)'
 
   # Don't need demo dummy storage backend
@@ -89,4 +90,4 @@ export ELOS_CONFIG_PATH=\"/etc/elos/elosd.json\"
   # fix elosd port in smoke test as the port is partially hard coded
   sed -i 's,54323,54321,g' "$pkgdir/${_ELOS_TEST_DIR}/smoketest.sh"
 }
-md5sums=('676ba0a5def9d4c261888caab54ddd8f')
+md5sums=('fed1f1c6e7572206f549d97eae64f86a')
