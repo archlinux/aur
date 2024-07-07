@@ -1,7 +1,7 @@
 # Maintainer: Norbert Preining <norbert@preining.info>
 _UpstreamPkgName=MeeraNew
 pkgname=rit-${_UpstreamPkgName,,}-font
-pkgver=1.5.2
+pkgver=1.6
 pkgrel=1
 pkgdesc="Sans serif font for Malayalam"
 url="https://gitlab.com/rit-fonts/${_UpstreamPkgName}"
@@ -9,7 +9,7 @@ arch=(any)
 license=(custom:SIL)
 makedepends=(fontforge git python python-fonttools python-cffsubr)
 source=("${url}/-/archive/${pkgver}/${_UpstreamPkgName}-${pkgver}.tar.bz2")
-sha256sums=('98c920b13d511703c34c40d4b99c862ca9291fba5fee3f7794239a374a958940')
+sha256sums=('6e9b30bf38229a6e519d08bf1858e03168ba0dcdf4b79432d6462bbb2fc3be74')
 
 build() {
   make -C ${_UpstreamPkgName}-${pkgver} otf
