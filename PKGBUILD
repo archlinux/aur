@@ -9,6 +9,7 @@ arch=('any')
 url="https://github.com/bitrise-io/${pkgname}"
 license=('MIT')
 depends=('glibc')
+makedepends=('go')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('70d78c8adadb6b8b945ffc6c626a158fcc417f500b612b513651a0f95dc27ea2')

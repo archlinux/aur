@@ -5,6 +5,7 @@ pkgbase = stepman
 	url = https://github.com/bitrise-io/stepman
 	arch = any
 	license = MIT
+	makedepends = go
 	depends = glibc
 	source = stepman-0.17.0.tar.gz::https://github.com/bitrise-io/stepman/archive/refs/tags/0.17.0.tar.gz
 	sha256sums = 70d78c8adadb6b8b945ffc6c626a158fcc417f500b612b513651a0f95dc27ea2
