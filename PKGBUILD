@@ -7,9 +7,9 @@ _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libxslt
 pkgver=1.1.39
-pkgrel=2
+pkgrel=3
 arch=('any')
-pkgdesc="XML stylesheet transformation library (Android, ${_android_arch})"
+pkgdesc="XML stylesheet transformation library (Android ${_android_arch})"
 url="https://gitlab.gnome.org/GNOME/libxslt/-/wikis/home"
 license=('custom:MIT')
 depends=("android-${_android_arch}-libgcrypt"
@@ -17,12 +17,19 @@ depends=("android-${_android_arch}-libgcrypt"
          "android-${_android_arch}-xz"
          'android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://gitlab.gnome.org/GNOME/libxslt/-/archive/v${pkgver}/libxslt-v${pkgver}.tar.gz")
-md5sums=('8058ddbcae9bc4a6ab75327e748561de')
+source=("https://gitlab.gnome.org/GNOME/libxslt/-/archive/v${pkgver}/libxslt-v${pkgver}.tar.gz"
+        '0001-Allow-undefined.patch'
+        '0002-Disable-programs-test-docs.patch')
+md5sums=('8058ddbcae9bc4a6ab75327e748561de'
+         '44cd43c2b6e620197a78aa2973a23f0c'
+         '4714fbe1c074ab7dc3bc43feeb2ff250')
 
 prepare() {
     cd "$srcdir/libxslt-v$pkgver"
     source android-env ${_android_arch}
+
+    patch -p1 -i ../0001-Allow-undefined.patch
+    patch -p1 -i ../0002-Disable-programs-test-docs.patch
 
     NOCONFIGURE=1 ./autogen.sh
 }
@@ -41,10 +48,7 @@ package() {
     source android-env ${_android_arch}
 
     make DESTDIR="$pkgdir" install
-    rm -rf "$pkgdir/${ANDROID_PREFIX_BIN}"
-    rm -rf "$pkgdir/${ANDROID_PREFIX_SHARE}/doc"
-    rm -rf "$pkgdir/${ANDROID_PREFIX_SHARE}/gtk-doc"
     rm -rf "$pkgdir/${ANDROID_PREFIX_SHARE}/man"
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
