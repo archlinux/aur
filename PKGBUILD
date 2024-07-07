@@ -4,7 +4,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-libdrm
-pkgver=2.4.121
+pkgver=2.4.122
 pkgrel=1
 arch=('any')
 pkgdesc="Userspace interface to kernel DRM services (Android ${_android_arch})"
@@ -13,9 +13,9 @@ license=('custom')
 depends=("android-${_android_arch}-libpciaccess")
 makedepends=('android-meson')
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://dri.freedesktop.org/libdrm/libdrm-$pkgver.tar.xz"
+source=("https://dri.freedesktop.org/libdrm/libdrm-${pkgver}.tar.xz"
         '0001-Disable-open_memstream.patch')
-md5sums=('9eaa82b7b7a79972c6b11dd25a4356b1'
+md5sums=('143c8df50e09cd1eeb1fb53f05ecb64a'
          'b01f3f9e59e04924adcc3385e634c8dc')
 
 prepare() {
@@ -31,9 +31,7 @@ build() {
     cd "${srcdir}/libdrm-${pkgver}"
     source android-env ${_android_arch}
 
-    mkdir -p build
-    cd build
-    android-${_android_arch}-meson \
+    android-${_android_arch}-meson build \
         --default-library both \
         -D udev=true \
         -D etnaviv=disabled \
@@ -43,14 +41,14 @@ build() {
         -D install-test-programs=false \
         -D man-pages=disabled \
         -D tests=false
-    ninja
+    ninja -C build
 }
 
 package() {
-    cd "${srcdir}/libdrm-${pkgver}/build"
+    cd "${srcdir}/libdrm-${pkgver}"
     source android-env ${_android_arch}
 
-    DESTDIR="${pkgdir}" ninja install
+    DESTDIR="${pkgdir}" ninja -C build install
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_RANLIB} "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
