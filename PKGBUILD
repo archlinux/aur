@@ -37,7 +37,7 @@ GenericName=torctl-gui
 GenericName[ru]=torctl-gui
 Categories=Utils;
 Type=Application
-Exec=torctl-gui %F
+Exec=env GDK_BACKEND=x11 torctl-gui %F
 Icon=tor
 StartupNotify=true
 Terminal=false
