@@ -3,18 +3,18 @@
 # Contributor: Acidhub <dev@acidhub.click>
 
 pkgname=steam-tools-ng
-pkgver=3.2
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="Some useful tools for use with steam client or compatible programs, websites"
 arch=('any')
 url="https://github.com/calendulish/steam-tools-ng"
-depends=('python>=3.9' 'python-certifi' 'python-aiohttp' 'python-stlib>=2.0' 'python-stlib-plugins>=1.2.3' 'python-gobject' 'gtk4' 'xdg-utils')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-gettext' 'imagemagick')
+depends=('python>=3.10' 'python-certifi' 'python-aiohttp' 'python-stlib>=2.1' 'python-stlib-plugins>=1.2.3' 'python-gobject' 'gtk4' 'xdg-utils')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools-gettext' 'imagemagick')
 license=('GPL')
 source=(
     "https://github.com/calendulish/$pkgname/archive/v${pkgver}.tar.gz"
 )
-sha256sums=('3d6545858817d33766ae96c0368c5b3a6617a241548354ad9fbe9c2c4802b61f')
+sha256sums=('c61e0eedcad58f8cf25dc4830b6cb74ecd505558eb2aabee4fb4ff1324949f9b')
 
 build() {
     cd $pkgname-$pkgver
