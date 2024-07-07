@@ -4,7 +4,7 @@
 pkgname=python-viztracer
 _pkgname=viztracer
 pkgver=0.16.3
-pkgrel=4
+pkgrel=5
 pkgdesc='VizTracer is a low-overhead logging/debugging/profiling tool that can trace and visualize your python code execution.'
 arch=('x86_64')
 url="https://github.com/gaogaotiantian/viztracer"
@@ -29,14 +29,15 @@ prepare() {
   cd "$srcdir/$_pkgname-$pkgver" || exit
 
   # Avoid exceeding maximum recursion depth.
-  sed -i "s|call_self(1000)|call_self(888)|g" tests/test_vcompressor.py
+  sed -i "s|call_self(1000)|call_self(987)|g" tests/test_vcompressor.py
 
-  # Disable external processor testing because we don't have it.
+  # Disable it because the external processor is something that the script should download from google.
   sed -i "s|use_external_processor=True|use_external_processor=False|g" tests/test_viewer.py
 
   # Attach is not working, this is some black magic and is OS-dependent.
   rm tests/test_remote.py
 
+  # Remove extreme tests in vcompressor test.
   patch -Np1 < ../447.patch
 }
 
