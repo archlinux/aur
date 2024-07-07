@@ -7,7 +7,8 @@ pkgbase = customfetch-git
 	arch = aarch64
 	license = GPL3
 	makedepends = base-devel
-	conflicts = customfetch-git
+	depends = libprocps
+	conflicts = customfetch-gui-git
 	source = git+https://github.com/Toni500github/customfetch.git
 	sha256sums = SKIP
 
