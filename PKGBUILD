@@ -1,13 +1,13 @@
 # Maintainer: Robin Candau <antiz@archlinux.org>
 
 pkgname=arch-update
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="An update notifier/applier that assists you with important pre/post update tasks."
 arch=('any')
 url="https://github.com/Antiz96/arch-update"
 license=('GPL-3.0-or-later')
-depends=('bash' 'pacman-contrib' 'curl' 'htmlq' 'diffutils' 'hicolor-icon-theme' 'python' 'python-pyqt6' 'qt6-svg' 'glib2')
+depends=('bash' 'pacman-contrib' 'archlinux-contrib' 'curl' 'htmlq' 'diffutils' 'hicolor-icon-theme' 'python' 'python-pyqt6' 'qt6-svg' 'glib2')
 optdepends=('yay: AUR Packages support'
             'paru: AUR Packages support'
             'flatpak: Flatpak Packages support'
@@ -17,7 +17,7 @@ optdepends=('yay: AUR Packages support'
             'sudo: Privilege elevation'
             'doas: Privilege elavation')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('f67abeaa7770c6ccc1712d6d109f22f1192c13f6004af609ba4746d8cd24c8fd')
+sha256sums=('022f6c9974bf13d22b3839ebf2001fb178c70b1d15bafe6b330fcee4fbdf0709')
 
 package() {
 	cd "${pkgname}-${pkgver}"
