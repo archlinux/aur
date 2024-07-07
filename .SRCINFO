@@ -1,0 +1,14 @@
+pkgbase = lstags
+	pkgdesc = Manipulate Docker images across different registries
+	pkgver = 1.2.23
+	pkgrel = 1
+	url = https://github.com/ivanilves/lstags
+	arch = any
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	depends = docker
+	source = lstags-1.2.23.tar.gz::https://github.com/ivanilves/lstags/archive/refs/tags/v1.2.23.tar.gz
+	sha256sums = 43ecc6b925e85cb6656b0114cc1404611cb5a4c50e0eeda80bcf5727ebf8c187
+
+pkgname = lstags
