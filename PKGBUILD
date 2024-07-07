@@ -19,7 +19,7 @@ source=("$pkgname-$_pkgver.tar.gz::https://github.com/vinceliuice/vimix-gtk-them
 sha256sums=('485de0ff418424587871e6000774ced40ca04a704c381504fccdddca07c66f9d')
 
 package() {
-  cd "$pkgname-$_pkgver"
+  cd "Vimix-gtk-themes-$_pkgver"
   install -d "$pkgdir/usr/share/themes"
   ./install.sh -t all -s all -d "$pkgdir/usr/share/themes"
 }
