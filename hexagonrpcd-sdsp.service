@@ -1,13 +1,14 @@
 [Unit]
-Name=Hexagonrpcd SDSP
-Description=Daemon to support Qualcomm Hexagon SDSP virtual filesystem
+Description=Hexagonrpcd SDSP Daemon to support Qualcomm Hexagon SDSP virtual filesystem
 Requires=dev-fastrpc\x2dsdsp.device
 After=dev-fastrpc\x2dsdsp.device
+Before=iio-sensor-proxy.service
 
 [Service]
 User=fastrpc
 Group=fastrpc
-ExecStart=/usr/bin/hexagonrpcd -f /dev/fastrpc-sdsp -s
+EnvironmentFile=/etc/conf.d/hexagonrpcd-sdsp
+ExecStart=/usr/bin/hexagonrpcd -f /dev/fastrpc-sdsp -s -R $(hexagonrpcd_fw_dir)
 
 [Install]
 WantedBy=multi-user.target

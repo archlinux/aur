@@ -2,7 +2,7 @@
 
 pkgname=(hexagonrpcd)
 pkgdesc="Qualcomm HexagonFS daemon"
-pkgver=0.1.0.r0.g23b7681
+pkgver=0.3.2.r0.gb7eff23
 pkgrel=1
 arch=(any)
 license=(GPL-3.0-or-later)
@@ -13,37 +13,29 @@ makedepends=(
     meson
     git
 )
-_commit=23b7681f3faad422fa5751886f901bf03775243d  # tags/0.1.0^0
+_commit=b7eff23db1b11541d11175bd3f42bd4c85214baf  # tags/0.3.2^0
 source=(
-    "git+https://gitlab.com/flamingradian/sensh.git#commit=$_commit"
+    "git+https://gitlab.com/sdm670-mainline/hexagonrpc.git#commit=$_commit"
     10-fastrpc.rules
-    noshared.patch
     hexagonrpcd-adsp-rootpd.service
     hexagonrpcd-adsp-sensorspd.service
     hexagonrpcd-sdsp.service
 )
 sha256sums=(
-    SKIP
+    58ad8305f9cc06885dd2e589ed8637b1b8428f6930c7f36001b6b4570cfabd81
     41dfc4e8c4fd88f461a5a6e4a4e86849eb302f8bcb2b5ce2efa9690f5415d52d
-    2b22f7c6ab7e9dce334aa219cd1b07f4fadab1679f5f39a0da5631e2ee0bc0fa
-    545d9db944cd3237fa3aec6de69837c7d5091d290092846e561b73529964d46f
-    8034ebd8d4a7301d29ba7badbd87c165379272c8d99a32d75c68715cbceb9ff1
-    67a474836f161055dedcaf99ecc32a9995127fce5ecca2d25d7b9d460cdf7413
+    9f82737b2a224e5204594e5f434f41579a4cf35b17f773101e2697195e239355
+    af622a786627faf6026d39b62633b6342efb258669345c17826f0c78cbe759cf
+    93dfa9580f901af0b7b26cabcb8121591281cdc813251f1d959266c80578b029
 )
 
 pkgver() {
-  cd sensh
+  cd hexagonrpc
   git describe --long --abbrev=7 --tags $_commit | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd sensh
-
-  git apply ../noshared.patch
-}
-
 build() {
-  arch-meson sensh/fastrpc build
+  arch-meson hexagonrpc build
   meson compile -C build
 }
 

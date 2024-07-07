@@ -1,13 +1,14 @@
 [Unit]
-Name=Hexagonrpcd ADSP SensorPD
-Description=Daemon to support Qualcomm Hexagon ADSP virtual filesystem for SensorPD
+Description=Hexagonrpcd ADSP SensorPD Daemon to support Qualcomm Hexagon ADSP virtual filesystem for SensorPD
 Requires=dev-fastrpc\x2dadsp.device
 After=dev-fastrpc\x2dadsp.device
+Before=iio-sensor-proxy.service
 
 [Service]
 User=fastrpc
 Group=fastrpc
-ExecStart=/usr/bin/hexagonrpcd -f /dev/fastrpc-adsp -s
+EnvironmentFile=/etc/conf.d/hexagonrpcd-adsp-sensorpd
+ExecStart=/usr/bin/hexagonrpcd -f /dev/fastrpc-adsp -s -R $(hexagonrpcd_fw_dir)
 
 [Install]
 WantedBy=multi-user.target
