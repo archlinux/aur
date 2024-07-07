@@ -1,10 +1,11 @@
-# Maintainer: Filipe Laíns (FFY00) <lains@archlinux.org>
+# Maintainer: Dan Printzell <wild@archlinux.org>
+# Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=glibd
 _pkgname=GlibD
 pkgver=2.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc='D bindings for the GLib C Utility Library'
 arch=('x86_64')
 url='https://github.com/gtkd-developers/GlibD'

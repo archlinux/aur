@@ -1,7 +1,7 @@
 pkgbase = glibd
 	pkgdesc = D bindings for the GLib C Utility Library
 	pkgver = 2.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gtkd-developers/GlibD
 	arch = x86_64
 	license = LGPL-3.0-or-later
