@@ -6,7 +6,7 @@ pkgver=0.3.2.r0.gb7eff23
 pkgrel=1
 arch=(any)
 license=(GPL-3.0-or-later)
-url="https://gitlab.com/flamingradian/sensh/"
+url="https://gitlab.com/sdm845-mainline/hexagonrpc/"
 depends=(glibc)
 makedepends=(
     linux-headers
