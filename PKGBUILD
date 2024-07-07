@@ -1,8 +1,6 @@
 
 # Maintainer: BadBoy <luckmelove2@gmail.com>
 #
-# https://data.nephobox.com/issue/terabox/Linux/1.5.0/TeraBox_1.5.0_amd64.deb
-
 pkgname='terabox-bin'
 _pkgname="$(echo $pkgname |cut -d - -f 1 | tr 'tb' 'TB')"
 pkgver='1.5.0'
