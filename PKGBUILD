@@ -6,7 +6,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
-pkgname=librewolf-hg
+# pkgname=librewolf-hg
 _pkgname=librewolf-nightly
 __pkgname="Librewolf Nightly"
 pkgver=92.0a1.r655136.a8a4dfcadce5
@@ -17,21 +17,21 @@ license=(MPL GPL LGPL)
 url="https://librewolf-community.gitlab.io/"
 depends=(gtk3 libxt mime-types dbus-glib
          nss-hg ttf-font libpulse xorg-server-xwayland
-         libvpx libwebp libjpeg zlib icu libevent pipewire mercurial)
+         libvpx libwebp libjpeg zlib icu libevent pipewire)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils ccache
              rust xorg-server-xvfb
-               clang llvm jack nodejs cbindgen nasm
-             python-setuptools python-psutil python-zstandard git binutils ld dump_syms wasi-sdk)
-optdepends=(
-	'networkmanager: Location detection via available WiFi networks'
-	'libnotify: Notification integration'
-	'pulseaudio: Audio support' 
-	'speech-dispatcher: Text-to-Speech'
-	'hunspell-en_US: Spell checking, American English' 
-	'xdg-desktop-portal: Screensharing with Wayland' 
-	'libappindicator-gtk3: Global menu support for GTK apps' 
-	'appmenu-gtk-module: Appmenu for GTK only'
-)
+             mercurial clang llvm jack nodejs cbindgen nasm
+             python-setuptools python-psutil python-zstandard git binutils lld dump_syms
+             )
+optdepends=('networkmanager: Location detection via available WiFi networks'
+            'libnotify: Notification integration'
+            'pulseaudio: Audio support'
+            'speech-dispatcher: Text-to-Speech'
+            'hunspell-en_US: Spell checking, American English'
+            'xdg-desktop-portal: Screensharing with Wayland'
+            'libappindicator-gtk3: Global menu support for GTK apps'
+            'appmenu-gtk-module: Appmenu for GTK only'
+            )
 depends_x86_64=(ffmpeg)
 depends_aarch64=(ffmpeg)
 backup=('usr/lib/librewolf-nightly/librewolf.cfg'
@@ -399,3 +399,4 @@ END
   ln -srf "$pkgdir"/usr/lib/${_pkgname}/librewolf \
           "$pkgdir"/usr/bin/$_pkgname
 }
+
