@@ -2,7 +2,7 @@
 
 pkgname=tuxguitar-bin
 _name=tuxguitar
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="TuxGuitar is an Open Source multitrack tablature editor and player written in Java."
 arch=('x86_64')
@@ -11,14 +11,14 @@ license=('LGPL')
 depends=('java-runtime' 'alsa-lib')
 optdepends=('jack' 'fluidsynth' 'soundfont-unison')
 options=('!strip')
-source=("https://github.com/helge17/tuxguitar/releases/download/$pkgver/$_name-$pkgver-linux-swt-x86_64.tar.gz"
+source=("https://github.com/helge17/tuxguitar/releases/download/$pkgver/$_name-$pkgver-linux-swt-amd64.tar.gz"
         "$pkgname.sh")
-sha256sums=('3a4b3500031953ae03bf09ff508ea50b583c0d7dfe6f37ea16635b167adb0bc6'
+sha256sums=('78ed94e851533b3dac47f64dd809ae8b60ec58c19c7c59052772e1833cabe9a3'
             '3161e7eae2d4bc03a7108f01b8773b6101762c34876cfc948dfb441bb3836b48')
 
 package() {
     install -d -m755 "$pkgdir/opt/$_name"
     install -D -m755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
-    cd "$srcdir/$_name-$pkgver-linux-swt-x86_64"
+    cd "$srcdir/$_name-$pkgver-linux-swt-amd64"
     cp -r * "$pkgdir/opt/$_name"
 }
