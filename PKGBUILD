@@ -46,7 +46,7 @@ package() {
     cp -a "./data/local/man/"*".1" "$pkgdir/usr/share/man/man1/"
 
     install -Dm644 "./data/local/completions/$_pkgname.bash" "$pkgdir/usr/share/bash-completion/completions/$_pkgname.bash"
-    install -Dm644 "./data/local/completions/$_pkgname.fish" "$pkgdir/usr/share/fish/vendor_completions/$_pkgname.fish"
+    install -Dm644 "./data/local/completions/$_pkgname.fish" "$pkgdir/usr/share/fish/vendor_completions.d/$_pkgname.fish"
     install -Dm644 "./data/local/completions/_$_pkgname" "$pkgdir/usr/share/zsh/site-functions/_$_pkgname"
 
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
