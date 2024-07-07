@@ -5,7 +5,7 @@
 
 _pkgname='osmnx'
 pkgname="python-${_pkgname}"
-pkgver=1.2.2
+pkgver=1.9.3
 pkgrel=1
 pkgdesc='Retrieve, model, analyze, and visualize OpenStreetMap street networks and other spatial data'
 arch=('any')
@@ -25,20 +25,18 @@ depends=('python-descartes'
         'python-scikit-learn'
         'python-scipy'
         'python-shapely')
-makedepends=('python-setuptools')
+makedepends=(python-build python-installer python-wheel)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('30924452ca02758ece3301f9fcfb1b80edf31e2be7abe7fa7e0fefddb5050408')
+sha256sums=('22548d86d68d36edff3cf9ab76c45745cda86a4ea0b28442e107d6b42992a426')
 
 build() {
   cd "${_pkgname}-${pkgver}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${_pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dvm644 'LICENSE.txt' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
 # vim: ts=2 sw=2 et:
