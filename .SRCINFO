@@ -7,6 +7,7 @@ pkgbase = blockbar-git
 	arch = i686
 	arch = x86_64
 	license = ZLIB
+	makedepends = git
 	depends = cairo
 	depends = pango
 	depends = libxrandr
