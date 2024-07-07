@@ -2,12 +2,12 @@
 
 _pkgname=cubic-rce-bot
 pkgname=$_pkgname-git
-pkgver=1.0.0.r0.g820c2d7
+pkgver=1.1.2.r0.g7c291d4
 pkgrel=1
 pkgdesc="Execute commands on a remote host via a Telegram bot"
 arch=('x86_64' 'aarch64')
 url="https://github.com/database64128/$_pkgname"
-license=('AGPL3')
+license=('AGPL-3.0-or-later')
 makedepends=('git' 'go')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
