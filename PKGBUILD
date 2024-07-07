@@ -10,7 +10,7 @@
 _pkgname="sourcetrail"
 pkgname="$_pkgname"
 pkgver=2024.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Interactive source explorer for C/C++ and Java'
 url='https://github.com/xiota/sourcetrail'
 license=('GPL-3.0-only')
@@ -89,16 +89,17 @@ package() {
   # data
   local _data_path="$pkgdir/$_install_path/$_pkgname/data"
   install -dm755 "$_data_path"
-  cp -a "$_pkgsrc"/bin/app/data/color_schemes "$_data_path/"
-  cp -a "$_pkgsrc"/bin/app/data/fallback "$_data_path/"
-  cp -a "$_pkgsrc"/bin/app/data/fonts "$_data_path/"
-  cp -a "$_pkgsrc"/bin/app/data/gui "$_data_path/"
-  cp -a "$_pkgsrc"/bin/app/data/java "$_data_path/"
-  cp -a "$_pkgsrc"/bin/app/data/license "$_data_path/"
-  cp -a "$_pkgsrc"/bin/app/data/syntax_highlighting_rules "$_data_path/"
-  cp -a "$_pkgsrc"/bin/app/user/projects "$_data_path/fallback/"
+  for i in color_schemes fallback fonts gui java license syntax_highlighting_rules; do
+    cp -a "$_pkgsrc/bin/app/data/$i" "$_data_path/"
+  done
 
-  cp -a "build/app/data/cxx" "$_data_path/"
+  # languages
+  for i in cxx java python; do
+    cp -a "build/app/data/$i" "$_data_path/"
+  done
+
+  # examples
+  cp -a "$_pkgsrc"/bin/app/user/projects "$_data_path/fallback/"
 
   # icon
   install -Dm644 "$_pkgname.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
