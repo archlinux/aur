@@ -1,6 +1,12 @@
 Changelog
 =========
 
+**[5.7.0] ----- 2024-07-06** ::
+
+	    --status as root now displays ssh/resolv for other users if active
+	    update Docs/Changelog.rst Docs/wg-client.pdf
+
+
 **[5.6.0] ----- 2024-07-04** ::
 
 	    Improve comments and log more in wg-fix-resolv
