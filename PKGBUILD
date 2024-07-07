@@ -35,5 +35,7 @@ EOF
 
   # Copy source and Makefile
   find . -type f | grep -vE '(\.git|\.gitignore|\.gitmodules|dkms.conf|.*\.ko|.*\.mod|.*\.cmd|.*\.o)' | xargs -n1 -I@ install -Dm644 @ "$pkgdir/usr/src/$_pkgname-$pkgver/@"
+
+  install -Dm644 udev-50-tenstorrent.rules "$pkgdir/usr/lib/udev/rules.d/50-tenstorrent.rules"
 }
 
