@@ -3,10 +3,10 @@ _pkgname=torzu
 pkgname=torzu
 pkgver=2024.05.31
 _pkgver=2024-05-31
-pkgrel=2
+pkgrel=3
 pkgdesc="Torzu is a fork of yuzu, the world's most popular, open-source, Nintendo Switch emulator. It is written in C++ with portability in mind."
 arch=(x86_64)
-url=https://github.com/litucks/torzu
+url=https://codeberg.org/litucks/torzu.git
 license=(GPL-3.0-or-later)
 provides=('torzu')
 depends=('alsa-lib' 'brotli' 'catch2' 'enet' 'llvm-libs' 'freetype2' 'gcc-libs' 'glibc' 'glu' 'hicolor-icon-theme' 'gamemode' 'libass' 'libpulse' 'libtool' 'libvdpau' 'lz4' 'qt5-base' 'qt5-multimedia' 'qt5-webengine' 'sdl2' 'zlib')
@@ -14,7 +14,7 @@ makedepends=('curl' 'autoconf' 'cmake' 'gcc13' 'git' 'glslang' 'alsa-lib' 'glu' 
 conflicts=('torzu-git')
 options=(!debug lto strip)
 source=(
-  git+https://github.com/litucks/torzu#tag=$_pkgver
+  git+https://codeberg.org/litucks/torzu.git#tag=$_pkgver
   git+https://github.com/lsalzman/enet.git
   cubeb::git+http://github.com/mozilla/cubeb.git
   git+https://github.com/libusb/libusb.git
@@ -67,6 +67,7 @@ b2sums=('SKIP'
 
 prepare() {
   cd "$srcdir/$_pkgname"
+  git submodules update --init --recursive --depth 1
   for submodule in {enet,cubeb,libusb,xbyak,opus,SDL,cpp-httplib,ffmpeg,vcpkg,libadrenotools,tzdb_to_nx,simpleini,oaknut,SPIRV-Headers,SPIRV-Tools,fmt,Vulkan-Utility-Libraries,VulkanMemoryAllocator,Vulkan-Headers};
   do
     git config --file=.gitmodules submodule.$submodule.url "${srcdir}"/$submodule
