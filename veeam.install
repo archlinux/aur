@@ -23,7 +23,6 @@ pre_remove() {
     echo "pre remove"
     systemctl stop veeamservice.service
     systemctl disable veeamservice.service
-    rm -rf /var/lib/veeam
     rm -rf /var/log/veeam
     echo "."
 }
