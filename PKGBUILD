@@ -1,6 +1,6 @@
 # Maintainer: Aryan Ghasemi <t.me/gnuphile>
 pkgname="hiddify-next-appimage"
-pkgver=1.4.0
+pkgver=1.4.1.dev
 _pkgname='hiddify'
 _archive="$_pkgname-$pkgver"
 pkgrel=1
@@ -16,13 +16,13 @@ source=(
         "${_archive}.AppImage::https://github.com/hiddify/hiddify-next/releases/download/v${pkgver}/Hiddify-Linux-x64.AppImage"
         "hiddify.desktop"
         "LICENSE.md")
-sha256sums=('118f3d55b2bf6a549e96e7f93d66ecb9f68facdef4d49cbc2ceb856c69f1123b'
+sha256sums=('d8ebc63e2295f805670983fb8c3b6f1f94fec64fdd28ac55fc4a224ba125a6c1'
             '10412d168e2aeec3ab1c4c34b0ca8e480ea4ebb124b12f63580b677e5fb8859b'
             'f609d73370ca62925ba8c796afeeb7fb42f4a1569124f84cb25b7026c026d78a')
 
 prepare() {
     chmod +x "${_archive}.AppImage"
-    ./"${_archive}".AppImage --appimage-extract
+    ./"${_archive}".AppImage --appimage-extract >/dev/null
 }
 
 package() {
