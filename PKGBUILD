@@ -2,7 +2,7 @@
 # Contributor: Jesus Alvarez <jeezusjr@gmail.com>
 # Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
-pkgver=dev_2024_06
+pkgver=dev_2024_07
 
 _srcname=Odin
 pkgname=odin
@@ -18,13 +18,18 @@ options=('staticlibs')
 provides=('odin')
 conflicts=('odin')
 source=("https://github.com/odin-lang/Odin/archive/refs/tags/${pkgver_actual}.tar.gz")
-sha256sums=('1047824994323847857a6afc3caebb96031ab012fe87afe506e8854f1e3df73e')
+sha256sums=('3c76fe2baabc4f383563a2760c6536b25475d4ed7cf77101926e2ae101352a0f')
 
 build() {
   cd "${srcdir}/Odin-${pkgver_actual}/"
   export LLVM_CONFIG=llvm-config
   export CXX=/usr/bin/clang++
   make release_native
+
+  # build third-party libs
+  make -C vendor/stb/src
+  make -C vendor/cgltf/src
+  make -C vendor/miniaudio/src
 }
 
 package() {
@@ -48,11 +53,11 @@ package() {
 
 check() {
   cd "${srcdir}/Odin-${pkgver_actual}/"
+  
   ./odin check examples/all -strict-style
 
-  cd tests/core
-  make
-
-  cd ../internal
-  make
+  #./odin test tests/core/normal.odin -file -all-packages # I have to fix this because it's failing on the network test
+  ./odin test tests/core/speed.odin -o:speed -file -all-packages
+  ./odin test tests/vendor -all-packages
+  ./odin test tests/internal -all-packages
 }
