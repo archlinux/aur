@@ -4,17 +4,19 @@
 # Contributor: mickybart <mickybart@pygoscelis.org>
 
 pkgname=kops-beta-bin
-pkgver=v1.30.0_alpha.1
+pkgver=v1.30.0_beta.1
 _build=${pkgver//_/-}
 pkgrel=1
 pkgdesc='Kubernetes Operations Prerelease builds - Production Grade K8s Installation, Upgrades, and Management'
 url='https://github.com/kubernetes/kops'
-arch=('x86_64')
+arch=(x86_64 aarch64)
 license=('apache')
 conflicts=('kops-bin' 'kops')
 
-source=("https://github.com/kubernetes/kops/releases/download/${_build}/kops-linux-amd64")
-sha256sums=('ba13da0dd2a5fb813a00fbf128f67a956180e6e642a20e47a0a4d0880c7ac94b')
+source_x86_64=("https://github.com/kubernetes/kops/releases/download/${_build}/kops-linux-amd64")
+source_aarch64=("https://github.com/kubernetes/kops/releases/download/${_build}/kops-linux-arm64")
+sha256sums_x86_64=('026f7e8635f57e088277819eb5fe1d263ed4047dead28d2d89bd56451f725e5f')
+sha256sums_aarch64=('4f155e5600306af576ba60ade853b3cfa9d1d72570291ce9c1e1ef78627d8928')
 
 package() {
     install -d ${pkgdir}/usr/bin
