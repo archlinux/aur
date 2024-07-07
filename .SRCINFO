@@ -7,6 +7,9 @@ pkgbase = sapm-git
 	license = MIT
 	makedepends = git
 	makedepends = cargo
+	provides = sapm
+	conflicts = sapm
+	conflicts = sapm-bin
 	source = git+https://github.com/Dyredhead/sapm.git
 	sha256sums = SKIP
 
