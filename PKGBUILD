@@ -1,13 +1,13 @@
 # Maintainer: Jonathan Neidel <aur at jneidel dot com>
 
 pkgname=bandcamp-dl-git
-pkgver=v0.0.13.r4.ge21bb65
+pkgver=v0.0.13.r38.gd454199
 pkgrel=1
-pkgdesc="download audio from BandCamp.com"
+pkgdesc="Download audio from bandcamp.com"
 arch=('any')
 url="https://github.com/iheanyi/bandcamp-dl"
 license=('Unlicense')
-makedepends=('git')
+makedepends=('git' 'python-build' 'python-installer')
 depends=(
   'python'
   'python-beautifulsoup4'
@@ -31,9 +31,13 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+build() {
+  cd "$srcdir/${pkgname/-git/}"
+  python -m build --wheel --no-isolation
+}
+
 package() {
   cd "$srcdir/${pkgname/-git/}"
-  sed -i -e 's#json+ld#ld+json#' bandcamp_dl/bandcampjson.py
-  python setup.py install --root="$pkgdir/" --optimize=1
-  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE.txt"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm 643 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
