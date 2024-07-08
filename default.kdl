@@ -1,0 +1,132 @@
+category "Action Map" {
+	params "action_object_map" "action_ref_map" "action_type_map"
+}
+category "AliExpress.com" {
+	params "aff_platform" "aff_trace_key" "algo_expid@*.aliexpress.*" "algo_pvid@*.aliexpress.com" "btsid@*.aliexpress.com" "expid@*.aliexpress.com" "initiative_id@*.aliexpress.com" "scm_id@*.aliexpress.com" "spm@*.aliexpress.com" "ws_ab_test*.aliexpress.com"
+}
+category "Amazon" {
+	params "_encoding@amazon.*" "ascsubtag@amazon.*" "pd_rd_*@amazon.*" "pf@amazon.*" "pf_rd_*@amazon.*" "psc@amazon.*" "ref_@amazon.*" "tag@amazon.*"
+}
+category "Bilibili.com" {
+	params "callback@bilibili.com"
+}
+category "Bing" {
+	params "cvid@bing.com" "form@bing.com" "pq@bing.com" "qs@bing.com" "sc@bing.com" "sk@bing.com" "sp@bing.com"
+}
+category "Campaign tracking (Adobe Analytics)" {
+	params "sc_cid"
+}
+category "Campaign tracking (Adobe Marketo)" {
+	params "mkt_tok"
+}
+category "Campaign tracking (Amazon Kendra)" {
+	params "trk" "trkCampaign"
+}
+category "Campaign tracking (at)" {
+	params "at_campaign" "at_custom*" "at_medium"
+}
+category "Campaign tracking (Change.org)" {
+	params "guest@change.org" "recruited_by_id@change.org" "recruiter@change.org" "short_display_name@change.org" "source_location@change.org"
+}
+category "Campaign tracking (DPG Media)" {
+	params "dpg_*"
+}
+category "Campaign tracking (Google Analytics ga)" {
+	params "ga_*" "gclid" "gclsrc"
+}
+category "Campaign tracking (Humble Bundle)" {
+	params "hmb_campaign" "hmb_medium" "hmb_source"
+}
+category "Campaign tracking (IBM Acoustic Campaign)" {
+	params "spJobID" "spMailingID" "spReportId" "spUserID"
+}
+category "Campaign tracking (itm)" {
+	params "itm_*"
+}
+category "Campaign tracking (Omniture)" {
+	params "s_cid"
+}
+category "Campaign tracking (Oracle Eloqua)" {
+	params "assetId" "assetType" "campaignId" "elqTrack" "elqTrackId" "recipientId" "siteId"
+}
+category "Campaign tracking (MailChimp)" {
+	params "mc_cid" "mc_eid"
+}
+category "Campaign tracking (Matomo/Piwik)" {
+	params "mtm_*" "pk_*"
+}
+category "Campaign tracking (ns)" {
+	params "ns_*"
+}
+category "Campaign tracking (sc)" {
+	params "sc_campaign" "sc_channel" "sc_content" "sc_country" "sc_geo" "sc_medium" "sc_outcome"
+}
+category "Campaign tracking (stm)" {
+	params "stm_*"
+}
+category "Campaign tracking (utm)" {
+	params "nr_email_referer" "utm_*"
+}
+category "Campaign tracking (Vero)" {
+	params "vero_conv" "vero_id"
+}
+category "Campaign tracking (Yandex)" {
+	params "_openstat" "yclid"
+}
+category "Campaign tracking (others)" {
+	params "c_id" "campaign_id" "Campaign" "cmpid" "mbid" "ncid"
+}
+category "Caseking.de" {
+	params "campaign@caseking.de" "sPartner@caseking.de"
+}
+category "Ebay" {
+	params "hash@ebay.*" "_trkparms@ebay.*" "_trksid@ebay.*" "amdata@ebay.*" "epid@ebay.*" "hash@ebay.*" "var@ebay.*"
+}
+category "Etsy" {
+	params "click_key@etsy.com" "click_sum@etsy.com" "organic_search_click@etsy.com" "ref@etsy.com"
+}
+category "Facebook" {
+	params "fb_action_ids" "fb_action_types" "fb_ref" "fb_source" "fbclid" "hrc@facebook.com" "refsrc@facebook.com"
+}
+category "Google" {
+	params "ei@google.*" "gs_gbg@google.*" "gs_l" "gs_lcp@google.*" "gs_mss@google.*" "gs_rn@google.*" "gws_rd@google.*" "sei@google.*" "ved@google.*"
+}
+category "Hubspot" {
+	params "_hsenc" "_hsmi" "__hssc" "__hstc" "hsCtaTracking"
+}
+category "IMDb" {
+	params "pf_rd_*@imdb.com" "ref_@imdb.com"
+}
+category "LinkedIn" {
+	params "eBP@linkedin.com" "lgCta@linkedin.com" "lgTemp@linkedin.com" "lipi@linkedin.com" "midSig@linkedin.com" "midToken@linkedin.com" "recommendedFlavor@linkedin.com" "refId@linkedin.com" "trackingId@linkedin.com" "trk@linkedin.com" "trkEmail@linkedin.com"
+}
+category "Medium" {
+	params "_branch_match_id@medium.com" "source@medium.com"
+}
+category "SourceForge.net" {
+	params "position@sourceforge.net" "source@sourceforge.net"
+}
+category "Spotify" {
+	params "context@open.spotify.com" "si@open.spotify.com"
+}
+category "TikTok" {
+	params "_d@tiktok.com" "checksum@tiktok.com" "is_copy_url@tiktok.com" "is_from_webapp@tiktok.com" "language@tiktok.com" "preview_pb@tiktok.com" "sec_user_id@tiktok.com" "sender_device@tiktok.com" "sender_web_id@tiktok.com" "share_app_id@tiktok.com" "share_link_id@tiktok.com" "share_item_id@tiktok.com" "source@tiktok.com" "timestamp@tiktok.com" "tt_from@tiktok.com" "u_code@tiktok.com" "user_id@tiktok.com"
+}
+category "Twitch.tv" {
+	params "tt_content" "tt_medium"
+}
+category "Twitter" {
+	params "cxt@*.twitter.com" "ref_*@*.twitter.com" "s@*.twitter.com" "t@*.twitter.com" "twclid"
+}
+category "Yahoo" {
+	params "guccounter@*.yahoo.com" "soc_src" "soc_trk"
+}
+category "Yandex" {
+	params "lr@yandex.*" "redircnt@yandex.*"
+}
+category "YouTube.com" {
+	params "feature@youtube.com" "kw@youtube.com"
+}
+category "Zeit.de" {
+	params "wt_mc" "wt_zmc"
+}

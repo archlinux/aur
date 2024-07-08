@@ -16,7 +16,7 @@ depends=('systemd')
 makedepends=('cargo' 'git')
 source=(
 	"${_pkgname}::git+https://github.com/AgathaSorceress/url-eater.git"
-	"default.kdl::https://thermalpaste.technogothic.net/Eh00rL.kdl"
+	"default.kdl"
 	"url-eater.service"
 )
 sha256sums=('SKIP'
