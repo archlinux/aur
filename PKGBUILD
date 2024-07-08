@@ -5,18 +5,18 @@ pkgname=ufprog-git
 pkgver=r154.12a5948
 pkgrel=1
 groups=()
-pkgdesc="Universal Flash Programmer"
+pkgdesc="Universal Flash Programmer - SPI-NOR/NAND ECC/SPI-NAND/WCH CH341 CH347/FTDI MPSSE FT232H FT2232H FT4232H FT4222H/SPI (Single/Dual/Quad/QPI using SPI-MEM)"
 arch=($CARCH)
 url="https://github.com/hackpascal/ufprog"
 license=('GPL-2.0-only AND LGPL-2.0-only')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
-depends=(glibc)
-makedepends=(git
-    cmake
+depends=(glibc
     hidapi
     libusb
-    json-c
+    json-c)
+makedepends=(git
+    cmake
     ninja)
 optdepends=()
 source=(

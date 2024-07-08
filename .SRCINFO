@@ -1,6 +1,6 @@
 pkgbase = ufprog-git
-	pkgdesc = Universal Flash Programmer
-	pkgver = 4.0.r11.gebcc3c8
+	pkgdesc = Universal Flash Programmer - SPI-NOR/NAND ECC/SPI-NAND/WCH CH341 CH347/FTDI MPSSE FT232H FT2232H FT4232H FT4222H/SPI (Single/Dual/Quad/QPI using SPI-MEM)
+	pkgver = r154.12a5948
 	pkgrel = 1
 	url = https://github.com/hackpascal/ufprog
 	arch = x86_64
@@ -9,9 +9,12 @@ pkgbase = ufprog-git
 	makedepends = cmake
 	makedepends = ninja
 	depends = glibc
+	depends = hidapi
+	depends = libusb
+	depends = json-c
 	provides = ufprog
 	conflicts = ufprog
-	source = ufprog-git::git+https://github.com/hackpascal/ufprog.git
+	source = ufprog-git::git+https://github.com/taotieren/ufprog.git
 	sha256sums = SKIP
 
 pkgname = ufprog-git
