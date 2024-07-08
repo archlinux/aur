@@ -22,6 +22,6 @@ pkgbase = c-evo-dh
 	depends = hicolor-icon-theme
 	optdepends = sox: Needed for sounds if ffmpeg not installed
 	source = c-evo-dh-2.0::git+https://git.code.sf.net/p/c-evo-eh/code#tag=2.0
-	sha256sums = 0f238ee98ab470b22c32d782492800d58f46e7abaab8f241455ccf43271fab8a
+	sha256sums = ba73e88f5705be971c00976321adfb3fc27c5fe0e68f18826c1330a97a660c34
 
 pkgname = c-evo-dh

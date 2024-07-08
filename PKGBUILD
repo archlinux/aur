@@ -1,5 +1,5 @@
 # Maintainer: Peter Blackman <peter at pblackman dot plus dot com>
-# 6-Jul-2024
+# 8-Jul-2024
 #
 
 pkgname=c-evo-dh
@@ -13,7 +13,7 @@ makedepends=('git' 'fpc' 'lazarus-gtk2')
 depends=('gtk2' 'gdk-pixbuf2' 'glib2' 'glibc' 'pango' 'libx11' 'at-spi2-core' 'cairo' 'bash' 'hicolor-icon-theme')
 optdepends=('sox: Needed for sounds if ffmpeg not installed')
 source=("$pkgname-$pkgver"::git+$url#tag=$pkgver)
-sha256sums=('0f238ee98ab470b22c32d782492800d58f46e7abaab8f241455ccf43271fab8a')
+sha256sums=('ba73e88f5705be971c00976321adfb3fc27c5fe0e68f18826c1330a97a660c34')
 
 # Arch does not use games or libexec folders
 prepare() {
