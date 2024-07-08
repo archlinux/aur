@@ -8,6 +8,7 @@ pkgbase = kui-bin
 	license = Apache-2.0
 	makedepends = gendesk
 	depends = electron22
+	depends = kubectl
 	provides = kui=13.1.4
 	conflicts = kui
 	options = !strip

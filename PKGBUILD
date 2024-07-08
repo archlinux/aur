@@ -15,7 +15,7 @@ conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
-    #'kubectl'
+    'kubectl'
 )
 makedepends=(
     'gendesk'
