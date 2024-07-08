@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='Sensor calibration data for the FacetimeHD (Broadcom 1570) PCIe webcam'
 arch=('any')
 url='https://github.com/patjak/facetimehd'
-license=('GPL2')
+license=('custom')
 makedepends=('unrar')
 provides=('facetimehd-data')
 replaces=('facetimehd-data')
@@ -32,10 +32,17 @@ build() {
 }
 
 package() {
-  # Install facetimehd-data
   cd "$srcdir/$pkgname"
+  
+  # Install facetimehd-data
   for FILE in '9112' '1771' '1871' '1874'
   do
     install -Dm644 "${FILE}_01XX.dat" "$pkgdir/usr/lib/firmware/facetimehd/${FILE}_01XX.dat"
+  done
+  
+  # Install licenses
+  for FILE in 'Arabic' 'BrazilianPortuguese' 'Czech' 'Danish' 'Dutch' 'English' 'Finnish' 'French' 'German' 'Hungarian' 'Italian' 'Japanese' 'Korean' 'Norwegian' 'Polish' 'Portuguese' 'Russian' 'SimplifiedChinese' 'Spanish' 'Swedish' 'TraditionalChinese' 'Turkish'
+  do
+    install -Dm644 "$srcdir/AppleCamera64/${FILE}License.txt" "$pkgdir/usr/share/licenses/$pkgname/${FILE}License.txt"
   done
 }
