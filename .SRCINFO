@@ -1,7 +1,7 @@
 pkgbase = ferretdb
 	pkgdesc = FerretDB is a proxy that converts MongoDB queries to SQL and uses PostgreSQL as the database engine.
-	pkgver = 1.21.0
-	pkgrel = 5
+	pkgver = 1.22.0
+	pkgrel = 1
 	url = https://www.ferretdb.com/
 	arch = x86_64
 	arch = armv7h
@@ -10,14 +10,14 @@ pkgbase = ferretdb
 	makedepends = go
 	makedepends = git
 	provides = mongodb
-	source = ferretdb::git+https://github.com/FerretDB/FerretDB.git?signed#tag=v1.21.0
+	source = ferretdb::git+https://github.com/FerretDB/FerretDB.git?signed#tag=v1.22.0
 	source = ferretdb@.service
 	source = ferretdb.target
 	source = ferretdb.sysusers
 	source = ferretdb.tmpfiles
 	validpgpkeys = 968479A1AFF927E37D1A566BB5690EEEBB952194
 	validpgpkeys = 4A015C3F33A17284E0C86FB95D251E1E0E83558A
-	sha256sums = 46c47b227d69826f9ee72ecc07fc0d0fe7bc8f877c7216a310176a8562529e2a
+	sha256sums = 06c2af4656017b9a53ac0fe0007c29c99932012d7f5bde7bbc87511a5beed264
 	sha256sums = b3516e8f231a47a1a3db6da17eca95cecb2d7853851b41680bba7b8eb6c2c651
 	sha256sums = 8bcca7a750e30b46ec3da089515563d214f6b79ee910ff5567e30857e96cb163
 	sha256sums = deee0ed48bbf015aa230f9cf87764217ddd039dfec19172518db3db902cdda22
