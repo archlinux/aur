@@ -1,47 +1,52 @@
 # Contributor: Frederic Bezies < fredbezies at gmail dot com >
 # Contributor: Minzord
+# Maintainer: Colin Woodbury <colin@fosskers.ca>
 
 pkgname="aura-git"
-pkgver=3.2.9.r150.gaf05e0d8
+pkgver=4.0.0.rc1.r8.g5b40bff1
 pkgrel=1
 pkgdesc="A package manager for Arch Linux and its AUR"
-arch=("x86_64")
-url="https://github.com/aurapm/aura"
+arch=("any")
+url="https://github.com/fosskers/aura"
 license=("GPL3")
-depends=("gmp" "zlib")
-makedepends=("git" "stack")
+depends=("git" "ripgrep" "fd" "curl" "openssl" "gcc-libs" "glibc")
+makedepends=("cargo")
 optdepends=()
 provides=("aura")
 conflicts=("aura" "aura-bin")
 replaces=()
 options=("strip")
-source=("${pkgname}"::"git+https://github.com/aurapm/aura.git")
-sha256sums=("SKIP")
+source=("${pkgname}"::"git+https://github.com/fosskers/aura.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -c2-48
 }
 
+prepare() {
+  cd "${srcdir}/${pkgname}/rust"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
 build() {
-  cd "${srcdir}/${pkgname}/haskell"
-  mkdir -p "aura/bin"
-  stack --jobs "$[$(nproc)+1]" --local-bin-path "aura/bin/" install -- aura
+  cd "${srcdir}/${pkgname}/rust"
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release
 }
 
 package() {
-  cd "${srcdir}/${pkgname}/haskell/aura"
+  cd "${srcdir}/${pkgname}/rust"
 
   # Install binary
-  install -Dm755 "bin/aura" "${pkgdir}/usr/bin/aura"
+  install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/aura"
+
+  cd "${srcdir}/${pkgname}/"
 
   # Install man page
-  install -Dm644 "doc/aura.8" "${pkgdir}/usr/share/man/man8/aura.8"
+  install -Dm644 "misc/aura.8" "${pkgdir}/usr/share/man/man8/aura.8"
 
   # Install bash and zsh completions
-  install -Dm644 "doc/completions/bashcompletion.sh" "${pkgdir}/usr/share/bash-completion/completions/aura"
-  install -Dm644 "doc/completions/_aura" "${pkgdir}/usr/share/zsh/site-functions/_aura"
-
-  # Directory for storing {PKGBUILDs, source packages, installed package states}
-  mkdir -p "${pkgdir}/var/cache/aura"/{pkgbuilds,src,states}
+  install -Dm644 "misc/completions/bashcompletion.sh" "${pkgdir}/usr/share/bash-completion/completions/aura"
+  install -Dm644 "misc/completions/_aura" "${pkgdir}/usr/share/zsh/site-functions/_aura"
 }
