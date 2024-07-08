@@ -3,7 +3,7 @@
 _ipu_ver=ipu6ep
 pkgname=intel-ipu6ep-camera-hal-git
 _pkgname=ipu6-camera-hal
-pkgver=r87.113ca90
+pkgver=r103.289e645
 pkgrel=1
 pkgdesc="Intel IPU6 camera HAL (Alder Lake)"
 arch=('x86_64')
@@ -24,6 +24,7 @@ pkgver() {
 prepare() {
     cd $_pkgname
     sed -i "s|-D_FORTIFY_SOURCE=2||" CMakeLists.txt
+    sed -i "s|<drm/i915_drm.h>|<libdrm/i915_drm.h>|" src/core/CameraBuffer.cpp
 }
 
 build() {
