@@ -55,6 +55,7 @@ _main_package() {
   else
     _source_duckstation_git
     _source_cpuinfo
+    _source_discord_rpc
     _source_spirv_cross
   fi
 
@@ -110,6 +111,15 @@ _source_cpuinfo() {
   )
 }
 
+_source_discord_rpc() {
+  source+=(
+    "stenzek.discord-rpc"::"git+https://github.com/stenzek/discord-rpc.git"
+  )
+  sha256sums+=(
+    'SKIP'
+  )
+}
+
 _source_shaderc() {
   depends+=(
     'glslang'
@@ -148,6 +158,11 @@ _prepare_backtrace() (
 _prepare_cpuinfo() (
   local _version_cpuinfo=$(grep -E -m1 'CPUINFO=' "$_pkgsrc/$_scripts/build-dependencies-linux.sh" | sed -E -e 's&^\s*CPUINFO=(\S+)$&\1&')
   git -C "$srcdir/pytorch.cpuinfo" checkout -f "$_version_cpuinfo"
+)
+
+_prepare_discord_rpc() (
+  local _version_discord_rpc=$(grep -E -m1 'DISCORD_RPC=' "$_pkgsrc/$_scripts/build-dependencies-linux.sh" | sed -E -e 's&^\s*DISCORD_RPC=(\S+)$&\1&')
+  git -C "$srcdir/stenzek.discord-rpc" checkout -f "$_version_discord_rpc"
 )
 
 _prepare_shaderc() (
@@ -190,6 +205,7 @@ prepare() {
 
   if [ "${_build_git::1}" = "t" ]; then
     _prepare_cpuinfo
+    _prepare_discord_rpc
     _prepare_spirv_cross
   fi
 
@@ -232,6 +248,24 @@ _build_cpuinfo() {
   cmake "${_cmake_cpuinfo[@]}"
   cmake --build build_cpuinfo
   DESTDIR="$srcdir/deps" cmake --install build_cpuinfo
+}
+
+_build_discord_rpc() {
+  echo "Building discord-rpc..."
+  local _cmake_discord_rpc=(
+    -B build_discord_rpc
+    -S stenzek.discord-rpc
+    -G Ninja
+
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX=/usr
+    -DBUILD_SHARED_LIBS=ON
+    -Wno-dev
+  )
+
+  cmake "${_cmake_discord_rpc[@]}"
+  cmake --build build_discord_rpc
+  DESTDIR="$srcdir/deps" cmake --install build_discord_rpc
 }
 
 _build_shaderc() {
@@ -303,7 +337,8 @@ _build_duckstation() {
 
   if [ "${_build_git::1}" = "t" ]; then
     _cmake_options+=(
-      -Dcpuinfo_DIR="$srcdir/deps/usr/share/cpuinfo/"
+      -Dcpuinfo_DIR="$srcdir/deps/usr/share/cpuinfo"
+      -DDiscordRPC_DIR="$srcdir/deps/usr/lib/cmake/DiscordRPC"
       -Dspirv_cross_c_shared_DIR="$srcdir/deps/usr/share/spirv_cross_c_shared/cmake"
     )
   fi
@@ -333,6 +368,7 @@ build() {
 
   if [ "${_build_git::1}" = "t" ]; then
     _build_cpuinfo
+    _build_discord_rpc
     _build_spirv_cross
   fi
 
@@ -360,6 +396,9 @@ package() {
 
     local _cpuinfo_patched="$pkgdir/opt/$_pkgname/libcpuinfo.so"
     install -Dm644 "$srcdir/deps/usr/lib/libcpuinfo.so" "$_cpuinfo_patched"
+
+    local _discord_rpc_patched="$pkgdir/opt/$_pkgname/libdiscord-rpc.so"
+    install -Dm644 "$srcdir/deps/usr/lib/libdiscord-rpc.so" "$_discord_rpc_patched"
   fi
 
   # icon
