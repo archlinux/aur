@@ -1,21 +1,20 @@
 pkgbase = sourcegit-bin
 	pkgdesc = GUI client for GIT users
-	pkgver = 8.19
+	pkgver = 8.20
 	pkgrel = 1
 	url = https://github.com/sourcegit-scm/sourcegit
 	arch = x86_64
 	license = MIT
-	makedepends = libicns
 	depends = dotnet-runtime-8.0
 	depends = git
 	depends = git-credential-manager
 	depends = xdg-utils
 	provides = sourcegit
 	conflicts = sourcegit
-	source = https://github.com/sourcegit-scm/sourcegit/releases/download/v8.19/sourcegit_8.19.linux-x64.tar.gz
+	source = https://github.com/sourcegit-scm/sourcegit/releases/download/v8.20/sourcegit-8.20.linux.x86_64.AppImage
 	source = sourcegit.desktop
 	source = LICENSE
-	sha256sums = 148ebdeb2ce5e13a1964b15f3879e2946c4a161dd57050e0bdcaca5d15110ef1
+	sha256sums = f49bc268c650d9a3b6ca5963820cd03737a51710fa001562bd5286ca3c116cde
 	sha256sums = 3488ee13a4ca1bae85c35f866d046304d8716a64c46cadb2576cb8b4ae44b058
 	sha256sums = 6cef41c8a297f46faafe40016ffcce9d968b3722048b81cd768fdbaa1be02ca1
 
