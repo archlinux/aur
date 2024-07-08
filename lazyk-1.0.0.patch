@@ -1,0 +1,35 @@
+diff '--color=auto' -ur lazyk-1.0.0/Makefile lazyk-patchec/Makefile
+--- lazyk-1.0.0/Makefile	2019-08-24 11:27:59.000000000 +0900
++++ lazyk-patchec/Makefile	2024-07-07 19:02:31.095529233 +0900
+@@ -1,5 +1,8 @@
+ CFLAGS = -std=c99 -Wall -O2
+ PREFIX = /usr/local
++DESTDIR=
++
++DOCS = README.md test/echo.lazy test/hello.lazy
+ 
+ lazyk: lazyk.c
+ 	$(CC) $(CFLAGS) -o $@ $<
+@@ -7,9 +10,19 @@
+ test: lazyk
+ 	./run_tests ./lazyk
+ 
+-install: lazyk
+-	mkdir -p $(PREFIX)/bin
+-	cp $< $(PREFIX)/bin/
++install: install-prog install-doc install-license
++
++install-prog: lazyk
++	mkdir -p $(DESTDIR)$(PREFIX)/bin
++	cp $< $(DESTDIR)$(PREFIX)/bin/
++
++install-doc: $(DOCS)
++	mkdir -p $(DESTDIR)$(PREFIX)/share/doc/lazyk/
++	cp $(DOCS) $(DESTDIR)$(PREFIX)/share/doc/lazyk/
++
++install-license: LICENSE
++	mkdir -p $(DESTDIR)$(PREFIX)/share/licenses/lazyk/
++	cp  $< $(DESTDIR)$(PREFIX)/share/licenses/lazyk/
+ 
+ uninstall:
+ 	rm -f $(PREFIX)/bin/lazyk

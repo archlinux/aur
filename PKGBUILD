@@ -1,0 +1,47 @@
+# Maintainer: Tpaefawzen <GitHub: Tpaefawzen>
+pkgname=lazyk
+pkgver=1.0.0
+pkgrel=1
+epoch=
+pkgdesc="Lazy K Interpreter"
+arch=(x86_64)
+url="https://github.com/irori/lazyk"
+license=('MIT')
+groups=()
+depends=()
+makedepends=()
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=("https://github.com/irori/lazyk/archive/refs/tags/v${pkgver}.tar.gz"
+	"$pkgname-$pkgver.patch")
+sha512sums=("8b96d43d7cceb6e08a8d593d48db1dde0980c5aad74d0337989b16ef437a8217c03d92bcc26c4d8f73664913286e62051a955eda9644c4068b60b6689f6ac654"
+	720ef8bcb2c17d125d62db698385032dbb1d8b194d15f796219fb19a1f938f8c25403a23eaf5254a869403ede84890c581e35329a070aa9d37cd54bde3f5da49)
+noextract=()
+validpgpkeys=()
+
+prepare() {
+	cd "$pkgname-$pkgver"
+	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
+}
+
+build() {
+	cd "$pkgname-$pkgver"
+	make
+}
+
+check() {
+	cd "$pkgname-$pkgver"
+	make -k test
+}
+
+package() {
+	cd "$pkgname-$pkgver"
+	make DESTDIR="$pkgdir/" PREFIX=/usr/ install
+}
