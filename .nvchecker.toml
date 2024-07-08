@@ -1,0 +1,4 @@
+[python-sphinx-last-updated-by-git]
+source = "github"
+github = "mgeier/sphinx-last-updated-by-git"
+use_latest_release = "true"
