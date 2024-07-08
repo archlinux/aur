@@ -1,8 +1,6 @@
 # Maintainer:
 # Contributor: nblock <nblock [/at\] archlinux DOT us>
 
-_name="$pkgname-tool"
-
 _pkgname="organize"
 pkgname="$_pkgname"
 pkgver=3.2.3
@@ -37,7 +35,6 @@ package() {
     'docx2txt'
     'python-arrow'
     'python-docopt'
-    'python-exifread'
     'python-jinja'
     'python-natsort'
     'python-pdfminer'
@@ -45,12 +42,15 @@ package() {
     'python-pydantic'
     'python-rich'
     'python-send2trash'
-    'python-simplematch'
     'python-yaml'
+
+    ## AUR
+    'python-exifread'
+    'python-simplematch'
   )
 
   cd "$_pkgsrc"
-  python -m installer --destdir="$pkgdir" "$(ls -1 dist/*.whl | sort -rV | head -1)"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
