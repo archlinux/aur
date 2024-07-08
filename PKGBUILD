@@ -1,7 +1,7 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=rjsoncons
-_pkgver=1.3.0
+_pkgver=1.3.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -11,6 +11,7 @@ url="https://cran.r-project.org/package=$_pkgname"
 license=('BSL-1.0')
 depends=(
   r-cli
+  r-tibble
 )
 makedepends=(
   r-cpp11
@@ -20,12 +21,11 @@ optdepends=(
   r-jsonlite
   r-knitr
   r-rmarkdown
-  r-tibble
   r-tinytest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c0eaef19307c6f993d1473293e0c873e')
-b2sums=('a6be97be3b706965c99b66b10c730d40702392794b038eb7d6fba10f3d6332d04959e1bf1382229f75a2346634d47c0cb29ab4e51d91c9d4e52b7490609b9c2c')
+md5sums=('e07900e0f6caaeceb1774066cb2e8281')
+b2sums=('8ff6450449272b195d198318e2b1b860c14101ca2880aaa56ee9c1384cdf89badd415c9dcc61db4d2176de690e04d13c99025e8c06cd12b56f0d4f2f5093f0d6')
 
 build() {
   mkdir build
