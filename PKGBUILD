@@ -1,6 +1,6 @@
 # Maintainer: B0SE
 pkgname=ani-dl
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 depends=('yt-dlp' 'mpv')
 makedepends=('rust' 'cargo')
@@ -12,16 +12,16 @@ source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$pkgname/$pkgv
 sha256sums=('SKIP')
 
 prepare() {
-	cd "$pkgname-$pkgver"
-	cargo fetch --locked
+  cd "$pkgname-$pkgver"
+  cargo fetch --locked
 }
 
 build() {
-	cd "$pkgname-$pkgver"
-	cargo build --release --locked
+  cd "$pkgname-$pkgver"
+  cargo build --release --locked
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  cd "$pkgname-$pkgver"
+  install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
