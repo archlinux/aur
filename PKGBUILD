@@ -3,15 +3,15 @@ _pkgname=next.library
 pkgname="${_pkgname//./-}-bin"
 pkgver=0.1.0
 _electronversion=21
-pkgrel=9
+pkgrel=10
 pkgdesc="Book library manager, for book enthusiast."
 arch=('x86_64')
 url="https://github.com/CMOISDEAD/next-library"
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
 )
 makedepends=(
     'fuse2'
@@ -21,11 +21,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('223c05617c241c21a3408a5103543bbff100c314f912648767b643d79c23dc67'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
