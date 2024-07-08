@@ -15,7 +15,7 @@ source_aarch64=("https://www.sdrplay.com/software/SDRconnect_linux-arm64_${build
 source=("sdrconnect.desktop"
         "67-sdrplay.rules")
 sha256sums=('813615889e26d412e63c8c383626e370376d367c5109e909d61fe4070a1d8def'
-            '113c42683b598d795db10b890b6da5bb5d025c16092106f459bf2a15c44a88e5')
+            'c8534af8ef8a921f60a888091c1b315d35d9fdb61bbd3946389d53bcc2b347a9')
 sha256sums_aarch64=('27f589a559ded758f82486654b331e300e8275a37baa958a84a86398896b7069')
 sha256sums_x86_64=('291b38cd9c44e52cf18c0a9c98c243b974e744cd1fa4a7deb61d1a15a9d1c48d')
 
