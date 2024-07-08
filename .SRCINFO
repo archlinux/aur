@@ -1,6 +1,6 @@
 pkgbase = peru-git
 	pkgdesc = A tool for fetching code
-	pkgver = 617.2414a4a
+	pkgver = 679.bc8de02
 	pkgrel = 1
 	url = https://github.com/buildinspace/peru
 	arch = any
@@ -13,8 +13,7 @@ pkgbase = peru-git
 	optdepends = mercurial: fetching from hg repos
 	optdepends = subversion: fetching from svn repos
 	conflicts = peru
-	source = git://github.com/buildinspace/peru
+	source = git+https://github.com/buildinspace/peru
 	md5sums = SKIP
 
 pkgname = peru-git
-

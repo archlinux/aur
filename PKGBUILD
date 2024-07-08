@@ -4,7 +4,7 @@ pkgname=peru-git
 pkgdesc='A tool for fetching code'
 url='https://github.com/buildinspace/peru'
 license=('MIT')
-pkgver=617.2414a4a
+pkgver=679.bc8de02
 pkgver() {
   cd "$srcdir/peru"
   echo $(git rev-list --count master).$(git rev-parse --short master)
@@ -20,7 +20,7 @@ optdepends=(
   'subversion: fetching from svn repos'
 )
 conflicts=(peru)
-source=('git://github.com/buildinspace/peru')
+source=('git+https://github.com/buildinspace/peru')
 md5sums=('SKIP')
 
 package() {
