@@ -5,8 +5,8 @@
 
 _pkgname='sherlock'
 pkgname="${_pkgname}-git"
-pkgver=501cb3dce27494265a0993335dab517070dadab5
-pkgrel=1
+pkgver=r2404.501cb3d
+pkgrel=2
 pkgdesc='Hunt down social media accounts by username across social networks'
 arch=('any')
 url='https://github.com/sherlock-project/sherlock'
@@ -22,7 +22,7 @@ depends=('python'
         'python-torrequest'
         'python-stem'
         'python-torrequest')
-makedepends=('git' 'python-setuptools' 'python-installer' 'python-wheel' 'python-build')
+makedepends=('git' 'python-setuptools' 'python-installer' 'python-wheel' 'python-build' 'python-poetry-core')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
