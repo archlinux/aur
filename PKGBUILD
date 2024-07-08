@@ -8,22 +8,22 @@
 # Contributor: Joel Pedraza <joel@joelpedraza.com>
 # Contributor: Jakub Schmidtke <sjakub-at-gmail-dot-com>
 
-_rev=r02
-_dl_rev=r01
-_sdkint=34
+_rev=r01
+_sdkint=35
 pkgname="android-sources"
 pkgver="${_sdkint}_${_rev}"
 pkgrel=1
 pkgdesc="Android SDK Sources, latest API"
 arch=('any')
 url="https://developer.android.com/studio/index.html"
-license=('custom')
+license=('LicenseRef-custom')
+provides=("android-sources-${_sdkint}")
 conflicts=("android-sources-${_sdkint}")
-options=('!strip')
-source=("https://dl.google.com/android/repository/sources-${_sdkint}_${_dl_rev}.zip"
+options=('!strip' '!debug')
+source=("https://dl.google.com/android/repository/source-${_sdkint}_${_rev}.zip"
         "package.xml")
-sha256sums=('152505964344e17cbfcd56b4ef7afde7e4d60e9892136bc12f423b06566c1430'
-            '9a9074639babb0381a63d88355a0fc2b1f9588f2edfa78a095aa82e592afa18c')
+sha256sums=('1a4e6251096a0f03085716f10e7bd859a97837f6314e955729d4f167bb8830d6'
+            '1cc817eefcef2a4f3f315f4694e2a21473a32e2b29cfc1f66d2989c60c3dbafe')
 
 package() {
     # Install files

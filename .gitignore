@@ -6,6 +6,7 @@ gen
 
 # Generated files
 sources-*.zip
+source-*.zip
 android-sources-*.pkg.tar.xz
 src
 pkg
