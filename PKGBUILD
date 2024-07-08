@@ -1,7 +1,7 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 _name="spin"
 pkgname="python-${_name}"
-pkgver=0.10
+pkgver=0.11
 pkgrel=1
 pkgdesc="A developer tool for scientific Python libraries"
 arch=('any')
@@ -20,7 +20,7 @@ makedepends=(
   "python-wheel"
 )
 source=("${_name}-${pkgver}::git+${url}#tag=v${pkgver}")
-sha256sums=('9a644f05523cb07cc5b3153998ad866b65a0192449389fe5d71831dd12ae7ded')
+sha256sums=('4d613f13dec374646f0267c0c54eef24306d825b63e76dd06a7179ba338b72bb')
 
 _archive="${_name}-${pkgver}"
 build() {
