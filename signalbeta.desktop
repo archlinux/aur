@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Signal Beta
+Comment=Signal Private Messenger for Linux - Beta version
+Icon=signal-desktop-beta
+Exec=signal-desktop-beta -- %u
+Terminal=false
+Categories=Network;InstantMessaging;Chat;
+StartupWMClass=signalbeta
+MimeType=x-scheme-handler/sgnl;x-scheme-handler/signalcaptcha;
+Keywords=sgnl;chat;im;messaging;messenger;sms;security;privat;
+X-GNOME-UsesNotifications=true
