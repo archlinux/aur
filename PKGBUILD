@@ -1,7 +1,7 @@
 # Maintainer: mh4ckwascut <mh4ckt3mh4ckt1c4s@protonmail.com>
 
 pkgname=wasm-tools
-pkgver=1.209.1
+pkgver=1.212.0
 pkgrel=1
 pkgdesc="Low level tooling for WebAssembly in Rust"
 arch=("x86_64")
@@ -10,7 +10,7 @@ license=("Apache-2.0")
 depends=("glibc" "gcc-libs")
 makedepends=("rust" "cargo")
 source=("https://github.com/bytecodealliance/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("0514624076402388e2851fdd16647c917196e6e13d6880da703510876f5c0e8c")
+sha256sums=("0447baae7577d7f2e4bfbb6625a00b85eab3dc4f2a6d465f85247e889dbee526")
 
 build() {
 	cd "$pkgname-$pkgver"
