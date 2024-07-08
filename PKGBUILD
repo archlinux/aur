@@ -1,39 +1,59 @@
-# Maintainer: Henry Jenkins <archlinux.org@henryjenkins.com>
-# Upstream URL: https://github.com/mhostetter/gr-adsb
-# Modified from gr-osmosdr-git PKGBUILD
+# Maintainer:
+# Contributor: Henry Jenkins <archlinux.org@henryjenkins.com>
 
-pkgname=gr-adsb-git
-pkgver=0f6ffd
+: ${_version_gnuradio:=3.10}
+
+_pkgname="gr-adsb"
+pkgname="$_pkgname-git"
+pkgver=r212.0f36000
 pkgrel=1
 pkgdesc="GNURadio blocks for receiving ADS-B modulated radio messages using SDR"
-arch=('i686' 'x86_64')
 url="https://github.com/mhostetter/gr-adsb"
-license=('GPL-3.0 License')
-depends=('gnuradio>=3.8.0')
-makedepends=(
-  'git'
-  'cmake'
+license=('GPL-3.0-or-later')
+arch=('any')
+
+depends=(
+  "gnuradio>=$_version_gnuradio"
+  'python'
 )
-provides=('gr-adsb')
-source=('gr-adsb::git+https://github.com/mhostetter/gr-adsb#branch=maint-3.8')
+makedepends=(
+  'cmake'
+  'git'
+  'ninja'
+)
+
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+https://github.com/mhostetter/gr-adsb#branch=maint-$_version_gnuradio")
 sha256sums=('SKIP')
-_gitname=gr-adsb
 
 pkgver() {
-  cd $_gitname
-  # Use the tag of the last commit
-  git describe --always | sed 's|-|.|g; s|^.||'
+  cd "$_pkgsrc"
+  printf "r%s.%s" \
+    "$(git rev-list --count HEAD)" \
+    "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
-  cd "$srcdir/$_gitname"
-  mkdir -p build
-  cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
-  make
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -Wno-dev
+  )
+
+  cmake "${_cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
-  cd "$srcdir/$_gitname/build/"
-  make DESTDIR=${pkgdir} install
+  depends+=(
+    'python-colorama'
+  )
+
+  DESTDIR="$pkgdir" cmake --install build
 }
