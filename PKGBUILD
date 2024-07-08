@@ -4,7 +4,7 @@
 pkgname=flashpoint-bin
 _pkgname=Flashpoint
 pkgver=13
-pkgrel=1
+pkgrel=2
 pkgdesc="Launcher for BlueMaxima's Flashpoint - Infinity Edition."
 arch=('x86_64')
 url="https://flashpointarchive.org"
@@ -24,6 +24,7 @@ depends=(
 )
 makedepends=(
     'gendesk'
+    'p7zip'
 )
 optdepends=(
     'flashplayer-standalone: native Flash support'
@@ -44,7 +45,7 @@ sha256sums=('b059a8076841a582229c90ced7bc016f08046613de105be057a9913ad6ae57d3'
 build(){
     install -Dm755 -d "${srcdir}/opt/${pkgname%-bin}"
     7zr x "${srcdir}/${pkgname%-bin}-${pkgver}.7z" -o"${srcdir}/opt/${pkgname%-bin}"
-    gendesk -f -n -q --pkgname="${pkgname%-bin}" --categories="Game" --name="${_pkgname}" --exec="${pkgname%-bin}"
+    gendesk -f -n -q --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Game" --name="${_pkgname}" --exec="${pkgname%-bin}"
 }
 package(){
     cp -r "${srcdir}/opt" "${pkgdir}"
