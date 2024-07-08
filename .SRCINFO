@@ -1,8 +1,8 @@
 pkgbase = yuki-iptv-git
-	pkgdesc = IPTV player with EPG support (Astroncia IPTV fork)
-	pkgver = r1374.09a6bee
+	pkgdesc = IPTV player with EPG support
+	pkgver = r1821.085dc31
 	pkgrel = 1
-	url = https://github.com/yuki-iptv/yuki-iptv
+	url = https://codeberg.org/liya/yuki-iptv
 	arch = any
 	license = GPL3
 	makedepends = make
@@ -17,12 +17,11 @@ pkgbase = yuki-iptv-git
 	depends = python-requests
 	depends = python-chardet
 	depends = python-setproctitle
-	depends = python-pydbus
 	depends = ffmpeg
 	optdepends = yt-dlp: YouTube channel support
 	provides = yuki-iptv
 	conflicts = yuki-iptv
-	source = git+https://github.com/yuki-iptv/yuki-iptv.git
+	source = git+https://codeberg.org/liya/yuki-iptv.git
 	b2sums = SKIP
 
 pkgname = yuki-iptv-git
