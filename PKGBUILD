@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=dedao
 pkgname="${_pkgname}-dl-bin"
-pkgver=1.2.4
+pkgver=1.2.5
 pkgrel=1
 pkgdesc="得到APP课程下载工具,可在终端查看文章内容,可生成PDF,音频文件,markdown文稿,可下载电子书。"
 arch=("x86_64")
@@ -14,12 +14,14 @@ optdepends=(
     'ffmpeg: Audio synthesis'
     'google-chrome: Generate PDF'
 )
-options=('!strip')
+options=(
+    '!strip'
+)
 source=(
     "${pkgname%-bin}-${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}-linux-amd64"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/yann0917/dedao-dl/v${pkgver}/LICENSE"
 )
-sha256sums=('99fb2a43ae1cd0ac7f06dca255f217559180c3a336244fdeb92d550cc66a74c3'
+sha256sums=('2196e40603c8e3869ee2d6401013e3f24ba1359215094cc3f2ef6b4839e15306'
             '1ba8379d33340e518c32fe24046f7cb0530250ec193e7e3d0ea72fd558a1e926')
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}-${pkgver}" "${pkgdir}/usr/bin/${pkgname%-bin}"
