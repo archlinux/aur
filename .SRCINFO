@@ -1,0 +1,14 @@
+pkgbase = cynthion-firmware-bin
+	pkgdesc = Firmware for the Great Scott Gadgets Cynthion (pre-built from PyPI)
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/greatscottgadgets/cynthion
+	arch = any
+	license = BSD-3-Clause
+	optdepends = riscv64-linux-gnu-gdb: to debug the firmware over JTAG
+	provides = cynthion-firmware=0.1.1
+	conflicts = cynthion-firmware
+	source = https://files.pythonhosted.org/packages/source/c/cynthion/cynthion-0.1.1.tar.gz
+	sha512sums = b6583a3c3010c2d59f3764dccd97f6f9a828e9e12fe0739411628398adfece6367ba63507c0c19a5e580e522caea3ef075dd7afca8aef6b389b382fca715f5fa
+
+pkgname = cynthion-firmware-bin
