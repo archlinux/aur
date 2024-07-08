@@ -3,7 +3,7 @@ _godot=4.2.2
 
 pkgname=thrive
 pkgver=0.6.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="the evolution game Thrive."
 arch=("x86_64")
 url="https://revolutionarygamesstudio.com/"
@@ -30,7 +30,7 @@ sha256sums=('21259ee2a6f30801f12656be82d597f5acb919ec3e2471b8f0dc1527abbfec21'
 
 prepare(){
     declare _godot
-    _godot="$(godot --version | cut -d . -f 1-3)"
+    _godot="$(godot-mono --version | cut -d . -f 1-3)"
     target_dirs=(
         "$srcdir/Thrive"
     )
@@ -50,6 +50,7 @@ prepare(){
     git lfs fetch
     git lfs checkout
     sed -i "s/GODOT_VERSION = \".*\"/GODOT_VERSION = \"$_godot\"/" Scripts/GodotVersion.cs
+    sed -i 's/"godot/"godot-mono/g' Scripts/PackageTool.cs
     local templates="${XDG_DATA_HOME:-$HOME/.local/share}/godot/export_templates"
     mkdir -p "$templates"
     if [[ "$(< "$srcdir/templates/version.txt")" == "$_godot.stable.mono" ]]
