@@ -1,7 +1,7 @@
 pkgbase = tix
 	pkgdesc = Tk Interface eXtension, a powerful set of user interface components
 	pkgver = 8.4.3
-	pkgrel = 6
+	pkgrel = 7
 	url = http://tix.sourceforge.net/
 	arch = x86_64
 	arch = i686
@@ -9,8 +9,16 @@ pkgbase = tix
 	depends = tk
 	depends = libx11
 	source = http://downloads.sourceforge.net/tix/Tix8.4.3-src.tar.gz
-	source = tix-8.4.3-tcl8.6.patch::https://bugs.archlinux.org/attachments/36882/10973/tix-8.4.3-tcl8.6.patch
+	source = tix-8.4.3-tcl8.5.patch::https://gitweb.gentoo.org/repo/gentoo.git/plain/dev-tcltk/tix/files/tix-8.4.3-tcl8.5.patch
+	source = tix-8.4.3-tcl8.6.patch::https://gitweb.gentoo.org/repo/gentoo.git/plain/dev-tcltk/tix/files/tix-8.4.3-tcl8.6.patch
+	source = tix-8.4.3-wimplicit-int.patch::https://gitweb.gentoo.org/repo/gentoo.git/plain/dev-tcltk/tix/files/tix-8.4.3-wimplicit-int.patch
+	source = tix-8.4.3-clang6.patch::https://gitweb.gentoo.org/repo/gentoo.git/plain/dev-tcltk/tix/files/tix-8.4.3-clang6.patch
+	source = tix-8.4.3-noopt.patch::https://gitweb.gentoo.org/repo/gentoo.git/plain/dev-tcltk/tix/files/tix-8.4.3-noopt.patch
 	md5sums = 2b8bf4b10a852264678182652f477e59
+	md5sums = 874299ff5e6544fb4501ce23102a4148
 	md5sums = c26297f9e1744dc38308a062ef00549e
+	md5sums = 9ebd0c46711d2eb3a8da500975c5f078
+	md5sums = 7c7cb58bc019a8a1d8aa326f6eb323f7
+	md5sums = ff69e046a457955bd3aae4c09ea62f71
 
 pkgname = tix
