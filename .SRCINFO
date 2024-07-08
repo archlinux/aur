@@ -1,0 +1,17 @@
+pkgbase = ccase-bin
+	pkgdesc = A command line utility for converting between string cases
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/rutrum/ccase
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = ccase
+	conflicts = ccase
+	source = https://github.com/rutrum/ccase/raw/v0.4.1/LICENSE.md
+	sha256sums = 507433b065f4daa9d69b7d1b8be1c23acde51b99fd0946fe658e1866493c5b94
+	source_x86_64 = https://github.com/rutrum/ccase/releases/download/v0.4.1/ccase_0.4.1_amd64.deb
+	sha256sums_x86_64 = a5386d8907163671f318ea8f73574e3df3d8d8b99b4d757b20150cc6d2b23c57
+
+pkgname = ccase-bin
