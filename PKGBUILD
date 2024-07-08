@@ -4,7 +4,7 @@
 _pkgname=autobindings
 pkgname=cwtch-$_pkgname
 
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 
 pkgdesc="Automatically-generated C bindings for the Cwtch library"
@@ -16,7 +16,7 @@ arch=('x86_64')
 url='https://cwtch.im'
 license=('MIT')
 source=("$_pkgname-v$pkgver.tar.gz::https://git.openprivacy.ca/api/v1/repos/cwtch.im/$_pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('15c8987a28b61d7e88ebbd6585f6bf6bbfb292185902f36e1d05b1ed974c56c7')
+sha256sums=('34b568a09ecb8bb6b9ca911a46f08659599610aafd19e8a518c25f6c2cc05d2b')
 
 prepare() {
     cd "$srcdir/$_pkgname"
