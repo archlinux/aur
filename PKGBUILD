@@ -5,7 +5,7 @@ pkgname=mingo-bin
 _pkgname=Mingo
 pkgver=1.13.5
 _electronversion=27
-pkgrel=3
+pkgrel=4
 pkgdesc="A proprietary MongoDB GUI based on electron from developers for developers"
 arch=(
     'aarch64'
@@ -26,14 +26,15 @@ source=(
     "LICENSE-${pkgver}.html::${url}/eula"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('eef8a290e343ee814884f1f2f7c1fabeff6f96a4ab9aac856256cda6d2f7d718'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+sha256sums=('39a09147a94e3b8c7d749fc4ccfd9aaf38f5928f80fddb3175954202e41f8e6f'
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 sha256sums_aarch64=('fd6a0c03d3de97c51021a3bf833d527be8db092cc8cabada36b679ab74919cf3')
 sha256sums_x86_64=('af92ee85287d8bd8f57f71568121a7cd866880346c1edf961022191cd98bbf35')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
