@@ -1,34 +1,48 @@
-# Contributor: Roey Darwish Dror <roey.ghost@gmail.com>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=topgrade-git
-pkgver=10.2.1.r1263.73888e7
+pkgver=15.0.0.r6.g180b5cb
 pkgrel=1
-pkgdesc='Invoke the upgrade procedure of multiple package managers'
-arch=('x86_64' 'aarch64' 'armv7')
-url=https://github.com/topgrade-rs/topgrade
-license=('GPL3')
+pkgdesc="Upgrade all the things"
+arch=('x86_64' 'aarch64')
+url="https://topgrade-rs.github.io"
+license=('GPL-3.0-or-later')
 depends=('gcc-libs')
 makedepends=('cargo' 'git')
-conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
-source=("git+$url.git")
+conflicts=("${pkgname%-git}")
+source=("git+https://github.com/topgrade-rs/topgrade.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname%-git}
-  printf %s.r%s.%s $(grep ^version Cargo.toml|cut -d\" -f2) $(git rev-list --count HEAD) $(git describe --always)
+  cd "${pkgname%-git}"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd ${pkgname%-git}
+  cd "${pkgname%-git}"
+  CFLAGS+=" -ffat-lto-objects"
+  export CARGO_HOME="$srcdir/cargo-home"
+  export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --release 
+  cargo build --release --all-features
+
+  # Generate completions
+  for shell in bash fish zsh; do
+    ./"target/release/${pkgname%-git}" --gen-completion "${shell}" > "${pkgname%-git}.${shell}"
+  done
+
+  # Generate man page
+  ./"target/release/${pkgname%-git}" --gen-manpage > "${pkgname%-git}.1"
 }
 
 package() {
-  cd ${pkgname%-git}
-  
-  install -Dm755 target/release/${pkgname%-git} "$pkgdir"/usr/bin/${pkgname%-git}
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  cd "${pkgname%-git}"
+  install -Dm755 "target/release/${pkgname%-git}" -t "$pkgdir/usr/bin/"
+  install -Dm644 "${pkgname%-git}.1" -t "$pkgdir/usr/share/man/man1/"
+  install -Dm644 "${pkgname%-git}.bash" "$pkgdir/usr/share/bash-completion/completions/${pkgname%-git}"
+  install -Dm644 "${pkgname%-git}.fish" -t "$pkgdir/usr/share/fish/vendor_completions.d/"
+  install -Dm644 "${pkgname%-git}.zsh" "$pkgdir/usr/share/zsh/site-functions/_${pkgname%-git}"
+  install -Dm644 config.example.toml -t "$pkgdir/usr/share/doc/${pkgname%-git}/"
 }

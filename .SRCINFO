@@ -1,12 +1,11 @@
 pkgbase = topgrade-git
-	pkgdesc = Invoke the upgrade procedure of multiple package managers
-	pkgver = 10.2.1.r1263.73888e7
+	pkgdesc = Upgrade all the things
+	pkgver = 15.0.0.r6.g180b5cb
 	pkgrel = 1
-	url = https://github.com/topgrade-rs/topgrade
+	url = https://topgrade-rs.github.io
 	arch = x86_64
 	arch = aarch64
-	arch = armv7
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = cargo
 	makedepends = git
 	depends = gcc-libs
