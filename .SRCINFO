@@ -1,13 +1,13 @@
 pkgbase = kestrel
 	pkgdesc = File encryption done right
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://getkestrel.com
 	arch = x86_64
 	license = BSD
 	makedepends = rust
 	depends = gcc-libs
-	source = kestrel-1.0.1.tar.gz::https://getkestrel.com/releases/v1.0.1/kestrel-1.0.1.tar.gz
-	sha256sums = c722cdf36c8a38606952c5891184bbc2bcc9cd89aa047eab2fc66c5419faf840
+	source = kestrel-1.0.2.tar.gz::https://getkestrel.com/releases/v1.0.2/kestrel-1.0.2.tar.gz
+	sha256sums = 5dca8a6a95903fa72d959c8308c3758b054f889e5f5a41a0c7766714a58d9d29
 
 pkgname = kestrel
