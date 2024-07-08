@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-bestsource-git
 	pkgdesc = Plugin for Vapoursynth: bestsource (GIT version)
-	pkgver = r272.d676835
-	pkgrel = 2
+	pkgver = r290.ff911fa
+	pkgrel = 1
 	url = https://forum.doom9.org/showthread.php?p=1972253
 	arch = x86_64
 	license = MIT

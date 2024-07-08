@@ -2,8 +2,8 @@
 
 _plug=bestsource
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r272.d676835
-pkgrel=2
+pkgver=r290.ff911fa
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://forum.doom9.org/showthread.php?p=1972253'
@@ -42,8 +42,7 @@ prepare() {
 
 build() {
   cd build
-  arch-meson "../$_plug" \
-    --libdir /usr/lib/vapoursynth
+  arch-meson "../$_plug"
 
   ninja
 }
