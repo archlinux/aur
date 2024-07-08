@@ -1,16 +1,15 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=betareg
-_pkgver=3.1-4
+_pkgver=3.2-0
 pkgname=r-${_pkgname,,}
-pkgver=3.1.4
-pkgrel=4
-pkgdesc='Beta Regression'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Beta Regression"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-only OR GPL-3.0-only')
 depends=(
-  r
   r-flexmix
   r-formula
   r-lmtest
@@ -19,19 +18,22 @@ depends=(
 )
 optdepends=(
   r-car
-  r-lattice
+  r-distributions3
+  r-numderiv
   r-partykit
+  r-statmod
   r-strucchange
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5106986096a68b2b516215968158589b71969ce7912879253d6e930355a18101')
+md5sums=('f0ff3dc355f20716df7e51a0e507a02b')
+b2sums=('6304c6dff3dd35d9bf8cc6a4c96084a1a7d79065494b7ae541ba5a7aabb63fb1e542e2439ca87780311c4046618e2087bbc4e5422335e4d83aa52d211b424b3b')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:

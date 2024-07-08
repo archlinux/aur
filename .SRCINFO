@@ -1,21 +1,23 @@
 pkgbase = r-betareg
 	pkgdesc = Beta Regression
-	pkgver = 3.1.4
-	pkgrel = 4
+	pkgver = 3.2.0
+	pkgrel = 2
 	url = https://cran.r-project.org/package=betareg
-	arch = any
-	license = GPL
-	depends = r
+	arch = x86_64
+	license = GPL-2.0-only OR GPL-3.0-only
 	depends = r-flexmix
 	depends = r-formula
 	depends = r-lmtest
 	depends = r-modeltools
 	depends = r-sandwich
 	optdepends = r-car
-	optdepends = r-lattice
+	optdepends = r-distributions3
+	optdepends = r-numderiv
 	optdepends = r-partykit
+	optdepends = r-statmod
 	optdepends = r-strucchange
-	source = https://cran.r-project.org/src/contrib/betareg_3.1-4.tar.gz
-	sha256sums = 5106986096a68b2b516215968158589b71969ce7912879253d6e930355a18101
+	source = https://cran.r-project.org/src/contrib/betareg_3.2-0.tar.gz
+	md5sums = f0ff3dc355f20716df7e51a0e507a02b
+	b2sums = 6304c6dff3dd35d9bf8cc6a4c96084a1a7d79065494b7ae541ba5a7aabb63fb1e542e2439ca87780311c4046618e2087bbc4e5422335e4d83aa52d211b424b3b
 
 pkgname = r-betareg
