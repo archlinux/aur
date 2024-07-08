@@ -1,0 +1,15 @@
+pkgbase = autocast-bin
+	pkgdesc = A tool to help automate the creation of terminal demos
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/k9withabone/autocast
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = glibc
+	depends = gcc-libs
+	provides = autocast
+	conflicts = autocast
+	source_x86_64 = https://github.com/k9withabone/autocast/releases/download/v0.1.0/autocast-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = c236e53dc51a1b01d74291e6ade778f23903cb30eded5d3e63bfb1c1f70d9336
+
+pkgname = autocast-bin
