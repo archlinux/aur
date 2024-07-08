@@ -1,0 +1,5 @@
+[python-pyprecice]
+source = "github"
+github = "precice/python-bindings"
+use_latest_release = "true"
+prefix = "v"
