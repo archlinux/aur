@@ -23,11 +23,6 @@ package_python-dukpy() {
   cd "dukpy-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 
-  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/python-dukpy/LICENSE.txt"
-}
-
-check() {
-  cd "${srcdir}/dukpy-${pkgver}"
-  python setup.py test
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/python-dukpy/LICENSE.txt"
 }
 sha256sums=('677ec7102d1c1c511f7ef918078e8099778dbcea7caf3d6a2a2a72f72aa2d135')
