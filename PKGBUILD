@@ -2,7 +2,7 @@
 pkgname=deepin-wine-pandaocr.pro
 _pkgname=com.pandaocr.pro.spark
 _officalname=PandaOCR.Pro
-pkgver=5.54
+pkgver=5.55
 sparkver=1.0.0
 pkgrel=1
 epoch=
@@ -24,15 +24,15 @@ optdepends=(
 )
 install="${pkgname}.install"
 source=(
-    "${pkgname}-${sparkver}.deb::https://d.store.deepinos.org.cn/store/reading/${_pkgname}/${_pkgname}_${sparkver}_i386.deb"
+    "${pkgname}-${sparkver}.deb::https://mirrors.sdu.edu.cn/spark-store/store/reading/${_pkgname}/${_pkgname}_${sparkver}_i386.deb"
     "${pkgname}-${pkgver}.zip::${url}/releases/download/${pkgver}/${_officalname}_${pkgver}.zip"
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/miaomiaosoft/PandaOCR.Pro/${pkgver}/README.md"
     "${pkgname}.sh"
 )
 sha256sums=('f21c8dd02ee531e32a6f8b4b9cf8c49a21d6c85d422063673ff172e07deeb98f'
-            'b7d0d7f428cfab32b8d0567c81d593aad7f114e2bb51d038fedb407315c48908'
-            '40964a5d392e1bca1e7deb5a7feb76656fb6c19008b8496b4a4d15ecbcca1394'
-            'b4948024dbc267c51f609200d000794b4dcff51eae3b677b53710ee04d9548c0')
+            'a48f0015e2e29043657f02b4baa4140581630cabe8361d032aaeac67540961aa'
+            '04273dcc45429d802820d51257a78308446eb616e0d1291c127d80cb967242f7'
+            '983099e34823f872d36297b1993b0f426a739eb2c12952c179b38f6418ca342f')
 build() {
     sed -e "s|@appname@|${pkgname}|g" \
         -e "s|@appver@|${pkgver}|g" \

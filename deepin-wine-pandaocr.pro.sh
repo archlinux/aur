@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+set -o pipefail
 BOTTLENAME=Deepin-@bottlename@
 APPVER=@appver@
 EXEC_PATH="c:/Program Files/@bottlename@/@bottlename@.exe"
