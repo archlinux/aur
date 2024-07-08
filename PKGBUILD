@@ -1,7 +1,8 @@
-# Maintainer: Wenxuan <wenxuangm@gmail.com>
+# Maintainer: Daniel M. Capella <polyzen@archlinux.org>
+# Contributor: Wenxuan <wenxuangm@gmail.com>
 
 pkgname=code-minimap
-pkgver=0.6.4
+pkgver=0.6.7
 pkgrel=1
 pkgdesc='High performance code minimap render'
 arch=(x86_64)
@@ -13,7 +14,7 @@ makedepends=(
   rust
 )
 source=("git+$url.git#tag=v$pkgver")
-b2sums=('8b3e10a6222b7c6feb9151f83b37f4ca40adeac12b17fbb2d6a8ef75abfe1f7ed40cccf2ca8da0c9a3662e98804c8f2392c5fd98c2a586b70e0edfb76e7891cc')
+b2sums=('bbeda1b573ca22ac1a9e2bc1e792ff9068459d8044f9cba2b42e9d221f1755306134168496b0c0d56731c5ad8140b7fd612b690494de885ef9b353eec9414f74')
 
 prepare() {
   cd $pkgname
