@@ -5,7 +5,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-postgresql
-pkgver=16.2
+pkgver=16.3
 pkgrel=1
 arch=('any')
 pkgdesc="Sophisticated object-relational DBMS (Android ${_android_arch})"
@@ -34,7 +34,7 @@ source=("https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.t
         '0005-Added-missing-headers.patch'
         '0006-Fix-duplicate-case.patch'
         '0007-Unversioned-libs.patch')
-md5sums=('3d19d93434666db5d33e692472915ae5'
+md5sums=('68448849f923db194a07b9da9cc70a7d'
          '4c19ab4024b4079e668117d79a9058b3'
          '75dad9c605ab1987c22e5b0da564dccb'
          '3305f78f93bed96409971e5ca269314d'
@@ -103,8 +103,7 @@ package() {
 
     make DESTDIR="$pkgdir" install
     rm -rf "${pkgdir}/${ANDROID_PREFIX_BIN}"
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
-    rm -f "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so.*
-    rm -rf "${pkgdir}/usr"
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+    rm -f "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so.*
 }
