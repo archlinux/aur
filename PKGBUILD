@@ -3,7 +3,7 @@
 pkgname="sapm-git"
 _pkgname="sapm"
 pkgver="1.0.0"
-pkgrel=3
+pkgrel=4
 pkgdesc="A System Agnostic Package Manager (SAPM) which provides basic but useful functionality"
 arch=("any")
 url="https://github.com/Dyredhead/sapm"
@@ -36,18 +36,21 @@ package() {
 
     install -Dm755 "./target/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 
-    mkdir -p "$pkgdir/etc/$_pkgname/"
-    cp -a "./data/config/"* "$pkgdir/etc/$_pkgname/"
+    # install -Dm644 "./data/$_pkgname.conf" "$pkgdir/etc/$_pkgname/$_pkgname.conf"
+    install -d "$pkgdir/etc/$_pkgname/package_managers/"
 
-    mkdir -p $pkgdir/usr/share/$_pkgname/
-    install -Dm644 "./data/local/template.json" "$pkgdir/usr/share/$_pkgname/"
+    # install -Dm644 "./data/$_pkgname.conf" "$pkgdir/usr/share/$_pkgname/"
+    install -Dm644 "./data/template.json" "$pkgdir/usr/share/$_pkgname/template.json"
+
+    install -d "$pkgdir/usr/share/$_pkgname/package_managers/"
+    cp -a "./data/package_managers/"* "$pkgdir/usr/share/$_pkgname/package_managers/"
     
-    mkdir -p "$pkgdir/usr/share/man/man1/"
-    cp -a "./data/local/man/"*".1" "$pkgdir/usr/share/man/man1/"
+    install -d "$pkgdir/usr/share/man/man1/"
+    cp -a "./data/man/"*".1" "$pkgdir/usr/share/man/man1/"
 
-    install -Dm644 "./data/local/completions/$_pkgname.bash" "$pkgdir/usr/share/bash-completion/completions/$_pkgname.bash"
-    install -Dm644 "./data/local/completions/$_pkgname.fish" "$pkgdir/usr/share/fish/vendor_completions.d/$_pkgname.fish"
-    install -Dm644 "./data/local/completions/_$_pkgname" "$pkgdir/usr/share/zsh/site-functions/_$_pkgname"
+    install -Dm644 "./data/completions/$_pkgname.bash"  "$pkgdir/usr/share/bash-completion/completions/$_pkgname.bash"
+    install -Dm644 "./data/completions/$_pkgname.fish"  "$pkgdir/usr/share/fish/vendor_completions.d/$_pkgname.fish"
+    install -Dm644 "./data/completions/_$_pkgname"      "$pkgdir/usr/share/zsh/site-functions/_$_pkgname"
 
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
