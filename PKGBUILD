@@ -1,9 +1,9 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 pkgname='pyload-ng'
-pkgver=0.5.0b3.dev78
+pkgver=0.4.20
 pkgrel=1
 pkgdesc="The free and open-source Download Manager written in pure Python"
-url="https://pyload.net/"
+url="https://github.com/pyload/pyload"
 license=('AGPL3')
 arch=('any')
 depends=('python-semver' 'python-pycurl' 'python-js2py' 'python-filetype' 'python-cryptography' 'python-bitmath'
@@ -14,9 +14,7 @@ optdepends=('caffeine: For AntiStandby plugin'
             'python-slixmpp: for XMPP plugin'
             'python-pillow: for some CAPTCHA stuff'
             'python-beaker: for some accounts') # <-- honestly I have no idea for which accounts but I saw there were some imports that needed beaker modules in code.
-source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-$pkgver.tar.gz")
-sha256sums=('0b6df90cf3c2eb151b62e4dbc2a1e376812224216b98242e0a8dbf843d6f3288')
-
+source=("$_tarname.tar.gz::$url/archive/v$pkgver.tar.gz")
 prepare() {
   cd "$srcdir/${pkgname}-${pkgver}"
   # Allow higher library versions
@@ -32,3 +30,4 @@ package() {
   cd "$srcdir/${pkgname}-${pkgver}/"
   python setup.py install --skip-build --root="$pkgdir/" --optimize=1
 }
+sha256sums=('438f9a2fc8ecb13b75f55b00192a2192c96a0a08ec1ae842cea17c7c49aab500')
