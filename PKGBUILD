@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: soloturn <soloturn@gmail.com>
 pkgname=cosmic-notifications-git
-pkgver=r68.f72b316
+pkgver=r75.34f44eb
 pkgrel=1
 pkgdesc="Layer Shell notifications daemon which integrates with COSMIC."
 arch=('x86_64' 'aarch64')
@@ -27,7 +27,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
@@ -38,8 +38,7 @@ prepare() {
 
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
-#  nice just vendor
-  cargo fetch --target "$CARCH-unknown-linux-gnu"
+  just vendor
 }
 
 build() {
@@ -48,8 +47,7 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
 
   # use nice to build with lower priority
-#  nice just build-vendored
-  nice just build-release
+  nice just build-vendored
 }
 
 package() {
