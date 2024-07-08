@@ -1,6 +1,6 @@
 # Maintainer: Nanaka Hiira <hiira plus archlinux at hiira dot dev>
 pkgname=fcitx5-hazkey
-pkgver=0.0.4
+pkgver=0.0.6
 pkgrel=1
 pkgdesc="Japanese input method for fcitx5, powered by azooKey engine"
 arch=('x86_64' 'aarch64')
@@ -9,11 +9,16 @@ license=('MIT')
 depends=('fcitx5>=5.0.4')
 optdepends=('vulkan-driver: Zenzai neural conversion support')
 makedepends=('cmake' 'swift-language' 'vulkan-headers')
-source=("https://github.com/7ka-Hiira/fcitx5-hazkey/archive/refs/tags/0.0.4.tar.gz")
-sha256sums=('9f9b095f359d4b75886b1c884be91fcba5f1914c973cf8c79b2dd25ca3b54846')
+source=("https://github.com/7ka-Hiira/fcitx5-hazkey/archive/refs/tags/0.0.6.tar.gz"
+        "https://codeload.github.com/ensan-hcl/azooKey_dictionary_storage/zip/b05798b43679c385ce2179fb746512d7643dfe12")
+sha256sums=('6a0e2fc0ef89a33ccc117aaece85af8b072c07ade58eca1df0646596523ece96'
+            '94153f10f87f2fd754d32f3892d7dacc0f2c6fbb309630ab83d22377a3fffed8')
 
 build() {
 	cd "$pkgname-$pkgver"
+
+	cp -r ../azooKey_dictionary_storage-b05798b43679c385ce2179fb746512d7643dfe12/Dictionary azooKey_dictionary_storage/
+
 	mkdir -p build
 	cd build
 
