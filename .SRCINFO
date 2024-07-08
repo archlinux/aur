@@ -1,0 +1,17 @@
+pkgbase = cad2fbd
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://www.dhondt.de/
+	arch = i686
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = imake
+	makedepends = make
+	makedepends = gcc
+	depends = opencascade
+	options = !buildflags
+	options = !debug
+	source = http://www.dhondt.de/cgxCadTools.tar.bz2
+	md5sums = d9dacdaa2776dc9e24fa17084e0a237f
+
+pkgname = cad2fbd
