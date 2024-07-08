@@ -1,0 +1,19 @@
+pkgbase = android-platform-34
+	pkgdesc = Android SDK Platform, API 34
+	pkgver = r03
+	pkgrel = 1
+	url = http://developer.android.com/sdk/index.html
+	arch = any
+	license = LicenseRef-custom
+	provides = android-platform-34
+	conflicts = android-platform-34
+	options = !strip
+	options = !debug
+	source = https://dl.google.com/android/repository/platform-34-ext7_r03.zip
+	source = package.xml
+	sha256sums = 16fdb74c55e59ae3ef52def135aec713508467bd56d7dabcd8c9be31fa8b20f3
+	sha256sums = ca0589a9b89c09d678b48a9b041decd486106e309da98186a58b2e7e30fef3fd
+
+pkgname = android-platform-34
+	depends = android-sdk
+	depends = android-sdk-platform-tools
