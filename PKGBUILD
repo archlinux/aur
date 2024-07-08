@@ -38,7 +38,7 @@ package() {
 	install -D -m644 "sdrconnect.desktop" "${pkgdir}/usr/share/applications/sdrconnect.desktop"
 
 	# avoid issue with libsdrplay rules
-	install -D -m644 67-sdrplay.rules "${pkgdir}/etc/udev/rules.d/67-sdrplay.rules"
+	install -D -m644 67-sdrplay.rules "${pkgdir}/usr/lib/udev/rules.d/67-sdrplay.rules"
 
 	install -m 755 -d "${pkgdir}/usr/bin"
 	ln -s "/usr/lib/${pkgname}/SDRconnect" "${pkgdir}/usr/bin/${pkgname}"
