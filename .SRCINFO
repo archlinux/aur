@@ -1,0 +1,11 @@
+pkgbase = ttf-gungsuhche
+	pkgdesc = gungsuhche Font
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/googlefonts/batang
+	arch = any
+	license = OFL
+	source = https://github.com/google/fonts/raw/main/ofl/gungsuhche/GungsuhChe-Regular.ttf
+	sha256sums = ad7744ead7cb467fa12ffc565d1ba864a1a2f972c1bea1e3208062c369982c64
+
+pkgname = ttf-gungsuhche
