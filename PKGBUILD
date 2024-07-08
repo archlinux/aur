@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=aio-remote-neo
-pkgver=1.90.1
+pkgver=1.91.0
 pkgrel=1
 pkgdesc='Smart home app that hosts your custom remote control designs from AIO CREATOR NEO'
 arch=('x86_64')
@@ -40,10 +40,8 @@ source=(
   'aio-remote-neo.bash'
 )
 
-sha512sums=(
-  'b2c31ecfc3a4e664e23b9e5c4ea9e3f4ddbbf40000222ef159a5ea210f106c76f495df46ccca59996487b50ded6b115c5db15caf0b5fc0fe8ff2a4a3b8ed09f2'
-  '802c2e819ff1964cf37f9b0198261943c922f0e34dff4f077c481fdd7670a6e8f5061c7fcfd08e0de30ba60519ce2de33c2640c270c5adfcc7635a175bc0df32'
-)
+sha512sums=('52a9dabadeb4a7f2e0dc4e69f4ad710557ca072d5a0edef755af2d3e637ab2389d8edb2554e69fe80234345ae9c7809c86eb10e4711688af45ff88865247b210'
+            '802c2e819ff1964cf37f9b0198261943c922f0e34dff4f077c481fdd7670a6e8f5061c7fcfd08e0de30ba60519ce2de33c2640c270c5adfcc7635a175bc0df32')
 
 prepare() {
   rm -f "${srcdir}/AIO REMOTE NEO/.DS_Store"
