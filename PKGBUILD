@@ -2,13 +2,14 @@
 
 pkgname=python-cynthion
 _gitpkgname=cynthion
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Python package and utilities for the Great Scott Gadgets Cynthion USB Test Instrument'
 arch=('any')
 url='https://github.com/greatscottgadgets/cynthion'
 license=('BSD-3-Clause')
 depends=(
+  "cynthion-firmware=${pkgver}"
   'python'
   'python-amaranth<0.5'  # https://github.com/greatscottgadgets/cynthion/issues/39
   'python-apollo'
@@ -36,12 +37,10 @@ optdepends=(
 )
 
 source=(
-  "${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
+  "${_gitpkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
 )
 
-sha512sums=(
-  '8f37f507056319b996ce4351003a1cc60d51eae0ebc595b88752147e8fe98128a83fcde6e854095fab773227799ae22fe89179c888d182a0f5802cda87f33980'
-)
+sha512sums=('8f045bab9deb8966bb50ef338d2f7abb169545d65dc6d4be5b6f53d8c1bd99ef942587dbc6bc40c4007bd474bf93543bfe4409d36005b20da3dc538802a54613')
 
 prepare() {
   cd "${_gitpkgname}-${pkgver}"
@@ -56,6 +55,10 @@ with patch_in_place('cynthion/python/pyproject.toml') as toml:
 EOF
 }
 
+_site_packages() {
+  python -c 'import site; print(site.getsitepackages()[0])'
+}
+
 build() {
   cd "${_gitpkgname}-${pkgver}"
 
@@ -68,12 +71,10 @@ build() {
 
 check() {
   cd "${_gitpkgname}-${pkgver}"
-  local _site_packages
-  _site_packages="$(python -c 'import site; print(site.getsitepackages()[0])')"
   python -m installer --destdir=tmp_install cynthion/python/dist/*.whl
 
   echo >&2 'Running unit tests'
-  PYTHONPATH="${PWD}/tmp_install/${_site_packages}" \
+  PYTHONPATH="${PWD}/tmp_install/$(_site_packages)" \
     python -m unittest discover -v cynthion/python
 }
 
@@ -82,6 +83,15 @@ package() {
 
   echo >&2 'Packaging the wheel'
   python -I -m installer --destdir="${pkgdir}" cynthion/python/dist/*.whl
+
+  # https://github.com/greatscottgadgets/cynthion/issues/126
+  rm -rfv "${pkgdir}/$(_site_packages)/assets"
+
+  echo >&2 'Symlinking binaries and bitstreams'
+  mkdir -p "${pkgdir}/$(_site_packages)/cynthion/assets"
+  find /usr/lib/cynthion-firmware -maxdepth 1 \
+    '-(' -name '*.bin' -o -name 'CynthionPlatform*' '-)' -exec \
+    ln -fnsv '{}' "${pkgdir}/$(_site_packages)/cynthion/assets/" ';'
 
   echo >&2 'Packaging udev rules'
   install -D -m 644 -t "${pkgdir}/usr/lib/udev/rules.d" \
