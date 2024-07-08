@@ -1,9 +1,8 @@
 pkgbase = cad2fbd
 	pkgdesc = CAD-geometry (STEP or IGES) to CalculiX FBD converter by Pascal Mossier.
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.dhondt.de/
-	arch = i686
 	arch = x86_64
 	license = GPL-2.0-only
 	makedepends = imake
