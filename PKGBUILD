@@ -7,7 +7,15 @@ pkgdesc='Design a custom app to control your smart home. Supports many vendors.'
 arch=('x86_64')
 url='https://www.mediola.com/en/products#aio-creator-neo'
 license=('LicenseRef-eula')
-depends=('bash' 'dxvk' 'wine' 'wine-mono' 'wine-gecko')
+depends=(
+  'bash'
+  'dxvk'
+  'lib32-gnutls'
+  'lib32-libxcomposite'
+  'wine'
+  'wine-mono'
+  'wine-gecko'
+)
 makedepends=('innoextract')
 options=('!debug' '!strip')
 install="${pkgname}.install"
