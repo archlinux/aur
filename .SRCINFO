@@ -9,6 +9,7 @@ pkgbase = python2-html5lib
 	checkdepends = python2-mock
 	checkdepends = python2-pytest
 	checkdepends = python2-pytest-expect
+	makedepends = python2
 	makedepends = python2-setuptools
 	depends = python2-six
 	depends = python2-webencodings

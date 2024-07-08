@@ -15,7 +15,7 @@ depends=(
     'python2-six'
     'python2-webencodings'
 )
-makedepends=('python2-setuptools')
+makedepends=('python2' 'python2-setuptools')
 optdepends=(
     'python2-lxml: recommended – fast parser, uses native code'
     'python2-chardet: recommended – fallback for unrecognized encodings'
