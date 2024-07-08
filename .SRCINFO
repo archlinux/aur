@@ -7,8 +7,8 @@ pkgbase = vencord-bin
 	license = GPL3
 	makedepends = git
 	makedepends = unzip
-	source = git+https://github.com/Vencord/builds.git#commit=8033fc1
-	sha256sums = 3a3c28464c1ed183ed61c6d66e16f253d8b9bf2e7125192fb8231415aa4c7ba1
+	source = git+https://github.com/Vencord/builds.git#commit=b2b52ab
+	sha256sums = 9e31526fbbd55314e9c2554fe4566a206158041dd92be02bd2bef38d4ba48178
 
 pkgname = vencord-bin
 	install = vencord.install

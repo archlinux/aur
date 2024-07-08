@@ -18,9 +18,9 @@ makedepends=(
   git
   unzip
 )
-_commit="8033fc1"
+_commit="b2b52ab"
 source=("git+$_ghurl.git#commit=$_commit")
-sha256sums=('3a3c28464c1ed183ed61c6d66e16f253d8b9bf2e7125192fb8231415aa4c7ba1')
+sha256sums=('9e31526fbbd55314e9c2554fe4566a206158041dd92be02bd2bef38d4ba48178')
 
 package_vencord-bin() {
   depends=(vesktop)
