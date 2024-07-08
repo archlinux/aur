@@ -1,0 +1,3 @@
+# Override this file with a modified version in /etc/tmpfiles.d/
+d /var/lib/anki-sync-server 0700 anki-sync-server anki-sync-server
+

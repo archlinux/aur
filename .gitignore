@@ -1,5 +1,10 @@
-*.tar
-*.gz
-*.xz
-src/
-pkg/
+# Ignore everything
+*
+
+# But not these files...
+!PKGBUILD
+!.SRCINFO
+!anki-sync-server.service
+!anki-sync-server.tmpfiles
+!sysusers-anki-sync-server.conf
+!anki-sync-server.env

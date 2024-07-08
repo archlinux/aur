@@ -1,20 +1,15 @@
 [Unit]
-Description=Anki Sync Server
+Description=Anki sync server
+Documentation=https://docs.ankiweb.net/sync-server.html
+After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/paster serve --quiet /etc/webapps/anki-sync-server/production.ini
-Restart=on-failure
-
 User=anki-sync-server
-Group=anki-sync-server
-CapabilityBoundingSet=
-PrivateTmp=true
-PrivateDevices=true
-ProtectSystem=full
-ProtectHome=true
-NoNewPrivileges=true
+WorkingDirectory=/var/lib/anki-sync-server
+EnvironmentFile=/etc/default/anki-sync-server
+ExecStart=/usr/bin/anki-sync-server
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
-
