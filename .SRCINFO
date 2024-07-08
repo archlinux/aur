@@ -1,6 +1,6 @@
 pkgbase = organize
 	pkgdesc = A command line utility to automate file organization tasks
-	pkgver = 3.2.3
+	pkgver = 3.2.4
 	pkgrel = 1
 	url = https://github.com/tfeldmann/organize
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = organize
 	makedepends = python-poetry
 	makedepends = python-wheel
 	depends = python
-	source = organize-3.2.3.tar.gz::https://github.com/tfeldmann/organize/archive/refs/tags/v3.2.3.tar.gz
-	sha256sums = 0437554ddf298b9896ccb64fb1e7ef9a861071298b231ead1403903687332d47
+	source = organize-3.2.4.tar.gz::https://github.com/tfeldmann/organize/archive/refs/tags/v3.2.4.tar.gz
+	sha256sums = 3d2f0f093a8a971f87de79dc477b0366a0b32e09493a07620d73a7032325abd0
 
 pkgname = organize
 	depends = python

@@ -3,7 +3,7 @@
 
 _pkgname="organize"
 pkgname="$_pkgname"
-pkgver=3.2.3
+pkgver=3.2.4
 pkgrel=1
 pkgdesc='A command line utility to automate file organization tasks'
 url='https://github.com/tfeldmann/organize'
@@ -23,7 +23,7 @@ makedepends=(
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
-sha256sums=('0437554ddf298b9896ccb64fb1e7ef9a861071298b231ead1403903687332d47')
+sha256sums=('3d2f0f093a8a971f87de79dc477b0366a0b32e09493a07620d73a7032325abd0')
 
 build() {
   cd "$_pkgsrc"
