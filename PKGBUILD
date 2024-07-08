@@ -13,7 +13,7 @@
 # Contributor: Diego Jose <diegoxter1006@gmail.com>
 
 pkgbase=lib32-mesa-amdonly-gaming-git
-pkgver=24.2.0_devel.191030.0e220cd45a4.d41d8cd98f00b204e9800998ecf8427e
+pkgver=24.2.0_devel.191649.4581bf595bd.e60076a
 options=(!lto) # LTO is bad for mesa, makes random applications crash on my system
 
 pkgname=(
@@ -30,7 +30,7 @@ pkgrel=1
 pkgdesc="An open-source implementation of the OpenGL specification (32-bit)"
 url="https://www.mesa3d.org/"
 arch=('x86_64')
-license=('custom:mesa')
+license=('LicenseRef-mesa')
 makedepends=(
   'lib32-clang'
   'lib32-expat'
@@ -62,7 +62,7 @@ makedepends=(
   'elfutils'
   'glslang'
   'libclc'
-  'meson>=1.3.0'
+  'meson'
   'python-mako'
   'python-ply'
   'rust-bindgen'
@@ -73,36 +73,32 @@ makedepends=(
 source=(
   'mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git#branch=main'
   'LICENSE'
+  '30057.patch'
 )
 b2sums=('SKIP'
-        'cc60238726b35133b5b729fb4ed1e76e04136588533615d84b4a54656d5b41727d5e7ff06ef4de3eb102eed6669d6c5c5cb8ac9fbdf6fc25aa477877c5c3ba87')
-validpgpkeys=('8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D'  # Emil Velikov <emil.l.velikov@gmail.com>
-              '946D09B5E4C9845E63075FF1D961C596A7203456'  # Andres Gomez <tanty@igalia.com>
-              'E3E8F480C52ADD73B278EE78E1ECBE07D7D70895'  # Juan Antonio Suárez Romero (Igalia, S.L.) <jasuarez@igalia.com>
-              'A5CC9FEC93F2F837CB044912336909B6B25FADFA'  # Juan A. Suarez Romero <jasuarez@igalia.com>
-              '71C4B75620BC75708B4BDB254C95FAAB3EB073EC'  # Dylan Baker <dylan@pnwbakers.com>
-              '57551DE15B968F6341C248F68D8E31AFC32428A6') # Eric Engestrom <eric@engestrom.ch>
+        'cc60238726b35133b5b729fb4ed1e76e04136588533615d84b4a54656d5b41727d5e7ff06ef4de3eb102eed6669d6c5c5cb8ac9fbdf6fc25aa477877c5c3ba87'
+        '3122154a8839dfa65d7c34eeaad66afe0dcd0f41a9fe80eb4aad143b6c8a0e667cf2ba486e45feaca0f24dac7b2133af9b0c444be5e3fd12bc239491d977aa1c')
 
 
 # NINJAFLAGS is an env var used to pass commandline options to ninja
 # NOTE: It's your responbility to validate the value of $NINJAFLAGS. If unsure, don't set it.
 
 pkgver() {
-    cd mesa
-    local _ver
-    read -r _ver <VERSION
+  cd mesa
+  local _ver
+  _ver=$(<VERSION)
 
-    local _patchver
-    local _patchfile
-    for _patchfile in "${source[@]}"; do
-        _patchfile="${_patchfile%%::*}"
-        _patchfile="${_patchfile##*/}"
-        [[ $_patchfile = *.patch ]] || continue
-        _patchver="${_patchver}$(md5sum ${srcdir}/${_patchfile} | cut -c1-32)"
-    done
-    _patchver="$(echo -n $_patchver | md5sum | cut -c1-32)"
+  local _patchver
+  local _patchfile
+  for _patchfile in "${source[@]}"; do
+    _patchfile="${_patchfile%%::*}"
+    _patchfile="${_patchfile##*/}"
+    [[ $_patchfile = *.patch ]] || continue
+    _patchver="${_patchver}$(md5sum ${srcdir}/${_patchfile} | cut -c1-32)"
+  done
+  _patchver="$(echo -n $_patchver | md5sum | cut -c1-7)"
 
-    echo ${_ver/-/_}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD).${_patchver}
+  echo ${_ver/-/_}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD).${_patchver}
 }
 
 prepare() {
@@ -112,23 +108,13 @@ prepare() {
     rm -rf _build
   fi
 
-  # Ugly hack to allow recompilation using gamescope.path
-  if [ -f "mesa/src/egl/wayland/wayland-drm/gamescope-commit-queue-v1.xml" ]; then
-    rm -rf "mesa/src/egl/wayland/wayland-drm/gamescope-commit-queue-v1.xml"
-  fi
-
-  # Include package release in version string so Chromium invalidates
-  # its GPU cache; otherwise it can cause pages to render incorrectly.
-  # https://bugs.launchpad.net/ubuntu/+source/chromium-browser/+bug/2020604
-  echo "$pkgver-$pkgrel" >VERSION
-
   local _patchfile
   for _patchfile in "${source[@]}"; do
-      _patchfile="${_patchfile%%::*}"
-      _patchfile="${_patchfile##*/}"
-      [[ $_patchfile = *.patch ]] || continue
-      echo "Applying patch $_patchfile..."
-      patch --directory=mesa --forward --strip=1 --input="${srcdir}/${_patchfile}"
+    _patchfile="${_patchfile%%::*}"
+    _patchfile="${_patchfile##*/}"
+    [[ $_patchfile = *.patch ]] || continue
+    echo "Applying patch $_patchfile..."
+    patch --directory=mesa --forward --strip=1 --input="${srcdir}/${_patchfile}"
   done
 }
 
@@ -451,3 +437,5 @@ package_lib32-amdonly-gaming-mesa-git() {
 
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
+
+# vim:set ts=2 sw=2 et:
