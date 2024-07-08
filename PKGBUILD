@@ -1,7 +1,7 @@
 # Maintainer: piernov <piernov@piernov.org>
 
 pkgname=python-pytorch3d
-pkgver=0.7.6
+pkgver=0.7.7
 pkgrel=1
 pkgdesc="Provides efficient, reusable components for 3D Computer Vision research with PyTorch."
 arch=('x86_64')
@@ -10,13 +10,17 @@ license=('BSD')
 depends=('python-fvcore' 'python-iopath')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/facebookresearch/pytorch3d/archive/v$pkgver.tar.gz"
-  'setup-py_extensions_relative_paths.patch')
-md5sums=('66bece60c411256ea463d5f632a747ab'
-  '506f83849dd3afab00501fc2442473fb')
+  'setup-py_extensions_relative_paths.patch'
+  'glog_use_glog_export.patch')
+md5sums=('eed5222eeddec0f36306fca8f17cd139'
+         '91631716dae72cd1b8c004148ef39e76'
+         '5aba33291116b36d04fe038b0b26274f')
 
 build() {
   cd "$srcdir"/pytorch3d-$pkgver
 
+  # Define GLOG_USE_GLOG_EXPORT when building C extension
+  patch -p1 < "${srcdir}/glog_use_glog_export.patch"
 
   # Avoid references to $srcdir in SOURCES.txt and native Python extension
   patch -p1 < "${srcdir}/setup-py_extensions_relative_paths.patch"

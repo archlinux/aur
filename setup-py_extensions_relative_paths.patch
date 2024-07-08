@@ -13,7 +13,7 @@ index 357073a..f49daa8 100755
      extension = CppExtension
  
      extra_compile_args = {"cxx": ["-std=c++17"]}
-     define_macros = []
+     define_macros = [("GLOG_USE_GLOG_EXPORT", None)]
 -    include_dirs = [extensions_dir]
 +    include_dirs = [os.path.join(this_dir, extensions_dir)]
  
