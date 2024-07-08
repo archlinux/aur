@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=chatd
-pkgver=1.1.1
+pkgver=1.1.2
 _electronversion=24
 _nodeversion=18
 pkgrel=1
@@ -24,7 +24,7 @@ makedepends=(
     'git'
     'curl'
     'gcc'
-    'base-devel'
+    'cmake'
 )
 options=(
     '!emptydirs'
@@ -34,7 +34,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('789bd164374216f68f70e1f4095c3be46163b687acd376cd2e25888d80912a88'
+sha256sums=('78112d7cd5e8fd69fea531ba4deaa3d8f3b4a4edda8835c25f38d7213708bbc4'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -67,8 +67,8 @@ build() {
     else
         echo "Your network is OK."
     fi
-    npm install
-    npm run package
+    NODE_ENV=development npm install
+    NODE_ENV=production npm run package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
