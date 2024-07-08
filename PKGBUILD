@@ -2,8 +2,8 @@
 
 pkgname=sdrconnect
 pkgver=0.0.0.3
-build=ab08e01fe
-pkgrel=1
+build=f795c3df0
+pkgrel=2
 pkgdesc="SDR receiver for SDRplay devices"
 arch=('aarch64' 'x86_64')
 url="http://www.sdrplay.com/sdrconnect/"
@@ -16,8 +16,8 @@ source=("sdrconnect.desktop"
         "67-sdrplay.rules")
 sha256sums=('813615889e26d412e63c8c383626e370376d367c5109e909d61fe4070a1d8def'
             '113c42683b598d795db10b890b6da5bb5d025c16092106f459bf2a15c44a88e5')
-sha256sums_aarch64=('24368a506b1d95ce202fc6cefc38cfa178a73a63ddd21f807185c50b6535b518')
-sha256sums_x86_64=('f7c052ae5382f1fbbdab124add5b6df62a91d09a00baf1e22b5a5761ebb54b36')
+sha256sums_aarch64=('27f589a559ded758f82486654b331e300e8275a37baa958a84a86398896b7069')
+sha256sums_x86_64=('291b38cd9c44e52cf18c0a9c98c243b974e744cd1fa4a7deb61d1a15a9d1c48d')
 
 prepare() {
 	cd ${srcdir}
