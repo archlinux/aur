@@ -1,9 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgbase=decasify
-pkgname=("$pkgbase" "lua-$pkgbase" "lua53-$pkgbase" "lua52-$pkgbase" "lua51-$pkgbase")
-# "python-$pkgbase")
-pkgver=0.5.2
+pkgname=("$pkgbase" "lua-$pkgbase" "lua53-$pkgbase" "lua52-$pkgbase" "lua51-$pkgbase" "python-$pkgbase")
+pkgver=0.5.5
 _rockrel=1
 pkgrel=1
 pkgdesc='cast strings to title-case according to locale specific style guides including Turkish'
@@ -23,7 +22,7 @@ makedepends=(cargo
              jq)
 _archive="$pkgbase-$pkgver"
 source=("$url/releases/download/v$pkgver/$_archive.tar.zst"{,.asc})
-sha256sums=('621c7f100f38711767f1fdfb6be0c4303321c848992ad3802208539cc613cab1'
+sha256sums=('620d5d75af0bc35ff9b24eff9873b9a23a429cd76337948c5e9a3b3dd76c4c4a'
             'SKIP')
 validpgpkeys=('9F377DDB6D3153A48EB3EB1E63CC496475267693') # Caleb Maclennan <caleb@alerque.com> (@alerque)
 
@@ -37,13 +36,14 @@ build() {
 	export CARGO_FEATURE_FLAGS==--offline
 	./configure --prefix /usr
 	make
-	# python -m build -wn
+	python -m build -wn
 }
 
 check() {
 	cd "$_archive"
-	export CARGO_FEATURE_FLAGS==--offline
-	make check
+	# export CARGO_FEATURE_FLAGS==--offline
+	# check requires lua & python developer tooling, needs to be reworked for a simple selfcheck
+	# make check
 }
 
 package_decasify() {
@@ -79,5 +79,6 @@ package_lua53-decasify() {
 
 package_python-decasify() {
 	depends=(python)
+	cd "$_archive"
 	python -m installer -d "$pkgdir" dist/*.whl
 }
