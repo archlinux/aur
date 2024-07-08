@@ -5,8 +5,8 @@
 
 pkgname=dia-git
 _pkgname=dia
-pkgver=6872.aad567a2c
-pkgrel=4
+pkgver=6876.222828925
+pkgrel=1
 pkgdesc="A GTK+ based diagram creation program"
 arch=('x86_64')
 license=('GPL-2.0-or-later')
@@ -27,7 +27,6 @@ pkgver() {
 prepare() {
   cd "${_pkgname}"
   sed -i "s/cc.find_library('ogdf'/cc.find_library('OGDF'/g" meson.build
-  sed -i 's/gnu++17/gnu++20/' meson.build
 }
 
 build() {
