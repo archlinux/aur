@@ -1,6 +1,6 @@
 pkgbase = catppuccin-konsole-theme-git
-	pkgdesc = Catppuccin for Konsole
-	pkgver = r29.7d86b8a
+	pkgdesc = Soothing pastel theme for Konsole
+	pkgver = r30.3b64040
 	pkgrel = 1
 	url = https://github.com/catppuccin/konsole
 	arch = any
