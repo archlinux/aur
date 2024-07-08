@@ -11,9 +11,11 @@ arch=("any")
 license=("MIT")
 depends=(
   "python"
-  "libnewt" # whiptail
   "python-pyxdg"
   "python-dbus"
+)
+optdepends=(
+  "libnewt: for 'uwsm start select'"
 )
 makedepends=(
   "git"
