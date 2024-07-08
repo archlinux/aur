@@ -34,7 +34,7 @@ build() {
         -DENABLE_VIRTUAL_IPU_PIPE=OFF   \
         -DUSE_PG_LITE_PIPE=ON           \
         -DUSE_STATIC_GRAPH=OFF          \
-        -DCMAKE_INSTALL_PREFIX="/usr"   \
+        -DCMAKE_INSTALL_PREFIX="/"   \
         -DLIBGCSS_FOUND=ON              \
         -DLIBGCSS_LIBRARY_DIRS="/usr/lib/ipu_adl" \
         -DLIBGCSS_INCLUDE_DIRS="/usr/include/ipu_adl/ia_camera" \
@@ -50,5 +50,7 @@ build() {
 package() {
     DESTDIR="$pkgdir" cmake --install build
     mkdir -p "$pkgdir/etc/ld.so.conf.d"
+    mv "$pkgdir/usr/usr/lib/pkgconfig" "$pkgdir/usr/lib/"
+    rmdir "$pkgdir/usr/usr/lib" && rmdir "$pkgdir/usr/usr"
     echo "/usr/lib/ipu_adl" > "$pkgdir/etc/ld.so.conf.d/intel-ipu6-camera-bin-adl.conf"
 }
