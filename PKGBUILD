@@ -3,7 +3,7 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-ffmpeg
-pkgver=7.0
+pkgver=7.0.1
 pkgrel=1
 arch=('any')
 pkgdesc="Complete solution to record, convert and stream audio and video (Android ${_android_arch})"
@@ -49,6 +49,7 @@ depends=("android-${_android_arch}-alsa-lib"
          "android-${_android_arch}-libxml2"
          "android-${_android_arch}-libxv"
          "android-${_android_arch}-libvpl"
+         "android-${_android_arch}-ocl-icd"
          "android-${_android_arch}-opencore-amr"
          "android-${_android_arch}-openjpeg2"
          "android-${_android_arch}-opus"
@@ -79,7 +80,7 @@ optdepends=("android-${_android_arch}-avisynthplus: AviSynthPlus support"
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("http://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"
         'configure.patch')
-md5sums=('d2edfc6ec6494c432828876e3102f740'
+md5sums=('81d5e65494f573ec28c9f56e99247815'
          'c1851376794c16bcb37cfa8918e10cba')
 
 prepare() {
@@ -138,7 +139,10 @@ build() {
         extra_options="${extra_options} --enable-libxcb"
     fi
 
-#     extra_options="${extra_options} --enable-frei0r"
+    # extra_options="${extra_options} --enable-frei0r"
+
+    # For some unlnown reason, librsvg is not exporting any symbol so disable for now.
+    # extra_options="${extra_options} --enable-librsvg"
 
     ./configure \
         --prefix=${ANDROID_PREFIX} \
@@ -169,8 +173,8 @@ build() {
         --disable-v4l2-m2m \
         --disable-indev=v4l2 \
         --disable-outdev=v4l2 \
-        --enable-avisynth \
         --enable-lto \
+        --enable-avisynth \
         --enable-fontconfig \
         --enable-gmp \
         --enable-gnutls \
@@ -195,7 +199,6 @@ build() {
         --enable-libopenmpt \
         --enable-libopus \
         --enable-librav1e \
-        --enable-librsvg \
         --enable-librubberband \
         --enable-libsnappy \
         --enable-libsoxr \
