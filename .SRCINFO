@@ -6,6 +6,7 @@ pkgbase = python-dukpy
 	arch = x86_64
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = python-pip
 	depends = python
 	source = dukpy-0.4.0.tar.gz::https://github.com/amol-/dukpy/releases/download/0.4.0/dukpy-0.4.0.tar.gz
 	sha256sums = 677ec7102d1c1c511f7ef918078e8099778dbcea7caf3d6a2a2a72f72aa2d135

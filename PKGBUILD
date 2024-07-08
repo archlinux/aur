@@ -9,7 +9,7 @@ pkgdesc="Python bindings for the duktape embeddable JavaScript engine"
 arch=('x86_64')
 url="https://github.com/amol-/dukpy"
 license=('MIT')
-depends=('python')
+depends=('python' 'python-pip')
 makedepends=('python-setuptools')
 source=("dukpy-${pkgver}.tar.gz::${url}/releases/download/${pkgver}/${name}-${pkgver}.tar.gz")
 
