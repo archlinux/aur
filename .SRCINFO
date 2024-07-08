@@ -1,0 +1,11 @@
+pkgbase = ttf-gungsuh
+	pkgdesc = gungsuh Font
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/googlefonts/batang
+	arch = any
+	license = OFL
+	source = https://github.com/google/fonts/raw/main/ofl/gungsuh/Gungsuh-Regular.ttf
+	sha256sums = e0887c3b3a92f0ebc604cbd5e94ad6d0dad4ed3ffa624f6bae9a95f2d4d06735
+
+pkgname = ttf-gungsuh
