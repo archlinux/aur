@@ -1,14 +1,14 @@
-# Maintainer: David Runge <dvzrv@archlinux.org>
+# Contributor: David Runge <dvzrv@archlinux.org>
 # Contributor: speps <speps at aur dot archlinux dot org>
 # Contributor: Andreas Schnaiter <rc.poison@gmail.com>
 
 pkgname=smtube
 pkgver=21.10.0
-pkgrel=4
+pkgrel=5
 pkgdesc="An application that allows to browse, search and play YouTube videos"
 arch=(x86_64)
 url="https://www.smtube.org/"
-license=(GPL2)
+license=(GPL-2.0-or-later)
 depends=(gcc-libs glibc hicolor-icon-theme qt5-webkit)
 makedepends=(qt5-tools)
 optdepends=('mplayer: play videos with MPlayer'
