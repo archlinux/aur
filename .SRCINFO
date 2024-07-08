@@ -1,0 +1,17 @@
+pkgbase = ufprog-git
+	pkgdesc = Universal Flash Programmer
+	pkgver = 4.0.r11.gebcc3c8
+	pkgrel = 1
+	url = https://github.com/hackpascal/ufprog
+	arch = x86_64
+	license = GPL-2.0-only AND LGPL-2.0-only
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	depends = glibc
+	provides = ufprog
+	conflicts = ufprog
+	source = ufprog-git::git+https://github.com/hackpascal/ufprog.git
+	sha256sums = SKIP
+
+pkgname = ufprog-git
