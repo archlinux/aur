@@ -12,7 +12,7 @@
 _pkgname="localsend"
 pkgname="$_pkgname"
 pkgver=1.14.0
-pkgrel=3
+pkgrel=4
 pkgdesc="An open source cross-platform alternative to AirDrop"
 url="https://github.com/localsend/localsend"
 license=('MIT')
@@ -24,12 +24,14 @@ depends=(
 makedepends=(
   'clang'
   'cmake'
-  'fvm'
   'git'
   'lld'
   'llvm'
   'ninja'
   'patchelf'
+
+  ## AUR
+  'fvm'
 )
 
 _pkgsrc="$_pkgname"
@@ -44,7 +46,7 @@ build() {
 
   fvm flutter --disable-telemetry
   #fvm flutter pub upgrade --major-versions
-  fvm flutter pub get
+  fvm flutter --no-version-check pub get
   fvm flutter build linux --release
 }
 
@@ -57,9 +59,10 @@ package() {
   cp --reflink=auto -r data/ "$pkgdir/$_install_path/$_pkgname/"
 
   # runpath
-  patchelf --force-rpath --set-rpath "/$_install_path/$_pkgname/lib" "$pkgdir/$_install_path/$_pkgname/$_pkgname"
+  patchelf --set-rpath '$ORIGIN/lib' "$pkgdir/$_install_path/$_pkgname/$_pkgname"
   for i in "$pkgdir/$_install_path/$_pkgname/lib"/*.so; do
-    patchelf --force-rpath --set-rpath "/$_install_path/$_pkgname/lib" "$i"
+    [ -z "$(patchelf --print-rpath "$i")" ] && continue
+    patchelf --set-rpath '$ORIGIN' "$i"
   done
 
   # symlink
