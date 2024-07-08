@@ -1,6 +1,6 @@
 pkgbase = cosmic-comp-git
 	pkgdesc = Compositor for the COSMIC desktop environment
-	pkgver = r1041.36bf611
+	pkgver = r1128.b3b9ead
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-comp
 	arch = x86_64
@@ -21,7 +21,6 @@ pkgbase = cosmic-comp-git
 	depends = wayland
 	provides = cosmic-comp
 	conflicts = cosmic-comp
-	backup = etc/cosmic-comp/config.ron
 	source = git+https://github.com/pop-os/cosmic-comp.git
 	sha256sums = SKIP
 

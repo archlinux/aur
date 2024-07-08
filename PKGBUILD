@@ -1,7 +1,7 @@
 # Maintainer: soloturn <soloturn@gmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-comp-git
-pkgver=r1041.36bf611
+pkgver=r1128.b3b9ead
 pkgrel=1
 pkgdesc="Compositor for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
@@ -26,13 +26,12 @@ makedepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-backup=('etc/cosmic-comp/config.ron')
 source=('git+https://github.com/pop-os/cosmic-comp.git')
 sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
@@ -57,8 +56,4 @@ build() {
 package() {
   cd "${pkgname%-git}"
   make DESTDIR="$pkgdir" install
-
-  # Keybinding config
-  # https://github.com/pop-os/cosmic-epoch#cosmic-comp
-  install -Dm644 config.ron -t "$pkgdir/etc/cosmic-comp/"
 }
