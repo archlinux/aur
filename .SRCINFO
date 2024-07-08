@@ -1,6 +1,6 @@
 pkgbase = ruby-cbor-diag
 	pkgdesc = CBOR (Concise Binary Object Representation) diagnostic notation
-	pkgver = 0.6.1
+	pkgver = 0.8.7
 	pkgrel = 1
 	url = http://cbor.io/
 	arch = any
@@ -12,9 +12,9 @@ pkgbase = ruby-cbor-diag
 	depends = ruby-cbor-deterministic
 	depends = ruby-cbor-canonical
 	depends = ruby-cbor-packed
-	noextract = cbor-diag-0.6.1.gem
+	noextract = cbor-diag-0.8.7.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/cbor-diag-0.6.1.gem
-	sha1sums = 3969acd16e20d8ca105a9f97cfe6c87c9326b5af
+	source = https://rubygems.org/downloads/cbor-diag-0.8.7.gem
+	sha256sums = a15459d1f5413995b400c70aaae0777714fa361f2f27d9fcab4aae673b428d67
 
 pkgname = ruby-cbor-diag

@@ -3,7 +3,7 @@
 
 _gemname=cbor-diag
 pkgname=ruby-$_gemname
-pkgver=0.6.1
+pkgver=0.8.7
 pkgrel=1
 pkgdesc='CBOR (Concise Binary Object Representation) diagnostic notation'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby ruby-treetop ruby-json ruby-neatjson ruby-cbor-deterministic ruby-
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('3969acd16e20d8ca105a9f97cfe6c87c9326b5af')
+sha256sums=('a15459d1f5413995b400c70aaae0777714fa361f2f27d9fcab4aae673b428d67')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
