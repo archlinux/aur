@@ -1,7 +1,7 @@
 pkgbase = r-reprex
 	pkgdesc = Prepare Reproducible Example Code via the Clipboard
-	pkgver = 2.1.0
-	pkgrel = 2
+	pkgver = 2.1.1
+	pkgrel = 1
 	url = https://cran.r-project.org/package=reprex
 	arch = any
 	license = MIT
@@ -28,8 +28,8 @@ pkgbase = r-reprex
 	optdepends = r-spelling
 	optdepends = r-styler
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/reprex_2.1.0.tar.gz
-	md5sums = f9c998d2dc355b00fbde58c04d97d220
-	b2sums = 8a54ccb446850f9c209a11146513e58798877165bbf36d8f810f1c7cc1ed8c972812b7dc6a1114422674917a56549342db300e0079c4b29d7cae7415f2baf696
+	source = https://cran.r-project.org/src/contrib/reprex_2.1.1.tar.gz
+	md5sums = cddc2f1334ad703df88a18926432470f
+	b2sums = 62cf9caf503472824e6f29dceb389248a644034654333c2e21cdd982eca868bf1d4f9cb7d8a52a85d3b79200d6a851f9389860843a7d69ebe2b23af229bed39a
 
 pkgname = r-reprex

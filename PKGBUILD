@@ -4,10 +4,10 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _pkgname=reprex
-_pkgver=2.1.0
+_pkgver=2.1.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Prepare Reproducible Example Code via the Clipboard"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -42,8 +42,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f9c998d2dc355b00fbde58c04d97d220')
-b2sums=('8a54ccb446850f9c209a11146513e58798877165bbf36d8f810f1c7cc1ed8c972812b7dc6a1114422674917a56549342db300e0079c4b29d7cae7415f2baf696')
+md5sums=('cddc2f1334ad703df88a18926432470f')
+b2sums=('62cf9caf503472824e6f29dceb389248a644034654333c2e21cdd982eca868bf1d4f9cb7d8a52a85d3b79200d6a851f9389860843a7d69ebe2b23af229bed39a')
 
 build() {
   mkdir build
