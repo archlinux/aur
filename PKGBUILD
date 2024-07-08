@@ -26,14 +26,22 @@ prepare() {
     chmod +x LinkServer_${pkgver}.${arch}.deb.bin
     ./LinkServer_${pkgver}.${arch}.deb.bin --noexec --keep --target ${srcdir}
     rm LinkServer_${pkgver}.${arch}.deb.bin
-    cd ${srcdir}/
+    cd ${srcdir}
     mkdir linkserver
     bsdtar -x -f LinkServer_${pkgver}.${arch}.deb -C linkserver/
     rm LinkServer_${pkgver}.${arch}.deb
     bsdtar -x -f linkserver/data.tar.gz -C linkserver/
     rm linkserver/data.tar.gz
+
+    mkdir mcu-link
+    bsdtar -x -f MCU-Link.deb -C mcu-link/
+    rm MCU-Link.deb
+    bsdtar -x -f mcu-link/data.tar.gz -C mcu-link/
+    rm mcu-link/data.tar.gz
     # Rename main folder in place
     mv ${srcdir}/linkserver/usr/local/LinkServer_${pkgver} ${srcdir}/linkserver/usr/local/${pkgname};
+    # Move MCU-LINK in the subfolder
+    mv ${srcdir}/mcu-link/usr/local/MCU-LINK_installer_* ${srcdir}/linkserver/usr/local/${pkgname}/MCU-LINK_installer;
 }
 
 
@@ -44,6 +52,7 @@ package() {
     mv ${pkgdir}/usr/local ${pkgdir}/opt;
     # Copy udev rules from /lib to /usr/lib folder
     cp -ar ${srcdir}/linkserver/lib/udev ${pkgdir}/usr/lib/;
+    cp -ar ${srcdir}/mcu-link/lib/udev ${pkgdir}/usr/lib/;
     # Add Product LICENSE file to licenses folder
     install -D -m644 ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE;
 }
