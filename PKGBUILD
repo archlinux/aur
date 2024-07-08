@@ -3,7 +3,7 @@ pkgname=ptree-bin
 _pkgname=PTree
 pkgver=2.2.1
 _electronversion=11
-pkgrel=4
+pkgrel=5
 pkgdesc="Design power tree and estimate consumptions"
 arch=("x86_64")
 url="https://smariel.github.io/PTree"
@@ -12,7 +12,7 @@ license=("GPL-3.0-only")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
 )
 makedepends=(
     'asar'
@@ -23,14 +23,15 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('289cabafe6b560591fda4440681cd5f3a2b1a521a493fc18dc866809bb7df51a'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
+    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
     asar e "${srcdir}/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
 }
 package() {
