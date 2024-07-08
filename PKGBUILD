@@ -1,5 +1,5 @@
 pkgname=perl-pgtap-git
-pkgver=v3.33.r1.g1a3b7ac
+pkgver=v3.36.r6.g06cccbe
 pkgrel=1
 pkgdesc='Stream TAP from pgTAP test scripts'
 _dist=tap-parser-sourcehandler-pgtap
@@ -7,7 +7,7 @@ arch=('any')
 url="http://pgtap.org"
 license=('PerlArtistic')
 depends=(perl perl-module-build)
-source=("git://github.com/theory/tap-parser-sourcehandler-pgtap.git")
+source=("git+https://github.com/theory/tap-parser-sourcehandler-pgtap.git")
 md5sums=("SKIP")
 
 
