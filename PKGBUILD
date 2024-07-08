@@ -1,33 +1,37 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 pkgname='pyload-ng'
-pkgver=0.4.20
+_pkgname=pyload_ng
+pkgver=0.5.0b3.dev85
 pkgrel=1
 pkgdesc="The free and open-source Download Manager written in pure Python"
-url="https://github.com/pyload/pyload"
+url="https://pyload.net/"
 license=('AGPL3')
 arch=('any')
 depends=('python-semver' 'python-pycurl' 'python-js2py' 'python-filetype' 'python-cryptography' 'python-bitmath'
-         'python-flask-themes2' 'python-flask-session' 'python-flask-compress' 'python-flask-caching' 'python-flask-babel'
+         'python-flask-themes2' 'python-flask-session' 'python-flask-compress' 'python-flask-caching' 'python-flask-babel' 'python-dukpy'
          'python-cheroot' 'python-setuptools' 'python-certifi')
 optdepends=('caffeine: For AntiStandby plugin'
             'python-beautifulsoup4: for XFileSharing plugin'
             'python-slixmpp: for XMPP plugin'
             'python-pillow: for some CAPTCHA stuff'
             'python-beaker: for some accounts') # <-- honestly I have no idea for which accounts but I saw there were some imports that needed beaker modules in code.
-source=("$_tarname.tar.gz::$url/archive/v$pkgver.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${_pkgname}-$pkgver.tar.gz")
+sha256sums=('0b6df90cf3c2eb151b62e4dbc2a1e376812224216b98242e0a8dbf843d6f3288')
+
 prepare() {
-  cd "$srcdir/${pkgname}-${pkgver}"
+  cd "$srcdir/${_pkgname}-${pkgver}"
   # Allow higher library versions
   sed -e 's/~=/>=/g' -i setup.cfg
 }
 
 build() {
-  cd "$srcdir/${pkgname}-${pkgver}"
+  cd "$srcdir/${_pkgname}-${pkgver}"
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/${pkgname}-${pkgver}/"
+  cd "$srcdir/${_pkgname}-${pkgver}/"
   python setup.py install --skip-build --root="$pkgdir/" --optimize=1
 }
-sha256sums=('438f9a2fc8ecb13b75f55b00192a2192c96a0a08ec1ae842cea17c7c49aab500')
+
+sha256sums=('28ba5f879dc92aa7b49192dc4350b87d714561e3b9a4f8626bd7d1c56b1b2076')
