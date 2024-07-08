@@ -7,6 +7,7 @@ pkgbase = k9s-openstack
 	depends = kubectl
 	depends = yq
 	depends = k9s
+	depends = openstack
 	source = k9s-openstack-plugins.yaml
 	sha512sums = 56478041c71cbeaa4c6f641f6eebf53fc2e713272898af484fb5b23de2e678e4205bd818fa1854491aef6149517e724add0d7424ae765e43898c0cac6b6f9e89
 
