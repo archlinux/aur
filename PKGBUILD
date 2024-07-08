@@ -2,16 +2,15 @@
 
 pkgname='mini-benchmarker'
 _ver=2.1
-pkgver=2.1.r21.g2f6fe94
+pkgver=2.1.r22.g9dc753e
 pkgrel=1
 pkgdesc='A simple benchmarking script using stress-ng, perf, blender etc.'
 url="https://gitlab.com/torvic9/mini-benchmarker"
 arch=('x86_64')
 licence=('GPL3')
-depends=('gcc' 'make' 'cmake' 'time' 'perf' 'unzip' 'bc'
+depends=('gcc' 'make' 'cmake' 'time' 'perf' 'unzip' 'bc' 'stress-ng'
 	 'nasm' 'inxi' 'argon2' 'wget' 'x265' 'xz' 'blender'
 	 'zlib' 'libdrm' 'git' 'python' 'primesieve' 'p7zip')
-optdepends=('stress-ng')
 source=(git+https://gitlab.com/torvic9/mini-benchmarker.git)
 sha512sums=('SKIP')
 
