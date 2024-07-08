@@ -2,8 +2,8 @@
 pkgname=melodie-bin
 pkgver=2.0.0
 _electronversion=18
-pkgrel=11
-pkgdesc="Melodie is a portable, simple-as-pie music player"
+pkgrel=12
+pkgdesc="Melodie is a portable, simple-as-pie music player.Use system-wide electron."
 arch=('x86_64')
 url="https://feugy.github.io/melodie/"
 _ghurl="https://github.com/feugy/melodie"
@@ -11,12 +11,16 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
     'python>=3'
     'nodejs'
 )
 makedepends=(
     'fuse2'
+)
+options=(
+    '!strip'
+    '!emptydirs'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
@@ -25,11 +29,12 @@ source=(
 )
 sha256sums=('3b841b77e3c974396e8317bcd14b7d023dfc7bd5dbc4c78f17eb53c143645dfe'
             '73c77debeee2edc386c515d1be6507325c36f4d5729e64743d7350ad146a3e2c'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
