@@ -2,7 +2,7 @@
 
 pkgname=intel-ipu6-dkms-git
 _pkgname=ipu6-drivers
-pkgver=r78.f83b0747b
+pkgver=r187.aecec2aae
 pkgrel=1
 pkgdesc="Intel IPU6 camera drivers (DKMS)"
 arch=('any')
@@ -23,9 +23,6 @@ pkgver() {
 prepare() {
     cd "$srcdir/$_pkgname"
     sed -i "s/^PACKAGE_VERSION=\".*\"$/PACKAGE_VERSION=\"$pkgver\"/g" ./dkms.conf
-    git clone https://github.com/intel/ivsc-driver
-    cp -r ivsc-driver/{backport-include,drivers,include} .
-    rm -rf ivsc-driver
 }
 
 package() {
