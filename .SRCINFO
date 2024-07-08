@@ -11,6 +11,7 @@ pkgbase = pyload-ng
 	depends = python-cryptography
 	depends = python-mutf8
 	depends = python-bitmath
+	depends = python-cachelib
 	depends = python-flask-themes2
 	depends = python-flask-session
 	depends = python-flask-compress
