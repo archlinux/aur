@@ -1,6 +1,6 @@
-# Maintainer: Jelle van der Waa <jelle@archlinux.org>
+# Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
+# Contributor: Jelle van der Waa <jelle@archlinux.org>
 # Contributor: Eli Schwartz <eschwartz93@gmail.com>
-
 pkgname='python-dukpy'
 pkgver=0.4.0
 pkgrel=7
@@ -27,7 +27,7 @@ package_python-dukpy() {
 }
 
 check() {
-  cd "dukpy-${pkgver}"
+  cd "${srcdir}/dukpy-${pkgver}"
   python setup.py test
 }
 sha256sums=('677ec7102d1c1c511f7ef918078e8099778dbcea7caf3d6a2a2a72f72aa2d135')
