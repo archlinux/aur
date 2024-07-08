@@ -1,6 +1,6 @@
 pkgbase = iceshrimp.net-git
 	pkgdesc = The Iceshrimp .NET rewrite
-	pkgver = v2024.1.beta1.r0.g0e6caa6
+	pkgver = v2024.1.beta2.r56.gc4d2317
 	pkgrel = 1
 	url = https://iceshrimp.dev/iceshrimp/iceshrimp.net
 	install = iceshrimp.net.install

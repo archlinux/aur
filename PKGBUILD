@@ -1,7 +1,7 @@
 # Maintainer: zotan <aur@zotan.email>
 
 pkgname=iceshrimp.net-git
-pkgver=v2024.1.beta1.r0.g0e6caa6
+pkgver=v2024.1.beta2.r56.gc4d2317
 pkgrel=1
 pkgdesc="The Iceshrimp .NET rewrite"
 arch=(x86_64 aarch64)
@@ -60,9 +60,9 @@ build() {
   fi
 
   if [[ -n $DISABLE_AOT ]] || ! dotnet workload list | grep -q '^wasm-tools\s'; then
-    dotnet publish -c Release -r $(rid) -p:EnableLibVips=$VIPS
+    dotnet publish -c Release -r $(rid) -p:EnableLibVips=$VIPS -p:DeterministicSourcePaths=true -p:ContinuousIntegrationBuild=true
   else
-    dotnet publish -c Release -r $(rid) -p:EnableAOT=true -p:EnableLibVips=$VIPS
+    dotnet publish -c Release -r $(rid) -p:EnableAOT=true -p:EnableLibVips=$VIPS -p:DeterministicSourcePaths=true -p:ContinuousIntegrationBuild=true
   fi
 }
 
