@@ -15,7 +15,7 @@ pkgbase = pyload-ng
 	depends = python-flask-compress
 	depends = python-flask-caching
 	depends = python-flask-babel
-	depends = python-dukpy>=0.3.1
+	depends = python-dukpy
 	depends = python-cheroot
 	depends = python-setuptools
 	depends = python-certifi
