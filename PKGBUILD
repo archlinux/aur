@@ -1,7 +1,7 @@
-# Maintainer: Malte Jürgens <maltejur@dismail.de>
+# Maintainer: steelt <steeltitanium1 at gmail dot com>
 
 pkgname=rvx-builder
-pkgver=3.12.1
+pkgver=3.14.1
 pkgrel=1
 pkgdesc="A NodeJS ReVanced Extended Builder"
 arch=("x86_64")
@@ -19,7 +19,7 @@ source=(
   "rvx-builder.desktop"
   "rvx-builder.png"
 )
-sha256sums=('5b783516bf7f8eba2f9b4df00f9522611e79a78b64b55fc3b3fe91ef8608321b'
+sha256sums=('486104aac769f8e629e071637e97e4e85aa0d10456769b484608ce77a6d2be4b'
             '3fdb61a644d1b8f9506a932330319b34ed023fe9e3c5712df340cc6ed1e2fc12'
             '8d6e3edae77e734e6539da775a77f52bac3863b870baff2f1631796d304b941e'
             '2b4943f5ada85a5dfb73d8e28d3d14e0f7f4eaa4f4072feca02e3a9b54500406')
