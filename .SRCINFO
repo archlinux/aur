@@ -1,0 +1,17 @@
+pkgbase = haskell-fourmolu-static
+	pkgdesc = Fourmolu is a formatter for Haskell source code. It is a fork of Ormolu, with upstream improvements continually merged.
+	pkgver = 0.16.2.0
+	pkgrel = 1
+	url = https://github.com/fourmolu/fourmolu
+	arch = x86_64
+	license = Apache
+	depends = sh
+	depends = zlib
+	depends = gmp
+	provides = haskell-fourmolu
+	conflicts = haskell-fourmolu
+	options = !strip
+	source = https://github.com/fourmolu/fourmolu/releases/download/v0.16.2.0/fourmolu-0.16.2.0-linux-x86_64
+	sha256sums = 94ef3da6dfc439876ed63b91719b570fbc98e385029d1557c4b93341ad0023e2
+
+pkgname = haskell-fourmolu-static

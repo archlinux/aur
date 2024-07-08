@@ -1,0 +1,6 @@
+src/
+pkg/
+*.gz
+*.xz
+*.zst
+fourmolu-*
