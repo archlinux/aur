@@ -1,8 +1,8 @@
 # Maintainer: Oystein Sture <oysstu at gmail.com>
 
 pkgname=ros2-jazzy-base
-pkgver=2024.05.23
-pkgrel=2
+pkgver=2024.07.05
+pkgrel=1
 _rosdist="Jazzy Jalisco"
 _rosdist_short_upper=${_rosdist%% *}
 _rosdist_short=${_rosdist_short_upper,}
@@ -38,7 +38,7 @@ source=(
     "https://github.com/ros2/ros2/archive/release-${_rosdist_short}-${pkgver//.}.tar.gz"
     "ros2-variants-0.11.0.tar.gz::https://github.com/ros2/variants/archive/0.11.0.tar.gz"
 )
-sha256sums=('e6157e5e597bedf52b71b927484079cf73b692148e847c112d8ce534555d8b11'
+sha256sums=('e6e31d637d13eade09db85789ffc213c075784136cce159220ae6874f35136c3'
             'e04bf7430ebdc670b4b0ee4722db2966fb1e53d8881e9cb66df6aa381f2448d9')
 
 prepare() {
@@ -46,12 +46,6 @@ prepare() {
     printf "Cloning ros2 repositories\n"
     mkdir -p $srcdir/ros2/src
     vcs import $srcdir/ros2/src < $srcdir/ros2-release-${_rosdist_short}-${pkgver//.}/ros2.repos
-
-     # Apply patches
-    printf "Patching sources\n"
-
-    # Type error
-    git -C "$srcdir/ros2/src/ros2/ros2_tracing" cherry-pick -n 7e8d42e3816dc9f7dc268109a2bb9cc66cc4d4ee
 }
 
 build() {
