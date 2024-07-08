@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dk-c++-bin
-_pkgname=DK-C++
+_pkgname="DK-C++"
 pkgver=1.3.0
 _electronversion=19
-pkgrel=7
+pkgrel=8
 pkgdesc="A C++ IDE designed for easy use."
 arch=('x86_64')
 url="https://github.com/EntityPlantt/DK-CPP"
@@ -11,7 +11,7 @@ license=('LicenseRef-custom')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
     'gcc'
     'nodejs'
 )
@@ -30,14 +30,15 @@ source=(
 )
 sha256sums=('3b59ed87183c16072a6db41108c940cece6d5c51a452c6a48c78f1b8d69315d2'
             '118e8d39dc5b8e68c533eb798f8e569b056c1238c7d8a2ab4c7eefd7067eea0d'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@cfgdirname@|dk-cpp|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --categories="Development" --name="${_pkgname}" --exec="${pkgname%-bin}"
+    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname%-bin}"
     icotool -x "${srcdir}/resources/app/icon.ico" -o "${srcdir}/${pkgname%-bin}.png"
     sed "s|icon.ico|icon.png|g" -i "${srcdir}/resources/app/app.js"
     sed "s|icon.ico|icon.png|g" -i "${srcdir}/resources/app/installer.js"
