@@ -1,0 +1,11 @@
+pkgbase = ttf-batang
+	pkgdesc = batang Font
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/googlefonts/batang
+	arch = any
+	license = OFL
+	source = https://github.com/google/fonts/raw/main/ofl/batang/Batang-Regular.ttf
+	sha256sums = 0929031e799b2feadda22208c58f503515e6f8fa2eaba75acd2e6847d73fc54b
+
+pkgname = ttf-batang
