@@ -4,7 +4,7 @@ _pkgname=translationCore
 pkgver=3.6.4
 _subver=MAX-ee24062
 _electronversion=25
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source platform for checking and managing Bible translation projects"
 arch=(
     'aarch64'
@@ -16,7 +16,8 @@ license=('ISC')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
+    'git'
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/tC-linux-arm64-${pkgver}-${_subver}.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/tC-linux-x64-${pkgver}-${_subver}.deb")
@@ -25,13 +26,14 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('a756bd73c46e3e9b85ff0222658f4c63851ebc5af63811adc4333ff618688417'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 sha256sums_aarch64=('cae82c2c9e7f890524f30dab9c7d427761e8e1ce481d94cf8710b79f69d08446')
 sha256sums_x86_64=('089cc504ad0eecd938e74a4cdf2dc66d0390ee48a2d8135d47beeb250cd990cd')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
