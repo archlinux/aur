@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=vikunja-desktop-bin
 _pkgname="Vikunja Desktop"
-pkgver=0.23.0
-_electronversion=28
-pkgrel=3
+pkgver=0.24.0
+_electronversion=29
+pkgrel=1
 pkgdesc="The open-source, self-hostable to-do app.Organize everything, on all platforms."
 arch=('x86_64')
 url="https://vikunja.io/"
@@ -18,13 +18,14 @@ source=(
     "${pkgname%-bin}-${pkgver}.pacman::https://dl.vikunja.io/desktop/${pkgver}/Vikunja%20Desktop-v${pkgver}.pacman"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('39e48d4bad48ca39e91e61cd81bbc67bfcf5f1ba86ccd739adc0206b02278266'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+sha256sums=('e4968a7fb78ae6231280e67bbbb0b4fb2d37e69dd8089cce4570c8d964371b7c'
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
-        -e "s|@options@||g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     sed "s|\"/opt/${_pkgname}/${pkgname%-bin}\"|${pkgname%-bin}|g;s|Productivity|Utility|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
