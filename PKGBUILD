@@ -14,12 +14,17 @@ conflicts=("$_pkgname" "${_pkgname}-bin")
 source=("git+https://github.com/Dyredhead/${_pkgname}.git")
 sha256sums=("SKIP")
 
+prepare() {
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
 build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
 
     cd "$_pkgname"
-    cargo build --release --all-features
+    cargo build --release --all-features --frozen
     ./target/release/man 
     ./target/release/completions
 }
@@ -28,7 +33,7 @@ check() {
     export RUSTUP_TOOLCHAIN=stable
 
     cd "$_pkgname"
-    cargo test --all-features
+    cargo test --all-features --frozen
 }
 
 package() {
