@@ -1,6 +1,6 @@
 pkgbase = openwebrx-plus
 	pkgdesc = Open source, multi-user SDR receiver software with a web interface
-	pkgver = 1.2.62
+	pkgver = 1.2.63
 	pkgrel = 1
 	url = https://luarvique.github.io/ppa/
 	install = openwebrx-plus.install
@@ -52,10 +52,10 @@ pkgbase = openwebrx-plus
 	optdepends = soapybladerf: interfacing with Blade RF devices
 	provides = openwebrx
 	conflicts = openwebrx
-	source = openwebrx-plus-1.2.62.tar.gz::https://github.com/luarvique/openwebrx/archive/1.2.62.tar.gz
+	source = openwebrx-plus-1.2.63.tar.gz::https://github.com/luarvique/openwebrx/archive/1.2.63.tar.gz
 	source = openwebrx-plus.sysusers
 	source = openwebrx-plus.tmpfiles
-	sha256sums = fa85ab932a83cc33a19dfda013dd0452880976aaf99a1aac059149f9455bb3c2
+	sha256sums = 016565d92d160ef41c9b1f7d3a956f2e05b26d30498279655309277f5183466a
 	sha256sums = 4ec6dec1df40a1f3db62a2add760f97cf870d65a2c1d5b63cd9b22704754f997
 	sha256sums = eea488bd3f4c76b46bffbf3c88691818f93ad73db98c18659856d1690b0deade
 
