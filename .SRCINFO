@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-vsmasktools-git
 	pkgdesc = Plugin for Vapoursynth: vsmasktools (GIT version)
 	pkgver = 1.2.1.3.gb7aee78
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Irrational-Encoding-Wizardry/vs-masktools
 	arch = any
 	license = MIT
@@ -16,6 +16,7 @@ pkgbase = vapoursynth-plugin-vsmasktools-git
 	depends = vapoursynth-plugin-tedgemask-git
 	depends = vapoursynth-plugin-awarpsharp2-git
 	depends = vapoursynth-plugin-retinex-git
+	depends = vapoursynth-plugin-planestatsmod-git
 	provides = vapoursynth-plugin-vsmasktools
 	conflicts = vapoursynth-plugin-vsmasktools
 	source = vsmasktools::git+https://github.com/Irrational-Encoding-Wizardry/vs-masktools.git
