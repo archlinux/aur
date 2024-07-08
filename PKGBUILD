@@ -4,7 +4,7 @@
 pkgname=anki-sync-server
 _name="anki"
 pkgver=24.06.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Sync server for anki (official version)'
 url="https://github.com/ankitects/anki"
 depends=(
@@ -34,6 +34,7 @@ makedepends=(
 options=('!lto')
 arch=('x86_64')
 license=('AGPL-3.0-or-later')
+backup=("etc/default/${pkgname}")
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.zip"
     "git+https://github.com/ankitects/PyOxidizer.git"
@@ -105,6 +106,6 @@ package() {
   install -Dm644 "${srcdir}/sysusers-${pkgname}.conf" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
   mkdir -p "${pkgdir}/usr/lib/tmpfiles.d/"
   install -Dm644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
-  mkdir -p "${pkgdir}/etc/defaults/"
+  mkdir -p "${pkgdir}/etc/default/"
   install -Dm600 "${srcdir}/${pkgname}.env" "${pkgdir}/etc/default/${pkgname}"
 }

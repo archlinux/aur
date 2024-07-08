@@ -1,7 +1,7 @@
 pkgbase = anki-sync-server
-	pkgdesc = Sync server for anki, rust build, official version
+	pkgdesc = Sync server for anki (official version)
 	pkgver = 24.06.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ankitects/anki
 	arch = x86_64
 	license = AGPL-3.0-or-later
@@ -26,6 +26,7 @@ pkgbase = anki-sync-server
 	depends = gcc-libs
 	depends = glibc
 	options = !lto
+	backup = etc/default/anki-sync-server
 	source = anki-sync-server-24.06.2.tar.gz::https://github.com/ankitects/anki/archive/refs/tags/24.06.2.zip
 	source = git+https://github.com/ankitects/PyOxidizer.git
 	source = git+https://github.com/ankitects/anki-desktop-ftl.git
