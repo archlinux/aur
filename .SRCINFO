@@ -1,0 +1,11 @@
+pkgbase = ttf-gulimche
+	pkgdesc = gulimche Font
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/googlefonts/gulim
+	arch = any
+	license = OFL
+	source = https://github.com/google/fonts/raw/main/ofl/gulimche/GulimChe-Regular.ttf
+	sha256sums = aba838ffa7d1bc8e95107f643bb0486434ca424edf020e5a5e9b32295029de6c
+
+pkgname = ttf-gulimche
