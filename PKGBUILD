@@ -4,7 +4,7 @@ pkgname="${_pkgname//-/}-bin"
 _appname=NodeFlow
 pkgver=0.0.2_alpha
 _electronversion=23
-pkgrel=8
+pkgrel=9
 pkgdesc="An Editor for creating simple or complex OCR workflows"
 arch=('x86_64')
 url="https://github.com/maxnth/NodeFlow"
@@ -24,11 +24,12 @@ source=(
 )
 sha256sums=('fd1bb578d47245a95ba7c206f7f64aa013e56afe2247511dea48e62190d4a545'
             '2fa2313855f0dfa9399163896c8a91747298ae501fb1f915e6a8479dc60f3791'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
