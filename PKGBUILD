@@ -8,7 +8,7 @@ url="https://pyload.net/"
 license=('AGPL3')
 arch=('any')
 depends=('python-semver' 'python-pycurl' 'python-js2py' 'python-filetype' 'python-cryptography' 'python-bitmath'
-         'python-flask-themes2' 'python-flask-session' 'python-flask-compress' 'python-flask-caching>=0.9.0' 'python-flask-babel'
+         'python-flask-themes2' 'python-flask-session' 'python-flask-compress' 'python-flask-caching' 'python-cachelib>=9.0.0' 'python-flask-babel'
          'python-cheroot' 'python-setuptools' 'python-certifi')
 optdepends=('caffeine: For AntiStandby plugin'
             'python-beautifulsoup4: for XFileSharing plugin'
