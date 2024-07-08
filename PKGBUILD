@@ -2,9 +2,12 @@
 # Contributor: Michael Migliore <mcmigliore+aur@gmail.com>
 # Contributor: Mathieu Wespthal <mathieu.westphal+aur@gmail.com>
 
+# prevent git-lfs error
+export GIT_LFS_SKIP_SMUDGE=1
+
 _pkgname="f3d"
 pkgname="$_pkgname-git"
-pkgver=2.4.0.r48.g6133d0f
+pkgver=2.5.0.r13.g0e0b9b0
 pkgrel=1
 pkgdesc='A fast and minimalist 3D viewer'
 url="https://github.com/f3d-app/f3d"
@@ -50,8 +53,8 @@ optdepends=(
   java-runtime
 )
 
-provides=('f3d')
-conflicts=('f3d')
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
 source=("$_pkgname"::"git+$url.git")
