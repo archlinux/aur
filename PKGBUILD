@@ -1,7 +1,7 @@
 # Maintainer: A4-Tacks <wdsjxhno 1001 aT 163 dot com>
 
 pkgname=mindustry_logic_bang_lang-bin
-pkgver=0.15.8
+pkgver=0.16.17
 pkgrel=1
 pkgdesc='Mindustry logic extension language, for zero additional overhead!'
 arch=(x86_64 aarch64)
@@ -18,9 +18,9 @@ source=(
     "$url/releases/download/v$pkgver/${c_name}_v${pkgver}_"{aarch64,x86_64}"-unknown-linux-musl.tar.xz"
 )
 sha256sums=(
-    035bf191379a95f0c33045d0941b6ecbc208b42223acae2800762bde671be408
-    2612368a6633859f4fedaf305ad574de4f4fb7865bfe998445774d1fd6eed5c4
-    8bae71053af4aadf772a7784512116d1d7405a3e97364e8e67fa009cc99c86f5
+    153b89ce61482816547246806675160700bc11b495fba79608176244724f124d
+    c388cb22a8b29e29ae6c180534a3d8676767d0c2e7fb14b19bac2057d653414a
+    c47dbb759d34e09c7029b83f352fd2ae45f7fba9d6e7c2a204c35fb420a972b8
 )
 case "$s_arch" in
     aarch64|x86_64);;
