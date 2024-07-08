@@ -3,11 +3,12 @@
 pkgname="sapm-git"
 _pkgname="sapm"
 pkgver="1.0.0"
-pkgrel=5
+pkgrel=6
 pkgdesc="A System Agnostic Package Manager (SAPM) which provides basic but useful functionality"
-arch=("any")
+arch=("x86_64")
 url="https://github.com/Dyredhead/sapm"
 license=("MIT")
+depends=(gcc-libs glibc)
 makedepends=("git" "cargo")
 provides=("$_pkgname")
 conflicts=("$_pkgname" "${_pkgname}-bin")
@@ -16,14 +17,16 @@ sha256sums=("SKIP")
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
+    cd "$srcdir/$_pkgname"
+    
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    cd "$srcdir/$_pkgname"
 
-    cd "$_pkgname"
     cargo build --release --all-features --frozen
     ./target/release/man 
     ./target/release/completions
@@ -31,13 +34,13 @@ build() {
 
 check() {
     export RUSTUP_TOOLCHAIN=stable
-
     cd "$_pkgname"
+    
     cargo test --all-features --frozen
 }
 
 package() {
-    cd "$_pkgname"
+    cd "$srcdir/$_pkgname"
 
     install -Dm755 "./target/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 
