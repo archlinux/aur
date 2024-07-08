@@ -2,16 +2,16 @@
 # Contributor: Eli Schwartz <eschwartz93@gmail.com>
 
 pkgname='python-dukpy'
-pkgver=0.3
+pkgver=0.4.0
 pkgrel=7
+name=dukpy
 pkgdesc="Python bindings for the duktape embeddable JavaScript engine"
 arch=('x86_64')
-url="https://github.com/kovidgoyal/dukpy"
+url="https://github.com/amol-/dukpy"
 license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
-source=("dukpy-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('cc78c39ebba51f381c623b164cfb7dcf3caddf515fe7094bc53b7eca5d4e435e')
+source=("dukpy-${pkgver}.tar.gz::${url}/releases/download/${pkgver}/${name}-${pkgver}.tar.gz")
 
 build() {
   cd "${srcdir}/dukpy-${pkgver}"
@@ -30,3 +30,4 @@ check() {
   cd "dukpy-${pkgver}"
   python setup.py test
 }
+sha256sums=('677ec7102d1c1c511f7ef918078e8099778dbcea7caf3d6a2a2a72f72aa2d135')

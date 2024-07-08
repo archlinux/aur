@@ -1,13 +1,13 @@
 pkgbase = python-dukpy
 	pkgdesc = Python bindings for the duktape embeddable JavaScript engine
-	pkgver = 0.3
+	pkgver = 0.4.0
 	pkgrel = 7
-	url = https://github.com/kovidgoyal/dukpy
+	url = https://github.com/amol-/dukpy
 	arch = x86_64
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = dukpy-0.3.tar.gz::https://github.com/kovidgoyal/dukpy/archive/v0.3.tar.gz
-	sha256sums = cc78c39ebba51f381c623b164cfb7dcf3caddf515fe7094bc53b7eca5d4e435e
+	source = dukpy-0.4.0.tar.gz::https://github.com/amol-/dukpy/releases/download/0.4.0/dukpy-0.4.0.tar.gz
+	sha256sums = 677ec7102d1c1c511f7ef918078e8099778dbcea7caf3d6a2a2a72f72aa2d135
 
 pkgname = python-dukpy
