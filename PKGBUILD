@@ -2,13 +2,13 @@
 
 _pkgname="akwaita-theme"
 pkgname="akwaita-theme-git"
-pkgver=43.2.r0.g2efe67a
+pkgver=46.3.r0.g8ec4b84
 pkgrel=1
 pkgdesc="A simple gnome-shell theme base on Adwaita"
 arch=("any")
 makedepends=("sassc" "git")
 url="https://github.com/akiirui/akwaita-theme/"
-license=("GPL2")
+license=("GPL-2.0-or-later")
 source=("git+https://github.com/akiirui/akwaita-theme.git")
 b2sums=('SKIP')
 
