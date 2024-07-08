@@ -1,0 +1,11 @@
+pkgbase = ttf-batangche
+	pkgdesc = batangche Font
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/googlefonts/batang
+	arch = any
+	license = OFL
+	source = https://github.com/google/fonts/raw/main/ofl/batangche/BatangChe-Regular.ttf
+	sha256sums = 34aff823e0d9b86e7b7cb6913612e06638812a1d9af061272510b4cbf9d4c6ba
+
+pkgname = ttf-batangche
