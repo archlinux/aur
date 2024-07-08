@@ -3,7 +3,7 @@
 # Contributor: Bernard Baeyens (berbae) <berbae52 at sfr dot fr>
 
 pkgname=pan
-pkgver=0.157
+pkgver=0.159
 pkgrel=1
 pkgdesc='A powerful Newsgroup Article reader'
 arch=(x86_64)
@@ -15,6 +15,7 @@ depends=(
   gcc-libs
   gdk-pixbuf2
   glib2
+  glibc
   gmime3
   gnutls
   gtk3
@@ -23,21 +24,22 @@ depends=(
   pango
   zlib
 )
+makedepends=(cmake)
 source=("https://gitlab.gnome.org/GNOME/pan/-/archive/v$pkgver/pan-v$pkgver.tar.gz")
-sha256sums=('ea9093642dc3675a5868d67ea97aedce38beeb2c3281c84fb044fc802bbaa620')
-
-prepare() {
-  cd pan-v$pkgver
-  NOCONFIGURE=1 ./autogen.sh
-}
+sha256sums=('988af7491a05c87d761f354b9fda397fa51b69a11200a5175a82725a743e23c5')
 
 build() {
-  cd pan-v$pkgver
-  ./configure --prefix=/usr --with-gnutls --with-gtkspell
-  make
+  cmake -B build -S pan-v$pkgver \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -Wno-dev
+  cmake --build build
+}
+
+check() {
+  ctest --test-dir build --output-on-failure
 }
 
 package() {
-  cd pan-v$pkgver
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
