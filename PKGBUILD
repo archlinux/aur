@@ -6,22 +6,22 @@
 
 pkgname=mbpfan
 pkgver=2.4.0
-pkgrel=2
-pkgdesc="A simple daemon to control fan speed on all MacBook/MacBook Pros"
+pkgrel=1
+pkgdesc='A simple daemon to control fan speed on all MacBook/MacBook Pros'
 arch=('any')
-url="https://github.com/linux-on-mac/mbpfan"
+url='https://github.com/linux-on-mac/mbpfan'
 license=('GPL3')
 makedepends=('git')
 provides=('mbpfan')
 conflicts=('mbpfan')
-source=("$pkgname"::"git+https://github.com/linux-on-mac/mbpfan.git#tag=v$pkgver")
+source=("$pkgname::git+https://github.com/linux-on-mac/mbpfan.git#tag=v$pkgver")
 md5sums=('SKIP')
 backup=('etc/mbpfan.conf')
 
 prepare(){
     cd "$srcdir/$pkgname"
-    sed -i 's|\$(DESTDIR)/usr/sbin|$(DESTDIR)/usr/bin|g' Makefile
-    sed -i 's|\$(DESTDIR)/lib/|$(DESTDIR)/usr/lib/|g' Makefile
+    sed -i 's|\$(DESTDIR)/usr/sbin|$(DESTDIR)/usr/bin|g' 'Makefile'
+    sed -i 's|\$(DESTDIR)/lib/|$(DESTDIR)/usr/lib/|g' 'Makefile'
 }
 
 build() {
