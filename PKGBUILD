@@ -3,7 +3,7 @@
 
 _pkgname="nchat"
 pkgname="$_pkgname"
-pkgver=4.86
+pkgver=4.88
 pkgrel=1
 pkgdesc="console-based chat client with support for Telegram"
 url="https://github.com/d99kris/nchat"
@@ -26,7 +26,7 @@ makedepends=(
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
-sha256sums=('41a3b81af105b927cf69a92e3f4ce39a7d020ae0d7ae6399e69f860853e34991')
+sha256sums=('3a1c799f9658b5d90f05df0ecffd1b57921970f8bf7780a2946f19af6d9182b2')
 
 build() {
   export GOFLAGS+=' -buildvcs=false'
