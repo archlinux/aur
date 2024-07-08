@@ -1,0 +1,75 @@
+diff --git a/libsrc/core/ng_mpi.cpp b/libsrc/core/ng_mpi.cpp
+index b6adbe4c..66355a96 100644
+--- a/libsrc/core/ng_mpi.cpp
++++ b/libsrc/core/ng_mpi.cpp
+@@ -7,16 +7,16 @@
+ 
+ #include "array.hpp"
+ #include "ngcore_api.hpp"
+-#include "pybind11/pytypes.h"
+ 
+ #ifdef NG_PYTHON
++#include "pybind11/pytypes.h"
+ #include "python_ngcore.hpp"
+-#endif
+ 
+ #define MPI4PY_LIMITED_API 1
+ #define MPI4PY_LIMITED_API_SKIP_MESSAGE 1
+ #define MPI4PY_LIMITED_API_SKIP_SESSION 1
+ #include "mpi4py_pycapi.h"  // mpi4py < 4.0.0
++#endif
+ 
+ #ifdef MSMPI_VER
+ int MPI_Comm_create_group(MPI_Comm arg0, MPI_Group arg1, int arg2,
+diff --git a/libsrc/core/ng_mpi_wrapper.cpp b/libsrc/core/ng_mpi_wrapper.cpp
+index 835b0c31..58f2601b 100644
+--- a/libsrc/core/ng_mpi_wrapper.cpp
++++ b/libsrc/core/ng_mpi_wrapper.cpp
+@@ -6,19 +6,21 @@
+ 
+ #include "ng_mpi.hpp"
+ #include "ngstream.hpp"
+-#include "python_ngcore.hpp"
+ #include "utils.hpp"
+ 
+ using std::cerr;
+ using std::cout;
+ using std::endl;
+ 
++#ifdef NG_PYTHON
++#include "python_ngcore.hpp"
+ #ifndef NG_MPI_WRAPPER
+ #define MPI4PY_LIMITED_API 1
+ #define MPI4PY_LIMITED_API_SKIP_MESSAGE 1
+ #define MPI4PY_LIMITED_API_SKIP_SESSION 1
+ #include "mpi4py_pycapi.h"  // mpi4py < 4.0.0
+ #endif // NG_MPI_WRAPPER
++#endif // NG_PYTHON
+ 
+ namespace ngcore {
+ 
+@@ -94,6 +96,7 @@ void InitMPI(std::optional<std::filesystem::path> mpi_lib_path) {
+       throw e;
+     }
+   } else {
++#ifdef NG_PYTHON
+     // Use mpi4py to init MPI library and get the vendor name
+     auto mpi4py = py::module::import("mpi4py.MPI");
+     vendor = mpi4py.attr("get_vendor")()[py::int_(0)].cast<std::string>();
+@@ -106,6 +109,7 @@ void InitMPI(std::optional<std::filesystem::path> mpi_lib_path) {
+     mpi_lib =
+         std::make_unique<SharedLibrary>(mpi4py_lib_file, std::nullopt, true);
+ #endif  // WIN32
++#endif // NG_PYTHON
+   }
+ 
+   std::string ng_lib_name = "";
+diff --git a/libsrc/meshing/python_mesh.cpp b/libsrc/meshing/python_mesh.cpp
+index 52680229..11209a84 100644
+--- a/libsrc/meshing/python_mesh.cpp
++++ b/libsrc/meshing/python_mesh.cpp
+@@ -1,4 +1,3 @@
+-#include "pybind11/pytypes.h"
+ #ifdef NG_PYTHON
+ 
+ #include <regex>

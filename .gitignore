@@ -1,0 +1,8 @@
+*
+!.gitignore
+
+!*.patch
+!ng_vol.cpp
+
+!PKGBUILD
+!.SRCINFO
