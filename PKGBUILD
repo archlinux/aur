@@ -1,5 +1,5 @@
 pkgname=('mingw-w64-llvm')
-pkgver=17.0.6
+pkgver=18.1.8
 pkgrel=1
 pkgdesc="Collection of modular and reusable compiler and toolchain technologies (mingw-w64)"
 arch=('any')
@@ -11,12 +11,11 @@ options=('!strip' '!buildflags' 'staticlibs')
 _source_base=https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver
 source=($_source_base/llvm-$pkgver.src.tar.xz{,.sig}
         $_source_base/cmake-$pkgver.src.tar.xz{,.sig})
-sha256sums=('b638167da139126ca11917b6880207cc6e8f9d1cbb1a48d87d017f697ef78188'
+sha256sums=('f68cf90f369bc7d0158ba70d860b0cb34dbc163d6ff0ebc6cfa5e515b9b2e28d'
             'SKIP'
-            '807f069c54dc20cb47b21c1f6acafdd9c649f3ae015609040d6182cab01140f4'
+            '59badef592dd34893cd319d42b323aaa990b452d05c7180ff20f23ab1b41e837'
             'SKIP')
-validpgpkeys=('474E22316ABF4785A88C6E8EA2C794A986419D8A'  # Tom Stellard <tstellar@redhat.com>
-              'D574BD5D1D0E98895E3BF90044F2485E45D59042') # Tobias Hieta <tobias@hieta.se>
+validpgpkeys=('474E22316ABF4785A88C6E8EA2C794A986419D8A') # Tom Stellard <tstellar@redhat.com>
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -36,8 +35,6 @@ build() {
       -DLLVM_INCLUDE_TESTS=OFF \
       -DLLVM_BUILD_TOOLS=OFF \
       -DBUILD_SHARED_LIBS=OFF \
-      -DLLVM_BUILD_LLVM_DYLIB=ON \
-      -DLLVM_LINK_LLVM_DYLIB=ON \
       -DLLVM_ENABLE_BINDINGS=OFF \
       -DLLVM_ENABLE_FFI=ON \
       -DLLVM_ENABLE_RTTI=ON \
