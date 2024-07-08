@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-z3
 	pkgdesc = High-performance theorem prover (mingw-w64)
-	pkgver = 4.12.5
+	pkgver = 4.13.0
 	pkgrel = 1
 	url = https://github.com/Z3Prover/z3
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = mingw-w64-z3
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://github.com/Z3Prover/z3/archive/z3-4.12.5.tar.gz
-	sha512sums = b5055468d1380c54b959f826e10846c323c0ef73cf6bba0970e187c38cabd5869786261cd9b89a89d8369144417180870627782bf705e5494286dfe75053c9a7
+	source = https://github.com/Z3Prover/z3/archive/z3-4.13.0.tar.gz
+	sha512sums = 8503787fe0b18592b5a131bcec2cacfa5f5096d76386a1c4fda7a836e472924b154433306d27600ff0d0758ddb710c965901fbfc2e5605919b624b9d4d1bc4fd
 
 pkgname = mingw-w64-z3

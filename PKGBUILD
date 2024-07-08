@@ -1,5 +1,5 @@
 pkgname=('mingw-w64-z3')
-pkgver=4.12.5
+pkgver=4.13.0
 pkgrel=1
 pkgdesc='High-performance theorem prover (mingw-w64)'
 url='https://github.com/Z3Prover/z3'
@@ -9,7 +9,7 @@ makedepends=('mingw-w64-cmake' 'python')
 options=('!strip' '!buildflags' 'staticlibs')
 depends=('mingw-w64-gmp')
 source=("https://github.com/Z3Prover/z3/archive/z3-${pkgver}.tar.gz")
-sha512sums=('b5055468d1380c54b959f826e10846c323c0ef73cf6bba0970e187c38cabd5869786261cd9b89a89d8369144417180870627782bf705e5494286dfe75053c9a7')
+sha512sums=('8503787fe0b18592b5a131bcec2cacfa5f5096d76386a1c4fda7a836e472924b154433306d27600ff0d0758ddb710c965901fbfc2e5605919b624b9d4d1bc4fd')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -20,10 +20,8 @@ prepare() {
 build() {
   cd z3-z3-${pkgver}
   for _arch in ${_architectures}; do
-    mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake -DZ3_USE_LIB_GMP=1 -DZ3_BUILD_EXECUTABLE=OFF -DZ3_BUILD_TEST_EXECUTABLES=OFF -DZ3_ENABLE_EXAMPLE_TARGETS=OFF -DCMAKE_BUILD_TYPE=Release ..
-    make
-    popd
+    ${_arch}-cmake -DZ3_USE_LIB_GMP=1 -DZ3_BUILD_EXECUTABLE=OFF -DZ3_BUILD_TEST_EXECUTABLES=OFF -DZ3_ENABLE_EXAMPLE_TARGETS=OFF -DCMAKE_BUILD_TYPE=Release -B build-${_arch} .
+    make -C build-${_arch}
   done
 }
 
