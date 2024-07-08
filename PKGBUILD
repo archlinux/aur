@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=buttercup
 pkgname="${_pkgname}-desktop-bin"
-pkgver=2.27.0
+_appname=Buttercup
+pkgver=2.28.0_6
 _electronversion=22
 pkgrel=1
 pkgdesc="Cross-Platform Passwords & Secrets Vault"
@@ -21,18 +22,19 @@ depends=(
 makedepends=(
     'fuse2'
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname//b/B}-linux-arm64.AppImage")
-source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname//b/B}-linux-armv7l.AppImage")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname//b/B}-linux-x86_64.AppImage")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver//_/-}/${_appname}-linux-arm64.AppImage")
+source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.AppImage::${_ghurl}/releases/download/v${pkgver//_/-}/${_appname}-linux-armv7l.AppImage")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver//_/-}/${_appname}-linux-x86_64.AppImage")
 source=("${pkgname%-bin}.sh")
-sha256sums=('dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
-sha256sums_aarch64=('316ec79a435ce15e1c5697907bea0d9b1a5cf3f923ffadb91f36ad7487cd603e')
-sha256sums_armv7h=('c626ceae86323c62b57e5abb978cac406d1c572fd1cae33962bc37343d79a75a')
-sha256sums_x86_64=('ce96f9737a867c1a115fd575955457f3ad3b84110782347c656262cdf60d8143')
+sha256sums=('2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+sha256sums_aarch64=('377b290bd01ff3ac2528a972d29d1862f35f5e2b03112b7b93b3e33486b2aeba')
+sha256sums_armv7h=('71d1401d484ba6bff6e35c5104eaa99ae43e0fb5cf8e1c4a785d348514021d1d')
+sha256sums_x86_64=('b870fcfdbcaf9ad2532479c8d9529a75e9ada0c692987b88e2272e1c414a4f11')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_appname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
