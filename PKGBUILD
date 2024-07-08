@@ -3,7 +3,7 @@ pkgname=kui-bin
 _pkgname=Kui
 pkgver=13.1.4
 _electronversion=22
-pkgrel=8
+pkgrel=9
 pkgdesc="A hybrid command-line/UI development experience for cloud-native development"
 arch=(
     'aarch64'
@@ -15,24 +15,29 @@ conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
-    'kubectl'
+    #'kubectl'
 )
 makedepends=(
     'gendesk'
 )
+options=(
+    '!strip'
+    '!emptydirs'
+)
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${url}/releases/download/v${pkgver}/${_pkgname}-linux-arm64.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${url}/releases/download/v${pkgver}/${_pkgname}-linux-x64.zip")
 source=("${pkgname%-bin}.sh")
-sha256sums=('dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+sha256sums=('2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 sha256sums_aarch64=('2138d7b605fb9cc0a28a7bceaa071b7b70a6a8f009110e34eeb6ec4aa0772c85')
 sha256sums_x86_64=('ebdf87c7746e82d3464f5dbeae98629a9aaff94da69d817fbd9307f44ebf9a36')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}-shell|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --categories="Development" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
+    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
