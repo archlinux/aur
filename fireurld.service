@@ -1,0 +1,9 @@
+[Unit]
+Description=fireurl deamon
+
+[Service]
+ExecStartPre=/usr/bin/rm -f ${XDG_RUNTIME_DIR}/fireurl/fireurl0
+ExecStart=/usr/bin/fireurld
+
+[Install]
+WantedBy=default.target
