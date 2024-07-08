@@ -1,0 +1,32 @@
+From 36a802f2b350769da82490964648932141434a9b Mon Sep 17 00:00:00 2001
+From: Tatsuyuki Ishi <ishitatsuyuki@gmail.com>
+Date: Sat, 6 Jul 2024 15:06:24 +0900
+Subject: [PATCH] vk_cmd_queue_gen: Exclude CmdDispatchGraphAMDX
+
+With the weak symbols changes and -Dvulkan-beta this fails to link.
+
+Co-authored-by: Konstantin Seurer <konstantin.seurer@gmail.com>
+Fixes: 2953c93cca2 ("vulkan Add enqueue entrypoint for CmdDispatchGraphAMDX")
+---
+ src/vulkan/util/vk_cmd_queue_gen.py | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/vulkan/util/vk_cmd_queue_gen.py b/src/vulkan/util/vk_cmd_queue_gen.py
+index 86cb47572e8fb..b3221ecc52a3e 100644
+--- a/src/vulkan/util/vk_cmd_queue_gen.py
++++ b/src/vulkan/util/vk_cmd_queue_gen.py
+@@ -57,6 +57,11 @@ MANUAL_COMMANDS = [
+     'CmdPushDescriptorSetWithTemplateKHR',
+     'CmdPushConstants2KHR',
+     'CmdPushDescriptorSet2KHR',
++
++    # VkDispatchGraphCountInfoAMDX::infos is an array of
++    # VkDispatchGraphInfoAMDX, but the xml specifies that it is a
++    # VkDeviceOrHostAddressConstAMDX.
++    'CmdDispatchGraphAMDX',
+ ]
+ 
+ NO_ENQUEUE_COMMANDS = [
+-- 
+GitLab
+
