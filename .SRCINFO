@@ -1,6 +1,6 @@
 pkgbase = android-aarch64-ffmpeg
 	pkgdesc = Complete solution to record, convert and stream audio and video (Android aarch64)
-	pkgver = 7.0
+	pkgver = 7.0.1
 	pkgrel = 1
 	url = http://ffmpeg.org/
 	arch = any
@@ -50,6 +50,7 @@ pkgbase = android-aarch64-ffmpeg
 	depends = android-aarch64-libxml2
 	depends = android-aarch64-libxv
 	depends = android-aarch64-libvpl
+	depends = android-aarch64-ocl-icd
 	depends = android-aarch64-opencore-amr
 	depends = android-aarch64-openjpeg2
 	depends = android-aarch64-opus
@@ -74,9 +75,9 @@ pkgbase = android-aarch64-ffmpeg
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = http://ffmpeg.org/releases/ffmpeg-7.0.tar.xz
+	source = http://ffmpeg.org/releases/ffmpeg-7.0.1.tar.xz
 	source = configure.patch
-	md5sums = d2edfc6ec6494c432828876e3102f740
+	md5sums = 81d5e65494f573ec28c9f56e99247815
 	md5sums = c1851376794c16bcb37cfa8918e10cba
 
 pkgname = android-aarch64-ffmpeg
