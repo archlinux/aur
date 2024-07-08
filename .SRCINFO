@@ -10,7 +10,6 @@ pkgbase = cronet
 	makedepends = ninja
 	makedepends = clang
 	makedepends = lld
-	makedepends = gperf
 	makedepends = rust
 	makedepends = git
 	makedepends = jsoncpp
