@@ -3,7 +3,7 @@
 pkgname=cad2fbd
 pkgver=1.1
 pkgrel=1
-pkgdesc=''
+pkgdesc='CAD-geometry (STEP or IGES) to CalculiX FBD converter by Pascal Mossier.'
 url=http://www.dhondt.de/
 license=('GPL-2.0-only')
 arch=('i686' 'x86_64')
