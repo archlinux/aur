@@ -1,6 +1,6 @@
 pkgname=texlab-bin
 _pkgname=texlab
-pkgver=5.17.0
+pkgver=5.19.0
 pkgrel=1
 arch=('x86_64')
 pkgdesc='A cross-platform implementation of the Language Server Protocol for LaTeX'
@@ -11,7 +11,7 @@ url='https://github.com/latex-lsp/texlab'
 license=('GPL-3.0')
 source=("https://github.com/latex-lsp/texlab/releases/download/v$pkgver/texlab-x86_64-linux.tar.gz"
 		"local://LICENSE")
-sha256sums=('47b5808eb2342971bd73e16f690360da6037753dcf35a978b5d8d66fa26edb3d'
+sha256sums=('381233190e01e67099b8bf9b1d2742348e39056f39f9aa4b91d963c649fb6cd0'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 
 package() {
