@@ -1,6 +1,6 @@
 # Maintainer: Antheas Kapenekakis <aur at antheas dot dev>
 pkgname=adjustor
-pkgver=3.1.2
+pkgver=3.1.3
 pkgrel=1
 pkgdesc='Adjustor, a userspace program for managing the TDP of handheld devices.'
 arch=('x86_64')
