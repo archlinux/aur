@@ -9,16 +9,16 @@
  endif
  
  # for object file
-@@ -94,7 +94,7 @@ endif
+@@ -111,7 +111,7 @@ endif
  
  else
  
 -LDFLAGS = $(LDFLAGS_STATIC)
 +LDFLAGS += $(LDFLAGS_STATIC)
+ # -z force-bti
  # -s is not required for clang, do we need it for GCC ???
  
- #-static -static-libgcc -static-libstdc++
-@@ -149,7 +149,7 @@ endif
+@@ -169,7 +169,7 @@ endif
  
  
  
@@ -27,12 +27,12 @@
  
  
  ifdef IS_MINGW
-@@ -190,7 +190,7 @@ CXX_WARN_FLAGS =
+@@ -210,7 +210,7 @@ CXX_WARN_FLAGS =
  #-Wno-invalid-offsetof
  #-Wno-reorder
  
--CXXFLAGS = $(MY_ARCH_2) $(LOCAL_FLAGS) $(CXXFLAGS_BASE2) $(CFLAGS_BASE) $(FLAGS_FLTO) $(CXXFLAGS_EXTRA) $(CC_SHARED) $(CXX_WARN_FLAGS) $(CXX_STD_FLAGS) -o $@
-+CXXFLAGS += $(MY_ARCH_2) $(LOCAL_FLAGS) $(CXXFLAGS_BASE2) $(CFLAGS_BASE) $(FLAGS_FLTO) $(CXXFLAGS_EXTRA) $(CC_SHARED) $(CXX_WARN_FLAGS) $(CXX_STD_FLAGS) -o $@
+-CXXFLAGS = $(MY_ARCH_2) $(LOCAL_FLAGS) $(CXXFLAGS_BASE2) $(CFLAGS_BASE) $(FLAGS_FLTO) $(CXXFLAGS_EXTRA) $(CC_SHARED) $(CXX_WARN_FLAGS) $(CXX_STD_FLAGS) $(CXX_INCLUDE_FLAGS) -o $@
++CXXFLAGS += $(MY_ARCH_2) $(LOCAL_FLAGS) $(CXXFLAGS_BASE2) $(CFLAGS_BASE) $(FLAGS_FLTO) $(CXXFLAGS_EXTRA) $(CC_SHARED) $(CXX_WARN_FLAGS) $(CXX_STD_FLAGS) $(CXX_INCLUDE_FLAGS) -o $@
  
  STATIC_TARGET=
  ifdef COMPL_STATIC
