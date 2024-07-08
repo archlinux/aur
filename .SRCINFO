@@ -9,6 +9,7 @@ pkgbase = pyload-ng
 	depends = python-pycurl
 	depends = python-filetype
 	depends = python-cryptography
+	depends = python-mutf8
 	depends = python-bitmath
 	depends = python-flask-themes2
 	depends = python-flask-session
