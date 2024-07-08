@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=kibot
-pkgver=1.6.5
+pkgver=1.7.0
 pkgrel=1
 epoch=
 pkgdesc="KiCad automation utility"
@@ -58,7 +58,7 @@ install=
 changelog=
 source=("KiBot-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('acc6dab74d446bf5bb7444a9fef34cb31ea231a92ef5f3aa6c17b3ded38ace89')
+sha256sums=('f4f0cf1f8e3da3f3919957ae3e041ce1e44f752aa281798f0c1ddedb95e70c5e')
 #validpgpkeys=()
 
 build() {
