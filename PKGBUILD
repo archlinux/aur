@@ -6,8 +6,8 @@
 
 pkgname=pugdebug-git
 _pkgname=pugdebug-git
-pkgver=1.1.0.r1.gddb1193
-pkgrel=2
+pkgver=1.1.1.r1.gd070445
+pkgrel=1
 pkgdesc="PugDebug is a standalone debugging client for PHP applications that uses XDebug as the debugging engine"
 arch=('any')
 license=('GPL3')
@@ -16,13 +16,11 @@ depends=('python>=3.7' 'python-pyqt5' 'python-pygments' 'flake8' 'python-fuzzywu
 conflicts=()
 provides=('pugdebug')
 makedepends=('python-setuptools')
-source=("$pkgname::git://github.com/Mte90/pugdebug.git"
-	setup.py 
+source=("$pkgname::git+https://github.com/Mte90/pugdebug.git"
 	PugDebug.desktop 
 	dog.png)
 
 md5sums=('SKIP'
-         '7556a53bc966e1fd2a51ac8d7f61220f'
          '0a6f0a35199b4b0eccbd5291b180e553'
          '4a382fe99a6d4e9fafc5a047af77402b')
 
@@ -31,16 +29,13 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }	
 
-build() {
-	cp "${srcdir}/setup.py" "${srcdir}/${_pkgname}/"
-}
-
 package() {
 	install -D -m655 "${srcdir}/PugDebug.desktop" "$pkgdir/usr/share/applications/PugDebug.desktop"
 	
 	install -D -m655 ${srcdir}/dog.png "$pkgdir/usr/share/pixmaps/pugdebug.png"
 	
 	cd "${srcdir}/${_pkgname}"
+	sed "s/:version:/$pkgver/" setup.py
 	python setup.py install --root="${pkgdir}"
 	
 	install -TD app.py "${pkgdir}/usr/bin/pugdebug"
