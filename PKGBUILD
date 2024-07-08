@@ -2,7 +2,7 @@
 pkgname=adagate-bin
 _pkgname=AdaGate
 _shortname=agate
-pkgver=7.4.6
+pkgver=7.4.7
 pkgrel=1
 pkgdesc="A kid-friendly 3D dungeon escape game within a Stargate fantasy setting"
 arch=("x86_64")
@@ -19,18 +19,18 @@ makedepends=(
     'gendesk'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.7z::${url}/releases/download/v${pkgver}/ag4apr24.7z"
+    "${pkgname%-bin}-${pkgver}.7z::${url}/releases/download/v${pkgver}/ag8jul24.7z"
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/fastrgv/AdaGate/v${pkgver}/${pkgname%-bin}.jpg"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('31fb7fb62a61f46792e7ac28ca28b5053df365ad6bd327f64400b53d8981a780'
+sha256sums=('aaa8c99e8f0e83e22b557a852d8f33a12c8f0d42779460602bdc5e68c1706ea3'
             'd7c362ed4529df6bfdde61b37fb17683719d13d566a7ce4d699ce0f6302b07a2'
-            '44417192dcaa79a66744f35d93945490ab3e4c7042915aac43b08c8b66bf5bc1')
+            'ac0f43732e5acee2a0e14aeedb32159fd0e4adcaa3e9c02b5b610931a92dcbb2')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --categories="Game" --name="${_pkgname}" --exec="${pkgname%-bin}"
+    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Game" --name="${_pkgname}" --exec="${pkgname%-bin}"
     find "${srcdir}/${_shortname}/data" -type d -exec chmod 755 {} \;
     rm -rf "${srcdir}/${_shortname}/data/resume_ag.txt"
 }
