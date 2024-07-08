@@ -2,7 +2,7 @@
 
 pkgname=qsaharaserver-git
 pkgver=2015.r0.g4a5b814
-pkgrel=1
+pkgrel=2
 pkgdesc="QSaharaServer Source Code "
 arch=($CARCH)
 url="https://github.com/Muhmmad-Almuhmmah/QSaharaServer"
@@ -30,6 +30,7 @@ prepare()
 build() {
     cd "${srcdir}/${pkgname%-git}"
     sed -i 's|-D|-fcommon -D|g'  Makefile
+    sed -i 's|sizeof(cwd)|sizeof(cwd)-1|g' kickstart.c
     sed -i 's|#LIBS|LIBS|g' Makefile
     kickstart init
     make
