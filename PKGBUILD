@@ -2,8 +2,8 @@
 
 pkgbase=rustdesk-nightly
 pkgname=(rustdesk{,-appimage}-nightly)
-pkgver=1.2.4
-pkgrel=0
+pkgver=1.2.7
+pkgrel=1
 pkgdesc="Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk!"
 arch=('x86_64' 'aarch64')
 url="https://github.com/rustdesk/rustdesk"
