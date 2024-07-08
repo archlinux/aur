@@ -1,29 +1,29 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Cepo
-_pkgver=1.8.0
+_pkgver=1.10.2
 pkgname=r-${_pkgname,,}
-pkgver=1.8.0
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Cepo for the identification of differentially stable genes'
-arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+pkgdesc="Cepo for the identification of differentially stable genes"
+arch=(any)
+url="https://bioconductor.org/packages/$_pkgname"
 license=('MIT')
 depends=(
-  r
   r-biocparallel
   r-delayedarray
   r-delayedmatrixstats
+  r-dplyr
   r-ggplot2
   r-gseabase
   r-hdf5array
   r-patchwork
+  r-purrr
   r-reshape2
   r-rlang
   r-s4vectors
   r-singlecellexperiment
   r-summarizedexperiment
-  r-dplyr
 )
 optdepends=(
   r-biocstyle
@@ -31,7 +31,6 @@ optdepends=(
   r-escape
   r-fgsea
   r-knitr
-  r-patchwork
   r-pheatmap
   r-rmarkdown
   r-scater
@@ -40,15 +39,18 @@ optdepends=(
   r-upsetr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8843bde49e9c5c1ee9881cd65c592605602564d21f5c5af219773d5d89ca3f68')
+md5sums=('5e301e52bbcb9ad5eaa860386cc0a70e')
+b2sums=('435a42ab6120e72d17fda5a6250cdffb0d5df035303b94d089059786b79740afc7d8164461cff949595e93974136767ba672f7b8aef1a1926569f8ce2cdd9520')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-#install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
