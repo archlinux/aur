@@ -1,0 +1,11 @@
+pkgbase = ttf-dotum
+	pkgdesc = Dotum Font
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/googlefonts/gulim
+	arch = any
+	license = OFL
+	source = https://github.com/google/fonts/raw/main/ofl/dotum/Dotum-Regular.ttf
+	sha256sums = 12f749ac462e547e3f4073227bb3b2b4c116062fc7546fbdadaa04e5e9f88b12
+
+pkgname = ttf-dotum
