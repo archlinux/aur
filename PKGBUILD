@@ -7,7 +7,7 @@ pkgname=(
 )
 pkgbase=vencord-bin
 _dirname=builds
-pkgver=1.9.3
+pkgver=1.9.4
 pkgrel=4
 pkgdesc="The cutest Discord client mod"
 arch=(any)
