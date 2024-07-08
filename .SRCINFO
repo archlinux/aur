@@ -7,7 +7,6 @@ pkgbase = pyload-ng
 	license = AGPL3
 	depends = python-semver
 	depends = python-pycurl
-	depends = python-js2py
 	depends = python-filetype
 	depends = python-cryptography
 	depends = python-bitmath
