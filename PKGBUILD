@@ -1,12 +1,14 @@
-# Maintainer : DigitOtter <digitotter@protonmail.com> 
-# Contributor: Daniel Bermond <gmail-com: danielbermond>
+# Maintainer : benklett <b.klettbach + gmail.com> 
+# Maintainer : benklett b\dotklettbach\atgmail.com
+# Contributor : DigitOtter <digitotter@protonmail.com> 
+# Contributor : Daniel Bermond <gmail-com: danielbermond>
 
 pkgname=ffnvcodec-headers-12-1
 srcname=ffnvcodec-headers
 pkgver=12.1.14.0
 pkgrel=1
 pkgdesc='FFmpeg version of headers required to interface with Nvidias codec APIs Version 12.1 (for obs-studio-git)'
-provides=('ffnvcodec-headers')
+provides=("ffnvcodec-headers=${pkgver}")
 conflicts=('ffnvcodec-headers')
 arch=(any)
 url=https://git.videolan.org/?p=ffmpeg/nv-codec-headers.git

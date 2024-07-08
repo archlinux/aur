@@ -6,7 +6,7 @@ pkgbase = ffnvcodec-headers-12-1
 	arch = any
 	license = MIT
 	makedepends = git
-	provides = ffnvcodec-headers
+	provides = ffnvcodec-headers=12.1.14.0
 	conflicts = ffnvcodec-headers
 	source = ffnvcodec-headers::git+https://git.videolan.org/git/ffmpeg/nv-codec-headers.git#tag=n12.1.14.0
 	sha256sums = SKIP
