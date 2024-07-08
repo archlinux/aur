@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=hdf5r
-_pkgver=1.3.10
+_pkgver=1.3.11
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=1
 pkgdesc="Interface to the 'HDF5' Binary Data Format"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -25,17 +25,9 @@ optdepends=(
   r-rmarkdown
   r-testthat
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
-        "$_pkgname-fix-cast.patch::https://github.com/hhoeflin/hdf5r/pull/222.patch")
-md5sums=('6bd2d45695b64a082a88324a901b571c'
-         '768237304963abc03caf47b078e724ae')
-b2sums=('f299fcd4d148f4082c8eefec8f9f47bc3e97127ddfaefa3af22aea54f48d374431e8cf1f428b6a5d2d4c8cb68375a50feadb9a0c82766235382cac9bb9a55478'
-        'e4052485092f1a479047b89dcf690101596ac86bf8c327afa9c3ab6ebb69594d22dffe3715e0714bf32fad4e3c2c6b464865c02f1c1fd0f1a803686d66477b90')
-
-prepare() {
-  # fix build
-  patch -Np1 -d "$_pkgname" < "$_pkgname-fix-cast.patch"
-}
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('3cc2909d1f4e7c73b46c7273573ac69b')
+b2sums=('68808fd7f73b5adec411c6f480813a2c02b435baa8a9ce08c61cca1018f1bcd5351794e51b69fc8334a9e05d69df49f38c6727af1f5447539fae818dfb2e692b')
 
 build() {
   mkdir build
