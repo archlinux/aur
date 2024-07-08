@@ -1,7 +1,7 @@
 # Maintainer: Marco44 (Marc Cousin) <cousinmarc at gmail dot com>
 pkgname=pg_icu_ext-git
 _gitname=icu_ext
-pkgver=v1.5.1.r1.g444a52a
+pkgver=v1.8.0.r7.g860e9fd
 pkgrel=1
 pkgdesc="PostgreSQL icu_ext package. See https://github.com/dverite/icu_ext"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('postgresql')
 builddepends=()
 makedepends=(git)
 options=(!emptydirs !libtool)
-source=('git://github.com/dverite/icu_ext.git')
+source=('git+https://github.com/dverite/icu_ext.git')
 md5sums=('SKIP')
 
 pkgver() {
