@@ -1,6 +1,6 @@
 pkgbase = botan2
 	pkgdesc = Crypto library written in C++ (legacy version)
-	pkgver = 2.19.4
+	pkgver = 2.19.5
 	pkgrel = 1
 	url = https://botan.randombit.net/
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = botan2
 	depends = xz
 	depends = sqlite
 	optdepends = python: for using botan2.py
-	source = https://botan.randombit.net/releases/Botan-2.19.4.tar.xz
-	source = https://botan.randombit.net/releases/Botan-2.19.4.tar.xz.asc
+	source = https://botan.randombit.net/releases/Botan-2.19.5.tar.xz
+	source = https://botan.randombit.net/releases/Botan-2.19.5.tar.xz.asc
 	validpgpkeys = 621DAF6411E1851C4CF9A2E16211EBF1EFBADFBC
-	sha256sums = 5a3a88ef6433e97bcab0efa1ed60c6197e4ada9d9d30bc1c47437bf89b97f276
+	sha256sums = dfeea0e0a6f26d6724c4af01da9a7b88487adb2d81ba7c72fcaf52db522c9ad4
 	sha256sums = SKIP
 
 pkgname = botan2
