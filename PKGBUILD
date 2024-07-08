@@ -7,9 +7,12 @@ _appname="${_pkgname} Terminal"
 pkgver=0.7.6
 _electronversion=30
 _nodeversion=20
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source, cross-platform terminal for seamless workflows"
-arch=('any')
+arch=(
+    'aarch64'
+    'x86_64'
+)
 url="https://www.waveterm.dev/"
 _ghurl="https://github.com/wavetermdev/waveterm"
 license=('Apache-2.0')
@@ -34,7 +37,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('bb448860b365304fe8dd9156b956c65bac6b3bbfc9c7c2d0c7e058a12ad6fd29'
+sha256sums=('78879dddc0d6fdc3c0c3cd3ee0ee5097c9641d867fd0ee7654a85c5997088947'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -74,11 +77,13 @@ build() {
     else
         echo "Your network is OK."
     fi
-    sed "s|-l -p never|-l --dir|g" -i scripthaus.md
-    yarn install --cache-folder "${srcdir}/.yarn_cache"
-    scripthaus run electron-rebuild
-    scripthaus run build-backend
-    scripthaus run build-package-linux
+    sed 's|"zip", "deb", "rpm", "AppImage", "pacman"|"dir"|g' -i electron-builder.config.js
+    corepack enable
+    yarn set version 4.1.1
+    NODE_ENV=development yarn install #--cache-folder "${srcdir}/.yarn_cache"
+    NODE_ENV=production scripthaus run electron-rebuild
+    NODE_ENV=production scripthaus run build-backend
+    NODE_ENV=production scripthaus run build-package-linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
