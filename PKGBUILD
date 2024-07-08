@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pdmaner-bin
-_appname=PDManer
-pkgver=4.9.2
+_pkgname=PDManer
+pkgver=4.9.3
 _electronversion=13
 pkgrel=1
 pkgdesc="A multi operating system open source and free desktop version relational database modeling tool.一款多操作系统开源免费的桌面版关系数据库模型建模工具"
@@ -19,17 +19,18 @@ makedepends=(
     'fuse2'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::${_dlurl}/releases/download/${_appname}${pkgver}/${_appname}-linux_v${pkgver}.AppImage"
+    "${pkgname%-bin}-${pkgver}.AppImage::${_dlurl}/releases/download/${_pkgname}${pkgver}/${_pkgname}-linux_v${pkgver}.AppImage"
     "LICENSE-${pkgver}::https://gitee.com/robergroup/pdmaner/raw/master/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('0416d4b15a54bcb7d3628dac488b9bb18af3fc99a6fc6633f5581306e3a8c6cd'
+sha256sums=('e29a1e577a69802aba8f7c54806c4328d10de3bc29da59979a3523245f8ae699'
             '7c91afc2c15fc478de3fc38f2678e560906859da6932f2c03b6bc9076d592d18'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
