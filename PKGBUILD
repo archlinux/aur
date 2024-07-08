@@ -2,21 +2,30 @@
 
 _plug=mlrt
 pkgname=vapoursynth-plugin-${_plug}-trt-runtime-git
-pkgver=598.460f978
+pkgver=609.cfe4933
 pkgrel=1
 pkgdesc="Plugin for VapourSynth: ${_plug} (TensorRT runtime: recommended for Nvidia GPUs >=8GB VRAM)"
 arch=('x86_64')
 url='https://github.com/AmusementClub/vs-mlrt'
 license=('LGPL')
 depends=('vapoursynth' 'cuda' 'tensorrt')
-makedepends=('git' 'ninja' 'cmake')
+makedepends=('git' 'ninja' 'cmake' 'jq')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}-ov-runtime-git"
   "vapoursynth-plugin-${_plug}-ort-runtime-git"
   "vapoursynth-plugin-${_plug}-ncnn-runtime-git")
+
+# Function to fetch the latest release version
+get_latest_release_version() {
+  curl --silent "https://api.github.com/repos/AmusementClub/vs-mlrt/releases/latest" | jq -r .tag_name
+}
+
+# Fetch the latest release version
+latest_release=$(get_latest_release_version)
+
 source=("${_plug}::git+https://github.com/AmusementClub/vs-mlrt.git"
-  models-v14.7z::https://github.com/AmusementClub/vs-mlrt/releases/download/v14/models.v14.7z)
-sha256sums=('SKIP' '19dd9e312b5a6961d76527871d13ef2767bab4dce955ded41f107fb179acb1e0')
+  "models-${latest_release}.7z::https://github.com/AmusementClub/vs-mlrt/releases/download/${latest_release}/models.${latest_release}.7z")
+sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
   cd "${_plug}"
