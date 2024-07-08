@@ -1,6 +1,6 @@
 pkgbase = python-pyamg
 	pkgdesc = Algebraic Multigrid Solvers in Python
-	pkgver = 5.1.0
+	pkgver = 5.2.1
 	pkgrel = 1
 	url = https://github.com/pyamg/pyamg
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = python-pyamg
 	makedepends = python-wheel
 	makedepends = pybind11
 	depends = python-scipy
-	source = pyamg-5.1.0.tar.gz::https://github.com/pyamg/pyamg/archive/v5.1.0.tar.gz
-	sha512sums = d770289a9995dd6d7eb7be137e39adeed0968d25d6c5c8c664f14ca3980f09fdda407adb3f634172a9ce49e4d0e205a63dccc21214a027324372a2be1374f062
+	source = pyamg-5.2.1.tar.gz::https://github.com/pyamg/pyamg/archive/v5.2.1.tar.gz
+	sha512sums = 469a5675bb65ff9eadfdbf344c35cb01bebe09c987b493aaeaf5aa98273ebd8071534e25edac82ffc26f39eb3877e1a69cd2a3894de70bcb5396b6cf723aa3b6
 
 pkgname = python-pyamg
