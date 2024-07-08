@@ -1,0 +1,17 @@
+pkgbase = autocast
+	pkgdesc = A tool to help automate the creation of terminal demos.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/k9withabone/autocast
+	arch = x86_64
+	arch = i686
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = gcc-libs
+	source = autocast-0.1.0.tar.gz::https://static.crates.io/crates/autocast/autocast-0.1.0.crate
+	sha512sums = ded7ee2161dec5aacf5e6c68ec43cda4969dce61c4da389677e4d62d6ac6e1e90b8203f7f48a3bea7beb3d398af57a5c3fa8ffd2d630f12d5f2d58680bc073c9
+
+pkgname = autocast
