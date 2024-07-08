@@ -15,7 +15,7 @@
 # Contributor: Diego Jose <diegoxter1006@gmail.com>
 
 pkgbase=mesa-amdonly-gaming-git
-pkgver=24.2.0_devel.191649.4581bf595bd.e60076a
+pkgver=24.2.0_devel.191653.0ce2e6594dd.d41d8cd
 options=(!lto) # LTO is bad for mesa, makes random applications crash on my system
 pkgname=(
   'amdonly-gaming-vulkan-mesa-layers-git'
@@ -79,11 +79,9 @@ makedepends=(
 source=(
   'mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git#branch=main'
   'LICENSE'
-  '30057.patch'
 )
 b2sums=('SKIP'
-        'cc60238726b35133b5b729fb4ed1e76e04136588533615d84b4a54656d5b41727d5e7ff06ef4de3eb102eed6669d6c5c5cb8ac9fbdf6fc25aa477877c5c3ba87'
-        '3122154a8839dfa65d7c34eeaad66afe0dcd0f41a9fe80eb4aad143b6c8a0e667cf2ba486e45feaca0f24dac7b2133af9b0c444be5e3fd12bc239491d977aa1c')
+        'cc60238726b35133b5b729fb4ed1e76e04136588533615d84b4a54656d5b41727d5e7ff06ef4de3eb102eed6669d6c5c5cb8ac9fbdf6fc25aa477877c5c3ba87')
 
 
 # NINJAFLAGS is an env var used to pass commandline options to ninja
