@@ -4,8 +4,8 @@
 
 _pkgname=url-eater
 pkgname=${_pkgname}-git
-pkgver=r14.605b5f5
-pkgrel=1
+pkgver=r24.21be820
+pkgrel=2
 pkgdesc='Clean unnecessary parameters from URLs copied to clipboard'
 provides=('url-eater')
 conflicts=('url-eater' 'url-eater-bin')
@@ -20,7 +20,7 @@ source=(
 	"url-eater.service"
 )
 sha256sums=('SKIP'
-            'e86c33eb0ef751bfd342734ae2fbf6a15d974948a4f6bd3f45d851da1f5a7fbd'
+            'ee062aec46772acc4e7827c5520871ea058fc587500562e8524758344ee568fc'
             '621bc550a91f6ef3ac5f77730c9ea9914b597d259a732296974a198e2e24e629')
 backup=('etc/url-eater.kdl')
 

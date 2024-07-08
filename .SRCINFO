@@ -1,7 +1,7 @@
 pkgbase = url-eater-git
 	pkgdesc = Clean unnecessary parameters from URLs copied to clipboard
-	pkgver = r14.605b5f5
-	pkgrel = 1
+	pkgver = r24.21be820
+	pkgrel = 2
 	url = https://github.com/AgathaSorceress/url-eater
 	arch = any
 	license = custom: NVL
@@ -16,7 +16,7 @@ pkgbase = url-eater-git
 	source = default.kdl
 	source = url-eater.service
 	sha256sums = SKIP
-	sha256sums = e86c33eb0ef751bfd342734ae2fbf6a15d974948a4f6bd3f45d851da1f5a7fbd
+	sha256sums = ee062aec46772acc4e7827c5520871ea058fc587500562e8524758344ee568fc
 	sha256sums = 621bc550a91f6ef3ac5f77730c9ea9914b597d259a732296974a198e2e24e629
 
 pkgname = url-eater-git

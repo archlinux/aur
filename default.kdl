@@ -125,7 +125,7 @@ category "Yandex" {
 	params "lr@yandex.*" "redircnt@yandex.*"
 }
 category "YouTube.com" {
-	params "feature@youtube.com" "kw@youtube.com"
+	params "feature@youtube.com" "kw@youtube.com" "si@youtu.be"
 }
 category "Zeit.de" {
 	params "wt_mc" "wt_zmc"
