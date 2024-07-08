@@ -6,6 +6,7 @@ pkgbase = gamescope
 	arch = x86_64
 	license = BSD-2-Clause
 	license = BSD-3-Clause
+	license = LicenseRef-Reshade
 	makedepends = benchmark
 	makedepends = cmake
 	makedepends = git

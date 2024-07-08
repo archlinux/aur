@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc='SteamOS session compositing window manager'
 arch=(x86_64)
 url=https://github.com/ValveSoftware/gamescope
-license=(BSD-2-Clause BSD-3-Clause)
+license=(BSD-2-Clause BSD-3-Clause LicenseRef-Reshade)
 depends=(
   gcc-libs
   glibc
@@ -96,6 +96,7 @@ build() {
 package() {
   DESTDIR="${pkgdir}" meson install -C build \
     --skip-subprojects
+  install -Dm 644 gamescope/LICENSE -t "${pkgdir}"/usr/share/licenses/gamescope/
 }
 
 # vim: ts=2 sw=2 et:
