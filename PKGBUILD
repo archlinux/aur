@@ -7,8 +7,8 @@ pkgdesc="The free and open-source Download Manager written in pure Python"
 url="https://pyload.net/"
 license=('AGPL3')
 arch=('any')
-depends=('python-semver''python-cachelib' 'python-mutf8' 'python-pycurl' 'python-filetype' 'python-cryptography' 'python-bitmath'
-         'python-flask-themes2' 'python-flask-session' 'python-flask-compress' 'python-flask-caching' 'python-flask-babel' 'python-dukpy'
+depends=('python-semver' 'python-pycurl' 'python-js2py' 'python-filetype' 'python-cryptography' 'python-bitmath'
+         'python-flask-themes2' 'python-flask-session' 'python-flask-compress' 'python-flask-caching' 'python-flask-babel'
          'python-cheroot' 'python-setuptools' 'python-certifi')
 optdepends=('caffeine: For AntiStandby plugin'
             'python-beautifulsoup4: for XFileSharing plugin'
