@@ -4,8 +4,7 @@
 # Contributor: Hugo Osvaldo Barrera <hugo@barrera.io>
 # Contributor: Christoph Gysin <christoph.gysin@gmail.com>
 
-_pkgname=facetimehd-dkms
-pkgname=$_pkgname-git
+pkgname=facetimehd-dkms-git
 pkgver=0.6.8.2.r0.gd47bb25
 pkgrel=2
 pkgdesc='Reverse engineered Linux driver for the FacetimeHD (Broadcom 1570) PCIe webcam'
@@ -29,6 +28,6 @@ pkgver() {
 package() {
   cd "$srcdir/$pkgname"
   for FILE in dkms.conf Makefile *.[ch]; do
-    install -Dm644 "$FILE" "$pkgdir/usr/src/$_pkgname-$pkgver/$FILE"
+    install -Dm644 "$FILE" "$pkgdir/usr/src/facetimehd-$pkgver/$FILE"
   done
 }
