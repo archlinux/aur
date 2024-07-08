@@ -144,7 +144,7 @@ build() {
     -D gbm=enabled
     -D gles1=disabled
     -D gles2=enabled
-    -D glvnd=true
+    -D glvnd=enabled
     -D glx=dri
     -D intel-rt=disabled
     -D libunwind=disabled
