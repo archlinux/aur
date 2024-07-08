@@ -1,0 +1,49 @@
+# Maintainer: KafCoppelia <k740677208@gmail.com>
+
+# BUILD INSTRUCTIONS:
+#
+# 1. Log in to nxp.com
+# 2. Go to https://www.nxp.com/design/design-center/software/development-software/mcuxpresso-software-and-tools-/linkserver-for-microcontrollers:LINKERSERVER
+# 3. Click on "Download" and download the current version
+# 4. Accept the License terms
+# 5. Download the .deb.bin package and place it in the same directory as the PKGBUILD
+# 6. Build
+
+pkgname=linkserver
+pkgver=1.6.133
+pkgrel=1
+pkgdesc="LinkServer is a utility for launching and managing GDB servers for NXP debug probes, which also provides a command-line target flash programming capabilities."
+arch=('x86_64')
+url="https://www.nxp.com/design/design-center/software/development-software/mcuxpresso-software-and-tools-/linkserver-for-microcontrollers:LINKERSERVER"
+license=('custom:LA_OPT_NXP_Software_License')
+depends=('bash' 'bzip2' 'expat' 'gcc-libs' 'glibc' 'libusb' 'openssl-1.1' 'systemd-libs' 'zlib' 'xz' )
+source=("file://LinkServer_${pkgver}.${arch}.deb.bin")
+noextract=("LinkServer_${pkgver}.${arch}.deb.bin")
+sha256sums=('e398fa28ff059a04625672a0cb4d12f8c8c86322b08b07a898e75855315990f9')
+options=('!strip')
+
+prepare() {
+    chmod +x LinkServer_${pkgver}.${arch}.deb.bin
+    ./LinkServer_${pkgver}.${arch}.deb.bin --noexec --keep --target ${srcdir}
+    rm LinkServer_${pkgver}.${arch}.deb.bin
+    cd ${srcdir}/
+    mkdir linkserver
+    bsdtar -x -f LinkServer_${pkgver}.${arch}.deb -C linkserver/
+    rm LinkServer_${pkgver}.${arch}.deb
+    bsdtar -x -f linkserver/data.tar.gz -C linkserver/
+    rm linkserver/data.tar.gz
+    # Rename main folder in place
+    mv ${srcdir}/linkserver/usr/local/LinkServer_${pkgver} ${srcdir}/linkserver/usr/local/${pkgname};
+}
+
+
+package() {
+    # Copy main folder in place
+    cp -ar ${srcdir}/linkserver/usr ${pkgdir}/;
+    # Move application files to /opt as they don't obey standard file system hierarchy
+    mv ${pkgdir}/usr/local ${pkgdir}/opt;
+    # Copy udev rules from /lib to /usr/lib folder
+    cp -ar ${srcdir}/linkserver/lib/udev ${pkgdir}/usr/lib/;
+    # Add Product LICENSE file to licenses folder
+    install -D -m644 ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE;
+}
