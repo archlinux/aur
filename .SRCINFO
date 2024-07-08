@@ -1,10 +1,10 @@
 pkgbase = sddm-git
 	pkgdesc = The Simple Desktop Display Manager
 	pkgver = 0.21.0.14.gae072f9
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/sddm/sddm
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-only
 	makedepends = extra-cmake-modules
 	makedepends = python-docutils
 	makedepends = qt5-base
