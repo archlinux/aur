@@ -1,7 +1,7 @@
 # Maintainer: Filipe Nascimento <flipee at tuta dot io>
 
 pkgname=tdl
-pkgver=0.17.2
+pkgver=0.17.3
 pkgrel=1
 pkgdesc="Telegram Downloader, but more than a downloader"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ license=("AGPL-3.0-or-later")
 depends=('glibc')
 makedepends=('go' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/iyear/tdl/archive/v$pkgver.tar.gz")
-sha256sums=('79b171fead97b26ab5b4b643a20a236d634eed46dbcf85cc55ec28ff190a27ea')
+sha256sums=('cfb3ac515370aa6494614bbf20eeda60d69a39ef8b9a3c0c7584b6163b9567c3')
 
 build() {
     _commit=$(zcat $pkgname-$pkgver.tar.gz | git get-tar-commit-id)

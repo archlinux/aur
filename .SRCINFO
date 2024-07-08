@@ -1,6 +1,6 @@
 pkgbase = tdl
 	pkgdesc = Telegram Downloader, but more than a downloader
-	pkgver = 0.17.2
+	pkgver = 0.17.3
 	pkgrel = 1
 	url = https://docs.iyear.me/tdl
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = tdl
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = tdl-0.17.2.tar.gz::https://github.com/iyear/tdl/archive/v0.17.2.tar.gz
-	sha256sums = 79b171fead97b26ab5b4b643a20a236d634eed46dbcf85cc55ec28ff190a27ea
+	source = tdl-0.17.3.tar.gz::https://github.com/iyear/tdl/archive/v0.17.3.tar.gz
+	sha256sums = cfb3ac515370aa6494614bbf20eeda60d69a39ef8b9a3c0c7584b6163b9567c3
 
 pkgname = tdl
