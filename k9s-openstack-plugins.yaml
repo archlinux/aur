@@ -1,0 +1,63 @@
+plugins:
+  openstack-logs:
+    shortCut: l
+    confirm: false
+    description: View logs of openstack machine
+    scopes:
+      - openstackmachines
+    background: false
+    command: bash
+    args:
+      - -c
+      - |
+        secretName="$(kubectl -n "$NAMESPACE" get openstackmachine "$NAME" -o jsonpath='{.spec.identityRef.name}')"
+        envs=( $(kubectl -n "$NAMESPACE" get secret "$secretName" -o jsonpath='{.data.clouds\.yaml}' | base64 -d | yq -r '.clouds.openstack | {OS_AUTH_TYPE: .["auth_type"], OS_AUTH_URL: .auth["auth_url"], OS_APPLICATION_CREDENTIAL_ID: .auth["application_credential_id"], OS_APPLICATION_CREDENTIAL_SECRET: .auth["application_credential_secret"], OS_REGION_NAME: .["region_name"], OS_INTERFACE: .interface, OS_IDENTITY_API_VERSION: .["identity_api_version"]} | to_entries[] | "\(.key)=\(.value)"') )
+          #while true; do
+          #  env "${envs[@]}" openstack console log show "$(kubectl -n "$NAMESPACE" get openstackmachine "$NAME" -o jsonpath='{.spec.instanceID}')"
+          #  sleep 1
+          #done | awk '!x[$0]++' | lnav
+        env "${envs[@]}" openstack console log show "$(kubectl -n "$NAMESPACE" get openstackmachine "$NAME" -o jsonpath='{.spec.instanceID}')" | exec lnav
+  openstack-shell-teutonetescloud-images:
+    shortCut: i
+    confirm: false
+    description: Enter openstack shell for cloud images
+    scopes:
+      - teutonetescloud
+    background: false
+    command: bash
+    args:
+      - -c
+      - |
+        secretName="$(kubectl get teutonetescloud "$NAME" -o yaml | yq -r '.spec.identityRef.name')"
+        envs=( $(kubectl -n "t8se-system" get secret "$secretName" -o jsonpath='{.data.clouds\.yaml}' | base64 -d | yq -r '.clouds.openstack | {OS_AUTH_PLUGIN: "password", OS_AUTH_URL: .auth["auth_url"], OS_USERNAME: .auth["username"], OS_PASSWORD: .auth["password"], OS_USER_DOMAIN_NAME: .auth["user_domain_name"], OS_DOMAIN_NAME: .auth["domain_name"], OS_REGION_NAME: .["region_name"], OS_INTERFACE: .interface, OS_IDENTITY_API_VERSION: .["identity_api_version"]} | to_entries[] | "\(.key)=\(.value)"') )
+        imageProjectID="$(kubectl get teutonetescloud "$NAME" -o jsonpath='{.status.imageProject.id}')"
+        exec env OS_SHELL=true "${envs[@]}" OS_PROJECT_ID=$imageProjectID zsh
+  openstack-shell-teutonetescloud:
+    shortCut: o
+    confirm: false
+    description: Enter openstack shell for cloud
+    scopes:
+      - teutonetescloud
+    background: false
+    command: bash
+    args:
+      - -c
+      - |
+        secretName="$(kubectl get teutonetescloud "$NAME" -o yaml | yq -r '.spec.identityRef.name')"
+        envs=( $(kubectl -n "t8se-system" get secret "$secretName" -o jsonpath='{.data.clouds\.yaml}' | base64 -d | yq -r '.clouds.openstack | {OS_AUTH_PLUGIN: "password", OS_AUTH_URL: .auth["auth_url"], OS_USERNAME: .auth["username"], OS_PASSWORD: .auth["password"], OS_USER_DOMAIN_NAME: .auth["user_domain_name"], OS_DOMAIN_NAME: .auth["domain_name"], OS_REGION_NAME: .["region_name"], OS_INTERFACE: .interface, OS_IDENTITY_API_VERSION: .["identity_api_version"]} | to_entries[] | "\(.key)=\(.value)"') )
+        exec env OS_SHELL=true "${envs[@]}" zsh
+  openstack-shell:
+    shortCut: o
+    confirm: false
+    description: Enter openstack shell for cluster
+    scopes:
+      - teutonetescluster
+      - cluster
+    background: false
+    command: bash
+    args:
+      - -c
+      - |
+        secretName="$(kubectl -n "$NAMESPACE" get openstackcluster -l cluster.x-k8s.io/cluster-name="$NAME" -o yaml | yq -r '.items[0].spec.identityRef.name')"
+        envs=( $(kubectl -n "$NAMESPACE" get secret "$secretName" -o jsonpath='{.data.clouds\.yaml}' | base64 -d | yq -r '.clouds.openstack | {OS_AUTH_TYPE: .["auth_type"], OS_AUTH_URL: .auth["auth_url"], OS_APPLICATION_CREDENTIAL_ID: .auth["application_credential_id"], OS_APPLICATION_CREDENTIAL_SECRET: .auth["application_credential_secret"], OS_REGION_NAME: .["region_name"], OS_INTERFACE: .interface, OS_IDENTITY_API_VERSION: .["identity_api_version"]} | to_entries[] | "\(.key)=\(.value)"') )
+        exec env OS_SHELL=true "${envs[@]}" zsh
