@@ -1,7 +1,7 @@
 pkgbase = mobsh
 	pkgdesc = Tool for smooth git handover
-	pkgver = 5.0.0
-	pkgrel = 3
+	pkgver = 5.0.1
+	pkgrel = 1
 	url = https://github.com/remotemobprogramming/mob
 	arch = x86_64
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = mobsh
 	optdepends = espeak-ng-espeak: Multi-lingual software speech synthesizer
 	optdepends = mbrola-voices-us1: An American English female voice for the MBROLA synthesizer
 	conflicts = mob
-	source = mobsh-5.0.0.tar.gz::https://github.com/remotemobprogramming/mob/archive/v5.0.0.tar.gz
-	sha256sums = ea3abccb782ded754dafb0c95da19820f79f1df5d929060a2af57a6c28a265f7
+	source = mobsh-5.0.1.tar.gz::https://github.com/remotemobprogramming/mob/archive/v5.0.1.tar.gz
+	sha256sums = 8ee9c3a68e109769762edb25a41f7a93a7ae556cb1ba6296af80baa24f126243
 
 pkgname = mobsh
