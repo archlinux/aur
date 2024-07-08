@@ -1,24 +1,24 @@
 pkgbase = goofcord-bin
 	pkgdesc = Take control of your Discord experience with GoofCord – the highly configurable and privacy first discord client.
-	pkgver = 1.4.3
-	pkgrel = 2
+	pkgver = 1.5.0
+	pkgrel = 1
 	url = https://github.com/Milkshiift/GoofCord
 	arch = aarch64
 	arch = armv7h
 	arch = x86_64
 	license = OSL-3.0
-	depends = electron30
-	provides = goofcord=1.4.3
+	depends = electron31
+	provides = goofcord=1.5.0
 	conflicts = goofcord
-	source = LICENSE-1.4.3::https://raw.githubusercontent.com/Milkshiift/GoofCord/v1.4.3/LICENSE
+	source = LICENSE-1.5.0::https://raw.githubusercontent.com/Milkshiift/GoofCord/v1.5.0/LICENSE
 	source = goofcord.sh
 	sha256sums = 4e7f66aa93929feee2db20f14f871e7ddcc69236b0ecfb79a19ade9b859daf51
 	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
-	source_aarch64 = goofcord-1.4.3-aarch64.deb::https://github.com/Milkshiift/GoofCord/releases/download/v1.4.3/GoofCord-1.4.3-linux-arm64.deb
-	sha256sums_aarch64 = e2627790343e7a1f4b9f2cf1c8d62f77684c9a0889b413172aea7b20b9479346
-	source_armv7h = goofcord-1.4.3-armv7h.deb::https://github.com/Milkshiift/GoofCord/releases/download/v1.4.3/GoofCord-1.4.3-linux-armv7l.deb
-	sha256sums_armv7h = 0d201fb140558b66216323b56d974d273ea0ae5db18ed719b061601007cc6276
-	source_x86_64 = goofcord-1.4.3-x86_64.deb::https://github.com/Milkshiift/GoofCord/releases/download/v1.4.3/GoofCord-1.4.3-linux-amd64.deb
-	sha256sums_x86_64 = 5cefd3e4eebe849e904fc302568aeb7573d9665af2c1aeaed1428f93d5884011
+	source_aarch64 = goofcord-1.5.0-aarch64.deb::https://github.com/Milkshiift/GoofCord/releases/download/v1.5.0/GoofCord-1.5.0-linux-arm64.deb
+	sha256sums_aarch64 = bbea98d545abf68a634c19c886ac3ad85f476137449ea6a07af27e7a0f1762bf
+	source_armv7h = goofcord-1.5.0-armv7h.deb::https://github.com/Milkshiift/GoofCord/releases/download/v1.5.0/GoofCord-1.5.0-linux-armv7l.deb
+	sha256sums_armv7h = cc2d1525a5719f30d19a13af373c67031924a7b15dfd23458049e3a51f197ceb
+	source_x86_64 = goofcord-1.5.0-x86_64.deb::https://github.com/Milkshiift/GoofCord/releases/download/v1.5.0/GoofCord-1.5.0-linux-amd64.deb
+	sha256sums_x86_64 = 4fbcfc9b288d05aa037f4e33ca73613de905b73a23e37e5d7b4f4f573f0c5833
 
 pkgname = goofcord-bin
