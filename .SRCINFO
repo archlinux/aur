@@ -1,6 +1,6 @@
 pkgbase = espanso-gui
 	pkgdesc = GUI frontend for espanso
-	pkgver = 23.10
+	pkgver = 24.7
 	pkgrel = 1
 	url = https://github.com/unobserved-io/espanso-gui
 	arch = x86_64
@@ -9,9 +9,8 @@ pkgbase = espanso-gui
 	makedepends = cargo
 	makedepends = meson
 	depends = espanso
-	depends = gtk3
 	depends = hicolor-icon-theme
-	source = espanso-gui-23.10.tar.gz::https://github.com/unobserved-io/espanso-gui/archive/refs/tags/23.10.tar.gz
-	sha256sums = a0ba09756ea2fe97e2b07569ba8cd2938e0c40826c02f4a93efc1e62aa3fa472
+	source = espanso-gui-24.7.tar.gz::https://github.com/unobserved-io/espanso-gui/archive/refs/tags/24.7.tar.gz
+	sha256sums = 041646c7af49163dbfc9377a41ce8836e0c3191a9f5ee68cba2a7f26282aec07
 
 pkgname = espanso-gui
