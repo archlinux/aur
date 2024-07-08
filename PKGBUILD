@@ -3,7 +3,7 @@
 _pkgname=godot
 pkgname=godot-mono-bin
 pkgver=4.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine"
 arch=("x86_64" 'i686' 'armv7h' 'aarch64')
 url='https://godotengine.org'
@@ -12,8 +12,6 @@ makedepends=('rsync')
 depends=(libglvnd libxcursor libxi libxinerama libxrandr hicolor-icon-theme glibc libxrender libx11 bash libxext 'dotnet-sdk>=6.0')
 optdepends=('pipewire-alsa: for audio support'
 	    'pipewire-pulse: for audio support')
-provides=('godot')
-conflicts=('godot')
 source=("https://github.com/godotengine/godot/archive/refs/tags/${pkgver}-stable.tar.gz")
 source_x86_64=("https://github.com/godotengine/godot/releases/download/${pkgver}-stable/Godot_v${pkgver}-stable_mono_linux_x86_64.zip")
 source_i686=("https://github.com/godotengine/godot/releases/download/${pkgver}-stable/Godot_v${pkgver}-stable_mono_linux_x86_32.zip")
@@ -31,22 +29,22 @@ package() {
 	case $arch in
 	x86_64)
 	install -Dm755 Godot_v${pkgver}-stable_mono_linux_x86_64/Godot_v${pkgver}-stable_mono_linux.x86_64 "$pkgdir/usr/lib/$pkgname/Godot_v${pkgver}-stable_mono_linux.x86_64"
-	ln -s "/usr/lib/$pkgname/Godot_v${pkgver}-stable_mono_linux.x86_64" "$pkgdir/usr/bin/godot"
+	ln -s "/usr/lib/$pkgname/Godot_v${pkgver}-stable_mono_linux.x86_64" "$pkgdir/usr/bin/godot-mono-bin"
 	rsync -a -r "$srcdir/Godot_v${pkgver}-stable_mono_linux_x86_64/GodotSharp" "$pkgdir/usr/lib/$pkgname/"
 	;;
 	i686)
 	install -Dm755 Godot_v${pkgver}-stable_mono_linux_x86_32/Godot_v${pkgver}-stable_mono_linux.x86_32 "$pkgdir/usr/lib/$pkgname/Godot_v${pkgver}-stable_mono_linux.x86_32"
-	ln -s "/usr/lib/$pkgname/Godot_v${pkgver}-stable_mono_linux.x86_32" "$pkgdir/usr/bin/godot"
+	ln -s "/usr/lib/$pkgname/Godot_v${pkgver}-stable_mono_linux.x86_32" "$pkgdir/usr/bin/godot-mono-bin"
 	rsync -a -r "$srcdir/Godot_v${pkgver}-stable_mono_linux_x86_32/GodotSharp" "$pkgdir/usr/lib/$pkgname/"
 	;;
 	armv7h)
 	install -Dm755 Godot_v${pkgver}-stable_mono_linux_arm32/Godot_v${pkgver}-stable_mono_linux.arm32 "$pkgdir/usr/lib/$pkgname/Godot_v${pkgver}-stable_mono_linux.arm32"
-	ln -s "/usr/lib/$pkgname/Godot_v${pkgver}-stable_mono_linux.arm32" "$pkgdir/usr/bin/godot"
+	ln -s "/usr/lib/$pkgname/Godot_v${pkgver}-stable_mono_linux.arm32" "$pkgdir/usr/bin/godot-mono-bin"
 	rsync -a -r "$srcdir/Godot_v${pkgver}-stable_mono_linux_arm32/GodotSharp" "$pkgdir/usr/lib/$pkgname/"
 	;;
 	aarch64)
 	install -Dm755 Godot_v${pkgver}-stable_mono_linux_arm64/Godot_v${pkgver}-stable_mono_linux.arm64 "$pkgdir/usr/lib/$pkgname/Godot_v${pkgver}-stable_mono_linux.arm64"
-	ln -s "/usr/lib/$pkgname/Godot_v${pkgver}-stable_mono_linux.arm64" "$pkgdir/usr/bin/godot"
+	ln -s "/usr/lib/$pkgname/Godot_v${pkgver}-stable_mono_linux.arm64" "$pkgdir/usr/bin/godot-mono-bin"
 	rsync -a -r "$srcdir/Godot_v${pkgver}-stable_mono_linux_arm64/GodotSharp" "$pkgdir/usr/lib/$pkgname/"
 	;;
 	esac
@@ -54,7 +52,7 @@ package() {
 	cd "$srcdir/godot-$pkgver-stable"
     install -Dm644 \
         "${srcdir}/godot-${pkgver}-stable/icon.svg" \
-        "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
+        "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
 
     install -Dm644 \
 	"${srcdir}/godot-${pkgver}-stable/LICENSE.txt" \
@@ -62,30 +60,13 @@ package() {
 
     install -Dm644 \
 	"${srcdir}/godot-${pkgver}-stable/misc/dist/linux/godot.6" \
-	"${pkgdir}/usr/share/man/man6/godot.6"
-
-    install -Dm644 \
-	"${srcdir}/godot-${pkgver}-stable/misc/dist/linux/org.godotengine.Godot.xml" \
-	"${pkgdir}/usr/share/mime/packages/org.godoten#gine.Godot.xml"
+	"${pkgdir}/usr/share/man/man6/godot-mono-bin.6"
 
     install -Dm644 \
 	"${srcdir}/godot-${pkgver}-stable/misc/dist/linux/org.godotengine.Godot.desktop"\
-	"${pkgdir}/usr/share/applications/org.godotengine.Godot.desktop"
+	"${pkgdir}/usr/share/applications/org.godotengine.Godot-mono-bin.desktop"
 
-    mkdir -p "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes"
-    install -Dm644 \
-        "${srcdir}/godot-${pkgver}-stable/misc/dist/document_icons/project.svg" \
-        "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/x-godot-project.svg"
-    install -Dm644 \
-        "${srcdir}/godot-${pkgver}-stable/misc/dist/document_icons/resource.svg" \
-        "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/x-godot-resource.svg"
-    install -Dm644 \
-        "${srcdir}/godot-${pkgver}-stable/misc/dist/document_icons/scene.svg" \
-        "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/x-godot-scene.svg"
-    install -Dm644 \
-        "${srcdir}/godot-${pkgver}-stable/misc/dist/document_icons/shader.svg" \
-        "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/x-godot-shader.svg"
-    install -Dm644 \
-        "${srcdir}/godot-${pkgver}-stable/misc/dist/document_icons/gdscript.svg" \
-        "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/x-gdscript.svg"
-	}
+    sed -i "s/Exec=godot/Exec=godot-mono-bin/g" "$pkgdir/usr/share/applications/org.godotengine.Godot-mono-bin.desktop"
+    sed -i "s/Icon=godot/Icon=godot-mono-bin/g" "$pkgdir/usr/share/applications/org.godotengine.Godot-mono-bin.desktop"
+    sed -i "s/Name=Godot Engine/Name=Godot Engine Mono/g" "$pkgdir/usr/share/applications/org.godotengine.Godot-mono-bin.desktop"
+}
