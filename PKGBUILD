@@ -1,7 +1,8 @@
-# Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname='python2-pytest-mock'
+# Do NOT update. 3.0.0 dropped support for Python 2
 pkgver=2.0.0
 pkgrel=6
 pkgdesc='Pytest wrapper for the mock module (legacy Python 2 version)'
