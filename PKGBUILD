@@ -1,10 +1,11 @@
 # Maintainer: Ramadan Ali (alicavus) <rot13: ezqa@ezqa.ny>
+# Contributor: jthvai
 
 pkgname=naps2
-pkgver=7.4.2
+pkgver=7.4.3
 pkgrel=1
 pkgdesc="NAPS2 - Not Another PDF Scanner. Scan documents to PDF and more, as simply as possible."
-arch=("aarch64" "x86_64")
+arch=("x86_64")
 url="https://www.naps2.com"
 license=("GPL-2.0-or-later")
 depends=("sane")
@@ -14,11 +15,11 @@ optdepends=(
 )
 options=("!strip" "!debug")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/cyanfish/$pkgname/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=("80a796085b742dca174ab1dc9c356ed1eb4db641db61faa549514088aa88e9f906c16829c3a6f7f25375e6cb70a125a5ea663e727da0e82c6ff23790749cb538")
+b2sums=("96b52e57b082f52df1094b95360c604be5789dc97ddd4cc46b1f4b59a8692bcea373f34bafb437b00ad1fe0054e53b3e6d204f6193d6d0a73d6b241441a6463a")
 
 build() {
     cd "$pkgname-$pkgver"
-    dotnet run --project NAPS2.Tools pkg deb NAPS2.App.Gtk --nosign
+    dotnet run --project NAPS2.Tools pkg deb --nosign
 }
 
 package() {
