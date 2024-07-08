@@ -1,0 +1,15 @@
+pkgbase = udpreplay-skasa-git
+	pkgdesc = a tool to replays UDP packets from a pcap dump
+	pkgver = r89.227666c
+	pkgrel = 1
+	url = https://github.com/ska-sa/udpreplay
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = boost
+	depends = libpcap
+	depends = boost-libs
+	conflicts = udpreplay
+	source = udpreplay-skasa::git+https://github.com/ska-sa/udpreplay.git
+	sha256sums = SKIP
+
+pkgname = udpreplay-skasa-git
