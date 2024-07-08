@@ -5,15 +5,15 @@
 
 pkgname=nftables-git
 epoch=1
-pkgver=1.0.7.r45.g0583bac2
+pkgver=1.0.9.r255.gaa44b61a
 pkgrel=1
 pkgdesc='Netfilter tables userspace tools'
 arch=('x86_64')
 url='https://netfilter.org/projects/nftables/'
-license=('GPL2')
+license=('GPL-2.0-only')
 depends=('libmnl' 'libnftnl' 'gmp' 'readline' 'ncurses' 'jansson')
 optdepends=('python: Python bindings')
-makedepends=('asciidoc' 'git' 'python-setuptools')
+makedepends=('asciidoc' 'git' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 backup=('etc/nftables.conf')
 provides=(nftables)
 conflicts=(nftables)
@@ -22,7 +22,7 @@ source=(git://git.netfilter.org/nftables
         nftables.service)
 install=nftables.install
 sha256sums=('SKIP'
-            '2aff88019097d21dbfa4713f5b54c184751c86376e458b683f8d90f3abd232a8'
+            'f83d6f2f99f306866850c60ff0e343bbd9bc0c989d333ebe288563f7be4afe20'
             'deffeef36fe658867dd9203ec13dec85047a6d224ea63334dcf60db97e1809ea')
 
 pkgver() {
@@ -38,13 +38,22 @@ build() {
     --sbindir=/usr/bin \
     --sysconfdir=/usr/share \
     --with-json \
-    --with-cli=readline
+    --with-cli=readline \
+    --disable-python \
+    --disable-debug
   make
+
+  # Building the Python module separately due to the automatic build resulting
+  # in an incorrect directory structure and unimportable module (see FS#79229)
+  cd py
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd nftables
   make DESTDIR="$pkgdir" install
+  python -m installer --destdir="$pkgdir" py/dist/*.whl
+
   # basic safe firewall config
   install -Dm644 "$srcdir/nftables.conf" "$pkgdir/etc/nftables.conf"
   # systemd
