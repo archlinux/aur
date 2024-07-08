@@ -15,7 +15,7 @@ pkgbase = pyload-ng
 	depends = python-flask-session
 	depends = python-flask-compress
 	depends = python-flask-caching
-	depends = python-cachelib>=0.9.0
+	depends = python-cachelib
 	depends = python-flask-babel
 	depends = python-cheroot
 	depends = python-setuptools
