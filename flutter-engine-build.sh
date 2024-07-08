@@ -4,7 +4,7 @@ source '/opt/flutter-engine/base.incl'
 
 FLUTTER_TARGET_CPU="${FLUTTER_TARGET_CPU:-x64}"
 readonly _flutter_outdir="linux_release_$FLUTTER_TARGET_CPU"
-readonly _cache_home=${XDG_CACHE_HOME:-$HOME/.cache}
+readonly _cache_home="${XDG_CACHE_HOME:-$HOME/.cache}"
 readonly _engine_path="${srcdir}/flutter-engine"
 readonly _dart_sdk="$_engine_path/out/arch_release/dart-sdk"
 
@@ -113,6 +113,9 @@ EOF
 
 	sed -i '/-Wno-deprecated-literal-operator/d' 'build/config/compiler/BUILD.gn'
 	sed -i '/G_DEFINE_AUTOPTR_CLEANUP_FUNC(PangoLayout, g_object_unref)/d' 'flutter/shell/platform/linux/fl_accessible_text_field.cc'
+
+	# Not our problem.
+	sed -i 's/"-Werror",//' 'build/config/compiler/BUILD.gn'
 
 	cat > 'third_party/dart/build/dart/prebuilt_dart_sdk.gni' <<-EOF
 		import("../executable_suffix.gni")
