@@ -1,6 +1,6 @@
 pkgbase = aichat
 	pkgdesc = OpenAI, ChatGPT, ollama and more in your terminal
-	pkgver = 0.18.0
+	pkgver = 0.19.0
 	pkgrel = 1
 	url = https://github.com/sigoden/aichat
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = aichat
 	depends = gcc-libs
 	conflicts = aichat-bin
 	conflicts = aichat-git
-	source = aichat-0.18.0.tar.gz::https://github.com/sigoden/aichat/archive/v0.18.0.tar.gz
-	sha256sums = 94bc8b23b9c223e3a4191ec5c530fb4c26d5437f3a1a8ed895aa1e2f4dab49a2
+	source = aichat-0.19.0.tar.gz::https://github.com/sigoden/aichat/archive/v0.19.0.tar.gz
+	sha256sums = ad18bcca2264c467c98e3f3fda86c02b140e201e0d253895a23a3ee5e7e1a9ee
 
 pkgname = aichat

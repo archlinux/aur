@@ -1,7 +1,7 @@
 # Maintaner: Sergey A. <murlakatamenka@disroot.org>
 
 pkgname=aichat
-pkgver=0.18.0
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="OpenAI, ChatGPT, ollama and more in your terminal"
 arch=('i686' 'x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('gcc-libs')
 makedepends=('cargo' 'mold')
 conflicts=('aichat-bin' 'aichat-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('94bc8b23b9c223e3a4191ec5c530fb4c26d5437f3a1a8ed895aa1e2f4dab49a2')
+sha256sums=('ad18bcca2264c467c98e3f3fda86c02b140e201e0d253895a23a3ee5e7e1a9ee')
 
 prepare() {
   cd "$pkgname-$pkgver"
