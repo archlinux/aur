@@ -1,0 +1,4 @@
+[python-pot]
+source = "github"
+github = "PythonOT/POT"
+use_latest_release = "true"
