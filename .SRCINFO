@@ -1,0 +1,11 @@
+pkgbase = ttf-dotumche
+	pkgdesc = dotumche Font
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/googlefonts/gulim
+	arch = any
+	license = OFL
+	source = https://github.com/google/fonts/raw/main/ofl/dotumche/DotumChe-Regular.ttf
+	sha256sums = c2c030ca896d46ff28dae17663e9fe22ab2fc6e6518c96d75e15ca8fb441bd2f
+
+pkgname = ttf-dotumche
