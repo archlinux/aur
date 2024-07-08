@@ -3,26 +3,19 @@
 # Contributor: David Runge <dvzrv@archlinux.org>
 
 pkgname=blockdiag
-pkgver=3.1.0
-pkgrel=5
+pkgver=3.3.0
+pkgrel=1
 pkgdesc="generates block-diagram image from text"
 url="http://blockdiag.com"
-license=('Apache')
+license=('Apache-2.0')
 arch=('any')
-depends=('python-setuptools' 'python-funcparserlib' 'python-pillow' 'python-webcolors')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+depends=('python3' 'python-funcparserlib' 'python-pillow' 'python-webcolors')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest' 'python-docutils' 'python-reportlab')
 optdepends=('python-reportlab: for PDF export'
             'python-docutils: for RST parser')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/yuzutech/blockdiag/archive/refs/tags/v$pkgver.tar.gz"
-        "https://github.com/yuzutech/blockdiag/commit/b051e49c1154f0166ddb5c51777f4da02087184f.patch")
-sha512sums=('9933bf68f4a4dfa5c18b3940f2d54acf37743032e5be437bc93a9333f6a6c3d62a0125e30b9cda44619cae71b46d045af758afabab0fbe8b4e765345b45370f8'
-            '76b51917285621ae7cfb922199386bece019dfe944d8ec165a8f4d2dd112d9fb2c6568b7f1652d597a4406baf9e2367a83f7e9ae6553a0e5d34fae6b389dbba4')
-
-prepare() {
-  cd blockdiag-$pkgver
-  patch --forward --strip=1 --input=../b051e49c1154f0166ddb5c51777f4da02087184f.patch
-}
+source=("$pkgname-$pkgver.tar.gz::https://github.com/yuzutech/blockdiag/archive/refs/tags/v$pkgver.tar.gz")
+sha512sums=('b871ed7b5d6aa9e4c682d68aadf2d9b8386f7541d739c420e75b5c22f22948982d687ceee8f4852a08bff5bea3916fc6d670b0c387bc6396151a31f118e39027')
 
 build() {
   cd blockdiag-$pkgver
@@ -31,7 +24,7 @@ build() {
 
 check() {
   cd blockdiag-$pkgver
-  PYTHONDONTWRITEBYTECODE=1 pytest src/blockdiag/tests/
+  PYTHONDONTWRITEBYTECODE=1 pytest
 }
 
 package() {
