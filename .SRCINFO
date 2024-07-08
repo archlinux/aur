@@ -1,0 +1,14 @@
+pkgbase = facetimehd-data
+	pkgdesc = Sensor calibration data for the FacetimeHD (Broadcom 1570) PCIe webcam
+	pkgver = 5.1.5769
+	pkgrel = 1
+	url = https://github.com/patjak/facetimehd
+	arch = any
+	license = GPL2
+	makedepends = unrar
+	provides = facetimehd-data
+	replaces = facetimehd-data
+	source = https://download.info.apple.com/Mac_OS_X/031-30890-20150812-ea191174-4130-11e5-a125-930911ba098f/bootcamp5.1.5769.zip
+	sha256sums = 4ede2c8ef240708c850237a3e5911094ed6adae1734258e4639bc9069a814b1e
+
+pkgname = facetimehd-data
