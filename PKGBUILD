@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mediago-git
 _pkgname=MediaGo
-pkgver=2.2.3.beta.0.r2.gbcb7084
+pkgver=2.2.3.r0.g5277e28
 _electronversion=30
 _nodeversion=22
 pkgrel=1
