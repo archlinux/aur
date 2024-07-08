@@ -1,0 +1,19 @@
+pkgbase = kestrel-bin
+	pkgdesc = File encryption done right
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://getkestrel.com
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	optdepends = bash-completion: for shell completions
+	provides = kestrel
+	conflicts = kestrel
+	source = https://github.com/finfet/kestrel/raw/v1.0.2/README.md
+	sha256sums = f765d5b753c97aeaff2a856dffa575962101bcdc813bc8811d78ccfc2f8fff07
+	source_x86_64 = https://getkestrel.com/releases/v1.0.2/kestrel-linux-v1.0.2-amd64.tar.gz
+	sha256sums_x86_64 = 8ca35dc478042a6b81bfe2b3a8cdf5344b3d5bf34e73ac46fdd7598a3e7e652b
+	source_aarch64 = https://getkestrel.com/releases/v1.0.2/kestrel-linux-v1.0.2-arm64.tar.gz
+	sha256sums_aarch64 = 02b979b5770b234cf7d2336bc0521f9a7e36409f67aab467726346a3dfc50eaa
+
+pkgname = kestrel-bin
