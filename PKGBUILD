@@ -2,7 +2,8 @@
 
 pkgbase=decasify
 pkgname=("$pkgbase" "lua-$pkgbase" "lua53-$pkgbase" "lua52-$pkgbase" "lua51-$pkgbase")
-pkgver=0.5.1
+# "python-$pkgbase")
+pkgver=0.5.2
 _rockrel=1
 pkgrel=1
 pkgdesc='cast strings to title-case according to locale specific style guides including Turkish'
@@ -17,10 +18,12 @@ makedepends=(cargo
              lua52{,-luarocks-build-rust-mlua}
              lua53{,-luarocks-build-rust-mlua}
              luarocks
+             python-{build,installer,wheel}
+             python-maturin
              jq)
 _archive="$pkgbase-$pkgver"
 source=("$url/releases/download/v$pkgver/$_archive.tar.zst"{,.asc})
-sha256sums=('4ba23a7d4be6356fa02250cf37b493bd70e7ed64fe5ecb4f4794ad46129b1a04'
+sha256sums=('621c7f100f38711767f1fdfb6be0c4303321c848992ad3802208539cc613cab1'
             'SKIP')
 validpgpkeys=('9F377DDB6D3153A48EB3EB1E63CC496475267693') # Caleb Maclennan <caleb@alerque.com> (@alerque)
 
@@ -34,6 +37,7 @@ build() {
 	export CARGO_FEATURE_FLAGS==--offline
 	./configure --prefix /usr
 	make
+	# python -m build -wn
 }
 
 check() {
@@ -71,4 +75,9 @@ package_lua52-decasify() {
 package_lua53-decasify() {
 	depends=("${pkgname%%-*}")
 	_package 5.3
+}
+
+package_python-decasify() {
+	depends=(python)
+	python -m installer -d "$pkgdir" dist/*.whl
 }
