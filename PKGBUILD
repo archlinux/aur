@@ -1,12 +1,13 @@
-# Maintainer: Anthony25 <Anthony Ruhier>
+# Contributor Anthony25 <Anthony Ruhier>
 #
 # Thanks to Jeremy "Ichimonji10" Audet <ichimonji10 at gmail dot com> for
 # his PKGBUILD that served as a base for this one
 
 pkgname=python2-graphviz
+# Do NOT update. 0.17 dropped support for Python 2
 pkgver=0.16
 pkgrel=1
-pkgdesc='Simple Python 2 interface for Graphviz.'
+pkgdesc='Simple Python 2 interface for Graphviz (Legacy Python 2 version)'
 arch=(any)
 url='https://github.com/xflr6/graphviz'
 license=(MIT)
@@ -37,5 +38,3 @@ package() {
   python2 setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
   install -Dm644 LICENSE.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE.txt
 }
-
-# vim:set ts=2 sw=2 et:
