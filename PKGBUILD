@@ -19,7 +19,7 @@
 
 _pkgname=intel-hybrid-codec-driver
 pkgname="$_pkgname-git"
-pkgver=2.0.0.r1.gcfb3b718
+pkgver=2.0.0.r6.gb0c7970d
 pkgrel=1
 pkgdesc="Libva support for partially hardware accelerated encode and decode on Haswell and newer"
 url="https://github.com/kcning/intel-hybrid-driver"
@@ -28,7 +28,7 @@ arch=('x86_64')
 
 depends=(
   'libva'
-  'libcmrt'
+  'libcmrt' # AUR
 )
 optdepends=(
   'libva-intel-driver-hybrid: To be able to use the full hw codecs with hybrid codecs'
@@ -44,25 +44,11 @@ conflicts=("$_pkgname")
 install="$_pkgname.install"
 
 _pkgsrc="kcning.intel-hybrid-driver"
-source=(
-  "$_pkgsrc"::"git+$url.git"
-  'gcc10-fix.patch'
-  'fix-vadriverinit-1.patch'
-  'fix-vadriverinit-2.patch'
-)
-sha256sums=(
-  'SKIP'
-  '90c01a1771f90007b001057edd4ada66751e54ccc380b3d87672694ab7ea92cb'
-  '5359cfa322403bad1a20dc55de290c5f5c2f8d56afeba9c4a84dfc35cc89ec8b'
-  'acb0acf2a83632358ccb3b02a4b74184149312863fa15bab4686df41abb1fd9b'
-)
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
 prepare() {
   cd "$_pkgsrc"
-  patch -Np1 -F100 --follow-symlinks -i "$srcdir/gcc10-fix.patch"
-  patch -Np1 -F100 --follow-symlinks -i "$srcdir/fix-vadriverinit-1.patch"
-  patch -Np1 -F100 --follow-symlinks -i "$srcdir/fix-vadriverinit-2.patch"
-
   autoreconf -v --install
 }
 
