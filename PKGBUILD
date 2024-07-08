@@ -36,19 +36,17 @@ prepare() {
         echo "RELEASE_CHANNEL=stable"
     } > .env
 
-    # workaround for l10n
-    echo 'synthetic-package: false' >> l10n.yaml
-    echo 'output-dir: lib/l10n/gen_l10n' >> l10n.yaml
-    sed -i 's|package:flutter_gen|../l10n|' \
-        lib/extensions/context.dart lib/main.dart lib/collections/side_bar_tiles.dart
-
     flutter config --no-analytics
     flutter config --enable-linux-desktop
     flutter pub get
+    dart pub global activate flutter_gen
 }
 build() {
     cd "$srcdir/spotube-$pkgver"
-    FLUTTER_ROOT=/usr/lib/flutter dart run build_runner build --delete-conflicting-outputs
+    export FLUTTER_ROOT=/usr/lib/flutter
+    export PATH="$PATH:$HOME/.pub-cache/bin"
+     
+    dart run build_runner build --delete-conflicting-outputs
     flutter build linux --release
     # This file is 509x509...
     magick assets/spotube-logo.png -resize 512x512 spotube-logo.png
