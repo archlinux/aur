@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=marvin-bin
-_appname=Marvin
+_pkgname=Marvin
 pkgver=0.4.9
 _electronversion=24
-pkgrel=9
+pkgrel=10
 pkgdesc="An app launcher for Linux and Windows"
 arch=('x86_64')
 url="https://rolandbernard.github.io/marvin/"
@@ -12,23 +12,24 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
 )
 makedepends=(
     'fuse2'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}.AppImage"
+    "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/rolandbernard/marvin/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('624a42d8d31d56bd9a3b82f4b6258ebffd9b5f5d623575b44b120f3646ae269e'
             '67cc90dae7113cf3572e7ae6b893b8e06960f696a6a1d3fc6b36b607cea970d6'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
