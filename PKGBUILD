@@ -2,7 +2,7 @@
 # Contributor: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=shpool
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc='Think tmux, then aim... lower'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
 checkdepends=('fish' 'less' 'zsh')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('36a7d6d656a5724d6c32a8d5cc4a425771398b7a1ab6928b95fed1ed36399e7b91bce6ce5ca5c9a62e030f6409b3af2d0fbd5ee97bd37912f62f471f7221e135')
+sha512sums=('c52af96e8a5723e265e0948cac5a6b5fcb409d6d7cad0fdfdacc8c6711136648abbafa18f17a3f8789f90e471b5ce478188dbb42ae6cf418b87b612df9fd463c')
 
 build() {
   cd $pkgname-$pkgver
