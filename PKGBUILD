@@ -9,16 +9,16 @@ url="https://github.com/sumebrius/python-ffmpeg-asyncio"
 license=('MIT')
 options=(!emptydirs)
 depends=('ffmpeg' 'python-pyee')
-makedepends=('python-setuptools')
+makedepends=('python-installer' 'python-setuptools')
 source=("${_pkgname}-${pkgver}::https://github.com/sumebrius/python-ffmpeg-asyncio/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('fc6ce7da6ff85ebd98a2328c484aa3aa891f5f6f10e47c66b92bc9a60d61b3bb')
 
 build() {
   cd "$srcdir/${_pkgname}-${pkgver}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$srcdir/${_pkgname}-${pkgver}"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
