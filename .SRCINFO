@@ -1,0 +1,16 @@
+pkgbase = bertini-bin
+	pkgdesc = Homotopy continuation solver for systems of polynomial equations
+	pkgver = 1.6
+	pkgrel = 1
+	url = https://bertini.nd.edu/
+	arch = x86_64
+	license = custom:Bertini license
+	depends = boost
+	depends = mpfr
+	optdepends = openmpi: multithreading support
+	provides = bertini
+	conflicts = bertini
+	source_x86_64 = https://bertini.nd.edu//BertiniLinux64_v1.6.tar.gz
+	sha256sums_x86_64 = 9ea47e60f21bcc5668eb2909a08b0fac8827c7f48f4ca6f410fa9c2000b4838d
+
+pkgname = bertini-bin
