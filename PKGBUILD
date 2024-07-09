@@ -1,9 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=aviutl-package-manager-bin
 _pkgname=apm
+_appname="AviUtl Package Manager"
 pkgver=3.8.0
 _electronversion=27
-pkgrel=3
+pkgrel=4
 pkgdesc="A software that assists in the installation of AviUtl itself and its plugins and scripts."
 arch=('x86_64')
 url="https://team-apm.github.io/apm/"
@@ -19,11 +20,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('f5007a73fcc952c95664eb9d0f3be2534b2dd7019593a84315dedfbcbce7db42'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_appname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
