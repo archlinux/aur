@@ -1,22 +1,25 @@
 pkgbase = r-truncatednormal
 	pkgdesc = Truncated Multivariate Normal and Student Distributions
-	pkgver = 2.2.2
+	pkgver = 2.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=TruncatedNormal
 	arch = x86_64
-	license = GPL
-	depends = r
+	license = GPL-3.0-only
+	makedepends = r-rcpparmadillo
+	depends = blas
+	depends = lapack
 	depends = r-alabama
 	depends = r-nleqslv
-	depends = r-randtoolbox
+	depends = r-qrng
 	depends = r-rcpp
-	depends = r-rcpparmadillo
+	depends = r-spacefillr
 	optdepends = r-cardata
 	optdepends = r-knitr
 	optdepends = r-mvtnorm
 	optdepends = r-rmarkdown
-	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/TruncatedNormal_2.2.2.tar.gz
-	sha256sums = aef567e8962a64d1afbdfd98ab8f385f32966c3c42acb54ee20f02dceab18e15
+	optdepends = r-tinytest
+	source = https://cran.r-project.org/src/contrib/TruncatedNormal_2.3.tar.gz
+	md5sums = c19c441146bd9cf9b4732fc42a26816a
+	b2sums = 1313a2add6ed3540ba72ffb6e06491b3e2fccb1a3cafbfe8b6abbba388ec1233c59b3eddf732cfdfd4d39a69a22a9598125edc7a55931363112b603870251210
 
 pkgname = r-truncatednormal
