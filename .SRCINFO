@@ -1,7 +1,7 @@
 pkgbase = python-cynthion
 	pkgdesc = Python package and utilities for the Great Scott Gadgets Cynthion USB Test Instrument
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/greatscottgadgets/cynthion
 	arch = any
 	license = BSD-3-Clause
@@ -27,6 +27,8 @@ pkgbase = python-cynthion
 	depends = python-usb-protocol
 	optdepends = python-facedancer: to run the included examples
 	source = cynthion-0.1.1.tar.gz::https://github.com/greatscottgadgets/cynthion/archive/0.1.1.tar.gz
+	source = github-pr-127.patch
 	sha512sums = 8f045bab9deb8966bb50ef338d2f7abb169545d65dc6d4be5b6f53d8c1bd99ef942587dbc6bc40c4007bd474bf93543bfe4409d36005b20da3dc538802a54613
+	sha512sums = c4807460f6bfab5222b9b50b82d3c0db277815181337f6daf450d0c9213426cc1cae22fca74638d13be91877abb5d3bd4ead3c0cba986baf2f68ba9cc3efea29
 
 pkgname = python-cynthion

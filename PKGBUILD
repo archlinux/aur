@@ -3,7 +3,7 @@
 pkgname=python-cynthion
 _gitpkgname=cynthion
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Python package and utilities for the Great Scott Gadgets Cynthion USB Test Instrument'
 arch=('any')
 url='https://github.com/greatscottgadgets/cynthion'
@@ -38,9 +38,13 @@ optdepends=(
 
 source=(
   "${_gitpkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
+  'github-pr-127.patch'
 )
 
-sha512sums=('8f045bab9deb8966bb50ef338d2f7abb169545d65dc6d4be5b6f53d8c1bd99ef942587dbc6bc40c4007bd474bf93543bfe4409d36005b20da3dc538802a54613')
+sha512sums=(
+  '8f045bab9deb8966bb50ef338d2f7abb169545d65dc6d4be5b6f53d8c1bd99ef942587dbc6bc40c4007bd474bf93543bfe4409d36005b20da3dc538802a54613'
+  'c4807460f6bfab5222b9b50b82d3c0db277815181337f6daf450d0c9213426cc1cae22fca74638d13be91877abb5d3bd4ead3c0cba986baf2f68ba9cc3efea29'
+)
 
 prepare() {
   cd "${_gitpkgname}-${pkgver}"
@@ -53,6 +57,12 @@ with patch_in_place('cynthion/python/pyproject.toml') as toml:
     toml.set_project_version_from_env('pkgver')
     toml.tools.setuptools_git_versioning.remove()
 EOF
+
+  # Fix location of assets directory
+  # See also: https://github.com/greatscottgadgets/cynthion/pull/127
+  # Remove this patch once upstream has cut a stable release of
+  # v0.1.2 or newer on GitHub.
+  patch -p1 < ../github-pr-127.patch
 }
 
 _site_packages() {
@@ -83,9 +93,6 @@ package() {
 
   echo >&2 'Packaging the wheel'
   python -I -m installer --destdir="${pkgdir}" cynthion/python/dist/*.whl
-
-  # https://github.com/greatscottgadgets/cynthion/issues/126
-  rm -rfv "${pkgdir}/$(_site_packages)/assets"
 
   echo >&2 'Symlinking binaries and bitstreams'
   mkdir -p "${pkgdir}/$(_site_packages)/cynthion/assets"
