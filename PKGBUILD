@@ -2,7 +2,7 @@
 
 pkgname=cmsis-toolbox
 pkgver=2.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="CMSIS Toolbox for ARM Cortex-M software development"
 arch=('x86_64')
 url="https://github.com/Open-CMSIS-Pack/cmsis-toolbox"
@@ -42,7 +42,7 @@ package() {
     install -Dm644 doc/* -t "$pkgdir/usr/share/doc/$pkgname/"
 
     # Install profile exports
-    install -Dm644 "$srcdir/$pkgname.sh" -t "$pkgdir/etc/profile.d/$pkgname.sh"
+    install -Dm644 "$srcdir/$pkgname.sh" -t "$pkgdir/etc/profile.d"
 }
 
 # vim:set ts=2 sw=2 et:
