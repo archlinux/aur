@@ -1,8 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=gameclock-git
 _pkgname=GameClock
-pkgver=1.3.0.r0.g03e1b2a
+pkgver=1.3.4.r0.g2cda106
 _electronversion=29
+_nodeversion=20
 pkgrel=1
 pkgdesc="Track your Game time with your friends !"
 arch=('any')
@@ -30,6 +31,12 @@ pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
 }
+_ensure_local_nvm() {
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
+}
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-git}|g" \
@@ -37,6 +44,7 @@ build() {
         -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-git}.sh"
+    _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Game" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
     export npm_config_build_from_source=true
@@ -55,8 +63,8 @@ build() {
         echo "Your network is OK."
     fi
     sed "s|AppImage|dir|g" -i electron-builder.yml
-    npm install
-    npm run build:linux
+    NODE_ENV=development npm install
+    NODE_ENV=production npm run build:linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
