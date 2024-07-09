@@ -1,7 +1,11 @@
+#!/bin/bash
+
 # Maintainer: lomonosow <me@lsow.it>
+# Maintainer: tbhaxor <tbhaxor@proton.me>
+
 pkgname=auth0-bin
 archive=auth0-cli
-pkgver=0.11.7
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="auth0 is the command line to supercharge your development workflow"
 arch=('x86_64' 'arm64')
@@ -11,10 +15,9 @@ depends=()
 source_x86_64=("${archive}_${pkgver}_x86_64.tar.gz::$url/releases/download/v${pkgver}/${archive}_${pkgver}_Linux_x86_64.tar.gz")
 source_arm64=("${archive}_${pkgver}_arm64.tar.gz::$url/releases/download/v${pkgver}/${archive}_${pkgver}_Linux_arm64.tar.gz")
 
-sha256sums_x86_64=('d8114cc4896c7e33217c0de92bf03c4400e473ca56cdacc46af5bce53bb70157')
-sha256sums_arm64=('e767c9feeb66d11028db35b8c4450058e3d1ee6c167a07e4d0400719fe2b8d97')
-
+sha256sums_x86_64=('24dc75c3333a73e31fd3a3227f2d77eee0636425c4e6f01d02febebba6a5d0ec')
+sha256sums_arm64=('74942aaa8ba32452124072004d103e5433e604e8260d27793d6b5826dce6f681')
 
 package() {
-  install -Dm755 "$srcdir"/auth0 "${pkgdir}"/usr/bin/auth0
+  install -Dm755 "${srcdir}"/auth0 "${pkgdir}"/usr/bin/auth0
 }
