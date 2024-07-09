@@ -1,10 +1,4 @@
-*.tar.*
-*.orig
-*.rej
-*.swp
-*.part
-src
-pkg
-vault-unseal*
-LICENSE
-README.md
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore

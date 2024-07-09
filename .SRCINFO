@@ -13,11 +13,11 @@ pkgbase = vault-unseal-bin
 	source = https://github.com/lrstanley/vault-unseal/raw/v0.5.1/LICENSE
 	sha256sums = e35c5b1a03e4b01dc9b7c70e9c52e9a2dc9cc7e8939cedea985018a35df1e939
 	sha256sums = d040ad47a68cd4a002e148921ee7adaed03ae27e56f7911087de3a928d3af0e3
-	source_x86_64 = vault-unseal-0.5.1::https://github.com/lrstanley/vault-unseal/releases/download/v0.5.1/vault-unseal_linux_amd64
+	source_x86_64 = vault-unseal-0.5.1-x86_64::https://github.com/lrstanley/vault-unseal/releases/download/v0.5.1/vault-unseal_linux_amd64
 	sha256sums_x86_64 = f1a98f4af61efd252f1eea803e88499c04261a4704bb87bd66e48be70044f77f
-	source_aarch64 = vault-unseal-0.5.1::https://github.com/lrstanley/vault-unseal/releases/download/v0.5.1/vault-unseal_linux_arm64
+	source_aarch64 = vault-unseal-0.5.1-aarch64::https://github.com/lrstanley/vault-unseal/releases/download/v0.5.1/vault-unseal_linux_arm64
 	sha256sums_aarch64 = 863684fb963055a8fe047b2fcd303b0fe4bef4702344381d4f0a088acff2ca42
-	source_armv6h = vault-unseal-0.5.1::https://github.com/lrstanley/vault-unseal/releases/download/v0.5.1/vault-unseal_linux_armv6
+	source_armv6h = vault-unseal-0.5.1-armv6h::https://github.com/lrstanley/vault-unseal/releases/download/v0.5.1/vault-unseal_linux_armv6
 	sha256sums_armv6h = 3f171449824da3bdd63b3527407eef1d0558246a4ec9f97e5b33c5b89ed13b16
 
 pkgname = vault-unseal-bin
