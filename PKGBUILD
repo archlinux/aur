@@ -14,11 +14,10 @@ depends=('glibc')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
-source=("${url}/raw/v${pkgver}/README.md"
-        "${url}/raw/v${pkgver}/LICENSE")
-source_x86_64=("${_pkgsrc}::${url}/releases/download/v${pkgver}/${_pkgname}_linux_amd64")
-source_i686=("${_pkgsrc}::${url}/releases/download/v${pkgver}/${_pkgname}_linux_386")
-source_arm=("${_pkgsrc}::${url}/releases/download/v${pkgver}/${_pkgname}_linux_arm")
+source=("${url}/raw/v${pkgver}/"{README.md,LICENSE})
+source_x86_64=("${_pkgsrc}-x86_64::${url}/releases/download/v${pkgver}/${_pkgname}_linux_amd64")
+source_i686=("${_pkgsrc}-i686::${url}/releases/download/v${pkgver}/${_pkgname}_linux_386")
+source_arm=("${_pkgsrc}-arm::${url}/releases/download/v${pkgver}/${_pkgname}_linux_arm")
 sha256sums=('30d5a676f0976d09f2db98579c5be549a232e67c0fd5c7ce25ba836fe032e197'
             '57c8ff33c9c0cfc3ef00e650a1cc910d7ee479a8bc509f6c9209a7c2a11399d6')
 sha256sums_x86_64=('359d03a28013ca4636a3d31871ebb30cf303b86b2bf8993b380f7633ec8e5dda')
@@ -27,7 +26,7 @@ sha256sums_arm=('4e20254791aa7e49bc8f9ea0cc5f67a5e0d0466eaa25aa9a0ecb212a720bc59
 
 package() {
   cd "${srcdir}"
-  install -Dm755 "${_pkgsrc}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm755 "${_pkgsrc}-${CARCH}" "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }

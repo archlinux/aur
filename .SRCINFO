@@ -14,11 +14,11 @@ pkgbase = wuzz-bin
 	source = https://github.com/asciimoo/wuzz/raw/v0.5.0/LICENSE
 	sha256sums = 30d5a676f0976d09f2db98579c5be549a232e67c0fd5c7ce25ba836fe032e197
 	sha256sums = 57c8ff33c9c0cfc3ef00e650a1cc910d7ee479a8bc509f6c9209a7c2a11399d6
-	source_x86_64 = wuzz-0.5.0::https://github.com/asciimoo/wuzz/releases/download/v0.5.0/wuzz_linux_amd64
+	source_x86_64 = wuzz-0.5.0-x86_64::https://github.com/asciimoo/wuzz/releases/download/v0.5.0/wuzz_linux_amd64
 	sha256sums_x86_64 = 359d03a28013ca4636a3d31871ebb30cf303b86b2bf8993b380f7633ec8e5dda
-	source_i686 = wuzz-0.5.0::https://github.com/asciimoo/wuzz/releases/download/v0.5.0/wuzz_linux_386
+	source_i686 = wuzz-0.5.0-i686::https://github.com/asciimoo/wuzz/releases/download/v0.5.0/wuzz_linux_386
 	sha256sums_i686 = 849be3c903df37329b266a7109a5a04de4014711dd14cce08a42f135d9bcfebc
-	source_arm = wuzz-0.5.0::https://github.com/asciimoo/wuzz/releases/download/v0.5.0/wuzz_linux_arm
+	source_arm = wuzz-0.5.0-arm::https://github.com/asciimoo/wuzz/releases/download/v0.5.0/wuzz_linux_arm
 	sha256sums_arm = 4e20254791aa7e49bc8f9ea0cc5f67a5e0d0466eaa25aa9a0ecb212a720bc592
 
 pkgname = wuzz-bin
