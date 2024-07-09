@@ -1,6 +1,6 @@
 pkgbase = proton-mail
 	pkgdesc = Proton official desktop application for Proton Mail and Proton Calendar
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://proton.me
 	arch = x86_64
@@ -18,11 +18,10 @@ pkgbase = proton-mail
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)
 	conflicts = protonmail-desktop
-	noextract = proton-mail-1.0.4.tar.gz
-	noextract = proton-mail.desktop
-	source = proton-mail-1.0.4.tar.gz::https://github.com/ProtonMail/inbox-desktop/releases/download/v1.0.4/inbox-desktop-1.0.4-source.zip
+	noextract = proton-mail-1.0.5.tar.gz
+	source = proton-mail-1.0.5.tar.gz::https://github.com/ProtonMail/inbox-desktop/releases/download/v1.0.5/inbox-desktop-1.0.5-source.zip
 	source = proton-mail.desktop
-	sha256sums = 001063b7b7836d7d2e57c311475106196c3660e1138ba322840b40dbb5acc9b3
+	sha256sums = 86967d7f07afd09495e160fe89dc35c49f47fcc4bc56ab9746a8df6505944073
 	sha256sums = 24cb263b7b61b5d64f49e4ead46d6f10c5d4a06599b0bb6334c3958721255fdb
 
 pkgname = proton-mail

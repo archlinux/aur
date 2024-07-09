@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=proton-mail
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Proton official desktop application for Proton Mail and Proton Calendar"
 arch=('x86_64')
@@ -22,42 +22,41 @@ optdepends=(
   'xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)'
 )
 conflicts=('protonmail-desktop')
-source=("proton-mail-$pkgver.tar.gz::https://github.com/ProtonMail/inbox-desktop/releases/download/v$pkgver/inbox-desktop-$pkgver-source.zip"
-        'proton-mail.desktop')
-noextract=("${source[@]%%::*}")
-sha256sums=('001063b7b7836d7d2e57c311475106196c3660e1138ba322840b40dbb5acc9b3'
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ProtonMail/inbox-desktop/releases/download/v$pkgver/inbox-desktop-$pkgver-source.zip"
+        "$pkgname.desktop")
+noextract=("$pkgname-$pkgver.tar.gz")
+sha256sums=('86967d7f07afd09495e160fe89dc35c49f47fcc4bc56ab9746a8df6505944073'
             '24cb263b7b61b5d64f49e4ead46d6f10c5d4a06599b0bb6334c3958721255fdb')
 
-
 prepare() {
-  mkdir -p "proton-mail-$pkgver"
-  bsdtar xvf "proton-mail-$pkgver.tar.gz" -C "proton-mail-$pkgver"
+  mkdir -p "$pkgname-$pkgver"
+  bsdtar xf "$pkgname-$pkgver.tar.gz" -C "$pkgname-$pkgver"
 
-  cd "proton-mail-$pkgver"
+  cd "$pkgname-$pkgver/inbox-desktop-source"
   export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
   yarn install
 }
 
 build() {
-  cd "proton-mail-$pkgver"
+  cd "$pkgname-$pkgver/inbox-desktop-source"
   export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
   yarn package
 }
 
 package() {
-  cd "proton-mail-$pkgver"
-  install -d "$pkgdir/opt/proton-mail"
-  cp -r out/Proton\ Mail-linux-x64/* "$pkgdir/opt/proton-mail"
+  cd "$pkgname-$pkgver/inbox-desktop-source"
+  install -d "$pkgdir/opt/$pkgname"
+  cp -r out/Proton\ Mail-linux-x64/* "$pkgdir/opt/$pkgname"
 
   install -d "$pkgdir/usr/bin"
-  ln -sf /opt/proton-mail/Proton\ Mail "$pkgdir/usr/bin/proton-mail"
+  ln -sf /opt/$pkgname/Proton\ Mail "$pkgdir/usr/bin/$pkgname"
 
   install -Dm644 assets/linux/icon.svg \
-    "$pkgdir/usr/share/icons/hicolor/scalable/apps/proton-mail.svg"
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
   install -Dm644 assets/icons/icon.png \
-    "$pkgdir/usr/share/icons/hicolor/512x512/apps/proton-mail.png"
+    "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
   install -Dm644 assets/icons/icon@2x.png \
-    "$pkgdir/usr/share/icons/hicolor/1024x1024@2x/apps/proton-mail.png"
+    "$pkgdir/usr/share/icons/hicolor/1024x1024@2x/apps/$pkgname.png"
 
-  install -Dm644 "$srcdir/proton-mail.desktop" -t "$pkgdir/usr/share/applications/"
+  install -Dm644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
 }
