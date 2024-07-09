@@ -1,7 +1,7 @@
 # Maintainer: Rasmus Karlsson <rasmus.karlsson@pajlada.com>
 
 pkgname=twitch-cli-bin
-pkgver=1.1.23
+pkgver=1.1.24
 _filename="twitch-cli_${pkgver}_Linux_x86_64.tar.gz"
 pkgrel=1
 pkgdesc='The official Twitch CLI to make developing on Twitch easier.'
@@ -9,7 +9,7 @@ arch=('x86_64')
 url=https://github.com/twitchdev/twitch-cli
 license=('Apache')
 source=("https://github.com/twitchdev/twitch-cli/releases/download/v${pkgver}/$_filename")
-sha256sums=('19d84de26a8822d340768b3b5d23c9e3662b2c968fbbae0d2108d73aa8ab0d69')
+sha256sums=('9cae4e9cd52e66fb4dda6b633b3276a4450a28a83dea7a4651a42a67372eed8f')
 
 prepare () {
     cd "$srcdir"
