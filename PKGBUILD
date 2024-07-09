@@ -2,7 +2,7 @@
 
 pkgname='openjkdf2-git'
 pkgver=0.9.1.r20.gfbdb01b
-pkgrel=2
+pkgrel=3
 pkgdesc="A function-by-function reimplementation of DF2 (Dark Forces 2) in C."
 arch=('i686' 'x86_64')
 url='https://github.com/shinyquagsire23/OpenJKDF2'
@@ -23,12 +23,13 @@ depends=(
   'glib2'
   'gtk3'
   'harfbuzz'
+  'hicolor-icon-theme'
   'libglvnd'
   'openal'
   'pango'
   'zlib'
 )
-options=(!emptydirs !lto)
+options=(!lto)
 source=('git+https://github.com/shinyquagsire23/OpenJKDF2.git'
         'git+https://github.com/FreeGLUTProject/freeglut.git'
         'git+https://github.com/Perlmint/glew-cmake.git'
@@ -124,6 +125,23 @@ build() {
 package() {
   chrpath --delete "$srcdir"/${pkgname}-build/openjkdf2
   install -Dm755 "$srcdir"/${pkgname}-build/openjkdf2 "$pkgdir"/usr/bin/openjkdf2
+
+  # Desktop file
+  install -Dm755 "$srcdir"/OpenJKDF2/packaging/flatpak/org.openjkdf2.OpenJKDF2.desktop "$pkgdir"/usr/share/applications/org.openjkdf2.OpenJKDF2.desktop
+
+  # Icons
+  install -Dm644 "$srcdir"/OpenJKDF2/packaging/flatpak/icons/16.png "$pkgdir"/usr/share/icons/hicolor/16x16/apps/org.openjkdf2.OpenJKDF2.png
+  install -Dm644 "$srcdir"/OpenJKDF2/packaging/flatpak/icons/24.png "$pkgdir"/usr/share/icons/hicolor/24x24/apps/org.openjkdf2.OpenJKDF2.png
+  install -Dm644 "$srcdir"/OpenJKDF2/packaging/flatpak/icons/32.png "$pkgdir"/usr/share/icons/hicolor/32x32/apps/org.openjkdf2.OpenJKDF2.png
+  install -Dm644 "$srcdir"/OpenJKDF2/packaging/flatpak/icons/48.png "$pkgdir"/usr/share/icons/hicolor/48x48/apps/org.openjkdf2.OpenJKDF2.png
+  install -Dm644 "$srcdir"/OpenJKDF2/packaging/flatpak/icons/64.png "$pkgdir"/usr/share/icons/hicolor/64x64/apps/org.openjkdf2.OpenJKDF2.png
+  install -Dm644 "$srcdir"/OpenJKDF2/packaging/flatpak/icons/96.png "$pkgdir"/usr/share/icons/hicolor/96x96/apps/org.openjkdf2.OpenJKDF2.png
+  install -Dm644 "$srcdir"/OpenJKDF2/packaging/flatpak/icons/128.png "$pkgdir"/usr/share/icons/hicolor/128x128/apps/org.openjkdf2.OpenJKDF2.png
+  install -Dm644 "$srcdir"/OpenJKDF2/packaging/flatpak/icons/192.png "$pkgdir"/usr/share/icons/hicolor/192x192/apps/org.openjkdf2.OpenJKDF2.png
+  install -Dm644 "$srcdir"/OpenJKDF2/packaging/flatpak/icons/256.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/org.openjkdf2.OpenJKDF2.png
+  install -Dm644 "$srcdir"/OpenJKDF2/packaging/flatpak/icons/384.png "$pkgdir"/usr/share/icons/hicolor/384x384/apps/org.openjkdf2.OpenJKDF2.png
+  install -Dm644 "$srcdir"/OpenJKDF2/packaging/flatpak/icons/512.png "$pkgdir"/usr/share/icons/hicolor/512x512/apps/org.openjkdf2.OpenJKDF2.png
+  install -Dm644 "$srcdir"/OpenJKDF2/packaging/icon.png "$pkgdir"/usr/share/icons/hicolor/1024x1024/apps/org.openjkdf2.OpenJKDF2.png
 
   # License
   install -Dm644 "$srcdir"/OpenJKDF2/LICENSE.md "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
