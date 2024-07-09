@@ -1,29 +1,29 @@
 # Maintainer: XDR <xxdr@duck.com>
 
 pkgname="cazic-bin"
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
-pkgdesc="Another music player written in Rust."
-arch=('any')
+pkgdesc="Another music player created with Tauri!"
+arch=('x86_64')
 url="https://gitlab.com/XDRwastaken/Cazic"
 license=('MIT')
 
 source=(
-	"https://gitlab.com/XDRwastaken/archived/-/raw/main/Cazic/0.0.6/Cazic_Linux.tar.gz"
+	"https://gitlab.com/XDRwastaken/archived/-/raw/main/Cazic/${pkgver}/Cazic_Linux.tar.gz"
 	"https://gitlab.com/XDRwastaken/Cazic/-/raw/main/LICENSE"
 	"cazic.desktop"
-	"https://gitlab.com/XDRwastaken/Cazic/-/raw/main/assets/app-icon/32x32.png"
-	"https://gitlab.com/XDRwastaken/Cazic/-/raw/main/assets/app-icon/128x128.png"
-	"https://gitlab.com/XDRwastaken/Cazic/-/raw/main/assets/app-icon/128x128%402x.png"
+	"https://gitlab.com/XDRwastaken/Cazic/-/raw/main/icons/32x32.png"
+	"https://gitlab.com/XDRwastaken/Cazic/-/raw/main/icons/128x128.png"
+	"https://gitlab.com/XDRwastaken/Cazic/-/raw/main/icons/256x256.png"
 )
 
 sha256sums=(
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
+        '2d04549b7948fd2a70ed1b216cf8019058eff88565bce1919ba3680e37deaf24'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
 )
 
 depends=(
@@ -38,5 +38,5 @@ package() {
 	install -Dm644 cazic.desktop "$pkgdir/usr/share/applications/cazic.desktop"
 	install -Dm644 32x32.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/cazic.png"
 	install -Dm644 128x128.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/cazic.png"
-	install -Dm644 128x128%402x.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/cazic.png"
+	install -Dm644 256x256.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/cazic.png"
 }
