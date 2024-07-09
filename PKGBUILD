@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=minify-bin
-pkgver=2.20.35
+pkgver=2.20.36
 pkgrel=1
 pkgdesc="Go minifiers for web formats"
 arch=(
@@ -18,8 +18,8 @@ optdepends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}_linux_arm64.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}_linux_amd64.tar.gz")
-sha256sums_x86_64=('64d06678264b6ff68648709ab5964a9bf8670d6e43bfc6de5ed8d94ccdffda55')
-sha256sums_aarch64=('1a344fb580bb15cc409daae3840d66612ecc665d824bef0ae1649daa71af19de')
+sha256sums_x86_64=('15f67ce4c035fa8dc7df7ac05e92a4d854247254a878a5d75ac2aa1b11a90a89')
+sha256sums_aarch64=('86ba3ea0b0d15d54197b6cb8120607d445fe9b7cb7dfbea9a36958a09ff343de')
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
