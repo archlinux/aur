@@ -1,0 +1,15 @@
+pkgbase = xdplayer
+	pkgdesc = Terminal crossword puzzle player
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/devottys/xdplayer
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = xdplayer-1.0.tar.gz::https://github.com/devottys/xdplayer/archive/refs/tags/v1.0.tar.gz
+	sha256sums = de47c513552e0a0a5f20138171e69fd8f140f8c72380881f1c86eb0e6ffda5aa
+
+pkgname = xdplayer
