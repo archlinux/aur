@@ -1,7 +1,7 @@
 pkgbase = boost174
 	pkgdesc = Free peer-reviewed portable C++ source libraries (version 1.74)
 	pkgver = 1.74.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://www.boost.org/
 	arch = x86_64
 	license = BSL-1.0
@@ -16,11 +16,13 @@ pkgbase = boost174
 	source = boost174-ublas-c++20-allocator-patch2.patch::https://github.com/boostorg/ublas/commit/a23a903f9a36.patch
 	source = boost174-ublas-c++20-iterator.patch::https://github.com/boostorg/ublas/commit/a31e5cffa85f.patch
 	source = python311-compatibility.patch
+	source = numpy-2.0.patch::https://github.com/boostorg/python/commit/0474de0f6cc9c6e7230aeb7164af2f7e4ccf74bf.patch
 	sha256sums = 83bfc1507731a0906e387fc28b7ef5417d591429e51e788417fe9ff025e116b1
 	sha256sums = 3f42688a87c532ac916889f21a4487b9e94a38a047b18724385eaa474719a9f7
 	sha256sums = 67f413463a1a12bdf63c913acd318148dda618d3f994e466232e265bbf0c2903
 	sha256sums = aa38addb40d5f44b4a8472029b475e7e6aef1c460509eb7d8edf03491dc1b5ee
 	sha256sums = 44fffaefa5a7785142b4deacd508ba5de23fa4aafde6cc66f3b697c07f498d5f
+	sha256sums = ccda8ef8126c93f4c8d29ba43b5f301952e5eacdc7fecb2ae3d01115a2222c53
 
 pkgname = boost174
 	pkgdesc = Free peer-reviewed portable C++ source libraries (version 1.74) (development headers)

@@ -1,4 +1,5 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Giovanni Santini <giovannisantini93 at yahoo dot it>
+# Contributor: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgbase=boost174
 pkgname=(
@@ -6,7 +7,7 @@ pkgname=(
   boost174-libs
 )
 pkgver=1.74.0
-pkgrel=6
+pkgrel=7
 _srcname=boost_${pkgver//./_}
 pkgdesc="Free peer-reviewed portable C++ source libraries (version 1.74)"
 arch=(x86_64)
@@ -26,20 +27,21 @@ source=(
   "$pkgbase-ublas-c++20-allocator-patch2.patch::https://github.com/boostorg/ublas/commit/a23a903f9a36.patch"
   "$pkgbase-ublas-c++20-iterator.patch::https://github.com/boostorg/ublas/commit/a31e5cffa85f.patch"
   "python311-compatibility.patch"
+  "numpy-2.0.patch::https://github.com/boostorg/python/commit/0474de0f6cc9c6e7230aeb7164af2f7e4ccf74bf.patch"
 )
-sha256sums=(
-  '83bfc1507731a0906e387fc28b7ef5417d591429e51e788417fe9ff025e116b1'
-  '3f42688a87c532ac916889f21a4487b9e94a38a047b18724385eaa474719a9f7'
-  '67f413463a1a12bdf63c913acd318148dda618d3f994e466232e265bbf0c2903'
-  'aa38addb40d5f44b4a8472029b475e7e6aef1c460509eb7d8edf03491dc1b5ee'
-  '44fffaefa5a7785142b4deacd508ba5de23fa4aafde6cc66f3b697c07f498d5f'
-)
+sha256sums=('83bfc1507731a0906e387fc28b7ef5417d591429e51e788417fe9ff025e116b1'
+            '3f42688a87c532ac916889f21a4487b9e94a38a047b18724385eaa474719a9f7'
+            '67f413463a1a12bdf63c913acd318148dda618d3f994e466232e265bbf0c2903'
+            'aa38addb40d5f44b4a8472029b475e7e6aef1c460509eb7d8edf03491dc1b5ee'
+            '44fffaefa5a7785142b4deacd508ba5de23fa4aafde6cc66f3b697c07f498d5f'
+            'ccda8ef8126c93f4c8d29ba43b5f301952e5eacdc7fecb2ae3d01115a2222c53')
 
 prepare() {
   cd "$_srcname"
 
   # https://github.com/boostorg/ublas/issues/96
   patch -Np2 -i ../$pkgbase-ublas-c++20-allocator-patch1.patch
+  rm -f libs/numeric/ublas/test/minimal_allocator_test.cpp  # Ensure we can apply the next patch on rebuild
   patch -Np2 -i <(
     sed < ../$pkgbase-ublas-c++20-allocator-patch2.patch \
       's:test/:pls-apply-cleanly-kthxbai/libs/numeric/ublas/&:g'
@@ -49,6 +51,11 @@ prepare() {
   patch -Np2 -i ../$pkgbase-ublas-c++20-iterator.patch
 
   patch -Np1 -i ../python311-compatibility.patch
+
+  # See: https://numpy.org/doc/stable/numpy_2_0_migration_guide.html#the-pyarray-descr-struct-has-been-changed
+  # Upstream has the change, so just apply it.
+  pushd libs/python
+  patch -Np1 -i $srcdir/numpy-2.0.patch
 }
 
 build() {
@@ -64,7 +71,7 @@ build() {
   pushd "$_srcname/tools/build"
   ./bootstrap.sh --cxxflags="$CXXFLAGS $LDFLAGS"
   ./b2 install --prefix="$srcdir"/fakeinstall
-  ln -s b2 "$srcdir"/fakeinstall/bin/bjam
+  ln -sf b2 "$srcdir"/fakeinstall/bin/bjam
   popd
 
   cd "$_srcname"
