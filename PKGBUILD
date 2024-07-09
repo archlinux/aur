@@ -2,23 +2,23 @@
 
 pkgname=faubox
 pkgver=20.4.100
-pkgrel=1
+pkgrel=2
 pkgdesc="FAU file synchronization client"
 arch=('any')
 url="https://www.doku.faubox.rrze.fau.eu/"
 license=(custom)
-depends=('java-runtime=11')
+depends=('java-runtime>=11')
 makedepends=('gendesk')
 
 
 source=("faubox.sh"
         "FAUbox_Linux_${pkgver}.tar.gz::https://faubox.rrze.uni-erlangen.de/client_deployment/FAUbox_Linux.tar.gz")
-sha512sums=('2197dcb189f2897d8a19727494e7e506576341cc4247c20a05e393bb4205eab3c93ce32a062a36593c7f344ef59ec5d5680196d72de3c8a9ecdcb002d1bd0e0f'
+sha512sums=('37ecb657cc1ef6eedb24c0b47038ee5124417a4e5e8c8a159108980b29ac7b553e946cb7d4fda3492f785fede08e217dfeab40b02a57ef3c31da565980580437'
             '432c8c2020aa1f9f2d3908edac41376dfa146f92aabdd798f1844dd2d7d654191c85bee39629a301f64b7e9ba0234c7e166d322272b443a68676ac38191337d4')
 
 
 prepare() {
-    gendesk -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name "FAUbox" \
+    gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name "FAUbox" \
             --categories "Network;FileTransfer"
 }
 
