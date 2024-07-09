@@ -42,6 +42,7 @@ prepare() {
 
 build() {
   cd JDSP4Linux
+  CFLAGS+=" -Wno-error=incompatible-pointer-types"
 
   pushd build
   qmake6 .. "CONFIG += USE_PULSEAUDIO"
