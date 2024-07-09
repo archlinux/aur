@@ -9,7 +9,7 @@ url="https://github.com/sumebrius/python-ffmpeg-asyncio"
 license=('MIT')
 options=(!emptydirs)
 depends=('ffmpeg' 'python-pyee')
-makedepends=('python-installer' 'python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-setuptools')
 source=("${_pkgname}-${pkgver}::https://github.com/sumebrius/python-ffmpeg-asyncio/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('dabb420e6ffc24c1667141790c7ed35a2f78ccbdcf79816e912ebaeb1f9e9d37')
 

@@ -5,6 +5,7 @@ pkgbase = python-ffmpeg-asyncio
 	url = https://github.com/sumebrius/python-ffmpeg-asyncio
 	arch = any
 	license = MIT
+	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
 	depends = ffmpeg
