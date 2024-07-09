@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-files-git
-pkgver=r305.93de78d
+pkgver=r393.5640152
 pkgrel=1
 pkgdesc="File manager for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-files"
 license=('GPL-3.0-or-later')
 groups=('cosmic')
-depends=('glib2' 'xdg-utils')
+depends=('glib2' 'hicolor-icon-theme' 'libxkbcommon' 'xdg-utils')
 makedepends=('cargo' 'git' 'just' 'mold')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {

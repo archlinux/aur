@@ -1,6 +1,6 @@
 pkgbase = cosmic-files-git
 	pkgdesc = File manager for the COSMIC desktop environment
-	pkgver = r305.93de78d
+	pkgver = r393.5640152
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-files
 	arch = x86_64
@@ -12,6 +12,8 @@ pkgbase = cosmic-files-git
 	makedepends = just
 	makedepends = mold
 	depends = glib2
+	depends = hicolor-icon-theme
+	depends = libxkbcommon
 	depends = xdg-utils
 	provides = cosmic-files
 	conflicts = cosmic-files
