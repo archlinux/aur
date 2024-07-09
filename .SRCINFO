@@ -1,6 +1,6 @@
 pkgbase = iwinfo
 	pkgdesc = Provide wifi information about capabilities and network(s)
-	pkgver = 2.9.0
+	pkgver = 2.10.0
 	pkgrel = 1
 	url = https://github.com/gene-git/iwinfo
 	install = iwinfo.install
@@ -18,7 +18,7 @@ pkgbase = iwinfo
 	depends = python>3.10
 	depends = libcap-ng>=0.6
 	depends = python-capng
-	source = git+https://github.com/gene-git/iwinfo#tag=2.9.0
+	source = git+https://github.com/gene-git/iwinfo#tag=2.10.0
 	sha512sums = SKIP
 
 pkgname = iwinfo
