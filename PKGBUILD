@@ -2,10 +2,10 @@
 
 pkgname=zebrad
 pkgver=1.8.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Permissionless financial system employing zero-knowledge security"
 url='https://github.com/ZcashFoundation/zebra'
-source=("zebra-${pkgver//_/-}.tar.gz::https://github.com/ZcashFoundation/zebra/archive/refs/tags/v${pkgver//_/-}.tar.gz")
+source=("zebra-${pkgver//_/-}.tar.gz::${url}/archive/refs/tags/v${pkgver//_/-}.tar.gz")
 arch=('aarch64' 'x86_64')
 license=('Apache' 'MIT')
 makedepends=('rust' 'clang' 'pkgconf')
