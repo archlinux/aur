@@ -1,0 +1,8 @@
+post_install() {
+    install -Dm755 -d "${XGD_CONFIG_HOME}/PanWriter"
+    touch "${XGD_CONFIG_HOME}/PanWriter/settings.yaml"
+    chown -R "${USER}:${USER}" "${XGD_CONFIG_HOME}/PanWriter"
+}
+post_remove() {
+    rm -rf "${XGD_CONFIG_HOME}/PanWriter"
+}
