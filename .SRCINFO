@@ -8,6 +8,7 @@ pkgbase = python-ffmpeg-asyncio
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = ffmpeg
 	depends = python-pyee
 	options = !emptydirs
