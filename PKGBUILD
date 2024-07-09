@@ -7,7 +7,7 @@
 
 _pkgname=gamescope
 pkgname=gamescope-plus
-pkgver=3.14.18.plus1
+pkgver=3.14.18.plus2
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager with added patches'
 arch=(x86_64)
@@ -20,7 +20,6 @@ depends=(
   glibc
   glm
   libcap.so
-  libdisplay-info.so
   libglvnd
   libdrm
   libinput
@@ -28,7 +27,6 @@ depends=(
   libpixman-1.so
   libseat.so
   libudev.so
-  libvulkan.so
   libx11
   libxcb
   libxcomposite
@@ -62,13 +60,14 @@ makedepends=(
   wayland-protocols
 )
 
-_tag=680e3a3675f7bc10472f79eafc6fffa6a8695c04
+_tag=0c4390c8dcecd3ae399da20866d5f15fb76bfd02
 source=("git+https://github.com/ChimeraOS/gamescope.git#commit=${_tag}"
-        "git+https://github.com/nothings/stb.git#commit=af1a5bc352164740c1cc1354942b1c6b72eacb8a"
+        "git+https://github.com/Joshua-Ashton/wlroots.git"
+        "git+https://gitlab.freedesktop.org/emersion/libliftoff.git"
         "git+https://github.com/Joshua-Ashton/GamescopeShaders.git#tag=v0.1"
-        "git+https://github.com/Joshua-Ashton/reshade.git"
-        "git+https://github.com/KhronosGroup/SPIRV-Headers.git"
-        )
+        # FIXME Upstream gamescope is just selecting master branch at build time, so we are arbitrarily snapshotting a
+        #       revision when bumping the version here such that the build is reproducible.
+        "git+https://github.com/nothings/stb.git#commit=af1a5bc352164740c1cc1354942b1c6b72eacb8a")
 
 b2sums=('SKIP'
         'SKIP'

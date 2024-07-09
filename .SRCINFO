@@ -1,6 +1,6 @@
 pkgbase = gamescope-plus
 	pkgdesc = SteamOS session compositing window manager with added patches
-	pkgver = 3.14.18.plus1
+	pkgver = 3.14.18.plus2
 	pkgrel = 1
 	url = https://github.com/ChimeraOS/gamescope
 	arch = x86_64
@@ -16,7 +16,6 @@ pkgbase = gamescope-plus
 	depends = glibc
 	depends = glm
 	depends = libcap.so
-	depends = libdisplay-info.so
 	depends = libglvnd
 	depends = libdrm
 	depends = libinput
@@ -24,7 +23,6 @@ pkgbase = gamescope-plus
 	depends = libpixman-1.so
 	depends = libseat.so
 	depends = libudev.so
-	depends = libvulkan.so
 	depends = libx11
 	depends = libxcb
 	depends = libxcomposite
@@ -48,11 +46,11 @@ pkgbase = gamescope-plus
 	depends = xorg-server-xwayland
 	provides = gamescope
 	conflicts = gamescope
-	source = git+https://github.com/ChimeraOS/gamescope.git#commit=680e3a3675f7bc10472f79eafc6fffa6a8695c04
-	source = git+https://github.com/nothings/stb.git#commit=af1a5bc352164740c1cc1354942b1c6b72eacb8a
+	source = git+https://github.com/ChimeraOS/gamescope.git#commit=0c4390c8dcecd3ae399da20866d5f15fb76bfd02
+	source = git+https://github.com/Joshua-Ashton/wlroots.git
+	source = git+https://gitlab.freedesktop.org/emersion/libliftoff.git
 	source = git+https://github.com/Joshua-Ashton/GamescopeShaders.git#tag=v0.1
-	source = git+https://github.com/Joshua-Ashton/reshade.git
-	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git
+	source = git+https://github.com/nothings/stb.git#commit=af1a5bc352164740c1cc1354942b1c6b72eacb8a
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
