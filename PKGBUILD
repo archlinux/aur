@@ -31,13 +31,12 @@ prepare() {
   mv mod_tile-${pkgver} mod_tile
   cd mod_tile || exit
   patch -Np1 < ../v0.7.2_fixes.patch
-}
 
-build() {
-  export CMAKE_BUILD_PARALLEL_LEVEL=${CMAKE_BUILD_PARALLEL_LEVEL:-$(nproc)}
-  cmake -B build -S mod_tile \
-    -DCMAKE_BUILD_TYPE:STRING=Release \
+  export LDFLAGS
+  cmake -B ../build -S . \
+    -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS}" \
     -DCMAKE_CXX_STANDARD:STRING=17 \
+    -DCMAKE_C_FLAGS:STRING="${CFLAGS}" \
     -DCMAKE_INSTALL_LOCALSTATEDIR:PATH=/var \
     -DCMAKE_INSTALL_PREFIX:PATH=/usr \
     -DCMAKE_INSTALL_RUNSTATEDIR:PATH=/run \
@@ -46,7 +45,9 @@ build() {
     -DUSE_CAIRO:BOOL=OFF \
     -DUSE_CURL:BOOL=OFF \
     -DUSE_RADOS:BOOL=OFF
+}
 
+build() {
   cmake --build build
 }
 
