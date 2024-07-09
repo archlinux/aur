@@ -1,0 +1,21 @@
+pkgbase = redpanda-connect-bin
+	pkgdesc = Redpanda Connect is a declarative data streaming service
+	pkgver = 4.30.1
+	pkgrel = 1
+	url = https://docs.redpanda.com/redpanda-connect/about/
+	arch = aarch64
+	arch = armv6h
+	arch = armv7h
+	arch = x86_64
+	license = Apache-2.0
+	provides = redpanda-connect
+	source = https://github.com/redpanda-data/connect/releases/download/v4.30.1/redpanda-connect_4.30.1_linux_amd64.tar.gz
+	sha256sums = a9cd79f26263d36c15c8d96bb05a229c400f55dc113e890e3a4fbf46e0ad3673
+	source_aarch64 = https://github.com/redpanda-data/connect/releases/download/v4.30.1/redpanda-connect_4.30.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = af71e1185ff4af9f178eb77f6d5be7488fe01dd904ef87009d4d9c82e9642bf2
+	source_armv6h = https://github.com/redpanda-data/connect/releases/download/v4.30.1/redpanda-connect_4.30.1_linux_armv6.tar.gz
+	sha256sums_armv6h = 22f2bdaa4c1f6a9abe6bceba8a3220b488bd4ce8aeeb7a07ac6737bfe9f7468a
+	source_armv7h = https://github.com/redpanda-data/connect/releases/download/v4.30.1/redpanda-connect_4.30.1_linux_armv7.tar.gz
+	sha256sums_armv7h = bc34a727f154fcf58853fcdf535db76577909aae59fa59c6f4e87881010b14e5
+
+pkgname = redpanda-connect-bin
