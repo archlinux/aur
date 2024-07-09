@@ -1,12 +1,12 @@
-# Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 _pkgname="phylum"
 pkgname="${_pkgname}-git"
-pkgver=6.6.4.r0.g3b858ae
+pkgver=6.6.5.r0.gba1e10c
 pkgrel=1
 pkgdesc="Command line interface for the Phylum API"
 arch=('any')
-url="https://phylum.io/"
+url="https://${_pkgname}.io/"
 _url="https://github.com/${_pkgname}-dev/cli"
 license=('MIT')
 depends=('glibc' 'gcc-libs' 'zlib')
