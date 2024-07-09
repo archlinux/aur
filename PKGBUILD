@@ -1,14 +1,15 @@
 pkgname=python-lmfit
 pkgver=1.3.1
-pkgrel=1
-pkgdesc="Non-Linear Least Squares Minimization, with flexible Parameter settings, based on scipy.optimize.leastsq, and with many additional classes and methods for curve fitting"
-arch=(x86_64)
+pkgrel=2
+pkgdesc="Non-Linear Least Squares Minimization, based on scipy.optimize"
+arch=(any)
 url=http:/lmfit.github.io/lmfit-py/
 license=('BSD-3-Clause')
 makedepends=(
 python-build
 python-installer
 python-wheel
+python-setuptools-scm
 )
 depends=(
 python-asteval
@@ -21,11 +22,6 @@ python-pandas
 python-pytest
 python-scipy
 python-uncertainties
-)
-makedepends=(
-python-build
-python-installer
-python-wheel
 )
 checkdepends=(
 python-pytest-cov
@@ -47,7 +43,22 @@ build() {
 
 check() {
   cd lmfit-py-${pkgver}
-  pytest || :  # i get test failures: CClass is not JSON serializable
+  _these_fail=(
+  test_altered_params_json
+  test_independent_var_parsing
+  test_saveload_modelresult_roundtrip
+  test_save_load_modelresult
+  test_saveload_modelresult_attributes
+  test_saveload_modelresult_eval_uncertainty
+  test_saveload_modelresult_expression_model
+  test_saveload_usersyms
+  test_parameters_deepcopy
+  test_dumps_loads_parameters
+  test_dump_load_parameters
+  test_dumps_loads_parameters_usersyms
+  )
+  printf -v _joined '%s and not ' "${_these_fail[@]}"
+  python -m pytest tests -k "$(echo "not ${_joined% and not }")"  # skip the tests we know fail
 }
 
 
