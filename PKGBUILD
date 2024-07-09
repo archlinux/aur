@@ -3,7 +3,7 @@ pkgname=electron-calculator-bin
 _pkgname="Electron Calculator"
 pkgver=1.1.2
 _electronversion=22
-pkgrel=5
+pkgrel=6
 pkgdesc="Simple electron calculator app"
 arch=('x86_64')
 url="https://github.com/Alex313031/electron-calculator"
@@ -20,11 +20,12 @@ source=(
 )
 sha256sums=('a24c56eb012c763c6c10ddf137ff4c72c0d8898776083baed52085bb78023664'
             '0971f64facd7071ec5e71edbac78a59937e0a82e1b1599ee45e5ce0e4735623e'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
