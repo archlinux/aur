@@ -1,18 +1,18 @@
-# Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="phylum"
-pkgver=6.6.4
+pkgver=6.6.5
 pkgrel=1
 pkgdesc="Command line interface for the Phylum API"
 arch=('any')
-url="https://phylum.io/"
+url="https://${pkgname}.io/"
 _url="https://github.com/${pkgname}-dev/cli"
 license=('MIT')
 depends=('glibc' 'gcc-libs' 'zlib')
 makedepends=('cargo')
 _pkgsrc="cli-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('92943eaed3207e2dc4f1cd3b9216319d747c12a36bec9ace8aa84ddb8218cb92')
+sha256sums=('38bc87d3a7aeabd61aedd4f6d7f9aa455f35ad4adc597237855d2ed04f541991')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
