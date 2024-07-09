@@ -13,7 +13,7 @@ fi
 # basic info
 _pkgname="mercury-browser-avx2"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=122.0.2
+pkgver=123.0.1
 pkgrel=1
 pkgdesc="Compiler optimized, private Firefox fork"
 url="https://github.com/Alex313031/Mercury"
@@ -38,7 +38,7 @@ _main_package() {
   noextract+=("$_dl_filename")
   source=("$_dl_filename"::"${_dl_url}")
 
-  sha256sums=('985d8cbdf6cd524b091021c8322b3c1a58221331a22deecd2264529cc491dfba')
+  sha256sums=('8c842c5ef3e31879439928f90145e398201fd0ae606e2256920a0a3126b79e35')
 }
 
 # common functions
