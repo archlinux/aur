@@ -1,7 +1,7 @@
 # Maintainer: Simon Brand <simon.brand@postadigitale.de>
 
 pkgname=verity-squash-root
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc='Build signed efi files which mount a verified squashfs image as rootfs on boot'
 arch=(any)
@@ -12,8 +12,8 @@ makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(flake8 mypy shellcheck)
 backup=(etc/verity_squash_root/config.ini)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/brandsimon/verity-squash-root/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('8081964921faba01a0908f82e4f7f1141b891e6bc5dae46fa9fb083d01d141acfb1f81dffa0256e089ef6eaef3a10e66f8049e7369b3b9b58edeb4f2468eccba')
-b2sums=('14a5fac01b296dec6f837f01bfd5fdcdf1c2545ec4f0b8f76d93c54c07c3f4625c62ee7c2f4de2c361965bbc517e85def07fc332a397e6aa818b7b8d9bf90dbb')
+sha512sums=('841b0ca9c1c7219f810a6c7a409b3c9d8325e77f071973f73f6ae46efa781a55fd08442d63ea9976022420894d3ebebc4f1bee05d4e730740c327e5e53100659')
+b2sums=('36f71d8468854cacf58cec4b3c7143e70e83a6ee22e78e733a88511d00e6a8004c7f4106562dee060ea239708d9dc1f388c178a5e50ff8dc911516a4aaa9a90f')
 
 build() {
   cd "${pkgname}-${pkgver}"
