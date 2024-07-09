@@ -5,7 +5,7 @@
 
 pkgname=pdf2djvu
 pkgver=0.9.19
-pkgrel=2
+pkgrel=3
 pkgdesc="Creates DjVu files from PDF files"
 arch=('x86_64')
 url="https://jwilk.net/software/pdf2djvu"
@@ -26,6 +26,9 @@ prepare() {
   # Migrate tests to Python 3
   # (It may not be ideal, but it works.)
   patch -p1 < "$srcdir"/pdf2djvu-tests-python-3.patch
+
+  # fix tests - assert_regexp_matches has been deprecated in nose
+  sed -i -e 's/assert_regexp_matches as assert_regex/assert_regex/' "$srcdir"/${pkgname}-${pkgver}/tests/tools.py
 
   # fix build with poppler >= 24.04.00 (that is built with C++20 standard)
   sed -i -e 's/CXXFLAGS = /CXXFLAGS = -std=c++20 /' "$srcdir"/${pkgname}-${pkgver}/autoconf.mk.in
