@@ -10,7 +10,6 @@ license=('0BSD')
 makedepends=(
   'at-spi2-core'
   'cairo'
-  'chrpath'
   'clang'
   'cmake'
   'gdk-pixbuf2'
@@ -93,13 +92,14 @@ prepare() {
   git -c protocol.file.allow=always submodule update --init lib/SDL
   git -c protocol.file.allow=always submodule update --init lib/SDL_mixer
 
-  LDFLAGS+=" -Wl,-z,now" \
-    cmake -B ../"${pkgname}"-build -S . \
-      -DCMAKE_CXX_COMPILER:STRING=clang++ \
-      -DCMAKE_CXX_FLAGS:STRING="-D_FORTIFY_SOURCE=3" \
-      -DCMAKE_C_COMPILER:STRING=clang \
-      -DCMAKE_C_FLAGS:STRING="-D_FORTIFY_SOURCE=3" \
-      -Wno-dev
+  export LDFLAGS
+  cmake -B ../"${pkgname}"-build -S . \
+    -DCMAKE_CXX_COMPILER:STRING=clang++ \
+    -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS}" \
+    -DCMAKE_C_COMPILER:STRING=clang \
+    -DCMAKE_C_FLAGS:STRING="${CFLAGS}" \
+    -DCMAKE_SKIP_RPATH=ON \
+    -Wno-dev
 }
 
 build() {
@@ -107,7 +107,6 @@ build() {
 }
 
 package() {
-  chrpath --delete "${srcdir}"/"${pkgname}"-build/openjkdf2
   install -Dm755 "${srcdir}"/"${pkgname}"-build/openjkdf2 "${pkgdir}"/usr/bin/openjkdf2
 
   # Desktop file
