@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-store-git
-pkgver=r202.07a9d72
+pkgver=r246.4245104
 pkgrel=1
-pkgdesc="WIP COSMIC app store"
+pkgdesc="Cosmic App Store"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-store"
 license=('GPL-3.0-or-later')
@@ -11,6 +11,7 @@ depends=(
   'archlinux-appstream-data'
   'cosmic-icons-git'
   'glib2'
+  'libxkbcommon'
 )
 makedepends=(
   'cargo'
@@ -30,7 +31,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {

@@ -1,6 +1,6 @@
 pkgbase = cosmic-store-git
-	pkgdesc = WIP COSMIC app store
-	pkgver = r202.07a9d72
+	pkgdesc = Cosmic App Store
+	pkgver = r246.4245104
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-store
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = cosmic-store-git
 	depends = archlinux-appstream-data
 	depends = cosmic-icons-git
 	depends = glib2
+	depends = libxkbcommon
 	optdepends = flatpak: Flatpak packages support
 	optdepends = packagekit: package manager integration module
 	provides = cosmic-store
