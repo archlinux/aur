@@ -2,11 +2,11 @@
 
 pkgname='openjkdf2-git'
 pkgver=0.9.1.r20.gfbdb01b
-pkgrel=1
+pkgrel=2
 pkgdesc="A function-by-function reimplementation of DF2 (Dark Forces 2) in C."
 arch=('i686' 'x86_64')
 url='https://github.com/shinyquagsire23/OpenJKDF2'
-license=('GPL-3.0-or-later')
+license=('0BSD')
 makedepends=(
   'chrpath'
   'clang'
@@ -15,9 +15,18 @@ makedepends=(
   'python-cogapp'
 )
 depends=(
+  'at-spi2-core'
+  'cairo'
+  'curl'
+  'gamenetworkingsockets'
+  'gdk-pixbuf2'
   'glib2'
   'gtk3'
+  'harfbuzz'
+  'libglvnd'
   'openal'
+  'pango'
+  'zlib'
 )
 options=(!emptydirs !lto)
 source=('git+https://github.com/shinyquagsire23/OpenJKDF2.git'
