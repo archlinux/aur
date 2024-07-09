@@ -1,13 +1,14 @@
 pkgbase = hacki
 	pkgdesc = A Hacker News reader.
 	pkgver = 2.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Livinglist/Hacki
 	arch = x86_64
 	license = GPL3
 	makedepends = flutter-engine
 	makedepends = git
 	makedepends = yq
+	makedepends = patchelf
 	depends = gtk3
 	depends = gstreamer
 	depends = gst-plugins-base-libs

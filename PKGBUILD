@@ -4,7 +4,7 @@ _pkgname='hacki'
 pkgname=${_pkgname}
 _pkgreponame='Hacki'
 pkgver=2.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A Hacker News reader.'
 url='https://github.com/Livinglist/Hacki'
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=(
 	'gstreamer'
 	'gst-plugins-base-libs'
 	'libsecret')
-makedepends=('flutter-engine' 'git' 'yq')
+makedepends=('flutter-engine' 'git' 'yq' 'patchelf')
 source=(
 	"git+${url}.git#tag=v${pkgver}"
 	'flutter::git+https://github.com/flutter/flutter.git'
@@ -60,6 +60,13 @@ package() {
 	install -Dm755 \
 		"${execfile}" \
 		"${pkgdir}/opt/${_pkgname}/${_pkgname}"
+
+	# Fix runpath
+	patchelf --set-rpath '$ORIGIN/lib' "$pkgdir/opt/$_pkgname/${execfile}"
+	for i in "$pkgdir/opt/$_pkgname/lib"/*.so; do
+		[ -z "$(patchelf --print-rpath "$i")" ] && continue
+		patchelf --set-rpath '$ORIGIN' "$i"
+	done
 
 	# Folders install
 	cp -r 'lib/' "${pkgdir}/opt/${_pkgname}/"
