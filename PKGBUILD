@@ -2,23 +2,23 @@
 
 _pkgname="phylum"
 pkgname="${_pkgname}-bin"
-pkgver=6.6.4
+pkgver=6.6.5
 pkgrel=1
 pkgdesc="Command line interface for the Phylum API"
 arch=('x86_64' 'aarch64')
-url="https://phylum.io/"
+url="https://${_pkgname}.io/"
 _url="https://github.com/${_pkgname}-dev/cli"
 license=('MIT')
 depends=('glibc' 'gcc-libs' 'zlib')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=(${_url}/raw/v${pkgver}/{README.md,LICENSE})
+source=("${_url}/raw/v${pkgver}/"{README.md,LICENSE})
 source_x86_64=("${_url}/releases/download/v${pkgver}/${_pkgname}-x86_64-unknown-linux-gnu.zip")
 source_aarch64=("${_url}/releases/download/v${pkgver}/${_pkgname}-aarch64-unknown-linux-gnu.zip")
 sha256sums=('e25ab845c4018b67fe54c12a3a6b4e48e33e59e92baa5e69672909ba67e80c66'
             'bf7bed83defddbaf30ff7c1a7d24a803170064ed729aed1e9686095e8f1f5ca7')
-sha256sums_x86_64=('163bc5eea5bd2fa8d716d54df7df71d1b8c0dd2f5966d25ba34c6abdfff688f8')
-sha256sums_aarch64=('3f8e2ca024b056a67f15d53e5b0178eb5fdfd4bb7b114b80aeccb003a3fadd78')
+sha256sums_x86_64=('8c751eaa4821e5fa14f8d72b6e6c268f4bc3f8a04fa7c61b523b97c02d44fbb3')
+sha256sums_aarch64=('5f30ab97b35a47c6e44e38befb9fda5cc7af314cabb4c8cd07573889d971a27d')
 
 package() {
   cd "${srcdir}"
