@@ -1,6 +1,6 @@
 _basepgkname=llamafile
 pkgname="${_basepgkname}-git"
-pkgver=0.8.6.r407.81cfbcf
+pkgver=0.8.9.r454.b3930aa
 pkgrel=1
 pkgdesc="Distribute and run LLMs with a single file."
 arch=('x86_64')
@@ -32,7 +32,7 @@ provides=(
             'llamafile-upgrade-engine'
             'zipalign'
         )
-conflicts=('llamafile' 'llamafile-bin')
+conflicts=('llamafile' 'llamafile-bin' 'android-sdk-build-tools' 'zipalign')
 options=(!strip)
 
 pkgver() {
