@@ -3,7 +3,7 @@ pkgname=google-messages-bin
 _pkgname=GoogleMessages
 pkgver=1.4.2
 _electronversion=19
-pkgrel=8
+pkgrel=9
 pkgdesc='A "native-like" OS X, Windows, & Linux desktop app for Google Messages'
 arch=('x86_64')
 url="https://www.messagesfordesktop.com/"
@@ -12,8 +12,7 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}-bin"
-    'nodejs'
+    "electron${_electronversion}"
 )
 makedepends=(
     'gendesk'
@@ -23,14 +22,15 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('204112783720e2428ec0ad78ebd9f95f30bf9c77959d4ebd6232be30da98970a'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@cfgdirname@|googlemessages-nativefier-11f104|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --categories="Network" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
+    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Network" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
 }
 package() {   
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
