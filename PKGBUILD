@@ -4,7 +4,7 @@ pkgname=pennywise-bin
 _pkgname=Pennywise
 pkgver=0.8.0
 _electronversion=5
-pkgrel=12
+pkgrel=13
 pkgdesc="Cross-platform application to open any website or media in a floating window"
 arch=(
 	'i686'
@@ -15,7 +15,7 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-	"electron${_electronversion}-bin"
+	"electron${_electronversion}"
 )
 optdepends=(
 	'chromium: for Open with Pennywise Chrome extension'
@@ -31,13 +31,14 @@ source=(
 	"${pkgname%-bin}.sh"
 )
 sha256sums=('b41ccd76edcf9e9af64581622b1d6dc1de7ed55a96548c4af8c43d32cd764b0b'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 sha256sums_i686=('df794adfb3fd28cb68beabe59cadfc000c0b20c83bb38f064d9409a7951b6799')
 sha256sums_x86_64=('02d5f5ea3bf0b934d650cbb75c3cb43ab62b3d1c48c733b2f85816ccc8736191')
 build() {
 	sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+		-e "s|@cfgdirname@|${_pkgname}|g" \
 		-e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
 	bsdtar -xf "${srcdir}/data."*
