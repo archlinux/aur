@@ -4,13 +4,13 @@
 _pkgname=gimp
 pkgname=${_pkgname}-devel-noconflict
 pkgver=2.99.18
-pkgrel=4
+pkgrel=5
 pkgdesc="GNU Image Manipulation Program (Development version, doesn't conflict with gimp 2.0)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://www.gimp.org/"
 license=('GPL' 'LGPL')
 depends=(appstream-glib atk 'babl>=0.1.98' cairo fontconfig freetype2 gdk-pixbuf2 'gegl>=0.4.48' libgexiv2 glib2 glib-networking gtk3 gvfs harfbuzz bzip2 libjpeg xz libmypaint libpng poppler-glib librsvg libtiff lcms2 mypaint-brushes1 pango poppler-data zlib libxmu)
-makedepends=(cfitsio ghostscript aalib libheif libmng libwebp libwmf libxcursor libxpm openexr openjpeg2 libjxl qoi-headers vala meson gobject-introspection alsa-lib gjs appstream)
+makedepends=(cfitsio ghostscript aalib libheif libmng libwebp libwmf libxcursor libxpm openexr openjpeg2 libjxl qoi-headers vala meson gobject-introspection alsa-lib gjs appstream glib2-devel libilbm)
 # 'gutenprint: for sophisticated printing only as gimp has built-in cups print support' # GIMP 2.0 only
 optdepends=('alsa-lib: for MIDI event controller module'
             'cfitsio: FITS format support'
@@ -25,6 +25,7 @@ optdepends=('alsa-lib: for MIDI event controller module'
             'openexr: OpenEXR support'
             'openjpeg2: JPEG 2000 support'
             'libjxl: JPEG XL support'
+            'libilbm: Amiga ILBM support'
             'darktable: Importing RAWs'
             'rawtherapee: Importing RAWs'
             'gdb: Debugger'
@@ -54,7 +55,6 @@ build() {
     # -Dg-ir-doc=false # disabled by default, depends on yelp-tools
     -Dheadless-tests=disabled # enabled by default, depends on xorg-server-xvfb
     # -Dwebkit-unmaintained=true # disabled by default, depends on webkit2gtk (4.0)
-    -Dilbm=disabled # no libilbm in official repo or aur
   )
 
   arch-meson "${_pkgname}-${pkgver}" build "${meson_options[@]}"
