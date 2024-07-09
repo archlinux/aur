@@ -1,7 +1,7 @@
 pkgbase = hacki
 	pkgdesc = A Hacker News reader.
 	pkgver = 2.8.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Livinglist/Hacki
 	arch = x86_64
 	license = GPL3

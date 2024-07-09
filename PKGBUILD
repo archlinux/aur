@@ -4,7 +4,7 @@ _pkgname='hacki'
 pkgname=${_pkgname}
 _pkgreponame='Hacki'
 pkgver=2.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A Hacker News reader.'
 url='https://github.com/Livinglist/Hacki'
 arch=('x86_64')
@@ -61,16 +61,16 @@ package() {
 		"${execfile}" \
 		"${pkgdir}/opt/${_pkgname}/${_pkgname}"
 
+	# Folders install
+	cp -r 'lib/' "${pkgdir}/opt/${_pkgname}/"
+	cp -r 'data/' "${pkgdir}/opt/${_pkgname}/"
+
 	# Fix runpath
 	patchelf --set-rpath '$ORIGIN/lib' "$pkgdir/opt/$_pkgname/${execfile}"
 	for i in "$pkgdir/opt/$_pkgname/lib"/*.so; do
 		[ -z "$(patchelf --print-rpath "$i")" ] && continue
 		patchelf --set-rpath '$ORIGIN' "$i"
 	done
-
-	# Folders install
-	cp -r 'lib/' "${pkgdir}/opt/${_pkgname}/"
-	cp -r 'data/' "${pkgdir}/opt/${_pkgname}/"
 
 	# Symlink executable
 	install -dm755 "${pkgdir}/usr/bin"
