@@ -10,7 +10,7 @@
 
 _pkgname=kate
 pkgname="${_pkgname}-root"
-pkgver=24.05.1
+pkgver=24.05.2
 pkgrel=1
 arch=(
   'x86_64'
@@ -122,8 +122,8 @@ source=(
   "0001-Defuse-root-block.patch"
 )
 sha256sums=(
-  'daf6526725de9a3799d97db37428cf513062cc273cc2bc47cf949b327f9a2827'  # ${_pkgname}-${pkgver}.tar.xz
-  'ac811d14b913e671befb2b6124ed7b1a1660aa2781cea2c667a4fadd8ecce35f'  # ${_pkgname}-${pkgver}.tar.xz.sig
+  '774f08b7d53db0b282164e930a0e0cd4709e75938dcb8b3cb430fedf0d5db020'  # ${_pkgname}-${pkgver}.tar.xz
+  'd17fb37f706e0b78d447835b1d2923ecb8f76d933a073b1e81396a2de55caba7'  # ${_pkgname}-${pkgver}.tar.xz.sig
   'abc7a33c8e8cd3a79ea4699bca0086c4146a9a43771a10fc60b97dcf62faca44'  # 0001-Defuse-root-block.patch
 )
 validpgpkeys=(
