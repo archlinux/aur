@@ -1,6 +1,6 @@
 pkgbase = vja
 	pkgdesc = A simple CLI for Vikunja
-	pkgver = 4.0.0
+	pkgver = 4.1.0
 	pkgrel = 1
 	url = https://gitlab.com/ce72/vja
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = vja
 	depends = python-requests
 	depends = python-parsedatetime
 	depends = python-dateutil
-	source = https://files.pythonhosted.org/packages/source/v/vja/vja-4.0.0.tar.gz
-	sha1sums = 1971fb739a145adebfc62cde152523014c103265
-	sha256sums = ed13afa0984298004b3de61940a3b8154526ff539a804ff96e7a18044fdd8391
+	source = https://files.pythonhosted.org/packages/source/v/vja/vja-4.1.0.tar.gz
+	sha1sums = 97a9e61d73923350be4b63791a104ad5c80b72d6
+	sha256sums = 4db91ff8667109ddbc7cbf079793f681b825c097144a22499c6e4063e4881494
 
 pkgname = vja
