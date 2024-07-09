@@ -7,7 +7,7 @@
 
 _pkgname=gamescope
 pkgname=gamescope-plus
-pkgver=3.14.18.plus2
+pkgver=3.14.23.plus1
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager with added patches'
 arch=(x86_64)
@@ -60,7 +60,7 @@ makedepends=(
   wayland-protocols
 )
 
-_tag=0c4390c8dcecd3ae399da20866d5f15fb76bfd02
+_tag=c4d8f39b1a135322923e974257ab0715ab32ac46
 source=("git+https://github.com/ChimeraOS/gamescope.git#commit=${_tag}"
         "git+https://github.com/Joshua-Ashton/wlroots.git"
         "git+https://gitlab.freedesktop.org/emersion/libliftoff.git"
@@ -77,14 +77,14 @@ b2sums=('SKIP'
 
 prepare() {
   cd "$srcdir/$_pkgname"
-  meson subprojects download
-  git submodule init src/reshade
-  git config submodule.src/reshade.url "$srcdir/reshade"
-  git submodule init thirdparty/SPIRV-Headers
-  git config submodule.thirdparty/SPIRV-Headers.url ../SPIRV-Headers
+
+  # git submodules
+  git submodule init
+  git config submodule.subprojects/wlroots.url "$srcdir/wlroots"
+  git config submodule.subprojects/libliftoff.url "$srcdir/libliftoff"
   git -c protocol.file.allow=always submodule update
 
-  # make stb.wrap use our local clone
+  # meson submodules
   rm -rf subprojects/stb
   git clone "$srcdir/stb" subprojects/stb
   cp -av subprojects/packagefiles/stb/* subprojects/stb/ # patch from the .wrap we elided
@@ -96,8 +96,10 @@ pkgver() {
 }
 
 build() {
+  cd "$srcdir/$_pkgname"
+
   export LDFLAGS="$LDFLAGS -lrt"
-  arch-meson gamescope build
+  arch-meson --buildtype release --prefix /usr build
   ninja -C build
 }
 
