@@ -2,13 +2,14 @@
 # Contributor: Danny Dutton <duttondj@vt.edu>
 pkgname=webtorrent-desktop-git
 _pkgname="WebTorrent"
-pkgver=0.24.0.r371.gebaf9cf8
-_electronversion=15
+pkgver=0.24.0.r380.g61b7681
+_electronversion=27
 _nodeversion=16
 pkgrel=1
 pkgdesc="Streaming torrent client."
 arch=(
     'aarch64'
+    'armv7h'
     'x86_64'
 )
 url="https://webtorrent.io/desktop"
@@ -17,7 +18,7 @@ license=('MIT')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
 )
 makedepends=(
     'git'
@@ -30,10 +31,10 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
-    git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
 }
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -45,6 +46,7 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-git}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
@@ -52,20 +54,21 @@ build() {
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
     #export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-    export ELECTRONVERSION="${_electronversion}"
-    export npm_config_disturl=https://electronjs.org/headers
+    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
+    #export ELECTRONVERSION="${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
-        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
-        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
-        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+        export npm_config_registry=https://registry.npmmirror.com
+        export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
+        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
+        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
     else
         echo "Your network is OK."
     fi
-    npm install
-    npm run package -- linux --package=zip
+    sed "s|npm ci|NODE_ENV=development npm ci|g;s|npm run|NODE_ENV=production npm run|g" -i bin/package.js
+    NODE_ENV=development npm install
+    NODE_ENV=production npm run package -- linux --package=zip
     sed -e "s|Exec=\/opt\/${pkgname%-git}\/${_pkgname}|Exec=${pkgname%-git}|g" \
         -e "s|Path=\/opt\/${pkgname%-git}|Path=\/usr\/lib\/${pkgname%-git}|g" \
         -i static/linux/share/applications/"${pkgname%-git}.desktop"
@@ -76,13 +79,15 @@ package() {
         aarch64)
             _osarchdir="${_pkgname}-linux-arm64"
             ;;
+        armv7h)
+            _osarchdir="${_pkgname}-linux-armv7l"
+            ;;
         x86_64)
             _osarchdir="${_pkgname}-linux-x64"
             ;;
     esac
     install -Dm644 "${srcdir}/${pkgname%-git}.git/dist/${_osarchdir}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-git}"
     cp -r "${srcdir}/${pkgname%-git}.git/dist/${_osarchdir}/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname%-git}.git/dist/${_osarchdir}/swiftshader/"* -t "${pkgdir}/usr/lib/${pkgname%-git}/swiftshader"
     for _icons in 48x48 256x256;do
         install -Dm644 "${srcdir}/${pkgname%-git}.git/static/linux/share/icons/hicolor/${_icons}/apps/${pkgname%-git}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
