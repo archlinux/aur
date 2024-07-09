@@ -1,7 +1,7 @@
 pkgbase = zebrad
-	pkgdesc = Zcash - Financial Privacy in Rust 🦓
+	pkgdesc = Permissionless financial system employing zero-knowledge security
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ZcashFoundation/zebra
 	arch = aarch64
 	arch = x86_64

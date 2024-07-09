@@ -2,8 +2,8 @@
 
 pkgname=zebrad
 pkgver=1.8.0
-pkgrel=1
-pkgdesc="Zcash - Financial Privacy in Rust 🦓"
+pkgrel=2
+pkgdesc="Permissionless financial system employing zero-knowledge security"
 url='https://github.com/ZcashFoundation/zebra'
 source=("zebra-${pkgver//_/-}.tar.gz::https://github.com/ZcashFoundation/zebra/archive/refs/tags/v${pkgver//_/-}.tar.gz")
 arch=('aarch64' 'x86_64')
