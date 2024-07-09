@@ -1,7 +1,7 @@
 # Maintainer: allddd <allddd (at) proton (dot) me>
 
 pkgname=vim-plug
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc='A vim plugin manager'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('vim')
 provides=('vim-plug')
 conflicts=('vim-plug')
 source=("${url}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('682c8629d766236dc4c8bd16c545b8d9ca58cd06de2b1887b061d24c6b022903')
+sha256sums=('a8e86db8c62deefa70057fd0abc81bc20e270ab9811eee3ccbe9ceafd3d8a876')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
