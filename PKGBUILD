@@ -1,5 +1,5 @@
 pkgname=camunda-modeler
-pkgver=5.24.0
+pkgver=5.25.0
 pkgrel=1
 pkgdesc="An integrated modeling solution for BPMN and DMN based on bpmn.io"
 arch=('x86_64')
@@ -10,7 +10,7 @@ install=$pkgname.install
 source=("https://camunda.org/release/$pkgname/$pkgver/$pkgname-$pkgver-linux-x64.tar.gz"
         'camunda-modeler.sh')
         
-sha256sums=('8eb172fcdefefd8102d1db36dcbb4d50c9c7d868197e93a641178c579c6218e6'
+sha256sums=('e1879e7880b7eecfdc5d9e138c8c67ff2bc354a3fdd9ff6e4816a32c28fb359c'
             'ef8abcbb783d73a41dc956b400b0281325c3a2320f6aec71c50a8af25e23ac13')
 
 depends=('libnotify')
