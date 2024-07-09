@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GEOmap
-_pkgver=2.5-5
+_pkgver=2.5-11
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Topographic and Geologic Mapping"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -21,8 +21,8 @@ optdepends=(
   r-maps
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f24aae5a7eb4f18d67db573e5472db09')
-b2sums=('e68fd40060f1656675d501e41b9cb6191b476da44a17e90af90eca1697afcc6cd3c844f5e70e0aabfeb32a76d647beedef6a56a7990a5db9fd4acdbfac136cc3')
+md5sums=('17ee2aaa63793db1f437c82b97652c44')
+b2sums=('86af719493e0cb1248e9af1753c9f8597230d52df5b89e4a91dc8076d96b8bb81bbccd4faef76a219e50e1d337ddcd28cda1e71eecaa6f1b5febbfd6485db525')
 
 build() {
   mkdir build
