@@ -3,7 +3,7 @@
 pkgname="sapm-git"
 _pkgname="sapm"
 pkgver="1.0.0"
-pkgrel=6
+pkgrel=7
 pkgdesc="A System Agnostic Package Manager (SAPM) which provides basic but useful functionality"
 arch=("x86_64")
 url="https://github.com/Dyredhead/sapm"

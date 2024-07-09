@@ -1,7 +1,7 @@
 pkgbase = sapm-git
 	pkgdesc = A System Agnostic Package Manager (SAPM) which provides basic but useful functionality
 	pkgver = 1.0.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/Dyredhead/sapm
 	arch = x86_64
 	license = MIT
