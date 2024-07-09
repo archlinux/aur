@@ -11,61 +11,58 @@
 # - http://www.scootersoftware.com/vbulletin/showpost.php?s=3c1f289bc76655230b49f440dbe17b53&p=26449&postcount=7
 
 pkgbase=bcompare
-pkgname=('bcompare' 'bcompare-kde5' 'bcompare-kde4' 'bcompare-nautilus' 'bcompare-thunar' 'bcompare-cinnamon' 'bcompare-mate')
-pkgver=4.4.7.28397
+pkgname=('bcompare' 'bcompare-kde6' 'bcompare-kde5' 'bcompare-kde4' 'bcompare-nautilus' 'bcompare-thunar' 'bcompare-cinnamon' 'bcompare-mate')
+pkgver=5.0.0.29773
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://www.scootersoftware.com'
 license=('custom')
 groups=('utility')
-depends=('fontconfig' 'libsm' 'libxcursor' 'libxft' 'libxinerama'  'libxrandr' 'zlib')
+depends=('qt5-base' 'fontconfig' 'libsm' 'libxcursor' 'libxft' 'libxinerama' 'libxrandr' 'zlib')
 makedepends=('sed')
 source_x86_64=("https://www.scootersoftware.com/${pkgbase}-${pkgver}.x86_64.tar.gz")
 source_i686=("https://www.scootersoftware.com/${pkgbase}-${pkgver}.i386.tar.gz")
-sha256sums_i686=('0308a4d2b400519ec956418f2091886899ec04d4d6e51110ee1deb051dd7fc92')
-sha256sums_x86_64=('0b37a3ceceb4d42193944c2b88818c38b9edfe4cf89818a29dddf006adffcf61')
+sha256sums_x86_64=('a90ed2bb6ee95de0618a4822a9a3084e8c023fddb196679e9e466de05f80ec18')
 options=('!strip') # Do not strip binaries because it breaks them down
 
  prepare() {
   # Prepare the directory skeleton needed for install.sh
   _install_dir="${srcdir}/install"
-  mkdir -p "${_install_dir}/usr/share/applications"
-  mkdir -p "${_install_dir}/usr/share/doc"
-  mkdir -p "${_install_dir}/usr/share/mime/packages"
-  mkdir -p "${_install_dir}/usr/share/pixmaps"
-
-  # Set up KDE Plasmma 5 service menus
-  mkdir -p "${_install_dir}/usr/lib/x86_64-linux-gnu/qt5/plugins/kf5/kfileitemaction"
+  install -m 755 -d "${_install_dir}/usr/share/applications"
+  install -m 755 -d "${_install_dir}/usr/share/doc/${pkgname}"
+  install -m 755 -d "${_install_dir}/usr/share/mime/packages"
+  install -m 755 -d "${_install_dir}/usr/share/pixmaps"
 
   # Set up KDE4 service menus
-  mkdir -p "${_install_dir}/usr/lib/kde4"
-  mkdir -p "${_install_dir}/usr/share/kde4/services"
+  install -m 755 -d "${_install_dir}/usr/lib/kde4"
+  install -m 755 -d "${_install_dir}/usr/share/kde4/services"
 
   # Set up Gnome service menus
-  mkdir -p "${_install_dir}/usr/lib/nautilus/extensions-3.0"
-  mkdir -p "${_install_dir}/usr/lib/nemo/extensions-3.0"
-  mkdir -p "${_install_dir}/usr/lib/caja/extensions-3.0"
+  install -m 755 -d "${_install_dir}/usr/lib/nautilus/extensions-3.0"
+  install -m 755 -d "${_install_dir}/usr/lib/nemo/extensions-3.0"
+  install -m 755 -d "${_install_dir}/usr/lib/caja/extensions-3.0"
 
   # Set up Xfce service menus
-  mkdir -p "${_install_dir}/usr/lib/thunarx-2"
-  mkdir -p "${_install_dir}/usr/lib/thunarx-3"
+  install -m 755 -d "${_install_dir}/usr/lib/thunarx-2"
+  install -m 755 -d "${_install_dir}/usr/lib/thunarx-3"
 
   # Apply some fixes on install.sh script
   cd "${pkgbase}-${pkgver}"
   sed -i 's|/usr/|${PREFIX}/usr/|g' install.sh
   sed -i 's|${PREFIX}/usr/bin|/usr/bin|g' install.sh
-  sed -i 's|$EXT_LIB/$LIB_ARCH/$FILE_MANAGER_NAME/$EXT_VER|$EXT_LIB/$FILE_MANAGER_NAME/$EXT_VER|g' install.sh
   sed -i '/-h \/lib64/{N;N;d;}' install.sh
+  sed -i 's|kde4-config -v|kde4-config -v 2> /dev/null|' install.sh
  }
 
 package_bcompare() {
-  pkgdesc="Beyond Compare 4: Compare, sync, and merge files and folders"
-  optdepends=('bcompare-kde4: KDE 4 service menus for Beyond Compare 4'
-              'bcompare-kde5: KDE Plasma 5 service menus for Beyond Compare 4'
-              'bcompare-nautilus: Nautilus service menus for Beyond Compare 4'
-              'bcompare-thunar: Thunar service menus for Beyond Compare 4'
-              'bcompare-cinnamon: Cinnamon service menus for Beyond Compare 4'
-              'bcompare-mate: MATE service menus for Beyond Compare 4'  )
+  pkgdesc="Beyond Compare 5: Compare, sync, and merge files and folders."
+  optdepends=('bcompare-kde6: KDE Plasma 6 service menus for Beyond Compare 5.'
+              'bcompare-kde5: KDE Plasma 5 service menus for Beyond Compare 5.'
+              'bcompare-kde4: KDE 4 service menus for Beyond Compare 5.'
+              'bcompare-nautilus: Gnome/Nautilus service menus for Beyond Compare 5.'
+              'bcompare-thunar: Xfce/Thunar service menus for Beyond Compare 5.'
+              'bcompare-cinnamon: Cinnamon service menus for Beyond Compare 5.'
+              'bcompare-mate: MATE service menus for Beyond Compare 5.'  )
   install=${pkgbase}.install
 
   # Excecute install script - needs to be run here
@@ -73,6 +70,7 @@ package_bcompare() {
   _install_dir="${srcdir}/install"
   sh -version &> /dev/null && sh   install.sh --prefix="${_install_dir}"\
                            || bash install.sh --prefix="${_install_dir}"
+
   # Prepare the directory skeleton needed for install.sh
   cp -r "${_install_dir}/bin"  "${pkgdir}/"
   cp -r "${_install_dir}/lib"  "${pkgdir}/"
@@ -98,21 +96,12 @@ package_bcompare() {
   rm -rf "${pkgdir}/usr/lib/caja"
   rm -rf "${pkgdir}/usr/lib/nemo"
 
-  #Clean unneded files
-  if [ "$CARCH" = "x86_64" ]; then
-    rm "${pkgdir}/usr/lib/beyondcompare/bcmount32"
-  elif [ "$CARCH" = "i686" ]; then
-    rm "${pkgdir}/usr/lib/beyondcompare/bcmount64"
-  fi
   pushd usr/lib/beyondcompare/ > /dev/null
-  rm -f uninstall.sh RPM-GPG-KEY-scootersoftware scootersoftware.repo kde_context_menu
-  mv help "${pkgdir}/usr/share/doc/beyondcompare"
-  mv README "${pkgdir}/usr/share/doc/beyondcompare/"
+  rm -f kde_context_menu uninstall.sh
+  mv help "${pkgdir}/usr/share/doc/${pkgname}"
+  mv copyright README "${pkgdir}/usr/share/doc/${pkgname}/"
   rm -rf ext
   popd > /dev/null
-
-  # Link help where Help -> Contents option is expecting to find it
-  ln -sf "/usr/share/doc/beyondcompare" "${pkgdir}/usr/lib/beyondcompare/help"
 
   # Clean some mime files
   pushd usr/share > /dev/null
@@ -122,30 +111,40 @@ package_bcompare() {
   popd > /dev/null
 }
 
-package_bcompare-kde5() {
-  pkgdesc="KDE Plasma 5 service menus for Beyond Compare 4"
-  depends=('bcompare' 'kinit')
-  install=${pkgbase}-kde5.install
+package_bcompare-kde6() {
+  pkgdesc="KDE Plasma 6 service menus for Beyond Compare 5."
+  depends=('bcompare')
+  install=${pkgbase}-kde-plasma.install
 
-   msg2 "Packaging KDE Plasma 5 service menus..."
-  _install_dir="${srcdir}/install"
+  msg2 "Packaging KDE Plasma 6 service menus..."
+  cd "${srcdir}/install/lib/beyondcompare/ext"
+  install -m 755 -D -t "${pkgdir}/usr/lib/qt6/plugins/kf6/kfileitemaction" bcompare_ext_kde6.amd64.so
+  msg2 "Done!"
+}
+
+package_bcompare-kde5() {
+  pkgdesc="KDE Plasma 5 service menus for Beyond Compare 5."
+  depends=('bcompare' 'kinit')
+  install=${pkgbase}-kde-plasma.install
+
   # Set up service menus
-  mkdir -p "${pkgdir}/usr/lib"
-  mv "${_install_dir}/usr/lib/x86_64-linux-gnu/qt5" "${pkgdir}/usr/lib/qt"
+  msg2 "Packaging KDE Plasma 5 service menus..."
+  cd "${srcdir}/install/lib/beyondcompare/ext"
+  install -m 755 -D -t "${pkgdir}/usr/lib/qt5/plugins/kf5/kfileitemaction" bcompare_ext_kde5.amd64.so
   msg2 "Done!"
 }
 
 package_bcompare-kde4() {
-  pkgdesc="KDE 4 service menus for Beyond Compare 4"
+  pkgdesc="KDE 4 service menus for Beyond Compare 5."
   depends=('bcompare')
   replaces=('bcompare-kde')
   conflicts=('bcompare-kde')
 
-   msg2 "Packaging KDE 4 service menus..."
+  msg2 "Packaging KDE 4 service menus..."
   _install_dir="${srcdir}/install"
   # Set up service menus
-  mkdir -p "${pkgdir}/usr/lib"
-  mkdir -p "${pkgdir}/usr/share"
+  install -m 755 -d "${pkgdir}/usr/lib"
+  install -m 755 -d "${pkgdir}/usr/share"
 
   mv "${_install_dir}/usr/lib/kde4" "${pkgdir}/usr/lib/"
   mv "${_install_dir}/usr/share/kde4" "${pkgdir}/usr/share"
@@ -153,28 +152,28 @@ package_bcompare-kde4() {
 }
 
 package_bcompare-nautilus() {
-  pkgdesc="Gnome service menus for Beyond Compare 4"
+  pkgdesc="Gnome/Nautilus service menus for Beyond Compare 5."
   depends=('bcompare')
   provides=('bcompare-gnome')
 
-  msg2 "Packaging Gnome service menus..."
+  msg2 "Packaging Gnome/Nautilus service menus..."
   _install_dir="${srcdir}/install"
   # Set up service menus
-  mkdir -p "${pkgdir}/usr/lib"
+  install -m 755 -d "${pkgdir}/usr/lib"
 
   mv "${_install_dir}/usr/lib/nautilus" "${pkgdir}/usr/lib/"
   msg2 "Done!"
 }
 
 package_bcompare-thunar() {
-  pkgdesc="Xfce service menus for Beyond Compare 4"
+  pkgdesc="Xfce/Thunar service menus for Beyond Compare 5."
   depends=('bcompare')
   provides=('bcompare-xfce')
 
-  msg2 "Packaging Xfce service menus..."
+  msg2 "Packaging Xfce/Thunar service menus..."
   _install_dir="${srcdir}/install"
   # Set up service menus
-  mkdir -p "${pkgdir}/usr/lib"
+  install -m 755 -d "${pkgdir}/usr/lib"
 
   mv "${_install_dir}/usr/lib/thunarx-2" "${pkgdir}/usr/lib/"
   mv "${_install_dir}/usr/lib/thunarx-3" "${pkgdir}/usr/lib/"
@@ -182,26 +181,26 @@ package_bcompare-thunar() {
 }
 
 package_bcompare-cinnamon() {
-  pkgdesc="Cinnamon service menus for Beyond Compare 4"
+  pkgdesc="Cinnamon service menus for Beyond Compare 5."
   depends=('bcompare')
 
   msg2 "Packaging Cinnamon service menus..."
   _install_dir="${srcdir}/install"
   # Set up service menus
-  mkdir -p "${pkgdir}/usr/lib"
+  install -m 755 -d "${pkgdir}/usr/lib"
 
   mv "${_install_dir}/usr/lib/nemo" "${pkgdir}/usr/lib/"
   msg2 "Done!"
 }
 
 package_bcompare-mate() {
-  pkgdesc="MATE service menus for Beyond Compare 4"
+  pkgdesc="MATE service menus for Beyond Compare 5."
   depends=('bcompare')
 
   msg2 "Packaging MATE service menus..."
   _install_dir="${srcdir}/install"
   # Set up service menus
-  mkdir -p "${pkgdir}/usr/lib"
+  install -m 755 -d "${pkgdir}/usr/lib"
 
   mv "${_install_dir}/usr/lib/caja" "${pkgdir}/usr/lib/"
   msg2 "Done!"
