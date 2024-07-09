@@ -2,7 +2,7 @@
 pkgname=wordpress-studio-git
 _appname=Studio
 _pkgname="WordPress ${_appname}"
-pkgver=1.0.5.beta1.r0.g76eb0cf
+pkgver=1.0.5.r0.g6c14454
 _electronversion=29
 _nodeversion=20
 pkgrel=1
@@ -21,6 +21,7 @@ makedepends=(
     'git'
     'nvm'
     'gendesk'
+    'curl'
 )
 options=(
     '!strip'
