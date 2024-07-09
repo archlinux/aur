@@ -3,7 +3,7 @@
 
 pkgname=cosmic-settings-git
 pkgver=r421.cb02d51
-pkgrel=1
+pkgrel=2
 pkgdesc="The settings application for the COSMIC desktop environment."
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-settings"
@@ -29,6 +29,7 @@ makedepends=(
   'just'
   'mold'
 )
+optdepends=('power-profiles-daemon: power profiles')
 optdepends=('adw-gtk3')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
