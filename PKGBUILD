@@ -2,7 +2,7 @@
 
 pkgname=cmsis-toolbox
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="CMSIS Toolbox for ARM Cortex-M software development"
 arch=('x86_64')
 url="https://github.com/Open-CMSIS-Pack/cmsis-toolbox"
@@ -14,15 +14,19 @@ package() {
     cd "$srcdir/cmsis-toolbox-linux-amd64"
 
     # Install binaries
+    install -d "$pkgdir/usr/bin"
     install -Dm755 bin/* "$pkgdir/usr/bin/"
 
     # Install configuration files
-    install -Dm644 etc/* -t "$pkgdir/etc/cmsis-toolbox/"
+    install -d "$pkgdir/etc/cmsis-toolbox"
+    cp -dr --no-preserve=ownership etc/* "$pkgdir/etc/cmsis-toolbox"
 
     # Install license
+    install -d "$pkgdir/usr/share/licenses/$pkgname"
     install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     # Install documentation
+    install -d "$pkgdir/usr/share/doc/$pkgname"
     install -Dm644 doc/* -t "$pkgdir/usr/share/doc/$pkgname/"
 }
 
