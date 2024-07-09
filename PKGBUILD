@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=cosmic-settings-git
-pkgver=r352.e7921d0
+pkgver=r421.cb02d51
 pkgrel=1
 pkgdesc="The settings application for the COSMIC desktop environment."
 arch=('x86_64' 'aarch64')
@@ -29,14 +29,15 @@ makedepends=(
   'just'
   'mold'
 )
+optdepends=('adw-gtk3')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/pop-os/cosmic-settings.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/cosmic-settings"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${pkgname%-git}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
