@@ -25,7 +25,7 @@ pkgbase = python-fabric-git
 	optdepends = python-psutil: for system stats, this package is a dependency of the bar example file
 	provides = python-fabric
 	conflicts = python-fabric
-	source = git+http://github.com/Fabric-Development/fabric.git
+	source = git+https://github.com/Fabric-Development/fabric.git
 	sha256sums = SKIP
 
 pkgname = python-fabric-git

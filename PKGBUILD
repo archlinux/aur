@@ -40,20 +40,15 @@ conflicts=(
     python-fabric
 )
 
-source=(git+http://github.com/Fabric-Development/$reponame.git)
+source=(git+https://github.com/Fabric-Development/$reponame.git)
 sha256sums=("SKIP")
-
-pkgver() {
-  cd "$srcdir/$reponame"
-  printf "%s.r%s.%s" "$pkgver" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-}
 
 build() {
   cd "$srcdir/$reponame"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$srcdir/$reponame"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  python -m installer --destdir="$pkgdir/" dist/*.whl
 }
