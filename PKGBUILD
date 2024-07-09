@@ -25,6 +25,7 @@ makedepends=(
     'git'
     'cmake'
     'qt6-base'
+    'gcc13'
 )
 optdepends=()
 provides=('waifu2x-caffe')
@@ -65,8 +66,11 @@ prepare() {
     sed -i 's~-std=c++14~-std=c++17~g' CMakeLists.txt
     sed -i 's~-std=c++14~-std=c++17~g' caffe/Makefile.config
     sed -i 's~-std=c++14~-std=c++17~g' caffe/Makefile.config.example
+    sed -i 's~#include "thrust/device_vector.h"~#include "thrust/version.h"~g' caffe/src/caffe/layers/cudnn_softmax_layer.cpp
 
     cd ${srcdir}/build
+    export CC=/usr/bin/gcc-13
+    export CXX=/usr/bin/g++-13
     cmake "${srcdir}/waifu2x-caffe" -DCMAKE_EXE_LINKER_FLAGS="-Wl,--copy-dt-needed-entries" -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--copy-dt-needed-entries" -DCUDA_NVCC_FLAGS="-D_FORCE_INLINES  -gencode arch=compute_86,code=sm_86 "
     # Fix issue with the compile failing. These flags need to be removed from the CUDA_FLAGS, but I can't find which CMakeFile is generating this line. So just remove it with sed.
     sed -i 's/-Xcudafe --diag_suppress=set_but_not_used -DBOOST_ALL_NO_LIB;-DUSE_LMDB;-DUSE_LEVELDB;-DUSE_CUDNN;-DUSE_OPENCV;-DWITH_PYTHON_LAYER//g' libcaffe/src/caffe/CMakeFiles/caffe.dir/flags.make
@@ -74,6 +78,8 @@ prepare() {
 
 build() {
     cd "${srcdir}/build"
+    export CC=/usr/bin/gcc-13
+    export CXX=/usr/bin/g++-13
     make $MAKEFLAGS
 }
 

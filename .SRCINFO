@@ -8,6 +8,7 @@ pkgbase = waifu2x-caffe
 	makedepends = git
 	makedepends = cmake
 	makedepends = qt6-base
+    makedepends = gcc13
 	depends = cudnn
 	depends = cuda
 	depends = openblas
