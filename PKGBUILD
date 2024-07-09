@@ -27,7 +27,7 @@ build() {
     cd "${pkgname%-git}"
 
     mkdir -p build && cd build
-    cmake ..
+    cmake .. -DAC_ENABLE_LTO=ON -DAC_CORE_ENABLE_FAST_MATH=ON
     cmake --build . --config Release -j8
 }
 
