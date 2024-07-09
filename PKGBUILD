@@ -1,7 +1,7 @@
 # Maintainer: Gabriel de Oliveira <gabrielhk3 at gmail dot com>
 
 pkgname=spotx-linux
-pkgver='1.2.3.1115_2'
+pkgver='1.2.3.1115_3'
 pkgrel=11
 pkgdesc='Spotify Ad blocker based on SpotX for Linux'
 arch=('any')
