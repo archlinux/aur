@@ -28,6 +28,7 @@ build() {
     cd "$srcdir/$_pkgname"
 
     cargo build --release --all-features --frozen
+    
     ./target/release/man 
     ./target/release/completions
 }
@@ -41,24 +42,40 @@ check() {
 
 package() {
     cd "$srcdir/$_pkgname"
-
-    install -Dm755 "./target/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-
-    # install -Dm644 "./data/$_pkgname.conf" "$pkgdir/etc/$_pkgname/$_pkgname.conf"
-    install -d "$pkgdir/etc/$_pkgname/package_managers/"
-
-    # install -Dm644 "./data/$_pkgname.conf" "$pkgdir/usr/share/$_pkgname/"
-    install -Dm644 "./data/template.json" "$pkgdir/usr/share/$_pkgname/template.json"
-
-    install -d "$pkgdir/usr/share/$_pkgname/package_managers/"
-    cp -a "./data/package_managers/"* "$pkgdir/usr/share/$_pkgname/package_managers/"
     
-    install -d "$pkgdir/usr/share/man/man1/"
-    cp -a "./data/man/"*".1" "$pkgdir/usr/share/man/man1/"
+    local sys_conf_dir="etc"
+    local sys_data_dir="usr/share"
+    local sys_bin_dir="usr/bin"
+    
+    local pkg_package_managers_dir="data/package_managers"
+    local pkg_man_dir="data/man"
+    local pkg_completions_dir="data/completions"
 
-    install -Dm644 "./data/completions/$_pkgname.bash"  "$pkgdir/usr/share/bash-completion/completions/$_pkgname.bash"
-    install -Dm644 "./data/completions/$_pkgname.fish"  "$pkgdir/usr/share/fish/vendor_completions.d/$_pkgname.fish"
-    install -Dm644 "./data/completions/_$_pkgname"      "$pkgdir/usr/share/zsh/site-functions/_$_pkgname"
+    install -Dm755 "./target/release/$_pkgname" "$pkgdir/$sys_bin_dir/$_pkgname"
 
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+    # User conf (only the directory is created, the actual files are installed by the user themselves)
+    # install -Dm644 "./data/$_pkgname.conf" "$pkgdir/etc/$_pkgname/$_pkgname.conf"
+    install -d "$pkgdir/$sys_conf_dir/$_pkgname/package_managers/"
+
+    # SAPM conf
+    # install -Dm644 "./data/$_pkgname.conf" "$pkgdir/$sys_data_dir/$_pkgname/"
+    install -Dm644 "./data/template.json" "$pkgdir/$sys_data_dir/$_pkgname/template.json"
+
+    # SAPM package managers
+    install -d "$pkgdir/$sys_data_dir/$_pkgname/package_managers/"
+    cp -a "$pkg_package_managers_dir/"* "$pkgdir/$sys_data_dir/$_pkgname/package_managers/"
+    
+    # Third party vendor package managers (only the directory is created, the actual files are installed by the third party vendors themselves)
+    install -d "$pkgdir/$sys_data_dir/$_pkgname/vendor_package_managers.d/"
+
+    # Manpages
+    install -d "$pkgdir/$sys_data_dir/man/man1/"
+    cp -a "$pkg_man_dir/"*".1" "$pkgdir/$sys_data_dir/man/man1/"
+
+    # Shell Completions
+    install -Dm644 "./$pkg_completions_dir/$_pkgname.bash"  "$pkgdir/$sys_data_dir/bash-completion/completions/$_pkgname.bash"
+    install -Dm644 "./$pkg_completions_dir/$_pkgname.fish"  "$pkgdir/$sys_data_dir/fish/vendor_completions.d/$_pkgname.fish"
+    install -Dm644 "./$pkg_completions_dir/_$_pkgname"      "$pkgdir/$sys_data_dir/zsh/site-functions/_$_pkgname"
+
+    install -Dm644 LICENSE "$pkgdir/$sys_data_dir/licenses/$_pkgname/LICENSE"
 }
