@@ -32,15 +32,9 @@ pkgbase = wazuh-agent
 	backup = var/ossec/etc/client.keys
 	backup = var/ossec/etc/local_internal_options.conf
 	backup = var/ossec/etc/ossec.conf
-	validpgpkeys = 9E646BB0630C8FD18ACD15541B93E6A766CD229D
-	validpgpkeys = 2B9D22B41F2AF1042BFCE73A3CA0B9DF1BE7CE09
 	source_x86_64 = https://packages.wazuh.com/4.x/yum/wazuh-agent-4.8.0-1.x86_64.rpm
-	source_x86_64 = wazuh-agent-4.8.0-1.x86_64.rpm.sig
 	sha512sums_x86_64 = 4e732801f52538f5a8fdb3e41b72e85f7cef02b076f6f61b4786a38584933119e4b7c4e56a976ee55c3a5330e3e0aa5d3f95b8cbf01c0d7e2f485561c16839fd
-	sha512sums_x86_64 = SKIP
 	source_aarch64 = https://packages.wazuh.com/4.x/yum/wazuh-agent-4.8.0-1.aarch64.rpm
-	source_aarch64 = wazuh-agent-4.8.0-1.aarch64.rpm.sig
 	sha512sums_aarch64 = dd4b059f6fde5759361b3d5401f62647e942d53586acd95cf720c5074d3882c20aa7ead50b470cdf1ea3ab78c586c6f0331f0eacac51a6f24e0a0ad09c3448b6
-	sha512sums_aarch64 = SKIP
 
 pkgname = wazuh-agent
