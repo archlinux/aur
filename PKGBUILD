@@ -20,9 +20,8 @@ license=('custom')
 groups=('utility')
 depends=('qt5-base' 'fontconfig' 'libsm' 'libxcursor' 'libxft' 'libxinerama' 'libxrandr' 'zlib')
 makedepends=('sed')
-source_x86_64=("https://www.scootersoftware.com/${pkgbase}-${pkgver}.x86_64.tar.gz")
-source_i686=("https://www.scootersoftware.com/${pkgbase}-${pkgver}.i386.tar.gz")
-sha256sums_x86_64=('a90ed2bb6ee95de0618a4822a9a3084e8c023fddb196679e9e466de05f80ec18')
+source=("https://www.scootersoftware.com/${pkgbase}-${pkgver}.x86_64.tar.gz")
+sha256sums=('a90ed2bb6ee95de0618a4822a9a3084e8c023fddb196679e9e466de05f80ec18')
 options=('!strip') # Do not strip binaries because it breaks them down
 
  prepare() {
