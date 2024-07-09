@@ -1,6 +1,6 @@
 pkgbase = techmino
 	pkgdesc = A collection of various modern block game rules, more ways to play, and some new things added for a new experience.
-	pkgver = 0.17.16
+	pkgver = 0.17.17
 	pkgrel = 1
 	url = https://github.com/26F-Studio/Techmino
 	arch = x86_64
@@ -8,12 +8,12 @@ pkgbase = techmino
 	makedepends = git
 	makedepends = rust
 	depends = love
-	source = techmino-0.17.16.tar.gz::https://github.com/26F-Studio/Techmino/archive/refs/tags/v0.17.16.tar.gz
+	source = techmino-0.17.17.tar.gz::https://github.com/26F-Studio/Techmino/archive/refs/tags/v0.17.17.tar.gz
 	source = ccloader-11.4.2.tar.gz::https://github.com/26F-Studio/cold_clear_ai_love2d_wrapper/archive/refs/tags/11.4.2.tar.gz
 	source = git+https://github.com/26F-Studio/cold-clear.git#tag=23c1cd6e4aa44f2a61daa839ae08dfd3cd5f9da3
 	source = techmino.sh
 	source = techmino.desktop
-	sha256sums = dc53bb84181e2a796be04c8e264ccef018f92a04a72eb1079ed913bd69c78219
+	sha256sums = 9f269c917fb39dcd208cd66ee6d8e1e1b70411bbc925e670284949966f83f3db
 	sha256sums = dc70324e88927763cc68eb86f73374a585d63cdb9773f2776c4ed679944742b5
 	sha256sums = SKIP
 	sha256sums = 9c8ac53a1264722b037ee8c72f5d0bc187ef9d106a3c2f949fb20537fb4c95f7

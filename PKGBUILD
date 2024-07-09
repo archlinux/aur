@@ -1,7 +1,7 @@
 # Maintainer: su226 <thesu226 at outlook dot com>
 
 pkgname=techmino
-pkgver="0.17.16"
+pkgver="0.17.17"
 _ccloader_ver="11.4.2"
 _coldclear_ver="23c1cd6e4aa44f2a61daa839ae08dfd3cd5f9da3"
 pkgrel=1
@@ -30,7 +30,7 @@ source=("techmino-$pkgver.tar.gz::https://github.com/26F-Studio/Techmino/archive
         "techmino.sh"
         "techmino.desktop")
 noextract=()
-sha256sums=("dc53bb84181e2a796be04c8e264ccef018f92a04a72eb1079ed913bd69c78219"
+sha256sums=("9f269c917fb39dcd208cd66ee6d8e1e1b70411bbc925e670284949966f83f3db"
             "dc70324e88927763cc68eb86f73374a585d63cdb9773f2776c4ed679944742b5"
             SKIP
             "9c8ac53a1264722b037ee8c72f5d0bc187ef9d106a3c2f949fb20537fb4c95f7"
