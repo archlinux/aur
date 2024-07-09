@@ -6,7 +6,7 @@
 # Maintainer: David Hummel <hummeltech@sherpaguru.com>
 
 pkgname=mapnik-git
-pkgver=4.0.0.r5.g53900d3
+pkgver=4.0.0.r8.geb99057
 pkgrel=1
 pkgdesc='Free Toolkit for developing mapping applications. Above all Mapnik is about rendering beautiful maps (git version)'
 arch=('i686' 'x86_64')
@@ -44,7 +44,7 @@ source=('git+https://github.com/mapnik/mapnik.git'
         'git+https://github.com/mapnik/test-data.git')
 sha256sums=('SKIP'
             'dabb1b99540a6df86b34511d0d94ef505f706419b7e6d1d69314797ebcdce72f'
-            '15fdd0938ba3106993eadc4186c5a8025ee7680a1289bfbbff9f46ce093dbdef'
+            '9e849db4aad96f9bb167e8aa34fa58e41c877c132bce9c4ab80558982ae37625'
             'SKIP')
 
 pkgver() {
@@ -77,7 +77,8 @@ build() {
     -DUSE_EXTERNAL_MAPBOX_GEOMETRY:BOOL=ON \
     -DUSE_EXTERNAL_MAPBOX_POLYLABEL:BOOL=ON \
     -DUSE_EXTERNAL_MAPBOX_PROTOZERO:BOOL=ON \
-    -DUSE_EXTERNAL_MAPBOX_VARIANT:BOOL=ON
+    -DUSE_EXTERNAL_MAPBOX_VARIANT:BOOL=ON \
+    -Wno-dev
   cmake --build mapnik_build
 }
 
