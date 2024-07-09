@@ -2,7 +2,7 @@
 
 pkgname=zebrad
 pkgver=1.8.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Permissionless financial system employing zero-knowledge security"
 url='https://github.com/ZcashFoundation/zebra'
 source=("zebra-${pkgver//_/-}.tar.gz::${url}/archive/refs/tags/v${pkgver//_/-}.tar.gz")
@@ -13,14 +13,14 @@ sha256sums=(SKIP)
 options=(!debug !lto)
 
 build () {
-  cd "zebra-$pkgver"
+  cd "zebra-$pkgver" || exit
 
   # Build Zebra.
   cargo build --locked --release --features sentry --package zebrad --bin zebrad --target-dir target
 }
 
 package() {
-  cd "zebra-$pkgver"
+  cd "zebra-$pkgver" || exit
 
   # Install the binary.
   install -Dm 755 target/release/zebrad "${pkgdir}/usr/bin/${pkgname}"
