@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="vtm"
-pkgver=0.9.87
+pkgver=0.9.88
 pkgrel=1
 pkgdesc="A text-based desktop environment that runs console applications in floating windows and allows remote access over tunnelling protocols such as SSH"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('glibc' 'gcc-libs')
 makedepends=('cmake' 'gcc')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('2cd4e02522a19dde85b175d161f1b48b60617a881853ec5dc23c737ec5da7029')
+sha256sums=('b305cd1051720c349ce49ee520816ad1c8214b31a5f715594409db5a62ccfd8a')
 
 build() {
   cd "${srcdir}"
