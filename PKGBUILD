@@ -3,7 +3,7 @@ pkgname=chatgptx-bin
 _pkgname=ChatGPTx
 pkgver=1.0.1
 _electronversion=13
-pkgrel=11
+pkgrel=12
 pkgdesc="A tray app for ChatGPT. Using this app you can easily access the ChatGPT from your system tray."
 arch=('x86_64')
 url="https://github.com/florindumitru/chatgpt-desktop-tray"
@@ -11,7 +11,7 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
 )
 options=('!strip')
 source=(
@@ -21,11 +21,12 @@ source=(
 )
 sha256sums=('569172250abf0aafe7084a81997036f8ba39736912fff463c11fa1f2d8cf5b00'
             'c4b2ddb85db30368f3e6c0ffb7ea3de437c72ea65504c2281cdb929bb920b670'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
