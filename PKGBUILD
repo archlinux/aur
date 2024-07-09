@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=jamesdsp-pulse-git
 _app_id=me.timschneeberger.jdsp4linux.pulse
-pkgver=2.7.0.r0.g30a30aa
+pkgver=2.7.0.r17.g5619e28
 pkgrel=1
 pkgdesc="An audio effect processor for PulseAudio clients"
 arch=('x86_64')
@@ -26,7 +26,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd JDSP4Linux
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -42,6 +42,7 @@ prepare() {
 
 build() {
   cd JDSP4Linux
+  CFLAGS+=" -Wno-error=incompatible-pointer-types"
 
   pushd build
   qmake6 .. "CONFIG += USE_PULSEAUDIO"
