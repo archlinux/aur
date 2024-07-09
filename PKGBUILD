@@ -12,13 +12,6 @@ makedepends=(
 	'python-installer'
 	'python-wheel'
 )
-checkdepends=(
-	'python-pytest-freezegun'
-	'python-pytest-mock'
-	'python-pytest-regressions'
-	'python-pytest'
-	'python-deprecated'
-)
 depends=(
 	'python-argcomplete'
 	'python-colorama'
