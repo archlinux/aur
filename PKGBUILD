@@ -7,12 +7,12 @@ pkgname=('systemd-fml'
          'systemd-sysvcompat-fml'
          'systemd-ukify-fml')
 pkgdesc='systemd with machine id from hw patch: https://github.com/systemd/systemd/pull/32086'
-_tag='256.1'
+_tag='256.2'
 # Upstream versioning is incompatible with pacman's version comparisons, one
 # way or another. So we replace dashes and tildes with the empty string to
 # make sure pacman's version comparing does the right thing for rc versions:
 pkgver="${_tag/[-~]/}"
-pkgrel=6
+pkgrel=1
 arch=('x86_64')
 license=('LGPL-2.1-or-later')
 url='https://www.github.com/systemd/systemd'
