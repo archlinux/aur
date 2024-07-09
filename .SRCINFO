@@ -1,6 +1,6 @@
 pkgbase = python-stcal
 	pkgdesc = STScI tools and algorithms used in calibration pipelines
-	pkgver = 1.7.1
+	pkgver = 1.7.3
 	pkgrel = 1
 	url = https://stcal.readthedocs.io
 	arch = i686
@@ -18,8 +18,8 @@ pkgbase = python-stcal
 	makedepends = python-sphinx-asdf
 	makedepends = python-stsci_rtd_theme
 	makedepends = python-gwcs
-	source = https://files.pythonhosted.org/packages/source/s/stcal/stcal-1.7.1.tar.gz
-	md5sums = ab83cae0aa418a4c747e7fc78fbe7cb0
+	source = https://files.pythonhosted.org/packages/source/s/stcal/stcal-1.7.3.tar.gz
+	md5sums = 4b936a6d219d837026afbb8b6e8ae89d
 
 pkgname = python-stcal
 	depends = python>=3.10

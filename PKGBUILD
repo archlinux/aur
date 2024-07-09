@@ -3,7 +3,7 @@
 pkgbase=python-stcal
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.7.1
+pkgver=1.7.3
 pkgrel=1
 pkgdesc="STScI tools and algorithms used in calibration pipelines"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ checkdepends=('python-pytest-doctestplus'
               'python-opencv'
               'python-scipy')   # gwcs already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('ab83cae0aa418a4c747e7fc78fbe7cb0')
+md5sums=('4b936a6d219d837026afbb8b6e8ae89d')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
