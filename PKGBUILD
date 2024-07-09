@@ -2,7 +2,7 @@
 
 # shellcheck disable=SC2034 disable=SC2164
 pkgname=maa-assistant-arknights
-_pkgver=v5.4.0-beta.1
+_pkgver=v5.4.0-beta.2
 pkgver=${_pkgver//-/}
 pkgver=${pkgver#v}
 pkgrel=1
@@ -12,14 +12,14 @@ url="https://github.com/MaaAssistantArknights/MaaAssistantArknights"
 license=('AGPL-3.0-only')
 depends=(opencv onnxruntime cpr)
 makedepends=(asio eigen git cmake)
-_fastdeploy_ref=d0b018ac6c3daa22c7b55b555dc927a5c734d430
+_fastdeploy_ref=2896b6d3641c18218209c496ea149a773373fa8b
 source=("$url/archive/refs/tags/$_pkgver.tar.gz"
         "https://github.com/MaaAssistantArknights/FastDeploy/archive/$_fastdeploy_ref.tar.gz")
 install="${pkgname}.install"
-md5sums=('b09e7d6090dffb66e4b05e79a7e98b32'
-         '93190bbc6785e35e231af5cd4931f16a')
+md5sums=('cf42aa465f8e0eb5162558a3fd5722e7'
+         '795116aab12a8c2eda2a9c7498595ae7')
 
-if ((WITH_GPU)); then
+if ((WITH_CUDA)); then
     depends+=( cuda )
 fi
 
@@ -40,8 +40,8 @@ build() {
         -Dfastdeploy_BINARY_DIR="$srcdir"/build-FastDeploy
     )
 
-    if ((WITH_GPU)); then
-        _cmake_flags+=( -DWITH_GPU=ON -DCUDA_DIRECTORY=/opt/cuda -DCUDA_ARCH_NAME=Auto )
+    if ((WITH_CUDA)); then
+        _cmake_flags+=( -DWITH_CUDA=ON -DCUDA_DIRECTORY=/opt/cuda -DCUDA_ARCH_NAME=Auto )
     fi
 
     CXXFLAGS+=" -fmacro-prefix-map=$srcdir=${DBGSRCDIR:-/usr/src/debug}/${pkgbase:?}"
