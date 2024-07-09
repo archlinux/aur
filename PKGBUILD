@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-session-git
-pkgver=r134.5613bc6
+pkgver=r149.b4561cf
 pkgrel=1
 pkgdesc="Session manager for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
@@ -39,11 +39,15 @@ optdepends=(
   'cosmic-files-git: COSMIC file manager'
   'cosmic-store-git: COSMIC store'
   'cosmic-term-git: COSMIC terminal'
+  'cosmic-wallpapers-git: COSMIC wallpapers'
 
   # Default applications
   # See data/cosmic-mimeapps.list
 #  'abiword'
 #  'brasero'
+#  'cosmic-edit'
+#  'cosmic-files'
+#  'cosmic-store'
 #  'eog'
 #  'dia'
 #  'evince'
@@ -67,7 +71,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
