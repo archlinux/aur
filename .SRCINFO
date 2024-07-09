@@ -1,0 +1,15 @@
+pkgbase = hevi
+	pkgdesc = A modern hex viewer
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Arnau478/hevi
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	provides = hevi
+	source_x86_64 = hevi-x86_64-1.0.0::https://github.com/Arnau478/hevi/releases/download/v1.0.0/hevi-x86_64-linux
+	sha256sums_x86_64 = bdc1d4798319d80316d296fe519e5a68afe45779dc8657d4fee17d944673aeb9
+	source_aarch64 = hevi-aarch64-1.0.0::https://github.com/Arnau478/hevi/releases/download/v1.0.0/hevi-aarch64-linux
+	sha256sums_aarch64 = 4e36d6840ee00d947fc3959c568af502ed9bb7787bffffc960294709b2e2d4c1
+
+pkgname = hevi
