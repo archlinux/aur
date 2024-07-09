@@ -1,6 +1,5 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=paster-bin
-_pkgname=paster
 pkgver=1.0.0
 _electronversion=27
 pkgrel=5
@@ -19,11 +18,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('051afe059a8eb439c7c8250eda48e5c485ed49abd7d82d7f65f6a4148de25309'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
