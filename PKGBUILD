@@ -1,8 +1,8 @@
 # Maintainer: Pierce Thompson <pierce at insprill dot net>
 
 pkgname=anime4kcpp-git
-pkgver=v2.5.0.r278.g0b297fb
-pkgrel=1
+pkgver=v2.5.0.r416.g2578b7b
+pkgrel=2
 pkgdesc="A high performance anime upscaler"
 arch=("x86_64")
 url="https://github.com/TianZerL/Anime4KCPP"
@@ -26,16 +26,15 @@ pkgver() {
 build() {
     cd "${pkgname%-git}"
 
-    mkdir -p build
-    cd build
+    mkdir -p build && cd build
     cmake ..
-    make
+    cmake --build . --config Release -j8
 }
 
 package() {
     cd "${pkgname%-git}"
-    
-    install -Dm755 "build/bin/Anime4KCPP_CLI" "$pkgdir/usr/bin/Anime4KCPP_CLI"
+
+    install -Dm755 "build/bin/ac_cli" "$pkgdir/usr/bin/ac_cli"
     install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
     install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/${pkgname%-git}"
 }

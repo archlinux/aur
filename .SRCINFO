@@ -1,7 +1,7 @@
 pkgbase = anime4kcpp-git
 	pkgdesc = A high performance anime upscaler
-	pkgver = v2.5.0.r278.g0b297fb
-	pkgrel = 1
+	pkgver = v2.5.0.r416.g2578b7b
+	pkgrel = 2
 	url = https://github.com/TianZerL/Anime4KCPP
 	arch = x86_64
 	license = MIT
