@@ -1,6 +1,6 @@
 _basepgkname=llamafile
 pkgname="${_basepgkname}-bin"
-pkgver=0.8.6
+pkgver=0.8.9
 pkgrel=1
 pkgdesc="Distribute and run LLMs with a single file."
 arch=('x86_64')
@@ -12,11 +12,11 @@ optdepends=(
   'rocminfo: Used for verifying existance of rocm'
 	'cuda: Nvidia GPU-Offloading Support'
 	)
-source=(    "${pkgname}::https://github.com/Mozilla-Ocho/llamafile/releases/download/${pkgver}/llamafile-${pkgver}.{zip,xz}"
+source=(    "${pkgname}::https://github.com/Mozilla-Ocho/llamafile/releases/download/${pkgver}/llamafile-${pkgver}.zip"
        )
 
 sha256sums=(
-            '0820ef4ee864decc5200771a581656a61d9baab4597ea416bd33fb7fcb252032'
+            'c0978c9fe7551bc1f6e17caea29687d6c684c820e3444bd47228a2148ac220ab'
            )
 
 provides=(  
@@ -31,7 +31,7 @@ provides=(
             'llamafile-upgrade-engine'
             'zipalign'
         )
-conflicts=('llamafile-git')
+conflicts=('llamafile-git' 'android-sdk-build-tools' 'zipalign')
 options=(!strip)
 
 
