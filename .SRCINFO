@@ -5,6 +5,8 @@ pkgbase = mapbox-polylabel
 	url = https://github.com/mapbox/polylabel
 	arch = any
 	license = ISC
+	checkdepends = gcc13
+	checkdepends = git
 	source = mapbox-polylabel-2.0.1.tar.gz::https://github.com/mapbox/polylabel/archive/v2.0.1.tar.gz
 	sha256sums = d51ec39f9f1bc46c551dfdf642f72057a8c2cde2c5e89bc70e0bd712fad63a75
 
