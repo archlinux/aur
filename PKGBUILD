@@ -2,7 +2,7 @@
 # Contributor: Aloxaf <aloxafx at gamil>
 
 pkgname=hiddify-next
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Multi-platform auto-proxy client, supporting Sing-box, X-ray, TUIC, Hysteria, Reality, Trojan, SSH, etc."
 arch=('x86_64')
@@ -20,23 +20,21 @@ depends=('at-spi2-core'
 makedepends=('clang' 'cmake' 'fvm' 'ninja')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.desktop")
-sha256sums=('29d97b5b6311f18c16a43e045982565edfd19372a8fa3b6dc7e5c5625c8cb110'
-            'f5ea17d65166ee85605863bcf718d09c4b77bf324090bbb4771bbf7bd626987e')
+sha256sums=('8fee65c4368155f2aeefc93ac8049acb0e37d4aaab8c53d1f7743fcccbedd6f6'
+            'fcbf5df6388ebe23f3adb2abe55a61f7eecb7ff5f1731892d3791b7d41142b32')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
-  sed "s/VERSION_PLACEHOLDER/${pkgver}/" -i "${srcdir}/${pkgname}.desktop"
-
   fvm install 3.19.6
   export PATH="${PATH}:$(fvm global 3.19.6 --verbose | awk '/cacheVersion.binPath/ {print $2}')"
 
-  flutter --disable-analytics
+  fvm flutter --disable-analytics
   make linux-prepare
 }
 
 build() {
   cd "${pkgname}-${pkgver}"
-  flutter build linux --release
+  fvm flutter build linux --release --target=lib/main_prod.dart
 }
 
 package() {
