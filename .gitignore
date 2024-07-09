@@ -1,10 +1,10 @@
 /GameNetworkingSockets
-/OpenJKDF2
 /SDL
 /SDL_mixer
 /freeglut
-/glew-cmake
+/glew
 /libpng
+/openjkdf2-git
 /physfs
 /pkg
 /protobuf
