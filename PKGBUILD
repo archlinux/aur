@@ -2,7 +2,7 @@
 _reponame=boxflat
 pkgname=boxflat-git
 pkgver=0.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Adjust your Moza Racing gear settings"
 arch=('x86_64')
 url="https://github.com/Lawstorant/boxflat"
@@ -10,6 +10,7 @@ license=('GPL3')
 depends=(
 	python
 	python-yaml
+	python-pyserial
 	python-gobject
 	python-cairo
 	gtk4
@@ -28,7 +29,7 @@ sha256sums=(
 
 pkgver() {
   cd "$srcdir/$_reponame"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | cut -d "-" -f 1-2 | tr "-" "r"
 }
   
 package() {
