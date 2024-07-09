@@ -1,7 +1,7 @@
 # Maintainer: Josh Ellithorpe <quest@mac.com>
 
 pkgname=bitcoin-abc-qt
-pkgver=0.29.7
+pkgver=0.29.8
 pkgrel=0
 pkgdesc="Bitcoin ABC with bitcoind, bitcoin-cli, bitcoin-tx, bitcoin-seeder and bitcoin-qt"
 arch=('i686' 'x86_64')
@@ -14,12 +14,18 @@ source=(https://github.com/Bitcoin-ABC/bitcoin-abc/archive/v$pkgver.tar.gz
         bitcoin.logrotate
         bitcoin.service
         bitcoin-reindex.service
-        bitcoin.install)
+        bitcoin.install
+        0001-upnp-add-compatibility-for-miniupnpc-2.2.8.patch)
 backup=('etc/bitcoin/bitcoin.conf'
         'etc/logrotate.d/bitcoin')
 provides=('bitcoin-cli' 'bitcoin-daemon' 'bitcoin-tx' 'bitcoin-qt' 'bitcoin-seeder' 'bitcoin-wallet')
 conflicts=('bitcoin-cli' 'bitcoin-daemon' 'bitcoin-tx' 'bitcoin-qt' 'bitcoin-seeder' 'bitcoin-wallet')
 install=bitcoin.install
+
+prepare() {
+    cd "$srcdir/bitcoin-abc-$pkgver"
+    git apply --verbose ../0001-upnp-add-compatibility-for-miniupnpc-2.2.8.patch
+}
 
 build() {
   cd "$srcdir/bitcoin-abc-$pkgver"
@@ -102,9 +108,11 @@ package() {
       "$pkgdir/usr/share/bash-completion/completions/$_compl"
   done
 }
-sha256sums=('d41458765fc44673455e36a7403441a98051a9a7c9c9724ae629a8242137a17b'
+
+sha256sums=('651f1bbd26cfa63a8e98e34dcd2cf1352244ffe46a7f770864364ade3ee1be83'
             'c30e5c7e0e97b001fdeac5f4510d5ebc0e0499ec086325e845db609a24f2e22f'
             '8f05207b586916d489b7d25a68eaacf6e678d7cbb5bfbac551903506b32f904f'
             'f2fd9d8331238727333cf2412ba3759cb194a65b2060eff36808b24c06382104'
             '497dbeefb9cd9792757a9b6e1fbfd92710d19990ee2959add6c30533ae40b6f6'
-            '45429013dae87a58bc79ca7b7a037665bf8592cae0199bcf4aef088fb950e78a')
+            '45429013dae87a58bc79ca7b7a037665bf8592cae0199bcf4aef088fb950e78a'
+            '43a3e8921cc9db310ac3c9681545a96991ab01afe356de6185bfef9c0fc8a2f5')
