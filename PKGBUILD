@@ -1,12 +1,11 @@
 # Maintainer: Eric Torres <eric.torres@its-et.me>
 pkgname=traefik-certificate-manager
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A command-line tool for managing Traefik's acme.json configuration file"
 arch=('x86_64' 'aarch64')
 url="https://github.com/CastawayEGR/traefik-certificate-manager"
 license=('MIT')
-depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/CastawayEGR/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('ac81c5e2868d55964d5a3938d7ffc6f56929a15149975dba658eb4400fc30f04')
