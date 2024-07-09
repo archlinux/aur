@@ -22,7 +22,7 @@ optdepends=(
   'xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)'
 )
 conflicts=('protonmail-desktop')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/ProtonMail/inbox-desktop/releases/download/v$pkgver/inbox-desktop-$pkgver-source.zip"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ProtonMail/inbox-desktop/releases/download/$pkgver/inbox-desktop-$pkgver-source.zip"
         "$pkgname.desktop")
 noextract=("$pkgname-$pkgver.tar.gz")
 sha256sums=('86967d7f07afd09495e160fe89dc35c49f47fcc4bc56ab9746a8df6505944073'
