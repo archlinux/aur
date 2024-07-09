@@ -3,7 +3,7 @@
 _pkgname=flet
 pkgname=python-${_pkgname}
 pkgver=0.23.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Easily build realtime web, mobile and desktop apps in your favorite language and securely share them with your team.'
 url="https://${_pkgname}.dev/"
 license=('Apache')
@@ -28,7 +28,8 @@ makedepends=(
 	'python-wheel'
 	'go'
 	'flutter-engine'
-	'git')
+	'git'
+	'patchelf')
 arch=('x86_64')
 source=(
 	"${_pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}-dev/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
@@ -89,6 +90,13 @@ package() {
 	install -dm0755 "${pkgdir}/${_client_installdir}"
 	cp -r "client/build/linux/x64/release/bundle/"* "$pkgdir/${_client_installdir}"
 	ln -s "/${_client_installdir}/flet" "$pkgdir/usr/bin/flet_view"
+
+	# Fix runpath
+	patchelf --set-rpath '$ORIGIN/lib' "$pkgdir/opt/$pkgname/$_pkgname"
+	for i in "$pkgdir/opt/$pkgname/lib"/*.so; do
+		[ -z "$(patchelf --print-rpath "$i")" ] && continue
+		patchelf --set-rpath '$ORIGIN' "$i"
+	done
 
 	#install -dm0755 "$pkgdir/usr/share/$pkgname"
 	#cp -r 'client/build/web' "$pkgdir/usr/share/$pkgname"
