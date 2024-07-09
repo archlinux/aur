@@ -2,7 +2,7 @@
 # Maintainer: lvxnull <lvxnull at proton dot me>
 
 pkgname=nautilus-open-any-terminal
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="context-menu entry for opening other terminal in nautilus"
 arch=(any)
@@ -11,7 +11,7 @@ license=(GPL3)
 depends=(python-nautilus)
 makedepends=(make)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('1f66f7588c22486100e72e1efff96d7b2977ae05a05b14674417a143666c6a62')
+sha256sums=('96a1cf9ebd24b3a0b33c70c37f6ab39b11e6d11dc374c9199e54a0b1f19e163a')
 
 build() {
   cd "${pkgname}-${pkgver}"
