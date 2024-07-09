@@ -7,8 +7,8 @@ _electron=electron29
 _nodejs="20.9.0"
 
 pkgname=${_pkgname}-electron
-pkgver=1.90.2.24171
-pkgrel=2
+pkgver=1.91.0.24190
+pkgrel=1
 pkgdesc="VS Code without MS branding/telemetry/licensing. - System-wide Electron edition"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/VSCodium/vscodium"
@@ -21,27 +21,31 @@ optdepends=(
 )
 makedepends=('git' 'python' 'nvm' 'jq')
 provides=(
-    'codium'
-    'vscodium'
+	'codium'
+	'vscodium'
 )
 conflicts=(
-    'codium'
-    'vscodium'
-    'vscodium-bin'
-    'vscodium-git'
+	'codium'
+	'vscodium'
+	'vscodium-bin'
+	'vscodium-git'
 )
-source=("git+https://github.com/VSCodium/vscodium.git#tag=${pkgver}"
-		"vscodium-electron.patch"
-		"${_pkgname}.sh"
-		"${_pkgname}.js"
-		"${_pkgname}.desktop"
-		"${_pkgname}-uri-handler.desktop")
-sha256sums=(SKIP
-            'b96a713be2577dd07b727362c77edc7fd0430a5894eead186c1f18f666fc5536'
-            'da8fbd6dcafa667e2b3368ae87ed216e7e76f56ce4a3e4ede426dc129e8f8349'
-            '3010640182f3bb65404eb96e087e3cbe9f2d931c74822cc3c7547712fab1acec'
-            'f76eb3ecf7fa531e0f711938e4e10f82145b5a7bf8b24bda218acb2d47466d60'
-            '6eef345b65bf2679c928c763529540435ab9c6e1836917319810a7a2d484ae1b')
+source=(
+	"git+https://github.com/VSCodium/vscodium.git#tag=${pkgver}"
+	"vscodium-electron.patch"
+	"${_pkgname}.sh"
+	"${_pkgname}.js"
+	"${_pkgname}.desktop"
+	"${_pkgname}-uri-handler.desktop"
+)
+sha256sums=(
+	SKIP
+        'b96a713be2577dd07b727362c77edc7fd0430a5894eead186c1f18f666fc5536'
+        'da8fbd6dcafa667e2b3368ae87ed216e7e76f56ce4a3e4ede426dc129e8f8349'
+        '3010640182f3bb65404eb96e087e3cbe9f2d931c74822cc3c7547712fab1acec'
+        'f76eb3ecf7fa531e0f711938e4e10f82145b5a7bf8b24bda218acb2d47466d60'
+        '6eef345b65bf2679c928c763529540435ab9c6e1836917319810a7a2d484ae1b'
+)
 
 # Even though we don't officially support other archs, let's
 # allow the user to use this PKGBUILD to compile the package
@@ -65,15 +69,15 @@ esac
 shopt -s extglob
 
 _ensure_local_nvm() {
-    # let's be sure we are starting clean
-    which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
-    # Use non-hidden nvm folder
-    export NVM_DIR="${srcdir}/nvm"
+	# let's be sure we are starting clean
+	which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+	# Use non-hidden nvm folder
+	export NVM_DIR="${srcdir}/nvm"
 
-    # The init script returns 3 if version specified
-    # in ./.nvrc is not (yet) installed in $NVM_DIR
-    # but nvm itself still gets loaded ok
-    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+	# The init script returns 3 if version specified
+	# in ./.nvrc is not (yet) installed in $NVM_DIR
+	# but nvm itself still gets loaded ok
+	source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
 }
 
 prepare() {
