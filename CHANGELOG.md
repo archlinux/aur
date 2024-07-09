@@ -1,5 +1,30 @@
 # Changelog
 
+## [0.11.0] - 2024-07-08
+
+### New Features
+- Add ability to restart applications when the `/restart` flag is specified. Useful for when running 3DMigoto/EDHM_UI in VR.
+  Set the new `restartOnRelaunch` property to true in your [settings file].
+  ```json
+  "processes": [{
+    "fileName": "path\\to\\exe",
+    "restartOnRelaunch": true  
+  }]
+  ```
+  
+### Enhancements
+- Enable restart feature for Epic users. It's still not as seamless as non-Epic accounts. Requires the usage of [Legendary]
+  or [Heroic]. Once you've logged in with either, you can go back to using the normal Epic launcher if you wish. It will
+  require re-logging in every few days though, so it may be preferable to just stick with the alternate launchers. 
+  [The Wiki](https://github.com/rfvgyhn/min-ed-launcher/wiki/Using-Legendary-on-Windows) has instructions on how to setup 
+  Legendary.
+- Added an [icon](resources/min-ed-launcher.svg) for the app. Linux users can check the [readme](README.md#icon-on-linux) 
+  for setup instructions.
+- The launcher will now exit instead of waiting for Elite to exit if the following conditions are met:
+  1. `/autoquit` is specified
+  2. `/restart` is not specified
+  3. No external apps specified in `settings.json` (`processes`, `shutdownProcesses`)
+
 ## [0.10.1] - 2024-05-03
 
 ### Bug Fixes
@@ -291,7 +316,8 @@ legendary launch --dry-run 9c203b6ed35846e8a4a9ff1e314f6593 2> >(grep "Launch pa
 
 Initial release
 
-[unreleased]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.10.1...HEAD
+[unreleased]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.11.0...HEAD
+[0.11.0]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.10.1...v0.11.0
 [0.10.1]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.10.0...v0.10.1
 [0.10.0]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.9.0...v0.10.0
 [0.9.0]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.8.2...v0.9.0
@@ -327,4 +353,5 @@ Initial release
 [CVE-2023-36796]: https://github.com/dotnet/announcements/issues/274
 [CVE-2023-36799]: https://github.com/dotnet/announcements/issues/275
 [legendary]: https://github.com/derrod/legendary
+[heroic]: https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher
 [settings file]: README.md#settings
