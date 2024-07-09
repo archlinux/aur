@@ -1,0 +1,11 @@
+pkgbase = cmsis-toolbox
+	pkgdesc = CMSIS Toolbox for ARM Cortex-M software development
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://github.com/Open-CMSIS-Pack/cmsis-toolbox
+	arch = x86_64
+	license = Apache
+	source = cmsis-toolbox-linux-amd64.tar.gz::https://github.com/Open-CMSIS-Pack/cmsis-toolbox/releases/download/2.4.0/cmsis-toolbox-linux-amd64.tar.gz
+	sha256sums = 5d3ee2037c0b729e4834c5bc368dac11d14fd9fc530055dd6335da345be5633e
+
+pkgname = cmsis-toolbox
