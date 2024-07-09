@@ -1,0 +1,13 @@
+pkgbase = k9s-flux
+	pkgdesc = A k9s plugin which provides basic flux commands.
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = x86_64
+	license = APACHE
+	depends = kubectl
+	depends = k9s
+	depends = flux-bin
+	source = k9s-flux-plugins.yaml
+	sha512sums = 495f82e39dda1179631bb66d8ce8f7f9f96e509c6ad3b577411f261183e16ce7ec1078999063cc2980d0abaad8034362e2feafad2f88a0ec3556736cd7ddfa66
+
+pkgname = k9s-flux

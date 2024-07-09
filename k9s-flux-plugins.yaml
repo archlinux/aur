@@ -1,0 +1,42 @@
+plugins:
+  flux-helmrelease-reconcile:
+    shortCut: r
+    confirm: false
+    description: Reconcile Flux HelmRelease
+    scopes:
+      - helmrelease
+    background: true
+    command: bash
+    args:
+      - -c
+      - |
+        flux -n $NAMESPACE suspend helmrelease $NAME
+        flux -n $NAMESPACE resume helmrelease $NAME
+        flux -n $NAMESPACE reconcile helmrelease $NAME --with-source
+  flux-kustomization-reconcile:
+    shortCut: r
+    confirm: false
+    description: Reconcile Flux Kustomization
+    scopes:
+      - kustomization
+    background: true
+    command: bash
+    args:
+      - -c
+      - |
+        flux -n $NAMESPACE suspend kustomization $NAME
+        flux -n $NAMESPACE resume kustomization $NAME
+        flux -n $NAMESPACE reconcile kustomization $NAME --with-source
+  flux-gitrepo-reconcile:
+    shortCut: r
+    confirm: false
+    description: Reconcile Flux gitrepository
+    scopes:
+      - gitrepository
+    background: true
+    command: bash
+    args:
+      - -c
+      - |
+        flux -n $NAMESPACE suspend source git $NAME
+        flux -n $NAMESPACE resume source git $NAME
