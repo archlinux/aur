@@ -3,12 +3,12 @@
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=libnftnl-git
-pkgver=1.2.2.r1.g84d12cf
+pkgver=1.2.6.r36.gfc94d86
 pkgrel=1
 pkgdesc='Netfilter library providing interface to the nf_tables subsystem'
 arch=('x86_64')
 url='https://netfilter.org/projects/libnftnl/'
-license=(GPL2)
+license=('GPL-2.0-or-later')
 depends=('libmnl')
 makedepends=('git')
 provides=(libnftnl)
