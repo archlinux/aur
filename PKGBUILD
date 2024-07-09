@@ -20,11 +20,13 @@ arch=('i686' 'x86_64')
 build () {
 	cd "${srcdir}/${pkgname}/"
 
-	# Possible values for DOWNLOAD_GAMEPACKS are "free" (free gamepacks only), "all" (free + proprietary gamepacks downloaded from different locations)
-	# and "allinone" (free + proprietary gamepacks downloaded from a single archive, provided by the main NRC developper)
+	# Possible values for DOWNLOAD_GAMEPACKS are:
+	# "free" (free gamepacks only, downloaded from different locations)
+	# "all" (free & proprietary gamepacks, downloaded from different locations)
+	# "allinone" (free & proprietary gamepacks downloaded from a single archive, provided by the NRC maintainer)
 	make \
-		RADIANT_ABOUTMSG="NetRadiant-custom ${pkgver}" \
-		DOWNLOAD_GAMEPACKS=allinone
+	 RADIANT_ABOUTMSG="NetRadiant-custom ${pkgver}" \
+	 DOWNLOAD_GAMEPACKS=allinone
 }
 
 package () {
