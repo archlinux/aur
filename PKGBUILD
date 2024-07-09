@@ -6,7 +6,7 @@ pkgrel=2
 pkgdesc="A high performance anime upscaler"
 arch=("x86_64")
 url="https://github.com/TianZerL/Anime4KCPP"
-license=('MIT')
+license=('MIT') # Update this if we compile the video module since it's GPLv3
 depends=('opencv' 'ocl-icd' 'vtk')
 makedepends=('git' 'cmake')
 provides=("${pkgname%-git}")
@@ -35,6 +35,6 @@ package() {
     cd "${pkgname%-git}"
 
     install -Dm755 "build/bin/ac_cli" "$pkgdir/usr/bin/ac_cli"
-    install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
-    install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/${pkgname%-git}"
+    install -Dm644 "LICENSE-MIT" -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
+    install -Dm644 "readme.md" -t "$pkgdir/usr/share/doc/${pkgname%-git}"
 }
