@@ -1,15 +1,14 @@
 pkgbase = analyzemft-git
 	pkgdesc = Fully parse the MFT file from an NTFS filesystem
-	pkgver = 20200202.79a33ce
+	pkgver = 20240501.b6ed04f
 	pkgrel = 1
 	url = https://github.com/dkovar/analyzeMFT
 	arch = any
 	license = CPL
 	makedepends = git
-	makedepends = python2-setuptools
-	depends = python2
+	makedepends = python-setuptools
+	depends = python
 	source = analyzeMFT::git+https://github.com/dkovar/analyzeMFT.git
 	sha256sums = SKIP
 
 pkgname = analyzemft-git
-
