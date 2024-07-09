@@ -1,13 +1,14 @@
 pkgbase = convertall
 	pkgdesc = Convert between units.
 	pkgver = 1.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/doug-101/ConvertAll
 	arch = x86_64
 	license = GPL2
 	makedepends = flutter-engine
 	makedepends = git
 	makedepends = yq
+	makedepends = patchelf
 	depends = gtk3
 	depends = gstreamer
 	depends = gst-plugins-base-libs

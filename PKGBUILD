@@ -9,7 +9,7 @@ pkgname=${_pkgname}
 _pkgreponame='ConvertAll'
 _tag='v1.0.1'
 pkgver="${_tag/v/}"
-pkgrel=2
+pkgrel=3
 pkgdesc='Convert between units.'
 url='https://github.com/doug-101/ConvertAll'
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=(
 	'gtk3'
 	'gstreamer'
 	'gst-plugins-base-libs')
-makedepends=('flutter-engine' 'git' 'yq')
+makedepends=('flutter-engine' 'git' 'yq' 'patchelf')
 source=(
 	"git+${url}.git#tag=${_tag}"
 	'flutter::git+https://github.com/flutter/flutter.git'
@@ -64,6 +64,13 @@ package() {
 	# Folders install
 	cp -r 'lib/' "${pkgdir}/opt/${_pkgname}/"
 	cp -r 'data/' "${pkgdir}/opt/${_pkgname}/"
+
+	# Fix runpath
+	patchelf --set-rpath '$ORIGIN/lib' "$pkgdir/opt/$_pkgname/${execfile}"
+	for i in "$pkgdir/opt/$_pkgname/lib"/*.so; do
+		[ -z "$(patchelf --print-rpath "$i")" ] && continue
+		patchelf --set-rpath '$ORIGIN' "$i"
+	done
 
 	# Symlink executable
 	install -dm755 "${pkgdir}/usr/bin"
