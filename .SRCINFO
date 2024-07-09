@@ -1,0 +1,13 @@
+pkgbase = r-spacefillr
+	pkgdesc = Space-Filling Random and Quasi-Random Sequences
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://cran.r-project.org/package=spacefillr
+	arch = x86_64
+	license = MIT
+	depends = r-rcpp
+	source = https://cran.r-project.org/src/contrib/spacefillr_0.3.3.tar.gz
+	md5sums = 00ba85c2e07532c40537458098843297
+	b2sums = fa703c6cf9c18c1182de5eec0a7972affc5d3bec06ef3295126aa6d7614d3fd952a0165b127a53334fa84c45646def536b7a44ad8cf3c52cb474c542aa398bf3
+
+pkgname = r-spacefillr
