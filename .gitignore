@@ -1,0 +1,14 @@
+/GameNetworkingSockets
+/OpenJKDF2
+/SDL
+/SDL_mixer
+/freeglut
+/glew-cmake
+/libpng
+/physfs
+/pkg
+/protobuf
+/src
+/zlib
+*.tar.gz
+*.zst
