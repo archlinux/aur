@@ -1,0 +1,12 @@
+pkgbase = redpanda-connect
+	pkgdesc = Redpanda Connect is a declarative data streaming service
+	pkgver = 4.30.1
+	pkgrel = 1
+	url = https://docs.redpanda.com/redpanda-connect/about/
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = go
+	source = https://github.com/redpanda-data/connect/archive/refs/tags/v4.30.1.tar.gz
+	sha256sums = 2ab9a68aa59c9a28ae7a1fbd924f3e8d5cb057ef21d1de38b5830c46f77523c2
+
+pkgname = redpanda-connect
