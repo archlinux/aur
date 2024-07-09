@@ -1,6 +1,6 @@
 pkgbase = lefthook-bin
 	pkgdesc = git hooks manager
-	pkgver = 1.6.18
+	pkgver = 1.7.1
 	pkgrel = 1
 	url = https://github.com/evilmartians/lefthook
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = lefthook-bin
 	license = MIT
 	provides = lefthook
 	conflicts = lefthook
-	source_x86_64 = https://github.com/evilmartians/lefthook/releases/download/v1.6.18/lefthook_1.6.18_Linux_x86_64.gz
-	sha256sums_x86_64 = 3fcd3ac2bf8089c1d2ff2a44bd6d7c2ae3fde4d44dd4b1c7ce9484c39eb3aa6a
-	source_aarch64 = https://github.com/evilmartians/lefthook/releases/download/v1.6.18/lefthook_1.6.18_Linux_aarch64.gz
-	sha256sums_aarch64 = 655b3b9d95084d8bc0ab83430cec885da8da3bbacfe9e85da609a6269db09022
+	source_x86_64 = https://github.com/evilmartians/lefthook/releases/download/v1.7.1/lefthook_1.7.1_Linux_x86_64.gz
+	sha256sums_x86_64 = 9ebd8cd5ff3a0b400f10e1ebe00c6edf849973741111f3752b59d4fe1545b740
+	source_aarch64 = https://github.com/evilmartians/lefthook/releases/download/v1.7.1/lefthook_1.7.1_Linux_aarch64.gz
+	sha256sums_aarch64 = 29717661a952597f745bb3df518ef00821d2a4344a4f6e02ca8dbcbae2f0439f
 
 pkgname = lefthook-bin
