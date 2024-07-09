@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-settings-daemon-git
-pkgver=r45.fa09322
+pkgver=r65.81a5305
 pkgrel=1
-pkgdesc="WIP COSMIC settings daemon"
+pkgdesc="Cosmic settings daemon"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-settings-daemon"
 license=('GPL-3.0-or-later')
@@ -11,6 +11,7 @@ depends=(
   'acpid'
   'adw-gtk3'
   'geoclue'
+  'libinput'
   'systemd-libs'
 )
 makedepends=(
@@ -25,7 +26,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
