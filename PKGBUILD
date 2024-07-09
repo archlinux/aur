@@ -104,10 +104,11 @@ prepare() {
   git config submodule.SDL_mixer.url "$srcdir"/SDL_mixer
   git -c protocol.file.allow=always submodule update --init \
     lib/SDL_mixer
+
+  CC=clang CXX=clang++ cmake -B ../"${pkgname}-build" -S .
 }
 
 build() {
-  CC=clang CXX=clang++ cmake -B "${pkgname}-build" -S OpenJKDF2
   cmake --build "${pkgname}-build"
 }
 
