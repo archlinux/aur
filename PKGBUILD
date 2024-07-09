@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=akuse-git
 _pkgname=Akuse
-pkgver=1.2.0.r0.g7d7fbc3
+pkgver=1.3.0.r0.ga538e7a
 _electronversion=26
 _nodeversion=20
 pkgrel=1
