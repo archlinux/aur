@@ -1,13 +1,11 @@
 pkgbase = polar-bin
-	pkgdesc = One-click Bitcoin Lightning networks for local app development & testing
+	pkgdesc = One-click Bitcoin Lightning networks for local app development & testing.Use system-wide electron.
 	pkgver = 2.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://lightningpolar.com/
 	arch = x86_64
 	license = MIT
-	depends = electron13-bin
-	depends = docker
-	depends = docker-compose
+	depends = electron13
 	provides = polar=2.2.0
 	conflicts = polar
 	source = polar-2.2.0.deb::https://github.com/jamaljsr/polar/releases/download/v2.2.0/polar-linux-amd64-V2.2.0.deb
@@ -15,6 +13,6 @@ pkgbase = polar-bin
 	source = polar.sh
 	sha256sums = d7065df8c171fc6b6231dc928bc3dbff62c243417e402fd2d4645a4b453868db
 	sha256sums = 971e947b52af09847d493b326953f2cbc91669441eab0d5e74eac38b8e162904
-	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = polar-bin
