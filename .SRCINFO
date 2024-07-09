@@ -1,11 +1,11 @@
 pkgbase = protobuf-21
 	pkgdesc = Protocol Buffers (legacy)
 	pkgver = 21.12
-	pkgrel = 2
+	pkgrel = 3
 	url = https://developers.google.com/protocol-buffers/
 	arch = aarch64
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = cmake
 	makedepends = python-build
 	makedepends = python-installer
@@ -19,8 +19,8 @@ pkgbase = protobuf-21
 	source = python3.11.patch::https://github.com/protocolbuffers/protobuf/commit/da973aff.patch
 	source = fix-abi.patch::https://github.com/protocolbuffers/protobuf/commit/101b6199.patch
 	sha256sums = 22fdaf641b31655d4b2297f9981fa5203b2866f8332d3c6333f6b0107bb320de
-	sha256sums = 15ac9215cbbe1648dd92a0c4fc9ac3088d815bc5d86b8b1989cdc402a5f78ec5
-	sha256sums = 96c4f97f662589d5daa0857ad47f740853cf273f817de21612383d76e4243b44
+	sha256sums = bab85c38125205c11c669080f17af3e8c0a497df41e57cd47ec86b50fd53b56d
+	sha256sums = 5eee1dd6898007307d9d286be8e45e5e5cf4d6e6d594fd5f49b236df4bfe2ac1
 
 pkgname = protobuf-21
 	provides = libprotoc.so

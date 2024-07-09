@@ -13,19 +13,19 @@
 _name=protobuf
 pkgname=protobuf-21
 pkgver=21.12
-pkgrel=2
+pkgrel=3
 pkgdesc='Protocol Buffers (legacy)'
 arch=(aarch64 x86_64)
 url='https://developers.google.com/protocol-buffers/'
-license=(BSD)
+license=(BSD-3-Clause)
 depends=(abseil-cpp11 gcc-libs glibc zlib)
 makedepends=(cmake python-build python-installer python-setuptools python-wheel)
 source=("https://github.com/protocolbuffers/$_name/archive/v$pkgver/$_name-$pkgver.tar.gz"
         "python3.11.patch::https://github.com/protocolbuffers/$_name/commit/da973aff.patch"
         "fix-abi.patch::https://github.com/protocolbuffers/$_name/commit/101b6199.patch")
 sha256sums=('22fdaf641b31655d4b2297f9981fa5203b2866f8332d3c6333f6b0107bb320de'
-            '15ac9215cbbe1648dd92a0c4fc9ac3088d815bc5d86b8b1989cdc402a5f78ec5'
-            '96c4f97f662589d5daa0857ad47f740853cf273f817de21612383d76e4243b44')
+            'bab85c38125205c11c669080f17af3e8c0a497df41e57cd47ec86b50fd53b56d'
+            '5eee1dd6898007307d9d286be8e45e5e5cf4d6e6d594fd5f49b236df4bfe2ac1')
 
 prepare() {
   cd $_name-$pkgver
