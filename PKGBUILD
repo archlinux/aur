@@ -2,7 +2,7 @@
 # Contributer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=fspviewer
-pkgver=2.1.0
+pkgver=2.2
 pkgrel=1
 pkgdesc="A standalone viewer for spherical (equirectangular) panoramic images"
 arch=('x86_64')
@@ -12,13 +12,13 @@ depends=('gtk2'
          'libsm'
          'libpng12')
 makedepends=('gendesk')
-source=("${pkgname}-${pkgver}.tar.gz::http://www.fsoft.it/FSPViewer/dwn-files/FSPViewer-${pkgver}-64.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::http://www.fsoft.it/FSPViewer/dwn-files/${pkgname}-${pkgver}-amd64.tar.gz"
         'fspviewer.png')
-sha256sums=('3bb70c654037225c4f9b8198eb893ab5b21dbaf6b2917a17fa1792b4d5adcde6'
-            'SKIP')
+sha256sums=('349a0c747d13ccb42d64463718226b3e7bc98ad959f81b70c8f91a8c975fafce'
+	    'SKIP')
 
 package() {
-  install -Dm755 FSPViewer64 "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm755 fspviewer "${pkgdir}/usr/bin/${pkgname}"
   echo "This program is freeware: you can use it for free but the source code is not available." > LICENSE
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm644 fspviewer.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
