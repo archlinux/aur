@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mockoon
-pkgver=8.2.0
+pkgver=8.3.0
 _electronversion=29
 _nodeversion=20
 pkgrel=1
@@ -25,7 +25,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('a6b0be10eff0687d50571a94fac27d854cf19567af0770fbb6d691313f7a29cb'
+sha256sums=('e276672c0e6de2cd49d3abb08f8fdf9f1bcc16485267ae88aa55cd77ce96cd56'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -59,10 +59,10 @@ build() {
         echo "Your network is OK."
     fi
     sed 's|electron-builder.linux.js",|electron-builder.linux.js --dir",|g' -i packages/desktop/package.json
-    npm run bootstrap
-    npm run build:libs
-    npm run build:desktop:prod
-    npm run package:desktop:linux
+    NODE_ENV=development npm run bootstrap
+    NODE_ENV=production npm run build:libs
+    NODE_ENV=production npm run build:desktop:prod
+    NODE_ENV=production npm run package:desktop:linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
