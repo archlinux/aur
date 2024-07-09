@@ -1,0 +1,18 @@
+pkgbase = python-fastapi-cli
+	pkgdesc = Run and manage FastAPI apps from the command line with FastAPI CLI
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/tiangolo/fastapi-cli
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-pdm-backend
+	depends = python
+	depends = python-typer
+	optdepends = fastapi: FastAPI framework, high performance, easy to learn, fast to code, ready for production
+	optdepends = uvicorn: Uvicorn as ASGI server
+	source = fastapi-cli-0.0.4.tar.gz::https://github.com/tiangolo/fastapi-cli/archive/0.0.4.tar.gz
+	sha256sums = 094c11ac845917033e6eb84b1005b34592f80a2dcd21f3dc3e0091ff6e31fe61
+
+pkgname = python-fastapi-cli
