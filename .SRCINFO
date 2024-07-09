@@ -1,12 +1,12 @@
 pkgbase = gopher-bin
 	pkgdesc = Cross-Platform Desktop Password Manager
 	pkgver = 1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/HusnainTaj/Gopher
 	arch = x86_64
 	license = MIT
 	makedepends = gendesk
-	depends = electron2-bin
+	depends = electron2
 	provides = gopher=1
 	conflicts = gopher
 	source = gopher-1.zip::https://github.com/HusnainTaj/Gopher/releases/download/v1/gopher-linux-x64.zip
@@ -16,6 +16,6 @@ pkgbase = gopher-bin
 	sha256sums = 3d1ada1614d852f49d3606faa95eb4425829693cefa738bf2359b2a86ccacb95
 	sha256sums = a48a85aa1cf632a0e34abe0696865e1a379bcbd6878a9e10bedd400e1ec2a90f
 	sha256sums = cd28f93efae53392db346b89ea3a61c8cbad465c20cfb1083e827cfff8e62090
-	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = gopher-bin
