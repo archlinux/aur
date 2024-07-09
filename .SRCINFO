@@ -5,6 +5,7 @@ pkgbase = spotx-linux
 	url = https://github.com/Nuzair46/SpotX-Linux
 	arch = any
 	license = custom
+	depends = spotify
 	depends = perl
 	depends = unzip
 	depends = zip
