@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=android-toolkit-bin
-_appname=Android-Toolkit
+_pkgname=Android-Toolkit
 pkgver=1.5.21
 _electronversion=25
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross platform desktop app written in Typescript/Node using React and Electron.A GUI for adb and can be used to modify android devices such as firesticks and google TVs."
 arch=('x86_64')
 url="https://github.com/AnthonyGress/Android-Toolkit"
@@ -12,23 +12,28 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'android-sdk-platform-tools'
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
 )
 makedepends=(
     'fuse2'
 )
+options=(
+    '!strip'
+    '!emptydirs'
+)
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_appname}.AppImage"
+    "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}.AppImage"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/AnthonyGress/Android-Toolkit/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('e2b63d85b4dcf02f4e433b027871d20119eb56fb0dc6b21a6b661da040c7279b'
             '65cb0d2fdca7e4375a2ab466fb1e37fef2514eb10c88c5cf8998893a77295176'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
@@ -46,6 +51,6 @@ package() {
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm755 -d "${pkgdir}/usr/bin/${_appname}/"{apks,platform-tools}
-    ln -sf "/opt/android-sdk/platform-tools/adb" "${pkgdir}/usr/bin/${_appname}/platform-tools/adb"
+    install -Dm755 -d "${pkgdir}/usr/bin/${_pkgname}/"{apks,platform-tools}
+    ln -sf "/opt/android-sdk/platform-tools/adb" "${pkgdir}/usr/bin/${_pkgname}/platform-tools/adb"
 }
