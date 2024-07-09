@@ -26,6 +26,9 @@ prepare() {
   # Migrate tests to Python 3
   # (It may not be ideal, but it works.)
   patch -p1 < "$srcdir"/pdf2djvu-tests-python-3.patch
+
+  # fix build with poppler >= 24.04.00 (that is built with C++20 standard)
+  sed -i -e 's/CXXFLAGS = /CXXFLAGS = -std=c++20 /' "$srcdir"/${pkgname}-${pkgver}/autoconf.mk.in
 }
 
 build() {
