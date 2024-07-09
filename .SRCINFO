@@ -11,6 +11,7 @@ pkgbase = swayosd-percentage-display-git
 	makedepends = cargo
 	makedepends = meson
 	makedepends = ninja
+	makedepends = sassc
 	depends = gtk3
 	depends = gtk-layer-shell
 	depends = pulseaudio

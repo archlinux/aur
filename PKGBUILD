@@ -11,7 +11,7 @@ arch=('x86_64' 'aarch64' 'i686')
 url="https://github.com/Ferdi265/SwayOSD"
 license=('GPL3')
 depends=('gtk3' 'gtk-layer-shell' 'pulseaudio' 'libinput')
-makedepends=('git' 'cargo' 'meson' 'ninja')
+makedepends=('git' 'cargo' 'meson' 'ninja' 'sassc')
 provides=("${_pkgname}" "${_pkgname}-git")
 conflicts=("${_pkgname}" "${_pkgname}-git")
 source=("git+${url}.git#branch=volume-brightness-percentage")
