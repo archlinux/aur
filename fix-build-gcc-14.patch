@@ -1,0 +1,307 @@
+diff -Naur src/cd/src/cairo/cdcairodbuf.c src.new/cd/src/cairo/cdcairodbuf.c
+--- cd/src/cairo/cdcairodbuf.c	2020-05-05 04:51:21.000000000 +0200
++++ cd/src/cairo/cdcairodbuf.c	2024-07-10 13:15:50.351887712 +0200
+@@ -65,8 +65,9 @@
+   get_killdbuffer_attrib
+ };
+ 
+-static void cdcreatecanvas(cdCanvas* canvas, cdCanvas* canvas_dbuffer)
++static void cdcreatecanvas(cdCanvas* canvas, void* canvas_dbuffer_x)
+ {
++  cdCanvas *canvas_dbuffer = canvas_dbuffer_x;
+   int w, h;
+   cdCtxCanvas* ctxcanvas;
+   cdImage* image_dbuffer;
+diff -Naur src/cd/src/drv/cdim.c src.new/cd/src/drv/cdim.c
+--- cd/src/drv/cdim.c	2020-05-05 04:51:21.000000000 +0200
++++ cd/src/drv/cdim.c	2024-07-10 13:15:50.355221044 +0200
+@@ -185,8 +185,9 @@
+ 
+ static void(*cdcreatecanvasIMAGERGB)(cdCanvas* canvas, void *data) = NULL;
+ 
+-static void cdcreatecanvas(cdCanvas* canvas, imImage* image)
++static void cdcreatecanvas(cdCanvas* canvas, void* image_x)
+ {
++  imImage *image = image_x;
+   char data_s[100];
+   double res = 0;
+   const char* res_unit;
+diff -Naur src/cd/src/drv/cdirgb.c src.new/cd/src/drv/cdirgb.c
+--- cd/src/drv/cdirgb.c	2020-05-05 04:51:21.000000000 +0200
++++ cd/src/drv/cdirgb.c	2024-07-10 13:15:50.351887712 +0200
+@@ -1967,8 +1967,9 @@
+   cdCanvasWriteMode(canvas_dbuffer, old_writemode);
+ }
+ 
+-static void cdcreatecanvasDB(cdCanvas* canvas, cdCanvas* canvas_dbuffer)
++static void cdcreatecanvasDB(cdCanvas* canvas, void* canvas_dbuffer_x)
+ {
++  cdCanvas* canvas_dbuffer = canvas_dbuffer_x;
+   char rgbdata[100];
+   int w, h;
+ 
+diff -Naur src/cd/src/drv/pptx.c src.new/cd/src/drv/pptx.c
+--- cd/src/drv/pptx.c	2020-05-05 04:51:21.000000000 +0200
++++ cd/src/drv/pptx.c	2024-07-10 13:15:50.351887712 +0200
+@@ -1548,9 +1548,9 @@
+ 
+   cdDirClose(dirData);
+ 
+-  ret = minizip(filename, dirname, files, i);
++  ret = minizip(filename, dirname, (const char **)files, i);
+ 
+-  removeTempFiles(dirname, files, i);
++  removeTempFiles(dirname, (const char **)files, i);
+ 
+   for (i = 0; i < count; ++i)
+     free(files[i]);
+diff -Naur src/cd/src/intcgm/cd_intcgm.c src.new/cd/src/intcgm/cd_intcgm.c
+--- cd/src/intcgm/cd_intcgm.c	2020-05-05 04:51:22.000000000 +0200
++++ cd/src/intcgm/cd_intcgm.c	2024-07-10 13:15:50.355221044 +0200
+@@ -95,8 +95,10 @@
+     return v*cd_cgm->scale_factor;
+ }
+ 
+-static void cdcgm_BeginMetafile(const char* name, cdCGM* cd_cgm)
++static void cdcgm_BeginMetafile(const char* name, void* cd_cgm_x)
+ {
++  cdCGM *cd_cgm = cd_cgm_x;
++
+   if (cdcgmbegmtfcb)
+   {
+     int ret = cdcgmbegmtfcb(cd_cgm->canvas, &(cd_cgm->xmin), &(cd_cgm->ymin), 
+@@ -108,9 +110,10 @@
+   (void)name;
+ }
+ 
+-static void cdcgm_BeginPicture(const char* name, cdCGM* cd_cgm)
++static void cdcgm_BeginPicture(const char* name, void* cd_cgm_x)
+ {
+   int width, height;
++  cdCGM *cd_cgm = cd_cgm_x;
+ 
+   if (cd_cgm->first_pic) 
+     cd_cgm->first_pic = 0;
+@@ -130,8 +133,10 @@
+   }
+ }
+ 
+-static void cdcgm_BeginPictureBody(cdCGM* cd_cgm)
++static void cdcgm_BeginPictureBody(void* cd_cgm_x)
+ {
++  cdCGM *cd_cgm = cd_cgm_x;
++
+   if (cdcgmbegpictbcb)
+   {
+     /* TODO: the documentation does not describe these parameters, 
+@@ -167,8 +172,10 @@
+   }
+ }
+ 
+-static void cdcgm_DeviceExtent(cgmPoint* first, cgmPoint* second, cdCGM* cd_cgm)
++static void cdcgm_DeviceExtent(cgmPoint* first, cgmPoint* second, void* cd_cgm_x)
+ {
++  cdCGM *cd_cgm = cd_cgm_x;
++
+   if (cdcgmvdcextcb)
+   {
+     int ret = cdcgmvdcextcb(cd_cgm->canvas, 1,  /* report as REAL always */
+@@ -197,8 +204,10 @@
+     cd_cgm->scale = 0;
+ }
+ 
+-static void cdcgm_ScaleMode(int metric, double* factor, cdCGM* cd_cgm)
++static void cdcgm_ScaleMode(int metric, double* factor, void* cd_cgm_x)
+ {
++  cdCGM *cd_cgm = cd_cgm_x;
++
+   if (cdcgmsclmdecb) 
+   {
+     short draw_metric = 0;
+@@ -220,41 +229,48 @@
+   }
+ }
+ 
+-static void cdcgm_BackgroundColor(cgmRGB color, cdCGM* cd_cgm)
++static void cdcgm_BackgroundColor(cgmRGB color, void* cd_cgm_x)
+ {
++  cdCGM *cd_cgm = cd_cgm_x;
++
+   cdCanvasSetBackground(cd_cgm->canvas, cdEncodeColor(color.red, color.green, color.blue));
+ }
+ 
+-static void cdcgm_Transparency(int transp, cgmRGB color, cdCGM* cd_cgm)
++static void cdcgm_Transparency(int transp, cgmRGB color, void* cd_cgm_x)
+ {
++  cdCGM *cd_cgm = cd_cgm_x;
+   int style = transp? CD_TRANSPARENT: CD_OPAQUE;
+   cdCanvasSetBackground(cd_cgm->canvas, cdEncodeColor(color.red, color.green, color.blue));
+   cdCanvasBackOpacity (cd_cgm->canvas, style);
+ }
+ 
+-static void cdcgm_ClipRectangle(cgmPoint first, cgmPoint second, cdCGM* cd_cgm)
++static void cdcgm_ClipRectangle(cgmPoint first, cgmPoint second, void* cd_cgm_x)
+ {
++  cdCGM *cd_cgm = cd_cgm_x;
+   cdfCanvasClipArea(cd_cgm->canvas, sScaleX(first.x), sScaleX(second.x),
+                                     sScaleY(first.y), sScaleY(second.y));
+ }
+ 
+-static void cdcgm_ClipIndicator(int clip, cdCGM* cd_cgm)
++static void cdcgm_ClipIndicator(int clip, void* cd_cgm_x)
+ {
++  cdCGM *cd_cgm = cd_cgm_x;
+   int style = clip? CD_CLIPAREA: CD_CLIPOFF;
+   cdCanvasClip(cd_cgm->canvas, style);
+ }
+ 
+-static void cdcgm_PolyLine(int n, cgmPoint* pt, cdCGM* cd_cgm)
++static void cdcgm_PolyLine(int n, cgmPoint* pt, void* cd_cgm_x)
+ {
++  cdCGM *cd_cgm = cd_cgm_x;
+   int i;
+   for (i=1; i<n; i+=2)
+     cdfCanvasLine(cd_cgm->canvas, sScaleX(pt[i-1].x), sScaleY(pt[i-1].y), 
+                                   sScaleX(pt[i].x),   sScaleY(pt[i].y));
+ }
+ 
+-static void cdcgm_PolyMarker(int n, cgmPoint* pt, cdCGM* cd_cgm)
++static void cdcgm_PolyMarker(int n, cgmPoint* pt, void* cd_cgm_x)
+ {
+   int i;
++  cdCGM *cd_cgm = cd_cgm_x;
+ 
+   if (cdCanvasMarkType(cd_cgm->canvas, CD_QUERY)==CD_BOX)
+   {
+@@ -269,14 +285,16 @@
+   }
+ }
+ 
+-static void cdcgm_Rectangle(cgmPoint first, cgmPoint second, cdCGM* cd_cgm)
++static void cdcgm_Rectangle(cgmPoint first, cgmPoint second, void* cd_cgm_x)
+ {
++  cdCGM *cd_cgm = cd_cgm_x;
+   cdfCanvasBox(cd_cgm->canvas, sScaleX(first.x), sScaleX(second.x),
+                                sScaleY(first.y), sScaleY(second.y));
+ }
+ 
+-static void cdcgm_Polygon(int n, cgmPoint* pt, int fill, cdCGM* cd_cgm)
++static void cdcgm_Polygon(int n, cgmPoint* pt, int fill, void* cd_cgm_x)
+ {
++  cdCGM *cd_cgm = cd_cgm_x;
+   int i, style;
+ 
+   style = CD_FILL;
+@@ -297,13 +315,15 @@
+   cdCanvasEnd(cd_cgm->canvas);
+ }
+ 
+-static void cdcgm_Circle(cgmPoint center, double radius, cdCGM* cd_cgm)
++static void cdcgm_Circle(cgmPoint center, double radius, void* cd_cgm_x)
+ {
++  cdCGM *cd_cgm = cd_cgm_x;
+   cdfCanvasSector(cd_cgm->canvas, sScaleX(center.x), sScaleY(center.y), sScaleW(2*radius), sScaleH(2*radius), 0, 360);
+ }
+ 
+-static void cdcgm_Ellipse(cgmPoint center, cgmPoint first, cgmPoint second, cdCGM* cd_cgm)
++static void cdcgm_Ellipse(cgmPoint center, cgmPoint first, cgmPoint second, void* cd_cgm_x)
+ {
++  cdCGM *cd_cgm = cd_cgm_x;
+   double w = 2*sScaleW(second.x-first.x);
+   double h = 2*sScaleH(second.y-first.y);
+   cdfCanvasSector(cd_cgm->canvas, sScaleX(center.x), sScaleY(center.y), w, h, 0, 360);
+@@ -348,8 +368,9 @@
+   }
+ }
+ 
+-static void cdcgm_CircularArc(cgmPoint center, double radius, double angle1, double angle2, int arc, cdCGM* cd_cgm)
++static void cdcgm_CircularArc(cgmPoint center, double radius, double angle1, double angle2, int arc, void* cd_cgm_x)
+ {
++  cdCGM *cd_cgm = cd_cgm_x;
+   fix_angles(cd_cgm, &angle1, &angle2);
+ 
+   if (arc==CGM_OPENARC)
+@@ -363,8 +384,9 @@
+   }
+ }
+ 
+-static void cdcgm_EllipticalArc(cgmPoint center, cgmPoint first, cgmPoint second, double angle1, double angle2, int arc, cdCGM* cd_cgm)
++static void cdcgm_EllipticalArc(cgmPoint center, cgmPoint first, cgmPoint second, double angle1, double angle2, int arc, void* cd_cgm_x)
+ {
++  cdCGM *cd_cgm = cd_cgm_x;
+   /* oriented ellipsis are not supported in CD */
+   double w = 2*sScaleW(second.x-first.x);
+   double h = 2*sScaleH(second.y-first.y);
+@@ -382,8 +404,9 @@
+   }
+ }
+ 
+-static void cdcgm_CellArray(cgmPoint corner1, cgmPoint corner2, cgmPoint corner3, int w, int h, unsigned char* rgb, cdCGM* cd_cgm)
++static void cdcgm_CellArray(cgmPoint corner1, cgmPoint corner2, cgmPoint corner3, int w, int h, unsigned char* rgb, void* cd_cgm_x)
+ {
++  cdCGM *cd_cgm = cd_cgm_x;
+   int cx1, cy1, cx2, cy2, cx3, cy3, 
+       tmp, i, j, count, off, rgb_off;
+   unsigned char *r, *g, *b;
+@@ -521,13 +544,15 @@
+   free(r);
+ }
+ 
+-static void cdcgm_Text(const char* text, cgmPoint pos, cdCGM* cd_cgm)
++static void cdcgm_Text(const char* text, cgmPoint pos, void* cd_cgm_x)
+ {
++  cdCGM *cd_cgm = cd_cgm_x;
+   cdfCanvasText(cd_cgm->canvas, sScaleX(pos.x), sScaleY(pos.y), text);
+ }
+ 
+-static void cdcgm_TextAttrib(const char* horiz_align, const char* vert_align, const char* font, double height, cgmRGB color, cgmPoint base_dir, cdCGM* cd_cgm)
++static void cdcgm_TextAttrib(const char* horiz_align, const char* vert_align, const char* font, double height, cgmRGB color, cgmPoint base_dir, void* cd_cgm_x)
+ {
++  cdCGM *cd_cgm = cd_cgm_x;
+   char* str, type_face[256];
+   double angle;
+ 
+@@ -628,8 +653,9 @@
+   }
+ }
+ 
+-static void cdcgm_LineAttrib(const char *type, const char *cap, const char *join, double width, const char *mode, cgmRGB color, cdCGM* cd_cgm)
++static void cdcgm_LineAttrib(const char *type, const char *cap, const char *join, double width, const char *mode, cgmRGB color, void* cd_cgm_x)
+ {
++  cdCGM *cd_cgm = cd_cgm_x;
+   int style = CD_CONTINUOUS;
+   int linecap = CD_CAPFLAT;
+   int linejoin = CD_MITER;
+@@ -672,8 +698,9 @@
+   cdCanvasForeground(cd_cgm->canvas, cdEncodeColor(color.red, color.green, color.blue));
+ }
+ 
+-static void cdcgm_MarkerAttrib(const char *type, double size, const char *mode, cgmRGB color, cdCGM* cd_cgm)
++static void cdcgm_MarkerAttrib(const char *type, double size, const char *mode, cgmRGB color, void* cd_cgm_x)
+ {
++  cdCGM *cd_cgm = cd_cgm_x;
+   int style = CD_PLUS;
+   if (strcmp(type, "DOT")==0)
+     style = CD_BOX;  /* actually a pixel */
+@@ -695,8 +722,9 @@
+   cdCanvasForeground(cd_cgm->canvas, cdEncodeColor(color.red, color.green, color.blue));
+ }
+ 
+-static void cdcgm_FillAttrib(const char* type, cgmRGB color, const char* hatch, cgmPattern* pat, cdCGM* cd_cgm)
++static void cdcgm_FillAttrib(const char* type, cgmRGB color, const char* hatch, cgmPattern* pat, void* cd_cgm_x)
+ {
++  cdCGM *cd_cgm = cd_cgm_x;
+   int style = CD_SOLID;
+   if (strcmp(type, "HOLLOW")==0)
+     style = CD_HOLLOW;
+@@ -743,8 +771,9 @@
+   }
+ }
+ 
+-static int cdcgm_Counter(double percent, cdCGM* cd_cgm)
++static int cdcgm_Counter(double percent, void* cd_cgm_x)
+ {
++  cdCGM *cd_cgm = cd_cgm_x;
+   if (cdcgmcountercb)
+   {
+     int ret = cdcgmcountercb(cd_cgm->canvas, percent);

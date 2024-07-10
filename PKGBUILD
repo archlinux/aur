@@ -6,7 +6,7 @@ pkgbase=libcd
 pkgname=('libcd' 'lua-cd' 'lua51-cd' 'lua52-cd' 'lua53-cd')
 pkgdesc="Canvas Draw - 2D vector graphics library"
 pkgver=5.14
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="https://www.tecgraf.puc-rio.br/cd/"
 makedepends=('glu' 'pdflib-lite' 'lsb-release' 'lua' 'lua51' 'lua52' 'lua53' 'lua-im' 'lua51-im' 'lua52-im' 'lua53-im')
@@ -16,10 +16,12 @@ source=(
   "https://downloads.sourceforge.net/project/canvasdraw/${pkgver}/Docs%20and%20Sources/cd-${pkgver}_Sources.tar.gz"
   "https://downloads.sourceforge.net/project/canvasdraw/${pkgver}/Docs%20and%20Sources/ftgl-${_ftglver}_Sources.tar.gz"
   "https://downloads.sourceforge.net/project/canvasdraw/${pkgver}/Docs%20and%20Sources/cd-${pkgver}_Docs.pdf"
+  fix-build-gcc-14.patch
 )
 md5sums=('e53cf5f6f9048cc6daad92dd910511a3'
          'dcad37c50e5832150ef3382d12f3182d'
-         'c8abe5349f426228f9219ceb134e84ac')
+         'c8abe5349f426228f9219ceb134e84ac'
+         '370882f1bc46c3e2bf9713820c2b5880')
 
 prepare() {
   # Statically link internal ftgl library. It contains Tecgraf's extensions needed by libcdgl.so
@@ -33,6 +35,10 @@ prepare() {
 
   # patch to link to pdflib-lite correctly (AUR pdflib-lite is just named libpdf instead of libpdflib)
   sed 's|LIBS += pdflib|LIBS += pdf|' -i "$srcdir"/cd/tecmake.mak
+
+  # patch for building with gcc 14
+  # temporary - remove when it is fixed in upstream
+  patch -p0 < "$srcdir"/fix-build-gcc-14.patch
 }
 
 build() {

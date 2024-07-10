@@ -1,7 +1,7 @@
 pkgbase = libcd
 	pkgdesc = Canvas Draw - 2D vector graphics library
 	pkgver = 5.14
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.tecgraf.puc-rio.br/cd/
 	arch = i686
 	arch = x86_64
@@ -20,9 +20,11 @@ pkgbase = libcd
 	source = https://downloads.sourceforge.net/project/canvasdraw/5.14/Docs%20and%20Sources/cd-5.14_Sources.tar.gz
 	source = https://downloads.sourceforge.net/project/canvasdraw/5.14/Docs%20and%20Sources/ftgl-2.1.5_Sources.tar.gz
 	source = https://downloads.sourceforge.net/project/canvasdraw/5.14/Docs%20and%20Sources/cd-5.14_Docs.pdf
+	source = fix-build-gcc-14.patch
 	md5sums = e53cf5f6f9048cc6daad92dd910511a3
 	md5sums = dcad37c50e5832150ef3382d12f3182d
 	md5sums = c8abe5349f426228f9219ceb134e84ac
+	md5sums = 370882f1bc46c3e2bf9713820c2b5880
 
 pkgname = libcd
 	pkgdesc = Canvas Draw - 2D vector graphics library
