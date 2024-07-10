@@ -2,7 +2,7 @@
 _base=diffrax
 pkgname=python-${_base}
 pkgdesc="GPU+autodiff-capable ODE/SDE/CDE solvers written in JAX"
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 arch=(any)
 url="https://github.com/patrick-kidger/${_base}"
@@ -11,7 +11,7 @@ depends=(python-optimistix)
 makedepends=(python-build python-installer python-hatchling python-wheel)
 checkdepends=(python-pytest python-tqdm python-optax)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('c208d8697f0eae8b24fe816be584e8aa780696582b7ef789a41ee58d5d9ef4ec654507e9d12005593e30be96382a7b4a71018a1fd7e73422f70147ac0ca6fc76')
+sha512sums=('245b7bd07ba4c738a975c7264debe56bb3c54357cc81f907a6923f7b59b45498d931f279812319accfbc93f4412384fb0879deecea1bea0d892d336c94cf3a58')
 
 build() {
   cd ${_base}-${pkgver}
