@@ -3,10 +3,10 @@
 
 pkgname=cassette
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="GTK4/Adwaita application that allows you to use Yandex Music service on Linux operating systems"
 arch=(aarch64 x86_64)
-url="https://github.com/rirusha/$pkgname"
+url="https://github.com/Rirusha/${pkgname^}"
 license=(GPL-3.0-only)
 depends=(
   cairo
@@ -24,7 +24,6 @@ depends=(
 )
 makedepends=(
   blueprint-compiler
-  git
   meson
   vala
 )
@@ -34,8 +33,13 @@ optdepends=(
   'gst-plugins-good: media decoding'
 )
 options=(!debug)
-source=($pkgname-$pkgver.tar.gz::$url/archive/ver-$pkgver/$pkgname-ver-$pkgver.tar.gz)
+source=($url/archive/ver-$pkgver/$pkgname-ver-$pkgver.tar.gz)
 b2sums=('81972f10843cecfc7adccc4493fc4dbd722b3d74fb54d18daf393d56a06d6e65f08720d94388b152af552afecdf2dbf888845148d858fa672d4f7d8e81c82c23')
+
+prepare(){
+  #Quick fix after release: https://github.com/Rirusha/Cassette/commit/64d69b910177675b3cbce398a18b605d14928be0
+  sed -i 's/Categories=Audio/Categories=GNOME;GTK;Music;Audio;AudioVideo;/' ${pkgname^}-ver-$pkgver/data/io.github.Rirusha.Cassette.desktop.in
+}
 
 build() {
   arch-meson ${pkgname^}-ver-$pkgver build

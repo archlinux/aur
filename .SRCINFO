@@ -1,13 +1,12 @@
 pkgbase = cassette
 	pkgdesc = GTK4/Adwaita application that allows you to use Yandex Music service on Linux operating systems
 	pkgver = 0.2.0
-	pkgrel = 2
-	url = https://github.com/rirusha/cassette
+	pkgrel = 3
+	url = https://github.com/Rirusha/Cassette
 	arch = aarch64
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = blueprint-compiler
-	makedepends = git
 	makedepends = meson
 	makedepends = vala
 	depends = cairo
@@ -26,7 +25,7 @@ pkgbase = cassette
 	optdepends = gst-plugins-bad: media decoding
 	optdepends = gst-plugins-good: media decoding
 	options = !debug
-	source = cassette-0.2.0.tar.gz::https://github.com/rirusha/cassette/archive/ver-0.2.0/cassette-ver-0.2.0.tar.gz
+	source = https://github.com/Rirusha/Cassette/archive/ver-0.2.0/cassette-ver-0.2.0.tar.gz
 	b2sums = 81972f10843cecfc7adccc4493fc4dbd722b3d74fb54d18daf393d56a06d6e65f08720d94388b152af552afecdf2dbf888845148d858fa672d4f7d8e81c82c23
 
 pkgname = cassette
