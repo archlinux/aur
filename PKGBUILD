@@ -4,14 +4,14 @@
 
 pkgname=btanks
 pkgver=0.9.8083
-pkgrel=9
+pkgrel=10
 pkgdesc="Fast 2d tank arcade game with multiplayer and split-screen modes."
 arch=('x86_64')
 url="https://${pkgname}.sourceforge.net"
 license=('GPL')
 depends=('expat' 'libgl' 'libsigc++2.0' 'libvorbis' 'lua51' 'openal' 'sdl' 'sdl_image'
 	 'smpeg0' 'glu' "${pkgname}-data=$pkgver")
-makedepends=('python2-scons' 'chrpath' 'mesa')
+makedepends=('scons2' 'chrpath' 'mesa')
 source=("https://downloads.sourceforge.net/${pkgname}/${pkgname}-$pkgver.tar.bz2"
 	${pkgname}_desktop
 	${pkgname}_script
@@ -29,7 +29,7 @@ build() {
 
   sed -i '1,1i#include <sys/types.h>' mrt/base_file.h
   patch -p1 <"$srcdir"/gcc-4.6.patch
-  
+
   sed -i -r 's/Options/Variables/' 'SConstruct'
   sed -i -r 's/BoolOption/BoolVariable/' 'SConstruct'
   sed -i -r 's/EnumOption/EnumVariable/' 'SConstruct'
@@ -58,7 +58,6 @@ package() {
 
   # Make settings saveable
   touch "$pkgdir"/usr/share/games/${pkgname}/bt.xml
-  chown :games "$pkgdir"/usr/share/games/${pkgname}/bt.xml
   chmod 664 "$pkgdir"/usr/share/games/${pkgname}/bt.xml
 
   # move executables, fix rpath

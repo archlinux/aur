@@ -1,12 +1,12 @@
 pkgbase = btanks
 	pkgdesc = Fast 2d tank arcade game with multiplayer and split-screen modes.
 	pkgver = 0.9.8083
-	pkgrel = 9
+	pkgrel = 10
 	url = https://btanks.sourceforge.net
 	install = btanks.install
 	arch = x86_64
 	license = GPL
-	makedepends = python2-scons
+	makedepends = scons2
 	makedepends = chrpath
 	makedepends = mesa
 	depends = expat
