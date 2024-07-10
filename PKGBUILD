@@ -3,11 +3,11 @@
 pkgname=python-healpy
 _pyname=${pkgname#python-}
 pkgver=1.16.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Python package to manipulate healpix maps"
 arch=('i686' 'x86_64')
 url="http://healpy.readthedocs.io"
-license=('GPL')
+license=('GPL-2.0-only')
 depends=('python>=3.8' 'python-numpy>=1.19' 'python-scipy' 'python-matplotlib' 'python-astropy' 'cfitsio>=4.1.0' 'healpix>=3.82')
 makedepends=('python-setuptools-scm>=6.2'
              'cython'
@@ -28,6 +28,7 @@ prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
     sed -i -e "/pykg/d" -e "/\"numpy>=1.25\"/s/,/\]/" pyproject.toml
+    sed -i -e "s/import trapz/import trapezoid as trapz/" healpy/sphtfunc.py
 }
 
 build() {
