@@ -20,7 +20,7 @@ optdepends=('python-h5py: storing data in the hierarchical file format'
   'python-rocket-fft: Numba-compiled fast Fourier transforms'
   'python-ffmpeg-python: creating movies from matplotlib figures')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('cd6004dc7f0b717f2dfa9e68012427e5f2b4217ac2e6cbcee5c3bcca25b93794e79c490def7d2a2df0fe7c816be76279596f48578f47012d8dd0b4bd21252f37')
+sha512sums=('7cfdcec5b160396e9dbce44eb2ce187a8b65ff5774565b025c264303fcaac5122c50cdd6864b955d08f4b40760823a6fe02933e58efe1634c907ee84e7572088')
 
 build() {
   cd ${_base}-${pkgver}
