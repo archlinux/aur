@@ -1,3 +1,4 @@
+# Maintainer: kojq <kojq@mailfence.com>
 # Maintainer: soloturn <soloturn@gmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
