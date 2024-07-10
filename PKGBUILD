@@ -13,7 +13,7 @@ depends=(python-numpy)
 makedepends=(gcc-fortran cmake)
 #source=(${url}/down.php?file=${pkgver}/${pkgname}-${pkgver}.tar.gz)
 source=(https://gitlab.com/${pkgname}/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('45333424a4569576ab1553128ea2b113df6e6a70740e941bbbca95aa5918d19723e8371c02b60ff7b17d0b7fa2d5cea6cb69cedd58a4700a6a4d42ed93487472')
+sha512sums=('cf7271e3b3866150b3f83aec3260e54bb98488597845c34fadc2b627eabbac4acd69fbe42cb3119c4b3a6cbb0929009823cb40cf4c896526e4a5cab1027dd270')
 options=(staticlibs)
 
 build() {

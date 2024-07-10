@@ -1,0 +1,4 @@
+[libxc]
+source = "gitlab"
+gitlab = "libxc/libxc"
+use_max_tag = "true"
