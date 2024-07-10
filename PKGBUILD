@@ -7,51 +7,72 @@
 pkgname=cachy-browser
 _pkgname=Cachy
 __pkgname=cachy
-pkgver=125.0.1
-pkgrel=1
+pkgver=128.0
+pkgrel=2
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
-arch=(x86_64 x86_64_v3)
+arch=(x86_64)
 license=(
   GPL
   LGPL
   MPL
 )
 depends=(
+  alsa-lib
+  at-spi2-core
+  bash
+  cairo
   dbus
   ffmpeg
+  fontconfig
+  freetype2
+  gcc-libs
+  gdk-pixbuf2
+  glib2
+  glibc
   gtk3
+  hicolor-icon-theme
   icu
   libevent
   libjpeg
   libpulse
+  libx11
+  libxcb
+  libxcomposite
+  libxdamage
+  libxext
+  libxfixes
+  libxrandr
   libvpx
   libwebp
   libxss
   libxt
   mime-types
+  nspr
   nss
   ttf-font
+  pango
   zlib
 )
 makedepends=(
   cbindgen
-  clang
+  #clang
   diffutils
   imake
   inetutils
   jack
-  lld
-  llvm
+  #lld
+  #llvm
   mesa
   nasm
   nodejs
   python
-  rust
+  rustup
+  #rust
   unzip
-  wasi-compiler-rt
-  wasi-libc
-  wasi-libc++
-  wasi-libc++abi
+  #wasi-compiler-rt
+  #wasi-libc
+  #wasi-libc++
+  #wasi-libc++abi
   xorg-server-xvfb
   yasm
   zip
@@ -61,7 +82,6 @@ optdepends=(
   'hunspell-en_US: Spell checking, American English'
   'libnotify: Notification integration'
   'networkmanager: Location detection via available WiFi networks'
-  'pulseaudio: Audio support'
   'speech-dispatcher: Text-to-Speech'
   'xdg-desktop-portal: Screensharing with Wayland'
 )
@@ -72,25 +92,33 @@ options=(
   !makeflags
 )
 install=cachy-browser.install
-backup=('usr/lib/cachy-browser/cachyos.cfg'
-        'usr/lib/cachy-browser/distribution/policies.json')
+# TODO(vnepogodin): enable back on next firefox release
+#backup=('usr/lib/cachy-browser/distribution/policies.json')
 
-_settings_commit=42b4b631a9187ac048944a2c9e7f7b8a991f29bd
-_common_commit=865b495b54cd5dc1debef247ec0b06d40b6bb95a
+_settings_commit=72b43a93b822ad06554d8dbe793b31fffef5aa74
+_common_commit=8d73930b0634c66b2e9758b2db4bb8b2a7b765c1
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz{,.asc}
         $pkgname.desktop
         "git+https://github.com/cachyos/cachyos-browser-settings.git#commit=${_settings_commit}"
         "git+https://github.com/cachyos/cachyos-browser-common.git#commit=${_common_commit}"
         "match.patch")
-sha256sums=('274ff2ec60811b03fcd856c3aa4bd3212fa0aaacda0766430c2562432441cd10'
+sha256sums=('65271ffefb235ea1e162a081f2074a0f06fce27b2f613f573c126ba8eef95172'
             'SKIP'
-            'de5c0deb9b6a4ebfaa933103cc6a65f1f43c9a456296d356cc54c7ca042d144c'
-            '75678a5f90e1c99067e915cd61d5ebc86d01160e658bb0bd558fc0c8a31347f2'
-            '897a6a203d55e90984f5623b47bd1199fecada91d06066ba9060ea0c5319d477'
+            'c0786df2fd28409da59d0999083914a65e2097cda055c9c6c2a65825f156e29f'
+            '1975dba8663744e5757a7398899fe94dd50ba33adfe122d6cfb69d8480de9c3a'
+            'b41a51665e265ccaad7781f603c260ef49fb04daa24fcaecd0c75f55d7b1c189'
             '1fbb1971a1d0d4c875b1af0f9681601909cfbe4fe0cc2c2f42c523c84c934499')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
 prepare() {
+  # we need it for bootstap build to be able to build with Firefox toolchain,
+  # for some reason it doesn't bootstrap rust compiler 
+  if ! rustc --version | grep stable  >/dev/null 2>&1; then
+    echo "Installing rust compiler…"
+    rustup toolchain install stable
+    rustup default stable
+  fi
+
     mkdir -p mozbuild
     cd firefox-$pkgver
 
@@ -98,7 +126,7 @@ prepare() {
     local _cachysettings_dir="${srcdir}/cachyos-browser-settings"
     local _patches_dir="${srcdir}/cachyos-browser-common/patches"
 
-    cat >../mozconfig <<END
+    cat >.mozconfig <<END
 ac_add_options --enable-application=browser
 mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
 
@@ -109,17 +137,23 @@ ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
 ac_add_options --enable-wasm-simd
 ac_add_options --enable-linker=lld
+ac_add_options --enable-lto=full
+#ac_add_options --enable-linker=gold
 ac_add_options --disable-install-strip
 ac_add_options --disable-elf-hack
-ac_add_options --disable-bootstrap
-ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
+ac_add_options --enable-bootstrap
+#ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
+#ac_add_options --with-wasm-sandboxed-libraries
 ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
+ac_add_options MOZ_PGO=1
+ac_add_options MOZ_LTO=full
+ac_add_options MOZ_USING_WASM_SANDBOXING=1
 
-export AR=llvm-ar
-export CC='clang'
-export CXX='clang++'
-export NM=llvm-nm
-export RANLIB=llvm-ranlib
+#export AR=llvm-ar
+#export CC='clang'
+#export CXX='clang++'
+#export NM=llvm-nm
+#export RANLIB=llvm-ranlib
 
 # Branding
 ac_add_options --enable-update-channel=release
@@ -131,24 +165,28 @@ ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
 export MOZ_REQUIRE_SIGNING=1
 export MOZ_ADDON_SIGNING=1
-export MOZ_APP_REMOTINGNAME=${pkgname}
+export MOZ_APP_REMOTINGNAME=$pkgname
 
 # System libraries
-ac_add_options --with-system-nspr
-ac_add_options --with-system-nss
-ac_add_options --with-system-libvpx
-ac_add_options --with-system-webp
-ac_add_options --with-system-libevent
-ac_add_options --with-system-icu
-ac_add_options --with-system-zlib
-ac_add_options --with-system-jpeg
+#ac_add_options --with-system-nspr
+#ac_add_options --with-system-nss
+#ac_add_options --with-system-libvpx
+#ac_add_options --with-system-webp
+#ac_add_options --with-system-libevent
+#ac_add_options --with-system-icu
+#ac_add_options --with-system-zlib
+#ac_add_options --with-system-jpeg
 
 ac_add_options --enable-optimize=-O3
+ac_add_options OPT_LEVEL="3"
+ac_add_options RUSTC_OPT_LEVEL="3"
 # Features
 ac_add_options --enable-jxl
+ac_add_options --enable-av1
 ac_add_options --enable-pulseaudio
 ac_add_options --enable-alsa
-ac_add_options --enable-jack
+#ac_add_options --enable-jack
+ac_add_options --enable-proxy-bypass-protection
 ac_add_options --disable-warnings-as-errors
 ac_add_options --disable-crashreporter
 ac_add_options --disable-tests
@@ -194,9 +232,12 @@ END
 
     msg2 "mozilla-nongnome-proxies"
     patch -Np1 -i ${_patches_dir}/kde/mozilla-nongnome-proxies.patch
-
+    #msg2 "Fix build with new rust"
+    #patch -Np1 -i ${srcdir}/0001-Bug-1882209-Update-encoding_rs-to-0.8.34-to-deal-wit.patch
     # msg2 "Match to system libs"
     # patch -Np1 -i ../match.patch
+
+    sed -i 's/releases\/mozilla-release",/mozilla-central",\n        "integration\/autoland",/' python/mozbuild/mozbuild/artifacts.py
 
     rm -f ${srcdir}/cachyos-browser-common/source_files/mozconfig
 }
@@ -210,48 +251,22 @@ build() {
     export MOZ_BUILD_DATE="$(date -u${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH} +%Y%m%d%H%M%S)"
     export MOZ_NOSPAM=1
 
+    export LIBGL_ALWAYS_SOFTWARE=true
+
     # malloc_usable_size is used in various parts of the codebase
     CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
     CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
 
+    # Breaks compilation since https://bugzilla.mozilla.org/show_bug.cgi?id=1896066
+    CFLAGS="${CFLAGS/-fexceptions/}"
+    CXXFLAGS="${CXXFLAGS/-fexceptions/}"
+
     # LTO needs more open files
     ulimit -n 4096
 
-    # Do 3-tier PGO
-    echo "Building instrumented browser..."
+    echo "Building browser..."
 
-    cat >.mozconfig ../mozconfig - <<END
-ac_add_options --enable-profile-generate
-END
-
-    ./mach build
-
-    echo "Profiling instrumented browser..."
-    ./mach package
-    LLVM_PROFDATA=llvm-profdata \
-        JARLOG_FILE="$PWD/jarlog" \
-        xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" \
-        ./mach python build/pgo/profileserver.py
-
-    stat -c "Profile data found (%s bytes)" merged.profdata
-    test -s merged.profdata
-
-    stat -c "Jar log found (%s bytes)" jarlog
-    test -s jarlog
-
-    echo "Removing instrumented browser..."
-    ./mach clobber
-
-    echo "Building optimized browser..."
-
-    cat >.mozconfig ../mozconfig - <<END
-ac_add_options --enable-lto
-ac_add_options --enable-profile-use
-ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
-ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
-END
-
-    ./mach build
+    xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" ./mach build --priority normal
 }
 
 package() {
