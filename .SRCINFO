@@ -1,6 +1,6 @@
 pkgbase = qabc
 	pkgdesc = ABC music notation minimal GUI.
-	pkgver = 1.10
+	pkgver = 1.11
 	pkgrel = 1
 	url = https://github.com/be1/qabc
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = qabc
 	depends = abcmidi
 	depends = fluidsynth
 	depends = shared-mime-info
-	source = qabc-1.10.tar.gz::https://github.com/be1/qabc/archive/refs/tags/1.10.tar.gz
-	sha512sums = f9c9d5adaccd9a608d0ec047db9e8094cc21899024b5a025b202788115c8230b84f3422a81cc6660611c29144d81870210f8f06554a071de02e7741e038c5480
+	source = qabc-1.11.tar.gz::https://github.com/be1/qabc/archive/refs/tags/1.11.tar.gz
+	sha512sums = 00cc32921c7227cf729521bb4e05be4e580f35411a9121d39deb357e0013958676ef21823ba2310805329953d17f284051172e579a6f428d64ccde34cfc242a5
 
 pkgname = qabc
