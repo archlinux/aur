@@ -1,13 +1,13 @@
 pkgbase = gleam-bin
 	pkgdesc = A friendly language for building type-safe, scalable systems!
-	pkgver = 1.2.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://gleam.run
 	arch = x86_64
 	license = Apache-2.0
 	depends = erlang-nox
 	provides = gleam
-	source = https://github.com/gleam-lang/gleam/releases/download/v1.2.0/gleam-v1.2.0-x86_64-unknown-linux-musl.tar.gz
-	sha256sums = 6a053551a40719ae5994eb920c912b741ac3bc0181ef03f6d18b2c90e755027b
+	source = https://github.com/gleam-lang/gleam/releases/download/v1.3.1/gleam-v1.3.1-x86_64-unknown-linux-musl.tar.gz
+	sha256sums = 7ea732f927098d825e90d27c5361d497518d64eb74b4b3b875398a537a937dea
 
 pkgname = gleam-bin
