@@ -1,7 +1,7 @@
 
 # Maintainer: Aravinda Rao <maniacalace at popular google email dot com>
 pkgname=qtile-bonsai
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 epoch=
 pkgdesc="A flexible layout for the qtile tiling window manager that allows arbitrarily nestable tabs/splits and rearrangements"
@@ -29,7 +29,7 @@ install=
 changelog=
 source=("https://github.com/aravinda0/qtile-bonsai/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('5078a1d6a01eb34c46f0d5031b1b52002289f18688a6067ae5a9a9377f2fe37b')
+sha256sums=('b4577aabdbd1043ebf97d95e12f01e826d2620b2fd9c7de895bce1942d461679')
 validpgpkeys=()
 
 
