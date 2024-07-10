@@ -1,31 +1,48 @@
 # Maintainer: 'Radiolin' <anton.osi2011@gmail.com>
-gitname=cassette
-pkgname=("${gitname}")
+# Co-maintainer: Nebulosa <nebulosa2007 at yandex dot ru>
+
+pkgname=cassette
 pkgver=0.2.0
-pkgrel=1
-pkgdesc="GTK4/Adwaita приложение, которое позволит вам использовать Я.Музыку на Linux."
-arch=('x86_64' 'aarch64')
-url="https://github.com/rirusha/${gitname}"
-license=('GPL3')
-depends=('glib2' 'gtk4' 'libgee' 'libadwaita' 'libsoup3' 'json-glib' 'sqlite3' 'libxml2' 'gstreamer' 'webkitgtk-6.0' 'gst-plugins-good' ) 
-optdepends=( )
-makedepends=('meson' 'ninja' 'cmake' 'blueprint-compiler' 'git' 'vala' 'gcc13' 'appstream-glib' 'python-packaging')
-provides=("$gitname")
-conflicts=("$gitname")
-source=("git+${url}.git")
-md5sums=('SKIP')
+pkgrel=2
+pkgdesc="GTK4/Adwaita application that allows you to use Yandex Music service on Linux operating systems"
+arch=(aarch64 x86_64)
+url="https://github.com/rirusha/$pkgname"
+license=(GPL-3.0-only)
+depends=(
+  cairo
+  dconf
+  gdk-pixbuf2
+  glibc
+  glib2
+  gtk4
+  hicolor-icon-theme
+  libadwaita
+  libgee
+  libxml2
+  sqlite
+  webkitgtk-6.0
+)
+makedepends=(
+  blueprint-compiler
+  git
+  meson
+  vala
+)
+optdepends=(
+  'gst-libav: nonfree media decoding'
+  'gst-plugins-bad: media decoding'
+  'gst-plugins-good: media decoding'
+)
+options=(!debug)
+source=($pkgname-$pkgver.tar.gz::$url/archive/ver-$pkgver/$pkgname-ver-$pkgver.tar.gz)
+b2sums=('81972f10843cecfc7adccc4493fc4dbd722b3d74fb54d18daf393d56a06d6e65f08720d94388b152af552afecdf2dbf888845148d858fa672d4f7d8e81c82c23')
 
 build() {
-    cd "${gitname}/"
-    export CC=gcc-13
-    export CXX=g++-13
-    git checkout tags/ver-"$pkgver"
-    meson . builddir --prefix=/usr
-    ninja -C builddir
+  arch-meson ${pkgname^}-ver-$pkgver build
+  meson configure  build --no-pager
+  meson compile -C build
 }
 
 package() {
-    cd "${gitname}/"
-    DESTDIR="${pkgdir}" ninja -C builddir install
+  meson install -C build --destdir "$pkgdir"
 }
-
