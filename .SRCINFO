@@ -1,0 +1,25 @@
+pkgbase = sngrep-bin
+	pkgdesc = A tool for displaying SIP call message flows from a terminal
+	pkgver = 1.8.2
+	pkgrel = 1
+	url = https://github.com/irontec/sngrep
+	arch = x86_64
+	arch = i686
+	license = GPL-3.0-or-later
+	depends = glibc
+	depends = ncurses
+	depends = libpcap
+	depends = pcre
+	depends = gnutls
+	provides = sngrep
+	conflicts = sngrep
+	source = https://github.com/irontec/sngrep/raw/v1.8.2/README.md
+	source = https://github.com/irontec/sngrep/raw/v1.8.2/LICENSE
+	sha256sums = 2b7814d3fca2e99e56c51b6ff2aa313ea6e9da6424804240aa8ad891fdfe0900
+	sha256sums = 8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903
+	source_x86_64 = sngrep-1.8.2-x86_64::https://packages.irontec.com/binaries/sngrep-static-amd64-linux-gnu-1.8.2
+	md5sums_x86_64 = 354b230c6c426973cbd289c8bedfd914
+	source_i686 = sngrep-1.8.2-i686::https://packages.irontec.com/binaries/sngrep-static-i386-linux-gnu-1.8.2
+	md5sums_i686 = 8f460d1e77e3f8578ab4d529f0d0d873
+
+pkgname = sngrep-bin
