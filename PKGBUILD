@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 # Sourced from:
 PackageUrl="https://raw.githubusercontent.com/Askannz/optimus-manager/master/package"
