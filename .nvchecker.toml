@@ -1,0 +1,7 @@
+[saxon-he]
+source = "github"
+github = "Saxonica/Saxon-HE"
+use_latest_release = "true"
+from_pattern = "-"
+to_pattern = "."
+prefix = "SaxonHE"
