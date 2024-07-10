@@ -1,0 +1,4 @@
+[python-conda-pack]
+source = "github"
+github = "conda/conda-pack"
+use_latest_release = true

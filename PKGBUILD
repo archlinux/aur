@@ -2,15 +2,15 @@
 _base=conda-pack
 pkgname=python-${_base}
 pkgdesc="Package conda environments for redistribution"
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 arch=(any)
 url="https://github.com/${_base/-pack/}/${_base}"
-license=('custom:BSD-3-clause')
+license=(BSD-3-Clause)
 depends=(python conda)
-makedepends=(python-setuptools)
+makedepends=(python-build python-installer python-setuptools python-wheel)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('7bd0e257d98abb200e87a64aa76484fb8cb5749749071566b14cdc1139c07beee56b3a25ff5ef29110d1ba1bbd18d5214af935a0e44df04ed9563bb5ff7e8e12')
+sha512sums=('6b853614bbab63b14373bdc25d2d8e53ebfd6e1da76515602bca2af070da636d30900c101ca8c6a54a7c8e70f9674392cf8978b1d41339e366b5b0be821f1808')
 
 prepare() {
   if hash conda 2>/dev/null; then
@@ -25,11 +25,11 @@ prepare() {
 
 build() {
   cd ${_base}-${pkgver}
-  python setup.py build
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package() {
   cd ${_base}-${pkgver}
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
