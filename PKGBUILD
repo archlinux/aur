@@ -6,9 +6,9 @@ pkgname=libxc
 pkgver=6.2.2
 pkgrel=1
 pkgdesc="A library of exchange-correlation functionals for density-functional theory"
-arch=('i686' 'x86_64' 'aarch64')
+arch=(i686 x86_64 aarch64)
 url="https://www.tddft.org/programs/${pkgname}"
-license=('MPL2')
+license=(MPL-2.0)
 depends=(python-numpy)
 makedepends=(gcc-fortran cmake)
 #source=(${url}/down.php?file=${pkgver}/${pkgname}-${pkgver}.tar.gz)
