@@ -129,13 +129,7 @@ _prepare_moonlight_common_c() (
 _source_sunshine
 _source_moonlight_common_c
 
-_node_env() {
-  export HOME="$SRCDEST/node-home"
-}
-
 prepare() {
-  _node_env
-
   _submodule_update() {
     local _module
     for _module in "${_submodules[@]}"; do
@@ -148,15 +142,11 @@ prepare() {
   _prepare_sunshine
   _prepare_moonlight_common_c
 
+  # fix for miniupnpc
   git -C "$_pkgsrc" cherry-pick -n -m1 a940cdb394055139ca6a964289f414da562452e3
-
-  cd "$_pkgsrc"
-  npm install --force --no-audit --no-fund
 }
 
 build() {
-  _node_env
-
   export BRANCH="master"
   export BUILD_VERSION="${pkgver}"
   export COMMIT="$(git rev-parse HEAD)"
@@ -177,6 +167,10 @@ build() {
     -DBUILD_TESTS=OFF
     -Wno-dev
   )
+
+  pushd "$_pkgsrc"
+  npm install --force --no-audit --no-fund --cache "$srcdir/npm-cache"
+  popd
 
   cmake "${_cmake_options[@]}"
   cmake --build build
