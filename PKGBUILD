@@ -3,7 +3,7 @@ pkgname=panfu-desktop-bin
 _pkgname="Panfu Desktop"
 pkgver=1.4.4
 _electronversion=11
-pkgrel=1
+pkgrel=2
 pkgdesc="The desktop application for Panfu with integrated Flash Player"
 arch=(
     "i686"
@@ -15,7 +15,7 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
 )
 source_i686=("${pkgname%-bin}-${pkgver}-i686.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_i386.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
@@ -24,13 +24,14 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('5f4bb38a02e354d66d61ef73c248aa75bc04e3d3a2f3071a83c7674501f0291c'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 sha256sums_i686=('6d64662d9e787523ba737e7c5064910748437211162c256b807a877ff2f1d7a9')
 sha256sums_x86_64=('e5a60290e0fc94c148dcd93adf6e03db07a0f6211546b75858dfa36ae868ebab')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
