@@ -3,30 +3,30 @@ pkgname=electron-s3-file-manager
 pkgver=0.2.0
 _electronversion=20
 _nodeversion=16
-pkgrel=4
+pkgrel=5
 pkgdesc="A GUI AWS S3 file manager. It supports keyword search, download, upload and preview video."
 arch=('any')
 url="https://github.com/kelp404/electron-s3-file-manager"
 license=('MIT')
 conflicts=("${pkgname}")
 depends=(
-    "electron${_electronversion}-bin"
-    'python>3'
+    "electron${_electronversion}"
 )
 makedepends=(
     'gendesk'
     'npm'
-    'nodejs'
+    'nvm'
     'git'
     'gcc'
-    'base-devel'
+    'cmake'
+    'curl'
 )
 source=(
     "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
 sha256sums=('936168f7206a3f9dbe2f302ac7a4f02b886e539b36c6c6cba6026184d3ebfd81'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -34,8 +34,14 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 build() {
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname}|g" \
+        -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname}|g" \
+        -e "s|@options@||g" \
+        -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    gendesk -f -n -q --categories "Utility" --name "${pkgname}" --exec "${pkgname} %U"
+    gendesk -f -n -q --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
@@ -43,18 +49,18 @@ build() {
     #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     #export ELECTRONVERSION="${_electronversion}"
-    #export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
-        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
-        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
-        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+        export npm_config_registry=https://registry.npmmirror.com
+        export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
+        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
+        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
     else
         echo "Your network is OK."
     fi
     sed "/dmg/d;s|win|linux|g;s|portable|dir|g" -i tools.js
-    npm install
-    npm run build
+    NODE_ENV=development npm install
+    NODE_ENV=production npm run build
 }                                                                                                                                                                                 
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
