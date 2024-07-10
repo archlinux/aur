@@ -11,6 +11,6 @@ pkgbase = fend
 	depends = glibc
 	depends = openssl
 	source = fend-1.5.0.tar.gz::https://github.com/printfn/fend/archive/refs/tags/v1.5.0.tar.gz
-	sha256sums = 
+	sha256sums = 9862150c735ae19cc4cb75b4944c23a81b43de807dc771ad83be414bb38c7214
 
 pkgname = fend
