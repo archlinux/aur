@@ -1,7 +1,7 @@
 pkgbase = python-optax
 	pkgdesc = A gradient processing and optimization library for JAX
-	pkgver = 0.2.2
-	pkgrel = 2
+	pkgver = 0.2.3
+	pkgrel = 1
 	url = https://github.com/google-deepmind/optax
 	arch = any
 	groups = jax
@@ -16,7 +16,7 @@ pkgbase = python-optax
 	depends = python-numpy
 	optdepends = python-dm-haiku: Deep learning framework from DeepMind
 	optdepends = python-flax: Deep learning framework from Google
-	source = optax-0.2.2.tar.gz::https://github.com/google-deepmind/optax/archive/refs/tags/v0.2.2.tar.gz
-	sha256sums = 585a8199e8293c475e0bae2cfa1ccc766da5256290a27c655ce206168ccf6d4b
+	source = optax-0.2.3.tar.gz::https://github.com/google-deepmind/optax/archive/refs/tags/v0.2.3.tar.gz
+	sha256sums = 0a794c0756c565b2b03db0a133f9e8dae09ad306b239ab7fe225b4a85feb7f03
 
 pkgname = python-optax
