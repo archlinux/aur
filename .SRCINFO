@@ -1,6 +1,6 @@
 pkgbase = z88dk-git
 	pkgdesc = The development kit for over fifty z80 machines - c compiler, assembler, linker, libraries.
-	pkgver = v2.1.r19.g7c6df7ac3
+	pkgver = 2.3.r650.g28520d2
 	pkgrel = 1
 	url = https://www.z88dk.org
 	arch = x86_64
@@ -10,8 +10,7 @@ pkgbase = z88dk-git
 	conflicts = z88dk
 	source = z88dk-git::git+https://github.com/z88dk/z88dk.git
 	source = z88dk.sh
-	source = 0001-disable-forced-ccache.patch
-	source = UNIXem::git+https://github.com/z88dk/UNIXem.git
+	source = UNIXem::git+https://github.com/synesissoftware/UNIXem.git
 	source = Unity::git+https://github.com/ThrowTheSwitch/Unity.git
 	source = cpm::git+https://github.com/z88dk/cpm.git
 	source = optparse::git+https://github.com/skeeto/optparse.git
@@ -19,7 +18,6 @@ pkgbase = z88dk-git
 	source = uthash::git+https://github.com/z88dk/uthash.git
 	sha256sums = SKIP
 	sha256sums = 0474d26668224231cffeaef33776020ee65fe83c825833c9907e4766d9104869
-	sha256sums = f785924a5e0e10f327408ad1362f2923a1684f58e66af715c21f8469a5bbaa1a
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -28,4 +26,3 @@ pkgbase = z88dk-git
 	sha256sums = SKIP
 
 pkgname = z88dk-git
-
