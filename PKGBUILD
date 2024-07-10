@@ -3,7 +3,7 @@
 pkgbase=python-jwst
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.14.0
+pkgver=1.15.1
 pkgrel=1
 pkgdesc="Library for calibration of science observations from the James Webb Space Telescope"
 arch=('i686' 'x86_64')
@@ -15,8 +15,8 @@ makedepends=('python-setuptools-scm>=3.4'
              'python-installer'
              'python-numpy'
              'python-sphinx-automodapi'
-             'python-sphinxcontrib-jquery'
              'python-sphinx_rtd_theme'
+             'python-psutil'
              'python-pytest-doctestplus'
              'python-bayesicfitting'
              'python-drizzle'
@@ -36,13 +36,12 @@ makedepends=('python-setuptools-scm>=3.4'
 #checkdepends=('python-pytest-doctestplus'
 #              'python-pytest-xdist'
 #              'python-ci_watson'
-#              'python-pyparsing'
 #              'python-pysiaf'
 #              'python-requests-mock'
 #              'rsync'
-#              ) # bayesicfitting, drizzle, jsonschema, photutil, poppy, skimage, stcal, stdatamodel, stpipe, synphot, tweakwcs, wiimatch already in makedepends
+#              ) # psutil, bayesicfitting, drizzle, jsonschema, photutil, poppy, skimage, stcal, stdatamodel, stpipe, synphot, tweakwcs, wiimatch already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('15c9b8ce5bd0858ce09d7773e1c11d9a')
+md5sums=('1ba8f055fe5c8beab5d4f7bf0fdd1262')
 
 get_pyinfo() {
      [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" || \
@@ -71,7 +70,7 @@ build() {
 #        cp -v {build/lib.linux-${CARCH}-cpython-$(get_pyinfo)/,}$sos
 #    done
 #    CRDS_PATH=".crds" CRDS_SERVER_URL=https://jwst-crds.stsci.edu PATH="${PWD}/tmp_install/usr/bin:${PATH}" \
-#        PYTHONPATH="build/lib.linux-${CARCH}-cpython-$(get_pyinfo)" pytest -vv -l -ra --color=yes -o console_output_style=count \
+#        PYTHONPATH="build/lib.linux-${CARCH}-cpython-$(get_pyinfo)" pytest -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 \
 #        --ignore=jwst/refpix/tests/test_refpix.py \
 #        --ignore=jwst/resample/tests/test_resample_step.py \
 #        --ignore=jwst/assign_wcs/tests/test_miri.py \
@@ -112,7 +111,8 @@ build() {
 #        --deselect=jwst/ramp_fitting/tests/test_ramp_fit_step.py::test_int_times2 \
 #        --deselect=jwst/resample/tests/test_interface.py::test_multi_integration_input \
 #        --deselect=jwst/source_catalog/tests/test_source_catalog.py::test_source_catalog \
-#        --deselect=jwst/saturation/tests/test_saturation.py::test_full_step
+#        --deselect=jwst/saturation/tests/test_saturation.py::test_full_step \
+#        --deselect=jwst/superbias/tests/test_bias_sub.py::test_full_step
 #
 #}
 
@@ -131,11 +131,11 @@ package_python-jwst() {
              'python-pyparsing>=2.2.1'
              'python-requests>=2.22'
              'python-scikit-image>=0.19'
-             'python-scipy>=1.7.2'
+             'python-scipy>=1.9.3'
              'python-spherical_geometry>=1.2.22'
-             'python-stcal>=1.7.0'
-             'python-stdatamodels>=1.10.1'
-             'python-stpipe>=0.5.2'
+             'python-stcal>=1.7.3'
+             'python-stdatamodels>=2.0.0'
+             'python-stpipe>=0.6.0'
              'python-stsci.image>=2.3.5'
              'python-stsci.imagestats>=1.6.3'
              'python-synphot>=1.2'
