@@ -11,6 +11,7 @@ source_aarch64=("hevi-aarch64-${pkgver}"::"https://github.com/Arnau478/hevi/rele
 sha256sums_x86_64=('bdc1d4798319d80316d296fe519e5a68afe45779dc8657d4fee17d944673aeb9')
 sha256sums_aarch64=('4e36d6840ee00d947fc3959c568af502ed9bb7787bffffc960294709b2e2d4c1')
 
+
 package() {
     cd $srcdir
 
