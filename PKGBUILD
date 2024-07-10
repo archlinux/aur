@@ -13,7 +13,8 @@ makedepends=('python-setuptools-scm'
              'python-wheel'
              'python-build'
              'python-installer'
-             'python-numpy')
+             'python-numpy'
+             'gcc13')
 checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 md5sums=('b51796441746e63d77b892aebbe38207')
@@ -25,7 +26,7 @@ get_pyver() {
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    python -m build --wheel --no-isolation --skip-dependency-check
+    CC=gcc-13 CXX=g++-13 python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 check() {

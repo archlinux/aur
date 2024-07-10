@@ -12,6 +12,7 @@ pkgbase = python-stsci.stimage
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-numpy
+	makedepends = gcc13
 	source = https://files.pythonhosted.org/packages/source/s/stsci_stimage/stsci_stimage-0.2.9.tar.gz
 	md5sums = b51796441746e63d77b892aebbe38207
 
