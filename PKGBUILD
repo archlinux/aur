@@ -3,7 +3,7 @@
 _base=jupyter-book
 pkgname=python-${_base}
 pkgdesc="Build a book with Jupyter Notebooks and Sphinx"
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 arch=(any)
 url="https://${_base/-/}.org"
@@ -15,7 +15,7 @@ depends=(python-click python-jinja python-jsonschema python-linkify-it-py python
 makedepends=(python-build python-installer python-flit-core)
 checkdepends=(python-pytest python-jupytext python-texsoup)
 source=(${_base}-${pkgver}.tar.gz::https://github.com/executablebooks/${_base}/archive/v${pkgver}.tar.gz)
-sha512sums=('5050ab7d4fd63256ee79f843eed4451074453c58ce8c026d2ee67a3f8797e6f9435b8bb2a33e42a07c151d95220c885929dc9759f22589ae07cc781d5db89583')
+sha512sums=('b64efda06d8714c9824970f5d02e529d78989c07ade2f672e5a01a619cc618ae4cb9dfa509a6585fb89c89d96bd7d9d8eca6d22e21f10f9982b80f03148f82ba')
 
 build() {
   cd ${_base}-${pkgver}
