@@ -9,12 +9,13 @@ pkgbase = image2pattern-git
 	makedepends = git
 	makedepends = nvm
 	makedepends = gendesk
+	makedepends = curl
 	depends = electron22
 	provides = image2pattern=r205.e301418
 	conflicts = image2pattern
 	source = image2pattern.git::git+https://github.com/acrosman/image2pattern.git
 	source = image2pattern.sh
 	sha256sums = SKIP
-	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = image2pattern-git
