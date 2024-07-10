@@ -1,0 +1,30 @@
+pkgbase = pavucontrol-gtk3
+	pkgdesc = PulseAudio Volume Control 5.0 (last GTK3 release)
+	pkgver = 5.0
+	pkgrel = 1
+	epoch = 1
+	url = https://freedesktop.org/software/pulseaudio/pavucontrol/
+	arch = x86_64
+	license = GPL-2.0-or-later
+	checkdepends = tidy
+	makedepends = git
+	makedepends = lynx
+	makedepends = meson
+	depends = atkmm
+	depends = gcc-libs
+	depends = glib2
+	depends = glibc
+	depends = glibmm
+	depends = gtk3
+	depends = gtkmm3
+	depends = json-glib
+	depends = libcanberra
+	depends = libpulse
+	depends = libsigc++
+	optdepends = pulseaudio: Audio backend
+	provides = pavucontrol
+	conflicts = pavucontrol
+	source = git+https://gitlab.freedesktop.org/pulseaudio/pavucontrol.git#commit=c330506815f78f77f6685cb40749679eae789d63
+	b2sums = 5601fbcb53a5545e86bc179c3e2c2b8d1c0ad1b31a3251e90011368151495668493a6737e359cc6d9c2c5e8d8c964f137a96af69f1b984f7a31318619532360c
+
+pkgname = pavucontrol-gtk3
