@@ -6,7 +6,10 @@ _electronversion=28
 _nodeversion=18
 pkgrel=1
 pkgdesc="A music player forked from YesPlayMusic。高颜值的第三方网易云播放器，支持 Windows / macOS / Linux"
-arch=('any')
+arch=(
+    'aarch64'
+    'x86_64'
+)
 url="https://github.com/Sherlockouo/music"
 license=('AGPL-3.0-only')
 conflicts=(
@@ -18,7 +21,6 @@ conflicts=(
 provides=("yesplaymusic")
 depends=(
     "electron${_electronversion}"
-    'python>3'
 )
 makedepends=(
     'gendesk'
@@ -26,8 +28,8 @@ makedepends=(
     'nvm'
     'npm'
     'pnpm'
-    'base-devel'
     'gcc'
+    'cmake'
     'curl'
 )
 source=(
@@ -35,10 +37,10 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
-    git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
 }
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -50,36 +52,47 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-git}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-git} %U"
-    cd "${srcdir}/${pkgname//-/.}/packages/desktop"
+    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-git} %U"
+    cd "${srcdir}/${pkgname//-/.}"
     export npm_config_build_from_source=true
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-    export ELECTRONVERSION="${_electronversion}"
-    export npm_config_disturl=https://electronjs.org/headers
+    #export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
+    #export ELECTRONVERSION="${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
     pnpm config set store-dir "${srcdir}/.pnpm_store"
     pnpm config set cache-dir "${srcdir}/.pnpm_cache"
     pnpm config set link-workspace-packages true
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
-        echo 'registry="https://registry.npmmirror.com/"' >> .npmrc
-        echo 'electron_mirror="https://registry.npmmirror.com/-/binary/electron/"' >> .npmrc
-        echo 'electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> .npmrc
+        export npm_config_registry=https://registry.npmmirror.com
+        export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
+        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
+        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
     else
         echo "Your network is OK."
     fi
-    sed "87d;78,84d;s|AppImage|dir|g" -i .electron-builder.config.js
-    pnpm install
-    pnpm run build
-    pnpm run package
+    sed "s|'deb'|'dir'|g;s|'AppImage'|'dir'|g" -i packages/desktop/.electron-builder.config.js
+    sed "s|..\/resources\/bin\/better_sqlite3.node|\/usr\/lib\/${pkgname%-git}\/bin\/better_sqlite3.node|g" \
+        -i packages/desktop/main/db.ts
+    NODE_ENV=development pnpm install
+    NODE_ENV=production pnpm run package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/packages/desktop/release/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    cp -r "${srcdir}/${pkgname//-/.}/packages/desktop/release/linux-unpacked/resources/"{app.asar.unpacked,bin} "${pkgdir}/usr/lib/${pkgname%-git}"
+    case "${CARCH}" in
+        aarch64)
+            local _osarch=linux-arm64-unpacked
+            ;;
+        x86_64)
+            local _osarch=linux-unpacked
+            ;;
+    esac
+    install -Dm644 "${srcdir}/${pkgname//-/.}/packages/desktop/release/${_osarch}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-git}"
+    cp -r "${srcdir}/${pkgname//-/.}/packages/desktop/release/${_osarch}/resources/"{app.asar.unpacked,bin} "${pkgdir}/usr/lib/${pkgname%-git}"
     for _icons in 16x16 24x24 32x32 64x64 256x256 512x512 1024x1024;do
         install -Dm644 "${srcdir}/${pkgname//-/.}/packages/desktop/build/icons/${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-git}.png"
