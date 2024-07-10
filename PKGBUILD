@@ -6,7 +6,7 @@ _enname=TreeMind
 _zhsname="树图思维导图"
 pkgver=1.0.7
 _electronversion=21
-pkgrel=1
+pkgrel=2
 pkgdesc="A new generation of 'AI intelligence' mind map.新一代'AI智能'思维导图"
 arch=('x86_64')
 url="https://shutu.cn"
@@ -17,7 +17,7 @@ conflicts=(
 )
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::https://static.shutu.cn/client/download/ShuTu-Linux-${pkgver}.deb"
@@ -30,11 +30,12 @@ sha256sums=('923bd86ab825a23aa31e0b8aaf04f56a3fd427c23f8f78a6fe31b9cf1eae30f3'
             'f177bc56d0d6f2b18128a67f1aa080f1708f48e0ac92ea985383f1896f23bd73'
             '366f721da89ec312cb4917a4596544a7945df77e9a677103e06d0e84f73a4168'
             'bce7b2ffb9a99535c7ede2122a9c078226affd95f2cfe4e9831c8f79586429a3'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_appname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
