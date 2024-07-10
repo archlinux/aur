@@ -2,7 +2,7 @@
 pkgbase=python-crds
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=11.17.25
+pkgver=11.17.26
 pkgrel=1
 pkgdesc="Calibration Reference Data System for HST and JWST"
 arch=('any')
@@ -22,7 +22,12 @@ makedepends=('python-setuptools-scm' 'python-wheel' 'python-build' 'python-insta
 ##             'python-pylint'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #       'fix-roman-asdf-test.patch')
-md5sums=('9809805f64c0811cee50909fad32ac05')
+md5sums=('ddc5aaff148c3bc0fd5d7779aac362d0')
+
+#get_pyinfo() {
+#     [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" || \
+#        python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
+#}
 
 #prepare() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
@@ -43,7 +48,10 @@ build() {
 ##   CRDS_TESTING_CACHE="crdscache" pytest -vv -l -ra --color=yes -o console_output_style=count #\
 ##   test/submit/test_submit.py .
 ##   metrisc_logger, stdatamodels
-#    pytest -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 5 \
+##   mkdir -p .crds/mappings/hst
+#    python -m installer --destdir=tmp_install dist/*.whl
+#    PATH="tmp_install/usr/bin:${PATH}" PYTHONPATH="tmp_install/$(get_pyinfo site)" \
+#        CRDS_PATH=.crds CRDS_SERVER_URL=https://hst-crds.stsci.edu pytest -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 5 \
 #        --ignore=test/bestrefs/test_bestrefs.py \
 #        --ignore=test/certify/test_certify.py \
 #        --ignore=test/roman/test_roman.py \
