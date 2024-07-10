@@ -1,0 +1,5 @@
+[python-requests-ratelimiter]
+source = "github"
+github = "JWCook/requests-ratelimiter"
+use_max_tag = "true"
+prefix = "v"
