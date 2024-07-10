@@ -1,0 +1,14 @@
+pkgbase = protoc-gen-prost
+	pkgdesc = Protocol Buffers compiler plugin powered by Prost!
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/neoeinstein/protoc-gen-prost
+	arch = any
+	license = Apache-2.0
+	makedepends = cargo
+	depends = protobuf
+	provides = protoc-gen-prost
+	source = protoc-gen-prost-0.3.1.tar.gz::https://static.crates.io/crates/protoc-gen-prost/protoc-gen-prost-0.3.1.crate
+	sha256sums = e810847124cb9a1d4ccefb1aabc80ccaba67f4af047e60dc1c0f2e145494bb85
+
+pkgname = protoc-gen-prost
