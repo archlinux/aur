@@ -1,6 +1,6 @@
 pkgbase = warcraftlogsuploader-appimage
 	pkgdesc = warcraftlogs.com desktop client for Linux
-	pkgver = 8.5.25
+	pkgver = 8.5.38
 	pkgrel = 1
 	url = https://warcraftlogs.com/
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = warcraftlogsuploader-appimage
 	depends = fuse2
 	conflicts = warcraftlogsuploader
 	options = !strip
-	source = warcraftlogsuploader.AppImage::https://github.com/RPGLogs/Uploaders-warcraftlogs/releases/download/v8.5.25/warcraftlogs-v8.5.25.AppImage
+	source = warcraftlogsuploader.AppImage::https://github.com/RPGLogs/Uploaders-warcraftlogs/releases/download/v8.5.38/warcraftlogs-v8.5.38.AppImage
 	source = start
-	sha512sums = 1ea044c1eb5d4ceaee43c03a2498c9a61858e506f79a76906e384774259bec07492c24712f78407b5dde3cc7bedeb78ba106db9791709b451704b7d661882aac
+	sha512sums = 43e0bd1037b1db660197c62009201c090a302fdf51bb3d76291f7d0dbdb0620f0a61e3f9b2fd994bf39e90a08b2c798d69939ffe1f5a7f43c6c3920a47493f0d
 	sha512sums = 1f8d504fb27e815f7efcc8e97672bad12f531d171ab8a08c49439fb4ee63b07e9355c49e56b5fb2eb2f6d202ce56a0526b609fef4b6209832026709002eba22a
 
 pkgname = warcraftlogsuploader-appimage
