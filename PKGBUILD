@@ -2,7 +2,7 @@
 pkgname=proton-mail-bin
 _pkgver=1.0.5
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Proton official desktop application for Proton Mail and Proton Calendar"
 arch=('x86_64')
 url="https://proton.me"
@@ -23,7 +23,7 @@ optdepends=(
 )
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}" 'protonmail-desktop')
-source=("https://github.com/ProtonMail/inbox-desktop/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_amd64.deb")
+source=("https://github.com/ProtonMail/inbox-desktop/releases/download/$pkgver/${pkgname%-bin}_${pkgver}_amd64.deb")
 sha256sums=('127e6f9131d8b7037a18c81bb72873b0faa49ce3d13bd2a54ea65f6c115a2054')
 
 package() {
