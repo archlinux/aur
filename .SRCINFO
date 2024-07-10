@@ -1,10 +1,10 @@
 pkgbase = python-ci_watson
 	pkgdesc = CI helper for STScI Jenkins
-	pkgver = 0.6.2
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://ci_watson.readthedocs.io
 	arch = any
-	license = BSD
+	license = BSD-3-Clause
 	checkdepends = python-pytest-astropy-header
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
@@ -15,12 +15,12 @@ pkgbase = python-ci_watson
 	makedepends = python-sphinx-automodapi
 	makedepends = python-crds
 	makedepends = python-pytest
-	source = https://github.com/spacetelescope/ci_watson/archive/0.6.2.tar.gz
-	md5sums = 955fb8015bd126f0daaaa971d8f96a9e
+	source = https://github.com/spacetelescope/ci_watson/archive/0.7.0.tar.gz
+	md5sums = 5a6b50aa4cda2b4df7209bef0b8a735d
 
 pkgname = python-ci_watson
 	depends = python>=3.9
-	depends = python-pytest>=3
+	depends = python-pytest>=6
 	depends = python-crds
 	optdepends = python-ci_watson-doc: Documentation for CI Watson
 
