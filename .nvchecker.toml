@@ -1,0 +1,3 @@
+[python-mwoauth]
+source = "pypi"
+pypi = "mwoauth"
