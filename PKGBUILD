@@ -13,7 +13,7 @@
 # You can pass parameters to `ninja` via MAKEFLAGS
 
 pkgname=telegram-desktop-dev
-pkgver=5.1.8
+pkgver=5.2.3
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=(x86_64)
@@ -49,7 +49,7 @@ source=(
     # New approach: source tarball, same as the stable Arch package
     "https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
 )
-sha512sums=('02af817b8233819cfb7adad9280cbe3bc408e0bdb4f027d992566119692bdf428b1332c9521d25a063eecd04f4175bcfd443bf454b624be7fd8da55fe651f905')
+sha512sums=('5d5bf1f5c35af11b2adf7db075832e7cca5768c2c5f82d9fc5054b9d45f964a3520eb88864aefc3de593ce1359534b210b1e5d89495819e7386f6ca15fd4a15c')
 
 prepare() {
     # Magic submodule configuration, thanks to the Python script
