@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Batuhan Baserdem <lastname dot firstname at gmail>
 pkgname=maestral
-pkgver=1.9.3
+pkgver=1.9.4
 pkgrel=1
 pkgdesc='A light-weight and open-source Dropbox client'
 arch=('any')
@@ -39,7 +39,7 @@ checkdepends=('python-pytest')
 optdepends=('maestral-qt: Qt interface for the maestral daemon'
             'python-systemd: Syslog support')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ee85ed411361d57d6cb8041b0a35b9f462caf3ca7cb47987369412c686dda942')
+sha256sums=('bb03ff59418a35786ef1c5a5ac0c66bb67390fdab8ebee011f1f8ba151677789')
 
 build() {
 	cd "$pkgname-$pkgver"
