@@ -1,44 +1,64 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
+# Contributor: Andrew Sun <adsun701@gmail.com>
 
-pkgname=mingw-w64-kvazaar
 _pkgname=kvazaar
-pkgver=2.0.0
+pkgname=mingw-w64-${_pkgname}
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="An open-source HEVC encoder (mingw-w64)"
 arch=('any')
 url='http://ultravideo.cs.tut.fi/#encoder'
 license=('LGPL')
-depends=('mingw-w64-crypto++')
-makedepends=('mingw-w64-configure' 'yasm' 'git')
+depends=('mingw-w64-crt')
+makedepends=('mingw-w64-cmake' 'mingw-w64-crypto++' 'ninja')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("${_pkgname}-${pkgver}.tar.gz"::"https://github.com/ultravideo/kvazaar/archive/v${pkgver}.tar.gz")
-sha256sums=('213edca448f127f9c6d194cdfd21593d10331f9061d95751424e1001bae60b5d')
+sha256sums=('c5a1699d0bd50bc6bdba485b3438a5681a43d7b2c4fd6311a144740bfa59c9cc')
 
+_srcdir="${_pkgname}-${pkgver}"
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_flags=(
+	-Wno-dev
+	-DCMAKE_BUILD_TYPE=Release
+	-DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG'
+	-DUSE_CRYPTO=ON
+)
 
 prepare() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  ./autogen.sh
+	cd "${_srcdir}"
+
+	sed -i \
+		-e 's|include(FetchContent)|find_package(cryptopp REQUIRED)|' 'CMakeLists.txt' \
+		-e 's|if (NOT CRYPTOPP_FOUND)|if (0)|' \
+		-e 's|set(BUILD_SHARED_LIBS OFF)||' \
+		-e 's|set(EXTRA_LIBS ${EXTRA_LIBS} ${CMAKE_BINARY_DIR}/lib/libcryptopp.a)|target_link_libraries(kvazaar PRIVATE cryptopp::cryptopp)|' \
+		'CMakeLists.txt'
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  for _arch in ${_architectures}; do
-    mkdir -p build-${_arch} && pushd build-${_arch}
-    LIBS+=" -lssp" ${_arch}-configure \
-      --enable-largefile \
-      --with-cryptopp
-    make
-    popd
-  done
+	for _arch in ${_architectures}; do
+		${_arch}-cmake -G Ninja -S "${_srcdir}" -B "build-${_arch}-static" "${_flags[@]}" \
+			-DBUILD_SHARED_LIBS=OFF \
+			-DBUILD_TESTS=OFF \
+			-DCMAKE_INSTALL_PREFIX="/usr/${_arch}/static"
+		cmake --build "build-${_arch}-static"
+
+		${_arch}-cmake -G Ninja -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" \
+			-DBUILD_TESTS=OFF
+		cmake --build "build-${_arch}"
+	done
 }
 
 package() {
-  for _arch in ${_architectures}; do
-    cd "${srcdir}/${_pkgname}-${pkgver}/build-${_arch}"
-    make DESTDIR="${pkgdir}" install
-    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.exe
-    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
-    ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
-  done
+	for _arch in ${_architectures}; do
+		DESTDIR="${pkgdir}" cmake --install "build-${_arch}-static"
+		${_arch}-strip -g "$pkgdir"/usr/${_arch}/static/lib/*.a
+		rm -rf "$pkgdir/usr/${_arch}/static/bin"
+		rm -rf "$pkgdir/usr/${_arch}/static/share"
+
+		DESTDIR="${pkgdir}" cmake --install "build-${_arch}"
+		${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
+		${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
+		rm -rf "$pkgdir/usr/${_arch}/share"
+	done
 }
