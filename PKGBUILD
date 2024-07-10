@@ -1,30 +1,28 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
-# Maintainer: Nogweii <me@nogweii.net>
+# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
+# Contributor: Felix Golatofski <contact@xdfr.de>
+# Contributor: Nogweii <me@nogweii.net>
 # Contributor:  Marcin (CTRL) Wieczorek <marcin@marcin.co>
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
-# Run tests? They take a bit of time.
-run_tests=false
-
 pkgname=certmonger
-pkgver=0.79.18
+pkgver=0.79.20
 pkgrel=1
 pkgdesc="Certificate status monitor and PKI enrollment client"
 arch=(i686 x86_64)
 url="https://pagure.io/certmonger"
 license=(GPL)
-depends=(nss tevent xmlrpc-c popt libdbus krb5 jansson)
+depends=(nss tevent xmlrpc-c popt libdbus krb5 jansson systemd)
 makedepends=(rpm-tools)
 checkdepends=(diffutils dos2unix expect)
 backup=(etc/certmonger/certmonger.conf)
 install="${pkgname}.install"
 source=("https://pagure.io/certmonger/archive/${pkgver}/certmonger-${pkgver}.tar.gz")
-sha512sums=('fff98b0e95f9e7394a8a4b7831f6249f2d0f518a178b9b65c4ff7a3c7fd98f9e3e634019a6a58e76454edaa8773b38bf2058c53cf51c8bf996b16388d5a5288a')
+sha512sums=('76685185172bbf2c766c477c399ce0b14c9fd2d81637b44b8da80ae045ebf6c650ae3d525a87dccd755a6c92d4a5916bb62f8ea1d8520c47ae64770be6a5d2be')
 
 build() {
   cd "${pkgname}-${pkgver}"
   unset KRB5_CONFIG
-  ./autogen.sh
+  autoreconf -i -f
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
@@ -34,17 +32,18 @@ build() {
     --enable-systemd \
     --enable-tmpfiles \
     --with-tmpdir=/run/certmonger \
+    --with-homedir=/run/certmonger \
     --with-uuid \
-    --with-gmp
+    --with-gmp \
+    --with-xmlrpc \
+    --enable-pie --enable-now
 
   make
 }
 
 check() {
   cd "${pkgname}-${pkgver}"
-  if [[ "${run_tests}" == "true" ]]; then
-    make check
-  fi
+  make check
 }
 
 package() {

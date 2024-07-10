@@ -1,3 +1,3 @@
 post_upgrade() {
-  killall -HUP dbus-daemon &>/dev/null
+  dbus-send --system --type=method_call --dest=org.freedesktop.DBus / org.freedesktop.DBus.ReloadConfig 2>&1 || :
 }
