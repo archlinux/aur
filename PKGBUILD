@@ -37,6 +37,9 @@ build() {
     cd "$srcdir/libX11-${pkgver}"
     source android-env ${_android_arch}
 
+    export CFLAGS="${CFLAGS} -DNO_DEC_I18N_FIX"
+    export CXXFLAGS="${CXXFLAGS} -DNO_DEC_I18N_FIX"
+
     android-${_android_arch}-configure \
         --disable-xf86bigfont \
         --disable-malloc0returnsnull
