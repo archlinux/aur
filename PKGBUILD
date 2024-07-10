@@ -2,8 +2,8 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=cosmic-settings-git
-pkgver=r421.cb02d51
-pkgrel=2
+pkgver=r422.acd3c23
+pkgrel=1
 pkgdesc="The settings application for the COSMIC desktop environment."
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-settings"
@@ -29,8 +29,10 @@ makedepends=(
   'just'
   'mold'
 )
-optdepends=('power-profiles-daemon: power profiles')
-optdepends=('adw-gtk3')
+optdepends=(
+  'adw-gtk3'
+  'power-profiles-daemon: power profiles'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/pop-os/cosmic-settings.git')
