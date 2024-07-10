@@ -1,26 +1,27 @@
-# Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
+# Maintainer: Harrison <contact@htv04.com>
+# Contributor: Hugo Osvaldo Barrera <hugo@barrera.io>
 
-pkgname="facetimehd-firmware"
-pkgver=1.43.0
+pkgname='facetimehd-firmware'
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="Firmware for the Broadcom 1570 PCIe webcam."
-arch=('x86_64')
-url="https://github.com/patjak/facetimehd-firmware"
+epoch=1
+pkgdesc='Firmware for the FacetimeHD (Broadcom 1570) PCIe webcam'
+arch=('any')
+url='https://github.com/patjak/facetimehd-firmware'
 license=('unknown')
-makedepends=('cpio' 'curl' 'git' 'xz')
-conflicts=('bcwc-pcie-firmware')
-replaces=('bcwc-pcie-firmware')
-provides=('bcwc-pcie-firmware')
+makedepends=('git' 'curl' 'xz' 'cpio')
+conflicts=("$pkgname" 'bcwc-pcie-firmware')
+replaces=("$pkgname" 'bcwc-pcie-firmware')
+provides=("$pkgname" 'bcwc-pcie-firmware')
 
-source=("$pkgname::git+https://github.com/patjak/facetimehd-firmware.git")
-md5sums=('SKIP')
+source=("$pkgname::git+https://github.com/patjak/facetimehd-firmware.git#tag=v$pkgver")
+sha256sums=('SKIP')
 
-prepare() {
+build() {
   cd "$srcdir/$pkgname"
   make
 }
 
 package() {
-  install -Dm 644 "$srcdir/$pkgname/firmware.bin" \
-    "$pkgdir/usr/lib/firmware/facetimehd/firmware.bin"
+  install -Dm644 "$srcdir/$pkgname/firmware.bin" "$pkgdir/usr/lib/firmware/facetimehd/firmware.bin"
 }
