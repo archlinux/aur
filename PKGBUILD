@@ -1,7 +1,7 @@
 # Maintainer: William Smith <calsignlabs at gmail dot com>
 
 pkgname=python-revup
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Effortlessly create and manage pull requests without changing branches. Powers a stacked diffs workflow with python and git 'plumbing' commands."
 arch=("any")
@@ -34,7 +34,7 @@ makedepends=(
     gawk
 )
 source=("${pkgname}::git+https://github.com/Skydio/revup#tag=v$pkgver")
-sha256sums=("94737af56c8acace88a2986881b9285bb070504d9f77f00d87d961be55b346f8")
+sha256sums=('a541814dbfec5d261c9f263dd203cf3340141af21e5264169708d69f26a53566')
 
 build() {
   cd python-revup
