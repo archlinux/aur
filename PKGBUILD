@@ -13,9 +13,9 @@ conflicts=('turbo-editor')
 depends=('file' 'libmagic.so'
          'gpm' 'libgpm.so'
          'ncurses' 'libncursesw.so')
-optdepends=('wl-clipboard: Cliboard integration for Wayland'
-            'xsel: Cliboard integration for Xorg'
-            'xclip: Cliboard integration for Xorg')
+optdepends=('wl-clipboard: Clipboard integration for Wayland'
+            'xsel: Clipboard integration for Xorg'
+            'xclip: Clipboard integration for Xorg')
 makedepends=('cmake' 'git')
 source=("git+$url.git"
         "tvision::git+${url%/*}/tvision.git")
