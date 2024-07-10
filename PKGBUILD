@@ -2,48 +2,44 @@
 
 _pyname=xgboost
 pkgname=python-$_pyname
-pkgver=2.0.3
-_dmlc_ver=0.5
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Gradient Boosting Library for Python"
 arch=(x86_64 aarch64)
 url="https://xgboost.ai"
-license=(Apache)
+license=(Apache-2.0)
 depends=(python-scikit-learn python-pandas python-matplotlib python-pyarrow
-         openmpi)
+         python-graphviz python-dask)
 makedepends=(python-build python-installer python-wheel python-hatchling
-             python-setuptools cmake)
+             python-setuptools cmake ninja git)
 optdepends=('apache-spark: Distributed XGBoost with PySpark' 'python-pytest')
 provides=(python-$_pyname)
 conflicts=(python-$_pyname-git)
 source=($_pyname-$pkgver.tar.gz::https://github.com/dmlc/xgboost/archive/refs/tags/v$pkgver.tar.gz
-        dmlc-core-$_dmlc_ver.tar.gz::https://github.com/dmlc/dmlc-core/archive/refs/tags/v$_dmlc_ver.tar.gz
-        rabit_mpi.patch)
-sha256sums=('94e5deb27133459ec4172f3fed83971383366ad2a7d646b6f0b51f63484c5138'
-            'cd97475ae1ecf561a1cb1129552f9889d52b11b3beb4c56e5345d007d5020ece'
-            '15ad5794d9f11fe43200a3663469bcaca7fd0a87c0d5c8ea41a665bf881c2b15')
+        git+https://github.com/dmlc/dmlc-core.git)
+sha256sums=('380c66ac3611a9cc867d4f51aaa95bb8946f75a84e5a3f0a3f37b89a072e6f93'
+            'SKIP')
 
 prepare() {
   cd "$srcdir/$_pyname-$pkgver"
 
   # Replacing the internal DMLC core with a stable one
   rm -rf dmlc-core
-  ln -sf "$srcdir/dmlc-core-$_dmlc_ver" \
+  ln -sf "$srcdir/dmlc-core" \
     "$srcdir/$_pyname-$pkgver/dmlc-core"
-
-  patch -p0 < ../rabit_mpi.patch
 }
 
 build() {
   cd "$srcdir"
   cmake -B build -S $_pyname-$pkgver \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DUSE_CXX14_IF_AVAILABLE=ON \
-    -DUSE_OPENMP=ON \
-    -DPLUGIN_DENSE_PARSER=ON \
-    -DPLUGIN_FEDERATED=ON \
-    -DProtobuf_PROTOC_EXECUTABLE=/usr/bin/protoc \
-    -DRABIT_BUILD_MPI=ON
+    -D CMAKE_INSTALL_PREFIX=/usr \
+    -D USE_CXX14_IF_AVAILABLE=ON \
+    -D USE_OPENMP=ON \
+    -D PLUGIN_FEDERATED=ON \
+    -D Protobuf_PROTOC_EXECUTABLE=/usr/bin/protoc \
+    -D USE_PARQUET=ON \
+    -G Ninja \
+    -W no-dev
   cmake --build build
 
   cd $_pyname-$pkgver/python-package
