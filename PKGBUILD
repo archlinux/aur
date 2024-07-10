@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Batuhan Baserdem <lastname dot firstname at gmail>
 pkgname=python-desktop-notifier
-pkgver=5.0.0
+pkgver=5.0.1
 pkgrel=1
 pkgdesc='Python library for cross-platform desktop notifications'
 arch=('any')
@@ -22,7 +22,7 @@ makedepends=('python-build'
              'python-sphinx_mdinclude'
              'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('9bc39143e0bfc0745a06abb920046baafaba3f9c94ea0a0ecedca2912516ad51')
+sha256sums=('2d756fb4e82b8f95edb0e49ec9a3e8e4d5ba404c194cc6bffac14cd8bad33f74')
 
 build() {
 	cd "${pkgname#python-}-$pkgver"
