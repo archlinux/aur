@@ -2,7 +2,7 @@
 
 pkgbase=xet
 pkgname=(git-xet xetcmd xetmnt)
-pkgver=0.13.2
+pkgver=0.14.4
 pkgrel=1
 pkgdesc='CLI tools for working with XetHub'
 arch=(x86_64)
@@ -19,37 +19,42 @@ makedepends=(cargo
 _archive="xet-core-$pkgver"
 options=(!lto)
 source=("$_url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('bfabea8751dd9f11c7d9d9e70b2d8c26915dd34c01e66891710c037e7625f713')
+sha256sums=('0afd5a912e2beaf10429bf1f216c0a76db3dc385a05ec4d406d146bde7a230a4')
 
 prepare() {
-	cd "$_archive/rust"
-	cargo update
-	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+	cd "$_archive"
+	# Upstream lockfile not synced
+	pushd rust;   cargo update; popd
+	pushd rust;   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"; popd
+	pushd gitxet; cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"; popd
+	# pushd libxet; cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"; popd
 }
 
 build() {
-	cd "$_archive/rust"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	CFLAGS+=' -ffat-lto-objects'
-	cargo build --frozen --release --all-features
+	cd "$_archive"
+	pushd rust; cargo build --frozen --release; popd
+	pushd gitxet; cargo build --frozen --release; popd
+	# pushd libxet; cargo build --frozen --release; popd
 }
 
 _package() {
-	cd "$_archive/rust"
+	cd "$_archive/$1"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" ../LICENSE
 }
 
 package_git-xet() {
-	_package
+	_package gitxet
 }
 
 package_xetcmd() {
-	_package
+	_package rust
 }
 
 package_xetmnt() {
 	depends+=(git-xet)
-	_package
+	_package gitxet
 }
