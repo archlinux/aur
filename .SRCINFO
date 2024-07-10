@@ -1,13 +1,13 @@
 pkgbase = nyaa-bin
 	pkgdesc = A tui tool for browsing and downloading torrents
 	pkgver = 0.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Beastwick18/nyaa/
 	arch = x86_64
 	license = GPL-3.0-or-later
 	provides = nyaa
 	conflicts = nyaa
 	source_x86_64 = nyaa-bin-0.9.1::https://github.com/Beastwick18/nyaa/releases/download/v0.9.1/nyaa-0.9.1-x86_64-unknown-linux-gnu
-	b2sums_x86_64 = b8ef2bf967d5b3b4ee9ceb21e4599bf311731335ba93773cd0758ae9c9462384e04e5304c6dd625ef2bf2c9f3d3f530df965533357a2a06bd09dafdbae9a2228
+	b2sums_x86_64 = be10dbbe428abba22d78c311a0737afe7a7614a2c438916e84ee691e5f7b007b8f8b34d679c20fd2abc28f722bb54080ed329a4082c898e794b314957e858f68
 
 pkgname = nyaa-bin
