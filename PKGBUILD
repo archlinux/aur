@@ -1,20 +1,21 @@
-# Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
+# Maintainer: Evzen Demcenko
+# Contributor: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 # Contributor: xylosper <darklin20@gmail.com>
 # Contributor: Martin T. H. Sandsmark <martin.sandsmark@kde.org>
 
 pkgname=okular-backend-mupdf-git
-pkgver=r81.1ba0160
+pkgver=r94.fe6965e
 pkgrel=1
-pkgdesc="MuPDF-based backend for Okular (git version)"
+pkgdesc="MuPDF-based backend for Okular (git)"
 arch=('x86_64')
 license=('AGPL')
-depends=('okular' 'libmupdf' 'gumbo-parser' 'mujs')
+depends=('gcc-libs' 'glibc' 'kcoreaddons' 'ki18n' 'libmupdf' 'okular' 'qt6-base')
 makedepends=('extra-cmake-modules' 'git')
-url="https://github.com/gustawho/okular-backend-mupdf"
+url="https://github.com/lanconnected/okular-backend-mupdf"
 source=("git+${url}.git")
 sha1sums=('SKIP')
 conflicts=("okular-backend-mupdf")
-provides=("okular-backend-mupdf")
+provides=("okular-backend-mupdf-git")
 
 pkgver() {
   cd ${pkgname%-git}
