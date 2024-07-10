@@ -2,7 +2,7 @@
 
 _pkgname=libheif
 pkgname=mingw-w64-${_pkgname}
-pkgver=1.17.6
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='HEIF file format decoder and encoder (mingw-w64)'
 url='https://github.com/strukturag/libheif'
@@ -19,17 +19,15 @@ depends=(
 	'mingw-w64-libwebp'
 	'mingw-w64-svt-av1' # Only for x86_64
 	'mingw-w64-openjpeg2'
+	'mingw-w64-ffmpeg'
+	'mingw-w64-kvazaar'
 )
 makedepends=('mingw-w64-cmake' 'ninja')
 arch=('any')
 options=(!strip !buildflags staticlibs)
 optdepends=()
-sha256sums=('55bae7858bfd1679923d4a7db08ce1dcf3216667fa8f1da193a0577876b8a904'
-            '53a7eeb0f0f1c9fb076a6f56c6753abf8e30cf625355c54e720cc028ae9c1ce9')
-source=(
-	"$_pkgname-$pkgver.tar.gz::https://github.com/strukturag/libheif/archive/v${pkgver}.tar.gz"
-	"https://github.com/strukturag/libheif/commit/a911b26a902c5f89fee2dc20ac4dfaafcb8144ec.patch"
-)
+sha256sums=('847d4e2bb7153ae00965c9e6a0f184420c90879d84632424e478c411224c9817')
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/strukturag/libheif/archive/v${pkgver}.tar.gz")
 
 _srcdir="${_pkgname}-${pkgver}"
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
@@ -43,17 +41,20 @@ _flags=(
 	-DWITH_SvtEnc_PLUGIN=OFF
 	-DWITH_EXAMPLES=OFF
 	-DWITH_REDUCED_VISIBILITY=ON
-	-DWITH_DEFLATE_HEADER_COMPRESSION=ON
+	-DWITH_DAV1D=ON
+	-DWITH_DAV1D_PLUGIN=OFF
+	-DWITH_FFMPEG_DECODER=ON
+	-DWITH_FFMPEG_DECODER_PLUGIN=OFF
 	-DWITH_OpenJPEG_DECODER=ON
 	-DWITH_OpenJPEG_DECODER_PLUGIN=OFF
 	-DWITH_OpenJPEG_ENCODER=ON
-	-DWITH_OpenJPEG_ENCODER_PLUGIN=OFF )
+	-DWITH_OpenJPEG_ENCODER_PLUGIN=OFF
+	-DWITH_KVAZAAR=ON
+	-DWITH_KVAZAAR_PLUGIN=OFF )
 
 prepare() {
 	cd "${_srcdir}"
-	
-	patch -p1 -i "$srcdir/a911b26a902c5f89fee2dc20ac4dfaafcb8144ec.patch"
-	
+
 	(cat << EOF
 include(LibFindMacros)
 libfind_pkg_check_modules(RAV1E rav1e)
@@ -70,7 +71,7 @@ build() {
 			-DBUILD_SHARED_LIBS=OFF \
 			-DCMAKE_INSTALL_PREFIX="/usr/${_arch}/static"
 		cmake --build "build-${_arch}-static"
-		
+
 		${_arch}-cmake -G Ninja -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}"
 		cmake --build "build-${_arch}"
 	done
@@ -80,7 +81,7 @@ package() {
 	for _arch in ${_architectures}; do
 		DESTDIR="${pkgdir}" cmake --install "build-${_arch}-static"
 		${_arch}-strip -g "$pkgdir"/usr/${_arch}/static/lib/*.a
-		
+
 		DESTDIR="${pkgdir}" cmake --install "build-${_arch}"
 		${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
 		${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
