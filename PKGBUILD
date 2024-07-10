@@ -1,17 +1,17 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=cdhist
-pkgver=3.7.2
+pkgver=3.8
 pkgrel=1
 pkgdesc="Linux shell cd history"
 url="https://github.com/bulletmark/$pkgname"
-license=(GPL3)
+license=(GPL-3.0-or-later)
 arch=(any)
 depends=("python>=3.7")
 makedepends=(python-setuptools python-build python-installer
              python-wheel python-setuptools-scm)
 install="install.sh"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha1sums=('9e8fab7f218b60c4dcc4824e0e96c312bf1699f0')
+sha1sums=('62dbb627ac58089950560a964be298157d39b446')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"

@@ -1,18 +1,18 @@
 pkgbase = cdhist
 	pkgdesc = Linux shell cd history
-	pkgver = 3.7.2
+	pkgver = 3.8
 	pkgrel = 1
 	url = https://github.com/bulletmark/cdhist
 	install = install.sh
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools-scm
 	depends = python>=3.7
-	source = cdhist-3.7.2.tar.gz::https://github.com/bulletmark/cdhist/archive/3.7.2.tar.gz
-	sha1sums = 9e8fab7f218b60c4dcc4824e0e96c312bf1699f0
+	source = cdhist-3.8.tar.gz::https://github.com/bulletmark/cdhist/archive/3.8.tar.gz
+	sha1sums = 62dbb627ac58089950560a964be298157d39b446
 
 pkgname = cdhist
