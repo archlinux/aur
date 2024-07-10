@@ -4,8 +4,8 @@
 # Contributor: sukanka <su975853527 at gmail dot com>
 _pkgname=siyuan
 pkgname="${_pkgname}-note-bin"
-pkgver=3.0.17
-_electronversion=28
+pkgver=3.1.0
+_electronversion=31
 pkgrel=1
 pkgdesc="A local-first personal knowledge management system.Use system-wide electron."
 arch=(
@@ -32,8 +32,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux.AppImage")
 sha256sums=('2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-sha256sums_aarch64=('dfef9ca8bf91b1e78854b58f537f08e440fefaf57bad08a3ca0f84dc977e829c')
-sha256sums_x86_64=('4495378e0a009027cff6624db1bec967a28f9bb8b9ab875ba030d88a7e751b88')
+sha256sums_aarch64=('dad4604a4017e279c8058d18c89b0808f602cdd68a3c765b98d7e5800c7d941f')
+sha256sums_x86_64=('8a0c0f00b6169b5551a26cd44c80f4a3b0a1a92df116a2b6913cd3e98e2f21c0')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
