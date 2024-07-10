@@ -1,13 +1,13 @@
 # Maintainer: Livaco <livaco@livaco.dev>
 pkgname=crab-fetch-git
-pkgver=v0.3.1.r0.g5258a29
-pkgrel=2
+pkgver=v0.4.0.r0.g88181e4
+pkgrel=1
 pkgdesc="Extremely fast, featureful and customizable command-line fetcher."
 arch=('x86_64')
 url="https://github.com/LivacoNew/CrabFetch"
 license=('Apache-2.0')
 depends=("glibc" "gcc-libs")
-optdepends=("mesa-utils" "pciutils")
+optdepends=("mesa-utils" "pciutils" "libdrm" "dbus")
 makedepends=("rustup")
 provides=("crabfetch")
 conflicts=("crabfetch")
@@ -21,8 +21,9 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${pkgname}"
-    # verbose in case issues arise, makes debugging step instant
-    cargo build -rv
+    # If you don't want to use dbus, remove the music feature flag!
+    # Since this is an *arch* package, I'm assumign you are however
+    cargo build -r -F music
 }
 
 package() {
