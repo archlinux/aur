@@ -1,0 +1,26 @@
+pkgbase = turbo-editor-git
+	pkgdesc = Text editor based on Scintilla and Turbo Vision
+	pkgver = r450.697580e
+	pkgrel = 1
+	url = https://github.com/magiblot/turbo
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = cmake
+	makedepends = git
+	depends = file
+	depends = libmagic.so
+	depends = gpm
+	depends = libgpm.so
+	depends = ncurses
+	depends = libncursesw.so
+	optdepends = wl-clipboard: Cliboard integration for Wayland
+	optdepends = xsel: Cliboard integration for Xorg
+	optdepends = xclip: Cliboard integration for Xorg
+	provides = turbo-editor
+	conflicts = turbo-editor
+	source = git+https://github.com/magiblot/turbo.git
+	source = tvision::git+https://github.com/magiblot/tvision.git
+	b2sums = SKIP
+	b2sums = SKIP
+
+pkgname = turbo-editor-git
