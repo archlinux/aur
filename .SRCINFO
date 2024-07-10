@@ -1,13 +1,13 @@
 pkgbase = supabase
 	pkgdesc = A CLI for Supabase, an open source Firebase alternative
-	pkgver = 1.179.5
+	pkgver = 1.183.5
 	pkgrel = 1
 	url = https://github.com/supabase/cli
 	arch = any
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = cli-1.179.5.tar.gz::https://github.com/supabase/cli/archive/refs/tags/v1.179.5.tar.gz
-	sha256sums = fa87d80945d0614947cda803b2197971e695bcb0d9416d255465efa1b2f6b84c
+	source = cli-1.183.5.tar.gz::https://github.com/supabase/cli/archive/refs/tags/v1.183.5.tar.gz
+	sha256sums = 46d897aff84559071a9714115c7bfb9b2222870d7b77a3d7e1dad7c079c4f63e
 
 pkgname = supabase
