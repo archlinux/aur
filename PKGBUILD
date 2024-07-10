@@ -8,22 +8,9 @@ arch=('any')
 license=('GPL3')
 url="https://github.com/mbridak/not1mm"
 makedepends=(git python-build python-installer python-wheel)
-depends=(
-python
-gtk4
-hamradio-menus
-python-gobject
-python-pyqt5
-python-requests
-python-dicttoxml
-python-xmltodict
-python-psutil
-python-notctyparser
-python-sounddevice
-python-soundfile
-python-pyserial
-python-numpy
-)
+depends=('python' 'python-pyqt5' 'python-pyqt6' 'python-requests' 'python-dicttoxml' 'python-xmltodict' 'python-psutil'
+	 'python-sounddevice' 'python-soundfile' 'python-numpy' 'python-notctyparser' 'python-pyserial' 'python-appdata'
+	 'python-gobject' 'python-thefuzz' 'python-levenshtein' 'gtk4' 'hamradio-menus')
 optdepends=(hamlib flrig)
 provides=(not1mm)
 conflicts=(not1mm)
