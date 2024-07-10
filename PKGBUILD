@@ -2,9 +2,9 @@
 
 _pkgname=lutgen
 pkgname=lutgen-git
-pkgver=0.8.2.r0.gce3b0f8
+pkgver=0.11.0.r0
 pkgrel=1
-pkgdesc='A blazingly fast interpolated LUT generator and applicator for arbitrary and popular color palettes (latest git)'
+pkgdesc='A blazingly fast interpolated LUT utility for arbitrary and popular color palettes (latest git)'
 arch=('i686' 'x86_64')
 url="https://github.com/ozwaldorf/lutgen-rs"
 license=('MIT')
@@ -30,11 +30,11 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release
-    mkdir -p completions/{bash,zsh,fish}
+    mkdir -p completions/
     bin="target/release/$_pkgname"
-    $bin completions bash > completions/$_pkgname
-    $bin completions zsh > completions/_$_pkgname
-    $bin completions fish > completions/$_pkgname.fish
+    $bin --bpaf-complete-style-bash > completions/$_pkgname
+    $bin --bpaf-complete-style-zsh > completions/_$_pkgname
+    $bin --bpaf-complete-style-fish > completions/$_pkgname.fish
 }
 
 package() {
