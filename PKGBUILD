@@ -8,7 +8,7 @@
 _pkgname=gamescope
 pkgname=gamescope-plus
 pkgver=3.14.23.plus1
-pkgrel=2
+pkgrel=3
 pkgdesc='SteamOS session compositing window manager with added patches'
 arch=(x86_64)
 url=https://github.com/ChimeraOS/gamescope
@@ -50,6 +50,7 @@ depends=(
 )
 
 makedepends=(
+  cmake
   benchmark
   git
   glslang
