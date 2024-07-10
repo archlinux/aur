@@ -10,7 +10,7 @@
 _pkgname="glaxnimate"
 pkgname="$_pkgname"
 pkgver=0.5.4
-pkgrel=5
+pkgrel=6
 pkgdesc="Simple vector animation program"
 url="https://glaxnimate.mattbas.org/"
 license=('GPL-3.0-or-later')
@@ -90,6 +90,11 @@ prepare() {
 
   # fix for ffmpeg 7.0
   git cherry-pick -n -m1 4fb2b67a0f0ce2fbffb6fe9f87c3bf7914c8a602
+
+  # force Qt6
+  sed -E -e 's@Qt5 Qt6@Qt6@' \
+    -i CMakeLists.txt \
+    external/Qt-History-LineEdit/CMakeLists.txt
 }
 
 build() {
@@ -99,6 +104,7 @@ build() {
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
+    -DQT_VERSION_MAJOR=6
     -Wno-dev
   )
 
