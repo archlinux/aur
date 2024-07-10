@@ -1,7 +1,7 @@
 # Maintainer: Varakh <varakh@varakh.de>
 
 pkgname=cells-sync-bin
-pkgver=0.9.1
+pkgver=0.9.4
 pkgrel=1
 conflicts=('cells-sync')
 provides=('cells-sync')
@@ -10,7 +10,7 @@ license=('GPL3')
 pkgdesc="Cells Sync is a desktop synchronization client for Pydio Cells server"
 url="https://pyd.io"
 source=("$pkgname-$pkgver.zip::https://download.pydio.com/pub/cells-sync/release/${pkgver}/linux-amd64/pydio-cells-sync-${pkgver}-linux-amd64.zip" "cells-sync.service" "cells-sync-bin.png" "cells-sync-bin.desktop" "cells-sync-bin-ui-launcher.sh")
-sha256sums=('3b85330ab1ee609e7521851ea873e95aefa2c2ae757693a527fad3830a2539b2'
+sha256sums=('9aab5a357ca0ae3c395ed303ad3622c97a7e37744696d1acedef4d968ac010d9'
             '794be4d5d718a21c485783925c878a418b4dd224a9bd5cef8814a0036ee61ef9'
             'e2c25fc97474a77c7dd450663084bf3916ff1c9b869061cb6b02e9c3cd121ef7'
             '2586bed5ad085619428d22495b4aed16f828d68fe368a006bb20bffb588da068'
