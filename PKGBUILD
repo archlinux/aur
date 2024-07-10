@@ -1,42 +1,45 @@
-# Maintainer: Will Marshall <wcm64@case.edu> 
-# Past Maintainer: Matthias Riegler <riegler.matthias2@gmail.com>
+# Maintainer: Uffe Jakobsen _<_uffe_at_uffe_dot_org_>_
 pkgname=openspin-git
-pkgver=r42.fe4797b
+_gitname=OpenSpin
+pkgver=1.00.78.r14.gd1991aa
 pkgrel=1
-pkgdesc="Open Source SPIN interpreter for the ParallaxⓇ Propeller. Git Version"
+pkgdesc="Open Source Spin interpreter for the Parallax Propeller"
 arch=('x86_64' 'i686')
 url="https://github.com/parallaxinc/OpenSpin"
-license=('unknown')
+license=('MIT')
 groups=()
 depends=()
-makedepends=('git')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+makedepends=()
+provides=("${pkgname}")
+conflicts=("${pkgname}-git")
 replaces=()
 backup=()
 options=()
 install=
-source=('openspin::git+https://github.com/parallaxinc/OpenSpin')
-noextract=()
-md5sums=('SKIP')
+source=("git+https://github.com/parallaxinc/${_gitname}")
+sha256sums=('SKIP')
 
-# Please refer to the 'USING git SOURCES' section of the PKGBUILD man page for
-# a description of each element in the source array.
-
-pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-
-# Git, no tags available
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-
+pkgver()
+{
+  cd "${srcdir}/${_gitname}"
+  git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  #printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
-	cd "$srcdir/${pkgname%-git}"
-	make
+build()
+{
+  cd "${srcdir}/${_gitname}"
+  make
 }
 
-package() {
-	cd "$srcdir/${pkgname%-git}"
-    install -Dm 755 build/openspin "${pkgdir}/usr/bin/openspin" 
+package()
+{
+  cd "${srcdir}/${_gitname}"
+  install -Dm 755 build/openspin "${pkgdir}/usr/bin/openspin"
+  touch LICENSE
+  install -Dm 755 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+
+#
+# EOF
+#
