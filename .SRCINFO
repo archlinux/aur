@@ -1,7 +1,7 @@
 pkgbase = libim
 	pkgdesc = Toolkit for digital imaging
 	pkgver = 3.15
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.tecgraf.puc-rio.br/im/
 	arch = i686
 	arch = x86_64
@@ -38,4 +38,3 @@ pkgname = lua52-im
 pkgname = lua53-im
 	pkgdesc = Lua (5.3) bindings for IM toolkit
 	depends = libim
-

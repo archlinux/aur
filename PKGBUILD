@@ -6,7 +6,7 @@
 pkgbase=libim
 pkgname=('libim' 'lua-im' 'lua51-im' 'lua52-im' 'lua53-im')
 pkgver=3.15
-pkgrel=2
+pkgrel=3
 pkgdesc="Toolkit for digital imaging"
 arch=('i686' 'x86_64')
 url="https://www.tecgraf.puc-rio.br/im/"
@@ -22,6 +22,8 @@ noextract=(im-${pkgver}_Sources.tar.gz)
 
 prepare() {
   tar xf im-${pkgver}_Sources.tar.gz # sources have a problem with bsdtar, use gnutar instead
+
+  sed -i -e 's/JAS_HAVE_UNISTD_H/HAVE_UNISTD_H/' "$srcdir"/im/src/libjasper2/base/jas_stream.c
 }
 
 build() {
