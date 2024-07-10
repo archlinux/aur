@@ -19,19 +19,13 @@ pkgver() {
   cd "$_base"
 
   VBASE=$(grep "#define ASTRA_TOOLBOXVERSION_STRING" include/astra/Globals.h | cut -d \" -f 2)
-#  echo $VBASE
   echo -n "$VBASE".g$(git rev-parse --short HEAD) | tr -d '\n' | tr -d ' '
 }
 
-prepare() {
-  cd ${_base}
-# astra does not honor the installation prefix by default
-}
-
 build() {
-echo $VBASE
   cd ${_base}
   cd build/linux
+
   ./autogen.sh
   ./configure --with-python \
 		--prefix=/usr \
@@ -42,5 +36,6 @@ echo $VBASE
 package() {
   cd ${_base}
   cd build/linux
+
   make DESTDIR=${pkgdir} install
 }
