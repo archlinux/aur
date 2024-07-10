@@ -19,7 +19,7 @@ pkgname=(
 
   lib32-gstreamer-vaapi-git
 )
-pkgver=1.24.0+r705+g81de6b7738
+pkgver=1.24.0+r883+ga786c85c4f
 pkgrel=1
 pkgdesc="Multimedia graph framework (32-bit)"
 url="https://gstreamer.freedesktop.org/"
@@ -28,7 +28,7 @@ license=(LGPL)
 group=(lib32-gstreamer)
 makedepends=(
   # superproject
-  git meson
+  git meson glib2-devel
 
   # gstreamer
   valgrind lib32-libunwind bash-completion lib32-gtk3 lib32-libcap 
@@ -134,6 +134,7 @@ build() {
     -D gst-plugins-bad:mpeg2enc=disabled
     -D gst-plugins-bad:mplex=disabled
     -D gst-plugins-bad:msdk=disabled
+    -D gst-plugins-bad:nvcomp=disabled
     -D gst-plugins-bad:onnx=disabled
     -D gst-plugins-bad:openaptx=disabled
     -D gst-plugins-bad:openexr=disabled
