@@ -1,11 +1,13 @@
 pkgbase = smart-playerctl-git
 	pkgdesc = A smart wrapper for playerctl
 	pkgver = 0.2.2.r0.f7d601e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/Phitherek_/smart-playerctl
 	arch = x86_64
 	license = MIT
 	makedepends = git
+	makedepends = crystal
+	makedepends = shards
 	depends = playerctl
 	depends = libnotify
 	provides = smart-playerctl-git
@@ -14,4 +16,3 @@ pkgbase = smart-playerctl-git
 	md5sums = SKIP
 
 pkgname = smart-playerctl-git
-
