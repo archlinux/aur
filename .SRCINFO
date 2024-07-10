@@ -1,0 +1,15 @@
+pkgbase = python-print-color
+	pkgdesc = Simple Python wrapper to print color messages in the terminal
+	pkgver = 0.4.6
+	pkgrel = 1
+	url = https://github.com/xy3/print-color
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = python-print-color-0.4.6.tar.gz::https://github.com/xy3/print-color/archive/refs/tags/v0.4.6.tar.gz
+	sha256sums = fae0613dba48f6a2b7d652003e0993dcec0e3bc064ce535a95aadc6bb3de2d32
+
+pkgname = python-print-color
