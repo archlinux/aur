@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=requestly-git
 _pkgname=Requestly
-pkgver=1.6.0.r12.g5a392b0
+pkgver=1.6.1.r1.g4d25fef
 _electronversion=27
 _nodeversion=18
 pkgrel=1
@@ -67,12 +67,13 @@ build() {
         echo "Your network is OK."
     fi
     cd "${srcdir}/${pkgname%-git}-proxy"
-    npm install
+    NODE_ENV=development npm install
+    NODE_ENV=development npm run build
     cd "${srcdir}/${pkgname//-/.}"
     sed "s|AppImage|dir|g;s|icon.icns|icon.png|g" -i package.json
     sed "s|process.resourcesPath|\"\/usr\/lib\/${pkgname%-git}\"|g" -i src/main/main.ts
-    npm install
-    npm run package
+    NODE_ENV=development npm install
+    NODE_ENV=production npm run package
     asar e "${srcdir}/${pkgname//-/.}/release/build/linux-unpacked/resources/app.asar" "${srcdir}/app.asar.unpacked"
     install -Dm644 src/loadingScreen/index.html -t "${srcdir}/app.asar.unpacked/dist/loadingScreen"
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
@@ -82,7 +83,7 @@ package() {
     install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-git}"
     cp -r "${srcdir}/${pkgname//-/.}/release/build/linux-unpacked/resources/"{app.asar.unpacked,assets,static} "${pkgdir}/usr/lib/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
-    for _icons in 16x16 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024;do
+    for _icons in 16x16 32x32 64x64 128x128 256x256 512x512 1024x1024;do
         install -Dm644 "${srcdir}/${pkgname//-/.}/assets/icons/${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-git}.png"
     done
