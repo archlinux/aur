@@ -5,7 +5,7 @@ _android_arch=x86
 
 pkgname=android-${_android_arch}-libx11
 pkgver=1.8.9
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="X11 client-side library (Android ${_android_arch})"
 url="https://xorg.freedesktop.org/"
@@ -22,13 +22,15 @@ source=("${url}/releases/individual/lib/libX11-${pkgver}.tar.xz"{,.sig}
         '0001-Fix-missing-symbols.patch')
 md5sums=('b006876e5b749d82801fe9450d700daf'
          'SKIP'
-         '7e75887c531b49934b9ac36ac329074a')
+         '7aa12ed8ce6ef220c1e0b8c2b2982d27')
 validpgpkeys=('4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E') # Alan Coopersmith <alanc@freedesktop.org>
 
 prepare() {
     cd "$srcdir/libX11-${pkgver}"
 
     patch -Np1 -i ../0001-Fix-missing-symbols.patch
+
+    sed -i 's|-lpthread| |g' configure
 }
 
 build() {
@@ -37,8 +39,7 @@ build() {
 
     android-${_android_arch}-configure \
         --disable-xf86bigfont \
-        --disable-malloc0returnsnull \
-        --disable-xthreads
+        --disable-malloc0returnsnull
     make $MAKEFLAGS
 }
 
