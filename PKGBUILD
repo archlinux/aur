@@ -4,7 +4,7 @@ _pkgname="Password Strength Checker"
 pkgver=2.3.0
 _subver=Rel16032024-1000ist
 _electronversion=29
-pkgrel=1
+pkgrel=2
 pkgdesc="Password Strength Measuring or checking application."
 arch=(
     'x86_64'
@@ -21,11 +21,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('f73b8d74f3de7022b662ceccc05b1783e93d5ddfa172ef1e0d4abcf157b34c89'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}-using-electronjs-cpp|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
