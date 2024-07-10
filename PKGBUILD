@@ -1,8 +1,8 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=python-stanio-git
 _name=stanio
-pkgver=r28.00dd7f4
-pkgrel=3
+pkgver=r39.13e0f1b
+pkgrel=1
 pkgdesc="A package to prepare inputs to Stan and reading its outputs"
 arch=('any')
 url="https://github.com/WardBrian/stanio"
@@ -14,6 +14,7 @@ makedepends=(
     'git'
     'python-build'
     'python-installer'
+    'python-setuptools'
     'python-wheel'
 )
 checkdepends=(

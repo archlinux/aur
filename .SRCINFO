@@ -1,7 +1,7 @@
 pkgbase = python-stanio-git
 	pkgdesc = A package to prepare inputs to Stan and reading its outputs
-	pkgver = r28.00dd7f4
-	pkgrel = 3
+	pkgver = r39.13e0f1b
+	pkgrel = 1
 	url = https://github.com/WardBrian/stanio
 	arch = any
 	license = BSD-3-Clause
@@ -11,6 +11,7 @@ pkgbase = python-stanio-git
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-numpy
 	provides = python-stanio
