@@ -2,7 +2,7 @@
 # Contributor: PolpOnline <aur at t0mmy dot anonaddy dot com>
 pkgname=gitify
 _pkgname=Gitify
-pkgver=5.9.0
+pkgver=5.10.0
 _electronversion=31
 _nodeversion=20.14.2
 pkgrel=1
@@ -26,7 +26,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('20344078db5ee87d2b198bc69818e0c865de4b2c0dc2b5fde8d3462136f1d34b'
+sha256sums=('19385aa540abbff222dde6df6990a9c818fc03be881e8199543fc16d309cc7e3'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
