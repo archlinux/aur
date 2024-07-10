@@ -1,6 +1,6 @@
 pkgbase = crab-fetch
 	pkgdesc = Extremely fast, featureful and customizable command-line fetcher.
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/LivacoNew/CrabFetch
 	arch = x86_64
@@ -10,9 +10,11 @@ pkgbase = crab-fetch
 	depends = gcc-libs
 	optdepends = mesa-utils
 	optdepends = pciutils
+	optdepends = libdrm
+	optdepends = dbus
 	provides = crabfetch
 	conflicts = crabfetch
-	source = https://github.com/LivacoNew/CrabFetch/archive/refs/tags/v0.3.1.tar.gz
-	sha512sums = d394237b9b3e0b46a0c3a7905d734246871768c9134868072f1a1a9f044cd862f7871d2ec16cb757e3fec7a849b75d05096aa6518fbbde5a3aa11af128ca7ad0
+	source = https://github.com/LivacoNew/CrabFetch/archive/refs/tags/v0.4.0.tar.gz
+	sha512sums = 82cb2909e2d9449c79644f88fadfa6b8521623a9cbb54fbd49abf869fe5b1a042709fa9a8d3602ab5405090557700ad1132fc3de739d7a3d9ff8f17e369057cd
 
 pkgname = crab-fetch
