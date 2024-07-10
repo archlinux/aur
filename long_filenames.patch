@@ -1,0 +1,13 @@
+diff --git a/source/base/CharString.h b/source/base/CharString.h
+index 55614c5..7fb0874 100644
+--- a/source/base/CharString.h
++++ b/source/base/CharString.h
+@@ -32,7 +32,7 @@
+ 
+ #include <stdlib.h>
+ 
+-static const size_t kCharStringLengthDefault = 256;
++static const size_t kCharStringLengthDefault = 1024;
+ static const size_t kCharStringLengthShort = 32;
+ static const size_t kCharStringLengthLong = 8192;
+ 
