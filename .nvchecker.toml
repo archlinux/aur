@@ -1,0 +1,4 @@
+[python-tcx2gpx]
+source = "gitlab"
+gitlab = "nshephard/tcx2gpx"
+use_max_tag = "true"
