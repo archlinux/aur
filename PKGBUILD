@@ -3,14 +3,14 @@ pkgname=proploader
 _pkgname=PropLoader
 pkgver=1.0_37
 _pkgver=1.0-37
-pkgrel=1
+pkgrel=2
 pkgdesc="Parallax Propeller loader supporting both serial and wifi downloads"
 arch=('x86_64' 'i686')
 url="https://github.com/parallaxinc/PropLoader"
-license=('MIT')
+license=('LicenseRef-MIT')
 groups=()
 depends=()
-makedepends=()
+makedepends=('openspin')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 replaces=()
@@ -35,6 +35,7 @@ package()
   install -Dm 755 "build/bin/split" "${pkgdir}/usr/bin/proploader-split"
   install -Dm 755 "build/blink-fast.binary" "${pkgdir}/usr/share/proploader/blink-fast.binary"
   install -Dm 755 "build/blink-slow.binary" "${pkgdir}/usr/share/proploader/blink-slow.binary"
+  install -Dm 755 "LICENSE" "${pkgdir}/usr/share/licenses/proploader/LICENSE"
 }
 
 #
