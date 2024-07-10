@@ -5,9 +5,9 @@
 # Contributor : Martin Wimpress <code@flexion.org>
 # Contributor : Jingbei Li <i@jingbei.li>
 pkgname=miniconda3
-pkgver=24.3.0.0
+pkgver=24.5.0.0
 _pkgver=${pkgver%.*}-${pkgver##*.}
-pkgrel=4
+pkgrel=1
 pkgdesc="Mini version of Anaconda Python distribution"
 arch=(x86_64 aarch64)
 url="https://conda.io/en/latest/miniconda"
@@ -16,8 +16,8 @@ provides=('conda')
 source_x86_64=(https://repo.anaconda.com/miniconda/Miniconda3-py312_${_pkgver}-Linux-x86_64.sh)
 source_aarch64=(https://repo.anaconda.com/miniconda/Miniconda3-py312_${_pkgver}-Linux-aarch64.sh)
 options=(!strip libtool staticlibs)
-sha512sums_x86_64=('1d087d299562f7bb8a4e78ccf6399c59f5bbbde7e45a2f846e495d981ac7410ff58fc20dc7782f9555a7e9c80a1e6d19640ccf02c680c72c68bd790b56121b9d')
-sha512sums_aarch64=('8c1f13b358b2c0e98b16d64c27b6b40b5e3c47a3094562f671ce17d0231c0072a2e1d1fbdfd96d2465299081d74f9fcc24b2b79a20f1e587d2344798b5281ef9')
+sha512sums_x86_64=('a149f89ac51d027c914fa8b49adab805c60a9596c3ba6a68b7435a4b6c6330b7d405c7620171f135cf3efe1f03f138f73d1e0f1fe32413f9e1fa80bb340ee0a1')
+sha512sums_aarch64=('6ff9c934fedf5a36a799b2a8a2c3c05ce4cfecf1bdc865152000f173376eabbefa8a912bd0165a6ac021b65ee5c3e7c3a2d4b2165b5337155a0b97145be567db')
 install="${pkgname}.install"
 
 package() {
