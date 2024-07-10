@@ -1,13 +1,31 @@
 pkgbase = rbspy-bin
 	pkgdesc = Sampling profiler for Ruby
-	pkgver = 0.12.1
+	pkgver = 0.23.0
 	pkgrel = 1
 	url = https://rbspy.github.io
 	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
 	license = MIT
-	makedepends = fakeroot
+	depends = ruby>=1.9.3
+	provides = rbspy
 	conflicts = rbspy
-	source = rbspy-v0.12.1-x86_64-musl.tar.gz::https://github.com/rbspy/rbspy/releases/download/v0.12.1/rbspy-x86_64-musl.tar.gz
-	sha256sums = eb142e14874206937fbcb5c8b6653e76a112c11fc3a89c2f6f846d1887fa7e67
+	source = https://github.com/rbspy/rbspy/raw/v0.23.0/README.md
+	source = https://github.com/rbspy/rbspy/raw/v0.23.0/License.md
+	sha256sums = 2f7b5020c7b8023d6edbeccc19f3e3cb86ffcdd4055ebd87adc2f29a9e2ae902
+	sha256sums = 5705baf37fec97f83ce5e9624118a3479c4b1ed15f56e168c7f020700331a5df
+	source_x86_64 = https://github.com/rbspy/rbspy/releases/download/v0.23.0/rbspy-x86_64-unknown-linux-gnu.tar.gz
+	depends_x86_64 = glibc
+	depends_x86_64 = gcc-libs
+	sha256sums_x86_64 = 0a177c4fa49d17c86820966fd830d35006046481c5af300e601dcf1e2df40e27
+	source_i686 = https://github.com/rbspy/rbspy/releases/download/v0.23.0/rbspy-i686-unknown-linux-musl.tar.gz
+	sha256sums_i686 = 16665cc6f7c522e8c77015672216b8441c324df058b2ec5d5700342b332b94f5
+	source_aarch64 = https://github.com/rbspy/rbspy/releases/download/v0.23.0/rbspy-aarch64-unknown-linux-gnu.tar.gz
+	depends_aarch64 = glibc
+	depends_aarch64 = gcc-libs
+	sha256sums_aarch64 = e323b7ccacd8faf2e970f9d5f31b336e7b3b22583ea1e799919d958e21b31233
+	source_armv7h = https://github.com/rbspy/rbspy/releases/download/v0.23.0/rbspy-armv7-unknown-linux-musleabihf.tar.gz
+	sha256sums_armv7h = 88efbb3fa74b9da0d9727a42a86ce20b2ef368576de4f95196702202e71f3a09
 
 pkgname = rbspy-bin
