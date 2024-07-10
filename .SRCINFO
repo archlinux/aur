@@ -26,7 +26,7 @@ pkgbase = python-photutils
 	makedepends = python-scikit-image
 	makedepends = python-shapely
 	makedepends = graphviz
-	source = https://github.com/astropy/photutils/releases/download/1.13.0/photutils-1.13.0.tar.gz
+	source = https://files.pythonhosted.org/packages/source/p/photutils/photutils-1.13.0.tar.gz
 	md5sums = 9190bfd23efb189e3aeb47094eb80d4c
 
 pkgname = python-photutils
