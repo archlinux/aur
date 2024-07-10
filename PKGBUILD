@@ -5,8 +5,8 @@
 
 pkgname=meshtastic-python
 _name=python
-_verbump=c3dcafb5ef9285922648cfd5d5b2c2a003f14b96
-pkgver=2.3.12
+_verbump=62cfe2d7fee31d6f66e6de920bf5235d7c2dacf0
+pkgver=2.3.14
 pkgrel=1
 pkgdesc="Python CLI and API for talking to Meshtastic devices"
 arch=('any')
@@ -16,13 +16,13 @@ url="https://github.com/meshtastic/python/"
 license=(GPL-3.0-only Apache-2.0)
 
 makedepends=(python-build python-installer python-poetry-core python-wheel)
-depends=(python-bleak python-dotmap python-protobuf python-pexpect python-pypubsub python-pyqrcode python-pyserial python-pyyaml python-requests python-setuptools python-tabulate python-timeago)
+depends=(python-bleak python-dotmap python-protobuf python-pexpect python-print-color python-pypubsub python-pyqrcode python-pyserial python-pyyaml python-requests python-setuptools python-tabulate python-timeago)
 optdepends=('python-pytap2: TUN tunnel support')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/meshtastic/python/archive/refs/tags/${pkgver}.tar.gz"
         "https://github.com/meshtastic/python/commit/${_verbump}.patch"
 )
-sha256sums=('559af985c738c9a50ac4061c87dd08bff1eb04daa7c95563a4f1f3aa0460e20c'
-            'b8e76a1a946ecface6720a2d88cdc5db9bf80de6bcbc4560349d0d337c46d8c5')
+sha256sums=('1108b8c59d3f3311caf3421429b39c907afe2ee4c958993e9f7d92ccf389aacd'
+            '0f612579cd4364dd023a3a965bc3bcf598012ecd4c3c76cb1acce630c1744ba2')
 
 prepare() {
     cd "$_name-$pkgver"
