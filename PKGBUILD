@@ -3,7 +3,7 @@
 _binname=kubectl-node_shell
 pkgname=${_binname/_/-}
 pkgver=1.10.1
-pkgrel=0
+pkgrel=2
 pkgdesc="Exec into node via kubectl"
 url="https://github.com/kvaps/$pkgname"
 license=('APACHE')
@@ -17,7 +17,7 @@ sha512sums=('ee2e164680daac5d52a35c56a94d8bd6b178420a716bbde8e8e0e1db640217f55b6
 
 package() {
   install -D -m 0755 "$srcdir/$pkgname-$pkgver/$_binname" "$pkgdir/usr/bin/$_binname"
-  install -D -m 0755 "$srcdir/k9s-node-shell.yaml" "$pkgdir/usr/share/k9s/plugins/node-shell"
+  install -D -m 0755 "$srcdir/k9s-node-shell.yaml" "$pkgdir/usr/share/k9s/plugins/node-shell.yaml"
 }
 
 #vim: syntax=sh

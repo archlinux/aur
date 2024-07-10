@@ -1,7 +1,7 @@
 pkgbase = kubectl-node-shell
 	pkgdesc = Exec into node via kubectl
 	pkgver = 1.10.1
-	pkgrel = 0
+	pkgrel = 2
 	url = https://github.com/kvaps/kubectl-node-shell
 	arch = x86_64
 	license = APACHE
