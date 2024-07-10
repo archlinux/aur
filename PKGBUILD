@@ -30,10 +30,12 @@ makedepends=('lsb-release'
 source=(
   "https://downloads.sourceforge.net/project/iup/${pkgver}/Docs%20and%20Sources/iup-${pkgver}_Sources.tar.gz"
   "https://downloads.sourceforge.net/project/iup/${pkgver}/Docs%20and%20Sources/iup-${pkgver}_Docs.pdf"
+  tecmake-fix-Linux6-build.patch
 )
 
 md5sums=('51b08fc6a48a483cb2614e5a36188419'
-         '8ec9845bf9a60864274866792e579d2c')
+         '8ec9845bf9a60864274866792e579d2c'
+         'a3caceca0f08afcd9c9c21366c7bc2c0')
 
 prepare() {
   # Link to libcd, libim and libftgl dynamically (they are not part of iup source code)
@@ -59,6 +61,10 @@ prepare() {
 
   # Fix building iupweb library (temporary patch to build successfully)
   sed 's|SRC = iup_webbrowser.c|SRC = iup_webbrowser.c ../src/iup_str.c|' -i "$srcdir"/iup/srcweb/config.mak
+
+  # patch for building with kernel 6.x
+  # temporary - remove when it is fixed in upstream
+  patch -p0 < "$srcdir"/tecmake-fix-Linux6-build.patch
 }
 
 _lua_iup_build_helper() {

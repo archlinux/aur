@@ -1,0 +1,63 @@
+diff -Naur src/iup/srcvled/config.mak src.new/iup/srcvled/config.mak
+--- iup/srcvled/config.mak	2024-07-10 11:30:19.805475086 +0200
++++ iup/srcvled/config.mak	2024-07-10 11:26:24.738817846 +0200
+@@ -122,6 +122,10 @@
+   SRC += ../etc/iup.rc
+ endif
+ 
++ifneq ($(findstring Linux, $(TEC_UNAME)), )
++  LIBS += fontconfig
++endif
++
+ ifneq ($(findstring cygw, $(TEC_UNAME)), )
+   LIBS += fontconfig
+ endif
+diff -Naur src/iup/srcweb/config.mak src.new/iup/srcweb/config.mak
+--- iup/srcweb/config.mak	2024-07-10 11:30:19.815475087 +0200
++++ iup/srcweb/config.mak	2024-07-10 11:26:24.475484522 +0200
+@@ -35,16 +35,15 @@
+     LINK_WEBKIT = Yes
+     
+     ifdef USE_GTK3
+-      ifneq ($(findstring Linux5, $(TEC_UNAME)), )
+-        DEFINES += USE_WEBKIT2
+-        STDINCS += $(GTK)/include/webkitgtk-4.0
+-      else
+-        ifneq ($(findstring Linux4, $(TEC_UNAME)), )
++      ifneq ($(findstring Linux, $(TEC_UNAME)), )
++        ifeq ($(shell expr $(TEC_SYSVERSION) \>= 4), 1)
+           DEFINES += USE_WEBKIT2
+           STDINCS += $(GTK)/include/webkitgtk-4.0
+         else
+           STDINCS += $(GTK)/include/webkitgtk-3.0
+         endif
++      else
++        STDINCS += $(GTK)/include/webkitgtk-3.0
+       endif
+     else 
+       ifneq ($(findstring Linux3, $(TEC_UNAME)), )
+diff -Naur src/iup/tecmake.mak src.new/iup/tecmake.mak
+--- iup/tecmake.mak	2024-07-10 11:30:19.815475087 +0200
++++ iup/tecmake.mak	2024-07-10 11:26:24.715484513 +0200
+@@ -1247,10 +1247,8 @@
+ endif
+ 
+ ifdef LINK_WEBKIT
+-  ifneq ($(findstring Linux5, $(TEC_UNAME)), )
+-    LIBS += webkit2gtk-4.0 gio-2.0
+-  else 
+-    ifneq ($(findstring Linux4, $(TEC_UNAME)), )
++  ifneq ($(findstring Linux, $(TEC_UNAME)), )
++    ifeq ($(shell expr $(TEC_SYSVERSION) \>= 4), 1)
+       LIBS += webkit2gtk-4.0 gio-2.0
+     else 
+       ifneq ($(findstring Linux3, $(TEC_UNAME)), )
+@@ -1263,6 +1261,8 @@
+         LIBS += webkit-1.0
+       endif
+     endif 
++  else
++    LIBS += webkit-1.0
+   endif
+ endif
+ 
