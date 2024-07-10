@@ -7,6 +7,8 @@ pkgbase = supabase
 	license = MIT
 	makedepends = go
 	depends = glibc
+	optdepends = bash-completion: for shell auto-completion
+	optdepends = zsh-completions: for shell auto-completion
 	source = cli-1.183.5.tar.gz::https://github.com/supabase/cli/archive/refs/tags/v1.183.5.tar.gz
 	sha256sums = 46d897aff84559071a9714115c7bfb9b2222870d7b77a3d7e1dad7c079c4f63e
 

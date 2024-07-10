@@ -10,6 +10,8 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 # checkdepends=('docker')
+optdepends=('bash-completion: for shell auto-completion'
+            'zsh-completions: for shell auto-completion')
 _pkgsrc="cli-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('46d897aff84559071a9714115c7bfb9b2222870d7b77a3d7e1dad7c079c4f63e')
