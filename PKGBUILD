@@ -1,7 +1,5 @@
 # Maintainer: Tércio Martins <echo dGVyY2lvd2VuZGVsQGdtYWlsLmNvbQo= | base64 -d>
 
-_tvision_commit=d1fa783e0fa8685c199563a466cdc221e8d9b85c
-
 pkgname=turbo-editor-git
 _pkgname=${pkgname%%-*}
 pkgver=r450.697580e
