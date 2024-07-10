@@ -1,6 +1,6 @@
 pkgbase = iup
 	pkgdesc = C cross platform GUI toolkit
-	pkgver = 3.30
+	pkgver = 3.31
 	pkgrel = 1
 	url = https://www.tecgraf.puc-rio.br/iup/
 	arch = x86_64
@@ -19,10 +19,10 @@ pkgbase = iup
 	makedepends = lua51-cd
 	makedepends = lua52-cd
 	makedepends = lua53-cd
-	source = https://downloads.sourceforge.net/project/iup/3.30/Docs%20and%20Sources/iup-3.30_Sources.tar.gz
-	source = https://downloads.sourceforge.net/project/iup/3.30/Docs%20and%20Sources/iup-3.30_Docs.pdf
-	md5sums = 2f01aed0de2186c08a0e639f46c08662
-	md5sums = 2ea3e7e6d462175c3a3583443678da63
+	source = https://downloads.sourceforge.net/project/iup/3.31/Docs%20and%20Sources/iup-3.31_Sources.tar.gz
+	source = https://downloads.sourceforge.net/project/iup/3.31/Docs%20and%20Sources/iup-3.31_Docs.pdf
+	md5sums = 51b08fc6a48a483cb2614e5a36188419
+	md5sums = 8ec9845bf9a60864274866792e579d2c
 
 pkgname = iup
 	pkgdesc = C cross platform GUI toolkit
@@ -59,4 +59,3 @@ pkgname = lua53-iup
 	depends = lua53
 	optdepends = lua53-im: IM toolkit support
 	optdepends = lua53-cd: Canvas Draw support
-
