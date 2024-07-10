@@ -1,3 +1,17 @@
+Mullvad Browser 13.5.1 - July 09 2024
+ * All Platforms
+   * Updated Firefox to 115.13.0esr
+   * Bug 317: Rebase Mullvad Browser stable onto 115.13.0esr [mullvad-browser]
+   * Bug 42693: Backports security fixes from Firefox 128 [tor-browser]
+ * Linux
+   * Bug 314: Mullvad Browser is not listed as a possible default browser application for Gnome on Ubuntu / Fedora [mullvad-browser]
+ * Build System
+   * All Platforms
+     * Bug 41166: Use the GitHub repository for firefox-l10n [tor-browser-build]
+     * Bug 41173: Fix permission issue on files in the debian directory [tor-browser-build]
+   * Windows
+     * Bug 41177: Include Windows installer without -portable- in download json files [tor-browser-build]
+
 Mullvad Browser 13.5 - June 17 2024
  * All Platforms
    * Bug 222: Hide "List all tabs" when the tabs don't overflow [mullvad-browser]
