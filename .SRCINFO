@@ -5,7 +5,10 @@ pkgbase = kubectl-node-shell
 	url = https://github.com/kvaps/kubectl-node-shell
 	arch = x86_64
 	license = APACHE
+	optdepends = k9s: to use the included k9s plugin
 	source = kubectl-node-shell-1.10.1.tar.gz::https://github.com/kvaps/kubectl-node-shell/archive/refs/tags/v1.10.1.tar.gz
+	source = k9s-node-shell.yaml
 	sha512sums = ee2e164680daac5d52a35c56a94d8bd6b178420a716bbde8e8e0e1db640217f55b6ee27fdba3ab95f8a115256fca8cf13a92e6d341e944522c08e71f56046773
+	sha512sums = 68be04c97ce66c172836cefb3bb1a2ea23cb0e246164f15bfc3d1b5d9dad4542f13e851aeff1100d93572202973f601eb2c081da7754f42f8ff8fc3cb354940a
 
 pkgname = kubectl-node-shell

@@ -1,0 +1,12 @@
+shortCut: s
+confirm: false
+description: Start shell in node
+scopes:
+  - nodes
+background: false
+command: kubectl
+args:
+  - node-shell
+  - -n
+  - kube-system
+  - $NAME
