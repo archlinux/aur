@@ -2,7 +2,7 @@
 
 _pkgname=ddns-go
 pkgname=cubic-ddns-go
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="DDNS service supporting dynamic updates of A, AAAA, and HTTPS records"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 backup=("etc/$_pkgname/config.json")
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('acfe84faf8dd1790212837cd550a96ad952f24cf6d4d7963463217a2ef2e007cbc40d8a1086cc678b5bb748a7bf18aebbcf9170ba131032b42439823e68af043')
+b2sums=('c1cb0f45d8b408ce5cd9ae4ac5846c97294b29e391b327a4770c2d4b712f20248ec0e911363fd645e2892eb03e7ce36378de8c1adeb3cdf43ca2d8f6246bb38b')
 
 build() {
     cd "$_pkgname-$pkgver"
