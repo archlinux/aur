@@ -1,7 +1,7 @@
 pkgbase = mrswatson-git
 	pkgdesc = Apply VST to WAV files or convert MIDI files to WAV using VST plugins from the CLI
 	pkgver = 0.9.8.r128.g32ec2b4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/teragonaudio/MrsWatson
 	arch = x86_64
 	license = BSD
@@ -12,9 +12,14 @@ pkgbase = mrswatson-git
 	makedepends = vst2sdk
 	depends = libx11
 	depends = lib32-libx11
+	depends = flac
+	depends = lib32-flac
+	depends = audiofile
 	optdepends = wine: render windows vst plugins
 	conflicts = mrswatson-bin
 	source = git+https://github.com/teragonaudio/MrsWatson
+	source = CMakeLists_vendor_arch.txt
 	sha256sums = SKIP
+	sha256sums = 600fa7d38fc58239991786b6c78512ad0f00cd0933cde857517c107d6f0dc4a6
 
 pkgname = mrswatson-git

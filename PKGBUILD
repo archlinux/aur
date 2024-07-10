@@ -3,17 +3,21 @@
 pkgname=mrswatson-git
 _reponame=MrsWatson
 pkgver=0.9.8.r128.g32ec2b4
-pkgrel=1
+pkgrel=2
 pkgdesc="Apply VST to WAV files or convert MIDI files to WAV using VST plugins from the CLI"
 arch=('x86_64')
 url="https://github.com/teragonaudio/$_reponame"
 license=('BSD')
-depends=(libx11 lib32-libx11)
+depends=(libx11 lib32-libx11 flac lib32-flac audiofile)
 makedepends=(gcc lib32-gcc-libs cmake git vst2sdk)
 optdepends=('wine: render windows vst plugins')
 conflicts=(mrswatson-bin)
-source=(git+$url)
-sha256sums=('SKIP')
+source=(
+git+$url
+CMakeLists_vendor_arch.txt
+)
+sha256sums=('SKIP'
+            '600fa7d38fc58239991786b6c78512ad0f00cd0933cde857517c107d6f0dc4a6')
 
 pkgver() {
 	cd $srcdir/$_reponame
@@ -25,6 +29,8 @@ prepare(){
 	cd $srcdir/$_reponame
 	git submodule sync
 	git submodule update --init --recursive
+	rm -fr vendor/{flac,flac-config}
+	cp $srcdir/CMakeLists_vendor_arch.txt vendor/CMakeLists.txt
 	sed -i -e 's/-1 << kScaleBits/-1U << kScaleBits/g' vendor/audiofile/libaudiofile/modules/SimpleModule.h
 }
 
@@ -34,8 +40,11 @@ build(){
 	cd build
 	mkdir -p lib32
 	ln -sf /usr/lib32/libX11.so lib32/libx11.so
+	ln -sf /usr/lib32/libFLAC.so lib32/libflac32.so
 	mkdir -p lib64
 	ln -sf /usr/lib/libX11.so lib64/libx11.so
+	ln -sf /usr/lib/libFLAC.so lib64/libflac64.so
+	ln -sf /usr/lib/libaudiofile.so lib64/libaudiofile64.so
 	cmake \
 		-D CMAKE_BUILD_TYPE=Release \
 		-DVERBOSE=TRUE \
@@ -44,10 +53,11 @@ build(){
 		-DX11_X11_INCLUDE_PATH=/usr/include/X11 \
 		-DX11_Xlib_INCLUDE_PATH=/usr/include/X11 \
 		-DWITH_GUI=1 \
+		-DWITH_FLAC=1 \
 		-DCMAKE_LIBRARY_PATH=/usr/lib \
-		"-DCMAKE_C_FLAGS_RELEASE=-O3 -DNDEBUG -fmessage-length=0 -pipe -Werror -Waddress -Wchar-subscripts -Wcomment -Wformat -Wmissing-field-initializers -Wno-trigraphs -Wnonnull -Wparentheses -Wreturn-type -Wsequence-point -Wshadow -Wsign-compare -Wstrict-aliasing -Wstrict-overflow=1 -Wswitch -Wswitch-default -Wtrigraphs -Wuninitialized -Wunused-label -Wunused-value -Wunused-variable -Wvolatile-register-var -Wmaybe-uninitialized -Wenum-compare -Wimplicit-int -Wimplicit-function-declaration -Wmain -Wmissing-braces -Wpointer-sign -std=c99 -Wno-error=uninitialized -Wno-unused-const-variable -Wno-error=unused-const-variable=" \
-		"-DCMAKE_CXX_FLAGS_RELEASE=-O3 -DNDEBUG -fmessage-length=0 -pipe -Waddress -Wchar-subscripts -Wcomment -Wformat -Wmissing-field-initializers -Wno-trigraphs -Wnonnull -Wparentheses -Wreturn-type -Wsequence-point -Wshadow -Wsign-compare -Wstrict-aliasing -Wstrict-overflow=1 -Wswitch -Wswitch-default -Wtrigraphs -Wuninitialized -Wunused-label -Wunused-value -Wunused-variable -Wvolatile-register-var -Wmaybe-uninitialized -Wc++11-compat -Wreorder -Wno-error=deprecated-declarations -Wno-error=maybe-uninitialized  -Wno-error=alloc-size-larger-than= -I /usr/src/vst2sdk/pluginterfaces/vst2.x/" \
-           "-DCMAKE_EXE_LINKER_FLAGS=-Wl,-O1 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now          -Wl,-z,pack-relative-relocs -flto=auto -L$srcdir/$_reponame/build/lib64 -L$srcdir/$_reponame/build/lib32" \
+		"-DCMAKE_C_FLAGS_RELEASE=-O3 -DNDEBUG -fmessage-length=0 -pipe -Werror -Waddress -Wchar-subscripts -Wcomment -Wformat -Wmissing-field-initializers -Wno-trigraphs -Wnonnull -Wparentheses -Wreturn-type -Wsequence-point -Wshadow -Wsign-compare -Wstrict-aliasing -Wstrict-overflow=1 -Wswitch -Wswitch-default -Wtrigraphs -Wuninitialized -Wunused-label -Wunused-value -Wunused-variable -Wvolatile-register-var -Wmaybe-uninitialized -Wenum-compare -Wimplicit-int -Wimplicit-function-declaration -Wmain -Wmissing-braces -Wpointer-sign -std=c99 -Wno-error=uninitialized -Wno-unused-const-variable -Wno-error=unused-const-variable= -Wno-error=sign-compare" \
+		"-DCMAKE_CXX_FLAGS_RELEASE=-O3 -DNDEBUG -fmessage-length=0 -pipe -Waddress -Wchar-subscripts -Wcomment -Wformat -Wmissing-field-initializers -Wno-trigraphs -Wnonnull -Wparentheses -Wreturn-type -Wsequence-point -Wshadow -Wsign-compare -Wstrict-aliasing -Wstrict-overflow=1 -Wswitch -Wswitch-default -Wtrigraphs -Wuninitialized -Wunused-label -Wunused-value -Wunused-variable -Wvolatile-register-var -Wmaybe-uninitialized -Wc++11-compat -Wreorder     -I /usr/src/vst2sdk/pluginterfaces/vst2.x/ -Wno-error=deprecated-declarations -Wno-error=maybe-uninitialized  -Wno-error=alloc-size-larger-than=" \
+		"-DCMAKE_EXE_LINKER_FLAGS=-Wl,-O1 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now          -Wl,-z,pack-relative-relocs -flto=auto -L$srcdir/$_reponame/build/lib64 -L$srcdir/$_reponame/build/lib32" \
 		..
 	make
 }

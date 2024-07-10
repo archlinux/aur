@@ -1,0 +1,234 @@
+cmake_minimum_required(VERSION 3.0)
+project(MrsWatsonVendor)
+
+include(${mw_cmake_scripts_DIR}/ConfigureTarget.cmake)
+
+######################
+# Updating Libraries #
+######################
+
+# Some of the third-party libraries under the vendor directory are built with
+# autoconf (ie, ./configure scripts), which can be a bit tricky to integrate
+# with CMake, even with the ExternalProject module (and not to mention on
+# Windows, where mixing autoconf and VS builds is a nightmare).
+#
+# So instead, these libraries are built with CMake, which adds a bit of
+# maintainence to update but makes the build process much easier. The
+# procedure of updating to a newer version of a library goes like:
+#
+# 1. Update from upstream in teragonaudio's git fork/mirror of the repo
+# 2. Bump submodule in project
+# 3. Refresh file list below
+# 4. Comment out any ignored files
+# 5. Re-run ./configure
+# 6. Copy the generated config.h file to the platform-specific directory
+
+#############
+# Audiofile #
+#############
+
+# Configured with:
+#
+#   ./configure --enable-flac --enable-static --disable-docs
+#
+# Also, the generated config.h file should be edited such that the definition
+# of ENABLE_FLAC is not hardcoded to 0/1, but rather to USE_FLAC (the value
+# set by our CMakeLists).
+
+set(audiofile_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/audiofile)
+set(audiofile_SRC_DIR ${audiofile_ROOT}/libaudiofile)
+set(audiofile_CONFIG_DIR
+  ${CMAKE_CURRENT_SOURCE_DIR}/audiofile-config/${mw_PLATFORM}
+)
+
+if(NOT EXISTS ${audiofile_SRC_DIR} AND WITH_AUDIOFILE)
+  message(FATAL_ERROR "audiofile not found, did you update submodules?")
+endif()
+
+if(WITH_AUDIOFILE)
+  set(audiofile_SOURCES
+    ${audiofile_SRC_DIR}/aes.cpp
+    ${audiofile_SRC_DIR}/af_UUID.cpp
+    ${audiofile_SRC_DIR}/af_vfs.cpp
+    ${audiofile_SRC_DIR}/AIFF.cpp
+    ${audiofile_SRC_DIR}/alac/ag_dec.c
+    ${audiofile_SRC_DIR}/alac/ag_enc.c
+    ${audiofile_SRC_DIR}/alac/ALACBitUtilities.c
+    ${audiofile_SRC_DIR}/alac/ALACDecoder.cpp
+    ${audiofile_SRC_DIR}/alac/ALACEncoder.cpp
+    ${audiofile_SRC_DIR}/alac/dp_dec.c
+    ${audiofile_SRC_DIR}/alac/dp_enc.c
+    ${audiofile_SRC_DIR}/alac/EndianPortable.c
+    ${audiofile_SRC_DIR}/alac/matrix_dec.c
+    ${audiofile_SRC_DIR}/alac/matrix_enc.c
+    ${audiofile_SRC_DIR}/AudioFormat.cpp
+    ${audiofile_SRC_DIR}/aupv.c
+    ${audiofile_SRC_DIR}/AVR.cpp
+    ${audiofile_SRC_DIR}/Buffer.cpp
+    ${audiofile_SRC_DIR}/CAF.cpp
+    ${audiofile_SRC_DIR}/compression.cpp
+    ${audiofile_SRC_DIR}/data.cpp
+    ${audiofile_SRC_DIR}/debug.cpp
+    ${audiofile_SRC_DIR}/error.c
+    ${audiofile_SRC_DIR}/extended.c
+    ${audiofile_SRC_DIR}/File.cpp
+    ${audiofile_SRC_DIR}/FileHandle.cpp
+    ${audiofile_SRC_DIR}/FLACFile.cpp
+    ${audiofile_SRC_DIR}/format.cpp
+    ${audiofile_SRC_DIR}/g711.c
+    ${audiofile_SRC_DIR}/IFF.cpp
+    ${audiofile_SRC_DIR}/Instrument.cpp
+    ${audiofile_SRC_DIR}/IRCAM.cpp
+    ${audiofile_SRC_DIR}/Loop.cpp
+    ${audiofile_SRC_DIR}/Marker.cpp
+    ${audiofile_SRC_DIR}/Miscellaneous.cpp
+    ${audiofile_SRC_DIR}/modules/ALAC.cpp
+    ${audiofile_SRC_DIR}/modules/BlockCodec.cpp
+    ${audiofile_SRC_DIR}/modules/FileModule.cpp
+    ${audiofile_SRC_DIR}/modules/FLAC.cpp
+    ${audiofile_SRC_DIR}/modules/G711.cpp
+    ${audiofile_SRC_DIR}/modules/IMA.cpp
+    ${audiofile_SRC_DIR}/modules/Module.cpp
+    ${audiofile_SRC_DIR}/modules/ModuleState.cpp
+    ${audiofile_SRC_DIR}/modules/MSADPCM.cpp
+    ${audiofile_SRC_DIR}/modules/PCM.cpp
+    ${audiofile_SRC_DIR}/modules/RebufferModule.cpp
+    ${audiofile_SRC_DIR}/modules/SimpleModule.cpp
+    # ${audiofile_SRC_DIR}/modules/UT_RebufferModule.cpp (Ignored)
+    ${audiofile_SRC_DIR}/NeXT.cpp
+    ${audiofile_SRC_DIR}/NIST.cpp
+    ${audiofile_SRC_DIR}/openclose.cpp
+    ${audiofile_SRC_DIR}/PacketTable.cpp
+    ${audiofile_SRC_DIR}/pcm.cpp
+    ${audiofile_SRC_DIR}/query.cpp
+    ${audiofile_SRC_DIR}/Raw.cpp
+    ${audiofile_SRC_DIR}/SampleVision.cpp
+    ${audiofile_SRC_DIR}/Setup.cpp
+    ${audiofile_SRC_DIR}/Track.cpp
+    ${audiofile_SRC_DIR}/units.cpp
+    ${audiofile_SRC_DIR}/util.cpp
+    ${audiofile_SRC_DIR}/VOC.cpp
+    ${audiofile_SRC_DIR}/WAVE.cpp
+  )
+
+  set(audiofile_HEADERS
+    ${audiofile_SRC_DIR}/af_UUID.h
+    ${audiofile_SRC_DIR}/af_vfs.h
+    ${audiofile_SRC_DIR}/afinternal.h
+    ${audiofile_SRC_DIR}/AIFF.h
+    ${audiofile_SRC_DIR}/alac/aglib.h
+    ${audiofile_SRC_DIR}/alac/ALACAudioTypes.h
+    ${audiofile_SRC_DIR}/alac/ALACBitUtilities.h
+    ${audiofile_SRC_DIR}/alac/ALACDecoder.h
+    ${audiofile_SRC_DIR}/alac/ALACEncoder.h
+    ${audiofile_SRC_DIR}/alac/dplib.h
+    ${audiofile_SRC_DIR}/alac/EndianPortable.h
+    ${audiofile_SRC_DIR}/alac/matrixlib.h
+    ${audiofile_SRC_DIR}/audiofile.h
+    ${audiofile_SRC_DIR}/AudioFormat.h
+    ${audiofile_SRC_DIR}/aupvinternal.h
+    ${audiofile_SRC_DIR}/aupvlist.h
+    ${audiofile_SRC_DIR}/AVR.h
+    ${audiofile_SRC_DIR}/Buffer.h
+    ${audiofile_SRC_DIR}/byteorder.h
+    ${audiofile_SRC_DIR}/CAF.h
+    ${audiofile_SRC_DIR}/Compiler.h
+    ${audiofile_SRC_DIR}/compression.h
+    ${audiofile_SRC_DIR}/debug.h
+    ${audiofile_SRC_DIR}/error.h
+    ${audiofile_SRC_DIR}/extended.h
+    ${audiofile_SRC_DIR}/Features.h
+    ${audiofile_SRC_DIR}/File.h
+    ${audiofile_SRC_DIR}/FileHandle.h
+    ${audiofile_SRC_DIR}/FLACFile.h
+    ${audiofile_SRC_DIR}/g711.h
+    ${audiofile_SRC_DIR}/IFF.h
+    ${audiofile_SRC_DIR}/Instrument.h
+    ${audiofile_SRC_DIR}/IRCAM.h
+    ${audiofile_SRC_DIR}/Marker.h
+    ${audiofile_SRC_DIR}/modules/ALAC.h
+    ${audiofile_SRC_DIR}/modules/BlockCodec.h
+    ${audiofile_SRC_DIR}/modules/FileModule.h
+    ${audiofile_SRC_DIR}/modules/FLAC.h
+    ${audiofile_SRC_DIR}/modules/G711.h
+    ${audiofile_SRC_DIR}/modules/IMA.h
+    ${audiofile_SRC_DIR}/modules/Module.h
+    ${audiofile_SRC_DIR}/modules/ModuleState.h
+    ${audiofile_SRC_DIR}/modules/MSADPCM.h
+    ${audiofile_SRC_DIR}/modules/PCM.h
+    ${audiofile_SRC_DIR}/modules/RebufferModule.h
+    ${audiofile_SRC_DIR}/modules/SimpleModule.h
+    ${audiofile_SRC_DIR}/NeXT.h
+    ${audiofile_SRC_DIR}/NIST.h
+    ${audiofile_SRC_DIR}/PacketTable.h
+    ${audiofile_SRC_DIR}/pcm.h
+    ${audiofile_SRC_DIR}/Raw.h
+    ${audiofile_SRC_DIR}/SampleVision.h
+    ${audiofile_SRC_DIR}/Setup.h
+    ${audiofile_SRC_DIR}/Shared.h
+    ${audiofile_SRC_DIR}/Tag.h
+    ${audiofile_SRC_DIR}/Track.h
+    ${audiofile_SRC_DIR}/units.h
+    ${audiofile_SRC_DIR}/util.h
+    ${audiofile_SRC_DIR}/VOC.h
+    ${audiofile_SRC_DIR}/WAVE.h
+  )
+
+  source_group(config FILES ${audiofile_CONFIG_DIR}/config.h)
+  include_directories(${audiofile_SRC_DIR})
+
+  function(add_audiofile_target wordsize)
+    add_library(audiofile${wordsize} STATIC
+      ${audiofile_SOURCES}
+      ${audiofile_HEADERS}
+      ${audiofile_CONFIG_DIR}/config.h
+    )
+
+    target_include_directories(audiofile${wordsize} PUBLIC
+      ${audiofile_CONFIG_DIR}
+    )
+
+    if(WITH_FLAC)
+      target_include_directories(audiofile${wordsize} PUBLIC
+        ${CMAKE_CURRENT_SOURCE_DIR}/flac/include
+      )
+    endif()
+
+    if(${CMAKE_CXX_COMPILER_ID} MATCHES Clang)
+      set(audiofile_IGNORE_FLAGS
+        -Wno-missing-field-initializers
+        -Wno-multichar
+        -Wno-shadow
+        -Wno-shorten-64-to-32
+        -Wno-sign-compare
+        -Wno-switch-default
+        -Wno-unused-const-variable
+      )
+    elseif(${CMAKE_CXX_COMPILER_ID} STREQUAL GNU)
+      set(audiofile_IGNORE_FLAGS
+        -Wno-missing-field-initializers
+        -Wno-multichar
+        -Wno-shadow
+        -Wno-sign-compare
+        -Wno-switch-default
+      )
+    elseif(MSVC)
+      set(audiofile_IGNORE_FLAGS
+        /wd4244
+      )
+    endif()
+
+    target_compile_options(audiofile${wordsize} PUBLIC
+      ${audiofile_IGNORE_FLAGS}
+    )
+    configure_target(audiofile${wordsize} ${wordsize})
+  endfunction()
+
+  if(mw_BUILD_32)
+    add_audiofile_target(32)
+  endif()
+
+  # if(mw_BUILD_64)
+  #   add_audiofile_target(64)
+  # endif()
+endif()
