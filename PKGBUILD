@@ -2,7 +2,7 @@
 
 _pkgname=libbuddy
 pkgname=$_pkgname-git
-pkgver=0.3.3
+pkgver=0.3.3.r1.g819cd6d
 pkgrel=1
 pkgdesc="Simple library for managing iBuddy and Blync devices"
 arch=("i686" "x86_64" "armv6h" "armv7h")
@@ -12,7 +12,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 depends=("libusb")
 makedepends=("git")
-source=("git://github.com/zrax/$_pkgname.git")
+source=("git+https://github.com/zrax/$_pkgname.git")
 sha256sums=("SKIP")
 
 pkgver() {
