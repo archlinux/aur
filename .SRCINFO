@@ -1,0 +1,18 @@
+pkgbase = powermode-indicator-git
+	pkgdesc = It is a plugin for all desktops supported by libappindicator. It provides menu to choose power profiles.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/PiyushXCoder/powermode-indicator
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = gtkmm3
+	makedepends = glibmm-2.68
+	makedepends = git
+	depends = gtk3
+	depends = libappindicator-gtk3
+	depends = power-profiles-daemon
+	source = git+https://github.com/PiyushXCoder/powermode-indicator.git
+	b2sums = SKIP
+
+pkgname = powermode-indicator-git
