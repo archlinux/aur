@@ -1,5 +1,7 @@
 # Maintainer:
 
+: ${_commit=8b21db64fb8e8ffb9c24a412dbc66b7410699211}
+
 _pkgname="sunshine"
 pkgname="$_pkgname"
 pkgver=0.23.1
@@ -51,8 +53,8 @@ optdepends=(
 install="sunshine.install"
 
 _pkgsrc="$_pkgname"
-source=("$_pkgsrc"::"git+$url.git#tag=v$pkgver")
-sha256sums=('SKIP')
+source=("$_pkgsrc"::"git+$url.git#commit=$_commit")
+sha256sums=('b9ac221ca53c86010d02d7144c289053e7055c537d7313a8ff3063ec59477e4d')
 
 _source_sunshine() {
   source+=(

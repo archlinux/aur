@@ -39,7 +39,7 @@ pkgbase = sunshine
 	optdepends = libva-mesa-driver: AMD GPU encoding support
 	optdepends = intel-media-driver: Intel GPU encoding support
 	optdepends = xorg-server-xvfb: Virtual X server for headless testing
-	source = sunshine::git+https://github.com/LizardByte/Sunshine.git#tag=v0.23.1
+	source = sunshine::git+https://github.com/LizardByte/Sunshine.git#commit=8b21db64fb8e8ffb9c24a412dbc66b7410699211
 	source = eidheim.simple-web-server::git+https://gitlab.com/eidheim/Simple-Web-Server.git
 	source = ffmpeg.nv-codec-headers::git+https://github.com/FFmpeg/nv-codec-headers.git
 	source = lizardbyte.build-deps::git+https://github.com/LizardByte/build-deps.git
@@ -52,7 +52,7 @@ pkgbase = sunshine
 	source = wayland.wayland-protocols::git+https://gitlab.freedesktop.org/wayland/wayland-protocols.git
 	source = wlroots.wlr-protocols::git+https://gitlab.freedesktop.org/wlroots/wlr-protocols.git
 	source = cgutman.enet::git+https://github.com/cgutman/enet.git
-	sha256sums = SKIP
+	sha256sums = b9ac221ca53c86010d02d7144c289053e7055c537d7313a8ff3063ec59477e4d
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
