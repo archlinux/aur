@@ -3,7 +3,7 @@ pkgname=mailspring-bin
 _pkgname=Mailspring
 pkgver=1.13.3
 _electronversion=22
-pkgrel=5
+pkgrel=6
 pkgdesc="A beautiful, fast and fully open source mail client."
 arch=('x86_64')
 url="https://getmailspring.com/"
@@ -16,27 +16,28 @@ depends=(
     'krb5'
     'db5.3'
     'openssl-1.0'
-    'zenity'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-amd64.deb"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('d85e64f3345123ac75110d24f30bc8ab54372e7ae7d913a9fccabe1fb56ace57'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@|--password-store=\"gnome-libsecret\"|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
+    sed "s|${_pkgname}.desktop|${pkgname%-bin}.desktop|g" -i "${srcdir}/usr/share/appdata/${pkgname%-bin}.appdata.xml"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/${pkgname%-bin}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -r "${srcdir}/usr/share/${pkgname%-bin}/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/usr/share/applications/Mailspring.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     for _icons in 16x16 32x32 64x64 128x128 256x256;do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
