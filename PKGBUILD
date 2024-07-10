@@ -1,7 +1,7 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=eqy-nightly
-pkgver=20240709_yosys_0.42_2_gcc43fd4
+pkgver=20240710_yosys_0.43
 pkgrel=1
 epoch=1
 pkgdesc="Equivalence Checking with Yosys"
