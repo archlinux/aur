@@ -1,7 +1,7 @@
 # Maintainer: Parmjot Singh <parmjotsinghrobot at gmail dot com>
 pkgname=way-shell
-pkgver=0.0.4
-pkgrel=2
+pkgver=0.0.5
+pkgrel=1
 pkgdesc="A Gnome inspired desktop shell for Wayland compositors/window managers written in C and Gtk4."
 arch=(x86_64)
 url="https://github.com/ldelossa/way-shell"
