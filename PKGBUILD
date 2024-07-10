@@ -3,7 +3,7 @@ pkgname=ecloud-bin
 _sparkname=com.cloud.21cn
 pkgver=1.1.0_1_plus_a1
 _electronversion=4
-pkgrel=3
+pkgrel=4
 pkgdesc="A project of Tianyi Cloud Disk.天翼云盘Linux版"
 arch=("x86_64")
 url="https://cloud.189.cn/"
@@ -14,19 +14,24 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}"
 )
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
     'nodejs'
+)
+options=(
+    '!strip'
+    '!emptydirs'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_dlurl}/${_sparkname}/${_sparkname}_${pkgver//_1/-1}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('66c6888fa17e64719edc0890d34d231b059aa315cd51532c64c618d5239d5af6'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@cfgdirname@|${_sparkname}-dist|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*

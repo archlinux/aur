@@ -1,17 +1,19 @@
 pkgbase = ecloud-bin
 	pkgdesc = A project of Tianyi Cloud Disk.天翼云盘Linux版
 	pkgver = 1.1.0_1_plus_a1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://cloud.189.cn/
 	arch = x86_64
 	license = LicenseRef-custom
-	depends = electron4-bin
+	depends = electron4
 	depends = nodejs
 	provides = ecloud=1.1.0_1_plus_a1
 	conflicts = ecloud
+	options = !strip
+	options = !emptydirs
 	source = ecloud-1.1.0_1_plus_a1.deb::https://mirrors.sdu.edu.cn/spark-store-repository/store//network/com.cloud.21cn/com.cloud.21cn_1.1.0-1_plus_a1_amd64.deb
 	source = ecloud.sh
 	sha256sums = 66c6888fa17e64719edc0890d34d231b059aa315cd51532c64c618d5239d5af6
-	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = ecloud-bin
