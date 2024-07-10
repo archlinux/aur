@@ -1,6 +1,6 @@
 pkgbase = syncthingdesktop
 	pkgdesc = Unnofficial Syncthing desktop application
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/syncthingdesktop
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = syncthingdesktop
 	depends = libxss
 	depends = git
 	depends = syncthing
-	source = https://gitlab.com/linuxbombay/syncthingdesktop/application/-/archive/1.0.2/application-1.0.2.tar.bz2
-	sha256sums = 6d78fe223f0517391764312b49ea4b6dbcf20dcae2d3ef67a3471ac0998d05ed
+	source = https://gitlab.com/linuxbombay/syncthingdesktop/application/-/archive/1.0.3/application-1.0.3.tar.bz2
+	sha256sums = bbdb71d81fc878957ce2ce63432bb6f8d03efdcfdb5e864ea63467406956b097
 
 pkgname = syncthingdesktop

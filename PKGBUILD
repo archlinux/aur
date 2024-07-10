@@ -1,6 +1,6 @@
 pkgname=syncthingdesktop
 _pkgname=SyncthingDesktop
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Unnofficial Syncthing desktop application"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git' 'syncthing')
 makedepends=('unzip')
 source=("https://gitlab.com/linuxbombay/syncthingdesktop/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('6d78fe223f0517391764312b49ea4b6dbcf20dcae2d3ef67a3471ac0998d05ed')
+sha256sums=('bbdb71d81fc878957ce2ce63432bb6f8d03efdcfdb5e864ea63467406956b097')
 
 
 package() {
