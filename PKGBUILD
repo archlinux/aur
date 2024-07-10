@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Xiaozhu1337 <nihaoaheheda@gmail.com>
 pkgname=siyuan
-pkgver=3.0.17
-_electronversion=28
+pkgver=3.1.0
+_electronversion=31
 _nodeversion=18
 pkgrel=1
 pkgdesc="A privacy-first, self-hosted, fully open source personal knowledge management software, written in typescript and golang."
@@ -33,7 +33,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('19c5076203075303ee768f01ac925cd75140de76684bcf7a5ac29f4b826a8fd9'
+sha256sums=('dbe6c68a0ba09a85f65ddef3f45af8b96af96b0bfa1f0791cd699553806df7c3'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -78,17 +78,17 @@ build() {
     sed "/tar.gz/d;/deb/d;s|AppImage|dir|g;s|icon.icns|icon.png|g" -i electron-builder-linux.yml
     sed "s|tar.gz|dir|g;s|deb|dir|g;s|AppImage|dir|g;s|icon.icns|icon.png|g" -i electron-builder-linux-arm64.yml
     sed "/packageManager/d" -i package.json
-    pnpm install --no-frozen-lockfile
-    pnpm run build
+    NODE_ENV=development pnpm install --no-frozen-lockfile
+    NODE_ENV=production pnpm run build
     cd "${srcdir}/${pkgname}-${pkgver}/kernel"
     go build --tags fts5 -o "../app/kernel-linux/SiYuan-Kernel" -v -ldflags "-s -w -X github.com/siyuan-note/siyuan/kernel/util.Mode=prod"
     cd "${srcdir}/${pkgname}-${pkgver}/app"
     case "${CARCH}" in
         aarch64)
-            pnpm run dist-linux-arm64
+            NODE_ENV=production pnpm run dist-linux-arm64
             ;;
         x86_64)
-            pnpm run dist-linux
+            NODE_ENV=production pnpm run dist-linux
             ;;
     esac
 }
