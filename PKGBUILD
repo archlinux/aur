@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=siyuan-git
-pkgver=3.0.16.r0.g4dd7b02
-_electronversion=28
+pkgver=3.1.0.r1.g3d36355
+_electronversion=31
 _nodeversion=18
 pkgrel=1
 pkgdesc="A privacy-first, self-hosted, fully open source personal knowledge management software, written in typescript and golang."
@@ -25,8 +25,8 @@ makedepends=(
     'nvm'
     'npm'
     'go>=1.22'
-    'base-devel'
     'curl'
+    'pnpm'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
@@ -80,12 +80,12 @@ build() {
     fi
     sed '/packageManager/d' -i package.json
     sed "/tar.gz/d;s|AppImage|dir|g" -i electron-builder-linux.yml
-    npx pnpm install --no-frozen-lockfile
-    npx pnpm run build
+    NODE_ENV=development pnpm install --no-frozen-lockfile
+    NODE_ENV=production pnpm run build
     cd "${srcdir}/${pkgname//-/.}/kernel"
     go build --tags fts5 -o "../app/kernel-linux/SiYuan-Kernel" -v -ldflags "-s -w -X github.com/siyuan-note/siyuan/kernel/util.Mode=prod"
     cd "${srcdir}/${pkgname//-/.}/app"
-    npx pnpm run dist-linux
+    NODE_ENV=production pnpm run dist-linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
