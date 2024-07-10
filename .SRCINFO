@@ -1,6 +1,6 @@
 pkgbase = pigar
-	pkgdesc = A fantastic tool to generate requirements for your Python project, and more than that
-	pkgver = 2.1.4
+	pkgdesc = A tool to generate requirements.txt for Python projects.
+	pkgver = 2.1.6
 	pkgrel = 1
 	url = https://github.com/Damnever/pigar
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = pigar
 	depends = jupyter-nbformat
 	depends = python-aiohttp
 	depends = python-click
-	depends = python-packaging
-	source = https://github.com/Damnever/pigar/archive/v2.1.4/pigar-2.1.4.tar.gz
-	sha256sums = 7f66bb7df9dd927b9ec95b6bdd6fea823e578a9abda8ee4b148fd3d8e2b4a3c3
+	depends = python-colorama
+	source = https://github.com/Damnever/pigar/archive/v2.1.6/pigar-2.1.6.tar.gz
+	sha256sums = 3877d8be08e4fcd6a1127ea454214005961eb26ef646ab6e592d659d9b82601e
 
 pkgname = pigar
