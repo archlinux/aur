@@ -2,7 +2,7 @@
 # Contributor: Aloxaf <aloxafx at gamil>
 
 pkgname=hiddify-next
-pkgver=1.5.0
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="Multi-platform auto-proxy client, supporting Sing-box, X-ray, TUIC, Hysteria, Reality, Trojan, SSH, etc."
 arch=('x86_64')
@@ -20,7 +20,7 @@ depends=('at-spi2-core'
 makedepends=('clang' 'cmake' 'fvm' 'ninja')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.desktop")
-sha256sums=('8fee65c4368155f2aeefc93ac8049acb0e37d4aaab8c53d1f7743fcccbedd6f6'
+sha256sums=('0c90f57c3c1e1d1253f477a3fe32c2bd954aa81f9a1d456f5e92165efa0b8fda'
             'fcbf5df6388ebe23f3adb2abe55a61f7eecb7ff5f1731892d3791b7d41142b32')
 
 prepare() {
