@@ -1,0 +1,5 @@
+[octave-tablicious]
+source = "github"
+github = "apjanke/octave-tablicious"
+use_latest_release = "true"
+prefix = "v"
