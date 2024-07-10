@@ -21,8 +21,12 @@ pkgbase = iup
 	makedepends = lua53-cd
 	source = https://downloads.sourceforge.net/project/iup/3.31/Docs%20and%20Sources/iup-3.31_Sources.tar.gz
 	source = https://downloads.sourceforge.net/project/iup/3.31/Docs%20and%20Sources/iup-3.31_Docs.pdf
+	source = tecmake-fix-Linux6-build.patch
+	source = fix-build-gcc-14.patch
 	md5sums = 51b08fc6a48a483cb2614e5a36188419
 	md5sums = 8ec9845bf9a60864274866792e579d2c
+	md5sums = a3caceca0f08afcd9c9c21366c7bc2c0
+	md5sums = 87f23cb627785378c8403a6ca80c55d8
 
 pkgname = iup
 	pkgdesc = C cross platform GUI toolkit
