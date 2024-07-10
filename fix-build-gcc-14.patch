@@ -1,0 +1,143 @@
+diff -Naur src/iup/srccd/iup_cd.c src.new/iup/srccd/iup_cd.c
+--- iup/srccd/iup_cd.c	2018-02-21 22:43:52.000000000 +0100
++++ iup/srccd/iup_cd.c	2024-07-10 11:26:24.715484513 +0200
+@@ -24,7 +24,7 @@
+ 
+ static void (*cdcreatecanvasNATIVE)(cdCanvas* canvas, void* data) = NULL;
+ 
+-static void cdcreatecanvasIUP(cdCanvas* canvas, Ihandle *ih_canvas)
++static void cdcreatecanvasIUP(cdCanvas* canvas, void *ih_canvas)
+ {
+ #ifndef WIN32
+   char str[50] = "";
+@@ -94,7 +94,7 @@
+ 
+ static void(*cdcreatecanvasDBUFFER)(cdCanvas* canvas, void* data) = NULL;
+ 
+-static void cdcreatecanvasIUP_DBUFFER(cdCanvas* canvas, Ihandle *ih_canvas)
++static void cdcreatecanvasIUP_DBUFFER(cdCanvas* canvas, void *ih_canvas)
+ {
+   cdCanvas* canvas_dbuffer = cdCreateCanvas(CD_IUP, ih_canvas);
+   if (!canvas_dbuffer)
+@@ -135,7 +135,7 @@
+ 
+ static void(*cdcreatecanvasDBUFFERRGB)(cdCanvas* canvas, void* data) = NULL;
+ 
+-static void cdcreatecanvasIUP_DBUFFERRGB(cdCanvas* canvas, Ihandle *ih_canvas)
++static void cdcreatecanvasIUP_DBUFFERRGB(cdCanvas* canvas, void *ih_canvas)
+ {
+   cdCanvas* canvas_dbuffer = cdCreateCanvas(CD_IUP, ih_canvas);
+   if (!canvas_dbuffer)
+diff -Naur src/iup/srccd/iup_draw_cd.c src.new/iup/srccd/iup_draw_cd.c
+--- iup/srccd/iup_draw_cd.c	2020-04-23 18:32:31.000000000 +0200
++++ iup/srccd/iup_draw_cd.c	2024-07-10 11:26:24.715484513 +0200
+@@ -465,7 +465,7 @@
+     iupdrvDrawArc(ctxcanvas->dc, x, y, x, y, 0.0, 360.0, color, CD_FILL, 1);
+ }
+ 
+-static void cdcreatecanvas(cdCanvas* canvas, Ihandle *ih)
++static void cdcreatecanvas(cdCanvas* canvas, void *ih)
+ {
+   cdCtxCanvas *ctxcanvas;
+ 
+diff -Naur src/iup/srcledc/y.tab.c src.new/iup/srcledc/y.tab.c
+--- iup/srcledc/y.tab.c	2017-12-11 17:53:58.000000000 +0100
++++ iup/srcledc/y.tab.c	2024-07-10 11:26:24.485484523 +0200
+@@ -18,6 +18,7 @@
+ #include "ledc.h"
+ 
+ static int yyparse(void);
++int yylex(void);
+ 
+ #line 11 "ledc.y"
+ typedef union {
+diff -Naur src/iup/srclua5/ctrl/iuplua_mglplot.c src.new/iup/srclua5/ctrl/iuplua_mglplot.c
+--- iup/srclua5/ctrl/iuplua_mglplot.c	2017-12-11 17:53:33.000000000 +0100
++++ iup/srclua5/ctrl/iuplua_mglplot.c	2024-07-10 11:26:24.698817847 +0200
+@@ -59,7 +59,7 @@
+   int count = luaL_checkinteger(L, 6);
+   px = iuplua_checkstring_array(L, 4, count);
+   py = iuplua_checkdouble_array(L, 5, count);
+-  IupMglPlotInsert1D(iuplua_checkihandle(L,1), luaL_checkinteger(L,2), luaL_checkinteger(L,3), px, py, count);
++  IupMglPlotInsert1D(iuplua_checkihandle(L,1), luaL_checkinteger(L,2), luaL_checkinteger(L,3), (const char **)px, py, count);
+   free(px);
+   free(py);
+   return 0;
+@@ -98,7 +98,7 @@
+   int count = luaL_checkinteger(L, 5);
+   px = iuplua_checkstring_array(L, 3, count);
+   py = iuplua_checkdouble_array(L, 4, count);
+-  IupMglPlotSet1D(iuplua_checkihandle(L,1), luaL_checkinteger(L,2), px, py, count);
++  IupMglPlotSet1D(iuplua_checkihandle(L,1), luaL_checkinteger(L,2), (const char **)px, py, count);
+   free(px);
+   free(py);
+   return 0;
+diff -Naur src/iup/srclua5/ctrl/iuplua_plot.c src.new/iup/srclua5/ctrl/iuplua_plot.c
+--- iup/srclua5/ctrl/iuplua_plot.c	2021-01-01 19:12:03.000000000 +0100
++++ iup/srclua5/ctrl/iuplua_plot.c	2024-07-10 11:26:24.698817847 +0200
+@@ -332,7 +332,7 @@
+   int count = luaL_checkinteger(L, 6);
+   px = iuplua_checkstring_array(L, 4, count);
+   py = iuplua_checkdouble_array(L, 5, count);
+-  IupPlotInsertStrSamples(iuplua_checkihandle(L,1), luaL_checkinteger(L,2), luaL_checkinteger(L,3), px, py, count);
++  IupPlotInsertStrSamples(iuplua_checkihandle(L,1), luaL_checkinteger(L,2), luaL_checkinteger(L,3), (const char **)px, py, count);
+   free(px);
+   free(py);
+   return 0;
+@@ -357,7 +357,7 @@
+   int count = luaL_checkinteger(L, 5);
+   px = iuplua_checkstring_array(L, 3, count);
+   py = iuplua_checkdouble_array(L, 4, count);
+-  IupPlotAddStrSamples(iuplua_checkihandle(L,1), luaL_checkinteger(L,2), px, py, count);
++  IupPlotAddStrSamples(iuplua_checkihandle(L,1), luaL_checkinteger(L,2), (const char **)px, py, count);
+   free(px);
+   free(py);
+   return 0;
+diff -Naur src/iup/srclua5/iuplua_api.c src.new/iup/srclua5/iuplua_api.c
+--- iup/srclua5/iuplua_api.c	2019-10-06 20:53:42.000000000 +0200
++++ iup/srclua5/iuplua_api.c	2024-07-10 11:26:24.692151180 +0200
+@@ -571,7 +571,7 @@
+ 
+   ret = IupListDialog(type, luaL_checkstring(L, 2), 
+                             size, 
+-                            list, 
++			    (const char **)list, 
+                             (int)luaL_checkinteger(L, 5), 
+                             (int)luaL_checkinteger(L, 6),
+                             (int)luaL_checkinteger(L, 7),
+diff -Naur src/iup/srclua5/iuplua_im.c src.new/iup/srclua5/iuplua_im.c
+--- iup/srclua5/iuplua_im.c	2019-09-25 21:09:22.000000000 +0200
++++ iup/srclua5/iuplua_im.c	2024-07-10 11:26:24.692151180 +0200
+@@ -83,7 +83,7 @@
+ {
+   int file_count = (int)luaL_checkinteger(L, 2);
+   char** filename_list = iuplua_checkstring_array(L, 1, file_count);
+-  Ihandle* animation = IupLoadAnimationFrames(filename_list, file_count);
++  Ihandle* animation = IupLoadAnimationFrames((const char **)filename_list, file_count);
+   iuplua_pushihandle(L, animation);
+   return 1;
+ }
+diff -Naur src/iup/srcview/iup_view.c src.new/iup/srcview/iup_view.c
+--- iup/srcview/iup_view.c	2020-04-24 02:56:27.000000000 +0200
++++ iup/srcview/iup_view.c	2024-07-10 11:26:24.702151180 +0200
+@@ -202,7 +202,7 @@
+   if (!all)
+     count = 3;
+ 
+-  ret = IupListDialog(1,"File Format",count,options,1,9,count+1,NULL);
++  ret = IupListDialog(1,"File Format",count,(const char **)options,1,9,count+1,NULL);
+   if (ret == -1)
+     return NULL;
+   else
+diff -Naur src/iup/srcvled/vled_image_editor.c src.new/iup/srcvled/vled_image_editor.c
+--- iup/srcvled/vled_image_editor.c	2020-08-05 19:01:40.000000000 +0200
++++ iup/srcvled/vled_image_editor.c	2024-07-10 11:26:24.738817846 +0200
+@@ -1723,7 +1723,7 @@
+ 
+     qsort(image_names, num_images, sizeof(Ihandle*), compare_names);
+ 
+-    ret = IupListDialog(1, "Open Image", num_images, image_names, 1, 30, 10, NULL);
++    ret = IupListDialog(1, "Open Image", num_images, (const char **) image_names, 1, 30, 10, NULL);
+     if (ret != -1)
+     {
+       char* name = image_names[ret];
