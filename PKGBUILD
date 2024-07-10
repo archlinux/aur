@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=QFeatures
-_pkgver=1.14.1
+_pkgver=1.14.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -52,8 +52,8 @@ optdepends=(
   r-vsn
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('406acbe6cc86562cc5126e35894b6531')
-b2sums=('a8f179c6d3d66b377aaf3ed28889d182c4857a48041f2fd17a99a8de495553cace112d906d22567af63a82f4b076f7d391daf6e95cd7a466374a878732b6a2ce')
+md5sums=('65cc1b47d867aba47a1d42c3069b1e8a')
+b2sums=('ab12bdac93fc2b9dd170220d89c1a4daf1f1b91eb96625b02d07ca19521095b4bf5edeb7ded2eb215a4b5efeb8fd2679122b3ac872d87870ec9844d316611dde')
 
 build() {
   mkdir build
