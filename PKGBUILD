@@ -31,14 +31,6 @@ depends=(frameworkintegration
 		 qt5-base
 		 qt5-declarative
 		 xdg-utils)
-		 
-makedepends=(extra-cmake-modules
-			 kcmutils5
-			 frameworkintegration5
-			 kconfigwidgets5
-			 kiconthemes5
-			 kirigami2
-			 kwindowsystem5)
 
 provides=('klassy')
 conflicts=('klassy')
