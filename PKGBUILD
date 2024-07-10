@@ -1,10 +1,12 @@
 #! /bin/bash
 
 # Sourced from:
-PackageUrl="https://raw.githubusercontent.com/Askannz/optimus-manager/master/package"
+# https://github.com/Askannz/optimus-manager/tree/master/package
 
 
 DownloadFiles () {
+	local PackageUrl="https://raw.githubusercontent.com/Askannz/optimus-manager/master/package"
+
 	if [[ ! -f "${PWD}/PKGBUILD-src" ]]; then
 		curl --silent "${PackageUrl}/optimus-manager.install" > "${PWD}/optimus-manager.install"
 		curl --silent "${PackageUrl}/PKGBUILD" > "${PWD}/PKGBUILD-src"
