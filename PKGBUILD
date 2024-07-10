@@ -14,7 +14,7 @@ checkdepends=(python-pytest python-parameterized python-xarray python-matplotlib
   python-scipy python-plotly python-datashader python-dask python-geopandas) # python-netcdf4 python-streamz python-geoviews
 optdepends=('python-xarray: for datetime handled as xarray data')
 source=(${_base}-${pkgver}.tar.gz::https://github.com/holoviz/${_base}/archive/v${pkgver}.tar.gz)
-sha512sums=('775dbfab9481f6d198ff41dc7191a2c5d196e310ae1c17fbfa45b8a96f5159899520081214213103a5cc0298fba865472f76c55d48f15e0898075d467c6fd633')
+sha512sums=('bece1ec905e33a5fe97c432bfcea3d4d8a5a8331d4c4c8ecfdc9d2524b53304be8363b6e5427e7fb9094c1ce8e78194f05c165b8fa8899e17f14ad50bdca3e83')
 
 build() {
   cd ${_base}-${pkgver}
