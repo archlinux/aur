@@ -46,9 +46,8 @@ package() {
   cd build
   make DESTDIR="$pkgdir" install
 
-  install -dm0755 "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 "$srcdir/$_pkgname/COPYRIGHT" \
-          -t "$pkgdir/usr/share/licenses/$pkgname/License.txt"
+                 "$pkgdir/usr/share/licenses/$pkgname/License.txt"
   install -Dm644 "$srcdir/$_pkgname/source/scintilla/License.txt" \
-          -t "$pkgdir/usr/share/licenses/$pkgname/License-Scintilla.txt"
+                 "$pkgdir/usr/share/licenses/$pkgname/License-Scintilla.txt"
 }
