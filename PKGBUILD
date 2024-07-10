@@ -4,15 +4,25 @@ _pkgname="ledger-live-desktop"
 pkgname="${_pkgname}-appimage"
 _appimage="${_pkgname}.AppImage"
 pkgver=2.83.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop companion app for Ledger hardware wallets."
-
 arch=("x86_64")
 url="https://www.ledger.com/ledger-live"
 license=("MIT")
-depends=("glibc" "hicolor-icon-theme" "zlib")
-provides=("ledger-live" "ledger-live-desktop")
+depends=(
+	alsa-lib
+	fuse2
+	glibc
+	gtk3
+	hicolor-icon-theme
+	nss
+	zlib
+)
+provides=(
+	ledger-live-desktop
+)
 options=(!strip)
+noextract=(${_appimage})
 
 source=(
 	${_appimage}::https://download.live.ledger.com/${_pkgname}-${pkgver}-linux-${arch[0]}.AppImage
@@ -28,23 +38,27 @@ sha512sums=(
 )
 
 prepare() {
-	cd ${srcdir}
+	cd "${srcdir}"
 	chmod +x ${_appimage}
 	./${_appimage} --appimage-extract ${_pkgname}.desktop
 	./${_appimage} --appimage-extract usr/share/icons
 	cd squashfs-root
-	sed -i -e "s/AppRun --no-sandbox/\/opt\/${pkgname}\/${_appimage}/" -e "s/Categories=Finance;/Categories=Office;Finance;/" "${_pkgname}.desktop"
+	sed -i \
+		-e "s|Exec=AppRun|Exec=/usr/bin/${_pkgname}|" \
+		-e "s|Categories=Finance;|Categories=Office;Finance;|" \
+		"${_pkgname}.desktop"
 }
 
 package() {
-	cd ${srcdir}
-	install -Dm 755 -t ${pkgdir}/opt/${pkgname}/ ${_appimage}
-	install -Dm 644 -t ${pkgdir}/etc/udev/rules.d/ 20-hw1.rules
-	install -Dm 644 -t ${pkgdir}/usr/share/licenses/${pkgname}/ LICENSE
+	cd "${srcdir}"
+	install -Dm 755 -t "${pkgdir}"/opt/${pkgname}/ ${_appimage}
+	install -Dm 644 -t "${pkgdir}"/etc/udev/rules.d/ 20-hw1.rules
+	install -Dm 644 -t "${pkgdir}"/usr/share/licenses/${pkgname}/ LICENSE
 
+	install -dm 755 "${pkgdir}"/usr/bin && ln -s /opt/${pkgname}/${_appimage} "${pkgdir}"/usr/bin/${_pkgname}
 	cd squashfs-root
-	install -Dm 644 -t ${pkgdir}/usr/share/applications/ ${_pkgname}.desktop
+	install -Dm 644 -t "${pkgdir}"/usr/share/applications/ ${_pkgname}.desktop
 	for i in 128 256 512 1024; do
-		install -Dm 644 -t ${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/ usr/share/icons/hicolor/${i}x${i}/apps/${_pkgname}.png
+		install -Dm 644 -t "${pkgdir}"/usr/share/icons/hicolor/${i}x${i}/apps/ usr/share/icons/hicolor/${i}x${i}/apps/${_pkgname}.png
 	done
 }
