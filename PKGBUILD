@@ -5,7 +5,7 @@ _android_arch=aarch64
 
 pkgname=android-${_android_arch}-libx11
 pkgver=1.8.9
-pkgrel=2
+pkgrel=3
 arch=('any')
 pkgdesc="X11 client-side library (Android ${_android_arch})"
 url="https://xorg.freedesktop.org/"
