@@ -3,7 +3,7 @@ pkgname=video-chapter-injector-bin
 _pkgname="Video Chapter Injector"
 pkgver=1.0.0
 _electronversion=29
-pkgrel=1
+pkgrel=2
 pkgdesc="An electron app which quickly allows you to inject non-linear video editor markers into video files as chapter points."
 arch=("x86_64")
 url="https://github.com/markbattistella/video-chapter-injector"
@@ -27,14 +27,15 @@ source=(
 )
 sha256sums=('a82e26951b197e7bd76b8d59ba8b9d648729d2a40fa5169a6ef984b37985b171'
             '68771d03435f519db8e096bd17e4e9ca5252b6508b5c61cc14d26a6578a757d2'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
-        -e "s|@options@||g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
+    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
 }
 package() {
    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
