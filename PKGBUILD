@@ -1,191 +1,29 @@
 #! /bin/bash
 
-pkgname="optimus-manager-git"
-pkgdesc="Allows switching between the integrated and the dedicated graphics cards on NVIDIA Optimus laptops"
-license=("MIT")
-
-#  PKGBUILD and program maintained at:
-url="https://github.com/Askannz/optimus-manager"
-
-epoch=1
-pkgver=r728.97e4f15.python3.12
-pkgrel=1
-arch=("any")
-
-source=("git+${url}.git")
-sha1sums=("SKIP")
+# Sourced from:
+PackageUrl="https://raw.githubusercontent.com/Askannz/optimus-manager/master/package"
 
 
-conflicts=(
-	"bumblebee"
-	"optimus-manager"
-)
+DownloadFile () {
+	local InFile="${1}"
+	local OutFile="${2}"
 
-
-provides=(
-	"optimus-manager"
-)
-
-
-makedepends=(
-	"git"
-	"python-build"
-	"python-installer"
-	"python-setuptools"
-	"python-wheel"
-)
-
-
-depends=(
-	"dbus-python"
-	"glxinfo"
-	"python"
-	"xorg-xrandr"
-)
-
-
-optdepends=(
-	'bbswitch: alternatively switches GPUs by using standard Optimus ACPI calls'
-	'acpi_call: alternatively switches GPUs by brute forcing ACPI calls'
-)
-
-
-backup=(
-	'etc/optimus-manager/nvidia-enable.sh'
-	'etc/optimus-manager/nvidia-disable.sh'
-	'etc/optimus-manager/optimus-manager.conf'
-	'etc/optimus-manager/xorg/integrated-mode/integrated-gpu.conf'
-	'etc/optimus-manager/xorg/nvidia-mode/integrated-gpu.conf'
-	'etc/optimus-manager/xorg/nvidia-mode/nvidia-gpu.conf'
-	'etc/optimus-manager/xorg/hybrid-mode/integrated-gpu.conf'
-	'etc/optimus-manager/xorg/hybrid-mode/nvidia-gpu.conf'
-	'etc/optimus-manager/xsetup-integrated.sh'
-	'etc/optimus-manager/xsetup-nvidia.sh'
-	'etc/optimus-manager/xsetup-hybrid.sh'
-	'var/lib/optimus-manager/persistent/startup_mode'
-)
-
-
-PythonVersion () {
-	pacman --sync --info python |
-	grep '^Version' |
-	cut --delimiter=' ' --fields=11- |
-	cut --delimiter='.' --fields=1,2 |
-	sort --version-sort --reverse |
-	head -n1
+	if [[ ! -f "${PWD}/${OutFile}" ]]; then
+		curl --silent "${PackageUrl}/${InFile}" > "${PWD}/${OutFile}"
+	fi
 }
 
 
-pkgver () {
-	cd "${srcdir}/optimus-manager"
-
-	printf "r%s.%s.python%s" \
-		"$(git rev-list --count HEAD)" \
-		"$(git rev-parse --short=7 HEAD)" \
-		"$(PythonVersion)"
+UpdateSrcInfo () {
+	if [[ -z "${SRCINFO}" ]]; then
+		export SRCINFO=x
+		makepkg --printsrcinfo > ".SRCINFO"
+	fi
 }
 
+DownloadFile "optimus-manager.install" "optimus-manager.install"
+DownloadFile "PKGBUILD" "PKGBUILD-src"
 
-build () {
-	cd "${srcdir}/optimus-manager"
-	python3 setup.py build
-}
-
-
-package () {
-	PackageFiles
-	GeneratePyCache
-}
-
-
-PackageFiles () {
-	PackageDefaultConf
-	PackageEtc
-	PackageLicense
-	PackageLoginManagers
-	PackageModprobe
-	PackageSystemd
-}
-
-
-PackageDefaultConf () {
-	install -Dm644 \
-		"${srcdir}/optimus-manager/optimus-manager.conf" \
-		"${pkgdir}/usr/share/optimus-manager.conf"
-}
-
-
-PackageEtc () {
-	cd "${srcdir}/optimus-manager/config"
-
-	local Etc="${pkgdir}/etc/optimus-manager"
-	local File
-	local Files; readarray -t Files < <(
-		find . -type f |
-		cut --delimiter='/' --fields=2-
-	)
-
-	for File in "${Files[@]}"; do
-		if echo "${File}" | grep --quiet --extended-regexp ".sh|.py"; then
-			local Permissions=755
-		else
-			local Permissions=644
-		fi
-
-		install -Dm"${Permissions}" "${File}" "${Etc}/${File}"
-	done
-}
-
-
-PackageLicense () {
-	install -Dm644 \
-		"${srcdir}/optimus-manager/LICENSE" \
-		"${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
-}
-
-
-PackageLoginManagers () {
-	cd "${srcdir}/optimus-manager"
-
-	install -Dm644 \
-		login_managers/lightdm/20-optimus-manager.conf  \
-		"${pkgdir}/etc/lightdm/lightdm.conf.d/20-optimus-manager.conf"
-
-	install -Dm644 \
-		login_managers/sddm/20-optimus-manager.conf \
-		"${pkgdir}/etc/sddm.conf.d/20-optimus-manager.conf"
-}
-
-
-PackageModprobe () {
-	install -Dm644 \
-		"${srcdir}/optimus-manager/modules/optimus-manager.conf" \
-		"${pkgdir}/usr/lib/modprobe.d/optimus-manager.conf"
-}
-
-
-PackageSystemd () {
-	cd "${srcdir}/optimus-manager"
-
-	install -Dm644 \
-		"systemd/optimus-manager.service" \
-		"${pkgdir}/usr/lib/systemd/system/optimus-manager.service"
-
-	install -Dm755 \
-		"systemd/suspend/optimus-manager.py" \
-		"${pkgdir}/usr/lib/systemd/system-sleep/optimus-manager.py"
-
-	install -Dm644 \
-		"systemd/logind/10-optimus-manager.conf" \
-		"${pkgdir}/usr/lib/systemd/logind.conf.d/10-optimus-manager.conf"
-}
-
-
-GeneratePyCache () {
-	cd "${srcdir}/optimus-manager"
-
-	python3 setup.py install \
-		--root="${pkgdir}" \
-		--optimize=1 \
-		--skip-build
-}
+source "${PWD}/PKGBUILD-src"
+pkgver=r732.fced1de.python3.12
+UpdateSrcInfo

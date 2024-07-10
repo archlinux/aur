@@ -1,9 +1,10 @@
 pkgbase = optimus-manager-git
 	pkgdesc = Allows switching between the integrated and the dedicated graphics cards on NVIDIA Optimus laptops
-	pkgver = r728.97e4f15.python3.12
+	pkgver = r732.fced1de.python3.12
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Askannz/optimus-manager
+	install = optimus-manager.install
 	arch = any
 	license = MIT
 	makedepends = git
