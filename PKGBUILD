@@ -1,23 +1,29 @@
-_pkgname=sui
-pkgname=$_pkgname-bin
-pkgver=1.17.3
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+
+_pkgname="sui"
+pkgname="${_pkgname}-bin"
+pkgver=1.28.3
 pkgrel=1
-pkgdesc='Sui, a next-generation smart contract platform with high throughput, low latency, and an asset-oriented programming model powered by the Move programming language. (official binary)'
-url='https://sui.io'
+pkgdesc="A next-generation smart contract platform with high throughput, low latency, and an asset-oriented programming model"
 arch=('x86_64')
+url="https://${_pkgname}.io"
+_url="https://github.com/MystenLabs/${_pkgname}"
 license=('Apache-2.0')
-depends=('rust' 'openssl' 'libldap' 'krb5' 'e2fsprogs' 'keyutils' 'libsasl')
-provides=('sui')
-conflicts=('sui')
-source=(https://github.com/MystenLabs/$_pkgname/releases/download/mainnet-v$pkgver/$_pkgname-mainnet-v$pkgver-ubuntu-x86_64.tgz)
-sha512sums=('a4dc83dbc01c21eb39c95e63ea601f954619c068a501036c6d7bd2577ef99556c7fe50ae85496dfe4fea19d0ceee8dcbcdc6f81a90c041f6fb0940f2d6d5418d')
+depends=('glibc' 'gcc-libs' 'rust' 'openssl' 'libldap' 'krb5' 'e2fsprogs' 'keyutils' 'libsasl' 'postgresql-libs')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+_pkgsrc="${_pkgname}-${pkgver}"
+source=("${_url}/raw/testnet-v${pkgver}/"{README.md,LICENSE})
+source_x86_64=("${_url}/releases/download/testnet-v${pkgver}/${_pkgname}-testnet-v${pkgver}-ubuntu-x86_64.tgz")
+sha256sums=('3ededb5b006bf86ea26c03f2073944998e2c8854f1ae150c35c8a418a16c9622'
+            'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
+sha256sums_x86_64=('0be4af81811fd087a18422610bf901b92d7029da8a289f70932e4afad53dabb5')
 
 package() {
-  suffix='-ubuntu-x86_64'
-  for dir in 'target/release' 'external-crates/move/target/release'; do
-    for file in $dir/*; do
-        filename=$(basename "$file" "$suffix")
-        install -Dm755 "$file" "${pkgdir}/usr/bin/$filename"
-    done
-  done
+  cd "${srcdir}"
+  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+
+  install -d "${pkgdir}/usr/bin/"
+  find . -maxdepth 1 -type f -executable -exec install -Dm755 "{}" "${pkgdir}/usr/bin/" \;
 }
