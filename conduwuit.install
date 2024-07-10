@@ -12,4 +12,10 @@ function post_upgrade() {
 		sleep 5s
 		mv /etc/conduwuit.toml "/etc/conduwuit/conduwuit.toml"
 	fi
+	if [ ! -d /var/lib/private/matrix-conduit ]; then
+		mkdir /var/lib/private/matrix-conduit
+	fi
+	if [ ! -d /var/lib/matrix-conduit ]; then
+		mkdir /var/lib/matrix-conduit
+	fi
 }
