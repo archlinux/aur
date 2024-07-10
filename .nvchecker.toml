@@ -1,0 +1,4 @@
+[python-pyqt-feedback-flow]
+source = "github"
+github = "firefly-cpp/pyqt-feedback-flow"
+use_latest_release = "true"
