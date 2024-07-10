@@ -1,0 +1,26 @@
+diff --git a/cmake/FindRtMidi.cmake b/cmake/FindRtMidi.cmake
+index a0f625b..e9adabb 100644
+--- a/cmake/FindRtMidi.cmake
++++ b/cmake/FindRtMidi.cmake
+@@ -21,7 +21,9 @@ find_library(
+     HINTS ${PC_RTMIDI_LIBDIR} ${PC_RTMIDI_LIBRARY_DIRS}
+ )
+ 
+-if (RTMIDI_INCLUDE_DIR)
++if (PC_RTMIDI_VERSION)
++    set(RTMIDI_VERSION_STRING "${PC_RTMIDI_VERSION}")
++elseif (RTMIDI_INCLUDE_DIR)
+     # RtMidi.h has its version as a #define RTMIDI_VERSION "..."
+     # attempt to extract this version from the define
+     file(
+@@ -54,7 +56,7 @@ if(RTMIDI_FOUND)
+     set(RTMIDI_LIBRARIES ${RTMIDI_LIBRARY})
+     set(RTMIDI_INCLUDE_DIRS ${RTMIDI_INCLUDE_DIR})
+ 
+-    add_library(RtMidi::rtmidi UNKNOWN IMPORTED)
+-    set_target_properties(RtMidi::rtmidi PROPERTIES IMPORTED_LOCATION ${RTMIDI_LIBRARIES})
+-    target_include_directories(RtMidi::rtmidi INTERFACE ${RTMIDI_INCLUDE_DIRS})
++    add_library(rtmidi UNKNOWN IMPORTED)
++    set_target_properties(rtmidi PROPERTIES IMPORTED_LOCATION ${RTMIDI_LIBRARIES})
++    target_include_directories(rtmidi INTERFACE ${RTMIDI_INCLUDE_DIRS})
+ endif()

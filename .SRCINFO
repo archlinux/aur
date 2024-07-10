@@ -1,0 +1,23 @@
+pkgbase = trackerboy-git
+	pkgdesc = Trackerboy is a cross-platform music tracker for creating Gameboy music.
+	pkgver = v0.2.0.r331.9188399
+	pkgrel = 1
+	url = https://www.trackerboy.org
+	arch = x86_64
+	license = MIT
+	makedepends = cmake>=3.12
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = qt6-base
+	depends = rtmidi
+	provides = trackerboy
+	conflicts = trackerboy
+	source = trackerboy::git+https://github.com/ISSOtm/trackerboy.git#branch=patch-1
+	source = git+https://github.com/stoneface86/libtrackerboy.git#tag=cpp-last
+	source = find_rtmidi.patch
+	sha256sums = SKIP
+	sha256sums = bff228a66a90fa8897d031644c5b9e9bbd6a5fca9b7f983baf505e15f63f55e6
+	sha256sums = ff2bd43cfdeef86d3698420d5c3933bb4ff1244327ee09f05091781d16fcf7b6
+
+pkgname = trackerboy-git
