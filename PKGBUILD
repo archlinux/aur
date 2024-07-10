@@ -2,7 +2,7 @@
 
 _name=gigaanalysis
 pkgname=python-${_name,,}
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 pkgdesc="A toolbox for processing data that can be expressed as a dependent and independent variable."
 arch=('any')
@@ -17,7 +17,7 @@ depends=('python>=3.7.7'
 makedepends=('python-installer' 'python-wheel' 'python-build')
 
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
-sha256sums=('f5c90f1ce2e8749477109ea95a96842e1c00f2e02c394994f24d36fd376e78f4')
+sha256sums=('bf105cc8bd546a6dc11673a4fcb631e5b3f3c48d6cb2e29244e15a106ca70df8')
 
 makedepends=(python-build python-installer python-wheel)
 
