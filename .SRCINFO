@@ -15,7 +15,7 @@ pkgbase = python-handcalcs
 	depends = python-more-itertools
 	depends = python-innerscope
 	depends = python-pyparsing
-	optdepends = jupyter-nbconvert: exporter support
+	optdepends = python-nb-hideinputs: exporter support
 	source = handcalcs-1.9.0.tar.gz::https://github.com/connorferster/handcalcs/archive/v1.9.0.tar.gz
 	sha512sums = cdbae17eb63366ab6704dc0a266757cd526ca50c218fbd51ffdb1caf182879169c78aa97302274e4c82bde1ec9bf0ade33dea8dc5983ddc312633b1b55d7c69f
 

@@ -10,7 +10,7 @@ license=(Apache-2.0)
 depends=(python-more-itertools python-innerscope python-pyparsing)
 makedepends=(python-build python-flit-core python-installer)
 checkdepends=(python-pytest python-forallpeople python-pint python-sympy)
-optdepends=('jupyter-nbconvert: exporter support')
+optdepends=('python-nb-hideinputs: exporter support')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('cdbae17eb63366ab6704dc0a266757cd526ca50c218fbd51ffdb1caf182879169c78aa97302274e4c82bde1ec9bf0ade33dea8dc5983ddc312633b1b55d7c69f')
 
