@@ -6,19 +6,21 @@ function _nvidia_check() {
 
 pkgname=alvr-git
 _pkgname=${pkgname%-git}
-pkgver=21.0.0_dev00.r2802.3bfbd8fe
+pkgver=21.0.0_dev01.r2942.5480fa3b
 pkgrel=1
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
 url="https://github.com/alvr-org/ALVR"
 license=('MIT')
 groups=()
-depends=('vulkan-icd-loader' 'libunwind' 'libdrm' 'x264' 'alsa-lib' 'libva.so' 'libva-drm.so' 'libva-x11.so' 'bash' 'hicolor-icon-theme')
+depends=('vulkan-icd-loader' 'libunwind' 'libdrm' 'x264' 'alsa-lib' 'libva.so' 'libva-drm.so' 'libva-x11.so' 'bash' 'hicolor-icon-theme' 'libpipewire')
 makedepends=('git' 'cargo' 'clang' 'imagemagick' 'vulkan-headers' 'jack' 'libxrandr' 'nasm' 'unzip' 'ffnvcodec-headers' 'jq')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname"::'git+https://github.com/alvr-org/ALVR.git')
-md5sums=('SKIP')
+source=("$_pkgname"::'git+https://github.com/alvr-org/ALVR.git'
+		"git+https://github.com/ValveSoftware/openvr.git")
+md5sums=('SKIP'
+         'SKIP')
 options=('!lto')
 
 export CARGO_PROFILE_RELEASE_LTO=true
@@ -29,7 +31,11 @@ export CARGO_TARGET_DIR=target
 pkgver() {
 	cd "$srcdir/$_pkgname"
 
-	ver=$(cargo read-manifest --frozen --manifest-path "$_pkgname/server/Cargo.toml" | jq '.version' -r)
+	git submodule init
+	git config submodule.openvr.url "$srcdir/openvr"
+	git -c protocol.file.allow=always submodule update
+
+	ver=$(cargo read-manifest --frozen --manifest-path "$_pkgname/server_core/Cargo.toml" | jq '.version' -r)
 
 	printf "%s.r%s.%s" "${ver//-/_}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
