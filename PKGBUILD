@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=ggkegg
-_pkgver=1.2.1
+_pkgver=1.2.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -40,8 +40,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4b34f0b835bdef08562610072e2a89cf')
-b2sums=('80266a4cbf7022d7093acf256e985a9e56e7ee24e8df91c823813f517adb487aa66c8b95dd574c499be33cf47c91b4df1ad0def89fadf790ec5f257f741ea14b')
+md5sums=('3367db1821eb7830561a44da9487f0d4')
+b2sums=('70f5f534d50566b26c0d3ff93afbb51fd50edfc9228a3ce7a58f2fa824eaddec3c970ab4dc3348f797f4c757d856670715a2e93e6c98865e8cb994249019b9ec')
 
 build() {
   mkdir build
