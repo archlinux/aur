@@ -4,12 +4,10 @@
 PackageUrl="https://raw.githubusercontent.com/Askannz/optimus-manager/master/package"
 
 
-DownloadFile () {
-	local InFile="${1}"
-	local OutFile="${2}"
-
-	if [[ ! -f "${PWD}/${OutFile}" ]]; then
-		curl --silent "${PackageUrl}/${InFile}" > "${PWD}/${OutFile}"
+DownloadFiles () {
+	if [[ ! -f "${PWD}/PKGBUILD-src" ]]; then
+		curl --silent "${PackageUrl}/optimus-manager.install" > "${PWD}/optimus-manager.install"
+		curl --silent "${PackageUrl}/PKGBUILD" > "${PWD}/PKGBUILD-src"
 	fi
 }
 
@@ -21,9 +19,8 @@ UpdateSrcInfo () {
 	fi
 }
 
-DownloadFile "optimus-manager.install" "optimus-manager.install"
-DownloadFile "PKGBUILD" "PKGBUILD-src"
 
+DownloadFiles
 source "${PWD}/PKGBUILD-src"
 pkgver=r732.fced1de.python3.12
 UpdateSrcInfo
