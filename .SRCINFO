@@ -1,0 +1,14 @@
+pkgbase = powerpipe-bin
+	pkgdesc = Powerpipe
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/turbot/powerpipe
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = gcc-libs
+	depends = glibc
+	provides = powerpipe
+	source = powerpipe-0.4.0-1.tgz::https://github.com/turbot/powerpipe/releases/download/v0.4.0/powerpipe.linux.amd64.tar.gz
+	sha256sums = 2989ba47f732aa329719c1d2038256f043ed30549d0c1ed80998cdae6f900f04
+
+pkgname = powerpipe-bin
