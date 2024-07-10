@@ -1,12 +1,13 @@
 pkgbase = kmod-git
 	pkgdesc = Linux kernel module management tools and library
-	pkgver = 28
+	pkgver = v32+46+g8434a0b
 	pkgrel = 1
 	url = https://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git
 	arch = x86_64
 	license = GPL2
 	checkdepends = linux-headers
 	checkdepends = libelf
+	makedepends = scdoc
 	depends = glibc
 	depends = zlib
 	depends = openssl
@@ -28,4 +29,3 @@ pkgbase = kmod-git
 	md5sums = 18fb3d1f6024a5a84514c8276cb3ebff
 
 pkgname = kmod-git
-

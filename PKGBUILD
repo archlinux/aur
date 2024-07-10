@@ -1,8 +1,9 @@
-# Maintainer:  Vincent Grande <shoober420@gmail.com>
+# Maintainer: Dylan Delgado <dylan1496@live.com>
+# Contributor:  Vincent Grande <shoober420@gmail.com>
 # Contributor: Dave Reisner <dreisner@archlinux.org>
 
 pkgname=kmod-git
-pkgver=28
+pkgver=v32+46+g8434a0b
 pkgrel=1
 pkgdesc="Linux kernel module management tools and library"
 arch=('x86_64')
@@ -10,6 +11,7 @@ url='https://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git'
 license=('GPL2')
 depends=('glibc' 'zlib' 'openssl' 'xz' 'zstd')
 checkdepends=('linux-headers' 'libelf')
+makedepends=('scdoc')
 #options=('strip' 'debug')
 provides=('module-init-tools=3.16' 'libkmod.so' 'kmod')
 conflicts=('module-init-tools' 'kmod')
@@ -67,7 +69,7 @@ package() {
   # extra directories
   install -dm755 "$pkgdir"/{etc,usr/lib}/{depmod,modprobe}.d
 
-  for tool in {ins,ls,rm,dep}mod mod{probe,info}; do
+  for tool in mod{info}; do
     ln -s kmod "$pkgdir/usr/bin/$tool"
   done
 
