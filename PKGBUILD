@@ -5,7 +5,7 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-libx11
 pkgver=1.8.9
-pkgrel=2
+pkgrel=3
 arch=('any')
 pkgdesc="X11 client-side library (Android ${_android_arch})"
 url="https://xorg.freedesktop.org/"
@@ -36,6 +36,9 @@ prepare() {
 build() {
     cd "$srcdir/libX11-${pkgver}"
     source android-env ${_android_arch}
+
+    export CFLAGS="${CFLAGS} -DNO_DEC_I18N_FIX"
+    export CXXFLAGS="${CXXFLAGS} -DNO_DEC_I18N_FIX"
 
     android-${_android_arch}-configure \
         --disable-xf86bigfont \
