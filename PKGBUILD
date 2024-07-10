@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=youtube-downloader-git
 _pkgname="Youtube downloader"
-pkgver=1.0.0.r0.gdd76cde
+pkgver=1.0.1.r0.g71c9b89
 _electronversion=31
 _nodeversion=18
 pkgrel=1
@@ -65,14 +65,14 @@ build() {
         echo "Your network is OK."
     fi
     cp app/renderer/progress/pages/download/connectionSTatus.tsx app/renderer/progress/pages/download/connectionStatus.tsx
-    sed "s|- deb|- dir|g;/- AppImage/d;/- snap/d" -i electron-builder.yml
     NODE_ENV=development npm install
     NODE_ENV=production npm run build:desk
+    NODE_ENV=production npx electron-builder -l --dir
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644  "${srcdir}/${pkgname%-git}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/dist/linux-"*/LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
