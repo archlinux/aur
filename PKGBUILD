@@ -1,6 +1,6 @@
 pkgname=mingw-w64-directx-headers
 pkgdesc="DirectX headers for using D3D12 (mingw-w64)"
-pkgver=1.613.1
+pkgver=1.614.0
 pkgrel=1
 arch=('any')
 makedepends=('mingw-w64-meson' 'mingw-w64-cmake')
@@ -8,7 +8,7 @@ url="https://github.com/microsoft/DirectX-Headers"
 license=('MIT')
 options=('staticlibs' '!strip' '!buildflags')
 source=(directx-headers-${pkgver}.tar.gz::https://github.com/microsoft/DirectX-Headers/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('b85edcf03c8ffd68dd5705485bddce02b35cf5bb778e3f72ce1ab905da480adf')
+sha256sums=('1cd54449799501a4ad129a4c7ccf0c026bbb699f937ba299d92de3aacd29c5be')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
