@@ -2,7 +2,7 @@
 
 _pkgname='cmake-init'
 pkgname="${_pkgname}-git"
-pkgver=0.39.0.r0.g4618fbb
+pkgver=0.40.7.r0.gd8c519c
 pkgrel=1
 pkgdesc='An opinionated CMake project initializer that generates CMake projects.'
 arch=(any)
@@ -18,7 +18,7 @@ optdepends=(
 	'conan'
 	'vcpkg'
 )
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 sha256sums=('SKIP')
 source=("git+${url}.git")
 
@@ -32,16 +32,14 @@ pkgver() {
 	)
 }
 
-prepare() {
+build() {
 	cd "$_srcdir/package"
-	python 'setup.py' build
+	python -m build --wheel --no-isolation
 }
 
 package() {
 	cd "$_srcdir/package"
-	
-	python 'setup.py' install --optimize=1 --root="$pkgdir/" --prefix='/usr'
-	
-	cd ..
-	install -Dm644 'COPYING' -t "$pkgdir/usr/share/licenses/${_pkgname}"
+	python -m installer --destdir="$pkgdir" dist/*.whl
+
+	install -Dm644 '../COPYING' -t "$pkgdir/usr/share/licenses/${_pkgname}"
 }
