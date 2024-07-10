@@ -1,6 +1,6 @@
 pkgname=googlekeep
 _pkgname=GoogleKeep
-pkgver=1.0.5
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="Unnofficial Google Keep desktop application"
 arch=('x86_64' 'aarch64')
@@ -8,13 +8,13 @@ url="https://gitlab.com/linuxbombay/googlekeep-desktop"
 license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'gtk4' 'libxss' 'git')
 makedepends=('unzip')
-source=("$url/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
-sha256sums=('893c902064d1db60555c2767c68ad4d7a42c5a06ea874070381a85a64d6fa083')
+source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
+sha256sums=('9ad4af2a300b85533d8b71f26c32ec678d2682f9ff478ce178fe9fcf48b3e0fc')
 
 package() {
-    for dir in application-$pkgver-$pkgrel ; do mv "${dir}" "$_pkgname" ;done
+    for dir in application-$pkgver; do [ -d "$dir" ] && mv "$dir" "$_pkgname"; done
     cd "$srcdir/$_pkgname"
-    chmod +x $pkgname.sh
+    chmod +x $pkgname
     ln -sf "/opt/libelectron/node_modules" "$srcdir/$_pkgname"
     install -dm755 "$pkgdir/opt/$_pkgname"
     install -dm755 "$pkgdir/usr/share/pixmaps"    
@@ -23,10 +23,10 @@ package() {
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
-    ln -s "/opt/$_pkgname/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+    ln -s "/opt/$_pkgname/$pkgname" "$pkgdir/usr/bin"
 
     # Desktop Entry
-    install -Dm644 "$srcdir/$_pkgname/$_pkgname.desktop" \
-        "$pkgdir/usr/share/applications/$_pkgname.desktop"
-    sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/$_pkgname.desktop"
+    install -Dm644 "$srcdir/$_pkgname/$pkgname.desktop" \
+        "$pkgdir/usr/share/applications/$pkgname.desktop"
+    sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
