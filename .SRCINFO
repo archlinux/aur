@@ -1,7 +1,7 @@
 pkgbase = killwine
 	pkgdesc = A shell script for killing Wine and Proton processes
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/begin-theadventure/killwine
 	arch = any
 	depends = wine

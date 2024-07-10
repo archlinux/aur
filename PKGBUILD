@@ -3,7 +3,7 @@
 
 pkgname=killwine
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A shell script for killing Wine and Proton processes"
 url="https://github.com/begin-theadventure/killwine"
 arch=('any')
@@ -11,6 +11,16 @@ depends=('wine')
 source=("killwine.sh")
 sha256sums=('7a27ba8d452b274be3b42a6938f0bff1403b11f918d99212ff700d9a391389a0')
 
+prepare() {
+# Create a shortcut
+  echo -e "[Desktop Entry]\n\
+Name=killwine\n\
+Comment=A shell script for killing Wine and Proton processes\n\
+Exec=killwine\n\
+Icon=wine" > killwine.desktop
+}
+
 package() {
+  install -Dm644 killwine.desktop -t "$pkgdir/usr/share/applications"
   install -Dm755 killwine.sh "$pkgdir/usr/bin/killwine"
 }
