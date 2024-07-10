@@ -1,62 +1,41 @@
 # Maintainer: Martchus <martchus@gmx.net>
-# Contributor (maintains regular package): Antonio Rojas <arojas@archlinux.org>
 
 # All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
 # you also find the URL of a binary repository.
 
-_pkgname=kirigami2
-_android_arch=arm64-v8a
-_pkg_arch=aarch64
-_android_toolchain=$_pkg_arch-linux-android
-_android_platform=22
-_prefix=/opt/android-libs/$_pkg_arch
+_pkgname=kirigami
+_android_arch=aarch64
 
-pkgname=android-$_pkg_arch-$_pkgname
-pkgver=5.71.0
-pkgrel=1
-pkgdesc="A QtQuick based components set (Android, $_pkg_arch)"
+pkgname=android-${_android_arch}-${_pkgname}2
+pkgver=6.0.0
+pkgrel=2
+pkgdesc="A QtQuick based components set (Android, $_android_arch)"
 arch=('any')
 url='https://community.kde.org/Frameworks'
-license=(LGPL)
-depends=("android-$_pkg_arch-qt5")
-makedepends=('cmake' 'android-ndk' 'android-sdk' 'extra-cmake-modules')
-conflicts=("android-$_pkgname-$_android_arch")
-replaces=("android-$_pkgname-$_android_arch")
-source=("https://download.kde.org/stable/frameworks/${pkgver%.*}/$_pkgname-$pkgver.tar.xz"{,.sig})
-sha256sums=('f323efb96a809dc9e572a0e68e04c4f485fc27f9ae65ffa3988830e348151356'
+license=(LGPL-2.0-only LGPL-3.0-only)
+depends=("android-$_android_arch-qt6"-{declarative,shadertools,svg,5compat})
+makedepends=('cmake' 'android-ndk' 'android-sdk' 'android-cmake' 'extra-cmake-modules' 'ninja' 'qt6-base' 'qt6-declarative' 'qt6-tools' 'qt6-shadertools')
+source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$_pkgname-$pkgver.tar.xz{,.sig})
+sha256sums=('3f7c1e6b048df4ab3d67fbef01a5ad1dd0289c9b158644668fba0225c050c050'
             'SKIP')
-validpgpkeys=('53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB') # David Faure <faure@kde.org>
+validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB  # David Faure <faure@kde.org>
+              E0A3EB202F8E57528E13E72FD7574483BB57B18D) # Jonathan Esk-Riddell <jr@jriddell.org>
 options=(!buildflags staticlibs !strip !emptydirs)
 
-prepare() {
-  mkdir -p build
-}
-
 build() {
-  cd build
-
-  # note: needs workaround for https://gitlab.kitware.com/cmake/cmake/issues/18739 (currently provided outside of the PKGBUILD itself)
-
-  cmake ../$_pkgname-$pkgver \
-    -DCMAKE_SYSTEM_NAME=Android \
-    -DCMAKE_SYSTEM_VERSION=$_android_platform \
-    -DANDROID_ABI=$_android_arch \
-    -DCMAKE_ANDROID_ARCH_ABI=$_android_arch \
-    -DCMAKE_ANDROID_NDK=/opt/android-ndk \
-    -DCMAKE_ANDROID_SDK=/opt/android-sdk \
-    -DCMAKE_ANDROID_STL_TYPE=c++_shared \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX="$_prefix" \
-    -DCMAKE_EXE_LINKER_FLAGS="-Wl,-rpath-link,$_prefix/lib" \
-    -DCMAKE_FIND_ROOT_PATH="/opt/android-ndk/sysroot;$_prefix" \
-    -DECM_DIR=/usr/share/ECM/cmake \
+  source android-env ${_android_arch}
+  android-${_android_arch}-cmake -G Ninja -B build-$_android_arch -S $_pkgname-$pkgver \
+    -DCMAKE_FIND_ROOT_PATH="${ANDROID_PREFIX}" \
+    -DECM_DIR:PATH=/usr/share/ECM/cmake \
     -DBUILD_EXAMPLES=OFF \
     -DBUILD_TESTING=OFF \
     -DBUILD_QCH=OFF
-  make VERBOSE=1
+  VERBOSE=1 cmake --build build-$_android_arch
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  source android-env ${_android_arch}
+  DESTDIR="$pkgdir" VERBOSE=1 cmake --install build-$_android_arch
+  mkdir -p "$pkgdir/$ANDROID_PREFIX/qml/org"
+  ln -rs "$pkgdir/$ANDROID_PREFIX/lib/qml/org/kde" "$pkgdir/$ANDROID_PREFIX/qml/org/kde"
 }
