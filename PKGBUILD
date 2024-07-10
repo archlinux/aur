@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Open Source Spin interpreter for the Parallax Propeller"
 arch=('x86_64' 'i686')
 url="https://github.com/parallaxinc/OpenSpin"
-license=('unknown')
+license=('MIT')
 groups=()
 depends=()
 makedepends=()
@@ -22,13 +22,13 @@ md5sums=('773eac415d3adfdc1b909376ec3ecda3')
 
 build()
 {
-	cd "${srcdir}/${_pkgname}-${pkgver}"
-	make
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  make
 }
 
 package()
 {
-	cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   install -Dm 755 build/openspin "${pkgdir}/usr/bin/openspin"
 }
 
