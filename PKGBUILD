@@ -1,6 +1,6 @@
 # Maintainer: René 'Necoro' Neumann <arch@necoro.dev>
 pkgname=feed2imap-go
-pkgver=1.7.1
+pkgver=1.7.2
 pkgrel=1
 pkgdesc='RSS aggregator for direct import into IMAP folders'
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/Necoro/$pkgname"
 license=('GPL')
 makedepends=('go>=1.22')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('967018c03289f217abddd04924507f4c724d0d2bb2cb56ede7503c9f60f9ccd4')
+sha256sums=('b69103ddd8dd789e5174fd2469bc6c74ce29414291a9000de07e24ec569b0f1b')
 
 prepare(){
   cd "$pkgname-$pkgver"
