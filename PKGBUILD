@@ -15,7 +15,7 @@ optdepends=('python-sympy: for formats.sympy support'
   'python-moviepy: for video support'
   'python-pyqt6: for gui support')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('28fd6dd8394fc7794f051d70cfa5711d8210cecdac94dd5ce77991860fdf0f09cc3caddb97f0f31e821ec9dcaf1aa13f58d3357681bcf98fdfd66fbb819a02b8')
+sha512sums=('dfd3445a89338e849365415ddc17e8faf924a81d7c14ae1b7149b6a18922d815136d883755c8af32027f0e99d65f11ee6e18578a63d45cf2e0bb974b6ecf1bce')
 
 build() {
   cd ${_base}-${pkgver}
