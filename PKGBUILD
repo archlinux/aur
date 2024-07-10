@@ -5,17 +5,14 @@
 
 _pkgname=arx-libertatis
 pkgname=$_pkgname-git
-pkgver=1.2.r2721.ga50f803
+pkgver=1.2.r2753.gc7a0947
 pkgrel=1
 pkgdesc='Cross-platform port of Arx Fatalis, a first-person role-playing game (executables only) (Git)'
 url='https://arx-libertatis.org/'
 arch=('i686' 'x86_64')
 license=('GPL3')
-depends=('sdl2' 'zlib' 'freetype2' 'openal' 'glew' 'libepoxy')
-optdepends=('qt5-tools: enable built-in crash handler (Qt5 version; recompile needed)'
-            'qt4: enable built-in crash handler (Qt4 version; recompile needed)'
-            'curl: enable built-in crash handler. (recompile needed)'
-            'gdb: generate detailed crash reports'
+depends=('sdl2' 'zlib' 'freetype2' 'openal' 'glew' 'libepoxy' 'qt6-base' 'curl')
+optdepends=('gdb: generate detailed crash reports'
             'arx-fatalis-data-demo: game data from official freeware demo'
             'arx-fatalis-data-gog: game data from gog.com installer'
             'arx-fatalis-data-copy: gamedata from existing Windows installation'
@@ -55,16 +52,16 @@ build() {
           -DWITH_SDL=2 \
           -DWITH_OPENGL=epoxy \
           -DDATA_FILES=../ArxLibertatisData
-  
+
   # UNITY_BUILD
   #   produces a more optimized binary, but uses a lot of RAM during
   #   compilation - disable if low on memory.
-  # 
+  #
   # CMAKE_BUILD_TYPE=Release
   #   can be changed to CMAKE_BUILD_TYPE=Debug to get a debug build,
   #   which will run signifincantly slower but enables more runtime
   #   checks and generates better crash reports.
-  
+
   cmake --build 'build'
 }
 
@@ -76,9 +73,9 @@ check() {
 
 package() {
   DESTDIR="${pkgdir}" cmake --install "build"
-  
+
   cd "$srcdir/ArxLibertatis"
-  
+
   install -Dm644 README.md \
           "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 CHANGELOG \
