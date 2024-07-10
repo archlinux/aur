@@ -1,14 +1,14 @@
 #!/bin/bash
 
-_pkgnamefmt=LibreOfficeDev
-_pkgver=24.8.0.0.beta1
-pkgver=24.8.0.0beta1
+_pkgnamefmt=LibreOffice
+_pkgver=24.8.0.1
+pkgver=24.8.0.1
 
-sed -i "5s|_pkgnamefmt=.*|_pkgnamefmt=${_pkgnamefmt}|" PKGBUILD
+sed -i "6s|_pkgnamefmt=.*|_pkgnamefmt=${_pkgnamefmt}|" PKGBUILD
 
-sed -i "6s|_pkgver=.*|_pkgver=${_pkgver}|" PKGBUILD
+sed -i "7s|_pkgver=.*|_pkgver=${_pkgver}|" PKGBUILD
 
-sed -i "7s|pkgver=.*|pkgver=${pkgver}|" PKGBUILD
+sed -i "8s|pkgver=.*|pkgver=${pkgver}|" PKGBUILD
 
 makepkg --printsrcinfo > .SRCINFO
 

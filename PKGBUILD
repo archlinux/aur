@@ -1,10 +1,11 @@
-# Maintainer: twa022 <twa022 at gmail dot com>
+# Maintainer: tioguda <guda.flavio@gmail.com>
+# Contributor: twa022 <twa022 at gmail dot com>
 
 pkgbase=libreoffice-dev-i18n
 
-_pkgnamefmt=LibreOfficeDev
-_pkgver=24.8.0.0.beta1
-pkgver=24.8.0.0beta1
+_pkgnamefmt=LibreOffice
+_pkgver=24.8.0.1
+pkgver=24.8.0.1
 pkgrel=1
 #_basever=$( cut -f1-2 -d'.' <<< ${_LOver} )
 
