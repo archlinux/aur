@@ -1,8 +1,8 @@
 # Maintainer: Vyacheslav Konovalov <🦀vk@protonmail.com>
 
-_tag=nym-binaries-v2024.6-chomp
+_tag=nym-binaries-v2024.7-doubledecker
 pkgname=nym
-pkgver=2024.6
+pkgver=2024.7
 pkgrel=1
 pkgdesc='The next generation of privacy infrastructure (Nym Mixnet)'
 arch=('x86_64')
