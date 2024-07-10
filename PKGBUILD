@@ -10,7 +10,7 @@
 ## basic info
 _pkgname="libreoffice"
 pkgname="${_pkgname}${_pkgtype:-}"
-pkgver=24.8.0.0.beta1
+pkgver=24.8.0.1
 pkgrel=1
 pkgdesc="LibreOffice development branch"
 url="https://www.libreoffice.org/"
@@ -32,7 +32,7 @@ options=("!strip" "!debug")
 
 _dl_url="https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64"
 
-_pkgnamefmt=LibreOfficeDev
+_pkgnamefmt=LibreOffice
 source=("$_dl_url/${_pkgnamefmt}_${pkgver}_Linux_x86-64_rpm.tar.gz"{,.asc})
 sha256sums=('SKIP' 'SKIP')
 validpgpkeys=(
