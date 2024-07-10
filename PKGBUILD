@@ -1,6 +1,6 @@
 # Maintainer: Rodrigo Rivas Costa <rodrigorivascosta at gmail dot com>
 pkgname=papercraft
-pkgver=2.6
+pkgver=2.7
 pkgrel=1
 pkgdesc="A tool to unwrap 3D paper models"
 arch=('i686' 'x86_64')
