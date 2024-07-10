@@ -11,6 +11,8 @@ pkgbase = python-niaarm
 	makedepends = python-poetry-core
 	depends = python-niapy
 	depends = python-nltk
+	depends = python-plotly
+	depends = python-scikit-learn
 	source = NiaARM-0.3.10.tar.gz::https://github.com/firefly-cpp/NiaARM/archive/0.3.10.tar.gz
 	sha512sums = b5243a1413c6d1589773a1442c9e15bba5534b6ddcb9136bcf9abf3f55e7bd5e93e702082c5a4c1979bda38e21a7932c7129a2d3819b5aaffadc02104d078a28
 

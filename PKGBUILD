@@ -7,7 +7,7 @@ pkgdesc="A minimalistic framework for numerical association rule mining"
 url="https://github.com/firefly-cpp/${_base}"
 arch=(any)
 license=(MIT)
-depends=(python-niapy python-nltk)
+depends=(python-niapy python-nltk python-plotly python-scikit-learn)
 makedepends=(python-build python-installer python-poetry-core)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
@@ -26,6 +26,7 @@ check() {
 package() {
   cd ${_base}-${pkgver}
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm 644 ${_base,,}.1 -t "${pkgdir}/usr/share/man/man1/"
 
   # Symlink license file
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
