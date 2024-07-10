@@ -3,7 +3,7 @@
 
 _pkgname="supabase"
 pkgname="${_pkgname}-bin"
-pkgver=1.185.0
+pkgver=1.183.5
 pkgrel=1
 pkgdesc="A CLI for Supabase, an open source Firebase alternative"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_linux_amd64.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_linux_arm64.tar.gz")
-sha256sums_x86_64=('79612a1344607d676387ec68b3c463f0090dad78894db353ea28b4daf3e6c5e9')
-sha256sums_aarch64=('d492fad778876f9ca2adfda42596d14469a12bd0aa0817fd1e3b25393cd255b3')
+sha256sums_x86_64=('2156a9c111eb06c9964c263ed1eb6237236085ed29dcce8743df9a388c1e3f8f')
+sha256sums_aarch64=('1fbb860d84c41cdcb3017ad230ee2f78124330852ebc99de3c8ecc53e51cf90c')
 optdepends=('bash-completion: for shell auto-completion'
             'zsh-completions: for shell auto-completion')
 
