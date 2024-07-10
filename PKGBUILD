@@ -6,8 +6,7 @@
 #
 # WARNING WARNING WARNING WARNING WARNING    
 # IMPORTANT: MIGRATION
-#                                            
-# If you are coming from the > 0.3.2 BETA please read the instructions:
+#                                            If you are coming from the > 0.3.2 BETA please read the instructions:
 # 
 # 1. Install `anytype-legacy`
 # 2. Follow the instructions HERE: https://community.anytype.io/t/anytype-legacy-to-migration-trail-guide/9274 
@@ -17,21 +16,21 @@
 # Thanks.
 #                                            
 pkgname=anytype-electron-bin
-pkgver=0.41.18
+pkgver=0.41.21
 pkgrel=1
 pkgdesc="Operating environment for the new internet. Anytype is a next generation software that breaks down barriers between applications, gives back privacy and data ownership to users."
 arch=('x86_64')
 url="https://anytype.io/"
 license=('custom')
-depends=('electron27' bash glibc gcc-libs libsecret glib2 hicolor-icon-theme)
+depends=("electron27" bash glibc gcc-libs libsecret glib2 hicolor-icon-theme)
 optdepends=('org.freedesktop.secrets: for not having to sign in each time')
 provides=('anytype')
 conflicts=('anytype'
            'anytype-legacy')
 source=(
-	"https://github.com/anyproto/anytype-ts/releases/download/v${pkgver}-alpha/anytype_${pkgver}-alpha_amd64.deb"
-    )
-sha256sums=('0c93e8417f814c239e3857f683363b8e0906ef8ab179e0b629d61abba07f34c8')
+	"https://github.com/anyproto/anytype-ts/releases/download/v${pkgver}-beta/anytype_${pkgver}-beta_amd64.deb"
+)
+sha256sums=('9e26ad3293881840feafee361df95b1f1289159ce87b36fd8c7ccf43fbec8b75')
 
 package() {
   	tar -xvf data.tar.* -C $pkgdir
