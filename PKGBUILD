@@ -3,7 +3,7 @@
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird-git
-pkgver=r62318.176e3ba16a
+pkgver=r62487.d07cf26894
 pkgrel=1
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
@@ -12,7 +12,7 @@ license=(BSD)
 conflicts=(ladybird)
 provides=(ladybird)
 depends=(ffmpeg libgl qt6-base qt6-tools qt6-wayland qt6-multimedia ttf-liberation)
-makedepends=(git cmake ninja curl unzip zip tar autoconf-archive vcpkg)
+makedepends=(git cmake ninja curl unzip zip tar autoconf-archive nasm vcpkg)
 options=('!lto' '!debug')
 source=(
   "git+$url"
@@ -53,7 +53,7 @@ package() {
   DESTDIR="${pkgdir}" ninja -C build install
 
   install -Dm644 "ladybird.desktop" "${pkgdir}/usr/share/applications/ladybird.desktop"
-  install -Dm644 "ladybird/Base/res/icons/32x32/app-browser.png" "${pkgdir}/usr/share/pixmaps/ladybird.png"
+  install -Dm644 "ladybird/Base/res/icons/128x128/app-browser.png" "${pkgdir}/usr/share/pixmaps/ladybird.png"
 
   install -Dm644 ladybird/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
