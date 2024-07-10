@@ -1,0 +1,16 @@
+pkgbase = vst-preset-generator
+	pkgdesc = GUI tool for generating VST presets in FXP/FXB formats
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://vst-preset-generator.org/
+	arch = x86_64
+	license = GPLv2
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = vst2sdk
+	depends = qt5-base
+	optdepends = asciidoctor-pdf: generate-docs
+	source = vpg.tar.gz::https://download.tuxfamily.org/vpg/0.3.0/vpg-0.3.0-src.tar.gz
+	sha256sums = 8bd4970d154ef73722d29e02de6b5827754efcc97a9d651e948aaf60d1114601
+
+pkgname = vst-preset-generator
