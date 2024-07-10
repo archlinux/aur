@@ -1,0 +1,14 @@
+pkgbase = win11-sddm-theme
+	pkgdesc = Windows 11 login screen theme for SDDM.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/birbkeks/win11-sddm-theme
+	arch = x86_64
+	license = MIT
+	depends = sddm
+	provides = win11-sddm-theme
+	options = !debug
+	source = https://github.com/birbkeks/win11-sddm-theme/releases/download/1.0/win11-sddm-theme.tar.gz
+	md5sums = SKIP
+
+pkgname = win11-sddm-theme
