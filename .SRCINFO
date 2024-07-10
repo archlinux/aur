@@ -7,6 +7,7 @@ pkgbase = openspin-git
 	arch = i686
 	license = MIT
 	provides = openspin-git
+	provides = openspin
 	conflicts = openspin-git-git
 	source = git+https://github.com/parallaxinc/OpenSpin
 	sha256sums = SKIP
