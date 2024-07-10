@@ -8,11 +8,11 @@
 _pkgname=gamescope
 pkgname=gamescope-plus
 pkgver=3.14.23.plus1
-pkgrel=4
+pkgrel=5
 pkgdesc='SteamOS session compositing window manager with added patches'
 arch=(x86_64)
 url=https://github.com/ChimeraOS/gamescope
-license=(BSD)
+license=(BSD-2-Clause)
 conflicts=(gamescope)
 provides=(gamescope)
 depends=(
@@ -20,6 +20,7 @@ depends=(
   glibc
   glm
   libavif
+  libdecor
   libcap.so
   libglvnd
   libdrm
@@ -63,15 +64,19 @@ makedepends=(
 
 _tag=c4d8f39b1a135322923e974257ab0715ab32ac46
 source=("git+https://github.com/ChimeraOS/gamescope.git#commit=${_tag}"
+        "git+https://github.com/Joshua-Ashton/reshade.git"
         "git+https://github.com/Joshua-Ashton/wlroots.git"
         "git+https://github.com/ValveSoftware/openvr.git"
         "git+https://gitlab.freedesktop.org/emersion/libliftoff.git"
+        "git+https://github.com/KhronosGroup/SPIRV-Headers.git"
         "git+https://github.com/Joshua-Ashton/GamescopeShaders.git#tag=v0.1"
         # FIXME Upstream gamescope is just selecting master branch at build time, so we are arbitrarily snapshotting a
         #       revision when bumping the version here such that the build is reproducible.
         "git+https://github.com/nothings/stb.git#commit=af1a5bc352164740c1cc1354942b1c6b72eacb8a")
 
 b2sums=('SKIP'
+        'SKIP'
+        'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -83,9 +88,11 @@ prepare() {
 
   # git submodules
   git submodule init
+  git config submodule.src/reshade.url "$srcdir/reshade"
   git config submodule.subprojects/wlroots.url "$srcdir/wlroots"
   git config submodule.subprojects/libliftoff.url "$srcdir/libliftoff"
   git config submodule.subprojects/openvr.url "$srcdir/openvr"
+  git config submodule.thirdparty/SPIRV-Headers.url "$srcdir/SPIRV-Headers"
   git -c protocol.file.allow=always submodule update
 
   # meson submodules
