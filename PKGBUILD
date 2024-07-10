@@ -3,13 +3,13 @@
 pkgname=alvr-bin
 _pkgname=${pkgname%-bin}
 pkgver=20.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
 url="https://github.com/alvr-org/ALVR"
 license=('MIT')
 groups=()
-depends=('vulkan-icd-loader' 'bash' 'hicolor-icon-theme')
+depends=('vulkan-icd-loader' 'bash' 'hicolor-icon-theme' 'libpipewire')
 makedepends=('tar' 'imagemagick')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
