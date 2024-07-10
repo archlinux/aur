@@ -1,7 +1,7 @@
 pkgbase = android-aarch64-libx11
 	pkgdesc = X11 client-side library (Android aarch64)
 	pkgver = 1.8.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xorg.freedesktop.org/
 	arch = any
 	license = custom
@@ -20,6 +20,6 @@ pkgbase = android-aarch64-libx11
 	validpgpkeys = 4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E
 	md5sums = b006876e5b749d82801fe9450d700daf
 	md5sums = SKIP
-	md5sums = 7e75887c531b49934b9ac36ac329074a
+	md5sums = 7aa12ed8ce6ef220c1e0b8c2b2982d27
 
 pkgname = android-aarch64-libx11
