@@ -1,5 +1,5 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: morpheusthewhite <zffromGerace@hotmail.it>
+# Contributor: morpheusthewhite <zffromGerace@hotmail.it>
+# Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=ddd
 pkgver=3.4.0
@@ -11,7 +11,6 @@ license=('GPL3' 'LGPL3')
 depends=('gcc-libs' 'openmotif' 'libxaw')
 optdepends=('gdb: to use the Gnu debugger' 
         'java-runtime-openjdk: to use the Java debugger' 
-        'pydb: to use the Python debugger' 
         'perl: to use the Perl debugger')
 source=(http://ftp.gnu.org/gnu/ddd/${pkgname}-${pkgver}.tar.gz)
 sha1sums=('cf01bd6727a2b957ae27796bb807298bb34fbbb0')
