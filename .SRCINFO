@@ -1,7 +1,7 @@
 pkgbase = crab-fetch
 	pkgdesc = Extremely fast, featureful and customizable command-line fetcher.
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LivacoNew/CrabFetch
 	arch = x86_64
 	license = Apache-2.0
