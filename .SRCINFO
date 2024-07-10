@@ -1,0 +1,17 @@
+pkgbase = cxcli
+	pkgdesc = The missing CLI for your Dialogflow CX projects
+	pkgver = 1.224.1
+	pkgrel = 1
+	url = https://cxcli.xavidop.me
+	arch = any
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	optdepends = bash-completion: for shell auto-completion
+	optdepends = zsh-completions: for shell auto-completion
+	provides = dialogflow-cx-cli
+	conflicts = dialogflow-cx-cli
+	source = dialogflow-cx-cli-1.224.1.tar.gz::https://github.com/xavidop/dialogflow-cx-cli/archive/refs/tags/v1.224.1.tar.gz
+	sha256sums = 152cd48de7ffd1fb8cbb22d0cf1d02f9b7c3f821781c049c0eb38b2f2e8cb6dd
+
+pkgname = cxcli
