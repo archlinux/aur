@@ -2,7 +2,7 @@
 pkgname=board4you-bin
 pkgver=1.0.8
 _electronversion=26
-pkgrel=2
+pkgrel=3
 pkgdesc="A whiteboard app built with Electron, React, react-icons, konva and bootstrap."
 arch=("x86_64")
 url="https://github.com/GachiLord/board4you"
@@ -10,7 +10,7 @@ license=("GPL-3.0-only")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
     'nodejs'
 )
 makedepends=(
@@ -21,11 +21,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('4017adad00d343388476121e83af5f46c73d498d68084b86cb3a1dc4b3c45d4f'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
