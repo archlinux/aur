@@ -1,14 +1,10 @@
 pkgbase = python-phiml
 	pkgdesc = Unified API for machine learning
-	pkgver = 1.5.1
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/tum-pbs/PhiML
 	arch = any
 	license = MIT
-	checkdepends = python-pytest
-	checkdepends = python-pytorch
-	checkdepends = python-tensorflow
-	checkdepends = python-jax
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
@@ -16,7 +12,7 @@ pkgbase = python-phiml
 	depends = python-numpy
 	depends = python-scipy
 	depends = python-packaging
-	source = PhiML-1.5.1.tar.gz::https://github.com/tum-pbs/PhiML/archive/1.5.1.tar.gz
-	sha512sums = 13f8b80bdd3136534615bc8ddd2f8a26ba8bc8ece5fe9ccf478e3e958d5b8f6ae3d2eb246dff28f4d0f0e96c2cf500fd6b68149e1eba01ff18ed4e02b0364215
+	source = PhiML-1.6.0.tar.gz::https://github.com/tum-pbs/PhiML/archive/1.6.0.tar.gz
+	sha512sums = 17076599d2b9295aa596ca0e4c68663e5091db06fc0b37b8866c6e331b675927dd062947788b3c0157707a9fc8788b6d245a31ba870fd66df8cad86cb61353ad
 
 pkgname = python-phiml
