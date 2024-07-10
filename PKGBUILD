@@ -4,7 +4,7 @@
 pkgname=crqt-ng
 provides=(coolreader crqt-ng crqt-ng-git)
 conflicts=(coolreader crqt-ng-git)
-pkgver=1.0.13
+pkgver=1.0.14
 _pkgver=${pkgver//_/-}
 pkgrel=1
 pkgdesc='Cross-platform open source e-book reader using crengine-ng.'
@@ -14,7 +14,7 @@ license=('GPL-2')
 depends=('crengine-ng' 'fribidi' 'hicolor-icon-theme' 'libunibreak' 'qt6-base')
 makedepends=('cmake' 'qt6-tools')
 source=("https://gitlab.com/coolreader-ng/${pkgname}/-/archive/${_pkgver}/${pkgname}-${_pkgver}.tar.gz")
-sha256sums=('234175758d5f07e522c6d6a787b8623bfc80e9120d17be6f66274596e909ef77')
+sha256sums=('e85d842386460ed1c7f51aca3fb355b28f58333c3d12e7ed1538aeaf4134b358')
 
 build() {
 	cmake \
