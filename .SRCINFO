@@ -1,15 +1,15 @@
 pkgbase = geode-cli-bin
 	pkgdesc = Command-line utilities for working w/ geode, a Geometry Dash modding SDK
-	pkgver = 3.0.5
+	pkgver = 3.0.6
 	pkgrel = 1
 	url = https://github.com/geode-sdk/cli
 	arch = x86_64
 	license = BSL-1.0
 	provides = geode-cli
 	conflicts = geode-cli
-	source = https://github.com/geode-sdk/cli/releases/download/v3.0.5/geode-cli-v3.0.5-linux.zip
-	source = https://raw.githubusercontent.com/geode-sdk/cli/v3.0.5/LICENSE
-	sha256sums = efb70c860fcd6249a39ace5279ef90dde18036aa7aac6b66adbfff04927c55ac
+	source = https://github.com/geode-sdk/cli/releases/download/v3.0.6/geode-cli-v3.0.6-linux.zip
+	source = https://raw.githubusercontent.com/geode-sdk/cli/v3.0.6/LICENSE
+	sha256sums = 69cf8a689ad4457fba658ea3664154873e93abc87dbe8c43492c9421f68b150c
 	sha256sums = SKIP
 
 pkgname = geode-cli-bin
