@@ -1,6 +1,6 @@
 pkgbase = ptyxis
 	pkgdesc = A terminal for a container-oriented desktop
-	pkgver = 46.4
+	pkgver = 46.5
 	pkgrel = 1
 	url = https://gitlab.gnome.org/chergert/ptyxis
 	arch = x86_64
@@ -28,10 +28,10 @@ pkgbase = ptyxis
 	depends = pcre2
 	depends = systemd-libs
 	depends = vte-common=0.76.3
-	source = ptyxis::git+https://gitlab.gnome.org/chergert/ptyxis#tag=46.4
+	source = ptyxis::git+https://gitlab.gnome.org/chergert/ptyxis#tag=46.5
 	source = ptyxis_vte::git+https://gitlab.gnome.org/GNOME/vte.git#commit=41b19080b5594300afc010e1ef7d838ab120603a
 	source = 0001-bundle-patched-vte.patch
-	sha256sums = 6382867bedd747dddf050e56a392ee79c66f6522118c67adf6908168915e0190
+	sha256sums = 36c33dcf871f205998134fbd34586690b3412a74d0f452e4157d85f87fbe86df
 	sha256sums = 628e9202b3578a825e6a135508c711a0ea0c236579f4ec1afe5d11f3feecce90
 	sha256sums = b9eaf8fcf10b2f703bc4c355304517c62c6a5cc42c727f8e93cf9a4be5b4cf14
 

@@ -1,7 +1,7 @@
 # Maintainer: Piroro-hs
 
 pkgname=ptyxis
-pkgver=46.4
+pkgver=46.5
 _vtever=0.76.3
 _vtecommit='41b19080b5594300afc010e1ef7d838ab120603a'
 pkgrel=1
@@ -40,7 +40,7 @@ backup=()
 source=("$pkgname::git+$url#tag=$pkgver"
         "${pkgname}_vte::git+https://gitlab.gnome.org/GNOME/vte.git#commit=$_vtecommit"
         '0001-bundle-patched-vte.patch')
-sha256sums=('6382867bedd747dddf050e56a392ee79c66f6522118c67adf6908168915e0190'
+sha256sums=('36c33dcf871f205998134fbd34586690b3412a74d0f452e4157d85f87fbe86df'
             '628e9202b3578a825e6a135508c711a0ea0c236579f4ec1afe5d11f3feecce90'
             'b9eaf8fcf10b2f703bc4c355304517c62c6a5cc42c727f8e93cf9a4be5b4cf14')
 
