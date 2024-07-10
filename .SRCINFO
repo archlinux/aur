@@ -1,0 +1,19 @@
+pkgbase = updatecli-git
+	pkgdesc = A declarative dependency management command line tool
+	pkgver = 0.80.0.r1.g93d2f27
+	pkgrel = 1
+	url = https://www.updatecli.io
+	arch = any
+	license = Apache-2.0
+	makedepends = git
+	makedepends = make
+	makedepends = go
+	depends = glibc
+	optdepends = bash-completion: for shell auto-completion
+	optdepends = zsh-completions: for shell auto-completion
+	provides = updatecli=0.80.0
+	conflicts = updatecli
+	source = updatecli::git+https://github.com/updatecli/updatecli.git
+	sha256sums = SKIP
+
+pkgname = updatecli-git
