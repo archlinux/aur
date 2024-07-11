@@ -1,0 +1,15 @@
+pkgbase = acpilight
+	pkgdesc = a backward-compatible xbacklight replacement based on ACPI
+	pkgver = 1.2
+	pkgrel = 3
+	url = https://gitlab.com/wavexx/acpilight
+	install = acpilight.install
+	arch = any
+	license = GPL3
+	depends = python
+	provides = xorg-xbacklight
+	conflicts = xorg-xbacklight
+	source = https://gitlab.com/wavexx/acpilight/-/archive/v1.2/acpilight-v1.2.tar.bz2
+	sha256sums = 0b80cbe7edaf48307fc26dbb34c260ec9ed0c19c56743291e5a7cc23044ff9ae
+
+pkgname = acpilight

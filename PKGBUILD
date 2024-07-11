@@ -4,7 +4,7 @@
 # Contributor: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 pkgname=acpilight
 pkgver=1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="a backward-compatible xbacklight replacement based on ACPI"
 arch=('any')
 url='https://gitlab.com/wavexx/acpilight'
