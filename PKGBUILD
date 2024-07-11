@@ -1,6 +1,6 @@
 # Maintainer: CupIvan <mail@cupivan.ru>
 pkgname=quik
-pkgver=11.3.0
+pkgver=11.3.1
 pkgrel=1
 stratver=3.0.5
 trustver=2.10.0
@@ -25,7 +25,7 @@ source=(
 "ip.cfg"
 )
 sha256sums=(
-'6c2b46534814432dbdb6cd526e8cf3a4f414a44d67a1f785f4719728c99f0686' # QUIK
+'7419b48383c8e37981fbdcba3dbd06eca0630df94049bb3c56ee413c4243c9af' # QUIK
 'd32095309cd7359f4078a74179d8ae42e013e3fd3ad75837f0fa3941e7091b75' # StratVolat
 #'ff4dd52e56fabe8c06730daca770a92312338303bc06b58d417105d44c5a0869' # TrustManager
 #'0f6724e6666c379cf9a1f53aa627f4b0c56fded2d7e3fbf3704d6526066fa8e3' # BasketTrading
