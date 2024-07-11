@@ -1,0 +1,12 @@
+pkgbase = archlinux-themes-slim
+	pkgdesc = Arch Linux branded themes for the SLiM login manager
+	pkgver = 1.2
+	pkgrel = 7
+	url = https://www.archlinux.org/
+	arch = any
+	license = CCPL:cc-by-sa
+	optdepends = slim: login manager providing theme support
+	source = https://sources.archlinux.org/other/packages/artwork/archlinux-themes-slim-1.2.tar.gz
+	sha256sums = dcbcd85d62ed140f35462290abeeadf773cd763960fb4b8f0e0c6c674da3e813
+
+pkgname = archlinux-themes-slim
