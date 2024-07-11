@@ -1,0 +1,13 @@
+pkgbase = zakwl-cryptfile
+	pkgdesc = Encryption and decryption manager for dentists in Westfalen-Lippe (Germany)
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://www.zahnaerzte-wl.de/pages/zakwl-verschlusselungs-und-entschlusselungs-manager
+	arch = x86_64
+	license = unknown
+	source = https://www.zahnaerzte-wl.de/download/538d75015465ee861df9286a8/Install_CryptFile_1_1_LINUX.zip
+	source = zakwl-cryptfile.desktop
+	sha256sums = 89d85a4f951a4090c1e246539091f4efcaaada44e888e21428ae0ca90712904b
+	sha256sums = 655681603679baa94d447bd5f7dc1754a760026255e7d30fdaa56d580c2002ab
+
+pkgname = zakwl-cryptfile

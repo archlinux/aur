@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=ZÄKWL Cryptfile
+Comment=Encryption and decryption manager for dentists in Westfalen-Lippe (Germany)
+Exec=/usr/local/bin/Cryptfile
+Icon=/usr/local/share/icons/zakwl-cryptfile/Cryptfile.ico
+Terminal=false
+Type=Application
+StartupNotify=true
