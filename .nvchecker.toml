@@ -1,0 +1,4 @@
+[libjxl]
+source = "git"
+git = "https://github.com/libjxl/libjxl.git"
+prefix = "v"
