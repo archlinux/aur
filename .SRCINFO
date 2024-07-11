@@ -1,0 +1,18 @@
+pkgbase = libmp3splt
+	pkgdesc = Library for splitting mp3 and ogg files without decoding
+	pkgver = 0.9.2
+	pkgrel = 4
+	url = http://mp3splt.sourceforge.net
+	arch = x86_64
+	license = GPL
+	makedepends = libtool
+	depends = flac
+	depends = libmad
+	depends = libvorbis
+	depends = libid3tag
+	depends = pcre
+	depends = libltdl
+	source = https://downloads.sourceforge.net/sourceforge/mp3splt/libmp3splt-0.9.2.tar.gz
+	sha512sums = e5c98e8b173bc86302ccee4ca5eb0c8a8d93f225357eb7b14dea8d0700ed62ed6316506c182f6b295130f7924ff0b38e865d5e49fa9cd7882c648360d68872ed
+
+pkgname = libmp3splt
