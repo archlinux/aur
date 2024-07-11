@@ -3,7 +3,7 @@ pkgname=own3d-desktop-bin
 _pkgname="OWN3D Pro Desktop"
 pkgver=2.0.0
 _electronversion=29
-pkgrel=1
+pkgrel=2
 pkgdesc="Public Development Preview of the OWN3D Desktop App"
 arch=('any')
 url="https://www.own3d.pro/"
@@ -19,11 +19,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('c6015f235920c075f2e042e7b5d0872b1bf7b062c4e220d1ce8b444236444d63'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
