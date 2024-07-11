@@ -1,0 +1,3 @@
+[perl-term-extendedcolor]
+source = "cpan"
+cpan = "Term-ExtendedColor"
