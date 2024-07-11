@@ -1,6 +1,6 @@
 pkgbase = mdcat
 	pkgdesc = Sophisticated Markdown rendering for the terminal
-	pkgver = 2.1.2
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/swsnr/mdcat
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = mdcat
 	depends = openssl
 	optdepends = less: for mdless
 	options = !lto
-	source = mdcat-2.1.2.tar.gz::https://github.com/swsnr/mdcat/archive/mdcat-2.1.2.tar.gz
-	sha256sums = 332c8e659a668ceeae70b0d268a46f00bf8bab696dbf7f84faa69b3c509da286
+	source = mdcat-2.2.0.tar.gz::https://github.com/swsnr/mdcat/archive/mdcat-2.2.0.tar.gz
+	sha256sums = bc57c65786dbb4986d75762252b76a73ab52dc60f3b088089753a0d51617cdb0
 
 pkgname = mdcat
