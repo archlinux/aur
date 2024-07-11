@@ -1,0 +1,3 @@
+[perl-data-section]
+source = "cpan"
+cpan = "Data-Section"
