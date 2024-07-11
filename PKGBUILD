@@ -437,7 +437,7 @@ prepare() {
     patch -Np1 -i "${srcdir}/040-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
   fi
 
-  if [[ $FFMPEG_OBS_FULL == 'ON']]; then
+  if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
     git cherry-pick -n 3e6c7948626f19c46c1a630c788ea6bbd9e7fbcb
   fi
 }
