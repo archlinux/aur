@@ -2,7 +2,7 @@
 # Contributor: Oliver Mangold <o.mangold@gmail.com>
 # Contributor: Adam Brunnmeier <adam.brunnmeier@gmail.com>
 pkgname=blender-4.2-bin
-pkgver=4.2.240213.33af56f13eab
+pkgver=4.2.240710.a2ba481c7110
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL')
 # dependencies copied from https://www.archlinux.org/packages/community/x86_64/blender/
 depends=('libxi' 'python' 'libxrender' 'libglvnd' 'hicolor-icon-theme')
 makedepends=('wget')
-optdepends=('cuda: cycles renderer cuda support' 'python310: use system python')
+optdepends=('cuda: cycles renderer cuda support' 'python311: use system python')
 # use different url per version to trigger rebuilds when package updates.
 # using $pkgver instead of $_inc is not possible (see comments on AUR-website)
 _webpage="daily.$(date '+%y%m%d').html"
@@ -40,8 +40,8 @@ build() {
 	wget -nc "https://builder.blender.org/download/daily/$_full"
 	tar -xJ -f "$_full"
 	cd "${_full%.tar.xz}"
-	# Remove included python installation if the right version is available. (requires 3.10 as 2023-07-01)
-	[ -f /usr/bin/python3.10  ] && rm -rf "$_upstreamversion/python"
+	# Remove included python installation if the right version is available. (requires 3.11 as 2024-07-24)
+	[ -f /usr/bin/python3.11  ] && rm -rf "$_upstreamversion/python"
 	sed -i "s/=blender/=blender-$_upstreamversion/" blender.desktop
 	sed -i "s/=Blender/=Blender-$_upstreamversion/" blender.desktop
 	#for f in datafiles/icons/*/apps/blender.* ; do chmod 644 $f && mv $f "${f%.*}-$_upstreamversion.${f#*.}" ; done
