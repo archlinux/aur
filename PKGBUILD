@@ -82,4 +82,3 @@ package() {
   ln -s /opt/duplicati/duplicati-cli "${pkgdir}/usr/bin/duplicati-cli"
   
 }
-
