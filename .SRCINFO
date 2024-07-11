@@ -1,0 +1,15 @@
+pkgbase = diff-ignore-moved-lines-git
+	pkgdesc = Strip moved lines from a diff
+	pkgver = 0.0.r15
+	pkgrel = 1
+	url = https://github.com/l0b0/diff-ignore-moved-lines
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = make
+	makedepends = shunit2
+	depends = bash
+	source = git+https://github.com/l0b0/diff-ignore-moved-lines.git#branch=master
+	sha256sums = SKIP
+
+pkgname = diff-ignore-moved-lines-git
