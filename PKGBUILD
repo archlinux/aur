@@ -2,14 +2,14 @@
 
 pkgname=rtl88x2bu-dkms-git
 _pkgbase=rtl88x2bu
-pkgver=5.13.1.r181.2812290
+pkgver=5.13.1.r199.bf52727
 _pkgver=5.13.1
-pkgrel=3
+pkgrel=1
 pkgdesc="Kernel module for Realtek rtl88x2bu WiFi chipset"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/RinCat/RTL88x2BU-Linux-Driver"
 license=('GPL2')
-depends=('dkms' 'bc')
+depends=('linux-headers' 'dkms' 'bc')
 makedepends=('git')
 source=("git+https://github.com/RinCat/RTL88x2BU-Linux-Driver.git")
 sha256sums=('SKIP')
