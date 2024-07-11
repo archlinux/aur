@@ -7,8 +7,8 @@
 
 _pkgname=gamescope
 pkgname=gamescope-plus
-pkgver=3.14.23.plus1
-pkgrel=5
+pkgver=3.14.24.plus1
+pkgrel=1
 pkgdesc='SteamOS session compositing window manager with added patches'
 arch=(x86_64)
 url=https://github.com/ChimeraOS/gamescope
@@ -32,6 +32,7 @@ depends=(
   libx11
   libxcb
   libxcomposite
+  libxcursor
   libxdamage
   libxext
   libxfixes
@@ -62,8 +63,9 @@ makedepends=(
   wayland-protocols
 )
 
-_tag=c4d8f39b1a135322923e974257ab0715ab32ac46
+_tag=3b0408f6ec7307e7a38f2c795b932d0dc05f2d72
 source=("git+https://github.com/ChimeraOS/gamescope.git#commit=${_tag}"
+        "git+https://gitlab.freedesktop.org/emersion/libdisplay-info.git"
         "git+https://github.com/Joshua-Ashton/reshade.git"
         "git+https://github.com/Joshua-Ashton/wlroots.git"
         "git+https://github.com/ValveSoftware/openvr.git"
@@ -81,6 +83,7 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
+        'SKIP'
         'SKIP')
 
 prepare() {
@@ -91,7 +94,7 @@ prepare() {
   git config submodule.src/reshade.url "$srcdir/reshade"
   git config submodule.subprojects/wlroots.url "$srcdir/wlroots"
   git config submodule.subprojects/libliftoff.url "$srcdir/libliftoff"
-  git config submodule.subprojects/openvr.url "$srcdir/openvr"
+  git config submodule.subprojects/libdisplay-info.url "$srcdir/libdisplay-info"
   git config submodule.thirdparty/SPIRV-Headers.url "$srcdir/SPIRV-Headers"
   git -c protocol.file.allow=always submodule update
 
@@ -122,7 +125,7 @@ package() {
 
   cd "$srcdir/$_pkgname"
   meson install -C build --skip-subprojects --destdir="${pkgdir}"
-  install -Dm 644 LICENSE -t "${pkgdir}"/usr/share/licenses/gamescope/
+  install -Dm 644 LICENSE -t "${pkgdir}"/usr/share/licenses/gamescope-plus/
 }
 
 # vim: ts=2 sw=2 et:

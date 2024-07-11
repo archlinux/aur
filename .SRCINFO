@@ -1,7 +1,7 @@
 pkgbase = gamescope-plus
 	pkgdesc = SteamOS session compositing window manager with added patches
-	pkgver = 3.14.23.plus1
-	pkgrel = 5
+	pkgver = 3.14.24.plus1
+	pkgrel = 1
 	url = https://github.com/ChimeraOS/gamescope
 	arch = x86_64
 	license = BSD-2-Clause
@@ -29,6 +29,7 @@ pkgbase = gamescope-plus
 	depends = libx11
 	depends = libxcb
 	depends = libxcomposite
+	depends = libxcursor
 	depends = libxdamage
 	depends = libxext
 	depends = libxfixes
@@ -48,7 +49,8 @@ pkgbase = gamescope-plus
 	depends = xorg-server-xwayland
 	provides = gamescope
 	conflicts = gamescope
-	source = git+https://github.com/ChimeraOS/gamescope.git#commit=c4d8f39b1a135322923e974257ab0715ab32ac46
+	source = git+https://github.com/ChimeraOS/gamescope.git#commit=3b0408f6ec7307e7a38f2c795b932d0dc05f2d72
+	source = git+https://gitlab.freedesktop.org/emersion/libdisplay-info.git
 	source = git+https://github.com/Joshua-Ashton/reshade.git
 	source = git+https://github.com/Joshua-Ashton/wlroots.git
 	source = git+https://github.com/ValveSoftware/openvr.git
@@ -56,6 +58,7 @@ pkgbase = gamescope-plus
 	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git
 	source = git+https://github.com/Joshua-Ashton/GamescopeShaders.git#tag=v0.1
 	source = git+https://github.com/nothings/stb.git#commit=af1a5bc352164740c1cc1354942b1c6b72eacb8a
+	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
