@@ -1,0 +1,3 @@
+[perl-version-compare]
+source = "cpan"
+cpan = "Version-Compare"
