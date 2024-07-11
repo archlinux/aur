@@ -1,0 +1,3 @@
+[perl-devel-checkbin]
+source = "cpan"
+cpan = "Devel-CheckBin"
