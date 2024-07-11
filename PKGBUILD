@@ -1,19 +1,24 @@
-# Maintainer: Stephan Eisvogel <eisvogel at embinet dot de>
+# Maintainer: Stephan Eisvogel <eisvogel at seitics dot de>
 pkgname=nsjail-git
-pkgver=r836.e0c13f5
+_pkgcommit=#commit=5063fa5af6020bf73c0edce552a7c0156f1d8860
+pkgver=r1252.5063fa5
 pkgrel=1
-_pkgcommit=#commit=e0c13f55a87611282a526a5539ebe578541e4fef
 pkgdesc="A light-weight process isolation tool, making use of Linux namespaces and seccomp-bpf syscall filters (with help of the kafel bpf language)"
-arch=('x86_64')
 url="http://nsjail.com"
-license=('Apache')
-makedepends=('git')
-options=('!makeflags')
-depends=('libnl>=3' 'protobuf')
-provides=('nsjail')
-conflicts=('nsjail')
-source=("${pkgname}::git+git://github.com/google/nsjail.git${_pkgcommit}")
-sha256sums=('SKIP')
+arch=(x86_64)
+license=(Apache-2.0)
+makedepends=(git)
+depends=(abseil-cpp protobuf libnl gcc-libs glibc)
+provides=(nsjail)
+conflicts=(nsjail)
+source=(
+	"${pkgname}::git+https://github.com/google/nsjail.git${_pkgcommit}"
+	protobuf.patch
+)
+sha256sums=(
+	'SKIP'
+	'802fbf99dbfb9b48a38824438523148dc945dfcb0869fbc7709ac7985454c7f2'
+)
 
 pkgver() {
 	cd ${pkgname}
@@ -21,27 +26,36 @@ pkgver() {
 }
 
 prepare() {
-	# Populate kafel submodule
 	cd "${srcdir}/${pkgname}"
+
+	# Populate kafel submodule
 	git submodule update --init
+
+	# Build fix for newer protobuf
+	patch -Np1 < "${srcdir}/protobuf.patch"
 }
 
 build() {
 	cd "${srcdir}/${pkgname}"
+	LDFLAGS+=' -Wl,-z,shstk'
 	make
 }
 
 package() {
 	cd "${srcdir}/${pkgname}"
+
 	# Binary
 	install -D nsjail "${pkgdir}/usr/bin/nsjail"
+
 	# Manpage
 	install -d "${pkgdir}/usr/share/man/man1"
 	install -m644 ./nsjail.1 "${pkgdir}/usr/share/man/man1/"
+
 	# Examples, documentation, license
 	install -d "${pkgdir}/usr/share/${pkgname}/examples"
 	install -m644 configs/*.cfg "${pkgdir}/usr/share/${pkgname}/examples"
 	install -m644 LICENSE CONTRIBUTING README.md "${pkgdir}/usr/share/${pkgname}/"
+
 	echo -e "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 	echo -e "Tip: Your kernel should have CONFIG_USER_NS=y to chroot as a normal user."
 	echo -e "     Verify using e.g. this command: zgrep CONFIG_USER_NS /proc/config.gz"
