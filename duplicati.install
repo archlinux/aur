@@ -54,6 +54,16 @@ EOF
 EOF
   fi
 
+  if [ $(vercmp $2 2.0.9.101-1) -lt 0 ]; then
+    cat <<EOF
+  * Version 2.0.9.101-1 was a major overhaul of the code organization, and now includes
+  * a vendored .NET runtime. The name of the binaries also changed.
+  * Please report any issues on the AUR.
+  * https://aur.archlinux.org/packages/duplicati-canary-bin
+
+EOF
+  fi
+
   cat  <<EOF
   * UI can be accessed via following URL: http://localhost:8200
   * Running duplicati user instance (using current user account)
