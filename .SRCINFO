@@ -1,6 +1,6 @@
 pkgbase = lcm-git
 	pkgdesc = Lightweight real-time networking library (git version of lcm)
-	pkgver = 20200602.r1170.e7ab2d5
+	pkgver = 20240627.r1424.64e149f
 	pkgrel = 1
 	url = https://github.com/lcm-proj/lcm
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = lcm-git
 	optdepends = ttf-dejavu: support for lcm-spy and other GUI tools
 	provides = lcm
 	conflicts = lcm
-	source = lcm-git-20200602.r1170.e7ab2d5::git+http://github.com/lcm-proj/lcm.git
+	source = lcm-git-20240627.r1424.64e149f::git+http://github.com/lcm-proj/lcm.git
 	sha512sums = SKIP
 
 pkgname = lcm-git
