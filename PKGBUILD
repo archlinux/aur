@@ -6,6 +6,7 @@ _pkgname=unified-source-$_date-$_pkgver
 pkgname=citra
 pkgver=r10079.4780a71
 pkgrel=1
+epoch=1
 arch=('x86_64')
 pkgdesc='An experimental open-source Nintendo 3DS emulator/debugger'
 url='https://github.com/PabloMK7/citra'
