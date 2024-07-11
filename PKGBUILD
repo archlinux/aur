@@ -5,10 +5,10 @@
 # This file is based on original PKGBUILD of GTK3 package.
 # https://gitlab.archlinux.org/archlinux/packaging/packages/gtk3/-/commits/main
 
-__arch_pkg_commit="e6dc1b0abce1d021ea3cec2f8c0d3fdf93cd0b87"
-_gtkver=3.24.42
+__arch_pkg_commit="c2ecfe23993aeff132fbd58d6b1174c98444cbd4"
+_gtkver=3.24.43
 
-_gtk3_classic_commit="83313fe74b0611d59099871941441ff7d8b74bb6"
+_gtk3_classic_commit="873ba6b2f4de1d27a343aede62bd382244383086"
 
 pkgbase=gtk3-classic
 pkgname=($pkgbase)
@@ -90,8 +90,8 @@ source=(
 	"gtk-query-immodules-3.0.hook::https://gitlab.archlinux.org/archlinux/packaging/packages/gtk3/-/raw/$__arch_pkg_commit/gtk-query-immodules-3.0.hook"
 	settings.ini
 )
-sha256sums=('738383c7dccc345c71c8018ff64651dcf410be9c554918e7c27fd5a8cd3107d9'
-            '50f89f615092d4dd01bbd759719f8bd380e5f149f6fd78a94725e2de112377e2'
+sha256sums=('1d8b72c4c079209047783057382746bea7dfd6714cf4f12161ecc41ca8408d00'
+            '7e04f0648515034b806b74ae5d774d87cffb1a2a96c468cb5be476d51bf2f3c7'
             'a0319b6795410f06d38de1e8695a9bf9636ff2169f40701671580e60a108e229'
             '01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202')
 
