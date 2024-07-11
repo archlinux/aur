@@ -1,7 +1,7 @@
 # Maintainer: Bruno Miguel <bruno@privacyrequired.com>
 pkgname=codeberg-cli-git
 pkgver=0.4.2.9c3d4a2
-pkgrel=2
+pkgrel=3
 pkgdesc='CLI Tool for Codeberg similar to gh and glab.'
 arch=(x86_64)
 url='https://codeberg.org/RobWalt/codeberg-cli'
@@ -13,6 +13,7 @@ conflicts=(codeberg-cli)
 source=(git+$url.git)
 sha256sums=('SKIP')
 md5sums=('SKIP')
+install=codeberg-cli.install
 
 pkgver() {
     cd "$provides"
