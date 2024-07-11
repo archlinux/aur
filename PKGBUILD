@@ -2,7 +2,7 @@
 # Contributor: sasvari
 
 pkgname=python-bibtexparser-git
-_pkgname="${_pkgname%-git}"
+_pkgname="${pkgname%-git}"
 pkgrel=1
 pkgver=20240521.214ef38
 pkgdesc="Bibtex parser in Python"
