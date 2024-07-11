@@ -1,7 +1,7 @@
 pkgbase = ddd-ftn
 	pkgdesc = A graphical front-end for command-line debuggers such as GDB, JDB, pydb, perl debugger adapted for use at Faculty of Technical Sciences, University of Novi Sad
 	pkgver = 3.3.12
-	pkgrel = 13
+	pkgrel = 14
 	url = http://www.gnu.org/software/ddd/
 	arch = x86_64
 	license = GPL3
@@ -13,7 +13,7 @@ pkgbase = ddd-ftn
 	optdepends = java-runtime-openjdk: to use the Java debugger
 	optdepends = pydb: to use the Python debugger
 	optdepends = perl: to use the Perl debugger
-	source = http://ftp.gnu.org/gnu/ddd/ddd-3.3.12.tar.gz
+	source = https://ftp.gnu.org/old-gnu/ddd/ddd-3.3.12.tar.gz
 	source = ddd-3.3.12-gcc44.patch
 	source = friend-default.patch
 	source = tmd018
@@ -23,4 +23,3 @@ pkgbase = ddd-ftn
 	sha1sums = 8b05f6f2ec483792ca9e910840e36ad2e0ef1c79
 
 pkgname = ddd-ftn
-
