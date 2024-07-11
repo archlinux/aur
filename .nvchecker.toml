@@ -1,0 +1,3 @@
+[perl-carp-assert]
+source = "cpan"
+cpan = "Carp-Assert"
