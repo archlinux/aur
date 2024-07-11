@@ -1,6 +1,6 @@
 pkgbase = tuxedo-drivers-dkms
 	pkgdesc = TUXEDO Computers kernel module drivers for keyboard, keyboard backlight & general hardware I/O using the SysFS interface
-	pkgver = 4.5.4
+	pkgver = 4.6.0
 	pkgrel = 1
 	url = https://github.com/tuxedocomputers/tuxedo-drivers
 	arch = x86_64
@@ -23,13 +23,13 @@ pkgbase = tuxedo-drivers-dkms
 	conflicts = tuxedo-keyboard-dkms
 	conflicts = tuxedo-keyboard-ite-dkms
 	options = !debug
-	source = tuxedo-drivers-dkms-4.5.4.tar.gz::https://github.com/tuxedocomputers/tuxedo-drivers/archive/v4.5.4.tar.gz
+	source = tuxedo-drivers-dkms-4.6.0.tar.gz::https://github.com/tuxedocomputers/tuxedo-drivers/archive/v4.6.0.tar.gz
 	source = tuxedo_io.conf
 	source = dkms.conf
-	sha256sums = 1227880df4e66a1207efc6a2c94ca0601f226549f14c6d10282685fc7b31f52b
+	sha256sums = 3038dbf0c102612850cbcff25c80117838555b68b29f751ad5b924653a29f974
 	sha256sums = d94d305bfd2767ad047bc25cc5ce986e76804e7376c3dd4d8e500ebe2c7bef3c
 	sha256sums = 7d4c57502aced846f10bac83719052f89667c40b455588989c57a6cb3cbd1f6f
-	sha512sums = 49285f987e6db6a4e3a2d662dde2bf370ecf6c362389ff4aa05395b3bf0841617c1b3408b78a039a22c6d003c995e94f264a8125a12d6c515587953cf76a9806
+	sha512sums = f2c1a455e0c146a69389b604ae1b36b7a17df4889237e7673b7105bc9a05d9581002c5f64dfb8a194fe98cfeaf85b4437f4445e6caec9517a11d40c0c13aa5bc
 	sha512sums = 3101d1063e9c45eccb505fa21578cba33ae5c85b3d5b1c62c90806ad9d7b04410c91ded7a7115a85d1f6ecbd90ccc9e5f2ecf269dac4a557baa017a629bbcf81
 	sha512sums = b78ac72e83263b947896fffc3463b8c6a5d793013c8dbed7e3c5c7d50492ca383ce8473c470dde8d1f64c373dce1f132cd7a463149c303b2c641748112ef6d70
 
