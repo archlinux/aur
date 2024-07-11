@@ -1,0 +1,19 @@
+pkgbase = blender-4.3-bin
+	pkgdesc = A fully integrated 3D graphics creation suite
+	pkgver = 4.3.240704.addf1fa84b75
+	pkgrel = 1
+	url = https://www.blender.org
+	arch = x86_64
+	license = GPL
+	makedepends = wget
+	depends = libxi
+	depends = python
+	depends = libxrender
+	depends = libglvnd
+	depends = hicolor-icon-theme
+	optdepends = cuda: cycles renderer cuda support
+	optdepends = python311: use system python
+	source = daily.240710.html::https://builder.blender.org/download/
+	md5sums = SKIP
+
+pkgname = blender-4.3-bin
