@@ -1,6 +1,6 @@
 # $Id$
 # Maintainer: Ido Rosen <ido@kernel.org>
-# Co-Maintainer: Matthias Bodenbinder<matthias@bodenbinder.de>
+# Co-Maintainer: Matthias Bodenbinder <matthias@bodenbinder.de>
 #
 # NOTE: To request changes to this package, please submit a pull request
 #       to the GitHub repository at https://github.com/ido/packages-archlinux
