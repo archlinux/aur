@@ -1,1 +1,4 @@
+SUBSYSTEM=="usb", ATTRS{idVendor}=="16d0", ATTRS{idProduct}=="123d", MODE="0666", SYMLINK+="gboperator", TAG+="systemd"
+
+# older firmware has a different usb id
 SUBSYSTEM=="usb", ATTRS{idVendor}=="1d50", ATTRS{idProduct}=="6018", MODE="0666", SYMLINK+="gboperator", TAG+="systemd"
