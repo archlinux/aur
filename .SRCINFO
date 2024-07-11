@@ -1,6 +1,6 @@
 pkgbase = keeweb-git
 	pkgdesc = Desktop password manager compatible with KeePass databases. (develop branch)
-	pkgver = 1.18.7.r37.gc1fda05c
+	pkgver = 1.18.7.r44.g44432eb
 	pkgrel = 1
 	url = https://keeweb.info/
 	arch = any
@@ -9,9 +9,10 @@ pkgbase = keeweb-git
 	makedepends = git
 	makedepends = nvm
 	makedepends = gendesk
-	makedepends = asar
-	depends = electron13-bin
+	makedepends = curl
+	depends = electron13
 	depends = libsecret
+	depends = libusb
 	provides = keeweb=1.18.7
 	conflicts = keeweb
 	conflicts = keeweb-web
@@ -20,6 +21,6 @@ pkgbase = keeweb-git
 	source = keeweb.git::git+https://github.com/keeweb/keeweb.git
 	source = keeweb.sh
 	sha256sums = SKIP
-	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = keeweb-git
