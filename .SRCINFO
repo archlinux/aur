@@ -1,0 +1,15 @@
+pkgbase = alltray
+	pkgdesc = Drops any app in the tray.
+	pkgver = 0.7.5.1dev
+	pkgrel = 8
+	url = https://github.com/mbt/alltray
+	arch = x86_64
+	license = GPL
+	depends = libxpm
+	depends = libgtop
+	depends = libwnck
+	source = https://code.launchpad.net/alltray/trunk/0.7.5.1dev/+download/alltray-0.7.5.1dev.tar.gz
+	md5sums = 5842253b89a5943031b5a02bbd8fd4fb
+	sha256sums = 09dad447b85ecb57debcb423f34381db7f112a010fbc83e4f65b3b31cf416514
+
+pkgname = alltray
