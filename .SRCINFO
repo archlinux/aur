@@ -1,7 +1,7 @@
 pkgbase = vimdecrypt-git
 	pkgdesc = Command line tool for decrypting vim-blowfish-encrypted files.
 	pkgver = r32.2ab3280
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gertjanvanzwieten/vimdecrypt
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = vimdecrypt-git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	depends = python-blowfish
 	source = git+https://github.com/gertjanvanzwieten/vimdecrypt.git
 	sha256sums = SKIP
 
