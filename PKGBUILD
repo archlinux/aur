@@ -1,6 +1,6 @@
 # Maintainer: Sam Toxopeus <sam@toxopeus.it>
 pkgname=kubectl-cnpg
-pkgver=1.23.1
+pkgver=1.23.2
 pkgrel=1
 pkgdesc="A kubectl plugin to interact with CloudNativePG"
 arch=('x86_64')
