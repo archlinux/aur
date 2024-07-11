@@ -4,7 +4,7 @@ pkgname="${_pkgname}-desktop-bin"
 _appname=Listen1
 pkgver=2.32.0
 _electronversion=13
-pkgrel=2
+pkgrel=3
 pkgdesc="One for all free music in China"
 arch=("x86_64")
 url="http://listen1.github.io/listen1"
@@ -17,7 +17,7 @@ conflicts=(
     "${_pkgname}-electron"
 )
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-desktop-bin}_${pkgver}_linux_amd64.deb"
@@ -26,11 +26,12 @@ source=(
 )
 sha256sums=('5ac63be98672a30850a97765e6474ea95ce0cb5a9330eee6d6d1db62860a1916'
             'd2aa8a82485042b9d5efb8ed2d9c0e8a66e8983bc3f64ebbe35158d35662cdbc'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
