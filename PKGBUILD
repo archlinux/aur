@@ -9,7 +9,7 @@ _android_arch=aarch64
 
 pkgname=android-${_android_arch}-xvidcore
 pkgver=1.3.7
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="XviD is an open source MPEG-4 video codec (Android ${_android_arch})"
 url='https://www.xvid.com/'
@@ -18,14 +18,29 @@ depends=('android-ndk')
 makedepends=('android-configure'
              'nasm')
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://downloads.xvid.com/downloads/xvidcore-${pkgver}.tar.gz")
-sha256sums=('abbdcbd39555691dd1c9b4d08f0a031376a3b211652c0d8b3b8aa9be1303ce2d')
+source=("https://downloads.xvid.com/downloads/xvidcore-${pkgver}.tar.gz"
+        "0001-Unversioned-libs.patch")
+md5sums=('5c6c19324608ac491485dbb27d4da517'
+         '9393a19ba305e6e45f27a1641fba9aed')
+
+prepare() {
+    cd "${srcdir}/xvidcore"
+
+    patch -Np1 -i ../0001-Unversioned-libs.patch
+}
 
 build() {
     cd "${srcdir}/xvidcore/build/generic"
     source android-env ${_android_arch}
 
-    android-${_android_arch}-configure
+    case "${_android_arch}" in
+        x86-64)
+            extra_options="--disable-assembly"
+            ;;
+    esac
+
+    android-${_android_arch}-configure \
+        ${extra_options}
     make $MAKEFLAGS
 }
 
@@ -34,8 +49,6 @@ package() {
     source android-env ${_android_arch}
 
     make DESTDIR="${pkgdir}" install
-    mv -f "${pkgdir}/${ANDROID_PREFIX_LIB}/libxvidcore.so".*.* "${pkgdir}/${ANDROID_PREFIX_LIB}/libxvidcore.so"
-    rm -f "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so.*
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
