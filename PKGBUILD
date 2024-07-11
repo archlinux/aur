@@ -2,7 +2,7 @@
 pkgname=y2mp3-bin
 pkgver=2.6.1
 _electronversion=17
-pkgrel=1
+pkgrel=2
 pkgdesc="An Electron app to download youtube playlist"
 arch=('x86_64')
 url="https://github.com/moshfeu/y2mp3"
@@ -10,7 +10,7 @@ license=('MIT')
 provides=("${pkgname%-bin}-${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
 )
 makedepends=(
     'fuse2'
@@ -22,11 +22,12 @@ source=(
 )
 sha256sums=('df728e7d86a610764237abafb30227b497ed82b2a0d7f4e186d5e79cbe20abb8'
             'e38ba30feb86e7387a43e735f2b65cf072436b3af6b3333abb4e6c460e6622fe'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
