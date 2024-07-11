@@ -1,6 +1,6 @@
 pkgbase = nextcloud-app-integration-gitlab
 	pkgdesc = GitLab integration into Nextcloud
-	pkgver = 1.0.19
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/nextcloud/integration_gitlab
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = nextcloud-app-integration-gitlab
 	makedepends = nextcloud
 	makedepends = rsync
 	makedepends = yq
-	source = https://github.com/nextcloud-releases/integration_gitlab/releases/download/v1.0.19/integration_gitlab-v1.0.19.tar.gz
-	sha256sums = a74515aaeb45a9fa0dec94864b2b72533679cd82336fd9cb5789339c9bf6c85a
+	source = https://github.com/nextcloud-releases/integration_gitlab/releases/download/v1.1.0/integration_gitlab-v1.1.0.tar.gz
+	sha256sums = 4a9140884395c12965b34bc19443ac63611fe5778012e9cd09d55b4db96b5e0c
 
 pkgname = nextcloud-app-integration-gitlab
