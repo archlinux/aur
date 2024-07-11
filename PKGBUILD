@@ -10,8 +10,8 @@
 [[ -v CUDA_HOST_COMPILER ]] && _cuda_host_compiler=(${CUDA_HOST_COMPILER})
 
 pkgname=cycles-standalone
-pkgver=4.0.2
-pkgrel=5
+pkgver=4.1.1
+pkgrel=1
 pkgdesc="Blender Cycles rendering engine, standalone version"
 arch=(x86_64)
 url="https://github.com/blender/cycles.git"
@@ -20,22 +20,22 @@ depends=(pugixml opencolorio boost-libs python gflags openimageio intel-oneapi-t
 makedepends=(cmake git boost llvm python)
 optdepends=(google-glog cuda optix)
 provides=(cycles)
-_commit=7d482abd0078765f52a49024c895a2f12a681cbd
+_commit=b364692812269d7a67e7ebccc5dd02f53e79ef48
 source=("git+https://github.com/blender/cycles.git#commit=${_commit}"
-        "https://projects.blender.org/howetuft/cycles/commit/2635328c4770c370564b919a4127de6c8bab7362.patch"
+        usd24_05.patch
         cycles_wrap.sh)
-sha256sums=('SKIP'
-            'SKIP'
+sha256sums=('75436b6474b97850717b8eb0903c21f01b6e14ec0c8381012070c658d5167da7'
+            '3e2958d5cd9de9c5ca77024c4682179ecdc5aae4fcc2007d50ef225a2be03cd4'
             '00afc4aab5541d147b013c31ab91d78e272654a75cae60b39cf70c23a2612c96')
 
 prepare() {
     _src_root_dir="$srcdir/cycles"
 
-    # Remove FindClang.cmake, to use local equivalent
+    # Remove Find*.cmake, to use local equivalent
     rm $_src_root_dir/src/cmake/Modules/FindClang.cmake
 
     ls "${srcdir}"
-    for patch in "${srcdir}"/*.patch; do
+    for patch in "${srcdir}/"*.patch; do
       msg2  "apply $patch..."
       patch -Np1 -d "${srcdir}"/cycles -i "$patch"
     done
@@ -48,6 +48,8 @@ build() {
     # (credits to blender-2.90-git package)
     _CUDA_PKG=$(pacman -Qq cuda-sdk 2>/dev/null) || true
     if [ "$_CUDA_PKG" != "" ] && ! ((DISABLE_CUDA)) ; then
+      export CUDA_PATH=/opt/cuda
+      export CUDA_INC_PATH=/opt/cuda/include
       _CMAKE_FLAGS+=( -DWITH_CYCLES_CUDA_BINARIES=ON
                       -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda)
       ((DISABLE_OPTIX)) || _CMAKE_FLAGS+=( -DOPTIX_ROOT_DIR=/opt/optix )
@@ -70,6 +72,7 @@ build() {
     # INFO (2022-10-08):
     # we don't support NanoVDB at the moment (no nanovdb package in AUR...)
     cmake -B build -S "cycles" \
+        -DCMAKE_SYSTEM_NAME=Linux \
         -DPYTHON_VERSION=$_pyver \
         -DCMAKE_BUILD_TYPE='None' \
         -DCMAKE_INSTALL_PREFIX=/usr \
@@ -77,6 +80,8 @@ build() {
         -DWITH_CYCLES_OSL=TRUE \
         -DCMAKE_SKIP_INSTALL_RPATH=YES \
         -DWITH_CYCLES_NANOVDB=FALSE \
+        -DWITH_CYCLES_HYDRA_RENDER_DELEGATE=FALSE \
+        -DWITH_CYCLES_USD=TRUE \
         "${_CMAKE_FLAGS[@]}" \
         -Wno-dev
 

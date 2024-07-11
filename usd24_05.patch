@@ -1,0 +1,31 @@
+commit b7ef061ce3e25becc26f5a72bfb7cc2313459799
+Author: howetuft <howetuft@gmail.com>
+Date:   Thu Jul 11 13:13:07 2024 +0200
+
+    usd24.05
+
+diff --git a/src/hydra/instancer.cpp b/src/hydra/instancer.cpp
+index 2b9590373..904123f7b 100644
+--- a/src/hydra/instancer.cpp
++++ b/src/hydra/instancer.cpp
+@@ -60,16 +60,16 @@ void HdCyclesInstancer::SyncPrimvars()
+       continue;
+     }
+ 
+-    if (desc.name == HdInstancerTokens->translate) {
++    if (desc.name == HdInstancerTokens->instanceTranslations) {
+       _translate = value.Get<VtVec3fArray>();
+     }
+-    else if (desc.name == HdInstancerTokens->rotate) {
++    else if (desc.name == HdInstancerTokens->instanceRotations) {
+       _rotate = value.Get<VtVec4fArray>();
+     }
+-    else if (desc.name == HdInstancerTokens->scale) {
++    else if (desc.name == HdInstancerTokens->instanceScales) {
+       _scale = value.Get<VtVec3fArray>();
+     }
+-    else if (desc.name == HdInstancerTokens->instanceTransform) {
++    else if (desc.name == HdInstancerTokens->instanceTransforms) {
+       _instanceTransform = value.Get<VtMatrix4dArray>();
+     }
+   }
