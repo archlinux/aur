@@ -7,9 +7,9 @@ pkgbase = listen1-desktop-git
 	license = MIT
 	makedepends = gendesk
 	makedepends = git
-	makedepends = nodejs
+	makedepends = nvm
 	makedepends = npm
-	depends = electron13-bin
+	depends = electron13
 	provides = listen1-desktop=2.32.0
 	conflicts = listen1-desktop
 	conflicts = listen1
@@ -17,6 +17,6 @@ pkgbase = listen1-desktop-git
 	source = listen1-desktop.git::git+https://github.com/listen1/listen1_desktop.git
 	source = listen1-desktop.sh
 	sha256sums = SKIP
-	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = listen1-desktop-git
