@@ -1,8 +1,9 @@
 # Maintainer: Christopher Hillenbrand <chillenb.lists@gmail.com>
+# Maintainer: Dan Maftei <dan.maftei@chem.uaic.ro>
 pkgname=python-pyscf
 _name=pyscf
 pkgver=2.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Python module for quantum chemistry"
 provides=('python-pyscf')
 arch=('x86_64')
