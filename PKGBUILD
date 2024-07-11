@@ -1,7 +1,5 @@
-# Maintainer: Ethan Zonca <ethanzonca@ethanzonca.com>
-
 pkgname=lcm
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Lightweight real-time networking library"
 arch=('i686' 'x86_64' 'armv7h')
@@ -13,8 +11,8 @@ optdepends=(
 	'ttf-dejavu: support for lcm-spy and other GUI tools'
 )
 makedepends=(cmake)
-source=(https://github.com/lcm-proj/lcm/releases/download/v$pkgver/$pkgname-$pkgver.zip)
-sha512sums=('76ef0892cf7bc4cbda3c87776ebe9c095bae821efe19720461670031f88aff48f17551297b47c9bf8e0390a1ae0cf11240599be1bc235de96615c3e2866800fd')
+source=(https://github.com/lcm-proj/lcm/archive/refs/tags/v$pkgver.tar.gz)
+sha512sums=('a19800c1ac79b7725f26fd1e2e5abedcfcbe1b197a8a48860dd50a7b3e3af658286fe7dd3a1e3c69920eccf2a73185c90bf1cd6cf0f05a405abfa9d8f33eae4c')
 
 
 build() {
@@ -27,9 +25,7 @@ build() {
 
 check() {
 	cd "$srcdir/$pkgname-$pkgver/built"
-	# LCM 1.4.0 unit tests are incompatible with Python 3, so we have to skip
-	# this step for now.
-	#CTEST_OUTPUT_ON_FAILURE=1 make -k test
+	CTEST_OUTPUT_ON_FAILURE=1 make -k test
 }
 
 package() {
