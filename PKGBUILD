@@ -1,4 +1,5 @@
-# Maintainer: Lennart Eichhorn <lennart@madmanfred.com>
+# Maintainer: Jiří Klimeš <blueowl@centrum.cz>
+# Contributor: Lennart Eichhorn <lennart@madmanfred.com>
 
 pkgname=(lua-lyaml lua51-lyaml lua52-lyaml lua53-lyaml)
 pkgver=6.2.7
