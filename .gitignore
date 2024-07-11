@@ -1,5 +1,5 @@
 
 src/
 pkg/
-TouchPortal.AppImage
+TouchPortal*.AppImage
 touchportal*pkg.tar.zst
