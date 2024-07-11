@@ -10,9 +10,9 @@ pkgbase = supabase-bin
 	optdepends = zsh-completions: for shell auto-completion
 	provides = supabase
 	conflicts = supabase
-	source_x86_64 = https://github.com/supabase/cli/releases/download/v1.183.5/supabase_linux_amd64.tar.gz
+	source_x86_64 = supabase-1.183.5-x86_64.tar.gz::https://github.com/supabase/cli/releases/download/v1.183.5/supabase_linux_amd64.tar.gz
 	sha256sums_x86_64 = 2156a9c111eb06c9964c263ed1eb6237236085ed29dcce8743df9a388c1e3f8f
-	source_aarch64 = https://github.com/supabase/cli/releases/download/v1.183.5/supabase_linux_arm64.tar.gz
+	source_aarch64 = supabase-1.183.5-aarch64.tar.gz::https://github.com/supabase/cli/releases/download/v1.183.5/supabase_linux_arm64.tar.gz
 	sha256sums_aarch64 = 1fbb860d84c41cdcb3017ad230ee2f78124330852ebc99de3c8ecc53e51cf90c
 
 pkgname = supabase-bin
