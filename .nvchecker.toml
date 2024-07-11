@@ -1,0 +1,3 @@
+[perl-io-bufferedselect]
+source = "cpan"
+cpan = "IO-BufferedSelect"
