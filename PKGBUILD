@@ -5,14 +5,14 @@
 # Contributor: Konrad Tegtmeier <konrad.tegtmeier+aur@gmail.com>
 # Contributor: Marcel O'Neil <marcel@marceloneil.com>
 
-## Useful URLs:
+## links
+# https://www.cockroachlabs.com/docs/stable/install-cockroachdb-linux.html
 # https://github.com/cockroachdb/cockroach
 # https://www.cockroachlabs.com/docs/releases/
-# https://www.cockroachlabs.com/docs/stable/install-cockroachdb-linux.html
 
 _pkgname=cockroachdb
 pkgname="$_pkgname-bin"
-pkgver=24.1.1
+pkgver=24.1.2
 pkgrel=1
 pkgdesc="Cloud-native, distributed SQL database"
 url='https://www.cockroachlabs.com'
@@ -37,7 +37,7 @@ source=(
   "LICENSE.CCL-$pkgver"::"https://github.com/cockroachdb/cockroach/raw/v$pkgver/licenses/CCL.txt"
 )
 sha256sums=(
-  '81b3c57e95b8e0fd79b14ee5114332deb4fe97c10b61c4caad874c742b5a825c'
+  'eff2aa8c79f3668aa81e4c123e64870343690ff1772ea1be4c06d18a161dae70'
   '0384efdf47789c3548e7eff949c5c2c9c4ee95741f805a39cdb6f02035919889'
   '25ec687608539ef745809b39ed1af6f34520855d74db2a1367f6e6c6adbf43de'
 )
