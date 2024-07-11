@@ -1,7 +1,7 @@
 pkgbase = transmission3-cli
 	pkgdesc = Fast, easy, and free BitTorrent client (CLI tools, daemon and web client)
 	pkgver = 3.00
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.transmissionbt.com/
 	arch = x86_64
 	license = MIT
@@ -22,7 +22,6 @@ pkgbase = transmission3-cli
 	depends = libssh2
 	depends = libsystemd
 	depends = libunistring
-	depends = miniupnpc
 	depends = openssl
 	depends = zlib
 	depends = zstd

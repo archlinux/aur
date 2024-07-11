@@ -5,7 +5,7 @@
 _pkgname=transmission
 pkgname=transmission3-cli
 pkgver=3.00
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.transmissionbt.com/"
 pkgdesc='Fast, easy, and free BitTorrent client (CLI tools, daemon and web client)'
@@ -18,7 +18,7 @@ license=('MIT')
 depends=('brotli' 'curl' 'e2fsprogs' 'glibc' 'keyutils' 'krb5'
 	 'libb64' 'libevent' 'libidn2' 'libnatpmp' 'libnghttp2'
 	 'libpsl' 'libssh2' 'libsystemd' 'libunistring'
-	 'miniupnpc' 'openssl' 'zlib' 'zstd')
+	 'openssl' 'zlib' 'zstd')
 
 makedepends=('intltool' 'dht')
 provides=('transmission-cli')
