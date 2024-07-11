@@ -11,7 +11,7 @@ pkgbase = gotify-tray-cpp
 	depends = hicolor-icon-theme
 	depends = glibc
 	depends = gcc-libs
-	source = gotify-tray-cpp::git+https://github.com/seird/gotify-tray-cpp.git
-	sha256sums = SKIP
+	source = gotify-tray-cpp-0.0.5.tar.gz::https://github.com/seird/gotify-tray-cpp/archive/v0.0.5.tar.gz
+	sha256sums = 1d6caecd98f7f6533ba413c12604831bd63be6f3bb3d22f74a9276a9683ae96a
 
 pkgname = gotify-tray-cpp
