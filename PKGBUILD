@@ -2,7 +2,7 @@
 pkgname=fermyon-spin
 _realname=spin
 pkgver=2.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='an open source framework for building and running fast, secure, and composable cloud microservices with WebAssembly'
 arch=('x86_64')
 url="https://github.com/fermyon/spin"
@@ -19,6 +19,7 @@ prepare() {
 build() {
   cd $_realname-$pkgver
   export RUSTUP_TOOLCHAIN=stable
+  export CFLAGS+=' -ffat-lto-objects'
 
   cargo build --frozen --release --bin spin
 }
