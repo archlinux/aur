@@ -1,13 +1,13 @@
 pkgbase = hypaper
-	pkgdesc = Very spmple Hyprland wallpapers swapper
-	pkgver = 1.1
-	pkgrel = 1.1
+	pkgdesc = Very simple Hyprland wallpaper swapper
+	pkgver = 1.2
+	pkgrel = 1
 	url = https://github.com/antekes1/hypaper
 	arch = any
 	license = GPL3
 	depends = python
 	depends = swww
-	source = https://github.com/antekes1/hypaper/archive/refs/tags/v1.1.tar.gz
-	sha256sums = 024b34de97a7aed34aec6c415c310bd29446c6de8e97bc0aceb379fc897c7606
+	source = https://github.com/antekes1/hypaper/archive/refs/tags/v1.2.tar.gz
+	sha256sums = 26f447752b121601cd78b5264aaf76c8d4ad2fed1eb61b21cf1ab9b1142bae7e
 
 pkgname = hypaper
