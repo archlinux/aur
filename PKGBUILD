@@ -3,7 +3,7 @@
 pkgname=mtx-git
 _pkgname=mtx
 pkgver=r8.3dc2a38
-pkgrel=2
+pkgrel=3
 pkgdesc="Tools used to view information about, and to control, Media Changer devices such as Tape and DVD/CD libraries."
 arch=('i686' 'x86_64')
 url="https://github.com/mtx-org/mtx"
