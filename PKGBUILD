@@ -2,7 +2,7 @@
 # Contributor: Raphaël Doursenaud <rdoursenaud@gpcsolutions.fr>
 
 pkgname=openrefine
-pkgver=3.8.1
+pkgver=3.8.2
 pkgrel=1
 pkgdesc="A free, open source power tool for working with messy data and improving it"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('java-runtime>=11' 'bash')
 options=('!strip')
 backup=('opt/openrefine/refine.ini')
 source=("https://github.com/OpenRefine/OpenRefine/releases/download/$pkgver/openrefine-linux-$pkgver.tar.gz" 'openrefine.sh')
-sha512sums=('0c67bffc6875403e50330e3abc26d2e9283621462f0b3ebda1b0d954ae399cdb322d0e61067e19dc2f047c0462666fdc80c014fa2b0fa602ed0f9660612a06bd'
+sha512sums=('8567a2b0f3e31fc71d5bd5543507e701bd5efeb0db7ee06a1c8e87e5ceebb5d520adf80fbdd9993bf8b2822963c6eeee2859c9921138f716625e9bb56d3ebd4f'
             '2e3a551c15d99698a3a81051d44514b4e7f1b7c362076d1a9e8b8b3f5902c73f29a2eab367995b078336451037b021a6849219889f97c16524e261cbac180ec1')
 
 package()
