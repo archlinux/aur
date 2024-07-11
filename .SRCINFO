@@ -1,0 +1,17 @@
+pkgbase = python-pyconify
+	pkgdesc = Python wrapper for the Iconify API.
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/pyapp-kit/pyconify
+	arch = any
+	license = BSD
+	makedepends = python-build
+	makedepends = python-hatch-vcs
+	makedepends = python-hatchling
+	makedepends = python-installer
+	depends = python
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/p/pyconify/pyconify-0.1.6.tar.gz
+	sha256sums = 25272f7a29965f32ee698c9da6aab8bbbeb0756ca3bfeadd3d9effab689d239d
+
+pkgname = python-pyconify
