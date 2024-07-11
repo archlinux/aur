@@ -1,22 +1,24 @@
 # Maintainer: Aryan Ghasemi <t.me/gnuphile>
 pkgname="hiddify-next-appimage"
-pkgver=1.4.1.dev
+pkgver=1.5.2
 _pkgname='hiddify'
 _archive="$_pkgname-$pkgver"
 pkgrel=1
 pkgdesc="Multi-platform auto-proxy client, supporting Sing-box, X-ray, TUIC, Hysteria, Reality, Trojan, SSH etc. It’s open-source, secure and ad-free. "
-arch=('any')
+arch=('x86_64')
 # Appimage should contains exclude "strip" option
 options=(!strip !debug)
+depends=( hicolor-icon-theme zlib glibc )
 url="https://github.com/hiddify/hiddify-next"
-license=('custom:CC-BY-NC-SA-4.0')
+license=('CC-BY-NC-SA-4.0')
+LDFLAGS=' -Wl,-z,cet-report=error'
 conflicts=('hiddify-next-bin' 'hiddify-next-git')
 noextract=( "${_archive}.AppImage" )
 source=(
         "${_archive}.AppImage::https://github.com/hiddify/hiddify-next/releases/download/v${pkgver}/Hiddify-Linux-x64.AppImage"
         "hiddify.desktop"
         "LICENSE.md")
-sha256sums=('d8ebc63e2295f805670983fb8c3b6f1f94fec64fdd28ac55fc4a224ba125a6c1'
+sha256sums=('41f756c4cf29399c62a60f61b708bf416cdec586058e123ce35f4dac09b2ac46'
             '10412d168e2aeec3ab1c4c34b0ca8e480ea4ebb124b12f63580b677e5fb8859b'
             'f609d73370ca62925ba8c796afeeb7fb42f4a1569124f84cb25b7026c026d78a')
 
