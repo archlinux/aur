@@ -2,9 +2,9 @@
 # Maintainer: Evine Deng <evinedeng@hotmail.com>
 
 pkgname=photoprism
-pkgver=240531.60b3a4628
-_pkgver=$(echo "$pkgver" | sed 's|\.|-|')
-pkgrel=4
+pkgver=240711_2197af848
+_pkgver="${pkgver//_/-}"
+pkgrel=1
 pkgdesc="AI-Powered Photos App for the Decentralized Web"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/${pkgname}/${pkgname}"
@@ -26,7 +26,7 @@ source=("${pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.g
         "${pkgname}.tmpfiles"
         "${pkgname}.user.service"
         "defaults.yml")
-sha256sums=('e5c0e2dcc9c1bb1773776281a328540093386d577946aeee5e21d1e099758864'
+sha256sums=('34b29308f64a50d2dbf482ccacbb7b5357e50f97e74a7ce0ee295c0a3bef695a'
             '5a7e0f788b1df05f13abb167385063a60c9c5b21486d24c12d6676ac580623bd'
             '0aa3f0b94865d2b28d9ecc9e3da14f45525b476b7bdf49f2b2139978908b1c48'
             '9121b27be5728b3eb34dc694ddbecc6d291a4a6906db978552927b4f8f83019d'
