@@ -21,5 +21,5 @@ build() {
 
 package() {
   cd "$pkgname"
-  install -Dm755 bin/$pkgname "$pkgdir"/usr/bin/$pkgname
+  install -Dm755 bin/$pkgname-git "$pkgdir"/usr/bin/$pkgname
 }
