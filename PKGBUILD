@@ -4,15 +4,14 @@ _pkgname=Tithree
 pkgver=1.4.1
 _electronversion=25
 _nodeversion=18
-pkgrel=2
+pkgrel=3
 pkgdesc="Tutor's Time Tally.An app for tallying tutor's time spent on tutoring"
 arch=('any')
 url="https://github.com/wpwwhimself/tithree"
 license=('MIT')
 conflicts=("${pkgname}")
 depends=(
-    "electron${_electronversion}-bin"
-    'python>=3'
+    "electron${_electronversion}"
     'python-setuptools'
     'nodejs'
 )
@@ -22,16 +21,20 @@ makedepends=(
     'npm'
     'git'
     'gcc'
-    'base-devel'
+    'cmake'
     'icoutils'
+    'curl'
 )
-options=('!strip')
+options=(
+    '!strip'
+    '!emptydirs'
+)
 source=(
     "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
 sha256sums=('8757b64089d07f53dd52fdb250bfb7b9e1efb1a4a4a1d00755bb3cbe045db720'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -42,10 +45,11 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    gendesk -f -n -q --categories "Utility" --name "${_pkgname}" --exec "${pkgname} %U"
+    gendesk -f -n -q --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
@@ -53,10 +57,10 @@ build() {
     #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     #export ELECTRONVERSION="${_electronversion}"
-    #export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
         export npm_config_registry=https://registry.npmmirror.com
+        export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
         export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
         export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
     else
@@ -64,8 +68,8 @@ build() {
     fi
     sed "s|'deb',|'dir',|g" -i .electron-builder.config.js
     icotool -i 1 -x  buildResources/icon.ico -o buildResources/icon.png
-    npm install
-    npm run compile
+    NODE_ENV=development npm install
+    NODE_ENV=production npm run compile
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
