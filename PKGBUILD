@@ -1,23 +1,33 @@
-# Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Andreas Baumann <mail@andreasbaumann.cc>
 
 pkgname=mimetic
 pkgver=0.9.8
-pkgrel=1
-pkgdesc="a free, MIT licensed, Email library (MIME) written in C++"
+pkgrel=3
+pkgdesc='A free, MIT licensed, Email library (MIME) written in C++'
 url="http://www.codesink.org/mimetic_mime_library.html"
-arch=('i686' 'x86_64')
-license=('MIT')
-depends=()
-source=(http://www.codesink.org/download/${pkgname}-${pkgver}.tar.gz)
-md5sums=('7a00a73fac59fd86e5c145497786cfbe')
+arch=(x86_64)
+license=(MIT)
+depends=(gcc-libs)
+source=(http://www.codesink.org/download/$pkgname-$pkgver.tar.gz
+        https://github.com/tat/mimetic/commit/bf84940f.patch)
+sha256sums=('3a07d68d125f5e132949b078c7275d5eb0078dd649079bd510dd12b969096700'
+            '877406aff5b11042df9e036ed9e58dcc3e2ce54b47f263fd31886a9c16d7a0ea')
+
+prepare() {
+  patch -d $pkgname-$pkgver -p1 < bf84940f.patch # Fix build
+}
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $pkgname-$pkgver
   ./configure --prefix=/usr
-  make -j1
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool # Fix overlinking
+  make
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
-  make DESTDIR=$pkgdir install
+  cd $pkgname-$pkgver
+
+  make DESTDIR="$pkgdir" install
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
