@@ -1,0 +1,3 @@
+[shared-mime-info]
+source = "git"
+git = "https://gitlab.freedesktop.org/xdg/shared-mime-info.git"
