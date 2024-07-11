@@ -1,7 +1,5 @@
-# Maintainer: Ethan Zonca <ethanzonca@ethanzonca.com>
-
 pkgname=lcm-git
-pkgver=20200602.r1170.e7ab2d5
+pkgver=20240627.r1424.64e149f
 pkgrel=1
 pkgdesc="Lightweight real-time networking library (git version of lcm)"
 arch=('i686' 'x86_64' 'armv7h')
@@ -15,7 +13,7 @@ optdepends=(
 	'ttf-dejavu: support for lcm-spy and other GUI tools'
 )
 makedepends=(cmake)
-source=($pkgname-$pkgver::git+http://github.com/lcm-proj/lcm.git)
+source=($pkgname-$pkgver::git+https://github.com/lcm-proj/lcm.git)
 
 sha512sums=(SKIP)
 
@@ -39,9 +37,7 @@ build() {
 
 check() {
 	cd "$srcdir/$pkgname-$pkgver/built"
-	# LCM 1.4.0 unit tests are incompatible with Python 3, so we have to skip
-	# this step for now.
-	#CTEST_OUTPUT_ON_FAILURE=1 make -k test
+	CTEST_OUTPUT_ON_FAILURE=1 make -k test
 }
 
 package() {
