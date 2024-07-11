@@ -2,7 +2,7 @@
 # Contributor: Lennart Eichhorn <lennart@madmanfred.com>
 
 pkgname=(lua-lyaml lua51-lyaml lua52-lyaml lua53-lyaml)
-pkgver=6.2.7
+pkgver=6.2.8
 pkgrel=1
 pkgdesc='libYAML binding for Lua'
 arch=(any)
