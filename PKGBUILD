@@ -19,7 +19,6 @@ depends=('vapoursynth'
 )
 optdepends=('vapoursynth-plugin-bm3dcuda-git: BM3D cuda/cuda_rtc + fast cpu support'
   'vapoursynth-plugin-bm3dcuda-cpu-git: BM3D fast cpu support, without cuda'
-  'vapoursynth-plugin-nnedi3cl-git: GPU-accelerated SQTGMC'
 )
 makedepends=('git'
   'python-poetry'
