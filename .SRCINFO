@@ -1,6 +1,6 @@
 pkgbase = changedetection.io
 	pkgdesc = change monitoring of web pages
-	pkgver = 0.45.25
+	pkgver = 0.45.26
 	pkgrel = 1
 	url = https://github.com/dgtlmoon/changedetection.io
 	arch = any
@@ -43,15 +43,15 @@ pkgbase = changedetection.io
 	depends = python-loguru
 	depends = python-pysocks
 	optdepends = python-playwright: for fetching pages with javascript
-	source = https://github.com/dgtlmoon/changedetection.io/archive/refs/tags/0.45.25.tar.gz
+	source = https://github.com/dgtlmoon/changedetection.io/archive/refs/tags/0.45.26.tar.gz
 	source = sysusers
 	source = tmpfiles
 	source = service
 	source = chromium.service
-	sha512sums = 707097c0f1a31f0136671132ecfc3f1c3de262e626dd553c3750ee85160aeb811ecf4f3dfa70a4b6c4156c9bca7efb4aa90a1c205ec55fb21414a6e7a0a935f5
+	sha512sums = 8f3034918ce950b1b3df2de52c87526049313119f8729ded47bb517e28a352d4473a79df88185a0f82928a25859a72af58eb3ec641f476f7e97e4773c4bfc901
 	sha512sums = 5ef8b215bddc02b04d55d3699f27ad043461d8771591be2ebf0ed6390c58ab881426214173c8e1cc8bb36ecd7acebc5d69d760fc65b8a3b191b2116150748f53
 	sha512sums = 62a684e35c3b479b8ab139b2d79f83f408bede0d4e0f1e500ee75f13126456fa5b574d8cb826c8c56ff0da488dec4ed3562854d0f05d44814beaa3b726bcd318
 	sha512sums = eecd4b25411f6f47b81dd6849aae233b0928e19342818b9c7857bf291850b2cefb33cd35aa5877be1675c9642a8feee53b35d2e318a255547ef4ce07a30c9e1b
-	sha512sums = 2059c8cfdb1d371c02210af315a8ba098bda490bf149b1c8ac92f3a387118ea505836af0d2a6ae242c76bf56441f23a39eaa7e2ef8a1a1d19680c171cc42e7c2
+	sha512sums = 3eb76f394f629e3c7dd49001654075be4cdcb3fb1d5014ff3f9e0174a8e013fb6e79f9538eeed6bf2169bd03827c5573dee4abe3fd551cf1477fcefe234f40c0
 
 pkgname = changedetection.io
