@@ -1,0 +1,71 @@
+# -*- mode: sh -*-
+
+# Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
+
+pkgname='dut-git'
+_pkgname="${pkgname/-git/}"
+pkgver=r52.g239debf
+pkgrel=1
+pkgdesc='A disk usage calculator for Linux (latest git commit)'
+arch=('aarch64' 'armv7h' 'i686' 'x86_64')
+url='https://codeberg.org/201984/dut'
+source=("git+$url.git")
+license=('GPL-3.0-or-later')  # SPDX-License-Identifier: GPL-3.0-or-later
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+depends=('glibc')
+makedepends=('git' 'make')
+options=('lto')
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "$_pkgname"
+
+  # https://wiki.archlinux.org/title/VCS_package_guidelines
+  ( set -o pipefail
+    git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf 'r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  )
+}
+
+prepare() {
+  cd "$_pkgname"
+
+  test -f dut.c || ln -vsf main.c dut.c
+}
+
+build() {
+  cd "$_pkgname"
+
+  # RFC-0023
+  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
+  #
+  # ld(1) says: “Supported for i386 and x86-64.”
+  case "Z${CARCH:-unknown}" in
+    'Zx86_64' | 'Zi386' )
+      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
+    ;;
+    * ) : pass ;;
+  esac
+
+  export CFLAGS="$CFLAGS -O3"
+
+  make dut
+}
+
+check() {
+  cd "$_pkgname"
+
+  ./dut -v
+}
+
+package() {
+  cd "$_pkgname"
+
+  install -vDm0755 -t "$pkgdir/usr/bin" \
+    dut
+  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
+    README.md
+}
+
+# eof

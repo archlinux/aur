@@ -1,0 +1,20 @@
+pkgbase = dut-git
+	pkgdesc = A disk usage calculator for Linux (latest git commit)
+	pkgver = r52.g239debf
+	pkgrel = 1
+	url = https://codeberg.org/201984/dut
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = make
+	depends = glibc
+	provides = dut
+	conflicts = dut
+	options = lto
+	source = git+https://codeberg.org/201984/dut.git
+	sha256sums = SKIP
+
+pkgname = dut-git
