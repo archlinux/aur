@@ -1,16 +1,16 @@
 pkgbase = revanced-patches
 	pkgdesc = Official patches maintained by ReVanced
-	pkgver = 4.10.0
+	pkgver = 4.11.0
 	pkgrel = 1
 	url = https://github.com/revanced/revanced-patches
 	arch = any
 	license = GPL-3.0-or-later
 	depends = java-environment>=17
-	noextract = revanced-patches-4.10.0.jar
-	source = https://github.com/revanced/revanced-patches/releases/download/v4.10.0/revanced-patches-4.10.0.jar
-	source = https://github.com/revanced/revanced-patches/raw/v4.10.0/README.md
-	source = https://github.com/revanced/revanced-patches/raw/v4.10.0/LICENSE
-	sha256sums = c5bb18e7380f0731826a0ff3cb4b63bedf8b81a57f22eecbe314fcdb788d62d3
+	noextract = revanced-patches-4.11.0.jar
+	source = https://github.com/revanced/revanced-patches/releases/download/v4.11.0/revanced-patches-4.11.0.jar
+	source = https://github.com/revanced/revanced-patches/raw/v4.11.0/README.md
+	source = https://github.com/revanced/revanced-patches/raw/v4.11.0/LICENSE
+	sha256sums = 783177c6e9c7ca45d5afdcd0a07290f966172eca0bc17523c50ad7a9b6271aa9
 	sha256sums = 6b1d2bac3b03eda03c91b56a080bab91a1af0d9d2ab6248f5579142fbe5df80e
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 
