@@ -3,8 +3,8 @@
 # Contributor: Amr Okasha <amradel55 at gmail.com>
 
 pkgname=ccstudio
-_semver=12.6.0
-_bldver=00008
+_semver=12.7.1
+_bldver=00001
 pkgver=$_semver.$_bldver
 pkgrel=1
 pkgdesc="Texas Instruments Code Composer Studio IDE"
@@ -114,7 +114,7 @@ package() {
 
     install -D -m0644 $srcdir/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
-md5sums=('f44a90713b57acee82eac9c0881cffdd'
+md5sums=('5faaf55c086fc60eb289dc1957a7e99b'
          'cf7222e486f8f1d2a0f99d3d946e1f01'
          '7c570e9f93da6f01986285db81d497ef'
          'af8a8c199be432919b4ca66106591c25')
