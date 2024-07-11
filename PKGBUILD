@@ -2,7 +2,7 @@
 
 _pkgname="bluetui"
 pkgname="${_pkgname}-bin"
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="TUI for managing bluetooth devices"
 arch=('x86_64')
@@ -14,14 +14,14 @@ conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
 source=("${url}/raw/v${pkgver}/Readme.md"
         "${url}/raw/v${pkgver}/LICENSE")
-source_x86_64=("${_pkgsrc}::${url}/releases/download/v${pkgver}/${_pkgname}-x86_64-linux-gnu")
-sha256sums=('86ac8304c42cd2f8aec272a71e2e13a8a341ebe9d147746c6580fbcf71213f8b'
+source_x86_64=("${_pkgsrc}-x86_64::${url}/releases/download/v${pkgver}/${_pkgname}-x86_64-linux-gnu")
+sha256sums=('b893abcb4536458d3542e5b4448ae0a026a4e1acda5cbbaa145d5b21f3e4b7c6'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
-sha256sums_x86_64=('e83dcf07d05e489d06a101ad19242429ff1f8149ba1471d745cb0ac228c27bf8')
+sha256sums_x86_64=('260db03493f3eb9b56afa9793446436af9fa000dfdffafbdfc1a23aa370d967e')
 
 package() {
   cd "${srcdir}"
-  install -Dm755 "${_pkgsrc}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm755 "${_pkgsrc}-${CARCH}" "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 "Readme.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
