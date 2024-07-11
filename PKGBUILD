@@ -2,12 +2,12 @@
 
 pkgname=ttf-juliamono-nerd-font
 pkgver=0.056
-pkgrel=1
+pkgrel=2
 pkgdesc="JuliaMono, a font for programming, patched with Nerd Fonts (Regular, Mono, Propo)"
 arch=('any')
 url="https://github.com/mietzen/juliamono-nerd-font"
 _variant="https://github.com/dendarrion/juliamono-nerd-font-variant"
-license=('OFL-1.1')
+license=('custom:SIL Open Font License v1.1')
 source=(
 	"${pkgname}-mono-v${pkgver}::${url}/releases/download/v${pkgver}/fonts.zip"
 	"${pkgname}-variant-v${pkgver}::${_variant}/releases/download/v${pkgver}/ttf-juliamono-nerd-font-variant-v${pkgver}.zip"
