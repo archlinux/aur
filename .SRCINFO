@@ -1,4 +1,4 @@
-pkgbase = spark
+pkgbase = spark-git
 	pkgdesc = Spark is a static-site generator that's intuitive and designed for simplicity.
 	pkgver = 0.1.0
 	pkgrel = 1
@@ -10,4 +10,4 @@ pkgbase = spark
 	source = spark::git+https://gitlab.com/EndowTheGreat/spark
 	sha256sums = SKIP
 
-pkgname = spark
+pkgname = spark-git
