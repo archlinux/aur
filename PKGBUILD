@@ -1,4 +1,4 @@
-# Maintainer: system64 <system64fumo@protonmail>
+# Maintainer: system64 <system64fumo@protonmail.com>
 
 pkgname=syshud
 pkgver=0.1
@@ -6,7 +6,10 @@ pkgrel=1
 pkgdesc="Simple heads up display written in gtkmm 4"
 arch=(x86_64 aarch64)
 url="https://github.com/System64fumo/syshud"
+license=('WTFPL')
+groups=('sysshell')
 depends=('gtkmm-4.0' 'gtk4-layer-shell')
+packager="System64 <system64fumo@protonmail.com>"
 source=("git+https://github.com/System64fumo/syshud")
 sha256sums=('SKIP')
 
