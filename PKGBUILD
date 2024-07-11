@@ -1,4 +1,4 @@
-# Maintainer: blocklisted <blocklisted at protonmail dot com>
+# Maintainer: Til Kaiser <mail at tk154 dot de>
 pkgname=windscribe-v2-bin
 pkgver=2.10.15
 pkgrel=1
