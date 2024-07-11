@@ -1,0 +1,3 @@
+[perl-crypt-ssleay]
+source = "cpan"
+cpan = "Crypt-SSLeay"
