@@ -3,7 +3,7 @@
 _name='magicgui'
 _author='pyapp-kit'
 pkgname="python-${_name}"
-pkgver=0.7.3
+pkgver=0.8.3
 pkgrel=1
 pkgdesc='Build GUIs from functions, using magic.'
 arch=('any')
@@ -19,13 +19,14 @@ depends=(
   'python'
   'python-docstring-parser'
   'python-psygnal'
+  'python-pyconify'
   'python-qtpy'
   'python-superqt'
   'python-typing_extensions'
   'qt5-python-bindings'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('3279b7e78e690f35c18b61065cf3234c4f05a973e485dc3c696446a68a59c665')
+sha256sums=('862b02e472f4cc2081ccfb9e8e1d91ab30ce91b88f9d9ff8a44e0d27f317f4ab')
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
