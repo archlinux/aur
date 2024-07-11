@@ -8,6 +8,6 @@ pkgbase = kubectl-cnpg
 	depends = kubectl
 	provides = kubectl-cnpg
 	source = https://github.com/cloudnative-pg/cloudnative-pg/releases/download/v1.23.2/kubectl-cnpg_1.23.2_linux_x86_64.tar.gz
-	sha256sums = aea64ec25b76906e11114168aa2346957abd5fdbd1ef3b7e2e806db41db8b9fe
+	sha256sums = b651677c7c42400766a42c27ed3db9786a1d917be363fbaad94d63aad686ee6c
 
 pkgname = kubectl-cnpg
