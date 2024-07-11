@@ -3,7 +3,7 @@
 
 pkgname=python-bibtexparser-git
 _pkgname="${pkgname%-git}"
-pkgrel=1
+pkgrel=2
 pkgver=20240521.214ef38
 pkgdesc="Bibtex parser in Python"
 arch=('any')

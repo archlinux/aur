@@ -1,7 +1,7 @@
 pkgbase = python-bibtexparser-git
 	pkgdesc = Bibtex parser in Python
 	pkgver = 20240521.214ef38
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bibtexparser.readthedocs.org/
 	arch = any
 	license = LicenseRef-MIT
