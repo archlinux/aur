@@ -1,6 +1,6 @@
 pkgbase = wootility-appimage
 	pkgdesc = Utility for configuring Wooting keyboards (binary AppImage version)
-	pkgver = 4.6.20
+	pkgver = 4.6.21
 	pkgrel = 1
 	url = https://wooting.io/wootility
 	install = wootility-appimage.install
@@ -14,9 +14,9 @@ pkgbase = wootility-appimage
 	provides = wootility-lekker
 	conflicts = wootility
 	options = !strip
-	source = https://s3.eu-west-2.amazonaws.com/wooting-update/wootility-lekker-linux-latest/wootility-lekker-4.6.20.AppImage
+	source = https://s3.eu-west-2.amazonaws.com/wooting-update/wootility-lekker-linux-latest/wootility-lekker-4.6.21.AppImage
 	source = 70-wooting.rules
-	b2sums = 2212f50429ff1efed685ce3e330d9e5ca441d28509bf7ab4af824c1211cfb802b75b4c698215eb9bae56942c0ecf300f76cd2e5a1eb9935a44b3f58a04644ca9
+	b2sums = 7bf94b2709904870d39bafa87b8eb3ca717e082a727c47b0d65a7cfb58cdc7dde6b9003a266ae701c09640d84f85121469cc6b66498233234af29d1b291683c4
 	b2sums = 80b4a516f8aafb6eada36cdde59295f2358b22e6cc28b1a21b0b5f22a59bcfabc63bba956d23544faca5fd76a1c4b4c1ff98ada41e7c9ad015d48c7c436dbac1
 
 pkgname = wootility-appimage
