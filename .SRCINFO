@@ -1,6 +1,6 @@
 pkgbase = fwallet
 	pkgdesc = A beautiful cross-platform wallet application.
-	pkgver = 1.1.8
+	pkgver = 1.1.9
 	pkgrel = 1
 	url = https://gitlab.com/TheOneWithTheBraid/f_wallet
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = fwallet
 	depends = xdg-user-dirs
 	provides = fwallet
 	conflicts = fwallet
-	source = fwallet-v1.1.8.tar.gz::https://gitlab.com/TheOneWithTheBraid/f_wallet/-/archive/v1.1.8/f_wallet-v1.1.8.tar.gz
-	sha256sums = 4ea423aa6da1a1bd22352669ff39194a80969152e49a7c38762701073389a319
+	source = fwallet-v1.1.9.tar.gz::https://gitlab.com/TheOneWithTheBraid/f_wallet/-/archive/v1.1.9/f_wallet-v1.1.9.tar.gz
+	sha256sums = 8e9e124bbe2d4cad5127acbf223b446071f8fa0d52cd9650501ec7b6a55a6b6e
 
 pkgname = fwallet

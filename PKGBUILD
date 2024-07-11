@@ -3,7 +3,7 @@
 pkgname=fwallet
 _name=fwallet
 _appid=business.braid.f_wallet
-pkgver=1.1.8
+pkgver=1.1.9
 pkgrel=1
 pkgdesc="A beautiful cross-platform wallet application."
 # Flutter officially supports amd64 and AArch64
@@ -34,7 +34,7 @@ source=(
   "${_name}-v${pkgver}.tar.gz::https://gitlab.com/TheOneWithTheBraid/f_wallet/-/archive/v${pkgver}/f_wallet-v${pkgver}.tar.gz"
 )
 # this is a git build, we do not want to pin to a version
-sha256sums=('4ea423aa6da1a1bd22352669ff39194a80969152e49a7c38762701073389a319')
+sha256sums=('8e9e124bbe2d4cad5127acbf223b446071f8fa0d52cd9650501ec7b6a55a6b6e')
 
 # ensure we have the proper Dart architecture name for the current CARCH
 case "${CARCH}" in
