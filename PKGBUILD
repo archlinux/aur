@@ -17,7 +17,7 @@ source=("https://github.com/prometheus/pushgateway/archive/v${pkgver}.tar.gz"
 build() {
     cd $pkgname-$pkgver
 
-    LDFLAGS="-extldflags $LDFLAGS \
+    LDFLAGS="-extldflags \"$LDFLAGS\" \
 	-X github.com/prometheus/common/version.Version=$pkgver \
 	-X github.com/prometheus/common/version.Revision=$pkgver \
 	-X github.com/prometheus/common/version.Branch=tarball \
