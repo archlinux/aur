@@ -632,14 +632,6 @@ pkgname = libreoffice-dev-rw
     source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/${_pkgnamefmt}_${_pkgver}_Linux_x86-64_rpm_langpack_rw.tar.gz
     sha256sums = SKIP
 
-pkgname = libreoffice-dev-qtz
-    pkgdesc= Weblate language pack for LibreOffice Dev
-    depends= libreoffice-dev-bin>=$( cut -f1-3 -d'.' <<< ${pkgver} )
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/${_pkgnamefmt}_${_pkgver}_Linux_x86-64_rpm_langpack_qtz.tar.gz
-    source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/${_pkgnamefmt}_${_pkgver}_Linux_x86-64_rpm_helppack_qtz.tar.gz
-    sha256sums = SKIP
-    sha256sums = SKIP
-
 pkgname = libreoffice-dev-sa-in
     pkgdesc= Sanskrit (India) language pack for LibreOffice Dev
     depends= libreoffice-dev-bin>=$( cut -f1-3 -d'.' <<< ${pkgver} )

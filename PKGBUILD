@@ -104,7 +104,7 @@ _languages=(
   'ro           "Romanian"                     1'
   'ru           "Russian"                      1'
   'rw           "Kinyarwanda"                  0'
-  'qtz          "Weblate Localization"         1' ## search for KeyID strings in weblate and help with localization of LibreOffice
+#  'qtz          "Weblate Localization"         1' ## search for KeyID strings in weblate and help with localization of LibreOffice
   'sa-IN        "Sanskrit (India)"             0'
   'sat          "Santali"                      0'
   'sd           "Sindhi"                       0'
