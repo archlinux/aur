@@ -1,7 +1,7 @@
 # Maintainer: Fabio Manganiello <fabio@manganiello.tech>
 
 pkgname=platypush-git
-pkgver=1.1.1.r12.gc9daa037
+pkgver=1.1.1.r14.g12d53b84
 pkgrel=1
 pkgdesc="A general-purpose, event-driven, plugin-based platform for automation-as-code"
 arch=('any')
