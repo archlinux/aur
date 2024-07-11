@@ -1,0 +1,3 @@
+[perl-statistics-descriptive]
+source = "cpan"
+cpan = "Statistics-Descriptive"
