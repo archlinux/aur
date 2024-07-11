@@ -1,0 +1,13 @@
+pkgbase = spark
+	pkgdesc = Spark is a static-site generator that's intuitive and designed for simplicity.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.com/EndowTheGreat/spark
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = go
+	source = spark::git+https://gitlab.com/EndowTheGreat/spark
+	sha256sums = SKIP
+
+pkgname = spark
