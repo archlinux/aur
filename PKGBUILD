@@ -3,39 +3,49 @@
 
 pkgname=xwaylandvideobridge-git
 _pkgname=xwaylandvideobridge
-pkgver=r223.4b079fe
+pkgver=0.4.0_r233.g80ec77b
 pkgrel=1
 pkgdesc="A tool to make it easy to stream wayland windows and screens to Xwayland applicatons that don't have native pipewire support."
 arch=(x86_64)
 url='https://invent.kde.org/system/xwaylandvideobridge'
 license=(GPL2)
-provides=( xwaylandvideobridge )
-depends=('ninja' 'qt6-base' 'qt6-declarative' 'kcoreaddons' 'kwidgetsaddons5' 'kwindowsystem5' 'knotifications5' 'ki18n5' 'libxcb' 'kpipewire' 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'extra-cmake-modules')
-makedepends=('git')
-conflicts=( xwaylandvideobridge )
-source=("${pkgname}::git+https://invent.kde.org/system/xwaylandvideobridge.git")
+provides=(xwaylandvideobridge)
+depends=(
+  glibc
+  gcc-libs
+  qt6-base
+  qt6-declarative
+  kcoreaddons
+  ki18n
+  kwindowsystem
+  kpipewire
+  kstatusnotifieritem
+  libxcb
+)
+makedepends=(
+  extra-cmake-modules
+  kdoctools
+  knotifications
+)
+conflicts=(xwaylandvideobridge)
+source=("git+https://invent.kde.org/system/xwaylandvideobridge.git")
 sha256sums=('SKIP')
 
 # Dynamically update Package Version from Git
 pkgver() {
-  cd ${pkgname}
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${pkgname%-git}
+  _ver="$(grep -m1 'set(PROJECT_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
-  cmake -GNinja -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr .
-  DESTDIR="${pkgdir}" ninja
-}
-
-check() {
-  cd "${srcdir}/${pkgname}"
-  DESTDIR="${pkgdir}" ninja test
+  cmake -B build -S ${pkgname%-git} \
+    -DBUILD_TESTING=OFF \
+    -DQT_MAJOR_VERSION=6
+  cmake --build build
 }
 
 # Build Package
 package() {
-  cd "${srcdir}/${pkgname}"
-  DESTDIR="${pkgdir}" ninja install
+  DESTDIR="$pkgdir" cmake --install build
 }
