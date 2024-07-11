@@ -1,6 +1,6 @@
 pkgbase = tijolo
 	pkgdesc = Lightweight, keyboard-oriented IDE
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/hugopl/tijolo
 	arch = x86_64
@@ -12,14 +12,14 @@ pkgbase = tijolo
 	makedepends = libyaml
 	depends = gc
 	depends = libevent
-	depends = pcre
+	depends = pcre2
 	depends = gtk4>=1:4.12.4
 	depends = libadwaita>=1:1.4.2
 	depends = gtksourceview5
 	depends = ttf-jetbrains-mono-nerd
 	depends = vte4
 	conflicts = tijolo-git
-	source = tijolo-0.9.0.tar.gz::https://github.com/hugopl/tijolo/archive/v0.9.0.tar.gz
-	sha256sums = 5c5b4ec4e9ef456a95a02af0be780fd4af4d17c642080b84472fc106791d4a4d
+	source = tijolo-0.9.1.tar.gz::https://github.com/hugopl/tijolo/archive/v0.9.1.tar.gz
+	sha256sums = 5308c8c0abdf5392e54353f00bd4fb85852f3d6214e3aae13e4fec396141b622
 
 pkgname = tijolo
