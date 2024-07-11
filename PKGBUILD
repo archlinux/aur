@@ -3,7 +3,7 @@ pkgname=yts-streaming-bin
 _pkgname=YTS-Streaming
 pkgver=4.0.0
 _electronversion=29
-pkgrel=1
+pkgrel=2
 pkgdesc="An electronJS based desktop app to stream or play yts and torrent movies in desktop without downloading."
 arch=('x86_64')
 url="https://www.yts-streaming.com/"
@@ -22,11 +22,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('5b413be87da4fcff4643cfaaf55c700f693d1ef0fad613456fb07078433aea49'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
