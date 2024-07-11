@@ -3,63 +3,48 @@
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 # Contributor: kappa <kappacurve@gmail.com>
 
-## useful links
-# https://github.com/dgud/wings
+## links
 # https://www.wings3d.com
+# https://github.com/dgud/wings
 
 _pkgname="wings3d"
 pkgname="$_pkgname"
 pkgver=2.3
-pkgrel=2
+pkgrel=3
 pkgdesc='3D modeler using the winged edge data structure'
 url="https://www.wings3d.com/"
 license=('GPL-2.0-or-later')
 arch=('x86_64')
 
 depends=(
-  erlang
-  erlang-cl
+  'erlang'
+  'erlang-cl'
 )
 makedepends=(
-  gendesk
-  git
+  'git'
 )
 optdepends=(
   'povray: render scenes with POV-Ray'
 )
 
 _pkgsrc="${_pkgname%3d}-$pkgver"
-_pkgext="tar.bz2"
+_pkgext="tar.gz"
 source=(
-  "$_pkgname-$pkgver.$_pkgext"::"https://sourceforge.net/projects/wings/files/wings/$pkgver/wings-$pkgver.$_pkgext"
+  "$_pkgname-$pkgver.$_pkgext"::"https://github.com/dgud/wings/archive/refs/tags/v$pkgver.$_pkgext"
 )
 sha256sums=(
-  '7447fa88f6cf08b98caaf5a3be0111395002656f120ac5ca8b74d696273e6f0b'
+  'd8d7751a898afa983b017fe9cd6bdc47dc430e0d86125da782344d4cf1be0f1d'
 )
 
 prepare() {
-  cat > "$_pkgname.sh" << 'END'
-#!/usr/bin/env bash
-GDK_BACKEND=x11 exec /usr/bin/erl -noinput -smp \
-  -pa /usr/lib/wings3d/ebin \
-  -run wings_start start_halt "$@"
-END
-
-  local _gendesk_options=(
-    -f
-    -n
-    --name 'Wings 3D'
-    --pkgname "$pkgname"
-    --pkgdesc "$pkgdesc"
-    --genericname '3D Modeler'
-    --categories 'Graphics;3DGraphics'
-  )
-
-  gendesk "${_gendesk_options[@]}"
-
   sed -e "/desktop-id/ s/com.wings3d.WINGS.desktop/$pkgname.desktop/" -i "$_pkgsrc/unix/wings.appdata.xml"
 
+  # fix excess quotes
   sed -e '/material[0-9]/ s/""//g' -i "$_pkgsrc/plugins_src/import_export/wpc_yafaray.erl"
+
+  # quote reserved word: maybe
+  sed -Ee 's&\bmaybe\b&'\''maybe'\''&' -i "$_pkgsrc/src/wings_draw.erl"
+  sed -Ee '/invalidate/s&\bmaybe\b&'\''maybe'\''&;s&'\'\''&'\''&g' -i "$_pkgsrc/src/wings_proxy.erl"
 }
 
 build() {
@@ -68,17 +53,34 @@ build() {
 }
 
 package() {
-  install -Dm755 "$_pkgname.sh" "$pkgdir/usr/bin/$_pkgname"
-  install -Dm644 "$_pkgname.desktop" -t "$pkgdir/usr/share/applications"
-
   cd "$_pkgsrc"
   install -Dm644 "icons/wings_icon_379x379.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 
-  install -Dm644 unix/wings.appdata.xml "$pkgdir/usr/share/metainfo/$pkgname.appdata.xml"
+  install -Dm644 unix/wings.appdata.xml "$pkgdir/usr/share/metainfo/$_pkgname.appdata.xml"
 
   cd build
   install -dm755 "$pkgdir/usr/lib/$_pkgname"
-  cp --reflink=auto -r "$_pkgsrc-linux/lib/$_pkgsrc"/* "$pkgdir/usr/lib/$_pkgname/"
+  cp --reflink=auto -r wings-*-linux/lib/"$_pkgsrc"/* "$pkgdir/usr/lib/$_pkgname/"
+
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << 'END'
+#!/usr/bin/env bash
+GDK_BACKEND=x11 exec /usr/bin/erl -noinput -smp \
+  -pa /usr/lib/wings3d/ebin \
+  -run wings_start start_halt "$@"
+END
+
+  install -Dm644 /dev/stdin -t "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
+[Desktop Entry]
+Type=Application
+Name=Wings 3D
+GenericName=3D Modeler
+Comment=$pkgdesc
+Exec=$_pkgname
+Icon=$_pkgname
+Terminal=false
+StartupNotify=false
+Categories=Graphics;3DGraphics;
+END
 
   # fix permissions
   chmod -R u=rwX,go=rX,go-w "$pkgdir"
