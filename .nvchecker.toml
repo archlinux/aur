@@ -1,0 +1,4 @@
+[python-nptyping]
+source = "git"
+git = "https://github.com/ramonhagenaars/nptyping.git"
+prefix = "v"
