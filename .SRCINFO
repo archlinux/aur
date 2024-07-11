@@ -1,7 +1,7 @@
 pkgbase = matrix-media-repo
 	pkgdesc = Highly configurable multi-domain media repository for Matrix.
-	pkgver = 1.3.4
-	pkgrel = 2
+	pkgver = 1.3.6
+	pkgrel = 1
 	url = https://github.com/t2bot/matrix-media-repo
 	arch = any
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = matrix-media-repo
 	depends = libde265
 	depends = imagemagick
 	provides = matrix-media-repo
-	source = git+https://github.com/t2bot/matrix-media-repo.git#tag=v1.3.4
+	source = git+https://github.com/t2bot/matrix-media-repo.git#tag=v1.3.6
 	source = matrix-media-repo.service
 	sha256sums = SKIP
 	sha256sums = SKIP

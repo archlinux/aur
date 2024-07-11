@@ -1,6 +1,6 @@
 pkgname=matrix-media-repo
-pkgver=1.3.4
-pkgrel=2
+pkgver=1.3.6
+pkgrel=1
 pkgdesc="Highly configurable multi-domain media repository for Matrix."
 arch=("any")
 url="https://github.com/t2bot/matrix-media-repo"
