@@ -1,0 +1,17 @@
+pkgbase = uniclip-git
+	pkgdesc = UniClip enables cross-device clipboard synchronization across platforms without the need for sign-ins or additional software
+	pkgver = v2.3.6.r2.g02f28f1
+	pkgrel = 1
+	url = https://github.com/quackduck/uniclip
+	arch = x86_64
+	license = MIT
+	makedepends = go>=1.21
+	depends = git
+	optdepends = sudo: privilege elevation
+	optdepends = doas: privilege elevation
+	provides = uniclip
+	conflicts = uniclip
+	source = git+https://github.com/quackduck/uniclip
+	sha256sums = SKIP
+
+pkgname = uniclip-git
