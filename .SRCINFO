@@ -17,6 +17,6 @@ pkgbase = stealthplane-bin
 	source = stealthplane.sh
 	sha256sums = afb46b0ec2ecc4b0f00ad6fab9199b1478e51974f711cd5ddcf2b743cc869a4d
 	sha256sums = 738958cc40fe219a82ef6b340c356dd696327904c72aaaffc25858124a5f96fc
-	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = stealthplane-bin

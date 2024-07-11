@@ -20,7 +20,6 @@ makedepends=(
 options=(
     '!strip'
     '!emptydirs'
-    #'!staticlibs'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-x64.zip"
@@ -29,11 +28,12 @@ source=(
 )
 sha256sums=('afb46b0ec2ecc4b0f00ad6fab9199b1478e51974f711cd5ddcf2b743cc869a4d'
             '738958cc40fe219a82ef6b340c356dd696327904c72aaaffc25858124a5f96fc'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n --categories="Network" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
