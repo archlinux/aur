@@ -379,6 +379,9 @@ if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
     lcms2 libraw1394 openvino libaribcaption opencv2
     qrencode quirc xevd xeve
   )
+  makedepends+=(patchutils)
+  source+=('070-ffmpeg-xeve0.5.1-support.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/3e6c7948626f19c46c1a630c788ea6bbd9e7fbcb')
+  sha256sums+=('9c76e4c5af11afed32c588d5d900f2eaf1ca43fc2611365f661df16acde912d0')
   _args+=(
     --enable-sndio --disable-rpath --enable-gray --enable-chromaprint --enable-gcrypt
     --enable-libaribb24 --enable-libcaca --enable-libcelt --enable-libcdio --enable-libcodec2
@@ -409,6 +412,11 @@ prepare() {
 
   ### ffmpeg-full changes
 
+  ## Add support for xeve 0.5.1
+  if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
+    patch -Np1 -i <(filterdiff -x a/libavcodec/version.h "${srcdir}/070-ffmpeg-xeve0.5.1-support.patch")
+  fi
+
   ## Fix segfault with avisynthplus
   sed -i 's/RTLD_LOCAL/RTLD_DEEPBIND/g' libavformat/avisynth.c
 
@@ -435,10 +443,6 @@ prepare() {
     patch -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"
     patch -Np1 -i "${srcdir}/030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
     patch -Np1 -i "${srcdir}/040-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
-  fi
-
-  if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
-    git cherry-pick -n 3e6c7948626f19c46c1a630c788ea6bbd9e7fbcb
   fi
 }
 
