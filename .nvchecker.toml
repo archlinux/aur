@@ -1,0 +1,3 @@
+[perl-log-any]
+source = "cpan"
+cpan = "Log-Any"
