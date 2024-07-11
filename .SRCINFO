@@ -1,0 +1,22 @@
+pkgbase = alpela
+	pkgdesc = Experimental minimalist audio player
+	pkgver = 4
+	pkgrel = 1
+	url = https://gitlab.com/z-s-e/alpela
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cmake
+	depends = alsa-lib
+	depends = ffmpeg
+	depends = hicolor-icon-theme
+	depends = qt6-base
+	optdepends = realtime-privileges: allow realtime operation
+	source = git+https://gitlab.com/z-s-e/alpela.git#commit=84de747
+	source = git+https://gitlab.com/z-s-e/alpe.git
+	source = git+https://github.com/z-s-e/lbu.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = alpela
