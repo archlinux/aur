@@ -1,0 +1,4 @@
+[python-mplhep]
+source = "git"
+git = "https://github.com/scikit-hep/mplhep.git"
+prefix = "v"
