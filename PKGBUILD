@@ -1,4 +1,4 @@
-pkgname="spark"
+pkgname="spark-git"
 pkgver="0.1.0"
 pkgrel="1"
 pkgdesc="Spark is a static-site generator that's intuitive and designed for simplicity."
