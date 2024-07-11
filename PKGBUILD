@@ -1,7 +1,7 @@
 # Maintainer: Peter Laca <peter@laca.me>
 pkgname=dotp-git
 pkgrel=1
-pkgver=0.0.1.20240711.01.r7.732c0c1
+pkgver=0.0.1.20240711.02.r12.1a0890c
 pkgdesc="Command-line tool for managing Time-based One-Time Passwords (TOTPs)"
 arch=('i686' 'x86_64')
 url="https://github.com/petlack/dotp"
