@@ -5,7 +5,7 @@ _date=20240709
 _pkgname=unified-source-$_date-$_pkgver
 pkgname=citra
 pkgver=r10079.4780a71
-pkgrel=1
+pkgrel=2
 epoch=1
 arch=('x86_64')
 pkgdesc='An experimental open-source Nintendo 3DS emulator/debugger'
@@ -15,7 +15,7 @@ depends=('sdl2' 'mbedtls' 'speexdsp' 'qt6-multimedia' 'ffmpeg' 'libfdk-aac' 'lib
 makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'qt6-tools' 'gcc' 'glslang' 'vulkan-headers' 'nlohmann-json' 'catch2' 'clang' 'libc++' 'ninja')
 conflicts=('citra-appimage')
 options=('lto' '!buildflags')
-source=("citra::https://github.com/PabloMK7/citra/releases/download/$pkgver/citra-unified-source-$_date-$_pkgver.tar.xz")
+source=("citra::https://github.com/PabloMK7/citra/releases/download/r$_pkgver/citra-unified-source-$_date-$_pkgver.tar.xz")
 md5sums=('b71e8d6420d45c68ab429d20db91fcc1')
 
 build() {
