@@ -5,7 +5,7 @@ _pkgname=com.joaomgcd.join
 _appname="Join Desktop"
 pkgver=1.1.2
 _electronversion=9
-pkgrel=2
+pkgrel=3
 pkgdesc='An official desktop app for Join by Joaoapps built in Electron.'
 arch=("x86_64")
 url="https://joaoapps.com/join/desktop/"
@@ -14,18 +14,19 @@ license=('LicenseRef-unknown')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('9352d7fc70b7b5f2f845a8a9a3bc29fcb9dfacf6b7f31f0d05e291c8727bd825'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_appname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
