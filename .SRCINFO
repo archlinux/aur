@@ -1,11 +1,12 @@
 pkgbase = mingw-w64-libdovi
 	pkgdesc = Library to read and write Dolby Vision metadata (mingw-w64)
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/quietvoid/dovi_tool/tree/main/dolby_vision
 	arch = i686
 	arch = x86_64
 	license = MIT
+	checkdepends = mingw-w64-wine
 	makedepends = cargo-c
 	makedepends = git
 	makedepends = mingw-w64-rust
