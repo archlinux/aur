@@ -1,0 +1,3 @@
+[perl-log-any-adapter-log4perl]
+source = "cpan"
+cpan = "Log-Any-Adapter-Log4perl"
