@@ -1,15 +1,16 @@
 pkgbase = publisher
-	pkgdesc = Tool to publish & distribute CLI tools
-	pkgver = check
+	pkgver = 0.0.3
 	pkgrel = 0
+	pkgdesc = Tool to publish & distribute CLI tools
 	url = https://github.com/termapps/publisher
 	arch = x86_64
 	arch = i686
 	license = MIT
 	provides = publisher
-	source_x86_64 = publisher-check.zip::https://github.com/termapps/publisher/releases/download/vcheck/publisher-vcheck-x86_64-unknown-linux-gnu.zip
-	sha256sums_x86_64 = Not Found
-	source_i686 = publisher-check.zip::https://github.com/termapps/publisher/releases/download/vcheck/publisher-vcheck-i686-unknown-linux-gnu.zip
-	sha256sums_i686 = Not Found
+
+	source_x86_64 = publisher-0.0.3.zip::https://github.com/termapps/publisher/releases/download/v0.0.3/publisher-v0.0.3-x86_64-unknown-linux-gnu.zip
+	sha256sums_x86_64 = b23e6657c19ccf0cd751bd85f8d3b026ec5bebdad34aa3dba712679711893705
+	source_i686 = publisher-0.0.3.zip::https://github.com/termapps/publisher/releases/download/v0.0.3/publisher-v0.0.3-i686-unknown-linux-gnu.zip
+	sha256sums_i686 = 99544f5934ce9dd93d00ba33731f0b6fadc13d8c6a4151b6062835e7bdec25ed
 
 pkgname = publisher
