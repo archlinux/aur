@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=datawizard
-_pkgver=0.11.0
+_pkgver=0.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -45,8 +45,8 @@ optdepends=(
   r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d4450c7a7fef09c2a51c382294d79c7f')
-b2sums=('4c32cf5f312d6b06633dc30077eb128f22b8e3d2ddf774923155f0b1fefe4e172e2bff798fda59037896ba0a190001e4e36586c6ef099b9045d6743617574162')
+md5sums=('c7a0ad19625384b12cd0b1ffb99b375e')
+b2sums=('f9d61f4653758eb20238c4c4f3d7e82b5e808c8a25447d2d42f969bb02d566332113a320e68f100f6ef45c148d424b4c66c2f2ff48184c917953e79b325abb22')
 
 build() {
   mkdir build
