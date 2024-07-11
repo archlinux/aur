@@ -61,3 +61,31 @@ plugins:
         secretName="$(kubectl -n "$NAMESPACE" get openstackcluster -l cluster.x-k8s.io/cluster-name="$NAME" -o yaml | yq -r '.items[0].spec.identityRef.name')"
         envs=( $(kubectl -n "$NAMESPACE" get secret "$secretName" -o jsonpath='{.data.clouds\.yaml}' | base64 -d | yq -r '.clouds.openstack | {OS_AUTH_TYPE: .["auth_type"], OS_AUTH_URL: .auth["auth_url"], OS_APPLICATION_CREDENTIAL_ID: .auth["application_credential_id"], OS_APPLICATION_CREDENTIAL_SECRET: .auth["application_credential_secret"], OS_REGION_NAME: .["region_name"], OS_INTERFACE: .interface, OS_IDENTITY_API_VERSION: .["identity_api_version"]} | to_entries[] | "\(.key)=\(.value)"') )
         exec env OS_SHELL=true "${envs[@]}" zsh
+  workload-k9s:
+    shortCut: k
+    confirm: false
+    description: Open K9s in workload cluster
+    scopes:
+      - teutonetescluster
+      - cluster
+    background: false
+    command: bash
+    args:
+      - -ec
+      - |
+        NEW_KUBECONFIG="$(mktemp -p "$XDG_RUNTIME_DIR")"
+        trap 'rm -f $NEW_KUBECONFIG' EXIT
+        kubectl -n $NAMESPACE get secrets ${NAME}-kubeconfig -o jsonpath='{.data.value}' | base64 -d > "$NEW_KUBECONFIG"
+        env KUBECONFIG="$NEW_KUBECONFIG" k9s
+  cluster-shell:
+    shortCut: s
+    confirm: false
+    description: Enter shell with KUBECONFIG and openstack credentials for cluster
+    scopes:
+      - teutonetescluster
+      - cluster
+    background: false
+    command: capo-shell
+    args:
+      - $NAMESPACE
+      - $NAME

@@ -1,14 +1,14 @@
 # Maintainer teuto.net <aur@teuto.net>
 
 pkgname=k9s-openstack
-pkgver=1.0.0
-pkgrel=1
+pkgver=1.1.0
+pkgrel=2
 pkgdesc="A k9s plugin which sets environment variables in the current terminal session to allow faster access to openstack projects."
 license=('APACHE')
 arch=('x86_64')
-depends=('kubectl' 'yq' 'k9s')
+depends=('kubectl' 'yq' 'k9s' 'capo-shell')
 source=("$pkgname-plugins.yaml")
-sha512sums=('56478041c71cbeaa4c6f641f6eebf53fc2e713272898af484fb5b23de2e678e4205bd818fa1854491aef6149517e724add0d7424ae765e43898c0cac6b6f9e89')
+sha512sums=('cd845e1a97d89a492c76ba4f22e1bac9febd595487ce68bc6e10b8f6f3c96d35484c1499ad10284601ae156af7d245638270a080d2770a8b82402ba07f253cf0')
 
 package() {
 
