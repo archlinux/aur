@@ -13,7 +13,7 @@ pkgname=(exim-heavy
          exim-lookup-passwd
          exim-lookup-pgsql)
 pkgname=exim-heavy
-pkgver=4.97.1
+pkgver=4.98
 pkgrel=1
 pkgdesc='Message Transfer Agent with maximal-enabled features'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -32,18 +32,18 @@ source=("https://ftp.exim.org/pub/exim/exim4/exim-$pkgver.tar.xz"{,.asc}
         exim-submission.socket
         exim.sysusers
         exim.tmpfiles)
-sha512sums=('eab7ca28b37f1635c48f5e963ab69fcbad539b2c35a84286ecaad7d7ff5210bbefce86452302e08099afdc0710f9cb7ca6d9b152b0ba88a19292f7c5541e0cfc'
+sha256sums=('0ebc108a779f9293ba4b423c20818f9a3db79b60286d96abc6ba6b85a15852f7'
             'SKIP'
-            'a91c6a9e5b3ac9d143741dba01e11616812ba44c3a8c768c8232364026460f0b8fdeeb120a2f2b86742a6e3ebbfc9d6335b86d108b044e43108b4a6f0374c9ad'
-            'd8e3b466e0bba8175cfe762058dec49018495a260aa5efd139f4ef435284c305958cbd7fc514e81042146368b749ae38f0bf276fc0b4b91918ef33126900aa81'
-            '28db74cfd84b7870da9ef8feee54c7e3ca099e0904c450c041647f8e12999c18eb7be960f2464f9a01241486a8737e06fd5b70fa8eabe1fcd34550d460db7a1d'
-            'ffc08d6ecf0a5b644febb6b8cd90000c8fe614dbfd94d3b387cf21b427608fac9aa0b6ab1b8b6eb74a4426d740a2eb9e2359124c6ef47b7175df9030a334d421'
-            '726ae20403ede2d72081d88f3bcf5292868f9157ad2f37717698caf25182b449bed09fab941f81deaccfea7f6f33f2089ad70b0dcc24d56b3e31cc0701526ecd'
-            '5f576b8a16995c52d501758c196634065f4416b9577d09ef1770ae3a470d79f7d795111370d5aeaf1516b80eba488cc75ce5962399078b38f0c84881b070fb6d'
-            'c14fb960a6a4800e2883237734540822a74e9ba0459dd1c2c7e51d5407cfb87569b6c9c879c9ab9f78ce1414dc30f07d4321640d36829c0bcfb47991f5812a97'
-            '4a233761793e3510e9efa5aad3a6098c41b757f13133a7ea825680f2b393aba8d7935f16bf1dd065dde884fe7ba45639a8d398333a7d9bf0a6b72f88c8f2a09d'
-            '87a16aa7bd60a8df0da8131bb811825232f25e934b9326460a2f8f0f8e0f44c53d71b1225ecfee8d30c8714f6e9f85f5f0821e346a7751d43683b406376d605b'
-            'f8a34fea0a65d0992732bc444bbb334d060de7d91d9cca6f00bc950ba289afa813783517dd3999437f89bc194290785805df7081606a65abb1db3fd3b3aa94ca')
+            '932c9149b6809c70e94c1256e28325d197bbf80d27322793e217d4b692d49c5a'
+            '7f1408f9c5d905968e665941f5c5efcf9da53e7a0bbef6c66220343bc2ae994b'
+            'b61aabd7a0452afeae5e4583c0fba86eec00b497d8f7e1e0a5d48ef0044b2229'
+            '6f5607d080e62c9c2fe430280e281338672f92769f1512786fb76a8f80afa579'
+            '54329b044a6a1701197e8930cc5c1b7355b5e417a11d55486481bd7a3871017a'
+            'cc46f41533ae7375bee63bc1bfa1281baf7f8f9f43e2f06187834e178c27d75f'
+            '9419423cce11c5a654471298e70f25318acaf211274c2bec6f73e2ef52e68c82'
+            'd3bb58f0fbeaaa33c812a823708664bbcd828da7d24e2a098f84a15aee443fee'
+            '014b99ea2f1ba8044d8f03ac37bcbf4c7fbc592df522c75364e42c0e52fd8d59'
+            'f26f3d363fcfcda0fb8236d9eb0325fc3b17f065f7991b16ca7e4187de1472cc')
 validpgpkeys=('C693A034E1ED6EE954CAE2DA13DAD99C7E41519C'  # Phil Pennock <pdp@exim.org>
               'ACBB4324393ADE3515DA2DDA4D1E900E14C1CC04'  # Phil Pennock <phil.pennock@spodhuis.org>
               'E5CA331D44AB8E4C806FDBEE26101B62F69376CE'  # Heiko Schlittermann (Exim MTA Maintainer) <heiko@exim.org> (OLD)
