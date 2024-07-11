@@ -1,17 +1,16 @@
 pkgbase = keeper-secrets-manager-core
 	pkgdesc = Python SDK for Keeper Secrets Manager
-	pkgver = 16.6.4
+	pkgver = 16.6.5
 	pkgrel = 1
 	url = https://pypi.org/project/keeper-secrets-manager-core/
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
 	depends = python
 	depends = python-requests>=2.28.2
 	depends = python-cryptography>=39.0.1
 	depends = python-importlib-metadata>=6.0.0
-	depends = python-pytest>=7.2.1
-	depends = python-setuptools
-	source = keeper-secrets-manager-core-16.6.4.tar.gz::https://files.pythonhosted.org/packages/source/k/keeper_secrets_manager_core/keeper-secrets-manager-core-16.6.4.tar.gz
-	sha256sums = 9ac831df0666b9cbea625b5f7bb51fa96445ac4205750bc4cd2a5e0fc2e48be6
+	source = keeper_secrets_manager_core-16.6.5.tar.gz::https://files.pythonhosted.org/packages/source/k/keeper_secrets_manager_core/keeper_secrets_manager_core-16.6.5.tar.gz
+	sha256sums = 3c443255dddd6b08c539136d6a78ebb1ed9b59197aef271dbb7538af942807fe
 
 pkgname = keeper-secrets-manager-core
