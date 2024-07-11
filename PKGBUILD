@@ -8,7 +8,7 @@ url="http://nsjail.com"
 arch=(x86_64)
 license=(Apache-2.0)
 makedepends=(git)
-depends=(abseil-cpp protobuf libnl gcc-libs glibc)
+depends=(protobuf-21 libnl gcc-libs glibc)
 provides=(nsjail)
 conflicts=(nsjail)
 source=(
@@ -17,7 +17,7 @@ source=(
 )
 sha256sums=(
 	'SKIP'
-	'802fbf99dbfb9b48a38824438523148dc945dfcb0869fbc7709ac7985454c7f2'
+	'SKIP'
 )
 
 pkgver() {

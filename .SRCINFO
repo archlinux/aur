@@ -6,8 +6,7 @@ pkgbase = nsjail-git
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = git
-	depends = abseil-cpp
-	depends = protobuf
+	depends = protobuf-21
 	depends = libnl
 	depends = gcc-libs
 	depends = glibc
@@ -16,6 +15,6 @@ pkgbase = nsjail-git
 	source = nsjail-git::git+https://github.com/google/nsjail.git#commit=5063fa5af6020bf73c0edce552a7c0156f1d8860
 	source = protobuf.patch
 	sha256sums = SKIP
-	sha256sums = 802fbf99dbfb9b48a38824438523148dc945dfcb0869fbc7709ac7985454c7f2
+	sha256sums = SKIP
 
 pkgname = nsjail-git

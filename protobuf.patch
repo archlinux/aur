@@ -1,23 +1,23 @@
-diff -Nurp nsjail-git.orig/config.cc nsjail-git/config.cc
---- nsjail-git.orig/config.cc	2024-07-11 02:38:11.291564176 +0200
-+++ nsjail-git/config.cc	2024-07-11 02:38:50.660685866 +0200
-@@ -303,11 +303,6 @@ static bool parseInternal(nsjconf_t* nsj
+--- a/Makefile	2024-07-11 03:44:18.209482064 +0200
++++ b/Makefile	2024-07-11 04:00:46.824012406 +0200
+@@ -31,9 +31,9 @@ COMMON_FLAGS += -O2 -c \
+ 	-Wall -Wextra -Werror \
+ 	-Ikafel/include
  
- static std::list<std::string> error_messages;
+-CXXFLAGS += $(USER_DEFINES) $(COMMON_FLAGS) $(shell pkg-config --cflags protobuf) \
++CXXFLAGS += $(USER_DEFINES) $(COMMON_FLAGS) -I/usr/include/abseil-cpp11 -I/usr/include/protobuf-21 $(shell pkg-config --with-path=/usr/lib/protobuf-21/pkgconfig/ --cflags protobuf) \
+ 	-std=c++17 -fno-exceptions -Wno-unused -Wno-unused-parameter
+-LDFLAGS += -pie -Wl,-z,noexecstack -lpthread $(shell pkg-config --libs protobuf)
++LDFLAGS += -pie -Wl,-z,noexecstack -lpthread -L/usr/lib/protobuf-21 $(shell pkg-config --with-path=/usr/lib/protobuf-21/pkgconfig/ --libs protobuf)
  
--static void logHandler(
--    google::protobuf::LogLevel level, const char* filename, int line, const std::string& message) {
--	error_messages.push_back(message);
--}
--
- static void flushLog() {
- 	for (auto message : error_messages) {
- 		LOG_W("ProtoTextFormat: %s", message.c_str());
-@@ -332,7 +327,6 @@ bool parseFile(nsjconf_t* nsjconf, const
- 	static nsjail::NsJailConfig json_nsc;
- 	static nsjail::NsJailConfig text_nsc;
+ BIN = nsjail
+ LIBS = kafel/libkafel.a
+@@ -85,7 +85,7 @@ kafel/libkafel.a: kafel_init
+ # Sequence of proto deps, which doesn't fit automatic make rules
+ $(SRCS_PB_O): $(SRCS_PB_H) $(SRCS_PB_CXX)
+ $(SRCS_PB_CXX) $(SRCS_PB_H): $(SRCS_PROTO)
+-	protoc --cpp_out=. $(SRCS_PROTO)
++	protoc-21 --cpp_out=. $(SRCS_PROTO)
  
--	google::protobuf::SetLogHandler(logHandler);
- 	auto json_status = google::protobuf::util::JsonStringToMessage(conf, &json_nsc);
- 	bool text_parsed = google::protobuf::TextFormat::ParseFromString(conf, &text_nsc);
- 
+ .PHONY: clean
+ clean:
