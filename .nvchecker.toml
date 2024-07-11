@@ -1,0 +1,3 @@
+[perl-perl4-corelibs]
+source = "cpan"
+cpan = "Perl4-CoreLibs"
