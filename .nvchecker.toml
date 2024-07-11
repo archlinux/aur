@@ -1,0 +1,3 @@
+[perl-data-messagepack]
+source = "cpan"
+cpan = "Data-MessagePack"
