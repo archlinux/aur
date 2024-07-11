@@ -2,7 +2,7 @@
 
 pkgname=ros2-jazzy-base
 pkgver=2024.07.05
-pkgrel=1
+pkgrel=2
 _rosdist="Jazzy Jalisco"
 _rosdist_short_upper=${_rosdist%% *}
 _rosdist_short=${_rosdist_short_upper,}
@@ -46,6 +46,11 @@ prepare() {
     printf "Cloning ros2 repositories\n"
     mkdir -p $srcdir/ros2/src
     vcs import $srcdir/ros2/src < $srcdir/ros2-release-${_rosdist_short}-${pkgver//.}/ros2.repos
+
+    printf "Patching sources\n"
+
+    # https://github.com/ros/urdfdom/pull/204
+    git -C "$srcdir/ros2/src/ros/urdfdom" cherry-pick -n 537ae6cf891ef926f3e83afec2d991312316910d
 }
 
 build() {

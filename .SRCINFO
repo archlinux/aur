@@ -1,7 +1,7 @@
 pkgbase = ros2-jazzy-base
 	pkgdesc = A set of software libraries and tools for building robot applications (Jazzy Jalisco, base variant)
 	pkgver = 2024.07.05
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/ros_base/#jazzy
 	arch = any
 	license = Apache
