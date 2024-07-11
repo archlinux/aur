@@ -2,11 +2,11 @@
 
 pkgname="vivify"
 pkgver="0.1.6"
-pkgrel=1
+pkgrel=2
 pkgdesc="Markdown preview tool which can be used standalone or plug into an editor like (Neo)Vim"
 arch=("x86_64")
 url="https://github.com/jannis-baum/vivify"
-license=("GPL3")
+license=("GPL-3.0-or-later")
 depends=("jq" "gcc-libs" "sh")
 makedepends=("yarn")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jannis-baum/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
