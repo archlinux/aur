@@ -1,0 +1,23 @@
+pkgbase = agordejo
+	pkgdesc = A music production session manager
+	pkgver = 0.4.2
+	pkgrel = 2
+	url = https://www.laborejo.org/agordejo/
+	arch = any
+	groups = pro-audio
+	license = GPL3
+	depends = hicolor-icon-theme
+	depends = new-session-manager
+	depends = python
+	depends = python-pyqt5
+	depends = python-pyxdg
+	depends = ttf-dejavu
+	source = https://laborejo.org/downloads/agordejo-0.4.2.tar.gz
+	source = https://laborejo.org/downloads/agordejo-0.4.2.tar.gz.sig
+	validpgpkeys = 45D952EF384ADFBB00913E3428C6A306F2909FEE
+	sha512sums = 22ac8c6ac8c0ee4b021f2470bac8ba0fbe15f2e49a1fa70abb68bee838c3d4799d613cc2f29e8a391b8a173c5cb983180889763796e05c3415ed8c20c2b96728
+	sha512sums = SKIP
+	b2sums = 2d31c7144b9d14af184e3f4730a35a66de2983114670d3717bd63ddab9f272567046779cb2f4f344b5a8b22b64f6c6f4271edbd5955c81ef2004d0d5d3ca5db1
+	b2sums = SKIP
+
+pkgname = agordejo

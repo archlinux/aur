@@ -2,7 +2,7 @@
 
 pkgname=agordejo
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A music production session manager"
 arch=(any)
 url="https://www.laborejo.org/agordejo/"
