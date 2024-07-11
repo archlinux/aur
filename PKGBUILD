@@ -2,9 +2,9 @@
 
 _pkgbase=penpot
 pkgname=(penpot penpot-exporter penpot-frontend)
-pkgver=2.0.3
+pkgver=2.1.0
 babashka_version="1.3.189"
-pkgrel=2
+pkgrel=1
 pkgdesc="The open-source design tool for design and code collaboration "
 arch=('x86_64')
 url="https://penpot.app"
@@ -49,7 +49,7 @@ source=(
 )
 noextract=($pkgname-$pkgver.tgz)
 sha256sums=(
-  '5a5f73cf354d7b45a584eed589d779bbc52c051decb93365985e00e252b24dca'
+  '47b816b92896c0786196385150fb4a8c7e5d3240516f7d48da1c998910f5c006'
   '228e8ccee724ba8d66c66d8672161b991bb00b00e538e7aecd0b902330e5a712'
   '4b82b8a79d8a143fd8a6e4473447f8946c095e2617ba5fcba4cb5b1fdd840c2c'
   'bc133ba7409921978655c488293ef83f77250fd65cb7d574c3cba9f34ff42523'
@@ -79,6 +79,7 @@ build() {
   sed -i 's/npm install/npm install --dev/' ./scripts/build
   # add buffer to dependencies?
   sed -i 's/"dependencies": {/"dependencies": {"buffer": "*",/' package.json
+  sed -i 's/\.git#commit=/.git#/' package.json
   rm -f package-lock.json
   # somehow shadow-cljs is needed but isnt installed (maybe because of not using yarn?)
   npm install --save-dev shadow-cljs
