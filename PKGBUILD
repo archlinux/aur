@@ -10,4 +10,9 @@ source=("https://download.brother.com/welcome/dlf103035/mfcj2330dwcupswrapper-$p
 sha256sums=("184b21636654959ced6ed385bd98892904a867f707ab4e43226df35903cd12b5")
 package() {
     tar -xf data.tar.gz -C "${pkgdir}"
+
+    mkdir -p "$pkgdir/usr/lib/cups/filter"
+    mkdir -p "$pkgdir/usr/lib/cups/filter"
+    install -Dm 644 "$pkgdir/opt/brother/Printers/mfcj2330dw/cupswrapper/brother_mfcj2330dw_printer_en.ppd" "$pkgdir/usr/share/cups/model/brother_mfcj2330dw_printer_en.ppd"
+    ln -s "/opt/brother/Printers/mfcj2330dw/cupswrapper/brother_lpdwrapper_mfcj2330dw" "$pkgdir/usr/lib/cups/filter/brother_lpdwrapper_mfcj2330dw"
 }
