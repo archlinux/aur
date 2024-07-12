@@ -1,7 +1,7 @@
 pkgbase = gtk-engines
 	pkgdesc = Theme engines for GTK+ 2
 	pkgver = 2.21.0
-	pkgrel = 6
+	pkgrel = 7
 	url = http://live.gnome.org/GnomeArt
 	arch = x86_64
 	license = GPL

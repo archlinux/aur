@@ -2,7 +2,7 @@
 
 pkgname=gtk-engines
 pkgver=2.21.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Theme engines for GTK+ 2"
 arch=(x86_64)
 license=('GPL' 'LGPL')
