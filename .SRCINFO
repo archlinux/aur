@@ -1,0 +1,18 @@
+pkgbase = blueberry
+	pkgdesc = Bluetooth configuration tool
+	pkgver = 1.4.8
+	pkgrel = 2
+	url = https://github.com/linuxmint/blueberry
+	arch = any
+	license = GPL
+	depends = bluez-tools
+	depends = gnome-bluetooth
+	depends = python-dbus
+	depends = python-gobject
+	depends = python-setproctitle
+	depends = rfkill
+	depends = xapps
+	source = https://github.com/linuxmint/blueberry/archive/1.4.8/blueberry-1.4.8.tar.gz
+	sha256sums = 37a5b0bc3c7cbccee625209b9196a2e2966396cfe5c7652318559642fb6a7a32
+
+pkgname = blueberry

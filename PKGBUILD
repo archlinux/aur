@@ -3,7 +3,7 @@
 
 pkgname=blueberry
 pkgver=1.4.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Bluetooth configuration tool"
 arch=(any)
 url="https://github.com/linuxmint/blueberry"
