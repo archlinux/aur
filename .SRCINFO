@@ -1,10 +1,9 @@
 pkgbase = mingw-w64-libplacebo
 	pkgdesc = Reusable library for GPU-accelerated video/image rendering primitives (mingw-w64)
 	pkgver = 7.349.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/haasn/libplacebo
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = LGPL-2.1-or-later
 	makedepends = mingw-w64-gcc
 	makedepends = mingw-w64-meson

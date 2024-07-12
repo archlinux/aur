@@ -4,10 +4,10 @@
 
 pkgname=mingw-w64-libplacebo
 pkgver=7.349.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Reusable library for GPU-accelerated video/image rendering primitives (mingw-w64)'
 url='https://github.com/haasn/libplacebo'
-arch=('i686' 'x86_64')
+arch=('any')
 license=('LGPL-2.1-or-later')
 depends=('mingw-w64-crt' 'mingw-w64-libdovi' 'mingw-w64-vulkan-icd-loader' 'mingw-w64-glslang' 'mingw-w64-lcms2' 'mingw-w64-shaderc' 'mingw-w64-spirv-cross')
 options=(!strip !buildflags staticlibs)
