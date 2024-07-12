@@ -12,10 +12,10 @@ provides=('org-stats')
 conflicts=('org-stats')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/caarlos0/org-stats/releases/download/v1.12.0/org-stats_linux_arm64.tar.gz")
-sha256sums_aarch64=('9e04292574a8c08f8825341145e0867e8da6f9dd9ef9924bf2cd18925a381fea')
+sha256sums_aarch64=('daa51a1b29b82470fb688dd0cc487f945a34e2a263f38299b999beba35421b3e')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/caarlos0/org-stats/releases/download/v1.12.0/org-stats_linux_amd64.tar.gz")
-sha256sums_x86_64=('7512d75f2e868b1e02d20a610c566fa6a5fcc976853f596e7f82c52878f85402')
+sha256sums_x86_64=('b9f9edaa5f2554408c6150d42b37a3a1b319416fe157734a9f2a6c5f87ad577f')
 
 package() {
   # bin
