@@ -1,7 +1,7 @@
 pkgbase = flterm
 	pkgdesc = Tool for loading data over serial
 	pkgver = 2.4
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/timvideos/flterm
 	arch = x86_64
 	license = GPL3
