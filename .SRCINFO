@@ -1,0 +1,16 @@
+pkgbase = mailgraph
+	pkgdesc = A very simple mail statistics RRDtool frontend for Postfix and Sendmail
+	pkgver = 1.14
+	pkgrel = 7
+	url = https://mailgraph.schweikert.ch/
+	arch = any
+	license = GPL
+	depends = rrdtool
+	depends = perl-file-tail
+	options = emptydirs
+	source = https://mailgraph.schweikert.ch/pub/mailgraph-1.14.tar.gz
+	source = mailgraph.service
+	sha256sums = 50ea6ea8a33f5015926edd8b70a4d954ac27df4863514bddc5e69c948a7aac81
+	sha256sums = c6983cbd698457d09db8911f18da73d93451f5940fc4adddd04e0e1859d8d0b1
+
+pkgname = mailgraph

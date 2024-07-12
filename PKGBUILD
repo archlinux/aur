@@ -2,7 +2,7 @@
 # Contributor: lp76 <l.peduto@gmail.com>
 pkgname=mailgraph
 pkgver=1.14
-pkgrel=6
+pkgrel=7
 pkgdesc="A very simple mail statistics RRDtool frontend for Postfix and Sendmail"
 url="https://mailgraph.schweikert.ch/"
 arch=('any')
