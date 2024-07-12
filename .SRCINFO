@@ -1,19 +1,16 @@
 pkgbase = python-sphinxcontrib-confluencebuilder
 	pkgdesc = Sphinx extension to build Confluence® compatible markup format files and optionally publish them
-	pkgver = 1.9.0
+	pkgver = 2.5.2
 	pkgrel = 1
 	url = https://github.com/sphinx-contrib/confluencebuilder
 	arch = any
-	license = GPL
-	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	source = https://github.com/sphinx-contrib/confluencebuilder/archive/refs/tags/v1.9.tar.gz
-	md5sums = c87fc0aeff382d05465038695cbd2ffa
-
-pkgname = python-sphinxcontrib-confluencebuilder
+	license = BSD-2-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	depends = python-sphinx
+	source = https://github.com/sphinx-contrib/confluencebuilder/archive/refs/tags/v2.5.2.tar.gz
+	md5sums = 135de0b92be71df782134d6ee97ddd8e
 
-pkgname = python2-sphinxcontrib-confluencebuilder
-	depends = python2
-	depends = python2-sphinx
+pkgname = python-sphinxcontrib-confluencebuilder
