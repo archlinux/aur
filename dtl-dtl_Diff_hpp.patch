@@ -1,11 +1,11 @@
---- Plugin/dtl/Diff.hpp	2023-01-11 22:18:07.000000000 +0100
-+++ Plugin/dtl/Diff.hpp	2024-07-12 14:01:17.837218222 +0200
-@@ -163,7 +163,7 @@
+--- Plugin/dtl/Diff.hpp	2024-07-12 15:12:49.203308391 +0200
++++ Plugin/dtl/Diff.hpp	2024-07-12 15:13:15.600080947 +0200
+@@ -165,7 +165,7 @@
  
-     void disableHuge() { this->huge = false; }
+     bool trivialEnabled() { return trivial; }
  
--    bool trivialEnabled() const { return trivial; }
-+    bool trivialEnabled() { return trivial; }
+-    void enableTrivial() const { this->trivial = true; }
++    void enableTrivial() { this->trivial = true; }
  
-     void enableTrivial() const { this->trivial = true; }
+     void disableTrivial() { this->trivial = false; }
  
