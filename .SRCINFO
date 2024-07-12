@@ -1,6 +1,6 @@
 pkgbase = iceshrimp.net-git
-	pkgdesc = The Iceshrimp .NET rewrite
-	pkgver = v2024.1.beta2.r56.gc4d2317
+	pkgdesc = Decentralized and federated social networking service, implementing the ActivityPub standard
+	pkgver = 2024.1.beta2.r126.g7a67b8a
 	pkgrel = 1
 	url = https://iceshrimp.dev/iceshrimp/iceshrimp.net
 	install = iceshrimp.net.install

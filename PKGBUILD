@@ -1,9 +1,9 @@
 # Maintainer: zotan <aur@zotan.email>
 
 pkgname=iceshrimp.net-git
-pkgver=v2024.1.beta2.r56.gc4d2317
+pkgver=2024.1.beta2.r126.g7a67b8a
 pkgrel=1
-pkgdesc="The Iceshrimp .NET rewrite"
+pkgdesc="Decentralized and federated social networking service, implementing the ActivityPub standard"
 arch=(x86_64 aarch64)
 url="https://iceshrimp.dev/iceshrimp/iceshrimp.net"
 license=(EUPL)
@@ -39,7 +39,7 @@ sha512sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/iceshrimp.net"
-  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/^v//g;s/^([[:digit:]]+\.[[:digit:]]+)\.r/\1.0.r/g;s/-/./g'
 }
 
 rid() {
