@@ -4,53 +4,68 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=glib2-patched-thumbnailer
-pkgver=2.80.0
-pkgrel=3
+pkgver=2.80.4
+pkgrel=1
 pkgdesc="GLib2 patched with ahodesuka's thumbnailer patch."
 url="https://gist.github.com/Dudemanguy/d199759b46a79782cc1b301649dec8a5"
+options=(!docs staticlibs)
+license=(LGPL-2.1-or-later)
 arch=(x86_64)
 provides=(glib2=$pkgver libg{lib,io,irepository,module,object,thread}-2.0.so)
 conflicts=('glib2')
-depends=(pcre2 libffi util-linux-libs zlib tumbler libsysprof-capture libmount.so libffi.so)
+depends=(
+  bash
+  glibc
+  libffi
+  libffi.so
+  libmount.so
+  libsysprof-capture
+  pcre2
+  util-linux-libs
+  tumbler
+  zlib
+)
 makedepends=(
   dbus
+  dconf
   gettext
-  git
   gi-docgen
+  git
   gobject-introspection
   libelf
   meson
   python
   python-docutils
+  python-packaging
   shared-mime-info
   util-linux
 )
-checkdepends=(desktop-file-utils glib2)
-optdepends=('python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-report'
-            'libelf: gresource inspection tool'
-            'gvfs: most gio functionality')
-options=(!docs staticlibs)
-license=(LGPL)
-_commit=763cc3b238398614c20069fd67642730e3a6519b  # tags/2.80.0^0
+checkdepends=(
+  desktop-file-utils
+  glib2
+)
+optdepends=(
+  'dconf: GSettings storage backend'
+  'glib2-devel: development tools'
+  'gvfs: most gio functionality'
+)
 source=(
-  "git+https://gitlab.gnome.org/GNOME/glib.git#commit=$_commit"
+  "git+https://gitlab.gnome.org/GNOME/glib.git?signed#tag=$pkgver"
   "git+https://gitlab.gnome.org/GNOME/gvdb.git"
   0001-glib-compile-schemas-Remove-noisy-deprecation-warnin.patch
   0002-glocalfileinfo-add-a-dbus-thumbnail-generator.patch
   gio-querymodules.hook
   glib-compile-schemas.hook
 )
-b2sums=('cc3a6a7a14fef1aabc08d3bdfe98f66e3ecf3591ac054d83aa9404c8c9cd72e690a4c26c16934700d067bb2cb3d58730387482032cd9ffa04b041869426165ba'
+b2sums=('ec233c9dd6836fb362e45092cd8122757e9faaff2ed910818ecc9e88359777a5935a93f6ed26a649437c9014354bad1cc122716462c92335a280d685cf3ffc71'
         'SKIP'
         '94c73ca7070c239494873dd52d6ee09382bbb5b1201f7afd737cfa140b1a2fb0744b2c2831baf3943d1d072550c35888d21ce6f19f89481ff9d1a60d9a0b30e0'
         '5eed57eccc15fa9994228815874200135e9ee682b9bd718dae4b486eb3a65f2efb8121f45afedd4dd33208297738b5f1f489cb9a798a896540a505b32a37cc08'
         '14c9211c0557f6d8d9a914f1b18b7e0e23f79f4abde117cb03ab119b95bf9fa9d7a712aa0a29beb266468aeb352caa3a9e4540503cfc9fe0bbaf764371832a96'
         'd30d349b4cb4407839d9074ce08f5259b8a5f3ca46769aabc621f17d15effdb89c4bf19bd23603f6df3d59f8d1adaded0f4bacd0333afcab782f2d048c882858')
-
-pkgver() {
-  cd glib
-  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
-}
+validpgpkeys=(
+  923B7025EE03C1C59F42684CF0942E894B2EAFA0 # Philip Withnall <pwithnall@gnome.org>
+)
 
 prepare() {
   cd glib
@@ -63,7 +78,7 @@ prepare() {
 
   git submodule init
   git submodule set-url subprojects/gvdb "$srcdir/gvdb"
-  git -c protocol.file.allow=always submodule update
+  git -c protocol.file.allow=always -c protocol.allow=never submodule update
 }
 
 build() {
