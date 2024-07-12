@@ -1,8 +1,8 @@
 # Maintainer: Robin Broda <coderobe at archlinux dot org>
 
 pkgname=python-xtarfile
-pkgver=0.1.0
-pkgrel=6
+pkgver=0.2.1
+pkgrel=1
 pkgdesc='Wrapper around tarfile to add support for more compression formats'
 arch=('any')
 url=https://github.com/ascoderu/xtarfile
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('python-zstandard' 'python-lz4')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ascoderu/xtarfile/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('f13c37c8a66e13d940148a5b1310cedf5391ddb44f6730faeb8cc6b3ff2268f1')
+sha256sums=('a01270336caaae2c91b4e73d6bdaae2b40dcbd3308d917baa6e8fa8dbcc7a99a')
 
 prepare() {
   cd xtarfile-$pkgver
