@@ -1,0 +1,25 @@
+pkgbase = qmc2
+	pkgdesc = Qt based UNIX MAME frontend supporting SDLMAME
+	pkgver = 0.243
+	pkgrel = 5
+	url = https://qmc2.batcom-it.net/
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = git
+	makedepends = rsync
+	depends = gcc-libs
+	depends = glibc
+	depends = minizip-ng
+	depends = qt5-base
+	depends = qt5-multimedia
+	depends = qt5-svg
+	depends = qt5-webengine
+	depends = qt5-xmlpatterns
+	depends = sdl2
+	depends = zlib
+	source = git+https://github.com/qmc2/qmc2-mame-fe#tag=v0.243
+	source = webengine.patch
+	sha256sums = 359d4e4d224b760c2fcaa3d9719c6c4d7da86e34dd3a99b5b6d5f104164dac2e
+	sha256sums = cd72449743a25fd759bb65d205dd2fd3ba0aaeab618efdae80dddc903e8148dd
+
+pkgname = qmc2
