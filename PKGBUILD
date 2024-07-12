@@ -1,4 +1,4 @@
-# Maintainer: Tomas Sandelin <tomas.sandelin@gmail.com>
+# Maintainer: Sandelinos <aur@sandelinos.me>
 
 pkgname=brother-mfcj4510dw-cups-bin
 pkgver=3.0.1
