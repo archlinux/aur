@@ -1,7 +1,7 @@
 # Maintainer: Essem <smswessem@gmail.com>
 
 pkgname=corrscope
-pkgver=0.9.1
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Python program to render wave files into oscilloscope views, featuring advanced correlation-based triggering algorithm"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/corrscope/corrscope"
 license=('BSD-2-Clause')
 depends=(
   'python-ruamel-yaml'
-  'python-numpy'
+  'python-numpy<2.0.0'
   'python-click'
   'python-matplotlib'
   'python-attrs'
@@ -30,7 +30,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/corrscope/corrscope/archive
         "no-appnope.patch"
         "corrscope.png"
         "corrscope.desktop")
-sha256sums=('d6d57c82de918f5c4a7f19c653836f213cf155f4d00cf6fd64dbc6d4be897f76'
+sha256sums=('3ce0bbdddddc0371791bef2fbd102fa74fc6fb324854b4c8f31c58d15b395872'
             '4d85a0c057545e1459b5362ab81a2c953b63c5efd9094d208c0dbef662203636'
             '41777f8b4593e9154931bcbdb86e43e5c5d7b476be714a42affca0aee88e2cf8'
             'bfb12bd87d93af48e0f80e2241493078ced904af339e17c0661fd7b8cd1ebdda')
