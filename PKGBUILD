@@ -2,7 +2,7 @@
 
 pkgname=freedv-gui
 pkgver=1.9.9.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Digital Voice for Radio Amateurs"
 arch=('x86_64' 'aarch64')
 license=('LGPL2.1')
@@ -13,9 +13,6 @@ makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/drowe67/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 sha512sums=('fe7f6b69d8af000fca1ca0025b36165659a0a0bfc6105a1d9ccf8785ba268b06796bddab1fe9bb49f4a79da1a587e111fa8004250532dee5fabeb99ab853750c')
 
-# we use portaudio because it discovers all
-# pipewire interfaces and applications
-
 build() {
   cmake -B build -S "$pkgname-$pkgver" \
     -Wno-dev \
@@ -25,7 +22,7 @@ build() {
     -DUSE_STATIC_SPEEXDSP=FALSE \
     -DUSE_STATIC_PORTAUDIO=FALSE \
     -DBOOTSTRAP_WXWIDGETS=FALSE \
-    -DUSE_PULSEAUDIO=FALSE
+    -DUSE_PULSEAUDIO=TRUE
   make -C build
 }
 

@@ -1,7 +1,7 @@
 pkgbase = freedv-gui
 	pkgdesc = Digital Voice for Radio Amateurs
 	pkgver = 1.9.9.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://freedv.org/
 	arch = x86_64
 	arch = aarch64
