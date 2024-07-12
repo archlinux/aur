@@ -10,7 +10,7 @@
 
 pkgname=mono-tools
 pkgver=4.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Collection of testing and development tools for use with mono"
 arch=('any')
 license=('GPL')

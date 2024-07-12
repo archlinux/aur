@@ -1,0 +1,20 @@
+pkgbase = mono-tools
+	pkgdesc = Collection of testing and development tools for use with mono
+	pkgver = 4.2
+	pkgrel = 4
+	url = https://www.mono-project.com/
+	install = mono-tools.install
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = zip
+	depends = gtk-sharp-2
+	options = !makeflags
+	source = mono-tools-4.2.tar.gz::https://github.com/mono/mono-tools/archive/4.2.tar.gz
+	source = drop-docbrowser-gendarme.patch
+	source = monodoc.xml
+	sha256sums = 104f7a7e98202c44cd4f025ab8a922bd193e83ce874a48e50ffb401128ca73a8
+	sha256sums = f937cce8c59f50cb16f16103511af7ab45e13581becf172c4d16b370080c532a
+	sha256sums = 80de1af405556addbb481d9ac123e5f94b08ad7869c90fb469d71eb08c941480
+
+pkgname = mono-tools
