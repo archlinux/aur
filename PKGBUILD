@@ -1,8 +1,9 @@
-# Maintainer: spider-mario <spidermario@free.fr>
+# Maintainer: Riedler <dev@riedler.wien>
+# Contributor: spider-mario <spidermario@free.fr>
 # Contributor: Christoph Zeiler <rabyte*gmail>
 
 pkgname=gbsplay
-pkgver=0.0.95
+pkgver=0.0.97
 pkgrel=1
 pkgdesc="A command line application for playing GameBoy sound files (GBS)"
 arch=('i686' 'x86_64')
@@ -17,7 +18,7 @@ optdepends=('nas: for Network Audio System sound driver'
 			'zlib: for compressed input files')
 source=("https://github.com/mmitch/gbsplay/archive/refs/tags/$pkgver.tar.gz"
         'do-not-update-database.patch')
-sha512sums=('d8025bbfe60a7a76386f4510167106441358ce1b1ced632e839d8d3006e2bbb0ba520162ad0eda4d6d7f9b71b486e6939760ba267582944d4f2c0c166bb75c36'
+sha512sums=('efb1f7eebe1075fafbed4d040cf19533222e2289ab5ccc66d4d9d7701420a00bc616f3d392b2b9e4f2aac1718068160130897e4e613f1d118ce2840413260896'
             '2de20d227fe5cb17fd29b666fb55438560b6859a2bcccad910a631189a3698f220b29791493b5ab105fcabd92419b04edd220b85a4b5034723a63fe2f4b898ff')
 
 prepare() {
