@@ -1,30 +1,38 @@
-pkgname=mingw-w64-shaderc
-pkgver=2021.2
+# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
+
+_pkgname=shaderc
+pkgname=mingw-w64-${_pkgname}
+pkgver=2024.1
 pkgrel=1
 pkgdesc='Collection of tools, libraries and tests for shader compilation (mingw-w64)'
-url='https://github.com/google/shaderc'
+url="https://github.com/google/${_pkgname}"
 arch=('any')
 license=('Apache')
 depends=('mingw-w64-glslang')
-makedepends=('mingw-w64-cmake' 'mingw-w64-spirv-headers' 'mingw-w64-spirv-tools' 'python')
+makedepends=('mingw-w64-cmake' 'mingw-w64-spirv-headers' 'mingw-w64-spirv-tools' 'python' 'ninja')
 options=('!strip' '!buildflags' 'staticlibs')
-source=(https://github.com/google/shaderc/archive/v${pkgver}.tar.gz
-		"0001-fix-glslang-hlsl-linking-order.patch")
-sha256sums=('d0d75beced49c7a03ae30bb4a879a3c7f2218ad66af19a115f665d07f37167ba'
-			'7d9c2605a4dab0e718c7fd3c7bfa2ea80968d8caa1937d8f0eaee3dc7c2f4e1d')
+source=("https://github.com/google/${_pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('eb3b5f0c16313d34f208d90c2fa1e588a23283eed63b101edd5422be6165d528')
 
+_srcdir="${_pkgname}-${pkgver}"
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_flags=(
+	-Wno-dev
+	-DCMAKE_BUILD_TYPE=Release
+	-DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG' )
 
 prepare() {
-  cd shaderc-$pkgver
-  
-  # https://www.mail-archive.com/devel@lists.fedoraproject.org/msg156020.html
-  patch -Nbp1 -i "${srcdir}/0001-fix-glslang-hlsl-linking-order.patch"
-  
-  # de-vendor libs and disable git versioning
-  sed '/examples/d;/third_party/d' -i CMakeLists.txt
-  sed '/build-version/d' -i glslc/CMakeLists.txt
-  cat <<- EOF > glslc/src/build-version.inc
+	cd "${_srcdir}"
+
+	sed -i \
+		-e '/find_package(Threads)/a find_package(glslang)\nfind_package(SPIRV-Tools-opt)' \
+		-e 's/glslang SPIRV/glslang::glslang glslang::SPIRV/' \
+		'libshaderc_util/CMakeLists.txt'
+
+	# de-vendor libs and disable git versioning
+	sed '/examples/d;/third_party/d' -i CMakeLists.txt
+	sed '/build-version/d' -i glslc/CMakeLists.txt
+	cat <<- EOF > glslc/src/build-version.inc
 "${pkgver}\\n"
 "$(pacman -Q mingw-w64-spirv-tools|cut -d \  -f 2|sed 's/-.*//')\\n"
 "$(pacman -Q mingw-w64-glslang|cut -d \  -f 2|sed 's/-.*//')\\n"
@@ -32,28 +40,32 @@ EOF
 }
 
 build() {
-  cd shaderc-$pkgver
-  local -a _glslang_inc
-  for _arch in ${_architectures}; do
-    mkdir -p build-${_arch} && pushd build-${_arch}
-	_glslang_inc="/usr/${_arch}/include/glslang"
-    ${_arch}-cmake \
-	  -Dglslang_SOURCE_DIR=${_glslang_inc} \
-      -DCMAKE_BUILD_TYPE=Release \
-      -DSHADERC_SKIP_TESTS=ON \
-      -DBUILD_SHARED_LIBS=OFF \
-      ..
-    make
-    popd
-  done
+	local -a _glslang_inc
+	for _arch in ${_architectures}; do
+		_glslang_inc="/usr/${_arch}/include/glslang"
+		${_arch}-cmake -G Ninja -S "${_srcdir}" -B "build-${_arch}-static" "${_flags[@]}" \
+			-DBUILD_SHARED_LIBS=OFF \
+			-DSHADERC_SKIP_TESTS=ON \
+			-Dglslang_SOURCE_DIR="${_glslang_inc}" \
+			-DCMAKE_INSTALL_PREFIX="/usr/${_arch}/static"
+		cmake --build "build-${_arch}-static"
+
+		${_arch}-cmake -G Ninja -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" \
+			-Dglslang_SOURCE_DIR="${_glslang_inc}" \
+			-DSHADERC_SKIP_TESTS=ON
+		cmake --build "build-${_arch}"
+	done
 }
 
 package() {
   for _arch in ${_architectures}; do
-    cd "${srcdir}/shaderc-$pkgver/build-${_arch}"
-    make DESTDIR="$pkgdir" install
-    rm "${pkgdir}"/usr/${_arch}/bin/*.exe
-    ${_arch}-strip -g "${pkgdir}"/usr/${_arch}/lib/*.a
-    ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.dll
-  done
+		DESTDIR="${pkgdir}" cmake --install "build-${_arch}-static"
+		rm -rf "$pkgdir/usr/${_arch}/static/bin"
+		${_arch}-strip -g "$pkgdir"/usr/${_arch}/static/lib/*.a
+
+		DESTDIR="${pkgdir}" cmake --install "build-${_arch}"
+		${_arch}-strip "$pkgdir"/usr/${_arch}/bin/*.exe
+		${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
+		${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
+	done
 }

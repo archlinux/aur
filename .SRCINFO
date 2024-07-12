@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-shaderc
 	pkgdesc = Collection of tools, libraries and tests for shader compilation (mingw-w64)
-	pkgver = 2021.2
+	pkgver = 2024.1
 	pkgrel = 1
 	url = https://github.com/google/shaderc
 	arch = any
@@ -9,13 +9,12 @@ pkgbase = mingw-w64-shaderc
 	makedepends = mingw-w64-spirv-headers
 	makedepends = mingw-w64-spirv-tools
 	makedepends = python
+	makedepends = ninja
 	depends = mingw-w64-glslang
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://github.com/google/shaderc/archive/v2021.2.tar.gz
-	source = 0001-fix-glslang-hlsl-linking-order.patch
-	sha256sums = d0d75beced49c7a03ae30bb4a879a3c7f2218ad66af19a115f665d07f37167ba
-	sha256sums = 7d9c2605a4dab0e718c7fd3c7bfa2ea80968d8caa1937d8f0eaee3dc7c2f4e1d
+	source = https://github.com/google/shaderc/archive/v2024.1.tar.gz
+	sha256sums = eb3b5f0c16313d34f208d90c2fa1e588a23283eed63b101edd5422be6165d528
 
 pkgname = mingw-w64-shaderc
