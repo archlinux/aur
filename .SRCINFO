@@ -1,17 +1,17 @@
 pkgbase = tomb
 	pkgdesc = Crypto Undertaker, a simple tool to manage encrypted storage
-	pkgver = 2.10
+	pkgver = 2.11
 	pkgrel = 1
 	url = https://www.dyne.org/software/tomb/
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	source = https://files.dyne.org/tomb/releases/Tomb-2.10.tar.gz
-	source = https://files.dyne.org/tomb/releases/Tomb-2.10.tar.gz.sha
-	source = https://files.dyne.org/tomb/releases/Tomb-2.10.tar.gz.asc
+	source = https://files.dyne.org/tomb/releases/Tomb-2.11.tar.gz
+	source = https://files.dyne.org/tomb/releases/Tomb-2.11.tar.gz.sha
+	source = https://files.dyne.org/tomb/releases/Tomb-2.11.tar.gz.asc
 	validpgpkeys = 6113D89CA825C5CEDD02C87273B35DA54ACB7D10
-	sha256sums = e3da3215f0cd68ca67a835817657f87b5e309e6b5e3e6900acee7cfd5be23210
-	sha256sums = be423500876ab69b51abcfcc391adec28e80be131ab3aa1ee65989d1c26d5600
+	sha256sums = f524f997e9967371ae65280726de32ea123ef7bf6fa9998f74c9ae90ba27c315
+	sha256sums = 777bfe815f68a5fab1c6d0e186e6d4fe7f889e68ccc78de54bb40ce4fdd634a2
 	sha256sums = SKIP
 
 pkgname = tomb
@@ -26,7 +26,7 @@ pkgname = tomb
 	optdepends = steghide: steganography
 	optdepends = dcfldd: show nice progress during massive I/O
 	optdepends = qrencode: for paper backups of keys
-	optdepends = swish-e: file content indexer
+	optdepends = recoll: file content indexer
 	optdepends = lsof: allows the operation slam
 
 pkgname = tomb-kdf
