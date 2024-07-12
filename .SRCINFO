@@ -1,0 +1,15 @@
+pkgbase = fcitx-googlepinyin
+	pkgdesc = Fcitx Wrapper for googlepinyin
+	pkgver = 0.1.6
+	pkgrel = 8
+	url = https://github.com/fcitx/fcitx-googlepinyin
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = intltool
+	depends = fcitx
+	depends = libgooglepinyin
+	source = https://download.fcitx-im.org/fcitx-googlepinyin/fcitx-googlepinyin-0.1.6.tar.xz
+	sha256sums = 29a5506ed45d26534f7bcbca1c56138984dcc7e99a42652c6a49fe20ec0da781
+
+pkgname = fcitx-googlepinyin
