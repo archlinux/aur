@@ -1,0 +1,18 @@
+pkgbase = discord-gdpr-privacy-request
+	pkgdesc = A script to send GDPR privacy requests to Discord using tokens from a config file. ✨ Help them to get work. ✨
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/discord-gdpr-privacy-request/
+	arch = any
+	license = AGPLv3
+	depends = curl
+	depends = awk
+	depends = libnotify
+	source = discord-gdpr-privacy-request.sh
+	source = discord-gdpr-privacy-request.service
+	source = discord-gdpr-privacy-request.timer
+	md5sums = 72ce1f29d15e74788c4e60315507d5f2
+	md5sums = 5e300fc0a007eefac46d49a2d553a68a
+	md5sums = 538197d1157af378d4adb101eb798069
+
+pkgname = discord-gdpr-privacy-request

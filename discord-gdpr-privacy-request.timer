@@ -1,0 +1,9 @@
+[Unit]
+Description=Make monthly Discord GDPR requests
+
+[Timer]
+OnCalendar=monthly
+Persistent=true
+
+[Install]
+WantedBy=timers.target
