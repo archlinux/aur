@@ -7,19 +7,19 @@
 
 pkgname=borg2
 _pkgname=borgbackup
-pkgver=2.0.0b4
+pkgver=2.0.0b8
 pkgrel=1
 pkgdesc='Deduplicating backup program with compression and authenticated encryption'
 url='https://github.com/borgbackup/borg'
 license=('BSD')
 arch=('x86_64')
 depends=('acl' 'lz4' 'openssl' 'python-msgpack' 'python-setuptools' 'xz' 'zstd' 'xxhash' 'libdeflate')
-makedepends=('cython' 'python-sphinx' 'python-guzzle-sphinx-theme' 'git' 'python-pkgconfig' 'python-pip' 'python-wheel')
+makedepends=('cython' 'python-sphinx' 'python-guzzle-sphinx-theme' 'git' 'python-pkgconfig' 'python-wheel')
 checkdepends=('python-pytest' 'python-pytest-cov' 'python-pytest-benchmark' 'python-mock' 'python-argon2_cffi' 'python-dateutil')
 provides=('borg' 'borgbackup')
 conflicts=('borg' 'borgbackup')
 source=("$url/releases/download/$pkgver/$_pkgname-$pkgver.tar.gz"{,.asc})
-b2sums=('9835175c3559eabe9e24176c3df9300c3646ce068b19d38cb589c2ae6b8f9f25e0135bf8bed396be0a65065044e80b952832a58a185de7013f119a6f14335108'
+b2sums=('727dc2087e34f1e5753d8cc10864a122f4f5f61bec3fd1118b0e426ded11e852713ffe37f4a06f95588be726c1d4c075fedf551c555531305f63c3c0786c4ead'
         'SKIP')
 validpgpkeys=('6D5BEF9ADD2075805747B70F9F88FB52FAF7B393') # Thomas Waldmann <tw@waldmann-edv.de>
 
