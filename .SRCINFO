@@ -1,0 +1,20 @@
+pkgbase = libastal-powerprofiles-git
+	pkgdesc = Library and cli to control upowerd powerprofiles
+	pkgver = r2.c3c807c
+	pkgrel = 1
+	url = https://github.com/astal-sh/powerprofiles
+	arch = x86_64
+	license = GPL-3
+	makedepends = meson
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = vala
+	depends = glib2
+	depends = json-glib
+	provides = astal-powerprofiles
+	provides = libastal-powerprofiles
+	provides = libastal-powerprofiles.so=0-64
+	source = git+https://github.com/astal-sh/powerprofiles
+	sha256sums = SKIP
+
+pkgname = libastal-powerprofiles-git
