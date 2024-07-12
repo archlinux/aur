@@ -1,0 +1,3 @@
+[libgdata]
+source = "git"
+git = "https://gitlab.gnome.org/GNOME/libgdata.git"
