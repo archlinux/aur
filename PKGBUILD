@@ -1,5 +1,5 @@
 pkgname=libmixmod
-pkgver=2.1.10
+pkgver=2.1.11
 pkgrel=1
 pkgdesc="Classification with Mixture Modelling"
 arch=('x86_64')
@@ -8,11 +8,11 @@ license=('GPL')
 depends=('gcc-libs')
 makedepends=('cmake' 'eigen')
 source=("https://github.com/mixmod/mixmod/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e0bc339f36ec22080a8a270ea87976f7b277ce4e3e9e383fba51548f83aa4d0b')
+sha256sums=('e95414decf5b2c2c5eebd7fca10e0100f2d753cbfca0694f4ac75da3b39b005e')
 
 build () {
   cd "$srcdir"/mixmod-${pkgver}
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_UNITY_BUILD=ON -DMIXMOD_ENABLE_OPENMP=OFF .
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_UNITY_BUILD=ON .
   make
 }
 

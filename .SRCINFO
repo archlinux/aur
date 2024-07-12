@@ -1,6 +1,6 @@
 pkgbase = libmixmod
 	pkgdesc = Classification with Mixture Modelling
-	pkgver = 2.1.10
+	pkgver = 2.1.11
 	pkgrel = 1
 	url = https://github.com/mixmod
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = libmixmod
 	makedepends = cmake
 	makedepends = eigen
 	depends = gcc-libs
-	source = https://github.com/mixmod/mixmod/archive/refs/tags/v2.1.10.tar.gz
-	sha256sums = e0bc339f36ec22080a8a270ea87976f7b277ce4e3e9e383fba51548f83aa4d0b
+	source = https://github.com/mixmod/mixmod/archive/refs/tags/v2.1.11.tar.gz
+	sha256sums = e95414decf5b2c2c5eebd7fca10e0100f2d753cbfca0694f4ac75da3b39b005e
 
 pkgname = libmixmod
