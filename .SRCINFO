@@ -1,7 +1,7 @@
 pkgbase = singland-bin
 	pkgdesc = A GUI for sing-box. The universal proxy platform
 	pkgver = pre_alpha_4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/net-breaker/sing-land
 	arch = x86_64
 	license = MIT
@@ -16,6 +16,6 @@ pkgbase = singland-bin
 	source = singland.sh
 	sha256sums = fb09e9be944c7237d9311b23206dd0e2e88b36462db76188ee6737c47b995b9e
 	sha256sums = 98137f871b486ba3e608ca184e98c22adc6f928521e70dc3f6d21b234252927d
-	sha256sums = 0c7b4041ba449cb35cb5cb23503be164af78e85572dda2d8db0ae3dc7fa2629c
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = singland-bin
