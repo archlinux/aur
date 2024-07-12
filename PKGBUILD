@@ -3,7 +3,7 @@ pkgname=subtitle-translator-electron-bin
 _pkgname=Subtitle-Translator
 pkgver=1.5.0
 _electronversion=29
-pkgrel=1
+pkgrel=2
 pkgdesc="Translate subtitle using ChatGPT"
 arch=('x86_64')
 url="https://github.com/gnehs/subtitle-translator-electron"
@@ -21,11 +21,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('73c9dd11be8bce3ba49c6db95295166f56883d299e3d7253af4ee192cdc9eb41'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
