@@ -1,0 +1,12 @@
+diff --git a/wsgi_intercept/_urllib3.py b/wsgi_intercept/_urllib3.py
+index 969ddac..6b1bc1c 100644
+--- a/wsgi_intercept/_urllib3.py
++++ b/wsgi_intercept/_urllib3.py
+@@ -33,6 +33,7 @@ def make_urllib3_override(HTTPConnectionPool, HTTPSConnectionPool,
+             if sys.version_info > (3, 12):
+                 kwargs.pop('key_file', None)
+                 kwargs.pop('cert_file', None)
++                kwargs.pop('ssl_context', None)
+             WSGI_HTTPSConnection.__init__(self, *args, **kwargs)
+             HTTPSConnection.__init__(self, *args, **kwargs)
+ 
