@@ -2,7 +2,7 @@
 
 pkgname=mapla
 pkgver=20240703
-pkgrel=1
+pkgrel=2
 pkgdesc='Example Alpe audio stream server'
 arch=('x86_64')
 url='https://gitlab.com/z-s-e/mapla'
@@ -10,7 +10,6 @@ license=('GPL-3.0-or-later')
 depends=('alsa-lib' 'gcc-libs' 'glibc')
 makedepends=('git' 'cmake')
 optdepends=('realtime-privileges: allow realtime operation')
-conflicts=('pulseaudio-alsa')
 source=('git+https://gitlab.com/z-s-e/mapla.git#commit=03b1a9e6'
         'git+https://gitlab.com/z-s-e/alpe.git'
         'git+https://github.com/z-s-e/lbu.git')
