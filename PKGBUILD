@@ -2,13 +2,21 @@
 
 pkgname=ruby-formatador
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='STDOUT text formatting'
 arch=(any)
 url='https://github.com/geemus/formatador'
 license=(MIT)
-depends=(ruby)
-checkdepends=(ruby-rake ruby-shindo)
+depends=(
+  ruby
+)
+makedepends=(
+  ruby-rdoc
+)
+checkdepends=(
+  ruby-rake
+  ruby-shindo
+)
 options=(!emptydirs)
 source=(https://github.com/geemus/formatador/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
 sha256sums=('cde51ce5fbe5871628344010d3d311afdf4de279f69133146045b9834a45f2c8')
