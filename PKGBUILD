@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgname="linux-xanmod-bin"
-pkgver='6.9.8'        # example for rt branch: pkgver='6.1.73.rt22'
+pkgver='6.9.9'        # example for rt branch: pkgver='6.1.73.rt22'
 branch='main'
 pkgrel="1"
 
