@@ -3,7 +3,7 @@
 # Contributor: Szymon Scholz <first name last name [at] gmail [dot] com>
 
 pkgname=emulsion-bin
-pkgver=10.4
+pkgver=11.0
 pkgrel=1
 pkgdesc="A fast and minimalistic image viewer (binary release)"
 url="https://github.com/ArturKovacs/emulsion"
@@ -13,11 +13,9 @@ depends=('hicolor-icon-theme' 'libavif')
 provides=("emulsion")
 conflicts=("emulsion")
 source=("$url/releases/download/v$pkgver/Emulsion-Linux.deb-v$pkgver.deb")
-sha256sums=('823fde86860ded2335c59114fc377fc02d14738ba5c1040cce54c501f5516a3f')
+sha256sums=('e9564387333592cd6dbc16dbeeb9dc4243d00a15d67bc821afd3c6e57c12b568')
 
 package() {
   tar -C "$pkgdir" -xf data.tar.gz
-  install -Dm644 "$pkgdir/usr/lib/emulsion/LICENSE.txt" -t "$pkgdir/usr/share/licenses/emulsion"
-# Fix error
-  ln -s /usr/lib/libdav1d.so "$pkgdir/usr/lib/libdav1d.so.6"
+  mv "$pkgdir/usr/lib" "$pkgdir/usr/share/licenses"
 }
