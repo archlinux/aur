@@ -1,0 +1,18 @@
+pkgbase = cosmic-tweaks-git
+	pkgdesc = A tweaking tool for the COSMIC desktop.
+	pkgver = r34.34ba854
+	pkgrel = 1
+	url = https://github.com/edfloreshz/cosmic-tweaks
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	makedepends = just
+	depends = hicolor-icon-theme
+	depends = libxkbcommon
+	provides = cosmic-tweaks
+	conflicts = cosmic-tweaks
+	source = git+https://github.com/edfloreshz/cosmic-tweaks.git
+	sha256sums = SKIP
+
+pkgname = cosmic-tweaks-git
