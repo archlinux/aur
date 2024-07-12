@@ -2,7 +2,7 @@
 pkgbase=python-sncosmo
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=2.10.4
+pkgver=2.11.1
 pkgrel=1
 pkgdesc="Python library for supernova cosmology"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ checkdepends=('python-pytest'
               'python-matplotlib')
 #             'python-yaml'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('03819f3f8f7691df666713d09292857a')
+md5sums=('913b0ae8f46efa50e56d7f621da8aec4')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -49,7 +49,7 @@ check() {
 }
 
 package() {
-    depends=('python-scipy>=1.3.0' 'python-astropy>=3.1' 'python-extinction>=0.4.4' 'python-yaml>=3.13' 'python-looseversion>=1.0.0')
+    depends=('python-scipy>=1.10.0' 'python-astropy>=5.0' 'python-extinction>=0.4.6' 'python-yaml>=6.0.1' 'python-looseversion>=1.0.0')
     optdepends=('python-matplotlib: For plotting functions'
                 'python-iminuit: For light curve fitting using the Minuit minimizer in sncosmo.fit_lc'
                 'python-emcee: For MCMC light curve parameter estimation in sncosmo.mcmc_lc'
