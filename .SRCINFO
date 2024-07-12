@@ -1,0 +1,17 @@
+pkgbase = sd-cli
+	pkgdesc = cli for creating bots templates created for skfx
+	pkgver = r2.63c2f0c
+	pkgrel = 1
+	url = https://github.com/skfxio/sd-cli
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-hatchling
+	makedepends = python-installer
+	depends = python3
+	depends = python-pip
+	source = git+https://github.com/skfxio/sd-cli.git
+	sha512sums = SKIP
+
+pkgname = sd-cli
