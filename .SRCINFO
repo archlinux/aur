@@ -1,0 +1,18 @@
+pkgbase = fcitx-anthy
+	pkgdesc = Fcitx Wrapper for anthy.
+	pkgver = 0.2.4
+	pkgrel = 2
+	url = https://github.com/fcitx/fcitx-anthy
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = intltool
+	depends = fcitx
+	depends = anthy
+	source = https://download.fcitx-im.org/fcitx-anthy/fcitx-anthy-0.2.4.tar.xz
+	source = https://download.fcitx-im.org/fcitx-anthy/fcitx-anthy-0.2.4.tar.xz.sig
+	validpgpkeys = 2CC8A0609AD2A479C65B6D5C8E8B898CBF2412F9
+	sha512sums = 31865bed5ff58c36e0360f002e7bfe21a6874d046746d8c781d59df7f48b11dc0b749b825ce0ab26d9a7bdf2c08decac27e14530eff5d1af33dfb25dfd0a90cb
+	sha512sums = SKIP
+
+pkgname = fcitx-anthy
