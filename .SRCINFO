@@ -1,7 +1,7 @@
 pkgbase = qtcreator-prerelease
 	pkgdesc = Qt Creator prerelease/latest
-	pkgver = 14.0.0beta1
-	pkgrel = 2
+	pkgver = 14.0.0rc1
+	pkgrel = 3
 	url = http://qt.io/ide
 	install = qtcreator-prerelease.install
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = qtcreator-prerelease
 	optdepends = valgrind: analyze support
 	provides = qtcreator
 	conflicts = qtcreator
-	source = https://download.qt.io/development_releases/qtcreator/14.0/14.0.0-beta1/qt-creator-opensource-src-14.0.0-beta1.tar.xz
-	sha512sums = 0ed616fe0e0665a4e1ae1288dd21b62f1ed54b95dcc808c22d8ca0d83b5e17d20d7cc02382bc394b5bf5dfd4be2029c504c99e9aff6b52be55c469f66bae7eb0
+	source = https://download.qt.io/development_releases/qtcreator/14.0/14.0.0-rc1/qt-creator-opensource-src-14.0.0-rc1.tar.xz
+	sha512sums = 657939d7e64ccffe8d249485f14d8a4471f323b3024501c46f29772d4de905325d67714a0acf55f36f123cac7c48b75e24230e825cab1f1ba93eca7c48f71aa8
 
 pkgname = qtcreator-prerelease
