@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=passwordsecure-bin
 _pkgname="Password Secure"
-pkgver=1.2024.05.05
+pkgver=1.2024.07.11
 pkgrel=1
 pkgdesc="A cross-platform password manager that uses strong AES-256 encryption."
 arch=(
@@ -30,9 +30,9 @@ makedepends=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${url}/releases/download/${pkgver}/${_pkgname// /}_Linux_arm64.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${url}/releases/download/${pkgver}/${_pkgname// /}_Linux_x64.zip")
 source=("${pkgname%-bin}.sh")
-sha256sums=('eb4bbf2fb5bc7e9d5c1378958c931f11ad6db6746d7f697331a98be5e572dae7')
-sha256sums_aarch64=('4a27bcbd0ec3f6456fcc3038ab47c55bc2ded50bc1d9fd1e11862807f7b1e34e')
-sha256sums_x86_64=('f4430df1785e4caeea2f6235fcb3d003418268b44d33e3ce849310b79d4605e5')
+sha256sums=('3974088aa9b0c1b19da2026da113d2b26af63b3b84e885a23c3b0ed8b0499f56')
+sha256sums_aarch64=('f8798aca72ff07ac6cc15ffcf4d934af085430ed7cbdbd873c9a6abc884fff44')
+sha256sums_x86_64=('3e1bc8edede97525e90854662c109d7bc68f7e059827c8d0b6b06e8a4bc009cf')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname// /}|g" \
