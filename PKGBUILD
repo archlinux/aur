@@ -8,11 +8,9 @@ pkgdesc="It is a plugin for all desktops supported by libappindicator. It provid
 arch=(x86_64)
 url="https://github.com/PiyushXCoder/powermode-indicator"
 license=(MIT)
-depends=(gtk3 libappindicator-gtk3 power-profiles-daemon)
+depends=(gtk3 libappindicator-gtk3 power-profiles-daemon gtkmm3 glibmm-2.68)
 makedepends=(
   cmake
-  gtkmm3
-  glibmm-2.68
   git
 )
 source=(
