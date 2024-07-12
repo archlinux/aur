@@ -3,7 +3,7 @@ pkgbase=python-nestle
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Nested sampling algorithms for evaluating Bayesian evidence"
 arch=('any')
 url="http://kylebarbary.com/nestle/"
@@ -13,7 +13,7 @@ makedepends=('python-setuptools')
 #            'python-build'
 #            'python-installer'
 checkdepends=('python-pytest'
-              'python-numpy')
+              'python-scipy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "${pkgver}-runtest.py::https://github.com/kbarbary/nestle/raw/v${pkgver}/runtests.py")
 md5sums=('49e14a2fc989ced42db7f0c411162e00'
@@ -23,7 +23,7 @@ prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
     ln -rs {${srcdir}/${pkgver}-,}runtest.py
-    sed -i -e "s/np.int/int/" -e "s/np.float)/np.float64)/" nestle.py
+    sed -i -e "s/np\.int/int/" -e "s/np.float)/np.float64)/" -e "s/np.product/np.prod/" nestle.py
 }
 
 build() {
