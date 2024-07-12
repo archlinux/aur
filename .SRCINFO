@@ -1,0 +1,18 @@
+pkgbase = fcitx-unikey
+	pkgdesc = Fcitx Wrapper for unikey
+	pkgver = 0.2.7
+	pkgrel = 4
+	url = https://github.com/fcitx/fcitx-unikey
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = fcitx-qt5
+	depends = fcitx
+	optdepends = fcitx-qt5: To run the fcitx unikey macro editor
+	source = https://download.fcitx-im.org/fcitx-unikey/fcitx-unikey-0.2.7.tar.xz
+	source = https://download.fcitx-im.org/fcitx-unikey/fcitx-unikey-0.2.7.tar.xz.sig
+	validpgpkeys = 2CC8A0609AD2A479C65B6D5C8E8B898CBF2412F9
+	sha512sums = 1bb78e4f27f0cda1e3aa5a633be45e0a26d121d5b472b1325b0c028ff65ca156d23e7ffee0367badeac1dd21ba1743ee8a2c9c27c629ae0996e84e0062b67ad2
+	sha512sums = SKIP
+
+pkgname = fcitx-unikey
