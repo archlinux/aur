@@ -3,7 +3,7 @@ pkgname=xilinota-bin
 _pkgname=Xilinota
 pkgver=2.15.1
 _electronversion=28
-pkgrel=2
+pkgrel=3
 pkgdesc="An open-source multi-platform note-taking application boasting instant syncing among devices and direct keeping of markdown files."
 arch=("x86_64")
 url="https://github.com/XilinJia/Xilinota"
@@ -22,11 +22,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('582bc309ca86fd536b086b791c31dd985b506bb7ba266db6de0f831d45c6ab8b'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
