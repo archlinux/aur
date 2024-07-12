@@ -1,17 +1,19 @@
 pkgbase = python-aiogithubapi
 	pkgdesc = Asynchronous Python client for the GitHub API
-	pkgver = 23.2.1
-	pkgrel = 3
+	pkgver = 24.6.0
+	pkgrel = 1
 	url = https://github.com/ludeeus/aiogithubapi
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = python>=3.11
-	depends = python-aiohttp>3.8
+	depends = python>=3.8
+	depends = python-poetry-core>=1.0.0
+	depends = python-aiohttp>=3.8
+	depends = python-async-timeout>=4
 	depends = python-backoff<3
-	source = https://files.pythonhosted.org/packages/source/a/aiogithubapi/aiogithubapi-23.2.1.tar.gz
-	b2sums = 454d34d34508051e4b85998b9e8d228ac77ac6ffcd0d859b10793457816987ff31d5ed5335ce70ce6b2eb19036c78c82a6bb9a40bac6fedba3fe4c438d7b4180
+	source = https://files.pythonhosted.org/packages/source/a/aiogithubapi/aiogithubapi-24.6.0.tar.gz
+	b2sums = a3fb7ba5476a53aa99c49c53ea26aceefa5d624bcb23722a0b90866453cdedfa898645b460a4dfb328f9fb4e6a131f969e8eebd3990565f0f6bfc1e0bede5322
 
 pkgname = python-aiogithubapi
