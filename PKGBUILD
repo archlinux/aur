@@ -4,14 +4,14 @@ _pkgver=v2024.1-beta2.security1
 
 pkgname=iceshrimp.net-pre
 pkgver=2024.1.beta2.security1
-pkgrel=2
+pkgrel=3
 pkgdesc="Decentralized and federated social networking service, implementing the ActivityPub standard"
 arch=(x86_64 aarch64)
 url="https://iceshrimp.dev/iceshrimp/iceshrimp.net"
 license=(EUPL)
 
 makedepends=()
-depends=('aspnet-runtime>=8.0' 'aspnet-runtime<9.0')
+depends=()
 optdepends=(
   "ffmpeg: for video transcoding"
 )
@@ -57,6 +57,9 @@ pkgver() {
 package() {
   # Add runtime-only dependencies
   depends+=(postgresql libvips openjpeg2)
+
+  # Since we're using the release tarballs, we only need the runtime after installation
+  depends+=('aspnet-runtime>=8.0' 'aspnet-runtime<9.0')
 
   install -dm 755 "${pkgdir}/usr/share/iceshrimp.net"
   install -dm 755 "${pkgdir}/etc/iceshrimp.net"

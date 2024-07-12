@@ -1,14 +1,12 @@
 pkgbase = iceshrimp.net-pre
 	pkgdesc = Decentralized and federated social networking service, implementing the ActivityPub standard
 	pkgver = 2024.1.beta2.security1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://iceshrimp.dev/iceshrimp/iceshrimp.net
 	install = iceshrimp.net.install
 	arch = x86_64
 	arch = aarch64
 	license = EUPL
-	depends = aspnet-runtime>=8.0
-	depends = aspnet-runtime<9.0
 	optdepends = ffmpeg: for video transcoding
 	provides = iceshrimp.net
 	conflicts = iceshrimp.net
@@ -29,8 +27,8 @@ pkgbase = iceshrimp.net-pre
 	sha512sums_aarch64 = a63454278e47f5530e0ea6966c3c6e47676ab02f5c6d7ab81865b7c1a57cc3fc8a8a8c0ce8f1b84950f8a32730ebca08b6bdf7b1f101d2ec9974e03b6f5b5acb
 
 pkgname = iceshrimp.net-pre
-	depends = aspnet-runtime>=8.0
-	depends = aspnet-runtime<9.0
 	depends = postgresql
 	depends = libvips
 	depends = openjpeg2
+	depends = aspnet-runtime>=8.0
+	depends = aspnet-runtime<9.0
