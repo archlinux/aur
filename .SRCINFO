@@ -1,7 +1,7 @@
 pkgbase = android-aarch64-nettle
 	pkgdesc = A low-level cryptographic library (Android aarch64)
 	pkgver = 3.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.lysator.liu.se/~nisse/nettle
 	arch = any
 	license = GPL2
@@ -12,6 +12,8 @@ pkgbase = android-aarch64-nettle
 	options = staticlibs
 	options = !emptydirs
 	source = https://ftp.gnu.org/gnu/nettle/nettle-3.10.tar.gz
+	source = 0001-Unversioned-libs.patch
 	md5sums = c61453139d5fb44e9cdcc5b684b26e55
+	md5sums = 604ae2c58164024fbe4debc2aa6eb6cc
 
 pkgname = android-aarch64-nettle
