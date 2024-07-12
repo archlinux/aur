@@ -1,15 +1,17 @@
 pkgbase = ape-bin
 	pkgdesc = actually portable executable loader
 	pkgver = 1.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://justine.lol/cosmopolitan/index.html
 	install = ape.install
 	arch = x86_64
 	arch = aarch64
 	license = ISC
-	source = https://cosmo.zip/pub/cosmocc/cosmocc-3.2.zip
 	source = ape-binfmt.conf
-	sha512sums = 16da1ed606948830900b0a04fd78eee0e6608f8ce4fc03b37f64f13e62db297d668c961a93d3ecd3d1135972f6d071c54fa9d600d2b8a5bd4542726ec80fc609
-	sha512sums = 4574caf236235ce327341dc4e6b2ef4b001ffb2086b156fd72b80c99733186473f2e07dd1fc605206f1ee8a0d03d5deca8d9b2f72fca44e08762548ea6efff96
+	sha256sums = 3e9c148ca8aeed687ec05bc06fea954b08cf4fff9044a06ab19a0e48c4dc8e17
+	source_x86_64 = https://cosmo.zip/pub/cosmos/v/3.3.1/bin/ape-x86_64.elf
+	sha256sums_x86_64 = 7c1cf8b24e1b6dd6ad7da3817045d582ada146b4d6ec0c6a45bea830e3a65f4d
+	source_aarch64 = https://cosmo.zip/pub/cosmos/v/3.3.1/bin/ape-aarch64.elf
+	sha256sums_aarch64 = 877ccbd465243065426cb4a3cab4351acad918649f8656556bb604882eead08f
 
 pkgname = ape-bin
