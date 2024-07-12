@@ -1,6 +1,6 @@
 pkgbase = python-ibm-cloud-sdk-core
 	pkgdesc = Core python functionality required by the IBM Cloud OpenAPI SDK Generator
-	pkgver = 3.20.0
+	pkgver = 3.20.3
 	pkgrel = 2
 	url = https://github.com/IBM/python-sdk-core
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-ibm-cloud-sdk-core
 	depends = python-requests
 	depends = python-dateutil
 	depends = python-pyjwt
-	source = https://github.com/IBM/python-sdk-core/archive/refs/tags/v3.20.0.tar.gz
-	sha256sums = 9d7637b7f70a0b4805cfa3c02213c42ebb48baa64020f6559221733c79b1291e
+	source = https://github.com/IBM/python-sdk-core/archive/refs/tags/v3.20.3.tar.gz
+	sha256sums = 2132574a94c0b2022244fe1194ff3e917ad527703dba4d7bf9ae06942a45b61e
 
 pkgname = python-ibm-cloud-sdk-core
