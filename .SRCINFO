@@ -1,0 +1,23 @@
+pkgbase = cpp-hocon
+	pkgdesc = C++ port of the Typesafe Config library
+	pkgver = 0.3.0
+	pkgrel = 16
+	url = https://github.com/puppetlabs/cpp-hocon
+	arch = x86_64
+	license = APACHE
+	checkdepends = python
+	makedepends = boost
+	makedepends = cmake
+	makedepends = leatherman
+	makedepends = rapidjson
+	depends = boost-libs
+	depends = gcc-libs
+	depends = glibc
+	depends = leatherman
+	depends = leatherman_util.so
+	depends = leatherman_locale.so
+	provides = libcpp-hocon.so
+	source = cpp-hocon-0.3.0.tar.gz::https://github.com/puppetlabs/cpp-hocon/archive/0.3.0.tar.gz
+	sha512sums = de997e6d90330f901863b7da0d6f6e069a31e052b6f31c1e3009a9559c863f08879ecf4e202c763ec32567dd3a1e436ff5d3bf0b3009a085ef3ee95e5ca6c7e5
+
+pkgname = cpp-hocon
