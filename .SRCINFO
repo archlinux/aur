@@ -1,0 +1,14 @@
+pkgbase = fcitx-sayura
+	pkgdesc = Sinhala Transe IME engine for fcitx.
+	pkgver = 0.1.2
+	pkgrel = 3
+	url = https://github.com/fcitx/fcitx-sayura
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = intltool
+	depends = fcitx
+	source = https://download.fcitx-im.org/fcitx-sayura/fcitx-sayura-0.1.2.tar.xz
+	sha512sums = 2118c95d4f831e5f4e0af0549ae3eb4f16bff8b30b03452837bd14f35fcb524f730b27ceb7c14cf6a4db7400a67070929a75465195b5524187e97c7ca02de466
+
+pkgname = fcitx-sayura
