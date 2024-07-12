@@ -1,7 +1,7 @@
 pkgbase = stlink-server
 	pkgdesc = An application to share the debug interface of a single ST-LINK board among several host applications, typically a debugging tool and a monitoring tool
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = 'https://www.st.com/en/development-tools/st-link-server.html
 	arch = x86_64
 	license = custom:SLA0048

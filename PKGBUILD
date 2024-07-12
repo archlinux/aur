@@ -4,7 +4,7 @@
 pkgname=stlink-server
 _pkgname=st-link-server
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An application to share the debug interface of a single ST-LINK board among several host applications, typically a debugging tool and a monitoring tool"
 arch=('x86_64')
 url="'https://www.st.com/en/development-tools/st-link-server.html"
@@ -32,8 +32,7 @@ DLAGENTS=("https::/usr/bin/curl \
               -H ${_useragent_escaped} \
               -o %o --compressed %u")
 
-_curl_req_url="https://www.st.com/content/st_com_cx/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-performance-and-debuggers/st-link-server/_jcr_content/get-software/get-software-table-body.nocache.html/st-site-cx/components/containers/product/get-software-table-body.html"
-
+_curl_req_url="https://www.st.com/content/st_com_cx/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-performance-and-debuggers/st-link-server/_jcr_content/get-software/getsw-table-nli.nocache.html/st-site-cx/components/containers/product/get-software-table-body.html"
 _curl_req="$(curl -s --compressed -H "$_curl_useragent" "$_curl_req_url")"
 _pkg_url="$(grep -m 1 "${_pkg_zip_name}" <<< "$_curl_req")"
 _pkg_url="$(awk -F'"' '{print $4}' <<< "$_pkg_url")"
