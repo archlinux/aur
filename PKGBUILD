@@ -4,9 +4,9 @@
 
 pkgname=flirc-bin
 _pkgname=flirc
-_pkgver=3.27.9
-_debrel=bullseye
-_dirstr=ver_24auiw
+_pkgver=3.27.15-1
+_debrel=amd64
+_dirstr=ver_1iqEqV
 pkgver=${_pkgver/-/.}
 pkgrel=1
 pkgdesc="CLI and GUI application to program your Flirc device"
@@ -17,8 +17,8 @@ depends=('libusb' 'hidapi' 'qt5-svg' 'qt5-xmlpatterns' 'readline7')
 provides=('flirc')
 conflicts=('flirc')
 replaces=('flirc')
-source=(https://apt.fury.io/flirc/files/${_dirstr}/flirc_${pkgver}_${_debrel}.deb)
-md5sums=('da1a2c04eafef8bda564742a2a1bd7f8')
+source=(https://apt.fury.io/flirc/files/${_dirstr}/flirc_${_pkgver}_${_debrel}.deb)
+md5sums=('ed02ab0177de259c8c5aeed392be6361')
 
 package() {
   tar -xf data.tar.gz -C "$pkgdir"
