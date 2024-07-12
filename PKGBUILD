@@ -14,9 +14,11 @@ depends=(
   'fzf'
   'neovim-remote'
   'tree-sitter'
+  'tree-sitter-cli'
   'python-pynvim'
   'nodejs'
-  'yarn')
+  'yarn'
+)
 makedepends=('git')
 optdepends=(
     'ripgrep: optional dependencies for telescope.nvim'
