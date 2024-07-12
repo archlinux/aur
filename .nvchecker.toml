@@ -1,0 +1,4 @@
+[libchamplain]
+source = "git"
+git = "https://gitlab.gnome.org/GNOME/libchamplain.git"
+prefix = "v"
