@@ -1,10 +1,4 @@
-*.tar.*
-*.orig
-*.rej
-*.swp
-*.part
-src
-pkg
-bitrise-*
-README.md
-LICENSE
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
