@@ -1,7 +1,7 @@
 # Maintainer:  edward-p <edward AT edward-p DOT xyz>
 
 pkgname=lunarvim-git
-pkgver=1.2.0.r154.g476743d2
+pkgver=1.4.0.r3.g85ccca97
 pkgrel=1
 pkgdesc="An IDE layer for Neovim with sane defaults. Completely free and community driven."
 arch=('any')
@@ -18,7 +18,10 @@ depends=(
   'nodejs'
   'yarn')
 makedepends=('git')
-optdepends=('ripgrep: optional dependencies for telescope.nvim')
+optdepends=(
+    'ripgrep: optional dependencies for telescope.nvim'
+    'lazygit: enables <leader>gg to launch lazygit for intergrated and enhanced Git experience while in lvim'
+    )
 install=${pkgname}.install
 langs=(bash beancount bibtex
   c c_sharp clojure cmake comment commonlisp cpp css cuda
@@ -46,7 +49,7 @@ source=("${pkgname}::git+https://github.com/LunarVim/LunarVim.git#branch=master"
   "lvim")
 sha256sums=('SKIP'
             'SKIP'
-            'e7e1f3fffee92a89cc3091c17d264624d08a67539303ad1fd15d0b38c8206bd8'
+            '292b573c40e8ccad72c70e6602496077835e1370122035685b6a88606004abe0'
             'fe16e9974a8a4ee877d63e15f346c6f886c357e08c08a7e300e29092d5ec732a')
 
 pkgver() {
