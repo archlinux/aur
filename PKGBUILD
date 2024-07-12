@@ -4,7 +4,7 @@
 
 pkgname=fcitx-ui-light
 pkgver=0.1.3
-pkgrel=5
+pkgrel=6
 pkgdesc="Light weight xlib and xft based ui for fcitx."
 arch=('x86_64')
 url="https://github.com/fcitx/fcitx-ui-light"
