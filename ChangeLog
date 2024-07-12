@@ -877,3 +877,13 @@ Fixes:
 - In the previous version, links to task sources in Todoist, Notion, and Clickup could not be opened on macOS in instances when the native third-party app was not installed. This has been rectified.
 - We fixed an issue that was causing a flickering of events.
 
+
+
+=== Morgen 3.5.2
+Fixes:
+- We fixed a problem that was causing tasks to be stored in the local database even after the associated task list was deleted. While these orphaned tasks were not displayed, their accumulation may have caused degraded app performance.
+- Now, when a task list is deleted, the tasks within it will also be removed. If you are a heavy Morgen tasks user, we recommend you click Show archived tasks > Delete all to trigger the deletion of closed tasks as well as tasks that no longer belong to a list.
+
+Improvements:
+- Time zone definitions have been updated
+- We optimized some background computation that may have reduced performance following the previous update
