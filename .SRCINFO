@@ -1,14 +1,14 @@
 pkgbase = libblake3
 	pkgdesc = the C implementations of the BLAKE3 cryptographic hash function
-	pkgver = 1.5.1
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://blake3.io/
 	arch = x86_64
-	license = Apache-2.0
+	license = CC0-1.0 OR Apache-2.0 OR Apache-2.0 WITH LLVM-exception
 	makedepends = cmake
 	depends = glibc
 	provides = libblake3.so
-	source = libblake3-1.5.1.tar.gz::https://github.com/BLAKE3-team/BLAKE3/archive/refs/tags/1.5.1.tar.gz
-	sha256sums = 822cd37f70152e5985433d2c50c8f6b2ec83aaf11aa31be9fe71486a91744f37
+	source = libblake3-1.5.2.tar.gz::https://github.com/BLAKE3-team/BLAKE3/archive/refs/tags/1.5.2.tar.gz
+	sha256sums = 1bc38cd3cc501458054c3bb473e5e00338d6175121424040079025ea305ddef3
 
 pkgname = libblake3
