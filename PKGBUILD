@@ -33,7 +33,7 @@ prepare() {
 	cd gbsplay
 	
 	# modifies usage string to print the full path instead of just the filename
-	sed 's|gbs2ogg.sh|$0|g' --in-place contrib/gbs2ogg.sh
+	sed 's|gbs2ogg.sh|gbs2ogg|g' --in-place contrib/gbs2ogg.sh
 	
 	# stops mime database from updating
 	git apply -3 "$srcdir"/do-not-update-database.patch
