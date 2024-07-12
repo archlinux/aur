@@ -5,7 +5,7 @@
 
 pkgname=linux-enable-ir-emitter-git
 pkgver=6.0.0.r1.g7558eae
-pkgrel=3
+pkgrel=4
 pkgdesc="Enables infrared cameras that are not directly enabled out-of-the box"
 url="https://github.com/EmixamPP/linux-enable-ir-emitter"
 license=('MIT')
@@ -14,8 +14,8 @@ arch=('x86_64')
 provides=(linux-enable-ir-emitter)
 conflicts=(linux-enable-ir-emitter chicony-ir-toggle)
 
-makedepends=(git meson argparse qt6-base zlib gtk3)
-depends=(opencv fmt yaml-cpp spdlog glibc bash gcc-libs)
+makedepends=(git meson argparse qt6-base zlib gtk3 gcc13)
+depends=(opencv fmt yaml-cpp spdlog glibc bash gcc13-libs)
 
 install=linux-enable-ir-emitter.install
 options=(emptydirs)
@@ -30,7 +30,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${pkgname}"
-    meson setup --prefix=/usr build
+    CC=gcc-13 CXX=g++-13 meson setup --prefix=/usr --wipe build
     meson compile -C build
 }
 
