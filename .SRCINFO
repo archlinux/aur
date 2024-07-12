@@ -1,0 +1,12 @@
+pkgbase = mp3splt
+	pkgdesc = Commandline tool for splitting mp3 and ogg files without decoding
+	pkgver = 2.6.2
+	pkgrel = 3
+	url = http://mp3splt.sourceforge.net
+	arch = x86_64
+	license = GPL
+	depends = libmp3splt
+	source = https://downloads.sourceforge.net/sourceforge/mp3splt/mp3splt-2.6.2.tar.gz
+	sha512sums = c1cbdc905d4f19e8e20afeadf02a2967049d86e69613312c8855e03afc5b190a569ac63f970171384853961cbe6bf248fae47e5116c4fe9deb7a0787f299918b
+
+pkgname = mp3splt
