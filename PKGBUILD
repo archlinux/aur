@@ -2,7 +2,7 @@
 
 pkgname=laborejo
 pkgver=2.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="MIDI sequencer based on classical music notation"
 arch=(any)
 url="https://laborejo.org/laborejo/"

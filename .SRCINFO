@@ -1,0 +1,24 @@
+pkgbase = laborejo
+	pkgdesc = MIDI sequencer based on classical music notation
+	pkgver = 2.2.2
+	pkgrel = 2
+	url = https://laborejo.org/laborejo/
+	arch = any
+	groups = pro-audio
+	license = GPL3
+	depends = hicolor-icon-theme
+	depends = libcalfbox-lss
+	depends = python
+	depends = python-pyqt5
+	depends = ttf-dejavu
+	optdepends = lilypond: for export to .ly and .pdf
+	optdepends = new-session-manager: for session management
+	source = https://laborejo.org/downloads/laborejo-2.2.2.tar.gz
+	source = https://laborejo.org/downloads/laborejo-2.2.2.tar.gz.sig
+	validpgpkeys = 45D952EF384ADFBB00913E3428C6A306F2909FEE
+	sha512sums = 15b3babdf16287445db4a6536b7562364df1cfe2e21a60d30a13962e2f126c2175c5197c928fd4a8a4bb9411513e8799815329b30946d1798bea00b643767059
+	sha512sums = SKIP
+	b2sums = 8a6416ac4136fab9515ed98d4e9d415c9e8ff4dcb3a5d17a5d0c67b849a488654cdf868c63ec02e92178dfad27f5b4dfc2a5a4c9c8796b2050f03b64a96351ae
+	b2sums = SKIP
+
+pkgname = laborejo
