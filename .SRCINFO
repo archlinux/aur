@@ -1,6 +1,6 @@
 pkgbase = python-jaxtyping
 	pkgdesc = Type annotations and runtime checking for shape and dtype of JAX arrays, and PyTrees.
-	pkgver = 0.2.29
+	pkgver = 0.2.32
 	pkgrel = 1
 	url = https://github.com/google/jaxtyping
 	arch = any
@@ -10,11 +10,10 @@ pkgbase = python-jaxtyping
 	makedepends = python-hatchling
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = python-numpy
 	depends = python-typeguard
 	optdepends = python-jax: Original JAX type system support.
 	optdepends = python-pytest: Extension for pytest with jaxtyping plugin.
-	source = python-jaxtyping-0.2.29.tar.gz::https://github.com/google/jaxtyping/archive/refs/tags/v0.2.29.tar.gz
-	sha256sums = b2d423bb700bf7e3bb1bf230f0f7de6d2950044b19d3548c9ecb26fadbe3467d
+	source = python-jaxtyping-0.2.32.tar.gz::https://github.com/google/jaxtyping/archive/refs/tags/v0.2.32.tar.gz
+	sha256sums = 542bdd4d0476b4e80349e0160d5dc5202846abbdf62dfe773d0282f4674a253c
 
 pkgname = python-jaxtyping
