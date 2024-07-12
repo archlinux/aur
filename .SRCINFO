@@ -1,0 +1,19 @@
+pkgbase = gtkmm
+	pkgdesc = C++ bindings for GTK+ 2
+	pkgver = 2.24.5
+	pkgrel = 5
+	epoch = 1
+	url = http://www.gtkmm.org/
+	arch = x86_64
+	license = LGPL
+	depends = gtk2
+	depends = pangomm
+	depends = atkmm
+	source = https://ftp.gnome.org/pub/GNOME/sources/gtkmm/2.24/gtkmm-2.24.5.tar.xz
+	sha256sums = 0680a53b7bf90b4e4bf444d1d89e6df41c777e0bacc96e9c09fc4dd2f5fe6b72
+
+pkgname = gtkmm
+
+pkgname = gtkmm-docs
+	pkgdesc = C++ bindings for GTK+ 2 (documentation)
+	depends = 

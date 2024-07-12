@@ -4,7 +4,7 @@
 pkgbase=gtkmm
 pkgname=(gtkmm gtkmm-docs)
 pkgver=2.24.5
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc="C++ bindings for GTK+ 2"
 url="http://www.gtkmm.org/"
