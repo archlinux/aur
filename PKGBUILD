@@ -1,7 +1,7 @@
 # Contributor: Matthias Fulz < mfulz [at] olznet [dot] de >
 
 pkgname=openvas-scanner
-pkgver=23.5.0
+pkgver=23.5.1
 pkgrel=1
 pkgdesc='Vulnerability scanning Daemon'
 arch=('x86_64')
@@ -14,7 +14,7 @@ install=openvas.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/greenbone/openvas-scanner/archive/v${pkgver}.tar.gz"
         "greenbone-nvt-sync.timer"
         "greenbone-nvt-sync.service")
-sha512sums=('04a58bcd7ed83c2ad32337c0e4f6b0a11b02105e8ab1037e9bd354dbbfa8caccf42ebd83c19a45bfd281f7f30c21eae012781b1b36aae45662643ab44cb88349'
+sha512sums=('1a0cc15da010ef77c53df6ec525db1ef025c3ce31860ee3490425e3fd2541fd3a503e11242ce9e517eb6ca581f76e220202b9b6ee3f1616afa57f3d4c923cc85'
             '2df63297cd9bd1cfb7b774152b1791ff946a1a410e563e54212652d847063b3c22b5362cd287b1bd73684be1fbd66464a2f8bb79b92cd086ba58e9a801d675ec'
             '1ef913c24721533b0f779047532de63d195e8498885b90972a7bbbfb734444c0f7cbdcc52c437b2ce773881d45eadfcec03fcd00886e02962cb06d318d0c7c96')
 
