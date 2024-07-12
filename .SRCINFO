@@ -2,6 +2,7 @@ pkgbase = shimmer-wallpapers
 	pkgdesc = Complementary wallpaper collection for the Shimmer Project Xfce themes
 	pkgver = r1.ba134cb
 	pkgrel = 1
+	epoch = 1
 	url = http://shimmerproject.org
 	arch = any
 	license = CCPL:by-sa-3.0

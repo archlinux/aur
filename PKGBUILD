@@ -10,6 +10,7 @@ pkgname=shimmer-wallpapers
 _pkgname=Wallpapers
 pkgver=r1.ba134cb
 pkgrel=1
+epoch=1
 pkgdesc="Complementary wallpaper collection for the Shimmer Project Xfce themes"
 arch=("any")
 url=http://shimmerproject.org
