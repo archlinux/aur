@@ -2,7 +2,7 @@
 
 _pkgname="phylum"
 pkgname="${_pkgname}-git"
-pkgver=6.6.5.r0.gba1e10c
+pkgver=6.6.6.r0.g7b5531d
 pkgrel=1
 pkgdesc="Command line interface for the Phylum API"
 arch=('any')
@@ -11,6 +11,8 @@ _url="https://github.com/${_pkgname}-dev/cli"
 license=('MIT')
 depends=('glibc' 'gcc-libs' 'zlib')
 makedepends=('git' 'cargo')
+optdepends=('bash-completion: for shell auto-completion'
+            'zsh-completions: for shell auto-completion')
 provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
 _pkgsrc="cli"
@@ -45,7 +47,7 @@ check() {
 package() {
   cd "${srcdir}/${_pkgsrc}"
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
   cd "target"
   install -Dm755 "release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
@@ -53,5 +55,5 @@ package() {
   cd "completions"
   install -Dm644 "${_pkgname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
   install -Dm644 "${_pkgname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
-  install -Dm644 "_${_pkgname}" "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
+  install -Dm644 "_${_pkgname}"     "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
 }
