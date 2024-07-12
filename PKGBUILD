@@ -8,7 +8,7 @@ _android_arch=aarch64
 
 pkgname=android-${_android_arch}-twolame
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An optimized MPEG Audio Layer 2 (MP2) encoder (Android ${_android_arch})"
 arch=('any')
 url="http://www.twolame.org/"
@@ -39,6 +39,8 @@ package() {
     source android-env ${_android_arch}
 
     make DESTDIR="$pkgdir" install
+    rm -rf "${pkgdir}/${ANDROID_PREFIX_BIN}"
+    rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
