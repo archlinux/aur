@@ -3,7 +3,7 @@ pkgname=tiny-rdm
 _pkgname="Tiny RDM"
 pkgver=1.1.14
 _nodeversion=18
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern lightweight cross-platform Redis desktop manager"
 arch=('any')
 url="https://redis.tinycraft.cc/"
@@ -22,6 +22,7 @@ makedepends=(
     'gcc'
     'cmake'
     'wails'
+    'curl'
 )
 options=(
     '!strip'
@@ -29,7 +30,7 @@ options=(
 source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('a0fd63a022ad5ebb01bd0f6683eacf41e12d12b931315e43dee3cd57ebf84508')
+sha256sums=('ca29cf152e23f0aab608e67cbb68931e5c6e23113a00287e03f9ec294b5e177f')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
