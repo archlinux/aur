@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov
 
 pkgname=cartridge-cli
-pkgrel=1
+pkgrel=2
 pkgver=2.12.5
 pkgdesc='Tarantool Cartridge command-line utility'
 arch=(x86_64)

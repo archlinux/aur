@@ -1,0 +1,15 @@
+pkgbase = cartridge-cli
+	pkgdesc = Tarantool Cartridge command-line utility
+	pkgver = 2.12.5
+	pkgrel = 2
+	url = https://tarantool.io/
+	arch = x86_64
+	license = BSD
+	makedepends = go
+	makedepends = mage
+	depends = glibc
+	options = !lto
+	source = cartridge-cli-2.12.5.tar.gz::https://github.com/tarantool/cartridge-cli/archive/refs/tags/2.12.5.tar.gz
+	sha256sums = 75a304b6445b7d30b917bf17d46e8498bd93177cec395f9e5596ae7b52d67ecb
+
+pkgname = cartridge-cli
