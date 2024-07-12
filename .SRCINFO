@@ -1,6 +1,6 @@
 pkgbase = python-confluent-kafka
 	pkgdesc = Confluent's Python client for Apache Kafka
-	pkgver = 2.4.0
+	pkgver = 2.5.3
 	pkgrel = 1
 	url = https://github.com/confluentinc/confluent-kafka-python
 	changelog = CHANGELOG.md
@@ -13,7 +13,7 @@ pkgbase = python-confluent-kafka
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
 	depends = python
-	depends = librdkafka
+	depends = librdkafka-git
 	depends = glibc
 	depends = python-requests
 	depends = python-protobuf
@@ -22,7 +22,7 @@ pkgbase = python-confluent-kafka
 	depends = python-avro
 	depends = python-jsonschema
 	depends = python-protobuf
-	source = python-confluent-kafka-2.4.0.tar.gz::https://api.github.com/repos/confluentinc/confluent-kafka-python/tarball/refs/tags/v2.4.0
-	b2sums = 0e677a165432105a4c09bf31a22d6788bd295dbe6a0972a260b1feffebddece225eadbf20d76937105d1750ca23b237e429dc09d65be78dc1291c72a84a236af
+	source = python-confluent-kafka-2.5.3.tar.gz::https://api.github.com/repos/confluentinc/confluent-kafka-python/tarball/refs/tags/v2.5.3
+	b2sums = 12d2ee31567282e35090ed7b15ec81bb40eaf24f0707679d78b0ed9db3ecef399c36ae5688d01dc6436d8b0bac43d0df3f4dc1ee2f0f09805db12d78369b0ffa
 
 pkgname = python-confluent-kafka
