@@ -18,9 +18,9 @@ lvim --headless -c 'quitall'
 
 echo -e "\033[1;32m==> Installing treesitter parsers..\033[0m"
 ln -s /usr/share/lunarvim/prebuild/nvim-treesitter/parser/* \
-  ~/.local/share/lunarvim/site/pack/packer/start/nvim-treesitter/parser/
+  ~/.local/share/lunarvim/site/pack/lazy/opt/nvim-treesitter/parser/
 ln -s /usr/share/lunarvim/prebuild/nvim-treesitter/parser-info/* \
-  ~/.local/share/lunarvim/site/pack/packer/start/nvim-treesitter/parser-info/
+  ~/.local/share/lunarvim/site/pack/lazy/opt/nvim-treesitter/parser-info/
 
 echo -e "\033[1;32m==> Generate the new ftplugin template files..\033[0m"
 lvim --headless +LvimUpdate +q
