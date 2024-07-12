@@ -3,7 +3,7 @@
 # Contributor: lilydjwg <lilydjwg@gmail.com>
 # Contributor: Adrian Perez de Castro <aperez@igalia.com>
 # Contributor: Antonin Décimo <antonin dot decimo at gmail dot com>
-pkgname=wlroots-hidpi-xprop
+pkgname=wlroots0.17-hidpi-xprop
 pkgver=0.17.4
 pkgrel=1
 license=(MIT)
