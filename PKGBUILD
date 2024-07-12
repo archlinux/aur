@@ -1,7 +1,7 @@
 # Maintainer: Razer <razer[AT]neuf[DOT]fr>
 
 pkgname=python-adafruit-circuitpython-bitmap-font
-_pypi_pkgname=adafruit-circuitpython-bitmap_font
+_pypi_pkgname=adafruit_circuitpython_bitmap_font
 pkgver=2.1.2
 pkgrel=0
 pkgdesc="Loads bitmap fonts into CircuitPython displayio"
