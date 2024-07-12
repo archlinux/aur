@@ -1,0 +1,26 @@
+pkgbase = libwhereami
+	pkgdesc = Library to report hypervisor information from inside a VM
+	pkgver = 0.5.0
+	pkgrel = 18
+	url = https://github.com/puppetlabs/libwhereami
+	arch = x86_64
+	license = APACHE
+	checkdepends = python
+	makedepends = boost
+	makedepends = cmake
+	makedepends = rapidjson
+	makedepends = curl
+	depends = boost-libs
+	depends = gcc-libs
+	depends = glibc
+	depends = leatherman
+	depends = leatherman_execution.so
+	depends = leatherman_file_util.so
+	depends = leatherman_util.so
+	depends = leatherman_logging.so
+	depends = leatherman_locale.so
+	provides = libwhereami.so
+	source = https://github.com/puppetlabs/libwhereami/archive/0.5.0/libwhereami-0.5.0.tar.gz
+	sha512sums = e9a0332f4ec0a2e6201cdf6212f2f1ced5a948e94aaa638c8d8a69f7306828b6168924775788b31316eecab59377a5ebd9310293e8e708e418c68fe47b248c13
+
+pkgname = libwhereami
