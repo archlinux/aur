@@ -1,18 +1,19 @@
 pkgbase = tomb
 	pkgdesc = Crypto Undertaker, a simple tool to manage encrypted storage
 	pkgver = 2.11
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.dyne.org/software/tomb/
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL3
 	source = https://files.dyne.org/tomb/releases/Tomb-2.11.tar.gz
 	source = https://files.dyne.org/tomb/releases/Tomb-2.11.tar.gz.sha
 	source = https://files.dyne.org/tomb/releases/Tomb-2.11.tar.gz.asc
+	source = _tomb
 	validpgpkeys = 6113D89CA825C5CEDD02C87273B35DA54ACB7D10
 	sha256sums = f524f997e9967371ae65280726de32ea123ef7bf6fa9998f74c9ae90ba27c315
 	sha256sums = 777bfe815f68a5fab1c6d0e186e6d4fe7f889e68ccc78de54bb40ce4fdd634a2
 	sha256sums = SKIP
+	sha256sums = 8007bc208fdac3fbd7a61320b48c4c8073639b478fcc410145a3792986aca9e8
 
 pkgname = tomb
 	arch = any
@@ -33,4 +34,6 @@ pkgname = tomb
 
 pkgname = tomb-kdf
 	pkgdesc = Crypto Undertaker extensions to improve password security
+	arch = i686
+	arch = x86_64
 	depends = libgcrypt

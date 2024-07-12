@@ -1,0 +1,45 @@
+#compdef tomb
+
+#typeset -A opt_args
+
+_tomb_commands(){
+   local -a _cmds
+   _cmds=(
+      'bury:hide tomb key in a jpeg'
+      'close:close specified tomb or all open tombs'
+      'dig:create a new empty TOMB file of size -s in MB'
+      'engrave:makes a QR code of a KEY to be saved on paper'
+      'exhume:extract a buried tomb key'
+      'forge:create a new KEY file and set its password'
+      'index:update the search indexes of tombs'
+      'list:list specified tomb or all open tombs'
+      'lock:installs a lock on a TOMB to use it with KEY'
+      'open:open an existing tomb'
+      'passwd:change password of a key'
+      'ps:list all processes running in open tombs'
+      'resize:resize specified tomb (only increase)'
+      'search:looks for filenames matching text patterns'
+      'setkey:change the KEY locking a TOMB (needs old one)'
+      'slam:close specified tomb and kill all PIDs using it'
+      )
+   _describe 'command' _cmds
+}
+
+_arguments -C -A "-*" \
+    "1:command:_tomb_commands" \
+    -h'[show help]' \
+    -s'[size of tomb (MB)]' \
+    -k'[path to the key to be used (-k - to read from stdin)]' \
+    -n'[do not process hooks found in tomb]' \
+    -p'[preserve ownership of files in tomb]' \
+    -o'[mount options used to open]' \
+    -f'[force operation]' \
+    -g'[use a GnuPG key to encrypt a tomb key]' \
+    -r'[provide GnuPG recipients (separated by comma)]' \
+    -R'[provide GnuPG hidden recipients (separated by comma)]' \
+    -v'[print version information]' \
+    -q'[run quietly]' \
+    -D'[print debugging information]' \
+    --kdf'[specify the KDF method]' \
+    --no-color'[do not use colors]' \
+    '*: :_files' && ret=0
