@@ -8,7 +8,13 @@ pkgdesc="A command line application for playing GameBoy sound files (GBS)"
 arch=('i686' 'x86_64')
 url='https://github.com/mmitch/gbsplay'
 license=('GPL-1.0-or-later')
-depends=('alsa-lib' 'libpulse' 'nas' 'sdl2' 'zlib')
+optdepends=('nas: for Network Audio System sound driver'
+			'alsa-lib: for ALSA sound driver'
+			'libpulse: for pulseaudio sound driver'
+			'sdl2: for SDL sound driver'
+			'pipewire<1.0.0: for pipewire support'
+			'vorbis-tools: for gbs2ogg'
+			'zlib: for compressed input files')
 source=("https://github.com/mmitch/gbsplay/archive/refs/tags/$pkgver.tar.gz"
         'do-not-update-database.patch')
 sha512sums=('d8025bbfe60a7a76386f4510167106441358ce1b1ced632e839d8d3006e2bbb0ba520162ad0eda4d6d7f9b71b486e6939760ba267582944d4f2c0c166bb75c36'
@@ -16,7 +22,11 @@ sha512sums=('d8025bbfe60a7a76386f4510167106441358ce1b1ced632e839d8d3006e2bbb0ba5
 
 prepare() {
 	cd gbsplay-$pkgver
+	
+	# modifies usage string to print the full path instead of just the filename
 	sed 's|gbs2ogg.sh|$0|g' --in-place contrib/gbs2ogg.sh
+	
+	# stops mime database from updating
 	patch -p1 < "$srcdir"/do-not-update-database.patch
 }
 
