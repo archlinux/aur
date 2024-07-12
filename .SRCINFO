@@ -1,7 +1,7 @@
 pkgbase = river-creek
 	pkgdesc = A malleable and minimalist status bar for the River compositor
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nmeum/creek
 	arch = x86_64
 	license = MIT
@@ -14,6 +14,7 @@ pkgbase = river-creek
 	depends = wayland
 	depends = river
 	provides = creek
+	conflicts = river-creek-git
 	source = https://github.com/nmeum/creek/archive/refs/tags/v0.4.2.tar.gz
 	sha256sums = bb9cffb0c5980524e5338cea0c11f87dcf3813a90626a69e504665961fb13401
 

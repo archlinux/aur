@@ -3,7 +3,7 @@
 pkgname=river-creek
 _pkgname=creek
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A malleable and minimalist status bar for the River compositor'
 arch=('x86_64')
 url='https://github.com/nmeum/creek'
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('wayland' 'river')
 makedepends=('zig>=0.13.0' 'zig<0.14.0' 'git' 'wayland-protocols' 'pixman' 'fcft')
 provides=('creek')
-conflicts=()
+conflicts=('river-creek-git')
 source=("https://github.com/nmeum/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('bb9cffb0c5980524e5338cea0c11f87dcf3813a90626a69e504665961fb13401')
 
