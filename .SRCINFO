@@ -1,0 +1,23 @@
+pkgbase = kchmviewer
+	pkgdesc = A .chm files (MS HTML help file format) viewer
+	pkgver = 8.0
+	pkgrel = 6
+	url = http://kchmviewer.sourceforge.net/
+	changelog = kchmviewer.changelog
+	arch = x86_64
+	license = GPL
+	depends = chmlib
+	depends = libzip
+	depends = qt5-webengine
+	source = kchmviewer-8.0.tar.gz::https://github.com/gyunaev/kchmviewer/archive/refs/tags/RELEASE_8_0.tar.gz
+	source = kchmviewer-8.0-url-scheme.patch::https://github.com/gyunaev/kchmviewer/commit/9ac73e7ad15de08aab6b1198115be2eb44da7afe.patch
+	source = kchmviewer-8.0-no-webkit.patch::https://github.com/gyunaev/kchmviewer/commit/a4a3984465cb635822953350c571950ae726b539.patch
+	source = kchmviewer-8.0-fix-8.0-build.patch::https://github.com/gyunaev/kchmviewer/commit/e3b09edbbae17ad19661a7514afe5a9d84ca0ffa.patch
+	source = kchmviewer-8.0-qtwebengine.patch::https://github.com/gyunaev/kchmviewer/commit/99a6d94bdfce9c4578cce82707e71863a71d1453.patch
+	sha256sums = 0eec144b2c09c8b6be98b795f84767098c893bdad7b5a3d11fc5faafead5f9b2
+	sha256sums = 982026d08f1ae9d77ff8fcb3a6e3b14a4c473461362517ac8ab6d13f8a75f116
+	sha256sums = 9c93744dd0ee02f0004a196499bb90c32aee67daf6efc7c104dd6714ae12f983
+	sha256sums = 9a3022ce78ab97b6816f80b04557dc25c5dde868e6d89a2a2435ce51417b4f2c
+	sha256sums = 5689a4753d895fc3060e1068c041c45784c079f75739593946ef8860940756b7
+
+pkgname = kchmviewer
