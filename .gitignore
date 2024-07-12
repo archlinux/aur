@@ -4,3 +4,4 @@
 !.SRCINFO
 !.gitignore
 !*.install
+!updpkgsrc.sh

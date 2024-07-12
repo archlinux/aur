@@ -6,7 +6,7 @@
 
 pkgname=gamescope-nvidia
 _pkgname=gamescope
-pkgver=3.14.18
+pkgver=3.14.24
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager (NVIDIA patch)'
 arch=(x86_64)
@@ -24,9 +24,7 @@ depends=(
   'libxxf86vm'
   'seatd' # wlroots deps
   'xcb-util-errors' # wlroots deps
-  'libdisplay-info' # wlroots deps
   'sdl2'
-  'openvr'
   'vulkan-icd-loader'
   'xorg-xwayland')
 makedepends=(
@@ -36,30 +34,16 @@ makedepends=(
   'meson'
   'cmake'
   'ninja'
-  'spirv-headers'
   'vulkan-headers'
   'wayland-protocols')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
   "$_pkgname::git+https://github.com/ValveSoftware/gamescope.git#tag=$pkgver"
-  "reshade::git+https://github.com/Joshua-Ashton/reshade.git#commit=9fdbea6892f9959fdc18095d035976c574b268b7"
-  "libliftoff::git+https://gitlab.freedesktop.org/emersion/libliftoff.git#commit=8d45eeae7f17459d4ca85680832df0a875b5f64b"
-  "vkroots::git+https://github.com/Joshua-Ashton/vkroots.git#commit=5106d8a0df95de66cc58dc1ea37e69c99afc9540"
-  "wlroots::git+https://github.com/Joshua-Ashton/wlroots.git#commit=a5c9826e6d7d8b504b07d1c02425e6f62b020791"
-  "stb::git+https://github.com/nothings/stb.git#commit=5736b15f7ea0ffb08dd38af21067c314d6a3aae9"
-  "reverts-bd722f7.patch")
-sha1sums=('d882752b1c5e7551e9c7d8f33b20dbf1b5fae670'
-          '5860b457b6bb00d1fdfd6dd068516604e87a6466'
-          'be898234c5a442acbc34a04641715c13fd6c983a'
-          'fc042f50602b41be8a7c6be0a85c14cc70da761b'
-          '0e6ccd1ec72dc3471594568097c922bec551fc3c'
-          'e89ef3e6ee66abf807ce78bb269809eb0a0ff63a'
-          '6573136d575068266dcb67459545ab06db58758a')
+  "subprojects|stb::git+https://github.com/nothings/stb.git#commit=5736b15f7ea0ffb08dd38af21067c314d6a3aae9"
+  "reverts-bd722f7.patch") # https://github.com/sharkautarch/gamescope/tree/nvidia-fix
 
 prepare() {
-  # apply nvidia-fix patchs from
-  # https://github.com/sharkautarch/gamescope/tree/nvidia-fix
   for patch in "${source[@]}"; do
     patch="${patch%%::*}"
     patch="${patch##*/}"
@@ -71,23 +55,24 @@ prepare() {
 
   cd $_pkgname
 
-  # use system spirv-headers
-  sed -i "s|'.*spirv/unified1|'/usr/include/spirv/unified1|" src/meson.build
-
   msg2 'Retrieving git build dependencies...'
-  # configure build deps
-  git -c submodule.src/reshade.url="$srcdir/reshade" \
-      -c submodule.subprojects/vkroots.url="$srcdir/vkroots" \
-      -c submodule.subprojects/wlroots.url="$srcdir/wlroots" \
-      -c submodule.thirdparty/SPIRV-Headers.update=none \
-      -c submodule.subprojects/openvr.update=none \
-      -c submodule.subprojects/libdisplay-info.update=none \
-      -c submodule.subprojects/libliftoff.url="$srcdir/libliftoff" \
-      -c protocol.file.allow=always submodule update --init --progress
+  bash -c '
+    startdir='"$startdir"'
+    srcdir='"$srcdir"'
+    source "$startdir/updpkgsrc.sh"
+    message=$(updateBuildScriptForSubModule "$startdir/PKGBUILD"); code=$?
+    # shellcheck disable=SC2181
+    if [[ $code == 0 ]]; then
+      echo "$message"
+    else
+      echo "$message"
+      exit $code
+    fi
+    eval "$(echoGitCMDForSubModule)"
+  '
 
   msg2 'Retrieving meson build dependencies...'
-  # meson wrap deps that can't be replaced with system one
-  sed -i "s|^url =.*|url = file://$srcdir/stb|" subprojects/stb.wrap
+  sed -i "s#^url =.*#url = file://$srcdir/subprojects|stb#" subprojects/stb.wrap
   meson subprojects download stb
 }
 
@@ -97,7 +82,7 @@ pkgver() {
 
 build() {
   arch-meson "$_pkgname" build \
-    -Dforce_fallback_for=stb,vkroots \
+    --auto-features=enabled \
     -Dbenchmark=disabled \
     -Dpipewire=enabled
   meson compile -C build
@@ -107,5 +92,25 @@ package() {
   DESTDIR="$pkgdir" meson install -C build --skip-subprojects
   install -Dm 644 "$_pkgname/LICENSE" -t "$pkgdir/usr/share/licenses/$_pkgname/"
 }
+
+# Auto generate, do not edit.
+source+=('thirdparty|SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers/#commit=d790ced752b5bfc06b6988baadef6eb2d16bdf96'
+         'subprojects|vkroots::git+https://github.com/Joshua-Ashton/vkroots#commit=5106d8a0df95de66cc58dc1ea37e69c99afc9540'
+         'subprojects|openvr::git+https://github.com/ValveSoftware/openvr.git#commit=ebd425331229365dc3ec42d1bb8b2cc3c2332f81'
+         'src|reshade::git+https://github.com/Joshua-Ashton/reshade#commit=696b14cd6006ae9ca174e6164450619ace043283'
+         'subprojects|libdisplay-info::git+https://gitlab.freedesktop.org/emersion/libdisplay-info#commit=8fbc366c7c56d584590db50fe5943b0f92b1f448'
+         'subprojects|libliftoff::git+https://gitlab.freedesktop.org/emersion/libliftoff.git#commit=8b08dc1c14fd019cc90ddabe34ad16596b0691f4'
+         'subprojects|wlroots::git+https://github.com/Joshua-Ashton/wlroots.git#commit=a5c9826e6d7d8b504b07d1c02425e6f62b020791') # End
+
+sha512sums=('b966fb009216e5f7c4fee878ba52945bc016c830927b5502ae9630ba0ad8f77943e08446fb9ab0243cf411b6367624a84e322ed5bc66e136af4e4e7d3d5e34c8'
+            '53ff8f7a4ae987b84398bf6b35bccb5aec5337d4e57660f599776eb62f692aa40be671e2c456f24de16c07d27272431b807ca3fd4a97d297bb2a8f35c3df665f'
+            '3579eb3f0b711be5f69fa46d12f72a1898abbbca85cc3dfbc3b1231277772a9a35b2ee345046b42698a068f68b43b35b71168fdd475a5b0bc82ce9747426df58'
+            '65490f89498b351e737eb79fe498dd428af84ad85e28f41fdf1f62d31dc90f29836be5f3eb754f58353dca63a9ffa858073a97fea0a69cf0e07185fb62b6adc0'
+            '0a6fc80fd713c86117fab40e1b92ba8953bb8e68c4ac933fa8f6c04a4b10edba6ebb19cfc74d560c6007d5bcb3ca9d4de63d6cae800f1d426a97ff25f0b7f0fc'
+            'fd02c3aab84bc2ff8b3210fad0d83aaa5c6807f90e3672d87c5429da305860c88a3f3dd059233ce899fb4f4431a44b63fd194a91fcbffb3bc9293242c13a0256'
+            '5629b847abdab649a205470e9128ffc104231f5cf248bbeb01fe555429f24206760c3aea8139d8b18e41ce5f423fd177515eb21f31b2d9b0a2fd19dfe20062ea'
+            'b1c6ad6d2e6ed062b201ac160b3515cf78b2c9aa52e4664556ac1a5e423c28639f5d8c4c918e298aa07c6791034ae3b3bb505577dd83bad8fe8aededaffa5472'
+            'f947f3a52f0d6aa4b2762f646cf785cea90c299d7116692120ebe2fc703ea79f52bc98d71631a07a87695addf2d8fd0e7c39d6690e0b18148c8652cf155cf17f'
+            '1877bdb078f8ad7aa411352073c5481ecb03806e5bd2488a7f0734157a20f60b46a3d066c0d236487d9ba78a7c880ae72cfa50fbdc60d865a580ed890da455f1')
 
 # vim: ts=2 sw=2 et:
