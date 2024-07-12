@@ -1,0 +1,16 @@
+pkgbase = watershot-wayshot-git
+	pkgdesc = Watershot fork with libwayshot instead of grim
+	pkgver = r76.78fd616
+	pkgrel = 1
+	url = github.com/Gigas002/watershot
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cargo
+	depends = vulkan-driver
+	provides = watershot
+	conflicts = watershot
+	source = watershot::git+https://github.com/Gigas002/watershot.git
+	sha256sums = SKIP
+
+pkgname = watershot-wayshot-git
