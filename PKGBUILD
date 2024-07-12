@@ -1,8 +1,8 @@
 # Maintainer  : Balazs Vinarz <vinibali1@gmail.com
 
 pkgname='domoticz-bin'
-pkgver=2023.2
-pkgrel=4
+pkgver=2024.6
+pkgrel=1
 pkgdesc="Web based home automation"
 arch=('armv7h' 'aarch64' 'x86_64')
 url='https://www.domoticz.com'
@@ -11,17 +11,17 @@ license=('GPL3')
 depends=('libusb-compat' 'libcurl-gnutls' 'mosquitto')
 install='domoticz.install'
 get_arch_string() {
-local arch="$1"
+local arch="$(awk -v FS='"' '/CARCH/ {print$2}' /etc/makepkg.conf)"
 case "$arch" in
   armv7h)
-  echo armhf
+  echo armv7l
   ;;
   *)
   echo "$arch"
   ;;
 esac
 }
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/domoticz/domoticz/releases/download/${pkgver}/domoticz_linux_${pkgver}_$(get_arch_string $arch).tgz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/domoticz/domoticz/releases/download/${pkgver}/domoticz_linux_$(get_arch_string $arch).tgz"
         'domoticz.service')
 sha256sums=('SKIP'
             '908e2848731eef27928f87936f94ff3df280901559fcf5f4754b1a8139e4a38a')
