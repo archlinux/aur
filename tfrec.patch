@@ -1,0 +1,34 @@
+diff --git a/Makefile b/Makefile
+index 96755f4..1cef92f 100644
+--- a/Makefile
++++ b/Makefile
+@@ -8,7 +8,7 @@ PKG_INCLUDES= $(shell pkg-config --cflags $(PACKAGES))
+ PKG_LIBS= $(shell pkg-config --libs $(PACKAGES))
+ 
+ # Default flags, should work for all
+-CXXFLAGS=-O3 $(PROFILING) -std=c++0x -Wall \
++CXXFLAGS+=-O3 $(PROFILING) -std=c++0x -Wall \
+               -Wno-unused-function  -Wno-unused-variable -Wno-unused-but-set-variable \
+               -Wno-write-strings
+               
+@@ -48,7 +48,7 @@ endif
+ INCLUDES= $(PKG_INCLUDES) 
+ 
+ LIBS=-lm $(PKG_LIBS) -lpthread
+-LDFLAGS=$(PROFILING) -rdynamic
++LDFLAGS+=$(PROFILING) -rdynamic
+ 
+ CFILES=main.cpp engine.cpp  dsp_stuff.cpp fm_demod.cpp decoder.cpp crc8.cpp \
+ 	tfa1.cpp tfa2.cpp whb.cpp utils.cpp sdr.cpp crc32.cpp
+diff --git a/decoder.h b/decoder.h
+index dc3d34b..fd6deeb 100644
+--- a/decoder.h
++++ b/decoder.h
+@@ -4,6 +4,7 @@
+ #include <sys/time.h>
+ #include <string>
+ #include <map>
++#include <cstdint>
+ 
+ using std::string;
+ using std::map;

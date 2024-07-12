@@ -1,0 +1,17 @@
+pkgbase = tfrec-git
+	pkgdesc = RTL-SDR tool for receiving wireless sensor data
+	pkgver = r40.bf0803b
+	pkgrel = 1
+	url = https://github.com/baycom/tfrec
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = git
+	depends = rtl-sdr
+	provides = tfrec
+	conflicts = tfrec
+	source = tfrec::git+https://github.com/baycom/tfrec.git
+	source = tfrec.patch
+	sha256sums = SKIP
+	sha256sums = 9187fe59df19e7ebb3aa19390cb456de28e8508604b87fb3b61e7a5124aea7f4
+
+pkgname = tfrec-git
