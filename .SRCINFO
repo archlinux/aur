@@ -1,7 +1,7 @@
 pkgbase = tomb
 	pkgdesc = Crypto Undertaker, a simple tool to manage encrypted storage
 	pkgver = 2.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.dyne.org/software/tomb/
 	arch = i686
 	arch = x86_64
@@ -26,8 +26,10 @@ pkgname = tomb
 	optdepends = steghide: steganography
 	optdepends = dcfldd: show nice progress during massive I/O
 	optdepends = qrencode: for paper backups of keys
-	optdepends = recoll: file content indexer
+	optdepends = plocate: fast search file names
+	optdepends = recoll: fast search file contents
 	optdepends = lsof: allows the operation slam
+	optdepends = argon2: support for argon2 KDF
 
 pkgname = tomb-kdf
 	pkgdesc = Crypto Undertaker extensions to improve password security

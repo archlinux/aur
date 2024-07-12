@@ -7,7 +7,7 @@
 pkgbase=tomb
 pkgname=(tomb tomb-kdf)
 pkgver=2.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Crypto Undertaker, a simple tool to manage encrypted storage"
 arch=('i686' 'x86_64')
 url="https://www.dyne.org/software/tomb/"
@@ -42,8 +42,10 @@ package_tomb() {
   'steghide: steganography'
   'dcfldd: show nice progress during massive I/O'
   'qrencode: for paper backups of keys'
-  'recoll: file content indexer'
+  'plocate: fast search file names'
+  'recoll: fast search file contents'
   'lsof: allows the operation slam'
+  'argon2: support for argon2 KDF'
   )
   arch=('any')
 
