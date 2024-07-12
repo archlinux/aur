@@ -1,6 +1,6 @@
 pkgbase = python-oslo-cache
 	pkgdesc = An oslo.config enabled dogpile.cache
-	pkgver = 3.7.0
+	pkgver = 3.8.0
 	pkgrel = 1
 	url = https://opendev.org/openstack/oslo.cache
 	arch = any
@@ -36,7 +36,7 @@ pkgbase = python-oslo-cache
 	depends = python-pymemcache
 	depends = python-binary-memcached
 	depends = python-etcd3gw
-	source = python-oslo-cache-3.7.0.tar.gz::https://opendev.org/openstack/oslo.cache/archive/3.7.0.tar.gz
-	b2sums = 58f77ac2ff3736072592b4a65c87388e42cf593329c4eaa5e64d4e6d86854ad968ec3765a8d6f4b85a50fb80b6c3e5e9b7206fde9a93610f99dcefb5547a38a4
+	source = python-oslo-cache-3.8.0.tar.gz::https://opendev.org/openstack/oslo.cache/archive/3.8.0.tar.gz
+	b2sums = a83fbe0d622d8236090d85f59574e9fd36986a2a3f8c249690a596d729c814cb6e3e724a8807e87a7108d23e663fce8709c5ff1cfe753b6688e6f7fa38e7172a
 
 pkgname = python-oslo-cache
