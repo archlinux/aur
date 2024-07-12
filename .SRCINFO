@@ -1,18 +1,18 @@
 pkgbase = niconizer-bin
 	pkgdesc = A desktop application that displays plain text, images, and any other HTML content on the screen.
-	pkgver = 2.0.142
+	pkgver = 2.0.143
 	pkgrel = 1
 	url = https://github.com/matzkoh/niconizer
 	arch = x86_64
 	license = MIT
 	makedepends = gendesk
 	depends = electron31
-	provides = niconizer=2.0.142
+	provides = niconizer=2.0.143
 	conflicts = niconizer
-	source = niconizer-2.0.142.zip::https://github.com/matzkoh/niconizer/releases/download/v2.0.142/niconizer-linux-x64.zip
-	source = niconizer-2.0.142.png::https://raw.githubusercontent.com/matzkoh/niconizer/v2.0.142/icon/icon_512x512.png
+	source = niconizer-2.0.143.zip::https://github.com/matzkoh/niconizer/releases/download/v2.0.143/niconizer-linux-x64.zip
+	source = niconizer-2.0.143.png::https://raw.githubusercontent.com/matzkoh/niconizer/v2.0.143/icon/icon_512x512.png
 	source = niconizer.sh
-	sha256sums = 525bc20406c38b5c44cabb33480776c75b8dfec2b8b54aa54223a76927388cc3
+	sha256sums = 9b76ff555c2002fc089c54d3223aaff9962fd3f6564267392c935a864f1a623f
 	sha256sums = 7c820610080a8d47f26c555d498ae391c89f2848de93cde005f1fd438e1e0236
 	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
