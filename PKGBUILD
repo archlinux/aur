@@ -1,8 +1,7 @@
-# Maintainer: 	whitels <2959471117 at qq dot com>
+# Maintainer: 	ngdngdc <2959471117 at qq dot com>
 
 _npmname=whistle
 _npmver=2.9.77
-_npmrel=1
 pkgname=nodejs-whistle # All lowercase
 pkgver=2.9.77
 pkgrel=1
