@@ -22,7 +22,7 @@ provides=(gtk3=$_gtkver gtk3-typeahead=$_gtkver gtk3-mushrooms=$_gtkver gtk3-pri
 arch=(x86_64)
 license=(LGPL-2.1-or-later)
 depends=(
-	atk
+	at-spi2-core
 	cairo
 	desktop-file-utils
 	fribidi
@@ -49,8 +49,6 @@ optdepends=(
 	'libcups: printer support in print dialog'
 )
 makedepends=(
-	at-spi2-core
-	atk
 	cairo
 	cantarell-fonts
 	desktop-file-utils
