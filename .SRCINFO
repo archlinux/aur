@@ -1,6 +1,6 @@
 pkgbase = python-ibmcloudant
 	pkgdesc = Python Library for Cloudant and CouchDB Access. Successor of python-cloudant
-	pkgver = 0.8.1
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/IBM/cloudant-python-sdk
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-ibmcloudant
 	depends = python-pyjwt
 	depends = python
 	depends = python-build
-	source = https://github.com/IBM/cloudant-python-sdk/archive/refs/tags/v0.8.1.tar.gz
-	sha256sums = 2404dcbbb4e78f8fcd650b7989cd50543d843d3266f4e201dea53fbe92d7a5f6
+	source = https://github.com/IBM/cloudant-python-sdk/archive/refs/tags/v0.9.1.tar.gz
+	sha256sums = 3e5c7ef64adcef93753ab65a978160b0baca36bcca74fd56c617b317cef8d33c
 
 pkgname = python-ibmcloudant
