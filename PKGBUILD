@@ -1,8 +1,7 @@
-# Maintainer: 	whitels <2959471117 at qq dot com>
+# Maintainer: 	ngdngdc <2959471117 at qq dot com>
 
 _npmname=whistle.script
 _npmver=1.2.10
-_npmrel=1
 pkgname=nodejs-whistle-plugins-script # All lowercase
 pkgver=1.2.10
 pkgrel=1
