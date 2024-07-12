@@ -1,0 +1,14 @@
+pkgbase = fcitx-m17n
+	pkgdesc = Fcitx Wrapper for m17n
+	pkgver = 0.2.4
+	pkgrel = 3
+	url = https://github.com/fcitx/fcitx-m17n
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = fcitx
+	depends = m17n-lib
+	source = https://download.fcitx-im.org/fcitx-m17n/fcitx-m17n-0.2.4.tar.xz
+	sha512sums = b7c483e9c88e58a47ead294c36ed182558f09b41996e97faaba9fd3a96612f6a0fc240fdcb95db9a08c1546abe5fc97337957e2124844bd011363b7468f6e112
+
+pkgname = fcitx-m17n
