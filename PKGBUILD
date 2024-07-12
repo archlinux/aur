@@ -5,7 +5,7 @@ _pkgname=Parsify
 _appname="@${pkgname//-/}"
 pkgver=2.0.1
 _electronversion=21
-pkgrel=1
+pkgrel=2
 pkgdesc="Next generation notepad-based calculator, built with extendibility and privacy in mind."
 arch=('x86_64')
 url='https://parsify.app'
@@ -21,11 +21,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('be2dd9116fdbed8cd1052841db57375d384fe5bb9659c74bce50eacaefaefe48'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
