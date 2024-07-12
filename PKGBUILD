@@ -2,7 +2,7 @@
 
 pkgname=nemo-qml-plugin-configuration
 pkgver=0.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Configuration plugin for Nemo Mobile"
 arch=('x86_64')
 url="https://github.com/sailfishos/nemo-qml-plugin-configuration"
