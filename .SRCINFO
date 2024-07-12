@@ -6,6 +6,7 @@ pkgbase = ldtk-bin
 	arch = x86_64
 	license = MIT
 	makedepends = fuse2
+	makedepends = asar
 	depends = electron24
 	depends = libdbusmenu-glib
 	provides = ldtk=1.5.3

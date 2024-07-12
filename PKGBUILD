@@ -17,6 +17,7 @@ depends=(
 )
 makedepends=(
     'fuse2'
+    'asar'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.zip::${_ghurl}/releases/download/v${pkgver}/ubuntu-distribution.zip"
