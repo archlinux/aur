@@ -1,0 +1,3 @@
+[python-xtarfile]
+source = "git"
+git = "https://github.com/ascoderu/xtarfile.git"
