@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Configure PUBLIC "-//Jetty//Configure//EN" "https://eclipse.dev/jetty/configure_10_0.dtd">
+
+<Configure class="org.eclipse.jetty.webapp.WebAppContext"> 
+    <Set name="contextPath">/jans-casa</Set>
+    <Set name="war">/usr/share/java/jans/casa.war</Set> 
+</Configure>
