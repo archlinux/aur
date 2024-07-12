@@ -2,4 +2,5 @@
 /pkg/
 /labwc/
 *.pkg.tar*
+*.log
 1641.patch
