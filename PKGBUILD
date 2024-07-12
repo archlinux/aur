@@ -2,7 +2,7 @@
 # Contributor: BigfootACA <bigfoot@classfun.cn>
 
 pkgname=python-oslo-messaging
-pkgver=14.8.0
+pkgver=14.8.1
 pkgrel=1
 pkgdesc="OpenStack library for messaging"
 arch=(any)
@@ -62,7 +62,7 @@ checkdepends=('python-hacking'
               'python-yaml'
               'python-requests')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('02b8d3c5c9f0ec5ce11ae3f95422783a38626648eea5efd0f37e705b65b567c511ba77ed1c0a50e3d4a80d11aeed69dd98b4e7140a1185f291c7777c3e080cd2')
+b2sums=('fdbdec9b40cb19a760002b39d09d4236a0c3a90bcd538e8e57e096d0e11d455390289725655e70c1c6af8cf7741b861fbd694c3c47a9123a6e4a75cf8617b9ff')
 
 prepare() {
     tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level
