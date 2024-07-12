@@ -1,0 +1,16 @@
+pkgbase = fcitx-sunpinyin
+	pkgdesc = Fcitx Wrapper for sunpinyin, Statistical Language Model based pinyin IME by Sun
+	pkgver = 0.4.2
+	pkgrel = 3
+	url = https://github.com/fcitx/fcitx-sunpinyin
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = fcitx
+	depends = sunpinyin
+	depends = sunpinyin-data
+	depends = gtk-update-icon-cache
+	source = https://download.fcitx-im.org/fcitx-sunpinyin/fcitx-sunpinyin-0.4.2.tar.xz
+	sha512sums = 8ade5d94e5227c0b72d2844c09c2699e4b8c66cecbd4107791168d27e15f68b28a4445bf42df7bd6fb44119ec42c5b574293bb417dcde8998578f0debd656a2a
+
+pkgname = fcitx-sunpinyin
