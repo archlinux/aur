@@ -1,21 +1,19 @@
 pkgbase = shimmer-wallpapers
 	pkgdesc = Complementary wallpaper collection for the Shimmer Project Xfce themes
-	pkgver = 1.0
-	pkgrel = 5
+	pkgver = r1.ba134cb
+	pkgrel = 1
 	url = http://shimmerproject.org
 	arch = any
 	license = CCPL:by-sa-3.0
 	makedepends = git
 	optdepends = elementary-xfce-icons: matching icon set, -git or stable
-	optdepends = xfce-theme-albatross: matching Shimmer Project Xfce theme, -git or stable
-	optdepends = xfce-theme-bluebird: matching Shimmer Project Xfce theme, -git or stablr
+	optdepends = xfce-theme-bluebird: matching Shimmer Project Xfce theme, -git or stable
 	optdepends = xfce-theme-greybird: matching Shimmer Project Xfce theme, -git or stable
 	provides = shimmer-wallpapers-git
 	provides = shimmer-wallpapers
 	conflicts = shimmer-wallpapers-git
 	replaces = shimmer-wallpapers-git
-	source = Shimmer-Wallpapers::git://github.com/shimmerproject/Wallpapers.git#commit=ba134cbfa7130e88822f07b18c454a8791d504b8
+	source = shimmer-wallpapers::git+https://github.com/shimmerproject/Wallpapers.git
 	md5sums = SKIP
 
 pkgname = shimmer-wallpapers
-

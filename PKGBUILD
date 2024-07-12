@@ -1,37 +1,38 @@
+# Maintainer: Alad <devnull@archlinux.org>
 # Contributor: Limao Luo <luolimao+AUR@gmail.com>
 # Contributor: flan_suse
-# Maintainer: Pablo Lezaeta <prflr88@gmail.com>
+# Contributor: Pablo Lezaeta <prflr88@gmail.com>
 
 # This wallpaper collection is complementary to the
 # Shimmer Project Xfce themes
 
 pkgname=shimmer-wallpapers
 _pkgname=Wallpapers
-_pkgnamelong="Shimmer-Wallpapers"
-pkgver=1.0
-pkgrel=5
+pkgver=r1.ba134cb
+pkgrel=1
 pkgdesc="Complementary wallpaper collection for the Shimmer Project Xfce themes"
 arch=("any")
 url=http://shimmerproject.org
 license=(CCPL:by-sa-3.0)
-#groups=("xfce-themes-shimmer-collection")
-# xfce-theme-{greybird,blackbird,albatross,bluebird,orion} and elementary-xfce-icons should have this grup too
 replaces=("shimmer-wallpapers-git")
 conflicts=("shimmer-wallpapers-git")
 provides=("shimmer-wallpapers-git" "shimmer-wallpapers")
 makedepends=("git")
 optdepends=("elementary-xfce-icons: matching icon set, -git or stable"
-    "xfce-theme-albatross: matching Shimmer Project Xfce theme, -git or stable"
-    "xfce-theme-bluebird: matching Shimmer Project Xfce theme, -git or stablr"
-    "xfce-theme-greybird: matching Shimmer Project Xfce theme, -git or stable")
-source=("${_pkgnamelong}::git://github.com/shimmerproject/${_pkgname}.git#commit=ba134cbfa7130e88822f07b18c454a8791d504b8")
+            "xfce-theme-bluebird: matching Shimmer Project Xfce theme, -git or stable"
+            "xfce-theme-greybird: matching Shimmer Project Xfce theme, -git or stable")
+source=("$pkgname::git+https://github.com/shimmerproject/${_pkgname}.git")
 md5sums=('SKIP')
 
+pkgver() {
+    cd "$pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
 package() {
+    mkdir -p "${pkgdir}/usr/share/backgrounds/xfce/"
 
-	mkdir -p "${pkgdir}/usr/share/backgrounds/xfce/"
-
-	cp -r "${srcdir}/Shimmer-Wallpapers/Albatross"/*.png "${pkgdir}/usr/share/backgrounds/xfce/"
-	cp "${srcdir}/Shimmer-Wallpapers/Bluebird"/*.png "${pkgdir}/usr/share/backgrounds/xfce/"
-	cp "${srcdir}/Shimmer-Wallpapers/Greybird"/*.png "${pkgdir}/usr/share/backgrounds/xfce/"
+    cp "$pkgname/Albatross"/*.png "${pkgdir}/usr/share/backgrounds/xfce/"
+    cp "$pkgname/Bluebird"/*.png "${pkgdir}/usr/share/backgrounds/xfce/"
+    cp "$pkgname/Greybird"/*.png "${pkgdir}/usr/share/backgrounds/xfce/"
 }
