@@ -1,0 +1,17 @@
+pkgbase = fcitx-table-extra
+	pkgdesc = Extra tables for Fcitx, including Boshiamy, Zhengma, Cangjie3, Cangjie5
+	pkgver = 0.3.8
+	pkgrel = 3
+	url = https://github.com/fcitx/fcitx-table-extra
+	arch = any
+	license = GPL
+	makedepends = cmake
+	makedepends = intltool
+	depends = fcitx
+	source = https://download.fcitx-im.org/fcitx-table-extra/fcitx-table-extra-0.3.8.tar.xz
+	source = https://download.fcitx-im.org/fcitx-table-extra/fcitx-table-extra-0.3.8.tar.xz.sig
+	validpgpkeys = 2CC8A0609AD2A479C65B6D5C8E8B898CBF2412F9
+	sha512sums = 454798e9bd25c630ce98e2daf7296e82ba5fbc98027171038a5a7b9ac3169c153302a6703d9416718ec3a0b76db6d732caf3f03c6e6005841c9d7798702542df
+	sha512sums = SKIP
+
+pkgname = fcitx-table-extra
