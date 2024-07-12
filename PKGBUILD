@@ -2,20 +2,20 @@
 
 pkgname=raiderio-client-appimage
 _pkgapp=raiderio-client
-pkgver=4.3.0
+pkgver=4.4.0
 pkgrel=1
 pkgdesc="raider.io desktop client for Linux"
 arch=('x86_64' 'arm64')
 depends=("fuse2")
 url="https://raider.io/"
-source=("$_pkgapp-x86_64.AppImage::https://github.com/RaiderIO/raiderio-client-builds/releases/download/v4.3.0/RaiderIO_Installer_Linux_x86_64.AppImage"
-        "$_pkgapp-arm64.AppImage::https://github.com/RaiderIO/raiderio-client-builds/releases/download/v4.3.0/RaiderIO_Installer_Linux_arm64.AppImage"
+source=("$_pkgapp-x86_64.AppImage::https://github.com/RaiderIO/raiderio-client-builds/releases/download/v4.4.0/RaiderIO_Installer_Linux_x86_64.AppImage"
+        "$_pkgapp-arm64.AppImage::https://github.com/RaiderIO/raiderio-client-builds/releases/download/v4.4.0/RaiderIO_Installer_Linux_arm64.AppImage"
         'start')
 license=('custom' 'MIT' 'custom:chromium-licenses')
 options=(!strip)
 # Skip checksum check for the RaiderIO binary, to avoid breakage on updates
-sha512sums=('b9e163a1faf2cdd1b4c7c01e0c8bbe619a95d81d9193e571c994cd7033e9f20cf4e61b4297456397d14b55bab44c9c18f597c93258fd0b2a40aecc713790bb8a'
-            'd2e9efdfc7ee1dae1c1d1b745d177e0fdeaecfa3b31a311dc4da6c003b832f4341c3e43782f52e1c85a64d9686a2fad0ce6fb7ae500d5b3a339ec65946f67ed8'
+sha512sums=('ab027dd16f61a644b25528d7bb8435eaa7d951372ead3b87e86b61e0a4b11a5e962bae7859033e491df13c4a323021d3df141ea57f07bab729514f33177352e4'
+            '860c4397cb595befb7f301c95c687a93f8f0ad0a48a777d2c79dabc00c2e49c53a90fb5094cb7d24b31aae4d6e006d9cb3f8d30fea32fdbe3097243879ad4fbb'
             'ee0cb07b4bf56ed43bf163f0141d5165889b051fe0aaf52f46789f67f6ab896f7d69c3527ab77bb1fd70e3c7c6a6611e691fd8ad91edd1db35a2252f10bef9a9')
 
 pkgver() {
