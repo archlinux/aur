@@ -1,0 +1,4 @@
+[uarmsolver]
+source = "github"
+github = "firefly-cpp/uARMSolver"
+use_latest_release = "true"
