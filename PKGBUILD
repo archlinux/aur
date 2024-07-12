@@ -1,20 +1,22 @@
-# Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
+# Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
+# Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=tactics
-pkgver=0.2
+pkgver=0.8
+_commit=74e9e287f85e692ea52b28f0fc7ff3c2ef5cbc07
 pkgrel=1
 pkgdesc="Build your soccer lineup"
-arch=('x86_64' 'aarch64')
 url="https://gitlab.com/leesonwai/tactics"
-license=('GPL3')
+license=('GPL-3.0-only')
+arch=('x86_64' 'aarch64')
 depends=('libadwaita')
-makedepends=('meson')
+makedepends=('git' 'glib2-devel' 'meson')
 checkdepends=('appstream-glib')
-source=($url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('19c9a14598498a7f39cafed8e89f47b7790f7a5fe6f2868beda9280ace59fc627c2e45465c478b9e78d314ecab04be65e73bd8ac9402e71138d697a12b0f29d9')
+source=("git+$url.git#commit=$_commit")
+sha256sums=('SKIP')
 
 build() {
-  arch-meson "$pkgname-$pkgver" build
+  arch-meson $pkgname build
   meson compile -C build
 }
 
