@@ -1,0 +1,28 @@
+pkgbase = grails
+	pkgdesc = Groovy on rails, a web framework
+	pkgver = 6.0.0
+	pkgrel = 2
+	url = https://grails.org/
+	arch = any
+	license = Apache
+	makedepends = apache-ant
+	makedepends = java-environment
+	makedepends = junit
+	makedepends = setconf
+	makedepends = unzip
+	optdepends = grails-docs: documentation for grails
+	optdepends = groovy: the groovy programming language
+	noextract = grails-docs-6.0.0.zip
+	options = !emptydirs
+	source = grails-6.0.0.zip::https://github.com/grails/grails-core/releases/download/v6.0.0/grails-6.0.0.zip
+	source = grails-docs-6.0.0.zip::https://github.com/grails/grails-doc/releases/download/v6.0.0/grails-docs.zip
+	b2sums = 4e54a3e118bb4e5b48c5330a01bb922216a8b2c70ad10a42442da92b9ec3468630044dcb730482dc572bdcf40b24a8c76b44e63f58eafeb38689d5cd7195676b
+	b2sums = 7417ef3a58997ecc7cead377094b24a11d16ca47a1334378f26cdcd5421300ec26aa0afe987f2c44229546f73ae45d0dd1e4d1e06dfb720ca6d7a6b8edc4eec4
+
+pkgname = grails
+	depends = bash
+	depends = java-environment
+	depends = junit
+
+pkgname = grails-docs
+	pkgdesc = Documentation for Grails
