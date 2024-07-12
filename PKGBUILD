@@ -51,7 +51,9 @@ package() {
 
 	make DESTDIR="$pkgdir" install
 
+	install -Dm644 LICENCE "$pkgdir"/usr/share/licenses/gbsplay/LICENCE
+
 	cd contrib
-	install gbs2ogg.sh "$pkgdir"/usr/bin/gbs2ogg
+	install -Dm755 gbs2ogg.sh "$pkgdir"/usr/bin/gbs2ogg
 	install -Dm644 gbsplay.bashcompletion "$pkgdir"/etc/bash_completion.d/gbsplay
 }
