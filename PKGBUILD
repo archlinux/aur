@@ -2,7 +2,7 @@
 pkgname=lala-companion-bin
 pkgver=0.0.12
 _electronversion=30
-pkgrel=1
+pkgrel=2
 pkgdesc="3D personified desktop assistants, tuned for you, powered by AI vision and voice."
 arch=("x86_64")
 url="https://lalaland.chat/"
@@ -18,11 +18,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('b09f1f6bcd91db624a841c634ff2d5ef8568dbcc0cb0227940c5f633aab09249'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
