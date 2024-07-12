@@ -1,0 +1,4 @@
+[frogatto]
+source = "git"
+git = "https://github.com/frogatto/frogatto.git"
+prefix = "v"
