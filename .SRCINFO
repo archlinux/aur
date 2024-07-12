@@ -1,7 +1,7 @@
 pkgbase = tget-git
 	pkgdesc = Like wget but for torrents (latest git commit)
 	pkgver = 0.1.r12.gfc5500a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sweetbbak/tget
 	arch = aarch64
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = tget-git
 	depends = glibc
 	provides = tget
 	conflicts = tget
+	conflicts = nodejs-tget
 	options = lto
 	source = git+https://github.com/sweetbbak/tget.git
 	sha256sums = SKIP

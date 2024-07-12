@@ -4,13 +4,13 @@
 _pkgname='tget'
 pkgname="${_pkgname}-git"
 pkgver=0.1.r12.gfc5500a
-pkgrel=1
+pkgrel=2
 pkgdesc='Like wget but for torrents (latest git commit)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/sweetbbak/tget'
 license=('MIT')  # SPDX-License-Identifier: MIT
 provides=("$_pkgname")
-conflicts=("$_pkgname")
+conflicts=("$_pkgname" 'nodejs-tget')
 depends=('gcc-libs' 'glibc')
 makedepends=('git' 'go')
 source=("git+$url.git")
