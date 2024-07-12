@@ -2,7 +2,7 @@
 
 pkgbase=stc-isp-wine
 pkgname=(stcai-isp{,-tiny}-wine)
-pkgver=6.94F
+pkgver=6.94H
 pkgrel=1
 arch=('x86_64')
 url="http://www.stcmcudata.com/INDEX-CHANGE.HTM"
@@ -20,8 +20,8 @@ source=("${pkgname%-wine}-v${pkgver}.zip::http://www.stcmcudata.com/STCISP/${pkg
         "stcai-isp-wine.install"
         "stcai-isp-tiny-wine.install"
         "icon.svg")
-sha256sums=('0df31c85113c31c85cb87921aa8f378af6252d16f6a301f8ab38b5e5559cc3b8'
-            '147983cc306f11731d1ae8c2509984d1c057f22ca9b09a9dc2258b27fc024236'
+sha256sums=('f9f6e12892848d013456977ed73a633e47c2b309f697725df99f771e5155a07f'
+            'c2c936806b74722e1c7fae7f177ad717ba1b2099b0958cc858afa599b05668b8'
             'b52b0ed04b26922dad6e00725cf84da0597cc15346c68202b4bd54274dbb0b39'
             '33565feb7c5d7c5f50f4d0ea6c514e084776b72b662e21614bb95d7b26baa42f'
             'c04d3cf704c9055e4b0bb010d946c5e90710677c459def826f762c8e9d717538')
