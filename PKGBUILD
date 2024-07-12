@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Liu <net147@gmail.com>
 pkgname=znc-palaver-git
 _gitname=znc-palaver
-pkgver=r96.825cb68
+pkgver=r110.917f970
 pkgrel=1
 pkgdesc="Palaver ZNC module provides push notifications"
 arch=('i686' 'x86_64')
@@ -24,8 +24,7 @@ build() {
 package() {
   cd "${_gitname}"
   install -d -m750 "${pkgdir}/var/lib/znc"
-  install -d -m700 "${pkgdir}/var/lib/znc/.znc"
-  install -D -m644 palaver.so "${pkgdir}/var/lib/znc/.znc/modules/palaver.so"
+  install -D -m644 palaver.so "${pkgdir}/var/lib/znc/modules/palaver.so"
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
