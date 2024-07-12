@@ -2,7 +2,7 @@
 
 pkgname=fcitx-hangul
 pkgver=0.3.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Hangul (Korean) support for fcitx"
 arch=('x86_64')
 url="https://github.com/fcitx/fcitx-hangul"
