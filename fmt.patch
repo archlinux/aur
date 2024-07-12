@@ -1,0 +1,15 @@
+diff --git a/libkineto/CMakeLists.txt b/libkineto/CMakeLists.txt
+index aff278b..cada6ad 100644
+--- a/libkineto/CMakeLists.txt
++++ b/libkineto/CMakeLists.txt
+@@ -182,8 +182,8 @@ endif()
+ 
+ target_compile_options(kineto_base PRIVATE "${KINETO_COMPILE_OPTIONS}")
+ target_compile_options(kineto_api PRIVATE "${KINETO_COMPILE_OPTIONS}")
+-
+-if(NOT TARGET fmt)
++find_package(fmt REQUIRED)
++if(NOT TARGET fmt::fmt)
+   if(NOT FMT_SOURCE_DIR)
+     set(FMT_SOURCE_DIR "${LIBKINETO_THIRDPARTY_DIR}/fmt"
+       CACHE STRING "fmt source directory from submodules")

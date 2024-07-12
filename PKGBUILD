@@ -2,13 +2,13 @@
 
 pkgbase=pytorch-kineto-git
 pkgname=(libkineto-git torch-tb-profiler-git)
-pkgver=r505.6968a24
+pkgver=r569.eb34f14
 pkgrel=1
 pkgdesc="Kineto is part of the PyTorch Profiler"
 arch=('x86_64')
 url="http://www.pytorch.org"
 license=('BSD')
-depends=()
+depends=(fmt)
 optdepends=()
 makedepends=(
     cmake
@@ -17,9 +17,11 @@ makedepends=(
 )
 source=(
     "kineto::git+https://github.com/pytorch/kineto.git"
+    "fmt.patch"
 )
 sha256sums=(
     SKIP
+    c153064b7aa098328e4bbc0e3dd996119dacc9152b082d98c54a5e8a03d2bf4e
 )
 
 pkgver() {
@@ -30,6 +32,7 @@ pkgver() {
 prepare() {
     cd "${srcdir}/kineto"
     git submodule update --init --recursive
+    patch -Np1 -i ${srcdir}/fmt.patch
     cd "${srcdir}/kineto/libkineto"
     mkdir -p build
 }
