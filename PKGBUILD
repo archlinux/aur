@@ -98,8 +98,16 @@ build() {
 	# The make structure does not facilitate building parts only.
 	# This is why several direct calls to `make' seem required.
 
+	_grind_CFLAGS=(
+		-Wno-error=implicit-function-declaration
+		-Wno-error=int-conversion
+		-Wno-error=implicit-int
+	)
+
 	# Building fails with -jN where N>1.
-	make -j1 -C src/grind/ grind
+	make -j1 -C src/grind/ \
+		"CFLAGS=${CFLAGS}$(printf -- ' %s' "${_grind_CFLAGS[@]}")" \
+		grind
 
 	make -C dict/dbfiles/
 	make -C contrib/wordnet_structures/
