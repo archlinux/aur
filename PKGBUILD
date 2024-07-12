@@ -1,8 +1,7 @@
-# Maintainer: 	whitels <2959471117 at qq dot com>
+# Maintainer: 	ngdngdc <2959471117 at qq dot com>
 
 _npmname=whistle.inspect
 _npmver=2.2.6
-_npmrel=1
 pkgname=nodejs-whistle-plugins-inspect # All lowercase
 pkgver=2.2.6
 pkgrel=1
