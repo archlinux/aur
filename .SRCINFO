@@ -1,0 +1,24 @@
+pkgbase = conky-manager
+	pkgdesc = GUI for managing Conky config files with options to browse and edit themes
+	pkgver = 2.4
+	pkgrel = 5
+	url = https://launchpad.net/conky-manager
+	arch = x86_64
+	license = GPL3
+	makedepends = vala
+	depends = cairo
+	depends = conky
+	depends = desktop-file-utils
+	depends = gtk3
+	depends = imagemagick
+	depends = json-glib
+	depends = libgee
+	depends = p7zip
+	depends = rsync
+	options = !emptydirs
+	source = conky-manager-2.4-~136~ubuntu16.04.1.tar.xz::https://launchpad.net/~teejee2008/+archive/ubuntu/ppa/+files/conky-manager_2.4~136~ubuntu16.04.1.tar.xz
+	source = makefile-roundup.patch
+	sha512sums = 777ef3e627212f65b96e7bc5cf959912de9f6c2e03d4582d597cbf64b202a23f8311b6d56f57e411ff84df8e5600e2c5b1a7d15aa5dc6fd834beb4ff4bb493cb
+	sha512sums = 3ce1bdcabfd9ee4713ed45a5d7b0dd913b69a0623f96c3aa4a49737ee685330aa7b4a9a369f7e4bd584e41d7eacbbaa9be6fff36db39186026c73bfb672ffc25
+
+pkgname = conky-manager
