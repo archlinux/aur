@@ -1,0 +1,4 @@
+[flterm]
+source = "git"
+git = "https://github.com/timvideos/flterm.git"
+prefix = "v"
