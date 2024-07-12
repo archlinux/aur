@@ -1,6 +1,6 @@
 pkgbase = python-forallpeople
 	pkgdesc = Python SI units library
-	pkgver = 2.6.8
+	pkgver = 2.7.0
 	pkgrel = 1
 	url = https://github.com/connorferster/forallpeople
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-forallpeople
 	makedepends = python-flit-core
 	makedepends = python-installer
 	depends = python
-	source = https://pypi.org/packages/source/f/forallpeople/forallpeople-2.6.8.tar.gz
-	sha512sums = 845f5d11fd462e3b1e080b4db421181ab85764a4f5452fc2a275713cc9b2fdcfe25985665258d5cad8ad4d6ef2d51a5a689252fbaa26c5fea7f5a50391ae8673
+	source = https://pypi.org/packages/source/f/forallpeople/forallpeople-2.7.0.tar.gz
+	sha512sums = f1a077cbefd5b05035c5ca06ace7c83a5cdc881c4dac91810eddec71d4eaa2cca174eeaec7682c12839fc75509d584ea40f3cfd56910e096735d5196e3dd9da9
 
 pkgname = python-forallpeople
