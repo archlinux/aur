@@ -1,0 +1,14 @@
+pkgbase = cutefish-icons
+	pkgdesc = System default icon theme of CutefishOS
+	pkgver = 0.8
+	pkgrel = 2
+	url = https://github.com/cutefishos/icons
+	arch = any
+	groups = cutefish
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = ninja
+	source = https://github.com/cutefishos/icons/archive/0.8/cutefish-icons-0.8.tar.gz
+	sha512sums = 064f81cf8f9ac6d3fdf3eff4500df0c349335432c49fd2d7a01cc84060b97372c2ea92998670cf68e0f1e8f099aedb9164a285af4f74da47bb750754649df464
+
+pkgname = cutefish-icons
