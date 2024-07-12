@@ -1,7 +1,7 @@
 pkgbase = anythingllm-desktop-bin
 	pkgdesc = The all-in-one AI application, tool suite, and API for RAG & Agents for Docker & Desktop.
 	pkgver = 1.5.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://useanything.com/
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,6 @@ pkgbase = anythingllm-desktop-bin
 	makedepends = asar
 	depends = electron26
 	depends = nodejs
-	depends = python
 	depends = python-setuptools
 	provides = anythingllm-desktop=1.5.7
 	conflicts = anythingllm-desktop
@@ -18,7 +17,7 @@ pkgbase = anythingllm-desktop-bin
 	source = anythingllm-desktop-1.5.7.AppImage::https://s3.us-west-1.amazonaws.com/public.useanything.com/latest/AnythingLLMDesktop.AppImage
 	source = LICENSE::https://raw.githubusercontent.com/Mintplex-Labs/anything-llm/master/LICENSE
 	source = anythingllm-desktop.sh
-	sha256sums = 255fd2cd71e0227212737aa1ef6d763baea27830f2b6d675ce501238a9d92264
+	sha256sums = 3f3c201fe39e16a1839471995fcbaaad41200be6bcf3421729e3c46efd741c89
 	sha256sums = 782d2dc18a1ed9028ca992520f42b2e0b6187807da0d14455b8ae608e2e5692e
 	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
