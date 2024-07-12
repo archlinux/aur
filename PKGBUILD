@@ -4,7 +4,7 @@
 
 pkgname='dut-git'
 _pkgname="${pkgname/-git/}"
-pkgver=r52.g239debf
+pkgver=r57.g9a1a6a8
 pkgrel=1
 pkgdesc='A disk usage calculator for Linux (latest git commit)'
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
@@ -31,7 +31,8 @@ pkgver() {
 prepare() {
   cd "$_pkgname"
 
-  test -f dut.c || ln -vsf main.c dut.c
+  sed -i 's/^CFLAGS =/CFLAGS +=/g'   Makefile
+  sed -i 's/^LDFLAGS =/LDFLAGS +=/g' Makefile
 }
 
 build() {
@@ -48,9 +49,7 @@ build() {
     * ) : pass ;;
   esac
 
-  export CFLAGS="$CFLAGS -O3"
-
-  make dut
+  make
 }
 
 check() {

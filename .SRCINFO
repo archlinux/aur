@@ -1,6 +1,6 @@
 pkgbase = dut-git
 	pkgdesc = A disk usage calculator for Linux (latest git commit)
-	pkgver = r52.g239debf
+	pkgver = r57.g9a1a6a8
 	pkgrel = 1
 	url = https://codeberg.org/201984/dut
 	arch = aarch64
