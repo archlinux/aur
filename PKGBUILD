@@ -1,26 +1,39 @@
-# Maintainer: d6k283tix <d6k283tix@mozmail.com>
-# Maintainer: irmluity <45vw4yz8g@mozmail.com>
+# Maintainer: Aryan <aryangh1379 at gmail>
 
 _pkgname=hiddify-next
 pkgname=${_pkgname}-bin
-pkgver=1.4.0
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="Multi-platform auto-proxy client, supporting Sing-box, X-ray, TUIC, Hysteria, Reality, Trojan, SSH etc. It’s an open-source, secure and ad-free"
 arch=(x86_64)
 url='https://github.com/hiddify/hiddify-next'
 license=('CC-BY-NC-SA-4.0')
-depends=('hicolor-icon-theme' 'libayatana-appindicator')
+depends=('hicolor-icon-theme'
+'libayatana-appindicator'
+'at-spi2-core'
+'fontconfig'
+'pango'
+'gtk3'
+'glibc'
+'gcc-libs'
+'ayatana-ido'
+'gdk-pixbuf2'
+'libayatana-indicator'
+'libdbusmenu-glib'
+'cairo'
+'harfbuzz'
+'glib2'
+'libepoxy'
+)
 optdepends=(
     'gnome-shell-extension-appindicator: for system tray icon if you are using Gnome'
 )
 provides=('hiddify')
-conflicts=(${_pkgname} ${_pkgname}-git)
+conflicts=(${_pkgname} ${_pkgname}-git ${_pkgname}-appimage)
 source=(
     "$_pkgname-$pkgver.deb::https://github.com/hiddify/hiddify-next/releases/download/v${pkgver}/Hiddify-Debian-x64.deb"
 )
-sha256sums=(
-    "dca0a36a31cc883aab39d46191989b6079fe2fc40d4ea4c9b20d152820b26a85"
-)
+sha256sums=('25586b9a481fba6d2c38b7a2bc89f71118dcfcc986239e38f66061d876bc789b')
 _install_path="/opt/$_pkgname"
 
 prepare() {
