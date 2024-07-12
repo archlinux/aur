@@ -1,8 +1,8 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 # Contributor: Julien Savard <juju@juju2143.ca>
 pkgname=numworks-epsilon
-pkgver=22.2.0
-pkgrel=2
+pkgver=23.2.2
+pkgrel=1
 pkgdesc="A simulator for the Numworks graphic calculator (Epsilon firmware)"
 arch=('x86_64')
 url="https://www.numworks.com/resources/engineering/software/"
@@ -14,6 +14,7 @@ license=(
 	'Zlib'
 )
 depends=(
+	'glibc'
 	'gcc-libs'
 	'libjpeg-turbo'
 	'libpng'
@@ -39,15 +40,13 @@ source=(
 	'LICENSE.regularized_incomplete_beta_function'
 )
 
-md5sums=(
-	'1ba5f66dd8abb28b61e7ae3a29771069'
-	'b5c7595f793a0c8b7758f4ff0152cffb'
-	'd9881740850078297bfa270e674e6e99'
-	'2e03fc45154ee59aeb4c78809e7ee696'
-	'e45599b7d190abffbb7019390a8e8ab3'
-	'516a57ad9a2184eb191987912b075f9b'
-	'f377d0e994b14a12313a724b821e3194'
-)
+md5sums=('4a53a6e6639d2176dc20c7ae007bab53'
+         'b5c7595f793a0c8b7758f4ff0152cffb'
+         'd9881740850078297bfa270e674e6e99'
+         '2e03fc45154ee59aeb4c78809e7ee696'
+         'e45599b7d190abffbb7019390a8e8ab3'
+         '2078c1dbe86f54914bcdf901b851e38b'
+         'f377d0e994b14a12313a724b821e3194')
 
 prepare() {
 	cd "epsilon-$pkgver"
