@@ -1,5 +1,5 @@
 pkgname=mingw-w64-libmixmod
-pkgver=2.1.10
+pkgver=2.1.11
 pkgrel=1
 pkgdesc="Classification with Mixture Modelling"
 arch=('any')
@@ -9,14 +9,14 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake' 'mingw-w64-eigen')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("https://github.com/mixmod/mixmod/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e0bc339f36ec22080a8a270ea87976f7b277ce4e3e9e383fba51548f83aa4d0b')
+sha256sums=('e95414decf5b2c2c5eebd7fca10e0100f2d753cbfca0694f4ac75da3b39b005e')
 
 _architecture="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build () {
   cd "$srcdir"/mixmod-${pkgver}
   for _arch in $_architecture; do
-    ${_arch}-cmake -B build-${_arch} -DCMAKE_UNITY_BUILD=ON -DMIXMOD_ENABLE_OPENMP=OFF .
+    ${_arch}-cmake -B build-${_arch} -DCMAKE_UNITY_BUILD=ON .
     make -C build-${_arch}
   done
 }
