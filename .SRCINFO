@@ -1,15 +1,17 @@
 pkgbase = mmapper
 	pkgdesc = MMapper2 is a MUD (Multi-User Dungeon) mapper especially written for the MUD MUME
-	pkgver = 23.01.0
+	pkgver = 24.03.1
 	pkgrel = 1
 	url = https://github.com/MUME/MMapper
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake
 	depends = qt5-base
+	depends = openssl
+	depends = zlib
 	provides = mmapper
 	options = strip
-	source = https://github.com/MUME/MMapper/archive/refs/tags/v23.01.0.tar.gz
-	sha256sums = 1c95e31541956ce48c382636b2a210feb607c6fd382f0138b5d43b4406d306e4
+	source = https://github.com/MUME/MMapper/archive/refs/tags/v24.03.1.tar.gz
+	sha256sums = c22ebb6aa83847970982682fad52e26a1469212b8703386874b70e1d05eaa994
 
 pkgname = mmapper
