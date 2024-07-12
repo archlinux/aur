@@ -1,0 +1,18 @@
+pkgbase = gkrellm
+	pkgdesc = System monitor package for GTK2
+	pkgver = 2.3.11
+	pkgrel = 4
+	url = http://gkrellm.srcbox.net/
+	arch = x86_64
+	license = GPL3
+	makedepends = gettext
+	depends = gtk2
+	depends = libsm
+	depends = lm_sensors
+	backup = etc/gkrellmd.conf
+	source = http://gkrellm.srcbox.net//releases/gkrellm-2.3.11.tar.bz2
+	source = gkrellm.service
+	sha256sums = 1ee0643ed9ed99f88c1504c89d9ccb20780cf29319c904b68e80a8e7c8678c06
+	sha256sums = 2829931127632d0391f6749024809594b78c138fe4f03c98cd65fdbd47cea376
+
+pkgname = gkrellm
