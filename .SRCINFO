@@ -1,0 +1,17 @@
+pkgbase = ls++
+	pkgdesc = Colorized LS on steroids
+	pkgver = 0.36
+	pkgrel = 9
+	epoch = 1
+	url = https://github.com/trapd00r/ls--/
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = perl
+	depends = perl-term-extendedcolor
+	options = !emptydirs
+	backup = etc/ls++.conf
+	source = ls++::git+https://github.com/trapd00r/ls--#commit=e17221c78f398fc9180631c684cdefabb45d1595
+	sha512sums = SKIP
+
+pkgname = ls++
