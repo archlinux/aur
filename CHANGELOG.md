@@ -1,3 +1,8 @@
+# 0.6.9
+
+    - Convert package to `src` style.
+    - Fix build command not including python source files.
+
 # 0.6.8
 
     - Update CD commands for newer build system.

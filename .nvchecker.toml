@@ -1,0 +1,5 @@
+[python-ripser]
+source = "github"
+github = "scikit-tda/ripser.py"
+use_latest_release = "true"
+prefix = "v"
