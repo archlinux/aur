@@ -1,0 +1,14 @@
+pkgbase = fcitx-table-other
+	pkgdesc = Provides some other tables for Fcitx, fork from ibus-table-others, scim-tables.
+	pkgver = 0.2.4
+	pkgrel = 3
+	url = https://github.com/fcitx/fcitx-table-other
+	arch = any
+	license = GPL2
+	makedepends = cmake
+	makedepends = intltool
+	depends = fcitx
+	source = https://download.fcitx-im.org/fcitx-table-other/fcitx-table-other-0.2.4.tar.xz
+	sha512sums = f7eeb45acfd31f5292b2fa0b068b755fddc30d42d23967ad684a5f665b76de8e98b56219cecd6bacaa5f8ec8af7453ed5c3a4b9f15d312f5b32f8e49ab30688d
+
+pkgname = fcitx-table-other
