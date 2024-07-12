@@ -1,0 +1,13 @@
+# leoneii
+post_install() {
+      ln -s /opt/agent/agent /usr/bin/agent
+}
+
+post_upgrade(){
+    pre_remove
+    post_install
+}
+
+pre_remove() {
+   rm /usr/bin/agent
+}

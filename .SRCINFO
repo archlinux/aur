@@ -1,0 +1,26 @@
+pkgbase = agent-mailru
+	pkgdesc = Official agent Mail.Ru desktop client for Arch Linux
+	pkgver = 23.2.0.2605
+	pkgrel = 1
+	url = https://agent.mail.ru/
+	install = agentlink.install
+	arch = x86_64
+	license = Custom
+	depends = libxcursor
+	depends = libxrandr
+	provides = agent
+	conflicts = icqdesktop-bin
+	conflicts = icqdesktop-git
+	conflicts = icqdesktop
+	conflicts = agent-bin
+	conflicts = agent
+	source = https://hb.bizmrg.com/agent-www/linux/x64/agent.tar.xz
+	source = agent.png
+	source = agent.desktop
+	source = agentlink.install
+	sha256sums = 8819651ba06ce14d2144d49f70e8e4823247418bb47940f8064550457245982d
+	sha256sums = d13bd1c339b739fdbf678bed7cbdba09c5046cf598c3bf147cc16469534c8468
+	sha256sums = 051854c2c9bb6b50ec3ed1fe849cd454456879f1fa071df8403aedcfc5943e2d
+	sha256sums = 70e47339abb18cd2190ec31f51d5a1ede46d03c37612260324c092e42ccc9421
+
+pkgname = agent-mailru
