@@ -1,6 +1,6 @@
 pkgbase = openshot
 	pkgdesc = An award-winning free and open-source video editor
-	pkgver = 3.2.0
+	pkgver = 3.2.1
 	pkgrel = 1
 	url = https://www.openshot.org/
 	arch = any
@@ -22,11 +22,11 @@ pkgbase = openshot
 	depends = qt5-base
 	depends = qt5-svg
 	optdepends = faac: for exporting audio using AAC
-	source = https://github.com/OpenShot/openshot-qt/archive/v3.2.0/openshot-3.2.0.tar.gz
+	source = https://github.com/OpenShot/openshot-qt/archive/v3.2.1/openshot-3.2.1.tar.gz
 	source = openshot-2.6.1-no_metric_default.patch
-	sha512sums = 41cd879155b4274332b3e655806c3bad2efc472459f0723cfb4b66a9345e939129990832c1105031c38a717c61203aadf52dc0eef3e628a5a1abcf697abec783
+	sha512sums = 78f8670cd53befca46a02d6af47cd06f06bb63addbe3ae3da4318b94c25add38436ba69be09fa583d8ee91ef848c48ba1f20488afd64d800b0ab6b017791be08
 	sha512sums = d52441559897ce0de476a6120b7e36b082bbcb0722436a77c1a60456a86d02f370df6bc58384c838a3ad2df47c1603a6fabd5044c303284bac2ea75a99a76a8a
-	b2sums = 73229aef0a169c5a4bc84911e8b7f744b2a470cd3a35aee48bb7bc0d5a3a2fd3abbff4bd613e6590429d14baf9385e461ced730ed2e3594809303f3fb60dd1ae
+	b2sums = b040d01a0aeb5607a0213bfc0af9f6d2dbd55375f8889b6ee7ff0648d48aec3780f44e0ae14d56d0df1a63f0c6e7a524c114b301b42eab67b7fc64de05fb0bf6
 	b2sums = 6f75f37be8d3e03090a8ca53e645b3269f92c7f44aa39cfbe1a03266a36d508d5c18eebbb5792ed9d6d031b3694902bc3fa3a2dac745aad60b2bc331657a364a
 
 pkgname = openshot
