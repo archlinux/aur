@@ -2,7 +2,7 @@
 
 _pkgname=labwc
 pkgname=labwc-wlroots-018-git
-pkgver=0.7.2.r96.g370d62be
+pkgver=0.7.2.r106.gc7b3f4f9
 pkgrel=1
 pkgdesc='stacking wayland compositor with look and feel from openbox (git version) (Highly experimental bleeding edge wlroots version)'
 url="https://github.com/labwc/labwc"
