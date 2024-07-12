@@ -1,0 +1,7 @@
+z /etc/iceshrimp.net/configuration.ini  740  root iceshrimp      -
+z /etc/iceshrimp.net                    755  root iceshrimp      -
+Z /usr/share/iceshrimp.net              755  iceshrimp iceshrimp -
+d /var/lib/iceshrimp.net/files          750  iceshrimp iceshrimp -
+Z /var/lib/iceshrimp.net/files          750  iceshrimp iceshrimp -
+d /run/iceshrimp                        2710 iceshrimp http      -
+Z /run/iceshrimp                        2710 iceshrimp http      -

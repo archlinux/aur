@@ -1,0 +1,7 @@
+post_install() {
+	echo
+	echo -e "--- Iceshrimp.NET post-installation instructions ---"
+	echo -e "Please adjust configuration in \e[1;32m/etc/iceshrimp.net/configuration.ini\e[0m before starting the service"
+	echo -e "Should you be migrating from a non-package install, please copy the contents of the \e[1;34mfiles\e[0m folder into \e[1;34m/var/lib/iceshrimp.net/files\e[0m and run \e[1;35msudo chown -R iceshrimp:iceshrimp /var/lib/iceshrimp.net/files\e[0m"
+	echo
+}
