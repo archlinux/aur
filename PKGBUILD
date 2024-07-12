@@ -3,7 +3,7 @@ pkgname=silex-desktop-bin
 _pkgname="Silex desktop"
 pkgver=2.7.30
 _electronversion=10
-pkgrel=1
+pkgrel=2
 pkgdesc="A no-code tool for building websites. It also lets you code when needed. It can be used online, offline or in a JAMStack project."
 arch=('x86_64')
 url="http://www.silex.me/"
@@ -25,11 +25,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('a8101bf627150ec99b93327566a5121a62631d97d99420833af75cb0fde87fc4'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
