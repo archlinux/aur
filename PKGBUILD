@@ -22,22 +22,27 @@
 #
 _pkg_name="codelite"
 _pkg_ver="17.0.0"
-#_commit="70ff062252ca69617fd227472a6492720dc19cfd"
+#_commit="636e07593842da6f6f52e805c7429cb9b05cfd45"
 
-# ctags submodule
+# ctags submodule: https://github.com/eranif/ctags
 _ctags_pkg_name="eranif-ctags"
-_ctags_pkg_ident="52c724d1132d78ea44894bfe2eaca44f38a9bd85"
+_ctags_pkg_ident="3e173d8d82fd2d3534feff0d822d6de36ca3d74e"
 _ctags_pkg_name_ident="${_ctags_pkg_name}-${_ctags_pkg_ident:0:7}"
 
-# wxdap/wxdap submodule
+# wxcfg/wx-config-msys2s submodule: https://github.com/eranif/wx-config-msys2.git
+_wxcfg_pkg_name="eranif-wxcfg"
+_wxcfg_pkg_ident="fe65daf2a49e2a1f218ea3106a26d5ae7c4235fb"
+_wxcfg_pkg_name_ident="${_wxcfg_pkg_name}-${_wxcfg_pkg_ident:0:7}"
+
+# wxdap/wxdap submodule: https://github.com/eranif/wxdap
 _wxdap_pkg_name="eranif-wxdap"
 _wxdap_pkg_ident="6b4f0310c632776575495487f74b77c80732e747"
 _wxdap_pkg_name_ident="${_wxdap_pkg_name}-${_wxdap_pkg_ident:0:7}"
 
-# wxcfg/wx-config-msys2
-_wxcfg_pkg_name="eranif-wxcfg"
-_wxcfg_pkg_ident="fe65daf2a49e2a1f218ea3106a26d5ae7c4235fb"
-_wxcfg_pkg_name_ident="${_wxcfg_pkg_name}-${_wxcfg_pkg_ident:0:7}"
+# yaml-cpp submodule: https://github.com/jbeder/yaml-cpp
+_yaml_pkg_name="jbeder-yaml-cpp"
+_yaml_pkg_ident="1b50109f7bea60bd382d8ea7befce3d2bd67da5f"
+_yaml_pkg_name_ident="${_yaml_pkg_name}-${_yaml_pkg_ident:0:7}"
 
 
 # pkg
@@ -64,48 +69,57 @@ _pkg_name_ident="${_pkg_name}-${_pkg_ident}"
 #
 pkgdesc="Cross platform IDE for C, C++, Rust, Python, PHP and Node.js written in C++"
 arch=('i686' 'x86_64')
-url="http://www.codelite.org/"
+url="https://codelite.org/"
 license=('GPL')
 
 makedepends=('pkgconfig' 'cmake' 'ninja' 'clang')
 
-depends=('wxwidgets-gtk3'
-          'webkit2gtk'
-          'clang' 'lldb'
-          'libedit'
-          'libssh'
-          'mariadb-libs'
-          'ncurses'
-          'uchardet'
-          'hunspell'
-          'ctags'
-          #'universal-ctags'
-          #'xterm' 'wget' 'curl'
-          #'python2'
-          #'python'
-        )
+depends=(
+    'wxwidgets-gtk3'
+    'webkit2gtk'
+    'libedit'
+    'libssh'
+    'mariadb-libs'
+    'ncurses'
+    'uchardet'
+    'hunspell'
+    #'ctags'
+    #'universal-ctags'
+    #'xterm' 'wget' 'curl'
+    #'python2'
+    #'python'
+)
 
-optdepends=('graphviz: callgraph visualization'
-             'clang: compiler'
-             'gcc: compiler'
-             'gdb: debugger'
-             'valgrind: debugger'
-            )
+optdepends=(
+    'clang: compiler'
+    'lldb: debugger'
+    'gcc: compiler'
+    'gdb: debugger'
+    'valgrind: debugger'
+    'rust: language'
+    'php: language'
+    'graphviz: callgraph visualization'
+    'cscope: CScope Integration for CodeLite'
+)
+
+provides=('codelite')
 
 conflicts=('codelite-unstable')
 
 source=(
     "${_pkg_name_ident}.tar.gz::https://github.com/eranif/${_pkg_name}/archive/${_pkg_ident}.tar.gz"
     "codelite-ctags.tar.gz::https://github.com/eranif/ctags/tarball/${_ctags_pkg_ident}"
-    "codelite-wxdap.tar.gz::https://github.com/eranif/wxdap/tarball/${_wxdap_pkg_ident}"
     "codelite-wxcfg.tar.gz::https://github.com/eranif/wx-config-msys2/tarball/${_wxcfg_pkg_ident}"
+    "codelite-wxdap.tar.gz::https://github.com/eranif/wxdap/tarball/${_wxdap_pkg_ident}"
+    "jbeder-yaml-cpp.tar.gz::https://github.com/jbeder/yaml-cpp/tarball/${_yaml_pkg_ident}"
     "http://repos.codelite.org/wxCrafterLibs/wxgui.zip"
   )
 
 sha256sums=('ce07be2399c5b3907e5f713ce7ba2182aa8d90c44f90214f7ec841086f20fd0c'
-            '77cd02b001f8d677ce0842eb3d93675a5762c7cedc96e5a915b247be1eaaa075'
-            '3aa515f4dd9bffa55f4293651cb687b682208dc361e88b89e33eb98ef0d616d9'
+            'aa48f2744a85c34fbaae845eecbc8862e453b8b754fec63938fc5ceef6c26189'
             '70aca36b95e2245740c17fc9a164fd6edabfd9c631184ea66cc5ee03ff54c028'
+            '3aa515f4dd9bffa55f4293651cb687b682208dc361e88b89e33eb98ef0d616d9'
+            '57f06c89f41cc2cd250b8b1db582fe27a0da67eb7a480cd8eb3d35cde64b58cd'
             '498c39ad3cc46eab8232d5fa37627c27a27f843cbe9521f05f29b19def436e12')
 
 noextract=('wxgui.zip')
@@ -133,20 +147,26 @@ prepare()
   cd "${srcdir}/${_pkg_name_ident}"
 
   # submodule eranif-ctags
-  rmdir ctags
+  test -d ctags && rmdir ctags
   ln -s ../${_ctags_pkg_name_ident} ctags
 
   # submodule eranif-wxdap to wxdap
-  rmdir wxdap
+  test -d wxdap && rmdir wxdap
   ln -s ../${_wxdap_pkg_name_ident} wxdap
 
   # submodule eranif-wx-config-msys2 to wx-config-msys2
-  rmdir wx-config-msys2
+  test -d wx-config-msys2 && rmdir wx-config-msys2
   ln -s ../${_wxcfg_pkg_name_ident} wx-config-msys2
+
+  # submodule jbeder/yaml-cpp
+  test -d yaml-cpp && rmdir yaml-cpp
+  ln -s ../${_yaml_pkg_name_ident} yaml-cpp
 
   # apply patches
 
   #patch -p0 < "${startdir}/codelite-fsw-symlink.patch"
+
+  patch -p0 < "${startdir}/dtl-dtl_Diff_hpp.patch"
 
   #patch -p0 < "${startdir}/codelite-quickfindbar-focus-tweak.patch"
   #patch -p0 < "${startdir}/cmake.patch"  # wx-config patch
