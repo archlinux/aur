@@ -1,0 +1,17 @@
+pkgbase = fcitx-skk
+	pkgdesc = Fcitx Wrapper for libskk
+	pkgver = 0.1.4
+	pkgrel = 3
+	url = https://github.com/fcitx/fcitx-skk
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = fcitx-qt5
+	depends = libskk
+	source = https://download.fcitx-im.org/fcitx-skk/fcitx-skk-0.1.4.tar.xz
+	source = https://download.fcitx-im.org/fcitx-skk/fcitx-skk-0.1.4.tar.xz.sig
+	validpgpkeys = 2CC8A0609AD2A479C65B6D5C8E8B898CBF2412F9
+	sha512sums = 029d05bbd8d325a1ed7824be007191f2148f1443190b7a781983ddddcc42461327912b5ee2f8171402b6eeea68f95511536273711ee09a3f5ec1eaf901aaac90
+	sha512sums = SKIP
+
+pkgname = fcitx-skk
