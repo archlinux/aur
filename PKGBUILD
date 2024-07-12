@@ -4,7 +4,7 @@
 
 pkgname=clusterssh
 pkgver=4.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Control multiple open terminal windows with connections to specified hosts and an administration console"
 arch=('any')
 url="https://sourceforge.net/projects/clusterssh/"
