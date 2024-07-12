@@ -1,0 +1,17 @@
+pkgbase = android-x86-64-wavpack
+	pkgdesc = Audio compression format with lossless, lossy and hybrid compression modes (Android x86-64)
+	pkgver = 5.7.0
+	pkgrel = 1
+	url = https://www.wavpack.com/
+	arch = any
+	license = BSD
+	makedepends = android-configure
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/dbry/WavPack/releases/download/5.7.0/wavpack-5.7.0.tar.xz
+	md5sums = 92f6d76e6e3d620aff296983792eab9f
+
+pkgname = android-x86-64-wavpack
