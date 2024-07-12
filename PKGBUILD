@@ -4,7 +4,7 @@ _pkgver=v2024.1-beta2.security1
 
 pkgname=iceshrimp.net-bin
 pkgver=2024.1.beta2.security1
-pkgrel=1
+pkgrel=2
 pkgdesc="Decentralized and federated social networking service, implementing the ActivityPub standard"
 arch=(x86_64 aarch64)
 url="https://iceshrimp.dev/iceshrimp/iceshrimp.net"
@@ -15,6 +15,9 @@ depends=()
 optdepends=(
   "ffmpeg: for video transcoding"
 )
+
+conflicts=(iceshrimp.net)
+provides=(iceshrimp.net)
 
 backup=("etc/iceshrimp.net/configuration.ini")
 

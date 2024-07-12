@@ -1,13 +1,15 @@
 pkgbase = iceshrimp.net-bin
 	pkgdesc = Decentralized and federated social networking service, implementing the ActivityPub standard
 	pkgver = 2024.1.beta2.security1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://iceshrimp.dev/iceshrimp/iceshrimp.net
 	install = iceshrimp.net.install
 	arch = x86_64
 	arch = aarch64
 	license = EUPL
 	optdepends = ffmpeg: for video transcoding
+	provides = iceshrimp.net
+	conflicts = iceshrimp.net
 	backup = etc/iceshrimp.net/configuration.ini
 	source = iceshrimp.net.service
 	source = iceshrimp.net.sysusers
