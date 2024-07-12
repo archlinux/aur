@@ -2,20 +2,20 @@
 # Maintainer: Carlos Alexandro Becker <carlos@becker.software>
 
 pkgname='org-stats-bin'
-pkgver=1.10.0
+pkgver=1.12.0
 pkgrel=1
-pkgdesc='Get the contributor stats summary from all repos of any given organization'
+pkgdesc='Get the contributor stats summary from all repositories of any given organization'
 url='https://github.com/caarlos0/org-stats'
 arch=('aarch64' 'x86_64')
 license=('MIT')
 provides=('org-stats')
 conflicts=('org-stats')
 
-source_aarch64=('https://github.com/caarlos0/org-stats/releases/download/v1.10.0/org-stats_linux_arm64.tar.gz')
-sha256sums_aarch64=('14045466879d299ab5a65f00a376967715a75e2c33fe7690e994b586d6360d5f')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/caarlos0/org-stats/releases/download/v1.12.0/org-stats_linux_arm64.tar.gz")
+sha256sums_aarch64=('9e04292574a8c08f8825341145e0867e8da6f9dd9ef9924bf2cd18925a381fea')
 
-source_x86_64=('https://github.com/caarlos0/org-stats/releases/download/v1.10.0/org-stats_linux_amd64.tar.gz')
-sha256sums_x86_64=('e0e3978f94e93fae8a8c0d3fd3ed6b7816e356497de2b62befa5d69cb240fedc')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/caarlos0/org-stats/releases/download/v1.12.0/org-stats_linux_amd64.tar.gz")
+sha256sums_x86_64=('7512d75f2e868b1e02d20a610c566fa6a5fcc976853f596e7f82c52878f85402')
 
 package() {
   # bin
