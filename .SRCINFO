@@ -1,6 +1,6 @@
 pkgbase = python-vapor-steam
 	pkgdesc = TUI program to check the ProtonDB compatibility of all the games of a Steam user
-	pkgver = 1.5.5
+	pkgver = 1.5.6
 	pkgrel = 1
 	url = https://github.com/TabulateJarl8/vapor
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-vapor-steam
 	depends = python-textual
 	depends = python-platformdirs
 	depends = python-linkify-it-py
-	source = https://files.pythonhosted.org/packages/source/v/vapor_steam/vapor_steam-1.5.5.tar.gz
-	sha512sums = a73956a15e987cfa90e8e2e225dc4ece5ef5b673ffba651012d9d48eb823de17dde4af852a496caf333b64641273aa88451720444602bd140ae455a0c40e0161
+	source = https://files.pythonhosted.org/packages/source/v/vapor_steam/vapor_steam-1.5.6.tar.gz
+	sha512sums = 96c6b668007fba19e440e237bf56b218913b5ef860127e24e2052c68e747ba00d83da261d5b3d631291995cc67520d0e54226c321814716b4dbb141a6c52ca31
 
 pkgname = python-vapor-steam
