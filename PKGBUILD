@@ -1,8 +1,7 @@
-# Maintainer: 	whitels <2959471117 at qq dot com>
+# Maintainer: 	ngdngdc <2959471117 at qq dot com>
 
 _npmname=wenku8
 _npmver=4.0.0
-_npmrel=1
 pkgname=nodejs-wenku8-downloader # All lowercase
 pkgver=4.0.0
 pkgrel=1
