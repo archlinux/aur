@@ -1,6 +1,6 @@
 pkgbase = python-pulp
 	pkgdesc = A Linear Programming modeler written in Python
-	pkgver = 2.8.0
+	pkgver = 2.9.0
 	pkgrel = 1
 	url = https://github.com/coin-or/pulp
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-pulp
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	source = pulp-2.8.0.tar.gz::https://github.com/coin-or/pulp/archive/refs/tags/2.8.0.tar.gz
-	sha256sums = dc0de97170f783b55bfdbd04ddf669f61aa09f8d485376ddbaef166bb051ef9f
+	source = pulp-2.9.0.tar.gz::https://github.com/coin-or/pulp/archive/refs/tags/2.9.0.tar.gz
+	sha256sums = 4c193f927f3dad282c57c18262cfac13fc19005430ea2aaac4802166ce14b768
 
 pkgname = python-pulp

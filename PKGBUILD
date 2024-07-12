@@ -3,7 +3,7 @@
 # Contributor: Jerome Leclanche <jerome@leclan.ch>
 pkgname=python-pulp
 _name=${pkgname#python-}
-pkgver=2.8.0
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="A Linear Programming modeler written in Python"
 arch=("any")
@@ -12,7 +12,7 @@ url="https://github.com/coin-or/pulp"
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=($_name-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz)
-sha256sums=('dc0de97170f783b55bfdbd04ddf669f61aa09f8d485376ddbaef166bb051ef9f')
+sha256sums=('4c193f927f3dad282c57c18262cfac13fc19005430ea2aaac4802166ce14b768')
 
 build() {
     cd $_name-$pkgver
