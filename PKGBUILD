@@ -1,17 +1,26 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=ruby-shindo
-pkgver=0.3.10
+pkgver=0.3.11
 pkgrel=1
 pkgdesc='Simple depth first ruby testing, watch and learn.'
 arch=(any)
 url='https://github.com/geemus/shindo'
 license=(MIT)
-depends=(ruby-formatador)
-makedepends=(ruby-rake)
+depends=(
+  ruby
+  ruby-formatador
+)
+makedepends=(
+  ruby-rdoc
+)
+checkdepends=(
+  ruby-rake
+)
 options=(!emptydirs)
 source=(https://github.com/geemus/shindo/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('4e3491f590a275ce7ba9dbb2c3baf1d4ea9dc94b5746f3ed96ee80b5403449c2')
+sha512sums=('f8320cb490e4dd18e6b7884dcfaba9cdc76a1f60c803c0f9471baf1c6f9794feacb0059744630ca74e1b6505047caec84d7c87f8651fd5d716e30d16c77d31f7')
+b2sums=('657cff1780acb4dc21e3aec8f3f17d07d18768ba714a543b813636f968fc337804cf590b7472e37f6b8b07f99920b8450c5a56709e5e7550cd7fe4970ec82c96')
 
 build() {
   local _gemdir="$(gem env gemdir)"
