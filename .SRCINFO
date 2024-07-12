@@ -1,0 +1,13 @@
+pkgbase = gtk-chtheme
+	pkgdesc = A little program to change your gtk+ 2.0 theme
+	pkgver = 0.3.1
+	pkgrel = 12
+	url = http://plasmasturm.org/programs/gtk-chtheme/
+	arch = x86_64
+	license = GPL
+	depends = gtk2
+	source = http://plasmasturm.org/programs/gtk-chtheme/gtk-chtheme-0.3.1.tar.bz2
+	md5sums = f688053bf26dd6c4f1cd0bf2ee33de2a
+	sha256sums = 26f4b6dd60c220d20d612ca840b6beb18b59d139078be72c7b1efefc447df844
+
+pkgname = gtk-chtheme

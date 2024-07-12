@@ -4,7 +4,7 @@
 
 pkgname=gtk-chtheme
 pkgver=0.3.1
-pkgrel=11
+pkgrel=12
 pkgdesc="A little program to change your gtk+ 2.0 theme"
 arch=('x86_64')
 license=('GPL')
