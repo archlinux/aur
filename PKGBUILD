@@ -2,7 +2,7 @@
 
 pkgname=drone-runner-exec
 pkgver=1.0.0.beta.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Drone pipeline runner that executes builds directly on the host machine'
 arch=('x86_64')
 url='https://github.com/drone-runners/drone-runner-exec'
