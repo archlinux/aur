@@ -1,0 +1,5 @@
+[dumux]
+source = "gitlab"
+gitlab = "dumux-repositories/dumux"
+host = "git.iws.uni-stuttgart.de"
+use_max_tag = true
