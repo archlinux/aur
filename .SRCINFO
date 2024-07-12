@@ -1,0 +1,21 @@
+pkgbase = babeltrace
+	pkgdesc = Command-line trace converter
+	pkgver = 1.5.11
+	pkgrel = 2
+	url = https://diamon.org/babeltrace
+	arch = x86_64
+	license = MIT
+	license = GPL2
+	license = LGPL2.1
+	makedepends = popt
+	makedepends = util-linux
+	makedepends = glib2
+	makedepends = elfutils
+	depends = popt
+	depends = util-linux
+	depends = glib2
+	depends = elfutils
+	source = babeltrace-1.5.11.tar.gz::https://github.com/efficios/babeltrace/archive/v1.5.11.tar.gz
+	sha512sums = 53353c54751104685af721ca39756f5f0f5c6f4d69ecafba72afeda8755b63163fbd1daaa36abaf582735c819d9b3276b3a78c2a958d989ffa5827cb9b85aa0f
+
+pkgname = babeltrace

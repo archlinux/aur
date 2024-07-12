@@ -4,7 +4,7 @@
 
 pkgname=babeltrace
 pkgver=1.5.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line trace converter"
 arch=('x86_64')
 url="https://diamon.org/babeltrace"
