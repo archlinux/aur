@@ -3,7 +3,7 @@
 # Contributor: Tanel K <tanel.kiis@gmail.com>
 _base=pomegranate
 pkgname=python-${_base}
-pkgver=1.0.4
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A PyTorch implementation of probabilistic models"
 arch=(x86_64)
@@ -13,7 +13,7 @@ depends=(python-scikit-learn python-pytorch python-apricot-select python-network
 makedepends=(python-build python-installer python-setuptools python-wheel)
 # checkdepends=(python-pytest python-nose)
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('8943c0c00b119087ac26173d5651a24ab6e3909f27d08ad0e3decbf719be3b0fed17f63a9d1bdb69f545f0e4a3aae2e89b95f888ba4b7e3456abb15ddeb0b133')
+sha512sums=('bc63faa0196d5c89de9ae830be41f291608d6aee248f309c085c061dadda8c904227370b0284de4f9ba685681d4818ace99dfd9b76a53a02a4b6c9566d21d13f')
 
 build() {
   cd ${_base}-${pkgver}
