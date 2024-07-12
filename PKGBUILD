@@ -3,7 +3,7 @@
 
 pkgname=libva-vdpau-driver
 pkgver=0.7.4
-pkgrel=6
+pkgrel=7
 pkgdesc='VDPAU backend for VA API'
 arch=(x86_64)
 url=https://freedesktop.org/wiki/Software/vaapi
