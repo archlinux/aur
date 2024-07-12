@@ -1,14 +1,19 @@
 pkgbase = gbsplay-git
 	pkgdesc = A command line application for playing GameBoy sound files (GBS)
-	pkgver = 0.0.94.1085
+	pkgver = 0.0.97.1162
 	pkgrel = 1
 	url = https://github.com/mmitch/gbsplay
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	depends = libpulse
-	depends = nas
+	optdepends = nas: for NAS sound driver
+	optdepends = alsa-lib: for ALSA sound driver
+	optdepends = libpulse: for pulseaudio sound driver
+	optdepends = sdl2: for SDL sound driver
+	optdepends = pipewire<1.0.0: for pipewire support
+	optdepends = vorbis-tools: for gbs2ogg
+	optdepends = zlib: for compressed input files
 	provides = gbsplay
 	conflicts = gbsplay
 	source = git+https://github.com/mmitch/gbsplay.git#branch=master

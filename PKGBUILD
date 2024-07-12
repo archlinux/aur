@@ -3,7 +3,7 @@
 # Contributor: Christoph Zeiler <rabyte*gmail>
 
 pkgname=gbsplay-git
-pkgver=0.0.94.1085
+pkgver=0.0.97.1162
 pkgrel=1
 pkgdesc="A command line application for playing GameBoy sound files (GBS)"
 arch=('i686' 'x86_64')
