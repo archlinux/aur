@@ -20,6 +20,7 @@ sha256sums=('c5851abd8b1b77d494eff108b2c0e2cc8cf689800bcfb2eead9f5e68274b37f9')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
+  sed -E 's&-Wall&-Wno-error=incompatible-pointer-types&g' -i Makefile
 
 }
 
