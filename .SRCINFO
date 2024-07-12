@@ -9,6 +9,8 @@ pkgbase = phylum
 	depends = glibc
 	depends = gcc-libs
 	depends = zlib
+	optdepends = bash-completion: for shell auto-completion
+	optdepends = zsh-completions: for shell auto-completion
 	source = cli-6.6.6.tar.gz::https://github.com/phylum-dev/cli/archive/refs/tags/v6.6.6.tar.gz
 	sha256sums = 05868260995706de7221da21c3ed399122957129a58f5427477cac97681f8725
 

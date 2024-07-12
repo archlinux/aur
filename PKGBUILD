@@ -10,6 +10,8 @@ _url="https://github.com/${pkgname}-dev/cli"
 license=('MIT')
 depends=('glibc' 'gcc-libs' 'zlib')
 makedepends=('cargo')
+optdepends=('bash-completion: for shell auto-completion'
+            'zsh-completions: for shell auto-completion')
 _pkgsrc="cli-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('05868260995706de7221da21c3ed399122957129a58f5427477cac97681f8725')
