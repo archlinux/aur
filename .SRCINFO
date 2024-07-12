@@ -1,0 +1,16 @@
+pkgbase = python-geovisio_cli
+	pkgdesc = Geovio client cli tool
+	pkgver = 0.3.13
+	pkgrel = 1
+	url = None
+	arch = any
+	license = custom:MIT License
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/03/07/d893445f13e864daef36a5794010f713ddd74838fcfccfb6dc924f91451d/geovisio_cli-0.3.13.tar.gz
+	sha256sums = f4fed849d86ec2eb41503040f1f3c890a0f514817047e81de66ce404c942641e
+
+pkgname = python-geovisio_cli
+	depends = python
