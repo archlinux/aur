@@ -1,0 +1,21 @@
+pkgbase = glhack
+	pkgdesc = A port of Nethack, a single player dungeon exploration game in 2D
+	pkgver = 1.2
+	pkgrel = 11
+	url = http://glhack.sourceforge.net/
+	install = glhack.install
+	arch = x86_64
+	license = custom
+	makedepends = mesa
+	makedepends = systemd
+	depends = sdl
+	depends = libpng
+	depends = libgl
+	source = https://downloads.sourceforge.net/glhack/glhack-1.2.tar.gz
+	source = glhack-libpng15.patch
+	source = glhack-printf.patch
+	sha256sums = cbde16bb03d3058cd1aa9341ee65b746976b35f92ff88a34ca58910114e287ad
+	sha256sums = 69d6f2916dff787f73a2b6eb1b2d9e12e435d11ad930133db3f9e58754bbdf28
+	sha256sums = 973d8e9f10249f997dec8315742692c86de1ff83deb7bd7bc2b0f8ae79f1a18a
+
+pkgname = glhack

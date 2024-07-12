@@ -2,7 +2,7 @@
 
 pkgname=glhack
 pkgver=1.2
-pkgrel=10
+pkgrel=11
 pkgdesc="A port of Nethack, a single player dungeon exploration game in 2D"
 arch=('x86_64')
 url="http://glhack.sourceforge.net/"
