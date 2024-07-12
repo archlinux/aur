@@ -4,7 +4,7 @@
 
 pkgname=deadbeef
 pkgver=1.9.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Modular GTK audio player for GNU/Linux"
 arch=(x86_64 i686 pentium4 armv7h aarch64)
 url="https://deadbeef.sourceforge.io/"
@@ -40,18 +40,25 @@ optdepends=('alsa-oss: for OSS output plugin'
             'yasm: required to build assembly portions of ffap plugin'
             'zlib: for Audio Overload plugin (psf, psf2, etc), GME (for vgz)')
 conflicts=(deadbeef-pipewire-plugin-git)
-source=("https://sourceforge.net/projects/deadbeef/files/travis/linux/${pkgver}/deadbeef-${pkgver}.tar.bz2")
-sha512sums=('6e507399f7452a66c5591e09d4309f2aab676992d048625c9b4d801ea40af6ce79862fb497e8c94efdf3a13572c964dca717b42f1c946f5ec4695dc38c1db572')
+source=("https://sourceforge.net/projects/deadbeef/files/travis/linux/${pkgver}/deadbeef-${pkgver}.tar.bz2"
+        "deadbeef-ffmpeg-7.patch::https://github.com/DeaDBeeF-Player/deadbeef/commit/d4cca5605447122cd080691f43e46047a6039359.patch")
+sha512sums=('6e507399f7452a66c5591e09d4309f2aab676992d048625c9b4d801ea40af6ce79862fb497e8c94efdf3a13572c964dca717b42f1c946f5ec4695dc38c1db572'
+            'fa5cff98758b0ab473e3eb0cd52c73a59bc1ec4884416194ba33ed904e8f174cb76ede92cca68c94eb68fe692f2a6dc5e45210e728fa0ef3d321c3a5c8cba449')
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+  patch -Np1 -i ../deadbeef-ffmpeg-7.patch
+}
 
 build () {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   export CC=clang CXX=clang++
   ./configure --prefix=/usr --disable-gtk2
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
   install -D COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
