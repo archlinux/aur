@@ -3,7 +3,7 @@
 
 pkgname=fcitx-kkc
 pkgver=0.1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Fcitx Wrapper for libkkc"
 arch=('x86_64')
 url="https://github.com/fcitx/fcitx-kkc"

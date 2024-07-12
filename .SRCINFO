@@ -1,0 +1,20 @@
+pkgbase = fcitx-kkc
+	pkgdesc = Fcitx Wrapper for libkkc
+	pkgver = 0.1.4
+	pkgrel = 3
+	url = https://github.com/fcitx/fcitx-kkc
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = fcitx
+	depends = libkkc
+	depends = libkkc-data
+	depends = skk-jisyo
+	depends = fcitx-qt5
+	source = https://download.fcitx-im.org/fcitx-kkc/fcitx-kkc-0.1.4.tar.xz
+	source = https://download.fcitx-im.org/fcitx-kkc/fcitx-kkc-0.1.4.tar.xz.sig
+	validpgpkeys = 2CC8A0609AD2A479C65B6D5C8E8B898CBF2412F9
+	sha512sums = 75931031e05789b755a0fcb82f689d04084427c4ec2171e82ecffff7143c0f8d55f8d11e21b28d3e1befcef7a036e44eca5dd57c340ca5a11cb1358bc6c461ae
+	sha512sums = SKIP
+
+pkgname = fcitx-kkc
