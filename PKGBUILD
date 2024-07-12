@@ -4,7 +4,7 @@ _zhname="五笔码表助手"
 pkgver=1.26
 _electronversion=24
 _nodeversion=18
-pkgrel=1
+pkgrel=2
 pkgdesc="五笔码表助手 for Rime ( Windows、macOS、Ubuntu ) 基于 electron 开发."
 arch=("x86_64")
 url="https://github.com/KyleBing/wubi-dict-editor"
@@ -30,7 +30,7 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('e0b77c03e1166ce5b026a63eb232f0e0edb033eb6e146fdd8f6ca49b1e08f6dc'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -41,22 +41,24 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@cfgdirname@|${pkgname}|g" \
+        -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --categories="Utility" --name="${pkgname}" --genericname="${_zhname} for Rime" --exec="${pkgname} %U"
+    gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname}" --genericname="${_zhname} for Rime" --exec="${pkgname} %U"
     sed "3i\Name[zh_CN]=${_zhname}" -i "${srcdir}/${pkgname}.desktop"
     cd "${srcdir}/${pkgname}-${pkgver}"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-    export ELECTRONVERSION="${_electronversion}"
-    export npm_config_disturl=https://electronjs.org/headers
+    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
+    #export ELECTRONVERSION="${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
     touch "${srcdir}/.electron-gyp/.yarnrc"
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
         export npm_config_registry=https://registry.npmmirror.com
+        export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
         export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
         export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
     else
@@ -64,9 +66,9 @@ build() {
     fi
     icns2png  -d 32 -x assets/img/appIcon/appIcon.icns -o assets/img/appIcon/
     cp assets/img/appIcon/appIcon_16x16x32.png assets/img/appIcon/appicon.png
-    sed "s|appicon.ico|appicon.png|g" -i main.js
-    yarn install --cache-folder "${srcdir}/.yarn_cache"
-    yarn run package
+    sed "s|appIcon\/appicon.ico|img\/appIcon\/appicon.png|g" -i main.js
+    NODE_ENV=development yarn install --cache-folder "${srcdir}/.yarn_cache"
+    NODE_ENV=production yarn run package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
