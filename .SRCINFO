@@ -1,0 +1,22 @@
+pkgbase = river-creek-git
+	pkgdesc = A malleable and minimalist status bar for the River compositor
+	pkgver = 0.4.2.r0.g2c851d8
+	pkgrel = 1
+	url = https://github.com/nmeum/creek
+	arch = x86_64
+	license = MIT
+	makedepends = zig>=0.13.0
+	makedepends = zig<0.14.0
+	makedepends = git
+	makedepends = wayland-protocols
+	makedepends = pixman
+	makedepends = fcft
+	depends = wayland
+	depends = river
+	provides = creek
+	conflicts = river-creek
+	options = !debug
+	source = git+https://github.com/nmeum/creek
+	sha256sums = SKIP
+
+pkgname = river-creek-git
