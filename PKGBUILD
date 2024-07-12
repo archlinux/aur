@@ -5,7 +5,7 @@
 pkgname=frogatto
 arch=('any')
 pkgver=4.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An old-school 2d platformer game, starring a certain quixotic frog"
 url="http://www.frogatto.com"
 license=('CC-BY-3.0 AND LicenseRef-proprietary')

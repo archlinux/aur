@@ -1,0 +1,14 @@
+pkgbase = frogatto
+	pkgdesc = An old-school 2d platformer game, starring a certain quixotic frog
+	pkgver = 4.0.2
+	pkgrel = 2
+	url = http://www.frogatto.com
+	arch = any
+	license = CC-BY-3.0 AND LicenseRef-proprietary
+	depends = anura
+	source = frogatto-4.0.2.tar.gz::https://github.com/frogatto/frogatto/archive/refs/tags/v4.0.2.tar.gz
+	source = launcher
+	sha512sums = 43e150e4f4685169e68f79b15d92c6d5013276187819efc180b9ccdec31502228766f9f5ec245e1617315a8157139fa992c8b859b26649a5700f23c68dbf8c13
+	sha512sums = 03bc10ae3c15e54de23ddf625b14593a6a504f185747a7b7a9b64741ab8ea3e3994f5cdf914bc394ae67b2e62a5409fb5e90bff8e415463073af596ca84a0b5e
+
+pkgname = frogatto
