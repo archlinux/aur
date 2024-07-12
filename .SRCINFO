@@ -1,0 +1,19 @@
+pkgbase = glew1.10
+	pkgdesc = A cross-platform C/C++ extension loading library
+	pkgver = 1.10.0
+	pkgrel = 4
+	url = http://glew.sourceforge.net
+	arch = x86_64
+	license = BSD
+	license = MIT
+	license = GPL
+	depends = glibc
+	depends = libgl
+	depends = libx11
+	depends = libxext
+	depends = libxi
+	depends = libxmu
+	source = https://downloads.sourceforge.net/glew/glew-1.10.0.tgz
+	sha256sums = 99c41320b63f6860869b5fb9af9a1854b15582796c64ee3dfd7096dc0c89f307
+
+pkgname = glew1.10
