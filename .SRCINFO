@@ -1,7 +1,7 @@
 pkgbase = android-armv7a-eabi-twolame
 	pkgdesc = An optimized MPEG Audio Layer 2 (MP2) encoder (Android armv7a-eabi)
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.twolame.org/
 	arch = any
 	license = LGPL2.1
