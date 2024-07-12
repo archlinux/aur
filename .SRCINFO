@@ -1,0 +1,17 @@
+pkgbase = d-stdx-allocator
+	pkgdesc = Extracted std.experimental.allocator
+	pkgver = 3.0.2
+	pkgrel = 22
+	url = https://github.com/dlang-community/stdx-allocator
+	arch = x86_64
+	license = Boost
+	makedepends = meson
+	makedepends = ldc
+	depends = liblphobos
+	depends = d-mir-core
+	source = stdx-allocator-3.0.2.tar.gz::https://github.com/dlang-community/stdx-allocator/archive/v3.0.2.tar.gz
+	source = add-dependency.patch::https://github.com/dlang-community/stdx-allocator/commit/676b4c782ba9c484864075508c27ef44399396f7.patch
+	sha512sums = f4dc887225926cc4530314976e5e236c696a54c6e2ccdb48271b97b0c0a70882b70e92768c94c2932ccc9bd2282c3e953b27cf72088904458f7fc15234dca4be
+	sha512sums = 13d52d3bb4d90e7b5fb3163f1761c20a57a59be1306ac665fea0eb9331864821d77e790f8ca6027b1936a6930085d2ccca7a1d49d4bd139a939e2c58f03bd47a
+
+pkgname = d-stdx-allocator
