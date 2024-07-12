@@ -3,7 +3,7 @@
 pkgname=ergochat-ldap
 _upstream_pkgname=ergo-ldap
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="LDAP plugin for the IRC server Ergo"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/ergochat/ergo-ldap"
@@ -24,12 +24,13 @@ build() {
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
-    export CGO_LDFLAGS="${LDFLAGS}"
 
     go build \
         -trimpath \
         -buildmode=pie \
-        -ldflags "-X main.commit=${GIT_COMMIT} -linkmode external -extldflags \"${LDFLAGS}\"" \
+        -mod=vendor \
+        -modcacherw \
+        -ldflags "-X main.commit=${GIT_COMMIT} -compressdwarf=false -linkmode external -extldflags \"${LDFLAGS}\"" \
         -v \
         .
 }
