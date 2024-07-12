@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=comrak
-pkgver=0.25.0
+pkgver=0.26.0
 pkgrel=1
 pkgdesc='CommonMark + GFM compatible Markdown parser and renderer'
 arch=(x86_64 i686)
@@ -12,7 +12,7 @@ depends=(gcc-libs
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('b932e2b048abfe56f2cd5d1d1e54d76e3f0399515f43a9639deaeced3c10740f')
+sha256sums=('d2024f260caf4e403043b66acfacb4923bcb4cb66017fa10a8603e8e8749d145')
 
 prepare() {
 	cd "$_archive"
