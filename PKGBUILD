@@ -3,7 +3,7 @@
 
 pkgname=lxsplit
 pkgver=0.2.4
-pkgrel=5
+pkgrel=6
 pkgdesc="Command-line file splitter/joiner compatible with any HJSplit version"
 arch=('x86_64')
 url="http://lxsplit.sourceforge.net/"
