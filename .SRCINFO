@@ -1,0 +1,14 @@
+pkgbase = gmrun
+	pkgdesc = A simple program which provides a run program window
+	pkgver = 1.4w
+	pkgrel = 2
+	url = https://github.com/wdlkmpx/gmrun
+	arch = x86_64
+	license = GPL
+	depends = gtk3
+	depends = popt
+	backup = etc/gmrunrc
+	source = gmrun-1.4w.tar.gz::https://github.com/wdlkmpx/gmrun/archive/1.4w.tar.gz
+	sha256sums = 7715eca337877abe180b435494a12d3ec3383a6677fe638724bcd23d84a5841b
+
+pkgname = gmrun
