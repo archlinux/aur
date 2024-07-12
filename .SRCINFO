@@ -6,6 +6,7 @@ pkgbase = star-cshl
 	arch = x86_64
 	license = GPL3
 	makedepends = vim
+	depends = zlib
 	source = star-cshl-2.7.11b.tar.gz::https://github.com/alexdobin/STAR/archive/2.7.11b.tar.gz
 	sha256sums = 3f65305e4112bd154c7e22b333dcdaafc681f4a895048fa30fa7ae56cac408e7
 

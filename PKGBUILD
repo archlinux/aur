@@ -7,6 +7,7 @@ pkgdesc="STAR aligns RNA-seq reads to a reference genome using uncompressed suff
 arch=("x86_64")
 url="https://github.com/alexdobin/STAR"
 license=("GPL3")
+depends=('zlib')
 makedepends=('vim')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/alexdobin/STAR/archive/${pkgver}.tar.gz")
 sha256sums=('3f65305e4112bd154c7e22b333dcdaafc681f4a895048fa30fa7ae56cac408e7')
