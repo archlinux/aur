@@ -9,6 +9,7 @@ pkgbase = local-mpv-git
 	makedepends = cargo
 	makedepends = git
 	depends = gcc-libs
+	depends = mpv
 	source = git+https://github.com/Atreyagaurav/local-mpv.git
 	md5sums = SKIP
 
