@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=luabundler
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc='CLI tool for bundling several Lua files into a single file'
 arch=('any')
@@ -16,9 +16,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/Benjamin-Dobell/luabundler/archive/v${pkgver}.tar.gz"
 )
 
-sha512sums=(
-  '339dd01450963852b3d35ebffe7f45c8d39a74c0125c109bd1ab29cf555ed93dbd6f8a67f3063bc885b25ce832be01923d6e74ef41dfc6d4d5ece583740ff30e'
-)
+sha512sums=('b61d918c8b31d18852ea73adb1bf4bff3c8e9b8b379f1be2d366e2eafe421ace5cf02e480fd0a0fca466df78e081a76267358a1d5f9d83a670b4ca51723c4737')
 
 build() {
   cd "${pkgname}-${pkgver}"
