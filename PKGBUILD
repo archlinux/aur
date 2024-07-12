@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=gotepad-bin
-pkgver=2.4.2
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="A simple text editor built with Wails"
 arch=('x86_64')
@@ -21,11 +21,11 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Sammy-T/gotepad/v${pkgver}/LICENSE"
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/Sammy-T/gotepad/v${pkgver}/build/appicon.png"
 )
-sha256sums=('63dbc0a7d55a5b5453a8b4d20152012a29929f039ef0467db9364037e3e98f74'
+sha256sums=('f35c68c1ac6f59aebc87bd25bc2f0d78a30df263efe8a3af10e1f7fe89cf2d62'
             'dca196dfc07025990b7613625b114fa8ae063e0fb5de6f29a81e42ffd1b5eaae'
-            'de674115ab3a065b2d5f6f229777ed33369ccdeabdc6020047d72fe35441014d')
+            '6d3beef0cac0b65e2a25e326970302b7efdac1c66f8c4f4bfe469fe49df30763')
 build() {
-    gendesk -q -f -n --categories="Utility" --name="${pkgname%-bin}" --exec="${pkgname%-bin} %U"
+    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname%-bin}" --exec="${pkgname%-bin} %U"
 }
 package() {
     install -Dm755 "${srcdir}/build/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
