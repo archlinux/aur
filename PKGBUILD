@@ -5,7 +5,7 @@ _android_arch=x86
 
 pkgname=android-${_android_arch}-nettle
 pkgver=3.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A low-level cryptographic library (Android ${_android_arch})"
 arch=('any')
 url="http://www.lysator.liu.se/~nisse/nettle"
@@ -13,14 +13,24 @@ license=("GPL2")
 depends=("android-${_android_arch}-gmp")
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://ftp.gnu.org/gnu/nettle/nettle-${pkgver}.tar.gz")
-md5sums=('c61453139d5fb44e9cdcc5b684b26e55')
+source=("https://ftp.gnu.org/gnu/nettle/nettle-${pkgver}.tar.gz"
+        '0001-Unversioned-libs.patch')
+md5sums=('c61453139d5fb44e9cdcc5b684b26e55'
+         '604ae2c58164024fbe4debc2aa6eb6cc')
+
+prepare() {
+    cd "$srcdir/nettle-$pkgver"
+
+    patch -Np1 -i ../0001-Unversioned-libs.patch
+}
 
 build() {
     cd "$srcdir/nettle-$pkgver"
     source android-env ${_android_arch}
 
-    android-${_android_arch}-configure
+    android-${_android_arch}-configure \
+        --enable-ld-version-script=no \
+        --disable-documentation
     make $MAKEFLAGS
 }
 

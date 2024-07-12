@@ -1,0 +1,24 @@
+--- a/configure
++++ b/configure
+@@ -8030,15 +8030,15 @@
+     ;;
+   *)
+     LIBNETTLE_FORLINK=libnettle.so
+-    LIBNETTLE_SONAME='$(LIBNETTLE_FORLINK).$(LIBNETTLE_MAJOR)'
+-    LIBNETTLE_FILE='$(LIBNETTLE_SONAME).$(LIBNETTLE_MINOR)'
+-    LIBNETTLE_LINK='$(CC) $(CFLAGS) $(LDFLAGS) -shared -Wl,-soname=$(LIBNETTLE_SONAME)'
++    LIBNETTLE_SONAME=''
++    LIBNETTLE_FILE='$(LIBNETTLE_FORLINK)'
++    LIBNETTLE_LINK='$(CC) $(CFLAGS) $(LDFLAGS) -shared'
+     LIBNETTLE_LIBS=''
+ 
+     LIBHOGWEED_FORLINK=libhogweed.so
+-    LIBHOGWEED_SONAME='$(LIBHOGWEED_FORLINK).$(LIBHOGWEED_MAJOR)'
+-    LIBHOGWEED_FILE='$(LIBHOGWEED_SONAME).$(LIBHOGWEED_MINOR)'
+-    LIBHOGWEED_LINK='$(CC) $(CFLAGS) $(LDFLAGS) -shared -Wl,-soname=$(LIBHOGWEED_SONAME)'
++    LIBHOGWEED_SONAME=''
++    LIBHOGWEED_FILE='$(LIBHOGWEED_FORLINK)'
++    LIBHOGWEED_LINK='$(CC) $(CFLAGS) $(LDFLAGS) -shared'
+     # Requested by debian, to make linking with only -lhogweed work
+     # (does not work in general, e.g., with static linking all of
+     # -lhogweed -lgmp -lnettle are still required). Also makes dlopen
