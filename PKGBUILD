@@ -4,16 +4,16 @@
 
 pkgname='docfd-bin'
 _pkgname="${pkgname/-bin}"
-_flavour='ubuntu-latest'
-pkgver=7.0.0
-pkgrel=2
+pkgver=7.1.0
+pkgrel=1
 pkgdesc='TUI multiline fuzzy document finder (pre-compiled)'
 arch=('x86_64')
 url='https://github.com/darrenldl/docfd'
 _rawurl='https://raw.githubusercontent.com/darrenldl/docfd/main'
 license=('MIT')  # SPDX-License-Identifier: MIT
-provides=('docfd')
-conflicts=('docfd')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+_flavour='linux'
 source=(
   "$url/releases/download/$pkgver/$_pkgname-$pkgver-$_flavour.tar.gz"
   "$_rawurl/CHANGELOG.md"
@@ -23,19 +23,20 @@ source=(
 changelog="$pkgname.changelog"
 
 package() {
-  install -vDm0755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-  install -vDm0644 -t "$pkgdir/usr/share/docs/$pkgname/" \
+  install -vDm0755 -t "$pkgdir/usr/bin" \
+    docfd
+  install -vDm0644 -t "$pkgdir/usr/share/docs/$pkgname" \
     {CHANGELOG,README}.md
-  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" \
+  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
     LICENSE
 }
 
 sha256sums=(
-  '5954fd0a15f913d7d209c8c5328f16c20e98c1fd8a438f4049c7949776d1cfe3'
+  '328949f3018f29b46942908ac6dbddad1e0f238c9fb3c9e6babe7ecacaee02fe'
   'SKIP' 'SKIP' 'SKIP'
 )
 b2sums=(
-  'c076b7f03c1b3c059cd589230897a3dc0f6587d8fe1b6f69b1bea28b80bfbf0eee4b8fb01983761c3c042f18c4b7fb80f8abffeafca76d7a961d05eb0f12c092'
+  '2646a733dcc8da74de120f372a643c28fc4e74b33565ddfb4960fd8eed3b38ff15db1e8eb9405820387e7ddda884b0f1cc258e0445620ae1f2bb6c5f11159843'
   'SKIP' 'SKIP' 'SKIP'
 )
 

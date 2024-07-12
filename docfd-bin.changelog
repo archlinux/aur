@@ -1,31 +1,19 @@
-## 7.0.0
 
-- Added discard mode to multi-file view
+## 7.1.0
 
-- Changed to using thin bars as pane separators, i.e. tmux style
+- Added initial macOS support
 
-- Added `g` and `G` key bindings for going to top and bottom of document list respectively
+    - Likely to have bugs, but will need macOS users to report back
 
-- Added `-l`/`--files-with-match` and `--files-without-match` for printing just paths
-  in non-interactive mode
+- Major speedup from letting `pdftotext` output everything in one pass and split
+  on Docfd side instead of asking `pdftotext` to output one page per invocation
 
-- Grouped print key bindings under print mode
+    - For very large PDFs the indexing used to take minutes but now only takes
+      seconds
 
-- Added more print key bindings
+    - Page count may be inaccurate if the PDF page contains form feed character
+      itself (not fully sure if `pdftotext` filters the form feed character from
+      content), but should be rare
 
-- Grouped reload key bindings under reload mode
-
-- Added fixes to ensure Docfd does not exit until all printing is done
-
-- Slimmed down memory usage by switching to OCaml 5.2 which enables use of `Gc.compact`
-
-    - Still no auto-compaction yet, however, will need to wait for a future
-      OCaml release
-
-- Added `h` key binding to rotate key binding info grid
-
-- Added exact, prefix and suffix search syntax from fzf
-
-- Fixed extraneous document path print in non-interactive mode when documents have no search results
-
-- Added "explicit spaces" token `~` to match spaces
+- Significant reduction of index file size by adding GZIP
+  compression to the index JSON
