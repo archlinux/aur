@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TVTB
-_pkgver=1.30.0
+_pkgver=1.30.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -15,7 +15,6 @@ depends=(
   r-biocparallel
   r-biostrings
   r-ensembldb
-  r-ensemblvep
   r-genomeinfodb
   r-genomicranges
   r-ggally
@@ -42,8 +41,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('73f9e7d82fcf92af7646d598a2b7e1df')
-b2sums=('b11a9374c382a7038a34296f6962f484ced2152c1fe218f814239b729bb86e0884952882dd4ae0cb965475d8a538bf38eca3872935a798ad93e9ed90a8bf5f47')
+md5sums=('829d498079053c3c33458d8fcd2c94e2')
+b2sums=('0af6e8c5dd43f1efda3331b7534a3357f6ef1773a4d7a7182e103c18e631c67dcd8311d0154c95c5bd16ae2b22502bb35fbe0e63ee279028ad7a2a17e3323aeb')
 
 build() {
   mkdir build

@@ -1,6 +1,6 @@
 pkgbase = r-tvtb
 	pkgdesc = The VCF Tool Box
-	pkgver = 1.30.0
+	pkgver = 1.30.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/TVTB
 	arch = any
@@ -10,7 +10,6 @@ pkgbase = r-tvtb
 	depends = r-biocparallel
 	depends = r-biostrings
 	depends = r-ensembldb
-	depends = r-ensemblvep
 	depends = r-genomeinfodb
 	depends = r-genomicranges
 	depends = r-ggally
@@ -33,8 +32,8 @@ pkgbase = r-tvtb
 	optdepends = r-rtracklayer
 	optdepends = r-shiny
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/TVTB_1.30.0.tar.gz
-	md5sums = 73f9e7d82fcf92af7646d598a2b7e1df
-	b2sums = b11a9374c382a7038a34296f6962f484ced2152c1fe218f814239b729bb86e0884952882dd4ae0cb965475d8a538bf38eca3872935a798ad93e9ed90a8bf5f47
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/TVTB_1.30.1.tar.gz
+	md5sums = 829d498079053c3c33458d8fcd2c94e2
+	b2sums = 0af6e8c5dd43f1efda3331b7534a3357f6ef1773a4d7a7182e103c18e631c67dcd8311d0154c95c5bd16ae2b22502bb35fbe0e63ee279028ad7a2a17e3323aeb
 
 pkgname = r-tvtb
