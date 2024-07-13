@@ -1,0 +1,41 @@
+pkgbase = perl-app-borgrestore
+	pkgdesc = Restore paths from borg backups
+	pkgver = 3.4.5
+	pkgrel = 2
+	url = https://metacpan.org/release/App-BorgRestore
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-log-any-adapter-tap
+	checkdepends = perl-software-license
+	checkdepends = perl-test-differences
+	checkdepends = perl-test-exception
+	checkdepends = perl-test-mockobject
+	checkdepends = perl-test-pod
+	checkdepends = perl-test-pod-coverage
+	makedepends = perl-devel-checkbin
+	makedepends = perl-module-build-tiny>=0.035
+	depends = perl>=5.14.0
+	depends = perl-carp-assert
+	depends = perl-dbd-sqlite>=1.60
+	depends = perl-dbi
+	depends = perl-file-pushd
+	depends = perl-function-parameters
+	depends = perl-ipc-run
+	depends = perl-json
+	depends = perl-log-any
+	depends = perl-log-any-adapter-log4perl
+	depends = perl-log-log4perl
+	depends = perl-number-bytes-human
+	depends = perl-path-tiny
+	depends = perl-scalar-list-utils
+	depends = perl-strictures
+	depends = perl-timedate
+	depends = perl-version-compare
+	depends = borg
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/B/BL/BLUEWIND/App-BorgRestore-3.4.5.tar.gz
+	md5sums = 17dab0d56ff991e574c1e156b378d9a3
+	sha512sums = 75ece679abe1d8644b731a12725bf59fc6ace9d334efad2a7744413ff5c929c7951de86fb388f572b40804ede24e90d1b71dd5e9247a068dee19b7615b806062
+
+pkgname = perl-app-borgrestore
