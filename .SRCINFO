@@ -1,17 +1,17 @@
 pkgbase = twad-bin
 	pkgdesc = Manage DOOM engines and mods with the terminal wad launcher
-	pkgver = 0.22.1
+	pkgver = 0.30.0
 	pkgrel = 1
 	url = https://github.com/zmnpl/twad
 	arch = x86_64
 	license = MIT
 	provides = twad
 	conflicts = twad
-	source = https://github.com/zmnpl/twad/raw/v0.22.1/README.md
-	source = https://github.com/zmnpl/twad/raw/v0.22.1/LICENSE
+	source = README.md-0.30.0::https://github.com/zmnpl/twad/raw/v0.30.0/README.md
+	source = LICENSE-0.30.0::https://github.com/zmnpl/twad/raw/v0.30.0/LICENSE
 	sha256sums = 306d459fe20f06668b71d5890c3f882dc33d8d4129d95957e13590bf7f973f5d
 	sha256sums = 9894c7a8db2482af976d25348ef173529a16ae8cf210bd7689601fc578657f33
-	source_x86_64 = twad-0.22.1-x86_64::https://github.com/zmnpl/twad/releases/download/v0.22.1/twad
-	sha256sums_x86_64 = c188b0e547e1727ca798bbb628fa01e9f14d18ac19f82b59e35f7aac167c5da4
+	source_x86_64 = twad-0.30.0-x86_64.zip::https://github.com/zmnpl/twad/releases/download/v0.30.0/twad-linux_v0.30.0.zip
+	sha256sums_x86_64 = 33f8ec483594ebbcb3d2654ea4067aa4eb4ec1344249086b92e49dc916662f81
 
 pkgname = twad-bin
