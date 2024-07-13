@@ -4,7 +4,7 @@
 
 pkgname=symphytum
 pkgver=2.6
-pkgrel=4
+pkgrel=5
 pkgdesc='Personal database software for everyone who desires to manage and organize data in an easy and intuitive way'
 arch=('x86_64')
 url='https://github.com/giowck/symphytum'
