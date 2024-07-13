@@ -7,8 +7,8 @@
 # Contributor: Paul Mattal <paul@archlinux.org>
 
 pkgname=ffmpeg-headless
-pkgver=6.1.1
-pkgrel=2
+pkgver=7.0.1
+pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video; optimised for server (headless) systems'
 arch=(i686 x86_64 armv7h armv6h aarch64)
@@ -24,7 +24,6 @@ depends=(
   glib2
   glibc
   gmp
-  gnutls
   gsm
   harfbuzz
   lame
@@ -33,6 +32,8 @@ depends=(
   libbluray
   libbs2b
   libdrm
+  libdvdnav
+  libdvdread
   libiec61883
   libjxl
   libmodplug
@@ -49,6 +50,7 @@ depends=(
   libvpx
   libwebp
   libxml2
+  mbedtls2
   ocl-icd
   onevpl
   opencore-amr
@@ -104,32 +106,14 @@ provides=(
   ffmpeg
 )
 conflicts=('ffmpeg')
-_tag='6f4048827982a8f48f71f551a6e1ed2362816eec'
+_tag='47f70eda3e2ff003a787e512afd07b0c266f7a70'
 source=("$pkgname::git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=${_tag}")
-b2sums=('9c19bd6b68d4224af2a93fdce199fd0ce9b00432c8818801d124ca993ac45a01d3a7618b66804c02c1f26787a5ca88d2d9f682f3e819cee8c2b6b3dc77e64052')
+b2sums=('d2d6a645509e697932dc8f7a57719e069299e53eb37cda7bf01fd94c9e9956e5532dc5c923fa86d72d0e3a051a7f405e768c73c66ca8aea29271923a17222e03')
 validpgpkeys=('DD1EC9E8DE085C629B3E1846B18E8928B3948D64')   # Michael Niedermayer <michael@niedermayer.cc>
 
-prepare() {
-  cd "${pkgname}" || exit 1
-  # FS#79281: fix assembling with binutil as >= 2.41
-  git cherry-pick -n effadce6c756247ea8bae32dc13bb3e6f464f0eb
-  # FS#77813: fix playing ogg files with mplayer
-  git cherry-pick -n cbcc817353a019da4332ad43deb7bbc4e695d02a
-  # use non-deprecated nvenc GUID for conftest
-  git cherry-pick -n 03823ac0c6a38bd6ba972539e3203a592579792f
-  git cherry-pick -n d2b46c1ef768bc31ba9180f6d469d5b8be677500
-  # Fix VDPAU vo
-  git cherry-pick -n e9c93009fc34ca9dfcf0c6f2ed90ef1df298abf7
-  # Fix bug in av_fft_end
-  git cherry-pick -n a562cfee2e214252f8b3f516527272ae32ef9532
-  git cherry-pick -n 250471ea1745fc703eb346a2a662304536a311b1
-  # Fix build with latest vulkan headers
-  git cherry-pick -n fef22c87ada4517441701e6e61e062c9f4399c8e
-  # avcodec/nvenc: stop using long deprecated format specifiers
-  git cherry-pick -n 43b417d516b0fabbec1f02120d948f636b8a018e
-  # avcodec/nvenc: support SDK 12.2 bit depth API
-  git cherry-pick -n 06c2a2c425f22e7dba5cad909737a631cc676e3f
-}
+# prepare() {
+#   cd "${pkgname}" || exit 1
+# }
 
 pkgver() {
   cd "${pkgname}" || exit 1
@@ -137,6 +121,7 @@ pkgver() {
 }
 
 build() {
+  export PKG_CONFIG_PATH='/usr/lib/mbedtls2/pkgconfig'
   cd ${pkgname} || exit 1
   ./configure \
     --prefix=/usr \
@@ -150,7 +135,6 @@ build() {
     --enable-fontconfig \
     --enable-frei0r \
     --enable-gmp \
-    --enable-gnutls \
     --enable-gpl \
     --enable-ladspa \
     --enable-libaom \
@@ -159,6 +143,8 @@ build() {
     --enable-libbs2b \
     --enable-libdav1d \
     --enable-libdrm \
+    --enable-libdvdnav \
+    --enable-libdvdread \
     --enable-libfreetype \
     --enable-libfribidi \
     --enable-libgsm \
@@ -198,6 +184,7 @@ build() {
     --enable-libxml2 \
     --enable-libxvid \
     --enable-libzimg \
+    --enable-mbedtls \
     --enable-nvdec \
     --enable-nvenc \
     --enable-opencl \
