@@ -3,8 +3,8 @@
 pkgname=polycule-git
 _name=polycule
 _appid=business.braid.polycule
-pkgver=eb6f4da
-pkgrel=1
+pkgver=64dfcaf
+pkgrel=2
 pkgdesc="A geeky and efficient [matrix] client for power users."
 # Flutter officially supports amd64 and AArch64
 arch=('x86_64' 'aarch64')
@@ -51,6 +51,12 @@ case "${CARCH}" in
     ;;
   "aarch64")
     export _dartarch="arm64"
+    # fix incompatible C(XX)FLAGS on Arch Linux on ARM
+    CXXFLAGS="${CXXFLAGS/-fstack-protector-strong/}"
+    CXXFLAGS="${CXXFLAGS/-fstack-clash-protection/}"
+
+    CFLAGS="${CFLAGS/-fstack-protector-strong/}"
+    CFLAGS="${CFLAGS/-fstack-clash-protection/}"
     ;;
 esac
 
