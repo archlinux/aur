@@ -1,0 +1,4 @@
+[rathole]
+source = "git"
+git = "https://github.com/rapiz1/rathole.git"
+prefix = "v"
