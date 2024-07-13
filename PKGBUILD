@@ -3,7 +3,7 @@
 _gemname=vte3
 pkgname=ruby-$_gemname
 pkgver=4.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='a Ruby binding of VTE.'
 arch=(x86_64)
 url=https://ruby-gnome2.osdn.jp/
