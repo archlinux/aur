@@ -1,6 +1,6 @@
 pkgbase = azpainter
 	pkgdesc = Painting software
-	pkgver = 3.0.7
+	pkgver = 3.0.8
 	pkgrel = 1
 	url = http://azsky2.html.xdomain.jp/soft/azpainter.html
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = azpainter
 	depends = libxcursor
 	depends = libwebp
 	options = !makeflags
-	source = https://gitlab.com/azelpg/azpainter/-/archive/v3.0.7/azpainter-v3.0.7.tar.bz2
-	sha256sums = da3d26f744d3c0df1a89e8d4c075bf722071e89ef38f5ae5bc3318a29a71f932
+	source = https://gitlab.com/azelpg/azpainter/-/archive/v3.0.8/azpainter-v3.0.8.tar.bz2
+	sha256sums = c5af10bd3a94c3997d2f9860af3816e9fd799eeb89436a3f996c741e357b1c43
 
 pkgname = azpainter
