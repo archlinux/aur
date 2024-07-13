@@ -1,0 +1,14 @@
+pkgbase = r-sparcl
+	pkgdesc = Perform Sparse Hierarchical Clustering and Sparse K-Means Clustering
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://cran.r-project.org/package=sparcl
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = gcc-fortran
+	depends = r
+	source = https://cran.r-project.org/src/contrib/sparcl_1.0.4.tar.gz
+	md5sums = 123fb53fed12e4de49926be67c61afc0
+	b2sums = 28fcfb42aded21b0a6ea8c085aa7548f0df600767a5dd3a05c4519a962a01b45b78903199b0d6987b6c5a2bbbeda27111f1beaee4b3a4933afa5c500c264c4ad
+
+pkgname = r-sparcl
