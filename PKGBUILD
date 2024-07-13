@@ -8,14 +8,14 @@
 : ${_install_path:=opt}
 
 [ -n "${_electron_version}" ] && _system_electron=true
-: ${_pkgtype:=-latest-bin}
+: ${_pkgtype=-latest-bin}
 
 # basic info
 _pkgname='beeper'
 pkgname="$_pkgname${_pkgtype:-}"
 pkgver=3.107.2
-pkgrel=1
-pkgdesc="all your chats in one app"
+pkgrel=2
+pkgdesc="A unified messaging app"
 url="https://beeper.com/"
 license=('LicenseRef-beeper')
 arch=('x86_64')
@@ -47,11 +47,6 @@ build() {
   sed -Ei \
     's@^(if \[ -z \"\$APPDIR\" ] ; then)$@APPDIR="/'"$_install_path"'/beeper"\n\1@' \
     "$srcdir/squashfs-root/AppRun"
-
-  # fix desktop file
-  sed -Ei \
-    's@^Exec=AppRun (.*)$@Exec=beeper \1@' \
-    "$srcdir/squashfs-root/beeper.desktop"
 }
 
 _package_beeper() {
@@ -65,7 +60,7 @@ _package_beeper() {
 
 _package_asar() {
   # script
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << EOF
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << END
 #!/usr/bin/env sh
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-\$HOME/.config}"
 
@@ -82,7 +77,7 @@ if [[ \$EUID -ne 0 ]] || [[ \$ELECTRON_RUN_AS_NODE ]]; then
 else
     exec \${_ELECTRON} \${_ASAR} --no-sandbox \$_USER_FLAGS "\$@"
 fi
-EOF
+END
 
   # app.asar
   install -dm755 "$pkgdir/$_install_path/$_pkgname"/resources
@@ -93,7 +88,18 @@ package() {
   depends+=('hicolor-icon-theme')
 
   # desktop file
-  install -Dm644 "$srcdir/squashfs-root/beeper.desktop" "$pkgdir/usr/share/applications/beeper.desktop"
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/beeper.desktop" << END
+[Desktop Entry]
+Type=Application
+Name=${_pkgname^}
+GenericName=Unified Messenger
+Comment=$pkgdesc
+Exec=$_pkgname --no-sandbox %U
+Icon=$_pkgname
+Terminal=false
+StartupWMClass=Beeper
+Categories=Utility;
+END
 
   # icons
   for s in 16 32 48 64 128 256 512 1024; do
@@ -103,8 +109,8 @@ package() {
   done
 
   # license files
-  install -Dm644 "$srcdir/squashfs-root/LICENSE.electron.txt" -t "$pkgdir/usr/share/licenses/$pkgname"
-  install -Dm644 "$srcdir/squashfs-root/LICENSES.chromium.html" -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 "$srcdir/squashfs-root/LICENSE.electron.txt" -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 "$srcdir/squashfs-root/LICENSES.chromium.html" -t "$pkgdir/usr/share/licenses/$pkgname/"
 
   if [[ "${_system_electron::1}" == "t" ]]; then
     depends+=("electron${_electron_version:-}")
