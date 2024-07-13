@@ -1,0 +1,17 @@
+pkgbase = perl-statistics-descriptive
+	pkgdesc = Module of basic descriptive statistical functions.
+	pkgver = 3.0801
+	pkgrel = 2
+	url = https://metacpan.org/release/Statistics-Descriptive
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-module-build
+	depends = perl>=5.6
+	depends = perl-list-moreutils
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/S/SH/SHLOMIF/Statistics-Descriptive-3.0801.tar.gz
+	md5sums = 111c2dc95231843707ce52b1e7f22676
+	sha512sums = e5901ed4f53807a53779113ad9288549dcf06618d2a81009f388edce0ead9f1178ce63eea07c0a427a3f00b6216f6e211cc2ca9b1c5fa91c82e4994343a33f35
+
+pkgname = perl-statistics-descriptive

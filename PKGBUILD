@@ -2,7 +2,7 @@
 
 pkgname=perl-statistics-descriptive
 pkgver=3.0801
-pkgrel=1
+pkgrel=2
 pkgdesc='Module of basic descriptive statistical functions.'
 arch=(any)
 license=(PerlArtistic GPL)
