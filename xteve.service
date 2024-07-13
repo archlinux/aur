@@ -1,0 +1,16 @@
+[Unit]
+Description = M3U Proxy for Plex DVR and Emby Live TV.
+After = network-online.target
+
+[Service]
+User = xteve
+Group = xteve
+WorkingDirectory = /var/lib/xteve
+ExecStart = /usr/bin/xteve --config /var/lib/xteve
+KillMode = process
+Restart = always
+RestartSec = 15
+ExecStopPost = /usr/bin/rm -rf /tmp/xteve
+
+[Install]
+WantedBy = multi-user.target
