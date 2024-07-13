@@ -1,0 +1,15 @@
+pkgbase = pywal-spicetify
+	pkgdesc = Apply wal colors to spicetify
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/jhideki/pywal-spicetify
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = python-pywal
+	depends = spicetify-cli
+	source = pywal-spicetify::git+https://github.com/jhideki/pywal-spicetify#tag=0.1
+	sha256sums = SKIP
+
+pkgname = pywal-spicetify
