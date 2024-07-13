@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=volk
 pkgname=$_pkgname-git
-pkgver=1.3.224.0.r19.gd0e41bf
+pkgver=1.3.283.0.r14.g4660854
 pkgrel=1
 pkgdesc="Meta loader for Vulkan API"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -17,7 +17,7 @@ b2sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
-	git describe --long --tags | sed 's/^sdk-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/^vulkan-sdk-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
