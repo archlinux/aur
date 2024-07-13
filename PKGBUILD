@@ -10,13 +10,15 @@ depends=('python-pywal' 'spicetify-cli')
 makedepends=('cargo' 'git')
 source=("${pkgname}::git+https://github.com/jhideki/pywal-spicetify#tag=${pkgver}")
 sha256sums=('SKIP')
+options=('strip' '!debug')
 
 build() {
     cd "$srcdir/$pkgname"
-    cargo build --release
+    cargo build --release --bin $pkgname
 }
 
 package() {
 	cd "$pkgname"
     install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    strip --strip-all "$pkgdir/usr/bin/$pkgname"
 }
