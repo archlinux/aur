@@ -1,0 +1,13 @@
+pkgbase = sbxkb
+	pkgdesc = Simple tray XKB indicator
+	pkgver = 0.7.6
+	pkgrel = 7
+	url = https://downloads.sourceforge.net/project/staybox
+	arch = x86_64
+	license = GPL2
+	depends = gtk2
+	depends = gdk-pixbuf-xlib
+	source = https://downloads.sourceforge.net/project/staybox/sbxkb-0.7.6.tar.gz
+	sha512sums = d43cff3014f566e47080ea828910f2ab856d28dce5cc7a526726a4f1666cc9fca8dcc7616b40d91e405e1db3b8d6373bbb97d96e6e36f496d9047f37328b04dc
+
+pkgname = sbxkb
