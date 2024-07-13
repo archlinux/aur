@@ -2,7 +2,7 @@
 
 pkgname=perl-crypt-random-tesha2
 pkgver=0.01
-pkgrel=9
+pkgrel=10
 pkgdesc='Random numbers using timer/schedule entropy, aka userspace voodoo entropy'
 arch=(any)
 license=(PerlArtistic GPL)

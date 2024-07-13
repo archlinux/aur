@@ -1,0 +1,15 @@
+pkgbase = perl-crypt-random-tesha2
+	pkgdesc = Random numbers using timer/schedule entropy, aka userspace voodoo entropy
+	pkgver = 0.01
+	pkgrel = 10
+	url = https://metacpan.org/release/Crypt-Random-TESHA2
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.6.2
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/D/DA/DANAJ/Crypt-Random-TESHA2-0.01.tar.gz
+	md5sums = 04bdca905744ba390c5f54537e3ec931
+	sha512sums = afc95d73481cb6aa06b939ef51b5ddc14e7aaee296d08779f79313000188d7c2e5e88ddf2048dd45b9dd96420cdd7f65f0a98c8bcb4c5be77709043d558ec4ba
+
+pkgname = perl-crypt-random-tesha2
