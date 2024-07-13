@@ -1,0 +1,15 @@
+pkgbase = perl-io-bufferedselect
+	pkgdesc = Line-buffered select interface
+	pkgver = 1.0
+	pkgrel = 13
+	url = https://metacpan.org/release/IO-BufferedSelect
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = https://search.cpan.org/CPAN/authors/id/A/AF/AFN/IO-BufferedSelect-1.0.tar.gz
+	md5sums = 1c6013480c2acf855312c9a184816857
+	sha512sums = 30bc0ebb5f62c6261938780eaf9eaa9aba2ec9ee3453c35b87614797e74399fbce9cc3aea5742078069e8131ba31ffb5ff5cafed1147b66c8f98b92b40652fc3
+
+pkgname = perl-io-bufferedselect
