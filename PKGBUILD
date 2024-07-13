@@ -23,6 +23,10 @@ sha256sums=('SKIP'
             'baae520a0946a43bb796c3e3e24d2c62d94108f4aa90380d5cfb17daaac9edda')
 
 build() {
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+
     cd "${pkgname}"
     npm --prefix frontend install
     npm --prefix frontend run build
@@ -35,9 +39,10 @@ build() {
         -extldflags '${LDFLAGS}'
     "
     go build \
+        -trimpath \
         -ldflags="$ldflags" \
-        -o chinesesubfinder \
-        ./cmd/chinesesubfinder
+        -o "${pkgname}" \
+        ."/cmd/${pkgname}"
 }
 
 package() {
