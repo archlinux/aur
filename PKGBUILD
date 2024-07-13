@@ -8,11 +8,12 @@ pkgname=lib32-polkit
 pkgver=124
 pkgrel=1
 pkgdesc="Application development toolkit for controlling system-wide privileges"
-url="https://gitlab.freedesktop.org/polkit/polkit"
+url="https://github.com/polkit-org/polkit"
 arch=(x86_64)
 license=(LGPL-2.0-or-later)
 depends=(
   lib32-glib2
+  lib32-glibc
   lib32-systemd
   polkit
 )
@@ -23,16 +24,10 @@ makedepends=(
   meson
 )
 provides=(libpolkit-gobject-1.so)
-_commit=82f0924dc0eb23b9df68e88dbaf9e07c81940a5a  # tags/124
 source=(
-  "git+https://gitlab.freedesktop.org/polkit/polkit.git#commit=$_commit"
+  "git+$url#tag=$pkgver"
 )
-b2sums=('SKIP')
-
-pkgver() {
-  cd polkit
-  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
-}
+b2sums=('a79cae1f57c652bba5d979ff88101ce6840a5b68a8178c11b813d66efd04c61e8bfb675ea4868d11ee7121e2d4cfe8143bdd7a514e1dd4b49e040831fae361d9')
 
 prepare() {
   cd polkit
