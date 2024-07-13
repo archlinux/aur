@@ -2,7 +2,7 @@
 
 pkgname=perl-carp-assert
 pkgver=0.22
-pkgrel=2
+pkgrel=3
 pkgdesc='executable comments'
 arch=(any)
 license=(PerlArtistic GPL)
