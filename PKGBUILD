@@ -3,7 +3,7 @@
 
 pkgname=qhttpengine
 pkgver=1.0.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Simple and secure HTTP server for Qt'
 arch=('x86_64')
 url='https://github.com/nitroshare/qhttpengine'
