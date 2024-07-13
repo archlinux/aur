@@ -1,7 +1,7 @@
-diff --git a/Setup/Linux/51-edl.rules b/Setup/Linux/51-edl.rules
+diff --git a/mtkclient/Setup/Linux/51-edl.rules b/mtkclient/Setup/Linux/51-edl.rules
 index 95e5594..ee2f384 100755
---- a/Setup/Linux/51-edl.rules
-+++ b/Setup/Linux/51-edl.rules
+--- a/mtkclient/Setup/Linux/51-edl.rules
++++ b/mtkclient/Setup/Linux/51-edl.rules
 @@ -1,15 +1,15 @@
  
  # Qualcomm EDL
