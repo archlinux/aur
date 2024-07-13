@@ -3,12 +3,12 @@
 
 pkgname=lib32-vulkan-icd-loader-git
 pkgdesc='Vulkan Installable Client Driver (ICD) Loader (32-bit) (git version)'
-pkgver=1.3.285.r1.g1e8781e
+pkgver=1.3.289.r1.g3869180
 pkgrel=1
 arch=(i686 x86_64)
 url='https://github.com/KhronosGroup/Vulkan-Loader'
 license=(Apache-2.0)
-makedepends=(cmake python lib32-libx11 lib32-libxrandr lib32-wayland vulkan-headers-git git make)
+makedepends=(cmake python lib32-libx11 lib32-libxrandr lib32-wayland vulkan-headers-git git ninja make)
 depends=(lib32-glibc)
 optdepends=('lib32-vulkan-driver: packaged vulkan driver')
 conflicts=(lib32-vulkan-icd-loader)
@@ -32,7 +32,7 @@ export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
   cmake -B "${srcdir}"/build -S "${srcdir}"/Vulkan-Loader \
   -D CMAKE_C_FLAGS=-m32 \
   -D CMAKE_CXX_FLAGS=-m32 \
-  -G "Unix Makefiles" \
+  -G Ninja \
   -D CMAKE_BUILD_TYPE=Release \
   -D CMAKE_INSTALL_PREFIX=/usr \
   -D CMAKE_INSTALL_BINDIR=bin \
@@ -49,11 +49,11 @@ export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
   -D BUILD_WSI_DIRECTFB_SUPPORT=OFF \
   -Wno-dev
 
-  make -j$(nproc) -C "${srcdir}"/build
+  ninja -j$(nproc) -C "${srcdir}"/build
 }
 
 package(){
-  make -j$(nproc) -C "${srcdir}"/build DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja -j$(nproc) -C "${srcdir}"/build install
 
   # install license
   install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
