@@ -1,0 +1,4 @@
+[opencollada]
+source = "git"
+git = "https://github.com/KhronosGroup/OpenCOLLADA.git"
+prefix = "v"
