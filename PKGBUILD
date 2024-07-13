@@ -1,14 +1,14 @@
 # Maintainer: revsuine <paradoor at protonmail dot com>
 pkgname=ckb-next-runit
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Runit service for ckb-next"
 arch=("i686" "x86_64" "pentium4")
 url="https://codeberg.org/revsuine/${pkgname}"
-licence=("GPL-3.0-or-later")
+license=("GPL-3.0-or-later")
 depends=("runit"
     "ckb-next")
-source=("${url}/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=("55c8efca2bddac983920aabc08651902462b9a0cfca84fb14958483be11ba395")
 
 package() {
