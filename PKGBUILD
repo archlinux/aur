@@ -4,7 +4,7 @@
 
 pkgname='dut-git'
 _pkgname="${pkgname/-git/}"
-pkgver=r58.g052f4c9
+pkgver=r60.g1eec8da
 pkgrel=2
 pkgdesc='A disk usage calculator for Linux (latest git commit)'
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
@@ -26,13 +26,6 @@ pkgver() {
     git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf 'r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
   )
-}
-
-prepare() {
-  cd "$_pkgname"
-
-  sed -i 's/^CFLAGS =/CFLAGS ?=/g' Makefile
-  sed -i 's/^LDFLAGS =/LDFLAGS ?=/g' Makefile
 }
 
 build() {
