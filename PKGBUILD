@@ -8,7 +8,7 @@ pkgdesc="QScintilla based text editor"
 arch=(i686 x86_64)
 url="https://github.com/luebking/sqriptor"
 license=(GPL)
-depends=(qt5-base qscintilla-qt5)
+depends=(qt6-base qscintilla-qt6)
 makedepends=(git)
 provides=(sqriptor)
 conflicts=(sqriptor)
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
     cd "${_gitname}"
-    qmake-qt5
+    qmake6
     make
 }
 
