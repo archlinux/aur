@@ -1,0 +1,4 @@
+[symphytum]
+source = "git"
+git = "https://github.com/giowck/symphytum.git"
+prefix = "v"
