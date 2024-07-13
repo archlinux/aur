@@ -1,13 +1,19 @@
 # Maintainer: Elias Elwyn <a@jthv.ai>
 
 pkgname=perl-alien-hdf4
-pkgver=0.06
-pkgrel=2
-pkgdesc='Encapsulate install info for HDF4'
 _dist=Alien-HDF4
-arch=(any)
-url="https://metacpan.org/release/$_dist"
+pkgver=0.06
+pkgrel=3
+pkgdesc='Encapsulate install info for HDF4'
 license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
+
+url="https://metacpan.org/release/$_dist"
+source=("$pkgname-$pkgver.tar.gz::https://cpan.metacpan.org/authors/id/E/ET/ETJ/$_dist-$pkgver.tar.gz"
+        "$_dist-$pkgver.patch")
+sha256sums=('19e143a3692c2c25a595e23834c2b318b912be1a92aa40ccd3e730cd097c152f'
+            'ca8c5c82eb503113707782ae56488ccee82d24165909fdad892cf0e0750190f3')
+
+arch=(any)
 depends=(
   hdf4
   perl
@@ -20,10 +26,6 @@ checkdepends=(
   perl-test-simple
 )
 options=('!emptydirs')
-source=("https://cpan.metacpan.org/authors/id/E/ET/ETJ/$_dist-$pkgver.tar.gz"
-        "$_dist-$pkgver.patch")
-sha256sums=(19e143a3692c2c25a595e23834c2b318b912be1a92aa40ccd3e730cd097c152f
-            ca8c5c82eb503113707782ae56488ccee82d24165909fdad892cf0e0750190f3)
 
 prepare(){
   cd "$srcdir/$_dist-$pkgver"
