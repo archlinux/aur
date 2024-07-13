@@ -3,12 +3,12 @@
 
 pkgname=lib32-vulkan-extensionlayer-git
 pkgdesc='Layer providing Vulkan features when native support is unavailable (32-bit) (git version)'
-pkgver=1.3.285.r0.gab096d0
+pkgver=1.3.289.r2.g484c128
 pkgrel=1
 arch=(i686 x86_64)
 url='https://github.com/KhronosGroup/Vulkan-ExtensionLayer.git'
 license=(Apache-2.0)
-makedepends=(cmake python lib32-libx11 lib32-libxrandr lib32-wayland git make)
+makedepends=(cmake python lib32-libx11 lib32-libxrandr lib32-wayland git ninja make)
 depends=(lib32-gcc-libs lib32-vulkan-icd-loader-git vulkan-headers-git lib32-vulkan-utility-libraries lib32-volk lib32-libx11)
 # For the layer JSON description
 depends+=(vulkan-extensionlayer-git)
@@ -38,7 +38,7 @@ export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
   "${srcdir}"/Vulkan-ExtensionLayer/scripts/update_deps.py --config release --arch 32
 
   cmake -C helper.cmake -B "${srcdir}"/build -S "${srcdir}"/Vulkan-ExtensionLayer \
-  -G "Unix Makefiles" \
+  -G Ninja \
   -D CMAKE_C_FLAGS=-m32 \
   -D CMAKE_CXX_FLAGS=-m32 \
   -D CMAKE_BUILD_TYPE=Release \
@@ -55,11 +55,11 @@ export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
   -D BUILD_TESTS=OFF \
   -Wno-dev
 
-  make -j$(nproc) -C "${srcdir}"/build
+  ninja -j$(nproc) -C "${srcdir}"/build
 }
 
 package(){
-  make -j$(nproc) -C "${srcdir}"/build DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja -j$(nproc) -C "${srcdir}"/build install
 
   rm -rf "${pkgdir}"/usr/{bin,include,share}
 

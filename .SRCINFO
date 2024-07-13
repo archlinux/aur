@@ -1,6 +1,6 @@
 pkgbase = lib32-vulkan-extensionlayer-git
 	pkgdesc = Layer providing Vulkan features when native support is unavailable (32-bit) (git version)
-	pkgver = 1.3.285.r0.gab096d0
+	pkgver = 1.3.289.r2.g484c128
 	pkgrel = 1
 	url = https://github.com/KhronosGroup/Vulkan-ExtensionLayer.git
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = lib32-vulkan-extensionlayer-git
 	makedepends = lib32-libxrandr
 	makedepends = lib32-wayland
 	makedepends = git
+	makedepends = ninja
 	makedepends = make
 	depends = lib32-gcc-libs
 	depends = lib32-vulkan-icd-loader-git
