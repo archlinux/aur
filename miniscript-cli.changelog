@@ -1,0 +1,225 @@
+Version 1.0: Apr 27, 2017
+=========================
+Initial release.
+
+Version 1.1: Sep 15, 2017
+=========================
+- Fixed a bug causing non-empty maps to evaluate as false (0) instead of true (1).
+
+Version 1.2: Jun 24, 2018
+=========================
+- Added a .values intrinsic to map; returns all values in the map as a list.
+
+- The 'return' statement can now be used without a value, implicitly returning null.
+
+- Fixed a precedence issue between . and [] which caused (for example) a.b[42] to fail (where 'a' is a map containing a list or map 'b').
+
+- Added 'true' and 'false' keywords, which evaluate immediately to 1 and 0 respectively.
+
+- Added short-form 'if' statements, of the form:
+	if <condition> then <result1> [else <result2>]
+where <condition> is any expression, and <result1> and <result2> are single statements.
+
+- Changed the behavior of Interpreter.RunUntilDone, so that it (by default) bails out early if it reaches any intrinsic method call that does not immediately complete.  Specify false for the second parameter to get the old behavior.
+
+- Fixed equality testing (both == and !=) on lists and maps, which previously always returned null.  It now returns 1 or 0 by doing a deep comparison of the elements, unless the equality cannot be determined (for example due to a self-referencing map or list causing an infinite recursion), in which case it returns 0.5.
+
+- Updated the MiniScript User Manual, Integration Guide, and Quick Reference.
+
+Version 1.3: Mar 01, 2019
+=========================
+- Statements beginning with "not" (which only make sense in a REPL context) now evaluate correctly.
+
+- Null values now properly work in boolean expressions involving and, or, and not.
+
+- Chained calls are now properly invoked even when some of those calls do not have parentheses; fixes a failure to parse, for example, s.upper.indexOf("R") where s is some string.
+
+- Empty strings and null strings are now correctly compared; fixes a bug that, among other things, broke the "FizzBuzz" example in the manual.
+
+- Added intrinsic function ceil(x): returns next whole number equal to or less than x.
+
+- Added intrinsic function floor(x): returns next whole number equal to or greater than x.
+
+- Added intrinsic function list.sort: sorts the given list in place.  Optionally, specify the name of a key to sort by -- e.g. list.sort("name") -- and it will sort all elements by that key (useful when you have a list of objects, for example).
+
+- Added intrinsic function yield: makes the main loop in the interpreter (MiniscriptInterpreter.RunUntilDone) return immediately.  In a game context, for example, this would typically pause the script until the next frame.
+
+- The indexOf intrinsic function now takes an optional 'after' parameter.  If given, the search begins after the indicated key.  Useful for looping over all matches (by passing in the previous value returned).  Works for strings, lists, and maps.
+
+Version 1.4: Jun 09, 2019
+=========================
+- Fixed a failure of the "not" operator to work with lists and maps.
+
+- Fixed parsing of expressions where a function returns a map, and then you immediately use the dot operator, when invoking the function without parentheses.
+
+- Fixed an exception that could occur in the range() intrinsic if given non-numeric arguments.
+
+- Greatly improved the performance of string replication (string * number) for large repeat values.
+
+- Added limits to how big a string or list can get in some situations (such as concatenation and replication) that easily spiraled out of control before.  To adjust these limits, assign to static properties ValString.maxSize (in characters) and ValList.maxSize (in elements).
+
+- Fixed a thread safety issue that could cause spurious "undefined identifier" errors when running multiple MiniScripts in different threads.
+
+- Fixed a bug causing functions with no explicit 'return' statement to sometimes return a spurious value rather than null.
+
+- Fixed a System.ArgumentException that could occur when using the same key twice in a dictionary literal, or when calling d.push(x) where x is already among the keys of d.
+
+- Fixed a System.NullReferenceException thrown when trying to print a list containing null.
+
+- No longer throw a "expression required" compiler error when trying to use null in a list or map literal.  (Note: you still can't use null as a map _key_, but it's a perfectly cromulent value.)
+
+- Multiplying a list by a negative number no longer throws a System.ArgumentOutOfRangeException (instead, it just returns an empty list).
+
+- Fixed another ArgumentOutOfRangeException that could occur when trying to take a slice of a string with a negative total length (now returns empty string).
+
+- Fixed a "Stack empty" exception that could occur when an undefined identifier is used as an argument to a function.
+
+- Fixed a bug causing map equality tests to fail in some cases where the two maps included recursive references to other maps.
+
+- Parentheses are no longer required or recommended around the arguments of a function called as a statement -- for example, you can now do: print "Hello world!"
+
+- Tweaked formatting of numbers when converting to strings.  Now displays all integer values in full integer form; uses exponential notation for other numbers > 1E10, or < -1E10, or in the range -1E-6 to 1E6; and for any other numbers, displays in standard notation with 1-6 digits past the decimal place.
+
+- New string.split(self, delimiter=" ", maxCount=null) method splits a string into a list by delimiter with at most maxCount entries.
+
+- New list.join(self, delimiter=" ") intrinsic joins a list into a string using the given delimiter.
+
+- New replace(oldval, newval, maxCount) intrinsic works on strings, lists, and maps; parameters are old value (to be replaced), new value (to replace it with), and optionally a maximum number of replacements to make (if omitted, then all occurrences are replaced).  Lists and maps are mutated in place.
+
+- New log(x, base=10) intrinsic finds the logarithm of the given number with the given base (defaults to 10), i.e., the number y such that base^y == x.
+
+- Added an "isa" operator for runtime type checking.  Usage: `a isa b`, where a is any value, and b is: list, map, number, string, funcRef, or some other map.  In the case of maps, this walks the __isa chain as you would expect.  Evaluates to 1 if `a` is of the type specified by `b`, or 0 otherwise.
+
+- Strings now support subtraction, which is the inverse operation of string addition (concatenation): if the left-hand side string ends with the right-hand side string, then the latter is stripped off in the result; otherwise the left-hand string is returned as it is.  Example: "foo.txt" - ".txt" == "foo".
+
+- New intrinsic "version" returns a map containing information about MiniScript and its host app: numeric version of miniscript and host, build date in YYYY-MM-DD format, and host name and info (e.g. URL).
+
+- New special identifier "super" can be used to invoke a function on the base class, e.g., `super.foo(42)` invokes `foo` on the base class, while keeping `self` bound to the same value as in the current function.  ("super" and "self" are pseudo-keywords: technically identifiers, but with special built-in behavior.)
+
+- Host apps can now set an "assignment override function" on any ValMap, allowing a bit of native code to run when user code assigns a value in that map.
+
+Version 1.4.1: Jul 06, 2019
+===========================
+- Fixed a bug that would cause the `break` keyword to throw a compiler error when used before an `else` block.  {GitHub issue #2}
+
+- The split(delim, maxCount) intrinsic now works with a delimiter of empty string; it splits on individual characters, up to the specified count.  (Note that if you don't specify maxCount, then using .values would be equivalent and slightly more efficient.)  {GitHub issue #1}
+
+- Fixed a bug where hasIndex on a list would return true for any string argument {#3}.
+
+- New list.insert(index, value) intrinsic inserts a new value into a list in place.  Also works for strings, though in that case a new string is returned (since strings are immutable).  {#4}
+
+- Fixed inconsistent handling of @ (the address-of operator) on the first token of a statement.  Especially seen in a REPL, for example: entering `@rnd` should (and now does) display the function summary rather than actually invoking the function. {#5}
+
+- When you convert a list or map to a sting, and it contains a reference to some other list or map that is also referred to by a global variable, you now see it as the global variable rather than its contents.  This makes it much easier to examine such objects, particularly in object-oriented programming where the __isa chain can otherwise be hard to wade through.
+
+- Fixed an infinite loop that could occur if you constructed an __isa chain containing a loop.
+
+Version 1.5: Nov 23, 2019
+=========================
+- Fixed a bug that would cause assignments of `and` and `or` expressions to fail under certain circumstances.  {#6}
+
+- Changed the way scoping works.  Previously, if an identifier was not found in the local scope, each calling scope would be searched in turn, all the way back to the global scope.  Now those intermediate scopes are skipped; identifiers are located in the local scope, outer scope (in the case of nested functions), or global scope only.  {#7}
+
+- Added a line continuation feature: if you end a line in an open parenthesis, bracket,
+or brace; or a comma; or any binary operator, then you can continue the statement on
+the next line.  Works in both REPL and script mode.  {#8}
+
+- When you define a function B locally within a function A, the code of B now has implicit access to the local variables in A.  It can also explicitly access them (including assigning new values) via the new `outer` special identifier. {#9}
+
+- Fixed a bug in the C# version that could cause a NullReferenceException to occur when storing a map that contains null as the key in another map.
+
+- Fixed a bug in the C# version that could cause a NullReferenceException to occur when comparing a string to null.
+
+- Fixed inconsistencies in number formatting and parsing on certain systems.  MiniScript now always converts numbers to strings, and vice versa, in the "invariant" format: using a dot as the decimal separator, and nothing for grouping powers of 1000.
+
+- The `atan` intrinsic now takes an optional second parameter; the parameters are now named y (default 0) and x (default 1).  If x is not specified, this is equivalent to the standard one-parameter `atan` function (i.e. existing code is unchanged).  But if both parameters are specified, then this returns radians in the correct quadrant, like the `atan2` function in many other languages.
+
+- Fixed a bug causing spurious errors when running command-line MiniScript with a script file containing non-ASCII characters.  {#24}
+
+- Fixed a bug with string replication in the C++ version.  {#25}
+
+- Added the ability to extend basic types (number, string, list, and map) with new methods, that can then be called on values of that type using dot syntax, just like the built-in methods.  Known limitation: you can't use dot syntax with number literals.
+
+Version 1.5.1: Dec 18, 2021
+===========================
+- Fixed a bug in the C# version that caused the behavior of string sorting (i.e. `>` and related operators) to depend on system settings.  It now always sorts ordinally, i.e., by the binary values of each character (just like the C++ version).
+
+- Improved slice operator so that both indexes may be omitted, i.e., `seq[:]` is now the same as `seq[0:seq.len]`.
+
+- `null` can now be used as a map key (or value), which was previously disallowed.
+
+- Comparisons between numbers and non-numbers now return true for ==, false for !=, and null for all other comparisons (in line with how other types already worked).
+
+- Operations between a string and another type now only implicitly convert the right-hand side to a string in the case of + (but not, for example, in the case of comparison operators, which now support == and != but return null for other comparisons, in line with how other types already worked).
+
+- Fixed a failure to generate a compiler error when `end if` is encountered without an open "if" block. {#33}
+
+- Fixed a cosmetic issue in the REPL where an expression like `[rnd]*3` would not fully evaulate the list elements, resulting in a confusing and unhelpful output.
+
+- Added three new intrinsics to facilitate bitwise operations: bitAnd(i,j), bitOr(i,j), and bitXor(i,j).  These treat the two arguments as integers, and return the bitwise and, or, and exclusive-or of those arguments respectively.
+
+- Invoking a non-function (e.g. a number, string, list, or map) with arguments now throws a "Too Many Arguments" runtime error, rather than ignoring the error and accumulating arguments which could eventually cause a problem.
+
+- MiniScript now has a hard limit of 256 arguments in one call; exceeding this will throw a runtime error saying "Argument limit exceeded". {#35}
+
+- Fixed a recently introduced memory leak in the C++ version.
+
+- Standardized behavior of `and` and `or` when given operands outside the standard [0, 1] range.  (Details: `and` returns Abs(Clamp(a * b)), and `or` returns Abs(Clamp(a + b - a * b), where Abs is absolute value and Clamp limits its argument to the [0, 1] range.)
+
+- Function declarations no longer require empty parentheses.
+
+- Command-line MiniScript now prints an error message when given an invalid script file path and exits with a -1 status code, rather than failing silently.
+
+Version 1.6: Feb 06, 2023
+=========================
+- New: Added math-assignment operators (+=, etc.)
+
+- New: `print` now takes an optional second argument, `delimiter` which defaults to the line break character (specify "" for no delimiter at all)
+
+- New: intrinsic `refEquals` checks two values for reference equality
+
+- New: intrinsic `stackTrace` returns the current call stack
+
+- Improved: attempting to index into `null` now generates a more specific error
+
+- Improved: common mistake of using = in an `if` statement now generates a more specific and helpful error
+
+- Improved: equality tests on identical lists or maps containing reference loops could previously return 0.5; now returns 1, and does so more quickly (by recognizing and accounting for the loops)
+
+- Fixed: Using line continuation directly after `and` produced unreliable results
+
+- Fixed: using an expression as a parameter default value exposed an internal temporary; now throws an error instead
+
+- Fixed: string.hasIndex(string) returned true for any non-empty string, when it should return false
+
+- Fixed: missing `end if` in a function was not flagged as an error [#38]
+
+- Fixed: `else if(x)` failed unless you have a space after `else if`
+
+- Fixed: x = someList[null] failed to throw an error
+
+- Fixed: assignment to a slice (e.g. `someList[1:3] = foo`) failed to throw an error, but had no effect; now throws a compiler error
+
+- Fixed: the REPL failed to print results of any function that takes more than one run cycle to complete (e.g., a function containing a `yield`)
+
+- Fixed: trying to store a function reference in a map literal did not work, e.g. `a = {"b":@color.lerp}`
+
+- Fixed: a function ref in a list literal (e.g. `[@color.lerp]`) didn't show properly as an implicit result, but worked fine when assigned to something
+
+- Fixed: loops in the __isa chain could cause the app to lock up; now generates runtime error
+
+Version 1.6.1: Jun 29, 2023
+===========================
+- Fixed: map comparisons could erronously report as equal two maps with parallel structures that contain `null` at the same place in both
+
+- Fixed: single-line `if` using `return` before `else` improperly required a return value
+
+- Fixed [C++ only]: printing a map containing a function reference failed to print FUNCTION() like the C# version
+
+- Fixed [C++ only]: when entering a `for` loop at the REPL, C++ MiniScript immediately executed the first time through, instead of until `end for` to execute even once; and with an if block, it would execute the body even if the condition is false
+
+- Fixed [C++ only]: the result of `stackTrace` was reversed; the most immediate call frame should be first in the list, rather than last
+
+(Not Yet Released)
+==================
+- Fixed [C# only]: bug causing map.indexOf to bail out and return null if it hits a null value before the value being sought.

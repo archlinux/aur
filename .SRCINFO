@@ -1,0 +1,18 @@
+pkgbase = miniscript-cli
+	pkgdesc = Simple, elegant programming language
+	pkgver = 1.6.2
+	pkgrel = 1
+	url = https://miniscript.org/
+	changelog = miniscript-cli.changelog
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	provides = miniscript
+	options = lto
+	source = miniscript-cli-1.6.2.tar.gz::https://github.com/JoeStrout/miniscript/archive/refs/tags/v1.6.2.tar.gz
+	sha256sums = 62df0ce8faca21db588ed5f0abe020a41602c8fc02376f6b2385869863acbefd
+	b2sums = 07e1b8c37b382568495422747729546705cdc2b5d4f3a79e3b2b6435fe56e8776bb33941347c6e617851527d5224c8b40a914eb592bd210b4b97a23f38a91fae
+
+pkgname = miniscript-cli
