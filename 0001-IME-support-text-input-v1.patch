@@ -1,4 +1,4 @@
-From ba5683c721db68c81d50bd7d2dd550d5ea5b1592 Mon Sep 17 00:00:00 2001
+From 9640010216d78beec3bc28084c98fd7ce1491238 Mon Sep 17 00:00:00 2001
 From: tokyo4j <hrak1529@gmail.com>
 Date: Fri, 23 Feb 2024 03:57:01 +0900
 Subject: [PATCH] IME: support text-input-v1
@@ -10,10 +10,10 @@ Subject: [PATCH] IME: support text-input-v1
  3 files changed, 343 insertions(+), 1 deletion(-)
 
 diff --git a/include/input/ime.h b/include/input/ime.h
-index 06dd16ff..24638094 100644
+index 189f51f1..6a5e95f0 100644
 --- a/include/input/ime.h
 +++ b/include/input/ime.h
-@@ -50,6 +50,7 @@ struct input_method_relay {
+@@ -57,6 +57,7 @@ struct input_method_popup {
  struct text_input {
  	struct input_method_relay *relay;
  	struct wlr_text_input_v3 *input;
@@ -22,10 +22,10 @@ index 06dd16ff..24638094 100644
  
  	struct wl_listener enable;
 diff --git a/protocols/meson.build b/protocols/meson.build
-index acaf0215..ffb371ac 100644
+index b0c2f5ab..ab6d48a8 100644
 --- a/protocols/meson.build
 +++ b/protocols/meson.build
-@@ -20,6 +20,7 @@ server_protocols = [
+@@ -21,6 +21,7 @@ server_protocols = [
  	wl_protocol_dir / 'staging/drm-lease/drm-lease-v1.xml',
  	wl_protocol_dir / 'staging/xwayland-shell/xwayland-shell-v1.xml',
  	wl_protocol_dir / 'staging/tearing-control/tearing-control-v1.xml',
@@ -34,7 +34,7 @@ index acaf0215..ffb371ac 100644
  	'wlr-input-inhibitor-unstable-v1.xml',
  	'wlr-output-power-management-unstable-v1.xml',
 diff --git a/src/input/ime.c b/src/input/ime.c
-index b3d6410d..9272c559 100644
+index c09ef948..592bd9b2 100644
 --- a/src/input/ime.c
 +++ b/src/input/ime.c
 @@ -6,6 +6,7 @@
@@ -339,7 +339,7 @@ index b3d6410d..9272c559 100644
  			wlr_text_input_v3_send_enter(input, new_focused_surface);
  		}
  	}
-@@ -264,6 +542,62 @@ handle_input_method_commit(struct wl_listener *listener, void *data)
+@@ -274,6 +552,62 @@ handle_input_method_commit(struct wl_listener *listener, void *data)
  		return;
  	}
  
@@ -402,7 +402,7 @@ index b3d6410d..9272c559 100644
  	if (input_method->current.preedit.text) {
  		wlr_text_input_v3_send_preedit_string(
  			text_input->input,
-@@ -520,11 +854,14 @@ handle_new_text_input(struct wl_listener *listener, void *data)
+@@ -523,11 +857,14 @@ handle_new_text_input(struct wl_listener *listener, void *data)
  	struct input_method_relay *relay =
  		wl_container_of(listener, relay, new_text_input);
  	struct wlr_text_input_v3 *wlr_text_input = data;
@@ -418,9 +418,9 @@ index b3d6410d..9272c559 100644
  	text_input->input = wlr_text_input;
  	text_input->relay = relay;
  	wl_list_insert(&relay->text_inputs, &text_input->link);
-@@ -578,6 +915,9 @@ input_method_relay_create(struct seat *seat)
- 	relay->popup_surface_destroy.notify = handle_popup_surface_destroy;
- 	relay->popup_surface_commit.notify = handle_popup_surface_commit;
+@@ -581,6 +918,9 @@ input_method_relay_create(struct seat *seat)
+ 
+ 	relay->focused_surface_destroy.notify = handle_focused_surface_destroy;
  
 +	text_input_manager_v1_init(seat->server->wl_display,
 +		seat->server->text_input_manager);
@@ -429,5 +429,5 @@ index b3d6410d..9272c559 100644
  }
  
 -- 
-2.45.0
+2.45.2
 
