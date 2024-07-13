@@ -32,7 +32,7 @@ diff --git a/src/output.c b/src/output.c
 index 1bf01429..ae875319 100644
 --- a/src/output.c
 +++ b/src/output.c
-@@ -112,10 +112,21 @@ output_frame_notify(struct wl_listener *listener, void *data)
+@@ -112,10 +112,23 @@ output_frame_notify(struct wl_listener *listener, void *data)
  		output_apply_gamma(output);
  	} else {
  		output->pending.tearing_page_flip =
@@ -53,7 +53,9 @@ index 1bf01429..ae875319 100644
 +			lab_wlr_scene_output_commit(output->scene_output,
 +				&output->pending);
 +		} else {
-+			output->tearing_fail_count = 0;
++			if (output->pending.tearing_page_flip) {
++				output->tearing_fail_count = 0;
++			}
 +		}
  	}
  
