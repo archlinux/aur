@@ -5,13 +5,13 @@
 # Contributor: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=wlroots0.17-hidpi-xprop
 pkgver=0.17.4
-pkgrel=1
+pkgrel=2
 license=(MIT)
 pkgdesc='Modular Wayland compositor library (stable, with patches)'
 url=https://gitlab.freedesktop.org/wlroots/wlroots
 arch=(x86_64)
-provides=('libwlroots.so=12-64' "wlroots=${pkgver}" "wlroots-hidpi-xprop=${pkgver}")
-conflicts=('libwlroots.so=12-64')
+provides=('libwlroots.so=12-64' "wlroots=${pkgver}" "wlroots-hidpi-xprop=${pkgver}" 'wlroots0.17')
+conflicts=('libwlroots.so=12-64' 'wlroots0.17')
 options=(debug)
 depends=(
 	glslang
