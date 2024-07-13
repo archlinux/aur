@@ -22,6 +22,10 @@ sha256sums=('aedda78bf653aaad1af41a18a31d2a25fe386eab93511d24bd8613a912793fc8'
             '430b38fb5de8ea2bdd03ef65d376b5aae7acad88cfffd5031d05b45e8ae1040b')
 
 prepare() {
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    
     cd "${pkgname}-${pkgver}"
 
     local file_setting="conf/settings.go"
