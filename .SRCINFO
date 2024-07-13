@@ -1,6 +1,6 @@
 pkgbase = nextflow
 	pkgdesc = A DSL for data-driven computational pipelines
-	pkgver = 23.04.1
+	pkgver = 24.04.3
 	pkgrel = 1
 	url = https://www.nextflow.io
 	install = nextflow.install
@@ -8,7 +8,7 @@ pkgbase = nextflow
 	license = Apache
 	depends = java-runtime>=11
 	depends = bash
-	source = nextflow-23.04.1::https://github.com/nextflow-io/nextflow/releases/download/v23.04.1/nextflow
-	sha256sums = b9155a27e11eef920739ce10db5e1c624951aa8300e2b75d4e43e8a287d566a6
+	source = nextflow-24.04.3::https://github.com/nextflow-io/nextflow/releases/download/v24.04.3/nextflow
+	sha256sums = e258f6395a38f044eb734cba6790af98b561aa521f63e2701fe95c050986e11c
 
 pkgname = nextflow
