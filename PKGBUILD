@@ -4,7 +4,7 @@ pkgname=fwallet
 _name=fwallet
 _appid=business.braid.f_wallet
 pkgver=1.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A beautiful cross-platform wallet application."
 # Flutter officially supports amd64 and AArch64
 arch=('x86_64' 'aarch64')
@@ -43,6 +43,12 @@ case "${CARCH}" in
     ;;
   "aarch64")
     export _dartarch="arm64"
+    # fix incompatible C(XX)FLAGS on Arch Linux on ARM
+    CXXFLAGS="${CXXFLAGS/-fstack-protector-strong/}"
+    CXXFLAGS="${CXXFLAGS/-fstack-clash-protection/}"
+
+    CFLAGS="${CFLAGS/-fstack-protector-strong/}"
+    CFLAGS="${CFLAGS/-fstack-clash-protection/}"
     ;;
 esac
 
