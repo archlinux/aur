@@ -1,0 +1,4 @@
+[octave-queueing]
+source = "github"
+github = "mmarzolla/queueing"
+use_latest_release = "true"

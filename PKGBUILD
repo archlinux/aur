@@ -10,12 +10,12 @@
 
 _pack=queueing
 pkgname=octave-${_pack}
-pkgver=1.2.7
+pkgver=1.2.8
 pkgrel=1
 pkgdesc="The queueing package provides functions for queueing networks and Markov chains analysis"
 arch=(any)
-url="https://gnu-octave.github.io/packages/${_pack}"
-license=('GPL3')
+url="https://github.com/mmarzolla/${_pack}"
+license=(GPL-3.0-or-later)
 groups=('octave-forge')
 depends=('octave>=4.0.0')
 makedepends=()
@@ -24,9 +24,9 @@ backup=()
 options=()
 install=${pkgname}.install
 _archive=${_pack}-${pkgver}.tar.gz
-source=("https://downloads.sourceforge.net/octave/${_archive}")
+source=("${_archive}::${url}/archive/refs/tags/${pkgver}.tar.gz")
 noextract=("${_archive}")
-sha512sums=('b9788a9a6e376836ef6e82d28f3949aaded409520779f1e6caa3805e5672c2b944f6fb1c4c26f5276549d35714524406cb857108a818fb72cdb0f3d855cc17da')
+sha512sums=('67a0a7c36297da5949e29e3b32b96502b7292c4faa83ac470f798a41ca39182dc2e8dd441d4385d7fdf3c0e52533d3c081582ce155967eadff2d2041131e154f')
 
 _octave_run() {
   octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
