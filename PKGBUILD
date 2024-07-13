@@ -13,9 +13,9 @@ depends=("glibc" "gcc-libs" "bzip2")
 makedepends=("cargo")
 
 source=(
-    "$pkgname-$pkgver.tar.gz::https://github.com/Umatriz/nomi/archive/refs/tags/0.1.2-pre1.tar.gz"
+    "$pkgname-$pkgver.tar.gz::https://github.com/Umatriz/nomi/archive/refs/tags/0.2.2.tar.gz"
 )
-sha256sums=('73c44aa1744884bccde86bf347db97b75f83024f6cd20d0a572f49414d901066')
+sha256sums=('d00c0b9703fad083d2cb2016d7a2d99be208f3a1b873e498ed2d5ac2b01f2398')
 
 prepare() {
     cd $(find $srcdir/* -maxdepth 0 -type d)
