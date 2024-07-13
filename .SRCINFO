@@ -1,0 +1,17 @@
+pkgbase = android-x86-a52dec
+	pkgdesc = Library for decoding ATSC A/52 (AC-3) audio streams (Android x86)
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://git.adelielinux.org/community/a52dec/
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = android-configure
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://distfiles.adelielinux.org/source/a52dec/a52dec-0.8.0.tar.gz
+	md5sums = 4debeed0257f5312e84d92711a5cfcec
+
+pkgname = android-x86-a52dec
