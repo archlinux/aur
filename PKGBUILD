@@ -2,7 +2,7 @@
 
 pkgname=lib32-vkd3d-proton-git
 pkgdesc='D3D12 to Vulkan translation library (32-bit) (git version)'
-pkgver=2.11.1.r95.g85a0367
+pkgver=2.13.r48.gebe7279
 pkgrel=1
 arch=(i686 x86_64)
 url='https://source.winehq.org/git/vkd3d.git'
