@@ -2,21 +2,23 @@
 pkgname=savedesktop
 _app_id=io.github.vikdevelop.SaveDesktop
 pkgver=3.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Save and load KDE Plasma, Xfce and GNOME-based DE configuration"
 arch=('any')
 url="https://github.com/vikdevelop/SaveDesktop"
 license=('GPL-3.0-or-later')
 depends=('hicolor-icon-theme' 'libadwaita' 'python-dbus' 'python-gobject')
-source=("SaveDesktop-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
+makedepends=('git')
+_commit=ed2b8614142db15ef8db79c368957fd1927a7c1c  # tags/3.3.2b^0
+source=("git+https://github.com/vikdevelop/SaveDesktop.git#commit=${_commit}"
         "$pkgname.sh"
         'directories.patch')
-sha256sums=('0ed731d0e4c6968de6d661b6765f99e79cbdf8fb4ffcdacc64be8313f72812fe'
+sha256sums=('0456cc8330c93bf8caeafbfdb3d1ce94a9147200c4c0c1c015b8e3d8d53dd866'
             '876d67efbc57115f2d6d6558308ad19ed300ff2ad853e3a38fbfd710c25e8dcd'
             'd42f43417f54529f3db00c8888552f49ab4eab4e65defae46c49199fcbb6df37')
 
 prepare() {
-  cd SaveDesktop-$pkgver
+  cd SaveDesktop
 
   # Desktop file Exec path
   desktop-file-edit --set-key=Exec --set-value="$pkgname" "flatpak/${_app_id}.desktop"
@@ -26,13 +28,13 @@ prepare() {
 }
 
 check() {
-  cd SaveDesktop-$pkgver
+  cd SaveDesktop
   appstreamcli validate --no-net "flatpak/${_app_id}.metainfo.xml"
   desktop-file-validate "flatpak/${_app_id}.desktop"
 }
 
 package() {
-  cd SaveDesktop-$pkgver
+  cd SaveDesktop
   install -d "$pkgdir/usr/share/$pkgname"
   cp -R src translations "$pkgdir/usr/share/$pkgname"
   install -Dm644 "flatpak/${_app_id}.desktop" -t "$pkgdir/usr/share/applications/"
