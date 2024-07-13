@@ -3,20 +3,20 @@
 
 _pkgname="firefox-developer-edition-firefox-symlink"
 pkgname="${_pkgname}-latest"
-pkgver=121.0b9
+pkgver=129.0b3
 pkgrel=1
 pkgdesc="Adds a 'firefox'-symlink for 'firefox-developer-edition'. Also symlinks extensions, icon- and .desktop-files."
 arch=("any")
 url='https://aur.archlinux.org/packages/firefox-developer-edition-firefox-symlink-latest'
-license=('custom: public domain')
-depends=("firefox-developer-edition")
+license=('LicenseRef-public-domain')
+depends=('bash' 'firefox-developer-edition' 'hicolor-icon-theme')
 provides=(
   "${_pkgname}=${pkgver}"
   "firefox=${pkgver}"
 )
 conflicts=(
   "${_pkgname}"
-  "firefox"
+  'firefox'
 )
 install="${_pkgname}.install"
 
