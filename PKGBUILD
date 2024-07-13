@@ -2,7 +2,7 @@
 
 pkgname=opl-synth
 pkgver=2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='FM synthesizer that emulates the Yamaha OPL sound chip'
 arch=('x86_64')
 url='https://discodsp.com/opl/'

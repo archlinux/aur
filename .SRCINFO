@@ -1,0 +1,37 @@
+pkgbase = opl-synth
+	pkgdesc = FM synthesizer that emulates the Yamaha OPL sound chip
+	pkgver = 2.2
+	pkgrel = 2
+	url = https://discodsp.com/opl/
+	arch = x86_64
+	groups = pro-audio
+	groups = vst3-plugins
+	license = GPL2
+	makedepends = git
+	makedepends = juce
+	makedepends = zlib
+	makedepends = libpng
+	makedepends = libogg
+	makedepends = jack
+	makedepends = libx11
+	makedepends = libxext
+	makedepends = libxrandr
+	makedepends = libxinerama
+	makedepends = libxcursor
+	makedepends = gendesk
+	depends = alsa-lib
+	depends = hicolor-icon-theme
+	depends = libjpeg-turbo
+	depends = libvorbis
+	depends = flac
+	depends = freetype2
+	depends = libglvnd
+	depends = curl
+	optdepends = jack: backend for standalone
+	optdepends = vst3-host: for VST3 plugins
+	source = opl-synth::git+https://github.com/reales/OPL#commit=e365b6d26afd66cb6d050d39102b5ac7c2225dd8
+	source = use-global-path.patch
+	b2sums = SKIP
+	b2sums = 842ffc32c162c170d885fa3e399e327dc146edbf79ae7beb64da607a6b2467a1942bd02a92a4ee4981142740a80caa76e2896bc9009c80c5740ffd44ac983fd9
+
+pkgname = opl-synth
