@@ -1,0 +1,17 @@
+pkgbase = ruby-gtk4
+	pkgdesc = Ruby/GTK4 is a Ruby binding of GTK+-4.x.
+	pkgver = 4.1.2
+	pkgrel = 2
+	url = https://ruby-gnome2.osdn.jp/
+	arch = x86_64
+	license = LGPL-2.1+
+	depends = gtk4
+	depends = ruby
+	depends = ruby-atk=4.1.2
+	depends = ruby-gdk4=4.1.2
+	noextract = gtk4-4.1.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/gtk4-4.1.2.gem
+	sha256sums = 1237d874fac285ddf150d097a078199b8e9b9c4490463c482bbb0341d07ede75
+
+pkgname = ruby-gtk4

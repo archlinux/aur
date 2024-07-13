@@ -3,7 +3,7 @@
 _gemname=gtk4
 pkgname=ruby-$_gemname
 pkgver=4.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Ruby/GTK4 is a Ruby binding of GTK+-4.x.'
 arch=(x86_64)
 url=https://ruby-gnome2.osdn.jp/
