@@ -9,6 +9,8 @@ pkgbase = pywal-spicetify
 	makedepends = git
 	depends = python-pywal
 	depends = spicetify-cli
+	options = strip
+	options = !debug
 	source = pywal-spicetify::git+https://github.com/jhideki/pywal-spicetify#tag=0.1
 	sha256sums = SKIP
 
