@@ -1,0 +1,4 @@
+[ruby-formatador]
+source = "git"
+git = "https://github.com/geemus/formatador.git"
+prefix = "v"
