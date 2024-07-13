@@ -4,7 +4,7 @@
 
 pkgbase=libdxvk
 pkgname=('libdxvk' 'lib32-libdxvk')
-pkgver=2.3.1
+pkgver=2.4
 pkgrel=1
 pkgdesc="Native Linux port of DXVK to allow usage without WINE"
 arch=(x86_64)
@@ -18,7 +18,7 @@ source=("git+$url.git?signed#tag=v${pkgver}"
 	"git+https://github.com/KhronosGroup/Vulkan-Headers.git"
 	"git+https://github.com/KhronosGroup/SPIRV-Headers.git"
 	"git+https://gitlab.freedesktop.org/JoshuaAshton/libdisplay-info.git")
-sha256sums=('203b336366b16612b01bc5c220bdeeee633e6fdbf15f23559c826eac7b59beeb'
+sha256sums=('709dc3ff649b61a993db43572a720bcbcae00998e0c9a24b99cf4d99b63fc646'
             'SKIP'
             'SKIP'
             'SKIP'

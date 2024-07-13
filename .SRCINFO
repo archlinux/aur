@@ -1,6 +1,6 @@
 pkgbase = libdxvk
 	pkgdesc = Native Linux port of DXVK to allow usage without WINE
-	pkgver = 2.3.1
+	pkgver = 2.4
 	pkgrel = 1
 	url = https://github.com/doitsujin/dxvk
 	arch = x86_64
@@ -16,13 +16,13 @@ pkgbase = libdxvk
 	provides = libdxvk_dxgi.so
 	provides = libdxvk_d3d9.so
 	provides = libdxvk_d3d11.so
-	source = git+https://github.com/doitsujin/dxvk.git?signed#tag=v2.3.1
+	source = git+https://github.com/doitsujin/dxvk.git?signed#tag=v2.4
 	source = git+https://github.com/Joshua-Ashton/mingw-directx-headers.git
 	source = git+https://github.com/KhronosGroup/Vulkan-Headers.git
 	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git
 	source = git+https://gitlab.freedesktop.org/JoshuaAshton/libdisplay-info.git
 	validpgpkeys = 273D040B5113B886D1A090D4C8CC613427A31C99
-	sha256sums = 203b336366b16612b01bc5c220bdeeee633e6fdbf15f23559c826eac7b59beeb
+	sha256sums = 709dc3ff649b61a993db43572a720bcbcae00998e0c9a24b99cf4d99b63fc646
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
