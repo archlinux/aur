@@ -3,14 +3,14 @@
 
 pkgbase=vulkan-lunarg-tools-git
 pkgname=(vulkan-extra-tools-git vulkan-extra-layers-git)
-pkgver=1.3.283.r12124.gd0fee2e2a
+pkgver=1.3.283.r12136.g65c8c768c
 _major=1.3
 pkgrel=1
 arch=(x86_64)
 url='https://github.com/LunarG/VulkanTools.git'
 license=(custom)
 depends=()
-makedepends=(git cmake python libx11 libxrandr wayland qt5-svg qt5-webengine make)
+makedepends=(cmake git ninja make python libx11 libxrandr wayland qt5-svg qt5-webengine)
 source=(git+https://github.com/LunarG/VulkanTools.git)
 
 _install(){
@@ -37,7 +37,7 @@ build(){
   "${srcdir}"/VulkanTools/scripts/update_deps.py --config release
 
   cmake -C helper.cmake -B "${srcdir}"/build -S "${srcdir}"/VulkanTools \
-  -G "Unix Makefiles" \
+  -G Ninja \
   -D CMAKE_BUILD_TYPE=Release \
   -D CMAKE_INSTALL_PREFIX=/usr \
   -D CMAKE_INSTALL_BINDIR=bin \
@@ -53,9 +53,9 @@ build(){
   -D BUILD_VIA=OFF \
   -Wno-dev
   
-  make -j$(nproc) -C "${srcdir}"/build
+  ninja -j$(nproc) -C "${srcdir}"/build
 
-  make -j$(nproc) -C "${srcdir}"/build DESTDIR="${srcdir}/fakeinstall" install
+  ninja -j$(nproc) -C "${srcdir}"/build DESTDIR="${srcdir}/fakeinstall" install
 }
 
 package_vulkan-extra-tools-git(){
