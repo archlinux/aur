@@ -1,0 +1,15 @@
+pkgbase = qt5-systems
+	pkgdesc = Qt Publish and Subscribe Add-on Module
+	pkgver = 5.4.0.20181230
+	pkgrel = 3
+	url = https://github.com/qt/qtsystems
+	arch = x86_64
+	license = GPL3
+	license = LGPL
+	license = FDL
+	depends = bluez-libs
+	depends = qt5-declarative
+	source = qt5-systems-e3332ee38d27a134cef6621fdaf36687af1b6f4a.tar.gz::https://github.com/qtproject/qtsystems/archive/e3332ee38d27a134cef6621fdaf36687af1b6f4a.tar.gz
+	sha256sums = 5259cf350e5e1f755c53bcba066dd40fea7b20f4e661b0973b24ae46454a9e75
+
+pkgname = qt5-systems
