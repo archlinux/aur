@@ -183,6 +183,11 @@ prepare() {
     scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
   fi
 
+  ## Use Arch Wiki TOMOYO configuration: https://wiki.archlinux.org/title/TOMOYO_Linux#Installation_2
+  msg2 "Replacing Debian TOMOYO configuration with upstream Arch Linux..."
+  scripts/config --set-str CONFIG_SECURITY_TOMOYO_POLICY_LOADER      "/usr/bin/tomoyo-init"
+  scripts/config --set-str CONFIG_SECURITY_TOMOYO_ACTIVATION_TRIGGER "/usr/lib/systemd/systemd"
+
   # Let's user choose microarchitecture optimization in GCC
   # Use default microarchitecture only if we have not choosen another microarchitecture
   if [ "$_microarchitecture" -ne "0" ]; then
