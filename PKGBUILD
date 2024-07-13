@@ -2,10 +2,10 @@
 _reponame=moza-ff
 pkgname=moza-ff-dkms-git
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Moza Racing FFB driver"
 arch=('x86_64')
-url="https://github.com/JacKeTUs/moza-ff"
+url="https://github.com/Lawstorant/moza-ff"
 license=('GPL2')
 depends=(dkms)
 makedepends=(
@@ -14,7 +14,7 @@ makedepends=(
   glibc
 )
 source=(
-  git+https://github.com/JacKeTUs/moza-ff
+  git+https://github.com/Lawstorant/moza-ff
 )
 sha256sums=(
   'SKIP'
