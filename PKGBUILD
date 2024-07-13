@@ -1,7 +1,7 @@
 # Maintainer: Moritz Biering <moritzbiering.mb@gmail.com>
 
 pkgname=nachrichten-bin
-pkgver=0.1.8
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Stay informed without leaving your command line"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -16,14 +16,13 @@ source_armv7h=("${url}/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_linu
 source_aarch64=("${url}/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_linux_arm64.tar.gz")
 
 package() {
-  # cd "${pkgname%-bin}-$pkgver"
-  install -Dm755 "${pkgname%-bin}" "$pkgdir/usr/bin/${pkgname%-bin}"
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname%-bin}/LICENSE"
-  install -Dm644 "README.md" "$pkgdir/usr/share/doc/${pkgname%-bin}/README.md"
+	# cd "${pkgname%-bin}-$pkgver"
+	install -Dm755 "${pkgname%-bin}" "$pkgdir/usr/bin/${pkgname%-bin}"
+	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname%-bin}/LICENSE"
+	install -Dm644 "README.md" "$pkgdir/usr/share/doc/${pkgname%-bin}/README.md"
 }
 
-sha256sums_x86_64=('5afe807328d03b53b210f07246df72950d5676791f4ea67a8db09a18c4fe9ecc')
-sha256sums_i686=('e617d6371738964ef8b74543a871bf79db8ebf4b960b5193d75d16e987806259')
-sha256sums_armv7h=('0ebeca688a953182535b04e6fdc754f66be7deb2c14241a9993423e8cb96d998')
-sha256sums_aarch64=('e10d3bc9e9f601b8600e5301b1adcd563baf4f194e249f18f7b7c171cdaffd3f')
-
+sha256sums_x86_64=('a8cd7a9c53a88b7fe07c97d4a0a338365fdb44fe3e0fe7482bd57781b897100e')
+sha256sums_i686=('17124e436539aa162747ae9ae5cb63d6e5b7bf2fd9dec18c0fb3c19d3ce0d795')
+sha256sums_armv7h=('cf8b128e0bae9074d94a9a12cb53f8840d47045d6fe8efca74232b2c0013fe0c')
+sha256sums_aarch64=('71daaf891b6e3ec6cc80f579bc8136e872e99ddd91753603a7ff3d49d8b1d14f')
