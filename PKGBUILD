@@ -4,7 +4,7 @@
 # Contributor: Roman Kupriyanov <mr.eshua@gmail.com>
 
 pkgname=jitsi-meet-desktop
-pkgver=2024.5.0
+pkgver=2024.6.0
 pkgrel=1
 pkgdesc="Jitsi Meet desktop application"
 arch=('x86_64' 'aarch64')
@@ -28,9 +28,9 @@ options=(!strip)
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/jitsi/jitsi-meet-electron/archive/v${pkgver}.tar.gz"
         'no_targets.patch'
         'jitsi-meet-desktop.desktop')
-sha256sums=('aa66315cd5011ccbeb08efaf2a62302de401e60234dac0847a256fafc16afe85'
+sha256sums=('10cce8a14c8cf8df220b339ee30131e0a90565c6eeea108e909e7e9b7ddb711c'
             'ed3a4d4c524611ba66c9f0e28d2da77cb2948c6785367d69b86aa4965dd6bb99'
-            'bc4464a6e84857ec4400e199a9022169824a8fab0ae5a1efc0d8fc28dcfffcac')
+            'e2ddfa2d11891c2bb813d8d641e863b4987a4626938035ef6dea17330d436597')
 
 case "$CARCH" in
         aarch64)
