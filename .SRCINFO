@@ -1,10 +1,14 @@
 pkgbase = python-osc-placement
 	pkgdesc = OpenStackClient plugin for the Placement service
 	pkgver = 4.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://docs.openstack.org/osc-placement
 	arch = any
 	license = Apache
+	checkdepends = python-oslotest
+	checkdepends = python-openstackclient
+	checkdepends = python-stestr
+	checkdepends = python-wsgi-intercept
 	makedepends = python-setuptools
 	depends = python-pbr
 	depends = python-six
