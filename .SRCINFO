@@ -1,7 +1,7 @@
 pkgbase = obs-studio-tytan652
 	pkgdesc = Free and open source software for video recording and live streaming. With everything except service integrations. Plus my bind interface PR, and sometimes backported fixes
-	pkgver = 30.1.2
-	pkgrel = 6
+	pkgver = 30.2.0
+	pkgrel = 1
 	url = https://github.com/obsproject/obs-studio
 	arch = x86_64
 	arch = aarch64
@@ -29,7 +29,6 @@ pkgbase = obs-studio-tytan652
 	depends = ffmpeg-obs>=7
 	depends = fontconfig
 	depends = freetype2
-	depends = ftl-sdk
 	depends = gcc-libs
 	depends = glib2
 	depends = glibc
@@ -87,7 +86,7 @@ pkgbase = obs-studio-tytan652
 	optdepends = libdatachannel>=0.21: WHIP Support
 	optdepends = libajantv2>=17.0.1: AJA support
 	optdepends = decklink: Blackmagic Design DeckLink support
-	provides = obs-studio=30.1.2
+	provides = obs-studio=30.2.0
 	provides = obs-vst
 	provides = obs-websocket
 	provides = obs-browser
@@ -98,23 +97,21 @@ pkgbase = obs-studio-tytan652
 	conflicts = obs-linuxbrowser
 	conflicts = libva-vdpau-driver
 	options = debug
-	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=30.1.2
+	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=30.2.0
 	source = obs-browser::git+https://github.com/obsproject/obs-browser.git
 	source = obs-websocket::git+https://github.com/obsproject/obs-websocket.git
+	source = ftl-sdk::git+https://github.com/microsoft/ftl-sdk.git
+	source = supported-nv-codec-headers::git+https://github.com/FFmpeg/nv-codec-headers.git#tag=n12.1.14.0
 	source = bind_iface_eyeballed.patch
 	source = v4l2_by-path.patch
-	source = 0001-Add_finder_for_uthash.patch
-	source = 0002-Use_system_uthash.patch
-	source = 0003-Update_to_libajantv2_17_legacy_path_only.patch
 	source = 0004-Max_tls_v1_2_mbedtls_3_6_0_workaround.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 91ec5b6bec66c6d85c1f88f7f5fbdbe4bdbb820be5c2e7828f328f570bfdc845
 	sha256sums = ee54b9c6f7e17fcc62c6afc094e65f18b2e97963c2fe92289b2b91972ac206e5
-	sha256sums = f4a56021a7f1c564f95b588d7c09b60a89efa2c1954c8a418cf6320b5a818542
-	sha256sums = 82b14439697b5c5947117afa1b973bad7ddd9ee2f09e5d1ac56a96d10e01c6b1
-	sha256sums = a7149e1d9a07270132cf8085d52225ed3200a78ea943cbf52d64b1b8f293e117
 	sha256sums = c397a8da291547c757a42f7727a5e6650aa70e6e531f2ef150356eb9eb1fb49c
 
 pkgname = obs-studio-tytan652
