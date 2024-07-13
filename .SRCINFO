@@ -1,0 +1,14 @@
+pkgbase = rebar
+	pkgdesc = A sophisticated build-tool for Erlang projects that follows OTP principles.
+	pkgver = 2.6.4
+	pkgrel = 4
+	epoch = 1
+	url = https://github.com/rebar/rebar
+	arch = any
+	license = APACHE
+	makedepends = git
+	depends = erlang-nox
+	source = rebar-2.6.4.tar.gz::https://github.com/rebar/rebar/archive/2.6.4.tar.gz
+	sha256sums = 577246bafa2eb2b2c3f1d0c157408650446884555bf87901508ce71d5cc0bd07
+
+pkgname = rebar
