@@ -1,6 +1,6 @@
 pkgbase = vlc-git
 	pkgdesc = Multi-platform MPEG, VCD/DVD, and DivX player
-	pkgver = 4.0.0.r29525.g46a98b84f5
+	pkgver = 4.0.0.r29905.gc347fed91e
 	pkgrel = 1
 	url = https://code.videolan.org/videolan/vlc
 	arch = i686
@@ -167,16 +167,14 @@ pkgbase = vlc-git
 	optdepends = aom: AOM AV1 codec
 	optdepends = srt: SRT input/output plugin
 	optdepends = dav1d: dav1d AV1 decoder
-	provides = vlc=4.0.0.r29525.g46a98b84f5
+	provides = vlc=4.0.0.r29905.gc347fed91e
 	conflicts = vlc
 	options = !emptydirs
 	source = git+https://code.videolan.org/videolan/vlc.git
 	source = vlc-live-media-2021.patch
-	source = 1c15a5e1.patch
 	source = update-vlc-plugin-cache.hook
 	b2sums = SKIP
 	b2sums = 76103422a1eaad40d33bfb7897bf25c1b5748729270974bec13f642f2861c4458f0dc07b5fb68d9ba4fae6e44d4a6c8e4d67af7ec10e0c117f1b804dd06868e3
-	b2sums = 0a9d94c5a66f620ca08595429d289bc34272990afa5273cbcb6ee57da8434b8289a5e17e0d88bf9684ece75dfcfed206eb409d6cf60bd464ca6f209e64f2e3c7
 	b2sums = fe3849f45fb91d3697573a9c23b90b78ff0bef5f94c42bc6e7c14427637f45f2fc86786803fb9b36c657ac2c50f6bf3c860cd763248711308ceab2bfcf7be49a
 
 pkgname = vlc-git
