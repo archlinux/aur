@@ -13,9 +13,9 @@ pkgname=(buildbot buildbot-worker buildbot-docs buildbot-common
          python-buildbot-react-console-view python-buildbot-react-grid-view
          python-buildbot-react-wsgi-dashboards)
 # https://github.com/buildbot/buildbot/releases
-pkgver=3.11.5
+pkgver=3.11.6
 _bb_contrib_commit=4c8615db51253f0be4bfd08210a3aaf903a74b4f
-pkgrel=2
+pkgrel=1
 arch=(any)
 url='https://buildbot.net'
 # https://github.com/buildbot/buildbot/blob/v3.10.1/master/setup.py says GPLv2, and does not mention "any later version"
@@ -40,7 +40,7 @@ source=("https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbo
         "git+https://github.com/buildbot/buildbot-contrib.git#commit=$_bb_contrib_commit"
         "buildbot-contrib-systemd-common.patch::https://github.com/buildbot/buildbot-contrib/pull/22.patch"
         "disable-flaky-tests.diff")
-sha256sums=('93b4c97ae4cfefee9c5e4cd610dcea21cbf5e2b0e6a1c367029a9ce41b5f6b9f'
+sha256sums=('1a32fa10a2a5d3570c34674fca479b9bce638a23d19e83b42c959d0c0e59d36c'
             'SKIP'
             '6ef2beaff974d48245a6a4f70219b89eb1ef6d484e27ee33b2ac6ab181ab3697'
             '896eede4c33a8574d7c29ac4a28cebbe3d7e850931a86e945328f8ea358195a9'
@@ -158,7 +158,7 @@ check() {
 
 package_buildbot() {
   pkgdesc='The Continuous Integration Framework'
-  depends=(buildbot-common python python-twisted python-jinja python-msgpack python-zope-interface python-sqlalchemy1.4
+  depends=(buildbot-common=$pkgver-$pkgrel python python-twisted python-jinja python-msgpack python-zope-interface python-sqlalchemy1.4
            python-alembic python-dateutil python-txaio
            python-autobahn python-pyjwt python-yaml python-croniter python-unidiff python-importlib_resources python-packaging)
   optdepends=(
@@ -202,7 +202,7 @@ package_buildbot() {
 
 package_buildbot-worker() {
   pkgdesc='Buildbot worker daemon'
-  depends=(buildbot-common python python-twisted python-six python-autobahn python-msgpack python-zope-interface)
+  depends=(buildbot-common=$pkgver-$pkgrel python python-twisted python-six python-autobahn python-msgpack python-zope-interface)
   optdepends=(
     'buildbot: for local worker'
   )
@@ -233,7 +233,7 @@ package_buildbot-common() {
 
 package_python-buildbot-www() {
   pkgdesc='Buildbot UI'
-  depends=(python buildbot)
+  depends=(python buildbot=$pkgver-$pkgrel)
   optdepends=(
     'python-buildbot-waterfall-view'
     'python-buildbot-console-view'
@@ -247,7 +247,7 @@ package_python-buildbot-www() {
 
 package_python-buildbot-www-react() {
   pkgdesc='React-based Buildbot UI (experimental)'
-  depends=(python buildbot)
+  depends=(python buildbot=$pkgver-$pkgrel)
   optdepends=(
     'python-buildbot-react-waterfall-view'
     'python-buildbot-react-console-view'
@@ -260,7 +260,7 @@ package_python-buildbot-www-react() {
 
 package_python-buildbot-waterfall-view() {
   pkgdesc='Buildbot Waterfall View plugin'
-  depends=(buildbot python-buildbot-www)
+  depends=(buildbot=$pkgver-$pkgrel python-buildbot-www=$pkgver-$pkgrel)
 
   cd buildbot-$pkgver/www/waterfall_view
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
@@ -268,7 +268,7 @@ package_python-buildbot-waterfall-view() {
 
 package_python-buildbot-console-view() {
   pkgdesc='Buildbot Console View plugin'
-  depends=(buildbot python-buildbot-www)
+  depends=(buildbot=$pkgver-$pkgrel python-buildbot-www=$pkgver-$pkgrel)
 
   cd buildbot-$pkgver/www/console_view
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
@@ -276,7 +276,7 @@ package_python-buildbot-console-view() {
 
 package_python-buildbot-grid-view() {
   pkgdesc='Buildbot Grid View plugin'
-  depends=(buildbot python-buildbot-www)
+  depends=(buildbot=$pkgver-$pkgrel python-buildbot-www=$pkgver-$pkgrel)
 
   cd buildbot-$pkgver/www/grid_view
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
@@ -284,7 +284,7 @@ package_python-buildbot-grid-view() {
 
 package_python-buildbot-wsgi-dashboards() {
   pkgdesc='Buildbot plugin to integrate flask or bottle dashboards to buildbot UI'
-  depends=(buildbot python-buildbot-www python-twisted)
+  depends=(buildbot=$pkgver-$pkgrel python-buildbot-www=$pkgver-$pkgrel python-twisted)
 
   cd buildbot-$pkgver/www/wsgi_dashboards
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
@@ -292,7 +292,7 @@ package_python-buildbot-wsgi-dashboards() {
 
 package_python-buildbot-badges() {
   pkgdesc='Buildbot badges'
-  depends=(python buildbot python-buildbot-www python-klein python-cairosvg python-cairocffi python-jinja python-twisted)
+  depends=(python buildbot=$pkgver-$pkgrel python-buildbot-www=$pkgver-$pkgrel python-klein python-cairosvg python-cairocffi python-jinja python-twisted)
   # https://github.com/buildbot/buildbot/blob/v1.6.0/www/badges/buildbot_badges/__init__.py#L40
   optdepends=(
     'ttf-dejavu: the default font for rendering badges as PNGs'
@@ -304,7 +304,7 @@ package_python-buildbot-badges() {
 
 package_python-buildbot-react-waterfall-view() {
 pkgdesc='Buildbot Waterfall View plugin (React)'
-  depends=(buildbot python-buildbot-www-react)
+  depends=(buildbot=$pkgver-$pkgrel python-buildbot-www-react=$pkgver-$pkgrel)
 
   cd buildbot-$pkgver/www/react-waterfall_view
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
@@ -312,7 +312,7 @@ pkgdesc='Buildbot Waterfall View plugin (React)'
 
 package_python-buildbot-react-console-view() {
 pkgdesc='Buildbot Console View plugin (React)'
-  depends=(buildbot python-buildbot-www-react)
+  depends=(buildbot=$pkgver-$pkgrel python-buildbot-www-react=$pkgver-$pkgrel)
 
   cd buildbot-$pkgver/www/react-console_view
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
@@ -320,7 +320,7 @@ pkgdesc='Buildbot Console View plugin (React)'
 
 package_python-buildbot-react-grid-view() {
   pkgdesc='Buildbot Grid View plugin (React)'
-  depends=(buildbot python-buildbot-www-react)
+  depends=(buildbot=$pkgver-$pkgrel python-buildbot-www-react=$pkgver-$pkgrel)
 
   cd buildbot-$pkgver/www/react-grid_view
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
@@ -328,7 +328,7 @@ package_python-buildbot-react-grid-view() {
 
 package_python-buildbot-react-wsgi-dashboards() {
   pkgdesc='Buildbot plugin to integrate flask or bottle dashboards to buildbot UI (React)'
-  depends=(buildbot python-buildbot-www-react python-twisted)
+  depends=(buildbot=$pkgver-$pkgrel python-buildbot-www-react=$pkgver-$pkgrel python-twisted)
 
   cd buildbot-$pkgver/www/react-wsgi_dashboards
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
