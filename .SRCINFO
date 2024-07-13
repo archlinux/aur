@@ -1,12 +1,13 @@
 pkgbase = miniscript-cli
 	pkgdesc = Simple, elegant programming language
 	pkgver = 1.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://miniscript.org/
 	changelog = miniscript-cli.changelog
 	arch = aarch64
 	arch = x86_64
 	license = MIT
+	makedepends = cmake
 	depends = gcc-libs
 	depends = glibc
 	provides = miniscript
