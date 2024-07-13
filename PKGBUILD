@@ -3,14 +3,14 @@
 
 pkgname=lib32-volk-git
 pkgdesc='Meta loader for Vulkan API (32-bit) (git version)'
-pkgver=1.3.285.r345.g749f0ab
+pkgver=1.3.289.r353.g692bef4
 _major=1.3
 pkgrel=1
 arch=(x86_64)
 url='https://github.com/zeux/volk'
 license=(MIT)
 depends=(vulkan-headers lib32-vulkan-icd-loader volk)
-makedepends=(cmake git make)
+makedepends=(cmake git ninja make)
 conflicts=(lib32-volk)
 provides=(lib32-volk)
 options=(staticlibs)
@@ -36,7 +36,7 @@ export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
   cmake -B "${srcdir}"/build -S "${srcdir}"/volk \
   -D CMAKE_C_FLAGS=-m32 \
   -D CMAKE_CXX_FLAGS=-m32 \
-  -G "Unix Makefiles" \
+  -G Ninja \
   -D CMAKE_BUILD_TYPE=Release \
   -D CMAKE_INSTALL_PREFIX=/usr \
   -D CMAKE_INSTALL_BINDIR=bin \
@@ -49,11 +49,11 @@ export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
   -D VOLK_INSTALL=ON \
   -Wno-dev
 
-  make -j$(nproc) -C "${srcdir}"/build
+  ninja -j$(nproc) -C "${srcdir}"/build
 }
 
 package(){
-  make -j$(nproc) -C "${srcdir}"/build DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja -j$(nproc) -C "${srcdir}"/build install
 
   rm -rf "${pkgdir}"/usr/include
 
