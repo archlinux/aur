@@ -4,7 +4,7 @@
 
 pkgname=pidgin-hotkeys
 pkgver=0.2.4
-pkgrel=5
+pkgrel=6
 pkgdesc="A Pidgin plugin that allows you to define global hotkeys."
 arch=('x86_64')
 url="http://pidgin-hotkeys.sourceforge.net"
