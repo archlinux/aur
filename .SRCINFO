@@ -10,6 +10,7 @@ pkgbase = qdirstat-bin
 	depends = xdg-utils
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
+	provides = qdirstat
 	conflicts = qdirstat
 	conflicts = qdirstat-git
 	source = https://github.com/LeSnake04/aur-packages/raw/main/qdirstat-bin/qdirstat-bin-1.9-1-x86_64.tar.zst

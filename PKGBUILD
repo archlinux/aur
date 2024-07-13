@@ -4,14 +4,13 @@
 pkgname=qdirstat-bin
 pkgver=1.9
 pkgrel=1
-_srcpkgver=
 pkgdesc="Qt-based directory statistics (KDirStat/K4DirStat without any KDE - from the original KDirStat author)"
 arch=(x86_64)
 url="https://github.com/shundhammer/qdirstat"
 license=('GPL2')
 groups=()
 depends=('qt5-base' 'xdg-utils' 'hicolor-icon-theme' 'desktop-file-utils')
-provides=()
+provides=("qdirstat")
 conflicts=("qdirstat" "qdirstat-git")
 replaces=()
 backup=()
