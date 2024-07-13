@@ -1,0 +1,24 @@
+pkgbase = pantheon-geoclue2-agent
+	pkgdesc = Pantheon Geoclue2 Agent
+	pkgver = 1.0.6
+	pkgrel = 2
+	url = https://github.com/elementary/pantheon-agent-geoclue2
+	arch = x86_64
+	groups = pantheon
+	license = GPL3
+	makedepends = git
+	makedepends = intltool
+	makedepends = meson
+	makedepends = vala
+	depends = geoclue2
+	depends = glibc
+	depends = libgdk-3.so
+	depends = libgio-2.0.so
+	depends = libglib-2.0.so
+	depends = libgobject-2.0.so
+	depends = libgranite.so
+	depends = libgtk-3.so
+	source = pantheon-geoclue2-agent::git+https://github.com/elementary/pantheon-agent-geoclue2.git#tag=996250b8bb0743a339019dd474f2ef6aeedd724f
+	sha256sums = SKIP
+
+pkgname = pantheon-geoclue2-agent
