@@ -3,12 +3,12 @@
 
 pkgname=vulkan-validation-layers-git
 pkgdesc='Vulkan Validation Layers (git version)'
-pkgver=1.3.285.r5.gaf31268
+pkgver=1.3.289.r53.gd1a44af
 pkgrel=1
 arch=(x86_64)
 url='https://github.com/KhronosGroup/Vulkan-ValidationLayers'
 license=(custom)
-makedepends=(cmake python-lxml libxrandr wayland git make)
+makedepends=(cmake python-lxml libxrandr wayland git ninja make)
 depends=(gcc-libs vulkan-icd-loader-git vulkan-headers-git vulkan-utility-libraries-git libx11)
 conflicts=(vulkan-validation-layers)
 provides=(vulkan-validation-layers vulkan-validation-layers-git libVkLayer_khronos_validation.so)
@@ -26,7 +26,7 @@ build(){
   "${srcdir}"/Vulkan-ValidationLayers/scripts/update_deps.py --config release
 
   cmake -C helper.cmake -B "${srcdir}"/build -S "${srcdir}"/Vulkan-ValidationLayers \
-  -G "Unix Makefiles" \
+  -G Ninja \
   -D CMAKE_BUILD_TYPE=Release \
   -D CMAKE_INSTALL_PREFIX=/usr \
   -D CMAKE_INSTALL_BINDIR=bin \
@@ -44,11 +44,11 @@ build(){
   -D USE_ROBIN_HOOD_HASHING=OFF \
   -Wno-dev
 
-  make -j$(nproc) -C "${srcdir}"/build
+  ninja -j$(nproc) -C "${srcdir}"/build
 }
 
 package(){
-  make -j$(nproc) -C "${srcdir}"/build DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja -j$(nproc) -C "${srcdir}"/build install
 
   # install doc
   install -dm755 "${pkgdir}"/usr/share/doc/"${pkgname}"/
