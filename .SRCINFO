@@ -1,6 +1,6 @@
 pkgbase = gopaste-git
 	pkgdesc = go paste bin
-	pkgver = 0.0.19.r0.ga3e3aba
+	pkgver = 0.0.19.r1
 	pkgrel = 1
 	url = https://gitlab.com/tuxpaint/gopaste
 	arch = aarch64

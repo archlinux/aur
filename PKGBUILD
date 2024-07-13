@@ -2,7 +2,7 @@
 # Contributors: a
 
 pkgname=gopaste-git
-pkgver=0.0.19.r0.ga3e3aba
+pkgver=0.0.19.r1
 pkgrel=1
 pkgdesc='go paste bin'
 arch=('aarch64' 'x86_64')
