@@ -3,3 +3,4 @@
 /*.tar.gz
 /*.tar.zst
 .*.sw?
+*.log
