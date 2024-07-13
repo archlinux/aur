@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=dockerfiler
-_pkgver=0.2.2
+_pkgver=0.2.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Easy Dockerfile Creation from R"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -20,6 +20,7 @@ depends=(
   r-memoise
   r-pak
   r-pkgbuild
+  r-purrr
   r-r6
   r-remotes
   r-usethis
@@ -35,10 +36,10 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-tests.patch")
-md5sums=('036c7fa0312dc7282d019e6cdd9d1d41'
-         '6a9c60df03b8b913c107d685c91e2852')
-b2sums=('0704a49b4045c043691cee4b65243cab698b0095b2e4be0939db0338733e55f5176d5f9d4ddfaf7de19a835ba1523d1341bbbe73a94bdc70005d9f2b77f48f03'
-        '346c4c2daed19b2685960719d1aeda1058179d7a19b83d811ab5b93b1091532e60ccaf5c6aee1124feda2b759ad0adf38b57ef576705d40e67f9caeaceec50a9')
+md5sums=('b85e2f019a4d7f00e66186cafb4e9898'
+         'ef9a524e620f31b990f6d05fa2050e0c')
+b2sums=('ee5ee9e7af5270dec01f84b98d5e6e3251525f2bc0fe6d085f27b76de3ef9a65c58d73b2057c405bf4d2521c217f68654eee1e5f7f5c79bd6d80831600046729'
+        '0ca7924504a7f0e809afc72d09fae390710ec233078354b710dfb2ed1c1db849bcb19b496ad26182200bfd7b7659e6531ad4bcdf4c1660459ab7cb2425e3eb51')
 
 prepare() {
   # skip failing tests

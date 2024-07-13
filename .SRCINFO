@@ -1,7 +1,7 @@
 pkgbase = r-dockerfiler
 	pkgdesc = Easy Dockerfile Creation from R
-	pkgver = 0.2.2
-	pkgrel = 2
+	pkgver = 0.2.3
+	pkgrel = 1
 	url = https://cran.r-project.org/package=dockerfiler
 	arch = any
 	license = MIT
@@ -15,6 +15,7 @@ pkgbase = r-dockerfiler
 	depends = r-memoise
 	depends = r-pak
 	depends = r-pkgbuild
+	depends = r-purrr
 	depends = r-r6
 	depends = r-remotes
 	depends = r-usethis
@@ -22,11 +23,11 @@ pkgbase = r-dockerfiler
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/dockerfiler_0.2.2.tar.gz
+	source = https://cran.r-project.org/src/contrib/dockerfiler_0.2.3.tar.gz
 	source = fix-tests.patch
-	md5sums = 036c7fa0312dc7282d019e6cdd9d1d41
-	md5sums = 6a9c60df03b8b913c107d685c91e2852
-	b2sums = 0704a49b4045c043691cee4b65243cab698b0095b2e4be0939db0338733e55f5176d5f9d4ddfaf7de19a835ba1523d1341bbbe73a94bdc70005d9f2b77f48f03
-	b2sums = 346c4c2daed19b2685960719d1aeda1058179d7a19b83d811ab5b93b1091532e60ccaf5c6aee1124feda2b759ad0adf38b57ef576705d40e67f9caeaceec50a9
+	md5sums = b85e2f019a4d7f00e66186cafb4e9898
+	md5sums = ef9a524e620f31b990f6d05fa2050e0c
+	b2sums = ee5ee9e7af5270dec01f84b98d5e6e3251525f2bc0fe6d085f27b76de3ef9a65c58d73b2057c405bf4d2521c217f68654eee1e5f7f5c79bd6d80831600046729
+	b2sums = 0ca7924504a7f0e809afc72d09fae390710ec233078354b710dfb2ed1c1db849bcb19b496ad26182200bfd7b7659e6531ad4bcdf4c1660459ab7cb2425e3eb51
 
 pkgname = r-dockerfiler
