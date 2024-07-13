@@ -2,7 +2,7 @@
 # Maintainer: fenuks
 
 pkgname=gemrb
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="OSS implementation of Bioware's Infinity Engine which supports eg. Baldur's Gate"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('python' 'sdl2' 'sdl2_mixer' 'openal' 'hicolor-icon-theme' 'libpng' 'fr
 makedepends=('cmake')
 install=gemrb.install
 source=("https://github.com/gemrb/gemrb/archive/v${pkgver}.tar.gz")
-sha1sums=('a7d4cbec3ce2f02a91cb78bde3ff3e32cad2be30')
+sha1sums=('aa762099b02fb2dbd65896615020a6d952c5cfcc')
 
 build() {
   mkdir -p build
