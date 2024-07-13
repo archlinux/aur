@@ -1,7 +1,7 @@
 # Maintainer: pcrab <pcrab at pcrab dot xyz>
 
 pkgname=swiftformat-bin
-pkgver=0.54.0
+pkgver=0.54.1
 pkgrel=1
 pkgdesc="A command-line tool and Xcode Extension for formatting Swift code"
 url="https://github.com/nicklockwood/SwiftFormat"
@@ -15,7 +15,7 @@ source=(
     "LICENSE::https://raw.githubusercontent.com/nicklockwood/SwiftFormat/master/LICENSE.md"
 )
 sha256sums=(
-    "863ea3d636acc5510ca8ffc2a3a2849384dd1d58d511f286e83cea831267bcf4"
+    "8abe150c93879bdf0eaa592cff1b91c6055d16546de1c9da629557216ac099a3"
     "51ebd00705cfea4ad842a44a983c85b61806548dcbb75fb618acc3e793da1cd4"
 )
 

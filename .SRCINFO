@@ -1,14 +1,14 @@
 pkgbase = swiftformat-bin
 	pkgdesc = A command-line tool and Xcode Extension for formatting Swift code
-	pkgver = 0.54.0
+	pkgver = 0.54.1
 	pkgrel = 1
 	url = https://github.com/nicklockwood/SwiftFormat
 	arch = x86_64
 	license = MIT
 	depends = swift-language
-	source = swiftformat-bin_0.54.0.zip::https://github.com/nicklockwood/SwiftFormat/releases/download/0.54.0/swiftformat_linux.zip
+	source = swiftformat-bin_0.54.1.zip::https://github.com/nicklockwood/SwiftFormat/releases/download/0.54.1/swiftformat_linux.zip
 	source = LICENSE::https://raw.githubusercontent.com/nicklockwood/SwiftFormat/master/LICENSE.md
-	sha256sums = 863ea3d636acc5510ca8ffc2a3a2849384dd1d58d511f286e83cea831267bcf4
+	sha256sums = 8abe150c93879bdf0eaa592cff1b91c6055d16546de1c9da629557216ac099a3
 	sha256sums = 51ebd00705cfea4ad842a44a983c85b61806548dcbb75fb618acc3e793da1cd4
 
 pkgname = swiftformat-bin
