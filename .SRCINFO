@@ -1,0 +1,21 @@
+pkgbase = openzwave
+	pkgdesc = A C++ library to control Z-Wave Networks via a USB Z-Wave Controller
+	pkgver = 1.6
+	pkgrel = 7
+	url = http://www.openzwave.net
+	arch = x86_64
+	license = LGPL3
+	makedepends = doxygen
+	makedepends = git
+	depends = bash
+	depends = gcc-libs
+	depends = glibc
+	depends = libhidapi-libusb.so
+	depends = libusb
+	depends = tinyxml
+	source = git+https://github.com/OpenZWave/open-zwave.git#tag=890f24b7e88f488eee464ed14c01fbceb276cf2a
+	source = openzwave-system-libs.patch
+	b2sums = SKIP
+	b2sums = 56095ee16bb04184b2bf037d7601bc5431c654e1328cd1ad63f1fcb7d6918bcd65ef4ab30ee2c80f3bf3c50e838f5818d23e9d01569e41125e9e68028d021c59
+
+pkgname = openzwave
