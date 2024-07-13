@@ -1,0 +1,14 @@
+pkgbase = subdl
+	pkgdesc = A command-line tool for downloading subtitles from opensubtitles.org
+	pkgver = 1.1.2
+	pkgrel = 4
+	url = https://github.com/alexanderwink/subdl
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	optdepends = python-chardet: encoding detector
+	source = git+https://github.com/alexanderwink/subdl.git#commit=da2398546c33da1665dbc2d985b30d959c6f5a0c
+	sha256sums = SKIP
+
+pkgname = subdl
