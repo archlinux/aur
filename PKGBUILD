@@ -3,12 +3,12 @@
 
 pkgname=vulkan-tools-git
 pkgdesc='Vulkan Utilities and Tools (git version)'
-pkgver=1.3.285.r1.gd67a9d3
+pkgver=1.3.289.r2.g7e13360
 pkgrel=1
 arch=(x86_64)
 url='https://github.com/KhronosGroup/Vulkan-Tools'
 license=(Apache-2.0)
-makedepends=(cmake python vulkan-headers-git vulkan-icd-loader-git wayland-protocols glslang spirv-tools git make volk)
+makedepends=(cmake python vulkan-headers-git vulkan-icd-loader-git wayland-protocols glslang spirv-tools git ninja make volk)
 depends=(libx11 wayland libvulkan.so)
 conflicts=(vulkan-tools)
 provides=(vulkan-tools vulkan-tools-git)
@@ -26,7 +26,7 @@ build(){
 
   #cmake -C helper.cmake -B "${srcdir}"/build -S "${srcdir}"/Vulkan-Tools \
   cmake -B "${srcdir}"/build -S "${srcdir}"/Vulkan-Tools \
-  -G "Unix Makefiles" \
+  -G Ninja \
   -D CMAKE_BUILD_TYPE=Release \
   -D CMAKE_INSTALL_PREFIX=/usr \
   -D CMAKE_INSTALL_BINDIR=bin \
@@ -48,7 +48,7 @@ build(){
 
   #cmake -C helper.cmake -B "${srcdir}"/build-wayland -S "${srcdir}"/Vulkan-Tools \
   cmake -B "${srcdir}"/build-wayland -S "${srcdir}"/Vulkan-Tools \
-  -G "Unix Makefiles" \
+  -G Ninja \
   -D CMAKE_BUILD_TYPE=Release \
   -D CMAKE_INSTALL_PREFIX=/usr \
   -D CMAKE_INSTALL_BINDIR=bin \
@@ -69,12 +69,12 @@ build(){
   -D BUILD_ICD=OFF \
   -Wno-dev
 
-  make -j$(nproc) -C "${srcdir}"/build
-  make -j$(nproc) -C "${srcdir}"/build-wayland
+  ninja -j$(nproc) -C "${srcdir}"/build
+  ninja -j$(nproc) -C "${srcdir}"/build-wayland
 }
 
 package(){
-  make -j$(nproc) -C "${srcdir}"/build DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja -j$(nproc) -C "${srcdir}"/build install
 
   install -m755 "${srcdir}"/build-wayland/cube/vkcube-wayland "${pkgdir}"/usr/bin/
 
