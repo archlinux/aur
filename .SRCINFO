@@ -1,12 +1,13 @@
 pkgbase = certmonger
 	pkgdesc = Certificate status monitor and PKI enrollment client
 	pkgver = 0.79.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pagure.io/certmonger
 	install = certmonger.install
 	arch = i686
 	arch = x86_64
 	license = GPL
+	checkdepends = python-dbus
 	checkdepends = diffutils
 	checkdepends = dos2unix
 	checkdepends = expect
