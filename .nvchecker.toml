@@ -1,0 +1,3 @@
+[qmdnsengine]
+source = "git"
+git = "https://github.com/nitroshare/qmdnsengine.git"
