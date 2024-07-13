@@ -1,7 +1,7 @@
 
 pkgname=gwyddion
-pkgver=2.65
-pkgrel=2
+pkgver=2.66
+pkgrel=1
 pkgdesc="A data visualization and processing tool for scanning probe miscroscopy (SPM, i.e. AFM, STM, MFM, SNOM/NSOM, ...) and profilometry, useful also for general image and 2D data analysis"
 url="http://gwyddion.net/"
 license=("GPL")
@@ -21,25 +21,11 @@ optdepends=('libxml2: import of SPML and APE DAX data files'
             'cfitsio: import of Flexible Image Transport System (FITS) files'
             'openexr: import and export of OpenEXR HDR images'
             'hdf5: import of Ergo data files')
-source=(https://downloads.sourceforge.net/sourceforge/gwyddion/$pkgname-$pkgver.tar.xz
-        gwyddion-2.65-no-jxl.patch)
-sha256sums=('9115fb0a83c963c62460da1d7b9834382c9698bfb9b0cf29b829a4f591369ea3'
-            'c17fe9a0d83ef892a91948a945c6e78a1b6089c516e44735c1c3904fc9b6e3db')
-
-prepare() {
-  patch -Np0 -i "gwyddion-2.65-no-jxl.patch"
-}
-
+source=(https://downloads.sourceforge.net/sourceforge/gwyddion/$pkgname-$pkgver.tar.xz)
+sha256sums=('377bedcd2b0d8d133a329686da9f5f91807ff1d47937f9991195f1e863792d52')
 
 build() {
   cd $pkgname-$pkgver
-
-#  ./configure --prefix=/usr --disable-desktop-file-update \
-#		--disable-rpath \
-#		--enable-library-bloat \
-#		--enable-plugin-proxy \
-#              --disable-updater --disable-schemas-compile \
-
 
   ./configure --prefix=/usr --sysconfdir=/etc \
               --localstatedir=/var --libexecdir=/usr/lib \
@@ -52,7 +38,3 @@ package() {
 
   make DESTDIR="$pkgdir" GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 PYTHON=python2 install
 }
-
-
-
-
