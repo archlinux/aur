@@ -1,13 +1,15 @@
 # Maintainer: Randal <three-dim-sky@foxmail.com>
+# https://github.com/TD-Sky/PKGBUILDs
+
 pkgname=dagtoc
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A CLI tool for operating pdf contents"
 arch=('x86_64')
 url="https://github.com/TD-Sky/dagtoc"
 license=('GPL3')
-conflicts=('dagtoc-bin')
-depends=('python-pymupdf')
+provides=("$pkgname")
+conflicts=("$pkgname-bin")
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('ad48f63411aded55c028bf02bea0ff253055c70e4602c716344beaadde65ac85')
