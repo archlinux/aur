@@ -1,16 +1,16 @@
 pkgbase = timer-bin
 	pkgdesc = Timer is like sleep, but reports progress.
-	pkgver = 1.4.3
+	pkgver = 1.4.4
 	pkgrel = 1
 	url = https://github.com/caarlos0/timer
 	license = MIT
 	conflicts = timer
 	provides = timer
 	arch = aarch64
-	source_aarch64 = https://github.com/caarlos0/timer/releases/download/v1.4.3/timer_linux_arm64.tar.gz
-	sha256sums_aarch64 = e1904194ac5167b2e9b84def8c5121975948a4893dcd8cf88fa9c52765d1dd09
+	source_aarch64 = https://github.com/caarlos0/timer/releases/download/v1.4.4/timer_linux_arm64.tar.gz
+	sha256sums_aarch64 = 67fde05953410bf9470076a05ef3bb396d98fa89aff53cad071885fcff24b212
 	arch = x86_64
-	source_x86_64 = https://github.com/caarlos0/timer/releases/download/v1.4.3/timer_linux_amd64.tar.gz
-	sha256sums_x86_64 = 6dfb6d693e3b8aaeb4b43a8c92d69f899cb902ca2df903ae80601e6022fbee08
+	source_x86_64 = https://github.com/caarlos0/timer/releases/download/v1.4.4/timer_linux_amd64.tar.gz
+	sha256sums_x86_64 = 34187110f3d3c371b267842143702d1f0af8ca44941e5fced102031e37b29ae8
 	
 pkgname = timer-bin
