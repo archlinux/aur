@@ -1,0 +1,17 @@
+pkgbase = gba-auto-batteryless-patcher
+	pkgdesc = Patches GBA games for saving without an EEPROM for bootleg carts
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/metroid-maniac/gba-auto-batteryless-patcher
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	makedepends = base-devel
+	depends = devkitpro-keyring
+	depends = devkitARM
+	depends = devkitARM-gdb
+	source = git+https://github.com/metroid-maniac/gba-auto-batteryless-patcher.git
+	source = git+https://github.com/metroid-maniac/gba-flash-patcher.git
+
+pkgname = gba-auto-batteryless-patcher
+
