@@ -1,0 +1,16 @@
+pkgbase = nak-git
+	pkgdesc = A command line tool for doing all things nostr
+	pkgver = 0.4.2.r5.gce6bb0a
+	pkgrel = 1
+	url = https://github.com/fiatjaf/nak
+	arch = any
+	license = Unlicense
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = nak=0.4.2
+	conflicts = nak
+	source = nak::git+https://github.com/fiatjaf/nak.git
+	sha256sums = SKIP
+
+pkgname = nak-git
