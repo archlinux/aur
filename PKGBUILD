@@ -1,6 +1,6 @@
 # Maintainer: Randal <three-dim-sky@foxmail.com>
 pkgname=dagtoc
-pkgver=4.0.1
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="A CLI tool for operating pdf contents"
 arch=('x86_64')
@@ -10,7 +10,7 @@ conflicts=('dagtoc-bin')
 depends=('python-pymupdf')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a88996f0d50cf42bf9892e8fec7f16f3485cf714f609dc318a954a1a1a1891a3')
+sha256sums=('ad48f63411aded55c028bf02bea0ff253055c70e4602c716344beaadde65ac85')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
