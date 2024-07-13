@@ -10,12 +10,12 @@
 
 _pack=fuzzy-logic-toolkit
 pkgname=octave-${_pack}
-pkgver=0.4.6
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A mostly MATLAB-compatible fuzzy logic toolkit for Octave"
 arch=(any)
-url="https://gnu-octave.github.io/packages/${_pack}"
-license=('GPL3')
+url="https://github.com/lmarkowsky/${_pack}"
+license=(GPL-3.0-or-later)
 groups=('octave-forge')
 depends=('octave>=3.2.4')
 makedepends=()
@@ -24,9 +24,9 @@ backup=()
 options=()
 install=${pkgname}.install
 _archive=${_pack}-${pkgver}.tar.gz
-source=("https://downloads.sourceforge.net/octave/${_archive}")
+source=("${_archive}::${url}/archive/refs/tags/${pkgver}.tar.gz")
 noextract=("${_archive}")
-sha512sums=('34bf63d9c8332851d3ea374048f6136cdcb5427a8465974016e860a140acbbd25c15a32ebb85743e4011574a6906ab5267f64a8e3c656659c06c2b9a5ef617c6')
+sha512sums=('fdadc85cb95ec16fd257c6b996f0652d9dbe71da42cce0ecbe26e5ac092b9b815d25df2da7256350a82878f279d958a685ecdf7280bdb31b6d4e7799627e1121')
 
 _octave_run() {
   octave --no-history --no-init-file --no-window-system -q -f --eval "$*"

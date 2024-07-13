@@ -1,0 +1,4 @@
+[octave-fuzzy-logic-toolkit]
+source = "github"
+github = "lmarkowsky/fuzzy-logic-toolkit"
+use_latest_release = "true"
