@@ -2,7 +2,7 @@
 # Contributors: prettyvanilla, rabyte, Marcin Skory
 
 pkgname=alephone-infinity
-pkgver=20240513
+pkgver=20240712
 pkgrel=1
 pkgdesc="Marathon Infinity scenario data files for Aleph One"
 arch=('any')

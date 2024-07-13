@@ -1,12 +1,12 @@
 pkgbase = alephone-infinity
 	pkgdesc = Marathon Infinity scenario data files for Aleph One
-	pkgver = 20240513
+	pkgver = 20240712
 	pkgrel = 1
 	url = https://alephone.lhowon.org/
 	arch = any
 	license = custom
 	depends = alephone
-	source = https://github.com/Aleph-One-Marathon/alephone/releases/download/release-20240513/MarathonInfinity-20240513-Data.zip
+	source = https://github.com/Aleph-One-Marathon/alephone/releases/download/release-20240712/MarathonInfinity-20240712-Data.zip
 	source = alephone-infinity.sh
 	source = LICENSE
 	source = alephone-infinity.desktop
