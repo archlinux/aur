@@ -1,16 +1,16 @@
 pkgbase = org-stats-bin
 	pkgdesc = Get the contributor stats summary from all repositories of any given organization
-	pkgver = 1.12.1
+	pkgver = 1.12.2
 	pkgrel = 1
 	url = https://github.com/caarlos0/org-stats
 	license = MIT
 	conflicts = org-stats
 	provides = org-stats
 	arch = aarch64
-	source_aarch64 = https://github.com/caarlos0/org-stats/releases/download/v1.12.1/org-stats_linux_arm64.tar.gz
-	sha256sums_aarch64 = a1b722f390c715b66df64afca21ab434827bab961a611658b5d6160ec4d765d3
+	source_aarch64 = https://github.com/caarlos0/org-stats/releases/download/v1.12.2/org-stats_linux_arm64.tar.gz
+	sha256sums_aarch64 = 4f5748164a5e0db924087dbf911412a29ea27b2fea9c4a14b13fb175a63fc371
 	arch = x86_64
-	source_x86_64 = https://github.com/caarlos0/org-stats/releases/download/v1.12.1/org-stats_linux_amd64.tar.gz
-	sha256sums_x86_64 = 98af34e07c3bc594ac0db5678ce0e91909fd1915a3510bf7c4693babf89a4afb
+	source_x86_64 = https://github.com/caarlos0/org-stats/releases/download/v1.12.2/org-stats_linux_amd64.tar.gz
+	sha256sums_x86_64 = 08bb2d4b4d981ac226a6a36c53576e87da52f998ce196fcb23bb3609e3515835
 	
 pkgname = org-stats-bin
