@@ -1,0 +1,13 @@
+diff --git a/src/hls.c b/src/hls.c
+index b777081..72313ce 100644
+--- a/src/hls.c
++++ b/src/hls.c
+@@ -105,7 +105,7 @@ long get_hls_data_from_url(char *url, char **out, size_t *size, int type, char *
+ 
+ int is_playlist_FPS(char* source)
+ {
+-    return strstr(source, "KEYFORMAT=\"com.apple.streamingkeydelivery\"");
++    return (int) strstr(source, "KEYFORMAT=\"com.apple.streamingkeydelivery\"");
+ }
+ 
+ int get_playlist_type(char *source)
