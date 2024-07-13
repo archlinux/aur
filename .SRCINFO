@@ -1,6 +1,6 @@
 pkgbase = noseyparker-bin
 	pkgdesc = find secrets and sensitive information in textual data and Git history
-	pkgver = 0.18.0
+	pkgver = 0.18.1
 	pkgrel = 1
 	url = https://github.com/praetorian-inc/noseyparker
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = noseyparker-bin
 	depends = gcc-libs
 	provides = noseyparker
 	conflicts = noseyparker
-	source_x86_64 = noseyparker-bin-0.18.0-x86_64.tar.gz::https://github.com/praetorian-inc/noseyparker/releases/download/v0.18.0/noseyparker-v0.18.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = a8fc22b0f232924c7fd42f444a744f8df6ca7e7453a3ee76f3c43f6335b8bea7
-	source_aarch64 = noseyparker-bin-0.18.0-aarch64.tar.gz::https://github.com/praetorian-inc/noseyparker/releases/download/v0.18.0/noseyparker-v0.18.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 11d1fa255ca450d0342b01d5dc2511157ca17d80a4f6b4ecaea2ab1c8fcd206c
+	source_x86_64 = noseyparker-bin-0.18.1-x86_64.tar.gz::https://github.com/praetorian-inc/noseyparker/releases/download/v0.18.1/noseyparker-v0.18.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 80925021a1afc6a0aff55d89949580b39541ca8bdd9f22f877421f5cd22ea734
+	source_aarch64 = noseyparker-bin-0.18.1-aarch64.tar.gz::https://github.com/praetorian-inc/noseyparker/releases/download/v0.18.1/noseyparker-v0.18.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = db8c300741d8e331c151441d9bed2cf6e6d7b4f6840368de0a6e4e8aca00bafb
 
 pkgname = noseyparker-bin
