@@ -4,15 +4,16 @@
 
 pkgname=lib32-vulkan-utility-libraries-git
 pkgdesc='Vulkan Utility Libraries (32-bit) (git version)'
-pkgver=1.3.285.r0.g777358f
+pkgver=1.3.289.r1.gd13c1ee
 pkgrel=1
 arch=(x86_64)
 url='https://github.com/KhronosGroup/Vulkan-Utility-Libraries'
 license=(Apache-2.0)
 depends=(libvulkan.so vulkan-utility-libraries-git)
-makedepends=(cmake python vulkan-headers-git)
+makedepends=(cmake git ninja make python vulkan-headers-git)
 conflicts=(lib32-vulkan-utility-libraries)
 provides=(lib32-vulkan-utility-libraries)
+options=(!lto !strip) # disable LTO
 source=(git+https://github.com/KhronosGroup/Vulkan-Utility-Libraries.git)
 
 pkgver(){
@@ -32,7 +33,7 @@ export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
   cmake -B "${srcdir}"/build -S "${srcdir}"/Vulkan-Utility-Libraries \
   -D CMAKE_C_FLAGS=-m32 \
   -D CMAKE_CXX_FLAGS=-m32 \
-  -G "Unix Makefiles" \
+  -G Ninja \
   -D CMAKE_BUILD_TYPE=Release \
   -D CMAKE_INSTALL_PREFIX=/usr \
   -D CMAKE_INSTALL_BINDIR=bin \
@@ -43,11 +44,11 @@ export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
   -D VULKAN_HEADERS_INSTALL_DIR=/usr \
   -Wno-dev
 
-  make -j$(nproc) -C "${srcdir}"/build
+  ninja -j$(nproc) -C "${srcdir}"/build
 }
 
 package(){
-  make -j$(nproc) -C "${srcdir}"/build DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja -j$(nproc) -C "${srcdir}"/build install
 
   rm -rf "${pkgdir}"/usr/include
 
