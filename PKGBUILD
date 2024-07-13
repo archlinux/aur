@@ -1,7 +1,6 @@
 # Maintainer: Matthias Mailänder <matthias@mailaender.name>
 
 pkgname=theia-bin
-_pkgname=theia
 pkgver=1.51.0
 pkgrel=1
 pkgdesc="Cloud and Desktop IDE Platform"
