@@ -1,6 +1,6 @@
 pkgbase = gopaste-git
 	pkgdesc = go paste bin
-	pkgver = 0.0.1.r1
+	pkgver = 0.0.19.r0.ga3e3aba
 	pkgrel = 1
 	url = https://gitlab.com/tuxpaint/gopaste
 	arch = aarch64
@@ -10,6 +10,8 @@ pkgbase = gopaste-git
 	makedepends = go
 	provides = gopaste
 	conflicts = gopaste
+	backup = etc/gopaste/config.yml
+	backup = etc/gopaste/config.env
 	source = gopaste-git::git+https://gitlab.com/tuxpaint/gopaste.git
 	md5sums = SKIP
 
