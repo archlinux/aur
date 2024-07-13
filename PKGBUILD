@@ -4,15 +4,16 @@
 
 pkgname=vulkan-utility-libraries-git
 pkgdesc='Vulkan Utility Libraries (git version)'
-pkgver=1.3.285.r0.g777358f
+pkgver=1.3.289.r1.gd13c1ee
 pkgrel=1
 arch=(x86_64)
 url='https://github.com/KhronosGroup/Vulkan-Utility-Libraries'
 license=(Apache-2.0)
 depends=(libvulkan.so)
-makedepends=(cmake python vulkan-headers-git)
+makedepends=(cmake git ninja make python vulkan-headers-git)
 conflicts=(vulkan-utility-libraries)
 provides=(vulkan-utility-libraries)
+options=(!lto !strip) # disable LTO
 source=(git+https://github.com/KhronosGroup/Vulkan-Utility-Libraries.git)
 
 pkgver(){
@@ -24,7 +25,7 @@ build(){
   rm -rf "${srcdir}"/build
 
   cmake -B "${srcdir}"/build -S "${srcdir}"/Vulkan-Utility-Libraries \
-  -G "Unix Makefiles" \
+  -G Ninja \
   -D CMAKE_BUILD_TYPE=Release \
   -D CMAKE_INSTALL_PREFIX=/usr \
   -D CMAKE_INSTALL_BINDIR=bin \
@@ -34,11 +35,11 @@ build(){
   -D CMAKE_INSTALL_DATADIR=share \
   -Wno-dev
 
-  make -j$(nproc) -C "${srcdir}"/build
+  ninja -j$(nproc) -C "${srcdir}"/build
 }
 
 package(){
-  make -j$(nproc) -C "${srcdir}"/build DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja -j$(nproc) -C "${srcdir}"/build install
 
   # install license
   install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
