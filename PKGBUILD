@@ -1,7 +1,7 @@
 # Maintainer: Chi_Tang <me@chitang.dev>
 # Contributor: Nekoray_CI <noreply@chitang.dev>
 pkgname='nekoray-git'
-pkgver=3.25.r3.g894410d
+pkgver=4.0.beta3.r1.g2dd9cf4
 pkgrel=1
 pkgdesc='Qt based cross-platform GUI proxy configuration manager (backend: v2ray / sing-box)'
 arch=('x86_64')
@@ -43,20 +43,17 @@ build() {
 }
 
 package() {
-	mkdir -p "${pkgdir}/usr/lib/nekoray"
+	mkdir -p "${pkgdir}/usr/lib/nekobox"
 	mkdir -p "${pkgdir}/usr/bin"
 	mkdir -p "${pkgdir}/usr/share/pixmaps"
 	mkdir -p "${pkgdir}/usr/share/applications"
 	# assets
 	cp "${srcdir}/nekoray.desktop" "${pkgdir}/usr/share/applications/nekoray.desktop"
-	cp -a "${srcdir}/nekoray/res/public/nekoray.png" "${pkgdir}/usr/lib/nekoray/"
-	cp -a "${srcdir}/nekoray/res/public/nekobox.png" "${pkgdir}/usr/lib/nekoray/"
-	ln -s "/usr/lib/nekoray/nekoray.png" "${pkgdir}/usr/share/pixmaps/nekoray.png"
-	ln -s "/usr/lib/nekoray/nekobox.png" "${pkgdir}/usr/share/pixmaps/nekobox.png"
-	# core
-	cp -a "${srcdir}/nekoray/deployment/linux64/nekoray_core" "${pkgdir}/usr/lib/nekoray/"
-	cp -a "${srcdir}/nekoray/deployment/linux64/nekobox_core" "${pkgdir}/usr/lib/nekoray/"
+	cp -a "${srcdir}/nekoray/res/public/nekobox.png" "${pkgdir}/usr/lib/nekobox/"
+	ln -s "/usr/lib/nekobox/nekobox.png" "${pkgdir}/usr/share/pixmaps/nekobox.png"
+	# core	
+	cp -a "${srcdir}/nekoray/deployment/linux64/nekobox_core" "${pkgdir}/usr/lib/nekobox/"
 	# app
-	cp -a "${srcdir}/nekoray/build/nekoray" "${pkgdir}/usr/lib/nekoray/"
-	ln -s  "/usr/lib/nekoray/nekoray" "${pkgdir}/usr/bin/nekoray"
+	cp -a "${srcdir}/nekoray/build/nekobox" "${pkgdir}/usr/lib/nekobox/"
+	ln -s  "/usr/lib/nekobox/nekobox" "${pkgdir}/usr/bin/nekobox"
 }
