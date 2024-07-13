@@ -1,8 +1,7 @@
 pkgbase = android-aarch64-libshout
 	pkgdesc = Library for accessing a shoutcast/icecast server (Android aarch64)
 	pkgver = 2.4.6
-	pkgrel = 1
-	epoch = 1
+	pkgrel = 2
 	url = https://www.icecast.org/
 	arch = any
 	license = LGPL
