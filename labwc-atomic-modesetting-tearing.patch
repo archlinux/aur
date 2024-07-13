@@ -1,6 +1,6 @@
-diff '--color=auto' -ur labwc.orig/src/config/rcxml.c labwc/src/config/rcxml.c
---- labwc.orig/src/config/rcxml.c	2024-04-08 19:02:43.860807267 -0700
-+++ labwc/src/config/rcxml.c	2024-04-08 19:06:01.917601265 -0700
+diff -ur a/src/config/rcxml.c b/src/config/rcxml.c
+--- a/src/config/rcxml.c	2024-04-08 19:02:43.860807267 -0700
++++ b/src/config/rcxml.c	2024-04-08 19:06:01.917601265 -0700
 @@ -839,13 +839,6 @@
  		set_adaptive_sync_mode(content, &rc.adaptive_sync);
  	} else if (!strcasecmp(nodename, "allowTearing.core")) {
@@ -15,3 +15,46 @@ diff '--color=auto' -ur labwc.orig/src/config/rcxml.c labwc/src/config/rcxml.c
  	} else if (!strcasecmp(nodename, "reuseOutputMode.core")) {
  		set_bool(content, &rc.reuse_output_mode);
  	} else if (!strcmp(nodename, "policy.placement")) {
+diff --git a/include/labwc.h b/include/labwc.h
+index a19f8243..e32d5d47 100644
+--- a/include/labwc.h
++++ b/include/labwc.h
+@@ -389,6 +389,8 @@ struct output {
+ 	bool leased;
+ 	bool gamma_lut_changed;
+ 	uint32_t frames;
++
++	uint32_t tearing_fail_count;
+ };
+ 
+ #undef LAB_NR_LAYERS
+diff --git a/src/output.c b/src/output.c
+index 1bf01429..ae875319 100644
+--- a/src/output.c
++++ b/src/output.c
+@@ -112,10 +112,21 @@ output_frame_notify(struct wl_listener *listener, void *data)
+ 		output_apply_gamma(output);
+ 	} else {
+ 		output->pending.tearing_page_flip =
+-			get_tearing_preference(output);
+-
+-		lab_wlr_scene_output_commit(output->scene_output,
+-			&output->pending);
++			get_tearing_preference(output) &&
++			output->tearing_fail_count < 120;
++
++		if (!lab_wlr_scene_output_commit(output->scene_output,
++			&output->pending) && output->pending.tearing_page_flip) {
++			output->pending.tearing_page_flip = false;
++			if (lab_wlr_scene_output_commit(output->scene_output,
++				&output->pending)) {
++				output->tearing_fail_count = 0;
++			} else {
++				if (++output->tearing_fail_count >= 120) {
++					wlr_log(WLR_INFO, "Tearing failed for 120 consecutive frames, disabling");
++				}
++			}
++		}
+ 	}
+ 
+ 	struct timespec now = { 0 };
