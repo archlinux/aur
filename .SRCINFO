@@ -1,0 +1,16 @@
+pkgbase = sdl-gamecontrollerdb-git
+	pkgdesc = A community sourced database of game controller mappings to be used with SDL2 Game Controller functionality
+	pkgver = r1420.9d09945
+	pkgrel = 1
+	url = https://github.com/mdqinc/SDL_GameControllerDB
+	arch = any
+	license = Zlib
+	makedepends = git
+	optdepends = sdl2
+	optdepends = sdl3
+	provides = sdl-gamecontrollerdb=r1420.9d09945
+	conflicts = sdl-gamecontrollerdb
+	source = sdl-gamecontrollerdb::git+https://github.com/mdqinc/SDL_GameControllerDB.git
+	b2sums = SKIP
+
+pkgname = sdl-gamecontrollerdb-git
