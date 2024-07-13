@@ -22,14 +22,14 @@ _pkgbase=mozc
 pkgname=fcitx5-mozc-ext-neologd
 pkgdesc="Fcitx5 Module of Mozc (Google Japanese Input OSS) with external generated dictionaries (NEologd and Sudachi.)"
 pkgver=2.30.5490.102.g8bd1c73
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/google/mozc"
 license=('custom')
 depends=('qt5-base' 'fcitx5')
 makedepends=('pkg-config' 'python' 'curl' 'gtk2' 'mesa' 'subversion' 'bazel' 'git' 'clang' 'python-six' 'zsh' 'ruby' 'xz')
 conflicts=('mozc' 'mozc-server' 'mozc-utils-gui' 'mozc-fcitx' 'fcitx-mozc' 'fcitx5-mozc-ut' 'fcitx5-mozc-ut-full' 'fcitx-mozc-neologd-ut' 'fcitx-mozc-ut-unified' 'fcitx-mozc-ut-unified-full' 'fcitx5-mozc')
-provides=('fcitx5-mozc=2.30.5520.102')
+provides=('fcitx5-mozc=2.30.5490.102')
 source=(git+https://github.com/fcitx/mozc.git#commit=${_mozc_commit}
         https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip
         https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip

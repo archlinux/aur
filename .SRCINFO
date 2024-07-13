@@ -1,7 +1,7 @@
 pkgbase = fcitx5-mozc-ext-neologd
 	pkgdesc = Fcitx5 Module of Mozc (Google Japanese Input OSS) with external generated dictionaries (NEologd and Sudachi.)
 	pkgver = 2.30.5490.102.g8bd1c73
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/mozc
 	arch = x86_64
 	license = custom
@@ -20,7 +20,7 @@ pkgbase = fcitx5-mozc-ext-neologd
 	makedepends = xz
 	depends = qt5-base
 	depends = fcitx5
-	provides = fcitx5-mozc=2.30.5520.102
+	provides = fcitx5-mozc=2.30.5490.102
 	conflicts = mozc
 	conflicts = mozc-server
 	conflicts = mozc-utils-gui
