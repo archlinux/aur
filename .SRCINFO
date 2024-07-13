@@ -1,0 +1,18 @@
+pkgbase = ember-plus
+	pkgdesc = Ember+ control protocol - Slick and free for all!
+	pkgver = 1.8.2.2
+	pkgrel = 1
+	url = https://github.com/Lawo/ember-plus
+	arch = x86_64
+	license = BSL-1.0
+	makedepends = cmake
+	depends = gcc-libs
+	depends = glibc
+	depends = qt5-base
+	depends = qt5-wayland
+	options = !debug
+	options = !lto
+	source = ember-plus-1.8.2.2.tar.gz::https://github.com/Lawo/ember-plus/archive/refs/tags/v1.8.2.2.tar.gz
+	sha256sums = 67414fb0e6a169540b17f713201214b5c1a1b6e89d394d06caaddc6001f73fe6
+
+pkgname = ember-plus
