@@ -2,7 +2,7 @@
 
 pkgname=qt5-quickcontrols-nemo
 pkgver=5.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="QML components for Nemomobile, based on QtQuickControls"
 arch=('x86_64')
 url="https://github.com/nemomobile-ux/qtquickcontrols-nemo"
