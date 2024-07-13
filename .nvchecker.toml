@@ -1,0 +1,3 @@
+[rofi-pass]
+source = "git"
+git = "https://github.com/carnager/rofi-pass.git"
