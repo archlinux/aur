@@ -6,7 +6,7 @@
 
 pkgname=ophcrack
 pkgver=3.8.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Windows password cracker based on rainbow tables"
 arch=('x86_64')
 url="http://ophcrack.sourceforge.net"
