@@ -28,6 +28,9 @@ depends=(
   'pango'
   'pcre2'
   'ttf-font'
+  # requires wlroots0.17 explicitly
+  # see: https://gitlab.archlinux.org/pacman/pacman/-/issues/54
+  'wlroots0.17'
   'xcb-util-wm'
 )
 makedepends=(meson ninja scdoc setconf wayland-protocols)
@@ -93,6 +96,7 @@ prepare() {
 }
 
 build() {
+  export PKG_CONFIG_PATH='/usr/lib/wlroots0.17/pkgconfig'
   mkdir -p build
   arch-meson build "sway-$pkgver" -D sd-bus-provider=libsystemd -D werror=false -D b_ndebug=true
   ninja -C build
