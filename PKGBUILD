@@ -1,20 +1,26 @@
-# Maintainer: Sebastian Wiesner <sebastian@swsnr.de>
+# Maintainer: zzzardoz <zzzardoz at mail dot de>
+# Contributor: Sebastian Wiesner <sebastian@swsnr.de>
 
 pkgname=televido
-pkgver=0.1.3
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Access German-language public broadcasting live streams and archives on the Linux Desktop"
 arch=(x86_64)
 url="https://github.com/d-k-bo/${pkgname}"
 license=('GPL3')
 depends=(libadwaita)
+optdepends=('totem: video playback'
+            'celluloid: video playback'
+            'clapper: video playback'
+            'daikhan-git: video playback'
+            'parabolic: video download')
 makedepends=(
     meson
     rust
     blueprint-compiler
 )
 source=("https://github.com/d-k-bo/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('e0b87c6200350eba9b3f07809f487c332a627b288b9a48c287bbf820c617f016')
+sha256sums=('d2bab0a83c05fb35c50f8d38be462aa2c7384340fb58ff7f8ec4d60430fc0e15')
 
 # Use LTO
 export CARGO_PROFILE_RELEASE_LTO=true CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
