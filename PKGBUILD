@@ -4,7 +4,7 @@
 
 pkgname=jabref-bin
 _pkgname=jabref
-pkgver=5.13
+pkgver=5.15
 pkgrel=1
 pkgdesc="GUI frontend for BibTeX, written in Java; bin version which bundles the Java runtime"
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=(https://github.com/JabRef/jabref/releases/download/v${pkgver}/JabRef-${p
         jabref.sh
         JabRef.desktop
         JabRef.svg)
-sha256sums=('a69da5fd09f1eab14fb3bf922ccebf5b6c1b157145dd7489fd8adedee6cea2aa'
+sha256sums=('ae2a365bcac73f73e8fbffc0363e125c5ff6453ad89b90ac5891445ceb37e9bb'
             '68664af2717c2be847dcc219ff34e9a86721e5441f60a6b11472abb50c1fdeff'
             '857807c9240181f5d7e783898e94e523beaba8b6b55617931141cbffba41c70d'
             '81a9ce53092525d1ba964435a0558654441a85e818581453a50df1045017c131'
