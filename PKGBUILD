@@ -31,6 +31,6 @@ package() {
   find . -type f \( -name 'dkms.conf' -o -name '*.c' \) -exec sed -i "s/#VERSION#/$pkgver/" {} +
 
   echo "* Copying module into /usr/src..."
-  install -dm755 "${pkgdir}/usr/src/${_reponame}-${pkgver}"
-  cp -r ${srcdir}/$_reponame/* "${pkgdir}/usr/src/${_reponame}-${pkgver}"
+  install -dm755 "${pkgdir}/usr/src/hid-universal-pidff-${pkgver}"
+  cp -r ${srcdir}/$_reponame/* "${pkgdir}/usr/src/hid-universal-pidff-${pkgver}"
 }
