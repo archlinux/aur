@@ -1,0 +1,4 @@
+[rx_tools]
+source = "git"
+git = "https://github.com/rxseger/rx_tools.git"
+prefix = "v"
