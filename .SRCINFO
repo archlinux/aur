@@ -1,0 +1,16 @@
+pkgbase = spampd
+	pkgdesc = Spamassassin Proxy Daemon
+	pkgver = 2.61
+	pkgrel = 2
+	url = https://www.worlddesign.com/index.cfm/page/software/open-source/spampd.htm
+	arch = any
+	license = GPL3
+	depends = perl
+	depends = perl-net-server
+	depends = spamassassin
+	source = spampd-2.61.tar.gz::https://github.com/mpaperno/spampd/archive/2.61.tar.gz
+	source = spampd.service
+	sha256sums = 91e60f10745ea4f9c27b9e57619a1bf246ab9a88ea1b88c4f39f8af607e2dbae
+	sha256sums = 2bd1612761b07e6a613331b6448d4e0609c69aaf451707ddba1e1d9e1c0a35b6
+
+pkgname = spampd

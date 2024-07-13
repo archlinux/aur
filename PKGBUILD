@@ -1,7 +1,7 @@
 # Maintainer: Florian "Bluewind" Pritz <flo@xssn.at>
 pkgname=spampd
 pkgver=2.61
-pkgrel=1
+pkgrel=2
 pkgdesc="Spamassassin Proxy Daemon"
 arch=('any')
 url="https://www.worlddesign.com/index.cfm/page/software/open-source/spampd.htm"
