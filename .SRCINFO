@@ -1,6 +1,6 @@
 pkgbase = lib32-vulkan-validation-layers-git
 	pkgdesc = Vulkan Validation Layers (32-bit) (git version)
-	pkgver = 1.3.285.r5.gaf31268
+	pkgver = 1.3.289.r53.gd1a44af
 	pkgrel = 1
 	url = https://github.com/KhronosGroup/Vulkan-ValidationLayers
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = lib32-vulkan-validation-layers-git
 	makedepends = lib32-libxrandr
 	makedepends = lib32-wayland
 	makedepends = git
+	makedepends = ninja
 	makedepends = make
 	depends = lib32-gcc-libs
 	depends = lib32-vulkan-icd-loader-git

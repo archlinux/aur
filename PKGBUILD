@@ -3,12 +3,12 @@
 
 pkgname=lib32-vulkan-validation-layers-git
 pkgdesc='Vulkan Validation Layers (32-bit) (git version)'
-pkgver=1.3.285.r5.gaf31268
+pkgver=1.3.289.r53.gd1a44af
 pkgrel=1
 arch=(i686 x86_64)
 url='https://github.com/KhronosGroup/Vulkan-ValidationLayers'
 license=(custom)
-makedepends=(cmake python lib32-libxrandr lib32-wayland git make)
+makedepends=(cmake python lib32-libxrandr lib32-wayland git ninja make)
 depends=(lib32-gcc-libs lib32-vulkan-icd-loader-git vulkan-headers-git lib32-vulkan-utility-libraries-git lib32-libx11)
 # For the layer JSON description
 depends+=(vulkan-validation-layers-git)
@@ -36,7 +36,7 @@ export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
   "${srcdir}"/Vulkan-ValidationLayers/scripts/update_deps.py --config release --arch 32
 
   cmake -C helper.cmake -B "${srcdir}"/build -S "${srcdir}"/Vulkan-ValidationLayers \
-  -G "Unix Makefiles" \
+  -G Ninja \
   -D CMAKE_C_FLAGS=-m32 \
   -D CMAKE_CXX_FLAGS=-m32 \
   -D CMAKE_BUILD_TYPE=Release \
@@ -56,11 +56,11 @@ export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
   -D USE_ROBIN_HOOD_HASHING=OFF \
   -Wno-dev
 
-  make -j$(nproc) -C "${srcdir}"/build
+  ninja -j$(nproc) -C "${srcdir}"/build
 }
 
 package(){
-  make -j$(nproc) -C "${srcdir}"/build DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja -j$(nproc) -C "${srcdir}"/build install
 
   rm -rf "${pkgdir}"/usr/{include,share}
 
