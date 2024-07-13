@@ -1,0 +1,4 @@
+[ruby-trenni]
+source = "git"
+git = "https://github.com/ioquatix/trenni.git"
+prefix = "v"
