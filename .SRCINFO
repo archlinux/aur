@@ -1,6 +1,6 @@
 pkgbase = nomi
 	pkgdesc = Minecraft launcher powered by Rust
-	pkgver = 0.1.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/Umatriz/nomi
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = nomi
 	depends = gcc-libs
 	depends = bzip2
 	options = !lto
-	source = nomi-0.1.2.1.tar.gz::https://github.com/Umatriz/nomi/archive/refs/tags/0.2.2.tar.gz
+	source = nomi-0.2.2.tar.gz::https://github.com/Umatriz/nomi/archive/refs/tags/0.2.2.tar.gz
 	sha256sums = d00c0b9703fad083d2cb2016d7a2d99be208f3a1b873e498ed2d5ac2b01f2398
 
 pkgname = nomi

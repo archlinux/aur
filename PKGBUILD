@@ -4,7 +4,7 @@ pkgdesc="Minecraft launcher powered by Rust"
 url="https://github.com/Umatriz/nomi"
 license=("GPL-3.0-or-later")
 
-pkgver=0.1.2.1
+pkgver=0.2.2
 pkgrel=1
 
 arch=("x86_64")
@@ -13,7 +13,7 @@ depends=("glibc" "gcc-libs" "bzip2")
 makedepends=("cargo")
 
 source=(
-    "$pkgname-$pkgver.tar.gz::https://github.com/Umatriz/nomi/archive/refs/tags/0.2.2.tar.gz"
+    "$pkgname-$pkgver.tar.gz::https://github.com/Umatriz/nomi/archive/refs/tags/$pkgver.tar.gz"
 )
 sha256sums=('d00c0b9703fad083d2cb2016d7a2d99be208f3a1b873e498ed2d5ac2b01f2398')
 
