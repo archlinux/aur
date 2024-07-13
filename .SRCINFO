@@ -1,6 +1,6 @@
 pkgbase = gpmd85emulator-git
 	pkgdesc = Multiplatform GNU/GPL Tesla PMD 85 Emulator (git version)
-	pkgver = r92.99d59f4
+	pkgver = r107.d1be955
 	pkgrel = 1
 	url = https://github.com/mborik/GPMD85Emulator
 	arch = i686
@@ -14,7 +14,9 @@ pkgbase = gpmd85emulator-git
 	conflicts = gpmd85emulator
 	source = gpmd85emulator-git::git+https://github.com/mborik/GPMD85Emulator.git
 	source = gpmd85emulator.desktop
+	source = gpmd85emulator_sw.desktop
 	md5sums = SKIP
 	md5sums = b4f4a1ed5508393b306dd3c0a786e86b
+	md5sums = 8672b3ffbd705fea9a0ff2c7d64fe9b0
 
 pkgname = gpmd85emulator-git

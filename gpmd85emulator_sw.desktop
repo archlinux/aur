@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=GPMD85Emulator (sw render)
+Comment=Emulator of PMD85 (software rendering)
+Exec=/usr/bin/GPMD85emu --soft-render
+Icon=/usr/share/pixmaps/gpmd85emulator.bmp
+Categories=System;Emulator;
