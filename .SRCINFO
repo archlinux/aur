@@ -15,7 +15,7 @@ pkgbase = dion-bin
 	depends = util-linux-libs
 	depends = libappindicator-gtk3
 	depends = libsecret
-	source = https://static.dion.vc/desktop_app/dion-bin_5.11.1_amd64.deb
+	source = https://static.dion.vc/desktop_app/dion_5.11.1_amd64.deb
 	sha256sums = 46a1123ea8e44584d8d4e6a52e51ccca90414f8ec2632ae4893ace9b4c8a98c5
 
 pkgname = dion-bin
