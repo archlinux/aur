@@ -1,0 +1,19 @@
+pkgbase = perl-data-section
+	pkgdesc = read multiple hunks of data out of your DATA section
+	pkgver = 0.200008
+	pkgrel = 3
+	url = https://metacpan.org/release/Data-Section
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-failwarnings
+	makedepends = perl-extutils-makemaker>=6.78
+	depends = perl>=5.12
+	depends = perl-mro-compat>=0.09
+	depends = perl-sub-exporter>=0.979
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/R/RJ/RJBS/Data-Section-0.200008.tar.gz
+	md5sums = 3e23aec25adece87533f7254f1b9c4a3
+	sha512sums = 5fc8b25b1af8cdae5dca407bc039578e92bfc0b3bcfa2c01cdddf36ea30840f7eeeb336859a2e50719713c2675f2c1eb74c8832724d99ba4db92c47c65a860e3
+
+pkgname = perl-data-section
