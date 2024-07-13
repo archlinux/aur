@@ -1,0 +1,4 @@
+[snorenotify]
+source = "git"
+git = "https://github.com/Snorenotify/Snorenotify.git"
+prefix = "v"
