@@ -3,7 +3,7 @@
 
 pkgname=rofi-pass
 pkgver=2.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="bash script to handle pass storages in a convenient way"
 arch=('any')
 url='https://github.com/carnager/rofi-pass'

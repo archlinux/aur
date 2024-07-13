@@ -1,0 +1,19 @@
+pkgbase = rofi-pass
+	pkgdesc = bash script to handle pass storages in a convenient way
+	pkgver = 2.0.2
+	pkgrel = 3
+	url = https://github.com/carnager/rofi-pass
+	arch = any
+	license = GPL
+	depends = xdg-utils
+	depends = rofi
+	depends = gawk
+	depends = pass
+	depends = pwgen
+	depends = xdotool
+	depends = xclip
+	optdepends = pass-otp: for OTP support
+	source = rofi-pass-2.0.2.tar.gz::https://github.com/carnager/rofi-pass/archive/2.0.2.tar.gz
+	sha512sums = 28f59696911089c31b3f17bde281e3d79c3f757ecc4da61386719c6cff9b31c0944a2ac549d7838f06c249d4535c0dc107ba684115f15db42a24bfdb2f575437
+
+pkgname = rofi-pass
