@@ -3,9 +3,10 @@
 
 pkgname=ddd-ftn
 pkgver=3.3.12
-pkgrel=14
+pkgrel=15
 pkgdesc="A graphical front-end for command-line debuggers such as GDB, JDB, pydb, perl debugger adapted for use at Faculty of Technical Sciences, University of Novi Sad"
 arch=('x86_64')
+conflicts=('ddd')
 url="http://www.gnu.org/software/ddd/"
 license=('GPL3' 'LGPL3')
 depends=('gcc-libs' 'openmotif' 'libxaw')
