@@ -146,7 +146,7 @@ prepare() {
 
 build() {
   export PKG_CONFIG_PATH="${srcdir}/nv-prefix/lib/pkgconfig"
-  
+
   cmake -B build -S obs-studio \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -157,9 +157,9 @@ build() {
     -DENABLE_SNDIO=ON \
     -DENABLE_BROWSER=ON \
     -DCEF_ROOT_DIR=/opt/cef-obs \
+    -DOBS_VERSION_OVERRIDE="$_pkgver" \
     -DOBS_COMPILE_DEPRECATION_AS_WARNING=ON \
     -Wno-dev \
-    -DOBS_VERSION_OVERRIDE="$_pkgver" \
     -DCMAKE_INCLUDE_PATH="${srcdir}/nv-prefix/include:/usr/include"
 
   sed -i "s|OBS_VERSION =|OBS_VERSION = \"$_pkgver-rc-$pkgrel\"; //|" build/libobs/obsversion.c
