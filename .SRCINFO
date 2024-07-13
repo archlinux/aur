@@ -1,74 +1,111 @@
 pkgbase = obs-studio-liberty
 	pkgdesc = Free, open source software for live streaming and recording. With Browser Source support. Without the need to install ffmpeg-obs, etc.
-	pkgver = 30.1.2
-	pkgrel = 2
-	url = https://obsproject.com
+	pkgver = 30.2.0
+	pkgrel = 1
+	url = https://github.com/obsproject/obs-studio
 	arch = x86_64
 	license = GPL-2.0-or-later
+	makedepends = asio
 	makedepends = cmake
+	makedepends = jack
 	makedepends = git
+	makedepends = uthash
+	makedepends = libajantv2>=17.0.1
+	makedepends = libdatachannel>=0.21
 	makedepends = libfdk-aac
-	makedepends = libxcomposite
 	makedepends = luajit
-	makedepends = pipewire
-	makedepends = python
-	makedepends = qt6-wayland
+	makedepends = nlohmann-json
+	makedepends = libvpl
+	makedepends = python>=3.12
 	makedepends = sndio
 	makedepends = swig
-	makedepends = vlc
-	makedepends = wayland
-	makedepends = x264
-	makedepends = xdg-desktop-portal
-	makedepends = nlohmann-json
+	makedepends = systemd-libs
+	makedepends = v4l-utils
 	makedepends = websocketpp
-	makedepends = asio
-	makedepends = cef-minimal-obs-bin
+	makedepends = cef-minimal-obs=103.0.0_5060_shared_textures_2594+g17f8588+chromium_103.0.5060.134_1
+	depends = alsa-lib
 	depends = curl
 	depends = ffmpeg
-	depends = gtk-update-icon-cache
-	depends = jack
+	depends = fontconfig
+	depends = freetype2
+	depends = gcc-libs
+	depends = glib2
+	depends = glibc
 	depends = jansson
-	depends = libajantv2
-	depends = libdatachannel
+	depends = libgl
+	depends = libpipewire
+	depends = libpulse
 	depends = librist
-	depends = libxinerama
-	depends = libxkbcommon-x11
-	depends = mbedtls
-	depends = onevpl
+	depends = libva
+	depends = libx11
+	depends = libxcb
+	depends = libxcomposite
+	depends = libxkbcommon
+	depends = mbedtls>=3.6
 	depends = pciutils
-	depends = qt6-svg
+	depends = qrcodegencpp-cmake
+	depends = qt6-base>=6.6.2
+	depends = qt6-svg>=6.6.2
+	depends = qt6-wayland>=6.6.2
 	depends = rnnoise
 	depends = speexdsp
-	depends = qrcodegencpp-cmake
+	depends = srt
+	depends = util-linux-libs
+	depends = wayland
+	depends = x264
+	depends = zlib
+	depends = at-spi2-core
+	depends = dbus
+	depends = expat
+	depends = libcups
+	depends = libdrm
+	depends = libxdamage
+	depends = libxext
+	depends = libxfixes
+	depends = libxrandr
+	depends = mesa
+	depends = nspr
+	depends = nss
+	optdepends = jack: JACK support
 	optdepends = libfdk-aac: FDK AAC codec support
-	optdepends = libva-intel-driver: ffmpeg hardware encoding
-	optdepends = libva-mesa-driver: ffmpeg hardware encoding
-	optdepends = libxcomposite: xcomposite capture support
-	optdepends = luajit: scripting support
-	optdepends = onevpl-intel-gpu: quicksync hardware Encoding
-	optdepends = pipewire: pipewire capture support
-	optdepends = python: scripting support
+	optdepends = libvpl: QSV encoder support
+	optdepends = intel-media-sdk: QSV encoder support(<= Rocket Lake & >= Broadwell)
+	optdepends = vpl-gpu-rt: QSV encoder support (>= Alder Lake)
+	optdepends = intel-media-driver: VAAPI encoder support (>= Broadwell)
+	optdepends = libva-intel-driver: VAAPI encoder support (<= Haswell)
+	optdepends = libva-mesa-driver: VAAPI encoder support
+	optdepends = swig: Scripting
+	optdepends = luajit: Lua scripting
+	optdepends = python>=3.12: Python scripting
 	optdepends = sndio: Sndio input client
-	optdepends = v4l2loopback-dkms: virtual camera support
-	optdepends = vlc: vlc media source support
-	optdepends = xdg-desktop-portal: pipewire capture support
-	provides = obs-studio=30.1.2
+	optdepends = v4l-utils: V4L2 support
+	optdepends = systemd-libs: V4L2 support
+	optdepends = v4l2loopback-dkms: V4L2 virtual camera output
+	optdepends = libdatachannel>=0.21: WHIP Support
+	optdepends = libajantv2>=17.0.1: AJA support
+	provides = obs-studio=30.2.0
+	provides = obs-vst
 	provides = obs-websocket
 	provides = obs-browser
 	conflicts = obs-studio
 	conflicts = obs-websocket
 	conflicts = obs-browser
 	conflicts = obs-linuxbrowser
-	conflicts = obs-studio-av1
 	conflicts = obs-studio-tytan652
 	conflicts = obs-studio-git
 	conflicts = obs-studio-amf
 	conflicts = obs-studio-browser
-	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=30.1.2
+	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=30.2.0
 	source = obs-browser::git+https://github.com/obsproject/obs-browser.git
 	source = obs-websocket::git+https://github.com/obsproject/obs-websocket.git
+	source = ftl-sdk::git+https://github.com/microsoft/ftl-sdk.git
+	source = supported-nv-codec-headers::git+https://github.com/FFmpeg/nv-codec-headers.git#tag=n12.1.14.0
+	source = 0004-Max_tls_v1_2_mbedtls_3_6_0_workaround.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = c397a8da291547c757a42f7727a5e6650aa70e6e531f2ef150356eb9eb1fb49c
 
 pkgname = obs-studio-liberty
