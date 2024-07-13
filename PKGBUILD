@@ -14,7 +14,10 @@ sha256sums=('48b13f950d56175712c47ea7b1c0a4a905fd2995dee76708625152c134ab1cba')
 
 build() {
     cd "${pkgname}-${pkgver}"
-    go build -ldflags "-s -w -X main.VERSION=${pkgver} -extldflags '${LDFLAGS}'"
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    go build -trimpath -ldflags "-s -w -X main.VERSION=${pkgver} -extldflags '${LDFLAGS}'"
 }
 package() {
     cd "${pkgname}-${pkgver}"
