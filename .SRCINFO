@@ -1,13 +1,14 @@
 pkgbase = ruby-vte3
 	pkgdesc = a Ruby binding of VTE.
 	pkgver = 4.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://ruby-gnome2.osdn.jp/
 	arch = x86_64
 	license = LGPL-2.1+
-	depends = vte3
+	makedepends = ruby-rake
 	depends = ruby
 	depends = ruby-gtk3
+	depends = vte3
 	noextract = vte3-4.1.2.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/vte3-4.1.2.gem

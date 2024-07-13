@@ -3,12 +3,19 @@
 _gemname=vte3
 pkgname=ruby-$_gemname
 pkgver=4.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc='a Ruby binding of VTE.'
 arch=(x86_64)
 url=https://ruby-gnome2.osdn.jp/
 license=("LGPL-2.1+")
-depends=(vte3 ruby ruby-gtk3)
+depends=(
+  ruby
+  ruby-gtk3
+  vte3
+)
+makedepends=(
+  ruby-rake
+)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
