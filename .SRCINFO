@@ -1,0 +1,15 @@
+pkgbase = perl-file-next
+	pkgdesc = File-finding iterator
+	pkgver = 1.18
+	pkgrel = 6
+	url = https://metacpan.org/release/File-Next
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/P/PE/PETDANCE/File-Next-1.18.tar.gz
+	md5sums = 8ad70cbaf936c3867fcc017d50ee6c25
+	sha512sums = 951ad995b40ddda359a10ba2d7e19622059da03e7aaa3411e2e887633fbf7720554dc3f98ad581b245b2ffb51ea79f7c5eedecf6e943359eb407df0f9014e627
+
+pkgname = perl-file-next

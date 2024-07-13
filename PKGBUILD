@@ -2,7 +2,7 @@
 
 pkgname=perl-file-next
 pkgver=1.18
-pkgrel=5
+pkgrel=6
 pkgdesc='File-finding iterator'
 arch=(any)
 license=(PerlArtistic GPL)
