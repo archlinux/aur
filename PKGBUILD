@@ -2,7 +2,7 @@
 _reponame=moza-ff
 pkgname=moza-ff-dkms-git
 pkgver=0.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Moza Racing FFB driver"
 arch=('x86_64')
 url="https://github.com/Lawstorant/moza-ff"
@@ -31,6 +31,6 @@ package() {
   find . -type f \( -name 'dkms.conf' -o -name '*.c' \) -exec sed -i "s/#VERSION#/$pkgver/" {} +
 
   echo "* Copying module into /usr/src..."
-  install -dm755 "${pkgdir}/usr/src/hid-universal-pidff-${pkgver}"
-  cp -r ${srcdir}/$_reponame/* "${pkgdir}/usr/src/hid-universal-pidff-${pkgver}"
+  install -dm755 "${pkgdir}/usr/src/universal-pidff-${pkgver}"
+  cp -r ${srcdir}/$_reponame/* "${pkgdir}/usr/src/universal-pidff-${pkgver}"
 }
