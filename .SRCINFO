@@ -1,16 +1,16 @@
 pkgbase = wo-bin
 	pkgdesc = Workspace shell manager
-	pkgver = 0.0.3
+	pkgver = 0.0.4
 	pkgrel = 1
 	url = https://github.com/antham/wo
 	license = MIT
 	conflicts = wo
 	provides = wo
 	arch = aarch64
-	source_aarch64 = https://github.com/antham/wo/releases/download/0.0.3/wo_0.0.3_linux_arm64.tar.gz
-	sha256sums_aarch64 = e8a48f50508e76d42018eb0f66cdd094688d92c0145b97791589a8645220acef
+	source_aarch64 = https://github.com/antham/wo/releases/download/0.0.4/wo_0.0.4_linux_arm64.tar.gz
+	sha256sums_aarch64 = b73459760752e446ec56fad8ec4b22ef323ff225f4faaaea6e69e5f520b83139
 	arch = x86_64
-	source_x86_64 = https://github.com/antham/wo/releases/download/0.0.3/wo_0.0.3_linux_amd64.tar.gz
-	sha256sums_x86_64 = 6586126a007e1882e4b2293cf587cea0d3d8e90e45bdbf2c0bd9e9fc6ba50ffd
+	source_x86_64 = https://github.com/antham/wo/releases/download/0.0.4/wo_0.0.4_linux_amd64.tar.gz
+	sha256sums_x86_64 = 3171f4ad6881cf46e8017c9dd65822d646b10f451e7cabadeab863532dbd3904
 	
 pkgname = wo-bin
