@@ -1,0 +1,4 @@
+[opl-synth]
+source = "git"
+git = "https://github.com/reales/OPL.git"
+prefix = "v"
