@@ -1,13 +1,17 @@
 # Maintainer: Elias Elwyn <a@jthv.ai>
 
 pkgname=perl-alien-build-plugin-pkgconfig-ppwrapper
-pkgver=0.03
-pkgrel=2
-pkgdesc='Alien::Build plugin to ensure the pure perl PkgConfig is not run by the MSYS perl'
 _dist=Alien-Build-Plugin-PkgConfig-PPWrapper
-arch=(any)
-url="https://metacpan.org/release/$_dist"
+pkgver=0.03
+pkgrel=3
+pkgdesc='Alien::Build plugin to ensure the pure perl PkgConfig is not run by the MSYS perl'
 license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
+
+url="https://metacpan.org/release/$_dist"
+source=("$pkgname-$pkgver.tar.gz::https://cpan.metacpan.org/authors/id/S/SL/SLAFFAN/$_dist-$pkgver.tar.gz")
+sha256sums=('9ebe5ae347f7ab4c18e4694d7f568635a9045289841273133a83d75d20c6527a')
+
+arch=(any)
 depends=(
   perl
   perl-alien-build
@@ -19,8 +23,6 @@ checkdepends=(
   perl-test2-suite
 )
 options=('!emptydirs')
-source=("https://cpan.metacpan.org/authors/id/S/SL/SLAFFAN/$_dist-$pkgver.tar.gz")
-sha256sums=(9ebe5ae347f7ab4c18e4694d7f568635a9045289841273133a83d75d20c6527a)
 
 build() {
   cd "$srcdir/$_dist-$pkgver"
