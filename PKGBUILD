@@ -4,7 +4,7 @@
 pkgname=subbrute
 pkgver=1.2.1
 _tag=77
-pkgrel=3
+pkgrel=4
 pkgdesc="A DNS meta-query spider that enumerates DNS records and subdomains"
 arch=('any')
 url="https://github.com/TheRook/$pkgname"

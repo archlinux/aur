@@ -1,0 +1,13 @@
+pkgbase = subbrute
+	pkgdesc = A DNS meta-query spider that enumerates DNS records and subdomains
+	pkgver = 1.2.1
+	pkgrel = 4
+	url = https://github.com/TheRook/subbrute
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python-dnspython
+	source = git+https://github.com/TheRook/subbrute.git#tag=77
+	sha512sums = SKIP
+
+pkgname = subbrute
