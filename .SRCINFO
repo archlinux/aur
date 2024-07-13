@@ -1,7 +1,7 @@
 pkgbase = perl-alien-sqlite
 	pkgdesc = Compile the Sqlite library
 	pkgver = 1.07
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/Alien-sqlite
 	arch = any
 	license = GPL-1.0-or-later OR Artistic-1.0-Perl
@@ -13,7 +13,7 @@ pkgbase = perl-alien-sqlite
 	depends = perl-pkgconfig
 	depends = perl-sort-versions
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/S/SL/SLAFFAN/Alien-sqlite-1.07.tar.gz
+	source = perl-alien-sqlite-1.07.tar.gz::https://cpan.metacpan.org/authors/id/S/SL/SLAFFAN/Alien-sqlite-1.07.tar.gz
 	sha256sums = 09ab5ea452b73749ef8ad6a07bdeb2e0b726d7d1509fe9236dcb10b48006caa9
 
 pkgname = perl-alien-sqlite
