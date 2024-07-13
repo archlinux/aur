@@ -2,17 +2,17 @@
 # Contributor: George Rawlinson <george@rawlinson.net.nz>
 pkgname=air
 pkgver=1.52.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Live reload for Go apps"
 arch=(x86_64)
-url="https://github.com/cosmtrek/${pkgname}"
+url="https://github.com/${pkgname}-verse/${pkgname}"
 license=(GPL-3.0-or-later)
 depends=(glibc go)
 makedepends=(git)
 options=('!lto')
-_commit='32b22d6c7fb4a2d388e1da529e602b3e719ea971'
+_commit='6b61fa9b7dbd9b9961230fa2af44eefe61758c72'
 source=("${pkgname}::git+${url}.git#commit=${_commit}")
-b2sums=('SKIP')
+b2sums=('6d60064fc098bc0589ae6e329d0ecaf9d50f4a8785dfd91e53c27f802d8567041357e89f00fd5321658f9cb59845cfa027a9f18459987d02e6567ac4a2677e9e')
 
 pkgver() {
   cd ${pkgname}
