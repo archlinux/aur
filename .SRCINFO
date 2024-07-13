@@ -1,0 +1,17 @@
+pkgbase = perl-log-any-adapter-tap
+	pkgdesc = Logger suitable for use with TAP test files
+	pkgver = 0.003003
+	pkgrel = 7
+	url = https://metacpan.org/release/Log-Any-Adapter-TAP
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.6.0
+	depends = perl-log-any
+	depends = perl-try-tiny
+	options = !emptydirs
+	source = https://search.cpan.org/CPAN/authors/id/N/NE/NERDVANA/Log-Any-Adapter-TAP-0.003003.tar.gz
+	md5sums = c5fe31d8990f8ce06cc6a8fdc3feec58
+	sha512sums = fbb8c5893d184c066fe471a207ecca98f2cacfbd98401f35d156cbb8bde567b313d846b75f721643fc470c1a19c162d3d791585f87d47a71e4fd7372252e65a5
+
+pkgname = perl-log-any-adapter-tap
