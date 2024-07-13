@@ -1,43 +1,35 @@
-# Maintainer: PRESFIL <echo cHJlc2ZpbEBwcm90b25tYWlsLmNvbQo= | base64 -d>
+# Maintainer: xx777 <zenmchen at gmail dot com>
+# Contributor: PRESFIL <echo cHJlc2ZpbEBwcm90b25tYWlsLmNvbQo= | base64 -d>
 # Contributor: librewish <librewish@gmail.com
-# Contributor:  Bjoern Franke <bjo+aur@schafweide.org>
+# Contributor: Bjoern Franke <bjo+aur@schafweide.org>
 # Contributor: feanor1397 <feanor1397@gmail.com>
 
+_pkgbase=rtw88
 pkgname=rtw88-dkms-git
-_pkgname=rtw88
-pkgver=r242.166b839
+pkgver=r443.5db1508
 pkgrel=1
-pkgdesc='Newest Realtek rtlwifi codes'
+pkgdesc='Driver for Realtek 802.11ac wireless chips'
+license=('GPL2' 'custom')
 arch=('any')
 url='https://github.com/lwfinger/rtw88'
-depends=('dkms')
-makedepends=('git' 'gcc' 'make')
-provides=('rtlwifi_new-dkms')
-conflicts=('rtlwifi_new-dkms')
-provides=('rtlwifi_new-dkms' 'rtlwifi_new-extended-dkms-git' 'rtlwifi_new-rtw88-dkms')
-conflicts=('rtlwifi_new-dkms' 'rtlwifi_new-extended-dkms-git' 'rtlwifi_new-rtw88-dkms')
-replaces=('rtlwifi_new-extended-dkms-git' 'rtlwifi_new-rtw88-dkms-git')
-install=${pkgname}.install
+depends=('dkms' 'linux-firmware')
+makedepends=('git')
 source=("git+https://github.com/lwfinger/rtw88.git"
-        "${pkgname}.conf")
+	"blacklist-rtw88.conf"
+	"dkms.conf")
 sha256sums=('SKIP'
-            '20c128b5d285b75dc06f4feee5acfbed1719fc39aef137cde65993baf79a0495')
+	    'fc45e3db3af0b047d9dcf656bfa84cf74f1d919e25a3f39bb4a47d940bed8cac'
+	    '5c0ac522558cd8d9ed1549d474eb5deccbe7d9a2643e0906b80d7d6983fbc4b4')
 
 pkgver() {
-  cd "${_pkgname}" || exit 1
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "${srcdir}"/${_pkgbase}
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 package() {
-  install -dm 755 "${pkgdir}/usr/src"
-  cp -dr --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/src/${_pkgname}-${pkgver}"
-
-  # Set name and version
-  sed -e "s/0.6/${pkgver}/" \
-      -i "${pkgdir}"/usr/src/${_pkgname}-${pkgver}/dkms.conf
-  sed -e "s/rtlwifi-new/${_pkgname}/" \
-      -i "${pkgdir}"/usr/src/${_pkgname}-${pkgver}/dkms.conf
-
-  # Blacklists conflicting module
-  install -Dm644 ${pkgname}.conf "${pkgdir}/usr/lib/modprobe.d/${pkgname}.conf"
+	cd "${srcdir}"/${_pkgbase}
+	install -Dm 644 -t "${pkgdir}"/usr/lib/firmware/rtw88 rtw8812a_fw.bin
+	install -Dm 644 -t "${pkgdir}"/usr/src/${_pkgbase}-${pkgver} *.c *.h Makefile
+	install -Dm 644 -t "${pkgdir}"/usr/src/${_pkgbase}-${pkgver} "${srcdir}"/dkms.conf
+	install -Dm 644 -t "${pkgdir}"/etc/modprobe.d "${srcdir}"/blacklist-rtw88.conf
 }
