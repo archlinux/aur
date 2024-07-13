@@ -2,7 +2,7 @@
 
 pkgname=perl-function-parameters
 pkgver=2.002004
-pkgrel=1
+pkgrel=2
 pkgdesc='define functions and methods with parameter lists ("subroutine signatures")'
 arch=(x86_64)
 license=(PerlArtistic GPL)

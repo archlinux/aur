@@ -1,0 +1,17 @@
+pkgbase = perl-function-parameters
+	pkgdesc = define functions and methods with parameter lists ("subroutine signatures")
+	pkgver = 2.002004
+	pkgrel = 2
+	url = https://metacpan.org/release/Function-Parameters
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-fatal
+	makedepends = perl-extutils-makemaker>=7.0
+	depends = perl>=5.14.0
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/M/MA/MAUKE/Function-Parameters-2.002004.tar.gz
+	md5sums = eedaa26261c106a2000c9a1266a2d321
+	sha512sums = 2df10b3e7ad87c26a0bfec88a88602b5960f1c59a494d480eb24cee96be89d1b89036d3ad7f6f2f4bda25531cb5693c139578a3b2efaca1b38b3cea9f050fa9e
+
+pkgname = perl-function-parameters
