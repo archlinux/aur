@@ -13,6 +13,7 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=($pkgname::"git+https://gitlab.com/tuxpaint/${pkgname%-git}.git")
 md5sums=('SKIP')
+backup=(etc/gopaste/config.yml etc/gopaste/config.env)
 
 pkgver() {
   cd "$pkgname"
