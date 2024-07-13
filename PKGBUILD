@@ -3,12 +3,12 @@
 
 pkgname=vulkan-extensionlayer-git
 pkgdesc='Layer providing Vulkan features when native support is unavailable (git version)'
-pkgver=1.3.285.r0.gab096d0
+pkgver=1.3.289.r2.g484c128
 pkgrel=1
 arch=(x86_64)
 url='https://github.com/KhronosGroup/Vulkan-ExtensionLayer.git'
 license=(Apache-2.0)
-makedepends=(cmake python-lxml libxrandr wayland git make)
+makedepends=(cmake python-lxml libxrandr wayland git ninja make)
 depends=(gcc-libs vulkan-icd-loader-git vulkan-headers-git vulkan-utility-libraries-git volk libx11)
 ### conflicts/provides/replaces: not in official archliux repos, so list a few package names that archlinnux packager can use
 conflicts=(vulkan-extension-layers-git vulkan-extension-layers vulkan-extension-layer vulkan-extensionlayer vulkan-extensionlayers)
@@ -28,7 +28,7 @@ build(){
   "${srcdir}"/Vulkan-ExtensionLayer/scripts/update_deps.py --config release
 
   cmake -C helper.cmake -B "${srcdir}"/build -S "${srcdir}"/Vulkan-ExtensionLayer \
-  -G "Unix Makefiles" \
+  -G Ninja \
   -D CMAKE_BUILD_TYPE=Release \
   -D CMAKE_INSTALL_PREFIX=/usr \
   -D CMAKE_INSTALL_BINDIR=bin \
@@ -43,11 +43,11 @@ build(){
   -D BUILD_TESTS=OFF \
   -Wno-dev
 
-  make -j$(nproc) -C "${srcdir}"/build
+  ninja -j$(nproc) -C "${srcdir}"/build
 }
 
 package(){
-  make -j$(nproc) -C "${srcdir}"/build DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja -j$(nproc) -C "${srcdir}"/build install
 
   # install doc
   install -dm755 "${pkgdir}"/usr/share/doc/"${pkgname}"/
