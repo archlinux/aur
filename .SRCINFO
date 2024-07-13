@@ -1,0 +1,13 @@
+pkgbase = dagtoc-bin
+	pkgdesc = A CLI tool for operating pdf contents
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = https://github.com/TD-Sky/dagtoc
+	arch = x86_64
+	license = GPL3
+	provides = dagtoc-bin
+	conflicts = dagtoc
+	source = dagtoc-bin-5.0.0.tar.gz::https://github.com/TD-Sky/dagtoc/releases/download/v5.0.0/dagtoc-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = bc336a4745e2b4ee1999fe26e8a1415afede1e211fb5052764042808f1dce8fa
+
+pkgname = dagtoc-bin
