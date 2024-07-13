@@ -2,7 +2,7 @@
 # Contributors: a
 
 pkgname=gopaste-git
-pkgver=0.0.19.r1
+pkgver=0.0.21.r1
 pkgrel=1
 pkgdesc='go paste bin'
 arch=('aarch64' 'x86_64')
@@ -13,7 +13,7 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=($pkgname::"git+https://gitlab.com/tuxpaint/${pkgname%-git}.git")
 md5sums=('SKIP')
-backup=(etc/gopaste/config.yml etc/gopaste/config.env)
+backup=(etc/gopaste/config.yml)
 
 pkgver() {
   cd "$pkgname"
