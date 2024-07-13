@@ -2,7 +2,7 @@
 
 pkgname=eget-bin
 pkgver=1.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Easily install prebuilt binaries from GitHub"
 arch=('i686' 'x86_64')
 url="https://github.com/zyedidia/eget"
@@ -12,7 +12,7 @@ source_i686=(https://github.com/zyedidia/eget/releases/download/v${pkgver}/eget-
 source_x86_64=(https://github.com/zyedidia/eget/releases/download/v${pkgver}/eget-${pkgver}-linux_amd64.tar.gz)
 
 sha256sums_i686=('6dad370ce3d1bb882ae64937e64f0739059117c467586ed1a016f1bb5fa5b198')
-sha256sums_x86_64=('b60704db753164cacb1aa7616298695f8580c902516897dfb660f595f88a66d6')
+sha256sums_x86_64=('c6b3da99e494e14a9f8c2877f9eb5891d573a95f436ecba7013cfb7d0992abf5')
 
 package() {
 	mkdir -p ${pkgdir}/usr/bin
