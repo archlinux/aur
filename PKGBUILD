@@ -5,7 +5,7 @@
 
 pkgname=purple-plugin-pack
 pkgver=2.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugins for libpurple and derived IM clients"
 arch=('x86_64')
 url="https://keep.imfreedom.org/pidgin/purple-plugin-pack"
