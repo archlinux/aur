@@ -17,16 +17,18 @@ sha256sums=('SKIP'
             '714e9e219b51af192208500b6936f748ad86a5ec79d5e5683cab1e81fbeae09c')
 
 build() {
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
     cd "${pkgname}"
 
     local git_commit=$(git rev-list -1 HEAD --abbrev-commit)
     local build_time="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
     local ldflags=" \
         -s -w \
-        -X github.com/ncarlier/${pkgname}/pkg/version.Version=v${pkgver} \
-        -X github.com/ncarlier/${pkgname}/pkg/version.GitCommit=${git_commit} \
-        -X github.com/ncarlier/${pkgname}/pkg/version.Built=${build_time} \
-        -buildid= \
+        -X ${url/https:\/\//}/pkg/version.Version=v${pkgver} \
+        -X ${url/https:\/\//}/pkg/version.GitCommit=${git_commit} \
+        -X ${url/https:\/\//}/pkg/version.Built=${build_time} \
         -extldflags '${LDFLAGS}'
     "
     go build \
