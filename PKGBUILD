@@ -3,8 +3,8 @@
 pkgname=polycule-git
 _name=polycule
 _appid=business.braid.polycule
-pkgver=64dfcaf
-pkgrel=2
+pkgver=5d7e8e4
+pkgrel=1
 pkgdesc="A geeky and efficient [matrix] client for power users."
 # Flutter officially supports amd64 and AArch64
 arch=('x86_64' 'aarch64')
