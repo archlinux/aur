@@ -3,12 +3,12 @@
 
 pkgname=vulkan-icd-loader-git
 pkgdesc='Vulkan Installable Client Driver (ICD) Loader (git version)'
-pkgver=1.3.285.r1.g1e8781e
+pkgver=1.3.289.r1.g3869180
 pkgrel=1
 arch=(x86_64)
 url='https://github.com/KhronosGroup/Vulkan-Loader'
 license=(Apache-2.0)
-makedepends=(cmake python-lxml libx11 libxrandr wayland vulkan-headers-git git make)
+makedepends=(cmake python-lxml libx11 libxrandr wayland vulkan-headers-git git ninja make)
 depends=(glibc)
 optdepends=('vulkan-driver: packaged vulkan driver')
 conflicts=(vulkan-icd-loader)
@@ -24,7 +24,7 @@ build(){
   rm -rf "${srcdir}"/build
 
   cmake -B "${srcdir}"/build -S "${srcdir}"/Vulkan-Loader \
-  -G "Unix Makefiles" \
+  -G Ninja \
   -D CMAKE_BUILD_TYPE=Release \
   -D CMAKE_INSTALL_PREFIX=/usr \
   -D CMAKE_INSTALL_BINDIR=bin \
@@ -41,11 +41,11 @@ build(){
   -D BUILD_WSI_DIRECTFB_SUPPORT=OFF \
   -Wno-dev
 
-  make -j$(nproc) -C "${srcdir}"/build
+  ninja -j$(nproc) -C "${srcdir}"/build
 }
 
 package(){
-  make -j$(nproc) -C "${srcdir}"/build DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja -j$(nproc) -C "${srcdir}"/build install
 
   # install doc
   install -dm755 "${pkgdir}"/usr/share/doc/"${pkgname}"/
