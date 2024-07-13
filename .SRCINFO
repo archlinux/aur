@@ -1,0 +1,21 @@
+pkgbase = android-armv7a-eabi-libshout
+	pkgdesc = Library for accessing a shoutcast/icecast server (Android armv7a-eabi)
+	pkgver = 2.4.6
+	pkgrel = 1
+	epoch = 1
+	url = https://www.icecast.org/
+	arch = any
+	license = LGPL
+	makedepends = android-configure
+	depends = android-armv7a-eabi-libvorbis
+	depends = android-armv7a-eabi-libtheora
+	depends = android-armv7a-eabi-speex
+	depends = android-armv7a-eabi-openssl
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://downloads.xiph.org/releases/libshout/libshout-2.4.6.tar.gz
+	md5sums = 4a66a369a01ce790e578221fa2c8ea60
+
+pkgname = android-armv7a-eabi-libshout
