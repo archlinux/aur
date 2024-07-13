@@ -62,7 +62,7 @@ prepare() {
   # Symlink to avoid downloads
   mkdir -p arduino-ide-extension/src/node/resources
   for bin in arduino-cli arduino-language-server arduino-fwuploader clang-format clangd; do
-    ln -sf /usr/bin/$bin resources/app/lib/backend/resources/$bin
+    ln -sf /usr/bin/$bin arduino-ide-extension/src/node/resources/$bin
   done
 
   export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=1
