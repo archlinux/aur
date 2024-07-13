@@ -6,35 +6,33 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=441b11c
+_mozc_commit=8bd1c73
 
-## follow the submodule commits in https://github.com/fcitx/mozc/tree/fcitx/src/third_party
-_abseil_cpp_commit=8541930
-_breakpad_commit=e5dc1f8
-_gtest_commit=5197b1a
+_abseil_cpp_commit=9957f27
+_breakpad_commit=78f7ae4
+_gtest_commit=1d17ea1
 _gyp_commit=1615ec3
 _japanese_usage_dictionary_commit=a4a6677
 _jsoncpp_commit=69098a1
-_protobuf_commit=3f493d9
-_dictext_commit=9a50ee1
-
-## the latest release from https://osdn.net/projects/ponsfoot-aur/storage/mozc/
-_zipcode_rel=202110
+_protobuf_commit=3836fd3
+_dictext_commit=d072c88
+_neologd_commit=abc61e3
 
 _pkgbase=mozc
 pkgname=fcitx5-mozc-ext-neologd
 pkgdesc="Fcitx5 Module of Mozc (Google Japanese Input OSS) with external generated dictionaries (NEologd and Sudachi.)"
-pkgver=2.30.5432.102.g441b11c
+pkgver=2.30.5490.102.g8bd1c73
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/google/mozc"
 license=('custom')
 depends=('qt5-base' 'fcitx5')
 makedepends=('pkg-config' 'python' 'curl' 'gtk2' 'mesa' 'subversion' 'bazel' 'git' 'clang' 'python-six' 'zsh' 'ruby' 'xz')
-conflicts=('mozc' 'mozc-server' 'mozc-utils-gui' 'mozc-fcitx' 'fcitx-mozc' 'fcitx5-mozc-ut' 'fcitx-mozc-neologd-ut' 'fcitx-mozc-ut-unified' 'fcitx-mozc-ut-unified-full' 'fcitx5-mozc')
+conflicts=('mozc' 'mozc-server' 'mozc-utils-gui' 'mozc-fcitx' 'fcitx-mozc' 'fcitx5-mozc-ut' 'fcitx5-mozc-ut-full' 'fcitx-mozc-neologd-ut' 'fcitx-mozc-ut-unified' 'fcitx-mozc-ut-unified-full' 'fcitx5-mozc')
+provides=('fcitx5-mozc=2.30.5520.102')
 source=(git+https://github.com/fcitx/mozc.git#commit=${_mozc_commit}
-        https://osdn.net/projects/ponsfoot-aur/storage/mozc/jigyosyo-${_zipcode_rel}.zip
-        https://osdn.net/projects/ponsfoot-aur/storage/mozc/x-ken-all-${_zipcode_rel}.zip
+        https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip
+        https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip
         git+https://chromium.googlesource.com/breakpad/breakpad#commit=${_breakpad_commit}
         git+https://github.com/google/googletest.git#commit=${_gtest_commit}
         git+https://chromium.googlesource.com/external/gyp#commit=${_gyp_commit}
@@ -43,10 +41,12 @@ source=(git+https://github.com/fcitx/mozc.git#commit=${_mozc_commit}
         git+https://github.com/google/protobuf.git#commit=${_protobuf_commit}
         git+https://github.com/abseil/abseil-cpp.git#commit=${_abseil_cpp_commit}
         git+https://github.com/reasonset/mozcdict-ext.git#commit=${_dictext_commit}
+        git+https://github.com/neologd/mecab-ipadic-neologd.git#commit=${_neologd_commit}
 	)
 sha512sums=('SKIP'
-            '606f45d48a9dad0e80a566cab0001910de3c6b2f634ec52c6ef6f44745b55ae8e181b3e3cdf90525a08be1f180eb35900672c90c6ab4f43679a178e863378bbc'
-            'dec6479b42ddc1355cd882d17824cd874d8f103ad7767bac3f490f04551059d65b2806fa9e3f39a50ced2ecfdd37b75c9ed4536d9ad3bcef9e8c5ae1ec10e302'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -79,19 +79,32 @@ prepare() {
   git -c protocol.file.allow=always submodule update
 
   cd src
+  
+  # Reset dictionary09
+  git checkout data/dictionary_oss/dictionary09.txt
+  
   # Generate zip code seed
   echo "Generating zip code seed..."
-  PYTHONPATH="$PWD:$PYTHONPATH" python dictionary/gen_zip_code_seed.py --zip_code="${srcdir}/x-ken-all.csv" --jigyosyo="${srcdir}/JIGYOSYO.CSV" >> data/dictionary_oss/dictionary09.txt
+  PYTHONPATH="$PWD:$PYTHONPATH" python dictionary/gen_zip_code_seed.py --zip_code="${srcdir}/KEN_ALL.CSV" --jigyosyo="${srcdir}/JIGYOSYO.CSV" >> data/dictionary_oss/dictionary09.txt
   echo "Done."
 
   # Include NEologd
   cd "$srcdir/mozcdict-ext"
+
+  git submodule init
+  git config submodule.neologd/upstream.url "$srcdir/mecab-ipadic-neologd"
+  git -c protocol.file.allow=always submodule update
+
   echo "Generating extra dictionaries..."
   (
-    cd neologd
-    MOZC_ID_FILE="$srcdir/mozc/src/data/dictionary_oss/id.def" zsh mkdict.zsh
-    cd ../sudachi
-    MOZC_ID_FILE="$srcdir/mozc/src/data/dictionary_oss/id.def" zsh mkdict.zsh
+    (
+      cd neologd
+      MOZC_ID_FILE="$srcdir/mozc/src/data/dictionary_oss/id.def" zsh mkdict.zsh
+    )
+    (
+      cd sudachi
+      MOZC_ID_FILE="$srcdir/mozc/src/data/dictionary_oss/id.def" zsh mkdict.zsh
+    )
   ) | ruby .dev.utils/uniqword.rb 2> /dev/null >> "$srcdir/mozc/src/data/dictionary_oss/dictionary09.txt"
 
   cd "$srcdir/mozc"
@@ -117,6 +130,10 @@ build() {
   CXXFLAGS="${CXXFLAGS} -fvisibility=hidden"
 
   cd mozc/src
+
+  # Temp fix for GCC 14, import from fcitx5-mozc-ut.
+  sed -i -e '/Werror/d' third_party/protobuf/build_defs/cpp_opts.bzl
+
 
   QT_BASE_PATH=/usr/include/qt ../scripts/build_fcitx5_bazel
 

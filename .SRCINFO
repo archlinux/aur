@@ -1,6 +1,6 @@
 pkgbase = fcitx5-mozc-ext-neologd
 	pkgdesc = Fcitx5 Module of Mozc (Google Japanese Input OSS) with external generated dictionaries (NEologd and Sudachi.)
-	pkgver = 2.30.5432.102.g441b11c
+	pkgver = 2.30.5490.102.g8bd1c73
 	pkgrel = 1
 	url = https://github.com/google/mozc
 	arch = x86_64
@@ -20,31 +20,35 @@ pkgbase = fcitx5-mozc-ext-neologd
 	makedepends = xz
 	depends = qt5-base
 	depends = fcitx5
+	provides = fcitx5-mozc=2.30.5520.102
 	conflicts = mozc
 	conflicts = mozc-server
 	conflicts = mozc-utils-gui
 	conflicts = mozc-fcitx
 	conflicts = fcitx-mozc
 	conflicts = fcitx5-mozc-ut
+	conflicts = fcitx5-mozc-ut-full
 	conflicts = fcitx-mozc-neologd-ut
 	conflicts = fcitx-mozc-ut-unified
 	conflicts = fcitx-mozc-ut-unified-full
 	conflicts = fcitx5-mozc
-	source = git+https://github.com/fcitx/mozc.git#commit=441b11c
-	source = https://osdn.net/projects/ponsfoot-aur/storage/mozc/jigyosyo-202110.zip
-	source = https://osdn.net/projects/ponsfoot-aur/storage/mozc/x-ken-all-202110.zip
-	source = git+https://chromium.googlesource.com/breakpad/breakpad#commit=e5dc1f8
-	source = git+https://github.com/google/googletest.git#commit=5197b1a
+	source = git+https://github.com/fcitx/mozc.git#commit=8bd1c73
+	source = https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip
+	source = https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip
+	source = git+https://chromium.googlesource.com/breakpad/breakpad#commit=78f7ae4
+	source = git+https://github.com/google/googletest.git#commit=1d17ea1
 	source = git+https://chromium.googlesource.com/external/gyp#commit=1615ec3
 	source = git+https://github.com/hiroyuki-komatsu/japanese-usage-dictionary.git#commit=a4a6677
 	source = git+https://github.com/open-source-parsers/jsoncpp.git#commit=69098a1
-	source = git+https://github.com/google/protobuf.git#commit=3f493d9
-	source = git+https://github.com/abseil/abseil-cpp.git#commit=8541930
-	source = git+https://github.com/reasonset/mozcdict-ext.git#commit=9a50ee1
+	source = git+https://github.com/google/protobuf.git#commit=3836fd3
+	source = git+https://github.com/abseil/abseil-cpp.git#commit=9957f27
+	source = git+https://github.com/reasonset/mozcdict-ext.git#commit=d072c88
+	source = git+https://github.com/neologd/mecab-ipadic-neologd.git#commit=abc61e3
 	validpgpkeys = 2CC8A0609AD2A479C65B6D5C8E8B898CBF2412F9
 	sha512sums = SKIP
-	sha512sums = 606f45d48a9dad0e80a566cab0001910de3c6b2f634ec52c6ef6f44745b55ae8e181b3e3cdf90525a08be1f180eb35900672c90c6ab4f43679a178e863378bbc
-	sha512sums = dec6479b42ddc1355cd882d17824cd874d8f103ad7767bac3f490f04551059d65b2806fa9e3f39a50ced2ecfdd37b75c9ed4536d9ad3bcef9e8c5ae1ec10e302
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
