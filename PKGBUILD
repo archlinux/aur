@@ -3,50 +3,51 @@
 _binname="speedtest"
 _pkgname="${_binname}-go"
 pkgname="${_pkgname}-bin"
-pkgver=1.7.7
+pkgver=1.7.8
 pkgrel=1
 pkgdesc="CLI and Go API to test internet speed using speedtest.net"
 arch=('x86_64' 'i686' 'aarch64' 'armv5h' 'armv6h' 'armv7h' 'riscv64' 'loong64'
       'ppc64' 'ppc64le' 's390x' 'mips' 'mipsel' 'mips64' 'mips64el')
 url="https://github.com/showwin/${_pkgname}"
 license=('MIT')
-provides=("${_binname}")
-conflicts=("${_binname}")
-source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_x86_64.tar.gz")
-source_i686=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_i386.tar.gz")
-source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_arm64.tar.gz")
-source_armv5h=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_armv5.tar.gz")
-source_armv6h=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_armv6.tar.gz")
-source_armv7h=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_armv7.tar.gz")
-source_riscv64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_riscv64.tar.gz")
-source_loong64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_loong64.tar.gz")
-source_ppc64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_ppc64.tar.gz")
-source_ppc64le=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_ppc64le.tar.gz")
-source_s390x=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_s390x.tar.gz")
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+_pkgsrc="${_pkgname}-${pkgver}"
+source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_x86_64.tar.gz")
+source_i686=("${_pkgsrc}-i686.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_i386.tar.gz")
+source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_arm64.tar.gz")
+source_armv5h=("${_pkgsrc}-armv5h.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_armv5.tar.gz")
+source_armv6h=("${_pkgsrc}-armv6h.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_armv6.tar.gz")
+source_armv7h=("${_pkgsrc}-armv7h.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_armv7.tar.gz")
+source_riscv64=("${_pkgsrc}-riscv64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_riscv64.tar.gz")
+source_loong64=("${_pkgsrc}-loong64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_loong64.tar.gz")
+source_ppc64=("${_pkgsrc}-ppc64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_ppc64.tar.gz")
+source_ppc64le=("${_pkgsrc}-ppc64le.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_ppc64le.tar.gz")
+source_s390x=("${_pkgsrc}-s390x.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_s390x.tar.gz")
 # Change 'hardfloat' to 'softfloat' if necessary
-source_mips=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_mips_hardfloat.tar.gz")
-source_mipsel=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_mipsle_hardfloat.tar.gz")
-source_mips64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_mips64_hardfloat.tar.gz")
-source_mips64el=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_mips64le_hardfloat.tar.gz")
-sha256sums_x86_64=('8345b54198a15ee066d084a15b5ab757d39f6bfc1459e31631b8a6a976bbc69a')
-sha256sums_i686=('6657e8c22b788e0a75c374f41d2521218eadc24d6ec4c9d43eff5e588243eb7d')
-sha256sums_aarch64=('11db73962ea6113af78aea5912ffa7b561c6a2dbb97bb24734f379b6118cd888')
-sha256sums_armv5h=('13da48fc7bafed380a7030054750baf0c9b37b46bbeea4aff3dd42562cb5f3d8')
-sha256sums_armv6h=('30702860b3e012a1efb66ec72f17ed26323c97b36fdc495b48fd24002c95dc8f')
-sha256sums_armv7h=('849dcee4b130804e31c44eb1d336a9b09b9bc3a1be0793d11e964ce4dd436cba')
-sha256sums_riscv64=('28ee36b71cd24f49a238b778971592dd466af68f2ad388824bf555a2f4e82f53')
-sha256sums_loong64=('97da6ed5c5c6c872c36ae5aac3f9fe0220062cb59fa407eaf5c7753d38bc5edf')
-sha256sums_ppc64=('163ceff4325a1bd4c1d8a4ba0a21ef9c054a0bbbc3aef14bf692b1e3f9f368dc')
-sha256sums_ppc64le=('7341deb23c735d9cdad5e88652524d351697ca145e402270bade6a3f4bcea805')
-sha256sums_s390x=('c133c79835d5f8aeae7d2fa629577b9875b4634532e02b559094ea99d6b143db')
-sha256sums_mips=('3201ae504771a169e1f6d759eb8a58c7e043b8372fd683aeffef49f57816968d')
-sha256sums_mipsel=('765f70e0937c60b52384b93f1e8874d31b8bd9592609632023e6c067dafd04b4')
-sha256sums_mips64=('38ae1b103f423786becd158d71c1567ee0633688d4a7b58da8902b0aae16097e')
-sha256sums_mips64el=('8b03346b676963c8bdb6f013e7744d2dc13d27ade2b3c22d024df7055b9758a0')
+source_mips=("${_pkgsrc}-mips.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_mips_hardfloat.tar.gz")
+source_mipsel=("${_pkgsrc}-mipsel.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_mipsle_hardfloat.tar.gz")
+source_mips64=("${_pkgsrc}-mips64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_mips64_hardfloat.tar.gz")
+source_mips64el=("${_pkgsrc}-mips64el.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_mips64le_hardfloat.tar.gz")
+sha256sums_x86_64=('fef447535893f6de869f0bf1a094b7583f61da78158d4b181821cccd8ea0aa3d')
+sha256sums_i686=('5e4eda1ffa0ddafd9613d1c26dab11c47c79576833281669f3fbfbfeea5de06d')
+sha256sums_aarch64=('e6bec712261c850b679fc3f97e2e66911a831636f65b2306f3241a074dd0a80e')
+sha256sums_armv5h=('0cc3ee20741918dd49c793597e5ea90a322b9a5cc437dcd553f99d94d6f9ad44')
+sha256sums_armv6h=('cdf32abe589088c68e036c3bbb7bc2acc7471254c57a70996619a9ab477a56f6')
+sha256sums_armv7h=('897d806db7577734e10198bebd267270669e37501bfd85b8e16865ad8f8b2418')
+sha256sums_riscv64=('39ee914e9183c1f9ffc6b22d1000255eeca23f77a0d4e2fb86d8dbf52fbd7894')
+sha256sums_loong64=('b51ce006d798b04fd42d0d0a56bf81f14acb1fd42876f6db4a28c681ca4c926c')
+sha256sums_ppc64=('5cee19fefb9820e20ba3d3d51ecdae0a1b3fc0b0b6b05e811baa3b42a174c0ae')
+sha256sums_ppc64le=('3e45ae09addfe9dbf516cf4f6c06fc0c7c08d0ec4099de9c909d6eec9ace26a7')
+sha256sums_s390x=('65b473736b78eb6ebc5be7197c6134c5060201c4a5b33902ec78b28395e25990')
+sha256sums_mips=('f1b29e3bef2eedab9d83972198a51b5abc8b58b2fec7bddb56200a970b6cc3ee')
+sha256sums_mipsel=('4efe4a9f8c180722fc10b87e451fca43447164e5e7007c14dae82ccd939584b3')
+sha256sums_mips64=('1c86f64d4dbab1b18a468d9f68b01428c5ba8fed51d2fcde74faa4c78bc91bbc')
+sha256sums_mips64el=('b1639cd7e9eb82863382a5107c9c497f5b03c9a44b1b2799b04a3c1c3184ce71')
 
 package() {
   cd "${srcdir}"
   install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_binname}"
-  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_binname}/README.md"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_binname}/LICENSE"
+  install -Dm644 "README.md"   "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -Dm644 "LICENSE"     "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
