@@ -1,0 +1,18 @@
+pkgbase = ruby-gio2
+	pkgdesc = Ruby/GIO2 is a Ruby binding of gio-2.x.
+	pkgver = 4.1.2
+	pkgrel = 2
+	url = http://ruby-gnome2.sourceforge.jp/
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = gobject-introspection
+	makedepends = ruby-native-package-installer
+	depends = ruby
+	depends = ruby-glib2=4.1.2
+	depends = ruby-gobject-introspection=4.1.2
+	noextract = gio2-4.1.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/gio2-4.1.2.gem
+	sha256sums = 9329a222ef64405a437e48ad845f1a2986486b6be4bb2f80c485d7507c9918b3
+
+pkgname = ruby-gio2
