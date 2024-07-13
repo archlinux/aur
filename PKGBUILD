@@ -2,21 +2,21 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 _pkgname=libretro-citra
 pkgname=$_pkgname-git
-pkgver=r9304.d7e1612c1
+pkgver=r10151.2d67658e8
 pkgrel=1
 pkgdesc="Nintendo 3DS core"
 arch=('x86_64')
 url="https://github.com/libretro/citra"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 groups=('libretro')
 depends=('crypto++' 'enet' 'gcc-libs' 'glibc' 'libretro-core-info')
-makedepends=('boost' 'ffmpeg' 'git' 'zstd')
+makedepends=('boost' 'ffmpeg4.4' 'git' 'zstd')
 provides=("$_pkgname=${pkgver#r}")
 conflicts=("$_pkgname")
 source=(
 	"$_pkgname::git+$url.git"
-	'citra-dynarmic::git+https://github.com/citra-emu/dynarmic.git'
-	'citra-soundtouch::git+https://github.com/citra-emu/ext-soundtouch.git'
+	'citra-dynarmic::git+https://github.com/rtiangha/dynarmic-old.git'
+	'citra-soundtouch::git+https://github.com/johnny-mac/ext-soundtouch.git'
 	'fmt::git+https://github.com/fmtlib/fmt.git'
 	'libretro-nihstro::git+https://github.com/libretro-fork/nihstro.git'
 	'lodepng::git+https://github.com/lvandeve/lodepng.git'
@@ -33,7 +33,7 @@ b2sums=(
 	'SKIP'
 	'SKIP'
 	'SKIP'
-	'a998c5a124daa79d2483aa97d0307140243a4184fa7eac523f4119152dda54910c11738fc82330ac192978b80b997b7c1e757213c411ee42c939d09dbb24e5d8'
+	'756393516cbbb0402ad688ec2d25b99a710ec9ee9e797cfecb7726d0873f71d8e6e1d77b211d48a565c19631f63f3c9592033448793057a0129fd189ff80d24d'
 )
 
 pkgver() {
@@ -58,6 +58,7 @@ prepare() {
 }
 
 build() {
+	export PKG_CONFIG_PATH="/usr/lib/ffmpeg4.4/pkgconfig"
 	make -C $_pkgname BUILD_DATE= HAVE_FFMPEG_STATIC=0
 }
 

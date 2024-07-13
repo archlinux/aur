@@ -1,12 +1,28 @@
+diff --git a/Makefile b/Makefile
+index 3be779df9..3e38fa2b6 100644
+--- a/Makefile
++++ b/Makefile
+@@ -109,7 +109,8 @@ ifeq ($(platform), unix)
+ ifeq ($(HAVE_FFMPEG_STATIC), 1)
+    LIBS += $(EXTERNALS_DIR)/ffmpeg/libavcodec/libavcodec.a $(EXTERNALS_DIR)/ffmpeg/libavutil/libavutil.a
+ else
+-   LIBS += -lavcodec -lavutil
++   LIBS += $(shell pkg-config --libs libavcodec libavutil)
++   INCFLAGS += $(shell pkg-config --cflags libavcodec libavutil)
+ endif
+ 
+ #######################################
 diff --git a/Makefile.common b/Makefile.common
-index 5c04d28..d60382e 100644
+index 0cc5cf6c4..305bec92d 100644
 --- a/Makefile.common
 +++ b/Makefile.common
-@@ -1,3 +1,4 @@
+@@ -1,4 +1,5 @@
+-INCFLAGS := -I$(SRC_DIR) \
 +LIBS += -lboost_serialization $(shell pkg-config --libs libcryptopp libenet libzstd)
- INCFLAGS := -I$(SRC_DIR) \
++INCFLAGS += -I$(SRC_DIR) \
              -I$(SRC_DIR)/video_core \
              -I$(EXTERNALS_DIR) \
+             -I$(EXTERNALS_DIR)/dynarmic/include \
 @@ -17,113 +18,6 @@ INCFLAGS := -I$(SRC_DIR) \
  SOURCES_C   :=
  SOURCES_CXX :=
