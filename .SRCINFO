@@ -1,17 +1,17 @@
 pkgbase = python-pdbp
 	pkgdesc = A drop-in replacement for pdb and pdbpp
-	pkgver = 1.5.1
+	pkgver = 1.5.3
 	pkgrel = 1
 	url = https://github.com/mdmintz/pdbp
 	arch = any
-	license = MIT
+	license = PSF-2.0
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-pygments
 	depends = python-tabcompleter
-	source = pdbp-1.5.1.tar.gz::https://github.com/mdmintz/pdbp/archive/v1.5.1.tar.gz
-	sha512sums = 2deccc1798424c6e85da7df369bcf2961f550a713e5712c8a4ec3fdd57f90a72f03c7a9749ced959ccb2b4a7fa53f3fa86b7f17b81a28c7ce629ce26caa77715
+	source = pdbp-1.5.3.tar.gz::https://github.com/mdmintz/pdbp/archive/v1.5.3.tar.gz
+	sha512sums = 5109a99bbc7f36bed606f78a2c3f73225bdf042885a61e648d12bcdc833dc6490c760fbc6a349a4cf152d0bff570489a054f32fcae3c21830016bdce752b3305
 
 pkgname = python-pdbp
