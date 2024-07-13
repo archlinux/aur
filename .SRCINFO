@@ -1,0 +1,24 @@
+pkgbase = turbovnc-git
+	pkgdesc = High-speed remote desktop software (development version)
+	pkgver = 20240712.rf9484d29
+	pkgrel = 1
+	url = https://www.turbovnc.org/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	makedepends = gcc
+	depends = java-runtime
+	depends = libx11
+	depends = libjpeg-turbo
+	depends = libxt
+	depends = libxmu
+	depends = libxi
+	provides = turbovnc
+	conflicts = turbovnc
+	conflicts = tigervnc
+	source = git+https://github.com/TurboVNC/turbovnc.git#branch=dev
+	sha256sums = SKIP
+
+pkgname = turbovnc-git
