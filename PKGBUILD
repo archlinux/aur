@@ -6,8 +6,8 @@
 # Contributor: ledti <antergist at gmail dot com>
 
 pkgname=obs-studio-browser
-pkgver=30.1.2
-pkgrel=6
+pkgver=30.2.0
+pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -24,7 +24,6 @@ depends=(
   "ffmpeg-obs>=7" # Deps of OBS Studio and FFmpeg plugin
   "fontconfig" # Deps of Freetype2 plugin
   "freetype2" # Deps of Freetype2 plugin
-  "ftl-sdk" # Deps of Outputs plugin
   "gcc-libs" # Deps of any C++ related binary
   "glib2" # Deps of libobs, PipeWire plugin and CEF
   "glibc" # Deps of any C related binary
@@ -117,18 +116,16 @@ source=(
   "obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=$pkgver"
   "obs-browser::git+https://github.com/obsproject/obs-browser.git"
   "obs-websocket::git+https://github.com/obsproject/obs-websocket.git"
-  "0001-Add_finder_for_uthash.patch"
-  "0002-Use_system_uthash.patch"
-  "0003-Update_to_libajantv2_17_legacy_path_only.patch"
+  "ftl-sdk::git+https://github.com/microsoft/ftl-sdk.git"
+  "supported-nv-codec-headers::git+https://github.com/FFmpeg/nv-codec-headers.git#tag=n12.1.14.0"
   "0004-Max_tls_v1_2_mbedtls_3_6_0_workaround.patch"
 )
 sha256sums=(
   "SKIP"
   "SKIP"
   "SKIP"
-  "f4a56021a7f1c564f95b588d7c09b60a89efa2c1954c8a418cf6320b5a818542"
-  "82b14439697b5c5947117afa1b973bad7ddd9ee2f09e5d1ac56a96d10e01c6b1"
-  "a7149e1d9a07270132cf8085d52225ed3200a78ea943cbf52d64b1b8f293e117"
+  "SKIP"
+  "SKIP"
   "c397a8da291547c757a42f7727a5e6650aa70e6e531f2ef150356eb9eb1fb49c"
 )
 
@@ -140,35 +137,33 @@ prepare() {
   cd "$srcdir/obs-studio"
   git config submodule.plugins/obs-browser.url $srcdir/obs-browser
   git config submodule.plugins/obs-websocket.url $srcdir/obs-websocket
+  git config submodule.plugins/obs-outputs/ftl-sdk.url $srcdir/ftl-sdk
   git -c protocol.file.allow=always submodule update
-
-  # obs-ffmpeg: Fix incompatible-pointer-types with FFmpeg 7
-  git cherry-pick -n 8dbad9ac2974f9db776838e3f87c57c15291e983
-  # linux-v4l2: Fix deprecation with FFmpeg 7 
-  git cherry-pick -n 7d4501131a9e0014b23035168648a6175f7e7025
-
-  patch -Np1 -i "$srcdir/0001-Add_finder_for_uthash.patch"
-  patch -Np1 -i "$srcdir/0002-Use_system_uthash.patch"
-  patch -Np1 -i "$srcdir/0003-Update_to_libajantv2_17_legacy_path_only.patch"
 
   # MbedTLS 3.6.0 broke stuff with TLS v1.3
   patch -Np1 -i "$srcdir/0004-Max_tls_v1_2_mbedtls_3_6_0_workaround.patch"
+
+  cd "$srcdir"
+  make PREFIX="$srcdir/nv-prefix" -C supported-nv-codec-headers install
 }
 
 build() {
+  export PKG_CONFIG_PATH="${srcdir}/nv-prefix/lib/pkgconfig"
+
   cmake -B build -S obs-studio \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DENABLE_RTMPS=ON \
+    -DOBS_CMAKE_VERSION=3 \
     -DENABLE_LIBFDK=ON \
     -DENABLE_JACK=ON \
     -DENABLE_SNDIO=ON \
     -DENABLE_BROWSER=ON \
     -DCEF_ROOT_DIR=/opt/cef-obs \
     -DOBS_VERSION_OVERRIDE="$pkgver" \
-    -DCALM_DEPRECATION=ON \
-    -Wno-dev
+    -DOBS_COMPILE_DEPRECATION_AS_WARNING=ON \
+    -Wno-dev \
+    -DCMAKE_INCLUDE_PATH="${srcdir}/nv-prefix/include:/usr/include"
 
   sed -i "s|OBS_VERSION =|OBS_VERSION = \"$pkgver-browser-$pkgrel\"; //|" build/libobs/obsversion.c
 
