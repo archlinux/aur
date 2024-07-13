@@ -1,0 +1,16 @@
+pkgbase = perl-devel-checkbin
+	pkgdesc = check that a command is available
+	pkgver = 0.04
+	pkgrel = 10
+	url = https://metacpan.org/release/Devel-CheckBin
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-extutils-makemaker>=6.64
+	depends = perl>=5.8.1
+	options = !emptydirs
+	source = https://search.cpan.org/CPAN/authors/id/T/TO/TOKUHIROM/Devel-CheckBin-0.04.tar.gz
+	md5sums = 042b68e48d9b53de7d3ef4c726d57cb2
+	sha512sums = 7b28092fa2e6309ddc09976dcfadabbad9be678352c5b97a7938bf7e73944454e5c3c198aaf1a39939f24544e436ec4323925e77fa91e8d92e3986702c840f44
+
+pkgname = perl-devel-checkbin
