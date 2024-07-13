@@ -1,0 +1,4 @@
+[ruby-shindo]
+source = "git"
+git = "https://github.com/geemus/shindo.git"
+prefix = "v"
