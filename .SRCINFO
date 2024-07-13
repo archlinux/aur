@@ -1,14 +1,14 @@
 pkgbase = sqriptor-git
 	pkgdesc = QScintilla based text editor
-	pkgver = r62.a658771
+	pkgver = r162.326cf6f
 	pkgrel = 1
 	url = https://github.com/luebking/sqriptor
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	depends = qt5-base
-	depends = qscintilla-qt5
+	depends = qt6-base
+	depends = qscintilla-qt6
 	provides = sqriptor
 	conflicts = sqriptor
 	source = git+https://github.com/luebking/sqriptor.git
