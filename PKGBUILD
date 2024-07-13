@@ -1,8 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=musicpod-git
 _app_id=org.feichtmeier.Musicpod
-pkgver=1.4.4.r0.gb73b97f
+pkgver=1.4.5.r0.g68bd393
 pkgrel=1
+_flutterver=3.19.5
 pkgdesc="Music, radio, television and podcast player"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ubuntu-flutter-community/musicpod"
@@ -23,13 +24,13 @@ pkgver() {
 prepare() {
   cd "${pkgname%-git}"
   export FVM_CACHE_PATH="$srcdir/fvm"
-  fvm install 3.22.0
-  fvm global 3.22.0
+  fvm install "${_flutterver}"
+  fvm global "${_flutterver}"
 
   # Disable analytics
   fvm flutter --disable-analytics
 
-  # Pull dependencies within prepare, allowing for offline builds later on
+  # Download dependencies
   fvm flutter pub get
 
   desktop-file-edit  --set-icon="${pkgname%-git}" "snap/gui/${pkgname%-git}.desktop"
