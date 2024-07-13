@@ -1,6 +1,6 @@
 pkgbase = keyboard-backlightd
 	pkgdesc = Automatic keyboard backlight management on Thinkpads
-	pkgver = 0.1.9
+	pkgver = 0.1.10
 	pkgrel = 1
 	url = https://github.com/VorpalBlade/keyboard-backlightd
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = keyboard-backlightd
 	makedepends = cargo
 	depends = libevdev
 	backup = etc/conf.d/keyboard-backlightd
-	source = keyboard-backlightd-0.1.9.tar.gz::https://static.crates.io/crates/keyboard-backlightd/keyboard-backlightd-0.1.9.crate
-	sha256sums = 98431e642232e2c2e31741e255a910e04fd1138d6252769cc3141b52cec8f3cd
+	source = keyboard-backlightd-0.1.10.tar.gz::https://static.crates.io/crates/keyboard-backlightd/keyboard-backlightd-0.1.10.crate
+	sha256sums = 8fe730762baa8852b524d83217cb0f035bb05f1bc3725350d14030887ed5f76a
 
 pkgname = keyboard-backlightd
