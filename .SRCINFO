@@ -8,9 +8,9 @@ pkgbase = obsidian-cli-bin
 	provides = obsidian-cli
 	arch = aarch64
 	source_aarch64 = https://github.com/Yakitrak/obsidian-cli/releases/download/v0.1.7/obsidian-cli_0.1.7_linux_arm64.tar.gz
-	sha256sums_aarch64 = bf14e3277c6892fe9e23e7270b42298790a6d95f4bf96acdfc3e839d3cbc6685
+	sha256sums_aarch64 = 222000445eb74deee02093a72c1996f6d780d2c80da4e9271b4af0567107aa44
 	arch = x86_64
 	source_x86_64 = https://github.com/Yakitrak/obsidian-cli/releases/download/v0.1.7/obsidian-cli_0.1.7_linux_amd64.tar.gz
-	sha256sums_x86_64 = 08203e3148b466d7b595e81c0b2c37e2a3de95e007f3abaa0a01f99386321e7a
+	sha256sums_x86_64 = 7ad1de39123d0c385d364adfc6a3b084b7068231973ab43fed4282fc7dc1802b
 	
 pkgname = obsidian-cli-bin
