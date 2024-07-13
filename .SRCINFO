@@ -1,0 +1,17 @@
+pkgbase = ruby-glib2
+	pkgdesc = Ruby/GLib2 is a Ruby binding of GLib-2.x.
+	pkgver = 4.1.2
+	pkgrel = 2
+	url = http://ruby-gnome2.sourceforge.jp/
+	arch = x86_64
+	license = LGPL2.1
+	depends = ruby
+	depends = glib2
+	depends = ruby-pkg-config
+	depends = ruby-native-package-installer
+	noextract = glib2-4.1.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/glib2-4.1.2.gem
+	sha256sums = 57ec9a8ed491913a90d3b8264b204aa1608986a0bac64f62ea8c93f51749f396
+
+pkgname = ruby-glib2
