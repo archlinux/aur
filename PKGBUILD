@@ -1,22 +1,24 @@
-#Maintainer: noirscape <deepnavy at waifu dot club>
+# Maintainer:
+# Contributor: noirscape <deepnavy at waifu dot club>
+
 pkgname=tubeup
-pkgver=0.0.35
-pkgrel=2
+pkgver=2023.08.19
+pkgrel=1
 pkgdesc="Youtube (and other video site) to Internet Archive Uploader"
-url="https://pypi.org/project/tubeup"
-depends=('python' 'yt-dlp' 'python-jsonpatch' 'python-docopt' 'python-internetarchive' 'python-backports.csv')
-makedepends=('python3' )
-license=('GPL 3')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/t/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('b999e40e3960633e00399dc1dc242723')
+url="https://github.com/bibanon/tubeup"
+license=('GPL-3.0-or-later')
+depends=('python' 'python-docopt' 'python-internetarchive' 'yt-dlp')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('9b90ef4145678021b849a4f558803131467e55e14b159c313728c7b96d563c93')
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
-    python setup.py build
+    cd "${pkgname}-${pkgver}"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
-    python setup.py install --root="$pkgdir" --optimize=1 
+    cd "${pkgname}-${pkgver}"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
