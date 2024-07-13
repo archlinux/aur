@@ -2,7 +2,7 @@
 
 pkgname=magpie-wm-v1-git
 _pkgname=magpie
-pkgver=r145.3f14a19
+pkgver=r195.7d761f6
 pkgrel=1
 pkgdesc="Budgie's in-development Wayland compositor - latest git"
 arch=("x86_64" "armv7h" "aarch64")
