@@ -1,43 +1,36 @@
-# $Id$
-# Maintainer: Adria Arrufat <adria.arrufat+AUR@protonmail.ch>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Fernando Fernández <fernando at softwareperonista dot com dot ar>
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: Balló György
+# Contributor: Artem Vorotnikov <artem at vorotnikov dot me>
 
 pkgname=gxml-git
-pkgver=0.12.0
+pkgver=0.20.3.r18.g13c93b4
 pkgrel=1
-pkgdesc="GObject XML and Serialization API"
-arch=('i686' 'x86_64')
-license=('LGPL')
-depends=('glib2' 'libgee' 'libxml2')
-provides=(${pkgname/-git})
-conflicts=(${pkgname/-git})
-makedepends=('gobject-introspection' 'vala')
+pkgdesc="GObject-based XML parser and writer library"
+arch=(x86_64)
 url="https://wiki.gnome.org/GXml"
-_commit="a0b55b0fbae50359a361bff4c7ec49f975b2fa90"
-source=("git+https://git.gnome.org/browse/gxml#commit=${_commit}")
+license=(LGPL)
+depends=(glib2 libgee libxml2)
+makedepends=(git gobject-introspection meson vala)
+provides=(gxml)
+conflicts=(gxml)
+source=("git+https://gitlab.gnome.org/GNOME/gxml.git#branch=gxml-0.20")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname/-git}
-  git describe --tags | sed 's/-/+/g'
-}
-
-prepare() {
-  cd ${pkgname/-git}
-  NOCONFIGURE=1 ./autogen.sh
+  git -C gxml describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd ${pkgname/-git}
-  ./configure --prefix=/usr --enable-vapigen --enable-docs
-  make
+  arch-meson gxml build
+  meson compile -C build
 }
 
 check() {
-  cd ${pkgname/-git}
-  make check
+  meson test -C build --print-errorlogs
 }
 
 package() {
-  cd ${pkgname/-git}
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" meson install -C build
 }
