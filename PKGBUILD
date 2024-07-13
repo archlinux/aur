@@ -7,8 +7,7 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-libshout
 pkgver=2.4.6
-pkgrel=1
-epoch=1
+pkgrel=2
 pkgdesc="Library for accessing a shoutcast/icecast server (Android ${_android_arch})"
 arch=('any')
 url="https://www.icecast.org/"
