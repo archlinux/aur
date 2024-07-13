@@ -1,0 +1,23 @@
+pkgbase = patroneo
+	pkgdesc = An easy to use pattern based midi sequencer
+	pkgver = 2.4.1
+	pkgrel = 2
+	url = https://www.laborejo.org/patroneo/
+	arch = any
+	groups = pro-audio
+	license = GPL3
+	depends = hicolor-icon-theme
+	depends = libcalfbox-lss
+	depends = python
+	depends = python-pyqt5
+	depends = ttf-dejavu
+	optdepends = new-session-manager: for session management
+	source = https://www.laborejo.org/downloads/patroneo-2.4.1.tar.gz
+	source = https://www.laborejo.org/downloads/patroneo-2.4.1.tar.gz.sig
+	validpgpkeys = 45D952EF384ADFBB00913E3428C6A306F2909FEE
+	sha512sums = f3b9b17cddd467ff94d9aa592b3696b6e5dfc2c64e5243f8ce05e513d9454fd858ccabcf9e778a46e3cdf334c45455bdde258c3fa185a9be3774fd2f5937ef7f
+	sha512sums = SKIP
+	b2sums = 4f28bceb5c1bc1fb1cb64bccebaca4ea02240515c5022593e294529a9e986a7fd9337bced41afd2d738752e3998098ad4548080963f3e984adfd885c7abd19a0
+	b2sums = SKIP
+
+pkgname = patroneo

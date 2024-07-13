@@ -2,7 +2,7 @@
 
 pkgname=patroneo
 pkgver=2.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy to use pattern based midi sequencer"
 arch=(any)
 url="https://www.laborejo.org/patroneo/"
