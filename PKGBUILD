@@ -5,7 +5,7 @@
 
 pkgname=scim-chewing
 pkgver=0.5.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Traditional Chinese input method module for SCIM'
 url='https://chewing.im/'
 license=('GPL')

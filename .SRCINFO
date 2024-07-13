@@ -1,0 +1,14 @@
+pkgbase = scim-chewing
+	pkgdesc = Traditional Chinese input method module for SCIM
+	pkgver = 0.5.1
+	pkgrel = 4
+	url = https://chewing.im/
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	depends = scim
+	depends = libchewing
+	source = scim-chewing-0.5.1.tar.gz::https://github.com/chewing/scim-chewing/archive/v0.5.1.tar.gz
+	sha256sums = 491b127784fa38734f3062fd57ea57e54f5f44d37b551ab25aab10c565cf6ebb
+
+pkgname = scim-chewing
