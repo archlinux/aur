@@ -2,7 +2,7 @@
 
 pkgname=perl-data-messagepack
 pkgver=1.02
-pkgrel=2
+pkgrel=3
 pkgdesc='MessagePack serializing/deserializing'
 arch=(x86_64)
 license=(PerlArtistic GPL)

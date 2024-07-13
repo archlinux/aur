@@ -1,0 +1,19 @@
+pkgbase = perl-data-messagepack
+	pkgdesc = MessagePack serializing/deserializing
+	pkgver = 1.02
+	pkgrel = 3
+	url = https://metacpan.org/release/Data-MessagePack
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-requires
+	makedepends = perl-devel-ppport>=3.42
+	makedepends = perl-module-build>=0.4005
+	makedepends = perl-module-build-xsutil
+	depends = perl>=5.8.1
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/S/SY/SYOHEX/Data-MessagePack-1.02.tar.gz
+	md5sums = 23afe56c52a6e7f345a801710dcfabbe
+	sha512sums = a78a035091f42c888cb3d7b952d89588ba52988a6807e4c6dc347b12a751830b1b1d36ea93b8852339e1601dad197d42c762061b95ca2d8fdb4a6c29f6fda900
+
+pkgname = perl-data-messagepack
