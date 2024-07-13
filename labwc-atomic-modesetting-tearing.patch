@@ -45,15 +45,15 @@ index 1bf01429..ae875319 100644
 +
 +		if (!lab_wlr_scene_output_commit(output->scene_output,
 +			&output->pending) && output->pending.tearing_page_flip) {
-+			output->pending.tearing_page_flip = false;
-+			if (lab_wlr_scene_output_commit(output->scene_output,
-+				&output->pending)) {
-+				output->tearing_fail_count = 0;
-+			} else {
-+				if (++output->tearing_fail_count >= 120) {
-+					wlr_log(WLR_INFO, "Tearing failed for 120 consecutive frames, disabling");
-+				}
++			if (++output->tearing_fail_count >= 120) {
++				wlr_log(WLR_INFO, "Tearing failed for 120 consecutive"
++					" frames, disabling");
 +			}
++			output->pending.tearing_page_flip = false;
++			lab_wlr_scene_output_commit(output->scene_output,
++				&output->pending);
++		} else {
++			output->tearing_fail_count = 0;
 +		}
  	}
  
