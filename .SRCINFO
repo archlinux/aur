@@ -1,14 +1,15 @@
 pkgbase = ckb-next-runit
 	pkgdesc = Runit service for ckb-next
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/revsuine/ckb-next-runit
 	arch = i686
 	arch = x86_64
 	arch = pentium4
+	license = GPL-3.0-or-later
 	depends = runit
 	depends = ckb-next
-	source = https://codeberg.org/revsuine/ckb-next-runit/archive/1.0.0.tar.gz
+	source = ckb-next-runit-1.0.0.tar.gz::https://codeberg.org/revsuine/ckb-next-runit/archive/1.0.0.tar.gz
 	sha256sums = 55c8efca2bddac983920aabc08651902462b9a0cfca84fb14958483be11ba395
 
 pkgname = ckb-next-runit
