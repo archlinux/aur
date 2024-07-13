@@ -4,7 +4,7 @@
 pkgname=fluffychat
 _name=${pkgname}
 _appid=chat.fluffy.fluffychat
-pkgver=1.21.0
+pkgver=1.21.1
 pkgrel=1
 pkgdesc="Open. Nonprofit. Cute. Easy to use (matrix) messenger. Secure and decentralized."
 # Flutter officially supports amd64 and AArch64
@@ -39,7 +39,7 @@ conflicts=("$_name")
 source=(
   "fluffychat-v${pkgver}.tar.gz::https://github.com/krille-chan/fluffychat/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('e65a26e4f7efb178e244d6a34cc775196757991b41a74b422f88df92309d53aa')
+sha256sums=('4e7238d0e49e257b6034aba93a64589e043e8355d871fffa824228902c871bfe')
 
 # ensure we have the proper Dart architecture name for the current CARCH
 case "${CARCH}" in
@@ -48,6 +48,12 @@ case "${CARCH}" in
     ;;
   "aarch64")
     export _dartarch="arm64"
+    # fix incompatible C(XX)FLAGS on Arch Linux on ARM
+    CXXFLAGS="${CXXFLAGS/-fstack-protector-strong/}"
+    CXXFLAGS="${CXXFLAGS/-fstack-clash-protection/}"
+
+    CFLAGS="${CFLAGS/-fstack-protector-strong/}"
+    CFLAGS="${CFLAGS/-fstack-clash-protection/}"
     ;;
 esac
 
