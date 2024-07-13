@@ -6,7 +6,7 @@ pkgname=(
   regclient-regsync
   regclient-regbot
 )
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=0
 pkgdesc='Docker and OCI Registry tooling - regctl / regsync / regbot'
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ makedepends=('go' 'git')
 source=("https://github.com/regclient/regclient/archive/v$pkgver/$pkgbase-$pkgver.tar.gz")
 # how to build git tag from github
 #source=("$pkgbase-$pkgver.tar.gz::https://github.com/regclient/regclient/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f2a87fb940f212d94547f4241d11f3392a0b3c13d5b7bc4584780d8aa80716ae')
+sha256sums=('66520c4283334732aeffde2d6a06da527695c60ce86af5aaefd3a7f1a6fb4481')
 _bins=('regctl' 'regsync' 'regbot')
 
 build() {
