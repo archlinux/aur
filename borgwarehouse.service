@@ -1,0 +1,15 @@
+[Unit]
+Description=BorgWarehouse
+Documentation=https://borgwarehouse.com
+After=network.target
+
+[Service]
+Type=simple
+User=borgwarehouse
+WorkingDirectory=/usr/share/webapps/borgwarehouse/
+EnvironmentFile=/etc/webapps/borgwarehouse/borgwarehouse.env
+ExecStart=/usr/bin/node /usr/share/webapps/borgwarehouse/node_modules/.bin/next start --port "$WEB_SERVER_PORT" -H "$WEB_SERVER_HOST"
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

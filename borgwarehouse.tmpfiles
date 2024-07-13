@@ -1,0 +1,8 @@
+# Override this file with a modified version in /etc/tmpfiles.d/
+Z /etc/webapps/borgwarehouse/config - borgwarehouse borgwarehouse
+z /etc/webapps/borgwarehouse/borgwarehouse.env 0644 borgwarehouse borgwarehouse
+z /etc/webapps/borgwarehouse/ 0755 root root
+d /var/lib/borgwarehouse 0750 borgwarehouse borgwarehouse
+d /var/lib/borgwarehouse/.ssh 0700 borgwarehouse borgwarehouse
+f /var/lib/borgwarehouse/.ssh/authorized_keys 0600 borgwarehouse borgwarehouse
+d /var/lib/borgwarehouse/repos 0750 borgwarehouse borgwarehouse

@@ -1,0 +1,8 @@
+[Unit]
+Description=Borgwarehouse periodic job
+
+[Timer]
+OnUnitActiveSec=1d
+
+[Install]
+WantedBy=timers.target
