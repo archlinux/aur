@@ -1,0 +1,16 @@
+pkgbase = penguin-subtitle-player
+	pkgdesc = Standalone subtitle player
+	pkgver = 1.5.0
+	pkgrel = 4
+	url = https://github.com/carsonip/Penguin-Subtitle-Player
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = hicolor-icon-theme
+	depends = qt5-base
+	source = git+https://github.com/carsonip/Penguin-Subtitle-Player.git#commit=ca6a87e7ec3fe4ab0925525bfa771700022c5697
+	source = git+https://gitlab.freedesktop.org/uchardet/uchardet.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = penguin-subtitle-player
