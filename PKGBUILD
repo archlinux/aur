@@ -12,6 +12,10 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
 sha256sums=('a1671268770d884482323631dea8a2f4c21c5fb2775899a5363519974f8d6a31')
 
 build() {
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    
     cd "${pkgname}-${pkgver}"
     local ldflags=" \
         -s -w \
