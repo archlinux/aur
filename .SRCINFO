@@ -1,0 +1,16 @@
+pkgbase = nomi-bin
+	pkgdesc = Minecraft launcher powered by Rust
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/Umatriz/nomi
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = glibc
+	depends = gcc-libs
+	depends = bzip2
+	provides = nomi
+	conflicts = nomi
+	source = nomi-bin-0.2.2::https://github.com/Umatriz/nomi/releases/download/0.2.2/client-x86_64-unknown-linux-gnu
+	sha256sums = bbb06c3656485ed48dbd324d61e990a95726da0600fe6be0a66dccb70d226ca5
+
+pkgname = nomi-bin
