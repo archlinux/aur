@@ -3,7 +3,7 @@
 # Contributor: Tomasz Cielecki <tomasz@ostebaronen.dk>
 pkgname=sipcalc
 pkgver=1.1.6
-pkgrel=4
+pkgrel=5
 pkgdesc="an advanced console based ip subnet calculator."
 arch=('x86_64')
 url="https://www.routemeister.net/projects/sipcalc/"
