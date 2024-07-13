@@ -2,9 +2,9 @@
 # Contributor: SAFIB LTD <service.assist@safib.ru>
 
 pkgname=assistant
-pkgver=5.6.2
-pkgrel=3
-_pkg=972
+pkgver=5.6
+pkgrel=5
+_pkg=949
 pkgdesc='Secure remote access to computers over a local network or over the Internet.'
 arch=('x86_64')
 license=('custom:SAFIB LTD')
@@ -14,7 +14,7 @@ options=('!strip')
 install=${pkgname}.install
 source=("${url}%D1%81%D0%BA%D0%B0%D1%87%D0%B0%D1%82%D1%8C/Download/${_pkg}"
 	"https://archive.archlinux.org/packages/l/libtiff/libtiff-4.5.0-4-x86_64.pkg.tar.zst")
-md5sums=('8BCB7690394CA23CFBFA4DBB93BE257E'
+md5sums=('E032D8840C879609A33201558575D326'
 	 'f06d9d5070038b0dc84b0bdfc8cf37b8')
 
 build() {
