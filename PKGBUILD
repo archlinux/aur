@@ -1,7 +1,7 @@
 # Maintainer: Nick Dowsett <nickdowsett42@gmail.com>
 
 pkgname=youtui
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 pkgdesc="A simple TUI YouTube Music player written in Rust aiming to implement an Artist->Albums workflow for searching for music, and using discoverability principles for navigation. Writtten in Rust."
 url="https://github.com/nick42d/youtui"
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('alsa-lib')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('92c7323b12ab4a43cd36dc509a7dd38f6c08468e72ee24eacb1862a33967b679')
+sha256sums=('4ef15485e1a285082720d65affbe119a68f41f0e95bacceb0b9cd55b97683e01')
 
 prepare() {
   cd $pkgname-$pkgver
