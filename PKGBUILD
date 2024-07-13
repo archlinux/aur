@@ -14,7 +14,7 @@ source=(
 	"tessla-${pkgver}.jar"::"https://git.tessla.io/tessla/tessla/builds/artifacts/master/raw/target/scala-3.3.1/tessla-assembly-${pkgver}.jar?job=deploy"
 	"tessla")
 sha256sums=(
-	'588ca616fed051bc5ba1e35a81b3a9f2ba3d2bf553d456bb794de01dfa901e22'
+	'400d8e2d9814cc393a3664bb4073884c39bbab3fe7b733657563d7ea9b45126b'
 	'2d9931705d32832b11aaee1ed212f53bc62da1266ddd7db010e63861eb3c55c1')
 
 package() {
