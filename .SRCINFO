@@ -14,6 +14,7 @@ pkgbase = nautilus-typeahead
 	makedepends = ninja
 	makedepends = pkgconfig
 	makedepends = tracker3-miners
+	makedepends = glib2-devel
 	depends = cairo
 	depends = dconf
 	depends = gcc-libs

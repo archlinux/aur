@@ -50,6 +50,7 @@ makedepends=(
   ninja
   pkgconfig
   tracker3-miners
+  glib2-devel
 )
 checkdepends=(python-gobject)
 _commit=f5f593bf36c41756a29d5112a10cf7ec70b8eafb
