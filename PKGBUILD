@@ -2,7 +2,7 @@
 _base=tabcompleter
 pkgname=python-${_base}
 pkgdesc="Autocompletion in the Python console"
-pkgver=1.3.0
+pkgver=1.3.3
 pkgrel=1
 arch=(any)
 url="https://github.com/mdmintz/${_base}"
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(python)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('371830614a59bbb1a99cd6751a3aa553ee703351f4832a855da24ab902faee76a44f36bfc67efa02768680a74ca8296ef72f05f9ecc9d26a3c864858ace9ad8a')
+sha512sums=('3f8436f63e6566c52b6317c7ed9b7d0993dc05cc8d202b8fe2275430c5b08ee5e27d77bec654839d14ba39d9ae2bf8f5bd4e084861a886d8cef4ebe98232f9df')
 
 build() {
   cd ${_base}-${pkgver}

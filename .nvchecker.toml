@@ -1,0 +1,5 @@
+[python-tabcompleter]
+source = "github"
+github = "mdmintz/tabcompleter"
+use_latest_release = "true"
+prefix = "v"
