@@ -34,11 +34,16 @@ sha256sums=('34b29308f64a50d2dbf482ccacbb7b5357e50f97e74a7ce0ee295c0a3bef695a'
             '183071393262906f6416e27c14d2519fe537614e62866c2a93270b47355d97ae')
 
 build() {
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export NODE_ENV=production
+
     cd "${pkgname}-${_pkgver}"
     local buildid="${_pkgver}-$(uname -s)-$(uname -m)"
     local ldflags="
-        -extldflags '-L/usr/lib/${pkgname}-tensorflow -Wl,-rpath,/usr/lib/${pkgname}-tensorflow' \
         -s -w \
+        -extldflags '-L/usr/lib/${pkgname}-tensorflow -Wl,-rpath,/usr/lib/${pkgname}-tensorflow ${LDFLAGS}' \
         -X main.version=${buildid}
     "
     go build \
@@ -48,7 +53,7 @@ build() {
         "./cmd/${pkgname}/${pkgname}.go"
     
     npm --prefix=frontend install
-    NODE_ENV=production npm --prefix=frontend run build
+    npm --prefix=frontend run build
 }
 
 package() {
