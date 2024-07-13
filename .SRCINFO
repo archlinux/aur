@@ -18,6 +18,6 @@ pkgbase = taierspeed-cli
 	conflicts = taierspeed-cli
 	conflicts = taierspeed
 	source = taierspeed-cli-1.7.1.tar.gz::https://github.com/ztelliot/taierspeed-cli/archive/refs/tags/v1.7.1.tar.gz
-	sha256sums = 6eb2bb51f5b609bc3a4a10ca44d6be4b20dfcde39b324811bff6a1f6d1f643af
+	sha256sums = ef27f15111d9559a637d86fd73f107908b10120b86c81e69a9ff203ce073f711
 
 pkgname = taierspeed-cli
