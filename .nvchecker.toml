@@ -1,0 +1,4 @@
+[navit]
+source = "git"
+git = "https://github.com/navit-gps/navit.git"
+prefix = "v"
