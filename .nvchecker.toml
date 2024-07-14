@@ -1,0 +1,4 @@
+[python-fxa]
+source = "git"
+git = "https://github.com/mozilla/PyFxA.git"
+prefix = "v"
