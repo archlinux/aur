@@ -1,0 +1,4 @@
+[python-ipyxact]
+source = "git"
+git = "https://github.com/olofk/ipyxact.git"
+prefix = "v"
