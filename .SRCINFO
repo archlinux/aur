@@ -1,7 +1,7 @@
 pkgbase = gdb-multiarch
 	pkgdesc = The GNU Debugger for all gdb supported architectures (i386/arm/mips...)
-	pkgver = 14.2
-	pkgrel = 2
+	pkgver = 15.1
+	pkgrel = 1
 	url = http://www.gnu.org/software/gdb/
 	arch = i686
 	arch = x86_64
@@ -36,7 +36,7 @@ pkgbase = gdb-multiarch
 	source = https://ftp.gnu.org/gnu/gdb/gdb-14.2.tar.xz
 	source = https://ftp.gnu.org/gnu/gdb/gdb-14.2.tar.xz.sig
 	validpgpkeys = F40ADB902B24264AA42E50BF92EDB04BFF325CF3
-	sha256sums = 2d4dd8061d8ded12b6c63f55e45344881e8226105f4d2a9b234040efa5ce7772
+	sha256sums = 38254eacd4572134bca9c5a5aa4d4ca564cbbd30c369d881f733fb6b903354f2
 	sha256sums = SKIP
 
 pkgname = gdb-multiarch
