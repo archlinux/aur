@@ -5,7 +5,7 @@
 _pkgname="sunshine"
 pkgname="$_pkgname"
 pkgver=0.23.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A self-hosted GameStream host for Moonlight"
 url="https://github.com/LizardByte/Sunshine"
 license=('GPL-3.0-only')
@@ -29,7 +29,7 @@ depends=(
   'libxfixes'
   'libxrandr'
   'libxtst'
-  'miniupnpc'
+  'libminiupnpc.so' # miniupnpc
   'numactl'
   'openssl'
   'opus'
@@ -38,16 +38,15 @@ depends=(
 makedepends=(
   'boost'
   'cmake'
+  'cuda'
   'git'
   'ninja'
-  'nodejs'
   'npm'
 )
 optdepends=(
   'cuda: Nvidia GPU encoding support'
   'libva-mesa-driver: AMD GPU encoding support'
   'intel-media-driver: Intel GPU encoding support'
-  'xorg-server-xvfb: Virtual X server for headless testing'
 )
 
 install="sunshine.install"
@@ -146,12 +145,22 @@ prepare() {
 
   # fix for miniupnpc
   git -C "$_pkgsrc" cherry-pick -n -m1 a940cdb394055139ca6a964289f414da562452e3
+
+  # force features enabled
+  sed -E \
+    -e 's&(CUDA_FOUND) OFF&set(\1 ON)&' \
+    -e 's&(LIBCAP_FOUND) OFF&set(\1 ON)&' \
+    -e 's&(LIBDRM_FOUND) OFF&set(\1 ON)&' \
+    -e 's&(LIBVA_FOUND) OFF&set(\1 ON)&' \
+    -e 's&(WAYLAND_FOUND) OFF&set(\1 ON)&' \
+    -e 's&(X11_FOUND) OFF&set(\1 ON)&' \
+    -i "$_pkgsrc/cmake/compile_definitions/linux.cmake"
 }
 
-build() {
+build() (
   export BRANCH="master"
   export BUILD_VERSION="${pkgver}"
-  export COMMIT="$(git rev-parse HEAD)"
+  export COMMIT="$(git -C "$_pkgsrc" rev-parse HEAD)"
 
   export CFLAGS="${CFLAGS/-Werror=format-security/}"
   export CXXFLAGS="${CXXFLAGS/-Werror=format-security/}"
@@ -176,7 +185,7 @@ build() {
 
   cmake "${_cmake_options[@]}"
   cmake --build build
-}
+)
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
