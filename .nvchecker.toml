@@ -1,0 +1,4 @@
+[python-amqp]
+source = "git"
+git = "https://github.com/celery/py-amqp.git"
+prefix = "v"
