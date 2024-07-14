@@ -1,0 +1,4 @@
+[inadyn]
+source = "git"
+git = "https://github.com/troglobit/inadyn.git"
+prefix = "v"
