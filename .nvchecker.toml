@@ -1,0 +1,4 @@
+[glibd]
+source = "git"
+git = "https://github.com/gtkd-developers/GlibD.git"
+prefix = "v"
