@@ -1,6 +1,7 @@
 stages:
   - build
   - publish
+  - release
 
 build:
   stage: build
@@ -11,8 +12,7 @@ build:
     - makepkg -s --noconfirm
   artifacts:
     paths:
-      - "*.pkg.tar.zst"
-  timeout: 2h
+      - '*.pkg.tar.zst'
 
 publish:
   stage: publish
@@ -21,4 +21,10 @@ publish:
     - if: $CI_COMMIT_TAG
   script:
     - apk add curl
-    - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file "shellspec-$CI_COMMIT_TAG-any.pkg.tar.zst" "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/shellspec/$CI_COMMIT_TAG/shellspec-$CI_COMMIT_TAG-any.pkg.tar.zst"'
+    - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file "shellspec-${CI_COMMIT_TAG#v}-any.pkg.tar.zst" "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/shellspec/${CI_COMMIT_TAG#v}/shellspec-${CI_COMMIT_TAG#v}-any.pkg.tar.zst"'
+
+release:
+  stage: release
+  image: registry.gitlab.com/gitlab-org/release-cli:latest
+  script:
+    - 'release-cli create --tag-name "$CI_COMMIT_TAG" --name "shellspec $CI_COMMIT_TAG" --description "shellspec $CI_COMMIT_TAG" --assets-link "{\"name\":\"shellspec-${CI_COMMIT_TAG#v}-any.pkg.tar.zst\",\"filepath\":\"/shellspec-${CI_COMMIT_TAG#v}-any.pkg.tar.zst\",\"url\":\"$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/shellspec/${CI_COMMIT_TAG##v}/shellspec-${CI_COMMIT_TAG#v}-any.pkg.tar.zst\",\"link_type\":\"package\"}"'
