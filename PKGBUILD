@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MultiAssayExperiment
-_pkgver=1.30.2
+_pkgver=1.30.3
 pkgname=r-${_pkgname,,}
-pkgver=1.30.2
+pkgver=1.30.3
 pkgrel=1
 pkgdesc='Software for the integration of multi-omics experiments in Bioconductor'
 arch=('any')
@@ -35,7 +35,7 @@ optdepends=(
   r-upsetr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5ffa2a920e8d3f247d1b2d2523c482c6ad5edb554e32e2b404ae8b4f01c5e4c8')
+sha256sums=('7762d9b6c67b3ef47bbdbd416921f4821da0b4219117582ec4b938aea6d0fc6a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
