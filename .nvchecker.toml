@@ -1,0 +1,3 @@
+[qnapi]
+source = "git"
+git = "https://github.com/QNapi/qnapi.git"
