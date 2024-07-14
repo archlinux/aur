@@ -1,0 +1,3 @@
+[jack_capture]
+source = "git"
+git = "https://github.com/kmatheussen/jack_capture.git"
