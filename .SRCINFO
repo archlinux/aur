@@ -1,6 +1,6 @@
 pkgbase = wlroots-hidpi-xprop-git
 	pkgdesc = Modular Wayland compositor library (git version, with patches)
-	pkgver = 0.18.0.20240606.043305
+	pkgver = 0.19.0.20240713.195658
 	pkgrel = 2
 	url = https://gitlab.freedesktop.org/wlroots/wlroots
 	install = wlroots-hidpi-xprop-git.install
@@ -30,8 +30,8 @@ pkgbase = wlroots-hidpi-xprop-git
 	depends = xorg-xwayland
 	depends = lcms2
 	optdepends = xorg-xwayland-hidpi-xprop: HiDPI support, see https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/733
-	provides = libwlroots-0.18.so
-	provides = wlroots=0.18.0
+	provides = libwlroots-0.19.so
+	provides = wlroots=0.19.0
 	provides = wlroots-git
 	provides = wlroots-hidpi-xprop
 	conflicts = wlroots-git
