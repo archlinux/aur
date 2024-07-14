@@ -8,8 +8,12 @@ url="https://github.com/TheDarkArtist/ipclip"
 license=('MIT')
 depends=('xclip')
 makedepends=('git')
+provides=('ipclip')
+conflicts=('ipclip')
+options=(!debug)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/TheDarkArtist/ipclip/archive/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('979317c6462b9ea89a40abb7c69e3cebe8bb04c7ee4f9c926e33e0e4c86d45d5')
+validgpgkeys=('0AD355085DF79157D5CD05C3F871B76C837E1BC4')
 
 build() {
     cd "${pkgname}-${pkgver}"
