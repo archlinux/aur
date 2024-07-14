@@ -1,0 +1,4 @@
+[python-simple-term-menu]
+source = "git"
+git = "https://github.com/IngoMeyer441/simple-term-menu.git"
+prefix = "v"
