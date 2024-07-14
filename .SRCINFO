@@ -1,5 +1,5 @@
 pkgbase = publisher
-	pkgver = 0.0.3
+	pkgver = 0.1.1
 	pkgrel = 0
 	pkgdesc = Tool to publish & distribute CLI tools
 	url = https://github.com/termapps/publisher
@@ -8,9 +8,9 @@ pkgbase = publisher
 	license = MIT
 	provides = publisher
 
-	source_x86_64 = publisher-0.0.3.zip::https://github.com/termapps/publisher/releases/download/v0.0.3/publisher-v0.0.3-x86_64-unknown-linux-gnu.zip
-	sha256sums_x86_64 = b23e6657c19ccf0cd751bd85f8d3b026ec5bebdad34aa3dba712679711893705
-	source_i686 = publisher-0.0.3.zip::https://github.com/termapps/publisher/releases/download/v0.0.3/publisher-v0.0.3-i686-unknown-linux-gnu.zip
-	sha256sums_i686 = 99544f5934ce9dd93d00ba33731f0b6fadc13d8c6a4151b6062835e7bdec25ed
+	source_x86_64 = publisher-0.1.1.zip::https://github.com/termapps/publisher/releases/download/v0.1.1/publisher-v0.1.1-x86_64-unknown-linux-gnu.zip
+	sha256sums_x86_64 = e879ec8e0dfc16322d939c926bd11c6f0eb8a0b70ce76ad6879b2f10fc68c557
+	source_i686 = publisher-0.1.1.zip::https://github.com/termapps/publisher/releases/download/v0.1.1/publisher-v0.1.1-i686-unknown-linux-gnu.zip
+	sha256sums_i686 = 1dcff5eb40e84efeb88861d1e49791b4a62c74d3b74fd4ec860f9c9ade34a5f9
 
 pkgname = publisher
