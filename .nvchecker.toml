@@ -1,0 +1,4 @@
+[babeltrace2]
+source = "git"
+git = "https://github.com/efficios/babeltrace.git"
+prefix = "v"
