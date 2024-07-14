@@ -1,0 +1,4 @@
+[platformio-core]
+source = "git"
+git = "https://github.com/platformio/platformio-core.git"
+prefix = "v"
