@@ -1,0 +1,3 @@
+[python-pyface]
+source = "git"
+git = "https://github.com/enthought/pyface.git"
