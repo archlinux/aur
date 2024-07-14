@@ -1,0 +1,4 @@
+[horst]
+source = "git"
+git = "https://github.com/br101/horst.git"
+prefix = "v"
