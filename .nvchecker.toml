@@ -1,0 +1,4 @@
+[python-iminuit]
+source = "git"
+git = "https://github.com/scikit-hep/iminuit.git"
+prefix = "v"
