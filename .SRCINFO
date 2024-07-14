@@ -1,0 +1,15 @@
+pkgbase = hell-bin
+	pkgdesc = Haskell-based shell scripting language
+	pkgver = r20240711
+	pkgrel = 1
+	url = https://github.com/chrisdone/hell
+	arch = x86_64
+	license = BSD-3-Clause
+	provides = hell
+	conflicts = hell
+	noextract = hell-linux-x86-64bit
+	options = !debug
+	source = https://github.com/chrisdone/hell/releases/download/2024-07-11/hell-linux-x86-64bit
+	b2sums = da8b7175e2642dc2f5e13e6edd1f7219f2e19c49f12644b4379fc86c766a79b27a9d3aea51358a3abe2d0cc233ffc91487ead44e5bd574a21a38d0d627457e82
+
+pkgname = hell-bin
