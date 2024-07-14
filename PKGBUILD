@@ -1,20 +1,20 @@
 # Maintainer: Mahdi Sarikhani <mahdisarikhani@outlook.com>
 
 pkgname=oblivion-desktop
-_pkgver=0.23.15-beta
+_pkgver=0.35.1-beta
 pkgver="${_pkgver//-/_}"
-pkgrel=2
+pkgrel=1
 pkgdesc="Unofficial Warp Client"
 arch=('x86_64')
 url="https://github.com/bepass-org/oblivion-desktop"
-license=("LicenseRef-${pkgname}")
+license=('LicenseRef-oblivion-desktop')
 _electron=electron27
 depends=('bash' "${_electron}")
 makedepends=('gendesk' 'npm')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz"
         "${pkgname}.sh"
         'tray-icon.patch')
-sha256sums=('14baa91cbe6f3aa0f5c01c34e591481fb8f2c888261cf8bc78faad63f353f0d0'
+sha256sums=('051233707510cf9639d10f73b7b9e8f5ffdfe10335ab3a30899510e74364c636'
             '31676f8268a42b7cc292e7e8d71e8dab3f41f9b4a5332471134428d821b4338f'
             'd73fe075981f414a2cd3f821f102a9aeadc6b4b61fdeefeb7ba540a3c9150289')
 
