@@ -1,0 +1,3 @@
+[python-vagrant]
+source = "pypi"
+pypi = "python-vagrant"
