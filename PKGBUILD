@@ -4,12 +4,13 @@
 pkgname=dumpasn1
 # UPDATE_STRING in dumpasn1.c [dot] last update date in dumpasn1.cfg
 pkgver=20210422.20220207
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="ASN.1 object dump/syntax check program"
 arch=('i686' 'x86_64')
-url="http://www.cs.auckland.ac.nz/~pgut001"
-license=('custom')
+url="https://www.cs.auckland.ac.nz/~pgut001"
+license=('LicenseRef-dumpasn1-custom')
+depends=('glibc')
 source=("dumpasn1-$pkgver.c::$url/dumpasn1.c"
         "dumpasn1-$pkgver.cfg::$url/dumpasn1.cfg")
 sha256sums=('8ce8fdbf2e9b11d410b0ab4e44a6b3f89c27080113f051ec1054d230e050a0b8'
