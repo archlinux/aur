@@ -1,0 +1,3 @@
+[lib32-libid3tag]
+source = "git"
+git = "https://codeberg.org/tenacityteam/libid3tag.git"
