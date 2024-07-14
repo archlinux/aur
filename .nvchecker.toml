@@ -1,0 +1,4 @@
+[python-django-q]
+source = "git"
+git = "https://github.com/Koed00/django-q.git"
+prefix = "v"
