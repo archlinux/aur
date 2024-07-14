@@ -1,0 +1,4 @@
+[lastpass-cli]
+source = "git"
+git = "https://github.com/lastpass/lastpass-cli.git"
+prefix = "v"
