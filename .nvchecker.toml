@@ -1,0 +1,3 @@
+[cutefish-qt-plugins]
+source = "git"
+git = "https://github.com/cutefishos/qt-plugins.git"
