@@ -39,7 +39,8 @@ source=("ftp://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.sig}
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles"
         "${pkgname}-user.conf"
-        "${pkgname}-user.service")
+        "${pkgname}-user.service"
+        "0001-0b1080966-build-Update-libgcrypt-m4.patch")
 install="${pkgname}.install"
 validpgpkeys=('3D11063C10F98D14BD24D1470B0998EF86F59B6A')
 sha256sums=('8c2351268e9b8ba2ad288b8b337ce399f79c18e3ffd960803f4ed5de7dda9fa1'
@@ -48,11 +49,16 @@ sha256sums=('8c2351268e9b8ba2ad288b8b337ce399f79c18e3ffd960803f4ed5de7dda9fa1'
             '66299dbbdd0219d2f5f0520e69fc094f38f789724d973c2f63a421257ea4f755'
             '5c34e1ecc6208900426f8e399e8c3edbef12cce19eba605fd7364ddb3547d9f0'
             '3f17b9ed2c1f8cc0f919fe477df99678c17778a31f1eeb56517e285e3cef30f2'
-            '60caee20b53bcc69522556b35ac3d35d89e28c49b9a22a2ed5121df4a2c33be5')
+            '60caee20b53bcc69522556b35ac3d35d89e28c49b9a22a2ed5121df4a2c33be5'
+            '2a8e9705b2e038d7dacd91ea0c7226d020f5caec236e7d3356043f4940ac3b44')
 
 prepare() {
 
 	cd "${srcdir}/${pkgname}-${pkgver}"
+
+	# Already in upstream master: 0b108096672f7e58bab00ce37ed5636cfd80d77f4
+	# TODO: Remove this patch after next upstream release.
+	patch -p1 -i ${srcdir}/0001-0b1080966-build-Update-libgcrypt-m4.patch
 
 	export GNUNET_PREFIX='/usr/lib'
 	autoreconf -i
