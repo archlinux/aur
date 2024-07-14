@@ -1,0 +1,4 @@
+[p7zip]
+source = "git"
+git = "https://github.com/p7zip-project/p7zip.git"
+prefix = "v"
