@@ -1,0 +1,16 @@
+pkgbase = hyprland-easyfocus
+license = MIT
+pkgdesc = A tool to help efficiently focus windows in Sway inspired by sway-easyfocus/i3-easyfocus
+pkgver = 0.1.0
+pkgrel = 1
+url = https://github.com/abenz1267/hyprland-easyfocus
+arch = x86_64
+provides = hyprland-easyfocus
+conflicts = hyprland-easyfocus
+makedepends = cargo
+depends = gtk4-layer-shell
+source = https://github.com/abenz1267/hyprland-easyfocus/archive/v0.1.0/hyprland-easyfocus-0.1.0.tar.gz
+sha256sums = 4d3d9d327a39238dee5e3e438c2d27c5d6ea8af417db973d9bb09af53440eb3c
+b2sums = 2997c306546caa1d79714288dcb78b88b4fc78e99cc71a7d1e6b4e730199388ef3b4fbc0bd54e515838b2848919443d237acf35ec228dea2c67f9f03af8c6dfe
+
+pkgname = hyprland-easyfocus
