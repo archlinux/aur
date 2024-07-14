@@ -1,0 +1,4 @@
+[swaybg]
+source = "git"
+git = "https://github.com/swaywm/swaybg.git"
+prefix = "v"
