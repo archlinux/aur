@@ -1,0 +1,4 @@
+[dns-lexicon]
+source = "git"
+git = "https://github.com/AnalogJ/lexicon.git"
+prefix = "v"
