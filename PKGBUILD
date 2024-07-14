@@ -3,7 +3,7 @@
 # Contributor: Sergey Kostyaev <feo.me@ya.ru>
 
 pkgname=freelib-git
-pkgver=6.0.93.r45.ga611f14
+pkgver=6.0.93.r63.g748dafb
 pkgrel=1
 pkgdesc="Freelib is book library manager"
 arch=(x86_64)
