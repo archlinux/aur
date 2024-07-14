@@ -1,0 +1,4 @@
+[gauche]
+source = "git"
+git = "https://github.com/shirok/Gauche.git"
+prefix = "v"
