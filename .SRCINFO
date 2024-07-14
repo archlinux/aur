@@ -1,0 +1,25 @@
+pkgbase = yabause-qt
+	pkgdesc = A Sega Saturn emulator
+	pkgver = 0.9.15
+	pkgrel = 4
+	url = https://yabause.org/
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = glu
+	makedepends = libxmu
+	depends = freeglut
+	depends = glew
+	depends = openal
+	depends = qt5-base
+	depends = qt5-multimedia
+	depends = sdl2
+	conflicts = yabause-gtk
+	source = https://download.tuxfamily.org/yabause/releases/0.9.15/yabause-0.9.15.tar.gz
+	source = qt-5.11.patch
+	source = rwx.patch
+	sha256sums = 4334c43fe0f3ff297bac8e91f4e059fe5fd276291faff2489e37b5b3a4ccc2b2
+	sha256sums = 5c4f639478567d9a42963420bb6ab4086fd0514e8787c597c7b40804e1946ea6
+	sha256sums = d29997d3249683081a2687f31e777f917093101d56815d22103aaaf22ac786b1
+
+pkgname = yabause-qt
