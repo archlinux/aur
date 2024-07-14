@@ -1,0 +1,3 @@
+[python-senf]
+source = "pypi"
+pypi = "senf"
