@@ -1,0 +1,4 @@
+[python-mt-940]
+source = "git"
+git = "https://github.com/WoLpH/mt940.git"
+prefix = "v"
