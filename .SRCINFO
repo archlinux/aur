@@ -1,0 +1,16 @@
+pkgbase = punyinform
+	pkgdesc = A fast and compact Inform 6 library
+	pkgver = 5.5.1
+	pkgrel = 1
+	url = https://github.com/johanberntsson/PunyInform
+	arch = any
+	groups = inform
+	license = MIT
+	checkdepends = inform
+	checkdepends = ruby
+	source = punyinform-5.5.1::https://github.com/johanberntsson/PunyInform/archive/refs/tags/v5_5_1.tar.gz
+	source = punyinform.sh
+	sha256sums = 39fa5d2f6675853fe4fee3ae5476541bc12172743ae58643c9c830514828efda
+	sha256sums = b2fafaddc1100ae9bda1b3ddb0bd269cee292fabedcaff123aa9928daed85b92
+
+pkgname = punyinform
