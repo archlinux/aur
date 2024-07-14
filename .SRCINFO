@@ -1,0 +1,21 @@
+pkgbase = track-designer
+	pkgdesc = Plan and design LEGO train track and base plate layouts
+	pkgver = 2.0.1.6
+	pkgrel = 1
+	url = https://archive.org/details/legotd2
+	arch = x86_64
+	license = LicenseRef-track-designer
+	makedepends = unzip
+	makedepends = icoutils
+	depends = wine
+	noextract = track-designer-2.0.1.6.zip
+	source = track-designer-2.0.1.6.zip::https://archive.org/download/legotd2/td20.zip
+	source = track-designer.sh
+	source = track-designer.desktop
+	source = LICENSE
+	sha256sums = 8bfbfa2ae6b1b31022d4ba3ab1b68917e6ea73f8ca1b456a9bd2561e51e68447
+	sha256sums = 27b79933c9b0a98c232046a5d67e286c3c7b0960ecf4ba9eb566438b66d538e1
+	sha256sums = 72f264168640016593168df959d8df9eccdeaf34a5856a025b210e4bc6deb39f
+	sha256sums = 1aa51e2d286bd52b20c3d956f47801b57592d1607d965c94495f98eeb8a56d56
+
+pkgname = track-designer
