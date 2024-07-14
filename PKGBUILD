@@ -4,7 +4,7 @@
 
 pkgname=vim-airline
 pkgver=0.11
-pkgrel=2
+pkgrel=3
 pkgdesc='Status line, written in Vimscript'
 url='https://github.com/vim-airline/vim-airline'
 arch=('any')
