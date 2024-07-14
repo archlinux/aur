@@ -1,0 +1,4 @@
+[python-requests-ftp]
+source = "git"
+git = "https://github.com/Lukasa/requests-ftp.git"
+prefix = "v"
