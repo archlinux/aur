@@ -1,16 +1,15 @@
 # Maintainer: Ranadeep B < mail at rnbguy dot at >
+# Contributor: Ranadeep B < mail at rnbguy dot at >
 
 pkgname=quint
 _orgname=informalsystems
 _pkgname="@${_orgname}/${pkgname}"
 pkgver=0.21.0
-pkgrel=1
-pkgdesc="Quint is an executable specification language with design and tooling focused on usability. It is based on the Temporal Logic of Actions"
+pkgrel=2
+pkgdesc="An executable specification language with design and tooling focused on usability. It is based on the Temporal Logic of Actions"
 arch=('any')
 url="https://github.com/${_orgname}/${pkgname}"
 license=('Apache')
-provides=(${pkgname})
-conflicts=(${pkgname})
 depends=('nodejs')
 makedepends=('npm')
 source=("https://registry.npmjs.org/${_pkgname}/-/${pkgname}-${pkgver}.tgz"
