@@ -1,0 +1,4 @@
+[gephi]
+source = "git"
+git = "https://github.com/gephi/gephi.git"
+prefix = "v"
