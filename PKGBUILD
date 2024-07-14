@@ -4,7 +4,7 @@
 
 pkgname=transcode
 pkgver=1.1.7
-pkgrel=44
+pkgrel=45
 pkgdesc='A video/DVD ripper and encoder for the terminal/console'
 arch=(x86_64)
 url="https://sources.archlinux.org/other/packages/$pkgname"
@@ -15,7 +15,6 @@ depends=(
 	freetype2
 	gawk
 	glibc
-	lame
 	libdvdread
 	libdv
 	libmpeg2
@@ -56,18 +55,19 @@ prepare() {
 	sed -e 's|freetype/ftglyph.h|freetype2/freetype/ftglyph.h|' -i filter/subtitler/load_font.c
 	patch -p1 -i ../transcode-gcc10.patch # Fix build with GCC 10
 	patch -p1 -i ../transcode-glibc-2.32.patch # Fix build with glibc 2.32
+	sed -e 's|#define _ISOC99_SOURCE||' -i libtc/cfgfile.c
 	autoreconf -vi
 }
 
 build() {
 	cd $pkgname-$pkgver
 	./configure --prefix=/usr \
-		--enable-lame --enable-ogg --enable-vorbis --enable-theora \
+		--enable-ogg --enable-vorbis --enable-theora \
 		--enable-libdv --enable-libxml2 --enable-v4l \
 		--enable-libjpeg --enable-lzo --enable-mjpegtools \
 		--enable-freetype2 --enable-a52 \
 		--enable-xvid --enable-x264 --enable-alsa --enable-libmpeg2 \
-		--enable-libmpeg2convert --disable-ffmpeg
+		--enable-libmpeg2convert --disable-ffmpeg --disable-lame
 
 	#https://bugzilla.gnome.org/show_bug.cgi?id=655517
 	sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
