@@ -5,7 +5,7 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-libopenmpt
 pkgver=0.7.8
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="A library to render tracker music to a PCM audio stream (Android ${_android_arch})"
 url="https://lib.openmpt.org/libopenmpt/"
@@ -18,19 +18,22 @@ depends=("android-${_android_arch}-flac"
          "android-${_android_arch}-zlib")
 makedepends=('autoconf-archive')
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://lib.openmpt.org/files/libopenmpt/src/libopenmpt-$pkgver+release.autotools.tar.gz")
+source=("https://lib.openmpt.org/files/libopenmpt/src/libopenmpt-${pkgver}+release.autotools.tar.gz")
 md5sums=('a620528300b864ded72eeb449e68dedc')
 
 prepare() {
-    cd "${srcdir}/libopenmpt-$pkgver+release.autotools"
+    cd "${srcdir}/libopenmpt-${pkgver}+release.autotools"
     source android-env ${_android_arch}
 
     autoreconf -fiv
 }
 
 build() {
-    cd "${srcdir}/libopenmpt-$pkgver+release.autotools"
+    cd "${srcdir}/libopenmpt-${pkgver}+release.autotools"
     source android-env ${_android_arch}
+
+    export CFLAGS="${CFLAGS} -mno-outline-atomics"
+    export CXXFLAGS="${CXXFLAGS} -mno-outline-atomics"
 
     android-${_android_arch}-configure \
         --disable-openmpt123 \
@@ -43,7 +46,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/libopenmpt-$pkgver+release.autotools"
+    cd "${srcdir}/libopenmpt-${pkgver}+release.autotools"
     source android-env ${_android_arch}
 
     make DESTDIR="$pkgdir" install
