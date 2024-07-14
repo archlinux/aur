@@ -2,13 +2,13 @@
 # Co-maintainer: f4iey
 pkgname=wfview-git
 pkgver=r2513.85178de
-pkgrel=1
+pkgrel=2
 pkgdesc="Interface for Icom transceivers"
 arch=('i686' 'x86_64')
 url="https://wfview.org/"
 license=('GPL3')
 depends=('qt5-serialport' 'qt5-multimedia' 'qcustomplot' 'qt5-gamepad')
-makedepends=('git' 'eigen')
+makedepends=('git' 'eigen' 'rtaudio')
 provides=('wfview')
 conflicts=('wfview')
 source=('git+https://gitlab.com/eliggett/wfview.git')

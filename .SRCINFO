@@ -1,13 +1,14 @@
 pkgbase = wfview-git
 	pkgdesc = Interface for Icom transceivers
 	pkgver = r2513.85178de
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wfview.org/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = eigen
+	makedepends = rtaudio
 	depends = qt5-serialport
 	depends = qt5-multimedia
 	depends = qcustomplot
