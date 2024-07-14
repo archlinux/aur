@@ -1,8 +1,8 @@
 pkgbase = inform
-	pkgdesc = The Inform 6 compiler, standard library, and PunyInform library
-	pkgver = 6.42.r2
+	pkgdesc = The Inform 6 compiler
+	pkgver = 6.42
 	pkgrel = 1
-	url = https://gitlab.com/DavidGriffith/inform6unix
+	url = https://github.com/DavidKinder/Inform6
 	arch = aarch64
 	arch = arm
 	arch = armv6h
@@ -13,13 +13,15 @@ pkgbase = inform
 	arch = x86_64
 	groups = inform
 	license = Artistic2.0
-	license = MIT
-	makedepends = frotz
-	makedepends = ruby
-	optdepends = perl: for blorb scripts
-	provides = punyinform=5.0
-	source = http://ifarchive.org/if-archive/infocom/compilers/inform6/source/inform-6.42-r2.tar.gz
-	md5sums = 6ecf7b20a317c4e5a87783fd6e9f6b7e
-	sha256sums = ccd9bbcf69c997168745c67b01df2dd63656f7df68f56147ac49ea94e24b764d
+	checkdepends = inform-stdlib
+	optdepends = inform-stdlib: Inform 6 standard library
+	optdepends = punyinform: a small Inform 6 library
+	optdepends = frotz: Z-machine interpreter
+	source = inform-6.42.tar.gz::https://github.com/DavidKinder/Inform6/archive/refs/tags/v6.42.tar.gz
+	source = https://ifarchive.org/if-archive/infocom/compilers/inform6/examples/Advent.inf
+	source = inform.1
+	sha256sums = 2fc206551445a75ff88c3f3bcc68bf5b6580a58dfd9a4446bc488ac2aad73766
+	sha256sums = 08229160f23e43e474973b592d386cffd857c1ed9f0bd96cec616fbdc9486c93
+	sha256sums = 5fb635995933797aeeeb10f4eb52cad86a9c679cf0b5aeac3bfb1909f3ea5ec0
 
 pkgname = inform

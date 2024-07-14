@@ -1,0 +1,385 @@
+.TH INFORM "1" "2024-04-10" "Inform v6.42" "Inform v6.42 - interactive fiction story file compiler"
+.SH NAME
+inform \- compile Inform interactive fiction story files to Z-machine or Glulx bytecode
+.SH SYNOPSIS
+.BI "inform " "[options...] infile [outfile]"
+.SH DESCRIPTION
+\fBinform\fP compiles an Inform version 6 story file (usually with the
+extension \fB.inf\fP) into Z-machine or Glulx bytecode which can then be
+executed by a variety of Z-machine or Glulx emulators. If the output
+filename is not explicitly given on the command line, it will be
+constructed from the input filename.
+.PP
+\fBinform\fP's mode of operation can be controlled with switches (one or
+two-character expressions preceded by a dash), path modifiers (starting with a
+plus sign) and memory strategy modifiers (starting with a dollar sign).
+.SS SWITCHES
+.TP
+.B -a
+trace assembly (same as \fB--trace ASM\fP)
+.TP
+.B -c
+more concise error messages
+.TP
+.B -d
+contract double spaces after full stops in text
+.TP
+.B -d2
+contract double spaces after exclamation and question marks, too
+.TP
+.B -e
+economy mode (slower): make use of declared abbreviations
+.TP
+.B -f
+show how useful abbreviations are (same as \fB--trace FREQ\fP)
+.TP
+.B -g
+show function calls at runtime (same as \fB--trace RUNTIME\fP)
+traces calls to all functions
+.TP
+.B --help, -h, -h1, -h2
+print usage information
+.TP
+.B -i
+ignore default switches set within the file
+.TP
+.B -k
+output Infix debugging information to "gameinfo.dbg" (and switch \fB-D\fP on)
+.TP
+.B -q
+keep quiet about obsolete usages
+.TP
+.B -r
+record all the text to "gametext.txt"
+.TP
+.B -s
+give compilation statistics (same as \fB--trace STATS\fP)
+.TP
+.B -u
+output computed abbreviations.  See \fB--trace FINDABBREVS\fP or \fB--trace
+FINDABBREVS=2\fB for verbose calculations.
+.TP
+.B -v\fIn\fP
+compile to a specific Z-code version; the default is 5. Available versions are:
+.RS
+.TP
+.B 3
+version-3 ("Standard") story file
+.TP
+.B 4
+version-4 ("Plus") story file
+.TP
+.B 5
+version-5 ("Advanced") story file
+.TP
+.B 6
+version-6 (graphical) story file
+.TP
+.B 8
+version-8 (expanded "Advanced") story file
+.RE
+.TP
+.B -w
+disable warning messages
+.TP
+.B -x
+print # for every 100 lines compiled
+.TP
+.B -z
+print memory map of the Z-machine (same as \fB--trace MAP\fP)
+.TP
+.B -B
+use big memory model (for large version-6/version-7 files)
+.TP
+.B -C\fIn\fP
+select text character set (defaults to 1):
+.RS
+.TP
+.B 0
+plain ASCII only
+.TP
+.B 1
+ISO 8859-1 (Latin1)
+.TP
+.B 2
+ISO 8859-2 (Latin2)
+.TP
+.B 3
+ISO 8859-3 (Latin3)
+.TP
+.B 4
+ISO 8859-4 (Latin4)
+.TP
+.B 5
+ISO 8859-5 (Cyrillic)
+.TP
+.B 6
+ISO 8859-6 (Arabic)
+.TP
+.B 7
+ISO 8859-7 (Greek)
+.TP
+.B 8
+ISO 8859-8 (Hebrew)
+.TP
+.B 9
+ISO 8859-9 (Latin5)
+.TP
+.B u
+Unicode (UTF-8)
+.RE
+.TP
+.B -D
+insert "Constant DEBUG;" automatically
+.TP
+.B -E\fIn\fP
+select error message style (default is Archimedes):
+.RS
+.TP
+.B 0
+Archimedes-style error messages
+.TP
+.B 1
+Microsoft-style error messages
+.TP
+.B 2
+Macintosh MPW-style error messages
+.RE
+.TP
+.B -G
+compile a Glulx game file
+.TP
+.B -H
+use Huffman encoding to compress Glulx strings
+.TP
+.B -S
+compile strict error-checking at run-time (on by default)
+.TP
+.B -V
+display version and exit
+.TP
+.B -W\fIn\fP
+header extension table is at least n words (n = 3 to 99)
+.TP
+.B -X
+compile with INFIX debugging facilities present
+
+
+.SS TRACE OPTIONS
+.TP
+.TP
+The various command line arguments that produce tracing or statistical
+information are consoludated into a single argument:
+.RS
+.B --trace TRACEOPT
+or
+.B --trace TRACEOPT=N
+.RE
+You can also use
+.B --helptrace
+
+to list all available trace options.  Trace option names are
+case-insensitive.  The optional
+.B N
+is always an integer.
+.B 0
+always means off,
+.B 1
+is the base level,
+.B 2
+or more may increase verbosity.  As a general rule, setting
+.B N
+to a high number is not an error; it just does the same thing as the
+highest supported number for that option.  This lets us add more
+verbosity levels to any option wihtout worrying about compatibility
+errors.
+
+Four trace settings can be changed in mid-compile with the
+.B Trace
+directive.  This has always been true but now it is handled consistently.
+.B Trace assembly, Trace expressions, trace tokens,
+and
+.B Trace linker
+are equivalent to
+.B --trace asm, --trace expr, --trace tokens,
+and
+.B --trace linker
+, respectively.  As with the command-line versions, you can optionally specify
+.B 0
+to turn off that settins or
+.B 2
+or more for more verbosity.
+
+Four more trace directives do an immediate information dump:
+.B Trace dictionary, Trace objects, Trace symbols,
+and
+.B Trace verbs.
+The command-line equivalents
+.B --trace dict, --trace objects, --trace symbols,
+and
+.B --trace verbs
+do the same at the end of compilation.
+.SS PATH MODIFIERS
+.TP
+.B --path PATH=dir
+change \fBPATH\fP to this directory
+.TP
+.B --addpath PATH=dir
+add this directory to the \fBPATH\fP
+.SS PATH MODIFIERS (old style)
+.TP
+.BI +dir
+set \fBInclude_Path\fP to this directory
+.TP
+.BI ++dir
+add this directory to \fBInclude_Path\fP
+.TP
+.BI +PATH=dir
+change \fBPATH\fP to this directory
+.TP
+.BI ++PATH=dir
+add this directory to the \fBPATH\fP
+.SS MEMORY SETTINGS
+.TP
+.BI --list
+.br
+List current memory allocation settings.
+.TP
+.B --helpopt SETTING
+explain briefly what \fBSETTING\fP is for
+.TP
+.B --opt SETTING=number
+change \fBSETTING\fP to given number
+.TP
+.B --define SYMBOL=number
+define define \fBSYMBOL\fP as a constant in this story
+.TP
+.B --config filename.icl
+read in a list of commands (in the format above) from this setup file.  See
+.B INFORM COMMAND LANGUAGE
+below
+.SS MEMORY STRATEGY MODIFIERS (old style)
+Note: it may be necessary to quote these parameters to prevent your shell
+from expanding them.
+.TP
+.B $list
+list current memory allocation settings
+.TP
+.BI $?SETTING
+explain memory setting \fBSETTING\fP (see \fB$list\fP for available
+parameters)
+.TP
+.BI $SETTING=number
+manually set \fBSETTING\fP to given number
+.TP
+.B $#SYMBOL=number
+define \fBSYMBOL\fP as a constant in the story
+.TP
+.B (filename.icl)
+read in a list of commands (in the format above) from this setup file.  See
+.B INFORM COMMAND LANGUAGE
+below
+
+.SH INFORM COMMAND LANGUAGE
+The Switches directive, which enables certain compiler switches to be
+set from within the source file rather than on the compiler command
+line, has been superseded by a more powerful mechanism. The special
+comment characters "!%", occurring on the very first line or lines of
+the source file, enable you to specify \fBInform Command Language\fP
+(ICL) commands to control the compilation. For example:
+
+    !% -E1G		! Glulx, 'Microsoft' errors
+    !% -~S		! disable Strict mode
+    !% +include_path=./test,./,../lib/contrib ! look in 'test' library
+    !% $MAX_STATIC_MEMORY=20000
+    Constant STORY "RUINS";
+    ...
+
+\fBICL\fP is described in Section 39 of the Inform Designer's Manual. In
+brief: each line specifies a single command, starting with "-" to define
+one or more switches, "+" to define a path variable, or "$" to define a
+memory setting. Comments are introduced by "$". The \fBICL\fP command
+"compile" is not permitted at the head of a source file.
+
+.SH CAVEATS
+\fBinform\fP is not capable of creating story files conforming to
+versions 1 or 2 of the Z-Machine.
+.br
+Modules are no longer supported.
+.br
+The Switches directive is deprecated.
+.br
+The Version directive is deprecated.
+
+.SH DOCUMENTATION
+The canonical documentation for \fBInform6\fP is the
+\fBInform_Designer's Manual (4th edition, 2001)\fP.
+This work can be browsed at
+.br
+.RI < http://inform-fiction.org/manual/html/contents.html >
+downloaded from
+.br
+.RI < http://inform-fiction.org/manual/DM4.pdf >
+and purchased in hardcopy at
+.br
+.RI < http://amazon.com/ >
+
+Since the latest edition of the Inform Designers Manual was published in
+2001, it has become somewhat out of date.  For an up-to-date document on
+changes, see the \fBInform 6 Reference Addendum\fP at
+.br
+.RI < http://www.inform-fiction.org/manual/I6-Addendum.html >
+
+Another noteworthy resource is the
+\fBInform Beginner's Guide (3rd edition, 2004)\fP. This work can be
+downloaded at
+.br
+.RI < http://inform-fiction.org/manual/download_ibg.html >
+
+
+.SH SEE ALSO
+.IR zcode-interpreter (6)
+and the manuals and language reference which can be found online at
+.br
+.RI < http://inform-fiction.org/manual/ >
+.br
+and
+.br
+.RI < http://inform-fiction.org/inform6.html >.
+
+.SH AUTHOR
+The various iterations of the \fBInform\fP language were created by
+Graham Nelson in 1993.
+
+This manpage was written by Jan Nordholz <hesso@pool.math.tu-berlin.de>
+for the Debian Project and altered by David Griffith <dave@661.org>.
+
+.SH DISTRIBUTION
+The compiler and standard library for \fBInform6\fP are licensed under
+.IP 1)
+The traditional Inform license as described by the DM4, or
+.IP 2)
+The Artistic License 2.0 .
+
+.RE
+Here is the relevant bit from the Inform Designer's Manual, 4th edition:
+
+Copyright on Inform, the program and its source code, its example games
+and documentation (including this book) is retained by Graham Nelson,
+who asserts the moral right to be identified as the author under the
+Copyrights, Designs and Patents Act 1988.  Having said this, I am happy
+for it to be freely distributed to anybody who wants a copy, provided
+that: (a) distributed copies are not substantially different from those
+archived by the author, (b) this and other copyright messages are always
+retained in full, and (c) no profit is involved.  (Exceptions to these
+rules must be negotiated directly with the author.)  However, a story
+file produced with the Inform compiler (and libraries) then belongs to
+its author, and may be sold for profit if desired, provided that its
+game banner contains the information that it was compiled by Inform, and
+the Inform version number.
+
+The Artistic License 2.0 can be found at
+.br
+https://opensource.org/licenses/Artistic-2.0
+.br
+and the file \fBARTISTIC\fP in the \fBInform6\fP distribution archive.
