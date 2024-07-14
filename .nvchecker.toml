@@ -1,0 +1,4 @@
+[python-edalize]
+source = "git"
+git = "https://github.com/olofk/edalize.git"
+prefix = "v"
