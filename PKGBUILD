@@ -5,7 +5,7 @@
 pkgname='dut-git'
 _pkgname="${pkgname/-git/}"
 pkgver=r64.g2db9c15
-pkgrel=1
+pkgrel=2
 pkgdesc='A disk usage calculator for Linux (latest git commit)'
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 url='https://codeberg.org/201984/dut'
