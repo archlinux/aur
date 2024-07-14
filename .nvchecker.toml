@@ -1,0 +1,3 @@
+[python-hs-dbus-signature]
+source = "pypi"
+pypi = "hs-dbus-signature"
