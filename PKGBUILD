@@ -16,6 +16,9 @@ sha256sums=('SKIP')
 check() {
     cd "shellspec" || return
 
+    # Do not fail on warning sice a bash bug outputs to stderr when not expected https://mail.gnu.org/archive/html/bug-bash/2022-10/msg00073.html
+    echo '--no-warning-as-failure' >> .shellspec
+
     make test
 }
 
