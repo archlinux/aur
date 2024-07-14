@@ -1,0 +1,4 @@
+[python-browserid]
+source = "git"
+git = "https://github.com/mozilla/PyBrowserID.git"
+prefix = "v"
