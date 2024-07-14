@@ -1,6 +1,7 @@
 pkgname=ttf-tamil
 pkgver=1.0
 pkgrel=3
+provides=('ttf-font')
 pkgdesc="TTF tamil fonts from The Tamil Linux Project."
 arch=('any')
 url="http://tamillinux.sourceforge.net/"
