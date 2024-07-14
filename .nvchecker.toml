@@ -1,0 +1,4 @@
+[anura]
+source = "git"
+git = "https://github.com/anura-engine/anura.git"
+prefix = "v"
