@@ -1,7 +1,7 @@
 pkgbase = vinegar-git
 	pkgdesc = Fast and robust bootstrapper for Roblox that has many ease-of-use features.
-	pkgver = v1.7.4.r26.gf50bcf6
-	pkgrel = 2
+	pkgver = v1.7.5.r0.g16b654d
+	pkgrel = 1
 	url = https://github.com/vinegarhq/vinegar
 	arch = x86_64
 	license = GPL-3.0-only
@@ -21,7 +21,7 @@ pkgbase = vinegar-git
 	optdepends = gamemode: Gamemode integration
 	optdepends = vulkan-driver: Vulkan support in GUI
 	optdepends = wine: A required dependency (made optional for flexbility)
-	provides = vinegar-git=v1.7.4.r26.gf50bcf6
+	provides = vinegar-git=v1.7.5.r0.g16b654d
 	conflicts = vinegar
 	source = git+https://github.com/vinegarhq/vinegar
 	sha256sums = SKIP
