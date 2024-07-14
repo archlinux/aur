@@ -3,7 +3,7 @@
 
 pkgname='perl-mousex-types'
 pkgver='0.06'
-pkgrel='3'
+pkgrel='4'
 pkgdesc="Organize your Mouse types in libraries"
 arch=('any')
 license=('PerlArtistic' 'GPL')
