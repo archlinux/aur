@@ -1,0 +1,13 @@
+pkgbase = ipclip
+	pkgdesc = A Rust program to copy the local IP address to the clipboard using shell commands.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/TheDarkArtist/ipclip
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = xclip
+	source = ipclip-1.0.0.tar.gz::https://github.com/TheDarkArtist/ipclip/archive/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = ipclip
