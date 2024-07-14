@@ -2,7 +2,7 @@
 # Maintainer: GreyXor <greyxor@protonmail.com>
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=wlroots-git
-pkgver=0.18.0.r7062.862a0b48
+pkgver=0.19.0.r7126.e17916d4
 pkgrel=1
 pkgdesc='Modular Wayland compositor library (git development version)'
 arch=(x86_64)
