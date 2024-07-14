@@ -1,0 +1,3 @@
+[fusesoc]
+source = "git"
+git = "https://github.com/olofk/fusesoc.git"
