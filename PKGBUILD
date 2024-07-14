@@ -1,8 +1,8 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=packetry-git
-pkgver=r573.cd3be8d
-pkgrel=2
+pkgver=r620.fc7d276
+pkgrel=1
 pkgdesc='USB 2.0 protocol analysis app for use with Cynthion'
 arch=('x86_64')
 url='https://github.com/greatscottgadgets/packetry'
@@ -17,7 +17,14 @@ depends=(
   'hicolor-icon-theme'
   'pango'
 )
-makedepends=('cargo' 'git' 'inkscape' 'python-sphinx' 'python-sphinx_rtd_theme')
+makedepends=(
+  'cargo'
+  'git'
+  'inkscape'
+  'libgit2'
+  'python-sphinx'
+  'python-sphinx_rtd_theme'
+)
 checkdepends=('at-spi2-core' 'xorg-server-xvfb')
 
 source=(
@@ -80,8 +87,20 @@ build() {
 check() {
   cd "${pkgname}"
   export RUSTUP_TOOLCHAIN=stable
+  echo >&2 'Running cargo tests'
   dbus-run-session xvfb-run -s '-nolisten local' \
     cargo test --frozen
+
+  echo >&2 'Testing the executable'
+  "target/release/${pkgname%-git}" --version > actual.txt
+  if ! grep -q 'Packetry version \S* (git '"$(
+    git -C "${pkgname}" rev-parse --short HEAD)" actual.txt
+  then
+    printf >&2 '%s\n' 'Unexpected test output:' '==='
+    cat >&2 actual.txt
+    printf >&2 '\n%s\n' '==='
+    exit 1
+  fi
 }
 
 package() {
