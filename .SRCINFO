@@ -1,7 +1,7 @@
 pkgbase = motrix-electron
 	pkgdesc = A full-featured download manager (use extra/electron)
 	pkgver = 1.8.19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/detiam/Motrix
 	arch = x86_64
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = motrix-electron
 	provides = Motrix
 	conflicts = Motrix
 	replaces = Motrix
-	source = Motrix-630419471e2ce48759743ed2390e8b19e453eeb4.tar.gz::https://github.com/detiam/Motrix/archive/630419471e2ce48759743ed2390e8b19e453eeb4.tar.gz
-	sha1sums = 7b9c27baaae0f7e5a0b5e04acd6219392d39b7b8
+	source = Motrix-b18a48dab2eb4f2d630e81eaec19e43217be5565.tar.gz::https://github.com/detiam/Motrix/archive/b18a48dab2eb4f2d630e81eaec19e43217be5565.tar.gz
+	sha1sums = b695570b75cf94da91fc0443349a260707864e6b
 
 pkgname = motrix-electron

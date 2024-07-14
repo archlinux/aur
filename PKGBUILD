@@ -6,7 +6,7 @@
 pkgname=motrix-electron
 _pkgname=Motrix
 pkgver=1.8.19
-pkgrel=1
+pkgrel=2
 pkgdesc="A full-featured download manager (use extra/electron)"
 arch=("x86_64")
 url="https://github.com/detiam/Motrix"
@@ -16,9 +16,9 @@ makedepends=('volta' 'jq' 'gendesk')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 replaces=("$_pkgname")
-commit=630419471e2ce48759743ed2390e8b19e453eeb4
+commit=b18a48dab2eb4f2d630e81eaec19e43217be5565
 source=("$_pkgname-$commit.tar.gz::${url}/archive/${commit}.tar.gz")
-sha1sums=('7b9c27baaae0f7e5a0b5e04acd6219392d39b7b8')
+sha1sums=('b695570b75cf94da91fc0443349a260707864e6b')
 
 _install_dir="/usr/lib/${pkgname}"
 
@@ -101,5 +101,6 @@ package() {
             --exec="$pkgname %U" \
             --categories="Network;FileTransfer" \
             --mimetypes="application/x-bittorrent" \
+            --custom='Comment[zh]=一款全能的下载工具' \
             --startupnotify=true -n --name="$_pkgname"
 }
