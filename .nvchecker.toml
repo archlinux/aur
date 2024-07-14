@@ -1,0 +1,4 @@
+[mesonlsp]
+source = "git"
+git = "https://github.com/JCWasmx86/mesonlsp.git"
+prefix = "v"
