@@ -1,10 +1,10 @@
 pkgbase = pax-git
 	pkgdesc = Portable Archive Interchange - the POSIX standard archive tool for cpio and tar formats (git version)
-	pkgver = 20190825.r7.g0a4979b
+	pkgver = 20201030.r14.g9e000f5
 	pkgrel = 1
-	url = https://www.mirbsd.org/pax.htm
+	url = https://mbsd.evolvis.org/pax.htm
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = git
 	depends = glibc
 	provides = pax
@@ -13,4 +13,3 @@ pkgbase = pax-git
 	sha256sums = SKIP
 
 pkgname = pax-git
-
