@@ -2,7 +2,7 @@
 
 pkgname=boom
 _buildpkgname=lifish
-pkgver=1.7.1
+pkgver=1.7.2
 pkgrel=1
 pkgdesc="A game inspired by Factor Software's BOOM.Bomberman meets DOOM."
 arch=('any')
@@ -16,10 +16,19 @@ source=(
   "${pkgname}"
   "${pkgname}.desktop"
 )
-sha256sums=('b2ec4d6a3e16e294c87cc9d51c4d08ce18cab1ee2b3e40dc974728556cc6a726'
+sha256sums=('5f5666f8811f310ab34af6ca1a2a305d17ea5197b4b9a4a234d322125bd0ed26'
             'efc02b4b2da6f08fd392236b6e3b1b30d0a1e4b30a68b80eee6e5be40cfb2c11'
             '80349740c8b281d2110524e38f8cd774e31616ced4ea6fc894b516a7772c474f')
+
 build() {
+  # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=109418
+  # -Werror=maybe-uninitialized has false positives, including in gcc libs, so we disable it here.
+  export LDFLAGS=${LDFLAGS/-Wl,-z,pack-relative-relocs}
+
+  # gold linker is used in LTO=1 builds, but it doesn't support `-z pack-relative-relocs` flag.
+  # https://rfc.archlinux.page/0023-pack-relative-relocs/
+  # https://gitlab.archlinux.org/archlinux/packaging/packages/pacman/-/issues/21
+  export CXXFLAGS="$CXXFLAGS -Wno-error=maybe-uninitialized"
   cd "${srcdir}/${_buildpkgname}-${pkgver}"
   cmake -DRELEASE=true .
   make
