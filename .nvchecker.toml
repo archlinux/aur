@@ -1,0 +1,4 @@
+[python-flask-restful]
+source = "git"
+git = "https://github.com/flask-restful/flask-restful.git"
+prefix = "v"
