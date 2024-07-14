@@ -1,0 +1,3 @@
+[python-dbapi-compliance]
+source = "pypi"
+pypi = "dbapi-compliance"
