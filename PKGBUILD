@@ -12,7 +12,7 @@ arch=('x86_64')
 url="https://clang.llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
 depends=('llvm17-libs' 'gcc' 'compiler-rt17')
-makedepends=('llvm17' 'cmake' 'ninja' 'python' 'python-recommonmark')
+makedepends=('llvm' 'cmake' 'ninja' 'python' 'python-recommonmark')
 optdepends=('openmp: OpenMP support in clang with -fopenmp'
             'llvm17: referenced by some clang headers')
 checkdepends=('llvm')
