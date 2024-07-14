@@ -1,0 +1,4 @@
+[glewlwyd]
+source = "git"
+git = "https://github.com/babelouest/glewlwyd.git"
+prefix = "v"
