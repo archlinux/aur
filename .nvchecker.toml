@@ -1,0 +1,3 @@
+[lib32-twolame]
+source = "git"
+git = "https://github.com/njh/twolame.git"
