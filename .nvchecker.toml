@@ -1,0 +1,4 @@
+[bbswitch]
+source = "git"
+git = "https://github.com/Bumblebee-Project/bbswitch.git"
+prefix = "v"
