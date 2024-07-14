@@ -1,0 +1,3 @@
+[vidcutter]
+source = "git"
+git = "https://github.com/ozmartian/vidcutter.git"
