@@ -1,0 +1,12 @@
+pkgbase = inform-stdlib
+	pkgdesc = Inform 6 standard library
+	pkgver = 6.12.7
+	pkgrel = 1
+	url = https://gitlab.com/DavidGriffith/inform6lib
+	arch = any
+	groups = inform
+	license = Artistic2.0
+	source = https://gitlab.com/DavidGriffith/inform6lib/-/archive/6.12.7/inform6lib-6.12.7.tar.gz
+	sha256sums = 097dd51921d365a34172b3b5c9d56c41756b4de942dda556e719db333ef966b9
+
+pkgname = inform-stdlib
