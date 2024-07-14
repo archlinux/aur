@@ -1,0 +1,3 @@
+[python-mohawk]
+source = "git"
+git = "https://github.com/kumar303/mohawk.git"
