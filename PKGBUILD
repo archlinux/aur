@@ -3,7 +3,7 @@
 
 pkgname=wiki-tui
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple and easy to use Wikipedia Text User Interface"
 arch=('x86_64')
 url="https://github.com/Builditluc/wiki-tui"
