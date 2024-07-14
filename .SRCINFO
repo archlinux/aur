@@ -1,6 +1,6 @@
 pkgbase = gphotos-sync
 	pkgdesc = Google Photos and Albums backup tool
-	pkgver = 3.2.3
+	pkgver = 3.2.5
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/gilesknap/gphotos-sync
@@ -21,7 +21,7 @@ pkgbase = gphotos-sync
 	depends = python-requests-oauthlib
 	depends = python-types-pyyaml
 	depends = python-types-requests
-	source = https://files.pythonhosted.org/packages/source/g/gphotos-sync/gphotos_sync-3.2.3.tar.gz
-	sha256sums = 9abd0738144c4ba8ff8d2f6a7db97d246f3ff3050fc5babc20027b08a20ac3c4
+	source = https://files.pythonhosted.org/packages/source/g/gphotos-sync/gphotos_sync-3.2.5.tar.gz
+	sha256sums = 9d7790dcb48ec41de22eefe5954f1f696b3c2374b6c9083456ca916af1cfe2b2
 
 pkgname = gphotos-sync
