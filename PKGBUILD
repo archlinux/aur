@@ -1,11 +1,12 @@
 # Maintainer: Arvid Norlander <VorpalBlade@users.noreply.github.com>
 pkgname=chezmoi_modify_manager-git
-pkgver=3.0.0.r10.b9b08b7
+pkgver=3.4.0.r0.0c55fc1
 pkgrel=1
 pkgdesc="Tools for chezmoi to handle mixed settings and state"
 arch=(x86_64 i686 armv7h aarch64)
 url="https://github.com/VorpalBlade/chezmoi_modify_manager"
 license=('GPL-3.0-only')
+depends=('dbus')
 makedepends=('cargo' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -34,6 +35,7 @@ build() {
 
 check() {
     cd "$srcdir/${pkgname%-git}"
+    export CHEZMOI_MODIFY_MANAGER_BUILDER=aur-git
     export RUSTUP_TOOLCHAIN=stable
     cargo test --frozen --no-default-features --features=keyring
 }
@@ -48,6 +50,7 @@ package() {
     "$_cmd_name" --bpaf-complete-style-zsh > "$pkgdir/usr/share/zsh/site-functions/_${pkgname%-git}"
     "$_cmd_name" --bpaf-complete-style-bash > "$pkgdir/usr/share/bash-completion/completions/${pkgname%-git}"
     "$_cmd_name" --bpaf-complete-style-fish > "$pkgdir/usr/share/fish/vendor_completions.d/${pkgname%-git}.fish"
-    # TODO: Where do completions for elvish go?
+    # No support to install distro completions in elvish.
+    # See https://github.com/elves/elvish/issues/1739
     #"$_cmd_name" --bpaf-complete-style-elvish
 }
