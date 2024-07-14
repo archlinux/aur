@@ -1,0 +1,3 @@
+[python-requests-hawk]
+source = "git"
+git = "https://github.com/mozilla-services/requests-hawk.git"
