@@ -1,8 +1,8 @@
 pkgbase = inform-git
-	pkgdesc = The Inform 6 compiler, standard library, and PunyInform library (git version)
-	pkgver = 6.41.r4.0.g3ab2ba2
+	pkgdesc = The Inform 6 compiler (git version)
+	pkgver = 6.42.167.g5885e84
 	pkgrel = 1
-	url = https://gitlab.com/DavidGriffith/inform6unix
+	url = https://github.com/DavidKinder/Inform6
 	arch = aarch64
 	arch = arm
 	arch = armv6h
@@ -13,13 +13,18 @@ pkgbase = inform-git
 	arch = x86_64
 	groups = inform
 	license = Artistic2.0
-	license = MIT
+	checkdepends = inform-stdlib
 	makedepends = git
-	depends = perl
-	depends = ruby
-	provides = punyinform=4.0
+	optdepends = inform-stdlib: Inform 6 standard library
+	optdepends = punyinform: a small Inform 6 library
+	optdepends = frotz: Z-machine interpreter
+	provides = inform=6.42
 	conflicts = inform
-	source = git+https://gitlab.com/DavidGriffith/inform6unix.git
-	md5sums = SKIP
+	source = git+https://github.com/DavidKinder/Inform6.git
+	source = https://ifarchive.org/if-archive/infocom/compilers/inform6/examples/Advent.inf
+	source = inform.1
+	sha256sums = SKIP
+	sha256sums = 08229160f23e43e474973b592d386cffd857c1ed9f0bd96cec616fbdc9486c93
+	sha256sums = 5fb635995933797aeeeb10f4eb52cad86a9c679cf0b5aeac3bfb1909f3ea5ec0
 
 pkgname = inform-git

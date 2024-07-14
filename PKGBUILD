@@ -1,62 +1,48 @@
 # Maintainer: libele <libele@disroot.org>
 
+__pkgname=inform
+_pkgname=Inform6
 pkgname=inform-git
-_gitpkg=inform6unix
-pkgver=6.41.r4.0.g3ab2ba2
+pkgver=6.42.167.g5885e84
 pkgrel=1
-pkgdesc="The Inform 6 compiler, standard library, and PunyInform library (git version)"
+pkgdesc="The Inform 6 compiler (git version)"
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
-url="https://gitlab.com/DavidGriffith/inform6unix"
-license=('Artistic2.0' 'MIT')
-provides=('inform')
+url="https://github.com/DavidKinder/Inform6"
+license=('Artistic2.0')
+provides=('inform=6.42')
 conflicts=('inform')
 groups=(inform)
-depends=('perl' 'ruby')
 makedepends=('git')
-provides=('punyinform=4.0')
-source=('git+https://gitlab.com/DavidGriffith/inform6unix.git')
-md5sums=('SKIP')
+checkdepends=('inform-stdlib')
+optdepends=('inform-stdlib: Inform 6 standard library'
+	    'punyinform: a small Inform 6 library'
+	    'frotz: Z-machine interpreter')
+source=('git+https://github.com/DavidKinder/Inform6.git'
+	'https://ifarchive.org/if-archive/infocom/compilers/inform6/examples/Advent.inf'
+	'inform.1')
+sha256sums=('SKIP'
+            '08229160f23e43e474973b592d386cffd857c1ed9f0bd96cec616fbdc9486c93'
+            '5fb635995933797aeeeb10f4eb52cad86a9c679cf0b5aeac3bfb1909f3ea5ec0')
 
 pkgver() {
-  cd "${_gitpkg}"
+  cd "$_pkgname"
   printf "%s" "$(git describe --long --tags | sed 's/v//; s/-/./g')"
 }
 
-prepare() {
-  cd "${srcdir}/${_gitpkg}"
-  git worktree add "${srcdir}/${_gitpkg}-dev" dev
-
-  make submodules
-
-  cd "${srcdir}/${_gitpkg}-dev"
-  make submodules
+build() {
+  cd "$_pkgname"
+  cc -DDefault_Language=\"english\" -DInclude_Directory=\"/usr/share/inform-stdlib\" -DTemporary_Directory=\"/tmp\" -DLINUX -O2 -o inform *.c
 }
 
-build() {
-  cd "${srcdir}/${_gitpkg}"
-  make PREFIX=/usr MAN_PREFIX=/usr/share
-
-  cd "${srcdir}/${_gitpkg}-dev"
-  make PREFIX=/usr MAN_PREFIX=/usr/share
+check() {
+  "$_pkgname/$__pkgname" Advent.inf
 }
 
 package() {
-  cd "${srcdir}/${_gitpkg}"
-  make REAL_PREFIX=/usr PREFIX="${pkgdir}"/usr MAN_PREFIX="${pkgdir}"/usr/share install
+  cd "$_pkgname"
+  install -Dm755 "$__pkgname" "$pkgdir/usr/bin/$__pkgname"
+  install -Dm644 licence.txt "$pkgdir/usr/share/licenses/$__pkgname/ARTISTIC"
 
-  cd "${srcdir}/${_gitpkg}-dev"
-  make REAL_PREFIX=/usr PREFIX="${pkgdir}"/usr MAN_PREFIX="${pkgdir}"/usr/share install-alt
-
-  cd "${pkgdir}"/usr/share/inform/std/lib
-  install -Dm644 ARTISTIC "${pkgdir}"/usr/share/licenses/inform-git/inform/ARTISTIC
-
-  cd "${pkgdir}"/usr/share/inform/punyinform
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/inform-git/punyinform/LICENSE
-
-  cd "${pkgdir}"/usr/man/man1
-  install -Dm644 inform.1 "${pkgdir}"/usr/share/man/man1/inform.1
-  rm -rf "${pkgdir}"/usr/man
-
-  cd "${pkgdir}"/usr/bin
-  rm pblorb scanblorb
+  cd "$srcdir"
+  install -Dm644 inform.1 "$pkgdir/usr/share/man/man1/inform.1"
 }
