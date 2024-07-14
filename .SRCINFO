@@ -1,0 +1,15 @@
+pkgbase = trayer
+	pkgdesc = lightweight GTK2-based systray for UNIX desktop
+	pkgver = 1.1.8
+	pkgrel = 4
+	url = https://github.com/sargon/trayer-srg
+	arch = x86_64
+	license = MIT
+	makedepends = libxmu
+	depends = gtk2
+	provides = trayer-srg
+	conflicts = trayer-srg
+	source = trayer-1.1.8.tar.gz::https://github.com/sargon/trayer-srg/archive/trayer-1.1.8.tar.gz
+	sha512sums = 5ae92fdcee64ad1ca59846874dcd4bd4859adeeb80a86f1ed97d62e6306f8ec62d1ee26dba251257242dc25d158a6a550e69f2fcc8739242a2311e37fe1ce310
+
+pkgname = trayer

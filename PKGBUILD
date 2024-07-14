@@ -3,7 +3,7 @@
 
 pkgname=trayer
 pkgver=1.1.8
-pkgrel=3
+pkgrel=4
 pkgdesc='lightweight GTK2-based systray for UNIX desktop'
 url='https://github.com/sargon/trayer-srg'
 arch=('x86_64')
