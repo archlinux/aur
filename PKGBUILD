@@ -4,7 +4,7 @@ _pkgname=inform
 pkgname=inform6unix
 _pkgver=6.42-r2
 pkgver="${_pkgver//-/.}"
-pkgrel=1
+pkgrel=2
 pkgdesc="The Inform 6 compiler, standard library, and PunyInform library"
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://gitlab.com/DavidGriffith/inform6unix"
@@ -12,7 +12,6 @@ license=('Artistic2.0' 'MIT')
 groups=(inform)
 makedepends=('frotz' 'ruby')
 optdepends=('perl: for blorb scripts')
-provides=('inform=6.42' 'inform-stdlib=6.12.7' 'punyinform=5.5')
 conflicts=('inform' 'inform-stdlib' 'punyinform')
 source=("http://ifarchive.org/if-archive/infocom/compilers/inform6/source/$_pkgname-$_pkgver.tar.gz")
 md5sums=('6ecf7b20a317c4e5a87783fd6e9f6b7e')

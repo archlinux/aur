@@ -1,7 +1,7 @@
 pkgbase = inform6unix
 	pkgdesc = The Inform 6 compiler, standard library, and PunyInform library
 	pkgver = 6.42.r2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/DavidGriffith/inform6unix
 	arch = aarch64
 	arch = arm
@@ -17,9 +17,6 @@ pkgbase = inform6unix
 	makedepends = frotz
 	makedepends = ruby
 	optdepends = perl: for blorb scripts
-	provides = inform=6.42
-	provides = inform-stdlib=6.12.7
-	provides = punyinform=5.5
 	conflicts = inform
 	conflicts = inform-stdlib
 	conflicts = punyinform
