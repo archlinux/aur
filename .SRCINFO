@@ -1,6 +1,6 @@
 pkgbase = r-monalisa
 	pkgdesc = Binned Motif Enrichment Analysis and Visualization
-	pkgver = 1.10.0
+	pkgver = 1.10.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/monaLisa
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = r-monalisa
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-txdb.mmusculus.ucsc.mm10.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/monaLisa_1.10.0.tar.gz
-	sha256sums = b478b4e00c162660f5caa87b3a2d80b0017acb13bf976eacccbd96017db0ca7e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/monaLisa_1.10.1.tar.gz
+	sha256sums = ebd4110a4aaa30e7127f25c9489b2357ba20a6bc47af131c26dd079125c147dd
 
 pkgname = r-monalisa

@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=monaLisa
-_pkgver=1.10.0
+_pkgver=1.10.1
 pkgname=r-${_pkgname,,}
-pkgver=1.10.0
+pkgver=1.10.1
 pkgrel=1
 pkgdesc='Binned Motif Enrichment Analysis and Visualization'
 arch=('any')
@@ -39,7 +39,7 @@ optdepends=(
   r-txdb.mmusculus.ucsc.mm10.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b478b4e00c162660f5caa87b3a2d80b0017acb13bf976eacccbd96017db0ca7e')
+sha256sums=('ebd4110a4aaa30e7127f25c9489b2357ba20a6bc47af131c26dd079125c147dd')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
