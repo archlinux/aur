@@ -41,9 +41,10 @@ found_issigned_by_discord_test = False
 found_issigned_by_discord_je = False
 found_already_patched = False
 je_location = None
+je_size = 0
 
 # We are looking for a call to IsSignedByDiscord, followed by a test, followed by a je.
-# Then we patch the je into a two byte nop.
+# Then we replace the je with nops.
 
 md = Cs(CS_ARCH_X86, CS_MODE_64)
 md.detail = True
@@ -61,6 +62,7 @@ for i in md.disasm(krisp_initialize, krisp_initialize_address):
         if found_issigned_by_discord_test:
             found_issigned_by_discord_je = True
             je_location = i.address
+            je_size = len(i.bytes)
             break
 
     if i.id == X86_INS_NOP:
@@ -74,7 +76,7 @@ if je_location:
     shutil.copyfile(executable, executable + ".orig")
     f = open(executable, 'rb+')
     f.seek(je_location - address_to_file)
-    f.write(b'\x66\x90')  # Two byte NOP
+    f.write(b'\x90' * je_size)   # je can be larger than 2 bytes given a large enough displacement :(
     f.close()
 else:
     if found_already_patched:
