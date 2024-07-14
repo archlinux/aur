@@ -1,0 +1,3 @@
+[cutefish-launcher]
+source = "git"
+git = "https://github.com/cutefishos/launcher.git"
