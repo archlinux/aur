@@ -1,6 +1,6 @@
 pkgname=webone
 pkgver=0.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc='HTTP 1.x proxy that makes old web browsers usable again in the Web 2.0 world'
 url='https://github.com/atauenis/webone'
 depends=(dotnet-runtime-6.0 imagemagick)
@@ -12,6 +12,8 @@ source_x86_64=("https://github.com/atauenis/webone/releases/download/v$pkgver/we
 sha256sums=('1eccc0c99a8c19519299c817766584d4d0f8f889b5d9f9ef60b6f7fb4afd9435'
             '84afa16b03edf86ef4d0c3234b7a64af1f8bd4e82d5027bf622656571a73f679')
 sha256sums_x86_64=('026a1d659002674925edcf51c32f183a717695d48e2001aa31b0dbfee0812083')
+# Stripping destroys the 'fat' single-file application bundle
+options=(!strip)
 
 package() {
 	cp -av "$srcdir"/etc/. "$pkgdir"/etc
