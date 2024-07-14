@@ -1,0 +1,3 @@
+[fcitx-sayura]
+source = "git"
+git = "https://github.com/fcitx/fcitx-sayura.git"
