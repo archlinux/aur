@@ -98,9 +98,8 @@ package() {
     gendesk --pkgname="$pkgname" \
             --pkgdesc="$_pkgdesc" \
             --icon="$pkgname" \
-            --exec="$pkgname %U" \
-            --categories="Network;FileTransfer" \
-            --mimetypes="application/x-bittorrent" \
+            --exec="$pkgname" \
+            --categories="Network;" \
             --custom='Comment[zh]=一款全能的下载工具' \
             --startupnotify=true -n --name="$_pkgname"
 }
