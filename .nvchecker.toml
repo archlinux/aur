@@ -1,0 +1,4 @@
+[python-sphinx-typlog-theme]
+source = "git"
+git = "https://github.com/typlog/sphinx-typlog-theme.git"
+prefix = "v"
