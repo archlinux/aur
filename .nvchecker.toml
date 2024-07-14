@@ -1,0 +1,3 @@
+[lib32-libproxy]
+source = "git"
+git = "https://github.com/libproxy/libproxy.git"
