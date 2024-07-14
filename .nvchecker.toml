@@ -1,0 +1,3 @@
+[lib32-wavpack]
+source = "git"
+git = "https://github.com/dbry/WavPack.git"
