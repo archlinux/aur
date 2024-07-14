@@ -2,7 +2,7 @@
 
 pkgname=eternalmodmanager
 pkgver=4.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-platform mod manager for DOOM Eternal.'
 arch=('x86_64')
 url='https://github.com/brunoanc/EternalModManager'
