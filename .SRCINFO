@@ -1,12 +1,12 @@
 pkgbase = mutt-git
 	pkgdesc = A small but very powerful text-based mail client
-	pkgver = 2.2.10.r62.g5347d1c5
+	pkgver = 2.2.13.r77.g9dc98409
 	pkgrel = 1
 	epoch = 1
 	url = http://www.mutt.org/
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = docbook-xml
 	makedepends = docbook-xsl
 	makedepends = elinks

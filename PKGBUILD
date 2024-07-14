@@ -2,13 +2,13 @@
 # Contributor: louipc <base64:bG91aXBjQGdteC5jb20=>
 
 pkgname=mutt-git
-pkgver=2.2.10.r62.g5347d1c5
+pkgver=2.2.13.r77.g9dc98409
 pkgrel=1
 epoch=1
 pkgdesc="A small but very powerful text-based mail client"
 url="http://www.mutt.org/"
 arch=('i686' 'x86_64')
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('gdbm'  'glibc'  'gpgme'  'krb5'  'libgpg-error'  'libidn2'  'libsasl'
          'mime-types'  'ncurses'  'openssl'  'sqlite'  'zlib')
 makedepends=('docbook-xml'  'docbook-xsl'  'elinks'  'git'  'libxslt'  'lynx')
