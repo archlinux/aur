@@ -4,14 +4,15 @@
 # Contributor: fxbru <frxbru[at]gmail>
 
 pkgname=sqlmap-git
-pkgver=1.7.5.r5.g48c967c01
+pkgver=1.8.7
 pkgrel=1
 pkgdesc='Automatic SQL injection and database takeover tool'
-url='http://sqlmap.org'
+url='https://sqlmap.org'
 arch=('any')
-license=('GPL2')
+license=('GPL-2.0-only')
 depends=('python' 'sh')
 makedepends=('git')
+optdepends=('perl: icmpsh extra tool')
 provides=('sqlmap')
 conflicts=('sqlmap')
 backup=('etc/sqlmap.conf')
