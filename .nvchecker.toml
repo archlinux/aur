@@ -1,0 +1,3 @@
+[python-husl]
+source = "pypi"
+pypi = "husl"
