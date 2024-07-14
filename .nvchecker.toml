@@ -1,0 +1,3 @@
+[python-softlayer-zeep]
+source = "git"
+git = "https://github.com/softlayer/softlayer-zeep.git"
