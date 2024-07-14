@@ -1,0 +1,15 @@
+pkgbase = tinyemu
+	pkgdesc = RISC-V system emulator
+	pkgver = 2019_12_21
+	pkgrel = 4
+	url = https://bellard.org/tinyemu/
+	arch = x86_64
+	groups = risc-v
+	license = MIT
+	makedepends = setconf
+	depends = curl
+	depends = sdl
+	source = https://bellard.org/tinyemu/tinyemu-2019-12-21.tar.gz
+	sha256sums = be8351f2121819b3172fcedce5cb1826fa12c87da1b7ed98f269d3e802a05555
+
+pkgname = tinyemu
