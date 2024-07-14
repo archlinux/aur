@@ -1,0 +1,15 @@
+--- a/main.c
++++ b/main.c
+@@ -588,10 +588,10 @@
+ 	    buffer[aheadposition+19]='>';
+ 	}
+    
+-	fprintf(stderr,buffer);
++	fprintf(stderr, "%s", buffer);
+        
+ 	if (logfile != NULL && function==-1) {
+-	  fprintf(logfile,buffer+1);
++	  fprintf(logfile, "%s", buffer+1);
+ 	  fprintf(logfile,"\n\n");
+ 	  fflush(logfile);
+ 	}
