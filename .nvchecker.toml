@@ -1,0 +1,3 @@
+[python-argparse-addons]
+source = "pypi"
+pypi = "argparse_addons"
