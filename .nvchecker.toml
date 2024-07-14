@@ -1,0 +1,3 @@
+[fishui]
+source = "git"
+git = "https://github.com/cutefishos/fishui.git"
