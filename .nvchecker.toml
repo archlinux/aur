@@ -1,0 +1,3 @@
+[python-case]
+source = "pypi"
+pypi = "case"
