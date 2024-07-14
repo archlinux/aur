@@ -9,6 +9,7 @@ url="https://www.sparksdr.com/download/"
 license=("custom")
 #makedepends=('git')
 depends=('icu' 'openssl' 'krb5' 'portaudio' 'rnnoise')
+optdepends=('wsjtx')
 provides=(sparksdr)
 
 if [ "$CARCH" == "x86_64" ]; then

@@ -12,6 +12,7 @@ pkgbase = sparksdr-bin
 	depends = krb5
 	depends = portaudio
 	depends = rnnoise
+	optdepends = wsjtx
 	provides = sparksdr
 	source = https://www.sparksdr.com/download/SparkSDR.2.0.33.linux-x64.deb
 	sha256sums = SKIP
