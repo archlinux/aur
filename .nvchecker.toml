@@ -1,0 +1,4 @@
+[ruby-timers]
+source = "git"
+git = "https://github.com/celluloid/timers.git"
+prefix = "v"
