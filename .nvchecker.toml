@@ -1,0 +1,4 @@
+[python-vine]
+source = "git"
+git = "https://github.com/celery/vine.git"
+prefix = "v"
