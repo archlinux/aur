@@ -6,7 +6,7 @@ stages:
 build:
   stage: build
   tags:
-    - small
+    - large
   image: registry.gitlab.com/stefanwimmer128/archlinux-chaotic-paru-user:latest
   before_script:
     - paru -Syu --noconfirm
