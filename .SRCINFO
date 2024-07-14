@@ -1,0 +1,21 @@
+pkgbase = android-x86-64-libdvdread
+	pkgdesc = Library for reading DVD video disks (Android x86-64)
+	pkgver = 6.1.3
+	pkgrel = 1
+	url = https://www.videolan.org/developers/libdvdnav.html
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = android-configure
+	depends = android-ndk
+	optdepends = android-x86-64-libdvdcss: Decoding encrypted DVDs
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://download.videolan.org/pub/videolan/libdvdread/6.1.3/libdvdread-6.1.3.tar.bz2
+	source = https://download.videolan.org/pub/videolan/libdvdread/6.1.3/libdvdread-6.1.3.tar.bz2.asc
+	validpgpkeys = 65F7C6B4206BD057A7EB73787180713BE58D1ADC
+	md5sums = 3c58d1624a71a16ff40f55dbaca82523
+	md5sums = SKIP
+
+pkgname = android-x86-64-libdvdread
