@@ -1,8 +1,9 @@
-# Maintainer: spider-mario <spidermario@free.fr>
+# Maintainer: Aleksy Grabowski <hurufu@gmail.com>
+# Contributor: spider-mario <spidermario@free.fr>
 # Contributor: Marcin Karpezo <sirmacik at gmail dot com>
 # Contributor: Daenyth <Daenyth+Arch [at] gmail [dot] com>
 pkgname=rakudo
-pkgver=2024.04
+pkgver=2024.06
 pkgrel=1
 pkgdesc="Raku compiler for MoarVM"
 arch=('i686' 'x86_64')
@@ -14,7 +15,7 @@ makedepends=('perl>=5.8')
 provides=('perl6')
 options=('!makeflags')
 source=("https://rakudo.org/dl/$pkgname/$pkgname-$pkgver.tar.gz")
-b2sums=('681a13e0fcefd8a0187f99a4bd92f72833a74870933497f6cb8de0b2ab3ddf07ee4c492760c53cd623f6d7afd3593194748882400ea94e703363c58fc4ea3d2c')
+b2sums=(c63a066584e16c9e27649d54feff8ca4a6bd766e0cb53dac6c9759f660b8c3906444310aa100ccf1eb683085514ff87a571cd0a51e1407db0561efcf89f5a4b3)
 
 build() {
 	cd "$pkgname-$pkgver"
