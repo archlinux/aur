@@ -1,0 +1,4 @@
+[physlock]
+source = "git"
+git = "https://github.com/muennich/physlock.git"
+prefix = "v"
