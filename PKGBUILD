@@ -2,7 +2,7 @@
 _reponame=boxflat
 pkgname=boxflat-git
 pkgver=0.0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Adjust your Moza Racing gear settings"
 arch=('x86_64')
 url="https://github.com/Lawstorant/boxflat"
@@ -31,13 +31,8 @@ pkgver() {
   cd "$srcdir/$_reponame"
   git describe --long --tags | cut -d "-" -f 1-2 | tr "-" "r"
 }
-  
+
 package() {
-  mkdir -p "${pkgdir}/usr/share/boxflat"
-  mkdir -p "${pkgdir}/usr/share/applications"
-  mkdir -p "${pkgdir}/usr/bin"
-  
-  cp -r "$srcdir/$_reponame"/* "${pkgdir}/usr/share/boxflat/"
-  cp "$srcdir/$_reponame/boxflat.desktop" "${pkgdir}/usr/share/applications/"
-  install -D "$srcdir/$_reponame/boxflat.sh" "${pkgdir}/usr/bin/boxflat"
+  cd "$srcdir/$_reponame" || exit 1
+  ./install.sh add-prefix "${pkgdir}"
 }
