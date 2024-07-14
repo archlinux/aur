@@ -1,0 +1,4 @@
+[clusterssh]
+source = "git"
+git = "https://github.com/duncs/clusterssh.git"
+prefix = "v"
