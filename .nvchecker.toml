@@ -1,0 +1,3 @@
+[cutefish-filemanager]
+source = "git"
+git = "https://github.com/cutefishos/filemanager.git"
