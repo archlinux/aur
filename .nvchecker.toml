@@ -1,0 +1,3 @@
+[cutefish-settings]
+source = "git"
+git = "https://github.com/cutefishos/settings.git"
