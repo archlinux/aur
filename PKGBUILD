@@ -1,5 +1,6 @@
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Contributor: Ordoban <dirk.langer@vvovgonik.de>
 # Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-any-moose'
