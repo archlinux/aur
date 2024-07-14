@@ -1,0 +1,90 @@
+From d51452d910b0f2998dacc5115f82c9a25ca29fd2 Mon Sep 17 00:00:00 2001
+From: Christopher Snowhill <kode54@gmail.com>
+Date: Sat, 13 Jul 2024 23:00:57 -0700
+Subject: [PATCH] [wip] handle renderer loss
+
+Recreate the renderer and allocator, and assign them to
+all outputs. Needs testing as well.
+---
+ include/labwc.h |  2 ++
+ src/server.c    | 44 ++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 46 insertions(+)
+
+diff --git a/include/labwc.h b/include/labwc.h
+index fe35bddc..335c813d 100644
+--- a/include/labwc.h
++++ b/include/labwc.h
+@@ -316,6 +316,8 @@ struct server {
+ 	 */
+ 	int pending_output_layout_change;
+ 
++	struct wl_listener renderer_lost;
++
+ 	struct wlr_gamma_control_manager_v1 *gamma_control_manager_v1;
+ 	struct wl_listener gamma_control_set_gamma;
+ 
+diff --git a/src/server.c b/src/server.c
+index b20aa932..8fd6190f 100644
+--- a/src/server.c
++++ b/src/server.c
+@@ -249,6 +249,47 @@ get_headless_backend(struct wlr_backend *backend, void *data)
+ 	}
+ }
+ 
++static void
++handle_renderer_lost(struct wl_listener *listener, void *data)
++{
++	struct server *server = wl_container_of(listener, server, renderer_lost);
++
++	wlr_log(WLR_INFO, "Re-creating renderer after GPU reset");
++
++	struct wlr_renderer *renderer = wlr_renderer_autocreate(server->backend);
++	if (renderer == NULL) {
++		wlr_log(WLR_ERROR, "Unable to create renderer");
++		return;
++	}
++
++	struct wlr_allocator *allocator =
++		wlr_allocator_autocreate(server->backend, renderer);
++	if (allocator == NULL) {
++		wlr_log(WLR_ERROR, "Unable to create allocator");
++		wlr_renderer_destroy(renderer);
++		return;
++	}
++
++	struct wlr_renderer *old_renderer = server->renderer;
++	struct wlr_allocator *old_allocator = server->allocator;
++	server->renderer = renderer;
++	server->allocator = allocator;
++
++	wl_list_remove(&server->renderer_lost.link);
++	wl_signal_add(&server->renderer->events.lost, &server->renderer_lost);
++
++	wlr_compositor_set_renderer(compositor, renderer);
++
++	struct output *output;
++	wl_list_for_each(output, &server->outputs, link) {
++		wlr_output_init_render(output->wlr_output,
++			server->allocator, server->renderer);
++	}
++
++	wlr_allocator_destroy(old_allocator);
++	wlr_renderer_destroy(old_renderer);
++}
++
+ void
+ server_init(struct server *server)
+ {
+@@ -336,6 +377,9 @@ server_init(struct server *server)
+ 		exit(EXIT_FAILURE);
+ 	}
+ 
++	server->renderer_lost.notify = handle_renderer_lost;
++	wl_signal_add(&server->renderer->events.lost, &server->renderer_lost);
++
+ 	wlr_renderer_init_wl_display(server->renderer, server->wl_display);
+ 
+ 	/*
+-- 
+2.45.2
+
