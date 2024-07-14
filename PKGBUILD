@@ -3,7 +3,7 @@
 # Contributor: jinzhongjia <mail@nvimer.org>
 
 pkgname=webui
-pkgver=2.5.0+beta.1+51+g50e9e4c2
+pkgver=2.5.0+beta.2
 pkgrel=1
 pkgdesc="Use any web browser as GUI, with your preferred language in the backend and HTML5 in the frontend, all in a lightweight portable lib."
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=("openssl" "glibc")
 makedepends=("git" "make" "gcc")
 provides=("webui")
 conflicts=('webui-nossl')
-_commit=50e9e4c2c6358504d651310fa97e4e8be8c8f42c
+_commit=2e94629304402fdf4b9144397c85cf56e18a35ee
 source=("git+https://github.com/webui-dev/webui.git#commit=${_commit}")
 md5sums=('SKIP')
 
