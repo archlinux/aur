@@ -12,6 +12,7 @@ arch=(i686 x86_64)
 url="https://github.com/dpapavas/luaprompt"
 license=('MIT')
 makedepends=(lua lua53 lua52 lua51)
+depends=("lua-argparse")
 source=("${pkgname}-${pkgver}::https://github.com/dpapavas/luaprompt/archive/v${pkgver}.tar.gz")
 # Upstream does not provide source archives with a stable checksum
 md5sums=('SKIP')
@@ -21,12 +22,10 @@ _package() {
   cd "$srcdir/$_lua_name-$pkgver-$1"
 
   if [[ $1 != $_lua_version ]]; then
-    depends=("lua-argparse")
+    depends=("lua${1/\./}-argparse")
     sed -i 's=\$(BINDIR)/luap=$(BINDIR)/luap'"$1=" Makefile
     sed -i 's=\$(MAN1DIR)/luap.1=$(MAN1DIR)/luap'"$1.1=" Makefile
     sed -i '1s=lua=lua'"$1"'=' luap.lua
-  else
-    depends=("lua${1/\./}-argparse")
   fi
 
   make PREFIX=/usr \
