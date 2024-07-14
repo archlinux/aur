@@ -1,7 +1,7 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=oblivion-desktop-bin
 pkgver=0.35.1_beta
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial Warp Client for Windows/Mac/Linux"
 arch=('x86_64')
 url="https://github.com/bepass-org/oblivion-desktop"
@@ -13,7 +13,7 @@ conflicts=("${pkgname%-bin}")
 source=("${pkgname%-bin}-${pkgver//_/-}.deb::${url}/releases/download/v${pkgver//_/-}/${pkgname%-bin}-linux-amd64.deb"
         "${pkgname%-bin}-LICENSE::${url}/blob/main/LICENSE.md")
 sha256sums=('85c6b4030b692ff778d60eee03a02a92ce10aeba6bb64c8c3c4ace7df326ad10'
-            '6ed6a0aa34b0f61f66fdb02ad2fd1ca46e761d191332b97680f37ed6ee9ab149')
+            'SKIP')
 
 package() {
 	cd "${pkgdir}"
