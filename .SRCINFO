@@ -1,6 +1,6 @@
 pkgbase = autofirma-git
 	pkgdesc = Cliente de firma electrónica ofrecido por la Administración Pública
-	pkgver = r6849.71b0ed32a
+	pkgver = r6855.d5868a024
 	pkgrel = 1
 	url = https://firmaelectronica.gob.es/
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = autofirma-git
 	conflicts = autofirma
 	conflicts = autofirma-bin
 	source = clienteafirma::git+https://github.com/ctt-gob-es/clienteafirma.git
-	source = clienteafirma-external::git+https://github.com/ctt-gob-es/clienteafirma-external.git
+	source = clienteafirma-external::git+https://github.com/ctt-gob-es/clienteafirma-external.git#commit=cd4447d7ecd53279f2f70fbff13a2d0a3d718768
 	source = autofirma
 	source = autofirma.desktop
 	source = autofirma.js

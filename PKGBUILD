@@ -2,7 +2,7 @@
 
 _pkgname=clienteafirma
 pkgname=autofirma-git
-pkgver=r6849.71b0ed32a
+pkgver=r6855.d5868a024
 pkgrel=1
 pkgdesc='Cliente de firma electrónica ofrecido por la Administración Pública'
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('git' 'java-environment=11' 'maven')
 conflicts=('autofirma' 'autofirma-bin')
 provides=('autofirma')
 source=("${_pkgname}::git+https://github.com/ctt-gob-es/${_pkgname}.git"
-        "${_pkgname}-external::git+https://github.com/ctt-gob-es/${_pkgname}-external.git"
+        "${_pkgname}-external::git+https://github.com/ctt-gob-es/${_pkgname}-external.git#commit=cd4447d7ecd53279f2f70fbff13a2d0a3d718768"
         "autofirma"
         "autofirma.desktop"
         "autofirma.js"
