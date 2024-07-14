@@ -7,7 +7,7 @@
 pkgbase=rtw88-fixed-dkms-git
 pkgname=(rtw88-fixed-dkms-git rtw88-fixed-firmware-git)
 _name=rtw88
-pkgver=r429.0e5a197
+pkgver=r443.5db1508
 pkgrel=1
 pkgdesc='Latest Realtek Wifi 5 drivers'
 arch=('any')
@@ -15,18 +15,26 @@ url='https://github.com/lwfinger/rtw88'
 makedepends=('git')
 install='rtw88-fixed.install'
 source=('git+https://github.com/lwfinger/rtw88.git'
-        'rtw88-fixed.conf')
+        'rtw88-fixed.conf'
+        'firmware-path.patch')
 sha256sums=('SKIP'
-            '1323e5a73ca52212bd8158852f98eeab9b4cbb7fba106fb3b0e627ce05d89dde')
+            '1323e5a73ca52212bd8158852f98eeab9b4cbb7fba106fb3b0e627ce05d89dde'
+            'db60d8bac76bd537b57eb953782df8c8ae08a7c6f3ff5897592ac65a4813b591')
 
 pkgver() {
     cd "${_name}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+    cd "${srcdir}/${_name}"
+
+    patch --forward --strip=1 --input=../firmware-path.patch # avoid clashing with linux-firmware
+}
+
 package_rtw88-fixed-dkms-git() {
-    depends=(dkms)
-    conflicts=(rtw88-dkms-git)
+    depends=('dkms' 'rtw88-fixed-firmware')
+    conflicts=('rtw88-dkms-git')
 
     cd "${srcdir}/${_name}"
 
@@ -43,10 +51,10 @@ package_rtw88-fixed-dkms-git() {
 }
 
 package_rtw88-fixed-firmware-git() {
+    provides=('rtw88-fixed-firmware')
     pkgdesc+=' - firmware'
 
     cd "${srcdir}/${_name}"
 
-    install -dm755 "${pkgdir}/usr/lib/firmware/rtw88"
-    cp *.bin "${pkgdir}/usr/lib/firmware/rtw88"
+    install -Dm644 *_fw.bin -t "${pkgdir}/usr/lib/firmware/rtw88-fixed"
 }

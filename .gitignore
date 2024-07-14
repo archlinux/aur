@@ -5,3 +5,4 @@
 !.SRCINFO
 !rtw88-fixed.conf
 !rtw88-fixed.install
+!firmware-path.patch
