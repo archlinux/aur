@@ -1,7 +1,7 @@
 # Maintainer: Frederik Leonhardt <frederik at leonhardt dot co dot nz>
 pkgname=track-designer
 pkgver=2.0.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Plan and design LEGO train track and base plate layouts"
 arch=('x86_64')
 url="https://archive.org/details/legotd2"
@@ -25,7 +25,7 @@ prepare() {
 
   # Extract icon from EXE
   cd "$srcdir"
-  wrestool -x --output=icon.ico -t14 td20/TD.EXE
+  wrestool -x --output=icon.ico -t14 -n128 td20/TD.EXE
   icotool -x icon.ico
 }
 
