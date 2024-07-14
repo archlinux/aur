@@ -1,11 +1,12 @@
-# Maintainer: Lancelot Owczarczak <lancelot@owczarczak.fr>
+# Maintainer: Stefan Wimmer <info@stefanwimmer128.xyz>
+# Contributor: Lancelot Owczarczak <lancelot@owczarczak.fr>
 # Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 # Contributor: An Nguyen <an-1258@outlook.com>
 
 pkgname=clang17
 pkgver=17.0.6
-pkgrel=7
+pkgrel=1
 pkgdesc="C language family frontend for LLVM 17"
 arch=('x86_64')
 url="https://clang.llvm.org/"
@@ -16,23 +17,18 @@ optdepends=('openmp: OpenMP support in clang with -fopenmp'
             'llvm17: referenced by some clang headers')
 checkdepends=('llvm')
 _source_base=https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver
-source=($_source_base/clang-$pkgver.src.tar.xz{,.sig}
-        $_source_base/clang-tools-extra-$pkgver.src.tar.xz{,.sig}
-        $_source_base/llvm-$pkgver.src.tar.xz{,.sig}
-        $_source_base/cmake-$pkgver.src.tar.xz{,.sig}
+source=($_source_base/clang-$pkgver.src.tar.xz
+        $_source_base/clang-tools-extra-$pkgver.src.tar.xz
+        $_source_base/llvm-$pkgver.src.tar.xz
+        $_source_base/cmake-$pkgver.src.tar.xz
         $pkgname-linker-wrapper-tool-r1.patch::https://github.com/llvm/llvm-project/commit/c2aabcfc8395.patch
         enable-fstack-protector-strong-by-default.patch)
 sha256sums=('a78f668a726ae1d3d9a7179996d97b12b90fb76ab9442a43110b972ff7ad9029'
-            'SKIP'
             'aa774642415d338d7b77a66fcbad6fd1f77f382dabcb67422a6230614eff1ab9'
-            'SKIP'
             'b638167da139126ca11917b6880207cc6e8f9d1cbb1a48d87d017f697ef78188'
-            'SKIP'
             '807f069c54dc20cb47b21c1f6acafdd9c649f3ae015609040d6182cab01140f4'
-            'SKIP'
             'f82449f41c8258f9ae13bd0c311e940711430d2c979eeb8255b36e0e63cda18c'
             '7a9ce949579a3b02d4b91b6835c4fb45adc5f743007572fb0e28e6433e48f3a5')
-validpgpkeys=('D574BD5D1D0E98895E3BF90044F2485E45D59042') # Tobias Hieta <tobias@hieta.se>
 
 # Utilizing LLVM_DISTRIBUTION_COMPONENTS to avoid
 # installing static libraries; inspired by Gentoo
