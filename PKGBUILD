@@ -1,8 +1,8 @@
-# Maintainer: Echo J. <aidas957 at gmail dot com>
+# Maintainer: imskyyc <sky at imskyyc com>
 # shellcheck shell=bash disable=SC2034
 
 pkgname=vinegar
-pkgver=1.7.4
+pkgver=1.7.5
 pkgrel=1
 pkgdesc="Fast and robust bootstrapper for Roblox that has many ease-of-use features."
 arch=("x86_64")
@@ -16,7 +16,7 @@ optdepends=("gamemode: Gamemode integration"
             "wine: A required dependency (made optional for flexbility)")
 conflicts=("vinegar-git")
 source=("https://github.com/vinegarhq/vinegar/releases/download/v${pkgver}/${pkgname}-v${pkgver}.tar.xz")
-sha256sums=("e60ae3e7dafff2639ab351a222df533373c3f62c03d9ca976da92e243f0693b5")
+sha256sums=("b79b5903b3063793cda0a0c7c23e3972f4914aa59ae8be4bfbd5db66766d9b0d")
 
 prepare() {
   cd "${pkgname}-v${pkgver}"
@@ -32,12 +32,12 @@ build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
 
-  make DESTDIR="${pkgdir}" PREFIX="/usr" all
+  make DESTDIR="${pkgdir}" PREFIX="/usr" BINPREFIX="${PREFIX}/lib/vinegar" all
 }
 
 package() {
   cd "${pkgname}-v${pkgver}"
 
-  make DESTDIR="${pkgdir}" PREFIX="/usr" install
+  make PREFIX="/usr" BINPREFIX="${PREFIX}/lib/vinegar" DESTDIR="${pkgdir}" install
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
