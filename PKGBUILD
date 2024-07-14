@@ -2,7 +2,7 @@
 # Contributor: christian rebischke <chris.rebischke at archlinux org>
 
 pkgname=gopass-hibp-git
-pkgver=1.15.8.r4.ge731be3
+pkgver=1.15.13.r10.gb75cb16
 pkgrel=1
 pkgdesc="haveibeenpwnd.com integration for gopass"
 arch=('x86_64')
@@ -32,7 +32,7 @@ build(){
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   make
 }
 
