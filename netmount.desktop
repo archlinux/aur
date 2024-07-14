@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Categories=Network;
+Comment=Cloud storage management tools
+Exec=netmount
+Icon=netmount
+Name=NetMount
+Terminal=false
+Type=Application
