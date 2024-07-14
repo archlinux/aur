@@ -1,0 +1,15 @@
+pkgbase = vim-vital
+	pkgdesc = Comprehensive Vim utility functions for Vim plugins
+	pkgver = 3113.982e0bf3
+	pkgrel = 4
+	epoch = 1
+	url = https://github.com/vim-jp/vital.vim
+	arch = any
+	groups = vim-plugins
+	license = custom:NYSL
+	depends = vim-plugin-runtime
+	depends = git
+	source = vim-vital::git+https://github.com/vim-jp/vital.vim#commit=982e0bf3a5c181c0fa9d37bab784412f941f6b80
+	sha512sums = SKIP
+
+pkgname = vim-vital
