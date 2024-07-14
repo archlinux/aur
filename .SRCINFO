@@ -1,7 +1,7 @@
 pkgbase = android-x86-libopenmpt
 	pkgdesc = A library to render tracker music to a PCM audio stream (Android x86)
 	pkgver = 0.7.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lib.openmpt.org/libopenmpt/
 	arch = any
 	license = BSD-3-Clause
