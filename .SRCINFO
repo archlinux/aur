@@ -1,18 +1,19 @@
 pkgbase = mingw-w64-boost
 	pkgdesc = Free peer-reviewed portable C++ source libraries (mingw-w64)
-	pkgver = 1.83.0
+	pkgver = 1.85.0
 	pkgrel = 1
 	url = http://www.boost.org/
 	arch = any
 	license = custom
 	makedepends = mingw-w64-gcc
 	makedepends = mingw-w64-wine
+	makedepends = mingw-w64-environment
 	depends = mingw-w64-zstd
 	depends = mingw-w64-bzip2
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://boostorg.jfrog.io/artifactory/main/release/1.83.0/source/boost_1_83_0.tar.bz2
-	sha256sums = 6478edfe2f3305127cffe8caf73ea0176c53769f4bf1585be237eb30798c3b8e
+	source = https://boostorg.jfrog.io/artifactory/main/release/1.85.0/source/boost_1_85_0.tar.bz2
+	sha256sums = 7009fe1faa1697476bdc7027703a2badb84e849b7b0baad5086b087b971f8617
 
 pkgname = mingw-w64-boost
