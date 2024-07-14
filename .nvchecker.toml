@@ -1,0 +1,3 @@
+[lib32-openal]
+source = "git"
+git = "https://github.com/kcat/openal-soft.git"
