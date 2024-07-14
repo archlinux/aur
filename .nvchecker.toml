@@ -1,0 +1,4 @@
+[python-glfw]
+source = "git"
+git = "https://github.com/FlorianRhiem/pyGLFW.git"
+prefix = "v"
