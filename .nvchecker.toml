@@ -1,0 +1,3 @@
+[cutefish-terminal]
+source = "git"
+git = "https://github.com/cutefishos/terminal.git"
