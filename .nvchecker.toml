@@ -1,0 +1,3 @@
+[spatialindex]
+source = "git"
+git = "https://github.com/libspatialindex/libspatialindex.git"
