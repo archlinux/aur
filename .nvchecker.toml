@@ -1,0 +1,4 @@
+[hiera]
+source = "git"
+git = "https://github.com/puppetlabs/hiera.git"
+prefix = "v"
