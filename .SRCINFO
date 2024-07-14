@@ -1,0 +1,14 @@
+pkgbase = inform-stdlib-git
+	pkgdesc = Inform 6 standard library (git version)
+	pkgver = 6.12.7.0.ga0d3e3d
+	pkgrel = 1
+	url = https://gitlab.com/DavidGriffith/inform6lib
+	arch = any
+	groups = inform
+	license = Artistic2.0
+	provides = inform-stdlib
+	conflicts = inform-stdlib
+	source = git+https://gitlab.com/DavidGriffith/inform6lib.git
+	md5sums = SKIP
+
+pkgname = inform-stdlib-git
