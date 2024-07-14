@@ -1,0 +1,3 @@
+[ruby-safe_yaml]
+source = "git"
+git = "https://github.com/dtao/safe_yaml.git"
