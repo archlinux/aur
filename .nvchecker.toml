@@ -1,0 +1,3 @@
+[python-cpplint]
+source = "git"
+git = "https://github.com/cpplint/cpplint.git"
