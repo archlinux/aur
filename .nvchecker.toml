@@ -1,0 +1,4 @@
+[acpilight]
+source = "git"
+git = "https://gitlab.com/wavexx/acpilight.git"
+prefix = "v"
