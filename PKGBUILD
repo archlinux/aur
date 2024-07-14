@@ -1,6 +1,6 @@
 # Maintainer: revsuine <paradoor at protonmail dot com>
 pkgname=ttf-gohufont-nerd
-pkgver=v3.1.1
+pkgver=v3.2.1
 pkgrel=1
 pkgdesc="A bitmap font for programming and terminal use, patched to include Nerd Font symbols."
 arch=('any')
