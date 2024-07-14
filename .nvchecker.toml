@@ -1,0 +1,3 @@
+[arc-gtk-theme]
+source = "git"
+git = "https://github.com/jnsh/arc-theme.git"
