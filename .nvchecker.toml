@@ -1,0 +1,5 @@
+[python-mahotas]
+source = "github"
+github = "luispedro/mahotas"
+use_max_tag = "true"
+prefix = "v"
