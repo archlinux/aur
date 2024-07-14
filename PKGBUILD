@@ -1,39 +1,33 @@
-# Maintainer: François Magimel <magimel.francois at gmail dot com>
+# Maintainer:
+# Contributor: François Magimel <magimel.francois at gmail dot com>
 # Contributor: Aaron DeVore <aaron.devore@gmail.com>
 # Contributor: rayte <rabyte__gmail>
 # Contributor: aldeano <aldea.diaguita at gmail.com>
 
-pkgname=(python-cerealizer python2-cerealizer)
-pkgver=0.8.3
+pkgname=python-cerealizer
+pkgver=0.8.4
 pkgrel=1
-pkgdesc="A Python module for saving objects in a file"
+pkgdesc="A secure pickle-like module"
 arch=('any')
 url="http://www.lesfleursdunormal.fr/static/informatique/cerealizer/index_en.html"
-makedepends=("python-setuptools" "python2-setuptools")
-license=('PSF')
+depends=('python')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
+license=('PSF-2.0')
 source=(https://pypi.python.org/packages/source/C/Cerealizer/Cerealizer-${pkgver}.tar.gz)
-md5sums=('a7cf54e5db5cb6485627d116ef90f89f')
+sha256sums=('8ad33be5038f0987646be093d387e9976937cf2f1016884a05f9fa7cac1fb52e')
 
 prepare() {
-    cp -a Cerealizer-$pkgver{,-py2}
+  # fix deprecated dash-separated options
+  cd "Cerealizer-$pkgver"
+  sed -i -r 's/^([a-z]+)-/\1_/' setup.cfg
 }
 
 build() {
-    cd "$srcdir/Cerealizer-$pkgver"
-    python setup.py build
-
-    cd "$srcdir/Cerealizer-$pkgver-py2"
-    python2 setup.py build
+  cd "Cerealizer-$pkgver"
+  python -m build --wheel --no-isolation
 }
 
-package_python-cerealizer() {
-  depends=('python')
-  cd "$srcdir/Cerealizer-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-}
-
-package_python2-cerealizer() {
-  depends=('python2')
-  cd "$srcdir/Cerealizer-$pkgver-py2"
-  python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
+package() {
+  cd "Cerealizer-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
