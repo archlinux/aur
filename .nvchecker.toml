@@ -1,0 +1,3 @@
+[python-geocoder]
+source = "pypi"
+pypi = "geocoder"
