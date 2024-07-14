@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Foundry Virtual Tabletop
+Comment=A Self-Hosted & Modern Roleplaying Platform
+Exec=/opt/foundryvtt/foundryvtt
+Icon=/opt/foundryvtt/resources/app/public/icons/fvtt.ico
+Type=Application
+Categories=Game;RolePlaying;
