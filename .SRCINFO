@@ -1,7 +1,7 @@
 pkgbase = vlfrx-tools
 	pkgdesc = A modular software toolkit for timestamped signal processing and storage.
-	pkgver = 0.9m
-	pkgrel = 2
+	pkgver = 0.9p
+	pkgrel = 1
 	url = http://abelian.org/vlfrx-tools
 	arch = any
 	license = BSD
@@ -20,7 +20,7 @@ pkgbase = vlfrx-tools
 	depends = sox
 	depends = gnuplot
 	depends = texlive-core
-	source = http://abelian.org/vlfrx-tools/vlfrx-tools-0.9m.tgz
+	source = http://abelian.org/vlfrx-tools/vlfrx-tools-0.9p.tgz
 	sha256sums = SKIP
 
 pkgname = vlfrx-tools
