@@ -2,7 +2,7 @@
 
 pkgname=web-greeter
 pkgver=3.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A modern, visually appealing greeter for LightDM'
 arch=('any')
 url='https://github.com/JezerM/web-greeter'
