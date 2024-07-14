@@ -1,0 +1,4 @@
+[python-hawkauthlib]
+source = "git"
+git = "https://github.com/mozilla-services/hawkauthlib.git"
+prefix = "v"
