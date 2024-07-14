@@ -1,0 +1,3 @@
+[python-sphinxcontrib-newsfeed]
+source = "pypi"
+pypi = "sphinxcontrib-newsfeed"
