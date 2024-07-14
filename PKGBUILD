@@ -23,7 +23,7 @@ conflicts=(
 
 
 provides=(
-	"optimus-manager=${pkgver}"
+	"optimus-manager"
 )
 
 
@@ -66,23 +66,36 @@ backup=(
 )
 
 
+SoftwareVersion () {
+	cd "${srcdir}/optimus-manager"
+
+	printf "r%s.%s" \
+		"$(git rev-list --count HEAD)" \
+		"$(git rev-parse --short=7 HEAD)"
+}
+
+
 PythonVersion () {
-	pacman --sync --info python |
-	grep '^Version' |
-	cut --delimiter=' ' --fields=11- |
-	cut --delimiter='.' --fields=1,2 |
-	sort --version-sort --reverse |
-	head -n1
+	pacman --sync --print-format "%v" python |
+	cut --delimiter='.' --fields=1,2
 }
 
 
 pkgver () {
-	cd "${srcdir}/optimus-manager"
+	local SoftwareVersion; SoftwareVersion="$(SoftwareVersion)"
+	local PythonVersion; PythonVersion="$(PythonVersion)"
 
-	printf "r%s.%s.python%s" \
-		"$(git rev-list --count HEAD)" \
-		"$(git rev-parse --short=7 HEAD)" \
-		"$(PythonVersion)"
+	if [[ -z "${SoftwareVersion}" ]]; then
+		echo "Failed to retrieve: SoftwareVersion" >&2
+		false
+	elif [[ -z "${PythonVersion}" ]]; then
+		echo "Failed to retrieve: PythonVersion" >&2
+		false
+	else
+		printf "%s.python%s" \
+			"${SoftwareVersion}" \
+			"${PythonVersion}"
+	fi
 }
 
 
