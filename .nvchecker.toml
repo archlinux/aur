@@ -1,0 +1,4 @@
+[ruby-faraday-em_synchrony]
+source = "git"
+git = "https://github.com/lostisland/faraday-em_synchrony.git"
+prefix = "v"
