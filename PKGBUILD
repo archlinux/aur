@@ -2,14 +2,14 @@
 # Contributor: erk <v at erk dot io>
 
 pkgname=vnote
-pkgver=3.17.0
-pkgrel=1
+pkgver=3.18.1
+pkgrel=2
 pkgdesc="A Vim-inspired note-taking application, especially for Markdown."
 arch=(x86_64 i686 armv7h aarch64)
 url="https://vnotex.github.io/vnote/en_us/"
 license=(LGPL3)
-depends=(qt5-webengine qt5-svg qt5-x11extras)
-makedepends=(git)
+depends=(qt6-webengine qt6-svg qt6-webchannel qt6-5compat)
+makedepends=(git cmake qt6-tools clang lld)
 source=("git+https://github.com/vnotex/vnote.git#tag=v${pkgver}"
         "vnotex-vtextedit::git+https://github.com/vnotex/vtextedit"
         "vnotex-QHotkey::git+https://github.com/vnotex/QHotkey.git"
@@ -26,8 +26,6 @@ sha256sums=('SKIP'
 prepare() {
   cd "${pkgname}"
 
-  install -d build
-
   git submodule init
   git config 'submodule.libs/vtextedit.url' "${srcdir}/vnotex-vtextedit"
   git config 'submodule.libs/QHotkey.url' "${srcdir}/vnotex-QHotkey"
@@ -42,12 +40,18 @@ prepare() {
 }
 
 build() {
-  cd "${pkgname}/build"
-  qmake-qt5 ../vnote.pro
-  make
+  export CC=/usr/bin/clang CXX=/usr/bin/clang++
+  export LD="/usr/bin/lld"
+  export LDFLAGS="-fuse-ld=lld"
+
+  cmake -B build -S "vnote" -Wno-dev \
+    -DUSE_LD_GOLD=OFF \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr
+
+  cmake --build build
 }
 
 package() {
-  cd "${pkgname}/build"
-  make INSTALL_ROOT="$pkgdir" install
+  DESTDIR="${pkgdir}" cmake --install build
 }
