@@ -1,0 +1,4 @@
+[python-flask-gravatar]
+source = "git"
+git = "https://github.com/zzzsochi/Flask-Gravatar.git"
+prefix = "v"
