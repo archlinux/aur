@@ -2,7 +2,7 @@
 
 pkgname=tembro
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Virtual software instrument based on samples"
 arch=(any)
 url="https://laborejo.org/tembro/"
