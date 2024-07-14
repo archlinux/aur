@@ -1,8 +1,8 @@
 # Maintainer: Coelacanthus <CoelacanthusHex@gmail.com>
 
 pkgname=lemon-lime
-pkgver=0.3.4.4
-pkgrel=2
+pkgver=0.3.5
+pkgrel=1
 pkgdesc="为了 OI 比赛而生的基于 Lemon 的轻量评测系统 | A tiny judging environment for OI contest based on Project_LemonPlus"
 arch=('x86_64' 'i686')
 url="https://github.com/Project-LemonLime/Project_LemonLime"
@@ -31,7 +31,7 @@ source=(Project_LemonLime::git+https://github.com/Project-LemonLime/Project_Lemo
         Testlib-for-Lemons::git+https://github.com/GitPinkRabbit/Testlib-for-Lemons.git
         )
 
-b2sums=('SKIP'
+b2sums=('c16af3a4ee4f9226a6218e35955333dadd8d3586e898b92708f9601880b8142a54dcad74ae98c63bf03a87a60094bfbc0bdc66c29f9991b8d8572967efcebe8e'
         'SKIP'
         'SKIP')
 
