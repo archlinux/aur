@@ -1,16 +1,18 @@
-# Maintainer: Mattias Giese <mattiasgiese@posteo.net>
+# Maintainer: VCalV
 
 _pkgname=keybase-completion
+_gituser=jhazelwo
 pkgname=keybase-bash-completion-git
 pkgdesc="Bash completion for keybase CLI"
-pkgver=r12.6a59dad
+pkgver=r8.7f7d0c2
 pkgrel=1
+epoch=1
 arch=("any")
-url="https://github.com/dtiersch/keybase-completion"
+url="https://github.com/$_gituser/$_pkgname"
 license=("MIT")
 makedepends=('git')
 depends=("bash-completion" "keybase")
-source=('git+https://github.com/dtiersch/keybase-completion')
+source=("git+https://github.com/$_gituser/$_pkgname")
 md5sums=('SKIP')
 
 pkgver() {
