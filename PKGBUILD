@@ -3,7 +3,7 @@
 
 pkgname=yape-git
 _pkgname=yapesdl
-pkgver=0.71.2.r31.gdf60292
+pkgver=0.80.1.r0.g7146149
 pkgrel=1
 pkgdesc="Multiplatform Commodore 64 and 264 family emulator written in C++ using SDL2 - Development version"
 arch=(i686 x86_64)
