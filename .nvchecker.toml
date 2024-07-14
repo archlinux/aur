@@ -1,0 +1,3 @@
+[osdlyrics]
+source = "git"
+git = "https://github.com/osdlyrics/osdlyrics.git"
