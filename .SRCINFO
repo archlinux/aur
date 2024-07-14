@@ -13,7 +13,7 @@ pkgbase = nuclear-player-bin
 	provides = nuclear-player
 	source = https://github.com/nukeop/nuclear/releases/download/v0.6.31/nuclear-v0.6.31-amd64.deb
 	source = https://raw.githubusercontent.com/nukeop/nuclear/v0.6.31/LICENSE
-	sha256sums = f5d4f3e077f66e5c5c4037db2941b428b57ced2f03f2cd9f8bb7107d62712da9
+	sha256sums = 0f4578da0d1a6e5c41891461f92aa702f6d024dd6085acfe9780e1d4f24cd1be
 	sha256sums = SKIP
 
 pkgname = nuclear-player-bin
