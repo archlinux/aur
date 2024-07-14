@@ -1,0 +1,4 @@
+[swaks]
+source = "git"
+git = "https://github.com/jetmore/swaks.git"
+prefix = "v"
