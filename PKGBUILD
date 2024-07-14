@@ -4,8 +4,8 @@
 
 pkgname='dut-git'
 _pkgname="${pkgname/-git/}"
-pkgver=r60.g1eec8da
-pkgrel=2
+pkgver=r64.g2db9c15
+pkgrel=1
 pkgdesc='A disk usage calculator for Linux (latest git commit)'
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 url='https://codeberg.org/201984/dut'
@@ -54,8 +54,12 @@ check() {
 package() {
   cd "$_pkgname"
 
+  #make PREFIX=/usr DESTDIR="$pkgdir" install
+
   install -vDm0755 -t "$pkgdir/usr/bin" \
     dut
+  install -vDm00644 -t "$pkgdir/usr/share/man/man1" \
+    dut.1
   install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
     README.md
 }
