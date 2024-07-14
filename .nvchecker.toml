@@ -1,0 +1,4 @@
+[python-pyswip]
+source = "git"
+git = "https://github.com/yuce/pyswip.git"
+prefix = "v"
