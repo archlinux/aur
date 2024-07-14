@@ -13,7 +13,7 @@ source=(undark::git+https://github.com/inflex/undark#branch=master
 md5sums=(SKIP
         305965de7f896df18ff00622a6987cc9)
 
-makedepends=(ctags)
+makedepends=(ctags gcc make)
 provides=($_pkgname)
 
 pkgver() {
