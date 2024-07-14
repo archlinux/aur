@@ -1,0 +1,3 @@
+[python-billiard]
+source = "pypi"
+pypi = "billiard"
