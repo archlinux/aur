@@ -124,6 +124,11 @@ package_llvm17() {
     ln -s ../lib/llvm17/bin/$_basename "$pkgdir/usr/bin/$_basename-17"
   done
 
+  # Include lit for running lit-based tests in other projects
+  pushd ../utils/lit
+  python3 setup.py install --root="$pkgdir" -O1
+  popd
+
   install -Dm644 ../LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
@@ -140,12 +145,4 @@ package_llvm17-libs() {
   install -Dm644 "$srcdir/llvm-$pkgver.src/LICENSE.TXT" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-package_llvm-lit() {
-  pkgdesc="An LLVM testing tool"
-  depends=('python')
-  cd $srcdir/llvm-$pkgver.src/utils/lit
-  python -m installer --destdir="$pkgdir" dist/*.whl
-}
-
 # vim:set ts=2 sw=2 et:
