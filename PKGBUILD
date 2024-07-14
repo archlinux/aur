@@ -1,8 +1,8 @@
 # Maintainer: Tomasz Pakuła <forest10pl@gmail.com>
 _reponame=boxflat
 pkgname=boxflat-git
-pkgver=0.0.1
-pkgrel=5
+pkgver=0.0.9r3
+pkgrel=1
 pkgdesc="Adjust your Moza Racing gear settings"
 arch=('x86_64')
 url="https://github.com/Lawstorant/boxflat"
@@ -34,5 +34,10 @@ pkgver() {
 
 package() {
   cd "$srcdir/$_reponame" || exit 1
-  ./install.sh add-prefix "${pkgdir}"
+  ./install.sh add-prefix "${pkgdir}" no-udev
+}
+
+post_install() {
+	udevadm control --reload
+	udevadm trigger --attr-match=subsystem=tty
 }
