@@ -1,0 +1,4 @@
+[lib32-portaudio]
+source = "git"
+git = "https://github.com/portaudio/portaudio.git"
+prefix = "v"
