@@ -3,8 +3,8 @@
 # Contributor: Evan Bush (PencilShavings) <eb.pencilshavings@protonmail.com>
 
 pkgname=quickemu-git
-pkgver=4.9.4.r168.gd78255b
-pkgrel=2
+pkgver=4.9.6.r2.gaeb14a7
+pkgrel=1
 pkgdesc="Quickly create and run optimised Windows, macOS and Linux desktop virtual machines"
 arch=(any)
 url="https://github.com/quickemu-project/quickemu"
@@ -28,7 +28,6 @@ package() {
   install -Dm755 quickget    -t "${pkgdir}/usr/bin"
   install -Dm755 quickreport -t "${pkgdir}/usr/bin"
   install -Dm755 chunkcheck  -t "${pkgdir}/usr/bin"
-  install -Dm755 windowskey  -t "${pkgdir}/usr/bin"
 
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
