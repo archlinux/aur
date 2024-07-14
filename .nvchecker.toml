@@ -1,0 +1,4 @@
+[xnec2c]
+source = "git"
+git = "https://github.com/KJ7LNW/xnec2c.git"
+prefix = "v"
