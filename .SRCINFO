@@ -19,6 +19,7 @@ pkgbase = llvm17
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	options = staticlibs
+	options = !lto
 	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-17.0.6/llvm-17.0.6.src.tar.xz
 	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-17.0.6/cmake-17.0.6.src.tar.xz
 	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-17.0.6/third-party-17.0.6.src.tar.xz
