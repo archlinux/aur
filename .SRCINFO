@@ -1,15 +1,16 @@
 pkgbase = skyscraper-git
-	pkgdesc = Powerful and versatile game scraper written in C++.
-	pkgver = r2845.19832c4
+	pkgdesc = Powerful and versatile game scraper written in C++. Gemba's fork.
+	pkgver = r3075.0e3fa5d
 	pkgrel = 1
-	url = https://github.com/muldjord/skyscraper
+	url = https://github.com/Gemba/skyscraper
 	arch = any
-	license = GPL
+	license = GPL-3.0-only
 	makedepends = qt5-base
 	makedepends = git
+	depends = python-pandas
 	provides = skyscraper
 	conflicts = skyscraper
-	source = git+https://github.com/muldjord/skyscraper.git#branch=master
+	source = git+https://github.com/Gemba/skyscraper.git#branch=master
 	md5sums = SKIP
 
 pkgname = skyscraper-git
