@@ -1,0 +1,4 @@
+[python-dbus-signature-pyparsing]
+source = "git"
+git = "https://github.com/stratis-storage/dbus-signature-pyparsing.git"
+prefix = "v"
