@@ -1,0 +1,4 @@
+[libpurple-lurch]
+source = "git"
+git = "https://github.com/gkdr/lurch.git"
+prefix = "v"
