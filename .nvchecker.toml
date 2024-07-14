@@ -1,0 +1,3 @@
+[xdg-desktop-portal]
+source = "git"
+git = "https://github.com/flatpak/xdg-desktop-portal.git"
