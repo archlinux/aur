@@ -1,6 +1,6 @@
 # Maintainer: nukeop <aur@gumblert.tech>
 pkgname=nuclear-player-git
-pkgver=v0.6.30
+pkgver=v0.6.31
 pkgrel=1
 pkgdesc="A free, multiplatform music player app that streams from multiple sources."
 url="https://nuclear.js.org"
