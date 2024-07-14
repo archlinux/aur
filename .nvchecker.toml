@@ -1,0 +1,3 @@
+[fcitx-cloudpinyin]
+source = "git"
+git = "https://github.com/fcitx/fcitx-cloudpinyin.git"
