@@ -1,0 +1,4 @@
+[arrayfire]
+source = "git"
+git = "https://github.com/arrayfire/arrayfire.git"
+prefix = "v"
