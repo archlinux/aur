@@ -1,8 +1,8 @@
 pkgbase = eternalmodmanager
 	pkgdesc = Cross-platform mod manager for DOOM Eternal.
-	pkgver = 4.0.3
+	pkgver = 4.2.0
 	pkgrel = 1
-	url = https://github.com/PowerBall253/EternalModManager
+	url = https://github.com/brunoanc/EternalModManager
 	arch = x86_64
 	license = MIT
 	makedepends = git
@@ -10,7 +10,7 @@ pkgbase = eternalmodmanager
 	depends = gtk4
 	depends = libadwaita
 	depends = openssl
-	source = git+https://github.com/PowerBall253/EternalModManager.git#tag=v4.0.3
+	source = git+https://github.com/brunoanc/EternalModManager.git#tag=v4.2.0
 	sha256sums = SKIP
 
 pkgname = eternalmodmanager

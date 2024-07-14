@@ -1,15 +1,15 @@
-# Maintainer: Bruno Ancona <bruno at powerball253 dot com>
+# Maintainer: Bruno Ancona <brunoanconasala at gmail dot com>
 
 pkgname=eternalmodmanager
-pkgver=4.0.3
+pkgver=4.2.0
 pkgrel=1
 pkgdesc='Cross-platform mod manager for DOOM Eternal.'
 arch=('x86_64')
-url='https://github.com/PowerBall253/EternalModManager'
+url='https://github.com/brunoanc/EternalModManager'
 license=('MIT')
 depends=('gtk4' 'libadwaita' 'openssl')
 makedepends=('git' 'cargo')
-source=("git+https://github.com/PowerBall253/EternalModManager.git#tag=v${pkgver}")
+source=("git+https://github.com/brunoanc/EternalModManager.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 prepare() {
@@ -29,8 +29,8 @@ build() {
 package() {
     cd "EternalModManager"
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
-    install -Dm644 -t "${pkgdir}/usr/share/applications/" "resources/com.powerball253.eternalmodmanager.desktop"
-    install -Dm644 -t "${pkgdir}/usr/share/metainfo/" "resources/com.powerball253.eternalmodmanager.appdata.xml"
-    install -Dm644 -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps/" "resources/com.powerball253.eternalmodmanager.png"
-    install -Dm644 -t "${pkgdir}/usr/share/licenses/com.powerball253.eternalmodmanager" LICENSE
+    install -Dm644 -t "${pkgdir}/usr/share/applications/" "resources/io.github.brunoanc.eternalmodmanager.desktop"
+    install -Dm644 -t "${pkgdir}/usr/share/metainfo/" "resources/io.github.brunoanc.eternalmodmanager.appdata.xml"
+    install -Dm644 -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps/" "resources/io.github.brunoanc.eternalmodmanager.png"
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/io.github.brunoanc.eternalmodmanager" LICENSE
 }
