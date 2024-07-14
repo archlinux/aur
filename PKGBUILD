@@ -72,7 +72,7 @@ fi
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-git
-pkgver=5.15.14.xanmod1.r0.g33f903b9927e
+pkgver=6.9.9.xanmod1.r0.gebfe66c6a439
 pkgrel=1
 pkgdesc='Linux Xanmod - git version'
 url="http://www.xanmod.org/"
