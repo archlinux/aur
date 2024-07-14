@@ -1,0 +1,4 @@
+[dbus-client-gen]
+source = "git"
+git = "https://github.com/stratis-storage/dbus-client-gen.git"
+prefix = "v"
