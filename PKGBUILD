@@ -4,13 +4,13 @@
 # Contributor: Brandon Invergo <brandon@invergo.net>
 
 pkgname=img2pdf-git
-pkgver=0.4.4.r10.gbe83693
+pkgver=0.5.1.r0.g819b366
 pkgrel=1
 epoch=1
 pkgdesc='Losslessly convert raster images to PDF'
 arch=(any)
 url="https://gitlab.mister-muffin.de/josch/img2pdf"
-license=(LGPL3)
+license=('LGPL-3.0-or-later')
 depends=(python-pillow python-pikepdf)
 makedepends=(git python-setuptools python-build python-installer python-wheel)
 checkdepends=(python-pytest python-numpy python-scipy python-lxml

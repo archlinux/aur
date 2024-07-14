@@ -1,11 +1,11 @@
 pkgbase = img2pdf-git
 	pkgdesc = Losslessly convert raster images to PDF
-	pkgver = 0.4.4.r10.gbe83693
+	pkgver = 0.5.1.r0.g819b366
 	pkgrel = 1
 	epoch = 1
 	url = https://gitlab.mister-muffin.de/josch/img2pdf
 	arch = any
-	license = LGPL3
+	license = LGPL-3.0-or-later
 	checkdepends = python-pytest
 	checkdepends = python-numpy
 	checkdepends = python-scipy
