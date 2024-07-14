@@ -4,7 +4,7 @@
 
 pkgname=udisks2-qt5
 pkgver=5.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='UDisks2 DBus interfaces binding for Qt5'
 arch=('x86_64')
 url="https://github.com/linuxdeepin/udisks2-qt5"

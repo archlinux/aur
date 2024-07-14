@@ -1,0 +1,13 @@
+pkgbase = udisks2-qt5
+	pkgdesc = UDisks2 DBus interfaces binding for Qt5
+	pkgver = 5.0.6
+	pkgrel = 2
+	url = https://github.com/linuxdeepin/udisks2-qt5
+	arch = x86_64
+	license = GPL3
+	depends = qt5-base
+	depends = udisks2
+	source = udisks2-qt5-5.0.6.tar.gz::https://github.com/linuxdeepin/udisks2-qt5/archive/5.0.6.tar.gz
+	sha512sums = 083618808bcfa2345b502ef29cb29adf39e31c827fcff409d0dd9ac6d26c6c110a7729e86bf1584320add520f59746009c5ae4e8a3be15a2588707bb63bb8ccd
+
+pkgname = udisks2-qt5
