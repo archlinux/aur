@@ -1,0 +1,3 @@
+[python-uhashring]
+source = "git"
+git = "https://github.com/ultrabug/uhashring.git"
