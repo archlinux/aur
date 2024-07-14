@@ -1,0 +1,4 @@
+[python-into-dbus]
+source = "git"
+git = "https://github.com/stratis-storage/into-dbus-python.git"
+prefix = "v"
