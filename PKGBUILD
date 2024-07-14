@@ -124,11 +124,6 @@ package_llvm17() {
     ln -s ../lib/llvm17/bin/$_basename "$pkgdir/usr/bin/$_basename-17"
   done
 
-  # Include lit for running lit-based tests in other projects
-  pushd ../utils/lit
-  python3 setup.py install --root="$pkgdir" -O1
-  popd
-
   install -Dm644 ../LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
