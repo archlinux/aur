@@ -1,0 +1,15 @@
+pkgbase = xautolock
+	pkgdesc = An automatic X screen-locker/screen-saver
+	pkgver = 2.2
+	pkgrel = 7
+	url = https://ibiblio.org/pub/Linux/X11/screensavers/
+	arch = x86_64
+	license = GPL2
+	makedepends = imake
+	depends = libxss
+	source = https://ibiblio.org/pub/Linux/X11/screensavers/xautolock-2.2.tgz
+	source = union-wait.patch
+	sha256sums = 11f0275175634e6db756e96f5713ec91b8b1c41f8663df54e8a5d27dc71c4da2
+	sha256sums = 3fb37a10157a751728ed07f74aa42832d8fad92166c19eafbeb2edc1d4fc08e2
+
+pkgname = xautolock

@@ -4,7 +4,7 @@
 
 pkgname=xautolock
 pkgver=2.2
-pkgrel=6
+pkgrel=7
 pkgdesc="An automatic X screen-locker/screen-saver"
 arch=(x86_64)
 url="https://ibiblio.org/pub/Linux/X11/screensavers/"
