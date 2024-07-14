@@ -1,0 +1,13 @@
+pkgbase = xfwm4-themes
+	pkgdesc = A set of additional themes for the Xfce window manager
+	pkgver = 4.10.0
+	pkgrel = 6
+	url = https://www.xfce.org/
+	arch = any
+	groups = xfce4
+	license = GPL3
+	depends = xfwm4
+	source = https://archive.xfce.org/src/art/xfwm4-themes/4.10/xfwm4-themes-4.10.0.tar.bz2
+	sha256sums = 3214d5f00e9703b5e8c9e7c3287d606dedec7285ceb4d5db332e93ada66fd575
+
+pkgname = xfwm4-themes
