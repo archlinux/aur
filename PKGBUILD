@@ -3,12 +3,12 @@
 _pkgname=fflogs-uploader
 pkgname=${_pkgname}-appimage
 pkgver=8.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="FFLogs Uploader appimage"
 arch=('x86_64')
 url="https://github.com/RPGLogs/Uploaders-fflogs/"
 license=('unknown')
-depends=('zlib' 'hicolor-icon-theme')
+depends=('zlib' 'hicolor-icon-theme' 'fuse2')
 options=(!strip)
 _appimage="fflogs-v${pkgver}.AppImage"
 source_x86_64=("${_appimage}::${url}releases/download/v${pkgver}/fflogs-v${pkgver}.AppImage"
