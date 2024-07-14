@@ -1,0 +1,14 @@
+pkgbase = vim-airline-themes
+	pkgdesc = Themes for vim-airline
+	pkgver = r1435.97cf3e6
+	pkgrel = 3
+	url = https://github.com/vim-airline/vim-airline-themes
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim-plugin-runtime
+	source = git+https://github.com/vim-airline/vim-airline-themes#commit=97cf3e6e638f936187d5f6e9b5eb1bdf0a4df256
+	sha512sums = SKIP
+
+pkgname = vim-airline-themes

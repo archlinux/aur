@@ -4,7 +4,7 @@
 pkgname=vim-airline-themes
 pkgver=r1435.97cf3e6
 _gitcommit=97cf3e6e638f936187d5f6e9b5eb1bdf0a4df256
-pkgrel=2
+pkgrel=3
 pkgdesc='Themes for vim-airline'
 url='https://github.com/vim-airline/vim-airline-themes'
 arch=('any')
