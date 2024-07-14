@@ -3,14 +3,14 @@
 pkgbase='pokete-git'
 pkgname='pokete-git'
 pkgver=0.9.2.r53.g779b60fa
-pkgrel=1
+pkgrel=2
 pkgdesc="A terminal based Pokemon like game"
 arch=(any)
 url="https://github.com/lxgr-linux/pokete"
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=('pokete')
-depends=('python' 'python-scrap_engine' 'python-pip' 'alsa-lib')
-makedepends=('git' 'go')
+depends=('python' 'python-scrap_engine' 'alsa-lib')
+makedepends=('git' 'go' 'python-yaml')
 source=("$pkgbase"::'git+https://github.com/lxgr-linux/pokete')
 md5sums=('SKIP')
 
