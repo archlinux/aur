@@ -3,7 +3,7 @@
 
 pkgname=xplc
 pkgver=0.3.13
-pkgrel=10
+pkgrel=11
 pkgdesc="Cross-Platform Lightweight Components"
 arch=('x86_64')
 url="http://xplc.sourceforge.net"

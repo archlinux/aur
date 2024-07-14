@@ -1,0 +1,16 @@
+pkgbase = xplc
+	pkgdesc = Cross-Platform Lightweight Components
+	pkgver = 0.3.13
+	pkgrel = 11
+	url = http://xplc.sourceforge.net
+	arch = x86_64
+	license = LGPL
+	depends = gcc-libs
+	source = https://downloads.sourceforge.net/xplc/xplc-0.3.13.tar.gz
+	source = 0001-Fix-narrowing-conversion-error.patch
+	source = xplc-0.3.13-as-needed.patch
+	sha256sums = 158a0f44a2eb055522377c275bbd0e7412dd3b8a9b75ec344c0457b3a1a29cbb
+	sha256sums = 13eaf225b33ca26a5152fedd51ca835757fd0f652d36d5428b19670966820074
+	sha256sums = 8381931466572f4804fa553e8d86d05039d622aa344415c490eab00e0fca7e31
+
+pkgname = xplc
