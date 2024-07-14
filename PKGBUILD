@@ -1,6 +1,6 @@
 # Maintainer: Kushagra Sharma <tda@thedarkartist.in>
 pkgname=tda
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A simple rust program to put 'TheDarkArtist' to the console"
 arch=('x86_64')
