@@ -2,7 +2,7 @@
 # Contributor: greyltc
 
 pkgname=cbang-git
-pkgver=r1582.6e74d7ac
+pkgver=r1771.1b05ea96
 pkgrel=1
 pkgdesc="A library of cross-platform C++ utilities"
 arch=('x86_64')
@@ -67,5 +67,7 @@ package() {
   cp -a config/ "$pkgdir/opt/${pkgname%-git}/config/"
   cp -a src/boost/boost/ "$pkgdir/opt/${pkgname%-git}/include/"
   cp -a include/cbang/ "$pkgdir/opt/${pkgname%-git}/include/"
+  cp -a include/event2/ "$pkgdir/opt/${pkgname%-git}/include/"
+  cp -a include/lz4/ "$pkgdir/opt/${pkgname%-git}/include/"
   cp -a src/cbang/boost/ "$pkgdir/opt/${pkgname%-git}/include/cbang/"
 }
