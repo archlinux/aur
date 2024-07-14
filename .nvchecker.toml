@@ -1,0 +1,4 @@
+[python-boost-histogram]
+source = "git"
+git = "https://github.com/scikit-hep/boost-histogram.git"
+prefix = "v"
