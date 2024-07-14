@@ -1,0 +1,4 @@
+[gortr]
+source = "git"
+git = "https://github.com/cloudflare/gortr.git"
+prefix = "v"
