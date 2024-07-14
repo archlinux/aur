@@ -1,11 +1,12 @@
-# Maintainer: Daniele Basso
-# Maintainer: Lancelot Owczarczak <lancelot@owczarczak.fr>
+# Maintainer: Stefan Wimmer <info@stefanwimmer128.xyz>
+# Contributor: Daniele Basso
+# Contributor: Lancelot Owczarczak <lancelot@owczarczak.fr>
 # Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 
 pkgname=('llvm17' 'llvm17-libs')
 pkgver=17.0.6
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -14,16 +15,12 @@ makedepends=('cmake' 'ninja' 'zlib' 'zstd' 'libffi' 'libedit' 'ncurses'
 checkdepends=('python-psutil')
 options=('staticlibs')
 _source_base=https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver
-source=($_source_base/llvm-$pkgver.src.tar.xz{,.sig}
-        $_source_base/cmake-$pkgver.src.tar.xz{,.sig}
-        $_source_base/third-party-$pkgver.src.tar.xz{,.sig})
+source=($_source_base/llvm-$pkgver.src.tar.xz
+        $_source_base/cmake-$pkgver.src.tar.xz
+        $_source_base/third-party-$pkgver.src.tar.xz)
 b2sums=('2d1305a7b059d6b425cbe560bc5b5764934bd690206ace1f50ab317972c5a380768a86f3542b27be299c12ab356099fe80876a57978c41d9131ec2a2e038f42c'
-        'SKIP'
         'f95c1c951ba7bd943931bb18c8dc23ef0b3c20ee3dd254d458ab7a3339097fc0f9e11c3b892c352e3f5f131014265a6bb116f56c9ebd78408f05158a90f51d6b'
-        'SKIP'
-        '98e7525ae1106bce37809b77bf23a75b7e3ea14fa31342bfe50e8da3532952254be2424aba7241850e8b7d97dc55c0da1162d31ae5485774b5902d521da449bd'
-        'SKIP')
-validpgpkeys=('D574BD5D1D0E98895E3BF90044F2485E45D59042') # Tobias Hieta <tobias@hieta.se>
+        '98e7525ae1106bce37809b77bf23a75b7e3ea14fa31342bfe50e8da3532952254be2424aba7241850e8b7d97dc55c0da1162d31ae5485774b5902d521da449bd')
 
 # Utilizing LLVM_DISTRIBUTION_COMPONENTS to avoid
 # installing static libraries; inspired by Gentoo
