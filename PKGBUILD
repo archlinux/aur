@@ -6,13 +6,13 @@
 # Contributor: judd <jvinet@zeroflux.org>
 
 pkgname="e2fsprogs-git"
-pkgver=1.47.0.r14.ge76886f7
+pkgver=1.47.1.r0.g950a0d69
 pkgrel=1
 pkgdesc="Ext2/3/4 filesystem utilities (git)"
 arch=('i686' 'x86_64')
-license=('GPL' 'LGPL' 'MIT')
+license=('GPL-2.0-only' 'LGPL-2.0-only' 'MIT')
 url="https://e2fsprogs.sourceforge.net"
-depends=('sh' 'util-linux-libs' 'fuse2')
+depends=('sh' 'util-linux-libs' 'fuse3')
 makedepends=('git' 'util-linux' 'systemd')
 optdepends=('lvm2: for e2scrub'
             'util-linux: for e2scrub'
@@ -41,16 +41,13 @@ build() {
   ./configure --prefix=/usr \
               --with-root-prefix="" \
               --libdir=/usr/lib \
+              --libexecdir='/usr/lib' \
               --sbindir=/usr/bin \
               --enable-elf-shlibs \
               --disable-fsck \
               --disable-uuidd \
               --disable-libuuid \
               --disable-libblkid \
-              --enable-blkid-debug \
-              --enable-verbose-makecmds \
-              --enable-e2initrd-helper
-              #--enable-jbd-debug  # this likes to break the build
 
   make
 
