@@ -1,0 +1,3 @@
+[fcitx-sunpinyin]
+source = "git"
+git = "https://github.com/fcitx/fcitx-sunpinyin.git"
