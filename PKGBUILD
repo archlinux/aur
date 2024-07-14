@@ -2,17 +2,19 @@
 pkgname=chezmoi_modify_manager
 _pkgver=3.4.0
 pkgver=${_pkgver/-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools for chezmoi to handle mixed settings and state"
 arch=(x86_64 i686 armv7h aarch64)
 url="https://github.com/VorpalBlade/chezmoi_modify_manager"
 license=('GPL-3.0-only')
+depends=('dbus')
 makedepends=('cargo')
 source=("$pkgname-$_pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-${_pkgver}.crate")
 sha256sums=('a0738f5469173393f3f6fc566fbcd6b32297cf170fc21e55bad0d9482865aa65')
 
 prepare() {
     cd "$pkgname-$_pkgver"
+    export CHEZMOI_MODIFY_MANAGER_BUILDER=aur
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
