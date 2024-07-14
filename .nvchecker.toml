@@ -1,0 +1,4 @@
+[ssh-audit]
+source = "git"
+git = "https://github.com/jtesta/ssh-audit.git"
+prefix = "v"
