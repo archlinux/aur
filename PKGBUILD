@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=sunshine-git
-pkgver=2024.629.13903.r0.g90fd371
+pkgver=2024.713.205505.r0.g18e7dfb
 pkgrel=1
 pkgdesc="Game Stream server for Moonlight, latest git"
 arch=('x86_64')
@@ -59,7 +59,6 @@ git+https://github.com/michaeltyson/TPCircularBuffer.git
 git+https://github.com/LizardByte/build-deps.git
 git+https://github.com/sleepybishop/nanors.git
 git+https://github.com/cgutman/enet.git
-0001-Fix-miniupnpc-18-compatibility.patch
 )
 
 sha256sums=('SKIP'
@@ -71,8 +70,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            'cdd3f15bcc289d24dec1dc7871030b314c06f1bce357dd1700426ad103c8dfa0')
+            'SKIP')
 
 pkgver() {
   cd Sunshine

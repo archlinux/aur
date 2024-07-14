@@ -1,6 +1,6 @@
 pkgbase = sunshine-git
 	pkgdesc = Game Stream server for Moonlight, latest git
-	pkgver = 2024.629.13903.r0.g90fd371
+	pkgver = 2024.713.205505.r0.g18e7dfb
 	pkgrel = 1
 	url = https://github.com/LizardByte/Sunshine
 	install = sunshine-git.install
@@ -48,7 +48,6 @@ pkgbase = sunshine-git
 	source = git+https://github.com/LizardByte/build-deps.git
 	source = git+https://github.com/sleepybishop/nanors.git
 	source = git+https://github.com/cgutman/enet.git
-	source = 0001-Fix-miniupnpc-18-compatibility.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -59,6 +58,5 @@ pkgbase = sunshine-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = cdd3f15bcc289d24dec1dc7871030b314c06f1bce357dd1700426ad103c8dfa0
 
 pkgname = sunshine-git
