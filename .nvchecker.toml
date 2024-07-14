@@ -1,0 +1,4 @@
+[stylelint]
+source = "git"
+git = "https://github.com/stylelint/stylelint.git"
+prefix = "v"
