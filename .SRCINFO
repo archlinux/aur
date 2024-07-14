@@ -1,0 +1,20 @@
+pkgbase = mergetb-cli-git
+	pkgdesc = Command-line tool used to interact and manage a Merge testbed and experiments
+	pkgver = 1.2.4.r0.gab3c35e
+	pkgrel = 1
+	url = https://gitlab.com/mergetb/portal/cli
+	arch = any
+	license = custom:Unknown
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	optdepends = bash-completion: for shell auto-completion
+	optdepends = zsh-completions: for shell auto-completion
+	provides = mergetb-cli=1.2.4
+	provides = mrg=1.2.4
+	conflicts = mergetb-cli
+	conflicts = mrg
+	source = cli::git+https://gitlab.com/mergetb/portal/cli.git
+	sha256sums = SKIP
+
+pkgname = mergetb-cli-git
