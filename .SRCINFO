@@ -1,15 +1,14 @@
 pkgbase = youtube-music-git
 	pkgdesc = YouTube Music Desktop App bundled with custom plugins (and built-in ad blocker / downloader)
-	pkgver = 3.3.12.r1.g2627ebd6
+	pkgver = 3.4.0.r5.g363d869c
 	pkgrel = 1
 	url = https://th-ch.github.io/youtube-music
 	install = youtube-music.install
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = nodejs>=18.0.0
 	makedepends = pnpm
-	depends = electron30
+	depends = electron31
 	depends = libsecret
 	provides = youtube-music
 	conflicts = youtube-music
