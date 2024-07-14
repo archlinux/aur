@@ -7,7 +7,10 @@ pkgbase = ipclip
 	license = MIT
 	makedepends = git
 	depends = xclip
+	provides = ipclip
+	conflicts = ipclip
+	options = !debug
 	source = ipclip-1.0.0.tar.gz::https://github.com/TheDarkArtist/ipclip/archive/v1.0.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = 979317c6462b9ea89a40abb7c69e3cebe8bb04c7ee4f9c926e33e0e4c86d45d5
 
 pkgname = ipclip
