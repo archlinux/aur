@@ -1,7 +1,8 @@
-# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=python-questplus
-pkgver=2019.4
+_pkgname=${pkgname#python-}
+pkgver=2023.1
 pkgrel=1
 pkgdesc='This is a simple implementation of the QUEST+ algorithm in Python'
 arch=('any')
@@ -11,11 +12,17 @@ depends=('python'
          'python-json-tricks'
          'python-scipy'
          'python-xarray')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-setuptools-scm' 'python-wheel')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hoechenberger/questplus/archive/${pkgver}.tar.gz")
-sha256sums=('61cffe0950db5d76c75ee9d39d94cdbdac4d7eef675b55b4a0cc30e380ecbfec')
+sha256sums=('7f86be68117fe5caf34b03fa3f93e50868c52c51201c25351579644124ea0834')
+
+build() {
+    cd "${_pkgname}-${pkgver}"
+    export SETUPTOOLS_SCM_PRETEND_VERSION="$pkgver"
+    python -m build --wheel --no-isolation
+}
 
 package() {
-  cd "${srcdir}/questplus-${pkgver}"
-  python setup.py install --root="$pkgdir/" --optimize=1
+    cd "${_pkgname}-${pkgver}"
+    python -m installer --destdir=${pkgdir} dist/*.whl
 }

@@ -1,17 +1,19 @@
 pkgbase = python-questplus
 	pkgdesc = This is a simple implementation of the QUEST+ algorithm in Python
-	pkgver = 2019.4
+	pkgver = 2023.1
 	pkgrel = 1
 	url = https://github.com/hoechenberger/questplus
 	arch = any
 	license = GPL3
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
 	depends = python
 	depends = python-json-tricks
 	depends = python-scipy
 	depends = python-xarray
-	source = python-questplus-2019.4.tar.gz::https://github.com/hoechenberger/questplus/archive/2019.4.tar.gz
-	sha256sums = 61cffe0950db5d76c75ee9d39d94cdbdac4d7eef675b55b4a0cc30e380ecbfec
+	source = python-questplus-2023.1.tar.gz::https://github.com/hoechenberger/questplus/archive/2023.1.tar.gz
+	sha256sums = 7f86be68117fe5caf34b03fa3f93e50868c52c51201c25351579644124ea0834
 
 pkgname = python-questplus
-
