@@ -1,0 +1,3 @@
+[cutefish-wallpapers]
+source = "git"
+git = "https://github.com/cutefishos/wallpapers.git"
