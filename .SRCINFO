@@ -1,6 +1,6 @@
 pkgbase = coreutils-hybrid
 	pkgdesc = GNU coreutils / uutils-coreutils hybrid package. Uses stable uutils programs mixed with GNU counterparts if uutils counterpart is unfinished / buggy
-	pkgver = 9.4_0.0.26
+	pkgver = 9.4_0.0.27
 	pkgrel = 1
 	url = https://www.gnu.org/software/coreutils/
 	arch = x86_64
@@ -18,8 +18,8 @@ pkgbase = coreutils-hybrid
 	conflicts = coreutils
 	options = !lto
 	source = https://ftp.gnu.org/gnu/coreutils/coreutils-9.4.tar.xz
-	source = uutils-coreutils-0.0.26.tar.gz::https://github.com/uutils/coreutils/archive/0.0.26.tar.gz
+	source = uutils-coreutils-0.0.27.tar.gz::https://github.com/uutils/coreutils/archive/0.0.27.tar.gz
 	sha512sums = 7c55ee23b685a0462bbbd118b04d25278c902604a0dcf3bf4f8bf81faa0500dee5a7813cba6f586d676c98e520cafd420f16479619305e94ea6798d8437561f5
-	sha512sums = ba3eb06b4a11ba1adbe28fd53282827a148a3dd616db06230f7d31810418fd80f024e55ecd29ff2556b307f146bd99b083bd337912a900e7190db1c32bdf5cb0
+	sha512sums = e798a14a9d24b2ff857588336e4035817445850a1ed5216b1fa5b876082eb0693c7ae535d0106a7aab95690eb0369481308e877f60e39ae67a38b048e73574bd
 
 pkgname = coreutils-hybrid
