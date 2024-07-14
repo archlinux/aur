@@ -3,7 +3,7 @@
 
 pkgname=sweet-gtk-theme
 _pkgname=Sweet
-pkgver=4.0
+pkgver=5.0
 pkgrel=1
 pkgdesc="Light and dark colorful Gtk3.20+ theme"
 arch=('any')
@@ -11,9 +11,9 @@ url='https://github.com/EliverLara/Sweet'
 license=('GPL3')
 conflicts=('sweet-theme')
 makedepends=('git')
-_commit=fff466f73dc27db52cf4a487f86fbe893bbfbf0a
+_commit=858e3e4a8df55ee17af38ee16214cd7cd370ac3e
 source=(git+$url.git#commit=$_commit)
-sha256sums=('bd182bcdbaab20d513da7e3e5515de047aae318ba794dfd4e30e02480ce1e6f7')
+sha256sums=('bc442861036851e613795d3fd94a52f49dfc8cee57f1220801e863f41425058e')
 
 prepare() {
   # Clean out some unneeded files to make installation a little more straightforward
