@@ -3,8 +3,8 @@
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname='vapoursynth-editor'
-pkgver='r19_mod_6.7'
-_pkgver='R19_mod_6.7'
+pkgver='r19_mod_6.8'
+_pkgver='R19_mod_6.8'
 pkgrel='1'
 pkgdesc='Editor for VapourSynth scripts'
 arch=('x86_64')
@@ -13,7 +13,8 @@ license=('CC-BY-2.5 AND CC-BY-3.0 AND CC-BY-4.0 AND MIT')
 depends=('qt6-5compat' 'qt6-websockets' 'vapoursynth>=R58')
 source=("https://github.com/YomikoR/VapourSynth-Editor/archive/refs/tags/${_pkgver//_/-}.tar.gz"
         'vsedit.desktop')
-sha256sums=('1122babac05d51d9d578f2ed6e8ea270a554a1c1453585c114e17b1e47215e39'
+options=(!lto)
+sha256sums=('aa2c3a0f7ac3b15cb66bd71d2502defa812e567093b827c21f35fdffa5e2a55f'
             'b6d24441cf5746ea4dc08ecf379c67695bac663deb394db4334ba6aba9474c0f')
 
 build() {
