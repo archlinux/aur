@@ -23,6 +23,7 @@ pkgbase = web-greeter
 	depends = gobject-introspection
 	depends = libxcb
 	depends = libx11
+	conflicts = nody-greeter
 	backup = etc/lightdm/web-greeter.yml
 	source = web-greeter-3.5.3::git+https://github.com/JezerM/web-greeter.git#tag=3.5.3
 	source = package.patch

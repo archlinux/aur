@@ -13,6 +13,7 @@ source=("$pkgname-$pkgver::git+$url.git#tag=$pkgver" "package.patch")
 sha512sums=('SKIP'
             '8146f3e6047fff6ebd24cd6a2fda91322e75bef24d54cad5112e4f0daffc4f0713505f062dfb9c24255de0c2a08856f3224fe57a668247941eba73f434cad0d6')
 backup=('etc/lightdm/web-greeter.yml')
+conflicts=('nody-greeter')
 
 prepare() {
     cd "$pkgname-$pkgver"
