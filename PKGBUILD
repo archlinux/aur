@@ -1,32 +1,58 @@
 # Maintainer: Alex Tharp <alex at toastercup dot io>
 pkgname=coolvlviewer-bin
-pkgver=1.32.2.2
+pkgver=1.32.2.5
 pkgrel=1
-pkgdesc="A third-party viewer for Second Life (TM) and OpenSim grids."
+pkgdesc="A third-party viewer for Second Life and OpenSim grids."
 url="http://sldev.free.fr"
-license=('custom')
-depends=('apr-util' 'glib2>=2.32' 'libgl' 'libidn' 'mesa' 'sdl' 'glu' 'pangox-compat' 'gconf' 'libxss' 'libxrandr' 'libxcomposite' 'libgl' 'lib32-zlib' 'libcups' 'atk' 'lib32-libsndfile' 'lib32-util-linux' 'lib32-libidn' 'libxcursor' 'libxtst')
+license=('GPL-2.0-only')
+depends=(
+  'apr-util'
+  'atk'
+  'gconf'
+  'glib2>=2.32'
+  'glu'
+  'lib32-libidn'
+  'lib32-libsndfile'
+  'lib32-util-linux'
+  'lib32-zlib'
+  'libcups'
+  'libgl'
+  'libgl'
+  'libidn'
+  'libxcomposite'
+  'libxcursor'
+  'libxrandr'
+  'libxss'
+  'libxtst'
+  'mesa'
+  'pangox-compat'
+  'sdl'
+)
 optdepends=(
-  'libpulse: for PulseAudio support'
   'alsa-lib: for ALSA support'
-  'lib32-alsa-lib: for ALSA support'
-  'nvidia-utils: for NVIDIA support'
-  'pepper-flash: for inworld Flash support'
-  'gst-plugins-good: for video support'
   'gst-plugins-bad: for video support'
+  'gst-plugins-good: for video support'
   'gst-plugins-ugly: for video support'
+  'lib32-alsa-lib: for ALSA support'
   'lib32-freealut: for OpenAL support'
   'lib32-libidn11: for voice support'
-  'wine: for SLVoice support')
+  'libpulse: for PulseAudio support'
+  'nvidia-utils: for NVIDIA support'
+  'pepper-flash: for inworld Flash support'
+  'wine: for SLVoice support'
+)
 arch=('x86_64')
-conflicts=('coolvlviewer' 'coolvlviewer-experimental' 'coolvlviewer-experimental-bin')
 install=coolvlviewer.install
-source=("http://sldev.free.fr/binaries/CoolVLViewer-${pkgver}-Linux-x86_64-Setup"
-        "coolvlviewer.desktop"
-        "coolvlviewer.launcher")
-sha1sums=('b2d209543cbf2958ae4236a5e2ec12c35d671abc'
-          'd5defd3d847fcfb7cdf41150ab55684dedc79275'
-          '3ef1284a00a4437e4c34f809311ee0672604ef04')
+source=(
+  "http://sldev.free.fr/binaries/CoolVLViewer-${pkgver}-Linux-x86_64-Setup"
+  "coolvlviewer.desktop"
+  "coolvlviewer.launcher"
+)
+sha1sums=(
+  'de472a24c9f39a41c4ed96d2728401a072ec305a'
+  '6336a03697c321495c3c9aacc57274b4a054f08a'
+  '3ef1284a00a4437e4c34f809311ee0672604ef04'
+)
 
 build() {
   cd $srcdir
