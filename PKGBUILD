@@ -4,10 +4,10 @@
 pkgname=mldonkey
 _pkgver=3.1.7-2
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=5
 pkgdesc='A multi-network P2P client'
 arch=(x86_64)
-url='http://mldonkey.sourceforge.net/'
+url="https://github.com/ygrek/mldonkey"
 license=(GPL2)
 depends=(file gd hicolor-icon-theme libnatpmp libminiupnpc.so)
 makedepends=(gtk2 librsvg ocaml4 ocaml4-camlp4 ocaml4-lablgtk2 ocaml4-num miniupnpc)
@@ -19,6 +19,7 @@ source=("https://github.com/ygrek/mldonkey/releases/download/release-${pkgver//.
         "https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/mldonkey-cpp17-byte-namespace.patch"
         "https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/mldonkey-fix-build-with-4.12.patch"
         "https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/mldonkey-fix-build.patch"
+        "mldonkey-gcc14.patch::https://github.com/ygrek/mldonkey/pull/92/commits/50fc63fb125e848ca238bd23e55e9d596b3339a8.patch"
         mldonkey.conf
         mldonkey.service
         mldonkey.tmpfiles
@@ -27,6 +28,7 @@ sha256sums=('b926e7aa3de4b4525af73c88f1724d576b4add56ef070f025941dd51cb24a794'
             'eef21187cecc6f1052ff6e0d988093a6fed8b4745ecb257b9e127c23c60cb27d'
             '9c8f54159e2bf5e390f574a015a79b88a87a2117f5bb732741296948a2fb0b8b'
             '333c3b0ad43b6d6f1786cdd780d4b66fadc638d192875df4422724176201ffdf'
+            'f1a731e85f18f5be4672b48e6f19ae8d5823a97c6ca82d5ca8c0ed0bb1b800a6'
             'f1d9401cefd591662d49011c53fdb2788755a6f745a963e46d8037b990edeb6a'
             '778cebe8edcffd63db3594054c2daa62ce571644a96ad235b8c95470b55c0415'
             '9c78fbfbba4f8286e2c2299e4da6f76d0f34f33fde26964922707c34fb75157b'
@@ -41,13 +43,15 @@ prepare() {
   patch -Np1 -i ../mldonkey-fix-build-with-4.12.patch
   patch -Np1 -i ../mldonkey-fix-build.patch
 
+  patch -Np1 -i ../mldonkey-gcc14.patch
+
   # https://github.com/ygrek/mldonkey/issues/101
   sed -i 's/sizeof( map->lanaddr )/sizeof( map->lanaddr ), NULL , 0/g' src/utils/net/upnp_stubs.c
 }
 
 build() {
-  # GCC 14, not reported yet
-  CFLAGS+=" -Wno-error=incompatible-pointer-types"
+  # GCC 14, https://github.com/ygrek/mldonkey/pull/92
+  #CFLAGS+=" -Wno-error=incompatible-pointer-types"
 
   cd "mldonkey-${_pkgver}"
   ./configure \
