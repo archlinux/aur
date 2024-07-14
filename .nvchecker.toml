@@ -1,0 +1,4 @@
+[python-histoprint]
+source = "git"
+git = "https://github.com/scikit-hep/histoprint.git"
+prefix = "v"
