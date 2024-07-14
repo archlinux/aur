@@ -1,0 +1,7 @@
+[spectrwm]
+source = "github"
+github = "conformal/spectrwm"
+use_max_tag = true
+prefix = "SPECTRWM_"
+from_pattern = "_"
+to_pattern = "."
