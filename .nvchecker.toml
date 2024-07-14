@@ -1,0 +1,3 @@
+[python-migen]
+source = "git"
+git = "https://github.com/m-labs/migen.git"
