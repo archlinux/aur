@@ -1,0 +1,14 @@
+pkgbase = undark-git
+	pkgdesc = Undark - SQLite3 database data recovery tool
+	pkgver = r3.2e0bd78
+	pkgrel = 1
+	url = https://github.com/inflex/undark
+	arch = any
+	makedepends = ctags
+	provides = undark
+	source = undark::git+https://github.com/inflex/undark#branch=master
+	source = https://raw.githubusercontent.com/inflex/undark/master/LICENSE
+	md5sums = SKIP
+	md5sums = 305965de7f896df18ff00622a6987cc9
+
+pkgname = undark-git
