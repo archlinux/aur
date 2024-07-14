@@ -1,0 +1,3 @@
+[fcitx-kkc]
+source = "git"
+git = "https://github.com/fcitx/fcitx-kkc.git"
