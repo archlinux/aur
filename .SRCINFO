@@ -1,0 +1,20 @@
+pkgbase = python-chibi
+	pkgdesc = python snippets and other useful things
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://pypi.org/project/chibi/
+	arch = any
+	license = WTFPL
+	makedepends = python-setuptools
+	depends = python-magic
+	depends = python-dateutils
+	depends = python-xmltodict
+	depends = python-yaml
+	depends = python-pillow
+	depends = python-chibi-donkey
+	depends = python-chibi-atlas
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/c/chibi/chibi-0.12.0.tar.gz
+	sha256sums = dc8a8f3bd120e5d39b525829591990ef90617580096d61b0db5f3ac4a7f2916e
+
+pkgname = python-chibi
