@@ -1,0 +1,3 @@
+[fcitx-unikey]
+source = "git"
+git = "https://github.com/fcitx/fcitx-unikey.git"
