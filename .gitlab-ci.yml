@@ -5,7 +5,9 @@ stages:
 
 build:
   stage: build
-  image: registry.stefanwimmer128.eu/stefanwimmer128/archlinux-chaotic-paru-user:latest
+  tags:
+    - small
+  image: registry.gitlab.com/stefanwimmer128/archlinux-chaotic-paru-user:latest
   before_script:
     - paru -Syu --noconfirm
   script:
@@ -16,6 +18,8 @@ build:
 
 publish:
   stage: publish
+  tags:
+    - small
   image: alpine:latest
   rules:
     - if: $CI_COMMIT_TAG
@@ -25,6 +29,10 @@ publish:
 
 release:
   stage: release
+  rules:
+    - if: $CI_COMMIT_TAG
+  tags:
+    - small
   image: registry.gitlab.com/gitlab-org/release-cli:latest
   script:
     - 'release-cli create --tag-name "$CI_COMMIT_TAG" --name "shellspec $CI_COMMIT_TAG" --description "shellspec $CI_COMMIT_TAG" --assets-link "{\"name\":\"shellspec-${CI_COMMIT_TAG#v}-any.pkg.tar.zst\",\"filepath\":\"/shellspec-${CI_COMMIT_TAG#v}-any.pkg.tar.zst\",\"url\":\"$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/shellspec/${CI_COMMIT_TAG##v}/shellspec-${CI_COMMIT_TAG#v}-any.pkg.tar.zst\",\"link_type\":\"package\"}"'
