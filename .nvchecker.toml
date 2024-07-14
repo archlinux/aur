@@ -1,0 +1,4 @@
+[python-pdfrw]
+source = "git"
+git = "https://github.com/pmaupin/pdfrw.git"
+prefix = "v"
