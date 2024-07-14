@@ -1,0 +1,3 @@
+[cutefish-core]
+source = "git"
+git = "https://github.com/cutefishos/core.git"
