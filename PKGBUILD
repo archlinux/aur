@@ -12,6 +12,7 @@ url="https://lld.llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
 depends=('llvm17-libs' 'gcc-libs' 'zlib' 'zstd')
 makedepends=('llvm' 'cmake' 'ninja' 'python-sphinx')
+makedepends_x86_64=('lib32-gcc-libs')
 options=('!lto') # LTO causes a couple of test failures
 _source_base=https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver
 source=($_source_base/lld-$pkgver.src.tar.xz
