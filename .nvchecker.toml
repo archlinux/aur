@@ -1,0 +1,3 @@
+[cpp-hocon]
+source = "git"
+git = "https://github.com/puppetlabs/cpp-hocon.git"
