@@ -1,0 +1,3 @@
+[manuskript]
+source = "git"
+git = "https://github.com/olivierkes/manuskript.git"
