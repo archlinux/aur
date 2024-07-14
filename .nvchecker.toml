@@ -1,0 +1,3 @@
+[nitrogen]
+source = "git"
+git = "https://github.com/l3ib/nitrogen.git"
