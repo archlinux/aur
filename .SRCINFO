@@ -1,11 +1,11 @@
 pkgbase = python-colorama-git
 	pkgdesc = Simple cross-plaform colored terminal text in Python 3
-	pkgver = 0.4.6.r5.g21c4b94
+	pkgver = 0.4.6.r9.g1368087
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/tartley/colorama
 	arch = any
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer

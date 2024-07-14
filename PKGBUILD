@@ -3,13 +3,13 @@
 # Contributor:  jyantis <yantis@yantis.net>
 
 pkgname=python-colorama-git
-pkgver=0.4.6.r5.g21c4b94
+pkgver=0.4.6.r9.g1368087
 pkgrel=1
 epoch=1
 pkgdesc='Simple cross-plaform colored terminal text in Python 3'
 arch=('any')
 url='https://github.com/tartley/colorama'
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('python')
 source=("git+${url}")
 sha256sums=('SKIP')
