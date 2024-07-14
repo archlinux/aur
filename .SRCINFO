@@ -1,0 +1,15 @@
+pkgbase = cli-of-life
+	pkgdesc = Play Conway's Game of Life in your terminal
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/gabe565/cli-of-life
+	arch = any
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	optdepends = bash-completion: for shell auto-completion
+	optdepends = zsh-completions: for shell auto-completion
+	source = cli-of-life-0.0.1.tar.gz::https://github.com/gabe565/cli-of-life/archive/v0.0.1.tar.gz
+	sha256sums = dcf6c809ff08405fd4f3aca667f5ebadf83bc603928fa95b9a6c71a084f0f71e
+
+pkgname = cli-of-life
