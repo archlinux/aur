@@ -1,0 +1,14 @@
+pkgbase = python-chibi-atlas
+	pkgdesc = small lib to proccess the keys of the dict like attributes
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://pypi.org/project/chibi_atlas/
+	arch = any
+	license = WTFPL
+	makedepends = python-setuptools
+	depends = python
+	depends = python-yaml
+	source = https://files.pythonhosted.org/packages/source/c/chibi_atlas/chibi_atlas-1.0.2.tar.gz
+	sha256sums = 930380c2b9a80a6b236f9a1eec99976a376d7cfd626a5cbbba34789fbb2bf67e
+
+pkgname = python-chibi-atlas
