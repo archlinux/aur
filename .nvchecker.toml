@@ -1,0 +1,4 @@
+[python-btchip]
+source = "git"
+git = "https://github.com/LedgerHQ/btchip-python.git"
+prefix = "v"
