@@ -1,6 +1,6 @@
 pkgbase = epoch-bin
 	pkgdesc = The Epoch IDE for Lingua Franca
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://lf-lang.org
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = epoch-bin
 	depends = nodejs
 	depends = perl
 	conflicts = epoch-nighly-bin
-	source = https://github.com/lf-lang/epoch/releases/download/v0.8.0/epoch_ide_0.8.0-linux.gtk.x86_64.tar.gz
-	source = https://raw.githubusercontent.com/lf-lang/epoch/v0.8.0/LICENSE
-	sha512sums = a99340069f16f4f5dc7bfde31059bca6d594b52a660d09a25488078ecd619db926f2ef2fb87fcd7fb398d3529798bd163ce63642afd68bc2956d633cfd599889
+	source = https://github.com/lf-lang/epoch/releases/download/v0.8.1/epoch_ide_0.8.1-linux.gtk.x86_64.tar.gz
+	source = https://raw.githubusercontent.com/lf-lang/epoch/v0.8.1/LICENSE
+	sha512sums = a21648e794ff050803db48dc2a99879253a649788f554a5ffe529b2e898e1264a9453736af98796e805e7dff96c902e396f46e8f32dc090f5489a147097bcdcf
 	sha512sums = 477af45f047a9c7735385ecae2a7c34f4b009481c2f5ce7efbe7251f59ad979fd3e8303c4079b2455a05502654a28f3aa33c6754e3d004f2e9117515c24eeb50
 
 pkgname = epoch-bin
