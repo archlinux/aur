@@ -1,0 +1,4 @@
+[python-ioflo]
+source = "git"
+git = "https://github.com/ioflo/ioflo.git"
+prefix = "v"
