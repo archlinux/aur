@@ -3,12 +3,12 @@
 pkgname=crave
 pkgver=0.2.7004
 _pkgver=0.2-7004
-pkgrel=1
+pkgrel=2
 pkgdesc="Crave CLI - Binary Version"
 arch=('aarch64' 'x86_64')
 url="https://github.com/accupara/crave"
 license=(GPL3)
-depends=(gtk3-nocsd glibc libxcrypt-compat openssh rsync zlib )
+depends=( glibc libxcrypt-compat openssh rsync zlib )
 provides=('crave' 'crave-bin')
 conflicts=('crave-bin')
 
