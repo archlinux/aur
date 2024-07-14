@@ -1,0 +1,4 @@
+[gir-to-d]
+source = "git"
+git = "https://github.com/gtkd-developers/gir-to-d.git"
+prefix = "v"
