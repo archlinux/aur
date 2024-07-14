@@ -1,0 +1,3 @@
+[python-click-repl]
+source = "git"
+git = "https://github.com/click-contrib/click-repl.git"
