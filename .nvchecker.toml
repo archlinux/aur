@@ -1,0 +1,3 @@
+[python-flask-babelex]
+source = "git"
+git = "https://github.com/mrjoes/flask-babelex.git"
