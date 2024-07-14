@@ -21,14 +21,16 @@ source=($_source_base/clang-$pkgver.src.tar.xz
         $_source_base/clang-tools-extra-$pkgver.src.tar.xz
         $_source_base/llvm-$pkgver.src.tar.xz
         $_source_base/cmake-$pkgver.src.tar.xz
-        $pkgname-linker-wrapper-tool-r1.patch::https://github.com/llvm/llvm-project/commit/c2aabcfc8395.patch
+        $_source_base/third-party-$pkgver.src.tar.xz
+        clangd-handle-missing-ending-brace.patch::https://github.com/llvm/llvm-project/commit/9d1dada57741.patch
         enable-fstack-protector-strong-by-default.patch)
 sha256sums=('a78f668a726ae1d3d9a7179996d97b12b90fb76ab9442a43110b972ff7ad9029'
             'aa774642415d338d7b77a66fcbad6fd1f77f382dabcb67422a6230614eff1ab9'
             'b638167da139126ca11917b6880207cc6e8f9d1cbb1a48d87d017f697ef78188'
             '807f069c54dc20cb47b21c1f6acafdd9c649f3ae015609040d6182cab01140f4'
-            'f82449f41c8258f9ae13bd0c311e940711430d2c979eeb8255b36e0e63cda18c'
-            '7a9ce949579a3b02d4b91b6835c4fb45adc5f743007572fb0e28e6433e48f3a5')
+            '3054d0a9c9375dab1a4539cc2cc45ab340341c5d71475f9599ba7752e222947b'
+            '0d4dc477f5a28f9f16639dc094b6d9bc14228d5de771547394799d2d5f8cd1df'
+            '45da5783f4e89e4507a351ed0ffbbe6ec240e21ff7070797a89c5ccf434ac612')
 
 # Utilizing LLVM_DISTRIBUTION_COMPONENTS to avoid
 # installing static libraries; inspired by Gentoo
@@ -54,10 +56,20 @@ _get_distribution_components() {
 }
 
 prepare() {
-  mv cmake{-$pkgver.src,}
+  rename -v -- "-$pkgver.src" '' {cmake,third-party}-$pkgver.src
   cd clang-$pkgver.src
+  mkdir build
   mv "$srcdir/clang-tools-extra-$pkgver.src" tools/extra
-  mkdir -p build
+
+  patch -Np2 -i ../enable-fstack-protector-strong-by-default.patch
+
+  # https://github.com/clangd/clangd/issues/1559
+  sed 's|clang-tools-extra|clang/tools/extra|' \
+    clangd-handle-missing-ending-brace.patch | patch -Np2
+
+  # Attempt to convert script to Python 3
+  2to3 -wn --no-diffs \
+    tools/extra/clang-include-fixer/find-all-symbols/tool/run-find-all-symbols.py
 }
 
 build() {
