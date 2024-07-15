@@ -1,0 +1,4 @@
+[python-scikit-hep-testdata]
+source = "git"
+git = "https://github.com/scikit-hep/scikit-hep-testdata.git"
+prefix = "v"
