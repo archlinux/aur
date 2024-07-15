@@ -2,7 +2,7 @@
 
 pkgname=sourcegit-bin
 _name=${pkgname%-bin}
-pkgver=8.20
+pkgver=8.21
 pkgrel=1
 pkgdesc="GUI client for GIT users"
 arch=('x86_64')
@@ -10,12 +10,12 @@ url='https://github.com/sourcegit-scm/sourcegit'
 license=('MIT')
 provides=('sourcegit')
 conflicts=('sourcegit')
-depends=('dotnet-runtime-8.0' 'git' 'git-credential-manager' 'xdg-utils')
+depends=('git' 'git-credential-manager' 'xdg-utils')
 
 source=("https://github.com/sourcegit-scm/sourcegit/releases/download/v${pkgver}/${_name}-${pkgver}.linux.x86_64.AppImage"
         'sourcegit.desktop'
         'LICENSE')
-sha256sums=('f49bc268c650d9a3b6ca5963820cd03737a51710fa001562bd5286ca3c116cde'
+sha256sums=('8f3a423cd3d92881cbda775c0a69347b86897def69b9bd2da9a45382983aea9f'
             '3488ee13a4ca1bae85c35f866d046304d8716a64c46cadb2576cb8b4ae44b058'
             '6cef41c8a297f46faafe40016ffcce9d968b3722048b81cd768fdbaa1be02ca1')
 
