@@ -1,0 +1,4 @@
+[python-dist-meta]
+source = "git"
+git = "https://github.com/repo-helper/dist-meta.git"
+prefix = "v"
