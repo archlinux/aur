@@ -4,7 +4,7 @@
 # Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 
-pkgname=('llvm17' 'llvm17-libs')
+pkgname=('llvm17' 'llvm17-libs' 'llvm17-lit')
 pkgver=17.0.6
 pkgrel=1
 arch=('x86_64')
@@ -139,5 +139,18 @@ package_llvm17-libs() {
 
   install -Dm644 "$srcdir/llvm-$pkgver.src/LICENSE.TXT" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+package_llvm17-lit() {
+  pkgdesc="An LLVM testing tool (LLVM 17)"
+  depends=('python')
+
+  mkdir -p "$pkgdir/opt/llvm17-lit"
+  python3 -m venv --system-site-packages "$pkgdir/opt/llvm17-lit"
+
+  cd llvm-$pkgver.src/utils/lit
+  "$pkgdir/opt/llvm17-lit/bin/python3" setup.py install -O1
+
+  sed -i "s#$pkgdir##" "$pkgdir/opt/llvm17-lit/pyvenv.cfg" "$pkgdir/opt/llvm17-lit/bin/"{activate,pip}* "$pkgdir/opt/llvm17-lit/bin/lit"
 }
 # vim:set ts=2 sw=2 et:

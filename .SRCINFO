@@ -40,3 +40,7 @@ pkgname = llvm17-libs
 	depends = libedit
 	depends = ncurses
 	depends = libxml2
+
+pkgname = llvm17-lit
+	pkgdesc = An LLVM testing tool (LLVM 17)
+	depends = python
