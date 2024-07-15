@@ -1,16 +1,17 @@
-# Maintainer: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
 # -*- sh -*-
+
+# Maintainer: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
 
 _pkgname='tget'
 pkgname="${_pkgname}-git"
-pkgver=0.1.r12.gfc5500a
-pkgrel=2
-pkgdesc='Like wget but for torrents (latest git commit)'
+pkgver=0.1.1.r1.g77add45
+pkgrel=1
+pkgdesc='Like wget but for torrents (latest commit)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/sweetbbak/tget'
 license=('MIT')  # SPDX-License-Identifier: MIT
 provides=("$_pkgname")
-conflicts=("$_pkgname" 'nodejs-tget')
+conflicts=('nodejs-tget' "$_pkgname")
 depends=('gcc-libs' 'glibc')
 makedepends=('git' 'go')
 source=("git+$url.git")
@@ -64,7 +65,7 @@ check() {
 
   go test ./...
 
-  ./tget -V
+  ./tget --version
 }
 
 package() {
