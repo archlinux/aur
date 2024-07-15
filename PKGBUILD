@@ -1,7 +1,7 @@
 # Maintainer: Frederik Schwan <freswa at archlinux dot org>
 
 pkgname=pinentry-rofi
-pkgver=2.1.1
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='rofi-based pinentry implementation'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('guile2.2' 'rofi')
 makedepends=('autoconf-archive')
 source=("https://github.com/plattfot/pinentry-rofi/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
         LICENSE)
-b2sums=('6b0c7e55abf84ab0f0e88ecb223d7cc0ffeb2a9ab094d9af1a54f50678e8ca25a26fa3157792c2c46a80a774efa4190cbe4b02762bd1813db533ce5d3cf7b19a'
+b2sums=('ce31456c7165671a7d73daa854bccf51a3b263ad683a5b6f99f98cfba95ff16134f3aa2e4175a0eee4a10476adc3b266a661e848846289b8d168626ab424f21c'
         '807b094561801b696f11f57819fc94283a7aa344cb00cbc7aea374c6e669e09ac85a9e07327b100fe544fd8149b3a4dfa4b94dd6ce9746810427a07dc2f5b01d')
 
 prepare() {
