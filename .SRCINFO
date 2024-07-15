@@ -1,6 +1,6 @@
 pkgbase = proxmox-backup-client
 	pkgdesc = Client for Proxmox Backup Server
-	pkgver = 3.2.2
+	pkgver = 3.2.7
 	pkgrel = 1
 	url = https://pbs.proxmox.com
 	arch = x86_64
@@ -18,8 +18,8 @@ pkgbase = proxmox-backup-client
 	depends = gcc-libs
 	depends = openssl
 	options = !lto
-	source = proxmox-backup-client-3.2.2::git://git.proxmox.com/git/proxmox-backup.git#tag=v3.2.2
-	source = proxmox::git://git.proxmox.com/git/proxmox.git#commit=863d7603403405ccbf8e841b875bf3c9a7a76116
+	source = proxmox-backup-client-3.2.7::git://git.proxmox.com/git/proxmox-backup.git#tag=v3.2.7
+	source = proxmox::git://git.proxmox.com/git/proxmox.git#commit=3545d67b1f3624a920e0a2c2150041e2eb267029
 	source = proxmox-fuse::git://git.proxmox.com/git/proxmox-fuse.git
 	source = pxar::git://git.proxmox.com/git/pxar.git
 	source = pathpatterns::git://git.proxmox.com/git/pathpatterns.git

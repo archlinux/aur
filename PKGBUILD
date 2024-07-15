@@ -1,7 +1,7 @@
 # Maintainer: Dominik Csapak <dominik.csapak@gmail.com>
 # Maintainer: Thomas Lamprecht <thomas@lamprecht.org>
 pkgname=proxmox-backup-client
-pkgver=3.2.2
+pkgver=3.2.7
 pkgrel=1
 pkgdesc="Client for Proxmox Backup Server"
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ makedepends=('cargo' 'clang' 'git' 'llvm' 'patchelf' 'python-docutils' 'python-s
 options=(!lto)
 source=(
     "$pkgname-$pkgver::git://git.proxmox.com/git/proxmox-backup.git#tag=v$pkgver"
-    "proxmox::git://git.proxmox.com/git/proxmox.git#commit=863d7603403405ccbf8e841b875bf3c9a7a76116"
+    "proxmox::git://git.proxmox.com/git/proxmox.git#commit=3545d67b1f3624a920e0a2c2150041e2eb267029"
     "proxmox-fuse::git://git.proxmox.com/git/proxmox-fuse.git"
     "pxar::git://git.proxmox.com/git/pxar.git"
     "pathpatterns::git://git.proxmox.com/git/pathpatterns.git"
@@ -45,7 +45,7 @@ _apply() {
 
 prepare() {
   cd "$pkgname-$pkgver"
-  rm .cargo/config # drop Debian-style redirect of crates.io to local registry
+  rm .cargo/config.toml # drop Debian-style redirect of crates.io to local registry
 
   _apply 0001-re-route-dependencies-not-available-on-crates.io-to-.patch
   _apply 0002-docs-drop-all-but-client-man-pages.patch
