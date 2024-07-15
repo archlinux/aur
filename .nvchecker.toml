@@ -1,0 +1,3 @@
+[python-litescope]
+source = "git"
+git = "https://github.com/enjoy-digital/litescope.git"
