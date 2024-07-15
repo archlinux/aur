@@ -1,6 +1,6 @@
 pkgbase = youtube-music-for-desktop-bin
 	pkgdesc = Unofficial Youtube Music Desktop App, with LastFM support.
-	pkgver = 0.12.11
+	pkgver = 0.12.13
 	pkgrel = 1
 	url = https://youtube-music.app/
 	arch = aarch64
@@ -8,15 +8,15 @@ pkgbase = youtube-music-for-desktop-bin
 	license = CC0-1.0
 	makedepends = fuse2
 	depends = electron20
-	provides = youtube-music-for-desktop=0.12.11
+	provides = youtube-music-for-desktop=0.12.13
 	conflicts = youtube-music-for-desktop
-	source = LICENSE-0.12.11::https://raw.githubusercontent.com/Venipa/ytmdesktop2/v0.12.11/LICENSE
+	source = LICENSE-0.12.13::https://raw.githubusercontent.com/Venipa/ytmdesktop2/v0.12.13/LICENSE
 	source = youtube-music-for-desktop.sh
 	sha256sums = 33c4de6d76721945c9346b3b1024fe56f2fbb6bebbb0e761656232520a6defa6
-	sha256sums = 41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d
-	source_aarch64 = youtube-music-for-desktop-0.12.11-aarch64.AppImage::https://github.com/Venipa/ytmdesktop2/releases/download/v0.12.11/YouTube-Music-for-Desktop-0.12.11-arm64.AppImage
-	sha256sums_aarch64 = 5134dfe9cae45e0aa894a06eb7b24e99837fa960a9ee870b3549cd1045033aa6
-	source_x86_64 = youtube-music-for-desktop-0.12.11-x86_64.AppImage::https://github.com/Venipa/ytmdesktop2/releases/download/v0.12.11/YouTube-Music-for-Desktop-0.12.11.AppImage
-	sha256sums_x86_64 = de53fd4caae7bd7386794b1a4d4f8de4dc5a57d4729321e0297e8b2d6fe719cf
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+	source_aarch64 = youtube-music-for-desktop-0.12.13-aarch64.AppImage::https://github.com/Venipa/ytmdesktop2/releases/download/v0.12.13/YouTube-Music-for-Desktop-0.12.13-arm64.AppImage
+	sha256sums_aarch64 = 703c70e576f00b689960fc6bd813d89f023996063a7720848afa1a6743f2dc54
+	source_x86_64 = youtube-music-for-desktop-0.12.13-x86_64.AppImage::https://github.com/Venipa/ytmdesktop2/releases/download/v0.12.13/YouTube-Music-for-Desktop-0.12.13.AppImage
+	sha256sums_x86_64 = 89c66e6c5684b5c0fa00ec1a8bdd45e516c59d5828224977c520d24a12d41b7a
 
 pkgname = youtube-music-for-desktop-bin
