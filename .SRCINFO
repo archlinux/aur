@@ -1,21 +1,21 @@
 pkgbase = simple-web-server-bin
 	pkgdesc = Create a local web server in just a few clicks with an easy to use interface. A continuation of Web Server for Chrome, built with Electron.
-	pkgver = 1.2.11
+	pkgver = 1.2.12
 	pkgrel = 1
 	url = https://simplewebserver.org/
 	arch = aarch64
 	arch = x86_64
 	license = MIT
 	depends = electron28
-	provides = simple-web-server=1.2.11
+	provides = simple-web-server=1.2.12
 	conflicts = simple-web-server
-	source = LICENSE-1.2.11::https://raw.githubusercontent.com/terreng/simple-web-server/v1.2.11/LICENSE
+	source = LICENSE-1.2.12::https://raw.githubusercontent.com/terreng/simple-web-server/v1.2.12/LICENSE
 	source = simple-web-server.sh
 	sha256sums = 57e19cef8140644e1f4ac091f5bb90dc20e65f26232a756233cba336c2dbd85b
 	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
-	source_aarch64 = simple-web-server-1.2.11-aarch64.deb::https://github.com/terreng/simple-web-server/releases/download/v1.2.11/Simple-Web-Server-Linux-1.2.11-arm64.deb
-	sha256sums_aarch64 = bde9d3f38ee0544eb467edd57b467c842a20b63b8a905ba7ba06a4f0634d547a
-	source_x86_64 = simple-web-server-1.2.11-x86_64.deb::https://github.com/terreng/simple-web-server/releases/download/v1.2.11/Simple-Web-Server-Linux-1.2.11-amd64.deb
-	sha256sums_x86_64 = 5400668727aec4701097929db27a330a89c57fec5404903e0fc9e0f894cc5470
+	source_aarch64 = simple-web-server-1.2.12-aarch64.deb::https://github.com/terreng/simple-web-server/releases/download/v1.2.12/Simple-Web-Server-Linux-1.2.12-arm64.deb
+	sha256sums_aarch64 = 4e7241ea59150e2e3e25a6566492c4056f6cad37b0a791f8a4b863f11ca142f5
+	source_x86_64 = simple-web-server-1.2.12-x86_64.deb::https://github.com/terreng/simple-web-server/releases/download/v1.2.12/Simple-Web-Server-Linux-1.2.12-amd64.deb
+	sha256sums_x86_64 = 55b353c8bd93859010d23a2589179d0259776a3415751979d454550c51a7de0f
 
 pkgname = simple-web-server-bin

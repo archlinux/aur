@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=simple-web-server-bin
 _pkgname=Simple-Web-Server
-pkgver=1.2.11
+pkgver=1.2.12
 _electronversion=28
 pkgrel=1
 pkgdesc="Create a local web server in just a few clicks with an easy to use interface. A continuation of Web Server for Chrome, built with Electron."
@@ -25,8 +25,8 @@ source=(
 )
 sha256sums=('57e19cef8140644e1f4ac091f5bb90dc20e65f26232a756233cba336c2dbd85b'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-sha256sums_aarch64=('bde9d3f38ee0544eb467edd57b467c842a20b63b8a905ba7ba06a4f0634d547a')
-sha256sums_x86_64=('5400668727aec4701097929db27a330a89c57fec5404903e0fc9e0f894cc5470')
+sha256sums_aarch64=('4e7241ea59150e2e3e25a6566492c4056f6cad37b0a791f8a4b863f11ca142f5')
+sha256sums_x86_64=('55b353c8bd93859010d23a2589179d0259776a3415751979d454550c51a7de0f')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
