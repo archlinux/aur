@@ -8,16 +8,12 @@ arch=('x86_64')
 url="https://github.com/OmniSharp/omnisharp-roslyn"
 license=('MIT')
 depends=('dotnet-sdk')
-source=("https://github.com/OmniSharp/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8d6f4fb32a290f633d3e9c0fd35e5ff3da4898588f5db047ff7cab79a8697c75')
+makedepends=('git')
+source=("git+$url#tag=v$pkgver")
+sha256sums=('868f12bea3d929ce79453cf2bf5430f0d0b5e2bd46d4328ac02c10f1dd357787')
 
 prepare() {
-    cd "$srcdir/$pkgname-$pkgver"
-
-    # normally the build sets the version from git, we don't have a git repo so
-    # just override it manually
-    sed -i "s/0.0.1-local/$pkgver/" scripts/common.cake
-    sed -i "s/0.0.1.0/${pkgver%.*}.0.0/" scripts/common.cake
+    cd "$srcdir/$pkgname"
 
     # only built STDIO
     sed -i 's/"OmniSharp.Stdio.Driver",/"OmniSharp.Stdio.Driver"/;/OmniSharp.Http.Driver/d' build.json
@@ -46,14 +42,14 @@ prepare() {
 }
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname"
 
     dotnet cake --target PublishNet6Builds --configuration Release --exclusive --use-global-dotnet-sdk
 }
 
 package() {
     install -d "$pkgdir/usr/lib"
-    cp -a "$srcdir/$pkgname-$pkgver/artifacts/publish/OmniSharp.Stdio.Driver/linux-x64/net6.0" "$pkgdir/usr/lib/$pkgname"
+    cp -a "$srcdir/$pkgname/artifacts/publish/OmniSharp.Stdio.Driver/linux-x64/net6.0" "$pkgdir/usr/lib/$pkgname"
 
     install -d "$pkgdir/usr/share/licenses/$pkgname"
     mv "$pkgdir/usr/lib/$pkgname/license.md" "$pkgdir/usr/share/licenses/$pkgname"
