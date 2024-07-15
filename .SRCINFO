@@ -5,9 +5,11 @@ pkgbase = k2tf
 	url = https://github.com/sl1pm4t/k2tf
 	arch = x86_64
 	license = Apache
-	makedepends = git
 	depends = go
-	source = k2tf-0.8.0.tar.gz::https://github.com/sl1pm4t/k2tf/archive/refs/tags/v0.8.0.tar.gz
+	depends = git
+	source = https://github.com/sl1pm4t/k2tf/releases/download/v0.8.0/k2tf_0.8.0_Linux_amd64.tar.gz
+	source = https://github.com/sl1pm4t/k2tf/releases/download/v0.8.0/checksums.txt
 	sha256sums = SKIP
+	sha256sums = 92b428b1f24ab81ecab915fd115f0b0636cef09a7b6e12f0f63e0d4011a05ad6
 
 pkgname = k2tf
