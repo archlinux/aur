@@ -1,0 +1,3 @@
+[python-pytest-celery]
+source = "pypi"
+pypi = "pytest-celery"
