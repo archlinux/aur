@@ -1,0 +1,18 @@
+pkgbase = screenshot-util
+	pkgdesc = A small helper script running on wayland to make screenshots
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/AdrisGithub/screenshot-util
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = grim
+	depends = slurp
+	depends = swappy
+	provides = screenshot-util
+	conflicts = screenshot-util
+	source = screenshot-util::git+https://github.com/AdrisGithub/screenshot-util.git
+	md5sums = SKIP
+
+pkgname = screenshot-util
