@@ -1,0 +1,13 @@
+diff --git a/MiniScript-cpp/src/DateTimeUtils.cpp b/MiniScript-cpp/src/DateTimeUtils.cpp
+index b0da71d..ccd01d2 100644
+--- a/MiniScript-cpp/src/DateTimeUtils.cpp
++++ b/MiniScript-cpp/src/DateTimeUtils.cpp
+@@ -304,6 +304,8 @@ time_t ParseDate(const String dateStr) {
+ 		dateTime.tm_mon = now.tm_mon;
+ 		dateTime.tm_mday = now.tm_mday;
+ 	}
++	// See https://github.com/JoeStrout/miniscript/issues/159
++	dateTime.tm_isdst = -1;
+ 	return mktime(&dateTime);
+ }
+ 
