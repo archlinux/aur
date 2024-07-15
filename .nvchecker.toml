@@ -1,0 +1,3 @@
+[python-pythondata-cpu-lm32]
+source = "git"
+git = "https://github.com/litex-hub/pythondata-cpu-lm32.git"
