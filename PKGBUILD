@@ -2,8 +2,8 @@
 
 pkgname=virtme-ng-git
 _srcname=virtme-ng
-pkgver=v1.22.r0.gba33d94
-pkgrel=3
+pkgver=v1.25.r36.g3bb0256
+pkgrel=1
 pkgdesc="A tool that allows to easily and quickly recompile and test a Linux kernel, starting from the source code."
 arch=('any')
 url="https://github.com/arighi/virtme-ng"
@@ -14,6 +14,15 @@ optdepends=('busybox: for inclusion of busybox')
 conflicts=('virtme-git' 'virtme-ng')
 source=("git+${url}.git")
 b2sums=('SKIP')
+
+prepare() {
+    cd "$srcdir/${_srcname}"
+
+    # Sumlinks do not work with the latest setuptools (could also be something
+    # else). So we have to replace the link with its target as a quick fix.
+    rm virtme/scripts
+    cp -r bin virtme/scripts
+}
 
 pkgver() {
     cd "$srcdir/${_srcname}"
