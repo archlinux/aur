@@ -1,0 +1,4 @@
+[python-vector]
+source = "git"
+git = "https://github.com/scikit-hep/vector.git"
+prefix = "v"
