@@ -1,0 +1,3 @@
+[ruby-native-package-installer]
+source = "gems"
+gems = "native-package-installer"
