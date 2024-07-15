@@ -1,0 +1,19 @@
+pkgbase = python-menuinst
+	pkgdesc = Cross platform menu item installation
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://github.com/conda/conda-libmamba-solver
+	arch = any
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python-importlib-metadata
+	depends = python-pydantic
+	source = git+https://github.com/conda/menuinst.git#tag=2.1.1
+	b2sums = 7a00d48fb7b5ced7c24bd0d056b3ba4ce5407d083e2b14ead68bb382d4104c0fd2c0e1cdf91c01300f98acf37e2577f34ebd349c67258509ac567498870f58aa
+
+pkgname = python-menuinst

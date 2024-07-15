@@ -1,0 +1,5 @@
+menuinst
+*.tar.gz
+*.tar.zst
+*.log
+*.sh
