@@ -1,0 +1,4 @@
+[python-aioconsole]
+source = "git"
+git = "https://github.com/vxgmichel/aioconsole.git"
+prefix = "v"
