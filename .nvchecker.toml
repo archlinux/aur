@@ -1,0 +1,4 @@
+[lib32-libbpf]
+source = "git"
+git = "https://github.com/libbpf/libbpf.git"
+prefix = "v"
