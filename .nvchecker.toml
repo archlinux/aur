@@ -1,0 +1,4 @@
+[d-mir-core]
+source = "git"
+git = "https://github.com/libmir/mir-core.git"
+prefix = "v"
