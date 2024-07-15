@@ -1,6 +1,6 @@
 pkgname=messages
 _pkgname=Messages
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Unnofficial Android messages desktop app"
 arch=('x86_64' 'aarch64')
@@ -9,11 +9,11 @@ license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 conflicts=("messages-bin")
-source=("$url/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
-sha256sums=('9b602aeaaf8e30aae3039477368fa20b44e0922c375473214f78b1251e54cc3c')
+source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
+sha256sums=('50947fb63ad3b1e1fa190e39c4d42dbf854c6c2143c6a2b55436bd1f9d337a5d')
 
 package() {
-    for dir in application-$pkgver-$pkgrel ; do mv "${dir}" "$_pkgname" ;done
+    for dir in application-$pkgver ; do mv "${dir}" "$_pkgname" ;done
     cd "$srcdir/$_pkgname"
     chmod +x $pkgname.sh
     ln -sf "/opt/libelectron/node_modules" "$srcdir/$_pkgname"
