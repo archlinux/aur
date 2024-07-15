@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=inkdown-git
 _pkgname=Inkdown
-pkgver=1.0.0.r2.gfbd5b7e
+pkgver=1.0.1.r0.g8ead33c
 _electronversion=29
 _nodeversion=18
 pkgrel=1
