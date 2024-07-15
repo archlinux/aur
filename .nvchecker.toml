@@ -1,0 +1,3 @@
+[python-traitsui]
+source = "git"
+git = "https://github.com/enthought/traitsui.git"
