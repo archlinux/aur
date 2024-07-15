@@ -5,7 +5,7 @@ pkgver=2.1.1
 pkgrel=1
 pkgdesc="Cross platform menu item installation"
 arch=(any)
-url=https://github.com/conda/conda-libmamba-solver
+url=https://github.com/conda/menuinst
 license=(BSD-3-Clause)
 depends=(
     python-importlib-metadata
