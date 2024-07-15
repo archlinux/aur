@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=joindesktop-git
 _app_id=com.joaomgcd.join
-pkgver=1.1.2.r2.ga4748ff
-pkgrel=7
-_electronversion=30
+pkgver=1.1.3.r0.geac2304
+pkgrel=1
+_electronversion=31
 pkgdesc="An official desktop app for Join by Joaoapps built in Electron."
 arch=('x86_64')
 url="https://joaoapps.com/join/desktop"
-license=('unknown')
+license=('LicenseRef-unknown')
 depends=("electron${_electronversion}")
 makedepends=('git' 'npm')
 provides=("${pkgname%-git}")
