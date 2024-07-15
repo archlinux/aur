@@ -1,0 +1,3 @@
+[python-tarantool]
+source = "git"
+git = "https://github.com/tarantool/tarantool-python.git"
