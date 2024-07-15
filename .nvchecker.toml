@@ -1,0 +1,3 @@
+[hq]
+source = "git"
+git = "https://github.com/coderobe/hq.git"
