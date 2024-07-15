@@ -1,8 +1,7 @@
 # Maintainer: Essem <smswessem@gmail.com>
 
-_commit=d89afdf99ed4bcff4f977472b776c37faedf4142
 pkgname=corrscope
-pkgver=0.10.1_pre
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="Python program to render wave files into oscilloscope views, featuring advanced correlation-based triggering algorithm"
 arch=('any')
@@ -27,27 +26,27 @@ makedepends=(
   'python-setuptools'
   'python-wheel'
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/corrscope/corrscope/archive/$_commit.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/corrscope/corrscope/archive/refs/tags/$pkgver.tar.gz"
         "no-appnope.patch"
         "corrscope.png"
         "corrscope.desktop")
-sha256sums=('654af3670d4739663380d681aa0cc549bcc2783f5095f86f0a86c27959c9e740'
+sha256sums=('6632f97f514cf9b45ae249d3adb27e0a3d5822ea34444461de28344b49ceb7ac'
             '4d85a0c057545e1459b5362ab81a2c953b63c5efd9094d208c0dbef662203636'
             '41777f8b4593e9154931bcbdb86e43e5c5d7b476be714a42affca0aee88e2cf8'
             'bfb12bd87d93af48e0f80e2241493078ced904af339e17c0661fd7b8cd1ebdda')
 
 prepare() {
-  cd "$pkgname-$_commit"
+  cd "$pkgname-$pkgver"
   patch -p1 < "$srcdir/no-appnope.patch"
 }
 
 build() {
-  cd "$pkgname-$_commit"
+  cd "$pkgname-$pkgver"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$pkgname-$_commit"
+  cd "$pkgname-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   mkdir -p "$pkgdir/usr/share/doc"
