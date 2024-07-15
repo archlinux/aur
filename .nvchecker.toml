@@ -1,0 +1,4 @@
+[python-domdf-python-tools]
+source = "git"
+git = "https://github.com/domdfcoding/domdf_python_tools.git"
+prefix = "v"
