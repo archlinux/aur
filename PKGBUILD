@@ -2,8 +2,8 @@
 execname=gmodcefcodecfix
 pkgname="$execname-bin"
 projname=GModCEFCodecFix
-pkgver=20240530
-pkgrel=4
+pkgver=20240715
+pkgrel=1
 srcdir="$pkgname-$pkgver"
 binname="$projname-Linux"
 epoch=
@@ -24,7 +24,7 @@ options=()
 changelog=
 source=("$url/releases/download/$pkgver/$binname")
 noextract=()
-md5sums=('c009e952d75e083eef320c140c7b502c')
+md5sums=('4b103eb165d104a3596be40955ac2b22')
 validpgpkeys=()
 
 package() {
