@@ -1,0 +1,3 @@
+[cartridge-cli]
+source = "git"
+git = "https://github.com/tarantool/cartridge-cli.git"
