@@ -1,0 +1,4 @@
+[python-apeye]
+source = "git"
+git = "https://github.com/domdfcoding/apeye.git"
+prefix = "v"
