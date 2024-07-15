@@ -1,0 +1,3 @@
+[python-pyvcd]
+source = "git"
+git = "https://github.com/SanDisk-Open-Source/pyvcd.git"
