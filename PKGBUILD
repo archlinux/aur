@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=station-bin
 _pkgname=Station
-pkgver=3.0.0
+pkgver=3.1.0
 _electronversion=27
 pkgrel=1
 pkgdesc="The first open-source smart browser for busy people. A single place for all of your web applications."
@@ -21,8 +21,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${CARCH}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('3667a751c63c68d4bcc123ecdc442ddd4b1d109565bf1efadd06192d7cb5b1f1'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+sha256sums=('71558eac255888fc4179ea8a7524514e8db263751614b9a403951245397bd837'
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
