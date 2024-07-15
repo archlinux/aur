@@ -1,0 +1,3 @@
+[ruby-glib2]
+source = "gems"
+gems = "glib2"
