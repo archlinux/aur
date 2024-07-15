@@ -1,0 +1,4 @@
+[python-periphery]
+source = "git"
+git = "https://github.com/vsergeev/python-periphery.git"
+prefix = "v"
