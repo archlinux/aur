@@ -10,7 +10,7 @@ pkgdesc="Speed Dreams is a fork of TORCS which aims to implement exciting new fe
 arch=('i686' 'x86_64')
 url="https://www.speed-dreams.net"
 license=('GPL2')
-depends=('freealut' 'freeglut' 'libpng' 'libxi' 'libxmu' 'libxrandr' 'plib>=1.8.3' 'libjpeg' 'zlib' 'enet' 'openscenegraph' 'sdl2_mixer' 'jre' 'jdk')
+depends=('freealut' 'freeglut' 'libpng' 'libxi' 'libxmu' 'libxrandr' 'plib>=1.8.3' 'libjpeg' 'zlib' 'enet' 'openscenegraph' 'sdl2_mixer' 'jre' 'jdk' 'cjson' 'minizip' )
 makedepends=('cmake' 'svn')
 provides=("${pkgname%-svn}")
 conflicts=("${pkgname%-svn}" 'speed-dreams-git')
