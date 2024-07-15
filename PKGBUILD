@@ -1,7 +1,7 @@
 # Maintainer: Christian Holme (Nordwin) <hcmh [at] mailbox [dot] org>
 _base=astra-toolbox
 pkgname=python-${_base}-git
-pkgver=2.1.3.g64de1f6
+pkgver=2.2.0.g73388dd
 pkgrel=1
 pkgdesc="MATLAB and Python toolbox of high-performance GPU primitives for 2D and 3D tomography"
 arch=(x86_64)
