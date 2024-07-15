@@ -1,7 +1,7 @@
 pkgbase = gmodcefcodecfix-bin
 	pkgdesc = Automatic Patching/Updating of GMod CEF
 	pkgver = 20240715
-	pkgrel = 1
+	pkgrel = 5
 	url = https://github.com/solsticegamestudios/GModCEFCodecFix
 	arch = x86_64
 	license = GPL3
