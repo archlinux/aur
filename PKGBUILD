@@ -12,7 +12,7 @@ arch=('x86_64')
 url="https://clang.llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
 depends=('llvm17-libs' 'gcc' 'compiler-rt17')
-makedepends=('llvm17' 'llvm17-lit' 'cmake' 'ninja' 'python' 'python-recommonmark')
+makedepends=('llvm17' 'llvm' 'cmake' 'ninja' 'python' 'python-recommonmark')
 optdepends=('openmp: OpenMP support in clang with -fopenmp'
             'llvm17: referenced by some clang headers')
 checkdepends=('llvm')
@@ -94,7 +94,7 @@ build() {
     -DLLVM_CONFIG=/usr/lib/llvm17/bin/llvm-config
     -DLLVM_ENABLE_RTTI=ON
     -DLLVM_ENABLE_SPHINX=ON
-    -DLLVM_EXTERNAL_LIT=/opt/llvm17-lit/bin/lit
+    -DLLVM_EXTERNAL_LIT=/usr/bin/lit
     -DLLVM_INCLUDE_DOCS=ON
     -DLLVM_LINK_LLVM_DYLIB=ON
     -DLLVM_MAIN_SRC_DIR="$srcdir/llvm-$pkgver.src"
