@@ -1,0 +1,34 @@
+From 6a49c61476823d9c3daabdab6b85ce6fcbaaab4d Mon Sep 17 00:00:00 2001
+From: Manuel Wiesinger <m@mmap.at>
+Date: Sat, 13 Jul 2024 18:37:28 +0200
+Subject: [PATCH] Fix timezone dependent unit test
+
+---
+ tests/unit/test_probe_request.py | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/tests/unit/test_probe_request.py b/tests/unit/test_probe_request.py
+index 276cf8e..b646e9e 100644
+--- a/tests/unit/test_probe_request.py
++++ b/tests/unit/test_probe_request.py
+@@ -3,6 +3,7 @@
+ """
+ 
+ import unittest
++from time import localtime, strftime
+ from netaddr.core import AddrFormatError
+ 
+ from probequest.probe_request import ProbeRequest
+@@ -86,8 +87,10 @@ def test_print_a_probe_request(self):
+         probe_req = ProbeRequest(timestamp, s_mac, essid)
+ 
+         self.assertNotEqual(
+-            str(probe_req).find("Mon, 05 Feb 2018 23:07:07"),
+-            -1
++            str(probe_req).find(
++                strftime("%a, %d %b %Y %H:%M:%S %Z", localtime(timestamp))
++            ),
++            -1,
+         )
+         self.assertNotEqual(
+             str(probe_req).find(

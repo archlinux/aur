@@ -1,0 +1,12 @@
+diff -ura probequest-0.8.0.orig/pyproject.toml probequest-0.8.0/pyproject.toml
+--- probequest-0.8.0.orig/pyproject.toml	2024-07-10 12:32:10.857723346 +0200
++++ probequest-0.8.0/pyproject.toml	2024-07-10 12:33:10.603033805 +0200
+@@ -1,7 +1,7 @@
+ [build-system]
+ requires = [
+     "setuptools >= 42",
+-    "setuptools_scm >= 2.0.0, <3",
++    "setuptools_scm >= 2.0.0",
+     "wheel",
+ ]
+ build-backend = "setuptools.build_meta"
