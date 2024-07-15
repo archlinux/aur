@@ -1,0 +1,4 @@
+[ruby-faraday-excon]
+source = "git"
+git = "https://github.com/lostisland/faraday-excon.git"
+prefix = "v"
