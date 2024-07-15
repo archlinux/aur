@@ -1,6 +1,6 @@
 *.pkg.tar
 *.pkg.tar.zst
-*.tar.gz
+*.tar.xz
 .idea/*
 *.part
 pkg/*
