@@ -1,0 +1,3 @@
+[translate-toolkit]
+source = "git"
+git = "https://github.com/translate/translate.git"
