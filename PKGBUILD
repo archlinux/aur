@@ -4,12 +4,12 @@ arch=('x86_64')
 depends=('ffmpeg' 'rsync')
 license=('AGPL3')
 makedepends=('cmake' 'git' 'rust')
-md5sums=('bc7f69dde1ef2692564dc837f0fb0834')
+md5sums=('4fdb192060d5f2a45b9f1dc800c1cc4a')
 options=('!lto')
 pkgdesc='A static site generator for video'
 pkgname=hyper8
 pkgrel=1
-pkgver=0.16.0
+pkgver=0.17.0
 url='https://simonrepp.com/hyper8'
 
 source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/simonrepp/hyper8/archive/${pkgver}.tar.gz")
