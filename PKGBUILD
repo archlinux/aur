@@ -2,7 +2,7 @@
 
 _pkgname=qttube
 pkgname=${_pkgname}-git
-pkgver=3ecb147
+pkgver=0.1.r373.gb0f6161
 pkgrel=1
 pkgdesc="A Qt frontend for YouTube."
 arch=('i686' 'x86_64' 'aarch64')
@@ -21,8 +21,12 @@ sha256sums=('SKIP'
             'SKIP')
 
 pkgver() {
+    # Switch this to "git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'"
+    # once there's some actual versioning going!
     cd "${srcdir}/QtTube"
-    git rev-parse --short HEAD | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    local _revision=$(git rev-list --count $(git rev-list --max-parents=0 HEAD)..HEAD)
+    local _commit=$(git rev-parse --short HEAD | sed 's/\([^-]*-g\)/r\1/;s/-/./g')
+    printf "0.1.r%s.g%s" "${_revision:?}" "${_commit:?}"
 }
 
 prepare() {
