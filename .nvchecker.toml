@@ -1,0 +1,4 @@
+[python-getkey]
+source = "git"
+git = "https://github.com/kcsaff/getkey.git"
+prefix = "v"
