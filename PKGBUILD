@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=commas-bin
 _pkgname=Commas
-pkgver=0.32.1
-_electronversion=30
+pkgver=0.33.1
+_electronversion=31
 pkgrel=1
 pkgdesc="A hackable, pluggable terminal, and also a command runner."
 arch=("x86_64")
@@ -12,7 +12,6 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'python'
     'java-runtime'
 )
 makedepends=(
@@ -23,7 +22,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/CyanSalt/commas/v${pkgver}/resources/images/icon.png"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('600161b8fa6693bd46080dc610e4b30d58e8dfd36047fd18dd09f9dee5855d4c'
+sha256sums=('83c8a88640db3c4192f1f0c18cd62b65c2d85a5517f277763bfcb4bc7119a753'
             '65b65c25d8d68549dc271f7c755426ba8884f6ae9fb3a8061eec65c241345f48'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
