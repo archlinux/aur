@@ -1,0 +1,4 @@
+[python-hist]
+source = "git"
+git = "https://github.com/scikit-hep/hist.git"
+prefix = "v"
