@@ -1,0 +1,4 @@
+[python-pook]
+source = "git"
+git = "https://github.com/h2non/pook.git"
+prefix = "v"
