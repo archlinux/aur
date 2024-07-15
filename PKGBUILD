@@ -4,14 +4,14 @@
 # Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 
-pkgname=('llvm17' 'llvm17-libs' 'llvm17-lit')
+pkgname=('llvm17' 'llvm17-libs')
 pkgver=17.0.6
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
 makedepends=('cmake' 'ninja' 'zlib' 'zstd' 'libffi' 'libedit' 'ncurses'
-             'libxml2' 'python' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+             'libxml2' 'python' 'python-build')
 checkdepends=('python-psutil')
 options=('staticlibs' '!lto') # tools/llvm-shlib/typeids.test fails with LTO
 _source_base=https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver
@@ -139,18 +139,5 @@ package_llvm17-libs() {
 
   install -Dm644 "$srcdir/llvm-$pkgver.src/LICENSE.TXT" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-}
-
-package_llvm17-lit() {
-  pkgdesc="An LLVM testing tool (LLVM 17)"
-  depends=('python')
-
-  mkdir -p "$pkgdir/opt/llvm17-lit"
-  python3 -m venv --system-site-packages "$pkgdir/opt/llvm17-lit"
-
-  cd llvm-$pkgver.src/utils/lit
-  "$pkgdir/opt/llvm17-lit/bin/python" -m installer dist/*.whl
-
-  sed -i "s#$pkgdir##" "$pkgdir/opt/llvm17-lit/pyvenv.cfg" "$pkgdir/opt/llvm17-lit/bin/"{activate,pip}* "$pkgdir/opt/llvm17-lit/bin/lit"
 }
 # vim:set ts=2 sw=2 et:

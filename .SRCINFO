@@ -15,9 +15,6 @@ pkgbase = llvm17
 	makedepends = libxml2
 	makedepends = python
 	makedepends = python-build
-	makedepends = python-installer
-	makedepends = python-setuptools
-	makedepends = python-wheel
 	options = staticlibs
 	options = !lto
 	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-17.0.6/llvm-17.0.6.src.tar.xz
@@ -40,7 +37,3 @@ pkgname = llvm17-libs
 	depends = libedit
 	depends = ncurses
 	depends = libxml2
-
-pkgname = llvm17-lit
-	pkgdesc = An LLVM testing tool (LLVM 17)
-	depends = python
