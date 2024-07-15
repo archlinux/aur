@@ -2,7 +2,7 @@
 _pkgname=bonk
 pkgname="${_pkgname}-git"
 # renovate: pkgName=https://github.com/FascinatedBox/bonk depName=bonk
-pkgver=r66.9c77929
+pkgver=r69.4523257
 pkgrel=1
 pkgdesc="command-line tool that provides subcommands to modify windows, adjust window properties, change window decorations, and more."
 license=('GPL-2.0-only')

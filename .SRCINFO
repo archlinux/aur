@@ -1,6 +1,6 @@
 pkgbase = bonk-git
 	pkgdesc = command-line tool that provides subcommands to modify windows, adjust window properties, change window decorations, and more.
-	pkgver = r66.9c77929
+	pkgver = r69.4523257
 	pkgrel = 1
 	url = https://github.com/FascinatedBox/bonk
 	arch = x86_64
