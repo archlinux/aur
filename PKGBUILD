@@ -6,7 +6,7 @@
 
 pkgname=courier-maildrop-minimal
 _srcname=maildrop
-pkgver=3.1.6
+pkgver=3.1.7
 pkgrel=1
 pkgdesc="Mail delivery agent with filtering abilities"
 arch=('x86_64')
@@ -14,13 +14,11 @@ url="https://www.courier-mta.org/maildrop/"
 license=('GPL3')
 depends=('courier-unicode' 'libidn2' 'pcre2')
 optdepends=('courier-authlib: for LDAP, MySQL or PostgreSQL based mail authentication')
-conflicts=('courier-mta' 'courier-maildrop')
+conflicts=('courier-maildrop' 'courier-mta')
 source=("https://downloads.sourceforge.net/project/courier/${_srcname}/${pkgver}/${_srcname}-${pkgver}.tar.bz2"{,.sig})
 validpgpkeys=('6EA6428B24FF7A696EF9A4838A60F828A23652E2')
-sha512sums=(
-	'93364747c603d1d566f756e7ba8b10fd38d10749b269f1bf64596a56fe2b06f529f4b59b6256a5be0c44169f2c8cc9dcd7de91b3cc03288719ffee5db330b1d5'
-	'SKIP'
-)
+sha512sums=('972f3891d6f1daca97971d6cc3e09e4f78ce7bf8bb4520ed2836b8d7d9394546d403a0dd709e6b2e34706f67aae2563523bbc0953a9971cc2107fc0838fa095e'
+            'SKIP')
 
 build() {
 	cd "${srcdir}/${_srcname}-${pkgver}"
