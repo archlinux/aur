@@ -4,7 +4,7 @@
 # Contributor: mortzu
 pkgname=netkit-rwho-debian
 pkgver=0.17
-pkgrel=9
+pkgrel=10
 _debrev=15
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 license=('BSD-4-Clause-UC')
@@ -26,6 +26,7 @@ source=(
 	rwhod-purge.service
 	rwhod-purge.timer
 	rwhod.sysusers
+	rwhod.sysdir
 )
 
 sha256sums=(
@@ -37,6 +38,7 @@ sha256sums=(
 	'75577158b804b17b1aec4454d1f8e0818dc75ea7ee6b96cf6a8008acc5cba19d'
 	'c1622fe4c88aebd4aa52aad247476388374a5f02ae1533023c9312505eef1600'
 	'3508a6744e1fc2e0dbf907aef1834c20e22d080cfe505db4faa4905e349a090a'
+	'fd7814093c9abae5eaaf3eeceb7331198436d7881cff4b909f6364f4877d83ae'
 )
 
 build() {
@@ -68,13 +70,6 @@ package() {
   install -m644 "$srcdir/rwhod-purge.timer" "$pkgdir/usr/lib/systemd/system/rwhod-purge.timer"
   install -D "$srcdir/rwhod-purge.cron" "$pkgdir/usr/share/$pkgname/rwhod-purge.cron"
   install -Dm644 "$srcdir/rwhod.sysusers" "$pkgdir/usr/lib/sysusers.d/rwhod.conf"
-}
-
-post_install() {
-  chown -R rwhod:rwhod /var/spool/rwho
-}
-
-post_upgrade() {
-  post_install $1
+  install -Dm644 "$srcdir/rwhod.sysdir" "$pkgdir/usr/lib/tmpfiles.d/rwhod.conf"
 }
 

@@ -1,7 +1,7 @@
 pkgbase = netkit-rwho-debian
 	pkgdesc = Remote who client and server (with Debian patches)
 	pkgver = 0.17
-	pkgrel = 9
+	pkgrel = 10
 	url = https://tracker.debian.org/pkg/netkit-rwho
 	arch = i686
 	arch = x86_64
@@ -21,6 +21,7 @@ pkgbase = netkit-rwho-debian
 	source = rwhod-purge.service
 	source = rwhod-purge.timer
 	source = rwhod.sysusers
+	source = rwhod.sysdir
 	sha256sums = 0409e2ce4bfdb2dacb2c193d0fedfc49bb975cb057c5c6b0ffcca603a1188da7
 	sha256sums = b5d47f5bf9eb68290881020ef0c6b38e8444e67c5eb1db9877f136495886b02d
 	sha256sums = 3ad57b0f1ec2f05084df0d2e33fd7605b8c1af5c4330e519b1defcd0ef334a3c
@@ -29,5 +30,6 @@ pkgbase = netkit-rwho-debian
 	sha256sums = 75577158b804b17b1aec4454d1f8e0818dc75ea7ee6b96cf6a8008acc5cba19d
 	sha256sums = c1622fe4c88aebd4aa52aad247476388374a5f02ae1533023c9312505eef1600
 	sha256sums = 3508a6744e1fc2e0dbf907aef1834c20e22d080cfe505db4faa4905e349a090a
+	sha256sums = fd7814093c9abae5eaaf3eeceb7331198436d7881cff4b909f6364f4877d83ae
 
 pkgname = netkit-rwho-debian
