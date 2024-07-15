@@ -1,8 +1,8 @@
 # Maintainer: Claudia Pellegrino <clau@tiqua.de>
 
 pkgname=funiculi
-pkgver=0.1.4
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc='Control your Denon AVR amplifier from the command line'
 arch=('any')
 url='https://github.com/claui/funiculi'
@@ -28,9 +28,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/claui/funiculi/archive/v${pkgver}.tar.gz"
 )
 
-sha512sums=(
-  'caf14e2f717aa0229e2b42e83a722f298f1bbcf0c4c105985dfe1a454c123be96c1b3a9949478d70c64db4d372043675284a0e73836d6e7232faa76544664a9a'
-)
+sha512sums=('cd743fd555480b9797d2eaa71e0d98e09c07bb4012ae53e13983956bd5f8184b763a5f2844f81e93acf29c44f65b872e34493cd8ffbe2d229de3322990b64e63')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
