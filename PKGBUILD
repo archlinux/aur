@@ -1,6 +1,6 @@
 pkgname=mingw-w64-coin-or-ipopt
 pkgver=3.14.16
-pkgrel=2
+pkgrel=3
 pkgdesc="Interior Point OPTimizer (mingw-w64)"
 arch=('any')
 url="https://projects.coin-or.org/Ipopt"
