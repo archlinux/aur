@@ -1,0 +1,4 @@
+[python-fints]
+source = "git"
+git = "https://github.com/raphaelm/python-fints.git"
+prefix = "v"
