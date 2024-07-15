@@ -1,0 +1,4 @@
+[python-pyproject-parser]
+source = "git"
+git = "https://github.com/repo-helper/pyproject-parser.git"
+prefix = "v"
