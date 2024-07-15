@@ -1,0 +1,3 @@
+[ruby-gdk3]
+source = "gems"
+gems = "gdk3"
