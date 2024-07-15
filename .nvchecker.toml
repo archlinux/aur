@@ -1,0 +1,4 @@
+[python-deprecation-alias]
+source = "git"
+git = "https://github.com/domdfcoding/deprecation-alias.git"
+prefix = "v"
