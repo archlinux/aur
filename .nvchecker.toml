@@ -1,0 +1,3 @@
+[python-liteeth]
+source = "git"
+git = "https://github.com/enjoy-digital/liteeth.git"
