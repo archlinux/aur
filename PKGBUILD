@@ -3,7 +3,7 @@
 
 pkgname="aider-chat"
 _pkgname="aider"
-pkgver=0.42.0
+pkgver=0.43.4
 pkgrel=1
 pkgdesc="AI pair programming in your terminal"
 url="https://github.com/paul-gauthier/aider"
@@ -22,6 +22,7 @@ depends=(
   "python-gitpython"
   "python-grep-ast"
   "python-httpx"
+  "python-importlib-resources"
   "python-jsonschema"
   "python-networkx"
   "python-numpy"
@@ -53,7 +54,7 @@ optdepends=(
   "python-soundfile: portaudio support"
 )
 source=("$pkgname::git+$url.git#tag=v$pkgver")
-b2sums=('62ab80a05334885be118b7eb437737733e97b022f7f955cad81704348ce83a9cc78f078d1d24c75ad90ea24a9febb2f0f46dfe4701f8903c7f85eed528da286e')
+b2sums=('77c615cc0d3832a297e973f4d2104a79a1b67b15a8f379c95be8020018f2252722198dec56a7b5f0110f6b8960f2c2da5e4230f7122d74c41969d12cfeb38559')
 
 prepare() {
   cd "$pkgname"
@@ -71,9 +72,13 @@ build() {
 check() {
   cd "$pkgname"
 
-  # Deselect some tree-sitter tests failing due the following exception:
+  # Deselect test_repomap.py - tree-sitter tests failing due the following
+  # exception:
   #   tree_sitter_languages/core.pyx:14: TypeError
-  pytest --deselect aider/tests/test_repomap.py
+  # Deselect test_help.py - interactive help requires missing deps.
+  pytest \
+    --deselect aider/tests/test_repomap.py \
+    --deselect aider/tests/test_help.py
 }
 
 package() {
