@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=commas-git
 _pkgname=Commas
-pkgver=0.32.1.r0.g9333957
-_electronversion=30
+pkgver=0.33.1.r6.g458cdb5
+_electronversion=31
 _nodever=20
 pkgrel=1
 pkgdesc="A hackable, pluggable terminal, and also a command runner."
@@ -13,7 +13,6 @@ conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 depends=(
     "electron${_electronversion}"
-    'python>3'
 )
 makedepends=(
     'gendesk'
@@ -50,7 +49,7 @@ build() {
     cd "${srcdir}/${pkgname//-/.}"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    #export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     #export ELECTRONVERSION="${_electronversion}"
@@ -63,8 +62,8 @@ build() {
     else
         echo "Your network is OK."
     fi
-    npm install
-    npm run build
+    NODE_ENV=development npm install
+    NODE_ENV=production npm run build
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
