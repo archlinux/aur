@@ -9,6 +9,6 @@ pkgbase = bad-apple-flut-bin
 	provides = bad-apple-flut
 	conflicts = bad-apple-flut
 	source = https://github.com/peppidesu/bad-apple-flut/releases/download/v1.0.0/bad-apple-flut-1.0.0-x86_64.tar.gz
-	sha256sums = 5f587e278dd3bc25435b33c3c3d2d6ed81dcf1fed2fbcc0eae32214301839815
+	sha256sums = b5975ce4278c7e7bbba7726615e09d0fcfa5567bbc4a37642b0e829aae4e0d9a
 
 pkgname = bad-apple-flut-bin

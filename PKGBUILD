@@ -13,7 +13,7 @@ provides=("bad-apple-flut")
 conflicts=("bad-apple-flut")
 depends=("ffmpeg")
 source=("https://github.com/peppidesu/bad-apple-flut/releases/download/v$pkgver/bad-apple-flut-$pkgver-x86_64.tar.gz")
-sha256sums=("5f587e278dd3bc25435b33c3c3d2d6ed81dcf1fed2fbcc0eae32214301839815")
+sha256sums=("b5975ce4278c7e7bbba7726615e09d0fcfa5567bbc4a37642b0e829aae4e0d9a")
 
 package() {
     install -Dm755 bad-apple-flut -t "$pkgdir/usr/bin"
