@@ -7,7 +7,7 @@
 pkgname=iozone
 pkgver=3.506
 _pkgver=${pkgver/./_}
-pkgrel=2
+pkgrel=3
 pkgdesc="A filesystem benchmark tool"
 arch=('any')
 url="http://www.iozone.org/"
@@ -22,7 +22,7 @@ build() {
 	cd "${srcdir}/${pkgname}${_pkgver}/src/current"
 
 	[[ "${CARCH}" == 'x86_64' ]] && TARGET='-AMD64'
-	make linux${TARGET} CFLAGS="${CFLAGS}"
+	make -j1 linux${TARGET} CFLAGS="${CFLAGS}"
 }
 
 package() {
