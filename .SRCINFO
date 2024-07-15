@@ -1,6 +1,6 @@
 pkgbase = invoice-git
 	pkgdesc = Command line invoice generator
-	pkgver = v0.1.0.r9.g4084509
+	pkgver = v0.1.0.r11.g0fb2e9d
 	pkgrel = 1
 	url = https://github.com/maaslalani/invoice
 	arch = any
