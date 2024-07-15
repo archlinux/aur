@@ -2,7 +2,7 @@
 # Contributor: Armin Preiml <apreiml@strohwolke.at>
 
 pkgname=hare
-pkgver=0.24.0
+pkgver=0.24.2
 pkgrel=1
 pkgdesc='The Hare programming language'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ license=('MPL-2.0 AND GPL-3.0-only')
 depends=('qbe' 'harec')
 makedepends=('scdoc')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~sircmpwn/${pkgname}/archive/${pkgver}.tar.gz")
-b2sums=('4e1e706a7e0623ebe71803dc591b362527dd140f025cb3529e95d9bec8bea464bc008d512e4981f1dcd34f770b8831a0d6dd37cb453ee54e01e900c1cd52c159')
+b2sums=('2dbb83448efe85c36be50ebfbe9c8c567ac7a8c420253f242aa911e815fbf41ff4fbe0e36d22b5654b74441cc73bbaac9de5b9cdb06f9f687813babe2bf359c0')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
