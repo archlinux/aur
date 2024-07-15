@@ -1,4 +1,4 @@
-# Maintainer: Manuel Wiesinger <m {you know what belongs here} mmap {and here} at>a
+# Maintainer: Manuel Wiesinger <m {you know what belongs here} mmap {and here} at>
 
 _name=black-macchiato
 pkgname="python-${_name}"
