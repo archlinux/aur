@@ -1,0 +1,4 @@
+[python-sanic-testing]
+source = "git"
+git = "https://github.com/sanic-org/sanic-testing.git"
+prefix = "v"
