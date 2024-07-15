@@ -9,6 +9,7 @@ pkgbase = python-colcon-cmake-git
 	makedepends = flake8
 	depends = python-colcon-core
 	provides = python-colcon-cmake
+	conflicts = python-colcon-cmake
 	source = colcon-cmake::git+https://github.com/colcon/colcon-cmake
 	source = https://github.com/myint/scspell/archive/refs/tags/v2.2.tar.gz
 	sha256sums = SKIP

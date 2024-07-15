@@ -8,6 +8,7 @@ arch=(any)
 url="https://github.com/colcon/colcon-cmake"
 license=('Apache')
 provides=(python-colcon-cmake)
+conflicts=(python-colcon-cmake)
 depends=('python-colcon-core')
 makedepends=('python-setuptools' 'flake8')
 source=(
