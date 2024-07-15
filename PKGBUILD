@@ -1,7 +1,7 @@
 # Maintainer: Aikawa Yataro <aikawayataro at protonmail dot com>
 
 pkgname=sourcegit
-pkgver=8.20
+pkgver=8.21
 pkgrel=1
 pkgdesc="GUI client for GIT users"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('dotnet-sdk-8.0')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sourcegit-scm/sourcegit/archive/refs/tags/v$pkgver.tar.gz"
         'sourcegit.desktop')
-sha256sums=('d0d86aed5fc9973c1bca4cbfd197ad3110a0f47d739d89cd1b4a235e136c6947'
+sha256sums=('18001d93f0c5f2c1ac77b0aeafb9c720d40b7f3c3dbab54bbccc8d88d464d04c'
             '3488ee13a4ca1bae85c35f866d046304d8716a64c46cadb2576cb8b4ae44b058')
 
 
@@ -23,8 +23,8 @@ build() {
     
     cd "$pkgname-$pkgver"
 
-    dotnet publish src/SourceGit.csproj -c Release -r linux-x64 -o publish -p:PublishAot=true -p:PublishTrimmed=true -p:TrimMode=link --self-contained
-    rm -f publish/SourceGit.dbg
+    dotnet publish src/SourceGit.csproj -c Release -r linux-x64 -o publish
+    rm -f publish/SourceGit.pdb
     mv publish/SourceGit "publish/$pkgname"
 }
 
@@ -32,7 +32,7 @@ package() {
     install -d "$pkgdir/opt/$pkgname/"
     install -d "$pkgdir/usr/bin/"
 
-    cp -r "$pkgname-$pkgver/publish/"* "$pkgdir/opt/$pkgname/"
+    cp -dr --no-preserve=ownership "$pkgname-$pkgver/publish/"* "$pkgdir/opt/$pkgname/"
     ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
     install -Dm644 sourcegit.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
