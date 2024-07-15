@@ -1,11 +1,11 @@
 pkgbase = terraform-ls-bin
 	pkgdesc = Terraform Language Server
-	pkgver = 0.33.3
+	pkgver = 0.34.0
 	pkgrel = 1
 	arch = x86_64
 	license = MPL2
 	optdepends = terraform: Required to support fmt command
-	source = terraform-ls-linux-amd64-0.33.3.zip::https://releases.hashicorp.com/terraform-ls/0.33.3/terraform-ls_0.33.3_linux_amd64.zip
-	sha512sums = 990ff385525ecf864fbe46fede8cb27da47bf3e8f76cc6422d74658cdedd5846072e04fae04dbf66f16767a1df12f6f63b158d912bf7bc37bfc62817214cd4c8
+	source = terraform-ls-linux-amd64-0.34.0.zip::https://releases.hashicorp.com/terraform-ls/0.34.0/terraform-ls_0.34.0_linux_amd64.zip
+	sha512sums = 7ea04b54c5fa445f128a5f01bc372ea1fb36fe2c6b2c67aa7ab0ec753430f252707b9808f7f85c0f2ee4179cad7f5effab9d12b9ba6bb1a429b61c2c36999601
 
 pkgname = terraform-ls-bin
