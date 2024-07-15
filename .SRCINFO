@@ -1,7 +1,7 @@
 pkgbase = rtw88-dkms-git
 	pkgdesc = Driver for Realtek 802.11ac wireless chips
 	pkgver = r443.5db1508
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lwfinger/rtw88
 	arch = any
 	license = GPL2
@@ -13,7 +13,7 @@ pkgbase = rtw88-dkms-git
 	source = blacklist-rtw88.conf
 	source = dkms.conf
 	sha256sums = SKIP
-	sha256sums = fc45e3db3af0b047d9dcf656bfa84cf74f1d919e25a3f39bb4a47d940bed8cac
-	sha256sums = 5c0ac522558cd8d9ed1549d474eb5deccbe7d9a2643e0906b80d7d6983fbc4b4
+	sha256sums = f814ee492e75de83d348e515002f23863840baaae6339c374d677f7d05a3b2fe
+	sha256sums = 74b52b0b0f07f2e95fd0068e3e92537768d32c9a236000cde2b7fabe27b346fd
 
 pkgname = rtw88-dkms-git

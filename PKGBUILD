@@ -7,7 +7,7 @@
 _pkgbase=rtw88
 pkgname=rtw88-dkms-git
 pkgver=r443.5db1508
-pkgrel=1
+pkgrel=2
 pkgdesc='Driver for Realtek 802.11ac wireless chips'
 license=('GPL2' 'custom')
 arch=('any')
@@ -18,12 +18,17 @@ source=("git+https://github.com/lwfinger/rtw88.git"
 	"blacklist-rtw88.conf"
 	"dkms.conf")
 sha256sums=('SKIP'
-	    'fc45e3db3af0b047d9dcf656bfa84cf74f1d919e25a3f39bb4a47d940bed8cac'
-	    '5c0ac522558cd8d9ed1549d474eb5deccbe7d9a2643e0906b80d7d6983fbc4b4')
+	    'f814ee492e75de83d348e515002f23863840baaae6339c374d677f7d05a3b2fe'
+	    '74b52b0b0f07f2e95fd0068e3e92537768d32c9a236000cde2b7fabe27b346fd')
+
+prepare() {
+	cd "${srcdir}"/${_pkgbase}
+	rm -f convert_firmware.*
+}
 
 pkgver() {
-    cd "${srcdir}"/${_pkgbase}
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	cd "${srcdir}"/${_pkgbase}
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 package() {
@@ -32,4 +37,5 @@ package() {
 	install -Dm 644 -t "${pkgdir}"/usr/src/${_pkgbase}-${pkgver} *.c *.h Makefile
 	install -Dm 644 -t "${pkgdir}"/usr/src/${_pkgbase}-${pkgver} "${srcdir}"/dkms.conf
 	install -Dm 644 -t "${pkgdir}"/etc/modprobe.d "${srcdir}"/blacklist-rtw88.conf
+ 	sed -e "s/@PKGVER@/${pkgver}/" -i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
 }
