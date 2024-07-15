@@ -1,0 +1,3 @@
+[python-mocket]
+source = "git"
+git = "https://github.com/mindflayer/python-mocket.git"
