@@ -1,0 +1,3 @@
+[home-assistant]
+source = "git"
+git = "https://github.com/home-assistant/core.git"
