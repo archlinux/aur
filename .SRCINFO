@@ -1,7 +1,7 @@
 pkgbase = viennarna
 	pkgdesc = RNA Secondary Structure Prediction and Comparison
 	pkgver = 2.6.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.tbi.univie.ac.at/RNA
 	arch = x86_64
 	arch = i686
@@ -20,7 +20,11 @@ pkgbase = viennarna
 	options = staticlibs
 	options = !strip
 	source = http://www.tbi.univie.ac.at/RNA/packages/source/ViennaRNA-2.6.4.tar.gz
+	source = fix_python3.12_SWIG_Python_str_AsChar1.patch
+	source = fix_python3.12_SWIG_Python_str_AsChar0.patch
 	sha256sums = d1259ce5809601a12b0dc9b724ea2c55806fece80d8d83ad417ea8a2dd574982
+	sha256sums = d6d045e70b42a3e1374c580a63ce8dadbc52926d3cdd212210c07d12708ff254
+	sha256sums = 3ce1fb7286c89e4d48cf2bbef720d76a62da87e4177a4e424f1fca0678b3247e
 
 pkgname = viennarna
 	depends = perl

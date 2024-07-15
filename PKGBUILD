@@ -3,7 +3,7 @@
 pkgbase=viennarna
 pkgname=('viennarna' 'python-rna' 'perl-rna')
 pkgver=2.6.4
-pkgrel=2
+pkgrel=3
 pkgdesc="RNA Secondary Structure Prediction and Comparison"
 arch=('x86_64' 'i686')
 license=('Custom')
@@ -20,13 +20,19 @@ makedepends=( 'perl'
               'blas'
               'gcc-fortran')
 
-source=(http://www.tbi.univie.ac.at/RNA/packages/source/ViennaRNA-${pkgver}.tar.gz)
+source=(http://www.tbi.univie.ac.at/RNA/packages/source/ViennaRNA-${pkgver}.tar.gz
+        fix_python3.12_SWIG_Python_str_AsChar1.patch
+        fix_python3.12_SWIG_Python_str_AsChar0.patch)
 
 options=('staticlibs' '!strip')
-sha256sums=('d1259ce5809601a12b0dc9b724ea2c55806fece80d8d83ad417ea8a2dd574982')
+sha256sums=('d1259ce5809601a12b0dc9b724ea2c55806fece80d8d83ad417ea8a2dd574982'
+            'd6d045e70b42a3e1374c580a63ce8dadbc52926d3cdd212210c07d12708ff254'
+            '3ce1fb7286c89e4d48cf2bbef720d76a62da87e4177a4e424f1fca0678b3247e')
 
 prepare() {
   cd "${srcdir}/ViennaRNA-${pkgver}"
+  patch -p0 -i ../fix_python3.12_SWIG_Python_str_AsChar0.patch
+  patch -p0 -i ../fix_python3.12_SWIG_Python_str_AsChar1.patch
   ./configure \
       --with-cluster \
       --with-kinwalker \
