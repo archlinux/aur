@@ -1,0 +1,4 @@
+[python-keycloak]
+source = "git"
+git = "https://github.com/marcospereirampj/python-keycloak.git"
+prefix = "v"
