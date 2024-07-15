@@ -11,7 +11,7 @@ arch=('x86_64')
 url="https://lld.llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
 depends=('llvm17-libs' 'gcc-libs' 'zlib' 'zstd')
-makedepends=('llvm17' 'llvm17-lit' 'cmake' 'ninja' 'python-sphinx')
+makedepends=('llvm17' 'llvm' 'cmake' 'ninja' 'python-sphinx')
 options=('!lto') # LTO causes a couple of test failures
 _source_base=https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver
 source=($_source_base/lld-$pkgver.src.tar.xz
@@ -45,7 +45,7 @@ build() {
     -DBUILD_SHARED_LIBS=ON
     -DLLVM_BUILD_DOCS=ON
     -DLLVM_ENABLE_SPHINX=ON
-    -DLLVM_EXTERNAL_LIT=/opt/llvm17-lit/bin/lit
+    -DLLVM_EXTERNAL_LIT=/usr/bin/lit
     -DLLVM_INCLUDE_TESTS=ON
     -DLLVM_LINK_LLVM_DYLIB=ON
     -DLLVM_MAIN_SRC_DIR="$srcdir/llvm-$pkgver.src"
