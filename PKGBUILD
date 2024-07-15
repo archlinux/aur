@@ -2,7 +2,7 @@
 # Contributor: gls < ghostlovescorebg at gmail dot com >
 
 pkgname=rompr
-pkgver=2.15
+pkgver=2.16
 pkgrel=2
 pkgdesc="A php web frontend to MPD and Mopidy"
 arch=('any')
@@ -22,9 +22,10 @@ optdepends=(
   'apache: webserver to serve app'
   'nginx: webserver to serve app'
   'mysql: alternate database platform to sqlite'
+  'atomicparsley: handle metadata in m4a podcasts'
 )
 source=("https://github.com/fatg3erman/RompR/releases/download/${pkgver}/${pkgname}-${pkgver}.zip")
-sha256sums=('2c1621f781a3cbacb83e24d32443d0fdeac437025d61f71fa7b55a014664ddef')
+sha256sums=('717256dd8478948479d1daaaf84278c6f77696f81b8ae9d65f5ea28a350b95af')
 install="${pkgname}.install"
 backup=(
   "var/lib/${pkgname}/albumart"

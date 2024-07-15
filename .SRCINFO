@@ -1,6 +1,6 @@
 pkgbase = rompr
 	pkgdesc = A php web frontend to MPD and Mopidy
-	pkgver = 2.15
+	pkgver = 2.16
 	pkgrel = 2
 	url = https://github.com/fatg3erman/RompR/
 	install = rompr.install
@@ -16,11 +16,12 @@ pkgbase = rompr
 	optdepends = apache: webserver to serve app
 	optdepends = nginx: webserver to serve app
 	optdepends = mysql: alternate database platform to sqlite
+	optdepends = atomicparsley: handle metadata in m4a podcasts
 	conflicts = rompr<2.00
 	options = emptydirs
 	backup = var/lib/rompr/albumart
 	backup = var/lib/rompr/prefs
-	source = https://github.com/fatg3erman/RompR/releases/download/2.15/rompr-2.15.zip
-	sha256sums = 2c1621f781a3cbacb83e24d32443d0fdeac437025d61f71fa7b55a014664ddef
+	source = https://github.com/fatg3erman/RompR/releases/download/2.16/rompr-2.16.zip
+	sha256sums = 717256dd8478948479d1daaaf84278c6f77696f81b8ae9d65f5ea28a350b95af
 
 pkgname = rompr
