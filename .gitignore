@@ -3,3 +3,5 @@
 !.gitlab-ci.yml
 !PKGBUILD
 !.SRCINFO
+!plplot-numpy.patch
+!plplot-qt.patch
