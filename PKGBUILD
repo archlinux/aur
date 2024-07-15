@@ -3,7 +3,7 @@
 
 pkgname='liteloader-qqnt-markdown-bin'
 _pkgname='LiteLoaderQQNT-Markdown'
-pkgver='2.3.3'
+pkgver='2.3.5'
 pkgrel=1
 pkgdesc='LiteLoaderQQNT插件，为QQ添加Markdown支持'
 arch=('any')
@@ -14,8 +14,8 @@ provides=('liteloader-qqnt-markdown-git')
 conflicts=('liteloader-qqnt-markdown-git')
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('489b4597ea3cfea2aa6d18b22383acb6f07c5fcab99e65f6c599a1ef0cedf0ea')
-b2sums=('ec8c168351f8707cc413a2ab8f940e021ae7d6c98ff4b6610ce047ef635e612e42be15fe4270819e8c42ac99dbcaa40bb5bb83cf221a28973170d6b264d7fccb')
+sha256sums=('8e188f73d1777ade8cd6799a7992a601c4dba4b7bdb5770bac49db2f6afe13e2')
+b2sums=('82cae1ae80d93e96ff7a30d881fea76f36f5c636cf32a8fc7eeceebedf8e8496fd7e45d91d2192823cd76c74cb037ad682601bffa8ec755aa95b0a0a4c3e8348')
 
 package() {
     mkdir -p "${pkgdir}/opt/LiteLoader/plugins/${_pkgname}"
