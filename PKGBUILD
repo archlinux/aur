@@ -3,31 +3,24 @@
 # Contributor: Christian Krause ("wookietreiber") <kizkizzbangbang@googlemail.com>
 
 pkgname=bwa
-pkgver=0.7.17
-_pkgver=${pkgver}
-pkgrel=2
+pkgver=0.7.18
+pkgrel=1
 pkgdesc="Burrows-Wheeler Aligner maps low-divergent sequences against a large reference genome"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="http://bio-bwa.sourceforge.net/"
-license=('GPL3')
-depends=('perl' 'zlib')
-source=("https://github.com/lh3/bwa/releases/download/v$pkgver/bwa-${_pkgver}.tar.bz2"
-        'backported.patch')
-sha256sums=('de1b4d4e745c0b7fc3e107b5155a51ac063011d33a5d82696331ecf4bed8d0fd'
-            'ec91adc478cbf207c694c5b7e46738dcbd77cd77180c7a6279d3e000108fe8c2')
-
-prepare() {
-    patch --directory="$pkgname-$_pkgver" --forward --strip=1 --input="${srcdir}/backported.patch"
-}
+license=('GPL-3.0-only')
+depends=('perl' 'zlib' 'glibc')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/lh3/bwa/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('194788087f7b9a77c0114aa481b2ef21439f6abab72488c83917302e8d0e7870')
 
 build() {
-  cd "$srcdir/$pkgname-$_pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
 
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$_pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
 
   install -Dm755 bwa          "$pkgdir/usr/bin/bwa"
   install -Dm755 qualfa2fq.pl "$pkgdir/usr/bin/qualfa2fq"
