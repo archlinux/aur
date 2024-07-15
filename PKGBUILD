@@ -1,11 +1,14 @@
 # Maintainer:
 
+## options
+: ${_build_cuda=true} # nvenc
+
 : ${_commit=8b21db64fb8e8ffb9c24a412dbc66b7410699211}
 
 _pkgname="sunshine"
 pkgname="$_pkgname"
 pkgver=0.23.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A self-hosted GameStream host for Moonlight"
 url="https://github.com/LizardByte/Sunshine"
 license=('GPL-3.0-only')
@@ -38,16 +41,19 @@ depends=(
 makedepends=(
   'boost'
   'cmake'
-  'cuda'
   'git'
   'ninja'
   'npm'
 )
 optdepends=(
   'cuda: Nvidia GPU encoding support'
-  'libva-mesa-driver: AMD GPU encoding support'
   'intel-media-driver: Intel GPU encoding support'
+  'libva-mesa-driver: AMD GPU encoding support'
 )
+
+if [[ "${_build_cuda::1}" == "t" ]]; then
+  makedepends+=('cuda')
+fi
 
 install="sunshine.install"
 
@@ -148,13 +154,19 @@ prepare() {
 
   # force features enabled
   sed -E \
-    -e 's&(CUDA_FOUND) OFF&set(\1 ON)&' \
-    -e 's&(LIBCAP_FOUND) OFF&set(\1 ON)&' \
-    -e 's&(LIBDRM_FOUND) OFF&set(\1 ON)&' \
-    -e 's&(LIBVA_FOUND) OFF&set(\1 ON)&' \
-    -e 's&(WAYLAND_FOUND) OFF&set(\1 ON)&' \
-    -e 's&(X11_FOUND) OFF&set(\1 ON)&' \
+    -e 's&(LIBCAP_FOUND) OFF&\1 ON&' \
+    -e 's&(LIBDRM_FOUND) OFF&\1 ON&' \
+    -e 's&(LIBVA_FOUND) OFF&\1 ON&' \
+    -e 's&(WAYLAND_FOUND) OFF&\1 ON&' \
+    -e 's&(X11_FOUND) OFF&\1 ON&' \
     -i "$_pkgsrc/cmake/compile_definitions/linux.cmake"
+
+  # force cuda enabled
+  if [[ "${_build_cuda::1}" == "t" ]]; then
+    sed -E \
+      -e 's&(CUDA_FOUND) OFF&\1 ON&' \
+      -i "$_pkgsrc/cmake/compile_definitions/linux.cmake"
+  fi
 }
 
 build() (
@@ -164,6 +176,9 @@ build() (
 
   export CFLAGS="${CFLAGS/-Werror=format-security/}"
   export CXXFLAGS="${CXXFLAGS/-Werror=format-security/}"
+
+  export CUDA_PATH=/opt/cuda
+  export NVCC_CCBIN='/usr/bin/g++-13'
 
   local _cmake_options=(
     -B build
