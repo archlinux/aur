@@ -1,0 +1,4 @@
+[firrtl]
+source = "git"
+git = "https://github.com/freechipsproject/firrtl.git"
+prefix = "v"
