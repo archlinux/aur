@@ -1,0 +1,4 @@
+[penguin-subtitle-player]
+source = "git"
+git = "https://github.com/carsonip/Penguin-Subtitle-Player.git"
+prefix = "v"
