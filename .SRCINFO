@@ -1,0 +1,15 @@
+pkgbase = zls-13
+	pkgdesc = A Zig language server supporting Zig developers with features like autocomplete and goto definition
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://github.com/zigtools/zls
+	arch = x86_64
+	license = MIT
+	provides = zls
+	conflicts = zls
+	conflicts = zls-git
+	conflicts = zls-nightly-bin
+	source = https://github.com/zigtools/zls/releases/download/0.13.0/zls-x86_64-linux.tar.xz
+	sha256sums = ec4c1b45caf88e2bcb9ebb16c670603cc596e4f621b96184dfbe837b39cd8410
+
+pkgname = zls-13
