@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=commas
 _pkgname=Commas
-pkgver=0.32.1
-_electronversion=30
+pkgver=0.33.1
+_electronversion=31
 _nodever=20
 pkgrel=1
 pkgdesc="A hackable, pluggable terminal, and also a command runner."
@@ -12,7 +12,6 @@ license=('ISC')
 conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
-    'python>3'
 )
 makedepends=(
     'gendesk'
@@ -24,7 +23,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('be99c0a40b9e305a4a50323f5be38e6841c1d860964e1a9536a1e1d242777d73'
+sha256sums=('91a5a1d64e583a3294857ee4148f4043a8011d748134c599b18acc2656fa7104'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -57,8 +56,8 @@ build() {
     else
         echo "Your network is OK."
     fi
-    npm install
-    npm run build
+    NODE_ENV=development npm install
+    NODE_ENV=production npm run build
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
