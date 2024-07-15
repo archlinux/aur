@@ -1,0 +1,4 @@
+[python-mistletoe]
+source = "git"
+git = "https://github.com/miyuchina/mistletoe.git"
+prefix = "v"
