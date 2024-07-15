@@ -1,0 +1,3 @@
+[leatherman]
+source = "git"
+git = "https://github.com/puppetlabs/leatherman.git"
