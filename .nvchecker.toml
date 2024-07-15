@@ -1,0 +1,3 @@
+[python-litedram]
+source = "git"
+git = "https://github.com/enjoy-digital/litedram.git"
