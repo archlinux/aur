@@ -1,8 +1,8 @@
 # Maintainer: Oystein Sture <oysstu at gmail.com>
 
 pkgname=ros2-iron-base
-pkgver=2024.04.23
-pkgrel=2
+pkgver=2024.07.12
+pkgrel=1
 _rosdist="Iron Irwini"
 _rosdist_short_upper=${_rosdist%% *}
 _rosdist_short=${_rosdist_short_upper,}
@@ -39,7 +39,7 @@ source=(
     "https://github.com/ros2/ros2/archive/release-${_rosdist_short}-${pkgver//.}.tar.gz"
     "ros2-variants-0.10.0.tar.gz::https://github.com/ros2/variants/archive/0.10.0.tar.gz"
 )
-sha256sums=('71188fe6498a3c665a04510bddf26585b156916b7fc6fd70580d18a58c752602'
+sha256sums=('a65bb5d974767c5eb06bd77b18e1f84020ce1a949828fc4008df8c3ae36f9995'
             'df17f20c0168f4553e40023b8e324d93bdcc1f39932df785cb1d55051076e3f6')
 
 prepare() {
@@ -54,10 +54,7 @@ prepare() {
 
 build() {
     # Disable parallel build if RAM is low
-    if [[ $(free | grep -Po "Mem:\s+\K\d+") -lt 8000000 ]]; then
-        printf "\nRAM is smaller than 8 GB. Parallel build will be disabled for stability.\n\n"
-        export COLCON_EXTRA_ARGS="${COLCON_EXTRA_ARGS} --executor sequential"
-    fi
+    # export COLCON_EXTRA_ARGS="${COLCON_EXTRA_ARGS} --executor sequential"
 
     # Remove D_FORTIFY_SOURCE to avoid compilation errors
     CFLAGS=$(sed "s/-Wp,-D_FORTIFY_SOURCE=[0-9]\s//g" <(echo $CFLAGS))
