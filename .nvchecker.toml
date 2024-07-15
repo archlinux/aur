@@ -1,0 +1,4 @@
+[ruby-cucumber-compatibility-kit]
+source = "git"
+git = "https://github.com/cucumber/compatibility-kit.git"
+prefix = "v"
