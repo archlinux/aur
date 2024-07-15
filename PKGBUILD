@@ -2,11 +2,11 @@
 # Contributer: Ajay <dev@ajay.app>
 
 _pkgname=bypass-paywalls-chrome-clean
-_archivename="${_pkgname}-master"
-_source="https://github.com/bpc-clone/bpc_updates/releases/download/latest/${_archivename}.zip"
+_archive="${_pkgname}-master"
+_source="https://github.com/bpc-clone/bpc_updates/releases/download/latest/${_archive}.zip"
 pkgname=chromium-bypass-paywalls-clean
 pkgver=3.7.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Chromium extension to bypass paywalls"
 url="https://github.com/bpc-clone/bpc_updates"
 arch=('any')
@@ -19,12 +19,12 @@ source=("${_pkgname}-${pkgver}.zip::${_source}")
 sha256sums=('SKIP')
 
 pkgver() {
-    jq -r .version < "${_archivename}/manifest.json"
+    jq -r .version < "${_archive}/manifest.json"
 }
 
 package() {
     mkdir -p "${pkgdir}/usr/share/chromium/${_pkgname}"
     shopt -u dotglob
-    cp -dr --no-preserve=ownership "${srcdir}/${_archivename}"/* "${pkgdir}/usr/share/chromium/${_pkgname}/"
-    install -D "${_archivename}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    cp -dr --no-preserve=ownership "${srcdir}/${_archive}"/* "${pkgdir}/usr/share/chromium/${_pkgname}/"
+    install -D "${_archive}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
