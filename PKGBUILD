@@ -3,7 +3,7 @@
 
 _pkgname="droidcam-obs-plugin"
 pkgname="${_pkgname}-bin"
-pkgver="2.3.2"
+pkgver="2.3.3"
 pkgrel="1"
 pkgdesc="Plugin for DroidCam OBS"
 arch=("x86_64" "i686")
@@ -12,8 +12,8 @@ license=('GPL')
 depends=("obs-studio" 'libusbmuxd' 'ffmpeg')
 makedepends=('libjpeg-turbo')
 conflicts=("${_pkgname}-git")
-source=("https://github.com/dev47apps/droidcam-obs-plugin/releases/download/${pkgver}/droidcam_obs_${pkgver}_linux_ffmpeg5.zip")
-sha256sums=("SKIP")
+source=("https://github.com/dev47apps/droidcam-obs-plugin/releases/download/${pkgver}/droidcam_obs_${pkgver}_linux_flatpak.zip")
+sha256sums=('631ce154ffb74483e06bf87bd31a3e676b35ddf649a9b19ababc47ace0ec05e5')
 
 package() {
 	set -e
