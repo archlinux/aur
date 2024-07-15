@@ -1,7 +1,7 @@
 # Maintainer: Aleksey Maximov <amaxcz@gmail.com>
 
 pkgname=anthropic-claude-nativefier
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Anthropic Claude desktop app (electron)"
 arch=("armv7l" "i686" "x86_64")
@@ -47,7 +47,7 @@ package() {
   for _size in "192x192" "128x128" "96x96" "64x64" "48x48" "32x32" "24x24" "22x22" "20x20" "16x16" "8x8"
   do
     install -dm755 "${pkgdir}/usr/share/icons/hicolor/${_size}/apps"
-    convert "${srcdir}/${pkgname}.png" -strip -resize "${_size}" "${pkgdir}/usr/share/icons/hicolor/${_size}/apps/${pkgname}.png"
+    magick "${srcdir}/${pkgname}.png" -strip -resize "${_size}" "${pkgdir}/usr/share/icons/hicolor/${_size}/apps/${pkgname}.png"
   done
   chmod go+rx "${pkgdir}/opt/${pkgname}/"
 }
