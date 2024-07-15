@@ -3,7 +3,7 @@
 
 pkgbase=zsh-git
 pkgname=('zsh-git' 'zsh-doc-git')
-pkgver=5.9.r431.gc7ae37016
+pkgver=5.9.r450.g09c5b10dc
 pkgrel=1
 arch=('x86_64')
 url='https://www.zsh.org/'
@@ -75,6 +75,15 @@ package_zsh-git() {
   depends=('pcre2' 'libcap' 'gdbm')
   conflicts=('zsh')
   provides=('zsh')
+  optdepends=(
+    "grml-zsh-config: grml's zsh setup"
+    'zsh-autosuggestions: Fish-like autosuggestions for zsh'
+    'zsh-completions: Additional completion definitions for Zsh'
+    'zsh-doc: Info, HTML and PDF format of the ZSH documentation'
+    'zsh-history-substring-search: ZSH port of Fish history search (up arrow)'
+    'zsh-lovers: A collection of tips, tricks and examples for the Z shell.'
+    'zsh-syntax-highlighting: Fish shell like syntax highlighting for Zsh'
+    'zshdb: A debugger for zsh scripts')
   backup=('etc/zsh/zprofile')
   install=zsh.install
 
