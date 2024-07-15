@@ -1,29 +1,23 @@
 # Maintainer: Frederik Schwan <freswa at archlinux dot org>
 
-pkgname=wasi-compiler-rt
+pkgname=wasi-compiler-rt17
 pkgver=17.0.6
 pkgrel=1
-pkgdesc='WASI LLVM compiler runtime'
+pkgdesc='WASI LLVM compiler runtime (LLVM 17)'
 arch=('any')
 url='https://compiler-rt.llvm.org/'
 license=('custom:Apache 2.0 with LLVM Exception')
 depends=('wasi-libc')
-makedepends=('cmake' 'ninja' 'llvm' 'clang' 'lld')
-source=(https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/compiler-rt-${pkgver}.src.tar.xz{,.sig}
-        https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/cmake-$pkgver.src.tar.xz{,.sig}
+makedepends=('cmake' 'ninja' 'llvm17' 'clang17' 'lld17')
+source=(https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/compiler-rt-${pkgver}.src.tar.xz
+        https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/cmake-$pkgver.src.tar.xz
         WASI.cmake
         wasi-toolchain.cmake)
 b2sums=('f59c7df8721429d518ed7475148f5d852b871d22db948f8e453d49e4450a7644932dc8ac1d82462777689983711311a3e9517dcc8e953214ddcaa3f54ab0c278'
-        'SKIP'
         'f95c1c951ba7bd943931bb18c8dc23ef0b3c20ee3dd254d458ab7a3339097fc0f9e11c3b892c352e3f5f131014265a6bb116f56c9ebd78408f05158a90f51d6b'
-        'SKIP'
         'c829d807c257921fddb8c4d3752ad2291a2beb116d414dd31e34b7f6b01599d8c4807db87ef9930456ed8c9f30e8648e77028fa0b903c3a5ea840514f6022cf4'
         '74c63bb838bc2e6d7980370fb3d47f8fd2f1dd8b6dc82302c7cc0b80e0fb1e8e21c1c62d6de0b78e478fc22611a5867e52b1ef7a566796fe831fffd98b17c940')
 options=('staticlibs')
-validpgpkeys=(
-  '474E22316ABF4785A88C6E8EA2C794A986419D8A' # Tom Stellard <tstellar@redhat.com>
-  'D574BD5D1D0E98895E3BF90044F2485E45D59042' # Tobias Hieta <tobias@hieta.se>
-)
 
 prepare() {
   # Platform files have been copied from here https://github.com/WebAssembly/wasi-sdk
@@ -50,7 +44,7 @@ build() {
     -DCOMPILER_RT_OS_DIR=wasi \
     -DWASI_SDK_PREFIX=/usr \
     -DCMAKE_C_FLAGS="-fno-exceptions --sysroot=/usr/share/wasi-sysroot" \
-    -DCMAKE_INSTALL_PREFIX=/usr/lib/clang/${pkgver%%.*}/ \
+    -DCMAKE_INSTALL_PREFIX=/usr/lib/llvm17/lib/clang/${pkgver%%.*}/ \
     compiler-rt-${pkgver}.src/lib/builtins
   cmake --build build -v
 }
