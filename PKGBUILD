@@ -5,7 +5,7 @@
 
 pkgname=buckets-beta-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.74.0
+pkgver=0.76.0
 pkgrel=1
 pkgdesc="Private budgeting with the envelope budgeting method"
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('alsa-lib' 'gtk3' 'libsecret' 'libxss' 'libxtst' 'nss' 'glibc>=2.28-4')
 optdepends=()
 source=("https://github.com/buckets/desktop-beta/releases/download/v${pkgver}/Buckets-Beta-linux-latest-amd64-${pkgver}.deb")
 noextract=("Buckets-Beta-linux-latest-amd64-${pkgver}.deb")
-b2sums=('93dbdedc2a75c160939673ace81e3c4fc85dfa6f88d0c97fbf9ace85c9c775df7f6661dd46eb058255849f902dd258c4d4e9286ac2d6dbbe07b6f87163bce59f')
+b2sums=('b99ab2d0941afd40d6c2cfeb90fc0f08eb1c87ece9fa7ebddac9256138dbd7fed03599ad8269def2dacc75f625ff735346eb28fa9e67d7a4b914cd352b655aa5')
 
 package() {
   bsdtar -O -xf "Buckets-Beta-linux-latest-amd64-${pkgver}.deb" data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
