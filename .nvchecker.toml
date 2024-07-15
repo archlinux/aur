@@ -1,0 +1,3 @@
+[python-traits]
+source = "git"
+git = "https://github.com/enthought/traits.git"
