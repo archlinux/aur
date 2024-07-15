@@ -1,0 +1,4 @@
+[ruby-bake-modernize]
+source = "git"
+git = "https://github.com/ioquatix/bake-modernize.git"
+prefix = "v"
