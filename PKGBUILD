@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lunarwolf-git
 _pkgname=LunarWolf
-pkgver=1.0.0.r0.g9335e5c
+pkgver=1.0.1.beta.1.r0.g36da8f8
 _electronversion=31
 _nodeversion=20
 pkgrel=1
@@ -45,7 +45,7 @@ build() {
         -e "s|@appname@|${pkgname%-git}|g" \
         -e "s|@runname@|app.asar|g" \
         -e "s|@cfgdirname@|${_pkgname}|g" \
-        -e "s|@options@||g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Network" --name="${_pkgname}" --exec="${pkgname%-git} %U"
@@ -70,8 +70,8 @@ build() {
     corepack enable
     yarn set version 4.2.2
     # .yarnrc.yml existed
-    yarn install #--cache-folder "${srcdir}/.yarn_cache"
-    yarn run compile-linux
+    NODE_ENV=development yarn install #--cache-folder "${srcdir}/.yarn_cache"
+    NODE_ENV=production yarn run compile-linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
