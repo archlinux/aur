@@ -1,0 +1,4 @@
+[reactphysics3d]
+source = "git"
+git = "https://github.com/DanielChappuis/reactphysics3d.git"
+prefix = "v"
