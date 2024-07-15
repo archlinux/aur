@@ -2,7 +2,7 @@
 
 pkgbase=dicey
 pkgname=('dicey' 'python-dicey')
-pkgver=0.3.1
+pkgver=0.3.9
 pkgrel=1
 pkgdesc='Quick and dirty IPC library written in C'
 arch=('x86_64' 'i686' 'aarch64')
@@ -27,10 +27,13 @@ b2sums=('SKIP')
 
 build() {
   cmake \
+    -G Ninja \
     -S "${srcdir}/dicey" \
-    --preset release 
+    --preset release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DGENERATE_EXPORTS=ON
 
-  cmake --build "${srcdir}/dicey/build-rel"
+  cmake --build "${srcdir}/dicey/build-rel" 
 
   # Python
   cmake --install "${srcdir}/dicey/build-rel" --prefix "${srcdir}/dicey/bindings/python/dicey/deps"
