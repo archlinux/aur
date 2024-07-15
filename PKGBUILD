@@ -37,6 +37,9 @@ prepare() {
     # use absolute path to global dotnet exe
     sed -i "s|? \"dotnet\"|? \"$(command -v dotnet)\"|" scripts/common.cake
 
+    # https://github.com/advisories/GHSA-hh2w-p6rv-4g7w
+    sed -i "/System.Text.Json/s/8.0.0/8.0.4/" Directory.Packages.props
+
     export DOTNET_NOLOGO=1
 
     dotnet tool restore
