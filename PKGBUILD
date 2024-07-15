@@ -1,7 +1,7 @@
 # Maintainer: Jesus Martin Ortega Martinez (madara125) <martin.ortega.arashi@gmail.com><jortega@condorbs.net>
 # Contributor: Kevin Muñoz (MrHacker) <kmunoz@condorbs.net><david.munozm@proton.me>
 pkgname=wazuh-dashboard
-pkgver=4.7.4
+pkgver=4.8.0
 _remRevision=1
 _prodver=${pkgver}-${_remRevision}
 pkgrel=1
@@ -21,7 +21,6 @@ validpgpkeys=(
 
 source=(
   "https://packages.wazuh.com/4.x/yum/${pkgname}-${_prodver}.x86_64.rpm"
-  "${pkgname}-${pkgver}-${pkgrel}.x86_64.rpm.asc"
 )
 
 backup=(
@@ -30,8 +29,7 @@ backup=(
   'usr/share/wazuh-dashboard/data/wazuh/config/wazuh.yml'
   )
 
-sha512sums=('0f556b0efc1902727a458a34a215363a6b453e2c472bc1e9ac14d71de6802801aba0712b9096823d863b4fabc87aec26be99f1024e8210f462732a79c9480948'
-            'SKIP')
+sha512sums=('7a4fdc3be5a68679bd07216f9b50f3ce798fe569a54e6da9e4257c17217b86b803d1797cdc4488be1f2843c02fd8daf21be700b3c09ae0bb464f8618b000c8ca')
 
 install=$pkgname.install
 
