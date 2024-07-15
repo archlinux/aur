@@ -1,7 +1,7 @@
 # Maintainer: Julien Nicoulaud <julien DOT nicoulaud AT gmail DOT com>
 
 pkgname=zfs-prune-snapshots
-pkgver=1.1.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='Remove snapshots from one or more zpools that match given criteria.'
 arch=(any)
@@ -12,7 +12,7 @@ checkdepends=(shellcheck)
 depends=(bash)
 conflicts=(${pkgname}-git)
 source=("https://github.com/bahamas10/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('bad4f3ba8aa383f6e9f80ab9280e8591a1b19f8d77e22fe0a54d5569030b43eb2e55cb5041a5735287d8ecfb997cfc218959a53cff4529f5221683a7210d0c63')
+sha512sums=('d7e3aa832cb5f91735bb57cd2af07a7d32433a829f9e090846b96cfffe565bdc8625c17bb72719f42d9f807ec1a3692a144578c4fc801928680a55ae5bba7b26')
 
 check() {
   cd "${srcdir}/${pkgname}-${pkgver}"
