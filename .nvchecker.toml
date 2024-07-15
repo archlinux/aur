@@ -1,0 +1,4 @@
+[python-justbytes]
+source = "git"
+git = "https://github.com/mulkieran/justbytes.git"
+prefix = "v"
