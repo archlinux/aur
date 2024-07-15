@@ -1,0 +1,16 @@
+pkgbase = stabilitymatrix-bin
+	pkgdesc = Multi-Platform Package Manager for Stable Diffusion. Binary version.
+	pkgver = 2.11.4
+	pkgrel = 1
+	url = https://github.com/LykosAI/StabilityMatrix
+	arch = x86_64
+	license = AGPL3
+	depends = libxcrypt-compat
+	depends = zlib
+	provides = stabilitymatrix
+	conflicts = stabilitymatrix
+	options = !strip
+	source = https://github.com/LykosAI/StabilityMatrix/releases/download/v2.11.4/StabilityMatrix-linux-x64.zip
+	sha256sums = b41d06bc755d9a7fa84ecfee548670e1865f2cfb64a9f313eda5a2a981729033
+
+pkgname = stabilitymatrix-bin
