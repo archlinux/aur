@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="cli-of-life"
-pkgver=0.0.1
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Play Conway's Game of Life in your terminal"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('bash-completion: for shell auto-completion'
             'zsh-completions: for shell auto-completion')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('dcf6c809ff08405fd4f3aca667f5ebadf83bc603928fa95b9a6c71a084f0f71e')
+sha256sums=('a6dce5f7f5eda507cc469c6145d42955fb0f36251cd2ee4b7dcb8b5d460bc068')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
