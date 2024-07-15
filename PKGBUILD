@@ -3,7 +3,7 @@
 pkgbase=dicey
 pkgname=('dicey' 'python-dicey')
 pkgver=0.3.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Quick and dirty IPC library written in C'
 arch=('x86_64' 'i686' 'aarch64')
 url=https://github.com/zurutech/dicey

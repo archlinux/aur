@@ -1,7 +1,7 @@
 pkgbase = dicey
 	pkgdesc = Quick and dirty IPC library written in C
-	pkgver = 0.3.1
-	pkgrel = 1
+	pkgver = 0.3.9
+	pkgrel = 2
 	url = https://github.com/zurutech/dicey
 	arch = x86_64
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = dicey
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	source = git+https://github.com/zurutech/dicey.git#tag=0.3.1
+	source = git+https://github.com/zurutech/dicey.git#tag=0.3.9
 	b2sums = SKIP
 
 pkgname = dicey
