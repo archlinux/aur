@@ -1,0 +1,3 @@
+[ruby-vte3]
+source = "gems"
+gems = "vte3"
