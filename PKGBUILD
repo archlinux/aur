@@ -42,7 +42,7 @@ build() {
     -DCOMPILER_RT_HAS_FPIC_FLAG=OFF \
     -DCOMPILER_RT_DEFAULT_TARGET_ONLY=On \
     -DCOMPILER_RT_OS_DIR=wasi \
-    -DWASI_SDK_PREFIX=/usr \
+    -DWASI_SDK_PREFIX=/usr/lib/llvm17 \
     -DCMAKE_C_FLAGS="-fno-exceptions --sysroot=/usr/share/wasi-sysroot" \
     -DCMAKE_INSTALL_PREFIX=/usr/lib/llvm17/lib/clang/${pkgver%%.*}/ \
     compiler-rt-${pkgver}.src/lib/builtins
