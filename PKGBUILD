@@ -2,7 +2,7 @@
 # Contributor: Polarian <polarian@polarian.dev>
 
 pkgname=saber
-pkgver=0.24.1
+pkgver=0.24.2
 pkgrel=1
 pkgdesc="The cross-platform notes app built for handwriting"
 arch=('x86_64')
@@ -23,7 +23,7 @@ depends=('at-spi2-core'
 makedepends=('clang' 'cmake' 'fvm' 'gst-plugins-base-libs' 'ninja')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "saber.sh")
-sha256sums=('5ce956438dd0594d1b21e3e09981547b801fef98ef52ccb4e4da76fb774233a2'
+sha256sums=('8abf1b7608fc23c6acb89fe5ba3a2976f24c08b45446ebb826b0cff866b7139d'
             '2429585c739f6da2d2068fd44d5868bb9a0ef6657d8117ca32fd8e0b78942a10')
 
 prepare() {
