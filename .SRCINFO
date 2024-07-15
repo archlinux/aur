@@ -1,0 +1,21 @@
+pkgbase = android-x86-libmicrohttpd
+	pkgdesc = a small C library that is supposed to make it easy to run an HTTP server as part of another application. (Android x86)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://www.gnu.org/software/libmicrohttpd/
+	arch = any
+	license = LGPL
+	makedepends = android-configure
+	depends = android-x86-gnutls
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://ftp.gnu.org/gnu/libmicrohttpd/libmicrohttpd-1.0.1.tar.gz
+	source = https://ftp.gnu.org/gnu/libmicrohttpd/libmicrohttpd-1.0.1.tar.gz.sig
+	validpgpkeys = EA812DBEFA5A7EF17DA8F2C1460A317C3326D2AE
+	validpgpkeys = D8423BCB326C7907033929C7939E6BE1E29FC3CC
+	sha256sums = a89e09fc9b4de34dde19f4fcb4faaa1ce10299b9908db1132bbfa1de47882b94
+	sha256sums = SKIP
+
+pkgname = android-x86-libmicrohttpd
