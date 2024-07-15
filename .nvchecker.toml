@@ -1,0 +1,4 @@
+[ruby-hitimes]
+source = "git"
+git = "https://github.com/copiousfreetime/hitimes.git"
+prefix = "v"
