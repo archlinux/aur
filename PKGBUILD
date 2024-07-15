@@ -3,7 +3,7 @@
 
 pkgname=glib-networking
 pkgver=2.80.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Network extensions for GLib"
 url="https://gitlab.gnome.org/GNOME/glib-networking"
@@ -13,22 +13,17 @@ depends=(
   glib2
   glibc
   gnutls
-  gsettings-desktop-schemas
   libproxy
 )
 makedepends=(
   git
+  gsettings-desktop-schemas
   meson
 )
 checkdepends=(ca-certificates)
-_commit=3ae624d21b586ec33543004b037fd343042cb04b  # tags/2.80.0^0
-source=("git+https://gitlab.gnome.org/GNOME/glib-networking.git#commit=$_commit")
-b2sums=('SKIP')
-
-pkgver() {
-  cd glib-networking
-  git describe --tags | sed -r 's/\.([a-z])/\1/;s/([a-z])\./\1/;s/[^-]*-g/r&/;s/-/+/g'
-}
+optdepends=('gsettings-desktop-schemas: GNOME integration')
+source=("git+https://gitlab.gnome.org/GNOME/glib-networking.git#tag=${pkgver/[a-z]/.&}")
+b2sums=('819f574bd8e43e24e3e4c2248a44bb4882aa402c0c8c836b1d054b7d7da0d7f17428c64f8192185fa86575cf431ce895071b5ae22f26feea3c19ec7e5b74251d')
 
 prepare() {
   cd glib-networking

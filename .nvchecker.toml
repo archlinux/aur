@@ -1,0 +1,4 @@
+[glib-networking]
+source = "git"
+git = "https://gitlab.gnome.org/GNOME/glib-networking.git"
+include_regex = '\d+\.\d*[02468]\.\d+'
