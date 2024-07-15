@@ -1,0 +1,3 @@
+[python-litejesd204b]
+source = "git"
+git = "https://github.com/enjoy-digital/litejesd204b.git"
