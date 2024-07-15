@@ -1,0 +1,3 @@
+[ruby-cairo-gobject]
+source = "gems"
+gems = "cairo-gobject"
