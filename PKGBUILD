@@ -3,7 +3,7 @@
 _pkgname=labwc
 pkgname=labwc-wlroots-018-git
 pkgver=0.7.3.r3.g71451173
-pkgrel=1
+pkgrel=2
 pkgdesc='stacking wayland compositor with look and feel from openbox (git version) (Highly experimental bleeding edge wlroots version)'
 url="https://github.com/labwc/labwc"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=("git+https://github.com/labwc/${_pkgname}.git"
         'labwc-atomic-modesetting-tearing.patch'
         '0001-wip-handle-renderer-loss.patch')
 md5sums=('SKIP'
-         'ebdb061b6f2f2c9d7ee87171a5dafc6d'
+         '249ccc9c222818b166cf015451b32903'
          '607279d93d968e7c70fca24943fb17fa'
          '1ee19a8d8b488fc2b4834662afdae5e5')
 
