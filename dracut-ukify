@@ -254,7 +254,7 @@ function gen_image() {
     if [ -z "${cmdline}" ] && [ -f /usr/lib/kernel/cmdline ]; then
         cmdline=$(parse_cmdline /usr/lib/kernel/cmdline)
     fi
-    if [ -z "${cmdline}" ] && [ -f /usr/lib/kernel/cmdline ]; then
+    if [ -z "${cmdline}" ] && [ -f /proc/cmdline ]; then
         cmdline=$(</proc/cmdline)
     fi
     if [ -n "${cmdline}" ]; then
