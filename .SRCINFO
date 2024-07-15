@@ -1,7 +1,7 @@
 pkgbase = nexusmods-app-bin
 	pkgdesc = A mod installer, creator and manager for all your popular games.
-	pkgver = 0.5.2
-	pkgrel = 2
+	pkgver = 0.5.3
+	pkgrel = 1
 	url = https://github.com/Nexus-Mods/NexusMods.App
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -11,12 +11,12 @@ pkgbase = nexusmods-app-bin
 	depends = hicolor-icon-theme
 	provides = nexusmods-app
 	conflicts = nexusmods-app
-	noextract = NexusMods.App-0.5.2-1.linux-x64.zip
+	noextract = NexusMods.App-0.5.3-1.linux-x64.zip
 	options = !strip
-	source = https://github.com/Nexus-Mods/NexusMods.App/releases/download/v0.5.2/NexusMods.App-0.5.2-1.linux.x64.zip
+	source = https://github.com/Nexus-Mods/NexusMods.App/releases/download/v0.5.3/NexusMods.App-0.5.3-1.linux-x64.zip
 	source = nexusmods-app.desktop
-	source = https://github.com/Nexus-Mods/NexusMods.App/raw/v0.5.2/src/NexusMods.App.UI/Assets/nexus-logo.svg
-	sha256sums = f2e0e28fd3a9b4b646ecafd4c14775187f876e59db512e020259d35ad80a689d
+	source = https://github.com/Nexus-Mods/NexusMods.App/raw/v0.5.3/src/NexusMods.App.UI/Assets/nexus-logo.svg
+	sha256sums = 2e6906ad0adafe628158140d49131e0b65a06aba0ce758b2f0cb1e4a06e3bc9c
 	sha256sums = 076952d155049f2625eebd1565b60e5a4bcd1190424fd9db5e38b98d55f0c2cb
 	sha256sums = 5a22eccfb001eacbf2756f2e21fa371dbafd9e84b20bb6a484d781bde33089cb
 
