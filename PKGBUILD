@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nudge
 _pkgname=Nudge
-pkgver=0.4
-_electronversion=23
-_nodeversion=16
-pkgrel=8
+pkgver=0.5.0
+_electronversion=31
+_nodeversion=18
+pkgrel=1
 pkgdesc="An electron-powered application focused on personal health"
 arch=('any')
 url="https://github.com/aasmart/Nudge"
@@ -26,8 +26,8 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('81a65a4df587f7cfa05779c03c5a761f0de20ccb5b466fb19b1c78fae8a4b4dc'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+sha256sums=('11a5019041d9cf03d5d5c49f3372a60a453c6a485694a0a4fc4ad5d44ef50da4'
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -42,7 +42,7 @@ build() {
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    gendesk -f -n -q --pkgname="${pkgname}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname} %U"
+    gendesk -f -n -q --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${_pkgname}-${pkgver}"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
@@ -59,15 +59,16 @@ build() {
     else
         echo "Your network is OK."
     fi
-    npm install
-    chmod a+x node_modules/.bin/electron-forge
-    npm run package
+    sed "/- AppImage/d;/- snap/d;s|- deb|- dir|g" -i electron-builder.yml
+    NODE_ENV=development npm install
+    #chmod a+x node_modules/.bin/electron-forge
+    NODE_ENV=production npm run build:linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname-bin}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
-    cp -r "${srcdir}/${_pkgname}-${pkgver}/out/${_pkgname}-linux-"*/resources/app "${pkgdir}/usr/lib/${pkgname}"
-    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/out/${_pkgname}-linux-x64/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/assets/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
+    cp -r "${srcdir}/${_pkgname}-${pkgver}/dist/linux-"*/resources/app.asar.unpacked -t "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/dist/linux-"*/LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/resources/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
