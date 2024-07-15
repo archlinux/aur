@@ -1,8 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=simple-web-server
 _pkgname="Simple Web Server"
-pkgver=1.2.11
+pkgver=1.2.12
 _electronversion=28
+_nodeversion=20
 pkgrel=1
 pkgdesc="Create a local web server in just a few clicks with an easy to use interface. A continuation of Web Server for Chrome, built with Electron."
 arch=('any')
@@ -23,8 +24,14 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('9dedb08dccf0c2d62fb563bd3961097abd94a3e2e5b11d536909a32ddcec10d0'
+sha256sums=('68990b7681e32c17baf82e7c0707e72c95579dcaf260858f03fe2d8f7acea669'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+_ensure_local_nvm() {
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
+}
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
@@ -32,6 +39,7 @@ build() {
         -e "s|@runname@|app.asar|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
+    _ensure_local_nvm
     gendesk -f -n -q --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
     cd "${srcdir}/${pkgname}-${pkgver}"
     export npm_config_build_from_source=true
@@ -49,9 +57,10 @@ build() {
     else
         echo "Your network is OK."
     fi
+    sed "s|deb rpm zip --x64 --arm64|dir|g" -i package.json
     HOME="${srcdir}/.electron-gyp"
-    npm install
-    npx electron-builder -l --dir
+    NODE_ENV=development npm install
+    NODE_ENV=production npm run make_all_linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
