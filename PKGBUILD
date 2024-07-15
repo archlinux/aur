@@ -1,6 +1,6 @@
 # Maintainer: Jonas Dellinger <jonas@dellinger.dev>
 pkgname="rancher-k3d-bin"
-pkgver=5.7.1
+pkgver=5.7.2
 pkgrel=1
 pkgdesc='Little helper to run Rancher Labs k3s in Docker'
 arch=('x86_64' 'aarch64' 'arm' 'armv6h' 'armv7h')
@@ -10,9 +10,9 @@ provides=("k3d")
 conflicts=("rancher-k3d-beta-bin")
 
 case "${CARCH}" in
-  x86_64)    _CARCH=amd64 && sha256sums=('24441b1ed9796f519e3fdaa9f076df1a92fd7b38c90d68717b1cdd0915ba6673');;
-  aarch64)   _CARCH=arm64 && sha256sums=('12320bd26fbce2e9314934a6be688274ca9f138227a5f5fb6830538ab4f8b567');;
-  arm*)      _CARCH=arm   && sha256sums=('7ec9a4fdcdcbdf6e676eff112bc27d4c618c9c88ccc6cb0ed07b969b4cb5f382');;
+  x86_64)    _CARCH=amd64 && sha256sums=('3c5aaf09bea85bb9b756e83eedc9b3db37a0e4e9d844952cd2a986d39c0f1d4b');;
+  aarch64)   _CARCH=arm64 && sha256sums=('07cb12a554d9ff5eb6fcf7d54b625e1bd5f9d88886a83d8d1ffadb305db9f42f');;
+  arm*)      _CARCH=arm   && sha256sums=('d2accb1b873bf0f9bad157c8d87e2f7c4710ee192a31b87f537c8b715fc6aca6');;
 esac
 
 source=("${pkgname}-${pkgver}-${_CARCH}::https://github.com/rancher/k3d/releases/download/v$pkgver/k3d-linux-${_CARCH}")
