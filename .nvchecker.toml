@@ -1,0 +1,3 @@
+[python-sounddevice]
+source = "pypi"
+pypi = "sounddevice"
