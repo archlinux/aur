@@ -1,0 +1,4 @@
+[i7z]
+source = "git"
+git = "https://github.com/afontenot/i7z.git"
+prefix = "v"
