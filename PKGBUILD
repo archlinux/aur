@@ -8,7 +8,7 @@ pkgver="$_pkgtag"
 pkgrel=1 #auto reset by CI
 pkgdesc='Pi-Hole clone written in rust using trust-dns'
 url='https://crates.io/crates/crab-hole'
-license=('AGPL')
+license=('AGPL-3.0-or-later')
 
 depends=('gcc-libs')
 makedepends=('cargo')
@@ -29,6 +29,11 @@ prepare() {
 
 build() {
 	cd "$srcdir/$_crate-$pkgver"
+
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	CFLAGS+=" -ffat-lto-objects"
+
 	cargo build \
 		--offline \
 		--locked \
@@ -39,7 +44,7 @@ package() {
 	cd "$srcdir/$_crate-$pkgver"
 	install -Dm755 "target/release/crab-hole" -t "$pkgdir/usr/bin"
 	install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
-	
+
 	cd "$srcdir"
 	install -Dm755 "crab-hole.service" "$pkgdir/etc/systemd/system/crab-hole.service"
 }
