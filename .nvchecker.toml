@@ -1,0 +1,4 @@
+[ruby-faraday-em_http]
+source = "git"
+git = "https://github.com/lostisland/faraday-em_http.git"
+prefix = "v"
