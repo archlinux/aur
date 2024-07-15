@@ -2,9 +2,9 @@
 # Maintainer: qlrd <qlrddev at gmail dot com>
 pkgname=krux-installer-bin
 _pkgname="org.selfcustody.${pkgname%-bin}"
-pkgver=0.0.13
-_electronversion=29
-pkgrel=2
+pkgver=0.0.11
+_electronversion=30
+pkgrel=1
 pkgdesc="A GUI based application to flash Krux firmware on K210 based devices.Use system-wide electron."
 arch=('x86_64')
 url="https://github.com/selfcustody/krux-installer"
@@ -27,7 +27,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/selfcustody/krux-installer/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ec1a6629a77ac82a3548f8a1b403296b7573684a0e7f98e7cdd06a15ab2b50d9'
+sha256sums=('89fc4065390ac578195e7fc01e85bf2acc17e53193c3262114b03fbd82459dae'
             '29eee3e9d9c5dd67213ec3ab4a7eef57a1224750e2e9aab3a278177a9444a355'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
