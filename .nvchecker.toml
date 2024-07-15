@@ -1,0 +1,4 @@
+[ruby-async-io]
+source = "git"
+git = "https://github.com/socketry/async-io.git"
+prefix = "v"
