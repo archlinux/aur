@@ -1,18 +1,17 @@
 pkgbase = lsetwatch
 	pkgdesc = LEGO collection management software
 	pkgver = 1.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lebostein.de/lsetwatch/index.html
 	arch = x86_64
 	license = custom
+	makedepends = icoutils
 	depends = wine
 	source = lsetwatch-1.20.zip::https://lebostein.de/lsetwatch/builds/Lsetwatch_1.20_Windows_x64.zip
 	source = lsetwatch.sh
 	source = lsetwatch.desktop
-	source = icon.png
 	sha256sums = 1f1f633e27d563ef409a3a735710fcb0586b7346b926e9a9d4cbd3ab987c89b6
 	sha256sums = dd8ab5252c38b28cb8c8f75cc6a053c049d0c0604ddab9fb740c3cd2739c91bc
 	sha256sums = 930b1b12b6039c309aa3e3258f0b62ae8e496c67d5f7e054cce8a5d798c07131
-	sha256sums = 135ea5add0a8ffc9249e0e6ca1430992e31127f2e13757ec82fe6ed6cc73050f
 
 pkgname = lsetwatch
