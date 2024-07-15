@@ -6,7 +6,7 @@
 # Maintainer: David Hummel <hummeltech@sherpaguru.com>
 
 pkgname=mapnik-git
-pkgver=4.0.0.r8.geb99057
+pkgver=4.0.0.r11.g5e7b478
 pkgrel=1
 pkgdesc='Free Toolkit for developing mapping applications. Above all Mapnik is about rendering beautiful maps (git version)'
 arch=('i686' 'x86_64')
@@ -40,11 +40,9 @@ options=(staticlibs)
 provides=('mapnik')
 source=('git+https://github.com/mapnik/mapnik.git'
         'mapnik-use-system-sparsehash.patch'
-        'mapnik-gcc14.patch'
         'git+https://github.com/mapnik/test-data.git')
 sha256sums=('SKIP'
             'dabb1b99540a6df86b34511d0d94ef505f706419b7e6d1d69314797ebcdce72f'
-            '9e849db4aad96f9bb167e8aa34fa58e41c877c132bce9c4ab80558982ae37625'
             'SKIP')
 
 pkgver() {
@@ -55,23 +53,21 @@ pkgver() {
 prepare() {
   cd mapnik || exit
   patch -Np1 < ../mapnik-use-system-sparsehash.patch
-  patch -Np1 < ../mapnik-gcc14.patch
-  git submodule init \
-    test/data
-  git config submodule.test/data.url "$srcdir"/test-data
-  git -c protocol.file.allow=always submodule update \
-    test/data
+
+  git submodule init test/data
+  git config submodule.test/data.url "${srcdir}"/test-data
+  git -c protocol.file.allow=always submodule update test/data
 
   # Remove bundled sparsehash directory in favor of 'sparsehash' package
   rm -rf deps/mapnik/sparsehash
-}
 
-build() {
-  cmake -B mapnik_build -S mapnik \
+  export LDFLAGS
+  cmake -B ../mapnik_build -S . \
     -DBUILD_BENCHMARK:BOOL=OFF \
     -DBUILD_DEMO_CPP:BOOL=OFF \
     -DBUILD_DEMO_VIEWER:BOOL=OFF \
-    -DCMAKE_BUILD_TYPE:STRING=Release \
+    -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS}" \
+    -DCMAKE_C_FLAGS:STRING="${CFLAGS}" \
     -DCMAKE_INSTALL_PREFIX:PATH=/usr \
     -DFONTS_INSTALL_DIR:PATH=share/fonts/TTF \
     -DUSE_EXTERNAL_MAPBOX_GEOMETRY:BOOL=ON \
@@ -79,6 +75,9 @@ build() {
     -DUSE_EXTERNAL_MAPBOX_PROTOZERO:BOOL=ON \
     -DUSE_EXTERNAL_MAPBOX_VARIANT:BOOL=ON \
     -Wno-dev
+}
+
+build() {
   cmake --build mapnik_build
 }
 
@@ -88,15 +87,15 @@ check() {
 
 package(){
   # Remove bundled dejavu fonts from cmake_install.cmake in favor of 'ttf-dejavu' package
-  sed -i '/dejavu-fonts-ttf/d' "$srcdir"/mapnik_build/cmake_install.cmake
+  sed -i '/dejavu-fonts-ttf/d' "${srcdir}"/mapnik_build/cmake_install.cmake
 
-  # Install to $DESTDIR
-  DESTDIR="$pkgdir" cmake --install mapnik_build --strip
+  # Install to pkgdir
+  DESTDIR="${pkgdir}" cmake --install mapnik_build
 
   # License
-  install -Dm644 "$srcdir"/mapnik/COPYING "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
+  install -Dm644 "${srcdir}"/mapnik/COPYING "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 
   # Remove usr/share/fonts directory
-  pushd "$pkgdir"
+  pushd "${pkgdir}"
   rm -rf usr/share/fonts
 }
