@@ -4,16 +4,17 @@
 
 _pkgname=cambalache
 pkgname=cambalache-git
-pkgver=0.90.2.r7.gad89e6b
+pkgver=0.91.1.r19.g3f77956
 pkgrel=1
 pkgdesc="A new RAD tool for Gtk 4 and 3 (Git version)"
 url="https://gitlab.gnome.org/jpu/cambalache"
 arch=('x86_64')
 license=('LGPL-2.1-only')
-depends=('glib2' 'gtk3' 'gtk4' 'gtksourceview5' 'libadwaita' 'libhandy' 'python-gobject'
-         'python-lxml' 'webkit2gtk-4.1' 'webkitgtk-6.0')
-depends+=('wlroots-git') # TODO: Switch to regular wlroots when 0.18.0 gets released
-makedepends=('git' 'meson' 'ninja')
+depends=('cairo' 'dconf' 'gdk-pixbuf2' 'glib2' 'gtk3' 'gtk4' 'gtksourceview5'
+         'hicolor-icon-theme' 'libadwaita' 'libhandy' 'libxkbcommon' 'pango'
+         'pixman' 'python' 'python-gobject' 'python-lxml' 'wayland' 'webkit2gtk-4.1'
+         'webkitgtk-6.0' 'wlroots>=0.18.0')
+makedepends=('git' 'gobject-introspection' 'meson' 'ninja')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}=${pkgver}")
 source=("git+${url}.git")
