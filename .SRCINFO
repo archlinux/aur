@@ -1,0 +1,15 @@
+pkgbase = netop
+	pkgdesc = A terminal command line interface that can customize the filter network traffic rule with BPF
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/ZingerLittleBee/netop
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = wget
+	depends = libpcap
+	depends = glibc
+	depends = gcc-libs
+
+pkgname = netop
