@@ -1,6 +1,6 @@
 pkgbase = python-exspy
 	pkgdesc = Analysis of EDS and EELS data with HyperSpy
-	pkgver = 0.2
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = http://hyperspy.org/exspy
 	arch = any
@@ -32,7 +32,7 @@ pkgbase = python-exspy
 	optdepends = python-sphinxcontrib-mermaid: build documentation
 	optdepends = python-sphinxcontrib-towncrier
 	provides = exspy
-	source = https://github.com/hyperspy/exspy/archive/v0.2.tar.gz
-	md5sums = 71e941942d08a5d8d055231641edc231
+	source = https://github.com/hyperspy/exspy/archive/v0.2.1.tar.gz
+	md5sums = 1401cbc6bf9b73ded770ec4e75c2068c
 
 pkgname = python-exspy
