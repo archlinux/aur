@@ -1,0 +1,3 @@
+[python-pythondata-cpu-vexriscv]
+source = "git"
+git = "https://github.com/litex-hub/pythondata-cpu-vexriscv.git"
