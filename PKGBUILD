@@ -11,7 +11,7 @@ arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
 makedepends=('cmake' 'ninja' 'zlib' 'zstd' 'libffi' 'libedit' 'ncurses'
-             'libxml2' 'python' 'python-build')
+             'libxml2' 'python' 'python-build' 'python-setuptools')
 checkdepends=('python-psutil')
 options=('staticlibs' '!lto') # tools/llvm-shlib/typeids.test fails with LTO
 _source_base=https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver
