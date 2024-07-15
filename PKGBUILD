@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=ente
 pkgname="${_pkgname}-desktop-bin"
-pkgver=1.7.1
+pkgver=1.7.2
 _electronversion=30
 pkgrel=1
 pkgdesc="Desktop app for ente Photos"
@@ -22,8 +22,8 @@ depends=(
 options=('!strip')
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.pacman::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-aarch64.pacman")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.pacman::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x64.pacman")
-sha256sums_aarch64=('ec37588d98e9f88e14603997c6efa565448492d2337956f0393c8c5a0e11b095')
-sha256sums_x86_64=('bc25e7cb15781cd4dfd385650c667babec325eb3fce0b5f7459f7de30e25439c')
+sha256sums_aarch64=('f05983b5a1d30acf67f64d1068a324fd0e63f7b2b5e3a87314b3fc168713b562')
+sha256sums_x86_64=('42f6890ce0730d1da7c9589e484ddeda9fd7fc35c45e52ed21119751b4b8133a')
 build() {
     sed -e "s|/opt/${_pkgname}/${_pkgname} %U|${pkgname%-bin} --no-sandbox %U|g" \
         -e "s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g;s|Photography|Graphics|g" \
