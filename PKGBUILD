@@ -149,7 +149,7 @@ package_llvm17-lit() {
   python3 -m venv --system-site-packages "$pkgdir/opt/llvm17-lit"
 
   cd llvm-$pkgver.src/utils/lit
-  "$pkgdir/opt/llvm17-lit/bin/python3" setup.py install -O1
+  "$pkgdir/opt/llvm17-lit/bin/python" -m installer dist/*.whl
 
   sed -i "s#$pkgdir##" "$pkgdir/opt/llvm17-lit/pyvenv.cfg" "$pkgdir/opt/llvm17-lit/bin/"{activate,pip}* "$pkgdir/opt/llvm17-lit/bin/lit"
 }
