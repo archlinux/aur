@@ -1,0 +1,4 @@
+[grails]
+source = "git"
+git = "https://github.com/grails/grails-core.git"
+prefix = "v"
