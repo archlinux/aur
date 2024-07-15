@@ -6,7 +6,7 @@
 # Contributor: Dobroslaw Kijowski
 
 pkgname=mitmproxy-git
-pkgver=10.1.5.r2.gd72b92bdf
+pkgver=10.3.1.r38.gf77327634
 pkgrel=1
 pkgdesc='SSL-capable man-in-the-middle HTTP proxy'
 arch=('any')
@@ -15,7 +15,6 @@ license=('MIT')
 depends=(
   'python-aioquic'
   'python-asgiref'
-  'python-blinker'
   'python-brotli'
   'python-certifi'
   'python-cryptography'
@@ -29,9 +28,7 @@ depends=(
   'python-msgpack'
   'python-passlib'
   'python-protobuf'
-  'python-psutil'
   'python-publicsuffix2'
-  'python-pylsqpack'
   'python-pyopenssl'
   'python-pyparsing'
   'python-pyperclip'
@@ -39,22 +36,17 @@ depends=(
   'python-ruamel-yaml'
   'python-sortedcontainers'
   'python-tornado'
-  'python-typing_extensions'
   'python-urwid'
-  'python-werkzeug'
   'python-wsproto'
   'python-zstandard'
 )
-makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
+makedepends=('git' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=(
-  'python-asynctest'
   'python-hypothesis'
   'python-parver'
   'python-pytest-asyncio'
   'python-pytest-cov'
-  'python-pytest-runner'
   'python-pytest-timeout'
-  'python-tox-current-env'
 )
 conflicts=('mitmproxy')
 provides=('mitmproxy')
@@ -63,7 +55,7 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  git describe --tags | sed 's/-/.r/;s/-/./g'
+  git describe --tags | sed 's/^v//;s/-/.r/;s/-/./g'
 }
 
 build() {
@@ -77,7 +69,7 @@ check() {
   local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   python -m installer --destdir=test_dir dist/*.whl
 
-  PATH="test_dir/usr/bin:$PATH" PYTHONPATH="test_dir/$_site_packages:$PYTHONPATH" tox -e py --current-env
+  PATH="test_dir/usr/bin:$PATH" PYTHONPATH="test_dir/$_site_packages:$PYTHONPATH" pytest -vv
 }
 
 package() {
