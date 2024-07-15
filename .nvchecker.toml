@@ -1,0 +1,4 @@
+[ruby-highline]
+source = "git"
+git = "https://github.com/JEG2/highline.git"
+prefix = "v"
