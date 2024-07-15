@@ -9,7 +9,7 @@ diff --git src/Makefile.autotools.am src/Makefile.autotools.am
 +__coding_includedir = $(includedir)/vgmstream/coding
 +__coding_include_HEADERS = coding/g72x_state.h
 +__util_includedir = $(includedir)/vgmstream/util
-+__util_include_HEADERS = util/log.h util/reader_get.h util/reader_put.h
++__util_include_HEADERS = util/log.h util/reader_get.h util/reader_put.h util/vgmstream_limits.h
 +__base_includedir = $(includedir)/vgmstream/base
 +__base_include_HEADERS = base/plugins.h
 +
