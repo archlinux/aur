@@ -1,0 +1,4 @@
+[python-okonomiyaki]
+source = "git"
+git = "https://github.com/enthought/okonomiyaki.git"
+prefix = "v"
