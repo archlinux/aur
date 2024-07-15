@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=translationcore-bin
 _pkgname=translationCore
-pkgver=3.6.4
-_subver=MAX-ee24062
+pkgver=3.6.5
+_subver=MAX-de28495
 _electronversion=25
-pkgrel=2
+pkgrel=1
 pkgdesc="An open source platform for checking and managing Bible translation projects"
 arch=(
     'aarch64'
@@ -19,16 +19,16 @@ depends=(
     "electron${_electronversion}"
     'git'
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/tC-linux-arm64-${pkgver}-${_subver}.deb")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/tC-linux-x64-${pkgver}-${_subver}.deb")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v.${pkgver}/tC-linux-arm64-${pkgver}-${_subver}.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v.${pkgver}/tC-linux-x64-${pkgver}-${_subver}.deb")
 source=(
-    "LICENSE-${pkgver}::https://raw.githubusercontent.com/unfoldingWord/translationCore/v${pkgver}/LICENSE"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/unfoldingWord/translationCore/v.${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('a756bd73c46e3e9b85ff0222658f4c63851ebc5af63811adc4333ff618688417'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-sha256sums_aarch64=('cae82c2c9e7f890524f30dab9c7d427761e8e1ce481d94cf8710b79f69d08446')
-sha256sums_x86_64=('089cc504ad0eecd938e74a4cdf2dc66d0390ee48a2d8135d47beeb250cd990cd')
+sha256sums_aarch64=('785cc01441ac66f6e5b277096cd12286aa81a9ecdd1f8ed8809d1d6824039c42')
+sha256sums_x86_64=('a0b94da010f291e22909ec9a282a97d18d4725da9d89afb3888f1cbf27832bd8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
