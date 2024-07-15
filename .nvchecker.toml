@@ -1,0 +1,4 @@
+[python-consolekit]
+source = "git"
+git = "https://github.com/domdfcoding/consolekit.git"
+prefix = "v"
