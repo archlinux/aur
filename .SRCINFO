@@ -1,0 +1,13 @@
+pkgbase = bad-apple-flut-bin
+	pkgdesc = A video player for pixelflut written in Rust
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/peppidesu/bad-apple-flut
+	arch = x86_64
+	license = AGPL-3.0
+	provides = bad-apple-flut
+	conflicts = bad-apple-flut
+	source = https://github.com/peppidesu/bad-apple-flut/releases/download/v1.0.0/bad-apple-flut-1.0.0-x86_64.tar.gz
+	sha256sums = ddb02ddf12925dac98c141e83ce0ef936ffa1c95a6386c71eaf406e3d51584a8
+
+pkgname = bad-apple-flut-bin
