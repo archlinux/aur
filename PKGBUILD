@@ -2,24 +2,22 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 _pkgname=libretro-dolphin
 pkgname=$_pkgname-git
-pkgver=r33042.2f4b0f7902
-pkgrel=4
+pkgver=r33044.89a4df725d
+pkgrel=1
 pkgdesc="Nintendo GameCube/Wii core"
 arch=('x86_64')
 url="https://github.com/libretro/dolphin"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 groups=('libretro')
 depends=(
 	'enet'
 	'gcc-libs'
 	'glibc'
-	'libpng'
 	'libretro-core-info'
 	'libx11'
 	'libxi'
 	'libxrandr'
 	'pugixml'
-	'zlib'
 )
 makedepends=(
 	'bluez-libs'
@@ -27,20 +25,22 @@ makedepends=(
 	'cmake'
 	'cubeb'
 	'curl'
-	'fmt9'
+	'fmt'
 	'git'
 	'hidapi'
+	'libegl'
 	'libevdev'
-	'libglvnd'
+	'libpng'
+	'libsystemd'
 	'libusb'
 	'lzo'
 	'mbedtls2'
 	'python'
 	'sfml'
-	'systemd-libs'
 	'xorgproto'
 	'xxhash'
 	'xz'
+	'zlib'
 	'zstd'
 )
 provides=("$_pkgname=${pkgver#r}")
@@ -51,7 +51,7 @@ source=(
 )
 b2sums=(
 	'SKIP'
-	'b149713ac0faaf7aeeaca3f0a4f82ee40085c9b7caa34b55a9182d8d4146670b0c774a89e96d4c4cedebf49168394940f636d3bc61f1878238fd5850992a8990'
+	'5c21d83d249ec4205aa75c4cef4d322c1c0c332496133b698ca08bd2a63eb1f2cce3968125924125ac44547b5db200a1228e77fe26862082632cd0c8ca37e01c'
 )
 
 pkgver() {
@@ -81,6 +81,7 @@ package() {
 		'libbluetooth.so'
 		'libbz2.so'
 		'libcubeb.so'
+		'libcurl.so'
 		'libEGL.so'
 		'libevdev.so'
 		'libfmt.so'
@@ -91,11 +92,13 @@ package() {
 		'libmbedcrypto.so'
 		'libmbedtls.so'
 		'libmbedx509.so'
+		'libpng16.so'
 		'libsfml-network.so'
 		'libsfml-system.so'
 		'libudev.so'
 		'libusb-1.0.so'
 		'libxxhash.so'
+		'libz.so'
 		'libzstd.so'
 	)
 	# shellcheck disable=SC2154
