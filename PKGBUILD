@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="A music player aimed at audio enthusiasts and music collectors (Qt5 version)"
 arch=(x86_64)
 url="https://strawberrymusicplayer.org/"
-license=(GPL3)
+license=(GPL-3.0-or-later)
 
 depends=(qt5-base
          qt5-x11extras
