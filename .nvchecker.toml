@@ -1,0 +1,4 @@
+[libidn11]
+source = "git"
+git = "https://git.savannah.gnu.org/git/libidn.git"
+prefix = "v"
