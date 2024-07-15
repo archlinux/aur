@@ -1,0 +1,3 @@
+[libbobcat]
+source = "git"
+git = "https://gitlab.com/fbb-git/bobcat.git"
