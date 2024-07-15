@@ -1,0 +1,4 @@
+[stratis-cli]
+source = "git"
+git = "https://github.com/stratis-storage/stratis-cli.git"
+prefix = "v"
