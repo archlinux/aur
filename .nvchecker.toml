@@ -1,0 +1,4 @@
+[python-dom-toml]
+source = "git"
+git = "https://github.com/domdfcoding/dom_toml.git"
+prefix = "v"
