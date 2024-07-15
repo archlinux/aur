@@ -2,12 +2,12 @@
 pkgname=casparcg-server
 pkgver=2.4.0
 _pkgver=$pkgver-stable
-pkgrel=1
+pkgrel=2
 pkgdesc="Software used to play out professional graphics, audio and video to multiple outputs"
 arch=('x86_64')
 url="https://github.com/CasparCG/server"
 license=('GPL-3.0-or-later')
-depends=(ffmpeg boost-libs libgl freeimage glew tbb openal sfml libxcomposite libxdamage libxkbcommon libxss libcups pango nss at-spi2-atk ttf-liberation)
+depends=(ffmpeg4.4 boost-libs libgl freeimage glew tbb openal sfml libxcomposite libxdamage libxkbcommon libxss libcups pango nss at-spi2-atk ttf-liberation)
 makedepends=(cmake ninja boost dos2unix git)
 source=("https://github.com/CasparCG/server/archive/refs/tags/v$_pkgver.tar.gz"
         casparcg)
@@ -22,6 +22,8 @@ prepare() {
 
 build() {
     cd "$srcdir"
+
+    export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
 
     # cef's build is incompatible with _FORTIFY_SOURCE=3
     export CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"

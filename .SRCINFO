@@ -1,7 +1,7 @@
 pkgbase = casparcg-server
 	pkgdesc = Software used to play out professional graphics, audio and video to multiple outputs
 	pkgver = 2.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CasparCG/server
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -10,7 +10,7 @@ pkgbase = casparcg-server
 	makedepends = boost
 	makedepends = dos2unix
 	makedepends = git
-	depends = ffmpeg
+	depends = ffmpeg4.4
 	depends = boost-libs
 	depends = libgl
 	depends = freeimage
