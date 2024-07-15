@@ -1,0 +1,3 @@
+[tarantool]
+source = "git"
+git = "https://github.com/tarantool/tarantool.git"
