@@ -1,0 +1,4 @@
+[python-uproot]
+source = "git"
+git = "https://github.com/scikit-hep/uproot5.git"
+prefix = "v"
