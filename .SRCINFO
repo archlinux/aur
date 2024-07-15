@@ -1,6 +1,6 @@
 pkgbase = wolfssl-liboqs
 	pkgdesc = Lightweight, portable, C-language-based SSL/TLS library (with post-quantum cryptography)
-	pkgver = 5.7.0
+	pkgver = 5.7.2
 	pkgrel = 1
 	url = https://www.wolfssl.com/
 	arch = x86_64
@@ -11,12 +11,10 @@ pkgbase = wolfssl-liboqs
 	depends = liboqs
 	provides = libwolfssl.so
 	conflicts = wolfssl
-	source = wolfssl-5.7.0-stable.tar.gz::https://github.com/wolfssl/wolfssl/archive/refs/tags/v5.7.0-stable.tar.gz
-	source = https://github.com/wolfssl/wolfssl/releases/download/v5.7.0-stable/wolfssl-5.7.0-stable.tar.gz.asc
-	source = fix-cmake.patch::https://github.com/wolfSSL/wolfssl/pull/7480.patch
+	source = wolfssl-5.7.2-stable.tar.gz::https://github.com/wolfssl/wolfssl/archive/refs/tags/v5.7.2-stable.tar.gz
+	source = https://github.com/wolfssl/wolfssl/releases/download/v5.7.2-stable/wolfssl-5.7.2-stable.tar.gz.asc
 	validpgpkeys = A2A48E7BCB96C5BECB987314EBC80E415CA29677
-	b2sums = a85342264022d9f1ab3cd49bd282cbd9f2ef4fa90eda69ebd145a412f1557ed6d0ca5620f5a916fe1bf8c546c1d3ef0d01c80ec90722d49059683620ccbcdf1b
+	b2sums = 52bbabfd91fb5fdb1ef78dfafa7de86afaae821da14b9336bdf52b057444ac63f7afb4cc99d80ec8040adadbd4e8e07eb186499c12398b625aee4824e2dc503c
 	b2sums = SKIP
-	b2sums = 4dfd34cf8051a684306d37b3364de7ab1bd9d2515ddd570eb76677d62b7a7a5c19ac12b6d7aaea7b7cbbd395a1c8f48bf38a7cb932cd44e820aaac0fdd471a7c
 
 pkgname = wolfssl-liboqs
