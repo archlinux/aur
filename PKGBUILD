@@ -3,9 +3,9 @@
 pkgname=joindesktop-bin
 _pkgname=com.joaomgcd.join
 _appname="Join Desktop"
-pkgver=1.1.2
+pkgver=1.1.3
 _electronversion=9
-pkgrel=3
+pkgrel=1
 pkgdesc='An official desktop app for Join by Joaoapps built in Electron.'
 arch=("x86_64")
 url="https://joaoapps.com/join/desktop/"
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('9352d7fc70b7b5f2f845a8a9a3bc29fcb9dfacf6b7f31f0d05e291c8727bd825'
+sha256sums=('2b017608c8e634484f63f732556abe4e13b23f995f78a413cf564816f961c4aa'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
