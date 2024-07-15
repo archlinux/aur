@@ -1,0 +1,23 @@
+pkgbase = android-x86-libarchive
+	pkgdesc = Multi-format archive and compression library (Android x86)
+	pkgver = 3.7.4
+	pkgrel = 1
+	url = https://libarchive.org/
+	arch = any
+	license = BSD
+	makedepends = android-configure
+	depends = android-x86-bzip2
+	depends = android-x86-libxml2
+	depends = android-x86-lz4
+	depends = android-x86-openssl
+	depends = android-x86-xz
+	depends = android-x86-zlib
+	depends = android-x86-zstd
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/libarchive/libarchive/releases/download/v3.7.4/libarchive-3.7.4.tar.xz
+	sha256sums = f887755c434a736a609cbd28d87ddbfbe9d6a3bb5b703c22c02f6af80a802735
+
+pkgname = android-x86-libarchive
