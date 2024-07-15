@@ -1,5 +1,5 @@
 pkgbase = linux-zen-pds
-	pkgver = 6.9.0.zen1
+	pkgver = 6.9.9.zen1
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
@@ -32,12 +32,12 @@ pkgbase = linux-zen-pds
 	makedepends = git
 	options = !debug
 	options = !strip
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.9.tar.xz
-	source = https://github.com/zen-kernel/zen-kernel/releases/download/v6.9-zen1/linux-v6.9-zen1.patch.zst
-	source = https://gitlab.archlinux.org/archlinux/packaging/packages/linux-zen/-/raw/acf99677bdec5cb27dc0e4e262f3f63a9696e13a/config
-	sha256sums = 24fa01fb989c7a3e28453f117799168713766e119c5381dac30115f18f268149
-	sha256sums = bb6df9549a545f9867d938076b0f6b9bf085680e6d7c505456dbe9e71c8f7af6
-	sha256sums = 7e56d4a74ce056ca4373cf74b85d323906e2c4ef5149811563a1549a9e376188
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.9.9.tar.xz
+	source = https://github.com/zen-kernel/zen-kernel/releases/download/v6.9.9-zen1/linux-v6.9.9-zen1.patch.zst
+	source = https://gitlab.archlinux.org/archlinux/packaging/packages/linux-zen/-/raw/d374ea33fb3184339d0f5b2d37f1eea30843a7d0/config
+	sha256sums = 2be05b487eb239a3bf687d628a8f104177d09c310f00bcc2a5e50f1733421eb9
+	sha256sums = c5064d6506a1b1ce99becd2d8f9edeb1f308a009b3a31f4c07a5e7c11c879e30
+	sha256sums = b25aa8189e7a5d9a71e56badb5fd49121ffb25cd67ad7824a6f279825126373e
 
 pkgname = linux-zen-pds
 	pkgdesc = The Zen kernel and modules - PDS enabled
