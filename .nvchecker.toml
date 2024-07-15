@@ -1,0 +1,3 @@
+[python-occ-core]
+source = "git"
+git = "https://github.com/tpaviot/pythonocc-core.git"
