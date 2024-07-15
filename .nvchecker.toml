@@ -1,0 +1,4 @@
+[python-shippinglabel]
+source = "git"
+git = "https://github.com/domdfcoding/shippinglabel.git"
+prefix = "v"
