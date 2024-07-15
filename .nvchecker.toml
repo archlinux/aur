@@ -1,0 +1,3 @@
+[python-pythondata-cpu-mor1kx]
+source = "git"
+git = "https://github.com/litex-hub/pythondata-cpu-mor1kx.git"
