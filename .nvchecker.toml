@@ -1,0 +1,3 @@
+[stylelint-config-recommended]
+source = "git"
+git = "https://github.com/stylelint/stylelint-config-recommended.git"
