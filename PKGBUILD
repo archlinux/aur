@@ -5,7 +5,7 @@
 
 _appname='jmusicbot'
 pkgname="$_appname"
-_pkgverUpstream="0.4.1"
+_pkgverUpstream="0.4.2"
 pkgver="${_pkgverUpstream//-/.}"
 pkgrel=1
 pkgdesc="A cross-platform Discord music bot with a clean interface"
@@ -18,7 +18,7 @@ source=("JMusicBot-${_pkgverUpstream}.tar.gz::https://github.com/jagrosh/MusicBo
         "fix-pom.xslt"
         "jmusicbot@.service"
         "jmusicbot.service")
-sha384sums=('bbc6adb77d863796f8c9f2827f6448e7b56470e39fd5b064c75c699612a33a98d44c35d621d0117543ddbcac84cb2c51'
+sha384sums=('79fcfb4f3225e7bc2086fe8554327a05eb1a45e955cbe31477d859773fa80ba82c42531ab13fa0bd091ec9daf84ee4f0'
             'b14dcf390d40f51d40b2aee4e8c44722837ad7a9850ecfd48174c74e8ed50709b6a64a817c301a2186e6386c26de0440'
             '0e2f5b34b17ab99c425712b8e164493538c0d8df45b9d997649dbf6332bbdef7d6ce33e195ed331cf02d132ee2fa7e88'
             'b57c88e240c167debd323399b4144a1f0a566205ccfe54075f06481fe6cfb105f92bc94536575b84bbc1607c102b5e75')
