@@ -20,7 +20,7 @@ optdepends=('ttf-bitstream-vera: default font'
 #source=("http://www.mudlet.org/download/Mudlet-${pkgver}.tar.xz")
 ##using alternate link
 source=("https://www.mudlet.org/wp-content/files/Mudlet-${pkgver}.tar.xz")
-sha256sums=('58c9d73d6c9fd9218f3feef05795d2456e34ee03c59154969838b344bbb59eec')
+sha256sums=('66ad8ccbe89bbee6c1102de6f7065ea3e9f7b31c68620a4ec1a179b5117c9b24')
 
 
 build() {

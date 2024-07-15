@@ -27,6 +27,6 @@ pkgbase = mudlet
 	optdepends = ttf-ubuntu-font-family: default font
 	optdepends = noto-fonts-emoji: emoji font support
 	source = https://www.mudlet.org/wp-content/files/Mudlet-4.18.3.tar.xz
-	sha256sums = 58c9d73d6c9fd9218f3feef05795d2456e34ee03c59154969838b344bbb59eec
+	sha256sums = 66ad8ccbe89bbee6c1102de6f7065ea3e9f7b31c68620a4ec1a179b5117c9b24
 
 pkgname = mudlet
