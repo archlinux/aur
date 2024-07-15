@@ -1,0 +1,4 @@
+[d-containers]
+source = "git"
+git = "https://github.com/dlang-community/containers.git"
+prefix = "v"
