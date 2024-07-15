@@ -1,0 +1,19 @@
+--- orig/src/renum.c	2017-06-08 11:20:14.000000000 +1000
++++ new/src/renum.c	2024-07-03 06:39:23.094441373 +1000
+@@ -7,6 +7,7 @@
+ 
+ #include <stdio.h>
+ #include <string.h>
++#include <stdlib.h>
+ 
+ #define MAX_LINE_LENGTH  255
+ #define MAX_LINE_COUNT   1500
+@@ -20,7 +21,7 @@
+ int sidx[MAX_LINE_COUNT][2];
+ char rstr[MAX_LINE_LENGTH];
+ 
+-main(argc, argv)
++int main(argc, argv)
+    int argc;
+    char *argv[];
+ {
