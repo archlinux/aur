@@ -1,14 +1,15 @@
-# Maintainer: Ian Pickering <ipickering2@gmail.com>
+# Contributor: Ian Pickering <ipickering2@gmail.com>
 
 pkgname=artwiz-fonts-otb
 pkgver=1.3
-pkgrel=10
+pkgrel=11
 pkgdesc="This is set of (improved) artwiz fonts (OTB version)"
 arch=('any')
 url="http://artwizaleczapka.sourceforge.net/"
 license=('GPL2')
-depends=('xorg-fonts-encodings' 'xorg-font-utils' 'fontconfig' 'git' 'fonttosfnt-git')
+makedepends=('fonttosfnt')
 conflicts=('artwiz-fonts')
+provides=('artwiz-fonts')
 source=(http://downloads.sourceforge.net/sourceforge/artwizaleczapka/artwiz-aleczapka-en-${pkgver}.tar.bz2
 	http://downloads.sourceforge.net/sourceforge/artwizaleczapka/artwiz-aleczapka-de-${pkgver}.tar.bz2
 	http://downloads.sourceforge.net/sourceforge/artwizaleczapka/artwiz-aleczapka-se-${pkgver}.tar.bz2)
