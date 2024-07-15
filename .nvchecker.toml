@@ -1,0 +1,3 @@
+[ruby-gobject-introspection]
+source = "gems"
+gems = "gobject-introspection"
