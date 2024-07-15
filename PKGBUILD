@@ -1,8 +1,8 @@
 # Maintainer: Christian Holme (Nordwin) <hcmh [at] mailbox [dot] org>
 _base=astra-toolbox
 pkgname=python-${_base}
-pkgver=2.1.0
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="MATLAB and Python toolbox of high-performance GPU primitives for 2D and 3D tomography"
 arch=(x86_64)
 url="https://github.com/astra-toolbox/astra-toolbox"
@@ -10,24 +10,23 @@ license=(GPL3)
 depends=(python-numpy python-scipy python-six boost 'python>=3.12')
 makedepends=(python-setuptools cython)
 source=(https://github.com/astra-toolbox/astra-toolbox/archive/refs/tags/v${pkgver}.tar.gz
-	fix-python-install-prefix.patch
-	Fix-numpy.int-deprecation.patch)
-sha512sums=('676d5bfa24f40c855cce6333052a829339a84b83665d432f7942d05e81f87c943bb10ed34c3b02903e35c0e039e103a4f18679306f51e24528c965ab5d806375'
-            '5c21c3d293d2ae140d7216f3c52c9a4a31b4c39047da0a3c97e954a17678446556d508b4e3020bc426f0591af6323929843d4d32c585058ffd2285a32f65f84f'
-            '9eb08ac40f04926df019e3bd65cf1ba34f86c02f0af7ad0f6bf1dca758eec1b9c884f402b13288f0ed8e9d11c573f80778caa178517db7a64c5226ad06f10592')
+	fix-astra-cython-check.patch)
+sha512sums=('5bbb1a26663da5ba3d7c9f1d3dd9772739c38f78c5dab840140ea5a68d6b367113d3b62602948790632b5d841c00f3511dd45144cc3941d3d29578ac944fe7b2'
+            '0211195cf67749eec2d0ceefd666cf2ef9bdc517d96e2130f06ac14695f083698f5ca8284ce8151472e49f513df78d4657e437dd639f8f87d78a27d5ee7d7c64')
+
 prepare() {
   cd ${_base}-${pkgver}
-# astra does not honor the installation prefix by default
-  patch -p1 -i ../fix-python-install-prefix.patch
-  patch -p1 -i ../Fix-numpy.int-deprecation.patch
+# astra has an incorrect check for cython, see https://github.com/astra-toolbox/astra-toolbox/commit/73388ddfcdd72788196603f531fe0d0f1e717590
+  patch -p1 -i ../fix-astra-cython-check.patch
 }
+
 
 build() {
   cd ${_base}-${pkgver}
   cd build/linux
   ./autogen.sh
   ./configure --with-python \
-		--prefix="$pkgdir"/usr \
+		--prefix=/usr \
 		--with-install-type=module
   make
 }
@@ -35,8 +34,5 @@ build() {
 package() {
   cd ${_base}-${pkgver}
   cd build/linux
-  make install
-# ugly fix to make 'import astra' work
-  cd "$pkgdir"/usr/lib/python3.12/site-packages
-  ln -s astra_toolbox-2.1.0-py3.12-linux-x86_64.egg/astra/ astra
+  make DESTDIR=${pkgdir} install
 }

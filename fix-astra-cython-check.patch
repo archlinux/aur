@@ -1,0 +1,44 @@
+diff --git a/build/linux/configure.ac b/build/linux/configure.ac
+index 569f257..2da44c7 100644
+--- a/build/linux/configure.ac
++++ b/build/linux/configure.ac
+@@ -242,14 +242,10 @@ if test x"$with_python" != x -a x"$with_python" != xno; then
+   fi
+   AC_MSG_RESULT(yes)
+   AC_MSG_CHECKING(for Cython module)
+-  ASTRA_TRY_PYTHON([
+-import Cython
+-from pkg_resources import parse_version
+-assert(parse_version(Cython.__version__) >= parse_version("0.13"))
+-],,HAVEPYTHON=no)
++  ASTRA_TRY_PYTHON([import Cython],,HAVEPYTHON=no)
+   if test x$HAVEPYTHON = xno; then
+     AC_MSG_RESULT(no)
+-    AC_MSG_ERROR(You need the Cython module (version >=0.13) to use the ASTRA toolbox in Python)
++    AC_MSG_ERROR(You need the Cython module to use the ASTRA toolbox in Python)
+   fi
+   AC_MSG_RESULT(yes)
+   AC_MSG_CHECKING(for six module)
+diff --git a/python/builder.py b/python/builder.py
+index f55466b..842c073 100644
+--- a/python/builder.py
++++ b/python/builder.py
+@@ -28,7 +28,6 @@ import sys
+ import numpy as np
+
+ from distutils.core import setup
+-from pkg_resources import parse_version
+
+ from setuptools import Command
+
+@@ -38,10 +37,6 @@ from Cython.Build import cythonize
+ import argparse
+ import sys
+
+-import Cython
+-if parse_version(Cython.__version__) < parse_version('0.13'):
+-    raise ImportError('Cython version should be at least 0.13')
+-
+ # We write a cython include file config.pxi containing the HAVE_CUDA setting
+ # to the directory passed by --astra_build_config_dir on the command line,
+ # or to the source dir otherwise.

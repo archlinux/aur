@@ -1,7 +1,7 @@
 pkgbase = python-astra-toolbox
 	pkgdesc = MATLAB and Python toolbox of high-performance GPU primitives for 2D and 3D tomography
-	pkgver = 2.1.0
-	pkgrel = 2
+	pkgver = 2.2.0
+	pkgrel = 1
 	url = https://github.com/astra-toolbox/astra-toolbox
 	arch = x86_64
 	license = GPL3
@@ -12,11 +12,9 @@ pkgbase = python-astra-toolbox
 	depends = python-six
 	depends = boost
 	depends = python>=3.12
-	source = https://github.com/astra-toolbox/astra-toolbox/archive/refs/tags/v2.1.0.tar.gz
-	source = fix-python-install-prefix.patch
-	source = Fix-numpy.int-deprecation.patch
-	sha512sums = 676d5bfa24f40c855cce6333052a829339a84b83665d432f7942d05e81f87c943bb10ed34c3b02903e35c0e039e103a4f18679306f51e24528c965ab5d806375
-	sha512sums = 5c21c3d293d2ae140d7216f3c52c9a4a31b4c39047da0a3c97e954a17678446556d508b4e3020bc426f0591af6323929843d4d32c585058ffd2285a32f65f84f
-	sha512sums = 9eb08ac40f04926df019e3bd65cf1ba34f86c02f0af7ad0f6bf1dca758eec1b9c884f402b13288f0ed8e9d11c573f80778caa178517db7a64c5226ad06f10592
+	source = https://github.com/astra-toolbox/astra-toolbox/archive/refs/tags/v2.2.0.tar.gz
+	source = fix-astra-cython-check.patch
+	sha512sums = 5bbb1a26663da5ba3d7c9f1d3dd9772739c38f78c5dab840140ea5a68d6b367113d3b62602948790632b5d841c00f3511dd45144cc3941d3d29578ac944fe7b2
+	sha512sums = 0211195cf67749eec2d0ceefd666cf2ef9bdc517d96e2130f06ac14695f083698f5ca8284ce8151472e49f513df78d4657e437dd639f8f87d78a27d5ee7d7c64
 
 pkgname = python-astra-toolbox
