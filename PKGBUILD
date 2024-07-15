@@ -1,15 +1,15 @@
 # Maintainer: Conrad Hoffmann <ch@bitfehler.net>
 
 pkgname=hare-ev
-pkgver=r66.736ab9b
+pkgver=r73.ed023be
 pkgrel=1
 pkgdesc='Event loop for Hare'
 arch=('any')
 url='https://git.sr.ht/~sircmpwn/hare-ev'
-license=('MPL2')
+license=('MPL-2.0')
 depends=('hare')
 makedepends=('git')
-_commit='736ab9bb17257ee5eba3bc96f6650fc4a14608ea'
+_commit='ed023beb4b4db88e22f608aa001682ac18cad230'
 source=("$pkgname::git+$url#commit=$_commit")
 b2sums=('SKIP')
 
