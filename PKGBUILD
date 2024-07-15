@@ -3,8 +3,8 @@
 
 _pkgname="gala"
 pkgname="$_pkgname-git"
-pkgver=7.1.3.r92.g196d249
-pkgrel=1
+pkgver=7.1.3.r182.g5c7fd36
+pkgrel=0.1
 pkgdesc='The Pantheon Window Manager'
 url='https://github.com/elementary/gala'
 license=('GPL-3.0-or-later')
@@ -26,9 +26,10 @@ depends=(
   mutter
 )
 makedepends=(
-  vala
   git
+  granite7
   meson
+  vala
 )
 
 provides=(
