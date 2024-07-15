@@ -1,0 +1,3 @@
+[unoconv]
+source = "git"
+git = "https://github.com/dagwieers/unoconv.git"
