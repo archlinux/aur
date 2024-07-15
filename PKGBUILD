@@ -34,11 +34,11 @@ fi
 ###################################################################################
 
 pkgbase=linux-zen-bmq
-pkgver=6.9.0.zen1
+pkgver=6.9.9.zen1
 pkgrel=1
-linuxver=6.9
-commit=acf99677bdec5cb27dc0e4e262f3f63a9696e13a
-versiontag=6.9-zen1
+linuxver=6.9.9
+commit=d374ea33fb3184339d0f5b2d37f1eea30843a7d0
+versiontag=6.9.9-zen1
 arch=(x86_64)
 url='https://www.kernel.org/'
 license=(GPL-2.0-only)
@@ -182,6 +182,16 @@ prepare(){
     sleep 2s
     plain ""
   fi
+
+  # https://gitlab.archlinux.org/archlinux/packaging/packages/linux-zen/-/issues/3
+  msg "Set Font"
+  scripts/config --disable CONFIG_FONTS
+  scripts/config --enable CONFIG_FONT_8x8
+  scripts/config --enable CONFIG_FONT_8x16
+
+  sleep 2s
+
+  plain ""
 
   # Supress depmod
   msg "Supress depmod..."
@@ -351,9 +361,9 @@ _package-headers(){
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-sha256sums=('24fa01fb989c7a3e28453f117799168713766e119c5381dac30115f18f268149'
-            'bb6df9549a545f9867d938076b0f6b9bf085680e6d7c505456dbe9e71c8f7af6'
-            '7e56d4a74ce056ca4373cf74b85d323906e2c4ef5149811563a1549a9e376188')
+sha256sums=('2be05b487eb239a3bf687d628a8f104177d09c310f00bcc2a5e50f1733421eb9'
+            'c5064d6506a1b1ce99becd2d8f9edeb1f308a009b3a31f4c07a5e7c11c879e30'
+            'b25aa8189e7a5d9a71e56badb5fd49121ffb25cd67ad7824a6f279825126373e')
 
 pkgname=($pkgbase $pkgbase-headers)
 for _p in "${pkgname[@]}"; do
