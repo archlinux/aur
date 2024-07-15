@@ -1,6 +1,6 @@
 # Maintainer: Kevin Stephen <kands-code@qq.com>
 pkgname=torchstudio
-pkgver=0.9.16
+pkgver=0.9.19
 pkgrel=1
 # epoch=1
 pkgdesc="IDE for PyTorch and its ecosystem"
@@ -21,7 +21,7 @@ options=(!strip !zipman)
 # changelog=
 source=("https://github.com/TorchStudio/${pkgname}/releases/download/${pkgver}/TorchStudio_${pkgver}-Linux_Installer.deb")
 # noextract=()
-sha256sums=('1f5c47c2c2dc325c4d6a2756a1c33023a360c31ad3a43e412c19c619dabed2cd')
+sha256sums=('975f484475462eee60f74724ad089f6965f7793ac29891a282fd385d2b29dc24')
 # validpgpkeys=()
 
 # prepare() {
