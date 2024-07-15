@@ -1,0 +1,4 @@
+[python-whey]
+source = "git"
+git = "https://github.com/repo-helper/whey.git"
+prefix = "v"
