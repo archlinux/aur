@@ -2,7 +2,7 @@
 # Maintainer: qlrd <qlrddev at gmail dot com>
 pkgname=krux-installer-bin
 _pkgname="org.selfcustody.${pkgname%-bin}"
-pkgver=0.0.11
+pkgver=0.0.14
 _electronversion=30
 pkgrel=1
 pkgdesc="A GUI based application to flash Krux firmware on K210 based devices.Use system-wide electron."
@@ -23,11 +23,11 @@ depends=(
     'libgnome-keyring'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"    
+    "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.${CARCH}.rpm"    
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/selfcustody/krux-installer/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('89fc4065390ac578195e7fc01e85bf2acc17e53193c3262114b03fbd82459dae'
+sha256sums=('6e700f9f1841f12d20c301822ba52491002602078796ed82679ab2990b241c4e'
             '29eee3e9d9c5dd67213ec3ab4a7eef57a1224750e2e9aab3a278177a9444a355'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
@@ -37,8 +37,7 @@ build() {
         -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data."*
-    sed "s|/opt/${pkgname%-bin}/||g;s|org.selfcustody.${pkgname%-bin}|${pkgname%-bin}|g" \
+    sed "s|/opt/${pkgname%-bin}/||g;s|/usr/share/icons/hicolor/0x0/apps/||g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
