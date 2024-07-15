@@ -2,8 +2,8 @@
 
 _pkgbase=unofficial-homestuck-collection
 pkgname="${_pkgbase}-bin"
-pkgver=2.0.7
-pkgrel=4
+pkgver=2.5.1
+pkgrel=1
 pkgdesc="The Unofficial Homestuck Collection"
 arch=('x86_64')
 url="https://bambosh.github.io/unofficial-homestuck-collection/"
@@ -23,7 +23,7 @@ source=("https://github.com/Bambosh/${_pkgbase}/releases/download/v${pkgver}/${_
         "icon-128.png"
         "icon-256.png"
         "icon-512.png")
-sha512sums=('0dbb0745d86240c2b9ddbe52afa02e9c292b3df838a769adb5b21fc1a65917e9dbcef0b337d7a0cad4fc0398b6ae036ab1796c39b34d614eadcabd6807f0ebba'
+sha512sums=('8124b14e4a4b46c189dad682845a247e123327ec9ba462d8dc84a155ee2274cdd4f38ad31046c9b7c8e69bbfe0e4d6456cf5e50a1c25fbe3f78adefa49940f5c'
             'ddd708069851fe45d519265906be1c5ea6fb39ba3a908eddb1f8e74304521ab5138ea4e6125c0ef3a0189d48f281099014e3eea60dca276698d678e43a264825'
             '61168758fdde408282c673724d20c13438ec9dd2e9d7bfa1cf5b265d85476b43a386899bff136bd284293bf2bc5799174248e7fe98dd6d0086507ee22b2a5923'
             '509c7a1b8ceeffa99b4f8012de75a429909ee4b464b753a6ffec910e0c88a705f1d70ed2fd4c81a9cf53aff6681e2f766429b71339acb594e231abafc0f04f04'
