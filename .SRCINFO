@@ -1,6 +1,6 @@
 pkgbase = rednotebook-git
 	pkgdesc = A simple desktop diary.
-	pkgver = v2.7.r1.g3fed3868
+	pkgver = v2.33.r4.gc3e73d23
 	pkgrel = 1
 	url = http://rednotebook.sourceforge.net
 	arch = any
@@ -13,8 +13,7 @@ pkgbase = rednotebook-git
 	optdepends = python-pyenchant: for spellchecking
 	provides = rednotebook
 	conflicts = rednotebook
-	source = git://github.com/jendrikseipp/rednotebook.git
+	source = git+https://github.com/jendrikseipp/rednotebook.git
 	md5sums = SKIP
 
 pkgname = rednotebook-git
-
