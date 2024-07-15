@@ -45,6 +45,7 @@ build() {
     -DWASI_SDK_PREFIX=/usr/lib/llvm17 \
     -DCMAKE_C_FLAGS="-fno-exceptions --sysroot=/usr/share/wasi-sysroot" \
     -DCMAKE_INSTALL_PREFIX=/usr/lib/llvm17/lib/clang/${pkgver%%.*}/ \
+    -DLLVM_DIR=/usr/lib/llvm17/lib/cmake/llvm \
     compiler-rt-${pkgver}.src/lib/builtins
   cmake --build build -v
 }
