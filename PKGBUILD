@@ -8,7 +8,7 @@
 pkgname=sway-im
 pkgver=1.9
 epoch=1
-pkgrel=1
+pkgrel=2
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager, with input method popups v2 support'
 arch=(x86_64)
 url='https://swaywm.org/'
@@ -68,7 +68,7 @@ install=sway.install
 sha512sums=('1d2a47bb8b838573a32f3719a7329fd744119c2c7efc5e5a4168b2bacfb09a3901a569177e5e10c129141fafe00e823ab78c04b76b502d23caa7621bbccd5919'
             'SKIP'
             'd5f9aadbb4bbef067c31d4c8c14dad220eb6f3e559e9157e20e1e3d47faf2f77b9a15e52519c3ffc53dc8a5202cb28757b81a4b3b0cc5dd50a4ddc49e03fe06e'
-            'b9e708c775825c8124d8e154e523c90b8a32715050ba06f6dbcdd08d109eed484d128ccc8dcd6a49dc9cd51a0c9035779c2706b4d7a139115e85c4f54226b775'
+            '4f9576b7218aef8152eb60e646985e96b13540b7a4fd34ba68fdc490199cf7a7b46bbee85587e41bffe81fc730222cf408d5712e6251edc85a0a0b0408c1a2df'
             '07343bed09ca1689e647465d38013dc42e5a290bf8bcce57244eaccc7c3c858f04ec5d2786dc3af193a070faa89606598cccba66cd52d4078973afb757d5b72e'
             'dd013a9c6859dc0210aa55a519c1df4c5899e164d7a6c7f86f831dcd37f9b26839f24e7bc2dc066ee7fad38ff91bcae9516a0c3bffebb09c35c8133f0af10bc8'
             'dba122283df29239ff94cac20c74f28937822573474bebf3865096bc073ef366412ccead4d1c46197c93eefc09d2c8af74de782f5be2a462d7911020c7a43d0e')
