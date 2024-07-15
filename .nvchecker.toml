@@ -1,0 +1,3 @@
+[ruby-gio2]
+source = "gems"
+gems = "gio2"
