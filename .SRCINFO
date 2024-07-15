@@ -1,0 +1,23 @@
+pkgbase = android-armv7a-eabi-libarchive
+	pkgdesc = Multi-format archive and compression library (Android armv7a-eabi)
+	pkgver = 3.7.4
+	pkgrel = 1
+	url = https://libarchive.org/
+	arch = any
+	license = BSD
+	makedepends = android-configure
+	depends = android-armv7a-eabi-bzip2
+	depends = android-armv7a-eabi-libxml2
+	depends = android-armv7a-eabi-lz4
+	depends = android-armv7a-eabi-openssl
+	depends = android-armv7a-eabi-xz
+	depends = android-armv7a-eabi-zlib
+	depends = android-armv7a-eabi-zstd
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/libarchive/libarchive/releases/download/v3.7.4/libarchive-3.7.4.tar.xz
+	sha256sums = f887755c434a736a609cbd28d87ddbfbe9d6a3bb5b703c22c02f6af80a802735
+
+pkgname = android-armv7a-eabi-libarchive
