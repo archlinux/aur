@@ -1,0 +1,4 @@
+[zcash]
+source = "git"
+git = "https://github.com/zcash/zcash.git"
+prefix = "v"
