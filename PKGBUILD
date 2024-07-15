@@ -16,7 +16,7 @@ source=("${_appimage}::https://github.com/Mastermindzh/tidal-hifi/releases/downl
         "tidal-hifi.desktop"
         "icon.png")
 md5sums=('afc1fda73f005fdb336018be20814095'
-         '7b3da82d89609ef534490a6bbf54b2e5'
+         '70cda094350ff39796024c3300a5e006'
          'c17104184b4ae7af3b82c0930a22a777')
 noextract=("${_appimage}")
 
