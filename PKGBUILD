@@ -10,7 +10,7 @@ pkgname=(
   "${_pkgbase}-license${_vcssuffix}"
   "${_pkgbase}-doc${_vcssuffix}"
 )
-pkgver=3.1.0.r1031.20240701.25fefdf
+pkgver=3.2.0.r1078.20240714.78ccf56
 pkgrel=1
 pkgdesc='Handheld Daemon. A tool for managing the quirks of handheld devices. Latest git checkout.'
 arch=(
