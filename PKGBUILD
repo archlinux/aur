@@ -1,6 +1,6 @@
 pkgname=xfce4-nvgpugraph-plugin
 _pkgname=xfce4-nvgpugraph-plugin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="nvidia GPU Graph plugin for the Xfce4 panel."
 arch=('any')
