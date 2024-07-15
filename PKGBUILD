@@ -40,7 +40,7 @@ if "${_build_vulkan}"; then
   pkgname+=("${_name}-vulkan-git")
 fi
 pkgdesc='Create, run and share large language models (LLMs). Package(s) without dedicated GPU offloading (no CUDA, no ROCm, no SYCL).'
-pkgver=0.1.49+rc3+24.r3045.20240703.4d71c559
+pkgver=0.2.5+3.r3127.20240715.b9f5e16c
 pkgrel=1
 arch=(
   'armv7h'
