@@ -4,7 +4,7 @@
 : ${_build_avx:=false}
 : ${_build_git:=false}
 
-: ${_commit:=d45e218da7ae28b21a3b8ca32a1b7fe31986138f}
+: ${_commit:=38774867121728f19cc6dd48104e394bed911a30} # 0.1.6995
 : ${_scripts:=scripts}
 
 unset _pkgtype
@@ -14,7 +14,7 @@ unset _pkgtype
 # basic info
 _pkgname="duckstation"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=0.1.6937
+pkgver=0.1.6995
 pkgrel=1
 pkgdesc="Playstation emulator"
 url="https://github.com/stenzek/duckstation"
@@ -56,11 +56,11 @@ _main_package() {
     _source_duckstation_git
     _source_cpuinfo
     _source_discord_rpc
-    _source_spirv_cross
   fi
 
   _source_backtrace
   _source_shaderc
+  _source_spirv_cross
 }
 
 _source_duckstation() {
@@ -152,21 +152,25 @@ _source_spirv_cross() {
 
 _prepare_backtrace() (
   local _version_backtrace=$(grep -E -m1 'LIBBACKTRACE=' "$_pkgsrc/$_scripts/build-dependencies-linux.sh" | sed -E -e 's&^\s*LIBBACKTRACE=(\S+)$&\1&')
+  echo "backtrace = $_version_backtrace"
   git -C "$srcdir/ianlancetaylor.libbacktrace" checkout -f "$_version_backtrace"
 )
 
 _prepare_cpuinfo() (
   local _version_cpuinfo=$(grep -E -m1 'CPUINFO=' "$_pkgsrc/$_scripts/build-dependencies-linux.sh" | sed -E -e 's&^\s*CPUINFO=(\S+)$&\1&')
+  echo "cpuinfo = $_version_cpuinfo"
   git -C "$srcdir/pytorch.cpuinfo" checkout -f "$_version_cpuinfo"
 )
 
 _prepare_discord_rpc() (
   local _version_discord_rpc=$(grep -E -m1 'DISCORD_RPC=' "$_pkgsrc/$_scripts/build-dependencies-linux.sh" | sed -E -e 's&^\s*DISCORD_RPC=(\S+)$&\1&')
+  echo "discord-rpc = $_version_discord_rpc"
   git -C "$srcdir/stenzek.discord-rpc" checkout -f "$_version_discord_rpc"
 )
 
 _prepare_shaderc() (
   local _version_shaderc=$(grep -E -m1 'SHADERC=' "$_pkgsrc/$_scripts/build-dependencies-linux.sh" | sed -E -e 's&^\s*SHADERC=(\S+)$&\1&')
+  echo "shaderc = $_version_shaderc"
 
   git -C "$srcdir/google.shaderc" checkout -f "v$_version_shaderc"
 
@@ -183,6 +187,7 @@ _prepare_shaderc() (
 
 _prepare_spirv_cross() (
   local _version_spirv_cross=$(grep -E -m1 'SPIRV_CROSS=' "$_pkgsrc/$_scripts/build-dependencies-linux.sh" | sed -E -e 's&^\s*SPIRV_CROSS=(\S+)$&\1&')
+  echo "spirv-cross = $_version_spirv_cross"
 
   git -C "$srcdir/khronosgroup.spirv-cross" checkout -f "$_version_spirv_cross"
 
@@ -202,11 +207,11 @@ _prepare_duckstation() {
 prepare() {
   _prepare_backtrace
   _prepare_shaderc
+  _prepare_spirv_cross
 
   if [ "${_build_git::1}" = "t" ]; then
     _prepare_cpuinfo
     _prepare_discord_rpc
-    _prepare_spirv_cross
   fi
 
   _prepare_duckstation
@@ -230,7 +235,6 @@ _build_cpuinfo() {
     -B build_cpuinfo
     -S pytorch.cpuinfo
     -G Ninja
-
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX=/usr
     -DCPUINFO_LIBRARY_TYPE=shared
@@ -256,7 +260,6 @@ _build_discord_rpc() {
     -B build_discord_rpc
     -S stenzek.discord-rpc
     -G Ninja
-
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX=/usr
     -DBUILD_SHARED_LIBS=ON
@@ -324,14 +327,14 @@ _build_duckstation() {
     -S "$_pkgsrc"
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_SKIP_RPATH=ON
     -DBUILD_NOGUI_FRONTEND=OFF
     -DBUILD_QT_FRONTEND=ON
-
-    -DCMAKE_SKIP_RPATH=ON
     -DLIBBACKTRACE_LIBRARY="$srcdir/deps/libbacktrace.a"
     -DLIBBACKTRACE_INCLUDE_DIR="$srcdir/deps/include"
     -DSHADERC_INCLUDE_DIR="$srcdir/deps/usr/include"
     -DSHADERC_LIBRARY="$srcdir/deps/usr/lib/libshaderc_shared.so"
+    -Dspirv_cross_c_shared_DIR="$srcdir/deps/usr/share/spirv_cross_c_shared/cmake"
     -Wno-dev
   )
 
@@ -339,7 +342,6 @@ _build_duckstation() {
     _cmake_options+=(
       -Dcpuinfo_DIR="$srcdir/deps/usr/share/cpuinfo"
       -DDiscordRPC_DIR="$srcdir/deps/usr/lib/cmake/DiscordRPC"
-      -Dspirv_cross_c_shared_DIR="$srcdir/deps/usr/share/spirv_cross_c_shared/cmake"
     )
   fi
 
@@ -365,11 +367,11 @@ build() {
 
   _build_backtrace
   _build_shaderc
+  _build_spirv_cross
 
   if [ "${_build_git::1}" = "t" ]; then
     _build_cpuinfo
     _build_discord_rpc
-    _build_spirv_cross
   fi
 
   _build_duckstation
@@ -389,11 +391,11 @@ package() {
   install -Dm644 "$srcdir/deps/usr/lib/libshaderc_shared.so" "$_shaderc_patched"
   patchelf --set-soname "${_shaderc_patched##*/}" "$_shaderc_patched"
 
-  if [ "${_build_git::1}" = "t" ]; then
-    local _spirv_cross_patched="$pkgdir/opt/$_pkgname/libspirv-cross-c-$_pkgname.so"
-    install -Dm644 "$srcdir/deps/usr/lib/libspirv-cross-c-shared.so" "$_spirv_cross_patched"
-    patchelf --set-soname "${_spirv_cross_patched##*/}" "$_spirv_cross_patched"
+  local _spirv_cross_patched="$pkgdir/opt/$_pkgname/libspirv-cross-c-$_pkgname.so"
+  install -Dm644 "$srcdir/deps/usr/lib/libspirv-cross-c-shared.so" "$_spirv_cross_patched"
+  patchelf --set-soname "${_spirv_cross_patched##*/}" "$_spirv_cross_patched"
 
+  if [ "${_build_git::1}" = "t" ]; then
     local _cpuinfo_patched="$pkgdir/opt/$_pkgname/libcpuinfo.so"
     install -Dm644 "$srcdir/deps/usr/lib/libcpuinfo.so" "$_cpuinfo_patched"
 
