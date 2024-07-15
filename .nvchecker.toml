@@ -1,0 +1,3 @@
+[ruby-pango]
+source = "gems"
+gems = "pango"
