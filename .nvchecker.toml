@@ -1,0 +1,4 @@
+[choria-io]
+source = "git"
+git = "https://github.com/choria-io/go-choria.git"
+prefix = "v"
