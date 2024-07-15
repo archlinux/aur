@@ -1,7 +1,7 @@
 pkgbase = wine-osu-spectator-wow64
 	pkgdesc = A compatibility layer for running Windows programs, but with osu! specific patches (WoW64 version)
-	pkgver = 9.12
-	pkgrel = 3
+	pkgver = 9.13
+	pkgrel = 1
 	url = http://www.winehq.com
 	install = wine.install
 	arch = x86_64
@@ -13,23 +13,16 @@ pkgbase = wine-osu-spectator-wow64
 	makedepends = fontforge
 	makedepends = flex
 	makedepends = gcc
-	makedepends = clang
-	makedepends = llvm-libs
 	makedepends = llvm-mingw-w64-toolchain
 	makedepends = giflib
 	makedepends = libpng
-	makedepends = gnutls
-	makedepends = libxinerama
-	makedepends = libxcomposite
 	makedepends = libxmu
 	makedepends = libxxf86vm
-	makedepends = libxkbcommon
 	makedepends = wayland
 	makedepends = libldap
 	makedepends = mpg123
 	makedepends = openal
 	makedepends = v4l-utils
-	makedepends = libpulse
 	makedepends = alsa-lib
 	makedepends = mesa
 	makedepends = mesa-libgl
@@ -41,7 +34,6 @@ pkgbase = wine-osu-spectator-wow64
 	makedepends = sane
 	makedepends = gsm
 	makedepends = vulkan-headers
-	makedepends = libvulkan.so=1-64
 	makedepends = samba
 	makedepends = opencl-headers
 	makedepends = nasm
@@ -62,6 +54,11 @@ pkgbase = wine-osu-spectator-wow64
 	makedepends = gcc-libs
 	makedepends = libpcap
 	makedepends = desktop-file-utils
+	makedepends = libvulkan.so=1-64
+	makedepends = gnutls
+	makedepends = libxkbcommon
+	makedepends = libxcomposite
+	makedepends = libpulse
 	depends = fontconfig
 	depends = lcms2
 	depends = libxml2
@@ -76,10 +73,15 @@ pkgbase = wine-osu-spectator-wow64
 	depends = gcc-libs
 	depends = libpcap
 	depends = desktop-file-utils
+	depends = libvulkan.so=1-64
+	depends = gnutls
+	depends = libxkbcommon
+	depends = libxcomposite
+	depends = libpulse
+	optdepends = libxinerama
 	optdepends = giflib
 	optdepends = libpng
 	optdepends = libldap
-	optdepends = gnutls
 	optdepends = mpg123
 	optdepends = openal
 	optdepends = v4l-utils
@@ -111,9 +113,9 @@ pkgbase = wine-osu-spectator-wow64
 	source = 30-win32-aliases.conf
 	source = wine-binfmt.conf
 	source = buildiswow64
-	source = git+https://github.com/wine-mirror/wine.git#commit=6f2466ea0c20245955d0d2b13b5162a1fe62815b
-	source = git+https://github.com/wine-staging/wine-staging.git#commit=0e802db66f4e3129ab2ab287c9202be29c5502ef
-	source = git+https://github.com/whrvt/wine-osu-patches.git#tag=07-06-2024-6f2466ea-0e802db6
+	source = git+https://github.com/wine-mirror/wine.git#commit=e8f936c745b24f794b36a0af794086e0f57c8551
+	source = git+https://github.com/wine-staging/wine-staging.git#commit=a442564f05a5a3c7954509266c21f3f3cdc12ad8
+	source = git+https://github.com/whrvt/wine-osu-patches.git#tag=07-14-2024-e8f936c7-a442564f
 	sha512sums = dc115ccc8d64afc213d2860a2f3516c31aa2891cd1005498123d86e7e44e0fcf876fbc68c89b201ce5291a12127cb7ff478e9374dbd2512b5d094802780be160
 	sha512sums = 6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb
 	sha512sums = bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285

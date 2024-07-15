@@ -2,30 +2,26 @@
 
 # Maintainer: William Horvath <william at horvath dot blog>
 
+#### Setup, don't touch :^)
 _where="${startdir:-$(pwd)}"
 
-# true: generic build; false: AUR native build (default); shouldn't need to touch this
 _generic_release=false
-if [ "${_generic_release}" = "true" ]; then
-  PKGEXT='.pkg.tar.xz'
-  COMPRESSXZ=(xz -9 -c -z - --threads=0)
-  _CPU_TARGET="-march=x86-64 -mtune=generic"
-else
-  _CPU_TARGET="-march=native -mtune=native"
-fi
 
-wow64build=$(cat "${_where}/buildiswow64" || _failure "how")
+# hack taken from wine-tkg PKGBUILD, real pkgrel is the eval one
+pkgver=9.13
+pkgrel=1
+eval pkgrel=1
 
 ################################################################################################################################
 ################################################################################################################################
-### OPTIONS
+### USER OPTIONS
 ################################################################################################################################
 ################################################################################################################################
 
-_disabled_staging="-W user32-Mouse_Message_Hwnd" ## e.g. "-W Compiler_Warnings -W user32-. . ."
+_disabled_staging="" ## e.g. "-W Compiler_Warnings -W user32-. . ."
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="07-06-2024-6f2466ea-0e802db6"
+_patchbase_tag="07-14-2024-e8f936c7-a442564f"
 
 ## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the custompatches folder
@@ -35,8 +31,8 @@ _custompatches=false
 
 ## uses wine/staging master if empty, uses given commit or tag if set
 ## only applies if _custompatches is true, otherwise overwritten by upstream commits from patchbase repo
-_desired_wine_commit=6f2466ea0c20245955d0d2b13b5162a1fe62815b
-_desired_staging_commit=0e802db66f4e3129ab2ab287c9202be29c5502ef
+_desired_wine_commit=e8f936c745b24f794b36a0af794086e0f57c8551
+_desired_staging_commit=a442564f05a5a3c7954509266c21f3f3cdc12ad8
 
 _strip_package=true
 _install_static=true ## .a libs which may be required for external programs such as winestreamproxy
@@ -45,18 +41,25 @@ _autoupdate=false ## not functional yet
 
 _cleanbuildfolders=false ## removes src, pkg folders on exit (both failure and success)
 
+## (true: wow64) leave empty unless you want to manually change the type of build 
+wow64build=
+
 ################################################################################################################################
 ################################################################################################################################
 
+wow64build=${wow64build:-"$(cat "${_where}/buildiswow64")"}
 if [ "${_custompatches}" != "true" ]; then _custompatches= ; fi
 if [ "$wow64build" = "true" ]; then _wowname="-wow64"; else _wowname=""; fi
 
-pkgname=wine-osu-spectator"${_wowname}"
+if [ "${_generic_release}" = "true" ]; then
+  PKGEXT='.pkg.tar.xz'
+  COMPRESSXZ=(xz -9 -c -z - --threads=0)
+  _CPU_TARGET="-march=x86-64 -mtune=generic"
+else
+  _CPU_TARGET="-march=native -mtune=native"
+fi
 
-pkgver=9.12
-# workaround for pkgrel overwritten by pkgver() (taken from TkG PKGBUILD), real is the eval one
-pkgrel=1
-eval pkgrel=3
+pkgname=wine-osu-spectator"${_wowname}"
 
 pkgdesc="A compatibility layer for running Windows programs, but with osu! specific patches"
 if [ "$wow64build" = "true" ]; then pkgdesc+=" (WoW64 version)"; fi
@@ -114,27 +117,25 @@ depends=(
   gcc-libs
   libpcap
   desktop-file-utils
+  libvulkan.so=1-64
+  gnutls
+  libxkbcommon
+  libxcomposite
+  libpulse
 )
 
 makedepends=(autoconf bison ccache perl fontforge flex
   gcc
-  clang
-  llvm-libs
   llvm-mingw-w64-toolchain
   giflib
   libpng
-  gnutls
-  libxinerama
-  libxcomposite
   libxmu
   libxxf86vm
-  libxkbcommon
   wayland
   libldap
   mpg123
   openal
   v4l-utils
-  libpulse
   alsa-lib
   mesa
   mesa-libgl
@@ -146,7 +147,6 @@ makedepends=(autoconf bison ccache perl fontforge flex
   sane
   gsm
   vulkan-headers
-  libvulkan.so=1-64
   samba
   opencl-headers
   nasm
@@ -156,10 +156,10 @@ makedepends=(autoconf bison ccache perl fontforge flex
 )
 
 optdepends=(
+  libxinerama
   giflib
   libpng
   libldap
-  gnutls
   mpg123
   openal
   v4l-utils
@@ -181,15 +181,15 @@ optdepends=(
 )
 
 if [ "${wow64build}" != "true" ]; then
-  depends+=(lib32-fontconfig lib32-lcms2 lib32-libxml2 lib32-libxcursor lib32-libxrandr lib32-libxdamage lib32-libxi lib32-gettext lib32-freetype2 lib32-glu lib32-libsm lib32-gcc-libs lib32-libpcap)
-  makedepends+=(lib32-gtk3 lib32-attr lib32-libxkbcommon lib32-llvm-libs libvulkan.so=1-32 lib32-giflib lib32-libpng lib32-gnutls lib32-libxinerama lib32-libxcomposite lib32-libxmu lib32-libxxf86vm lib32-libldap lib32-mpg123 lib32-openal lib32-v4l-utils lib32-libpulse lib32-alsa-lib lib32-gst-plugins-base-libs lib32-libxcomposite lib32-mesa lib32-mesa-libgl lib32-opencl-icd-loader lib32-libxslt lib32-sdl2 lib32-libcups)
-  optdepends+=(lib32-giflib lib32-libpng lib32-libldap lib32-gnutls lib32-mpg123 lib32-openal lib32-v4l-utils lib32-libpulse lib32-alsa-plugins lib32-alsa-lib lib32-libjpeg-turbo lib32-libxcomposite lib32-libxinerama lib32-opencl-icd-loader lib32-libxslt lib32-vkd3d lib32-sdl2)
+  depends+=(lib32-libxkbcommon libvulkan.so=1-32 lib32-gnutls lib32-libxcomposite lib32-libpulse lib32-fontconfig lib32-lcms2 lib32-libxml2 lib32-libxcursor lib32-libxrandr lib32-libxdamage lib32-libxi lib32-gettext lib32-freetype2 lib32-glu lib32-libsm lib32-gcc-libs lib32-libpcap)
+  makedepends+=(lib32-wayland lib32-gtk3 lib32-attr lib32-llvm-libs lib32-giflib lib32-libpng lib32-libxmu lib32-libxxf86vm lib32-libldap lib32-mpg123 lib32-openal lib32-v4l-utils lib32-alsa-lib lib32-gst-plugins-base-libs lib32-mesa lib32-mesa-libgl lib32-opencl-icd-loader lib32-libxslt lib32-sdl2 lib32-libcups)
+  optdepends+=(lib32-libxinerama lib32-giflib lib32-libpng lib32-libldap lib32-mpg123 lib32-openal lib32-v4l-utils lib32-alsa-plugins lib32-alsa-lib lib32-libjpeg-turbo lib32-libxcomposite lib32-libxinerama lib32-opencl-icd-loader lib32-libxslt lib32-vkd3d lib32-sdl2)
 fi
 
 makedepends=("${makedepends[@]}" "${depends[@]}")
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}" || true
   git describe --tags --abbrev=0 | cut -f2 -d'-'
 }
 
@@ -200,14 +200,15 @@ _set_vars() {
 
   export PATH="/opt/llvm-mingw/bin":"${PATH}"
 
-  export CPPFLAGS="-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0 -DNDEBUG -D_NDEBUG"
+  _GCC_LTO_FLAGS="-fuse-linker-plugin -fdevirtualize-at-ltrans -flto-partition=one -flto -Wl,-flto" #requires lto-fixup.patch
+  # _CLANG_LTO_FLAGS="-flto=full -Wl,--flto=full"
+  # _GRAPHITE_FLAGS="-floop-nest-optimize -fgraphite-identity -floop-strip-mine"
+  # _OPTIMIZE_HARDER_FLAGS="-fipa-pta -fgcse-sm -fgcse-las -fira-loop-pressure" # -fsched-pressure -fsched-spec-load
+
   _common_cflags="${_CPU_TARGET} -O3 -pipe -fno-strict-aliasing -fomit-frame-pointer -fwrapv -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -Wno-error=return-mismatch -Wno-error=int-conversion -w"
+  _native_common_cflags="${_GCC_LTO_FLAGS}" # only for the non-mingw side
 
-  _LTO_FLAGS="-fuse-linker-plugin -fdevirtualize-at-ltrans -flto-partition=one -ffat-lto-objects -flto -Wl,-flto"
-  #_GRAPHITE_FLAGS="-floop-nest-optimize -fgraphite-identity -floop-strip-mine"
-  #_OPTIMIZE_HARDER_FLAGS="-fipa-pta -fgcse-sm -fgcse-las -fira-loop-pressure -fsched-pressure -fsched-spec-load"
-
-  _native_common_cflags="${_LTO_FLAGS}" # only for the non-mingw side
+  export CPPFLAGS="-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0 -DNDEBUG -D_NDEBUG"
 
   _GCC_FLAGS="${_common_cflags} ${_native_common_cflags} ${CPPFLAGS}"
   _LD_FLAGS="${_GCC_FLAGS} -Wl,-O2,--sort-common,--as-needed"
@@ -215,15 +216,14 @@ _set_vars() {
   _CROSS_FLAGS="${_common_cflags} ${CPPFLAGS} -L/opt/llvm-mingw/lib -I/opt/llvm-mingw/include -I/opt/llvm-mingw/lib/clang/${__llvm_ver}/include -I/opt/llvm-mingw/generic-w64-mingw32/include -L/opt/llvm-mingw/x86_64-w64-mingw32/lib -L/opt/llvm-mingw/i686-w64-mingw32/lib -L/opt/llvm-mingw/lib/clang/${__llvm_ver}/lib/windows"
   _CROSS_LD_FLAGS="${_CROSS_FLAGS} -Wl,-O2,--sort-common,--as-needed,--file-alignment=4096"
 
-  export STRIP="ccache strip"
-
   export CC="ccache gcc"
   export CXX="ccache g++"
-  export CROSSCC="ccache x86_64-w64-mingw32-clang"
-  export CROSSCC64="ccache x86_64-w64-mingw32-clang"
-  export CROSSCC32="ccache i686-w64-mingw32-clang"
+
   export x86_64_CC="ccache x86_64-w64-mingw32-clang"
+  export x86_64_CXX="ccache x86_64-w64-mingw32-clang++"
+
   export i386_CC="ccache i686-w64-mingw32-clang"
+  export i386_CXX="ccache i686-w64-mingw32-clang++"
 
   export CFLAGS="${_GCC_FLAGS}"
   export CXXFLAGS="${_GCC_FLAGS}"
@@ -271,7 +271,6 @@ prepare() { _set_vars;
     fi
 
     sed -i "s/^_desired_wine_commit=.*$/_desired_wine_commit=${_patchbase_wine_commit}/g" "${_where}/PKGBUILD"
-    cd "${srcdir}" || _failure
   fi
 
   msg2 "Wine mainline at: $_patchbase_wine_commit"
@@ -287,7 +286,6 @@ prepare() { _set_vars;
     fi
 
     sed -i "s/^_desired_staging_commit=.*$/_desired_staging_commit=${_patchbase_staging_commit}/g" "${_where}/PKGBUILD"
-    cd "${srcdir}" || _failure
   fi
 
   msg2 "Wine staging at: $_patchbase_staging_commit"
@@ -300,16 +298,18 @@ prepare() { _set_vars;
   printf "Wine commit:%s\nStaging commit:%s\n" "${_desired_wine_commit}" "${_desired_staging_commit}" > "${_where}"/patchlog.txt
 
   ## Apply wine-staging patchset
-
   msg2 "Applying staging patches"
   printf "\nApplying staging patches\n\n" >> "${_where}"/patchlog.txt
   pushd wine-staging/staging >/dev/null || _failure
   # shellcheck disable=SC2086
-  ./patchinstall.py DESTDIR="${srcdir}"/"${pkgname}" --all $_disabled_staging &>> "${_where}"/patchlog.txt || \
+  ./patchinstall.py DESTDIR="${srcdir}"/"${pkgname}" --no-autoconf --all $_disabled_staging &>> "${_where}"/patchlog.txt || \
       _failure "Error applying staging patches, check patchlog.txt for info."
   popd >/dev/null || _failure
 
-  ## Applying patches
+  ## Apply patches
+
+  printf "\nApplying other patches\n\n" >> "${_where}"/patchlog.txt
+  cd "${srcdir}"/"${pkgname}" || _failure
 
   if [ "${_custompatches}" = "true" ]; then
     if ! [ -d "${_where}/custompatches" ]; then _failure "_custompatches=true but custompatches directory not found."; fi
@@ -319,9 +319,6 @@ prepare() { _set_vars;
   else
     patchdir="${srcdir}/wine-osu-patches"
   fi
-
-  printf "\nApplying other patches\n\n" >> "${_where}"/patchlog.txt
-  cd "${srcdir}"/"${pkgname}" || _failure
 
   for patch in $(find "${patchdir}" -type f -regex ".*\.patch" | LC_ALL=C sort -f); do
     shortname="${patch#"${patchdir}/"}"
@@ -337,12 +334,9 @@ prepare() { _set_vars;
   git add --all &>/dev/null || true
   git commit --allow-empty -m "makepkg" &>/dev/null || true
 
-  chmod +x tools/make_makefiles
   tools/make_makefiles
-  chmod +x tools/make_requests
   tools/make_requests
   if [ -e tools/make_specfiles ]; then
-    chmod +x tools/make_specfiles
     tools/make_specfiles
   fi
   autoreconf -fiv
@@ -357,9 +351,8 @@ _build() { _set_vars;
   export PKG_CONFIG_LIBDIR=/opt/llvm-mingw/x86_64-w64-mingw32/lib/pkgconfig:/usr/lib/pkgconfig
   export PKG_CONFIG_PATH=$PKG_CONFIG_LIBDIR:$PKG_CONFIG_PATH_CUSTOM
 
-  export x86_64_CC="ccache x86_64-w64-mingw32-clang"
   export CROSSCC="ccache x86_64-w64-mingw32-clang"
-  
+
   msg2 "Building Wine-64"
   cd "${build64dir}" || _failure
   ../"${pkgname}"/configure \
@@ -377,10 +370,9 @@ _build() { _set_vars;
   export PKG_CONFIG_LIBDIR=/opt/llvm-mingw/i686-w64-mingw32/lib/pkgconfig:/usr/lib32/pkgconfig
   export PKG_CONFIG_PATH=$PKG_CONFIG_LIBDIR:$PKG_CONFIG_PATH_CUSTOM
 
-  export i386_CC="ccache i686-w64-mingw32-clang"
   export CROSSCC="ccache i686-w64-mingw32-clang"
 
-  # fsync doesn't compile on i386 due to undefined atomic ops otherwise (clang only, ntdll.so)
+  # lib32 fsync doesn't compile with clang due to undefined atomic ops otherwise (ntdll.so)
   if [[ "${CC}" =~ "clang" ]]; then
     export I386_LIBS="-latomic"
   fi
@@ -400,7 +392,6 @@ build() { _set_vars;
     --disable-tests
     --with-x
     --with-gstreamer
-    --with-xattr
     --with-wayland
     --enable-silent-rules
     --without-oss
@@ -442,6 +433,7 @@ package() { _set_vars;
   fi
 
   if [ "${wow64build}" != "true" ]; then
+    export CROSSCC="ccache i686-w64-mingw32-clang"
     msg2 "Packaging Wine-32"
     cd "${build32dir}" || _failure
     make -j$(($(nproc) + 1)) \
@@ -450,6 +442,7 @@ package() { _set_vars;
       dlldir="${pkgdir}"/opt/"${pkgname}"/lib/wine $_installtype || _failure "Wine-32 installation failed"
   fi
 
+  export CROSSCC="ccache x86_64-w64-mingw32-clang"
   msg2 "Packaging Wine-64"
   cd "${build64dir}"|| _failure
   # clang doesn't like static libs on lib64 for some reason, use gcc
@@ -468,7 +461,7 @@ package() { _set_vars;
   install -Dm 644 "${srcdir}"/wine-binfmt.conf "${pkgdir}"/usr/lib/binfmt.d/wine"${_wowname}"-spec.conf
 
   if [ "${_strip_package}" = "true" ]; then
-    msg2 "Stripping unneeded symbols from libraries"
+    msg "Stripping unneeded symbols from libraries"
 
     find "${pkgdir}"/opt/"${pkgname}"/lib{,64} \
       -type f '(' -iname '*.a' -or -iname '*.dll' -or -iname '*.so' -or -iname '*.sys' -or -iname '*.drv' -or -iname '*.exe' ')' \
@@ -493,7 +486,9 @@ package() { _set_vars;
   cp "${_where}"/patchlog.txt "${pkgdir}"/opt/"${pkgname}"
 }
 
-exit_cleanup() {
+## more random helpers
+
+_exit_cleanup() {
   if [ "$_cleanbuildfolders" = "true" ]; then
     # Remove temporarily copied patches & other potential fluff
     msg2 "_cleanbuildfolders=true, removing src and package folders."
@@ -501,8 +496,7 @@ exit_cleanup() {
   fi
 }
 
-# shellcheck disable=SC2120
-_failure() {
+_failure() { 
   if [ -n "$*" ]; then msg "$*"; fi
   error "Exiting."
   exit 1
@@ -512,4 +506,4 @@ _failure() {
 __llvm_ver="$(env ls -1 /opt/llvm-mingw/lib/clang/)" || \
   _failure "A numbered folder in /opt/llvm-mingw/lib/clang/ wasn't found. Are you sure you have the llvm-mingw toolchain installed?"
 
-trap exit_cleanup EXIT
+trap _exit_cleanup EXIT
