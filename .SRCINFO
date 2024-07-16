@@ -1,6 +1,6 @@
 pkgbase = python-sunpy
 	pkgdesc = Python library for solar physics
-	pkgver = 5.1.4
+	pkgver = 5.1.5
 	pkgrel = 1
 	url = https://sunpy.org
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = python-sunpy
 	makedepends = python-installer
 	makedepends = python-extension-helpers
 	makedepends = python-numpy
-	source = https://files.pythonhosted.org/packages/source/s/sunpy/sunpy-5.1.4.tar.gz
-	md5sums = 95b74b9111a8525e7199ad3713862eff
+	source = https://files.pythonhosted.org/packages/source/s/sunpy/sunpy-5.1.5.tar.gz
+	md5sums = 796f40505e7ee203f3becb7449abcc0d
 
 pkgname = python-sunpy
 	depends = python>=3.9

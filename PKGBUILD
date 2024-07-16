@@ -5,7 +5,7 @@ pkgbase=python-sunpy
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=5.1.4
+pkgver=5.1.5
 pkgrel=1
 pkgdesc="Python library for solar physics"
 arch=('i686' 'x86_64')
@@ -15,10 +15,13 @@ makedepends=('python-setuptools-scm' 'python-wheel' 'python-build' 'python-insta
 #'python-sunpy-sphinx-theme'
 #'python-parfive' 'python-astroquery' 'python-reproject' 'python-ruamel-yaml' 'python-jplephem' 'python-sphinx-automodapi' 'python-sphinx-changelog' 'python-sphinx-gallery>=0.9.0' 'python-sphinxext-opengraph'
 #'python-scikit-image' 'python-h5netcdf' 'python-sqlalchemy' 'python-lxml' 'python-zeep' 'python-drms' 'python-aioftp' 'python-asdf' 'python-cdflib' 'python-mpl-animators' 'graphviz')
-#checkdepends=('python-pytest-arraydiff'
+#checkdepends=('python-pytest-xdist'
+#              'python-pytest-arraydiff'
 #              'python-pytest-doctestplus'
 #              'python-pytest-remotedata'
-#              'python-pytest-xdist'
+#              'python-dask'
+#              'python-bokeh'
+#              'python-jinja'
 #              'python-pytest-mpl'
 #              'python-pytest-mock'
 #              'python-reproject'
@@ -72,7 +75,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
 #        "http://data.sunpy.org/sunpy/v1/aiacalibim5.fits.gz"
 #        "http://data.sunpy.org/sunpy/v1/glg_cspec_n5_110607_v00.pha")
 ##       "http://netdrms01.nispdc.nso.edu/VSO/WSDL/VSOi_rpc_literal.wsdl")
-md5sums=('95b74b9111a8525e7199ad3713862eff')
+md5sums=('796f40505e7ee203f3becb7449abcc0d')
 #        'bde3bd7a691b38e2e4c4e1d17b143b24'
 #        '01efaf052d81efc32a92050a249aa557'
 #        'ead6d3ce4c183c471d76bf1bc3be44a3'
