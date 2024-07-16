@@ -1,7 +1,7 @@
 # Maintainer: SelfRef <arch@selfref.dev>
 _basename=showtime
 pkgname=${_basename}-git
-pkgver=r125.75e44a6
+pkgver=r156.799caef
 pkgrel=1
 pkgdesc="Video Player - Watch without distraction (git version)"
 arch=('x86_64')

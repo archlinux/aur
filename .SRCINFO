@@ -1,6 +1,6 @@
 pkgbase = showtime-git
 	pkgdesc = Video Player - Watch without distraction (git version)
-	pkgver = r125.75e44a6
+	pkgver = r156.799caef
 	pkgrel = 1
 	url = https://apps.gnome.org/Showtime/
 	arch = x86_64
