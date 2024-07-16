@@ -2,17 +2,19 @@
 
 pkgname=pascal-fc
 pkgver=1
-pkgrel=6
+pkgrel=7
 pkgdesc="An implementation of pascal with extra constructs for teaching concurrent programming"
 arch=('x86_64')
-url="https://github.com/lexbailey/Pascal-FC"
+url="https://www-users.york.ac.uk/~ab38/pf.html"
 license=('GPL-2.0-or-later')
 depends=(bash)
-makedepends=('git' 'fpc')
-source=("pascal-fc-$pkgver::git+$url#commit=b1bd078511879f8b678c8f7395d727953415926f"
+makedepends=(git fpc ghostscript)
+source=("$pkgname-$pkgver::git+https://github.com/lexbailey/Pascal-FC#commit=b1bd078511879f8b678c8f7395d727953415926f"
+	"https://www-users.york.ac.uk/~ab38/pfc/pfc-pc.zip"
 	'install_script.patch')
 md5sums=('f122e04b509c26896cb2493af815f8c8'
-         'd77ebe2d4cad9d3446796dc9047450e9')
+         '01478053aa44a6c4c4cfe82540386df8'
+         '3884ea9df562df762d19be18b0349885')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -21,11 +23,36 @@ prepare() {
 
 build() {
 	cd "$pkgname-$pkgver"
-	make pfccomp
-	make pint
+	# unwrap LDFLAGS from -Wl, syntax
+	LDFLAGS_UNWRAPPED="$(echo "$LDFLAGS" \
+		| sed 's/-z[ ,]/-z/g' \
+		| sed 's/-Wl,//g' \
+		| sed 's/,/ /g' \
+	)"
+	# add the -k prefix to all of them
+	FPC_LDFLAGS="-k$(echo "$LDFLAGS_UNWRAPPED" | sed "s/[[:space:]]/ -k/g")"
+	# enable debugging if it's in CFLAGS
+	if [[ "$CFLAGS" =~ ".*-g.*" ]]; then
+		DEBUGFLAGS="-g"
+	fi
+	make "FPC_FLAGS=$DEBUGFLAGS $FPC_LDFLAGS -k-pie -k-zshstk" all
+
+	cd "$srcdir/doc"
+	ps2pdf lrm.ps
+	ps2pdf pc_ug.ps
 }
 
 package() {
+	# install executables
 	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/usr/bin" install
+	_fpcver=$(fpc -iV)
+	install -Dm0755 -t "$pkgdir/usr/bin" pfc pfccomp pint
+	install -Dm0644 -t "$pkgdir/usr/lib/fpc/$_fpcver/units/$arch-linux/$pkgname" pfccomp.o pint.o
+
+	# install documentation
+	cd "$srcdir/doc"
+	install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname/" lrm.pdf pc_ug.pdf
+	cd "$pkgdir/usr/share/doc/$pkgname"
+	ln -sr lrm.pdf language_reference_manual.pdf
+	ln -sr pc_ug.pdf user_guide_for_pc_compatibles.pdf
 }
