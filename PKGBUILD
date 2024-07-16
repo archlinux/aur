@@ -2,7 +2,7 @@
 pkgbase=wps-office-2019
 pkgname=('wps-office-2019')
 pkgver=11.1.0.11720
-pkgrel=1
+pkgrel=2
 pkgdesc="WPS Office, is an office productivity suite."
 arch=('x86_64' 'aarch64')
 url="https://linux.wps.cn"
@@ -41,15 +41,13 @@ source_aarch64=("wps-office_${pkgver}_arm64.deb::$(_get_source_url arm64)")
 sha1sums_x86_64=('da2f25d587377c5e120a91ca3651507b759c0208')
 sha1sums_aarch64=('ca96c97ed2721b7329eb3a7a8c9058c8007f1ec6')
 
-
 package(){
+
   xz -df data.tar.xz
   tar --no-same-owner -C "${pkgdir}" -xf data.tar --exclude './usr/share/fonts'\
-   ./opt/kingsoft ./usr ./etc/xdg/menus
+  --exclude './usr/share/desktop-directories' ./opt/kingsoft ./usr
 
-  # to save typing pkgdir 
   cd "${pkgdir}"
-
   # use system lib
   rm opt/kingsoft/wps-office/office6/lib{jpeg,stdc++}.so*
   [[ "$CARCH" = "aarch64" ]] && rm opt/kingsoft/wps-office/office6/addons/cef/libm.so*
