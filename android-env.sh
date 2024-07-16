@@ -153,6 +153,30 @@ if [ -z "${ANDROID_WHITHOUT_CENV}" ]; then
     export LDFLAGS="${LDFLAGS} ${ANDROID_LDFLAGS}"
 fi
 
+export ANDROID_CC_VERSION=$(${ANDROID_CC} -dumpversion)
+export ANDROID_CC_VERSION_MAJOR=$(echo "${ANDROID_CC_VERSION}" | awk -F. '{print $1}')
+
+case "${_android_arch}" in
+    aarch64)
+        export ANDROID_CC_ABI_LIB="${ANDROID_TOOLCHAIN}/lib/clang/${ANDROID_CC_VERSION_MAJOR}/lib/linux/aarch64"
+        ;;
+    armv7a-eabi)
+        export ANDROID_CC_ABI_LIB="${ANDROID_TOOLCHAIN}/lib/clang/${ANDROID_CC_VERSION_MAJOR}/lib/linux/arm"
+        ;;
+    riscv64)
+        export ANDROID_CC_ABI_LIB="${ANDROID_TOOLCHAIN}/lib/clang/${ANDROID_CC_VERSION_MAJOR}/lib/linux/riscv64"
+        ;;
+    x86)
+        export ANDROID_CC_ABI_LIB="${ANDROID_TOOLCHAIN}/lib/clang/${ANDROID_CC_VERSION_MAJOR}/lib/linux/i386"
+        ;;
+    x86-64)
+        export ANDROID_CC_ABI_LIB="${ANDROID_TOOLCHAIN}/lib/clang/${ANDROID_CC_VERSION_MAJOR}/lib/linux/x86_64"
+        ;;
+    *)
+        export ANDROID_CC_ABI_LIB="${ANDROID_TOOLCHAIN}/lib/clang/${ANDROID_CC_VERSION_MAJOR}/lib/linux/${_android_arch}"
+        ;;
+esac
+
 ndk_version() {
     grep 'Pkg.Revision' "${ANDROID_NDK_HOME}/source.properties" | awk '{print $3}'
 }
@@ -178,7 +202,7 @@ check_ndk_version_ge_than() {
 
 check_android_platform() {
     if [ ! -e "${ANDROID_SDK_PLATFORM}/source.properties" ]; then
-        echo "ERROR: Please, install android-platform-${ANDROID_MINIMUM_PLATFORM}."
+        echo "ERROR: Please, install android-platform-${ANDROID_TARGET_PLATFORM}."
 
         return -1
     fi
