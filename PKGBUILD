@@ -1,16 +1,22 @@
 # Maintainer: Fabio Manganiello <fabio@manganiello.tech>
 
 pkgname=python-marshmallow-dataclass
-pkgver=8.5.12
+pkgver=8.7.0
 pkgrel=1
 pkgdesc="Automatic generation of marshmallow schemas from dataclasses."
 arch=('any')
 license=('MIT')
 url="https://github.com/lovasoa/marshmallow_dataclass"
-depends=('python' 'python-marshmallow' 'python-typing_extensions' 'python-typing_inspect')
+depends=(
+    'python'
+    'python-marshmallow'
+    'python-typeguard'
+    'python-typing_extensions'
+    'python-typing_inspect'
+)
 options=(!strip)
 source=("v${pkgver}.tar.gz::https://github.com/lovasoa/marshmallow_dataclass/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('c31e6d7f58e32052620a5cff45532860a11ea8839681b1daba96588f7908998e9663ff3d29d0c318328148ad0bea5e0fa42c380ecb35c05d071b7e7dbc511485')
+sha512sums=('26bcbda06edb46d76a8508009d8b52c4cbef6f8c2128d56a724a0a6b760cefbb2630573fd5ce8db198d66ca1139a2789a702f94221dac57239e11dfd81ff2d59')
 
 package() {
     cd "${srcdir}/marshmallow_dataclass-${pkgver}"
