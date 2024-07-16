@@ -1,15 +1,15 @@
 pkgbase = cyme-bin
 	pkgdesc = List system USB buses and devices; a modern cross-platform lsusb
-	pkgver = 1.8.0
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://github.com/tuna-f1sh/cyme
 	arch = x86_64
 	arch = aarch64
 	license = GPL
 	depends = libusb
-	source_x86_64 = cyme-bin-1.8.0.tar.gz::https://github.com/tuna-f1sh/cyme/releases/download/v1.8.0/cyme-v1.8.0-aarch64-unknown-linux-gnu.tar.gz
-	sha512sums_x86_64 = e84d310b28d39170db343af9b6c5eadfdcf098950e12eb83c6649a7f97e769064c4c457e800ef6a92cc98e29e1cf63ad2aa0b374f0331c7a4b218556b836462b
-	source_aarch64 = cyme-bin-1.8.0.tar.gz::https://github.com/tuna-f1sh/cyme/releases/download/v1.8.0/cyme-v1.8.0-aarch64-unknown-linux-gnu.tar.gz
-	sha512sums_aarch64 = 558be1dcb25d64dc19c4bd135f0a6b7dcbfd06ed9f855be54fda4743a4439357b4e243cdbbabfe2d119fbcd462387d4f730255e19a5ff5b278f7ebbca6f1e2f8
+	source_x86_64 = cyme-bin-1.8.1.tar.gz::https://github.com/tuna-f1sh/cyme/releases/download/v1.8.1/cyme-v1.8.1-aarch64-unknown-linux-gnu.tar.gz
+	sha512sums_x86_64 = e13351f7b3bb2d368cce2b38a9290d12ceb86a8a4ffd8ad2f5ac29b210fd00c2dc5942d143b9bf4bece4a69cc6503ca335ece4b4aefa5889dc5147ea86d63f4f
+	source_aarch64 = cyme-bin-1.8.1.tar.gz::https://github.com/tuna-f1sh/cyme/releases/download/v1.8.1/cyme-v1.8.1-aarch64-unknown-linux-gnu.tar.gz
+	sha512sums_aarch64 = 55f70a24b7fb66332965aeff3f6bbfec5fc579975566dcd01db3c3641f7979ccd806939c0b5e72a7a4e6673fcde5196f561d9b90ec46dc5b7e26e712e049d102
 
 pkgname = cyme-bin
