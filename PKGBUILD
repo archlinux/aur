@@ -2,7 +2,7 @@
 
 pkgname=platypush
 pkgver=1.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal multi-platform command executor and automation manager"
 arch=('any')
 license=('MIT')
@@ -106,7 +106,7 @@ conflicts=("${pkgname}-git")
 provides=('platypush')
 options=(!strip)
 source=("v${pkgver}.tar.gz::https://git.platypush.tech/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('c438e56af1649de5da45e83cda2b5978008979d4fb307b324743c497e4787aea0863bec4fb9423ccd4949193571edaf66a436cdba0db891122f132a15f87ef85')
+sha512sums=('b2d2182eabf11fa0a1778e2c383eaed1dd3fc01780b9e9157d2438ba27c916f4472f566df7e6a53b25c03434adc3df4b376b0b44fe88d22b08c38841d1ebbae8')
 
 package() {
     cd "${srcdir}/${pkgname}"
