@@ -1,11 +1,11 @@
 pkgbase = tagutil
 	pkgdesc = scriptable music files tags tool and editor
 	pkgver = 3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kAworu/tagutil
 	arch = i686
 	arch = x86_64
-	license = BSD
+	license = BSD-2-Clause
 	makedepends = cmake
 	depends = libyaml
 	depends = taglib
@@ -13,8 +13,7 @@ pkgbase = tagutil
 	depends = libvorbis
 	depends = jansson
 	options = !emptydirs
-	source = https://github.com/kAworu/tagutil/archive/v3.1.tar.gz
+	source = tagutil-3.1.tar.gz::https://github.com/kAworu/tagutil/archive/v3.1.tar.gz
 	sha256sums = a5a88f8f40c3654e902066e4aba8e6c4e2c89fcf64ca823d81db80c3dad41a80
 
 pkgname = tagutil
-
