@@ -1,6 +1,6 @@
 pkgbase = reddish-shift-git
 	pkgdesc = Set color temperature of display according to time of day
-	pkgver = v0.1.1.r100.d14bcda
+	pkgver = v0.1.2.r146.25dd72c
 	pkgrel = 1
 	url = https://github.com/mahor1221/reddish-shift
 	arch = x86_64
