@@ -2,7 +2,7 @@
 
 pkgname=platypush
 pkgver=1.1.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Universal multi-platform command executor and automation manager"
 arch=('any')
 license=('MIT')
@@ -29,8 +29,6 @@ depends=(
     'python-websockets'
     'python-yaml'
     'python-zeroconf'
-    'redis'
-    'sudo'
 )
 
 optdepends=(
@@ -107,7 +105,7 @@ sha512sums=('b2d2182eabf11fa0a1778e2c383eaed1dd3fc01780b9e9157d2438ba27c916f4472
 
 package() {
     cd "${srcdir}/${pkgname}"
-    PYTHONDONTWRITEBYTECODE=1 python3 setup.py build install --root="${pkgdir}/" --optimize=1
+    PYTHONDONTWRITEBYTECODE=1 python3 setup.py install --root="${pkgdir}/" --prefix=/usr --optimize=1
 
     install -m750 -d "${pkgdir}/var/lib/platypush"
     install -m755 -d "${pkgdir}/usr/lib/systemd/system"
