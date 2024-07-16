@@ -1,7 +1,7 @@
 pkgbase = wl-screenrec-git
 	pkgdesc = High performance hardware accelerated wlroots screen recorder
-	pkgver = r68.f468a2d
-	pkgrel = 2
+	pkgver = r210.3a465ea
+	pkgrel = 3
 	url = https://github.com/russelltg/wl-screenrec
 	arch = i686
 	arch = x86_64

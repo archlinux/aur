@@ -1,6 +1,6 @@
 pkgname=wl-screenrec-git
-pkgver=r68.f468a2d
-pkgrel=2
+pkgver=r210.3a465ea
+pkgrel=3
 pkgdesc="High performance hardware accelerated wlroots screen recorder"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/russelltg/wl-screenrec"
@@ -19,6 +19,10 @@ build() {
   else
     cargo build --release
   fi
+
+  ./target/release/wl-screenrec --generate-completions bash > wl-screenrec.bash
+  ./target/release/wl-screenrec --generate-completions zsh > wl-screenrec.zsh
+  ./target/release/wl-screenrec --generate-completions fish > wl-screenrec.fish
 }
 
 pkgver() {
@@ -32,4 +36,8 @@ package() {
 
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+
+  install -Dm644 "wl-screenrec.bash" "$pkgdir/usr/share/bash-completion/completions/wl-screenrec"
+  install -Dm644 "wl-screenrec.zsh" "$pkgdir/usr/share/zsh/site-functions/_wl-screenrec"
+  install -Dm644 "wl-screenrec.fish" "$pkgdir/usr/share/fish/vendor_completions.d/wl-screenrec.fish"
 }
