@@ -8,7 +8,7 @@ pkgdesc="Installer/Updater/Launcher for Northstar"
 url="https://github.com/R2NorthstarTools/FlightCore"
 license=('MIT')
 arch=('x86_64')
-depends=('webkit2gtk')
+depends=('bzip2' 'gcc-libs' 'hicolor-icon-theme' 'webkit2gtk')
 makedepends=('cargo' 'git' 'npm')
 options+=('!lto')
 source=("git+$url.git#commit=$_commit")
@@ -16,13 +16,13 @@ sha256sums=('SKIP')
 
 prepare() {
 # Shortcut
-  echo -e "[Desktop Entry]\n\
-Categories=Development;\n\
-Exec=$pkgname\n\
-Icon=$pkgname\n\
-Name=FlightCore\n\
-Terminal=false\n\
-Type=Application" > $pkgname.desktop
+  echo -e '[Desktop Entry]
+Categories=Development;
+Exec=flightcore
+Icon=flightcore
+Name=FlightCore
+Terminal=false
+Type=Application' > $pkgname.desktop
 
 # Only build the executable
   cd FlightCore/src-tauri

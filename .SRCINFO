@@ -8,6 +8,9 @@ pkgbase = flightcore
 	makedepends = cargo
 	makedepends = git
 	makedepends = npm
+	depends = bzip2
+	depends = gcc-libs
+	depends = hicolor-icon-theme
 	depends = webkit2gtk
 	options = !lto
 	source = git+https://github.com/R2NorthstarTools/FlightCore.git#commit=3ce94cde959df602fc2ed9fc42d24edf24efe7a4
