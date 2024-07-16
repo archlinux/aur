@@ -6,7 +6,7 @@
 pkgname=ttf-ubraille
 pkgver=001.000
 pkgrel=11
-pkgdesc='Unicode Braillt font'
+pkgdesc='Unicode Braille font'
 url='https://yudit.org/download/fonts/UBraille/'
 arch=('any')
 license=('GPL')
