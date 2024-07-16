@@ -4,7 +4,7 @@
 _archive_extension="tar.gz"
 pkgname=ipfs-desktop-electron
 _pkgname=ipfs-desktop
-pkgver=0.34.0
+pkgver=0.37.0
 pkgrel=1
 pkgdesc="Desktop client for the InterPlanetary File System"
 arch=(x86_64)
@@ -13,7 +13,7 @@ license=(MIT)
 depends=(electron go-ipfs)
 makedepends=("nodejs>=16" npm node-gyp)
 source=("$_pkgname-$pkgver.$_archive_extension::https://github.com/ipfs/ipfs-desktop/archive/refs/tags/v$pkgver.$_archive_extension")
-b2sums=('9589c0e33908b8f8def5dc2b2f205874464710f71ced63ffadb4e6fbf491f17266b023074df52abf1038643a5792e1e4e6f1cf0859b1c544209e233f9b395464')
+b2sums=('fbcee82a1bc29508f1fb5ef588168eab4501c9cdc75f95440704a1c88a681343ead2397f739637753b384b9c72b3afc34309f52b843a898077619b41e700e4fc')
 
 prepare() {
 	cd "$_pkgname-$pkgver"
