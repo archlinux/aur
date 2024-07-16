@@ -2,7 +2,7 @@
 _reponame=moza-ff
 pkgname=moza-ff-dkms-git
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Moza Racing FFB driver"
 arch=('x86_64')
 url="https://github.com/Lawstorant/moza-ff"
