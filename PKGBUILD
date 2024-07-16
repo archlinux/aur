@@ -1,6 +1,7 @@
 # Maintainer: w0rty <mawo97 at gmail.com>
-# Contributor:  4679 <admin@libnull.com>
-# Contributor:  Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Maintainer: Mr.Wizard <arch.aur-emailme at yahoo.com>
+# Contributor: 4679 <admin@libnull.com>
+# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: Jochem Kossen <j.kossen@home.nl>
 
