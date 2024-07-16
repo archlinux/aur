@@ -10,6 +10,7 @@ license=('GPL3')
 depends=('webkit2gtk' 'gtk3' 'libayatana-appindicator')
 conflicts=("$pkgname-bin" "$pkgname-alpha" "$pkgname-alpha-bin" "$pkgname-git" "clash-verge" "clash-verge-bin")
 makedepends=('nodejs' 'pnpm' 'rust')
+install=.install
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
