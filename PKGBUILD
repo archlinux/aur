@@ -1,5 +1,5 @@
 pkgname=mingw-w64-agrum
-pkgver=1.14.1
+pkgver=1.15.0
 pkgrel=1
 pkgdesc="C++ Bayesian networks library (mingw-w64)"
 license=('LGPL')
@@ -9,7 +9,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' 'staticlibs' '!strip')
 source=("https://gitlab.com/agrumery/aGrUM/-/archive/${pkgver}/aGrUM-${pkgver}.tar.bz2")
-sha256sums=('f1d824418b7662333b5a8118ad6baba59570d3f6ecdf3bfbceecc61e8a30d6f1')
+sha256sums=('b823c1abc3e4bfe7eeba771ae82e1c40175d63d2d7b61969ec1bcb71c4e8b225')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
