@@ -1,7 +1,7 @@
 pkgbase = android-x86-64-libbs2b
 	pkgdesc = Bauer stereophonic-to-binaural DSP effect library (Android x86-64)
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://bs2b.sourceforge.net
 	arch = any
 	license = custom:MIT
