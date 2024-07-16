@@ -2,8 +2,8 @@
 
 pkgname=platypush-git
 _pkgname=platypush
-pkgver=1.1.3.r7.gb312f171
-pkgrel=4
+pkgver=1.1.3.r8.g35c827ca
+pkgrel=1
 pkgdesc="A general-purpose, event-driven, plugin-based platform for automation-as-code"
 arch=('any')
 license=('MIT')
