@@ -1,16 +1,16 @@
 pkgbase = wireviz
 	pkgdesc = Easily document cables, wiring harnesses and connector pinouts
-	pkgver = 0.4
-	pkgrel = 3
+	pkgver = 0.4.1
+	pkgrel = 1
 	url = https://github.com/formatc1702/WireViz
 	arch = any
-	license = GPL3
+	license = GPL-3.0
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python-graphviz
 	depends = python-pillow
 	depends = python-pyaml
-	source = https://github.com/formatc1702/WireViz/archive/refs/tags/v0.4.tar.gz
-	sha256sums = ed1cbf886f28b1b3b42c2c43a60376e854e51a709c1136d7eee5f0e9c0220df5
+	source = https://github.com/formatc1702/WireViz/archive/refs/tags/v0.4.1.tar.gz
+	sha256sums = ec32cc12a363bbbb7ee87960899de1a36fe32362e81e66541a5d56c750cd5680
 
 pkgname = wireviz
