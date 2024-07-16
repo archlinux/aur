@@ -1,8 +1,9 @@
 # Maintainer: Fabio Manganiello <fabio@manganiello.tech>
 
 pkgname=platypush-git
+_pkgname=platypush
 pkgver=1.1.3.r7.gb312f171
-pkgrel=2
+pkgrel=3
 pkgdesc="A general-purpose, event-driven, plugin-based platform for automation-as-code"
 arch=('any')
 license=('MIT')
@@ -10,6 +11,7 @@ backup=(
   'etc/platypush/config.yaml'
 )
 url="https://platypush.tech"
+_repourl="https://git.platypush.tech/${_pkgname}/${_pkgname}.git"
 makedepends=('git')
 depends=(
     'python'
@@ -106,11 +108,16 @@ optdepends=(
 conflicts=('platypush')
 provides=('platypush')
 options=(!strip)
-source=("master.tar.gz::https://git.platypush.tech/platypush/platypush/archive/master.tar.gz")
+source=("${_pkgname}::git+${_repourl}")
 sha256sums=('SKIP')
 
+pkgver() {
+    cd "${srcdir}/${_pkgname}"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 package() {
-    cd "${srcdir}/platypush"
+    cd "${srcdir}/${_pkgname}"
     PYTHONDONTWRITEBYTECODE=1 python3 setup.py install --root="${pkgdir}/" --optimize=1
 
     install -m750 -d "${pkgdir}/var/lib/platypush"
