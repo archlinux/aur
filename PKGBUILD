@@ -1,8 +1,8 @@
 # Maintainer: Jisu-Woniu <jswn@jswn9945.xyz>
 _pkgname=typstyle
 pkgname=$_pkgname-git
-pkgver=v0.11.28.r0.f28fb75
-pkgrel=2
+pkgver=v0.11.30.r1.cf52e92
+pkgrel=1
 pkgdesc="Beautiful and reliable typst code formatter"
 arch=("aarch64" "armv7h" "x86_64")
 url="https://github.com/Enter-tainer/typstyle"
