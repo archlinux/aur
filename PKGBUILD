@@ -3,7 +3,7 @@
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird-git
-pkgver=r62487.d07cf26894
+pkgver=r62561.2c918b540d
 pkgrel=1
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
@@ -12,7 +12,7 @@ license=(BSD)
 conflicts=(ladybird)
 provides=(ladybird)
 depends=(ffmpeg libgl qt6-base qt6-tools qt6-wayland qt6-multimedia ttf-liberation)
-makedepends=(git cmake ninja curl unzip zip tar autoconf-archive nasm vcpkg)
+makedepends=(git cmake ninja curl unzip zip tar autoconf-archive nasm)
 options=('!lto' '!debug')
 source=(
   "git+$url"
