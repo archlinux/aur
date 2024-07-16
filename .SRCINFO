@@ -1,0 +1,14 @@
+pkgbase = ww2ogg-git
+	pkgdesc = Convert AudioKinetic Wwise RIFF/RIFX Vorbis to standard Ogg Vorbis
+	pkgver = 0.24.r2.ee9f12e
+	pkgrel = 1
+	url = https://github.com/hcs64/ww2ogg
+	arch = any
+	license = BSD-3-Clause
+	makedepends = git
+	provides = ww2ogg
+	conflicts = ww2ogg
+	source = ww2ogg-git::git+https://github.com/hcs64/ww2ogg#
+	sha256sums = SKIP
+
+pkgname = ww2ogg-git
