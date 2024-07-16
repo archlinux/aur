@@ -14,7 +14,7 @@ arch=('x86_64' 'armv7h' 'aarch64')
 url='https://pytango.readthedocs.io/en/stable/'
 license=('LGPL3')
 groups=('tango-controls')
-depends=('tango-cpp>=9.4.0' 'boost' 'python-numpy' 'python-six'
+depends=('tango-cpp>=9.4.0' 'boost' 'python-numpy1' 'python-six'
 	 'python-gevent' 'python-pytest' 'python-psutil')
 makedepends=(python-build python-installer python-sphinx python-sphinx_rtd_theme python-numpy python-scikit-build-core)
 

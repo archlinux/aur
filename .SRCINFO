@@ -10,14 +10,13 @@ pkgbase = python-pytango
 	license = LGPL3
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-setuptools
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
 	makedepends = python-numpy
 	makedepends = python-scikit-build-core
 	depends = tango-cpp>=9.4.0
 	depends = boost
-	depends = python-numpy
+	depends = python-numpy1
 	depends = python-six
 	depends = python-gevent
 	depends = python-pytest
