@@ -1,0 +1,21 @@
+pkgbase = alexandrie-pg
+	pkgdesc = Rust private crates registry - with postgres backend
+	pkgver = 0.1.0_20231113
+	pkgrel = 1
+	url = https://github.com/Hirevo/alexandrie
+	arch = x86_64
+	license = mit
+	makedepends = cargo
+	makedepends = base-devel
+	makedepends = pkgconf
+	depends = postgresql-libs
+	depends = git
+	depends = openssl
+	depends = oniguruma
+	depends = diesel-cli
+	provides = alexandrie
+	options = !lto
+	source = git+https://github.com/Hirevo/alexandrie.git#commit=4f94ae968ac130c735f6d3ad917b9d99757d7fcc
+	sha256sums = SKIP
+
+pkgname = alexandrie-pg
