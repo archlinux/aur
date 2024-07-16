@@ -2,7 +2,7 @@
 
 pkgname=libastal-apps-git
 _pkgname=apps
-pkgver=r3.e88b3da
+pkgver=r8.6550543
 pkgrel=1
 provides=(astal-apps libastal-apps libastal-apps.so=0-64)
 pkgdesc="Library and cli tool for querying applications."
@@ -19,6 +19,7 @@ makedepends=(
   gobject-introspection
   vala
 )
+groups=("libastal")
 source=("git+${url}")
 sha256sums=('SKIP')
 
