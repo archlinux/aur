@@ -2,7 +2,7 @@
 
 pkgname=libastal-auth-git
 _pkgname=auth
-pkgver=r9.611f7ec
+pkgver=r12.b35a38a
 pkgrel=1
 provides=(astal-auth libastal-auth libastal-auth.so=0-64)
 pkgdesc="Authentication library intended for use with the libastal suite."
@@ -20,6 +20,7 @@ makedepends=(
   gobject-introspection
   vala
 )
+groups=("libastal")
 source=("git+${url}")
 sha256sums=('SKIP')
 
