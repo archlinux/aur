@@ -6,7 +6,7 @@ function _nvidia_check() {
 
 pkgname=alvr-git
 _pkgname=${pkgname%-git}
-pkgver=21.0.0_dev01.r2942.5480fa3b
+pkgver=21.0.0_dev01.r2947.b0cdb1ad
 pkgrel=1
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
@@ -31,10 +31,6 @@ export CARGO_TARGET_DIR=target
 pkgver() {
 	cd "$srcdir/$_pkgname"
 
-	git submodule init
-	git config submodule.openvr.url "$srcdir/openvr"
-	git -c protocol.file.allow=always submodule update
-
 	ver=$(cargo read-manifest --frozen --manifest-path "$_pkgname/server_core/Cargo.toml" | jq '.version' -r)
 
 	printf "%s.r%s.%s" "${ver//-/_}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -42,6 +38,10 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/$_pkgname"
+
+	git submodule init
+	git config submodule.openvr.url "$srcdir/openvr"
+	git -c protocol.file.allow=always submodule update
 
 	sed -i 's:../../../lib64/libalvr_vulkan_layer.so:libalvr_vulkan_layer.so:' alvr/vulkan_layer/layer/alvr_x86_64.json
 
