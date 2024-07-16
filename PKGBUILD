@@ -1,14 +1,16 @@
-# maintainer : marin <turquoise.hexagon@protonmail.com>
+# Contributor : marin <turquoise.hexagon@protonmail.com>
 
 pkgname=cherry-font-git
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='cherry, yet another bitmap font'
 url=https://github.com/turquoise-hexagon/cherry
 source=("$pkgname::git+https://github.com/turquoise-hexagon/cherry")
 licence=('MIT')
 arch=('any')
-makedepends=('git' 'fonttosfnt')
+provides=('cherry-font')
+conflicts=('cherry-font')
+makedepends=('git' 'xorg-fonttosfnt')
 install="$pkgname.install"
 md5sums=('SKIP')
 sha256sums=('SKIP')
@@ -24,5 +26,5 @@ package() {
 
     install -d -m755 "$pkgdir/usr/share/fonts/misc"
     install -D -m644 *.otb "$pkgdir/usr/share/fonts/misc"
-    install -D -m644 LICENSE "$pkgdir/usr/share/licences/$pkgname/LICENSE"
+    install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
