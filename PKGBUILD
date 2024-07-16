@@ -2,7 +2,7 @@
 
 pkgname=libastal-tray-git
 _pkgname=tray
-pkgver=r7.3486989
+pkgver=r12.9a484bd
 pkgrel=1
 provides=(astal-tray libastal-tray libastal-tray.so=0-64)
 pkgdesc="Library and cli tool for managing the systemtray."
@@ -22,6 +22,7 @@ makedepends=(
   gobject-introspection
   vala
 )
+groups=("libastal")
 source=("git+${url}")
 sha256sums=('SKIP')
 
