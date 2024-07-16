@@ -1,36 +1,22 @@
 # Maintainer: Tomasz Pakula <forest10pl@gmail.com>
 _reponame=moza-ff
 pkgname=moza-ff-dkms-git
-pkgver=0.0.1
-pkgrel=4
+pkgver=1.0
+pkgrel=1
 pkgdesc="Moza Racing FFB driver"
 arch=('x86_64')
 url="https://github.com/Lawstorant/moza-ff"
 license=('GPL2')
-depends=(dkms)
-makedepends=(
-  git
-  gcc
-  glibc
+depends=(
+  universal-pidff-dkms-git
+  boxflat-git
 )
-source=(
-  git+https://github.com/Lawstorant/moza-ff
-)
+makedepends=()
+source=()
 sha256sums=(
   'SKIP'
 )
 
-pkgver() {
-  cd "$srcdir/$_reponame"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 package() {
-  cd "$srcdir/$_reponame"
-
-  find . -type f \( -name 'dkms.conf' -o -name '*.c' \) -exec sed -i "s/#VERSION#/$pkgver/" {} +
-
-  echo "* Copying module into /usr/src..."
-  install -dm755 "${pkgdir}/usr/src/universal-pidff-${pkgver}"
-  cp -r ${srcdir}/$_reponame/* "${pkgdir}/usr/src/universal-pidff-${pkgver}"
+  echo "Hello!"
 }

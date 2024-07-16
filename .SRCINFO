@@ -1,15 +1,12 @@
 pkgbase = moza-ff-dkms-git
 	pkgdesc = Moza Racing FFB driver
-	pkgver = 0.0.1
-	pkgrel = 4
+	pkgver = 1.0
+	pkgrel = 1
 	url = https://github.com/Lawstorant/moza-ff
 	arch = x86_64
 	license = GPL2
-	makedepends = git
-	makedepends = gcc
-	makedepends = glibc
-	depends = dkms
-	source = git+https://github.com/Lawstorant/moza-ff
+	depends = universal-pidff-dkms-git
+	depends = boxflat-git
 	sha256sums = SKIP
 
 pkgname = moza-ff-dkms-git
