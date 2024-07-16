@@ -7,7 +7,7 @@
 
 pkgname=home-assistant
 pkgdesc='Open source home automation that puts local control and privacy first'
-pkgver=2024.7.1
+pkgver=2024.7.2
 pkgrel=1
 epoch=1
 arch=('any')
@@ -37,9 +37,9 @@ source=(
   "$pkgname::git+https://github.com/home-assistant/core.git#tag=$pkgver"
   'home-assistant.service'
 )
-sha512sums=('3db42081fca9d83da0bc7cd9edb7adde1adf06a0b1ea2329b51652e09dc7e1b848b230df00d97aa539061bf454a48321df3b57ed6fa4c97b284163067f0be5e9'
+sha512sums=('5a6b6efd7492bef1038c643c3d4255d89fa43840f0748d21720d65137382f034ee35a300d7e3c9ea1f9fba24bc434c987c7731dc2e28a84f8f859506f6068d62'
             '487b0140564f1495bf4587abda7b82d0bf0d72adbdbdf7a368a375c85a874c14e9c0cf34e0d5e298d2634d6bbcee580bce3bc40a07c901474004908eb7890a18')
-b2sums=('1397edb7536b9268571b491b59573ca2ff22ac21d028285e5063b2db3486a1b3cbac49ca8010a79349d0ce87da870c90c4bea06a37c8b465a174abd3f61f4032'
+b2sums=('a465a38a7a6006bcbda432a2841ab0fc1276ff5f3a32c406c45ec95669465630ef9a012575bb22f370ecb550c1bc2142716f7853faee7d938c078295918d38a8'
         'd7a6cd85b89c74997cd7794e5205504033c37684d798bd12e40786f33fce846980d10373261444077cc527ef382246b8235573e1bb6ade8bb8e6d9e34f9961ad')
 
 prepare() {
