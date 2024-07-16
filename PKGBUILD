@@ -2,7 +2,7 @@
 
 pkgname=platypush-git
 pkgver=1.1.3.r7.gb312f171
-pkgrel=1
+pkgrel=2
 pkgdesc="A general-purpose, event-driven, plugin-based platform for automation-as-code"
 arch=('any')
 license=('MIT')
@@ -18,13 +18,11 @@ depends=(
     'python-dateutil'
     'python-docutils'
     'python-flask'
-    'python-frozendict'
     'python-magic'
     'python-marshmallow'
     'python-marshmallow-dataclass'
     'python-pip'
     'python-psutil'
-    'python-pytz'
     'python-redis'
     'python-requests'
     'python-rsa'
@@ -33,7 +31,6 @@ depends=(
     'python-tornado'
     'python-websocket-client'
     'python-websockets'
-    'python-wheel'
     'python-yaml'
     'python-zeroconf'
     'redis'
