@@ -3,7 +3,7 @@
 # Co-Maintainer: stefanwimmer128 <info at stefanwimmer128 dot xyz>
 
 _pkgname=firedragon
-_pkgver=11.14.1-1
+_pkgver=11.15.0-1
 _pkgrel=1
 
 pkgname=${_pkgname}-bin
@@ -45,10 +45,10 @@ options=(!debug
   !strip)
 backup=("usr/lib/${_pkgname}/${_pkgname}.cfg"
   "usr/lib/${_pkgname}/distribution/policies.json")
-source=(https://gitlab.com/api/v4/projects/55893651/packages/generic/firedragon/${_pkgver}/firedragon-v${_pkgver}.linux-x86_64.tar.bz2
+source=(https://gitlab.com/garuda-linux/firedragon/builder/-/releases/v${_pkgver}/downloads/firedragon-v${_pkgver}.linux-x86_64.tar.bz2
   https://gitlab.com/garuda-linux/firedragon/settings/-/raw/master/firedragon.psd
   https://gitlab.com/garuda-linux/firedragon/settings/-/raw/master/firedragon.desktop)
-sha256sums=('2cecfa371922b09be626fbde1c4bffb7809b763f0ef89652d99994ba0b74672f'
+sha256sums=('cc3af38a68267771c251d65431111fd864ca61f6422fb24f172c4fa758a13e75'
             '61355930cc59813e7e610ffdab8a01e32be980fffe1dfd8f9654b8f8f9f7fdc0'
             '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560')
 
