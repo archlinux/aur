@@ -2,7 +2,7 @@
 
 pkgbase=cloud-fs-bin
 pkgname=clouddrive
-pkgver=0.7.7
+pkgver=0.7.8
 pkgrel=1
 epoch=2
 pkgdesc="CloudDrive - Unlocking the Unlimited Possibilities of Cloud Storage"
@@ -14,7 +14,7 @@ conflicts=(${pkgbase%-bin} ${pkgname} ${pkgname}2)
 replaces=()
 depends=(
     bash
-    fuse3
+    fuse
     systemd-libs)
 makedepends=(libarchive)
 optdepends=('docker: Pack, ship and run any application as a lightweight container'
@@ -28,8 +28,8 @@ source_x86_64=("${pkgname}-${epoch}-x86_64-${pkgver}.tgz::${url}/releases/downlo
 source_aarch64=("${pkgname}-${epoch}-aarch64-${pkgver}.tgz::${url}/releases/download/v${pkgver}/${pkgname}-${epoch}-linux-aarch64-${pkgver}.tgz")
 sha256sums=('c336f41e259916212c7fdd3e21a26a2faf94d725b5daf686bca501978efbf17e'
             '32d37f9ab2f20170c8938a7bf3349eac152f4ee663f2c630be3ca966f50300bc')
-sha256sums_x86_64=('982c38b017983c5ecc2fcd0b9c707a2f35dd1e0b19070e45c097d8a40104b1c2')
-sha256sums_aarch64=('953c769ce039fb9c846465cd3cdc85b28ff8cab7e94836c46dceb709515d253c')
+sha256sums_x86_64=('4d5f47d52db3269813b70f4b5508a2ada24dccee82b81d5187e8f5e97af92ada')
+sha256sums_aarch64=('2abaa04ab7824d858d13e5f942a1acec948e924eef6151529d521be71e5eb6f7')
 noextract=(
     ${pkgname}-${epoch}-x86_64-${pkgver}.tgz
     ${pkgname}-${epoch}-aarch64-${pkgver}.tgz)
@@ -51,6 +51,8 @@ package() {
     install -Dm755 /dev/stdin  "${pkgdir}/usr/bin/${pkgname}" << EOF
 #!/usr/bin/env bash
 
+LOCAL_ROOT_PATH="/media/clouddrive"
+
 cd /opt/clouddrive
 ./clouddrive
 EOF
@@ -63,6 +65,7 @@ After=network-online.target network.target
 
 [Service]
 Type=exec
+Environment="LOCAL_ROOT_PATH=/media/clouddrive"
 ExecStart=clouddrive
 
 [Install]
@@ -81,7 +84,7 @@ ExecStartPre=/usr/bin/sleep 5
 ExecStart=/usr/bin/mount -t davfs http://localhost:19798/dav /media/clouddrive-dav
 # -o uid=%i,gid=%i
 ExecStopPre=/usr/bin/sync /media/clouddrive-dav
-ExecStop=/usr/bin/fusermount3 -u /media/clouddrive-dav
+ExecStop=/usr/bin/fusermount -u /media/clouddrive-dav
 RemainAfterExit=true
 
 [Install]
