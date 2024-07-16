@@ -2,7 +2,7 @@
 
 pkgname=libastal-notifd-git
 _pkgname=notifd
-pkgver=r3.5929e35
+pkgver=r16.17a57b9
 pkgrel=1
 provides=(astal-notifd libastal-notifd libastal-notifd.so=0-64)
 pkgdesc="A notification daemon library and cli tool "
@@ -20,6 +20,7 @@ makedepends=(
   gobject-introspection
   vala
 )
+groups=("libastal")
 source=("git+${url}")
 sha256sums=('SKIP')
 
