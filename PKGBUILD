@@ -8,11 +8,11 @@
 
 pkgname=python-stdnum
 pkgver=1.20
-pkgrel=3
-pkgdesc='Handle, parse and validate standard numbers, e.g. ISBN, IBAN, EAN'
+pkgrel=4
+pkgdesc='Handle, parse and validate more than 200 different standard numbers (EAN, IBAN, ISBN, etc.)'
 arch=('any')
 url='https://arthurdejong.org/python-stdnum'
-license=('LGPL-2.1-or-later')
+license=('LGPL-2.1-or-later')  # SPDX-License-Identifier: LGPL-2.1-or-later
 depends=(
   'python'
   'python-lxml'
@@ -25,11 +25,11 @@ makedepends=(
   'python-wheel'
 )
 optdepends=(
-  'python-zeep: recommended SOAP implementation'
-  'python-suds: second recommended SOAP implementation'
   'python-pysimplesoap: fallback SOAP implementation'
+  'python-suds: second recommended SOAP implementation'
+  'python-zeep: recommended SOAP implementation'
 )
-source=("$url/python-stdnum-$pkgver.tar.gz")
+source=("$url/$pkgname-$pkgver.tar.gz")
 sha256sums=('ad2a2cf2eb025de408210235f36b4ae31252de3186240ccaa8126e117cb82690')
 
 build() {
@@ -42,6 +42,9 @@ package() {
   cd "$pkgname-$pkgver"
 
   python -m installer --destdir="$pkgdir" dist/*.whl
+
+  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
+    ChangeLog *.md
 }
 
 # eof
