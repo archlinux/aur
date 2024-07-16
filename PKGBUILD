@@ -2,7 +2,7 @@
 
 pkgname=platypush
 pkgver=1.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Universal multi-platform command executor and automation manager"
 arch=('any')
 license=('MIT')
@@ -14,13 +14,11 @@ depends=(
     'python-dateutil'
     'python-docutils'
     'python-flask'
-    'python-frozendict'
     'python-magic'
     'python-marshmallow'
     'python-marshmallow-dataclass'
     'python-pip'
     'python-psutil'
-    'python-pytz'
     'python-redis'
     'python-requests'
     'python-rsa'
@@ -29,7 +27,6 @@ depends=(
     'python-tornado'
     'python-websocket-client'
     'python-websockets'
-    'python-wheel'
     'python-yaml'
     'python-zeroconf'
     'redis'
