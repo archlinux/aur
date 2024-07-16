@@ -2,7 +2,7 @@
 
 pkgname=libastal-battery-git
 _pkgname=battery
-pkgver=r2.4f3cc1d
+pkgver=r4.65dc018
 pkgrel=1
 provides=(astal-battery libastal-battery libastal-battery.so=0-64)
 pkgdesc="DBus proxy library for upower daemon"
@@ -19,6 +19,7 @@ makedepends=(
   gobject-introspection
   vala
 )
+groups=("libastal")
 source=("git+${url}")
 sha256sums=('SKIP')
 
