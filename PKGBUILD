@@ -1,14 +1,14 @@
 # Maintainer:
 # Contributor: quellen <lodgerz@gmail.com>
 
-## useful links
+## links
 # https://pypi.org/project/amitools
 # https://github.com/cnvogelg/amitools
 
 _pkgname="amitools"
 pkgname="$_pkgname"
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Various tools for using AmigaOS programs on other platforms"
 url="https://github.com/cnvogelg/amitools"
 license=('GPL-2.0-only')
@@ -16,6 +16,7 @@ arch=('any')
 
 depends=(
   'python'
+  'python-lhafile'
 )
 makedepends=(
   'python-build'
@@ -25,8 +26,7 @@ makedepends=(
   'python-wheel'
 )
 optdepends=(
-  'python-lhafile'
-  #'machine68k: cpu emulator for vamos'
+  'python-machine68k: cpu emulator for vamos'
 )
 
 _module="amitools"
@@ -46,5 +46,5 @@ build() {
 
 package() {
   cd "$_pkgsrc"
-  python -m installer --destdir="$pkgdir" "$(ls -1 dist/*.whl | sort -rV | head -1)"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
