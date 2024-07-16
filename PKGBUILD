@@ -2,7 +2,7 @@
 
 _pkgname=fdns
 pkgname=${_pkgname}-git
-pkgver=0.9.73+3fb36ca
+pkgver=0.9.73+14e05d3
 pkgrel=1
 pkgdesc="Firejail DNS-over-HTTPS proxy server"
 arch=(x86_64)
@@ -13,6 +13,7 @@ backup=(
     etc/fdns/list.adblocker
     etc/fdns/list.coinblocker
     etc/fdns/list.dyndns
+    etc/fdns/list.malware
     etc/fdns/list.phishing
     etc/fdns/list.tld-blacklist
     etc/fdns/list.trackers
@@ -50,7 +51,6 @@ pkgver() {
 
 prepare() {
     cd "$_pkgname"
-
     git -c protocol.file.allow=always submodule update --init
 
     # drop removed options from hardened systemd unit
