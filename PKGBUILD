@@ -6,7 +6,7 @@
 
 pkgbase=mutter-touchpad-scroll-patch
 pkgname=(mutter-touchpad-scroll-patch)
-pkgver=46.3
+pkgver=46.3.1
 pkgrel=1
 pkgdesc="Window manager and compositor for GNOME with slower default touchpad scrolling"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -84,7 +84,7 @@ source=(
   "$pkgname::git+$url.git#tag=${pkgver/[a-z]/.&}"
   "slowscroll.patch"
 )
-b2sums=('b228db453c22a94783ceed71eb9489117e0576293f6daa37b7f20b6992b80ee4e67ebeee3b1cf474d306d2341e8d0e26b16820cec9d6c53132ddc7ffd4157634'
+b2sums=('7d9041df986220470c287fe65194ec6e4da8f15540140fb7e0c3fddc95ce6e9ec9fd4f691ed349a31af28e903c769c97d9817ac65c3cc424b002e095cf559606'
         '0b2e17b6507bb551f635649c8b27aa48622d37436c33e83a989f3c787fbaacd0b2ca875b0fc8eb990996d293aa5961196616b011335cb7064635502db4732070')
 
 prepare() {
