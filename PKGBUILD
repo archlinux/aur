@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	cargo build --release
+	just build
 }
 
 package() {
