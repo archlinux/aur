@@ -1,5 +1,5 @@
 pkgbase = clash-verge-rev
-	pkgdesc = 一个跨平台的划词翻译软件
+	pkgdesc = Continuation of Clash Verge | A Clash Meta GUI based on Tauri
 	pkgver = 1.7.5
 	pkgrel = 1
 	url = https://github.com/clash-verge-rev/clash-verge-rev
