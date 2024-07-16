@@ -1,14 +1,14 @@
 # Maintainer: Karol 'Kenji Takahashi' Woźniak <kenji.sx>
 _basename=untrunc
 pkgname=untrunc-anthwlock-cli-git
-pkgver=r308.d72ec32
-pkgrel=2
+pkgver=r364.bd783dd
+pkgrel=1
 pkgdesc="Restore a truncated mp4/mov. Improved version of ponchio/untrunc. CLI only."
 arch=('x86_64')
 url="https://github.com/anthwlock/untrunc"
-license=('GPL')
+license=('GPL-2.0-only')
 groups=()
-depends=('ffmpeg4.4')
+depends=('ffmpeg')
 makedepends=('git')
 provides=("$_basename-git")
 conflicts=("$_basename-git")
@@ -27,7 +27,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${_basename}"
-	CPATH=/usr/include/ffmpeg4.4/ LDFLAGS='-L /usr/lib/ffmpeg4.4' make
+	make
 }
 
 package() {
