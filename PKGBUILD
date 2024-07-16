@@ -2,7 +2,7 @@
 
 pkgname=libastal-powerprofiles-git
 _pkgname=powerprofiles
-pkgver=r2.c3c807c
+pkgver=r3.2944f84
 pkgrel=1
 provides=(astal-powerprofiles libastal-powerprofiles libastal-powerprofiles.so=0-64)
 pkgdesc="Library and cli to control upowerd powerprofiles"
@@ -19,6 +19,7 @@ makedepends=(
   gobject-introspection
   vala
 )
+groups=("libastal")
 source=("git+${url}")
 sha256sums=('SKIP')
 
