@@ -1,0 +1,15 @@
+pkgbase = universal-pidff-dkms-git
+	pkgdesc = Universal FFB Driver for Moza/Cammus/VRS and more
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/JacKeTUs/universal-pidff
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = gcc
+	makedepends = glibc
+	depends = dkms
+	source = git+https://github.com/JacKeTUs/universal-pidff
+	sha256sums = SKIP
+
+pkgname = universal-pidff-dkms-git
