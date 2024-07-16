@@ -16,8 +16,8 @@ pkgname=(
   java17-openjfx-doc
   java17-openjfx-src
 )
-pkgver=17.0.12.u0
-pkgrel=2
+pkgver=17.0.12.u2
+pkgrel=1
 pkgdesc="Java OpenJFX 17 client application platform (open-source implementation of JavaFX)"
 arch=(x86_64)
 url=https://wiki.openjdk.java.net/display/OpenJFX/Main
@@ -55,13 +55,15 @@ source=(
   java-openjfx-no-xlocale.patch
   java-openjfx-gstreamer-lite-gcc10-compat.patch
   java-openjfx-env_compiler.patch
+  webcore_mapfile-vers.patch
 )
-b2sums=('283470829a16117725c8e4950a3876c8a4eeb4d9a23dae07ea711cc672ca200420deece512c1bbce0bfb95e86b4875453bb538cf679dc0451214ac38646749a3'
+b2sums=('f4a707a56f3b51ac0b307ebaada5c262b6da214e64a8d00d5a45c9083af4de8184c79325ccbe56351f21464d697db5078ede46ef62dc7e8af6350101aa03db8f'
         'a77fd8814a5978827de01a652f7b945f3439df04606434ced8998c8d77a82985292490e6965299aeb52f9da3d8069b4091d75519bd4ec8a15f70bc6d28b13498'
         'a56a5cfebb44cdbe3ada9c6da88fda6427a5bd1bf9fcc491df289c4f5c0e96ac3614c619aaf9428340f11e9dabf0a85fc7db4f49754c2700587cc66fc15372fd'
         '13216615c01b8d48d17889ffa22668c38568870d83ab30c542eb5b5620db305f02efb1acb99d9b5e89eb0a73a134bb336cb301f4de4e8855cae50efb099e384e'
         '119fa1cc5da2cdefa22bbe9b6f76581faa74e05fa7b6e5576470fc0251c6e257f122fbba03754cc01f7c7251145cfa1cab4ffc2f9d59ff0c175a121e943a0f64'
-        '189f689fb43447b0aeb3cfac561be94f76b243bcf31736c528b9a1b9a528d71b7cb6d3a801b42d8cd10a235a6a8b1bdd31de39d2e09523c3b6a34e5e03d67770')
+        '189f689fb43447b0aeb3cfac561be94f76b243bcf31736c528b9a1b9a528d71b7cb6d3a801b42d8cd10a235a6a8b1bdd31de39d2e09523c3b6a34e5e03d67770'
+        '6581d2cca237a2edf6fbc36e7a026b79f5262024ca3417330a5a8a1d66606a2cf61084de12d5786265a9232e7fdc774be0a9937e1586722e4d14a21971bae93a')
 
 prepare() {
   # cd jfx-${pkgver//.u/-}
@@ -73,6 +75,10 @@ prepare() {
   patch -Np1 -i ../java-openjfx-gstreamer-lite-gcc10-compat.patch
   patch -Np1 -i ../java-openjfx-env_compiler.patch
   sed 's|, "-Werror"||g' -i buildSrc/linux.gradle
+
+  pushd modules/javafx.web/src/main/native/Source/WebCore >/dev/null
+  patch -N -i $srcdir/webcore_mapfile-vers.patch
+  popd >/dev/null
 
   # Make Gradle wrapper executable
   chmod +x gradlew

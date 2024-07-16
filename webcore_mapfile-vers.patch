@@ -1,0 +1,236 @@
+Remove all the symbols identified in the build process as missing.
+The symbols may appear in official JDK, I believe.
+
+To see all symbols, build up to failure and run the last command with added:
+    -Wl,--error-limit=0
+to see all missing symbols.
+
+Then patch the mapfile-vers via:
+    for l in $(cat to_remove.txt)
+    do
+        echo "Removing $l ..."
+        sed -i "/$l/d" mapfile-vers
+    done
+
+This patch is made with the process just above.
+
+--- mapfile-vers.orig	2024-07-16 13:40:25.001765871 +0200
++++ mapfile-vers	2024-07-16 14:09:55.877702936 +0200
+@@ -13,20 +13,15 @@
+                _ZN3WTF7RunLoop4mainEv;
+                _ZN3WTF7RunLoop8dispatchEONS_8FunctionIFvvEEE;
+                _ZN3WTF8fastFreeEPv;
+-               _ZN3WTF8LockBase8lockSlowEv;
+-               _ZN3WTF8LockBase10unlockSlowEv;
+                _ZN3WTF4Lock10unlockSlowEv;
+                _ZN3WTF4Lock8lockSlowEv;
+                _ZN3WTF8WallTime3nowEv;
+-               _ZN3WTF10fastMallocEj;
+                _ZN3WTF10fastMallocEm;
+                _ZN3WTF10StringImpl7destroyEPS0_;
+-               _ZN3WTF16fastZeroedMallocEj;
+                _ZN3WTF16fastZeroedMallocEm;
+                _ZN3WTF26getAndResetAccumulatedLogsEv;
+                _ZNK3WTF6String4utf8ENS_14ConversionModeE;
+                _ZNK14OpaqueJSString6stringEv;
+-               _ZNK3WTF10StringView23underlyingStringIsValidEv;
+                _ZN3WTF26setPermissionsOfConfigPageEv;
+                JSCheckScriptSyntax;
+                JSClassCreate;
+@@ -215,32 +210,6 @@
+                Java_com_sun_webkit_dom_DOMImplementationImpl_createHTMLDocumentImpl;
+                Java_com_sun_webkit_dom_DOMImplementationImpl_dispose;
+                Java_com_sun_webkit_dom_DOMImplementationImpl_hasFeatureImpl;
+-               Java_com_sun_webkit_dom_DOMSelectionImpl_addRangeImpl;
+-               Java_com_sun_webkit_dom_DOMSelectionImpl_collapseImpl;
+-               Java_com_sun_webkit_dom_DOMSelectionImpl_collapseToEndImpl;
+-               Java_com_sun_webkit_dom_DOMSelectionImpl_collapseToStartImpl;
+-               Java_com_sun_webkit_dom_DOMSelectionImpl_containsNodeImpl;
+-               Java_com_sun_webkit_dom_DOMSelectionImpl_deleteFromDocumentImpl;
+-               Java_com_sun_webkit_dom_DOMSelectionImpl_dispose;
+-               Java_com_sun_webkit_dom_DOMSelectionImpl_emptyImpl;
+-               Java_com_sun_webkit_dom_DOMSelectionImpl_extendImpl;
+-               Java_com_sun_webkit_dom_DOMSelectionImpl_getAnchorNodeImpl;
+-               Java_com_sun_webkit_dom_DOMSelectionImpl_getAnchorOffsetImpl;
+-               Java_com_sun_webkit_dom_DOMSelectionImpl_getBaseNodeImpl;
+-               Java_com_sun_webkit_dom_DOMSelectionImpl_getBaseOffsetImpl;
+-               Java_com_sun_webkit_dom_DOMSelectionImpl_getExtentNodeImpl;
+-               Java_com_sun_webkit_dom_DOMSelectionImpl_getExtentOffsetImpl;
+-               Java_com_sun_webkit_dom_DOMSelectionImpl_getFocusNodeImpl;
+-               Java_com_sun_webkit_dom_DOMSelectionImpl_getFocusOffsetImpl;
+-               Java_com_sun_webkit_dom_DOMSelectionImpl_getIsCollapsedImpl;
+-               Java_com_sun_webkit_dom_DOMSelectionImpl_getRangeAtImpl;
+-               Java_com_sun_webkit_dom_DOMSelectionImpl_getRangeCountImpl;
+-               Java_com_sun_webkit_dom_DOMSelectionImpl_getTypeImpl;
+-               Java_com_sun_webkit_dom_DOMSelectionImpl_modifyImpl;
+-               Java_com_sun_webkit_dom_DOMSelectionImpl_removeAllRangesImpl;
+-               Java_com_sun_webkit_dom_DOMSelectionImpl_selectAllChildrenImpl;
+-               Java_com_sun_webkit_dom_DOMSelectionImpl_setBaseAndExtentImpl;
+-               Java_com_sun_webkit_dom_DOMSelectionImpl_setPositionImpl;
+                Java_com_sun_webkit_dom_DOMStringListImpl_containsImpl;
+                Java_com_sun_webkit_dom_DOMStringListImpl_dispose;
+                Java_com_sun_webkit_dom_DOMStringListImpl_getLengthImpl;
+@@ -536,8 +505,6 @@
+                Java_com_sun_webkit_dom_DocumentImpl_getOnselectionchangeImpl;
+                Java_com_sun_webkit_dom_DocumentImpl_getOnselectstartImpl;
+                Java_com_sun_webkit_dom_DocumentImpl_getOnsubmitImpl;
+-               Java_com_sun_webkit_dom_DocumentImpl_getOnwebkitfullscreenchangeImpl;
+-               Java_com_sun_webkit_dom_DocumentImpl_getOnwebkitfullscreenerrorImpl;
+                Java_com_sun_webkit_dom_DocumentImpl_getOverrideStyleImpl;
+                Java_com_sun_webkit_dom_DocumentImpl_getPreferredStylesheetSetImpl;
+                Java_com_sun_webkit_dom_DocumentImpl_getReadyStateImpl;
+@@ -565,7 +532,6 @@
+                Java_com_sun_webkit_dom_DocumentImpl_querySelectorAllImpl;
+                Java_com_sun_webkit_dom_DocumentImpl_querySelectorImpl;
+                Java_com_sun_webkit_dom_DocumentImpl_setBodyImpl;
+-               Java_com_sun_webkit_dom_DocumentImpl_setCharsetImpl;
+                Java_com_sun_webkit_dom_DocumentImpl_setCookieImpl;
+                Java_com_sun_webkit_dom_DocumentImpl_setOnabortImpl;
+                Java_com_sun_webkit_dom_DocumentImpl_setOnbeforecopyImpl;
+@@ -610,8 +576,6 @@
+                Java_com_sun_webkit_dom_DocumentImpl_setOnselectionchangeImpl;
+                Java_com_sun_webkit_dom_DocumentImpl_setOnselectstartImpl;
+                Java_com_sun_webkit_dom_DocumentImpl_setOnsubmitImpl;
+-               Java_com_sun_webkit_dom_DocumentImpl_setOnwebkitfullscreenchangeImpl;
+-               Java_com_sun_webkit_dom_DocumentImpl_setOnwebkitfullscreenerrorImpl;
+                Java_com_sun_webkit_dom_DocumentImpl_setSelectedStylesheetSetImpl;
+                Java_com_sun_webkit_dom_DocumentImpl_setTitleImpl;
+                Java_com_sun_webkit_dom_DocumentImpl_setXmlStandaloneImpl;
+@@ -691,8 +655,6 @@
+                Java_com_sun_webkit_dom_ElementImpl_getOnselectImpl;
+                Java_com_sun_webkit_dom_ElementImpl_getOnselectstartImpl;
+                Java_com_sun_webkit_dom_ElementImpl_getOnsubmitImpl;
+-               Java_com_sun_webkit_dom_ElementImpl_getOnwebkitfullscreenchangeImpl;
+-               Java_com_sun_webkit_dom_ElementImpl_getOnwebkitfullscreenerrorImpl;
+                Java_com_sun_webkit_dom_ElementImpl_getPreviousElementSiblingImpl;
+                Java_com_sun_webkit_dom_ElementImpl_getScrollHeightImpl;
+                Java_com_sun_webkit_dom_ElementImpl_getScrollLeftImpl;
+@@ -700,7 +662,6 @@
+                Java_com_sun_webkit_dom_ElementImpl_getScrollWidthImpl;
+                Java_com_sun_webkit_dom_ElementImpl_getStyleImpl;
+                Java_com_sun_webkit_dom_ElementImpl_getTagNameImpl;
+-               Java_com_sun_webkit_dom_ElementImpl_getWebkitRegionOversetImpl;
+                Java_com_sun_webkit_dom_ElementImpl_hasAttributeImpl;
+                Java_com_sun_webkit_dom_ElementImpl_hasAttributeNSImpl;
+                Java_com_sun_webkit_dom_ElementImpl_hasAttributesImpl;
+@@ -762,8 +723,6 @@
+                Java_com_sun_webkit_dom_ElementImpl_setOnselectImpl;
+                Java_com_sun_webkit_dom_ElementImpl_setOnselectstartImpl;
+                Java_com_sun_webkit_dom_ElementImpl_setOnsubmitImpl;
+-               Java_com_sun_webkit_dom_ElementImpl_setOnwebkitfullscreenchangeImpl;
+-               Java_com_sun_webkit_dom_ElementImpl_setOnwebkitfullscreenerrorImpl;
+                Java_com_sun_webkit_dom_ElementImpl_setScrollLeftImpl;
+                Java_com_sun_webkit_dom_ElementImpl_setScrollTopImpl;
+                Java_com_sun_webkit_dom_ElementImpl_webkitMatchesSelectorImpl;
+@@ -962,7 +921,6 @@
+                Java_com_sun_webkit_dom_HTMLDocumentImpl_captureEventsImpl;
+                Java_com_sun_webkit_dom_HTMLDocumentImpl_clearImpl;
+                Java_com_sun_webkit_dom_HTMLDocumentImpl_closeImpl;
+-               Java_com_sun_webkit_dom_HTMLDocumentImpl_getActiveElementImpl;
+                Java_com_sun_webkit_dom_HTMLDocumentImpl_getAlinkColorImpl;
+                Java_com_sun_webkit_dom_HTMLDocumentImpl_getBgColorImpl;
+                Java_com_sun_webkit_dom_HTMLDocumentImpl_getCompatModeImpl;
+@@ -976,7 +934,6 @@
+                Java_com_sun_webkit_dom_HTMLDocumentImpl_getScriptsImpl;
+                Java_com_sun_webkit_dom_HTMLDocumentImpl_getVlinkColorImpl;
+                Java_com_sun_webkit_dom_HTMLDocumentImpl_getWidthImpl;
+-               Java_com_sun_webkit_dom_HTMLDocumentImpl_hasFocusImpl;
+                Java_com_sun_webkit_dom_HTMLDocumentImpl_openImpl;
+                Java_com_sun_webkit_dom_HTMLDocumentImpl_releaseEventsImpl;
+                Java_com_sun_webkit_dom_HTMLDocumentImpl_setAlinkColorImpl;
+@@ -996,11 +953,9 @@
+                Java_com_sun_webkit_dom_HTMLElementImpl_getDirImpl;
+                Java_com_sun_webkit_dom_HTMLElementImpl_getDraggableImpl;
+                Java_com_sun_webkit_dom_HTMLElementImpl_getHiddenImpl;
+-               Java_com_sun_webkit_dom_HTMLElementImpl_getInnerHTMLImpl;
+                Java_com_sun_webkit_dom_HTMLElementImpl_getInnerTextImpl;
+                Java_com_sun_webkit_dom_HTMLElementImpl_getIsContentEditableImpl;
+                Java_com_sun_webkit_dom_HTMLElementImpl_getLangImpl;
+-               Java_com_sun_webkit_dom_HTMLElementImpl_getOuterHTMLImpl;
+                Java_com_sun_webkit_dom_HTMLElementImpl_getOuterTextImpl;
+                Java_com_sun_webkit_dom_HTMLElementImpl_getSpellcheckImpl;
+                Java_com_sun_webkit_dom_HTMLElementImpl_getTitleImpl;
+@@ -1014,11 +969,8 @@
+                Java_com_sun_webkit_dom_HTMLElementImpl_setDirImpl;
+                Java_com_sun_webkit_dom_HTMLElementImpl_setDraggableImpl;
+                Java_com_sun_webkit_dom_HTMLElementImpl_setHiddenImpl;
+-               Java_com_sun_webkit_dom_HTMLElementImpl_setInnerHTMLImpl;
+                Java_com_sun_webkit_dom_HTMLElementImpl_setInnerTextImpl;
+-               Java_com_sun_webkit_dom_HTMLElementImpl_setItemIdImpl;
+                Java_com_sun_webkit_dom_HTMLElementImpl_setLangImpl;
+-               Java_com_sun_webkit_dom_HTMLElementImpl_setOuterHTMLImpl;
+                Java_com_sun_webkit_dom_HTMLElementImpl_setOuterTextImpl;
+                Java_com_sun_webkit_dom_HTMLElementImpl_setSpellcheckImpl;
+                Java_com_sun_webkit_dom_HTMLElementImpl_setIdImpl;
+@@ -1027,7 +979,6 @@
+                Java_com_sun_webkit_dom_HTMLElementImpl_setWebkitdropzoneImpl;
+                Java_com_sun_webkit_dom_HTMLFieldSetElementImpl_checkValidityImpl;
+                Java_com_sun_webkit_dom_HTMLFieldSetElementImpl_getDisabledImpl;
+-               Java_com_sun_webkit_dom_HTMLFieldSetElementImpl_getElementsImpl;
+                Java_com_sun_webkit_dom_HTMLFieldSetElementImpl_getFormImpl;
+                Java_com_sun_webkit_dom_HTMLFieldSetElementImpl_getNameImpl;
+                Java_com_sun_webkit_dom_HTMLFieldSetElementImpl_getTypeImpl;
+@@ -1142,7 +1093,6 @@
+                Java_com_sun_webkit_dom_HTMLIFrameElementImpl_getMarginHeightImpl;
+                Java_com_sun_webkit_dom_HTMLIFrameElementImpl_getMarginWidthImpl;
+                Java_com_sun_webkit_dom_HTMLIFrameElementImpl_getNameImpl;
+-               Java_com_sun_webkit_dom_HTMLIFrameElementImpl_getSandboxImpl;
+                Java_com_sun_webkit_dom_HTMLIFrameElementImpl_getScrollingImpl;
+                Java_com_sun_webkit_dom_HTMLIFrameElementImpl_getSrcImpl;
+                Java_com_sun_webkit_dom_HTMLIFrameElementImpl_getSrcdocImpl;
+@@ -1154,9 +1104,7 @@
+                Java_com_sun_webkit_dom_HTMLIFrameElementImpl_setMarginHeightImpl;
+                Java_com_sun_webkit_dom_HTMLIFrameElementImpl_setMarginWidthImpl;
+                Java_com_sun_webkit_dom_HTMLIFrameElementImpl_setNameImpl;
+-               Java_com_sun_webkit_dom_HTMLIFrameElementImpl_setSandboxImpl;
+                Java_com_sun_webkit_dom_HTMLIFrameElementImpl_setScrollingImpl;
+-               Java_com_sun_webkit_dom_HTMLIFrameElementImpl_setSeamlessImpl;
+                Java_com_sun_webkit_dom_HTMLIFrameElementImpl_setSrcImpl;
+                Java_com_sun_webkit_dom_HTMLIFrameElementImpl_setSrcdocImpl;
+                Java_com_sun_webkit_dom_HTMLIFrameElementImpl_setWidthImpl;
+@@ -1214,7 +1162,6 @@
+                Java_com_sun_webkit_dom_HTMLInputElementImpl_getIncrementalImpl;
+                Java_com_sun_webkit_dom_HTMLInputElementImpl_getIndeterminateImpl;
+                Java_com_sun_webkit_dom_HTMLInputElementImpl_getLabelsImpl;
+-               Java_com_sun_webkit_dom_HTMLInputElementImpl_getListImpl;
+                Java_com_sun_webkit_dom_HTMLInputElementImpl_getMaxImpl;
+                Java_com_sun_webkit_dom_HTMLInputElementImpl_getMaxLengthImpl;
+                Java_com_sun_webkit_dom_HTMLInputElementImpl_getMinImpl;
+@@ -1451,7 +1398,6 @@
+                Java_com_sun_webkit_dom_HTMLSelectElementImpl_setAutofocusImpl;
+                Java_com_sun_webkit_dom_HTMLSelectElementImpl_setCustomValidityImpl;
+                Java_com_sun_webkit_dom_HTMLSelectElementImpl_setDisabledImpl;
+-               Java_com_sun_webkit_dom_HTMLSelectElementImpl_setLengthImpl;
+                Java_com_sun_webkit_dom_HTMLSelectElementImpl_setMultipleImpl;
+                Java_com_sun_webkit_dom_HTMLSelectElementImpl_setNameImpl;
+                Java_com_sun_webkit_dom_HTMLSelectElementImpl_setRequiredImpl;
+@@ -1725,8 +1671,6 @@
+                Java_com_sun_webkit_dom_NodeListImpl_dispose;
+                Java_com_sun_webkit_dom_NodeListImpl_getLengthImpl;
+                Java_com_sun_webkit_dom_NodeListImpl_itemImpl;
+-               Java_com_sun_webkit_dom_NotationImpl_getPublicIdImpl;
+-               Java_com_sun_webkit_dom_NotationImpl_getSystemIdImpl;
+                Java_com_sun_webkit_dom_ProcessingInstructionImpl_getSheetImpl;
+                Java_com_sun_webkit_dom_ProcessingInstructionImpl_getTargetImpl;
+                Java_com_sun_webkit_dom_RGBColorImpl_dispose;
+@@ -1811,12 +1755,6 @@
+                Java_com_sun_webkit_dom_UIEventImpl_getViewImpl;
+                Java_com_sun_webkit_dom_UIEventImpl_getWhichImpl;
+                Java_com_sun_webkit_dom_UIEventImpl_initUIEventImpl;
+-               Java_com_sun_webkit_dom_WheelEventImpl_getDeltaModeImpl;
+-               Java_com_sun_webkit_dom_WheelEventImpl_getWebkitDirectionInvertedFromDeviceImpl;
+-               Java_com_sun_webkit_dom_WheelEventImpl_getWheelDeltaImpl;
+-               Java_com_sun_webkit_dom_WheelEventImpl_getWheelDeltaXImpl;
+-               Java_com_sun_webkit_dom_WheelEventImpl_getWheelDeltaYImpl;
+-               Java_com_sun_webkit_dom_WheelEventImpl_initWheelEventImpl;
+                Java_com_sun_webkit_dom_XPathExpressionImpl_dispose;
+                Java_com_sun_webkit_dom_XPathExpressionImpl_evaluateImpl;
+                Java_com_sun_webkit_dom_XPathNSResolverImpl_dispose;
+@@ -1868,7 +1806,6 @@
+                Java_com_sun_webkit_WCPluginWidget_twkInvalidateWindowlessPluginRect;
+                Java_com_sun_webkit_WCPluginWidget_twkSetPlugunFocused;
+                Java_com_sun_webkit_WCWidget_initIDs;
+-               Java_com_sun_webkit_WatchdogTimer_twkFire;
+                Java_com_sun_webkit_WebPage_twkAddJavaScriptBinding;
+                Java_com_sun_webkit_WebPage_twkAdjustFrameHeight;
+                Java_com_sun_webkit_WebPage_twkBeginPrinting;
