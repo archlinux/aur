@@ -1,7 +1,7 @@
 # Maintainer: Tomasz Pakula <forest10pl@gmail.com>
 _reponame=universal-pidff
 pkgname=universal-pidff-dkms-git
-pkgver=0.0.1
+pkgver=0.0.4.r40.g5416f53
 pkgrel=1
 pkgdesc="Universal FFB Driver for Moza/Cammus/VRS and more"
 arch=('x86_64')
