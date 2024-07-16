@@ -2,12 +2,12 @@
 
 pkgname=hyprland-easyfocus
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool to help efficiently focus windows in Sway inspired by sway-easyfocus/i3-easyfocus.'
 url='https://github.com/abenz1267/hyprland-easyfocus'
 arch=('x86_64')
 license=('MIT')
-makedepends=('cargo')
+makedepends=('cargo' 'rustup')
 depends=('gtk4-layer-shell')
 conflicts=('hyprland-easyfocus')
 provides=('hyprland-easyfocus')
@@ -21,7 +21,11 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
 
-  cargo build --frozen --release --all-features
+  if command -v rustup > /dev/null 2>&1; then
+    rustup run stable cargo build --release
+  else
+    cargo build --release
+  fi
 }
 
 package() {
