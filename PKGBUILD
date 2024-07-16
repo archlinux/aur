@@ -4,29 +4,24 @@
 
 pkgname=scx-scheds
 gitname=scx
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Sched_ext schedulers'
 url='https://github.com/sched-ext/scx'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 license=('GPL-2.0-only')
 depends=('libelf' 'zlib' 'jq')
 makedepends=('git' 'python' 'meson' 'clang' 'llvm' 'llvm-libs' 'rust')
 backup=('etc/default/scx' 'etc/systemd/journald@sched-ext.conf')
 options=(!lto)
-source=("git+https://github.com/sched-ext/scx?signed#tag=v$pkgver"
-        "fix-packaging.patch"
-        "drop-disabled-schedulers.patch")
-sha256sums=('f1f574ec638fba3177181e437eb18cf312af0d84718e11ccc5f968ee389639e6'
-            '6870476b2cbf699a4f7f5464ea1cb211bbff1cbbbb13f472ad34dbce80f82df8'
-            'd9be266b04c91790b2f80033a9dae67fd1548c46994580d81b69383b0ce1bce8')
+source=("git+https://github.com/sched-ext/scx?signed#tag=v$pkgver")
+sha256sums=('16eb0ab230ad7de16e2efae62df0cacd48700dbaf95182151a6d0b6671ec5f7a')
 validpgpkeys=(
   697C63013E65270255EBC2608744DC1EB26B5A9A  # Tejun Heo <tj@kernel.org>
   F5504C7B7B8107B40EF9E97AA1148BB3207BCC33  # David Vernet
 )
 
 _backports=(
-274bcf7f02ea8d90c7c6308af6a891a31ba45e14 # Fix Compilation on newer Pacman Version, due working RUSTFLAGS
 )
 
 _reverts=(
