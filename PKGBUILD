@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="Search aggregator for newznab and torznab indexers."
 arch=('any')
 url="https://github.com/theotherp/nzbhydra2"
-license=('Apache')
+license=('Apache-2.0')
 provides=('nzbhydra2')
 conflicts=('nzbhydra2')
 depends=('python' 'java-runtime-headless=17')
