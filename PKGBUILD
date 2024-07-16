@@ -2,7 +2,7 @@
 
 pkgname=platypush
 pkgver=1.1.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Universal multi-platform command executor and automation manager"
 arch=('any')
 license=('MIT')
@@ -129,5 +129,7 @@ Environment="PLATYPUSH_WORKDIR=\/var\/lib\/platypush"/'
     install -m644 "${srcdir}/platypush/platypush/config/config.yaml" "${pkgdir}/etc/platypush/config.yaml"
     install -Dm644 "${srcdir}/platypush/platypush/config/systemd/platypush-sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/platypush.conf"
     install -Dm644 "${srcdir}/platypush/platypush/config/systemd/platypush-tmpfile.conf" "${pkgdir}/usr/lib/tmpfiles.d/platypush.conf"
+
+    install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
