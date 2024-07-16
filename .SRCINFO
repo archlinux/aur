@@ -4,9 +4,8 @@ pkgbase = python-sabctools
 	pkgrel = 1
 	url = https://github.com/sabnzbd/sabctools/
 	arch = any
-	license = GPL2
+	license = GPL-2.0-only
 	makedepends = python-setuptools
-	depends = python
 	source = https://files.pythonhosted.org/packages/source/s/sabctools/sabctools-8.2.3.tar.gz
 	sha512sums = 9ca72bb843fbcf8a30bbae2faba387f33f559888fee31b455c4abeabaac4ee98042a595b900df98aaf83151fc5f9383b7efc369f8b70a37ec6ac88ab00f24f5c
 
