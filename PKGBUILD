@@ -1,6 +1,6 @@
 # Maintainer: iamawacko <iamawacko@protonmail.com>
 pkgname=kipr-git
-pkgver=0.4.0
+pkgver=0.4.0.r1.g7442962
 pkgrel=2
 pkgdesc='Command Line Password Manager'
 url='https://github.com/grahamking/kipr'
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "kipr-git"
-	git describe --long --abbrev=7 --tags | sed sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --abbrev=7 --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
