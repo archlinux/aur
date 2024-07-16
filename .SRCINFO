@@ -1,19 +1,19 @@
 pkgbase = cli-of-life-bin
 	pkgdesc = Play Conways Game of Life in your terminal
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/gabe565/cli-of-life
 	license = Apache2
 	conflicts = cli-of-life
 	provides = cli-of-life
 	arch = aarch64
-	source_aarch64 = https://github.com/gabe565/cli-of-life/releases/download/v0.1.1/cli-of-life_0.1.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 40696e8359456ec2f0ed712e88dcbe6f6c66b7850b1b090199c8ddf462e47b02
+	source_aarch64 = https://github.com/gabe565/cli-of-life/releases/download/v0.2.0/cli-of-life_0.2.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 7f01fcadfc72d761cb489a1ff00e26f1611ce3f740a297891ec376b731441cf6
 	arch = armv7h
-	source_armv7h = https://github.com/gabe565/cli-of-life/releases/download/v0.1.1/cli-of-life_0.1.1_linux_armv7.tar.gz
-	sha256sums_armv7h = 26753863993491f134139a518e1749c25a7522814bed4bbef5cc13d43d7c997e
+	source_armv7h = https://github.com/gabe565/cli-of-life/releases/download/v0.2.0/cli-of-life_0.2.0_linux_armv7.tar.gz
+	sha256sums_armv7h = eab3a32b41fae014251c8f10d404ee4b2959cfa12374acab4bf2028138bb0180
 	arch = x86_64
-	source_x86_64 = https://github.com/gabe565/cli-of-life/releases/download/v0.1.1/cli-of-life_0.1.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 23e5d1bdb2bf4bb564fd51c506b5e216c6bbe6bbf69702e8a614c2e270cd54fb
+	source_x86_64 = https://github.com/gabe565/cli-of-life/releases/download/v0.2.0/cli-of-life_0.2.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 9431f4d2c4773da9ee73b9e85dbfc82d5cd394905f518e76292780c7d52b4da4
 	
 pkgname = cli-of-life-bin
