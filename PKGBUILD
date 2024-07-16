@@ -5,11 +5,11 @@ _name=${pkgname#python-}
 pkgdesc="Very fast Python LineString simplification using RDP or Visvalingam-Whyatt"
 url="https://github.com/urschrei/simplification"
 
-pkgver=0.7.10
-pkgrel=3
+pkgver=0.7.12
+pkgrel=1
 
 arch=("any")
-license=("MIT")
+license=("custom:Blue-Oak-Model-License-1.0.0")
 
 depends=(
     "librdp"
@@ -22,6 +22,7 @@ makedepends=(
     "python-installer"
     "python-setuptools-scm"
     "python-toml"
+    "python-trove-classifiers>=2024.7.1"
     "python-wheel"
 )
 checkdepends=(
@@ -33,7 +34,7 @@ source=(
     "system-wide-libraries.patch"
 )
 b2sums=(
-    "0dc9c376b31d236697eb5beb32f475534f85626f47ed5a1838e34ee6bc6fc2489e5e49e0a4b798bdd46fe4580fb79f36f17f4c83b8f7648240f1e2cb14c3d4cb"
+    "fbab5b1f06df84932e195cff3e908aa833839565dad489044af0b85463a114d7b541d6b21a2e75ebc2d70d09770a129fe0d712c7446cdb796e20505960777de9"
     "2f3cfb66346c66f50f7c1d8cd832324bb9337cca9676d92e4dc8ca1e0d967a02e6fbc253a1abf865404c293cb7b3c87084685080aea8f701fe8d38ebf78e0e33"
 )
 
@@ -57,4 +58,5 @@ check() {
 package() {
     cd "${srcdir}/${_name}-${pkgver}"
     python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm0644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
