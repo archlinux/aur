@@ -7,7 +7,7 @@ pkgrel=2
 pkgdesc='yEnc package optimized for use within SABnzbd.'
 arch=('any')
 url='https://pypi.org/project/sabyenc3/'
-license=('lgplv3')
+license=('GPL-2.0')
 depends=('python')
 makedepends=('python-setuptools')
 
