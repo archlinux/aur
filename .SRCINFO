@@ -7,6 +7,7 @@ pkgbase = localsend-bin
 	license = MIT
 	depends = fuse2
 	depends = xdg-user-dirs
+	depends = libayatana-appindicator
 	provides = localsend
 	conflicts = localsend
 	options = !debug

@@ -6,12 +6,12 @@
 
 pkgname=localsend-bin
 pkgver=1.15.0
-pkgrel=0
+pkgrel=1
 pkgdesc='An open source cross-platform alternative to AirDrop'
 url=https://github.com/localsend/localsend
 arch=(x86_64)
 license=(MIT)
-depends=(fuse2 xdg-user-dirs)
+depends=(fuse2 xdg-user-dirs libayatana-appindicator)
 conflicts=('localsend')
 provides=('localsend')
 options=(!debug)
