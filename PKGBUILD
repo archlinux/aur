@@ -1,9 +1,9 @@
 # Maintainer: kotontrion <kotontrion@tutanota.de>
 pkgbase=libastal-git
-pkgname=("libastal-git" "python-libastal-git" 
+pkgname=("libastal-git"
          "lua-libastal-git" "lua51-${pkgbase}" "lua53-${pkgbase}")
 _pkgname=libastal
-pkgver=r18.efa11df
+pkgver=r67.e5251d2
 pkgrel=1
 pkgdesc="Building blocks for building desktop shells."
 arch=("x86_64")
@@ -12,9 +12,9 @@ url="https://github.com/astal-sh/libastal"
 makedepends=(
   "git"
   "gobject-introspection" "meson" "vala"
-  "python-poetry" "python-build" "python-installer"
   "lua" "lua51" "lua53" "luarocks")
 depends=("glib2" "glibc" "gtk3" "gtk-layer-shell")
+groups=("libastal")
 source=("git+${url}")
 sha256sums=("SKIP")
 _rockname=astal-dev-1.rockspec
@@ -29,22 +29,12 @@ build() {
   cd $srcdir/$_pkgname
   arch-meson build
   meson compile -C build
-
-  cd python
-  python -m build --wheel --no-isolation
 }
 
 package_libastal-git() {
   provides=(libastal libastal.so=0-64)
   cd $srcdir/$_pkgname
   meson install -C build --destdir "$pkgdir"
-}
-
-package_python-libastal-git() {
-  depends=("libastal-git" "python" "python-gobject")
-  pkgdesc="python bindings for libstal."
-  cd $srcdir/$_pkgname/python
-  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
 
@@ -56,16 +46,19 @@ _package_lua() {
 
 package_lua-libastal-git() {
 	depends=("libastal-git" "${pkgname%-*-git}" "${pkgname%-*-git}-lgi")
+  pkgdesc="lua bindings for libstal."
   _package_lua 5.4
 }
 
 package_lua51-libastal-git() {
 	depends=("libastal-git" "${pkgname%-*-git}" "${pkgname%-*-git}-lgi")
+  pkgdesc="lua bindings for libstal."
   _package_lua 5.1
 }
 
 
 package_lua53-libastal-git() {
 	depends=("libastal-git" "${pkgname%-*-git}" "${pkgname%-*-git}-lgi")
+  pkgdesc="lua bindings for libstal."
   _package_lua 5.3
 }

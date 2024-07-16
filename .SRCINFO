@@ -1,17 +1,15 @@
 pkgbase = libastal-git
 	pkgdesc = Building blocks for building desktop shells.
-	pkgver = r18.efa11df
+	pkgver = r67.e5251d2
 	pkgrel = 1
 	url = https://github.com/astal-sh/libastal
 	arch = x86_64
+	groups = libastal
 	license = GPL-3
 	makedepends = git
 	makedepends = gobject-introspection
 	makedepends = meson
 	makedepends = vala
-	makedepends = python-poetry
-	makedepends = python-build
-	makedepends = python-installer
 	makedepends = lua
 	makedepends = lua51
 	makedepends = lua53
@@ -27,23 +25,20 @@ pkgname = libastal-git
 	provides = libastal
 	provides = libastal.so=0-64
 
-pkgname = python-libastal-git
-	pkgdesc = python bindings for libstal.
-	depends = libastal-git
-	depends = python
-	depends = python-gobject
-
 pkgname = lua-libastal-git
+	pkgdesc = lua bindings for libstal.
 	depends = libastal-git
 	depends = lua
 	depends = lua-lgi
 
 pkgname = lua51-libastal-git
+	pkgdesc = lua bindings for libstal.
 	depends = libastal-git
 	depends = lua51
 	depends = lua51-lgi
 
 pkgname = lua53-libastal-git
+	pkgdesc = lua bindings for libstal.
 	depends = libastal-git
 	depends = lua53
 	depends = lua53-lgi
