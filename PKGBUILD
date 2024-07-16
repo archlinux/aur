@@ -1,122 +1,149 @@
-# Maintainer: raihan2000 <raihan1999ahamed@gmail.com>
+# Maintainer: Raihan Ahamed (raihan2000) <raihan1999ahamed@gmail.com>
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Contributor: Fabian Bornschein <fabiscafe@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
-# Contributor: Flamelab <panosfilip@gmail.com>
+# Contributor: Flamelab <panosfilip@gmail.com
 
-pkgname=gnome-shell-mobile
+pkgbase=gnome-shell-mobile
+pkgname=(
+    gnome-shell-mobile
+    gnome-shell-mobile-docs
+)
 pkgdesc="Next generation desktop shell"
-pkgver=45.rc.r272.gdf3f6b4
+pkgver=46.r0.g361fc60
 pkgrel=1
-_arches=specific
-arch=(any)
-license=(GPL)
-url=https://wiki.gnome.org/Projects/GnomeShell
+epoch=1
+arch=(
+    any
+)
+license=(GPL-3.0-or-later)
+url="https://gitlab.gnome.org/verdre/gnome-shell-mobile"
 depends=(
     accountsservice
+    at-spi2-core
+    bash
+    cairo
+    dconf
+    gcc-libs
     gcr-4
+    gdk-pixbuf2
     gjs
+    glib2
+    glibc
     gnome-autoar
+    gnome-desktop-4
     gnome-session
-    gnome-settings-daemon
+    gnome-settings-daemon-mobile
+    graphene
     gsettings-desktop-schemas
     gtk4
+    hicolor-icon-theme
+    json-glib
     libadwaita
     libcanberra-pulse
     libgdm
+    libgirepository
+    libglvnd
     libgweather-4
     libibus
+    libical
+    libnm
     libnma-gtk4
+    libpipewire
+    libpulse
     libsecret
     libsoup3
+    libx11
+    libxfixes
     mutter-mobile
+    pango
+    polkit
+    systemd-libs
     unzip
     upower
+    webkitgtk-6.0
 )
 makedepends=(
     asciidoc
     bash-completion
     evolution-data-server
+    gi-docgen
     git
-    gnome-control-center
+    glib2-devel
+    gnome-keybindings
     gobject-introspection
-    gtk-doc
     meson
     sassc
 )
-checkdepends=(
-    appstream-glib
-    python-dbusmock
-    xorg-server-xvfb
-)
-optdepends=(
-    "evolution-data-server: Evolution calendar integration"
-    "gnome-bluetooth-3.0: Bluetooth support"
-    "gnome-control-center: System settings"
-    "gnome-disk-utility: Mount with keyfiles"
-    "gst-plugin-pipewire: Screen recording"
-    "gst-plugins-good: Screen recording"
-    "power-profiles-daemon: Power profile switching"
-    "python-gobject: gnome-shell-test-tool performance tester"
-#   "switcheroo-control: Multi-GPU support"
-)
-_commit=df3f6b4c512d2f181e86ff7f6b1646ce7b907344  # mobile-shell
+_commit=361fc605e595b36df68d8b691f22bccddcf84cc9
 source=(
-    "git+https://gitlab.gnome.org/verdre/mobile-shell.git#commit=$_commit"
-    "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
+    "git+https://gitlab.gnome.org/verdre/gnome-shell-mobile.git#commit=$_commit"
+    "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git#commit=5f9768a2eac29c1ed56f1fbb449a77a3523683b6"
 )
 sha256sums=(
-    SKIP
-    SKIP
+    ffb02d21b9be34d83f327634be44b72f0e631358ad93643802f983f44c12e7dd
+    587319b45ff7d989635aed0c3bd9ef834d6e53ae46788cb6ba083d42d7e63855
 )
 
 pkgver() {
-    cd mobile-shell
-
-    _hash=$(git describe --always --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')
-    _target=$(git log --grep="Bump version to 45.rc" --pretty=format:"%h")
-    _count=$(git rev-list "$_target"..HEAD --count)
-
-    echo "45.rc.r$_count.g$_hash"
+    cd $pkgbase
+    git describe --long --tags --abbrev=7 "$_commit" | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g; s/.mobile.0//'
 }
 
 prepare() {
-    cd mobile-shell
+    # Inject gvc
+    ln -s libgnome-volume-control gvc
 
-    git submodule init
-    git submodule set-url subprojects/gvc "$srcdir/libgnome-volume-control"
-    git -c protocol.file.allow=always submodule update
+    cd $pkgbase
 }
 
 build() {
     local meson_options=(
-        -D gtk_doc=false
+      -D gtk_doc=true
+      -D tests=false
     )
 
     CFLAGS="${CFLAGS/-O2/-O3} -fno-semantic-interposition"
     LDFLAGS+=" -Wl,-Bsymbolic-functions"
 
-    arch-meson mobile-shell build "${meson_options[@]}"
+    # Inject gvc
+    export MESON_PACKAGE_CACHE_DIR="$srcdir"
+
+    arch-meson $pkgbase build "${meson_options[@]}"
     meson compile -C build
 }
 
-_check() (
-    export XDG_RUNTIME_DIR="$PWD/rdir"
-    mkdir -p -m 700 "XDG_RUNTIME_DIR"
-
-    export NO_AT_BRIDGE=1 GTK_A11Y=none
-
-    meson test -C build --print-errorlogs
-)
-
-#check() {
-#   dbus-run-session xvfb-run -s '-nolisten local +iglx -noreset' \
-#   bash -c "$(declare -f _check); _check"
-#}
-
-package() {
+package_gnome-shell-mobile() {
     conflicts=(gnome-shell)
     provides=(gnome-shell=1:$pkgver)
+    depends+=(libmutter-14.so)
+    optdepends=(
+      'evolution-data-server: Evolution calendar integration'
+      'gnome-bluetooth-3.0: Bluetooth support'
+      'gnome-control-center: System settings'
+      'gnome-disk-utility: Mount with keyfiles'
+      'gst-plugin-pipewire: Screen recording'
+      'gst-plugins-good: Screen recording'
+      'power-profiles-daemon: Power profile switching'
+      'python-gobject: gnome-shell-test-tool performance tester'
+      'python-simplejson: gnome-shell-test-tool performance tester'
+      'switcheroo-control: Multi-GPU support'
+    )
+    groups=(gnome)
 
-    depends+=(libmutter-13.so)
     meson install -C build --destdir "$pkgdir"
+
+    mkdir -p doc/usr/share
+    mv {"$pkgdir",doc}/usr/share/doc
 }
+
+package_gnome-shell-mobile-docs() {
+    conflicts=(gnome-shell-docs)
+    provides=(gnome-shell-docs=1:$pkgver)
+    pkgdesc+=" (API documentation)"
+    depends=()
+
+    mv doc/* "$pkgdir"
+}
+
+# vim:set sw=2 sts=-1 et:
