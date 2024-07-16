@@ -12,7 +12,8 @@ pkgbase = amitools-git
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	depends = python
-	optdepends = python-lhafile
+	depends = python-lhafile
+	optdepends = python-machine68k: cpu emulator for vamos
 	provides = amitools=0.8.0
 	conflicts = amitools
 	source = amitools::git+https://github.com/cnvogelg/amitools.git
