@@ -10,14 +10,14 @@ _git_branch=${_git_branch##*/}
 _staging_ver=${_git_branch#zfs-}
 _staging_ver=${_staging_ver%-staging}
 
-if /usr/bin/git ls-remote -t --exit-code "${_git_repo}" "zfs-${_staging_ver}" > /dev/null; then
+if /usr/bin/git ls-remote -t --exit-code "${_git_repo}" "zfs-${_staging_ver}" >/dev/null; then
     _git_branch="tag=zfs-${_staging_ver}"
 else
     _git_branch="branch=${_git_branch}"
 fi
 
 pkgname=${_pkgname}-utils-staging-git
-pkgver=2.2.4.r10.g2eab4f7b39
+pkgver=2.2.4.r11.g54ef0fdf60
 pkgrel=1
 pkgdesc="Userspace utilities for the Zettabyte File System (release staging branch)."
 arch=("i686" "x86_64" "aarch64")
