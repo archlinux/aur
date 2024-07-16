@@ -72,12 +72,12 @@ fi
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-edge
-_major=6.9
-pkgver=${_major}.9
+_major=6.10
+pkgver=${_major}.0
 _branch=6.x
 xanmod=1
 _revision=
-_sf_branch=main
+_sf_branch=edge
 pkgrel=${xanmod}
 pkgdesc='Linux Xanmod - Rolling Release [EDGE]'
 url="http://www.xanmod.org/"
@@ -115,9 +115,9 @@ for _patch in ${_patches[@]}; do
     source+=("${_patch}::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_commit}/trunk/${_patch}")
 done
 
-sha256sums=('24fa01fb989c7a3e28453f117799168713766e119c5381dac30115f18f268149'
+sha256sums=('774698422ee54c5f1e704456f37c65c06b51b4e9a8b0866f34580d86fef8e226'
             'SKIP'
-            'b7126cea3f56a92b7780b52ab889c5962b910c4cb2a4bbc8a0732e04430cca47'
+            '2245e4f5154045fd3a8606c4accd808b1d802e75e894d32005c406da77e6e623'
             'a8b38eb482eb685944757182c4886404abc12703e5e56ec39c7d61298d17d71f')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
