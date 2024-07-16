@@ -17,19 +17,19 @@ optdepends=(
 )
 provides=('vesktop')
 conflicts=('vesktop' 'vesktop-bin' 'vesktop-git')
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
+source=("git+${url}#tag=v${pkgver}"
         'vesktop.desktop'
         'vesktop.sh')
-sha256sums=('615ed9275a03974a0c6486c0095cfcd0af246363a4f62ec0bdc985c763cc6334'
+sha256sums=('60978a279e0222aaa3f488999c6d450d354a9ee9de3ae9a59defc482556be909'
             'f279b1e469fb965cdf6dba9b4f428b0a7f28f414d84a47c6481b726adeb99c2b'
-            '7b3853ee6574bda3d20f34df0b7977db5bd8d7b3a111e44caff2698a3cafae2b')
+            'ddbce99e54937503d8e2c23098eadbb4c0b4b081885c068ceaa20730939ddf29')
 prepare() {
   # Use system's electron
-  sed -i '/linux/s/^/        "electronDist": "\/usr\/lib\/electron31",\n/' "$srcdir/$_pkgname-$pkgver/package.json"
+  sed -i '/linux/s/^/        "electronDist": "\/usr\/lib\/electron31",\n/' "$srcdir/$_pkgname/package.json"
 }
 
 build() {
-  cd "$_pkgname-$pkgver"
+  cd "$_pkgname"
 
   pnpm i
   pnpm package:dir
@@ -41,10 +41,10 @@ package() {
   install -d "${pkgdir}/usr/lib/${pkgname}"
   install -d "${pkgdir}/usr/bin"
 
-  cp "$_pkgname-$pkgver/dist/linux-unpacked/resources/app.asar" "${pkgdir}/usr/lib/${pkgname}/"
+  cp "$_pkgname/dist/linux-unpacked/resources/app.asar" "${pkgdir}/usr/lib/${pkgname}/"
   install -Dm755 "./vesktop.sh" "$pkgdir/usr/bin/vesktop"
 
   install -Dm 644 "vesktop.desktop" "$pkgdir/usr/share/applications/vesktop.desktop"
-  install -Dm 644 "$_pkgname-$pkgver/static/icon.png" "$pkgdir/usr/share/pixmaps/vesktop.png"
-  install -Dm 644 "$_pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm 644 "$_pkgname/static/icon.png" "$pkgdir/usr/share/pixmaps/vesktop.png"
+  install -Dm 644 "$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

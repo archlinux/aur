@@ -17,11 +17,11 @@ pkgbase = vesktop_electron
 	conflicts = vesktop
 	conflicts = vesktop-bin
 	conflicts = vesktop-git
-	source = https://github.com/Vencord/Vesktop/archive/refs/tags/v1.5.3.tar.gz
+	source = git+https://github.com/Vencord/Vesktop#tag=v1.5.3
 	source = vesktop.desktop
 	source = vesktop.sh
-	sha256sums = 615ed9275a03974a0c6486c0095cfcd0af246363a4f62ec0bdc985c763cc6334
+	sha256sums = 60978a279e0222aaa3f488999c6d450d354a9ee9de3ae9a59defc482556be909
 	sha256sums = f279b1e469fb965cdf6dba9b4f428b0a7f28f414d84a47c6481b726adeb99c2b
-	sha256sums = 7b3853ee6574bda3d20f34df0b7977db5bd8d7b3a111e44caff2698a3cafae2b
+	sha256sums = ddbce99e54937503d8e2c23098eadbb4c0b4b081885c068ceaa20730939ddf29
 
 pkgname = vesktop_electron
