@@ -5,13 +5,13 @@
 
 pkgname=python-pyo
 pkgver=1.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Python DSP module'
 arch=('x86_64')
 url="http://ajaxsoundstudio.com/software/pyo/"
 license=('GPL')
 depends=('python' 'portmidi' 'portaudio' 'liblo' 'libsndfile')
-makedepends=('python-setuptools')
+makedepends=('git' 'python-setuptools')
 optdepends=('wxpython: wxWidgets GUI')
 provides=("pyo=$pkgver" "python-pyo=$pkgver")
 conflicts=('pyo')
