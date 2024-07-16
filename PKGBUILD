@@ -2,8 +2,8 @@
 
 _npmname=less-plugin-clean-css
 pkgname=nodejs-$_npmname
-pkgver=1.5.1
-pkgrel=3
+pkgver=1.6.0
+pkgrel=1
 pkgdesc='Post-process and compress CSS using clean-css'
 arch=(any)
 url="https://github.com/less/$_npmname"
@@ -13,7 +13,7 @@ depends=(nodejs
          nodejs-clean-css)
 makedepends=(jq moreutils npm)
 source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
-sha256sums=('c5cd0dbe94303e4660f89540ae6f5d28f197272f11b57744a1b5dccb4f398830')
+sha256sums=('577de8336c284d6cb454cd6dd71910a2fc85d9a05b5c9e15efc598de89848dda')
 noextract=("$_npmname-$pkgver.tgz")
 
 package() {
