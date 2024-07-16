@@ -11,6 +11,7 @@ Target = usr/share/libalpm/hooks/90-dracut-ukify-install.hook
 Target = usr/bin/dracut-ukify
 Target = usr/src/*/dkms.conf
 Target = usr/lib/firmware/*
+Target = boot/*-ucode.img
 
 [Action]
 Description = Ensure ESP is mounted...
