@@ -1,22 +1,44 @@
-# Maintainer: Aliaksandr Mianzhynski <amenzhinsky@gmail.com>
-pkgname=protoc-gen-go
-pkgver=1.30.0
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: Aliaksandr Mianzhynski <amenzhinsky@gmail.com>
+
+pkgname="protoc-gen-go"
+pkgver=1.34.2
 pkgrel=1
 pkgdesc="Go support for Google's protocol buffers"
-arch=("any")
+arch=('any')
 url="https://github.com/protocolbuffers/protobuf-go"
-license=('BSD')
+license=('BSD-3-Clause')
+depends=('glibc')
+makedepends=('go')
 optdepends=('protobuf: protoc generator')
-#makedepends=('go')
-source=("https://github.com/protocolbuffers/protobuf-go/archive/v${pkgver}.tar.gz")
+_pkgsrc="protobuf-go-${pkgver}"
+source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('a91d3129e38945b612b7a377364dae324ed3a489c3a805a412805a0cee76e7a2')
+
+prepare() {
+  cd "${srcdir}/${_pkgsrc}"
+  mkdir -p "build"
+}
 
 build() {
-	cd protobuf-go-${pkgver}
-	go build -trimpath -buildmode=pie -mod=readonly -modcacherw ./cmd/protoc-gen-go
+  cd "${srcdir}/${_pkgsrc}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build -o "build/${pkgname}" ./"cmd/${pkgname}"
+}
+
+check() {
+  cd "${srcdir}/${_pkgsrc}"
+  go test ./...
 }
 
 package() {
-	install -Dm755 "protobuf-go-${pkgver}/protoc-gen-go" "${pkgdir}/usr/bin/protoc-gen-go"
+  cd "${srcdir}/${_pkgsrc}"
+  install -Dm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "PATENTS" "${pkgdir}/usr/share/licenses/${pkgname}/PATENTS"
 }
-
-sha256sums=('3279a16ec3bdd7c53fe1599134de298ed90d9f3b6ec1c1eb5f3b76ba5aaa9f0c')
