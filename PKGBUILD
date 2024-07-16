@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 # Contributor: Julien Savard <juju@juju2143.ca>
 pkgname=numworks-epsilon
-pkgver=23.2.2
+pkgver=23.2.3
 pkgrel=1
 pkgdesc="A simulator for the Numworks graphic calculator (Epsilon firmware)"
 arch=('x86_64')
@@ -40,7 +40,7 @@ source=(
 	'LICENSE.regularized_incomplete_beta_function'
 )
 
-md5sums=('4a53a6e6639d2176dc20c7ae007bab53'
+md5sums=('6a91c232b266e974b7df2bed7c27b7cc'
          'b5c7595f793a0c8b7758f4ff0152cffb'
          'd9881740850078297bfa270e674e6e99'
          '2e03fc45154ee59aeb4c78809e7ee696'
