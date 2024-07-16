@@ -1,0 +1,21 @@
+pkgbase = aura3-bin
+	pkgdesc = A secure package manager for Arch Linux and the AUR - Haskell-series Prebuilt binary
+	pkgver = 3.2.10
+	pkgrel = 1
+	url = https://github.com/fosskers/aura
+	arch = x86_64
+	license = GPL3
+	depends = gmp
+	depends = pacman
+	depends = git
+	optdepends = bash-completion: for bash completions
+	provides = aura
+	conflicts = aura
+	conflicts = aura-git
+	conflicts = aura-bin
+	options = strip
+	backup = etc/aura.conf
+	source = aura-3.2.10-x86_64.tar.gz::https://github.com/fosskers/aura/releases/download/v3.2.10/aura-3.2.10-x86_64.tar.gz
+	sha256sums = 95a26cf14b24740aab6beb004c62d0c7dcbc5c674dc1025f37e492163bff432b
+
+pkgname = aura3-bin
