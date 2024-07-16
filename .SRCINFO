@@ -1,7 +1,7 @@
 pkgbase = savilerow-bin
 	pkgdesc = A modelling assistant for Constraint Programming
 	pkgver = 1.10.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www-users.york.ac.uk/peter.nightingale/savilerow
 	arch = x86_64
 	license = GPL-3.0-or-later AND MIT AND GPL-2.0-or-later
@@ -9,8 +9,8 @@ pkgbase = savilerow-bin
 	depends = bash
 	provides = savilerow
 	source = savilerow-bin-1.10.0.tar.gz::https://www-users.york.ac.uk/peter.nightingale/savilerow/savilerow-1.10.0-linux.tgz
-	source = savilerow-shim.sh
+	source = savilerow.sh
 	sha256sums = 3eedd957803ca783ef2e3a075408b4b029594a388ea0ae29c57651cc26c8836b
-	sha256sums = a26d063017332f8aa2960fc4bd2713d3087f13ce1f9c29366f35135f26a43ffd
+	sha256sums = fac0443361d1aac54d72f7773707854fe598da654077ff36096cb6d8fc951cb1
 
 pkgname = savilerow-bin
