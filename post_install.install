@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+
+post_install() {
+    echo "Remember to install the VSCodium Extension and configure the settings in 'settings.json'"
+    echo "Extension is in '/usr/share/typst-languagetool-lsp-git/generic-lsp-0.0.1.vsix'"
+    echo "Example settings in '/usr/share/typst-languagetool-lsp-git/settings.json'"
+}
