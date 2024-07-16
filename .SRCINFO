@@ -1,7 +1,7 @@
 pkgbase = clash-verge
 	pkgdesc = A Clash Meta GUI based on Tauri, Continuation of Clash Verge
 	pkgver = 1.7.5
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/clash-verge-rev/clash-verge-rev
 	arch = x86_64
 	arch = aarch64
@@ -12,6 +12,7 @@ pkgbase = clash-verge
 	makedepends = rust
 	depends = cairo
 	depends = clash-geoip
+	depends = meta-rules-dat
 	depends = clash-meta
 	depends = gcc-libs
 	depends = gdk-pixbuf2
