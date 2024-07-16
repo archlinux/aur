@@ -1,5 +1,5 @@
 pkgname=privatebin
-pkgver=1.7.3
+pkgver=1.7.4
 pkgrel=1
 pkgdesc="a minimalist, open source online pastebin where the server has zero knowledge of pasted data"
 url='https://privatebin.info'
@@ -8,7 +8,7 @@ license=("zlib")
 depends=("php" "php-gd")
 options=("emptydirs")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/PrivateBin/PrivateBin/archive/$pkgver.tar.gz")
-md5sums=('4f6e263b82643b9579f81e5b3efe662f')
+md5sums=('f2e250af4a4aa29ed10925f0ee89b254')
 
 package(){
     cd PrivateBin-$pkgver
