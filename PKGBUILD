@@ -16,7 +16,7 @@ makedepends=(
 # !debug seems necessary on some systems too: https://gitlab.archlinux.org/archlinux/packaging/packages/pacman/-/issues/19
 options=(!strip !debug)
 
-_appimage_sum="62ad49d8698f278216404a33a811568fbfce13ebdbcadbaa539494ec7d0ce71ff5688b4f040353b5430741b1c8d804bd4842658a39244f356a2fff65ac6c9b74"
+_appimage_sum="3c86ee4019215bda7baed8f68ed6154553530467832ec377a08e58cbeb9a2908b71eb161480d010581ae8a4740a00036cdea6ae9a9e078b4abfa70eaa1762d6c"
 _filename="simplex-desktop-${arch}-${pkgver}-${_appimage_sum}.AppImage"
 _squashfs_desktop_file="chat.simplex.app.desktop"
 _desktop_file="/usr/share/applications/simplex-desktop.desktop"
