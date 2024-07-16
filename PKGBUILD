@@ -1,7 +1,7 @@
 # Maintainer: f <f@localhost>
 
 pkgname=postgrest-bin
-pkgver=12.0.2
+pkgver=12.2.2
 pkgrel=1
 epoch=
 pkgdesc="REST API for any Postgres database"
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("https://github.com/PostgREST/postgrest/releases/download/v$pkgver/postgrest-v$pkgver-linux-static-x64.tar.xz")
 noextract=()
-sha512sums=('4c3989b15d8a724a2d4ad60d60531b8335d041dd337e6e8d2d901d99bdd589feb041b28075fbae0d69e916cc5a45dcd35296266d0a3a494307ca8f3e1c108835')
+sha512sums=('5f177059624e19d31924d336ffdf4e89666f9a5e0de38576960144dcb8907539853a2464aba5d2156300d35ade8318365cb5b781e0373e5355026907aede8580')
 validpgpkeys=()
 
 package() {
