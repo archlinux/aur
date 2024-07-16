@@ -6,15 +6,10 @@ pkgbase = python-pypdf2
 	url = https://pypi.org/project/PyPDF2
 	arch = any
 	license = BSD
-	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-flit-core
-	depends = python-pillow
-	depends = python-cryptography
-	depends = python-pycryptodome
-	depends = python-typing_extensions
 	source = https://files.pythonhosted.org/packages/source/P/PyPDF2/PyPDF2-3.0.1.tar.gz
 	sha256sums = a74408f69ba6271f71b9352ef4ed03dc53a31aa404d29b5d31f53bfecfee1440
 
