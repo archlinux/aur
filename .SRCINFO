@@ -1,9 +1,8 @@
 pkgbase = netradiant-custom
 	pkgdesc = The open-source, cross-platform level editor for id Tech based games (NetRadiant fork)
-	pkgver = 20240704
+	pkgver = 20240714
 	pkgrel = 1
 	url = https://garux.github.io/NRC/
-	arch = i686
 	arch = x86_64
 	license = Apache-2.0
 	license = BSD-3-Clause
@@ -29,7 +28,7 @@ pkgbase = netradiant-custom
 	provides = q2map_nrc
 	provides = q3map2_nrc
 	provides = qdata3_nrc
-	source = git+https://github.com/Garux/netradiant-custom.git#commit=a2bdefccd353635a04a5ee6b6e6bcc6471650a27
+	source = git+https://github.com/Garux/netradiant-custom.git#commit=7ee5bfdad8baf3b3d2748e36393415a210ca8a00
 	source = netradiant-custom.desktop
 	sha256sums = SKIP
 	sha256sums = ec1256d5eb657b1e17ebb4ce1280598077b9c350408f9d778f41d5a30b3924e4
