@@ -4,7 +4,7 @@
 
 pkgname=kamailio
 pkgver=5.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc='SIP Server for large VoIP and real-time communication platforms'
 arch=('x86_64')
 url='https://www.kamailio.org'
@@ -98,8 +98,8 @@ build() {
 		# standard
 		dialplan lcr outbound utils regex uuid
 	)
-	make prefix='/usr' cfg_prefix="${pkgdir}" run_prefix='/run' run_dir='kamailio' \
-		LIBDIR='lib' include_modules='${KAMODULES[@]}' all
+	make prefix='/usr' cfg_prefix="${pkgdir}" cfg_target='/etc/kamailio/' \
+		run_prefix='/run' run_dir='kamailio' LIBDIR='lib' include_modules='${KAMODULES[@]}' all
 }
 
 package() {
