@@ -1,9 +1,10 @@
 pkgbase = libastal-mpris-git
 	pkgdesc = Library and cli tool for controlling media players
-	pkgver = r1.0a34dd3
+	pkgver = r7.ce7152d
 	pkgrel = 1
 	url = https://github.com/astal-sh/mpris
 	arch = x86_64
+	groups = libastal
 	license = GPL-3
 	makedepends = meson
 	makedepends = git
