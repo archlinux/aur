@@ -5,7 +5,7 @@ pkgbase=litecoin-git
 pkgname=('litecoin-daemon-git' 'litecoin-cli-git' 'litecoin-qt-git' 'litecoin-tx-git')
 git_branch=0.21
 pkgver=0.21.3+0+gcd1660afaf
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="http://www.litecoin.org/"
 license=('MIT')
@@ -13,6 +13,7 @@ makedepends=(
   boost
   db5.3
   git
+  fmt
   libevent
   libzmq.so
   libminiupnpc.so
@@ -26,15 +27,18 @@ source=(
   'litecoin-qt.desktop'
   'litecoind.service'
   'litecoin.sysusers'
+  'miniupnpc.patch'
 )
 sha256sums=('SKIP'
             'ec2a2669a50fa96147a1d04cacf1cbc3d63238aee97e3b0df3c6f753080dae96'
             '98f5a1b28fe13b9093fa89cfe56bb84af09ff5f0d6e9ca196ec02d6dd826ca88'
-            'a722b958a7e9b3468d902efa6c9804e01d78fdf88ead4252c934aee2b1d800db')
+            'a722b958a7e9b3468d902efa6c9804e01d78fdf88ead4252c934aee2b1d800db'
+            '82497ba013364c98e2390f5fc76ad7f67d7757f705347db7b34134e21c3ab089')
 
 
 prepare() {
   cd "$pkgbase"
+  git apply ../miniupnpc.patch
   autoreconf -fi
 }
 
