@@ -1,5 +1,5 @@
 pkgbase = verdi-git
-	pkgdesc = Verdi Wayland compositor
+	pkgdesc = The elegant Wayland compositor
 	pkgver = r143.8fa0245
 	pkgrel = 1
 	url = https://github.com/verdiwm/verdi

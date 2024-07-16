@@ -3,7 +3,7 @@
 pkgname=verdi-git
 pkgver=r143.8fa0245
 pkgrel=1
-pkgdesc="Verdi Wayland compositor"
+pkgdesc="The elegant Wayland compositor"
 arch=('x86_64' 'aarch64')
 url="https://github.com/verdiwm/verdi"
 license=('Apache-2.0')
