@@ -2,15 +2,15 @@
 # Maintainer:  Kevin Stephen <kizunaaisesu [at] gmail [dot] com>
 
 pkgname=systemmodeler
-pkgver=13.3.0
+pkgver=14.0.0
 pkgrel=1
 pkgdesc="An easy-to-use, next-generation modeling and simulation environment for cyber-physical systems."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://www.wolfram.com/system-modeler/"
 license=('proprietary')
 source=("file://SystemModeler_${pkgver}_LINUX.sh")
-md5sums=('9320dfdc55bf0e79aecb9fbf5a0b09cc')
-checkdepends=('md5sum')
+md5sums=('af9aab6267a49c44959312455f9d816e')
+checkdepends=('coreutils')
 install='systemmodeler.install'
 options=('!strip')
 
@@ -36,10 +36,10 @@ package() {
 
   cd ${pkgdir}/opt/SystemModeler/SystemFiles/Installation
 
-  sed -i 's/^[ \t]*//' wolfram-wsm13.desktop
-  sed -i "s@$pkgdir@@" wolfram-wsm13.desktop
+  sed -i 's/^[ \t]*//' com.wolfram.SystemModeler.14.0.desktop
+  sed -i "s@$pkgdir@@" com.wolfram.SystemModeler.14.0.desktop
 
-  cp wolfram-wsm13.desktop ${pkgdir}/usr/share/applications/
+  cp com.wolfram.SystemModeler.14.0.desktop ${pkgdir}/usr/share/applications/
   cp wolfram-wsm.directory ${pkgdir}/usr/share/desktop-directories/
   cp *.xml ${pkgdir}/usr/share/mime/packages/
 
@@ -65,5 +65,3 @@ package() {
 
   echo "Done."
 }
-
-# vim:set ts=2 sw=2 et:
