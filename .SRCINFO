@@ -10,8 +10,8 @@ pkgbase = chatterino2-7tv-bin
 	optdepends = streamlink: For piping streams to video players
 	optdepends = pulseaudio: For audio output
 	optdepends = gst-plugins-good: For audio output
-	provides = chatterino2-7tv
-	conflicts = chatterino2-7tv
+	provides = chatterino2
+	conflicts = chatterino2
 	source_x86_64 = chatterino2-7tv-7.5.1_x64.deb::https://github.com/Seventv/chatterino7/releases/download/v7.5.1/Chatterino-Ubuntu-22.04-Qt6.deb
 	sha256sums_x86_64 = 45c1a83764f810e46b90d326d75d7092d7a578d0d4b31e65cdd76c55673f1da1
 
