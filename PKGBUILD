@@ -9,7 +9,7 @@ url="https://codeberg.org/libre-menu-editor/libre-menu-editor"
 license=("GPL3")
 depends=("python" "python-gobject" "gtk4" "libadwaita" "xdg-utils")
 makedepends=("git" "make")
-source=("git+https://codeberg.org/libre-menu-editor/libre-menu-editor")
+source=("git+${url}.git#tag=v${pkgver}")
 sha256sums=("SKIP")
 
 package() {
