@@ -1,0 +1,13 @@
+pkgbase = cilo
+	pkgdesc = A simple text editor in C
+	pkgver = r4.c436f52
+	pkgrel = 1
+	url = https://git.gay/StrawberryPup/cilo
+	arch = x86_64
+	license = MPL-2.0-no-copyleft-exception
+	makedepends = git
+	depends = glibc
+	source = cilo::git+https://git.gay/StrawberryPup/cilo
+	sha256sums = SKIP
+
+pkgname = cilo

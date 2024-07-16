@@ -24,12 +24,12 @@ prepare() {
 
 build() {
   cd "$pkgname"
-  make release
+  make
 }
 
 package() {
   cd "$pkgname"
-  install -Dm 755 build/cilo "$pkgdir/usr/bin"
+  install -Dm 755 build/cilo -t "$pkgdir/usr/bin/"
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -Dm 644 README.org -t "$pkgdir/usr/share/doc/$pkgname/"
 }
