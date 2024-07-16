@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-greeter-git
-pkgver=r74.d133e60
+pkgver=r122.59e2eaa
 pkgrel=1
 pkgdesc="libcosmic greeter for greetd, which can be run inside cosmic-comp"
 arch=('x86_64' 'aarch64')
@@ -18,6 +18,7 @@ makedepends=(
   'cargo'
   'clang'
   'git'
+  'git-lfs'
   'just'
   'mold'
 )
@@ -36,6 +37,11 @@ prepare() {
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   just vendor
+
+  git lfs install --local
+  git remote add network-origin https://github.com/pop-os/cosmic-greeter
+  git lfs fetch network-origin
+  git lfs checkout
 }
 
 build() {
