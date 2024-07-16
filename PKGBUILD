@@ -1,7 +1,7 @@
 # Maintainer: Šimon Hacaj <hacajsimon@gmail.com>
 pkgname="sail-img"
 pkgver=0.9.5
-pkgrel=1
+pkgrel=2
 pkgdesc="The missing small and fast image decoding library for humans (not for machines)"
 arch=(x86_64)
 url="https://github.com/HappySeaFox/sail"
@@ -32,10 +32,6 @@ build() {
 package() {
 	cd "${srcdir}/sail-${pkgver}/build"
 	make DESTDIR="$pkgdir/" install
-
-  mv "$pkgdir/usr/include/sail" "$pkgdir/usr/include/sail-tmp"
-  mv "$pkgdir/usr/include/sail-tmp/"** "$pkgdir/usr/include/"
-  rm -r "$pkgdir/usr/include/sail-tmp"
 
   install -D -m644 ../LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
