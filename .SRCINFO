@@ -7,6 +7,5 @@ pkgbase = moza-ff-dkms-git
 	license = GPL2
 	depends = universal-pidff-dkms-git
 	depends = boxflat-git
-	sha256sums = SKIP
 
 pkgname = moza-ff-dkms-git

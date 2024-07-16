@@ -13,9 +13,7 @@ depends=(
 )
 makedepends=()
 source=()
-sha256sums=(
-  'SKIP'
-)
+sha256sums=()
 
 package() {
   echo "Hello!"
