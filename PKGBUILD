@@ -8,7 +8,7 @@
 # Profile with xvfb-run, if possible
 : ${_build_pgo_xvfb:=false}
 
-_pkgver=11.14.1-1
+_pkgver=11.15.0-1
 _pkgrel=1
 
 pkgname=firedragon
@@ -37,7 +37,7 @@ depends=(dbus
   ttf-font
   zlib)
 makedepends=(cbindgen
-  clang
+  clang17
   diffutils
   dump_syms
   imagemagick
@@ -45,15 +45,15 @@ makedepends=(cbindgen
   inetutils
   git
   jack
-  lld
-  llvm
+  lld17
+  llvm17
   mesa
   mold
   nasm
   nodejs
   python
   unzip
-  wasi-compiler-rt
+  wasi-compiler-rt17
   wasi-libc
   wasi-libc++
   wasi-libc++abi
@@ -77,7 +77,7 @@ options=(!debug
   !strip)
 backup=("usr/lib/${pkgname}/${pkgname}.cfg"
   "usr/lib/${pkgname}/distribution/policies.json")
-source=(https://gitlab.com/api/v4/projects/55893651/packages/generic/firedragon/${_pkgver}/firedragon-v${_pkgver}.source.tar.zst
+source=(https://gitlab.com/garuda-linux/firedragon/builder/-/releases/v${_pkgver}/downloads/firedragon-v${_pkgver}.source.tar.zst
   patch-python3.12-bug1831512.patch
   patch-python3.12-bug1860051.patch
   patch-python3.12-bug1866829.patch
@@ -85,7 +85,7 @@ source=(https://gitlab.com/api/v4/projects/55893651/packages/generic/firedragon/
   rustup.sh::https://sh.rustup.rs
   https://gitlab.com/garuda-linux/firedragon/settings/-/raw/master/firedragon.psd
   https://gitlab.com/garuda-linux/firedragon/settings/-/raw/master/firedragon.desktop)
-sha256sums=('b23aa519337381120f6a5f95bff8e4000c2f4cf4ae49e71a857302ce0b444115'
+sha256sums=('4282968e77c7d402a135604ab7d5e155bbc34cbfecef18cb8c464086dc8a3c3d'
             '9516c36c145d365c3b65153d83a5b3b0dd8a319b5c30d47a390070892bd431b3'
             '168d16a027a81c311c58f9302858244dfa5517f0a95a8d3df1abbf9b93b9d455'
             'df27ed1e0da5b192224978dc2a593a97e18e6e22062c611fc32b277500324e62'
@@ -120,6 +120,8 @@ prepare() {
   patch -Nsp1 -i "${srcdir}/patch-python3.12-bug1860051.patch"
   patch -Nsp1 -i "${srcdir}/patch-python3.12-bug1866829.patch"
   patch -Nsp1 -i "${srcdir}/patch-python3.12-bug1874280.patch"
+
+  export LD_LIBRARY_PATH=/usr/lib/llvm17/lib
 
   cat > ../mozconfig << END
 ac_add_options --with-app-basename=${_pkgname}
@@ -200,11 +202,11 @@ ac_add_options OPT_LEVEL="3"
 ac_add_options RUSTC_OPT_LEVEL="3"
 
 # Other
-export AR=llvm-ar
-export CC=clang
-export CXX=clang++
-export NM=llvm-nm
-export RANLIB=llvm-ranlib
+export AR=/usr/lib/llvm17/bin/llvm-ar
+export CC=/usr/lib/llvm17/bin/clang
+export CXX=/usr/lib/llvm17/bin/clang++
+export NM=/usr/lib/llvm17/bin/llvm-nm
+export RANLIB=/usr/lib/llvm17/bin/llvm-ranlib
 END
 }
 
