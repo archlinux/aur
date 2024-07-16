@@ -2,7 +2,7 @@
 
 _pkgname="clipse"
 pkgname="${_pkgname}-bin"
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="A configurable TUI clipboard manager for Unix"
 arch=('x86_64' 'i686' 'aarch64')
@@ -17,9 +17,9 @@ _pkgsrc="${_pkgname}-${pkgver}"
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.tar.gz")
 source_i686=("${_pkgsrc}-i686.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_386.tar.gz")
 source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('a4b5ea9e1d586fa4c4567abbe643de666e74312a76700258b53d2b53499197df')
-sha256sums_i686=('b28d88418b9d7ccff696ada1cf03914c7a9587276c604b5fa4af5b03a9bc4605')
-sha256sums_aarch64=('811b0fe77837d00d514aecd16866609dc0fe9a018f27016ecbefe9dbd601e0f6')
+sha256sums_x86_64=('2938c300bcb4350b97c872a7350f6886b1214778fe27654efe5cc6d892fafe40')
+sha256sums_i686=('254c7d34f6f29454a2561b274105a55d5c7855726963709dcb0a7301b511fa99')
+sha256sums_aarch64=('1c70ed2d331fe9133957927f96d50354393df47252f6f29bc4c35407eb6a6dcc')
 
 package() {
   cd "${srcdir}"

@@ -1,6 +1,6 @@
 pkgbase = clipse-bin
 	pkgdesc = A configurable TUI clipboard manager for Unix
-	pkgver = 1.0.7
+	pkgver = 1.0.8
 	pkgrel = 1
 	url = https://github.com/savedra1/clipse
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = clipse-bin
 	optdepends = wl-clipboard: for Wayland clipboard support
 	provides = clipse
 	conflicts = clipse
-	source_x86_64 = clipse-1.0.7-x86_64.tar.gz::https://github.com/savedra1/clipse/releases/download/v1.0.7/clipse_1.0.7_linux_amd64.tar.gz
-	sha256sums_x86_64 = a4b5ea9e1d586fa4c4567abbe643de666e74312a76700258b53d2b53499197df
-	source_i686 = clipse-1.0.7-i686.tar.gz::https://github.com/savedra1/clipse/releases/download/v1.0.7/clipse_1.0.7_linux_386.tar.gz
-	sha256sums_i686 = b28d88418b9d7ccff696ada1cf03914c7a9587276c604b5fa4af5b03a9bc4605
-	source_aarch64 = clipse-1.0.7-aarch64.tar.gz::https://github.com/savedra1/clipse/releases/download/v1.0.7/clipse_1.0.7_linux_arm64.tar.gz
-	sha256sums_aarch64 = 811b0fe77837d00d514aecd16866609dc0fe9a018f27016ecbefe9dbd601e0f6
+	source_x86_64 = clipse-1.0.8-x86_64.tar.gz::https://github.com/savedra1/clipse/releases/download/v1.0.8/clipse_1.0.8_linux_amd64.tar.gz
+	sha256sums_x86_64 = 2938c300bcb4350b97c872a7350f6886b1214778fe27654efe5cc6d892fafe40
+	source_i686 = clipse-1.0.8-i686.tar.gz::https://github.com/savedra1/clipse/releases/download/v1.0.8/clipse_1.0.8_linux_386.tar.gz
+	sha256sums_i686 = 254c7d34f6f29454a2561b274105a55d5c7855726963709dcb0a7301b511fa99
+	source_aarch64 = clipse-1.0.8-aarch64.tar.gz::https://github.com/savedra1/clipse/releases/download/v1.0.8/clipse_1.0.8_linux_arm64.tar.gz
+	sha256sums_aarch64 = 1c70ed2d331fe9133957927f96d50354393df47252f6f29bc4c35407eb6a6dcc
 
 pkgname = clipse-bin
