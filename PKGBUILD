@@ -1,8 +1,8 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Evan Edwards <evan@ejedev.com>
 
 pkgname=python-boltons
-pkgver=23.1.1
-_commit=9005642440e1479dd26c2c5d64c27f596445aaac
+pkgver=24.0.0
+_commit=992a58c1036fcf4d52cbf3313b6217b7c07b11d9
 pkgrel=1
 pkgdesc="Functionality that should be in the standard library. Like builtins, but Boltons."
 url="https://github.com/mahmoud/boltons"
