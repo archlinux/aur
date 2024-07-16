@@ -3,7 +3,7 @@
 pkgname=platypush-git
 _pkgname=platypush
 pkgver=1.1.3.r10.g4c4e29b3
-pkgrel=1
+pkgrel=2
 pkgdesc="A general-purpose, event-driven, plugin-based platform for automation-as-code"
 arch=('any')
 license=('MIT')
@@ -35,8 +35,6 @@ depends=(
     'python-websockets'
     'python-yaml'
     'python-zeroconf'
-    'redis'
-    'sudo'
 )
 
 optdepends=(
@@ -118,7 +116,7 @@ pkgver() {
 
 package() {
     cd "${srcdir}/${_pkgname}"
-    PYTHONDONTWRITEBYTECODE=1 python3 setup.py install --root="${pkgdir}/" --optimize=1
+    PYTHONDONTWRITEBYTECODE=1 python3 setup.py install --root="${pkgdir}/" --prefix=/usr --optimize=1
 
     install -m750 -d "${pkgdir}/var/lib/platypush"
     install -m755 -d "${pkgdir}/usr/lib/systemd/system"
