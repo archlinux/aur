@@ -3,7 +3,7 @@
 
 pkgname=vinegar
 pkgver=1.7.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and robust bootstrapper for Roblox that has many ease-of-use features."
 arch=("x86_64")
 url="https://vinegarhq.org"
@@ -32,12 +32,12 @@ build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
 
-  make DESTDIR="${pkgdir}" PREFIX="/usr" BINPREFIX="${PREFIX}/lib/vinegar" all
+  make DESTDIR="${pkgdir}" PREFIX="/usr" BINPREFIX="/usr/lib/vinegar" all
 }
 
 package() {
   cd "${pkgname}-v${pkgver}"
 
-  make PREFIX="/usr" BINPREFIX="${PREFIX}/lib/vinegar" DESTDIR="${pkgdir}" install
+  make PREFIX="/usr" BINPREFIX="/usr/lib/vinegar" DESTDIR="${pkgdir}" install
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
