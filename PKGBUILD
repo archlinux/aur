@@ -1,13 +1,13 @@
 # Maintainer: Rigel Kent <sendmemail at rigelk dot eu>
 # Maintainer: Pierre-Alain TORET <pierre-alain.toret at protonmail dot com>
 pkgname=peertube
-pkgver=6.1.0
+pkgver=6.2.0
 pkgrel=1
 pkgdesc="ActivityPub-federated video streaming platform using P2P directly in your web browser"
 arch=("x86_64")
 url="https://joinpeertube.org/"
 license=("AGPL")
-depends=("nodejs>=14" "ffmpeg>=4.4.1" "postgresql" "openssl" "redis" "npm" "yarn")
+depends=("nodejs>=14" "ffmpeg>=4.4.1" "postgresql" "python-pip" "openssl" "redis" "npm" "yarn")
 makedepends=("yarn" "python" "git")
 backup=("etc/peertube/production.yaml")
 #options=("!strip")
@@ -16,7 +16,7 @@ source=("https://github.com/Chocobozzz/PeerTube/releases/download/v$pkgver/$pkgn
         "$pkgname.tmpfiles"
         "$pkgname.sysusers"
         "$pkgname")
-b2sums=('3d1a569e388f872033176abeea7eadfa18459252772c38ef464e9eed94feb072d0ecc52f3ec85ca514d9ed7057f1c7c5ff71b21536703172a7733f02ac77b642'
+b2sums=('fa9cc33764928b221a774654765da7e2ee23fa0e4780adf6cb3e8759fc2cf7882ad2673b5c5662378d60b2ab4c5c4f12833ec04bf401b5a528395da32fc90637'
         'SKIP'
         '10531710848bf58892fb0cefc3bc08b63b05231ece16cb143c2eae48d2d6d6c64613cf72303116701ece32b64cdbe64acffeca25030a4f2edde26f29de0360d0'
         '287a1a1b8f279b4f50d02f73b8069c39c49e6d79917f912f6f57db900064b34de91af0a5c0ee2fd743d130dc07e557b582222351491b605c7f5982c03b84b4c3'
