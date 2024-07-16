@@ -8,7 +8,7 @@ Before=iio-sensor-proxy.service
 User=fastrpc
 Group=fastrpc
 EnvironmentFile=/etc/conf.d/hexagonrpcd-adsp-sensorpd
-ExecStart=/usr/bin/hexagonrpcd -f /dev/fastrpc-adsp -s -R $(hexagonrpcd_fw_dir)
+ExecStart=/usr/bin/hexagonrpcd -f /dev/fastrpc-adsp -s -R ${hexagonrpcd_fw_dir}
 
 [Install]
 WantedBy=multi-user.target
