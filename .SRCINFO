@@ -1,8 +1,8 @@
 pkgbase = hyprland-easyfocus
 license = MIT
-pkgdesc = A tool to help efficiently focus windows in Sway inspired by sway-easyfocus/i3-easyfocus
+pkgdesc = A tool to help efficiently focus windows in Hyprland inspired by sway-easyfocus/i3-easyfocus
 pkgver = 0.2.2
-pkgrel = 3
+pkgrel = 4
 url = https://github.com/abenz1267/hyprland-easyfocus
 arch = x86_64
 provides = hyprland-easyfocus

@@ -2,8 +2,8 @@
 
 pkgname=hyprland-easyfocus
 pkgver=0.2.2
-pkgrel=3
-pkgdesc='A tool to help efficiently focus windows in Sway inspired by sway-easyfocus/i3-easyfocus.'
+pkgrel=4
+pkgdesc='A tool to help efficiently focus windows in Hyprland inspired by sway-easyfocus/i3-easyfocus.'
 url='https://github.com/abenz1267/hyprland-easyfocus'
 arch=('x86_64')
 license=('MIT')
