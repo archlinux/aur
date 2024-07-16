@@ -7,7 +7,7 @@ _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libbs2b
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Bauer stereophonic-to-binaural DSP effect library (Android ${_android_arch})"
 url="http://bs2b.sourceforge.net"
@@ -21,7 +21,7 @@ md5sums=('00d32ffa6461dde6a632c846da3e0a13'
          'af1c91f47bd7481cd71fc38a3a35f0e7')
 
 prepare() {
-    cd "${srcdir}/libbs2b-$pkgver"
+    cd "${srcdir}/libbs2b-${pkgver}"
     source android-env ${_android_arch}
 
     # Fix error: format not a string literal and no format arguments [-Werror=format-security]
@@ -33,8 +33,10 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}/libbs2b-$pkgver"
+    cd "${srcdir}/libbs2b-${pkgver}"
     source android-env ${_android_arch}
+
+    export ac_cv_func_malloc_0_nonnull=yes
 
     android-${_android_arch}-configure
     sed -i 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
@@ -42,7 +44,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/libbs2b-$pkgver"
+    cd "${srcdir}/libbs2b-${pkgver}"
     source android-env ${_android_arch}
 
     make DESTDIR="$pkgdir" install
