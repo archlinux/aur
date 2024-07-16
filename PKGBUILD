@@ -1,14 +1,13 @@
 # Maintainer: curlpipe <11898833+curlpipe@users.noreply.github.com>
 pkgname=ox-git
 _pkgname=${pkgname%-git}
-pkgver=0.2.7
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="An independent Rust text editor that runs in your terminal!"
 arch=('any')
 url="https://github.com/curlpipe/ox"
 license=("GPLv2")
 makedepends=("git" "cargo")
-depends=("ttf-nerd-fonts-symbols-mono")
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 source=("${_pkgname}::git+${url}")
