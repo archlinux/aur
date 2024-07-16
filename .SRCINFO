@@ -8,6 +8,7 @@ pkgbase = xwaylandvideobridge-git
 	makedepends = extra-cmake-modules
 	makedepends = kdoctools
 	makedepends = knotifications
+	makedepends = git
 	depends = glibc
 	depends = gcc-libs
 	depends = qt6-base

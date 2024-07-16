@@ -26,6 +26,7 @@ makedepends=(
   extra-cmake-modules
   kdoctools
   knotifications
+  git
 )
 conflicts=(xwaylandvideobridge)
 source=("git+https://invent.kde.org/system/xwaylandvideobridge.git")
