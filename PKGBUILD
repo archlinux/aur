@@ -2,14 +2,14 @@
 _pkgname=xdg-terminal-exec
 pkgname=xdg-terminal-exec-mkhl
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="xdg-terminal-exec rewritten in rust"
 arch=(i686 x86_64 armv6h armv7h)
 url="https://codeberg.org/mkhl/xdg-terminal-exec/"
-license=(GPL3)
+license=(GPL-3.0-only)
 groups=()
-depends=()
+depends=(glibc gcc-libs)
 makedepends=(cargo)
 checkdepends=()
 optdepends=()
