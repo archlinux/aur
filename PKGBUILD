@@ -10,6 +10,7 @@ url="https://github.com/clash-verge-rev/clash-verge-rev"
 license=('GPL3')
 depends=('webkit2gtk' 'gtk3' 'libayatana-appindicator')
 conflicts=("$_pkgname-bin" "$_pkgname-alpha" "$_pkgname-git" "clash-verge" "clash-verge-bin")
+install=.install
 
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/alpha/clash-verge_${pkgver}_amd64.deb")
 source_i686=("${_pkgname}-${pkgver}-i686.deb::${url}/releases/download/alpha/clash-verge_${pkgver}_i386.deb")
