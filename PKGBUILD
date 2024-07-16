@@ -1,6 +1,7 @@
 # Maintainer: Pylogmon <pylogmon@outlook.com>
 
 pkgname=clash-verge-rev
+_pkgname=${pkgname%-rev}
 pkgver=1.7.5
 pkgrel=3
 pkgdesc="Continuation of Clash Verge | A Clash Meta GUI based on Tauri"
@@ -8,7 +9,7 @@ arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://github.com/clash-verge-rev/clash-verge-rev"
 license=('GPL3')
 depends=('webkit2gtk' 'gtk3' 'libayatana-appindicator')
-conflicts=("$pkgname-bin" "$pkgname-alpha" "$pkgname-alpha-bin" "$pkgname-git" "clash-verge" "clash-verge-bin")
+conflicts=("$pkgname-bin" "$pkgname-alpha" "$pkgname-alpha-bin" "$pkgname-git" "${_pkgname}" "${_pkgname}-bin")
 makedepends=('nodejs' 'pnpm' 'rust')
 install=.install
 
