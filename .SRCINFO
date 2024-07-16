@@ -1,6 +1,6 @@
-pkgbase = plasma5-themes-layan-git
-	pkgdesc = A flat Design theme for KDE Plasma desktop
-	pkgver = r75.c4cce9d
+pkgbase = plasma6-themes-layan-git
+	pkgdesc = A flat Design theme for KDE Plasma6 desktop
+	pkgver = r86.1eed6f6
 	pkgrel = 1
 	url = https://github.com/vinceliuice/Layan-kde
 	arch = any
@@ -10,9 +10,10 @@ pkgbase = plasma5-themes-layan-git
 	optdepends = tela-icon-theme: Matching icon theme
 	provides = layan-kde-git
 	conflicts = layan-kde-git
+	conflicts = plasma5-themes-layan-git
 	replaces = layan-kde-git
 	options = !strip
-	source = plasma5-themes-layan::git+https://github.com/vinceliuice/Layan-kde.git
+	source = plasma6-themes-layan::git+https://github.com/vinceliuice/Layan-kde.git
 	sha256sums = SKIP
 
-pkgname = plasma5-themes-layan-git
+pkgname = plasma6-themes-layan-git
