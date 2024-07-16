@@ -5,12 +5,12 @@
 
 pkgname=mlat-client-git
 pkgver=0.2.13.r0.gfe70767
-pkgrel=2
+pkgrel=3
 pkgdesc="Mode S multilateration client by Mutability"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/mutability/${pkgname%-git}"
 license=('GPL-3.0-or-later')
-depends=('glibc' 'python')
+depends=('glibc' 'python' 'python-pyasyncore')
 makedepends=('git' python-{build,installer,wheel} python-setuptools)
 provides=("${pkgname%-git}=$pkgver" "fa-${pkgname%-git}")
 conflicts=("${pkgname%-git}" "fa-${pkgname%-git}")
