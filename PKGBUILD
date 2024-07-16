@@ -1,14 +1,14 @@
 # Maintainer: Martin Kühl <martin.kuehl@posteo.net>
 pkgname=color-scheme-monitor
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Monitor the system-wide color scheme and adapt unaware applications to it"
 arch=(i686 x86_64 armv6h armv7h)
 url="https://codeberg.org/mkhl/color-scheme-monitor/"
-license=(custom:0BSD)
+license=(0BSD)
 groups=()
-depends=(dbus systemd xdg-desktop-portal)
+depends=(glibc gcc-libs dbus systemd xdg-desktop-portal)
 makedepends=(cargo sed)
 checkdepends=()
 optdepends=()
