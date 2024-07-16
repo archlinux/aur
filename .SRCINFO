@@ -1,7 +1,7 @@
 pkgbase = grace
 	pkgdesc = 2D plotting tool
 	pkgver = 5.1.25
-	pkgrel = 9
+	pkgrel = 10
 	url = http://plasma-gate.weizmann.ac.il/Grace/
 	arch = x86_64
 	license = GPL
@@ -10,6 +10,7 @@ pkgbase = grace
 	depends = netcdf
 	depends = fftw
 	options = staticlibs
+	options = !lto
 	source = ftp://ftp.fu-berlin.de/unix/graphics/grace/src/grace5/grace-5.1.25.tar.gz
 	source = https://sources.debian.org/data/main/g/grace/1%3A5.1.25-14/debian/patches/configure-implicit-declarations.diff
 	source = https://sources.debian.org/data/main/g/grace/1%3A5.1.25-14/debian/patches/fftw3.diff

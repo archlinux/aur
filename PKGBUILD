@@ -6,13 +6,13 @@
 _debian_version="5.1.25-14"
 pkgname=grace
 pkgver=5.1.25
-pkgrel=9
+pkgrel=10
 pkgdesc="2D plotting tool"
 arch=(x86_64)
 url="http://plasma-gate.weizmann.ac.il/Grace/"
 depends=('openmotif' 't1lib' 'netcdf' 'fftw')
 license=('GPL')
-options=('staticlibs')
+options=('staticlibs' '!lto')
 source=("ftp://ftp.fu-berlin.de/unix/graphics/grace/src/grace5/$pkgname-$pkgver.tar.gz"
         "https://sources.debian.org/data/main/g/grace/1%3A$_debian_version/debian/patches/configure-implicit-declarations.diff"
         "https://sources.debian.org/data/main/g/grace/1%3A$_debian_version/debian/patches/fftw3.diff"
