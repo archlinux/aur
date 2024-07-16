@@ -2,7 +2,7 @@
 
 pkgname=libastal-hyprland-git
 _pkgname=hyprland
-pkgver=r4.ec8e1c3
+pkgver=r7.ba2ee78
 pkgrel=1
 provides=(astal-hyprland libastal-hyprland libastal-hyprland.so=0-64)
 pkgdesc="Library and cli tool for Hyprland IPC sockets"
@@ -19,6 +19,7 @@ makedepends=(
   gobject-introspection
   vala
 )
+groups=("libastal")
 source=("git+${url}")
 sha256sums=('SKIP')
 

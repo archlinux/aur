@@ -1,9 +1,10 @@
 pkgbase = libastal-hyprland-git
 	pkgdesc = Library and cli tool for Hyprland IPC sockets
-	pkgver = r4.ec8e1c3
+	pkgver = r7.ba2ee78
 	pkgrel = 1
 	url = https://github.com/astal-sh/hyprland
 	arch = x86_64
+	groups = libastal
 	license = GPL-3
 	makedepends = meson
 	makedepends = git
