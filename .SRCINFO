@@ -1,6 +1,6 @@
 pkgbase = mozillavpn-git
 	pkgdesc = Fast, secure, and easy to use VPN from the makers of Firefox
-	pkgver = 2.20.0.r89.g9e2c028
+	pkgver = 2.23.1.r75.gd9b70a5
 	pkgrel = 1
 	url = https://github.com/mozilla-mobile/mozilla-vpn-client
 	install = mozillavpn.install
@@ -35,24 +35,19 @@ pkgbase = mozillavpn-git
 	depends = qt6-websockets
 	depends = wireguard-tools
 	optdepends = qt6-wayland: for Wayland support
-	provides = mozillavpn=2.20.0
+	provides = mozillavpn=2.23.1
 	conflicts = mozillavpn
-	options = !lto
 	source = mozillavpn::git+https://github.com/mozilla-mobile/mozilla-vpn-client.git
-	source = chromium.googlesource.com.linux-syscall-support::git+https://chromium.googlesource.com/linux-syscall-support.git
-	source = getsentry.breakpad::git+https://github.com/getsentry/breakpad.git
-	source = getsentry.crashpad::git+https://github.com/getsentry/crashpad.git
-	source = getsentry.libunwindstack-ndk::git+https://github.com/getsentry/libunwindstack-ndk.git
-	source = adjust.android_sdk::git+https://github.com/adjust/android_sdk.git
-	source = adjust.ios_sdk::git+https://github.com/adjust/ios_sdk.git
 	source = getsentry.sentry-native::git+https://github.com/getsentry/sentry-native.git
 	source = mozilla-l10n.mozilla-vpn-client-l10n::git+https://github.com/mozilla-l10n/mozilla-vpn-client-l10n.git
 	source = mozilla.glean::git+https://github.com/mozilla/glean.git
 	source = wireguard.wireguard-apple::git+https://github.com/WireGuard/wireguard-apple.git
 	source = wireguard.wireguard-go::git+https://github.com/WireGuard/wireguard-go.git
 	source = wireguard.wireguard-tools::git+https://github.com/WireGuard/wireguard-tools.git
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = chromium.googlesource.com.linux-syscall-support::git+https://chromium.googlesource.com/linux-syscall-support.git
+	source = getsentry.breakpad::git+https://github.com/getsentry/breakpad.git
+	source = getsentry.crashpad::git+https://github.com/getsentry/crashpad.git
+	source = getsentry.libunwindstack-ndk::git+https://github.com/getsentry/libunwindstack-ndk.git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
