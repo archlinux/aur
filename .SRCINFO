@@ -9,7 +9,7 @@ pkgbase = postgrest-bin
 	provides = postgrest
 	provides = postgrest-bin
 	conflicts = postgrest
-	source = https://github.com/PostgREST/postgrest/releases/download/v11.2.2/postgrest-v11.2.2-linux-static-x64.tar.xz
+	source = https://github.com/PostgREST/postgrest/releases/download/v12.2.2/postgrest-v12.2.2-linux-static-x64.tar.xz
 	sha512sums = 5f177059624e19d31924d336ffdf4e89666f9a5e0de38576960144dcb8907539853a2464aba5d2156300d35ade8318365cb5b781e0373e5355026907aede8580
 
 pkgname = postgrest-bin
