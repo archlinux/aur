@@ -1,6 +1,6 @@
 pkgbase = yoshimi-git
 	pkgdesc = a fork of the ZynAddSubFX software systhesizer
-	pkgver = r1956.de477d1b
+	pkgver = r3849.8547f953
 	pkgrel = 1
 	url = https://yoshimi.github.io/
 	arch = x86_64
@@ -14,9 +14,16 @@ pkgbase = yoshimi-git
 	depends = fftw
 	depends = mxml
 	provides = yoshimi
+	provides = yoshimi-data
+	provides = yoshimi-docs
+	provides = yoshimi-lv2
+	provides = yoshimi-standalone
 	conflicts = yoshimi
+	conflicts = yoshimi-data
+	conflicts = yoshimi-docs
+	conflicts = yoshimi-lv2
+	conflicts = yoshimi-standalone
 	source = git+https://github.com/Yoshimi/yoshimi.git
 	md5sums = SKIP
 
 pkgname = yoshimi-git
-

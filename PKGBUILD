@@ -4,7 +4,7 @@
 
 _pkgname=yoshimi
 pkgname=$_pkgname-git
-pkgver=r1956.de477d1b
+pkgver=r3849.8547f953
 pkgrel=1
 pkgdesc="a fork of the ZynAddSubFX software systhesizer"
 arch=('x86_64')
@@ -12,8 +12,8 @@ url="https://yoshimi.github.io/"
 license=('GPL')
 depends=('jack' 'fltk' 'fftw' 'mxml')
 makedepends=('cmake' 'lv2' 'mesa' 'git')
-provides=('yoshimi')
-conflicts=('yoshimi')
+provides=('yoshimi' 'yoshimi-data' 'yoshimi-docs' 'yoshimi-lv2' 'yoshimi-standalone')
+conflicts=('yoshimi' 'yoshimi-data' 'yoshimi-docs' 'yoshimi-lv2' 'yoshimi-standalone')
 source=("git+https://github.com/Yoshimi/$_pkgname.git")
 md5sums=('SKIP')
 
