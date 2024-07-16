@@ -1,4 +1,5 @@
-# Maintainer: Zenvie <134689569+Zenvie@users.noreply.github.com>
+# Maintainer: Kiri <kiri@vern.cc>
+# Contributor: Zenvie <134689569+Zenvie@users.noreply.github.com>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=meta-rules-dat
@@ -6,7 +7,7 @@ pkgver=20240716
 pkgver() {
   date +'%Y%m%d'
 }
-pkgrel=1
+pkgrel=2
 pkgdesc="rules dat files by MetaCubeX"
 arch=(any)
 url="https://github.com/MetaCubeX/$pkgname"
