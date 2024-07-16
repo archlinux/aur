@@ -1,6 +1,6 @@
 # Maintainer: Zhanibek Adilbekov <zhanibek.adilbekov@proton.me>
 pkgname=vscode-php-debug
-pkgver=1.32.1
+pkgver=1.35.0
 pkgrel=1
 pkgdesc='PHP Debug Adapter (DAP)'
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/xdebug/$pkgname"
 license=('MIT')
 depends=('nodejs')
 source=("extension.zip::https://github.com/xdebug/vscode-php-debug/releases/download/v$pkgver/php-debug-$pkgver.vsix")
-b2sums=('480d3867ee9bf2bf65fad21ddcb2ab9c58aba4eec8647ac27af6e372f81fce3d463efe6e8ecc99579345bee411ac1f82012449f41b82e41c01165c5c0f482050')
+b2sums=('2935ea2dd26adad0cf5ae562a0915845a3ca7613cbf23fc89f040a544f2d48cb268ae13388e3c3695b1347374b29923fd23bf59131e58d5a00dc7cbec85f1b98')
 
 package() {
     install -dm755 "$pkgdir/usr/lib/node_modules/php-debug"
