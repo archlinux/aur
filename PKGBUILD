@@ -36,8 +36,31 @@
 # tasks" because it tries to access `/root`. To fix this, a tiny shared library
 # (see spoof_homedir.c) is LD_PRELOADed. Its only job is to wrap the
 # `getpwuid()` function and modify the original return value for uid==0.
+#
+# TROUBLESHOOTING
+#
+# - Installations hangs after `Installing files, ... completed. (Done)`:
+#
+#   After installation some scripts are executed, e.g., getting a list of
+#   installed devices for Vivado or installing Python wheels for Vitis. If a
+#   library is missing, Vivado may stay in its shell forever. To debug these
+#   problems, refer to the log: `~/.Xilinx/xinstall/xinstall-*.log`.
+
+
+# CONFIGURATION
+#
+INSTALL_DIR="/opt/Xilinx"
+# Change this to another directory if you want to install two versions on the same root.
+# As a result:
+# 1. `pkgname` is renamed
+# 2. `package()` skips installing udev rules and desktop files to avoid clash
+#    between two vivado versions
+
 
 pkgname=vivado
+if [[ $INSTALL_DIR != /opt/Xilinx ]]; then
+    pkgname=vivado2
+fi
 _srcname=FPGAs_AdaptiveSoCs_Unified
 pkgver=2024.1
 _more_ver=0522_2023
@@ -93,12 +116,14 @@ build() {
 package() {
     cd "${_srcname}_${pkgver}_${_more_ver}"
 
-    # If you only need support for a subset of devices and would like to save space:
+    # If you only need support for a subset of devices and would like to save
+    # space:
     # 1. tar xf *.tar.gz
-    # 2. xsetup -b ConfigGen
-    # 3. edit the generated config file
-    #    1. modify `Destination` to `/opt/Xilinx`
-    # 4. move it you the PKGBUILD folder
+    # 2. ./xsetup -b ConfigGen
+    # 3. edit the generated config file.
+    #    You don't have to modify `Destination`. It is overridden by the
+    #    `--location` argument 
+    # 4. move the generated `install_config.txt` to the PKGBUILD folder
     # 5. append the file to `source`
     # 6. append `SKIP` to md5sums
     # 7. Then use instead the following arguments for `./xsetup`
@@ -116,14 +141,7 @@ package() {
     # The unified installer that you downloaded includes all Vivado and Vitis
     # editions.
 
-    INSTALL_DIR="/opt/Xilinx"
-    # If you want to install two Vivado versions on the same root:
-    # 1. Modify this to another path like `/opt/Xilinx24`
-    # 2. Comment out below the packaging of
-    #    1. udev rules
-    #    2. desktop files
-
-    # LD_PRELOAD already contains libfakeroot.so, add our own library before that
+        # LD_PRELOAD already contains libfakeroot.so, add our own library before that
     LD_PRELOAD="$srcdir/spoof_homedir.so:$LD_PRELOAD" ./xsetup \
         --batch Install \
         --agree XilinxEULA,3rdPartyEULA \
@@ -133,17 +151,18 @@ package() {
 
         #--config ../install_config.txt
 
+    if [[ $INSTALL_DIR == /opt/Xilinx ]]; then
+        # Install udev rules
+        install -Dm644 "$pkgdir$INSTALL_DIR/Vivado/${pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-digilent-usb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
+        install -Dm644 "$pkgdir$INSTALL_DIR/Vivado/${pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-ftdi-usb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
+        install -Dm644 "$pkgdir$INSTALL_DIR/Vivado/${pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-pcusb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
 
-    # Install udev rules
-    install -Dm644 "$pkgdir$INSTALL_DIR/Vivado/${pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-digilent-usb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
-    install -Dm644 "$pkgdir$INSTALL_DIR/Vivado/${pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-ftdi-usb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
-    install -Dm644 "$pkgdir$INSTALL_DIR/Vivado/${pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-pcusb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
-
-    # Install desktop files
-    for deskfile in "$srcdir"/installer_temp/Desktop/*.desktop; do
-        sed -i -e "s|$pkgdir||g" "$deskfile"
-        install -Dm644 -t "$pkgdir/usr/share/applications/" "$deskfile"
-    done
+        # Install desktop files
+        for deskfile in "$srcdir"/installer_temp/Desktop/*.desktop; do
+            sed -i -e "s|$pkgdir||g" "$deskfile"
+            install -Dm644 -t "$pkgdir/usr/share/applications/" "$deskfile"
+        done
+    fi
 
     # Clean up artifacts, remove leading $pkgdir from paths
     rm -rf "$pkgdir$INSTALL_DIR/.xinstall/"
@@ -155,10 +174,15 @@ package() {
     #cd ..
     #rm -rf "${_srcname}_${pkgver}_${_more_ver}"
 
+    # Consuming less time for repackaging
+    #
     # If you did not remove the extracted installation archive files and save
-    # checksum test and extraction time for repackaging, then follow these
+    # the time for checksum and extraction for repackaging, then follow these
     # steps on your shell:
     #
     # 1. Remove `installer_temp`, e.g., `rm -rf src/installer_temp`
+    # 1a. Only if you used `install_config.txt`: copy it to `src` manually,
+    #     because `--noextract` option that we will use in the next step skips
+    #     this step.
     # 2. makepkg --skipchecksums --noextract -f
 }
