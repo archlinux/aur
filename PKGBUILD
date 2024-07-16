@@ -1,11 +1,11 @@
 # Maintainer: Tomasz Pakula <forest10pl@gmail.com>
 pkgname=simracing-essentials
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="A collection of sim racing-focused utilities and drivers"
 arch=('any')
-url="http://www.example.com/"
-license=('custom:unknown')
+url="https://github.com/Lawstorant"
+license=('GPL2')
 depends=(
   oversteer
   ffbtools-git
@@ -17,6 +17,8 @@ depends=(
   t150_driver-dkms-git
   hid-tmff2-dkms
   jstest-gtk-git
+  boxflat-git
+  universal-pidff-dkms-git
 )
 
 package() {
