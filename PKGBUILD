@@ -2,13 +2,13 @@
 _basename=showtime
 pkgname=${_basename}
 pkgver=46.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Video Player - Watch without distraction"
 arch=('x86_64')
 url="https://apps.gnome.org/Showtime/"
 license=('GPL')
-depends=('python' 'gtk4' 'libadwaita>=1.5' 'gst-plugin-gtk4')
-makedepends=('git' 'meson')
+depends=('python' 'python-gobject' 'gtk4' 'libadwaita' 'gst-plugin-gtk4')
+makedepends=('git' 'meson' 'blueprint-compiler')
 provides=("$_basename")
 conflicts=("$_basename")
 source=("$_basename::git+https://gitlab.gnome.org/GNOME/Incubator/showtime.git#tag=$pkgver")

@@ -1,15 +1,17 @@
 pkgbase = showtime
 	pkgdesc = Video Player - Watch without distraction
 	pkgver = 46.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://apps.gnome.org/Showtime/
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = meson
+	makedepends = blueprint-compiler
 	depends = python
+	depends = python-gobject
 	depends = gtk4
-	depends = libadwaita>=1.5
+	depends = libadwaita
 	depends = gst-plugin-gtk4
 	provides = showtime
 	conflicts = showtime
