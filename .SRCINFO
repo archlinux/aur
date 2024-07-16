@@ -1,11 +1,12 @@
 pkgbase = cosmic-wallpapers-git
 	pkgdesc = Wallpapers for the COSMIC Desktop Environment
 	pkgver = r4.0f2f16d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pop-os/cosmic-wallpapers
 	arch = any
 	license = LicenseRef-unknown
 	makedepends = git
+	makedepends = git-lfs
 	provides = cosmic-wallpapers
 	conflicts = cosmic-wallpapers
 	source = git+https://github.com/pop-os/cosmic-wallpapers.git
