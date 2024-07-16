@@ -1,6 +1,6 @@
 pkgbase = reddish-shift-bin
 	pkgdesc = Set color temperature of display according to time of day
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/mahor1221/reddish-shift
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = reddish-shift-bin
 	depends = gcc-libs
 	depends = glibc
 	conflicts = reddish-shift
-	source_x86_64 = reddish-shift-0.1.1-x86_64.tar.gz::https://github.com/mahor1221/reddish-shift/releases/download/v0.1.1/reddish-shift-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 9e8ef672aa61e851ec991bf4fd2bb6e938fc1a518774ce8447aff69c05c52ac8
-	source_aarch64 = reddish-shift-0.1.1-aarch64.tar.gz::https://github.com/mahor1221/reddish-shift/releases/download/v0.1.1/reddish-shift-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = dc6430bc344f2036ad2963f551ad01d87a4d8da02258fffc082f46d1ebf6a95d
+	source_x86_64 = reddish-shift-v0.1.2-x86_64.tar.gz::https://github.com/mahor1221/reddish-shift/releases/download/v0.1.2/reddish-shift-v0.1.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = a7d2652e97dfe1204db782b6077e09155c49fe8dbeffd73e0e8e27bcf9dbe9f4
+	source_aarch64 = reddish-shift-v0.1.2-aarch64.tar.gz::https://github.com/mahor1221/reddish-shift/releases/download/v0.1.2/reddish-shift-v0.1.2-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 802279e81777383842cdd791b03b14a10999cf29c8c566b764fa378fc1240e50
 
 pkgname = reddish-shift-bin
