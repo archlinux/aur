@@ -2,7 +2,7 @@
 # Contributor: Mick Elliot <micke at sfu dot ca>
 # Contributor: Damir Perisa <damir.perisa@bluewin.ch>
 pkgname=tcoffee
-pkgver=13.46.0.919e8c6b
+pkgver=13.46.1.b8b01e06
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -11,7 +11,7 @@ url="http://www.tcoffee.org"
 makedepends=('gcc-fortran')
 depends=('gcc-libs')
 source=($pkgname-$pkgver.tar.gz::https://github.com/cbcrg/tcoffee/archive/refs/tags/Version_$pkgver.tar.gz)
-sha256sums=('e134f5c075eaa95dd6bc2b4da01696150ea78185d34399d465709bd9cf743d08')
+sha256sums=('68db20f9006f202bf7e90d88edb8fb99deaf5dc89f6a6dea769cb1925fd0f74d')
 
 build() {
   cd tcoffee-Version_$pkgver/t_coffee/src
