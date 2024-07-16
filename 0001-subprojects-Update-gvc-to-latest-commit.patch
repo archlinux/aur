@@ -1,0 +1,16 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
+Date: Sun, 17 Mar 2024 02:24:01 +0100
+Subject: [PATCH] subprojects: Update gvc to latest commit
+
+---
+ subprojects/gvc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/subprojects/gvc b/subprojects/gvc
+index 7a621180b464..91f3f4149066 160000
+--- a/subprojects/gvc
++++ b/subprojects/gvc
+@@ -1 +1 @@
+-Subproject commit 7a621180b46421e356b33972e3446775a504139c
++Subproject commit 91f3f41490666a526ed78af744507d7ee1134323
