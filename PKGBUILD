@@ -3,7 +3,7 @@
 pkgname=platypush-git
 _pkgname=platypush
 pkgver=1.1.3.r7.gb312f171
-pkgrel=3
+pkgrel=4
 pkgdesc="A general-purpose, event-driven, plugin-based platform for automation-as-code"
 arch=('any')
 license=('MIT')
@@ -140,4 +140,6 @@ Environment="PLATYPUSH_WORKDIR=\/var\/lib\/platypush"/'
     install -m644 "${srcdir}/platypush/platypush/config/config.yaml" "${pkgdir}/etc/platypush/config.yaml"
     install -Dm644 "${srcdir}/platypush/platypush/config/systemd/platypush-sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/platypush.conf"
     install -Dm644 "${srcdir}/platypush/platypush/config/systemd/platypush-tmpfile.conf" "${pkgdir}/usr/lib/tmpfiles.d/platypush.conf"
+
+    install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
