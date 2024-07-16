@@ -1,6 +1,6 @@
 pkgbase = sui-bin
 	pkgdesc = A next-generation smart contract platform with high throughput, low latency, and an asset-oriented programming model
-	pkgver = 1.28.3
+	pkgver = 1.29.0
 	pkgrel = 1
 	url = https://sui.io
 	arch = x86_64
@@ -17,11 +17,11 @@ pkgbase = sui-bin
 	depends = postgresql-libs
 	provides = sui
 	conflicts = sui
-	source = https://github.com/MystenLabs/sui/raw/testnet-v1.28.3/README.md
-	source = https://github.com/MystenLabs/sui/raw/testnet-v1.28.3/LICENSE
+	source = README.md-1.29.0::https://github.com/MystenLabs/sui/raw/testnet-v1.29.0/README.md
+	source = LICENSE-1.29.0::https://github.com/MystenLabs/sui/raw/testnet-v1.29.0/LICENSE
 	sha256sums = 3ededb5b006bf86ea26c03f2073944998e2c8854f1ae150c35c8a418a16c9622
 	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
-	source_x86_64 = https://github.com/MystenLabs/sui/releases/download/testnet-v1.28.3/sui-testnet-v1.28.3-ubuntu-x86_64.tgz
-	sha256sums_x86_64 = 0be4af81811fd087a18422610bf901b92d7029da8a289f70932e4afad53dabb5
+	source_x86_64 = sui-1.29.0-x86_64.tar.gz::https://github.com/MystenLabs/sui/releases/download/testnet-v1.29.0/sui-testnet-v1.29.0-ubuntu-x86_64.tgz
+	sha256sums_x86_64 = ae8f08dc05c9a806b1178a4110545c1c6610d2e5b6616ca735451c98557b3eb0
 
 pkgname = sui-bin
