@@ -1,0 +1,6 @@
+pre_install() {
+    echo >&2
+    echo >&2 "This package is for testing purposes only."
+    echo >&2 "You probably meant to install hyprshade or hyprshade-git."
+    echo >&2
+}

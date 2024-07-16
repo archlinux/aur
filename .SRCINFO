@@ -1,0 +1,16 @@
+pkgbase = hyprshade-rewrite-git
+	pkgdesc = (WIP rewrite) Hyprland shader configuration tool
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/loqusion/hyprshade-rewrite-git-rewrite
+	install = hyprshade.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = hyprland
+	conflicts = hyprshade
+	source = hyprshade::git+https://github.com/loqusion/hyprshade-rewrite.git
+	sha512sums = SKIP
+
+pkgname = hyprshade-rewrite-git
