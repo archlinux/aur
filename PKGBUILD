@@ -2,7 +2,7 @@
 
 pkgname=libastal-river-git
 _pkgname=river
-pkgver=r2.b6ba3c7
+pkgver=r8.1296dc8
 pkgrel=1
 provides=(astal-river libastal-river libastal-river.so=0-64)
 pkgdesc="a library and cli tool for getting status information of the river wayland compositor. "
@@ -21,6 +21,7 @@ makedepends=(
   gobject-introspection
   vala
 )
+groups=("libastal")
 source=("git+${url}")
 sha256sums=('SKIP')
 

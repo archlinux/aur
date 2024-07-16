@@ -1,9 +1,10 @@
 pkgbase = libastal-river-git
 	pkgdesc = a library and cli tool for getting status information of the river wayland compositor.
-	pkgver = r2.b6ba3c7
+	pkgver = r8.1296dc8
 	pkgrel = 1
 	url = https://github.com/astal-sh/river
 	arch = x86_64
+	groups = libastal
 	license = GPL-3
 	makedepends = meson
 	makedepends = git
