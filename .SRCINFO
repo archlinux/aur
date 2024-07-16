@@ -1,0 +1,18 @@
+pkgbase = gematik-authenticator-git
+	pkgdesc = The tool for secure authenticator of digital applications of the German healthcare system
+	pkgver = v4.11.0.1.r0.gcc2181d
+	pkgrel = 1
+	url = https://fachportal.gematik.de/hersteller-anbieter/komponenten-dienste/authenticator
+	install = gematik-authenticator-git.install
+	arch = x86_64
+	license = EUPL-1.2
+	makedepends = npm
+	makedepends = libxcrypt-compat
+	provides = gematik-authenticator
+	conflicts = gematik-authenticator
+	noextract = gematik-authenticator-git
+	options = !emptydirs
+	source = gematik-authenticator-git::git+https://github.com/janne-koschinski/app-Authenticator#branch=linux
+	sha256sums = SKIP
+
+pkgname = gematik-authenticator-git
