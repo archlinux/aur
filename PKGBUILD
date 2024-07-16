@@ -8,12 +8,15 @@ _module="machine68k"
 _pkgname="python-$_module"
 pkgname="$_pkgname"
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cython binding for a m68k system emulator"
 url="https://github.com/cnvogelg/machine68k"
 license=('GPL-2.0-only')
 arch=('x86_64')
 
+depends=(
+  'python'
+)
 makedepends=(
   'cython'
   'python-build'
