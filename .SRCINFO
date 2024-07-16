@@ -1,7 +1,7 @@
 pkgbase = pywbem
 	pkgdesc = A WBEM client and related utilities
 	pkgver = 1.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pywbem/pywbem
 	arch = x86_64
 	arch = aarch64
@@ -10,7 +10,6 @@ pkgbase = pywbem
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-mock
-	makedepends = python-ply
 	makedepends = python-wheel
 	depends = python-pyyaml
 	depends = python-six
@@ -19,6 +18,7 @@ pkgbase = pywbem
 	depends = python-nocasedict
 	depends = python-nocaselist
 	depends = python-yamlloader
+	depends = python-ply
 	source = https://github.com/pywbem/pywbem/archive/refs/tags/1.7.2.tar.gz
 	sha256sums = 9b4d0a0945f94e4d10d3e4151ebf0e149b311fbbd592a05ccaf41b4f5d172850
 
