@@ -2,7 +2,7 @@
 
 pkgname=agru
 pkgver=0.1.10
-pkgrel=0
+pkgrel=1
 pkgdesc="Ansible-Galaxy Requirements Updater - a fast ansible-galaxy replacement"
 arch=('any')
 url="https://gitlab.com/etke.cc/tools/agru"
