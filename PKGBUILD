@@ -1,8 +1,8 @@
 # Maintainer: Steven! Ragnarök <steven@nuclearsandwich.com>
 # Maintainer: Scott K Logan <logans@cottsay.net>
 pkgname=openelp
-pkgver=0.9.2
-pkgrel=2
+pkgver=0.9.3
+pkgrel=1
 pkgdesc="Open source EchoLink Proxy"
 arch=('x86_64')
 url="https://github.com/cottsay/openelp"
@@ -11,7 +11,7 @@ depends=(pcre2)
 makedepends=(cmake)
 backup=(etc/ELProxy.conf)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('1427a2fe6f22856a66b9c687d7f14b7915abeeed64951ae596084f9366ec4256')
+sha256sums=('e7db49d22fc86449271e3c58ac0cbaf971bf4936d8c27dd268ecd5057643e947')
 
 build() {
 	cd "$pkgname-$pkgver"
