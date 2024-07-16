@@ -1,0 +1,5 @@
+[matplotplusplus]
+source = "github"
+github = "alandefreitas/matplotplusplus"
+use_max_tag = true
+prefix = "v"
