@@ -2,7 +2,7 @@
 # Contributors: SoftwareRat <jaguar5018@gmail.com>, Michael Herzberg
 
 pkgname=moonlight-qt-git
-pkgver=6.0.0.r10.g640ac3f
+pkgver=6.0.1.r15.g3580286
 pkgrel=1
 pkgdesc='GameStream client for PCs (Windows, Mac, and Linux) (master branch)'
 arch=('aarch64' 'x86_64')
@@ -10,6 +10,11 @@ license=('GPL-3.0-or-later')
 url='https://github.com/moonlight-stream/moonlight-qt'
 depends=('qt6-base' 'qt6-quickcontrols2' 'qt6-svg' 'ffmpeg' 'sdl2_ttf')
 makedepends=('git')
+optdepends=(
+	'libva-intel-driver: hardware-acelerated decoding for Intel'
+	'libva-mesa-driver: hardware-acelerated decoding for AMD/others'
+	'libva-nvidia-nvidia-driver: hardware-acelerated decoding for NVIDIA with NVDEC via VA-API'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=($pkgname::"git+https://github.com/moonlight-stream/${pkgname%-git}.git")
