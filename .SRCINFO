@@ -1,7 +1,7 @@
 pkgbase = swaks
 	pkgdesc = Swiss Army Knife SMTP; Command line SMTP testing, including TLS and AUTH
 	pkgver = 20240103.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jetmore.org/john/code/swaks/
 	arch = any
 	license = GPL
