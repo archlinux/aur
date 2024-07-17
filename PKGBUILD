@@ -1,33 +1,29 @@
-# Maintainer: Simão Gomes Viana <devel@superboring.dev>
+# Contributor: Simão Gomes Viana <devel@superboring.dev>
+
 pkgname=srcry-git
-pkgver=master
+pkgver=r43.ff343e2
 pkgrel=1
-_srcver=master
 pkgdesc="A simple but very fast recursive source code spell checker made in C"
 arch=('x86_64')
 url="https://github.com/Theldus/sourcery"
 license=('MIT')
-groups=()
-depends=()
-makedepends=('make' 'clang' 'llvm' 'lld')
-source=("git://github.com/Theldus/sourcery")
+depends=('glibc')
+makedepends=('git')
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
-prepare() {
-	:
+pkgver() {
+	cd "sourcery"
+	printf "r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
 build() {
-	cd "${srcdir}/sourcery"
-	CC="clang" LD="clang" make -j$(nproc --all)
-}
-
-check() {
-	:
+	cd "sourcery"
+	make
 }
 
 package() {
-	cd "${srcdir}/sourcery"
-	install -Dm755 "${srcdir}/sourcery/srcry" "${pkgdir}/usr/bin/srcry"
+	cd "sourcery"
+	install -Dm755 "srcry" "${pkgdir}/usr/bin/srcry"
+	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
