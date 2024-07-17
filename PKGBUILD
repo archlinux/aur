@@ -3,7 +3,7 @@
 
 pkgname=zed-preview
 _pkgname=${pkgname%-preview}
-pkgver=0.144.3
+pkgver=0.145.0
 pkgrel=1
 pkgdesc='A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter'
 arch=(x86_64)
@@ -33,13 +33,14 @@ makedepends=(cargo
              vulkan-validation-layers)
 optdepends=('clang: improved C/C++ language support'
             'eslint: improved Javascript language support'
+            'pyright: improved Python language support'
             'rust-analyzer: improved Rust language support')
 replaces=(zed-editor-preview)
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 _archive="zed-$pkgver-pre"
 source=("$_url/archive/v$pkgver-pre/$_archive.tar.gz")
-sha256sums=('a5d6f6b0721bbf18645a081d5b439aaf8738a64be5b0e53012c63c106e0c7f42')
+sha256sums=('4d0bcc26cd6de7160473f6abe685a7be4e4a64130716785fa9c98c3b8aa93a2e')
 
 _binname=zeditor
 _appid=dev.zed.Zed-Preview
