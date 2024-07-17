@@ -13,6 +13,8 @@ license=('MIT')
 install="${_pkgname}.install"
 backup=(
   'etc/traefik/traefik.toml'
+  'etc/traefik/traefik.yaml'
+  'etc/traefik/traefik.yml'
   'etc/logrotate.d/traefik'
 )
 source=(
