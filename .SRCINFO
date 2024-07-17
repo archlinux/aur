@@ -1,7 +1,7 @@
 pkgbase = strumpract-bin
 	pkgdesc = Various tools for musicians.
 	pkgver = 3.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fredvs/strumpract
 	arch = aarch64
 	arch = i686

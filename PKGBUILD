@@ -2,7 +2,7 @@
 pkgname=strumpract-bin
 _pkgname=StrumPract
 pkgver=3.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Various tools for musicians."
 arch=(
     "aarch64"
@@ -30,7 +30,7 @@ sha256sums_aarch64=('a0628787e91d202367c4783dc1fa7cf4f311e40c0b0d5172378167f8f05
 sha256sums_i686=('fb2f9da1de81af313298301ef6c540097584ecc11ecfe2cc76a818f4af54dc0e')
 sha256sums_x86_64=('478d4e52985cd97a3c39e0b2da0584208394faa7ef44c951356e42270fb05db0')
 build() {
-    gendesk -q -f -n --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
+    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
 }
 package() {
     install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
