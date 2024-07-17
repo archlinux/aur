@@ -38,12 +38,13 @@ sha256sums_armv7h=('54c489c18f37f2ca6317a34894dacdf6845a991fea437fa1a400b7c216c4
 sha256sums_aarch64=('159a7901ddd38ea9078e3fe4ac4e0653006ca840e990945449c82731566a9086')
 
 package() {
+  cd "${srcdir}"
   install -d -m755 "${pkgdir}/var/log/traefik"
 
-  install -D -m644 "${srcdir}/traefik.logrotate" "${pkgdir}/etc/logrotate.d/traefik"
-  install -D -m644 "${srcdir}/traefik.service" "${pkgdir}/usr/lib/systemd/system/traefik.service"
-  install -D -m644 "${srcdir}/traefik.toml" "${pkgdir}/etc/traefik/traefik.toml"
+  install -D -m644 "traefik.logrotate" "${pkgdir}/etc/logrotate.d/traefik"
+  install -D -m644 "traefik.service" "${pkgdir}/usr/lib/systemd/system/traefik.service"
+  install -D -m644 "traefik.toml" "${pkgdir}/etc/traefik/traefik.toml"
 
-  install -D -m644 "${srcdir}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -D -m755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -D -m644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 }
