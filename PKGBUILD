@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@kth.se>
 
 pkgname=libgammamm
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Display server abstraction layer for gamma ramps and C++"
 arch=(i686 x86_64)
@@ -10,7 +10,7 @@ license=('custom:ISC')
 depends=('libgamma>=0.7.4' glibc gcc-libs)
 makedepends=('libgamma>=0.7.4' glibc gcc-libs)
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(cf55553efe67e138527ff23c4030ed5ca9364fc7f8280d0a3f58ec869d017cfb)
+sha256sums=(ad3a5c96865d97b2f800eab7237e722fd13b6db00a1dcb8f2043d9f9dc317775)
 
 
 build() {
