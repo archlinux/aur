@@ -68,8 +68,7 @@ package() {
   ln -s /var/log/elasticsearch "$pkgdir"/usr/share/elasticsearch/logs
 
   # Dynamically determine what version jdk-openjdk provides and symlink it.
-  jdk_openjdk_package="$(pacman -Q |grep headless |cut -d' ' -f1 | head -n1)"
-  jdk_openjdk_version=$(pacman -Ql "${jdk_openjdk_package}" | grep -Pom1 '/usr/lib/jvm/java-[0-9]+-openjdk/')
+  jdk_openjdk_version=$(pacman -Ql java-runtime | grep -Pom1 '/usr/lib/jvm/java-[0-9]+-openjdk/')
   [ -z "${jdk_openjdk_version}" ] && echo "Unable to determine jdk-openjdk version automatically" && exit 1
   ln -s "${jdk_openjdk_version}" "$pkgdir"/usr/share/elasticsearch/jdk
 
