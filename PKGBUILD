@@ -9,7 +9,11 @@ pkgrel=4
 pkgdesc='A C wrapper library for GnuPG'
 arch=('x86_64')
 url='https://www.gnupg.org/related_software/gpgme/'
-license=('LGPL')
+license=(
+  GPL-2.0-or-later
+  LGPL-2.0-or-later
+  LGPL-2.1-or-later
+)
 makedepends=(
   'gnupg'
   'libgpg-error'
@@ -66,6 +70,7 @@ package_gpgme() {
   options+=('!emptydirs')
   provides=('libgpgme.so'
             'libgpgmepp.so')
+  license+=(MIT)
 
   cd ${pkgbase}-${pkgver}
 
@@ -74,6 +79,7 @@ package_gpgme() {
   # split qgpgme
   rm -r "${pkgdir}"/usr/lib/{cmake/QGpgmeQt6/,libqgpgmeqt6.*}
   rm -r "${pkgdir}"/usr/lib/python*
+  install -vDm 644 LICENSES "$pkgdir/usr/share/licenses/$pkgname/MIT.txt"
 }
 
 package_qgpgme-qt6() {

@@ -4,7 +4,9 @@ pkgbase = gpgme
 	pkgrel = 4
 	url = https://www.gnupg.org/related_software/gpgme/
 	arch = x86_64
-	license = LGPL
+	license = GPL-2.0-or-later
+	license = LGPL-2.0-or-later
+	license = LGPL-2.1-or-later
 	makedepends = gnupg
 	makedepends = libgpg-error
 	makedepends = python
@@ -22,6 +24,10 @@ pkgbase = gpgme
 	sha256sums = SKIP
 
 pkgname = gpgme
+	license = GPL-2.0-or-later
+	license = LGPL-2.0-or-later
+	license = LGPL-2.1-or-later
+	license = MIT
 	depends = libgpg-error
 	depends = gnupg>=2
 	provides = libgpgme.so
