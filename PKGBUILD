@@ -1,25 +1,25 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=avm
-pkgver=5.0.0
+pkgver=7.0.1
 pkgrel=1
 pkgdesc='AOM Video Model - the reference software for next codec from Alliance for Open Media'
 arch=('x86_64')
 url='https://gitlab.com/AOMediaCodec/avm/'
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('gcc-libs')
 makedepends=('git' 'cmake' 'yasm' 'perl')
 provides=('libaom.so')
 conflicts=('aom')
 BUILDENV+=('!check')
 source=("git+https://gitlab.com/AOMediaCodec/avm.git#tag=research-v${pkgver}"
-        'git+https://github.com/tensorflow/tensorflow.git')
-sha256sums=('SKIP'
+        'git+https://github.com/abseil/abseil-cpp.git')
+sha256sums=('59b2e7bb837bf159ad2734be530a1b075197871e10ddab4d3f2bfd23dcfd2350'
             'SKIP')
 
 prepare() {
     git -C avm submodule init
-    git -C avm config --local submodule.third_party/tensorflow.url "${srcdir}/tensorflow"
+    git -C avm config --local submodule.third_party/abseil-cpp.url "${srcdir}/abseil-cpp"
     git -C avm -c protocol.file.allow='always' submodule update
 }
 
