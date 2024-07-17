@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=nile-git
-pkgver=1.0.2.r0.gae09acf
+pkgver=1.1.0.r0.g55287cd
 pkgrel=1
 pkgdesc="Unofficial Amazon Games client"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=(
   'python-requests'
   'python-zstandard'
 )
-makedepends=('git' 'pyinstaller')
+makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/imLinguin/nile.git')
@@ -22,15 +22,19 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-build() {
-  cd "${pkgname%-git}"
-  pyinstaller --onefile --name "${pkgname%-git}" "${pkgname%-git}/cli.py"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
   cd "${pkgname%-git}"
-  install -Dm755 dist/${pkgname%-git} -t "$pkgdir/usr/bin/"
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  install -d "$pkgdir/${site_packages}"
+  cp -r "${pkgname%-git}" "$pkgdir/${site_packages}"
+
+  # Compile Python bytecode
+  python -m compileall -d / "$pkgdir/${site_packages}"
+  python -O -m compileall -d / "$pkgdir/${site_packages}"
+
+  install -d "$pkgdir/usr/bin"
+  ln -s "/${site_packages}/${pkgname%-git}/cli.py" "$pkgdir/usr/bin/${pkgname%-git}"
 }
