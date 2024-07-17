@@ -3,15 +3,18 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
+## links
+# https://telepathy.freedesktop.org/wiki/
+# https://github.com/TelepathyQt/telepathy-qt
+
 _pkgname="telepathy-qt"
 pkgname="$_pkgname"
 pkgver=0.9.8
-pkgrel=3
-arch=('x86_64' 'aarch64')
-url="https://github.com/TelepathyQt/telepathy-qt"
-# url="https://telepathy.freedesktop.org/wiki/"
-license=(LGPL)
+pkgrel=4
 pkgdesc="A library for Qt-based Telepathy clients"
+url="https://github.com/TelepathyQt/telepathy-qt"
+license=('LGPL-2.1-or-later')
+arch=('x86_64' 'aarch64')
 
 depends=(
   qt5-base
@@ -20,6 +23,7 @@ depends=(
 makedepends=(
   cmake
   doxygen
+  ninja
   python
   qt5-tools
 )
@@ -39,7 +43,7 @@ build() {
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"
-
+    -G Ninja
     -DCMAKE_INSTALL_PREFIX=/usr
     -DENABLE_EXAMPLES=OFF
     -DENABLE_TESTS=OFF

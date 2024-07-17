@@ -1,13 +1,14 @@
 pkgbase = telepathy-qt
 	pkgdesc = A library for Qt-based Telepathy clients
 	pkgver = 0.9.8
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/TelepathyQt/telepathy-qt
 	arch = x86_64
 	arch = aarch64
-	license = LGPL
+	license = LGPL-2.1-or-later
 	makedepends = cmake
 	makedepends = doxygen
+	makedepends = ninja
 	makedepends = python
 	makedepends = qt5-tools
 	depends = qt5-base
