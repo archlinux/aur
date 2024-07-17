@@ -3,40 +3,50 @@
 
 _pkgname="polkit-qt5"
 pkgname="$_pkgname-git"
-pkgver=0.114.0.r13.g590e710
+pkgver=0.200.0.r1.ge01dc18
 pkgrel=1
 pkgdesc='A library that allows developers to access PolicyKit API with a nice Qt-style API'
-arch=('i686' 'x86_64')
 url='https://invent.kde.org/libraries/polkit-qt-1'
-license=('LGPL')
+license=('BSD-3-Clause' 'GPL-2.0-or-later' 'LGPL-2.0-or-later')
+arch=('i686' 'x86_64')
 
-depends=('polkit' 'qt5-base')
-makedepends=('git' 'cmake')
+depends=(
+  'polkit'
+  'qt5-base'
+)
+makedepends=(
+  'cmake'
+  'git'
+  'ninja'
+)
 
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
-source=("$_pkgname"::"git+$url")
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "$srcdir"
-  mkdir -p build
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cmake -B build -S "$_pkgname" \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_DESTINATION=/usr/lib
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -Wno-dev
+  )
+
+  cmake "${_cmake_options[@]}"
   cmake --build build
 }
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+  install -Dm644 "$_pkgsrc"/LICENSES/* -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
