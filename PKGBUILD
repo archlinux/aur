@@ -1,4 +1,5 @@
-# Maintainer: Frederik Schwan <freswa at archlinux dot org>
+# Maintainer: Stefan Wimmer <info@stefanwimmer128.xyz>
+# Contributor: Frederik Schwan <freswa at archlinux dot org>
 
 pkgname=wasi-compiler-rt17
 pkgver=17.0.6
