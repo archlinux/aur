@@ -5,7 +5,7 @@
 
 pkgname=python-requests-unixsocket2
 _pkgname="requests_unixsocket2"
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='Use requests to talk HTTP via a UNIX domain socket, fork of requests-unixsocket'
 arch=('any')
@@ -16,8 +16,8 @@ makedepends=('python-poetry')
 provides=('python-requests-unixsocket')
 conflicts=('python-requests-unixsocket')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha512sums=('e92b2d66e8d9e1f80de1a767a8ceba545bf8a8c1fe7bd75f2c5cb5f7225e6bff5ce60fbc150e9f5820bc312bfb787e94c82b1d0dfe7c4556709c7d3b0497188a')
-b2sums=('74923bd914f5c3c8e5cb8aa5e87d6403116e2eb692bb62d0289dc8a8d646c97f67ceb781f7c78d656c2f956f7db2b23ad2d0c23631827337c7cb383381024557')
+sha512sums=('ac1e78af4975a6c54af8d4af9eb3791c27f13c61b8b65046f03b82842254c8fb983fa0462368dd67abc0a9ce18caa7c3134d9bbada9ba8549ca0b45388ac80f2')
+b2sums=('5451ba191ac8a1e40ab790c66fd43b01fb9f304a7d2ac5a2ddc319c3e95a3809d854d0ddf4fe6e008c15ff8c5ff5f0ee80c61047f53e282085157664adee2753')
 
 build() {
   cd "$_pkgname-$pkgver"
@@ -34,3 +34,4 @@ package() {
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   rm -r "$pkgdir$site_packages/requests_unixsocket/"{tests,testutils.py}
 }
+
