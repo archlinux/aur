@@ -4,7 +4,7 @@ pkgbase=python-griffe
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.47.0
+pkgver=0.48.0
 pkgrel=1
 pkgdesc="Signatures for entire Python programs"
 arch=('any')
@@ -13,20 +13,39 @@ license=('ISC')
 makedepends=('python-pdm-backend'
              'python-build'
              'python-installer')
-#checkdepends=('python-pytest'
-#              'python-colorama'
-#              'python-jsonschema'
-#              'git')
+#            'mkdocs-material'
+#            'mkdocs-autorefs'
+#            'mkdocs-coverage'
+#            'mkdocs-gen-files'
+#            'mkdocs-literate-nav'
+#            'mkdocs-section-index'
+#            'mkdocs-git-committers-plugin-2'
+#            'mkdocs-git-revision-date-localized-plugin'
+#            'mkdocs-redirects'
+#            'python-markdown-callouts'
+#            'python-markdown-exec'
+#            'python-pygments-ansi-color'
+#            'python-griffe-inherited-docstrings'
+#            'mkdocstrings-python'
+#            'git') # avoid circular dep
+checkdepends=('python-pytest'
+              'python-colorama'
+              'python-jsonschema'
+              'mkdocstrings'
+              'git')
 #source=("https://github.com/oprypin/markdown-callouts/archive/refs/tags/v${pkgver}.tar.gz")
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
+#       "https://github.com/mkdocstrings/griffe/raw/main/logo.svg")
 #       "${pkgver}-schema.json::https://github.com/mkdocstrings/griffe/raw/${pkgver}/docs/schema.json")
-md5sums=('934817c400889c433c4ddedc15cd6d53')
+md5sums=('8c9018b489575ef10adcdd4f6f2f9996')
 
 #prepare() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
 #
-#    mkdir -p docs
-#    ln -rs {${srcdir}/${pkgver}-,docs/}schema.json
+##   mkdir -p docs
+##   ln -rs {${srcdir}/${pkgver}-,docs/}schema.json
+#    ln -rs ${srcdir}/logo.svg .
+#    sed -i -e '$a use_directory_urls: false' mkdocs.yml
 #}
 
 build() {
@@ -39,13 +58,15 @@ build() {
 #   PYTHONPATH="dist/lib" mkdocs build
 }
 
-#check() {
-#    cd ${srcdir}/${_pyname}-${pkgver}
-#
-#    mkdir -p dist/lib
-#    bsdtar -xpf dist/${_pyname/-/_}-${pkgver}-py3-none-any.whl -C dist/lib
-#    PYTHONPATH="dist/lib" pytest -vv -l -ra --color=yes -o console_output_style=count #|| warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
-#}
+check() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    # ignore mkdocstrings related
+    mkdir -p dist/lib
+    bsdtar -xpf dist/${_pyname/-/_}-${pkgver}-py3-none-any.whl -C dist/lib
+    PYTHONPATH="dist/lib" pytest \
+        --ignore=tests/test_internals.py || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+}
 
 package_python-griffe() {
     depends=('python>=3.8' 'python-astunparse>=1.6' 'python-colorama>=0.4')
