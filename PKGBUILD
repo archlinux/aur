@@ -1,13 +1,13 @@
 # Maintainer:
 # Contributor: dreieck (https://aur.archlinux.org/account/dreieck)
 
-if [ -z "$CARGO_HOME" ] ; then
-  export CARGO_HOME="${SRCDEST:-${startdir:?}}/cargo"
+if [ -z "$CARGO_HOME" ]; then
+  export CARGO_HOME="$SRCDEST/cargo-home"
 fi
 
 _pkgname="python-tiktoken"
 pkgname="$_pkgname-git"
-pkgver=0.5.1.r0.g39f29ce
+pkgver=0.7.0.r1.gc0ba74c
 pkgrel=1
 pkgdesc="A fast BPE tokeniser for use with OpenAI's models"
 url="https://github.com/openai/tiktoken"
@@ -50,7 +50,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgsrc"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -65,16 +65,13 @@ build() {
 
 check() {
   cd "$_pkgsrc"
-
   rm -r tiktoken tiktoken.egg-info tiktoken_ext
-  local python_version
-  python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
+  local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
   PYTHONPATH="build/lib.linux-$CARCH-cpython-$python_version" python -m pytest
 }
 
 package() {
   cd "$_pkgsrc"
   python -m installer --destdir="$pkgdir" dist/*.whl
-
-  install -vDm0644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
