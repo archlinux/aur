@@ -1,7 +1,7 @@
 # Maintainer: pusi77 <pusineriandrea+gmail+com>
 
 pkgname=rain-bin
-pkgver=1.11.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='A development workflow tool for working with AWS CloudFormation'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('Apache-2.0')
 provides=('rain')
 conflicts=('rain')
 source=("$pkgname-$pkgver.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}_linux-amd64.zip")
-sha256sums=('e95620a4630a249fb5e75157f98d2ded1f29bdda09554085f3cedbd67a416b67')
+sha256sums=('dae255799a52012418cd7e02f49ab51b6db75968070ac60968e1b964e375a5ad')
 
 package() {
   cd "${pkgname%-bin}-v${pkgver}_linux-amd64"
