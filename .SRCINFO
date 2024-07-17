@@ -10,12 +10,13 @@ pkgbase = polybase-git
 	makedepends = nvm
 	makedepends = gendesk
 	makedepends = icoutils
+	makedepends = curl
 	depends = electron28
 	provides = polybase=r3.3b0316a
 	conflicts = polybase
 	source = polybase.git::git+https://github.com/Jgrtowy/PolyBase.git
 	source = polybase.sh
 	sha256sums = SKIP
-	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = polybase-git
