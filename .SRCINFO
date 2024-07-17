@@ -1,11 +1,11 @@
 pkgbase = powder-toy-git
 	pkgdesc = Desktop version of the classic falling sand physics sandbox, simulates air pressure, velocity & heat!
-	pkgver = 97.0.352.r218.g5584acd18
+	pkgver = 98.2.365.r43.g6179a73
 	pkgrel = 1
 	url = https://github.com/ThePowderToy/The-Powder-Toy
 	arch = x86_64
 	arch = i686
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = meson
 	depends = luajit
@@ -17,7 +17,7 @@ pkgbase = powder-toy-git
 	depends = jsoncpp
 	depends = libpng
 	depends = sdl2
-	provides = powder-toy
+	provides = powder-toy=98.2.365
 	conflicts = powder-toy
 	source = powder-toy::git+https://github.com/ThePowderToy/The-Powder-Toy.git#branch=master
 	sha256sums = SKIP

@@ -8,21 +8,25 @@
 
 # Select version of Lua. Possible values are luajit, lua51, lua52 and an empty
 # string to disable Lua support. luajit is used in the official builds.
-_lua=luajit
-_branch=master
+: ${_lua=luajit}
+: ${_branch=master}
 
 _appexe="powder-toy"
 _appid="uk.co.powdertoy.tpt"
 _appvendor="powdertoy"
 
+## links
+# http://powdertoy.co.uk/
+# https://github.com/ThePowderToy/The-Powder-Toy
+
 _pkgname="powder-toy"
 pkgname="$_pkgname-git"
-pkgver=97.0.352.r218.g5584acd18
+pkgver=98.2.365.r43.g6179a73
 pkgrel=1
 pkgdesc="Desktop version of the classic falling sand physics sandbox, simulates air pressure, velocity & heat!"
-arch=(x86_64 i686)
-url="http://powdertoy.co.uk/"
-license=('GPL3')
+url="https://github.com/ThePowderToy/The-Powder-Toy"
+license=('GPL-3.0-or-later')
+arch=('x86_64' 'i686')
 
 depends=(
   "$_lua"
@@ -41,22 +45,16 @@ makedepends=(
   meson
 )
 
-if [ x"$_pkgname" != x"$pkgname" ] ; then
-  url="https://github.com/ThePowderToy/The-Powder-Toy"
-  provides=("$_pkgname")
-  conflicts=("$_pkgname")
-fi
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
 
-source=(
-  "$_pkgname"::"git+https://github.com/ThePowderToy/The-Powder-Toy.git#branch=$_branch"
-)
-sha256sums=(
-  'SKIP'
-)
+source=("$_pkgname"::"git+$url.git#branch=$_branch")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  git describe --tags --match "v[0-9]*" | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags --long --abbrev=7 --match='v[0-9]*' --exclude='*[A-Za-z][A-Za-z]*' \
+    | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -66,9 +64,9 @@ build() {
 
   case "$_lua" in
     luajit) opt_lua=luajit ;;
-     lua51) opt_lua=lua5.1 ;;
-     lua52) opt_lua=lua5.2 ;;
-         *) opt_lua=none   ;;
+    lua51) opt_lua=lua5.1 ;;
+    lua52) opt_lua=lua5.2 ;;
+    *) opt_lua=none ;;
   esac
 
   if grep -q -i pni /proc/cpuinfo; then
@@ -108,7 +106,8 @@ package() {
   install -Dm644 "resources/icon_cps.svg" "${theme_dir}/scalable/mimetypes/${mimetype}.svg"
   install -Dm644 "resources/generated_icons/icon_exe.png" "${theme_dir}/256x256/apps/${_appvendor}-${_appexe}.png"
   install -Dm644 "resources/generated_icons/icon_cps.png" "${theme_dir}/256x256/mimetypes/${mimetype}.png"
-  local icon_size; for icon_size in 16 32 48; do
+  local icon_size
+  for icon_size in 16 32 48; do
     install -Dm644 "resources/generated_icons/icon_exe_${icon_size}.png" \
       "${theme_dir}/${icon_size}x${icon_size}/apps/${_appvendor}-${_appexe}.png"
     install -Dm644 "resources/generated_icons/icon_cps_${icon_size}.png" \
