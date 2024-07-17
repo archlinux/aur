@@ -6,6 +6,7 @@ pkgbase = protoc-gen-go-grpc
 	arch = any
 	license = Apache-2.0
 	makedepends = go
+	depends = glibc
 	depends = protoc-gen-go
 	source = grpc-go-cmd-protoc-gen-go-grpc-v1.4.0.tar.gz::https://github.com/grpc/grpc-go/archive/cmd/protoc-gen-go-grpc/v1.4.0.tar.gz
 	sha256sums = e932b9ceb1a338eabdb3a421b7e3bbc871f85d359d31955a5e4627ee1132f882
