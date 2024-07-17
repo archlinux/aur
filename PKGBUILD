@@ -1,9 +1,9 @@
 # Maintainer:
 # Contributor: Lubosz Sarnecki <lubosz@gmail.com>
 
-_pkgname=novelwriter
+_pkgname="novelwriter"
 pkgname="$_pkgname-git"
-pkgver=2.4.r69.g6d6d0c2
+pkgver=2.5.r4.gb7da56a
 pkgrel=1
 pkgdesc="A markdown-like document editor for writing novels"
 url="https://github.com/vkbo/novelWriter"
@@ -19,10 +19,6 @@ makedepends=(
   'python-installer'
   'python-setuptools'
   'python-wheel'
-)
-
-optdepends=(
-  'python-pyenchant'
 )
 
 provides=("$_pkgname")
