@@ -3,8 +3,8 @@
 
 _pkgname=gnucap
 pkgname=$_pkgname-git
-pkgver=dev.0831.r0.gf1c8c78
-pkgrel=3
+pkgver=20240702.dev.r0.g86ceba7
+pkgrel=1
 pkgdesc="GNU Circuit Analysis Package (develop branch)"
 arch=('x86_64')
 url="http://gnucap.org/"
@@ -24,7 +24,6 @@ pkgver() {
 prepare(){
     cd $_pkgname
     sed -i 's#INSTALL_SYSCONF_DIR = $(PREFIX)/etc#INSTALL_SYSCONF_DIR = /etc#' main/Make1
-    sed -i 's#$\\{prefix\\}/etc#/etc#' main/configure
 }
 
 build() {
