@@ -1,7 +1,7 @@
 pkgbase = meta-rules-dat
 	pkgdesc = rules dat files by MetaCubeX
-	pkgver = 20240716
-	pkgrel = 2
+	pkgver = 20240717
+	pkgrel = 1
 	url = https://github.com/MetaCubeX/meta-rules-dat
 	arch = any
 	license = CC-BY-SA-4.0
