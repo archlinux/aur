@@ -1,7 +1,7 @@
 # Maintainer: Ghabry <gabriel-aur mastergk de>
 
 pkgname=minimap2
-pkgver=2.26
+pkgver=2.28
 pkgrel=1
 pkgdesc="A versatile pairwise aligner for genomic and spliced nucleotide sequences"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://lh3.github.io/minimap2"
 license=('MIT')
 depends=('zlib')
 source=("https://github.com/lh3/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.bz2")
-sha256sums=('6a588efbd273bff4f4808d5190957c50272833d2daeb4407ccf4c1b78143624c')
+sha256sums=('ffa5712735d229119f8c05722a0638ae0cc15aeb8938e29a3e52d5da5c92a0b4')
 
 prepare() {
   cd $pkgname-$pkgver
