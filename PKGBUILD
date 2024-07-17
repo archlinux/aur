@@ -2,7 +2,7 @@
 
 pkgname=xrock
 pkgver=1.0.4
-pkgrel=3
+pkgrel=11
 epoch=
 pkgdesc="The low level tools for rockchip SOC with maskrom and loader mode support."
 arch=(x86_64
@@ -19,7 +19,7 @@ provides=()
 conflicts=(xrock-git)
 replaces=()
 backup=()
-options=('!strip')
+options=()
 install=
 changelog=
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
