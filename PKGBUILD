@@ -1,26 +1,25 @@
-# Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
+# Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@kth.se>
 
 pkgname=coopgammad
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Cooperative gamma server"
 arch=(i686 x86_64)
-url="https://github.com/maandree/coopgammad"
+url="https://codeberg.org/maandree/coopgammad"
 license=('custom:ISC')
 depends=(libgamma)
 makedepends=(libgamma libclut)
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(ef66cba3d20df0a021124536927220c7d8e741fb4b75b3951bedaca82e3001c8)
+sha256sums=(5bfa0c2400d2ab792105c0efdae2db865ee87fbb972873cf60382409024b51e3)
 
 
-build() {
-  cd "$srcdir/$pkgname-$pkgver"
+build () {
+  cd "$srcdir/$pkgname"
   make PREFIX=/usr
 }
 
 
-package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make install PREFIX=/usr DESTDIR="$pkgdir"
+package () {
+  cd "$srcdir/$pkgname"
+  make PREFIX=/usr DESTDIR="$pkgdir" install
 }
-
