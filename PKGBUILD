@@ -1,8 +1,8 @@
 # Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
 _pkgname='chatterino2-nightly'
 pkgname="${_pkgname}-bin"
-provides=chatterino
-conflicts=chatterino
+provides=(${_pkgname})
+conflicts=(${_pkgname})
 pkgver=2.5.1
 pkgrel=1
 scdir=$_pkgname
