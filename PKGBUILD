@@ -22,6 +22,7 @@ backup=(
 source=(
   'traefik.logrotate'
   'traefik.service'
+  'traefik.sysusers'
   'traefik.toml'
 )
 source_i686=("${_pkgname}_i686_${pkgver}"::"https://github.com/containous/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_linux_386.tar.gz")
@@ -31,6 +32,7 @@ source_armv7h=("${_pkgname}_armv7h_${pkgver}"::"https://github.com/containous/${
 source_aarch64=("${_pkgname}_aarch64_${pkgver}"::"https://github.com/containous/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_linux_arm64.tar.gz")
 sha256sums=('da59d047177cae773d248684e8484d91c71201f5bc07fe72452efdf9bed1a7f4'
             '42f46aa462f7347cc63f4a88e38ba9cebeab9f6bcb4f6f3717dafd17a8018e56'
+            '9acc04ac38893d05c5f3b1407fbc36d5f7ae179af5f13e12231194f1f469390d'
             'abfcfe24e742bf8968749ea79e2c0425bef3d37d16eb60311b5a994312a1e54d')
 sha256sums_i686=('ccfa8be0ff782052a2204195715012953af1afb78adbbbc34055b5c2f7a3bdab')
 sha256sums_x86_64=('9d52676fda789fc0566d07fe09115c42d56527b7cdba3ea7c40088b4053f97f5')
@@ -44,6 +46,7 @@ package() {
 
   install -D -m644 "traefik.logrotate" "${pkgdir}/etc/logrotate.d/traefik"
   install -D -m644 "traefik.service" "${pkgdir}/usr/lib/systemd/system/traefik.service"
+  install -D -m644 "traefik.sysusers" "${pkgdir}/usr/lib/sysusers.d/traefik.conf"
   install -D -m644 "traefik.toml" "${pkgdir}/etc/traefik/traefik.toml"
 
   install -D -m644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

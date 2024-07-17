@@ -1,8 +1,3 @@
-pre_install() {
-  getent group traefik &> /dev/null || groupadd -r traefik &> /dev/null
-  getent passwd traefik &> /dev/null || useradd -s /sbin/nologin -c "Traefik user" -d /var/empty -g traefik -r traefik &> /dev/null
-}
-
 post_install() {
   chown traefik:traefik var/log/traefik
   setcap 'cap_net_bind_service=+ep' usr/bin/traefik
