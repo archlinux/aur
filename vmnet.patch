@@ -636,22 +636,80 @@ index 5f41269d..cb25e3b8 100644
  
  /*
   *----------------------------------------------------------------------
-Patch for Linux 6.9 from https://github.com/mkubecek/vmware-host-modules/issues/239
+From 8e0bba266afe372d1041d10da03b16bd35a67150 Mon Sep 17 00:00:00 2001
+From: Sharishth <Sharishth@gmail.com>
+Date: Wed, 3 Jul 2024 02:45:06 +0530
+Subject: [PATCH] vmware module for w17.5.2 on kernal 6.9
+
+---
+diff --git a/vmnet-only/bridge.c b/vmnet-only/bridge.c
+index 4c139570..71afdda2 100644
+--- a/vmnet-only/bridge.c
++++ b/vmnet-only/bridge.c
+@@ -537,6 +537,10 @@ VNetBridgeReceiveFromVNet(VNetJack        *this, // IN: jack
+       dev_kfree_skb(skb);
+       return;
+    }
++   if (!bridge->dev) {
++      dev_kfree_skb(skb);
++      return;
++   }
+ 
+    /*
+     * skb might be freed by wireless code, so need to keep
+@@ -588,6 +592,13 @@ VNetBridgeReceiveFromVNet(VNetJack        *this, // IN: jack
+     */
+ 
+    dev_lock_list();
++   for_each_netdev_rcu(&init_net, dev) {
++      if (MAC_EQ(dest, dev->dev_addr) ||
++          skb->len > dev->mtu + dev->hard_header_len) {
++         continue;
++      }
++   }
++   dev_unlock_list();
+    if (MAC_EQ(dest, dev->dev_addr) ||
+        skb->len > dev->mtu + dev->hard_header_len) {
+       dev_unlock_list();
+@@ -641,7 +652,17 @@ VNetBridgeReceiveFromVNet(VNetJack        *this, // IN: jack
+ 
+ 	 clone = skb_get(clone);
+ 
++    dev_lock_list();
++         for_each_netdev_rcu(&init_net, dev) {
++            if (dev == bridge->dev) {
++               clone->dev = dev;
++               clone->protocol = eth_type_trans(clone, dev);
++               break;
++            }
++         }
++      dev_unlock_list();
++
+ 	 clone->dev = dev;
+ 	 clone->protocol = eth_type_trans(clone, dev);
+ 	 spin_lock_irqsave(&bridge->historyLock, flags);
+ 	 for (i = 0; i < VNET_BRIDGE_HISTORY; i++) {
+diff --git a/vmnet-only/vmnetInt.h b/vmnet-only/vmnetInt.h
+index b49c3990..8e25f0ce 100644
 --- a/vmnet-only/vmnetInt.h
 +++ b/vmnet-only/vmnetInt.h
-@@ -62,8 +62,13 @@
+@@ -24,6 +24,8 @@
+ #include "includeCheck.h"
+ #include "driver-config.h"
+ 
++// header for RCU
++#include <linux/rcupdate.h>
+ 
+ /*
+  * Hide all kernel compatibility stuff in those macros.  This part of code
+@@ -62,8 +64,8 @@
      compat_skb_set_network_header(skb, sizeof (struct ethhdr)),  \
      dev_queue_xmit(skb)                                   \
    )
 -#define dev_lock_list()    read_lock(&dev_base_lock)
 -#define dev_unlock_list()  read_unlock(&dev_base_lock)
-+#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 9, 0)
-+#   define dev_lock_list()    rcu_read_lock()
-+#   define dev_unlock_list()  rcu_read_unlock()
-+#else
-+#   define dev_lock_list()    read_lock(&dev_base_lock)
-+#   define dev_unlock_list()  read_unlock(&dev_base_lock)
-+#endif
++#define dev_lock_list()    rcu_read_lock()
++#define dev_unlock_list()  rcu_read_unlock()
  #ifdef VMW_NETDEV_HAS_NET
  #   define DEV_GET(x)      __dev_get_by_name(&init_net, (x)->name)
  #   ifdef VMW_NETDEV_HAS_DEV_NET
