@@ -1,4 +1,4 @@
-pkgbase = smdbottom
+pkgbase = smdbottom-git
 	pkgdesc = A set of bottom libraries for simpledot
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -14,4 +14,4 @@ pkgbase = smdbottom
 	validpgpkeys = SKIP
 	sha256sums = SKIP
 
-pkgname = smdbottom
+pkgname = smdbottom-git
