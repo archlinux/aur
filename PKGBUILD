@@ -41,5 +41,5 @@ check() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	sudo install -m0755 target/release/ev-cmd /usr/bin/ev-cmd
+	install -m0755 target/release/ev-cmd /usr/bin/ev-cmd
 }
