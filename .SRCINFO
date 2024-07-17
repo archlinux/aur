@@ -1,0 +1,13 @@
+pkgbase = ev-cmd
+	pkgdesc = Simple command runner I made for my Koolertron macropad
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/danhab99/ev-cmd
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	depends = rust
+	source = https://github.com/danhab99/ev-cmd/tarball/1.0.0
+	sha256sums = b529a0f0bed58bd76f19407510ee662375f3305821507d4bd3f9fa8c13a266bc
+
+pkgname = ev-cmd

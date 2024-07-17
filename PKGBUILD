@@ -21,7 +21,7 @@ changelog=
 # source=("$pkgname-$pkgver.tar.gz")
 source=("$url/tarball/$pkgver")
 noextract=()
-sha256sums=(b529a0f0bed58bd76f19407510ee662375f3305821507d4bd3f9fa8c13a266bc)
+sha256sums=('b529a0f0bed58bd76f19407510ee662375f3305821507d4bd3f9fa8c13a266bc')
 validpgpkeys=()
 
 prepare() {
