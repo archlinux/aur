@@ -21,7 +21,6 @@ source=(
   'traefik.logrotate'
   'traefik.service'
   'traefik.toml'
-  "https://raw.githubusercontent.com/containous/${_pkgname}/v${pkgver}/LICENSE.md"
 )
 source_i686=("${_pkgname}_i686_${pkgver}"::"https://github.com/containous/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_linux_386.tar.gz")
 source_x86_64=("${_pkgname}_x86_64_${pkgver}"::"https://github.com/containous/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_linux_amd64.tar.gz")
