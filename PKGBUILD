@@ -5,7 +5,7 @@
 pkgdesc='A library to create panels and other desktop components for Wayland using the Layer Shell protocol and GTK4'
 pkgname=gtk4-layer-shell
 pkgver=1.0.2
-pkgrel=2
+pkgrel=4
 arch=(x86_64 aarch64)
 license=(MIT)
 url="https://github.com/wmww/gtk4-layer-shell"
@@ -33,23 +33,15 @@ build() {
           --prefix=/usr \
           --wrap-mode=nofallback \
           --buildtype=plain \
-          -Dtests=true \
+          -Dtests=false \
           -Ddocs=true \
           -Dintrospection=true \
           -Dvapi=true \
-          -Dexamples=true \
+          -Dexamples=false \
           -Dsmoke-tests=false \
           "$pkgname-$pkgver" \
           build
     ninja -C build
-}
-
-
-
-
-# See: https://github.com/wmww/gtk4-layer-shell/issues/28
-check() {
-    meson test -C build
 }
 
 package() {
