@@ -1,9 +1,10 @@
 pkgbase = localsend-bin
 	pkgdesc = An open source cross-platform alternative to AirDrop
 	pkgver = 1.15.0
-	pkgrel = 0
+	pkgrel = 2
 	url = https://github.com/localsend/localsend
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	depends = fuse2
 	depends = xdg-user-dirs
@@ -11,7 +12,9 @@ pkgbase = localsend-bin
 	provides = localsend
 	conflicts = localsend
 	options = !debug
-	source = https://github.com/localsend/localsend/releases/download/v1.15.0/LocalSend-1.15.0-linux-x86-64.deb
-	sha256sums = d6d5b7d58af8942dae5283630357cf8acef7f73fac0ce09acb339ada14e21657
+	source_x86_64 = https://github.com/localsend/localsend/releases/download/v1.15.0/LocalSend-1.15.0-linux-x86-64.deb
+	sha256sums_x86_64 = d6d5b7d58af8942dae5283630357cf8acef7f73fac0ce09acb339ada14e21657
+	source_aarch64 = https://github.com/localsend/localsend/releases/download/v1.15.0/LocalSend-1.15.0-linux-arm-64.deb
+	sha256sums_aarch64 = 350de588da82ad4916f0aa976882614adad86a06b4d5a6df63925806c24890d9
 
 pkgname = localsend-bin
