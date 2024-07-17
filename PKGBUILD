@@ -3,7 +3,7 @@ pkgname=sixgrid-bin
 _pkgname=SixGrid
 pkgver=0.3.7_3
 _electronversion=28
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-Source Desktop Client for e926/e621 and websites alike"
 arch=("x86_64")
 url="https://github.com/SixGrid/sixgrid"
@@ -20,18 +20,18 @@ makedepends=(
 options=(
     '!strip'
     '!emptydirs'
-    #'!staticlibs'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/${pkgver//_/-}/${pkgname%-bin}-linux-amd64.AppImage"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('91e76e9c56bb375b6994421a586a6393c061b8b4ad1b88e0117727c4d1640d08'
-            '61d56055897e9d71d68e185ac2de7c4cb2fbca16eb3fb0091703612c113441f3')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
+        -e "s|@runname@|app|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
