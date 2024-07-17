@@ -36,5 +36,5 @@ package() {
   python -O -m compileall -d / "${pkgdir}${site_packages}"
 
   install -d "$pkgdir/usr/bin"
-  ln -s "/${site_packages}/${pkgname%-git}/cli.py" "$pkgdir/usr/bin/${pkgname%-git}"
+  ln -s "${site_packages}/${pkgname%-git}/cli.py" "$pkgdir/usr/bin/${pkgname%-git}"
 }
