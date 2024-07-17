@@ -1,11 +1,11 @@
 # Maintainer: tacheometrist <aur@tacheometrist.dev>
 
 pkgname=surrealist-bin
-pkgver=2.1.3
+pkgver=2.1.4
 pkgrel=1
 pkgdesc="Surrealist is the ultimate way to visually manage your SurrealDB database"
 arch=("x86_64")
-url="https://surrealdb.com/docs/surrealist"
+url="https://github.com/surrealdb/surrealist"
 license=("MIT")
 groups=()
 depends=("webkit2gtk" "gtk3")
