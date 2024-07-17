@@ -1,6 +1,6 @@
 pkgbase = firefox-extension-video-download-helper
 	pkgdesc = The easy way to download and convert Web videos from hundreds of YouTube-like sites.
-	pkgver = 8.2.2.8
+	pkgver = 9.0.2.12
 	pkgrel = 1
 	url = https://www.downloadhelper.net
 	arch = any
@@ -10,10 +10,10 @@ pkgbase = firefox-extension-video-download-helper
 	optdepends = vdhcoapp: companion app, see https://www.downloadhelper.net/install-coapp
 	optdepends = vdhcoapp-bin: companion app (binary version)
 	noextract = license.html
-	noextract = extension_8.2.2.8-1.xpi
+	noextract = extension_9.0.2.12-1.xpi
 	source = license.html::https://www.downloadhelper.net/terms-of-service
-	source = extension_8.2.2.8-1.xpi::https://addons.mozilla.org//firefox/downloads/file/4251369/video_downloadhelper-8.2.2.8.xpi
-	sha256sums = SKIP
-	sha256sums = 975f9f66f76b4f8055316419c64950a532aa5cb4018ffbb926cf293ed5f300dd
+	source = extension_9.0.2.12-1.xpi::https://addons.mozilla.org/firefox/downloads/file/4305354/video_downloadhelper-9.0.2.12.xpi
+	sha512sums = SKIP
+	sha512sums = fb9354ec03600149fcb773b1fcc2aa6e91d2f51f8c9ec0b46d04f1494edf46fb084d87a1c3f494f502ce335043f4d43a6be9d0e7f985238acc04e24340b2b6e3
 
 pkgname = firefox-extension-video-download-helper
