@@ -1,9 +1,9 @@
-# Maintainer: Aloxaf <aloxafx@gmail.com>
+# Maintainer: Evan Edwards <evan@ejedev.com>
 
 pkgname=python-glom
 _name=${pkgname#python-}
 _py=py3
-pkgver=22.1.0
+pkgver=23.5.0
 pkgrel=1
 pkgdesc="Python's nested data operator"
 arch=('any')
@@ -15,7 +15,7 @@ source=(
   "https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
 )
 sha256sums=(
-  '1510c6587a8f9c64a246641b70033cbc5ebde99f02ad245693678038e821aeb5'
+  '06af5e3486aacc59382ba34e53ebeabd7a9345d78f7dbcbee26f03baa4b83bac'
 )
 
 
