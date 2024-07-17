@@ -1,0 +1,17 @@
+pkgbase = python-openmc-plotter-git
+	pkgdesc = Plotting tool for OpenMC models and tally data
+	pkgver = v0.4.0.r27.g293067c
+	pkgrel = 1
+	url = https://github.com/openmc-dev/plotter
+	arch = any
+	license = MIT
+	checkdepends = python-pytest-runner
+	checkdepends = python-pytest-qt
+	makedepends = openmc-git
+	makedepends = python-numpy
+	makedepends = python-matplotlib
+	makedepends = pyside6
+	source = git+https://github.com/openmc-dev/plotter
+	sha256sums = SKIP
+
+pkgname = python-openmc-plotter-git
