@@ -1,10 +1,10 @@
 # Maintainer: Simon Brakhane <simon+aur@brakhane.net>
 pkgname=ezcoo-cli
-pkgver=0.0.1
+pkgver=0.1.0
 pkgrel=1
 epoch=
 pkgdesc="A tool to control EZCOO KVM switches via the serial interface"
-arch=(x86_64)
+arch=(any)
 url="https://github.com/luminger/ezcoo-cli"
 license=(Apache)
 groups=()
@@ -19,7 +19,7 @@ options=()
 install=
 changelog=
 source=("https://github.com/luminger/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('e457fda58532d0fe49a3804b8a446cb68c5c8dc48b72bf153fbad8e8e25a7f56')
+sha256sums=('b743fa0551e29e9a39e4a7d68740e00b604a1fbb74598229d0e4d9a091124de2')
 noextract=()
 md5sums=()
 validpgpkeys=()
