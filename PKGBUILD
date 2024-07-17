@@ -26,6 +26,7 @@ build() {
 package() {
     cd $_name
 	python setup.py install --root="$pkgdir" --optimize=1
+	install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
 
 check(){
