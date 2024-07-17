@@ -2,18 +2,18 @@
 
 _pkgname=kf6-servicemenus-rootactions
 pkgname=$_pkgname-git
-pkgver=1.0.0.r2.g24b8848
+pkgver=1.0.0.r3.gc456a68
 pkgrel=1
 pkgdesc='Allows admin users to perform several root only actions from dolphin via polkit agent.'
 arch=(any)
-url='https://codeberg.org/stefanwimmer128/kf6-servicemenus-rootactions'
+url='https://gitlab.com/stefanwimmer128/kf6-servicemenus-rootactions'
 license=(GPL-2.0-or-later)
 depends=(dolphin kdialog perl polkit)
 makedepends=(git)
 optdepends=(kate)
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=("$_pkgname::git+https://codeberg.org/stefanwimmer128/kf6-servicemenus-rootactions.git")
+source=("$_pkgname::git+https://gitlab.com/stefanwimmer128/kf6-servicemenus-rootactions.git")
 sha256sums=(SKIP)
 
 pkgver() {
