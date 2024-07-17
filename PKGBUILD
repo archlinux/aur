@@ -1,9 +1,9 @@
-# Maintainer: stefanwimmer128 <info at stefanwimmer128 dot eu>
+# Maintainer: stefanwimmer128 <info@stefanwimmer128.xyz>
 
 _pkgname=shellspec
 pkgname=$_pkgname-git
-pkgver=0.28.1.r120.gf800240
-pkgrel=2
+pkgver=0.28.1.r182.g8aa3df5
+pkgrel=1
 pkgdesc='BDD style unit testing framework for POSIX compliant shell script'
 arch=('any')
 url='https://shellspec.info'
