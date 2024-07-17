@@ -1,4 +1,4 @@
-# Maintainer: stefanwimmer128 <info at stefanwimmer128 dot eu>
+# Maintainer: stefanwimmer128 <info@stefanwimmer128.xyz>
 # Contributor: Damien Flament <damien.flament at gmx dot com>
 
 pkgname='shellspec'
