@@ -1,6 +1,6 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 pkgname=fnm
-pkgver=1.35.1
+pkgver=1.37.1
 pkgrel=1
 pkgdesc="Fast and simple Node.js version manager, built with Rust"
 arch=('x86_64')
@@ -10,12 +10,11 @@ depends=('xz' 'bzip2' 'gcc-libs')
 makedepends=('cargo')
 conflicts=('fnm-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('df0f010f20e6072a8a52365f195cc94c35ebaf486cc285948e10eabf768d17ba')
-options=('!lto')
+sha256sums=('56a170304ab281439a71e541c4db878848c3a891078ae3c2dcc84017cd0306b4')
 
 build() {
   cd "$pkgname-$pkgver"
-  CARGO_TARGET_DIR=target cargo build --release --locked
+  CFLAGS+=' -ffat-lto-objects' CARGO_TARGET_DIR=target cargo build --release --locked
 }
 
 package() {
