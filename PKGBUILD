@@ -4,7 +4,7 @@ _android_arch=aarch64
 
 pkgname=android-${_android_arch}-ffmpeg
 pkgver=7.0.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Complete solution to record, convert and stream audio and video (Android ${_android_arch})"
 url="http://ffmpeg.org/"
@@ -34,7 +34,6 @@ depends=("android-${_android_arch}-alsa-lib"
          "android-${_android_arch}-libmodplug"
          "android-${_android_arch}-libopenmpt"
          "android-${_android_arch}-libraw1394"
-         "android-${_android_arch}-librsvg"
          "android-${_android_arch}-libsoxr"
          "android-${_android_arch}-libssh"
          "android-${_android_arch}-libtheora"
@@ -66,8 +65,10 @@ depends=("android-${_android_arch}-alsa-lib"
          "android-${_android_arch}-x265"
          "android-${_android_arch}-xvidcore"
          "android-${_android_arch}-xz"
-         "android-${_android_arch}-zimg"
          "android-${_android_arch}-zlib")
+#depends+=("android-${_android_arch}-librsvg"
+#          "android-${_android_arch}-vapoursynth"
+#          "android-${_android_arch}-zimg")
 makedepends=('android-configure'
              "android-${_android_arch}-avisynthplus"
              "android-${_android_arch}-ladspa"
@@ -139,10 +140,14 @@ build() {
         extra_options="${extra_options} --enable-libxcb"
     fi
 
+    # Not yet available
     # extra_options="${extra_options} --enable-frei0r"
 
-    # For some unlnown reason, librsvg is not exporting any symbol so disable for now.
+    # For some unknown reason, librsvg is not exporting any symbol so disable for now.
     # extra_options="${extra_options} --enable-librsvg"
+
+    # Fail with message 'cannot locate symbol "__eqtf2"' in zimg
+    # extra_options="${extra_options} --enable-libzimg --enable-vapoursynth"
 
     ./configure \
         --prefix=${ANDROID_PREFIX} \
@@ -217,7 +222,6 @@ build() {
         --enable-libx265 \
         --enable-libxml2 \
         --enable-libxvid \
-        --enable-libzimg \
         --enable-opencl \
         ${extra_options}
     make $MAKEFLAGS
