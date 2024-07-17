@@ -3,7 +3,7 @@
 pkgname=reddish-shift-git
 _pkgname="${pkgname%-git}"
 pkgver=v0.1.2.r146.25dd72c
-pkgrel=1
+pkgrel=2
 _pkgsrc="$_pkgname"
 pkgdesc="Set color temperature of display according to time of day"
 url="https://github.com/mahor1221/reddish-shift"
@@ -55,7 +55,7 @@ package() {
     install -vDm644 "$_pkgname.bash" "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
     install -vDm644 "$_pkgname.fish" "$pkgdir/usr/share/fish/completions/$_pkgname.fish"
     install -vDm644 "$_pkgname.elv" "$pkgdir/usr/share/elvish/lib/$_pkgname.elv"
-    find "$srcdir/$_pkgsrc/target/release/man1" -type f -exec \
-        gzip "{}" \
-        install -vDm644 "{}.gz" -t "/usr/share/man/man1" \;
+    cd "$srcdir/$_pkgsrc/target/release/man1"
+    find -name '*.1' -exec gzip --keep --force "{}" \;
+    find -name '*.1.gz' -exec install -vDm644 "{}" -t "$pkgdir/usr/share/man/man1" \;
 }
