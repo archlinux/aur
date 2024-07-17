@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Xiaozhu1337 <nihaoaheheda@gmail.com>
 pkgname=siyuan
-pkgver=3.1.0
+pkgver=3.1.1
 _electronversion=31
 _nodeversion=18
 pkgrel=1
@@ -33,7 +33,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('dbe6c68a0ba09a85f65ddef3f45af8b96af96b0bfa1f0791cd699553806df7c3'
+sha256sums=('863b1213c80df50634fd34a8e53d749fa5495d7c0238e9c85f812c5c26244ebd'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
