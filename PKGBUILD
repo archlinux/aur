@@ -10,6 +10,8 @@ url="https://github.com/zzzgydi/clash-verge"
 license=('GPL3')
 depends=('webkit2gtk' 'gtk3' 'libayatana-appindicator' 'clash')
 optdepends=('clash-meta: Another Clash Kernel')
+conflicts=(clash-verge)
+provides=(clash-verge)
 
 source=("${_pkgname}-${pkgver}-${arch}.deb::https://github.com/zzzgydi/clash-verge/releases/download/v${pkgver}/clash-verge_${pkgver}_amd64.deb")
 
