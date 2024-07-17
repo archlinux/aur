@@ -2,7 +2,7 @@
 _pkgname=antares
 pkgname="${_pkgname}-sql-bin"
 _appname=Antares
-pkgver=0.7.26
+pkgver=0.7.27
 _electronversion=30
 pkgrel=1
 pkgdesc="A modern, fast and productivity driven SQL client with a focus in UX."
@@ -28,9 +28,9 @@ source=(
 )
 sha256sums=('7b960bb0bed7d2228b6a8a879558c97906cc041ab14ab1d1089959902f386613'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-sha256sums_aarch64=('f5ff4268c754a099cb92240501d8202e2c056319842c2ce5a454259327a354d4')
-sha256sums_armv7h=('db93c59737fbd9df6ec551a0ecb69ae63a8c970eadb4f6d04c5db5a541f220f9')
-sha256sums_x86_64=('28fc0a0006396d32d65d2ed70ba13708243439f82eab59efe15f49616e495e31')
+sha256sums_aarch64=('75d57cfaaa3ce7113c5b3b01be5ba67b4171d1264fa7cbb6ac203820788467eb')
+sha256sums_armv7h=('2925916008737aafaa7398c9ab2aa8530c26455f41a37db2f116f75331c12ae3')
+sha256sums_x86_64=('224c7beccdc0af970a721ec089838324ef60192a0ab39c31b069ce020ec21c2b')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
