@@ -1,6 +1,6 @@
 pkgbase = jdk-temurin
 	pkgdesc = Temurin (OpenJDK 22 Java binaries by Adoptium, formerly AdoptOpenJDK)
-	pkgver = 22.0.0.u36
+	pkgver = 22.0.2.u9
 	pkgrel = 1
 	url = https://adoptium.net/
 	install = install_jdk-temurin.sh
@@ -21,10 +21,10 @@ pkgbase = jdk-temurin
 	provides = java-runtime-openjdk=22
 	provides = java-environment=22
 	provides = java-environment-openjdk=22
-	provides = jdk22-openjdk=22.0.0.u36
-	provides = jdk-openjdk=22.0.0.u36
-	provides = openjdk22-src=22.0.0.u36
-	provides = openjdk-src=22.0.0.u36
+	provides = jdk22-openjdk=22.0.2.u9
+	provides = jdk-openjdk=22.0.2.u9
+	provides = openjdk22-src=22.0.2.u9
+	provides = openjdk-src=22.0.2.u9
 	replaces = jdk-adoptopenjdk
 	options = !strip
 	backup = etc/java-temurin/logging.properties
@@ -42,11 +42,11 @@ pkgbase = jdk-temurin
 	backup = etc/java-temurin/security/policy/unlimited/default_local.policy
 	backup = etc/java-temurin/security/policy/unlimited/default_US_export.policy
 	backup = etc/java-temurin/sound.properties
-	source = https://github.com/adoptium/temurin22-binaries/releases/download/jdk-22%2B36/OpenJDK22U-jdk_x64_linux_hotspot_22_36.tar.gz
+	source = https://github.com/adoptium/temurin22-binaries/releases/download/jdk-22.0.2%2B9/OpenJDK22U-jdk_x64_linux_hotspot_22.0.2_9.tar.gz
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
-	sha256sums = bc3d99e816d0c373f424cd7aa2b6d3e8081a7189fe55c1561616922200ec8e47
+	sha256sums = 05cd9359dacb1a1730f7c54f57e0fed47942a5292eb56a3a0ee6b13b87457a43
 	sha256sums = a67f393684e85d04653eb925fa4a6baaa618a152899bb81646a4ff7f30e84c30
 	sha256sums = bc6f506add26b48d77282535026357984fdb8bd924fe6f053fbec5a37984b710
 	sha256sums = 0544f1ca50c9d8d4a7361392c31e5cdafdd12e9587c9a1d710074f6ab14f7aff

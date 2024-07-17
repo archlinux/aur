@@ -8,12 +8,12 @@
 # https://github.com/michaellass/AUR
 
 _majorver=22
-_completever=22.0.0
-_updatever=36
+_completever=22.0.2
+_updatever=9
 pkgrel=1
 pkgver=${_completever}.u${_updatever}
-#_tag_ver=${_completever}+${_updatever}
-_tag_ver=${_majorver}+${_updatever}
+_tag_ver=${_completever}+${_updatever}
+#_tag_ver=${_majorver}+${_updatever}
 _versuffix=U
 
 pkgname=jdk-temurin
@@ -58,7 +58,7 @@ source=(https://github.com/adoptium/temurin${_majorver}-binaries/releases/downlo
         freedesktop-java.desktop
         freedesktop-jconsole.desktop
         freedesktop-jshell.desktop)
-sha256sums=('bc3d99e816d0c373f424cd7aa2b6d3e8081a7189fe55c1561616922200ec8e47'
+sha256sums=('05cd9359dacb1a1730f7c54f57e0fed47942a5292eb56a3a0ee6b13b87457a43'
             'a67f393684e85d04653eb925fa4a6baaa618a152899bb81646a4ff7f30e84c30'
             'bc6f506add26b48d77282535026357984fdb8bd924fe6f053fbec5a37984b710'
             '0544f1ca50c9d8d4a7361392c31e5cdafdd12e9587c9a1d710074f6ab14f7aff')
