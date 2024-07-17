@@ -14,6 +14,7 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 install="${_pkgname}.install"
 backup=(
+  'etc/traefik/acme.json'
   'etc/traefik/traefik.toml'
   'etc/traefik/traefik.yaml'
   'etc/traefik/traefik.yml'
@@ -51,4 +52,7 @@ package() {
 
   install -D -m644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -D -m755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+
+  # create empty acme.json file, otherwise the service file will fail
+  install -Dm600 /dev/null "${pkgdir}/etc/traefik/acme.json"
 }

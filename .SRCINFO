@@ -12,6 +12,7 @@ pkgbase = traefik-bin
 	license = MIT
 	provides = traefik
 	conflicts = traefik
+	backup = etc/traefik/acme.json
 	backup = etc/traefik/traefik.toml
 	backup = etc/traefik/traefik.yaml
 	backup = etc/traefik/traefik.yml

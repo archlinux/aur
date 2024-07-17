@@ -1,4 +1,4 @@
 post_install() {
-  chown traefik:traefik var/log/traefik
+  chown traefik:traefik etc/traefik/acme.json var/log/traefik
   setcap 'cap_net_bind_service=+ep' usr/bin/traefik
 }
