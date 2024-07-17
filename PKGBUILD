@@ -1,6 +1,6 @@
 # Maintainer: Cédric Connes <cedric.connes@gmail.com>
 pkgname=ibmcloud-cli
-pkgver=2.26.1
+pkgver=2.27.0
 pkgrel=1
 pkgdesc="Command line client for IBM Cloud"
 arch=('x86_64' 'i686' 'aarch64')
@@ -13,9 +13,9 @@ replaces=('bluemix-cli')
 source_x86_64=("https://download.clis.cloud.ibm.com/ibm-cloud-cli/${pkgver}/binaries/IBM_Cloud_CLI_${pkgver}_linux_amd64.tgz")
 source_i686=("https://download.clis.cloud.ibm.com/ibm-cloud-cli/${pkgver}/binaries/IBM_Cloud_CLI_${pkgver}_linux_386.tgz")
 source_aarch64=("https://download.clis.cloud.ibm.com/ibm-cloud-cli/${pkgver}/binaries/IBM_Cloud_CLI_${pkgver}_linux_arm64.tgz")
-sha256sums_x86_64=('ea2b4e538745aeb9d95971a0862899a55316ae3cb5ac3fc1941b62739e9e2f04')
-sha256sums_i686=('9f5e67518b7b1c9379b04743e881fe4dbdbaae1696db0626e7f8fd2795331472')
-sha256sums_aarch64=('94576cfbe3d8c7655533d2e801afcca67f6b9b2e13e87bb8452ea7abdb450896')
+sha256sums_x86_64=('3c024bcb27519c8ed916ebc0266248249c127bbe93c343807e07d707cf159bb1')
+sha256sums_i686=('40dc32b2a76541847fd55b5b587105c90956468baf14016e4628bb8a2a3d73fa')
+sha256sums_aarch64=('bd2a6a3c4428061f17ac8b801b27d9700bf333284294e2834c34b4237f530256')
 
 package() {
   cd "${srcdir}/IBM_Cloud_CLI/"
