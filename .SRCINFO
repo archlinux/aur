@@ -1,11 +1,11 @@
 pkgbase = hp-omen-wmi-dkms
-	pkgver = r25.59e59e4
+	pkgver = r27.578218c
 	pkgrel = 1
 	url = https://github.com/ranisalt/hp-omen-linux-module
 	arch = x86_64
 	license = GPLv2
 	depends = dkms
-	source = hp-omen-wmi-dkms::git+https://github.com/ranisalt/hp-omen-linux-module.git#branch=rebase-6.8
+	source = hp-omen-wmi-dkms::git+https://github.com/ranisalt/hp-omen-linux-module.git#branch=rebase-6.10
 	sha256sums = SKIP
 
 pkgname = hp-omen-wmi-dkms
