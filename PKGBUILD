@@ -3,7 +3,7 @@ pkgname=refi-app-bin
 _pkgname="Refi App"
 pkgver=0.0.19
 _electronversion=19
-pkgrel=9
+pkgrel=10
 pkgdesc="A tool to make interacting with Firestore less painful"
 arch=('x86_64')
 url="https://refiapp.io/"
@@ -18,7 +18,6 @@ depends=(
 options=(
     '!strip'
     '!emptydirs'
-    #'!staticlibs'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
@@ -27,11 +26,12 @@ source=(
 )
 sha256sums=('01918b95b8109d2c02b0a2b517a5f59f8f795b02a02557cfd420f80fbd345dc4'
             'b2eb77a849db152dcb5ed71c597000a5dc3638559aefae0b5aa3454e8d7abe71'
-            '61d56055897e9d71d68e185ac2de7c4cb2fbca16eb3fb0091703612c113441f3')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@cfgdirname@|${_pkgname// /}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
