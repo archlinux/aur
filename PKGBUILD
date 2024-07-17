@@ -2,7 +2,7 @@
 pkgname=monolith-code-bin
 pkgver=2.2.8
 _electronversion=26
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimalistic but powerful code editor"
 arch=("x86_64")
 url="https://haeri.github.io/monolith-code"
@@ -23,11 +23,12 @@ source=(
 )
 sha256sums=('10bcafceb5641bf881475051e5ef6124cb724550c47ddba4344754ca33c5d270'
             '08712c74fe995972923ce4a30fa74bad068779afdf9d3b877c525e86c617adcc'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
