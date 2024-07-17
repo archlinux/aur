@@ -1,8 +1,8 @@
 # Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
 _pkgname='chatterino2-nightly'
 pkgname="${_pkgname}-bin"
-provides=(${_pkgname})
-conflicts=(${_pkgname})
+provides=chatterino
+conflicts=chatterino
 pkgver=2.5.1
 pkgrel=1
 scdir=$_pkgname
@@ -16,10 +16,10 @@ depends=('fuse2' 'icu70')
 optdepends=('streamlink: For piping streams to video players'
             'pulseaudio: For audio output'
             'gst-plugins-good: For audio output')
-provides=chatterino
-conflicts=chatterino
+provides=(${_pkgname})
+conflicts=(${_pkgname})
 #source=(${_pkgname}.desktop)
-source_x86_64=("${_pkgname}-${pkgver}_x64.deb::https://github.com/Chatterino/chatterino2/releases/download/nightly-build/Chatterino-Ubuntu-22.04-x86_64.deb")
+source_x86_64=("${_pkgname}-${pkgver}_x64.deb::https://github.com/chatterino/chatterino2/releases/download/nightly-build/Chatterino-Ubuntu-22.04-x86_64.deb")
 
 package() {
 	tar xf data.tar.zst -C "${pkgdir}"

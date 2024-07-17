@@ -10,8 +10,9 @@ pkgbase = chatterino2-nightly-bin
 	optdepends = streamlink: For piping streams to video players
 	optdepends = pulseaudio: For audio output
 	optdepends = gst-plugins-good: For audio output
-	provides = chatterino
-	conflicts = chatterino
-	source_x86_64 = chatterino2-nightly-2.5.1_x64.deb::https://github.com/Chatterino/chatterino2/releases/download/nightly-build/Chatterino-Ubuntu-22.04-x86_64.deb
+	provides = chatterino2-nightly
+	conflicts = chatterino2-nightly
+	source_x86_64 = chatterino2-nightly-2.5.1_x64.deb::https://github.com/chatterino/chatterino2/releases/download/nightly-build/Chatterino-Ubuntu-22.04-x86_64.deb
+	sha256sums_x86_64 = 16d791a48adad496b3b809e54b493665e2f3bd002580acaa9e8a911df269b364
 
 pkgname = chatterino2-nightly-bin
