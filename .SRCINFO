@@ -1,0 +1,15 @@
+pkgbase = hevi-git
+	pkgdesc = A modern hex viewer
+	pkgver = 1.0.0.r7.g24d9585
+	pkgrel = 1
+	url = https://github.com/Arnau478/hevi
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = zig
+	provides = hevi=1.0.0
+	conflicts = hevi
+	source = hevi::git+https://github.com/Arnau478/hevi.git
+	sha256sums = SKIP
+
+pkgname = hevi-git
