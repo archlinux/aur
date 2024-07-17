@@ -1,8 +1,8 @@
 # Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
 _pkgname='chatterino2-7tv'
 pkgname="${_pkgname}-bin"
-provides=chatterino2
-conflicts=chatterino2
+provides=chatterino
+conflicts=chatterino
 pkgver=7.5.1
 pkgrel=1
 scdir=$_pkgname
