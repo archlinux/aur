@@ -1,6 +1,6 @@
 # Maintainer: Bart Libert <bart plus aur at libert dot email>
 pkgname=dymon-git
-pkgver=r63.ac79ef6
+pkgver=r74.11df3fd
 pkgrel=1
 pkgdesc='Command line based print tool for DYMO LabelWriter Wireless'
 arch=('x86_64')
@@ -8,7 +8,7 @@ url='https://github.com/minlux/dymon'
 license=('MIT')
 depends=('glibc' 'gcc-libs')
 makedepends=('git' 'cmake')
-provides=('dymon_cli' 'dymon_pbm' 'dymon_srv')
+provides=('txt2pbm' 'dymon_pbm' 'dymon_srv')
 source=("${pkgname%-git}::git+${url}")
 sha256sums=('SKIP')
 
@@ -26,7 +26,7 @@ build() {
 }
 
 package() {
-    install -Dm755 build/dymon_cli "${pkgdir}/usr/bin/dymon_cli"
+    install -Dm755 build/txt2pbm "${pkgdir}/usr/bin/txt2pbm"
     install -Dm755 build/dymon_pbm "${pkgdir}/usr/bin/dymon_pbm"
     install -Dm755 build/dymon_srv "${pkgdir}/usr/bin/dymon_srv"
     install -Dm644 "${srcdir}/dymon/LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"

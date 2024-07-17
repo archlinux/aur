@@ -1,6 +1,6 @@
 pkgbase = dymon-git
 	pkgdesc = Command line based print tool for DYMO LabelWriter Wireless
-	pkgver = r63.ac79ef6
+	pkgver = r74.11df3fd
 	pkgrel = 1
 	url = https://github.com/minlux/dymon
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = dymon-git
 	makedepends = cmake
 	depends = glibc
 	depends = gcc-libs
-	provides = dymon_cli
+	provides = txt2pbm
 	provides = dymon_pbm
 	provides = dymon_srv
 	source = dymon::git+https://github.com/minlux/dymon
