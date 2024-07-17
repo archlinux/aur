@@ -2,7 +2,7 @@
 
 _pkgname="python-cairo"
 pkgname="$_pkgname-git"
-pkgver=1.26.0.r1.gda92fff
+pkgver=1.26.1.r1.g176a1a6
 pkgrel=1
 pkgdesc="Python bindings for the cairo graphics library"
 url="https://github.com/pygobject/pycairo"
@@ -20,6 +20,9 @@ makedepends=(
   'python-sphinx_rtd_theme'
 )
 checkdepends=('python-pytest')
+
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+https://github.com/pygobject/pycairo.git")
