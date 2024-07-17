@@ -2,7 +2,7 @@
 # Contributor: Sukanka <su975853527 [AT] gmail.com>
 pkgname=yank-note-bin
 _pkgname=Yank-Note
-pkgver=3.72.2
+pkgver=3.73.1
 _electronversion=28
 pkgrel=1
 pkgdesc='A Hackable Markdown Note Application for Programmers'
@@ -18,7 +18,6 @@ conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
     'java-runtime'
-    'python'
 )
 options=('!strip')
 source=(
@@ -27,8 +26,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-arm64-${pkgver}.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-amd64-${pkgver}.deb")
 sha256sums=('2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-sha256sums_aarch64=('083333973429083526b1a4ea5e14ff2952c76311a8a90aceb8b4b55397863911')
-sha256sums_x86_64=('b470817bbc075dd56bc84c77b788e3f3d289149b303c83d3dea6facc47128eb5')
+sha256sums_aarch64=('6c1c8a4deb46d1390fd45a654077f9d6d9a432caa3f97609b927ec1affecda3f')
+sha256sums_x86_64=('e042cf60fb39e8eb56c68f063e9df3e76cd7db4e62d43a2808d3126ed864adc4')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
