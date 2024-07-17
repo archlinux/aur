@@ -6,13 +6,14 @@ pkgver=1.0.0.r7.g24d9585
 pkgrel=1
 pkgdesc="A modern hex viewer"
 arch=('any')
-url="https://github.com/Arnau478/${_pkgname}"
+url="https://arnau478.github.io/${_pkgname}"
+_url="https://github.com/Arnau478/${_pkgname}"
 license=('GPL-3.0-or-later')
 makedepends=('git' 'zig')
 provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}"
-source=("${_pkgsrc}::git+${url}.git")
+source=("${_pkgsrc}::git+${_url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
