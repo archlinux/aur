@@ -7,7 +7,7 @@
 # The source is about 200 MiB, with an extra ~11 GiB of dependencies downloaded in Setup.sh, and may take several hours to compile.
 # If you want additional options, there are switches below.
 pkgname=unreal-engine
-pkgver=5.4.2
+pkgver=5.4.3
 pkgrel=0
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4' 'aarch64')
@@ -82,9 +82,17 @@ export DOTNET_SYSTEM_NET_HTTP_USESOCKETSHTTPHANDLER=0
 
 # Valid values are false / disabled / default, auto, and native
 
-if [ "${arch_auto}" != true ] || [ "${arch_auto}" != false ] || [ "${arch_auto}" != disabled ] || [ "${arch_auto}" != native ]; then
-  arch_auto=false
-fi
+# arch_auto=""
+
+case "${arch_auto}" in
+  "auto"|"true"|"enable"|"enabled"|"native"|"false"|"disable"|"disabled")
+    :
+  ;;
+
+  *)
+    arch_auto=false
+  ;;
+esac
 
 opt_level=""
   
