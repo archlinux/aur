@@ -1,24 +1,34 @@
-pkgname=hevi
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+
+pkgname="hevi"
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="A modern hex viewer"
-arch=('x86_64' 'aarch64')
-url="https://github.com/Arnau478/hevi"
-license=('GPL3')
-provides=('hevi')
-source_x86_64=("hevi-x86_64-${pkgver}"::"https://github.com/Arnau478/hevi/releases/download/v${pkgver}/hevi-x86_64-linux")
-source_aarch64=("hevi-aarch64-${pkgver}"::"https://github.com/Arnau478/hevi/releases/download/v${pkgver}/hevi-aarch64-linux")
-sha256sums_x86_64=('bdc1d4798319d80316d296fe519e5a68afe45779dc8657d4fee17d944673aeb9')
-sha256sums_aarch64=('4e36d6840ee00d947fc3959c568af502ed9bb7787bffffc960294709b2e2d4c1')
+arch=('any')
+url="https://github.com/Arnau478/${pkgname}"
+license=('GPL-3.0-or-later')
+makedepends=('zig')
+_pkgsrc="${pkgname}-${pkgver}"
+source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('0741eec017e37b3903727a56e0be33290884f29ac51a751e7c073d30a87c5e4c')
 
-
-package() {
-    cd $srcdir
-
-    if [ "${CARCH}" == "aarch64" ]; then
-        install -Dm755 "hevi-aarch64-${pkgver}" "${pkgdir}/usr/bin/hevi"
-    else
-        install -Dm755 "hevi-x86_64-${pkgver}" "${pkgdir}/usr/bin/hevi"
-    fi
+build() {
+  cd "${srcdir}/${_pkgsrc}"
+  zig build
 }
 
+check() {
+  cd "${srcdir}/${_pkgsrc}"
+  zig build test
+}
+
+package() {
+  cd "${srcdir}/${_pkgsrc}"
+  install -Dm755 "zig-out/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  cd "doc"
+  install -Dm644 "${pkgname}.1.man" "${pkgdir}/usr/share/man/man1/${pkgname}"
+  install -Dm644 "${pkgname}.5.man" "${pkgdir}/usr/share/man/man5/${pkgname}"
+}
