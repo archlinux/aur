@@ -1,0 +1,54 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -22,7 +22,6 @@ endif()
+ project(gearmulator VERSION 1.3.17)
+ 
+ include(base.cmake)
+-include(CTest)
+ 
+ option(${PROJECT_NAME}_BUILD_JUCEPLUGIN "Build Juce plugin" on)
+ option(${PROJECT_NAME}_BUILD_JUCEPLUGIN_CLAP "Build CLAP version of Juce plugin" on)
+--- a/source/CMakeLists.txt
++++ b/source/CMakeLists.txt
+@@ -45,9 +45,6 @@ endif()
+ 
+ if(${CMAKE_PROJECT_NAME}_SYNTH_OSIRUS OR ${CMAKE_PROJECT_NAME}_SYNTH_OSTIRUS)
+ 	add_subdirectory(virusLib)
+-	add_subdirectory(virusConsoleLib)
+-	add_subdirectory(virusTestConsole)
+-	add_subdirectory(virusIntegrationTest)
+ 	if(${CMAKE_PROJECT_NAME}_BUILD_JUCEPLUGIN)
+ 		add_subdirectory(virusJucePlugin)
+ 		if(${CMAKE_PROJECT_NAME}_SYNTH_OSIRUS)
+@@ -64,23 +61,6 @@ endif()
+ if(${CMAKE_PROJECT_NAME}_SYNTH_VAVRA)
+ 	add_subdirectory(mqLib)
+ 
+-	# needed for test console
+-	set(CPPTERMINAL_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+-	set(CPPTERMINAL_ENABLE_INSTALL OFF CACHE BOOL "" FORCE)
+-	set(CPPTERMINAL_ENABLE_TESING OFF CACHE BOOL "" FORCE)
+-	add_subdirectory(cpp-terminal)
+-
+-	if(NOT ANDROID)
+-		add_subdirectory(portmidi)
+-	endif()
+-
+-	set(PA_USE_ASIO OFF CACHE BOOL "" FORCE)
+-	add_subdirectory(portaudio)
+-
+-	add_subdirectory(mqConsoleLib)
+-	add_subdirectory(mqTestConsole)
+-	add_subdirectory(mqPerformanceTest)
+-
+ 	if(${CMAKE_PROJECT_NAME}_BUILD_JUCEPLUGIN)
+ 		add_subdirectory(mqJucePlugin)
+ 	endif()
+@@ -90,7 +70,6 @@ endif()
+ 
+ if(${CMAKE_PROJECT_NAME}_SYNTH_XENIA)
+ 	add_subdirectory(xtLib)
+-	add_subdirectory(xtTestConsole)
+ 
+ 	if(${CMAKE_PROJECT_NAME}_BUILD_JUCEPLUGIN)
+ 		add_subdirectory(xtJucePlugin)

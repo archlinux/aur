@@ -1,0 +1,13 @@
+--- a/source/CMakeLists.txt
++++ b/source/CMakeLists.txt
+@@ -18,10 +18,6 @@ add_subdirectory(dsp56300/source)
+ add_subdirectory(synthLib)
+ add_subdirectory(libresample)
+ 
+-# ----------------- Try to install VST2 SDK
+-
+-include(findvst2.cmake)
+-
+ # ----------------- Juce based audio plugin dependencies
+ 
+ set_property(GLOBAL PROPERTY USE_FOLDERS YES)
