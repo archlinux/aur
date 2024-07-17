@@ -16,6 +16,7 @@ license=(
 )
 makedepends=(
   'gnupg'
+  'libassuan'
   'libgpg-error'
   'python'
   'python-build'
@@ -69,7 +70,14 @@ check() {
 }
 
 package_gpgme() {
-  depends=('libgpg-error' 'gnupg>=2')
+  depends=(
+    'gcc-libs'
+    'glib2'
+    'glibc'
+    'libassuan'
+    'libgpg-error'
+    'gnupg>=2'
+  )
   options+=('!emptydirs')
   provides=('libgpgme.so'
             'libgpgmepp.so')
@@ -87,7 +95,13 @@ package_gpgme() {
 
 package_qgpgme-qt6() {
   pkgdesc="Qt6 bindings for GPGme"
-  depends=('gpgme' 'qt6-base')
+  depends=(
+    'gcc-libs'
+    'glibc'
+    'gpgme'
+    'libgpg-error'
+    'qt6-base'
+  )
 
   cd ${pkgbase}-${pkgver}/lang/qt
 
@@ -97,7 +111,11 @@ package_qgpgme-qt6() {
 
 package_python-gpgme() {
   pkgdesc="Python bindings for GPGme"
-  depends=('gpgme' 'python')
+  depends=(
+    'glibc'
+    'gpgme'
+    'python'
+  )
 
   cd ${pkgbase}-${pkgver}/lang/python
   python -m installer --destdir="$pkgdir" dist/*.whl
