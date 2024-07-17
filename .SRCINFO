@@ -1,7 +1,7 @@
 pkgbase = android-aarch64-zimg
 	pkgdesc = Scaling, colorspace conversion, and dithering library (Android aarch64)
 	pkgver = 3.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sekrit-twc/zimg
 	arch = any
 	license = custom:WTFPL
