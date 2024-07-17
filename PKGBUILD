@@ -3,10 +3,10 @@
 # Maintainer: damir <damir@archlinux.org>
 # Contributor: Damir Perisa <damir.perisa@bluewin.ch>
 
-_debian_version="5.1.25-14"
+_debian_version="5.1.25-15"
 pkgname=grace
 pkgver=5.1.25
-pkgrel=10
+pkgrel=11
 pkgdesc="2D plotting tool"
 arch=(x86_64)
 url="http://plasma-gate.weizmann.ac.il/Grace/"
@@ -75,5 +75,5 @@ sha512sums=('9ea68483af1dfc98d217ae730b7a51b66deae5aaa8dfda29d5a3337ed4b5728b45a
             'f4897d4c3acd3f4c4898fd3d5a90048442dc9066b6491121e526df39d3c1bfaab9d4c64a8e89d25d8d12015c6ccc31416dcc0e9c1f45d24b7851184cb19ddaed'
             '8835b94ec4ec5d2d87328811c639585916f95784adf29c77306cd28bdb809284238e01549da360cf31bdcfbf3c6bf5f28bfacdefc6696606e9c6f322107edf23'
             'd9bc22f67771061d7f4d5555dc57056eadadfff50169f525d2b87cab36dc1fcc8a7a3d88f685ffe3eb5b5140a25061efa3be08331dd44de2d55bba720a6166e7'
-            '2554226633e3187c3f1909c7227d0d155208a418452ff192710a3d3b132125789f1ab7c6d3cfdc3d422e34c491c391c6ee12720df9a686a23a1c8a0947f525e2'
+            'e31a77f7a7671216455f32a75234420b6413cccc5a96465a0acde96f25f94d1a8832a47f6c770e76abb24194cb4ff6984f234e74bad249e5b4029b1030e9c1ba'
             '7a1984fabf04c8981ee82c10ab1980fed922a73ea24808bb262d445ed9b37bcab2c8b81ba023005048e9ddb46abb8eda90566ef79e408c608958c47068b4b202')
