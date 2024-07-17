@@ -1,7 +1,7 @@
 pkgbase = flamenco
 	pkgdesc = Flamenco render farm manager
-	pkgver = 3.2
-	pkgrel = 3
+	pkgver = 3.5
+	pkgrel = 1
 	url = https://projects.blender.org/studio/flamenco
 	arch = x86_64
 	arch = aarch64
@@ -11,10 +11,8 @@ pkgbase = flamenco
 	makedepends = yarn
 	depends = ffmpeg
 	options = !lto
-	source = flamenco::git+https://projects.blender.org/studio/flamenco.git#tag=v3.2
-	source = placeholder.sh
-	sha256sums = SKIP
-	sha256sums = 286ee94a44bf49b4d1787d91a0e0bd03451ec59dfbb48c28bd2a33c997a89916
+	source = flamenco::git+https://projects.blender.org/studio/flamenco.git#tag=v3.5
+	sha256sums = 87b2ef8c51c66a4ab9d7238e74434aa8c982b07a8811a27c7d244178a4cbf0ce
 
 pkgname = flamenco-manager
 	optdepends = blender: for the initial setup

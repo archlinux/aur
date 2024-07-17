@@ -1,68 +1,57 @@
-# Maintainer: a13xie <rostik.medved@gmail.com>
+# Maintainer: k8ie <k8ie@firemail.cc>
 pkgbase=flamenco
 pkgname=('flamenco-manager' 'flamenco-worker')
-pkgver=3.2
-pkgrel=3
+pkgver=3.5
+pkgrel=1
 pkgdesc="Flamenco render farm manager"
 arch=('x86_64' 'aarch64')
 url="https://projects.blender.org/studio/flamenco"
 options=(!lto)
 license=('GPL3')
 depends=(
-	'ffmpeg'
+  'ffmpeg'
 )
 makedepends=(
-	'npm'
-	'go'
-	'yarn'
+  'npm'
+  'go'
+  'yarn'
 )
 source=(
-		"${pkgbase}::git+https://projects.blender.org/studio/flamenco.git#tag=v${pkgver}"
-		"placeholder.sh"
+  "${pkgbase}::git+https://projects.blender.org/studio/flamenco.git#tag=v${pkgver}"
 )
-sha256sums=('SKIP'
-            '286ee94a44bf49b4d1787d91a0e0bd03451ec59dfbb48c28bd2a33c997a89916')
+sha256sums=('87b2ef8c51c66a4ab9d7238e74434aa8c982b07a8811a27c7d244178a4cbf0ce')
 
 build () {
-	export GOPATH="$srcdir"/gopath
-	export CGO_CPPFLAGS="${CPPFLAGS}"
-	export CGO_CFLAGS="${CFLAGS}"
-	export CGO_CXXFLAGS="${CXXFLAGS}"
-	export CGO_LDFLAGS="${LDFLAGS}"
-	export CGO_ENABLED=1
-	build_flamenco-manager
-	build_flamenco-worker
+  export GOPATH="$srcdir"/gopath
+  export LDFLAGS=""
+  build_flamenco-manager
+  build_flamenco-worker
 }
 
 build_flamenco-manager() {
-	if [ "$CARCH" = "aarch64" ]
-	then
-		cp "$srcdir/placeholder.sh" "$srcdir/$pkgbase/flamenco-manager"
-	else
-		cd "$srcdir/$pkgbase/web/app"
-		npm install
+  cd "$srcdir/$pkgbase/web/app"
+  npm install
 
-		cd "$srcdir/$pkgbase"
-		make flamenco-manager
-	fi
+  cd "$srcdir/$pkgbase"
+  make flamenco-manager
 }
 
 build_flamenco-worker() {
-	cd "$srcdir/$pkgbase"
-	make flamenco-worker
+  cd "$srcdir/$pkgbase"
+  make flamenco-worker
 }
 
 package_flamenco-manager() {
 optdepends=(
-		'blender: for the initial setup'
+  'blender: for the initial setup'
 )
-	install "$srcdir/$pkgbase/flamenco-manager" -Dt "$pkgdir/usr/bin"
+  install "$srcdir/$pkgbase/flamenco-manager" -Dt "$pkgdir/usr/bin"
 }
 
 package_flamenco-worker() {
 pkgdesc="Worker for the Flamenco render farm system"
 optdepends=(
-		'blender: for rendering projects'
+  'blender: for rendering projects'
 )
-	install "$srcdir/$pkgbase/flamenco-worker" -Dt "$pkgdir/usr/bin"
+  install "$srcdir/$pkgbase/flamenco-worker" -Dt "$pkgdir/usr/bin"
 }
