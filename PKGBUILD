@@ -1,4 +1,5 @@
-# Maintainer: Filipe Bertelli <filipebertelli@tutanota.com>
+# Maintainer: Eric Torres <eric.torres@its-et.me>
+# Contributor: Filipe Bertelli <filipebertelli@tutanota.com>
 # Contributor: Stefan Auditor <stefan.auditor@erdfisch.de>
 
 _pkgname='traefik'
