@@ -1,7 +1,7 @@
 # Maintainer: Ali Molaei <ali dot molaei at protonmail dot com>
 
 pkgname=proton-vpn-gtk-app
-pkgver=4.3.2
+pkgver=4.3.3
 pkgrel=1
 pkgdesc="ProtonVPN GTK app, Maintained by Community"
 arch=("any")
