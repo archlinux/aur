@@ -8,7 +8,7 @@ pkgdesc='A Qt interface for the Maestral daemon'
 arch=('any')
 url="https://github.com/SamSchott/maestral-qt"
 license=('MIT')
-depends=("maestral=$pkgver"
+depends=("maestral"
          'python'
          'python-click'
          'python-markdown2'

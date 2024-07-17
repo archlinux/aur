@@ -9,7 +9,7 @@ pkgbase = maestral-qt
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	depends = maestral=1.9.4
+	depends = maestral
 	depends = python
 	depends = python-click
 	depends = python-markdown2
