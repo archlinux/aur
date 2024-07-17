@@ -4,11 +4,11 @@ msg_blue() {
 }
 
 note1() {
-  printf "${BLUE}==>${YELLOW} NOTE:${BOLD} $1${ALL_OFF}\n"
+  printf "${BLUE}==>${YELLOW} NOTE:${WHITE} $1${ALL_OFF}\n"
 }
 
 note2() {
-  printf "${BLUE}==>      ${BOLD} $1${ALL_OFF}\n"
+  printf "${BLUE}==>      ${WHITE} $1${ALL_OFF}\n"
 }
 
 ALL_OFF="$(tput sgr0)"
@@ -23,7 +23,7 @@ CYAN="${BOLD}$(tput setaf 6)"
 WHITE="${BOLD}$(tput setaf 7)"
 
 post_install() {
-  note1 "Custom flags should be put directly in: ~/.config/logseq-flags.conf"
+  note1 "Custom flags may be put directly in: ~/.config/logseq-flags.conf"
   note2 "The launcher is called: 'logseq'"
 }
 
