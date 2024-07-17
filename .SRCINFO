@@ -1,7 +1,7 @@
 pkgbase = bazecor
 	pkgdesc = Graphical configurator for Dygma keyboards
-	pkgver = 1.4.0
-	pkgrel = 2
+	pkgver = 1.4.1
+	pkgrel = 1
 	url = https://github.com/Dygmalab/Bazecor
 	arch = x86_64
 	license = GPL-3.0-only
@@ -9,11 +9,11 @@ pkgbase = bazecor
 	depends = fuse2
 	provides = bazecor
 	conflicts = bazecor-git
-	noextract = Bazecor-1.4.0-x64.AppImage
+	noextract = Bazecor-1.4.1-x64.AppImage
 	options = !strip
-	source = https://github.com/Dygmalab/Bazecor/releases/download/v1.4.0/Bazecor-1.4.0-x64.AppImage
+	source = https://github.com/Dygmalab/Bazecor/releases/download/v1.4.1/Bazecor-1.4.1-x64.AppImage
 	source = 10-dygma.rules
-	sha256sums = 04a4ce5a9413fb90c26cf97e950bdb181b697d17b4f7c049990afe6cc30c8ca8
+	sha256sums = 713dc38da27481f98a8dbbd47596629c9a575eec53ff1180ce544b17e0312c24
 	sha256sums = 7cc39c4fdc1736c267d22d9fbaacc9db4afd026c3a77b1d263c3a11b65581def
 
 pkgname = bazecor

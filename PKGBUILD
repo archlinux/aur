@@ -1,11 +1,11 @@
 # Maintainer: 4s3ti <4s3ti@4s3ti.net>
 
-_pkgver=1.4.0
+_pkgver=1.4.1
 _appimage="Bazecor-${_pkgver}-x64.AppImage"
 
 pkgname="bazecor"
 pkgver=${_pkgver/-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Graphical configurator for Dygma keyboards"
 url="https://github.com/Dygmalab/Bazecor"
 license=("GPL-3.0-only")
@@ -19,7 +19,7 @@ noextract=("${_appimage}")
 # https://github.com/Dygmalab/Bazecor/releases/download/v1.4.0-rc4/Bazecor-1.4.0-rc.4-x64.AppImage
 source=("${url}/releases/download/v${_pkgver}/${_appimage}"
         "10-dygma.rules")
-sha256sums=('04a4ce5a9413fb90c26cf97e950bdb181b697d17b4f7c049990afe6cc30c8ca8'
+sha256sums=('713dc38da27481f98a8dbbd47596629c9a575eec53ff1180ce544b17e0312c24'
             '7cc39c4fdc1736c267d22d9fbaacc9db4afd026c3a77b1d263c3a11b65581def')
 
 prepare() {
