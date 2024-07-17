@@ -1,6 +1,6 @@
 pkgbase = packetry-git
 	pkgdesc = USB 2.0 protocol analysis app for use with Cynthion
-	pkgver = r620.fc7d276
+	pkgver = 0.1.0.r630.2380eac
 	pkgrel = 1
 	url = https://github.com/greatscottgadgets/packetry
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = packetry-git
 	makedepends = inkscape
 	makedepends = libgit2
 	makedepends = python-sphinx
+	makedepends = python-sphinx-inline-tabs
 	makedepends = python-sphinx_rtd_theme
 	depends = cairo
 	depends = gcc-libs
@@ -21,6 +22,8 @@ pkgbase = packetry-git
 	depends = gtk4
 	depends = hicolor-icon-theme
 	depends = pango
+	provides = packetry=0.1.0
+	conflicts = packetry
 	source = packetry-git::git+https://github.com/greatscottgadgets/packetry.git
 	source = icon.svg
 	source = packetry.desktop

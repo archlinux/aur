@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=packetry-git
-pkgver=r620.fc7d276
+pkgver=0.1.0.r630.2380eac
 pkgrel=1
 pkgdesc='USB 2.0 protocol analysis app for use with Cynthion'
 arch=('x86_64')
@@ -23,10 +23,12 @@ makedepends=(
   'inkscape'
   'libgit2'
   'python-sphinx'
+  'python-sphinx-inline-tabs'
   'python-sphinx_rtd_theme'
 )
 checkdepends=('at-spi2-core' 'xorg-server-xvfb')
-
+provides=("packetry=${pkgver%.r*}")
+conflicts=('packetry')
 source=(
   "${pkgname}::git+https://github.com/greatscottgadgets/packetry.git"
   'icon.svg'  # From https://github.com/greatscottgadgets/packetry/pull/95
@@ -40,7 +42,8 @@ sha512sums=(
 )
 
 pkgver() {
-  printf "r%s.%s" \
+  printf "%s.r%s.%s" \
+    "$(cargo pkgid --manifest-path "${pkgname}/Cargo.toml" | sed "s/^.*${pkgname%-git}@//")" \
     "$(git -C "${pkgname}" rev-list --count HEAD)" \
     "$(git -C "${pkgname}" rev-parse --short HEAD)"
 }
