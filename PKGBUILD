@@ -31,7 +31,7 @@ build() {
 
 check() {
   cd "${srcdir}/${_pkgsrc}"
-  # go test ./...
+  # ./"cmd/${pkgname}/${pkgname}_test.sh"
 }
 
 package() {
