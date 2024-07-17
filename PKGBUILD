@@ -5,9 +5,9 @@
 
 pkgname=qt5-base-headless
 _basever=5.15.14
-pkgver=5.15.14+kde+r141
+pkgver=5.15.14+kde+r143
 pkgrel=1
-_commit=0e1ff2f06ddac7c32c5a5e0b65e402c9332e56f8
+_commit=9f9a56d750caff8b4459e7e9bf82f1f4d725f72f
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -26,7 +26,7 @@ _pkgfqn=qtbase
 source=(kde-$_pkgfqn::git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit
         qmake-cflags.patch
         qmake-config.patch)
-sha256sums=('d1d4f36a90fd1ddf61a0e7d00a6dbca8c64a39b7e9113d16c38c753c2dfe2a99'
+sha256sums=('bb2f9696a97908f96c0b06c185ea6a76e718f7c483bc9f5293fac3cd820e8eb7'
             '5411edbe215c24b30448fac69bd0ba7c882f545e8cf05027b2b6e2227abc5e78'
             '4abc22150fa3e06b2fdcec32146abc9be4e316692aa4d5bd5aa53b4b726783fa')
 
