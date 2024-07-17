@@ -1,0 +1,5 @@
+[gnubg]
+source = "git"
+git = "https://git.savannah.gnu.org/git/gnubg.git"
+prefix = "v"
+
