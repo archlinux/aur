@@ -27,25 +27,25 @@ done
 
 if [ -z ${PKGBASE+x} ];
 then
-  PKGBASE=$(egrep -o "pkgbase = (.*)" "${SRCINFO}" | cut -d= -sf2 | xargs)
+  PKGBASE=$(grep -E -o "pkgbase = (.*)" "${SRCINFO}" | cut -d= -sf2 | xargs)
   echo "PKGBASE=${PKGBASE} detected"
 fi
 
 if [ -z ${PKGVER+x} ];
 then
-  PKGVER=$(egrep -o "pkgver = (.*)" "${SRCINFO}" | cut -d= -sf2 | xargs)
+  PKGVER=$(grep -E -o "pkgver = (.*)" "${SRCINFO}" | cut -d= -sf2 | xargs)
   echo "PKGVER=${PKGVER} detected"
 fi
 
 if [ -z ${PKGREL+x} ];
 then
-  PKGREL=$(egrep -o "pkgrel = (.*)" "${SRCINFO}" | cut -d= -sf2 | xargs)
+  PKGREL=$(grep -E -o "pkgrel = (.*)" "${SRCINFO}" | cut -d= -sf2 | xargs)
   echo "PKGREL=${PKGREL} detected"
 fi
 
 if [ -z ${EPOCH+x} ];
 then
-  EPOCH=$(egrep -o "epoch = (.*)" "${SRCINFO}" | cut -d= -sf2 | xargs)
+  EPOCH=$(grep -E -o "epoch = (.*)" "${SRCINFO}" | cut -d= -sf2 | xargs)
   echo "EPOCH=${EPOCH} detected"
 fi
 
