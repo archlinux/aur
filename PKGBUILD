@@ -2,7 +2,7 @@
 pkgname=feidao-bin
 pkgver=1.0.0
 _electronversion=13
-pkgrel=8
+pkgrel=9
 pkgdesc="飞稻在线课程设计平台"
 arch=("x86_64")
 url="https://www.fei-dao.com"
@@ -20,11 +20,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('2a5f5919ebc8c7ef8ebd232758852c87dd0b165208dc46a501ce3cefdd23ded7'
-            '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
