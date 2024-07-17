@@ -28,12 +28,12 @@ pkgver() {
 package() {
   cd "${pkgname%-git}"
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  install -d "$pkgdir/${site_packages}"
-  cp -r "${pkgname%-git}" "$pkgdir/${site_packages}"
+  install -d "${pkgdir}${site_packages}"
+  cp -r "${pkgname%-git}" "${pkgdir}${site_packages}"
 
   # Compile Python bytecode
-  python -m compileall -d / "$pkgdir/${site_packages}"
-  python -O -m compileall -d / "$pkgdir/${site_packages}"
+  python -m compileall -d / "${pkgdir}${site_packages}"
+  python -O -m compileall -d / "${pkgdir}${site_packages}"
 
   install -d "$pkgdir/usr/bin"
   ln -s "/${site_packages}/${pkgname%-git}/cli.py" "$pkgdir/usr/bin/${pkgname%-git}"
