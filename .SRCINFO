@@ -1,6 +1,6 @@
 pkgbase = principia
 	pkgdesc = Physics-based sandbox building game.
-	pkgver = 2024.06.28
+	pkgver = 2024.07.12
 	pkgrel = 1
 	url = https://github.com/Bithack/principia/
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = principia
 	depends = sdl2_image
 	depends = sdl2_mixer
 	depends = sdl2_ttf
-	source = principia-2024.06.28.tar.gz::https://github.com/Bithack/principia/archive/refs/tags/2024.06.28.tar.gz
-	sha256sums = 9428933c2d1c1b5259f0365dc47e465f5c917f4bddad5d1b83b3e73e83cff785
+	source = principia-2024.07.12.tar.gz::https://github.com/Bithack/principia/archive/refs/tags/2024.07.12.tar.gz
+	sha256sums = 6cb1be280f6e79fe7782f3a43966d2ae34d2470bf14c5085d1cc761c29547f12
 
 pkgname = principia
