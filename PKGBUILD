@@ -1,9 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=nile-git
 pkgver=1.1.0.r0.g55287cd
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial Amazon Games client"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/imLinguin/nile"
 license=('GPL-3.0-or-later')
 depends=(
