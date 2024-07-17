@@ -1,7 +1,7 @@
 pkgbase = screen-area-share-bin
 	pkgdesc = Share selected area of the screen in applications that do not support this, e.g. Teams.
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mPyKen/ScreenAreaShare
 	arch = x86_64
 	license = MIT
@@ -12,6 +12,6 @@ pkgbase = screen-area-share-bin
 	source = screen-area-share-1.4.1.deb::https://github.com/mPyKen/ScreenAreaShare/releases/download/v1.4.1/screen-area-share_1.4.1_amd64.deb
 	source = screen-area-share.sh
 	sha256sums = af7964156be0a189c36e0028a05fc4c8d11bf5baaec084618ddeec2fd4944def
-	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = screen-area-share-bin

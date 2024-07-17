@@ -3,7 +3,7 @@ pkgname=screen-area-share-bin
 _pkgname=ScreenAreaShare
 pkgver=1.4.1
 _electronversion=28
-pkgrel=1
+pkgrel=2
 pkgdesc="Share selected area of the screen in applications that do not support this, e.g. Teams."
 arch=("x86_64")
 url="https://github.com/mPyKen/ScreenAreaShare"
@@ -21,11 +21,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('af7964156be0a189c36e0028a05fc4c8d11bf5baaec084618ddeec2fd4944def'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
