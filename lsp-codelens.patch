@@ -156,10 +156,10 @@ index 1661028be88b..e836a03e022f 100644
    /// The AST is only valid for the duration of the callback.
 diff --git a/clang-tools-extra/clangd/CodeLens.cpp b/clang-tools-extra/clangd/CodeLens.cpp
 new file mode 100644
-index 000000000000..4dae00853fdf
+index 000000000000..ed026f5a1a54
 --- /dev/null
 +++ b/clang-tools-extra/clangd/CodeLens.cpp
-@@ -0,0 +1,190 @@
+@@ -0,0 +1,195 @@
 +//===--- CodeLens.cpp --------------------------------------------*- C++-*-===//
 +//
 +// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
@@ -323,7 +323,12 @@ index 000000000000..4dae00853fdf
 +    auto Refs = FindedRefs.References;
 +    Arg.locations.reserve(Refs.size());
 +    size_t NotUsedRefs = 0u;
++    bool ThisLocSkipped = false;
 +    for (auto &Ref : Refs) {
++      if (!ThisLocSkipped && Ref.Loc.range.contains(Pos)) {
++        ThisLocSkipped = true;
++        continue;
++      }
 +      if ((Ref.Attributes &
 +           (ReferencesResult::Declaration | ReferencesResult::Definition |
 +            ReferencesResult::Override)) != 0)
@@ -519,7 +524,7 @@ index 7c96eb9835b7..9571a9a2d966 100644
  # CHECK-NEXT:        "automaticReload": true
  # CHECK-NEXT:      },
 diff --git a/clang-tools-extra/clangd/tool/ClangdMain.cpp b/clang-tools-extra/clangd/tool/ClangdMain.cpp
-index c3ba655ee2dc..c8c9c0ecec1a 100644
+index 73000d96c6ca..df3320f25c9e 100644
 --- a/clang-tools-extra/clangd/tool/ClangdMain.cpp
 +++ b/clang-tools-extra/clangd/tool/ClangdMain.cpp
 @@ -344,6 +344,11 @@ list<std::string> TweakList{
@@ -534,7 +539,7 @@ index c3ba655ee2dc..c8c9c0ecec1a 100644
  opt<unsigned> WorkerThreadsCount{
      "j",
      cat(Misc),
-@@ -898,6 +903,7 @@ clangd accepts flags on the commandline, and in the CLANGD_FLAGS environment var
+@@ -896,6 +901,7 @@ clangd accepts flags on the commandline, and in the CLANGD_FLAGS environment var
    Opts.StaticIndex = PAI.get();
    Opts.AsyncThreadsCount = WorkerThreadsCount;
    Opts.MemoryCleanup = getMemoryCleanupFunction();
