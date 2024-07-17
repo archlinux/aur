@@ -1,13 +1,15 @@
 pkgbase = python-instructor
 	pkgdesc = Structured outputs for LLMs
-	pkgver = 1.3.4
+	pkgver = 1.3.5
 	pkgrel = 1
 	url = https://github.com/jxnl/instructor
 	arch = any
 	license = MIT
+	checkdepends = litellm
 	checkdepends = python-anthropic
 	checkdepends = python-cohere
 	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-poetry
@@ -26,7 +28,7 @@ pkgbase = python-instructor
 	depends = python-typing_extensions
 	optdepends = python-anthropic: support for Anthropic models
 	optdepends = python-cohere: support for Cohere models
-	source = python-instructor-1.3.4.tar.gz::https://github.com/jxnl/instructor/archive/1.3.4.tar.gz
-	sha256sums = e0b123b727e5a50e5ac01f3f0eca62fbb9618405c7ccb943ef17a0dfbb8806bc
+	source = python-instructor-1.3.5.tar.gz::https://github.com/jxnl/instructor/archive/1.3.5.tar.gz
+	sha256sums = 9268d835ddf0cab1e57258ff6e34d879b3081c503ec459a0a897375b6773f8d1
 
 pkgname = python-instructor

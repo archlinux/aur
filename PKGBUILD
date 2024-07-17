@@ -2,7 +2,7 @@
 
 pkgname=python-instructor
 _pkgname=${pkgname#python-}
-pkgver=1.3.4
+pkgver=1.3.5
 pkgrel=1
 pkgdesc="Structured outputs for LLMs"
 arch=(any)
@@ -29,9 +29,11 @@ makedepends=(
   python-wheel
 )
 checkdepends=(
+  litellm
   python-anthropic
   python-cohere
   python-pytest
+  python-pytest-asyncio
 )
 optdepends=(
   'python-anthropic: support for Anthropic models'
@@ -40,7 +42,7 @@ optdepends=(
   # 'python-google-generativeai: support for Google Gemini models'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('e0b123b727e5a50e5ac01f3f0eca62fbb9618405c7ccb943ef17a0dfbb8806bc')
+sha256sums=('9268d835ddf0cab1e57258ff6e34d879b3081c503ec459a0a897375b6773f8d1')
 
 _archive="$_pkgname-$pkgver"
 
