@@ -12,6 +12,6 @@ pkgbase = iso-commander
 	optdepends = ccd2iso: BIN/IMG conversion support
 	optdepends = mdf2iso: MDF/MDS conversion support
 	source = iso-commander-5.0.6.tar.gz::https://github.com/siyia2/iso-commander/archive/v5.0.6.tar.gz
-	md5sums = 7ff8a00c26ae78541df3223064b153f2
+	md5sums = 30a4584fe4d8132f9f4d74fd39a47ea9
 
 pkgname = iso-commander
