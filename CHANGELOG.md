@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.11.1]
+
+### Enhancements
+- Add `waitForQuit` arg to `/autoquit` (i.e. `/autoquit waitForQuit`). This will let users opt in to the old behavior
+  of `/autoquit` which is to wait for Elite to exit before closing the launcher.
+- Make reading [log file] a bit easier by writing a separator between launcher runs.
+
+### Security
+- Address [CVE-2024-30105] and [CVE-2024-38095] by building with latest version of .Net SDK (8.0.303)
+
 ## [0.11.0] - 2024-07-08
 
 ### New Features
@@ -316,7 +326,8 @@ legendary launch --dry-run 9c203b6ed35846e8a4a9ff1e314f6593 2> >(grep "Launch pa
 
 Initial release
 
-[unreleased]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.11.0...HEAD
+[unreleased]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.11.1...HEAD
+[0.11.1]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.11.0...v0.11.1
 [0.11.0]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.10.1...v0.11.0
 [0.10.1]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.10.0...v0.10.1
 [0.10.0]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.9.0...v0.10.0
@@ -352,6 +363,9 @@ Initial release
 [CVE-2023-36794]: https://github.com/dotnet/announcements/issues/272
 [CVE-2023-36796]: https://github.com/dotnet/announcements/issues/274
 [CVE-2023-36799]: https://github.com/dotnet/announcements/issues/275
+[CVE-2024-30105]: https://github.com/dotnet/announcements/issues/315
+[CVE-2024-38095]: https://github.com/dotnet/announcements/issues/312
 [legendary]: https://github.com/derrod/legendary
 [heroic]: https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher
 [settings file]: README.md#settings
+[log file]: README.md#troubleshooting
