@@ -4,11 +4,11 @@
 
 _pkgname="cowsql"
 pkgname="$_pkgname-git"
-pkgver=1.15.4.r2.g6c91a1b
+pkgver=1.15.6.r0.g8c7d8cf
 pkgrel=1
 pkgdesc='An embeddable and replicated SQLite engine with high availability & automatic failover'
 url="https://github.com/cowsql/cowsql"
-license=('LGPL3')
+license=('LGPL-3.0-only')
 arch=('x86_64')
 
 depends=(
@@ -23,18 +23,19 @@ makedepends=(
   'zlib'
 )
 
-options=(strip)
+options=('strip')
 
 provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
-source+=("$_pkgsrc"::"git+$url.git")
-sha256sums+=('SKIP')
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgsrc"
-  git describe --long --tags --exclude='*[a-zA-Z][a-zA-Z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+  git describe --long --tags --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
@@ -56,5 +57,5 @@ check() {
 
 package() {
   cd "$_pkgsrc"
-  make DESTDIR="${pkgdir:?}" install
+  make DESTDIR="$pkgdir" install
 }
