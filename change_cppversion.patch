@@ -1,0 +1,11 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f443a29..4cc776e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -9,5 +9,5 @@ add_definitions(-DVERSION="${PROJECT_VERSION}-dev")
+ 
+ enable_language(CXX)
+-set(CMAKE_CXX_STANDARD 11)
++set(CMAKE_CXX_STANDARD 17)
+ 
+ include(GNUInstallDirs)

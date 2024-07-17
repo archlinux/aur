@@ -1,18 +1,24 @@
 # Maintainer: Erik Bročko (OM2LT) <erik@brocko.eu>
 
 pkgname=digiham-git
-pkgver=0.6.0.r1.g08b923a
-pkgrel=2
+pkgver=0.6.2.r11.g410853c
+pkgrel=1
 pkgdesc="Tools for decoding digital ham communication."
 arch=('x86_64')
 url="https://github.com/jketterl/digiham"
 license=('GPL3')
 depends=('mbelib' 'icu' 'codecserver' 'libsamplerate' 'csdr' 'protobuf')
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'patch')
 conflicts=('digiham')
 provides=('digiham')
-source=("$pkgname"::'git+https://github.com/jketterl/digiham')
-md5sums=('SKIP')
+source=(
+	"$pkgname"::'git+https://github.com/jketterl/digiham'
+	'change_cppversion.patch'
+)
+sha256sums=(
+	'SKIP'
+	'b73615573788c0f2506093bcc050f3b6ff6dde03f7627441003941f2ef45ea67'
+)
 
 pkgver() {
 	cd "$srcdir/$pkgname"
@@ -21,6 +27,11 @@ pkgver() {
 		git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
 		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	)
+}
+
+prepare() {
+    cd "$srcdir/$pkgname"
+    patch -p1 < "$srcdir/change_cppversion.patch"
 }
 
 build() {
