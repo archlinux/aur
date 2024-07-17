@@ -1,0 +1,15 @@
+pkgbase = cheetah
+	pkgdesc = A fast, simple static site generator with a twist
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://cheetah.farthergate.com
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	provides = cheetah
+	conflicts = cheetah-git
+	source = cheetah-0.2.3.tar.gz::https://static.crates.io/crates/cheetah/cheetah-0.2.3.crate
+	sha256sums = 209eca28ba31e4b5a9ec4ebc4ce830847291ec86cb35084f1a9d2bfc3cd32e7b
+
+pkgname = cheetah
