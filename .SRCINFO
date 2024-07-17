@@ -1,6 +1,6 @@
 pkgbase = dde-shell-git
 	pkgdesc = New DDE shell
-	pkgver = 0.0.4.r3.g1e88b2d
+	pkgver = 0.0.28.r4.gc54759f
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/dde-shell
 	arch = x86_64
@@ -17,13 +17,17 @@ pkgbase = dde-shell-git
 	makedepends = dtkwidget
 	makedepends = cmake
 	makedepends = ninja
+	makedepends = deepin-tray-loader
 	depends = dtk6declarative
 	depends = qt5-wayland
 	depends = qt6-wayland
 	depends = dtkgui
 	depends = dtkwidget
+	depends = deepin-tray-loader
 	provides = dde-shell
+	provides = deepin-shell
 	conflicts = dde-shell
+	conflicts = deepin-shell
 	source = git+https://github.com/linuxdeepin/dde-shell.git
 	sha512sums = SKIP
 

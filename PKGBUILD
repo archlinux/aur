@@ -2,7 +2,7 @@
 
 pkgname=dde-shell-git
 _pkgname=dde-shell
-pkgver=0.0.4.r3.g1e88b2d
+pkgver=0.0.28.r4.gc54759f
 pkgrel=1
 pkgdesc='New DDE shell'
 arch=('x86_64' 'aarch64')
@@ -13,6 +13,7 @@ depends=('dtk6declarative'
          'qt6-wayland'
          'dtkgui'
          'dtkwidget'
+         'deepin-tray-loader'
 )
 makedepends=('git'
              'qt6-tools'
@@ -24,9 +25,10 @@ makedepends=('git'
              'dtkwidget'
              'cmake'
              'ninja'
+             'deepin-tray-loader'
 )
-conflicts=('dde-shell')
-provides=('dde-shell')
+conflicts=('dde-shell' 'deepin-shell')
+provides=('dde-shell' 'deepin-shell')
 groups=('deepin-git')
 source=("git+https://github.com/linuxdeepin/dde-shell.git")
 sha512sums=('SKIP')
@@ -41,6 +43,7 @@ build() {
   cmake -B build -GNinja \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_SYSCONFDIR=/etc \
     -DCMAKE_BUILD_TYPE=Release
   cmake --build build
 }
