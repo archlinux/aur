@@ -1,6 +1,6 @@
 pkgbase = apvlv
 	pkgdesc = A PDF/DJVU/EPUB viewer which behaves like Vim
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/naihe2010/apvlv
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = apvlv
 	depends = poppler-glib
 	depends = webkit2gtk
 	backup = etc/apvlvrc
-	source = apvlv-0.5.0.tar.gz::https://github.com/naihe2010/apvlv/archive/v0.5.0-final.tar.gz
-	sha256sums = d98edf23c3da0704bf85d07bfa4477393af3824e1fa8b1e28e69997bb84732b2
+	source = apvlv-0.6.0.tar.gz::https://github.com/naihe2010/apvlv/archive/v0.6.0-final.tar.gz
+	sha256sums = 8cec385df3b8655c19710de4d29220a4739c04b97906a8f07f97b6b17747680c
 
 pkgname = apvlv

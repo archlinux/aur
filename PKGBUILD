@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: Mahdi Sarikhani <mahdisarikhani@outlook.com>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Jonathan Steel <jsteel at archlinux.org>
 # Contributor: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
@@ -6,7 +6,7 @@
 # Contributor: tocer.deng <tocer.deng@gmail.com>
 
 pkgname=apvlv
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A PDF/DJVU/EPUB viewer which behaves like Vim"
 arch=('x86_64')
@@ -27,7 +27,7 @@ depends=('cairo'
 backup=('etc/apvlvrc')
 makedepends=('cmake' 'freetype2' 'ghostscript')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}-final.tar.gz")
-sha256sums=('d98edf23c3da0704bf85d07bfa4477393af3824e1fa8b1e28e69997bb84732b2')
+sha256sums=('8cec385df3b8655c19710de4d29220a4739c04b97906a8f07f97b6b17747680c')
 
 build() {
   cmake -B build -S "${pkgname}-${pkgver}-final" \
