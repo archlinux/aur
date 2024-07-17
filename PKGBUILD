@@ -3,8 +3,8 @@
 
 _pkgname=janet
 pkgname=janet-lang
-pkgver=1.32.1
-_jpm_commit=cebf7c1
+pkgver=1.35.2
+_jpm_commit=d93b7c2
 pkgrel=1
 pkgdesc="A dynamic Lisp dialect and bytecode vm"
 arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
@@ -17,16 +17,20 @@ conflicts=('janet-lang-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/janet-lang/janet/archive/v${pkgver}.tar.gz"
         "git+https://github.com/janet-lang/jpm#commit=${_jpm_commit}"
         "default-config.janet")
-sha256sums=('ac74444f1b545830c34738fe9ebb58c865ea4b819b0b0c3124315c646d9ce4cb'
+sha256sums=('947dfdab6c1417c7c43efef2ecb7a92a3c339ce2135233fe88323740e6e7fab1'
             'SKIP'
             '7fb56585e6027ea800920a364acd73b49205298dcf887a4ee71fb65125c4539f')
-options=('staticlibs')
+options=('staticlibs' '!lto')
 
 build() {
   cd "${srcdir}"/$_pkgname-$pkgver
   CFLAGS+=" -fPIC"
   LDFLAGS+=" -rdynamic"
   make PREFIX="/usr" all build/janet.pc docs
+}
+
+check() {
+  make -k -C "$_pkgname-$pkgver" test
 }
 
 package() {
