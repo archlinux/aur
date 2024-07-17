@@ -10,6 +10,8 @@ pkgdesc='A modern reverse proxy written in Go'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/traefik/traefik'
 license=('MIT')
+provides=($_pkgname)
+conflicts=($_pkgname)
 install="${_pkgname}.install"
 backup=(
   'etc/traefik/traefik.toml'
