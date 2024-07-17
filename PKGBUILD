@@ -3,11 +3,11 @@
 _pkgname=cup
 pkgname=$_pkgname-docker
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Cup is the easiest way to check for container image updates."
 url="https://github.com/sergi0g/cup"
 makedepends=('cargo')
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 license=('MIT')
 source=("https://github.com/sergi0g/cup/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('47d60e4fb427f3e486e47680cd0f57d518c5c826768a4e552ef87e38b45897aa')
@@ -27,7 +27,7 @@ build() {
 
 package() {
   cd "$_pkgname-$pkgver"
-  install -Dm755 target/release/$pkgname -t "$pkgdir/usr/bin"
+  install -Dm755 target/release/$_pkgname -t "$pkgdir/usr/bin"
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -d "$pkgdir/usr/share/licenses/$pkgname"
   install -m644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
