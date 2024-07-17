@@ -1,8 +1,8 @@
 # Maintainer: BrainDamage
 
 pkgname=python-tulir-telethon
-pkgver=1.34.0a2
-pkgrel=2
+pkgver=1.37.0a1
+pkgrel=1
 pkgdesc="fork of Telethon library with custom patches from Tulir"
 arch=('any')
 url="https://github.com/tulir/Telethon"
@@ -12,7 +12,7 @@ provides=('python-telethon')
 conflicts=('python-telethon')
 optdepends=('python-cryptg' 'python-pysocks' 'python-hachoir' 'python-pillow')
 
-sha256sums=('fb79a4f87d2c403decb043e2844fcfbd6a58559ce41903178454bae26ee3a09f')
+sha256sums=('15c90c1ea19a06caaf15bac49c35aa240406f23fdeb98d8da287ac9f157a29c7')
 
 _dirname="${pkgname#python-}-${pkgver}"
 _basename="${pkgname#python-}"
