@@ -1,0 +1,17 @@
+pkgbase = smdbottom
+	pkgdesc = A set of bottom libraries for simpledot
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/IgorPetrovcm/smdbottom
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = man-pages
+	depends = util-linux
+	depends = util-linux-libs
+	provides = libsmdbottom.so
+	source = smdbottom-1.0.0.tar.gz::https://github.com/IgorPetrovcm/smdbottom/archive/refs/tags/v1.0.0.tar.gz
+	validpgpkeys = SKIP
+	sha256sums = SKIP
+
+pkgname = smdbottom
