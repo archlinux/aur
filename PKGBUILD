@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yank-note
 _pkgname=yn
-pkgver=3.72.2
+pkgver=3.73.1
 _electronversion=28
 _nodeversion=18
 pkgrel=1
@@ -13,7 +13,6 @@ license=('AGPL-3.0-only')
 conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
-    'python>=3.11.5'
     'java-runtime'
 )
 makedepends=(
@@ -29,7 +28,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('3251771d2f9a6e8ed78f4a2235843f81117b64ff8ce8223280b3fcf575ec3133'
+sha256sums=('29e9290b601cacc1d5ac7ea0ca6a799361ab8fefe4e22e1c34999e02a49c50f1'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
