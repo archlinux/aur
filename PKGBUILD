@@ -3,7 +3,7 @@
 pkgname=reddish-shift
 _pkgname="$pkgname"
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 _pkgsrc="$_pkgname-$pkgver"
 pkgdesc="Set color temperature of display according to time of day"
 url="https://github.com/mahor1221/reddish-shift"
