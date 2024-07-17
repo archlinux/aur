@@ -1,7 +1,7 @@
 pkgbase = pascal-fc
 	pkgdesc = An implementation of pascal with extra constructs for teaching concurrent programming
 	pkgver = 5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www-users.york.ac.uk/~ab38/pf.html
 	arch = x86_64
 	license = GPL-2.0-or-later

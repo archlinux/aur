@@ -2,7 +2,7 @@
 
 pkgname=pascal-fc
 pkgver=5
-pkgrel=1
+pkgrel=2
 pkgdesc="An implementation of pascal with extra constructs for teaching concurrent programming"
 arch=('x86_64')
 url="https://www-users.york.ac.uk/~ab38/pf.html"
@@ -34,7 +34,7 @@ build() {
 		| sed 's/,/ /g' \
 	)"
 	# add the -k prefix to all of them
-	FPC_LDFLAGS="-k$(echo "$LDFLAGS_UNWRAPPED" | sed "s/[[:space:]]/ -k/g")"
+	FPC_LDFLAGS="-k$(echo "$LDFLAGS_UNWRAPPED" | sed 's/[[:space:]]\+/ -k/g')"
 	# enable debugging if it's in CFLAGS
 	if [[ "$CFLAGS" =~ ".*-g.*" ]]; then
 		DEBUGFLAGS="-g"
@@ -48,6 +48,12 @@ build() {
 	cd "$srcdir/$pkgname-$pkgver-gnu/doc"
 	ps2pdf lrm.ps
 	ps2pdf pc_ug.ps
+}
+
+check() {
+	echo "Running PCSem example..."
+	./$pkgname-$pkgver-fpc/pfccomp \
+		"$pkgname-$pkgver-gnu/ex/sems/pcsem.pfc" listing objfile
 }
 
 package() {
