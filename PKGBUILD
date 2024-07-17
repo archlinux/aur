@@ -2,7 +2,7 @@
 # Helpful URL: https://github.com/rogerfar/rdt-client
 
 pkgname='rdt-client'
-pkgver=2.0.79
+pkgver=2.0.80
 pkgrel=1
 pkgdesc='Real-Debrid Torrent Client'
 arch=(any)

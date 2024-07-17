@@ -1,6 +1,6 @@
 pkgbase = rdt-client
 	pkgdesc = Real-Debrid Torrent Client
-	pkgver = 2.0.79
+	pkgver = 2.0.80
 	pkgrel = 1
 	url = https://github.com/rogerfar/rdt-client
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = rdt-client
 	depends = aspnet-runtime-8.0
 	optdepends = aria2: download utility
 	noextract = RealDebridClient.zip
-	source = https://github.com/rogerfar/rdt-client/releases/download/v2.0.79/RealDebridClient.zip
+	source = https://github.com/rogerfar/rdt-client/releases/download/v2.0.80/RealDebridClient.zip
 	source = appsettings.json
 	source = rdtc.service
 	source = rdtc.sysusers
