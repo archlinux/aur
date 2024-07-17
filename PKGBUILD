@@ -3,7 +3,7 @@
 pkgname=reddish-shift-bin
 _pkgname="${pkgname%-bin}"
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 _pkgsrc="$_pkgname-v$pkgver"
 pkgdesc="Set color temperature of display according to time of day"
 url="https://github.com/mahor1221/reddish-shift"
@@ -30,7 +30,6 @@ package() {
     install -vDm644 "$_pkgname.fish" "$pkgdir/usr/share/fish/completions/$_pkgname.fish"
     install -vDm644 "$_pkgname.elv" "$pkgdir/usr/share/elvish/lib/$_pkgname.elv"
     cd "$srcdir/man1"
-    find -type f -exec \
-        gzip "{}" \
-        install -vDm644 "{}.gz" -t "/usr/share/man/man1" \;
+    find -name '*.1' -exec gzip --keep --force "{}" \;
+    find -name '*.1.gz' -exec install -vDm644 "{}" -t "$pkgdir/usr/share/man/man1" \;
 }
