@@ -12,7 +12,6 @@ pkgbase = sunshine
 	makedepends = git
 	makedepends = ninja
 	makedepends = npm
-	makedepends = cuda
 	depends = avahi
 	depends = boost-libs
 	depends = curl

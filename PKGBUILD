@@ -1,7 +1,7 @@
 # Maintainer:
 
 ## options
-: ${_build_cuda=true} # nvenc
+: ${_build_cuda=false} # nvenc
 
 : ${_commit=8b21db64fb8e8ffb9c24a412dbc66b7410699211}
 
