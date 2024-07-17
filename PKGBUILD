@@ -1,7 +1,7 @@
 # Maintainer: BrainDamage
 
 pkgname=mautrix-discord
-pkgver=0.6.5
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A Matrix-Discord puppeting bridge based on discordgo"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ makedepends=('go')
 depends=('libolm')
 url="https://github.com/mautrix/discord"
 source=("${pkgname}-${pkgver}::${url}/archive/v${pkgver}.tar.gz" "${pkgname}.service" "${pkgname}.sysusers" "${pkgname}.tmpfiles")
-sha256sums=('fd08227805af6f93d6b316f49a6d953bcac82d9d89d7977c92f670a12e7eb695'
+sha256sums=('7b63f1ef582e4276fd2729ab6e4c7fd1ed93494decb50b555bafa155d8bcdc8d'
             '17e5414d8355b9c7a503d6e166abf41640c6247fb168de94850d1b67c6a0fa33'
             'ebb8d96fd415ec2957a2eddda5fcfa32b9e889bcc7531ad4962afeadc5887852'
             '34d758c0a05da759107aaabc6dbcbe0acc3f3881391412f4f6f355b253641eb9')
