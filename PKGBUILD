@@ -4,12 +4,12 @@
 _pkgname="freeglut"
 pkgbase="$_pkgname-git"
 pkgname=("$_pkgname-x11-git" "$_pkgname-wayland-git")
-pkgver=3.4.0.r27.g3f4a4dff
+pkgver=3.6.0.r3.gb789505b
 pkgrel=1
 arch=('i686' 'x86_64')
-url="http://freeglut.sourceforge.net/"
+url="https://freeglut.sourceforge.net/"
 license=('MIT')
-makedepends=('subversion' 'cmake' 'mesa' 'glu' 'wayland' 'libxxf86vm')
+makedepends=('cmake' 'mesa' 'glu' 'wayland' 'libxxf86vm' 'git')
 provides=('glut' 'freeglut' 'freeglut-git')
 conflicts=('glut' 'freeglut' 'freeglut-git')
 replaces=('freeglut-svn')
