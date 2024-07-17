@@ -2,7 +2,7 @@
 pkgname=japreader-bin
 pkgver=1.9.5
 _electronversion=22
-pkgrel=1
+pkgrel=2
 pkgdesc="An Electron app that helps you read Japanese text."
 arch=('x86_64')
 url="https://github.com/marisukukise/japReader"
@@ -18,18 +18,18 @@ depends=(
 options=(
     '!strip'
     '!emptydirs'
-    #'!staticlibs'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('e406ce3287cc5d531205540ae119d513ef1dc5710e57a5de0bc15f0220550e79'
-            '05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
