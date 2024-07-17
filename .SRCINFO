@@ -1,7 +1,7 @@
 pkgbase = netbeans-bin
 	pkgdesc = IDE for Java, HTML5, PHP, Groovy, C and C++
 	pkgver = 22
-	pkgrel = 2
+	pkgrel = 3
 	url = https://netbeans.apache.org/
 	arch = any
 	license = Apache
