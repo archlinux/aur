@@ -7,7 +7,7 @@ pkgbase = backup-brute-git
 	arch = x86_64
 	makedepends = go
 	depends = go
-	source = git+https://github.com/danhab99/backup-brute.git
+	source = git+https://github.com/danhab99/backup-brute.git#tag=1.0
 	md5sums = SKIP
 
 pkgname = backup-brute-git

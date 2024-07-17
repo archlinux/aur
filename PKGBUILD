@@ -7,7 +7,7 @@ pkgrel=1
 arch=('i686' 'x86_64')
 url='https://github.com/danhab99/backup-brute'
 # source=('git+git://github.com/danhab99/backup-brute')
-source=('git+https://github.com/danhab99/backup-brute.git')
+source=('git+https://github.com/danhab99/backup-brute.git#tag=1.0')
 depends=('go')
 makedepends=('go')
 md5sums=('SKIP')
@@ -26,11 +26,8 @@ build(){
   cd "$srcdir/$_pkgname"
   GO111MODULE=on go build -o "$srcdir/bin/backup-brute"
 
-  read -r -p "Do you want to create the backup-brute service file? (yes/no): " response
-
-  if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    echo "Installing systemd service and timer"
-    sudo bash -c 'cat >/etc/systemd/system/backup-brute.service <<EOF
+  echo "Installing systemd service and timer"
+  bash -c 'cat >/etc/systemd/system/backup-brute.service <<EOF
 [Unit]
 Description=Backup Brute Job
 
@@ -44,7 +41,7 @@ Persistent=false
 WantedBy=multi-user.target
 EOF'
 
-    sudo bash -c 'cat >/etc/systemd/system/backup-brute.timer <<EOF
+    bash -c 'cat >/etc/systemd/system/backup-brute.timer <<EOF
 [Unit]
 Description=Run Backup Brute Job Daily
 
@@ -57,16 +54,9 @@ Persistent=true
 WantedBy=timers.target
 EOF'
 
-    echo "Enabling services"
+  echo "Enabling services"
 
-    sudo systemctl daemon-reload
-
-    sudo systemctl start backup-brute.service
-    sudo systemctl enable backup-brute.service
-
-    sudo systemctl start backup-brute.timer
-    sudo systemctl enable backup-brute.timer
-  fi
+  systemctl daemon-reload
 }
 
 package() {
@@ -76,13 +66,5 @@ package() {
 }
 
 post_remove() {
-  sudo rm /etc/systemd/system/backup*
-
-  sudo systemctl stop backup-brute.service
-  sudo systemctl disable backup-brute.service
-
-  sudo systemctl stop backup-brute.timer
-  sudo systemctl disable backup-brute.timer
-
-  sudo systemctl daemon-reload
+  rm /etc/systemd/system/backup*
 }
