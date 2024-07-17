@@ -10,8 +10,8 @@ license=('AGPL3')
 depends=('sdl2' 'fonts-noto-hinted' 'fonts-droid-fallback')
 source_x86_64=("https://github.com/koreader/koreader/releases/download/v${pkgver}/koreader-${pkgver}-amd64.deb")
 source_aarch64=("https://github.com/koreader/koreader/releases/download/v${pkgver}/koreader-${pkgver}-arm64.deb")
-sha256sums_x86_64=('SKIP')
-sha256sums_aarch64=('SKIP')
+sha256sums_x86_64=('5ecf428b96b7167b51c1bea4927d5d08687ada98e3fd3175e78206d6e883a514')
+sha256sums_aarch64=('2ab918d654f0abc988a26514090f4abdf66a8a727be18f3a7e43dec6c16238f8')
 
 build() {
   mkdir -p "${srcdir}/dpkgdir"
