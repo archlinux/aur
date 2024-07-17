@@ -1,5 +1,5 @@
 *~
 *.deb
-*.pkg.tar.xz
+*.pkg.tar.*
 /pkg
 /src
