@@ -28,7 +28,7 @@ source_armv6h=("${_pkgname}_armv6h_${pkgver}"::"https://github.com/containous/${
 source_armv7h=("${_pkgname}_armv7h_${pkgver}"::"https://github.com/containous/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_linux_armv7.tar.gz")
 source_aarch64=("${_pkgname}_aarch64_${pkgver}"::"https://github.com/containous/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_linux_arm64.tar.gz")
 sha256sums=('3e2746e3de4e79a957dc26cab98c680bba951ba64a7cbeb85bc85d7be1c4b51e'
-            '75af40eb9788a000f8e9aa9a7e43bd2af5300e7df9178b9b158cf1d2052eb3b0'
+            '42f46aa462f7347cc63f4a88e38ba9cebeab9f6bcb4f6f3717dafd17a8018e56'
             'abfcfe24e742bf8968749ea79e2c0425bef3d37d16eb60311b5a994312a1e54d')
 sha256sums_i686=('ccfa8be0ff782052a2204195715012953af1afb78adbbbc34055b5c2f7a3bdab')
 sha256sums_x86_64=('9d52676fda789fc0566d07fe09115c42d56527b7cdba3ea7c40088b4053f97f5')
