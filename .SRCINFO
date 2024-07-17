@@ -1,6 +1,6 @@
 pkgbase = google-chrome-wayland-vulkan
 	pkgdesc = The popular web browser by Google (Stable Channel) with a binary patch to enable support for Vulkan with --ozone-platform=wayland.
-	pkgver = 126.0.6478.126
+	pkgver = 126.0.6478.182
 	pkgrel = 1
 	url = https://www.google.com/chrome
 	install = google-chrome-wayland-vulkan.install
@@ -23,7 +23,7 @@ pkgbase = google-chrome-wayland-vulkan
 	conflicts = google-chrome
 	options = !emptydirs
 	options = !strip
-	source = https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_126.0.6478.126-1_amd64.deb
+	source = https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_126.0.6478.182-1_amd64.deb
 	source = eula_text.html
 	source = google-chrome-stable.sh
 	source = r2-binary-patch-script
