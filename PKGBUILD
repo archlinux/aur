@@ -46,7 +46,7 @@ sha256sums=('SKIP'
 options=('!lto')
 
 prepare() {
-    cd "${pkgname}"
+    cd "${_pkgname}"
 
     git submodule init
     for module in libcommuni settings signals serialize websocketpp magic_enum miniaudio; do
@@ -60,7 +60,7 @@ prepare() {
 }
 
 build() {
-    cmake -S "${pkgname}" -B build --fresh \
+    cmake -S "${_pkgname}" -B build --fresh \
         -DCMAKE_CXX_FLAGS="${CXXFLAGS} -DNDEBUG" \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DUSE_SYSTEM_QTKEYCHAIN=ON \
@@ -80,5 +80,5 @@ check() {
 
 package() {
     DESTDIR="${pkgdir}" cmake --install build
-    install -Dm644 "${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
