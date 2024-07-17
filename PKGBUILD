@@ -3,7 +3,7 @@
 
 pkgname='openwebrx-plus'
 _pkgname='openwebrx'
-pkgver='1.2.63'
+pkgver='1.2.64'
 pkgrel='1'
 pkgdesc='Open source, multi-user SDR receiver software with a web interface'
 arch=('any')
@@ -36,6 +36,7 @@ optdepends=(
     'python-csdr-eti: decode DAB broadcast signals'
     'dablin: decode DAB broadcast signals'
     'satdump: receive weather satellite transmissions'
+    'nrsc5: decode HDRadio broadcasts'
     # tools
     'imagemagick: automatically convert received images to the PNG format'
     'sox: sound processing tools'
@@ -68,7 +69,7 @@ source=(
     'openwebrx-plus.tmpfiles'
 )
 sha256sums=(
-    '016565d92d160ef41c9b1f7d3a956f2e05b26d30498279655309277f5183466a'
+    'a49814439a1995ba6bea22487ccf9652df64d446a1b26509e691d04cc9682ba9'
     '4ec6dec1df40a1f3db62a2add760f97cf870d65a2c1d5b63cd9b22704754f997'
     'eea488bd3f4c76b46bffbf3c88691818f93ad73db98c18659856d1690b0deade'
 )
