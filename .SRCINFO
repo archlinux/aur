@@ -1,7 +1,7 @@
 pkgbase = nl-filter
 	pkgdesc = LADSPA implementation of the Dobson-Ffitch non-linear filter
 	pkgver = 0.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://web.archive.org/web/20191019103758/http://www.skynet.ie/~jmmcd/development.html
 	arch = x86_64
 	license = GPL
