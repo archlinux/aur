@@ -2,7 +2,7 @@
 # Contributor: Jason Nader <jason *add-dot-here* nader *you-know-what-goes-here* protonmail.com>
 pkgname=httptoolkit-git
 _pkgname="HTTP Toolkit Desktop"
-pkgver=1.18.0.r1.g5172993
+pkgver=1.18.1.r0.g2483c17
 _electronversion=29
 _nodeversion=20
 pkgrel=1
