@@ -2,11 +2,11 @@
 
 _pkgname="corepdf"
 pkgname="$_pkgname-git"
-pkgver=4.5.0.r0.g6b0653a
+pkgver=4.5.0.r10.g8a42dc9
 pkgrel=1
 pkgdesc="A PDF viewer from the C Suite"
 url="https://gitlab.com/cubocore/coreapps/corepdf"
-license=('GPL3')
+license=('GPL-3.0-only')
 arch=('x86_64' 'aarch64')
 
 depends=(
@@ -23,22 +23,13 @@ conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgsrc"
-  printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
+  git describe --long --tags --exclude='*[a-zA-Z][a-zA-Z]*' 2> /dev/null \
+    | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
-
-pkgver() (
-  cd "$_pkgsrc"
-  local _pkgver=$(
-    git describe --long --tags --exclude='*[a-zA-Z][a-zA-Z]*' 2>/dev/null \
-      | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
-  )
-
-  echo "${_pkgver:?}"
-)
 
 build() {
   local _cmake_options=(
@@ -53,5 +44,5 @@ build() {
 }
 
 package() {
-  DESTDIR="${pkgdir:?}" cmake --install build
+  DESTDIR="$pkgdir" cmake --install build
 }
