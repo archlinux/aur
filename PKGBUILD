@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="wo"
-pkgver=0.0.5
+pkgver=0.0.7
 pkgrel=1
 pkgdesc="A workspace shell manager"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('bash-completion: for shell auto-completion'
             'zsh-completions: for shell auto-completion')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('a6186a0dbca46a359dd4fd420ac266f5b84dcc4e717814e4cf5fd630de949038')
+sha256sums=('35ceace6157ac7688c8e12073afd8af59fe6634732a7d48827d82ea82d784211')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"

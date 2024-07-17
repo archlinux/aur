@@ -1,6 +1,6 @@
 pkgbase = wo
 	pkgdesc = A workspace shell manager
-	pkgver = 0.0.5
+	pkgver = 0.0.7
 	pkgrel = 1
 	url = https://github.com/antham/wo
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = wo
 	depends = glibc
 	optdepends = bash-completion: for shell auto-completion
 	optdepends = zsh-completions: for shell auto-completion
-	source = wo-0.0.5.tar.gz::https://github.com/antham/wo/archive/refs/tags/0.0.5.tar.gz
-	sha256sums = a6186a0dbca46a359dd4fd420ac266f5b84dcc4e717814e4cf5fd630de949038
+	source = wo-0.0.7.tar.gz::https://github.com/antham/wo/archive/refs/tags/0.0.7.tar.gz
+	sha256sums = 35ceace6157ac7688c8e12073afd8af59fe6634732a7d48827d82ea82d784211
 
 pkgname = wo
