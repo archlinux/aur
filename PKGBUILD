@@ -2,7 +2,7 @@
 pkgname=fishpi-bin
 pkgver=1.3.6
 _electronversion=16
-pkgrel=1
+pkgrel=2
 pkgdesc="摸鱼派新版客户端"
 arch=('x86_64')
 url="https://fishpi.cn"
@@ -23,14 +23,15 @@ source=(
 )
 sha256sums=('2294b4ea950998faaf3f19546b7fc91f8e126a259cbb79e09456ac2e60b35422'
             'c8d477f31fadf5c61c54afbc28ddf06af73dfa062b53ce70c47e1092eb05bc94'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}-app|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --categories="Utility" --name="${pkgname%-bin}" --exec="${pkgname%-bin} %U"
+    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname%-bin}" --exec="${pkgname%-bin} %U"
     sed '5i Name[zh_CN]=摸鱼派' -i "${srcdir}/${pkgname%-bin}.desktop"
 }
 package() {
