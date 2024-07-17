@@ -1,4 +1,4 @@
-# Maintainer: stefanwimmer128 <info at stefanwimmer128 dot xyz>
+# Maintainer: stefanwimmer128 <info@stefanwimmer128.xyz>
 
 _pkgname=kf6-servicemenus-rootactions
 pkgname=$_pkgname-git
