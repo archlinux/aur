@@ -1,6 +1,6 @@
 pkgbase = openwebrx-plus-git
 	pkgdesc = Open source, multi-user SDR receiver software with a web interface
-	pkgver = 1.2.61.r2.g78db155d
+	pkgver = 1.2.64.r0.g8177ffa2
 	pkgrel = 1
 	url = https://luarvique.github.io/ppa/
 	install = openwebrx-plus.install
@@ -35,6 +35,7 @@ pkgbase = openwebrx-plus-git
 	optdepends = python-csdr-eti: decode DAB broadcast signals
 	optdepends = dablin: decode DAB broadcast signals
 	optdepends = satdump: receive weather satellite transmissions
+	optdepends = nrsc5: decode HDRadio broadcasts
 	optdepends = imagemagick: automatically convert received images to the PNG format
 	optdepends = sox: sound processing tools
 	optdepends = python-paho-mqtt: send decoded signal data to an MQTT broker for further processing by third-party applications
