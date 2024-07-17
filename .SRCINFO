@@ -1,8 +1,8 @@
 pkgbase = cross-install-git
 	pkgdesc = POSIX-complient cross-platform install command
-	pkgver = 1.1.0.r0.gf08b1cf
-	pkgrel = 2
-	url = https://codeberg.org/stefanwimmer128/cross-install
+	pkgver = 1.2.0.r7.gf9c1bad
+	pkgrel = 1
+	url = https://gitlab.com/stefanwimmer128/cross-install
 	arch = any
 	license = MPL2
 	checkdepends = shellcheck
@@ -12,7 +12,7 @@ pkgbase = cross-install-git
 	depends = sh
 	provides = cross-install
 	conflicts = cross-install
-	source = cross-install::git+https://codeberg.org/stefanwimmer128/cross-install.git
+	source = cross-install::git+https://gitlab.com/stefanwimmer128/cross-install.git
 	sha256sums = SKIP
 
 pkgname = cross-install-git

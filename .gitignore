@@ -1,0 +1,4 @@
+/pkg/
+/src/
+/cross-install/
+*.tar.*

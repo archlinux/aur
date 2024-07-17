@@ -1,19 +1,19 @@
-# Maintainer: stefanwimmer128 <info at stefanwimmer128 dot eu>
+# Maintainer: Stefan Wimmer <info@stefanwimmer128.xyz>
 
 _pkgname=cross-install
 pkgname=$_pkgname-git
-pkgver=1.1.0.r0.gf08b1cf
-pkgrel=2
+pkgver=1.2.0.r7.gf9c1bad
+pkgrel=1
 pkgdesc='POSIX-complient cross-platform install command'
 arch=('any')
-url='https://codeberg.org/stefanwimmer128/cross-install'
+url='https://gitlab.com/stefanwimmer128/cross-install'
 license=('MPL2')
 depends=('sh')
 makedepends=('git' 'getoptions' 'moreutils')
 checkdepends=('shellcheck')
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=("$_pkgname::git+https://codeberg.org/stefanwimmer128/cross-install.git")
+source=("$_pkgname::git+https://gitlab.com/stefanwimmer128/cross-install.git")
 sha256sums=('SKIP')
 
 pkgver() {
