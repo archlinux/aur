@@ -7,15 +7,15 @@
 # mupen64plus component receives a new commit.
 
 pkgname=mupen64plus-git
-pkgver=2.5.9.r299.g9eb6a7cb.20220424.200347
+pkgver=2.6.0.r0.gb0d68c20.20240715.010852
 pkgrel=1
 pkgdesc='Nintendo64 Emulator (git version)'
 arch=('x86_64')
 url='https://www.mupen64plus.org/'
-license=('GPL')
-depends=('boost-libs' 'freetype2' 'glu' 'libgl' 'libpng' 'libsamplerate'
-         'minizip' 'sdl2' 'speexdsp' 'zlib' 'hicolor-icon-theme')
-makedepends=('git' 'nasm' 'boost' 'mesa')
+license=('GPL-2.0-or-later')
+depends=('freetype2' 'glu' 'hicolor-icon-theme' 'libgl' 'libpng' 'libsamplerate'
+         'minizip' 'sdl2' 'sdl2_net' 'speexdsp' 'vulkan-icd-loader' 'zlib')
+makedepends=('git' 'nasm' 'vulkan-headers')
 provides=('mupen64plus')
 conflicts=('mupen64plus')
 source=('git+https://github.com/mupen64plus/mupen64plus-core.git'
@@ -25,7 +25,7 @@ source=('git+https://github.com/mupen64plus/mupen64plus-core.git'
         'git+https://github.com/mupen64plus/mupen64plus-audio-sdl.git'
         'git+https://github.com/mupen64plus/mupen64plus-input-sdl.git'
         'git+https://github.com/mupen64plus/mupen64plus-ui-console.git'
-        '010-mupen64plus-git-install-fix.patch')
+        '010-mupen64plus-install-fix.patch')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -39,7 +39,7 @@ _m64p_components='core rsp-hle video-rice video-glide64mk2 audio-sdl input-sdl u
 
 prepare() {
     bsdtar -xf "${srcdir}/mupen64plus-core/tools/m64p_helper_scripts.tar.gz" m64p_install.sh
-    patch -Np1 -i 010-mupen64plus-git-install-fix.patch
+    patch -Np1 -i 010-mupen64plus-install-fix.patch
 }
 
 pkgver() {
@@ -66,7 +66,7 @@ build() {
     do
         printf '%s\n' "  -> Building component '${_component}'..."
         make -C "mupen64plus-${_component}/projects/unix" clean
-        make -C "mupen64plus-${_component}/projects/unix" PREFIX='/usr' all
+        make -C "mupen64plus-${_component}/projects/unix" PREFIX='/usr' NETPLAY='1' all
     done
 }
 
@@ -74,7 +74,5 @@ package() {
     # set LDCONFIG since we are using fakeroot and scripts run root commands by checking the uid
     ./m64p_install.sh DESTDIR="$pkgdir" PREFIX='/usr' LDCONFIG='true'
     
-    local _sover
-    _sover="$(find mupen64plus-core/projects/unix -type f -name 'libmupen64plus.so.*.*' | sed 's/^.*\.so\.//')"
-    ln -s "libmupen64plus.so.${_sover}" "${pkgdir}/usr/lib/libmupen64plus.so"
+    ln -s "$(find "${pkgdir}/usr/lib" -regex '.*libmupen64plus.so.[0-9]*' -exec basename {} +)" "${pkgdir}/usr/lib/libmupen64plus.so"
 }
