@@ -2,8 +2,8 @@
 
 _pkgname=fflogs-uploader
 pkgname=${_pkgname}-appimage
-pkgver=8.6.0
-pkgrel=2
+pkgver=8.9.0
+pkgrel=1
 pkgdesc="FFLogs Uploader appimage"
 arch=('x86_64')
 url="https://github.com/RPGLogs/Uploaders-fflogs/"
@@ -14,8 +14,8 @@ _appimage="fflogs-v${pkgver}.AppImage"
 source_x86_64=("${_appimage}::${url}releases/download/v${pkgver}/fflogs-v${pkgver}.AppImage"
 		"${_pkgname}.desktop")
 noextract=("${_appimage}")
-sha256sums_x86_64=('7c93991ef9c6381f9bebbc3617c909fb586881cd034e6b6e8ef370dd6f165925'
-                   '86e168e0f9251994c1ad72da9d56c213df08f7c6ac1b41c15da644468e1c1a2e')
+sha256sums_x86_64=('2bf168a1588b8eea9e5af4cf7b6869babbe256d94fed25fc9216a2e683d5b2d7'
+                   '84ad22cd36eb0a866f8aa6f4aae967833a2aa42dc9e780712087a8bc1b3df7c1')
 
 prepare() {
     chmod +x "${_appimage}"
