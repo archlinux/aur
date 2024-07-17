@@ -1,7 +1,7 @@
 # Maintainer: BrainDamage
 pkgname=mautrix-telegram
 pkgver=0.15.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Matrix-Telegram hybrid puppeting/relaybot bridge"
 url="https://github.com/tulir/mautrix-telegram"
 # python-tulir-telethon needs exact version matching
@@ -79,7 +79,6 @@ package() {
 	install -Dvm 644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 
 	mkdir -p "${pkgdir}/etc/${pkgname}"
-	chmod o-rwX "${pkgdir}/etc/${pkgname}"
 	chmod o-rwX "${pkgdir}/usr/example-config.yaml"
 	mv "${pkgdir}/usr/example-config.yaml" "${pkgdir}/etc/${pkgname}/config.yaml"
 	install -Dvm 640 registration.yaml "${pkgdir}/etc/${pkgname}/registration.yaml"
