@@ -3,7 +3,7 @@ pkgname=awakened-poe-trade-bin
 _pkgname=Awakened-PoE-Trade
 pkgver=3.24.10004
 _electronversion=30
-pkgrel=1
+pkgrel=2
 pkgdesc="Path of Exile trading app for price checking"
 arch=('x86_64')
 url="https://snosme.github.io/awakened-poe-trade/download"
@@ -24,11 +24,12 @@ source=(
 )
 sha256sums=('d0549e3e40d9602537d84529cb29ae48819c4575289883ab777f103cc6855781'
             '5c8de7f881b34dc31f872531a1eee1eabc79e10acd8fc91c026e10c5a8258c3f'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
