@@ -5,11 +5,12 @@ pkgver=1.0.0
 pkgrel=1
 pkgdesc="A modern hex viewer"
 arch=('any')
-url="https://github.com/Arnau478/${pkgname}"
+url="https://arnau478.github.io/${pkgname}"
+_url="https://github.com/Arnau478/${pkgname}"
 license=('GPL-3.0-or-later')
 makedepends=('zig')
 _pkgsrc="${pkgname}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('0741eec017e37b3903727a56e0be33290884f29ac51a751e7c073d30a87c5e4c')
 
 build() {
