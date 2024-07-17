@@ -27,4 +27,4 @@ package() {
 cd ..
 	ln -sf "/opt/$_pkgname/$_pkgname" "${pkgdir}/usr/bin/$_pkgname"
 }
-sha256sums_x86_64=('16d791a48adad496b3b809e54b493665e2f3bd002580acaa9e8a911df269b364')
+sha256sums_x86_64=('06dee15c0c321a45d1147c56f927ae48d6451a5182f61daf483e49beafab0d24')
