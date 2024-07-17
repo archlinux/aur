@@ -7,7 +7,7 @@
 
 pkgname=safeeyes
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Free and Open Source tool for Linux users to reduce and prevent repetitive strain injury (RSI)."
 arch=("any")
 url="https://github.com/slgobinath/SafeEyes"
@@ -19,6 +19,7 @@ depends=("alsa-utils"
          "python-babel"
          "python-dbus"
          "python-gobject"
+         "python-packaging"
          "python-psutil"
          "python-xlib"
          "xorg-xprop")
