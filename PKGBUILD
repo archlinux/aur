@@ -11,8 +11,6 @@ depends=('man-pages' 'util-linux' 'util-linux-libs')
 makedepends=('git')
 provides=('libsmdbottom.so')
 source=("smdbottom-${pkgver}.tar.gz::https://github.com/IgorPetrovcm/smdbottom/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
-validpgpkeys=('SKIP')
 
 prepare() {
 	tar -xvzf smdbottom-$pkgver.tar.gz

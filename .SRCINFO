@@ -11,7 +11,5 @@ pkgbase = smdbottom-git
 	depends = util-linux-libs
 	provides = libsmdbottom.so
 	source = smdbottom-1.0.0.tar.gz::https://github.com/IgorPetrovcm/smdbottom/archive/refs/tags/v1.0.0.tar.gz
-	validpgpkeys = SKIP
-	sha256sums = SKIP
 
 pkgname = smdbottom-git
