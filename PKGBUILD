@@ -1,8 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=firefly-shimmer-desktop-bin
+_pkgname="Firefly Shimmer"
 pkgver=2.1.15
 _electronversion=27
-pkgrel=1
+pkgrel=2
 pkgdesc="Try out new features introduced with Shimmer, such as minting native tokens, setting transaction expiry times, and sending microtransactions."
 arch=('x86_64')
 url="https://firefly.iota.org/"
@@ -24,11 +25,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('60694a23609a0ac1aa0a1725474acb0eda1793eb76b735264d420e445b5a8d5b'
-            '05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"

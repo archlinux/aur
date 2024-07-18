@@ -1,7 +1,7 @@
 pkgbase = firefly-shimmer-desktop-bin
 	pkgdesc = Try out new features introduced with Shimmer, such as minting native tokens, setting transaction expiry times, and sending microtransactions.
 	pkgver = 2.1.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://firefly.iota.org/
 	arch = x86_64
 	license = Apache-2.0
@@ -13,6 +13,6 @@ pkgbase = firefly-shimmer-desktop-bin
 	source = firefly-shimmer-desktop-2.1.15.AppImage::https://github.com/iotaledger/firefly/releases/download/desktop-shimmer-2.1.15/firefly-shimmer-desktop-2.1.15.AppImage
 	source = firefly-shimmer-desktop.sh
 	sha256sums = 60694a23609a0ac1aa0a1725474acb0eda1793eb76b735264d420e445b5a8d5b
-	sha256sums = 05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = firefly-shimmer-desktop-bin
