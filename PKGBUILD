@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pals
-_pkgver=1.8
+_pkgver=1.9
 pkgname=r-${_pkgname,,}
-pkgver=1.8
+pkgver=1.9
 pkgrel=1
 pkgdesc='Color Palettes, Colormaps, and Tools to Evaluate Them'
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0b52dfccd8b2b04b0e30bdcd72c790ac652c35024ed21f77d77cac83e79ed47c')
+sha256sums=('59b91e8ed5db503a7fcf4b0177d833a6265bd6da1a244fd7232b0d8ab737d5e6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
