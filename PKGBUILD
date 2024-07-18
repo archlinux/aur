@@ -12,7 +12,6 @@ sha256sums=('962bb72e36e6f6cedbd21c8ca3af50e7dadd587a49d2482ab3226e76cf6dcc97')
 package() {
     cd "$srcdir/wcurl-${pkgver}"
     install -Dm755 wcurl "$pkgdir/usr/bin/wcurl"
-    gzip wcurl.1
-    install -Dm644 wcurl.1.gz "$pkgdir/usr/man/man1/wcurl.1.gz"
+    install -Dm644 wcurl.1 "$pkgdir/usr/share/man/man1/wcurl.1"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
