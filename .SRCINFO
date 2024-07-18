@@ -1,6 +1,6 @@
 pkgbase = python-slack-sdk
 	pkgdesc = Slack Python SDK
-	pkgver = 3.21.3
+	pkgver = 3.31.0
 	pkgrel = 1
 	url = https://slack.dev/python-slack-sdk
 	arch = any
@@ -13,13 +13,14 @@ pkgbase = python-slack-sdk
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-aiohttp
+	depends = python-botocore
+	depends = python-sqlalchemy
+	depends = python-websockets
+	depends = python-websocket-client
 	optdepends = python-aiodns
-	optdepends = python-sqlalchemy
-	optdepends = python-websocket-client
-	optdepends = python-websockets
 	conflicts = python-slackclient
 	replaces = python-slackclient
-	source = python-slack-sdk-3.21.3.tar.gz::https://github.com/slackapi/python-slack-sdk/archive/v3.21.3.tar.gz
-	sha256sums = b8da8aa774deff9586fedc6d7d6b8ce83e949b0989f35b9adc6f85f3d0ecf677
+	source = python-slack-sdk-3.31.0.tar.gz::https://github.com/slackapi/python-slack-sdk/archive/v3.31.0.tar.gz
+	sha256sums = dc8d4faf774aea6e420f8ccb860416ee364d2ff1df5a913ba84cbe526cfa83b2
 
 pkgname = python-slack-sdk
