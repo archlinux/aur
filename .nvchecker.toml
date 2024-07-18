@@ -1,0 +1,4 @@
+[dbus-sharp]
+source = "git"
+git = "https://github.com/mono/dbus-sharp.git"
+prefix = "v"
