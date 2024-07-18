@@ -10,7 +10,7 @@ pkgbase = roflcat
 	makedepends = cargo
 	depends = gcc-libs
 	depends = glibc
-	source = roflcat::git://github.com/jameslzhu/roflcat#commit=941d21c9be5574942812b4b620c4b5a9ea57437b
+	source = roflcat::git+https://github.com/jameslzhu/roflcat#commit=941d21c9be5574942812b4b620c4b5a9ea57437b
 	sha256sums = SKIP
 
 pkgname = roflcat
