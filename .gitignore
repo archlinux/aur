@@ -1,4 +1,4 @@
 /pkg/
-/src/
 /shellspec/
+/src/
 *.tar.*
