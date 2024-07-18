@@ -1,47 +1,89 @@
-# Maintainer: Vitor Rodrigues <vitor.rodrigues@gmail.com>
+# Maintainer: Lucas Nascimento <lucasnascimento95@gmail.com>
+# Contributor: Muflone http://www.muflone.com/contacts/english/
+# Contributor: Arne Hoch <arne@derhoch.de>
 
-pkgname=dbeaver-ce-bin
-pkgver=21.0.1
+_simplifiedpkgname=dbeaver
+_fullpkgname=${_simplifiedpkgname}-ce
+pkgname=${_fullpkgname}-bin
+pkgver=24.1.2
 pkgrel=1
-pkgdesc="Free Universal SQL Client for Developers and Database Administrators (Community Edition)"
+_COMMON_COMMIT_ID='5437f631851ca28a4aca9b2f578d670f4d1d2571'
+pkgdesc="Free universal SQL Client for developers and database administrators (community edition)"
 arch=('x86_64')
-url="http://dbeaver.io/"
-license=("Apache")
-depends=('java-runtime>=11' 'gtk3' 'gtk-update-icon-cache')
+url="https://dbeaver.io/"
+license=("Apache-2.0")
+depends=('java-runtime>=17' 'gtk3' 'gtk-update-icon-cache' 'libsecret')
+makedepends=('maven' 'java-environment>=17')
 optdepends=('dbeaver-plugin-office: export data in Microsoft Office Excel format'
             'dbeaver-plugin-svg-format: save diagrams in SVG format')
-install=dbeaver-ce.install
-provides=(dbeaver-ce)
-conflicts=(dbeaver-ce)
-
-source=(dbeaver-ce.desktop dbeaver-ce.install)
-source_x86_64=(https://dbeaver.io/files/${pkgver}/dbeaver-ce-${pkgver}-linux.gtk.x86_64.tar.gz)
-sha256sums=('afb8749c8d73d7feb1227af554de4a1ffff7358f4241db8f6df87063d999ffac'
-            '0c2a75baa39459fa56159e982d9f28c966837561bd52dffd24bac87b8d65555f')
-sha256sums_x86_64=('5b10843010ea707e38786272adc706c5280ef2f29fbba22c3f66d434bdf813ea')
-
-noextract=("dbeaver-ce-${pkgver}-linux.gtk.x86_64.tar.gz")
+conflicts=('dbeaver-plugin-sshj-lib' "${_simplifiedpkgname}")
+# replaces=('dbeaver-plugin-sshj-lib' "${_pkgname}")
+provides=('dbeaver' 'dbeaver-debug' 'dbeaver-plugin-sshj-lib')
+source=("${_fullpkgname}-${pkgver}.linux.gtk.${arch}-nojdk.tar.gz"::"https://github.com/dbeaver/dbeaver/releases/download/${pkgver}/${_fullpkgname}-${pkgver}-linux.gtk.${arch}-nojdk.tar.gz"
+        "io.${_simplifiedpkgname}.DBeaver.desktop"
+        "${_simplifiedpkgname}.sh"
+        "${_simplifiedpkgname}.profile.gz"
+        "${_simplifiedpkgname}.hook"
+        "${_simplifiedpkgname}.install")
+sha256sums=('4d0665e53100004782fbf74ae05ee76f23ce53762e5e178bc2b158ffc786b680'
+            '9480a7d08f680e10c399db070c5a04cbabf282442602a2ef83d1159fe7c3e88b'
+            '406a2980806c394670e88b1ae70134900be376c2ea4a4216610591cc8b557526'
+            '1863e74bdcf22b7328e6e8487cbebff7d5360e34bde85c1dd226b168b4737034'
+            'f8b763ca210bfa4d9a4e407b656ba4f5d1bf2f3f54c67044f7a4dd0c3625fc22'
+            'f8d65dd933049b587a5815ea75a30ef944300b812df383ca1c2dcd68280bc7ab')
+install="${_simplifiedpkgname}.install"
 
 prepare() {
-    mkdir -p $srcdir/$pkgname
-    cd $srcdir/$pkgname
-    if [ "$CARCH" = "x86_64" ]; then
-        tar -xf "$srcdir/dbeaver-ce-${pkgver}-linux.gtk.x86_64.tar.gz"
-    else
-        tar -xf "$srcdir/dbeaver-ce-${pkgver}-linux.gtk.x86.tar.gz"
-    fi
+  # Fix version number in profile file
+  gzip --decompress --keep --stdout "${_simplifiedpkgname}.profile.gz" | 
+    sed "s/DBEAVER_VERSION/${pkgver}/g" |
+    gzip -9 > "${_simplifiedpkgname}.profile-${pkgver}.gz"
+
+  # extract tar
+  tar -xvf "${_fullpkgname}-${pkgver}.linux.gtk.${arch}-nojdk.tar.gz"
 }
 
 package() {
-    cd $pkgdir
-    mkdir -p opt/
-    mkdir -p usr/bin
-    mkdir -p usr/share/applications
-    mkdir -p usr/share/icons/hicolor/48x48/apps
 
-    cp -r $srcdir/$pkgname/dbeaver opt/$pkgname
-    chmod +x opt/$pkgname/dbeaver
-    cp opt/$pkgname/icon.xpm usr/share/icons/hicolor/48x48/apps/${pkgname}.xpm
-    ln -s /opt/${pkgname}/dbeaver usr/bin/dbeaver-ce
-    install -m 644 $srcdir/dbeaver-ce.desktop $pkgdir/usr/share/applications/
+  # Initially install everything into /usr/lib/dbeaver
+  install -m 755 -d "${pkgdir}/usr/lib"
+  cp -r "dbeaver" "${pkgdir}/usr/lib/${_simplifiedpkgname}"
+
+  # Move shared data to /usr/share/dbeaver
+  cd "${pkgdir}/usr/lib/${_simplifiedpkgname}"
+  rm "${_fullpkgname}.desktop"
+  install -m 755 -d "${pkgdir}/usr/share/${_simplifiedpkgname}"
+  for _file in configuration features p2 .eclipseproduct dbeaver.ini readme.txt
+  do
+    mv "${_file}" "${pkgdir}/usr/share/${_simplifiedpkgname}"
+    ln -s "/usr/share/${_simplifiedpkgname}/${_file}" .
+  done
+
+  # Install additional licenses
+  install -m 755 -d "${pkgdir}/usr/share/licenses"
+  mv licenses "${pkgdir}/usr/share/licenses/${_simplifiedpkgname}"
+  ln -s "/usr/share/licenses/${_simplifiedpkgname}" "${pkgdir}/usr/lib/${_simplifiedpkgname}/licenses"
+
+  # Install icons
+  install -m 755 -d "${pkgdir}/usr/share/pixmaps"
+  mv dbeaver.png "${pkgdir}/usr/share/pixmaps/${_simplifiedpkgname}.png"
+  mv icon.xpm "${pkgdir}/usr/share/pixmaps/${_simplifiedpkgname}.xpm"
+
+  # Install executable script into /usr/bin
+  install -m 755 -d "${pkgdir}/usr/bin"
+  install -m 755 "${srcdir}/dbeaver.sh" "${pkgdir}/usr/bin/${_simplifiedpkgname}"
+
+  # Install application launcher into /usr/share/applications
+  install -m 755 -d "${pkgdir}/usr/share/applications"
+  install -m 755 -t "${pkgdir}/usr/share/applications" "${srcdir}/io.${_simplifiedpkgname}.DBeaver.desktop"
+
+  # Install system hook
+  install -m 755 -d "${pkgdir}/usr/share/libalpm/hooks"
+  install -m 644 "${srcdir}/${_simplifiedpkgname}.hook" "${pkgdir}/usr/share/libalpm/hooks"
+
+  # Create configuration file (handled by the hook)
+  cd "${pkgdir}/usr/share/dbeaver/configuration/org.eclipse.equinox.simpleconfigurator"
+  install -m 755 -d "${pkgdir}/etc/${_simplifiedpkgname}/bundles.d"
+  mv "bundles.info" "${pkgdir}/etc/${_simplifiedpkgname}/bundles.d/00-${_simplifiedpkgname}.info"
+  ln -s "/etc/${_simplifiedpkgname}/bundles.info" .
 }
