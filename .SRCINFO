@@ -1,6 +1,6 @@
 pkgbase = qt6ct-xdg-colorscheme-git
 	pkgdesc = Qt6 Configuration Tool (with XDG desktop portal color scheme support)
-	pkgver = 0.9.r5.b92366a
+	pkgver = 0.9.r7.ac71d18
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/MikeWalrus/qt6ct
@@ -8,7 +8,6 @@ pkgbase = qt6ct-xdg-colorscheme-git
 	license = BSD
 	makedepends = git
 	makedepends = qt6-tools
-	depends = gtk2
 	depends = qt6-base
 	depends = qt6-svg
 	depends = xdg-desktop-portal

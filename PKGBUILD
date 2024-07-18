@@ -4,13 +4,13 @@
 _pkgname=qt6ct
 pkgname="$_pkgname-xdg-colorscheme-git"
 epoch=1
-pkgver=0.9.r5.b92366a
+pkgver=0.9.r7.ac71d18
 pkgrel=1
 pkgdesc='Qt6 Configuration Tool (with XDG desktop portal color scheme support)'
 arch=('x86_64')
 url="https://github.com/MikeWalrus/$_pkgname"
 license=('BSD')
-depends=('gtk2' 'qt6-base' 'qt6-svg' 'xdg-desktop-portal')
+depends=('qt6-base' 'qt6-svg' 'xdg-desktop-portal')
 makedepends=('git' 'qt6-tools')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
