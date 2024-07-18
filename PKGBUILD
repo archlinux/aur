@@ -1,6 +1,6 @@
 pkgname=mingw-w64-ceres-solver
 pkgver=2.2.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Solver for nonlinear least squares problems (mingw-w64)"
 arch=('any')
 url="http://ceres-solver.org/"
