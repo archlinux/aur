@@ -1,7 +1,7 @@
 _pkgname=glog
 pkgname=mingw-w64-google-$_pkgname
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Logging library for C++ (mingw-w64)"
 arch=(any)
 license=('custom:BSD3')
