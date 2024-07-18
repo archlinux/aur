@@ -1,7 +1,7 @@
 # Maintainer: coldBug <coldbug@e.mail.de>
 pkgname=typst-languagetool-lsp-git
 pkgver=0.68.111dd26
-pkgrel=1
+pkgrel=2
 pkgdesc="Spellcheck typst files with LanguageTool and VSCodium."
 url="https://github.com/antonWetzel/typst-languagetool"
 license=("MIT")
