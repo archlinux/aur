@@ -4,7 +4,7 @@ _pkgname="Colour Contrast Analyser"
 _appname=cca
 pkgver=3.5.3
 _electronversion=29
-pkgrel=1
+pkgrel=2
 pkgdesc="Helps you determine the legibility of text and the contrast of visual elements, such as graphical controls and visual indicators."
 arch=("x86_64")
 url="http://www.paciellogroup.com/resources/contrastanalyser/"
@@ -23,11 +23,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('c152a5a93191aec52e0220e6e36aa1eb45c6abf5fc44bcdea18d9930704e870e'
-            '05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|CCA|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
