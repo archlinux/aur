@@ -1,21 +1,23 @@
 pkgbase = apple-music-electron-git
 	pkgdesc = A desktop app in Pre-Alpha for Windows, macOS, and Linux, allowing customization with themes and plugins for a personalized music experience.
-	pkgver = 1.1.1.r0.gc0487bf
+	pkgver = 1.1.1.r11.gb282ad2
 	pkgrel = 1
 	url = https://github.com/Zolvy/Apple-Music-Electron
 	arch = any
 	license = MIT
-	makedepends = npm>=6.13.4
-	makedepends = yarn>=1.21.1
+	makedepends = npm
+	makedepends = yarn
+	makedepends = pnpm
 	makedepends = git
 	makedepends = nvm
 	makedepends = gendesk
+	makedepends = curl
 	depends = electron30
 	provides = apple-music-electron=1.1.1
 	conflicts = apple-music-electron
 	source = apple-music-electron.git::git+https://github.com/Zolvy/Apple-Music-Electron.git
 	source = apple-music-electron.sh
 	sha256sums = SKIP
-	sha256sums = 05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = apple-music-electron-git
