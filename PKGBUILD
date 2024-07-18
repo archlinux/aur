@@ -2,23 +2,25 @@
 pkgbase=python-baseband
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=4.1.3
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="Package to read and write radio baseband data"
 arch=('any')
 url="https://baseband.readthedocs.io"
-license=('GPL')
+license=('GPL-3.0-or-later')
 makedepends=('python-setuptools-scm'
              'python-wheel'
              'python-build'
              'python-installer'
              'python-sphinx-astropy'
+             'python-matplotlib'
              'python-astropy'
-             'graphviz')
+             'graphviz'
+             )
 checkdepends=('python-pytest-astropy-header'
               'python-pytest-doctestplus')   # astropy already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('c0c0250eb67cc1c83b343ff7e9b9a650')
+md5sums=('0cf41bee35f1390f0c017748a6743881')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -31,11 +33,11 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest || warning "Tests failed" # -vv --color=yes
+    pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 }
 
 package_python-baseband() {
-    depends=('python-numpy>=1.17' 'python-astropy>=5.0')
+    depends=('python-astropy>=5.1')
     optdepends=('python-baseband-doc: Documentation for Baseband')
     cd ${srcdir}/${_pyname}-${pkgver}
 
