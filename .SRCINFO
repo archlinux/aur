@@ -1,6 +1,6 @@
 pkgbase = fileformat
-	pkgdesc = A tool for recognizing file formats.
-	pkgver = 0.4.1
+	pkgdesc = A tool for recognizing file formats
+	pkgver = 0.4.2
 	pkgrel = 0
 	url = https://gitlab.com/os-18/fileformat
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = fileformat
 	makedepends = glib2
 	makedepends = ldc
 	depends = glib2
-	source = fileformat-0.4.1.tar.gz::https://gitlab.com/os-18/fileformat/-/archive/v0.4.1/fileformat-v0.4.1.tar.gz
-	sha256sums = c6a3dcaca2d20385e560a7ad7764818043be33129ba946359b593d58a2d9521b
+	source = fileformat-0.4.2.tar.gz::https://gitlab.com/os-18/fileformat/-/archive/v0.4.2/fileformat-v0.4.2.tar.gz
+	sha256sums = 9dab2d5842dd4202b41243d0b454d5f391f8392b25bc5723b9156effbfae703d
 
 pkgname = fileformat
