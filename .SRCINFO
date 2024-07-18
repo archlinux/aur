@@ -1,12 +1,14 @@
 pkgbase = go2rtc
 	pkgdesc = Ultimate camera streaming application with support RTSP, RTMP, HTTP-FLV, WebRTC, MSE, HLS, MP4, MJPEG, HomeKit, FFmpeg, etc.
-	pkgver = 1.8.5
+	pkgver = 1.9.4
 	pkgrel = 1
 	url = https://github.com/AlexxIT/go2rtc
 	arch = x86_64
 	license = MIT
+	makedepends = go
+	depends = glibc
 	options = !strip
-	source = https://github.com/AlexxIT/go2rtc/releases/download/v1.8.5/go2rtc_linux_amd64
-	sha256sums = a10b03ee68e4502933eaf2c1cda871a9e5b1080fd775a85115ee6c15a5fcde1d
+	source = go2rtc-1.9.4.tar.gz::https://github.com/AlexxIT/go2rtc/archive/refs/tags/v1.9.4.tar.gz
+	sha512sums = e62ca900d1bb9b78708714276aaecf910cc8b2ad9cefc5f75cf8f82edfeb94bcbf449695a8853ffd8aac458587e9083f62722f76ee37f11306b7e1751f4deeae
 
 pkgname = go2rtc
