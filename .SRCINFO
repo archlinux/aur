@@ -1,6 +1,6 @@
 pkgbase = physicseditor
 	pkgdesc = Physics editor for certain game engines such as Cocos2D-X, Corona SDK, etc.
-	pkgver = 1.9.3
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = http://www.codeandweb.com/physicseditor
 	install = physicseditor.install
@@ -15,7 +15,7 @@ pkgbase = physicseditor
 	depends = qt5-declarative
 	depends = qt5-imageformats
 	depends = qt5-quickcontrols
-	source = physicseditor-1.9.3.deb::https://www.codeandweb.com/download/physicseditor/1.9.3/PhysicsEditor-1.9.3.deb
-	sha256sums = 0fa190bc16c493c001f36e8df59776b42501c5acbf729df79670eb7dcca86d67
+	source = physicseditor-2.0.0.deb::https://www.codeandweb.com/download/physicseditor/2.0.0/PhysicsEditor-2.0.0.deb
+	sha256sums = 8e5b389281cb59f859337c9e1b1ee504266fcad7a8e4609999fb207c6eb523ac
 
 pkgname = physicseditor
