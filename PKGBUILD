@@ -6,7 +6,7 @@
 
 pkgname=fortune-mod-hitchhiker
 pkgver=20050611
-pkgrel=3
+pkgrel=4
 pkgdesc="Collection of quotes (fortune cookies) from Douglas Adams' famous Hitchhikers Guide to the Galaxy"
 url="https://www.splitbrain.org/projects/fortunes/hg2g"
 arch=('any')
@@ -21,6 +21,8 @@ pkgver() {
 build() {
     cd "${srcdir?}/fortune-hitchhiker"
 
+    mv hitchhiker orig.hitchhiker
+    iconv -f latin1 -t utf8 orig.hitchhiker > hitchhiker
     strfile hitchhiker
 }
 
