@@ -21,7 +21,7 @@ makedepends=(
   python
   tar
   xz
-  modprobed-db
+#  modprobed-db
 )
 options=('!strip' '!debug')
 _srcname=linux-${pkgver%.*}
@@ -30,7 +30,7 @@ source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/$_srcname.tar.{xz,sign}
   $_url/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
   config         # the main kernel config file
-  modprobed.db
+#  modprobed.db
   "choose-gcc-optimization.sh"
 
   "sys-kernel_arch-sources-g14-6.8+--more-uarches-for-kernel.patch"::"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/master/more-uarches-for-kernel-6.8-rc4%2B.patch"
@@ -97,7 +97,6 @@ sha256sums=('efd12e335fa67d13a3eae30e4b7b7546e74b8ccc90682e4c3fffab0b22654da1'
             'f67882ce44c822088fbbebaf2d5958377b1c34254547eca5719f19aa2eff1fd7'
             'SKIP'
             '3190bf5005f22345a8c81dc78cd1bbd39350817358ba571840b01446128f3545'
-            '3af1f83f59090e5cd32fb6acf54264459066b575d9847afb67731258c483dd5c'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
             'f4e7fcd011f2691840d2c8c2361dca850a78ea33cc5c24d2e27c3e0294fd1dc5'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
@@ -145,10 +144,10 @@ sha256sums=('efd12e335fa67d13a3eae30e4b7b7546e74b8ccc90682e4c3fffab0b22654da1'
 # 98, Intel Native = CONFIG_MNATIVE_INTEL
 # 99, AMD Native = CONFIG_MNATIVE_AMD
 if [ -z ${_microarchitecture+x} ]; then
-  _microarchitecture=15
+  _microarchitecture=93
 fi
 if [ -z ${Microarchitecture+x} ]; then
-  Microarchitecture='CONFIG_MZEN3'
+  Microarchitecture='CONFIG_GENERIC_CPU3'
 fi
 
 export KBUILD_BUILD_HOST=archlinux
