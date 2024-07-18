@@ -1,7 +1,7 @@
 pkgbase = nafe
 	pkgdesc = Toolset to translate PSF format consolefonts into text files and text files into PSF files.
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nafe.sourceforge.net
 	arch = x86_64
 	arch = i686
