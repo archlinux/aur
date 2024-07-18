@@ -1,9 +1,9 @@
 # Maintainer: ichundes <derago@gmail.com>
 pkgname='pyrescene-git'
-pkgver=0.7.r31.g78e9c0c
-pkgrel=2
+pkgver=0.7.r48.g8a64690
+pkgrel=1
 pkgdesc='pyReScene is a port of ReScene .NET to the Python programming language.'
-url='https://github.com/EchterAgo/pyrescene'
+url='https://github.com/srrDB/pyrescene'
 arch=('any')
 license=('MIT' 'GPL' 'custom')
 depends=('python' 'unrar' 'lib32-libstdc++5')
@@ -11,7 +11,7 @@ optdepends=('chromaprint')
 makedepends=('git')
 provides=("pyrescene")
 conflicts=("pyrescene")
-source=('pyrescene-git::git+https://github.com/EchterAgo/pyrescene.git' 'git+https://github.com/dryes/rarlinux.git')
+source=('pyrescene-git::git+https://github.com/srrDB/pyrescene.git' 'git+https://github.com/dryes/rarlinux.git')
 md5sums=('SKIP'
          'SKIP')
 
