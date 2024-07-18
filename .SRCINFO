@@ -1,4 +1,4 @@
-pkgbase = e-z-recorder
+	pkgname = e-z-recorder
 	pkgdesc = e-z.host Video Recording & Uploading on Linux.
 	pkgver = 1.1
 	pkgrel = 1
@@ -15,5 +15,3 @@ pkgbase = e-z-recorder
 	optdepends = slop: X11 Support
 	source = https://raw.githubusercontent.com/verysillycat/e-z-recorder-linux/main/e-z-recorder.sh
 	sha256sums = SKIP
-
-pkgname = e-z-recorder
