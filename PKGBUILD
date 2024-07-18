@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=strawr
-_pkgver=0.0.91
+_pkgver=0.0.92
 pkgname=r-${_pkgname,,}
-pkgver=0.0.91
+pkgver=0.0.92
 pkgrel=1
 pkgdesc='Fast Implementation of Reading/Dump for .hic Files'
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=(
   r-rcpp
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('55e06f35613b8cef8405498393e15591c06281004332ad532f6eb8f180b06cd9')
+sha256sums=('fa08b5765a92a75d1fa003cd881daa2ccff129f2cda6b569ae5cd7cd9fbac637')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
