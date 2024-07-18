@@ -1,6 +1,6 @@
 pkgbase = dotp-git
 	pkgdesc = Command-line tool for managing Time-based One-Time Passwords (TOTPs)
-	pkgver = 0.0.1.20240712.02.r20.f55959f
+	pkgver = 0.0.1.20240718.01.r37.c84e4f9
 	pkgrel = 1
 	url = https://github.com/petlack/dotp
 	arch = i686
