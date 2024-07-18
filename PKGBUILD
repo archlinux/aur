@@ -1,6 +1,6 @@
 # Maintainer: Holden Grayer <grayer0113@outlook.com>
 pkgname=openutau-beta
-pkgver=0.1.443
+pkgver=0.1.501
 pkgrel=1
 pkgdesc="Open source UTAU successor (Beta)"
 arch=("x86_64")
@@ -13,7 +13,7 @@ source=("https://github.com/stakira/OpenUtau/releases/download/build%2F${pkgver}
         "openutau.sh"
         "openutau.png"
         "openutau.desktop")
-sha256sums=("f9d38ff4b9ec9902bb7b26c7c3a5ec9a98605b7a7d02dfe9a962c8393a2c1644"
+sha256sums=("fba0843086d18cfc3be0686701d8d011bb7c51c1cda8aadfb7de79056253e1e4"
             "d30d80ab1917041001d265b00829b407bd72cb7d99ed64e5a25901cdc27acce4"
             "4f29a46c248e04bd383b897c8a9eec2614c00e773aab75a6e259f7ee0411c234"
             "5433ced76dee63746bee7f830429310e8e98b9193ca95ce66ad8b3bfdbb3c133")
