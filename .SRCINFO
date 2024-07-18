@@ -1,16 +1,16 @@
 pkgbase = cni-plugins-bin
 	pkgdesc = Container Networking Interface (CNI) Plugins
-	pkgver = 1.5.0
-	pkgrel = 1
+	pkgver = 1.5.1
+	pkgrel = 2
 	url = https://www.cni.dev/
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
 	arch = armv7l
 	license = Apache
-	provides = cni-plugins=1.5.0
+	provides = cni-plugins=1.5.1
 	conflicts = cni-plugins
-	source = cni-plugins-bin-1.5.0-amd64::https://github.com/containernetworking/plugins/releases/download/v1.5.0/cni-plugins-linux-amd64-v1.5.0.tgz
-	b2sums = 7073cff4fcd432626f6081d4b6afb64a503ea6b3dff484a484930811cf5017c69b22c8ecd4a7ad8e9448841d99b03c74e179a69c65831a675817108740c23255
+	source = cni-plugins-bin-1.5.1-amd64::https://github.com/containernetworking/plugins/releases/download/v1.5.1/cni-plugins-linux-amd64-v1.5.1.tgz
+	b2sums = c16747af1eb916e63805afd3b22bb460abc567cb37d60e6a349750e4a49c7379725f9bb74fe7c62f76f255b958448d53812e58d7178618d719e6c9f7833b5944
 
 pkgname = cni-plugins-bin
