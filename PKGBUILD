@@ -23,6 +23,7 @@ makedepends=(
 	"wayland-protocols"
 )
 optdepends=()
+conflicts=("scenefx" "scenefx-git")
 provides=("libscenefx.so")
 options=("debug")
 source=("${pkgname%-*}::git+${url}.git")
