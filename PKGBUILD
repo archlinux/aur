@@ -1,7 +1,7 @@
-# Maintainer: Serge K <arch@phnx47.net> 
+# Maintainer: Serge K <arch@phnx47.net>
 # Contributor: Jonian Guveli <https://github.com/jonian/>
 
-pkgver=8.15.8
+pkgver=8.15.9
 pkgrel=1
 pkgname="pnpm8-bin"
 pkgdesc="Fast, disk space efficient package manager"
@@ -12,7 +12,7 @@ options=("!strip")
 provides=("pnpm=${pkgver}")
 conflicts=("pnpm")
 source=("pnpm-${pkgver}::${url}/releases/download/v${pkgver}/pnpm-linux-x64")
-sha256sums=('d769ede238f9eafaf96ff4373801e235e2507f5422a38f734318e355fa8b5434')
+sha256sums=('757f83624849d1bc83c83876d3b34db5f891d0d0aed87fa1998e008f3df42434')
 
 package() {
   install -D "${srcdir}/pnpm-${pkgver}" "${pkgdir}/usr/bin/pnpm"
