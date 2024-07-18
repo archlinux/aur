@@ -1,7 +1,7 @@
 # Maintainer: Sidney Kuyateh <autinerd-arch@kuyateh.eu>
 
 pkgname=python-pytest-cases
-pkgver=3.6.14
+pkgver=3.8.5
 pkgrel=1
 pkgdesc='Separate test code from test cases in pytest.'
 url='https://smarie.github.io/python-pytest-cases/'
