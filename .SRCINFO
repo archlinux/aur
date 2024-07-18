@@ -1,6 +1,6 @@
 pkgbase = ttf-twemoji-git
 	pkgdesc = Unicode emoji color OpenType-SVG font
-	pkgver = 15.0.2.r0.g6780a94f
+	pkgver = 15.1.0.r5.ga6909cf5
 	pkgrel = 1
 	url = https://github.com/jdecked/twemoji
 	arch = any
@@ -13,6 +13,7 @@ pkgbase = ttf-twemoji-git
 	makedepends = nodejs
 	makedepends = potrace
 	makedepends = python-fonttools
+	makedepends = python-setuptools
 	makedepends = python-yaml
 	makedepends = svgo
 	provides = emoji-font
