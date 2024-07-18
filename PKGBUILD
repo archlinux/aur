@@ -2,7 +2,7 @@
 pkgname=dutor-bin
 pkgver=0.1.0
 _electronversion=28
-pkgrel=1
+pkgrel=2
 pkgdesc="Recursive detecting duplicate files in a folder.管理文件夹中内容相同的文件."
 arch=("x86_64")
 url="https://github.com/yubaoquan/dutor"
@@ -15,11 +15,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('d4c64372113c37781eb65a726757439584d6d80bdf58851d8c0f154108715faa'
-            '05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
