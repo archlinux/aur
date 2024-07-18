@@ -1,23 +1,24 @@
 pkgbase = python-tweakwcs
 	pkgdesc = A package for correcting alignment errors in WCS objects
-	pkgver = 0.8.7
+	pkgver = 0.8.8
 	pkgrel = 1
 	url = https://tweakwcs.readthedocs.io
 	arch = any
 	license = BSD-3-Clause
-	checkdepends = python-pytest
+	checkdepends = python-pytest-doctestplus
 	checkdepends = python-gwcs
 	checkdepends = python-spherical_geometry
 	checkdepends = python-stsci.stimage
+	checkdepends = python-sphinx
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/t/tweakwcs/tweakwcs-0.8.7.tar.gz
-	md5sums = 8b534d63afce4b073b7a770305edc337
+	source = https://files.pythonhosted.org/packages/source/t/tweakwcs/tweakwcs-0.8.8.tar.gz
+	md5sums = 3857f6482b5d4044bf399fc61223b29e
 
 pkgname = python-tweakwcs
-	depends = python>=3.8
+	depends = python>=3.10
 	depends = python-astropy>=5.0.4
 	depends = python-gwcs>=0.14.0
 	depends = python-spherical_geometry>=1.2.20
