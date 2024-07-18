@@ -3,3 +3,4 @@
 *.tar.zst
 pkg/
 src/
+*.log
