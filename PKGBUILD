@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=iC10TrainingData
-_pkgver=1.3.1
+_pkgver=2.0.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=7
+pkgrel=1
 pkgdesc="Training Datasets for iC10 Package"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('077ad100c88732bdefae178f52d9074a')
-b2sums=('f5e4c7b7991d228f9b655541c411bfd281cefb01ba1be4159c7cbb3a8c6da9065094b65a5dcfe98119fdc9966a8a534e4efc9c96b0ebe04abf6ea1246daf3ecb')
+md5sums=('d470ffcb9f48eeab146312127c93d028')
+b2sums=('bd295892bbf4e422bdc53d5bbb70c730b4512ec2d38b61e4ee25e11ab3aef1f12a3f651471630c8b2b0448763f96765173a1c6be84deeca973ad7fd35acff84d')
 
 build() {
   mkdir build
