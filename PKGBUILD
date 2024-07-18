@@ -2,7 +2,7 @@
 _pkgname=tidgi
 pkgname="${_pkgname}-desktop-bin"
 _appname=TidGi
-pkgver=0.10.2
+pkgver=0.10.3
 _electronversion=31
 pkgrel=1
 pkgdesc="an privatcy-in-mind, automated, auto-git-backup, freely-deployed Tiddlywiki knowledge management Desktop note app, with local REST API."
@@ -39,8 +39,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
 sha256sums=('2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-sha256sums_aarch64=('1a900a1351e5af661b218d66a5b2b3e26c3a9ab235af460057fc7f5baa34d3fd')
-sha256sums_x86_64=('4513c02adba89bb9fbf505913d9af30fd756f1ed7a12b1fae5b8e7c9ffc60946')
+sha256sums_aarch64=('f9fff37f8801c4a65f9432b0fc9eb3defe89682e1f73746406d1ec0e9efa6d9e')
+sha256sums_x86_64=('4e4d64deb4346ca9b912905127d7ca44f1fa2c6ded361c98fb970e804dc5ef56')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
