@@ -2,9 +2,9 @@ post_install() {
     sleep 1
     printf "\e[1;32m[!] - - - - - - - - - - - - - - - - - - - -  | IMPORTANT | - - - - - - - - - - - - - - - - - - - - [!]\e[0m\n"
     printf "\e[1;32mCheck the Optional Dependecies section to install the required dependencies based on your DE / WM :\e[0m\n"
-    printf "• \e[30m\e[46m Wayland wlroots based \e[0m: wl-clipboard, slurp, wf-recorder\n"
-    printf "• \e[30m\e[46m GNOME & KDE Wayland \e[0m wl-clipboard, kooha\n"
-    printf "• \e[30m\e[46m Any X11 \e[0m: xclip, slop\n"
+    printf "• \e[30m\e[46m Wayland wlroots based \e[0m: wl-clipboard, slurp & wf-recorder\n"
+    printf "• \e[30m\e[46m GNOME & KDE Wayland \e[0m: wl-clipboard & kooha\n"
+    printf "• \e[30m\e[46m Any X11 \e[0m: xclip & slop\n"
     echo ""
     printf "\e[1;32m✱ Otherwise, the script wouldn't work at all.\e[0m\n"
     sleep 2

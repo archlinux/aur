@@ -7,7 +7,7 @@ url="https://github.com/verysillycat/e-z-recorder-linux"
 license=('MIT')
 source=("https://raw.githubusercontent.com/verysillycat/e-z-recorder-linux/main/e-z-recorder.sh")
 sha256sums=('SKIP')
-install=e-z-recorder.install  # Add this line
+install=e-z-recorder.install
 
 depends=('jq' 'ffmpeg')
 optdepends=(
