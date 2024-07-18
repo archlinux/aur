@@ -1,0 +1,5 @@
+[itchcraft]
+source = "github"
+github = "claui/itchcraft"
+prefix = "v"
+use_latest_release = true

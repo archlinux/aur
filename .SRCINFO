@@ -1,0 +1,24 @@
+pkgbase = itchcraft
+	pkgdesc = Alternative frontend for heat-based USB insect bite healers
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/claui/itchcraft
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-myst-parser
+	makedepends = python-poetry-core
+	makedepends = python-sphinx
+	makedepends = python-wheel
+	depends = python
+	depends = python-colorama
+	depends = python-fire
+	depends = python-pyusb
+	depends = python-tenacity
+	options = !strip
+	options = !debug
+	source = itchcraft-0.1.0.tar.gz::https://github.com/claui/itchcraft/archive/v0.1.0.tar.gz
+	sha512sums = 73471b4eaf445d55fefb566fdcc067254d47478f65255019c5fdcb9d373c71d867ce6d51907dc07095da7b8e1524011a90047be52206fd7267d00abf7535bbf3
+
+pkgname = itchcraft
