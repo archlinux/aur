@@ -2,7 +2,7 @@
 # Maintainer: Luke Labrie-Cleary <luke dot cleary at copenhagenatomics dot com>
 pkgname=openmc-git
 pkgver=v0.14.0.r5.g9830efaf2
-pkgrel=2
+pkgrel=3
 pkgdesc="The OpenMC project aims to provide a fully-featured Monte Carlo particle 
 		 transport code based on modern methods."
 arch=('x86_64')
@@ -15,7 +15,7 @@ pkgver() {
   cd "$pkgname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
-md5sums=('SKIP' 'c1afc88f84acf577a0d4fd9fb73a3412')
+md5sums=('SKIP' '80361c7878efc0539eeba8fd9fe2468a')
 
 depends=(
 	python-lxml
@@ -43,6 +43,8 @@ makedepends=(
     python
     python-numpy
     python-setuptools
+	python-build
+	python-installer
 )
 
 provides=("${pkgname%-pkgver}")
