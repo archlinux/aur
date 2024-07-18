@@ -1,7 +1,7 @@
 pkgbase = python-notctyparser
 	pkgdesc = A fork and extension of ctyparser.
 	pkgver = 23.6.21
-	pkgrel = 1
+	pkgrel = 4
 	url = https://github.com/mbridak/ctyparser
 	arch = any
 	license = MIT
