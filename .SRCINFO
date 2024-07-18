@@ -1,0 +1,18 @@
+pkgbase = dmodman-git
+	pkgdesc = TUI downloader & update checker for Nexusmods.com
+	pkgver = r306.54a0274
+	pkgrel = 1
+	url = https://github.com/dandels/dmodman
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = rust
+	makedepends = pkgconf
+	makedepends = git
+	depends = openssl
+	depends = xdg-utils
+	provides = dmodman
+	source = git+https://github.com/dandels/dmodman.git
+	sha256sums = SKIP
+
+pkgname = dmodman-git
