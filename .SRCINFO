@@ -1,0 +1,16 @@
+pkgbase = python-apertium-streamparser
+	pkgdesc = Python library to parse the Apertium stream format
+	pkgver = 5.0.2
+	pkgrel = 1
+	url = https://www.apertium.org/
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = python-apertium-streamparser-5.0.2.tar.gz::https://github.com/apertium/streamparser/archive/refs/tags/v5.0.2.tar.gz
+	sha256sums = 91c4f85c37fe83da7e696c350b6a3a5f57b5af0a4523dc9de5ca159ff24c7122
+
+pkgname = python-apertium-streamparser
