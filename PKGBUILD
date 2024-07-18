@@ -22,22 +22,16 @@ provides=('dbeaver' 'dbeaver-debug' 'dbeaver-plugin-sshj-lib')
 source=("${_fullpkgname}-${pkgver}.linux.gtk.${arch}-nojdk.tar.gz"::"https://github.com/dbeaver/dbeaver/releases/download/${pkgver}/${_fullpkgname}-${pkgver}-linux.gtk.${arch}-nojdk.tar.gz"
         "io.${_simplifiedpkgname}.DBeaver.desktop"
         "${_simplifiedpkgname}.sh"
-        "${_simplifiedpkgname}.profile.gz"
         "${_simplifiedpkgname}.hook"
         "${_simplifiedpkgname}.install")
 sha256sums=('4d0665e53100004782fbf74ae05ee76f23ce53762e5e178bc2b158ffc786b680'
             '9480a7d08f680e10c399db070c5a04cbabf282442602a2ef83d1159fe7c3e88b'
             '406a2980806c394670e88b1ae70134900be376c2ea4a4216610591cc8b557526'
-            '1863e74bdcf22b7328e6e8487cbebff7d5360e34bde85c1dd226b168b4737034'
             'f8b763ca210bfa4d9a4e407b656ba4f5d1bf2f3f54c67044f7a4dd0c3625fc22'
             'f8d65dd933049b587a5815ea75a30ef944300b812df383ca1c2dcd68280bc7ab')
 install="${_simplifiedpkgname}.install"
 
 prepare() {
-  # Fix version number in profile file
-  gzip --decompress --keep --stdout "${_simplifiedpkgname}.profile.gz" | 
-    sed "s/DBEAVER_VERSION/${pkgver}/g" |
-    gzip -9 > "${_simplifiedpkgname}.profile-${pkgver}.gz"
 
   # extract tar
   tar -xvf "${_fullpkgname}-${pkgver}.linux.gtk.${arch}-nojdk.tar.gz"
