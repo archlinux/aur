@@ -4,7 +4,7 @@
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 
 pkgname=cronet
-pkgver=126.0.6478.182
+pkgver=127.0.6533.57
 pkgrel=1
 _manual_clone=0
 _system_clang=1
@@ -14,21 +14,19 @@ arch=('x86_64')
 url="https://chromium.googlesource.com/chromium/src/+/refs/heads/main/components/cronet"
 license=('BSD-3-Clause')
 depends=('nss' 'libffi')
-makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'rust' 'git')
+makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'rust' 'rust-bindgen' 'git')
 options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
-        "chromium-125-system-zstd.patch::https://gitweb.gentoo.org/repo/gentoo.git/plain/www-client/chromium/files/chromium-125-system-zstd.patch?id=9549b6e8362e0a5a5cc950ca4f0604353ac87152"
-        drop-flag-unsupported-by-clang17.patch
         compiler-rt-adjust-paths.patch
+        increase-fortify-level.patch
         abseil-remove-unused-targets.patch
         disable-logging.patch
         fix-no-matching-strcat.patch
         fix-numeric_limits.patch
         fix-undeclared-isnan.patch)
-sha256sums=('3939f5b3116ebd3cb15ff8c7059888f6b00f4cfa8a77bde983ee4ce5d0eea427'
-            '1259768f2d835a124fc8038353093c896b442680969eee7ed6880d17a2601c0b'
-            '028acc97299cec5d1ed9f456bbdc462807fa491277d266db2aa1d405d3cd753d'
+sha256sums=('8aea503da0c65edd642197114805f563fc006d9430a6007688b6b172ea625810'
             'b3de01b7df227478687d7517f61a777450dca765756002c80c4915f271e2d961'
+            'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             SKIP
             SKIP
             SKIP
@@ -131,8 +129,8 @@ _unwanted_bundled_libs=(
   third_party/snappy
   third_party/swiftshader/third_party/SPIRV-Headers
   third_party/swiftshader/third_party/SPIRV-Tools
-  third_party/vulkan-deps/spirv-headers/src
-  third_party/vulkan-deps/spirv-tools/src
+  third_party/spirv-headers/src
+  third_party/spirv-tools/src
   third_party/vulkan_memory_allocator
   third_party/woff2
   third_party/zlib
@@ -167,12 +165,12 @@ prepare() {
   # Upstream fixes
 
   if (( _system_clang )); then
-    # Drop compiler flag that needs newer clang
-    patch -Np1 -i ../drop-flag-unsupported-by-clang17.patch
-
     # Allow libclang_rt.builtins from compiler-rt >= 16 to be used
     patch -Np1 -i ../compiler-rt-adjust-paths.patch
   fi
+
+  # Increase _FORTIFY_SOURCE level to match Arch's default flags
+  patch -Np1 -i ../increase-fortify-level.patch
 
   # Fixes the build crashing with the following error:
   # ../../components/cronet/native/engine.cc:155:8: error: use of undeclared identifier 'isnan'
@@ -191,9 +189,10 @@ prepare() {
   # ../../net/third_party/quiche/src/quiche/web_transport/encapsulated/encapsulated_web_transport.cc:351:16: error: no matching function for call to 'StrCat'
   patch -p0 -i ../fix-no-matching-strcat.patch
 
-  # Make building with system zstd possible
-  rm -f build/linux/unbundle/zstd.gn
-  patch -Np1 -i ../chromium-125-system-zstd.patch
+  # test deps are broken for ui/lens with system ICU
+  # "//third_party/icu:icuuc_public" (taken from Gentoo ebuild)
+  sed -i '/source_set("unit_tests") {/,/}/d' chrome/browser/ui/lens/BUILD.gn
+  sed -i '/lens:unit_tests/d' chrome/test/BUILD.gn components/BUILD.gn
 
   if (( !_system_clang )); then
     # Use prebuilt rust as system rust cannot be used due to the error:
@@ -266,6 +265,7 @@ build() {
 
     _flags+=(
       'rust_sysroot_absolute="/usr"'
+      'rust_bindgen_root="/usr"'
       "rustc_version=\"$(rustc --version)\""
     )
   fi
