@@ -3,7 +3,7 @@
 
 pkgname=rwhoisd
 pkgver=1.5.9.6
-pkgrel=3
+pkgrel=4
 pkgdesc="RWhois (Referral Whois) is a Directory Services protocol which extends and enhances the Whois concept in a hierarchical and scalable fashion."
 url="http://projects.arin.net/rwhois/"
 arch=('x86_64' 'i686')
@@ -21,6 +21,8 @@ sha256sums=('c1768d2414bca88f10acc2e50a23288a21176416ddfe697ee4326636c0b062f7'
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}/${pkgname}"
   sed -i 's/\/usr\/local\/bin\/rwhois/\/usr\/bin\/rwhois/' common/conf.h 
+  sed -i 's/int yyparse (void);/int yyparse (void); int yylex (void); int yyerror(char* s);/' mkdb/y.tab.c
+  sed -i '$ i\int hosts_ctl(char*, char[], char[], char*);' server/security.h
 
   ./configure --prefix=/usr --sysconfdir=/var/lib --sbindir=/usr/bin
   make -j1
