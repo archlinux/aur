@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CpGassoc
-_pkgver=2.60
+_pkgver=2.70
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=9
+pkgrel=1
 pkgdesc="Association Between Methylation and a Phenotype of Interest"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -12,12 +12,9 @@ license=('GPL-2.0-or-later')
 depends=(
   r
 )
-optdepends=(
-  r-qvalue
-)
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('668c3a5a22fb7e632319a4059f7fd5b2')
-b2sums=('239ceeaa81dcafa4c1c5959edc9e47f869e24bce8178e2c96fc6074c760ec0d5cf2fb571a9a6da67a9c47ce884a3ff2a749de38d63b5afc0bfb9603571f58650')
+md5sums=('d9c706b591f6070c27038e40235d6e44')
+b2sums=('bd6a634d53ff5a43ed490ad61b9679d0817b9304e4fb9161b1acceaa69062a3557d852efdfb3662603f1768f2ae61641dc2d1db440d5f676b5ef3215b4aa0718')
 
 build() {
   mkdir build
