@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=requestly-git
 _pkgname=Requestly
-pkgver=1.6.1.r1.g4d25fef
+pkgver=1.7.1.r0.gfb1f321
 _electronversion=27
 _nodeversion=18
 pkgrel=1
