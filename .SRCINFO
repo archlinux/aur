@@ -9,6 +9,7 @@ pkgbase = out-of-mind-git
 	makedepends = git
 	makedepends = curl
 	makedepends = gendesk
+	makedepends = nvm
 	depends = electron30
 	depends = nodejs
 	provides = out-of-mind=2.0.0
@@ -16,6 +17,6 @@ pkgbase = out-of-mind-git
 	source = out-of-mind.git::git+https://github.com/0916dhkim/out-of-mind.git
 	source = out-of-mind.sh
 	sha256sums = SKIP
-	sha256sums = 05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = out-of-mind-git
