@@ -1,4 +1,4 @@
-pkgbase = e-z-recorder
+pkgbase = e-z-recorder-bin
 	pkgdesc = E-Z Video Recording & Uploading on Linux. Install dependencies based on your session type (Wayland or X11).
 	pkgver = 1.0
 	pkgrel = 1

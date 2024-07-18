@@ -17,5 +17,5 @@ post_upgrade() {
 post_remove() {
     printf "\e[1;31mTo Fully Uninstall, Run: \e[0m\n"
     printf "\e[30m\e[46m rm -rf ~/.config/e-z-recorder \e[0m\n"
-    printf "to remove the configuration files."
+    echo "to remove the configuration files."
 }
