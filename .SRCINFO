@@ -1,0 +1,14 @@
+pkgbase = ods
+	pkgver = 0.0.1
+	pkgrel = 0
+	pkgdesc = CLI for Open Data Schema
+	url = https://github.com/open-data-schema/ods
+	arch = x86_64
+	arch = i686
+	license = MIT
+	provides = ods
+	conflicts = ods-bin
+	source = ods-0.0.1.zip::https://github.com/open-data-schema/ods/archive/refs/tags/v0.0.1.zip
+	sha256sums = Not Found
+
+pkgname = ods
