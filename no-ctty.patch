@@ -1,0 +1,13 @@
+diff --git a/Build.sh b/Build.sh
+index 597d8ca2..50555a29 100644
+--- a/Build.sh
++++ b/Build.sh
+@@ -508,7 +508,7 @@ eq=0
+ pm=0
+ cm=normal
+ optflags=-std-compile-opts
+-check_categories=
++check_categories=regress:no-ctty
+ last=
+ tfn=
+ legacy=0
