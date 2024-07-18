@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=select-launcher-git
 _pkgname="Select Launcher"
-pkgver=3.0.0.beta.13.r1.g4085a5d
+pkgver=3.0.0.beta.13.r3.g5fb693d
 _electronversion=27
 _nodeversion=18
 pkgrel=1
@@ -20,15 +20,17 @@ makedepends=(
     'git'
     'nvm'
     'gendesk'
+    'curl'
 )
 source=(
     "${pkgname%-git}.git::git+${_ghurl}.git"
-    "${pkgname%-git}.sh")
+    "${pkgname%-git}.sh"
+)
 sha256sums=('SKIP'
-            '05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
-    git describe --tags | sed 's/\w\+\///g;s/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
 }
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -40,17 +42,18 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-git}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --categories="Game" --name="${_pkgname}" --exec="${pkgname%-git} %U"
+    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Game" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git/client"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-    export ELECTRONVERSION="${_electronversion}"
+    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
+    #export ELECTRONVERSION="${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
         export npm_config_registry=https://registry.npmmirror.com
@@ -62,8 +65,8 @@ build() {
     fi
     sed "s|dark|discord|g" -i src/components/sidebar/components/signout.sidebar.tsx
     sed 's|\/${version}||g;s|"AppImage", "deb"|"dir"|g' -i electron-builder.json5
-    npm install
-    npm run build
+    NODE_ENV=development npm install
+    NODE_ENV=production npm run build
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
