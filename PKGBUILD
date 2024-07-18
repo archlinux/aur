@@ -3,7 +3,7 @@
 pkgname=bubbles-git
 pkgver=gitrev
 pkgrel=2
-pkgdesc="bubbles is opinionated, tiny, bloat-less floating window manager for X."
+pkgdesc="bubbles is opinionated, tiny, bloat-less, floating window manager for X."
 arch=('i686' 'x86_64')
 url="https://gitlab.com/twosixthree/bubbles/-/blob/main/README.md"
 license=('GPL')

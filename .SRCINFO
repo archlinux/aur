@@ -1,5 +1,5 @@
 pkgbase = bubbles-git
-	pkgdesc = bubbles is opinionated, tiny, bloat-less floating window manager for X.
+	pkgdesc = bubbles is opinionated, tiny, bloat-less, floating window manager for X.
 	pkgver = gitrev
 	pkgrel = 2
 	url = https://gitlab.com/twosixthree/bubbles/-/blob/main/README.md
