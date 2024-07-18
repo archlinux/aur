@@ -1,7 +1,7 @@
 pkgbase = min-browser-bin
 	pkgdesc = A fast, minimal browser that protects your privacy
 	pkgver = 1.32.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://minbrowser.org/
 	arch = aarch64
 	arch = armv7h
@@ -12,7 +12,7 @@ pkgbase = min-browser-bin
 	provides = min-browser=1.32.1
 	conflicts = min-browser
 	source = min-browser.sh
-	sha256sums = 05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 	source_aarch64 = min-browser-1.32.1-aarch64.deb::https://github.com/minbrowser/min/releases/download/v1.32.1/min-1.32.1-arm64.deb
 	sha256sums_aarch64 = 0bfeace60f8be7f8c63b01698702f39d5a1369216d750a7fb6d5ce76a96d40f0
 	source_armv7h = min-browser-1.32.1-armv7h.deb::https://github.com/minbrowser/min/releases/download/v1.32.1/min-1.32.1-armv7l.deb
