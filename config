@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 6.9.9-arch1 Kernel Configuration
+# Linux/x86 6.9.10-arch1 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 14.1.1 20240522"
 CONFIG_CC_IS_GCC=y
@@ -11379,7 +11379,7 @@ CONFIG_GENERIC_GETTIMEOFDAY=y
 CONFIG_GENERIC_VDSO_TIME_NS=y
 CONFIG_FONT_SUPPORT=y
 CONFIG_FONTS=y
-# CONFIG_FONT_8x8 is not set
+CONFIG_FONT_8x8=y
 CONFIG_FONT_8x16=y
 # CONFIG_FONT_6x11 is not set
 # CONFIG_FONT_7x14 is not set
