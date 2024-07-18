@@ -1,8 +1,8 @@
 pkgbase = astra-launcher
 	pkgdesc = Cross-platform FFXIV launcher
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 2
-	url = https://git.sr.ht/~redstrate/astra
+	url = https://github.com/redstrate/Astra
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
@@ -25,7 +25,7 @@ pkgbase = astra-launcher
 	depends = gamemode
 	depends = qqc2-desktop-style
 	depends = kirigami-addons
-	source = astra-launcher-0.6.0::https://xiv.zone/distrib/astra/0.6.0/astra-source.tar.gz
-	sha256sums = e5b081f71d867d72ccc766fcf14938be9646d657653fb54c3a7a74d25ff9973d
+	source = astra-launcher-0.6.1::https://xiv.zone/distrib/astra/0.6.1/astra-source.tar.gz
+	sha256sums = 904f5efab48f87c64fc59c1748354b41bbe5c991d47499332603071bd67f6596
 
 pkgname = astra-launcher
