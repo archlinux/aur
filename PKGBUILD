@@ -1,5 +1,5 @@
 pkgname=mingw-w64-abseil-cpp
-pkgver=20240116.1
+pkgver=20240116.2
 pkgrel=1
 pkgdesc='Collection of C++ library code designed to augment the C++ standard library (mingw-w64)'
 arch=('any')
@@ -9,9 +9,14 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("https://github.com/abseil/abseil-cpp/archive/$pkgver/abseil-cpp-$pkgver.tar.gz")
-sha256sums=('3c743204df78366ad2eaf236d6631d83f6bc928d1705dd0000b872e53b73dc6a')
+sha256sums=('733726b8c3a6d39a4120d7e45ea8b41a434cdacde401cba500f14236c49b39dc')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
+prepare() {
+  cd "${srcdir}/abseil-cpp-$pkgver"
+  curl -L https://github.com/abseil/abseil-cpp/pull/1536.patch | patch -p1
+}
 
 build() {
   cd "${srcdir}/abseil-cpp-$pkgver"
