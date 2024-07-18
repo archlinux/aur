@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=insight
-_pkgver=0.20.1
+_pkgver=0.20.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -21,6 +21,7 @@ optdepends=(
   r-bbmle
   r-bdsmatrix
   r-betareg
+  r-bh
   r-bife
   r-biglm
   r-blavaan
@@ -55,6 +56,7 @@ optdepends=(
   r-ggeffects
   r-glmmadaptive
   r-glmmtmb
+  r-glmtoolbox
   r-gmnl
   r-gt
   r-httptest2
@@ -102,6 +104,7 @@ optdepends=(
   r-psych
   r-quantreg
   r-rcpp
+  r-rcppeigen
   r-rmarkdown
   r-rms
   r-robustbase
@@ -114,6 +117,7 @@ optdepends=(
   r-speedglm
   r-statmod
   r-survey
+  r-svylme
   r-testthat
   r-tinytable
   r-tmb
@@ -123,8 +127,8 @@ optdepends=(
   r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d22d8759011dc56e22049fbabadb2244')
-b2sums=('721194e78b0cdc8face39cd6341ca5947050da1d6579a13e116167fb785ec7bd53923fa656c51bb67e479fe059c05bd316a522ca9f1affad36057b0a39e0f2a1')
+md5sums=('edf35974f67064b7c4c6ac11d5e63c38')
+b2sums=('21520e392ba9b602abc2227c09d9d9c16eb4321d9654d2f7ad128eb337f61440ae90522ffda67043735dc65b7a6ffc4feca7adf3d7935c3f313fbeb0ec4e9ad7')
 
 build() {
   mkdir build
