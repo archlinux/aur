@@ -14,7 +14,7 @@ checkdepends=(libar2 libar2-musl)
 _compiler=gcc
 makedepends=(libar2 libar2-musl ${_compiler})
 source=($pkgbase-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(95bc27ffd34e29cb7b4e02893f5a37a9fdc40f738fab2489a8ca36a8180a0596)
+sha256sums=(67f7e7d1d86df2946ee162ffe1fd61f8f6d25a4d8bf5384e91d819d8f17b9a23)
 
 prepare () {
   cd -- "$srcdir"
