@@ -3,7 +3,7 @@ pkgname=animeclient-bin
 _pkgname=AnimeClient
 pkgver=2.0.7
 _electronversion=30
-pkgrel=1
+pkgrel=2
 pkgdesc="An application that brings together several anime streaming platforms"
 arch=('x86_64')
 url="https://animeclient.zvbt.space/"
@@ -22,11 +22,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('7f85b14c941b52a4b81ee5f4e4e642152b00daf34862e3610d26190b34ae580d'
-            '05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
