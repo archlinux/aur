@@ -121,6 +121,7 @@ prepare() {
   patch -Nsp1 -i "${srcdir}/patch-python3.12-bug1866829.patch"
   patch -Nsp1 -i "${srcdir}/patch-python3.12-bug1874280.patch"
 
+  export PATH="/usr/lib/llvm17/bin:$PATH"
   export LD_LIBRARY_PATH=/usr/lib/llvm17/lib
 
   cat > ../mozconfig << END
