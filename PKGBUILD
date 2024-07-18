@@ -2,26 +2,22 @@
 # Contributor: Paul <paul@mirliton.io>
 pkgname=zenbook-sound-fix-ux3405ma
 pkgver=r14.d14e262
-pkgrel=1
+pkgrel=2
 pkgdesc="SSDT Patch to fix missing speakers sound in Linux on Asus Zenbook 14 UX3405MA (2024) and latest BIOS"
 arch=("x86_64")
 url="https://github.com/smallcms/asus_zenbook_ux3405ma"
 license=("unknown")
 install="asus_zenbook_ux3405ma.install"
-depends=("grub")
+optdepends=("grub")
 makedepends=("git" "acpica")
 source=(
     "git+https://github.com/smallcms/asus_zenbook_ux3405ma.git"
     mkinitcpio_zenbook_ux3405ma.conf
 )
-md5sums=(
-    'SKIP'
-    'e0bf81584f54c895b1ca5bf770883333'
-)
-sha256sums=(
-    'SKIP'
-    '1c8caf87b37cde3f1e46e5a061acdcc6159bca26b291cfd5913ef8e985de9dd1'
-)
+md5sums=('SKIP'
+         'e0bf81584f54c895b1ca5bf770883333')
+sha256sums=('SKIP'
+            '1c8caf87b37cde3f1e46e5a061acdcc6159bca26b291cfd5913ef8e985de9dd1')
 
 build() {
     iasl -tc $srcdir/asus_zenbook_ux3405ma/ssdt-csc3551.dsl
