@@ -1,7 +1,7 @@
 pkgbase = vpkedit
 	pkgdesc = A library and CLI/GUI tool to create, read, and write several pack file formats
-	pkgver = 4.2.2
-	pkgrel = 3
+	pkgver = 4.2.3
+	pkgrel = 1
 	url = https://github.com/craftablescience/VPKEdit
 	arch = x86_64
 	license = MIT
@@ -11,25 +11,28 @@ pkgbase = vpkedit
 	makedepends = qt6-tools
 	depends = gcc-libs
 	depends = glibc
-	source = vpkedit::git+https://github.com/craftablescience/VPKEdit.git#tag=v4.2.2
+	depends = qt6-base
+	depends = hicolor-icon-theme
+	optdepends = qt6-wayland: Wayland support
+	source = vpkedit::git+https://github.com/craftablescience/VPKEdit.git#tag=v4.2.3
 	source = argparse::git+https://github.com/p-ranav/argparse.git
-	source = saap::git+https://github.com/craftablescience/SteamAppPathProvider.git
-	source = speedykeyv::git+https://github.com/ozxybox/SpeedyKeyV.git
 	source = sourcepp::git+https://github.com/craftablescience/sourcepp.git
-	source = minizip-ng::git+https://github.com/zlib-ng/minizip-ng.git
 	source = miniaudio::git+https://github.com/mackron/miniaudio.git
 	source = discord::git+https://github.com/craftablescience/discord-rpc-clean.git
 	source = indicators::git+https://github.com/p-ranav/indicators.git
-	source = cryptopp::git+https://github.com/abdes/cryptopp-cmake.git
+	source = fgdpp.patch::https://github.com/craftablescience/sourcepp/pull/12.patch
+	source = doxygen-awesome-css::git+https://github.com/jothepro/doxygen-awesome-css.git
 	source = bufferstream::git+https://github.com/craftablescience/BufferStream.git
 	source = miniz::git+https://github.com/richgel999/miniz.git
-	sha256sums = ff452574714e4387c9a8d424e206d08897951b7e1d7d624dffaac3fea8aa2bb2
+	source = minizip-ng::git+https://github.com/zlib-ng/minizip-ng.git
+	source = cryptopp::git+https://github.com/abdes/cryptopp-cmake.git
+	sha256sums = bf3d1fdd7279fbba120125e44344d1dd94b50309f66084086654753d289fc752
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 2d93c9f4b9ec621478ff5d3cb3d94fb527cd982a3678d828ffd1c7c2dd8aac24
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -37,10 +40,3 @@ pkgbase = vpkedit
 	sha256sums = SKIP
 
 pkgname = vpkedit
-	depends = gcc-libs
-	depends = glibc
-	depends = qt6-base
-	depends = hicolor-icon-theme
-	optdepends = qt6-wayland: Wayland support
-
-pkgname = libvpkeditc

@@ -1,34 +1,34 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
-pkgbase=vpkedit
-pkgname=(vpkedit libvpkeditc)
-pkgver=4.2.2
-pkgrel=3
+pkgname=vpkedit
+pkgver=4.2.3
+pkgrel=1
 pkgdesc="A library and CLI/GUI tool to create, read, and write several pack file formats"
 arch=('x86_64')
 url="https://github.com/craftablescience/VPKEdit"
+optdepends=('qt6-wayland: Wayland support')
 license=('MIT')
-depends=('gcc-libs' 'glibc')
+depends=('gcc-libs' 'glibc' 'qt6-base' 'hicolor-icon-theme')
 makedepends=('cmake' 'git' 'clang' 'qt6-tools')
 source=("$pkgname::git+$url.git#tag=v${pkgver}"
 	"argparse::git+https://github.com/p-ranav/argparse.git"
-	"saap::git+https://github.com/craftablescience/SteamAppPathProvider.git"
-	"speedykeyv::git+https://github.com/ozxybox/SpeedyKeyV.git"
 	"sourcepp::git+https://github.com/craftablescience/sourcepp.git"
-	"minizip-ng::git+https://github.com/zlib-ng/minizip-ng.git"
 	"miniaudio::git+https://github.com/mackron/miniaudio.git"
 	"discord::git+https://github.com/craftablescience/discord-rpc-clean.git"
 	"indicators::git+https://github.com/p-ranav/indicators.git"
-	"cryptopp::git+https://github.com/abdes/cryptopp-cmake.git"
+	"fgdpp.patch::https://github.com/craftablescience/sourcepp/pull/12.patch"
 	#Submodule for submodules
+	"doxygen-awesome-css::git+https://github.com/jothepro/doxygen-awesome-css.git"
 	"bufferstream::git+https://github.com/craftablescience/BufferStream.git"
-	"miniz::git+https://github.com/richgel999/miniz.git")
-sha256sums=('ff452574714e4387c9a8d424e206d08897951b7e1d7d624dffaac3fea8aa2bb2'
+	"miniz::git+https://github.com/richgel999/miniz.git"
+	"minizip-ng::git+https://github.com/zlib-ng/minizip-ng.git"
+	"cryptopp::git+https://github.com/abdes/cryptopp-cmake.git")
+sha256sums=('bf3d1fdd7279fbba120125e44344d1dd94b50309f66084086654753d289fc752'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
+            '2d93c9f4b9ec621478ff5d3cb3d94fb527cd982a3678d828ffd1c7c2dd8aac24'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -38,20 +38,24 @@ sha256sums=('ff452574714e4387c9a8d424e206d08897951b7e1d7d624dffaac3fea8aa2bb2'
 prepare() {
 	cd "$srcdir/$pkgname"
 	git submodule init
-	for submodule in {saap,speedykeyv,sourcepp,miniaudio,discord}; do
+	for submodule in {miniaudio,discord}; do
 		git config submodule.src/gui/thirdparty/$submodule.url "$srcdir/${submodule}"
 	done
 	git config submodule.src/cli/thirdparty/argparse.url "$srcdir/argparse"
 	git config submodule.src/cli/thirdparty/indicators.url "$srcdir/indicators"
-	git config submodule.src/lib/thirdparty/minizip-ng.url "$srcdir/minizip-ng"
-	git config submodule.src/lib/thirdparty/cryptopp.url "$srcdir/cryptopp"
+	git config submoudle.src/shared/thirdparty/sourcepp.url "$srcdir/sourcepp"
 	git -c protocol.file.allow=always submodule update
 
-	cd "$srcdir/$pkgname/src/gui/thirdparty/sourcepp"
+	cd "$srcdir/$pkgname/src/shared/thirdparty/sourcepp"
 	git submodule init
-	git config submodule.src/thirdparty/bufferstream.url "$srcdir/bufferstream"
-	git config submodule.src/thirdparty/miniz.url "$srcdir/miniz"
+	for submodule in {bufferstream,cryptopp,miniz,minizip-ng}; do
+		git config submodule.ext/${submodule}.url "$srcdir/${submodule}"
+	done
+	git config submodule.docs/layout/doxygen-awesome-css.url "$srcdir/doxygen-awesome-css"
 	git -c protocol.file.allow=always submodule update
+
+	cd "$srcdir/$pkgname/src/shared/thirdparty/sourcepp"
+	patch -p1 < "$srcdir/fgdpp.patch"
 }
 
 build() {
@@ -60,17 +64,13 @@ build() {
 	-S "$pkgname" \
 	-DCMAKE_INSTALL_PREFIX=/usr/lib/$pkgname \
 	-DCMAKE_BUILD_TYPE=None \
-	-DVPKEDIT_BUILD_LIBC=ON \
 	-DCMAKE_C_COMPILER=clang \
 	-DCMAKE_CXX_COMPILER=clang++
 
 	cmake --build build
 }
 
-package_vpkedit() {
-	optdepends=('qt6-wayland: Wayland support')
-	depends+=('qt6-base' 'hicolor-icon-theme')
-
+package() {
 	cd "$srcdir"
 	DESTDIR="$pkgdir" cmake --install build
 
@@ -88,15 +88,4 @@ package_vpkedit() {
 
 	# Install License
 	install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-}
-
-package_libvpkeditc() {
-	cd "$srcdir/build"
-	install -Dm755 libvpkeditc.so "$pkgdir/usr/lib/libvpkeditc.so"
-	install -Dm644 "$srcdir/vpkedit/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-	cd "$srcdir/vpkedit"
-	mkdir -p "$pkgdir/usr/include/" && cp -r include/vpkeditc "$pkgdir/usr/include/vpkeditc"
-	chmod 755 "$pkgdir/usr/include/vpkeditc"
-
 }
