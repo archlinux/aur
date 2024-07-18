@@ -3,8 +3,8 @@
 # Package info
 _pkgname=firefox
 pkgname=$_pkgname-opensuse-bin
-pkgver=127.0.2
-pkgrel=1.1
+pkgver=128.0
+pkgrel=3.1
 pkgdesc="Standalone web browser from mozilla.org with openSUSE patches"
 arch=(x86_64 pentium4 i686 aarch64)
 url="https://en.opensuse.org/Firefox"
