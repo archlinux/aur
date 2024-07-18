@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-dlib
 	pkgdesc = A general purpose cross-platform C++ library designed using contract programming and modern C++ techniques (mingw-w64)
 	pkgver = 19.24.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://dlib.net
 	arch = any
 	license = custom
