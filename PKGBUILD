@@ -1,7 +1,7 @@
 # Maintainer Julian Xhokaxhiu <info at julianxhokaxhiu dot com>
 
 pkgname=gnome-shell-extension-ds4battery-git
-pkgver=e104666
+pkgver=ee6f537
 pkgrel=1
 pkgdesc="Gnome Shell extensions battery indicator for Sony DS4 Controller"
 arch=('any')
