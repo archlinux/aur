@@ -1,6 +1,6 @@
 pkgbase = r-rspectra
 	pkgdesc = Solvers for Large-Scale Eigenvalue and SVD Problems
-	pkgver = 0.16.1
+	pkgver = 0.16.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=RSpectra
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = r-rspectra
 	optdepends = r-knitr
 	optdepends = r-prettydoc
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/RSpectra_0.16-1.tar.gz
-	sha256sums = cba5d3403d6a7d0e27abf6279fbfea6e0d0fe36b28c688bbadb8eafb3841329a
+	source = https://cran.r-project.org/src/contrib/RSpectra_0.16-2.tar.gz
+	sha256sums = a2f149d79519fee79dabe1b174dfb847a916045315d5927a93cc6b005522aa7e
 
 pkgname = r-rspectra
