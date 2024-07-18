@@ -3,7 +3,7 @@
 # Contributor: Marc-Olivier Barre <mobarre-archlinux|at|snarchi|dot|io>
 
 pkgname=siril
-pkgver='1.2.2'
+pkgver='1.2.3'
 pkgrel=1
 pkgdesc="An astronomical image processing software for Linux. (IRIS clone)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=('libpng: PNG import'
             'gnuplot: photometry graphs creation')
 
 source=("https://free-astro.org/download/siril-${pkgver}.tar.bz2")
-sha256sums=('49b7a59011a30642f4a0d1cd6eae32eace584f425bd709fa8ecab52b5ba98adc')
+sha256sums=('8ac660542d2bec5d608eaf9bf25a25e6ba574b58b5410bdb6ad401e1f86fa756')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver/"
