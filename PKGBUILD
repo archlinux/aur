@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.9.9.arch1
+pkgver=6.9.10.arch1
 pkgrel=1
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
@@ -21,7 +21,7 @@ makedepends=(
   python
   tar
   xz
-#  modprobed-db
+  modprobed-db
 )
 options=('!strip' '!debug')
 _srcname=linux-${pkgver%.*}
@@ -30,7 +30,7 @@ source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/$_srcname.tar.{xz,sign}
   $_url/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
   config         # the main kernel config file
-#  modprobed.db
+  modprobed.db
   "choose-gcc-optimization.sh"
 
   "sys-kernel_arch-sources-g14-6.8+--more-uarches-for-kernel.patch"::"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/master/more-uarches-for-kernel-6.8-rc4%2B.patch"
@@ -46,21 +46,14 @@ source=(
   0007-v4-platform-x86-asus-wmi-ROG-Ally-increase-wait-time.patch
   0008-v4-platform-x86-asus-wmi-add-support-for-MCU-powersave.patch
   0009-v4-platform-x86-asus-wmi-add-clean-up-structs.patch
+  0001-Fixes-ae834a549ec1-platform-x86-asus-wmi-add-support.patch
+  0001-ALSA-hda-realtek-cs35l41-Fixup-remaining-asus-strix-.patch
   
   #0001-HID-asus-fix-more-n-key-report-descriptors-if-n-key-.patch
   0001-platform-x86-asus-wmi-add-support-for-vivobook-fan-p.patch
   0002-HID-asus-make-asus_kbd_init-generic-remove-rog_nkey_.patch
   0003-HID-asus-add-ROG-Ally-N-Key-ID-and-keycodes.patch
   0004-HID-asus-add-ROG-Z13-lightbar.patch
-  
-  ## upstream no longer has these patches...
-  #0002-hid-asus-use-hid-for-brightness-control-on-keyboard.patch
-  #0003-Debugging.patch
-  #0004-asus-wmi-don-t-error-out-if-platform_profile-already.patch
-  #0005-hid-asus-add-USB_DEVICE_ID_ASUSTEK_DUO_KEYBOARD.patch
-  #v2-0005-platform-x86-asus-wmi-don-t-allow-eGPU-switching-.patch
-  #0001-platform-x86-asus-wmi-Support-2023-ROG-X16-tablet-mo.patch
-  ## to here...
   
   ## but these instead...
   0001-platform-x86-asus-wmi-add-debug-print-in-more-key-pl.patch
@@ -70,9 +63,9 @@ source=(
   0005-asus-bios-add-dgpu-tgp-control.patch
   0006-asus-bios-add-apu-mem.patch
   0007-asus-bios-add-core-count-control.patch
-  #0008-asus-wmi-deprecate-bios-features.patch
+#  0008-asus-wmi-deprecate-bios-features.patch
   v2-0001-hid-asus-use-hid-for-brightness-control-on-keyboa.patch
-  #0003-platform-x86-asus-wmi-add-macros-and-expose-min-max-.patch 
+#  0003-platform-x86-asus-wmi-add-macros-and-expose-min-max-.patch 
   ## to here...
   
   0027-mt76_-mt7921_-Disable-powersave-features-by-default.patch
@@ -99,11 +92,12 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('2be05b487eb239a3bf687d628a8f104177d09c310f00bcc2a5e50f1733421eb9'
+sha256sums=('efd12e335fa67d13a3eae30e4b7b7546e74b8ccc90682e4c3fffab0b22654da1'
             'SKIP'
-            '69be8bdce434da002fc46c92098754a967306675899c003f11c75d574c84e3c5'
+            'f67882ce44c822088fbbebaf2d5958377b1c34254547eca5719f19aa2eff1fd7'
             'SKIP'
-            'c5e61f0e092cb8244bcbb0dec68dfcf6bcf8aad3acc6d7aca5bc2beaa18a51f3'
+            '3190bf5005f22345a8c81dc78cd1bbd39350817358ba571840b01446128f3545'
+            '3af1f83f59090e5cd32fb6acf54264459066b575d9847afb67731258c483dd5c'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
             'f4e7fcd011f2691840d2c8c2361dca850a78ea33cc5c24d2e27c3e0294fd1dc5'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
@@ -116,6 +110,8 @@ sha256sums=('2be05b487eb239a3bf687d628a8f104177d09c310f00bcc2a5e50f1733421eb9'
             'c2c89baaf134c0151c3f7a3861d16194e32c91c7abc87f870733cab8c5b88389'
             'f5b560d988c47033c44307da0b584599d1f59cc0028a594f4df87affffc219d5'
             'de85da760f6692b284e39aa78479904d6ee78b349f1e98d1d210777f9ef17581'
+            '15b5b90592ebdcfc032251a12379714d61dd8fdc63cf4678f4ce391d0d177459'
+            'd0b568200cb530d6edaab34bf5cecf3d297ed7b9c66ebb5ce71a13aef4742923'
             '9c8679f5995b69b6778539f48f30142e5a357213cf9a04ee0877f50f859d1233'
             'c1d96328d96964c2ce3ef7609fb7c07e97eb136dfab9f6d4efcce072a5739838'
             '2414dc71174c90b92f975a7d16cabc99ba509397d843132764ea9ee91b643dc0'
@@ -149,10 +145,10 @@ sha256sums=('2be05b487eb239a3bf687d628a8f104177d09c310f00bcc2a5e50f1733421eb9'
 # 98, Intel Native = CONFIG_MNATIVE_INTEL
 # 99, AMD Native = CONFIG_MNATIVE_AMD
 if [ -z ${_microarchitecture+x} ]; then
-  _microarchitecture=93
+  _microarchitecture=15
 fi
 if [ -z ${Microarchitecture+x} ]; then
-  Microarchitecture='CONFIG_GENERIC_CPU3'
+  Microarchitecture='CONFIG_MZEN3'
 fi
 
 export KBUILD_BUILD_HOST=archlinux
@@ -187,7 +183,7 @@ prepare() {
   ## Make use of modprobed-db, if installed
   ## To do this, you need to copy the database into this directory and enable the relevant lines 
   ## at the top of this file!
-  # make LSMOD=../modprobed.db localmodconfig 
+  make LSMOD=../modprobed.db localmodconfig 
 
   ## let user choose microarchitecture optimization in GCC  
   ## this needs to run *after* `make olddefconfig` so that our newly added configuration macros exist
