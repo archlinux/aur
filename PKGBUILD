@@ -1,7 +1,7 @@
 # Maintainer: Julian Xhokaxhiu <info at julianxhokaxhiu dot com>
 pkgname=ludo
 pkgver=0.17.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Ludo is a minimalist frontend for emulators"
 arch=('x86_64' 'armv7h')
 url="https://github.com/libretro/ludo"
@@ -11,14 +11,14 @@ makedepends=(
   'git'
   'wget'
   'unzip'
+  'libxi'
+  'libxinerama'
+  'libxrandr'
 )
 depends=(
   'glfw-x11'
   'openal'
   'mesa'
-  'libxi'
-  'libxinerama'
-  'libxrandr'
 )
 source=(
   "git+https://github.com/libretro/ludo"
