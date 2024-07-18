@@ -1,16 +1,16 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=mail-deduplicate
 _pkgname=mail_deduplicate
 pkgver=7.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Command-line tool to deduplicate mails from a set of boxes'
 arch=(any)
 license=(GPL2)
 url="https://mail-deduplicate.readthedocs.io/"
 depends=(python python-arrow python-boltons python-click-extra
-         python-click-help-colors python-click-log python-tabulate
-         python-tomlkit)
+         python-tabulate)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 replaces=(maildir-deduplicate)
 conflicts=(maildir-deduplicate)
