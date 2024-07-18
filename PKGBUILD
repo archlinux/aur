@@ -9,7 +9,7 @@ url="https://github.com/jameslzhu/roflcat/"
 license=('BSD' 'custom')
 depends=('gcc-libs' 'glibc')
 makedepends=('git' 'cargo')
-source=("$pkgname::git://github.com/jameslzhu/roflcat#commit=941d21c9be5574942812b4b620c4b5a9ea57437b")
+source=("$pkgname::git+https://github.com/jameslzhu/roflcat#commit=941d21c9be5574942812b4b620c4b5a9ea57437b")
 sha256sums=('SKIP')
 
 prepare() {
