@@ -1,5 +1,5 @@
 pkgbase = batterizer
-	pkgdesc = Battery level monitor
+	pkgdesc = Battery level monitor; made as a lightweight alternative to Waybar
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://gitlab.com/matei1413/batterizer
