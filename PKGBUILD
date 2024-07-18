@@ -1,11 +1,11 @@
 # Maintainer: meanlint <meanlint@outlook.com>
-# Maintainer: Aria Moradi <aria.moradi007 at gmail dot com>
-# Maintainer: Mahor Foruzesh <mahor1221 at gmail dot com>
+# Contributor: Aria Moradi <aria.moradi007 at gmail dot com>
+# Contributor: Mahor Foruzesh <mahor1221 at gmail dot com>
 
 pkgname=suwayomi-server-preview-bin
 _pkgname=suwayomi-server
 _PkgName=Suwayomi-Server
-pkgver=1.1.1_r1539
+pkgver=1.1.1_r1541
 pkgrel=1
 _pkgver="${pkgver%_*}"
 _revnum="${pkgver#*_r}"
