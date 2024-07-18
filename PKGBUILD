@@ -30,7 +30,7 @@ build() {
 
 check() {
 	cd "${srcdir}/${_name}-${pkgver}"
-	export PYTHONPATH=./:$PYTHONPATH
+	export PYTHONPATH="${srcdir}/${_name}-${pkgver}/dist/${_name}-${pkgver}-py3-none-any.whl:${PYTHONPATH}"
 	pytest
 }
 
