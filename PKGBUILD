@@ -3,21 +3,21 @@
 
 pkgname=killwine
 pkgver=1.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A shell script for killing Wine and Proton processes"
 url="https://github.com/begin-theadventure/killwine"
 arch=('any')
-depends=('wine')
+depends=('bash' 'wine')
 source=("killwine.sh")
 sha256sums=('7a27ba8d452b274be3b42a6938f0bff1403b11f918d99212ff700d9a391389a0')
 
 prepare() {
 # Create a shortcut
-  echo -e "[Desktop Entry]\n\
-Name=killwine\n\
-Comment=A shell script for killing Wine and Proton processes\n\
-Exec=killwine\n\
-Icon=wine" > killwine.desktop
+  echo -e '[Desktop Entry]
+Name=killwine
+Comment=A shell script for killing Wine and Proton processes
+Exec=killwine & notify-send "killwine" "Killing Wine.." -t 1000
+Icon=wine' > killwine.desktop
 }
 
 package() {
