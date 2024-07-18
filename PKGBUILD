@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=shadowtext
-_pkgver=0.1.3
+_pkgver=0.1.4
 pkgname=r-${_pkgname,,}
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc='Shadow Text Grob and Layer'
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('861af6ff3401e34e4e5a996fde277cefb7554af24bb22459367c1f391ac12b81')
+sha256sums=('87d0bea90e0090dd40f7cd8c380d185a9d4112a32a729d31859eaeca0cd46ee8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
