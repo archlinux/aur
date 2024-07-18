@@ -3,7 +3,7 @@
 
 pkgname=openspace-git
 _pkgname=OpenSpace
-pkgver=v0.18.0.1574.g84bf1a559a
+pkgver=v0.20.0.41.gc0b4103d46
 pkgrel=1
 pkgdesc="OpenSpace is an open source, non-commercial, and freely available interactive data visualization software designed to visualize the entire known universe and portray our ongoing efforts to investigate the cosmos"
 arch=('x86_64')
@@ -109,6 +109,11 @@ package() {
 	cp -R "${srcdir}/${_pkgname}/modules/toyvolume/shaders"  "$pkgdir/opt/OpenSpace/modules/toyvolume"
 	mkdir -p "$pkgdir/opt/OpenSpace/modules/volume/shaders"
 	cp -R "${srcdir}/${_pkgname}/modules/volume/shaders"  "$pkgdir/opt/OpenSpace/modules/volume"
+	mkdir -p "$pkgdir/opt/OpenSpace/modules/debugging/rendering"
+	cp -R "${srcdir}/${_pkgname}/modules/debugging/rendering/debugshader_fs.glsl"  "$pkgdir/opt/OpenSpace/modules/debugging/rendering/debugshader_fs.glsl"
+	cp -R "${srcdir}/${_pkgname}/modules/debugging/rendering/debugshader_vs.glsl"  "$pkgdir/opt/OpenSpace/modules/debugging/rendering/debugshader_vs.glsl"
+	mkdir -p "$pkgdir/opt/OpenSpace/modules/debugging/scripts"
+	cp -R "${srcdir}/${_pkgname}/modules/debugging/scripts/axes.lua"  "$pkgdir/opt/OpenSpace/modules/debugging/scripts/axes.lua"
 	mkdir -p "$pkgdir/opt/OpenSpace/modules/webgui/ext/nodejs"
 	cp -R "${srcdir}/${_pkgname}/modules/webgui/ext/nodejs"  "$pkgdir/opt/OpenSpace/modules/webgui/ext"
 	mkdir -p "$pkgdir/opt/OpenSpace/modules/webbrowser/ext"
