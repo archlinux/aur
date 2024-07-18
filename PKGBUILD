@@ -1,7 +1,7 @@
 # Maintainer: Aleksey Maximov <amaxcz@gmail.com>
 
 pkgname=google-gemini-nativefier
-pkgver=1.1.0
+pkgver=31.2.1
 pkgrel=1
 pkgdesc="Google Gemini desktop app (electron)"
 arch=("armv7l" "i686" "x86_64")
@@ -26,7 +26,7 @@ build() {
     --browserwindow-options '{ "webPreferences": { "spellcheck": true } }' \
     --verbose \
     --single-instance \
-    --electron-version 31.2.0 \
+    --electron-version "${pkgver}" \
     --honest \
     "${url}"
 
