@@ -1,0 +1,13 @@
+post_install() {
+    modprobe uinput
+
+    udevadm control --reload-rules
+    udevadm trigger
+
+    echo "start service after install: systemctl --user enable --now xreal-air-driver.service"
+}
+
+post_upgrade() {
+    udevadm control --reload-rules
+    udevadm trigger
+}

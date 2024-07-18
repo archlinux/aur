@@ -1,0 +1,22 @@
+pkgbase = xr-driver-breezy-gnome-git
+	pkgdesc = XR Linux Driver for Breezy GNOME
+	pkgver = 0.10.2
+	pkgrel = 1
+	url = https://github.com/wheaney/XRLinuxDriver
+	install = hooks.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0
+	makedepends = cmake
+	makedepends = make
+	depends = openssl
+	depends = libevdev
+	depends = libusb
+	depends = json-c
+	depends = curl
+	depends = hidapi
+	conflicts = xr-driver
+	source = git+https://github.com/wheaney/XRLinuxDriver
+	md5sums = SKIP
+
+pkgname = xr-driver-breezy-gnome-git
