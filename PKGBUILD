@@ -2,10 +2,10 @@
 # Contributor: Robert Greener <me@r0bert.dev>
 
 _pkgname=slam
-_pkgver=0.1-50
+_pkgver=0.1-51
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=13
+pkgrel=1
 pkgdesc="Sparse Lightweight Arrays and Matrices"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -15,8 +15,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('75f6386e03e38dd6d6bcd63bfe257ddc')
-b2sums=('f1eb0b5a9744dcd0c937d2cf0d3b74c186a43523ed32b065f70ec05d6f43cfab28e7aefb7c83b3440e6971fed38f2156a7746c7c19ce3fe87968d06f0551ed9b')
+md5sums=('f30df510503cf2dd7d5af7c10b1a6608')
+b2sums=('6988a341f40d03d953f30b4e7fd4973bcadc930580b079cc862e94334e36c08164d63bc22c071721fc848a416cb087ff2ef3559a618756be147e244312e5db5b')
 
 build() {
   mkdir build
