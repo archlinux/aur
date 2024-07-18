@@ -2,18 +2,18 @@
 ## Valid numbers between: 0 to 99
 ## Default is: 0 => generic
 ## Good option if your package is for one machine: 98 (Intel native) or 99 (AMD native)
-_microarchitecture=98
+_microarchitecture=0
 
 ## Major kernel version
-_major=6.9
+_major=6.10
 ## Minor kernel version
-_minor=8
+_minor=1
 
 ## PKGBUILD ##
 
 pkgbase=linux-multimedia
-#pkgver=${_major}
-pkgver=${_major}.${_minor}
+pkgver=${_major}
+#pkgver=${_major}.${_minor}
 pkgrel=1
 pkgdesc='Linux Multimedia Optimized'
 url="https://www.kernel.org/"
@@ -34,7 +34,7 @@ validpgpkeys=(
   '83BC8889351B5DEBBB68416EB8AC08600F108CDF'  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('f048267b7b88316c9ca708c68d15a9ae802dcfc943c3188c1273eb958c433281'
+sha256sums=('774698422ee54c5f1e704456f37c65c06b51b4e9a8b0866f34580d86fef8e226'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -86,9 +86,6 @@ prepare() {
 
   msg2 "Apply 0007-v${_major}-fsync1_via_futex_waitv.patch..."
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-fsync1_via_futex_waitv.patch
-
-  msg2 "Apply 0007-v${_major}-ntsync.patch..."
-  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-ntsync.patch
 
   msg2 "Apply 0012-misc-additions.patch..."
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0012-misc-additions.patch
