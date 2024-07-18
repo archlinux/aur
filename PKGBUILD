@@ -10,8 +10,6 @@ pkgdesc="Library for Generic programming, also known as Multiple dispatch"
 arch=('any')
 url="https://github.com/gaphor/${_name}"
 license=('BSD')
-# Note: python-exceptiongroup is a requirement until we switch over to
-# Python 3.11
 depends=('python')
 makedepends=(python-build python-installer python-poetry-core)
 checkdepends=(python-pytest)
