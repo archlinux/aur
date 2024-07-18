@@ -1,16 +1,16 @@
 pkgname=wcurl
-pkgver=2024.07.07
+pkgver=2024.07.10
 pkgrel=1
 pkgdesc='Whenever you need to download files through the terminal and dont feel like using wget'
 arch=(any)
 url='https://samueloph.dev/blog/announcing-wcurl-a-curl-wrapper-to-download-files/'
 license=(curl)
 depends=(curl)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Debian/wcurl/archive/refs/tags/${pkgver//./-}.tar.gz")
-sha256sums=('5ee1d686aeef4353cb023be341f4b34401d8c6f55039cdda5d52d47cf8db4932')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Debian/wcurl/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('962bb72e36e6f6cedbd21c8ca3af50e7dadd587a49d2482ab3226e76cf6dcc97')
 
 package() {
-    cd "$srcdir/wcurl-${pkgver//./-}"
+    cd "$srcdir/wcurl-${pkgver}"
     install -Dm755 wcurl "$pkgdir/usr/bin/wcurl"
     gzip wcurl.1
     install -Dm644 wcurl.1.gz "$pkgdir/usr/man/man1/wcurl.1.gz"
