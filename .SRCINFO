@@ -10,7 +10,7 @@ pkgbase = kwalletcli-bin
 	depends = mksh
 	provides = kwalletcli
 	conflicts = kwalletcli
-	source = https://git.stefanwimmer128.xyz/api/v4/projects/166/packages/generic/kwalletcli/3.03-4/kwalletcli-3.03-4-x86_64.pkg.tar.zst
-	sha256sums = 56429c2e0e28c4041c0bef8624295cd7e269fb0588a354facfc7737d98effff4
+	source = kwalletcli-3.03-4-x86_64.tar.zst::https://gitlab.com/api/v4/projects/59987755/packages/generic/kwalletcli/3.03-4/kwalletcli-3.03-4-x86_64.pkg.tar.zst
+	sha256sums = 12449cfc1cdb5969c69f365998b4143c41c780ab742d894e6258d67e6c516536
 
 pkgname = kwalletcli-bin
