@@ -20,34 +20,34 @@ sha256sums=('SKIP'
             'ded3a8a3628fd5a1c7e2eed62dfe35114aafe580077a4f6f766729714c7525b5')
 
 check() {
-  cd "$pkgname"
+    cd "$pkgname"
 
-  PERL=/usr/bin/perl ./test.sh
+    PERL=/usr/bin/perl ./test.sh
 }
 
 prepare() {
-  cd "$pkgname"
+    cd "$pkgname"
 
-  sed -i 's/fgrep/grep -F/g' check.t
+    sed -i 's/fgrep/grep -F/g' check.t
 
-  if ! tty > /dev/null; then
-    patch -Nsp1 -i "$srcdir/no-ctty.patch"
-  fi
+    if ! tty > /dev/null; then
+        patch -Nsp1 -i "$srcdir/no-ctty.patch"
+    fi
 }
 
 build() {
-  cd "$pkgname"
+    cd "$pkgname"
 
-  sh Build.sh -r
+    sh Build.sh -r
 }
 
 package() {
-  cd "$pkgname"
+    cd "$pkgname"
 
-  install -D -m 755 mksh "$pkgdir/usr/bin/mksh"
-  install -D -m 644 mksh.1 "$pkgdir/usr/share/man/man1/mksh.1"
-  install -D -m 644 dot.mkshrc "$pkgdir/etc/skel/.mkshrc"
+    install -D -m 755 mksh "$pkgdir/usr/bin/mksh"
+    install -D -m 644 mksh.1 "$pkgdir/usr/share/man/man1/mksh.1"
+    install -D -m 644 dot.mkshrc "$pkgdir/etc/skel/.mkshrc"
 
-  mkdir -p "$pkgdir/usr/share/licenses/mksh/"
-  sed -n '/Copyright/,/\*\//p' main.c > "$pkgdir/usr/share/licenses/mksh/LICENSE"
+    mkdir -p "$pkgdir/usr/share/licenses/mksh/"
+    sed -n '/Copyright/,/\*\//p' main.c > "$pkgdir/usr/share/licenses/mksh/LICENSE"
 }
