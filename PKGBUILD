@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=nls2
-_pkgver=0.3-3
+_pkgver=0.3-4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=6
+pkgrel=2
 pkgdesc="Non-Linear Regression with Brute Force"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -13,12 +13,13 @@ depends=(
   r-proto
 )
 optdepends=(
+  r-cpoptim
   r-lhs
   r-nlstools
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('eee678502a3619729c92e99af2aec30d')
-b2sums=('1be6a53774d9fd793e1f78804ef9c2dcef9dd9f2bee23ffa2d4ef0e250283e8457bf3b1f079cfae234f4a07e0e24feab9e2112b28e29224931fb0fdcb8eba852')
+md5sums=('d94ead1f3339af50cfef6dc7e034b896')
+b2sums=('3fdca5e5014b56937b62f23a508dfc8d1c8e94202698b90d4e12404a0f8834edce7009d3c905d5b722bb3863537edde6bf45fa2458d23f1251b73c9b27051a0e')
 
 build() {
   mkdir build
