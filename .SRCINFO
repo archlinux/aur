@@ -1,6 +1,6 @@
 pkgbase = git-superprune
 	pkgdesc = a git command to prune remote branches that have already been merged
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/graysonarts/git-superprune
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = git-superprune
 	depends = gcc-libs
 	depends = glibc
 	options = !lto
-	source = https://github.com/graysonarts/git-superprune/archive/v0.1.2/git-superprune-0.1.2.tar.gz
-	sha256sums = 5c95726be304d4f23b2fdbd29319a0952f73eb78141093018a3ad23c60a88a32
+	source = https://github.com/graysonarts/git-superprune/archive/v0.1.3/git-superprune-0.1.3.tar.gz
+	sha256sums = 889d38c85bcd44c88211bbadc4342089e7c0e798b005669579564025fa88a4bf
 
 pkgname = git-superprune

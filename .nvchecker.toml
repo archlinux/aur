@@ -1,4 +1,5 @@
 [git-superprune]
 source = "github"
 github = "graysonarts/git-superprune"
+prefix = "v"
 use_max_tag = true
