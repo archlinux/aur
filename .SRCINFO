@@ -1,6 +1,6 @@
 pkgbase = wl-restart-git
 	pkgdesc = restart your compositor when it crashes (git version)
-	pkgver = 0.5.0.r0.g09b1445
+	pkgver = 0.1.0.r0.gf5fc974
 	pkgrel = 1
 	url = https://github.com/Ferdi265/wl-restart
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = wl-restart-git
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = scdoc
-	provides = wl-restart=0.5.0
+	provides = wl-restart=0.1.0
 	conflicts = wl-restart
 	source = git+https://github.com/Ferdi265/wl-restart
 	sha256sums = SKIP
