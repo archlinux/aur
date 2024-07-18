@@ -1,24 +1,23 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=spatstat.geom
-_pkgver=3.2-9
+_pkgver=3.3-2
 pkgname=r-${_pkgname,,}
-pkgver=3.2.9
+pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Geometrical Functionality of the 'spatstat' Family"
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-2.0-or-later')
 depends=(
-  r
   r-deldir
   r-polyclip
   r-spatstat.data
+  r-spatstat.univar
   r-spatstat.utils
 )
 optdepends=(
   r-fftwtools
-  r-spatial
   r-spatstat
   r-spatstat.explore
   r-spatstat.linnet
@@ -26,14 +25,15 @@ optdepends=(
   r-spatstat.random
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a7337166481366ff301c9585636e162d94c8593511a36ae33477966720c9d517')
+md5sums=('2ce8ce9792ef41d0f33e57084f4ada03')
+b2sums=('693ba324b3cdc9b66eb5004fb6d2d25e89a61771b23a80500e3e8ce160bbcaf4b7253122f53e7f3c7d3d0e0637bfd749ad21cc5ab2e938528a40157c3afe681f')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
