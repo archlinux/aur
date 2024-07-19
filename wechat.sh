@@ -158,11 +158,14 @@ function execApp() {
 	else
 		xhost + #Unlock the XServer for X11 users
 	fi
+	if [ ! ${unitName} ]; then
+		unitName="wechat-uos-qt"
+	fi
 	systemd-run \
 	--user \
 	${sdOption} \
 	-p Environment=LD_PRELOAD="${LD_PRELOAD}" \
-	-u wechat-uos-qt \
+	-u "${unitName}" \
 	-p CPUWeight=50 \
 	-p IOWeight=40 \
 	-p IPAccounting=yes \
@@ -279,16 +282,42 @@ function execApp() {
 }
 
 function warnMulRunning() {
-	if [[ "${LANG}" =~ 'zh_CN' ]]; then
-		zenity --title "微信正在运行" --icon=utilities-system-monitor-symbolic --default-cancel --question --text="是否结束正在运行的进程?"
+	wmctrl -a "微信"
+	if [[ $? = 0 ]]; then
+		exit 0
 	else
-		zenity --title "WeChat is running" --icon=utilities-system-monitor-symbolic --default-cancel --question --text="Do you wish to terminate the running session?"
+		id=$(dbus-send \
+			--bus=unix:path="${XDG_RUNTIME_DIR}/bus" \
+			--dest=org.kde.StatusNotifierWatcher \
+			--type=method_call \
+			--print-reply=literal /StatusNotifierWatcher \
+			org.freedesktop.DBus.Properties.Get \
+			string:org.kde.StatusNotifierWatcher \
+			string:RegisteredStatusNotifierItems | grep -oP 'org.kde.StatusNotifierItem-\d+-\d+')
+		echo "[Info] Unique ID: ${id}"
+		dbus-send \
+			--print-reply \
+			--session \
+			--dest=${id} \
+			--type=method_call \
+			/StatusNotifierItem \
+			org.kde.StatusNotifierItem.Activate \
+			int32:114514 \
+			int32:1919810
+		if [[ $? = 0 ]]; then
+			exit 0
+		fi
+	fi
+	if [[ "${LANG}" =~ 'zh_CN' ]]; then
+		zenity --title "唤醒微信失败" --icon=utilities-system-monitor-symbolic --default-cancel --question --text="是否结束正在运行的进程?"
+	else
+		zenity --title "WeChat is nt responding" --icon=utilities-system-monitor-symbolic --default-cancel --question --text="Do you wish to terminate the running session?"
 	fi
 	if [ $? = 0 ]; then
 		systemctl --user stop $@
 	else
 		echo "[Critical] User denied session termination"
-		exit 114
+		exit $?
 	fi
 }
 
