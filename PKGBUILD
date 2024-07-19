@@ -3,7 +3,7 @@
 # based on aur/balena-etcher: Matthew McGinn <mamcgi@gmail.com>
 pkgname=etcher-git
 _pkgname=balenaEtcher
-pkgver=1.19.19.r0.g6d796df0
+pkgver=1.19.22.r0.g5fd6376
 _electronversion=30
 _nodeversion=20
 pkgrel=1
@@ -33,12 +33,13 @@ makedepends=(
 )
 source=(
     "${pkgname%-git}.git::git+${_ghurl}.git"
-    "${pkgname%-git}.sh")
+    "${pkgname%-git}.sh"
+)
 sha256sums=('SKIP'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
-    git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
 }
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -71,9 +72,9 @@ build() {
     else
         echo "Your network is OK."
     fi
-    npm install
-    npm update node-abi
-    npm run package
+    NODE_ENV=development npm install
+    NODE_ENV=production npm update node-abi
+    NODE_ENV=production npm run package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
