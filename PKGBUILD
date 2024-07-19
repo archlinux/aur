@@ -2,19 +2,22 @@
 # Contributor: jinzhongjia <mail@nvimer.org>
 
 pkgname=intel-npu-driver-bin
-pkgver=1.5.0.20240619_9582784383
+pkgver=1.5.1.20240708_9842236399
 pkgrel=5
-main_ver=$(echo $pkgver | cut -d'.' -f1-3)
+_main_ver=$(echo $pkgver | cut -d'.' -f1-3)
 pkgdesc="Intel(R) NPU (Neural Processing Unit) Driver"
 arch=(x86_64)
 url="https://github.com/intel/linux-npu-driver"
 license=('MIT')
-depends=('glibc' 'gcc-libs' 'openssl' 'onetbb' 'level-zero-headers' 'level-zero-loader')
+depends=('glibc' 'gcc-libs' 'openssl' 'onetbb')
+optdepends=('level-zero-headers' 'level-zero-loader')
 provides=('intel-driver-compiler-npu' 'intel-fw-npu' 'intel-level-zero-npu')
-source=("intel-driver-compiler-npu.deb::https://github.com/intel/linux-npu-driver/releases/download/v${main_ver}/intel-driver-compiler-npu_${pkgver//_/-}_ubuntu22.04_amd64.deb"
-	"intel-fw-npu.deb::https://github.com/intel/linux-npu-driver/releases/download/v${main_ver}/intel-fw-npu_${pkgver//_/-}_ubuntu22.04_amd64.deb"
-	"intel-level-zero-npu.deb::https://github.com/intel/linux-npu-driver/releases/download/v${main_ver}/intel-level-zero-npu_${pkgver//_/-}_ubuntu22.04_amd64.deb"
-	"LICENSE::https://raw.githubusercontent.com/intel/linux-npu-driver/main/LICENSE.md")
+source=(
+  "intel-driver-compiler-npu.deb::https://github.com/intel/linux-npu-driver/releases/download/v${_main_ver}/intel-driver-compiler-npu_${pkgver//_/-}_ubuntu24.04_amd64.deb"
+	"intel-fw-npu.deb::https://github.com/intel/linux-npu-driver/releases/download/v${_main_ver}/intel-fw-npu_${pkgver//_/-}_ubuntu24.04_amd64.deb"
+	"intel-level-zero-npu.deb::https://github.com/intel/linux-npu-driver/releases/download/v${_main_ver}/intel-level-zero-npu_${pkgver//_/-}_ubuntu24.04_amd64.deb"
+	"LICENSE::https://raw.githubusercontent.com/intel/linux-npu-driver/main/LICENSE.md"
+)
 noextract=("${source[@]%%::*}")
 # Intel does not provide checksums for binary packages
 b2sums=(
@@ -43,6 +46,5 @@ package() {
   echo 'SUBSYSTEM=="accel", KERNEL=="accel*", GROUP="render", MODE="0660"' > "${pkgdir}/usr/lib/udev/rules.d/10-intel-npu.rules"
 
   chown root:root -R "${pkgdir}/"
-  chmod a+r "${pkgdir}/usr/lib/firmware/updates/intel/vpu/vpu_37xx_v0.0.bin"
-  chmod a+r "${pkgdir}/usr/lib/firmware/updates/intel/vpu/vpu_40xx_v0.0.bin"
+  chmod -R a+r "${pkgdir}/usr/lib/firmware/updates/intel/vpu"
 }
