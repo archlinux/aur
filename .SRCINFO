@@ -16,6 +16,7 @@ pkgbase = ayatana-indicator-power
 	depends = dconf
 	depends = librda
 	depends = glibc
+	depends = glib2-devel
 	source = ayatana-indicator-power-24.5.1.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-power/archive/24.5.1.tar.gz
 	md5sums = 51fdfc0003f09ae7a53bab013daed3e6
 
