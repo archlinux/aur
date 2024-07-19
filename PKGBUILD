@@ -1,47 +1,63 @@
-# Maintainer: Josef Miegl <josef@miegl.cz>
+# Maintainer: Nikos Toutountzoglou <nikos dot toutou at protonmail dot com>
+# Contributor: Josef Miegl <josef@miegl.cz>
 # Contributor: robertfoster
 
-pkgbase=rtpengine
-pkgname=('rtpengine' 'rtpengine-dkms')
-pkgver=6.4.1.1
+pkgname=rtpengine
+pkgver=12.4.1.4
 pkgrel=1
-pkgdesc="The Sipwise media proxy for Kamailio"
+pkgdesc='The Sipwise media proxy for Kamailio'
 url="https://github.com/sipwise/rtpengine"
-license=('GPL3')
-arch=('x86_64' 'i686')
-depends=('ffmpeg' 'hiredis' 'json-glib' 'libevent' 'libmariadbclient' 'openssl' 'pcre' 'xmlrpc-c' 'zlib')
-optdepends=('libiptcdata' 'bcg729')
-makedepends=('glib2' 'pkgconf')
-source=("https://github.com/sipwise/rtpengine/archive/mr$pkgver.tar.gz")
-
-prepare() {
-	cd "${srcdir}/${pkgname}-mr${pkgver}"
-}
+license=('GPL-3.0-or-later')
+arch=('x86_64')
+depends=('json-glib'
+	'zlib'
+	'openssl'
+	'pcre'
+	'pcre2'
+	'libxmlrpc'
+	'hiredis'
+	'libcurl-compat'
+	'libevent'
+	'libpcap'
+	'systemd-libs'
+	'spandsp'
+	'mosquitto'
+	'libwebsockets'
+	'opus'
+	'perl-config-tiny'
+	'rtpengine-kernel-dkms')
+optdepends=('mariadb-clients: Media playback and call recording daemon support'
+	'libiptcdata: Iptables management support'
+	'ffmpeg: Transcoding support'
+	'bcg729: G.729 transcoding support')
+makedepends=('linux-headers'
+	'gperf'
+	'glib2'
+	'pkgconf'
+	'pandoc-cli'
+	'gcc13')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sipwise/rtpengine/archive/refs/tags/mr${pkgver}.tar.gz"
+	'rtpengine.sysusers')
+sha256sums=('f9f916c281d730b1186ec1969dc644e6f3a08f4c3b1fc5a099993bdc67277933'
+            'ea1580fbf7372309533e56d2a33714dc4d58311429ba60bf25b1bddee5ff7231')
 
 build() {
-	cd "${srcdir}/${pkgname}-mr${pkgver}"
+	cd "${pkgname}-mr${pkgver}"
+	# Fails to build with gcc-14
+	export CC=gcc-13 CXX=g++-13
 	make all
 }
 
-package_rtpengine() {
-	cd "${srcdir}/${pkgname}-mr${pkgver}"
-	install -Dm755 daemon/rtpengine $pkgdir/usr/bin/rtpengine
-	install -Dm755 recording-daemon/rtpengine-recording $pkgdir/usr/bin/rtpengine-recording
-	install -Dm755 iptables-extension/libxt_RTPENGINE.so $pkgdir/usr/lib/iptables/libxt_RTPENGINE.so
+package() {
+	cd "${pkgname}-mr${pkgver}"
+	# Install utils
+	make DESTDIR="${pkgdir}" install
+	# Install daemon
+	install -Dvm644 -t "${pkgdir}/etc/rtpengine" etc/*.conf
+	install -Dvm644 -t "${pkgdir}/usr/lib/systemd/system" el/*.service
+	# Uses /etc/sysconfig path
+	install -Dvm644 el/rtpengine.sysconfig "${pkgdir}/etc/sysconfig/rtpengine"
+	install -Dvm644 el/rtpengine-recording.sysconfig "${pkgdir}/etc/sysconfig/rtpengine-recording"
+	install -Dvm644 "${srcdir}/rtpengine.sysusers" "${pkgdir}/usr/lib/sysusers.d/rtpengine.conf"
+	install -dv "${pkgdir}/var/spool/rtpengine"
 }
-
-package_rtpengine-dkms() {
-	depends=('linux-headers' 'dkms')
-	cd "${srcdir}/$pkgbase-mr${pkgver}"
-	# Copy dkms .conf
-	install -Dm644 debian/dkms.conf.in "${pkgdir}/usr/src/${pkgbase}-mr${pkgver}/dkms.conf"
-	cp -r kernel-module/* $pkgdir/usr/src/$pkgbase-mr$pkgver/
-
-	# Set name and version
-	sed -e "s/__VERSION__/${pkgver}/" \
-		-e "s/ngcp-rtpengine/rtpengine/" \
-		-i "${pkgdir}/usr/src/${pkgbase}-mr${pkgver}/dkms.conf"
-
-}
-
-md5sums=('a0f210770bda6e6482ff97d2f6f7fab1')
