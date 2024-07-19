@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=kernel-builder
 pkgver=2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Simplifies Linux kernel compilation with version selection, patching, and configuration options for Arch Linux and Ubuntu/Debian, enhancing installation efficiency and customization."
 arch=('any')
 url="https://github.com/Someshwar1006/Kernel-Builder"
