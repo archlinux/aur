@@ -1,7 +1,7 @@
 # Maintainer: Ferdinand B <theferdi265@gmail.com>
 
 pkgname=wl-restart-git
-pkgver=0.1.0.r0.gf5fc974
+pkgver=0.2.0.r0.ged4f3be
 pkgrel=1
 pkgdesc="restart your compositor when it crashes (git version)"
 url="https://github.com/Ferdi265/wl-restart"
