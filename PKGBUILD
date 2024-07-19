@@ -1,7 +1,7 @@
 # Maintainer: DosAmp <bilderschleuder@gmail.com>
 pkgname=sshlm-git
 _pkgname="${pkgname%-git}"
-pkgver=r62.cfacd75
+pkgver=r64.26f3455
 pkgrel=1
 pkgdesc='Local line editing wrapper around ssh for high-latency links'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('openssh' 'perl-io-pty-easy' 'perl-term-readkey' 'perl-term-readline-gn
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("${_pkgname}::git://github.com/mnalis/ssh-line-mode.git")
+source=("${_pkgname}::git+https://github.com/mnalis/ssh-line-mode.git")
 md5sums=('SKIP')
 
 pkgver() {
