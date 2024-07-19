@@ -1,25 +1,26 @@
+# Maintainer: Fabian Posch <aur@posch.tech>
 # Contributor: Pavel Benak <pavel.benak@uhk.cz>
 
 pkgname=brother-dcp9010cn
 pkgver=1.1.2
-pkgrel=2
+pkgrel=3
 _cupsrel=2
 _lprrel=1
 pkgdesc="Brother cups and lpd driver for DCP-9010CN"
 arch=('i686' 'x86_64')
-url="http://solutions.brother.com/linux/en_us/index.html"
-license=('custom')mm
+url="https://support.brother.com/linux/en_us/index.html"
+license=('custom')
 if [ "$(uname -m)" = "x86_64" ]
 then
- depends=('lib32-glibc' 'psutils')
+ depends=('cups' 'lib32-glibc' 'psutils')
 else
- depends=('psutils')
+ depends=('cups' 'psutils')
 fi
 noextract=(DCP7010.ppd.gz)
 
 source=(
-http://www.brother.com/pub/bsc/linux/dlf/dcp9010cncupswrapper-$pkgver-$_cupsrel.i386.deb
-http://www.brother.com/pub/bsc/linux/dlf/dcp9010cnlpr-$pkgver-$_lprrel.i386.deb
+https://www.brother.com/pub/bsc/linux/dlf/dcp9010cncupswrapper-$pkgver-$_cupsrel.i386.deb
+https://www.brother.com/pub/bsc/linux/dlf/dcp9010cnlpr-$pkgver-$_lprrel.i386.deb
 brlpdwrapperdcp9010cn
 )
 
