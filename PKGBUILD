@@ -1,7 +1,7 @@
 # Maintainer: yjun <jerrysteve1101 at gmail dot com>
 
 pkgname=picacg-qt
-pkgver=1.4.8
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="PicACG Comic PC Client For Linux"
 arch=('any')
@@ -15,6 +15,10 @@ depends=('pyside6'
          'python-pillow'
          'python-pysocks'
          'python-natsort'
+         'python-webdavclient3'
+         'python-tqdm'
+         'python-pysmb'
+         'python-xcffib'
 )
 optdepends=('python-waifu2x-vulkan: Waifu2x-Vulkan support')
 provides=('bika')
@@ -23,7 +27,7 @@ source=(${pkgname}-${pkgver}.tar.gz::"${url}/archive/refs/tags/v${pkgver}.tar.gz
         "${pkgname}.desktop"
         "${pkgname}.sh"
 )
-sha256sums=('ad3f46ebbc71ce913d05b75398dce6d8b53009bfafe592d9ae9a6ce28ebdf68f'
+sha256sums=('b256779fe3b49f9874d485fdfc840c1c663fb8c589fd5d6557977ddbe5ad116c'
             '2da544814d26a95d1b4f88e19b2957059d9bd3c074424cb6553eaf84ed71c765'
             '9c35b0e474517cbbf1b88dde5a5333e273a531e53657a839bd193a2f05842361')
 
