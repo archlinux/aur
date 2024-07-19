@@ -1,0 +1,18 @@
+pkgbase = brother-dcp-j1800dw
+	pkgdesc = LPR driver and CUPS wrapper for Brother DCP-J1800DW
+	pkgver = 3.5.1
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=de&lang=de&prod=dcpj1800dw_eu
+	install = brother-dcp-j1800dw.install
+	arch = i686
+	arch = x86_64
+	license = EULA
+	depends = perl
+	depends = cups
+	optdepends = brscan5
+	optdepends = brscan-skey
+	source = https://download.brother.com/welcome/dlf105606/dcpj1800dwpdrv-3.5.1-1.i386.rpm
+	sha256sums = fa4ea67021cc07721859f5a12cec5b312e79b311a89b07d4f9b0c4ac4a11d601
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-dcp-j1800dw
