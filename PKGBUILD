@@ -3,7 +3,7 @@ pkgname=fishing-funds-bin
 _pkgname=Fishing-Funds
 pkgver=8.2.3
 _electronversion=29
-pkgrel=2
+pkgrel=3
 pkgdesc="基金,大盘,股票,虚拟货币状态栏显示小应用,基于Electron开发."
 arch=('x86_64')
 url="https://ff.1zilc.top/"
@@ -23,7 +23,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('d88590ea5a79a248b754804a08170e5c5ebeb2771755c20a864caf667530fa56'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
@@ -36,7 +36,7 @@ build() {
     sed "s|AppRun --no-sandbox|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     find "${srcdir}/squashfs-root" -type d -exec chmod 755 {} \;
     asar e "${srcdir}/squashfs-root/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    sed "s|process.resourcesPath, \"assets\"|\"\/usr\/lib\/${pkgname%-bin}\", \"assets\"|g" -i "${srcdir}/app.asar.unpacked/dist/main/index.mjs"
+    sed "s|process.resourcesPath|\"\/usr\/lib\/${pkgname%-bin}\"|g" -i "${srcdir}/app.asar.unpacked/dist/main/index.mjs"
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
 }
 package() {
