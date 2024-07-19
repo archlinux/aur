@@ -1,7 +1,7 @@
 pkgbase=head-crusher
 pkgname=('head-crusher-data-bin' 'head-crusher-lv2-bin' 'head-crusher-vst3-bin')
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://audioassault.mx/plugin/Head_Crusher"
 license=('EULA')
@@ -9,7 +9,7 @@ depends=('alsa-lib' 'bzip2' 'brotli' 'freetype2' 'glibc' 'graphite' 'harfbuzz' '
 makedepends=('xdg-user-dirs' 'unzip')
 provides=('head-crusher')
 source=('Head Crusher Linker')
-sha256sums=('987365c4c1e253ecf222d813482b70320ad21ef7d2fdce446c167910a7dbd7c1')
+sha256sums=('ecdcf0b394fabfd10058c41dc2993ac2c08c7916f0e2d1970620f4ff8d1c1046')
 
 prepare () {
 	_archive="`xdg-user-dir DOWNLOAD`/HeadCrusherLinux.zip"
