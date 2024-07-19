@@ -1,7 +1,7 @@
 pkgbase = android-aarch64-devil
 	pkgdesc = Library for reading several different image formats (Android aarch64)
 	pkgver = 1.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sourceforge.net/projects/openil/
 	arch = any
 	license = GPL
