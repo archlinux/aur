@@ -3,7 +3,6 @@
 
 _pkgname=cryptodev-linux
 pkgname=cryptodev-linux-dkms
-pkgname=cryptodev-linux-dkms
 pkgdesc="Kernel module providing access to Linux kernel cryptographic drivers from userspace - sources"
 pkgver=1.14
 pkgrel=1
