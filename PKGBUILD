@@ -1,42 +1,40 @@
-# Maintainer: 
+# Maintainer: Jax Young <jaxvanyang@gmail.com>
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Contributor: Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>
 
 pkgname=palette
-pkgver=2.0.2
-pkgrel=2
+pkgver=2.0.3
+pkgrel=1
 pkgdesc="Tool for viewing the GNOME color palette as defined by the design guidelines."
 arch=('x86_64' 'aarch64')
 url="https://gitlab.gnome.org/World/design/palette"
 license=('GPL3')
 depends=('libadwaita')
-makedepends=('git' 'meson' 'vala')
+makedepends=('meson' 'vala')
 checkdepends=('appstream-glib')
-_commit=01ce37b3e262574ad7594b5e5b906b7aacd2ab81  # tags/2.0.2^0
-source=("git+https://gitlab.gnome.org/World/design/palette.git#commit=${_commit}"
-        'git+https://gitlab.gnome.org/Teams/Design/HIG-app-icons.git')
-sha256sums=('SKIP'
-            'SKIP')
+_hig_commit='54cad6784d8c097738f2d9f873cd497765c3261c'
+source=("https://gitlab.gnome.org/World/design/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz"
+	"https://gitlab.gnome.org/Teams/Design/HIG-app-icons/-/archive/$_hig_commit/HIG-app-icons-$_hig_commit.tar.gz")
+noextract=("HIG-app-icons-$_hig_commit.tar.gz")
+sha256sums=('b3a7d747266f5ccc0fa2edd0a87f9cdc4b54a0e487ed5ab9e41b92e38c8d7a6a'
+	'052c7c013211ae0e5123c6ae90d477904e2afa6b5dafd36f99a7256170bd196e')
 
 prepare() {
-  cd "${pkgname}"
-  git submodule init
-  git config submodule.hig.url "$srcdir/HIG-app-icons"
-  git -c protocol.file.allow=always submodule update
+	bsdtar -xf "HIG-app-icons-$_hig_commit.tar.gz" --strip-components 1 -C "$pkgname-$pkgver/src/hig"
 }
 
 build() {
-  arch-meson "$pkgname" build
-  meson compile -C build
+	arch-meson "$pkgname-$pkgver" build
+	meson compile -C build
 }
 
 check() {
-  meson test -C build --print-errorlogs
+	meson test -C build --print-errorlogs
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+	meson install -C build --destdir "$pkgdir"
 
-  ln -s /usr/bin/org.gnome.design.Palette "$pkgdir/usr/bin/$pkgname"
+	ln -s /usr/bin/org.gnome.design.Palette "$pkgdir/usr/bin/$pkgname"
 }
