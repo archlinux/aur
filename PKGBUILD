@@ -7,7 +7,7 @@ _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-devil
 pkgver=1.8.0
-pkgrel=2
+pkgrel=3
 arch=('any')
 pkgdesc="Library for reading several different image formats (Android ${_android_arch})"
 url="https://sourceforge.net/projects/openil/"
@@ -29,6 +29,9 @@ prepare() {
     # https://github.com/DentonW/DevIL/commit/42a62648e727e9a0217280474546de3ac69cbff1
     patch -Np1 -i ../jasper.patch
 
+    sed -i 's| SHARED | |g' DevIL/src-IL/CMakeLists.txt
+    sed -i 's| SHARED | |g' DevIL/src-ILU/CMakeLists.txt
+    sed -i 's| SHARED | |g' DevIL/src-ILUT/CMakeLists.txt
     sed -i 's|register ||g' DevIL/src-IL/src/il_manip.cpp
 }
 
