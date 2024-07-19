@@ -6,7 +6,7 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-fmt
 pkgver=10.2.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Open-source formatting library for C++ (Android ${_android_arch})"
 url='https://fmt.dev'
@@ -23,17 +23,27 @@ build() {
 
     android-${_android_arch}-cmake \
         -S . \
-        -B build \
+        -B build-shared \
         -DBUILD_SHARED_LIBS=ON \
         -DFMT_DOC=OFF \
         -DFMT_TEST=OFF
-    make -C build $MAKEFLAGS
+    make -C build-shared $MAKEFLAGS
+
+    android-${_android_arch}-cmake \
+        -S . \
+        -B build-static \
+        -DBUILD_SHARED_LIBS=OFF \
+        -DFMT_DOC=OFF \
+        -DFMT_TEST=OFF
+    make -C build-static $MAKEFLAGS
 }
 
 package() {
     cd "${srcdir}/fmt-${pkgver}"
     source android-env ${_android_arch}
 
-    make -C build DESTDIR="$pkgdir" install
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
+    make -C build-shared DESTDIR="${pkgdir}" install
+    make -C build-static DESTDIR="${pkgdir}" install
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
