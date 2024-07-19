@@ -1,7 +1,7 @@
 pkgbase = lime3ds
 	pkgdesc = An experimental open-source Nintendo 3DS emulator/debugger
-	pkgver = 2115
-	pkgrel = 3
+	pkgver = 2116
+	pkgrel = 1
 	url = https://github.com/Lime3DS/Lime3DS
 	arch = x86_64
 	license = GPL-2.0
@@ -42,7 +42,7 @@ pkgbase = lime3ds
 	conflicts = lime3ds-git
 	options = lto
 	options = !buildflags
-	source = lime3ds::https://github.com/Lime3DS/Lime3DS/releases/download/2115/lime3ds-unified-source-2115.tar.xz
-	md5sums = d5cca8077ba6cdf1f01e792d64685fdb
+	source = lime3ds::https://github.com/Lime3DS/Lime3DS/releases/download/2116/lime3ds-unified-source-2116.tar.xz
+	md5sums = 914c969f4a4018783bec3377e031b037
 
 pkgname = lime3ds
