@@ -3,7 +3,7 @@ pkgname=chain-desktop-wallet-bin
 _appname="Crypto.com-DeFi-Desktop-Wallet"
 pkgver=1.5.0
 _electronversion=19
-pkgrel=2
+pkgrel=3
 pkgdesc="Crypto.com DeFi Desktop Wallet"
 arch=('x86_64')
 url="https://crypto.com/defi-wallet"
@@ -16,13 +16,14 @@ depends=(
 )
 makedepends=(
     'fuse2'
+    'asar'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('4769a940ff0c46852a2cf0ca2f1c87f8234d8ecb40a1f35e8a5896bda35ad818'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
@@ -34,10 +35,13 @@ build() {
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|AppRun --no-sandbox|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} \;
+    asar e "${srcdir}/squashfs-root/resources/app.asar" "${srcdir}/app.asar.unpacked"
+    rm -rf "${srcdir}/app.asar.unpacked/dist"
+    asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/resources/scripts/preload.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}/scripts"
     cp -r "${srcdir}/squashfs-root/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
