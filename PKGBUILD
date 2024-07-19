@@ -7,7 +7,7 @@ _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-devil
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Library for reading several different image formats (Android ${_android_arch})"
 url="https://sourceforge.net/projects/openil/"
@@ -18,7 +18,7 @@ depends=("android-${_android_arch}-libpng"
          "android-${_android_arch}-libjpeg-turbo")
 makedepends=('android-cmake')
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://downloads.sourceforge.net/openil/DevIL-$pkgver.tar.gz"
+source=("https://downloads.sourceforge.net/openil/DevIL-${pkgver}.tar.gz"
         'jasper.patch')
 sha256sums=('0075973ee7dd89f0507873e2580ac78336452d29d34a07134b208f44e2feb709'
             'a3e1009e70be5a159250e3ea30d39f5aef1fa23eacece79e72deda51d7200159')
@@ -38,7 +38,8 @@ build() {
 
     android-${_android_arch}-cmake \
         -S . \
-        -B build \
+        -B build-shared \
+        -DBUILD_SHARED_LIBS=ON \
         -DPNG_PNG_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}/libpng" \
         -DPNG_LIBRARY="${ANDROID_PREFIX_LIB}/libpng.so" \
         -DTIFF_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
@@ -49,13 +50,33 @@ build() {
         -DJASPER_LIBRARIES="${ANDROID_PREFIX_LIB}/libjasper.so" \
         -DLCMS2_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
         -DLCMS2_LIBRARY="${ANDROID_PREFIX_LIB}/liblcms2.so"
-    make -C build $MAKEFLAGS
+    make -C build-shared $MAKEFLAGS
+
+    export LDFLAGS="${LDFLAGS} -ljbig -ldeflate -llzma -lwebp -lzstd"
+
+    android-${_android_arch}-cmake \
+        -S . \
+        -B build-static \
+        -DBUILD_SHARED_LIBS=OFF \
+        -DPNG_PNG_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}/libpng" \
+        -DPNG_LIBRARY="${ANDROID_PREFIX_LIB}/libpng.a" \
+        -DTIFF_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
+        -DTIFF_LIBRARY="${ANDROID_PREFIX_LIB}/libtiff.a" \
+        -DJPEG_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
+        -DJPEG_LIBRARY="${ANDROID_PREFIX_LIB}/libjpeg.a" \
+        -DJASPER_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
+        -DJASPER_LIBRARIES="${ANDROID_PREFIX_LIB}/libjasper.a" \
+        -DLCMS2_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
+        -DLCMS2_LIBRARY="${ANDROID_PREFIX_LIB}/liblcms2.a"
+    make -C build-static $MAKEFLAGS
 }
 
 package() {
     cd "${srcdir}/DevIL/DevIL"
     source android-env ${_android_arch}
 
-    make -C build DESTDIR="$pkgdir" install
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
+    make -C build-shared DESTDIR="$pkgdir" install
+    make -C build-static DESTDIR="$pkgdir" install
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
