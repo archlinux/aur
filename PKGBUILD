@@ -19,7 +19,6 @@ optdepends=(
     'slop: X11 Support'
 )
 
-# Set PKGDEST to a directory where you have write permissions
 PKGDEST="$HOME/.cache/pacman/pkg"
 
 package() {
