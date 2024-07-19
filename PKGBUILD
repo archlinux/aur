@@ -10,7 +10,7 @@ _generic_release=false
 # hack taken from wine-tkg PKGBUILD, real pkgrel is the eval one
 pkgver=9.13
 pkgrel=1
-eval pkgrel=1
+eval pkgrel=2
 
 ################################################################################################################################
 ################################################################################################################################
@@ -21,7 +21,7 @@ eval pkgrel=1
 _disabled_staging="" ## e.g. "-W Compiler_Warnings -W user32-. . ."
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="07-14-2024-e8f936c7-a442564f"
+_patchbase_tag="07-18-2024-6d6451fd-2c482721"
 
 ## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the custompatches folder
@@ -31,8 +31,8 @@ _custompatches=false
 
 ## uses wine/staging master if empty, uses given commit or tag if set
 ## only applies if _custompatches is true, otherwise overwritten by upstream commits from patchbase repo
-_desired_wine_commit=e8f936c745b24f794b36a0af794086e0f57c8551
-_desired_staging_commit=a442564f05a5a3c7954509266c21f3f3cdc12ad8
+_desired_wine_commit=6d6451fd6ce25ccce35cfcfc5b829940144a3f1a
+_desired_staging_commit=2c482721e3af9178693445186ead017fd194b744
 
 _strip_package=true
 _install_static=true ## .a libs which may be required for external programs such as winestreamproxy
@@ -41,7 +41,7 @@ _autoupdate=false ## not functional yet
 
 _cleanbuildfolders=false ## removes src, pkg folders on exit (both failure and success)
 
-## (true: wow64) leave empty unless you want to manually change the type of build 
+## (true: wow64) leave empty unless you want to manually change the type of build
 wow64build=
 
 ################################################################################################################################
@@ -295,7 +295,7 @@ prepare() { _set_vars;
   ## Patching setup
 
   touch "${_where}"/patchlog.txt || _failure
-  printf "Wine commit:%s\nStaging commit:%s\n" "${_desired_wine_commit}" "${_desired_staging_commit}" > "${_where}"/patchlog.txt
+  printf "Wine commit: %s\nStaging commit: %s\n" "${_patchbase_wine_commit}" "${_patchbase_staging_commit}" > "${_where}"/patchlog.txt
 
   ## Apply wine-staging patchset
   msg2 "Applying staging patches"
@@ -390,6 +390,7 @@ build() { _set_vars;
   _sharedopts=(
     --prefix=/opt/"${pkgname}"
     --disable-tests
+    --disable-winemenubuilder
     --with-x
     --with-gstreamer
     --with-wayland
@@ -496,7 +497,7 @@ _exit_cleanup() {
   fi
 }
 
-_failure() { 
+_failure() {
   if [ -n "$*" ]; then msg "$*"; fi
   error "Exiting."
   exit 1
