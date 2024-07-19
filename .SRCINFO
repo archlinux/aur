@@ -1,8 +1,8 @@
 pkgbase = zellij-selector-git
 	pkgdesc = Select zellij session
-	pkgver = 2.4.0.r1.g77f9301
-	pkgrel = 2
-	url = https://codeberg.org/stefanwimmer128/zellij-selector
+	pkgver = 2.5.0.r5.g6b44872
+	pkgrel = 1
+	url = https://gitlab.com/stefanwimmer128/zellij-selector
 	arch = any
 	license = MPL2
 	makedepends = git
@@ -19,7 +19,7 @@ pkgbase = zellij-selector-git
 	optdepends = bash: Option to open bash shell
 	provides = zellij-selector
 	conflicts = zellij-selector
-	source = zellij-selector::git+https://codeberg.org/stefanwimmer128/zellij-selector.git
+	source = zellij-selector::git+https://gitlab.com/stefanwimmer128/zellij-selector.git
 	sha256sums = SKIP
 
 pkgname = zellij-selector-git
