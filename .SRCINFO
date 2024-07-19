@@ -10,6 +10,7 @@ pkgbase = ayatana-indicator-datetime
 	makedepends = cmake-extras
 	makedepends = intltool
 	makedepends = properties-cpp
+	makedepends = glib2-devel
 	depends = gstreamer
 	depends = util-linux-libs
 	depends = libayatana-common
