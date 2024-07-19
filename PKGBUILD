@@ -1,43 +1,67 @@
-# Maintainer: Caleb Bassi <calebjbassi@gmail.com>
+# Maintainer:
+# Contributor: Caleb Bassi <calebjbassi@gmail.com>
 
-pkgname=joshuto-git
-_pkgname=${pkgname%-git}
-pkgver=r302.2258fd0
+_pkgname="joshuto"
+pkgname="$_pkgname-git"
+pkgver=0.9.8.r19.g235f339
 pkgrel=1
 pkgdesc="ranger-like terminal file manager written in Rust"
-arch=("any")
 url="https://github.com/kamiyaa/joshuto"
-license=("LGPL3")
-depends=("file" "xdg-utils")
-makedepends=("git" "cargo")
-provides=(${_pkgname})
-conflicts=(${_pkgname})
-source=("git+${url}")
-md5sums=("SKIP")
+license=('LGPL-3.0-only')
+arch=('x86_64')
 
-# https://wiki.archlinux.org/index.php/VCS_package_guidelines
+depends=(
+  'glibc'
+  'gcc-libs'
+)
+makedepends=(
+  "git"
+  "cargo"
+)
+optdepends=(
+  'fzf: for better file searching'
+  'xclip: for clipboard support on X11'
+  'xsel: for clipboard support on X11'
+  'wl-clipboard: for clipboard support on Wayland'
+  'zoxide: for use in cd functions'
+)
+
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=("SKIP")
+
 pkgver() {
-  cd "${_pkgname}"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
-# https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=loop
+_cargo_env() {
+  : ${CARGO_HOME:=$SRCDEST/cargo-home}
+
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+}
+
+prepare() {
+  _cargo_env
+
+  cd "$_pkgsrc"
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
 build() {
-  cd "${_pkgname}"
-  if command -v rustup > /dev/null 2>&1; then
-    RUSTFLAGS="-C target-cpu=native" rustup run stable \
-      cargo build --release
-  elif rustc --version | grep -q nightly; then
-    RUSTFLAGS="-C target-cpu=native" \
-      cargo build --release
-  else
-    cargo build --release
-  fi
+  export CFLAGS+=" -ffat-lto-objects"
+
+  _cargo_env
+
+  cd "$_pkgsrc"
+  cargo build --frozen --release --all-features
 }
 
 package() {
-  install -Dm755 "${srcdir}/${_pkgname}/target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm755 "$_pkgsrc/target/release/$_pkgname" -t "$pkgdir/usr/bin/"
 }
