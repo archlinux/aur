@@ -6,7 +6,7 @@ _pkgname="Google Chat Linux"
 pkgver=5.29.23_1
 _electronversion=29
 _nodeversion=18
-pkgrel=3
+pkgrel=4
 pkgdesc='Unofficial electron-based desktop client for Google Chat, electron not included'
 arch=('any')
 url='https://github.com/squalou/google-chat-linux'
@@ -17,17 +17,18 @@ depends=(
     'xdg-desktop-portal-impl'
 )
 makedepends=(
-    'npm>=8.15.0'
+    'npm'
     'nvm'
     'git'
     'gendesk'
+    'curl'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver//_/-}.tar.gz"
+    "${pkgname}.git::git+${url}.git#tag=${pkgver//_/-}"
     "${pkgname}.sh"
 )
-sha256sums=('dd1c116899b54a6e49d71c9f389a2bf6015a10a21d65c3817dd7f8bfc54861a4'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+sha256sums=('dff55f33845da6a38aef87c97d8e41fcd6194da1f548dddf02a58a74d9772732'
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
   export NVM_DIR="${srcdir}/.nvm"
   source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -42,14 +43,14 @@ build() {
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --categories="Network" --name="${_pkgname}" --exec="${pkgname} %U"
-    cd "${srcdir}/${pkgname}-${pkgver//_/-}"
-  export npm_config_build_from_source=true
+    gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Network" --name="${_pkgname}" --exec="${pkgname} %U"
+    cd "${srcdir}/${pkgname}.git"
+    export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-    export ELECTRONVERSION="${_electronversion}"
+    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
+    #export ELECTRONVERSION="${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
       export npm_config_registry=https://registry.npmmirror.com
@@ -60,18 +61,15 @@ build() {
       echo "Your network is OK."
     fi
     sed -e '/--no-force-async-hooks-checks/d' -e '/ELECTRON_DISABLE_SANDBOX/d' -i src/index.js
-    sed -e "s|normal-64.png|..\/..\/..\/..\/${pkgname}\/icon\/default\/normal-64.png|g" \
-        -e "s|badge-64.png|..\/..\/..\/..\/${pkgname}\/icon\/default\/badge-64.png|g" \
-        -e "s|offline-64.png|..\/..\/..\/..\/${pkgname}\/icon\/default\/offline-64.png|g" \
-        -i src/paths.js
-    npm install
-    npm run pack
+    sed "s|process.resourcesPath|\"\/usr\/lib\/${pkgname}\"|g" -i src/paths.js
+    NODE_ENV=development npm install
+    NODE_ENV=production npm run pack
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver//_/-}/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
-    cp -r "${srcdir}/${pkgname}-${pkgver//_/-}/dist/linux-"*/resources/icon "${pkgdir}/usr/lib/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver//_/-}/build/icons/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/${pkgname}.git/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
+    cp -r "${srcdir}/${pkgname}.git/dist/linux-"*/resources/icon "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/build/icons/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver//_/-}/dist/linux-"*/LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/dist/linux-"*/LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
