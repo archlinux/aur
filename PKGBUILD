@@ -1,3 +1,5 @@
+PKGDEST="$HOME/.cache/pacman/pkg/$pkgname"
+
 pkgname=e-z-recorder
 pkgver=1.2
 pkgrel=1
@@ -20,5 +22,5 @@ optdepends=(
 )
 
 package() {
-    install -Dm755 "$srcdir/e-z-recorder.sh" "$pkgdir/usr/bin/e-z-recorder"
+    install -Dm755 "$srcdir/e-z-recorder.sh" "$PKGDEST/usr/bin/e-z-recorder"
 }
