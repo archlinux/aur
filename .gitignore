@@ -9,3 +9,5 @@
 !wechat-uos-qt.desktop
 !wechat-uos-qt.svg
 !.gitignore
+!keyBlocker.cpp
+!CMakeLists.txt

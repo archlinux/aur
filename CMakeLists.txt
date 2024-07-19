@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.10)
+project(keyBlocker)
+set(CMAKE_STATIC_LIBRARY_PREFIX "")
+set(CMAKE_SHARED_LIBRARY_PREFIX "")
+add_library(keyBlocker SHARED keyBlocker.cpp)
