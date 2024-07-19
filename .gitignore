@@ -1,0 +1,5 @@
+/pkg/
+/src/
+/rofi-mpc/
+
+*.pkg.tar.zst
