@@ -23,5 +23,6 @@ optdepends=(
 PKGDEST="$HOME/.cache/pacman/pkg/$pkgname"
 
 package() {
+    mkdir -p "$PKGDEST"
     install -Dm755 "$srcdir/e-z-recorder.sh" "$pkgdir/usr/bin/e-z-recorder"
 }
