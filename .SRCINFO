@@ -1,0 +1,18 @@
+pkgbase = colosseum
+	pkgdesc = Open source simulator for autonomous robotics built on Unreal Engine with support for Unity
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://codexlabsllc.github.io/Colosseum/
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = gcc
+	depends = unreal-engine
+	depends = rpclib
+	depends = eigen
+	source = colosseum-2.2.0.tar.gz::https://github.com/CodexLabsLLC/Colosseum/archive/v2.2.0.tar.gz
+	source = CMakeLists.patch
+	sha256sums = a817c4a17101b56e0d01f7b5706744110212607a6bc8fb40bb5b84fd03ada24b
+	sha256sums = 6128b8042c5394cfea443e06da3fad1ce63da84082f1f6a027906026987dfe9c
+
+pkgname = colosseum
