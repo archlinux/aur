@@ -13,7 +13,7 @@ provides=('tmplr')
 conflicts=('tmplr')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/atomicptr/tmplr/releases/download/v0.1.3/tmplr_0.1.3_linux_amd64.tar.gz")
-sha256sums_x86_64=('35d6b77b404a3e2e1a33883f1a94c409313e2f932a437058eed3438ce6e094b9')
+sha256sums_x86_64=('1ebdc336e563bdc6c369e940bce02ec0c80cf81513c8e1fe87bd748db0fd842c')
 
 package() {
   install -Dm755 "./tmplr" "${pkgdir}/usr/bin/tmplr"
