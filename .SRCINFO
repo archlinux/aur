@@ -1,6 +1,6 @@
 pkgbase = ezcoo-cli
 	pkgdesc = A tool to control EZCOO KVM switches via the serial interface
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/luminger/ezcoo-cli
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = ezcoo-cli
 	depends = python-pyserial
 	depends = python-attrs
 	depends = python-click
-	source = https://github.com/luminger/ezcoo-cli/archive/refs/tags/0.1.0.tar.gz
-	sha256sums = b743fa0551e29e9a39e4a7d68740e00b604a1fbb74598229d0e4d9a091124de2
+	source = https://github.com/luminger/ezcoo-cli/archive/refs/tags/0.1.1.tar.gz
+	sha256sums = 9f88c5eec63b5fcb896f8dec995016c0f165c3e7cacb7f487c6506f02e443d94
 
 pkgname = ezcoo-cli
