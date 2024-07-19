@@ -1,0 +1,17 @@
+pkgbase = foxglove-bin
+	pkgdesc = An integrated visualization and diagnosis tool for robotics
+	pkgver = 2.9.0
+	pkgrel = 1
+	url = https://foxglove.dev/
+	arch = x86_64
+	arch = aarch64
+	license = MPL
+	provides = foxglove-studio
+	conflicts = foxglove-studio
+	replaces = foxglove-studio-bin
+	source_x86_64 = foxglove-bin-2.9.0-x86_64.deb::https://get.foxglove.dev/desktop/latest/foxglove-studio-2.9.0-linux-amd64.deb
+	sha256sums_x86_64 = 9cf5f46003bd6a5c3413bb36a1fc0b62014b4597beac4aaa59749aea9360a06a
+	source_aarch64 = foxglove-bin-2.9.0-aarch64.deb::https://get.foxglove.dev/desktop/latest/foxglove-studio-2.9.0-linux-arm64.deb
+	sha256sums_aarch64 = 4dbe193912ae7b2c4c9df3959ab2119a4d19edd5d17d4601b0da1596cd4c239d
+
+pkgname = foxglove-bin
