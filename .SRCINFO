@@ -113,7 +113,7 @@ pkgbase = wine-osu-spectator-wow64
 	source = 30-win32-aliases.conf
 	source = wine-binfmt.conf
 	source = buildiswow64
-	source = git+https://github.com/wine-mirror/wine.git#commit=6d6451fd6ce25ccce35cfcfc5b829940144a3f1a
+	source = git+https://gitlab.winehq.org/wine/wine.git#commit=6d6451fd6ce25ccce35cfcfc5b829940144a3f1a
 	source = git+https://github.com/wine-staging/wine-staging.git#commit=2c482721e3af9178693445186ead017fd194b744
 	source = git+https://github.com/whrvt/wine-osu-patches.git#tag=07-18-2024-6d6451fd-2c482721
 	sha512sums = dc115ccc8d64afc213d2860a2f3516c31aa2891cd1005498123d86e7e44e0fcf876fbc68c89b201ce5291a12127cb7ff478e9374dbd2512b5d094802780be160
