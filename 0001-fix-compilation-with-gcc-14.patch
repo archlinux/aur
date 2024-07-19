@@ -1,0 +1,102 @@
+From 8643ab27333579d2dd4946c515ae04f3f5cc9891 Mon Sep 17 00:00:00 2001
+From: Liao Junxuan <mikeljx@126.com>
+Date: Fri, 19 Jul 2024 14:16:07 +0800
+Subject: [PATCH] fix compilation with gcc 14
+
+With gcc 14, building fails with the following error:
+> error: template-id not allowed for destructor in C++20 [-Werror=
+> template-id-cdtor]
+---
+ clients/drcachesim/reader/compressed_file_reader.cpp | 4 ++--
+ clients/drcachesim/reader/lz4_file_reader.cpp        | 2 +-
+ clients/drcachesim/reader/record_file_reader.cpp     | 2 +-
+ clients/drcachesim/reader/snappy_file_reader.cpp     | 2 +-
+ clients/drcachesim/reader/zipfile_file_reader.cpp    | 4 ++--
+ 5 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/clients/drcachesim/reader/compressed_file_reader.cpp b/clients/drcachesim/reader/compressed_file_reader.cpp
+index 03af3f5d5..5007f5586 100644
+--- a/clients/drcachesim/reader/compressed_file_reader.cpp
++++ b/clients/drcachesim/reader/compressed_file_reader.cpp
+@@ -91,7 +91,7 @@ file_reader_t<gzip_reader_t>::file_reader_t()
+ /* clang-format off */ /* (make vera++ newline-after-type check happy) */
+ template <>
+ /* clang-format on */
+-file_reader_t<gzip_reader_t>::~file_reader_t<gzip_reader_t>()
++file_reader_t<gzip_reader_t>::~file_reader_t()
+ {
+     if (input_file_.file != nullptr) {
+         gzclose(input_file_.file);
+@@ -134,7 +134,7 @@ file_reader_t<gzip_reader_t>::read_next_entry()
+ /* clang-format off */ /* (make vera++ newline-after-type check happy) */
+ template <>
+ /* clang-format on */
+-record_file_reader_t<gzip_reader_t>::~record_file_reader_t<gzip_reader_t>()
++record_file_reader_t<gzip_reader_t>::~record_file_reader_t()
+ {
+     if (input_file_ != nullptr) {
+         gzclose(input_file_->file);
+diff --git a/clients/drcachesim/reader/lz4_file_reader.cpp b/clients/drcachesim/reader/lz4_file_reader.cpp
+index 1cf7e2c58..cc79f9682 100644
+--- a/clients/drcachesim/reader/lz4_file_reader.cpp
++++ b/clients/drcachesim/reader/lz4_file_reader.cpp
+@@ -70,7 +70,7 @@ file_reader_t<lz4_reader_t>::file_reader_t()
+ /* clang-format off */ /* (make vera++ newline-after-type check happy) */
+ template <>
+ /* clang-format on */
+-file_reader_t<lz4_reader_t>::~file_reader_t<lz4_reader_t>()
++file_reader_t<lz4_reader_t>::~file_reader_t()
+ {
+     if (input_file_.file != nullptr) {
+         delete input_file_.file;
+diff --git a/clients/drcachesim/reader/record_file_reader.cpp b/clients/drcachesim/reader/record_file_reader.cpp
+index 965e6f1a1..9b474f698 100644
+--- a/clients/drcachesim/reader/record_file_reader.cpp
++++ b/clients/drcachesim/reader/record_file_reader.cpp
+@@ -39,7 +39,7 @@ namespace drmemtrace {
+ /* clang-format off */ /* (make vera++ newline-after-type check happy) */
+ template <>
+ /* clang-format on */
+-record_file_reader_t<std::ifstream>::~record_file_reader_t<std::ifstream>()
++record_file_reader_t<std::ifstream>::~record_file_reader_t()
+ {
+ }
+ 
+diff --git a/clients/drcachesim/reader/snappy_file_reader.cpp b/clients/drcachesim/reader/snappy_file_reader.cpp
+index 1dd8bd57a..309b317f5 100644
+--- a/clients/drcachesim/reader/snappy_file_reader.cpp
++++ b/clients/drcachesim/reader/snappy_file_reader.cpp
+@@ -208,7 +208,7 @@ snappy_reader_t::read(size_t size, DR_PARAM_OUT void *to)
+ /* clang-format off */ /* (make vera++ newline-after-type check happy) */
+ template <>
+ /* clang-format on */
+-file_reader_t<snappy_reader_t>::~file_reader_t<snappy_reader_t>()
++file_reader_t<snappy_reader_t>::~file_reader_t()
+ {
+     // Empty.
+ }
+diff --git a/clients/drcachesim/reader/zipfile_file_reader.cpp b/clients/drcachesim/reader/zipfile_file_reader.cpp
+index acd1aebd9..ab613d3ed 100644
+--- a/clients/drcachesim/reader/zipfile_file_reader.cpp
++++ b/clients/drcachesim/reader/zipfile_file_reader.cpp
+@@ -143,7 +143,7 @@ file_reader_t<zipfile_reader_t>::file_reader_t()
+ /* clang-format off */ /* (make vera++ newline-after-type check happy) */
+ template <>
+ /* clang-format on */
+-file_reader_t<zipfile_reader_t>::~file_reader_t<zipfile_reader_t>()
++file_reader_t<zipfile_reader_t>::~file_reader_t()
+ {
+     if (input_file_.file != nullptr) {
+         unzClose(input_file_.file);
+@@ -258,7 +258,7 @@ record_file_reader_t<zipfile_reader_t>::record_file_reader_t()
+ }
+ 
+ template <>
+-record_file_reader_t<zipfile_reader_t>::~record_file_reader_t<zipfile_reader_t>()
++record_file_reader_t<zipfile_reader_t>::~record_file_reader_t()
+ {
+     if (input_file_->file != nullptr) {
+         unzClose(input_file_->file);
+-- 
+2.45.2
+

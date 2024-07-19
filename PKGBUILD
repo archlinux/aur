@@ -2,7 +2,7 @@
 _pkgname=dynamorio
 pkgname=$_pkgname-git
 pkgdesc="A dynamic instrumentation tool platform"
-pkgver=10.0.r6355.b9a0ba0e7
+pkgver=10.93.r6456.577db95d9
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/DynamoRIO/dynamorio"
@@ -16,11 +16,17 @@ source=(
     "${pkgname}::git+${url}.git"
     "git+https://github.com/intel/libipt.git"
     "git+https://github.com/madler/zlib.git"
-    )
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+    "0001-fix-compilation-with-gcc-14.patch"
+)
+sha256sums=(
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    '67f72650333680dffada443c424573214a6740b5bfabc92b012a44455ce4fb82'
+)
 
 pkgver() {
-	cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${pkgname}"
     printf "%s.r%s.%s" \
         "$(sed -n 's/.*VERSION_NUMBER_DEFAULT "\([[:digit:]]\+\.[[:digit:]]\+\).*/\1/p' CMakeLists.txt)" \
         "$(git rev-list --count HEAD)" \
@@ -28,23 +34,24 @@ pkgver() {
 }
 
 prepare() {
-	cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${pkgname}"
     git submodule init
     git config submodule.third_party/libipt.url "$srcdir/libipt"
     git config submodule.third_party/zlib.url "$srcdir/zlib"
     git -c protocol.file.allow=always submodule update
+    patch --forward --strip=1 --input=../0001-fix-compilation-with-gcc-14.patch
 }
 
 build() {
     cmake -B build-debug -S "${srcdir}/${pkgname}" \
         -DDEBUG=ON \
         -DCMAKE_INSTALL_PREFIX="/opt/${pkgname}"
-        
+
     cmake --build build-debug
 
     cmake -B build-release -S "${srcdir}/${pkgname}" \
         -DCMAKE_INSTALL_PREFIX="/opt/${pkgname}"
-        
+
     cmake --build build-release
 }
 
