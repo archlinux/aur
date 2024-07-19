@@ -12,23 +12,24 @@
 # installed version of that library. They change around paths every
 # update and just generally don't seem to care much.
 pkgname=synergy
-pkgver=1.14.6.19
+_tag=1.15.0+r3
+pkgver=${_tag/-*}
 pkgrel=1
 pkgdesc='Share a single mouse and keyboard between multiple computers'
 url='https://symless.com/synergy/'
 arch=('x86_64')
 # https://github.com/symless/synergy-core/blob/1.15.0.16-snapshot/LICENSE indicates GPLv2, and only one C++ file says "any later"
 license=('GPL-2.0-only')
-depends=('gcc-libs' 'libxtst' 'libxinerama' 'libxkbcommon-x11' 'avahi' 'curl' 'openssl' 'hicolor-icon-theme' 'libnotify' 'pugixml')
-makedepends=('git' 'libxt' 'cmake' 'qt5-base' 'qt5-tools' 'gmock' 'gtest')
-optdepends=('qt5-base: gui support')
+depends=('gcc-libs' 'libxtst' 'libxinerama' 'libxkbfile' 'openssl' 'libxrandr' 'hicolor-icon-theme' 'libnotify' 'pugixml')
+makedepends=('git' 'libxt' 'cmake' 'qt6-base' 'qt6-tools' 'gmock' 'gtest')
+optdepends=('qt6-base: gui support')
 checkdepends=('xorg-server-xvfb')
-source=("git+https://github.com/symless/synergy-core.git#tag=${pkgver}-stable"
+source=("git+https://github.com/symless/synergy-core.git#tag=${_tag}"
         use-system-libs.patch
         synergys.socket
         synergys.service)
-sha512sums=('1bd5128643f3c02df1c2652d170a0c1ea0a3e7177bd9102df293e367f0e53ca80a16bb42c4ef4fd66d6bfd2bebff3c850821aa41e7769355ed109b5f5639d7f2'
-            'e8f1b7d839335f61ef8cf40e901cccf981a3dcbd97ea04c9ea4e8f717367349bb05b980dde0bf91306d6545cba919a17509d5fbfa7d9019c16a6235a52f0d4ac'
+sha512sums=('5a65cf4c144f8ca09fa3ce41203864cb7a9b2fb4042afe00a557fc611568d62ec70dcf3b50fc16692472f3c1caf16b0afba3bffce6f859b54ff2c4e02aec78b9'
+            'fd521ed2464d91fe20576b51060224bc402489d5c08c13a34122f573ab4c77812c289ad09258829e190cbe2533dd170fd636587f68751965cbcc6039be5b6859'
             'f9c124533dfd0bbbb1b5036b7f4b06f7f86f69165e88b9146ff17798377119eb9f1a4666f3b2ee9840bc436558d715cdbfe2fdfd7624348fae64871f785a1a62'
             '9663a11b915e10e60317e732a4d1191e8f8ff19176994c27dd20aa445daab7565bd624e5575c9c639d144293879fbe8376834a076723f778fd322ebd1c9f2029')
 
@@ -43,7 +44,6 @@ build() {
   cd synergy-core
   cmake -B build -S . \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DSYNERGY_ENTERPRISE=ON \
     -DGIT_SUBMODULE=OFF \
     -DSYSTEM_PUGIXML=ON
   make -C build
@@ -51,10 +51,8 @@ build() {
 
 check() {
   cd synergy-core/build
-  ./bin/unittests
-  # Integration tests on Linux are broken
-  # https://github.com/symless/synergy-core/issues/7244
-  #xvfb-run --auto-display ./bin/integtests
+  xvfb-run --auto-display ./bin/unittests
+  xvfb-run --auto-display ./bin/integtests
 }
 
 package() {
@@ -66,16 +64,12 @@ package() {
   # install config
   install -Dm 644 doc/${pkgname}.conf* -t "${pkgdir}/etc"
 
-  # install manfiles
-  install -Dm 644 doc/${pkgname}c.man "${pkgdir}/usr/share/man/man1/${pkgname}c.1"
-  install -Dm 644 doc/${pkgname}s.man "${pkgdir}/usr/share/man/man1/${pkgname}s.1"
-
   # install systemd service and socket
   install -Dm 644 "${srcdir}"/synergys.{service,socket} -t "${pkgdir}/usr/lib/systemd/user"
 
   # install desktop/icon stuff
   install -Dm 644 res/synergy.svg -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
-  install -Dm 644 res/synergy.desktop -t "${pkgdir}/usr/share/applications"
+  install -Dm 644 res/dist/linux/synergy.desktop -t "${pkgdir}/usr/share/applications"
 }
 
 # vim:set ts=2 sw=2 et:
