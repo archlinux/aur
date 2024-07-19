@@ -2,7 +2,7 @@
 pkgbase=python-echo
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}"-doc)
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Callback Properties in Python"
 arch=('any')
@@ -14,14 +14,18 @@ makedepends=('python-setuptools-scm'
 #            'python-installer'
              'python-sphinx-automodapi'
              'python-numpydoc'
-             'python-numpy'
-             'python-qtpy'
-             'python-pyqt5')
-checkdepends=('python-pytest')  # numpy qtpy pyqt5 already in makedepends
+             'python-numpy')
+checkdepends=('python-pytest'
+              'python-qtpy'
+              'python-pyqt5')  # numpy already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'fix_sphinx-doc_link.patch')
-md5sums=('1099665ac250566484895f3012d0c828'
+md5sums=('347044236caa9ee57f7d89b707efee66'
          'b6441be6fa18db4f59a7784b1fcc67a6')
+
+get_pyver() {
+    python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
+}
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -35,19 +39,21 @@ build() {
 #   python -m build --wheel --no-isolation
 
     msg "Building Docs"
+    ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname/-/_}*egg-info \
+        build/lib/${_pyname/-/_}-${pkgver}-py$(get_pyver .).egg-info
     PYTHONPATH="../build/lib" make SPHINXOPTS="" -C doc html
-
 }
 
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest || warning "Tests failed" # -vv --color=yes
+    pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 }
 
 package_python-echo() {
-    depends=('python>=3.6' 'python-numpy' 'python-qtpy')
+    depends=('python>=3.8' 'python-numpy')
     optdepends=('python-pyqt5>=5.9: Interfacing with Qt widgets¶'
+                'python-qtpy: Interfacing with Qt widgets¶'
                 'python-echo-doc: Documentation for python-echo')
     cd ${srcdir}/${_pyname}-${pkgver}
 
