@@ -1,7 +1,7 @@
 pkgbase=5db5-rm2
 pkgname=('5db5-rm2-data-bin' '5db5-rm2-lv2-bin' '5db5-rm2-vst3-bin')
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://audioassault.mx/plugin/RM-2"
 license=('EULA')
@@ -9,7 +9,7 @@ depends=('alsa-lib' 'bzip2' 'brotli' 'freetype2' 'glibc' 'graphite' 'harfbuzz' '
 makedepends=('xdg-user-dirs' 'unzip')
 provides=('5db5-rm2')
 source=('RM-2 Linker')
-sha256sums=('1bdf08342d817c7830f1f5bc3b9f0bf232a26c273cf12d51f33b33b4546d596d')
+sha256sums=('7ffdc44a6b69444c5b665d5b4280c7610d6f0172739893f56ca316536235c4c6')
 
 prepare () {
 	_archive="`xdg-user-dir DOWNLOAD`/RM2Linux.zip"
