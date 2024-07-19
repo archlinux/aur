@@ -1,0 +1,19 @@
+pkgbase = pylucene
+	pkgdesc = Python bindings for Apache Lucene
+	pkgver = 9.10.0
+	pkgrel = 1
+	url = https://lucene.apache.org/pylucene/
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	depends = jdk-openjdk
+	depends = gradle
+	depends = python
+	depends = gcc
+	depends = make
+	depends = ant
+	depends = python-setuptools
+	source = https://downloads.apache.org/lucene/pylucene/pylucene-9.10.0-src.tar.gz
+	sha256sums = f41807c145cf57c8cc90134faa7e990d95c8a41f53d4b7478acec79bef64ece1
+
+pkgname = pylucene
