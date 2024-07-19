@@ -2,19 +2,19 @@
 
 _appname=user_saml
 pkgname=nextcloud-app-${_appname/_/-}
-pkgver=6.1.3
+pkgver=6.2.0
 pkgrel=1
 pkgdesc="App for authenticating Nextcloud users using SAML"
 arch=(x86_64)
 url="https://github.com/nextcloud/$_appname"
-license=(AGPL3)
+license=(AGPL-3.0-only)
 makedepends=(composer
              nextcloud
              rsync
              yq)
 _archive="$_appname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('9a1466faf4072cfb089bcb4a3c0ac6e30cfd94af27d215557c320b0c0c5fc65f')
+sha256sums=('1fbb6498f3be5a97139b885acc2e9cc1aa8d1be412e2b6c8e4d61d3606250b2e')
 
 # BEGIN boilerplate nextcloud app version clamping, see also other packages in group
 # 1. Call respective function helpers in check() and package() *after* cd'ing to the source directory
