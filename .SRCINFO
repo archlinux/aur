@@ -13,6 +13,7 @@ pkgbase = ayatana-indicator-messages
 	makedepends = intltool
 	makedepends = vala
 	makedepends = systemd
+	makedepends = glib2-devel
 	depends = accountsservice
 	depends = hicolor-icon-theme
 	depends = dconf
