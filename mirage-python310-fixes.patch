@@ -1,13 +1,8 @@
 diff --git a/mirage/imgfuncs.c b/mirage/imgfuncs.c
-index 88621c6..bd97e98 100644
+index f3e9ff6..bd97e98 100644
 --- a/mirage/imgfuncs.c
 +++ b/mirage/imgfuncs.c
-@@ -1,3 +1,4 @@
-+#define PY_SSIZE_T_CLEAN
- #include "Python.h"
- /**
-  * copy length chars from source to dest
-@@ -14,7 +15,7 @@ PyObject *rotate_right(PyObject *self, PyObject *args)
+@@ -15,7 +15,7 @@ PyObject *rotate_right(PyObject *self, PyObject *args)
  {
  	char *a1;
  	char *a2;
@@ -16,7 +11,7 @@ index 88621c6..bd97e98 100644
  	int w1, w2;
  	int h1, h2;
  	int rws1, rws2;
-@@ -61,7 +62,7 @@ PyObject *rotate_left(PyObject *self, PyObject *args)
+@@ -62,7 +62,7 @@ PyObject *rotate_left(PyObject *self, PyObject *args)
  {
  	char *a1;
  	char *a2;
@@ -25,7 +20,7 @@ index 88621c6..bd97e98 100644
  	int w1, w2;
  	int h1, h2;
  	int rws1, rws2;
-@@ -108,7 +109,7 @@ PyObject *rotate_mirror(PyObject *self, PyObject *args)
+@@ -109,7 +109,7 @@ PyObject *rotate_mirror(PyObject *self, PyObject *args)
  {
  	char *a1;
  	char *a2;
@@ -34,7 +29,7 @@ index 88621c6..bd97e98 100644
  	int w1, w2;
  	int h1, h2;
  	int rws1, rws2;
-@@ -151,7 +152,7 @@ PyObject *flip_vert(PyObject *self, PyObject *args)
+@@ -152,7 +152,7 @@ PyObject *flip_vert(PyObject *self, PyObject *args)
  {
  	char *a1;
  	char *a2;
@@ -43,7 +38,7 @@ index 88621c6..bd97e98 100644
  	int w1, w2;
  	int h1, h2;
  	int rws1, rws2;
-@@ -194,7 +195,7 @@ PyObject *flip_horiz(PyObject *self, PyObject *args)
+@@ -195,7 +195,7 @@ PyObject *flip_horiz(PyObject *self, PyObject *args)
  {
  	char *a1;
  	char *a2;
@@ -52,20 +47,3 @@ index 88621c6..bd97e98 100644
  	int w1, w2;
  	int h1, h2;
  	int rws1, rws2;
-diff --git a/mirage/xmouse.c b/mirage/xmouse.c
-index 0309676..c368300 100644
---- a/mirage/xmouse.c
-+++ b/mirage/xmouse.c
-@@ -1,3 +1,4 @@
-+#define PY_SSIZE_T_CLEAN
- #include <Python.h>
- #include <X11/Xlib.h>
- 
-@@ -39,6 +40,7 @@ static PyMethodDef methods[] =
- {
-     {"geometry", xmouse_geometry, METH_VARARGS,
-      "Get the geometry of the window under the mouse cursor."},
-+    {NULL, NULL, 0}
- };
- 
- static PyModuleDef xmouse_module = {
