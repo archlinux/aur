@@ -1,0 +1,28 @@
+pkgbase = fjordlauncher-qt5-bin
+	pkgdesc = Prism Launcher fork with support for alternative auth servers
+	pkgver = 8.4.1
+	pkgrel = 1
+	url = https://github.com/unmojang/FjordLauncher
+	arch = x86_64
+	license = GPL-3.0-only AND LGPL-3.0-or-later AND LGPL-2.0-or-later AND Apache-2.0 AND MIT AND BSD-2-Clause AND BSD-3-Clause AND LicenseRef-Batch AND OFL-1.1
+	depends = java-runtime=17
+	depends = libgl
+	depends = qt5-base
+	depends = qt5-svg
+	depends = qt5-imageformats
+	depends = zlib
+	depends = hicolor-icon-theme
+	optdepends = glfw: to use system GLFW libraries
+	optdepends = openal: to use system OpenAL libraries
+	optdepends = visualvm: Profiling support
+	optdepends = xorg-xrandr: for older minecraft versions
+	optdepends = java-runtime=8: support for Minecraft versions < 1.17
+	optdepends = flite: minecraft voice narration
+	provides = fjordlauncher-qt5
+	conflicts = fjordlauncher
+	conflicts = fjordlauncher-qt5
+	noextract = FjordLauncher-Linux-Qt5-8.4.1.tar.gz
+	source = https://github.com/unmojang/FjordLauncher/releases/download/8.4.1/FjordLauncher-Linux-Qt5-8.4.1.tar.gz
+	sha256sums = 83bf4ddf70d516a3d61a617dcaf67ab6a98531b8c9a26fd67737a2f8846fbe29
+
+pkgname = fjordlauncher-qt5-bin
