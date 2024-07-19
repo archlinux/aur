@@ -1,7 +1,7 @@
 pkgbase=doubletake
 pkgname=('doubletake-data-bin' 'doubletake-lv2-bin' 'doubletake-vst3-bin')
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://audioassault.mx/plugin/DoubleTake"
 license=('EULA')
@@ -20,7 +20,7 @@ prepare () {
 
 package_doubletake-data-bin() {
     ## Install Asset Data
-    pkgdesc="Saturator Plugin (Data Assets)"
+    pkgdesc="Vocal Take Processor Plugin (Data Assets)"
     groups=('pro-audio')
 
     ## Make data assets dir
@@ -35,7 +35,7 @@ package_doubletake-data-bin() {
 
 package_doubletake-lv2-bin() {
     ## Install LV2 Plugin
-    pkgdesc="Saturator Plugin (LV2)"
+    pkgdesc="Vocal Take Processor Plugin (LV2)"
     depends=('doubletake-data-bin')
     groups=('pro-audio' 'lv2-plugins')
     install -Dm755 "$srcdir/DoubleTakeLinux/DoubleTake.lv2/DoubleTake.so" "$pkgdir/usr/lib/lv2/DoubleTake.lv2/DoubleTake.so"
@@ -46,7 +46,7 @@ package_doubletake-lv2-bin() {
 
 package_doubletake-vst3-bin() {
     ## Install VST3 Plugin
-    pkgdesc="Saturator Plugin (VST3)"
+    pkgdesc="Vocal Take Processor Plugin (VST3)"
     depends=('doubletake-data-bin')
     groups=('pro-audio' 'vst3-plugins')
     install -Dm755 "$srcdir/DoubleTakeLinux/DoubleTake.vst3/Contents/Resources/moduleinfo.json" "$pkgdir/usr/lib/vst3/DoubleTake.vst3/Contents/Resources/moduleinfo.json"
