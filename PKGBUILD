@@ -22,5 +22,7 @@ optdepends=(
 )
 
 package() {
-    install -Dm755 "$srcdir/e-z-recorder.sh" "$PKGDEST/usr/bin/e-z-recorder"
+    install -d -m755 "${pkgdir}/usr/bin"
+    echo "#!/bin/bash" > "${pkgdir}/usr/bin/e-z-recorder"
+    install -Dm755 "$srcdir/e-z-recorder.sh" "$pkgdir/usr/bin/e-z-recorder"
 }
