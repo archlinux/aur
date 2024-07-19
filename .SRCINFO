@@ -1,8 +1,8 @@
 pkgbase = jq.sh-git
 	pkgdesc = jq-in-shell integration library
-	pkgver = 1.0.0.r0.g769f5d7
+	pkgver = 1.0.1.r0.g7559b52
 	pkgrel = 1
-	url = https://git.stefanwimmer128.eu/stefanwimmer128/jq.sh
+	url = https://gitlab.com/stefanwimmer128/jq.sh
 	arch = any
 	license = MPL2
 	makedepends = git
@@ -15,7 +15,7 @@ pkgbase = jq.sh-git
 	optdepends = yq: Adds support for yq, xq and tomlq
 	provides = jq.sh
 	conflicts = jq.sh
-	source = jq.sh::git+https://git.stefanwimmer128.eu/stefanwimmer128/jq.sh.git
+	source = jq.sh::git+https://gitlab.com/stefanwimmer128/jq.sh.git
 	sha256sums = SKIP
 
 pkgname = jq.sh-git
