@@ -79,7 +79,7 @@ source=(
   "30-win32-aliases.conf"
   "wine-binfmt.conf"
   "buildiswow64"
-  "git+https://github.com/wine-mirror/wine.git#commit=${_desired_wine_commit:-master}"
+  "git+https://gitlab.winehq.org/wine/wine.git#commit=${_desired_wine_commit:-master}"
   "git+https://github.com/wine-staging/wine-staging.git#commit=${_desired_staging_commit:-master}"
 )
 
