@@ -7,7 +7,7 @@ _android_arch=aarch64
 
 pkgname=android-${_android_arch}-libtiff
 pkgver=4.6.0
-pkgrel=3
+pkgrel=4
 arch=('any')
 pkgdesc="Library for manipulation of TIFF images (Android ${_android_arch})"
 url="http://www.simplesystems.org/libtiff/"
@@ -26,8 +26,8 @@ build() {
     cd "${srcdir}/tiff-${pkgver}"
     source android-env ${_android_arch}
 
-    export CFLAGS="${CFLAGS} -fno-strict-aliasing"
-    export CXXFLAGS="${CXXFLAGS} -fno-strict-aliasing"
+    export CFLAGS="${CFLAGS} -fPIC -fno-strict-aliasing"
+    export CXXFLAGS="${CXXFLAGS} -fPIC -fno-strict-aliasing"
 
     android-${_android_arch}-configure \
         --sysconfdir="${ANDROID_PREFIX_ETC}" \
