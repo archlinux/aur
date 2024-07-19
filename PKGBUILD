@@ -3,7 +3,7 @@ pkgname=napcat-bin
 _pkgname=NapCat
 pkgver=1.6.6
 pkgrel=1
-pkgdesc="基于NTQQ的无头Bot框架"
+pkgdesc="基于NTQQ的无头Bot框架."
 arch=(
     'aarch64'
     'x86_64'
