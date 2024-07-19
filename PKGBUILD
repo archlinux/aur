@@ -3,7 +3,7 @@ pkgname=pear-rec-bin
 _pkgname="@${pkgname%-bin}desktop"
 pkgver=1.3.17
 _electronversion=29
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source, cross-platform terminal for seamless workflows"
 arch=(
     'x86_64'
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('ef86d723e805c7449078cefe54fd7345c793f90e1d1bd3e55a4792ab5587a5ce'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
