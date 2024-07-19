@@ -1,11 +1,11 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=drand
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Distributed Randomness Beacon Daemon"
 arch=(x86_64)
 url=https://github.com/drand/drand
-license=(MIT)
+license=('Apache-2.0 OR MIT')
 depends=(glibc)
 makedepends=(go)
 source=($pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/refs/tags/v$pkgver.tar.gz)
