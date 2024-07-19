@@ -2,7 +2,7 @@
 
 pkgname=opera-beta
 pkgver=113.0.5230.8
-pkgrel=2
+pkgrel=1
 pkgdesc='A fast and secure web browser and Internet suite - beta stream'
 arch=('x86_64')
 url='https://www.opera.com/computer'
