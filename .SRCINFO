@@ -1,0 +1,15 @@
+pkgbase = quickshot
+	pkgdesc = A simple xdg-desktop-portal based screenshot tool
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Kl4rry/quickshot
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = cargo
+	makedepends = mold
+	makedepends = gzip
+	depends = xdg-desktop-portal
+	source = quickshot-1.0.0.tar.gz::https://static.crates.io/crates/quickshot/quickshot-1.0.0.crate
+	md5sums = SKIP
+
+pkgname = quickshot
