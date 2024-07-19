@@ -1,14 +1,14 @@
 pkgbase = ruby-gli
 	pkgdesc = Make awesome command-line applications the easy way
-	pkgver = 2.21.4
+	pkgver = 2.21.5
 	pkgrel = 1
 	url = https://github.com/davetron5000/gli
 	arch = any
 	license = Apache-2.0
 	makedepends = rubygems
 	depends = ruby
-	noextract = gli-2.21.4.gem
-	source = https://rubygems.org/downloads/gli-2.21.4.gem
-	md5sums = dfba911f5af63f2e0969f0d276827874
+	noextract = gli-2.21.5.gem
+	source = https://rubygems.org/downloads/gli-2.21.5.gem
+	md5sums = c72ffd1ac3f91e691f7e647e28101e7e
 
 pkgname = ruby-gli

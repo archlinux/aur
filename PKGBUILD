@@ -1,7 +1,7 @@
 # Maintainer: Tom Vincent <aur@tlvince.com>
 pkgname=ruby-gli
 _gemname=gli
-pkgver=2.21.4 # renovate: datasource=rubygems depName=gli
+pkgver=2.21.5 # renovate: datasource=rubygems depName=gli
 pkgrel=1
 pkgdesc="Make awesome command-line applications the easy way"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('ruby')
 makedepends=('rubygems')
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=("${_gemname}-${pkgver}.gem")
-md5sums=('dfba911f5af63f2e0969f0d276827874')
+md5sums=('c72ffd1ac3f91e691f7e647e28101e7e')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
