@@ -9,7 +9,7 @@ depends=('perl' 'openssl' 'perl-crypt-passphrase' 'perl-crypt-passphrase-argon2'
 		'perl-file-homedir' 'perl-file-readbackwards' 'perl-http-acceptlanguage' 'perl-syntax-keyword-try' 'perl-future-asyncawait'
 		'perl-io-socket-ssl' 'perl-irc-utils' 'perl-json-validator' 'perl-link-embedder' 'perl-module-install'
 		'perl-mojolicious' 'perl-mojolicious-plugin-openapi' 'perl-mojolicious-plugin-syslog' 'perl-parse-irc'
-		'perl-text-markdown-hoedown' 'perl-time-piece' 'perl-unicode-utf8' 'perl-cpanel-json-xs' 'perl-ev' 'perl-yaml-libyaml') #cpanminus
+		'perl-text-markdown-hoedown' 'perl-time-piece' 'perl-unicode-utf8' 'perl-cpanel-json-xs' 'perl-ev' 'perl-yaml-libyaml' 'perl-mojolicious')
 makedepends=('git' 'cpanminus')
 checkdepends=('perl-test-deep')
 source=("git+https://github.com/convos-chat/convos.git"
@@ -18,7 +18,6 @@ sha256sums=('SKIP' '453f0e3404114d97c3b4ddc9f9ae3de559d827c63e2710170735d3317973
 build() {
     cd "$srcdir/convos"
     ./script/convos install
-    cpanm --local-lib="$pkgdir/usr/share/convos" Mojolicious::Commands
 }
 package() {
     cd "$srcdir/convos"
