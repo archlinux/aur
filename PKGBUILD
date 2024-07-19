@@ -2,14 +2,15 @@
 
 _pkgname="clai"
 pkgname="${_pkgname}-git"
-pkgver=1.4.2.r0.gc561591
+pkgver=1.4.5.r0.ge7910e2
 pkgrel=1
 pkgdesc="Command line artificial intelligence - Multi-vendor generation in your terminal"
 arch=('any')
 url="https://github.com/baalimago/${_pkgname}"
 license=('MIT')
-depends=('glibc')
 makedepends=('git' 'go')
+depends=('glibc')
+optdepends=('glow: for formatted markdown output when querying text responses')
 provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}"
@@ -44,6 +45,7 @@ check() {
 package() {
   cd "${srcdir}/${_pkgsrc}"
   install -Dm755 "build/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dm644 "README.md"   "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -Dm644 "EXAMPLES.md" "${pkgdir}/usr/share/doc/${_pkgname}/EXAMPLES.md"
+  install -Dm644 "LICENSE"     "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
