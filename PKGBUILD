@@ -19,8 +19,9 @@ optdepends=(
     'slop: X11 Support'
 )
 
-PKGDEST="$HOME/.cache/pacman/pkg"
+
+PKGDEST="$HOME/.cache/pacman/pkg/$pkgname"
 
 package() {
-    install -Dm755 "$srcdir/e-z-recorder.sh" "$PKGDEST/usr/bin/e-z-recorder"
+    install -Dm755 "$srcdir/e-z-recorder.sh" "$pkgdir/usr/bin/e-z-recorder"
 }
