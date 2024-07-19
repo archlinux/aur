@@ -1,0 +1,19 @@
+pkgbase = dns2hostssyncer-git
+	pkgdesc = A tool to sync DNS records with the hosts file using PowerDNS Admin API
+	pkgver = 1.0+5+g0a1821b
+	pkgrel = 1
+	url = https://github.com/Neboer/DNS2HostsSyncer
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = ninja
+	depends = nlohmann-json
+	depends = spdlog
+	depends = argparse
+	depends = restclient-cpp-cmake-git
+	provides = dns2hostssyncer
+	conflicts = dns2hostssyncer
+	source = DNS2HostsSyncer::git+https://github.com/Neboer/DNS2HostsSyncer
+	sha256sums = SKIP
+
+pkgname = dns2hostssyncer-git
