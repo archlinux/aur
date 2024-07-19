@@ -1,24 +1,25 @@
 # Maintainer: IgorPetrovcm <igorpetrov42ru@gmail.com>
-pkgbase='smdbottom-git'
 pkgname='smdbottom-git'
-pkgver='1.0.0'
+pkgver='1.0.1'
 pkgrel=1
 pkgdesc="A set of bottom libraries for simpledot"
 arch=('x86_64')
-url="https://github.com/IgorPetrovcm/smdbottom"
+url="https://github.com/IgorPetrovcm/smdbottom-git"
 license=('MIT')
 depends=('man-pages' 'util-linux' 'util-linux-libs')
 makedepends=('git')
 provides=('libsmdbottom.so')
-source=("smdbottom-${pkgver}.tar.gz::https://github.com/IgorPetrovcm/smdbottom/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/IgorPetrovcm/smdbottom/archive/refs/tags/v${pkgver}.tar.gz")
+md5sums=('SKIP')
 
 prepare() {
-	tar -xvzf smdbottom-$pkgver.tar.gz
-	cd smdbottom-"$pkgver"
-	sh configure
+	tar -xvzf ${pkgname}-$pkgver.tar.gz
+	cd ${pkgname}-"$pkgver"
+	sh configure /usr
+	sh install-dev /usr
 }
 
 package() {
-	cd smdbottom-"$pkgver"
-	make PREFIX=/usr install
+	cd $pkgname-$pkgver
+	make install
 }
