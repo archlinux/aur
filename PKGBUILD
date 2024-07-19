@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: Your Name <someshwar1006@gmail.com>
 pkgname=kernel-builder
 pkgver=2.0
 pkgrel=3
@@ -13,7 +13,6 @@ sha256sums=('738c429410d2ece61c40075a6b602af36661eb33b0ceafd4c9bbfaa4648dab39')
 package() {
   cd "$srcdir/"
 
-  # Ensure python-pip is installedy7
 
   # Use pip to install requests to the package directory
   pip install --target="$pkgdir/usr/lib/$pkgname" requests
