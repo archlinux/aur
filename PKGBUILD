@@ -9,8 +9,8 @@
 
 # https://releases.electronjs.org/
 
-_pkgver=29.4.2
-pkgrel=4
+_pkgver=29.4.5
+pkgrel=1
 pkgver="${_pkgver/-/.}"
 _major_ver=${pkgver%%.*}
 _projectname=electron
@@ -49,12 +49,12 @@ source_x86_64=(
 	"${_releaseurl}/chromedriver-v${_pkgver}-linux-x64.zip"
 	"${_releaseurl}/${_projectname}-v${_pkgver}-linux-x64.zip"
 )
-sha256sums_x86_64=('e612ae9910bfd004ced13cdef0dda9e49d699c69ac18f04900b1129b98d41b23'
-                   'eb07a8137fde970450242c51e0c2f8ef6556f377a21c357584aa2632ee9e1d3f')
-sha256sums_armv7h=('e7bc85b47ec47f282a6d198f33c656618f9011366f47bb04fd31cef331691c8b'
-                   'a75e2487ea1a1b292fbc160618167c204f161c602780f2b997b75d6ef5bbe539')
-sha256sums_aarch64=('b501dac3cd694a879a82f65d6a15047ff417c3b5d70107ee38973f4d16477ea1'
-                    'a5c2bc148d3f6c3ee2bd15289243a1b75093afde3753d0aa1125d2cb621f5b59')
+sha256sums_x86_64=('4b305c3b0ce7b67316143162ba78bf217a95aa255c0cc847b2553551b0296790'
+                   'b81bac1ffa3b0d82837d05212e988854ca9db0350c571857e0851f34443a5ecd')
+sha256sums_armv7h=('128b6312f8677da8e133fc7878c7a476bd80f89d7002968e5f3d5946979c33a9'
+                   '1f8681870ffda20a4f45afffd850619a55e711b3f6a033a5ac4a659540f7b339')
+sha256sums_aarch64=('5bef9d44e32b853c31a11140c46304cfe2ba821e403beb55f14b9aa875ae1488'
+                    'b27d87b8d0da41cab3c683ac7fa71af84492fe5f9bcd5970da0c73901d18c5f8')
 package() {
 	install -dm755 "${pkgdir}/usr/lib/${_pkgname}/"
 	find . -mindepth 1 -maxdepth 1 -type f ! -name "*.zip" ! -name "LICENSE*" -exec cp -r --no-preserve=ownership --preserve=mode -t "${pkgdir}/usr/lib/${_pkgname}/." {} +
