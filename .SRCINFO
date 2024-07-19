@@ -9,12 +9,13 @@ pkgbase = nora-git
 	makedepends = git
 	makedepends = nvm
 	makedepends = gendesk
+	makedepends = curl
 	depends = electron30
 	provides = nora=3.0.0.stable
 	conflicts = nora
 	source = nora.git::git+https://github.com/Sandakan/Nora.git
 	source = nora.sh
 	sha256sums = SKIP
-	sha256sums = 41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = nora-git
