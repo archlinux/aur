@@ -3,7 +3,7 @@ pkgname=nora-bin
 _pkgname=Nora
 pkgver=3.0.0_stable
 _electronversion=30
-pkgrel=1
+pkgrel=2
 pkgdesc="An elegant music player built using Electron and React. Inspired by Oto Music for Android by Piyush Mamidwar."
 arch=('x86_64')
 url="https://github.com/Sandakan/Nora"
@@ -19,7 +19,7 @@ source=(
 )
 sha256sums=('92aa57f9ec455a51c8d26664b460916d70b68a4e36f104907d68a67c4868beef'
             '7c27f3771d31e4ba1a227b2aec04ff8892512ba80dd0fb9435115a6523e2980e'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
