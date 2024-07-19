@@ -2,12 +2,12 @@
 # Contributor: GI_Jack <GI_Jack@hackermail.com>
 
 pkgname=flcluster
-pkgver=1.0.7
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Amateur (Ham) Radio program for accessing dxcluster nodes."
 arch=('x86_64' 'i686')
 url="http://www.w1hkj.com/flcluster-help/"
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('hamlib' 'fltk' 'libjpeg' 'portaudio' 'flxmlrpc' 'libsamplerate'
 	 'libsndfile' 'pulseaudio' 'xmlrpc-c' 'hamradio-menus')
 optdepends=('fldigi: Intergrate with fldigi')
@@ -28,5 +28,5 @@ package() {
 	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" install
 }
-md5sums=('5932fa07817d33346cc2c82b80007a40')
-sha256sums=('3df2d10b7886b72b857e972a319c6af4f476ba5e60ad200b4de46978395bc161')
+md5sums=('db4dd756e792c94a25ec4ad267a79430')
+sha256sums=('b18911de5108102627a4eee5cd33c3e3aae409088d6fc47312b41f35b8acf2a7')
