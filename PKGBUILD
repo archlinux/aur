@@ -1,7 +1,8 @@
-# Maintainer: atom <admin@eyun.cf>
+# Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
+# Contributor: atom <admin@eyun.cf>
 
 pkgname=python-esphome-dashboard
-pkgver=20230214.0
+pkgver=20240620.0
 pkgrel=1
 pkgdesc="A user facing dashboard embedded in ESPHome"
 arch=('any')
@@ -10,7 +11,6 @@ makedepends=('python-setuptools' 'npm')
 url="https://github.com/esphome/dashboard"
 license=('MIT')
 source=(dashboard-$pkgver.tar.gz::https://github.com/esphome/dashboard/archive/$pkgver.tar.gz)
-sha256sums=('bdea1aee8ab9e7427f98d941dc2aa73f75e91afe06a302a3f3b3790597a9ec80')
 
 build() {
   cd "$srcdir/dashboard-$pkgver"
@@ -25,3 +25,4 @@ package() {
   python setup.py install --skip-build -O1 --root="$pkgdir"
   install -m0644 -D "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+sha256sums=('903f58b24edf7d6ae1e87259d6bce1a427fa8b84aaeaf8953b551195ecd88d11')
