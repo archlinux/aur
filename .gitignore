@@ -1,0 +1,7 @@
+*.pkg.tar.zst
+*.tar.gz
+*.zip
+pkg/
+src/
+edk2/
+.idea/

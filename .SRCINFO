@@ -1,0 +1,22 @@
+pkgbase = i915ovmf
+	pkgdesc = i915ovmfPkg VBIOS for Intel GPU Passthrough GVT-g/GVT-d
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/x78x79x82x79/i915ovmfPkg
+	arch = x86_64
+	license = unknown
+	depends = pacman>6.1
+	depends = git
+	depends = util-linux
+	depends = bash
+	optdepends = qemu-system-x86
+	provides = i915ovmfpkg
+	conflicts = i915ovmfpkg
+	source = i915ovmf.tar.gz::https://github.com/x78x79x82x79/i915ovmfPkg/archive/refs/tags/v1.0.0.tar.gz
+	source = edk2::git+https://github.com/tianocore/edk2.git
+	source = edk2-platforms.zip::https://github.com/tianocore/edk2-platforms/archive/refs/heads/master.zip
+	sha256sums = c767554608369eba083b877077246be91bb84ca039e22ceb74d638b5bc61274e
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = i915ovmf
