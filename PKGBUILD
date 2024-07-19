@@ -5,7 +5,7 @@ pkgver=1.21.1
 pkgrel=1
 arch=('x86_64' 'i686' 'aarch64')
 url='https://github.com/vbauerster/getparty'
-license=('BSD')
+license=('BSD-3-Clause')
 makedepends=('git' 'go')
 
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
