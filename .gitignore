@@ -1,4 +1,4 @@
 /pkg/
 /src/
 /zellij-selector/
-/*.tar.zst
+*.tar.*
