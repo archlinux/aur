@@ -1,7 +1,7 @@
 # Maintainer: Neboer <your.email@example.com>
 pkgname=dns2hostssyncer-git
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to sync DNS records with the hosts file using PowerDNS Admin API"
 arch=('x86_64')
 url="https://github.com/Neboer/DNS2HostsSyncer"
