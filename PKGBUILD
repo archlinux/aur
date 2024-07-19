@@ -1,5 +1,5 @@
-# Maintainer: Cortex
-# Forked from Vesktop
+# Maintainer: verysillycat
+## Forked from vesktop-git
 
 ## options
 #: ${_electron_version:=31}
@@ -15,12 +15,28 @@ url="https://github.com/verticalsync/Sunroof"
 license=('GPL-3.0-only')
 arch=("any")
 
+# electron version detection
+if [ -z "$_electron_version" ]; then
+  _electron_version_request=$(
+    curl -LSsf https://github.com/verticalsync/Sunroof/raw/main/package.json \
+      | grep '"electron":' \
+      | sed -Ee 's@^\s*"electron": "\^([0-9]+)\..*".*$@\1@' \
+      | sort -rV | head -1
+  )
+fi
+
+if [ -n "$_electron_version_request" ]; then
+  if pacman -Qi "electron${_electron_version_request:?}" > /dev/null 2>&1 || pacman -Qi "electron${_electron_version_request:?}-bin" > /dev/null 2>&1; then
+    : ${_electron_version:=$_electron_version_request}
+  fi
+fi
+
+# continue package
 depends=(
   "electron${_electron_version:-}"
 )
 makedepends=(
   'git'
-  'nodejs'
   'pnpm'
 )
 optdepends=(
@@ -31,7 +47,7 @@ optdepends=(
 provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=(
   "$_pkgname"
-  "sunroof"
+  "suncord"
 )
 
 _pkgsrc="$_pkgname"
@@ -54,7 +70,7 @@ build() {
     -i "$_pkgsrc/package.json"
 
   cd "$_pkgsrc"
-  pnpm i
+  pnpm install
   pnpm package:dir
 }
 
@@ -66,8 +82,15 @@ package() {
   install -Dm644 "$_pkgsrc/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << END
-#!/bin/sh
-exec electron${_electron_version:-} /$_install_path/$_pkgname/app.asar "\$@"
+#!/usr/bin/env sh
+XDG_CONFIG_HOME="\${XDG_CONFIG_HOME:-\$HOME/.config}"
+_FLAGS_FILE="\$XDG_CONFIG_HOME/${_pkgname}-flags.conf"
+
+if [ -r "\$_FLAGS_FILE" ]; then
+  _USER_FLAGS="\$(grep -v '^#' "\$_FLAGS_FILE")"
+fi
+
+exec electron${_electron_version:-} /$_install_path/$_pkgname/app.asar \$_USER_FLAGS "\$@"
 END
 
   install -Dm755 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
