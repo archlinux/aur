@@ -15,7 +15,6 @@ pkgbase = napcat-bin
 	options = !strip
 	options = !emptydirs
 	source = LICENSE-1.6.6::https://raw.githubusercontent.com/NapNeko/NapCatQQ/v1.6.6/LICENSE
-	source = napcat.sh
 	sha256sums = f9dd38354229f567957ca10faeba7c2ee381db370507ca1db46d1ab7224ea5fc
 	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 	source_aarch64 = napcat-1.6.6-aarch64.zip::https://github.com/NapNeko/NapCatQQ/releases/download/v1.6.6/NapCat.linux.arm64.zip
