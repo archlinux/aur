@@ -2,7 +2,7 @@
 
 pkgname=python-pyngrok
 _name=${pkgname#python-}
-pkgver=7.1.6
+pkgver=7.2.0
 pkgrel=1
 pkgdesc="A Python wrapper for ngrok"
 url="https://github.com/alexdlaird/pyngrok"
@@ -14,7 +14,7 @@ conflicts=('ngrok')
 
 source=("$_name-$pkgver.tar.gz"::"https://github.com/alexdlaird/pyngrok/archive/$pkgver.tar.gz")
 
-sha256sums=('f3586fc7abd018afb30e52226e0100fb0f87509d9608895c19bafbb931aaa2d9')
+sha256sums=('fe6cdb778d3cdfad0c14daf9faa8b6768142df244857e7a7cd4cfab0ab405e40')
 
 build() {
     cd $_name-$pkgver
