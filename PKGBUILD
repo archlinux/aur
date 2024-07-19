@@ -2,7 +2,7 @@
 pkgname=muffon-bin
 pkgver=2.0.3
 _electronversion=29
-pkgrel=2
+pkgrel=3
 pkgdesc="Music streaming browser,retrieves audio, video and metadata from various Internet sources."
 arch=('x86_64')
 url="https://muffon.netlify.app/"
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('f8c95fa2bcad631402fcd65986293c853a7942011e3b6a24194fdc0ba1a4d8f3'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
