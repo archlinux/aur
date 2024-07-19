@@ -1,6 +1,6 @@
 pkgbase = remote-desktop-manager
 	pkgdesc = Devolutions Remote Desktop Manager centralizes all remote connections on a single platform that is securely shared between users and across the entire team.
-	pkgver = 2024.2.0.10
+	pkgver = 2024.2.1.1
 	pkgrel = 1
 	url = https://remotedesktopmanager.com/
 	install = remote-desktop-manager.install
@@ -15,7 +15,7 @@ pkgbase = remote-desktop-manager
 	optdepends = org.freedesktop.secrets: secret storage backend
 	optdepends = xdotool: for executing typing macros
 	options = !strip
-	source = RemoteDesktopManager_2024.2.0.10_amd64.deb::https://cdn.devolutions.net/download/Linux/RDM/2024.2.0.10/RemoteDesktopManager_2024.2.0.10_amd64.deb
-	sha256sums = F45A95335D36E812323B57D3A1318340F02728F3DC77FE0DBC727B7E6F040097
+	source = RemoteDesktopManager_2024.2.1.1_amd64.deb::https://cdn.devolutions.net/download/Linux/RDM/2024.2.1.1/RemoteDesktopManager_2024.2.1.1_amd64.deb
+	sha256sums = 671E573E0A5E6C86A5932B5060176C96348531D8BC3158F3E9D6D7405F2DA4F4
 
 pkgname = remote-desktop-manager
