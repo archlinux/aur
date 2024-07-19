@@ -1,25 +1,27 @@
 # Maintainer: Kirikaze Chiyuki <me@chyk.ink>
 pkgname=com.seewo.easinote5
-pkgver=5.2.1.6.9412
+pkgver=5.2.1.7.10161
 pkgrel=1
 pkgdesc="Seewo EasiNote5 希沃白板 5，为互动教学而生。"
 arch=('x86_64')
 url="https://easinote.seewo.com/"
 # url="https://gitlab.gz.cvte.cn/front-end/enow-cloud"
 license=('custom')
-depends=('desktop-file-utils' 'gtk3' 'libnotify' 'libxss' 'libxtst' 'openssl' 'xdg-utils' 'ffmpeg' 'curl' 'jsoncpp' 'libidn2')
+depends=('desktop-file-utils' 'gtk3' 'libnotify' 'libxss' 'libxtst' 'openssl' 'xdg-utils' 'ffmpeg' 'curl' 'jsoncpp' 'libidn2' 'lsof')
 makedepends=('patch' 'asar')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=(
-	"http://static.cvte.com/file/myou/uploads/android_rom/8983aa56f595c4eb56f2828281e830d17a554b96/EasiNote_5.2.1.6.9412-2fdcd.deb"
+	"https://static.cvte.com/file/myou/uploads/android_rom/8983aa56f595c4eb56f2828281e830d17a554b96/EasiNote_5.2.1.7.10161.39c-a136b.deb"
 	"0001-patch-startup-script.patch"
 	"0002-fake-bios-vendor.patch"
+	"0003-dummy-machine-id.patch"
 )
 md5sums=(
-	'2fdcdbc5559cb9610123966a25f5ce52'  # EasiNote5.deb
+	'a136b215ac4ab92b486b21ed1b9813c8'  # EasiNote5.deb
 	'4b7afbc7035fc724e9dc76f517415b2b'  # 0001-patch-startup-script.patch
 	'2a2dedcef4690c6bda0c751e71509476'  # 0002-fake-bios-vendor.patch
+	'1b61732e47c34396f8b4cd8ce55d416a'  # 0003-dummy-machine-id.patch
 )
 
 package() {
@@ -56,6 +58,7 @@ package() {
 
 	asar e "${APP_ROOT}/resources/app.asar" "${APP_ROOT}/resources/app"
 	rm "${APP_ROOT}/resources/app.asar"
-	patch "${APP_ROOT}/resources/app/dist/utils/getBiosVendor.js" <"${srcdir}/0002-fake-bios-vendor.patch"
+	patch "${APP_ROOT}/resources/app/dist/utils/getBiosVendor.js" < "${srcdir}/0002-fake-bios-vendor.patch"
+	patch "${APP_ROOT}/resources/app/dist/utils/getMachineID.js" < "${srcdir}/0003-dummy-machine-id.patch"
 	rm -rf "${APP_ROOT}/resources/app/code"
 }

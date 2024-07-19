@@ -1,0 +1,21 @@
+--- getMachineID.js	2024-07-19 11:03:40.000000000 +0800
++++ getMachineID.js	2024-07-19 11:05:22.404486817 +0800
+@@ -84,18 +84,7 @@
+                     if (uid)
+                         return [2 /*return*/, uid];
+                     return [4 /*yield*/, new Promise(function (resolve) {
+-                            sudo.exec("dmidecode -t 1,4 | grep -E 'UUID:|Serial Number:|ID:'", { name: 'Easinote' }, function (err, stdout) {
+-                                if (err) {
+                                     return resolve('');
+-                                }
+-                                var text = stdout.toString();
+-                                // 如果设备ID文件存在并且重新读取了，则需要重新写入id信息
+-                                if (isFileExists) {
+-                                    try2CoverMachineInfoFile(machineInfoPath, text);
+-                                }
+-                                var UUID = genID(text);
+-                                return resolve(UUID || '');
+-                            });
+                         })];
+                 case 3: return [2 /*return*/, _a.sent()];
+             }

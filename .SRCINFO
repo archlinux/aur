@@ -1,6 +1,6 @@
 pkgbase = com.seewo.easinote5
 	pkgdesc = Seewo EasiNote5 希沃白板 5，为互动教学而生。
-	pkgver = 5.2.1.6.9412
+	pkgver = 5.2.1.7.10161
 	pkgrel = 1
 	url = https://easinote.seewo.com/
 	install = com.seewo.easinote5.install
@@ -19,13 +19,16 @@ pkgbase = com.seewo.easinote5
 	depends = curl
 	depends = jsoncpp
 	depends = libidn2
+	depends = lsof
 	options = !strip
 	options = !emptydirs
-	source = http://static.cvte.com/file/myou/uploads/android_rom/8983aa56f595c4eb56f2828281e830d17a554b96/EasiNote_5.2.1.6.9412-2fdcd.deb
+	source = https://static.cvte.com/file/myou/uploads/android_rom/8983aa56f595c4eb56f2828281e830d17a554b96/EasiNote_5.2.1.7.10161.39c-a136b.deb
 	source = 0001-patch-startup-script.patch
 	source = 0002-fake-bios-vendor.patch
-	md5sums = 2fdcdbc5559cb9610123966a25f5ce52
+	source = 0003-dummy-machine-id.patch
+	md5sums = a136b215ac4ab92b486b21ed1b9813c8
 	md5sums = 4b7afbc7035fc724e9dc76f517415b2b
 	md5sums = 2a2dedcef4690c6bda0c751e71509476
+	md5sums = 1b61732e47c34396f8b4cd8ce55d416a
 
 pkgname = com.seewo.easinote5
