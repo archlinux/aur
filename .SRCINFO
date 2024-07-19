@@ -1,0 +1,13 @@
+pkgbase = gt
+	pkgdesc = A tree-like command-line tool written in Go
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/elbachir-one/gt
+	arch = x86_64
+	license = MIT
+	makedepends = go>=1.22
+	depends = glibc
+	source = gt-0.2.1.tar.gz::https://github.com/elbachir-one/gt/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 1a0dca65bcce261bf354a354c0eee04751cb80f204a8855905d7eb58e5e86613
+
+pkgname = gt
