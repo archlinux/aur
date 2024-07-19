@@ -3,7 +3,7 @@
 _pkgname=flet
 pkgname=python-${_pkgname}
 pkgver=0.23.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Easily build realtime web, mobile and desktop apps in your favorite language and securely share them with your team.'
 url="https://${_pkgname}.dev/"
 license=('Apache')
@@ -44,7 +44,7 @@ sha256sums=('3b651de26ee2873efb4fdb0bd39a132232397b6726ee37644a299642690f1667'
             'af9718b926a07ac8e8689a2c623fe6921d88d0bcd52263f63848d11175e3b828')
 
 _srcdir="${_pkgname}-${pkgver}"
-_engine_version=3.22.2
+_engine_version=3.22.3
 
 prepare() {
 	cd "${_srcdir}"
