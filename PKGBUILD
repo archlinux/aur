@@ -1,5 +1,5 @@
 pkgname='slskd-bin'
-pkgver=0.20.1
+pkgver=0.21.1
 pkgrel=1
 pkgdesc='A modern client-server application for the Soulseek file-sharing network.'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -25,14 +25,12 @@ source=(
 )
 
 noextract=()
-sha256sums=(
-  '4081ba91465bcd9784542d9b46313e4803ee464a0cca6c51fc3c6341d5355c01'
-  '69545412a47b0d60b4af33faf61499168016202cd1a60da0c15f17f6da3c900b'
-  '2f1d645115bbcf225be3e585aaeb598f1710277f17c41c64e0308eb25b8ed4f4'
-)
-sha256sums_x86_64=('9711ae5e30f23721ba8f9e1efa115eaf71f7f6a17e989cb854d7b05050687c80')
-sha256sums_aarch64=('4272d9163e8f4a4a1ae7d05544b04e807cfcd93ac3ec49a00b3917ec2c137568')
-sha256sums_armv7h=('9b1b4a09c699fd5c0a70d9d0102af2a4d80ad1cb8bd867ef6d074c7e38f4cb1e')
+sha256sums=('4081ba91465bcd9784542d9b46313e4803ee464a0cca6c51fc3c6341d5355c01'
+            '69545412a47b0d60b4af33faf61499168016202cd1a60da0c15f17f6da3c900b'
+            '2f1d645115bbcf225be3e585aaeb598f1710277f17c41c64e0308eb25b8ed4f4')
+sha256sums_x86_64=('1cd04302248583828c41435946a354148e67b32d568d1c7eac896c1cacae2801')
+sha256sums_aarch64=('6698c20a09fb7e8972379f498a8cf9fd67ded6d4086045de744020133db13f48')
+sha256sums_armv7h=('68f4186de240cf43de54602518676fd671283e6376f8f33abeaa09c2d8b314d6')
 
 pkgver() {
 #	cd ${pkgname}
