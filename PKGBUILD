@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=kernel-builder
-pkgver=1.0
+pkgver=2.0
 pkgrel=2
 pkgdesc="Simplifies Linux kernel compilation with version selection, patching, and configuration options for Arch Linux and Ubuntu/Debian, enhancing installation efficiency and customization."
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/Someshwar1006/Kernel-Builder"
 license=('MIT')
 depends=('python' 'python-requests' 'python-pip')  # Added python-pip as a dependency
 source=("https://github.com/Someshwar1006/Kernel-Builder/raw/main/kernel-builder-2.0.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('2f4cf78d0329cb7c1d7526cc29a84d2d910be6660b63dc1ca1071813219fb533')
 
 package() {
   cd "$srcdir/"
