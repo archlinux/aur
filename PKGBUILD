@@ -5,7 +5,7 @@ _pkgname=Sonixd
 pkgver=0.15.5
 _electronversion=22
 _nodeversion=16
-pkgrel=4
+pkgrel=5
 pkgdesc="A full-featured Subsonic/Jellyfin compatible desktop client"
 arch=('x86_64')
 url="https://github.com/jeffvli/sonixd"
@@ -18,18 +18,17 @@ makedepends=(
 	'yarn'
 	'nvm'
 	'npm'
-	'python>=3'
-	'base-devel'
     'gcc'
 	'gendesk'
     'curl'
+    'git'
 )
 source=(
-	"${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+	"${pkgname}.git::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('1de05c325a0e86c24f1c917c33f577645481e898d842134e7d5f8e6650916d5e'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+sha256sums=('fbc100bb34a716376e1fc0615a863242171a051afe9f0c5fbf1da1abd4271d47'
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -44,8 +43,8 @@ build() {
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --categories="Development" --name="${_pkgname}" --exec="${pkgname} %U"
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname} %U"
+    cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     #export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
@@ -63,18 +62,16 @@ build() {
         echo "Your network is OK."
     fi
     sed '/"AppImage",/d;s|"tar.xz"|"dir"|g' -i package.json
-    yarn install --cache-folder "${srcdir}/.yarn_cache"
-    yarn run package
-    asar e "${srcdir}/${pkgname}-${pkgver}/release/linux-"*/resources/app.asar "${srcdir}/app.asar.unpacked"
-    sed "s|process.resourcesPath,\"assets\"|\"\/usr\/lib\/${pkgname%-bin}\",\"assets\"|g" -i "${srcdir}/app.asar.unpacked/main.prod.js"
-    asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
+    sed "s|process.resourcesPath|\"\/usr\/lib\/${pkgname}\"|g" -i src/main.dev.js
+    NODE_ENV=development yarn install --cache-folder "${srcdir}/.yarn_cache"
+    NODE_ENV=production yarn run package
 }
 package() {
 	install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
-    cp -r "${srcdir}/${pkgname}-${pkgver}/release/linux-"*/resources/{app.asar.unpacked,assets} "${pkgdir}/usr/lib/${pkgname}"
+    cp -r "${srcdir}/${pkgname}.git/release/linux-"*/resources/{app.asar.unpacked,assets} "${pkgdir}/usr/lib/${pkgname}"
 	for _icons in 16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256 512x512 1024x1024;do
-    	install -Dm644 "${srcdir}/${pkgname}-${pkgver}/assets/icons/${_icons}.png" \
+    	install -Dm644 "${srcdir}/${pkgname}.git/assets/icons/${_icons}.png" \
 			"${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
 	done
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
