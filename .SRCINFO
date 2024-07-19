@@ -22,7 +22,7 @@ pkgbase = slimjet
 	options = !strip
 	source = slimjet-43.0.5.0_amd64.deb::https://www.slimjetbrowser.com/release/slimjet_amd64.deb
 	source = libffmpeg-0.89.0.zip::https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt/releases/download/0.89.0/0.89.0-linux-x64.zip
-	sha256sums = 6d98795ba97ababf040635432178a428355bdc375d7912f8a7adbe1b0e0b8b2f
+	sha256sums = c6173aa122adcefd72ac690afb42f57592bb8662d3b15b798c72d7ff9f87c65f
 	sha256sums = b9a08666c3d0ac0d5d97dd08a9183b4e058c272400181045fea3414d28551dc6
 
 pkgname = slimjet

@@ -41,7 +41,7 @@ source=(
     "${pkgname}-${pkgver}_amd64.deb::${_dlurl}/release/${pkgname}_amd64.deb"
     "libffmpeg-${_libffmpegver}.zip::${_libffmpegverurl}/releases/download/${_libffmpegver}/${_libffmpegver}-linux-x64.zip"
 )
-sha256sums=('6d98795ba97ababf040635432178a428355bdc375d7912f8a7adbe1b0e0b8b2f'
+sha256sums=('c6173aa122adcefd72ac690afb42f57592bb8662d3b15b798c72d7ff9f87c65f'
             'b9a08666c3d0ac0d5d97dd08a9183b4e058c272400181045fea3414d28551dc6')
 build() {
     bsdtar -xf "${srcdir}/data."*
