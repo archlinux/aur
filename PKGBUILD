@@ -6,7 +6,7 @@
 # Contributor: Vova-K <v1mkss.m@gmail.com>
 pkgname=xmcl-launcher
 pkgver=0.44.15
-pkgrel=1
+pkgrel=2
 pkgdesc="X Minecraft Launcher - 一个现代化的 Minecraft 启动器"
 arch=('x86_64' 'aarch64')
 provide=("xmcl")
