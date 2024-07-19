@@ -26,12 +26,12 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS='-buildmode=pie -trimpath -modcacherw'
 
-  cd "${pkgname}-${pkgver}"
-  go build -o "$pkgname" -ldflags="${_flags[*]}" ./cmd/"$pkgname"
+  cd "${pkgname}-${pkgver}/cmd/${pkgname}"
+  go build -ldflags="${_flags[*]}"
 }
 
 package() {
   cd "${pkgname}-${pkgver}"
-  install -Dm755 "$pkgname" -t "$pkgdir"/usr/bin
+  install -Dm755 "cmd/$pkgname/$pkgname" -t "$pkgdir"/usr/bin
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/"$pkgname"
 }
