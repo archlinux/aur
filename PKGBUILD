@@ -5,7 +5,7 @@ _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libvpl
 pkgver=2.12.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Intel Video Processing Library (Android ${_android_arch})"
 url='https://intel.github.io/libvpl/'
@@ -28,21 +28,38 @@ build() {
 
     android-${_android_arch}-cmake \
         -S . \
-        -B build \
+        -B build-shared \
         -DCMAKE_INSTALL_SYSCONFDIR="${ANDROID_PREFIX_ETC}" \
+        -DBUILD_SHARED_LIBS=ON \
         -DBUILD_TOOLS=OFF \
         -DBUILD_EXAMPLES=OFF \
         -DBUILD_TESTS=OFF \
         -DINSTALL_EXAMPLE_CODE=OFF \
         -DTOOLS_ENABLE_OPENCL=OFF \
         -Wno-dev
-    make -C build $MAKEFLAGS
+    make -C build-shared $MAKEFLAGS
+
+    android-${_android_arch}-cmake \
+        -S . \
+        -B build-static \
+        -DCMAKE_INSTALL_SYSCONFDIR="${ANDROID_PREFIX_ETC}" \
+        -DBUILD_SHARED_LIBS=OFF \
+        -DBUILD_TOOLS=OFF \
+        -DBUILD_EXAMPLES=OFF \
+        -DBUILD_TESTS=OFF \
+        -DINSTALL_EXAMPLE_CODE=OFF \
+        -DTOOLS_ENABLE_OPENCL=OFF \
+        -Wno-dev
+    make -C build-static $MAKEFLAGS
 }
 
 package() {
     cd "${srcdir}/libvpl-${pkgver}"
     source android-env ${_android_arch}
 
-    make -C build DESTDIR="$pkgdir" install
+    make -C build-shared DESTDIR="${pkgdir}" install
+    make -C build-static DESTDIR="${pkgdir}" install
+    rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }

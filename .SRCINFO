@@ -1,7 +1,7 @@
 pkgbase = android-armv7a-eabi-libvpl
 	pkgdesc = Intel Video Processing Library (Android armv7a-eabi)
 	pkgver = 2.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://intel.github.io/libvpl/
 	arch = any
 	license = MIT
