@@ -4,7 +4,7 @@ _pkgname='hacki'
 pkgname=${_pkgname}
 _pkgreponame='Hacki'
 pkgver=2.8.1
-pkgrel=3
+pkgrel=4
 pkgdesc='A Hacker News reader.'
 url='https://github.com/Livinglist/Hacki'
 arch=('x86_64')
@@ -26,7 +26,7 @@ sha256sums=('13580e9eb89ae1339fab73256e35ec36e29e6e2fdeb1914e92eff99ca5eabe89'
             'SKIP')
 
 _srcdir="${_pkgreponame}"
-_engine_version=3.22.2
+_engine_version=3.22.3
 
 prepare() {
 	cd "${_srcdir}"
@@ -55,7 +55,7 @@ package() {
 	install -Dm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 
 	# Executable install
-	cd "build/linux/x64/release/bundle"
+	cd 'build/linux/x64/release/bundle'
 	local execfile="$(find . -mindepth 1 -maxdepth 1 -type f -perm /111)"
 	install -Dm755 \
 		"${execfile}" \
