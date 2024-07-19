@@ -18,6 +18,7 @@ pkgbase = ayatana-indicator-application
 	depends = glib2
 	depends = gtk3
 	depends = pango
+	depends = glib2-devel
 	options = !emptydirs
 	source = ayatana-indicator-application-22.2.0.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-application/archive/22.2.0.tar.gz
 	md5sums = 83b373f6934f1865e307e19020fcc44b
