@@ -7,6 +7,7 @@ pkgbase = clai
 	license = MIT
 	makedepends = go
 	depends = glibc
+	optdepends = glow: for formatted markdown output when querying text responses
 	source = clai-1.4.5.tar.gz::https://github.com/baalimago/clai/archive/refs/tags/v1.4.5.tar.gz
 	sha256sums = d7bd8d2f28cd28bc96fe759f41a415463fab32581c71201ade9a7b1c5d677c52
 
