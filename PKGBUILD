@@ -1,5 +1,5 @@
 pkgname=e-z-recorder
-pkgver=1.1
+pkgver=1.0
 pkgrel=1
 pkgdesc="E-Z Video Recording & Uploading on Linux. Install dependencies based on your session type (Wayland or X11)."
 arch=('any')
@@ -8,7 +8,6 @@ license=('MIT')
 source=("https://raw.githubusercontent.com/verysillycat/e-z-recorder-linux/main/e-z-recorder.sh")
 sha256sums=('SKIP')
 install=e-z-recorder.install
-PKGDEST="$srcdir/pkg"
 
 depends=('jq' 'ffmpeg')
 optdepends=(
@@ -20,6 +19,9 @@ optdepends=(
     'slop: X11 Support'
 )
 
+# Set PKGDEST to a directory where you have write permissions
+PKGDEST="$HOME/.cache/pacman/pkg"
+
 package() {
-    install -Dm755 "$srcdir/e-z-recorder.sh" "$pkgdir/usr/bin/e-z-recorder"
+    install -Dm755 "$srcdir/e-z-recorder.sh" "$PKGDEST/usr/bin/e-z-recorder"
 }
