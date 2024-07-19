@@ -1,7 +1,7 @@
 pkgbase = rtpengine-kernel-dkms
 	pkgdesc = Kernel module for rtpengine media proxy
 	pkgver = 12.4.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sipwise/rtpengine
 	arch = x86_64
 	license = GPL-3.0-or-later

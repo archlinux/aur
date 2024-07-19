@@ -2,7 +2,7 @@
 
 pkgname=rtpengine-kernel-dkms
 pkgver=12.4.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Kernel module for rtpengine media proxy'
 url="https://github.com/sipwise/rtpengine"
 license=('GPL-3.0-or-later')
@@ -22,5 +22,7 @@ prepare() {
 
 package() {
 	cd rtpengine-mr${pkgver}
-	install -Dm644 -t "${pkgdir}/usr/src/rtpengine-${pkgver}" dkms.conf kernel-module/*
+	install -Dm644 -t "${pkgdir}/usr/src/rtpengine-${pkgver}" dkms.conf kernel-module/{Makefile,*.{inc,c,h}}
+	# Automatic module loading during boot
+	install -Dm644 kernel-module/xt_RTPENGINE.modules.load.d "${pkgdir}/etc/modules-load.d/${pkgname}.conf"
 }
