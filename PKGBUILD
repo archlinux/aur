@@ -1,5 +1,5 @@
 pkgname=basedpyright
-pkgver=1.13.3
+pkgver=1.14.0
 pkgrel=1
 pkgdesc="pyright fork with various improvements and pylance features"
 arch=("any")
@@ -9,8 +9,9 @@ depends=("nodejs")
 makedepends=("npm" "python" "git"
     # Parsing stub files
     "tk")
+checkdepends=("python-pytest")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/DetachHead/basedpyright/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c1768d21eb57bb7fd4db885643551d2a23fbca27d319b04392ce59725c8471ad')
+sha256sums=('6a8b2258ae012db021b3851838a7121c09369fe0526e9156dd96f36887cd6f8e')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -19,15 +20,25 @@ prepare() {
     ./pw pdm run generate_docstubs
 
     npm install
+    cd packages/pyright
+    npm install
+    cd ../pyright-internal
+    npm install
 }
 
 build() {
-    cd "$pkgname-$pkgver"
-    npm run build:cli:dev
+    cd "$pkgname-$pkgver/packages/pyright"
+    npm run build
 }
 
 check() {
-    cd "$pkgname-$pkgver/packages/pyright-internal"
+    cd "$pkgname-$pkgver"
+    ./pw pdm run test_python -- -m needs_all_docstubs
+    cd packages/pyright-internal
+    mkdir -p node_modules/.bin
+    ln -srfv node_modules/webpack/bin/webpack.js node_modules/.bin/webpack
+    ln -srfv node_modules/webpack-cli/bin/cli.js node_modules/.bin/webpack-cli
+    ln -srfv node_modules/jest/bin/jest.js node_modules/.bin/jest
     npm test
 }
 
