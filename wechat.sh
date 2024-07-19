@@ -1,6 +1,6 @@
 #!/bin/bash
 
-busName=trash.chat.app
+busName=com.qq.weixin.uos.whatever
 busDir="${XDG_RUNTIME_DIR}/app/${busName}"
 
 function moeDect() {
@@ -287,7 +287,7 @@ function warnMulRunning() {
 		exit 0
 	else
 		id=$(dbus-send \
-			--bus=unix:path="${XDG_RUNTIME_DIR}/bus" \
+			--bus=unix:path="${busDir}/bus" \
 			--dest=org.kde.StatusNotifierWatcher \
 			--type=method_call \
 			--print-reply=literal /StatusNotifierWatcher \

@@ -1,7 +1,7 @@
 pkgbase = wechat-uos-bwrap
 	pkgdesc = WeChat Qt, the universal version
 	pkgver = 1.0.0.241
-	pkgrel = 20
+	pkgrel = 21
 	url = https://weixin.qq.com/
 	arch = x86_64
 	arch = aarch64
@@ -68,7 +68,7 @@ pkgbase = wechat-uos-bwrap
 	source = wechat.env
 	source = keyBlocker.cpp
 	source = CMakeLists.txt
-	md5sums = fd9780e4ced176a5413ea099b6c40a00
+	md5sums = 79913b6c0c59b5b23b198105dc8d2c69
 	md5sums = f55add8285699a47ffd47c76ae3eec29
 	md5sums = 600e74549ce2258c045d5c2f7689ea63
 	md5sums = dfc069e6c8d9dbaa90fe388cab4002c9
