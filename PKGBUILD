@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Bruce Zhang
 pkgname=rubick
-pkgver=4.2.4
+pkgver=4.2.5
 _electronversion=26
 _nodeversion=16
 pkgrel=1
@@ -26,12 +26,13 @@ makedepends=(
 	'xz'
 	'curl'
 	'gcc'
+	'git'
 )
 source=(
-	"${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
+	"${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"
 	"${pkgname}.sh"
 )
-sha256sums=('1989d15008e67628fa6d5cef6369b85b2f6001589a08ad20083146327df5bf5d'
+sha256sums=('faf3006816cc70cae6780f24bd3ae07ad9dcba68f8f693e09d14012b466d1736'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -64,21 +65,21 @@ build() {
 	else
 		echo "Your network is OK."
 	fi
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgname}.git"
 	sed "s|deb|dir|g" -i vue.config.js
-	yarn install --cache-folder "${srcdir}/.yarn_cache"
-	yarn global add xvfb-maybe @vue/cli
-	cd "${srcdir}/${pkgname}-${pkgver}/feature"
-	yarn install --cache-folder "${srcdir}/.yarn_cache"
-	yarn run build
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	yarn run release
+	NODE_ENV=development yarn install --cache-folder "${srcdir}/.yarn_cache"
+	NODE_ENV=development yarn global add xvfb-maybe @vue/cli
+	cd "${srcdir}/${pkgname}.git/feature"
+	NODE_ENV=development yarn install --cache-folder "${srcdir}/.yarn_cache"
+	NODE_ENV=production yarn run build
+	cd "${srcdir}/${pkgname}.git"
+	NODE_ENV=production yarn run release
 }
 package() {
 	install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/build/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
-	cp -r "${srcdir}/${pkgname}-${pkgver}/build/linux-unpacked/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/build/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
+	cp -r "${srcdir}/${pkgname}.git/build/linux-unpacked/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname}"
     install -Dm644 "${srcdir}.git/${pkgname}/public/logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
