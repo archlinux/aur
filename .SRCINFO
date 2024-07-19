@@ -1,7 +1,7 @@
 pkgbase = android-x86-fmt
 	pkgdesc = Open-source formatting library for C++ (Android x86)
 	pkgver = 10.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fmt.dev
 	arch = any
 	license = MIT
