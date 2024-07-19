@@ -1,13 +1,13 @@
 # Maintainer: cyqsimon <28627918+cyqsimon@users.noreply.github.com>
 pkgname=where-is-my-sddm-theme-git
 _pkgname=${pkgname%-git}
-pkgver=1.7.0.r1.g142d7d9
+pkgver=1.10.0.r8.gd05f54a
 pkgrel=1
 pkgdesc='The most minimalistic SDDM theme among all themes.'
 arch=("any")
 url="https://github.com/stepanzubkov/where-is-my-sddm-theme"
 license=("MIT")
-depends=("qt6-declarative" "sddm")
+depends=("qt6-5compat" "qt6-declarative" "sddm")
 makedepends=("git")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
