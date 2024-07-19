@@ -6,7 +6,7 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-jasper
 pkgver=4.2.4
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Software-based implementation of the codec specified in the emerging JPEG-2000 Part-1 standard (Android ${_android_arch})"
 url='https://www.ece.uvic.ca/~frodo/jasper/'
@@ -32,26 +32,46 @@ build() {
 
     android-${_android_arch}-cmake \
         -S . \
-        -B ../build \
+        -B ../build-shared \
         -DBUILD_TESTING=OFF \
-        -DJAS_ENABLE_OPENGL=ON \
+        -DJAS_ENABLE_OPENGL=OFF \
         -DJAS_ENABLE_LIBJPEG=ON \
         -DJAS_ENABLE_AUTOMATIC_DEPENDENCIES=OFF \
         -DCMAKE_SKIP_RPATH=ON \
-        -DJAS_ENABLE_SHARED=ON \
         -DJAS_STDC_VERSION=201112L \
         -DJAS_ENABLE_DOC=OFF \
         -DJAS_ENABLE_PROGRAMS=OFF \
         -DJPEG_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
-        -DJPEG_LIBRARY="${ANDROID_PREFIX_LIB}/libjpeg.so"
-    make -C ../build $MAKEFLAGS
+        -DJPEG_LIBRARY="${ANDROID_PREFIX_LIB}/libjpeg.so" \
+        -DBUILD_SHARED_LIBS=ON \
+        -DJAS_ENABLE_SHARED=ON
+    make -C ../build-shared $MAKEFLAGS
+
+    android-${_android_arch}-cmake \
+        -S . \
+        -B ../build-static \
+        -DBUILD_TESTING=OFF \
+        -DJAS_ENABLE_OPENGL=OFF \
+        -DJAS_ENABLE_LIBJPEG=ON \
+        -DJAS_ENABLE_AUTOMATIC_DEPENDENCIES=OFF \
+        -DCMAKE_SKIP_RPATH=ON \
+        -DJAS_STDC_VERSION=201112L \
+        -DJAS_ENABLE_DOC=OFF \
+        -DJAS_ENABLE_PROGRAMS=OFF \
+        -DJPEG_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
+        -DJPEG_LIBRARY="${ANDROID_PREFIX_LIB}/libjpeg.a" \
+        -DBUILD_SHARED_LIBS=OFF \
+        -DJAS_ENABLE_SHARED=OFF
+    make -C ../build-static $MAKEFLAGS
 }
 
 package() {
     cd "${srcdir}/jasper-version-${pkgver}"
     source android-env ${_android_arch}
 
-    make -C ../build DESTDIR="${pkgdir}" install
+    make -C ../build-shared DESTDIR="${pkgdir}" install
+    make -C ../build-static DESTDIR="${pkgdir}" install
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
