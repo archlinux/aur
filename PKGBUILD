@@ -2,7 +2,7 @@
 # Contributor: Marie Piontek <marie@kaifa.ch>
 
 pkgname=an-anime-game-launcher-bin
-pkgver=3.10.1
+pkgver=3.10.2
 pkgrel=1
 pkgdesc="A Launcher for a specific anime game with auto-patching, discord rpc and time tracking"
 url="https://github.com/an-anime-team/an-anime-game-launcher"
@@ -14,7 +14,6 @@ license=("GPL3")
 depends=(
     "libadwaita"
     "xdg-desktop-portal"
-    "xdelta3"
     "libwebp"
     "p7zip"
     "git"
@@ -35,7 +34,7 @@ source=(
 )
 
 md5sums=(
-    'effd476a68f721e29f5c7ad7f0fe8317'
+    '3c78202e310b34571a5c5e1de94d786c'
     'c1a5499b80a55d3d238ef5c5d2c93c99'
     'f0cfe73897e8f49e92e0dfc41326fb0b'
 )
