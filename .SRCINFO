@@ -1,7 +1,7 @@
 pkgbase = android-x86-avisynthplus
 	pkgdesc = An improved version of the AviSynth frameserver (Android x86)
 	pkgver = 3.7.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://avs-plus.net/
 	arch = any
 	license = GPL
