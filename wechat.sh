@@ -9,7 +9,6 @@ function moeDect() {
 	else
 		osRel="/usr/lib/os-release"
 	fi
-
 }
 
 function sourceXDG() {
@@ -128,7 +127,17 @@ function execApp() {
 	# Wayland is not available for now
 	# 	--ro-bind-try "${XDG_RUNTIME_DIR}/${WAYLAND_DISPLAY}" \
 	#			"${XDG_RUNTIME_DIR}/${WAYLAND_DISPLAY}" \
-	
+	if [ -f /usr/lib/wechat-uos-qt/keyBlocker.so ]; then
+		if [ ! ${LD_PRELOAD} ]; then
+			echo "[Info] Key blocker enabled"
+			LD_PRELOAD=/usr/lib/wechat-uos-qt/keyBlocker.so
+		else
+			echo "[Info] Key blocker enabled, appending LD_PRELOAD"
+			LD_PRELOAD="/usr/lib/wechat-uos-qt/keyBlocker.so:${LD_PRELOAD}"
+		fi
+	else
+		LD_PRELOAD=""
+	fi
 	if [[ ${wechatXserverPatch} = 1 ]]; then
 		xhost +
 	fi
@@ -152,6 +161,7 @@ function execApp() {
 	systemd-run \
 	--user \
 	${sdOption} \
+	-p Environment=LD_PRELOAD="${LD_PRELOAD}" \
 	-u wechat-uos-qt \
 	-p CPUWeight=50 \
 	-p IOWeight=40 \
