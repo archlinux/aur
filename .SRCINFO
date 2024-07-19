@@ -1,0 +1,13 @@
+pkgbase = qsrv-git
+	pkgdesc = A simple config-file-less HTTP server for testing purposes; A more flexible alternative to "python3 -m http.server"
+	pkgver = r34.3418fe7
+	pkgrel = 1
+	url = https://gitlab.com/S410/qsrv
+	arch = any
+	license = AGPL-3.0-only
+	makedepends = git
+	depends = go
+	source = git+https://gitlab.com/S410/qsrv.git
+	md5sums = SKIP
+
+pkgname = qsrv-git
