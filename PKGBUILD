@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mkeditor-git
 _pkgname=MKEditor
-pkgver=2.5.0.r0.g9fe30ef
-_electronversion=29
+pkgver=2.6.0.r2.g0fd2509
+_electronversion=31
 _nodeversion=20
 pkgrel=1
 pkgdesc="The simple markdown editor."
@@ -65,15 +65,15 @@ build() {
     else
         echo "Your network is OK."
     fi
-    sed "s|\/\${platform}\/\${arch}||g" -i package.json
+    sed "s|\/\${platform}\/\${arch}||g;s|\"deb\"|\"dir\"|g" -i package.json
     sed "s|icon.ico|icon.png|g" -i src/app/main.ts
     rm -rf dist releases
-    npm install
-    npm run build-editor
-    npm run build-app
+    NODE_ENV=development npm install
+    NODE_ENV=production npm run build-editor
+    NODE_ENV=production npm run build-app
     npx tsc src/app/*.ts --outDir ./dist/app
     cp src/app/assets/icon.png dist/app/assets/
-    npx electron-builder -l --dir
+    npm run build-installer
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
