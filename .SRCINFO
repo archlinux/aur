@@ -1,0 +1,22 @@
+pkgbase = torrential
+	pkgdesc = Simple BitTorrent client for Pantheon
+	pkgver = 2.0.1
+	pkgrel = 2
+	url = https://github.com/davidmhewitt/torrential
+	arch = x86_64
+	license = GPL
+	makedepends = meson
+	makedepends = git
+	makedepends = vala
+	makedepends = libtransmission
+	makedepends = dht
+	makedepends = libutp
+	depends = granite
+	depends = libevent
+	depends = libb64
+	depends = miniupnpc
+	depends = libnatpmp
+	source = git+https://github.com/davidmhewitt/torrential.git#commit=d17fc2728056af0e4abdf4d025a7f415900eeedb
+	sha256sums = SKIP
+
+pkgname = torrential
