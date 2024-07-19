@@ -11,7 +11,7 @@ depends=('glibc' 'gcc-libs')
 makedepends=('cmake' 'gcc')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('bcf1f3908cf0ecbc14856cfcdfc233e7f9773996db889ab2cd12788ab9cbe43a')
+sha256sums=('eb2f54410aa9c8ed7e9e6962e56d8825ccc2c50f80a7ce83135709d36cebf695')
 
 build() {
   cd "${srcdir}"

@@ -10,6 +10,6 @@ pkgbase = vtm
 	depends = glibc
 	depends = gcc-libs
 	source = vtm-0.9.94.tar.gz::https://github.com/directvt/vtm/archive/v0.9.94.tar.gz
-	sha256sums = bcf1f3908cf0ecbc14856cfcdfc233e7f9773996db889ab2cd12788ab9cbe43a
+	sha256sums = eb2f54410aa9c8ed7e9e6962e56d8825ccc2c50f80a7ce83135709d36cebf695
 
 pkgname = vtm
