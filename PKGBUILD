@@ -5,8 +5,8 @@
 # Contributor: bilibili_xiaok <the_xiaok@qq.com>
 # Contributor: Vova-K <v1mkss.m@gmail.com>
 pkgname=xmcl-launcher
-pkgver=0.44.14
-pkgrel=2
+pkgver=0.44.15
+pkgrel=1
 pkgdesc="X Minecraft Launcher - 一个现代化的 Minecraft 启动器"
 arch=('x86_64' 'aarch64')
 provide=("xmcl")
@@ -33,11 +33,11 @@ source_aarch64=(
 )
 
 sha256sums_x86_64=(
-    "d94a98d5620962c5876893d09e258878a19b9faf628116bc1937470d06f51086"
+    "9000c186a229f8ec25687302338c098aab133bf875d41fbde6b2b0963bbaf451"
     "4c56e72cc6784c4c2d870c307d74e7afa6c13b001bb52f9b255cd82ab709adcb"
 )
 sha256sums_aarch64=(
-    "6313388fdc3bbde3cde8e5d47ac4f1e33ea923013816e66dae8f29fb1f518bad"
+    "a524ce5fa2085b9788995dddeb7da0f5bdd093401fa378fb72eaf55a7bf39eb0"
     "4c56e72cc6784c4c2d870c307d74e7afa6c13b001bb52f9b255cd82ab709adcb"
 )
 
