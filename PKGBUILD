@@ -1,8 +1,8 @@
 # Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
 
 pkgname=hqplayer5
-pkgver=5.7.2
-_debpkgver=5.7.2-20
+pkgver=5.7.3
+_debpkgver=5.7.3-21
 pkgrel=1
 pkgdesc="The high-end upsampling multichannel software HD-audio player"
 arch=('x86_64' 'x86_64_v3')
@@ -12,7 +12,7 @@ depends=('glibc' 'gcc-libs' 'libx11' 'libusb-compat' 'openmp' 'qt6-base' 'qt6-ch
 optdepends=('hqplayer-client' 'evince: hqplayer manual reading')
 conflicts=('hqplayer4')
 source=("https://www.signalyst.com/bins/jammy/hqplayer5desktop_"$_debpkgver"_amd64.deb")
-sha256sums=('e741e6ef04c28d3a632fea17983e110e2667e194bc5279f19879051cbac6e89d')
+sha256sums=('ac393d61164ff9064e9389bdd8fa5637fdd8b1607b5762b9f0cf80547716c24b')
 options=(!strip)
 install=${pkgname}.install
 
