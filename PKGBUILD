@@ -1,7 +1,7 @@
 # Maintainer: Alexander Aleschenko <alex.aleschenko@gmail.com>
 
 pkgname=emu80-qt
-pkgver=4.0.466
+pkgver=4.0.480
 pkgrel=1
 pkgdesc="Emulator for bunch of Soviet PCs"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://emu80.org/"
 license=("GPL3")
 depends=("qt5-base" "qt5-multimedia")
 source=("https://github.com/vpyk/emu80v4/archive/refs/tags/v${pkgver}.tar.gz" "shortcut.desktop")
-sha256sums=("8987e165abf30fa09b8b69b2f0f988318fd1e065e155723a195880b43b6ff487" "bd817f4c7a0183e322fb25fa27160f5279ac0310ea8445a86edd9c944b43e839")
+sha256sums=("b677ffa674da60cced0cab2aae158844bef88c3053805e5eb0c5dfa32c38afff" "bd817f4c7a0183e322fb25fa27160f5279ac0310ea8445a86edd9c944b43e839")
 
 build() {
 	cd "emu80v4-${pkgver}"
