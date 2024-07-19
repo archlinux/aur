@@ -3,7 +3,7 @@ pkgname=hathor-wallet-bin
 _pkgname="Hathor Wallet"
 pkgver=0.27.1
 _electronversion=27
-pkgrel=3
+pkgrel=4
 pkgdesc="Hathor Official Wallet for Desktop"
 arch=('x86_64')
 url="https://hathor.network/"
@@ -21,7 +21,7 @@ source=(
 )
 sha256sums=('e632985f74322612ca0cddf8b6f58324577e6e2bef7cb2763928410986901013'
             '8fc34ede2d7615b4ef2eee1acfa4a457ab3e7c317e4ba6a1354b3b57ad11cbd0'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
