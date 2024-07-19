@@ -5,7 +5,7 @@ _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libpng
 pkgver=1.6.43
-pkgrel=2
+pkgrel=3
 pkgdesc="A collection of routines used to create PNG format graphics (Android ${_android_arch})"
 arch=('any')
 url="http://www.libpng.org/pub/png/libpng.html"
@@ -34,6 +34,9 @@ prepare() {
 build() {
     cd "${srcdir}/libpng-${pkgver}"
     source android-env ${_android_arch}
+
+    export CFLAGS="${CFLAGS} -fPIC"
+    export CXXFLAGS="${CXXFLAGS} -fPIC"
 
     android-${_android_arch}-configure \
         --disable-tests \
