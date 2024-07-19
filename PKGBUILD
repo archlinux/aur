@@ -6,6 +6,7 @@ pkgrel=1
 arch=('x86_64' 'i686' 'aarch64')
 url='https://github.com/vbauerster/getparty'
 license=('BSD-3-Clause')
+depends=('glibc')
 makedepends=('git' 'go')
 
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
