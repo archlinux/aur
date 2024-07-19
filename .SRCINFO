@@ -1,7 +1,7 @@
 pkgbase = rcon-git
 	pkgdesc = Rcon is a command line application that can be used as a Source RCON client. It will send commands to the given server, and print the reply to stdout.
-	pkgver = 0.5
-	pkgrel = 4
+	pkgver = 0.6
+	pkgrel = 1
 	url = https://github.com/n0la/rcon
 	arch = any
 	license = BSD 2-Clause
@@ -11,8 +11,7 @@ pkgbase = rcon-git
 	makedepends = libbsd
 	makedepends = glib2
 	makedepends = bash-completion
-	source = git+git://github.com/n0la/rcon.git
-	sha1sums = SKIP
+	source = git+https://github.com/n0la/rcon.git
+	sha256sums = SKIP
 
 pkgname = rcon-git
-
