@@ -2,7 +2,7 @@
 pkgname='datediff.sh'
 _pkgname='shellDatediff'  #repo
 pkgver=0.23.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Calculate elapsed time. Check moon phases, Easter dates and next Friday 13th.'
 url='https://github.com/mountaineerbr/shellDatediff'
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=(
 	'bc: fractional time units'
 )
 source=("https://github.com/mountaineerbr/${_pkgname}/releases/download/v${pkgver}/${_pkgname}.tar.zst")
-sha256sums=('2ee2601ee90080bf69ab5ab78c1516cde2691a6eef5167092adbd179d77643c9')
+sha256sums=('01458bc351b5710778ac465f36c2180bab974cdbec7e148c824c10e8af975030')
 
 package() {
 	cd "${_pkgname}-${pkgver}"
