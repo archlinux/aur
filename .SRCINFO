@@ -1,6 +1,6 @@
 pkgbase = rtpengine
 	pkgdesc = The Sipwise media proxy for Kamailio
-	pkgver = 12.4.1.4
+	pkgver = 12.4.1.5
 	pkgrel = 1
 	url = https://github.com/sipwise/rtpengine
 	arch = x86_64
@@ -32,9 +32,9 @@ pkgbase = rtpengine
 	optdepends = libiptcdata: Iptables management support
 	optdepends = ffmpeg: Transcoding support
 	optdepends = bcg729: G.729 transcoding support
-	source = rtpengine-12.4.1.4.tar.gz::https://github.com/sipwise/rtpengine/archive/refs/tags/mr12.4.1.4.tar.gz
+	source = rtpengine-12.4.1.5.tar.gz::https://github.com/sipwise/rtpengine/archive/refs/tags/mr12.4.1.5.tar.gz
 	source = rtpengine.sysusers
-	sha256sums = f9f916c281d730b1186ec1969dc644e6f3a08f4c3b1fc5a099993bdc67277933
+	sha256sums = 68de456412502e1ebb08bcceb49073e89732cf971faf91fbeb2b4a4a9d86318f
 	sha256sums = ea1580fbf7372309533e56d2a33714dc4d58311429ba60bf25b1bddee5ff7231
 
 pkgname = rtpengine
