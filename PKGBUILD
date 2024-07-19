@@ -7,7 +7,7 @@ pkgname=file-roller-linuxmint
 _pkgname=file-roller
 pkgver=43.0
 _pkgver=wilma
-pkgrel=1
+pkgrel=2
 pkgdesc="Create and modify archives. Linux Mint version"
 url="https://wiki.gnome.org/Apps/FileRoller"
 arch=(x86_64)
@@ -48,8 +48,9 @@ optdepends=(
     'unace: ACE archive support'
     'unrar: better RAR archive support'
 )
-source=("http://packages.linuxmint.com/pool/upstream/f/${_pkgname}/${_pkgname}_${pkgver}-${pkgrel}+${_pkgver}.tar.xz")
-sha256sums=('e2e7aa74753fe1c1735f610f108ed2195cb90948950fe27a0e00ad43359e98e9')
+#source=("http://packages.linuxmint.com/pool/upstream/f/${_pkgname}/${_pkgname}_${pkgver}-${pkgrel}+${_pkgver}.tar.xz")
+source=("http://packages.linuxmint.com/pool/upstream/f/${_pkgname}/${_pkgname}_${pkgver}+mint1+${_pkgver}.tar.xz")
+sha256sums=('32b3a7a803ac53889c25c006622229685e8bf421bde70712f9f221967df44978')
 
 prepare() {
     cd $_pkgname
