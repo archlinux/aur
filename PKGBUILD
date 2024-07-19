@@ -2,9 +2,9 @@
 _appname=flowtest
 pkgname="${_appname}ai-git"
 _pkgname=FlowTestAI
-pkgver=1.1.0.r0.g67064c3
+pkgver=1.2.0.r2.g588e446
 _electronversion=29
-_nodeversion=18.17.0
+_nodeversion=20
 pkgrel=1
 pkgdesc="GenAI powered OpenSource IDE for API first workflows."
 arch=('any')
@@ -18,16 +18,18 @@ depends=(
 )
 makedepends=(
     'npm'
-    'pnpm'
+    'pnpm>=9.0.6'
     'git'
     'nvm'
     'gendesk'
+    'curl'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
-    "${pkgname%-git}.sh")
+    "${pkgname%-git}.sh"
+)
 sha256sums=('SKIP'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
@@ -46,7 +48,7 @@ build() {
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${_appname}ai-git" --categories="Development" --name="${_pkgname}" --exec="${pkgname%-git} %U"
+    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
@@ -65,13 +67,12 @@ build() {
     else
         echo "Your network is OK."
     fi
-    sed "/packageManager/d" -i package.json
-    pnpm install
-    pnpm run build
+    NODE_ENV=development pnpm install
+    NODE_ENV=production pnpm run build
     cd "${srcdir}/${pkgname//-/.}/packages/${_appname}-electron"
     export npm_config_cache="${srcdir}/.npm_cache"
-    npm install
-    pnpm run pack
+    NODE_ENV=development npm install
+    NODE_ENV=production pnpm run pack
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
