@@ -1,17 +1,17 @@
 # Maintainer: let <let@notlet.dev>
 
 pkgname=stormfetch
-pkgver=5.2.r0.g0e2631d
+pkgver=5.2.r4.ge311649
 pkgrel=1
 pkgdesc='A simple linux fetch program written in go and bash'
 arch=('any')
-url='https://gitlab.com/CapCreeperGR/stormfetch'
+url='https://gitlab.com/EnumDev/stormfetch'
 license=('MIT')
 
 makedepends=('go' 'make')
 depends=('bash')
 
-source=('git+https://gitlab.com/CapCreeperGR/stormfetch')
+source=('git+https://gitlab.com/EnumDev/stormfetch')
 sha256sums=('SKIP')
 
 build() {
