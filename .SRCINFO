@@ -1,0 +1,27 @@
+pkgbase = unraid-usb-creator-git
+	pkgdesc = Unraid os usb creator utility
+	pkgver = 1.0.0.r19.g166e950
+	pkgrel = 1
+	url = https://github.com/unraid/usb-creator-next
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt5-tools
+	depends = glibc
+	depends = curl
+	depends = hicolor-icon-theme
+	depends = libarchive
+	depends = openssl
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = qt5-quickcontrols2
+	depends = qt5-svg
+	depends = zlib
+	provides = unraid-usb-creator=1.0.0.r19.g166e950
+	conflicts = unraid-usb-creator
+	source = git+https://github.com/unraid/usb-creator-next.git
+	sha256sums = SKIP
+
+pkgname = unraid-usb-creator-git
