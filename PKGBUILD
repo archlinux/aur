@@ -2,8 +2,8 @@
 
 _name=varname
 pkgname=python-varname
-pkgver=0.13.1
-pkgrel=2
+pkgver=0.13.3
+pkgrel=1
 pkgdesc="A Python library to retrieve variable names from functions or classes"
 arch=('any')
 url="https://github.com/pwwang/${pkgname}"
@@ -12,7 +12,7 @@ depends=('python' 'python-executing')
 optdepends=('python-asttokens' 'python-pure-eval')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'python-poetry')
 source=(${url}/archive/refs/tags/${pkgver}.tar.gz)
-sha512sums=('38b5c39d843b8ebf6607a6dd3d48582db08f6c4d819e0e9f5a70755b2b925b6ad5a7deb42f97cef7e3fbf8235c4b51c9fe5321f1a40e90dc8ec536df7eca0b9a')
+sha512sums=('3c6004fc0fee7c10f54c50c08351b53178fde87c92040c0715363662600fdd0743168ed27128623dee39c9dea7fd38cc6b71373c1e562bbae89eb78b86349ac5')
 
 build() {
   cd "${pkgname}-${pkgver}"
