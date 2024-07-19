@@ -1,43 +1,49 @@
-# Maintainer: Björn Bidar <bidar@odin>
-_pkgname=primus-vk
-pkgname=$_pkgname-git
-pkgver=r62.52ceb2c
+# Maintainer:
+# Contributor: Björn Bidar <bidar@odin>
+
+_pkgname="primus_vk"
+pkgname="${_pkgname/_/-}-git"
+pkgver=1.6.4.r0.g7076c2e
 pkgrel=1
-pkgdesc="Primus-Vk Nvidia Vulkan offloading for Bumblebee"
-arch=('i686' 'x86_64')
+pkgdesc="Nvidia Vulkan offloading for Bumblebee"
 url="https://github.com/felixdoerre/primus_vk"
 license=('BSD')
-depends=('nvidia-utils' 'bumblebee' 'vulkan-icd-loader' 'primus')
-makedepends=('vulkan-validation-layers' 'git')
-source=(git+https://github.com/felixdoerre/primus_vk
-        'primus_vk_wrapper.json'
-       'pvkrun.in.sh')
-md5sums=('SKIP'
-         'e8bec20f7aa74956f4944c7ed237a770'
-         'fb5ae09d41c4590de7f0ecf1ca6c3673')
+arch=('i686' 'x86_64')
+
+depends=(
+  'bumblebee'
+  'libxrandr'
+  'nvidia-utils'
+  'primus'
+  'vulkan-icd-loader'
+)
+makedepends=(
+  'git'
+  'vulkan-validation-layers'
+)
+
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgname/-/_}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
-
 build() {
-  cd "${_pkgname/-/_}"
-
-  CXXFLAGS+=' -DNV_DRIVER_PATH=\"/usr/lib/libGLX_nvidia.so.0\"'
-  make CXXFLAGS="$CXXFLAGS"
+  cd "$_pkgsrc"
+  export CXXFLAGS+=' -DNV_DRIVER_PATH=\"/usr/lib/libGLX_nvidia.so.0\"'
+  make all primus_vk_diag
 }
 
 package() {
-  cd "${_pkgname/-/_}"
-
-  install -D libnv_vulkan_wrapper.so "$pkgdir"/usr/lib/libnv_vulkan_wrapper.so
-	install -D libprimus_vk.so "$pkgdir"/usr/lib/libprimus_vk.so
-	install -Dm644 primus_vk.json "$pkgdir"/usr/share/vulkan/implicit_layer.d/primus_vk.json
-  install -Dm644 "$srcdir"/primus_vk_wrapper.json "$pkgdir"/usr/share/vulkan/icd.d/primus_vk_wrapper.json
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
-  install -Dm755 "$srcdir"/pvkrun.in.sh "$pkgdir"/usr/bin/pvkrun
+  cd "$_pkgsrc"
+  make PREFIX="$pkgdir"/usr install
+  install -Dm755 primus_vk_diag -t "$pkgdir/usr/bin/"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
-
-# vim:set ts=2 sw=2 et:
