@@ -7,7 +7,7 @@ pkgbase=lib32-libproxy
 pkgname=(
   lib32-libproxy
 )
-pkgver=0.5.7
+pkgver=0.5.8
 pkgrel=1
 pkgdesc="Automatic proxy configuration management library (32-bit)"
 url="https://libproxy.github.io/libproxy/"
@@ -29,7 +29,7 @@ makedepends=(
 source=(
   "git+https://github.com/libproxy/libproxy#tag=$pkgver"
 )
-b2sums=('4b9c2f59cf4eec9c3a2bb8facb7673cf032bfd4c14b17e69bc7579115d59fad71945e75e4960c15240176fba7c53308ee662b9b82a12ec93960b72866c34d82e')
+b2sums=('9363b966f92266b50374345bee5eab6ed7d03feb76f124f199a10cf0be2452930e8fa6a28e18ab4ee725de45d092e39ae35f22a11c1cbb6b84d6b656336a97f9')
 
 prepare() {
   cd libproxy
