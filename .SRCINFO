@@ -1,0 +1,14 @@
+pkgbase = ftconall-git
+	pkgdesc = A new way to program for FTC on any IDE and any OS
+	pkgver = 0.2.0.r1.g8622bd7
+	pkgrel = 1
+	url = https://github.com/Iris-TheRaibow/FTCOnAll
+	arch = any
+	license = BSD3
+	makedepends = git
+	makedepends = pyinstaller
+	makedepends = python>=3.7
+	source = ftconall::git+https://github.com/Iris-TheRainbow/FTCOnAll.git
+	b2sums = SKIP
+
+pkgname = ftconall-git
