@@ -1,8 +1,10 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Junxuan Liao <mikeljx at 126 dot com>
+# Contributor: Carl Smedstad <carl.smedstad at protonmail dot com>
 
-pkgname=dotbot
-pkgver=1.20.1
-pkgrel=2
+_pkgname=dotbot
+pkgname="$_pkgname"-git
+pkgver=1.20.1.r6.g7202065
+pkgrel=1
 pkgdesc="A tool that bootstraps your dotfiles"
 arch=(any)
 url="https://github.com/anishathalye/dotbot"
@@ -11,6 +13,8 @@ depends=(
   python
   python-yaml
 )
+provides=($_pkgname)
+conflicts=($_pkgname)
 makedepends=(
   git
   python-build
@@ -22,16 +26,15 @@ checkdepends=(
   python-pytest
 )
 
-_commit=840cd164d20713a8e34f3aeb4ab1121c9745fad9 # git rev-parse "$pkgver"
-source=("git+$url.git#commit=$_commit")
+source=("git+$url.git")
 sha256sums=('SKIP')
 
-_archive="$pkgname"
+_archive="$_pkgname"
 
 pkgver() {
   cd "$_archive"
 
-  git describe --tags | sed 's/^v//'
+  git describe --always --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -40,7 +43,7 @@ build() {
   python -m build --wheel --no-isolation
 }
 
-check() {
+_check() {
   cd "$_archive"
 
   rm -rf tmp_install
