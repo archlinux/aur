@@ -1,20 +1,20 @@
 pkgbase = nvhpc
 	pkgdesc = NVIDIA HPC SDK
-	pkgver = 24.3
-	pkgrel = 2
+	pkgver = 24.5
+	pkgrel = 1
 	url = https://gitlab.com/badwaik/archlinux/aur/nvhpc
 	arch = x86_64
 	license = custom
 	makedepends = bash
 	depends = numactl
-	depends = java-runtime
+	depends = gcc13
 	optdepends = env-modules
 	conflicts = pgi-compilers
 	replaces = pgi-compilers
 	options = !strip
-	source = https://developer.download.nvidia.com/hpc-sdk/24.3/nvhpc_2024_243_Linux_x86_64_cuda_12.3.tar.gz
+	source = https://developer.download.nvidia.com/hpc-sdk/24.5/nvhpc_2024_245_Linux_x86_64_cuda_12.4.tar.gz
 	source = nvhpc.sh
-	sha256sums = 4fb8949ba8cef73b28818bd9375c9420ec48fab1c64e71315a7c1984f5329d6b
-	sha256sums = 89d03e78a1aab764747f505da7d93b701d3f2776a8ebfa68b07b1d8b88e171c8
+	sha256sums = 392c3315dfe4c8bbd6d77ac9efff7a1af837447cca564cfbeff2d10682d365f5
+	sha256sums = 09ddf9aeeeda31b87972bc8da6a6246900e7fc86ebd2e49174a74c8e1cbde6d8
 
 pkgname = nvhpc
