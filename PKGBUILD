@@ -3,14 +3,18 @@
 pkgname='python-securetar'
 _module=${pkgname#python-}
 pkgver='2024.2.1'
-pkgrel=2
+pkgrel=3
 pkgdesc="Python module to handle tarfile backups."
 url="https://github.com/pvizeli/securetar"
 depends=(
 	'python>=3.12'
 	'python-cryptography'
 )
-makedepends=('python-setuptools')
+makedepends=(
+	'python-build'
+	'python-installer'
+	'python-wheel'
+)
 license=('Apache')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
@@ -18,10 +22,10 @@ b2sums=('ff4768bbd474fe71bd00dd86872ae2251f1beb461f00789baa547dda079efa31bc98d54
 
 build() {
 	cd "${srcdir}/${_module}-${pkgver}"
-	python setup.py build
+	python -m build --wheel --no-isolation
 }
 
 package() {
 	cd "${srcdir}/${_module}-${pkgver}"
-	python setup.py install --root="${pkgdir}" --optimize=2 --skip-build
+	python -m installer --compile-bytecode=2 --destdir="$pkgdir" dist/*.whl
 }
