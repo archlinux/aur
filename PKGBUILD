@@ -8,6 +8,7 @@ license=('MIT')
 source=("https://raw.githubusercontent.com/verysillycat/e-z-recorder-linux/main/e-z-recorder.sh")
 sha256sums=('SKIP')
 install=e-z-recorder.install
+PKGDEST="$srcdir/pkg"
 
 depends=('jq' 'ffmpeg')
 optdepends=(
