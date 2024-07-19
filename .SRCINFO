@@ -10,10 +10,11 @@ pkgbase = ayatana-indicator-notifications
 	makedepends = intltool
 	makedepends = cmake-extras
 	makedepends = systemd
-	makedepends = hicolor-icon-theme
 	depends = dconf
 	depends = glib2
 	depends = glibc
+	depends = libayatana-common
+	depends = hicolor-icon-theme
 	source = ayatana-indicator-notifications-23.10.1.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-notifications/archive/23.10.1.tar.gz
 	md5sums = c8e1766992f1706f9b0be7ad552888b7
 
