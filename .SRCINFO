@@ -1,0 +1,14 @@
+pkgbase = python-webdavclient3
+	pkgdesc = Easy to use WebDAV Client for Python 3.x
+	pkgver = 3.14.6
+	pkgrel = 1
+	url = https://github.com/ezhov-evgeny/webdav-client-python-3
+	arch = any
+	license = custom
+	depends = python-requests
+	depends = python-lxml
+	depends = python-dateutil
+	source = python-webdavclient3-3.14.6.tar.gz::https://github.com/ezhov-evgeny/webdav-client-python-3/archive/refs/tags/v3.14.6.tar.gz
+	sha256sums = 3132fd12436c4ea25c21a29fe7d97c317410c430157c52fa86e950f6966dac41
+
+pkgname = python-webdavclient3
