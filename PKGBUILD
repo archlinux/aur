@@ -6,7 +6,7 @@
 pkgname=az-launcher
 _pkgname=azlauncher
 pkgver=3.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A simple Minecraft version that offers a common gaming experience'
 url=https://www.az-launcher.nz/
 arch=(x86_64)
@@ -25,8 +25,9 @@ prepare() {
 }
 
 build() {
-    # Fix the executable name in the desktop file
-    sed -i "s|/usr/bin/AZ-Launcher|/usr/bin/azlauncher|g" \
+    # Fix the executable name in the desktop file 
+    # + add env QT_QPA_PLATFORM=xcb otherwise it doesn't launch at all on Wayland (@bazouzou)
+    sed -i "s|/usr/bin/AZ-Launcher|env QT_QPA_PLATFORM=xcb /usr/bin/azlauncher|g" \
         "${srcdir}/squashfs-root/${pkgname}.desktop"
 
     # Fix permissions; .AppImage permissions are 700 for all directories
