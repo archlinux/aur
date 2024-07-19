@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=git-superprune
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc='a git command to prune remote branches that have already been merged'
 arch=(x86_64)
@@ -15,7 +15,7 @@ options=(!lto)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
 # source=("$_archive.tar.gz::https://static.crates.io/crates/$pkgname/$_archive.crate")
-sha256sums=('889d38c85bcd44c88211bbadc4342089e7c0e798b005669579564025fa88a4bf')
+sha256sums=('0bc873e5baf23f51c68f8f138543a41a6700ba888fcdcec4efd58c26adfc981f')
 
 prepare() {
 	cd "$_archive"
