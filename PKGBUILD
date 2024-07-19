@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=muffon-git
-pkgver=2.0.3.r41.g3178f23
-_electronversion=30
+pkgver=2.0.3.r100.g8ca3d09
+_electronversion=31
 pkgrel=1
 pkgdesc="Music streaming browser,retrieves audio, video and metadata from various Internet sources."
 arch=('x86_64')
@@ -17,15 +17,15 @@ makedepends=(
     'npm'
     'pnpm'
     'git'
-    'nodejs'
+    'nvm'
     'gendesk'
-    'base-devel'
     'gcc'
     'curl'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
-    "${pkgname%-git}.sh")
+    "${pkgname%-git}.sh"
+)
 sha256sums=('SKIP'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 pkgver() {
@@ -60,9 +60,9 @@ build() {
     fi
     cp public/logo.png public/icons/icon.png
     sed "s|icon.icns|icon.png|g" -i electron-builder.json
-    pnpm install
-    pnpm run build
-    pnpm run build:electron
+    NODE_ENV=development pnpm install
+    NODE_ENV=production pnpm run build
+    NODE_ENV=production pnpm run build:electron
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
