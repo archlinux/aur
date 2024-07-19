@@ -1,6 +1,6 @@
 pkgbase = sshlm-git
 	pkgdesc = Local line editing wrapper around ssh for high-latency links
-	pkgver = r62.cfacd75
+	pkgver = r64.26f3455
 	pkgrel = 1
 	url = https://github.com/mnalis/ssh-line-mode
 	arch = any
@@ -12,8 +12,7 @@ pkgbase = sshlm-git
 	depends = perl-term-readline-gnu
 	provides = sshlm
 	conflicts = sshlm
-	source = sshlm::git://github.com/mnalis/ssh-line-mode.git
+	source = sshlm::git+https://github.com/mnalis/ssh-line-mode.git
 	md5sums = SKIP
 
 pkgname = sshlm-git
-
