@@ -1,20 +1,24 @@
 pkgbase = headscale-git
 	pkgdesc = An open source, self-hosted implementation of the Tailscale coordination server.
-	pkgver = 0.15.0.beta5.r2.g61440c4
+	pkgver = v0.23.0_alpha12
 	pkgrel = 1
 	url = https://github.com/juanfont/headscale
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = git
 	makedepends = go
-	depends = tailscale
+	depends = glibc
 	optdepends = wireguard-tools: CLI tools for generating keys
 	optdepends = postgresql: alternative database provider
 	provides = headscale
 	conflicts = headscale
-	source = headscale::git+https://github.com/juanfont/headscale.git
-	source = headscale.service
-	sha256sums = SKIP
-	sha256sums = db54439a60d6efdc812bc9d1cbe9fecc1d7134398a75f88927b561ebcb8d5cba
+	backup = etc/headscale/config.yaml
+	backup = etc/headscale/derp.yaml
+	source = headscale::git+https://github.com/juanfont/headscale.git/#tag=v0.23.0-alpha12
+	source = headscale.sysusers
+	source = headscale.tmpfiles
+	sha256sums = d58c4e371cb374de6774b119333540e6af11b612ceeeedcb45045541cd0832df
+	sha256sums = 059353f4843dec6eb447c567fac890ef63cc9c8acea18840fcfc3f4a76d596db
+	sha256sums = 8a22d7193ceeac0be32725cf8108f963be3a21855e6099de964f810094d0adc7
 
 pkgname = headscale-git
