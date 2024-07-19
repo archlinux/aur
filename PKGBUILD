@@ -1,6 +1,6 @@
 # Maintainer: IgorPetrovcm <igorpetrov42ru@gmail.com>
 pkgname='smdbottom-git'
-pkgver='1.0.1'
+pkgver='2.0.0'
 pkgrel=1
 pkgdesc="A set of bottom libraries for simpledot"
 arch=('x86_64')
