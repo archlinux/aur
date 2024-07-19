@@ -1,2 +1,2 @@
 #!/bin/sh
-APPIMAGELAUNCHER_DISABLE=1 /opt/modrinth-app/modrinth-app.AppImage "$@"
+env WEBKIT_DISABLE_DMABUF_RENDERER=1 /opt/modrinth-app/modrinth-app "$@"

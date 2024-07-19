@@ -1,38 +1,38 @@
 # Maintainer: Antti <antti@antti.codes>
 
 pkgname=modrinth-app-bin
-_pkgname=${pkgname%-bin}
 pkgver=0.7.1
-pkgrel=3
+pkgrel=4
 pkgdesc='An unique, open source launcher that allows you to play your favorite mods, and keep them up to date, all in one neat little package.'
 url='https://modrinth.com/app'
 arch=('x86_64')
 license=('GPL3')
 depends=(
-    'fuse2'
+    # tauri deps
+    'openssl-1.1' 'dbus' 'freetype2' 'gtk3' 'libappindicator-gtk3' 'librsvg' 'libsoup' 'webkit2gtk'
+    # minecraft deps
+    'libgl' 'libpulse' 'libx11' 'libxcursor' 'libxext' 'libxxf86vm'
+)
+optdepends=(
+    'xorg-xrandr: for older minecraft versions'
 )
 provides=('modrinth-app')
 conflicts=('modrinth-app')
 source=(
-    "$_pkgname-$pkgver.AppImage::https://launcher-files.modrinth.com/versions/${pkgver}/linux/modrinth-app_${pkgver}_amd64.AppImage"
+    "https://launcher-files.modrinth.com/versions/${pkgver}/linux/modrinth-app_${pkgver}_amd64.deb"
     "modrinth-app"
 )
-options=(!strip !debug)
-noextract=("modrinth-app_${pkgver}_amd64.AppImage")
-sha256sums=('24f6a53b34eec89d9f8651daab871d5be0fe2616da8d163609728c2c1906c0c5'
-            '891da8d3927841954ee771c80fe6018b90553902dcfc9f1e945a2c52a80874bc')
+sha256sums=('9e2b1c187a3df1f5db87fd9fe214e4bccf67553d69325243bcb39f62514c6be6'
+            '5404b4e7b25903afe43ab2f2451be4b27f4823c6785327b166f2faa519fa38a9')
+
+build() {
+    cd "$srcdir/"
+    tar xf data.tar.gz
+}
 
 package() {
-    cd "$srcdir"
-
-    chmod +x "$_pkgname-$pkgver.AppImage"
-    "./$_pkgname-$pkgver.AppImage" --appimage-extract "modrinth-app.desktop"
-    "./$_pkgname-$pkgver.AppImage" --appimage-extract "usr/share/icons/hicolor/128x128/apps/modrinth-app.png"
-    "./$_pkgname-$pkgver.AppImage" --appimage-extract "usr/share/icons/hicolor/256x256@2/apps/modrinth-app.png"
-
-    cp -r "squashfs-root/usr/" "${pkgdir}"
-
-    install -Dm644 "squashfs-root/modrinth-app.desktop" "$pkgdir/usr/share/applications/modrinth-app.desktop"
-    install -Dm755 "$_pkgname-$pkgver.AppImage" "$pkgdir/opt/modrinth-app/modrinth-app.AppImage"
-    install -Dm755 "modrinth-app" "$pkgdir/usr/bin/modrinth-app"
+    cp -r "${srcdir}/usr/" "${pkgdir}"
+    mkdir -p "${pkgdir}/opt/modrinth-app"
+    mv "${pkgdir}/usr/bin/modrinth-app" "${pkgdir}/opt/modrinth-app/"
+    install -Dm755 "${srcdir}/modrinth-app" "${pkgdir}/usr/bin/"
 }
