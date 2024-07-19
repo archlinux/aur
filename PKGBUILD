@@ -1,6 +1,6 @@
 # Maintainer: Neboer <your.email@example.com>
 pkgname=dns2hostssyncer-git
-pkgver=1.0+5+g0a1821b
+pkgver=2.1
 pkgrel=1
 pkgdesc="A tool to sync DNS records with the hosts file using PowerDNS Admin API"
 arch=('x86_64')
@@ -14,6 +14,7 @@ conflicts=("dns2hostssyncer")
 _gitname="DNS2HostsSyncer"
 source=("$_gitname::git+$url")
 sha256sums=(SKIP)
+backup=('etc/d2hs/d2hs.json')
 
 pkgver() {
 	cd "$srcdir/$_gitname"
