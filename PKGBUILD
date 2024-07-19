@@ -7,7 +7,7 @@ pkgver=1.6.4.r0.g7076c2e
 pkgrel=1
 pkgdesc="Nvidia Vulkan offloading for Bumblebee"
 url="https://github.com/felixdoerre/primus_vk"
-license=('BSD')
+license=('BSD-2-Clause')
 arch=('i686' 'x86_64')
 
 depends=(
