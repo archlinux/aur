@@ -6,7 +6,7 @@
 
 _pkgname=chromium
 pkgname=chromium-no-extras
-pkgver=126.0.6478.182
+pkgver=127.0.6533.57
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -21,7 +21,8 @@ depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'libva'
          'libffi' 'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'gperf' 'nodejs' 'pipewire'
-             'rust' 'qt5-base' 'qt6-base' 'java-runtime-headless' 'git')
+             'rust' 'rust-bindgen' 'qt5-base' 'qt6-base' 'java-runtime-headless'
+             'git')
 optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: support for native dialogs in Plasma'
             'gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)'
@@ -32,15 +33,17 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/${pkgver%%.*}/chromium-patches-${pkgver%%.*}.tar.bz2
         allow-ANGLEImplementation-kVulkan.patch
-        drop-flag-unsupported-by-clang17.patch
+        chromium-browser-ui-missing-deps.patch
         compiler-rt-adjust-paths.patch
+        increase-fortify-level.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('3939f5b3116ebd3cb15ff8c7059888f6b00f4cfa8a77bde983ee4ce5d0eea427'
+sha256sums=('8aea503da0c65edd642197114805f563fc006d9430a6007688b6b172ea625810'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-            'daf0df74d2601c35fd66a746942d9ca3fc521ede92312f85af51d94c399fd6e0'
+            '0887d215c47085013d09252409964a5eedec453561db1f2b133914e349b8a0b2'
             '8f81059d79040ec598b5fb077808ec69d26d6c9cbebf9c4f4ea48b388a2596c5'
-            '028acc97299cec5d1ed9f456bbdc462807fa491277d266db2aa1d405d3cd753d'
+            '75f9c3ccdcc914d029ddcc5ca181df90177db35a343bf44ff541ff127bcea43d'
             'b3de01b7df227478687d7517f61a777450dca765756002c80c4915f271e2d961'
+            'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             'a9b417b96daec33c9059065e15b3a92ae1bf4b59f89d353659b335d9e0379db6')
 
 if (( _manual_clone )); then
@@ -52,7 +55,7 @@ fi
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -gA _system_libs=(
   [brotli]=brotli
-  [dav1d]=dav1d
+  #[dav1d]=dav1d
   #[ffmpeg]=ffmpeg    # YouTube playback stopped working in Chromium 120
   [flac]=flac
   [fontconfig]=fontconfig
@@ -111,8 +114,7 @@ prepare() {
          -e '1i #include <cstdlib>' \
     third_party/blink/renderer/core/xml/*.cc \
     third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
-    third_party/libxml/chromium/*.cc \
-    third_party/maldoca/src/maldoca/ole/oss_utils.h
+    third_party/libxml/chromium/*.cc
 
   # Use the --oauth2-client-id= and --oauth2-client-secret= switches for
   # setting GOOGLE_DEFAULT_CLIENT_ID and GOOGLE_DEFAULT_CLIENT_SECRET at
@@ -122,19 +124,27 @@ prepare() {
   # Upstream fixes
   patch -Np1 -i ../allow-ANGLEImplementation-kVulkan.patch
 
-  # Drop compiler flag that needs newer clang
-  patch -Np1 -i ../drop-flag-unsupported-by-clang17.patch
+  # https://issues.chromium.org/issues/351157339
+  patch -Np1 -i ../chromium-browser-ui-missing-deps.patch
 
   # Allow libclang_rt.builtins from compiler-rt >= 16 to be used
   patch -Np1 -i ../compiler-rt-adjust-paths.patch
+
+  # Increase _FORTIFY_SOURCE level to match Arch's default flags
+  patch -Np1 -i ../increase-fortify-level.patch
 
   # Fixes for building with libstdc++ instead of libc++
   patch -Np1 -i ../chromium-patches-*/chromium-117-material-color-include.patch
 
   # Link to system tools required by the build
-  mkdir -p third_party/node/linux/node-linux-x64/bin
+  rm third_party/node/linux/node-linux-x64/bin/node
   ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
   ln -s /usr/bin/java third_party/jdk/current/bin/
+
+  # test deps are broken for ui/lens with system ICU
+  # "//third_party/icu:icuuc_public" (taken from Gentoo ebuild)
+  sed -i '/source_set("unit_tests") {/,/}/d' chrome/browser/ui/lens/BUILD.gn
+  sed -i '/lens:unit_tests/d' chrome/test/BUILD.gn components/BUILD.gn
 
   if (( !_system_clang )); then
     # Use prebuilt rust as system rust cannot be used due to the error:
@@ -229,6 +239,7 @@ build() {
 
     _flags+=(
       'rust_sysroot_absolute="/usr"'
+      'rust_bindgen_root="/usr"'
       "rustc_version=\"$(rustc --version)\""
     )
   fi
