@@ -5,7 +5,7 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-dav1d
 pkgver=1.4.3
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="AV1 cross-platform decoder focused on speed and correctness (Android ${_android_arch})"
 url='https://code.videolan.org/videolan/dav1d/'
@@ -35,4 +35,5 @@ package() {
 
     DESTDIR="${pkgdir}" ninja -C build install
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
 }
