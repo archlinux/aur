@@ -1,12 +1,22 @@
 pkgbase = ecode
-	pkgdesc = lightweight multi-platform code editor designed for modern hardware with a focus on responsiveness and performance.
-	pkgver = 0.4.2
+	pkgdesc = Lightweight multi-platform code editor designed for modern hardware with a focus on responsiveness and performance.
+	pkgver = 0.6.0
 	pkgrel = 1
-	url = https://github.com/SpartanJ/eepp
+	url = https://github.com/SpartanJ/ecode
 	arch = x86_64
+	arch = aarch64
 	license = MIT
+	makedepends = git
 	makedepends = premake
+	depends = hicolor-icon-theme
+	depends = libglvnd
 	depends = sdl2
-	depends = openal
+	provides = libeepp.so
+	source = git+https://github.com/SpartanJ/eepp.git#tag=ecode-0.6.0
+	source = git+https://github.com/SpartanJ/efsw.git
+	source = git+https://github.com/SpartanJ/soil2.git
+	sha256sums = 060a708a99fe6510f34c56918ebbddc32beb98ab8fe03b521a7d423c8e191b96
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = ecode

@@ -1,29 +1,53 @@
-pkgname='ecode'
-pkgver='0.4.2'
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+pkgname=ecode
+pkgver=0.6.0
 pkgrel=1
-pkgdesc='lightweight multi-platform code editor designed for modern hardware with a focus on responsiveness and performance.'
-arch=('x86_64')
-url='https://github.com/SpartanJ/eepp'
+pkgdesc="Lightweight multi-platform code editor designed for modern hardware with a focus on responsiveness and performance."
+arch=('x86_64' 'aarch64')
+url="https://github.com/SpartanJ/ecode"
 license=('MIT')
-depends=('sdl2' 'openal')
-makedepends=('premake')
+depends=('hicolor-icon-theme' 'libglvnd' 'sdl2')
+makedepends=('git' 'premake')
+provides=('libeepp.so')
+source=("git+https://github.com/SpartanJ/eepp.git#tag=$pkgname-$pkgver"
+        'git+https://github.com/SpartanJ/efsw.git'
+        'git+https://github.com/SpartanJ/soil2.git')
+sha256sums=('060a708a99fe6510f34c56918ebbddc32beb98ab8fe03b521a7d423c8e191b96'
+            'SKIP'
+            'SKIP')
+
+prepare() {
+  cd eepp
+  git submodule init
+  git config submodule.src/thirdparty/efsw.url "$srcdir/efsw"
+  git config submodule.src/thirdparty/SOIL2.url "$srcdir/soil2"
+  git -c protocol.file.allow=always submodule update
+}
 
 build() {
-    git clone --recurse-submodules https://github.com/SpartanJ/eepp.git
-    cd eepp
-    git checkout ecode-$pkgver
-    premake5 gmake2
-    config=release_x86_64 make -j$((`nproc`+1)) -C make/linux
+  cd eepp
+  premake5 gmake
+  make config=release_${CARCH} "$pkgname" -C make/linux
 }
 
 package() {
-    install -Dm755 "${srcdir}/eepp/bin/ecode" "$pkgdir/opt/ecode/bin/ecode"
-    install -Dm644 "${srcdir}/eepp/libs/linux/libeepp.so" "$pkgdir/opt/ecode/libs/linux/libeepp.so"
+  cd eepp
+  install -Dm755 "bin/$pkgname" -t "$pkgdir/opt/$pkgname/"
+  cp -r bin/assets "$pkgdir/opt/$pkgname/"
+  install -Dm644 libs/linux/${CARCH}/libeepp.so -t "$pkgdir/usr/lib/"
 
-    install -d "${pkgdir}/opt/ecode/bin/assets"
-    cp -r ${srcdir}/eepp/bin/assets/* "${pkgdir}/opt/ecode/bin/assets"
-    find "${pkgdir}/opt/ecode/bin/assets" -type f -exec chmod 644 -- {} +
+  install -d "$pkgdir/usr/bin"
+  ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/"
 
-    install -Dm644 ${srcdir}/../ecode.desktop "$pkgdir/usr/share/applications/ecode.desktop"
-    install -Dm644 "${srcdir}/eepp/LICENSE" "$pkgdir/opt/ecode/LICENSE"
+  install -d "$pkgdir/usr/share/pixmaps"
+  ln -s "/opt/$pkgname/assets/icon/ee.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+
+  install -d "$pkgdir/usr/share/icons/hicolor/scalable/apps"
+  ln -s "/opt/$pkgname/assets/icon/$pkgname-icon.svg" \
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
+
+  install -Dm644 "projects/linux/$pkgname/$pkgname.desktop" -t \
+    "$pkgdir/usr/share/applications/"
+
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
