@@ -4,7 +4,7 @@ pkgbase='python-sqlalchemy2-stubs'
 pkgname=('python-sqlalchemy2-stubs')
 _module='sqlalchemy2-stubs'
 pkgver='0.0.2a38'
-pkgrel=1
+pkgrel=2
 pkgdesc="Typing Stubs for SQLAlchemy 1.4"
 url="http://www.sqlalchemy.org"
 depends=(
@@ -14,6 +14,7 @@ makedepends=(
 	'python-build'
 	'python-installer'
 	'python-wheel'
+	'python-setuptools'
 )
 license=('MIT')
 arch=('any')

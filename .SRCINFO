@@ -1,13 +1,14 @@
 pkgbase = python-sqlalchemy2-stubs
 	pkgdesc = Typing Stubs for SQLAlchemy 1.4
 	pkgver = 0.0.2a38
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.sqlalchemy.org
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python>=3.12
 	source = https://files.pythonhosted.org/packages/source/s/sqlalchemy2-stubs/sqlalchemy2-stubs-0.0.2a38.tar.gz
 	b2sums = 45144a87fd625cd530658bf70697b56df1ccd56883c82dd983fc148ccec120eef4ba8c1856e568ecea4839c5bc2a9a1c6fc91616d5a0eac2aec5dcbd07d6d1b9
