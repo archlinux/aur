@@ -8,15 +8,7 @@ arch=('x86_64')
 url='https://matsuridayo.github.io'
 license=('GPL')
 makedepends=('cmake' 'git' 'ninja' 'go' 'zxing-cpp')
-depends=('qt5-base' 'qt5-svg' 'qt5-tools' 'qt5-x11extras' 'protobuf' 'yaml-cpp')
-
-optdepends=(
-	'v2ray-domain-list-community: geosite data for NekoRay'
-	'v2ray-geoip: geoip data for NekoRay'
-	# AUR
-	'sing-geoip: geoip data for NekoBox'
-	'sing-geosite: geosite data for NekoBox'
-)
+depends=('qt5-base' 'qt5-svg' 'qt5-tools' 'qt5-x11extras' 'protobuf' 'yaml-cpp' 'sing-geoip' 'sing-geosite')
 
 source=(
 	'git+https://github.com/MatsuriDayo/nekoray.git'
