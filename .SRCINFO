@@ -1,9 +1,10 @@
 pkgbase = android-aarch64-libavif
 	pkgdesc = Library for encoding and decoding .avif files (Android aarch64)
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AOMediaCodec/libavif
 	arch = any
+	groups = android-libavif
 	license = LicenseRef-libavif
 	makedepends = android-cmake
 	makedepends = android-aarch64-gdk-pixbuf2
