@@ -8,7 +8,7 @@
 pkgname=borg2
 _pkgname=borgbackup
 pkgver=2.0.0b9
-pkgrel=1
+pkgrel=2
 pkgdesc='Deduplicating backup program with compression and authenticated encryption'
 url='https://github.com/borgbackup/borg'
 license=('BSD')
@@ -18,7 +18,6 @@ depends=(
 	'lz4'
 	'openssl'
 	'python-msgpack'
-	'python-setuptools'
 	'xz'
 	'zstd'
 	'xxhash'
@@ -30,7 +29,11 @@ makedepends=(
 	'python-guzzle-sphinx-theme'
 	'git'
 	'python-pkgconfig'
-	'python-wheel'
+        'python-build'
+        'python-installer'
+        'python-wheel'
+	'python-setuptools'
+	'python-setuptools-scm'
 )
 checkdepends=(
 	'python-pytest'
@@ -49,7 +52,7 @@ validpgpkeys=('6D5BEF9ADD2075805747B70F9F88FB52FAF7B393') # Thomas Waldmann <tw@
 
 build() {
 	cd "$srcdir/$_pkgname-$pkgver"
-	python setup.py build
+	python -m build --wheel --no-isolation
 }
 
 check() {
@@ -63,8 +66,8 @@ check() {
 package() {
 	cd "$srcdir/$_pkgname-$pkgver"
 	
-	python setup.py install --root="$pkgdir" --optimize=1
-
+	python -m installer --compile-bytecode=2 --destdir="${pkgdir}" dist/*.whl
+	
 	install -Dm644 scripts/shell_completions/bash/borg \
 		"$pkgdir/usr/share/bash-completion/completions/borg"
 	install -Dm644 scripts/shell_completions/fish/borg.fish \
