@@ -3,7 +3,7 @@
 _pkgname=tuxedo-drivers
 pkgname=tuxedo-drivers-dkms
 pkgver=4.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="TUXEDO Computers kernel module drivers for keyboard, keyboard backlight & general hardware I/O using the SysFS interface"
 url="https://github.com/tuxedocomputers/tuxedo-drivers"
 license=("GPL3")
@@ -39,7 +39,7 @@ sha512sums=('f2c1a455e0c146a69389b604ae1b36b7a17df4889237e7673b7105bc9a05d958100
 
 prepare() {
   # fix for Kernel 6.10 compatibility. 
-  patch --verbose -d "${srcdir}/${_pkgname}-${pkgver}/src/" -l -i "${srcdir}/kernel_6.10.patch"
+  patch -d "${srcdir}/${_pkgname}-${pkgver}/src/" -l -i "${srcdir}/kernel_6.10.patch"
 }
 
 package() {
