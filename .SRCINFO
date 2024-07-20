@@ -1,6 +1,6 @@
 pkgbase = octomap
 	pkgdesc = Efficient probabilistic 3D mapping framework based on octrees
-	pkgver = 1.9.8
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://octomap.github.io/
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = octomap
 	provides = octomap
 	conflicts = octomap-git
 	options = staticlibs
-	source = octomap-1.9.8.tar.gz::https://github.com/OctoMap/octomap/archive/v1.9.8.tar.gz
+	source = octomap-1.10.0.tar.gz::https://github.com/OctoMap/octomap/archive/v1.10.0.tar.gz
 	source = iterator.patch::https://patch-diff.githubusercontent.com/raw/OctoMap/octomap/pull/373.patch
 	sha256sums = 417af6da4e855e9a83b93458aa98b01a2c88f880088baad2b59d323ce162586e
 	sha256sums = SKIP
