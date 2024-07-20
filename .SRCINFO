@@ -4,6 +4,7 @@ pkgbase = mission-center
 	pkgrel = 1
 	url = https://gitlab.com/mission-center-devs/mission-center
 	arch = x86_64
+	arch = aarch64
 	license = GPL-3.0-or-later
 	checkdepends = appstream-glib
 	makedepends = blueprint-compiler
