@@ -2,7 +2,7 @@ diff --color --unified --recursive --text '--exclude=.git' '--exclude=generated'
 --- OpenRV.clean/cmake/dependencies/glew.cmake	2023-08-31 22:15:18.786591021 -0700
 +++ OpenRV/cmake/dependencies/glew.cmake	2023-09-02 20:11:35.420430610 -0700
 @@ -23,6 +23,10 @@
-     f150f61074d049ff0423b09b18cd1ef6
+     9bfc689dabeb4e305ce80b5b6f28bcf9
  )
  
 +SET(_patch_command
@@ -17,6 +17,6 @@ diff --color --unified --recursive --text '--exclude=.git' '--exclude=generated'
    DOWNLOAD_NAME ${_target}_${_version}.zip
    DOWNLOAD_DIR ${RV_DEPS_DOWNLOAD_DIR}
 +  PATCH_COMMAND ${_patch_command}
-   CONFIGURE_COMMAND cd auto && ${_make_command}
+   CONFIGURE_COMMAND cd auto && ${_make_command} && cd .. && ${_make_command}
    BUILD_COMMAND ${_make_command} -j${_cpu_count} GLEW_DEST=${_install_dir}
-   INSTALL_COMMAND ${_make_command} install GLEW_DEST=${_install_dir}
+   INSTALL_COMMAND ${_make_command} install LIBDIR=${_lib_dir} GLEW_DEST=${_install_dir}

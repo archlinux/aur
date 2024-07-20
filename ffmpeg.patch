@@ -1,8 +1,8 @@
 diff --color --unified --recursive --text '--exclude=.git' '--exclude=generated' '--exclude=build' '--exclude=_build' OpenRV.clean/cmake/dependencies/ffmpeg.cmake OpenRV/cmake/dependencies/ffmpeg.cmake
---- OpenRV.clean/cmake/dependencies/ffmpeg.cmake	2023-12-08 12:48:32.604745129 -0800
-+++ OpenRV/cmake/dependencies/ffmpeg.cmake	2023-12-08 14:15:59.468215871 -0800
+--- OpenRV.clean/cmake/dependencies/ffmpeg.cmake	2024-07-19 23:50:43.935913713 -0700
++++ OpenRV/cmake/dependencies/ffmpeg.cmake	2024-07-19 23:51:22.256940466 -0700
 @@ -34,6 +34,14 @@
-     "51ffa9de9e5b0c17cbabc0d8b780beb2"
+     "6dfc27fcb6da6f653c6ec025c2cd9b00"
  )
  
 +SET(_git_repository
@@ -10,13 +10,22 @@ diff --color --unified --recursive --text '--exclude=.git' '--exclude=generated'
 +)
 +
 +SET(_git_tag
-+    "3d69f9682f06bbf72e0cdcdc9e66c9307ed6b24f"
++    "e38092ef9395d7049f871ef4d5411eb410e283e0"
 +)
 +
  SET(_base_dir
      ${RV_DEPS_BASE_DIR}/${_target}
  )
-@@ -254,14 +270,16 @@
+@@ -167,6 +175,8 @@
+ 
+ # Make a list of common FFmpeg config options
+ LIST(APPEND RV_FFMPEG_COMMON_CONFIG_OPTIONS "--enable-shared")
++LIST(APPEND RV_FFMPEG_COMMON_CONFIG_OPTIONS "--enable-pic")
++LIST(APPEND RV_FFMPEG_EXTRA_C_OPTIONS "--extra-cflags=-fno-lto")
+ LIST(APPEND RV_FFMPEG_COMMON_CONFIG_OPTIONS "--disable-static")
+ LIST(APPEND RV_FFMPEG_COMMON_CONFIG_OPTIONS "--disable-iconv")
+ LIST(APPEND RV_FFMPEG_COMMON_CONFIG_OPTIONS "--disable-outdevs")
+@@ -297,12 +306,14 @@
  EXTERNALPROJECT_ADD(
    ${_target}
    DEPENDS ${RV_FFMPEG_DEPENDS}
@@ -36,5 +45,3 @@ diff --color --unified --recursive --text '--exclude=.git' '--exclude=generated'
    SOURCE_DIR ${RV_DEPS_BASE_DIR}/${_target}/src
    PATCH_COMMAND ${RV_FFMPEG_PATCH_COMMAND_STEP}
    CONFIGURE_COMMAND
-     ${CMAKE_COMMAND} -E env "PKG_CONFIG_PATH=$PKG_CONFIG_PATH:${_ffmpeg_david_cmake_lib_dir_path}/pkgconfig" ${_configure_command} --prefix=${_install_dir}
-     ${RV_FFMPEG_COMMON_CONFIG_OPTIONS} ${RV_FFMPEG_CONFIG_OPTIONS} ${RV_FFMPEG_EXTRA_C_OPTIONS} ${RV_FFMPEG_EXTRA_LIBPATH_OPTIONS} ${RV_FFMPEG_EXTERNAL_LIBS}
