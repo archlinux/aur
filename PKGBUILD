@@ -2,8 +2,8 @@
 # Contributor: frousties
 _pkgname=tacentview
 pkgname=${_pkgname}-git
-pkgver=1.0.43.9.gdfff366
-pkgrel=3
+pkgver=1.0.44.45.g78efdee
+pkgrel=1
 pkgdesc="An image and texture viewer for tga, png, apng, exr, dds, ktx, ktx2, astc, pkm, qoi, gif, hdr, jpg, tif, ico, webp, and bmp files. Uses Dear ImGui, OpenGL and Tacent."
 arch=('any')
 url="https://github.com/bluescan/${_pkgname}"
