@@ -1,12 +1,12 @@
 pkgbase = magic_enum
 	pkgdesc = Header-only C++17 library, provides static reflection for enums, works with any enum type without any macro or boilerplate code.
-	pkgver = 0.9.5
+	pkgver = 0.9.6
 	pkgrel = 1
 	url = https://github.com/Neargye/magic_enum
 	arch = any
 	license = MIT
 	makedepends = cmake
-	source = magic_enum-0.9.5.tar.gz::https://github.com/Neargye/magic_enum/archive/v0.9.5.tar.gz
-	sha256sums = 44ad80db5a72f5047e01d90e18315751d9ac90c0ab42cbea7a6f9ec66a4cd679
+	source = magic_enum-0.9.6.tar.gz::https://github.com/Neargye/magic_enum/archive/v0.9.6.tar.gz
+	sha256sums = 814791ff32218dc869845af7eb89f898ebbcfa18e8d81aa4d682d18961e13731
 
 pkgname = magic_enum
