@@ -7,7 +7,7 @@
 
 pkgname=borg2
 _pkgname=borgbackup
-pkgver=2.0.0b8
+pkgver=2.0.0b9
 pkgrel=1
 pkgdesc='Deduplicating backup program with compression and authenticated encryption'
 url='https://github.com/borgbackup/borg'
@@ -19,7 +19,7 @@ checkdepends=('python-pytest' 'python-pytest-cov' 'python-pytest-benchmark' 'pyt
 provides=('borg' 'borgbackup')
 conflicts=('borg' 'borgbackup')
 source=("$url/releases/download/$pkgver/$_pkgname-$pkgver.tar.gz"{,.asc})
-b2sums=('727dc2087e34f1e5753d8cc10864a122f4f5f61bec3fd1118b0e426ded11e852713ffe37f4a06f95588be726c1d4c075fedf551c555531305f63c3c0786c4ead'
+b2sums=('6a4d98cd7ca56788beae135eb2b1a1bfabe2343387a807d6a4c0a355018189b68b2fd94e8c819dd09e496ade0670b9a05a4b48e03a5815b2b94e6b67b71f69ed'
         'SKIP')
 validpgpkeys=('6D5BEF9ADD2075805747B70F9F88FB52FAF7B393') # Thomas Waldmann <tw@waldmann-edv.de>
 
