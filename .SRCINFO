@@ -1,7 +1,7 @@
 pkgbase = chk-upstream
 	pkgdesc = A tool to track upstream changes: retrieve a git repository version and compare it against a pacman package version
-	pkgver = 1.1
-	pkgrel = 3
+	pkgver = 1.2
+	pkgrel = 1
 	url = https://github.com/mutoroglin/chk-upstream
 	arch = x86_64
 	license = GPL-3.0-only
@@ -9,7 +9,7 @@ pkgbase = chk-upstream
 	depends = github-cli
 	provides = chk-upstream
 	conflicts = chk-upstream
-	source = chk-upstream-1.1.tar.gz::https://github.com/mutoroglin/chk-upstream/archive/1.1.tar.gz
-	sha256sums = 17e71e81d2f9923bec651142645f4681e2c89de1305bd99703a5f2bd12ca9dc9
+	source = chk-upstream-1.2.tar.gz::https://github.com/mutoroglin/chk-upstream/archive/1.2.tar.gz
+	sha256sums = 9697b5d12524a0a63dc2bafa05f4748559200c86fe4978e2e3bd4677a2a2e55f
 
 pkgname = chk-upstream
