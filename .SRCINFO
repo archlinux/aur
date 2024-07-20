@@ -1,7 +1,7 @@
 pkgbase = ratarmount-git
 	pkgdesc = Mount tar files via fusepy. Supports Recursive Mounting, Compressed Files, Read-Only Bind Mounting, Union Mounting and Write Overlays. A fast random access alternative to archivemount.
 	pkgver = 0.15.1.r0.g078b769
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/mxmlnkn/ratarmount
 	arch = any
