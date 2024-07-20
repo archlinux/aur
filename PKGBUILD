@@ -1,6 +1,6 @@
 pkgname=twitter
 _pkgname=Twitter
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Unnofficial Twitter desktop application"
 arch=('x86_64' 'aarch64')
@@ -8,14 +8,12 @@ url="https://gitlab.com/twitterdesktop/application"
 license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
-#source=("https://gitlab.com/twitterdesktop/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
-#Backup temp repo
-source=("https://github.com/Twitterdesktop-pkg/application/archive/refs/tags/$pkgver-$pkgrel.tar.gz")
-sha256sums=('SKIP')
+source=("https://gitlab.com/linuxbombay/twitterdesktop/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
+sha256sums=('07a1e7a62990b3c5230802a595fd676dfa29545ab28d14b01eb08f98c09bf1e7')
 
 
 package() {
-    for dir in application-$pkgver-$pkgrel ; do mv "${dir}" "$_pkgname" ;done
+    for dir in application-$pkgver ; do mv "${dir}" "$_pkgname" ;done
     cd "$srcdir/$_pkgname"
     chmod +x $pkgname.sh
     ln -sf "/opt/libelectron/node_modules" "$srcdir/$_pkgname"
