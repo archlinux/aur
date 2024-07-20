@@ -1,7 +1,7 @@
 pkgbase = android-x86-dav1d
 	pkgdesc = AV1 cross-platform decoder focused on speed and correctness (Android x86)
 	pkgver = 1.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code.videolan.org/videolan/dav1d/
 	arch = any
 	license = BSD
