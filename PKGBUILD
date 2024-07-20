@@ -1,7 +1,7 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-rendering8
-pkgver=8.1.1
+pkgver=8.2.0
 pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
@@ -30,7 +30,7 @@ optdepends=(
   )
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('0e368641a4db99ee101d257b6f535caae8ff83f88df86c5ea540b784a3813d4a')
+sha256sums=('d7782709d393841e5263a085ef3d0727bd249d5d430dc1f149d15acaa1c03efd')
 
 _build_dir="${_pkgbase}-${pkgname}_${pkgver}/build"
 
