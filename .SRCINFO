@@ -1,7 +1,7 @@
 pkgbase = mpir
 	pkgdesc = Library for multiple precision integers and rationals
 	pkgver = 3.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.mpir.org/
 	install = mpir.install
 	arch = i686
