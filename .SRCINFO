@@ -1,6 +1,6 @@
 pkgbase = fcitx5-themes-candlelight
 	pkgdesc = fcitx5的简约风格皮肤——烛光
-	pkgver = 5d4b77
+	pkgver = 0.1.1.5d4b77
 	pkgrel = 1
 	url = https://github.com/thep0y/fcitx5-themes-candlelight
 	arch = any

@@ -2,7 +2,7 @@
 _commit=5d4b77594b2fc488fbb8e2c3a5275b6e5a694e32
 
 pkgname=fcitx5-themes-candlelight
-pkgver=5d4b77
+pkgver=0.1.1.5d4b77
 pkgrel=1
 url='https://github.com/thep0y/fcitx5-themes-candlelight'
 pkgdesc='fcitx5的简约风格皮肤——烛光'
@@ -16,7 +16,7 @@ source=("git+https://github.com/thep0y/fcitx5-themes-candlelight.git#commit=${_c
 md5sums=('SKIP')
 
 pkgver() {
-    echo "${_commit:0:6}"
+    echo "0.1.1.${_commit:0:6}"
 }
 
 package() {
