@@ -1,6 +1,6 @@
 pkgbase = qgroundcontrol
 	pkgdesc = Micro air vehicle ground control station.
-	pkgver = 4.3.0
+	pkgver = 4.4.0
 	pkgrel = 1
 	url = https://github.com/mavlink/qgroundcontrol
 	arch = x86_64
@@ -45,7 +45,7 @@ pkgbase = qgroundcontrol
 	depends = qt5-wayland
 	depends = qt5-x11extras
 	depends = speech-dispatcher
-	source = qgroundcontrol-4.3.0::git+https://github.com/mavlink/qgroundcontrol.git#tag=v4.3.0
+	source = qgroundcontrol-4.4.0::git+https://github.com/mavlink/qgroundcontrol.git#tag=v4.4.0
 	source = qgroundcontrol-GpsDrivers::git+https://github.com/PX4/GpsDrivers.git
 	source = qgroundcontrol-c_library_v2::git+https://github.com/mavlink/c_library_v2.git
 	source = qgroundcontrol-android_openssl::git+https://github.com/KDAB/android_openssl.git
