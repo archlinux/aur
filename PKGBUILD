@@ -3,28 +3,25 @@
 # Contributor: Graziano Giuliani <giuliani@lamma.rete.toscana.it>
 
 pkgname=wgrib2
-pkgver=3.1.3
-pkgrel=2
+pkgver=3.3.0
+pkgrel=1
 pkgdesc="Utility to read and write grib2 files"
 arch=('x86_64')
-url="https://www.cpc.ncep.noaa.gov/products/wesley/wgrib2/"
+url="https://github.com/NOAA-EMC/wgrib2"
 license=('GPL' 'Apache' 'custom')
 depends=('glibc' 'gcc-libs')
 makedepends=('gcc-fortran' 'cmake')
-source=("https://www.ftp.cpc.ncep.noaa.gov/wd51we/wgrib2/$pkgname.tgz.v$pkgver")
-sha256sums=('b7d9f2ddc1b9a04f21c70ba3410b641d2189075f6f91520e250fcf79330f6c11')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/NOAA-EMC/wgrib2/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('010827fba9c31f05807e02375240950927e9e51379e1444388153284f08f58e2')
 
 build() {
-  cd grib2
-  CC=gcc FC=gfortran make
+  cd "$srcdir/$pkgname-$pkgver"
+  cmake -B build
+  cmake --build build
 }
 
 package() {
-  cd grib2/wgrib2
-  install -Dm755 wgrib2 "${pkgdir}/usr/bin/wgrib2"
-  install -Dm644 LICENSE-jasper "$pkgdir/usr/share/licenses/$pkgname/LICENSE-jasper"
-  install -Dm644 LICENSE-libpng "$pkgdir/usr/share/licenses/$pkgname/LICENSE-libpng"
-  install -Dm644 LICENSE-netcdf "$pkgdir/usr/share/licenses/$pkgname/LICENSE-netcdf"
-  install -Dm644 LICENSE-wgrib2 "$pkgdir/usr/share/licenses/$pkgname/LICENSE-wgrib2"
-  install -Dm644 LICENSE-zlib "$pkgdir/usr/share/licenses/$pkgname/LICENSE-zlib"
+  cd "$srcdir/$pkgname-$pkgver"
+  install -Dm755 build/wgrib2/wgrib2 "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 wgrib2/LICENSE-wgrib2 "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
