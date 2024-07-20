@@ -1,6 +1,6 @@
 pkgbase = bas-celik-cli-bin
 	pkgdesc = Command line program for reading smart-card documents issued by the government of Serbia
-	pkgver = 1.8.0
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://github.com/ubavic/bas-celik/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = bas-celik-cli-bin
 	depends = ccid
 	depends = opensc
 	conflicts = bas-celik
-	source = bas_celik_cli-1.8.0_amd64::https://github.com/ubavic/bas-celik/releases/download/v1.8.0/bas-celik-cli.linux.amd64
-	sha256sums = e80918102111730d2092cf7580d91a6ab9d47aa336227dc54b8cfd1a1bab3e55
+	source = bas_celik_cli-1.8.1_amd64::https://github.com/ubavic/bas-celik/releases/download/v1.8.1/bas-celik-cli.linux.amd64
+	sha256sums = b6a17ffec342a0fccee2845ac55f896c3e462f9e18243f9d0af50f2402a38517
 
 pkgname = bas-celik-cli-bin
