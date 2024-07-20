@@ -7,14 +7,15 @@ _android_arch=x86
 
 pkgname=android-${_android_arch}-libxkbcommon
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Keymap handling library for toolkits and window systems (Android ${_android_arch})"
 url='https://xkbcommon.org/'
 license=('MIT')
+groups=(android-libxkbcommon)
 depends=("android-${_android_arch}-xkeyboard-config"
          "android-${_android_arch}-libxml2")
-makedepends=('meson'
+makedepends=('android-meson'
              "android-${_android_arch}-libxcb"
              "android-${_android_arch}-xorgproto"
              "android-${_android_arch}-xkeyboard-config"
@@ -33,14 +34,12 @@ build() {
         extra_options="-D enable-x11=false"
     fi
 
-    mkdir -p build && pushd build
-    android-${_android_arch}-meson \
+    android-${_android_arch}-meson build \
         -D enable-tools=false \
         -D enable-bash-completion=false \
-        ${extra_options} \
-        ..
-    sed -i 's|-Wl,--no-undefined||g' build.ninja
-    ninja
+        ${extra_options}
+    sed -i 's|-Wl,--no-undefined||g' build/build.ninja
+    ninja -C build
 }
 
 package() {
@@ -48,5 +47,6 @@ package() {
     source android-env ${_android_arch}
 
     DESTDIR="${pkgdir}" ninja -C build install
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
 }
