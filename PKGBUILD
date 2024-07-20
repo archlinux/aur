@@ -16,7 +16,7 @@
 # Thanks.
 #                                            
 pkgname=anytype-electron-bin
-pkgver=0.41.31
+pkgver=0.41.33
 pkgrel=1
 pkgdesc="Operating environment for the new internet. Anytype is a next generation software that breaks down barriers between applications, gives back privacy and data ownership to users."
 arch=('x86_64')
@@ -28,13 +28,14 @@ provides=('anytype')
 conflicts=('anytype'
            'anytype-legacy')
 source=(
-	"https://github.com/anyproto/anytype-ts/releases/download/v${pkgver}-alpha/anytype_${pkgver}-alpha_amd64.deb"
+	"https://github.com/anyproto/anytype-ts/releases/download/v${pkgver}-beta/anytype_${pkgver}-beta_amd64.deb"
 )
-sha256sums=('628fecf423b849c3eebccec99345fa11b27ce0fe9a3a3ac5c1bf57e0a7510d50')
+sha256sums=('97647e2e0e493960bcdb64998d85e7b5c349c2012926a60b16f20569b195f3f3')
 
 package() {
-  	tar -xvf data.tar.* -C $pkgdir
-  	find $pkgdir/opt -type f -not -path "*/resources/*" -print -delete
+  	bsdtar -xf data.tar.* -C $pkgdir
+  	find $pkgdir/opt -type f -not -path "*/resources/*" -delete
+
   	printf '#!/bin/sh
 	exec env ELECTRON_IS_DEV=0 electron27 /opt/Anytype/resources/app.asar "$@"
 	' | install -Dm755 /dev/stdin $pkgdir/opt/Anytype/anytype
