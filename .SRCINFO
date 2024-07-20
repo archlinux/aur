@@ -1,6 +1,6 @@
 pkgbase = sdformat14
 	pkgdesc = Simulation Description Format (SDFormat) parser and description files.
-	pkgver = 14.2.0
+	pkgver = 14.4.0
 	pkgrel = 1
 	url = https://github.com/gazebosim/sdformat
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = sdformat14
 	depends = gz-math=7
 	depends = gz-utils=2
 	provides = sdformat=14
-	source = https://github.com/gazebosim/sdformat/archive/sdformat14_14.2.0.tar.gz
-	sha256sums = 8ecfd48b5cd54a4c8a060a98fec16e2d8d42802d07445f234d608df813e624fc
+	source = https://github.com/gazebosim/sdformat/archive/sdformat14_14.4.0.tar.gz
+	sha256sums = b7fe85eea769e0e75dcb46633913f95f31ee933c9067f6ca208cef0ca22da927
 
 pkgname = sdformat14
