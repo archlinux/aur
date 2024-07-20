@@ -6,11 +6,12 @@ _android_arch=x86
 
 pkgname=android-${_android_arch}-libheif
 pkgver=1.17.6
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="An HEIF and AVIF file format decoder and encoder (Android ${_android_arch})"
 url='https://github.com/strukturag/libheif'
 license=('GPL3')
+groups=(android-libheif)
 makedepends=('android-cmake'
              "android-${_android_arch}-dav1d"
              "android-${_android_arch}-ffmpeg"
@@ -38,20 +39,21 @@ sha256sums=('8390baf4913eda0a183e132cec62b875fb2ef507ced5ddddc98dfd2f17780aee'
             '53a7eeb0f0f1c9fb076a6f56c6753abf8e30cf625355c54e720cc028ae9c1ce9')
 
 prepare() {
-    cd "${srcdir}/libheif-$pkgver"
+    cd "${srcdir}/libheif-${pkgver}"
 
     patch -Np1 -i ../a911b26a902c5f89fee2dc20ac4dfaafcb8144ec.patch # fix build against svt-av1 2.0.0
 }
 
 build() {
-    cd "${srcdir}/libheif-$pkgver"
+    cd "${srcdir}/libheif-${pkgver}"
     source android-env ${_android_arch}
 
     openjpeg_dir=$(ls "${ANDROID_PREFIX_LIB}/cmake" | grep openjpeg- | head -n 1)
 
     android-${_android_arch}-cmake \
         -S . \
-        -B build \
+        -B build-shared \
+        -DBUILD_SHARED_LIBS=ON \
         -DBUILD_TESTING=OFF \
         -DWITH_EXAMPLES=OFF \
         -DWITH_DAV1D=ON \
@@ -89,14 +91,59 @@ build() {
         -DFFMPEG_avutil_LIBRARY="${ANDROID_PREFIX_LIB}/libavutil.so" \
         -DFFMPEG_swresample_LIBRARY="${ANDROID_PREFIX_LIB}/libswresample.so" \
         -DFFMPEG_swscale_LIBRARY="${ANDROID_PREFIX_LIB}/libswscale.so"
-    sed -i "s|  -lgdk_pixbuf-2.0 |  -L${ANDROID_PREFIX_LIB} -lgdk_pixbuf-2.0 |g" build/gdk-pixbuf/CMakeFiles/pixbufloader-heif.dir/link.txt
-    make -C build $MAKEFLAGS
+    sed -i "s|  -lgdk_pixbuf-2.0 |  -L${ANDROID_PREFIX_LIB} -lgdk_pixbuf-2.0 |g" build-shared/gdk-pixbuf/CMakeFiles/pixbufloader-heif.dir/link.txt
+    make -C build-shared $MAKEFLAGS
+
+    android-${_android_arch}-cmake \
+        -S . \
+        -B build-static \
+        -DBUILD_SHARED_LIBS=OFF \
+        -DBUILD_TESTING=OFF \
+        -DWITH_EXAMPLES=OFF \
+        -DWITH_DAV1D=ON \
+        -DWITH_RAV1E=ON \
+        -DWITH_FFMPEG_DECODER=ON \
+        -DWITH_FFMPEG_DECODER_PLUGIN=ON \
+        -DWITH_SvtEnc=ON \
+        -DWITH_JPEG_DECODER=ON \
+        -DWITH_JPEG_ENCODER=ON \
+        -DWITH_OpenJPEG_DECODER=ON \
+        -DWITH_OpenJPEG_ENCODER=ON \
+        -DWITH_X265=OFF \
+        -DLIBDE265_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
+        -DLIBDE265_LIBRARY="${ANDROID_PREFIX_LIB}/libde265.a" \
+        -DDAV1D_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
+        -DDAV1D_LIBRARY="${ANDROID_PREFIX_LIB}/libdav1d.a" \
+        -DAOM_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
+        -DAOM_LIBRARY="${ANDROID_PREFIX_LIB}/libaom.a" \
+        -DSvtEnc_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
+        -DSvtEnc_LIBRARY="${ANDROID_PREFIX_LIB}/libSvtAv1Enc.a" \
+        -DRAV1E_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}/rav1e" \
+        -DRAV1E_LIBRARY="${ANDROID_PREFIX_LIB}/librav1e.a" \
+        -DLIBSHARPYUV_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}/webp" \
+        -DLIBSHARPYUV_LIBRARY="${ANDROID_PREFIX_LIB}/libsharpyuv.a" \
+        -DJPEG_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
+        -DJPEG_LIBRARY_RELEASE="${ANDROID_PREFIX_LIB}/libjpeg.a" \
+        -DOpenJPEG_DIR="${ANDROID_PREFIX_LIB}/cmake/$openjpeg_dir" \
+        -DFFMPEG_INCLUDE_DIRS="${ANDROID_PREFIX_INCLUDE}" \
+        -DFFMPEG_avcodec_LIBRARY="${ANDROID_PREFIX_LIB}/libavcodec.a" \
+        -DFFMPEG_avdevice_LIBRARY="${ANDROID_PREFIX_LIB}/libavdevice.a" \
+        -DFFMPEG_avfilter_LIBRARY="${ANDROID_PREFIX_LIB}/libavfilter.a" \
+        -DFFMPEG_avformat_LIBRARY="${ANDROID_PREFIX_LIB}/libavformat.a" \
+        -DFFMPEG_avresample_LIBRARY="${ANDROID_PREFIX_LIB}/libavresample.a" \
+        -DFFMPEG_avutil_LIBRARY="${ANDROID_PREFIX_LIB}/libavutil.a" \
+        -DFFMPEG_swresample_LIBRARY="${ANDROID_PREFIX_LIB}/libswresample.a" \
+        -DFFMPEG_swscale_LIBRARY="${ANDROID_PREFIX_LIB}/libswscale.a"
+    sed -i "s|  -lgdk_pixbuf-2.0 |  -L${ANDROID_PREFIX_LIB} -lgdk_pixbuf-2.0 |g" build-static/gdk-pixbuf/CMakeFiles/pixbufloader-heif.dir/link.txt
+    make -C build-static $MAKEFLAGS
 }
 
 package() {
-    cd "${srcdir}/libheif-$pkgver"
+    cd "${srcdir}/libheif-${pkgver}"
     source android-env ${_android_arch}
 
-    make -C build DESTDIR="$pkgdir" install
+    make -C build-shared DESTDIR="${pkgdir}" install
+    make -C build-static DESTDIR="${pkgdir}" install
     find "${pkgdir}/${ANDROID_PREFIX_LIB}" -type f -name '*.so' -exec ${ANDROID_STRIP} -g --strip-unneeded {} \;
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
