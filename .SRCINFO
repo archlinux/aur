@@ -1,9 +1,10 @@
 pkgbase = android-x86-64-libva
 	pkgdesc = Video Acceleration (VA) API for Linux (Android x86-64)
 	pkgver = 2.21.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://01.org/linuxmedia/vaapi
 	arch = any
+	groups = android-libva
 	license = MIT
 	makedepends = android-meson
 	depends = android-x86-64-libdrm
