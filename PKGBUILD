@@ -3,7 +3,7 @@
 
 pkgname=python-glue-vispy-viewers
 _pyname=glue_vispy_viewers
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="3-d data viewers for glue based on VisPy"
 arch=('any')
@@ -15,7 +15,7 @@ checkdepends=('python-pytest'
               'python-opengl'
               'python-vispy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('40609ebc703ba84dd43c2200d12afc394593098173c3875792a47d9f63d8ccf8')
+sha256sums=('296a02901790f69a66f3a06749887235b8ce9028590f894e5ccb7d05372cf116')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -30,7 +30,7 @@ check() {
 }
 
 package() {
-    depends=('python>=3.8' 'python-matplotlib' 'python-opengl' 'python-scipy' 'python-glue-core>=1.13.1' 'python-vispy>=0.9.1' 'python-glfw' 'python-imageio')
+    depends=('python>=3.8' 'python-matplotlib' 'python-opengl' 'python-scipy' 'python-glue-core>=1.13.1' 'python-vispy>=0.12.0' 'python-glfw' 'python-imageio')
     optdepends=('python-qtpy: pyqt, pyside'
                 'python-glue-qt: pyqt, pyside'
                 'python-pyqt6: pyqt'
