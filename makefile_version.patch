@@ -1,10 +1,11 @@
---- MUMPS_5.7.2_OLD/Makefile	2024-06-17 03:20:17.000000000 -0500
-+++ MUMPS_5.7.2/Makefile	2024-06-23 20:46:47.364189647 -0500
+diff --color -uraBN MUMPS_5.7.3_OLD/Makefile MUMPS_5.7.3/Makefile
+--- MUMPS_5.7.3_OLD/Makefile	2024-07-15 06:44:21.000000000 -0500
++++ MUMPS_5.7.3/Makefile	2024-07-20 11:48:26.204825640 -0500
 @@ -2,6 +2,8 @@
- #  This file is part of MUMPS 5.7.2, released
- #  on Mon Jun 17 08:20:17 UTC 2024
+ #  This file is part of MUMPS 5.7.3, released
+ #  on Mon Jul 15 11:44:21 UTC 2024
  #
-+export VERSION   = 5.7.2
++export VERSION   = 5.7.3
 +export SOVERSION = 5.7
  topdir = .
  libdir = $(topdir)/lib
