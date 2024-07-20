@@ -20,15 +20,6 @@ source=("https://github.com/Chilledheart/yass/releases/download/${_pkgver}/yass-
         )
 sha256sums=('3960a4c7861674e8965df92c9ceca94b2999b1fcd979d1adf157737f708ce952')
 
-prepare() {
-  SRC_DIR="${srcdir}/yass-${_pkgver}"
-  pushd $SRC_DIR
-  cd tools
-  go build
-  cd ..
-  popd
-}
-
 build(){
   SRC_DIR="${srcdir}/yass-${_pkgver}"
   pushd $SRC_DIR
