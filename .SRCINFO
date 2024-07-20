@@ -1,7 +1,7 @@
 pkgbase = android-x86-64-verdict
 	pkgdesc = Compute quality functions of 2 and 3-dimensional regions (Android x86-64)
 	pkgver = 1.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sandialabs/verdict
 	arch = any
 	license = BSD
