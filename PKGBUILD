@@ -2,7 +2,7 @@
 pkgname=fish-lsp-git
 _pkgname=${pkgname%-git}
 pkgver=r312.1cbeb37
-pkgrel=1
+pkgrel=2
 pkgdesc="LSP implementation for the fish shell langauge"
 arch=(any)
 url="https://github.com/ndonfris/fish-lsp/"
@@ -28,5 +28,5 @@ build() {
 package() {
 	cd "$_pkgname"
 	install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm0644 "fish-lsp.fish" "$pkgdir/usr/share/fish/vendor_completions.d"
+	install -Dm644 "fish-lsp.fish" "$pkgdir/usr/share/fish/vendor_completions.d/fish-lsp.fish"
 }

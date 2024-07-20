@@ -1,7 +1,7 @@
 pkgbase = fish-lsp-git
 	pkgdesc = LSP implementation for the fish shell langauge
 	pkgver = r312.1cbeb37
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ndonfris/fish-lsp/
 	arch = any
 	license = MIT
