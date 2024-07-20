@@ -2,7 +2,7 @@
 
 _name=photon
 pkgname="$_name-lemmy"
-pkgver=1.30.3
+pkgver=1.31.0
 pkgrel=1
 pkgdesc='An alternative front end for Lemmy'
 arch=('any')
@@ -12,7 +12,7 @@ depends=(
   'bun'
 )
 makedepends=(
-  'yarn'
+  'npm'
 )
 backup=('etc/photon-lemmy/config.env')
 source=(
@@ -22,15 +22,15 @@ source=(
   'tmpfiles.conf'
   'config.env'
 )
-b2sums=('56e8ec67a0d0cc6258f97ecb0edba4bc65193439f1de6c573622af4c3b5d70a23e57538b41efd2765076e8665f6e5388a61266de97cb202230702cc13c96c22b'
+b2sums=('3162442f84379216a8252b20e4934ed9fdf482d60dcd6e85ccc1d5768121172fb6ea27b01ebb68f08b43b60d0857ea4b2cf5a108276d868ecc023991202b882f'
         'bed8fd89aac2ee4e33f14605a0bccad351d33164b002ee5c0fe8c46a4b97f6d8387b49321a734fbf2eb67256310cb7e9e9e8bffe8210d1107cf04882d87f1cd5'
         '02f70ad3274186cb9f5ba50e0717ebf17fc76450816174ed761d1c8a37c5f08bd906a1fe0573db647c92d91f900c67f9595478c625c2d22cf98f3769b55198d1'
         '4c403c969af4489b80fd76e662aa3a9fce354bb6441a5c68f4309205954fb71df2e29e45e6d87196db6ce0eeb157fb2d956e9b264507523eecf548ce29687c4e'
         '22567c2e2fac19a9c1acbb3ea2e811b30847429a2a14fafa21991fc8281a24bc3acb111b78e3a83b9261c193349156ccdd5b0fa20aa7c1fcd2113af47857e053')
 build() {
   cd "$_name-$pkgver"
-  yarn install
-  ADAPTER=bun yarn build
+  npm install
+  ADAPTER=bun npm run build
 }
 
 package() {
