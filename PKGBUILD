@@ -5,11 +5,12 @@ _android_arch=x86
 
 pkgname=android-${_android_arch}-libvdpau
 pkgver=1.5
-pkgrel=2
+pkgrel=3
 arch=('any')
 pkgdesc="Nvidia VDPAU library (Android ${_android_arch})"
 url='https://www.freedesktop.org/wiki/Software/VDPAU/'
 license=('custom')
+groups=(android-libvdpau)
 depends=("android-${_android_arch}-libxext")
 makedepends=('android-meson'
              "android-${_android_arch}-xorgproto")
@@ -21,19 +22,16 @@ build() {
     cd "${srcdir}/libvdpau-${pkgver}"
     source android-env ${_android_arch}
 
-    mkdir -p build
-    cd build
-    android-${_android_arch}-meson \
-        --default-library both \
+    android-${_android_arch}-meson build \
         -Ddocumentation=false
-    ninja
+    ninja -C build
 }
 
 package() {
-    cd "${srcdir}/libvdpau-${pkgver}/build"
+    cd "${srcdir}/libvdpau-${pkgver}"
     source android-env ${_android_arch}
 
-    DESTDIR="${pkgdir}" ninja install
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/vdpau/*.so
+    DESTDIR="${pkgdir}" ninja -C build install
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/vdpau/*.so
 }
