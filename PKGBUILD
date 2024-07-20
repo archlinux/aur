@@ -9,23 +9,24 @@
 
 pkgbase=nvidia-sdk
 pkgname=('nvidia-sdk' 'nvidia-sdk-doc')
-pkgver=12.1.14
-pkgrel=2
+pkgver=12.2.72
+pkgrel=1
 pkgdesc='NVIDIA Video Codec SDK (NVDECODE and NVENCODE APIs)'
 arch=('any')
 url='https://developer.nvidia.com/nvidia-video-codec-sdk/'
-license=('custom')
+license=('LicenseRef-Custom')
 makedepends=('poppler')
 source=("local://Video_Codec_SDK_${pkgver}.zip")
-sha256sums=('f0048341c087f2edea2175efd26f6d61bb9a0f57beb577fc6928ef063a0c8772')
+sha256sums=('fc3e05cd2a194fb93e2e9f11f8844f678401f4df5c9d017632d68c992e818a6e')
 
 prepare() {
     pdftotext -layout "Video_Codec_SDK_${pkgver}/LicenseAgreement.pdf"
 }
 
 package_nvidia-sdk() {
+    install -d -m755 "${pkgdir}/usr/include"
     install -D -m644 "Video_Codec_SDK_${pkgver}/LicenseAgreement.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    cp -dr --no-preserve='ownership' "Video_Codec_SDK_${pkgver}/Interface" "${pkgdir}/usr/include"
+    cp -dr --no-preserve='ownership' "Video_Codec_SDK_${pkgver}/Interface" "${pkgdir}/usr/include/nvidia-sdk"
 }
 
 package_nvidia-sdk-doc() {
