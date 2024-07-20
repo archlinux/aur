@@ -1,11 +1,11 @@
 # Maintainer: Sam Bilbow <samuel.bilbow@icloud.com>
 pkgname=ultraleap-hand-tracking-control-panel
 pkgver=3.4.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A visualisation and settings management tool for the Ultraleap Tracking Service."
 arch=('x86_64')
-url="https://gitlab.com/northstar-archlinux/ultraleap-hand-tracking-control-panel.git"
+url="https://www.ultraleap.com/"
 license=('PROPRIETARY')
 groups=('ultraleap-hand-tracking')
 depends=(ultraleap-hand-tracking-service)
