@@ -1,6 +1,6 @@
 pkgbase = jupyterlab-catppuccin
 	pkgdesc = Soothing pastel theme for JupyterLab
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/catppuccin/jupyterlab
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = jupyterlab-catppuccin
 	makedepends = jupyterlab
 	makedepends = nodejs
 	makedepends = npm
+	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-debugpy
 	makedepends = python-fqdn
@@ -25,7 +26,7 @@ pkgbase = jupyterlab-catppuccin
 	makedepends = python-hatch-nodejs-version
 	depends = python
 	depends = jupyterlab
-	source = jupyterlab-catppuccin-0.2.2.tar.gz::https://github.com/catppuccin/jupyterlab/archive/refs/tags/v0.2.2.tar.gz
-	sha256sums = a81ecc1b855f38c18dc75ca261933a0a8d54fbb24522815c2dc1f18f8e639653
+	source = jupyterlab-catppuccin-0.2.3.tar.gz::https://github.com/catppuccin/jupyterlab/archive/refs/tags/v0.2.3.tar.gz
+	sha256sums = 9e905dd49ac1a66aa75e08cd836685b46f9d6fe80a907172c35accf79d65a948
 
 pkgname = jupyterlab-catppuccin

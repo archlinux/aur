@@ -1,7 +1,7 @@
 # Maintainer: Catppuccin <releases@catppuccin.com>
 
 pkgname=jupyterlab-catppuccin
-pkgver=0.2.2 # renovate: datasource=github-tags depName=catppuccin/jupyterlab
+pkgver=0.2.3 # renovate: datasource=github-tags depName=catppuccin/jupyterlab
 pkgrel=1
 pkgdesc="Soothing pastel theme for JupyterLab"
 url="https://github.com/catppuccin/jupyterlab"
@@ -11,6 +11,7 @@ makedepends=(
 	jupyterlab
 	nodejs
 	npm
+	python-setuptools
 	python-build
 	python-debugpy
 	python-fqdn
@@ -32,7 +33,7 @@ source=(
 	"${pkgname}-${pkgver}.tar.gz::https://github.com/catppuccin/jupyterlab/archive/refs/tags/v${pkgver}.tar.gz"
 )
 
-sha256sums=('a81ecc1b855f38c18dc75ca261933a0a8d54fbb24522815c2dc1f18f8e639653')
+sha256sums=('9e905dd49ac1a66aa75e08cd836685b46f9d6fe80a907172c35accf79d65a948')
 
 build() {
 	cd "jupyterlab-$pkgver"
