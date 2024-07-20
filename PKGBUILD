@@ -1,4 +1,5 @@
-# Maintainer: dadav <33197631+dadav@users.noreply.github.com>
+# Maintainer: Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+# Contributor: dadav <33197631+dadav@users.noreply.github.com>
 pkgname=go2rtc
 pkgver=1.9.4
 pkgrel=1
