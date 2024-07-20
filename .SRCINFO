@@ -13,7 +13,7 @@ pkgbase = kotlin-native-bin
 	options = staticlibs
 	options = libtool
 	options = !strip
-	source = https://github.com/JetBrains/kotlin/releases/download/v1.7.20/kotlin-native-linux-x86_64-1.7.20.tar.gz
-	sha256sums = 65ac0a71fbff016d4387956768a49b668e6cda316e96adb116de5cf1169f5627
+	source = https://github.com/JetBrains/kotlin/releases/download/v1.9.25/kotlin-native-linux-x86_64-1.9.25.tar.gz
+	sha256sums = c1fc64184ba99159455b77790966fda826639387b7426b47524aa00d7744c33d
 
 pkgname = kotlin-native-bin
