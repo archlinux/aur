@@ -3,8 +3,8 @@
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 
 pkgname=ngircd
-pkgver=26.1
-pkgrel=3
+pkgver=27
+pkgrel=0
 pkgdesc="Next Generation IRC Daemon"
 arch=('x86_64')
 backup=(etc/ngircd.conf)
@@ -13,7 +13,7 @@ license=('GPL')
 depends=('openssl' 'libident' 'zlib')
 source=("https://ngircd.barton.de/pub/ngircd/ngircd-$pkgver.tar.gz"{,.sig}
         ngircd.service)
-sha256sums=('41e1b1c6326c667a6a07799c34175b5406e78ec3b19b4b780046c8d3f532706e'
+sha256sums=('fd38ef21339daf81d6af4a630ba3b2de51a1b42c181843ee77635a5a661fe73c'
             'SKIP'
             'f02e30f6864ba1130bcc85bedc44ad782687f572c06f10e0501b0ddcf532b404')
 validpgpkeys=('F5B9F52ED90920D2520376A2C24A0F637E364856') # Alexander Barton <alex@barton.de>
