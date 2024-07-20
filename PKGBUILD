@@ -3,16 +3,16 @@
 
 pkgname=cozy-audiobooks-git
 _gitname=cozy
-pkgdesc='A modern audio book player for Linux and macOS using GTK+ 3'
+pkgdesc="A modern audio book player for Linux and macOS using GTK+ 3"
 pkgver=1.3.0.r0.g4c978ec5
-pkgrel=1
-url='https://cozy.geigi.de'
+pkgrel=2
+url="https://cozy.geigi.de"
 arch=(any)
 license=('GPL3')
 provides=('cozy-audiobooks')
 conflicts=('cozy-audiobooks')
 depends=('appstream-glib'
-         libgranite.so libhandy libdazzle
+          libhandy libdazzle
          'desktop-file-utils'
          'gst-python'
          'gstreamer'
@@ -28,7 +28,7 @@ depends=('appstream-glib'
          'python-peewee'
          'gst-plugins-good'
          'python-apsw')
-makedepends=('meson' 'ninja' 'git' granite)
+makedepends=('meson' 'ninja' 'git' )
 source=("cozy-audiobooks::git+https://github.com/geigi/cozy#tag=1.3.0")
 sha256sums=('SKIP')
 
@@ -40,7 +40,6 @@ pkgver() {
 build() {
   cd "${srcdir}/cozy-audiobooks"
   arch-meson . build
-
 
   ninja -C build com.github.geigi.cozy-update-po
   ninja -C build extra-update-po
