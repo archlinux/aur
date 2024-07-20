@@ -23,7 +23,7 @@ source=("https://github.com/verticalsync/Sunroof/archive/refs/tags/v${pkgver}.ta
         'me.verticalsync.sunroof.desktop'
         'sunroof.sh')
 sha256sums=('b021131a858ef7b4773dd0695e8fc7b7f8b575baec8a9fcce633fbd10b5fffd7'
-            '959683d191af774e3b3f35d2b2edf85d029628dff8b0a989cdaa1b4604f3fba9'
+            '6984f22c28e78f9278f366117523e141d61a519d07c15c1f3874fe4b5905a42c'
             '1bdc4d3b8454d3bffc0c454685b45179893fff5e1cfafde00417e839addb1685')
 
 prepare() {
