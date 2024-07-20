@@ -2,7 +2,7 @@
 # Contributor: Erik Moldtmann <erik@moldtmann.de>
 _projectname='ExpressLRS-Configurator'
 pkgname="${_projectname,,}"
-pkgver='1.7.1'
+pkgver='1.7.2'
 pkgrel='1'
 pkgdesc='Cross platform configuration & build tool for the ExpressLRS radio link'
 # If you're running on armv7h or aarch64, use the electron27-bin package from the AUR for the electron27 dependency
@@ -20,7 +20,7 @@ source=(
 	'fix-resource-locations.diff'
 	'electron-builder-config.diff'
 )
-b2sums=('9cf34ae0c372b5a9878b56fb693be90d3f5b0404a35987c1775ef3652fb65c5b714bd26a9fa6528ed0b3944ed82b7b132078e60ce8defcc097f50fc9aecfdbe1'
+b2sums=('b1abae57da7cf9186f5f33516858abba51671cb61c75feffc29276daac65dc6b35547e6167bfca8f358273ac3bf9dbc90c79ce88be10d32fe21edf6648ec3f10'
         'ac21805ec823b40ac925e1abec13edb8c4a3e5bbcfc65629b83e5923f4328dfccafb11c5c6895d8484cb730afce0a3977113d0d2266ba95d05216b4ea4077b4d'
         '98ed125215ecc3a1a3e1dc52211cd65d713baad56573254ecb96ad6713f4f14c57f83ef97ff12f059d0058ce946e739e95d4a0ea9a07e3f60664547059ff1b3d'
         'fcf6859cdf2a2a71330b329add29328eb7a9075006383c627426ba43788ca4875f9108b8f1aa0da11f0bb6bb0d61a361aeb3f9666b69b54f7a2085fcf62640b5')
