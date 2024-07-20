@@ -6,11 +6,12 @@ _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libva
 pkgver=2.21.0
-pkgrel=1
+pkgrel=2
 arch=("any")
 pkgdesc="Video Acceleration (VA) API for Linux (Android ${_android_arch})"
 url='https://01.org/linuxmedia/vaapi'
 license=('MIT')
+groups=(android-libva)
 depends=("android-${_android_arch}-libdrm"
          "android-${_android_arch}-libx11"
          "android-${_android_arch}-libxext"
@@ -37,18 +38,17 @@ build() {
 
     export CFLAGS="${CFLAGS} -DENABLE_VA_MESSAGING" # Option missing
 
-    mkdir -p build
-    cd build
-    android-${_android_arch}-meson
-    ninja
+    android-${_android_arch}-meson build
+    ninja -C build
 }
 
 package() {
-    cd "${srcdir}/libva-${pkgver}/build"
+    cd "${srcdir}/libva-${pkgver}"
     source android-env ${_android_arch}
 
-    DESTDIR="${pkgdir}" ninja install
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
+    DESTDIR="${pkgdir}" ninja -C build install
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+
     install -Dm 644 /dev/stdin "${pkgdir}/${ANDROID_PREFIX_ETC}/libva.conf" <<END
 LIBVA_MESSAGING_LEVEL=1
 END
