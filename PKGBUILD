@@ -1,3 +1,4 @@
+# Maintainer: Chris Rizzitello <sithlord48@gmail.com>
 # Maintainer: Lahfa Samy <akechishiro-aur@lahfa.xyz>
 # Contributor: Chih-Hsuan Yen <base64_decode("eWFuMTIxMjUgQVQgYXJjaGxpbnV4IERPVCBvcmc=")>
 # Forked from aur/barrier-git
@@ -6,7 +7,7 @@
 _pkgname=input-leap
 pkgbase=$_pkgname-git
 pkgname=($_pkgname-headless-git $_pkgname-git)
-pkgver=2.4.0+436+g47d94944
+pkgver=2.4.0+871+g53d2a329
 pkgrel=1
 pkgdesc="Open-source KVM software"
 arch=(x86_64)
@@ -16,8 +17,8 @@ source=("${_pkgname}::git+${url}.git"
         "gulrak-filesystem::git+https://github.com/gulrak/filesystem.git")
 sha512sums=('SKIP'
             'SKIP')
-_core_deps=(glibc gcc-libs libx11 libxrandr libxext libxinerama xorgproto libxtst libxi openssl)
-_gui_deps=(glibc gcc-libs libx11 openssl avahi qt5-base qt5-tools)
+_core_deps=(glibc gcc-libs libx11 libxrandr libxext libxinerama xorgproto libxtst libxi openssl libei xdg-desktop-portal libportal-inputcapture)
+_gui_deps=(glibc gcc-libs libx11 openssl avahi qt6-base qt6-tools)
 makedepends=(${_core_deps[@]} ${_gui_deps[@]}
              # referenced in CMakeLists.txt but does not seem to be actually used
              curl libsm libice
@@ -41,7 +42,9 @@ build() {
       -D CMAKE_BUILD_TYPE:STRING=None \
       -D CMAKE_INSTALL_PREFIX:STRING=/usr \
       -D INPUTLEAP_VERSION_STAGE:STRING=snapshot \
-      -D INPUTLEAP_USE_EXTERNAL_GTEST:bool=true
+      -D INPUTLEAP_USE_EXTERNAL_GTEST:bool=true \
+      -D INPUTLEAP_BUILD_LIBEI=TRUE \
+      -D QT_DEFAULT_MAJOR_VERSION=6
   cmake --build build
 }
 
