@@ -17,6 +17,6 @@ pkgbase = sunroof
 	source = sunroof.sh
 	sha256sums = b021131a858ef7b4773dd0695e8fc7b7f8b575baec8a9fcce633fbd10b5fffd7
 	sha256sums = 6984f22c28e78f9278f366117523e141d61a519d07c15c1f3874fe4b5905a42c
-	sha256sums = 1bdc4d3b8454d3bffc0c454685b45179893fff5e1cfafde00417e839addb1685
+	sha256sums = ecaa2845dbe8cf86da4d1d23bef9460564762966cf3c769dcc2d7da159cd3e87
 
 pkgname = sunroof
