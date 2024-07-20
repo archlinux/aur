@@ -1,24 +1,19 @@
 pkgbase = clasht-git
-	pkgdesc = A rule-based tunnel in Go. Provide you with powerful and fast network functions. Convenient for you to witness the larger network world
-	pkgver = 1.20.0
+	pkgdesc = A rule-based tunnel in Go. Provide you with powerful and fast network functions
+	pkgver = 1.20.1.r1.g7b55c5e
 	pkgrel = 1
-	url = https://github.com/DryPeng/clashT
-	arch = i686
-	arch = x86_64
-	arch = aarch64
-	arch = armv7h
-	license = GPL3
+	url = https://clasht.drypeng.io/
+	arch = any
+	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = go
-	makedepends = cmake
-	makedepends = zip
-	optdepends = clash-geoip: A GeoLite2 data created by MaxMind
-	provides = clasht
-	provides = clash
+	depends = glibc
+	optdepends = clash-geoip: a GeoLite2 data created by MaxMind
+	provides = clasht=1.20.1
+	provides = clash=1.20.1
 	conflicts = clasht
-	conflicts = clasht-git
 	conflicts = clash
-	source = git+https://github.com/DryPeng/clashT.git
+	source = clashT::git+https://github.com/DryPeng/clashT.git
 	source = clash.service
 	sha256sums = SKIP
 	sha256sums = 2112a72532fdda187a649c5b35468dbba32d5c4601f36c107f4be202197c6b7a
