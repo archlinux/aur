@@ -3,12 +3,13 @@
 
 pkgname=vulkan-nouveau-git
 pkgdesc="Nouveau Vulkan (NVK) Mesa driver with some additions (Git version)"
-pkgver=24.1.branchpoint.r410.g92337af
+pkgver=24.2.branchpoint.r28.g149e8bf
 pkgrel=1
 arch=('x86_64')
 depends=('libdrm' 'libxshmfence' 'libx11' 'systemd-libs' 'vulkan-icd-loader' 'wayland')
 makedepends=('cbindgen' 'elfutils' 'git' 'glslang' 'libunwind' 'libxrandr' 'meson>=1.3.0rc2' 'python-mako'
-             'python-packaging' 'rust' 'rust-bindgen' 'systemd' 'valgrind' 'wayland-protocols' 'xorgproto' 'zstd') # -rc1 has weird crate issues
+             'python-packaging' 'python-yaml' 'rust' 'rust-bindgen' 'systemd' 'valgrind' 'wayland-protocols'
+             'xorgproto' 'zstd') # Meson 1.3.0-rc1 has weird crate issues
 optdepends=('vulkan-mesa-layers: Additional Vulkan layers'
             'linux>=6.6.arch1: Minimum required kernel for new uAPI support'
             'lib32-vulkan-nouveau-git: 32-bit application support')
