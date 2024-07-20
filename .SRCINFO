@@ -1,12 +1,13 @@
 pkgbase = android-armv7a-eabi-libpciaccess
 	pkgdesc = X11 PCI access library (Android armv7a-eabi)
 	pkgver = 0.18.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.freedesktop.org/xorg/lib/libpciaccess
 	arch = any
+	groups = android-libpciaccess
 	license = LicenseRef-libpciaccess
-	makedepends = android-armv7a-eabi-xorg-util-macros
 	makedepends = android-meson
+	makedepends = android-armv7a-eabi-xorg-util-macros
 	depends = android-armv7a-eabi-zlib
 	options = !strip
 	options = !buildflags
