@@ -1,0 +1,16 @@
+pkgbase = go-size-analyzer
+	pkgdesc = A tool for analyzing the size of compiled Go binaries
+	pkgver = 1.5.3
+	pkgrel = 1
+	url = https://gsa.zxilly.dev
+	arch = any
+	license = AGPL-3.0-or-later
+	makedepends = go
+	provides = go-size-analyzer
+	provides = gsa
+	conflicts = go-size-analyzer
+	conflicts = gsa
+	source = go-size-analyzer-1.5.3.tar.gz::https://github.com/Zxilly/go-size-analyzer/archive/refs/tags/v1.5.3.tar.gz
+	sha256sums = fe9e681eef747e6e65d419dca586c20831c9bc74e519a7b41d2eba257866586f
+
+pkgname = go-size-analyzer
