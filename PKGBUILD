@@ -7,12 +7,13 @@ _android_arch=aarch64
 
 pkgname=android-${_android_arch}-svt-av1
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Scalable Video Technology AV1 encoder and decoder (Android ${_android_arch})"
 url='https://gitlab.com/AOMediaCodec/SVT-AV1'
 license=('BSD'
          'custom: Alliance for Open Media Patent License 1.0')
+groups=(android-svt-av1)
 depends=('android-ndk')
 makedepends=('android-cmake'
              'nasm')
@@ -21,28 +22,40 @@ source=("https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v${pkgver}/SVT-AV1-v$
 md5sums=('79404543e5adbd5c23d537352e9f4ba6')
 
 prepare() {
-    cd "${srcdir}/SVT-AV1-v$pkgver"
+    cd "${srcdir}/SVT-AV1-v${pkgver}"
+
     sed -i '/CMAKE_BUILD_TYPE Release/d' CMakeLists.txt
 }
 
 build() {
-    cd "${srcdir}/SVT-AV1-v$pkgver"
+    cd "${srcdir}/SVT-AV1-v${pkgver}"
     source android-env ${_android_arch}
 
     export LDFLAGS="$LDFLAGS -Wl,-z,noexecstack"
+
     android-${_android_arch}-cmake \
         -S . \
-        -B build \
-        -DBUILD_APPS=OFF \
+        -B build-shared \
         -DBUILD_SHARED_LIBS=ON \
+        -DBUILD_APPS=OFF \
         -DNATIVE=OFF
-    make -C build $MAKEFLAGS
+    make -C build-shared $MAKEFLAGS
+
+    android-${_android_arch}-cmake \
+        -S . \
+        -B build-static \
+        -DBUILD_SHARED_LIBS=OFF \
+        -DBUILD_APPS=OFF \
+        -DNATIVE=OFF
+    make -C build-static $MAKEFLAGS
 }
 
 package() {
-    cd "${srcdir}/SVT-AV1-v$pkgver"
+    cd "${srcdir}/SVT-AV1-v${pkgver}"
     source android-env ${_android_arch}
 
-    make -C build DESTDIR="$pkgdir" install
+    make -C build-shared DESTDIR="${pkgdir}" install
+    make -C build-static DESTDIR="${pkgdir}" install
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
