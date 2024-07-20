@@ -1,6 +1,7 @@
-# Maintainer: Alexander Sulfrian <asulfrian@zedat.fu-berlin.de>
+# Maintainer: Moritz Oberjatzas <post@moritz-oberjatzas.eu>
+# Contributor: Alexander Sulfrian <asulfrian@zedat.fu-berlin.de>
 pkgname=webex-bin
-pkgver=43.11.0.27795
+pkgver=44.5.0.29672
 pkgrel=1
 pkgdesc="Webex for Linux"
 arch=('x86_64')
@@ -32,11 +33,11 @@ depends=('alsa-lib'
          'xcb-util-renderutil'
          'xcb-util-wm'
          'xdg-utils')
-source=("$pkgname-$pkgver.deb::https://binaries.webex.com/WebexDesktop-Ubuntu-Gold/20231108131957/Webex.deb"
+source=("$pkgname-$pkgver.deb::https://binaries.webex.com/WebexDesktop-Ubuntu-Official-Package/Webex.deb"
         'webex.xml'
         'https://archive.archlinux.org/packages/l/libsecret/libsecret-0.20.4-1-x86_64.pkg.tar.zst')
-sha256sums=('29f2db2f82b17b402e3c4ec854aee6be409a54fa460bb39a91c4c41e157dd19d'
-            '736a3ee2f30c947493eb01787205fc650f08a664a2c6a4a17c4189b8e2420c5a'
+sha256sums=('e51811f4e0b430dc6e0aaeb8e41ae3b56472e213ba5f48af9d05e7d223162ab2'
+            '891e18cf2667abdfe74b4b2069f87add6b7750284183446cddcfc345212801d8'
             '7bc3f4e27d141cf8d1979cd49adc58ee599686f6c1a898a013ef84ac22fd1f90')
 options=('!strip')
 
@@ -61,3 +62,4 @@ package() {
     mkdir -p "$pkgdir/usr/bin/"
     ln -s "/opt/Webex/bin/CiscoCollabHost" "$pkgdir/usr/bin/webex"
 }
+
