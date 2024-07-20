@@ -1,7 +1,7 @@
 pkgbase = android-aarch64-libde265
 	pkgdesc = Open h.265 video codec implementation (Android aarch64)
 	pkgver = 1.0.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/strukturag/libde265
 	arch = any
 	license = LGPL3
