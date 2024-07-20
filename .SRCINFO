@@ -1,7 +1,7 @@
 pkgbase = audacious-gtk3
 	pkgdesc = Lightweight, advanced audio player focused on audio quality
 	pkgver = 4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://audacious-media-player.org/
 	install = audacious.install
 	arch = i686
@@ -15,6 +15,8 @@ pkgbase = audacious-gtk3
 	provides = audacious
 	conflicts = audacious
 	source = https://distfiles.audacious-media-player.org/audacious-4.4.tar.bz2
+	source = wayland.patch::https://github.com/audacious-media-player/audacious/commit/005eae06671dab4331bd0d8316072e98601bf254.patch
 	sha256sums = aadc5d26ea2954236a00153e424094d9e6eb55c5c324c08fd0491b7c2ae2f830
+	sha256sums = b57bc39652045f2692f48e04e3df81e4bfed4aa293b7aca5e3535b1665ef1bb3
 
 pkgname = audacious-gtk3
