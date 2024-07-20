@@ -1,13 +1,14 @@
 pkgbase = mozc
 	pkgdesc = The Open Source edition of Google Japanese Input
 	pkgver = 2.30.5520.102
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/mozc
 	arch = x86_64
 	license = Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary
 	makedepends = bazel
 	makedepends = git
 	makedepends = python
+	makedepends = qt6-base
 	depends = qt6-base
 	optdepends = fcitx5-mozc-ut: Fcitx5 integration
 	optdepends = ibus-mozc: IBus integration
@@ -15,7 +16,21 @@ pkgbase = mozc
 	conflicts = mozc-ut
 	options = !distcc
 	options = !ccache
-	source = mozc-git::git+https://github.com/google/mozc.git#commit=d2fc9c7d9269cc84b9a4a680cafc382a55e90f42
+	source = git+https://github.com/google/mozc.git#commit=d2fc9c7d9269cc84b9a4a680cafc382a55e90f42
+	source = git+https://github.com/abseil/abseil-cpp.git#commit=2f9e432cce407ce0ae50676696666f33a77d42ac
+	source = git+https://github.com/google/breakpad.git#commit=216cea7bca53fa441a3ee0d0f5fd339a3a894224
+	source = git+https://github.com/google/googletest.git#commit=58d77fa8070e8cec2dc1ed015d66b454c8d78850
+	source = git+https://github.com/chromium/gyp.git#commit=9ecf45e37677743503342ee4c6a76eaee80e4a7f
+	source = git+https://github.com/hiroyuki-komatsu/japanese-usage-dictionary.git#commit=e5b3425575734c323e1d947009dd74709437b684
+	source = git+https://github.com/protocolbuffers/protobuf.git#commit=a978b75794a6ce4547c9db08a115c458d9190934
+	source = git+https://github.com/microsoft/wil.git#commit=fc5dbf55989fe20351c71d038a8d12de4b397a6d
 	sha256sums = 195f1218deae0daa22a6ae0e2b2f42eb900e314e3442ef549b6f9d666aa68644
+	sha256sums = 8380cac08316c35118999b95845b8c28d9c9c4688402960fb1558d5eeda90f73
+	sha256sums = 5168bb8ea19e2f696eeecbdee991f28e496aea206a473fd7cb49b547f5d0c5af
+	sha256sums = 2acda2cf88e375a7638f521f25c61b308d0eae8a7e188a54fafa2f2c8c2a063f
+	sha256sums = 8a136786407526c64686c3f9990d6416d62c7e2d474ef4a75ced337ecfc58cef
+	sha256sums = 10a13d356071f2b0c2b6dcab1d841fae451f6a2020ee9b901533533fc7ac3008
+	sha256sums = f09520ceeb7f1f1bb7e1cb61a8cd7a490fff84302ed5dc91f923f0e82ee191dc
+	sha256sums = abb86ac4d546c98d7d9a10fdeb1059d6e3395e892d5397fb03179361f37c98fe
 
 pkgname = mozc
