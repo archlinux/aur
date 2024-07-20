@@ -1,6 +1,6 @@
 pkgbase = lib32-vulkan-nouveau-git
 	pkgdesc = Nouveau Vulkan (NVK) Mesa driver with some additions (32-bit Git version)
-	pkgver = 24.1.branchpoint.r410.g92337af
+	pkgver = 24.2.branchpoint.r28.g149e8bf
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/mesa/mesa
 	install = lib32-vulkan-nouveau-git.install
@@ -16,6 +16,7 @@ pkgbase = lib32-vulkan-nouveau-git
 	makedepends = meson>=1.3.0rc2
 	makedepends = python-mako
 	makedepends = python-packaging
+	makedepends = python-yaml
 	makedepends = rust-bindgen
 	makedepends = systemd
 	makedepends = wayland-protocols
