@@ -1,0 +1,26 @@
+From 55c27874675febe875cc9e0d49023976ca03bef9 Mon Sep 17 00:00:00 2001
+From: "Wu, Zhenyu" <wuzhenyu@ustc.edu>
+Date: Sat, 20 Jul 2024 16:18:00 +0800
+Subject: [PATCH] add LUA_VERSION to allow users to choose lua version
+
+---
+ CMakeLists.txt | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 356731e..42f2ebb 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,7 +1,8 @@
++set(LUA_VERSION "lua" CACHE STRING "lua version")
+ if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/lua5.4/lua.h")
+   find_package(PkgConfig)
+   if(PkgConfig_FOUND)
+-    foreach(pkg lua lua54 lua53 lua52 luajit lua51)
++    foreach(pkg ${LUA_VERSION} lua54 lua53 lua52 luajit lua51)
+       pkg_check_modules(LUA IMPORTED_TARGET GLOBAL ${pkg})
+       if(LUA_FOUND)
+ 	break()
+-- 
+2.45.2
+
