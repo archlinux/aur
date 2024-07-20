@@ -1,6 +1,6 @@
 # Maintainer: Zesko
 pkgname="limine-dracut-support-git"
-pkgver=r3.ae43c04
+pkgver=r1.50f56e6
 pkgrel=1
 pkgdesc="Install kernel for Limine bootloader."
 arch=("any")
