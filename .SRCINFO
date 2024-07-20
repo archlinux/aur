@@ -1,7 +1,7 @@
 pkgbase = android-x86-libwebp
 	pkgdesc = WebP library and conversion tools (Android x86)
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developers.google.com/speed/webp/
 	arch = any
 	groups = android-libwebp
