@@ -1,5 +1,6 @@
 # Maintainer: Denis Benato <benato.denis96 [at] gmail dot com>
 # Maintainer: Chris Lane <aur at chrislane dot com>
+# Maintainer: DexterHaxxor <fox@dexterhaxxor.dev>
 # Contributor: Reza Jahanbakhshi <reza.jahanbakhshi at gmail dot com
 # Contributor: Lone_Wolf <lone_wolf@klaas-de-kat.nl>
 # Contributor: Armin K. <krejzi at email dot com>
@@ -13,7 +14,7 @@
 # Contributor: Diego Jose <diegoxter1006@gmail.com>
 
 pkgbase=lib32-mesa-amdonly-gaming-git
-pkgver=24.2.0_devel.191649.4581bf595bd.e60076a
+pkgver=24.3.0_devel.192290.bed6e0d691c.d41d8cd
 options=(!lto) # LTO is bad for mesa, makes random applications crash on my system
 
 pkgname=(
@@ -65,6 +66,7 @@ makedepends=(
   'meson'
   'python-mako'
   'python-ply'
+  'python-yaml'
   'rust-bindgen'
   'wayland-protocols'
   'xorgproto'
@@ -411,7 +413,7 @@ package_lib32-amdonly-gaming-mesa-git() {
   rm -v fakeinstall/usr/share/glvnd/egl_vendor.d/50_mesa.json
 
   # ati-dri, nouveau-dri, intel-dri, svga-dri, swrast, swr
-  _install fakeinstall/$_libdir/dri/*_dri.so
+  _install fakeinstall/$_libdir/dri/*.so
 
   _install fakeinstall/$_libdir/d3d
   _install fakeinstall/$_libdir/lib{gbm,glapi}.so*
