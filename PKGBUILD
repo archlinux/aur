@@ -1,7 +1,7 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-sensors8
-pkgver=8.1.0
+pkgver=8.2.0
 pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
@@ -25,7 +25,7 @@ makedepends=(
   )
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('7856e1a61d332fb095821156fd86c4a38ffca5020cca5ff542fccad651a4d3cc')
+sha256sums=('63fac2c8212e0d954c6981d150ffffd42fbb97fee0a4ff41f9790e309d49d11e')
 
 _build_dir="${_pkgbase}-${pkgname}_${pkgver}/build"
 
