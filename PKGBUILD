@@ -6,8 +6,8 @@
 
 _pkgname=godot-mono
 pkgname=godot-mono-git
-pkgver=4.2.r5631.g71699e0
-pkgrel=2
+pkgver=4.2.r6531.ga48b99a
+pkgrel=1
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine built properly"
 arch=(x86_64 i686)
 url="https://godotengine.org/"
@@ -57,7 +57,7 @@ build() {
     builtin_libwebp=no \
     builtin_wslay=yes \
     builtin_mbedtls=no \
-    builtin_miniupnpc=no \
+    builtin_miniupnpc=yes \
     builtin_pcre2=no \
     builtin_pcre2_with_jit=no \
     builtin_recastnavigation=yes \
@@ -76,6 +76,10 @@ build() {
     werror=no \
     module_mono_enabled=yes \
     mono_glue=no
+
+  # Currently broken with the latest miniupnpc, I have subscribed to the github issue
+  # https://github.com/godotengine/godot/issues/93907
+  # builtin_miniupnpc=no \
 
     xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" bin/godot.linuxbsd.editor.x86_64.mono --generate-mono-glue modules/mono/glue
 
