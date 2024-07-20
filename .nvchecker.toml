@@ -1,0 +1,4 @@
+[xeus-python]
+source = "github"
+github = "jupyter-xeus/xeus-python"
+use_max_tag = "true"
