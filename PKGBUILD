@@ -1,7 +1,7 @@
 # Maintainer: Mohammed Bilal <bilalnsmuhammed@gmail.com>
 _name=varnam-fcitx5
 pkgname="${_name}-git"
-pkgver=r10.7a73125
+pkgver=r12.b0d3d29
 pkgrel=1
 pkgdesc="Fcitx5 wrapper for Varnam input method"
 arch=('x86_64')
