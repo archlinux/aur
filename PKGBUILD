@@ -1,8 +1,8 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-physics6
-pkgver=6.5.1
-pkgrel=2
+pkgver=6.6.0
+pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Abstract physics interface designed to support simulation and rapid development of robot applications."
@@ -30,7 +30,7 @@ optdepends=(
 )
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('4c8f7aef073124817bc54bb9427f6ba72c5b0d5e177e62e95f1dc18fd611d05a')
+sha256sums=('1304e1f9ef66608fed765b110d7c5022359dd93cc499d6a7b884eb8e34df45cb')
 
 _build_dir="${_pkgbase}-${pkgname}_${pkgver}/build"
 
