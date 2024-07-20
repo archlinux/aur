@@ -1,9 +1,10 @@
 pkgbase = android-x86-gdk-pixbuf2
 	pkgdesc = An image loading library (Android x86)
 	pkgver = 2.42.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/Projects/GdkPixbuf
 	arch = any
+	groups = android-gdk-pixbuf2
 	license = LGPL
 	makedepends = android-meson
 	makedepends = gobject-introspection
