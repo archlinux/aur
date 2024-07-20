@@ -1,6 +1,6 @@
 pkgbase = mesa-amdonly-gaming-git
 	pkgdesc = An open-source implementation of the OpenGL specification
-	pkgver = 24.2.0_devel.191653.0ce2e6594dd.d41d8cd
+	pkgver = 24.3.0_devel.192290.bed6e0d691c.d41d8cd
 	pkgrel = 1
 	url = https://www.mesa3d.org/
 	arch = x86_64
@@ -36,6 +36,7 @@ pkgbase = mesa-amdonly-gaming-git
 	makedepends = meson
 	makedepends = python-mako
 	makedepends = python-ply
+	makedepends = python-yaml
 	makedepends = rust-bindgen
 	makedepends = wayland-protocols
 	makedepends = xorgproto
