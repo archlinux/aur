@@ -1,0 +1,63 @@
+mm: remove follow_pfn
+Remove follow_pfn now that the last user is gone.
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=cb10c28ac82c9b7a5e9b3b1dc7157036c20c36dd
+
+Backport changes from newer nvidia drivers:
+
+diff --git a/conftest.sh b/conftest.sh
+index 67ee86f..d24d308 100755
+--- a/conftest.sh
++++ b/conftest.sh
+@@ -4869,6 +4869,24 @@ compile_test() {
+             compile_check_conftest "$CODE" "NV_UNSAFE_FOLLOW_PFN_PRESENT" "" "functions"
+         ;;
+ 
++        follow_pfn)
++            #
++            # Determine if follow_pfn() is present.
++            #
++            # follow_pfn() was added by commit 3b6748e2dd69
++            # ("mm: introduce follow_pfn()") in v2.6.31-rc1, and removed
++            # by commit 233eb0bf3b94 ("mm: remove follow_pfn")
++            # from linux-next 233eb0bf3b94.
++            #
++            CODE="
++            #include <linux/mm.h>
++            void conftest_follow_pfn(void) {
++                follow_pfn();
++            }"
++
++            compile_check_conftest "$CODE" "NV_FOLLOW_PFN_PRESENT" "" "functions"
++        ;;
++
+         drm_plane_atomic_check_has_atomic_state_arg)
+             #
+             # Determine if drm_plane_helper_funcs::atomic_check takes 'state'
+diff --git a/nvidia/nvidia.Kbuild b/nvidia/nvidia.Kbuild
+index 813d192..f0b1855 100644
+--- a/nvidia/nvidia.Kbuild
++++ b/nvidia/nvidia.Kbuild
+@@ -158,6 +158,7 @@ NV_CONFTEST_FUNCTION_COMPILE_TESTS += pgprot_decrypted
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += cc_mkdec
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += seq_read_iter
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += unsafe_follow_pfn
++NV_CONFTEST_FUNCTION_COMPILE_TESTS += follow_pfn
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += drm_gem_object_get
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += drm_gem_object_put_unlocked
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += add_memory_driver_managed
+diff --git a/nvidia/os-mlock.c b/nvidia/os-mlock.c
+index e378245..9ab0ffe 100644
+--- a/nvidia/os-mlock.c
++++ b/nvidia/os-mlock.c
+@@ -32,8 +32,10 @@ static inline int nv_follow_pfn(struct vm_area_struct *vma,
+ {
+ #if defined(NV_UNSAFE_FOLLOW_PFN_PRESENT)
+     return unsafe_follow_pfn(vma, address, pfn);
+-#else
++#elif defined(NV_FOLLOW_PFN_PRESENT)
+     return follow_pfn(vma, address, pfn);
++#else
++    return -1;
+ #endif
+ }
+ 
