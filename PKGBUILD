@@ -3,7 +3,7 @@
 
 _pkgname="gnome-shell-extension-arc-menu"
 pkgname="$_pkgname-git"
-pkgver=57.r4.g8a70b6c
+pkgver=57.r5.g9b7e160
 pkgrel=1
 pkgdesc="Application menu extension for GNOME Shell"
 url="https://gitlab.com/arcmenu/ArcMenu"
@@ -29,11 +29,6 @@ pkgver() {
   cd "$_pkgsrc"
   git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
     | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "$_pkgsrc"
-  git revert -n -m1 140cf0648cf64214c81eeb8afaba47defeca6fc1 || :
 }
 
 build() {
