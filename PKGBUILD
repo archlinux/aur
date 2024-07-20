@@ -6,12 +6,12 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-gdk-pixbuf2-bootstrap
 pkgver=2.42.12
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="An image loading library (Android ${_android_arch})"
 url="https://wiki.gnome.org/Projects/GdkPixbuf"
 license=('LGPL')
-groups=('android-gdk-pixbuf2-bootstrap')
+groups=(android-gdk-pixbuf2-bootstrap)
 depends=("android-${_android_arch}-glib2"
          "android-${_android_arch}-libpng"
          "android-${_android_arch}-libtiff"
@@ -43,4 +43,5 @@ package() {
     DESTDIR="${pkgdir}" ninja install -C build
     rm -rf "${pkgdir}/${ANDROID_PREFIX_BIN}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
 }
