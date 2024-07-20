@@ -10,7 +10,7 @@ _generic_release=false
 # hack taken from wine-tkg PKGBUILD, real pkgrel is the eval one
 pkgver=9.13
 pkgrel=1
-eval pkgrel=2
+eval pkgrel=3
 
 ################################################################################################################################
 ################################################################################################################################
@@ -21,7 +21,7 @@ eval pkgrel=2
 _disabled_staging="" ## e.g. "-W Compiler_Warnings -W user32-. . ."
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="07-18-2024-6d6451fd-2c482721"
+_patchbase_tag="07-19-2024-6d6451fd-2c482721"
 
 ## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the custompatches folder
