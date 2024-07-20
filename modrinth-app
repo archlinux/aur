@@ -1,0 +1,2 @@
+#!/bin/sh
+APPIMAGELAUNCHER_DISABLE=1 /opt/modrinth-app/modrinth-app.AppImage "$@"
