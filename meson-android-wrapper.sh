@@ -25,5 +25,5 @@ exec meson setup \
     -D                b_lto=true \
     -D                strip=true \
     --cross-file      ${CROSS_FILE} \
-    --default-library shared \
+    --default-library both \
     "$@"

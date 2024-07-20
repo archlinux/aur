@@ -2,8 +2,8 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 
 pkgname=android-meson
-pkgver=2
-pkgrel=4
+pkgver=3
+pkgrel=1
 arch=('any')
 pkgdesc="Meson wrapper for Android"
 depends=('meson'
@@ -13,9 +13,9 @@ depends=('meson'
 license=("GPL")
 url="https://mesonbuild.com/"
 source=("toolchain_generator.py"
-        "meson-android-wrapper")
+        "meson-android-wrapper.sh")
 md5sums=('7538d07b82df15601d58bfb366cdcf47'
-         'cc924c913c257888b7ff54094fa71e27')
+         '6298adc4689a7d9ea86b24dbc3873d1f')
 _architectures="aarch64 armv7a-eabi x86 x86-64"
 
 build() {
@@ -26,7 +26,7 @@ build() {
         unset LDFLAGS
         source android-env ${_arch}
         python toolchain_generator.py --arch ${_arch} --output-file toolchain-android-${_arch}.meson
-        sed "s|@TRIPLE@|${_arch}|g;" meson-android-wrapper > android-${_arch}-meson
+        sed "s|@TRIPLE@|${_arch}|g;" meson-android-wrapper.sh > android-${_arch}-meson
     done
 }
 
