@@ -47,9 +47,9 @@ package() {
   install -d "${pkgdir}/usr/bin"
 
   cp "$_pkgname-$pkgver/dist/linux-unpacked/resources/app.asar" "${pkgdir}/usr/lib/${pkgname}/"
-  install -Dm755 "./vesktop.sh" "$pkgdir/usr/bin/vesktop"
+  install -Dm755 "./sunroof.sh" "$pkgdir/usr/bin/sunroof"
 
-  install -Dm 644 "vesktop.desktop" "$pkgdir/usr/share/applications/vesktop.desktop"
+  install -Dm 644 "me.verticalsync.sunroof.desktop" "$pkgdir/usr/share/applications/me.verticalsync.sunroof.desktop"
   install -Dm 644 "$_pkgname-$pkgver/static/icon.png" "$pkgdir/usr/share/pixmaps/${pkgname}.png"
   install -Dm 644 "$_pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
