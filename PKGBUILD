@@ -19,7 +19,7 @@ license=('BSD' 'GPL')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 depends=('audacious-git'
-         'alsa-lib' 'curl' 'dbus-glib' 'faad2' 'ffmpeg' 'flac' 'fluidsynth'
+         'alsa-lib' 'curl' 'faad2' 'ffmpeg' 'flac' 'fluidsynth'
          'jack' 'json-glib' 'lame' 'libbs2b' 'libcddb' 'libcdio-paranoia'
          'libcue' 'libmms' 'libmodplug' 'libmtp' 'libnotify' 'libopenmpt'
          'libpipewire' 'libpulse' 'libsamplerate' 'libsidplayfp' 'libvorbis'
