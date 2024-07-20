@@ -1,25 +1,47 @@
-# Maintainer: parham < parham at tuta dot io >
+# Maintainer:
+# Contributor: parham < parham at tuta dot io >
 
-pkgname=gnome-shell-extension-arc-menu-git
-pkgver=2.r8.g8b101fe
+_pkgname="gnome-shell-extension-arc-menu"
+pkgname="$_pkgname-git"
+pkgver=57.r4.g8a70b6c
 pkgrel=1
-pkgdesc="A GNOME shell extension designed to replace the standard menu found in GNOME 3, git version"
-arch=(any)
+pkgdesc="Application menu extension for GNOME Shell"
 url="https://gitlab.com/arcmenu/ArcMenu"
-license=('GPL2')
-depends=('gnome-shell>=3.18' 'gnome-menus')
-makedepends=('git')
-conflicts=('gnome-shell-extension-arc-menu')
-install='gnome-shell-extension.install'
-source=("git+${url}.git")
+license=('GPL-2.0-or-later')
+arch=('any')
+
+depends=(
+  'gnome-shell'
+  'gnome-menus'
+)
+makedepends=(
+  'git'
+)
+
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
+
+_pkgsrc="arcmenu"
+source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd ArcMenu
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "$_pkgsrc"
+  git revert -n -m1 140cf0648cf64214c81eeb8afaba47defeca6fc1 || :
+}
+
+build() {
+  cd "$_pkgsrc"
+  make
 }
 
 package() {
-    cd ArcMenu
-    make DESTDIR="$pkgdir" INSTALL="system" install
+  cd "$_pkgsrc"
+  make VERSION="$pkgver" DESTDIR="$pkgdir" install
 }
