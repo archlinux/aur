@@ -1,0 +1,5 @@
+ffmpeg:
+  bin: "/usr/bin/ffmpeg"
+
+api:
+  unix_listen: "/run/go2rtc/go2rtc.sock"

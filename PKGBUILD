@@ -6,11 +6,20 @@ pkgdesc="Ultimate camera streaming application with support RTSP, RTMP, HTTP-FLV
 arch=('x86_64')
 url="https://github.com/AlexxIT/go2rtc"
 license=('MIT')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('e62ca900d1bb9b78708714276aaecf910cc8b2ad9cefc5f75cf8f82edfeb94bcbf449695a8853ffd8aac458587e9083f62722f76ee37f11306b7e1751f4deeae')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+        "sysuser"
+        "tmpfile"
+        "service"
+        "config")
+sha512sums=('e62ca900d1bb9b78708714276aaecf910cc8b2ad9cefc5f75cf8f82edfeb94bcbf449695a8853ffd8aac458587e9083f62722f76ee37f11306b7e1751f4deeae'
+            'eaaf6f9b0840ce88e5a6a12c47d3f969a2cbec0a62e234e16a7d21b58a1064b3f20871fb11c15b248f4f31f7da853bc48d5a621b27aeddeed56c3818707a7d32'
+            '45f2adc4a17f6cb0252c9cb25adaa8a32d4f198a4d8bc143e00ba185e4a7afd8e45fbb3ce5dbb9238a2f3a84721e1067b641cc6eb2b3a10db72b2f748a1e875f'
+            '945db6345586a512b760d04a324956fc708acd406bd15ada0fbd921c78d327d97d29796df28fca51067c25b6c3be743efc80808b7d3ef0e4b50d20c8f3dfce27'
+            '06e458dad58d837051c1a53d06a8887087b565a036c520381e23f90a7cfe2181ec64f447e0d653c4832a2372056bcee27752e92704dedfe70972b48e156e2af7')
 options=(!strip)
 depends=('glibc')
 makedepends=('go')
+backup=(etc/go2rtc.yaml)
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -24,4 +33,8 @@ build() {
 
 package() {
   install -D -m755 "${pkgname}-${pkgver}"/go2rtc "${pkgdir}/usr/bin/go2rtc"
+  install -D -m755 "${srcdir}"/sysuser "${pkgdir}/usr/lib/sysusers.d/go2rtc.conf"
+  install -D -m755 "${srcdir}"/tmpfile "${pkgdir}/usr/lib/tmpfiles.d/go2rtc.conf"
+  install -D -m755 "${srcdir}"/service "${pkgdir}/usr/lib/systemd/system/go2rtc.service"
+  install -D -m755 "${srcdir}"/config "${pkgdir}/etc/go2rtc.yaml"
 }

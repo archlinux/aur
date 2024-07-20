@@ -8,7 +8,16 @@ pkgbase = go2rtc
 	makedepends = go
 	depends = glibc
 	options = !strip
+	backup = etc/go2rtc.yaml
 	source = go2rtc-1.9.4.tar.gz::https://github.com/AlexxIT/go2rtc/archive/refs/tags/v1.9.4.tar.gz
+	source = sysuser
+	source = tmpfile
+	source = service
+	source = config
 	sha512sums = e62ca900d1bb9b78708714276aaecf910cc8b2ad9cefc5f75cf8f82edfeb94bcbf449695a8853ffd8aac458587e9083f62722f76ee37f11306b7e1751f4deeae
+	sha512sums = eaaf6f9b0840ce88e5a6a12c47d3f969a2cbec0a62e234e16a7d21b58a1064b3f20871fb11c15b248f4f31f7da853bc48d5a621b27aeddeed56c3818707a7d32
+	sha512sums = 45f2adc4a17f6cb0252c9cb25adaa8a32d4f198a4d8bc143e00ba185e4a7afd8e45fbb3ce5dbb9238a2f3a84721e1067b641cc6eb2b3a10db72b2f748a1e875f
+	sha512sums = 945db6345586a512b760d04a324956fc708acd406bd15ada0fbd921c78d327d97d29796df28fca51067c25b6c3be743efc80808b7d3ef0e4b50d20c8f3dfce27
+	sha512sums = 06e458dad58d837051c1a53d06a8887087b565a036c520381e23f90a7cfe2181ec64f447e0d653c4832a2372056bcee27752e92704dedfe70972b48e156e2af7
 
 pkgname = go2rtc
