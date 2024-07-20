@@ -1,15 +1,13 @@
 pkgbase = cozy-audiobooks
 	pkgdesc = A modern audio book player for Linux and macOS using GTK+ 3
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/geigi/cozy
 	arch = any
 	license = GPL3
 	makedepends = meson
 	makedepends = ninja
-	makedepends = granite
 	depends = appstream-glib
-	depends = libgranite.so
 	depends = libhandy
 	depends = libdazzle
 	depends = desktop-file-utils

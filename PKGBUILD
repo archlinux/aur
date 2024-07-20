@@ -5,12 +5,12 @@
 pkgname=cozy-audiobooks
 pkgdesc="A modern audio book player for Linux and macOS using GTK+ 3"
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 url="https://github.com/geigi/cozy"
 arch=(any)
 license=('GPL3')
 depends=('appstream-glib'
-         libgranite.so libhandy libdazzle
+         libhandy libdazzle
          'desktop-file-utils'
          'gst-python'
          'gstreamer'
@@ -26,7 +26,7 @@ depends=('appstream-glib'
          'python-peewee'
          'gst-plugins-good'
          'python-apsw')
-makedepends=('meson' 'ninja' granite)
+makedepends=('meson' 'ninja')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/geigi/cozy/archive/${pkgver}.tar.gz")
 sha256sums=('b4e5d438f5d3f5d236a49f3fcb433ca4fa489d7d5995961a5d967950bbb6c102')
 
