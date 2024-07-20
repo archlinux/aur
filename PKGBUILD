@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=socketcan-rs-git
-pkgver=3.3.0.r10.g7851a50
-pkgrel=3
+pkgver=3.3.0.r27.gf004ee9
+pkgrel=1
 pkgdesc="Linux SocketCAN access in Rust"
 arch=(aarch64
     riscv64
@@ -12,12 +12,15 @@ license=('MIT')
 provides=(${pkgname%-git} rcan)
 conflicts=(${pkgname%-git} rcan)
 replaces=()
-depends=(cargo)
-makedepends=(git
+depends=(gcc-libs
+    glibc)
+makedepends=(
+    cargo
+    git
     mold)
 checkdepends=()
 backup=()
-options=('!strip' '!lto')
+options=('!lto')
 install=
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
