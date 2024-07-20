@@ -1,0 +1,5 @@
+[yaws]
+source = "github"
+github = "klacke/yaws"
+use_max_tag = "true"
+prefix = "v"

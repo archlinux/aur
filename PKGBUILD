@@ -5,20 +5,20 @@
 # Contributor: Patrick Smits <mail@patricksmits.net>
 
 pkgname=yaws
-pkgver=2.1.1
+pkgver=2.2.0
 pkgrel=1
-pkgdesc='Web server for dynamic content'
+pkgdesc="Web server for dynamic content"
 arch=(x86_64)
 url="http://${pkgname}.hyber.org"
-license=(BSD)
+license=(BSD-3-Clause)
 depends=(erlang-nox pam)
 backup=(etc/${pkgname}/${pkgname}.conf)
 options=(!emptydirs)
 install=${pkgname}.install
 source=("https://github.com/klacke/${pkgname}/archive/${pkgname}-${pkgver}.tar.gz"
   "${pkgname}.service")
-sha512sums=('71a8f6ef19b6bf84e9628be5b4891ba19eb3d64fab19d2af8ba9218b760f81cc31575015f977fc21bf35a592c4c4a247388a57ab4d7571eb65c4185b0bdf9bce'
-  '6bafd099901d4da241094d137191eda7c18ec8ff9d3f9688aa37220db11d7d19ad97ab6fa4e8b57ebf9c7e2f16ac162284332354d4dae61340ddc598933cee0e')
+sha512sums=('3f703d62739346f815055ee45d0768d6a6a0f7bfbc662fa1eb5563ee37c10e00d608910bb6f4d03676c4fbce7642115596c2d6c0894c9112f269fc2db4d89d20'
+            '6bafd099901d4da241094d137191eda7c18ec8ff9d3f9688aa37220db11d7d19ad97ab6fa4e8b57ebf9c7e2f16ac162284332354d4dae61340ddc598933cee0e')
 
 prepare() {
   cd ${pkgname}-${pkgname}-${pkgver}
