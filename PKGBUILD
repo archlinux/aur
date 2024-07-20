@@ -2,7 +2,7 @@
 # Contributor: ava1ar <mail(at)ava1ar(dot)me>
 # Contributor: Corey Hinshaw <corey(at)electrickite(dot)org>
 pkgname=system76-driver
-pkgver=20.04.92
+pkgver=20.04.93
 pkgrel=1
 pkgdesc="Universal driver for System76 computers"
 arch=('any')
@@ -56,11 +56,9 @@ install="$pkgname.install"
 source=(
   "git+https://github.com/pop-os/system76-driver.git#tag=$pkgver"
   'cli.patch'
-  'wayland.patch'
   'actions.patch')
-sha256sums=('7037c7f05b5549a81e0a81fb680f4196d12844253d29b827f4cfe3a96e17ccfa'
+sha256sums=('c1f1993c4b3e2f954ddaa2d6b77ec7636768a5a6ef4e89f2459a2a2fc2245a00'
             'ef027346c439561dc01f906ae7bd961100aedf9125fd86bb0eb89a87b683fdc3'
-            '2ffbd813744c0b99416947a2755767767af434758aa20dcfafefb49fb367d5d3'
             '3ade740c1681f8f33ef78e1e6c087e4002d14c888d7a5bf6bfbeb2aa70111119')
 
 prepare() {
@@ -68,9 +66,6 @@ prepare() {
 
   # patch for cli version - enable override vendor/model via /etc/system76-daemon.json
   patch --no-backup-if-mismatch -Np1 -i "$srcdir/cli.patch"
-
-  # Use xhost for GUI apps on Wayland
-  patch --no-backup-if-mismatch -Np1 -i "$srcdir/wayland.patch"
 
   # Use mkinitcpio instead of initramfs-tools
   patch --no-backup-if-mismatch -Np1 -i "$srcdir/actions.patch"
@@ -100,7 +95,6 @@ package() {
 
   # Install daemons and executables
   install -Dm755 system76-{daemon,user-daemon} -t "$pkgdir/usr/lib/$pkgname/"
-  install -Dm755 "$pkgname-pkexec" -t "$pkgdir/usr/bin/"
 
   # Install systemd unit files
   # Note: system76-driver* service files shortened to system76*
@@ -108,7 +102,7 @@ package() {
     "$pkgdir/usr/lib/systemd/system/system76.service"
 
   # Install scripts and configuration
-  install -Dm755 system76-{nm-restart,thunderbolt-reload,atlantic-reload,virtual-hub} -t \
+  install -Dm755 system76-{nm-restart,thunderbolt-reload,virtual-hub} -t \
     "$pkgdir/usr/lib/systemd/system-sleep/"
   install -Dm644 "com.system76.pkexec.$pkgname.policy" -t \
     "$pkgdir/usr/share/polkit-1/actions/"
