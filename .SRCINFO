@@ -1,11 +1,12 @@
 pkgbase = startwine
 	pkgdesc = Software for playing Microsoft Windows games and launchers
-	pkgver = 403
+	pkgver = 404
 	pkgrel = 1
 	url = https://github.com/RusNor/StartWine-Launcher
 	arch = x86_64
 	license = GPL
-	source = https://github.com/RusNor/StartWine-Launcher/releases/download/StartWine_v403/StartWine_v403
+	depends = fuse
+	source = https://github.com/RusNor/StartWine-Launcher/releases/download/StartWine_v404/StartWine_v404
 	source = StartWine.desktop
 	source = StartWine.png
 	sha256sums = SKIP
