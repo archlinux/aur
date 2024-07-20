@@ -1,6 +1,6 @@
 pkgbase = sysdig-inspect-bin
 	pkgdesc = A powerful opensource interface for container troubleshooting and security investigation
-	pkgver = 0.11.0
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/draios/sysdig-inspect
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = sysdig-inspect-bin
 	depends = libxtst
 	depends = nss
 	optdepends = org.freedesktop.secrets
-	noextract = sysdig-inspect-bin_0.11.0_amd64.deb
+	noextract = sysdig-inspect-bin_0.12.0_amd64.deb
 	options = !debug
-	source = sysdig-inspect-bin_0.11.0_amd64.deb::https://github.com/draios/sysdig-inspect/releases/download/0.11.0/sysdig-inspect-linux-x86_64.deb
-	b2sums = 5dbd51b645253ef549481460f5423c96849a492572e8eb44e3c931769c220bf66120adad207cd33d05f73619b06d5344e390a3c3d38bcd4e939653623acbad98
+	source = sysdig-inspect-bin_0.12.0_amd64.deb::https://github.com/draios/sysdig-inspect/releases/download/0.12.0/sysdig-inspect-linux-x86_64.deb
+	b2sums = 250f1e1c0f315dac330be8407560c3be37ed8870b36e253f29da105f172a1597232eaba51d61a8508236a5be349491b7f3bf718b584137954fbeba0d2e3c6e04
 
 pkgname = sysdig-inspect-bin
