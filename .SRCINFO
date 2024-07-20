@@ -1,6 +1,6 @@
 pkgbase = snapchat
 	pkgdesc = Unofficial Snapchat desktop application.
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/snapchatdesktop
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = snapchat
 	depends = gtk3
 	depends = libxss
 	depends = git
-	source = https://gitlab.com/linuxbombay/snapchatdesktop/application/-/archive/1.0.2-1/application-1.0.2-1.tar.bz2
-	sha256sums = 32c454f8d59d3f676ead8e14ef1408f2c61ca8eccaf7d8f6169fe65e40b32008
+	source = https://gitlab.com/linuxbombay/snapchatdesktop/application/-/archive/1.0.3/application-1.0.3.tar.bz2
+	sha256sums = 1f98dbc9952a02eddf12d98a2b9ba398b6a5c67020fe35363bd2b484a5936c1b
 
 pkgname = snapchat
