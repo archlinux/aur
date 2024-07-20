@@ -1,6 +1,6 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=ardupilot-copter-sitl
-pkgver=4.3.6
+pkgver=4.5.4
 pkgdesc="Advanced, Fully-Featured, and Reliable Autopilot Software (Copter,
 SITL)"
 url='https://ardupilot.org'
@@ -65,7 +65,6 @@ depends=(
     lsb-release
 )
 source=("${pkgname}-${pkgver}::git+https://github.com/ArduPilot/ardupilot.git#tag=Copter-${pkgver}"
-        "${pkgname}-libuavcan::git+https://github.com/DroneCAN/libuavcan.git"
         "${pkgname}-waf::git+https://github.com/ArduPilot/waf.git"
         "${pkgname}-benchmark::git+https://github.com/google/benchmark.git"
         "${pkgname}-mavlink::git+https://github.com/ArduPilot/mavlink.git"
@@ -77,9 +76,12 @@ source=("${pkgname}-${pkgver}::git+https://github.com/ArduPilot/ardupilot.git#ta
         "${pkgname}-pydronecan::git+https://github.com/DroneCAN/pydronecan.git"
         "${pkgname}-dronecan_dsdlc::git+https://github.com/DroneCAN/dronecan_dsdlc.git"
         "${pkgname}-libcanard::git+https://github.com/DroneCAN/libcanard.git"
-        "uint16_t.patch::https://github.com/ArduPilot/ardupilot/pull/23803.patch"
+        "${pkgname}-Micro-XRCE-DDS-Client::git+https://github.com/ardupilot/Micro-XRCE-DDS-Client.git"
+        "${pkgname}-Micro-CDR::git+https://github.com/ardupilot/Micro-CDR.git"
+        "${pkgname}-lwip::git+https://github.com/ArduPilot/lwip.git"
 )
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -100,7 +102,6 @@ prepare() {
 
     git submodule init
 
-    git config submodule."modules/uavcan".url "${srcdir}/${pkgname}"-libuavcan
     git config submodule."modules/waf".url "${srcdir}/${pkgname}"-waf
     git config submodule."modules/gbenchmark".url "${srcdir}/${pkgname}"-benchmark
     git config submodule."modules/mavlink".url "${srcdir}/${pkgname}"-mavlink
@@ -112,10 +113,11 @@ prepare() {
     git config submodule."modules/DroneCAN/pydronecan".url "${srcdir}/${pkgname}"-pydronecan
     git config submodule."modules/DroneCAN/dronecan_dsdlc".url "${srcdir}/${pkgname}"-dronecan_dsdlc
     git config submodule."modules/DroneCAN/libcanard".url "${srcdir}/${pkgname}"-libcanard
+    git config submodule."modules/Micro-XRCE-DDS-Client".url "${srcdir}/${pkgname}"-Micro-XRCE-DDS-Client
+    git config submodule."modules/Micro-CDR".url "${srcdir}/${pkgname}"-Micro-CDR
+    git config submodule."modules/lwip".url "${srcdir}/${pkgname}"-lwip
 
     git -c protocol.file.allow=always submodule update --init --recursive
-
-    patch -Np1 -i "${srcdir}"/uint16_t.patch
 }
 
 build() {

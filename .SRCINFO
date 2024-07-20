@@ -1,6 +1,6 @@
 pkgbase = ardupilot-copter-sitl
 	pkgdesc = Advanced, Fully-Featured, and Reliable Autopilot Software (Copter, SITL)
-	pkgver = 4.3.6
+	pkgver = 4.5.4
 	pkgrel = 1
 	url = https://ardupilot.org
 	arch = i686
@@ -43,8 +43,7 @@ pkgbase = ardupilot-copter-sitl
 	depends = python-intelhex
 	depends = lsb-release
 	provides = ardupilot-sitl
-	source = ardupilot-copter-sitl-4.3.6::git+https://github.com/ArduPilot/ardupilot.git#tag=Copter-4.3.6
-	source = ardupilot-copter-sitl-libuavcan::git+https://github.com/DroneCAN/libuavcan.git
+	source = ardupilot-copter-sitl-4.5.4::git+https://github.com/ArduPilot/ardupilot.git#tag=Copter-4.5.4
 	source = ardupilot-copter-sitl-waf::git+https://github.com/ArduPilot/waf.git
 	source = ardupilot-copter-sitl-benchmark::git+https://github.com/google/benchmark.git
 	source = ardupilot-copter-sitl-mavlink::git+https://github.com/ArduPilot/mavlink.git
@@ -56,7 +55,10 @@ pkgbase = ardupilot-copter-sitl
 	source = ardupilot-copter-sitl-pydronecan::git+https://github.com/DroneCAN/pydronecan.git
 	source = ardupilot-copter-sitl-dronecan_dsdlc::git+https://github.com/DroneCAN/dronecan_dsdlc.git
 	source = ardupilot-copter-sitl-libcanard::git+https://github.com/DroneCAN/libcanard.git
-	source = uint16_t.patch::https://github.com/ArduPilot/ardupilot/pull/23803.patch
+	source = ardupilot-copter-sitl-Micro-XRCE-DDS-Client::git+https://github.com/ardupilot/Micro-XRCE-DDS-Client.git
+	source = ardupilot-copter-sitl-Micro-CDR::git+https://github.com/ardupilot/Micro-CDR.git
+	source = ardupilot-copter-sitl-lwip::git+https://github.com/ArduPilot/lwip.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
