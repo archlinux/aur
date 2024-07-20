@@ -1,7 +1,7 @@
 pkgbase = android-x86-flac
 	pkgdesc = Free Lossless Audio Codec (Android x86)
 	pkgver = 1.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xiph.org/flac/
 	arch = any
 	license = BSD
