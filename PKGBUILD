@@ -1,7 +1,7 @@
 # Maintainer: Interaccoonale <xzzzf.dsx@gmail.com>
 pkgname=flut-renamer-bin
-pkgver=1.5.0
-pkgrel=10
+pkgver=1.5.2
+pkgrel=12
 pkgdesc='A GUI application written in Flutter (using GTK on Linux), it helps users batch renaming their files in multiple ways, including inserting text, inserting file metadata and Exif data, replacing text, deleting text, rearranging, transliterating characters.'
 arch=('x86_64')
 url="https://github.com/sun-jiao/flut-renamer"
@@ -11,7 +11,7 @@ license=('GPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 source=("https://github.com/sun-jiao/flut-renamer/releases/download/$pkgver/flut-renamer-linux.tar.gz")
-sha256sums=('0d7b052a946ae3a9208aeea7d02aa62763e1eaa882335d2c00a56e7b7bcc826b')
+sha256sums=('0908e5c42769ce132871d4e81f2f2b9ee316d47bf615fdc657389c7c7f2f2123')
 
 package() {
     # create the target folders
