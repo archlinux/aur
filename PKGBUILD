@@ -30,7 +30,7 @@ sha256sums=('SKIP'
             'd55e0eef39c78ebb9d34bc7312b7bcf77761d4477c905a1505f8f9f970621801'
             '0b89785327c2a3246672cd8030963488d35b24463c1429cf6a376fe77d79fd81'
             '3f8cea49e04d2cd4f3dc5db48258db194da814437f3aa1edec997542727b60aa'
-            '838d2180c0ba3b45172bffcce029dd95977d084dd7e9c04e25c5b65b313998b9'
+            'd44e9d5e7bbefd905531dfe5ba77154445958e5974074fae601c3c614bb6e3d5'
 )
 
 pkgver() {
@@ -40,20 +40,21 @@ pkgver() {
 
 prepare() {
   patch -d "${pkgbase}" -Np1 < path_fix.patch
+}
 
+build() {
   export LDFLAGS
+
+  # English
   cmake -B build -S "${pkgbase}" \
     -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS} -Wno-error=format-security" \
     -DCMAKE_C_FLAGS:STRING="${CFLAGS}" \
     -DFIX_BUGS:BOOL=ON \
     -DFREETYPE_FONTS:BOOL=ON \
     -Wno-dev
-}
-
-build() {
   cmake --build build
 
-  export LDFLAGS
+  # Japanese
   cmake -B build -S "${pkgbase}" \
     -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS} -Wno-error=format-security" \
     -DCMAKE_C_FLAGS:STRING="${CFLAGS}" \

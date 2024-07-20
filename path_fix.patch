@@ -27,7 +27,7 @@ index fe4cf2d0..78e5e3f1 100644
  target_include_directories(DoConfig PRIVATE "../external/glad/include")
  target_compile_definitions(DoConfig PRIVATE IMGUI_IMPL_OPENGL_LOADER_GLAD)
 diff --git a/DoConfig/DoConfig.cpp b/DoConfig/DoConfig.cpp
-index c7bc5704..06a13055 100644
+index c7bc5704..e6c4db0b 100644
 --- a/DoConfig/DoConfig.cpp
 +++ b/DoConfig/DoConfig.cpp
 @@ -5,9 +5,11 @@
@@ -63,7 +63,7 @@ index c7bc5704..06a13055 100644
 -			memcpy(config_path, argv[0], i);
 -			memcpy(config_path + i, config_string, sizeof(config_string));	// Will copy null-character
 +#ifdef JAPANESE
-+	 config_lang ="japanese";
++	config_lang = "japanese";
 +#else
 +	config_lang = "english";
 +#endif
@@ -102,7 +102,7 @@ index c7bc5704..06a13055 100644
  	return 0;
  }
 diff --git a/src/Main.cpp b/src/Main.cpp
-index cacbd514..f1f8a34f 100644
+index cacbd514..fa3353e4 100644
 --- a/src/Main.cpp
 +++ b/src/Main.cpp
 @@ -11,6 +11,7 @@
@@ -133,7 +133,7 @@ index cacbd514..f1f8a34f 100644
 -			}
 -		}
 +#ifdef JAPANESE
-+	 config_lang ="japanese";
++	config_lang = "japanese";
 +#else
 +	config_lang = "english";
 +#endif
