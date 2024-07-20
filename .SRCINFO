@@ -1,6 +1,6 @@
 pkgbase = restclient-cpp-git
 	pkgdesc = A simple REST client for C++
-	pkgver = 0.5.2.r24.gb782bd2
+	pkgver = 0.5.2.r45.gfdf722b
 	pkgrel = 1
 	url = https://github.com/mrtazz/restclient-cpp
 	arch = i686
@@ -8,6 +8,7 @@ pkgbase = restclient-cpp-git
 	arch = armv7h
 	arch = aarch64
 	license = MIT
+	makedepends = cmake
 	depends = curl
 	provides = restclient-cpp
 	conflicts = restclient-cpp
