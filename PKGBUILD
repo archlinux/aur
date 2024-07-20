@@ -1,8 +1,8 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-sim8
-pkgver=8.3.0
-pkgrel=3
+pkgver=8.5.0
+pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Open source robotics simulator"
@@ -34,21 +34,14 @@ makedepends=(
   'gz-cmake=3'
   'pybind11'
   'python'
-  'git'
   )
 provides=("${_pkgbase}=${_pkgmaj}")
-#source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-source=("git+https://github.com/gazebosim/${_pkgbase}.git#tag=${pkgname}_${pkgver}")
-sha256sums=('SKIP')
-
-prepare() {
-  git -C "$srcdir/${_pkgbase}" cherry-pick -n 40aaddc7eb4ca12a03b64e18ffc101db9f9c24ec
-}
+source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
+sha256sums=('17085b61a1dd18e98f63eadbf0ebf0264fb7b308021d8248c578c8b88716323e')
 
 build() {
   export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/lib/ffmpeg4.4/pkgconfig"
-  # ${_pkgbase}-${pkgname}_${pkgver}
-  cmake -B build -S "$srcdir/${_pkgbase}" \
+  cmake -B build -S "${_pkgbase}-${pkgname}_${pkgver}" \
            -DCMAKE_BUILD_TYPE='None' \
            -DCMAKE_INSTALL_PREFIX='/usr' \
            -DBUILD_TESTING=OFF \
