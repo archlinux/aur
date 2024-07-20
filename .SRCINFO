@@ -1,9 +1,10 @@
 pkgbase = android-x86-64-libheif-bootstrap
 	pkgdesc = An HEIF and AVIF file format decoder and encoder (Android x86-64)
 	pkgver = 1.17.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/strukturag/libheif
 	arch = any
+	groups = android-libheif-bootstrap
 	license = GPL3
 	makedepends = android-cmake
 	makedepends = android-x86-64-dav1d
