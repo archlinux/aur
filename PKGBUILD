@@ -8,7 +8,7 @@ pkgname=(
   gdm-prime
   libgdm-prime
 )
-pkgver=46.0
+pkgver=46.2
 pkgrel=1
 pkgdesc="Display manager and login screen - patched with Prime support for Optimus laptops"
 url="https://wiki.gnome.org/Projects/GDM"
@@ -37,35 +37,34 @@ depends=(
   systemd
   systemd-libs
   upower
-  xorg-server
-  xorg-xhost
-  xorg-xrdb
 )
 makedepends=(
   dconf
   docbook-xsl
   git
+  glib2-devel
   gobject-introspection
   meson
   plymouth
-  python-packaging
   yelp-tools
+  xorg-server
+  xorg-xhost
+  xorg-xrdb
+)
+optdepends=(
+  'xorg-server: X session support'
+  'xorg-xhost: X session support'
+  'xorg-xrdb: X session support'
 )
 checkdepends=(check)
-_commit=a5b591cd8d1db5c5d1ebe67d10ec3fe57b9bbded  # tags/46.0^0
 source=(
-  "git+https://gitlab.gnome.org/GNOME/gdm.git#commit=$_commit"
+  "git+https://gitlab.gnome.org/GNOME/gdm.git#tag=${pkgver/[a-z]/.&}"
   0001-Xsession-Don-t-start-ssh-agent-by-default.patch
   0002-nvidia-prime.patch
 )
-b2sums=('23f2346014a2c7f39fb53627e1531d74eeb7636027e2192d8be72a1a553126796b0445b0c02691ee104835e333275881be77883b80252f9e0bc13a37a152fe6b'
+b2sums=('a7c20a7cef158e24cda587d49d4fde0774bcdfa46e1ce7e943c63a13bfb28c547e4f5e48f6a212bf1c0b77fd669dac9efd1d1e6ec3067f7013df9f0dddbddabf'
         'f7e868fdd7cc121433de1572583eb728f4d186cd4f52c6d6c8f2ccf4a3cf781144ff71f704f13571ddb97a1ff4ec55cfa3df25d38737ad19da21e84ddc2d3ee4'
         'b02edd38bb178b457379717633f935f18bea153470905d34675a587c807a4c0de79e48cc82c53ec5a139d667f57c13e652ea6d9cb3a7fcd05bdd59b9cf715b45')
-
-pkgver() {
-  cd gdm
-  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
-}
 
 prepare() {
   cd gdm
