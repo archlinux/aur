@@ -1,13 +1,14 @@
 pkgbase = python-securetar
 	pkgdesc = Python module to handle tarfile backups.
 	pkgver = 2024.2.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/pvizeli/securetar
 	arch = any
 	license = Apache
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python>=3.12
 	depends = python-cryptography
 	source = https://files.pythonhosted.org/packages/source/s/securetar/securetar-2024.2.1.tar.gz

@@ -3,7 +3,7 @@
 pkgname='python-securetar'
 _module=${pkgname#python-}
 pkgver='2024.2.1'
-pkgrel=3
+pkgrel=4
 pkgdesc="Python module to handle tarfile backups."
 url="https://github.com/pvizeli/securetar"
 depends=(
@@ -14,6 +14,7 @@ makedepends=(
 	'python-build'
 	'python-installer'
 	'python-wheel'
+	'python-setuptools'
 )
 license=('Apache')
 arch=('any')
