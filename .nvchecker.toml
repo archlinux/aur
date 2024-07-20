@@ -1,0 +1,4 @@
+[ruby-ast-tdl]
+source = "github"
+github = "firefly-cpp/ast-tdl"
+use_latest_release = "true"
