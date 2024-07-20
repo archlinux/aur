@@ -1,5 +1,4 @@
 [arch-update]
-source = "github"
-github = "Antiz96/arch-update"
+source = "git"
+git = "https://github.com/Antiz96/arch-update.git"
 prefix = "v"
-use_max_tag = true
