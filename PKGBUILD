@@ -2,18 +2,18 @@
 _gitname=krunner-symbols
 pkgname=plasma6-runners-symbols-git
 _pkgname=${pkgname%-git}
-pkgver=r138.0a086d2
+pkgver=r142.844195b
 pkgrel=1
 pkgdesc="A little krunner plugin (Plasma 6) to retrieve unicode symbols, or any other string, based on a corresponding keyword"
 arch=('x86_64')
-url="https://github.com/Kishore96in/$_gitname"
+url="https://github.com/domschrei/$_gitname"
 license=('GPL')
 depends=('krunner' 'qt6-base' 'ki18n' 'qt6-5compat' 'qt6-declarative' 'ktextwidgets' 'libplasma')
 makedepends=('cmake' 'extra-cmake-modules' 'qt6-tools' 'jq')
 optdepends=()
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("git+$url#branch=port_kf6")
+source=("git+$url#branch=plasma6")
 sha256sums=('SKIP')
 
 pkgver() {
