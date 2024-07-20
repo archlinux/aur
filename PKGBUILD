@@ -3,7 +3,7 @@
 # Maintainer: Jia Li <lijia1608@gmail.com>
 pkgname=libcint
 pkgver=6.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="General GTO integrals for quantum chemistry"
 arch=(i686 x86_64)
 url="https://github.com/sunqm/libcint"
@@ -33,5 +33,6 @@ check() {
 }
 
 package() {
+    cd "$pkgname-$pkgver"
     DESTDIR="$pkgdir" cmake --install build
 }
