@@ -11,7 +11,7 @@ pkgver=2.0.0b9
 pkgrel=2
 pkgdesc='Deduplicating backup program with compression and authenticated encryption'
 url='https://github.com/borgbackup/borg'
-license=('BSD')
+license=('BSD-3-Clause')
 arch=('x86_64')
 depends=(
 	'acl'
