@@ -7,7 +7,6 @@ pkgbase = xeus-python
 	license = BSD-3-Clause
 	makedepends = cmake
 	depends = pybind11-json
-	depends = cppzmq
 	depends = xeus-zmq
 	depends = python-xeus-python-shell
 	depends = jupyterlab
