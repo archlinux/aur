@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ecode
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight multi-platform code editor designed for modern hardware with a focus on responsiveness and performance."
 arch=('x86_64' 'aarch64')
 url="https://github.com/SpartanJ/ecode"
@@ -34,7 +34,7 @@ package() {
   cd eepp
   install -Dm755 "bin/$pkgname" -t "$pkgdir/opt/$pkgname/"
   cp -r bin/assets "$pkgdir/opt/$pkgname/"
-  install -Dm644 libs/linux/${CARCH}/libeepp.so -t "$pkgdir/usr/lib/"
+  install -Dm755 libs/linux/${CARCH}/libeepp.so -t "$pkgdir/usr/lib/"
 
   install -d "$pkgdir/usr/bin"
   ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/"
