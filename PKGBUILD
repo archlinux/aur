@@ -1,6 +1,6 @@
 # Maintainer: Zesko
 pkgname="limine-dracut-support-git"
-pkgver=r3.568ffb8
+pkgver=r3.ae43c04
 pkgrel=1
 pkgdesc="Install kernel for Limine bootloader."
 arch=("any")
@@ -11,7 +11,8 @@ depends=(
        'bash'
        'java-environment>=17'
        'limine'
-       'dracut')
+       'dracut'
+       'systemd')
 optdepends=(
         'journalctl-desktop-notification: It notifies you on Desktop when an error occurs.'
 )
