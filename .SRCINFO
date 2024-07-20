@@ -1,12 +1,12 @@
 pkgbase = fcitx5-themes-candlelight
 	pkgdesc = fcitx5的简约风格皮肤——烛光
-	pkgver = 013aec
+	pkgver = 5d4b77
 	pkgrel = 1
 	url = https://github.com/thep0y/fcitx5-themes-candlelight
 	arch = any
-	license = unknown
+	license = MIT
 	makedepends = git
-	source = git+https://github.com/thep0y/fcitx5-themes-candlelight.git#commit=013aecb0368af853b55e56fe67f890b8ca0d8859
+	source = git+https://github.com/thep0y/fcitx5-themes-candlelight.git#commit=5d4b77594b2fc488fbb8e2c3a5275b6e5a694e32
 	md5sums = SKIP
 
 pkgname = fcitx5-themes-candlelight
