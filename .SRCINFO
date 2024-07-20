@@ -1,9 +1,10 @@
 pkgbase = android-aarch64-libsamplerate
 	pkgdesc = An audio sample rate conversion library (Android aarch64)
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://libsndfile.github.io/libsamplerate/
 	arch = any
+	groups = android-libsamplerate
 	license = BSD
 	makedepends = android-cmake
 	makedepends = android-aarch64-alsa-lib
