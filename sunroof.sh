@@ -8,4 +8,4 @@ if [[ -f $XDG_CONFIG_HOME/sunroof-flags.conf ]]; then
 fi
 
 # Launch
-exec /usr/lib/sunroof/sunroof $SUNROOF_USER_FLAGS "$@"
+exec electron31 /usr/lib/sunroof/app.asar $SUNROOF_USER_FLAGS "$@"
