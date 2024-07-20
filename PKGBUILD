@@ -2,16 +2,20 @@
 # Contributor: Barry Smith <brrtsm at gmmal dot com>
 
 pkgname="ntopng-bin"
-# to update visit https://packages.ntop.org/apt/bullseye/x64/ and keep track of the latest pkgver, date and build
-_pkgverAmd=5.7
-_dateAmd=230710
-_buildAmd=20946
+# to update visit https://packages.ntop.org/apt/bookworm/x64/ and keep track of the latest pkgver, date and build
+_pkgverAmd64=6.1
+_dateAmd64=240720
+_buildAmd64=23968
 # to update visit https://packages.ntop.org/apt/bullseye_pi/arm64/ and keep track of the latest pkgver, date and build
-_pkgverArm=5.7
-_dateArm=230709
-_buildArm=20934
+_pkgverArm64=6.1
+_dateArm64=240715
+_buildArm64=23788
+# to update visit https://packages.ntop.org/apt/buster_pi/armhf/ and keep track of the latest pkgver, date and build
+_pkgverArm32=6.1
+_dateArm32=240707
+_buildArm32=23727
 # updated automatically
-pkgver="$_pkgverAmd.$_dateAmd"
+pkgver="$_pkgverAmd64.$_dateAmd64"
 pkgrel=1
 pkgdesc="Web-based traffic monitoring"
 url="https://www.ntop.org/"
@@ -30,15 +34,15 @@ depends=("hiredis"
 source=("ntopng.sysusers"
 	    "ntopng.tmpfiles"
 	    "ntopng@.service")
-source_x86_64=("https://packages.ntop.org/apt/bullseye/x64/ntopng_${_pkgverAmd}.${_dateAmd}-${_buildAmd}_amd64.deb")
-source_armv7h=("https://packages.ntop.org/apt/buster_pi/armhf/ntopng_${_pkgverArm}.${_dateArm}-${_buildArm}_armhf.deb")
-source_aarch64=("https://packages.ntop.org/apt/bullseye_pi/arm64/ntopng_${_pkgverArm}.${_dateArm}-${_buildArm}_arm64.deb")
-sha256sums=('58518c808ea300350e6aaa83fafb2320dfed85dd8615793bba3d5b6041edb1b5'
-            '454688247e747d96b258f2e2317cdc29bfbf42b35bf03f10363182e8844cd50f'
-            '034d4fa2a6616a6240edc74e278b96e45730e7acc12d60a7b4458b04906c127b')
-sha256sums_x86_64=('62f4d15b35207d5e90589512e0c9aa6a798a9c693fda7a61d6a5bc9f12c4459b')
-sha256sums_armv7h=('85d5f214bef478f332d987d3f10ddbd0102705027ab65e87eb4677e46c983570')
-sha256sums_aarch64=('9f06da66a8582ba5902ae31a2e92fb6c31c062c74b4547929b9f60624ec23fae')
+source_x86_64=("https://packages.ntop.org/apt/bookworm/x64/ntopng_${_pkgverAmd64}.${_dateAmd64}-${_buildAmd64}_amd64.deb")
+source_aarch64=("https://packages.ntop.org/apt/bookworm_pi/arm64/ntopng_${_pkgverArm64}.${_dateArm64}-${_buildArm64}_arm64.deb")
+source_armv7h=("https://packages.ntop.org/apt/buster_pi/armhf/ntopng_${_pkgverArm32}.${_dateArm32}-${_buildArm32}_armhf.deb")
+b2sums=('c0ba0afb3fdeedaf57f54ce405cd5ce688bb5ed19d05cc21fbefca7ecda98bc5df2cf603e7ac92108763dc26c1ef391afdf69116bb13c03f8e2d3e75fe6bbda5'
+        'ca912cbe9e43a5be67e2b487183e43615b93497a62515cad7b1468fab5e3dc9a2dc3fd2e8d88c12d54c91cb3b8c61ebe682c1e7dc5f3ea49aaf0d87aa2a9bbd1'
+        'e374ff823b8218faf86c56e0794622954b09b41f5c893db08d3ad38ea1d4fe47733095853d1bf11041b1e4b476d01c1a1a495af40221d6e4e30a0ac223684fac')
+b2sums_x86_64=('628229dcd566b10f7ec591da06cf4d92be8fc91ca1f74fa9fc54ae14b0dc29fc13f277979cb45b95efb555737a5ba05e0381a84d291a7af9ac2136cc758016b5')
+b2sums_armv7h=('f2996f73459a37fe6cdf31d91d96f6bb7154133093c1202eee688aa58345b873db8ee00944955648a1994341b8619c6900f0b709d878517c9b92a466a961144a')
+b2sums_aarch64=('104a8dbd381ecf069b740d11f13a147e5f30ee4b5d8b287256600047f5df51fe3bf5c78f845427197f8c36b0b1112c5ec6d4196f652e2aedd56c668ebbcef5f1')
 options=("!strip")
 
 prepare(){
