@@ -1,4 +1,5 @@
-# Maintainer: spider-mario <spidermario@free.fr>
+# Maintainer: Max Harmathy <harmathy@alumni.tum.de>
+# Contributor: spider-mario <spidermario@free.fr>
 
 pkgname=sdlpop
 pkgver=1.23
