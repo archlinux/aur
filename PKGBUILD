@@ -2,7 +2,7 @@
 # Maintainer: Sam Bilbow <samuel.bilbow@icloud.com>
 pkgname=ultraleap-hand-tracking-service
 pkgver=5.17.1.0_a9f25232
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Ultraleap Hand Tracking service and SDK for development."
 arch=("x86_64")

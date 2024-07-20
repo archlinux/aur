@@ -1,7 +1,7 @@
 pkgbase = ultraleap-hand-tracking-service
 	pkgdesc = Ultraleap Hand Tracking service and SDK for development.
 	pkgver = 5.17.1.0_a9f25232
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ultraleap.com/
 	install = ultraleap-hand-tracking-service.install
 	arch = x86_64
