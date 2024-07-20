@@ -7,14 +7,14 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-vid.stab
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Video stabilization library (Android ${_android_arch})"
 url='http://public.hronopik.de/vid.stab'
 license=('GPL')
+groups=(android-vid.stab)
 depends=('android-ndk')
-makedepends=('android-cmake'
-             'ninja')
+makedepends=('android-cmake')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/georgmartius/vid.stab/archive/refs/tags/v${pkgver}.tar.gz")
 md5sums=('3fb59a96f6e49e2719fd8c551eb3617a')
@@ -25,14 +25,23 @@ build() {
 
     android-${_android_arch}-cmake \
         -S . \
-        -B build
-    make -C build $MAKEFLAGS
+        -B build-shared \
+        -DBUILD_SHARED_LIBS=ON
+    make -C build-shared $MAKEFLAGS
+
+    android-${_android_arch}-cmake \
+        -S . \
+        -B build-static \
+        -DBUILD_SHARED_LIBS=OFF
+    make -C build-static $MAKEFLAGS
 }
 
 package() {
     cd "${srcdir}/vid.stab-${pkgver}"
     source android-env ${_android_arch}
 
-    make -C build DESTDIR="$pkgdir" install
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
+    make -C build-shared DESTDIR="${pkgdir}" install
+    make -C build-static DESTDIR="${pkgdir}" install
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
