@@ -1,7 +1,7 @@
 pkgbase = ratarmount-git
 	pkgdesc = Mount tar files via fusepy. Supports Recursive Mounting, Compressed Files, Read-Only Bind Mounting, Union Mounting and Write Overlays. A fast random access alternative to archivemount.
-	pkgver = 0.13.0.r18.g8e6296c
-	pkgrel = 2
+	pkgver = 0.15.1.r0.g078b769
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/mxmlnkn/ratarmount
 	arch = any
@@ -10,19 +10,18 @@ pkgbase = ratarmount-git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = python>=3.11
+	depends = python>=3.12
 	depends = python-fusepy
 	depends = python-msgpack
 	depends = python-rapidjson
 	depends = python-ujson
 	depends = python-simplejson
-	optdepends = pragzip: Option 1 for support for gzip-compressed tar files
+	optdepends = python-rapidgzip: Support for gzip and bzip2 compressed tar files
 	optdepends = python-indexed-gzip: Option 2 for support for gzip-compressed tar files
+	optdepends = python-xz: Support for xz-compressed tar files
 	optdepends = python-indexed-zstd: Support for zstd-compressed tar files
-	optdepends = python-indexed-bzip2: Support for bzip2-compressed tar files
 	optdepends = python-rarfile: Support for rar-compressed tar files
-	optdepends = lzmaffi: Option 1 for support for xz-compressed tar files
-	optdepends = python-xz: Option 2 for support for xz-compressed tar files
+	optdepends = python-libarchive-c: Support for 7z, ar, cab, compress, cpio, iso, lrzip, lzma, lz4, lzip, lzo, warc, xar; (no random access)
 	provides = ratarmount
 	conflicts = ratarmount
 	source = git+https://github.com/mxmlnkn/ratarmount
