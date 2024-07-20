@@ -7,14 +7,15 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-libpciaccess
 pkgver=0.18.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="X11 PCI access library (Android ${_android_arch})"
 license=('LicenseRef-libpciaccess')
 url="https://gitlab.freedesktop.org/xorg/lib/libpciaccess"
+groups=(android-libpciaccess)
 depends=("android-${_android_arch}-zlib")
-makedepends=("android-${_android_arch}-xorg-util-macros"
-             'android-meson')
+makedepends=('android-meson'
+             "android-${_android_arch}-xorg-util-macros")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://xorg.freedesktop.org/releases/individual/lib/libpciaccess-${pkgver}.tar.xz"{,.sig}
         '0001-Set-linux-host.patch'
@@ -31,7 +32,7 @@ prepare() {
     patch -Np1 -i ../0001-Set-linux-host.patch
 
     # Platform specific patches
-    case "$_android_arch" in
+    case "${_android_arch}" in
         x86*)
             patch -Np1 -i ../0002-Do-not-use-sys-io.patch
             ;;
@@ -42,16 +43,15 @@ build() {
     cd "${srcdir}/libpciaccess-${pkgver}"
     source android-env ${_android_arch}
 
-    mkdir -p build
-    cd build
-    android-${_android_arch}-meson
-    ninja
+    android-${_android_arch}-meson build
+    ninja -C build
 }
 
 package() {
-    cd "${srcdir}/libpciaccess-${pkgver}/build"
+    cd "${srcdir}/libpciaccess-${pkgver}"
     source android-env ${_android_arch}
 
-    DESTDIR="${pkgdir}" ninja install
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
+    DESTDIR="${pkgdir}" ninja -C build install
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
 }
