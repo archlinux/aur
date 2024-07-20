@@ -1,6 +1,6 @@
 # Maintainer: Eldred Habert <arch@eldred.fr>
 pkgname=hugetracker
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 pkgdesc='The music composition suite for the Nintendo Game Boy'
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=("hUGETracker-${pkgver}.tar.gz::https://github.com/SuperDisk/hUGETracker/
         'hUGEDriver.tar.gz::https://github.com/SuperDisk/hUGEDriver/archive/df5a07ba1d684bf25b1de949ac0d9521a8937c32.tar.gz'
         'rackctls.tar.gz::https://github.com/olivluca/rackctls/archive/15c50fb5dd398875a274b3aa2c36aa769d145a11.tar.gz'
         'default_runtime_dir.patch')
-sha256sums=('79833ac27ef6611c903ce570eb4635a4edfb3684d42fd7b8ea8e542e72aa8fcf'
+sha256sums=('d09c7d20ee644167b65008a53338a56060c3aa49654e5e5063a01c16e918c5a2'
             '70a6b029365b9cb3c52628ea1419c5f2e379a2d960510560e6e730c8c5f907dc'
             'd9daea6027be28f6b2c30ee0fdd1c7fca8cc715d1bbb972403e844a42fa0f07c'
             'a2f19f1ec957c5ba17f981c277687098cc874002874533a0b2c461a5a9c6c819'
@@ -85,7 +85,8 @@ package() {
 
 	install -Dvm 644 fonts/PixeliteTTF.ttf "$pkgdir/usr/share/hugetracker/PixeliteTTF.ttf"
 	install -Dvm 644 -t "$pkgdir/usr/share/hugetracker/" halt.{gb,sym}
-	install -Dvm 644 -t "$pkgdir/usr/share/hugetracker/hUGEDriver" src/hUGEDriver/{*.asm,include/*}
+	install -Dvm 644 -t "$pkgdir/usr/share/hugetracker/hUGEDriver" src/hUGEDriver/*.asm
+	install -Dvm 644 -t "$pkgdir/usr/share/hugetracker/hUGEDriver/include" src/hUGEDriver/include/*
 	find sample-songs -maxdepth 1 -type f -exec install -Dvm 644 -t "$pkgdir/usr/share/hugetracker/Sample Songs/" '{}' +
 
 	install -Dvsm 755 src/uge2source/uge2source "$pkgdir/usr/bin/uge2source"
