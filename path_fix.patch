@@ -1,0 +1,148 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1d075d49..4e86c57b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -766,6 +766,10 @@ if(DOCONFIG)
+ 	# Name debug builds "DoConfig_debug", to distinguish them
+ 	set_target_properties(DoConfig PROPERTIES DEBUG_OUTPUT_NAME "DoConfig_debug")
+ 
++	if(JAPANESE)
++		target_compile_definitions(DoConfig PRIVATE JAPANESE)
++	endif()
++
+ 	# Send executable to the build_en/build_jp directory
+ 	set_target_properties(DoConfig PROPERTIES
+ 		RUNTIME_OUTPUT_DIRECTORY ${BUILD_DIRECTORY}
+diff --git a/DoConfig/CMakeLists.txt b/DoConfig/CMakeLists.txt
+index fe4cf2d0..78e5e3f1 100644
+--- a/DoConfig/CMakeLists.txt
++++ b/DoConfig/CMakeLists.txt
+@@ -35,7 +35,7 @@ set_target_properties(DoConfig PROPERTIES
+ 	CXX_EXTENSIONS OFF
+ )
+ 
+-target_link_libraries(DoConfig PRIVATE ${CMAKE_DL_LIBS})
++target_link_libraries(DoConfig PRIVATE ${CMAKE_DL_LIBS} ${sdl2_LDFLAGS})
+ 
+ target_include_directories(DoConfig PRIVATE "../external/glad/include")
+ target_compile_definitions(DoConfig PRIVATE IMGUI_IMPL_OPENGL_LOADER_GLAD)
+diff --git a/DoConfig/DoConfig.cpp b/DoConfig/DoConfig.cpp
+index c7bc5704..06a13055 100644
+--- a/DoConfig/DoConfig.cpp
++++ b/DoConfig/DoConfig.cpp
+@@ -5,9 +5,11 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <SDL2/SDL_filesystem.h>
+ 
+ #include "glad/glad.h"
+ #include <GLFW/glfw3.h>
++#include <string>
+ 
+ #include "imgui/imgui.h"
+ #include "imgui/imgui_impl_glfw.h"
+@@ -38,25 +40,15 @@ int main(int argc, char *argv[])
+ {
+ 	(void)argc;
+ 
+-	char *config_path;
++	std::string config_lang;
+ 
+-	for (size_t i = strlen(argv[0]);; --i)
+-	{
+-		if (i == 0 || argv[0][i - 1] == '\\' || argv[0][i - 1] == '/')
+-		{
+-			const char config_string[] = "Config.dat";
+-
+-			config_path = (char*)malloc(i + sizeof(config_string));
+-
+-			if (config_path == NULL)
+-				return 1;
+-
+-			memcpy(config_path, argv[0], i);
+-			memcpy(config_path + i, config_string, sizeof(config_string));	// Will copy null-character
++#ifdef JAPANESE
++	 config_lang ="japanese";
++#else
++	config_lang = "english";
++#endif
+ 
+-			break;
+-		}
+-	}
++	std::string config_path = (std::string)SDL_GetPrefPath("cse2", config_lang.c_str()) + "/Config.dat";
+ 
+ 	/////////////////////
+ 	// Initialise GLFW //
+@@ -115,7 +107,7 @@ int main(int argc, char *argv[])
+ 
+ 					Config configuration;
+ 
+-					FILE *file = fopen(config_path, "rb");
++					FILE *file = fopen(config_path.c_str(), "rb");
+ 
+ 					if (file != NULL)
+ 					{
+@@ -249,7 +241,7 @@ int main(int argc, char *argv[])
+ 									glfwSetWindowShouldClose(window, 1);
+ 
+ 									// Save to file
+-									FILE *file = fopen(config_path, "wb");
++									FILE *file = fopen(config_path.c_str(), "wb");
+ 
+ 									if (file != NULL)
+ 									{
+@@ -323,7 +315,5 @@ int main(int argc, char *argv[])
+ 		glfwTerminate();
+ 	}
+ 
+-	free(config_path);
+-
+ 	return 0;
+ }
+diff --git a/src/Main.cpp b/src/Main.cpp
+index cacbd514..f1f8a34f 100644
+--- a/src/Main.cpp
++++ b/src/Main.cpp
+@@ -11,6 +11,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <string>
++#include <SDL2/SDL_filesystem.h>
+ 
+ #include "WindowsWrapper.h"
+ 
+@@ -113,23 +114,17 @@ int main(int argc, char *argv[])
+ 	if (!Backend_Init(DragAndDropCallback, WindowFocusCallback))
+ 		return EXIT_FAILURE;
+ 
+-	// Get executable's path, and path of the data folder
+-	if (!Backend_GetPaths(&gModulePath, &gDataPath))
+-	{
+-		// Fall back on argv[0] if the backend cannot provide a path
+-		gModulePath = argv[0];
++	std::string config_lang;
+ 
+-		for (size_t i = gModulePath.length();; --i)
+-		{
+-			if (i == 0 || gModulePath[i] == '\\' || gModulePath[i] == '/')
+-			{
+-				gModulePath.resize(i);
+-				break;
+-			}
+-		}
++#ifdef JAPANESE
++	 config_lang ="japanese";
++#else
++	config_lang = "english";
++#endif
+ 
+-		gDataPath = gModulePath + "/data";
+-	}
++	// Get executable's path, and path of the data folder
++	gModulePath = SDL_GetPrefPath("cse2", config_lang.c_str());
++	gDataPath = "/usr/share/cse2/" + config_lang + "/data";
+ 
+ 	CONFIGDATA conf;
+ 	if (!LoadConfigData(&conf))

@@ -1,0 +1,5 @@
+/cse2-git
+/pkg
+/src
+*.tar.gz
+*.zst

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=CSE2 Config (English)
+Comment=Configuration for Decompilation of Cave Story
+Exec=cse2-english-config
+Type=Application
+Icon=cse2-english
+Categories=Game;

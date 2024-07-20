@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=CSE2 (Japanese)
+Comment=Decompilation of Cave Story
+Exec=cse2-japanese
+Type=Application
+Icon=cse2-japanese
+Categories=Game;
