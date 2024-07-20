@@ -1,4 +1,10 @@
 post_install() {
   chown traefik:traefik etc/traefik/acme.json var/log/traefik
   setcap 'cap_net_bind_service=+ep' usr/bin/traefik
+
+cat << EOF
+This is a major version upgrade, please consult the following links for migration guides:
+- https://doc.traefik.io/traefik/migration/v2-to-v3/
+- https://doc.traefik.io/traefik/migration/v2-to-v3-details/
+EOF
 }

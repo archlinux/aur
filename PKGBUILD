@@ -5,7 +5,7 @@
 _pkgname='traefik'
 pkgname="${_pkgname}-bin"
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A modern reverse proxy written in Go'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/traefik/traefik'

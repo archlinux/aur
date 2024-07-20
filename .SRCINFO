@@ -1,7 +1,7 @@
 pkgbase = traefik-bin
 	pkgdesc = A modern reverse proxy written in Go
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/traefik/traefik
 	install = traefik.install
 	arch = i686
