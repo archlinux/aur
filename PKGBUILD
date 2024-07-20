@@ -5,7 +5,7 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-libwebp
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="WebP library and conversion tools (Android ${_android_arch})"
 url="https://developers.google.com/speed/webp/"
@@ -32,6 +32,7 @@ build() {
     source android-env ${_android_arch}
 
     android-${_android_arch}-configure \
+        --with-pic \
         --enable-swap-16bit-csp \
         --enable-experimental \
         --enable-libwebp{mux,demux,decoder,extras}
