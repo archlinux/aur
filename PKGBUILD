@@ -6,7 +6,7 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-flac
 pkgver=1.4.3
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Free Lossless Audio Codec (Android ${_android_arch})"
 url='https://xiph.org/flac/'
@@ -17,8 +17,7 @@ makedepends=('android-cmake'
              'nasm')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/xiph/flac/releases/download/${pkgver}/flac-${pkgver}.tar.xz")
-# https://github.com/xiph/flac/releases
- sha256sums=('6c58e69cd22348f441b861092b825e591d0b822e106de6eb0ee4d05d27205b70')
+sha256sums=('6c58e69cd22348f441b861092b825e591d0b822e106de6eb0ee4d05d27205b70')
 
 prepare() {
     cd "${srcdir}/flac-${pkgver}"
@@ -60,23 +59,39 @@ build() {
 
     android-${_android_arch}-cmake \
         -S . \
-        -B build \
+        -B build-shared \
         -DBUILD_SHARED_LIBS=ON \
         -DBUILD_DOCS=OFF \
         -DBUILD_EXAMPLES=OFF \
         -DBUILD_PROGRAMS=OFF \
         -DINSTALL_MANPAGES=OFF \
-        -DBUILD_TESTING:BOOL=OFF \
+        -DBUILD_TESTING=OFF \
         -DWITH_STACK_PROTECTOR=OFF \
         -DOGG_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
         -DOGG_LIBRARY="${ANDROID_PREFIX_LIB}/libogg.so"
-    make -C build $MAKEFLAGS
+    make -C build-shared $MAKEFLAGS
+
+    android-${_android_arch}-cmake \
+        -S . \
+        -B build-static \
+        -DBUILD_SHARED_LIBS=OFF \
+        -DBUILD_DOCS=OFF \
+        -DBUILD_EXAMPLES=OFF \
+        -DBUILD_PROGRAMS=OFF \
+        -DINSTALL_MANPAGES=OFF \
+        -DBUILD_TESTING=OFF \
+        -DWITH_STACK_PROTECTOR=OFF \
+        -DOGG_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
+        -DOGG_LIBRARY="${ANDROID_PREFIX_LIB}/libogg.a"
+    make -C build-static $MAKEFLAGS
 }
 
 package() {
     cd "${srcdir}/flac-${pkgver}"
     source android-env ${_android_arch}
 
-    make -C build DESTDIR="$pkgdir" install
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
+    make -C build-shared DESTDIR="${pkgdir}" install
+    make -C build-static DESTDIR="${pkgdir}" install
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
