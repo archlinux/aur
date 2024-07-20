@@ -2,24 +2,31 @@
 
 pkgname='python-dirhash'
 _module=${pkgname#python-}
-pkgver='0.2.1'
-pkgrel=3
+pkgver='0.4.1'
+pkgrel=1
 pkgdesc="Python module and CLI for hashing of file system directories."
 url="https://github.com/andhus/dirhash-python"
-makedepends=('python-setuptools')
-depends=('python>=3.11')
+depends=(
+	'python>=3.12'
+)
+makedepends=(
+        'python-build'
+        'python-installer'
+        'python-wheel'
+	'python-versioneer'
+)
 license=('MIT')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-b2sums=('37ec46bc342c34c910137241b759b627b7dddb2129ac100eae7d97281ab556a42343b5d73b13be4c160ec60ccdc06f5ba6d406b2c9340108869bda0744de6c90')
+source=("${url}/releases/download/v${pkgver}/${_module}-${pkgver}.tar.gz")
+b2sums=('221109970c686bb1af9048028d592c30238a92fec7fce4cadad3dab94f03db262d90d682a33222b32f299e553a2f70eb6ff5f5bf0ba37e96e2d08468ed317ab8')
 
 build() {
 	cd "${srcdir}/${_module}-${pkgver}"
-	python setup.py build
+	python -m build --wheel --no-isolation
 }
 
 package() {
 	cd "${srcdir}/${_module}-${pkgver}"
 	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/python-dirhash/LICENSE"
-	python setup.py install --root="${pkgdir}" --optimize=2 --skip-build
+	python -m installer --compile-bytecode=2 --destdir="${pkgdir}" dist/*.whl
 }
