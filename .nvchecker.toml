@@ -1,0 +1,5 @@
+[python-captcha]
+source = "github"
+github = "lepture/captcha"
+use_latest_release = "true"
+prefix = "v"
