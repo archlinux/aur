@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=oxipng-git
-pkgver=8.0.0.r6.gcc37f645
+pkgver=9.1.2.r0.ge8366882
 pkgrel=1
 pkgdesc="Multithreaded PNG optimizer"
 arch=('i686' 'x86_64')
@@ -11,6 +11,7 @@ depends=('gcc-libs')
 makedepends=('git' 'rust')
 provides=("oxipng=$pkgver")
 conflicts=('oxipng')
+options=('!lto')
 source=("git+https://github.com/shssoichiro/oxipng.git")
 sha256sums=('SKIP')
 
