@@ -1,6 +1,6 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=oblivion-desktop-git
-pkgver=0.35.1.beta.r0.gea13cfb
+pkgver=0.41.4.beta.r2.g3cf3d43
 pkgrel=1
 pkgdesc="Unofficial Warp Client for Windows/Mac/Linux (GitHub Version)"
 arch=('x86_64')
