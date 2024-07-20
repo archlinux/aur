@@ -1,0 +1,5 @@
+[python-persim]
+source = "github"
+github = "scikit-tda/persim"
+use_latest_release = "true"
+prefix = "v"
