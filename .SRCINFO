@@ -1,12 +1,12 @@
 pkgbase = android-x86-brotli
-	pkgdesc = Brotli compression library (android)
+	pkgdesc = Brotli compression library (Android x86)
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/brotli.git
 	arch = any
+	groups = android-brotli
 	license = MIT
 	makedepends = android-cmake
-	makedepends = git
 	depends = android-ndk
 	options = !strip
 	options = !buildflags
