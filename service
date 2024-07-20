@@ -1,6 +1,7 @@
 [Unit]
 Description=go2rtc streaming daemon
 Requires=network-online.target
+Documentation=file:/usr/doc/go2rtc/README.md
 
 [Service]
 User=go2rtc
