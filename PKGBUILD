@@ -2,7 +2,7 @@
 # Contributor: dadav <33197631+dadav@users.noreply.github.com>
 pkgname=go2rtc
 pkgver=1.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Ultimate camera streaming application with support RTSP, RTMP, HTTP-FLV, WebRTC, MSE, HLS, MP4, MJPEG, HomeKit, FFmpeg, etc."
 arch=('x86_64')
 url="https://github.com/AlexxIT/go2rtc"
