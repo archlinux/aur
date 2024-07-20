@@ -12,7 +12,6 @@ pkgbase = audacious-plugins-gtk3
 	depends = audacious-gtk3>=4.4
 	depends = alsa-lib
 	depends = curl
-	depends = dbus-glib
 	depends = faad2
 	depends = ffmpeg
 	depends = flac

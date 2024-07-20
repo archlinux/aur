@@ -13,7 +13,7 @@ arch=('i686' 'x86_64')
 url="https://audacious-media-player.org/"
 license=('BSD' 'GPL')
 depends=("audacious-gtk3>=$pkgver"
-         'alsa-lib' 'curl' 'dbus-glib' 'faad2' 'ffmpeg' 'flac' 'fluidsynth'
+         'alsa-lib' 'curl' 'faad2' 'ffmpeg' 'flac' 'fluidsynth'
          'jack' 'json-glib' 'lame' 'libbs2b' 'libcddb' 'libcdio-paranoia'
          'libcue' 'libmms' 'libmodplug' 'libmtp' 'libnotify' 'libopenmpt'
          'libpipewire' 'libpulse' 'libsamplerate' 'libsidplayfp' 'libvorbis'
