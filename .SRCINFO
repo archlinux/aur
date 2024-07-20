@@ -1,0 +1,23 @@
+pkgbase = getparty-bin
+	pkgdesc = HTTP download manager with multi-parts
+	pkgver = 1.21.1
+	pkgrel = 1
+	url = https://github.com/vbauerster/getparty
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = BSD-3-Clause
+	provides = getparty
+	conflicts = getparty
+	source = README.md-1.21.1::https://github.com/vbauerster/getparty/raw/v1.21.1/README.md
+	source = LICENSE-1.21.1::https://github.com/vbauerster/getparty/raw/v1.21.1/LICENSE
+	sha256sums = 1bc7a2e699c90afbe4029870fcc14bd32a5a5485f9ed69fd3f57478ed6cd183a
+	sha256sums = 05825076a9292282160131e3644317e5977c13c414144e76c6658008c78989cd
+	source_x86_64 = getparty-1.21.1-x86_64.tar.gz::https://github.com/vbauerster/getparty/releases/download/v1.21.1/getparty_1.21.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 6c99bf8be1cba460af416671fc84f552d6d519b052aa55421441d48a4fe487d0
+	source_i686 = getparty-1.21.1-i686.tar.gz::https://github.com/vbauerster/getparty/releases/download/v1.21.1/getparty_1.21.1_linux_386.tar.gz
+	sha256sums_i686 = 6289a97bf9027eb31d8d2a1af5e27a603c4a1c49fa2dabbd308405bc27c16ece
+	source_aarch64 = getparty-1.21.1-aarch64.tar.gz::https://github.com/vbauerster/getparty/releases/download/v1.21.1/getparty_1.21.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 40c33fe3d9bbabd8587d9a879bb19eb527fa30d4ab2223b19cb36bb385919c4d
+
+pkgname = getparty-bin
