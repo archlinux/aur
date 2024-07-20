@@ -1,12 +1,12 @@
 pkgbase = scorecard
 	pkgdesc = Security health metrics for Open Source
-	pkgver = 4.13.1
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://github.com/ossf/scorecard
 	arch = any
 	license = APACHE
 	makedepends = go
-	source = scorecard-4.13.1.tar.gz::https://github.com/ossf/scorecard/archive/refs/tags/v4.13.1.tar.gz
-	b2sums = 66bf19b026c4b8216b665520304c2f5d64c5ba18e2dc6db7adaf2d871dfc753065e29193ca8ead88be7dbe479f8b1fe7ee5d1b3444326dc87b989f9758083103
+	source = scorecard-5.0.0.tar.gz::https://github.com/ossf/scorecard/archive/refs/tags/v5.0.0.tar.gz
+	b2sums = 35c82465fb53a8036aa41ce302482164638273ebdd3a57b7f393eacafafeee1e88abc2a78bd9203143f4068ce46a60a223a756b5201f6f05c63fb3502bf38809
 
 pkgname = scorecard
