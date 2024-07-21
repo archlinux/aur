@@ -1,6 +1,6 @@
 # Maintainer: Rellieberman <name AT gmail DOT com>
 pkgname=bulky
-pkgver=3.3
+pkgver=3.4
 pkgrel=1
 pkgdesc="Bulk File Renamer"
 arch=("i686" "x86_64")
@@ -8,7 +8,7 @@ url="https://github.com/linuxmint/bulky"
 licence=("GPL3")
 depends=('python-magic' 'xapp' 'python-xapp' 'python-gobject' 'python-setproctitle')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('2befb6111f519dfcd85ff64b9a2a97a6a2ffa168b33c428d856bd1ef9569782f')
+sha256sums=('dd3350ccb98ce1b1f3df67151ca091430df67e41f19162a415550ef8ebd67c45')
 
 prepare()
 {
