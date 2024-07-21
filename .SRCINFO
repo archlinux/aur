@@ -1,0 +1,13 @@
+pkgbase = postman2openapi-bin
+	pkgdesc = Convert a Postman collection to an OpenAPI definition, binary release
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/kevinswiber/postman2openapi
+	arch = x86_64
+	license = Apache
+	provides = postman2openapi
+	options = !strip
+	source = https://github.com/kevinswiber/postman2openapi/releases/download/1.2.1/postman2openapi-1.2.1-x86_64-unknown-linux-musl.tar.gz
+	sha256sums = 98a67d01b550b22f9f20a14acd4948362367690ec92f5e79089ce2f6301b56b0
+
+pkgname = postman2openapi-bin
