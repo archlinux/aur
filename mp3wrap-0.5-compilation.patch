@@ -1,0 +1,11 @@
+diff -rauN mp3wrap-0.5/wrap.c mp3wrap-0.5-compilation-patch/wrap.c
+--- mp3wrap-0.5/wrap.c	2003-01-10 23:19:18.000000000 +0100
++++ mp3wrap-0.5-compilation-patch/wrap.c	2024-07-21 12:27:26.058265674 +0200
+@@ -25,6 +25,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ #include <strings.h>
+ 
+ #include "wrap.h"
