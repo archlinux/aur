@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=CSE2 (English)
 Comment=Decompilation of Cave Story
-Exec=cse2-english
+Exec=env SDL_VIDEODRIVER=wayland,x11 cse2-english
 Type=Application
 Icon=cse2-english
 Categories=Game;
