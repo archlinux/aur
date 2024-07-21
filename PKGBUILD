@@ -216,7 +216,7 @@ build() {
     printf '%s\n' "   > Compiling OpenMPI variant ..."
     printf '\n'
     go generate ./...
-    cp llm/build/linux/x86_64/cpu/libllama.a llm/build/linux/x86_64_static/
+    # cp llm/build/linux/x86_64/cpu/libllama.a llm/build/linux/x86_64_static/
     # cp llm/build/linux/x86_64_static/libllama.so llm/build/linux/x86_64/cpu/
     go build -buildmode=pie -trimpath -mod=readonly -modcacherw -ldflags=-linkmode=external -ldflags=-buildid='' -ldflags="-X=github.com/jmorganca/ollama/version.Version=${pkgver}"
   fi
@@ -231,7 +231,7 @@ build() {
     printf '%s\n' "   > Compiling openblas variant ..."
     printf '\n'
     go generate ./...
-    cp llm/build/linux/x86_64/cpu/libllama.a llm/build/linux/x86_64_static/
+    # cp llm/build/linux/x86_64/cpu/libllama.a llm/build/linux/x86_64_static/
     # cp llm/build/linux/x86_64_static/libllama.so llm/build/linux/x86_64/cpu/
     go build -buildmode=pie -trimpath -mod=readonly -modcacherw -ldflags=-linkmode=external -ldflags=-buildid='' -ldflags="-X=github.com/jmorganca/ollama/version.Version=${pkgver}"
   fi
@@ -246,7 +246,7 @@ build() {
     printf '%s\n' "   > Compiling clblas variant ..."
     printf '\n'
     go generate ./...
-    cp llm/build/linux/x86_64/cpu/libllama.a llm/build/linux/x86_64_static/
+    # cp llm/build/linux/x86_64/cpu/libllama.a llm/build/linux/x86_64_static/
     # cp llm/build/linux/x86_64_static/libllama.so llm/build/linux/x86_64/cpu/
     go build -buildmode=pie -trimpath -mod=readonly -modcacherw -ldflags=-linkmode=external -ldflags=-buildid='' -ldflags="-X=github.com/jmorganca/ollama/version.Version=${pkgver}"
   fi
@@ -261,7 +261,7 @@ build() {
     printf '%s\n' "   > Compiling vulkan variant ..."
     printf '\n'
     go generate ./...
-    cp llm/build/linux/x86_64/cpu/libllama.a llm/build/linux/x86_64_static/
+    # cp llm/build/linux/x86_64/cpu/libllama.a llm/build/linux/x86_64_static/
     # cp llm/build/linux/x86_64_static/libllama.so llm/build/linux/x86_64/cpu/
     go build -buildmode=pie -trimpath -mod=readonly -modcacherw -ldflags=-linkmode=external -ldflags=-buildid='' -ldflags="-X=github.com/jmorganca/ollama/version.Version=${pkgver}"
   fi
