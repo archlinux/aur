@@ -13,7 +13,7 @@ arch=('x86_64')
 depends=('nginx' 'nginx-mod-ndk')
 makedepends=('nginx-src')
 url="https://github.com/calio/$_modname-nginx-module"
-license=('BSD')
+license=('BSD-2-Clause')
 
 source=(
 	https://github.com/vision5/ngx_devel_kit/archive/v$_ndkver/ngx_devel_kit-$_ndkver.tar.gz
