@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=SiPSiC
-_pkgver=1.4.0
+_pkgver=1.4.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -18,8 +18,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('53922a73cd58dbb930520a7980948062')
-b2sums=('cbd32ad27f8869c3321fbed780c3ae2427348ac91bffdc651bd224ff1b442c95e5f11bf97801156039b13a3574f277e14b3d5ef373082735b48006d2aa06ed1f')
+md5sums=('6dccd3b860e5231a073a105e63b3e6ae')
+b2sums=('2e418a6cd11b4d432e416442e548344db867b05be797cecb733361069579307e4127722afd37ec239d04e15bf05805b658df9fc79299c9f1ef929b04524e290e')
 
 build() {
   mkdir build
