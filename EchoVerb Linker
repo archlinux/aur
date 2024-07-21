@@ -1,10 +1,10 @@
 #!/bin/sh
 home_dir_user=$USER
 
-if [ ! -d "/home/${home_dir_user}/5db5/PluginData/EchoVerb/Presets" ]; then
-    mkdir -p /home/${home_dir_user}/5db5/PluginData/EchoVerb
-    ln -sf /usr/lib/5db5/EchoVerb/Presets /home/${home_dir_user}/5db5/PluginData/EchoVerb/Presets
+if [ ! -d "/home/${home_dir_user}/.config/5db5/PluginData/EchoVerb/Presets" ]; then
+    mkdir -p /home/${home_dir_user}/.config/5db5/PluginData/EchoVerb
+    ln -sf /usr/lib/5db5/EchoVerb/Presets /home/${home_dir_user}/.config/5db5/PluginData/EchoVerb/Presets
 else
-    rm -r /home/${home_dir_user}/5db5/PluginData/EchoVerb/Presets
-    ln -sf /usr/lib/5db5/EchoVerb/Presets /home/${home_dir_user}/5db5/PluginData/EchoVerb/Presets
+    rm -r /home/${home_dir_user}/.config/5db5/PluginData/EchoVerb/Presets
+    ln -sf /usr/lib/5db5/EchoVerb/Presets /home/${home_dir_user}/.config/5db5/PluginData/EchoVerb/Presets
 fi

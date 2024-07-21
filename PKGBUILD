@@ -1,7 +1,7 @@
 pkgbase=echoverb
 pkgname=('echoverb-data-bin' 'echoverb-lv2-bin' 'echoverb-vst3-bin')
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://audioassault.mx/plugin/EchoVerb"
 license=('EULA')
@@ -9,7 +9,7 @@ depends=('alsa-lib' 'bzip2' 'brotli' 'freetype2' 'glibc' 'graphite' 'harfbuzz' '
 makedepends=('xdg-user-dirs' 'unzip')
 provides=('echoverb')
 source=('EchoVerb Linker')
-sha256sums=('ef1f56dd6cb7c2a9a93896ee6088b359bfc900e5c67511caa575bf677dc4fe17')
+sha256sums=('341fb36de011892344b656a3da21e7a20ff1910052ccb488757fd40252390def')
 
 prepare () {
 	_archive="`xdg-user-dir DOWNLOAD`/EchoVerbLinux.zip"
