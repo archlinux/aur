@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=
+Type=Application
+Name=i4Tools
+Name[zh_CN]=爱思助手
+Comment=苹果设备管理工具
+Comment[zh_CN]=苹果设备管理工具
+GenericName=i4Tools
+GenericName[zh_CN]=爱思助手
+Exec=i4tools
+Icon=i4tools
+Terminal=false
+Categories=utils
+Keywords=i4Tools;i4
