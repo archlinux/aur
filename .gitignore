@@ -1,4 +1,5 @@
 spoof-dpi*
+!spoof-dpi-conf.d
 !spoof-dpi.service
 cache/*
 pkg/*

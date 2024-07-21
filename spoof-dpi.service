@@ -4,7 +4,8 @@ Wants=network-online.target
 After=network-online.target
 
 [Service]
-ExecStart=/usr/bin/spoof-dpi -dns 9.9.9.9 -port 8888
+EnvironmentFile=/etc/conf.d/spoof-dpi
+ExecStart=/usr/bin/spoof-dpi -no-banner -addr $LISTEN_ADDR -port $PORT -dns-addr $DNS_ADDR -dns-port $DNS_PORT -timeout $TIMEOUT
 
 [Install]
 WantedBy=default.target
