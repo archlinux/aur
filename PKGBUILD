@@ -1,33 +1,46 @@
 # Maintainer: Tuure Piitulainen <tuure.piitulainen@gmail.com>
 
 pkgname="vivify"
-pkgver="0.1.6"
-pkgrel=2
+pkgver="0.2.0"
+pkgrel=1
 pkgdesc="Markdown preview tool which can be used standalone or plug into an editor like (Neo)Vim"
 arch=("x86_64")
 url="https://github.com/jannis-baum/vivify"
 license=("GPL-3.0-or-later")
-depends=("jq" "gcc-libs" "sh")
-makedepends=("yarn")
+depends=("gcc-libs" "sh")
+makedepends=("yarn" "nvm" "zip")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jannis-baum/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=("83ad2330e7dfc1541bdc58299b7d4387")
+sha256sums=("9b1b2df65a8c0bbf48c63a64149cc5310943e2799d809511b3c4fd822db4d93d")
 
 # Stripping 'unneeded symbols' causes vivify-server executable to break
-# (exits with error `Pkg: Error reading from file`)
+# (segmentation fault)
 options=(!strip)
 
-build() {
-	cd "${pkgname}-${pkgver}"
-        yarn install
+# https://wiki.archlinux.org/title/Node.js_package_guidelines#Using_nvm
+_ensure_local_nvm() {
+        which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+        export NVM_DIR="${srcdir}/.nvm"
+        source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+}
 
-        node_modules/.bin/tsc --project . \
-            && node_modules/.bin/pkg . \
-            || exit 1
+build() {
+	cd "Vivify-${pkgver}"
+
+        # This package uses Node SEA, which is alpha and experimental
+        # https://nodejs.org/api/single-executable-applications.html
+        # Using system node results in a segfaulting binary
+        # As a workaround, use latest node from nvm
+        _ensure_local_nvm
+        nvm install node
+
+        yarn install
+        make linux
 }
 
 package() {
-	cd "${pkgname}-${pkgver}"
-        install -Dm755 ./viv                     "${pkgdir}/usr/bin/viv"
-        install -Dm755 ./bin/vivify-server-linux "${pkgdir}/usr/bin/vivify-server"
-        install -Dm644 ./LICENSE                 "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	cd "Vivify-${pkgver}"
+
+        install -Dm755 ./build/linux/viv           "${pkgdir}/usr/bin/viv"
+        install -Dm755 ./build/linux/vivify-server "${pkgdir}/usr/bin/vivify-server"
+        install -Dm644 ./LICENSE                   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
