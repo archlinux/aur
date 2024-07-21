@@ -1,7 +1,7 @@
 pkgbase = spacedrive-bin
 	pkgdesc = A file manager from the future.
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://spacedrive.com
 	arch = x86_64
@@ -27,6 +27,6 @@ pkgbase = spacedrive-bin
 	source = https://github.com/spacedriveapp/spacedrive/releases/download/0.4.0/Spacedrive-linux-x86_64.deb
 	source = desktop_patch.patch
 	sha256sums = f192f10a89d441b353a3a2e39c5268773494a7bba79719bcea85a61ffd37f75b
-	sha256sums = 55c0f561b40300e89b824e8fa4f3c19aece60560341dad7402afb403b4f3887d
+	sha256sums = d24fff5cc9e249dcc6fc6a4380bab6582de69fe5a9a1bd68e6f53d4fc27d161c
 
 pkgname = spacedrive-bin

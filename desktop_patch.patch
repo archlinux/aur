@@ -5,7 +5,8 @@
  Categories=System;FileTools;FileManager;
  Comment=Spacedrive
 -Exec=sd-desktop
-+Exec=env WEBKIT_DISABLE_DMABUF_RENDERER=1 sd-desktop
- Icon=sd-desktop
++Exec=spacedrive
+-Icon=sd-desktop
++Icon=spacedrive
  Name=Spacedrive
  Terminal=false
