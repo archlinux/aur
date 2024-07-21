@@ -1,13 +1,15 @@
 pkgbase = kubedb-cli-git
 	pkgdesc = kubectl plugin for KubeDB
 	pkgver = 0.47.0.rc.1.r1.ga82c4b2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kubedb.com
 	arch = any
 	license = custom:AppsCode-Community-1.0.0
 	makedepends = git
 	makedepends = go
 	depends = glibc
+	optdepends = bash-completion: for shell auto-completion
+	optdepends = zsh-completions: for shell auto-completion
 	provides = kubedb-cli=0.47.0
 	provides = kubedb=0.47.0
 	conflicts = kubedb-cli
