@@ -9,7 +9,7 @@ pkgrel=3
 pkgdesc='A configurable on-screen virtual keyboard'
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/${pkgname}/"
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('gtk3' 'libxml2' 'librsvg' 'libxtst' 'gettext' 'gstreamer>=1.0') # http://florence.sourceforge.net/english/install.html
 makedepends=('intltool>=0.23')
 source=("http://sourceforge.net/projects/${pkgname}/files/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
