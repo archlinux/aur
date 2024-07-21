@@ -2,37 +2,44 @@
 
 pkgname=airisp-next-git
 pkgver=0.2.0.r0.g23010ec
-pkgrel=2
+pkgrel=4
 pkgdesc="An ISP tool for Air MCU (Rust)"
 arch=(x86_64
     aarch64
     riscv64)
 url="https://github.com/Air-duino/AirISP-next"
-license=('unknow')
+license=('custom')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 replaces=()
-depends=(cargo
+depends=(
+    cairo
+    gcc-libs
+    gdk-pixbuf2
+    glibc
+    glib2
     gtk3
-    hidapi
+    libsoup
+    pango
+    systemd-libs
     hicolor-icon-theme
-    libayatana-appindicator
-    librsvg
     libusb
-    openssl
-    webkit2gtk
-    systemd)
+    webkit2gtk)
 makedepends=(
+    cargo
     cargo-tauri
     gendesk
     git
+    hidapi
+    libayatana-appindicator
+    librsvg
     rust
     npm
     pnpm
     pkgconf
     mold)
 backup=()
-options=('!strip' '!lto')
+options=('!lto')
 install=
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
