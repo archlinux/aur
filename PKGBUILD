@@ -2,7 +2,7 @@
 
 _pkgname=tux
 pkgname=${_pkgname}-git
-pkgver=r170.a33c631
+pkgver=r299.2ec09b2
 pkgrel=1
 pkgdesc='A 3D platform game featuring the famous Linux mascot.'
 arch=('x86_64')
