@@ -1,6 +1,6 @@
 pkgbase = thingy
 	pkgdesc = Utility application used to make collections and quickly access recent and favorite documents.
-	pkgver = 1.1.7
+	pkgver = 1.1.8
 	pkgrel = 1
 	url = https://github.com/linuxmint/thingy
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = thingy
 	depends = xapp
 	optdepends = libreoffice
 	optdepends = xreader
-	source = thingy-1.1.7.tar.gz::https://github.com/linuxmint/thingy/archive/refs/tags/1.1.7.tar.gz
-	sha256sums = dcb05873b61d33ddad6468dcb11dcdbacd38a03c6d7882aaadaab30cd359a82d
+	source = thingy-1.1.8.tar.gz::https://github.com/linuxmint/thingy/archive/refs/tags/1.1.8.tar.gz
+	sha256sums = 46d55155149df5db179b1014781862e49f26c56265417a526d7659c59d2ef331
 
 pkgname = thingy
