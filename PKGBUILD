@@ -2,7 +2,7 @@
 pkgname=e-zshot
 pkgver=1.1
 pkgrel=1
-pkgdesc="Python scripts for automatically taking screenshots and uploading them to e-z.host."
+pkgdesc="CLI to automate taking screenshots and uploading them to e-z.host"
 arch=('any')
 url="https://github.com/RobinTT69/e-z-screenshot-linux"
 license=('custom')
@@ -12,7 +12,7 @@ md5sums=('SKIP') # Optionally, you can replace 'SKIP' with the actual checksum
 
 prepare() {
   cd "$srcdir"
-  tar xzf e-zshot-${pkgver}.tar.gz
+  tar xzf e-zshot-1.1.tar.gz
 }
 
 package() {

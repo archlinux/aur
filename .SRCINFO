@@ -1,5 +1,5 @@
 pkgbase = e-zshot
-	pkgdesc = Python scripts for automatically taking screenshots and uploading them to e-z.host.
+	pkgdesc = CLI to automate taking screenshots and uploading them to e-z.host
 	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/RobinTT69/e-z-screenshot-linux
