@@ -1,0 +1,19 @@
+pkgbase = space-cli
+	pkgdesc = Deta Space CLI
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://deta.space
+	arch = any
+	license = MIT
+	makedepends = go
+	depends = glibc
+	optdepends = bash-completion: for shell auto-completion
+	optdepends = zsh-completions: for shell auto-completion
+	provides = space-cli
+	provides = space
+	conflicts = space-cli
+	conflicts = space
+	source = space-cli-0.4.2.tar.gz::https://github.com/deta/space-cli/archive/refs/tags/v0.4.2.tar.gz
+	sha256sums = 3c7afc5349b5f2f1296f1c7bf24f055f97c08931f3877c2fd6e126c6cbebfdf2
+
+pkgname = space-cli
