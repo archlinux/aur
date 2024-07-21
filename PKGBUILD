@@ -6,7 +6,7 @@
 
 pkgname=owncloud
 pkgver=10.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Securely access and share data from everywhere and any device"
 arch=('any')
 url="https://owncloud.org/"

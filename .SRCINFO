@@ -1,7 +1,7 @@
 pkgbase = owncloud
 	pkgdesc = Securely access and share data from everywhere and any device
 	pkgver = 10.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://owncloud.org/
 	arch = any
 	license = GPL
@@ -34,4 +34,3 @@ pkgbase = owncloud
 pkgname = owncloud
 	depends = php
 	depends = php-gd
-
