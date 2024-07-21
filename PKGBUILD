@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/RobinTT69/e-z-screenshot-linux"
 license=('custom')
 depends=('python')
-source=("https://github.com/RobinTT69/e-z-screenshot-linux/releases/download/v1.1/e-zshot-1.1.tar.gz")
+source=("https://github.com/RobinTT69/e-z-screenshot-linux/releases/download/1.1/e-zshot-1.1.tar.gz")
 md5sums=('SKIP')
 
 prepare() {
