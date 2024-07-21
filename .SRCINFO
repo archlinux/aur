@@ -1,11 +1,13 @@
 pkgbase = space-cli-bin
 	pkgdesc = Deta Space CLI
 	pkgver = 0.4.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://deta.space
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	optdepends = bash-completion: for shell auto-completion
+	optdepends = zsh-completions: for shell auto-completion
 	provides = space-cli
 	provides = space
 	conflicts = space-cli
