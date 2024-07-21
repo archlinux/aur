@@ -11,7 +11,7 @@ pkgbase = python-plpygis
 	makedepends = python-wheel
 	depends = python
 	optdepends = python-shapely: interoperability with Shapely geometries
-	source = https://github.com/bosth/plpygis/archive/v0.4.1/plpygis-0.4.1.tar.gz
-	sha256sums = 99a32e1ef67f3fcf79147addd6a8eeea5f613ba034bd91a4e5269a62779c0c9d
+	source = https://github.com/bosth/plpygis/archive/v0.4.2/plpygis-0.4.2.tar.gz
+	sha256sums = a4e00224288161251b9d17dad0d855ed908f7e6bb12f16a27c272f05ab1c0b3e
 
 pkgname = python-plpygis
