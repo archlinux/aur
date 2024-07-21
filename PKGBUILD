@@ -1,4 +1,5 @@
 # Maintainer: NameSetter <ssmzhn@163.com>
+# Contributor: HitCoder <hitcoder9768@gmail.com>
 pkgname=openutau-arm64
 pkgver=0.1.501.42
 pkgrel=1
