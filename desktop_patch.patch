@@ -1,11 +1,11 @@
---- spacedrive.desktop	2024-05-31 17:28:18.000000000 -0400
-+++ /home/jerry/Desktop/spacedrive-bin/spacedrive.desktop	2024-06-05 21:27:40.890249427 -0400
+--- spacedrive.desktop	2024-07-19 22:43:48.000000000 -0400
++++ spacedrive_new.desktop	2024-07-21 09:09:22.952781036 -0400
 @@ -1,7 +1,7 @@
  [Desktop Entry]
  Categories=System;FileTools;FileManager;
  Comment=Spacedrive
--Exec=spacedrive
-+Exec=env WEBKIT_DISABLE_DMABUF_RENDERER=1 spacedrive
- Icon=spacedrive
+-Exec=sd-desktop
++Exec=env WEBKIT_DISABLE_DMABUF_RENDERER=1 sd-desktop
+ Icon=sd-desktop
  Name=Spacedrive
  Terminal=false
