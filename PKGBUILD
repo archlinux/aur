@@ -1,4 +1,5 @@
-# Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
+# Maintainer: Frank Villaro-Dixon <f@vi-di.fr>
+# Old-Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=kdrive-bin
 pkgver=3.5.8.20240227
