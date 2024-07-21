@@ -1,13 +1,13 @@
 pkgbase = gnome-online-accounts-gtk
 	pkgdesc = A GTK Frontend for GNOME Online Accounts
-	pkgver = 3.50.3
+	pkgver = 3.50.4
 	pkgrel = 1
 	url = https://github.com/xapp-project/gnome-online-accounts-gtk
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = meson
 	depends = gnome-online-accounts
-	source = gnome-online-accounts-gtk-3.50.3.tar.gz::https://github.com/xapp-project/gnome-online-accounts-gtk/archive/refs/tags/3.50.3.tar.gz
-	sha256sums = e33a7a3ed885aed70067a62f20bee85df2f5fc9bbbb7ab80f7f1db9035151306
+	source = gnome-online-accounts-gtk-3.50.4.tar.gz::https://github.com/xapp-project/gnome-online-accounts-gtk/archive/refs/tags/3.50.4.tar.gz
+	sha256sums = 661192f5092cf722fb883d364f1f3555a4f2c00194e5c27f92e2ac0db65f1e93
 
 pkgname = gnome-online-accounts-gtk
