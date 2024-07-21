@@ -19,7 +19,9 @@ build() {
 }
 
 check() {
-	python "$srcdir/$_sourcedirectory/cli.py" --version | tee '/dev/stderr' | grep -q "^$pkgver$"
+	_checkoutput="$(python "$srcdir/$_sourcedirectory/cli.py" --version)"
+	printf '%s\n' "$_checkoutput"
+	printf '%s\n' "$_checkoutput" | grep -q "^$pkgver$"
 }
 
 package() {
