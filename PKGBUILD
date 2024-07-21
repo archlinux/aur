@@ -10,7 +10,7 @@ arch=('any')
 # Alternative website(s)
 #url='http://karlinux.deviantart.com/art/Arch-Logo-Plymouth-Theme-209553250'
 url='https://www.gnome-look.org/content/show.php/Arch-logo+plymouth?content=141697'
-license=('GPL')
+license=('GPL-3.0-or-later')
 depends=('plymouth')
 install="${pkgname}.install"
 source=(
