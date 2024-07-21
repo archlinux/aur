@@ -1,0 +1,11 @@
+pkgbase = bynfont
+	pkgdesc = A bitmap font for Linux console that combines other fonts' best features.
+	pkgver = 1.0.0
+	pkgrel = 2
+	url = https://github.com/bynux-gh/bynfont
+	arch = any
+	license = MIT
+	source = git+https://github.com/bynux-gh/bynfont.git
+	md5sums = SKIP
+
+pkgname = bynfont
