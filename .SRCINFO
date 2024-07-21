@@ -1,6 +1,6 @@
 pkgbase = docker-credential-secretservice
 	pkgdesc = program to use secretservice to keep Docker credentials safe
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/docker/docker-credential-helpers
 	install = docker-credential-secretservice.install
@@ -11,7 +11,7 @@ pkgbase = docker-credential-secretservice
 	makedepends = git
 	makedepends = go
 	depends = libsecret
-	source = git+https://github.com/docker/docker-credential-helpers#commit=292722b50384e732c74f916762930209b9b5ea3c
-	b2sums = SKIP
+	source = git+https://github.com/docker/docker-credential-helpers#tag=v0.8.2
+	b2sums = bdb6a47d947c3ddc41926bee5e357c9ae011c1059321c756d876e6e4368f7036b683fc27e218f08af95822c7d16374c1cd8f06e68dec7b6adc6dec7dcf852708
 
 pkgname = docker-credential-secretservice
