@@ -1,7 +1,7 @@
 pkgbase = gnome-commander
 	pkgdesc = Graphical two-pane filemanager for Gnome
-	pkgver = 1.16.1
-	pkgrel = 2
+	pkgver = 1.16.2
+	pkgrel = 1
 	url = http://gcmd.github.io/
 	arch = i686
 	arch = x86_64
@@ -10,12 +10,14 @@ pkgbase = gnome-commander
 	makedepends = meson
 	makedepends = gtest
 	makedepends = flex
+	makedepends = glib2-devel
 	depends = libgsf
 	depends = taglib
 	depends = poppler-glib
 	depends = gtk2
-	source = https://download.gnome.org/sources/gnome-commander/1.16/gnome-commander-1.16.1.tar.xz
-	sha256sums = 3f1d00c4a650fe7902167648286b32c9ca4ef86e31a5d8ccca0139f12d10d0b3
-	sha256sums = 91825e18ec8924e74364765cf80e82264968657ce82b4d2fc2948cfa2746b665
+	depends = exiv2
+	depends = smbclient
+	source = https://download.gnome.org/sources/gnome-commander/1.16/gnome-commander-1.16.2.tar.xz
+	sha256sums = 7cf5d56c77a95d828f25407294312abaae20dc6b556ceafd9424dbfe209e5ed3
 
 pkgname = gnome-commander
