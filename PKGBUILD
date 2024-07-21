@@ -8,13 +8,14 @@
 
 _pkgname=hyprland
 pkgname=$_pkgname-hidpi-xprop-git
-pkgver=0.41.1.r52.fabc30df
-pkgrel=2
-pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
+pkgver=0.41.2.r49.016da234
+pkgrel=1
+pkgdesc="A dynamic tiling Wayland compositor based on aquamarine that doesn't sacrifice on its looks."
 arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
 url="https://github.com/hyprwm/Hyprland"
 license=(BSD)
 depends=(
+  aquamarine
   cairo
   gcc-libs
   glib2
@@ -75,12 +76,10 @@ provides=("hyprland=${pkgver%%.r*}")
 conflicts=(hyprland)
 source=(
   "git+https://github.com/hyprwm/Hyprland.git"
-  "git+https://github.com/hyprwm/wlroots-hyprland.git"
   "git+https://github.com/hyprwm/hyprland-protocols.git"
   "git+https://github.com/canihavesomecoffee/udis86.git"
 )
 b2sums=(
-  'SKIP'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -94,7 +93,6 @@ pick_mr() {
 prepare() {
   cd Hyprland
   git submodule init
-  git config submodule.subprojects/wlroots-hyprland.url "$srcdir/wlroots-hyprland"
   git config submodule.subprojects/hyprland-protocols.url "$srcdir/hyprland-protocols"
   git config submodule.subprojects/udis86.url "$srcdir/udis86"
   git config submodule.subprojects/tracy.update none
@@ -105,8 +103,6 @@ prepare() {
   fi
   # Pick pull requests from github using `pick_mr <pull request number>`.
   pick_mr 6446
-
-  git -C subprojects/wlroots-hyprland reset --hard
 }
 
 pkgver() {
