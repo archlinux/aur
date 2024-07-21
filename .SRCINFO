@@ -1,6 +1,6 @@
 pkgbase = searchtool-gtk
 	pkgdesc = A generic GTK search tool and launcher
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 2
 	url = https://github.com/v--/searchtool-gtk
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = searchtool-gtk
 	depends = python-jsonschema
 	depends = python-pyxdg
 	depends = python-referencing
-	source = https://github.com/v--/searchtool-gtk/archive/refs/tags/v1.3.0.tar.gz
-	sha256sums = b18035552d60671bc868f7dcf18cd3aaaca47f18e5174ef9311b1106438b7ee8
+	source = https://github.com/v--/searchtool-gtk/archive/refs/tags/v1.4.0.tar.gz
+	sha256sums = bbbe930f00538460079354e03cbecff004beaae5a1a7248fd6f827c3a1ce6e67
 
 pkgname = searchtool-gtk
