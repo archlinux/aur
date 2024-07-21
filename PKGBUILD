@@ -16,7 +16,9 @@ sha512sums=('8f94b1ab77975e70f4795261f63d59c9400a24f53a48e9cc385f39ae990812fa466
             'e744197e9e025386ad76a5b05564f1c0c0626da7f2febe19cceae8bbcfcc483e913c55ba13729f36a7f1a947d5c357e56b6b6a9ba895b94b6baff0833f7a3ace')
 
 check() {
-	fc-scan "$srcdir/"{'O','T'}'TF/'* | tee '/dev/stderr' | grep -q 'family: "Railway'
+	_checkoutput="$(fc-scan "$srcdir/"{'O','T'}'TF/'*)"
+	printf '%s\n' "$_checkoutput"
+	printf '%s\n' "$_checkoutput" | grep -q 'family: "Railway'
 }
 
 package() {
