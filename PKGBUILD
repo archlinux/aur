@@ -8,7 +8,7 @@ url="https://github.com/RobinTT69/e-z-screenshot-linux"
 license=('custom')
 depends=('python')
 source=("https://github.com/RobinTT69/e-z-screenshot-linux/releases/download/1.1/e-zshot-1.1.tar.gz")
-md5sums=('SKIP')
+md5sums=('SKIP') # Optionally, you can replace 'SKIP' with the actual checksum
 
 prepare() {
   cd "$srcdir"
