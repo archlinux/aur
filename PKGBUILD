@@ -1,7 +1,7 @@
 # Maintainer: 0xGingi <0xgingi@0xgingi.com>
 pkgname=('jellyfin-rpc-bin')
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Displays the content you're currently watching on Discord"
 arch=('x86_64')
 url="https://github.com/Radiicall/jellyfin-rpc"
@@ -13,9 +13,9 @@ conflicts=('jellyfin-rpc')
 source=("https://github.com/Radiicall/jellyfin-rpc/releases/download/$pkgver/jellyfin-rpc-x86_64-linux"
     "git+https://github.com/Radiicall/jellyfin-rpc"
     "https://raw.githubusercontent.com/Radiicall/jellyfin-rpc/$pkgver/scripts/jellyfin-rpc.service")
-md5sums=('d4c753b2abcae4291339cba2a44b4d5e'
+md5sums=('SKIP'
          'SKIP'
-         'd962dcaa648d0337f92844149295d94c')
+         'SKIP')
 install=jellyfin-rpc-bin.install 
 
 prepare() {
