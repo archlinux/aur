@@ -18,7 +18,9 @@ sha512sums=('425a2f00a20313f94cf05a0adba855752cb399360c435c17843273210e854bd2ae5
 _sourcedirectory="$pkgname-$pkgver"
 
 check() {
-	"$srcdir/$_sourcedirectory/$pkgname.sh" version | tee '/dev/stderr' | grep -q "^$pkgver$"
+	_checkoutput="$("$srcdir/$_sourcedirectory/$pkgname.sh" version)"
+	printf '%s\n' "$_checkoutput"
+	printf '%s\n' "$_checkoutput" | grep -q "^$pkgver$"
 }
 
 package() {
