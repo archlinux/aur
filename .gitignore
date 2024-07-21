@@ -1,3 +1,5 @@
 /pkg/**
 /src/**
+/undark/**
 /*.tar
+/LICENSE
