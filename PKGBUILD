@@ -4,7 +4,7 @@ pkgname=flamewolf-bin
 provides=(${pkgname//-bin/""})
 conflicts=(${pkgname//-bin/""})
 pkgver=128.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A crazy fork of Firefox, focused on privacy and features."
 # TODO: Add arm64 (aarch64) support, once the CI for that is done
 arch=(x86_64)
@@ -24,7 +24,7 @@ options=(!emptydirs)
 
 # TODO: Change the URL once more platforms are supported, and aarch64 support is added
 _base_url=https://github.com/rustdevbtw/${pkgname//-bin/""}/releases/download/${pkgver}
-_uploadpath_x86_64=${_base_url}/${pkgname//-bin/""}-linux.tar.bz2
+_uploadpath_x86_64=${_base_url}/${pkgname//-bin/""}-amd64-linux.tar.bz2
 source=(
   icons.tar.gz
   flamewolf.desktop
@@ -32,7 +32,7 @@ source=(
 source_x86_64=("${_uploadpath_x86_64}")
 b2sums=('702da3a5b14a725debcf86db181b723da12e44b18914729b7512b6047b47c0a3873dccb856d39b74ff52a32d3680ee320bde5f6bdc7fbb36110f2d86f3a15e90'
         '30c82609c3de6ae39b283b04ad32c943115b1981ab0f527cfead19c4eff22a7acb281d993948a5b8c7e0ab6724ebd82b78c2e019e7a715507e214b3680d6c44e')
-b2sums_x86_64=('f8fcb33e3246b00505c1a9d7fa61d94ee09e955b39d9c92a18e3e4424d6af39c1a5e1011da2282330623bc115fc82775640560fe0626d1fd6496e2de1bb26732')
+b2sums_x86_64=('1a5e1da3e77553dbc570757408c57db540352d41fae6ab569223e72b957315ca5c649bb24b9ad008a7384471b98e3da8bbf13cf83cfc69976beafa9e578bab32')
 
 package() {
   # Yep, that's somewhat redundant. But it works.
