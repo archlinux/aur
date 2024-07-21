@@ -1,5 +1,5 @@
---- configure.orig	2006-09-27 00:26:04.000000000 +0400
-+++ unix/configure	2006-09-27 00:27:49.000000000 +0400
+--- a/unix/configure	2006-09-27 00:26:04.000000000 +0400
++++ b/unix/configure	2006-09-27 00:27:49.000000000 +0400
 @@ -1467,10 +1467,10 @@
      exec_prefix=$prefix
  fi
@@ -13,3 +13,13 @@
  SNACK_HINSTALL_PATH=${includedir}
  SNACK_LIB_SPEC="-L${libdir} -lsnack"
  
+@@ -1487,7 +1487,7 @@
+ echo "$as_me: error: Tcl and Tk must be configured with the --enable-shared flag" >&2;}
+    { (exit 1); exit 1; }; }
+ fi
+-CFLAGS=$TCL_SHLIB_CFLAGS
++CFLAGS="$CFLAGS $TCL_SHLIB_CFLAGS"
+ LD_SEARCH_FLAGS=$TCL_LD_SEARCH_FLAGS
+ SHLIB_LD=$TCL_SHLIB_LD
+ SHLIB_SUFFIX=$TCL_SHLIB_SUFFIX
+

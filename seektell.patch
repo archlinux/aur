@@ -1,0 +1,19 @@
+Author: Sergei Golovan
+Description: Patch makes the Snack library using Tcl_Seek() and Tcl_Tell()
+ instead of deprecated Tcl_SeekOld() and Tcl_TellOld(). Without it Snack works
+ fine when it's being loaded from Tcl but fails when it's being loaded from
+ Python.
+Last-Modified: Thu, 19 Nov 2015 21:46:12 +0300
+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/snack/+bug/1510562
+
+--- a/generic/jkSound.h
++++ b/generic/jkSound.h
+@@ -604,7 +604,7 @@
+ 
+ extern void SnackPauseAudio();
+ 
+-#if TCL_MAJOR_VERSION == 8 && TCL_MINOR_VERSION < 4
++#if 1 || TCL_MAJOR_VERSION == 8 && TCL_MINOR_VERSION < 4
+ #define TCL_SEEK Tcl_Seek
+ #define TCL_TELL Tcl_Tell
+ #else

@@ -1,0 +1,61 @@
+Author: Sergei Golovan
+Description: Patch enables Debian-specific compiler flags and fixes errors and warnings
+ they reveal.
+Last-Modified: Tue, 24 Apr 2018 12:11:14 +0300
+
+2024-07-20 UKo: removed debian specific flag for AUR
+
+--- a/generic/jkSoundFile.c
++++ b/generic/jkSoundFile.c
+@@ -2378,7 +2378,7 @@
+   sprintf(&buf[12], "HEDR");
+   PutLELong(buf, 16, 32);
+   Tcl_GlobalEvalObj(s->interp, Tcl_NewStringObj(CSL_DATECOMMAND, -1));
+-  sprintf(&buf[20], Tcl_GetStringResult(s->interp));
++  sprintf(&buf[20], "%s", Tcl_GetStringResult(s->interp));
+   
+   PutLELong(buf, 40, s->samprate);
+   PutLELong(buf, 44, s->length);
+--- a/generic/SnackMpg.c
++++ b/generic/SnackMpg.c
+@@ -395,11 +395,11 @@
+             Snack_SetNumChannels(s, of->channels);
+         }
+         if (rc == MPG123_DONE) {
+-            if (s->debug) fprintf(stderr, "MPG DONE: %d\n", nread);
++            if (s->debug) fprintf(stderr, "MPG DONE: %zu\n", nread);
+             return nread;
+         }
+         if (rc == MPG123_ERR) {
+-            if (s->debug) fprintf(stderr, "MPG ERROR: %d\n", nread);
++            if (s->debug) fprintf(stderr, "MPG ERROR: %zu\n", nread);
+             return 0;
+         }
+         r = (short *) of->pcmbuf;
+@@ -410,7 +410,7 @@
+             r++;
+         }
+         nread += cnt;
+-        if (s->debug) fprintf(stderr, "MPG READ (%d of %d): %d\n", nread, len, rc);
++        if (s->debug) fprintf(stderr, "MPG READ (%zu of %d): %d\n", nread, len, rc);
+         if (cnt >= len) break;
+         len -= cnt;
+     }
+@@ -434,7 +434,7 @@
+     iread = (int)nread;
+     if (iread < 0)
+     iread = 1;
+-    if (s->debug) fprintf(stderr, "MPG READ RET: %d\n", nread);
++    if (s->debug) fprintf(stderr, "MPG READ RET: %zu\n", nread);
+     return iread;
+ }
+ 
+@@ -460,7 +460,7 @@
+     }
+     opos = mpg123_tell(of->m);
+     if (pos == opos) {
+-        if (s->debug) fprintf(stderr, "MPG SEEK NOMOVE: %d\n", opos, pos);
++        if (s->debug) fprintf(stderr, "MPG SEEK NOMOVE: %d->%d\n", opos, pos);
+     }
+     opos = pos;
+ 

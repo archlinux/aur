@@ -1,0 +1,143 @@
+Author: Sergei Golovan
+Description: Patch fixes a few missing function and variable declarations.
+Last-Modified: Thu, 19 Nov 2015 21:44:33 +0300
+
+--- a/generic/SnackMpg.c
++++ b/generic/SnackMpg.c
+@@ -23,6 +23,8 @@
+ #include <stdlib.h>
+ #include <time.h>
+ #include "mpg123.h"
++#include <string.h>
++#include <ctype.h>
+ 
+ #if defined(__WIN32__)
+ #  include <io.h>
+@@ -129,7 +131,7 @@
+ {
+     long rate;
+     int channels, enc;
+-    int fnd = 0, ret, done;
++    int fnd = 0, ret; size_t done;
+     mpg123_handle *m;
+     unsigned char *ubuf = buf;
+     unsigned char pcmout[4*sizeof(short)*20000];
+@@ -195,7 +197,7 @@
+     Mpg123_File *of;
+     int ret, fd, rc;
+     long mlen;
+-    Tcl_ChannelType *cType;
++    const Tcl_ChannelType *cType;
+ 
+     of = MpgObj(s);
+     of->isFile = 0;
+@@ -334,7 +336,7 @@
+                 mpg123_seek(of->m, of->savepos[of->ref], SEEK_SET);
+             }
+         }
+-        return;
++        return TCL_OK;
+     }
+ 
+     FreeRes(of);
+--- a/generic/sigproc2.c
++++ b/generic/sigproc2.c
+@@ -468,6 +468,7 @@
+ int get_window(dout, n, type)
+      register double *dout;
+      register int n;
++     register int type;
+ {
+   static short *din = NULL;
+   static int n0 = 0;
+@@ -509,6 +510,7 @@
+ int get_float_window(fout, n, type)
+      register float *fout;
+      register int n;
++     register int type;
+ {
+   static int n0 = 0;
+   static double *dout = NULL;
+@@ -537,6 +539,7 @@
+      register short *din;
+      register float *dout, preemp;
+      register int n;
++     register int type;
+ {
+   static float *fwind=NULL;
+   static int size=0, otype= (-100);
+@@ -576,6 +579,7 @@
+      register float *din;
+      register float *dout, preemp;
+      register int n;
++     register int type;
+ {
+   static float *fwind=NULL;
+   static int size=0, otype= (-100);
+@@ -615,6 +619,7 @@
+      register double *din;
+      register double *dout, preemp;
+      register int n;
++     register int type;
+ {
+   static float *fwind=NULL;
+   static int size=0, otype= (-100);
+@@ -655,6 +660,7 @@
+      register short *din;
+      register double *dout, preemp;
+      register int n;
++     register int type;
+ {
+   switch(type) {
+   case 0:
+--- a/generic/jkCanvSpeg.c
++++ b/generic/jkCanvSpeg.c
+@@ -92,7 +92,7 @@
+ 			 Tk_Window tkwin, CONST84 char *value, char *recordPtr,
+ 			 int offset);
+ 
+-static char *PrintColorMap(ClientData clientData, Tk_Window tkwin,
++static CONST86 char *PrintColorMap(ClientData clientData, Tk_Window tkwin,
+ 			   char *recordPtr, int offset,
+ 			   Tcl_FreeProc **freeProcPtr);
+ 
+@@ -399,7 +399,7 @@
+   }
+   
+   if (argc == 1) {
+-      if (Tcl_SplitList(interp, argv[0], &argc, &argv) != TCL_OK) {
++      if (Tcl_SplitList(interp, argv[0], &argc, (CONST84 char ***) &argv) != TCL_OK) {
+ 	  return TCL_ERROR;
+       }
+   }
+@@ -1821,7 +1821,7 @@
+   return TCL_OK;
+ }
+ 
+-static char*
++static CONST86 char*
+ PrintColorMap(ClientData clientData, Tk_Window tkwin, char *recordPtr,
+ 	      int offset, Tcl_FreeProc **freeProcPtr)
+ {
+--- a/generic/jkCanvSect.c
++++ b/generic/jkCanvSect.c
+@@ -360,7 +360,7 @@
+   }
+   
+   if (argc == 1) {
+-      if (Tcl_SplitList(interp, argv[0], &argc, &argv) != TCL_OK) {
++      if (Tcl_SplitList(interp, argv[0], &argc, (CONST84 char ***) &argv) != TCL_OK) {
+ 	  return TCL_ERROR;
+       }
+   }
+--- a/generic/jkCanvWave.c
++++ b/generic/jkCanvWave.c
+@@ -412,7 +412,7 @@
+   }
+   
+   if (argc == 1) {
+-      if (Tcl_SplitList(interp, argv[0], &argc, &argv) != TCL_OK) {
++      if (Tcl_SplitList(interp, argv[0], &argc, (CONST84 char ***) &argv) != TCL_OK) {
+ 	  return TCL_ERROR;
+       }
+   }

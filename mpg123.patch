@@ -1,0 +1,118 @@
+Author: Sergei Golovan
+Description: Patch actually enables the alternative support for MP3 sound
+ files. It removes the internal support from the makefile and adds building
+ libsnackmpg.so.
+Last-Updated: Sat, 27 Jul 2013 20:49:13 +0400
+
+--- a/unix/Makefile.in
++++ b/unix/Makefile.in
+@@ -43,13 +43,13 @@
+ all: libsound${SHLIB_SUFFIX} libsnack${SHLIB_SUFFIX} @DOSTUBLIB@ @LIBNIST@ @LIBOGG@ editversion
+ 
+ OBJSO = sound.o jkSound.o jkSoundEngine.o jkSoundEdit.o jkSoundFile.o \
+-	g711.o @AOBJ@ jkFormatMP3.o jkSoundProc.o ffa.o jkPitchCmd.o \
++	g711.o @AOBJ@ jkSoundProc.o ffa.o jkPitchCmd.o \
+ 	@STUBINITOBJ@ jkAudio.o jkMixer.o shape.o jkFilter.o jkSynthesis.o \
+ 	jkFilterIIR.o jkGetF0.o sigproc.o jkFormant.o sigproc2.o
+ 
+ OBJSN = snack.o jkSound.o jkSoundEngine.o jkSoundEdit.o jkSoundFile.o \
+ 	jkCanvSpeg.o jkCanvWave.o jkCanvSect.o ffa.o g711.o @AOBJ@ \
+-	jkFormatMP3.o jkSoundProc.o jkPitchCmd.o @STUBINITOBJ@ \
++	jkSoundProc.o jkPitchCmd.o @STUBINITOBJ@ \
+ 	jkAudio.o jkMixer.o shape.o jkFilter.o jkSynthesis.o jkFilterIIR.o \
+ 	jkGetF0.o sigproc.o jkFormant.o sigproc2.o
+ 
+@@ -296,6 +296,9 @@
+ LIBOGG = @OGGLIBS@ -lc @TCL_LIB_SPEC@ -L. @SNACK_STUB_LIB_FLAG@
+ OBJOGG = SnackOgg.o
+ 
++LIBMPG = -lmpg123 -lc @TCL_LIB_SPEC@ -L. @SNACK_STUB_LIB_FLAG@
++OBJMPG = SnackMpg.o
++
+ LIBMP3 = -lc @TCL_LIB_SPEC@ -L. @SNACK_STUB_LIB_FLAG@
+ OBJMP3 = SnackMP3.o
+ 
+@@ -305,11 +308,11 @@
+ libsnackogg${SHLIB_SUFFIX}: ${OBJOGG}
+ 	${SHLIB_LD} ${OBJOGG} ${LIBOGG} -o libsnackogg${SHLIB_SUFFIX}
+ 
+-SnackMP3.o: $(GENERIC_DIR)/jkFormatMP3.c
+-	$(CC) -I /home/pcmacdon/src/wize/unix/usr/include -c -o SnackMP3.o $(CFLAGS) -DUSE_SNACK_STUBS $(GENERIC_DIR)/jkFormatMP3.c
++SnackMpg.o: $(GENERIC_DIR)/SnackMpg.c
++	$(CC) -c $(CFLAGS) -DUSE_SNACK_STUBS $(GENERIC_DIR)/SnackMpg.c
+ 
+-libsnackmpg${SHLIB_SUFFIX}: ${OBJMP3}
+-	${SHLIB_LD} ${OBJMP3} ${LIBMP3} -o libsnackmpg${SHLIB_SUFFIX}
++libsnackmpg${SHLIB_SUFFIX}: ${OBJMPG}
++	${SHLIB_LD} ${OBJMPG} ${LIBMPG} -o libsnackmpg${SHLIB_SUFFIX}
+ 
+ install:
+ 	@if [ ! -d ${DESTDIR}${SNACK_INSTALL_PATH}/snack${VERSION} ] ; then \
+@@ -323,6 +326,7 @@
+ 	if test -f libsnackstub${VERSION}.a; then cp -f libsnackstub${VERSION}.a ${DESTDIR}${SNACK_INSTALL_PATH}/; fi
+ 	if test -f libsnacksphere${SHLIB_SUFFIX}; then cp -f libsnacksphere${SHLIB_SUFFIX} ${DESTDIR}${SNACK_INSTALL_PATH}/snack${VERSION}/; fi
+ 	if test -f libsnackogg${SHLIB_SUFFIX}; then cp -f libsnackogg${SHLIB_SUFFIX} ${DESTDIR}${SNACK_INSTALL_PATH}/snack${VERSION}/; fi
++	if test -f libsnackmpg${SHLIB_SUFFIX}; then cp -f libsnackmpg${SHLIB_SUFFIX} ${DESTDIR}${SNACK_INSTALL_PATH}/snack${VERSION}/; fi
+ 	cp -f $(UNIX_DIR)/snack.tcl ${DESTDIR}${SNACK_INSTALL_PATH}/snack${VERSION}/
+ 	cp -f pkgIndex.tcl ${DESTDIR}${SNACK_INSTALL_PATH}/snack${VERSION}/
+ 
+--- a/unix/pkgIndex.tcl.dll
++++ b/unix/pkgIndex.tcl.dll
+@@ -11,3 +11,5 @@
+ package ifneeded snacksphere 1.2 [list load [file join $dir libsnacksphere.dll]]
+ 
+ package ifneeded snackogg 1.3 [list load [file join $dir libsnackogg.dll]]
++
++package ifneeded snackmpg 1.3 [list load [file join $dir libsnackmpg.dll]]
+--- a/doc/tcl-man.html
++++ b/doc/tcl-man.html
+@@ -46,7 +46,7 @@
+ &nbsp;</dt>
+ 
+ <dt>
+-<a href="#defpack">Standard extension packages</a> (sound, snackogg, snacksphere)</dt>
++<a href="#defpack">Standard extension packages</a> (sound, snackogg, snackmpg, snacksphere)</dt>
+ 
+ <dt>
+ &nbsp;</dt>
+@@ -650,7 +650,7 @@
+ endianess? ?-start start? ?-end end?</b> <b>?-guessproperties boolean?
+ ?-progress callback?</b>
+ <ul>Reads new sound data from a file. Current supported file formats are
+-WAV, MP3, AU, SND, AIFF, SD, SMP, CSL, and RAW binary. The command returns
++WAV, AU, SND, AIFF, SD, SMP, CSL, and RAW binary. The command returns
+ the file format detected. It is possible to force a file to be read as
+ RAW using "<b>-fileformat
+ </b>RAW". In this case the properties of the
+@@ -1064,6 +1064,12 @@
+ <ul>The <b>sound</b> package gives you the <b>snack::audio, snack::filter, snack::mixer, </b>and <b>snack::sound </b>commands. Basicly the same functions as the <b>snack</b> package except for graphics. This is useful on some systems if you want to use the tclsh interpreter.</ul>
+ <p><b>snackogg</b>
+ <ul>The <b>snackogg</b> package adds support for the Ogg/Vorbis compressed sound file format. Ogg format files and streams are detected automatically. Encoding is supported. Simply use the extension .ogg when writing files or use the option <b>-fileformat ogg</b>. When creating Ogg files the additional options <b>-nominalbitrate</b>, <b>-maxbitrate</b>, <b>-minbitrate</b>, and <b>-comment</b> apply.</ul>
++<p><b>snackmpg</b>
++<ul>The <b>snackmpg</b> package adds support for the MP3 compressed sound file format.
++MP3 format files and streams are detected automatically. Encoding is not currently
++supported. MP3 supports the following new readonly options: <b>-author</b>,
++<b>-album</b>, <b>-title</b>, <b>-year</b>, <b>-tag</b>, <b>-genre</b>, <b>-played</b>,
++<b>-remain</b>.</ul>
+ <p><b>snacksphere</b>
+ <ul>The <b>snacksphere</b> package adds support for reading the NIST/Sphere sound file formats. Sphere files are detected automatically.</ul>
+ <p>
+--- a/doc/python-man.html
++++ b/doc/python-man.html
+@@ -158,7 +158,6 @@
+ be read -- not all of them can be&nbsp;<emph>written</emph>.)</dd>
+   <ul type="">
+  <li> "WAV"</li>
+-  <li> "MP3"</li>
+   <li> "AU"</li>
+   <li> "SND"</li>
+   <li> "AIFF"</li>
+@@ -381,7 +380,7 @@
+   
+ <h4> read (<i>filename</i>)</h4>
+  Reads new sound data from a file. Current supported file formats are WAV, 
+-MP3, AU, SND, AIFF, SD, SMP, CSL, and RAW binary. The command returns the 
++AU, SND, AIFF, SD, SMP, CSL, and RAW binary. The command returns the 
+ file format detected. It is possible to force a file to be read as RAW using
+ by setting the option <b>fileformat=RAW</b>. In this case, properties of
+ the sound data can be specified by hand, using the <b>rate, channels, encoding,

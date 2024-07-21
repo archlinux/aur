@@ -1,0 +1,393 @@
+Author: Sergei Golovan
+Description: Patch makes porting of the tkSnack Python module and
+ included demos to Python 3.x, while retaining their compatibility
+ with Python 2.x.
+Last-Modified: Sat, 18 Apr 2015 20:24:39 +0300
+
+--- a/demos/python/dataCmd.py
++++ b/demos/python/dataCmd.py
+@@ -1,7 +1,12 @@
+ #! /usr/bin/env python
+ # -*- coding: iso-8859-1 -*-
+ 
+-import Tkinter
++import sys
++if sys.version_info[0] == 2:
++    import Tkinter
++else:
++    import tkinter as Tkinter
++
+ import tkSnack
+ 
+ root = Tkinter.Tk()
+--- a/demos/python/echo.py
++++ b/demos/python/echo.py
+@@ -1,6 +1,11 @@
+ #! /usr/bin/env python
+ 
+-from Tkinter import *
++import sys
++if sys.version_info[0] == 2:
++    from Tkinter import *
++else:
++    from tkinter import *
++
+ from tkSnack import *
+ 
+ root = Tkinter.Tk()
+--- a/demos/python/generator.py
++++ b/demos/python/generator.py
+@@ -1,6 +1,11 @@
+ #! /usr/bin/env python
+ 
+-from Tkinter import *
++import sys
++if sys.version_info[0] == 2:
++    from Tkinter import *
++else:
++    from tkinter import *
++
+ from tkSnack import *
+ 
+ root = Tkinter.Tk()
+--- a/demos/python/MinSect.py
++++ b/demos/python/MinSect.py
+@@ -1,6 +1,11 @@
+ #! /usr/bin/env python
+ 
+-from Tkinter import *
++import sys
++if sys.version_info[0] == 2:
++    from Tkinter import *
++else:
++    from tkinter import *
++
+ from tkSnack import *
+ 
+ root = Tkinter.Tk()
+--- a/demos/python/MinSpeg.py
++++ b/demos/python/MinSpeg.py
+@@ -1,6 +1,11 @@
+ #! /usr/bin/env python
+ 
+-from Tkinter import *
++import sys
++if sys.version_info[0] == 2:
++    from Tkinter import *
++else:
++    from tkinter import *
++
+ from tkSnack import *
+ 
+ root = Tkinter.Tk()
+--- a/demos/python/MinWave.py
++++ b/demos/python/MinWave.py
+@@ -1,6 +1,11 @@
+ #! /usr/bin/env python
+ 
+-from Tkinter import *
++import sys
++if sys.version_info[0] == 2:
++    from Tkinter import *
++else:
++    from tkinter import *
++
+ from tkSnack import *
+ 
+ root = Tkinter.Tk()
+--- a/demos/python/mixplay.py
++++ b/demos/python/mixplay.py
+@@ -1,6 +1,11 @@
+ #! /usr/bin/env python
+ 
+-from Tkinter import *
++import sys
++if sys.version_info[0] == 2:
++    from Tkinter import *
++else:
++    from tkinter import *
++
+ from tkSnack import *
+ 
+ root = Tkinter.Tk()
+--- a/demos/python/notescale.py
++++ b/demos/python/notescale.py
+@@ -1,6 +1,11 @@
+ #! /usr/bin/env python
+ 
+-from Tkinter import *
++import sys
++if sys.version_info[0] == 2:
++    from Tkinter import *
++else:
++    from tkinter import *
++
+ from tkSnack import *
+ 
+ root = Tkinter.Tk()
+--- a/demos/python/oggplay.py
++++ b/demos/python/oggplay.py
+@@ -5,8 +5,13 @@
+ # Note: this script will also play audio files in any other format supported
+ # by tkSnack
+ 
++from __future__ import print_function
+ import sys
+-from Tkinter import *
++if sys.version_info[0] == 2:
++    from Tkinter import *
++else:
++    from tkinter import *
++
+ from tkSnack import *
+ 
+ initializeSnack(Tkinter.Tk())
+@@ -19,4 +24,4 @@
+ 	snd = Sound(file=sys.argv[1])
+ 	snd.play(blocking=1)
+ else:
+-	print "Usage: oggplay.py file.ogg"
++	print("Usage: oggplay.py file.ogg")
+--- a/demos/python/playnotes.py
++++ b/demos/python/playnotes.py
+@@ -1,6 +1,11 @@
+ #! /usr/bin/env python
+ 
+-from Tkinter import *
++import sys
++if sys.version_info[0] == 2:
++    from Tkinter import *
++else:
++    from tkinter import *
++
+ from tkSnack import *
+ 
+ root = Tkinter.Tk()
+--- a/demos/python/polarspec.py
++++ b/demos/python/polarspec.py
+@@ -1,6 +1,11 @@
+ #! /usr/bin/env python
+ 
+-from Tkinter import *
++import sys
++if sys.version_info[0] == 2:
++    from Tkinter import *
++else:
++    from tkinter import *
++
+ from tkSnack import *
+ from math import *
+ 
+--- a/demos/python/spectrogram.py
++++ b/demos/python/spectrogram.py
+@@ -1,6 +1,11 @@
+ #! /usr/bin/env python
+ 
+-from Tkinter import *
++import sys
++if sys.version_info[0] == 2:
++    from Tkinter import *
++else:
++    from tkinter import *
++
+ from tkSnack import *
+ 
+ root = Tkinter.Tk()
+--- a/demos/python/sphere.py
++++ b/demos/python/sphere.py
+@@ -1,6 +1,12 @@
+ #! /usr/bin/env python
+ 
+-from Tkinter import *
++from __future__ import print_function
++import sys
++if sys.version_info[0] == 2:
++    from Tkinter import *
++else:
++    from tkinter import *
++
+ from tkSnack import *
+ 
+ root = Tkinter.Tk()
+@@ -15,11 +21,11 @@
+ 
+ file = 'test.sph'
+ 
+-print 'reading sphere file \'%s\'' % file
++print('reading sphere file \'%s\'' % file)
+ snd.read(file)
+ 
+-print 'playing file \'%s\'' % file
++print('playing file \'%s\'' % file)
+ snd.play(blocking=1)
+ 
+-print 'writing wav file \'%s\'' % file
++print('writing wav file \'%s\'' % file)
+ snd.write('new.wav')
+--- a/demos/python/tkSnack.py
++++ b/demos/python/tkSnack.py
+@@ -7,8 +7,14 @@
+ last modified: Mar 28, 2003
+ """
+ 
+-import Tkinter
+-import types
++from __future__ import print_function
++
++import sys
++if sys.version_info[0] == 2:
++    import Tkinter
++else:
++    import tkinter as Tkinter
++
+ import string
+ 
+ Tkroot = None
+@@ -20,7 +26,8 @@
+     Tkroot = newroot
+     Tkroot.tk.call('eval', 'package require snack')
+     Tkroot.tk.call('snack::createIcons')
+-    Tkroot.tk.call('snack::setUseOldObjAPI')
++    if sys.version_info[0] == 2:
++        Tkroot.tk.call('snack::setUseOldObjAPI')
+     audio = AudioControllerSingleton()
+     mixer = MixerControllerSingleton()
+ 
+@@ -92,7 +99,7 @@
+                 self.tk.call(self.name, 'configure')):
+                 cnf[x[0][1:]] = (x[0][1:],) + x[1:]
+                 return cnf
+-        if type(cnf) is types.StringType:
++        if isinstance(cnf, str):
+             x = self.tk.split(self.tk.call(self.name, 'configure', '-'+cnf))
+             return (x[0][1:],) + x[1:]
+         self.tk.call((self.name, 'configure') + self._options(cnf))
+@@ -124,8 +131,7 @@
+             if Tkroot:
+                 master = Tkroot
+             else:
+-                raise RuntimeError, \
+-                      'Tk not intialized or not registered with Snack'
++                raise RuntimeError('Tk not intialized or not registered with Snack')
+         self.tk = master.tk
+         if not name:
+             self.name = self.tk.call(('sound',) + self._options(kw))
+@@ -261,7 +267,7 @@
+         
+     def pitch(self, method=None, **kw):
+         """Returns a list of pitch values."""
+-        if method is None or method is "amdf" or method is "AMDF":
++        if method is None or method == "amdf" or method == "AMDF":
+             result = self.tk.call((self.name, 'pitch') + self._options(kw))
+             return self._getdoubles(result)
+         else:
+@@ -409,8 +415,7 @@
+         if Tkroot:
+             master = Tkroot
+         else:
+-            raise RuntimeError, \
+-                 'Tk not intialized or not registered with Snack'
++            raise RuntimeError('Tk not intialized or not registered with Snack')
+         self.tk = master.tk
+         self.name = self.tk.call(('snack::filter', name) + args +
+                                  self._options(kw))
+@@ -537,7 +542,7 @@
+         self.sound.record()
+         
+     def info(self):
+-        print self.sound.info()
++        print(self.sound.info())
+         
+ def createSpectrogram(canvas, *args, **kw):
+     """Draws a spectrogram of a sound on canvas."""
+--- a/demos/python/widget.py
++++ b/demos/python/widget.py
+@@ -1,6 +1,11 @@
+ #! /usr/bin/env python
+ 
+-from Tkinter import *
++import sys
++if sys.version_info[0] == 2:
++    from Tkinter import *
++else:
++    from tkinter import *
++
+ from tkSnack import *
+ 
+ root = Tkinter.Tk()
+--- a/python/tkSnack.py
++++ b/python/tkSnack.py
+@@ -7,8 +7,14 @@
+ last modified: Mar 28, 2003
+ """
+ 
+-import Tkinter
+-import types
++from __future__ import print_function
++
++import sys
++if sys.version_info[0] == 2:
++    import Tkinter
++else:
++    import tkinter as Tkinter
++
+ import string
+ 
+ Tkroot = None
+@@ -20,7 +26,8 @@
+     Tkroot = newroot
+     Tkroot.tk.call('eval', 'package require snack')
+     Tkroot.tk.call('snack::createIcons')
+-    Tkroot.tk.call('snack::setUseOldObjAPI')
++    if sys.version_info[0] == 2:
++        Tkroot.tk.call('snack::setUseOldObjAPI')
+     audio = AudioControllerSingleton()
+     mixer = MixerControllerSingleton()
+ 
+@@ -92,7 +99,7 @@
+                 self.tk.call(self.name, 'configure')):
+                 cnf[x[0][1:]] = (x[0][1:],) + x[1:]
+                 return cnf
+-        if type(cnf) is types.StringType:
++        if isinstance(cnf, str):
+             x = self.tk.split(self.tk.call(self.name, 'configure', '-'+cnf))
+             return (x[0][1:],) + x[1:]
+         self.tk.call((self.name, 'configure') + self._options(cnf))
+@@ -124,8 +131,7 @@
+             if Tkroot:
+                 master = Tkroot
+             else:
+-                raise RuntimeError, \
+-                      'Tk not intialized or not registered with Snack'
++                raise RuntimeError('Tk not intialized or not registered with Snack')
+         self.tk = master.tk
+         if not name:
+             self.name = self.tk.call(('sound',) + self._options(kw))
+@@ -261,7 +267,7 @@
+         
+     def pitch(self, method=None, **kw):
+         """Returns a list of pitch values."""
+-        if method is None or method is "amdf" or method is "AMDF":
++        if method is None or method == "amdf" or method == "AMDF":
+             result = self.tk.call((self.name, 'pitch') + self._options(kw))
+             return self._getdoubles(result)
+         else:
+@@ -409,8 +415,7 @@
+         if Tkroot:
+             master = Tkroot
+         else:
+-            raise RuntimeError, \
+-                 'Tk not intialized or not registered with Snack'
++            raise RuntimeError('Tk not intialized or not registered with Snack')
+         self.tk = master.tk
+         self.name = self.tk.call(('snack::filter', name) + args +
+                                  self._options(kw))
+@@ -537,7 +542,7 @@
+         self.sound.record()
+         
+     def info(self):
+-        print self.sound.info()
++        print(self.sound.info())
+         
+ def createSpectrogram(canvas, *args, **kw):
+     """Draws a spectrogram of a sound on canvas."""

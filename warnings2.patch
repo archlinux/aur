@@ -1,0 +1,33 @@
+This patch heals some more warnings and is not adopted from Debian.
+
+--- a/generic/snack.c	2024-07-20 23:23:45.799999764 +0200
++++ b/generic/snack.c	2024-07-20 23:24:16.186666472 +0200
+@@ -203,9 +203,9 @@
+ int littleEndian = 0;
+ 
+ #ifdef __cplusplus
+-extern "C" SnackStubs *snackStubs;
++extern "C" SnackStubs snackStubs;
+ #else
+-extern SnackStubs *snackStubs;
++extern SnackStubs snackStubs;
+ #endif
+ 
+ extern Tcl_HashTable *filterHashTable;
+
+--- a/generic/sound.c	2024-07-21 00:30:05.536666483 +0200
++++ b/generic/sound.c	2024-07-21 00:30:27.256666488 +0200
+@@ -120,9 +120,9 @@
+ int littleEndian = 0;
+ 
+ #ifdef __cplusplus
+-extern "C" SnackStubs *snackStubs;
++extern "C" SnackStubs snackStubs;
+ #else
+-extern SnackStubs *snackStubs;
++extern SnackStubs snackStubs;
+ #endif
+ 
+ extern Tcl_HashTable *filterHashTable;
+
+
