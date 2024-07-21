@@ -3,8 +3,8 @@
 pkgname=flamewolf-bin
 provides=(${pkgname//-bin/""})
 conflicts=(${pkgname//-bin/""})
-pkgver=128.1.1
-pkgrel=3
+pkgver=128.1.2
+pkgrel=1
 pkgdesc="A crazy fork of Firefox, focused on privacy and features."
 # TODO: Add arm64 (aarch64) support, once the CI for that is done
 arch=(x86_64)
@@ -31,7 +31,7 @@ source=(
 )
 source_x86_64=("${_uploadpath_x86_64}")
 b2sums=('702da3a5b14a725debcf86db181b723da12e44b18914729b7512b6047b47c0a3873dccb856d39b74ff52a32d3680ee320bde5f6bdc7fbb36110f2d86f3a15e90'
-        'c8c1b1d3d9d27947915ce844b549f9e1231a695c9bdf6c80e8ccead0831fc1c630b2a829e35c3c0ddbca5e914596d06e1d899254151e2dac7385cc43d2f4edb3')
+        '30c82609c3de6ae39b283b04ad32c943115b1981ab0f527cfead19c4eff22a7acb281d993948a5b8c7e0ab6724ebd82b78c2e019e7a715507e214b3680d6c44e')
 b2sums_x86_64=('f8fcb33e3246b00505c1a9d7fa61d94ee09e955b39d9c92a18e3e4424d6af39c1a5e1011da2282330623bc115fc82775640560fe0626d1fd6496e2de1bb26732')
 
 package() {
