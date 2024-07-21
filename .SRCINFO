@@ -1,13 +1,13 @@
 pkgbase = connmaster
-	pkgdesc = ConnWifiMaster is a Python (PyQt5) app for managing WiFi on Arch Linux with ConnMan.
-	pkgver = v.0.0.1
+	pkgdesc = ConnWifiMaster is a graphical application designed for Arch Linux systems that use ConnMan for network management. Developed with GTK in C.
+	pkgver = 0.0.1
 	pkgrel = 1
 	url = https://github.com/felipealfonsog/ConnWifiMaster
 	arch = x86_64
-	license = MIT
+	license = BSD-3-Clause
+	depends = gtk3
 	depends = connman
-	depends = python-pyqt5
-	depends = python
 	source = https://github.com/felipealfonsog/ConnWifiMaster/archive/refs/tags/v.0.0.1.tar.gz
+	sha256sums = aadafb9297877b7df9d423a77b09c6ca0de7f2eb55ad728df588f74528058b44
 
 pkgname = connmaster
