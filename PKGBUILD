@@ -2,7 +2,7 @@
 
 pkgname=lightdm-slick-greeter-mint-theme
 _pkgname=slick-greeter
-pkgver=2.0.4
+pkgver=2.0.6
 pkgrel=1
 pkgdesc="A slick-looking LightDM greeter. With additional options enabled"
 arch=('x86_64')
@@ -22,6 +22,7 @@ depends=(
     'xorg-server'
 )
 optdepends=(
+    'cinnamon-styles-artwork: enable full artwork theme in Cinnamon'
     'mint-l-theme: enable additional Mint themes'
     'numlockx: enable numerical keypad on supported keyboard'
 )
@@ -43,7 +44,7 @@ source=(
     "${_pkgname}.conf"
 )
 sha256sums=(
-    'f58b969e47db298212ff86c291cb33ad300cd2286d5c7e18d551e312402f0960'
+    '446fcda5776839013eb91fbf0c95fcd2aa70c331e570edda8aacd0d60b219de1'
     'f1a4ea92f61d90ba2d8915da582891e09baca42cf623863bfef26022544c34df'
 )
 
