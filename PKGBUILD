@@ -8,7 +8,7 @@ license=(custom)
 depends=(libxext libsm fontconfig libxrender)
 _pkgver="${pkgver//./_}"
 _pkg="eureqa_${_pkgver}_X11_${CARCH/_/-}"
-source=("http://download.nutonian.com/$_pkgver/$_pkg.tar.gz"
+source=("https://web.archive.org/web/20190419112655/http://download.nutonian.com/$_pkgver/$_pkg.tar.gz"
         "eureqa.sh"
         "eureqa.desktop")
 sha256sums=('14e626fa9aa48900cd95ed3ee5d198a56b6fea117d8ae041451cfccd629e07df'
