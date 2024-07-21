@@ -6,12 +6,14 @@ _binname="kubedb"
 _pkgname="${_binname}-cli"
 pkgname="${_pkgname}-bin"
 pkgver=0.46.0
-pkgrel=2
+pkgrel=3
 pkgdesc="kubectl plugin for KubeDB"
 arch=('x86_64' 'aarch64' 'arm')
 url="https://${_binname}.com"
 _url="https://github.com/${_binname}/cli"
 license=('custom:AppsCode-Community-1.0.0')
+optdepends=('bash-completion: for shell auto-completion'
+            'zsh-completions: for shell auto-completion')
 provides=("${_pkgname}" "${_binname}")
 conflicts=("${_pkgname}" "${_binname}")
 _pkgsrc="${_pkgname}-${pkgver}"
@@ -42,9 +44,28 @@ case "${CARCH}" in
     ;;
 esac
 
+prepare() {
+  cd "${srcdir}"
+  mkdir -p "completions"
+}
+
+build() {
+  cd "${srcdir}"
+
+  for _sh in bash fish zsh powershell; do
+    ./"kubectl-dba-linux-${_arch}" completion "${_sh}" > "completions/${_binname}.${_sh}"
+  done
+}
+
 package() {
   cd "${srcdir}"
   install -Dm755 "kubectl-dba-linux-${_arch}" "${pkgdir}/usr/bin/${_binname}"
   install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   install -Dm644 "LICENSE-${pkgver}.md" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.md"
+
+  cd "completions"
+  install -Dm644 "${_binname}.bash"       "${pkgdir}/usr/share/bash-completion/completions/${_binname}"
+  install -Dm644 "${_binname}.fish"       "${pkgdir}/usr/share/fish/vendor_completions.d/${_binname}.fish"
+  install -Dm644 "${_binname}.zsh"        "${pkgdir}/usr/share/zsh/site-functions/_${_binname}"
+  install -Dm644 "${_binname}.powershell" "${pkgdir}/usr/share/powershell/Completions/${_binname}.ps1"
 }
