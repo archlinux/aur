@@ -1,9 +1,10 @@
 pkgbase = android-x86-libjxl
 	pkgdesc = JPEG XL image format reference implementation (Android x86)
 	pkgver = 0.10.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jpeg.org/jpegxl/
 	arch = any
+	groups = android-libjxl
 	license = BSD-3-Clause
 	makedepends = git
 	makedepends = android-cmake
