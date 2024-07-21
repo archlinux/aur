@@ -1,7 +1,7 @@
 pkgbase = mksh-bin
 	pkgdesc = MirBSD Korn Shell
-	pkgver = 59.c.r8
-	pkgrel = 2
+	pkgver = 59c
+	pkgrel = 1.1
 	url = https://www.mirbsd.org/mksh.htm
 	install = mksh.install
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = mksh-bin
 	depends = glibc
 	provides = mksh
 	conflicts = mksh
-	source = mksh-59.c-8-x86_64.tar.zst::https://gitlab.com/api/v4/projects/59987755/packages/generic/mksh/59.c-8/mksh-59.c-8-x86_64.pkg.tar.zst
-	sha256sums = 4127812c67645fa30966888d8299b2dbe1693e628d6cb6d476258edf4bc05ee7
+	source = mksh-59c-1-x86_64.tar.zst::https://gitlab.com/api/v4/projects/59987755/packages/generic/mksh/59c-1/mksh-59c-1-x86_64.pkg.tar.zst
+	sha256sums = a2f063fdb6063c8882ea3521c3ecd5fbddcd6ec4e5594d5c89cd7e94e53482e5
 
 pkgname = mksh-bin
