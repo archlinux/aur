@@ -1,5 +1,5 @@
 pkgbase = rcu-bin
-	pkgdesc = reMarkable Connection Utility (RCU).
+	pkgdesc = reMarkable Connection Utility (RCU)
 	pkgver = d2024.001p
 	pkgrel = 1
 	url = http://www.davisr.me/projects/rcu/

@@ -6,7 +6,7 @@
 pkgname=rcu-bin
 pkgver=d2024.001p
 pkgrel=1
-pkgdesc="reMarkable Connection Utility (RCU)."
+pkgdesc="reMarkable Connection Utility (RCU)"
 arch=('x86_64')
 url="http://www.davisr.me/projects/rcu/"
 license=('AGPL3')
