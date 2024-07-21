@@ -1,0 +1,49 @@
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+
+_binname="kubedb"
+pkgname="${_binname}-cli"
+pkgver=0.46.0
+pkgrel=1
+pkgdesc="kubectl plugin for KubeDB"
+arch=('any')
+url="https://${_binname}.com"
+_url="https://github.com/${_binname}/cli"
+license=('custom:AppsCode-Community-1.0.0')
+provides=("${pkgname}" "${_binname}")
+conflicts=("${pkgname}" "${_binname}")
+makedepends=('go')
+depends=('glibc')
+_pkgsrc="cli-${pkgver}"
+source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz"
+        "LICENSE.md::https://github.com/appscode/licenses/raw/1.0.0/AppsCode-Community-1.0.0.md")
+sha256sums=('58c22e60fb667f8f000e19dcf9668f2a185c039c28561518163dab138f1ea14a'
+            '98112798ec6560d74223511ed367c2c170a63e5cdf5855dd444009cb3c80b07c')
+
+prepare() {
+  cd "${srcdir}/${_pkgsrc}"
+  mkdir -p "build"
+}
+
+build() {
+  cd "${srcdir}/${_pkgsrc}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build -o "build/${_binname}" ./"cmd/kubectl-dba"
+}
+
+check() {
+  cd "${srcdir}/${_pkgsrc}"
+  go test ./...
+}
+
+package() {
+  cd "${srcdir}"
+  install -Dm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
+
+  cd "${_pkgsrc}"
+  install -Dm755 "build/${_binname}" "${pkgdir}/usr/bin/${_binname}"
+  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+}

@@ -1,0 +1,19 @@
+pkgbase = kubedb-cli
+	pkgdesc = kubectl plugin for KubeDB
+	pkgver = 0.46.0
+	pkgrel = 1
+	url = https://kubedb.com
+	arch = any
+	license = custom:AppsCode-Community-1.0.0
+	makedepends = go
+	depends = glibc
+	provides = kubedb-cli
+	provides = kubedb
+	conflicts = kubedb-cli
+	conflicts = kubedb
+	source = cli-0.46.0.tar.gz::https://github.com/kubedb/cli/archive/refs/tags/v0.46.0.tar.gz
+	source = LICENSE.md::https://github.com/appscode/licenses/raw/1.0.0/AppsCode-Community-1.0.0.md
+	sha256sums = 58c22e60fb667f8f000e19dcf9668f2a185c039c28561518163dab138f1ea14a
+	sha256sums = 98112798ec6560d74223511ed367c2c170a63e5cdf5855dd444009cb3c80b07c
+
+pkgname = kubedb-cli
