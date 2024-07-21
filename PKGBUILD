@@ -1,18 +1,22 @@
 # Maintainer: Matt Coffin <mcoffin13@gmail.com>
 pkgname=hid-fanatecff-dkms
 _pkgname="${pkgname%-*}"
-pkgver=r56.0e56c48
+pkgver=0.1.1.r0.c2a96ed
 pkgrel=1
 pkgdesc='Driver to support force feedback and load cells for the FANATEC controller ecosystem'
 arch=(any)
 url="https://github.com/gotzl/hid-fanatecff"
 license=(GPL2)
-depends=(dkms)
-makedepends=(m4 git)
-source=("$_pkgname::git+https://github.com/gotzl/hid-fanatecff.git#branch=next"
-        'dkms.conf.m4')
-b2sums=('SKIP'
-        '1e832ebbdc1166b55170f3a01fada8eea2d5c9ccbf69f1e5cd90d26f77ac87e6b94416869a507ff97ca85c6735523826123c639c40c2f09926585b26398c7a7b')
+depends=(dkms linux-headers)
+makedepends=(m4 git awk)
+source=(
+	"$_pkgname::git+https://github.com/gotzl/hid-fanatecff.git#tag=${pkgver}"
+	'dkms.conf.m4'
+)
+b2sums=(
+	'SKIP'
+	'1e832ebbdc1166b55170f3a01fada8eea2d5c9ccbf69f1e5cd90d26f77ac87e6b94416869a507ff97ca85c6735523826123c639c40c2f09926585b26398c7a7b'
+)
 
 prepare() {
 	local src
@@ -26,11 +30,12 @@ prepare() {
 }
 
 pkgver() {
-	cd "$srcdir"/"$_pkgname"
 	# Git, tags available
-	# printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	# git -C "$srcdir/$_pkgname" describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
 	# Git, no tags available
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	# printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git -C "$srcdir/$_pkgname" describe --long --tags \
+		| awk -F '-' '{ sub(/^v/, ""); v = $1 ".r" $2 "." substr($3, 2); printf "%s", v; }'
 }
 
 package() {
