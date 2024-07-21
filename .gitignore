@@ -1,3 +1,5 @@
-pkg/
-src/
-*.tar.zst
+*
+!PKGBUILD
+!netclient.service
+!.SRCINFO
+!.gitignore
