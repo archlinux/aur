@@ -2,11 +2,12 @@
 
 _pkgname=kwalletcli
 _pkgver=3.03-4
+_pkgrel=1
 _arch=x86_64
 
 pkgname=$_pkgname-bin
-pkgver=${_pkgver//-/.r}
-pkgrel=1
+pkgver=${_pkgver%-*}
+pkgrel=${_pkgver#*-}.${_pkgrel}
 pkgdesc='Command-Line Interface for the KDE Wallet'
 arch=($_arch)
 license=('custom:MirOS' 'LGPL3')

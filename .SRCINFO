@@ -1,7 +1,7 @@
 pkgbase = kwalletcli-bin
 	pkgdesc = Command-Line Interface for the KDE Wallet
-	pkgver = 3.03.r4
-	pkgrel = 1
+	pkgver = 3.03
+	pkgrel = 4.1
 	url = https://www.mirbsd.org/kwalletcli.htm
 	arch = x86_64
 	license = custom:MirOS
