@@ -1,0 +1,19 @@
+#!/usr/bin/env sh
+
+post_install() {
+    echo ""
+    echo "### saml2aws ${1}"
+    echo ""
+    echo "Starting with v2.36.5, saml2aws no longer installs the necessary Playwright"
+    echo "driver automatically when using 'Browser' as Provider."
+    echo ""
+    echo "Please run 'saml2aws login --download-browser-driver' at least once per update"
+    echo "to fetch the necessary Playwright version when using the 'Browser' provider."
+    echo ""
+    echo "For more information, see: https://github.com/Versent/saml2aws/pull/1006"
+    echo ""
+}
+
+post_upgrade() {
+  post_install "$@"
+}
