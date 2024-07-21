@@ -5,7 +5,7 @@ pkgbase = dina-font-otb
 	url = https://www.dcmembers.com/jibsen/download/61/
 	arch = any
 	license = custom
-	makedepends = fonttosfnt
+	makedepends = xorg-fonttosfnt
 	depends = fontconfig
 	conflicts = dina-font
 	conflicts = dina-powerline
@@ -14,4 +14,3 @@ pkgbase = dina-font-otb
 	md5sums = 028424baac750e9fd0f54df03202e5d0
 
 pkgname = dina-font-otb
-
