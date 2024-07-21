@@ -1,13 +1,13 @@
 # Maintainer: Keiran <keiran0@proton.me>
 pkgname=e-zshot
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Python scripts for automatically taking screenshots and uploading them to e-z.host."
 arch=('any')
 url="https://github.com/RobinTT69/e-z-screenshot-linux"
 license=('custom')
 depends=('python')
-source=("https://github.com/RobinTT69/e-z-screenshot-linux/releases/download/v1.0/e-zshot-1.0.tar.gz")
+source=("https://github.com/RobinTT69/e-z-screenshot-linux/releases/download/v1.1/e-zshot-1.1.tar.gz")
 md5sums=('SKIP')
 
 prepare() {
