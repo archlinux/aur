@@ -3,15 +3,15 @@
 # Contributor: TingPing <tingping@tingping.se>
 
 pkgname=geany-tags
-pkgver=20230702
+pkgver=20240721
 pkgrel=1
 pkgdesc='Geany tags for C, C++, CSS, GLSL, Java, JavaScript, LaTeX, PHP, Python, Ruby, Tcl, Vala and more'
 url='http://wiki.geany.org/tags/start'
-license=(GPL)
+license=(GPL-2.0-or-later)
 arch=(any)
 depends=(geany)
 source=("$pkgname-$pkgver.tar.bz2::http://wiki.geany.org/get_tags")
-sha256sums=('11dbd860569da25ded2d289560bbb0e214c5501ed448aa3d18304eae2cdf9300')
+sha256sums=('42f7577f1953e2bce8c65e545d0744971fe24766cf9ceb51f566c0ff6c5b5762')
 
 package() {
     cd tags
