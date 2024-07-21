@@ -11,7 +11,7 @@ arch=('x86_64')
 makedepends=('nginx-src')
 depends=('nginx')
 url="https://github.com/Lax/${_modname}"
-license=('BSD')
+license=('BSD-2-Clause')
 
 source=(
 	"https://github.com/Lax/${_modname}/archive/v${pkgver%%+*}/${_modname}-${pkgver%%+*}.tar.gz"
