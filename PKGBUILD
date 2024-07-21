@@ -4,12 +4,13 @@
 
 pkgname=exifcleaner-bin
 pkgver=3.6.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Clean metadata from images, videos, PDFs, and other files"
 url="https://github.com/szTheory/exifcleaner"
 license=('MIT')
 arch=('x86_64')
-depends=('gtk3' 'nss' 'perl-image-exiftool')
+depends=('at-spi2-core' 'gtk3' 'libappindicator-gtk3' 'libnotify' 'libsecret'
+         'libxss' 'libxtst' 'nss' 'perl-image-exiftool' 'util-linux-libs' 'xdg-utils')
 provides=("exifcleaner")
 conflicts=("exifcleaner")
 source=("$url/releases/download/v$pkgver/exifcleaner_${pkgver}_amd64.deb"
@@ -34,7 +35,7 @@ prepare() {
 package() {
 # Install
   mv opt "$pkgdir"
-  mv usr/share "$pkgdir/usr"
+  mv usr "$pkgdir"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/exifcleaner"
 # Symlink binary
   mkdir -p "$pkgdir/usr/bin"
