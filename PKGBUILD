@@ -28,13 +28,13 @@ prepare() {
 }
 
 build() {
-	cd "${pkgname?}"
+    cd "${pkgname?}"
 
     python -m build --wheel
 }
 
 package() {
-	cd "${pkgname?}"
+    cd "${pkgname?}"
 
     python -m installer --destdir="${pkgdir?}" dist/*.whl
     install -Dm 644 LICENSE -t "${pkgdir?}/usr/share/licenses/${pkgname?}"
