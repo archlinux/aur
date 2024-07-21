@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mlr3measures
-_pkgver=0.5.0
+_pkgver=0.6.0
 pkgname=r-${_pkgname,,}
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Performance Measures for 'mlr3'"
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a7a88d96c492e2d8894e5883d69e39238a4b5bf0928a0b0e0abad1617a0f114c')
+sha256sums=('33c61b0c9f50a73c9d5661374e37d6b5e89596a7c2d32c3915524637ac63186e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
