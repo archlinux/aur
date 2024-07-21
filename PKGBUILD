@@ -1,20 +1,36 @@
-# Maintainer: Julien Nicoulaud <julien.nicoulaud@gmail.com>
+# Maintainer: Arnaud Renevier <arno@renevier.net>
+# Contributor: Julien Nicoulaud <julien.nicoulaud@gmail.com>
+
 pkgname=actdiag
-pkgver=2.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Generate activity-diagram image files from spec-text files."
 arch=(any)
 url="http://blockdiag.com/en/actdiag"
-license=(APACHE)
-depends=('python' 'blockdiag>=2.0.0')
-optdepends=('python-reportlab: to use the PDF output format')
-makedepends=(python-distribute)
-changelog=Changelog
-conflicts=('actdiag-hg')
-source=("https://pypi.python.org/packages/source/a/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('e955b9b919e137f10ff128d5d8817b2da660b121937cab3386a866a0bff08218b6e777e302a9130616228af6c357c463ceeb12cb95b8734928001d8ad6a90250')
+license=('Apache-2.0')
+depends=('python' 'blockdiag>=3.1.0' 'python-funcparserlib')
+optdepends=('python-reportlab: for PDF export'
+            'python-docutils: for RST parser')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
+checkdepends=('python-docutils' 'python-pytest' 'python-pycodestyle' 'python-reportlab')
+source=(
+  "$pkgname-$pkgver.tar.gz::https://github.com/arenevier/actdiag/archive/v$pkgver.tar.gz"
+)
+sha512sums=('95b82dee00bd09c40b80857fa477b83bed9d20ab59af7b69ea5b75ba08d5fca73d5323b0e6feecd01e81cb7edd96eef90ec9dce85d97778af42df7d617a16e35')
+
+build() {
+  cd actdiag-$pkgver
+  python -m build --wheel --no-isolation
+}
+
+check() {
+  cd actdiag-$pkgver
+  PYTHONDONTWRITEBYTECODE=1 pytest
+}
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  cd actdiag-$pkgver
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -vDm 644 {CHANGES,README}.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -vDm 644 "${pkgname}.1" -t "${pkgdir}/usr/share/man/man1/"
 }
