@@ -4,7 +4,7 @@ pkgname=$_pkgname-git
 pkgdesc="Undark - SQLite3 database data recovery tool"
 url=https://github.com/inflex/undark
 
-pkgrel=2
+pkgrel=3
 pkgver=r3.2e0bd78
 arch=(any)
 
@@ -13,7 +13,7 @@ source=(undark::git+https://github.com/inflex/undark#branch=master
 md5sums=(SKIP
         305965de7f896df18ff00622a6987cc9)
 
-makedepends=(ctags gcc make)
+makedepends=(ctags)
 provides=($_pkgname)
 
 pkgver() {
