@@ -5,11 +5,12 @@ _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libjxl
 pkgver=0.10.3
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="JPEG XL image format reference implementation (Android ${_android_arch})"
 url='https://jpeg.org/jpegxl/'
 license=('BSD-3-Clause')
+groups=(android-libjxl)
 depends=("android-${_android_arch}-brotli"
          "android-${_android_arch}-giflib"
          "android-${_android_arch}-highway"
@@ -47,7 +48,8 @@ build() {
 
     android-${_android_arch}-cmake \
         -S . \
-        -B build \
+        -B build-shared \
+        -DBUILD_SHARED_LIBS=ON \
         -DBUILD_TESTING=OFF \
         -DJPEGXL_ENABLE_BENCHMARK=OFF \
         -DJPEGXL_ENABLE_DOXYGEN=OFF \
@@ -79,15 +81,55 @@ build() {
         -DZLIB_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
         -DZLIB_LIBRARY_RELEASE="${ANDROID_PREFIX_LIB}/libz.so" \
         -Wno-dev
-    sed -i "s|liblcms2.so -lgdk_pixbuf-2.0 |liblcms2.so -L${ANDROID_PREFIX_LIB} -lgdk_pixbuf-2.0 |g" build/plugins/gdk-pixbuf/CMakeFiles/pixbufloader-jxl.dir/link.txt
-    make -C build $MAKEFLAGS
+    sed -i "s|liblcms2.so -lgdk_pixbuf-2.0 |liblcms2.so -L${ANDROID_PREFIX_LIB} -lgdk_pixbuf-2.0 |g" build-shared/plugins/gdk-pixbuf/CMakeFiles/pixbufloader-jxl.dir/link.txt
+    make -C build-shared $MAKEFLAGS
+
+    android-${_android_arch}-cmake \
+        -S . \
+        -B build-static \
+        -DBUILD_SHARED_LIBS=OFF \
+        -DBUILD_TESTING=OFF \
+        -DJPEGXL_ENABLE_BENCHMARK=OFF \
+        -DJPEGXL_ENABLE_DOXYGEN=OFF \
+        -DJPEGXL_ENABLE_EXAMPLES=OFF \
+        -DJPEGXL_ENABLE_FUZZERS=OFF \
+        -DJPEGXL_ENABLE_MANPAGES=OFF \
+        -DJPEGXL_ENABLE_PLUGINS=ON \
+        -DJPEGXL_ENABLE_TOOLS=OFF \
+        -DJPEGXL_ENABLE_VIEWERS=OFF \
+        -DJPEGXL_ENABLE_SJPEG=OFF \
+        -DJPEGXL_ENABLE_PLUGIN_GIMP210=OFF \
+        -DJPEGXL_FORCE_SYSTEM_BROTLI=ON \
+        -DJPEGXL_FORCE_SYSTEM_GTEST=ON \
+        -DJPEGXL_FORCE_SYSTEM_HWY=ON \
+        -DJPEGXL_FORCE_SYSTEM_LCMS2=ON \
+        -DJPEGXL_BUNDLE_LIBPNG=OFF \
+        -DJPEGXL_ENABLE_JNI=ON \
+        -DJPEGXL_INSTALL_JARDIR="${ANDROID_PREFIX_SHARE}/java" \
+        -DHWY_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
+        -DHWY_LIBRARY="${ANDROID_PREFIX_LIB}/libhwy.a" \
+        -DBROTLI_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}/brotli" \
+        -DBROTLICOMMON_LIBRARY="${ANDROID_PREFIX_LIB}/libbrotlicommon.a" \
+        -DBROTLIENC_LIBRARY="${ANDROID_PREFIX_LIB}/libbrotlienc.a" \
+        -DBROTLIDEC_LIBRARY="${ANDROID_PREFIX_LIB}/libbrotlidec.a" \
+        -DLCMS2_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
+        -DLCMS2_LIBRARY="${ANDROID_PREFIX_LIB}/liblcms2.a" \
+        -DPNG_PNG_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}/png" \
+        -DPNG_LIBRARY="${ANDROID_PREFIX_LIB}/libpng.a" \
+        -DZLIB_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
+        -DZLIB_LIBRARY_RELEASE="${ANDROID_PREFIX_LIB}/libz.a" \
+        -Wno-dev
+    sed -i "s|liblcms2.a -lgdk_pixbuf-2.0 |liblcms2.a -L${ANDROID_PREFIX_LIB} -lgdk_pixbuf-2.0 |g" build-static/plugins/gdk-pixbuf/CMakeFiles/pixbufloader-jxl.dir/link.txt
+    make -C build-static $MAKEFLAGS
 }
 
 package() {
     cd "${srcdir}/libjxl-${pkgver}"
     source android-env ${_android_arch}
 
-    make -C build DESTDIR="$pkgdir" install
+    make -C build-shared DESTDIR="${pkgdir}" install
+    make -C build-static DESTDIR="${pkgdir}" install
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     mv "${pkgdir}/${ANDROID_PREFIX_SHARE}/java"/{org.jpeg.jpegxl,jpegxl}.jar
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
