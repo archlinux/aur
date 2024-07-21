@@ -2,7 +2,7 @@
 
 pkgname=ts-analyzer-git
 pkgver=0.1.r12.g5d7f034
-pkgrel=2
+pkgrel=3
 pkgdesc='MPEG TS Stream analyzer, based on Qt5 and FFmpeg'
 arch=('x86_64')
 url='https://github.com/xuguangxiao/ts_analyzer'
@@ -12,6 +12,8 @@ makedepends=('cmake' 'git')
 # note: use packager fork with build patches
 source=("git+https://github.com/aswild/ts_analyzer")
 sha256sums=('SKIP')
+provides=('ts-analyzer')
+conflicts=('ts-analyzer')
 
 pkgver() {
   # no git tags, just use revision count
