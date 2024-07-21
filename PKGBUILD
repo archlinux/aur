@@ -5,7 +5,7 @@ pkgname=("$pkgbase" "lib32-$pkgbase")
 pkgver=1.5.0
 pkgrel=1
 url="https://github.com/nowrep/$pkgbase"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 arch=('x86_64')
 depends=('vulkan-icd-loader' 'libgl' 'libegl' 'obs-studio>=27')
 makedepends=('gcc' 'cmake' 'vulkan-headers' 'lib32-gcc-libs' 'lib32-vulkan-icd-loader' 'lib32-libgl' 'lib32-libegl')
