@@ -8,6 +8,7 @@ pkgbase = kernel-builder
 	depends = python
 	depends = python-requests
 	depends = python-pip
+	depends = python-distro
 	source = https://github.com/Someshwar1006/Kernel-Builder/raw/main/kernel-builder-2.0.tar.gz
 	sha256sums = SKIP
 
