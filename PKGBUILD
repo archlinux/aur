@@ -40,7 +40,7 @@ if "${_build_vulkan}"; then
   pkgname+=("${_name}-vulkan-git")
 fi
 pkgdesc='Create, run and share large language models (LLMs). Package(s) without dedicated GPU offloading (no CUDA, no ROCm, no SYCL).'
-pkgver=0.2.5+3.r3127.20240715.b9f5e16c
+pkgver=0.2.8+rc1+1.r3173.20240721.80ee9b5e
 pkgrel=1
 arch=(
   'armv7h'
@@ -201,7 +201,7 @@ build() {
     printf '%s\n' "   > Compiling generic variant ..."
     printf '\n'
     go generate ./...
-    cp llm/build/linux/x86_64/cpu/libllama.a llm/build/linux/x86_64_static/
+    # cp llm/build/linux/x86_64/cpu/libllama.a llm/build/linux/x86_64_static/
     # cp llm/build/linux/x86_64_static/libllama.so llm/build/linux/x86_64/cpu/
     go build -buildmode=pie -trimpath -mod=readonly -modcacherw -ldflags=-linkmode=external -ldflags=-buildid='' -ldflags="-X=github.com/jmorganca/ollama/version.Version=${pkgver}"
   fi
