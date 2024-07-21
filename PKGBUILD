@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc='File compressor, supports postcompression of PNG, JPEG, GZIP and ZIP files'
 url="https://github.com/fhanau/$_pkgname"
 arch=('x86_64')
-license=('Apache')
+license=('Apache-2.0')
 depends=('gcc-libs')
 makedepends=('nasm' 'git' 'cmake')
 source=("git+$url.git#tag=v$pkgver"
