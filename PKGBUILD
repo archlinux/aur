@@ -3,10 +3,11 @@
 pkgname=backblaze-b2
 _pkgname=b2
 pkgver=4.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Backblaze B2 Command Line Client'
 url='https://github.com/Backblaze/B2_Command_Line_Tool'
 depends=('python'
+         'python-annotated-types>=0.5.0'
          'python-argcomplete>=2'
          'python-arrow>=1.0.2'
          'python-b2sdk>=2.4.1'

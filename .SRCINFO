@@ -1,7 +1,7 @@
 pkgbase = backblaze-b2
 	pkgdesc = Backblaze B2 Command Line Client
 	pkgver = 4.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Backblaze/B2_Command_Line_Tool
 	arch = any
 	license = MIT
@@ -10,6 +10,7 @@ pkgbase = backblaze-b2
 	makedepends = python-pdm-backend
 	makedepends = python-wheel
 	depends = python
+	depends = python-annotated-types>=0.5.0
 	depends = python-argcomplete>=2
 	depends = python-arrow>=1.0.2
 	depends = python-b2sdk>=2.4.1
