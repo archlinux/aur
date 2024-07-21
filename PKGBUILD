@@ -6,7 +6,7 @@ pkgdesc="Simplifies Linux kernel compilation with version selection, patching, a
 arch=('any')
 url="https://github.com/Someshwar1006/Kernel-Builder"
 license=('MIT')
-depends=('python' 'python-requests' 'python-pip')  # Added python-pip as a dependency
+depends=('python' 'python-requests' 'python-pip' 'python-distro')  # Added python-pip as a dependency
 source=("https://github.com/Someshwar1006/Kernel-Builder/raw/main/kernel-builder-2.0.tar.gz")
 sha256sums=('738c429410d2ece61c40075a6b602af36661eb33b0ceafd4c9bbfaa4648dab39')
 
