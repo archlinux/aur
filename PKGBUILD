@@ -11,6 +11,8 @@ license=('MIT')
 makedepends=(
   'cmake'
   'git'
+  'ttf-dejavu'
+  'ttf-hanazono'
 )
 depends=(
   'freetype2'
@@ -51,6 +53,7 @@ build() {
     -DCMAKE_C_FLAGS:STRING="${CFLAGS}" \
     -DFIX_BUGS:BOOL=ON \
     -DFREETYPE_FONTS:BOOL=ON \
+    -DLANCZOS_RESAMPLER:BOOL=ON \
     -Wno-dev
   cmake --build build
 
@@ -61,6 +64,7 @@ build() {
     -DFIX_BUGS:BOOL=ON \
     -DFREETYPE_FONTS:BOOL=ON \
     -DJAPANESE:BOOL=ON \
+    -DLANCZOS_RESAMPLER:BOOL=ON \
     -Wno-dev
   cmake --build build
 }
@@ -68,9 +72,12 @@ build() {
 package_cse2-english-git() {
   conflicts=('cse2-english')
   provides=('cse2-english')
+  depends+=('ttf-dejavu')
 
   pushd "${srcdir}"/"${pkgbase}"/game_english || return
   find data -type f -exec install -Dm644 {} "${pkgdir}"/usr/share/cse2/english/{} \;
+  rm -rf "${pkgdir}"/usr/share/cse2/english/data/Font/*
+  ln -s /usr/share/fonts/TTF/DejaVuSansMono.ttf "${pkgdir}"/usr/share/cse2/english/data/Font/font
 
   install -Dm755 "${srcdir}"/"${pkgbase}"/game_english/CSE2 "${pkgdir}"/usr/bin/cse2-english
   install -Dm755 "${srcdir}"/"${pkgbase}"/game_english/DoConfig "${pkgdir}"/usr/bin/cse2-english-config
@@ -89,9 +96,12 @@ package_cse2-english-git() {
 package_cse2-japanese-git() {
   conflicts=('cse2-japanese')
   provides=('cse2-japanese')
+  depends+=('ttf-hanazono')
 
   pushd "${srcdir}"/"${pkgbase}"/game_japanese || return
   find data -type f -exec install -Dm644 {} "${pkgdir}"/usr/share/cse2/japanese/{} \;
+  rm -rf "${pkgdir}"/usr/share/cse2/japanese/data/Font/*
+  ln -s /usr/share/fonts/TTF/HanaMinA.ttf "${pkgdir}"/usr/share/cse2/japanese/data/Font/font
 
   install -Dm755 "${srcdir}"/"${pkgbase}"/game_japanese/CSE2 "${pkgdir}"/usr/bin/cse2-japanese
   install -Dm755 "${srcdir}"/"${pkgbase}"/game_japanese/DoConfig "${pkgdir}"/usr/bin/cse2-japanese-config
