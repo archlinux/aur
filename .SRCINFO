@@ -1,7 +1,7 @@
 pkgbase = android-aarch64-bzip2
 	pkgdesc = A high-quality data compression program (Android aarch64)
 	pkgver = 1.0.8
-	pkgrel = 4
+	pkgrel = 5
 	url = http://sources.redhat.com/bzip2
 	arch = any
 	groups = android-bzip2
@@ -14,6 +14,8 @@ pkgbase = android-aarch64-bzip2
 	options = staticlibs
 	options = !emptydirs
 	source = https://fossies.org/linux/misc/bzip2-1.0.8.tar.gz
-	sha1sums = bf7badf7e248e0ecf465d33c2f5aeec774209227
+	source = bzip2.pc
+	md5sums = 67e051268d0c475ea773822f7500d0e5
+	md5sums = e52e68e2d3fd3cb77fc1a80e28742938
 
 pkgname = android-aarch64-bzip2
