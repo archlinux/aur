@@ -12,9 +12,9 @@ pkgbase = eclipse-installer
 	options = !strip
 	source = eclipse-installer.desktop
 	sha256sums = c7d6a0bd5dad627dd15ac9d7e6e04c8c8a4b811ce4b0744212a487bc4f6c0cdf
-	source_aarch64 = https://mirrors.dotsrc.org/eclipse/oomph/epp/2024-03/R/eclipse-inst-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 704f888ab4bf476de4b0532f47aa15bd2a96c2717ffcf7169ad98d321e194d45
-	source_x86_64 = https://mirrors.dotsrc.org/eclipse/oomph/epp/2024-03/R/eclipse-inst-linux64.tar.gz
-	sha256sums_x86_64 = 33f1721ab46177266291d57610bed27ff81aaf3551ea97e3ef7f08fc24971af6
+	source_aarch64 = https://mirrors.dotsrc.org/eclipse/oomph/epp/2024-06/R/eclipse-inst-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 37741b5dada70186b1526d884e20b028ec5056d04b1c5a6dc7396f32d59f825a
+	source_x86_64 = https://mirrors.dotsrc.org/eclipse/oomph/epp/2024-06/R/eclipse-inst-linux64.tar.gz
+	sha256sums_x86_64 = 0a332e3d7f9acbc10a3ec0571eafd980386ed854d61cb3547d8018f2a47d9578
 
 pkgname = eclipse-installer
