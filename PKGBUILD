@@ -2,7 +2,7 @@
 pkgname=cn.i4tools-bin
 _pkgname=i4tools
 pkgver=v3.05.010
-pkgrel=1
+pkgrel=2
 pkgdesc='简单好用的多功能苹果设备管理助手。'
 arch=('x86_64')
 url="https://www.i4.cn/pro_pc.html"
@@ -22,7 +22,7 @@ package() {
     install -m755 -d "${pkgdir}/usr/share/pixmaps"
     install -m755 -d "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
     install -m755 -d "${pkgdir}/usr/bin"
-    ln -s "/opt/cn.i4Tools/run.sh" "${pkgdir}/usr/bin/${pkgname}"
+    ln -s "/opt/cn.i4Tools/run.sh" "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm644 ../cn.i4Tools.desktop "$pkgdir"/usr/share/applications/cn.i4Tools.desktop 
     cp -r "${srcdir}/opt/apps/cn.i4Tools" "${pkgdir}/opt/"
     install -Dm644 ../LICENSE.html "$pkgdir/usr/share/licenses/$pkgname/LICENSE.html"
