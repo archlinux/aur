@@ -1,13 +1,13 @@
 # Maintainer: omansh-krishn <omanshkrishn@duck.com>
 
 pkgname=crave
-pkgver=0.2.7004
-_pkgver=0.2-7004
-pkgrel=2
+pkgver=0.2.7023
+_pkgver=0.2-7023
+pkgrel=1
 pkgdesc="Crave CLI - Binary Version"
 arch=('aarch64' 'x86_64')
 url="https://github.com/accupara/crave"
-license=(GPL3)
+license=('Proprietary')
 depends=( glibc libxcrypt-compat openssh rsync zlib )
 provides=('crave' 'crave-bin')
 conflicts=('crave-bin')
@@ -15,8 +15,8 @@ conflicts=('crave-bin')
 source_aarch64=( crave::https://github.com/accupara/crave/releases/download/${_pkgver}/crave-${_pkgver}-linux-aarch64.bin )
 source_x86_64=( crave::https://github.com/accupara/crave/releases/download/${_pkgver}/crave-${_pkgver}-linux-amd64.bin )
 
-sha256sums_aarch64=( a243c04f760431b8e9a0e475b167dcf065ca3f63fb8e750abfa5814f7d800884 )
-sha256sums_x86_64=( a0bf5584d84c5a420e0c24c0f1c09d52a658829ddb741593b87ebd79dc295dfd )
+sha256sums_aarch64=( 088977d360bad758cfdc9ce9ee32010edf90d693a0efdaf127b1914ec9512a5e )
+sha256sums_x86_64=( 873e4893bc2d4837fdfbc3cbacaed4d825a61a130eeafb503103a2c170db4505 )
 
 package() {
 
