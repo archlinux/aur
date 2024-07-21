@@ -5,7 +5,7 @@ pkgbase = gsview
 	url = http://pages.cs.wisc.edu/~ghost/gsview/get49.htm
 	arch = i686
 	arch = x86_64
-	license = custom:Aladdin Free Public License
+	license = LicenseRef-Aladdin Free Public License
 	depends = gtk
 	depends = ghostscript
 	options = !makeflags
@@ -15,4 +15,3 @@ pkgbase = gsview
 	md5sums = 288ad9f7cf10136a5626b7e4c40605e2
 
 pkgname = gsview
-

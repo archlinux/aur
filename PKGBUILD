@@ -1,3 +1,4 @@
+# Maintainer: ConnorBehan <connor.behan@gmail.com>
 # Contributor: ConnorBehan <connor.behan@gmail.com>
 pkgname=gsview
 pkgver=4.9
@@ -6,7 +7,7 @@ pkgdesc="A nice looking GUI for ghostscript with some extraction features"
 arch=('i686' 'x86_64')
 options=('!makeflags')
 url="http://pages.cs.wisc.edu/~ghost/gsview/get49.htm"
-license=('custom:Aladdin Free Public License')
+license=('LicenseRef-Aladdin Free Public License')
 depends=('gtk' 'ghostscript')
 source=(http://fossies.org/unix/misc/old/ghost/ghostgum/${pkgname}-${pkgver}.tar.gz ${pkgname}.desktop)
 #http://mirror.cs.wisc.edu/pub/mirrors/ghost/ghostgum/${pkgname}-${pkgver}.tar.gz
