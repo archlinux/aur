@@ -1,6 +1,6 @@
 pkgbase = wiliwili-git
 	pkgdesc = A 3rd party bilibili client
-	pkgver = v1.4.0.r0.g1662ec4
+	pkgver = v1.4.1.r0.g904387c
 	pkgrel = 1
 	url = https://github.com/xfangfang/wiliwili
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = wiliwili-git
 	makedepends = python
 	makedepends = wayland-protocols
 	makedepends = libxi
+	makedepends = libxinerama
 	depends = mpv
 	depends = opencc
 	depends = pystring

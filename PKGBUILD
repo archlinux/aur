@@ -2,7 +2,7 @@
 
 pkgname=wiliwili-git
 _pkg=wiliwili
-pkgver=v1.4.0.r0.g1662ec4
+pkgver=v1.4.1.r0.g904387c
 pkgrel=1
 pkgdesc='A 3rd party bilibili client'
 url="https://github.com/xfangfang/wiliwili"
@@ -17,7 +17,7 @@ conflicts=("$_pkg" "$_pkg-bin")
 # This depends list base on  AUR repo wiliwili.
 # Thanks Puqns67 <me@puqns67.icu> depends list and and cmake command-line parameter.
 depends=('mpv' 'opencc' 'pystring')
-makedepends=('git' 'cmake' 'gcc' 'libwebp' 'python' 'wayland-protocols' 'libxi')
+makedepends=('git' 'cmake' 'gcc' 'libwebp' 'python' 'wayland-protocols' 'libxi' 'libxinerama')
 
 # options("name")
 
