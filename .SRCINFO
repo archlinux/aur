@@ -1,9 +1,10 @@
 pkgbase = android-aarch64-webp-pixbuf-loader
 	pkgdesc = WebM GDK Pixbuf Loader library (Android aarch64)
 	pkgver = 0.2.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aruiz/webp-pixbuf-loader
 	arch = any
+	groups = android-webp-pixbuf-loader
 	license = LGPL
 	makedepends = android-meson
 	depends = android-aarch64-gdk-pixbuf2
