@@ -1,6 +1,6 @@
 pkgbase = edddy-git
 	pkgdesc = Thee block-based map editor
-	pkgver = r194.5d17641
+	pkgver = r251.88aa959
 	pkgrel = 1
 	url = https://gitlab.com/luckeyproductions/tools/edddy
 	arch = x86_64

@@ -2,7 +2,7 @@
 
 _pkgname=edddy
 pkgname=${_pkgname}-git
-pkgver=r194.5d17641
+pkgver=r251.88aa959
 pkgrel=1
 pkgdesc='Thee block-based map editor'
 arch=('x86_64')
@@ -22,9 +22,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  rm -f Dry
-  ln -s /opt/dry/ Dry
-  qmake Edddy.pro "DATADIR=/usr/share"
+  DRY_HOME=/opt/dry/ qmake Edddy.pro "DATADIR=/usr/share"
   make
 }
 
