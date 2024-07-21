@@ -1,6 +1,6 @@
 # Maintainer: Keiran <keiran0@proton.me>
 pkgname=e-zshot
-pkgver=1.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Python scripts for automatically taking screenshots and uploading them to e-z.host."
 arch=('any')
