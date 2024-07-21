@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="ncurses partition and disk imaging/cloning program"
 arch=('any')
 url="https://clonezilla.org"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=('drbl' 'partclone' 'ntfs-3g' 'partimage' 'pigz' 'sshfs' 'parted'
 	'gptfdisk' 'dosfstools' 'gzip' 'bzip2' 'pbzip2' 'lbzip2' 'lrzip'
 	'xz' 'pixz' 'lzop' 'ecryptfs-utils' 'screen' 'perl' 'cifs-utils')
