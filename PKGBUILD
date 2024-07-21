@@ -1,6 +1,6 @@
 # Maintainer: Eldred Habert <arch@eldred.fr>
 pkgname=hugetracker-bin
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 pkgdesc='The music composition suite for the Nintendo Game Boy'
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=(fontconfig gdk-pixbuf2 glib2 glibc gtk2 libx11 pango 'rgbds>=0.5.0' sdl
 optdepends=('ffmpeg: "Export song" functionality')
 source=("hUGETracker-$pkgver.zip::https://github.com/SuperDisk/hUGETracker/releases/download/v$pkgver/hUGETracker-$pkgver-linux.zip"
         LICENSE)
-sha256sums=('4e6b0e84b975eb53f6e6582d2d05e1121b93658b7c76bc910b9eb1b332297c81'
+sha256sums=('e806ef0f356f948bb670aff3981c8d32c74b4926b4378226912eb1a3b58c077d'
             '89e3f0dbfb531db8d9ba1b20865407b35a0aad5b3f5468bd8527a17a5026e836')
 noextract=('hUGETracker-$pkgver.zip')
 
@@ -32,12 +32,15 @@ package() {
 	for f in hugetracker/*; do
 		if [[ "$f" = hugetracker/uge2source ]]; then
 			install -Dvsm 755 -T "$f" "$pkgdir/usr/bin/$(basename "${f@L}")"
+		elif [[ "$f" = hugetracker/rgb* || "$f" = hugetracker/ffmpeg ]]; then
+			: # Avoid using the bundled dependencies.
 		elif ! [[ -d "$f" ]]; then
 			install -Dvm 644 -T "$f" "$pkgdir/usr/share/$f"
 		elif [[ "$f" = hugetracker/hUGEDriver ]]; then
-			install -Dvm 644 -t "$pkgdir/usr/share/$f" "$f"/{*.asm,include/*}
+			install -Dvm 644 -t "$pkgdir/usr/share/$f" "$f"/*.asm
+			install -Dvm 644 -t "$pkgdir/usr/share/$f/include" "$f"/include/*
 		else
-			find "$f" -type f -exec install -Dvm 644 -t "$pkgdir/usr/share/{}" '{}' \;
+			find "$f" -type f -exec install -Dvm 644 -T '{}' "$pkgdir/usr/share/{}" \;
 		fi
 	done
 	chmod +x "$pkgdir/usr/share/hugetracker/hUGETracker"
