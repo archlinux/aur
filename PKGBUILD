@@ -1,7 +1,7 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=vpkedit-bin
-pkgver=4.2.2
+pkgver=4.2.3
 pkgrel=1
 pkgdesc="A library and CLI/GUI tool to create, read, and write several pack file formats (binary release)"
 url="https://github.com/craftablescience/VPKEdit"
@@ -11,7 +11,7 @@ depends=('hicolor-icon-theme' 'xcb-util-cursor')
 provides=("vpkedit")
 conflicts=("vpkedit")
 source=("vpkedit-$pkgver.zip::$url/releases/download/v$pkgver/VPKEdit-Linux-Installer-gcc-Release.zip")
-sha256sums=('9e6bf9fa959f4e413e600648e36e68e7c4a7738e208972b3ff5a44eb3dda9908')
+sha256sums=('e414ba7d96b49f684d8cbcfe99ee8e11e5848c8035fc120585b42d00cf355bd2')
 
 package() {
   ar x VPKEdit-$pkgver-Linux.deb
