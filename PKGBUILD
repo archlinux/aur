@@ -3,7 +3,7 @@
 _binname="kubedb"
 pkgname="${_binname}-cli"
 pkgver=0.46.0
-pkgrel=1
+pkgrel=2
 pkgdesc="kubectl plugin for KubeDB"
 arch=('any')
 url="https://${_binname}.com"
@@ -13,6 +13,8 @@ provides=("${pkgname}" "${_binname}")
 conflicts=("${pkgname}" "${_binname}")
 makedepends=('go')
 depends=('glibc')
+optdepends=('bash-completion: for shell auto-completion'
+            'zsh-completions: for shell auto-completion')
 _pkgsrc="cli-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz"
         "LICENSE.md::https://github.com/appscode/licenses/raw/1.0.0/AppsCode-Community-1.0.0.md")
@@ -21,7 +23,7 @@ sha256sums=('58c22e60fb667f8f000e19dcf9668f2a185c039c28561518163dab138f1ea14a'
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
-  mkdir -p "build"
+  mkdir -p "build" "completions"
 }
 
 build() {
@@ -32,6 +34,10 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   go build -o "build/${_binname}" ./"cmd/kubectl-dba"
+
+  for _sh in bash fish zsh powershell; do
+    ./"build/${_binname}" completion "${_sh}" > "completions/${_binname}.${_sh}"
+  done
 }
 
 check() {
@@ -46,4 +52,10 @@ package() {
   cd "${_pkgsrc}"
   install -Dm755 "build/${_binname}" "${pkgdir}/usr/bin/${_binname}"
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+  cd "completions"
+  install -Dm644 "${_binname}.bash"       "${pkgdir}/usr/share/bash-completion/completions/${_binname}"
+  install -Dm644 "${_binname}.fish"       "${pkgdir}/usr/share/fish/vendor_completions.d/${_binname}.fish"
+  install -Dm644 "${_binname}.zsh"        "${pkgdir}/usr/share/zsh/site-functions/_${_binname}"
+  install -Dm644 "${_binname}.powershell" "${pkgdir}/usr/share/powershell/Completions/${_binname}.ps1"
 }
