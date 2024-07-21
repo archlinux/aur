@@ -1,0 +1,12 @@
+pkgbase = gulrak-filesystem
+	pkgdesc = An implementation of C++17 std::filesystem for C++11/C++14/C++17/C++20)
+	pkgver = 1.5.14
+	pkgrel = 1
+	url = https://github.com/gulrak/filesystem
+	arch = any
+	license = MIT
+	makedepends = cmake
+	source = gulrak-filesystem-1.5.14.tar.gz::https://github.com/gulrak/filesystem/archive/refs/tags/v1.5.14.tar.gz
+	b2sums = 9734907da65e0f390e461d76c7b1c7e8ffa1a0f7f01e5952d69d9d6b6cc3c85e20f5e4495235f2589635fb665040bf2ee4def4d3bdcb0f3453a00ee8c4e8ac3f
+
+pkgname = gulrak-filesystem
