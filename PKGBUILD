@@ -1,6 +1,6 @@
 # Maintainer: IgorPetrovcm <igorpetrov42ru@gmail.com>
 pkgname='smdbottom-git'
-pkgver='2.1.0'
+pkgver='2.1.1'
 pkgrel=1
 pkgdesc="A set of bottom libraries for simpledot"
 arch=('x86_64')
@@ -21,5 +21,5 @@ prepare() {
 
 package() {
 	cd $pkgname-$pkgver
-	make install
+	make install clean
 }
