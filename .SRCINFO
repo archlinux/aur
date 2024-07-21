@@ -1,6 +1,6 @@
 pkgbase = pacmimi
 	pkgdesc = Arch Linux Pacman mirrorlist merging utility
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://pypi.org/project/pacmimi/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = pacmimi
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	source = pacmimi::git+https://github.com/Tblue/pacmimi?signed#tag=v1.1.1
+	source = pacmimi::git+https://github.com/Tblue/pacmimi?signed#tag=v1.1.2
 	validpgpkeys = B67BD719C23DC2A403E15EB102DE477F6DDE8B17
 	sha256sums = SKIP
 

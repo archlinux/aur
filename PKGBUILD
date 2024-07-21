@@ -1,7 +1,7 @@
 # Maintainer: Tilman BLUMENBACH <tilman+aur@ax86.net>
 
 pkgname=pacmimi
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Arch Linux Pacman mirrorlist merging utility"
 arch=(any)
