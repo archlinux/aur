@@ -12,7 +12,7 @@ md5sums=('SKIP') # Optionally, you can replace 'SKIP' with the actual checksum
 
 prepare() {
   cd "$srcdir"
-  tar xzf e-zshot-1.1.tar.gz
+  tar xzf e-zshot-$(pkgver).tar.gz
 }
 
 package() {
