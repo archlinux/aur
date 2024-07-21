@@ -1,0 +1,30 @@
+pkgbase = mandrel24-bin
+	pkgdesc = Downstream distribution of the GraalVM CE for the Quarkus web framework
+	pkgver = 24.0.2.0
+	pkgrel = 1
+	url = https://github.com/graalvm/mandrel
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	depends = alsa-lib
+	depends = bash
+	depends = freetype2
+	depends = glibc
+	depends = java-environment-common
+	depends = java-runtime-common
+	depends = libx11
+	depends = libxext
+	depends = libxi
+	depends = libxrender
+	depends = libxtst
+	depends = zlib
+	provides = java-runtime=22
+	provides = java-environment=22
+	provides = mandrel
+	options = staticlibs
+	source_x86_64 = https://github.com/graalvm/mandrel/releases/download/mandrel-24.0.2.0-Final/mandrel-java22-linux-amd64-24.0.2.0-Final.tar.gz
+	sha256sums_x86_64 = 5bff8df90796359f8e42f74d6e06c6e53016c3c08a5a05361a581cef1d3e01f4
+	source_aarch64 = https://github.com/graalvm/mandrel/releases/download/mandrel-24.0.2.0-Final/mandrel-java22-linux-aarch64-24.0.2.0-Final.tar.gz
+	sha256sums_aarch64 = 98dc36277ed4f315449a0a14629d29a4bf61b73c90e9fa900f5bb7f3bea3d3be
+
+pkgname = mandrel24-bin
