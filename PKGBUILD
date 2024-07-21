@@ -42,7 +42,9 @@ build() {
 
 check() {
 	# Not using -V, as it doesn't match the real version
-	"$srcdir/$_sourcedirectory/src/$pkgname" -h | tee '/dev/stderr' | grep -q 'Increase brightness by value$'
+	_checkoutput="$("$srcdir/$_sourcedirectory/src/$pkgname" -h)"
+	printf '%s\n' "$_checkoutput"
+	printf '%s\n' "$_checkoutput" | grep -q 'Increase brightness by value$'
 }
 
 package() {
