@@ -9,7 +9,9 @@ pkgbase = nuaur-git
 	depends = nushell
 	depends = gnupg
 	depends = devtools
-	source = nuaur-git::git+https://github.com/tororutsu/nuaur.git
+	provides = nuaur
+	conflicts = nuaur
+	source = git+https://github.com/tororutsu/nuaur.git
 	sha256sums = SKIP
 
 pkgname = nuaur-git
