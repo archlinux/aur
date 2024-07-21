@@ -2,7 +2,7 @@
 pkgname=fedistar-bin
 _name="${pkgname%-bin}"
 
-pkgver=1.9.8
+pkgver=1.9.9
 pkgrel=1
 pkgdesc="Multi-column Fediverse client for desktop"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('curl' 'wget' 'tar')
 provides=("$_name")
 conflicts=("$_name")
 source=("https://github.com/h3poteto/fedistar/releases/download/v${pkgver}/${_name}_${pkgver}_amd64.deb")
-md5sums=('1d5a1fd34dd0e8bbc7509f28a206fe77')
+md5sums=('94b0b619d46123473751a600e66d8f32')
 
 prepare() {
     ar x "${_name}_${pkgver}_amd64.deb"
