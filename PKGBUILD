@@ -2,10 +2,10 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=Exact
-_pkgver=3.2
+_pkgver=3.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=5
+pkgrel=1
 pkgdesc="Unconditional Exact Test"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -17,8 +17,8 @@ optdepends=(
   r-exactdata
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a026b58b9e016ef56f8e07d1a910114c')
-b2sums=('031c565911047d3d5906ddd71cb538e2d8a6c9bc92c90a62124162bd22d192d9e6afa08515f60648e1b58d3d63c4b02444cc1ce1c01216d4677bff40a926baf6')
+md5sums=('ab2e0f4a395b118eb19e0511ec8bc18e')
+b2sums=('70057c53731312fa7978981f396f4ff393a4ecab24a9605ab60169a4ce34141a13982dc22b6a7201c82596e642eee36d0d8c42279dd1ae4727525e23bc2de734')
 
 build() {
   mkdir build
