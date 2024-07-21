@@ -1,9 +1,10 @@
 pkgbase = android-aarch64-bzip2
-	pkgdesc = A high-quality data compression program (android)
+	pkgdesc = A high-quality data compression program (Android aarch64)
 	pkgver = 1.0.8
-	pkgrel = 3
+	pkgrel = 4
 	url = http://sources.redhat.com/bzip2
 	arch = any
+	groups = android-bzip2
 	license = custom
 	makedepends = android-environment
 	makedepends = android-pkg-config
