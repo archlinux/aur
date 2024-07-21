@@ -1,0 +1,6 @@
+[gapless]
+source = "gitlab"
+gitlab = "neithern/g4music"
+host = "gitlab.gnome.org"
+use_max_tag = true
+prefix = "v"
