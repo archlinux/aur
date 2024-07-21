@@ -5,16 +5,17 @@
 # Contributor: Daniel Hommel <dhommel@gmail.com>
 
 pkgname=mksh
-pkgver=59.c
-pkgrel=8
+pkgver=59c
+pkgrel=1
 pkgdesc='MirBSD Korn Shell'
 url='https://www.mirbsd.org/mksh.htm'
 license=('custom')
 arch=('x86_64')
 depends=('glibc')
+makedepends=('git')
 checkdepends=('ed')
 install=mksh.install
-source=("$pkgname::git+https://github.com/MirBSD/mksh.git#tag=mksh-R${pkgver//./}"
+source=("$pkgname::git+https://github.com/MirBSD/mksh.git#tag=mksh-R$pkgver"
         'no-ctty.patch')
 sha256sums=('SKIP'
             'ded3a8a3628fd5a1c7e2eed62dfe35114aafe580077a4f6f766729714c7525b5')
