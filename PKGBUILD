@@ -16,6 +16,7 @@ depends=(
        'inotify-tools'
        'dunst')
 optdepends=(
+        'limine-dracut-support-git: It automates the installation and removal of kernels for Limine.'
         'rsync: This is the second restore method'
         'journalctl-desktop-notification: It notifies you on Desktop when an error occurs.'
 )

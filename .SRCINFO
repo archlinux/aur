@@ -14,6 +14,7 @@ pkgbase = limine-snapper-sync-git
 	depends = btrfs-progs
 	depends = inotify-tools
 	depends = dunst
+	optdepends = limine-dracut-support-git: It automates the installation and removal of kernels for Limine.
 	optdepends = rsync: This is the second restore method
 	optdepends = journalctl-desktop-notification: It notifies you on Desktop when an error occurs.
 	conflicts = limine-snapper-sync
