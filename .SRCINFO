@@ -1,13 +1,16 @@
 pkgbase = gnome-shell-extension-arc-menu-git
 	pkgdesc = Application menu extension for GNOME Shell
 	pkgver = 57.r5.g9b7e160
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/arcmenu/ArcMenu
 	arch = any
 	license = GPL-2.0-or-later
 	makedepends = git
+	depends = gettext
 	depends = gnome-shell
 	depends = gnome-menus
+	depends = xdg-user-dirs-gtk
+	depends = xdg-utils
 	provides = gnome-shell-extension-arc-menu=57
 	conflicts = gnome-shell-extension-arc-menu
 	source = arcmenu::git+https://gitlab.com/arcmenu/ArcMenu.git

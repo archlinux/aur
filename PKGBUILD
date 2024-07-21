@@ -4,15 +4,18 @@
 _pkgname="gnome-shell-extension-arc-menu"
 pkgname="$_pkgname-git"
 pkgver=57.r5.g9b7e160
-pkgrel=1
+pkgrel=2
 pkgdesc="Application menu extension for GNOME Shell"
 url="https://gitlab.com/arcmenu/ArcMenu"
 license=('GPL-2.0-or-later')
 arch=('any')
 
 depends=(
+  'gettext'
   'gnome-shell'
   'gnome-menus'
+  'xdg-user-dirs-gtk'
+  'xdg-utils'
 )
 makedepends=(
   'git'
@@ -38,5 +41,5 @@ build() {
 
 package() {
   cd "$_pkgsrc"
-  make VERSION="$pkgver" DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" install
 }
