@@ -1,3 +1,6 @@
+# Disabled - the link on https://cloudicweb.nhi.gov.tw/cloudic/system/SMC/Eventesting.aspx is dead (HTTP 404),
+# and the old version is still available
+
 [nhiicc]
 source = "regex"
 url = "https://cloudicweb.nhi.gov.tw/cloudic/system/SMC/Eventesting.aspx"
