@@ -1,6 +1,6 @@
 # Maintainer: Alexandre Andrade <alex.d.a_14@outlook.pt>
 pkgname=apidog-bin
-pkgver=2.6.3
+pkgver=2.6.4
 pkgrel=1
 pkgdesc="Design. Debug. Test. Document. Mock.Build APIs Faster & Together."
 provides=('apidog')
@@ -13,7 +13,7 @@ source_x86_64=(
 	"Apidog-linux-manual-latest.tar.gz::https://file-assets.apidog.com/download/Apidog-linux-manual-latest.tar.gz"
 	"apidog.desktop"
 )
-sha256sums_x86_64=('acdedf76571555b5adfe4ac7974eb74b90d2aafd25bacc7acf59855d55fbdb46'
+sha256sums_x86_64=('441080e6cee689e31b6e7c5a545308b5b16e94b099d05795f1a27ac65b9e1f43'
                    'df7ead28acf1b9ed171b08c4db34efbe0d1689bce594ccc68408e75af9cb8bc5')
 
 package() {
