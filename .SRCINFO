@@ -1,7 +1,7 @@
 pkgbase = py++
 	pkgdesc = Py++ - Boost.Python code generator
-	pkgver = 1.8.4
-	pkgrel = 2
+	pkgver = 1.8.6
+	pkgrel = 1
 	url = https://pyplusplus.readthedocs.io/en/latest/
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = py++
 	depends = python
 	depends = python-pygccxml
 	depends = castxml
-	source = https://github.com/ompl/pyplusplus/archive/refs/tags/1.8.4.tar.gz
-	sha256sums = 10379d3b2c78612d9097a6533b4da5ad91f91377022bb6f6052549579b4991ee
+	source = py++-1.8.6.tar.gz::https://github.com/ompl/pyplusplus/archive/refs/tags/1.8.6.tar.gz
+	sha256sums = 466b1de2c23bf8192c986a6fa5a9e798d4222d9b7a9d196a7a1fa97374205b53
 
 pkgname = py++
