@@ -1,0 +1,14 @@
+pkgbase = mp3wrap-bin
+	pkgdesc = Tool for wrapping mp3 files. A free independent alternative to AlbumWrap
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://mp3wrap.sourceforge.net
+	arch = i686
+	license = LGPL-3.0-or-later
+	depends = lib32-glibc
+	provides = mp3wrap
+	conflicts = mp3wrap
+	source_i686 = mp3wrap-0.5-i686.deb::https://downloads.sourceforge.net/sourceforge/mp3wrap/mp3wrap_0.5-1_i386.deb
+	sha256sums_i686 = acce5b4c37fa224f2f6b349d3c43e7e644589e22d55271d4fbb3ad688e98ee4a
+
+pkgname = mp3wrap-bin
