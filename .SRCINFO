@@ -1,0 +1,15 @@
+pkgbase = nuaur-git
+	pkgdesc = A Nushell script to build, sign, and search AUR packages, for a local Repo.
+	pkgver = 5.7c101cd
+	pkgrel = 1
+	url = https://github.com/tororutsu/nuaur
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = nushell
+	depends = gnupg
+	depends = devtools
+	source = nuaur-git::git+https://github.com/tororutsu/nuaur.git
+	sha256sums = SKIP
+
+pkgname = nuaur-git
