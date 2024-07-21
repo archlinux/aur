@@ -8,7 +8,7 @@ url="https://github.com/felipealfonsog/ConnWifiMaster"
 license=('BSD-3-Clause')
 depends=('gtk3' 'connman')
 source=("https://github.com/felipealfonsog/ConnWifiMaster/archive/refs/tags/v.${pkgver}.tar.gz")
-sha256sums=('aadafb9297877b7df9d423a77b09c6ca0de7f2eb55ad728df588f74528058b44')
+sha256sums=('58ae14c7d5161d070579bc82857a92b51737fb25fbafd9bb3cd1f0ec2852b3c8')
 
 prepare() {
   tar xf "v.${pkgver}.tar.gz" -C "$srcdir" --strip-components=1
