@@ -8,7 +8,7 @@ arch=('any')
 url="https://www.dcmembers.com/jibsen/download/61/"
 license=('custom')
 depends=('fontconfig')
-makedepends=('fonttosfnt')
+makedepends=('xorg-fonttosfnt')
 conflicts=('dina-font-otb')
 source=("dina-$pkgver-new.zip::https://www.dcmembers.com/jibsen/download/61/?wpdmdl=61")
 md5sums=('028424baac750e9fd0f54df03202e5d0')

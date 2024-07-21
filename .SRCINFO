@@ -5,7 +5,7 @@ pkgbase = dina8-font-otb
 	url = https://www.dcmembers.com/jibsen/download/61/
 	arch = any
 	license = custom
-	makedepends = fonttosfnt
+	makedepends = xorg-fonttosfnt
 	depends = fontconfig
 	conflicts = dina-font-otb
 	source = dina-2.92-new.zip::https://www.dcmembers.com/jibsen/download/61/?wpdmdl=61
