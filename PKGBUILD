@@ -2,7 +2,7 @@
 
 _pkgname="omekasy"
 pkgname="${_pkgname}-bin"
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Convert alphanumeric characters to various styles defined in Unicode"
 arch=('x86_64')
@@ -12,8 +12,8 @@ depends=('glibc' 'gcc-libs')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
-source_x86_64=("${_pkgsrc}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('8d07c0fe49474d794f83fd455784201117a33f7062e18df9b6c13a6826c18e5c')
+source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
+sha256sums_x86_64=('fd4f32a0bf57f1d4fa0dc7f3425d9b46201c01152d7225ae7eb6b4bc2891e384')
 
 package() {
   cd "${srcdir}/archive"
