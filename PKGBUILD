@@ -3,8 +3,6 @@
 pkgname=fav-git
 _pkgname="${pkgname%-git}"
 pkgver=v0.2.29.r1.gd8fc862
-# _tag="$(git -C "$_pkgname" describe --tags --abbrev=0)"
-_commit="$(git -C "$_pkgname" log -1 --pretty=format:%H)"
 pkgrel=1
 pkgdesc='Back up your favorite bilibili resources with CLI'
 url="https://github.com/kingwingfly/${_pkgname}"
@@ -15,10 +13,8 @@ provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-bin")
 makedepends=('cargo' 'git' 'pkgconf')
 
-source=("$_pkgname::git+$url.git"
-	"$url/raw/${_commit}/LICENSE")
-sha256sums=('SKIP'
-            '54e2d4c99f8d0eacb6dd9cae4c1bddce86fe7926d29cdb0ceded4d3797df0d65')
+source=("$_pkgname::git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "$_pkgname"
@@ -33,6 +29,9 @@ prepare() {
 	cd "$_pkgname"
 	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+
+	# copy LICENSE file
+	cp LICENSE $srcdir/
 }
 
 build() {

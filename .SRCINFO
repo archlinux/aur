@@ -12,8 +12,6 @@ pkgbase = fav-git
 	conflicts = fav
 	conflicts = fav-bin
 	source = fav::git+https://github.com/kingwingfly/fav.git
-	source = https://github.com/kingwingfly/fav/raw/d8fc862b36b31525f0aeff47ec5552027e184ffa/LICENSE
 	sha256sums = SKIP
-	sha256sums = 54e2d4c99f8d0eacb6dd9cae4c1bddce86fe7926d29cdb0ceded4d3797df0d65
 
 pkgname = fav-git
