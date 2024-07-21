@@ -15,7 +15,9 @@ sha512sums=('31f3494be5fcde45a3a0138948b1ec0a73b56f8a999449cfd96c7eacd8d1dbae0fd
 _sourcedirectory="$_projectname-$pkgver"
 
 check() {
-	fc-scan "$srcdir/$_sourcedirectory/fonts/materialdesignicons-webfont.ttf" | tee '/dev/stderr' | grep -q 'family: "Material Design Icons"'
+	_checkoutput="$(fc-scan "$srcdir/$_sourcedirectory/fonts/materialdesignicons-webfont.ttf")"
+	printf '%s\n' "$_checkoutput"
+	printf '%s\n' "$_checkoutput" | grep -q 'family: "Material Design Icons"'
 }
 
 package() {
