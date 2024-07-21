@@ -1,6 +1,6 @@
 pkgbase = limine-snapper-sync-git
 	pkgdesc = Snapper integration for Limine bootloader.
-	pkgver = r12.13908ee
+	pkgver = r1.05ff72b
 	pkgrel = 1
 	url = https://gitlab.com/Zesko/limine-snapper-sync
 	arch = any
