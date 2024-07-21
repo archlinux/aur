@@ -85,7 +85,9 @@ _sourcedirectory="fonts-$_commit"
 
 check() {
 	# Test one font
-	fc-scan "$srcdir/$_sourcedirectory/ofl/alegreya/Alegreya[wght].ttf" | tee '/dev/stderr' | grep -q 'family: "Alegreya"'
+	_checkoutput="$(fc-scan "$srcdir/$_sourcedirectory/ofl/alegreya/Alegreya[wght].ttf")"
+	printf '%s\n' "$_checkoutput"
+	printf '%s\n' "$_checkoutput" | grep -q 'family: "Alegreya"'
 }
 
 package() {
