@@ -1,7 +1,7 @@
---- old/install.js	2022-07-15 23:03:07.632455479 +0900
-+++ new/install.js	2022-07-15 23:03:50.225553498 +0900
-@@ -40,10 +40,6 @@ DEST_DIR = argv.DEST_DIR;
- async function install() {
+--- old/install.js	2024-07-21 11:42:13.920979705 +0900
++++ new/install.js	2024-07-21 11:42:36.466023502 +0900
+@@ -43,9 +43,5 @@ DEST_DIR = argv.DEST_DIR;
+ export async function install() {
    console.log(`Copying nody-greeter to "${DEST_DIR}"...`);
    await makeCopy(INSTALL_ROOT, DEST_DIR);
 -  fs.createSymlinkSync(
@@ -10,4 +10,3 @@
 -  );
    console.log("\x1b[92mSUCCESS!!\x1b[0m");
  }
- 

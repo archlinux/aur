@@ -1,17 +1,18 @@
 # Maintainer: haxibami <contact at haxibami dot net>
 
 pkgname=nody-greeter
-pkgver=1.5.2
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="LightDM greeter that allows to create wonderful themes with web technologies. Made in Node.js"
 arch=("any")
 url="https://github.com/JezerM/nody-greeter"
 license=("GPL3")
-depends=("lightdm" "gobject-introspection" "cairo")
-makedepends=("git" "nodejs<17" "npm" "python3")
+depends=("lightdm" "gobject-introspection" "cairo" "xorg-xsetroot")
+makedepends=("git" "nodejs<19" "npm" "python3")
+conflicts=('web-greeter')
 source=("${pkgname}-${pkgver}::git+${url}.git#tag=${pkgver}" "package.patch")
 sha256sums=('SKIP'
-            'bbea2e0dbded27707814e5844631a87b4b38a931011a0fa92ad0c3446fdce7c2')
+            '1ad9ec249d275f92f57800c0c78ed3fa492b6227e7e7ad85aaf528027c9c4a17')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
