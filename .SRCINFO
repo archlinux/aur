@@ -1,9 +1,10 @@
 pkgbase = android-x86-64-highway
 	pkgdesc = A C++ library that provides portable SIMD/vector intrinsics (Android x86-64)
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/highway/
 	arch = any
+	groups = android-highway
 	license = Apache-2.0
 	license = BSD-3-Clause
 	makedepends = android-cmake
