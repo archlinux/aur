@@ -18,7 +18,7 @@ provides=("${_pkgname}" "${_binname}")
 conflicts=("${_pkgname}" "${_binname}")
 _pkgsrc="${_pkgname}-${pkgver}"
 source=("README-${pkgver}.md::${_url}/raw/v${pkgver}/README.md"
-        "LICENSE-${pkgver}.md::https://github.com/appscode/licenses/raw/1.0.0/AppsCode-Community-1.0.0.md")
+        "LICENSE.md::https://github.com/appscode/licenses/raw/1.0.0/AppsCode-Community-1.0.0.md")
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${_url}/releases/download/v${pkgver}/kubectl-dba-linux-amd64.tar.gz")
 source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${_url}/releases/download/v${pkgver}/kubectl-dba-linux-arm64.tar.gz")
 source_arm=("${_pkgsrc}-arm.tar.gz::${_url}/releases/download/v${pkgver}/kubectl-dba-linux-arm.tar.gz")
@@ -61,7 +61,7 @@ package() {
   cd "${srcdir}"
   install -Dm755 "kubectl-dba-linux-${_arch}" "${pkgdir}/usr/bin/${_binname}"
   install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -Dm644 "LICENSE-${pkgver}.md" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.md"
+  install -Dm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.md"
 
   cd "completions"
   install -Dm644 "${_binname}.bash"       "${pkgdir}/usr/share/bash-completion/completions/${_binname}"
