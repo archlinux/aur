@@ -30,7 +30,9 @@ build() {
 }
 
 check() {
-	"$srcdir/$_sourcedirectory/$pkgname" --version | tee '/dev/stderr' | grep -q "^RenRot version $pkgver"
+	_checkoutput="$("$srcdir/$_sourcedirectory/$pkgname" --version)"
+	printf '%s\n' "$_checkoutput"
+	printf '%s\n' "$_checkoutput" | grep -q "^RenRot version $pkgver"
 }
 
 package() {
