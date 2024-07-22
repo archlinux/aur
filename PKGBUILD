@@ -1,13 +1,11 @@
-# Maintainer: Brett Cornwall <ainola@archlinux.org>
-# Maintainer: Robin Candau <antiz@archlinux.org>
-# Contributor: Maxim Baz <archlinux at maximbaz dot com>
-# Contributor: Omar Pakker
+# Maintainer: Adrianne Scales <adriannepscales at gmail dot com>
 
-pkgname=wlroots0.17
+pkgname=wlroots0.17-nvidia
 pkgver=0.17.4
 pkgrel=1
 license=('MIT')
-pkgdesc='Modular Wayland compositor library'
+pkgdesc='Patched version of the wlroots library that is compatible with the Nvidia proprietary driver.'
+wl_pkgname="wlroots0.17"
 url='https://gitlab.freedesktop.org/wlroots/wlroots'
 arch=('x86_64')
 depends=(
@@ -42,25 +40,33 @@ optdepends=(
 provides=(
     'libwlroots.so'
 )
+conflicts=(
+    'wlroots0.17'
+)
 source=(
     "https://gitlab.freedesktop.org/wlroots/wlroots/-/releases/$pkgver/downloads/wlroots-$pkgver.tar.gz"
     "https://gitlab.freedesktop.org/wlroots/wlroots/-/releases/$pkgver/downloads/wlroots-$pkgver.tar.gz.sig"
     "Revert-layer-shell-error-on-0-dimension-without-anch.patch"
+    "nvidia.patch"
 )
-sha256sums=('d3190d19d03446955e68a92c77d4c74af78384b0db39a85a0b1582adc80f36d1'
-            'SKIP'
-            '1c05f0500a96a3721317d01619aa42d8ad696905a378249e8405968c4e16a065')
 validpgpkeys=(
     '34FF9526CFEF0E97A340E2E40FDE7BE0E88F5E48' # Simon Ser
     '9DDA3B9FA5D58DD5392C78E652CB6609B22DA89A' # Drew DeVault
     '4100929B33EEB0FD1DB852797BC79407090047CA' # Sway signing key
 )
+sha256sums=('d3190d19d03446955e68a92c77d4c74af78384b0db39a85a0b1582adc80f36d1'
+            'SKIP'
+            '1c05f0500a96a3721317d01619aa42d8ad696905a378249e8405968c4e16a065'
+            '852ed6ddced4ebce329bc471ae64b36a2a33e3551bb756ea89808dc4ac0a1b2b')
 
 prepare() {
     cd wlroots-"${pkgver}"
     # Allow a minor protocol violation until phosh is fixed without this patch
     # phosh crashes on launch.
     patch -Np1 -i "${srcdir}/Revert-layer-shell-error-on-0-dimension-without-anch.patch"
+
+    # Allow for GLES2 rendering with NVIDIA
+    patch -Np1 -i "${srcdir}/nvidia.patch"
 }
 
 build() {
@@ -86,3 +92,7 @@ package() {
       fi
     done
 }
+
+groups=('modified')
+
+

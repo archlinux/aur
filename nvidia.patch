@@ -1,0 +1,13 @@
+diff -ura --color package.org/render/gles2/pass.c package.new/render/gles2/pass.c
+--- package.org/render/gles2/pass.c	2024-06-27 11:25:08.000000000 -0700
++++ package.new/render/gles2/pass.c	2024-07-21 19:59:36.704442186 -0700
+@@ -36,7 +36,8 @@
+ 		clock_gettime(CLOCK_MONOTONIC, &timer->cpu_end);
+ 	}
+ 
+-	glFlush();
++	// Make things work with NVIDIA! :)
++	glFinish();
+ 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+ 
+ 	pop_gles2_debug(renderer);
