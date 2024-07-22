@@ -1,17 +1,24 @@
 # Maintainer: Erik Reider <erik.reider@protonmail.com>
 _pkgname=swayfx
 pkgname="$_pkgname-git"
-pkgver=r7047.8ad2605c
-pkgrel=2
+pkgver=r7057.da559b3e
+pkgrel=1
 license=("MIT")
 pkgdesc="SwayFX: Sway, but with eye candy!"
-makedepends=(git meson ninja scdoc setconf wayland-protocols)
+makedepends=(
+	"git"
+	"meson"
+	"ninja"
+	"scdoc"
+	"setconf"
+	"wayland-protocols"
+)
 depends=(
 	"cairo"
 	"gdk-pixbuf2"
 	"libevdev.so"
 	"libinput"
-	"scenefx-git"
+	"scenefx"
 	"libjson-c.so"
 	"libpixman-1.so"
 	"libudev.so"
@@ -64,6 +71,7 @@ pkgver() {
 }
 
 build() {
+	export PKG_CONFIG_PATH='/usr/lib/wlroots0.17/pkgconfig'
 	arch-meson \
 		-Dwerror=false \
 		-Dsd-bus-provider=libsystemd \
