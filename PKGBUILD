@@ -3,7 +3,7 @@ pkgname=borg-explorer-bin
 _pkgname="Borg Explorer"
 pkgver=0.0.9
 _electronversion=22
-pkgrel=3
+pkgrel=4
 pkgdesc="An electron-based UI for exploring Borg Backup repositories"
 arch=("x86_64")
 url="https://github.com/Netruk44/borg-repository-explorer"
@@ -19,7 +19,6 @@ makedepends=(
 options=(
     '!strip'
     '!emptydirs'
-    #'!staticlibs'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${_pkgname// /.}-linux-x64-${pkgver}.zip"
@@ -28,7 +27,7 @@ source=(
 )
 sha256sums=('53a8d5ca6567f6cbd371d8685e071ef14a4683823344f95e4c1ff8ca740b6046'
             '71d8ae0fab83a418158860542b02d9df28ef74b599b75e57ac2057bdf478aaaa'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
@@ -36,7 +35,7 @@ build() {
         -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --pkgname="${pkgname%-bin}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
+    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
