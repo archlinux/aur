@@ -2,7 +2,7 @@
 pkgname=e-zshot
 pkgver=1.1.2
 pkgrel=1
-pkgdesc="CLI to automate taking screenshots and uploading them to e-z.host"
+pkgdesc="CLI to automate taking screenshots and uploading them to e-z.host."
 arch=('any')
 url="https://github.com/RobinTT69/e-z-screenshot-linux"
 license=('custom')
