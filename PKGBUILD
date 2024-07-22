@@ -2,7 +2,7 @@
 
 pkgname=vbox-office-launcher-git
 pkgver=0.1.2.r0.g7929a6b
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for launching Windows applications in a VirtualBox environment"
 arch=('any')
 url="https://github.com/Gunther-Schulz/vbox-windows-app-launcher"
@@ -15,8 +15,8 @@ source=("git+https://github.com/Gunther-Schulz/vbox-windows-app-launcher.git")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/vbox-windows-app-launcher"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+    cd "$srcdir/${pkgname%-git}" || cd "$srcdir/vbox-windows-app-launcher"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//' || echo "0.0.0"
 }
 
 package() {
@@ -34,4 +34,4 @@ package() {
     
     # Install README
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-    }
+}
