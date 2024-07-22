@@ -1,0 +1,39 @@
+user=natfrp
+confDir="/etc/natfrp"
+service=natfrp.service
+
+pre_install() {
+    id $user >& /dev/null
+    if [ $? -ne 0 ]; then
+        useradd -r -M -s /usr/bin/nologin $user
+    fi
+}
+
+post_install() {
+    if [ ! -f $confDir/config.json ]; then
+        chown natfrp:natfrp -R $confDir
+        echo -e 'Please go to the URL below to finish setup.'
+        env NATFRP_SERVICE_WD=/etc/natfrp NATFRP_FRPC_PATH=/usr/bin/natfrpc natfrp-service webui --init
+        systemctl daemon-reload
+        systemctl start $service
+    fi
+    if systemctl -q is-active $service; then
+        systemctl daemon-reload
+        systemctl restart $service
+    fi
+}
+pre_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    if systemctl -q is-active $service; then
+        systemctl disable --now $service
+    fi
+}
+post_remove() {
+    id $user >& /dev/null
+    if [ $? -eq 0 ]; then
+        userdel $user
+    fi
+}

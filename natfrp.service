@@ -1,0 +1,19 @@
+[Unit]
+Description=SakuraFrp Launcher
+After=network.target
+
+[Service]
+User=natfrp
+Group=natfrp
+
+Type=simple
+TimeoutStopSec=20
+
+Restart=always
+RestartSec=5s
+Environment='NATFRP_SERVICE_WD=/etc/natfrp' 'NATFRP_FRPC_PATH=/usr/bin/natfrpc'
+
+ExecStart=/usr/bin/natfrp-service --daemon
+
+[Install]
+WantedBy=multi-user.target
