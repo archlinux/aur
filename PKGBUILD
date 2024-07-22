@@ -5,10 +5,10 @@ pkgname=steam-rom-manager-git
 pkgdesc="An app for managing ROMs in Steam (Git version)."
 license=("GPL-3.0-only")
 url="https://github.com/SteamGridDB/steam-rom-manager"
-pkgver=2.5.17.r1.g08452a1c
+pkgver=2.5.21
 pkgrel=1
 arch=("x86_64")
-makedepends=("git" "nodejs" "npm" "libxcrypt-compat" "python-setuptools")
+makedepends=("git" "nodejs" "nodejs-cross-env" "typescript" "yarn" "libxcrypt-compat" "python-setuptools")
 depends=("nss" "atk" "at-spi2-atk" "gtk3" "alsa-lib")
 provides=("steam-rom-manager")
 conflicts=("steam-rom-manager")
@@ -31,12 +31,14 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  npm ci
+
+  yarn install --frozen-lockfile
 }
 
 
 build() {
   cd $pkgname
+
   npm run build:dist
   npm run build:linux
 }
