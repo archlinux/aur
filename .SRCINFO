@@ -1,0 +1,16 @@
+pkgbase = vbox-office-launcher-git
+	pkgdesc = A tool for launching Microsoft Office applications in a VirtualBox environment
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Gunther-Schulz/vbox-office-launcher
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = bash
+	depends = virtualbox
+	optdepends = dunst: for desktop notifications
+	optdepends = wmctrl: for window management
+	source = git+https://github.com/Gunther-Schulz/vbox-office-launcher.git
+	md5sums = SKIP
+
+pkgname = vbox-office-launcher-git
