@@ -1,9 +1,10 @@
 # Maintainer: Dominicentek <dominicentekgaming@gmail.com>
 pkgname=saturn-studio
-pkgver=1.4.0.1
+pkgver=1.5
 pkgrel=1
 pkgdesc="A cross-platform SFM-like video editor for Super Mario 64. Fork of Saturn by sm64rise."
 arch=('x86_64')
+optdepends=('ffmpeg: exporting video files')
 depends=('sdl2' 'glew')
 makedepends=('gcc' 'make' 'git' 'python3')
 source=('https://github.com/Dominicentek/saturn-studio/archive/studio.tar.gz' 'makepkg.patch')
