@@ -3,7 +3,7 @@ _appname=kanban-desktop
 pkgname="live2d-${_appname}-bin"
 pkgver=2.8.0
 _electronversion=22
-pkgrel=5
+pkgrel=6
 pkgdesc="An AI Based live2d Kanban for Desktop Users Using Electron.基于Electron制作的桌面看板娘，支持日程提醒、小窗模式、ChatGPT集成、网页搜索、本地moc模型加载与独立设置界面等"
 arch=('x86_64')
 url="https://studio.zerolite.cn/2022/07/02/waifuprojv2/"
@@ -26,7 +26,7 @@ source=(
 sha256sums=('ec355432de2d20013c2c80c576dda280da5c4103441f72784a3b998a2af6094f'
             '942783587666a3a1bddea93afd349e26f798ed19dcd7a52449d0ae3322fcff7c'
             '105e68828a678c96212f99c8159ad29c94032f8c2de2a0035af097164b247d7f'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
@@ -34,7 +34,7 @@ build() {
         -e "s|@cfgdirname@|${_appname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --pkgname="live2d-${_appname}-bin" --categories="Utility" --name="${pkgname%-bin}" --exec="${pkgname%-bin} %U"
+    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname%-bin}" --exec="${pkgname%-bin} %U"
  }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
