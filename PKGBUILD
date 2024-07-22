@@ -3,7 +3,7 @@
 
 _pkgname=lz4
 pkgname=lib32-lz4
-pkgver=1.9.4
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='Extremely fast compression algorithm (32-bit)'
 arch=('x86_64')
@@ -14,7 +14,7 @@ checkdepends=('diffutils')
 depends=('lz4' 'lib32-glibc')
 provides=('liblz4.so')
 source=("git+https://github.com/lz4/lz4.git#tag=v$pkgver")
-sha256sums=('0b6407091d387a35922956db45a011e0b6bf72d97c462ef10802e81e969089c8')
+sha256sums=('487f9bc24fdaf589e2f4bb23dd98b1f21a71b643db09251145616587c9468555')
 
 build() {
   cd ${_pkgname}
