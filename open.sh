@@ -10,6 +10,12 @@ link="${realDirBase}${link}"
 
 echo "[Info] received a request: $@, translated to ${link}"
 
+/usr/lib/flatpak-xdg-utils/xdg-open $(dirname "${link}")
+
+if [[ $? = 0 ]]; then
+	exit 0
+fi
+
 if [ -f /usr/bin/dbus-send ]; then
 	echo "[Info] Initiating D-Bus call..."
 	dbus-send --print-reply --dest=org.freedesktop.FileManager1 \
