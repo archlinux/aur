@@ -64,7 +64,7 @@ url='http://www.microsoft.com/typography/fonts/product.aspx?PID=164'
 license=(custom)
 provides=(ttf-font ttf-ms-win10)
 conflicts=(ttf-vista-fonts ttf-ms-win11-auto ttf-ms-win11)
-makedepends=(udisks2 p7zip httpfs2-2gbplus udftools)
+makedepends=(udisks2 p7zip httpfs2-2gbplus wget udftools)
 
 # URL of ISO file from which to extract the fonts.
 # Must be HTTP due to limitations of httpfs2.
@@ -430,7 +430,7 @@ prepare() {
       fi
 
       echo "  - Downloading ISO"
-      curl -JLO "$_iso"
+      wget --no-verbose -c --tries=20 --waitretry=20 --timeout=60  "$_iso"
       echo "  - Extracting Windows installation image"
       7z x $(echo "$_iso" | awk -F "/" '{print $NF}') sources/install.wim
 
