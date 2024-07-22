@@ -25,11 +25,7 @@ build() {
 	make
 }
 
-check() {
-	_checkoutput="$("$srcdir/$_sourcedirectory/build/src/$pkgname" -v)"
-	printf '%s\n' "$_checkoutput"
-	printf '%s\n' "$_checkoutput" | grep -q "^$pkgname $pkgver$"
-}
+# Unable to test functionality, as this requires an active X11/Wayland session to call -v
 
 package() {
 	cd "$srcdir/$_sourcedirectory/build/"
