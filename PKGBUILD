@@ -1,7 +1,7 @@
 # Maintainer: Vladimir Bauer <vbauerster at gmail dot com>
 pkgname=getparty
 pkgdesc='HTTP download manager with multi-parts'
-pkgver=1.21.2
+pkgver=1.21.3
 pkgrel=1
 arch=('x86_64' 'i686' 'aarch64')
 url='https://github.com/vbauerster/getparty'
@@ -10,7 +10,7 @@ depends=('glibc')
 makedepends=('git' 'go')
 
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('002bb9f5595101fb7b9d12fb141172fc4913359bd23877f7492635f19ddceff6')
+sha256sums=('2128b210b510eec82bb05d1eed0cd3cf88dc016044b0dcb8c6d78ec4976ddc7d')
 
 build() {
   local _commit _flags
