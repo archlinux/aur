@@ -1,7 +1,7 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname=kelvpn
 pkgver=7.6.6
-pkgrel=5
+pkgrel=6
 pkgdesc="KelVPN is a decentralized quantum-secure VPN service. It provides the highest level of protection for your network connection, including quantum threat protection."
 arch=('x86_64')
 url="https://kelvpn.com/"
@@ -15,6 +15,7 @@ depends=(fontconfig freetype2 libgl libpng libx11 libxcb libxrandr networkmanage
 
 package() {
 	bsdtar -xf data.tar.xz -C "$pkgdir/"
+	mkdir -p "$pkgdir"/usr/bin
 	chmod -R 755 "$pkgdir/opt/$pkgname/bin"
 	ln -sf "$pkgdir/opt/$pkgname/bin/KelVPN" "$pkgdir/usr/bin/$pkgname"
 	install -Dm 644 "$pkgdir/opt/$pkgname/share/KelVPN.desktop" -t "$pkgdir/usr/share/applications/"
