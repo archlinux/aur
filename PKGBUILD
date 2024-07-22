@@ -1,33 +1,37 @@
-# Maintainer: Thomas Hipp <thomashipp (at) gmail (dot) com>
+# Maintainer: Jasper <j@sperp.dev>
 
 pkgname=glimpse-git
-pkgver=2.3.5.r9.g550d6e1
+pkgver=r66.1cb3747
 pkgrel=1
-pkgdesc='GLIMPSE measurement client.'
-arch=('i686' 'x86_64')
-url='https://www.measure-it.net'
-license=('BSD')
-makedepends=('git' 'qt5-base')
-install=glimpse-git.install
-source=('git://github.com/HSAnet/glimpse_client.git#branch=master')
+pkgdesc="A simple GTK3 launcher/finder utility."
+depends=('xdg-utils' 'gtk3' 'sqlite')
+makedepends=('rust' 'cargo' 'git')
+license=('GPL3')
+arch=('i686' 'x86_64' 'aarch64')
+url="https://github.com/jaspwr/glimpse"
+
+source=("$pkgname::git+https://github.com/jaspwr/glimpse#branch=main")
 sha256sums=('SKIP')
 
-_gitname=glimpse_client
-
 pkgver() {
-	cd "${srcdir}/${_gitname}"
-	git describe --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "$pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+prepare() {
+    cd "$pkgname"
+    cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-	cd "${_gitname}"
-	qmake
-	make
+    cd "$pkgname"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --release
 }
 
 package() {
-	cd "${_gitname}"
-	make INSTALL_ROOT="$pkgdir/" install
-	install -Dm644 LICENSE.txt \
-		${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+    cd "$pkgname"
+    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/glimpse"
+    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/glimpse-indexer"
 }
