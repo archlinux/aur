@@ -1,7 +1,7 @@
 pkgbase = peazip
 	pkgdesc = Cross-platform file and archive manager (Qt6)
 	pkgver = 9.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/peazip/PeaZip
 	arch = i686
 	arch = x86_64
@@ -10,11 +10,8 @@ pkgbase = peazip
 	makedepends = lazarus
 	makedepends = xmlstarlet
 	depends = qt6pas
-	optdepends = paq8o
-	optdepends = quad
 	optdepends = unace
 	optdepends = upx
-	optdepends = zpaq
 	provides = peazip=9.8.0
 	conflicts = peazip
 	options = !debug

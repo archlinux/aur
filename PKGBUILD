@@ -7,7 +7,7 @@
 _pkgname="peazip"
 pkgname="$_pkgname"
 pkgver=9.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross-platform file and archive manager (${_widgets^})"
 url="https://github.com/peazip/PeaZip"
 license=('LGPL-3.0-or-later')
@@ -19,11 +19,8 @@ makedepends=(
   'xmlstarlet'
 )
 optdepends=(
-  'paq8o'
-  'quad'
   'unace'
   'upx'
-  'zpaq'
 )
 
 case "${_widgets::1}" in
