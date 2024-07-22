@@ -3,7 +3,7 @@ pkgname=quicknote
 pkgver=2.0.1
 _electronversion=22
 _nodeversion=18
-pkgrel=6
+pkgrel=7
 pkgdesc="Helps to paste some random text or take some notes right from your taskbar!"
 arch=('any')
 url="https://srilakshmikanthanp.github.io/quicknote/"
@@ -19,17 +19,18 @@ makedepends=(
     'yarn'
     'curl'
     'nvm'
+    'git'
 )
 options=(
     '!strip'
     '!emptydirs'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('492ef05b12571e02f5bac3092084e99f45f3f6c797693e51be20c0b111a77e55'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+sha256sums=('ce47dcab42d0f5a925e991c113a0f8847d134a15ebde848fab7f384c7dad9c11'
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -44,13 +45,13 @@ build() {
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${pkgname}" --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
+    gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}-${pkgver}"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-    export ELECTRONVERSION="${_electronversion}"
+    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
+    #export ELECTRONVERSION="${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
     touch "${srcdir}/.electron-gyp/.yarnrc"
@@ -62,9 +63,9 @@ build() {
     else
         echo "Your network is OK."
     fi
-    sed "s|\"${pkgname}.png\"|\"..\/..\/${pkgname}\/${pkgname}.png\"|g" -i src/electron/constants/constants.ts
-    yarn install --no-lockfile --cache-folder "${srcdir}/.yarn_cache"
-    yarn run package
+    sed "s|process.resourcesPath|\"\/usr\/lib\/${pkgname}\"|g" -i src/electron/constants/constants.ts
+    NODE_ENV=development yarn install --no-lockfile --cache-folder "${srcdir}/.yarn_cache"
+    NODE_ENV=production yarn run package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
