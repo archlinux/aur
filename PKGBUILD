@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=protr
-_pkgver=1.7-1
+_pkgver=1.7-2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -22,8 +22,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('cd8670e19c3830a3f73a63d353381448')
-b2sums=('8646784caaa71c364755aae443f3b2b84a4c921b01dd137aac43a5cc7e8be59fbc6268969132601d1f1201971c17f98865f2003090f182c17dd7ac6f2410ea3d')
+md5sums=('e9c3d42083296c5283eca9ce7834fb3c')
+b2sums=('9d3ffb65edad4fd79ef4761888d761db1217957bddbd2f40adde03dede21638630ef18a37f24f63507ec0746e0082598b15d7cac7d9f56239ae4437d2c5c8034')
 
 build() {
   mkdir build
