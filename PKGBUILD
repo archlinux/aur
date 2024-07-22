@@ -3,7 +3,7 @@ pkgname=picturama-bin
 _pkgname=Picturama
 pkgver=1.3.0
 _electronversion=9
-pkgrel=3
+pkgrel=4
 pkgdesc="Digital image organizer powered by the web"
 arch=("x86_64")
 url="https://picturama.github.io/"
@@ -24,7 +24,7 @@ source=(
 )
 sha256sums=('a40fc27395841cf3220ed7db3ba98717d3b3a24fc1733b81759218fbd28c3e3a'
             'b8ff1b44d19d011a234dc2490176e17231321a397f742088679c6c96555aba25'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
@@ -39,10 +39,7 @@ build() {
     cp -r "${srcdir}/app.asar.unpacked/node_modules/sqlite3/lib/binding/electron-v9.0-linux-x64" \
         "${srcdir}/app.asar.unpacked/node_modules/sqlite3/lib/binding/electron-v9.4-linux-x64"
     rm -rf "${srcdir}/app.asar.unpacked/node_modules/sqlite3/lib/binding/electron-v9.0-linux-x64"
-    sed "s|dbMigrationsFolder:a+\"\/migrations|dbMigrationsFolder:a+\"\/..\/..\/..\/${pkgname%-bin}/app/migrations|g" \
-        -i "${srcdir}/app.asar.unpacked/dist/background.js"
-    sed "s|dbMigrationsFolder:a+\"\/migrations|dbMigrationsFolder:a+\"\/..\/..\/..\/${pkgname%-bin}/app/migrations|g" \
-        -i "${srcdir}/app.asar.unpacked/dist/app.js"
+    sed "s|process.resourcesPath|\"\/usr\/lib\/${pkgname%-bin}\"|g" -i "${srcdir}/app.asar.unpacked/dist/"{app.js,background.js}
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
 }
 package() {
