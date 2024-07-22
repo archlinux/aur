@@ -5,7 +5,7 @@ _pkgname=Orca
 pkgver=0.7.0_pre_alpha
 _electronversion=18
 _nodeversion=18
-pkgrel=7
+pkgrel=8
 pkgdesc="React Electron App for Writing and Publishing Novels"
 arch=('any')
 url="https://orcawriter.app/"
@@ -20,16 +20,17 @@ makedepends=(
     'yarn'
     'nvm'
     'gendesk'
-    'base-devel'
+    'cmake'
     'gcc'
     'curl'
+    'git'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver//_/-}.tar.gz"
+    "${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver//_/-}"
     "${pkgname}.sh"
 )
-sha256sums=('e0f2857dc98cbe9d83d7633d950a281bdfd0cbe2ce18971a73593c1112778668'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+sha256sums=('362c60e7284bb9d26da1c1fb6d47e2b99e65b1f1371a82495e6cf64615cb4130'
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -44,8 +45,8 @@ build() {
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    gendesk -f -n -q --pkgname="${_appname}-writer" --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
-    cd "${srcdir}/${_appname}-${pkgver//_/-}"
+    gendesk -f -n -q --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
+    cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
@@ -62,16 +63,18 @@ build() {
     else
         echo "Your network is OK."
     fi
+    sed "s|process.resourcesPath|\"\/usr\/lib\/${pkgname}\"|g" -i app/main/main.ts
+    sed "s|process.resourcesPath|\"\/usr\/lib\/${pkgname}\"|g" -i app/.erb/dll/renderer.dev.dll.js
     sed "s|AppImage|dir|g" -i package.json
-    yarn install --cache-folder "${srcdir}/.yarn_cache"
-    yarn run package
+    NODE_ENV=development yarn install --cache-folder "${srcdir}/.yarn_cache"
+    NODE_ENV=production yarn run package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${_appname}-${pkgver//_/-}/release/build/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
-    cp -r "${srcdir}/${_appname}-${pkgver//_/-}/release/build/linux-"*/resources/{app.asar.unpacked,assets} "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/release/build/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
+    cp -r "${srcdir}/${pkgname}.git/release/build/linux-"*/resources/{app.asar.unpacked,assets} "${pkgdir}/usr/lib/${pkgname}"
     for _icons in 256x256 1024x1024;do
-        install -Dm644 "${srcdir}/${_appname}-${pkgver//_/-}/assets/icons/${_icons}.png" \
+        install -Dm644 "${srcdir}/${pkgname}.git/assets/icons/${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
     done
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
