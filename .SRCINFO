@@ -1,0 +1,20 @@
+pkgbase = homepage-git
+	pkgdesc = A highly customizable homepage (or startpage / application dashboard) with Docker and service API integrations.
+	pkgver = 0.9.5.r1.g5d531b11e
+	pkgrel = 1
+	url = https://github.com/gethomepage/homepage
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = pnpm
+	options = !strip
+	source = git+https://github.com/gethomepage/homepage.git
+	source = homepage.service
+	source = homepage.sysusers
+	source = homepage.tmpfiles
+	sha256sums = SKIP
+	sha256sums = 0f4875eaae5eb2f0e7d9f4e70c3e18544e1d18824adc599939c014f2f9d0ebe3
+	sha256sums = 130448e4a99f3b2c5fa1420c602b1d4ae105fa527100dc5c8cccdde53acb3bd0
+	sha256sums = e10cf0af4417326d32acffddd7104ce5e033dfbbf06f7f8f71bc92a1d6c37165
+
+pkgname = homepage-git
