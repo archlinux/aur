@@ -1,6 +1,6 @@
 pkgbase = baseic
 	pkgdesc = A simple numeric conversion tool
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/carmisergio/baseic
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = baseic
 	provides = baseic
 	conflicts = baseic
 	options = !lto
-	source = baseic-0.1.0.tar.gz::https://github.com/carmisergio/baseic/archive/tags/v0.1.0.tar.gz
-	sha256sums = SKIP
+	source = baseic-0.1.1.tar.gz::https://github.com/carmisergio/baseic/archive/tags/v0.1.1.tar.gz
+	sha256sums = d5bfddf222827cf17687b13a5f578ef1a9a6f6ae30eeaf4321408647c83c8b3e
 
 pkgname = baseic
