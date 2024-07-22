@@ -9,11 +9,11 @@ pkgdesc="A drop-in replacement for the wlroots scene API that allows wayland com
 url="https://github.com/wlrfx/scenefx"
 arch=("x86_64")
 depends=(
-	"libwlroots.so"
 	"libglvnd"
 	"wayland"
 	"libdrm"
 	"libpixman-1.so"
+	"wlroots0.17"
 )
 makedepends=(
 	"git"
@@ -35,6 +35,7 @@ pkgver() {
 }
 
 build() {
+	export PKG_CONFIG_PATH='/usr/lib/wlroots0.17/pkgconfig'
 	arch-meson -Dwerror=false "$_pkgname" build
 	meson compile -C build
 }
