@@ -6,6 +6,7 @@ pkgbase = vscode-codicons-git
 	arch = any
 	license = custom:Creative Commons Attribution 4.0 International Public License
 	makedepends = git
+	makedepends = npm
 	source = git+https://github.com/microsoft/vscode-codicons.git
 	md5sums = SKIP
 
