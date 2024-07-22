@@ -1,7 +1,7 @@
 # Maintainer: Jasper <j@sperp.dev>
 
 pkgname=gpustat-git
-pkgver=r13.4e19078
+pkgver=r20.5ce4c87
 pkgrel=1
 pkgdesc="GPU monitoring tool"
 depends=()
@@ -33,4 +33,13 @@ build() {
 package() {
     cd "$pkgname"
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/gpustat"
+
+    cat "assets/gpustat.desktop" | sed "s|Icon=.*|Icon=gpustat|g" > "gpustat.desktop"
+    cp "assets/icon.png" "gpustat.png"
+
+    install -Dm0755 -t "$pkgdir/usr/share/applications/" "gpustat.desktop"
+    install -Dm0755 -t "$pkgdir/usr/share/pixmaps/" "gpustat.png"
+
+    rm "gpustat.desktop" 
+    rm "gpustat.png"
 }
