@@ -11,8 +11,8 @@ license=("GPL-3.0-only")
 arch=("x86_64")
 provides=("rucola-notes")
 conflicts=("rucola-notes")
-source=("https://github.com/Linus-Mussmaecher/rucola/releases/download/v$pkgver/rucola-notes-x86_64-unknown-linux-gnu.tar.xz")
-sha256sums=("d95c80fed53d7f90d586cbeb934032f573444449b90c0f1d3761dbc0b369123b")
+source=("https://github.com/Linus-Mussmaecher/rucola/releases/download/v$pkgver/rucola-notes-$pkgver-x86_64.tar.gz")
+sha256sums=("53f8fd4b69fafdb67ad7a6027563ad23349cc6cf6b39efe543a9c30f85dca8a4")
 
 package() {
     install -Dm755 rucola -t "$pkgdir/usr/bin"
