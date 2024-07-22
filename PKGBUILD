@@ -1,4 +1,5 @@
 # Maintainer: RubenKelevra
+# Contributor: jprt
 # Contributor: Zepman <the_zep_man@hotmail.com>
 # Contributor: Michael Lass <bevan@bi-co.net>
 # Contributor: Doug Newgard <scimmia at archlinux dot info>
@@ -20,15 +21,7 @@
 # If it is possible to download fonts directly, around 200 MB of data will be downloaded.
 #  Downloading the fonts this way can take 8–20 minutes, even on a fast connection. Be
 # patient. Note that for this method, it is necessary to mount an HTTP source and an ISO
-# file as a loop device using FUSE. If the build fails, it might be that these must be
-# unmounted manually. This can be done with:
-#
-#  $ udisksctl unmount -b /dev/loop0
-#  $ udisksctl loop-delete -b /dev/loop0
-#  $ fusermount -uz src/mnt/http
-#
-# Replace /dev/loop0 with the relevant loop device, which is reported during package
-# build.
+# file as a loop device using FUSE.
 #
 # For the download, HTTP is used instead of HTTPS because httpfs2 does not support modern
 #  TLS versions. A file integrity check is performed after the download. Due to the
@@ -64,7 +57,7 @@ url='http://www.microsoft.com/typography/fonts/product.aspx?PID=164'
 license=(custom)
 provides=(ttf-font ttf-ms-win10)
 conflicts=(ttf-vista-fonts ttf-ms-win11-auto ttf-ms-win11)
-makedepends=(udisks2 p7zip httpfs2-2gbplus wget udftools)
+makedepends=(udisks2 p7zip httpfs2-2gbplus wget udftools util-linux)
 
 # URL of ISO file from which to extract the fonts.
 # Must be HTTP due to limitations of httpfs2.
@@ -391,14 +384,30 @@ prepare() {
 
     if [ $_mount ]; then
       echo "allowed"
+
+      echo "- Checking for old loop devices created by by this package"
+      for loop_device in $(losetup --list | grep "${pkgbase}" | awk '{print $1}')
+      do
+        echo -ne "  - deleting '$loop_device'..."
+        udisksctl loop-delete -b "$loop_device"
+        echo " done."
+      done
+
+      for fuse_mount_points in $(cat /etc/mtab | grep "${pkgbase}" | awk '{print $2}')
+      do
+        echo -ne "  - unmounting '$fuse_mount_points'..."
+        fusermount -u "$fuse_mount_points"
+        echo " done."
+      done
+
       echo "- Downloading fonts directly"
       mkdir -p mnt/http
       echo "  - Mounting HTTP file"
       httpfs2 -c /dev/null "$_iso" mnt/http
       echo "  - Creating loop device"
       _isoFile="mnt/http/$(echo "$_iso" | awk -F "/" '{print $NF}')"
-      _loopDev=$(udisksctl loop-setup -r -f "${_isoFile}" --no-user-interaction | awk '{print $NF}')
-      _loopDev=${_loopDev::-1}
+      _loopDev=$(udisksctl loop-setup -r -f "${_isoFile}" --no-user-interaction 2>/dev/null | awk '{print $NF}')
+      _loopDev=$(losetup --list | grep "$_isoFile" | awk '{print $1}')
       echo "  - Mounting loop device: $_loopDev"
       _mountpoint=$(udisksctl mount -t udf -b "$_loopDev" --no-user-interaction | awk '{print $NF}')
       echo "  - Loop device mounted as ISO at: $_mountpoint"
@@ -409,10 +418,23 @@ prepare() {
 
       echo "  - Unmounting loop device $_loopDev as ISO at: $_mountpoint"
       udisksctl unmount -b "$_loopDev" --no-user-interaction
-      echo "  - Deleting loop device: $_loopDev"
-      udisksctl loop-delete -b "$_loopDev" --no-user-interaction
-      echo "  - Unmounting HTTP file"
-      fusermount -uz mnt/http
+
+      echo "  - Deleting loop devices..."
+      for loop_device in $(losetup --list | grep "${pkgbase}" | awk '{print $1}')
+      do
+        echo -ne "    - deleting '$loop_device'..."
+        udisksctl loop-delete -b "$loop_device"
+        echo " done."
+      done
+
+      echo "  - Unmounting HTTP files..."
+      for fuse_mount_points in $(cat /etc/mtab | grep "${pkgbase}" | awk '{print $2}')
+      do
+        echo -ne "    - unmounting '$fuse_mount_points'..."
+        fusermount -u "$fuse_mount_points"
+        echo " done."
+      done
+
       rmdir -p mnt/http
     else
       echo "not allowed"
