@@ -1,8 +1,7 @@
 # Maintainer: Martin Diehl <martin.diehl@kuleuven.be>
 pkgbase=damask
 pkgname=('damask' 'damask-grid' 'damask-mesh' 'python-damask')
-pkgver_=3.0.0-beta2
-pkgver=${pkgver_//-}
+pkgver=3.0.0
 pkgrel=1
 pkgdesc='DAMASK - The Duesseldorf Advanced Material Simulation Kit'
 arch=('x86_64')
@@ -12,54 +11,54 @@ makedepends=('cmake' 'python-setuptools'
              'petsc<3.22' 'hdf5-openmpi' 'fftw-openmpi' 'zlib' 'libfyaml'
              'python-matplotlib' 'python-scipy' 'python-pandas' 'python-h5py' 'python-pyaml')
 optdepends=('paraview: post-processing')
-source=(https://damask.mpie.de/download/damask-${pkgver_}.tar.xz)
+source=(https://damask.mpie.de/download/damask-${pkgver}.tar.xz)
 
-sha512sums=('aaa7bb1b88b30f42e4afc27952e1a04286304ab782a70442caf80b8d71af52dce5bb888b48775284470f2d31d5301d1281bd4ab8387e38840fed12add291ccd6')
+sha512sums=('f8e2f398c558f90ed4cac8fa60d57bd179a98f1d437ed0b5a5bd9801354cf74f12dba40551dbeabe00ad6e53709bd2daa3b64f759f3170c4766d8795d3f76483')
 
 build() {
-  cmake -S ${pkgbase}-${pkgver_} \
+  cmake -S ${pkgbase}-${pkgver} \
         -B build-test \
         -D DAMASK_SOLVER:STRING=test \
         -D CMAKE_INSTALL_PREFIX:PATH=/usr \
         -D CMAKE_BUILD_TYPE:STRING=Performance
   make -C build-test
 
-  cmake -S ${pkgbase}-${pkgver_} \
+  cmake -S ${pkgbase}-${pkgver} \
         -B build-grid \
         -D DAMASK_SOLVER:STRING=grid \
         -D CMAKE_INSTALL_PREFIX:PATH=/usr \
         -D CMAKE_BUILD_TYPE:STRING=Performance
   make -C build-grid
 
-  cmake -S ${pkgbase}-${pkgver_} \
+  cmake -S ${pkgbase}-${pkgver} \
         -B build-mesh \
         -D DAMASK_SOLVER:STRING=mesh \
         -D CMAKE_INSTALL_PREFIX:PATH=/usr \
         -D CMAKE_BUILD_TYPE:STRING=Performance
   make -C build-mesh
 
-  cd ${pkgbase}-${pkgver_}/python
+  cd ${pkgbase}-${pkgver}/python
   python -m build --wheel --no-isolation
 }
 
 check() {
   mpirun -np 2 build-test/src/DAMASK_test
 
-  example_dir=$(pwd)/${pkgbase}-${pkgver_}/examples/grid
+  example_dir=$(pwd)/${pkgbase}-${pkgver}/examples/grid
   mpirun -np 2 build-grid/src/DAMASK_grid \
          -l ${example_dir}/tensionX.yaml \
          -g ${example_dir}/20grains16x16x16.vti \
          -m ${example_dir}/material.yaml \
          -w $(mktemp -d)
 
-  example_dir=$(pwd)/${pkgbase}-${pkgver_}/examples/mesh
+  example_dir=$(pwd)/${pkgbase}-${pkgver}/examples/mesh
   mpirun -np 2 build-mesh/src/DAMASK_mesh \
          -l ${example_dir}/tensionY_mono.yaml \
          -g ${example_dir}/monocrystal.msh \
          -m ${example_dir}/material.yaml \
          -w $(mktemp -d)
 
-  PYTHONPATH=${pkgbase}-${pkgver_}/python:${PYTHONPATH}
+  PYTHONPATH=${pkgbase}-${pkgver}/python:${PYTHONPATH}
   python -c "import damask;print(damask.__version__)"
 }
 
@@ -69,7 +68,7 @@ package_damask-grid() {
   optdepends=('dream3d: pre-processing')
 
   mkdir -p ${pkgdir}/usr/share/doc/${pkgname}
-  cp -r ${pkgbase}-${pkgver_}/examples/grid/* ${pkgdir}/usr/share/doc/${pkgname}/
+  cp -r ${pkgbase}-${pkgver}/examples/grid/* ${pkgdir}/usr/share/doc/${pkgname}/
 
   DESTDIR=${pkgdir} cmake --install build-grid
 }
@@ -80,7 +79,7 @@ package_damask-mesh() {
   optdepends=('neper: pre-processing')
 
   mkdir -p ${pkgdir}/usr/share/doc/${pkgname}
-  cp -r ${pkgbase}-${pkgver_}/examples/mesh/* ${pkgdir}/usr/share/doc/${pkgname}/
+  cp -r ${pkgbase}-${pkgver}/examples/mesh/* ${pkgdir}/usr/share/doc/${pkgname}/
 
   DESTDIR=${pkgdir} cmake --install build-mesh
 }
@@ -92,13 +91,13 @@ package_python-damask() {
               'jupyterlab: comfortable shell'
               'ipython: comfortable shell')
 
-  python -m installer --destdir=${pkgdir} ${pkgbase}-${pkgver_}/python/dist/*.whl
+  python -m installer --destdir=${pkgdir} ${pkgbase}-${pkgver}/python/dist/*.whl
 }
 
 package_damask() {
   depends=('python-damask' 'damask-grid' 'damask-mesh')
 
   mkdir -p ${pkgdir}/usr/share/doc/${pkgname}
-  cp -r ${pkgbase}-${pkgver_}/examples/config/* ${pkgdir}/usr/share/doc/${pkgname}/
+  cp -r ${pkgbase}-${pkgver}/examples/config/* ${pkgdir}/usr/share/doc/${pkgname}/
 
 }

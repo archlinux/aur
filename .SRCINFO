@@ -1,6 +1,6 @@
 pkgbase = damask
 	pkgdesc = DAMASK - The Duesseldorf Advanced Material Simulation Kit
-	pkgver = 3.0.0beta2
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://damask.mpie.de
 	arch = x86_64
@@ -18,8 +18,8 @@ pkgbase = damask
 	makedepends = python-h5py
 	makedepends = python-pyaml
 	optdepends = paraview: post-processing
-	source = https://damask.mpie.de/download/damask-3.0.0-beta2.tar.xz
-	sha512sums = aaa7bb1b88b30f42e4afc27952e1a04286304ab782a70442caf80b8d71af52dce5bb888b48775284470f2d31d5301d1281bd4ab8387e38840fed12add291ccd6
+	source = https://damask.mpie.de/download/damask-3.0.0.tar.xz
+	sha512sums = f8e2f398c558f90ed4cac8fa60d57bd179a98f1d437ed0b5a5bd9801354cf74f12dba40551dbeabe00ad6e53709bd2daa3b64f759f3170c4766d8795d3f76483
 
 pkgname = damask
 	depends = python-damask
