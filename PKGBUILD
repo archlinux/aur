@@ -3,7 +3,7 @@ _pkgname=music-player
 pkgname="lucashazardous-${_pkgname}-bin"
 pkgver=2.12.5
 _electronversion=26
-pkgrel=6
+pkgrel=7
 pkgdesc="Desktop Electron app for playing and downloading music."
 arch=('x86_64')
 url="https://github.com/LucasHazardous/music-player"
@@ -23,7 +23,7 @@ source=(
 )
 sha256sums=('3b3ef8988b2365c0baae8a6832bf4985981d24deaa4c97e8fa2c919df93e7cfb'
             '4de62e75233b269ff4b9e1bf7ba805d82bd3cbeab4c204b54043dee4965f849c'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
