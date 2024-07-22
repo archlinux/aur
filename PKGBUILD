@@ -5,7 +5,7 @@
 # Contributor: Richard Mathot <rim at odoo dot com>
 _pkgbase=gspca-kinect2
 pkgname=${_pkgbase}-dkms
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="A kernel module for using the Kinect v2 (XBox One) as a video/webcam."
 url="https://github.com/jm2/gspca-kinect2"
