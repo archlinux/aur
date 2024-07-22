@@ -1,6 +1,6 @@
 pkgbase = mbsync-git
 	pkgdesc = free (GPL) mailbox synchronization program
-	pkgver = 912.95d18e2
+	pkgver = 1307.e70c300
 	pkgrel = 1
 	url = http://isync.sourceforge.net/
 	arch = i686
@@ -11,8 +11,9 @@ pkgbase = mbsync-git
 	makedepends = automake
 	depends = openssl
 	provides = mbsync
+	provides = isync
+	conflicts = isync
 	source = mbsync::git+https://git.code.sf.net/p/isync/isync.git
 	sha256sums = SKIP
 
 pkgname = mbsync-git
-

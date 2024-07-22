@@ -1,8 +1,9 @@
-# Maintainer: Paulo Matos <pmatos@linki.tools>
+# Maintainer: gilcu3
+# Previous Maintainer: Paulo Matos <pmatos@linki.tools>
 
 pkgname='mbsync-git'
 _pkgname='mbsync'
-pkgver=912.95d18e2
+pkgver=1307.e70c300
 pkgrel=1
 pkgdesc="free (GPL) mailbox synchronization program"
 arch=('i686' 'x86_64')
@@ -10,7 +11,8 @@ url="http://isync.sourceforge.net/"
 license=('GPL')
 depends=('openssl')
 makedepends=('git' 'autoconf' 'automake')
-provides=('mbsync')
+provides=('mbsync' 'isync')
+conflicts=('isync')
 source=("$_pkgname::git+https://git.code.sf.net/p/isync/isync.git")
 sha256sums=('SKIP')
 
