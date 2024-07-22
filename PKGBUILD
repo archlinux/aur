@@ -16,13 +16,13 @@
 
 pkgname=mcuxpresso-ide
 pkgver=11.10.0_3148
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="An easy-to-use integrated development environment (IDE) for creating, building, debugging, and optimizing your application. From BIN package distributed by NXP."
 arch=('x86_64')
 url="http://www.nxp.com/MCUXPresso"
 license=('custom:"NXP"')
-depends=('ncurses' 'glibc' 'lib32-glibc' 'jlink-software-and-documentation' 'dfu-util' 'libusb')
+depends=('ncurses' 'glibc' 'lib32-glibc' 'jlink-software-and-documentation' 'dfu-util' 'libusb' 'linkserver')
 
 source=("file://mcuxpressoide-${pkgver}.${arch}.deb.bin")
 noextract=("mcuxpressoide-${pkgver}.${arch}.deb.bin")
