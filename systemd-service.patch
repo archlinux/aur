@@ -1,0 +1,11 @@
+--- ipp-usb-0.9.16/systemd-udev/ipp-usb.service	2020-12-29 20:08:25.000000000 +0100
++++ ipp-usb-0.9.16/systemd-udev/ipp-usb.service.new	2020-12-29 20:11:29.458472044 +0100
+@@ -6,4 +6,7 @@
+ 
+ [Service]
+ Type=simple
+-ExecStart=/sbin/ipp-usb udev
++ExecStart=/usr/bin/ipp-usb udev
++
++[Install]
++WantedBy=multi-user.target

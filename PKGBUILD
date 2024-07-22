@@ -2,7 +2,7 @@
 
 _pkgname=ipp-usb
 pkgname=$_pkgname-git
-pkgver=0.9.26.r4.g0f6a45c
+pkgver=0.9.26.r5.gdf9f47f
 pkgrel=1
 pkgdesc="HTTP reverse proxy, backed by IPP-over-USB connection to device. Allows using the IPP protocol to be used with USB printers as well."
 arch=('x86_64')
@@ -13,12 +13,19 @@ makedepends=('git' 'go')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 backup=(etc/ipp-usb/ipp-usb.conf)
-source=("git+${url}.git")
-sha256sums=('SKIP')
+source=("git+${url}.git"
+        'systemd-service.patch')
+sha256sums=('SKIP'
+            '8cec95d5de1fcc95187c6521971a0239a5503bbc08162e5d67cfef2439e07a76')
 
 pkgver() {
   cd $_pkgname
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd $_pkgname
+  patch -p1 < "${srcdir}"/systemd-service.patch
 }
 
 build() {
