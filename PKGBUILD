@@ -6,7 +6,7 @@ _upstream_name="PyAV"
 pkgdesc="Pythonic bindings for FFmpeg"
 url="https://pyav.basswood-io.com"
 
-pkgver=12.2.0
+pkgver=12.3.0
 pkgrel=1
 
 arch=("x86_64" "i686")
@@ -38,9 +38,7 @@ checkdepends=(
 source=(
   "$_name-$pkgver.tar.gz::https://github.com/${_upstream_name}-Org/${_upstream_name}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-b2sums=(
-  "262f4aad4bc859c112fa5dd16a8cf95559227f1866659eff9f2808680cc817c3c611b7f59afe0214fc779f6c2cb2459cc75f0a4a17558aef9c190b7cf18a1fdf"
-)
+b2sums=("d80f642fddb4112a89540d7b443ae5df0989b61507f18009a651fa311925d5041e2e9bd7f6c68d34abaca9fd33609692dc289e025dc7855c497517da8a92f3f0")
 
 build() {
   cd "${srcdir}"/${_upstream_name}-${pkgver}
