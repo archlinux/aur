@@ -1,7 +1,7 @@
 pkgbase = android-x86-gtest
 	pkgdesc = Google Test - C++ testing utility (Android x86)
 	pkgver = 1.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/googletest
 	arch = any
 	license = BSD
