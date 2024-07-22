@@ -1,9 +1,10 @@
 pkgbase = android-aarch64-onetbb
 	pkgdesc = High level abstract threading library (oneAPI Threading Building Blocks) (Android aarch64)
 	pkgver = 2021.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://oneapi-src.github.io/oneTBB/
 	arch = any
+	groups = android-onetbb
 	license = Apache
 	makedepends = android-cmake
 	depends = android-aarch64-hwloc
