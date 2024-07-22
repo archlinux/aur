@@ -7,7 +7,7 @@
 _gitname=tinyMediaManager
 pkgname=tiny-media-manager
 pkgver=5.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-OS media managment tool"
 arch=('any')
 url="https://www.tinymediamanager.org/"
@@ -36,6 +36,11 @@ package() {
   destpath="$pkgdir/usr/share/$_gitname"
   mkdir -p "$destpath"
   tar -xvf "tmm_${pkgver}_linux.tar.xz" --directory "$destpath" --strip-components 1
+
+  # Fix template permissions
+  chmod 755 $destpath/templates
+  find $destpath/templates -type d -exec chmod 755 {} \;
+  find $destpath/templates -type f -exec chmod 644 {} \;
 
   # Install desktop entry
   install -D "$srcdir/tinyMediaManager.desktop" "$pkgdir/usr/share/applications/tinyMediaManager.desktop"
