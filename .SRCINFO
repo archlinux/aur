@@ -1,12 +1,13 @@
 pkgbase = pspp
 	pkgdesc = Statistical analysis program. Free replacement for SPSS.
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnu.org/software/pspp/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = python
+	makedepends = glib2-devel
 	depends = gsl
 	depends = gtksourceview4
 	depends = postgresql-libs
