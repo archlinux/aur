@@ -25,7 +25,7 @@ package() {
 
   source "$pkgdir/usr/share/$pkgname/venv/bin/activate"
 
-  pip install subprocess json os argparse sys io typing pillow time random requests logging traceback pyqt5
+  pip install pillow requests pyqt5
 
   deactivate
 
