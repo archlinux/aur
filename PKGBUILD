@@ -2,17 +2,17 @@
 pkgname=e-zshot
 pkgver=1.1.2
 pkgrel=1
-pkgdesc="CLI to automate taking screenshots and uploading them to e-z.host."
+pkgdesc="CLI to automate taking screenshots and uploading them to e-z.host"
 arch=('any')
-url="https://github.com/RobinTT69/e-z-screenshot-linux"
+url="https://github.com/RobinTT69/e-z-screenshot-linux/"
 license=('custom')
-depends=('python-virtualenv' 'python-pyqt5' 'python-pillow' 'python-requests')  # Add additional system-level dependencies if needed
+depends=('python-virtualenv' 'python-pyqt5' 'python-pillow' 'python-requests')
 source=("https://github.com/RobinTT69/e-z-screenshot-linux/releases/download/v${pkgver}/e-zshot-${pkgver}.tar.gz")
 md5sums=('SKIP')
 
 prepare() {
   cd "$srcdir"
-  tar xzf e-zshot-${pkgver}.tar.gz
+  tar xzf "e-zshot-${pkgver}.tar.gz"
 }
 
 package() {
@@ -20,12 +20,9 @@ package() {
 
   install -Dm755 e-z-flameshot.py "$pkgdir/usr/share/$pkgname/e-z-flameshot.py"
   install -Dm755 e-z-grim.py "$pkgdir/usr/share/$pkgname/e-z-grim.py"
-
   python -m venv "$pkgdir/usr/share/$pkgname/venv"
-
   source "$pkgdir/usr/share/$pkgname/venv/bin/activate"
-
-  pip install pillow requests pyqt5
+  pip install pillow pyqt5 requests
 
   deactivate
 
@@ -33,9 +30,7 @@ package() {
 #!/bin/bash
 
 VENV_PATH="/usr/share/e-zshot/venv"
-
 source "$VENV_PATH/bin/activate"
-
 python /usr/share/e-zshot/e-z-grim.py "$@"
 
 deactivate
@@ -47,9 +42,7 @@ EOF
 #!/bin/bash
 
 VENV_PATH="/usr/share/e-zshot/venv"
-
 source "$VENV_PATH/bin/activate"
-
 python /usr/share/e-zshot/e-z-flameshot.py "$@"
 
 deactivate
