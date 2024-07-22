@@ -23,7 +23,6 @@ pkgbase = yass-proxy-qt5
 	depends = libnghttp2
 	depends = c-ares
 	depends = gperftools
-	optdepends = gtk-update-icon-cache
 	optdepends = qt5-wayland
 	provides = yass-proxy
 	conflicts = yass-proxy-git
