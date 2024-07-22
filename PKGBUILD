@@ -1,12 +1,15 @@
 # Maintainer: zebdo < zebdo [4T] posteo [D0T] ee >
 
 pkgname='hydrus-video-deduplicator-git'
-pkgver=0.4.2
+_pkgname='hydrus-video-deduplicator'
+pkgver=0.6.0.r0.g2f3753c
 pkgrel=1
 pkgdesc='Hydrus Video Deduplicator finds potential duplicate videos through the Hydrus API'
 arch=('any')
 url="https://github.com/hydrusvideodeduplicator/hydrus-video-deduplicator"
 license=('MIT')
+provides=("hydrus-video-deduplicator=$pkgver")
+conflicts=(hydrus-video-deduplicator)
 depends=(
   'python'
   'python-platformdirs'
@@ -29,18 +32,30 @@ makedepends=(
 	'python-wheel'
 	'python-hatchling'
 	)
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b8ec607b50529e8ac2f0a1f7e1e612f7bfc38484eb9aaacab1f7c244d09ddc82')
-_archive="hydrus-video-deduplicator-$pkgver"
+source=("${_pkgname}::git+https://github.com/hydrusvideodeduplicator/${_pkgname}.git"
+	hydrusvideodeduplicator)
+sha256sums=('SKIP'
+            '504aa64d8bcbc5f37d22f798ce40cf0daf127c6835897887e0634fe8b0f2db7f')
+
+pkgver() {
+  cd "${srcdir}/${_pkgname}"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
-	ls -l
-	cd "$_archive"
+	cd "${srcdir}/${_pkgname}"
+	msg 'Running python build...'
 	python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "$_archive"
+	cd "${srcdir}/${_pkgname}"
 	python -m installer --destdir="$pkgdir" dist/*.whl
-	install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+
+	# install license
+	install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${_pkgname}/LICENSE
+	
+	# install executables
+	install -d -m755 "${pkgdir}/usr/bin"
+	install -m755 ../hydrusvideodeduplicator "${pkgdir}/usr/bin/"
 }
