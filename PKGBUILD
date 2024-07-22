@@ -7,54 +7,53 @@
 # BUILD INSTRUCTIONS:
 # -------------------
 #
-# Please note, that usage of Microsoft fonts outside running Windows
-# system is prohibited by EULA (although in certain countries EULA is invalid).
-# Please consult Microsoft license before using fonts.
+# Please note that the usage of Microsoft fonts outside the Windows system is prohibited
+# by EULA (although in certain countries, EULA is invalid).
+# Please consult the Microsoft license before using fonts.
 #
-# This PKGBUILD attempts to download fonts directly from Microsoft, by
-# retrieving selective parts of the Windows 10 Enterprise 90-day evaluation
-# edition. This only works if the user is allowed to mount filesystems through
-# udisks2. This is determined by Polkit, which by default only allows users to
-# do this when they are logged in locally (e.g. not through SSH).
+# This PKGBUILD attempts to download fonts directly from Microsoft, by retrieving
+# selective parts of the Windows 10 Enterprise 90-day evaluation edition. This only works
+# if the user is allowed to mount filesystems through udisks2. This is determined by
+# Polkit, which by default only allows users to do this when they are logged in locally
+# (e.g., not through SSH).
 #
-# If it is possible to download fonts directly, around 200 MiB of data will be
-# downloaded. Downloading the fonts this way can take 8-20 minutes, even on a
-# fast connection. Be patient. Note that for tis method, it is necessary to
-# mount an HTTP source and an ISO file as a loop device using FUSE. If the
-# build fails, it might be that these must be unmounted manually. This can be
-# done with:
+# If it is possible to download fonts directly, around 200 MB of data will be downloaded.
+#  Downloading the fonts this way can take 8–20 minutes, even on a fast connection. Be
+# patient. Note that for this method, it is necessary to mount an HTTP source and an ISO
+# file as a loop device using FUSE. If the build fails, it might be that these must be
+# unmounted manually. This can be done with:
 #
 #  $ udisksctl unmount -b /dev/loop0
 #  $ udisksctl loop-delete -b /dev/loop0
 #  $ fusermount -uz src/mnt/http
 #
-# Replace /dev/loop0 with the relevant loop device, which is reported during
-# package build.
+# Replace /dev/loop0 with the relevant loop device, which is reported during package
+# build.
 #
-# For the download, HTTP is used instead of HTTPS due to that httpfs2 does not
-# support modern TLS versions. A file integrity check is performed after
-# download. Due to the unconventional way that the data is downloaded, the
-# verification is done in prepare().
+# For the download, HTTP is used instead of HTTPS because httpfs2 does not support modern
+#  TLS versions. A file integrity check is performed after the download. Due to the
+# unconventional way that the data is downloaded, the verification is done in prepare().
 #
-# If fonts cannot be downloaded directly, the ISO fill will be fully
-# downloaded. Due to that install.wim will be extracted from the ISO, it is
-# assumed that twice its size (almost 8 GiB) is necessary as temporary disk
-# space. A free disk space check is performed before the ISO is downloaded.
+# If fonts cannot be downloaded directly, the ISO fill will be fully downloaded. Due to
+# that install.wim will be extracted from the ISO, it is assumed that twice its size
+# (almost 8 GiB) is necessary as temporary disk space. A free disk space check is
+# performed before the ISO is downloaded.
 #
-# Please ignore any 'ln' errors when building this package. This is expected
-# behavior.
+# Please ignore any 'ln' errors when building this package. This is expected  behavior.
 #
-# If for some reason you want to download the full ISO file, please visit:
+# If, for some reason, you want to download the full ISO file, please visit:
 #
 #       http://www.microsoft.com/en-us/evalcenter/evaluate-windows-10-enterprise
 #
-# This package is based on ttf-ms-win10. Use that package if font files from
-# a local source need to be used.
+# This package is based on ttf-ms-win10. Use that package if font files from a local
+# source need to be used.
 #
 # ttf-ms-win10 is considered to be upstream for this package, which is why its
 # maintainers and contributors are added as contributors to this package.
-# Without their effort this package would not exist, nor be updated.
+# Without their effort, this package would not exist or be updated.
 #
+
+
 
 pkgbase=ttf-ms-win10-auto
 pkgname=($pkgbase{,-japanese,-korean,-sea,-thai,-zh_cn,-zh_tw,-other})
