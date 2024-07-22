@@ -1,0 +1,11 @@
+--- a/configure.in	2016-04-22 00:23:01.000000000 +0300
++++ b/configure.in	2017-03-23 23:55:57.922849721 +0200
+@@ -114,6 +114,8 @@
+ AC_SUBST(POLKIT_CFLAGS)
+ AM_CONDITIONAL(HAVE_POLKIT, test x$have_polkit = xyes)
+ 
++test -n "$DATADIRNAME" || DATADIRNAME=share
++AC_SUBST(DATADIRNAME)
+ 
+ dnl =====================================================
+ dnl END: Check for Module versions

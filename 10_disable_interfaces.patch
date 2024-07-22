@@ -1,0 +1,930 @@
+Index: gnome-system-tools-3.0.0/interfaces/network.ui
+===================================================================
+--- gnome-system-tools-3.0.0.orig/interfaces/network.ui	2011-10-22 19:42:20.567031813 +0200
++++ gnome-system-tools-3.0.0/interfaces/network.ui	2011-10-22 19:42:47.846688861 +0200
+@@ -86,147 +86,10 @@
+         <property name="border_width">6</property>
+         <property name="spacing">12</property>
+         <child>
+-          <object class="GtkHBox" id="locations_box">
+-            <property name="visible">True</property>
+-            <property name="spacing">6</property>
+-            <child>
+-              <object class="GtkLabel" id="label2">
+-                <property name="visible">True</property>
+-                <property name="label" translatable="yes">Location:</property>
+-              </object>
+-              <packing>
+-                <property name="expand">False</property>
+-                <property name="fill">False</property>
+-                <property name="position">0</property>
+-              </packing>
+-            </child>
+-            <child>
+-              <object class="GtkComboBox" id="locations_combo">
+-                <property name="visible">True</property>
+-              </object>
+-              <packing>
+-                <property name="position">1</property>
+-              </packing>
+-            </child>
+-            <child>
+-              <object class="GtkButton" id="add_location">
+-                <property name="visible">True</property>
+-                <property name="can_focus">True</property>
+-                <property name="receives_default">False</property>
+-                <property name="tooltip_text" translatable="yes">Save current network configuration as a location</property>
+-                <accelerator key="A" signal="clicked" modifiers="GDK_MOD1_MASK"/>
+-                <child>
+-                  <object class="GtkImage" id="image9">
+-                    <property name="visible">True</property>
+-                    <property name="stock">gtk-save</property>
+-                  </object>
+-                </child>
+-              </object>
+-              <packing>
+-                <property name="expand">False</property>
+-                <property name="fill">False</property>
+-                <property name="position">2</property>
+-              </packing>
+-            </child>
+-            <child>
+-              <object class="GtkButton" id="remove_location">
+-                <property name="visible">True</property>
+-                <property name="can_focus">True</property>
+-                <property name="receives_default">False</property>
+-                <property name="tooltip_text" translatable="yes">Delete current location</property>
+-                <accelerator key="R" signal="clicked" modifiers="GDK_MOD1_MASK"/>
+-                <child>
+-                  <object class="GtkImage" id="image10">
+-                    <property name="visible">True</property>
+-                    <property name="stock">gtk-delete</property>
+-                  </object>
+-                </child>
+-              </object>
+-              <packing>
+-                <property name="expand">False</property>
+-                <property name="fill">False</property>
+-                <property name="position">3</property>
+-              </packing>
+-            </child>
+-          </object>
+-          <packing>
+-            <property name="expand">False</property>
+-            <property name="fill">False</property>
+-            <property name="position">0</property>
+-          </packing>
+-        </child>
+-        <child>
+           <object class="GtkNotebook" id="notebook1">
+             <property name="visible">True</property>
+             <property name="can_focus">True</property>
+             <child>
+-              <object class="GtkHBox" id="hbox3">
+-                <property name="visible">True</property>
+-                <property name="border_width">12</property>
+-                <property name="spacing">6</property>
+-                <child>
+-                  <object class="GtkScrolledWindow" id="scrolledwindow1">
+-                    <property name="visible">True</property>
+-                    <property name="can_focus">True</property>
+-                    <property name="hscrollbar_policy">automatic</property>
+-                    <property name="vscrollbar_policy">automatic</property>
+-                    <property name="shadow_type">in</property>
+-                    <child>
+-                      <object class="GtkTreeView" id="interfaces_list">
+-                        <property name="width_request">290</property>
+-                        <property name="height_request">194</property>
+-                        <property name="visible">True</property>
+-                        <property name="can_focus">True</property>
+-                        <property name="headers_visible">False</property>
+-                        <property name="rules_hint">True</property>
+-                        <property name="enable_search">False</property>
+-                      </object>
+-                    </child>
+-                  </object>
+-                  <packing>
+-                    <property name="position">0</property>
+-                  </packing>
+-                </child>
+-                <child>
+-                  <object class="GtkVButtonBox" id="vbuttonbox1">
+-                    <property name="visible">True</property>
+-                    <property name="spacing">6</property>
+-                    <property name="layout_style">start</property>
+-                    <child>
+-                      <object class="GtkButton" id="properties_button">
+-                        <property name="label">gtk-properties</property>
+-                        <property name="visible">True</property>
+-                        <property name="sensitive">False</property>
+-                        <property name="can_focus">True</property>
+-                        <property name="can_default">True</property>
+-                        <property name="receives_default">False</property>
+-                        <property name="use_stock">True</property>
+-                      </object>
+-                      <packing>
+-                        <property name="expand">False</property>
+-                        <property name="fill">False</property>
+-                        <property name="position">0</property>
+-                      </packing>
+-                    </child>
+-                  </object>
+-                  <packing>
+-                    <property name="expand">False</property>
+-                    <property name="fill">False</property>
+-                    <property name="position">1</property>
+-                  </packing>
+-                </child>
+-              </object>
+-            </child>
+-            <child type="tab">
+-              <object class="GtkLabel" id="label3">
+-                <property name="visible">True</property>
+-                <property name="label" translatable="yes">Connections</property>
+-              </object>
+-              <packing>
+-                <property name="tab_fill">False</property>
+-              </packing>
+-            </child>
+-            <child>
+               <object class="GtkFrame" id="frame3">
+                 <property name="visible">True</property>
+                 <property name="border_width">12</property>
+Index: gnome-system-tools-3.0.0/configure.in
+===================================================================
+--- gnome-system-tools-3.0.0.orig/configure.in	2011-10-22 19:42:20.543032116 +0200
++++ gnome-system-tools-3.0.0/configure.in	2011-10-22 19:42:47.846688861 +0200
+@@ -251,23 +251,6 @@
+ dnl END: GST_LIBS & GST_FLAGS
+ dnl ==================================
+ 
+-dnl ==================================
+-dnl LIBIW DETECTION
+-dnl ==================================
+-
+-GST_IW_LIBS=
+-AC_CHECK_HEADER(iwlib.h, [
+-  enable_libiw=yes
+-  AC_DEFINE(HAVE_LIBIW_H, "", [whether libiw is available])
+-  AC_HAVE_LIBRARY(iw, [GST_IW_LIBS="-liw"])
+-])
+-AM_CONDITIONAL(HAVE_LIBIW_H, test x$enable_libiw = xyes)
+-AC_SUBST(GST_IW_LIBS)
+-
+-dnl ==================================
+-dnl END: LIBIW DETECTION
+-dnl ==================================
+-
+ dnl ===========================
+ dnl NAUTILUS EXTENSION
+ dnl ===========================
+Index: gnome-system-tools-3.0.0/src/network/Makefile.am
+===================================================================
+--- gnome-system-tools-3.0.0.orig/src/network/Makefile.am	2011-10-22 19:42:20.471033021 +0200
++++ gnome-system-tools-3.0.0/src/network/Makefile.am	2011-10-22 19:42:47.846688861 +0200
+@@ -15,23 +15,14 @@
+ CLEANFILES = $(GST_TOOL_CLEANFILES)
+ EXTRA_DIST = $(GST_TOOL_EXTRA_DIST)
+ 
+-network_admin_LDADD = $(GST_TOOL_LIBS) $(GST_IW_LIBS) $(DBUS_LIBS) $(GIO_LIBS)
++network_admin_LDADD = $(GST_TOOL_LIBS) $(DBUS_LIBS) $(GIO_LIBS)
+ network_admin_DEPENDENCIES = $(GST_TOOL_DEPENDENCIES)
+ 
+-if HAVE_LIBIW_H
+-essid_SOURCES = essid-list.c essid-list.h
+-endif
+-
+ network_admin_SOURCES = \
+ 	$(essid_SOURCES)				\
+-	nm-integration.c nm-integration.h	\
+ 	address-list.c	address-list.h		\
+-	network-locations.c network-locations.h	\
+ 	network-tool.c network-tool.h		\
+-	locations-combo.c locations-combo.h	\
+-	ifaces-list.c ifaces-list.h		\
+ 	callbacks.c callbacks.h			\
+-	connection.c connection.h		\
+ 	hosts.c hosts.h				\
+ 	main.c
+ 
+Index: gnome-system-tools-3.0.0/src/network/callbacks.c
+===================================================================
+--- gnome-system-tools-3.0.0.orig/src/network/callbacks.c	2011-10-22 19:42:20.511032518 +0200
++++ gnome-system-tools-3.0.0/src/network/callbacks.c	2011-10-22 19:52:22.879459722 +0200
+@@ -22,294 +22,11 @@
+ 
+ #include "gst.h"
+ #include "network-tool.h"
+-#include "ifaces-list.h"
+ #include "callbacks.h"
+ #include "hosts.h"
+-#include "nm-integration.h"
+-#include "connection.h"
+ 
+ extern GstTool *tool;
+ 
+-void
+-on_table_selection_changed (GtkTreeSelection *selection, gpointer data)
+-{
+-  GtkWidget    *properties;
+-
+-  properties = gst_dialog_get_widget (tool->main_dialog, "properties_button");
+-  gtk_widget_set_sensitive (properties, gtk_tree_selection_get_selected_rows (selection, NULL) != 0);
+-}
+-
+-void
+-on_iface_properties_clicked (GtkWidget *widget, gpointer data)
+-{
+-  GstConnectionDialog *dialog;
+-  GtkTreeSelection *selection;
+-  GtkTreeModel *model;
+-  GtkTreeIter iter;
+-  OobsIface *iface;
+-
+-  selection = gtk_tree_view_get_selection (GST_NETWORK_TOOL (tool)->interfaces_list);
+-
+-  if (gtk_tree_selection_get_selected (selection, &model, &iter))
+-    {
+-      gtk_tree_model_get (model, &iter,
+-			  COL_OBJECT, &iface,
+-			  -1);
+-
+-      dialog = GST_NETWORK_TOOL (tool)->dialog;
+-      connection_dialog_prepare (dialog, iface);
+-      gtk_window_set_transient_for (GTK_WINDOW (dialog->dialog), GTK_WINDOW (tool->main_dialog));
+-
+-      gst_dialog_add_edit_dialog (tool->main_dialog, dialog->dialog);
+-      gtk_widget_show (dialog->dialog);
+-    }
+-}
+-
+-void
+-on_iface_active_changed (GtkWidget *widget, gpointer data)
+-{
+-  GstConnectionDialog *dialog;
+-  GtkWidget *roaming_active;
+-  gboolean active;
+-
+-  dialog = GST_NETWORK_TOOL (tool)->dialog;
+-  active = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (widget));
+-
+-  connection_dialog_set_sensitive (dialog, active);
+-
+-  roaming_active = gst_dialog_get_widget (tool->main_dialog, "connection_device_roaming");
+-  g_signal_handlers_block_by_func (roaming_active, on_iface_roaming_changed, data);
+-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (roaming_active), !active);
+-  g_signal_handlers_unblock_by_func (roaming_active, on_iface_roaming_changed, data);
+-}
+-
+-void
+-on_iface_roaming_changed (GtkWidget *widget, gpointer data)
+-{
+-  GstConnectionDialog *dialog;
+-  GtkWidget *device_active;
+-  gboolean active;
+-
+-  dialog = GST_NETWORK_TOOL (tool)->dialog;
+-  active = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (widget));
+-
+-  /* roaming changed and device active have just inverted logics */
+-  connection_dialog_set_sensitive (dialog, !active);
+-
+-  device_active = gst_dialog_get_widget (tool->main_dialog, "connection_device_active");
+-  g_signal_handlers_block_by_func (device_active, on_iface_active_changed, data);
+-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (device_active), !active);
+-  g_signal_handlers_unblock_by_func (device_active, on_iface_active_changed, data);
+-}
+-
+-void
+-on_bootproto_changed (GtkWidget *widget, gpointer data)
+-{
+-  GstConnectionDialog *dialog;
+-  gchar *method;
+-  gboolean enabled;
+-
+-  dialog = GST_NETWORK_TOOL (tool)->dialog;
+-  method = connection_combo_get_value (GTK_COMBO_BOX (dialog->bootproto_combo));
+-  enabled = (method && strcmp (method, "static") == 0);
+-
+-  gtk_widget_set_sensitive (dialog->address, enabled);
+-  gtk_widget_set_sensitive (dialog->netmask, enabled);
+-  gtk_widget_set_sensitive (dialog->gateway, enabled);
+-
+-  g_free (method);
+-}
+-
+-void
+-on_ppp_type_changed (GtkWidget *widget, gpointer data)
+-{
+-  GstConnectionDialog *dialog;
+-  gchar *type;
+-
+-  dialog = GST_NETWORK_TOOL (tool)->dialog;
+-  type = connection_combo_get_value (GTK_COMBO_BOX (dialog->ppp_type_combo));
+-
+-  on_dialog_changed (widget, data);
+-
+-  if (!type)
+-    return;
+-
+-  if (strcmp (type, "modem") == 0)
+-    {
+-      gtk_widget_show (dialog->modem_page);
+-      gtk_widget_show (dialog->isp_frame);
+-      gtk_widget_show (dialog->modem_settings_table);
+-      gtk_widget_show (dialog->modem_isp_table);
+-      gtk_widget_hide (dialog->pppoe_settings_table);
+-      gtk_widget_hide (dialog->gprs_isp_table);
+-    }
+-  else if (strcmp (type, "isdn") == 0)
+-    {
+-      gtk_widget_show (dialog->isp_frame);
+-      gtk_widget_show (dialog->modem_isp_table);
+-      gtk_widget_hide (dialog->modem_page);
+-      gtk_widget_hide (dialog->gprs_isp_table);
+-    }
+-  else if (strcmp (type, "pppoe") == 0)
+-    {
+-      gtk_widget_show (dialog->modem_page);
+-      gtk_widget_show (dialog->pppoe_settings_table);
+-      gtk_widget_show (dialog->modem_isp_table);
+-      gtk_widget_hide (dialog->isp_frame);
+-      gtk_widget_hide (dialog->modem_settings_table);
+-    }
+-  else if (strcmp (type, "gprs") == 0)
+-    {
+-      gtk_widget_show (dialog->modem_page);
+-      gtk_widget_show (dialog->isp_frame);
+-      gtk_widget_show (dialog->modem_settings_table);
+-      gtk_widget_show (dialog->gprs_isp_table);
+-      gtk_widget_hide (dialog->modem_isp_table);
+-      gtk_widget_hide (dialog->pppoe_settings_table);
+-    }
+-}
+-
+-static void
+-cancel_connection_dialog (GstTool *tool)
+-{
+-  GstConnectionDialog *dialog;
+-
+-  dialog = GST_NETWORK_TOOL (tool)->dialog;
+-  g_object_unref (dialog->iface);
+-  connection_dialog_hide (dialog);
+-
+-  if (dialog->standalone)
+-    gtk_main_quit ();
+-}
+-
+-static gboolean
+-toggle_nm (gpointer data)
+-{
+-  GstNetworkTool *tool = GST_NETWORK_TOOL (data);
+-  NMState state;
+-
+-  state = nm_integration_get_state (tool);
+-
+-  if (state == NM_STATE_DISCONNECTED ||
+-      state == NM_STATE_CONNECTING ||
+-      state == NM_STATE_CONNECTED)
+-    {
+-      /* "reboot" NM */
+-      nm_integration_sleep (tool);
+-      nm_integration_wake (tool);
+-    }
+-
+-  return FALSE;
+-}
+-
+-static void
+-on_configuration_changed (OobsObject *object,
+-			  OobsResult  result,
+-			  gpointer    data)
+-{
+-  /* suckety suck, but NM seems not to realize
+-   * immediately that the interface status changed */
+-  g_timeout_add (2000, toggle_nm, data);
+-}
+-
+-static void
+-accept_connection_dialog (GstTool *tool)
+-{
+-  GstConnectionDialog *dialog;
+-  GtkTreeSelection    *selection;
+-  GtkTreeIter          iter;
+-
+-  dialog = GST_NETWORK_TOOL (tool)->dialog;
+-  connection_dialog_hide (dialog);
+-
+-  if (dialog->changed)
+-    {
+-      connection_save (dialog);
+-      selection = gtk_tree_view_get_selection (GST_NETWORK_TOOL (tool)->interfaces_list);
+-
+-      if (gtk_tree_selection_get_selected (selection, NULL, &iter))
+-        {
+-	  ifaces_model_modify_interface_at_iter (&iter);
+-	  g_signal_emit_by_name (G_OBJECT (selection), "changed");
+-	}
+-
+-      gst_tool_commit_async (tool, OOBS_OBJECT (GST_NETWORK_TOOL (tool)->ifaces_config),
+-			     _("Changing interface configuration"),
+-			     on_configuration_changed, tool);
+-    }
+-
+-  g_object_unref (dialog->iface);
+-
+-  if (dialog->standalone)
+-    gtk_main_quit ();
+-}
+-
+-void
+-on_connection_response (GtkWidget *widget,
+-			gint       response,
+-			gpointer   data)
+-{
+-  GstConnectionDialog *connection_dialog;
+-  GstDialog *dialog = GST_DIALOG (data);
+-  GstTool *tool = gst_dialog_get_tool (dialog);
+-
+-  if (response == GTK_RESPONSE_OK)
+-    accept_connection_dialog (tool);
+-  else
+-    cancel_connection_dialog (tool);
+-
+-  connection_dialog = GST_NETWORK_TOOL (tool)->dialog;
+-  gst_dialog_remove_edit_dialog (tool->main_dialog, connection_dialog->dialog);
+-}
+-
+-void
+-on_detect_modem_clicked (GtkWidget *widget, gpointer data)
+-{
+-  GstNetworkTool      *network_tool;
+-  GstConnectionDialog *dialog;
+-  GtkWidget           *d;
+-  GdkCursor           *cursor;
+-  gchar               *dev = NULL;
+-
+-  network_tool = GST_NETWORK_TOOL (tool);
+-  dialog = network_tool->dialog;
+-
+-  /* give some feedback to let know the user that the tool is busy */
+-  gtk_entry_set_text (GTK_ENTRY (gtk_bin_get_child (GTK_BIN (GTK_COMBO_BOX (dialog->serial_port)))), "");
+-  gtk_widget_set_sensitive (dialog->serial_port, FALSE);
+-  gtk_widget_set_sensitive (dialog->detect_modem, FALSE);
+-
+-  cursor = gdk_cursor_new (GDK_WATCH);
+-  gdk_window_set_cursor (gtk_widget_get_window (GTK_WIDGET (dialog->dialog)), cursor);
+-  gdk_cursor_unref (cursor);
+-
+-  dev = connection_detect_modem ();
+-
+-  /* remove the user feedback */
+-  gtk_widget_set_sensitive (dialog->detect_modem, TRUE);
+-  gtk_widget_set_sensitive (dialog->serial_port, TRUE);
+-  gdk_window_set_cursor (gtk_widget_get_window (GTK_WIDGET (dialog->dialog)), NULL);
+-
+-  if (!dev || !*dev)
+-    {
+-      d = gtk_message_dialog_new (GTK_WINDOW (dialog->dialog),
+-				  GTK_DIALOG_MODAL,
+-				  GTK_MESSAGE_INFO,
+-				  GTK_BUTTONS_CLOSE,
+-				  _("Could not autodetect modem device"),
+-				  NULL);
+-      gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (d),
+-						_("Check that the device is not busy and "
+-						  "that is correctly attached to the computer."),
+-						NULL);
+-      gtk_dialog_run (GTK_DIALOG (d));
+-      gtk_widget_destroy (d);
+-    }
+-  else
+-    gtk_entry_set_text (GTK_ENTRY (gtk_bin_get_child (GTK_BIN (GTK_COMBO_BOX (dialog->serial_port)))), dev);
+-
+-  g_free (dev);
+-}
+ 
+ static void
+ do_popup_menu (GtkWidget *table, GstTablePopup *table_popup, GdkEventButton *event)
+@@ -437,64 +154,6 @@
+ }
+ 
+ void
+-on_dialog_changed (GtkWidget *widget, gpointer data)
+-{
+-  GstNetworkTool *network_tool = GST_NETWORK_TOOL (tool);
+-
+-  network_tool->dialog->changed = TRUE;
+-  connection_check_fields (network_tool->dialog);
+-}
+-
+-gboolean
+-on_ip_address_focus_out (GtkWidget *widget, GdkEventFocus *event, gpointer data)
+-{
+-  GstConnectionDialog *dialog = GST_NETWORK_TOOL (tool)->dialog;
+-
+-  connection_check_netmask (dialog->address, dialog->netmask);
+-  return FALSE;
+-}
+-
+-void
+-on_iface_toggled (GtkCellRendererToggle *renderer,
+-		  gchar                 *path_str,
+-		  gpointer               data)
+-{
+-  GtkTreePath *path;
+-  GtkTreeModel *model = GTK_TREE_MODEL (data);
+-  GtkTreeIter iter;
+-  gboolean active, inconsistent;
+-  OobsIface *iface;
+-
+-  path = gtk_tree_path_new_from_string (path_str);
+-
+-  if (gtk_tree_model_get_iter (model, &iter, path))
+-    {
+-      gtk_tree_model_get (model, &iter,
+-			  COL_ACTIVE, &active,
+-			  COL_INCONSISTENT, &inconsistent,
+-			  COL_OBJECT, &iface,
+-			  -1);
+-
+-      if (!inconsistent)
+-	{
+-	  active ^= 1;
+-
+-	  oobs_iface_set_active (iface, active);
+-	  oobs_iface_set_auto (iface, active);
+-	  ifaces_model_modify_interface_at_iter (&iter);
+-
+-	  gst_tool_commit_async (tool, OOBS_OBJECT (GST_NETWORK_TOOL (tool)->ifaces_config),
+-				 _("Changing interface configuration"),
+-				 on_configuration_changed, tool);
+-	}
+-
+-      g_object_unref (iface);
+-    }
+-
+-  gtk_tree_path_free (path);
+-}
+-
+-void
+ on_entry_changed (GtkWidget *widget, gpointer data)
+ {
+   g_object_set_data (G_OBJECT (widget), "content-changed", GINT_TO_POINTER (TRUE));
+Index: gnome-system-tools-3.0.0/src/network/callbacks.h
+===================================================================
+--- gnome-system-tools-3.0.0.orig/src/network/callbacks.h	2011-10-22 19:42:20.483032869 +0200
++++ gnome-system-tools-3.0.0/src/network/callbacks.h	2011-10-22 19:42:47.854688761 +0200
+@@ -30,19 +30,6 @@
+   GtkWidget *popup;
+ };
+ 
+-void  on_table_selection_changed   (GtkTreeSelection*, gpointer);
+-void  on_iface_properties_clicked  (GtkWidget*, gpointer);
+-
+-void  on_iface_active_changed      (GtkWidget*, gpointer);
+-void  on_iface_roaming_changed     (GtkWidget *widget, gpointer data);
+-
+-void  on_bootproto_changed         (GtkWidget*, gpointer);
+-void  on_detect_modem_clicked      (GtkWidget*, gpointer);
+-void  on_connection_response       (GtkWidget *widget,
+-				    gint       response,
+-				    gpointer   data);
+-
+-
+ gboolean on_table_button_press (GtkWidget*, GdkEventButton*, gpointer);
+ gboolean on_table_popup_menu   (GtkWidget*, gpointer);
+ 
+@@ -52,14 +39,6 @@
+ void  on_host_aliases_dialog_changed     (GtkWidget*, gpointer);
+ 
+ 
+-void  on_dialog_changed (GtkWidget*, gpointer);
+-
+-gboolean on_ip_address_focus_out (GtkWidget*, GdkEventFocus*, gpointer);
+-
+-void  on_iface_toggled  (GtkCellRendererToggle *renderer,
+-			 gchar                 *path_str,
+-			 gpointer               data);
+-
+ void     on_entry_changed      (GtkWidget     *widget,
+ 				gpointer       data);
+ gboolean on_hostname_focus_out (GtkWidget     *widget,
+Index: gnome-system-tools-3.0.0/src/network/main.c
+===================================================================
+--- gnome-system-tools-3.0.0.orig/src/network/main.c	2011-10-22 19:42:20.491032769 +0200
++++ gnome-system-tools-3.0.0/src/network/main.c	2011-10-22 19:42:47.854688761 +0200
+@@ -27,14 +27,11 @@
+ 
+ #include "gst.h"
+ #include "network-tool.h"
+-#include "ifaces-list.h"
+ #include "callbacks.h"
+ 
+ GstTool *tool;
+ 
+ static GstDialogSignal signals[] = {
+-  /* connections tab */
+-  { "properties_button",            "clicked", G_CALLBACK (on_iface_properties_clicked) },
+   /* general tab */
+   { "domain",                       "focus-out-event", G_CALLBACK (on_domain_focus_out) },
+   { "hostname",                     "changed", G_CALLBACK (on_entry_changed) },
+@@ -45,37 +42,6 @@
+   { "host_aliases_delete",          "clicked", G_CALLBACK (on_host_aliases_delete_clicked) },
+   /* host aliases dialog */
+   { "host_alias_address",           "changed", G_CALLBACK (on_host_aliases_dialog_changed) },
+-  /* connection dialog */
+-  { "connection_config_dialog",     "response", G_CALLBACK (on_connection_response) },
+-  { "connection_config_dialog",     "delete-event", G_CALLBACK (gtk_true) },
+-  { "connection_device_active",     "clicked", G_CALLBACK (on_iface_active_changed) },
+-  { "connection_device_roaming",    "clicked", G_CALLBACK (on_iface_roaming_changed) },
+-  { "connection_bootproto",         "changed", G_CALLBACK (on_bootproto_changed) },
+-  { "connection_detect_modem",      "clicked", G_CALLBACK (on_detect_modem_clicked) },
+-  /* dialog changing detection */
+-  { "connection_address",           "focus-out-event", G_CALLBACK (on_ip_address_focus_out) },
+-  { "connection_ppp_type",          "changed", G_CALLBACK (on_ppp_type_changed) },
+-  { "connection_device_active",     "toggled", G_CALLBACK (on_dialog_changed) },
+-  { "connection_essid",             "changed", G_CALLBACK (on_dialog_changed) },
+-  { "connection_wep_key_type",      "changed", G_CALLBACK (on_dialog_changed) },
+-  { "connection_wep_key",           "changed", G_CALLBACK (on_dialog_changed) },
+-  { "connection_bootproto",         "changed", G_CALLBACK (on_dialog_changed) },
+-  { "connection_address",           "changed", G_CALLBACK (on_dialog_changed) },
+-  { "connection_netmask",           "changed", G_CALLBACK (on_dialog_changed) },
+-  { "connection_gateway",           "changed", G_CALLBACK (on_dialog_changed) },
+-  { "connection_local_address",     "changed", G_CALLBACK (on_dialog_changed) },
+-  { "connection_remote_address",    "changed", G_CALLBACK (on_dialog_changed) },
+-  { "connection_serial_port",       "changed", G_CALLBACK (on_dialog_changed) },
+-  { "connection_dial_type",         "changed", G_CALLBACK (on_dialog_changed) },
+-  { "connection_volume",            "changed", G_CALLBACK (on_dialog_changed) },
+-  { "connection_phone_number",      "changed", G_CALLBACK (on_dialog_changed) },
+-  { "connection_dial_prefix",       "changed", G_CALLBACK (on_dialog_changed) },
+-  { "connection_login",             "changed", G_CALLBACK (on_dialog_changed) },
+-  { "connection_password",          "changed", G_CALLBACK (on_dialog_changed) },
+-  { "connection_default_gw",        "toggled", G_CALLBACK (on_dialog_changed) },
+-  { "connection_persist",           "toggled", G_CALLBACK (on_dialog_changed) },
+-  { "connection_apn",               "changed", G_CALLBACK (on_dialog_changed) },
+-  { "connection_pppoe_ethernet",    "changed", G_CALLBACK (on_dialog_changed) },
+   { NULL }
+ };
+ 
+@@ -85,11 +51,6 @@
+ };
+ 
+ static const gchar *policy_widgets [] = {
+-	"locations_combo",
+-	"add_location",
+-	"remove_location",
+-	"interfaces_list",
+-	"properties_button",
+ 	"hostname",
+ 	"domain",
+ 	"dns_list",
+@@ -106,58 +67,9 @@
+ };
+ 
+ static void
+-init_standalone_dialog (GstTool         *tool,
+-			IfaceSearchTerm  search_term,
+-			const gchar     *term)
+-{
+-  GstNetworkTool *network_tool;
+-  OobsIface      *iface;
+-  GtkWidget      *d;
+-
+-  network_tool = GST_NETWORK_TOOL (tool);
+-  gst_tool_update_gui (tool);
+-  iface = ifaces_model_search_iface (search_term, term);
+-
+-  if (iface)
+-    {
+-      connection_dialog_prepare (network_tool->dialog, iface);
+-      network_tool->dialog->standalone = TRUE;
+-      g_object_unref (iface);
+-
+-      gtk_widget_show (network_tool->dialog->dialog);
+-    }
+-  else
+-    {
+-      d = gtk_message_dialog_new (GTK_WINDOW (tool->main_dialog),
+-                                  GTK_DIALOG_MODAL,
+-                                  GTK_MESSAGE_WARNING,
+-                                  GTK_BUTTONS_CLOSE,
+-                                  _("The interface does not exist"));
+-      gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (d),
+-                                                _("Check that it is correctly typed "
+-                                                  "and that it is correctly supported "
+-                                                  "by your system."),
+-                                                NULL);
+-      gtk_dialog_run (GTK_DIALOG (d));
+-      gtk_widget_destroy (d);
+-      exit (-1);
+-    }
+-}
+-
+-static void
+ init_filters (void)
+ {
+   gst_filter_init (GTK_ENTRY (gst_dialog_get_widget (tool->main_dialog, "host_alias_address")), GST_FILTER_IP);
+-
+-  gst_filter_init (GTK_ENTRY (gst_dialog_get_widget (tool->main_dialog, "connection_address")), GST_FILTER_IPV4);
+-  gst_filter_init (GTK_ENTRY (gst_dialog_get_widget (tool->main_dialog, "connection_netmask")), GST_FILTER_IPV4);
+-  gst_filter_init (GTK_ENTRY (gst_dialog_get_widget (tool->main_dialog, "connection_gateway")), GST_FILTER_IPV4);
+-
+-  gst_filter_init (GTK_ENTRY (gst_dialog_get_widget (tool->main_dialog, "connection_local_address")), GST_FILTER_IPV4);
+-  gst_filter_init (GTK_ENTRY (gst_dialog_get_widget (tool->main_dialog, "connection_remote_address")), GST_FILTER_IPV4);
+-
+-  gst_filter_init (GTK_ENTRY (gst_dialog_get_widget (tool->main_dialog, "connection_phone_number")), GST_FILTER_PHONE);
+-  gst_filter_init (GTK_ENTRY (gst_dialog_get_widget (tool->main_dialog, "connection_dial_prefix")), GST_FILTER_PHONE);
+ }
+ 
+ static void
+@@ -176,17 +88,8 @@
+ int
+ main (int argc, gchar *argv[])
+ {
+-  gchar *interface = NULL;
+-  gchar *type = NULL;
+-
+-  GOptionEntry entries[] = {
+-    { "configure",      'c', 0, G_OPTION_ARG_STRING, &interface, N_("Configure a network interface"), N_("INTERFACE") },
+-    { "configure-type", 't', 0, G_OPTION_ARG_STRING, &type,      N_("Configure the first network interface with a specific type"), N_("TYPE") },
+-    { NULL }
+-  };
+-
+   g_thread_init (NULL);
+-  gst_init_tool ("network-admin", argc, argv, entries);
++  gst_init_tool ("network-admin", argc, argv, NULL);
+   tool = gst_network_tool_new ();
+ 
+   gst_dialog_require_authentication_for_widgets (tool->main_dialog, policy_widgets);
+@@ -195,12 +98,7 @@
+   set_text_buffers_callback ();
+   init_filters ();
+ 
+-  if (interface)
+-    init_standalone_dialog (tool, SEARCH_DEV, interface);
+-  else if (type)
+-    init_standalone_dialog (tool, SEARCH_TYPE, type);
+-  else
+-    gtk_widget_show (GTK_WIDGET (tool->main_dialog));
++  gtk_widget_show (GTK_WIDGET (tool->main_dialog));
+ 
+   gtk_main ();
+   return 0;
+Index: gnome-system-tools-3.0.0/src/network/network-tool.c
+===================================================================
+--- gnome-system-tools-3.0.0.orig/src/network/network-tool.c	2011-10-22 19:42:20.455033222 +0200
++++ gnome-system-tools-3.0.0/src/network/network-tool.c	2011-10-22 19:42:47.854688761 +0200
+@@ -22,11 +22,8 @@
+ #include <glib/gi18n.h>
+ #include "gst.h"
+ #include "network-tool.h"
+-#include "ifaces-list.h"
+-#include "connection.h"
+ #include "callbacks.h"
+ #include "hosts.h"
+-#include "locations-combo.h"
+ 
+ static void gst_network_tool_class_init (GstNetworkToolClass *class);
+ static void gst_network_tool_init       (GstNetworkTool      *tool);
+@@ -57,13 +54,8 @@
+ {
+   tool->hosts_config = OOBS_HOSTS_CONFIG (oobs_hosts_config_get ());
+   gst_tool_add_configuration_object (GST_TOOL (tool), OOBS_OBJECT (tool->hosts_config), TRUE);
+-  tool->ifaces_config = OOBS_IFACES_CONFIG (oobs_ifaces_config_get ());
+-  gst_tool_add_configuration_object (GST_TOOL (tool), OOBS_OBJECT (tool->ifaces_config), TRUE);
+ 
+   tool->bus_connection = dbus_bus_get (DBUS_BUS_SYSTEM, NULL);
+-
+-  g_signal_connect_swapped (tool->ifaces_config, "changed",
+-			    G_CALLBACK (gst_tool_update_async), tool);
+ }
+ 
+ static void
+@@ -77,9 +69,6 @@
+ 
+   g_object_unref (tool->dns);
+   g_object_unref (tool->search);
+-  g_object_unref (tool->interfaces_model);
+-  g_object_unref (tool->location);
+-  g_free (tool->dialog);
+ 
+   (* G_OBJECT_CLASS (gst_network_tool_parent_class)->finalize) (object);
+ }
+@@ -140,16 +129,8 @@
+   widget = gst_dialog_get_widget (GST_TOOL (tool)->main_dialog, "domain");
+   tool->domain = GTK_ENTRY (widget);
+ 
+-  tool->interfaces_model = ifaces_model_create ();
+-  tool->interfaces_list = ifaces_list_create (GST_TOOL (tool));
+   tool->host_aliases_list = host_aliases_list_create (GST_TOOL (tool));
+ 
+-  widget = gst_dialog_get_widget (GST_TOOL (tool)->main_dialog, "locations_combo");
+-  add_button = gst_dialog_get_widget (GST_TOOL (tool)->main_dialog, "add_location");
+-  delete_button = gst_dialog_get_widget (GST_TOOL (tool)->main_dialog, "remove_location");
+-  tool->location = gst_locations_combo_new (GST_TOOL (tool), widget, add_button, delete_button);
+-
+-  tool->dialog = connection_dialog_init (GST_TOOL (tool));
+   tool->host_aliases_dialog = gst_dialog_get_widget (GST_TOOL (tool)->main_dialog, "host_aliases_edit_dialog");
+ 
+   return object;
+@@ -189,48 +170,6 @@
+ }
+ 
+ static void
+-add_interfaces (GtkTreeView *ifaces_list, OobsList *list)
+-{
+-  OobsListIter iter;
+-  GObject *iface;
+-  gboolean valid;
+-  gint n_items;
+-
+-  valid = oobs_list_get_iter_first (list, &iter);
+-  n_items = oobs_list_get_n_items (list);
+-
+-  while (valid)
+-    {
+-      iface = oobs_list_get (list, &iter);
+-      ifaces_model_add_interface (OOBS_IFACE (iface), (n_items > 1));
+-
+-      g_object_unref (iface);
+-      valid = oobs_list_iter_next (list, &iter);
+-    }
+-}
+-
+-static void
+-add_all_interfaces (GstNetworkTool *network_tool)
+-{
+-  OobsList *ifaces_list;
+-
+-  ifaces_list = oobs_ifaces_config_get_ifaces (network_tool->ifaces_config, OOBS_IFACE_TYPE_ETHERNET);
+-  add_interfaces (network_tool->interfaces_list, ifaces_list);
+-
+-  ifaces_list = oobs_ifaces_config_get_ifaces (network_tool->ifaces_config, OOBS_IFACE_TYPE_WIRELESS);
+-  add_interfaces (network_tool->interfaces_list, ifaces_list);
+-
+-  ifaces_list = oobs_ifaces_config_get_ifaces (network_tool->ifaces_config, OOBS_IFACE_TYPE_IRLAN);
+-  add_interfaces (network_tool->interfaces_list, ifaces_list);
+-
+-  ifaces_list = oobs_ifaces_config_get_ifaces (network_tool->ifaces_config, OOBS_IFACE_TYPE_PLIP);
+-  add_interfaces (network_tool->interfaces_list, ifaces_list);
+-
+-  ifaces_list = oobs_ifaces_config_get_ifaces (network_tool->ifaces_config, OOBS_IFACE_TYPE_PPP);
+-  add_interfaces (network_tool->interfaces_list, ifaces_list);
+-}
+-
+-static void
+ set_entry_text (GtkWidget *entry, const gchar *text)
+ {
+   gtk_entry_set_text (GTK_ENTRY (entry), (text) ? text : "");
+@@ -265,11 +204,6 @@
+   set_entry_text (GTK_WIDGET (network_tool->domain),
+ 		  oobs_hosts_config_get_domainname (network_tool->hosts_config));
+   g_signal_handlers_unblock_by_func (network_tool->domain, on_entry_changed, tool->main_dialog);
+-
+-  gtk_list_store_clear (GTK_LIST_STORE (network_tool->interfaces_model));
+-  add_all_interfaces (network_tool);
+-
+-  connection_dialog_update (network_tool->dialog);
+ }
+ 
+ GstTool*
+Index: gnome-system-tools-3.0.0/src/network/network-tool.h
+===================================================================
+--- gnome-system-tools-3.0.0.orig/src/network/network-tool.h	2011-10-22 19:42:20.531032266 +0200
++++ gnome-system-tools-3.0.0/src/network/network-tool.h	2011-10-22 19:42:47.854688761 +0200
+@@ -26,8 +26,7 @@
+ #include <gtk/gtk.h>
+ #include <dbus/dbus.h>
+ #include "address-list.h"
+-#include "locations-combo.h"
+-#include "connection.h"
++#include "gst.h"
+ 
+ #define GST_TYPE_NETWORK_TOOL           (gst_network_tool_get_type ())
+ #define GST_NETWORK_TOOL(obj)           (G_TYPE_CHECK_INSTANCE_CAST ((obj), GST_TYPE_NETWORK_TOOL, GstNetworkTool))
+@@ -45,7 +44,6 @@
+ 
+   /* config */
+   OobsHostsConfig *hosts_config;
+-  OobsIfacesConfig *ifaces_config;
+ 
+   /* gui */
+   GstAddressList *dns;
+@@ -54,16 +52,11 @@
+   /* bus, used for NM integration */
+   DBusConnection *bus_connection;
+ 
+-  GtkTreeModel *interfaces_model;
+-  GtkTreeView  *interfaces_list;
+-
+   GtkTreeView *host_aliases_list;
+-  GstLocationsCombo *location;
+ 
+   GtkEntry *hostname;
+   GtkEntry *domain;
+ 
+-  GstConnectionDialog *dialog;
+   GtkWidget *host_aliases_dialog;
+ };
+ 

@@ -1,0 +1,23 @@
+=== modified file 'gnome-system-tools/src/users/user-profiles.conf.in'
+--- gnome-system-tools/src/users/user-profiles.conf.in	2011-12-16 17:08:20 +0000
++++ gnome-system-tools/src/users/user-profiles.conf.in	2014-02-22 18:55:06 +0000
+@@ -7,4 +7,4 @@
+ [Administrator]
+ _Name=Administrator
+ _Description=Can change anything on the system, including installing and upgrading software.
+-Groups=cdrom,floppy,dialout,tape,dip,adm,plugdev,fax,audio,scanner,fuse,admin,sambashare,lpadmin,video
++Groups=cdrom,floppy,dialout,tape,dip,adm,plugdev,fax,audio,scanner,fuse,sudo,sambashare,lpadmin,video
+
+=== modified file 'gnome-system-tools/src/users/user-settings.h'
+--- gnome-system-tools/src/users/user-settings.h	2010-05-31 16:48:21 +0000
++++ gnome-system-tools/src/users/user-settings.h	2014-02-22 18:55:06 +0000
+@@ -29,7 +29,7 @@
+ #include "users-tool.h"
+ #include "user-profiles.h"
+ 
+-#define ADMIN_GROUP "admin"
++#define ADMIN_GROUP "sudo"
+ 
+ 
+ gboolean        user_delete                      (GtkTreeModel *model,
+

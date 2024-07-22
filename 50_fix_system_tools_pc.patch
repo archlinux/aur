@@ -1,0 +1,15 @@
+Author: Andriy Grytsenko <andrej@rep.kiev.ua>
+Description: Remove invalid statements from gnome-system-tools.pc.in (Fixes lintian error pkg-config-bad-directive).
+
+--- a/gnome-system-tools.pc.in
++++ b/gnome-system-tools.pc.in
+@@ -3,9 +3,6 @@
+ libdir=
+ includedir=
+ 
+-pixmapsdir=@pixmapsdir@
+-backenddir=@scriptsdir@
+-
+ Name: gst
+ Description: Gnome System Tools
+ Version: @VERSION@

@@ -1,0 +1,13 @@
+--- a/src/time/time-tool.c	2010-12-12 18:35:29.000000000 +0100
++++ b/src/time/time-tool.c	2024-07-21 19:29:18.046677507 +0200
+@@ -105,8 +105,8 @@
+ 		service = oobs_list_get (list, &iter);
+ 		role = gst_service_get_role (OOBS_SERVICE (service));
+ 
+-		if (role == GST_ROLE_NTP_SERVER)
+-			tool->ntp_service = g_object_ref (service);
++		// if (role == GST_ROLE_NTP_SERVER)
++		//	tool->ntp_service = g_object_ref (service);
+ 
+ 		g_object_unref (service);
+ 		valid = oobs_list_iter_next (list, &iter);

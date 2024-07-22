@@ -1,0 +1,54 @@
+Description: hide "Properties" in users context menu
+Author: Thaddäus Tintenfisch <thad.fisch@gmail.com>
+Bug: https://bugs.launchpad.net/bugs/586080
+Last-Update: 2014-03-07
+
+--- a/src/users/callbacks.c
++++ b/src/users/callbacks.c
+@@ -63,7 +63,7 @@
+ }
+ 
+ static void
+-do_popup_menu (GtkTreeView *treeview, GdkEventButton *event)
++do_popup_menu (GtkTreeView *treeview, GdkEventButton *event, gint table)
+ {
+ 	GtkTreeSelection *selection;
+ 	GtkUIManager *ui_manager;
+@@ -91,6 +91,9 @@
+ 	gtk_widget_set_sensitive (gtk_ui_manager_get_widget (ui_manager, "/MainMenu/Delete"),
+ 				  cont > 0);
+ 
++	if (table == TABLE_USERS)
++		gtk_widget_hide (gtk_ui_manager_get_widget (ui_manager, "/MainMenu/Properties"));
++
+ 	gtk_menu_popup (GTK_MENU (popup), NULL, NULL, NULL, NULL,
+ 			button, event_time);
+ }
+@@ -120,7 +123,7 @@
+ 
+ 			gtk_tree_path_free (path);
+ 
+-			do_popup_menu (treeview, event);
++			do_popup_menu (treeview, event, table);
+ 		}
+ 
+ 		return TRUE;
+@@ -136,7 +139,7 @@
+ gboolean
+ on_table_popup_menu (GtkTreeView *treeview, GtkWidget *popup)
+ {
+-	do_popup_menu (treeview, NULL);
++	do_popup_menu (treeview, NULL, -1);
+ 	return TRUE;
+ }
+ 
+@@ -158,6 +161,8 @@
+ 
+ 	if (table == TABLE_GROUPS)
+ 		on_group_settings_clicked (NULL, NULL);
++	else if (table == TABLE_USERS)
++		return; // do nothing
+ }
+ 
+ void
+

@@ -1,0 +1,8 @@
+--- a/src/shares/shares.desktop.in.in
++++ b/src/shares/shares.desktop.in.in
+@@ -12,4 +12,5 @@
+ X-GNOME-Bugzilla-Component=shares-admin
+ X-GNOME-Bugzilla-Version=@VERSION@
+ StartupNotify=true
++NoDisplay=true
+ 

@@ -1,0 +1,42 @@
+Description: Drop unneeded g_object_unref call to fix a segmentation fault on exit after a new user has been created. Adjust gst_users_tool_finalize to fix some warnings/error messages.
+Author: Thaddäus Tintenfisch <thad.fisch@gmail.com>
+Bug-Ubuntu: https://launchpad.net/bugs/1185396
+Bug-Debian: https://bugs.debian.org/729477
+
+=== modified file 'src/users/users-tool.c'
+--- a/src/users/users-tool.c	2011-12-16 17:08:20 +0000
++++ b/src/users/users-tool.c	2014-03-07 19:55:37 +0000
+@@ -114,17 +114,18 @@
+ {
+ 	GstUsersTool *tool = GST_USERS_TOOL (object);
+ 
++	/* Clear models to unreference OobsUsers and OobsGroups
++	 * to be sure they are finalized properly (passwords...) */
++	users_table_clear ();
++	groups_table_clear ();
++
+ 	g_object_unref (tool->users_config);
++	g_object_unref (tool->groups_config);
+ 	g_object_unref (tool->self_config);
+-	g_object_unref (tool->groups_config);
++
+ 	g_object_unref (tool->profiles);
+ 	g_object_unref (tool->settings);
+ 
+-	/* Clear models to unreference OobsUsers and OobsGroups
+-	 * to be sure they are finalized properly (passwords...) */
+-	users_table_clear ();
+-	groups_table_clear ();
+-
+ 	(* G_OBJECT_CLASS (gst_users_tool_parent_class)->finalize) (object);
+ }
+ 
+@@ -182,7 +183,6 @@
+ 		/* update privileges table too */
+ 		privileges_table_add_group (OOBS_GROUP (group));
+ 
+-		g_object_unref (group);
+ 		valid = oobs_list_iter_next (list, &iter);
+ 	}
+ 
+

@@ -1,0 +1,22 @@
+Description: GtkScrolledWindow does not fill the place inside of GtkVBox
+ and therefore its size is determined by minimum size of the scrollbar.
+ As a workaround this patch sets size request for GtkScrolledWindow instead
+ of it's immediate child.
+Author: Andriy Grytsenko <andrej@rep.kiev.ua>
+Bug-Debian: https://bugs.debian.org/754306
+
+--- a/interfaces/services.ui
++++ b/interfaces/services.ui
+@@ -28,10 +28,10 @@
+             <property name="hscrollbar_policy">never</property>
+             <property name="vscrollbar_policy">automatic</property>
+             <property name="shadow_type">in</property>
++            <property name="width_request">400</property>
++            <property name="height_request">500</property>
+             <child>
+               <object class="GtkTreeView" id="services_list">
+-                <property name="width_request">400</property>
+-                <property name="height_request">300</property>
+                 <property name="visible">True</property>
+                 <property name="can_focus">True</property>
+                 <property name="headers_visible">False</property>

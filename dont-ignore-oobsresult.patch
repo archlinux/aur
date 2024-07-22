@@ -1,0 +1,19 @@
+From: Vlad Orlov <monsta@inbox.ru>
+Date: Tue, 23 Sep 2014 11:18:06 +0400
+Subject: don't ignore liboobs' result in a callback function
+
+Index: gnome-system-tools-3.0.0/src/common/gst-tool.c
+===================================================================
+--- gnome-system-tools-3.0.0.orig/src/common/gst-tool.c
++++ gnome-system-tools-3.0.0/src/common/gst-tool.c
+@@ -584,6 +584,10 @@ update_async_func (OobsObject *object,
+ 		gst_tool_update_config (tool);
+ 		gst_tool_update_gui (tool);
+ 	}
++
++	if (result != OOBS_RESULT_OK) {
++		show_oobs_error_dialog (tool, OPERATION_UPDATE, result);
++	}
+ }
+ 
+ void

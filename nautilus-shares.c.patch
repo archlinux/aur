@@ -1,0 +1,40 @@
+--- a/src/shares/nautilus/nautilus-shares.c	2010-10-06 11:54:53.000000000 +0200
++++ b/src/shares/nautilus/nautilus-shares.c	2024-07-21 10:26:29.845689837 +0200
+@@ -24,8 +24,10 @@
+ #include <config.h>
+ #include <gio/gio.h>
+ #include <glib/gi18n-lib.h>
+-#include <libnautilus-extension/nautilus-extension-types.h>
++#include <gtk/gtk.h>
++#include <libnautilus-extension/nautilus-extension-enum-types.h>
+ #include <libnautilus-extension/nautilus-file-info.h>
++#include <libnautilus-extension/nautilus-menu.h>
+ #include <libnautilus-extension/nautilus-menu-provider.h>
+ #include <libnautilus-extension/nautilus-info-provider.h>
+ #include "nautilus-shares.h"
+@@ -122,7 +124,6 @@
+ 
+ static GList*
+ get_file_items (NautilusMenuProvider *provider,
+-		GtkWidget            *window,
+ 		GList                *files)
+ {
+   NautilusShares *shares;
+@@ -165,7 +166,7 @@
+ }
+ 
+ static void
+-menu_provider_iface_init (NautilusMenuProviderIface *iface)
++menu_provider_iface_init (NautilusMenuProviderInterface *iface)
+ {
+   iface->get_file_items = get_file_items;
+ }
+@@ -208,7 +209,7 @@
+ }
+ 
+ static void
+-info_provider_iface_init (NautilusInfoProviderIface *iface)
++info_provider_iface_init (NautilusInfoProviderInterface *iface)
+ {
+   iface->update_file_info = nautilus_share_update_file_info;
+ }
