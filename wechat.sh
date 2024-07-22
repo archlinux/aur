@@ -161,6 +161,7 @@ function execApp() {
 	if [ ! ${unitName} ]; then
 		unitName="wechat-uos-qt"
 	fi
+	mkdir -p "${XDG_DATA_HOME}"/WeChat_Data/.config
 	systemd-run \
 	--user \
 	${sdOption} \
@@ -232,6 +233,12 @@ function execApp() {
 		--ro-bind /sys/devices /sys/devices \
 		--proc /proc \
 		--dir /sandbox \
+		--ro-bind /usr/lib/flatpak-xdg-utils/xdg-open \
+			/sandbox/chromium \
+		--ro-bind /usr/lib/flatpak-xdg-utils/xdg-open \
+			/sandbox/firefox \
+		--ro-bind /usr/lib/wechat-uos-qt/mimeapps.list \
+			"${XDG_DATA_HOME}"/WeChat_Data/.config/mimeapps.list \
 		--bind /tmp /tmp \
 		--bind /usr /usr \
 		--ro-bind /etc /etc \
@@ -264,8 +271,6 @@ function execApp() {
 			"${XDG_DATA_HOME}/fonts" \
 		--ro-bind-try "${XDG_CONFIG_HOME}"/Trolltech.conf \
 			"${XDG_CONFIG_HOME}"/Trolltech.conf \
-		--ro-bind-try "${XDG_CONFIG_HOME}"/mimeapps.list \
-			"${XDG_CONFIG_HOME}"/mimeapps.list \
 		--ro-bind-try "${XDG_CONFIG_HOME}"/kdeglobals \
 			"${XDG_CONFIG_HOME}"/kdeglobals \
 		--ro-bind-try "${XDG_DATA_HOME}"/WeChat_Data/.flatpak-info \

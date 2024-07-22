@@ -1,9 +1,9 @@
 # Maintainer: Kimiblock Moe
 pkgname=(wechat-uos-bwrap wechat-uos-qt wechat-key-block)
 pkgver=1.0.0.241
-pkgrel=21
+pkgrel=22
 epoch=
-pkgdesc="WeChat Qt, the universal version"
+pkgdesc="WeChat Qt, the so-called universal version"
 arch=('x86_64' 'aarch64' 'loong64')
 url="https://weixin.qq.com/"
 license=('LicenseRef-proprietary')
@@ -61,6 +61,7 @@ depends=(
 	"lsb-release"
 	"psmisc"
 	"wmctrl"
+	"flatpak-xdg-utils"
 )
 
 optdepends=('wechat: The meta package')
@@ -82,6 +83,7 @@ source=(
 	wechat.env
 	keyBlocker.cpp
 	CMakeLists.txt
+	mimeapps.list
 )
 
 source_x86_64=(
@@ -96,7 +98,7 @@ source_loong64=(
 	wechat-loong64-${pkgver}.deb::"https://pro-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.wechat/com.tencent.wechat_${pkgver}_arm64.deb"
 )
 
-md5sums=('e3f07211048e9f04643c3f831681f7b9'
+md5sums=('63481500681e4db3955d756ccfc04a83'
          'd9ae5b19fa5879cb164089fc98c6621a'
          '600e74549ce2258c045d5c2f7689ea63'
          'dfc069e6c8d9dbaa90fe388cab4002c9'
@@ -104,7 +106,8 @@ md5sums=('e3f07211048e9f04643c3f831681f7b9'
          '38e98220da64adc1d8f9dc17d04b3a39'
          '629807ee393cd29e5a0e57b51dfae9e9'
          '82e91a6cd1764544a78b896d4c217ca4'
-         '83c934cd928c7411c3b8e7d4e86fb52c')
+         '83c934cd928c7411c3b8e7d4e86fb52c'
+         'e821fd2d05d6d39c7ecf118916922414')
 md5sums_x86_64=('2c2c8ec69b6b798b7ccaf873e27d977a')
 md5sums_aarch64=('c4d443515fe76ec35e792d43e9521887')
 md5sums_loong64=('c4d443515fe76ec35e792d43e9521887')
@@ -144,6 +147,7 @@ function package_wechat-uos-qt() {
 	install -Dm755 open.sh "${pkgdir}/usr/lib/wechat-uos-qt/open"
 	install -Dm644 wechat.env "${pkgdir}/usr/lib/wechat-uos-qt/envs"
 	install -Dm644 wechat-uos-qt.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/wechat-uos-qt.svg"
+	install -Dm644 mimeapps.list "${pkgdir}/usr/lib/wechat-uos-qt/mimeapps.list"
 	mkdir -p "${pkgdir}/usr/share/wechat-uos-qt/license"
 	install -d "${pkgdir}/usr/lib/license"
 	chmod 0755 "${pkgdir}/usr/lib/license" -R
@@ -156,4 +160,6 @@ function package_wechat-uos-qt() {
 function package_wechat-uos-bwrap() {
 	conflicts=()
 	depends+=(wechat-uos-qt)
+	install -d "${pkgdir}/usr/share/licenses/${pkgname}/"
+	echo "https://www.wechat.com/us/service_terms.html" >"${pkgdir}/usr/share/licenses/${pkgname}/ToS.txt"
 }
