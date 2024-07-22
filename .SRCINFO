@@ -1,0 +1,18 @@
+pkgbase = ipp-usb-git
+	pkgdesc = HTTP reverse proxy, backed by IPP-over-USB connection to device. Allows using the IPP protocol to be used with USB printers as well.
+	pkgver = 0.9.26.r4.g0f6a45c
+	pkgrel = 1
+	url = https://github.com/OpenPrinting/ipp-usb
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = git
+	makedepends = go
+	depends = libusb
+	depends = avahi
+	provides = ipp-usb
+	conflicts = ipp-usb
+	backup = etc/ipp-usb/ipp-usb.conf
+	source = git+https://github.com/OpenPrinting/ipp-usb.git
+	sha256sums = SKIP
+
+pkgname = ipp-usb-git

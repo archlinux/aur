@@ -1,0 +1,44 @@
+# Maintainer: Peter Mattern <pmattern at arcor dot de>
+
+_pkgname=ipp-usb
+pkgname=$_pkgname-git
+pkgver=0.9.26.r4.g0f6a45c
+pkgrel=1
+pkgdesc="HTTP reverse proxy, backed by IPP-over-USB connection to device. Allows using the IPP protocol to be used with USB printers as well."
+arch=('x86_64')
+url="https://github.com/OpenPrinting/ipp-usb"
+license=('BSD-2-Clause')
+depends=('libusb' 'avahi')
+makedepends=('git' 'go')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+backup=(etc/ipp-usb/ipp-usb.conf)
+source=("git+${url}.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd $_pkgname
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  cd $_pkgname
+  make
+}
+
+check() {
+  cd $_pkgname
+  make test
+}
+
+package() {
+  cd $_pkgname
+  # upstream's Makefile isn't really usable, so copy manually
+  install -Dm755 $_pkgname "$pkgdir"/usr/bin/$_pkgname
+  install -Dm644 ipp-usb.conf "$pkgdir"/etc/ipp-usb/ipp-usb.conf
+  install -Dm644 systemd-udev/71-ipp-usb.rules "$pkgdir"/usr/lib/udev/rules.d/71-ipp-usb.rules
+  install -Dm644 systemd-udev/ipp-usb.service "$pkgdir"/usr/lib/systemd/system/ipp-usb.service
+  install -Dm644 ipp-usb.8 "$pkgdir"/usr/share/man/man8/ipp-usb.8
+  install -Dm644 ipp-usb-quirks/* -t "$pkgdir"/usr/share/ipp-usb/quirks
+  install -Dm644 "${srcdir}"/$_pkgname/LICENSE -t "${pkgdir}"/usr/share/licenses/$pkgname
+}
