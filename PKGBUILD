@@ -2,7 +2,7 @@
 pkgname=wordpress-studio-git
 _appname=Studio
 _pkgname="WordPress ${_appname}"
-pkgver=1.0.5.r0.g6c14454
+pkgver=1.0.6.r0.g1538b85
 _electronversion=29
 _nodeversion=20
 pkgrel=1
@@ -29,7 +29,8 @@ options=(
 )
 source=(
     "${pkgname%-git}.git::git+${_ghurl}.git"
-    "${pkgname%-git}.sh")
+    "${pkgname%-git}.sh"
+)
 sha256sums=('SKIP'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 pkgver() {
