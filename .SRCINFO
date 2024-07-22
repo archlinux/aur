@@ -1,7 +1,7 @@
 pkgbase = rucola-notes
 	pkgdesc = Terminal-based markdown note manager.
 	pkgver = 0.3.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Linus-Mussmaecher/rucola
 	arch = x86_64
 	license = GPL-3.0-only
