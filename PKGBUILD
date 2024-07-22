@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=musicat-git
 _pkgname=Musicat
-pkgver=0.7.0.r1.gb3570da
+pkgver=0.8.0.r1.gbf6e839
 _nodeversion=18
 pkgrel=1
 pkgdesc="A sleek desktop music player and tagger for offline music 🪕 With experimental features like map view, GPT analysis, artist toolkit."
@@ -21,6 +21,7 @@ makedepends=(
     'cmake'
     'gcc'
     'rust'
+    'curl'
 )
 source=(
     "${pkgname//-/.}::git+${url}.git"
