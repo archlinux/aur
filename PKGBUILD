@@ -15,8 +15,8 @@ source=("https://github.com/xunmengshe/OpenUtau/releases/download/0.1.501.42/Ope
         "OpenUtau.desktop"
         "openutau.svg")
 sha256sums=('SKIP'
-            'daa0115af49f653400b7ef5bd6795d7cb703834bb9503584b4551f9a416682e7'
-            '6c2939d1126db03e744deceed9464a4d4d25c03a17c1f2d7585697f1fc2a5f17'
+            '3d905282c844a47270cc37c5f9883a5d008fa9498f4a00aab5dd03e16580780e'
+            '7f60562029daf75404f82f8ec2ab4a1089bbf3261709815853cbbf50a0afa445'
             '490fd7489bb3c4225c3f2d1e96ba8320bd481da6eb031b97229dcf06997c2f5b')
 
 package() {
