@@ -6,6 +6,7 @@ arch=('any')
 url="https://github.com/gethomepage/homepage"
 license=('GPL-3.0-only')
 makedepends=('git' 'pnpm')
+depends=('pnpm')
 options=('!strip')
 source=('git+https://github.com/gethomepage/homepage.git'
         'homepage.service'
