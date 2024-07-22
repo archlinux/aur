@@ -6,7 +6,7 @@
 # Maintainer: David Hummel <hummeltech@sherpaguru.com>
 
 pkgname=mapnik-git
-pkgver=4.0.0.r11.g5e7b478
+pkgver=4.0.0.r13.gfc029ae
 pkgrel=1
 pkgdesc='Free Toolkit for developing mapping applications. Above all Mapnik is about rendering beautiful maps (git version)'
 arch=('i686' 'x86_64')
@@ -46,23 +46,21 @@ sha256sums=('SKIP'
             'SKIP')
 
 pkgver() {
-  cd mapnik || exit
-  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git -C mapnik describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd mapnik || exit
-  patch -Np1 < ../mapnik-use-system-sparsehash.patch
+  patch -d mapnik -Np1 < mapnik-use-system-sparsehash.patch
 
-  git submodule init test/data
-  git config submodule.test/data.url "${srcdir}"/test-data
-  git -c protocol.file.allow=always submodule update test/data
+  git -C mapnik submodule init test/data
+  git -C mapnik config submodule.test/data.url "${srcdir}"/test-data
+  git -C mapnik -c protocol.file.allow=always submodule update test/data
 
   # Remove bundled sparsehash directory in favor of 'sparsehash' package
   rm -rf deps/mapnik/sparsehash
 
   export LDFLAGS
-  cmake -B ../mapnik_build -S . \
+  cmake -B build -S mapnik \
     -DBUILD_BENCHMARK:BOOL=OFF \
     -DBUILD_DEMO_CPP:BOOL=OFF \
     -DBUILD_DEMO_VIEWER:BOOL=OFF \
@@ -78,24 +76,24 @@ prepare() {
 }
 
 build() {
-  cmake --build mapnik_build
+  cmake --build build
 }
 
 check() {
-  ctest --output-on-failure --test-dir mapnik_build
+  ctest --output-on-failure --test-dir build
 }
 
 package(){
   # Remove bundled dejavu fonts from cmake_install.cmake in favor of 'ttf-dejavu' package
-  sed -i '/dejavu-fonts-ttf/d' "${srcdir}"/mapnik_build/cmake_install.cmake
+  sed -i '/dejavu-fonts-ttf/d' "${srcdir}"/build/cmake_install.cmake
 
   # Install to pkgdir
-  DESTDIR="${pkgdir}" cmake --install mapnik_build
+  DESTDIR="${pkgdir}" cmake --install build
 
   # License
   install -Dm644 "${srcdir}"/mapnik/COPYING "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 
   # Remove usr/share/fonts directory
-  pushd "${pkgdir}"
+  pushd "${pkgdir}" || return
   rm -rf usr/share/fonts
 }
