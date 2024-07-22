@@ -9,6 +9,7 @@ pkgbase = hydrus-video-deduplicator-git
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-hatchling
+	makedepends = git
 	depends = python
 	depends = python-platformdirs
 	depends = python-rich

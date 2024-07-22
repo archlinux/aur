@@ -30,6 +30,7 @@ makedepends=(
 	'python-installer'
 	'python-wheel'
 	'python-hatchling'
+	'git'
 	)
 source=("${_pkgname}::git+https://github.com/hydrusvideodeduplicator/${_pkgname}.git"
 	hydrusvideodeduplicator)
