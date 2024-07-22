@@ -4,7 +4,7 @@ pkgname="${_appname}-desktop-bin"
 _pkgname=EnvKey
 pkgver=2.4.18
 _electronversion=13
-pkgrel=2
+pkgrel=3
 pkgdesc="Secure, human-friendly, cross-platform secrets and config."
 arch=('x86_64')
 url="https://www.envkey.com/"
@@ -28,7 +28,7 @@ source=(
 )
 sha256sums=('ad009fa2339c4ecde7fd7371a0dafa3a9ae0f85aa08df9d6b832298f0cb5aa72'
             'd3e78cbc2e92dfabac2dc9c8a5cd22e702cba2a65455c265e5bed3a1d447a704'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
