@@ -1,6 +1,6 @@
 pkgbase = hydrus-video-deduplicator-git
 	pkgdesc = Hydrus Video Deduplicator finds potential duplicate videos through the Hydrus API
-	pkgver = 0.4.2
+	pkgver = 0.6.0.r0.g2f3753c
 	pkgrel = 1
 	url = https://github.com/hydrusvideodeduplicator/hydrus-video-deduplicator
 	arch = any
@@ -21,9 +21,12 @@ pkgbase = hydrus-video-deduplicator-git
 	depends = python-psutil
 	depends = python-joblib
 	depends = python-pillow
-	depends = python-pyavm
 	depends = python-av
-	source = hydrus-video-deduplicator-git-0.4.2.tar.gz::https://github.com/hydrusvideodeduplicator/hydrus-video-deduplicator/archive/refs/tags/v0.4.2.tar.gz
-	sha256sums = b8ec607b50529e8ac2f0a1f7e1e612f7bfc38484eb9aaacab1f7c244d09ddc82
+	provides = hydrus-video-deduplicator=0.6.0.r0.g2f3753c
+	conflicts = hydrus-video-deduplicator
+	source = hydrus-video-deduplicator::git+https://github.com/hydrusvideodeduplicator/hydrus-video-deduplicator.git
+	source = hydrusvideodeduplicator
+	sha256sums = SKIP
+	sha256sums = 504aa64d8bcbc5f37d22f798ce40cf0daf127c6835897887e0634fe8b0f2db7f
 
 pkgname = hydrus-video-deduplicator-git

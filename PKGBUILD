@@ -23,7 +23,6 @@ depends=(
   'python-psutil'
   'python-joblib'
   'python-pillow'
-  'python-pyavm'
   'python-av'
 )
 makedepends=(
