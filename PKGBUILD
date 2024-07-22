@@ -5,7 +5,7 @@
 pkgname=qgpgme-qt5
 _pkgbase=gpgme
 pkgver=1.23.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Qt5 bindings for GPGme"
 arch=('x86_64')
 url='https://www.gnupg.org/related_software/gpgme/'
