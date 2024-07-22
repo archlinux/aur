@@ -5,9 +5,9 @@
 _srcname=ts
 pkgname=task-spooler
 pkgver=1.0.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Queue up tasks from the shell for batch execution"
-arch=('x86_64')
+arch=('x86_64' 'armv7h' 'aarch64')
 url="https://viric.name/soft/ts/"
 license=('GPL-2.0-or-later')
 source=(https://viric.name/soft/$_srcname/$_srcname-$pkgver.tar.gz)

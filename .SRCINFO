@@ -1,9 +1,11 @@
 pkgbase = task-spooler
 	pkgdesc = Queue up tasks from the shell for batch execution
 	pkgver = 1.0.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://viric.name/soft/ts/
 	arch = x86_64
+	arch = armv7h
+	arch = aarch64
 	license = GPL-2.0-or-later
 	source = https://viric.name/soft/ts/ts-1.0.3.tar.gz
 	sha256sums = fa833311543dc535b60cb7ab83c64ab5ee31128dbaaaa13dde341984e542b428
