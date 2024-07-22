@@ -1,0 +1,17 @@
+pkgbase = libppd-git
+	pkgdesc = Legacy support library for PPD files
+	pkgver = 2.0.0.r11.g327b61cf
+	pkgrel = 1
+	url = https://github.com/OpenPrinting/libppd
+	arch = x86_64
+	license = Apache-2.0 WITH LLVM-exception
+	makedepends = git
+	depends = libcups-git
+	depends = libcupsfilters-git
+	provides = libppd
+	conflicts = libppd
+	options = !emptydirs
+	source = git+https://github.com/OpenPrinting/libppd.git
+	sha256sums = SKIP
+
+pkgname = libppd-git
