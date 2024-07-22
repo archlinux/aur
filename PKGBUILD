@@ -3,7 +3,7 @@
 _gitname="nmap"
 _pkgname="zenmap"
 pkgname="$_pkgname-git"
-pkgver=7.94.r229.g667527c4
+pkgver=7.95.r94.g667527c
 pkgrel=1
 pkgdesc="Graphical Nmap frontend and results viewer"
 url='https://github.com/nmap/nmap'
@@ -37,27 +37,20 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgsrc"
+  local _regex='^Nmap ([0-9\.]+) .*$'
+  local _file='CHANGELOG'
 
-  local _regex='\s*Merge ([0-9]+\.[0-9]+(\.[0-9]+)?) release branch$'
-  local _file='zenmap/zenmapCore/Version.py'
+  local _line=$(grep -Esm1 "$_regex" "$_file")
+  local _line_num=$(grep -Ensm1 "$_regex" "$_file" | cut -d':' -f1)
 
-  local _line=$(
-    git log -E --grep="^$_regex" -1 --pretty=oneline --no-color -- "$_file"
-  )
-  local _version=$(
-    echo "$_line" | sed -E "s@^[0-9a-f]*$_regex@\1@"
-  )
-  local _commit=$(
-    echo "$_line" | sed -E 's@ .*$@@'
-  )
-  local _revision=$(
-    git rev-list --count --cherry-pick $_commit...HEAD
-  )
-  local _hash=$(
-    git rev-parse --short=8 HEAD
-  )
+  local _version=$(sed -E "s@$_regex@\1@" <<< "$_line")
 
-  echo "$_version.r$_revision.g$_hash"
+  local _commit=$(git blame -L $_line_num,+1 -- "$_file" | awk '{print $1;}')
+
+  local _revision=$(git rev-list --count --cherry-pick "$_commit"...HEAD)
+  local _hash=$(git rev-parse --short=7 HEAD)
+
+  printf '%s.r%s.g%s' "${_version:?}" "${_revision:?}" "${_hash:?}"
 }
 
 build() {
