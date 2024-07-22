@@ -3,7 +3,7 @@
 _pkgname=scenefx
 pkgname="$_pkgname-git"
 pkgver=r213.e1f4bc5
-pkgrel=1
+pkgrel=2
 license=("MIT")
 pkgdesc="A drop-in replacement for the wlroots scene API that allows wayland compositors to render surfaces with eye-candy effects"
 url="https://github.com/wlrfx/scenefx"
