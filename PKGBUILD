@@ -2,7 +2,7 @@
 
 pkgname=vbox-office-launcher-git
 pkgver=0.1.2.r0.g7929a6b
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool for launching Windows applications in a VirtualBox environment"
 arch=('any')
 url="https://github.com/Gunther-Schulz/vbox-windows-app-launcher"
@@ -15,8 +15,16 @@ source=("git+https://github.com/Gunther-Schulz/vbox-windows-app-launcher.git")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/${pkgname%-git}" || cd "$srcdir/vbox-windows-app-launcher"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//' || echo "0.0.0"
+    cd "$srcdir"
+    if [ -d "${pkgname%-git}" ]; then
+        cd "${pkgname%-git}"
+    elif [ -d "vbox-windows-app-launcher" ]; then
+        cd "vbox-windows-app-launcher"
+    else
+        echo "Error: Source directory not found" >&2
+        return 1
+    fi
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//' || echo "0.2.0.r0.g$(git rev-parse --short HEAD)"
 }
 
 package() {
