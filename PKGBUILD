@@ -11,24 +11,28 @@ depends=('bash' 'virtualbox')
 optdepends=('dunst: for desktop notifications'
             'wmctrl: for window management')
 makedepends=('git')
-source=("git+https://github.com/Gunther-Schulz/vbox-windows-app-launcher.git")
+source=("vbox-windows-app-launcher::git+https://github.com/Gunther-Schulz/vbox-windows-app-launcher.git")
 md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir"
-    if [ -d "${pkgname%-git}" ]; then
-        cd "${pkgname%-git}"
-    elif [ -d "vbox-windows-app-launcher" ]; then
+    if [ -d "vbox-windows-app-launcher" ]; then
         cd "vbox-windows-app-launcher"
     else
         echo "Error: Source directory not found" >&2
         return 1
     fi
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//' || echo "0.2.0.r0.g$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 package() {
-    cd "$srcdir/vbox-windows-app-launcher"
+    cd "$srcdir"
+    if [ -d "vbox-windows-app-launcher" ]; then
+        cd "vbox-windows-app-launcher"
+    else
+        echo "Error: Source directory not found" >&2
+        return 1
+    fi
     
     # Install the main script
     install -Dm755 vbox_windows_app_launcher.sh "$pkgdir/usr/bin/vbox-windows-app-launcher"

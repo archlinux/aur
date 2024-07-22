@@ -10,7 +10,7 @@ pkgbase = vbox-office-launcher-git
 	depends = virtualbox
 	optdepends = dunst: for desktop notifications
 	optdepends = wmctrl: for window management
-	source = git+https://github.com/Gunther-Schulz/vbox-windows-app-launcher.git
+	source = vbox-windows-app-launcher::git+https://github.com/Gunther-Schulz/vbox-windows-app-launcher.git
 	md5sums = SKIP
 
 pkgname = vbox-office-launcher-git
