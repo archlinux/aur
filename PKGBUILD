@@ -4,7 +4,7 @@
 
 pkgname=rucola-notes
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal-based markdown note manager."
 url="https://github.com/Linus-Mussmaecher/rucola"
 license=("GPL-3.0-only")
