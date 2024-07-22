@@ -2,13 +2,13 @@
 
 pkgname=gpt4all-chat-git
 _gitname=gpt4all
-pkgver=r1903.1ce65e8e
+pkgver=3.0.0.r64.g54ed309
 pkgrel=1
 pkgdesc="Cross platform Qt based GUI for GPT4All versions"
 arch=('x86_64')
 url="https://github.com/nomic-ai/gpt4all"
 license=('MIT')
-makedepends=('cmake' 'git' 'vulkan-tools' 'shaderc')
+makedepends=('cmake' 'git' 'vulkan-tools' 'shaderc' 'qt6-tools')
 depends=(
   'qt6-base' 'qt6-httpserver' 'qt6-quickcontrols2' 'qt6-svg'
   'qt6-webengine' 'qt6-shadertools' 'qt6-5compat' 'qt6-wayland'
@@ -30,7 +30,7 @@ sha256sums=(
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  echo "$(git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g')"
 }
 
 prepare() {
@@ -53,10 +53,6 @@ build() {
 
 package() {
   cd "${srcdir}/${_gitname}/gpt4all-chat/build"
-
-  # Temporary fix for non-existent files on installation
-  sed -i '/komputeConfigVersion/d' llmodel/llama.cpp-mainline/kompute/src/cmake_install.cmake
-  sed -i '/logger/d' llmodel/llama.cpp-mainline/kompute/src/include/cmake_install.cmake
 
   DESTDIR="${pkgdir}" make install
 
