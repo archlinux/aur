@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lunarwolf-git
 _pkgname=LunarWolf
-pkgver=1.0.1.beta.1.r0.g36da8f8
+pkgver=1.0.1.beta.2.r0.g5089605
 _electronversion=31
 _nodeversion=20
 pkgrel=1
@@ -63,12 +63,13 @@ build() {
         export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
         export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
         export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
+        export COREPACK_NPM_REGISTRY="${npm_config_registry}"
     else
         echo "Your network is OK."
     fi
     sed "s|electron-builder -l|electron-builder -l --dir|g" -i package.json
-    corepack enable
-    yarn set version 4.2.2
+    npx corepack enable
+    npx yarn set version 4.2.2
     # .yarnrc.yml existed
     NODE_ENV=development yarn install #--cache-folder "${srcdir}/.yarn_cache"
     NODE_ENV=production yarn run compile-linux
