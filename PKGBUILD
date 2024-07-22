@@ -1,12 +1,12 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mkeditor-bin
 _pkgname=MKEditor
-pkgver=2.6.0
+pkgver=2.6.1
 _electronversion=31
 pkgrel=1
 pkgdesc="The simple markdown editor."
 arch=('x86_64')
-url="https://mkeditoross.github.io/"
+url="https://versyxdigital.github.io/mkeditor"
 _ghurl="https://github.com/mkeditorOSS/mkeditor"
 license=("MIT")
 provides=("${pkgname%-bin}=${pkgver}")
@@ -19,8 +19,8 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/mkeditorOSS/mkeditor/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('16fdcb275b6d209485c39eac6df4fabc6ab75d1d6c4e48e3fd96b55060be3484'
-            '3851d53122c8d64a7c1a46955e7a76e20be1b757ff4a7e77e3a0454cb5b693b2'
+sha256sums=('dd85d78d0b49d043a36bb82e784d056e14d6d7d9e2161c42f890d177e0d74137'
+            '67d4f80f84e373092380eeee58220700bb16566d3cfcc0d1d6141f971adfca98'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
