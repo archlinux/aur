@@ -1,6 +1,6 @@
 # Maintainer: Maxr1998 <aur@maxr1998.de>
 pkgname=jellyfin-rpc
-pkgver=1.1.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Displays the content you're currently watching on Discord"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('cargo')
 optdepends=('python: for the configuration script')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Radiicall/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('0d24e1a6432ed04aa263dfd108e5559e30ed07264a778b02f1ddf332bb0ac33cf2281961d227442da3a000154e8e1e5baf11a57bb458144f419b42539415d814')
+sha512sums=('a3b1a25af4d41c052bacceb1dcb83b5a55428e855bdedf6b4f32600725a220c7db116f48f17b47db257a73dc5a02f46b0619a7f13900f0d10473d37a8d914377')
 
 prepare() {
     cd "$pkgname-$pkgver"
