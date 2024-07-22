@@ -1,6 +1,6 @@
 pkgbase = zenmap-git
 	pkgdesc = Graphical Nmap frontend and results viewer
-	pkgver = 7.94.r145.gbf2acde2
+	pkgver = 7.94.r229.g667527c4
 	pkgrel = 1
 	url = https://github.com/nmap/nmap
 	arch = any
@@ -12,6 +12,7 @@ pkgbase = zenmap-git
 	makedepends = python-wheel
 	depends = gtk3
 	depends = nmap
+	depends = python
 	depends = python-cairo
 	depends = python-gobject
 	optdepends = gksu: start zenmap as root

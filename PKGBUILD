@@ -3,7 +3,7 @@
 _gitname="nmap"
 _pkgname="zenmap"
 pkgname="$_pkgname-git"
-pkgver=7.94.r145.gbf2acde2
+pkgver=7.94.r229.g667527c4
 pkgrel=1
 pkgdesc="Graphical Nmap frontend and results viewer"
 url='https://github.com/nmap/nmap'
@@ -13,6 +13,7 @@ arch=('any')
 depends=(
   'gtk3'
   'nmap'
+  'python'
   'python-cairo'
   'python-gobject'
 )
@@ -70,7 +71,7 @@ package() {
   install -Dm755 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 
   cd zenmap
-  python -m installer --destdir="$pkgdir" "$(ls -1 dist/*.whl | sort -rV | head -1)"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   ln -s zenmap "$pkgdir/usr/bin/nmapfe"
   ln -s zenmap "$pkgdir/usr/bin/xnmap"
