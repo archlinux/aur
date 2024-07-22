@@ -1,0 +1,18 @@
+pkgbase = cups-browsed-git
+	pkgdesc = A helper daemon to browse the network for remote CUPS queues and IPP network printers
+	pkgver = 2.0.0.r5.g14df3a00
+	pkgrel = 1
+	url = https://github.com/OpenPrinting/cups-browsed
+	arch = x86_64
+	license = Apache-2.0 WITH LLVM-exception
+	makedepends = git
+	makedepends = glib2-devel
+	depends = libcups-git
+	depends = libppd-git
+	provides = cups-browsed
+	conflicts = cups-browsed
+	backup = etc/cups/cups-browsed.conf
+	source = git+https://github.com/OpenPrinting/cups-browsed.git
+	sha256sums = SKIP
+
+pkgname = cups-browsed-git
