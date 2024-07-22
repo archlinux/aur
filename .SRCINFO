@@ -10,3 +10,18 @@ pkgbase = e-zshot
 	md5sums = SKIP
 
 pkgname = e-zshot
+pkgbase = e-zshot
+	pkgdesc = CLI to automate taking screenshots and uploading them to e-z.host
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/RobinTT69/e-z-screenshot-linux
+	arch = any
+	license = custom
+	depends = python-virtualenv
+	depends = python-pyqt5
+	depends = python-pillow
+	depends = python-requests
+	source = https://github.com/RobinTT69/e-z-screenshot-linux/releases/download/v1.1.2/e-zshot-1.1.2.tar.gz
+	md5sums = SKIP
+
+pkgname = e-zshot
