@@ -1,7 +1,7 @@
 # Maintainer: Emanuel Serpa <emanuelvserpa@gmail.com>
 
 pkgname=teams-for-linux-wayland-hook
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc="Pacman hook to change teams-for-linux to start with electron flags to start with wayland after install or upgrade."
 arch=("any")
@@ -10,7 +10,7 @@ license=("MIT")
 depends=('teams-for-linux')
 source=(teams-for-linux-wayland.hook teams-for-linux-wayland)
 sha1sums=('929fea9c7e64cf4d1de78277df852fdeb99597fd'
-          'e59f8f67f089ec0dae9d8e9343a46a993bc6da41')
+          '388d15eab9007f8a593b46dde9ee5eb340b6c028')
 
 package() {
     install -m755 -d "${pkgdir}/usr/share/libalpm/hooks"
