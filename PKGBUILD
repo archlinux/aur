@@ -3,7 +3,7 @@ pkgname=hexpick-bin
 _pkgname=HexPick
 pkgver=1.0.1
 _electronversion=29
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple color picker app for Linux"
 arch=('x86_64')
 url="https://github.com/KartoffelChipss/HexPick"
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('04b1581f8a5440402222425a4af9218a4626a8588a32468cffdc384e0d3d5451'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
