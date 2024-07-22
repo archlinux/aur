@@ -1,0 +1,26 @@
+pkgbase = libcupsfilters-git
+	pkgdesc = Code of the filters of the former cups-filters package as library functions
+	pkgver = 2.0.0.r18.g980f6f49
+	pkgrel = 1
+	url = https://github.com/OpenPrinting/libcupsfilters
+	arch = x86_64
+	license = Apache-2.0
+	checkdepends = ttf-dejavu
+	makedepends = git
+	makedepends = ghostscript
+	makedepends = mupdf-tools
+	depends = libcups-git
+	depends = poppler
+	depends = qpdf
+	depends = lcms2
+	depends = libjpeg-turbo
+	depends = libpng
+	depends = libtiff
+	depends = libexif
+	depends = fontconfig
+	provides = libcupsfilters
+	conflicts = libcupsfilters
+	source = git+https://github.com/OpenPrinting/libcupsfilters.git
+	sha256sums = SKIP
+
+pkgname = libcupsfilters-git
