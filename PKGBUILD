@@ -2,7 +2,8 @@
 pkgname=apk-installer
 pkgver=1.6.0
 _electronversion=10
-pkgrel=8
+_nodeversion=16
+pkgrel=9
 pkgdesc="一款Apk安装器软件,快速安装Apk至手机。"
 arch=('any')
 url="https://github.com/zhujiaming/apk-installer"
@@ -10,21 +11,27 @@ license=('MIT')
 conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
-    'java-runtime'
     'android-sdk-platform-tools'
 )
 mkdenpends=(
-    'nodejs'
+    'nvm'
     'npm'
     'gendesk'
     'curl'
+    'git'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
+    "${pkgname}.git::git+${url}.git#tag=${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('f58d1e672a98961307577251a5952521f723607d4920138e1d325bf14297c52c'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+sha256sums=('1d206ce9d5a3716df749ecc0b3b003278547bddcfe20fd8a7afa378033e09314'
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+_ensure_local_nvm() {
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
+}
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
@@ -32,19 +39,20 @@ build() {
         -e "s|@cfgdirname@|${pkgname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
-    gendesk -f -n -q --pkgname="${pkgname}" --categories "Utility" --name "${pkgname}" --exec "${pkgname} %U"
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    gendesk -f -n -q --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
+    _ensure_local_nvm
+    cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-    export ELECTRONVERSION="${_electronversion}"
+    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
+    #export ELECTRONVERSION="${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
         export npm_config_registry=https://registry.npmmirror.com
         export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
-        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/v
+        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
         export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
     else
         echo "Your network is OK."
@@ -58,15 +66,16 @@ build() {
     ln -sf "/opt/android-sdk/platform-tools/hprof-conv" resource/adb/hprof-conv
     ln -sf "/opt/android-sdk/platform-tools/mke2fs" resource/adb/mke2fs
     ln -sf "/opt/android-sdk/platform-tools/sqlite3" resource/adb/sqlite3
-    npm install
-    npx electron-builder --config build.config.js -l --dir
+    sed 's|"deb", "rpm", "AppImage"|"dir"|g;s|\/\/ icon|icon|g;s|icon.icns|icon.png|g' -i build.config.js
+    NODE_ENV=development npm install
+    NODE_ENV=production npx electron-builder --config build.config.js
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/packages/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
-    cp -r "${srcdir}/${pkgname}-${pkgver}/packages/linux-"*/resources/adb "${pkgdir}/usr/lib/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/packages/linux-"*/swiftshader/* -t "${pkgdir}/usr/lib/${pkgname}/swiftshader"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/resource/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/${pkgname}.git/packages/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
+    cp -r "${srcdir}/${pkgname}.git/packages/linux-"*/resources/adb "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/packages/linux-"*/swiftshader/* -t "${pkgdir}/usr/lib/${pkgname}/swiftshader"
+    install -Dm644 "${srcdir}/${pkgname}.git/resource/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
