@@ -1,6 +1,6 @@
 pkgname=mewe
 _pkgname=Mewe
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Unofficial Mewe desktop application."
 arch=('x86_64' 'aarch64')
@@ -8,14 +8,14 @@ url="https://gitlab.com/linuxbombay/mewedesktop"
 license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
-source=("$url/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
-sha256sums=('095634901a8108adec1459220de6d3982b81e324941ae215bd17a06a0cb0b213')
+source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
+sha256sums=('423445743b3ee28a99e667780eee2d4ef80ed33c261e8d4d2019e2f1bc4a340b')
 
 
 package() {
-        for dir in application-$pkgver-$pkgrel ; do mv "${dir}" "$_pkgname" ;done
+    install -dm755 "$pkgdir/usr/bin"
+    for dir in application-$pkgver ; do mv "${dir}" "$_pkgname" ;done
     cd "$srcdir/$_pkgname"
-    chmod +x $pkgname.sh
     ln -sf "/opt/libelectron/node_modules" "$srcdir/$_pkgname"
     install -dm755 "$pkgdir/opt/$_pkgname"
     install -dm755 "$pkgdir/usr/share/pixmaps"    
@@ -24,11 +24,11 @@ package() {
 
 
     # Link to binary
-    install -dm755 "$pkgdir/usr/bin"
-    ln -s "/opt/$_pkgname/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+    
+    ln -s "/opt/$_pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
     # Desktop Entry
-    install -Dm644 "$srcdir/$_pkgname/$_pkgname.desktop" \
-        "$pkgdir/usr/share/applications/$_pkgname.desktop"
-    sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/$_pkgname.desktop"
+    install -Dm644 "$srcdir/$_pkgname/$pkgname.desktop" \
+        "$pkgdir/usr/share/applications/$pkgname.desktop"
+    sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/$pkgname.desktop"
 }

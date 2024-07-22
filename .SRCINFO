@@ -1,6 +1,6 @@
 pkgbase = mewe
 	pkgdesc = Unofficial Mewe desktop application.
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/mewedesktop
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = mewe
 	depends = gtk3
 	depends = libxss
 	depends = git
-	source = https://gitlab.com/linuxbombay/mewedesktop/application/-/archive/1.0.3-1/application-1.0.3-1.tar.bz2
-	sha256sums = 095634901a8108adec1459220de6d3982b81e324941ae215bd17a06a0cb0b213
+	source = https://gitlab.com/linuxbombay/mewedesktop/application/-/archive/1.0.4/application-1.0.4.tar.bz2
+	sha256sums = 423445743b3ee28a99e667780eee2d4ef80ed33c261e8d4d2019e2f1bc4a340b
 
 pkgname = mewe
