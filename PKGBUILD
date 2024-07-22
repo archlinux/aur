@@ -17,14 +17,8 @@ makedepends=(
 provides=(
   'vitasdk-packages'
 )
-source=("vdpm-notmp.patch" "git+https://github.com/vitasdk/vdpm")
-md5sums=('6d5c81f0720c71165f381b93da529bd3'
-         'SKIP')
-
-prepare() {
-    cd "vdpm"
-    patch --forward --strip=1 --input="$srcdir/vdpm-notmp.patch"
-}
+source=("git+https://github.com/vitasdk/vdpm")
+md5sums=('SKIP')
 
 package() {
   export VITASDK="$pkgdir/opt/vitasdk"
