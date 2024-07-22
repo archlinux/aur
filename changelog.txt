@@ -1,1 +1,5 @@
-新增更多簡化字，[詳情按此查看](https://github.com/lxgw/LxgwXiHei/blob/main/documentation/changelog/20240608.md)。
+v0.321.1:
+新增兩個字符：‹ (U+2039)、› (U+203A)。
+
+v0.321:
+新增 GBK 所收錄的非漢字符號：℅∕∣⋯▓◢◣◤◥☉㏎㏑㏒㏕﹉﹊﹋﹌﹍﹎﹐﹑﹒﹔﹕﹖﹗﹘﹙﹚﹛﹜﹝﹞﹟﹠﹡﹢﹣﹤﹥﹦﹨﹩﹪﹫
