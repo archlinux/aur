@@ -1,7 +1,16 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
+
+# URL for the latest release
+_url="$(curl -s "https://api.github.com/repos/RPCS3/rpcs3-binaries-linux/releases/latest" | awk -F'"' '/browser_download_url.*rpcs3.*AppImage/ {print $4}')"
+# Build ID
+_build="$(echo $_url | awk -F '[-/]' '{print $11}')"
+# AppImage version
+_pkgver="$(echo $_url | awk -F '[-_]' -v OFS='-' '{gsub("v", "", $5); print $5,$6,$7}')"
+
 pkgname=rpcs3-bin
-pkgver=0.0.32
-_pkgbuild='16396-f1ef3bdc'
+# Overwrited the "-" for "_" as instructed on the ArchWiki. It will change dynamically
+# everytime there is a new release. It just need to be recompiled.
+pkgver="$(echo $_url | awk -F '[-_]' -v OFS='_' '{gsub("v", "", $5); print $5,$6,$7}')"
 pkgrel=1
 pkgdesc='Open-source Sony PlayStation 3 Emulator'
 arch=('x86_64')
@@ -40,14 +49,14 @@ provides=('rpcs3')
 conflicts=('rpcs3')
 # curl --silent --dump-header - https://github.com/RPCS3/rpcs3-binaries-linux/releases/latest | grep -i '^location: ' | sed 's#/tag/#/download/#'
 _latest_release="https://github.com/RPCS3/rpcs3-binaries-linux/releases/download/build-f1ef3bdcd7e2b22ecce67705d931de6b43fb9a20"
-source=("${_latest_release}/rpcs3-v$pkgver-${_pkgbuild}_linux64.AppImage")
-sha256sums=('06aa19f626509d5b90aa3d8365548ee7e1f7fa144931c465c7aa5596391d8ca1')
+source=("https://github.com/RPCS3/rpcs3-binaries-linux/releases/download/build-$_build/rpcs3-v${_pkgver}_linux64.AppImage")
+sha256sums=('2415ddfd31e4287eed6f7584bd2b0cf1564a15cd908584838dd8aff9d6f6eed2')
 
 prepare()
 {
     cd "$srcdir"
 
-    7z x -y "$srcdir/rpcs3-v$pkgver-${_pkgbuild}_linux64.AppImage"
+    7z x -y "$srcdir/rpcs3-v${_pkgver}_linux64.AppImage"
 }
 
 package()
