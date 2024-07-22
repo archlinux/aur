@@ -2,7 +2,7 @@
 pkgname=aniship-bin
 pkgver=0.0.4.2
 _electronversion=16
-pkgrel=8
+pkgrel=9
 pkgdesc="A convenient and functional unofficial client that allows for easy viewing of anime on PCs and laptops."
 arch=('x86_64')
 url="https://t.me/aniship"
@@ -22,7 +22,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('1fbe0e6388982d71268c4f4f04bf7c3f82ac0a6dee8310f8599d93be565525d2'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
