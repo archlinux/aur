@@ -1,5 +1,5 @@
 pkgname=cosmic-ext-applet-external-monitor-brightness-git
-pkgver=r16.ec83a09
+pkgver=r30.13b212d
 pkgrel=1
 pkgdesc="External Monitor Brightness Applet for the COSMIC desktop"
 arch=('x86_64')
@@ -35,7 +35,7 @@ build() {
 package() {
   cd "${pkgname%-git}"
   install -Dm755 target/release/${pkgname%-git} -t "$pkgdir/usr/bin/"
-  install -Dm644 data/com.maciekk64.CosmicExtAppletExternalMonitorBrightness.desktop -t \
+  install -Dm644 res/io.github.maciekk64.CosmicExtAppletExternalMonitorBrightness.desktop -t \
     "$pkgdir/usr/share/applications/"
 }
 

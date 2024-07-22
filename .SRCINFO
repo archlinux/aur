@@ -1,6 +1,6 @@
 pkgbase = cosmic-ext-applet-external-monitor-brightness-git
 	pkgdesc = External Monitor Brightness Applet for the COSMIC desktop
-	pkgver = r16.ec83a09
+	pkgver = r30.13b212d
 	pkgrel = 1
 	url = https://github.com/maciekk64/cosmic-ext-applet-external-monitor-brightness
 	arch = x86_64
