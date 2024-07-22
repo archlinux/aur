@@ -9,12 +9,12 @@ license=('BSD-3-Clause')
 depends=('glibc')
 makedepends=('git' 'go')
 
-source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('002bb9f5595101fb7b9d12fb141172fc4913359bd23877f7492635f19ddceff6')
 
 build() {
   local _commit _flags
-  _commit=$(bsdcat "${pkgname}-${pkgver}.tar.gz" | git get-tar-commit-id)
+  _commit=$(bsdcat "v${pkgver}.tar.gz" | git get-tar-commit-id)
   _flags=(
     -X=main.version="$pkgver"
     -X=main.commit="${_commit::7}"
