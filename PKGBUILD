@@ -2,7 +2,7 @@
 pkgname=venom86-bin
 pkgver=1.0.2
 _electronversion=25
-pkgrel=4
+pkgrel=5
 pkgdesc="An x86 emulator/VM by Qrodex. Or a GUI wrapper for the v86-module"
 arch=("x86_64")
 url="https://github.com/Qrodex/venom86"
@@ -11,15 +11,13 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'perl'
-    'python>=3'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('6f12508a814e41ecbcf45c7a165ddce88c8ee402dcefbd7af36763c489946b3a'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
