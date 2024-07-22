@@ -1,7 +1,7 @@
 # Maintainer: Andrej Benz <hello[at]benz[dot]dev>
 
 pkgname=walker
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc='wayland application runner'
 url='https://github.com/abenz1267/walker'
@@ -13,8 +13,8 @@ optdepends=('wl-clipboard: for clipboard module')
 conflicts=('walker')
 provides=('walker')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('eacca44c50c2ee0bf4a007ea97f724d0e48609a3b43f1f37b3dc927d664d934f')
-b2sums=('098f4a834c1702854dcd563eb7881e6f53b560bce5ae0f4e6e0e8bad80ffb9e6a97b569916ad255e65fb234c94254867f36db31da369df9989fc1af845149e60')
+sha256sums=('f853b1a7e1f56bac197d6b2d34dab4dd6465424ca151d148f5d9f4e6711ee851')
+b2sums=('f06a58d73b8dac1b202844acbaf4ad00a09eb29f5e593ba33e1e48217c15c4e48bc8d3eb7d1c70716779747c55a280c8b21a4bf13c2e13b978ffcfcca9dcc4bc')
 
 build() {
   cd ${pkgname}-${pkgver}
