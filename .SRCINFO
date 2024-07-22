@@ -1,0 +1,16 @@
+pkgbase = python-py_ecc
+	pkgdesc = Elliptic curve crypto in python including secp256k1, alt_bn128, and bls12_381.
+	pkgver = 7.0.1
+	pkgrel = 1
+	url = https://github.com/ethereum/py_ecc
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/ethereum/py_ecc/archive/refs/tags/v7.0.1.tar.gz
+	sha256sums = c600e33b22d194636c2be360cf2d381effa4ccfe95fb300b7a4906901d38dc41
+
+pkgname = python-py_ecc
