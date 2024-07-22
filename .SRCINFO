@@ -1,0 +1,26 @@
+pkgbase = dde-launchpad-git
+	pkgdesc = Deepin desktop-environment - Launchpad module
+	pkgver = 0.8.0.r7.g6338f90
+	pkgrel = 1
+	url = https://github.com/linuxdeepin/dde-launchpad
+	arch = x86_64
+	arch = aarch64
+	groups = deepin-git
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-tools
+	depends = qt6-svg
+	depends = qt6-declarative
+	depends = appstream-qt
+	depends = dtk6declarative
+	depends = dtk6gui
+	provides = deepin-launcher
+	provides = deepin-launchpad
+	conflicts = deepin-launcher
+	conflicts = deepin-launchpad
+	source = git+https://github.com/linuxdeepin/dde-launchpad
+	sha512sums = SKIP
+
+pkgname = dde-launchpad-git
