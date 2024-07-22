@@ -29,22 +29,18 @@ package() {
   # Create a virtual environment in the package directory
   python -m venv "$pkgdir/usr/share/$pkgname/venv"
 
-  # Activate the virtual environment
+  # Activate the virtual environment and install required Python modules
   source "$pkgdir/usr/share/$pkgname/venv/bin/activate"
-
-  # Install the required Python modules
   pip install pillow pyqt5 requests
-
-  # Deactivate the virtual environment
   deactivate
 
   # Create wrapper script for e-z-grim
-  cat << EOF > "$pkgdir/usr/bin/e-z-grim"
+  cat << 'EOF' > "$pkgdir/usr/bin/e-z-grim"
 #!/bin/bash
 
 VENV_PATH="/usr/share/e-zshot/venv"
 source "$VENV_PATH/bin/activate"
-python /usr/share/e-zshot/e-z-grim.py "\$@"
+python /usr/share/e-zshot/e-z-grim.py "$@"
 deactivate
 EOF
 
@@ -52,12 +48,12 @@ EOF
   chmod +x "$pkgdir/usr/bin/e-z-grim"
 
   # Create wrapper script for e-z-flameshot
-  cat << EOF > "$pkgdir/usr/bin/e-z-flameshot"
+  cat << 'EOF' > "$pkgdir/usr/bin/e-z-flameshot"
 #!/bin/bash
 
 VENV_PATH="/usr/share/e-zshot/venv"
 source "$VENV_PATH/bin/activate"
-python /usr/share/e-zshot/e-z-flameshot.py "\$@"
+python /usr/share/e-zshot/e-z-flameshot.py "$@"
 deactivate
 EOF
 
