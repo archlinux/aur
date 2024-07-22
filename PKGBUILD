@@ -2,7 +2,7 @@
 _appname="youtube music for desktop"
 pkgname="${_appname// /-}-bin"
 _pkgname=YouTube-Music-for-Desktop
-pkgver=0.12.15
+pkgver=0.12.16
 _electronversion=20
 pkgrel=1
 pkgdesc="Unofficial Youtube Music Desktop App, with LastFM support."
@@ -29,8 +29,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage")
 sha256sums=('33c4de6d76721945c9346b3b1024fe56f2fbb6bebbb0e761656232520a6defa6'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-sha256sums_aarch64=('c75224c4d0f65d101b90b679f004efa8599ba1c34c2be8488ec941217a7d5a76')
-sha256sums_x86_64=('a1366188fb8244f25504438599b801b9e4e09dc1a6ce70635cc4662d866f6219')
+sha256sums_aarch64=('f8ba5e7ae595ce45d66beda49cc07521e7f40e737915fd55041e95c9cd74c6f9')
+sha256sums_x86_64=('98c0afce736abb0fdea3eb35db08d3df23cee163c08c828cefe8670f49bad685')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
