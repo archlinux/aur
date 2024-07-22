@@ -1,0 +1,18 @@
+work around this warning:
+strip: ./usr/lib/stip1fFa/snackStubLib.o: plugin needed to handle lto object
+
+See: https://archlinux.org/todo/lto-fat-objects/
+
+--- a/unix/Makefile.in	2024-07-22 01:33:07.620000299 +0200
++++ b/unix/Makefile.in	2024-07-22 01:31:29.560000310 +0200
+@@ -155,7 +155,7 @@
+ 	$(CC) -c $(CFLAGS) $(GENERIC_DIR)/sigproc2.c
+ 
+ snackStubLib.o: $(GENERIC_DIR)/snackStubLib.c
+-	$(CC) -c $(CFLAGS) $(GENERIC_DIR)/snackStubLib.c
++	$(CC) -c -ffat-lto-objects $(CFLAGS) $(GENERIC_DIR)/snackStubLib.c
+ 
+ libsound${SHLIB_SUFFIX}: ${OBJSO}
+ 	${SHLIB_LD} ${OBJSO} ${LIBSO} -o libsound${SHLIB_SUFFIX} 
+
+

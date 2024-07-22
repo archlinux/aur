@@ -1,5 +1,5 @@
---- a/unix/configure	2006-09-27 00:26:04.000000000 +0400
-+++ b/unix/configure	2006-09-27 00:27:49.000000000 +0400
+--- a/unix/configure	2018-02-26 12:31:40.000000000 +0100
++++ b/unix/configure	2024-07-21 23:53:11.110000044 +0200
 @@ -1467,10 +1467,10 @@
      exec_prefix=$prefix
  fi
@@ -15,11 +15,21 @@
  
 @@ -1487,7 +1487,7 @@
  echo "$as_me: error: Tcl and Tk must be configured with the --enable-shared flag" >&2;}
-    { (exit 1); exit 1; }; }
+    { (echo 1); echo 1; }; }
  fi
 -CFLAGS=$TCL_SHLIB_CFLAGS
 +CFLAGS="$CFLAGS $TCL_SHLIB_CFLAGS"
  LD_SEARCH_FLAGS=$TCL_LD_SEARCH_FLAGS
  SHLIB_LD=$TCL_SHLIB_LD
  SHLIB_SUFFIX=$TCL_SHLIB_SUFFIX
-
+@@ -1637,7 +1637,9 @@
+ else
+   OGG_LIB_DIR=""
+ fi;
+-OGGINC="-I$OGG_INC_DIR"
++if test ! "$OGG_INC_DIR" = ""; then
++  OGGINC="-I$OGG_INC_DIR"
++fi
+ OGGLIBS="-L$OGG_LIB_DIR -lvorbisenc -lvorbis -logg"
+ if test ! "$OGG_LIB_DIR" = ""; then
+   LIBOGG="libsnackogg${SHLIB_SUFFIX}"
