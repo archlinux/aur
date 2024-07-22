@@ -3,7 +3,7 @@ pkgname=androidtoolkit-bin
 _pkgname=androidtoolkit
 pkgver=1.4.4
 _pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop tools for Android developers, supports Windows, Mac and Linux."
 arch=('x86_64')
 url="https://github.com/LazyIonEs/AndroidToolKit"
@@ -21,4 +21,5 @@ package() {
     cd "$srcdir"
     tar -I zstd -xvf data.tar.zst -C "$pkgdir"
     find "$pkgdir" -type d -exec chmod 755 {} \;
+    chmod a+x "$pkgdir/opt/androidtoolkit/lib/app/resources/aapt2"
 }

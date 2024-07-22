@@ -1,7 +1,7 @@
 pkgbase = androidtoolkit-bin
 	pkgdesc = Desktop tools for Android developers, supports Windows, Mac and Linux.
 	pkgver = 1.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LazyIonEs/AndroidToolKit
 	install = androidtoolkit.install
 	arch = x86_64
