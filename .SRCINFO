@@ -1,0 +1,14 @@
+pkgbase = androidtoolkit-bin
+	pkgdesc = Desktop tools for Android developers, supports Windows, Mac and Linux.
+	pkgver = 1.4.4
+	pkgrel = 1
+	url = https://github.com/LazyIonEs/AndroidToolKit
+	install = androidtoolkit.install
+	arch = x86_64
+	license = MIT license
+	conflicts = androidtoolkit-git
+	conflicts = androidtoolkit
+	source = androidtoolkit-bin-1.4.4.deb::https://github.com/LazyIonEs/AndroidToolKit/releases/download/v1.4.4/androidtoolkit-1.4.4-linux.deb
+	sha256sums = 7a2651b28fed15ac312c9d919846d8ae13be32fe7d14ebf950baced56d83f633
+
+pkgname = androidtoolkit-bin
