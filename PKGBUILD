@@ -2,7 +2,7 @@
 _pkgname=qq
 pkgname=$_pkgname-git
 pkgver=v0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="jq inspired interoperable config format transcoder with interactive querying; JSON/YAML/TOML/XML/... support; MIT license - git development version"
 arch=('i686' 'x86_64')
 url="https://github.com/JFryy/qq/"
