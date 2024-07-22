@@ -3,7 +3,7 @@
 # Contributor: fortea
 
 pkgname=apx
-pkgver=2.4.1
+pkgver=2.4.3
 pkgrel=1
 pkgdesc='Package manager with support for multiple sources'
 arch=(x86_64 aarch64)
@@ -15,7 +15,7 @@ depends=(
 )
 makedepends=(go)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('8c686c2ced0b1f237e815efa45378b455129ed76e5c4e180637d29475b24fc0c778f2a4c177f25f315a2ee1018b20b7bdf3b3ec5cc069d904288a2be58a7f694')
+b2sums=('d88430d8ac07aa57ec2d3ec13c4a199252cb05634569579974b3ad6111b8fc7a27fee072fb1c7752b3df3838a2d64872fc5be1c64848fe1def7909170ba4ecb4')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -27,17 +27,18 @@ prepare() {
 build() {
   cd "${pkgname}-${pkgver}"
 
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-
-  go build -o build
+  go build -o build \
+    -ldflags "-s -w -linkmode=external -X main.Version=v$pkgver -extldflags \"$LDFLAGS\""
 
   for shell in bash fish zsh; do
     ./build/apx completion $shell >build/$pkgname.$shell
   done
+}
+
+check() {
+  cd "${pkgname}-${pkgver}"
+
+  [[ "$(./build/apx --version)" == "apx version v$pkgver" ]]
 }
 
 package() {
