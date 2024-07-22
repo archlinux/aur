@@ -10,13 +10,13 @@ pkgbase = gossip-bin
 	provides = gossip=${pkgver}
 	conflicts = gossip
 	conflicts = gossip-git
-	source = gossip_0.11.0-1_amd64.deb::https://github.com/mikedilger/gossip/releases/download/v0.11/gossip_0.11.0-1_amd64.deb
-	source = LICENSE.txt::https://github.com/mikedilger/gossip/releases/download/v0.11/LICENSE.txt
-	source = README.txt::https://github.com/mikedilger/gossip/releases/download/v0.11/README.txt
+	source = gossip_0.11.1-1_amd64.deb::https://github.com/mikedilger/gossip/releases/download/v0.11.1/gossip_0.11.1-1_amd64.deb
+	source = LICENSE.txt::https://github.com/mikedilger/gossip/releases/download/v0.11.1/LICENSE.txt
+	source = README.txt::https://github.com/mikedilger/gossip/releases/download/v0.11.1/README.txt
 	source = gossip.png::https://raw.githubusercontent.com/mikedilger/gossip/c437e3ebf30ff168395bcdcb94cab7c88a5d0543/logo/gossip.png
-	sha256sums = 06cbe484d71a43095a419893275f60dff0bed52d3f6d37a0231484b1a721d018
+	sha256sums = e3651847f96a3a5cb89509b18d3fc57f9cea14a0f670b6defb6e76cc15a502c0
 	sha256sums = 8a8543ebe0203fa8597bfcf70e7841f6fb66367358ff6180be692d4d724def70
-	sha256sums = 916e2b47e5a3877629f95c989126e2af17c0d88f95786be30520640359934104
+	sha256sums = 7acd0473c04ca9df5a1ac5556fd9ec89bdf4ce19c740b1c550a23fa03bc8f8ac
 	sha256sums = 7f4f3e319a429825008c8d46cc2cfbaf3bdce70972e5900df7e548df6967258b
 
 pkgname = gossip-bin
