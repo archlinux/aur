@@ -3,7 +3,7 @@ _pkgname=ytm-dlp
 pkgname="${_pkgname}-gui-bin"
 pkgver=1.3.3
 _electronversion=26
-pkgrel=1
+pkgrel=2
 pkgdesc="An ElectronJS app for downloading music off Youtube Music."
 arch=('x86_64')
 url="https://github.com/RENOMIZER/ytm-dlp-gui"
@@ -20,7 +20,7 @@ source=(
 )
 sha256sums=('9a539b3ca5a889ce36e2b0fac18bb8cd4fbc10d2ac216bac51afc36828a93a41'
             '2808073b5ff6a6b6f653ef61c6154b545c2dc47f5026683ae5e72c7c3d5632f6'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
