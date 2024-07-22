@@ -1,0 +1,12 @@
+pkgbase = ttf-funkwest
+	pkgdesc = funkwest font by theo
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/theoisdumb/funkwest
+	arch = any
+	license = MIT
+	makedepends = git
+	source = git+https://github.com/theoisdumb/funkwest.git#commit=85b5ef265426ef522394274ed84195696e85d4f4
+	sha256sums = SKIP
+
+pkgname = ttf-funkwest
