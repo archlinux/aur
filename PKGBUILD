@@ -1,17 +1,18 @@
-# Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
+# Maintainer:  Peter Mattern <pmattern at arcor dot de>
+# Contributor:  Chris Severance aur.severach aATt spamgourmet dott com
 # Contributor: lilac
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=cups-git
 pkgname=(libcups-git cups-git)
-pkgver=2.4.1.r14.g55359b905
+pkgver=2.4.3.r346.g3b564fd99
+pkgdesc="OpenPrinting CUPS"
 pkgrel=1
 arch=(x86_64)
-license=(Apache)
+license=('Apache-2.0 WITH LLVM-exception AND BSD-3-Clause AND Zlib AND BSD-2-Clause')
 url="https://openprinting.github.io/cups/"
-makedepends=(git libtiff libpng acl pam xdg-utils krb5 gnutls
-             cups-filters bc colord xinetd gzip autoconf libusb dbus
-             avahi hicolor-icon-theme systemd inetutils libpaper)
+makedepends=('git' 'zlib' 'cups-browsed-git' 'ipp-usb-git' 'libusb' 'systemd' 'gnutls'
+             'xdg-utils' 'hicolor-icon-theme' 'colord' 'avahi' 'bash' 'logrotate')
 source=("git+https://github.com/OpenPrinting/cups.git"
         cups.logrotate
         cups.pam
@@ -26,18 +27,15 @@ sha256sums=('SKIP'
             '06173dfaea37bdd9b39b3e09aba98c34ae7112a2f521db45a688907d8848caa2'
             'f0b15192952c151b1843742c87850ff3a7d0f3ba5dd236ed16623ef908472ad7'
             '3385047b9ac8a7b13aeb8f0ca55d15f793ce7283516db0155fe28a67923c592d'
-            '0bf6a75ba1b051771f155d9a5d36b307a6d40c6857d645b250fe93f3fb713474')
-#validpgpkeys=('3737FD0D0E63B30172440D2DDBA3A7AB08D76223') # CUPS.org (CUPS.org PGP key) <security@cups.org>
-#validpgpkeys+=('45D083946E3035282B3CCA9AF434104235DA97EB') # "CUPS.org <security@cups.org>"
-#validpgpkeys+=('845464660B686AAB36540B6F999559A027815955') # "Michael R Sweet <michael.r.sweet@gmail.com>"
+            '1b1c3268bdff6627b78070b6cd9abec6ef41572c27abbafccb237199f7137653')
 
 pkgver() {
-  cd "cups"
+  cd "${pkgbase%-git}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "cups"
+  cd "${pkgbase%-git}"
 
   # move /var/run -> /run for pid file
   patch -Np1 -i "${srcdir}"/cups-2.4.0-statedir.patch
@@ -57,7 +55,7 @@ prepare() {
 }
 
 build() {
-  cd "cups"
+  cd "${pkgbase%-git}"
 
   # The build system uses only DSOFLAGS but not LDFLAGS to build some libraries.
   export DSOFLAGS=${LDFLAGS}
@@ -76,6 +74,7 @@ build() {
      --with-max-log-size=0 \
      --enable-pam=yes \
      --enable-raw-printing \
+     --with-tls=gnutls \
      --enable-dbus=yes \
      --with-dbusdir=/usr/share/dbus-1 \
      --enable-relro \
@@ -84,26 +83,27 @@ build() {
   make
 }
 
-check() {
-  cd "cups"
-  #make -k check
-}
+#check() {
+#  cd "${pkgbase%-git}"
+#  make -k check
+#}
 
 package_libcups-git() {
-  pkgdesc="The CUPS Printing System - client libraries and headers"
-  depends=(gnutls libtiff libpng krb5 avahi libusb)
+  pkgdesc+=" - client libraries and headers"
+  depends=('zlib' 'avahi' 'gnutls' 'bash')
   provides=("libcups=${pkgver%.r*}")
   conflicts=(libcups)
 
-  cd "cups"
+  cd "${pkgbase%-git}"
   make -j1 BUILDROOT=${pkgdir} install-headers install-libs
   # put this into the libs pkg to make other software find the libs(no pkg-config file included)
   mkdir -p ${pkgdir}/usr/bin
   install -m755 ${srcdir}/cups/cups-config ${pkgdir}/usr/bin/cups-config
+  install -Dm644 "${srcdir}"/${pkgbase%-git}/NOTICE -t "${pkgdir}"/usr/share/licenses/libcups-git
 }
 
 package_cups-git() {
-  pkgdesc="The CUPS Printing System - daemon package"
+  pkgdesc+=" - daemon package"
   install=cups.install
   backup=(etc/cups/cupsd.conf
           etc/cups/snmp.conf
@@ -113,19 +113,22 @@ package_cups-git() {
           etc/cups/subscriptions.conf
           etc/logrotate.d/cups
           etc/pam.d/cups)
-  depends=(acl pam cups-filters bc
-           dbus systemd libpaper hicolor-icon-theme)
-  depends+=(libcups-git)
-  optdepends=('xdg-utils: xdg .desktop file support'
-              'colord: for ICC color profile support')
+  depends=('libcups-git' 'systemd' 'hicolor-icon-theme')
+  optdepends=('cups-browsed-git: to browse the network for remote CUPS queues and IPP network printers'
+              'libusb: for usb printer backend'
+              'ipp-usb-git: allows to send HTTP requests via a USB connection on devices without Ethernet or WiFi connections'
+              'xdg-utils: xdg .desktop file support'
+              'colord: for ICC color profile support'
+              'logrotate: for logfile rotation support')
   provides=(cups)
   conflicts=(cups)
 
 
-  cd "cups"
+  cd "${pkgbase%-git}"
   make -j1 BUILDROOT=${pkgdir} install-data install-exec
 
   make BUILDROOT="${pkgdir}" install-data install-exec
+  install -Dm644 "${srcdir}"/${pkgbase%-git}/NOTICE -t "${pkgdir}"/usr/share/licenses/cups-git
 
   # this one we ship in the libcups pkg
   rm -f "${pkgdir}"/usr/bin/cups-config
