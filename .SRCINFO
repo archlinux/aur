@@ -1,6 +1,6 @@
 pkgbase = vscode-codicons-git
 	pkgdesc = The icon font for Visual Studio Code
-	pkgver = 0.0.25.r14.aeba110
+	pkgver = 0.0.35.r49.eaa0306
 	pkgrel = 1
 	url = https://microsoft.github.io/vscode-codicons/dist/codicon.html
 	arch = any
