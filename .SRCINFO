@@ -1,7 +1,7 @@
 pkgbase = aliza-free
 	pkgdesc = Medical Imaging. Open 2D, 3D and 4D images in DICOM, MetaIO, Nifti, Nrrd and other formats, incl. This is the last free version of the package.
 	pkgver = 1.98.57
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.aliza-dicom-viewer.com
 	arch = x86_64
 	license = custom
@@ -9,6 +9,7 @@ pkgbase = aliza-free
 	depends = libxt
 	depends = libglvnd
 	depends = qt4
+	depends = glu
 	provides = aliza
 	conflicts = aliza
 	options = !emptydirs
