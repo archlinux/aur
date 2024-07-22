@@ -14,7 +14,7 @@ optdepends=()
 options=()
 install=openbao.install
 source=(
-  "$pkgname-$pkgver::https://github.com/openbao/openbao/archive/refs/tags/v$pkgver.tar.gz"
+  "$pkgname-$pkgver.tar.gz::https://github.com/openbao/openbao/archive/refs/tags/v$pkgver.tar.gz"
   openbao.hcl
   openbao.sysusers
   openbao.tmpfiles
