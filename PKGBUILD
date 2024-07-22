@@ -1,5 +1,5 @@
 pkgname=chromap
-chromap_ver=
+chromap_ver=0.2.6
 pkgver=$chromap_ver
 pkgrel=1
 pkgdesc="An ultrafast method for aligning and preprocessing high throughput chromatin profiles. "
