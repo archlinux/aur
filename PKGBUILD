@@ -12,6 +12,8 @@ arch=('x86_64')
 url="https://github.com/kernc/xsuspender"
 license=('custom:WTFPL')
 depends=('glib2' 'libwnck3')
+provides=("xsuspender=${pkgver}")
+conflicts=('xsuspender')
 makedepends=('git' 'cmake' 'make' 'pkgconf')
 source=("$pkgname"::'git+https://github.com/kernc/xsuspender.git#branch=master')
 md5sums=('SKIP')

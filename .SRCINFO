@@ -3,16 +3,17 @@ pkgbase = xsuspender-git
 	pkgver = 0.0.0
 	pkgrel = 1
 	url = https://github.com/kernc/xsuspender
-	arch = i686
 	arch = x86_64
 	license = custom:WTFPL
 	makedepends = git
 	makedepends = cmake
 	makedepends = make
+	makedepends = pkgconf
 	depends = glib2
 	depends = libwnck3
+	provides = xsuspender=0.0.0
+	conflicts = xsuspender
 	source = xsuspender-git::git+https://github.com/kernc/xsuspender.git#branch=master
 	md5sums = SKIP
 
 pkgname = xsuspender-git
-
