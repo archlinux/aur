@@ -4,8 +4,8 @@
 # Contributor : Mélanie Chauvel (ariasuni) <perso@hack-libre.org>
 pkgname=whalebird-bin
 _pkgname=Whalebird
-pkgver=6.1.2
-_electronversion=28
+pkgver=6.1.3
+_electronversion=31
 pkgrel=1
 pkgdesc="An Electron based Mastodon, Pleroma, and Misskey client"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f03e7ec05b7ba88ee2ce8ca4d858b080c158d5a081095b3e0eb0b45e3ebcbba2'
+sha256sums=('5e063e93347c6619f57755d64d35936293f16e236c54c213452695ae1cf916d2'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
