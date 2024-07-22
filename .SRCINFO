@@ -1,6 +1,6 @@
 pkgbase = bracken
 	pkgdesc = Bayesian Reestimation of Abundance with KrakEN. https://doi.org/10.7717/peerj-cs.104
-	pkgver = 2.9
+	pkgver = 3.0
 	pkgrel = 1
 	url = https://ccb.jhu.edu/software/bracken/
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = bracken
 	depends = bash
 	depends = python
 	optdepends = kraken2: To generate kraken database as input
-	source = bracken-2.9.tar.gz::https://github.com/jenniferlu717/Bracken/archive/refs/tags/v2.9.tar.gz
-	sha256sums = b8fd43fc396a2184d9351fb4a459f95ae9bb5865b195a18e22436f643044c788
+	source = bracken-3.0.tar.gz::https://github.com/jenniferlu717/Bracken/archive/refs/tags/v3.0.tar.gz
+	sha256sums = 1d437fd8df1a8c5c03d908a7026a41cd486f5ce771e288be7aadd93542da7e44
 
 pkgname = bracken
