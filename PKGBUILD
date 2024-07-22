@@ -2,7 +2,7 @@
 
 pkgname=filezilla-server
 pkgver=1.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple FTP, FTPS or SFTP server"
 arch=(x86_64)
 url="https://filezilla-project.org/download.php?type=server"
@@ -10,7 +10,8 @@ license=(GPL3)
 depends=(libfilezilla)
 makedepends=(wxwidgets-gtk3 pugixml)
 optdepends=(wxwidgets-gtk3)
-source=("https://download.filezilla-project.org/server/FileZilla_Server_${pkgver}_src.tar.xz")
+#source=("https://download.filezilla-project.org/server/FileZilla_Server_${pkgver}_src.tar.xz")
+source=("FileZilla_Server_${pkgver}_src.tar.xz::https://dl1.cdn.filezilla-project.org/server/FileZilla_Server_${pkgver}_src.tar.xz?h=JVfOb794svM7ZUOHWIAsYg&x=1721567973")
 sha256sums=('301f2871fe07ffda7b05a9c3f0c3ca9ebac498362d18094abeaf83380f18889f')
 
 build() {
