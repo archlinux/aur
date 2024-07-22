@@ -1,4 +1,3 @@
 [ansible-language-server]
-source = "git"
-git = "https://github.com/ansible/ansible-language-server.git"
-prefix = "v"
+source = "npm"
+npm = "@ansible/ansible-language-server"
