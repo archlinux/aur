@@ -4,7 +4,7 @@ _pkgname="Favicon Generator"
 pkgver=0.1.1
 _electronversion=14
 _nodeversion=18
-pkgrel=9
+pkgrel=10
 pkgdesc="Small Electron based app to generate favicon in different formats."
 arch=('any')
 url="https://github.com/anthonypauwels/favicon-generator"
@@ -14,17 +14,18 @@ depends=(
     "electron${_electronversion}"
 )
 makedepends=(
-    'npm>=9.0.0'
+    'npm'
     'nvm'
     'gendesk'
     'curl'
+    'git'
 )
 source=(
     "${pkgname}.git::git+${url}.git#tag=${pkgver}"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('526787d598b1708c4ec50e70e20726fffd1c06dae1369eb63cb0ea8dc69ae0fc'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -39,7 +40,7 @@ build() {
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    gendesk -f -n -q --pkgname="${pkgname}" --categories="Graphics" --name="${_pkgname}" --exec="${pkgname} %U"
+    gendesk -f -n -q --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Graphics" --name="${_pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
@@ -57,8 +58,8 @@ build() {
         echo "Your network is OK."
     fi
     sed "s|AppImage|dir|g" -i package.json
-    npm install
-    npm run build
+    NODE_ENV=development npm install
+    NODE_ENV=production npm run build
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
