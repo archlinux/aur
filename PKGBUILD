@@ -1,7 +1,7 @@
 # Maintainer: Michael J. Pento <mjpento@darkforge.net>
 
 pkgname=apache-cxf
-pkgver=4.0.1
+pkgver=4.0.5
 pkgrel=1
 pkgdesc='open source services framework'
 arch=('any')
@@ -37,5 +37,5 @@ package() {
   install -m 644  "${srcdir}/apache-cxf.sh" "${pkgdir}/etc/profile.d"
 }
 
-sha256sums=('5393c62b56d8addeef9c489a0390962d9fd6e1fb80824a9c03cbb5ab79eab33b'
+sha256sums=('4b5a84c06978a8db605fa5c1ae78fe4981b41e34ad897adf76fe9e94433fca42'
             'c52ba86604138776e50f6fc9506e21ad6f30064a54a0aaef3d5316245b14e668')
