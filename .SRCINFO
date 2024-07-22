@@ -1,7 +1,7 @@
 pkgbase = android-armv7a-eabi-expat
 	pkgdesc = An XML parser library (Android armv7a-eabi)
 	pkgver = 2.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://libexpat.github.io/
 	arch = any
 	groups = android-expat
