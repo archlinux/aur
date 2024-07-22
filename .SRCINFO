@@ -7,6 +7,7 @@ pkgbase = ttf-ms-win10-auto
 	makedepends = udisks2
 	makedepends = p7zip
 	makedepends = httpfs2-2gbplus
+	makedepends = udftools
 	provides = ttf-font
 	provides = ttf-ms-win10
 	conflicts = ttf-vista-fonts
