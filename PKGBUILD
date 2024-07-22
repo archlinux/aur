@@ -2,7 +2,7 @@
 
 _pkgname=jq.sh
 pkgname=$_pkgname-git
-pkgver=1.0.1.r0.g7559b52
+pkgver=1.0.1.r4.g7101e85
 pkgrel=1
 pkgdesc='jq-in-shell integration library'
 arch=('any')
@@ -18,7 +18,15 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname"
+
     git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd "$_pkgname"
+
+    autoreconf --install
+    ./configure --prefix=/usr
 }
 
 build() {
@@ -36,5 +44,5 @@ check() {
 package() {
     cd "$_pkgname"
 
-    make DESTDIR="$pkgdir" PREFIX=/usr install
+    make DESTDIR="$pkgdir" install
 }
