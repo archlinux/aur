@@ -11,7 +11,7 @@ _android_arch=aarch64
 
 pkgname=android-${_android_arch}-gtest
 pkgver=1.14.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Google Test - C++ testing utility (Android ${_android_arch})"
 url='https://github.com/google/googletest'
@@ -43,16 +43,27 @@ build() {
 
     android-${_android_arch}-cmake \
         -S . \
-        -B build
-    make -C build $MAKEFLAGS
+        -B build-shared \
+        -DBUILD_SHARED_LIBS=ON \
+        -DBUILD_TESTING=OFF
+    cmake --build build-shared
+
+    android-${_android_arch}-cmake \
+        -S . \
+        -B build-static \
+        -DBUILD_SHARED_LIBS=OFF \
+        -DBUILD_TESTING=OFF
+    cmake --build build-static
 }
 
 package() {
     cd "${srcdir}/googletest-${pkgver}"
     source android-env ${_android_arch}
 
-    make -C build DESTDIR="$pkgdir" install
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
+    make -C build-shared DESTDIR="${pkgdir}" install
+    make -C build-static DESTDIR="${pkgdir}" install
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 
     cd googletest
     install -Dm 644 cmake/* -t "${pkgdir}/${ANDROID_PREFIX}/src/googletest/cmake"
