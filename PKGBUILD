@@ -1,6 +1,6 @@
 pkgname=cosmic-ext-applet-ollama-git
-pkgver=r73.19dacd0
-pkgrel=2
+pkgver=r96.d1b3238
+pkgrel=1
 pkgdesc="Ollama applet for COSMIC Desktop"
 arch=('x86_64')
 url="https://github.com/elevenhsoft/cosmic-ext-applet-ollama"
@@ -11,6 +11,7 @@ provides=("${pkgname%-git}" "cosmic-applet-ollama")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/elevenhsoft/cosmic-ext-applet-ollama')
 sha256sums=('SKIP')
+options=(!lto)
 
 pkgver() {
   cd "${pkgname%-git}"
