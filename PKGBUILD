@@ -1,24 +1,25 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
+_pkgname=ValveResourceFormat
 pkgname=valveresourceformat
-pkgver=10.0
-pkgrel=2
+pkgver=10.1
+pkgrel=1
 pkgdesc="Valve's Source 2 resource file format parser, decompiler, and exporter."
 arch=('x86_64')
 url="https://github.com/ValveResourceFormat/ValveResourceFormat"
 license=('MIT' 'CC-BY-2.5')
 depends=('glibc' 'gcc-libs' 'zlib' 'wine' 'bash' 'hicolor-icon-theme')
-makedepends=('dotnet-sdk' 'git' 'gendesk')
+makedepends=('dotnet-sdk' 'gendesk')
 options=(!strip !debug)
 install=$pkgname.install
-source=("$pkgname::git+$url.git#tag=$pkgver")
-sha256sums=('683b402b6a487cce5c736dae07997a6ce8ab5a5a206a720c83676a6ab636bf5b')
+source=("$url/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('804760437d37546fe64673259d4ece34f08543893df56cc3701e9c6e46f32dfa')
 
 
 build() {
-	cd "$srcdir/$pkgname/Decompiler"
+	cd "$srcdir/$_pkgname-$pkgver/Decompiler"
 	dotnet publish -r linux-x64
 
-	cd "$srcdir/$pkgname/GUI"
+	cd "$srcdir/$_pkgname-$pkgver/GUI"
 	dotnet publish -r win-x64 --sc true -p:EnableWindowsTargeting=true
 
 	cd "$srcdir"
@@ -33,7 +34,7 @@ build() {
 }
 
 package() {
-	cd "$srcdir/$pkgname/Decompiler/bin/Release/linux-x64/publish"
+	cd "$srcdir/$_pkgname-$pkgver/Decompiler/bin/Release/linux-x64/publish"
 	for file in {Decompiler,libSkiaSharp.so};
 	do
 		install -Dm755 $file "$pkgdir/usr/lib/$pkgname/$file"
@@ -42,7 +43,7 @@ package() {
 	mkdir -p "$pkgdir/usr/bin/"
 	ln -s /usr/lib/$pkgname/Decompiler "$pkgdir/usr/bin/$pkgname-decompiler"
 
-	install -Dm644 "$srcdir/$pkgname/GUI/bin/Release/win-x64/publish/Source2Viewer.exe" "$pkgdir/usr/lib/$pkgname/Source2Viewer.exe"
+	install -Dm644 "$srcdir/$_pkgname-$pkgver/GUI/bin/Release/win-x64/publish/Source2Viewer.exe" "$pkgdir/usr/lib/$pkgname/Source2Viewer.exe"
 	cat >> "$pkgdir/usr/bin/$pkgname-source2viewer" <<-EOF
 #!/bin/bash
 export WINEPREFIX="\$HOME/.$pkgname/wine"
@@ -56,6 +57,6 @@ DOTNET_BUNDLE_EXTRACT_BASE_DIR=./ wine /usr/lib/$pkgname/Source2Viewer.exe "\$@"
 EOF
 	chmod 755 "$pkgdir/usr/bin/$pkgname-source2viewer"
 
-	install -Dm644 "$srcdir/$pkgname/Misc/Icons/source2viewer.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname-source2viewer.png"
+	install -Dm644 "$srcdir/$_pkgname-$pkgver/Misc/Icons/source2viewer.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname-source2viewer.png"
 	install -Dm644 "$srcdir/source2viewer.desktop" "$pkgdir/usr/share/applications/source2viewer.desktop"
 }

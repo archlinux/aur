@@ -1,14 +1,13 @@
 pkgbase = valveresourceformat
 	pkgdesc = Valve's Source 2 resource file format parser, decompiler, and exporter.
-	pkgver = 10.0
-	pkgrel = 2
+	pkgver = 10.1
+	pkgrel = 1
 	url = https://github.com/ValveResourceFormat/ValveResourceFormat
 	install = valveresourceformat.install
 	arch = x86_64
 	license = MIT
 	license = CC-BY-2.5
 	makedepends = dotnet-sdk
-	makedepends = git
 	makedepends = gendesk
 	depends = glibc
 	depends = gcc-libs
@@ -18,7 +17,7 @@ pkgbase = valveresourceformat
 	depends = hicolor-icon-theme
 	options = !strip
 	options = !debug
-	source = valveresourceformat::git+https://github.com/ValveResourceFormat/ValveResourceFormat.git#tag=10.0
-	sha256sums = 683b402b6a487cce5c736dae07997a6ce8ab5a5a206a720c83676a6ab636bf5b
+	source = https://github.com/ValveResourceFormat/ValveResourceFormat/archive/refs/tags/10.1.tar.gz
+	sha256sums = 804760437d37546fe64673259d4ece34f08543893df56cc3701e9c6e46f32dfa
 
 pkgname = valveresourceformat
