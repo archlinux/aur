@@ -1,10 +1,11 @@
 # Maintainer: Jakub Kądziołka <kuba@kadziolka.net>
 # Maintainer: basxto <archlinux basxto de>
+# Maintainer: ISSOtm <arch@eldred.fr>
 
 pkgname=sameboy-git
 pkgdesc="An accuracy-focused Game Boy/Game Boy Color emulator"
-pkgver=v0.16.6.r53.64cf389
-pkgrel=2
+pkgver=0.16.6.r54.d34579e
+pkgrel=1
 arch=(x86_64)
 url="https://github.com/LIJI32/SameBoy"
 license=(MIT)
@@ -18,7 +19,7 @@ sha1sums=('SKIP')
 
 pkgver() {
 	cd SameBoy
-	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	git describe --long | sed 's/\([^-]*-\)g/r\1/; s/-/./g; s/v//'
 }
 
 build() {
