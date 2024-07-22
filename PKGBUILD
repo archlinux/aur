@@ -5,7 +5,7 @@
 _srcname=ts
 pkgname=task-spooler
 pkgver=1.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Queue up tasks from the shell for batch execution"
 arch=('x86_64')
 url="https://viric.name/soft/ts/"
@@ -30,6 +30,7 @@ build() {
 
 package() {
   install -Dm644 $_srcname-$pkgver/TRICKS -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm644 $_srcname-$pkgver/Changelog -t "$pkgdir/usr/share/doc/$pkgname"
   make -C $_srcname-$pkgver PREFIX="$pkgdir/usr" install
 
   mv "$pkgdir"/usr/bin/{ts,tsp}
