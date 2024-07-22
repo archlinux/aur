@@ -1,9 +1,10 @@
 pkgbase = android-x86-cmocka
 	pkgdesc = Elegant unit testing framework for C with support for mock objects (Android x86)
 	pkgver = 1.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cmocka.org/
 	arch = any
+	groups = android-cmocka
 	license = Apache
 	makedepends = android-cmake
 	depends = android-ndk
