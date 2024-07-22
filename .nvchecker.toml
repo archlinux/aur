@@ -1,0 +1,4 @@
+[lib32-sdl12-compat]
+source = "git"
+git = "https://github.com/libsdl-org/sdl12-compat.git"
+prefix = "release-"
