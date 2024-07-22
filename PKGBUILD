@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your.email@example.com>
 
 pkgname=vbox-office-launcher-git
-pkgver=r23.7929a6b
+pkgver=0.1.2.r0.g7929a6b
 pkgrel=1
 pkgdesc="A tool for launching Windows applications in a VirtualBox environment"
 arch=('any')
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/vbox-windows-app-launcher"
-    git describe --long --tags 2>/dev/null || printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 package() {
