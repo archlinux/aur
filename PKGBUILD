@@ -18,11 +18,12 @@ fi
 
 pkgname=${_pkgname}-utils-staging-git
 pkgver=2.2.4.r11.g54ef0fdf60
-pkgrel=1
+pkgrel=2
 pkgdesc="Userspace utilities for the Zettabyte File System (release staging branch)."
 arch=("i686" "x86_64" "aarch64")
 url="https://zfsonlinux.org/"
 license=('CDDL-1.0')
+groups=('zfs-staging-git')
 optdepends=('python: for arcstat/arc_summary/dbufstat')
 conflicts=("${_pkgname}-utils")
 makedepends=("git")
