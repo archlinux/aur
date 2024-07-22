@@ -1,7 +1,7 @@
 pkgbase = android-x86-64-expat
 	pkgdesc = An XML parser library (Android x86-64)
 	pkgver = 2.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://libexpat.github.io/
 	arch = any
 	groups = android-expat
