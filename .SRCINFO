@@ -3,6 +3,7 @@ pkgbase = mihomo-git
 	pkgver = alpha.4eb13a73
 	pkgrel = 1
 	url = https://github.com/MetaCubeX/mihomo
+	install = mihomo.install
 	arch = x86_64
 	arch = aarch64
 	license = MIT

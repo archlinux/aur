@@ -3,7 +3,7 @@
 _name=mihomo
 pkgname=$_name-git
 pkgver=alpha.4eb13a73
-pkgrel=1
+pkgrel=2
 pkgdesc="Mihomo Kernel by MetaCubeX, formerly known as Clash.Meta"
 arch=("x86_64" 'aarch64')
 url="https://github.com/MetaCubeX/mihomo"
@@ -13,6 +13,7 @@ makedepends=('go' 'git')
 conflicts=('clash-meta' 'mihomo')
 provides=('mihomo')
 backup=('etc/mihomo/config.yaml')
+install="${_name}.install"
 source=("git+https://github.com/MetaCubeX/mihomo.git#branch=Alpha")
 sha256sums=('SKIP')
 
