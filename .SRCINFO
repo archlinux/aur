@@ -18,13 +18,13 @@ pkgbase = swayfx
 	depends = libjson-c.so
 	depends = libudev.so
 	depends = libwayland-server.so
-	depends = libwlroots.so=12
 	depends = libxcb
 	depends = libxkbcommon.so
 	depends = pango
 	depends = pcre2
 	depends = ttf-font
 	depends = libscenefx.so
+	depends = wlroots0.17
 	optdepends = alacritty: Terminal emulator used by the default config
 	optdepends = dmenu: Application launcher
 	optdepends = grim: Screenshot utility
