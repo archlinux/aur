@@ -3,7 +3,7 @@ pkgname=openhome-bin
 _pkgname=OpenHome
 pkgver=0.3.0
 _electronversion=25
-pkgrel=4
+pkgrel=5
 pkgdesc="Application for importing and transferring Pokémon between save files"
 arch=('x86_64')
 url="https://github.com/andrewbenington/OpenHome"
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('d7c3c19e486b75a170d769569e9a43a3fbcd445af8f0a4ebc6557720567c773e'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
