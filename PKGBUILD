@@ -2,7 +2,7 @@
 _pkgname=swayfx
 pkgname="$_pkgname-git"
 pkgver=r7047.8ad2605c
-pkgrel=1
+pkgrel=2
 license=("MIT")
 pkgdesc="SwayFX: Sway, but with eye candy!"
 makedepends=(git meson ninja scdoc setconf wayland-protocols)
