@@ -16,7 +16,7 @@ depends=(
 	"libpixman-1.so"
 	"libudev.so"
 	"libwayland-server.so"
-	"libwlroots.so"
+	"wlroots0.17"
 	"libxcb"
 	"libxkbcommon.so"
 	"pango"
