@@ -1,0 +1,18 @@
+pkgbase = baseic
+	pkgdesc = A simple numeric conversion tool
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/carmisergio/baseic
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	provides = baseic
+	conflicts = baseic
+	options = !lto
+	source = baseic-0.1.0.tar.gz::https://github.com/carmisergio/baseic/archive/tags/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = baseic
