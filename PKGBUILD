@@ -2,7 +2,7 @@
 # Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
 
 pkgname=gdown
-pkgver=5.1.0
+pkgver=5.2.0
 pkgrel=1
 pkgdesc="Download a large file from Google Drive"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python' 'python-tqdm' 'python-filelock' 'python-pysocks' 'python-six' 'python-beautifulsoup4' 'python-requests')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'git' 'python-hatch-vcs' 'python-hatch-fancy-pypi-readme')
 source=(git+https://github.com/wkentaro/gdown.git#tag=v${pkgver})
-sha512sums=('SKIP')
+sha512sums=('f5284bb5860e35079a2a26605d32a7a36ddf7c46efcd144befcee90c82ab9b55a69e2efce4de1459882a35be019f4946fdbf9512cdddfbf4d383869d55ec21e7')
 
 prepare() {
   cd "${pkgname}"
