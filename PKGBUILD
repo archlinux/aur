@@ -8,8 +8,8 @@ url="https://github.com/devurandom/${_pkgname}"
 license=('MIT')
 depends=('roundcubemail')
 optdepends=()
-source=("git://github.com/devurandom/roundcube-converse.js-xmpp-plugin.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+source=("git+https://github.com/devurandom/roundcube-converse.js-xmpp-plugin.git#tag=v${pkgver}")
+sha256sums=('65244f01ffece3104fa84ea12dbaf8f2da580bdb85e27e614ee1105cfe55cd9b')
 makedepends=('git')
 backup=("etc/webapps/roundcubemail/plugins/converse/config.inc.php")
 
