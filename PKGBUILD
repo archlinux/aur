@@ -1,9 +1,9 @@
 # Maintainer: Juacrumar <juacrumar at lairen dot eu>
 
 pkgname=pineappl
-pkgver=0.7.4
+pkgver=0.8.1
 fullver=${pkgver}
-pkgrel=2
+pkgrel=1
 pkgdesc='PineAPPL is not an extension of APPLgrid. Installs pineappl_cli, pineappl library and python package'
 arch=('any')
 url="https://nnpdf.github.io/pineappl/"
@@ -17,7 +17,7 @@ optdepends=()
 provides=("pineappl")
 changelog=
 source=("https://github.com/NNPDF/pineappl/archive/v${fullver}.tar.gz")
-md5sums=("ff756719b29ff185eb2739cf4446ac8e")
+md5sums=("e5b3683995a247a465bea6908dfc8d52")
 
 # workaround for the problem with ring, see https://gitlab.archlinux.org/archlinux/packaging/packages/pacman/-/issues/20
 options=(!lto)
