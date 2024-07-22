@@ -1,5 +1,4 @@
-*.jar
-*.tar.xz
-*.tar.gz
-src/
-pkg/
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
