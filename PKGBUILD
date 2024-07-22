@@ -1,7 +1,7 @@
 # Maintainer: pusi77 <pusineriandrea+gmail+com>
 
 pkgname=rain
-pkgver=1.12.0
+pkgver=1.12.1
 pkgrel=1
 pkgdesc='A development workflow tool for working with AWS CloudFormation'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/aws-cloudformation/rain"
 license=('Apache-2.0')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('908d0370aabb4053c57853f5226a4d6865562db974df8b3ac624325b1006a435')
+sha256sums=('53f3f412cca548c10b85e49958fb1bd43c065b1d3658500b2fadaf1dadd2edb9')
 
 prepare(){
   cd "$pkgname-$pkgver"
