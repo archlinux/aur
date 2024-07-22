@@ -2,7 +2,7 @@
 
 pkgname=dmenu-recent-aliases-git
 pkgver=1.0.0.r2.gffb39fc
-pkgrel=1
+pkgrel=2
 pkgdesc="Dmenu2 based application launcher. Supports user bash aliases."
 arch=('any')
 url="https://gitlab.com/y2kbugger-projects/scripts/dmenu-recent-aliases"
