@@ -1,13 +1,13 @@
 # Maintainer: Magnus Groß, for email contact see AUR commit author email
 _pkgname=fftune
 pkgname="$_pkgname"-git
-pkgver=1.0.r0.gcfd0b9f
+pkgver=1.0.r6.g8a68f25
 pkgrel=1
 pkgdesc="A modern pitch detection library"
 arch=('i686' 'x86_64')
 url="https://github.com/$_pkgname/$_pkgname"
 license=('LGPL3')
-depends=(fftw libsmf libsndfile sfizz)
+depends=(fftw libsmf libsndfile)
 makedepends=(git cmake)
 source=("git+$url.git")
 md5sums=('SKIP')
