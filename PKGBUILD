@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=dosbox
 pkgname="${_pkgname}-staging-bin"
-pkgver=0.81.1
+pkgver=0.81.2
 pkgrel=1
 pkgdesc="A modern continuation of DOSBox with advanced features and current development practices."
 arch=("x86_64")
@@ -13,6 +13,7 @@ provides=(
 )
 conflicts=(
     "${pkgname%-bin}"
+    "${_pkgname}"
 )
 depends=(
     'alsa-lib'
@@ -25,8 +26,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.tar.xz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-v${pkgver}.tar.xz"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('5aee92774569cf1e39ade3fccff03994464d17b396b0ae98360af61e9d37cba7'
-            '8e4b518b19641352cabe2604117457d45ecf8b252f789113590f47e376ff4461')
+sha256sums=('c47f1767ae1371666f40e3a4e13272da5c5a98c9c6f355b4fb82bac0d3911a68'
+            '7f1d8c4c877e860e4cbd3b700f9eeafd2b7fa5d0137a681e0734df68f8461ab6')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
