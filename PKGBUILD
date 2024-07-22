@@ -4,14 +4,14 @@
 
 _srcname=ts
 pkgname=task-spooler
-pkgver=1.0.2
-pkgrel=4
+pkgver=1.0.3
+pkgrel=1
 pkgdesc="Queue up tasks from the shell for batch execution"
 arch=('x86_64')
 url="https://viric.name/soft/ts/"
 license=('GPL2')
 source=(https://viric.name/soft/$_srcname/$_srcname-$pkgver.tar.gz)
-sha256sums=('f73452aed80e2f9a7764883e9353aa7f40e65d3c199ad1f3be60fd58b58eafec')
+sha256sums=('fa833311543dc535b60cb7ab83c64ab5ee31128dbaaaa13dde341984e542b428')
 
 prepare() {
   # Rename program from ts to tsp.
