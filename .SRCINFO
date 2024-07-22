@@ -1,7 +1,7 @@
 pkgbase = python-simplification
 	pkgdesc = Very fast Python LineString simplification using RDP or Visvalingam-Whyatt
 	pkgver = 0.7.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/urschrei/simplification
 	arch = any
 	license = custom:Blue-Oak-Model-License-1.0.0
@@ -11,7 +11,6 @@ pkgbase = python-simplification
 	makedepends = python-installer
 	makedepends = python-setuptools-scm
 	makedepends = python-toml
-	makedepends = python-trove-classifiers>=2024.7.1
 	makedepends = python-wheel
 	depends = librdp
 	depends = python

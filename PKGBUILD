@@ -6,7 +6,7 @@ pkgdesc="Very fast Python LineString simplification using RDP or Visvalingam-Why
 url="https://github.com/urschrei/simplification"
 
 pkgver=0.7.12
-pkgrel=1
+pkgrel=2
 
 arch=("any")
 license=("custom:Blue-Oak-Model-License-1.0.0")
@@ -22,7 +22,6 @@ makedepends=(
     "python-installer"
     "python-setuptools-scm"
     "python-toml"
-    "python-trove-classifiers>=2024.7.1"
     "python-wheel"
 )
 checkdepends=(
