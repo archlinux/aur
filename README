@@ -1,0 +1,12 @@
+By design, the wlroots compositor library does not support the proprietary NVIDIA driver. This patch remediates that by allowing rending with GLES2 when the driver is used.
+
+This package is designed to be a drop-in replacement for the Arch wlroots0.17 package that sway relies on.
+
+Instructions:
+Build per the normal AUR package installation process.
+
+Note:
+If you are unable to install using 'makepkg -sri' due to a dependency error (this will be the case when sway is already installed), you may:
+
+1. Uninstall the existing wlroots0.17 package first and re-run 'makepkg-sri'.
+2. Run 'makepkg -sr', and then manually install the built package with pacman -Udd <pkgname>.
