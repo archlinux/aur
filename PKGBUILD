@@ -4,7 +4,7 @@ _android_arch=aarch64
 
 pkgname=android-${_android_arch}-expat
 pkgver=2.6.2
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="An XML parser library (Android ${_android_arch})"
 url="https://libexpat.github.io/"
@@ -17,18 +17,39 @@ source=("https://github.com/libexpat/libexpat/archive/R_${pkgver//./_}.tar.gz")
 md5sums=('99a0df949cc18e9a21ee335b06bedce1')
 
 build() {
-    cd "${srcdir}"/libexpat-R_${pkgver//./_}/expat
+    cd "${srcdir}/libexpat-R_${pkgver//./_}/expat"
     source android-env ${_android_arch}
 
-    android-${_android_arch}-cmake .
-    make $MAKEFLAGS
+    android-${_android_arch}-cmake \
+        -S . \
+        -B build-shared \
+        -DBUILD_SHARED_LIBS=ON \
+        -DBUILD_TESTING=OFF \
+        -DEXPAT_SHARED_LIBS=ON \
+        -DEXPAT_BUILD_EXAMPLES=OFF \
+        -DEXPAT_BUILD_TESTS=OFF \
+        -DEXPAT_BUILD_TOOLS=OFF
+    cmake --build build-shared
+
+    android-${_android_arch}-cmake \
+        -S . \
+        -B build-static \
+        -DBUILD_SHARED_LIBS=OFF \
+        -DBUILD_TESTING=OFF \
+        -DEXPAT_SHARED_LIBS=OFF \
+        -DEXPAT_BUILD_EXAMPLES=OFF \
+        -DEXPAT_BUILD_TESTS=OFF \
+        -DEXPAT_BUILD_TOOLS=OFF
+    cmake --build build-static
 }
 
 package() {
-    cd "${srcdir}"/libexpat-R_${pkgver//./_}/expat
+    cd "${srcdir}/libexpat-R_${pkgver//./_}/expat"
     source android-env ${_android_arch}
 
-    make DESTDIR="$pkgdir" install
-    rm -r "${pkgdir}"/${ANDROID_PREFIX_SHARE} "${pkgdir}"/${ANDROID_PREFIX_BIN}
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
+    make -C build-shared DESTDIR="${pkgdir}" install
+    make -C build-static DESTDIR="${pkgdir}" install
+    rm -rr "${pkgdir}/${ANDROID_PREFIX_SHARE}"
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
