@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=WLED-Gui
+TryExec=wled-gui
+Exec=wled-gui %f
+Categories=Electron
+Keywords=WLED
+Icon=wled-gui

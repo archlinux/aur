@@ -1,0 +1,16 @@
+pkgbase = wled-gui-appimage
+	pkgdesc = Cross-platform desktop app for WLED
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/w00000dy/WLED-GUI/
+	arch = any
+	license = MIT
+	options = !strip
+	source = https://github.com/w00000dy/WLED-GUI//releases/download/v0.7.1/WLED-0.7.1-Linux.AppImage
+	source = wled-gui.png::https://raw.githubusercontent.com/w00000dy/WLED-GUI/master/build/icon.png
+	source = wled-gui.desktop
+	sha256sums = 1c22dcb984b9774e674a78148531062b09bc52de9214d458b0a66faa6177ea89
+	sha256sums = 3369a53e6165e31b4aad1bec38bd88c67bca058156520becccf5e3c32a67bccc
+	sha256sums = 1e29ad4b045638175ea8cdcf099ef45a59a70a4e807672aef039308a302573c6
+
+pkgname = wled-gui-appimage
