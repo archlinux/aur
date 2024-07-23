@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=polar-bin
 _pkgname=Polar
-pkgver=2.2.0
+pkgver=3.0.0
 _electronversion=13
-pkgrel=3
+pkgrel=1
 pkgdesc="One-click Bitcoin Lightning networks for local app development & testing.Use system-wide electron."
 arch=("x86_64")
 url="https://lightningpolar.com/"
@@ -13,15 +13,15 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    #'docker'
-    #'docker-compose'
+    'docker'
+    'docker-compose'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-amd64-V${pkgver}.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/jamaljsr/polar/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d7065df8c171fc6b6231dc928bc3dbff62c243417e402fd2d4645a4b453868db'
+sha256sums=('25af6855c222e55d9c39355a6d1d7a865ef2b045faa9d7ec13fd1bfcf146ed65'
             '971e947b52af09847d493b326953f2cbc91669441eab0d5e74eac38b8e162904'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
