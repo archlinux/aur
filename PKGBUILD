@@ -3,7 +3,7 @@
 
 pkgname=superproductivity
 _name=super-productivity
-pkgver=8.0.10
+pkgver=9.0.5
 pkgrel=1
 pkgdesc="ToDo List / Time Tracker / Personal Jira Task Manager"
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=('git' 'npm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/johannesjo/super-productivity/archive/v${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('787325e8a2f7b18019a362a4077a0c3effd96441dd9f8dc9078a48c35bd43513'
+sha256sums=('c2d3f69aab730880f22b734b50fc8eecb9f7ffcee8265bec5cecf49110c6b24b'
             'e3c71e1ba653ebb1662c8a10d55ed72dbec37eea911c1f18568d0c3e2d13f452'
             'f9ca69e16223b3dcfa0d8ae9dbbff231255482d85f0d72ddcc5033dac890741e')
 
@@ -38,7 +38,7 @@ package() {
     cd "${_name}-${pkgver}"
 
     # Install asar file
-    install -Dm644 app-builds/linux-unpacked/resources/* -t "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 app-builds/linux-unpacked/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
 
     # Install start script
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
