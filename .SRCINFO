@@ -1,0 +1,15 @@
+pkgbase = php-openswoole-git
+	pkgdesc = Programmatic Server for PHP with Async IO, Coroutines and Fibers
+	pkgver = 22.1.2
+	pkgrel = 1
+	url = https://openswoole.com/
+	arch = any
+	license = unkown
+	makedepends = git
+	makedepends = gcc>=4.8
+	depends = php>=8.1.0
+	provides = openswoole.so=22.1.2
+	source = php-openswoole-git::git+https://github.com/openswoole/ext-openswoole.git
+	sha256sums = SKIP
+
+pkgname = php-openswoole-git
