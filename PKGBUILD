@@ -15,7 +15,7 @@ provides=('surfer-waveform')
 conflicts=()
 replaces=()
 backup=()
-options=()
+options=(!lto)
 install=
 changelog=
 source=('surfer-waveform-git::git+https://gitlab.com/surfer-project/surfer#branch=main')
@@ -51,7 +51,7 @@ check() {
 
 package() {
     cd "$pkgname"
-    desktop-file-install -m 644 --dir "$pkgdir/usr/share/applications/" "assets/Surfer.desktop"
+    desktop-file-install -m 644 --dir "$pkgdir/usr/share/applications/" "surfer/assets/Surfer.desktop"
     install -Dm644 "./LICENSE-EUPL-1.2.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm755 "target/release/surfer" "$pkgdir/usr/bin/surfer"
 }
