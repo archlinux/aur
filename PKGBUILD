@@ -1,15 +1,19 @@
 # Maintainer: Piroro-hs
 
 pkgname=gsettings-desktop-schemas-nofont
-pkgver=46.0
+pkgver=46.1
 pkgrel=1
 pkgdesc='Shared GSettings schemas for the desktop, patched to drop font dependencies'
 arch=('any')
 url="https://gitlab.gnome.org/GNOME/${pkgname%-nofont}"
 license=('LGPL-2.1-or-later')
 groups=()
-depends=('dconf' 'glib2')
-makedepends=('git' 'gobject-introspection' 'meson')
+depends=('dconf'
+         'glib2')
+makedepends=('git'
+             'glib2-devel'
+             'gobject-introspection'
+             'meson')
 provides=("${pkgname%-nofont}")
 conflicts=("${pkgname%-nofont}")
 replaces=()
@@ -19,12 +23,11 @@ install=
 source=("$pkgname::git+$url.git#tag=$pkgver"
         '0001-Revert-default-font.patch')
 noextract=()
-sha256sums=('c94dc5891b23e98048d5b1f7be0f0a796800320bc879544fb0db59fa2df27033'
+sha256sums=('4a31bfb3cb4fbea5584330c322d3326bfa31243c2391413e8a47bf318795752a'
             '70823e18b0b35f698890cee555afee794e805750e798e0c76a1f0d456aaf587d')
 
 prepare() {
-  cd "$srcdir/$pkgname"
-  patch -p1 -i "../0001-Revert-default-font.patch"
+  patch -d "$srcdir/$pkgname" -p1 -i "$srcdir/0001-Revert-default-font.patch"
 }
 
 build() {
