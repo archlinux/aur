@@ -20,6 +20,6 @@ pkgbase = python-inputmodule
 	provides = ledmatrixctl
 	provides = ledmatrixgui
 	source = python-inputmodule-0.2.0.tar.gz::https://github.com/FrameworkComputer/inputmodule-rs/archive/v0.2.0.tar.gz
-	sha512sums = 068f26d83ee68e6e1b71954add4a9df740426596f3f6301cb5f24b898e17d41f70f1d3245afe6e2b601e09a72c8dfb868fae65f8a9e9c439cde40eddbd8a47a9
+	b2sums = 8664ff4aa73cda06e57c73c740d56f4f2d64b236b88c8cb1199e09703cad050c5b3693ed8b11de224c8b6689d0d7f01b57cbf150070b30aa00587332f6c406f6
 
 pkgname = python-inputmodule

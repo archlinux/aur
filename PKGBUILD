@@ -11,7 +11,7 @@ depends=('inputmodule-udev' 'python>=3.7.0' 'python-getkey' 'python-opencv' 'pyt
 makedepends=('python-build' 'python-hatchling' 'python-hatch-vcs' 'python-installer' 'python-wheel')
 provides=('ledmatrixctl' 'ledmatrixgui')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('068f26d83ee68e6e1b71954add4a9df740426596f3f6301cb5f24b898e17d41f70f1d3245afe6e2b601e09a72c8dfb868fae65f8a9e9c439cde40eddbd8a47a9')
+b2sums=('8664ff4aa73cda06e57c73c740d56f4f2d64b236b88c8cb1199e09703cad050c5b3693ed8b11de224c8b6689d0d7f01b57cbf150070b30aa00587332f6c406f6')
 
 _sourcedirectory="$_projectname-$pkgver/python"
 
@@ -22,7 +22,9 @@ build() {
 
 check() {
 	cd "$srcdir/$_sourcedirectory/"
-	python -B -m 'inputmodule.cli' --help | tee '/dev/stderr' | grep -q 'Display a string on the LCD Display$'
+	_checkoutput="$(python -B -m 'inputmodule.cli' --help)"
+	printf '%s\n' "$_checkoutput"
+	printf '%s\n' "$_checkoutput" | grep -q 'Display a string on the LCD Display$'
 }
 
 package() {
