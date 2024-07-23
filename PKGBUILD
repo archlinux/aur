@@ -1,8 +1,8 @@
 # Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
 _pkgname='chatterino2-nightly'
 pkgname="${_pkgname}-bin"
-provides=chatterino
-conflicts=chatterino
+provides=(${_pkgname})
+conflicts=(${_pkgname})
 pkgver=2.5.1
 pkgrel=1
 scdir=$_pkgname
@@ -16,10 +16,10 @@ depends=('fuse2' 'icu70')
 optdepends=('streamlink: For piping streams to video players'
             'pulseaudio: For audio output'
             'gst-plugins-good: For audio output')
-provides=(${_pkgname})
-conflicts=(${_pkgname})
+provides=chatterino
+conflicts=chatterino
 #source=(${_pkgname}.desktop)
-source_x86_64=("${_pkgname}-${pkgver}_x64.deb::https://github.com/chatterino/chatterino2/releases/download/nightly-build/Chatterino-Ubuntu-22.04-x86_64.deb")
+source_x86_64=("${_pkgname}-${pkgver}_x64.deb::https://github.com/Chatterino/chatterino2/releases/download/nightly-build/Chatterino-Ubuntu-22.04-x86_64.deb")
 
 package() {
 	tar xf data.tar.zst -C "${pkgdir}"
@@ -27,4 +27,4 @@ package() {
 cd ..
 	ln -sf "/opt/$_pkgname/$_pkgname" "${pkgdir}/usr/bin/$_pkgname"
 }
-sha256sums_x86_64=('06dee15c0c321a45d1147c56f927ae48d6451a5182f61daf483e49beafab0d24')
+sha256sums_x86_64=('skip')
