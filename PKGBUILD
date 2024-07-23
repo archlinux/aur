@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=animeclient-bin
 _pkgname=AnimeClient
-pkgver=2.0.7
-_electronversion=30
-pkgrel=2
+pkgver=2.0.8
+_electronversion=31
+pkgrel=1
 pkgdesc="An application that brings together several anime streaming platforms"
 arch=('x86_64')
 url="https://animeclient.zvbt.space/"
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('7f85b14c941b52a4b81ee5f4e4e642152b00daf34862e3610d26190b34ae580d'
+sha256sums=('c4d26a5e0c370f861cd29a3ee89b80d3c4fc821700e99c3215cdc9f479fe0096'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
