@@ -1,7 +1,7 @@
 pkgbase = leafpad
 	pkgdesc = A notepad clone for GTK+ 2.0
 	pkgver = 0.8.19
-	pkgrel = 2
+	pkgrel = 3
 	url = http://tarot.freeshell.org/leafpad/
 	arch = x86_64
 	license = GPL
