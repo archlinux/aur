@@ -14,7 +14,7 @@ arch=("x86_64")
 depends=("glibc" "gcc-libs" "bzip2")
 
 source=(
-    "$pkgname-$pkgver::https://github.com/Umatriz/nomi/releases/download/$pkgver/client-x86_64-unknown-linux-gnu"
+    "$pkgname-$pkgver::https://github.com/Umatriz/nomi/releases/download/$pkgver/client-$CARCH-unknown-linux-gnu"
 )
 sha256sums=('226ff653b17cb5a20306f8c520122797ddbc364d234c7c3f0c6fb6b5380fa681')
 
