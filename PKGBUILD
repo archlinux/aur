@@ -34,7 +34,9 @@ prepare() {
 }
 
 check() {
-	"$srcdir/$_sourcedirectory/$pkgname" -h | tee '/dev/stderr' | grep -q 'Generate a config file$'
+	_checkoutput="$("$srcdir/$_sourcedirectory/$pkgname" -h)"
+	printf '%s\n' "$_checkoutput"
+	printf '%s\n' "$_checkoutput" | grep -q 'Generate a config file$'
 }
 
 package() {
