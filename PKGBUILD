@@ -1,4 +1,5 @@
-# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Maintainer: Jefferson Carneiro < slackjeff at slackjeff dot com dot br >
+# Contribuitor: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: William Rea <sillywilly@gmail.com>
