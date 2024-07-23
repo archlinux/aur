@@ -1,0 +1,29 @@
+pkgbase = pappl-retrofit-git
+	pkgver = 1.0b2.r10.gb959712
+	pkgrel = 1
+	url = https://github.com/OpenPrinting/pappl-retrofit
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = libcups
+	makedepends = libcupsfilters
+	makedepends = libppd
+	makedepends = pappl
+	source = git+https://github.com/OpenPrinting/pappl-retrofit.git
+	sha256sums = SKIP
+
+pkgname = pappl-retrofit-git
+	pkgdesc = PPD/Classic CUPS driver retro-fit Printer Application Library
+	depends = libcups
+	depends = libcupsfilters
+	depends = libppd
+	depends = pappl
+	provides = pappl-retrofit
+	conflicts = pappl-retrofit
+
+pkgname = legacy-printer-app-git
+	pkgdesc = Printer Application providing access to legacy printer drivers
+	depends = pappl-retrofit-git
+	optdepends = avahi: announce printers handled by the Printer Application
+	provides = legacy-printer-app
+	conflicts = legacy-printer-app
