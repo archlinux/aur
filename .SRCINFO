@@ -1,7 +1,7 @@
 pkgbase = nheko
 	pkgdesc = Desktop client for the Matrix protocol
 	pkgver = 0.12.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://nheko.im/nheko-reborn/nheko
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -37,6 +37,7 @@ pkgbase = nheko
 	optdepends = libnice: VoIP/Video calls
 	optdepends = gst-libav: Video messages
 	optdepends = gst-plugin-qmlgl: Video calls and Screen sharing
+	optdepends = gst-plugin-qml6: Video calls support
 	source = nheko-0.12.0.tar.gz::https://nheko.im/nheko-reborn/nheko/-/archive/v0.12.0/nheko-v0.12.0.tar.gz
 	sha512sums = 2b69fa093168c9af9c43b7791f4186d0409caed1f272ca72e0e932da03ffb9ceb5609a495d4d7978f8b5666340aa97f358f904c7c61c67b6bd7221093c3cb66c
 
