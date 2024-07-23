@@ -15,7 +15,7 @@ depends=("mpv" "opencc" "pystring" "glibc" "curl" "hicolor-icon-theme" "openssl"
 makedepends=("cmake" "git" "libxi" "ninja" "python" "wayland-protocols" "sdl2")
 source=("${_pkgname}"::"git+${url}.git#tag=v${pkgver}" "wiliwili.sh")
 sha512sums=('2c1ffb5c6f11929bca60a30e7c16857b1b94aecfa42cbcfad0fbbe21b2e0f9421030f2463f9f8e95a9c5b42790a775b3b5a5f4159fefe322b833c674a25a53fd'
-            '98f1a789cb58d7384f99b65207c9fe92884b5ae791808f1c0eff463a14906e8e68ac822bfed668d3f6afbcf260855c48d5a775c7bd526f60276491a3e8158656')
+            '77ea4254c2d47853729f3e358fd2ef52ba5ad504db535c10a588fdfc1ab2180fee16f91a371ece85efd73f8a10d6600d4f7bd8aa60cf90ac217c7af67464c21a')
 conflicts=(wiliwili)
 provides=(wiliwili)
 
