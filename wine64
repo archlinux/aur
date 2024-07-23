@@ -1,0 +1,2 @@
+#!/bin/sh
+box64 /opt/wine64-ge/bin/wine64 "$@"
