@@ -1,7 +1,7 @@
 # Maintainer: Yufan You <ouuansteve at gmail.com>
 
 pkgname=uoj-data-converter-git
-pkgver=0.4.2.r2.g7acb800
+pkgver=0.4.2.r4.g40b188c
 pkgrel=1
 pkgdesc='将各种各样格式的数据转换为 UOJ 的格式'
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=(
 )
 provides=('uoj-data-converter')
 conflicts=('uoj-data-converter')
-source=('git://github.com/ouuan/uoj-data-converter.git')
+source=('git+https://github.com/ouuan/uoj-data-converter.git')
 md5sums=('SKIP')
 
 pkgver() {
