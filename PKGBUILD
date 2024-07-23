@@ -22,7 +22,9 @@ pkgver() {
 }
 
 check() {
-	"$srcdir/$_sourcedirectory/secret_storage_import_export.py" | tee '/dev/stderr' | grep -q '^See source code for usage instructions$'
+	_checkoutput="$("$srcdir/$_sourcedirectory/secret_storage_import_export.py" || :)"
+	printf '%s\n' "$_checkoutput"
+	printf '%s\n' "$_checkoutput" | grep -q '^See source code for usage instructions$'
 }
 
 package() {
