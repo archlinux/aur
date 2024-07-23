@@ -5,7 +5,7 @@
 pkgname=musicpod
 _app_id=org.feichtmeier.Musicpod
 pkgver=1.4.5
-pkgrel=1
+pkgrel=2
 _flutterver=3.19.5
 pkgdesc="Music, radio, television and podcast player"
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,7 @@ sha256sums=('1e5ffa5ff2f42fec14d2572d87efad4d6c2ae8034ac665770cbcc50bdfca4ae1')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
-  export FVM_CACHE_PATH="$src/fvm"
+  export FVM_CACHE_PATH="$srcdir/fvm"
   fvm install "${_flutterver}"
   fvm global "${_flutterver}"
 
@@ -35,7 +35,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  export FVM_CACHE_PATH="$src/fvm"
+  export FVM_CACHE_PATH="$srcdir/fvm"
   fvm flutter build linux --release
 }
 
