@@ -3,7 +3,7 @@
 
 pkgname=openchrom
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Visualization and analysis of mass spectrometric and chromatographic data"
 arch=("x86_64")
 url="https://openchrom.net/"
@@ -14,6 +14,7 @@ source=("https://products.lablicate.com/openchrom/${pkgver}/openchrom-lablicate_
 # Avoid checksums, because minor release overwrite without change in versioning.
 sha256sums=('SKIP'
             'SKIP')
+depends=('org.freedesktop.secrets' 'webkit2gtk')
 
 package() {
   install -d "${pkgdir}/usr/lib/openchrom"
