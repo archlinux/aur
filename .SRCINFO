@@ -1,0 +1,27 @@
+pkgbase = regexxer
+	pkgdesc = Interactive search and replace tool for GNOME
+	pkgver = 0.10
+	pkgrel = 11
+	url = https://regexxer.sourceforge.net/
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = intltool
+	depends = atkmm
+	depends = dconf
+	depends = gcc-libs
+	depends = glib2
+	depends = glibc
+	depends = glibmm
+	depends = gtk3
+	depends = gtkmm3
+	depends = gtksourceviewmm
+	depends = hicolor-icon-theme
+	depends = libsigc++
+	depends = pangomm
+	source = git+https://gitlab.gnome.org/Archive/regexxer.git#tag=regexxer-0.10
+	source = regexxer.appdata.xml
+	b2sums = 9192c07e2152d87a2b36fa077981d62dc48138775578fb2c23593a9aa8529b5552138e503be82252904551747dbf4425b50ebcc3b285574977a73c6fe2365318
+	b2sums = 1b8878c5fbfaccefd3f1157e9905b8e7cc022c9e5def6aa22b7f9dc06b8cad8b632962bf1aac1da763bedee702e14d373119ac66e2f9c07bde22beb9097086a3
+
+pkgname = regexxer

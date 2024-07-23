@@ -5,18 +5,19 @@
   <name>regexxer</name>
   <summary>Search and replace using regular expressions</summary>
   <metadata_license>CC0-1.0</metadata_license>
-  <project_license>GPL-2.0</project_license>
+  <project_license>GPL-2.0-or-later</project_license>
   <developer_name>Fabien Parent</developer_name>
   <description>
     <p>regexxer is a nifty GUI search/replace tool featuring Perl-style regular expressions. If you need project-wide substitution and you’re tired of hacking sed command lines together, then you should definitely give it a try.</p>
   </description>
   <screenshots>
     <screenshot type="default">
-      <image>http://regexxer.sourceforge.net/images/regexxer-screenshot.png</image>
+      <image>https://regexxer.sourceforge.net/images/regexxer-screenshot.png</image>
     </screenshot>
   </screenshots>
+  <url type="homepage">https://regexxer.sourceforge.net/</url>
   <url type="bugtracker">https://gitlab.gnome.org/GNOME/regexxer/issues</url>
-  <url type="homepage">http://regexxer.sourceforge.net/</url>
+  <url type="vcs-browser">https://gitlab.gnome.org/GNOME/regexxer</url>
   <update_contact>parent.f@gmail.com</update_contact>
   <translation type="gettext">regexxer</translation>
 </component>

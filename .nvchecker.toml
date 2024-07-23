@@ -1,0 +1,4 @@
+[regexxer]
+source = "git"
+git = "https://gitlab.gnome.org/Archive/regexxer.git"
+prefix = "regexxer-"
