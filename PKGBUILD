@@ -30,7 +30,9 @@ b2sums=('1b32b0ce2efa9d49bee8c5ed584db592cb753e323efb65058acbb8cc07b5145b6a44a47
         '42535bfc10db335d685fad29aade1d091554a321fb4032b72db5699a450c6d701f630c45bb0d4cf9f456e77e3263a5aed49e843516cd3016d1a837ac5f1e6fec')
 
 check() {
-	ELECTRON_OZONE_PLATFORM_HINT='auto' "$srcdir/usr/lib/$_pkgname/MongoDB Compass$_edition" --no-sandbox --version | tee '/dev/stderr' | grep -q "^MongoDB Compass$_edition $pkgver$"
+	_checkoutput="$(ELECTRON_OZONE_PLATFORM_HINT='auto' "$srcdir/usr/lib/$_pkgname/MongoDB Compass$_edition" --no-sandbox --version)"
+	printf '%s\n' "$_checkoutput"
+	printf '%s\n' "$_checkoutput" | grep -q "^MongoDB Compass$_edition $pkgver$"
 }
 
 package() {
