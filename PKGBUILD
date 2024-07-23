@@ -9,8 +9,8 @@ url='https://www.theia-ide.org/'
 license=('EPL2')
 provides=('theia')
 conflicts=('theia')
-makedepends=(grep awk util-linux coreutils)
-depends=(gtk3 libnotify nss libxss libxtst xdg-utils at-spi2-core util-linux-libs libsecret)
+makedepends=('grep' 'awk' 'util-linux' 'coreutils')
+depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'util-linux-libs' 'libsecret')
 optdepends=('libappindicator-gtk3: Systray indicator')
 source=("TheiaIDE_x64_${pkgver}.deb::https://www.eclipse.org/downloads/download.php?file=/theia/ide/${pkgver}/linux/TheiaIDE.deb&r=1"
         "${pkgname}-${pkgver}-${pkgrel}.yml::https://download.eclipse.org/theia/ide/1.51.0/linux/latest-linux.yml")
