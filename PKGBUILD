@@ -13,7 +13,9 @@ sha512sums=('db07ca1c535bd901c7ccb6909d1738377372349d472297cb726aff9b79baa2cf664
 _sourcedirectory="$pkgname-$_commit"
 
 check() {
-	"$srcdir/$_sourcedirectory/$pkgname.sh" | tee '/dev/stderr' | grep -q 'the backup destination root directory$'
+	_checkoutput="$("$srcdir/$_sourcedirectory/$pkgname.sh" || :)"
+	printf '%s\n' "$_checkoutput"
+	printf '%s\n' "$_checkoutput" | grep -q 'the backup destination root directory$'
 }
 
 package() {
