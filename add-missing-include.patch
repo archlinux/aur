@@ -1,0 +1,11 @@
+diff --git cli/vgmstream123.c cli/vgmstream123.c
+--- cli/vgmstream123.c
++++ cli/vgmstream123.c
+@@ -19,6 +19,7 @@
+ #ifdef HAVE_CONFIG_H
+ # include <config.h>
+ #endif
++#include "wav_utils.h"
+ 
+ #include <stdio.h>
+ #include <stdlib.h>

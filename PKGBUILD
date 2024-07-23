@@ -1,5 +1,5 @@
 pkgname=vgmstream-git
-pkgver=r1917.122.g3b4a1754
+pkgver=r1917.144.gae167795
 pkgrel=1
 pkgdesc='Library for playback of various streamed audio formats used in video games'
 arch=(x86_64)
@@ -14,11 +14,13 @@ replaces=(vgmstream-kode54-git)
 source=(${pkgname}::git+https://github.com/vgmstream/vgmstream.git
         https://downloads.xiph.org/releases/celt/celt-0.6.1.tar.gz
         https://downloads.xiph.org/releases/celt/celt-0.11.0.tar.gz
-        install-headers.patch)
+        install-headers.patch
+        add-missing-include.patch)
 sha256sums=('SKIP'
             'a991dff4a9e0772ede0881d81cdc7ac559148c2194885cbdd534fe4af43779da'
             'c94d4d34f5a2caa1574b1a94869202cacd959b55f643a8bafe0660008acad9c3'
-            'f8661e67a4af3c306bf6ad1512146ab8a32a8c5dce78a59d3de534135cea8ce4')
+            'f8661e67a4af3c306bf6ad1512146ab8a32a8c5dce78a59d3de534135cea8ce4'
+            'da37589638f1879155f50124fb2eca8b7ad41250b89f13018efbfc53a1c03693')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -28,6 +30,7 @@ pkgver() {
 prepare() {
   cd "$srcdir/$pkgname"
   patch -p0 < "$srcdir"/install-headers.patch
+  patch -p0 < "$srcdir"/add-missing-include.patch
 }
 
 celt_symbols=(
