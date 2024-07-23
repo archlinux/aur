@@ -67,6 +67,7 @@ optdepends=(
 
 package() {
   mkdir -p "$pkgdir/opt/wine64-ge"
+  mkdir -p "$pkgdir/usr/bin"
   cp -r "$srcdir/lutris-GE-Proton$_ver-$_rev-x86_64/." "$pkgdir/opt/wine64-ge/"
   install -m755 "$srcdir/wine64" "$pkgdir/usr/bin/wine64"
   ln -s wine64 "$pkgdir/usr/bin/wine"
