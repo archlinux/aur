@@ -1,5 +1,5 @@
-*.pkg.tar.*
-*.deb
-Packages
-pkg
-src
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!*.patch

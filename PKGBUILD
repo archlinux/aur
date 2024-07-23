@@ -3,7 +3,7 @@
 
 pkgbase=endpoint-verification
 pkgname=("endpoint-verification" "endpoint-verification-chrome")
-_pkgver="2023.06.25.c543344396-00"
+_pkgver="2023.12.18.c591921611-00"
 pkgver="$(tr '-' '_' <<< $_pkgver)"
 pkgrel=10
 pkgdesc="Endpoint Verification Helper"
