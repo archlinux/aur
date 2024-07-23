@@ -1,16 +1,17 @@
 pkgbase = git-spice-bin
 	pkgdesc = A tool for stacking Git branches.
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://abhinav.github.io/git-spice/
-	license = GPL-3.0
-	conflicts = git-spice
-	provides = git-spice
 	arch = aarch64
-	source_aarch64 = https://github.com/abhinav/git-spice/releases/download/v0.1.0/git-spice.Linux-aarch64.tar.gz
-	sha256sums_aarch64 = cf22ccb07ed6a26172a0d944feaa796c5a66d7cfa7fb7d2501fc3bece383fedd
 	arch = x86_64
-	source_x86_64 = https://github.com/abhinav/git-spice/releases/download/v0.1.0/git-spice.Linux-x86_64.tar.gz
+	license = GPL-3.0
+	provides = git-spice
+	conflicts = git-spice
+	conflicts = ghostscript
+	source_aarch64 = git-spice-bin_0.1.0_aarch64.tar.gz::https://github.com/abhinav/git-spice/releases/download/v0.1.0/git-spice.Linux-aarch64.tar.gz
+	sha256sums_aarch64 = cf22ccb07ed6a26172a0d944feaa796c5a66d7cfa7fb7d2501fc3bece383fedd
+	source_x86_64 = git-spice-bin_0.1.0_x86_64.tar.gz::https://github.com/abhinav/git-spice/releases/download/v0.1.0/git-spice.Linux-x86_64.tar.gz
 	sha256sums_x86_64 = 837f88ea5d5e48043759dd1bbf9d6e016153bcbc8e06aa4463e815710d707560
-	
+
 pkgname = git-spice-bin
