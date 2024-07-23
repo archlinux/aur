@@ -13,7 +13,9 @@ sha512sums=('56eace73c377f9c57344618a168155a2af3a8895f343717a70decdd1fb4beb2a6c3
 _binaryname='amdvbflash4-104E'
 
 check() {
-	"$srcdir/$_binaryname" --version | tee '/dev/stderr' | grep -q 'Application requires administrative privileges.$'
+	_checkoutput="$("$srcdir/$_binaryname" --version || :)"
+	printf '%s\n' "$_checkoutput"
+	printf '%s\n' "$_checkoutput" | grep -q 'Application requires administrative privileges.$'
 }
 
 package() {
