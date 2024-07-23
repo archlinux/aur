@@ -887,3 +887,17 @@ Fixes:
 Improvements:
 - Time zone definitions have been updated
 - We optimized some background computation that may have reduced performance following the previous update
+
+
+=== Morgen 3.5.4
+(there was no official version 3.5.3)
+
+Fixes:
+- We fixed an issue that could cause Morgen to crash when moving an event to another calendar with Event merging enabled.
+
+Improvements:
+- Several menus and autocomplete dropdowns have been redesigned for greater consistency.
+- We made significant strides in our ongoing commitment to performance optimization. Load and rendering times, for those who manage a large number of tasks, have substantially improved.
+- The time zone selector in the Open Invite and Scheduling link settings has been enhanced for better usability and consistency.
+- You can now use the time zone selector to change the time zone of copied availability slots, making it easier to share your availability in your contact's time zone.
+ 
