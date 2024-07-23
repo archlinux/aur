@@ -1,7 +1,7 @@
 pkgbase = par2deep
 	pkgdesc = Create, verify and repair parity files in a file tree.
-	pkgver = 1.10.1
-	pkgrel = 2
+	pkgver = 1.10.2
+	pkgrel = 1
 	url = https://github.com/brenthuisman/par2deep
 	arch = any
 	license = LGPL3
@@ -11,8 +11,8 @@ pkgbase = par2deep
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	source = par2deep-1.10.1.tar.gz::https://github.com/brenthuisman/par2deep/archive/refs/tags/v1.10.1.tar.gz
-	sha256sums = fdf0053479f8e7358c63948253187a97c329c71c215112a643344229cc4e2e7e
+	source = par2deep-1.10.2.tar.gz::https://github.com/brenthuisman/par2deep/archive/refs/tags/v1.10.2.tar.gz
+	sha256sums = 4119d16f9fa756b5368d0ee69734acd712f0341673086b523b6c70316789ac35
 
 pkgname = par2deep
 	depends = python
