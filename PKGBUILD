@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=sysinternalsebpf-git
-pkgver=1.0.2.r28.gf8c8bd2
+pkgver=1.4.0.0.r0.gf8c8bd2
 pkgrel=1
 pkgdesc="Sysinternals EBPF"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "SysinternalsEBPF"
 
-  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
+  _tag=$(git tag -l --sort -v:refname | grep -E '^[0-9\.]+$' | head -n1)
   _rev=$(git rev-list --count $_tag..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
