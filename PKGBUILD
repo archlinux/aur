@@ -45,10 +45,10 @@ prepare() {
 build() {
     cd "$srcdir"/${pkgname%-git}/jtdx-prefix/build
 	cmake \
-		-Wno-dev \
+        -Wno-dev \
         -DCMAKE_PREFIX_PATH="$srcdir"/${pkgname%-git}/hamlib-prefix \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=Release \
         -DWSJT_SKIP_MANPAGES=ON \
         -DWSJT_GENERATE_DOCS=OFF \
         "$srcdir"/${pkgname%-git}
