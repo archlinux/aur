@@ -8,8 +8,8 @@ pkgdesc="Interact with Obsidian in the terminal. Open, search, create, update an
 arch=('any')
 url="https://github.com/Yakitrak/${_pkgname}"
 license=('MIT')
-depends=('glibc')
 makedepends=('git' 'go')
+depends=('glibc')
 optdepends=('bash-completion: for shell auto-completion'
             'zsh-completions: for shell auto-completion')
 provides=("${_pkgname}=${pkgver%%.r*}")
@@ -37,7 +37,7 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   go build -o "build/${_pkgname}" .
 
-  for _sh in bash fish zsh; do
+  for _sh in bash fish zsh powershell; do
     ./"build/${_pkgname}" completion "${_sh}" > "completions/${_pkgname}.${_sh}"
   done
 }
@@ -54,7 +54,8 @@ package() {
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
   cd "completions"
-  install -Dm644 "${_pkgname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
-  install -Dm644 "${_pkgname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
-  install -Dm644 "${_pkgname}.zsh"  "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
+  install -Dm644 "${_pkgname}.bash"       "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
+  install -Dm644 "${_pkgname}.fish"       "${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
+  install -Dm644 "${_pkgname}.zsh"        "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
+  install -Dm644 "${_pkgname}.powershell" "${pkgdir}/usr/share/powershell/Completions/${_pkgname}.ps1"
 }
