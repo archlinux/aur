@@ -1,7 +1,7 @@
 # Maintainer: Ben Towali <bentowalii@gmail.com>
 
 pkgname=raindrop
-pkgver='5.6.38'
+pkgver='5.6.50'
 pkgrel=1
 pkgdesc="All-in-one bookmark manager"
 arch=('x86_64')
