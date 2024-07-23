@@ -6,7 +6,7 @@ _android_arch=aarch64
 
 pkgname=android-${_android_arch}-libsasl-bootstrap
 pkgver=2.1.28
-pkgrel=3
+pkgrel=4
 arch=('any')
 pkgdesc="Cyrus Simple Authentication Service Layer (SASL) library (Android, ${_android_arch})"
 url="https://www.cyrusimap.org/sasl/"
@@ -19,7 +19,7 @@ makedepends=('android-configure'
 provides=("android-${_android_arch}-libsasl")
 conflicts=("android-${_android_arch}-libsasl")
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://github.com/cyrusimap/cyrus-sasl/releases/download/cyrus-sasl-$pkgver/cyrus-sasl-$pkgver.tar.gz"{,.sig}
+source=("https://github.com/cyrusimap/cyrus-sasl/releases/download/cyrus-sasl-${pkgver}/cyrus-sasl-${pkgver}.tar.gz"{,.sig}
         '0001-Add-missing-headers.patch'
         '0002-Disable-endpwent.patch')
 md5sums=('6f228a692516f5318a64505b46966cfa'
@@ -32,7 +32,7 @@ validpgpkeys=(
 )
 
 prepare() {
-    cd "${srcdir}/cyrus-sasl-$pkgver"
+    cd "${srcdir}/cyrus-sasl-${pkgver}"
     source android-env ${_android_arch}
 
     patch -Np1 -i ../0001-Add-missing-headers.patch
@@ -45,7 +45,7 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}/cyrus-sasl-$pkgver"
+    cd "${srcdir}/cyrus-sasl-${pkgver}"
     source android-env ${_android_arch}
 
     export CFLAGS="${CFLAGS} -DHAVE_TIME_H=1"
@@ -68,7 +68,6 @@ build() {
         --enable-login \
         --enable-ntlm \
         --enable-plain \
-        --enable-shared \
         --enable-sql \
         --disable-krb4 \
         --disable-macos-framework \
@@ -76,24 +75,23 @@ build() {
         --disable-passdss \
         --disable-srp \
         --disable-srp-setpass \
-        --disable-static \
         --disable-sample \
         --with-dblib=gdbm \
         --with-sqlite3="${ANDROID_PREFIX_INCLUDE}" \
-        --without-mysql \
-        --without-pgsql \
         --with-saslauthd=no \
-        --with-authdaemond=no
+        --with-authdaemond=no \
+        --without-mysql \
+        --without-pgsql
     make $MAKEFLAGS
 }
 
 package() {
-    cd "${srcdir}/cyrus-sasl-$pkgver"
+    cd "${srcdir}/cyrus-sasl-${pkgver}"
     source android-env ${_android_arch}
 
     make DESTDIR="$pkgdir" install
     rm -rf "${pkgdir}/${ANDROID_PREFIX_BIN}"
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/sasl2/*.so
+    find "${pkgdir}/${ANDROID_PREFIX_LIB}" -type f -name '*.so' -exec ${ANDROID_STRIP} -g --strip-unneeded {} \;
+    find "${pkgdir}/${ANDROID_PREFIX_LIB}" -type f -name '*.a' -exec ${ANDROID_STRIP} -g {} \;
 }
