@@ -3,7 +3,7 @@
 pkgname=jtdx-improved
 _pkgname=jtdx
 pkgver=2.2.159
-pkgrel=1
+pkgrel=2
 pkgdesc="For amateur radio communication using very weak signals. Forked from WSJT-X. JTDX Improved by DG2YCB"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://sourceforge.net/projects/jtdx-improved/"
@@ -30,7 +30,7 @@ makedepends=(
 install=jtdx-improved.install
 
 provides=('jtdx')
-conflicts=('jtdx')
+conflicts=('jtdx' 'jtdx-improved-jtdxgui')
 source=("https://downloads.sourceforge.net/project/jtdx-improved/${_pkgname}_${pkgver}/Source%20code/${_pkgname}_${pkgver}_improved_source.zip")
 md5sums=('539cfd3092b5a04977ed204166355f86')
 sha1sums=('5a9b2b22243e0f511fb6472d913ee277714e7447')
@@ -42,12 +42,12 @@ prepare() {
 build() {
     cd "$srcdir"
 	cmake -B build -S "$_pkgname" \
-		-Wno-dev \
-		-D CMAKE_INSTALL_PREFIX=/usr \
-		-D CMAKE_BUILD_TYPE=Release \
-		-D WSJT_SKIP_MANPAGES=ON \
-		-D WSJT_GENERATE_DOCS=OFF
-  	cmake --build build
+        -Wno-dev \
+        -D CMAKE_INSTALL_PREFIX=/usr \
+        -D CMAKE_BUILD_TYPE=Release \
+        -D WSJT_SKIP_MANPAGES=ON \
+        -D WSJT_GENERATE_DOCS=OFF
+    cmake --build build
 }
 
 package() {

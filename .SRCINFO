@@ -1,7 +1,7 @@
 pkgbase = jtdx-improved
 	pkgdesc = For amateur radio communication using very weak signals. Forked from WSJT-X. JTDX Improved by DG2YCB
 	pkgver = 2.2.159
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/jtdx-improved/
 	install = jtdx-improved.install
 	arch = i686
@@ -22,6 +22,7 @@ pkgbase = jtdx-improved
 	depends = readline
 	provides = jtdx
 	conflicts = jtdx
+	conflicts = jtdx-improved-jtdxgui
 	source = https://downloads.sourceforge.net/project/jtdx-improved/jtdx_2.2.159/Source%20code/jtdx_2.2.159_improved_source.zip
 	md5sums = 539cfd3092b5a04977ed204166355f86
 	sha1sums = 5a9b2b22243e0f511fb6472d913ee277714e7447
