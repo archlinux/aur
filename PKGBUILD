@@ -6,7 +6,7 @@
 
 pkgname=binaryninja-personal
 _pkgname=binaryninja
-pkgver=4.0.4911
+pkgver=4.1.5747
 pkgrel=1
 pkgdesc="An interactive decompiler, disassembler, debugger, and binary analysis platform. This package is for the Personal Edition and requires both an installer zip and a license."
 arch=('x86_64')
@@ -20,15 +20,13 @@ depends=(
 )
 optdepends=('gtk-update-icon-cache: icon support')
 source=(
-	"file://BinaryNinja-personal.zip" # https://binary.ninja/recover/
+	"file://binaryninja_personal_linux.zip" # https://binary.ninja/recover/
 	"${_pkgname}.png"
 	"${_pkgname}.desktop"
 )
-sha256sums=(
-	'e030971677465e1b2c3c7e3dfa380553a5f306eb088f028194845ab52bdc6739'
-	'4f318001e7d39279ce063ef42077bae03e95c112aa203a4be3ea3d913c34327e'
-	'a1e20e8176292c67fcc50d3444e95e31ee91ff6cf861f8529554152ed7bd8139'
-)
+sha256sums=('770be9e7e76f4b083aa767f8f2ad6fdd3dddbe247658a84905a7f625402f49bf'
+            '4f318001e7d39279ce063ef42077bae03e95c112aa203a4be3ea3d913c34327e'
+            'a1e20e8176292c67fcc50d3444e95e31ee91ff6cf861f8529554152ed7bd8139')
 
 # pkgver() { curl -s https://binary.ninja/js/changelog.js | perl -pe 's/.*?version":\s"(\d+\.\d+\.\d+)".*/$1/' }
 
