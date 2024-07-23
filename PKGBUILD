@@ -31,7 +31,9 @@ b2sums_aarch64=('be28fd221473b4ae300d66db9b601f256ae04291c9db9394b5f4e5dc2784302
                 '559955340a1ed2c550f57909f97ab21977f26cde9d540cefce9f1036b2528a76176cce4df165216edf185d08d8e9f2dd49d2cb0c1a4855db5d0256fe54a14f77')
 
 check() {
-	"$srcdir/$_pkgname/$_pkgname" --version | tee '/dev/stderr' | grep -q "version $pkgver$"
+	_checkoutput="$("$srcdir/$_pkgname/$_pkgname" --version)"
+	printf '%s\n' "$_checkoutput"
+	printf '%s\n' "$_checkoutput" | grep -q "version $pkgver$"
 }
 
 package() {
