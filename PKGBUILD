@@ -28,10 +28,10 @@ package() {
   install -Dm755 Connmaster-CLI.sh "${pkgdir}/usr/local/bin/connmaster-cli"
 
   # Install the icon
-  install -Dm644 "${srcdir}/ConnWifiMaster/src/connmaster-cli-iconlogo.png" "${pkgdir}/usr/share/pixmaps/connmaster-cli.png"
+  install -Dm644 "${srcdir}/ConnWifiMaster/CLI/connmaster-cli-iconlogo.png" "${pkgdir}/usr/share/pixmaps/connmaster-cli.png"
 
   # Install the .desktop file
-  install -Dm644 "${srcdir}/ConnWifiMaster/src/connmaster-cli.desktop" "${pkgdir}/usr/share/applications/connmaster-cli.desktop"
+  install -Dm644 "${srcdir}/ConnWifiMaster/CLI/connmaster-cli.desktop" "${pkgdir}/usr/share/applications/connmaster-cli.desktop"
 }
 
 
