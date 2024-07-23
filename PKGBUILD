@@ -1,6 +1,6 @@
 # Maintainer: Felipe Alfonso Gonzalez <f.alfonso@res-ear.ch>
 pkgname=connmaster-cli
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="ConnWifiMaster is a CLI version designed for Arch Linux systems that use ConnMan for network management."
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/felipealfonsog/ConnWifiMaster"
 license=('BSD-3-Clause')
 depends=('connman' 'terminology')
 source=("https://github.com/felipealfonsog/ConnWifiMaster/archive/refs/tags/v.${pkgver}.tar.gz")
-sha256sums=('97f4621ca91c815084840437b3133593c7810caba55706f4c0cc0eb50527142b')
+sha256sums=('a37fbd47489a066868294adfdabd4d3e9876dc89fb6a1a71ff7ac664f224a89e')
 
 prepare() {
   cd "$srcdir"
