@@ -1,7 +1,7 @@
 # Maintainer: Faugus <felix.ribeiro@live.com>
 
 pkgname=faugus-launcher-git
-pkgver=r88.c22928b
+pkgver=r97.fee09a8
 pkgrel=1
 pkgdesc="Simple and Lightweight Game Launcher"
 arch=('x86_64')
