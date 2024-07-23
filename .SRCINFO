@@ -1,18 +1,18 @@
 pkgbase = bruno-electron
 	pkgdesc = Bruno, an opensource API Client for Exploring and Testing APIs using the system provided Electron
-	pkgver = 1.20.4
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://www.usebruno.com/
 	arch = x86_64
 	license = MIT
 	makedepends = asar
 	makedepends = nvm
-	depends = electron>=21.0.0
+	depends = electron>=31.0.0
 	provides = bruno
 	conflicts = bruno
-	source = bruno-1.20.4.tar.gz::https://github.com/usebruno/bruno/archive/v1.20.4.tar.gz
+	source = bruno-1.22.0.tar.gz::https://github.com/usebruno/bruno/archive/v1.22.0.tar.gz
 	source = com.usebruno.app.Bruno.desktop
-	sha256sums = 5043e7c35bf1420bd4428719e9c7fcc2458860d19aa608f800539b741b7f5e77
+	sha256sums = 711fc44580e26c99fd60597539630adba2aaac943a46a6db968ea30c966c9437
 	sha256sums = 7bad0d66e67fdaaf99d1b7b32ba2f119b7d6dba12ecfdb398c39ee3c81bbe051
 
 pkgname = bruno-electron
