@@ -10,6 +10,7 @@ pkgbase = miniterm
 	arch = armv7h
 	arch = aarch64
 	license = MIT
+	checkdepends = xorg-server-xvfb
 	makedepends = cmake
 	depends = glib2
 	depends = vte3

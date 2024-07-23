@@ -9,6 +9,7 @@ url="https://github.com/laelath/$pkgname"
 license=('MIT')
 depends=('glib2' 'vte3')
 makedepends=('cmake')
+checkdepends=('xorg-server-xvfb')
 conflicts=("$pkgname-git")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha512sums=('b731aba57e7cae1149c0bce59b3c7399342dd93e6769196abc24ecc6db985d9a38371d70cbf12d052b82aeaaa1d917d5a04c54d8e3753e5983004cab8e8b164d')
@@ -25,7 +26,11 @@ build() {
 	make
 }
 
-# Unable to test functionality, as this requires an active X11/Wayland session to call -v
+check() {
+	_checkoutput="$(xvfb-run "$srcdir/$_sourcedirectory/build/src/$pkgname" -v)"
+	printf '%s\n' "$_checkoutput"
+	printf '%s\n' "$_checkoutput" | grep -q "^$pkgname $pkgver$"
+}
 
 package() {
 	cd "$srcdir/$_sourcedirectory/build/"
