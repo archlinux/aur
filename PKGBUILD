@@ -27,7 +27,9 @@ build() {
 }
 
 check() {
-	"$srcdir/$_sourcedirectory/$_pkgname" | tee '/dev/stderr' | grep -q "^$_pkgname v"
+	_checkoutput="$("$srcdir/$_sourcedirectory/$_pkgname")"
+	printf '%s\n' "$_checkoutput"
+	printf '%s\n' "$_checkoutput" | grep -q "^$_pkgname v"
 }
 
 package() {
