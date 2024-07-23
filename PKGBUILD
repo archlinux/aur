@@ -8,7 +8,7 @@ url="https://github.com/felipealfonsog/ConnWifiMaster"
 license=('BSD-3-Clause')
 depends=('connman' 'terminology')
 source=("https://github.com/felipealfonsog/ConnWifiMaster/archive/refs/tags/v.${pkgver}.tar.gz")
-sha256sums=('91bb90a27b0259c2f952baa3b85cd4103b02c7a5b08a7470d2ad91c9650dae31')
+sha256sums=('0b0dbfd6fae7f56c5ad1d72c24a70f9344497b1a166804c34ed9fa6dc5b4a26a')
 
 prepare() {
   cd "$srcdir"
