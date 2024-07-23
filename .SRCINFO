@@ -1,0 +1,23 @@
+pkgbase = gtuber
+	pkgdesc = C library to fetch media info from websites (bilibili, lbry, niconico, reddit, twitch, youtube)
+	pkgver = r446.f5a64d4
+	pkgrel = 1
+	url = https://github.com/Rafostar/gtuber
+	arch = x86_64
+	license = LGPL-2.1-only
+	makedepends = git
+	makedepends = glib2-devel
+	makedepends = gobject-introspection
+	makedepends = meson
+	makedepends = vala
+	depends = glib2
+	depends = glibc
+	depends = gstreamer
+	depends = json-glib
+	depends = libsoup3
+	depends = libxml2
+	provides = gst-plugins-gtuber=r446.f5a64d4
+	source = git+https://github.com/Rafostar/gtuber.git#commit=f5a64d442c18ae2fa732a851ccb4859c8a45d944
+	b2sums = f98e190f38b315e87bfcacf00b196c5acd0d6d87db00e44e97d669283295a5594b923f2ec2f13558b78a65c7a044b5abdb2554623fe55f464fc1bc9eb5cbd2bd
+
+pkgname = gtuber
