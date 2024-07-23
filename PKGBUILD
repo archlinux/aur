@@ -1,6 +1,6 @@
-# Maintainer: Bence Hornák <bence.hornak@gmail.com>
-# Maintainer: Leon De Andrade <leondeandrade@hotmail.com>
-# Contributor: Christian Cornelssen <email@address.invalid>
+# Contributor: Bence Hornák <bence.hornak@gmail.com>
+# Contributor: Leon De Andrade <leondeandrade@hotmail.com>
+# Maintainer: Christian Cornelssen <email@address.invalid>
 
 pkgname=theia-electron
 pkgver=1.51.0
