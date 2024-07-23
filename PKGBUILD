@@ -1,7 +1,7 @@
 # Maintainer: Emanuel Couto <unit73e@gmail.com>
 pkgname=cnijfilter2
 pkgver=6.60
-pkgrel=1
+pkgrel=2
 pkgdesc="Canon IJ Printer Driver for Linux"
 arch=('i686' 'x86_64')
 url="https://www.canon.com.au/home-printers"
@@ -10,12 +10,14 @@ depends=('cups' 'libxml2' 'ghostscript')
 makedepends=('automake' 'autoconf')
 provides=('tocanonij' 'tocnpwg' 'cnijlgmon3')
 conflicts=('cnijfilter' 'cnijfilter-mg3600')
-source=("https://gdlp01.c-wss.com/gds/3/0100011753/01/$pkgname-source-$pkgver-1.tar.gz")
-sha256sums=('997119d67897d2b6405555bc6baa4cf7727bf0ecc6467f86df408831b1dab6d0')
+source=("https://gdlp01.c-wss.com/gds/3/0100011753/01/$pkgname-source-$pkgver-1.tar.gz" 'add-missing-import.patch')
+sha256sums=('997119d67897d2b6405555bc6baa4cf7727bf0ecc6467f86df408831b1dab6d0'
+            'a1f2ebcfa0c5c6e0d680480bd349ff4b8e4315d031315819ff92a1c11e3d2281')
 
 prepare() {
 	cd "$pkgname-source-$pkgver-1"
 	sed -e '/GET_PROTOCOL/ s:^int:extern &:g' -i 'lgmon3/src/cnijlgmon3.c'
+  patch -Np1 -i ../add-missing-import.patch
 }
 
 build() {
