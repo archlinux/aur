@@ -25,7 +25,9 @@ prepare() {
 }
 
 check() {
-	"$srcdir/$_binaryname" -? | tee '/dev/stderr' | grep -q "^${pkgname^^} Version"
+	_checkoutput="$("$srcdir/$_binaryname" -? || :)"
+	printf '%s\n' "$_checkoutput"
+	printf '%s\n' "$_checkoutput" | grep -q "^${pkgname^^} Version"
 }
 
 package() {
