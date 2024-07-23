@@ -4,13 +4,12 @@
 pkgname=rtcqs
 pkgdesc='Scanner for potential real-time bottlenecks'
 pkgver=0.6.2
-pkgrel=2
+pkgrel=4
 arch=(any)
 url='https://codeberg.org/rtcqs/rtcqs'
 license=(MIT)
 depends=(hicolor-icon-theme python)
 makedepends=(python-build python-installer python-setuptools python-wheel)
-optdepends=('python-pysimplegui: for rtcqs_gui')
 groups=(pro-audio)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"
         "https://codeberg.org/$pkgname/$pkgname/raw/commit/773460b7d8/$pkgname.desktop"
