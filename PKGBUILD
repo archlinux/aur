@@ -3,7 +3,7 @@
 
 pkgname=faustlive
 pkgver=2.5.18
-pkgrel=1
+pkgrel=2
 pkgdesc='Faust prototyping environment'
 arch=(aarch64 x86_64)
 url='https://github.com/grame-cncm/faustlive'
