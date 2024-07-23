@@ -2,7 +2,7 @@
 
 pkgname=python-cohere
 _pkgname=cohere-python
-pkgver=5.6.1
+pkgver=5.6.2
 pkgrel=1
 pkgdesc="Python Library for Accessing the Cohere API"
 arch=(any)
@@ -30,18 +30,16 @@ checkdepends=(
   python-pytest-asyncio
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('a9fff8b2e2f314c3f7b9acde00800bdc7467b12bda49f015fc67b37911882dc9')
-
-_archive="$_pkgname-$pkgver"
+sha256sums=('8864bbdfb9cfae941d14f12324ec15be76121b50c887bfcf6ffb439b7aa5f0e2')
 
 build() {
-  cd "$_archive"
+  cd $_pkgname-$pkgver
 
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "$_archive"
+  cd $_pkgname-$pkgver
 
   rm -rf tmp_install
   python -m installer --destdir=tmp_install dist/*.whl
@@ -68,9 +66,8 @@ check() {
 }
 
 package() {
-  cd "$_archive"
+  cd $_pkgname-$pkgver
 
   python -m installer --destdir="$pkgdir" dist/*.whl
-
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
