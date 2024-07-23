@@ -2,7 +2,7 @@
 Name=Robocut
 GenericName=controller program for cutting plotters
 Comment=allow you to cut graphics with a Graphtec plotters
-Exec=robocut
+Exec=Robocut
 Icon=robocut
 Terminal=false
 Type=Application
