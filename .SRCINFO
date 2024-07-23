@@ -8,7 +8,7 @@ pkgbase = lazysql
 	arch = aarch64
 	license = MIT
 	makedepends = go
-	source = https://github.com/jorgerojas26/lazysql/archive/refs/tags/v0.2.1.tar.gz
-	sha256sums = 9776b1e9d12204c29213a62e3ee85b63312cb1e9fa8156fb71a11cd9666e60c1
+	source = https://github.com/jorgerojas26/lazysql/archive/refs/tags/v0.2.3.tar.gz
+	sha256sums = b9d375a04882fe1458b089faf8ffbadc1b1099a89b04fae5f1fd4587737c8f4c
 
 pkgname = lazysql

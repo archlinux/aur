@@ -8,7 +8,7 @@ arch=('x86_64' 'i386' 'aarch64')
 makedepends=('go')
 url="https://github.com/jorgerojas26/$pkgname"
 license=('MIT')
-source=("https://github.com/jorgerojas26/lazysql/archive/refs/tags/v0.2.1.tar.gz")
+source=("https://github.com/jorgerojas26/lazysql/archive/refs/tags/v$pkgver.tar.gz")
 # prepare() {
 # 	cd "$pkgname-$pkgver"
 # 	mkdir -p build/
@@ -43,4 +43,4 @@ package() {
 	cd "$pkgname-$pkgver"
 	install -Dm755 build/"$pkgname" "$pkgdir"/usr/bin/"$pkgname"
 }
-sha256sums=('9776b1e9d12204c29213a62e3ee85b63312cb1e9fa8156fb71a11cd9666e60c1')
+sha256sums=('b9d375a04882fe1458b089faf8ffbadc1b1099a89b04fae5f1fd4587737c8f4c')
