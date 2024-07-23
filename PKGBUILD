@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/dkondor/wstroke"
 license=('ISC')
 depends=('wayfire>=0.8.0' 'nlohmann-json' 'glib2' 'gtk3' 'gtkmm3' 'boost-libs')
-makedepends=('git' 'meson' 'ninja')
+makedepends=('git' 'meson' 'ninja' 'vala')
 optdepends=('wcm' 'libinput>=1.70')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")

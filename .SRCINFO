@@ -8,6 +8,7 @@ pkgbase = wstroke-git
 	makedepends = git
 	makedepends = meson
 	makedepends = ninja
+	makedepends = vala
 	depends = wayfire>=0.8.0
 	depends = nlohmann-json
 	depends = glib2
