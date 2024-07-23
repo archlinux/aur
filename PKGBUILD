@@ -9,6 +9,7 @@ url='https://www.theia-ide.org/'
 license=('EPL2')
 provides=('theia')
 conflicts=('theia')
+makedepends=('grep' 'awk' 'util-linux' 'coreutils')
 depends=(gtk3 libnotify nss libxss libxtst xdg-utils at-spi2-core util-linux-libs libsecret)
 optdepends=('libappindicator-gtk3: Systray indicator')
 source=("TheiaIDE_x64_${pkgver}.deb::https://www.eclipse.org/downloads/download.php?file=/theia/ide/${pkgver}/linux/TheiaIDE.deb&r=1"
@@ -19,7 +20,7 @@ options=('!strip')
 
 prepare() {
   sha512_base64=$(grep -A 2 'url: TheiaIDE.deb' "${pkgname}-${pkgver}-${pkgrel}.yml" | grep 'sha512' | awk '{print $2}')
-  sha512_hex=$(echo "${sha512_base64}" | base64 -d | xxd -p -c 256)
+  sha512_hex=$(echo "${sha512_base64}" | base64 -d | hexdump -v -e '1/1 "%02x"')
   echo "${sha512_hex}  TheiaIDE_x64_${pkgver}.deb" > "TheiaIDE_x64_${pkgver}.deb.sha512"
   sha512sum -c "TheiaIDE_x64_${pkgver}.deb.sha512"
 }
