@@ -1,7 +1,7 @@
 # Maintainer: Bryn Miller <bryn@brynmiller.me>
 pkgname="bynfont"
-pkgver=1.0.0
-pkgrel=2
+pkgver=2.0
+pkgrel=1
 pkgdesc="A bitmap font for Linux console that combines other fonts' best features."
 arch=("any")
 url="https://github.com/bynux-gh/bynfont"
