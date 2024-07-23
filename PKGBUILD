@@ -4,7 +4,7 @@ pkgname="${_appname}-tools-bin"
 _pkgname=He3
 pkgver=2.0.20
 _electronversion=22
-pkgrel=3
+pkgrel=4
 pkgdesc="Open, Intelligent, Efficient Developer Toolbox"
 arch=(
     'aarch64'
@@ -12,14 +12,13 @@ arch=(
 )
 url="https://he3app.com"
 _ghurl="https://github.com/he3-app"
-_dlurl="https://he3-1309519128.cos.accelerate.myqcloud.com"
+_dlurl="https://dl.he3app.com"
 license=('LicenseRef-custom')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
     'nodejs'
-    'python>=3'
     'python-setuptools'
     'java-runtime'
 )
@@ -32,8 +31,8 @@ source=(
     "LICENSE-${pkgver}.html::${url}/en/terms"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('92eb03e0339af737f930be9f3f95fe74ebce8eeca4835fbe7b50dc7c5fa94601'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+sha256sums=('7796f31ac1de01e965c2c4542338b0c16198078815689230d74a10bd30c57ade'
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 sha256sums_aarch64=('f439cd9fe1b60bf407dd0e08ab506c60148f06b7c8e1292ce180c1b1bf4d0d6b')
 sha256sums_x86_64=('80788fa9c8606cb6647992e78cceb1c4e529d4a65d764be12cc46fa8977d38c3')
 build() {
