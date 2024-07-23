@@ -1,0 +1,18 @@
+pkgbase = sysinternalsebpf
+	pkgdesc = Sysinternals EBPF
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://github.com/Sysinternals/SysinternalsEBPF
+	arch = i686
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	makedepends = clang
+	makedepends = cmake
+	depends = glibc
+	depends = libelf
+	depends = zstd
+	options = staticlibs
+	source = sysinternalsebpf-1.4-src.tar.gz::https://github.com/Sysinternals/SysinternalsEBPF/archive/refs/tags/1.4.0.0.tar.gz
+	sha256sums = 43f3e1a4cd40ac0c0d70bf129813f2679064073bd7ca429c06ccac7384f16be5
+
+pkgname = sysinternalsebpf
