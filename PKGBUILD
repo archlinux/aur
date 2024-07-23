@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yank-note
 _pkgname=yn
-pkgver=3.73.1
+pkgver=3.74.0
 _electronversion=28
 _nodeversion=18
 pkgrel=1
@@ -23,12 +23,13 @@ makedepends=(
     'gcc'
     'curl'
     'cmake'
+    'git'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('29e9290b601cacc1d5ac7ea0ca6a799361ab8fefe4e22e1c34999e02a49c50f1'
+sha256sums=('29c6c07c9a8fab9dea2206eb3decd152d46b74820a57bed905ac7f292c2e9b08'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
