@@ -3,7 +3,7 @@
 
 pkgname=python-pyhanko
 _pkgname=pyHanko
-pkgver=0.25.0
+pkgver=0.25.1
 pkgrel=1
 pkgdesc="Tools for stamping and signing PDF files"
 url="https://github.com/MatthiasValvekens/pyHanko"
@@ -51,27 +51,23 @@ optdepends=(
   'python-uharfbuzz: to use OpenType fonts'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('427a1256f14d5bb53a31d26fb648c3d6031f31f776545094933626803523f1ad')
-
-_archive="$_pkgname-$pkgver"
+sha256sums=('a5b5cf4358214b7b7afc3f9f4c87c8d7dd11704a23b3a164cc59357ceaf24d3c')
 
 build() {
-  cd "$_archive"
+  cd $_pkgname-$pkgver
 
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "$_archive"
+  cd $_pkgname-$pkgver
 
-  pytest \
-    --ignore pyhanko_tests/test_csc.py
+  pytest --ignore pyhanko_tests/test_csc.py
 }
 
 package() {
-  cd "$_archive"
+  cd $_pkgname-$pkgver
 
   python -m installer --destdir="$pkgdir" dist/*.whl
-
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
