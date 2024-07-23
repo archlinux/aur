@@ -53,7 +53,9 @@ build() {
 }
 
 check() {
-	"$srcdir/$_bindir/$pkgname" --help 2>&1 | tee '/dev/stderr' | grep -q '^Usage of'
+	_checkoutput="$("$srcdir/$_bindir/$pkgname" --help 2>&1)"
+	printf '%s\n' "$_checkoutput"
+	printf '%s\n' "$_checkoutput" | grep -q '^Usage of'
 }
 
 package() {
