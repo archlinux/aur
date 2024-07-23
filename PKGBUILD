@@ -42,7 +42,9 @@ check() {
 	go test -v './...'
 
 	# Verify that the basic functionality works
-	"$srcdir/$_bindir/$pkgname" --version | tee '/dev/stderr' | grep -q "^$pkgname version v$pkgver"
+	_checkoutput="$("$srcdir/$_bindir/$pkgname" --version)"
+	printf '%s\n' "$_checkoutput"
+	printf '%s\n' "$_checkoutput" | grep -q "^$pkgname version v$pkgver"
 }
 
 package() {
