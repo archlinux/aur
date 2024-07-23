@@ -1,0 +1,17 @@
+pkgbase = sddm-theme-greenleaf
+	pkgdesc = GreenLeaf theme for SDDM
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/kamack38/sddm-greenleaf
+	arch = any
+	license = LGPL3
+	makedepends = git
+	depends = sddm
+	depends = qt6-5compat
+	depends = qt6-declarative
+	depends = qt6-svg
+	depends = ttf-jetbrains-mono-nerd
+	source = git+https://github.com/kamack38/sddm-greenleaf
+	md5sums = SKIP
+
+pkgname = sddm-theme-greenleaf
