@@ -31,7 +31,9 @@ build() {
 
 check() {
 	_cargotarget="$(rustc -vV | sed -n 's/host: //p')"
-	"$srcdir/$_sourcedirectory/target/$_cargotarget/release/$pkgname" --version | tee '/dev/stderr' | grep -q "^$pkgname $pkgver$"
+	_checkoutput="$("$srcdir/$_sourcedirectory/target/$_cargotarget/release/$pkgname" --version)"
+	printf '%s\n' "$_checkoutput"
+	printf '%s\n' "$_checkoutput" | grep -q "^$pkgname $pkgver$"
 }
 
 package() {
