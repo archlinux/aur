@@ -58,7 +58,9 @@ prepare() {
 }
 
 check() {
-	DISPLAY='' WAYLAND_DISPLAY='' "$srcdir/$_projectname" --version | tee '/dev/stderr' | grep -q "v$pkgver"
+	_checkoutput="$("$srcdir/$_projectname" --version)"
+	printf '%s\n' "$_checkoutput"
+	printf '%s\n' "$_checkoutput" | grep -q "v$pkgver"
 }
 
 package() {
