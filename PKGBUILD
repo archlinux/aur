@@ -1,16 +1,16 @@
 # Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
-_pkgname='chatterino2-7tv-nightly'
+_pkgname='chatterino2-nightly'
 pkgname="${_pkgname}-bin"
 provides=chatterino
 conflicts=chatterino
 pkgver=7.5.1
-pkgrel=2
+pkgrel=1
 scdir=$_pkgname
 _pkgver="${pkgver//_/-}"
 _gitname="release-${_pkgver}"
 pkgdesc="Second installment of the Twitch chat client series "Chatterino""
 arch=('x86_64')
-url="https://github.com/SevenTV/chatterino7"
+url="https://github.com/chatterino/chatterino2"
 license=('MIT')
 depends=('fuse2' 'icu70')
 optdepends=('streamlink: For piping streams to video players'
@@ -27,4 +27,4 @@ package() {
 cd ..
 	ln -sf "/opt/$_pkgname/$_pkgname" "${pkgdir}/usr/bin/$_pkgname"
 }
-sha256sums_x86_64=('9710d4c373583805514f65b6b4c14b028f0b85af466faba3321ce2b6220caf54')
+sha256sums_x86_64=('skip')
