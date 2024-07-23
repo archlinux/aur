@@ -1,9 +1,10 @@
 pkgbase = android-x86-openexr
 	pkgdesc = A high dynamic-range image file format library (Android x86)
 	pkgver = 3.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.openexr.com/
 	arch = any
+	groups = android-openexr
 	license = BSD-3-Clause
 	makedepends = android-cmake
 	depends = android-x86-imath
