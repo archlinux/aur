@@ -30,7 +30,9 @@ build() {
 }
 
 check() {
-	"$srcdir/$_sourcedirectory/$pkgname" | tee '/dev/stderr' | grep -q "^$pkgname v$pkgver$"
+	_checkoutput="$("$srcdir/$_sourcedirectory/$pkgname")"
+	printf '%s\n' "$_checkoutput"
+	printf '%s\n' "$_checkoutput" | grep -q "^$pkgname v$pkgver$"
 }
 
 package() {
