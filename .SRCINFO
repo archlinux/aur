@@ -11,6 +11,6 @@ pkgbase = robocut-git
 	source = robocut-git::git+https://github.com/Timmmm/robocut.git
 	source = robocut-git.desktop
 	md5sums = SKIP
-	md5sums = 5757b875c1078d16110ef2d720e11f9b
+	md5sums = 8428df609b820a04940f5e66f9c5c6c5
 
 pkgname = robocut-git

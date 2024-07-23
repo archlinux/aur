@@ -12,7 +12,7 @@ install=$pkgname.install
 source=("$pkgname::git+https://github.com/Timmmm/robocut.git"
         "$pkgname.desktop")
 md5sums=('SKIP'
-         '5757b875c1078d16110ef2d720e11f9b')
+         '8428df609b820a04940f5e66f9c5c6c5')
 
 pkgver() {
   cd "$srcdir/$pkgname"
