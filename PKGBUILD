@@ -11,7 +11,7 @@ _pkgvermajmin=14.0
 _pkgver=${_pkgvermajmin}.0
 _verpostfix="rc1"
 pkgver="${_pkgver}${_verpostfix}"
-pkgrel=3
+pkgrel=4
 _urlbase="https://download.qt.io/official_releases"
 if [[ -n $_verpostfix ]]; then
   _pkgver=${_pkgver}-${_verpostfix}
@@ -24,7 +24,7 @@ url='http://qt.io/ide'
 license=('GPL')
 provides=('qtcreator')
 conflicts=('qtcreator')
-depends=('python-beautifulsoup4' 'qt6-base' 'qt6-tools' 'qt6-declarative' 'qt6-quickcontrols2' 'litehtml')
+depends=('python-beautifulsoup4' 'qt6-base' 'qt6-tools' 'qt6-declarative' 'litehtml')
 install=qtcreator-prerelease.install
 optdepends=('qt6-doc: integrated Qt documentation'
             'qt6-examples: welcome page examples'

@@ -1,7 +1,7 @@
 pkgbase = qtcreator-prerelease
 	pkgdesc = Qt Creator prerelease/latest
 	pkgver = 14.0.0rc1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://qt.io/ide
 	install = qtcreator-prerelease.install
 	arch = x86_64
@@ -15,7 +15,6 @@ pkgbase = qtcreator-prerelease
 	depends = qt6-base
 	depends = qt6-tools
 	depends = qt6-declarative
-	depends = qt6-quickcontrols2
 	depends = litehtml
 	optdepends = qt6-doc: integrated Qt documentation
 	optdepends = qt6-examples: welcome page examples
