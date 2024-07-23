@@ -1,0 +1,12 @@
+diff -ru 0ad-0.0.26-alpha.0/source/network/NetServer.cpp 0ad-0.0.26-alpha/source/network/NetServer.cpp
+--- 0ad-0.0.26-alpha.0/source/network/NetServer.cpp	2024-06-30 00:19:12.820032282 +0200
++++ 0ad-0.0.26-alpha/source/network/NetServer.cpp	2024-06-30 00:19:33.806902986 +0200
+@@ -302,7 +302,7 @@
+ 	else if ((devlist = upnpDiscover(10000, 0, 0, 0, 0, 0)) != NULL)
+ #endif
+ 	{
+-		ret = UPNP_GetValidIGD(devlist, &urls, &data, internalIPAddress, sizeof(internalIPAddress));
++		ret = UPNP_GetValidIGD(devlist, &urls, &data, internalIPAddress, sizeof(internalIPAddress), nullptr, 0);
+ 		allocatedUrls = ret != 0; // urls is allocated on non-zero return values
+ 	}
+ 	else
