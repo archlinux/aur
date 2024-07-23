@@ -1,7 +1,7 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=obs-roi-ui
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Region of Interest Editor for OBS Studio 30.1+"
 arch=("x86_64" "aarch64")
