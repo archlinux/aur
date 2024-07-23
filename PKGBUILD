@@ -1,21 +1,20 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=procmon
-pkgver=1.0.1
+pkgver=2.0
 pkgrel=1
 pkgdesc="Trace syscall activity tool"
-arch=('i686' 'x86_64')
-url="https://github.com/microsoft/ProcMon-for-Linux"
+arch=('x86_64')
+url="https://github.com/Sysinternals/ProcMon-for-Linux"
 license=('MIT')
-depends=('glibc' 'clang' 'libedit' 'libelf' 'zlib')
+depends=('glibc' 'clang' 'libedit' 'libelf' 'ncurses' 'zlib' 'zstd')
 makedepends=('cmake' 'llvm' 'sqlite')
-checkdepends=('iperf3' 'netperf')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/microsoft/ProcMon-for-Linux/archive/$pkgver.tar.gz")
-sha256sums=('f7eb2a81b465b0f17020ade6a962fc195f10033d4e8b6059e9b9ac7337624b3b')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Sysinternals/ProcMon-for-Linux/archive/refs/tags/$pkgver.0.0.tar.gz")
+sha256sums=('1967dc1e378263902a14408468506d7e39f6a4fedbb38b8c48fb2b2d94f56496')
 
 
 build() {
-  cd "ProcMon-for-Linux-$pkgver"
+  cd "ProcMon-for-Linux-$pkgver.0.0"
 
   cmake \
     -B "_build" \
@@ -27,7 +26,7 @@ build() {
 }
 
 package() {
-  cd "ProcMon-for-Linux-$pkgver"
+  cd "ProcMon-for-Linux-$pkgver.0.0"
 
   make -C "_build" DESTDIR="$pkgdir" install
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/procmon"
