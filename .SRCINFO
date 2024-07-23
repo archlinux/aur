@@ -13,6 +13,6 @@ pkgbase = chatterino2-nightly-bin
 	provides = chatterino
 	conflicts = chatterino
 	source_x86_64 = chatterino2-nightly-2.5.1_x64.deb::https://github.com/Chatterino/chatterino2/releases/download/nightly-build/Chatterino-Ubuntu-22.04-x86_64.deb
-	sha256sums_x86_64 = 16d791a48adad496b3b809e54b493665e2f3bd002580acaa9e8a911df269b364
+	sha256sums_x86_64 = SKIP
 
 pkgname = chatterino2-nightly-bin
