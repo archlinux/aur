@@ -1,9 +1,10 @@
 pkgbase = android-aarch64-fribidi
 	pkgdesc = A Free Implementation of the Unicode Bidirectional Algorithm (Android aarch64)
 	pkgver = 1.0.15
-	pkgrel = 1
+	pkgrel = 2
 	url = http://fribidi.org
 	arch = any
+	groups = android-fribidi
 	license = LGPL
 	makedepends = android-meson
 	depends = android-ndk
