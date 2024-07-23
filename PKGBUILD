@@ -1,4 +1,7 @@
 # Maintainer: Charles Dong <chardon_cs@proton.me>
+# Contributor: suliman altassan <suliman.p2019@gmail.com>
+# Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org>
+# Contributor: jinzhongjia <mail@nvimer.org>
 
 pkgname=webui-stable
 _pkgname=webui
