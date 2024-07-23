@@ -133,11 +133,13 @@ prepare() {
 	echo 'Categories=HamRadio;Utility' >> "etc/X11/applnk/Applications/$_pkgname.desktop"
 
 	# Create a PNG version of the icon
-	convert "usr/share/icons/$_pkgname.xbm" "usr/share/icons/$_pkgname.png"
+	magick "usr/share/icons/$_pkgname.xbm" "usr/share/icons/$_pkgname.png"
 }
 
 check() {
-	printf 'NO' | "$srcdir/usr/local/bin/$_pkgname" 2>&1 | tee '/dev/stderr' | grep -q "^${_pkgname^^} TERMS$"
+	_checkoutput="$(printf 'NO' | "$srcdir/usr/local/bin/$_pkgname" 2>&1 || :)"
+	printf '%s\n' "$_checkoutput"
+	printf '%s\n' "$_checkoutput" | grep -q "^${_pkgname^^} TERMS$"
 }
 
 package() {
