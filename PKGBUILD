@@ -4,7 +4,7 @@
 
 pkgname=tinyproxy-git
 _gitname="tinyproxy"
-pkgver=1.8.0.118.g24087f7
+pkgver=1.11.0.rc1.r86.g73da8a3
 pkgrel=1
 epoch=2
 pkgdesc='A light-weight HTTP proxy daemon for POSIX operating systems.'
@@ -16,7 +16,7 @@ provides=('tinyproxy')
 conflicts=('tinyproxy')
 backup=('etc/tinyproxy/tinyproxy.conf')
 source=('tinyproxy.tmpfiles.conf' 'tinyproxy.service'
-        "git://github.com/tinyproxy/tinyproxy.git")
+        "git+https://github.com/tinyproxy/tinyproxy.git")
 md5sums=('3c2764578f26581346fe312da0519a3e'
          '8e97b05cc8c87f7efefbf957e77c7f18'
          'SKIP')
@@ -37,8 +37,8 @@ package() {
 	cd "$srcdir/$_gitname"
 	make DESTDIR="$pkgdir" install
 
-	install -dm0755 -o nobody -g nobody "$pkgdir/var/log/$_gitname"
-	install -dm0755 -o nobody -g nobody "$pkgdir/var/run/$_gitname"
+# 	install -dm0755 -o nobody -g nobody "$pkgdir/var/log/$_gitname"
+# 	install -dm0755 -o nobody -g nobody "$pkgdir/var/run/$_gitname"
 
 	install -Dm644 -o nobody -g nobody "$srcdir/tinyproxy.tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/tinyproxy.conf"
 
