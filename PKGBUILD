@@ -2,7 +2,7 @@
 
 pkgname=sourcegit-bin
 _name=${pkgname%-bin}
-pkgver=8.21
+pkgver=8.22.1
 pkgrel=1
 pkgdesc="GUI client for GIT users"
 arch=('x86_64')
@@ -14,8 +14,8 @@ depends=('git' 'git-credential-manager' 'xdg-utils')
 
 source=("https://github.com/sourcegit-scm/sourcegit/releases/download/v${pkgver}/${_name}-${pkgver}.linux.x86_64.AppImage"
         'sourcegit.desktop'
-        'LICENSE')
-sha256sums=('8f3a423cd3d92881cbda775c0a69347b86897def69b9bd2da9a45382983aea9f'
+        "https://raw.githubusercontent.com/sourcegit-scm/sourcegit/v${pkgver}/LICENSE")
+sha256sums=('9ebb4a6281afeff7ff0fe2c0f7aee2ed9c352a1180594952ec046764e0c81083'
             '3488ee13a4ca1bae85c35f866d046304d8716a64c46cadb2576cb8b4ae44b058'
             '6cef41c8a297f46faafe40016ffcce9d968b3722048b81cd768fdbaa1be02ca1')
 
