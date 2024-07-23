@@ -2,8 +2,8 @@
 
 pkgname=qimgv-qt6-kde-git
 _pkgname=qimgv
-pkgver=v1.0.3.alpha.r105.g70dc0ef
-pkgrel=3
+pkgver=v1.0.3.alpha.r114.gd491927
+pkgrel=2
 pkgdesc="Qt6 image viewer. Fast, configurable, easy to use. Supports video playback."
 arch=(x86_64 i686 armv6h armv7h aarch64)
 url="https://github.com/easymodo/qimgv"
@@ -16,7 +16,7 @@ optdepends=('kimageformats: support for more image formats'
             )
 provides=("qimgv")
 conflicts=("qimgv")
-patch="qt6.patch"
+patch="556.patch"
 source=(git+"${url}".git)
 md5sums=('SKIP')
 
@@ -32,14 +32,14 @@ prepare() {
 }
 
 build() {
-    # -DKDE_SUPPORT=ON is broken, app requires KDE6 migration
     cd "${srcdir}/${_pkgname}/build"
     cmake .. \
         -DCMAKE_INSTALL_PREFIX:PATH=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
-        -DFORCE_QT6=ON \
-        -DQT_DEFAULT_MAJOR_VERSION=6 \
-        -DCMAKE_BUILD_TYPE=Release
+        -DCMAKE_BUILD_TYPE=Release \
+        -DKDE_SUPPORT=ON \
+        -DCMAKE_CXX_COMPILER_LAUNCHER='ccache' \
+        -DCMAKE_C_COMPILER_LAUNCHER='ccache'
     make
 }
 
