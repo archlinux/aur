@@ -1,26 +1,29 @@
 pkgbase = python-pydl
 	pkgdesc = Library of IDL astronomy routines converted to Python
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = http://pydl.readthedocs.io/
 	arch = any
-	license = BSD
+	license = BSD-3-Clause
+	checkdepends = python-pytest-astropy-header
 	checkdepends = python-pytest-doctestplus
+	checkdepends = python-pytest-remotedata
 	checkdepends = python-pytest-mock
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-sphinx-astropy
+	makedepends = python-matplotlib
 	makedepends = python-astropy
 	makedepends = python-scipy
 	makedepends = graphviz
-	source = https://files.pythonhosted.org/packages/source/p/pydl/pydl-1.0.0.tar.gz
-	md5sums = 8bf313aeb530669ab6ba364a38b020ab
+	source = https://files.pythonhosted.org/packages/source/p/pydl/pydl-1.0.1.tar.gz
+	md5sums = 5f8942da0d3042a994cea6687f7ca2ba
 
 pkgname = python-pydl
-	depends = python-astropy
-	depends = python-scipy
+	depends = python-astropy>=5.0
+	depends = python-scipy>=1.3
 	optdepends = python-matplotlib: all
 	optdepends = python-pytest-astropy: For testing
 	optdepends = python-pydl-doc: Documentation for PyDL
