@@ -13,7 +13,8 @@ sha512sums=('068f26d83ee68e6e1b71954add4a9df740426596f3f6301cb5f24b898e17d41f70f
 _sourcedirectory="$_projectname-$pkgver"
 
 check() {
-	cat "$srcdir/$_sourcedirectory/release/50-framework-inputmodule.rules" | tee '/dev/stderr' | grep -q 'ATTRS{idVendor}=="32ac"'
+	cat "$srcdir/$_sourcedirectory/release/50-framework-inputmodule.rules"
+	grep -q 'ATTRS{idVendor}=="32ac"' "$srcdir/$_sourcedirectory/release/50-framework-inputmodule.rules"
 }
 
 package() {
