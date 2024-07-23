@@ -1,8 +1,8 @@
 # Maintainer: Thang Pham <phamducthang1234 at gmail dot com>
 
 pkgname=spotify-player
-pkgver=0.18.2
-pkgrel=2
+pkgver=0.19.1
+pkgrel=1
 pkgdesc="A command driven spotify player."
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/aome510/spotify-player"
@@ -10,17 +10,17 @@ license=('MIT')
 depends=('alsa-lib' 'openssl' 'dbus')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/aome510/spotify-player/archive/v${pkgver}.tar.gz")
-sha512sums=('36eeb32d93ec78981b7caa0f0fdcd9d56706003c9e0d7959d80c501b3823d80925d11c523cc961e0c447242c399ff6226a86939cbc181c9356a3edaaf145db94')
+sha512sums=('a9b753e7f956874597c6c0e47a5c9366be0d07b7f7d27c424d24e464edeaba4add862c5d82bac0c32932e9525efbe8501422ef574adb5e7400052964f7687d2c')
 
 build() {
-	cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
 
-	cargo build --locked --release --bin spotify_player --no-default-features
+  cargo build --locked --release --bin spotify_player --no-default-features
 }
 
 package() {
-	cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
 
-	install -Dm755 target/release/spotify_player -t "${pkgdir}/usr/bin"
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm755 target/release/spotify_player -t "${pkgdir}/usr/bin"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
