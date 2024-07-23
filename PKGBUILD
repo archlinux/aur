@@ -18,18 +18,18 @@ source=(
 sha256sums=('e99529ce9fca034e1eb2238038b4cedda65f0efa9441456405b57bb1bbcdd69c')
 
 prepare() {
-    cd $(find $srcdir/* -maxdepth 0 -type d)
+    cd "$srcdir/$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    cd $(find $srcdir/* -maxdepth 0 -type d)
+    cd "$srcdir/$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release --all-targets
 }
 
 package() {
-    install -Dm755 "$(find $srcdir/* -maxdepth 0 -type d)/target/release/client" "$pkgdir/usr/bin/nomi"
+    install -Dm755 "$srcdir/$pkgname-$pkgver/target/release/client" "$pkgdir/usr/bin/nomi"
 }
