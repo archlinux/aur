@@ -1,5 +1,11 @@
 # archlinux build for localai git version
 
+## fixme
+
+- make protobuf dependency on current system version for python deps. and others
+- make onnxruntime dependency on current system
+- llama.cpp makes gpu reboot after ~ localai 2.16?
+
 ## build
 
 Architectures:

@@ -1,12 +1,17 @@
 # Maintainer: wuxxin <wuxxin@gmail.com>
 
-# env vars for build steering, eg. to only build for cpu, set _ENABLE_CUDA and _ENABLE_ROCM to 0
+# env vars for build steering
+# eg. to only build for cpu, set _ENABLE_CUDA and _ENABLE_ROCM to 0
 _ENABLE_CPU=${_ENABLE_CPU:-1}
 _ENABLE_CUDA=${_ENABLE_CUDA:-1}
 _ENABLE_ROCM=${_ENABLE_ROCM:-1}
 
+# if set to 1 make is called with -j <physical cores> for paralell building, set to 0 for debug
+_ENABLE_PARALLEL=${_ENABLE_PARALLEL:-1}
 # additional piper backend
-_ENABLE_PIPER=${_ENABLE_PIPER:-0}
+_ENABLE_PIPER=${_ENABLE_PIPER:-1}
+# additional whisper backend
+_ENABLE_WHISPER=${_ENABLE_WHISPER:-1}
 # additional python backends if set to 1
 _ENABLE_PYTHON=${_ENABLE_PYTHON:-1}
 
@@ -21,10 +26,17 @@ _OPTIONAL_GRPC="${_OPTIONAL_GRPC:-}"
 _OPTIONAL_MAKE_ARGS="${_OPTIONAL_MAKE_ARGS:-}"
 
 # limit pulling external sources
-_EXTERNAL_SOURCES="backend/cpp/llama/llama.cpp sources/whisper.cpp"
-# disabled_sources=go-llama.cpp gpt4all go-rwkv.cpp go-stable-diffusion go-tiny-dream go-bert go-piper
+_EXTERNAL_SOURCES="backend/cpp/llama/llama.cpp"
+# disabled_sources=go-llama.cpp gpt4all go-rwkv.cpp go-stable-diffusion go-tiny-dream go-bert go-piper whisper
 _DISABLED_MOD_EDIT="nomic-ai/gpt4all/gpt4all mudler/go-stable-diffusion \
   go-skynet/go-llama.cpp go-skynet/go-bert.cpp donomii/go-rwkv.cpp M0Rf30/go-tiny-dream"
+
+if [[ $_ENABLE_WHISPER = 1 ]]; then
+  _EXTERNAL_SOURCES="$_EXTERNAL_SOURCES sources/whisper.cpp"
+  _OPTIONAL_GRPC="backend-assets/grpc/whisper $_OPTIONAL_GRPC"
+else
+  _DISABLED_MOD_EDIT="$_DISABLED_MOD_EDIT ggerganov/whisper.cpp"
+fi
 
 if [[ $_ENABLE_PIPER = 1 ]]; then
   _EXTERNAL_SOURCES="$_EXTERNAL_SOURCES sources/go-piper"
@@ -35,17 +47,16 @@ else
   _GO_TAGS=""
 fi
 
-# enabled backends
-_GRPC_BACKENDS="backend-assets/grpc/whisper \
-backend-assets/grpc/local-store \
-$_OPTIONAL_GRPC"
 # disabled backends: backend-assets/util/llama-cpp-rpc-server llama-cpp-grpc llama-ggml gpt4all rwkv tinydream bert-embeddings huggingface stablediffusion
+# enabled backends
+_GRPC_BACKENDS="backend-assets/grpc/local-store \
+$_OPTIONAL_GRPC"
 
 _pkgbase="localai"
 pkgbase="${_pkgbase}-git"
 pkgname=()
-pkgver=2.18.1.5.g97de2b65
-pkgrel=2
+pkgver=2.19.1.47.ga9757fb0
+pkgrel=1
 pkgdesc="Self-hosted OpenAI API alternative - Open Source, community-driven and local-first."
 url="https://github.com/mudler/LocalAI"
 license=('MIT')
@@ -86,11 +97,13 @@ makedepends=(
   'git'
   'cmake'
   'opencv'
+  'openmpi'
   'blas-openblas'
   'sdl2'
   'ffmpeg'
   'protoc-gen-go'
   'protoc-gen-go-grpc'
+  'upx'
 )
 
 if [[ $_ENABLE_PYTHON = 1 ]]; then
@@ -150,12 +163,17 @@ prepare() {
 
   # display config
   cat - << EOF
+
+prepare():
+
 Build Options:
 
 _ENABLE_CPU=$_ENABLE_CPU
 _ENABLE_CUDA=$_ENABLE_CUDA
 _ENABLE_ROCM=$_ENABLE_ROCM
+_ENABLE_PARALLEL=$_ENABLE_PARALLEL
 _ENABLE_PIPER=$_ENABLE_PIPER
+_ENABLE_WHISPER=$_ENABLE_WHISPER
 _ENABLE_PYTHON=$_ENABLE_PYTHON
 
 _OPTIONAL_MAKE_ARGS=$_OPTIONAL_MAKE_ARGS
@@ -163,6 +181,7 @@ _EXTERNAL_SOURCES=$_EXTERNAL_SOURCES
 _DISABLED_MOD_EDIT=$_DISABLED_MOD_EDIT
 _OPTIONAL_GRPC=$_OPTIONAL_GRPC
 _GRPC_BACKENDS=$_GRPC_BACKENDS
+
 
 EOF
 
@@ -204,6 +223,7 @@ EOF
   for i in \
     backend/cpp/llama/llama.cpp/Makefile \
     sources/whisper.cpp/Makefile; do
+      mkdir -p $(dirname $i); touch $i; 
       sed -ri 's/^(.+HIPFLAGS.+\+=).+offload-arch=.+$/\1 -DGPU_TARGETS="$(GPU_TARGETS)"/g' "$i"
   done
 }
@@ -224,14 +244,24 @@ _build() {
   fi
   cat - << EOF
 
-BUILD: $1, GO_TAGS=$_GO_TAGS, OPTIONAL_MAKE_ARGS=$_OPTIONAL_MAKE_ARGS
-LLAMA_BACKEND: $_LLAMA_CPP_BACKEND
-OTHER_GRPC_BACKENDS: $_GRPC_BACKENDS
+
+_build($1):
+
+GO_TAGS=$_GO_TAGS
+OPTIONAL_MAKE_ARGS=$_OPTIONAL_MAKE_ARGS
+LLAMA_BACKEND=$_LLAMA_CPP_BACKEND
+OTHER_GRPC_BACKENDS=$_GRPC_BACKENDS
+
 
 EOF
-  # use number of physical cores for parallel build
-  _nproc=$(grep  "^core id" /proc/cpuinfo | sort -n | uniq | wc -l)
-  make -j"$_nproc" BUILD_TYPE="$1" GRPC_BACKENDS="$_LLAMA_CPP_BACKEND $_GRPC_BACKENDS" \
+  _nproc=1
+  if [[ $_ENABLE_PARALLEL = 1 ]]; then
+    # use number of physical cores for parallel build
+    _nproc=$(grep  "^core id" /proc/cpuinfo | sort -n | uniq | wc -l)
+  fi
+  make -j"$_nproc" \
+    BUILD_TYPE="$1" \
+    GRPC_BACKENDS="$_LLAMA_CPP_BACKEND $_GRPC_BACKENDS" \
     GO_TAGS="$_GO_TAGS" $_OPTIONAL_MAKE_ARGS build
 }
 
@@ -254,6 +284,8 @@ build() {
     export ROCM_HOME="${ROCM_HOME:-/opt/rocm}"
     export ROCM_VERSION="$(cat $ROCM_HOME/.info/version)"
     export PATH="$ROC_HOME/bin:$PATH"
+    echo "CXX=$CXX , CC=$CC"
+
     # fix build error on ROCM by removing unsupported cf-protection from CMAKE_CXX_FLAGS
     CXXFLAGS="$CXXFLAGS -fcf-protection=none" MAGMA_HOME="$ROCM_HOME" \
       AMDGPU_TARGETS="$_AMDGPU_TARGETS" GPU_TARGETS="$_AMDGPU_TARGETS" \
@@ -293,7 +325,7 @@ package_localai-git-rocm() {
   cd "${srcdir}/${_pkgbase}-rocm"
   pkgdesc+=' (with ROCM support)'
   depends+=('rocm-hip-runtime' 'hipblas' 'rocblas')
-  if [[ $_ENABLE_PIPER = 1 ]]; then depends+=('onnxruntime-rocm'); fi
+  if [[ $_ENABLE_PIPER = 1 ]]; then depends+=('onnxruntime'); fi
   if [[ $_ENABLE_PYTHON = 1 ]]; then depends+=('python-pytorch-rocm'); fi
   _package_install
 }

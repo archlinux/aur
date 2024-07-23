@@ -1,5 +1,5 @@
 diff --git a/backend/python/common/libbackend.sh b/backend/python/common/libbackend.sh
-index 5c5805b9..0fbe409a 100644
+index e8dfea03..ae497ee1 100644
 --- a/backend/python/common/libbackend.sh
 +++ b/backend/python/common/libbackend.sh
 @@ -1,7 +1,7 @@
@@ -11,38 +11,19 @@ index 5c5805b9..0fbe409a 100644
  # use the library by adding the following line to a script:
  # source $(dirname $0)/../common/libbackend.sh
  #
-@@ -74,15 +74,28 @@ function getBuildProfile() {
- # This function is idempotent, so you can call it as many times as you want and it will
+@@ -75,10 +75,9 @@ function getBuildProfile() {
  # always result in an activated virtual environment
  function ensureVenv() {
-+    local venv_creation
-+    venv_creation=0
      if [ ! -d "${MY_DIR}/venv" ]; then
 -        uv venv ${MY_DIR}/venv
 +        python3 -m venv --system-site-packages ${MY_DIR}/venv
-+        venv_creation=1
          echo "virtualenv created"
      fi
 -    
      if [ "x${VIRTUAL_ENV}" != "x${MY_DIR}/venv" ]; then
          source ${MY_DIR}/venv/bin/activate
          echo "virtualenv activated"
-     fi
-+    if test "$1" = "--install"; then
-+        if test "$venv_creation" = "1"; then
-+            reqFile="${MY_DIR}/requirements.txt"
-+            if [ -f ${reqFile} ]; then
-+                sed -ri '/^(torch|torchvision|torchaudio)/d' "${reqFile}"
-+                echo "starting requirements install for ${reqFile}"
-+                pip install --requirement ${reqFile}
-+                echo "finished requirements install for ${reqFile}"
-+            fi
-+        fi
-+    fi
- 
-     echo "activated virtualenv has been ensured"
- }
-@@ -111,21 +124,11 @@ function ensureVenv() {
+@@ -111,24 +110,15 @@ function ensureVenv() {
  function installRequirements() {
      ensureVenv
  
@@ -67,19 +48,7 @@ index 5c5805b9..0fbe409a 100644
              echo "finished requirements install for ${reqFile}"
          fi
      done
-@@ -145,7 +148,7 @@ function installRequirements() {
- #  - backend.py
- #  - ${BACKEND_NAME}.py
- function startBackend() {
--    ensureVenv
-+    ensureVenv --install
- 
-     if [ ! -z ${BACKEND_FILE} ]; then
-         python ${BACKEND_FILE} $@
-@@ -210,4 +213,4 @@ function checkTargets() {
-     echo false
++
  }
  
--init
-\ No newline at end of file
-+init
+ # startBackend discovers and runs the backend GRPC server
