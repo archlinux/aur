@@ -2,7 +2,7 @@
 
 pkgbase=nvidia-open-beta
 pkgname=('nvidia-open-beta' 'nvidia-open-beta-dkms')
-pkgver=555.58.02
+pkgver=560.28.03
 pkgrel=1
 epoch=1
 pkgdesc='NVIDIA open GPU kernel modules (beta version)'
@@ -16,8 +16,8 @@ source=("https://github.com/NVIDIA/open-gpu-kernel-modules/archive/${pkgver}/nvi
         '120-nvidia-open-linux-rt-gift.patch'
         '130-nvidia-open-reproducible-build.patch'
         '140-nvidia-open-gcc-sls.patch')
-sha256sums=('3ae5dd04a68cc5a7f7250941a17adf64bfebc00c0f9410f05dc5d55f0b747dc9'
-            '9f9d058d09fe9187f00185e84eb243a3beabfaa7b619a6fcd2662ac2bf70aa5f'
+sha256sums=('8ba2b9d2dfe72ca3c9b21bbded0a4072a6e962f74b0576fa85480a1ffee416d2'
+            '431894f591f73da5f480cc197e4161b05db513394f5ed0705e7447b6e3b8bbeb'
             'b0f62a78f749ff3a104197c12b6d885352adcf35fb5ecf00c4cd4c51b4195e45'
             '7f13127b830723eef798d981929539fa28b558441836d9acefff7db198d561f2'
             'ab8f2fbf0b31b7fd07cb6fc6c5c8a72ff72e52c345ca49411c3bb93181b18449')
@@ -64,7 +64,7 @@ package_nvidia-open-beta() {
     install -D -m644 "open-gpu-kernel-modules-${pkgver}/kernel-open"/*.ko -t "${pkgdir}/usr/lib/modules/${_kernver}/extramodules"
     install -D -m644 "open-gpu-kernel-modules-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     find "$pkgdir" -name '*.ko' -exec strip --strip-debug {} +
-    find "$pkgdir" -name '*.ko' -exec xz -T1 {} +
+    find "$pkgdir" -name '*.ko' -exec zstd --rm {} +
     
     install -D -m644 <(printf '%s\n' 'options nvidia NVreg_OpenRmEnableUnsupportedGpus=1') "${pkgdir}/usr/lib/modprobe.d/nvidia-open.conf"
 }
