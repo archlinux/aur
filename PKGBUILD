@@ -29,9 +29,9 @@ _fragment="${FRAGMENT:-#branch=master}"
 #option(CCTAG_USE_POSITION_INDEPENDENT_CODE "Generate position independent code." ON)
 
 pkgname=cctag
-pkgver=1.0.3
+pkgver=1.0.4
 _src_dir="CCTag-${pkgver}"
-pkgrel=2
+pkgrel=1
 pkgdesc="Detection of CCTag markers made up of concentric circles."
 arch=('i686' 'x86_64')
 url="https://github.com/alicevision/CCTag"
