@@ -18,11 +18,11 @@ package() {
   cd "$srcdir"
 
   # Install the Python script
-  install -Dm755 "src/py/main.py" "${pkgdir}/usr/local/bin/connmaster-py"
+  install -Dm755 "src/py/main.py" "${pkgdir}/usr/local/bin/connmaster-py.py"
 
   # Create a shell script to execute connmaster-py and copy it to /usr/local/bin
   echo '#!/bin/bash' > connmaster-py
-  echo 'python3 /usr/local/bin/connmaster-py "$@"' >> connmaster-py
+  echo 'python3 /usr/local/bin/connmaster-py.py "$@"' >> connmaster-py
   chmod +x connmaster-py
   install -Dm755 connmaster-py "${pkgdir}/usr/local/bin/connmaster-py"
 
