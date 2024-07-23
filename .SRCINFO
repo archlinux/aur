@@ -13,6 +13,6 @@ pkgbase = chatterino2-nightly-bin
 	provides = chatterino2-nightly
 	conflicts = chatterino2-nightly
 	source_x86_64 = chatterino2-nightly-7.5.1_x64.deb::https://github.com/SevenTV/chatterino7/releases/download/nightly-build/Chatterino-Ubuntu-22.04-x86_64.deb
-	sha256sums_x86_64 = 9710d4c373583805514f65b6b4c14b028f0b85af466faba3321ce2b6220caf54
+	sha256sums_x86_64 = SKIP
 
 pkgname = chatterino2-nightly-bin
