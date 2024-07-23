@@ -4,7 +4,7 @@ _desktopEntry="godot-manager-bin.desktop"
 _repo="eumario/$_pkgname"
 _archive="$_pkgname.zip"
 pkgname="$_pkgname-bin"
-pkgver="0.2.3"
+pkgver=0.2.9
 pkgrel=1
 pkgdesc="A Project, Version and Addons/Plugins manager for Godot Game Engine."
 arch=(x86_64)
@@ -27,7 +27,7 @@ source=(
 )
 noextract=("$_archive")
 sha256sums=(
-    'f1d1100e9537329f0e9b3bf68b4f6692b9390fe5df31662afb3add5f7c5d7bb5'
+    '4dc938ca316685c21003ede22622bc6bc42e7a2baff62c80376234db7233474e'
     'SKIP'
     'SKIP'
     'SKIP'
