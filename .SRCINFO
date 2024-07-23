@@ -1,6 +1,6 @@
 pkgbase = walk
 	pkgdesc = Terminal file manager
-	pkgver = 1.9.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://github.com/antonmedv/walk
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = walk
 	makedepends = go
 	depends = glibc
 	replaces = llama
-	source = walk-1.9.0.tar.gz::https://github.com/antonmedv/walk/archive/v1.9.0.tar.gz
-	sha256sums = aeffc3e48d970a7fa6bf8ed937d82371dc86ec12aac38926ab4e807fea6027d0
+	source = walk-1.10.0.tar.gz::https://github.com/antonmedv/walk/archive/v1.10.0.tar.gz
+	sha256sums = 76e8db66942af53447f5ab3f0aaec49b539a68714130e46c83a01fff9c00438f
 
 pkgname = walk
