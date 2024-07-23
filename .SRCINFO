@@ -1,7 +1,7 @@
 pkgbase = android-x86-pcsclite
 	pkgdesc = PC/SC Architecture smartcard middleware library (Android x86)
 	pkgver = 2.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pcsclite.apdu.fr/
 	arch = any
 	license = BSD
