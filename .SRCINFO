@@ -1,5 +1,5 @@
 pkgbase = wlroots0.17-nvidia
-	pkgdesc = Patched version of the wlroots library specifically used by the sway package. This one is compatible with the Nvidia proprietary driver and eliminates flickering.
+	pkgdesc = Patched version of the wlroots library specifically used by the sway package. This one is compatible with the Nvidia proprietary driver and eliminates flickering. (Not to be confused with the wlroots-nvidia package.)
 	pkgver = 0.17.4
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/wlroots/wlroots
