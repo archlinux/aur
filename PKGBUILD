@@ -32,7 +32,9 @@ check() {
 	./runtests.sh "bin/$pkgname"
 
 	# Verify that the basic functionality works
-	"$srcdir/$_sourcedirectory/bin/$pkgname" --version | tee '/dev/stderr' | grep -q "version $pkgver$"
+	_checkoutput="$("$srcdir/$_sourcedirectory/bin/$pkgname" --version)"
+	printf '%s\n' "$_checkoutput"
+	printf '%s\n' "$_checkoutput" | grep -q "version $pkgver$"
 }
 
 package() {
