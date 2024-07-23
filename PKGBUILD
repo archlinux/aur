@@ -2,7 +2,7 @@
 # Contributor: hexchain <i@hexchain.org>
 pkgname=python-requirements-parser
 _name=${pkgname#python-}
-pkgver=0.9.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="A Pip requirements file parser."
 arch=('any')
@@ -11,7 +11,7 @@ license=('Apache-2.0')
 depends=('python-future' 'python-setuptools' 'python-types-setuptools')
 makedepends=('python-build' 'python-installer' 'python-poetry-core' 'python-wheel')
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('242c578b8cf623102ac5ddbaf5f908226a98f911b7a4c644bad9dcc68be69c7a')
+sha256sums=('5e810fa89709ae00be8e72779aa19fd058e6725cd3366a3d34b610d36201eeef')
 
 build() {
   cd "$_name-$pkgver"
