@@ -19,7 +19,9 @@ build() {
 }
 
 check() {
-	python "$srcdir/$_sourcedirectory/absolutely_proprietary/__init__.py" --help | tee '/dev/stderr' | grep -q '^Find proprietary packages$'
+	_checkoutput="$(python "$srcdir/$_sourcedirectory/absolutely_proprietary/__init__.py" --help)"
+	printf '%s\n' "$_checkoutput"
+	printf '%s\n' "$_checkoutput" | grep -q '^Find proprietary packages$'
 }
 
 package() {
