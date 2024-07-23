@@ -52,7 +52,9 @@ check() {
 	dotnet test --verbosity 'normal' -p:EnableSourceControlManagerQueries=false -p:Include="[ValveResourceFormat*]*" --runtime "$_dotnetarch" 'Tests/Tests.csproj'
 
 	# Verify that the basic functionality works
-	"./Decompiler/bin/Release/$_dotnetarch/publish/Decompiler" -i 'Tests/Files/small_map_with_material.vpk' -l | tee '/dev/stderr' | grep -q 'maps/ui/nametag/world.vwrld_c$'
+	_checkoutput="$("./Decompiler/bin/Release/$_dotnetarch/publish/Decompiler" -i 'Tests/Files/small_map_with_material.vpk' -l)"
+	printf '%s\n' "$_checkoutput"
+	printf '%s\n' "$_checkoutput" | grep -q 'maps/ui/nametag/world.vwrld_c$'
 }
 
 package() {
