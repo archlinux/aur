@@ -32,7 +32,9 @@ build() {
 }
 
 check() {
-	java -jar "$srcdir/$_sourcedirectory/target/$_reponame-1.0-SNAPSHOT.jar" compile | tee '/dev/stderr' | grep -q '^kaj moznosti muzu byt: $'
+	_checkoutput="$(java -jar "$srcdir/$_sourcedirectory/target/$_reponame-1.0-SNAPSHOT.jar" compile)"
+	printf '%s\n' "$_checkoutput"
+	printf '%s\n' "$_checkoutput" | grep -q '^kaj moznosti muzu byt: $'
 }
 
 package() {
