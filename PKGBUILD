@@ -5,11 +5,12 @@ _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-fribidi
 pkgver=1.0.15
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="A Free Implementation of the Unicode Bidirectional Algorithm (Android ${_android_arch})"
 url="http://fribidi.org"
 license=('LGPL')
+groups=(android-fribidi)
 depends=('android-ndk')
 makedepends=('android-meson')
 options=(!strip !buildflags staticlibs !emptydirs)
@@ -32,4 +33,5 @@ package() {
     DESTDIR="${pkgdir}" meson install -C build
     rm -r "${pkgdir}/${ANDROID_PREFIX_BIN}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
 }
