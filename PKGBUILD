@@ -1,11 +1,11 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Maintainer: Dee.H.Y <dongfengweixiao at hotmail dot com>
 # This repository is a fork of musicpod-git.
-# Before executing makepkg, you can set FVM_CACHE_PATH to $HOME/fvm or the path specified by the cachePath field in the $HOME/.config/fvm.fvmrc file.
+# Before executing makepkg, you can set FVM_CACHE_PATH to $HOME/fvm or the path specified by the cachePath field in the $HOME/.config/fvm/.fvmrc file.
 pkgname=musicpod
 _app_id=org.feichtmeier.Musicpod
 pkgver=1.4.5
-pkgrel=2
+pkgrel=3
 _flutterver=3.19.5
 pkgdesc="Music, radio, television and podcast player"
 arch=('x86_64' 'aarch64')
