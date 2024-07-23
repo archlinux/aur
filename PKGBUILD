@@ -2,8 +2,8 @@
 # Co-Maintainer: Tomas S. <me+aur at wereii.cz>
 
 pkgname=foundryvtt
-pkgver=12.328
-pkgrel=2
+pkgver=12.329
+pkgrel=1
 pkgdesc="A self-hosted, modern, and developer-friendly roleplaying platform"
 arch=('x86_64')
 url="https://foundryvtt.com/"
@@ -15,7 +15,7 @@ source=(
 	"foundryvtt.desktop"
 )
 sha256sums=(
-	'01a956537efa689e82286cb02d429340a7d9fd310757632d5b067e0bb0157a11'
+	'0579adacbb4da76fb0907accf511629b806eb046d64d0d6d134da8208b68087c'
 	'eb6d09ea176748a0e9b3a0ebb2aa3f2bca23e5f082ed676edd9fd8bf6b0ebbcb'
 )
 
