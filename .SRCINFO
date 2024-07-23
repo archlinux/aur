@@ -1,9 +1,10 @@
 pkgbase = android-x86-64-pango
 	pkgdesc = A library for layout and rendering of text (Android x86-64)
 	pkgver = 1.54.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.pango.org/
 	arch = any
+	groups = android-pango
 	license = LGPL-2.1-or-later
 	makedepends = android-meson
 	makedepends = gobject-introspection
