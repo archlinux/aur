@@ -3,7 +3,7 @@ pkgname=knowledge-canvas-bin
 _appname=Knowledge
 pkgver=0.8.5
 _electronversion=26
-pkgrel=4
+pkgrel=5
 pkgdesc="A tool for saving, searching, accessing, and exploring all of your favorite websites, documents and files."
 arch=(
     'aarch64'
@@ -22,7 +22,7 @@ makedepends=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_downurl}/${_appname}-${pkgver}-arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_downurl}/${_appname}-${pkgver}.AppImage")
 source=("${pkgname%-bin}.sh")
-sha256sums=('41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+sha256sums=('2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 sha256sums_aarch64=('5897e3cc139753b295aea4f677d9c52de7c029ad665833d509b3c187d8016710')
 sha256sums_x86_64=('850039eb2ee6e913b9fb0a8f58a4f6dd58b58e230d1cbbd0b1e136f4120b4ba1')
 build() {
