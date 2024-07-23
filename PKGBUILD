@@ -13,7 +13,7 @@ sha256sums=('91bb90a27b0259c2f952baa3b85cd4103b02c7a5b08a7470d2ad91c9650dae31')
 prepare() {
   cd "$srcdir"
   tar xf "v.${pkgver}.tar.gz"
-  mv "ConnWifiMaster-${pkgver}" "ConnWifiMaster"
+  mv "ConnWifiMaster-v.${pkgver}" "ConnWifiMaster"
 }
 
 build() {
