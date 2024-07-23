@@ -3,7 +3,7 @@
 pkgname=sonis-fork-of-hexchat
 pkgver=2.16.2.r3.gb544ac33
 pkgrel=1
-pkgdesc='A GTK+ based IRC client'
+pkgdesc='IRC client, fork of hexchat, aimed at preventing crashes, detecting plugin bugs etc.'
 arch=('i686' 'x86_64' 'armv6h')
 url='https://github.com/SoniEx2/sonis-fork-of-hexchat'
 license=('GPL')
