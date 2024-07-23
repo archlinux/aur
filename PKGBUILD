@@ -3,7 +3,7 @@
 
 pkgname=yubikey-manager-qt
 pkgver=1.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-platform application for configuring any YubiKey over all USB transports'
 arch=('x86_64')
 url='https://developers.yubico.com/yubikey-manager-qt/'

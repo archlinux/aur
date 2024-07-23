@@ -1,7 +1,7 @@
 pkgbase = yubikey-manager-qt
 	pkgdesc = Cross-platform application for configuring any YubiKey over all USB transports
 	pkgver = 1.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developers.yubico.com/yubikey-manager-qt/
 	arch = x86_64
 	license = BSD
