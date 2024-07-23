@@ -1,6 +1,6 @@
 pkgbase = jq.sh-git
 	pkgdesc = jq-in-shell integration library
-	pkgver = 1.0.1.r4.g7101e85
+	pkgver = 1.0.1.r8.g5b1f040
 	pkgrel = 1
 	url = https://gitlab.com/stefanwimmer128/jq.sh
 	arch = any

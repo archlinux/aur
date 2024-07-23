@@ -1,8 +1,8 @@
-# Maintainer: stefanwimmer128 <info at stefanwimmer128 dot eu>
+# Maintainer: Stefan Wimmer <info@stefanwimmer128.xyz>
 
 _pkgname=jq.sh
 pkgname=$_pkgname-git
-pkgver=1.0.1.r4.g7101e85
+pkgver=1.0.1.r8.g5b1f040
 pkgrel=1
 pkgdesc='jq-in-shell integration library'
 arch=('any')
@@ -25,7 +25,7 @@ pkgver() {
 prepare() {
     cd "$_pkgname"
 
-    autoreconf --install
+    ./bootstrap
     ./configure --prefix=/usr
 }
 
