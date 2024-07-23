@@ -1,9 +1,10 @@
 pkgbase = android-armv7a-eabi-kmod
 	pkgdesc = Linux kernel module management tools and library (Android, armv7a-eabi)
 	pkgver = 32
-	pkgrel = 4
+	pkgrel = 5
 	url = https://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git
 	arch = any
+	groups = android-kmod
 	license = GPL2
 	makedepends = android-environment
 	depends = android-armv7a-eabi-zlib
