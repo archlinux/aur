@@ -1,8 +1,8 @@
-# Maintainer: Martin Rys <rys.rs/contact>
+# Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
 
 pkgname=python-elevenlabs
 _reponame=elevenlabs
-pkgver=1.3.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="ElevenLabs API module - generate realistic, captivating speech in a wide range of languages"
 url="https://pypi.org/project/elevenlabs/"
@@ -19,7 +19,7 @@ makedepends=(
 	'python-poetry'
 )
 source=("https://pypi.org/packages/source/${_reponame::1}/${_reponame}/${_reponame}-${pkgver}.tar.gz")
-sha256sums=('23df9b48960bc1d48b9fe13a5dad74144a83ce5ed83708dd7dcf6180f44ce697')
+sha256sums=('d56a282f933e2eb991dac2b09cf7e928f1899f1cb5a9e9fa1d500be6edd7ee1d')
 
 build() {
 	cd "${srcdir}/${_reponame}-${pkgver}"
