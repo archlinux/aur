@@ -1,7 +1,7 @@
 pkgbase = qimgv-qt6-kde-git
 	pkgdesc = Qt6 image viewer. Fast, configurable, easy to use. Supports video playback.
 	pkgver = v1.0.3.alpha.r114.gd491927
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/easymodo/qimgv
 	arch = x86_64
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = qimgv-qt6-kde-git
 	makedepends = cmake
 	makedepends = pkgconf
 	makedepends = qt6-tools
+	makedepends = ccacge
 	depends = qt6-base
 	depends = qt6-imageformats
 	depends = qt6-svg
