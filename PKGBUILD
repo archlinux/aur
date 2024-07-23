@@ -2,9 +2,9 @@
 
 # Following: https://wiki.archlinux.org/title/Rust_package_guidelines
 
-_commit=e95a4e762c61a09381510e9bc0355052be69fea9
+_commit=522b47affa97fc5c4e7cdaa5468285e8438c002d
 pkgname=stackablectl
-pkgver=24.3.6
+pkgver=24.7.0
 pkgrel=1
 pkgdesc="Command line tool to interact with a Stackable Data Platform"
 arch=('x86_64')
