@@ -5,15 +5,15 @@
 # Original maintainer: Marcin
 
 pkgname=spring-tool-suite
-pkgver=4.23.1
+pkgver=4.24.0
 _pkgver_release=$pkgver.RELEASE
-_eclipse_pkgver=e4.32.0
-_eclipse_pkgver_short=e4.32
+_eclipse_pkgver=e4.33.0
+_eclipse_pkgver_short=e4.33
 pkgrel=1
 pkgdesc="The Spring Tool Suite (STS) from SpringSource."
 arch=('x86_64')
 url="https://spring.io/tools"
-depends=('unzip' 'webkit2gtk')
+depends=('unzip' 'webkit2gtk' 'java-runtime>=21')
 conflicts=('springsource-tool-suite')
 install=${pkgname}.install
 license=("EPL/1.1")
@@ -22,7 +22,7 @@ source_x86_64=(
     "https://cdn.spring.io/spring-tools/release/STS4/${_pkgver_release}/dist/${_eclipse_pkgver_short}/${pkgname}-4-${_pkgver_release}-${_eclipse_pkgver}-linux.gtk.x86_64.tar.gz"
     "${pkgname}.desktop"
 )
-sha256sums_x86_64=('f7b5700e99c860fc77371d9484c4752fdc8d8bd5eaeb40a09fb800e940a4e4bd'
+sha256sums_x86_64=('43e1a934fd536b71e9692f6df64e114467f9ccf63a6f8e9929257c3f1ae02735'
                    '11c51ae27864a5c529f832506cb740c0681ad9d51c4b5f69212f61890d6aafac')
 
 package() {
