@@ -1,6 +1,6 @@
 pkgbase = netlify-application
 	pkgdesc = Unofficial Netlify desktop application
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/netlify-desktop//application
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = netlify-application
 	depends = gtk3
 	depends = libxss
 	depends = git
-	source = https://gitlab.com/linuxbombay/netlify-desktop//application/-/archive/1.1.1-1/application-1.1.1-1.tar.bz2
-	sha256sums = 368c2e8388e670c6067a76859649a9d83a72447220c7da8612f741176bf4e2eb
+	source = https://gitlab.com/linuxbombay/netlify-desktop//application/-/archive/1.1.2/application-1.1.2.tar.bz2
+	sha256sums = 119aacde89282a5abe258894cdec380c4cb014fd3f205dd7d2e5de13ab17da31
 
 pkgname = netlify-application
