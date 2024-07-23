@@ -5,7 +5,7 @@ _pkgname='optimal-congress'
 _vcssuffix='-git'
 pkgname="${_pkgname}${_vcssuffix}"
 pkgver=0.7.3+2.r84.20240718.b363174
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line tool to find an optional, personal chedule for the 37th Chaos Communication Congress (37C3) 2023."
 arch=(
   'any'
@@ -23,6 +23,7 @@ depends=(
   'python-pandas'
   'python-pandera>=0.18.0'
   'python-requests'
+  'python-rich'
 )
 makedepends=(
   'git'
