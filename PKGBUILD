@@ -1,19 +1,19 @@
 # Maintainer: Billy Yang <me@venti.love>
 _name=mcdreforged
 pkgname=python-${_name}
-pkgver=2.13.0
+pkgver=2.13.1
 pkgrel=1
 pkgdesc="A rewritten version of MCDaemon, a python script to control your Minecraft server"
 arch=(any)
 url="https://github.com/Fallen-Breath/MCDReforged"
-license=('LGPL3')
-depends=('python>=3.8' 'python-colorama' 'python-colorlog' 'python-parse' 'python-prompt_toolkit' 'python-psutil' 'python-ruamel-yaml' 'python-typing_extensions')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+license=('LGPL-3.0-or-later')
+depends=('python>=3.8' 'python-colorama' 'python-colorlog' 'python-packaging' 'python-parse' 'python-prompt_toolkit' 'python-psutil' 'python-requests' 'python-resolvelib' 'python-ruamel-yaml' 'python-typing_extensions' 'python-wcwidth')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' )
 optdepends=('java-runtime: start Minecraft server')
 options=()
 install=
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
-sha256sums=('3ba276454939461f0a792d1c1dde2d4d744f49cf8d07171ed32285f67fd5584e')
+sha256sums=('438d7d0880cf329188d164c6801fcc2089a86e2e23faa3a4d45cab848d904c81')
 
 build() {
   cd "${_name}-${pkgver}"
@@ -24,4 +24,5 @@ package() {
   cd "${_name}-${pkgver}"
   python -m installer --destdir="$pkgdir" dist/*.whl
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+  cp LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/"
 }

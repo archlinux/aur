@@ -1,24 +1,28 @@
 pkgbase = python-mcdreforged
 	pkgdesc = A rewritten version of MCDaemon, a python script to control your Minecraft server
-	pkgver = 2.13.0
+	pkgver = 2.13.1
 	pkgrel = 1
 	url = https://github.com/Fallen-Breath/MCDReforged
 	arch = any
-	license = LGPL3
+	license = LGPL-3.0-or-later
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-wheel
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python>=3.8
 	depends = python-colorama
 	depends = python-colorlog
+	depends = python-packaging
 	depends = python-parse
 	depends = python-prompt_toolkit
 	depends = python-psutil
+	depends = python-requests
+	depends = python-resolvelib
 	depends = python-ruamel-yaml
 	depends = python-typing_extensions
+	depends = python-wcwidth
 	optdepends = java-runtime: start Minecraft server
-	source = https://files.pythonhosted.org/packages/source/m/mcdreforged/mcdreforged-2.13.0.tar.gz
-	sha256sums = 3ba276454939461f0a792d1c1dde2d4d744f49cf8d07171ed32285f67fd5584e
+	source = https://files.pythonhosted.org/packages/source/m/mcdreforged/mcdreforged-2.13.1.tar.gz
+	sha256sums = 438d7d0880cf329188d164c6801fcc2089a86e2e23faa3a4d45cab848d904c81
 
 pkgname = python-mcdreforged
