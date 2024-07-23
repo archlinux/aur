@@ -25,7 +25,7 @@ index b8e2459..2da2ed1 100644
 @@ -5,7 +5,9 @@
          module.exports = require("macos-version");
        },
-       87: (module) => {
+       857: (module) => {
 -        module.exports = require("os");
 +        var m = require("os");
 +        m.release = function() { return "0.0.0"; }
@@ -40,7 +40,7 @@ index 912f8ee..a8bb8d6 100644
 @@ -5,7 +5,9 @@
          module.exports = require("macos-version");
        },
-       87: (module) => {
+       857: (module) => {
 -        module.exports = require("os");
 +        var m = require("os");
 +        m.release = function() { return "0.0.0"; }
@@ -55,7 +55,7 @@ index 6e7787f..026c052 100644
 @@ -5,7 +5,9 @@
          module.exports = require("macos-version");
        },
-       87: (module) => {
+       857: (module) => {
 -        module.exports = require("os");
 +        var m = require("os");
 +        m.release = function() { return "0.0.0"; }
@@ -70,7 +70,7 @@ index 3d2aaca..052553b 100644
 @@ -5,7 +5,9 @@
          module.exports = require("macos-version");
        },
-       87: (module) => {
+       857: (module) => {
 -        module.exports = require("os");
 +        var m = require("os");
 +        m.release = function() { return "0.0.0"; }

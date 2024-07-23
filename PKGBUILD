@@ -1,7 +1,7 @@
 # Maintainer: Sibren Vasse <arch@sibrenvasse.nl>
 # Contributor: Ilya Gulya <ilyagulya@gmail.com>
 pkgname="deezer"
-pkgver=6.0.160
+pkgver=6.0.181
 pkgrel=1
 pkgdesc="A proprietary music streaming service"
 arch=('any')
@@ -17,10 +17,10 @@ source=("$pkgname-$pkgver-setup.exe::https://www.deezer.com/desktop/download/art
     avoid-change-default-texthtml-mime-type.patch
     start-hidden-in-tray.patch
     quit.patch)
-sha256sums=('dd7e4090a9d8f0a53f336f2cc8f043d2c9f8ce795ae0772d6502c961136a32b5'
+sha256sums=('93de5804a61d0e4baf8da866aa70d6d298f69660e96ec41feaba6bc4f152d216'
             'c16cf96707c6c047e5f2ec336ce3c639ecf2fc207ff9db365b17363d13380d2c'
             'b464dbfc0d426730259ce2abc660960ecc6a73bbef838b8fbbd15deb2f5dce53'
-            'ec87bbcc5a615c61c78bf117889d5b697a2174150722b1318205ad1c903286f2'
+            '8eddebb9274e66051b55728e3b73263c0a2d288f70fc6c15917a604a08f7f705'
             '3566f3aa580b35a5af7f31831c36d579576a47286103a9b621051a8a38ac3180'
             '505bc0363443f8a921361efb5f204a15afa7773e57fa386c2221ba1609b896c8'
             '78d26c08c234594eeba0ac68c95612a8c01ea4026f34e0141e8a997287b0af1b')
@@ -32,7 +32,7 @@ prepare() {
     7z x -y -bsp0 -bso0 app-32.7z
 
     # Extract png from ico container
-    convert resources/win/app.ico resources/win/deezer.png
+    magick resources/win/app.ico resources/win/deezer.png
 
     cd resources/
     asar extract app.asar app
