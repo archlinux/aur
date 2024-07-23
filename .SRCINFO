@@ -6,8 +6,8 @@ pkgbase = connmaster-cli
 	arch = x86_64
 	license = BSD-3-Clause
 	depends = connman
-	depends = terminator
+	depends = terminology
 	source = https://github.com/felipealfonsog/ConnWifiMaster/archive/refs/tags/v.0.0.3.tar.gz
-	sha256sums = 273daa3b30978efe64fd4563189068384bbd94f1882b41a4f4e5a4c6576ba0e0
+	sha256sums = 91bb90a27b0259c2f952baa3b85cd4103b02c7a5b08a7470d2ad91c9650dae31
 
 pkgname = connmaster-cli

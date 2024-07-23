@@ -6,9 +6,9 @@ pkgdesc="ConnWifiMaster is a CLI version designed for Arch Linux systems that us
 arch=('x86_64')
 url="https://github.com/felipealfonsog/ConnWifiMaster"
 license=('BSD-3-Clause')
-depends=('connman' 'terminator')
+depends=('connman' 'terminology')
 source=("https://github.com/felipealfonsog/ConnWifiMaster/archive/refs/tags/v.${pkgver}.tar.gz")
-sha256sums=('273daa3b30978efe64fd4563189068384bbd94f1882b41a4f4e5a4c6576ba0e0')
+sha256sums=('91bb90a27b0259c2f952baa3b85cd4103b02c7a5b08a7470d2ad91c9650dae31')
 
 prepare() {
   cd "$srcdir"
