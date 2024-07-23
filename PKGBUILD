@@ -21,7 +21,17 @@
 # If it is possible to download fonts directly, around 200 MB of data will be downloaded.
 #  Downloading the fonts this way can take 8–20 minutes, even on a fast connection. Be
 # patient. Note that for this method, it is necessary to mount an HTTP source and an ISO
-# file as a loop device using FUSE.
+# file as a loop device using FUSE. If the build fails, it might be that these must be
+# unmounted manually. If you rerun the build, this cleanup is done automatically.
+#
+# To clean up manually run:
+#
+#  $ udisksctl unmount -b /dev/loop0
+#  $ udisksctl loop-delete -b /dev/loop0
+#  $ fusermount -uz src/mnt/http
+#
+# Replace /dev/loop0 with the relevant loop device, which is reported during
+# package build.
 #
 # For the download, HTTP is used instead of HTTPS because httpfs2 does not support modern
 #  TLS versions. A file integrity check is performed after the download. Due to the
