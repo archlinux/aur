@@ -105,7 +105,9 @@ check() {
 	ninja unittests
 
 	# Verify that the basic functionality works
-	QT_QPA_PLATFORM='offscreen' "$srcdir/$_sourcedirectory/build/Binaries/$_noguipkgname" --version | tee '/dev/stderr' | grep -q "^$_checkversion$"
+	_checkoutput="$(QT_QPA_PLATFORM='offscreen' "$srcdir/$_sourcedirectory/build/Binaries/$_noguipkgname" --version)"
+	printf '%s\n' "$_checkoutput"
+	printf '%s\n' "$_checkoutput" | grep -q "^$_checkversion$"
 }
 
 package_dolphin-emu-git() {
