@@ -7,8 +7,8 @@ pkgrel=1
 pkgdesc="Visualization and analysis of mass spectrometric and chromatographic data"
 arch=("x86_64")
 url="https://openchrom.net/"
-license=('EPL' 'custom: commercial')
-# Don't build from source, because otherwise proprietary file converters are missing.
+license=('EPL')
+# Don't build from source as there are no tagged releases.
 source=("https://products.lablicate.com/openchrom/${pkgver}/openchrom-lablicate_linux.x86_64_${pkgver}.tar.gz"
         "openchrom.desktop")
 # Avoid checksums, because minor release overwrite without change in versioning.
