@@ -1,21 +1,23 @@
-# Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 _pkgname="bitrise"
 pkgname="${_pkgname}-git"
-pkgver=2.16.1.r5.ga8f85fc
+pkgver=2.18.0.r0.gdfda9c5
 pkgrel=1
 pkgdesc="Run your bitrise.io automations offline"
 arch=('any')
-url="https://github.com/bitrise-io/${_pkgname}"
+url="https://www.bitrise.io/cli"
+_url="https://github.com/bitrise-io/${_pkgname}"
 license=('MIT')
+makedepends=('git' 'go')
 depends=('glibc')
 optdepends=('envman: manage Environment Variable collections'
             'stepman: manage decentralized StepLib Step (script) collections')
-makedepends=('git' 'go')
 provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
+install="${_pkgname}.install"
 _pkgsrc="${_pkgname}"
-source=("${_pkgsrc}::git+${url}.git")
+source=("${_pkgsrc}::git+${_url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -25,7 +27,7 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
-  [ -d "build" ] || mkdir "build"
+  mkdir -p "build"
 }
 
 build() {
@@ -38,10 +40,10 @@ build() {
   go build -o "build/${_pkgname}" .
 }
 
-#check() {
-#  cd "${srcdir}/${_pkgsrc}"
-#  go test ./...
-#}
+# check() {
+#   cd "${srcdir}/${_pkgsrc}"
+#   go test ./...
+# }
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
