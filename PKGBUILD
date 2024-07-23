@@ -2,6 +2,7 @@
 pkgname=horen-git
 pkgver=0.9.0.r30.g86d4052
 _electronversion=28
+_nodeversion=18
 pkgrel=1
 pkgdesc="A music player by Electron"
 arch=('any')
@@ -17,18 +18,25 @@ makedepends=(
     'git'
     'npm'
     'pnpm'
-    'nodejs'
-    'icoutils'
+    'nvm'
+    'curl'
+    'imagemagick'
 )
 source=(
     "${pkgname//-/.}::git+${url}.git"
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
-    git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=7 --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+}
+_ensure_local_nvm() {
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
 }
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
@@ -37,7 +45,8 @@ build() {
         -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-git}.sh"
-    gendesk -q -f -n --pkgname="${pkgname%-git}" --categories="AudioVideo" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
+    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
+    _ensure_local_nvm
     cd "${srcdir}/${pkgname//-/.}"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
@@ -56,11 +65,11 @@ build() {
     else
         echo "Your network is OK."
     fi
-    icotool -x preview/"${pkgname}.ico" -o preview/"${pkgname}.png"
+    magic preview/"${pkgname}.ico" preview/"${pkgname}.png"
     sed "s|${pkgname}.ico|${pkgname}.png|g" -i forge.config.js
     sed "s|process.env.APPDATA|'/home/${USER}'|g" -i app/main/src/constant.ts
-    pnpm install
-    pnpm run package
+    NODE_ENV=development pnpm install
+    NODE_ENV=production pnpm run package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
