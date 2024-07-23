@@ -13,13 +13,13 @@
 pkgbase=mesa-minimal-git
 pkgname=(mesa-minimal-git opencl-rusticl-mesa-minimal-git)
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
-pkgver=24.2.0_devel.191078.51f2ed872e8
+pkgver=24.3.0_devel.192411.d90080b51b2
 pkgrel=1
 arch=('x86_64')
 makedepends=(git meson ninja libglvnd python-packaging python-mako xorgproto libxml2 libx11  libva elfutils libxrandr
                             wayland-protocols glslang-minimal-git llvm-minimal-git libdrm libclc-minimal-git clang-minimal-git
                             rust rust-bindgen spirv-tools-git spirv-llvm-translator-minimal-git libvdpau systemd-libs clang-opencl-headers-minimal-git
-                            python-ply libunwind libxdamage vulkan-icd-loader xcb-util-keysyms)
+                            python-ply libunwind libxdamage vulkan-icd-loader xcb-util-keysyms python-pyaml)
 # In order to keep the package simple and ease troubleshooting only use one llvm implementation
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
 provides=(mesa vulkan-intel vulkan-radeon vulkan-mesa-layer libva-mesa-driver vulkan-swrast mesa-vdpau vulkan-driver opengl-driver)
@@ -28,19 +28,26 @@ conflicts=(mesa vulkan-intel vulkan-radeon vulkan-mesa-layer libva-mesa-driver v
 url="https://www.mesa3d.org"
 license=('custom')
 source=("mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git"
-                'LICENSE'
+                LICENSE
+                https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/30311.patch
 )
 
 md5sums=('SKIP'
-         '5c65a0fe315dd347e09b1f2826a1df5a')
+         '5c65a0fe315dd347e09b1f2826a1df5a'
+         '239d2b54d80616c8afcd038cb86d8875')
 sha512sums=('SKIP'
-            '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2')
+            '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
+            '6e1a12dc1dbba6f64768aa7dc0ba45fbc62f2f32979ede31c9b3e4b54f637da6ebd926cf4f0a7e5bc08ba51e7a4835059dacf7ad13050f7c928a21a44b9a7b3c')
 options=(!emptydirs !lto !debug)
 
 # ninja grabs all available cores and leaves almost nothing for other processes.
 # this package uses the environment variable NINJAFLAGS to allow the user to change this behaviour
 # The responsibility to validate the value of NINJAFLAGS lies with the user.
 # If unsure, use NINJAFLAGS=""
+
+prepare() {
+    patch --directory=mesa --forward --strip=1 --input="$srcdir"/30311.patch
+}
 
 pkgver() {
     cd mesa
