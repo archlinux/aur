@@ -8,7 +8,7 @@
 
 pkgname=flexget
 _pkgname=Flexget
-pkgver=3.11.40
+pkgver=3.11.41
 pkgrel=1
 pkgdesc="Multipurpose automation tool for downloading media content from different sources"
 arch=(any)
@@ -83,21 +83,19 @@ source=(
   "flexget@.service"
 )
 sha256sums=(
-  'aa88bf04790a91fe86368aa08f18baeef8bc31c8f521871b06494ffa70c1f70c'
+  '7446bf99b39f156ec02d26c78227a48e355f3dd4077fa1a46fbef40dc27572cb'
   '117de8d5cbe0ac53ecd3be3e579f2cfa62ef186ab36e382f857059380447c5aa'
   'aceecee5496a34c14c12ed5ad8b97197de32896f358b5aef63a84bf4a419756a'
 )
 
-_archive="$_pkgname-$pkgver"
-
 build() {
-  cd "$_archive"
+  cd $_pkgname-$pkgver
 
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "$_archive"
+  cd $_pkgname-$pkgver
 
   # Deselect failing tests - not sure why they fail
   pytest \
@@ -108,13 +106,11 @@ check() {
 }
 
 package() {
-  cd "$_archive"
+  cd $_pkgname-$pkgver
 
   python -m installer --destdir="$pkgdir" dist/*.whl
-
   install -Dm644 -t "$pkgdir/usr/lib/systemd/user/" \
     "$srcdir/flexget.service" \
     "$srcdir/flexget@.service"
-
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
