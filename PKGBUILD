@@ -10,7 +10,7 @@ _realver=${pkgver//.s*}
 _gmpver=6.3.0
 _mpcver=1.3.1
 _mpfrver=4.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='The GNU Compiler Collection (snapshot)'
 arch=(x86_64)
 license=(GPL-3.0-with-GCC-exception GFDL-1.3-or-later)
@@ -26,7 +26,8 @@ source=(https://ftp.fu-berlin.de/unix/languages/gcc/snapshots/${_pkgver}/gcc-${_
         https://www.mpfr.org/mpfr-${_mpfrver}/mpfr-${_mpfrver}.tar.xz{,.asc}
         c89
         c99
-        gcc-ada-repro.patch)
+        gcc-ada-repro.patch
+        0001-gm2-add-missing-debug-output-guard.patch)
 validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.org
               86CFFCA918CF3AF47147588051E8B148A9999C34  # evangelos@foutrelis.com
               13975A70E63C361C73AE69EF6EEB81F8981C74C7  # richard.guenther@gmail.com
@@ -42,7 +43,8 @@ sha256sums=('9900337d06dd514e2f969c066064910015ce0c594cc87d6d5c1875b08e972f8e'
             'SKIP'
             'de48736f6e4153f03d0a5d38ceb6c6fdb7f054e8f47ddd6af0a3dbf14f27b931'
             '2513c6d9984dd0a2058557bf00f06d8d5181734e41dcfe07be7ed86f2959622a'
-            '1773f5137f08ac1f48f0f7297e324d5d868d55201c03068670ee4602babdef2f')
+            '1773f5137f08ac1f48f0f7297e324d5d868d55201c03068670ee4602babdef2f'
+            'ce57c73ef16f4d56c2bec4cee79d876b5f2e67e85da1988b3a2cf4049575556a')
 
 prepare() {
   if [ ! -d gcc ]; then
@@ -60,6 +62,7 @@ prepare() {
   sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
 
   patch -Np0 -i ${srcdir}/gcc-ada-repro.patch
+  patch -Np1 -i ${srcdir}/0001-gm2-add-missing-debug-output-guard.patch
 
   mkdir -p ${srcdir}/gcc-build ${srcdir}/libgccjit-build
 }
