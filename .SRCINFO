@@ -6,8 +6,8 @@ pkgbase = libdlibxx
 	arch = x86_64
 	license = BSD 2-Clause
 	makedepends = git
+	makedepends = cmake
 	source = libdlibxx::git+https://github.com/m-renaud/libdlibxx.git#tag=v1.1.0
 	sha256sums = SKIP
 
 pkgname = libdlibxx
-

@@ -8,7 +8,7 @@ pkgdesc="A generalized C++ wrapper around the POSIX dynamic libraries functions 
 arch=('x86_64')
 url="https://github.com/m-renaud/libdlibxx"
 license=('BSD 2-Clause')
-makedepends=('git')
+makedepends=('git' 'cmake')
 source=("$_srcname::git+https://github.com/m-renaud/libdlibxx.git#tag=$_srctag")
 sha256sums=('SKIP')
 
