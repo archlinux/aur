@@ -5,16 +5,18 @@
 # Contributor: Jaroslaw Swierczynski <swiergot@aur.archlinux.org>
 # Contributor: Camille Moncelier <pix@devlife.org>
 
+: ${_hgrev=3d43b280298c39a67d1d889e01e173f52c12da35}
+
 _gitname="dvb-apps"
 _pkgname="linuxtv-dvb-apps"
 pkgname="$_pkgname"
 pkgver=1505
-pkgrel=5
-_hgrev=3d43b280298c39a67d1d889e01e173f52c12da35
+pkgrel=6
 pkgdesc='Linux DVB API applications and utilities'
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://www.linuxtv.org'
-license=('GPL')
+license=('GPL-2.0-or-later' 'LGPL-2.1-or-later')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+
 depends=('glibc')
 makedepends=('mercurial')
 optdepends=(
@@ -30,8 +32,9 @@ _patch_url_2='https://gitweb.gentoo.org/repo/gentoo.git/plain/media-tv/linuxtv-d
 _patch_url_4='https://bugs.debian.org/cgi-bin/bugreport.cgi?att=1;bug=779520;filename=bug779520.patch;msg=17'
 #_patch_url_5='https://patch-diff.githubusercontent.com/raw/tufei/dvb-apps/pull/2.patch'
 
+_pkgsrc="$_gitname"
 source=(
-  "$_gitname"::"hg+https://linuxtv.org/hg/dvb-apps/#revision=${_hgrev}"
+  "$_pkgsrc"::"hg+https://linuxtv.org/legacy-hg/dvb-apps/#revision=${_hgrev}"
 
   "0001-glibc-2.31.patch"::"$_patch_url_2/linuxtv-dvb-apps-glibc-2.31.patch"
   "0002-no-ca_set_pid.patch"::"$_patch_url_2/linuxtv-dvb-apps-no-ca_set_pid.patch"
@@ -55,30 +58,33 @@ sha256sums=(
   'c65d70a91b437930fb2b63c83d763c3431fd4c9a0e3248c0aed4df652dd8be16'
 )
 
-_pkgsrc="$_gitname"
 prepare() {
-  cd "$srcdir/$_pkgsrc"
+  cd "$_pkgsrc"
 
-  for patch in "$srcdir"/*.patch ; do
-    if [ -f "$patch" ] ; then
-      printf 'Applying patch: %s\n' "${patch##*/}"
-      patch -Np1 -F100 -i "$patch"
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    src="${src%.zst}"
+    if [[ $src == *.patch ]]; then
+      printf '\nApplying patch: %s\n' "$src"
+      patch -Np1 -F100 -i "${srcdir:?}/$src"
     fi
   done
 }
 
 pkgver() {
-  cd "$srcdir/$_pkgsrc"
-  echo $(hg identify -n | sed 's/+//')
+  cd "$_pkgsrc"
+  hg identify -n | sed 's/+//'
 }
 
 build() {
-  cd "$srcdir/$_pkgsrc"
+  cd "$_pkgsrc"
   make
 }
 
 package() {
-  cd "$srcdir/$_pkgsrc"
+  cd "$_pkgsrc"
   make DESTDIR="$pkgdir" install
 
   # Avoid conflict with xbase (FS#37862)
