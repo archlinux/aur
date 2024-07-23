@@ -1,7 +1,7 @@
 pkgbase = obsidian-cli
 	pkgdesc = Interact with Obsidian in the terminal. Open, search, create, update and move notes!
 	pkgver = 0.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Yakitrak/obsidian-cli
 	arch = any
 	license = MIT
