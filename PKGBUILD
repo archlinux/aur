@@ -34,7 +34,9 @@ build() {
 }
 
 check() {
-	"$srcdir/$_sourcedirectory/target/release/$pkgname" --help | tee '/dev/stderr' | grep -q "$pkgname"
+	_checkoutput="$("$srcdir/$_sourcedirectory/target/release/$pkgname" --help)"
+	printf '%s\n' "$_checkoutput"
+	printf '%s\n' "$_checkoutput" | grep -q "$pkgname"
 }
 
 package() {
