@@ -1,7 +1,7 @@
 pkgbase = sddm-theme-greenleaf
 	pkgdesc = GreenLeaf theme for SDDM
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kamack38/sddm-greenleaf
 	arch = any
 	license = LGPL3

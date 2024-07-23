@@ -2,7 +2,7 @@
 pkgname=sddm-theme-greenleaf
 _themename=greenleaf
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GreenLeaf theme for SDDM"
 arch=("any")
 url="https://github.com/kamack38/sddm-greenleaf"
@@ -13,7 +13,9 @@ source=("git+https://github.com/kamack38/sddm-greenleaf")
 md5sums=("SKIP")
 
 package() {
-	cd "${srcdir}/${pkgname}"
-	_themedir="${pkgdir}/usr/share/sddm/themes/$_themename"
-	find . -type f -exec install -Dm644 {} "${_themedir}/{}" \;
+	cd "${srcdir}/sddm-greenleaf"
+
+	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+	find . -type f -exec install -Dm644 {} "$pkgdir/usr/share/sddm/themes/greenleaf/{}" \;
 }
