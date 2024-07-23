@@ -7,6 +7,7 @@ pkgbase = robocut-git
 	arch = x86_64
 	license = GPL3
 	depends = qt5-svg
+	depends = cmake
 	source = robocut-git::git+https://github.com/Timmmm/robocut.git
 	source = robocut-git.desktop
 	md5sums = SKIP
