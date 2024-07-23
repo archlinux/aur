@@ -2,7 +2,7 @@
 
 pkgname=wsrx-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.2.15
+pkgver=0.2.17
 pkgrel=2
 pkgdesc="WebSocket Reflector X"
 arch=('x86_64')
