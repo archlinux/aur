@@ -1,0 +1,5 @@
+!.gitignore
+!.nvchecker.toml
+!.nvchecker_nv.json
+!.nvchecker_ov.json
+

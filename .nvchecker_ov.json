@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "data": {
+    "kubescape": {
+      "version": "3.0.14",
+      "gitref": "refs/tags/v3.0.14",
+      "url": "https://github.com/kubescape/kubescape/releases/tag/v3.0.14"
+    }
+  }
+}
