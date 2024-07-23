@@ -10,6 +10,7 @@ pkgbase = nomi-git
 	depends = glibc
 	depends = gcc-libs
 	depends = bzip2
+	depends = openssl
 	provides = nomi
 	conflicts = nomi
 	options = !lto

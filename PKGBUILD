@@ -12,7 +12,7 @@ pkgrel=1
 
 arch=("x86_64")
 options=(!lto)
-depends=("glibc" "gcc-libs" "bzip2")
+depends=("glibc" "gcc-libs" "bzip2" "openssl")
 makedepends=("git" "cargo")
 
 source=(
