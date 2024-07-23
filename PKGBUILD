@@ -8,9 +8,9 @@
 
 _pkgname=hyprland
 pkgname=$_pkgname-hidpi-xprop-git
-pkgver=0.41.2.r166.0e86808e5
-pkgrel=2
-pkgdesc="A dynamic tiling Wayland compositor based on aquamarine that doesn't sacrifice on its looks."
+pkgver=0.42.0.r96.c5fd5771
+pkgrel=1
+pkgdesc="Hyprland is an independent, highly customizable, dynamic tiling Wayland compositor that doesn't sacrifice on its looks."
 arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
 url="https://github.com/hyprwm/Hyprland"
 license=('BSD-3-Clause')
