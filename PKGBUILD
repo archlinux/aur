@@ -12,9 +12,9 @@ makedepends=('squashfs-tools')
 provides=(raindrop)
 install=
 _snapid="B8ZjYQVKEem99E5WjVMGUr75feAUrnH5"
-_snaprev="23"
+_snaprev="25"
 source=("https://api.snapcraft.io/api/v1/snaps/download/${_snapid}_${_snaprev}.snap")
-sha512sums=("0456a174e8b04fd90602c4fe115b1bb56215517686d7ade6ee360c89840d4396fd8738db4ef1407f43345f3a516cfcce6e34ed5223838346ac54f208abeac3e2")
+sha512sums=("59cda3b792b9f3a16cf8ce4db13edc4d8d57dcd12feb7190e98bf4c4b1da6704ffc35468c1667c998f27a8185437e132bfc5f63340bdbcbfad5653fece34d5c9")
 
 prepare() {
 	echo "Extracting snap file..."
