@@ -1,9 +1,10 @@
-# Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
+# Contributor: hawkeye116477 <hawkeye116477 at gmail dot com>
+# Contributor: Daniel Peukert <daniel@peukert.cc>
 
 pkgbase=python-pysimplegui
 pkgname=('python-pysimplegui')
 _module='PySimpleGUI'
-pkgver=4.60.5
+pkgver=4.70.1
 pkgrel=1
 pkgdesc='Super-simple to create custom GUI'
 arch=('any')
@@ -13,7 +14,7 @@ depends=('python' 'tk')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest-runner')
 source=(${pkgbase}-${pkgver}.tar.gz::https://pypi.python.org/packages/source/P/PySimpleGUI/PySimpleGUI-${pkgver}.tar.gz)
-sha256sums=('31014d1cc5eef1373d7e93564ff2604662645cc774a939b1f01aa253e7f9d78b')
+sha256sums=('84b2bd09435a41d0a9cfd7ecbb464daa0557174cfd099068524266ed43b3525f')
 
 build() {
   cd "$srcdir"/${_module}-$pkgver
