@@ -2,9 +2,9 @@
 _appname=chat-spot
 pkgname="${_appname//-/}-bin"
 _pkgname=ChatSpot
-pkgver=0.0.4
+pkgver=0.0.6
 _electronversion=26
-pkgrel=2
+pkgrel=1
 pkgdesc="An AI-powered, Spotlight assistant designed to help users complete tasks quickly and efficiently. "
 arch=('x86_64')
 url="https://github.com/gusye1234/chat-spot"
@@ -26,7 +26,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/gusye1234/chat-spot/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d19d394cc7bd4cb6b7d4c07165ba549287724c290868dcc5cc871e33e8ccd271'
+sha256sums=('3a7012fe987551c4b2297bbb54cdb790f669ac216aef13d69e8c98c66c2163f1'
             '5e98c15fe806a18f79422d2cd0c4587129f4e03081b5ab4c030627d6f6840d68'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
