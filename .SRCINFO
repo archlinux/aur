@@ -9,6 +9,7 @@ pkgbase = nomi
 	depends = glibc
 	depends = gcc-libs
 	depends = bzip2
+	depends = openssl
 	options = !lto
 	source = nomi-0.2.3.tar.gz::https://github.com/Umatriz/nomi/archive/refs/tags/0.2.3.tar.gz
 	sha256sums = e99529ce9fca034e1eb2238038b4cedda65f0efa9441456405b57bb1bbcdd69c
