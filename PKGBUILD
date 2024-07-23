@@ -2,15 +2,15 @@
 
 _pkgname="cxcli"
 pkgname="${_pkgname}-git"
-pkgver=1.224.1.r0.g54c9020
+pkgver=1.225.1.r0.g5958e4e
 pkgrel=1
 pkgdesc="The missing CLI for your Dialogflow CX projects"
 arch=('any')
 url="https://${_pkgname}.xavidop.me"
 _url="https://github.com/xavidop/dialogflow-cx-cli"
 license=('Apache-2.0')
-depends=('glibc')
 makedepends=('git' 'go')
+depends=('glibc')
 optdepends=('bash-completion: for shell auto-completion'
             'zsh-completions: for shell auto-completion')
 provides=("dialogflow-cx-cli=${pkgver%%.r*}")
@@ -26,9 +26,7 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
-  [ -d "build" ] || mkdir "build"
-  [ -d "completions" ] || mkdir "completions"
-  [ -d "manpages" ] || mkdir "manpages"
+  mkdir -p "build" "completions" "manpages"
 }
 
 build() {
@@ -40,8 +38,13 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   go build -o "build/${_pkgname}" .
 
-  ./"scripts/manpages.sh"
-  ./"scripts/completions.sh"
+  # ./"scripts/manpages.sh"
+  ./"build/${_pkgname}" man > "manpages/${_pkgname}.1"
+
+  #./"scripts/completions.sh"
+  for _sh in bash fish zsh powershell; do
+    ./"build/${_pkgname}" completion "${_sh}" > "completions/${_pkgname}.${_sh}"
+  done
 }
 
 check() {
@@ -54,10 +57,11 @@ package() {
   install -Dm755 "build/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   install -Dm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.md"
-  install -Dm644 "manpages/${_pkgname}.1.gz" "${pkgdir}/usr/share/man/man1/${_pkgname}.1.gz"
+  install -Dm644 "manpages/${_pkgname}.1" "${pkgdir}/usr/share/man/man1/${_pkgname}.1"
 
   cd "completions"
-  install -Dm644 "${_pkgname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
-  install -Dm644 "${_pkgname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
-  install -Dm644 "${_pkgname}.zsh"  "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
+  install -Dm644 "${_pkgname}.bash"       "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
+  install -Dm644 "${_pkgname}.fish"       "${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
+  install -Dm644 "${_pkgname}.zsh"        "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
+  install -Dm644 "${_pkgname}.powershell" "${pkgdir}/usr/share/powershell/Completions/${_pkgname}.ps1"
 }
