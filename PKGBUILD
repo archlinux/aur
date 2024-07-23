@@ -5,7 +5,7 @@
 pkgbase=open3d
 pkgname=( {,python-}open3d python-py3d )
 pkgver=0.18.0
-pkgrel=9
+pkgrel=10
 epoch=1
 pkgdesc="A Modern Library for 3D Data Processing"
 arch=('x86_64')
@@ -59,21 +59,15 @@ makedepends=(
     python-setuptools
 )
 source=(
-    "${pkgbase}::git+https://github.com/isl-org/Open3D.git#commit=5c982c7b5edc76f899860e2594a950c5c23ec88f"
-    "fmt-v10.patch"
-    "pstl.patch"
+    "${pkgbase}::git+https://github.com/isl-org/Open3D.git#commit=c1b55eebaf1e4e969560baf039ced0df5c74e0e7"
     "no_werror.patch"
 )
 sha256sums=(
     'SKIP'
-    'ab2dbd819f4d4613505d384707ca9cb7913b9603739b6f6590a3a3d978cbe56a'
-    '19d1b921e2787bbeb71b3579ca534ee86542926ac0820e42584de754b0adf296'
     'e58dacd86497e4d8a61fe00e4e41a4b8748e1dcca8d3172918d1bc5a1e7390cc')
 
 function prepare() {
     cd "${srcdir}/${pkgbase}"
-    patch -Np1 -i "${srcdir}/fmt-v10.patch"
-    patch -Np1 -i "${srcdir}/pstl.patch"
     patch -Np1 -i "${srcdir}/no_werror.patch"
     # find . -name "CMakeLists.txt" -exec sed -i 's/-Werror//g' {} \;
     # grep --files-with-matches -r "_FORTIFY_SOURCE" | xargs -I {} sed -i 's/_FORTIFY_SOURCE=[0-9]/""/g' {}
