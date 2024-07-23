@@ -11,7 +11,7 @@ license=('MIT')
 depends=("openssl" "glibc")
 makedepends=("git" "make" "gcc")
 provides=("webui")
-conflicts=('webui-nossl')
+conflicts=('webui' 'webui-nossl')
 _commit=ac4ea8cd7b11daf3d96c65db03e6c02e1e0bd6d2
 source=("git+https://github.com/webui-dev/webui.git#commit=${_commit}")
 md5sums=('SKIP')

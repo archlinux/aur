@@ -11,6 +11,7 @@ pkgbase = webui-stable
 	depends = openssl
 	depends = glibc
 	provides = webui
+	conflicts = webui
 	conflicts = webui-nossl
 	source = git+https://github.com/webui-dev/webui.git#commit=ac4ea8cd7b11daf3d96c65db03e6c02e1e0bd6d2
 	md5sums = SKIP
