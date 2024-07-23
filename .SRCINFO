@@ -1,7 +1,7 @@
 pkgbase = sysinternalsebpf-git
 	pkgdesc = Sysinternals EBPF
 	pkgver = 1.4.0.0.r0.gf8c8bd2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Sysinternals/SysinternalsEBPF
 	arch = i686
 	arch = x86_64
