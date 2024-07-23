@@ -6,6 +6,7 @@ pkgbase = mrpython
 	arch = x86_64
 	license = PSF
 	depends = python
+	depends = tk
 	provides = mrpython
 	conflicts = mrpython
 	source = mrpython::https://github.com/nohtyprm/MrPython/archive/refs/tags/v5.1.3beta.zip
