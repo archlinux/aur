@@ -1,7 +1,3 @@
-[__config__]
-newver = ".nvchecker_nv.json"
-oldver = ".nvchecker_ov.json"
-
 [kubescape]
 source = "github"
 github = "kubescape/kubescape"
