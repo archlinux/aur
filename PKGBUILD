@@ -2,16 +2,17 @@
 # Contributor: Duje Mihanović <duje.mihanovic@skole.hr>
 pkgname=heimdall-grimler-git
 _pkgname=Heimdall
-pkgver=2.0.2.r0.02b577e
-pkgrel=2
+pkgver=2.1.0.r1.1afaefb
+pkgrel=1
 pkgdesc="Actively maintained fork of Samsung phone firmware flashing tool"
 arch=("x86_64" "i686")
 url="https://git.sr.ht/~grimler/Heimdall"
 license=('MIT')
 depends=('libusb')
-makedepends=('git' 'cmake' 'zlib' 'qt5-base' 'mesa')
+makedepends=('git' 'cmake' 'zlib' 'qt5-base')
 optdepends=(
 	'qt5-base: for Heimdall frontend'
+	'zlib: for Heimdall frontend'
 )
 provides=("heimdall=${pkgver}" "heimdall-git=${pkgver}")
 conflicts=('heimdall' 'heimdall-git')
