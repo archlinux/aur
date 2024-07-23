@@ -8,7 +8,7 @@
 
 _pkgname=hyprland
 pkgname=$_pkgname-hidpi-xprop-git
-pkgver=0.41.2.r50.cf373d31
+pkgver=0.41.2.r77.3c758db9
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on aquamarine that doesn't sacrifice on its looks."
 arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
@@ -121,9 +121,6 @@ build() {
 package() {
   cd Hyprland
   find src \( -name '*.h' -o -name '*.hpp' \) -exec install -Dm0644 {} "$pkgdir/usr/include/hyprland/{}" \;
-  meson install -C subprojects/wlroots-hyprland/build --destdir "${pkgdir}/tmpwlr"
-  cp -R ${pkgdir}/tmpwlr/usr/local/include/hyprland ${pkgdir}/usr/include/
-  rm -rf ${pkgdir}/tmpwlr
   mkdir -p "$pkgdir/usr/include/hyprland/protocols"
   cp protocols/*.h* "$pkgdir/usr/include/hyprland/protocols"
   install -Dm0644 -t "$pkgdir/usr/share/pkgconfig" build/hyprland.pc
@@ -138,7 +135,6 @@ package() {
   install -Dm0644 -t "$pkgdir/usr/share/wayland-sessions/" "example/$_pkgname.desktop"
   install -Dm0644 -t "$pkgdir/usr/share/$_pkgname/" "example/$_pkgname.conf"
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
-  install -Dm0644 subprojects/wlroots-hyprland/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-wlroots-hyprland"
   install -Dm0644 subprojects/udis86/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-udis86"
 }
 # vi: et ts=2 sw=2
