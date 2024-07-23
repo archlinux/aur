@@ -7,7 +7,7 @@ pkgdesc="Graphical program that sends svg files to vinyl cutters"
 url="https://github.com/Timmmm/robocut"
 license=('GPL3')
 arch=('x86_64')
-depends=('qt5-svg')
+depends=('qt5-svg' 'cmake')
 install=$pkgname.install
 source=("$pkgname::git+https://github.com/Timmmm/robocut.git"
         "$pkgname.desktop")
