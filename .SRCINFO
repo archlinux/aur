@@ -1,7 +1,7 @@
 pkgbase = webui-stable
 	pkgdesc = Use any web browser as GUI, with your preferred language in the backend and HTML5 in the frontend, all in a lightweight portable lib. (stable version)
 	pkgver = 2.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://webui.me/
 	arch = x86_64
 	license = MIT
