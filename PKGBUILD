@@ -1,7 +1,7 @@
-pkgname=plasma-runners-tmux
+pkgname=plasma6-runners-tmux
 _srcname=krunner-tmux-sessions
 pkgver=0.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Searches running tmux sessions and attaches to them"
 arch=('i686' 'x86_64')
 conflicts=('plasma-runners-tmux')

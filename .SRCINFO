@@ -1,7 +1,7 @@
-pkgbase = plasma-runners-tmux
+pkgbase = plasma6-runners-tmux
 	pkgdesc = Searches running tmux sessions and attaches to them
 	pkgver = 0.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/janbuchar/krunner-tmux-sessions
 	arch = i686
 	arch = x86_64
@@ -14,4 +14,4 @@ pkgbase = plasma-runners-tmux
 	source = https://github.com/janbuchar/krunner-tmux-sessions/archive/0.0.6.tar.gz
 	sha1sums = 5940ec7bbf4a44c4bf1f561a491860034cb4f3e1
 
-pkgname = plasma-runners-tmux
+pkgname = plasma6-runners-tmux
