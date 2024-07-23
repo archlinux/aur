@@ -11,9 +11,9 @@ pkgdesc="Cloud & Desktop IDE Platform"
 license=('EPL2')
 depends=('nodejs-lts-hydrogen' 'nss' 'gtk3' 'libxss' 'libxkbfile')
 makedepends=('bash>=5' 'curl' 'diffutils' 'jq'
-             'yarn' 'npm' 'make' 'gcc' 'pkgconf' 'python-setuptools' 'node-gyp')
+             'gcc' 'make' 'node-gyp' 'npm' 'pkgconf' 'python-setuptools' 'yarn')
 optdepends=('git: git support' 'libsecret: keytar support')
-options=(!strip !debug)
+options=(!debug !strip)
 
 _tools_commit=3a60f68f4fde1675c0860923e752f73f5664eb68
 source=(
@@ -25,6 +25,7 @@ source=(
   "https://raw.githubusercontent.com/eclipse-theia/theia/v$pkgver/logo/theia.svg"
   "https://raw.githubusercontent.com/eclipse-theia/theia/v$pkgver/LICENSE-EPL"
   "https://raw.githubusercontent.com/eclipse-theia/theia/v$pkgver/LICENSE-GPL-2.0-ONLY-CLASSPATH-EXCEPTION"
+  "https://raw.githubusercontent.com/eclipse-theia/theia/v$pkgver/LICENSE-vscode.txt"
 )
 sha256sums=('49dc3027c1bed942afde93608248765178d8f32145c1f8c75b68f4b191bf0af0'
             '201f033b3e445dca08066f5d636b961d45d2ffadd589908f3cc76bf2c2bd601a'
@@ -33,7 +34,8 @@ sha256sums=('49dc3027c1bed942afde93608248765178d8f32145c1f8c75b68f4b191bf0af0'
             '76f48bbc421d298113c73cee628c9d0fd8b14381590d871928f4f0bd87e812ce'
             'd9712e3b79a98d7b1d5fd64d709daa806be6944c3f0cebf22879cd0e3c08ce06'
             '8c349f80764d0648e645f41ef23772a70c995a0924b5235f735f4a3d09df127c'
-            '7d74322f208420b6886c40eda1c7d1bad618f12e067af934f02bc9bbfcc038ae')
+            '7d74322f208420b6886c40eda1c7d1bad618f12e067af934f02bc9bbfcc038ae'
+            '39e379a27a642e8146a3c1a089fa96cf8221d2233a7f5821e33a91da7dacfc3b')
 
 prepare() {
   cd "$srcdir"
@@ -43,8 +45,15 @@ prepare() {
   # Note: As of 1.41.0, those get pulled in anyway. Sigh.
   # 1.50.0: @theia/git removed from electron version
   # (presumably in favor of vscode.git{,-base})
+  # Add resolutions for nan and cpu-features, cf. #13748
   bash make-package-json.sh "${pkgver/.next./-next.}" | \
-  grep -vE "@theia/(git|notebook|preview|test)\b" >package.json
+  grep -vE "@theia/(git|notebook|preview|test)\b" | \
+  sed '/^  }$/i\
+  },\
+  "resolutions": {\
+    "**/@types/node": "18",\
+    "**/nan": "2.18.0",\
+    "**/cpu-features": "0.0.9"' >package.json
 }
 
 build() {
