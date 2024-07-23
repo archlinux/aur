@@ -8,11 +8,9 @@ else
   : ${_autoupdate:=true}
 fi
 
-: ${_pkgtype=-git}
-
 # basic info
 _pkgname="material-icons"
-pkgbase="$_pkgname${_pkgtype:-}"
+pkgbase="$_pkgname-git"
 pkgver=4.0.0.r94.gf2c8df1
 pkgrel=1
 pkgdesc="Material Design icons by Google"
@@ -74,9 +72,9 @@ _update_version() {
   _response=$(curl -Ssf "https://github.com/$_repo/commits/master/$_path")
   _hash=$(
     echo "$_response" \
-      | grep -Eo '"\S+/commit/\S+"' \
+      | grep -Eo '"[^"]+/commit/([a-f0-9]+)"' \
       | head -1 \
-      | sed -E 's@"\S+commit/@@;s@\\"@@'
+      | sed -E 's@"[^"]+/commit/([a-f0-9]+)"@\1@'
   )
   _tag=$(
     curl -Ssf "https://github.com/$_repo/tags" \
