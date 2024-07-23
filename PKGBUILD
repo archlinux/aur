@@ -4,7 +4,7 @@
 # Contributor: Dan Vratil
 
 pkgname=nvidia-beta
-pkgver=555.58.02
+pkgver=560.28.03
 pkgrel=1
 pkgdesc="NVIDIA drivers for Arch's official 'linux' package (beta version)"
 arch=('x86_64')
@@ -17,8 +17,8 @@ options=('!strip')
 _pkg="NVIDIA-Linux-${CARCH}-${pkgver}-no-compat32"
 source=("http://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run"
         '110-nvidia-change-dkms-conf.patch')
-sha256sums=('155e8b0271beae86a09b19a246381b607f026f3e1f6329eaba7a516e991eed76'
-            '77f869bcc149f3d34c1001c38119c52e92170460fca8af8c6644ae054043d3a5')
+sha256sums=('1688df7cb8d254b01a5e0ee2c34bc38e90dc3fc5cb2d378cd980b5f66e95911d'
+            '504805a7dfb6913b0758aa22c3090c2a6a3644918418f0ccec5d6c75baa8c532')
 
 prepare() {
     # extract the source file
@@ -42,5 +42,5 @@ package() {
     
     install -D -m644 "nvidia/${pkgver}/${_kernver}/${CARCH}/module"/* -t "${pkgdir}/usr/lib/modules/${_kernver}/extramodules"
     install -D -m644 "${_pkg}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    find "$pkgdir" -name '*.ko' -exec xz -T1 {} +
+    find "$pkgdir" -name '*.ko' -exec zstd --rm {} +
 }
