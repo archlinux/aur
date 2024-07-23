@@ -3,7 +3,8 @@ pkgname=gchat
 _pkgname=GChat
 pkgver=1.0.1
 _electronversion=23
-pkgrel=9
+_nodeversion=18
+pkgrel=10
 pkgdesc="Unofficial Google Chat app"
 arch=('any')
 url="https://github.com/dcrousso/GChat"
@@ -14,7 +15,7 @@ depends=(
 )
 makedepends=(
     'npm'
-    'nodejs'
+    'nvm'
     'gendesk'
     'curl'
 )
@@ -23,7 +24,13 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('6ac16d881642d156d9e3c01367edba538cde61efef2c46d07be0e504a42199bf'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+_ensure_local_nvm() {
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
+}
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
@@ -31,7 +38,8 @@ build() {
         -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
-    gendesk -q -f -n --pkgname="${pkgname}" --categories="Network" --name="${_pkgname}" --exec="${pkgname} %U"
+    gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Network" --name="${_pkgname}" --exec="${pkgname} %U"
+    _ensure_local_nvm
     cd "${srcdir}/${_pkgname}-${pkgver}"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
@@ -49,8 +57,8 @@ build() {
         echo "Your network is OK."
     fi
     sed "s|--arch=x64        ||g;s|Icon.icns|Icon.png|g" -i package.json
-    npm install
-    npm run build-linux
+    NODE_ENV=development npm install
+    NODE_ENV=production npm run build-linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
