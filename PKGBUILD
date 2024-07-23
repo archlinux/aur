@@ -23,7 +23,9 @@ build() {
 
 check() {
 	cd "$srcdir/$_sourcedirectory/"
-	python -B 'examples/example.py' | tee '/dev/stderr' | grep -q '^John     2000  DevOps'
+	_checkoutput="$(python -B 'examples/example.py')"
+	printf '%s\n' "$_checkoutput"
+	printf '%s\n' "$_checkoutput" | grep -q '^John     2000  DevOps'
 }
 
 package() {
