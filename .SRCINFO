@@ -1,7 +1,7 @@
 pkgbase = iceshrimp.net-pre
 	pkgdesc = Decentralized and federated social networking service, implementing the ActivityPub standard
-	pkgver = 2024.1.beta2.security1
-	pkgrel = 4
+	pkgver = 2024.1.beta2.security2
+	pkgrel = 1
 	url = https://iceshrimp.dev/iceshrimp/iceshrimp.net
 	install = iceshrimp.net.install
 	arch = x86_64
@@ -16,13 +16,13 @@ pkgbase = iceshrimp.net-pre
 	provides = iceshrimp.net
 	conflicts = iceshrimp.net
 	backup = etc/iceshrimp.net/configuration.ini
-	source = iceshrimp.net::git+https://iceshrimp.dev/iceshrimp/iceshrimp.net.git#tag=v2024.1-beta2.security1
+	source = iceshrimp.net::git+https://iceshrimp.dev/iceshrimp/iceshrimp.net.git#tag=v2024.1-beta2.security2
 	source = iceshrimp.net.service
 	source = iceshrimp.net.sysusers
 	source = iceshrimp.net.tmpfiles
 	source = iceshrimp.net.install
 	source = iceshrimp.net.hook
-	sha512sums = 19b46f5f05b80e9e45c550f965b4c195785d6778e1d62af2fe20a211b096b1a3b0fba0797ea7d495f77a61437c0fbd01f9234382578dc7f13a6dee5d6aba2d14
+	sha512sums = 779a85f092a2408695a5d2ab71afdc86391b9f92239d5de6ed3df1057fda75935434ff99594034b1d8f54aea8e79a77d14ebac42508a7088bc6121f9f147261b
 	sha512sums = cfb7adf7e9f0d9d05ab89b2237ddf1ef4135ed9dde463e96c7cd94e03e497a85c77a795ac20c09214a2364e675c88e65ac119f6de82a08f5c2d64d657c4b3fc0
 	sha512sums = 9adf1781842ae7ff2779ca561f06ab2b6fb93e206698084283986627aba69b0fd4482ccbed3daebb2517e5966c326604e1cc57618589f331a966fee2db63815d
 	sha512sums = 0665aa7af2b2aa4405289ce9119439ddcc6b9e6c81dc8e3b9ed5d8ecdc4a39d49c950d41d3098ce99fe294ce51a2dee55ec7248c1756783b0e9aad0bde4654fa
