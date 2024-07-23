@@ -1,7 +1,7 @@
 pkgbase = lib32-procps-ng
 	pkgdesc = Utilities for monitoring your system and its processes (32-bit)
 	pkgver = 4.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/procps-ng/
 	arch = x86_64
 	license = GPL
