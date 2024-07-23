@@ -11,30 +11,26 @@ source=("https://github.com/felipealfonsog/ConnWifiMaster/archive/refs/tags/v.${
 sha256sums=('edb862adfd771d9b478dbc22dd2b8ed2e883b0cafd7bcd00c75a4120ba037246')
 
 prepare() {
-  cd "$srcdir"
-  tar xf "v.${pkgver}.tar.gz"
-  mv "ConnWifiMaster-v.${pkgver}" "ConnWifiMaster"
-}
-
-build() {
-  # No compilation needed for Python scripts
-  return 0
+  tar xf "v.${pkgver}.tar.gz" -C "$srcdir" --strip-components=1
 }
 
 package() {
-  cd "$srcdir/ConnWifiMaster"
+  cd "$srcdir"
 
-  # Install the Python script to /usr/local/bin
+  # Install the Python script
   install -Dm755 "src/py/main.py" "${pkgdir}/usr/local/bin/connmaster-py"
 
-  # Create a symlink in /usr/bin pointing to /usr/local/bin/connmaster-py
-  ln -sf "/usr/local/bin/connmaster-py" "${pkgdir}/usr/local/bin/connmaster-py"
+  # Create a shell script to execute connmaster-py and copy it to /usr/local/bin
+  echo '#!/bin/bash' > connmaster-py
+  echo 'python3 /usr/local/bin/connmaster-py "$@"' >> connmaster-py
+  chmod +x connmaster-py
+  install -Dm755 connmaster-py "${pkgdir}/usr/local/bin/connmaster-py"
 
   # Optionally install any icons or .desktop files if needed
   # Install the icon
-  install -Dm644 "${srcdir}/ConnWifiMaster/src/py/connmaster-py-iconlogo.png" "${pkgdir}/usr/share/pixmaps/connmaster-py.png"
+  install -Dm644 "src/py/connmaster-py-iconlogo.png" "${pkgdir}/usr/share/pixmaps/connmaster-py.png"
 
   # Install the .desktop file
-  install -Dm644 "${srcdir}/ConnWifiMaster/src/py/connmaster-py.desktop" "${pkgdir}/usr/share/applications/connmaster-py.desktop"
+  install -Dm644 "src/py/connmaster-py.desktop" "${pkgdir}/usr/share/applications/connmaster-py.desktop"
 }
 
