@@ -17,8 +17,10 @@ provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
 install="${_pkgname}.install"
 _pkgsrc="${_pkgname}"
-source=("${_pkgsrc}::git+${_url}.git")
-sha256sums=('SKIP')
+source=("${_pkgsrc}::git+${_url}.git"
+        "${_pkgname}.install")
+sha256sums=('SKIP'
+            '66525077041db7dd99430492bee9a957c05c1656d14b9157f3d93cb91debe5ff')
 
 pkgver() {
   cd "${_pkgsrc}"

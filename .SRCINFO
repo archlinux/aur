@@ -14,6 +14,8 @@ pkgbase = bitrise-git
 	provides = bitrise=2.18.0
 	conflicts = bitrise
 	source = bitrise::git+https://github.com/bitrise-io/bitrise.git
+	source = bitrise.install
 	sha256sums = SKIP
+	sha256sums = 66525077041db7dd99430492bee9a957c05c1656d14b9157f3d93cb91debe5ff
 
 pkgname = bitrise-git
