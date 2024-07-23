@@ -10,7 +10,7 @@ license=("LGPL3")
 depends=('sddm' 'qt6-5compat' 'qt6-declarative' 'qt6-svg' 'ttf-jetbrains-mono-nerd')
 makedepends=("git")
 source=("git+https://github.com/kamack38/sddm-greenleaf")
-md5sums=("SKIP")
+md5sums=('SKIP')
 
 package() {
 	cd "${srcdir}/sddm-greenleaf"
