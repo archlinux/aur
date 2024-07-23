@@ -5,18 +5,19 @@ _android_arch=x86
 
 pkgname=android-${_android_arch}-kmod
 pkgver=32
-pkgrel=4
+pkgrel=5
 pkgdesc="Linux kernel module management tools and library (Android, ${_android_arch})"
 arch=('any')
 url='https://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git'
 license=('GPL2')
+groups=(android-kmod)
 depends=("android-${_android_arch}-zlib"
          "android-${_android_arch}-openssl"
          "android-${_android_arch}-xz"
          "android-${_android_arch}-zstd")
 makedepends=('android-environment')
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-$pkgver.tar."{xz,sign}
+source=("https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-${pkgver}.tar."{xz,sign}
         'basename-impl.h'
         '0001-Use-getcwd.patch'
         '0002-Define-basename.patch')
@@ -28,7 +29,7 @@ md5sums=('1046fda48766fae905f83150d12eec78'
 validpgpkeys=('EAB33C9690013C733916AC839BA2A5A630CBEA53')  # Lucas DeMarchi
 
 prepare() {
-    cd "${srcdir}/kmod-$pkgver"
+    cd "${srcdir}/kmod-${pkgver}"
     source android-env ${_android_arch}
 
     patch -Np1 -i ../0001-Use-getcwd.patch
@@ -39,7 +40,7 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}/kmod-$pkgver"
+    cd "${srcdir}/kmod-${pkgver}"
     source android-env ${_android_arch}
 
     ./configure \
@@ -58,13 +59,17 @@ build() {
         --with-zstd \
         --with-openssl
     make $MAKEFLAGS
+    ${ANDROID_AR} cru libkmod/.libs/libkmod.a libkmod/.libs/*.o
+    ${ANDROID_RANLIB} libkmod/.libs/libkmod.a
 }
 
 package() {
-    cd "${srcdir}/kmod-$pkgver"
+    cd "${srcdir}/kmod-${pkgver}"
     source android-env ${_android_arch}
 
-    make DESTDIR="$pkgdir" install
+    make DESTDIR="${pkgdir}" install
+    install -v -m644 libkmod/.libs/libkmod.a "${pkgdir}/${ANDROID_PREFIX_LIB}/"
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
