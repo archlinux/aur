@@ -2,8 +2,8 @@
 
 _pkgname='aws-mfa'
 pkgname="${_pkgname}-bin"
-pkgver=2.2.1
-pkgrel=2
+pkgver=3.0.0
+pkgrel=1
 pkgdesc='A tool to generate/refresh temporary AWS credentials using MFA'
 arch=('x86_64')
 _goos='linux'
@@ -14,7 +14,7 @@ depends=('glibc')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("${pkgname}-${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_${_goos}_${_goarch}")
-sha256sums=(7f606b5ce708cdf6e86dd5b5779c586fccb6c24263814808a1e6a9248980e558)
+sha256sums=(1ab6996f25c658fc3b107ce21c8fdd774051165346b059e0ef476b3d14c12ff3)
 
 package() {
 	install -Dm 755 "${pkgname}-${pkgver}" "${pkgdir}/usr/bin/${_pkgname}"
