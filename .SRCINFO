@@ -1,14 +1,17 @@
 pkgbase = aws-mfa-bin
 	pkgdesc = A tool to generate/refresh temporary AWS credentials using MFA
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RueLaLa/aws-mfa
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	depends = glibc
 	provides = aws-mfa-bin
 	conflicts = aws-mfa-bin
-	source = aws-mfa-bin-3.0.0::https://github.com/RueLaLa/aws-mfa/releases/download/v3.0.0/aws-mfa_3.0.0_linux_amd64
-	sha256sums = 1ab6996f25c658fc3b107ce21c8fdd774051165346b059e0ef476b3d14c12ff3
+	source_x86_64 = aws-mfa-bin-3.0.0.zip::https://github.com/RueLaLa/aws-mfa/releases/download/v3.0.0/aws-mfa-3.0.0-linux-amd64.zip
+	sha256sums_x86_64 = 1ab6996f25c658fc3b107ce21c8fdd774051165346b059e0ef476b3d14c12ff3
+	source_aarch64 = aws-mfa-bin-3.0.0.zip::https://github.com/RueLaLa/aws-mfa/releases/download/v3.0.0/aws-mfa-3.0.0-linux-arm64.zip
+	sha256sums_aarch64 = 4b4abe21cd48fb547638a9fa4e83e7849d750c83384df6c9506f02b81eb0d974
 
 pkgname = aws-mfa-bin
