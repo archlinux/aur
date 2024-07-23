@@ -8,7 +8,7 @@ _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-pcsclite
 pkgver=2.2.3
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="PC/SC Architecture smartcard middleware library (Android ${_android_arch})"
 url='https://pcsclite.apdu.fr/'
@@ -26,14 +26,14 @@ md5sums=('1a5f60ade943393f9e609e0e55bb1417'
 validpgpkeys=('F5E11B9FFE911146F41D953D78A1B4DFE8F9C57E') # Ludovic Rousseau <rousseau@debian.org>
 
 prepare() {
-    cd "${srcdir}/pcsc-lite-$pkgver"
+    cd "${srcdir}/pcsc-lite-${pkgver}"
 
     patch -Np1 -i ../0002-Disable-issetugid.patch
     patch -Np1 -i ../0003-Fix-missing-pthread_cancel.patch
 }
 
 build() {
-    cd "${srcdir}/pcsc-lite-$pkgver"
+    cd "${srcdir}/pcsc-lite-${pkgver}"
     source android-env ${_android_arch}
 
     android-${_android_arch}-meson build \
@@ -57,5 +57,6 @@ package() {
     rm -f "$pkgdir/${ANDROID_PREFIX_BIN}/pcscd"
     rm -rf "$pkgdir/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
 }
 
