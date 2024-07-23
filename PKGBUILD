@@ -11,7 +11,7 @@ pkgver=0.2.3
 pkgrel=1
 
 arch=("x86_64")
-depends=("glibc" "gcc-libs" "bzip2")
+depends=("glibc" "gcc-libs" "bzip2" "openssl")
 
 source=(
     "$pkgname-$pkgver::https://github.com/Umatriz/nomi/releases/download/$pkgver/client-$CARCH-unknown-linux-gnu"
