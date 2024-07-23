@@ -2,14 +2,14 @@
 
 _pkgname=zellij-selector
 pkgname=$_pkgname-git
-pkgver=2.5.0.r5.g6b44872
+pkgver=2.5.0.r13.g2b2843f
 pkgrel=1
 pkgdesc='Select zellij session'
 arch=('any')
 url='https://gitlab.com/stefanwimmer128/zellij-selector'
 license=('MPL2')
 depends=('sh' 'libnewt' 'zellij' 'jq.sh' 'yq')
-makedepends=('git' 'shellcheck' 'getoptions' 'cross-install')
+makedepends=('git' 'shellcheck' 'getoptions')
 optdepends=('fish: Option to option fish shell'
             'zsh: Option to open zsh shell'
             'bash: Option to open bash shell')
@@ -20,7 +20,15 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname"
+
     git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd "$_pkgname"
+
+    ./bootstrap
+    ./configure --prefix=/usr
 }
 
 build() {
@@ -38,5 +46,5 @@ check() {
 package() {
     cd "$_pkgname"
 
-    make DESTDIR="$pkgdir" PREFIX=/usr install
+    make DESTDIR="$pkgdir" install
 }
