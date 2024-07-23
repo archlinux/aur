@@ -1,7 +1,7 @@
 # Maintainer: Astro <astroncityStatic@gmail.com>
 pkgname='cosmic-ascent'
-pkgver=v1.0.0.r2.g70e67c4
-pkgrel=1
+pkgver=v1.0.1.alpha
+pkgrel=2
 pkgdesc="A 2D top-down rogue-like currently in development"
 arch=('x86_64')
 url="https://github.com/Astroncity/Cosmic-Ascent"
@@ -13,7 +13,7 @@ md5sums=('SKIP')
 
 pkgver(){
 	cd "$pkgname"
-	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

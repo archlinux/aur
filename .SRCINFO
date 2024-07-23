@@ -1,7 +1,7 @@
 pkgbase = cosmic-ascent
 	pkgdesc = A 2D top-down rogue-like currently in development
-	pkgver = v1.0.0.r2.g70e67c4
-	pkgrel = 1
+	pkgver = v1.0.1.alpha
+	pkgrel = 2
 	url = https://github.com/Astroncity/Cosmic-Ascent
 	arch = x86_64
 	license = MIT
