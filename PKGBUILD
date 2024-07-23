@@ -28,7 +28,7 @@ package() {
   install -Dm755 "src/py/main.py" "${pkgdir}/usr/local/bin/connmaster-py"
 
   # Create a symlink in /usr/bin pointing to /usr/local/bin/connmaster-py
-  ln -sf "/usr/local/bin/connmaster-py" "${pkgdir}/usr/bin/connmaster-py"
+  ln -sf "/usr/local/bin/connmaster-py" "${pkgdir}/usr/local/bin/connmaster-py"
 
   # Optionally install any icons or .desktop files if needed
   # Install the icon
