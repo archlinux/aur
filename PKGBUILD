@@ -2,7 +2,7 @@
 # Contributor: Carl Smedstad <carl.smedstad at protonmail dot com>
 # Contributor: Jamie Magee <jamie dot magee at gmail dot com>
 pkgname=bicep-bin
-pkgver=0.29.45
+pkgver=0.29.47
 pkgrel=1
 pkgdesc='A declarative language for describing and deploying Azure resources'
 arch=(
@@ -27,8 +27,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-arm64")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-x64")
 sha256sums=('c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383')
-sha256sums_aarch64=('b40e550bdb8c13982323d41b3ea3281f39e804690f561bc37d34d9f2ac5e42b4')
-sha256sums_x86_64=('e58d76ab938fa0acf5f56fc1e95fb497bd7e01d698ced3d83db309e6baa88314')
+sha256sums_aarch64=('88e8e0d0f40d9bdeedbc421e4a89f65ef28d36e3420a62808f5d394d40638b6e')
+sha256sums_x86_64=('960d636cd99ca58724565f3141bb1e0983b58b6baa4a1018b07caf06448ab3c3')
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
