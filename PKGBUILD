@@ -3,14 +3,14 @@
 
 pkgname=helm-ls
 pkgver=0.0.20
-pkgrel=1
+pkgrel=2
 _commit=9698011a15ae875fda00bad110abbc77c13e0ee9
 pkgdesc='Language server for Helm'
 license=(MIT)
 
 url='https://github.com/mrjosh/helm-ls'
 # NOTE: submodules are required for check()
-source=("$pkgname::git+$url.git")
+source=("$pkgname::git+$url.git#tag=v$pkgver")
 md5sums=(SKIP)
 
 arch=(x86_64)
@@ -20,14 +20,9 @@ checkdepends=(yaml-language-server)
 options=('!debug')
 
 verify() {
-  cd "$pkgname"
+  cd "$SRCDEST/$pkgname"
   # Check the commit hash of the tag - effectively verifies the source files
   [ "$(git --git-dir . rev-list -n1 v$pkgver)" = "$_commit" ]
-}
-
-prepare() {
-  cd "$srcdir/$pkgname"
-  git checkout --quiet v$pkgver
 }
 
 build() {
