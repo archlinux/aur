@@ -3,7 +3,7 @@
 
 pkgname=ruby-prawn-svg
 _pkgname=${pkgname#ruby-}
-pkgver=0.35.0
+pkgver=0.35.1
 pkgrel=1
 pkgdesc="SVG renderer for Prawn Ruby PDF library"
 arch=(any)
@@ -23,12 +23,10 @@ makedepends=(
 checkdepends=(ruby-rspec)
 options=(!emptydirs)
 source=("git+$url.git#tag=v$pkgver")
-sha256sums=('41e75900839f44bcbe43688ede5070a0a0a6e4be738f183eee2bf587b900665d')
-
-_archive="$_pkgname"
+sha256sums=('652e9263991e4a632b0c18c1a475f3191374e0f3b7c5e51cfc1bb305bdc03d41')
 
 prepare() {
-  cd "$_archive"
+  cd "$_pkgname"
 
   # Update gemspec/Gemfile to allow newer version of the dependencies
   sed -i -E 's|~>|>=|g' "$_pkgname.gemspec"
@@ -38,7 +36,7 @@ prepare() {
 }
 
 build() {
-  cd "$_archive"
+  cd "$_pkgname"
 
   local gemdir="$(gem env gemdir)"
 
@@ -81,16 +79,15 @@ build() {
 }
 
 check() {
-  cd "$_archive"
+  cd "$_pkgname"
 
   GEM_HOME="tmp_install/$(gem env gemdir)" rspec
 }
 
 package() {
-  cd "$_archive"
+  cd "$_pkgname"
 
   cp -a -t "$pkgdir" tmp_install/*
-
   install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }

@@ -1,6 +1,6 @@
 pkgbase = ruby-prawn-svg
 	pkgdesc = SVG renderer for Prawn Ruby PDF library
-	pkgver = 0.35.0
+	pkgver = 0.35.1
 	pkgrel = 1
 	url = https://github.com/mogest/prawn-svg
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = ruby-prawn-svg
 	depends = ruby-prawn
 	depends = ruby-rexml
 	options = !emptydirs
-	source = git+https://github.com/mogest/prawn-svg.git#tag=v0.35.0
-	sha256sums = 41e75900839f44bcbe43688ede5070a0a0a6e4be738f183eee2bf587b900665d
+	source = git+https://github.com/mogest/prawn-svg.git#tag=v0.35.1
+	sha256sums = 652e9263991e4a632b0c18c1a475f3191374e0f3b7c5e51cfc1bb305bdc03d41
 
 pkgname = ruby-prawn-svg
