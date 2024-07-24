@@ -2,7 +2,7 @@
 
 _pkgnamebase=cppfront
 pkgname=${_pkgnamebase}-git
-pkgver=r303.b1754db
+pkgver=v0.7.1.r33.gbe17724
 pkgrel=1
 pkgdesc="Experimental and incomplete compiler for proposed C++ 'syntax 2'"
 arch=('x86_64')
@@ -17,8 +17,7 @@ md5sums=('SKIP')
 pkgver() {
     cd "$srcdir/${_pkgnamebase}"
 
-    # As of writing this, there are no tags or official releases
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
