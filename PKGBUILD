@@ -2,7 +2,7 @@
 # Previous Maintainer:  jyantis <yantis@yantis.net>
 
 pkgname=python-autopep8-git
-pkgver=1.5r2586.fded37b
+pkgver=2.3.1r2942.916d699
 pkgrel=1
 pkgdesc='Automatically formats Python code to conform to the PEP 8 style guide.'
 arch=('any')
@@ -30,11 +30,11 @@ check() {
 
 build() {
   cd autopep8
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd autopep8
-  python setup.py install --root="${pkgdir}" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

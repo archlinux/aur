@@ -1,6 +1,6 @@
 pkgbase = python-autopep8-git
 	pkgdesc = Automatically formats Python code to conform to the PEP 8 style guide.
-	pkgver = 1.5r2586.fded37b
+	pkgver = 2.3.1r2942.916d699
 	pkgrel = 1
 	url = https://github.com/hhatto/autopep8
 	arch = any
@@ -14,4 +14,3 @@ pkgbase = python-autopep8-git
 	sha256sums = SKIP
 
 pkgname = python-autopep8-git
-
