@@ -3,24 +3,28 @@ pkgbase=python-mpl-animators
 _pname=${pkgbase#python-}
 _pyname=${_pname/-/_}
 pkgname=("python-${_pname}" "python-${_pname}-doc")
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="An interative animation framework for matplotlib"
 arch=('any')
 url="https://sunpy.org"
-license=('BSD')
+license=('BSD-3-Clause')
 makedepends=('python-setuptools-scm'
              'python-wheel'
              'python-build'
              'python-installer'
-             'python-sunpy-sphinx-theme'
              'python-sphinx-automodapi'
+             'python-sphinx-gallery'
+             'python-sunpy-sphinx-theme'
              'python-matplotlib'
              'python-astropy'
+             'python-sunpy'
+             'python-scipy'
              'graphviz')
-checkdepends=('python-pytest-mpl')  # matplotlib, astropy already in makedepends
+checkdepends=('python-pytest-doctestplus'
+              'python-pytest-mpl')  # matplotlib, astropy already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('e8c91ff9547ce2f214c594291019fe57')
+md5sums=('6a64eaec408fd228465ec9a4172e645d')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -37,9 +41,8 @@ check() {
 }
 
 package_python-mpl-animators() {
-    depends=('python-matplotlib>=3.5.0')
-    optdepends=('python-astropy>5.1.0: all, wcs'
-                'python-mpl-animators-doc: Documentation for mpl-animators')
+    depends=('python-matplotlib>=3.5.0' 'python-astropy>=5.6.0')
+    optdepends=('python-mpl-animators-doc: Documentation for mpl-animators')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 LICENSE.rst -t "${pkgdir}/usr/share/licenses/${pkgname}"
