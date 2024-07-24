@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname="nginx-ui"
-pkgver=2.0.0_beta.26
+pkgver=2.0.0_beta.27
 _pkgver=${pkgver//_/-}
 pkgrel=1
 pkgdesc="Yet another WebUI for Nginx"
@@ -10,10 +10,10 @@ url="https://github.com/0xJacky/${pkgname}"
 backup=("etc/${pkgname}/config.ini")
 license=("AGPL-3.0-or-later")
 depends=("nginx")
-makedepends=("npm" "go")
+makedepends=("pnpm" "go")
 source=("${pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz"
         "${pkgname}.service")
-sha256sums=('f9812d74e95594ce69e977e28360672d5b9c0383109ea1974efc6222dc89e83e'
+sha256sums=('d2181da3296740f0da2ee44014d5553f5ce071c9ff4601d0620510ccbf0330cd'
             'ff046cd729097a4c68c4f6d3d035125455457933fed18300c63072e9c55a8fdd')
 
 build() {
@@ -22,14 +22,20 @@ build() {
     export CGO_CXXFLAGS="${CXXFLAGS}"
 
     cd "${pkgname}-${_pkgver}"
-    npm --prefix app install
-    npm --prefix app run build
+    pnpm --prefix app install
+    pnpm --prefix app build
+
+    local ldflags="
+        -s -w \
+        -extldflags '${LDFLAGS}' \
+        -X 'github.com/0xJacky/Nginx-UI/settings.buildTime=$(date +%s)'
+    "
 
     go build \
         -trimpath \
+        -tags jsoniter \
         -ldflags="-s -w -extldflags '${LDFLAGS}'" \
         -o "${pkgname}" \
-        -v \
         ./main.go
 }
 
@@ -39,6 +45,5 @@ package() {
     cd "${pkgname}-${_pkgver}"
     install -Dm755 "${pkgname}"    "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 app.example.ini "${pkgdir}/etc/${pkgname}/config.ini"
-    install -Dm644 LICENSE         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 *.md         -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
