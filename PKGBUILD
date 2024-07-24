@@ -1,8 +1,8 @@
 # Maintainer: Dmali <dmali@vk.com>
 
 pkgname=klaus-bin
-pkgver=13.1
-_releasedate=2024-02-06
+pkgver=14.0
+_releasedate=2024-07-24
 pkgrel=1
 pkgdesc="Arch manager that allows you to download, install, delete packages..."
 arch=('x86_64')
@@ -16,14 +16,14 @@ source=(
 )
 
 sha256sums=(
-	'28507014cc6d58a9e73f091027b3604491ffaa521990879a0ab96f52aac51868'
+	'1132eb0768c0782ee98db8054ec9214cf2333575f3cfa8cb0e8179311c7372d5'
 )
 
 package() {
     mkdir -p ${pkgdir}/usr/bin/
     mkdir -p ${pkgdir}/usr/share/icons/hicolor/128x128/apps/
 
-    install -Dm755 ./klaus/klauspro ${pkgdir}/usr/bin/klauspro
+    install -Dm755 ./klaus/kLausPro ${pkgdir}/usr/bin/kLausPro
 
 	install -Dt ${pkgdir}/usr/share/applications/ -m644 ./klaus/klaus.desktop
 	install -Dt ${pkgdir}/usr/share/icons/hicolor/128x128/apps/ -m644 ./klaus/klaus.png
