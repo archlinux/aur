@@ -1,12 +1,12 @@
 pkgbase = xplane-sdk-devel
 	pkgdesc = X-Plane SDK
-	pkgver = 4.0.1
-	pkgrel = 2
+	pkgver = 4.1.0
+	pkgrel = 1
 	url = https://developer.x-plane.com/sdk/
 	arch = any
 	license = custom
 	depends = glibc
-	source = https://developer.x-plane.com/wp-content/plugins/code-sample-generation/sdk_zip_files/XPSDK401.zip
-	sha256sums = c1104e83d9b54b03d0084c1db52ee6491e5290994503e8dd2d4a0af637e2bdd7
+	source = https://developer.x-plane.com/wp-content/plugins/code-sample-generation/sdk_zip_files/XPSDK410.zip
+	sha256sums = 380a9fdb106b75479e4d90dc262ab26da76ff94bc7df4f98f42c0328fe57cad9
 
 pkgname = xplane-sdk-devel
