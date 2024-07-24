@@ -1,4 +1,5 @@
-# Maintainer: theRealPadster <padspambox at gmail dot com>
+# Maintainer: Adrian Groh <adrian[dot]groh[at]t[dash]online[dot]de>
+# Contributor: theRealPadster <padspambox at gmail dot com>
 # Based on the authy and spotify AUR packages
 # https://aur.archlinux.org/packages/authy
 # https://aur.archlinux.org/packages/spotify
