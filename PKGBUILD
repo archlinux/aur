@@ -2,7 +2,7 @@
 pkgname=lsl
 pkgver=1.0.0
 pkgrel=1
-_?commit='a5f4f4ee5989ce188c44094c526c5b454ae01f7a'
+_commit='a5f4f4ee5989ce188c44094c526c5b454ae01f7a'
 pkgdesc='linux subsystem for linux'
 arch=('any')
 url='https://gitlab.com/sulincix/debian-subsystem/'
