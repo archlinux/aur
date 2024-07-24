@@ -6,7 +6,7 @@
 
 _pkgname=chromium
 pkgname=chromium-no-extras
-pkgver=127.0.6533.57
+pkgver=127.0.6533.72
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -27,7 +27,8 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: support for native dialogs in Plasma'
             'gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
-            'kwallet: support for storing passwords in KWallet on Plasma')
+            'kwallet: support for storing passwords in KWallet on Plasma'
+            'upower: Battery Status API support')
 options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
@@ -37,7 +38,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         compiler-rt-adjust-paths.patch
         increase-fortify-level.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('8aea503da0c65edd642197114805f563fc006d9430a6007688b6b172ea625810'
+sha256sums=('7f21f1bfc89e1a2c474463ef950b72e6401d1375cf3c17d907bf3d346720efbe'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '0887d215c47085013d09252409964a5eedec453561db1f2b133914e349b8a0b2'
             '8f81059d79040ec598b5fb077808ec69d26d6c9cbebf9c4f4ea48b388a2596c5'
