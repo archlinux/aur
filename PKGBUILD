@@ -1,4 +1,5 @@
-# Maintainer: Francois Menning <f.menning@protonmail.com>
+# Maintainer:  Jefferson Carneiro <slackjeff at slackjeff dot com dot br>
+# Contributor: Francois Menning <f.menning@protonmail.com>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: yugrotavele <yugrotavele at archlinux dot us>
@@ -8,8 +9,8 @@
 # Contributor: Nuno Araujo <nuno.araujo at russo79.com>
 
 _pkgname=bleachbit
-pkgname=bleachbit-git
-pkgver=r5129.aedff9d9
+pkgname=$_pkgname-git
+pkgver=r5910.db8f9389
 pkgrel=1
 pkgdesc='Deletes unneeded files to free disk space and maintain privacy.'
 url='https://www.bleachbit.org/'

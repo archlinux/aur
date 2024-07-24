@@ -1,6 +1,6 @@
 pkgbase = bleachbit-git
 	pkgdesc = Deletes unneeded files to free disk space and maintain privacy.
-	pkgver = r5129.aedff9d9
+	pkgver = r5910.db8f9389
 	pkgrel = 1
 	url = https://www.bleachbit.org/
 	arch = any
@@ -15,4 +15,3 @@ pkgbase = bleachbit-git
 	sha256sums = SKIP
 
 pkgname = bleachbit-git
-
