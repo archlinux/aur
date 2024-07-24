@@ -10,7 +10,7 @@ _realver=${pkgver//.s*}
 _gmpver=6.3.0
 _mpcver=1.3.1
 _mpfrver=4.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc='The GNU Compiler Collection (snapshot)'
 arch=(x86_64)
 license=(GPL-3.0-with-GCC-exception GFDL-1.3-or-later)
@@ -28,7 +28,8 @@ source=(https://ftp.fu-berlin.de/unix/languages/gcc/snapshots/${_pkgver}/gcc-${_
         c99
         gcc-ada-repro.patch
         0001-gm2-add-missing-debug-output-guard.patch
-        0002-gm2-fix-bad-programming-practice-identifier-warning.patch)
+        0002-gm2-fix-bad-programming-practice-identifier-warning.patch
+        0003-gm2-fix-bad-programming-practice-warning.patch)
 validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.org
               86CFFCA918CF3AF47147588051E8B148A9999C34  # evangelos@foutrelis.com
               13975A70E63C361C73AE69EF6EEB81F8981C74C7  # richard.guenther@gmail.com
@@ -46,7 +47,8 @@ sha256sums=('9900337d06dd514e2f969c066064910015ce0c594cc87d6d5c1875b08e972f8e'
             '2513c6d9984dd0a2058557bf00f06d8d5181734e41dcfe07be7ed86f2959622a'
             '1773f5137f08ac1f48f0f7297e324d5d868d55201c03068670ee4602babdef2f'
             'ce57c73ef16f4d56c2bec4cee79d876b5f2e67e85da1988b3a2cf4049575556a'
-            '9252eca98be0183732f83c383e4680a40f756bab11df9269b53484fccf106874')
+            '9252eca98be0183732f83c383e4680a40f756bab11df9269b53484fccf106874'
+            '6fad5923d838486e72b41766b8bfd8a6785ff1fbd2005e1196107c9dc8d36a1d')
 
 prepare() {
   if [ ! -d gcc ]; then
@@ -66,6 +68,7 @@ prepare() {
   patch -Np0 -i ${srcdir}/gcc-ada-repro.patch
   patch -Np1 -i ${srcdir}/0001-gm2-add-missing-debug-output-guard.patch
   patch -Np1 -i ${srcdir}/0002-gm2-fix-bad-programming-practice-identifier-warning.patch
+  patch -Np1 -i ${srcdir}/0003-gm2-fix-bad-programming-practice-warning.patch
 
   mkdir -p ${srcdir}/gcc-build ${srcdir}/libgccjit-build
 }
