@@ -1,6 +1,6 @@
 pkgbase = mihomo-git
 	pkgdesc = Mihomo Kernel by MetaCubeX, formerly known as Clash.Meta
-	pkgver = alpha.4eb13a73
+	pkgver = PrereleaseAlpha.r3.g4b9fdacb
 	pkgrel = 1
 	url = https://github.com/MetaCubeX/mihomo
 	install = mihomo.install

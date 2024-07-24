@@ -2,8 +2,8 @@
 
 _name=mihomo
 pkgname=$_name-git
-pkgver=alpha.4eb13a73
-pkgrel=2
+pkgver=PrereleaseAlpha.r3.g4b9fdacb
+pkgrel=1
 pkgdesc="Mihomo Kernel by MetaCubeX, formerly known as Clash.Meta"
 arch=("x86_64" 'aarch64')
 url="https://github.com/MetaCubeX/mihomo"
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$_name"
-    printf "alpha.%s" "$(git rev-parse --short HEAD)"
+    git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-\([^-]*\)-\([^-]*\)$/.\1.\2/;s/-//'
 }
 
 build(){
