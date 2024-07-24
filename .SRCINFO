@@ -1,6 +1,6 @@
 pkgbase = ksh93-git
 	pkgdesc = KornShell 93u+m, fork based on ksh 93u+
-	pkgver = r1659.f2bc1f45
+	pkgver = r1709.9ea4e320
 	pkgrel = 1
 	url = https://github.com/ksh93/ksh/
 	install = ksh93.install

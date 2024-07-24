@@ -4,7 +4,7 @@
 
 _pkgname='ksh93'
 pkgname="${_pkgname}-git"
-pkgver=r1659.f2bc1f45
+pkgver=r1709.9ea4e320
 pkgrel=1
 pkgdesc="KornShell 93u+m, fork based on ksh 93u+"
 arch=('x86_64' 'i686' 'pentium4' 'powerpc64le' 'powerpc64' 'powerpc' 'riscv64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -32,6 +32,12 @@ prepare() {
 	if [[ ${_all_libcmd} == 1 || ${_all_libcmd} == yes ]]; then
 		sed -i 's/ALL_LIBCMD=0/ALL_LIBCMD=1/g' src/cmd/ksh93/SHOPT.sh
 	fi
+	# 'bin/package install' requires that the file(1) command be functional.
+	# The package() function in all PKGBUILD scripts is run in a fakeroot
+	# environment, which by default has seccomp restrictions that stop
+	# file from operating. To work around this, file is passed the --no-sandbox
+	# flag via an alias inserted into the bin/package script.
+	sed -i '1s/^/alias file="file --no-sandbox" /' bin/package
 }
 
 build() {
@@ -42,55 +48,34 @@ build() {
 }
 
 package() {
-	cd "${srcdir}"
 	# Folder creation in ${pkgdir}
-	install -dm0755 "${pkgdir}/usr/bin"
-	install -dm0755 "${pkgdir}/usr/lib"
+	cd "${srcdir}"
 	install -dm0755 "${pkgdir}/etc/skel"
-	install -dm0755 "${pkgdir}/usr/share/ksh/functions"
+	install -dm0755 "${pkgdir}/usr/share/ksh"
 	install -dm0755 "${pkgdir}/usr/share/doc/ksh"
 	install -dm0755 "${pkgdir}/usr/share/licenses/ksh"
-	install -dm0755 "${pkgdir}/usr/share/man/man3ast"
-	# Install the example kshrc
+
+	# Install the example kshrc provided with the PKGBUILD.
 	install -Dm0644 sample.kshrc "${pkgdir}/etc/skel/.kshrc"
 
+	# Use the bin/package script to install the core components of ksh + man pages
 	cd "${srcdir}/$_pkgname"
-	# Install license files and documentation
+	./bin/package install "${pkgdir}/usr"
+
+	# Install license files and additional documentation
 	install -Dm0644 LICENSE.md "${pkgdir}/usr/share/licenses/ksh/LICENSE.md"
 	install -Dm0644 COPYRIGHT "${pkgdir}/usr/share/licenses/ksh/COPYRIGHT"
-	install -Dm0644 "src/cmd/${_pkgname}/sh.1" "${pkgdir}/usr/share/man/man1/ksh.1"
-	for _man in 'ksh93' 'rksh' 'rksh93'; do
-		ln -srf "${pkgdir}/usr/share/man/man1/ksh.1" "${pkgdir}/usr/share/man/man1/${_man}.1"
-	done
-	for _astdoc in ./arch/linux.*/man/man3/*; do
-		# To avoid clashes with man pages from other packages, the libast and libshell
-		# man pages are installed to a '3ast' section. The default filenames in the
-		# repo only have a .3 filename extension, so this is changed to .3ast.
-		install -Dm0644 "${_astdoc}" "${pkgdir}/usr/share/man/man3ast/$(basename ${_astdoc})ast"
-	done
 	for _doc in 'builtins.mm' 'COMPATIBILITY' 'DESIGN' 'OBSOLETE' 'PROMO.mm' 'README' 'README-AUDIT.md' \
 			'RELEASE' 'RELEASE88' 'RELEASE93' 'sh.memo' 'TYPES'; do
 		install -Dm0644 "src/cmd/${_pkgname}/${_doc}" "${pkgdir}/usr/share/doc/ksh/${_doc}"
 	done
 
-	# Install various ksh functions like autocd
-	for _fun in 'autocd' 'cd' 'dirs' 'man' 'mcd' 'popd' 'pushd'; do
-		install -Dm0644 "src/cmd/${_pkgname}/fun/${_fun}" "${pkgdir}/usr/share/ksh/functions/${_fun}"
+	# Create relevant relative symlinks for alternate ksh names
+	for _kshname in 'ksh93' 'rksh' 'rksh93'; do
+		ln -srf "${pkgdir}/usr/bin/ksh" "${pkgdir}/usr/bin/${_kshname}"
+		ln -srf "${pkgdir}/usr/share/man/man1/ksh.1" "${pkgdir}/usr/share/man/man1/${_kshname}.1"
 	done
 
-	# Install shared libraries used by ksh (e.g. libast)
-	for _dynlib in arch/linux.*/dyn/lib/*; do
-		if [[ -L ${_dynlib} ]]; then
-			cp -P "${_dynlib}" "${pkgdir}/usr/lib"
-		else
-			install -Dm0755 "${_dynlib}" "${pkgdir}/usr/lib/$(basename "${_dynlib}")"
-		fi
-	done
-
-	# Install the dynamically linked ksh and shcomp binaries
-	install -Dm0755 arch/linux.*/dyn/bin/ksh "${pkgdir}/usr/bin/ksh"
-	for _exe in 'ksh93' 'rksh' 'rksh93'; do
-		ln -srf "${pkgdir}/usr/bin/ksh" "${pkgdir}/usr/bin/${_exe}"
-	done
-	install -Dm0755 arch/linux.*/dyn/bin/shcomp "${pkgdir}/usr/bin/shcomp"
+	# Move ksh-specific /usr/share/fun to /usr/share/ksh/functions
+	mv "${pkgdir}/usr/share/fun" "${pkgdir}/usr/share/ksh/functions"
 }
