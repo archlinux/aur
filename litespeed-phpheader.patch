@@ -1,0 +1,10 @@
+--- a/sapi/litespeed/lsapi_main.c
++++ a/sapi/litespeed/lsapi_main.c
+@@ -25,6 +25,7 @@
+ #include "zend.h"
+ #include "ext/standard/basic_functions.h"
+ #include "ext/standard/info.h"
++#include "ext/standard/head.h"
+ #include "lsapilib.h"
+ 
+ #include <stdio.h>

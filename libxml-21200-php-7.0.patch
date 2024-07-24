@@ -1,0 +1,49 @@
+--- php-7.4.33-o/ext/libxml/libxml.c
++++ php-7.4.33/ext/libxml/libxml.c
+@@ -530,7 +530,11 @@
+ 	return 1;
+ }
+ 
+-static void _php_list_set_error_structure(xmlErrorPtr error, const char *msg)
++#if LIBXML_VERSION >= 21200
++static void _php_list_set_error_structure(const xmlError *error, const char *msg)
++#else
++static void _php_list_set_error_structure(xmlError *error, const char *msg)
++#endif
+ {
+ 	xmlError error_copy;
+ 	int ret;
+@@ -782,7 +786,11 @@
+ 	va_end(args);
+ }
+ 
++#if LIBXML_VERSION >= 21200
++PHP_LIBXML_API void php_libxml_structured_error_handler(void *userData, const xmlError *error)
++#else
+ PHP_LIBXML_API void php_libxml_structured_error_handler(void *userData, xmlErrorPtr error)
++#endif
+ {
+ 	_php_list_set_error_structure(error, NULL);
+ 
+@@ -1061,9 +1069,7 @@
+    Retrieve last error from libxml */
+ static PHP_FUNCTION(libxml_get_last_error)
+ {
+-	xmlErrorPtr error;
+-
+-	error = xmlGetLastError();
++	const xmlError *error = xmlGetLastError();
+ 
+ 	if (error) {
+ 		object_init_ex(return_value, libxmlerror_class_entry);
+--- php-7.4.33-o/ext/soap/php_sdl.c
++++ php-7.4.33/ext/soap/php_sdl.c
+@@ -333,7 +333,7 @@
+ 	sdl_restore_uri_credentials(ctx);
+ 
+ 	if (!wsdl) {
+-		xmlErrorPtr xmlErrorPtr = xmlGetLastError();
++		const xmlError *xmlErrorPtr = xmlGetLastError();
+ 
+ 		if (xmlErrorPtr) {
+ 			soap_error2(E_ERROR, "Parsing WSDL: Couldn't load from '%s' : %s", struri, xmlErrorPtr->message);
