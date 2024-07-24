@@ -2,7 +2,7 @@
 
 _name=mihomo
 pkgname=$_name-git
-pkgver=PrereleaseAlpha.r3.g4b9fdacb
+pkgver=PrereleaseAlpha.r0.g4b9fdacb
 pkgrel=1
 pkgdesc="Mihomo Kernel by MetaCubeX, formerly known as Clash.Meta"
 arch=("x86_64" 'aarch64')
