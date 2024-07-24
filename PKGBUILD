@@ -13,7 +13,7 @@ source=("${pkgname}-${pkgver}::https://gitlab.com/sulincix/debian-subsystem/-/ar
 md5sums=('SKIP')
 
 build() {
-    make -C "debian-subsystem-${_commit}" all
+    make -C "debian-subsystem-${_commit}" build
 }
 
 package() {
