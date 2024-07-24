@@ -11,6 +11,7 @@ pkgbase = frzr
 	depends = dosfstools
 	depends = jq
 	depends = util-linux
+	optdepends = dracut: generate initramfs for kernels installed via frzr kernel command
 	source = frzr-0.15.2.tar.gz::https://github.com/gamer-os/frzr/archive/0.15.2.tar.gz
 	source = 99-frzr-kernel-install.hook
 	md5sums = b4a5bb450c2b32d37742d598c20b12f0
