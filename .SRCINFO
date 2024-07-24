@@ -1,6 +1,6 @@
 pkgbase = simple-http-server-bin
 	pkgdesc = Simple http server in Rust
-	pkgver = 0.6.3
+	pkgver = 0.6.9
 	pkgrel = 1
 	url = https://github.com/TheWaWaR/simple-http-server
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = simple-http-server-bin
 	provides = simple-http-server
 	conflicts = simple-http-server-git
 	conflicts = simple-http-server
-	source = https://github.com/TheWaWaR/simple-http-server/releases/download/v0.6.3/x86_64-unknown-linux-musl-simple-http-server
-	sha256sums = 4751f874a79fcb299b15d54cdb96809eb43ad3bca4bd4c2e8bd1ec2217cc929f
+	source = https://github.com/TheWaWaR/simple-http-server/releases/download/v0.6.9/x86_64-unknown-linux-musl-simple-http-server
+	sha256sums = 7ff07cc5379cd573673db8f40018e51bf20de7752f4d1e75482b1af32d6fae3d
 
 pkgname = simple-http-server-bin
