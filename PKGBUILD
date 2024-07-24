@@ -3,8 +3,8 @@
 # Contributor: Porous3247
 
 pkgname=ddcci-driver-linux-dkms
-pkgver=0.4.4
-pkgrel=2
+pkgver=0.4.5
+pkgrel=1
 pkgdesc="A pair of Linux kernel drivers for DDC/CI monitors (DKMS)"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://gitlab.com/ddcci-driver-linux/ddcci-driver-linux/"
@@ -14,7 +14,7 @@ conflicts=("ddcci-driver-linux")
 source=(
   "https://gitlab.com/ddcci-driver-linux/ddcci-driver-linux/-/archive/v${pkgver}/ddcci-driver-linux-v${pkgver}.tar.gz"
 )
-b2sums=('09c025953410adb5f8253e36d32400cf1ee8bf7bfd39a2ffc43784a92211e354fac5b8ed891eaa0c9395317d63982abfca00da99d2ee8f7028d28af37ec1f6b7'
+b2sums=('c4bfea5acbe0c78370fee7fad34de6cbf2b500c0d1620b4f717119859466cd111a88d5ec38d7545e9e8904052ce12ed09ad7bd3f7fd9227fd7137b94fee50be0'
         )
 
 
