@@ -2,4 +2,4 @@
 /*.zst
 /pkg/
 /src/
-/firmware/
+/*.bin
