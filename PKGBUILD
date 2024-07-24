@@ -152,8 +152,8 @@ elif [ -n "$_use_llvm_lto" ]  ||  [[ "$_use_lto_suffix" = "n" ]]; then
     pkgsuffix=cachyos-${_cpusched}
     pkgbase=linux-$pkgsuffix
 fi
-_major=6.9
-_minor=10
+_major=6.10
+_minor=1
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -163,9 +163,10 @@ _stable=${_major}.${_minor}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 pkgdesc='Linux BORE scheduler and hardened Kernel by CachyOS with other patches and improvements'
-pkgrel=1
+pkgrel=2
 _kernver=$pkgver-$pkgrel
-arch=('x86_64' 'x86_64_v3')
+_kernuname="${pkgver}-${pkgsuffix}"
+arch=('x86_64')
 url="https://github.com/CachyOS/linux-cachyos"
 license=('GPL-2.0-only')
 options=('!strip' '!debug' '!lto')
@@ -199,7 +200,7 @@ fi
 # ZFS support
 if [ -n "$_build_zfs" ]; then
     makedepends+=(git)
-    source+=("git+https://github.com/cachyos/zfs.git#commit=228ff3867f53d31dab403a3b6b3b555eaf8bdc04")
+    source+=("git+https://github.com/cachyos/zfs.git#commit=55a3483f28e69bf0514abb8c0a8e3812da282e73")
 fi
 
 # NVIDIA pre-build module support
@@ -534,7 +535,7 @@ build() {
 
     if [ -n "$_build_nvidia" ]; then
         local MODULE_FLAGS=(
-           KERNEL_UNAME="${pkgver}-${pkgsuffix}"
+           KERNEL_UNAME="${_kernuname}"
            IGNORE_PREEMPT_RT_PRESENCE=1
            NV_EXCLUDE_BUILD_MODULES='__EXCLUDE_MODULES'
            SYSSRC="${srcdir}/${_srcname}"
@@ -549,7 +550,7 @@ build() {
     if [ -n "$_build_nvidia_open" ]; then
         cd "${srcdir}/${_nv_open_pkg}"
         local MODULE_FLAGS=(
-           KERNEL_UNAME="${pkgver}-${pkgsuffix}"
+           KERNEL_UNAME="${_kernuname}"
            IGNORE_PREEMPT_RT_PRESENCE=1
            IGNORE_CC_MISMATCH=yes
            SYSSRC="${srcdir}/${_srcname}"
@@ -565,7 +566,7 @@ build() {
         [ "$_use_llvm_lto" != "none" ] && CONFIGURE_FLAGS+=("KERNEL_LLVM=1")
 
         ./autogen.sh
-        sed -i "s|\$(uname -r)|${pkgver}-${pkgsuffix}|g" configure
+        sed -i "s|\$(uname -r)|${_kernuname}|g" configure
         ./configure ${CONFIGURE_FLAGS[*]} --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin \
             --libdir=/usr/lib --datadir=/usr/share --includedir=/usr/include \
             --with-udevdir=/lib/udev --libexecdir=/usr/lib/zfs --with-config=kernel \
@@ -606,7 +607,7 @@ _package() {
 
 _package-headers() {
     pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
-    depends=('pahole' linux-${pkgsuffix} )
+    depends=('pahole' ${pkgbase} )
 
     cd ${srcdir}/${_srcname}
     local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
@@ -690,11 +691,11 @@ _package-headers() {
 
 _package-dbg(){
     pkgdesc="Non-stripped vmlinux file for the $pkgdesc kernel"
-    depends=(linux-${pkgsuffix}-headers)
+    depends=(${pkgbase}-headers)
 
     cd "${srcdir}/${_srcname}"
-    mkdir -p "$pkgdir/usr/src/debug/linux-${pkgsuffix}"
-    install -Dt "$pkgdir/usr/src/debug/linux-${pkgsuffix}" -m644 vmlinux
+    mkdir -p "$pkgdir/usr/src/debug/${pkgbase}"
+    install -Dt "$pkgdir/usr/src/debug/${pkgbase}" -m644 vmlinux
 }
 
 _package-zfs(){
@@ -703,40 +704,49 @@ _package-zfs(){
     provides=('ZFS-MODULE')
     license=('CDDL')
 
+    cd ${srcdir}/$_srcname
+    local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
+
     cd ${srcdir}/"zfs"
-    install -dm755 "$pkgdir/usr/lib/modules/${_kernver}-${pkgsuffix}"
-    install -m644 module/*.ko "$pkgdir/usr/lib/modules/${_kernver}-${pkgsuffix}"
-    find "$pkgdir" -name '*.ko' -exec zstd --rm -10 {} +
+    install -dm755 "${modulesdir}"
+    install -m644 module/*.ko "${modulesdir}"
+    find "$pkgdir" -name '*.ko' -exec zstd --rm -19 {} +
     #  sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='${pkgver}-${pkgbase}'/" "$startdir/zfs.install"
 }
 
 _package-nvidia(){
-    pkgdesc="nvidia module of ${_nv_ver} driver for the linux-$pkgsuffix kernel"
+    pkgdesc="nvidia module of ${_nv_ver} driver for the ${pkgbase} kernel"
     depends=("$pkgbase=$_kernver" "nvidia-utils=${_nv_ver}" "libglvnd")
     provides=('NVIDIA-MODULE')
     conflicts=("$pkgbase-nvidia-open")
     license=('custom')
 
+    cd ${srcdir}/$_srcname
+    local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
+
     cd "${srcdir}/${_nv_pkg}/"
-    install -dm755 "$pkgdir/usr/lib/modules/${_kernver}-${pkgsuffix}"
-    install -m644 kernel/*.ko "$pkgdir/usr/lib/modules/${_kernver}-${pkgsuffix}"
+    install -dm755 "${modulesdir}"
+    install -m644 kernel/*.ko "${modulesdir}"
     install -Dt "$pkgdir/usr/share/licenses/${pkgname}" -m644 LICENSE
-    find "$pkgdir" -name '*.ko' -exec zstd --rm -10 {} +
+    find "$pkgdir" -name '*.ko' -exec zstd --rm -19 {} +
 }
 
 _package-nvidia-open(){
-    pkgdesc="nvidia open modules of ${_nv_ver} driver for the linux-$pkgsuffix kernel"
+    pkgdesc="nvidia open modules of ${_nv_ver} driver for the ${pkgbase} kernel"
     depends=("$pkgbase=$_kernver" "nvidia-utils=${_nv_ver}" "libglvnd")
     provides=('NVIDIA-MODULE')
     conflicts=("$pkgbase-nvidia")
     license=(GPL-1.0-only)
 
+    cd ${srcdir}/$_srcname
+    local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
+
     cd "${srcdir}/${_nv_open_pkg}"
-    install -dm755 "$pkgdir/usr/lib/modules/${_kernver}-${pkgsuffix}"
-    install -m644 kernel-open/*.ko "$pkgdir/usr/lib/modules/${_kernver}-${pkgsuffix}"
+    install -dm755 "${modulesdir}"
+    install -m644 kernel-open/*.ko "${modulesdir}"
     install -Dt "$pkgdir/usr/share/licenses/${pkgname}" -m644 COPYING
 
-    find "$pkgdir" -name '*.ko' -exec zstd --rm -10 {} +
+    find "$pkgdir" -name '*.ko' -exec zstd --rm -19 {} +
 }
 
 pkgname=("$pkgbase")
@@ -752,9 +762,9 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('e08cce7f271cfda05c5ad777d06cbb04b57fdb7992d10d24f9e0193cae185d02881cc089bab14639a058cae12d1f89ac79c7d0be528c077d8b09d385dd3fa616'
-        '4c26ddb09b19458846c5072bab862b84e9bb6247641d7e1ffdcc6f468baf79163ae0abd77befb74745d90b4cb08bf6895a09e86c7ff200f5339db82aaf90ba1f'
+b2sums=('f3332b2a0e63918ae7583e6cc8009122c7aecbc42e8a3f40c044ed04639731c3bd70165cc0c0927db75fca185721c9b48339df5cd739101a2db45b9b2f10f22c'
+        '29c281f402f9f608fa8c2ed1434e83b1a6aff45f6725a5844987a907c781daf306b6a9b5bae8b7fd8a2eb2f249120b567486683fadcd3013fe00802186be62b2'
         'b1e964389424d43c398a76e7cee16a643ac027722b91fe59022afacb19956db5856b2808ca0dd484f6d0dfc170482982678d7a9a00779d98cd62d5105200a667'
-        '6f1a60ace295554a280c0b0543e9424d4162a6a9bd1d1f10c747fc81dec82ae998fffa224ccd8f0c0a0de5013e8f957af86abffe1795261abd198a66f5f9bf67'
-        '60a78fc4bdd91ea13de44c19e1da692185098c274360322784375ff5dafed978c2cf0a6e88dd7f3c558e44cfdfed7883c51c09f94a484beed12f5fc1a4db6fbe'
-        'aef0ba793b1fa9d39c82bfcd43107343741cf230e8e0ebe7d947a4a7c885100d959af8fc4c01a23c12e9bcf1ecd1d29381e554c556140cd3558409763cb7a9b0')
+        'f7075dcb694165905daff9beddcceb195dfaacef22d9f5a711258707b5c7716ce46578698b02a34b187ff5bea491bc54acc89971193aba2e9ea6a446955dd022'
+        'b7e9fe1d9f4e7b2a32df917bfe7b7cd0c21bfb5d0eda8d167214da3817d5e4dac1ba086154ec10a5c62971eed0cdbaad77e4b39e4eb6d2299f886f95112fb3dd'
+        '13c6aff0ad825a219f5c13ea1a7d7d830e96ab4cd869c05846209206603ca3c9baef445e0951c8d0757de83b51a3f167f84476b74dc661fba9c64ca7622be262')
