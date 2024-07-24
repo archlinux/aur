@@ -1,7 +1,7 @@
 # Maintainer: Roman Vishnevsky <aka [dot] x0x01 [at] gmail [dot] com>
 
 pkgname=torrserver-bin
-pkgver=133t
+pkgver=134
 pkgrel=1
 pkgdesc="Torrent to http. Streams media torrent files as media streams without fully downloading"
 arch=('x86_64' 'armv7h' 'aarch64' 'i686')
@@ -18,10 +18,10 @@ source_aarch64=("$pkgname-$pkgver-aarch64::https://github.com/YouROK/TorrServer/
 source_i686=("$pkgname-$pkgver-i686::https://github.com/YouROK/TorrServer/releases/download/MatriX.$pkgver/TorrServer-linux-386")
 b2sums=('7b2dbfd1486e3abbe6977f5229746943ed4dbb588100d8bc768068574a3a3d2a01915a54e57a9203445fc4e3e72f09b562894d4164a854bc6dc56cab4764d4ad'
         '20d847419c499b2286abe6d12113443446feff6aa6c2dac5e60d4c1bbfb0845d682761bde2880eacb2f9b29c12f3213ef6f9f3ae7e141586bd8483da00b9f440')
-b2sums_x86_64=('67a499a1523fd0974c9ba695df76cafb109908d7f5117fd7b46c3e4afbc4fb66e8577d40897498064d9121e5e01b4d82ea0d07e71cf01fb7c308a103c643c4d7')
-b2sums_armv7h=('d6d1a46245b0acf391a4b86989cd36436cbaabe8b8eeb028e3b2ffbc7b93af5facdaa018e197442867eac5689246def3dafccb1fa199d2eb75d697233dab8c91')
-b2sums_aarch64=('b07940fc4cb8bd1f10e5226975aa9fcd62603a84fea5dd6ea0dcf6cd72459c394c40a92b5e5f44b3c9d4bc5f442deb233189971c8510b1d402b0c3b1473984bc')
-b2sums_i686=('d6556781e1bc381156151c71b38b10eb5824ad9fd8a1771ee4f01c6250419449902ba8a302eb10b579b2e28248d939e956955912a7c5d5ce9879ad8bdebcbe73')
+b2sums_x86_64=('3f197c2d5019f6cf929a64bde6681e55c6ea3fe429f9bff25ae716ad578797ce7d02f812f5dc666dcd8683674bc350af3bde8e3ed9c1edbd798791442ef095b8')
+b2sums_armv7h=('9c0bedf8018fe04fe5d3991e90daf3109c924ec37854d9361a7d6186154e9a301f326ba8e129786ab9ade6ad315a797b31aa7ee362fedfa9e30fd16a863dab75')
+b2sums_aarch64=('517b9c0bb427c0ac32d499dc91986ec1cd6a93f6203c0adcf0d894cbbfad89dc4b18681ff3e1fbec139706cca66b39d341070bc6ce29d4f862c1dd898353d250')
+b2sums_i686=('2fcaa47d0a60a14d71b876c9a758a9f7aff02471aa8de60691be99e9c6fd5b9f188ab8cc8f1b1dca2eef58c336b7ada03a00e00ed5da0f7d28719f8d4c0409a8')
 
 prepare() {
     patch -uN --follow-symlinks torrserver.service --input="${srcdir}/systemd.patch"
