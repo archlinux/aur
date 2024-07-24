@@ -4,7 +4,7 @@ _srcname=SPIRV-LLVM-Translator
 pkgname=spirv-llvm-translator-minimal-git
 pkgdesc="Tool and a library for bi-directional translation between SPIR-V and LLVM IR, trunk version"
 epoch=1
-pkgver=r2012.0838497
+pkgver=r2097.dad1f0e
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/KhronosGroup/SPIRV-LLVM-Translator"
@@ -20,7 +20,7 @@ md5sums=('SKIP'
 )
 sha512sums=('SKIP'
 )
-options=(!debug)
+options=(!lto !debug)
 
 pkgver() {
     cd $_srcname
@@ -29,11 +29,12 @@ pkgver() {
 
 build() {
     
+    local _BASE_LLVM_VERSION=$(echo $(pacman -Q llvm-minimal-git) | cut -d' ' -f2 |  cut -d. -f1)
     cmake \
         -B _build \
         -S "$srcdir"/$_srcname  \
         -G "Unix Makefiles" \
-        -D BASE_LLVM_VERSION=19 \
+        -D BASE_LLVM_VERSION=$_BASE_LLVM_VERSION \
         -D CMAKE_BUILD_TYPE=Release \
         -D CMAKE_INSTALL_PREFIX=/usr \
         -D CMAKE_POSITION_INDEPENDENT_CODE=ON \
