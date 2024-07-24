@@ -7,7 +7,7 @@
 pkgname=(libvirt libvirt-storage-gluster libvirt-storage-iscsi-direct)
 epoch=1
 pkgver=10.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('x86_64')
 url="https://libvirt.org/"
@@ -61,6 +61,7 @@ backup=(
   'etc/libvirt/nwfilter/no-other-rarp-traffic.xml'
   'etc/libvirt/nwfilter/qemu-announce-self-rarp.xml'
   'etc/libvirt/nwfilter/qemu-announce-self.xml'
+  'etc/libvirt/network.conf'
   'etc/libvirt/qemu.conf'
   'etc/libvirt/qemu-lockd.conf'
   'etc/libvirt/qemu/networks/default.xml'
