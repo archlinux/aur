@@ -1,6 +1,6 @@
 pkgbase = ame
 	pkgdesc = Amethyst is a fast and efficient AUR helper
-	pkgver = 4.0.6
+	pkgver = 4.0.7
 	pkgrel = 1
 	url = https://gitlab.com/crystal-linux/software/amethyst
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = ame
 	depends = vim
 	depends = expac
 	depends = less
-	source = https://gitlab.com/crystal-linux/software/amethyst/-/archive/v4.0.6/amethyst-v4.0.6.tar.gz
-	sha256sums = d9c34ca434ef3249aaf71ed992dedbb47b0ff10190c5c8941d480f3dd90dc484
+	source = https://gitlab.com/crystal-linux/software/amethyst/-/archive/v4.0.7/amethyst-v4.0.7.tar.gz
+	sha256sums = eaf26cdd16627ded4728591d54b7112a3909630a719cce51b115b0fa87a29074
 
 pkgname = ame
