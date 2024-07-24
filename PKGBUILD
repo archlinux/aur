@@ -1,6 +1,6 @@
 # Maintainer: Nima Askarian <nimaaskarian.work@outlook.com>
 pkgname=c3
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 _gitname=c3
 pkgdesc="A TUI to-do list that uses and extends calcurse format to have tree-like dependencies."
@@ -17,7 +17,7 @@ source=(
   "${pkgname}.tar.gz::https://github.com/nimaaskarian/${_gitname}/releases/download/${pkgver}/source.tar.gz"
 )
 
-md5sums=('32eed242ba9f5e0b787c198ad6ca1a2b')
+md5sums=('bfbfea213634711803e411c45f57dca1')
 build () {
   cd "${pkgname}-${pkgver/v/}" || exit
   cargo build --release
