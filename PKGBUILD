@@ -1,7 +1,7 @@
 #Maintainer: Walter <preparationh67 at gmail dot com>
 pkgname=linux-firmware-hauppauge
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Additional Hauppauge Firmware"
 arch=('any')
 url="https://www.hauppauge.com/pages/support/support_linux.html"
@@ -15,15 +15,10 @@ source=("http://ppa.launchpad.net/b-rad/kernel+mediatree+hauppauge/ubuntu/pool/m
 package() {
     tar -xzf "$srcdir/$_source"
     install -d "$pkgdir/usr/lib/firmware"
-    install -m644 "$srcdir/$_exsource/install/0/dvb-demod-m88ds3103b.fw" "$pkgdir/usr/lib/firmware/"
-    install -m644 "$srcdir/$_exsource/install/0/dvb-demod-m88ds3103.fw" "$pkgdir/usr/lib/firmware/"
-    install -m644 "$srcdir/$_exsource/install/0/dvb-demod-mxl692.fw" "$pkgdir/usr/lib/firmware/"
-    install -m644 "$srcdir/$_exsource/install/0/dvb-demod-si2168-b40-01.fw" "$pkgdir/usr/lib/firmware/"
-    install -m644 "$srcdir/$_exsource/install/0/dvb-demod-si2168-d60-01.fw" "$pkgdir/usr/lib/firmware/"
-    install -m644 "$srcdir/$_exsource/install/0/dvb-tuner-si2157-a30-01.fw" "$pkgdir/usr/lib/firmware/"
-    install -m644 "$srcdir/$_exsource/install/0/NXP7164-2010-03-10.1.fw" "$pkgdir/usr/lib/firmware/"
-    install -m644 "$srcdir/$_exsource/install/0/NXP7164-2010-04-01.1.fw" "$pkgdir/usr/lib/firmware/"
-    install -m644 "$srcdir/$_exsource/install/0/v4l-pvrusb2-73xxx-01.fw" "$pkgdir/usr/lib/firmware/"
+    for firmware_file in $srcdir/$_exsource/install/0/*.fw
+    do
+    	install -m644 "$firmware_file" "$pkgdir/usr/lib/firmware/"
+    done
 
 }
 sha256sums=('de3ce6ff1508617f4256e39ad79227b1707aa60536088e65d3441e4bd8a76c08')

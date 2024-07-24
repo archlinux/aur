@@ -1,7 +1,7 @@
 pkgbase = linux-firmware-hauppauge
 	pkgdesc = Additional Hauppauge Firmware
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.hauppauge.com/pages/support/support_linux.html
 	arch = any
 	license = custom
