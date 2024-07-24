@@ -48,7 +48,5 @@ package() {
 
     install -Dm755 "target/release/${_pkgname}" "$pkgdir/usr/bin/${_pkgname}"
 
-    install -Dm644 "shaders"/* -t "$pkgdir/usr/share/${_pkgname}/shaders/"
-
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
 }
