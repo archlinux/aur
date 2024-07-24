@@ -7,7 +7,7 @@
 pkgbase=rtw88-fixed-dkms-git
 pkgname=(rtw88-fixed-dkms-git rtw88-fixed-firmware-git)
 _name=rtw88
-pkgver=r443.5db1508
+pkgver=r471.4a1ee64
 pkgrel=1
 pkgdesc='Latest Realtek Wifi 5 drivers'
 arch=('any')
@@ -56,5 +56,5 @@ package_rtw88-fixed-firmware-git() {
 
     cd "${srcdir}/${_name}"
 
-    install -Dm644 *_fw.bin -t "${pkgdir}/usr/lib/firmware/rtw88-fixed"
+    install -Dm644 firmware/*_fw.bin -t "${pkgdir}/usr/lib/firmware/rtw88-fixed"
 }

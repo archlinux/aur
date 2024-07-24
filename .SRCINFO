@@ -1,6 +1,6 @@
 pkgbase = rtw88-fixed-dkms-git
 	pkgdesc = Latest Realtek Wifi 5 drivers
-	pkgver = r443.5db1508
+	pkgver = r471.4a1ee64
 	pkgrel = 1
 	url = https://github.com/lwfinger/rtw88
 	install = rtw88-fixed.install
