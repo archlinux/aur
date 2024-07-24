@@ -2,7 +2,7 @@
 # Contributor: Hu Butui <hot123tea123@gmail.com>
 
 _pkgname=performance
-_pkgver=0.12.0
+_pkgver=0.12.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -27,7 +27,7 @@ checkdepends=(
   r-estimatr
   r-fixest
   r-glmmtmb
-  r-httr
+  r-httr2
   r-ics
   r-icsoutlier
   r-islr
@@ -70,7 +70,7 @@ optdepends=(
   r-ggplot2
   r-glmmtmb
   r-hmisc
-  r-httr
+  r-httr2
   r-ics
   r-icsoutlier
   r-islr
@@ -95,6 +95,7 @@ optdepends=(
   r-qqplotr
   r-quantreg
   r-randomforest
+  r-rcppeigen
   r-rempsyc
   r-rmarkdown
   r-rstanarm
@@ -108,15 +109,14 @@ optdepends=(
   r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5e1b81e342af23b8d7278d4740e13931')
-b2sums=('745e94f879d111e174d41f8076d241370dca5e838066e1b56a8a38120554fd502c945fe271fe9bd482719de5c0525cbe48ba6365d87a0a2c58d96784668fe489')
+md5sums=('9b50358d38b6fe85cdc631cd1facc88c')
+b2sums=('7b89b2040194612f2b3c69f92b26e4d1f64659172297bc997a6f5bedc55ee51500f12c81b67846b6ceb7a3078f0da087f9423847b3cf1bcfa14e7dcb325a7a13')
 
 prepare() {
   # skip failing tests
   cd "$_pkgname/tests/testthat"
   sed -i '/"brms_mixed_1"/i\ \ skip("fails")' test-icc.R
   sed -i '/"model_performance.brmsfit"/a\ \ skip("fails")' test-model_performance.bayesian.R
-  sed -i '/"logLik"/a\ \ skip("fails")' test-logLik.R
 }
 
 build() {
