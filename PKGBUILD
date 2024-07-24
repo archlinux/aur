@@ -2,24 +2,29 @@
 # Maintainer: Lucas Melo <luluco250 at gmail dot com>
 
 pkgname=aw87559-firmware
-pkgver=8.0.1.10
+pkgver=r81.f71b944
 pkgrel=1
-pkgdesc='Firmware for Awinic aw87559 audio device (extracted from Ayaneo Windows drivers)'
+pkgdesc='Firmware for Awinic aw87559 audio device (taken from OrangePI firmware)'
 arch=('x86_64')
 license=('unknown')
-_archive_name="AYANEO_AIR_1S"
+_filename='aw87xxx_acf.bin'
 source=(
-	"$_archive_name.rar::https://drive.usercontent.google.com/download?id=1b-GBkKwBTkE_LvY9XR4PEatS4F3IeeZU&confirm=xxx"
+	"git+https://github.com/orangepi-xunlong/firmware.git"
 )
 sha256sums=(
-	'0ffd4472878044fb4d68ea62613a79c3384f42d2cba58241ebfbf1d0072de011'
+	'SKIP'
 )
+
+pkgver() {
+	cd "$srcdir/firmware" || exit 1
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
 
 package() {
 	install -Dm644 \
-		"$srcdir/$_archive_name/05_Audio/AW87XXX_Driver_X64_Windows_V$pkgver/Driver/Signed/awinic_smartk_acf.bin" \
-		"$pkgdir/usr/lib/firmware/aw87559/windows-bin/awinic_smartk_acf.bin"
+		"$srcdir/firmware/$_filename" \
+		"$pkgdir/usr/lib/firmware/aw87559/$_filename"
 	ln -sfT \
-		'/usr/lib/firmware/aw87559/windows-bin/awinic_smartk_acf.bin' \
-		"$pkgdir/usr/lib/firmware/aw87xxx_acf.bin"
+		"/usr/lib/firmware/aw87559/$_filename" \
+		"$pkgdir/usr/lib/firmware/$_filename"
 }
