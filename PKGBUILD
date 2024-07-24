@@ -2,7 +2,7 @@
 # Maintainer: Christopher Kaster <me@atomicptr.de>
 
 pkgname='tmplr-bin'
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='Quickly create new files from templates
 '
@@ -12,8 +12,8 @@ license=('GPL-3.0-or-later')
 provides=('tmplr')
 conflicts=('tmplr')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/atomicptr/tmplr/releases/download/v0.2.1/tmplr_0.2.1_linux_amd64.tar.gz")
-sha256sums_x86_64=('76ce4549296aa72a1db514db591c653eab42a81ebb44ae628738bb6d914e886f')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/atomicptr/tmplr/releases/download/v0.2.2/tmplr_0.2.2_linux_amd64.tar.gz")
+sha256sums_x86_64=('7708d4c7e12607ca3d25a78f8657bd35ba83ff260a6366ba66e24c6dc0b06d86')
 
 package() {
   install -Dm755 "./tmplr" "${pkgdir}/usr/bin/tmplr"
