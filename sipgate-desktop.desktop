@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Sipgate CLINQ
+Comment=Make phone calls with the Sipgate CLINQ Client
+Exec=/opt/sipgate-desktop/sipgate-desktop
+Icon=/opt/sipgate-desktop/sipgate-desktop.png
+MimeType=x-scheme-handler/softphone;x-scheme-handler/tel;x-scheme-handler/callto;
+Categories=Office;
+Terminal=false
+StartupNotify=true
