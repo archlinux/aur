@@ -3,14 +3,14 @@
 
 pkgname=whysynth-git
 _pkgname=whysynth
-pkgver=20161216.563e494
-pkgrel=2
+pkgver=20180322.32e4bc7
+pkgrel=1
 pkgdesc="A versatile softsynth plugin for the DSSI Soft Synth Interface"
 url="http://www.smbolton.com/whysynth.html"
 depends=('alsa-lib' 'liblo' 'gtk2' 'fftw')
 makedepends=('dssi' 'ladspa' 'git')
 license=('GPL')
-source=("git://github.com/smbolton/whysynth.git")
+source=("git+https://github.com/smbolton/whysynth.git")
 md5sums=('SKIP')
 arch=('i686' 'x86_64')
 conflicts=('whysynth')

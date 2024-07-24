@@ -1,7 +1,7 @@
 pkgbase = whysynth-git
 	pkgdesc = A versatile softsynth plugin for the DSSI Soft Synth Interface
-	pkgver = 20161216.563e494
-	pkgrel = 2
+	pkgver = 20180322.32e4bc7
+	pkgrel = 1
 	url = http://www.smbolton.com/whysynth.html
 	arch = i686
 	arch = x86_64
@@ -14,8 +14,7 @@ pkgbase = whysynth-git
 	depends = gtk2
 	depends = fftw
 	conflicts = whysynth
-	source = git://github.com/smbolton/whysynth.git
+	source = git+https://github.com/smbolton/whysynth.git
 	md5sums = SKIP
 
 pkgname = whysynth-git
-
