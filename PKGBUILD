@@ -15,13 +15,6 @@ makedepends=('vala' 'meson' 'git')
 source=("git+${url}#tag=${pkgver}")
 sha256sums=('7499c6f7aea709a8683ab9208493f9d022d767041519e530820013b3948ac1aa')
 
-prepare() {
-    cd "${pkgname}"
-    git submodule init
-    git config submodule.CakeScripts.url "${srcdir}/CakeScripts"
-    git -c protocol.file.allow=always submodule update
-    dotnet tool restore
-}
 
 build() {
     arch-meson $pkgname build
