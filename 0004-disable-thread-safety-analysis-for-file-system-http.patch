@@ -1,0 +1,25 @@
+From 436de3b4b52b3db62178c6c0a57c8389bec026b3 Mon Sep 17 00:00:00 2001
+From: Dan Fuhry <dan@fuhry.com>
+Date: Wed, 24 Jul 2024 10:16:22 -0400
+Subject: [PATCH 4/4] disable thread safety analysis for file system http cache
+
+---
+ .../http/cache/file_system_http_cache/lookup_context.h          | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/source/extensions/http/cache/file_system_http_cache/lookup_context.h b/source/extensions/http/cache/file_system_http_cache/lookup_context.h
+index db4668798f..6d639eaa4b 100644
+--- a/source/extensions/http/cache/file_system_http_cache/lookup_context.h
++++ b/source/extensions/http/cache/file_system_http_cache/lookup_context.h
+@@ -32,7 +32,7 @@ public:
+   ~FileLookupContext() override { onDestroy(); }
+ 
+   const LookupRequest& lookup() const { return lookup_; }
+-  const Key& key() const { return key_; }
++  const Key& key() const ABSL_NO_THREAD_SAFETY_ANALYSIS { return key_; }
+   bool workInProgress() const;
+ 
+ private:
+-- 
+2.45.2
+

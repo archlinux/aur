@@ -1,7 +1,17 @@
-diff -Naur a/.bazelrc b/.bazelrc
---- a/.bazelrc	2024-04-18 19:43:45.000000000 -0400
-+++ b/.bazelrc	2024-05-03 14:38:18.334989983 -0400
-@@ -70,7 +70,7 @@
+From 82ab44347d39d79225d2d98409659d41a54f2dd6 Mon Sep 17 00:00:00 2001
+From: Dan Fuhry <dan@fuhry.com>
+Date: Wed, 24 Jul 2024 08:55:05 -0400
+Subject: [PATCH 1/2] arch-dynamically-link-libpsl
+
+---
+ .bazelrc | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/.bazelrc b/.bazelrc
+index 90b9b112b1..b9c8ea30e5 100644
+--- a/.bazelrc
++++ b/.bazelrc
+@@ -71,7 +71,7 @@ build:linux --conlyopt=-fexceptions
  build:linux --fission=dbg,opt
  build:linux --features=per_object_debug_info
  build:linux --action_env=BAZEL_LINKLIBS=-l%:libstdc++.a
@@ -10,7 +20,7 @@ diff -Naur a/.bazelrc b/.bazelrc
  
  # We already have absl in the build, define absl=1 to tell googletest to use absl for backtrace.
  build --define absl=1
-@@ -199,7 +199,7 @@
+@@ -200,7 +200,7 @@ build:libc++ --action_env=CXXFLAGS=-stdlib=libc++
  build:libc++ --action_env=LDFLAGS=-stdlib=libc++
  build:libc++ --action_env=BAZEL_CXXOPTS=-stdlib=libc++
  build:libc++ --action_env=BAZEL_LINKLIBS=-l%:libc++.a:-l%:libc++abi.a
@@ -19,3 +29,6 @@ diff -Naur a/.bazelrc b/.bazelrc
  build:libc++ --define force_libcpp=enabled
  build:clang-libc++ --config=libc++
  
+-- 
+2.45.2
+

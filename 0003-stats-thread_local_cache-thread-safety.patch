@@ -1,0 +1,26 @@
+From 648c1264447de24b718328f337ddb7705d5e8ecc Mon Sep 17 00:00:00 2001
+From: Dan Fuhry <dan@fuhry.com>
+Date: Wed, 24 Jul 2024 09:49:12 -0400
+Subject: [PATCH 3/3] stats thread_local_cache thread safety
+
+Bypass thread safety analysis for known good centralCacheLockHeld() impl
+---
+ source/common/stats/thread_local_store.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/source/common/stats/thread_local_store.h b/source/common/stats/thread_local_store.h
+index f8f27558b4..5619bb1a5a 100644
+--- a/source/common/stats/thread_local_store.h
++++ b/source/common/stats/thread_local_store.h
+@@ -421,7 +421,7 @@ private:
+     // scope->central_cache_, the analysis system cannot understand that the
+     // scope's parent_.lock_ is held, so we assert that here.
+     const CentralCacheEntrySharedPtr& centralCacheLockHeld() const
+-        ABSL_ASSERT_EXCLUSIVE_LOCK(parent_.lock_) {
++        ABSL_ASSERT_EXCLUSIVE_LOCK(parent_.lock_) ABSL_NO_THREAD_SAFETY_ANALYSIS {
+       return central_cache_;
+     }
+ 
+-- 
+2.45.2
+
