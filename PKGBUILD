@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.9.10.arch1
+pkgver=6.10.arch1
 pkgrel=1
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
@@ -37,25 +37,10 @@ source=(
   
   0001-acpi-proc-idle-skip-dummy-wait.patch
 
-  0001-v4-platform-x86-asus-wmi-add-support-for-2024-ROG-Mini-LED.patch
-  0002-v4-platform-x86-asus-wmi-add-support-for-Vivobook-GPU-MUX.patch
-  0003-v4-platform-x86-asus-wmi-add-support-variant-of-TUF-RGB.patch
-  0004-v4-platform-x86-asus-wmi-support-toggling-POST-sound.patch
-  0005-v4-platform-x86-asus-wmi-store-a-min-default-for-ppt-op.patch
-  0006-v4-platform-x86-asus-wmi-adjust-formatting-of-ppt-fcts.patch
-  0007-v4-platform-x86-asus-wmi-ROG-Ally-increase-wait-time.patch
-  0008-v4-platform-x86-asus-wmi-add-support-for-MCU-powersave.patch
-  0009-v4-platform-x86-asus-wmi-add-clean-up-structs.patch
   0001-Fixes-ae834a549ec1-platform-x86-asus-wmi-add-support.patch
   0001-ALSA-hda-realtek-cs35l41-Fixup-remaining-asus-strix-.patch
-  
-  #0001-HID-asus-fix-more-n-key-report-descriptors-if-n-key-.patch
   0001-platform-x86-asus-wmi-add-support-for-vivobook-fan-p.patch
-  0002-HID-asus-make-asus_kbd_init-generic-remove-rog_nkey_.patch
-  0003-HID-asus-add-ROG-Ally-N-Key-ID-and-keycodes.patch
-  0004-HID-asus-add-ROG-Z13-lightbar.patch
-  
-  ## but these instead...
+
   0001-platform-x86-asus-wmi-add-debug-print-in-more-key-pl.patch
   0002-platform-x86-asus-wmi-don-t-fail-if-platform_profile.patch
   0003-asus-bios-refactor-existing-tunings-in-to-asus-bios-.patch
@@ -63,10 +48,8 @@ source=(
   0005-asus-bios-add-dgpu-tgp-control.patch
   0006-asus-bios-add-apu-mem.patch
   0007-asus-bios-add-core-count-control.patch
-#  0008-asus-wmi-deprecate-bios-features.patch
   v2-0001-hid-asus-use-hid-for-brightness-control-on-keyboa.patch
-#  0003-platform-x86-asus-wmi-add-macros-and-expose-min-max-.patch 
-  ## to here...
+  0003-platform-x86-asus-wmi-add-macros-and-expose-min-max-.patch 
   
   0027-mt76_-mt7921_-Disable-powersave-features-by-default.patch
   
@@ -81,7 +64,8 @@ source=(
 
   amd-tablet-sfh.patch
 
-  "0001-sched-ext.patch"::"https://raw.githubusercontent.com/cachyos/kernel-patches/master/6.9/sched/0001-sched-ext.patch"
+  "0001-sched-ext.patch"::"https://raw.githubusercontent.com/cachyos/kernel-patches/master/6.10/sched/0001-sched-ext.patch"
+  "0001-amd-pstate.patch"::"https://raw.githubusercontent.com/CachyOS/kernel-patches/master/6.10/0001-amd-pstate.patch"
 
   "sys-kernel_arch-sources-g14_files-0047-asus-nb-wmi-Add-tablet_mode_sw-lid-flip.patch"
   "sys-kernel_arch-sources-g14_files-0048-asus-nb-wmi-fix-tablet_mode_sw_int.patch"
@@ -92,29 +76,17 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('efd12e335fa67d13a3eae30e4b7b7546e74b8ccc90682e4c3fffab0b22654da1'
+sha256sums=('774698422ee54c5f1e704456f37c65c06b51b4e9a8b0866f34580d86fef8e226'
             'SKIP'
-            'f67882ce44c822088fbbebaf2d5958377b1c34254547eca5719f19aa2eff1fd7'
+            'fdb6552c43bcbc465f88c6ec2e01eb26791ac21f81687ca891ac1152503f7cad'
             'SKIP'
-            '3190bf5005f22345a8c81dc78cd1bbd39350817358ba571840b01446128f3545'
+            '1eee90934450856b6d13dbd3edc3524e5700311ca2b8e7b9ed444d1ea94c4130'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
             'f4e7fcd011f2691840d2c8c2361dca850a78ea33cc5c24d2e27c3e0294fd1dc5'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
-            'feaf5f5fb62e25e2369f92f77e8327dcd4cb4cf4bc6d0c91d9c7bc40c0f4de46'
-            'b9866121c69ce22b4651b3ef2a1956e6d0547e40a14d1224e2f367a4f716ca1a'
-            '6f2f248a5ac9b1a37324cbce8d29a65b22a2b20d4b3564c0dc6063789ae733ba'
-            '28f2b9bf5a1f4993bdc77d4d8ac32c1905edfeb3f4cce476f0f85a31b573bcd0'
-            'fa8de80231c933ca294315168d985ae18261e04e77ef17482c815a0703d6c5fb'
-            '62b297619e500b4453e2f3e0305c4dfb92185f69ebbdb67f99e8f76dad139f7a'
-            'c2c89baaf134c0151c3f7a3861d16194e32c91c7abc87f870733cab8c5b88389'
-            'f5b560d988c47033c44307da0b584599d1f59cc0028a594f4df87affffc219d5'
-            'de85da760f6692b284e39aa78479904d6ee78b349f1e98d1d210777f9ef17581'
             '15b5b90592ebdcfc032251a12379714d61dd8fdc63cf4678f4ce391d0d177459'
             'd0b568200cb530d6edaab34bf5cecf3d297ed7b9c66ebb5ce71a13aef4742923'
             '9c8679f5995b69b6778539f48f30142e5a357213cf9a04ee0877f50f859d1233'
-            'c1d96328d96964c2ce3ef7609fb7c07e97eb136dfab9f6d4efcce072a5739838'
-            '2414dc71174c90b92f975a7d16cabc99ba509397d843132764ea9ee91b643dc0'
-            '107a08aa610d3ba3c7ecec301df2ea8f345bc74107fcf4dac96fe9e89a23dcf1'
             '0ac28bb000cf2eb56f36d028588fd898dd8afa63ba247fcf326496570c2fe87e'
             'f45f61b9e023bf0224d70f76c73c0f667193a9915ba6ae9586046a9c4d73b8a0'
             '9de67962522d07b9babe7c97e4240bb267939c2c6c97bb91d64ed14123f81e3f'
@@ -123,6 +95,7 @@ sha256sums=('efd12e335fa67d13a3eae30e4b7b7546e74b8ccc90682e4c3fffab0b22654da1'
             '5b6a2f1ac22c55f43cd7e7b8b79b7ee8a76d58acd74abecc3102b2c32ed15576'
             '6f5325bf096668d25a9bcf7fdd9fc574fc1c16640f2d163c54b87527ed961d83'
             'b7422349428f0476477167f81d9cd9e3692f7ca7345eb6e1f861a0994f9a366e'
+            '49715c553978e15c72be5739062c11c826a208160c25dde720237645bca06122'
             'ed242f4be3f8eaade2a1d42157c5c6c86281917a08ae43221b088fafdc775ee7'
             'a8e1e11a4ab1995cc4975c9b134a43ddfe7054ef0c965e52a7d8f9223e15c3e0'
             '315d1839630b37894a626bbc2aea012618b2e1ccb6f9d8aa27c0a3ce5e90e99c'
@@ -131,7 +104,8 @@ sha256sums=('efd12e335fa67d13a3eae30e4b7b7546e74b8ccc90682e4c3fffab0b22654da1'
             'd673d034fbcd80426fd8d9c6af56537c5fe5b55fe49d74e313474d7fc285ecc1'
             'e41198b29cee4de7a5132d8df606f48c2d0f9c9076fe4230b00a33c7e0b22c71'
             '508f90cbe81a9a145cc540703470f1e6b5d21c7a7b9166d2ce6e56b401262b04'
-            '4596a3559fa910721646707c8a12276da107d08600805d78141e16461a30f467'
+            '65e412f895c32cc22e02adc7cbcd3177a4715bc96211dd6f76b511913890909a'
+            '9f34ee42cd5817d19a7239540b21a06289c70f51f035fdedd20d6ea8ff3faa25'
             '15e912a66e4bbce1cf0450f1dc6610653df29df8dd6d5426f9c1b039490436c8'
             '444f2d86de8c2177655b01596f939f99c2e7abfa8efad8a509e0a334f42dfa85')
 
@@ -144,10 +118,10 @@ sha256sums=('efd12e335fa67d13a3eae30e4b7b7546e74b8ccc90682e4c3fffab0b22654da1'
 # 98, Intel Native = CONFIG_MNATIVE_INTEL
 # 99, AMD Native = CONFIG_MNATIVE_AMD
 if [ -z ${_microarchitecture+x} ]; then
-  _microarchitecture=93
+  _microarchitecture=15
 fi
 if [ -z ${Microarchitecture+x} ]; then
-  Microarchitecture='CONFIG_GENERIC_CPU3'
+  Microarchitecture='CONFIG_MZEN3'
 fi
 
 export KBUILD_BUILD_HOST=archlinux
@@ -182,7 +156,7 @@ prepare() {
   ## Make use of modprobed-db, if installed
   ## To do this, you need to copy the database into this directory and enable the relevant lines 
   ## at the top of this file!
-  make LSMOD=../modprobed.db localmodconfig 
+  # make LSMOD=../modprobed.db localmodconfig 
 
   ## let user choose microarchitecture optimization in GCC  
   ## this needs to run *after* `make olddefconfig` so that our newly added configuration macros exist
