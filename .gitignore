@@ -1,6 +1,5 @@
-pytest-subprocess-*.tar.gz
+pytest_subprocess-*.tar.gz
 src/
 pkg/
 python-pytest-subprocess-*.pkg.tar*
 *.log
-github-pr142.patch
