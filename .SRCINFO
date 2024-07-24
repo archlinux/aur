@@ -1,6 +1,6 @@
 pkgbase = sui-bin
 	pkgdesc = A next-generation smart contract platform with high throughput, low latency, and an asset-oriented programming model
-	pkgver = 1.28.4
+	pkgver = 1.29.2
 	pkgrel = 1
 	url = https://sui.io
 	arch = x86_64
@@ -17,11 +17,11 @@ pkgbase = sui-bin
 	depends = postgresql-libs
 	provides = sui
 	conflicts = sui
-	source = README.md-1.28.4::https://github.com/MystenLabs/sui/raw/mainnet-v1.28.4/README.md
-	source = LICENSE-1.28.4::https://github.com/MystenLabs/sui/raw/mainnet-v1.28.4/LICENSE
+	source = README-1.29.2.md::https://github.com/MystenLabs/sui/raw/mainnet-v1.29.2/README.md
+	source = LICENSE-1.29.2::https://github.com/MystenLabs/sui/raw/mainnet-v1.29.2/LICENSE
 	sha256sums = 3ededb5b006bf86ea26c03f2073944998e2c8854f1ae150c35c8a418a16c9622
 	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
-	source_x86_64 = sui-1.28.4-x86_64.tar.gz::https://github.com/MystenLabs/sui/releases/download/mainnet-v1.28.4/sui-mainnet-v1.28.4-ubuntu-x86_64.tgz
-	sha256sums_x86_64 = 63b636efb7f54468d3db9b675bacf1b2606dcc1936b2642810ad35caab4120f6
+	source_x86_64 = sui-1.29.2-x86_64.tar.gz::https://github.com/MystenLabs/sui/releases/download/mainnet-v1.29.2/sui-mainnet-v1.29.2-ubuntu-x86_64.tgz
+	sha256sums_x86_64 = ced7d1b42f56ab9124e3073da6d903f95a2b7fa489d5276f75e2e2fb0b4bd7ec
 
 pkgname = sui-bin
