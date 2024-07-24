@@ -1,11 +1,11 @@
 pkgbase = ocm-cli-bin
 	pkgdesc = This project contains the ocm command line tool that simplifies the use of the OCM API available at api.openshift.com.
-	pkgver = 0.1.73
+	pkgver = 0.1.74
 	pkgrel = 1
 	url = https://github.com/openshift-online/ocm-cli
 	arch = x86_64
 	license = Apache
-	source = ocm-linux-amd64-0.1.73::https://github.com/openshift-online/ocm-cli/releases/download/v0.1.73/ocm-linux-amd64
-	sha256sums = 32b1e33bca4862e78803ec894ef6b512198e4b3fd360409b08b33407c5b5b4e4
+	source = ocm-linux-amd64-0.1.74::https://github.com/openshift-online/ocm-cli/releases/download/v0.1.74/ocm-linux-amd64
+	sha256sums = ef16fd73d2faa2ef131de0708af2d6f57853a8a95411e5e6ddc3d97831d973cf
 
 pkgname = ocm-cli-bin
