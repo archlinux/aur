@@ -2,7 +2,7 @@
 
 _pkgname="cunicu"
 pkgname="${_pkgname}-git"
-pkgver=0.5.13.r0.gb800bf6
+pkgver=0.5.15.r0.ga9cf67a
 pkgrel=1
 pkgdesc="A zeroconf peer-to-peer mesh VPN using Wireguard® and Interactive Connectivity Establishment (ICE)"
 arch=('any')
@@ -13,8 +13,8 @@ license=('Apache-2.0')
 depends=('glibc' 'gcc-libs')
 makedepends=('git' 'go' 'protoc-gen-go' 'protoc-gen-go-grpc') # 'make' 'golangci-lint'
 # checkdepends=('ginkgo')
-optdepends=('bash-completion: for auto-completion'
-            'zsh-completions: for auto-completion'
+optdepends=('bash-completion: for shell auto-completion'
+            'zsh-completions: for shell auto-completion'
             'wireguard-tools: for controlling WireGuard interfaces')
 provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
@@ -34,6 +34,7 @@ prepare() {
   mkdir -p "build" "completions" "manpages"
   go mod tidy
   go generate ./...
+  go mod download
 }
 
 build() {
@@ -42,15 +43,16 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export LDFLAGS="${LDFLAGS:-} \
-                  -X ${url#https://}/${_pkgname}/pkg/buildinfo.Version=${pkgver%%.r*} \
-                  -X ${url#https://}/${_pkgname}/pkg/buildinfo.Tag=$(git describe --tags) \
-                  -X ${url#https://}/${_pkgname}/pkg/buildinfo.Commit=$(git rev-parse HEAD) \
-                  -X ${url#https://}/${_pkgname}/pkg/buildinfo.Branch=$(git rev-parse --abbrev-ref HEAD) \
-                  -X ${url#https://}/${_pkgname}/pkg/buildinfo.DateStr=$(date -Iseconds)"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   # make
-  go build -o "build/${_pkgname}" ./"cmd/${_pkgname}"
+
+  go build -o "build/${_pkgname}" -ldflags "\
+    -X ${url#https://}/${_pkgname}/pkg/buildinfo.Version=${pkgver} \
+    -X ${url#https://}/${_pkgname}/pkg/buildinfo.Tag=$(git describe --tags) \
+    -X ${url#https://}/${_pkgname}/pkg/buildinfo.Commit=$(git rev-parse HEAD) \
+    -X ${url#https://}/${_pkgname}/pkg/buildinfo.Branch=$(git rev-parse --abbrev-ref HEAD) \
+    -X ${url#https://}/${_pkgname}/pkg/buildinfo.DateStr=$(date -Iseconds)" \
+    ./"cmd/${_pkgname}"
 
   # make completions
   for _sh in bash fish zsh powershell; do
@@ -61,12 +63,12 @@ build() {
   ./"build/${_pkgname}" docs man > "manpages/${_pkgname}.1"
 }
 
-check() {
-  cd "${srcdir}/${_pkgsrc}"
-  # make tests
-
-  # go test ./...
-}
+# check() {
+#   cd "${srcdir}/${_pkgsrc}"
+#   # make tests
+# 
+#   go test ./...
+# }
 
 package() {
   cd "${srcdir}/${_pkgsrc}"

@@ -1,6 +1,6 @@
 pkgbase = cunicu-git
 	pkgdesc = A zeroconf peer-to-peer mesh VPN using Wireguard® and Interactive Connectivity Establishment (ICE)
-	pkgver = 0.5.13.r0.gb800bf6
+	pkgver = 0.5.15.r0.ga9cf67a
 	pkgrel = 1
 	url = https://cunicu.li
 	arch = any
@@ -11,10 +11,10 @@ pkgbase = cunicu-git
 	makedepends = protoc-gen-go-grpc
 	depends = glibc
 	depends = gcc-libs
-	optdepends = bash-completion: for auto-completion
-	optdepends = zsh-completions: for auto-completion
+	optdepends = bash-completion: for shell auto-completion
+	optdepends = zsh-completions: for shell auto-completion
 	optdepends = wireguard-tools: for controlling WireGuard interfaces
-	provides = cunicu=0.5.13
+	provides = cunicu=0.5.15
 	conflicts = cunicu
 	source = cunicu::git+https://codeberg.org/cunicu/cunicu.git
 	sha256sums = SKIP
