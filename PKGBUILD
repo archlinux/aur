@@ -1,7 +1,7 @@
 # Maintainer: Hu Butui <hot123tea123@gmail.com>
 
 _pkgname=parameters
-_pkgver=0.22.0
+_pkgver=0.22.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -109,6 +109,7 @@ optdepends=(
   r-pvclust
   r-quantreg
   r-randomforest
+  r-rcppeigen
   r-rmarkdown
   r-rms
   r-rstanarm
@@ -117,18 +118,20 @@ optdepends=(
   r-serp
   r-sparsepca
   r-survey
+  r-svylme
   r-testthat
   r-tidyselect
   r-tinytable
   r-tmb
   r-truncreg
+  r-vdiffr
   r-vgam
   r-withr
   r-wrs2
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('adb0fa9af924223431417ba80010aef0')
-b2sums=('055d59a0152c7120f284bebcda00a3daa9563e151c272132cdba1532880cf3fa7ffc62c02f32aeaaf8127b2716b3d9a200dada58bfc81fdf27433ceb0cef9548')
+md5sums=('e1b67e8a6bd0c72171469f7b3f04b0ab')
+b2sums=('642131bce782302812db2f93713c1cc2e6ea7d8695c0f480f6484563cc63e10eeeb2fbd06245f98d1abc0a0afdfe0ee793eb04b658f4bca85af60622efded711')
 
 build() {
   mkdir build
