@@ -2,18 +2,18 @@
 
 pkgname=python-pyreadr
 _name=${pkgname#python-}
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='Reads/writes R RData and Rds files into/from pandas data frames'
 arch=('x86_64')
 url="https://github.com/ofajardo/pyreadr"
-license=('AGPL3')
+license=('AGPL-3.0-or-later')
 depends=('bzip2' 'python-pandas' 'xz' 'zlib')
-makedepends=('cython' 'python-build' 'python-installer' 'python-wheel')
+makedepends=('cython' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-xarray')
 optdepends=('python-xarray: for 3D array support')
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a145a47a443337cf60b5ff4703efab5bfc1baf8713c9916b19300980b733e7a4')
+sha256sums=('1840f42613a788c41a59c9f6922e7bffd5be093c9f8d6dfc460ed9c55f2c0120')
 
 build() {
     cd "${_name}-${pkgver}"
