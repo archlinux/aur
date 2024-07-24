@@ -1,9 +1,9 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=itchcraft
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
-pkgdesc='Alternative frontend for heat-based USB insect bite healers'
+pkgdesc='Tech demo for interfacing with heat-based USB insect bite healers'
 arch=('any')
 url='https://github.com/claui/itchcraft'
 license=('Apache-2.0')
@@ -24,7 +24,7 @@ makedepends=(
 )
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/claui/itchcraft/archive/v${pkgver}.tar.gz")
-sha512sums=('73471b4eaf445d55fefb566fdcc067254d47478f65255019c5fdcb9d373c71d867ce6d51907dc07095da7b8e1524011a90047be52206fd7267d00abf7535bbf3')
+sha512sums=('05ab1b535c3be0b58fac1b1a75dcb2fe8d4b737f4552cf2c5d501dc9568445301f5a77564154a163ff58f4c8431ecadcfc69070f04a1eb7aae409db792a9943e')
 
 build() {
   cd "${pkgname}-${pkgver}"
