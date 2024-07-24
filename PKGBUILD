@@ -1,6 +1,7 @@
-#Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
 # Contributor: Vladislav Nepogodin (vnepogodin) <nepogodin.vlad@gmail.com>
-# Contributor: Kyle De'Vir (QuartzDragon) <kyle[dot]devir[at]mykolab[dot]co
+# Contributor: Kyle De'Vir (QuartzDragon) <kyle[dot]devir[at]mykolab[dot]com>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 # Contributor: Maxwell Anselm <silverhammermba+aur@gmail.com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
@@ -10,19 +11,48 @@
 pkgname=librewolf-hg
 _pkgname=librewolf-nightly
 __pkgname="Librewolf Nightly"
-pkgver=92.0a1.r655136.a8a4dfcadce5
+pkgver=130.0a1.r829406.28ae30741dfb
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom. (nightly edition)"
 arch=(x86_64 x86_64_v3 aarch64)
 license=(MPL GPL LGPL)
 url="https://librewolf-community.gitlab.io/"
-depends=(gtk3 libxt mime-types dbus-glib
-         nss-hg ttf-font libpulse xorg-server-xwayland
-         libvpx libwebp libjpeg zlib icu libevent pipewire)
+depends=(
+  dbus
+  alsa-lib
+  at-spi2-core
+  bash
+  cairo
+  ffmpeg
+  fontconfig
+  freetype2
+  gcc-libs
+  gdk-pixbuf2
+  glib2
+  glibc
+  gtk3
+  hicolor-icon-theme
+  libpulse
+  libx11
+  libxcb
+  libxcomposite
+  libxdamage
+  libxext
+  libxfixes
+  libxrandr
+  libxss
+  libxt
+  mime-types
+  nspr
+  nss
+  pango
+  ttf-font
+)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils ccache
              rust xorg-server-xvfb
              mercurial clang llvm jack nodejs cbindgen nasm
              python-setuptools python-psutil python-zstandard git binutils lld dump_syms
+             wasi-compiler-rt  wasi-libc++ wasi-libc++abi wasi-libc
              )
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
@@ -37,14 +67,14 @@ depends_x86_64=(ffmpeg)
 depends_aarch64=(ffmpeg)
 backup=('usr/lib/librewolf-nightly/librewolf.cfg'
         'usr/lib/librewolf-nightly/distribution/policies.json')
-options=(!emptydirs !makeflags !strip !lto !debug)
+options=(!emptydirs !makeflags !lto !debug)
 _arch_git=https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/firefox/trunk
 _repo=https://hg.mozilla.org/mozilla-unified
 install=librewolf-nightly.install
 source=("hg+$_repo#revision=autoland"
         $_pkgname.desktop
-        "git+https://gitlab.com/vnepogodin/librewolf-common.git"
-        "git+https://gitlab.com/vnepogodin/librewolf-settings.git"
+        "git+https://codeberg.org/librewolf/source.git"
+        "git+https://codeberg.org/librewolf/settings.git"
         "default192x192.png")
 sha512sums=('SKIP'
             '5a0932eeceba04a09133a7b61e9eee49cd5bdacb2daadc132e910fdd3ef8392262208b6401043655bff58068b2320022daa6722f11aed9284c5b5a008d570bcd'
@@ -62,7 +92,7 @@ prepare() {
   mkdir -p mozbuild
   cd mozilla-unified
 
-  local _patches_dir="${srcdir}/librewolf-common/patches"
+  local _patches_dir="${srcdir}/source/patches"
 
   cat >../mozconfig <<END
 ac_add_options --enable-application=browser
@@ -78,9 +108,7 @@ export CC='clang'
 export CXX='clang++'
 
 # wasi sdk
-ac_add_options --with-wasi-sysroot=/opt/wasi-sdk/share/wasi-sysroot
-export WASM_CC=/opt/wasi-sdk/bin/clang
-export WASM_CXX=/opt/wasi-sdk/bin/clang++
+ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
 
 # Branding
 ac_add_options --enable-update-channel=nightly
@@ -94,15 +122,13 @@ export MOZ_REQUIRE_SIGNING=1
 export MOZ_ADDON_SIGNING=1
 export MOZ_APP_REMOTINGNAME=${_pkgname//-/}
 
-export STRIP_FLAGS="--strip-debug --strip-unneeded"
-
 # System libraries
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
 ac_add_options --with-system-libvpx
 ac_add_options --with-system-webp
 ac_add_options --with-system-libevent
-ac_add_options --with-system-icu
+# ac_add_options --with-system-icu 2024-07-24, fails to build with system icu
 ac_add_options --with-system-zlib
 ac_add_options --with-system-jpeg
 
@@ -115,14 +141,11 @@ ac_add_options --disable-crashreporter
 ac_add_options --disable-tests
 ac_add_options --disable-debug
 ac_add_options --disable-updater
-ac_add_options --enable-strip
 ac_add_options --disable-gpsd
 ac_add_options --disable-synth-speechd
 ac_add_options --disable-debug-symbols
 ac_add_options --disable-debug-js-modules
-ac_add_options --disable-trace-logging
 ac_add_options --disable-rust-tests
-ac_add_options --disable-ipdl-tests
 ac_add_options --disable-necko-wifi
 ac_add_options --disable-webspeech
 ac_add_options --disable-webspeechtestbackend
@@ -167,25 +190,12 @@ fi
   # Remove some pre-installed addons that might be questionable
   patch -Np1 -i ${_patches_dir}/remove_addons.patch
 
-  # Disable (some) megabar functionality
-  # Adapted from https://github.com/WesleyBranton/userChrome.css-Customizations
-  patch -Np1 -i ${_patches_dir}/removed-patches/megabar.patch
-
   # Debian patch to enable global menubar
-  # disabled for the default build, as it seems to cause issues in some configurations
-  # 2022-01-21: re-enabled because it seems to not mess things up anymore nowadays?
-  patch -Np1 -i ${_patches_dir}/unity-menubar.patch
-
-  # KDE menu
-  # patch -Np1 -i ${_patches_dir}/mozilla-kde.patch
-  # custom patch that does not conflict with the unity patch
-  patch -Np1 -i ${_patches_dir}/mozilla-kde_after_unity.patch
+  # 2024-07-24: Disabled, fails to apply cleanly
+  # patch -Np1 -i ${_patches_dir}/unity_kde/unity-menubar.patch
 
   # Disabling Pocket
   patch -Np1 -i ${_patches_dir}/sed-patches/disable-pocket.patch
-
-  # remove mozilla vpn ads
-  patch -Np1 -i ${_patches_dir}/mozilla-vpn-ad.patch
 
   # Remove Internal Plugin Certificates
   # patch -Np1 -i ${_patches_dir}/sed-patches/remove-internal-plugin-certs.patch
@@ -194,13 +204,14 @@ fi
   # allow SearchEngines option in non-ESR builds
   patch -Np1 -i ${_patches_dir}/sed-patches/allow-searchengines-non-esr.patch
 
-  cp "${srcdir}/librewolf-common/source_files/search-config.json" services/settings/dumps/main/search-config.json
+  cp "${srcdir}/source/assets/search-config.json" services/settings/dumps/main/search-config.json
 
   # stop some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)
   patch -Np1 -i ${_patches_dir}/sed-patches/stop-undesired-requests.patch
 
   # Assorted patches
-  patch -Np1 -i ${_patches_dir}/context-menu.patch
+  #2024-07-24: Disabled, fails to apply cleanly
+  # patch -Np1 -i ${_patches_dir}/context-menu.patch
   patch -Np1 -i ${_patches_dir}/urlbarprovider-interventions.patch
 
   # allow overriding the color scheme light/dark preference with RFP
@@ -230,9 +241,6 @@ fi
   # explain that we force en-US and suggest enabling history near the session restore checkbox.
   patch -Np1 -i ${_patches_dir}/ui-patches/pref-naming.patch
 
-  #
-  patch -Np1 -i ${_patches_dir}/ui-patches/hide-safe-browsing.patch
-
   # remove firefox references in the urlbar, when suggesting opened tabs.
   patch -Np1 -i ${_patches_dir}/ui-patches/remove-branding-urlbar.patch
 
@@ -242,20 +250,19 @@ fi
   # do not display your browser is being managed by your organization in the settings.
   patch -Np1 -i ${_patches_dir}/ui-patches/remove-organization-policy-banner.patch
 
-  # hide "snippets" section from the home page settings, as it was already locked.
-  patch -Np1 -i ${_patches_dir}/ui-patches/remove-snippets-from-home.patch
-
   # add warning that sanitizing exceptions are bypassed by the options in History > Clear History when LibreWolf closes > Settings
-  patch -Np1 -i ${_patches_dir}/ui-patches/sanitizing-description.patch
+  patch -Np1 -i ${_patches_dir}/removed-patches/sanitizing-description.patch
 
-  # pref pane
-  patch -Np1 -i ${_patches_dir}/librewolf-pref-pane.patch
+  # pref pane TODO: update to https://codeberg.org/librewolf/source/src/branch/main/patches/pref-pane
+  # patch -Np1 -i ${_patches_dir}/removed-patches/librewolf-pref-pane.patch
 
   # fix telemetry removal, see https://gitlab.com/librewolf-community/browser/linux/-/merge_requests/17, for example
-  patch -Np1 -i ${_patches_dir}/disable-data-reporting-at-compile-time.patch
+ # 2024-07-24: Disabled, fails to apply cleanly
+ # patch -Np1 -i ${_patches_dir}/disable-data-reporting-at-compile-time.patch
 
   rm -f ${srcdir}/librewolf-common/source_files/mozconfig # what was this for? TODO
-  cp -r ${srcdir}/librewolf-common/source_files/browser ./
+  cp -r  ${srcdir}/source/themes/browser/branding/librewolf  ${srcdir}/source/themes/browser/branding/librewolf-nightly
+  cp -r ${srcdir}/source/themes/browser ./
 }
 
 build() {
@@ -266,6 +273,14 @@ build() {
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
   export MACH_USE_SYSTEM_PYTHON=1
 
+  # malloc_usable_size is used in various parts of the codebase
+  CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+  CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+
+   # Breaks compilation since https://bugzilla.mozilla.org/show_bug.cgi?id=1896066
+  CFLAGS="${CFLAGS/-fexceptions/}"
+  CXXFLAGS="${CXXFLAGS/-fexceptions/}"
+
   # LTO/PGO needs more open files
   ulimit -n 4096
 
@@ -275,18 +290,18 @@ build() {
   # CXXFLAGS="${CXXFLAGS/-fno-plt/}"
 
   # Do 3-tier PGO
-#  echo "Building instrumented browser..."
+  echo "Building instrumented browser..."
 
 if [[ $CARCH == 'aarch64' ]]; then
 
   cat >.mozconfig ../mozconfig - <<END
-#ac_add_options --enable-profile-generate
+ac_add_options --enable-profile-generate
 END
 
 else
 
   cat >.mozconfig ../mozconfig - <<END
-#ac_add_options --enable-profile-generate=cross
+ac_add_options --enable-profile-generate=cross
 END
 
 fi
@@ -348,7 +363,7 @@ package() {
   mv "$pkgdir"/usr/lib/${_pkgname}/{$_pkgname-bin,librewolf-bin}
   rm "$pkgdir"/usr/lib/${_pkgname}/pingsender
 
-  install -Dm644 "$srcdir/librewolf-settings/$_pkgname.psd" "$pkgdir/usr/share/psd/browsers/$_pkgname"
+#  install -Dm644 "$srcdir/settings/$_pkgname.psd" "$pkgdir/usr/share/psd/browsers/$_pkgname"
 
   _vendorjs="$pkgdir/usr/lib/$_pkgname/browser/defaults/preferences/vendor.js"
 
@@ -365,7 +380,7 @@ pref("spellchecker.dictionary_path", "/usr/share/hunspell");
 END
 
   cd ${srcdir}/mozilla-unified
-  cp -r ${srcdir}/librewolf-settings/* ${pkgdir}/usr/lib/${_pkgname}/
+  cp -r ${srcdir}/settings/* ${pkgdir}/usr/lib/${_pkgname}/
 
   _distini="$pkgdir/usr/lib/$_pkgname/distribution/distribution.ini"
   install -Dm644 /dev/stdin "$_distini" <<END
