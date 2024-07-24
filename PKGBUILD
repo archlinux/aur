@@ -1,17 +1,17 @@
 # Maintainer: Luis Aranguren <pizzaman@hotmail.com>
 
 pkgname=multiview
-pkgver=2.5.3
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Spawn multiple processes and channel their outputs into separate little column views."
 arch=('any')
-depends=('nodejs' 'bash')
+depends=('nodejs' 'bash' 'jq')
 makedepends=('npm')
 url="https://github.com/arjunmehta/multiview"
 license=('MIT')
 options=('!emptydirs')
 source=(https://github.com/arjunmehta/$pkgname/archive/$pkgver.tar.gz)
-sha256sums=('d3e6c9e5ee8830e311f2dafc469773c391aa739b3e78911d6272beb939e0be64')
+sha256sums=('4e48be8138ab74be0beb9611a9307997fd4714629532b22b840f72a83f8bdf2c')
 
 package() {
   npm install -g --user root --prefix "$pkgdir"/usr "$srcdir/$pkgver.tar.gz" --cache "${srcdir}/npm-cache"
