@@ -1,7 +1,7 @@
 # Maintainer: cyber-luna <cyber-luna@tuta.io>
 
 pkgname='ldf'
-pkgver=0.2.4
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="report filesystem space info of devices and RAM/swap usage"
 arch=('any')
