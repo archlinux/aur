@@ -2,8 +2,8 @@
 # Maintainer: wheaney <wayne at xronlinux dot com>
 _pkgbase=XRLinuxDriver
 pkgname="xr-driver-breezy-gnome-git"
-pkgver=0.10.2
-pkgrel=4
+pkgver=0.10.5
+pkgrel=1
 pkgdesc="XR Linux Driver for Breezy GNOME"
 arch=('x86_64' 'aarch64')
 url="https://github.com/wheaney/XRLinuxDriver"
@@ -11,7 +11,7 @@ license=('GPL-3.0')
 install=hooks.install
 makedepends=('cmake' 'make')
 depends=('openssl' 'libevdev' 'libusb' 'json-c' 'curl' 'hidapi' 'python-yaml')
-source=("git+${url}#commit=21452bcf6a073888186448e247ed8ddca85946aa")
+source=("git+${url}")
 md5sums=(SKIP)
 
 build() {
@@ -29,12 +29,12 @@ build() {
 
 package() {
     # copy xr driver
-    install -Dm755 ${_pkgbase}/build/xrealAirLinuxDriver "${pkgdir}"/usr/bin/xrealAirLinuxDriver
-    sed -i '/ExecStart/c\ExecStart=xrealAirLinuxDriver' ${_pkgbase}/systemd/xreal-air-driver.service
-    sed -i '/WantedBy/c\WantedBy=default.target' ${_pkgbase}/systemd/xreal-air-driver.service
-    sed -i '/Environment/d' ${_pkgbase}/systemd/xreal-air-driver.service
-    install -Dm644 ${_pkgbase}/systemd/xreal-air-driver.service "${pkgdir}"/usr/lib/systemd/user/xreal-air-driver.service
-    install -Dm755 ${_pkgbase}/bin/xreal_driver_config "${pkgdir}"/usr/bin/xreal_driver_config
+    install -Dm755 ${_pkgbase}/build/xrDriver "${pkgdir}"/usr/bin/xrDriver
+    sed -i '/ExecStart/c\ExecStart=xrDriver' ${_pkgbase}/systemd/xr-driver.service
+    sed -i '/WantedBy/c\WantedBy=default.target' ${_pkgbase}/systemd/xr-driver.service
+    sed -i '/Environment/d' ${_pkgbase}/systemd/xr-driver.service
+    install -Dm644 ${_pkgbase}/systemd/xr-driver.service "${pkgdir}"/usr/lib/systemd/user/xr-driver.service
+    install -Dm755 ${_pkgbase}/bin/xr_driver_cli "${pkgdir}"/usr/bin/xr_driver_cli
 
     install -Dm755 ${_pkgbase}/lib/${CARCH}/libRayNeoXRMiniSDK.so "${pkgdir}"/usr/lib/libRayNeoXRMiniSDK.so
 

@@ -4,7 +4,7 @@ post_install() {
     udevadm control --reload-rules
     udevadm trigger
 
-    echo "start service after install: systemctl --user enable --now xreal-air-driver.service"
+    echo "start service after install: systemctl --user enable --now xr-driver.service"
 }
 
 post_upgrade() {
