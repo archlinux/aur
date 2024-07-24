@@ -1,0 +1,34 @@
+pkgbase = python-great-tables
+	pkgdesc = Make awesome display tables using Python
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://posit-dev.github.io/great-tables/
+	arch = any
+	license = MIT
+	checkdepends = python-ipykernel
+	checkdepends = python-pytest
+	checkdepends = selenium-manager
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = ipython
+	depends = python-babel>=2.13.1
+	depends = python-commonmark>=0.9.1
+	depends = python-htmltools>=0.4.1
+	depends = python-importlib-metadata
+	depends = python-importlib_resources
+	depends = python-numpy>=1.22.4
+	depends = python-pandas
+	depends = python-pillow
+	depends = python-polars
+	depends = python-selenium
+	depends = python-typing_extensions>=3.10.0.0
+	depends = python>=3.9
+	source = python-great-tables-0.10.0::git+https://github.com/posit-dev/great-tables.git#tag=3a14f2b6c08e59c442ca4f55511312888b69c860
+	source = pytest.ini
+	b2sums = cdc33a8b91e472e223f9cb66ed1d06508465a75dde40eb5585b3134982efd15e570a159f0161a71351c69decba9d687c4b0ffee3ca8ab4f5a1403138b957605d
+	b2sums = 6fc96614ad70fdb6774643e5a6bc08165cab99f5f0241c9b885fa93ba0742ff5f8224360c9914a9b8924311f3387fb6b204ec95a2be5dfb0e4dee711adf177da
+
+pkgname = python-great-tables
