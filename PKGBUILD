@@ -1,7 +1,7 @@
 # Maintainer: John Bernard <loqusion@gmail.com>
 _pkgname=hyprshade
 pkgname=${_pkgname}-rewrite-git
-pkgver=0.1.0
+pkgver=r703.87f984e
 pkgrel=1
 pkgdesc="(WIP rewrite) Hyprland shader configuration tool"
 arch=('x86_64')
@@ -23,6 +23,15 @@ prepare() {
     export RUSTUP_TOOLCHAIN=stable
 
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+pkgver() {
+	cd "$_pkgname"
+	{
+		set -o pipefail
+		git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+			printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	}
 }
 
 build() {
