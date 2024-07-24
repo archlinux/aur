@@ -1,7 +1,7 @@
 # Maintainer: El Bachir <bachiralfa@gmail.com>
 #
 pkgname=gols
-pkgver=0.2.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="ls with colors written in Go"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go>=1.22')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/elbachir-one/gols/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4672e3de4925c6dd995e3e576cbe127bcb3257d5df03a1c84ba1f258960bde02') 
+sha256sums=('3aa76cab0fd890ee324dbadcc3bfa1b55303a355adc5e1007807d65a2a3f769a') 
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"

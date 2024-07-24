@@ -1,13 +1,13 @@
 pkgbase = gols
 	pkgdesc = ls with colors written in Go
-	pkgver = 0.2.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/elbachir-one/gols
 	arch = x86_64
 	license = MIT
 	makedepends = go>=1.22
 	depends = glibc
-	source = gols-0.2.0.tar.gz::https://github.com/elbachir-one/gols/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 4672e3de4925c6dd995e3e576cbe127bcb3257d5df03a1c84ba1f258960bde02
+	source = gols-0.3.1.tar.gz::https://github.com/elbachir-one/gols/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = 3aa76cab0fd890ee324dbadcc3bfa1b55303a355adc5e1007807d65a2a3f769a
 
 pkgname = gols
