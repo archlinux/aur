@@ -1,0 +1,16 @@
+pkgbase = gv-usb2-driver-dkms-git
+	pkgdesc = A linux driver for the IO-DATA GV-USB2 SD capture device. (DKMS)
+	pkgver = r33.811fb0f
+	pkgrel = 1
+	url = https://github.com/Isaac-Lozano/GV-USB2-Driver
+	arch = any
+	license = Dual BSD/GPL
+	depends = dkms
+	source = GV-USB2-Driver::git+https://github.com/Isaac-Lozano/GV-USB2-Driver
+	source = alsa-index-selection.patch::https://patch-diff.githubusercontent.com/raw/Isaac-Lozano/GV-USB2-Driver/pull/9.patch
+	source = dkms.conf
+	sha256sums = SKIP
+	sha256sums = a1ad3bc3ca896efc9088fd8d7c17e99490636b9a46a68dc894153142c539c7dc
+	sha256sums = 7368f1ae93515a85a8bbd657669e0dd2e9d97ff890416246aff444bd998d5d24
+
+pkgname = gv-usb2-driver-dkms-git
