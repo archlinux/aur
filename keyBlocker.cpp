@@ -52,7 +52,6 @@ static bool filter_xcb_event(xcb_connection_t *c, xcb_generic_event_t *event)
 			auto key_press = reinterpret_cast<xcb_key_press_event_t *>(event);
 			if (blocked_hotkeys.find({key_press->detail, key_press->state}) != blocked_hotkeys.end())
 			{
-				printf("Hotkey event blocked: type=press detail=%d state=%d\n", key_press->detail, key_press->state);
 				return false;
 			}
 		}
@@ -61,7 +60,6 @@ static bool filter_xcb_event(xcb_connection_t *c, xcb_generic_event_t *event)
 			auto key_release = reinterpret_cast<xcb_key_release_event_t *>(event);
 			if (blocked_hotkeys.find({key_release->detail, key_release->state}) != blocked_hotkeys.end())
 			{
-				printf("Hotkey event blocked: type=release detail=%d state=%d\n", key_release->detail, key_release->state);
 				return false;
 			}
 		}

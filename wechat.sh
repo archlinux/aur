@@ -167,8 +167,24 @@ function execApp() {
 	${sdOption} \
 	-p Environment=LD_PRELOAD="${LD_PRELOAD}" \
 	-u "${unitName}" \
-	-p CPUWeight=50 \
-	-p IOWeight=40 \
+	-p Description="WeChat Qt" \
+	-p ExitType=cgroup \
+	-p OOMPolicy=stop \
+	-p OOMScoreAdjust=100 \
+	-p KillMode=control-group \
+	-p CPUAccounting=yes \
+	-p StartupCPUWeight=idle \
+	-p CPUSchedulingPriority=1 \
+	-p CPUSchedulingPolicy=idle \
+	-p Nice=19 \
+	-p Documentation="https://wiki.archlinuxcn.org/wiki/%E5%BE%AE%E4%BF%A1#%E5%BE%AE%E4%BF%A1_Linux_%E5%8E%9F%E7%94%9F%E7%89%88%E9%87%8D%E6%9E%84" \
+	-p StartupIOWeight=1 \
+	-p MemoryMax=90% \
+	-p MemoryHigh=80% \
+	-p CPUWeight=20 \
+	-p IOWeight=20 \
+	-p ManagedOOMSwap=kill \
+	-p ManagedOOMMemoryPressure=kill \
 	-p IPAccounting=yes \
 	-p UnsetEnvironment=XDG_CURRENT_DESKTOP \
 	-p UnsetEnvironment=WAYLAND_DISPLAY \
