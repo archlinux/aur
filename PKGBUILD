@@ -11,7 +11,7 @@
 pkgname=librewolf-hg
 _pkgname=librewolf-nightly
 __pkgname="Librewolf Nightly"
-pkgver=130.0a1.r829406.28ae30741dfb
+pkgver=130.0a1.r829427.2265791d29a4
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom. (nightly edition)"
 arch=(x86_64 x86_64_v3 aarch64)
@@ -44,7 +44,7 @@ depends=(
   libxt
   mime-types
   nspr
-  nss
+  'nss>=3.103'
   pango
   ttf-font
 )
