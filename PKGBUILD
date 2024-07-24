@@ -2,6 +2,7 @@
 _exe_name=minus_games_client
 pkgname=$_exe_name-git
 pkgver=0.1.0
+_source_folder=$pkgname-$pkgver
 pkgrel=1
 epoch=
 pkgdesc=""
@@ -20,20 +21,22 @@ backup=()
 options=()
 install=
 changelog=
-source=("$pkgname-$pkgver::git+$url#branch=main")
+source=("$_source_folder::git+$url#branch=main")
 noextract=()
 sha256sums=('SKIP')
 validpgpkeys=()
 
 prepare() {
     export RUSTUP_TOOLCHAIN=nightly
+	cd  $_source_folder
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
     export RUSTUP_TOOLCHAIN=nightly
 	export CARGO_TARGET_DIR=target
-	sed -i "s/Exec=run.sh/Exec=minus_games_client menu/g" "$pkgname-$pkgver/other/assets/client/io.github.accessory.minus_games_client.desktop" 
+	sed -i "s/Exec=run.sh/Exec=minus_games_client menu/g" "$_source_folder/other/assets/client/io.github.accessory.minus_games_client.desktop"
+	cd  $_source_folder
 	cargo build --release --bin $_exe_name
 }
 
@@ -42,8 +45,8 @@ check() {
 }
 
 package() {
-	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_exe_name"
-	install -Dm0644 "$pkgname-$pkgver/other/assets/client/io.github.accessory.minus_games_client.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/io.github.accessory.minus_games_client.svg"
-    install -Dm0644 "$pkgname-$pkgver/other/assets/client/io.github.accessory.minus_games_client.desktop" $pkgdir/usr/share/applications/io.github.accessory.minus_games_client.desktop
-    install -Dm0644 "$pkgname-$pkgver/other/assets/client/io.github.accessory.minus_games_client.metainfo.xml" "$pkgdir/usr/share/metainfo/io.github.accessory.minus_games_client.metainfo.xml"
+	install -Dm0755 -t "$pkgdir/usr/bin/" "$_source_folder/target/release/$_exe_name"
+	install -Dm0644 "$_source_folder/other/assets/client/io.github.accessory.minus_games_client.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/io.github.accessory.minus_games_client.svg"
+    install -Dm0644 "$_source_folder/other/assets/client/io.github.accessory.minus_games_client.desktop" $pkgdir/usr/share/applications/io.github.accessory.minus_games_client.desktop
+    install -Dm0644 "$_source_folder/other/assets/client/io.github.accessory.minus_games_client.metainfo.xml" "$pkgdir/usr/share/metainfo/io.github.accessory.minus_games_client.metainfo.xml"
 }
