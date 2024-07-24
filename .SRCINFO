@@ -1,0 +1,15 @@
+pkgbase = python-types-psycopg2
+	pkgdesc = Typing stubs for psycopg2
+	pkgver = 2.9.21.20240417
+	pkgrel = 1
+	url = https://pypi.org/project/types-psycopg2/
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/t/types-psycopg2/types-psycopg2-2.9.21.20240417.tar.gz
+	sha256sums = 05db256f4a459fb21a426b8e7fca0656c3539105ff0208eaf6bdaf406a387087
+
+pkgname = python-types-psycopg2
