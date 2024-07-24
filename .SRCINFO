@@ -1,6 +1,6 @@
 pkgbase = r-texreg
 	pkgdesc = Conversion of R Regression Output to LaTeX or HTML Tables
-	pkgver = 1.39.3
+	pkgver = 1.39.4
 	pkgrel = 1
 	url = https://cran.r-project.org/package=texreg
 	arch = any
@@ -70,7 +70,7 @@ pkgbase = r-texreg
 	optdepends = r-truncreg
 	optdepends = r-vgam
 	optdepends = r-zelig
-	source = https://cran.r-project.org/src/contrib/texreg_1.39.3.tar.gz
-	sha256sums = 341a779f51d49c84944f32cea82eb2bbd19ef8fa9d209e9bdfc4c6f65cb76d4d
+	source = https://cran.r-project.org/src/contrib/texreg_1.39.4.tar.gz
+	sha256sums = 3eb2dd3962652bd1b31389355cc2ecae680ae4fde91c7156454a6614e43983c0
 
 pkgname = r-texreg
