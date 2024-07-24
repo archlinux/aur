@@ -115,13 +115,12 @@ Keywords[zh_TW]=Internet;WWW;Browser;Web;Explorer;網際網路;網路;瀏覽器;
 Exec=/usr/lib/cachy-browser/cachy-browser %u
 Icon=cachy-browser
 Terminal=false
-X-MultipleArgs=false
 Type=Application
-MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;application/x-xpinstall;application/pdf;application/json;
+MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;x-scheme-handler/http;x-scheme-handler/https;application/x-xpinstall;application/pdf;application/json;
 StartupNotify=true
-StartupWMClass=cachybrowser
 Categories=Network;WebBrowser;
-Actions=new-window;new-private-window;
+Actions=new-window;new-private-window;profile-manager-window;
+StartupWMClass=cachybrowser
 
 [Desktop Action new-window]
 Name=New Window
@@ -338,3 +337,11 @@ Name[xh]=Ifestile yangasese entsha
 Name[zh_CN]=新建隐私浏览窗口
 Name[zh_TW]=新增隱私視窗
 Exec=/usr/lib/cachy-browser/cachy-browser --private-window %u
+
+[Desktop Action profile-manager-window]
+Name=Open the Profile Manager
+Name[cs]=Správa profilů
+Name[de]=Profilverwaltung öffnen
+Name[es]=Abrir el Gestor de Perfiles
+Name[fr]=Ouvrir le gestionnaire de profils
+Exec=/usr/lib/cachy-browser/cachy-browser --ProfileManager
