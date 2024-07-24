@@ -1,0 +1,64 @@
+--- postgresql-15.7/src/test/regress/expected/xml.out.old	2024-05-06 22:23:18.000000000 +0200
++++ postgresql-15.7/src/test/regress/expected/xml.out	    2024-07-24 16:44:56.317006243 +0200
+@@ -223,23 +223,13 @@
+ DETAIL:  line 1: xmlParseEntityRef: no name
+ <invalidentity>&</invalidentity>
+                 ^
+-line 1: chunk is not well balanced
+-<invalidentity>&</invalidentity>
+-                                ^
+ SELECT xmlparse(content '<undefinedentity>&idontexist;</undefinedentity>');
+ ERROR:  invalid XML content
+ DETAIL:  line 1: Entity 'idontexist' not defined
+ <undefinedentity>&idontexist;</undefinedentity>
+                              ^
+-line 1: chunk is not well balanced
+-<undefinedentity>&idontexist;</undefinedentity>
+-                                               ^
+ SELECT xmlparse(content '<invalidns xmlns=''&lt;''/>');
+-         xmlparse          
+----------------------------
+- <invalidns xmlns='&lt;'/>
+-(1 row)
+-
++ERROR:  invalid XML content
+ SELECT xmlparse(content '<relativens xmlns=''relative''/>');
+             xmlparse            
+ --------------------------------
+@@ -254,15 +244,8 @@
+ line 1: Opening and ending tag mismatch: twoerrors line 1 and unbalanced
+ <twoerrors>&idontexist;</unbalanced>
+                                     ^
+-line 1: chunk is not well balanced
+-<twoerrors>&idontexist;</unbalanced>
+-                                    ^
+ SELECT xmlparse(content '<nosuchprefix:tag/>');
+-      xmlparse       
+----------------------
+- <nosuchprefix:tag/>
+-(1 row)
+-
++ERROR:  invalid XML content
+ SELECT xmlparse(document '   ');
+ ERROR:  invalid XML document
+ DETAIL:  line 1: Start tag expected, '<' not found
+@@ -992,15 +975,13 @@
+ -- error messages, we suppress the DETAIL in this test.
+ \set VERBOSITY terse
+ SELECT xpath('/*', '<invalidns xmlns=''&lt;''/>');
+-ERROR:  could not parse XML document
++ERROR:  invalid XML content at character 20
+ \set VERBOSITY default
+ -- Again, the XML isn't well-formed for namespace purposes
+ SELECT xpath('/*', '<nosuchprefix:tag/>');
+-ERROR:  could not parse XML document
+-DETAIL:  line 1: Namespace prefix nosuchprefix on tag is not defined
+-<nosuchprefix:tag/>
+-                 ^
+-CONTEXT:  SQL function "xpath" statement 1
++ERROR:  invalid XML content
++LINE 1: SELECT xpath('/*', '<nosuchprefix:tag/>');
++                           ^
+ -- XPath deprecates relative namespaces, but they're not supposed to
+ -- throw an error, only a warning.
+ SELECT xpath('/*', '<relativens xmlns=''relative''/>');

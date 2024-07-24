@@ -4,7 +4,7 @@ pkgbase=postgresql15
 pkgver=15.7
 _majorver=${pkgver%.*}
 pkgname=("${pkgbase}-libs" "${pkgbase}-docs" "${pkgbase}")
-pkgrel=1
+pkgrel=2
 pkgdesc='Sophisticated object-relational DBMS'
 url='https://www.postgresql.org/'
 arch=('x86_64')
@@ -20,7 +20,8 @@ source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.ta
         postgresql.tmpfiles
         pgenv.sh
         postgresql-run-socket.patch
-        postgresql-perl-rpath.patch)
+        postgresql-perl-rpath.patch
+        postgresql-test-xml.patch)
 sha256sums=('a46fe49485ab6385e39dabbbb654f5d3049206f76cd695e224268729520998f7'
             'fe19a0f68a9f10435fe09efbe7407de8cbe9bf16686d63524778e90dad67f863'
             '8426f2ad548fb00452b340a631ab070899c0d44e7a88c8c3eec087c75ce32e6e'
@@ -28,12 +29,14 @@ sha256sums=('a46fe49485ab6385e39dabbbb654f5d3049206f76cd695e224268729520998f7'
             'fddc68565151077b4f514345087c38ca069d049b8a17dbf7eef2826f49ccbc7b'
             '1ea08f0f7819c9ef965ef7851a2262ae6f4837242d7fde2b6a8098b969d1133e'
             '02ffb53b0a5049233f665c873b96264db77daab30e5a2194d038202d815a8e6a'
-            'af6186d40128e043f333da4591455bf62b7c96e80214835f5c8c60b635ea9afb')
+            'af6186d40128e043f333da4591455bf62b7c96e80214835f5c8c60b635ea9afb'
+            '9aff2a0c5101e6a4256f73abd21caa2b0a3e62e0e70611ca538c8e14b9f5f6fa')
 
 prepare() {
   cd postgresql-${pkgver}
   patch -p1 < ../postgresql-run-socket.patch
   patch -p1 < ../postgresql-perl-rpath.patch
+  patch -p1 < ../postgresql-test-xml.patch
 }
 
 build() {
