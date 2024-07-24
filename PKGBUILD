@@ -1,6 +1,6 @@
 # Maintainer: Felipe Alfonso Gonzalez <f.alfonso@res-ear.ch>
 pkgname=connmaster
-pkgver=0.0.2
+pkgver=0.0.7
 pkgrel=1
 pkgdesc="ConnWifiMaster is a graphical application designed for Arch Linux systems that use ConnMan for network management. Developed with GTK in C."
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/felipealfonsog/ConnWifiMaster"
 license=('BSD-3-Clause')
 depends=('gtk3' 'connman')
 source=("https://github.com/felipealfonsog/ConnWifiMaster/archive/refs/tags/v.${pkgver}.tar.gz")
-sha256sums=('27bb596d65bc61fcfd0079bc9666962ccd48f3eb10d53fe96a0b4d851ff0491e')
+sha256sums=('b292ec2452ea148babb15680d99b6aadec09f43624933aa8933f79e77469837f')
 
 prepare() {
   tar xf "v.${pkgver}.tar.gz" -C "$srcdir" --strip-components=1

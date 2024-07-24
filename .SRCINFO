@@ -1,13 +1,13 @@
 pkgbase = connmaster
 	pkgdesc = ConnWifiMaster is a graphical application designed for Arch Linux systems that use ConnMan for network management. Developed with GTK in C.
-	pkgver = 0.0.2
+	pkgver = 0.0.7
 	pkgrel = 1
 	url = https://github.com/felipealfonsog/ConnWifiMaster
 	arch = x86_64
 	license = BSD-3-Clause
 	depends = gtk3
 	depends = connman
-	source = https://github.com/felipealfonsog/ConnWifiMaster/archive/refs/tags/v.0.0.2.tar.gz
-	sha256sums = 27bb596d65bc61fcfd0079bc9666962ccd48f3eb10d53fe96a0b4d851ff0491e
+	source = https://github.com/felipealfonsog/ConnWifiMaster/archive/refs/tags/v.0.0.7.tar.gz
+	sha256sums = b292ec2452ea148babb15680d99b6aadec09f43624933aa8933f79e77469837f
 
 pkgname = connmaster
