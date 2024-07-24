@@ -1,0 +1,5 @@
+[json_dto]
+source = "github"
+github = "Stiffstream/json_dto"
+use_max_tag = true
+prefix = "v."
