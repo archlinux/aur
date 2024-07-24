@@ -1,9 +1,9 @@
 # Maintainer: Hu Butui <hot123tea123@gmail.com>
 
 _pkgname=bayestestR
-_pkgver=0.13.2
+_pkgver=0.14.0
 pkgname=r-${_pkgname,,}
-pkgver=0.13.2
+pkgver=0.14.0
 pkgrel=1
 pkgdesc='Understand and Describe Bayesian Models and Posterior Distributions'
 arch=('any')
@@ -53,7 +53,7 @@ optdepends=(
   r-tweedie
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f600557bff7d7d8948e9a179b4dfb09261e2676783fc22a47a3369e095acb697')
+sha256sums=('fa0f94204b414df05ecf7340b37fbb5fbe6dff2d057e2425a6990b6510054880')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
