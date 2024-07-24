@@ -1,0 +1,22 @@
+pkgbase = android-armv7a-eabi-libsoup3
+	pkgdesc = HTTP client/server library for GNOME (Android armv7a-eabi)
+	pkgver = 3.5.2
+	pkgrel = 1
+	url = https://wiki.gnome.org/Projects/libsoup
+	arch = any
+	groups = android-libsoup3
+	license = LGPL
+	makedepends = android-meson
+	makedepends = gobject-introspection
+	depends = android-armv7a-eabi-brotli
+	depends = android-armv7a-eabi-libnghttp2
+	depends = android-armv7a-eabi-libpsl
+	depends = android-armv7a-eabi-sqlite
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://gitlab.gnome.org/GNOME/libsoup/-/archive/3.5.2/libsoup-3.5.2.tar.bz2
+	md5sums = 0fcaeddb7f0f859663857409745b61e6
+
+pkgname = android-armv7a-eabi-libsoup3
