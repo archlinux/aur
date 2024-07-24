@@ -1,7 +1,7 @@
 # Maintainer: Marius Hirt <marius-hirt@web.de>
 pkgname=k8sgpt
-pkgver=0.3.38
-_commit=f6ce47c
+pkgver=0.3.39
+_commit=3c08118
 pkgrel=1
 pkgdesc='A tool for scanning your Kubernetes clusters, diagnosing, and triaging issues in simple English.'
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
 )
 
 sha256sums=(
-    'd6e9dd181b0ae8cee3197b941507610cd0999c4862d3c90b6ed23f6573ea4947'
+    'b2a523a4c1b9d6f968388c09c333d0e710ad694d7f840dc7e7eaca90b314ab8b'
 )
 
 build() {
