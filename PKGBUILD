@@ -30,6 +30,6 @@ package() {
     install -Dm755 "$srcdir/${_pkgnamebase}/source/cppfront" \
         -t "$pkgdir/usr/bin/"
 
-    install -Dm644 "$srcdir/${_pkgnamebase}/include/cpp2util.h" \
-        -t "$pkgdir/usr/include/"
+    find $srcdir/${_pkgnamebase}/include/* \
+        -exec install -Dm644 '{}' -t "$pkgdir/usr/include/" ';'
 }
