@@ -26,6 +26,11 @@ checkdepends=('python-pytest-doctestplus'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 md5sums=('6a64eaec408fd228465ec9a4172e645d')
 
+get_pyinfo() {
+     [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" || \
+             python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
+}
+
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
     python -m build --wheel --no-isolation
@@ -48,6 +53,7 @@ package_python-mpl-animators() {
     install -D -m644 LICENSE.rst -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
+    rm -r ${pkgdir}/$(get_pyinfo site)/{docs,examples,licenses}
 }
 
 package_python-mpl-animators-doc() {
