@@ -1,0 +1,25 @@
+pkgbase = epub_to_audiobook
+	pkgdesc = command-line tool to convert EPUB ebooks into audiobooks
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/p0n1/epub_to_audiobook
+	arch = any
+	license = MIT
+	depends = ffmpeg
+	depends = python-beautifulsoup4
+	depends = python-ebooklib
+	depends = python-mutagen
+	depends = python-requests
+	depends = python-socksio
+	depends = python-pydub
+	depends = python
+	optdepends = python-openai
+	optdepends = python-edge-tts
+	provides = epub_to_audiobook
+	conflicts = epub_to_audiobook-git
+	source = https://github.com/p0n1/epub_to_audiobook/archive/refs/tags/v0.6.1.tar.gz
+	source = run.sh
+	sha512sums = a8313f564c00134e2b843c1e192e42135cf83514bb5d20914cf482aad1cc1b45861cc055804548a3508ac465ad2c6efefeef6451784131acd642da317dc55509
+	sha512sums = fb715e3fdc5c18d8c72d9493b345f1b1562528fb745767b9dcaf01bcebb1e5d4edde93b4da30c0078db3b57e859b40b67309763736545f9c0b0307fe778b8cba
+
+pkgname = epub_to_audiobook
