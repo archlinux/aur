@@ -1,7 +1,7 @@
 pkgbase = qucs-s
 	pkgdesc = A spin-off of Qucs that supports other free SPICE circuit simulators like ngspice with the same Qucs GUI
-	pkgver = 24.2.1
-	pkgrel = 3
+	pkgver = 24.3.0
+	pkgrel = 1
 	url = https://ra3xdh.github.io
 	arch = x86_64
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = qucs-s
 	optdepends = spiceopus: general purpose simulation backend for optimization loops
 	optdepends = openvaf: compiler for Verilog-A devices support
 	optdepends = octave: high-level language for post-simulation data processing
-	source = https://github.com/ra3xdh/qucs_s/releases/download/24.2.1/qucs-s-24.2.1.tar.gz
-	sha256sums = bb773fca419b1a1dfcd8cdc8457791f3a412a48fad2ffd6eea484b75930347c3
+	source = https://github.com/ra3xdh/qucs_s/releases/download/24.3.0/qucs-s-24.3.0.tar.gz
+	sha256sums = adac4cdc88602c876d5d1ee703603d34a56ae4b0f02193b168f14c4268d2cbfe
 
 pkgname = qucs-s
