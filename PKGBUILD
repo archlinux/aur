@@ -2,7 +2,7 @@
 # Contributor: Kenneth Endfinger <kaendfinger@gmail.com>
 
 pkgname=fwupd-git
-pkgver=1.9.10.r883.gd674f9584
+pkgver=1.9.10.r1196.gb8b45b190
 pkgrel=1
 pkgdesc="Simple daemon to allow session software to update firmware"
 arch=('x86_64')
@@ -19,7 +19,6 @@ depends=(
     'libcbor'
     'libdrm'
     'libgudev'
-    'libgusb'
     'libjcat'
     'libmm-glib'
     'libprotobuf-c.so'
