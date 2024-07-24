@@ -2,6 +2,7 @@
 # Maintainer:  ElryDeveloper <ElryDeveloper at elry.moe>
 
 pkgname=sipgate-desktop
+appstart=AppRun
 appimage="${pkgname}.AppImage"
 pkgver=2024.1
 pkgrel=1
@@ -29,6 +30,7 @@ package() {
     install -vDm 644 sipgate-desktop.desktop "${pkgdir}/usr/share/applications/sipgate-desktop.desktop"
     # Fix permissions
     chmod +x "${pkgdir}/opt/${pkgname}/${pkgname}"
+    chmod +x "${pkgdir}/opt/${pkgname}/${appstart}"
 }
 sha256sums=('936a62a37f62c4e7320c0946210b3127da2f42188eb156ad36ac94da60d0c159'
             '5623875b72fb70b0924f2394d73dde23bd6636eae02b989b3a73f170e149f4c3')
