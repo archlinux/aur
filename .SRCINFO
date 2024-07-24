@@ -1,0 +1,16 @@
+pkgbase = lsl
+	pkgdesc = linux subsystem for linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/sulincix/debian-subsystem
+	arch = any
+	license = GPLv3
+	makedepends = git
+	makedepends = gcc
+	makedepends = pam
+	depends = glibc
+	depends = debootstrap
+	source = lsl-1.0.0::https://gitlab.com/sulincix/debian-subsystem/-/archive/a5f4f4ee5989ce188c44094c526c5b454ae01f7a/debian-subsystem-a5f4f4ee5989ce188c44094c526c5b454ae01f7a.zip
+	md5sums = SKIP
+
+pkgname = lsl
