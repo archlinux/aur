@@ -4,7 +4,7 @@ pkgbase=python-deprecat
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=2.1.1
+pkgver=2.1.3
 pkgrel=1
 pkgdesc="Python @deprecat decorator to deprecate old python classes, functions or methods"
 arch=('any')
@@ -15,25 +15,25 @@ makedepends=('python-setuptools'
              'python-build'
              'python-installer')
 #            'python-sphinx')
-#checkdepends=('python-pytest')
-checkdepends=('python-nose' 'python-wrapt')
+checkdepends=('python-pytest'
+              'python-wrapt')
+#checkdepends=('python-nose' 'python-wrapt')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('81939d2b36a8e0db24f30eca0dbceb0a')
+md5sums=('505e41543495d4d5bd336863e054db0a')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
     python -m build --wheel --no-isolation
 
 #   msg "Building Docs"
-#   cd ${srcdir}/${_pyname}-${pkgver}/docs
-#   PYTHONPATH="../build/lib" make html
+#   PYTHONPATH="../build/lib" make -C docs html
 }
 
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-#   pytest #|| warning "Tests failed" #\
-    nosetests #|| warning "Tests failed" #\
+    PYTHONPATH="build/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+#   nosetests #|| warning "Tests failed" #\
 }
 
 package_python-deprecat() {

@@ -1,18 +1,18 @@
 pkgbase = python-deprecat
 	pkgdesc = Python @deprecat decorator to deprecate old python classes, functions or methods
-	pkgver = 2.1.1
+	pkgver = 2.1.3
 	pkgrel = 1
 	url = https://deprecat.readthedocs.io
 	arch = any
 	license = MIT
-	checkdepends = python-nose
+	checkdepends = python-pytest
 	checkdepends = python-wrapt
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/d/deprecat/deprecat-2.1.1.tar.gz
-	md5sums = 81939d2b36a8e0db24f30eca0dbceb0a
+	source = https://files.pythonhosted.org/packages/source/d/deprecat/deprecat-2.1.3.tar.gz
+	md5sums = 505e41543495d4d5bd336863e054db0a
 
 pkgname = python-deprecat
 	depends = python>=3.6
