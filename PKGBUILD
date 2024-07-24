@@ -26,23 +26,25 @@ prepare() {
   mkdir -p "build" "completions" "manpages"
   go mod tidy
   go generate ./...
+  go mod download
 }
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export LDFLAGS="${LDFLAGS:-} \
-                  -X ${url#https://}/${pkgname}/pkg/buildinfo.Version=${pkgver} \
-                  -X ${url#https://}/${pkgname}/pkg/buildinfo.Tag=$(git describe --tags) \
-                  -X ${url#https://}/${pkgname}/pkg/buildinfo.Commit=$(git rev-parse HEAD) \
-                  -X ${url#https://}/${pkgname}/pkg/buildinfo.Branch=$(git rev-parse --abbrev-ref HEAD) \
-                  -X ${url#https://}/${pkgname}/pkg/buildinfo.DateStr=$(date -Iseconds)"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   # make
-  go build -o "build/${pkgname}" ./"cmd/${pkgname}"
+
+  go build -o "build/${pkgname}" -ldflags "\
+    -X ${url#https://}/${pkgname}/pkg/buildinfo.Version=${pkgver} \
+    -X ${url#https://}/${pkgname}/pkg/buildinfo.Tag=$(git describe --tags) \
+    -X ${url#https://}/${pkgname}/pkg/buildinfo.Commit=$(git rev-parse HEAD) \
+    -X ${url#https://}/${pkgname}/pkg/buildinfo.Branch=$(git rev-parse --abbrev-ref HEAD) \
+    -X ${url#https://}/${pkgname}/pkg/buildinfo.DateStr=$(date -Iseconds)" \
+    ./"cmd/${pkgname}"
 
   # make completions
   for _sh in bash fish zsh powershell; do
@@ -53,12 +55,12 @@ build() {
   ./"build/${pkgname}" docs man > "manpages/${pkgname}.1"
 }
 
-check() {
-  cd "${srcdir}/${_pkgsrc}"
-  # make tests
-
-  # go test ./...
-}
+# check() {
+#   cd "${srcdir}/${_pkgsrc}"
+#   # make tests
+# 
+#   go test ./...
+# }
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
