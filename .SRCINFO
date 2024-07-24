@@ -1,0 +1,15 @@
+pkgbase = nemo_gleam
+	pkgdesc = Nemo extension for Gleam development
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/salif/nemo_gleam
+	arch = x86_64
+	license = Apache-2.0
+	depends = gleam
+	depends = zenity
+	depends = erlang-nox
+	optdepends = nemo
+	source = nemo_gleam-1.1.0.tar.gz::https://github.com/salif/nemo_gleam/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = eb05916cbc17de1e982dffc9e741b215c03220bace9b4c7189f72f67206a1b63
+
+pkgname = nemo_gleam
