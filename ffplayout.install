@@ -72,4 +72,11 @@ post_remove() {
 	systemctl --system daemon-reload >/dev/null || true
 	systemctl unmask ffpapi.service ffplayout.service >/dev/null || true
 
+	sysUser="ffpu"
+
+	if [ $(id -u $sysUser 2>/dev/null || echo -1) -ge 0 ]; then
+		userdel $sysUser
+	fi
+
+
 }

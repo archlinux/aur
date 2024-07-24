@@ -1,6 +1,6 @@
 pkgname=ffplayout
 pkgver=0.23.2
-pkgrel=0
+pkgrel=1
 pkgdesc="24/7 playout based on rust and ffmpeg"
 arch=('x86_64')
 url="https://github.com/ffplayout/ffplayout"
@@ -28,7 +28,7 @@ source=(
     'ffplayout.install'
 )
 sha256sums=('4524fd7cb66c9160baccc65f452bf4c7a8ec0df6853b3a846848cc9495e035c9'
-            '585c1ec08b262f986be2ad312027060041969f89f6487dde52a23a24fa41bd2a')
+            'c7a07a31c17645926333bc5d5b2f047f7be0cb2904c007ee20aafe2f2477aeeb')
 
 prepare() {
   cd "$srcdir/${pkgname}-${pkgver}"
