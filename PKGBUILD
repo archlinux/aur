@@ -2,11 +2,11 @@
 
 pkgname=python-pasp-git
 _name=pasp
-pkgver=r270.28a64dd
+pkgver=v0.0.5.r1.g76d96fe
 pkgrel=1
 pkgdesc="Probabilistic answer set programming (install from git)"
 arch=("any")
-url="https://RenatoGeh.github.io/pasp"
+url="https://kamel.ime.usp.br/pages/learn_dpasp.html"
 license=("MIT")
 depends=("python" "clingo" "python-lark-parser" "python-numpy" "python-pandas")
 makedepends=("python-setuptools" "gcc" "python-numpy")

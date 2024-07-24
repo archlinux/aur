@@ -1,8 +1,8 @@
 pkgbase = python-pasp-git
 	pkgdesc = Probabilistic answer set programming (install from git)
-	pkgver = r270.28a64dd
+	pkgver = v0.0.5.r1.g76d96fe
 	pkgrel = 1
-	url = https://RenatoGeh.github.io/pasp
+	url = https://kamel.ime.usp.br/pages/learn_dpasp.html
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
