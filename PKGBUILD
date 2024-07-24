@@ -2,7 +2,7 @@
 pkgname=plasma6-applets-resources-monitor
 _name=plasma-applet-resources-monitor
 pkgver=3.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Plasmoid for monitoring CPU, memory, network traffic, GPUs and disks IO'
 arch=(any)
 url=https://github.com/orblazer/plasma-applet-resources-monitor
@@ -22,12 +22,12 @@ conflicts=(
     plasma5-applets-resources-monitor-git
     plasma6-applets-resources-monitor-git
 )
-source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver-rc.3.tar.gz)
-b2sums=('5e32c53cb65a9f6f0ac7e4d11761c2d756895798c9ed38eeb4e118c68636658968f3215c75aa37eb37d27048992c7d43bbcebc8215df2925157dc6d651c84e59')
+source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
+b2sums=('df789155a226c189421667e228e2e1add1af79243d425ddacc75ed03ea36ac30cde8fb6e72575cd5705f80520e2beee6d4223f4c7c5c2cc804e9d3bcb07b807d')
 
 # TODO: change to cmake when upstream porting to Plasma 6
 package() {
-    cd $_name-$pkgver-rc.3
+    cd $_name-$pkgver
     mkdir -p "$pkgdir"/usr/share/plasma/plasmoids/org.kde.plasma.resources-monitor/
     cp -r package/* "$pkgdir"/usr/share/plasma/plasmoids/org.kde.plasma.resources-monitor/
 }
