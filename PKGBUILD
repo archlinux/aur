@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MSstats
-_pkgver=4.12.0
+_pkgver=4.12.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -38,8 +38,8 @@ optdepends=(
   r-tinytest
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7901abc9eece39cdf9b158ca521d7452')
-b2sums=('2d655ac8d0440ffff57306dee7d7b2def3c66f9572fc95f8a6e811fa945d4aa4347e7efeb1235dc6133188a18af134d2d49ca6fbd0503867934ea83cebc42009')
+md5sums=('fbe700c866603b1cc838da249c6aa835')
+b2sums=('d51df0dd69aa47074e6ec912c6b98f8cb53ea8a80e84518c27c850ffc796ce44b3b0daaec3b8ce2b4b8af4f423edaad559f3abd0f631ae0e89a130ecb1d53f56')
 
 build() {
   mkdir build
