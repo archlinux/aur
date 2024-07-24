@@ -1,0 +1,18 @@
+pkgbase = yaak-app
+	pkgdesc = Yaak is a cross-platform desktop app for interacting with REST, GraphQL, gRPC and OpenAPI.
+	pkgver = 2024.6.6
+	pkgrel = 1
+	url = https://yaak.app/
+	arch = x86_64
+	license = unknown
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	provides = yaak-app
+	conflicts = yaak-app
+	options = !strip
+	source = yaak-app-2024.6.6.deb::https://releases.yaak.app/releases/2024.6.6/yaak_2024.6.6_amd64.deb
+	sha256sums = e779497e68861aacffc05600fe5ebabf75c82dd4bd5c2953ba0238667cbd083f
+
+pkgname = yaak-app
