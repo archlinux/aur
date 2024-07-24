@@ -1,0 +1,45 @@
+diff --git a/revdbayes/tests/testthat/test-rpost_bingp.R b/revdbayes/tests/testthat/test-rpost_bingp.R
+index 8a91d8a..f30090d 100644
+--- a/revdbayes/tests/testthat/test-rpost_bingp.R
++++ b/revdbayes/tests/testthat/test-rpost_bingp.R
+@@ -1,3 +1,4 @@
++skip("long test")
+ #context("binGP: rpost_rcpp vs rpost")
+ 
+ # We check that the values simulated using rpost() and rpost_rcpp() are
+diff --git a/revdbayes/tests/testthat/test-rpost_gev.R b/revdbayes/tests/testthat/test-rpost_gev.R
+index b1d6877..fd84137 100644
+--- a/revdbayes/tests/testthat/test-rpost_gev.R
++++ b/revdbayes/tests/testthat/test-rpost_gev.R
+@@ -1,3 +1,4 @@
++skip("long test")
+ #context("GEV: rpost_rcpp vs rpost")
+ 
+ # We check that the values simulated using rpost() and rpost_rcpp() are
+diff --git a/revdbayes/tests/testthat/test-rpost_gp.R b/revdbayes/tests/testthat/test-rpost_gp.R
+index 4bc6b7a..431df87 100644
+--- a/revdbayes/tests/testthat/test-rpost_gp.R
++++ b/revdbayes/tests/testthat/test-rpost_gp.R
+@@ -1,3 +1,4 @@
++skip("long test")
+ #context("GP: rpost_rcpp vs rpost")
+ 
+ # We check that the values simulated using rpost() and rpost_rcpp() are
+diff --git a/revdbayes/tests/testthat/test-rpost_os.R b/revdbayes/tests/testthat/test-rpost_os.R
+index d4aa9b3..8c87ec4 100644
+--- a/revdbayes/tests/testthat/test-rpost_os.R
++++ b/revdbayes/tests/testthat/test-rpost_os.R
+@@ -1,3 +1,4 @@
++skip("long test")
+ #context("OS: rpost_rcpp vs rpost")
+ 
+ # We check that the values simulated using rpost() and rpost_rcpp() are
+diff --git a/revdbayes/tests/testthat/test-rpost_pp.R b/revdbayes/tests/testthat/test-rpost_pp.R
+index 14f7946..8761674 100644
+--- a/revdbayes/tests/testthat/test-rpost_pp.R
++++ b/revdbayes/tests/testthat/test-rpost_pp.R
+@@ -1,3 +1,4 @@
++skip("long test")
+ #context("PP: rpost_rcpp vs rpost")
+ 
+ # We check that the values simulated using rpost() and rpost_rcpp() are

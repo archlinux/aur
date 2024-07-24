@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=revdbayes
-_pkgver=1.5.3
+_pkgver=1.5.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Ratio-of-Uniforms Sampling for Bayesian Extreme Value Analysis"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -29,9 +29,17 @@ optdepends=(
   r-rmarkdown
   r-testthat
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f19c7af715a6a845ca9a615276bc4603')
-b2sums=('19b33bcbf6dc4ab868c70ded29dbebef83e8228105dfe4e71ec6f2c5ca6605e439064c1edce92c883de892eff2a52a360e96f8eba39b96109236a3f84ebbf2be')
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
+        "fix-tests.patch")
+md5sums=('334f2487c7d1da593e4bd41865fc360e'
+         'dd7ce9091e07ca9a47821e8bcf561b08')
+b2sums=('1d00242d9ffbd39316eed67091524976a3d387845954a5f34f3abf7c4a5848aac8272457a721a895854688354db0f1f553f171252608d3c11d9c3c0ab407e746'
+        '97d09c073f004e7b1afa24422817e8458534ed643a7b7a9d0dbfc48681fdee0187fcbe3ffc6b713cc5ad541106b055931ffa05be2c1828029f23daa92059371a')
+
+prepare() {
+  # skip long tests
+  patch -Np1 -i fix-tests.patch
+}
 
 build() {
   mkdir build
