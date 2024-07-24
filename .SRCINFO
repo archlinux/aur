@@ -1,0 +1,18 @@
+pkgbase = python-style50
+	pkgdesc = Command-line program to check code against the CS50 style guide.
+	pkgver = 2.10.3
+	pkgrel = 1
+	url = https://github.com/cs50/style50
+	arch = any
+	license = GPLv3
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = icdiff
+	depends = autopep8
+	depends = python-jsbeautifier
+	optdepends = python-babel
+	source = https://files.pythonhosted.org/packages/source/s/style50/style50-2.10.3.tar.gz
+	sha256sums = e2cf432a52797014ef0cecb101f98d0b1eb5959f97cd765338bf31da8640cf5a
+
+pkgname = python-style50
