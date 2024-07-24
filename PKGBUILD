@@ -33,6 +33,7 @@ _opt_features=(
 
   #uchardet
   #rubberband
+  #vapoursynth
 
   # Features disabled by default, but don't require any extra dependencies on an
   # Arch system:
@@ -49,14 +50,14 @@ _opt_features=(
 
 pkgname=mpv-git
 _gitname=mpv
-pkgver=0.37.0_114_g17be6e1990
+pkgver=0.38.0_634_gd384a6b793
 pkgrel=1
 pkgdesc='Video player based on MPlayer/mplayer2 (git version)'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
-license=('GPL')
+license=('GPL-2.0-or-later')
 url='https://mpv.io'
 _undetected_depends=('hicolor-icon-theme')
-depends=('ffmpeg' 'libplacebo' "${_undetected_depends[@]}")
+depends=('ffmpeg' 'libplacebo' 'libass' "${_undetected_depends[@]}")
 optdepends=('yt-dlp: for video-sharing websites playback (preferred over youtube-dl)'
             'youtube-dl: for video-sharing websites playback')
 makedepends=('git'
@@ -106,7 +107,7 @@ for feature in "${_opt_features[@]}"; do
       makedepends+=('wayland-protocols')
       _opt_extra_flags+=('-Dwayland=enabled')
       ;;
-    sdl2|openal|uchardet|rubberband)
+    sdl2|openal|uchardet|rubberband|vapoursynth)
       depends+=("$feature")
       _opt_extra_flags+=("-D${feature}=enabled")
       ;;
