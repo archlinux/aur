@@ -1,0 +1,11 @@
+pkgbase = minus_games_client-git
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Accessory/minus_games
+	arch = x86_64
+	license = MIT
+	makedepends = cargo-nightly
+	source = minus_games_client-git-0.1.0::git+https://github.com/Accessory/minus_games#branch=main
+	sha256sums = SKIP
+
+pkgname = minus_games_client-git
