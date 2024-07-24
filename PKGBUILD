@@ -33,4 +33,4 @@ package() {
     chmod +x "${pkgdir}/opt/${pkgname}/${appstart}"
 }
 sha256sums=('936a62a37f62c4e7320c0946210b3127da2f42188eb156ad36ac94da60d0c159'
-            '5623875b72fb70b0924f2394d73dde23bd6636eae02b989b3a73f170e149f4c3')
+            '0b941c78172727db2e28aa7c7a40e6aa3a8cbf946a4ca8576142ec6484104f8f')
