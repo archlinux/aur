@@ -1,8 +1,8 @@
 # Maintainer: Renato Lui Geh <renatogeh at gmail dot com>
 
 pkgname=python-pasp
-_pypiname="${pkgname/python-/}-plp"
-pkgver=0.0.4.post1
+_pypiname="${pkgname/python-/}_plp"
+pkgver=0.0.5.post1
 pkgrel=1
 pkgdesc="Probabilistic answer set programming"
 arch=("any")
@@ -14,7 +14,7 @@ optdepends=("python-pytorch" "python-pytorch-cuda" "python-pytorch-opt" "python-
 provides=("python-pasp")
 conflicts=("python-pasp")
 source=("https://files.pythonhosted.org/packages/source/${_pypiname::1}/${_pypiname}/${_pypiname}-${pkgver}.tar.gz")
-sha256sums=("5cb5983bd707525c997182d53b2dda0fbd7f0ca6c92fb36b879738f92275b4fe")
+sha256sums=("d4e5e690a9549942e1e0a30fb52b424c859f229bd91fa0cbfec25023dce2fea9")
 
 build() {
   cd $srcdir/${_pypiname}-${pkgver}
