@@ -5,10 +5,10 @@ pkgbase = klaus-bin
 	url = https://github.com/dmaliog/kLausqt/
 	arch = x86_64
 	license = GPL 3.0
-	depends = qt6-base>=6.6.1
-	depends = qt6-multimedia>=6.6.1
-	depends = qt6-webengine>=6.6.1
-	depends = qt6-svg
+	depends = qt6-base>=6.7.2
+	depends = qt6-multimedia>=6.7.2
+	depends = qt6-webengine>=6.7.2
+	depends = qt6-svg>=6.7.2
 	depends = translate-shell
 	depends = yay>=12.2.0
 	depends = zenity

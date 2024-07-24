@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/dmaliog/kLausqt/"
 license=('GPL 3.0')
 groups=()
-depends=('qt6-base>=6.6.1' 'qt6-multimedia>=6.6.1' 'qt6-webengine>=6.6.1' 'qt6-svg' 'translate-shell' 'yay>=12.2.0' 'zenity' 'libnotify' 'zip' 'tar' 'papirus-icon-theme')
+depends=('qt6-base>=6.7.2' 'qt6-multimedia>=6.7.2' 'qt6-webengine>=6.7.2' 'qt6-svg>=6.7.2' 'translate-shell' 'yay>=12.2.0' 'zenity' 'libnotify' 'zip' 'tar' 'papirus-icon-theme')
 optdepends=('ocs-url')
 source=(
 	"${pkgname}-${pkgver}.zip::${url}/releases/download/${pkgver}/klaus-${pkgver}-${_releasedate}-linux64.zip"
