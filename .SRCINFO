@@ -1,9 +1,10 @@
 pkgbase = android-x86-64-nspr
-	pkgdesc = Netscape Portable Runtime (android)
+	pkgdesc = Netscape Portable Runtime (Android x86-64)
 	pkgver = 4.35
-	pkgrel = 2
+	pkgrel = 3
 	url = https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSPR
 	arch = any
+	groups = android-nspr
 	license = MPL-2.0
 	makedepends = android-configure
 	makedepends = zip
