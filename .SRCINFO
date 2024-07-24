@@ -1,0 +1,16 @@
+pkgbase = spacelaunch
+	pkgdesc = Help keep track of upcoming rocket launches
+	pkgver = 1.2.7
+	pkgrel = 1
+	url = https://gitlab.com/elescoute/spacelaunch
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = vala
+	makedepends = meson
+	makedepends = git
+	depends = gtk4
+	depends = libadwaita
+	source = git+https://gitlab.com/elescoute/spacelaunch#tag=1.2.7
+	sha256sums = 7499c6f7aea709a8683ab9208493f9d022d767041519e530820013b3948ac1aa
+
+pkgname = spacelaunch
