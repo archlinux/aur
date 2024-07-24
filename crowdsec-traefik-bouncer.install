@@ -1,0 +1,8 @@
+post_install() {
+cat << EOF
+Please edit /etc/default/crowdsec-traefik-bouncer with the following before starting crowdsec-traefik-bouncer.service:
+
+- CROWDSEC_BOUNCER_API_KEY
+- CROWDSEC_AGENT_HOST
+EOF
+}

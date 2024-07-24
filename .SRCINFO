@@ -1,0 +1,20 @@
+pkgbase = crowdsec-traefik-bouncer
+	pkgdesc = Crowdsec bouncer for protecting traefik
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/fbonalair/traefik-crowdsec-bouncer
+	install = crowdsec-traefik-bouncer.install
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = crowdsec
+	depends = traefik
+	backup = etc/default/crowdsec-traefik-bouncer
+	source = crowdsec-traefik-bouncer-0.5.0.tar.gz::https://github.com/fbonalair/traefik-crowdsec-bouncer/archive/refs/tags/v0.5.0.tar.gz
+	source = crowdsec-traefik-bouncer.service
+	source = crowdsec-traefik-bouncer.conf
+	sha256sums = a5ec4a59d0b7811c6a955c8d14b76d037c56d35720e354dc4be99343e3570026
+	sha256sums = 415f259b207e6f629bc92c979c621bd6da00ecf8ecea67f220f023493dca223e
+	sha256sums = 9f68cc9148369b730cab21bd1c24db46c2c1c75e1577acee2e9eacd384d21413
+
+pkgname = crowdsec-traefik-bouncer
