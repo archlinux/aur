@@ -1,0 +1,3 @@
+[ruby-liquid]
+source = "gems"
+gems = "liquid"
