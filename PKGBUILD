@@ -27,8 +27,8 @@ source=(
     "ffplayout-${pkgver}::git+https://github.com/ffplayout/ffplayout.git#tag=v${pkgver}"
     'ffplayout.install'
 )
-sha256sums=('SKIP'
-            '91fa57deb966dd5f3f611d0a8213934f200487c64153167a1d9d6f7c9b1b85e8')
+sha256sums=('4524fd7cb66c9160baccc65f452bf4c7a8ec0df6853b3a846848cc9495e035c9'
+            '585c1ec08b262f986be2ad312027060041969f89f6487dde52a23a24fa41bd2a')
 
 prepare() {
   cd "$srcdir/${pkgname}-${pkgver}"

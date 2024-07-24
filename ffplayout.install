@@ -5,6 +5,7 @@ post_install() {
 	systemctl --system daemon-reload >/dev/null || true
 
 	sysUser="ffpu"
+	IP=$(ip route get 1.2.3.4 | awk '{if($7 !~ /^[[:space:]]*$/) print $7}')
 
 	if [ -f /run/.containerenv ] || [ -f /run/.dockerenv ] || [ -f /.dockerenv ] || [ -f /.dockerinit ]; then
 	    sysUser="root"
@@ -18,8 +19,6 @@ post_install() {
 	    mkdir "/usr/share/ffplayout/db"
 	    mkdir -p "/var/lib/ffplayout/playlists"
 	    mkdir -p "/var/lib/ffplayout/tv-media"
-
-	    IP=$(ip route get 1.2.3.4 | awk '{if($7 !~ /^[[:space:]]*$/) print $7}')
 
 	    /usr/bin/ffpapi -i -d "${IP}:8787"
 
@@ -46,7 +45,7 @@ post_install() {
     echo "2. add admin user to ffpapi:"
     echo "    - 'ffpapi -a'"
     echo "3. use a reverse proxy for SSL, Port is **8787**."
-    echo "4. login with your browser, address without proxy would be: **http://[IP ADDRESS]:8787**"
+    echo "4. login with your browser, address without proxy would be: **http://${IP}:8787**"
 	echo "5. Default location for playlists and media files are: **/var/lib/ffplayout/**."
 
 }
@@ -58,9 +57,9 @@ post_upgrade() {
 pre_remove() {
 
 	if [ -d /run/systemd/system ]; then
-		for service in $(systemctl list-units --type service --all --no-legend | grep 'ffplayout' | awk '{print $1}'); do
-            systemctl stop "$service" >/dev/null || true
-        done
+			for service in $(systemctl list-units --type service --all --no-legend --plain | grep 'ffplayout' | awk '{print $1}'); do
+					systemctl stop "$service" >/dev/null || true
+			done
 	fi
 
 }
@@ -72,13 +71,5 @@ post_remove() {
     
 	systemctl --system daemon-reload >/dev/null || true
 	systemctl unmask ffpapi.service ffplayout.service >/dev/null || true
-
-	sysUser="ffpu"
-
-	if [ $(id -u $sysUser 2>/dev/null || echo -1) -ge 0 ]; then
-	    userdel -r -f $sysUser
-	fi
-
-	rm -rf /var/log/ffplayout
 
 }
