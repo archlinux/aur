@@ -1,6 +1,10 @@
+RED="\e[31m"
+BOLD_RED="\e[1;${RED}"
+END="\e[0m"
+
 pre_install() {
     echo >&2
-    echo >&2 "This package is for testing purposes only."
-    echo >&2 "You probably meant to install hyprshade or hyprshade-git."
+    echo >&2 -e "${BOLD_RED}This package is for testing purposes only.${END}"
+    echo >&2 -e "${BOLD_RED}You probably meant to install hyprshade or hyprshade-git.${END}"
     echo >&2
 }
