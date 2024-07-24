@@ -1,7 +1,7 @@
 # Maintainer: Erica Marigold <hi@devcomp.xyz>
 
 pkgname=rojo-git
-pkgver=7.4.1.r0.gaf9629c5
+pkgver=7.4.2.r0.g844f51d
 pkgrel=1
 pkgdesc="[Latest Git Commit] Rojo enables Roblox developers to use professional-grade software engineering tools"
 arch=(x86_64 aarch64)
@@ -21,7 +21,8 @@ pkgver() {
 }
 
 prepare() {
-  cd rojo 
+  cd rojo
+  git checkout 7.4.x
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
