@@ -1,0 +1,22 @@
+pkgbase = ginko-git
+	pkgdesc = A device-tree source parser, analyzer and language server
+	pkgver = v0.0.5.r6.g4437e3a
+	pkgrel = 1
+	url = https://github.com/Schottkyc137/ginko
+	arch = any
+	license = MIT
+	makedepends = cargo
+	provides = ginko
+	provides = ginko-ls
+	conflicts = ginko
+	conflicts = ginko-bin
+	conflicts = ginko_ls
+	conflicts = ginko_ls-bin
+	replaces = ginko
+	replaces = ginko-bin
+	replaces = ginko_ls
+	replaces = ginko_ls-bin
+	source = git+https://github.com/Schottkyc137/ginko.git
+	sha256sums = SKIP
+
+pkgname = ginko-git
