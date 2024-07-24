@@ -13,9 +13,9 @@ source=("${pkgname}-${pkgver}::https://gitlab.com/sulincix/debian-subsystem/-/ar
 md5sums=('SKIP')
 
 build() {
-    make -C "${pkgname}-${pkgver}" all
+    make -C "debian-subsystem-${_commit}" all
 }
 
 package() {
-    make -C "${pkgname}-${pkgver}/" DESTDIR="${pkgdir}" install
+    make -C "debian-subsystem-${_commit}" DESTDIR="${pkgdir}" install
 }
