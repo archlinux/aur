@@ -3,11 +3,13 @@
 _pkgname="osdctl"
 pkgname="${_pkgname}-bin"
 pkgver=0.34.0
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI for the OSD utilities"
 arch=('x86_64' 'aarch64')
 url="https://github.com/openshift/${_pkgname}"
 license=('Apache-2.0')
+optdepends=('bash-completion: for shell auto-completion'
+            'zsh-completions: for shell auto-completion')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
@@ -16,9 +18,28 @@ source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/
 sha256sums_x86_64=('a471143d5f8a3bd70bd2c7c014a1ae0db5ea871f0017ca1aed740bf1dbad889c')
 sha256sums_aarch64=('066507bb42dadf5de4a0131fd4019d5097857ab7924a35d63831715bfef4d4f5')
 
+prepare() {
+  cd "${srcdir}"
+  mkdir -p "completions"
+}
+
+build() {
+  cd "${srcdir}"
+
+  for _sh in bash fish zsh powershell; do
+    ./"${_pkgname}" completion "${_sh}" > "completions/${_pkgname}.${_sh}"
+  done
+}
+
 package() {
   cd "${srcdir}"
   install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 "README.md"   "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   install -Dm644 "LICENSE"     "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+
+  cd "completions"
+  install -Dm644 "${_pkgname}.bash"       "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
+  install -Dm644 "${_pkgname}.fish"       "${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
+  install -Dm644 "${_pkgname}.zsh"        "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
+  install -Dm644 "${_pkgname}.powershell" "${pkgdir}/usr/share/powershell/Completions/${_pkgname}.ps1"
 }
