@@ -1,6 +1,6 @@
 # Maintainer: Keiran <keiran0@proton.me>
 pkgname=e-zshot
-pkgver=1.1.3
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="CLI to automate taking screenshots and uploading them to e-z.host."
 arch=('any')
@@ -16,15 +16,19 @@ prepare() {
 }
 
 package() {
-  cd "$srcdir"
+  cd "$srcdir/e-zshot-${pkgver}"
 
-  # Install Python scripts
-  install -Dm755 e-z-flameshot.py "$pkgdir/usr/bin/e-z-flameshot"
-  install -Dm755 e-z-grim.py "$pkgdir/usr/bin/e-z-grim"
+  install -Dm755 plugins/e-z-flameshot.py "$pkgdir/usr/bin/e-z-flameshot"
+  install -Dm755 plugins/e-z-grim.py "$pkgdir/usr/bin/e-z-grim"
+  install -Dm755 plugins/text_processing.py "$pkgdir/usr/bin/text_processing.py"
 
-  # Install README
-  install -Dm644 README.md "$pkgdir/usr/share/doc/e-zshot/README.md"
+  install -Dm755 e-zshot.py "$pkgdir/usr/bin/e-zshot"
 
-  # Install fonts
-  install -Dm644 fonts/impact.ttf "$pkgdir/usr/share/fonts/impact.ttf"
+  install -Dm755 e-zconfig.sh "$pkgdir/usr/bin/e-zconfig"
+
+  mkdir -p "$pkgdir/usr/share/doc/e-zshot"
+  if [[ -f README.md ]]; then
+    install -Dm644 README.md "$pkgdir/usr/share/doc/e-zshot/README.md"
+  fi
 }
+
