@@ -1,7 +1,7 @@
 pkgbase = pje-office
 	pkgdesc = PJeOffice is a software made available by CNJ for electronic signing PJe system's documents
-	pkgver = 2.5.14u
-	pkgrel = 2
+	pkgver = 2.5.16u
+	pkgrel = 1
 	url = https://pjeoffice.trf3.jus.br
 	install = pje-office.install
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = pje-office
 	depends = jre11-openjdk
 	depends = bash
 	options = !debug
-	source = https://pje-office.pje.jus.br/pro/pjeoffice-pro-v2.5.14u-linux_x64.zip
-	md5sums = d310596e578d16eb5311c26c77b2288e
+	source = https://pje-office.pje.jus.br/pro/pjeoffice-pro-v2.5.16u-linux_x64.zip
+	md5sums = 363f11dccfaf875634d19af0e6720be0
 
 pkgname = pje-office
