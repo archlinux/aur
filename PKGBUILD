@@ -2,7 +2,7 @@
 pkgname=walker-bin
 license=('MIT')
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='wayland application runner'
 url='https://github.com/abenz1267/walker'
 depends=('gtk4-layer-shell')
