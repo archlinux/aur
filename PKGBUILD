@@ -18,6 +18,6 @@ build() {
 }
 
 package() {
-    make -C "debian-subsystem-${_commit}" DESTDIR="${pkgdir}" LIBDIR=/usr/lib install
-    
+    make -C "debian-subsystem-${_commit}" DESTDIR="${pkgdir}" \
+        LIBDIR=/usr/lib PAMDIR=/usr/lib64/security install   
 }
