@@ -1,0 +1,6 @@
+pkg/
+src/
+*.tar.gz
+*.pkg*
+*.log
+kl2tpd*

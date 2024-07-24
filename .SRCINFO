@@ -1,0 +1,16 @@
+pkgbase = kl2tpd
+	pkgdesc = Client/LAC-mode daemon for creating L2TPv2 sessions. Alternative to xl2tpd
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/katalix/go-l2tp
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	depends = ppp
+	options = !debug
+	source = kl2tpd-0.1.8::git+https://github.com/katalix/go-l2tp#tag=v0.1.8
+	sha256sums = 21d64ae7fb629a86aa3f340aa08c96300457ae5162418926f55ceda2bf3bdb38
+
+pkgname = kl2tpd
