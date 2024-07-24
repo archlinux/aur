@@ -6,5 +6,4 @@
 !PKGBUILD
 !.SRCINFO
 !chroot-build.sh
-!signal-tray
-!signal-tray.hook
+!.nvchecker.toml
