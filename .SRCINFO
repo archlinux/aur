@@ -10,6 +10,6 @@ pkgbase = iso-commander
 	depends = readline
 	depends = util-linux
 	source = iso-commander-5.1.3.tar.gz::https://github.com/siyia2/iso-commander/archive/v5.1.3.tar.gz
-	md5sums = 342898d571a78514e292a65a6a7949fe
+	md5sums = 5bf99b4b3b58108cc1e4477810ecdd0a
 
 pkgname = iso-commander
