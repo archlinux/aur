@@ -21,15 +21,16 @@ sha512sums=('40a59720a44517d94323fc84fea72b62ff4ae6860e79648c6bb4b240f43e03f841c
 function prepare() {
 	NODE_OPTIONS="--max_old_space_size=4096"
 	cd "cinny-${pkgver}"
-	yarn
-	#npm install --legacy-peer-deps
+	#yarn
+	npm install --legacy-peer-deps
 }
 
 build() {
 	cd "cinny-${pkgver}"
 	NODE_OPTIONS="--max_old_space_size=4096"
 	#yarn dist
-	yarn run build
+	#yarn run build
+	npm run build
 }
 
 package_cinny-web() {
