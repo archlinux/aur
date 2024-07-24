@@ -25,6 +25,8 @@ optdepends=(
 	python-openai
 	python-edge-tts
 )
+conflicts=("$_pkgname")
+provides=("$_pkgname")
 
 source=(
 	"git+https://github.com/$_gituser/$_pkgname.git"
