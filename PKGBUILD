@@ -3,7 +3,7 @@
 _pkgname='phantomjs'
 pkgname="$_pkgname-bin"
 pkgver=2.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Headless WebKit with JavaScript API (official static binary)'
 url='http://phantomjs.org/'
 license=('BSD')
