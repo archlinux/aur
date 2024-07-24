@@ -2,7 +2,7 @@
 # Contributor: Edgar Luque <git@edgarluque.com>
 
 pkgname=ddnet
-pkgver=18.3
+pkgver=18.4
 pkgrel=1
 pkgdesc="A Teeworlds modification with a unique cooperative gameplay."
 arch=('x86_64')
@@ -17,15 +17,23 @@ backup=('usr/share/ddnet/data/autoexec_server.cfg')
 source=("https://ddnet.org/downloads/DDNet-$pkgver.tar.xz"
         "ddnet-server.service" "ddnet-sysusers.conf" "ddnet-tmpfiles.conf"
         # Licenses extracted from license.txt
-        "Zlib.txt" "OFL-1.1.txt" "Bitstream-Vera.txt" "Arev.txt")
-sha256sums=('211d106c377be7cddaa44ae41f6349c81dbcbb1dfdbd3b330a4a1930c1534adb'
+        "Zlib.txt" "OFL-1.1.txt" "Bitstream-Vera.txt" "Arev.txt"
+        "0003-format-security.patch")
+sha256sums=('5fa37702b729924fb883f472f0e66a52782859404ab618a9f8b507b1d1ed3aa9'
             '9377a9d7c87abae166c8fa98cd79a61c74482f80f80bc930ae043349e9a84965'
             '70034f237270b38bf312238a26cfd322e212ca5714bfea4ae91e80c639ce8738'
             '043452f4de3c86d903973009bb3e59b3492a6669b86d0b1410e59a1476a87369'
             '7ad4796759efa0186f5a0600f30903ce9a63d3ee0353ab4e435b43b469683402'
             'cc97348511b4e9bf6e2f0ee6fbc329fb001e6f1049401026cf212d091390d900'
             'da8e7278deea5296b56374fd048f8bc975be069a526d0119c9d32aa555558b4c'
-            '8acb2a0b769d9e0b3ae9f35c12110189c82790af3254419f86c46105bca70075')
+            '8acb2a0b769d9e0b3ae9f35c12110189c82790af3254419f86c46105bca70075'
+            '86625a60f59a5218e09a2ce15106f43ffe8de51a55d49b683347f921a206f116')
+
+prepare() {
+  cd DDNet-$pkgver
+  # https://github.com/ddnet/ddnet/pull/8517
+  patch -p0 -i ../0003-format-security.patch
+}
 
 build() {
     mkdir -p build
@@ -33,7 +41,7 @@ build() {
     # https://bbs.archlinux.org/viewtopic.php?id=293078
     CXXFLAGS+=' -ffat-lto-objects'
     cmake ../DDNet-$pkgver          \
-        -DCMAKE_BUILD_TYPE=Debug    \
+        -DCMAKE_BUILD_TYPE=None     \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DAUTOUPDATE=OFF            \
         -DDISCORD=ON                \
