@@ -1,0 +1,16 @@
+pkgbase = omm
+	pkgdesc = "on-my-mind": A keyboard-driven task manager for the command line
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/dhth/omm
+	arch = x86_64
+	arch = i686
+	arch = arm64
+	license = MIT
+	makedepends = go
+	conflicts = omm-bin
+	conflicts = omm-git
+	source = omm-0.3.1.tar.gz::https://github.com/dhth/omm/archive/v0.3.1.tar.gz
+	sha256sums = 761ee4653d8f37344a62e60ffe56cdcc1e1fef94f513228f3c0535bc12d3722b
+
+pkgname = omm
