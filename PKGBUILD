@@ -2,7 +2,6 @@
 # Maintainer:  ElryDeveloper <ElryDeveloper at elry.moe>
 
 pkgname=sipgate-desktop
-appstart=AppRun
 appimage="${pkgname}.AppImage"
 pkgver=2024.1
 pkgrel=1
@@ -30,7 +29,8 @@ package() {
     install -vDm 644 sipgate-desktop.desktop "${pkgdir}/usr/share/applications/sipgate-desktop.desktop"
     # Fix permissions
     chmod +x "${pkgdir}/opt/${pkgname}/${pkgname}"
-    chmod +x "${pkgdir}/opt/${pkgname}/${appstart}"
+    chmod +x "${pkgdir}/opt/${pkgname}/chrome-sandbox"
+    chmod +x "${pkgdir}/opt/${pkgname}/chrome_crashpad_handler"
 }
 sha256sums=('936a62a37f62c4e7320c0946210b3127da2f42188eb156ad36ac94da60d0c159'
-            '0b941c78172727db2e28aa7c7a40e6aa3a8cbf946a4ca8576142ec6484104f8f')
+            'c1c0104c45f34392f04317ec7597926cdd697ebeffdcc1b64ee4cdd0fa158221')
