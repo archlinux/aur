@@ -17,14 +17,13 @@
 
 pkgbase=llvm-minimal-git
 pkgname=(llvm-minimal-git llvm-libs-minimal-git clang-minimal-git clang-libs-minimal-git clang-opencl-headers-minimal-git)
-pkgver=19.0.0_r496188.172f6ddfa766
+pkgver=20.0.0_r506221.05e95067eeaa
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
 makedepends=(git cmake libffi libedit ncurses libxml2
              libxcrypt python python-setuptools)
-# b361b5369ed4
 source=("git+https://github.com/llvm/llvm-project.git"
 )
 md5sums=('SKIP')
@@ -40,8 +39,6 @@ options=(!lto !debug )
 # example for systems with 24 cores
 # LITFLAGS="-j 18"
 # NOTE: It's your responbility to validate the value of LITFLAGS. If unsure, don't set it.
-
-_major_ver=19
 
 _get_distribution_components() {
 local target
@@ -180,6 +177,10 @@ package_llvm-minimal-git() {
     # for an unknown reason !staticlibs doesn't remove all static *.a libraries from clang
     # ensure they are removed
     find "$pkgdir"/usr/lib/clang -depth -type f -name "*.a" -delete
+    
+    # clang uses clang/LLVM_Major_version in it's folder structure
+    # extract this from pkgver
+    local _major_ver=$(echo $pkgver | cut -d. -f1)
     
     # prepare folders in srcdir to store files that are placed in other package_*() functions
     mkdir -p "$srcdir"{/llvm-libs/usr/lib,/clang-libs/usr/lib,/clang-opencl-headers/usr/{lib/clang/$_major_ver/include,include/clang/Basic}}
