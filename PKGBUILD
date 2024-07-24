@@ -1,7 +1,7 @@
 # Maintainer: Ianis G. Vasilev <ianis@ivasilev.net>
 pkgname=wintoggle-git
 pkgver=3.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple window focus toggler"
 arch=('x86_64' 'i386')
 url="https://github.com/v--/wintoggle"
@@ -10,7 +10,7 @@ depends=('libx11')
 makedepends=('make')
 conflicts=('wintoggle')
 provides=('wintoggle')
-source=('git://github.com/v--/wintoggle.git')
+source=('git+https://github.com/v--/wintoggle.git')
 sha256sums=('SKIP')
 
 build() {
