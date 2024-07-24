@@ -1,0 +1,6 @@
+Python-3.13*.tar.xz
+Python-3.13*.tar.xz.asc
+python313-freethreading-*.pkg.tar*
+pkg/
+src/
+*.log
