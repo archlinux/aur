@@ -1,16 +1,15 @@
-pkgbase = vulkan-memory-allocator
-	pkgdesc = Easy to integrate Vulkan memory allocation library
+pkgbase = vulkan-memory-allocator-hpp-git
+	pkgdesc = C++ bindings for VulkanMemoryAllocator
 	pkgver = 3.1.0
-	pkgrel = 2
-	url = https://gpuopen.com/vulkan-memory-allocator/
+	pkgrel = 1
+	url = https://github.com/YaaZ/VulkanMemoryAllocator-Hpp
 	arch = any
-	groups = vulkan-devel
-	license = MIT
+	license = CC0
 	makedepends = cmake
 	makedepends = doxygen
 	makedepends = git
-	depends = vulkan-headers
-	source = vulkan-memory-allocator::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git#tag=v3.1.0
-	b2sums = 18c15f53b1f209a012c982d777b66c59a18fecef6f836fc3e8d7906c624c198c5df08524ec30d8d037d396e05666ddeedcb35c9b77ab75306abdda2af58896e7
+	depends = vulkan-memory-allocator-git
+	source = vulkan-memory-allocator-hpp-git::git+https://github.com/YaaZ/VulkanMemoryAllocator-Hpp#tag=v3.1.0
+	sha1sums = SKIP
 
-pkgname = vulkan-memory-allocator
+pkgname = vulkan-memory-allocator-hpp-git
