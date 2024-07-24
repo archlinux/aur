@@ -1,5 +1,5 @@
 pkgname=ffplayout-unstable-git
-pkgver=r2120.9f42270
+pkgver=r2178.464c88d
 pkgrel=1
 pkgdesc="24/7 playout based on rust and ffmpeg"
 arch=('x86_64')
@@ -27,7 +27,7 @@ source=(
   'ffplayout.install'
 )
 sha256sums=('SKIP'
-            '40f72a8523b78734aaff7299a877beaeb076b750acf8127ba014537d92be211b')
+            'f67390524afa05af769308200fa38e15ea6d55d890a0504ab5b98be389f6b0ea')
 
 pkgver() {
   cd ${pkgname}
@@ -38,9 +38,7 @@ prepare() {
   cd "$srcdir/${pkgname}"
 
   sed -i 's/default = \["embed_frontend"\]/default = []/' ffplayout/Cargo.toml
-  sed -i 's|ExecStart=/usr/bin/ffplayout|ExecStart=/usr/bin/ffplayout -l 0.0.0.0:8787|' assets/ffplayout.service
-  sed -i '/ffplayout\/README\.md/d' scripts/man_create.sh
-
+  
   export CARGO_HOME="$srcdir/rust-home"
   export RUSTUP_HOME="$srcdir/rust-home"
   export RUSTUP_TOOLCHAIN=stable

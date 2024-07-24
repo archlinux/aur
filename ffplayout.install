@@ -19,11 +19,10 @@ post_install() {
 		mkdir -p "/var/lib/ffplayout/playlists"
 		mkdir -p "/var/lib/ffplayout/tv-media"
 
-		/usr/bin/ffplayout -d "${IP}:8787" \
-			-u admin \
-			-p admin \
-			-m ffplayout@example.org \
-			--shared-storage
+        /usr/bin/ffplayout -u admin \
+                           -p admin \
+                           -m ffplayout@example.org \
+                           --shared-storage
 
 		chown -R ${sysUser}: "/usr/share/ffplayout"
 		chown -R ${sysUser}: "/var/lib/ffplayout"
@@ -48,7 +47,7 @@ post_install() {
 	echo -e "4. Default location for playlists and media files are: /var/lib/ffplayout/."
 	echo -e "5. If you want to change the default global settings:"
 	echo -e "   $ sudo rm -v /usr/share/ffplayout/db/*"
-	echo -e "   $ sudo -u ffpu ffplayout -i -d \"${IP}:8787\""
+	echo -e "   $ sudo -u ffpu ffplayout -i"
 
 }
 
@@ -74,9 +73,7 @@ post_remove() {
 	sysUser="ffpu"
 
 	if [ $(id -u $sysUser 2>/dev/null || echo -1) -ge 0 ]; then
-		userdel -r -f $sysUser
+		userdel $sysUser
 	fi
-
-	rm -rf /var/log/ffplayout
 
 }
