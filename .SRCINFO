@@ -1,6 +1,6 @@
 pkgbase = r-datawizard
 	pkgdesc = Easy Data Wrangling and Statistical Transformations
-	pkgver = 0.12.1
+	pkgver = 0.12.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=datawizard
 	arch = any
@@ -17,7 +17,6 @@ pkgbase = r-datawizard
 	optdepends = r-ggplot2
 	optdepends = r-gt
 	optdepends = r-haven
-	optdepends = r-htmltools
 	optdepends = r-httr
 	optdepends = r-knitr
 	optdepends = r-lme4
@@ -36,8 +35,8 @@ pkgbase = r-datawizard
 	optdepends = r-tibble
 	optdepends = r-tidyr
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/datawizard_0.12.1.tar.gz
-	md5sums = 72ea8ed24d1a1f449204cc789f645dea
-	b2sums = bd0ebb4288574a27cf56774035a76ea45cb10432e363d8ea5737a9be68e578040ba1f6bc5996c178cbcee47abc55232efec8fe06b343c3d23d190f17dc440f36
+	source = https://cran.r-project.org/src/contrib/datawizard_0.12.2.tar.gz
+	md5sums = d3021c1b37572d113bf1f9bfe098325a
+	b2sums = 18bfdc7ffc9dce16706a30f6a4ccc26b422388a82613cc7c698e06e785c6aa4f4cff4fcc27db04685f05a595720786da89814359b89cb590e7a071b309f0a95a
 
 pkgname = r-datawizard
