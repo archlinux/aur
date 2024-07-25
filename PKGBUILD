@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=clipboard-manager-git
-pkgver=r76.24edbf7
+pkgver=r89.1893132
 pkgrel=1
 pkgdesc="Clipboard manager for COSMIC™"
 arch=('x86_64')
@@ -20,14 +20,12 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd "${pkgname%-git}"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   just build-release
 }
