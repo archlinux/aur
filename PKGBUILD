@@ -11,12 +11,12 @@ license=('Apache-2.0' 'BSD-3-Clause' 'GPL-2.0-or-later' 'LGPL-2.1-or-later' 'Zli
 depends=('gcc-libs' 'glib2' 'glibc' 'libjpeg-turbo' 'libpng' 'libxml2' 'qt5-base' 'zlib')
 makedepends=('git' 'unzip' 'wget')
 optdepends=('xorg-xwayland: required to use the application on a Wayland session'
-			'subversion: optional makedepend to fetch some gamepacks when using alternative DOWNLOAD_GAMEPACKS values')
+            'subversion: optional makedepend to fetch some gamepacks when using alternative DOWNLOAD_GAMEPACKS values')
 provides=('h2data' 'mbspc' 'q2map' 'q3map2' 'qdata3')
 source=('git+https://github.com/Garux/netradiant-custom.git#commit=7ff91956b280f5c2def0e3865e48bfc58461d0a9'
-		'netradiant-custom.desktop')
+        'netradiant-custom.desktop')
 sha256sums=('SKIP'
-			'c9f21fbacdd2024e417234e986790fca67daeb391a91b590abb68b440e0df648')
+            'c9f21fbacdd2024e417234e986790fca67daeb391a91b590abb68b440e0df648')
 
 build () {
 	cd "${srcdir}/${pkgname}/"
