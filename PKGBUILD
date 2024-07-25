@@ -5,9 +5,9 @@
 _pkgname='ov'
 pkgname="${_pkgname}-git"
 pkgver=0.36.0.r2.g8571b10
-pkgrel=1
+pkgrel=2
 epoch=1
-pkgdesc='Feature-rich terminal-based text pager (latest git commit)'
+pkgdesc='Feature-rich terminal-based text pager (latest commit)'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url='https://github.com/noborus/ov'
 license=('MIT')  # SPDX-License-Identifier: MIT
