@@ -3,10 +3,10 @@
 # Contributor: Jeff Henson <jeff at henson dot io>
 pkgname=mullvad-vpn-beta
 _pkgver=2024.4
-_channel=beta
+_channel=stable
 _rel=1
-pkgver=${_pkgver}.${_channel}${_rel}  # beta
-#pkgver=${_pkgver}.${_channel}  # stable
+#pkgver=${_pkgver}.${_channel}${_rel}  # beta
+pkgver=${_pkgver}.${_channel}  # stable
 pkgrel=1
 _nodeversion=20
 pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
@@ -20,14 +20,14 @@ conflicts=("${pkgname%-beta}")
 install="${pkgname%-beta}.install"
 _commit=e9043f890c56b4d0db50851e3fa4db10f230118e
 source=(
-  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}${_rel}"  # beta
-#  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}"  # stable
+#  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}${_rel}"  # beta
+  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}"  # stable
   "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_commit}?signed"
   'no-rpm.diff'
   'no-publish.diff'
   "${pkgname%-beta}.sh"
 )
-sha256sums=('e683b4f046c8e554777a6c1d3666c7328635f8f98b05a546e23a6b466a411aa2'
+sha256sums=('6186c0023698431e75aa2fd1720b083abc560a13f02e364ca0b2daa7c67e9084'
             'f097255f0d415597cce88ae7a8de24440a533620a932d492fbe4e84c76f7c8d1'
             'ea35edffea2cbbb05586abce19581fdd9f133801ed47e6af30fa64a29c5cf116'
             '968967efff8e9588f15c382825b609cf89d54c47e0632e92e9ef2354aa46f31b'
@@ -60,7 +60,6 @@ prepare() {
   # Disable publishing for CIs
   patch --strip=1 gui/tasks/distribution.js < ../no-publish.diff
 
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 
@@ -82,7 +81,6 @@ prepare() {
 build() {
   cd mullvadvpn-app
   CFLAGS+=" -ffat-lto-objects"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   local RUSTC_VERSION=$(rustc --version)
