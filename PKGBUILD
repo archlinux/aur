@@ -43,7 +43,7 @@ package() {
   find . -name "*.ko" -exec install -Dt "$pkgdir$extradir" {} +
 
   # compress kernel modules
-  find "$pkgdir" -name "*.ko" -exec xz {} +
+  find "$pkgdir" -name "*.ko" -exec zstd --rm -19 {} +
 
   # load module on startup
   echo tp_smapi | install -Dm644 /dev/stdin "$pkgdir/usr/lib/modules-load.d/$pkgname.conf"
