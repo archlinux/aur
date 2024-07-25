@@ -2,7 +2,7 @@
 
 pkgname=python-apollo
 _gitpkgname=apollo
-pkgver=1.0.7
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Microcontroller-based FPGA/JTAG programmer'
 arch=('any')
@@ -10,6 +10,7 @@ url='https://github.com/greatscottgadgets/apollo'
 license=('BSD-3-Clause')
 depends=(
   'python'
+  'python-deprecation'
   'python-prompt_toolkit'
   'python-pyusb'
   'python-pyvcd'
@@ -36,7 +37,7 @@ source=(
   "${_gitpkgname}-${pkgver}.tar.gz::https://github.com/greatscottgadgets/apollo/archive/v${pkgver}.tar.gz"
 )
 
-sha512sums=('59a3f14c3d5b9466423779caccf84f0dfc18908ede80f975841482a5d2f119a90b92e8b643e5b0138ff98e776f3c8b9dd901e581c05326fe323af1d1ba8877a9')
+sha512sums=('a9a4db93b9c1444653d7e77b2db1c7c115ee8d0eeb850dc0f88475c4d557710610b4e6536f174041e9f872821f8857419c4b64ed7e7d8cdf756d2b0c9af38e2b')
 
 prepare() {
   cd "${_gitpkgname}-${pkgver}"
@@ -65,12 +66,9 @@ check() {
   PYTHONPATH="${PWD}/tmp_install/${_site_packages}"
   export PYTHONPATH
 
-  # Do not use real hardware if connected at check time
-  export LUNA_USB_IDS='0xffff:0xffff'
-
   echo >&2 'Testing the executable'
   "tmp_install/usr/bin/${_gitpkgname}" info >actual.txt 2>&1 || true
-  if ! grep -qF 'No Apollo device or stub interface found' actual.txt; then
+  if ! grep -qF "Apollo version: ${pkgver}" actual.txt; then
     printf >&2 '%s\n' 'Unexpected test output:' '==='
     cat >&2 actual.txt
     printf >&2 '\n%s\n' '==='
