@@ -20,8 +20,8 @@ source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=$pkgver"
         'no-rpm.diff'
         'no-publish.diff'
         "$pkgname.sh")
-sha256sums=('8064e0181b1d30352f25eab563bade47b2fd157ca9646b97aff928241d9870ea'
-            '76015a774788a2274d29e3fa1e06cb752a8488f24a973b5143d8659d5b290e9c'
+sha256sums=('6186c0023698431e75aa2fd1720b083abc560a13f02e364ca0b2daa7c67e9084'
+            'f097255f0d415597cce88ae7a8de24440a533620a932d492fbe4e84c76f7c8d1'
             'ea35edffea2cbbb05586abce19581fdd9f133801ed47e6af30fa64a29c5cf116'
             '968967efff8e9588f15c382825b609cf89d54c47e0632e92e9ef2354aa46f31b'
             '2262346cb57deb187fe32a88ccd873dab669598889269088e749197c6e88954f')
