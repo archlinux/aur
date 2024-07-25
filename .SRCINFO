@@ -1,0 +1,14 @@
+pkgbase = helix-gpt
+	pkgdesc = Code assistant language server for Helix with support for Copilot/OpenAI/Codeium/Ollama
+	pkgver = 0.34
+	pkgrel = 1
+	url = https://github.com/leona/helix-gpt
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = helix-gpt
+	conflicts = helix-gpt
+	source = helix-gpt-0.34.tar.gz::https://github.com/leona/helix-gpt/releases/download/0.34/helix-gpt-0.34-x86_64-linux.tar.gz
+	sha256sums = 4e9e2987166842382d6de616a3faa1391be15298f0344cd862b2fc3531dc9e69
+
+pkgname = helix-gpt
