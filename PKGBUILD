@@ -19,7 +19,7 @@
 
 pkgbase=lib32-llvm-minimal-git
 pkgname=('lib32-llvm-minimal-git' 'lib32-llvm-libs-minimal-git' 'lib32-clang-minimal-git' 'lib32-clang-libs-minimal-git' 'lib32-clang-opencl-headers-minimal-git')
-pkgver=19.0.0_r494546.b4adb42151bb
+pkgver=20.0.0_r506355.456c5121f8e6
 pkgrel=1
 arch=('x86_64')
 url="http://llvm.org/"
@@ -41,7 +41,6 @@ options=(!lto !debug)
 # LITFLAGS="-j 18"
 # NOTE: It's your responbility to validate the value of NINJAFLAGS and LITFLAGS. If unsure, don't set it.
 
-_major_ver=19
 _get_distribution_components() {
     local target
     local include
@@ -169,6 +168,9 @@ package_lib32-llvm-minimal-git() {
     conflicts=('lib32-llvm')
     
     make -C _build DESTDIR="$pkgdir" install-distribution
+
+    # clang uses clang/LLVM_Major_version in it's folder structure
+    local _major_ver=$(echo $pkgver | cut -d. -f1)
 
     # prepare folders in srcdir to store files that are placed in other package_*() functions
     mkdir -p "$srcdir"{/llvm-libs/usr/lib32,/clang-libs/usr/lib32,/clang-opencl-headers/usr/{lib32/clang/$_major_ver/include,include/clang/Basic}}
