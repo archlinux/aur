@@ -3,15 +3,17 @@
 
 _pkgname=dexed
 pkgname=$_pkgname-git
-pkgver=0.9.6.r90.g9e01c0c
+pkgver=0.9.7.r11.g8fdafa3
 pkgrel=1
 pkgdesc='A software synth closely modelled on the Yamaha DX7 (git version)'
 arch=(x86_64)
 url='https://asb2m10.github.io/dexed'
-license=(GPL3)
+license=(GPL-3.0-only)
 groups=(pro-audio vst3-plugins clap-plugins)
 depends=(
   alsa-lib
+  gcc-libs
+  glibc
   hicolor-icon-theme
   freetype2
 )
@@ -33,6 +35,8 @@ optdepends=(
   'clap-host: for CLAP plugins'
   'vst3-host: for VST3 plugins'
 )
+provides=($_pkgname)
+conflicts=($_pkgname $_pkgname-clap $_pkgname-docs $_pkgname-standalone $_pkgname-vst3)
 source=(
   "$_pkgname::git+https://github.com/asb2m10/dexed.git"
   'steinbergmedia-vst3sdk::git+https://github.com/steinbergmedia/vst3sdk.git'
@@ -51,8 +55,10 @@ source=(
   'steinbergmedia-vst3_pluginterfaces::git+https://github.com/steinbergmedia/vst3_pluginterfaces.git'
   'steinbergmedia-vst3_public_sdk::git+https://github.com/steinbergmedia/vst3_public_sdk.git'
   'steinbergmedia-vstgui::git+https://github.com/steinbergmedia/vstgui.git'
+  'steinbergmedia-vst3_tutorials::git+https://github.com/steinbergmedia/vst3_tutorials'
 )
 b2sums=('SKIP'
+        'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -99,6 +105,7 @@ prepare() {
   git config submodule.doc.url "$srcdir/steinbergmedia-vst3_doc"
   git config submodule.pluginterfaces.url "$srcdir/steinbergmedia-vst3_pluginterfaces"
   git config submodule.public.sdk.url "$srcdir/steinbergmedia-vst3_public_sdk"
+  git config submodule.tutorials.url "$srcdir/steinbergmedia-vst3_tutorials"
   git config submodule.vstgui4.url "$srcdir/steinbergmedia-vstgui"
   git -c protocol.file.allow=always submodule update --init
   popd
@@ -114,14 +121,20 @@ prepare() {
     --pkgdesc "$pkgdesc" \
     --icon "$_pkgname" \
     --genericname "Virtual FM synthesizer"
+
+  # add version to program
+  sed -e "s/DEVBUILD/$pkgver/" -i Source/Dexed.h
+  # Disable copying of CLAP/VST3 plugins to ~/.{clap,vst3}
+  sed -e "s/COPY_PLUGIN_AFTER_BUILD TRUE/COPY_PLUGIN_AFTER_BUILD FALSE/" \
+    -i Source/CMakeLists.txt
 }
 
 build() {
   cmake \
     -S $_pkgname \
-    -B build \
+    -B $_pkgname-build \
     -DCMAKE_INSTALL_PREFIX='/usr'
-  cmake --build build
+  cmake --build $_pkgname-build
 }
 
 package() {
@@ -133,7 +146,7 @@ package() {
   # documentation
   install -vDm644 Documentation/* README.md -t "$pkgdir"/usr/share/doc/$pkgname
 
-  cd ../build/Source/Dexed_artefacts
+  cd ../$_pkgname-build/Source/Dexed_artefacts
 
   # vst3
   install -Dm755 VST3/Dexed.vst3/Contents/$(uname -m)-linux/Dexed.so \
