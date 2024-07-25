@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=ducker
-pkgver=0.0.2
+pkgver=0.0.7
 pkgrel=1
 pkgdesc="A terminal app for managing docker containers"
 url="https://github.com/robertpsoane/ducker"
@@ -11,7 +11,8 @@ makedepends=('cargo')
 arch=('x86_64')
 license=('MIT')
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('9266b2f206617382e56c61651bdd7f238013be6ca2ba5f41ce19f2ca292a67be91049c32fb40c2c48b9f5995838a93be208fddb5454d61fe79a77991da0ee917')
+sha512sums=('412762527de7405a62e830893b498814c94306bc9c17d6ca81c1d2480387ac75a2f8234972a1cdfaf1c507a1a878539d38312f4b41cf34dd7f7d50c9d26c1edd')
+options=('!lto')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -32,5 +33,5 @@ package() {
   cd "${pkgname}-${pkgver}"
   install -Dm 755 "target/release/$pkgname" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm 644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname"
 }
