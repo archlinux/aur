@@ -2,7 +2,7 @@
 
 pkgname='vim-mako-git'
 provides=('vim-mako')
-pkgver=r24.e74a52a
+pkgver=r28.09d2a93
 pkgrel=1
 pkgdesc='Vim highlighting for the mako templating language'
 arch=('any')
@@ -10,7 +10,7 @@ url='https://github.com/sophacles/vim-bundle-mako'
 license=('custom:vim')
 depends=('vim')
 makedepends=('git')
-source=('git://github.com/sophacles/vim-bundle-mako.git')
+source=('git+https://github.com/sophacles/vim-bundle-mako.git')
 md5sums=(SKIP)
 
 pkgver() {
