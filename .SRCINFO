@@ -1,6 +1,6 @@
 pkgbase = tenv-bin
 	pkgdesc = OpenTofu, Terraform, Terragrunt, and Atmos version manager, written in Go.
-	pkgver = 2.7.3
+	pkgver = 2.7.4
 	pkgrel = 1
 	url = https://tofuutils.github.io/tenv/
 	license = Apache-2.0
@@ -23,13 +23,13 @@ pkgbase = tenv-bin
 	provides = tf
 	provides = tofu
 	arch = aarch64
-	source_aarch64 = https://github.com/tofuutils/tenv/releases/download/v2.7.3/tenv_v2.7.3_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 595a0b6a99e89f4a7df4f4a5a1ea7707d4311fa852b9f74063b869b15783644b
+	source_aarch64 = https://github.com/tofuutils/tenv/releases/download/v2.7.4/tenv_v2.7.4_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 0eee72a1c10d3e0e6860c28ee3aed193d2ff05dc0723e51cfb0e916df850cca4
 	arch = i686
-	source_i686 = https://github.com/tofuutils/tenv/releases/download/v2.7.3/tenv_v2.7.3_Linux_i386.tar.gz
-	sha256sums_i686 = cfb2fb895b5bae41d5524c85f41875d0ae6e2762e976f05cec56036cde39efab
+	source_i686 = https://github.com/tofuutils/tenv/releases/download/v2.7.4/tenv_v2.7.4_Linux_i386.tar.gz
+	sha256sums_i686 = 2525d3a27aec71c5e0939b4d5f4c8f7191c4544cbef400f83d28929d67907509
 	arch = x86_64
-	source_x86_64 = https://github.com/tofuutils/tenv/releases/download/v2.7.3/tenv_v2.7.3_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = cfd9f99b99ad218bfb1b92110019bac76fea6fdd00c23b3821264a0d0b314ab2
+	source_x86_64 = https://github.com/tofuutils/tenv/releases/download/v2.7.4/tenv_v2.7.4_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = f54bc587ebfbc5d54d4fb9045ea9ec870fbe6ce7c08f54212b3541ebb0aa63d9
 	
 pkgname = tenv-bin
