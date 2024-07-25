@@ -14,10 +14,10 @@ provides=('spok')
 conflicts=('spok')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/devlup-labs/spok/releases/download/0.1.0/spok_0.1.0_linux_arm64.tar.gz")
-sha256sums_aarch64=('d2b65588ef86f736d1153b17f3436c58bf9cf77f718ef04d08401030cdab4c0b')
+sha256sums_aarch64=('5fbb8e129c2972f7338d4c868ce45754f72e972cac3ef9f27e5d876bc329733d')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/devlup-labs/spok/releases/download/0.1.0/spok_0.1.0_linux_amd64.tar.gz")
-sha256sums_x86_64=('ab0a2f8b1090b01800d9e8b03267be6d9c09c6cca336417638b6774ccb3e3a9e')
+sha256sums_x86_64=('afdfb44ceae4a672cacf615a887f72b18c1f17348e356ca5d9fd392e643c45ec')
 
 package() {
   install -Dm755 "./bin/spok" "${pkgdir}/usr/bin/spok"
