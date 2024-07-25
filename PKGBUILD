@@ -2,7 +2,7 @@
 pkgname=('pop-launcher-git' 'pop-shell-plugin-system76-power-git')
 pkgbase=pop-launcher-git
 pkgver=1.2.1.r64.ge44d6cd
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/launcher"
 license=('MPL-2.0')
@@ -46,7 +46,6 @@ build() {
 
 check() {
   cd launcher
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   just check
 }
