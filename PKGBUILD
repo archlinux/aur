@@ -2,18 +2,18 @@
 
 pkgname=bodo_connect-git
 _pkgname=${pkgname%-git}
-pkgver=v0.6.9.r0.gbe01de3
+pkgver=v0.7.0.r0.gfeb976e
 pkgrel=1
 pkgdesc="A library for mapping/connecting to your hosts in the whole world wide web."
-arch=("any")
+arch=(x86_64 armv7)
 url="https://github.com/topongo/bodo_connect"
-license=("GPL3")
-depends=("openssh")
-makedepends=("git" "cargo")
+license=(GPL-3.0-or-later)
+depends=(openssh glibc openssl gcc-libs)
+makedepends=(git cargo)
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 source=("git+${url}")
-md5sums=("SKIP")
+md5sums=(SKIP)
 
 # https://wiki.archlinux.org/index.php/VCS_package_guidelines
 pkgver() {
