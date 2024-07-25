@@ -1,5 +1,5 @@
 pkgbase = cosmic-bg-git
-	pkgver = r84.742a344
+	pkgver = r92.343410f
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-bg
 	arch = x86_64
