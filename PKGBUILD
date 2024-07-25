@@ -1,6 +1,6 @@
 # Maintainer: Salif Mehmed <mail@salif.eu>
 pkgname=nemo_gleam
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Nemo extension for Gleam development"
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=('nemo')
 #changelog=CHANGELOG
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/salif/nemo_gleam/archive/refs/tags/v${pkgver}.tar.gz")
 #noextract=()
-sha256sums=('eb05916cbc17de1e982dffc9e741b215c03220bace9b4c7189f72f67206a1b63')
+sha256sums=('fa404eb5bec9c9dc69f3c5438615798fa113c1fd7f000f03672d6969f303744d')
 
 build() {
 	cd "${pkgname}-${pkgver}"
