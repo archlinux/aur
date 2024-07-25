@@ -56,7 +56,7 @@ release_job:
     - git config --global user.name "Mundo"
     - git remote add aur ssh://aur@aur.archlinux.org/taskade-appimage.git
     - git fetch aur master
-    - git config pull.ff only
+    - git config pull.rebase true
     - git pull aur master
     - git branch --list
     - git remote -v
