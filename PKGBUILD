@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=fan-control
 _app_id="io.github.wiiznokes.$pkgname"
-pkgver=2024.6
+pkgver=2024.7
 pkgrel=1
 pkgdesc="Control your fans with different behaviors"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gcc-libs' 'libxkbcommon' 'lm_sensors')
 makedepends=('cargo' 'clang' 'git' 'just')
 source=("git+https://github.com/wiiznokes/fan-control.git#tag=v$pkgver"
         'git+https://github.com/wiiznokes/libsensors.git')
-sha256sums=('0893fb8f6f335e81cc648808c5ea195a49a09fa4da346baf855928e01e1bb7e7'
+sha256sums=('82174da0add72d5e514d3691eced5722000d2a7652c40fb6c06744087d04df93'
             'SKIP')
 
 prepare() {
@@ -20,7 +20,6 @@ prepare() {
   git config submodule.hardware/libsensors.url "$srcdir/libsensors"
   git -c protocol.file.allow=always submodule update
 
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --target "$CARCH-unknown-linux-gnu"
 
@@ -31,7 +30,6 @@ prepare() {
 build() {
   cd "$pkgname"
   CFLAGS+=" -ffat-lto-objects"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   just libsensors
@@ -41,7 +39,6 @@ build() {
 check() {
   cd "$pkgname"
   CFLAGS+=" -ffat-lto-objects"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   just test
 }
