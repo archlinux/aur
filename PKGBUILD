@@ -8,7 +8,7 @@
 _pkgname="pyinfra"
 pkgname="$_pkgname"
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="automate infrastructure super fast at massive scale"
 url="https://github.com/pyinfra-dev/pyinfra"
 license=('MIT')
@@ -21,7 +21,10 @@ depends=(
   'python-distro'
   'python-gevent'
   'python-jinja'
+  'python-packaging'
   'python-paramiko'
+  'python-typeguard'
+  'python-typing_extensions'
   'python-yaml'
 )
 makedepends=(
