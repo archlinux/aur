@@ -1,0 +1,22 @@
+pkgbase = dtk6log-git
+	pkgdesc = Deepin Toolkit, log module for DDE look and feel
+	pkgver = 0.0.1.r0.g7111763
+	pkgrel = 1
+	url = https://github.com/linuxdeepin/dtk6log
+	arch = x86_64
+	arch = aarch64
+	groups = deepin-git
+	license = LGPL3
+	makedepends = git
+	makedepends = ninja
+	makedepends = cmake
+	makedepends = pkg-config
+	depends = libsystemd
+	depends = qt6-base
+	depends = spdlog
+	provides = dtk6log
+	conflicts = dtk6log
+	source = git+https://github.com/linuxdeepin/dtk6log.git
+	sha512sums = SKIP
+
+pkgname = dtk6log-git
