@@ -7,10 +7,10 @@ pkgdesc="A monospaced bitmap font, modified from Triskweline for better code rea
 arch=('any')
 url="https://github.com/ideasman42/triskweline-code-font"
 license=('CC0')
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-mkfontdir' 'xorg-mkfontscale')
-makedepends=('xorg-bdftopcf')
+depends=('fontconfig')
+makedepends=()  # 'xorg-bdftopcf'
 install=$pkgname.install
-source=("git://github.com/ideasman42/$_pkgname.git")
+source=("git+https://github.com/ideasman42/$_pkgname.git")
 noextract=()
 md5sums=('SKIP')
 
