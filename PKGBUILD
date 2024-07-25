@@ -5,11 +5,12 @@ _android_arch=aarch64
 
 pkgname=android-${_android_arch}-vmaf
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Perceptual video quality assessment algorithm based on multi-method fusion (Android ${_android_arch})"
 url='https://github.com/Netflix/vmaf/'
 license=('BSD')
+groups=(android-vmaf)
 depends=('android-ndk')
 makedepends=('android-meson'
              'nasm')
@@ -31,24 +32,21 @@ build() {
     cd "${srcdir}/vmaf-${pkgver}/libvmaf"
     source android-env ${_android_arch}
 
-    mkdir -p build
-    cd build
-    android-${_android_arch}-meson \
-        --default-library both \
+    android-${_android_arch}-meson build \
         -Denable_tests=false \
         -Denable_docs=false
-    ninja
+    ninja -C build
 }
 
 package() {
-    cd "${srcdir}/vmaf-${pkgver}/libvmaf/build"
+    cd "${srcdir}/vmaf-${pkgver}/libvmaf"
     source android-env ${_android_arch}
 
-    DESTDIR="${pkgdir}" ninja install
+    DESTDIR="${pkgdir}" ninja -C build install
     rm -rf "${pkgdir}/${ANDROID_PREFIX_BIN}"
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_RANLIB} "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a || true
+    ${ANDROID_RANLIB} "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.a || true
 
     cp -dr --no-preserve='ownership' "${srcdir}/vmaf-${pkgver}/model" "${pkgdir}/${ANDROID_PREFIX_SHARE}"
 }
