@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=apps-menu-applet-for-cosmic-git
 _app_id=dev.dominiccgeh.CosmicAppletAppsMenu
-pkgver=0.1.6.r13.ga8be2f5
+pkgver=0.1.6.r15.g21c3063
 pkgrel=1
 pkgdesc="Category based menu for apps for COSMIC™️ DE"
 arch=('x86_64')
@@ -21,14 +21,12 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
   cd "${pkgname%-git}"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features
