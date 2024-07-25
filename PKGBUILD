@@ -5,7 +5,7 @@ _pkgname=Sunroof
 pkgdesc="Sunroof is a Vesktop fork that gives you the performance of web Discord and the comfort of Discord Desktop, with additional plugins."
 pkgver=1.6.1
 # Reminder for devs: don't forget to update the electron version on vesktop.sh
-pkgrel=3
+pkgrel=4
 electron=electron31
 arch=('x86_64' 'aarch64')
 url="https://github.com/verticalsync/Sunroof"
@@ -53,4 +53,3 @@ package() {
   install -Dm 644 "$_pkgname-$pkgver/static/icon.png" "$pkgdir/usr/share/pixmaps/${pkgname}.png"
   install -Dm 644 "$_pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
