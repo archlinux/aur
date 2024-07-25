@@ -1,7 +1,9 @@
 [Unit]
 Description=FerretDB Proxy for %I
 PartOf=ferretdb.target
-Documentation=https://www.ferretdb.com/
+Documentation=https://docs.ferretdb.io/
+Wants=network-online.target
+After=network-online.target
 
 [Service]
 Type=exec
@@ -28,6 +30,10 @@ RestrictRealtime=yes
 RestrictSUIDSGID=yes
 MemoryDenyWriteExecute=yes
 LockPersonality=yes
+
+# Configure the FerretDB service with `systemctl edit ferretdb`.
+# For more configuration options check https://docs.ferretdb.io/configuration/flags/
+Environment="FERRETDB_POSTGRESQL_URL=postgres://127.0.0.1:5432/ferretdb"
 
 [Install]
 WantedBy=multi-user.target
