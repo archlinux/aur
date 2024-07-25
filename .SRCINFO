@@ -1,15 +1,17 @@
 pkgbase = lua51-tiktoken-bin
 	pkgdesc = binding of rust tiktoken to lua
 	pkgver = 0.2.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/gptlang/lua-tiktoken
 	arch = x86_64
-	license = unknown
+	license = MIT
 	depends = gcc-libs
 	depends = glibc
 	provides = lua51-tiktoken
 	conflicts = luajit-tiktoken-bin
 	source = https://github.com/gptlang/lua-tiktoken/releases/download/0.2.1/tiktoken_core-linux-lua51.so
+	source = LICENSE
 	sha256sums = c6ec5e0a1901e525e94178fd21fb7d0fcbc000535b0a549c923397016b6bf3fc
+	sha256sums = 1ac0b128d03630fb038ba682b20aad61ec17bb69b0f0e4cddfcdd8e57635485f
 
 pkgname = lua51-tiktoken-bin
