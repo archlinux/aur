@@ -1,6 +1,6 @@
 # Maintainer: Keiran <keiran0@proton.me>
 pkgname=e-zshot
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="CLI to automate taking screenshots and uploading them to e-z.host."
 arch=('any')
@@ -16,11 +16,14 @@ prepare() {
 }
 
 package() {
-  cd "$srcdir/e-zshot-${pkgver}"
+  # Check the actual directory name after extraction
+  local extracted_dir
+  extracted_dir=$(tar -tf e-zshot-${pkgver}.tar.gz | head -n 1 | cut -f1 -d"/")
+
+  cd "$srcdir/$extracted_dir" || exit 1
 
   install -Dm755 plugins/e-z-flameshot.py "$pkgdir/usr/bin/e-z-flameshot"
   install -Dm755 plugins/e-z-grim.py "$pkgdir/usr/bin/e-z-grim"
-  install -Dm755 plugins/text_processing.py "$pkgdir/usr/bin/text_processing.py"
 
   install -Dm755 e-zshot.py "$pkgdir/usr/bin/e-zshot"
 
@@ -31,4 +34,3 @@ package() {
     install -Dm644 README.md "$pkgdir/usr/share/doc/e-zshot/README.md"
   fi
 }
-
