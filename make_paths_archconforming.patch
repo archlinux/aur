@@ -1,0 +1,20 @@
+diff -r -U1 freetz-ng.orig/tools/push_firmware freetz-ng.patched/tools/push_firmware
+--- freetz-ng.orig/tools/push_firmware	2024-07-25 13:22:53.359851187 +0200
++++ freetz-ng.patched/tools/push_firmware	2024-07-25 13:26:37.763178061 +0200
+@@ -40,6 +40,7 @@
+ # workaround for eg debian
+-PATH="${PATH:+${PATH}:}/sbin"
++#PATH="${PATH:+${PATH}:}/sbin"
+ 
+-TOOLS_DIR="${0%/*}"
+-PATH="${TOOLS_DIR}/path:${PATH}"
++#TOOLS_DIR="${0%/*}"
++TOOLS_DIR="/usr/bin"
++#PATH="${TOOLS_DIR}/path:${PATH}"
+ 
+@@ -47,3 +48,4 @@
+ TSUM_TOOL="${TOOLS_DIR}/tichksum"
+-FDTD_TOOL="${TOOLS_DIR}/fit/fdtdump"
++#FDTD_TOOL="${TOOLS_DIR}/fit/fdtdump"
++FDTD_TOOL="${TOOLS_DIR}/fdtdump"
+ 
