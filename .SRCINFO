@@ -1,14 +1,14 @@
 pkgbase = koboldcpp-bin
 	pkgdesc = A simple one-file way to run various GGML and GGUF models with KoboldAI's UI. (Requires AVX2 support)
-	pkgver = 1.70.1
+	pkgver = 1.71
 	pkgrel = 1
 	url = https://github.com/LostRuins/koboldcpp
 	arch = x86_64
 	license = AGPL3
 	depends = glibc
-	provides = koboldcpp=1.70.1
+	provides = koboldcpp=1.71
 	conflicts = koboldcpp
-	source = https://github.com/LostRuins/koboldcpp/releases/download/v1.70.1/koboldcpp-linux-x64-cuda1210
-	sha256sums = a61355067d81218febce2462abf2e7273c40d7d32af99daa6c1dcd0180a41524
+	source = https://github.com/LostRuins/koboldcpp/releases/download/v1.71/koboldcpp-linux-x64-cuda1210
+	sha256sums = 304ab287126151156584440676559bd8d83e7d6c93b67923940a22e5a55f5777
 
 pkgname = koboldcpp-bin
