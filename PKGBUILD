@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-workspaces-git
-pkgver=r175.7c8fddc
+pkgver=r225.2de3669
 pkgrel=1
-pkgdesc="WIP COSMIC Workspaces"
+pkgdesc="Cosmic workspaces"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-workspaces-epoch"
 license=('GPL-3.0-or-later')
@@ -24,20 +24,18 @@ source=('git+https://github.com/pop-os/cosmic-workspaces-epoch.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd cosmic-workspaces-epoch
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${pkgname%-git}-epoch"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
-  cd cosmic-workspaces-epoch
-  export CARGO_HOME="$srcdir/cargo-home"
+  cd "${pkgname%-git}-epoch"
   export RUSTUP_TOOLCHAIN=stable
   make vendor
 }
 
 build() {
-  cd cosmic-workspaces-epoch
-  export CARGO_HOME="$srcdir/cargo-home"
+  cd "${pkgname%-git}-epoch"
   export RUSTUP_TOOLCHAIN=stable
 
   # use mold instead of lld to speed up build
@@ -48,6 +46,6 @@ build() {
 }
 
 package() {
-  cd cosmic-workspaces-epoch
+  cd "${pkgname%-git}-epoch"
   make prefix='/usr' DESTDIR="$pkgdir" install
 }
