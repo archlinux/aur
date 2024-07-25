@@ -1,6 +1,6 @@
 pkgbase = mesa-minimal-git
 	pkgdesc = an open-source implementation of the OpenGL specification, stripped down git version
-	pkgver = 24.3.0_devel.192412.559eaaf0e64
+	pkgver = 24.3.0_devel.192479.c33d2db06ac
 	pkgrel = 1
 	url = https://www.mesa3d.org
 	arch = x86_64
@@ -59,13 +59,10 @@ pkgbase = mesa-minimal-git
 	options = !debug
 	source = mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git
 	source = LICENSE
-	source = https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/30311.patch
 	md5sums = SKIP
 	md5sums = 5c65a0fe315dd347e09b1f2826a1df5a
-	md5sums = 239d2b54d80616c8afcd038cb86d8875
 	sha512sums = SKIP
 	sha512sums = 25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2
-	sha512sums = 6e1a12dc1dbba6f64768aa7dc0ba45fbc62f2f32979ede31c9b3e4b54f637da6ebd926cf4f0a7e5bc08ba51e7a4835059dacf7ad13050f7c928a21a44b9a7b3c
 
 pkgname = mesa-minimal-git
 	depends = libdrm
@@ -97,7 +94,7 @@ pkgname = opencl-rusticl-mesa-minimal-git
 	depends = spirv-llvm-translator-minimal-git
 	depends = libclc-minimal-git
 	depends = spirv-tools-git
-	depends = mesa-minimal-git=24.3.0_devel.192412.559eaaf0e64-1
+	depends = mesa-minimal-git=24.3.0_devel.192479.c33d2db06ac-1
 	depends = llvm-libs-minimal-git
 	depends = clang-libs-minimal-git
 	depends = expat
