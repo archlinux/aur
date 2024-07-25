@@ -3,7 +3,7 @@
 _pkgbase=breezy-desktop
 pkgname="${_pkgbase}"-gnome-git
 pkgver=0.10.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Breezy GNOME - XR desktop"
 arch=('x86_64' 'aarch64')
 url="https://github.com/wheaney/breezy-desktop"
