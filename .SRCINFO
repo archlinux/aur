@@ -1,6 +1,6 @@
 pkgbase = cosmic-osd-git
 	pkgdesc = COSMIC OSD
-	pkgver = r81.789698e
+	pkgver = r109.27fc5e5
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-osd
 	arch = x86_64
