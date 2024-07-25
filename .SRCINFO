@@ -1,6 +1,6 @@
 pkgbase = tasks-git
 	pkgdesc = A simple task management application for the COSMIC desktop.
-	pkgver = r90.4eda3b7
+	pkgver = r105.27672ff
 	pkgrel = 1
 	url = https://tasks.edfloreshz.dev
 	arch = x86_64

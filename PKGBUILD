@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=tasks-git
-pkgver=r90.4eda3b7
+pkgver=r105.27672ff
 pkgrel=1
 pkgdesc="A simple task management application for the COSMIC desktop."
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,6 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   just vendor
 }
@@ -28,7 +27,6 @@ prepare() {
 build() {
   cd "${pkgname%-git}"
   CFLAGS+=" -ffat-lto-objects"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   just build-vendored
 }
