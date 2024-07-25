@@ -47,6 +47,7 @@ release_job:
     - git branch --list
     - git remote -v
     - git checkout -b master
+    - makepkg --printsrcinfo > .SRCINFO
     - pk_name=$(grep -Po "^pkgname=\K.*" PKGBUILD)
     - pk_ver=$(grep -Po "^pkgver=\K.*" PKGBUILD)
     - pk_rel=$(grep -Po "^pkgrel=\K.*" PKGBUILD)
