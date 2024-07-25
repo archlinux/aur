@@ -1,6 +1,6 @@
 pkgbase = cosmic-applibrary-git
 	pkgdesc = WIP Cosmic App Library
-	pkgver = r184.3349462
+	pkgver = r225.5848972
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-applibrary
 	arch = x86_64
