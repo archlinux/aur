@@ -1,0 +1,63 @@
+image: manjarolinux/base:latest
+
+variables:
+  GIT_SSH_COMMAND: "ssh -o StrictHostKeyChecking=no"
+
+before_script:
+  - pacman -Syu --noconfirm sed jq binutils gtk3 libxss libindicator-gtk2 nss dbus-glib libdbusmenu-gtk2 git openssh curl
+  - passwd -d builduser
+  - printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers
+  - eval $(ssh-agent -s)
+  - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+  - mkdir -p ~/.ssh
+  - chmod 700 ~/.ssh
+
+stages:
+  - find_release
+  - test
+  - release
+
+find_release_job:
+  stage: find_release
+  script: 
+    - current_version=$(grep -Po "^pkgver=\K.*" PKGBUILD)
+    - version=$(curl -s https://api.github.com/repos/hashicorp/terraform/releases/latest | jq -r '.tag_name')
+    - version=${version#v} # remove the v from the version
+    - if [ "$current_version" != "$version" ]; then
+    - echo "Found version $version"
+    - echo "pkgver=$version" > build.env
+    - else 
+    - echo "No new version"
+    - fi
+  artifacts:
+    reports:
+      dotenv: build.env
+
+test_job:
+  stage: test
+  script:
+    - if [ ! -f build.env ]; then echo "build.env does not exist, skipping job"; exit 0; fi
+    - su -c "cd ${CI_PROJECT_DIR} && ./test" - builduser
+  dependencies:
+    - find_release_job
+
+release_job:
+  stage: release
+  script:
+    - if [ ! -f build.env ]; then echo "build.env does not exist, skipping job"; exit 0; fi
+    - sed -i "s/^pkgver=.*/pkgver=${pkgver}/" PKGBUILD
+    - git config --global user.email "zomundo@gmail.com"
+    - git config --global user.name "Mundo"
+    - git remote add aur ssh://aur@aur.archlinux.org/taskade-appimage.git
+    - git fetch aur
+    - git branch --list
+    - git remote -v
+    - git checkout -b master
+    - pk_name=$(grep -Po "^pkgname=\K.*" PKGBUILD)
+    - pk_ver=$(grep -Po "^pkgver=\K.*" PKGBUILD)
+    - pk_rel=$(grep -Po "^pkgrel=\K.*" PKGBUILD)
+    - commit_msg="update to $pk_name ver $pk_ver, rel version $pk_rel"
+    - git push aur master
+
+  dependencies:
+    - find_release_job
