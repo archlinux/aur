@@ -1,22 +1,22 @@
 pkgbase = p4v
 	pkgdesc = Perforce Visual Client
-	pkgver = 2024.1.2591061
+	pkgver = 2024.2.2625760
 	pkgrel = 1
 	url = https://www.perforce.com
 	arch = x86_64
 	license = custom:p4v
 	depends = libxcb
-	depends = qt5-base
+	depends = qt6-base
 	options = !strip
 	source = p4v.desktop
 	source = p4admin.desktop
 	source = p4merge.desktop
 	source = LICENSE
-	source = 20240515-p4v-2024.1.2591061.tgz::https://www.perforce.com/downloads/perforce/r24.1/bin.linux26x86_64/p4v.tgz
+	source = 20240725-p4v-2024.2.2625760.tgz::https://www.perforce.com/downloads/perforce/r24.2/bin.linux26x86_64/p4v.tgz
 	sha256sums = e2c5380997980f12ece4a92d558fc681deacfaa9273838e67be1a4298a99f032
 	sha256sums = fda6ab6585ba26625879b104c2c99645915055bd752d5ba574c5c83b7f8b230c
 	sha256sums = 5b07d4373062825e463580bfec18db7346b457dc2a86678e3dfed84c7cbd3299
 	sha256sums = c4ed3aef62b1bbf2d16ce4cceb65dc49ab9635b38e2fed0a595fe259283a9f32
-	sha256sums = 79752465974a81b2867e96ad6107b14328149435e9efcd02573ff17e7682a9b3
+	sha256sums = 158c12c8b6db0996be93dc1de50d2f01ccc4b2a56c72e4c7d6c2798a8ff82d5d
 
 pkgname = p4v
