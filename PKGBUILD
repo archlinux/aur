@@ -1,17 +1,17 @@
-# Maintainer: Martin Rys <rys.rs/contact>
+# Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
 # Previous Maintainer: John Troxler <firstname dot lastname at gmail dot com>
 
 pkgname=loot
 # https://github.com/loot/loot/releases
-pkgver=0.22.4
+pkgver=0.23.0
 # https://github.com/loot/libloot/releases
-_pkglibver=0.22.4
+_pkglibver=0.23.0
 pkgrel=1
-pkgdesc="A load order optimisation tool for the Elder Scrolls (Morrowind and later) and Fallout (3 and later) games."
+pkgdesc="A load order optimisation tool for Starfield, The Elder Scrolls (Morrowind and later) and Fallout (3 and later) games."
 arch=('x86_64')
 url="https://loot.github.io"
 license=('GPL-3.0-only')
-depends=('boost-libs' 'libssh2' 'alsa-lib' 'nss' 'pango' 'atk' 'libxdamage' 'libxcomposite' 'libxcursor' 'libxrandr' 'libxss' 'libxtst' 'qt6-base' 'hicolor-icon-theme' 'onetbb')
+depends=('icu' 'hicolor-icon-theme' 'onetbb' 'qt6-base')
 ## Maybe add doxgen for /docs, but then we get
 #                 from /build/loot/src/libloot-0.22.4/src/api/api_database.cpp:32:
 #/build/loot/src/libloot-0.22.4/src/api/metadata/yaml/message.h:29:10: fatal error: spdlog/fmt/bundled/args.h: No such file or directory
@@ -25,8 +25,8 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/$
         "lib$pkgname-$_pkglibver.tar.gz::https://github.com/$pkgname/lib$pkgname/archive/$_pkglibver.tar.gz"
         'LOOT.desktop'
 )
-sha256sums=('a7cf30ed89bb84d3d6843f121cedb528720403bda1b08b816f338cbae7cc5f8e'
-            'f09c2b73cd0b03e1235f7eac1fc8089aafbeeead8d4f42add2e3753cac4f0bb7'
+sha256sums=('65d07b87e98d908eb0e9aa307ea7a7236508c41c6ed6f8b44975f5e0ff478a73'
+            'e48de81eb98904450a2de5db7a0526d4245aa674c3fec807a59b686af52bd31f'
             '3dd063fdbe33dc82a4298bd5bcd3b4e7490adab4128389c153d12c6b074b27fb')
 
 build() {
