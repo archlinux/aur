@@ -1,7 +1,7 @@
 pkgbase = calibre-plugin-kobo-driver
 	pkgdesc = An extension of the existing KoboTouch driver provided with Calibre
 	pkgver = 3.6.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jgoguen/calibre-kobo-driver/
 	arch = any
 	license = GPL3
