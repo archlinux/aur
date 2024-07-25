@@ -1,14 +1,14 @@
 pkgbase = robocut-git
 	pkgdesc = Graphical program that sends svg files to vinyl cutters
-	pkgver = v1.0.11.r55.gf75fbf0
+	pkgver = v1.0.11.r56.g76cc21b
 	pkgrel = 1
-	url = https://github.com/Timmmm/robocut
+	url = https://github.com/sporteries/robocut
 	install = robocut-git.install
 	arch = x86_64
 	license = GPL3
 	depends = qt5-svg
 	depends = cmake
-	source = robocut-git::git+https://github.com/Timmmm/robocut.git
+	source = robocut-git::git+https://github.com/sporteries/robocut.git
 	source = robocut-git.desktop
 	md5sums = SKIP
 	md5sums = 8428df609b820a04940f5e66f9c5c6c5

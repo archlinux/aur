@@ -1,15 +1,15 @@
 # Maintainer: Steffen Weber <-boenki-gmx-de->
 
 pkgname=robocut-git
-pkgver=v1.0.11.r55.gf75fbf0
+pkgver=v1.0.11.r56.g76cc21b
 pkgrel=1
 pkgdesc="Graphical program that sends svg files to vinyl cutters"
-url="https://github.com/Timmmm/robocut"
+url="https://github.com/sporteries/robocut"
 license=('GPL3')
 arch=('x86_64')
 depends=('qt5-svg' 'cmake')
 install=$pkgname.install
-source=("$pkgname::git+https://github.com/Timmmm/robocut.git"
+source=("$pkgname::git+$url.git"
         "$pkgname.desktop")
 md5sums=('SKIP'
          '8428df609b820a04940f5e66f9c5c6c5')
