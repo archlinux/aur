@@ -2,7 +2,7 @@
 pkgname=geforcenow-electron-bin
 _pkgname="com.github.hmlendea.${pkgname%-bin}"
 _appname="GeForce NOW"
-pkgver=2.1.1
+pkgver=2.1.2
 _electronversion=29
 pkgrel=1
 pkgdesc="Linux Desktop client for Nvidia's GeForce NOW game streaming service"
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux.zip"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('3b2b190ea3b81b041fd1cdd1dd36515f9084ad1a96a867cbe7e8835ac6b96c6b'
+sha256sums=('5b13b569041920489ccb94473cd94ef2e4d7de7666e5c9687cc00509b8b9ce31'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
