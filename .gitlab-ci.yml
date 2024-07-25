@@ -54,7 +54,7 @@ release_job:
     - if [ -z "$pkgver" ]; then echo "version variable does not exist, skipping job"; exit 0; fi
     - git config --global user.email "zomundo@gmail.com"
     - git config --global user.name "Mundo"
-    - git remote add aur ssh://aur@aur.archlinux.org/taskade-appimage.git
+    - git remote add aur ssh://aur@aur.archlinux.org/terraform-bin.git 
     - git fetch aur master
     - git config pull.rebase true
     - git pull aur master
