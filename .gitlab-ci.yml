@@ -37,7 +37,7 @@ find_release_job:
 test_job:
   stage: test
   script:
-    - if [ ! -f build.env ]; then echo "build.env does not exist, skipping job"; exit 0; fi
+    - if [ -z "$pkgver" ]; then echo "version variable does not exist, skipping job"; exit 0; fi
     - su -c "cd ${CI_PROJECT_DIR} && ./test" - builduser
   dependencies:
     - find_release_job
@@ -45,7 +45,7 @@ test_job:
 release_job:
   stage: release
   script:
-    - if [ ! -f build.env ]; then echo "build.env does not exist, skipping job"; exit 0; fi
+    - if [ -z "$pkgver" ]; then echo "version variable does not exist, skipping job"; exit 0; fi
     - sed -i "s/^pkgver=.*/pkgver=${pkgver}/" PKGBUILD
     - git config --global user.email "zomundo@gmail.com"
     - git config --global user.name "Mundo"
