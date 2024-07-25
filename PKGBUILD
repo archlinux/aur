@@ -5,7 +5,7 @@
 _rtver=36
 _rtbase=6.1.99
 pkgbase=linux-rt-lts61
-pkgver=6.1.99
+pkgver=6.1.100
 pkgrel=1
 pkgdesc='LTS Linux with realtime patches'
 url='https://www.kernel.org'
@@ -44,21 +44,21 @@ validpgpkeys=(
   D5653EA39C8675DA4BD5971C13B55DD07C53B851  # Clark Williams
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-md5sums=('e48a0d7094617221e5873950ad3b1100'
+md5sums=('4d5f24481210a8857ffd528703304e6d'
          'SKIP'
          '8866f07fafbc3399592b6a4b511a0448'
          'SKIP'
          'cb32cb125ea45ac05782630dfc9fc951'
          '806e76e95002ecbf49b03d6e655dc567'
          'ba035ba9a8d8cd396d3e368de8c4c7fb')
-sha256sums=('c086ee9ce2b1eeba6e085d569bc97ae764a5d15f6322847f0ebc9f787ae34dd3'
+sha256sums=('b9aa6ec1a00f234d6c6f2d428fbb0a6bf459606c259263df978f86685b65a8b9'
             'SKIP'
             '2101f03a86d9ee6a95b6d7383290f157fcc7587d8509efe5d67ed5b2992a5c54'
             'SKIP'
             '21195509fded29d0256abfce947b5a8ce336d0d3e192f3f8ea90bde9dd95a889'
             '08ef05d8a4fc8117d131f219d753caa138a0fb7c8f00690ff6dc35ac6aacdb83'
             'f02a74973a4e3a2165a82e62cb682e0eed8bb5ade6f951564c45d24e2b5f07ff')
-b2sums=('155544c5956c3fe8850b0ef1cc044341e1567636fd66e8041a97565ef215dad10a96726387bc492fb7ebe6dd896afa63a40402c872c623e2135730746db9350e'
+b2sums=('c7201bd15c48d611c0eea2cb3bab528bd0fdd3e725ce1ccbcf0ecc9525f28b1a587ca9c083d6ea7e13b6df6894883764eeec5324dfd62f60bab9d7891e17e177'
         'SKIP'
         '7d85c80494ffa7555b8b31b3ab3f262c89f91023266b9c16be7ba3f26b1d33937f7ea9f1587790a60200d1d188c10f18e3781153921710f2da6b15438daf9547'
         'SKIP'
