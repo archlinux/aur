@@ -1,0 +1,8 @@
+[python-opencensus]
+source = "git"
+git = "https://github.com/census-instrumentation/opencensus-python.git"
+prefix = "v"
+include_regex = '^v[0-9]+\.[0-9]+\.[0-9]+(-[0-9]+\.[0-9]+\.[0-9]+)?$'
+from_pattern = "-"
+to_pattern = "_azure"
+sort_version_key = "vercmp"
