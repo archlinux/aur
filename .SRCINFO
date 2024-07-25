@@ -1,10 +1,10 @@
 pkgbase = byobu
 	pkgdesc = Enhanced tmux
-	pkgver = 6.1.12
+	pkgver = 6.12
 	pkgrel = 1
 	url = https://byobu.org/
 	arch = any
-	license = GPL-3.0
+	license = GPL-3.0-only
 	makedepends = gettext
 	makedepends = git
 	makedepends = setconf

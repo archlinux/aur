@@ -6,12 +6,12 @@
 # Contributor: Justin Coffman <jcoffman at datasecu dot red>
 
 pkgname=byobu
-pkgver=6.1.12
+pkgver=6.12
 pkgrel=1
 pkgdesc='Enhanced tmux'
 arch=(any)
 url='https://byobu.org/'
-license=(GPL-3.0)
+license=(GPL-3.0-only)
 depends=(libnewt python tmux)
 makedepends=(gettext git setconf)
 source=('git+https://github.com/dustinkirkland/byobu#commit=cd253f0229b68d3c2cffa8d862309c6ea7019d94')
