@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=tui-slides
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Terminal presentation utility with a modern TUI"
 arch=('x86_64')
@@ -11,7 +11,8 @@ license=('Apache-2.0')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('e2cfef62e5e10b3191c0669d4402db183b5e31dae9a6d587600cb30816ef319b2c63ea3cc7d7edcfc2b653311810d55f1dccc0efb20a047e9f2fb97f3d826f3c')
+sha512sums=('2333f4e3f4c9a0e74242c134309957b899a5e12c42ced291e2b7463f28ee9652f221f1592386492aacf21b2ddc70e0628b1c9ba3b1595f4d1899ce207d77f168')
+options=('!lto')
 
 prepare() {
   cd "$pkgname-$pkgver"
