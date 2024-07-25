@@ -30,6 +30,7 @@ package() {
   cd $srcdir/$pkgname
   DESTDIR="$pkgdir" cmake --install build
   install -Dm644 ../$pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm644 images/robocut.xpm "$pkgdir/usr/share/pixmaps/robocut.xpm"
   install -d "$pkgdir/usr/share/robocut/examples"
   install -m644 examples/* "$pkgdir/usr/share/robocut/examples"
 }
