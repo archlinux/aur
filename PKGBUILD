@@ -4,7 +4,7 @@ _pkgname=electron-deno-IDE
 pkgver=0.1.1_beta
 _electronversion=25
 _nodeversion=18
-pkgrel=7
+pkgrel=8
 pkgdesc="Deno IDE supported all of programming language"
 arch=('any')
 url="https://github.com/MooudMohammady/electron-deno-IDE"
@@ -18,15 +18,16 @@ makedepends=(
     'npm'
     'nodejs'
     'curl'
-    'base-devel'
+    'cmake'
     'gcc'
+    'git'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver//_/-}.tar.gz"
+    "${pkgname}.git::git+${url}.git#tag=v${pkgver//_/-}"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('c51758b98d8a43338e85b2e02aba8283c488ca090e2163bce45ec7b1c01ddb4f'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+sha256sums=('5afe74d3986318bde8c67bf779b27f1428709ea6faeb636a464dd4548d64f77c'
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -41,8 +42,8 @@ build() {
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    gendesk -f -n -q --pkgname="${pkgname}" --categories="Development" --name="${_pkgname}" --exec="${pkgname} %U"
-    cd "${srcdir}/${_pkgname}-${pkgver//_/-}"
+    gendesk -f -n -q --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname} %U"
+    cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
@@ -60,12 +61,12 @@ build() {
     fi
     sed "s|electron-builder\",|electron-builder --dir\"|g;/electron-rebuild/d" -i package.json
     sed "s|\/\${version}||g" -i electron-builder.json5
-    npm install --force
-    npm run build
+    NODE_ENV=development npm install --force
+    NODE_ENV=production npm run build
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${_pkgname}-${pkgver//_/-}/release/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
-    install -Dm644 "${srcdir}/${_pkgname}-${pkgver//_/-}/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/${pkgname}.git/release/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
