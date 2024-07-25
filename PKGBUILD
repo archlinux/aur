@@ -3,7 +3,7 @@ pkgname=quba-bin
 _pkgname=Quba
 pkgver=1.4.0
 _electronversion=20
-pkgrel=4
+pkgrel=5
 pkgdesc="A viewer for electronic invoices"
 arch=('x86_64')
 url="https://github.com/ZUGFeRD/quba-viewer"
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('12c4c5ed6d67a79a9b410877a5daac15edf6a25bc62b7028c065a3a873c47e83'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
