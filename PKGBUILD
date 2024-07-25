@@ -1,21 +1,21 @@
 # Maintainer: maoyaotang <292898660@qq.com>
 pkgname=cn.i4tools-bin
 _pkgname=i4tools
-pkgver=v3.05.010
-pkgrel=2
+pkgver=v3.06.001
+pkgrel=1
 pkgdesc='简单好用的多功能苹果设备管理助手。'
 arch=('x86_64')
 url="https://www.i4.cn/pro_pc.html"
 license=('custom')
 depends=('git')
 source=(
-    "i4tools_v3.05.010.rpm::https://d-updater.i4.cn/i4linux/deb/${_pkgname}_${pkgver}.rpm"
+    "i4tools_v3.06.001.rpm::https://d-updater.i4.cn/i4linux/deb/${_pkgname}_${pkgver}.rpm"
     "cn.i4Tools.desktop"
     "LICENSE.html::https://www.i4.cn/copyright.html"
 )
-sha256sums=(b437d24d72b58d5200da7ece16578df5f55053bf647a6e83828bbc429d090d56
+sha256sums=('a64b02d973322a88dbf4ab350c77cc139a2d61e548efb9c0f2efd3f20d0c1f79'
             'c39f1408107cd69076a37d14326609fb8773717914b5ee335cb039e0bd66e1ed'
-            'SKIP')
+            'f3cc70ece76bae973291aa37ced5a48da64360ec4860e8549240a5f6cd3babd4')
 
 package() {
     install -m755 -d "${pkgdir}/opt/cn.i4Tools"
