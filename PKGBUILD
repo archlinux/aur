@@ -3,14 +3,14 @@
 pkgname=bruno-git
 _pkgname=bruno
 pkgdesc="Opensource API Client for Exploring and Testing APIs"
-pkgver=1.11.0.r2.g410eecc8
+pkgver=1.22.0.r0.g073c1aae
 pkgrel=1
 arch=('x86_64')
 url="https://www.usebruno.com/"
 license=('MIT')
 provides=('bruno')
 conflicts=('bruno')
-_electron=electron21
+_electron=electron31
 depends=(
     "${_electron}"
     'alsa-lib'
