@@ -6,7 +6,7 @@
 pkgbase=nvidia-utils-beta
 pkgname=('nvidia-utils-beta' 'opencl-nvidia-beta' 'nvidia-settings-beta')
 pkgver=560.28.03
-pkgrel=1
+pkgrel=2
 pkgdesc='NVIDIA drivers utilities (beta version)'
 arch=('x86_64')
 url='https://www.nvidia.com/'
@@ -142,6 +142,11 @@ package_nvidia-utils-beta() {
     install -D -m644 nvidia_icd.json    -t "${pkgdir}/usr/share/vulkan/icd.d"
     install -D -m644 nvidia_layers.json -t "${pkgdir}/usr/share/vulkan/implicit_layer.d"
     
+    # VulkanSC
+    install -D -m755 nvidia-pcc -t "${pkgdir}/usr/bin"
+    install -D -m755 "libnvidia-vksc-core.so.${pkgver}" -t "${pkgdir}/usr/lib"
+    install -D -m644 nvidia_icd_vksc.json -t "${pkgdir}/usr/share/vulkansc/icd.d"
+    
     # VDPAU
     install -D -m755 "libvdpau_nvidia.so.${pkgver}" -t "${pkgdir}/usr/lib/vdpau"
     
@@ -172,6 +177,12 @@ package_nvidia-utils-beta() {
     # DLSS
     install -D -m755 nvidia-ngx-updater -t "${pkgdir}/usr/bin"
     install -D -m644 {,_}nvngx.dll -t "${pkgdir}/usr/lib/nvidia/wine"
+    
+    # Xorg
+    install -D -m755 libnvidia-egl-xcb.so.1  -t "${pkgdir}/usr/lib"
+    install -D -m755 libnvidia-egl-xlib.so.1 -t "${pkgdir}/usr/lib"
+    install -D -m644 20_nvidia_xcb.json  -t "${pkgdir}/usr/share/egl/egl_external_platform.d"
+    install -D -m644 20_nvidia_xlib.json -t "${pkgdir}/usr/share/egl/egl_external_platform.d"
     
     # Wayland/GBM
     install -D -m755 "libnvidia-allocator.so.${pkgver}" -t "${pkgdir}/usr/lib"
