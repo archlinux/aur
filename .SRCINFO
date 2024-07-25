@@ -1,0 +1,12 @@
+pkgbase = gut-git
+	pkgdesc = An alternative git CLI for Windows, macOS, and Linux
+	pkgver = 0.3.0.r4.g83bd2e3
+	pkgrel = 1
+	url = https://gut-cli.dev
+	arch = any
+	license = MIT
+	makedepends = go
+	source = git+https://github.com/julien040/gut
+	sha256sums = SKIP
+
+pkgname = gut-git
