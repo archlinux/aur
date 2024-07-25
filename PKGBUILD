@@ -3,7 +3,7 @@
 _pkgbase=XRLinuxDriver
 pkgname="xr-driver-breezy-gnome-git"
 pkgver=0.10.5
-pkgrel=1
+pkgrel=2
 pkgdesc="XR Linux Driver for Breezy GNOME"
 arch=('x86_64' 'aarch64')
 url="https://github.com/wheaney/XRLinuxDriver"
@@ -36,7 +36,9 @@ package() {
     install -Dm644 ${_pkgbase}/systemd/xr-driver.service "${pkgdir}"/usr/lib/systemd/user/xr-driver.service
     install -Dm755 ${_pkgbase}/bin/xr_driver_cli "${pkgdir}"/usr/bin/xr_driver_cli
 
-    install -Dm755 ${_pkgbase}/lib/${CARCH}/libRayNeoXRMiniSDK.so "${pkgdir}"/usr/lib/libRayNeoXRMiniSDK.so
+    if compgen -G "${_pkgbase}/lib/${CARCH}/*.so" > /dev/null; then
+        install -Dm755 ${_pkgbase}/lib/${CARCH}/*.so -t "${pkgdir}"/usr/lib/
+    fi
 
     # udev rules
     install -Dm644 ${_pkgbase}/udev/70-viture-xr.rules "${pkgdir}"/usr/lib/udev/rules.d/70-viture-xr.rules
