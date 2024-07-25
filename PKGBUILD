@@ -2,9 +2,9 @@
 pkgname=duolingo-desktop-bin
 _appname=dl-desktop
 _pkgname=ro.go.hmlendea.DL-Desktop
-pkgver=4.0.1
+pkgver=4.0.2
 _electronversion=29
-pkgrel=2
+pkgrel=1
 pkgdesc="Desktop client for the Duolingo language learning application"
 arch=("x86_64")
 url="https://github.com/hmlendea/dl-desktop"
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/hmlendea/dl-desktop/v${pkgver}/icon.png"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('81dc8d5ac056212208ba665ebabd1df2d063dae9b1fe26ca606153d62e487995'
+sha256sums=('839e0842ff1619718af8a92e706eaedfaec00c98394c4f4121bf7e1e4a6f5141'
             '67642cd03a241ff097a83800f39e442c533e8b7a92a9235c0375ef866a708f0e'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
