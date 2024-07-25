@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=bluetui
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="TUI for managing bluetooth devices"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('gcc-libs' 'dbus' 'bluez')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('696959b9e5b48e214599e217ad9d7e75441f50ebc38790b6fb31982afa913e4aa26bd9247cb1d1e74ca20681984ec4260970e09530566f7d8e2b1cee3d83c58f')
+sha512sums=('f34b16c9defd142c635a94948cdb2718a98361078edd26b4edb78710483deb3f30f0eb82523c50f04e88365712e46b94f18de670fb95c1c69e14c7cac886b336')
 
 prepare() {
   cd "$pkgname-$pkgver"
