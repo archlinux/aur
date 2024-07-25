@@ -24,6 +24,9 @@ prepare() {
   tar xf im-${pkgver}_Sources.tar.gz # sources have a problem with bsdtar, use gnutar instead
 
   sed -i -e 's/JAS_HAVE_UNISTD_H/HAVE_UNISTD_H/' "$srcdir"/im/src/libjasper2/base/jas_stream.c
+
+  # ensure proper building in parallel (specifying targets' dependencies)
+  sed -i 's/^im_.*/\0 im/g;s/^im_fftw3.*/\0 im_process/g;s/^imlua_.*/\0 imlua5/g' "$srcdir"/im/src/Makefile
 }
 
 build() {
