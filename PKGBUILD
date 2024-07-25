@@ -1,8 +1,8 @@
 # Maintainer: lilikoi <jamilbio20@gmail.com>
 pkgname='chatgpt.sh'
-pkgver=0.66.4
+pkgver=0.67.1
 pkgrel=1
-_commit=7b7e0c9e34b6f72be0593096ea6ff6755ea96516
+_commit=df20c52c069d0d6fcff31f35f1be5f60e16fe9be
 pkgdesc="Shell wrapper for OpenAI's ChatGPT, DALL-E, Whisper, and TTS. Features LocalAI, Ollama, Gemini and Mistral."
 url='https://gitlab.com/fenixdragao/shellchatgpt'
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('bash' 'curl' 'jq')
 makedepends=('git')
 optdepends=(
-	'imagemagick: edit input images'
+	'imagemagick: edit input images (fbida)'
 	'xdg-utils: open images (xdg-open, open)'
 	'sox: audio recorder (arecod, ffmpeg)'
 	'mpv: audio player (sox, vlc, ffmpeg, afplay)'
@@ -19,6 +19,7 @@ optdepends=(
 	'bat: render markdown (pygmentize, glow, mdcat, mdless)'
 	'w3m: dump URL text (lynx, elinks, links)'
 	'poppler: dump PDF as text (gs, abiword, ebook-convert)'
+	'dialog: file picker (kdialog, zenity, vifm, ranger, nnn)'
 )
 source=("${pkgname}-${pkgver}::git+${url}.git#commit=${_commit}")
 sha256sums=('SKIP')
