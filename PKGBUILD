@@ -2,7 +2,7 @@
 
 pkgname=byedpi-bin
 pkgver=0.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Bypass DPI"
 arch=(aarch64 armv6h armv7h x86_64)
 url="https://github.com/hufrea/${pkgname%-bin}"
@@ -17,7 +17,7 @@ source_aarch64=($url/releases/download/v$pkgver/${pkgname%-bin}-${pkgver:2}-aarc
 source_armv6h=( $url/releases/download/v$pkgver/${pkgname%-bin}-${pkgver:2}-armv6.tar.gz)
 source_armv7h=( $url/releases/download/v$pkgver/${pkgname%-bin}-${pkgver:2}-armv7l.tar.gz)
 source_x86_64=( $url/releases/download/v$pkgver/${pkgname%-bin}-${pkgver:2}-x86_64.tar.gz)
-b2sums=('c69efbe99a2c0f22af0bd588c4c07b8cda980020f67a2edd4d9c04c4d7626d29bd3786571114d6878e47c8245c770450bb7e3fb280a2046461bf795775855550')
+b2sums=('74fde8fc2f94e50dd7ea092bff6d592d25661f8a53fc240fe9c76739aa9f86eba6899bd1bbee3d93e5009f5cb40ed3ed6b83bcef4d0f2a2cd24fe8a0665312b6')
 b2sums_aarch64=('e7d8f76386799bdcbac9d39ee5cc14269da90191c4888e4a90c681d5b9308303f539697ad59349f293226f0a5aee71e23519a1ce3cf984ab62c80eff2bb43468')
 b2sums_armv6h=('2aaccf3b4f3ce4795a9af17c1506b248cf46963ab7321d9a32013e6ddef95d654706c985534ee76683642753c902f411c0af933763a6342324745840843a54b2')
 b2sums_armv7h=('6d04e255a802525bd822540566141ef83d347f8b8c89d509ee21430409ecbee65b8fff54082be11c13da721f7bda76d08644c494267e46081d1676cd4c51f8b6')
@@ -25,5 +25,5 @@ b2sums_x86_64=('57e190c8dbc4c97f9c322100771b19946693758a8f9649ee25da3fa30787bd25
 
 package() {
   install -vDm755 ciadpi-*            "$pkgdir"/usr/bin/ciadpi
-  install -vDm644 $pkgname.service -t "$pkgdir"/usr/lib/systemd/system/
+  install -vDm644 ${pkgname%-bin}.service -t "$pkgdir"/usr/lib/systemd/system/
 }

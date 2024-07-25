@@ -1,0 +1,11 @@
+[Unit]
+Description=Bypass DPI service
+Documentation=https://github.com/hufrea/byedpi/blob/main/readme.txt
+Wants=network-online.target
+After=network-online.target nss-lookup.target
+
+[Service]
+ExecStart=/usr/bin/ciadpi -s 1
+
+[Install]
+WantedBy=multi-user.target
