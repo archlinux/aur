@@ -1,6 +1,6 @@
 pkgbase = klaus-bin
 	pkgdesc = Arch manager that allows you to download, install, delete packages...
-	pkgver = 14.3
+	pkgver = 14.4
 	pkgrel = 1
 	url = https://github.com/dmaliog/kLausqt/
 	arch = x86_64
@@ -10,14 +10,14 @@ pkgbase = klaus-bin
 	depends = qt6-webengine>=6.7.2
 	depends = qt6-svg>=6.7.2
 	depends = translate-shell
-	depends = yay>=12.2.0
+	depends = yay>=12.3.5
 	depends = zenity
 	depends = libnotify
 	depends = zip
 	depends = tar
 	depends = papirus-icon-theme
 	optdepends = ocs-url
-	source = klaus-bin-14.3.zip::https://github.com/dmaliog/kLausqt//releases/download/14.3/klaus-14.3-2024-07-25-linux64.zip
-	sha256sums = 60dad9e3927df753b226e052d456009f1f5069b49832a14875e9f16e912c6040
+	source = klaus-bin-14.4.zip::https://github.com/dmaliog/kLausqt//releases/download/14.4/klaus-14.4-2024-07-25-linux64.zip
+	sha256sums = 6aea588bc4763f2b2b55796078763325f0ec3f3371c812165baf45f10f378666
 
 pkgname = klaus-bin
