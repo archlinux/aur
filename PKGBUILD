@@ -1,5 +1,5 @@
 pkgname=python-pylibftdi
-pkgver=0.21.0
+pkgver=0.22.0
 pkgrel=1
 pkgdesc="Pythonic interface to FTDI devices using libftdi"
 arch=(any)
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('python' 'libftdi')
 makedepends=('python-poetry')
 source=("https://github.com/codedstructure/pylibftdi/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('87e6502f8fddd4627f2312e496ea6992956f313dab581d02307822c7cb723d5b')
+sha256sums=('21353e1c61ad8aa7884747a862de1f89a088af94b0175e32e02d5bc205142075')
 
 build() {
   cd $srcdir/pylibftdi-$pkgver/
