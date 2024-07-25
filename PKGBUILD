@@ -24,7 +24,7 @@ package() {
   cd "${srcdir}/ProFileX-v.${pkgver}"
 
   # Install the binary to /usr/local/bin
-  install -Dm755 ProFileX "${pkgdir}/usr/local/bin/profilex"
+  install -Dm755 profilex "${pkgdir}/usr/local/bin/profilex"
 
   # Install the icon
   install -Dm644 "${srcdir}/ProFileX-v.${pkgver}/src/profilex-iconlogo.png" "${pkgdir}/usr/share/pixmaps/profilex.png"
