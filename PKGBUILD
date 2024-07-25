@@ -1,40 +1,40 @@
-pkgname=mingw-w64-extra-cmake-modules
-pkgver=5.102.0
+_pkgname=extra-cmake-modules
+pkgname=mingw-w64-$_pkgname
+pkgver=6.4.0
 pkgrel=1
+pkgdesc='Extra modules and scripts for CMake (mingw-w64)'
 arch=(any)
-pkgdesc="Extra modules and scripts for CMake (mingw-w64)"
-groups=(mingw-w64-kf5)
-license=("LGPL")
+url='https://community.kde.org/Frameworks'
+license=(LGPL)
 depends=(mingw-w64-cmake)
+makedepends=(ninja)
 options=(staticlibs !strip !buildflags)
-url="https://community.kde.org/Frameworks"
-source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/extra-cmake-modules-${pkgver}.tar.xz"{,.sig}
-"set-AUTOSTATICPLUGINS.patch"
-"05aa27dc0e14dab407379a4d22f895e9eff13cc0.patch")
-sha256sums=('f259aeb5a8e046ee2a0e658645f3af6d3e42145d3ae576f305b2b6e24a297f9b'
-            'SKIP'
-            '30bdcedab402c69ea0db3460f5a23cbd226a5cd1e12b13926b8a65df773e14a0'
-            '7e44cf56a8274c8166eaf02e60c2d34e5048992a7e3c8309b998b762a394e909')
-validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
+groups=(mingw-w64-kf6)
+source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$_pkgname-$pkgver.tar.xz{,.sig})
+sha256sums=('ced3f20741ddad24185dc1280a0c0d9171ba2508f84762417d74808561295add'
+            'SKIP')
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB # David Faure <faure@kde.org>
+              E0A3EB202F8E57528E13E72FD7574483BB57B18D # Jonathan Esk-Riddell <jr@jriddell.org>
+              90A968ACA84537CC27B99EAF2C8DF587A6D4AAC1 # Nicolas Fella <nicolas.fella@kde.org>
+              )
+
+options=(!buildflags staticlibs !strip !emptydirs)
+
+_architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
 build() {
-  cd extra-cmake-modules-$pkgver
   for _arch in ${_architectures}; do
-    unset LDFLAGS
-    mkdir "build-${_arch}" && pushd "build-${_arch}"
-    ${_arch}-cmake \
-      -DBUILD_HTML_DOCS=OFF \
-      ..
-    make
-    popd
+    ${_arch}-cmake -G Ninja -B build-$_arch -S $_pkgname-$pkgver \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DBUILD_HTML_DOCS=ON \
+      -DBUILD_QTHELP_DOCS=ON
+    VERBOSE=1 cmake --build build-$_arch
   done
 }
 
 package() {
   for _arch in ${_architectures}; do
-    cd "${srcdir}/${pkgname#mingw-w64-}-$pkgver/build-${_arch}"
-    make DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" VERBOSE=1 cmake --install build-$_arch
   done
 }
