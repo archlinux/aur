@@ -14,7 +14,7 @@ pkgver=r5910.db8f9389
 pkgrel=1
 pkgdesc='Deletes unneeded files to free disk space and maintain privacy.'
 url='https://www.bleachbit.org/'
-license=('GPL3')
+license=('GPL-3.0-or-later' 'MIT')
 source=("${_pkgname}::git+https://github.com/bleachbit/bleachbit.git")
 sha256sums=('SKIP')
 arch=('any')
@@ -32,4 +32,5 @@ pkgver() {
 package() {
   cd ${_pkgname}
   make prefix=/usr DESTDIR="$pkgdir" install
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
