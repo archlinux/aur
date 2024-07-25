@@ -11,6 +11,7 @@ url="https://github.com/studyzy/${pkgname}"
 license=('GPL-3.0-or-later')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
+replaces=("${pkgname}"{-bin,-cli})
 depends=("dotnet-runtime-${_dotnet_ver}")
 makedepends=("dotnet-sdk-${_dotnet_ver}")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
