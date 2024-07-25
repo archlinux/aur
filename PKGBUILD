@@ -7,8 +7,8 @@
 # Contributor: Hexchain Tong <i at hexchain dot org>
 
 pkgname=megasync
-pkgver=5.3.0.0
-pkgrel=2
+pkgver=5.4.0.0
+pkgrel=1
 pkgdesc='Official MEGA desktop application for syncing with MEGA Cloud Drive'
 arch=('x86_64')
 url='https://github.com/meganz/MEGAsync/'
@@ -43,7 +43,7 @@ source=("git+https://github.com/meganz/MEGAsync.git#tag=v${pkgver}_OSX"
         '010-megasync-freeimage-remove-obsolete-ffmpeg-macros.patch'
         '020-megasync-sdk-fix-cmake-dependencies-detection.patch'
         '030-megasync-app-fix-cmake-dependencies-detection.patch')
-sha256sums=('feb8c083afa82f9d888414b9a69370df50872b63cb33c3bf8d4f4a555fdb95fd'
+sha256sums=('c0efb546e08db4c97c54bcab6b670d98ccfe220bc6a186ecf6b75c9b2a4ba765'
             'SKIP'
             '3df5d43ca1951c9e48dbb7f8e221bc8fff1a9fb1b7c934cb5ea7f195ae8f2e04'
             '2da83bb6a20aa19b58b4115646bacb9d76e2504b45b5094abeba94beac2301fb'
