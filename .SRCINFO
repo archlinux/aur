@@ -1,13 +1,17 @@
 pkgbase = cdwifi
-	pkgdesc = Simple login script for public WiFi in ČD trains
-	pkgver = 0.1.2
+	pkgdesc = Simple login script for public wifi in ČD trains
+	pkgver = 0.1.3
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/MaximMaximS/CDWiFi
-	arch = any
-	license = MIT-0
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = MIT
 	makedepends = cargo
-	source = cdwifi-0.1.2.tar.gz::https://static.crates.io/crates/cdwifi/cdwifi-0.1.2.crate
-	sha256sums = 178c78c98526d32fb8f075f21615b2ea6cd0ac3ed31c9ab8a6cde7d327666a60
+	depends = openssl
+	depends = glibc
+	source = cdwifi-0.1.3.tar.gz::https://static.crates.io/crates/cdwifi/cdwifi-0.1.3.crate
+	b2sums = ae9739c66aad7584d869b4906e8660c6454b25071b67235bab9499b110fb7408fc9e298f6632813d1ab231bac73a3b803b8e8b2d2c063aae6fe869622b6fd19f
 
 pkgname = cdwifi
