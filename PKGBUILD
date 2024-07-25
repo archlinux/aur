@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Rcpi
-_pkgver=1.40.0
+_pkgver=1.40.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -11,11 +11,11 @@ url="https://bioconductor.org/packages/$_pkgname"
 license=('Artistic-2.0')
 depends=(
   r-biostrings
+  r-curl
   r-doparallel
   r-foreach
   r-gosemsim
-  r-pwalign
-  r-rcurl
+  r-httr2
   r-rjson
   r-rlang
 )
@@ -25,8 +25,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a96804d0873834e384d594a6a0b87845')
-b2sums=('c79601c8cb2b028a93d73f0808647631833145922eceab6be786b7e407ac46dc37d6013293a918c3b865220d6668a538e40214714e0f5719b4b2595595430e3e')
+md5sums=('48c49b19548e2a9d112e844dd233593f')
+b2sums=('c462528f782f46f382616f24b28d3011a183f85b618201139e64749b7750f50481fec0fe5389f16b4bbff1a7e3d32da2f6036b9f38914283bd2a86d41252ebd7')
 
 build() {
   mkdir build
