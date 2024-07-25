@@ -1,5 +1,5 @@
 # Maintainer: Mumulhl <mumulhl.666@gmail.com>
-pkgname="helix-gpt"
+pkgname="helix-gpt-bin"
 pkgver=0.34
 pkgrel=1
 pkgdesc="Code assistant language server for Helix with support for Copilot/OpenAI/Codeium/Ollama"
