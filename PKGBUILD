@@ -1,5 +1,5 @@
 # Maintainer: Lorenzo Bodini <lorenzo.bodini@prabo.org>
-pkgname=priv
+pkgname=priv-git
 pkgver=1.0
 pkgrel=1
 epoch=
@@ -12,7 +12,7 @@ groups=()
 depends=(cryptsetup zsh)
 makedepends=(git)
 backup=("etc/priv.conf")
-source=("git+https://github.com/topongo/priv")
+source=("git+${url}")
 sha256sums=("SKIP")
 
 package() {

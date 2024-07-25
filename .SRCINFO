@@ -1,4 +1,4 @@
-pkgbase = priv
+pkgbase = priv-git
 	pkgdesc = Simple dm-crypt wrapper, witten in bash
 	pkgver = 1.0
 	pkgrel = 1
@@ -12,4 +12,4 @@ pkgbase = priv
 	source = git+https://github.com/topongo/priv
 	sha256sums = SKIP
 
-pkgname = priv
+pkgname = priv-git
