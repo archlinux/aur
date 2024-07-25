@@ -9,7 +9,7 @@ pkgbase=android-${_android_arch}-rubberband
 pkgname=(android-${_android_arch}-rubberband
          android-${_android_arch}-rubberband-{ladspa,lv2,vamp})
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Time-stretching and pitch-shifting audio library and utility"
 url="https://www.breakfastquay.com/rubberband/"
@@ -23,7 +23,7 @@ makedepends=('android-meson'
              "android-${_android_arch}-libsndfile"
              "android-${_android_arch}-vamp-plugin-sdk")
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://github.com/breakfastquay/rubberband/archive/v$pkgver.tar.gz")
+source=("https://github.com/breakfastquay/rubberband/archive/v${pkgver}.tar.gz")
 md5sums=('1125fda060b757bf1dc8de4b6a19f0fb')
 
 _pick() {
@@ -41,21 +41,19 @@ build() {
     cd "${srcdir}/rubberband-${pkgver}"
     source android-env ${_android_arch}
 
-    mkdir -p build
-    cd build
-    android-${_android_arch}-meson \
-        --default-library both \
+    android-${_android_arch}-meson build \
         -Djni=disabled \
         -Dfft=fftw \
         -Dresampler=libsamplerate \
         -Dcmdline=disabled \
         -Dtests=disabled
-    sed -i 's/-DUSE_PTHREADS/-DUSE_PTHREADS -D_NEWLIB_VERSION/g' compile_commands.json
-    ninja
+    sed -i 's/-DUSE_PTHREADS/-DUSE_PTHREADS -D_NEWLIB_VERSION/g' build/compile_commands.json
+    ninja -C build
 }
 
 package_android-armv7a-eabi-rubberband() {
     pkgdesc+=" - VAMP plugin (Android ${_android_arch})"
+    groups=('android-rubberband')
     depends=("android-${_android_arch}-fftw"
              "android-${_android_arch}-libsamplerate"
              "android-${_android_arch}-libsndfile")
@@ -63,10 +61,10 @@ package_android-armv7a-eabi-rubberband() {
     cd "${srcdir}/rubberband-${pkgver}"
     source android-env ${_android_arch}
 
-    meson install -C build --destdir "$pkgdir"
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a || true
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_RANLIB} "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a || true
+    meson install -C build --destdir "${pkgdir}"
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
+    ${ANDROID_RANLIB} "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
 
     _pick rubberband-ladspa "${pkgdir}/${ANDROID_PREFIX_LIB}/ladspa/"
     _pick rubberband-lv2 "${pkgdir}/${ANDROID_PREFIX_LIB}/lv2/"
@@ -75,27 +73,30 @@ package_android-armv7a-eabi-rubberband() {
 
 package_android-armv7a-eabi-rubberband-ladspa() {
     pkgdesc+=" - LADSPA plugin (Android ${_android_arch})"
+    groups=('android-rubberband-ladspa')
     depends=("android-${_android_arch}-fftw"
              "android-${_android_arch}-libsamplerate"
              "android-${_android_arch}-ladspa")
 
-    mv -v "${srcdir}/rubberband-ladspa"/* "$pkgdir"
+    mv -v "${srcdir}/rubberband-ladspa"/* "${pkgdir}"
 }
 
 package_android-armv7a-eabi-rubberband-lv2() {
     pkgdesc+=" - LV2 plugin (Android ${_android_arch})"
+    groups=('android-rubberband-lv2')
     depends=("android-${_android_arch}-fftw"
              "android-${_android_arch}-libsamplerate"
              "android-${_android_arch}-lv2")
 
-    mv -v "${srcdir}/rubberband-lv2"/* "$pkgdir"
+    mv -v "${srcdir}/rubberband-lv2"/* "${pkgdir}"
 }
 
 package_android-armv7a-eabi-rubberband-vamp() {
     pkgdesc+=" - VAMP plugin (Android ${_android_arch})"
+    groups=('android-rubberband-vamp')
     depends=("android-${_android_arch}-fftw"
              "android-${_android_arch}-libsamplerate"
              "android-${_android_arch}-vamp-plugin-sdk")
 
-    mv -v "${srcdir}/rubberband-vamp"/* "$pkgdir"
+    mv -v "${srcdir}/rubberband-vamp"/* "${pkgdir}"
 }

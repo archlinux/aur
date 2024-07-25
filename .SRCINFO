@@ -1,7 +1,7 @@
 pkgbase = android-armv7a-eabi-rubberband
 	pkgdesc = Time-stretching and pitch-shifting audio library and utility
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.breakfastquay.com/rubberband/
 	arch = any
 	license = GPL2
@@ -22,24 +22,28 @@ pkgbase = android-armv7a-eabi-rubberband
 
 pkgname = android-armv7a-eabi-rubberband
 	pkgdesc = Time-stretching and pitch-shifting audio library and utility - VAMP plugin (Android armv7a-eabi)
+	groups = android-rubberband
 	depends = android-armv7a-eabi-fftw
 	depends = android-armv7a-eabi-libsamplerate
 	depends = android-armv7a-eabi-libsndfile
 
 pkgname = android-armv7a-eabi-rubberband-ladspa
 	pkgdesc = Time-stretching and pitch-shifting audio library and utility - LADSPA plugin (Android armv7a-eabi)
+	groups = android-rubberband-ladspa
 	depends = android-armv7a-eabi-fftw
 	depends = android-armv7a-eabi-libsamplerate
 	depends = android-armv7a-eabi-ladspa
 
 pkgname = android-armv7a-eabi-rubberband-lv2
 	pkgdesc = Time-stretching and pitch-shifting audio library and utility - LV2 plugin (Android armv7a-eabi)
+	groups = android-rubberband-lv2
 	depends = android-armv7a-eabi-fftw
 	depends = android-armv7a-eabi-libsamplerate
 	depends = android-armv7a-eabi-lv2
 
 pkgname = android-armv7a-eabi-rubberband-vamp
 	pkgdesc = Time-stretching and pitch-shifting audio library and utility - VAMP plugin (Android armv7a-eabi)
+	groups = android-rubberband-vamp
 	depends = android-armv7a-eabi-fftw
 	depends = android-armv7a-eabi-libsamplerate
 	depends = android-armv7a-eabi-vamp-plugin-sdk
