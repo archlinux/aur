@@ -1,6 +1,6 @@
 # Maintainer: ravi0li <mail+aur at moritz dot pw>
 pkgname=pomatez
-pkgver=1.6.4
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Stay Focused. Take a Break."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('tar')
 depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'util-linux-libs' 'libappindicator-gtk3' 'libsecret')
 source=("https://github.com/zidoro/pomatez/releases/download/v${pkgver}/Pomatez-v${pkgver}-linux-amd64.deb")
-sha512sums=('b6aeeeb16cb08ea9027a16b23f468943d6edd3d419ac744f265f41a9ff7199df95f9956dd54407e3ad51cfc4aabe2c826cabc27a039c95d53f905489987f9234')
+sha512sums=('606778c6d817f88e5a1a407548d3174778b5e0db512bc847b2807a9fca374869b7bfaad341e0e4b794fce4b4a9cd5f5245af939ddc484bf7d82c03ca0a47f4f4')
 
 package() {
 	cd "${pkgdir}"
