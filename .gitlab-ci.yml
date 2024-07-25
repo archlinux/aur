@@ -35,6 +35,11 @@ test_job:
     - su -c "cd ${CI_PROJECT_DIR} && ./test" - builduser
   dependencies:
     - find_release_job
+  artifacts:
+    paths:
+      - PKGBUILD
+      - .SRCINFO
+      - build.env
 
 release_job:
   stage: release
@@ -58,3 +63,8 @@ release_job:
 
   dependencies:
     - find_release_job
+  artifacts:
+    paths:
+      - PKGBUILD
+      - .SRCINFO
+      - build.env
