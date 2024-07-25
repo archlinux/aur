@@ -1,0 +1,20 @@
+pkgbase = nfs-browser-bin
+	pkgdesc = 方德安全浏览器
+	pkgver = 6.0.0
+	pkgrel = 1
+	url = https://browser.nfschina.com/se.html
+	arch = aarch64
+	arch = x86_64
+	license = LicenseRef-custom
+	depends = alsa-lib
+	depends = gtk3
+	depends = nss
+	provides = nfs-browser=6.0.0
+	conflicts = nfs-browser
+	options = !emptydirs
+	source_aarch64 = nfs-browser-6.0.0-aarch64.deb::https://browser.nfschina.com/download/flavor/aarch64/latest/linux_64
+	sha256sums_aarch64 = 113890de65442f53336b38abf37ac7980cecef4e89093ee0e46468ed6646d774
+	source_x86_64 = nfs-browser-6.0.0-x86_64.deb::https://browser.nfschina.com/download/flavor/x86_64/latest/linux_64
+	sha256sums_x86_64 = 171c1ff9bd0ba985e6a4e1eeb3749602bf83386b7ea952d5b269513b138d30b1
+
+pkgname = nfs-browser-bin
