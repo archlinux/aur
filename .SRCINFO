@@ -1,0 +1,13 @@
+pkgbase = game-of-life-cli
+	pkgdesc = A Python implementation of Conway's Game of Life
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/DdimaPos/game-of-life-cli
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-numpy
+	source = gol-cli.py
+	md5sums = SKIP
+
+pkgname = game-of-life-cli
