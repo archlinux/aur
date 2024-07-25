@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your.email@example.com>
 
 pkgname=vbox-windows-app-launcher-git
-pkgver=0.1.2
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="A tool for launching Windows applications in a VirtualBox environment"
 arch=('any')
