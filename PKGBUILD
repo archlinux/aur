@@ -16,7 +16,7 @@ source=(
   "https://downloads.sourceforge.net/project/imtoolkit/${pkgver}/Docs%20and%20Sources/im-${pkgver}_Sources.tar.gz"
   "https://downloads.sourceforge.net/project/imtoolkit/${pkgver}/Docs%20and%20Sources/im-${pkgver}_Docs.pdf"
 )
-md5sums=('fa31b3174b7940bde1452ac909eb9c52'
+md5sums=('9fb18d151dd8e7e540aa76ae409c37b2'
          '794196d4e6d48e3257d7357d7ea62f94')
 noextract=(im-${pkgver}_Sources.tar.gz)
 
