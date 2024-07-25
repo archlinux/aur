@@ -517,6 +517,10 @@ _build_sapi() {
 build() {
     export CFLAGS="${CFLAGS} -fPIC -Wno-error=incompatible-pointer-types"
     export CXXFLAGS="${CXXFLAGS} -fPIC -Wno-error=incompatible-pointer-types -std=c++17"
+    if ((_phpbase <= 73)); then
+        export CFLAGS="${CFLAGS} -Wno-implicit-function-declaration -fpermissive"
+        export CXXFLAGS="${CXXFLAGS} -Wno-implicit-function-declaration -fpermissive"
+    fi
     export EXTENSION_DIR="/usr/lib/${pkgbase}/modules"
     if ((_build_forced_openssl_11)); then
         export PHP_OPENSSL_DIR="/usr/lib/openssl-1.1"
