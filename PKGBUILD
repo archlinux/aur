@@ -1,5 +1,5 @@
 pkgname=gpt4all-chat
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="run open-source LLMs anywhere"
 arch=("x86_64")
@@ -10,15 +10,15 @@ depends=(
     "qt6-webengine")
 makedepends=(
     "cmake" "shaderc" "vulkan-tools" "vulkan-headers" "qt6-shadertools" "qt6-svg" 
-    "qt6-wayland" "fmt")
+    "qt6-tools" "qt6-wayland" "fmt")
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/nomic-ai/gpt4all/archive/refs/tags/v$pkgver.tar.gz"
     "001-change-binary-name.diff"
     "002-disable-downloading-model.diff"
 )
 declare -rAg _modules_name_map=(
-    [gpt4all-backend/llama.cpp-mainline]=https://github.com/nomic-ai/llama.cpp/archive/b2db03acf299111885af2921a4230de07623eaf8.tar.gz
-    [gpt4all-backend/llama.cpp-mainline/kompute]=https://github.com/nomic-ai/kompute/archive/c339310f6ff914c5b94fb2353f01a33dfc35f64f.tar.gz
+    [gpt4all-backend/llama.cpp-mainline]=https://github.com/nomic-ai/llama.cpp/archive/2bae44a07fddf10512005c9475b73c09d38364a2.tar.gz
+    [gpt4all-backend/llama.cpp-mainline/ggml/src/kompute]=https://github.com/nomic-ai/kompute/archive/f592b5bca3cbc169feb194218a086b18d618cca4.tar.gz
     [gpt4all-chat/usearch]=https://github.com/nomic-ai/usearch/archive/22cfa3bd00ea542132ee826cdb220f9d6434bd43.tar.gz
     [gpt4all-chat/usearch/fp16]=https://github.com/Maratyszcza/FP16/archive/0a92994d729ff76a58f692d3028ca1b64b145d91.tar.gz
     [gpt4all-chat/usearch/simsimd]=https://github.com/ashvardanian/SimSIMD/archive/18d17686124ddebd9fe55eee56b2e0273a613d4b.tar.gz
@@ -40,21 +40,21 @@ do
         source+=("$_source_str")
     fi
 done
-sha256sums=('e219f6efd9f67fbe05adb9d39ad78cb69f6afa9cbdf57906a1498c36aac50227'
+sha256sums=('2ba3d2daabc290ce64810f230f00df64cd89d87902f3fd2944fc1e800fcbfff0'
             '11b0dc92cff31b9eb857d6c9d0f58ebed7bad4a01faf220d66c0d2bc9cbb9593'
             'a01b1bcf4f184a98405bfb3a848b96114b03a5c59d37927dfc47d061fe0aa25d'
             'b16fc2ee15a1df76e0459df32905285c94fb59135595ccbff2095167c3c865a1'
-            '0c1ee9121d00d989750416a1ad4f1cfb035946f5acfe5fb7259bb1fb8b62dc66'
             'b5c35b9e64abe4968bd887128d94e02272072b44267c58a057a08971e3ca6806'
-            'b003d44aeb8e63a24a52d5aefbd6dd7773fbac397f5096dee5b14eb3cea75968'
+            'f5662ff78271aa036fd9c119e7996990cfd319e2ed997fc736e0372234e906c4'
             '5f151fe3d71bb7b719eb50ed4bdedfde9c92d9d21c7eea172eec177b9875eff5'
-            'a91f4770ff9c39f4d72e339c379f566b3bbb359fa66122d85fc0bae3dde7abc7')
+            'a91f4770ff9c39f4d72e339c379f566b3bbb359fa66122d85fc0bae3dde7abc7'
+            '8c7450f146920b7f312d51aede2ff39561fb2d926c2abd61ab136187ffaf9620')
 
 prepare() {
     cd "$srcdir/gpt4all-$pkgver"
     declare -ra _modules=(
         gpt4all-backend/llama.cpp-mainline
-        gpt4all-backend/llama.cpp-mainline/kompute
+        gpt4all-backend/llama.cpp-mainline/ggml/src/kompute
         gpt4all-chat/usearch
         gpt4all-chat/usearch/fp16
         gpt4all-chat/usearch/simsimd
@@ -95,7 +95,7 @@ build() {
         -DKOMPUTE_OPT_USE_BUILT_IN_VULKAN_HEADER=OFF \
         -DKOMPUTE_OPT_USE_BUILT_IN_SPDLOG=OFF \
         -DLLMODEL_KOMPUTE=ON \
-        -DLLMODEL_VULKAN=ON \
+        -DLLMODEL_VULKAN=OFF \
         -DLLMODEL_CUDA=OFF \
         -DLLMODEL_ROCM=OFF
     cmake --build build-chat
