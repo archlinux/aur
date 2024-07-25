@@ -39,6 +39,9 @@ prepare() {
   # patch for building with gcc 14
   # temporary - remove when it is fixed in upstream
   patch -p0 < "$srcdir"/fix-build-gcc-14.patch
+
+  # ensure proper building in parallel (specifying targets' dependencies)
+  sed -i 's/^cd[^\(:\|lua\)].*/\0 cd/g;s/^cdlua[^5].*/\0 cdlua5/g' "$srcdir"/cd/src/Makefile
 }
 
 build() {
