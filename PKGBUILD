@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: Alex S. <alex@lagomor.ph>
 pkgname=xdplayer
 pkgver=1.0
 pkgrel=1
