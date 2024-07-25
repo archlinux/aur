@@ -5,7 +5,7 @@ pkgver=1.91.1
 pkgrel=1
 pkgdesc='Smart home app that hosts your custom remote control designs from AIO CREATOR NEO'
 arch=('x86_64')
-url='https://shop.mediola.com/aio-creator-neo'
+url='https://www.mediola.com/service#downloads?type=software&product=aioremote_desktop'
 license=('LicenseRef-eula')
 depends=(
   'alsa-lib'
