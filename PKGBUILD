@@ -1,7 +1,7 @@
 # Contributor: Sam Day <me@samcday.com>
 
 pkgname=dnf5
-pkgver=5.2.4.0
+pkgver=5.2.5.0
 pkgrel=1
 pkgdesc="Next-generation RPM package management system"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/rpm-software-management/$pkgname"
 license=('GPL-2.0-or-later' 'LGPL-2.1-or-later')
 conflicts=('dnf')
 depends=('curl>=7.62.0' 'fmt' 'glib2>=2.46.0' 'json-c' 'libmodulemd>=2.11.2'
-         'librepo>=1.17.1' 'libsolv>=0.7.25' 'libxml2' 'rpm-tools>=4.17.0'
+         'librepo>=1.18.0' 'libsolv>=0.7.25' 'libxml2' 'rpm-tools>=4.17.0'
          'sdbus-cpp>=0.9.0' 'sqlite>=3.35.0' 'systemd-libs' 'util-linux-libs')
 makedepends=('bash-completion' 'cmake>=3.13' 'doxygen' 'gettext' 'perl'
              'python' 'python-breathe' 'python-sphinx' 'python-sphinx_rtd_theme'
@@ -22,7 +22,7 @@ backup=('etc/dnf/dnf.conf'
         'etc/dnf/libdnf5-plugins/actions.conf')
 options=('!emptydirs')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('c6e83f9721f1b711262a50b25434b160f0e904bc006347d36fd37f1f50f10505')
+sha256sums=('0fc67e96f6bfd409a6f86bd66c8b130e231fb1e14843751fe92ccfadd5fc110c')
 
 build() {
 	cd "$pkgname-$pkgver"
