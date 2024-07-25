@@ -8,7 +8,7 @@
 # ```
 
 pkgname=snowflake-client
-pkgver=1.2.24
+pkgver=1.3.1
 pkgrel=1
 epoch=1
 pkgdesc="Snowflake Database command line client (snowsql)"
@@ -22,7 +22,7 @@ source=(
     "${pkgname}-${pkgver}.bash::https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/$(echo ${pkgver} | awk -F. '{print $1 "." $2}')/linux_x86_64/snowsql-${pkgver}-linux_x86_64.bash"
     "${pkgname}-${pkgver}.bash.sig::https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/$(echo ${pkgver} | awk -F. '{print $1 "." $2}')/linux_x86_64/snowsql-${pkgver}-linux_x86_64.bash.sig"
 )
-sha256sums=('e5c44e71a4fed99aedf23c9beaea0b21826bbc7fdc9f80090339d92588f3f806'
+sha256sums=('9a59dad2539ab8bda125d0fd923b6b3c4817dabfb5a7f923fd15825efd44f4f9'
             'SKIP')
 
 package() {
