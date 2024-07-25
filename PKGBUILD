@@ -15,7 +15,6 @@ conflicts=(${_pkgname})
 source=("git+${url}")
 md5sums=(SKIP)
 
-# https://wiki.archlinux.org/index.php/VCS_package_guidelines
 pkgver() {
   cd "${_pkgname}"
   ( set -o pipefail
@@ -24,7 +23,6 @@ pkgver() {
   )
 }
 
-# https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=loop
 build() {
   cd "${_pkgname}"
   if command -v rustup > /dev/null 2>&1; then
