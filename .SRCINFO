@@ -1,7 +1,7 @@
 pkgbase = ampinstmgr
 	pkgdesc = AMP (Application Management Panel) is a simple to use and easy to install control panel and management system for hosting game servers.
 	pkgver = 2.5.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cubecoders.com/AMP
 	arch = i686
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = ampinstmgr
 	source = http://repo.cubecoders.com/ampinstmgr-2.5.1.2.x86_64.tgz
 	source = sysusers.conf
 	source = tmpfiles.conf
-	sha256sums = f15a14e453848f955e58da4a28ffe197918e1c52e53849c1b457df97d9f038a5
+	sha256sums = eb776bb70ce5cb78c8dde729a57eba0e8c16b5a73ed6b00df3ec74473d8da42d
 	sha256sums = 54478340926d4f49dd784c7cffe8e191a0b5b1dc29b72694f02b40a9672d9237
 	sha256sums = 5c6a673550c8243556e2c770c8e85f5892cdee334d063e49aa398175b00fce11
 
