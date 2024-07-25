@@ -6,7 +6,7 @@ _binname=${pkgname%%-bin}
 DOMAIN="https://studio.mbed.com"
 INSTALLER_PATH="/installers/latest/linux/MbedStudio.sh"
 pkgver=1.4.6
-pkgrel=16
+pkgrel=17
 pkgdesc="free IDE and toolchain for Mbed OS 5 application and library development"
 arch=('x86_64')
 url="https://os.mbed.com/studio/"
@@ -23,16 +23,16 @@ prepare() {
     # find archive path
     ARCHIVE_PATH=$(grep -oP '(?<=ARCHIVE_PATH=).*' $_archivename-official-installer.sh)
 
-    # download archive
+    # download and extract archive
     msg2 "Downloading... $DOMAIN$ARCHIVE_PATH"
     curl -L -o "$_archivename.tar.gz" "$DOMAIN$ARCHIVE_PATH"
+    msg2 "Extracting..."
+    tar -xzf "$_archivename.tar.gz" && rm "$_archivename.tar.gz"
 }
 
 package() {
 	cd "$srcdir"
-	msg2 "Extracting..."
-
-    tar -xzf "$_archivename.tar.gz"
+	msg2 "Patching..."
 
 	INSTALL_PATH="$pkgdir/usr/share/$pkgname"
     TOOLS_PATH="$INSTALL_PATH/mbed-studio-tools"

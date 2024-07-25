@@ -1,7 +1,7 @@
 pkgbase = mbed-studio-bin
 	pkgdesc = free IDE and toolchain for Mbed OS 5 application and library development
 	pkgver = 1.4.6
-	pkgrel = 16
+	pkgrel = 17
 	url = https://os.mbed.com/studio/
 	arch = x86_64
 	license = COMMERCIAL
