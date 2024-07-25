@@ -1,0 +1,15 @@
+pkgbase = priv
+	pkgdesc = Simple dm-crypt wrapper, witten in bash
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/topongo/priv
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = cryptsetup
+	depends = zsh
+	backup = etc/priv.conf
+	source = git+https://github.com/topongo/priv
+	sha256sums = SKIP
+
+pkgname = priv
