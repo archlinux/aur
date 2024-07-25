@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=cosmic-applets-git
-pkgver=r880.e4a6f94
+pkgver=r1036.478bb3e
 pkgrel=1
 pkgdesc="WIP applets for COSMIC Panel"
 arch=('x86_64' 'aarch64')
@@ -29,12 +29,11 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
   cd "${pkgname%-git}"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   just vendor
 }
@@ -42,7 +41,6 @@ prepare() {
 build() {
   cd "${pkgname%-git}"
   CFLAGS+=" -ffat-lto-objects"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
 
   # use mold instead of lld to speed up build
