@@ -24,6 +24,6 @@ pkgbase = ffplayout
 	source = ffplayout-0.23.2::git+https://github.com/ffplayout/ffplayout.git#tag=v0.23.2
 	source = ffplayout.install
 	sha256sums = 4524fd7cb66c9160baccc65f452bf4c7a8ec0df6853b3a846848cc9495e035c9
-	sha256sums = b28bff93e4cd29e8e3d7af7bf4e077dea062e04675634e5304082947937dcb21
+	sha256sums = 853fae0033e43ea3a188508fe4cfe21a4bcb42dc9193b61ca5b9962fe60762d2
 
 pkgname = ffplayout
