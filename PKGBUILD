@@ -3,7 +3,7 @@
 pkgname=python-psycopg-c
 # source is shared with python-psycopg package, hence the weird naming
 _pkgname=psycopg
-pkgver=3.1.18
+pkgver=3.2.1
 pkgrel=1
 pkgdesc='psycopg C extension'
 arch=('x86_64')
@@ -12,14 +12,13 @@ license=('LGPL-3.0-only')
 depends=('postgresql-libs' 'python' 'python-psycopg')
 makedepends=(
   'cython'
-  'git'
   'python-build'
   'python-installer'
   'python-wheel'
   'python-setuptools'
 )
 source=("$_pkgname.tar.gz::https://github.com/psycopg/psycopg/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('35e5e4cb4e5355189b387fd17e1b51d4baf08f130cc5418f9f3cb58d6baf097953b4f6a7df31579a1d87e5269e110c4476d865fe12416e2fe62abbb52e0c141c')
+b2sums=('badea79ca48b99ae363ffa1d04de922add9456662e0909a2761f61f1a5d03e2afc01ee188814495029551d9521aff95caa7ef3123d96dfcfbb3c0d0a14597e3c')
 
 build(){
   cd "$_pkgname-$pkgver/psycopg_c"
