@@ -1,14 +1,14 @@
 # Maintainer:
 # Contributor: Stefan Tatschner <stefan@rumpelsepp.org>
 
-## useful links
+## links
 # https://pyinfra.com/
 # https://github.com/pyinfra-dev/pyinfra
 
 _pkgname="pyinfra"
 pkgname="$_pkgname"
-pkgver=2.9.2
-pkgrel=2
+pkgver=3.0.2
+pkgrel=1
 pkgdesc="automate infrastructure super fast at massive scale"
 url="https://github.com/pyinfra-dev/pyinfra"
 license=('MIT')
@@ -22,20 +22,19 @@ depends=(
   'python-gevent'
   'python-jinja'
   'python-paramiko'
-  'python-pywinrm'
   'python-yaml'
 )
 makedepends=(
   'python-build'
   'python-installer'
-  'python-wheel'
   'python-setuptools'
+  'python-wheel'
 )
 
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"https://github.com/pyinfra-dev/pyinfra/archive/v$pkgver.$_pkgext")
-sha256sums=('10a4d7698f60ff142541d7e5c8173147b3613489c720899f3b92e278f2e95789')
+sha256sums=('f004c5e13b751fc90d2df81bd2fb5f10b14f869b0ca488ed7bc8c355ecb9ef70')
 
 prepare() {
   cd "$_pkgsrc"
