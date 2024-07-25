@@ -1,6 +1,6 @@
 pkgbase = python-amaranth-boards-git
 	pkgdesc = Board definitions for Amaranth HDL
-	pkgver = r248.ad5a939
+	pkgver = r250.19b9732
 	pkgrel = 1
 	url = https://github.com/amaranth-lang/amaranth-boards
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = python-amaranth-boards-git
 	makedepends = python-setuptools-scm
 	makedepends = python-pdm-backend
 	depends = python-amaranth
-	provides = python-nmigen-boards=r248.ad5a939
-	provides = python-amaranth-boards=r248.ad5a939
+	provides = python-nmigen-boards=r250.19b9732
+	provides = python-amaranth-boards=r250.19b9732
 	conflicts = python-nmigen-boards
 	conflicts = python-amaranth-boards
 	replaces = python-nmigen-boards-git
