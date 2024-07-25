@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-session-git
 pkgver=r150.577a181
-pkgrel=2
+pkgrel=3
 pkgdesc="Session manager for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-session"
@@ -76,9 +76,8 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 
   # libexec > lib
   sed -i 's|libexec|lib|g' Justfile src/main.rs
@@ -86,7 +85,6 @@ prepare() {
 
 build() {
   cd "${pkgname%-git}"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
 
   # use mold instead of lld to speed up build
