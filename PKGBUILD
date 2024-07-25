@@ -2,45 +2,41 @@
 pkgname=paketkoll
 _pkgver=0.3.0
 pkgver=${_pkgver/-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast integrity check for files installed by pacman"
 arch=(x86_64 i686 armv7h aarch64)
 url="https://github.com/VorpalBlade/paketkoll"
 license=('MPL-2.0')
 makedepends=('cargo' 'cmake')
 options=('!lto') # LTO breaks with ring
-source=("$pkgname-$_pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-${_pkgver}.crate")
-sha256sums=('3110006caa43415b08ea14b747331568ac57b9a1cafa6a1fcc1f98ec89b1225c')
+source=("$pkgname-$_pkgver.tar.gz::https://github.com/VorpalBlade/$pkgname/archive/refs/tags/$pkgname-v${_pkgver}.tar.gz")
+sha256sums=('df6d969270d81f10d6068c1ae245d708890eb682e25ce7077f27797607bccf73')
+_unpacked_dir="$pkgname-$pkgname-v$_pkgver"
 
 prepare() {
-    cd "$pkgname-$_pkgver"
-    # Needed to ensure that we can find the latest man page and completions
-    rm -rf target/release/build/${pkgname}-*
+    cd "$_unpacked_dir"
     export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    cd "$pkgname-$_pkgver"
+    cd "$_unpacked_dir"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --no-default-features --features=arch_linux,json
+    make CARGO_FLAGS='--frozen --no-default-features --features=arch_linux,json -p paketkoll -p xtask'
 }
 
 check() {
-    cd "$pkgname-$_pkgver"
+    cd "$_unpacked_dir"
     export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --no-default-features --features=arch_linux,json
+    export CARGO_TARGET_DIR=target
+    make test CARGO_FLAGS='--frozen --no-default-features --features=arch_linux,json -p paketkoll -p xtask'
 }
 
 package() {
-    cd "$pkgname-$_pkgver"
-    local _cmd_name="target/release/${pkgname}"
-    # The directory has a random hash in it, so we need to find it
-    local _build_dir=$(ls -d target/release/build/${pkgname}-*/out)
-    install -Dm0755 -t "$pkgdir/usr/bin/" "$_cmd_name"
-    install -Dm644 -t "$pkgdir/usr/share/man/man1/" "${_build_dir}/${pkgname}"*".1"
-    install -Dm644 "${_build_dir}/_${pkgname}" "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
-    install -Dm644 "${_build_dir}/${pkgname}.bash" "$pkgdir/usr/share/bash-completion/completions/$pkgname"
-    install -Dm644 "${_build_dir}/${pkgname}.fish" "$pkgdir/usr/share/fish/vendor_completions.d/${pkgname}.fish"
+    cd "$_unpacked_dir"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    make install-paketkoll DESTDIR="$pkgdir" PREFIX=/usr CARGO_FLAGS='--frozen --no-default-features --features=arch_linux,json -p paketkoll -p xtask'
 }
