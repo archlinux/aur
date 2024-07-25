@@ -1,6 +1,6 @@
 # Maintainer: Ismael Gutiérrez González <frodo_gv@hotmail.com>
 pkgname=('rpfm-bin')
-pkgver=4.2.7
+pkgver=4.3.0
 pkgrel=1
 pkgdesc="A modding tool for modern (since Empire) Total War games. Precompiled version."
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('rpfm-git')
 _programname=('rpfm')
 
 source_x86_64=("$url/releases/download/v${pkgver}/rpfm-v${pkgver}-x86_64-unknown-linux-gnu.tar.zst")
-sha256sums_x86_64=('a71e3accba9a2f4b8d2c80af617796a355ea066d198eb61154a51a8572c3d092')
+sha256sums_x86_64=('a08b2e12f8cf6b00def02a905a4a27471caf171224d551adcfc9f7d6549d3031')
 
 package() {
 
