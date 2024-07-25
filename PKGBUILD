@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.10.arch1
+pkgver=6.10.1.arch1
 pkgrel=1
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
@@ -31,6 +31,10 @@ source=(
   $_url/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
   config         # the main kernel config file
 #  modprobed.db
+
+  # Experimental patch for AMDGPU issues
+  e3615bd198289f319172c428f20857accb46b830.patch
+  
   "choose-gcc-optimization.sh"
 
   "sys-kernel_arch-sources-g14-6.8+--more-uarches-for-kernel.patch"::"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/master/more-uarches-for-kernel-6.8-rc4%2B.patch"
@@ -76,11 +80,12 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('774698422ee54c5f1e704456f37c65c06b51b4e9a8b0866f34580d86fef8e226'
+sha256sums=('70109dfd1cd1c5f8a58eb1cb37122b9bf93f9c6a6280bf91019263c7339cf76b'
             'SKIP'
-            'fdb6552c43bcbc465f88c6ec2e01eb26791ac21f81687ca891ac1152503f7cad'
+            'e9cd87d9519f8a127af86f98efe1d7730135ec288f6d25d4fbd9910efbee9e83'
             'SKIP'
             '1eee90934450856b6d13dbd3edc3524e5700311ca2b8e7b9ed444d1ea94c4130'
+            'd9dec748b73ad8429cf4b27e5ba145a835adfac1215a61ae951d462161cadfce'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
             'f4e7fcd011f2691840d2c8c2361dca850a78ea33cc5c24d2e27c3e0294fd1dc5'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
@@ -104,8 +109,8 @@ sha256sums=('774698422ee54c5f1e704456f37c65c06b51b4e9a8b0866f34580d86fef8e226'
             'd673d034fbcd80426fd8d9c6af56537c5fe5b55fe49d74e313474d7fc285ecc1'
             'e41198b29cee4de7a5132d8df606f48c2d0f9c9076fe4230b00a33c7e0b22c71'
             '508f90cbe81a9a145cc540703470f1e6b5d21c7a7b9166d2ce6e56b401262b04'
-            '65e412f895c32cc22e02adc7cbcd3177a4715bc96211dd6f76b511913890909a'
-            '9f34ee42cd5817d19a7239540b21a06289c70f51f035fdedd20d6ea8ff3faa25'
+            '547b97a8c10709a1974ce68de1d7f5132ebe0f54f4485b4526b0a523b1410590'
+            'e53119b376875ba830110f622056f36e94abd953699ab2adc0e91926b3cfab19'
             '15e912a66e4bbce1cf0450f1dc6610653df29df8dd6d5426f9c1b039490436c8'
             '444f2d86de8c2177655b01596f939f99c2e7abfa8efad8a509e0a334f42dfa85')
 
