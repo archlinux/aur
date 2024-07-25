@@ -1,14 +1,14 @@
 pkgbase = tmplr-bin
 	pkgdesc = Quickly create new files from templates
 
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/atomicptr/tmplr
 	license = GPL-3.0-or-later
 	conflicts = tmplr
 	provides = tmplr
 	arch = x86_64
-	source_x86_64 = https://github.com/atomicptr/tmplr/releases/download/v0.3.0/tmplr_0.3.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 38aecd25a38cc1587e76bcd4df4d31c0151726b437f770411b7d6d9576ba5b66
+	source_x86_64 = https://github.com/atomicptr/tmplr/releases/download/v0.3.1/tmplr_0.3.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = daa8308d58bf73de6c162999d62cc51957d66532ca915b30c03a4adc4be8fc98
 	
 pkgname = tmplr-bin
