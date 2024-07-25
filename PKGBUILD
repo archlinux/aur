@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=xdg-desktop-portal-cosmic-git
-pkgver=r137.5f38044
+pkgver=r146.813352e
 pkgrel=1
 pkgdesc="A backend implementation for xdg-desktop-portal for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
@@ -27,19 +27,17 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
   cd "${pkgname%-git}"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   make vendor
 }
 
 build() {
   cd "${pkgname%-git}"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   make prefix='/usr' libexecdir='/usr/lib' VENDOR='1' all
 }
