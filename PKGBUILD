@@ -1,11 +1,10 @@
 # Maintainer: Arne Brücher <archlinux [at] arne-bruecher [dot] de>
 
 pkgname=pinokio-bin
-pkgver=2.0.4
+pkgver=2.1.14
 pkgrel=1
 pkgdesc='AI Browser.'
-arch=('x86_64')
-#arch=('x86_64' 'aarch64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/pinokiocomputer/pinokio'
 license=('MIT')
 depends=('gtk3' 'libnotify' 'libnss_nis' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'util-linux-libs' 'libsecret')
@@ -14,10 +13,10 @@ makedepends=('binutils' 'tar')
 provides=('pinokio')
 conflicts=('pinokio')
 source_x86_64=("$url/releases/download/$pkgver/Pinokio_${pkgver}_amd64.deb")
-#source_aarch64=("$url/releases/download/$pkgver/Pinokio_${pkgver}_arm64.deb")
+source_aarch64=("$url/releases/download/$pkgver/Pinokio_${pkgver}_arm64.deb")
 
-sha256sums_x86_64=('072e09f1e021bbf5be8a3794d10e6c6bf96fc2edcc820de39e7e6f19ea359754')
-#sha256sums_aarch64=('27707a3891df9c8f1e4c18643ebd58895d5f1492263a9bfa74124b64a2908945')
+sha256sums_x86_64=('3f235d466e2568c465523fd827c0f6ecdd0bdf4c212cc44bf28e2317ca00020a')
+sha256sums_aarch64=('ba2d4ce08a5eb8f3979f2a971610e99c19af30b2290e2d99d7b55e2673b8983b')
 
 prepare() {
 #        ar x "Pinokio_${pkgver}_$CARCH.deb"
