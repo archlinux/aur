@@ -2,7 +2,7 @@
 
 pkgname=python-cynthion
 _gitpkgname=cynthion
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Python package and utilities for the Great Scott Gadgets Cynthion USB Test Instrument'
 arch=('any')
@@ -30,6 +30,7 @@ makedepends=(
   'python-setuptools'
   'python-sphinx'
   'python-sphinx_rtd_theme'
+  'python-sphinx-inline-tabs'
   'python-wheel'
 )
 optdepends=(
@@ -40,7 +41,7 @@ source=(
   "${_gitpkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
 )
 
-sha512sums=('31388447932766ac39af7a8e11b08dfb645ba5ad15c1082ef845aa4843e424904bea4eddb839c63d2e6686065de90155d5bd3924ad51fb5ec2acdbb7902eb79a')
+sha512sums=('3637994b29ae9e21364ff785e2a5646799289fd0634a8914c3f8f58c2eec2c85d0e0fbb6f2bd955f39dc04326f4c29a3d4e476b37f05da0d796fcfd743222fef')
 
 prepare() {
   cd "${_gitpkgname}-${pkgver}"
@@ -75,7 +76,7 @@ check() {
 
   echo >&2 'Running unit tests'
   PYTHONPATH="${PWD}/tmp_install/$(_site_packages)" \
-    python -m unittest discover -v cynthion/python
+    python -m unittest discover -v cynthion/python/tests
 }
 
 package() {
