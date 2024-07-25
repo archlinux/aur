@@ -3,7 +3,7 @@
 
 pkgname=sleepcount
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="just as a simple 'sleep' CLI util but with options for countdown and HH:MM:SS target time"
 arch=('any')
 url="https://github.com/actionless/sleepcount"
@@ -11,9 +11,17 @@ license=('GPL3')
 source=(
 	"$pkgname-$pkgver.tar.gz"::https://github.com/actionless/sleepcount/archive/"$pkgver".tar.gz
 )
-md5sums=('4f94a42539e456b80e2f67b6cf844d0d')
+md5sums=('54f31403b84cc5e48f6fe2da3a2f4fdd')
 depends=(
 	'python'
+)
+makedepends=(
+	'python-wheel'
+	'python-hatchling'
+	'python-build'
+	'python-installer'
+	'python-setuptools'  # i think it normally should be required by python-pep517 which required by python-build/installer
+	'python-markdown-it-py'
 )
 optdepends=(
 )
