@@ -51,11 +51,10 @@ release_job:
     - git config --global user.email "zomundo@gmail.com"
     - git config --global user.name "Mundo"
     - git remote add aur ssh://aur@aur.archlinux.org/taskade-appimage.git
-    - git fetch aur
+    - git fetch aur master
     - git branch --list
     - git remote -v
     - git checkout -b master
-    - git pull aur master
     - pk_name=$(grep -Po "^pkgname=\K.*" PKGBUILD)
     - pk_ver=$(grep -Po "^pkgver=\K.*" PKGBUILD)
     - pk_rel=$(grep -Po "^pkgrel=\K.*" PKGBUILD)
