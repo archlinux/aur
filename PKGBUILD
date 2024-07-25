@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark at proton dot me>
 # Co-Maintainer: soloturn <soloturn@gmail.com>
 pkgname=cosmic-edit-git
-pkgver=r403.07115fd
+pkgver=r457.33d6522
 pkgrel=1
 pkgdesc="Text editor for the COSMIC desktop"
 arch=('x86_64')
@@ -25,12 +25,11 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
   cd "${pkgname%-git}"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   just vendor
 }
@@ -38,7 +37,6 @@ prepare() {
 build() {
   cd "${pkgname%-git}"
   CFLAGS+=" -ffat-lto-objects"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
 
   # use mold instead of lld to speed up build
