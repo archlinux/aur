@@ -1,8 +1,8 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=gcad3d-bin
-pkgver=2.60.04
-pkgrel=5
+pkgver=2.60.06
+pkgrel=1
 pkgdesc="Parametric 3D CAD with viewer, import, export, NC"
 arch=(x86_64)
 url="https://www.gcad3d.org"
@@ -26,7 +26,7 @@ provides=(${pkgname%-bin})
 conflicts=(${pkgname%-bin})
 options=(!debug)
 source=(${pkgname%-bin}-$pkgver.deb::$url/download/gCAD3D-$pkgver-bin-amd64.deb)
-b2sums=('502f8501faf4464fa303a03cba90f07c6cb1f4ae4e56e8cdae0cc5b05f6b6aa6b869864942e1b6fb86302438af6fd0f64e9c7a7f1f96ede2ba393ffc2d21f89b')
+b2sums=('563bc2b34b16fffbdbf410d86ecee9b59e5dd60fce871505eb96c80aa931742619374eb3828dc0d3075fb2f44e3f6a369fa054a5d3cfb03860720afb372d2ebb')
 
 package() {
   bsdtar -xf "$srcdir"/data.tar.xz -C "$pkgdir"
