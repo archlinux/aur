@@ -17,19 +17,17 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/shell-shortcuts"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
   cd "$srcdir/shell-shortcuts"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd "$srcdir/shell-shortcuts"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   make prefix=/usr
 }
