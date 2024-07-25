@@ -1,6 +1,6 @@
 pkgbase = scamper
 	pkgdesc = a tool that actively probes the Internet in order to analyze topology and performance
-	pkgver = 20240716
+	pkgver = 20240725
 	pkgrel = 1
 	url = https://www.caida.org/catalog/software/scamper/
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = scamper
 	depends = zlib
 	depends = bzip2
 	depends = xz
-	source = https://www.caida.org/catalog/software/scamper/code/scamper-cvs-20240716.tar.gz
-	sha256sums = 16dcb59cffeef7b5a6f71b7accaf420add464d190d86b36414507f9ecf4f9b20
+	source = https://www.caida.org/catalog/software/scamper/code/scamper-cvs-20240725.tar.gz
+	sha256sums = a702a17e454193465b2f8cb9608521f8bcc2b0900ca6276cf6b6b0cc8033ef07
 
 pkgname = scamper
