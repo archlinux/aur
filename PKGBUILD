@@ -1,62 +1,36 @@
 # Maintainer: Felipe Alfonso Gonzalez <f.alfonso@res-ear.ch>
 pkgname=profilex
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
-pkgdesc="ProFileX is a Linux file management tool with a Qt-based GUI."
+pkgdesc="ProFileX is a Linux file management tool with a GTK3-based GUI."
 arch=('x86_64')
 url="https://github.com/felipealfonsog/ProFileX"
-license=('BSD')
-depends=('gcc' 'qt5-base')
-
+license=('BSD-3-Clause')
+depends=('gtk3' 'gcc')
 source=("https://github.com/felipealfonsog/ProFileX/archive/refs/tags/v.${pkgver}.tar.gz")
+sha256sums=('7d6039c99c57dbf40f0c586f870f0951cb21a3d64d58ed2cb58576a65ca71864')
 
-sha256sums=('ff2e32dbcd41de33b4f405b32053b7d9ffc48db2b2178e837f8e042cdcaa6a73')
+prepare() {
+  tar xf "v.${pkgver}.tar.gz" -C "$srcdir" --strip-components=1
+}
 
 build() {
-  cd "$srcdir/ProFileX-v.${pkgver}"
+  cd "${srcdir}/ProFileX-v.${pkgver}"
+  gcc `pkg-config --cflags gtk+-3.0` -o profilex src/main.c src/file_manager.c `pkg-config --libs gtk+-3.0`
 
-  # Run qmake to generate Makefile based on proFileX.pro
-  qmake proFileX.pro
-
-  # Compile the project using make
-  make
 }
 
 package() {
-  cd "$srcdir/ProFileX-v.${pkgver}"
+  cd "${srcdir}/ProFileX-v.${pkgver}"
 
-  # Ensure the build directory exists and change into it
-  mkdir -p build
-  cd build || exit 1
+  # Install the binary to /usr/local/bin
+  install -Dm755 ProFileX "${pkgdir}/usr/local/bin/profilex"
 
-  # Run qmake to generate Makefile based on proFileX.pro
-  qmake ../proFileX.pro
+  # Install the icon
+  install -Dm644 "${srcdir}/ProFileX-v.${pkgver}/src/profilex-iconlogo.png" "${pkgdir}/usr/share/pixmaps/profilex.png"
 
-  # Compile the project using make
-  make
-
-  # Create necessary directories for the package structure
-  mkdir -p "$pkgdir/usr/bin"
-  mkdir -p "$pkgdir/usr/share/applications"
-  mkdir -p "$pkgdir/usr/share/doc/$pkgname"
-
-  # Install the executable to the package directory
-  install -Dm755 proFileX "$pkgdir/usr/bin/proFileX"
-
-  # Install license and README
-  install -Dm644 "$srcdir/ProFileX-v.${pkgver}/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
-
-  # Create desktop entry
-  cat <<EOF > "$pkgdir/usr/share/applications/proFileX.desktop"
-[Desktop Entry]
-Version=1.0
-Type=Application
-Name=ProFileX
-Comment=A Linux file management tool with a Qt-based GUI
-Exec=proFileX
-Icon=applications-utilities
-Terminal=false
-Categories=Utility;
-EOF
+  # Install the .desktop file
+  install -Dm644 "${srcdir}/ProFileX-v.${pkgver}/src/profilex.desktop" "${pkgdir}/usr/share/applications/profilex.desktop"
 }
+
 
