@@ -1,6 +1,6 @@
 pkgbase = python-packageurl
 	pkgdesc = A purl aka. Package URL parser and builder
-	pkgver = 0.15.4
+	pkgver = 0.15.6
 	pkgrel = 1
 	url = https://github.com/package-url/packageurl-python
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-packageurl
 	conflicts = python-packageurl-git
 	options = !debug
 	options = !strip
-	source = packageurl-python-0.15.4.tar.gz::https://github.com/package-url/packageurl-python/archive/v0.15.4.tar.gz
-	sha512sums = 2cf357fb53dca9a5bb1e130f0cd3301b62c2b77033c8ac7d66407a1881914d79fb732300c6ea1b77905929186006be918cfd74a3406e9bacc6597a2f5c02c2ce
+	source = packageurl-python-0.15.6.tar.gz::https://github.com/package-url/packageurl-python/archive/v0.15.6.tar.gz
+	sha512sums = e34ac80f6608e5d4bb8e7fbf1a9ac705c83f656d62ee3f3c2b237b8fa455e96ed1dd1c653f84b8a1d0a55e19143f502ebb20198a38db8a043c092fa52f8670a2
 
 pkgname = python-packageurl
