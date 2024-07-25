@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-panel-git
-pkgver=r417.4496788
+pkgver=r437.53fd47a
 pkgrel=1
 pkgdesc="XDG Shell Wrapper Panel for COSMIC"
 arch=('x86_64' 'aarch64')
@@ -29,8 +29,8 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
-#  export RUSTUP_TOOLCHAIN=stable
-#  just vendor
+  export RUSTUP_TOOLCHAIN=stable
+  just vendor
 }
 
 build() {
