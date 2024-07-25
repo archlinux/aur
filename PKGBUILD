@@ -18,7 +18,7 @@ source=(
   "https://downloads.sourceforge.net/project/canvasdraw/${pkgver}/Docs%20and%20Sources/cd-${pkgver}_Docs.pdf"
   fix-build-gcc-14.patch
 )
-md5sums=('e53cf5f6f9048cc6daad92dd910511a3'
+md5sums=('7b7bc2cd0d0b598e957aaf16e8bc6884'
          'dcad37c50e5832150ef3382d12f3182d'
          'c8abe5349f426228f9219ceb134e84ac'
          '370882f1bc46c3e2bf9713820c2b5880')
