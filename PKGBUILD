@@ -8,9 +8,8 @@ _srcname=SPIRV-LLVM-Translator
 pkgname=lib32-spirv-llvm-translator-minimal-git
 pkgdesc="Tool and a library for bi-directional translation between SPIR-V and LLVM IR, trunk version"
 epoch=1
-pkgver=r1978.262395d
+pkgver=r2097.dad1f0e
 pkgrel=1
-_major_llvm_ver=19
 arch=('x86_64')
 url="https://github.com/KhronosGroup/SPIRV-LLVM-Translator"
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -22,7 +21,7 @@ source=("git+$url.git"
 )
 md5sums=('SKIP')
 sha512sums=('SKIP')
-
+options=(!lto !debug)
 
 pkgver() {
     cd $_srcname
@@ -33,11 +32,12 @@ build() {
     
     export PKG_CONFIG=i686-pc-linux-gnu-pkg-config
     
+    local _BASE_LLVM_VERSION=$(echo $(pacman -Q lib32-llvm-minimal-git) | cut -d' ' -f2 |  cut -d. -f1)
     cmake \
         -B _build \
         -S "$srcdir"/$_srcname  \
         -G "Unix Makefiles" \
-        -D BASE_LLVM_VERSION=$_major_llvm_ver \
+        -D BASE_LLVM_VERSION=$_BASE_LLVM_VERSION \
         -D CMAKE_BUILD_TYPE=Release \
         -D CMAKE_CXX_FLAGS:STRING=-m32 \
         -D CMAKE_C_FLAGS:STRING=-m32 \
