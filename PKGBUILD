@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-greeter-git
-pkgver=r122.59e2eaa
+pkgver=r124.acc30ac
 pkgrel=1
 pkgdesc="libcosmic greeter for greetd, which can be run inside cosmic-comp"
 arch=('x86_64' 'aarch64')
@@ -29,12 +29,11 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
   cd "${pkgname%-git}"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   just vendor
 
@@ -46,7 +45,6 @@ prepare() {
 
 build() {
   cd "${pkgname%-git}"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
 
   # use mold instead of lld to speed up build
