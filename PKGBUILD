@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=brisqi-bin
 _pkgname=Brisqi
-pkgver=0.11.2
+pkgver=0.11.3
 _electronversion=31
 pkgrel=1
 pkgdesc="Offline-first personal Kanban app."
@@ -19,8 +19,8 @@ source=(
     "LICENSE-${pkgver}.html::${url}/terms"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('8e27337450d2ef0db867fbc97ddbe09942e61d9fba2d09d0f031d491eaac580a'
-            'ae5fbd04a3f16d5e1576e06a2cb34e39b6c8e83ff96725ab9d85374b2cd7139d'
+sha256sums=('a217614f4d1c7dd05df42e9501ad7231cee7086d94a79f48eb4b150f2412d51b'
+            '586cff8c54dc6800f163cd031e103276bf2d333ad6955546577c36835524cf2d'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
