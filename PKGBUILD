@@ -2,7 +2,7 @@
 
 pkgname=python-pyfwup
 _gitpkgname=pyfwup
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Python Firmware Upgrader, a DFU (and similar) utility for Python'
 arch=('any')
@@ -25,9 +25,7 @@ source=(
   "${_gitpkgname}-${pkgver}.tar.gz::https://github.com/greatscottgadgets/pyfwup/archive/${pkgver}.tar.gz"
 )
 
-sha512sums=(
-  'c96a771f21d8d55a95bcf842658961f1ad68ee65c2eff3f46450ae40f6055f43711d1b2e90f8a98d7049e0fe7121146adc54efcade332c75ff427ef7babf7397'
-)
+sha512sums=('23c2d8f20787080e2a5a00fa912948aa68f7383ede3743624909cc6ab2a1528c80b94e0d4411aee9e012a8b50ddc9e8e632e51c71121459756109afddf9af02b')
 
 prepare() {
   cd "${_gitpkgname}-${pkgver}"
