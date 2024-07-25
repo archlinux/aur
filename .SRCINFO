@@ -1,6 +1,6 @@
 pkgbase = r-rio
 	pkgdesc = A Swiss-Army Knife for Data I/O
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=rio
 	arch = any
@@ -18,6 +18,7 @@ pkgbase = r-rio
 	depends = r-data.table
 	depends = r-haven
 	depends = r-lifecycle
+	depends = r-nanoparquet
 	depends = r-r.utils
 	depends = r-readr
 	depends = r-readxl
@@ -41,8 +42,8 @@ pkgbase = r-rio
 	optdepends = r-withr
 	optdepends = r-xml2
 	optdepends = r-yaml
-	source = https://cran.r-project.org/src/contrib/rio_1.1.1.tar.gz
-	md5sums = 5ac14b554fdce927b28e120c2a0caed8
-	b2sums = 8a8b3aca439d061096babd54031f4dc6d937b9914631db6f38cf65516370ce2855097f268658ea391ce9f7cb34b4b87f37d5d0fd578c83c99be91e5fa5bcb4cb
+	source = https://cran.r-project.org/src/contrib/rio_1.2.0.tar.gz
+	md5sums = ffe623ea813964f3666f805fbf45b7ca
+	b2sums = 56344c465b0b5476607495e8ad38e3c2beeec65df1afdeba363066d4839a2575811a8c9d0781cc665f21801a81eefbd3e15120287af9dbc1f8142df98074f829
 
 pkgname = r-rio

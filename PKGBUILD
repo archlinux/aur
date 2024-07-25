@@ -4,7 +4,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _pkgname=rio
-_pkgver=1.1.1
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,6 +17,7 @@ depends=(
   r-data.table
   r-haven
   r-lifecycle
+  r-nanoparquet
   r-r.utils
   r-readr
   r-readxl
@@ -55,8 +56,8 @@ optdepends=(
   r-yaml
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5ac14b554fdce927b28e120c2a0caed8')
-b2sums=('8a8b3aca439d061096babd54031f4dc6d937b9914631db6f38cf65516370ce2855097f268658ea391ce9f7cb34b4b87f37d5d0fd578c83c99be91e5fa5bcb4cb')
+md5sums=('ffe623ea813964f3666f805fbf45b7ca')
+b2sums=('56344c465b0b5476607495e8ad38e3c2beeec65df1afdeba363066d4839a2575811a8c9d0781cc665f21801a81eefbd3e15120287af9dbc1f8142df98074f829')
 
 build() {
   mkdir build
