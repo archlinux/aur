@@ -4,7 +4,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=mingw-w64-orc
-pkgver=0.4.38
+pkgver=0.4.39
 pkgrel=1
 pkgdesc="Optimized Inner Loop Runtime Compiler (mingw-w64)"
 arch=(any)
@@ -23,15 +23,15 @@ options=(
   '!libtool'
   staticlibs
 )
-#source=(https://gstreamer.freedesktop.org/data/src/orc/orc-${pkgver}.tar.xz{,.asc}
-_commit=f071d3a14f28c7c5acff5ff0b5a67ecd3f785ef3  # tags/0.4.38^0
-source=("git+https://gitlab.freedesktop.org/gstreamer/orc.git#commit=$_commit"
+source=("git+https://gitlab.freedesktop.org/gstreamer/orc.git?signed#tag=$pkgver"
         meson_i686-w64-mingw32
         meson_x86_64-w64-mingw32)
-validpgpkeys=('7F4BC7CC3CA06F97336BBFEB0668CC1486C2D7B5') #Sebastian Dröge
-b2sums=('SKIP'
+b2sums=('cd93b7a29c0240d299752338f7e87569cfb4f5b7e9dfca40005d1e4c6509236ac2a499050db01d94004b7061faed5b78dd8b4f3d358ffe90fbf65964d38e5c4d'
         '982c4e5403159748625fccdea5754e10c7f191e04058f76378271a63c5ff5aa7d093b22a004382e47837412e836ee2278e762c98aaceb47afe690e8e48ea8c43'
         '96fe847dc06e9dd81ed0d28200275ef0ee8873666236b732c9933202e19d81f37625a2b7ca59056531877e9d4542a8faa34dba2f0bdcd87ac74b6c1360c3a4b7')
+validpgpkeys=(
+  D637032E45B8C6585B9456565D2EEE6F6F349D7C # Tim-Philipp Müller <tim@centricular.com>
+)
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
@@ -66,8 +66,8 @@ package() {
     #cd "${srcdir}/orc-$pkgver/build-${_arch}"
     cd "${srcdir}/orc/build-${_arch}"
     DESTDIR="$pkgdir" ninja -C . install
-    #install -Dm644 "${srcdir}/orc-$pkgver/COPYING" "$pkgdir/usr/${_arch}/share/licenses/orc/COPYING"
-    install -Dm644 "${srcdir}/orc/COPYING" "$pkgdir/usr/${_arch}/share/licenses/orc/COPYING"
+    #install -Dm644 "${srcdir}/orc-$pkgver/COPYING" "$pkgdir/usr/share/licenses/mingw-w64-orc/COPYING"
+    install -Dm644 "${srcdir}/orc/COPYING" "$pkgdir/usr//share/licenses/mingw-w64-orc/COPYING"
 
     #${_arch}-strip -s ${pkgdir}/usr/${_arch}/bin/*.exe
     #${_arch}-strip -x -g ${pkgdir}/usr/${_arch}/bin/*.dll
