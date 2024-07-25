@@ -1,6 +1,6 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 pkgname=dtk6core-git
-pkgver=6.0.4.r0.g1385f4d
+pkgver=6.0.18.r0.g3561f0a
 pkgrel=1
 sourcename=dtk6core
 sourcetars=("$sourcename"_"$pkgver".tar.xz)
@@ -9,7 +9,7 @@ pkgdesc='DTK6 core modules'
 arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeepin/dtk6core"
 license=('LGPL3')
-depends=('deepin-desktop-base' 'gcc-libs' 'qt6-base' 'dtkcommon' 'lshw' 'uchardet' 'icu' 'libsystemd' 'spdlog')
+depends=('deepin-desktop-base' 'gcc-libs' 'qt6-base' 'dtkcommon' 'dtk6log' 'lshw' 'uchardet' 'icu' 'libsystemd' 'spdlog')
 makedepends=('git' 'qt6-tools' 'ninja' 'cmake' 'doxygen' 'gcc' 'pkg-config')
 conflicts=('dtk6core')
 provides=('dtk6core')
