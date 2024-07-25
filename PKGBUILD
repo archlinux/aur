@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=ccImpute
-_pkgver=1.6.0
+_pkgver=1.6.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -10,10 +10,13 @@ arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('GPL-3.0-only')
 depends=(
+  blas
   r-biocparallel
-  r-matrixstats
+  r-irlba
   r-rcpp
-  r-simlr
+  r-singlecellexperiment
+  r-sparsematrixstats
+  r-summarizedexperiment
 )
 makedepends=(
   r-rcppeigen
@@ -29,12 +32,12 @@ optdepends=(
   r-scater
   r-scrnaseq
   r-sessioninfo
-  r-singlecellexperiment
+  r-splatter
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4a1aaf88d86cc8ea162bddef199b41fc')
-b2sums=('e4a4d5b760407947e8f9cc6357b60cefc610109987a51aed2f62e5ed3e11117c2b783bd27378207c4eb183c1bce00e245864dee8b818b44388f3d250a734034a')
+md5sums=('31c69f9fca734f88c995ad2ce79c053a')
+b2sums=('707f3a1e235e58df9cc010988d9a37ef78c7ce42360e5975a90db194c95fa89792ab0ed50d12d643cb6489a7815b872aff6151d6f6277b513e43ae5187f3ca74')
 
 build() {
   mkdir build
