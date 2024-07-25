@@ -17,7 +17,7 @@ pkgbase = klaus-bin
 	depends = tar
 	depends = papirus-icon-theme
 	optdepends = ocs-url
-	source = klaus-bin-14.4.zip::https://github.com/dmaliog/kLausqt//releases/download/14.4/klaus-14.4-2024-07-25-linux64.zip
+	source = klaus-bin-14.4.zip::https://github.com/dmaliog/kLausqt//releases/download/14.4/klaus-14.4-2024-07-26-linux64.zip
 	sha256sums = 6aea588bc4763f2b2b55796078763325f0ec3f3371c812165baf45f10f378666
 
 pkgname = klaus-bin
