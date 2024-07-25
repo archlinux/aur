@@ -1,6 +1,6 @@
 pkgbase = cosmic-tweaks-git
 	pkgdesc = A tweaking tool for the COSMIC desktop.
-	pkgver = r34.34ba854
+	pkgver = r36.199cf69
 	pkgrel = 1
 	url = https://github.com/edfloreshz/cosmic-tweaks
 	arch = x86_64
