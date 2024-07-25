@@ -3,7 +3,7 @@ pkgname=ecency-surfer-bin
 _pkgname=Ecency
 pkgver=3.0.35
 _electronversion=25
-pkgrel=8
+pkgrel=9
 pkgdesc="Immutable, decentralized, uncensored, rewarding communities built, owned and operated by its users"
 arch=('x86_64')
 url="https://ecency.com/"
@@ -21,7 +21,7 @@ source=(
 )
 sha256sums=('95d6ef6078caef72715ce3e248d2e0be8dfbef9d996c3016f1f99902f7159879'
             '4f2d94ac09ba20ec3861cf9fbb2b52ee17592b64b6fb812f04d7b71417da494d'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
