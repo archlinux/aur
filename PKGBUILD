@@ -58,7 +58,7 @@ prepare() {
 
   pushd wireguard/libwg
   export GOPATH="$srcdir/gopath"
-  mkdir -p "../../build/lib/$(rustc -vV | sed -n 's/host: //p')"
+  mkdir -p "../../build/lib/$CARCH-unknown-linux-gnu"
   go mod download -x
   popd
 
@@ -89,7 +89,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -v -o "../../build/lib/$(rustc -vV | sed -n 's/host: //p')"/libwg.a -buildmode c-archive
+  go build -v -o "../../build/lib/$CARCH-unknown-linux-gnu"/libwg.a -buildmode c-archive
   popd
 
   # Clean module cache for makepkg -C
