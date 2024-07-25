@@ -47,12 +47,12 @@ release_job:
     - git branch --list
     - git remote -v
     - git checkout -b master
-    - sed -i "s/^pkgver=.*/pkgver=${pkgver}/" PKGBUILD
-    - git add PKGBUILD
     - pk_name=$(grep -Po "^pkgname=\K.*" PKGBUILD)
     - pk_ver=$(grep -Po "^pkgver=\K.*" PKGBUILD)
     - pk_rel=$(grep -Po "^pkgrel=\K.*" PKGBUILD)
     - commit_msg="update to $pk_name ver $pk_ver, rel version $pk_rel"
+    - git add PKGBUILD .SRCINFO
+    - git commit -m "$commit_msg"
     - git push aur master
 
   dependencies:
