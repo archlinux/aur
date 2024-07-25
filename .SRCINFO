@@ -1,0 +1,13 @@
+pkgbase = cpub-git
+	pkgdesc = ncurses based epub reader for the command line
+	pkgver = r6.e6582ad
+	pkgrel = 1
+	url = https://github.com/udiboy1209/cpub
+	arch = any
+	license = unknown
+	depends = python-bs4
+	provides = cpub
+	source = git+https://github.com/udiboy1209/cpub
+	sha512sums = SKIP
+
+pkgname = cpub-git
