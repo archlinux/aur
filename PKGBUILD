@@ -7,7 +7,7 @@
 #
 pkgname="ogmrip"
 pkgver="1.0.1"
-pkgrel="7"
+pkgrel="8"
 pkgdesc="Libraries and GTK2 interface for DVD ripping using mencoder"
 arch=('x86_64')
 url="http://ogmrip.sourceforge.net/"
