@@ -2,20 +2,21 @@
 # Contributor: Lionel Hernou <lionel.hernou@gmail.com>
 
 pkgname=netradiant-custom
-pkgver=20240714
+pkgver=20240723
 pkgrel=1
 pkgdesc="The open-source, cross-platform level editor for id Tech based games (NetRadiant fork)"
-url="https://garux.github.io/NRC/"
-depends=('gcc-libs' 'glib2' 'glibc' 'libjpeg-turbo' 'libpng' 'libxml2' 'qt5-base' 'zlib')
-optdepends=('xorg-xwayland: required to use the application on a Wayland session')
-makedepends=('git' 'svn' 'unzip' 'wget')
-provides=('h2data_nrc' 'mbspc_nrc' 'q2map_nrc' 'q3map2_nrc' 'qdata3_nrc')
-source=('git+https://github.com/Garux/netradiant-custom.git#commit=7ee5bfdad8baf3b3d2748e36393415a210ca8a00'
-'netradiant-custom.desktop')
-sha256sums=('SKIP'
-'ec1256d5eb657b1e17ebb4ce1280598077b9c350408f9d778f41d5a30b3924e4')
-license=('Apache-2.0' 'BSD-3-Clause' 'GPL-2.0-or-later' 'LGPL-2.1-or-later' 'Zlib' 'LicenseRef-custom')
 arch=('x86_64')
+url="https://garux.github.io/NRC/"
+license=('Apache-2.0' 'BSD-3-Clause' 'GPL-2.0-or-later' 'LGPL-2.1-or-later' 'Zlib' 'LicenseRef-custom')
+depends=('gcc-libs' 'glib2' 'glibc' 'libjpeg-turbo' 'libpng' 'libxml2' 'qt5-base' 'zlib')
+makedepends=('git' 'unzip' 'wget')
+optdepends=('xorg-xwayland: required to use the application on a Wayland session'
+			'subversion: optional makedepend to fetch some gamepacks when using alternative DOWNLOAD_GAMEPACKS values')
+provides=('h2data' 'mbspc' 'q2map' 'q3map2' 'qdata3')
+source=('git+https://github.com/Garux/netradiant-custom.git#commit=7ff91956b280f5c2def0e3865e48bfc58461d0a9'
+		'netradiant-custom.desktop')
+sha256sums=('SKIP'
+			'c9f21fbacdd2024e417234e986790fca67daeb391a91b590abb68b440e0df648')
 
 build () {
 	cd "${srcdir}/${pkgname}/"
@@ -24,6 +25,7 @@ build () {
 	# "free" (free gamepacks only, downloaded from different locations)
 	# "all" (free & proprietary gamepacks, downloaded from different locations)
 	# "allinone" (free & proprietary gamepacks downloaded from a single archive, provided by the NRC maintainer)
+	# The "subversion" optdepend is needed when using the first 2 values
 	make \
 	 RADIANT_ABOUTMSG="NetRadiant-custom ${pkgver}" \
 	 DOWNLOAD_GAMEPACKS=allinone

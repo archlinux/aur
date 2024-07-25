@@ -1,6 +1,6 @@
 pkgbase = netradiant-custom
 	pkgdesc = The open-source, cross-platform level editor for id Tech based games (NetRadiant fork)
-	pkgver = 20240714
+	pkgver = 20240723
 	pkgrel = 1
 	url = https://garux.github.io/NRC/
 	arch = x86_64
@@ -11,7 +11,6 @@ pkgbase = netradiant-custom
 	license = Zlib
 	license = LicenseRef-custom
 	makedepends = git
-	makedepends = svn
 	makedepends = unzip
 	makedepends = wget
 	depends = gcc-libs
@@ -23,14 +22,15 @@ pkgbase = netradiant-custom
 	depends = qt5-base
 	depends = zlib
 	optdepends = xorg-xwayland: required to use the application on a Wayland session
-	provides = h2data_nrc
-	provides = mbspc_nrc
-	provides = q2map_nrc
-	provides = q3map2_nrc
-	provides = qdata3_nrc
-	source = git+https://github.com/Garux/netradiant-custom.git#commit=7ee5bfdad8baf3b3d2748e36393415a210ca8a00
+	optdepends = subversion: optional makedepend to fetch some gamepacks when using alternative DOWNLOAD_GAMEPACKS values
+	provides = h2data
+	provides = mbspc
+	provides = q2map
+	provides = q3map2
+	provides = qdata3
+	source = git+https://github.com/Garux/netradiant-custom.git#commit=7ff91956b280f5c2def0e3865e48bfc58461d0a9
 	source = netradiant-custom.desktop
 	sha256sums = SKIP
-	sha256sums = ec1256d5eb657b1e17ebb4ce1280598077b9c350408f9d778f41d5a30b3924e4
+	sha256sums = c9f21fbacdd2024e417234e986790fca67daeb391a91b590abb68b440e0df648
 
 pkgname = netradiant-custom
