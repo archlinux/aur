@@ -1,6 +1,6 @@
 pkgbase = electron31
 	pkgdesc = Build cross platform desktop apps with web technologies
-	pkgver = 31.2.1
+	pkgver = 31.3.0
 	pkgrel = 1
 	url = https://electronjs.org
 	arch = x86_64
@@ -79,7 +79,7 @@ pkgbase = electron31
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)
 	options = !lto
-	source = git+https://github.com/electron/electron.git#tag=v31.2.1
+	source = git+https://github.com/electron/electron.git#tag=v31.3.0
 	source = https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/126/chromium-patches-126.tar.bz2
 	source = allow-ANGLEImplementation-kVulkan.patch
 	source = compiler-rt-adjust-paths.patch
@@ -91,9 +91,9 @@ pkgbase = electron31
 	source = jinja-python-3.10.patch
 	source = use-system-libraries-in-node.patch
 	source = makepkg-source-roller.py
-	source = chromium-mirror::git+https://github.com/chromium/chromium.git#tag=126.0.6478.127
+	source = chromium-mirror::git+https://github.com/chromium/chromium.git#tag=126.0.6478.183
 	source = chromium-mirror_third_party_nan::git+https://github.com/nodejs/nan.git#commit=e14bdcd1f72d62bca1d541b66da43130384ec213
-	source = chromium-mirror_third_party_electron_node::git+https://github.com/nodejs/node.git#tag=v20.15.0
+	source = chromium-mirror_third_party_electron_node::git+https://github.com/nodejs/node.git#tag=v20.15.1
 	source = chromium-mirror_third_party_engflow-reclient-configs::git+https://github.com/EngFlow/reclient-configs.git#commit=955335c30a752e9ef7bff375baab5e0819b6c00d
 	source = chromium-mirror_third_party_clang-format_script::git+https://chromium.googlesource.com/external/github.com/llvm/llvm-project/clang/tools/clang-format.git#commit=3c0acd2d4e73dd911309d9e970ba09d58bf23a62
 	source = chromium-mirror_third_party_libc++_src::git+https://chromium.googlesource.com/external/github.com/llvm/llvm-project/libcxx.git#commit=e3b94d0e5b86883fd77696bf10dc33ba250ba99b
@@ -186,7 +186,7 @@ pkgbase = electron31
 	source = chromium-mirror_third_party_openh264_src::git+https://chromium.googlesource.com/external/github.com/cisco/openh264.git#commit=09a4f3ec842a8932341b195c5b01e141c8a16eb7
 	source = chromium-mirror_third_party_openscreen_src::git+https://chromium.googlesource.com/openscreen.git#commit=97d0a7fd9e51669930f8376e069599acc1c2de2e
 	source = chromium-mirror_third_party_openxr_src::git+https://chromium.googlesource.com/external/github.com/KhronosGroup/OpenXR-SDK.git#commit=95fe35ffb383710a6e0567e958ead9a3b66e930c
-	source = chromium-mirror_third_party_pdfium::git+https://pdfium.googlesource.com/pdfium.git#commit=f41ce6b71a15ce6206740cad084871a28ff2dcec
+	source = chromium-mirror_third_party_pdfium::git+https://pdfium.googlesource.com/pdfium.git#commit=ecbab85b3c5285b971b9801c7e197284dca5d144
 	source = chromium-mirror_third_party_perfetto::git+https://android.googlesource.com/platform/external/perfetto.git#commit=6aaa8a1fb15659d1b68179e20993e969d9f500f8
 	source = chromium-mirror_third_party_protobuf-javascript_src::git+https://chromium.googlesource.com/external/github.com/protocolbuffers/protobuf-javascript.git#commit=e34549db516f8712f678fcd4bc411613b5cc5295
 	source = chromium-mirror_third_party_pthreadpool_src::git+https://chromium.googlesource.com/external/github.com/Maratyszcza/pthreadpool.git#commit=4fe0e1e183925bf8cfa6aae24237e724a96479b8
@@ -218,7 +218,7 @@ pkgbase = electron31
 	source = chromium-mirror_third_party_xnnpack_src::git+https://chromium.googlesource.com/external/github.com/google/XNNPACK.git#commit=e73fb4a03f658fd48cc10c8a7cf48fe7eeab9114
 	source = chromium-mirror_tools_page_cycler_acid3::git+https://chromium.googlesource.com/chromium/deps/acid3.git#commit=a926d0a32e02c4c03ae95bb798e6c780e0e184ba
 	source = chromium-mirror_third_party_zstd_src::git+https://chromium.googlesource.com/external/github.com/facebook/zstd.git#commit=ff7a151f2e6c009b657d9f798c2d9962b0e3feb5
-	source = chromium-mirror_v8::git+https://chromium.googlesource.com/v8/v8.git#commit=1a2f876b6137312f2e4a66af114999580d116c1c
+	source = chromium-mirror_v8::git+https://chromium.googlesource.com/v8/v8.git#commit=556665385d5cdc2a0793b977d373da88091a7208
 	source = chromium-mirror_third_party_angle_third_party_glmark2_src::git+https://chromium.googlesource.com/external/github.com/glmark2/glmark2.git#commit=ca8de51fedb70bace5351c6b002eb952c747e889
 	source = chromium-mirror_third_party_angle_third_party_rapidjson_src::git+https://chromium.googlesource.com/external/github.com/Tencent/rapidjson.git#commit=781a4e667d84aeedbeb8184b7b62425ea66ec59f
 	source = chromium-mirror_third_party_angle_third_party_VK-GL-CTS_src::git+https://chromium.googlesource.com/external/github.com/KhronosGroup/VK-GL-CTS.git#commit=9d7b4c3d553331e316321942e2eb8413e4081c79
@@ -251,7 +251,7 @@ pkgbase = electron31
 	source = chromium-mirror_third_party_vulkan-deps_vulkan-tools_src::git+https://chromium.googlesource.com/external/github.com/KhronosGroup/Vulkan-Tools.git#commit=df8e710224f563a04b7db2680f72d31619c4b259
 	source = chromium-mirror_third_party_vulkan-deps_vulkan-utility-libraries_src::git+https://chromium.googlesource.com/external/github.com/KhronosGroup/Vulkan-Utility-Libraries.git#commit=358a107a6ff284906dcccbabe5b0183c03fd85b6
 	source = chromium-mirror_third_party_vulkan-deps_vulkan-validation-layers_src::git+https://chromium.googlesource.com/external/github.com/KhronosGroup/Vulkan-ValidationLayers.git#commit=944660e342cfafb6c318d11731751d9a291434d4
-	sha256sums = b0cb9a0e19ee4a152ec9db7defbccdff54446f692f245ac1b4c79ab0be238f19
+	sha256sums = 93c45e9baa36c91a8241bdd28774aa92898daa8f5c47395af556c0e00811539d
 	sha256sums = daf0df74d2601c35fd66a746942d9ca3fc521ede92312f85af51d94c399fd6e0
 	sha256sums = 8f81059d79040ec598b5fb077808ec69d26d6c9cbebf9c4f4ea48b388a2596c5
 	sha256sums = b3de01b7df227478687d7517f61a777450dca765756002c80c4915f271e2d961
@@ -263,9 +263,9 @@ pkgbase = electron31
 	sha256sums = 55dbe71dbc1f3ab60bf1fa79f7aea7ef1fe76436b1d7df48728a1f8227d2134e
 	sha256sums = ff588a8a4fd2f79eb8a4f11cf1aa151298ffb895be566c57cc355d47f161f53f
 	sha256sums = 2c8cd28cee0e1df1862e801794f210d2b7cac652f943cf94f43c2abe26f2a2f4
-	sha256sums = 917fc14ad31ff6266bb452b4f84b8fa6ea817c11380c635f1c454553b3b85cff
+	sha256sums = 721b15dd6165e83cf7b480f103d7409da3a37686839441ea9030caed4cfa6862
 	sha256sums = 0b7a546ee6913c49519c10c293ac530ff381641a8a465fa2e184d6dbe0fb784d
-	sha256sums = d4d8d177d6f43d3ede18f29815df235602f07271bb93f041a62eb54c7f131c83
+	sha256sums = f2ab97969837ccec24dda35ade541dd22714707bf7832bbc2c766a511bda6ec3
 	sha256sums = 3522166c3ca75316a172b7cc4fe12bba9367e30fed16df8193ede2e236dca8c5
 	sha256sums = b7ab26b28122102827dbbefa54a38f9d59729bbdab889dcc6dba672141590717
 	sha256sums = 1c5cf168370233564b77e7a260fe985a77cad3eb4e47c86c47c185e76d39a68c
@@ -358,7 +358,7 @@ pkgbase = electron31
 	sha256sums = 1f3ed3b9c74a3553539687d0797fd29e202e5c00dd465df443420bea36888e4d
 	sha256sums = 240ddf56ffc9e3b4a4dcfbe7c5c143b44833a6041940f7111ac610f6b823fe4c
 	sha256sums = 0c82b35ab74b47cb90e37dcffa27a341339567403aa59b7866bee77251878e13
-	sha256sums = f7c060a002e56a48460d8648c9ffd477275b4135617d9889de8ec65e7232a815
+	sha256sums = dc604f0dd4ebcde3e72764100f179e3953e1219e6df5c788da1a0aaa4d7d5dde
 	sha256sums = 116d58909c0cf2f9ad5ea4da83367f503c1530817abe2c0f0838d6f49ce52297
 	sha256sums = 78f5096d2d425b9663cb289964d994c9a15db7938c5a1a35cc4b286014ca2545
 	sha256sums = d42b085e33a0961dcc74d9484e67bed481f6a626d9598b0e6d9bae54dd5205ba
@@ -390,7 +390,7 @@ pkgbase = electron31
 	sha256sums = e3fe9d638e1a312943a550e777b5ecf36b50885cdf48f6664063d73433d6fdeb
 	sha256sums = 548c8cd89cf822c790e4703eff53756791450eba73d267a84f3bf3eedf60bef5
 	sha256sums = 4a2d35b748614ef76a20b3d679058cc9ece19aecd7fe9e0da40e03a6068a3770
-	sha256sums = 29dd8eca4a89e65cea2c934653d5a21ff5c3fac0dfa03d8ecf3594f0764b2440
+	sha256sums = f6102828bb2f763b848b98f08aad785984f030ed66a8d4cf413a08272c7c05d2
 	sha256sums = e67cdb017c07a7ec72a06f1062dc2f124d97527869604575fe48610ff98b581a
 	sha256sums = 716cc81139f11a2b438802d37f245f885fc9a0c69ef429a11b156145c903a932
 	sha256sums = e8476bd416ce96ec48e4bb056772617cc0ebab93cba25b6033dd1df7fb507b73
