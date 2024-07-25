@@ -10,7 +10,11 @@ url='https://unifi-network.ui.com'
 # We are allowed to ship the software in our repository
 # https://mailman.archlinux.org/mailman/private/arch-dev/2014-August/015690.html
 license=('custom')
-depends=('mongodb' 'java-runtime-headless>=17' 'fontconfig')
+depends=(
+  'fontconfig'
+  'java-runtime-headless=17'
+  'mongodb'
+)
 conflicts=('tomcat-native')
 source=("UniFi-${pkgver}.zip::https://dl.ubnt.com/unifi/${pkgver}/UniFi.unix.zip"
         mongod

@@ -7,9 +7,9 @@ pkgbase = unifi
 	arch = armv7h
 	arch = aarch64
 	license = custom
-	depends = mongodb
-	depends = java-runtime-headless>=17
 	depends = fontconfig
+	depends = java-runtime-headless=17
+	depends = mongodb
 	conflicts = tomcat-native
 	source = UniFi-8.3.32.zip::https://dl.ubnt.com/unifi/8.3.32/UniFi.unix.zip
 	source = mongod
