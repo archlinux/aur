@@ -64,7 +64,7 @@ release_job:
     - git branch --list
     - git remote -v
     - git checkout -b master
-    - makepkg --printsrcinfo > .SRCINFO
+    - su -c "cd ${CI_PROJECT_DIR} && makepkg --printsrcinfo > .SRCINFO" - builduser
     - pk_name=$(grep -Po "^pkgname=\K.*" PKGBUILD)
     - pk_ver=$(grep -Po "^pkgver=\K.*" PKGBUILD)
     - pk_rel=$(grep -Po "^pkgrel=\K.*" PKGBUILD)
