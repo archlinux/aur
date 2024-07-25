@@ -1,6 +1,6 @@
 # Maintainer: Vincent Bernardoff <vb AT luminar.eu.org>
 pkgname=nng
-pkgver=1.6.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Rewrite of the SP protocol library known as libnanomsg"
 arch=(arm armv6h armv7h aarch64 x86_64 i686)
@@ -12,7 +12,7 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install=
 source=("https://github.com/nanomsg/nng/archive/v${pkgver}.tar.gz")
-sha256sums=('f639e77911ef935a13e9779d4a18d45490433ba744f89752a15b84c929ce2725')
+sha256sums=('cfacfdfa35c1618a28bb940e71f774a513dcb91292999696b4346ad8bfb5baff')
 
 prepare() {
   cmake -B build -S "${pkgname}-${pkgver}" -G Ninja \
