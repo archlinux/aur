@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Carl Smedstad <carl.smedstad at protonmail dot com>
 pkgname=tbls-bin
-pkgver=1.76.1
+pkgver=1.77.0
 pkgrel=1
 pkgdesc="CI-Friendly tool for documenting a database"
 arch=(
@@ -19,8 +19,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}-1_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}-1_amd64.deb")
 sha256sums=('6eefa0bec6e7c3654bdc29cb8f8c4adbc1327d2e912b532aacc68f6e2fa9d63c')
-sha256sums_aarch64=('880a79672b8365f32649d84c9a6424baa65a4b5c5043d7d9fb8d661b92e415b0')
-sha256sums_x86_64=('c95b5d93a5886e4afc9bd7b5f0a1a484503396629f8eef9a6b6971a21d45ea7d')
+sha256sums_aarch64=('59da25e1188fde332cfdd00e90468c443ff2256b1ce27503f3f07d7ed629a2bd')
+sha256sums_x86_64=('eb10489296fec94197fd707699e5787ff599aee02b8e0f31276fa8a38127c846')
 build() {
     bsdtar -xf "${srcdir}/data."*
     "${srcdir}/usr/bin/${pkgname%-bin}" completion bash > "${srcdir}/${pkgname%-bin}.bash"
