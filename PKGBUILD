@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-settings-daemon-git
-pkgver=r65.81a5305
+pkgver=r68.54700df
 pkgrel=1
 pkgdesc="Cosmic settings daemon"
 arch=('x86_64' 'aarch64')
@@ -31,7 +31,6 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   make vendor
 
@@ -40,7 +39,6 @@ prepare() {
 
 build() {
   cd "${pkgname%-git}"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
 
   # use mold instead of lld to speed up build
