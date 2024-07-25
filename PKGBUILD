@@ -6,7 +6,7 @@
 pkgbase=libim
 pkgname=('libim' 'lua-im' 'lua51-im' 'lua52-im' 'lua53-im')
 pkgver=3.15
-pkgrel=3
+pkgrel=4
 pkgdesc="Toolkit for digital imaging"
 arch=('i686' 'x86_64')
 url="https://www.tecgraf.puc-rio.br/im/"
