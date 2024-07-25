@@ -20,7 +20,7 @@ _phpbase="73"
 _suffix=""
 pkgver="7.3.33"
 pkgbase_rc=""
-pkgrel="15"
+pkgrel="16"
 pkgbase="php73"
 pkgdesc="PHP 7.3.33 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1  -DU_DEFINE_FALSE_AND_TRUE=1 "
@@ -484,12 +484,7 @@ prepare() {
         echo "[PATCH] Applying source patch ${patch_name}";
         patch -p1 -i "../${patch_name}"
     done
-
-    if ((_phpbase <= 53)); then
-        PHP_AUTOCONF="/usr/bin/autoconf-2.13" ./buildconf --force
-    else
-        ./buildconf --force
-    fi
+    ./buildconf --force
     rm -f tests/output/stream_isatty_*.phpt
     rm -f Zend/tests/arginfo_zpp_mismatch*.phpt
     rm -f Zend/tests/bug79919.phpt
@@ -534,6 +529,10 @@ _build_sapi() {
 build() {
     export CFLAGS="${CFLAGS} -fPIC -Wno-error=incompatible-pointer-types"
     export CXXFLAGS="${CXXFLAGS} -fPIC -Wno-error=incompatible-pointer-types -std=c++17"
+    if ((_phpbase <= 73)); then
+        export CFLAGS="${CFLAGS} -Wno-implicit-function-declaration -fpermissive"
+        export CXXFLAGS="${CXXFLAGS} -Wno-implicit-function-declaration -fpermissive"
+    fi
     export EXTENSION_DIR="/usr/lib/${pkgbase}/modules"
     if ((_build_forced_openssl_11)); then
         export PHP_OPENSSL_DIR="/usr/lib/openssl-1.1"
