@@ -1,12 +1,13 @@
-# Maintainer: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
 # -*- sh -*-
+
+# Maintainer: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
 
 _pkgname='ov'
 pkgname="${_pkgname}-git"
-pkgver=0.35.0.r4.g0557a5c
+pkgver=0.36.0.r2.g8571b10
 pkgrel=1
 epoch=1
-pkgdesc='Feature-rich terminal-based text pager (built from latest commit)'
+pkgdesc='Feature-rich terminal-based text pager (latest git commit)'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url='https://github.com/noborus/ov'
 license=('MIT')  # SPDX-License-Identifier: MIT
@@ -21,13 +22,16 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$_pkgname"
 
-  git describe --long --tags | sed 's/^v//;s/-rc\d*//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags \
+  | sed 's/^v//;s/-rc\d*//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd "$_pkgname"
 
-  mkdir -p build
+  git clean -dfx
+
+  mkdir -vp build
   go mod tidy
 }
 
@@ -73,9 +77,12 @@ check() {
 package() {
   cd "$_pkgname"
 
-  install -vDm0755 "build/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/" *.yaml README.md
-  install -vDm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -vDm0755 -t "$pkgdir/usr/bin" \
+    build/ov
+  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
+    *.yaml README.md ov.plugin.zsh
+  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
+    LICENSE
 
   for _shell in bash fish zsh; do
     "$pkgdir/usr/bin/$_pkgname" --completion "$_shell" > "completion.$_shell"
