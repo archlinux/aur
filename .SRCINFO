@@ -1,0 +1,23 @@
+pkgbase = byedpi-bin
+	pkgdesc = Bypass DPI
+	pkgver = 0.11.2
+	pkgrel = 1
+	url = https://github.com/hufrea/byedpi
+	arch = aarch64
+	arch = armv6h
+	arch = armv7h
+	arch = x86_64
+	license = Unknown
+	provides = byedpi
+	conflicts = byedpi
+	options = !debug
+	source_aarch64 = https://github.com/hufrea/byedpi/releases/download/v0.11.2/byedpi-11.2-aarch64.tar.gz
+	b2sums_aarch64 = e7d8f76386799bdcbac9d39ee5cc14269da90191c4888e4a90c681d5b9308303f539697ad59349f293226f0a5aee71e23519a1ce3cf984ab62c80eff2bb43468
+	source_armv6h = https://github.com/hufrea/byedpi/releases/download/v0.11.2/byedpi-11.2-armv6.tar.gz
+	b2sums_armv6h = 2aaccf3b4f3ce4795a9af17c1506b248cf46963ab7321d9a32013e6ddef95d654706c985534ee76683642753c902f411c0af933763a6342324745840843a54b2
+	source_armv7h = https://github.com/hufrea/byedpi/releases/download/v0.11.2/byedpi-11.2-armv7l.tar.gz
+	b2sums_armv7h = 6d04e255a802525bd822540566141ef83d347f8b8c89d509ee21430409ecbee65b8fff54082be11c13da721f7bda76d08644c494267e46081d1676cd4c51f8b6
+	source_x86_64 = https://github.com/hufrea/byedpi/releases/download/v0.11.2/byedpi-11.2-x86_64.tar.gz
+	b2sums_x86_64 = 57e190c8dbc4c97f9c322100771b19946693758a8f9649ee25da3fa30787bd25e13acef8b8c8dd0f915c465b572049f44b7f6d65d1cd08889d5884a49e6c1031
+
+pkgname = byedpi-bin
