@@ -8,9 +8,10 @@ pkgname=("${pkgbase}"
 	"${pkgbase}-module-dkms"
 	"${pkgbase}-host"
 	"obs-plugin-${pkgbase}")
-epoch=0
-pkgver=B7_rc1
-pkgrel=1.1
+epoch=1
+pkgver=B7rc1
+_pkgver=$(echo "$pkgver" | sed 's/\([A-Z]\+[0-9]\+\)\(rc\)/\1-\2/')
+pkgrel=3
 pkgdesc="An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough. (Candidate Version)"
 url="https://looking-glass.io/"
 arch=('x86_64')
@@ -18,18 +19,17 @@ license=('GPL2')
 makedepends=('cmake' 'fontconfig' 'libpipewire' 'libpulse'
 	'libsamplerate' 'libxi' 'libxpresent' 'libxss' 'obs-studio'
 	'spice-protocol' 'wayland-protocols')
-source=("looking-glass-${pkgver//_/-}.tar.gz::https://looking-glass.io/artifact/${pkgver//_/-}/source")
-sha512sums=('SKIP')
+source=("looking-glass-${_pkgver}.tar.gz::https://looking-glass.io/artifact/${_pkgver}/source"
+        'dkms-6.10-build-fix.patch')
+sha256sums=('f9c0876881d45572f1d0eec87c67882b538a0c0a8383657e91e6deaa6f203a9d'
+            '384cfd4d67962acba85c1ac9d2ccafdb3e280e11ab92c8aeac708f9a52585a93')
 
-_lgdir="${_pkgname}-${pkgver//_/-}"
+_lgdir="${_pkgname}-${_pkgver}"
 
-# prepare() {
-# 	cd "${srcdir}/${_lgdir}"
-# 	patch -p1 <"${srcdir}/module-kernel-64.patch"
-
-# 	sed -i '1 i\#pragma GCC diagnostic ignored "-Wmaybe-uninitialized"' \
-# 		"host/platform/Linux/capture/pipewire/src/portal.c"
-# }
+prepare() {
+	cd "${srcdir}/${_lgdir}"
+	patch -p1 -i "${srcdir}/dkms-6.10-build-fix.patch"
+}
 
 build() {
 	cd "${srcdir}/${_lgdir}"
@@ -60,7 +60,7 @@ package_looking-glass-rc-module-dkms() {
 	provides=("${_pkgname}-module-dkms")
 	conflicts=("${_pkgname}-module-dkms")
 	cd "${srcdir}/${_lgdir}/module"
-	install -Dm644 -t "${pkgdir}/usr/src/${_pkgname}-${pkgver//_/-}" \
+	install -Dm644 -t "${pkgdir}/usr/src/${_pkgname}-${_pkgver}" \
 		Makefile \
 		dkms.conf \
 		kvmfr.{h,c}
