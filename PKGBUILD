@@ -8,9 +8,9 @@ pkgname=(
     libtorch-cxx11abi-cpu
 )
 
-pkgver="2.3.0"
-_cuda_version="cu121"
-_rocm_version="rocm5.7"
+pkgver="2.4.0"
+_cuda_version="cu124"
+_rocm_version="rocm6.1"
 pkgrel=1
 _pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration (with CXX11 ABI)"
 pkgdesc="${_pkgdesc}"
@@ -20,8 +20,8 @@ license=('BSD')
 depends=(pybind11)
 makedepends=()
 source=(
-    "${_pkgname}-${pkgver}-cuda.zip::https://download.pytorch.org/libtorch/cu121/libtorch-cxx11-abi-shared-with-deps-${pkgver}%2B${_cuda_version}.zip"
-    "${_pkgname}-${pkgver}-rocm.zip::https://download.pytorch.org/libtorch/rocm5.7/libtorch-cxx11-abi-shared-with-deps-${pkgver}%2B${_rocm_version}.zip"
+    "${_pkgname}-${pkgver}-cuda.zip::https://download.pytorch.org/libtorch/${_cuda_version}/libtorch-cxx11-abi-shared-with-deps-${pkgver}%2B${_cuda_version}.zip"
+    "${_pkgname}-${pkgver}-rocm.zip::https://download.pytorch.org/libtorch/${_rocm_version}/libtorch-cxx11-abi-shared-with-deps-${pkgver}%2B${_rocm_version}.zip"
     "${_pkgname}-${pkgver}-cpu.zip::https://download.pytorch.org/libtorch/cpu/libtorch-cxx11-abi-shared-with-deps-${pkgver}%2Bcpu.zip"
 )
 noextract=(
