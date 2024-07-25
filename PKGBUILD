@@ -1,4 +1,4 @@
-# Maintainer: Julie Shapiro <jshapiro at nvidia dot com>
+# Contributor: Julie Shapiro <jshapiro at nvidia dot com>
 
 pkgname=p4v
 _version=2024.2
