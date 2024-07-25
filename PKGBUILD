@@ -2,16 +2,16 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=sxtetris
-pkgver=1.1.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="A terminal Tetris game"
 url="https://github.com/shixinhuang99/sxtetris"
-depends=('gcc-libs')
+depends=('gcc-libs' 'alsa-lib')
 makedepends=('cargo')
 arch=('x86_64')
 license=('MIT')
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('196a075f8b5981f06c7b750039840b1d9602c08ac9896779cff20b11984d778bd71ddb57729462f2cc2745d1f1ea24322c9b7d7ff648bce57d389a7c50d3b4c2')
+sha512sums=('65b53bdf1879575a34dcd243964cb74823da48f882fc03ac8d8774db57da5f052b83c9782a694cc3761d8769ed351ee3cf6d9534847e41c4a5b6263c7b7b6734')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
