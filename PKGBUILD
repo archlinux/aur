@@ -3,7 +3,7 @@
 
 pkgname=get-blessed
 _pkgname=get_blessed_rs
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Get the best crates for your Rust projects with a few keybindings"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('gcc-libs' 'openssl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('c46fe44f2c4ce5e6712f8b09ce264197a9150285a0cdb3da52da7e6e057be78800681da413bc49749fa2214c711f5bdc65dedfad54810594b0e8bd3b8dc9fd0d')
+sha512sums=('d1be1882038a61475abf4c0c2c1b6360b7f40a0ad75bc0b568eb17c0fe00a9dab8402dc25ab101b6a85eef4cd0953c9c00a7077218fefed0bc0730f6d4a6c9c6')
 
 prepare() {
   cd "$_pkgname-$pkgver"
