@@ -1,6 +1,6 @@
 pkgbase = dtkcore-git
 	pkgdesc = DTK core modules
-	pkgver = 5.6.22.r0.g9c96f05
+	pkgver = 5.6.32.r0.g2ebb0a1
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/dtkcore
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = dtkcore-git
 	makedepends = uchardet
 	makedepends = gtest
 	makedepends = dtkcommon
+	makedepends = dtklog
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = doxygen
