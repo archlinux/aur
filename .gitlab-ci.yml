@@ -33,6 +33,10 @@ find_release_job:
   artifacts:
     reports:
       dotenv: build.env
+  only:
+    - main
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
 
 test_job:
   stage: test
@@ -42,20 +46,26 @@ test_job:
     - su -c "cd ${CI_PROJECT_DIR} && ./test" - builduser
   dependencies:
     - find_release_job
+  only:
+    - main
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
 
 release_job:
   stage: release
   script:
     - if [ -z "$pkgver" ]; then echo "version variable does not exist, skipping job"; exit 0; fi
-    - sed -i "s/^pkgver=.*/pkgver=${pkgver}/" PKGBUILD
     - git config --global user.email "zomundo@gmail.com"
     - git config --global user.name "Mundo"
     - git remote add aur ssh://aur@aur.archlinux.org/taskade-appimage.git
     - git fetch aur master
+    - git config pull.ff only
     - git pull aur master
     - git branch --list
     - git remote -v
     - git checkout -b master
+    - sed -i "s/^pkgver=.*/pkgver=${pkgver}/" PKGBUILD
+    - git add PKGBUILD
     - pk_name=$(grep -Po "^pkgname=\K.*" PKGBUILD)
     - pk_ver=$(grep -Po "^pkgver=\K.*" PKGBUILD)
     - pk_rel=$(grep -Po "^pkgrel=\K.*" PKGBUILD)
@@ -64,3 +74,7 @@ release_job:
 
   dependencies:
     - find_release_job
+  only:
+    - main
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
