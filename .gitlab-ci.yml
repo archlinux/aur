@@ -74,6 +74,10 @@ release_job:
 
   dependencies:
     - find_release_job
+  artifacts:
+    paths:
+      - PKGBUILD
+      - .SRCINFO
   rules:
     - if: '$CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == "schedule"'
 
