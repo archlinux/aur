@@ -2,7 +2,7 @@
 # Contributor: John Andrews <theunderdog09 at gmail dot com>
 # Contributor: Timo Kramer <fw minus aur at timokramer dot de>
 pkgname=mullvad-vpn-cli
-pkgver=2024.3
+pkgver=2024.4
 pkgrel=1
 pkgdesc="The Mullvad VPN CLI client"
 arch=('x86_64')
@@ -13,8 +13,8 @@ makedepends=('cargo' 'git' 'go' 'protobuf')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 install="${pkgname%-*}.install"
-_commit=7db2c76522e29b4acd8f461fc87f794954c6df95
-source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=$pkgver"  # signed by Oskar Nyberg (raksooo), public key not uploaded yet
+_commit=e9043f890c56b4d0db50851e3fa4db10f230118e
+source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=$pkgver"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_commit}?signed")
 sha256sums=('8064e0181b1d30352f25eab563bade47b2fd157ca9646b97aff928241d9870ea'
             '76015a774788a2274d29e3fa1e06cb752a8488f24a973b5143d8659d5b290e9c')
@@ -29,9 +29,8 @@ prepare() {
   git config submodule.dist-assets/binaries.url "$srcdir/mullvadvpn-app-binaries"
   git -c protocol.file.allow=always submodule update
 
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 
   pushd wireguard/libwg
   export GOPATH="$srcdir/gopath"
@@ -43,7 +42,6 @@ prepare() {
 build() {
   cd mullvadvpn-app
   CFLAGS+=" -ffat-lto-objects"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   local RUSTC_VERSION=$(rustc --version)
