@@ -23,7 +23,7 @@ options=(!lto)
 conflicts=()
 provides=('pipewire-screenaudio')
 source=(
-  'git+https://github.com/IceDBorn/pipewire-screenaudio.git'
+  'git+https://github.com/IceDBorn/pipewire-screenaudio.git#branch=main'
   )
 sha256sums=(
   'SKIP'
@@ -44,5 +44,5 @@ build() {
 
 package() {
   install -Dm644 "$srcdir/pipewire-screenaudio/native/native-messaging-hosts/firefox.json" "$pkgdir/usr/lib/mozilla/native-messaging-hosts/com.icedborn.pipewirescreenaudioconnector.json"
-  install -Dm755 "$srcdir/pipewire-screenaudio/native/connector-rs/target/release/connector-rs" "$pkgdir/usr/lib/pipewire-screenaudio/connector-rs/target/debug/connector-rs"
+  install -Dm755 "$srcdir/pipewire-screenaudio/native/connector-rs/target/debug/connector-rs" "$pkgdir/usr/lib/pipewire-screenaudio/connector-rs/target/debug/connector-rs"
 }

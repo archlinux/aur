@@ -10,7 +10,7 @@ pkgbase = pipewire-screenaudio-git
 	optdepends = pipewire-screenaudio-librewolf: Native Messaging for LibreWolf
 	provides = pipewire-screenaudio
 	options = !lto
-	source = git+https://github.com/IceDBorn/pipewire-screenaudio.git
+	source = git+https://github.com/IceDBorn/pipewire-screenaudio.git#branch=main
 	sha256sums = SKIP
 
 pkgname = pipewire-screenaudio-git
