@@ -1,41 +1,35 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=HiveR
-_pkgver=0.3.63
+_pkgver=0.4.0
 pkgname=r-${_pkgname,,}
-pkgver=0.3.63
-pkgrel=3
-pkgdesc='2D and 3D Hive Plots for R'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=1
+pkgdesc="2D and 3D Hive Plots for R"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
   r-jpeg
   r-plyr
   r-png
   r-rcolorbrewer
   r-rgl
-  tk
+  r-xtable
 )
 optdepends=(
   r-bipartite
-  r-funcmap
-  r-knitr
-  r-rmarkdown
-  r-sna
-  r-tint
-  r-xtable
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('83c16ab55324f51ac3f5d0377244fddcb7a009ae30cee4dd67270035c42422ee')
+md5sums=('d40928b9eb713ba6a1fe7ea71017714d')
+b2sums=('e23c2d7a91b580ab86ee3709792a27bc8c577748052655336e7b0197cea704a660c9a1cc8257f21f893b3ce8cb8af7f8c6c3f2ac238d0c56cbaeba76ae7999d8')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
