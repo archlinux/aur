@@ -1,7 +1,7 @@
 # Maintainer: Andrew Rabert <ar@nullsum.net>
 
 pkgbase=linux-flowx13
-pkgver=6.10.arch1
+pkgver=6.10.1.arch1
 pkgrel=1
 pkgdesc='Linux (with patches for the Asus Flow X13)'
 url='https://github.com/archlinux/linux'
@@ -36,6 +36,7 @@ source=(
   $url/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
   config  # the main kernel config file
   0001-HID-amd_sfh-Add-support-for-tablet-mode-switch-senso.patch
+  0001-drm-amd-display-fix-corruption-with-high-refresh-rat.patch
 )
 validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
@@ -43,18 +44,20 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('774698422ee54c5f1e704456f37c65c06b51b4e9a8b0866f34580d86fef8e226'
+sha256sums=('70109dfd1cd1c5f8a58eb1cb37122b9bf93f9c6a6280bf91019263c7339cf76b'
             'SKIP'
-            'fdb6552c43bcbc465f88c6ec2e01eb26791ac21f81687ca891ac1152503f7cad'
+            'e9cd87d9519f8a127af86f98efe1d7730135ec288f6d25d4fbd9910efbee9e83'
             'SKIP'
-            '1eee90934450856b6d13dbd3edc3524e5700311ca2b8e7b9ed444d1ea94c4130'
-            '508f90cbe81a9a145cc540703470f1e6b5d21c7a7b9166d2ce6e56b401262b04')
-b2sums=('bb243ea7493b9d63aa2df2050a3f1ae2b89ee84a20015239cf157e3f4f51c7ac5efedc8a51132b2d7482f9276ac418de6624831c8a3b806130d9c2d2124c539b'
+            'b7fc249683be13c565a941976c2d2c0bc90185ae1bf97779ee0c269fb3d90a37'
+            '508f90cbe81a9a145cc540703470f1e6b5d21c7a7b9166d2ce6e56b401262b04'
+            '89b02ea5954799e56ed9a78897c9adf2f42752db4fff2f41b39bbf3d20a7f72c')
+b2sums=('f3332b2a0e63918ae7583e6cc8009122c7aecbc42e8a3f40c044ed04639731c3bd70165cc0c0927db75fca185721c9b48339df5cd739101a2db45b9b2f10f22c'
         'SKIP'
-        '733e830c81821a4d0fe2b4af9b80e5284d7bc625221cd2308308f24c76c3fc030ddeb400e9756bb19c75d632359e9535b8218db2421bb8ef5cdbb5e782af96bd'
+        'f7cb787ed1c85bd8e6a9c0d258921449409d144ce9c0d3f1a07b8ee3583648970005549fa3bfd8c28d5fb87488e19205ef917928cc32bc0cecb2214e77bee260'
         'SKIP'
-        'b591064140306057ececa411931b040971cf082e42ad094f8aafbf881bb0d1afb157a6bd33cc5b10cea2aaf1e9fc0529295f91368b261f1b1b99da7792b8d84c'
-        'c0090c819342838fbb242f41ee057612ade9c1e564ea250bcd454d57677196a590e392ee6ef0b45d8d9463ab92a8ae3b3668f162c45a8d0e714747235d1cccff')
+        '00dde098ab988db02a0667288546eae32208a30dbcf5edae6905c54edae51969c9a7eec8aa5a25363b0aa7463f716ac621aee8b0c1dc4c7d149e270e851aaa5c'
+        'c0090c819342838fbb242f41ee057612ade9c1e564ea250bcd454d57677196a590e392ee6ef0b45d8d9463ab92a8ae3b3668f162c45a8d0e714747235d1cccff'
+        '9d4d518791606af8a35e58b454590c06ec5c158d363c4a928239aa0191924496d6091c64c3117679e2fa7cc750bcfa3e51213e681480532c0190ef7cdd00e5cc')
 
 
 export KBUILD_BUILD_HOST=archlinux
