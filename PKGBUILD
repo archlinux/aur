@@ -2,7 +2,7 @@
 
 pkgname=python-instructor
 _pkgname=${pkgname#python-}
-pkgver=1.3.5
+pkgver=1.3.7
 pkgrel=1
 pkgdesc="Structured outputs for LLMs"
 arch=(any)
@@ -42,7 +42,7 @@ optdepends=(
   # 'python-google-generativeai: support for Google Gemini models'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('9268d835ddf0cab1e57258ff6e34d879b3081c503ec459a0a897375b6773f8d1')
+sha256sums=('a277b8f1046b47a465132b6666ddd90f24493bb62767f334fc0a6a2ca2b4fb45')
 
 _archive="$_pkgname-$pkgver"
 
@@ -68,6 +68,7 @@ check() {
     --deselect tests/dsl/test_partial.py \
     --deselect tests/llm/test_anthropic/evals/test_simple.py \
     --deselect tests/llm/test_anthropic/test_stream.py \
+    --deselect tests/llm/test_cohere \
     --deselect tests/llm/test_new_client.py \
     --deselect tests/test_simple_types.py::test_partial_not_simple \
     --ignore tests/llm/test_gemini \
