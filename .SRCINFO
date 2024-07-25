@@ -1,6 +1,6 @@
 pkgbase = extension-bitwarden-git
 	pkgdesc = Bitwarden browser extensions
-	pkgver = 2024.6.3.r15435.gcc206d4
+	pkgver = 2024.6.3.r15578.gc755512
 	pkgrel = 1
 	url = https://github.com/bitwarden/clients
 	arch = any
