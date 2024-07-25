@@ -1,6 +1,6 @@
 # Maintainer: Lev Levitsky <levlev@mail.ru>
 pkgname=morpheus
-pkgver=288
+pkgver=290
 pkgrel=1
 pkgdesc="A mass spectrometry–based proteomics database search algorithm"
 arch=('any')
@@ -11,7 +11,7 @@ source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://github.com/cwenger/Morph
         "morpheus_cl"
         "morpheus")
 install=${pkgname}.install
-md5sums=('f683128d293bb37402a9e5a3e139dfb9'
+md5sums=('861710c00a6efa1097ed09eefc348382'
          '71ab85a987af41daf56c3b806c53c49b'
          '13af6d888daf9c4a30ec7253312a67b3')
 
