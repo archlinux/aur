@@ -6,7 +6,7 @@
 # using the .deb instead of the .tar.gz as it already contains the icons as well as the .desktop file.
 
 pkgname=localsend-bin
-pkgver=1.15.1
+pkgver=1.15.2
 pkgrel=1
 pkgdesc='An open source cross-platform alternative to AirDrop'
 url=https://github.com/localsend/localsend
@@ -18,8 +18,8 @@ provides=('localsend')
 options=(!debug)
 source_x86_64=("${url}/releases/download/v${pkgver}/LocalSend-${pkgver}-linux-x86-64.deb")
 source_aarch64=("${url}/releases/download/v${pkgver}/LocalSend-${pkgver}-linux-arm-64.deb")
-sha256sums_x86_64=('f462c76d537b148363d8f6472c52b9274d5290b57422ac6d16ff04f5321c5339')
-sha256sums_aarch64=('402df1fb0bee3e031e159a04a82a07b1ea85204b1f336db25532dd2d4f61025c')
+sha256sums_x86_64=('9fd9a85260ef7469f8f048a77fa84ef9a42c78351767f7ceec6eb3bc50a78999')
+sha256sums_aarch64=('0eeb03cc8f8ed8052fd19f4a90f9e8b76a8752e1e45c832777efebe9cd7dc721')
 _pkgdesktop="localsend_app.desktop"
 
 
