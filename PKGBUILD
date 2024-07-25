@@ -1,16 +1,17 @@
 # Maintainer: MaximMaximS <sklenicka dot maxim at gmail dot com>
 
 pkgname=cdwifi
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 epoch=1
-pkgdesc="Simple login script for public WiFi in ČD trains"
-arch=('any')
+pkgdesc="Simple login script for public wifi in ČD trains"
+arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/MaximMaximS/CDWiFi"
-license=('MIT-0')
+license=('MIT')
+depends=("openssl" "glibc")
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=("178c78c98526d32fb8f075f21615b2ea6cd0ac3ed31c9ab8a6cde7d327666a60")
+b2sums=("ae9739c66aad7584d869b4906e8660c6454b25071b67235bab9499b110fb7408fc9e298f6632813d1ab231bac73a3b803b8e8b2d2c063aae6fe869622b6fd19f")
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
@@ -33,5 +34,5 @@ check() {
 
 package() {
     cd "$pkgname-$pkgver"
-    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+    install -Dm0755 -t "${pkgdir}/usr/bin" "target/release/$pkgname"
 }
