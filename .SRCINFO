@@ -1,0 +1,17 @@
+pkgbase = icestorm-git-pinned
+	pkgdesc = Lattice iCE40 FPGAs Bitstream Documentation (Reverse Engineered)
+	pkgver = r831.738af82
+	pkgrel = 1
+	url = https://github.com/YosysHQ/icestorm
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	makedepends = clang
+	depends = python
+	depends = libftdi-compat
+	provides = icestorm
+	conflicts = icestorm
+	source = git+https://github.com/YosysHQ/icestorm.git
+	sha256sums = SKIP
+
+pkgname = icestorm-git-pinned
