@@ -4,8 +4,8 @@
 # Contributor: David Birks <david at tellus dot space>
 # Contributor: Jeff Henson <jeff at henson dot io>
 pkgname=mullvad-vpn
-pkgver=2024.3
-pkgrel=2
+pkgver=2024.4
+pkgrel=1
 _nodeversion=20
 pkgdesc="The Mullvad VPN client app for desktop"
 arch=('x86_64')
@@ -14,8 +14,8 @@ license=('GPL-3.0-or-later')
 depends=('alsa-lib' 'gtk3' 'iputils' 'libnftnl' 'libnotify' 'nss')
 makedepends=('cargo' 'git' 'go' 'libxcrypt-compat' 'nvm' 'protobuf')
 install="$pkgname.install"
-_commit=7db2c76522e29b4acd8f461fc87f794954c6df95
-source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=$pkgver"  # signed by Oskar Nyberg (raksooo), public key not uploaded yet
+_commit=e9043f890c56b4d0db50851e3fa4db10f230118e
+source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=$pkgver"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_commit}?signed"
         'no-rpm.diff'
         'no-publish.diff'
@@ -53,13 +53,12 @@ prepare() {
   # Disable publishing for CIs
   patch --strip=1 gui/tasks/distribution.js < ../no-publish.diff
 
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 
   pushd wireguard/libwg
   export GOPATH="$srcdir/gopath"
-  mkdir -p "../../build/lib/$CARCH-unknown-linux-gnu"
+  mkdir -p "../../build/lib/$(rustc -vV | sed -n 's/host: //p')"
   go mod download -x
   popd
 
@@ -75,7 +74,6 @@ prepare() {
 build() {
   cd mullvadvpn-app
   CFLAGS+=" -ffat-lto-objects"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   local RUSTC_VERSION=$(rustc --version)
@@ -91,7 +89,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -v -o "../../build/lib/$CARCH-unknown-linux-gnu"/libwg.a -buildmode c-archive
+  go build -v -o "../../build/lib/$(rustc -vV | sed -n 's/host: //p')"/libwg.a -buildmode c-archive
   popd
 
   # Clean module cache for makepkg -C
