@@ -2,7 +2,7 @@
 
 _name=email-to-pdf-converter
 pkgname=${_name}-bin
-pkgver=2.10.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Converts email files (eml, msg) to pdf"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('java-runtime' 'wkhtmltopdf')
 provides=("${_name}")
 conflicts=("${_name}")
 source=("${_name}-${pkgver}.jar"::"https://github.com/nickrussler/${_name}/releases/download/${pkgver}/emailconverter-${pkgver}-all.jar")
-sha256sums=('0e1a9df06a1b67c985909e26d2e7a628687a381bdef8551ffa8a22ce8162a612')
+sha256sums=('a0d8cdfcd169af6340936b9280bd2b178e79f9d496bebdb53b1e49a4d88f378c')
 
 package() {
   install -Dm644 "${_name}-${pkgver}.jar" "$pkgdir/usr/share/java/${_name}/${_name}.jar"
