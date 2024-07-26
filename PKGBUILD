@@ -1,6 +1,6 @@
 # Maintainer: Keiran <keiran0@proton.me>
 pkgname=e-zshot
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="CLI to automate taking screenshots and uploading them to e-z.host."
 arch=('any')
