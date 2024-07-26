@@ -3,7 +3,7 @@ pkgname=mapeo-desktop-bin
 _pkgname=Mapeo
 pkgver=5.6.3
 _electronversion=9
-pkgrel=1
+pkgrel=2
 pkgdesc="An offline map editing application for indigenous territory mapping in remote environments."
 arch=('x86_64')
 url="https://mapeo.app/"
@@ -14,7 +14,6 @@ conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
     'nodejs'
-    'python>3'
 )
 makedepends=(
     'asar'
@@ -27,7 +26,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('08c76520175ce000b160a47cf604079319c4a1089a1e597de42788625c3d4e05'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
