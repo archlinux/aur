@@ -2,7 +2,7 @@
 
 pkgname=bitcoin-cash-node-qt
 pkgver=27.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitcoin Cash Node with bitcoind, bitcoin-cli, bitcoin-tx, bitcoin-seeder and bitcoin-qt"
 arch=('i686' 'x86_64')
 url="https://bitcoincashnode.org"
@@ -31,6 +31,8 @@ install=bitcoin.install
 
 build() {
   cd "$srcdir/bitcoin-cash-node-$pkgver"
+
+  patch -p1 < $srcdir/../1870.patch
 
   msg2 'Building...'
   mkdir -p build
