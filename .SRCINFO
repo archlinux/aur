@@ -21,9 +21,11 @@ pkgbase = flowee
 	backup = etc/flowee/flowee.conf
 	backup = etc/flowee/rest-service.conf
 	source = https://codeberg.org/Flowee/thehub/archive/2024.07.0.tar.gz
+	source = 0001-Backport-uPNP-compile-fix.patch
 	source = flowee.logrotate
 	source = flowee.conf
 	sha256sums = 508f9290f5a4017a53db292e9860d1c2e03dc490e9966ec7c599e1d141aaa35f
+	sha256sums = 28c452aa03034ec6593954eb1c4afcd4275ae163069779b77f0eef537497f715
 	sha256sums = 0438e1a44523aeb3bbecd60fd920ca7b2aacd267b5cf988ab77a44eb7c03929e
 	sha256sums = 59c1928ddb33fed1d4bf35df8fecd1dbdda0b308eac943503a2e3afb8c64bc89
 
