@@ -1,7 +1,7 @@
 # Maintainer: Slashbunny <demodevil5[at]yahoo>
 
 pkgname=prometheus-bin
-pkgver=2.52.0
+pkgver=2.53.1
 pkgrel=1
 pkgdesc="An open-source service monitoring system and time series database (binary, not built from source)"
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -15,11 +15,11 @@ install='prometheus.install'
 backup=('etc/prometheus/prometheus.yml')
 source=('prometheus.service')
 sha256sums=('0c99b68b282d72feb9fd2bc0b190554659a59dada74ec92ca2b2f48016a9b805')
-sha256sums_x86_64=('7f31c5d6474bbff3e514e627e0b7a7fbbd4e5cea3f315fd0b76cad50be4c1ba3')
-sha256sums_arm=('f3f95d88afe09fd147b8c77ecc75303950c5cf57ca6b9aad4cbad342f6d38025')
-sha256sums_armv6h=('c5034daa9ead78532557080a2ce5abddb5d9ad2f45faf37e3e9eb530ecf949d4')
-sha256sums_armv7h=('6bf7c4688e97f2f5cae0537a1c81efbfc92256041c94e04f974fb0a3152b9ede')
-sha256sums_aarch64=('b503c0f552e381d7d3f84dfd275166bf07c74f99c428ffed69447d4ab3259901')
+sha256sums_x86_64=('2234aa0f66d9f9b854144f6faaaed72a316df7a680d9dad7cb48e49a6fa5332c')
+sha256sums_arm=('a3180004263aa96276e280122febed1b8b3056bd5e9afdcfdc86ba94bf5974f8')
+sha256sums_armv6h=('b243c019d8a6df3f13808e0397d09e90db40b3648ef79eeefa94bf860d786b0b')
+sha256sums_armv7h=('d30210c364455730a85ea4109747462f22631c67d7fec6437327cee9766845d8')
+sha256sums_aarch64=('a7f28c83c3c943b953a9d00860bd3f2422464fb7c27a3c4037ef1ce2a41592b5')
 source_x86_64=("https://github.com/prometheus/prometheus/releases/download/v$pkgver/prometheus-$pkgver.linux-amd64.tar.gz")
 source_arm=("https://github.com/prometheus/prometheus/releases/download/v$pkgver/prometheus-$pkgver.linux-armv5.tar.gz")
 source_armv6h=("https://github.com/prometheus/prometheus/releases/download/v$pkgver/prometheus-$pkgver.linux-armv6.tar.gz")
