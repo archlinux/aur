@@ -1,0 +1,7 @@
+post_install() {
+    echo "By default, Garden collects telemetry data for every command you execute."
+    echo "This can be disabled with:"
+    echo ""
+    echo "    garden config analytics-enabled false"
+    echo ""
+}
