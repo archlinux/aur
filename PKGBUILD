@@ -14,7 +14,7 @@ provides=('gdal=3.9.0')
 conflicts=('gdal')
 pkgname=('gdal-ecw' 'python-gdal-ecw')
 pkgver=3.9.0
-pkgrel=1
+pkgrel=5
 pkgdesc="A translator library for raster and vector geospatial data formats, with support to ECW format. Based on gdal-hdf4 AUR package."
 arch=(x86_64)
 url="https://gdal.org/"
@@ -29,9 +29,10 @@ makedepends=(cmake opencl-headers python-setuptools python-numpy
              libgeotiff geos giflib libheif hdf5 libjpeg-turbo json-c libjxl xz
              libxml2 lz4 mariadb-libs netcdf unixodbc ocl-icd openexr openjpeg2
              openssl pcre2 libpng podofo poppler postgresql-libs qhull
-             libspatialite sqlite swig libtiff libwebp xerces-c zlib zstd libaec)
-# armadillo basisu brunsli lerc libkml qb3 rasterlite2 sfcgal tiledb
-# ogdi)
+             libspatialite sqlite swig libtiff libwebp xerces-c zlib zstd libaec
+             sfcgal)
+             # armadillo basisu brunsli lerc libkml qb3 rasterlite2 tiledb
+             # ogdi
 changelog=$_pkgbase.changelog
 source=(https://download.osgeo.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz
         https://github.com/OSGeo/gdal/commit/7b526b12.patch
