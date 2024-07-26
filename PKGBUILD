@@ -1,7 +1,7 @@
 # Maintainer: yifwon <wyf9661 at gmail dot com>
 pkgname=drawio-desktop-appimage
 _pkgname=drawio
-pkgver=24.6.4
+pkgver=24.7.5
 pkgrel=1
 pkgdesc="Diagram drawing application built on web technology"
 arch=('x86_64' 'aarch64')
@@ -13,9 +13,9 @@ conflicts=(drawio-desktop)
 depends=('zlib' 'hicolor-icon-theme')
 _install_path=/opt/${pkgname}
 source_x86_64=("${_pkgname}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${_pkgname}-x86_64-${pkgver}.AppImage")
-sha512sums_x86_64=('bcd2d6ad6431053c72627965683f0c83c6a8aaffa249c86026b2779552ba920abe0fe5bb3cc1f405cc8e0583d0e562311e645f784ae6eeca4ce5014e958c78a7')
+sha512sums_x86_64=('46840644cadcd336f422f8312c9f65929f01b576099b33a37626d1e7115a3a079154248d5f1393b022255b7187f77a1d64dd201a474c7c54c03f68741b4cc49a')
 source_aarch64=("${_pkgname}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${_pkgname}-arm64-${pkgver}.AppImage")
-sha512sums_aarch64=('453a1906e0479654f2c6bfa36d36245fc14e7ac6ddcd2a45cc75096f79f355e5cdf72429e24eec1d3c2de5ea8beaf9f0e24037c6563c9fcf84ada1fbce89bc7c')
+sha512sums_aarch64=('ad8951cebc58b823842aca47fe1d233e29090e57f397ead390e5e21e13d7577f9aa02462c55691bb01ce5895f48ce40eaf59f11975fefef918a10447c5071337')
 prepare() {
     chmod a+x "${_pkgname}-${pkgver}.AppImage"
     "./${_pkgname}-${pkgver}.AppImage" --appimage-extract
