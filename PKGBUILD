@@ -2,8 +2,8 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=cosmic-settings-git
-pkgver=r433.4908e38
-pkgrel=2
+pkgver=r438.6518651
+pkgrel=1
 pkgdesc="The settings application for the COSMIC desktop environment."
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-settings"
@@ -35,6 +35,7 @@ optdepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
+options=('!lto')
 source=('git+https://github.com/pop-os/cosmic-settings.git')
 sha256sums=('SKIP')
 

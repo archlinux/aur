@@ -1,7 +1,7 @@
 pkgbase = cosmic-settings-git
 	pkgdesc = The settings application for the COSMIC desktop environment.
-	pkgver = r433.4908e38
-	pkgrel = 2
+	pkgver = r438.6518651
+	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-settings
 	arch = x86_64
 	arch = aarch64
@@ -27,6 +27,7 @@ pkgbase = cosmic-settings-git
 	optdepends = power-profiles-daemon: power profiles
 	provides = cosmic-settings
 	conflicts = cosmic-settings
+	options = !lto
 	source = git+https://github.com/pop-os/cosmic-settings.git
 	sha256sums = SKIP
 
