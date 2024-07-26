@@ -2,7 +2,7 @@
 
 pkgname="vivify"
 pkgver="0.2.1"
-pkgrel=1
+pkgrel=2
 pkgdesc="Markdown preview tool which can be used standalone or plug into an editor like (Neo)Vim"
 arch=("x86_64")
 url="https://github.com/jannis-baum/vivify"
@@ -34,7 +34,7 @@ build() {
         nvm install node
 
         yarn install
-        VIV_VERSION="${pkgver}" make linux
+        VIV_VERSION="v${pkgver}-${pkgrel}-aur" make linux
 }
 
 package() {
