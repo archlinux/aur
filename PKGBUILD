@@ -2,8 +2,8 @@
 # Upstream: Bitwig GmbH <support@bitwig.com>
 
 pkgname='bitwig-studio'
-pkgver='5.1.9'
-_pkgver='5.1.9'
+pkgver='5.2.0'
+_pkgver='5.2'
 pkgrel='1'
 pkgdesc='Digital audio workstation for music production, remixing and live performance'
 arch=('x86_64')
@@ -16,11 +16,11 @@ replaces=()
 conflicts=('bitwig-studio-legacy' 'bitwig-8-track')
 options=(!strip)
 source=("bitwig-studio-${_pkgver}.deb::https://www.bitwig.com/dl/Bitwig%20Studio/${_pkgver}/installer_linux/")
-sha256sums=('27990ba9708c9c66f464c8444ba3d020f8cde75a6d9411a3e05cbca92cc9e908')
+sha256sums=('f10a04b8edd91a81d44324c881eb7c475f823c5c3f1004da252bfbbbe4e3d232')
 
 package() {
   # Unpack package contents
-  bsdtar -xf ${srcdir}/data.tar.xz -C ${pkgdir}/
+  bsdtar -xf ${srcdir}/data.tar.zst -C ${pkgdir}/
 
   # Install license
   install -D -m644 ${pkgdir}/opt/bitwig-studio/EULA.rtf ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
