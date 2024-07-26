@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=paleta
 pkgver=0.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Extract the dominant colors from any image."
 arch=('x86_64')
 url="https://github.com/nate-xyz/paleta"
@@ -9,25 +9,17 @@ license=('GPL-3.0-or-later')
 depends=('libadwaita')
 makedepends=('cargo' 'git' 'meson')
 checkdepends=('appstream-glib')
-_commit=d779d2a0393d790586c3f73fb230d029ae406391  # tags/v0.3.1^0
-source=("git+https://github.com/nate-xyz/paleta.git#commit=$_commit")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd "$pkgname"
-  git describe --tags | sed 's/^v//;s/-/+/g'
-}
+source=("git+https://github.com/nate-xyz/paleta.git#tag=v$pkgver")
+sha256sums=('e4fd896fc1ab4112b8c26c5d24cb9a9262b10cb6c97551d84f6521bd1d19ca7c')
 
 prepare() {
   cd "$pkgname"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   CFLAGS+=" -ffat-lto-objects"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   arch-meson "$pkgname" build
   meson compile -C build
