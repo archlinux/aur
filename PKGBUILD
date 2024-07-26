@@ -28,14 +28,12 @@ sha256sums=('f99f717bd9516dd6db92276a1a171ea97e2caa8f77e9d38fdf32218690a9cc27')
 
 prepare() {
   cd "Mousai-$pkgver"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
   CFLAGS+=" -ffat-lto-objects"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   arch-meson "Mousai-$pkgver" build
   meson compile -C build
