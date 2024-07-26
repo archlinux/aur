@@ -24,6 +24,7 @@ makedepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
+options=('!lto')
 source=('git+https://github.com/pop-os/cosmic-applets.git')
 sha256sums=('SKIP')
 
@@ -40,7 +41,6 @@ prepare() {
 
 build() {
   cd "${pkgname%-git}"
-  CFLAGS+=" -ffat-lto-objects"
   export RUSTUP_TOOLCHAIN=stable
 
   # use mold instead of lld to speed up build

@@ -18,6 +18,7 @@ pkgbase = cosmic-applets-git
 	depends = libxkbcommon
 	provides = cosmic-applets
 	conflicts = cosmic-applets
+	options = !lto
 	source = git+https://github.com/pop-os/cosmic-applets.git
 	sha256sums = SKIP
 
