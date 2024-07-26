@@ -1,7 +1,7 @@
 # Maintainer: Moritz Biering <moritzbiering.mb@gmail.com>
 
 pkgname=nachrichten
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Stay informed without leaving your command line"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -9,7 +9,7 @@ url="https://github.com/zMoooooritz/${pkgname}"
 license=('MIT')
 makedepends=('git' 'go')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('58b9c969717c03671c543a59c735a3e3c560a07689fb017fa4d360b0a4a3a69c')
+sha256sums=('991a09cb1d864da3db2b27a6c1443ccb495abc641e3b963809cb1f706c8f4fd0')
 
 build() {
 	local commit

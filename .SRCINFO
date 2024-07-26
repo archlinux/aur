@@ -1,6 +1,6 @@
 pkgbase = nachrichten
 	pkgdesc = Stay informed without leaving your command line
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/zMoooooritz/nachrichten
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = nachrichten
 	license = MIT
 	makedepends = git
 	makedepends = go
-	source = https://github.com/zMoooooritz/nachrichten/archive/v0.2.0/nachrichten-0.2.0.tar.gz
-	sha256sums = 58b9c969717c03671c543a59c735a3e3c560a07689fb017fa4d360b0a4a3a69c
+	source = https://github.com/zMoooooritz/nachrichten/archive/v0.2.1/nachrichten-0.2.1.tar.gz
+	sha256sums = 991a09cb1d864da3db2b27a6c1443ccb495abc641e3b963809cb1f706c8f4fd0
 
 pkgname = nachrichten
