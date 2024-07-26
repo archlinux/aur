@@ -5,7 +5,7 @@
 # Contributor: Jeff Henson <jeff at henson dot io>
 pkgname=mullvad-vpn
 pkgver=2024.4
-pkgrel=1
+pkgrel=2
 _nodeversion=20
 pkgdesc="The Mullvad VPN client app for desktop"
 arch=('x86_64')
