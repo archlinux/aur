@@ -6,7 +6,7 @@ After=network-online.target
 Type=simple
 Restart=on-failure
 ExecStartPre=/usr/bin/fr24feed --validate-config --config-file=/etc/fr24uat-feed.ini
-ExecStart=/usr/bin/fr24feed --monitor-file=/dev/shm/uat-decoder.txt --http-listen-port=8755 --config-file=/etc/fr24uat-feed.ini --logfile=/var/log/fr24feed/fr24uat-feed.log --unit=fr24uat-feed
+ExecStart=/usr/bin/fr24feed --monitor-file=%t/fr24feed/uat-decoder.txt --http-listen-port=8755 --config-file=/etc/fr24uat-feed.ini --unit=fr24uat-feed
 User=fr24
 Group=fr24
 ProtectSystem=full

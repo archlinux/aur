@@ -27,8 +27,8 @@ source_armv6h=("https://repo-feed.flightradar24.com/rpi_binaries/${_pkgname}_${_
 source_armv7h=("https://repo-feed.flightradar24.com/rpi_binaries/${_pkgname}_${_pkgverarm}_armhf.deb")
 source_aarch64=("https://repo-feed.flightradar24.com/rpi_binaries/${_pkgname}_${_pkgverarm}_armhf.deb")
 
-sha256sums=('247c8d1a3c4e7724c2c1e4caae4e019a448700fadd195ba29b562233d9352e29'
-            '2c53251b0c6051c7c6e30ddfa2fd3f5ee65dcf1465cb3d164a7f31cd9e8d9d9f'
+sha256sums=('fbc310aa8c8eb06b1050df9d9bedc9722a0a24666f44d5120ad2ac86038c17a5'
+            '7d95f8a5d47e82d7d7aaaedf928bc7c1f7881fa4f0171669a61b1c5e13bdf01a'
             'a018c751e431fcde72e709917fdfe663a5c74040af80b56d1a4658ba962c95e5'
             'ebcf31ecb62aef650b0984f978318f7e716078f520efb165306dca592c0821bb'
             '32ae61984ae0123690fea0bf67f2b5f1ee1155f6a2b3a9d0ff7c5431d902ddee')
