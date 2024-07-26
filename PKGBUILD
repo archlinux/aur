@@ -1,9 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=perplexity-ai-app
 _pkgname="Perplexity AI"
-pkgver=2.1.0
-_electronversion=22
-pkgrel=4
+pkgver=2.2.0
+_electronversion=31
+_nodeversion=20
+pkgrel=1
 pkgdesc="The Unofficial Perplexity AI Desktop App, powered by Electron which brings the magic of AI language processing to your desktop."
 arch=('any')
 url="https://github.com/inulute/perplexity-ai-app"
@@ -14,7 +15,7 @@ depends=(
 )
 makedepends=(
     'npm'
-    'nodejs'
+    'nvm'
     'gendesk'
     'git'
     'curl'
@@ -23,8 +24,14 @@ source=(
     "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('875686f084c613d9a5d4dd71bcf60af81da62a141690c869a7e70b06bb65290f'
+sha256sums=('47aad69430207e54a740f61f30e7ecfac93c6ce2db1ffbbcf95bcba26484e7d7'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+_ensure_local_nvm() {
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
+}
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
@@ -33,6 +40,7 @@ build() {
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname}.sh"
     gendesk -f -n -q --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
+    _ensure_local_nvm
     cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
