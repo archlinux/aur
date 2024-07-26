@@ -21,14 +21,12 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
   cd "${pkgname%-git}"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --release --all-features
