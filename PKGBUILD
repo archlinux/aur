@@ -1,6 +1,6 @@
 # Maintainer: Postoronca Dumitru <postoroncadumitru@gmail.com>
 pkgname=game-of-life-cli
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="A Python implementation of Conway's Game of Life"
 arch=('any')

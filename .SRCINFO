@@ -1,6 +1,6 @@
 pkgbase = game-of-life-cli
 	pkgdesc = A Python implementation of Conway's Game of Life
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/DdimaPos/game-of-life-cli
 	arch = any
