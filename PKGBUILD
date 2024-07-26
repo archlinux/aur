@@ -26,14 +26,12 @@ sha256sums=('812fed360686f0c8c9b54fce33d9cf0201982c36b93937bf3dec86ce3eb03d0e')
 
 prepare() {
   cd "$_name-$pkgver"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd "$_name-$pkgver"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   python -m build --wheel --no-isolation
 }
