@@ -9,7 +9,7 @@ _noguipkgname="$_projectname-emu-nogui"
 _toolpkgname="$_projectname-emu-tool"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git" "$_toolpkgname-git")
-pkgver='5.0.r21785.gf49659fbfc'
+pkgver='2407.r103.g87b7009c12'
 pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
@@ -36,6 +36,7 @@ source=(
 	"$pkgbase-tinygltf::git+https://github.com/syoyo/tinygltf.git"
 	"$pkgbase-vh::git+https://github.com/KhronosGroup/Vulkan-Headers.git"
 	"$pkgbase-vma::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git"
+	'minizip-ng.diff'
 )
 b2sums=('SKIP'
         'SKIP'
@@ -43,7 +44,8 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        'SKIP')
+        'SKIP'
+        'c9d32ab3e6f4c7fb56ce68d9a68d3a25c6abcaeea4d59e136e98c4f0553bb1b72e34b63dc602917bf9ac89d7ad14514cf27adad0d9b2bf8cbc3b744effaf50ea')
 
 _sourcedirectory="$pkgbase"
 
@@ -51,6 +53,9 @@ prepare() {
 	cd "$srcdir/$_sourcedirectory/"
 	if [ -d 'build/' ]; then rm -rf 'build/'; fi
 	mkdir 'build/'
+
+	# Fix minizip-ng check for Arch (see https://github.com/dolphin-emu/dolphin/pull/12910#issuecomment-2249001387)
+	patch --forward -p1 < "$srcdir/minizip-ng.diff"
 
 	# Provide submodules
 	declare -A _submodules=(
@@ -98,7 +103,7 @@ build() {
 check() {
 	# Get git version to compare
 	cd "$srcdir/$_sourcedirectory/"
-	_checkversion="${_projectname^}.*$(git describe --long --tags | sed -E 's/^([0-9.]+-[0-9]+)-g.+$/\1/')"
+	_checkversion="$(git describe | cut --delimiter='-' --fields=1-2)"
 
 	# Run tests
 	cd "$srcdir/$_sourcedirectory/build/"
@@ -107,7 +112,7 @@ check() {
 	# Verify that the basic functionality works
 	_checkoutput="$(QT_QPA_PLATFORM='offscreen' "$srcdir/$_sourcedirectory/build/Binaries/$_noguipkgname" --version)"
 	printf '%s\n' "$_checkoutput"
-	printf '%s\n' "$_checkoutput" | grep -q "^$_checkversion$"
+	printf '%s\n' "$_checkoutput" | grep -q -E "^${_projectname^} ${_checkversion}(-dirty)?$"
 }
 
 package_dolphin-emu-git() {

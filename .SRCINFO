@@ -1,6 +1,6 @@
 pkgbase = dolphin-emu-git
 	pkgdesc = A Gamecube / Wii emulator
-	pkgver = 5.0.r21785.gf49659fbfc
+	pkgver = 2407.r103.g87b7009c12
 	pkgrel = 1
 	url = https://dolphin-emu.org
 	arch = x86_64
@@ -58,6 +58,7 @@ pkgbase = dolphin-emu-git
 	source = dolphin-emu-git-tinygltf::git+https://github.com/syoyo/tinygltf.git
 	source = dolphin-emu-git-vh::git+https://github.com/KhronosGroup/Vulkan-Headers.git
 	source = dolphin-emu-git-vma::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git
+	source = minizip-ng.diff
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
@@ -65,6 +66,7 @@ pkgbase = dolphin-emu-git
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
+	b2sums = c9d32ab3e6f4c7fb56ce68d9a68d3a25c6abcaeea4d59e136e98c4f0553bb1b72e34b63dc602917bf9ac89d7ad14514cf27adad0d9b2bf8cbc3b744effaf50ea
 
 pkgname = dolphin-emu-git
 	pkgdesc = A Gamecube / Wii emulator - git version
