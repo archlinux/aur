@@ -1,7 +1,7 @@
 pkgbase = daed
 	pkgdesc = A modern dashboard for dae, bundled with dae-wing (backend API server) and dae (core).
 	pkgver = 0.7.0rc1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/daeuniverse/daed
 	install = daed.install
 	arch = x86_64
@@ -10,6 +10,8 @@ pkgbase = daed
 	makedepends = pnpm
 	makedepends = clang
 	makedepends = go
+	provides = dae
+	conflicts = dae
 	options = !debug
 	source = daed-0.7.0rc1.1.zip::https://github.com/daeuniverse/daed/releases/download/v0.7.0rc1.1/daed-full-src.zip
 	sha512sums = ffcc0d98bc7db022498f3b06d803f7fe4c353885eada2d84cf9f7bd0070e6a79fc41059f9ba43d5bf6514f2146828346b8e203d7a6858840dead9a249cbbbf16

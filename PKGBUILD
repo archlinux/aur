@@ -3,12 +3,14 @@
 
 pkgname=daed
 pkgver=0.7.0rc1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern dashboard for dae, bundled with dae-wing (backend API server) and dae (core)."
 arch=('x86_64' 'aarch64')
 url="https://github.com/daeuniverse/${pkgname}"
 license=('AGPL-3.0-or-later AND MIT')
 makedepends=('pnpm' 'clang' 'go')
+provides=('dae')
+conflicts=('dae')
 source=("${pkgname}-${pkgver}.zip::https://github.com/daeuniverse/${pkgname}/releases/download/v${pkgver}/${pkgname}-full-src.zip")
 sha512sums=('ffcc0d98bc7db022498f3b06d803f7fe4c353885eada2d84cf9f7bd0070e6a79fc41059f9ba43d5bf6514f2146828346b8e203d7a6858840dead9a249cbbbf16')
 install="${pkgname}.install"
