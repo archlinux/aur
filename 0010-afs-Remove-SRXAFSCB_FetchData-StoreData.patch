@@ -1,7 +1,7 @@
 From be8001f1d64a2d9da4fdaeff59fdc40e205d4526 Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Thu, 8 Feb 2024 12:22:13 -0700
-Subject: [PATCH 10/32] afs: Remove SRXAFSCB_FetchData/StoreData
+Subject: [PATCH 10/37] afs: Remove SRXAFSCB_FetchData/StoreData
 
 Commit 'client-64bit-file-size-support-20011031' (971b18bc42) introduced
 the RPC functions SRXAFSCB_FetchData() and SRXAFSCB_StoreData with RPC
@@ -133,5 +133,5 @@ index ed43635aa..208bd0338 100644
  /* afs_cbqueue.c */
  extern afs_rwlock_t afs_xcbhash;
 -- 
-2.45.1
+2.45.2
 

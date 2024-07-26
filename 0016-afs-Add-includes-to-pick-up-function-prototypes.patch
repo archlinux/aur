@@ -1,7 +1,7 @@
 From 8b516820abf1edace60276152e9ed18a0b30fc13 Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Mon, 12 Feb 2024 08:25:47 -0700
-Subject: [PATCH 16/32] afs: Add includes to pick up function prototypes
+Subject: [PATCH 16/37] afs: Add includes to pick up function prototypes
 
 The functions defined in LINUX/osi_crypto.c, osi_pagecopy.c,
 osi_probe.c, and osi_syscall.c have function prototypes defined in
@@ -121,5 +121,5 @@ index 836491c29..5e9e5194a 100644
  #include <linux/mm.h>
  
 -- 
-2.45.1
+2.45.2
 

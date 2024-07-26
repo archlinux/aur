@@ -1,7 +1,7 @@
 From 15357006d9e8e45ac0be9e0c7e87456ee3857d90 Mon Sep 17 00:00:00 2001
 From: Andrew Deason <adeason@sinenomine.net>
 Date: Tue, 30 Jan 2024 20:44:48 -0600
-Subject: [PATCH 13/32] roken: Declare ct_memcmp in hcrypto kernel roken.h
+Subject: [PATCH 13/37] roken: Declare ct_memcmp in hcrypto kernel roken.h
 
 Currently, we build roken's ct.c for our kernel module to provide
 ct_memcmp(). We declare a prototype for ct_memcmp() in krb5_locl.h,
@@ -96,5 +96,5 @@ index eb279a95f..6e706737c 100644
  #include "crypto.h"
  
 -- 
-2.45.1
+2.45.2
 

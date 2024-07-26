@@ -1,7 +1,7 @@
 From fa093a57d443a30be0891caacb18677fd4b73ac0 Mon Sep 17 00:00:00 2001
 From: Andrew Deason <adeason@sinenomine.net>
 Date: Thu, 25 Apr 2024 15:58:49 -0500
-Subject: [PATCH 32/32] afs: Reintroduce and use DFlushDCache()
+Subject: [PATCH 32/37] afs: Reintroduce and use DFlushDCache()
 
 This reverts commit 432ac5810e51bb5bb2cf1df0bfebc64d1c4d7a39 (afs:
 Remove DFlushDCache()). This also re-adds the caller of DFlushDCache()
@@ -93,5 +93,5 @@ index b9811f892..2ca80a563 100644
  
  /* afs_call.c */
 -- 
-2.45.1
+2.45.2
 

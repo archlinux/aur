@@ -1,7 +1,7 @@
 From 18a2a932df9c1b6b3c7513a6c161d4259f052ca9 Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Mon, 12 Feb 2024 12:31:30 -0700
-Subject: [PATCH 26/32] Linux 6.8: use hlist iteration for dentry children
+Subject: [PATCH 26/37] Linux 6.8: use hlist iteration for dentry children
 
 Linux 6.8 commit 'dentry: switch the lists of children to hlist'
 (da549bdd15) replaces the dentry lists d_subdirs/d_child with the hlist
@@ -73,5 +73,5 @@ index 2824ec198..5cd346fb5 100644
  AC_CHECK_LINUX_STRUCT([group_info], [gid], [cred.h])
  AC_CHECK_LINUX_STRUCT([inode], [i_alloc_sem], [fs.h])
 -- 
-2.45.1
+2.45.2
 

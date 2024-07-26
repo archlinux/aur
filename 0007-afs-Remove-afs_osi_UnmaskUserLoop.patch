@@ -1,7 +1,7 @@
 From cc8053e86eef75bff308e7606f2618e9fdc4ec5d Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Fri, 12 Jan 2024 09:13:27 -0700
-Subject: [PATCH 07/32] afs: Remove afs_osi_UnmaskUserLoop()
+Subject: [PATCH 07/37] afs: Remove afs_osi_UnmaskUserLoop()
 
 The function afs_osi_UnmaskUserLoop() is not referenced anywhere within
 the source tree.
@@ -55,5 +55,5 @@ index 18732d1a3..6f54c63c7 100644
  void
  afs_osi_RxkRegister(void)
 -- 
-2.45.1
+2.45.2
 

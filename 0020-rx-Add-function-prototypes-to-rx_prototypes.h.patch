@@ -1,7 +1,7 @@
 From 09f9660fbbb4f3c20ba9f2283169818372c3f474 Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Wed, 7 Feb 2024 19:34:29 -0700
-Subject: [PATCH 20/32] rx: Add function prototypes to rx_prototypes.h
+Subject: [PATCH 20/37] rx: Add function prototypes to rx_prototypes.h
 
 The prototype for rxk_NewSocketHost() is not in a header file, but is
 defined in the referencing .c file. The ARCH/rx_knet.c files that
@@ -85,5 +85,5 @@ index 87a1049f7..6e1ae566c 100644
  # ifdef UKERNEL
  extern void afs_rxevent_daemon(void);
 -- 
-2.45.1
+2.45.2
 

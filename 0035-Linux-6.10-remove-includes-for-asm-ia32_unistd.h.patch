@@ -1,0 +1,119 @@
+From 7506dc85a662bd1137de50a8af048ab1893596ec Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Wed, 12 Jun 2024 13:56:44 -0600
+Subject: [PATCH 35/37] Linux-6.10: remove includes for asm/ia32_unistd.h
+
+The Linux 6.10 commit:
+    "x86/syscall/compat: Remove ia32_unistd.h" (e2d168328e)
+
+Removed the header ia32_unistd.h since it was just a wrapper for the
+unistd_32_ia32.h.
+
+The commit:
+    "linux-afs-translator-xen-20060731" (29dd792381)
+added an ia32_unistd.h include to several files; all were not needed
+(as they didn't reference any of the contents from the header file, e.g
+_NR_ia32_*).
+
+The commit:
+    "amd64-hook-ia32-table-20030519" (831e172463)
+added an include for ia32_unistd.h to osi_module.c.
+
+A later commit:
+    "osi-probe-syscall-20050129" (f126dbdbe2)
+removed many of the references to defines from ia32_unistd.h, but did
+not remove the include for the header.
+
+Currently the only remaining files (linux-kernel-syscall-probe.m4,
+LINUX/osi_probe.c and LINUX/osi_syscall.c) continue to reference the
+items from ia32_unistd.h, but only when building older kernels that
+either don't have LINUX_KEYRING_SUPPORT or when
+ENABLE_LINUX_SYSCALL_PROBING is enabled (in both cases, these are only
+applicable for older kernels where the asm/ia32_unistd.h file would be
+present).
+
+For the files that don't have references (i.e. _NR_ia32_*), we can
+simply remove the include for asm/ia32_unistd.h.  For the remaining set
+of files, we can leave the include for asm/ia32_unistd.h since the code
+already has preprocessor conditionals so it's only included for older
+Linux kernels where the header file will be present.
+
+We noted above, the include for asm/ia32_unistd.h is already conditional
+on the checks for LINUX_KEYRING_SUPPORT and ENABLE_LINUX_SYSCALL_PROBING
+so we do not need to add any additional configure checks.
+
+Change-Id: I901b5c0f0ff86272b02f898f3951325533d22f4f
+Reviewed-on: https://gerrit.openafs.org/15763
+Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+---
+ src/afs/LINUX/osi_ioctl.c      | 4 ----
+ src/afs/LINUX/osi_module.c     | 4 ----
+ src/afs/LINUX/osi_pag_module.c | 4 ----
+ src/afs/LINUX/osi_proc.c       | 4 ----
+ 4 files changed, 16 deletions(-)
+
+diff --git a/src/afs/LINUX/osi_ioctl.c b/src/afs/LINUX/osi_ioctl.c
+index 3e797745c..d964d8103 100644
+--- a/src/afs/LINUX/osi_ioctl.c
++++ b/src/afs/LINUX/osi_ioctl.c
+@@ -21,10 +21,6 @@
+ #include <linux/unistd.h>		/* For syscall numbers. */
+ #include <linux/mm.h>
+ 
+-#ifdef AFS_AMD64_LINUX_ENV
+-#include <asm/ia32_unistd.h>
+-#endif
+-
+ #include <linux/slab.h>
+ #include <linux/init.h>
+ #include <linux/sched.h>
+diff --git a/src/afs/LINUX/osi_module.c b/src/afs/LINUX/osi_module.c
+index 30ac048d3..0fc9beba0 100644
+--- a/src/afs/LINUX/osi_module.c
++++ b/src/afs/LINUX/osi_module.c
+@@ -21,10 +21,6 @@
+ #include <linux/unistd.h>		/* For syscall numbers. */
+ #include <linux/mm.h>
+ 
+-#ifdef AFS_AMD64_LINUX_ENV
+-#include <asm/ia32_unistd.h>
+-#endif
+-
+ #include <linux/proc_fs.h>
+ #include <linux/slab.h>
+ #include <linux/init.h>
+diff --git a/src/afs/LINUX/osi_pag_module.c b/src/afs/LINUX/osi_pag_module.c
+index 24b938f0e..7e8e4f15b 100644
+--- a/src/afs/LINUX/osi_pag_module.c
++++ b/src/afs/LINUX/osi_pag_module.c
+@@ -20,10 +20,6 @@
+ #include <linux/unistd.h>		/* For syscall numbers. */
+ #include <linux/mm.h>
+ 
+-#ifdef AFS_AMD64_LINUX_ENV
+-#include <asm/ia32_unistd.h>
+-#endif
+-
+ #include <linux/proc_fs.h>
+ #include <linux/slab.h>
+ #include <linux/init.h>
+diff --git a/src/afs/LINUX/osi_proc.c b/src/afs/LINUX/osi_proc.c
+index 9c5a080f0..ad7c695b9 100644
+--- a/src/afs/LINUX/osi_proc.c
++++ b/src/afs/LINUX/osi_proc.c
+@@ -25,10 +25,6 @@
+ #include <linux/unistd.h>		/* For syscall numbers. */
+ #include <linux/mm.h>
+ 
+-#ifdef AFS_AMD64_LINUX_ENV
+-# include <asm/ia32_unistd.h>
+-#endif
+-
+ #include <linux/slab.h>
+ #include <linux/init.h>
+ #include <linux/sched.h>
+-- 
+2.45.2
+

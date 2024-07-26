@@ -1,7 +1,7 @@
 From ef7b8c578790d84c89f09c3236f1718725770e75 Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Wed, 7 Feb 2024 14:51:23 -0700
-Subject: [PATCH 05/32] cf: Add function prototypes for linux conftest
+Subject: [PATCH 05/37] cf: Add function prototypes for linux conftest
 
 The Linux 6.8 commit:
   'Makefile.extrawarn: turn on missing-prototypes globally' (0fcb70851f)
@@ -109,5 +109,5 @@ index 3596b6aad..7889c904a 100644
  			[IOP_CREATE_TAKES_UMODE_T],
  			[define if inode.i_op->create takes a umode_t argument],
 -- 
-2.45.1
+2.45.2
 

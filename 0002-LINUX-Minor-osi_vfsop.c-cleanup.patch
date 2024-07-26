@@ -1,7 +1,7 @@
 From 1e1bf8ebcd3c18b05326cd7b26a471db804aeaeb Mon Sep 17 00:00:00 2001
 From: Andrew Deason <adeason@sinenomine.net>
 Date: Tue, 24 Jul 2018 23:22:01 -0500
-Subject: [PATCH 02/32] LINUX: Minor osi_vfsop.c cleanup
+Subject: [PATCH 02/37] LINUX: Minor osi_vfsop.c cleanup
 
 - Fix the formatting on afs_mount/afs_get_sb definitions
 
@@ -81,5 +81,5 @@ index b85ab3fdf..bb49a5ce2 100644
  afs_statfs(struct dentry *dentry, struct kstatfs *statp)
  #else
 -- 
-2.45.1
+2.45.2
 

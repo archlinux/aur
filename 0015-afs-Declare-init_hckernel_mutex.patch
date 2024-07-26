@@ -1,7 +1,7 @@
 From 25e17fe7196fd4a46e6a9408d135812ca53ddf80 Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Thu, 8 Feb 2024 11:50:16 -0700
-Subject: [PATCH 15/32] afs: Declare init_hckernel_mutex()
+Subject: [PATCH 15/37] afs: Declare init_hckernel_mutex()
 
 The function init_hckernel_mutex() (in rand.c) is flagged due to a
 missing prototype when building against a Linux 6.8 kernel (which sets
@@ -64,5 +64,5 @@ index 79c44a985..e3f0e0ccb 100644
 +
  #endif /* _AFS_OSI_ */
 -- 
-2.45.1
+2.45.2
 

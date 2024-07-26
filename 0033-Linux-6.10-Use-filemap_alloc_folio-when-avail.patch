@@ -1,0 +1,102 @@
+From a34e6b03172f64d698da7a78670d024a9f240ca4 Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Wed, 12 Jun 2024 14:13:59 -0600
+Subject: [PATCH 33/37] Linux-6.10: Use filemap_alloc_folio when avail
+
+The Linux 6.10 commit:
+    "mm: remove page_cache_alloc()" (3f2ae4ebd5)
+removed the page_cache_alloc(), with a note that callers would be using
+filemap_alloc_folio instead.
+
+The function filemap_alloc_folio() was introduced in Linux 5.15 commit:
+    "mm/filemap: Add filemap_alloc_folio" (bb3c579e25)
+
+Add a configure check for filemap_alloc_folio and update the function
+afs_linux_read_cache() to use a wrapper that calls filemap_alloc_folio()
+if available otherwise calls page_cache_alloc().
+
+Minor whitespace/style cleanup
+
+Note: The function filemap_alloc_folio() was introduced in Linux 5.15,
+so this change affects builds using the Linux kernel 5.15 and later.
+
+Change-Id: Ia17aefc38fe9787e54b315c864da726d610b8bb9
+Reviewed-on: https://gerrit.openafs.org/15764
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+---
+ src/afs/LINUX/osi_vnodeops.c | 27 +++++++++++++++++++++++----
+ src/cf/linux-kernel-func.m4  | 10 ++++++++++
+ 2 files changed, 33 insertions(+), 4 deletions(-)
+
+diff --git a/src/afs/LINUX/osi_vnodeops.c b/src/afs/LINUX/osi_vnodeops.c
+index b709ad1a5..0e92215cb 100644
+--- a/src/afs/LINUX/osi_vnodeops.c
++++ b/src/afs/LINUX/osi_vnodeops.c
+@@ -2331,6 +2331,24 @@ mapping_read_page(struct address_space *mapping, struct page *page)
+ #endif
+ }
+ 
++/*
++ * small compat wrapper for filemap_alloc_folio/page_cache_alloc
++ */
++static struct page *
++afs_page_cache_alloc(struct address_space *cachemapping)
++{
++#if defined(HAVE_LINUX_FILEMAP_ALLOC_FOLIO)
++    struct folio *folio;
++    folio = filemap_alloc_folio(mapping_gfp_mask(cachemapping), 0);
++    if (folio == NULL) {
++	return NULL;
++    }
++    return &folio->page;
++#else
++    return page_cache_alloc(cachemapping);
++#endif
++}
++
+ /* Populate a page by filling it from the cache file pointed at by cachefp
+  * (which contains indicated chunk)
+  * If task is NULL, the page copy occurs syncronously, and the routine
+@@ -2369,11 +2387,12 @@ afs_linux_read_cache(struct file *cachefp, struct page *page,
+     pageindex = (offset - AFS_CHUNKTOBASE(chunk)) >> PAGE_SHIFT;
+ 
+     while (cachepage == NULL) {
+-        cachepage = find_get_page(cachemapping, pageindex);
++	cachepage = find_get_page(cachemapping, pageindex);
+ 	if (!cachepage) {
+-	    if (!newpage)
+-		newpage = page_cache_alloc(cachemapping);
+-	    if (!newpage) {
++	    if (newpage == NULL) {
++		newpage = afs_page_cache_alloc(cachemapping);
++	    }
++	    if (newpage == NULL) {
+ 		code = -ENOMEM;
+ 		goto out;
+ 	    }
+diff --git a/src/cf/linux-kernel-func.m4 b/src/cf/linux-kernel-func.m4
+index 6f9d35022..54fc6786c 100644
+--- a/src/cf/linux-kernel-func.m4
++++ b/src/cf/linux-kernel-func.m4
+@@ -263,6 +263,16 @@ AC_CHECK_LINUX_FUNC([no_strlcpy],
+ 		     size_t s;
+ 		     s = strlcpy(buff);]])
+ 
++dnl Linux 5.15 introduced filemap_alloc_folio() as a replacement for
++dnl page_cache_alloc().  page_cache_alloc() was updated to become just a
++dnl wrapper for filemap_alloc_folio().
++dnl Linux 6.10 removed page_cache_alloc().
++AC_CHECK_LINUX_FUNC([filemap_alloc_folio],
++		    [#include <linux/kernel.h>
++		     #include <linux/pagemap.h>],
++		    [[static struct folio *folio;
++		      folio = filemap_alloc_folio(0, 0);]])
++
+ dnl Consequences - things which get set as a result of the
+ dnl                above tests
+ AS_IF([test "x$ac_cv_linux_func_d_alloc_anon" = "xno"],
+-- 
+2.45.2
+

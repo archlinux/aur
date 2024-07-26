@@ -1,7 +1,7 @@
 From 9f052c137d1184a783c8ac3182c3544b275484f5 Mon Sep 17 00:00:00 2001
 From: Andrew Deason <adeason@sinenomine.net>
 Date: Sat, 9 Jan 2021 12:50:03 -0600
-Subject: [PATCH 03/32] afs: Remove SRXAFSCB_GetDE
+Subject: [PATCH 03/37] afs: Remove SRXAFSCB_GetDE
 
 The GetDE RPC has been commented out from afscbint.xg effectively
 since it was introduced, but we still define the SRXAFSCB_GetDE server
@@ -53,5 +53,5 @@ index e7d8ab5d4..22edefb3f 100644
 -
 -} /*SRXAFSCB_GetDE*/
 -- 
-2.45.1
+2.45.2
 

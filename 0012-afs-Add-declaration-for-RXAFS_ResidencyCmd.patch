@@ -1,7 +1,7 @@
 From 5d2c4a0a8ada4a87d7f39dc21dbce14b3b2a978f Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Fri, 12 Jan 2024 15:52:57 -0700
-Subject: [PATCH 12/32] afs: Add declaration for RXAFS_ResidencyCmd()
+Subject: [PATCH 12/37] afs: Add declaration for RXAFS_ResidencyCmd()
 
 The function RXAFS_ResidencyCmd() is 'manually' defined within the
 afsint.xg, so a prototype for the function is not defined.
@@ -49,5 +49,5 @@ index 9fe4980c6..cdcd07a29 100644
  %{
  %  return RXAFS_FsCmd(z_conn, Fid, Inputs, Outputs);
 -- 
-2.45.1
+2.45.2
 
