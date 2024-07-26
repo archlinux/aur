@@ -1,32 +1,22 @@
-# Maintainer: Poscat <poscat@mail.poscat.moe>
+# Contributor: Poscat <poscat@mail.poscat.moe>
 
 pkgname=emacs-onedark-theme-git
-pkgver=r154.623fc08
+pkgver=r160.b34b62e
 pkgrel=1
 pkgdesc="An Emacs port of the Atom One Dark theme."
-arch=('x86_64')
+arch=('any')
 url="https://github.com/jonathanchu/atom-one-dark-theme"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 provides=('emacs-onedark-theme')
-conflicts=()
+conflicts=('emacs-onedark-theme')
 makedepends=('git')
 depends=('emacs')
-source=("${pkgname}::git://github.com/jonathanchu/atom-one-dark-theme")
-noextract=()
+source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-    cd "${srcdir}/${pkgname}"
-    git submodule update --init
-}
-
-build() {
-    cd "${srcdir}/${pkgname}"
 }
 
 package() {

@@ -1,15 +1,15 @@
 pkgbase = emacs-onedark-theme-git
 	pkgdesc = An Emacs port of the Atom One Dark theme.
-	pkgver = r154.623fc08
+	pkgver = r160.b34b62e
 	pkgrel = 1
 	url = https://github.com/jonathanchu/atom-one-dark-theme
-	arch = x86_64
-	license = GPL3
+	arch = any
+	license = GPL-3.0-or-later
 	makedepends = git
 	depends = emacs
 	provides = emacs-onedark-theme
-	source = emacs-onedark-theme-git::git://github.com/jonathanchu/atom-one-dark-theme
+	conflicts = emacs-onedark-theme
+	source = emacs-onedark-theme-git::git+https://github.com/jonathanchu/atom-one-dark-theme.git
 	sha256sums = SKIP
 
 pkgname = emacs-onedark-theme-git
-
