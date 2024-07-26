@@ -15,13 +15,11 @@ sha256sums=('b3ef1ed73a4795e1605c008fc6ef004ba74e029827c5064997229c4838f0095d')
 
 prepare() {
   cd "$pkgname-$pkgver"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   arch-meson "$pkgname-$pkgver" build
   meson compile -C build
