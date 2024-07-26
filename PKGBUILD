@@ -20,6 +20,7 @@ makedepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'cosmic-text-editor')
+options=('!lto')
 source=('git+https://github.com/pop-os/cosmic-edit.git')
 sha256sums=('SKIP')
 
@@ -36,7 +37,6 @@ prepare() {
 
 build() {
   cd "${pkgname%-git}"
-  CFLAGS+=" -ffat-lto-objects"
   export RUSTUP_TOOLCHAIN=stable
 
   # use mold instead of lld to speed up build
