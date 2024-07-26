@@ -4,7 +4,7 @@ pkgbase=mkdocstrings-python
 _pyname=("${pkgbase//-/_}")
 pkgname=("${pkgbase}")
 #"${pkgbase}-doc")
-pkgver=1.10.5
+pkgver=1.10.7
 pkgrel=1
 pkgdesc="A Python handler for mkdocstrings"
 url="https://mkdocstrings.github.io"
@@ -13,40 +13,55 @@ arch=("any")
 makedepends=('python-pdm-backend'
              'python-build'
              'python-installer')
-#checkdepends=('python-pytest'
+#             'python-markdown-callouts'
+#             'python-markdown-exec'
 #             'python-griffe'
-#             'mkdocstrings'
+#             'python-tomli'
 #             'mkdocs-material'
-#)
+#             'mkdocs-autorefs'
+#             'mkdocs-gen-files'
+#             'mkdocs-literate-nav'
+#             'mkdocs-git-committers-plugin-2'
+#             'mkdocstrings'
+#             )
+checkdepends=('python-pytest'
+              'python-griffe'
+              'mkdocstrings'
+              'mkdocs-material')
 #source=("https://github.com/mkdocstrings/mkdocstrings/archive/refs/tags/${pkgver}.tar.gz")
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('acdc2a98cd9d46c7ece508193a16ca03ccabcb67520352b7449f84b57c162bdf')
+sha256sums=('bfb5e29acfc69c9177d2b11c18d3127d16e553b8da9bb6d184e428d54795600b')
 
-prepare() {
-    cd ${srcdir}/${_pyname}-${pkgver}
-
-#   mkdir -p docs
-}
+#prepare() {
+#    cd ${srcdir}/${_pyname}-${pkgver}
+#
+##   mkdir -p docs
+#    sed -i -e '$a use_directory_urls: false' mkdocs.yml
+#}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
-
     python -m build --wheel --no-isolation
+
+#   msg "Building Docs"
+#   mkdir -p dist/lib
+#   bsdtar -xpf dist/${_pyname/-/_}-${pkgver}-py3-none-any.whl -C dist/lib
+#   PYTHONPATH="dist/lib" mkdocs build
 }
 
-#check() {
-#    cd ${srcdir}/${_pyname}-${pkgver}
-#
-##   mkdir -p dist/lib
-##   bsdtar -xpf dist/${_pyname}-${pkgver}-py3-none-any.whl -C dist/lib
-##   PYTHONPATH="dist/lib" pytest -vv -l -ra --color=yes -o console_output_style=count #|| warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
-#    pytest -vv -l -ra --color=yes -o console_output_style=count #|| warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
-#}
+check() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    mkdir -p dist/lib
+    bsdtar -xpf dist/${_pyname/-/_}-${pkgver}-py3-none-any.whl -C dist/lib
+    PYTHONPATH="dist/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+#   pytest -vv -l -ra --color=yes -o console_output_style=count #|| warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+}
 
 package_mkdocstrings-python() {
     depends=('python>=3.8'
              'mkdocstrings>=0.25'
-             'python-griffe>=0.47')
+             'python-griffe>=0.48')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
