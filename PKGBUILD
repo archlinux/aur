@@ -5,7 +5,7 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-libpng
 pkgver=1.6.43
-pkgrel=4
+pkgrel=5
 pkgdesc="A collection of routines used to create PNG format graphics (Android ${_android_arch})"
 arch=('any')
 url="http://www.libpng.org/pub/png/libpng.html"
@@ -34,9 +34,6 @@ build() {
     android-${_android_arch}-configure \
         --disable-tests \
         --disable-tools \
-        --disable-unversioned-links \
-        --disable-unversioned-libpng-pc\
-        --disable-unversioned-libpng-config \
         --enable-hardware-optimizations
     make $MAKEFLAGS
 }
