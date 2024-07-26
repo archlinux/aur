@@ -12,8 +12,10 @@ sha512sums=('f722aac0ae8b1d73c231f7f10c269801109818b6c4914b804f45b49250be793be3c
 build()
 {
   cd "$srcdir/$pkgname-$pkgver"
-  sed -i 's/["force-cross"]/["use-system-libs"]/g' Cargo.toml
+  cargo build --relese||(
+  sed -i 's/\["force-cross"\]/\["use-system-libs"\]/g' Cargo.toml
   cargo build --release
+  )
 }
 package()
 {
