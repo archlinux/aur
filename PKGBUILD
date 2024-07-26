@@ -4,11 +4,11 @@
 pkgname=gnucobol
 pkgver=3.2
 pkgdesc="A free, open source and modern COBOL compiler"
-pkgrel=2
+pkgrel=3
 arch=("x86_64")
 url="https://www.gnu.org/software/gnucobol/"
 license=("GPL-3.0-only")
-depends=("db" "gmp" "json-c" "libxml2" "ncurses" "glibc" "bash")
+depends=("db" "gmp" "cjson" "json-c" "libxml2" "ncurses" "glibc" "bash")
 makedepends=("gcc")
 options=("!libtool")
 source=(

@@ -1,13 +1,14 @@
 pkgbase = gnucobol
 	pkgdesc = A free, open source and modern COBOL compiler
 	pkgver = 3.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gnu.org/software/gnucobol/
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = gcc
 	depends = db
 	depends = gmp
+	depends = cjson
 	depends = json-c
 	depends = libxml2
 	depends = ncurses
