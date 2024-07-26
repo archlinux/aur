@@ -3,7 +3,7 @@ pkgname=fairshare-bin
 _appname=FAIRshare
 pkgver=2.1.0
 _electronversion=25
-pkgrel=8
+pkgrel=9
 pkgdesc="Simplifying the curation and sharing of biomedical research data and software according to applicable FAIR guidelines"
 arch=('x86_64')
 url="https://fairdataihub.org/fairshare"
@@ -16,6 +16,7 @@ depends=(
 )
 makedepends=(
     'fuse2'
+    'asar'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}.AppImage"
@@ -24,7 +25,7 @@ source=(
 )
 sha256sums=('9c6bf87ec638dcb3dc44de81e268a57453f26c4e345023a3664ed0f744c2a7c3'
             'f53ab2779598ebdd8bef9425c402eed3cac0e2a6dc3ec5cbda5a07de0bdcf7dc'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
