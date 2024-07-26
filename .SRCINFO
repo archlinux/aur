@@ -1,7 +1,7 @@
 pkgbase = electron-netease-cloud-music-bin
 	pkgdesc = UNOFFICIAL client for music.163.com . Powered by Electron, Vue, and Muse-UI.
 	pkgver = 0.9.38
-	pkgrel = 9
+	pkgrel = 10
 	url = https://dl.encm.cf/
 	arch = x86_64
 	license = GPL-3.0-only
@@ -14,6 +14,6 @@ pkgbase = electron-netease-cloud-music-bin
 	source = electron-netease-cloud-music.sh
 	sha256sums = 9171b1858e8d5b4faef7c0be1cf786c3b824dec5ffe2a4014b1c8239e63cabcc
 	sha256sums = af1edb0435906e7603db02b8622876fb462cbd1135d54c2d74a9c54b4f1c131d
-	sha256sums = 41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = electron-netease-cloud-music-bin
