@@ -1,0 +1,47 @@
+# Maintainer: Matthias Gerstner <matthias.gerstner@nefkom.net>
+
+pkgname='libxpp'
+pkgver=v0.2.2
+pkgrel=1
+pkgdesc='A library providing an object orientented C++ API wrapper for parts of the X11 API'
+arch=('i686' 'x86_64')
+url='https://github.com/gerstner-hub/libxpp'
+license=('MIT')
+_tag='e55326adbffabf187d3c2568e83790c5a09a2086' # v0.2.2
+source=("git+${url}.git?signed#tag=$_tag")
+sha256sums=('SKIP')
+# note: this also depends on libcosmos, to be installed manually from AUR as well
+depends=('glibc' 'gcc-libs' 'libcosmos' 'libx11')
+makedepends=('scons')
+# retrieve key for verification from PGP keyserver, or from gibhub.com/gerstner-hub.gpg
+validpgpkeys=('40C89F006FB8A328B83A37CC14AD6F6579097284')
+
+pkgver() {
+	cd "$pkgname"
+	git describe
+}
+
+prepare() {
+	cd "$pkgname"
+	git submodule init
+	git submodule update
+}
+
+build() {
+	cd "${srcdir}/${pkgname}"
+	scons use-system-pkgs=1
+}
+
+# skip tests, because there's no X display
+#check() {
+#	cd "${srcdir}/${pkgname}"
+#	scons use-system-pkgs=1 run_tests
+#}
+
+package() {
+	cd "${srcdir}/${pkgname}"
+	scons use-system-pkgs=1 install instroot="${pkgdir}/usr"
+	local licensedir="${pkgdir}/usr/share/licenses/${pkgname}"
+	mkdir -p "$licensedir"
+	cp LICENSE "$licensedir"
+}
