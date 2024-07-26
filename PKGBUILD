@@ -2,7 +2,7 @@
 _base=deepxde
 pkgname=python-${_base}
 pkgdesc="Library for scientific machine learning"
-pkgver=1.11.1
+pkgver=1.12.0
 pkgrel=1
 arch=(any)
 url="https://github.com/lululxvi/${_base}"
@@ -14,7 +14,7 @@ optdepends=('python-tensorflow-probability: TensorFlow backend support'
   'python-flax: JAX backend support'
   'python-paddlepaddle: PaddlePaddle backend support')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('67e26d10ffd66b0acbc91a6203e76b479c2468e5a0ce4dd42911babd97a9590426a49bf3f852ee3b6baa701489d757570a0152f7032df5104d35f9e7e88cb752')
+sha512sums=('215cb6d898ee7edbbabf69d34b521cd227fb1796d542a7223440f034f9b6142f2625190ae70c12731772ad27ab313b9ae567617d0cfaf39cdbbe92ab7f1c53f2')
 
 build() {
   cd ${_base}-${pkgver}
