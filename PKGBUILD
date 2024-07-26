@@ -45,12 +45,12 @@ package() {
 
 	# 256 and 24 are proper colored icons
 	for res in 128 64 48 32; do
-		convert "$pkgdir/opt/microsoft/$_pkgshortname/product_logo_256_dev.png" \
+		magick "$pkgdir/opt/microsoft/$_pkgshortname/product_logo_256_dev.png" \
 			-resize "${res}x${res}" \
 			"$pkgdir/opt/microsoft/$_pkgshortname/product_logo_${res}_dev.png"
 	done
 	for res in 22 16; do
-		convert "$pkgdir/opt/microsoft/$_pkgshortname/product_logo_24_dev.png" \
+		magick "$pkgdir/opt/microsoft/$_pkgshortname/product_logo_24_dev.png" \
 			-resize "${res}x${res}" \
 			"$pkgdir/opt/microsoft/$_pkgshortname/product_logo_${res}_dev.png"
 	done
