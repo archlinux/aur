@@ -15,7 +15,7 @@ sha256sums=('32c5e192db8f0b4472148293e737ac6718c81eaf285e3f9974c90e896fc91d5b'
             'b3eb90a34157d85663daaf8020c418045b32555d36ac516b9231a7331f096b91')
 
 package() {
-  tar --zstd -xf data.tar.zst
+  tar --zstd --no-same-owner -xf data.tar.zst
 
   rm -rf ./usr/share/serproid-desktop/jre
   cp -dr --preserve=mode,timestamp ./usr "$pkgdir/"
