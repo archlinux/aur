@@ -3,7 +3,7 @@ pkgname=dialogcraft-bin
 _pkgname=Dialogcraft
 pkgver=1.0.8
 _electronversion=25
-pkgrel=5
+pkgrel=6
 pkgdesc="Desktop client for OpenAI GPT API."
 arch=('x86_64')
 url="https://github.com/Hayden2018/dialogcraft"
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('c1a9d23a1700ae553224141ac938867b9125e139105e8495f383bd6c44fd5ceb'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
