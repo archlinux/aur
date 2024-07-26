@@ -2,8 +2,8 @@
 
 _pkgname="osdctl"
 pkgname="${_pkgname}-bin"
-pkgver=0.34.0
-pkgrel=2
+pkgver=0.35.0
+pkgrel=1
 pkgdesc="CLI for the OSD utilities"
 arch=('x86_64' 'aarch64')
 url="https://github.com/openshift/${_pkgname}"
@@ -15,8 +15,8 @@ conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_x86_64.tar.gz")
 source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_arm64.tar.gz")
-sha256sums_x86_64=('a471143d5f8a3bd70bd2c7c014a1ae0db5ea871f0017ca1aed740bf1dbad889c')
-sha256sums_aarch64=('066507bb42dadf5de4a0131fd4019d5097857ab7924a35d63831715bfef4d4f5')
+sha256sums_x86_64=('5d5e7ff521022aa213d87cc31a0168eee17b3ea84249b083293201720b1d5fd7')
+sha256sums_aarch64=('60a1659caaf39955beb2d205f83730e2128a445967c06c4d2b049d9548b06107')
 
 prepare() {
   cd "${srcdir}"
