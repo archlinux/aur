@@ -1,0 +1,4 @@
+[python-meshio]
+source = "git"
+git = "https://github.com/nschloe/meshio.git"
+prefix = "v"
