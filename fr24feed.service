@@ -9,7 +9,8 @@ ExecStartPre=/usr/bin/fr24feed --validate-config --config-file=/etc/fr24feed.ini
 ExecStart=/usr/bin/fr24feed --monitor-file=%t/fr24feed/decoder.txt --config-file=/etc/fr24feed.ini
 User=fr24
 Group=fr24
-ProtectSystem=full
+SupplementaryGroups=systemd-journal
+ProtectSystem=strict
 ProtectHome=yes
 RuntimeDirectory=fr24feed
 LogsDirectory=fr24feed

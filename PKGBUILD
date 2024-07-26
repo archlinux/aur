@@ -1,11 +1,12 @@
-# Maintainer: Jimmy Xu <me at jimmyxu dot org>
+# Maintainer: Ranieri Althoff <ranisalt+aur at gmail dot com>
+# Contributor: Jimmy Xu <me at jimmyxu dot org>
 # Contributor: Assaf Sapir <meijin007 at gmail dot com>
 # Contributor: Yuval Adam <yuval at y3xz dot com>
 
 pkgname=flightradar24
 _pkgname=fr24feed
 pkgver=1.0.48
-pkgrel=1
+pkgrel=2
 _pkgver=1.0.48-0
 _pkgverarm=1.0.48-0
 pkgdesc='Feeder software for Flightradar24.com (fr24feed)'
@@ -27,8 +28,8 @@ source_armv6h=("https://repo-feed.flightradar24.com/rpi_binaries/${_pkgname}_${_
 source_armv7h=("https://repo-feed.flightradar24.com/rpi_binaries/${_pkgname}_${_pkgverarm}_armhf.deb")
 source_aarch64=("https://repo-feed.flightradar24.com/rpi_binaries/${_pkgname}_${_pkgverarm}_armhf.deb")
 
-sha256sums=('fbc310aa8c8eb06b1050df9d9bedc9722a0a24666f44d5120ad2ac86038c17a5'
-            '7d95f8a5d47e82d7d7aaaedf928bc7c1f7881fa4f0171669a61b1c5e13bdf01a'
+sha256sums=('1a4e30ae787dc2b7145723f703d09d2a43071a6ebb788130d362458037306743'
+            'f8a45a74fb6129f0533fbe9213df3cdfdbb10383fcad45b9ff67be0b7c430e0b'
             'a018c751e431fcde72e709917fdfe663a5c74040af80b56d1a4658ba962c95e5'
             'ebcf31ecb62aef650b0984f978318f7e716078f520efb165306dca592c0821bb'
             '32ae61984ae0123690fea0bf67f2b5f1ee1155f6a2b3a9d0ff7c5431d902ddee')
