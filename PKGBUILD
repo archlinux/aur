@@ -4,12 +4,16 @@
 
 pkgname=kamailio
 pkgver=5.8.2
-pkgrel=2
+pkgrel=3
 pkgdesc='SIP Server for large VoIP and real-time communication platforms'
 arch=('x86_64')
 url='https://www.kamailio.org'
 license=('GPL-2.0-or-later')
 depends=('openssl')
+backup=(
+  'etc/kamailio/kamailio.cfg'
+	'etc/kamailio/kamctlrc'
+)
 makedepends=(
 	'bison'
 	'flex'
@@ -17,7 +21,6 @@ makedepends=(
 	'erlang'
 	'pcre2'
 	'libical'
-	'openssl'
 	'mariadb'
 	'radcli'
 	'postgresql-libs'
@@ -35,9 +38,10 @@ makedepends=(
 	'libmaxminddb'
 	'libev'
 )
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kamailio/kamailio/archive/refs/tags/${pkgver}.tar.gz"
-	'kamailio.sysusers')
-sha256sums=('76a7c779e04b8260c4398fb900109b7952b2a476e206d528ff23b2b4598d18b8'
+optdepends=('rtpengine: The Sipwise media proxy for Kamailio')
+source=("https://www.kamailio.org/pub/kamailio/${pkgver}/src/kamailio-${pkgver}_src.tar.gz"
+	      'kamailio.sysusers')
+sha256sums=('8ca813d9dd338e8e83ae9b1ad8f316b9908fb432af9da1ea55ed3a9744df3faa'
             'e2ad5c2f3213f2ce7de9524da378d062525ce99e2b401590ec0394c521a3d0c8')
 
 prepare() {
@@ -99,7 +103,7 @@ build() {
 		dialplan lcr outbound utils regex uuid
 	)
 	make prefix='/usr' cfg_prefix="${pkgdir}" cfg_target='/etc/kamailio/' \
-		run_prefix='/run' run_dir='kamailio' LIBDIR='lib' include_modules='${KAMODULES[@]}' all
+    run_prefix='/run' run_dir='kamailio' LIBDIR='lib' include_modules='${KAMODULES[@]}' all
 }
 
 package() {
@@ -110,3 +114,5 @@ package() {
 	install -Dm644 "${srcdir}/kamailio.sysusers" "${pkgdir}/usr/lib/sysusers.d/kamailio.conf"
 	install -Dm644 pkg/kamailio/obs/kamailio.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/kamailio.conf"
 }
+
+# vim:set ts=2 sw=2 et:
