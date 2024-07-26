@@ -8,7 +8,7 @@ url="https://github.com/felipealfonsog/TerminaLite"
 license=('BSD-3-Clause')
 depends=('gtk3' 'gcc' 'vte3' 'zsh')
 source=("https://github.com/felipealfonsog/TerminaLite/archive/refs/tags/v.${pkgver}.tar.gz")
-sha256sums=('8211a2006946ded6122413bbdba1e99c261a12cbe58e9728c1f7d2cadbdeb489')
+sha256sums=('659c0ee77d301233c4bbd9f9e625acfb29d06a0776ca146e0b14114883b32184')
 
 prepare() {
   tar xf "v.${pkgver}.tar.gz" -C "$srcdir" --strip-components=1

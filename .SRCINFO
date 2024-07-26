@@ -10,6 +10,6 @@ pkgbase = termlite
 	depends = vte3
 	depends = zsh
 	source = https://github.com/felipealfonsog/TerminaLite/archive/refs/tags/v.0.0.1.tar.gz
-	sha256sums = 8211a2006946ded6122413bbdba1e99c261a12cbe58e9728c1f7d2cadbdeb489
+	sha256sums = 659c0ee77d301233c4bbd9f9e625acfb29d06a0776ca146e0b14114883b32184
 
 pkgname = termlite
