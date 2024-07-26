@@ -16,6 +16,7 @@ pkgbase = pop-launcher-git
 	depends = pop-icon-theme-git
 	depends = sh
 	depends = xdg-utils
+	options = !lto
 	source = git+https://github.com/pop-os/launcher.git
 	sha256sums = SKIP
 

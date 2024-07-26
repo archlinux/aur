@@ -21,6 +21,7 @@ makedepends=(
   'libegl'
   'libxkbcommon'
 )
+options=('!lto')
 source=('git+https://github.com/pop-os/launcher.git')
 sha256sums=('SKIP')
 
@@ -39,7 +40,6 @@ prepare() {
 
 build() {
   cd launcher
-  CFLAGS+=" -ffat-lto-objects"
   export RUSTUP_TOOLCHAIN=stable
   just build-vendored
 }
