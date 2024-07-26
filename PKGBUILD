@@ -3,7 +3,7 @@
 # Contributor: Timo Kramer <fw minus aur at timokramer dot de>
 pkgname=mullvad-vpn-cli
 pkgver=2024.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The Mullvad VPN CLI client"
 arch=('x86_64')
 url="https://www.mullvad.net"
