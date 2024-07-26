@@ -14,13 +14,11 @@ sha256sums=('9d8eb56a92addc866c5ef6fe257e664f19cbf0282894cdb1163e6b70db83dc9d')
 
 prepare() {
   cd "AudioSharing-$pkgver"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   arch-meson "AudioSharing-$pkgver" build
   meson compile -C build
