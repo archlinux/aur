@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="An unoficial port of google drive to linux"
 arch=('x86_64')
 url="https://github.com/PKD667/google-drive-linux"
-license=('')
+license=('MIT')
 source=('google-drive-linux::git+https://github.com/PKD667/google-drive-linux')
 makedepends=('git')
 package() {
