@@ -1,16 +1,14 @@
 pkgbase = imposm
 	pkgdesc = Imports OpenStreetMap data into PostGIS
-	pkgver = 0.11.1
-	pkgrel = 2
+	pkgver = 0.14.0
+	pkgrel = 1
 	url = https://github.com/omniscale/imposm3
 	arch = x86_64
 	license = Apache
 	makedepends = go
 	depends = geos
 	depends = leveldb
-	source = imposm-0.11.1.tar.gz::https://github.com/omniscale/imposm3/archive/v0.11.1.tar.gz
-	source = https://patch-diff.githubusercontent.com/raw/omniscale/imposm3/pull/258.patch
-	sha256sums = 14045272aa0157dc5fde1cfe885fecc2703f3bf33506603f2922cdf28310ebf0
-	sha256sums = 9b00003ce1a1085737a96bd36e510a98351dda46ed40a1be9ab154b3ebb21b01
+	source = imposm-0.14.0.tar.gz::https://github.com/omniscale/imposm3/archive/v0.14.0.tar.gz
+	sha256sums = d6b012497eff1b8faa25d125ce0becb97f68c95a68dd2c35cf65a0bf3c34b833
 
 pkgname = imposm
