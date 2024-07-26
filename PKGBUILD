@@ -2,7 +2,7 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=you-get
-pkgver=0.4.1700
+pkgver=0.4.1718
 pkgrel=1
 pkgdesc="A YouTube/Youku/Niconico video downloader written in Python 3."
 url="https://www.soimort.org/you-get/"
@@ -12,21 +12,21 @@ depends=('python')
 makedepends=('python-setuptools')
 optdepends=('python-pysocks: for socks proxy support')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/soimort/you-get/archive/v$pkgver.tar.gz")
-b2sums=('0c732a123bd04db71f1ec9ecf380e4dda27f2ac70745a10616ddf9b955a236adffea609ffe0cab0c70030b64f965151024eb624062aededa4ea851afbd6f49f1')
+b2sums=('d8a39a6e3a1e790f2667437fd7b0ba8b3bdde15ed0a436f11703cdbc71b1bf700653a6d49282dd7b7e69b290d517b4dd4d48e949e59ecf71a6300cb50d9acf57')
 
 build() {
   cd you-get-$pkgver
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
   cd you-get-$pkgver
-  python setup.py test || echo "Tests failed"
+  (cd src; python -m unittest discover -s ../tests) || echo "Tests failed"
 }
 
 package() {
   cd you-get-$pkgver
-  python setup.py install --root="$pkgdir"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
   install -Dm644 contrib/completion/_you-get "$pkgdir"/usr/share/zsh/site-functions/_you-get
