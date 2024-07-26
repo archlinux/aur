@@ -1,7 +1,7 @@
 pkgbase = byedpi-bin
 	pkgdesc = Bypass DPI
 	pkgver = 0.11.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hufrea/byedpi
 	arch = aarch64
 	arch = armv6h
@@ -12,7 +12,7 @@ pkgbase = byedpi-bin
 	conflicts = byedpi
 	options = !debug
 	source = byedpi.service
-	b2sums = 74fde8fc2f94e50dd7ea092bff6d592d25661f8a53fc240fe9c76739aa9f86eba6899bd1bbee3d93e5009f5cb40ed3ed6b83bcef4d0f2a2cd24fe8a0665312b6
+	b2sums = 676ed14a41fc3eca946aa731e75604c50e5459351d864da9192b332e3e34d3a4d9bb54d789a749b64de1fbd7532198ec9ffbdd627e092a68f4997d0006dbebce
 	source_aarch64 = https://github.com/hufrea/byedpi/releases/download/v0.11.2/byedpi-11.2-aarch64.tar.gz
 	b2sums_aarch64 = e7d8f76386799bdcbac9d39ee5cc14269da90191c4888e4a90c681d5b9308303f539697ad59349f293226f0a5aee71e23519a1ce3cf984ab62c80eff2bb43468
 	source_armv6h = https://github.com/hufrea/byedpi/releases/download/v0.11.2/byedpi-11.2-armv6.tar.gz
