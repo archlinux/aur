@@ -16,7 +16,6 @@ sha256sums=('f22b2b38440ff7ae709663d6812c912a6e5d5b1b57c63df2c76d3551f5f60973')
 prepare() {
   cd "EmojiMart-$pkgver"
   export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
 
   yarn install
@@ -35,7 +34,6 @@ prepare() {
 build() {
   cd "EmojiMart-$pkgver"
   export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   yarn build
   yarn tauri build
