@@ -23,10 +23,10 @@ build() {
 }
 
 package() {
-    cd "${srcdir}"
-    install -D -m644 ${srcdir}/mailpit.service ${pkgdir}/usr/lib/systemd/system/mailpit.service
-    cd "mailpit-${pkgver}"
-    install -D -m755 mailpit ${pkgdir}/usr/bin/mailpit
+	cd "${srcdir}"
+	install -D -m644 ${srcdir}/mailpit.service ${pkgdir}/usr/lib/systemd/system/mailpit.service
+	cd "mailpit-${pkgver}"
+	install -D -m755 mailpit ${pkgdir}/usr/bin/mailpit
 }
 sha256sums=('a7eec7ebf90d5f8c70fcfbb57f5b881131d93b6925643c491d29c19ff84bff05'
             '602494cc3d28d58fa430ec3c53fd66e694db9faa87e98e45effe00a844affc4b')
