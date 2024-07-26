@@ -34,9 +34,6 @@ build() {
     android-${_android_arch}-configure \
         --disable-tests \
         --disable-tools \
-        --disable-unversioned-links \
-        --disable-unversioned-libpng-pc\
-        --disable-unversioned-libpng-config \
         --enable-hardware-optimizations
     make $MAKEFLAGS
 }
