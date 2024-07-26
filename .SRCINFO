@@ -1,6 +1,6 @@
 pkgbase = matrix-synapse-git
 	pkgdesc = Matrix reference homeserver
-	pkgver = 1.100.0.r0.g4a5ea43f1
+	pkgver = 1.111.0.r0.g574aa53126
 	pkgrel = 1
 	url = https://github.com/element-hq/synapse
 	install = synapse.install
@@ -53,6 +53,7 @@ pkgbase = matrix-synapse-git
 	depends = python-packaging
 	depends = python-importlib-metadata
 	depends = python-pydantic
+	depends = python-python-multipart>=0.0.9
 	depends = python-systemd
 	depends = systemd
 	optdepends = perl: sync_room_to_group.pl

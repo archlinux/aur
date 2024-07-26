@@ -4,7 +4,7 @@
 
 pkgname=matrix-synapse-git
 _pkgname=matrix-synapse
-pkgver=1.100.0.r0.g4a5ea43f1
+pkgver=1.111.0.r0.g574aa53126
 pkgrel=1
 pkgdesc="Matrix reference homeserver"
 url="https://github.com/element-hq/synapse"
@@ -42,6 +42,7 @@ depends=(
 	'python-packaging'
 	'python-importlib-metadata'
 	'python-pydantic'
+	'python-python-multipart>=0.0.9'
 	'python-systemd'
 	'systemd'
 )
