@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=miteiru
 _pkgname=Miteiru
-pkgver=4.6.0
+pkgver=4.6.1
 _electronversion=21
 _nodeversion=16
 pkgrel=1
@@ -33,7 +33,7 @@ source=(
     "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('7e0b9018e0f701f6e6dd563563405163087cf71d3d29a9620b4b0d457ee59a95'
+sha256sums=('3e65a290fa4b667ae5e4792086174967f9374c053cf54ab1e4751cd6cddff8c9'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
