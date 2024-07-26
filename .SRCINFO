@@ -1,10 +1,10 @@
 pkgbase = musictube
 	pkgdesc = YouTube streaming music player
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://flavio.tordini.org/musictube
 	arch = x86_64
-	license = unknown
+	license = custom:"Copyright (c) Flavio Tordini <flavio.tordini@gmail.com> All Rights Reserved."
 	depends = qt5-declarative
 	depends = qt5-x11extras
 	depends = mpv

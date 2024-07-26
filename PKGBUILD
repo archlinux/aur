@@ -9,11 +9,11 @@
 
 pkgname=musictube
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="YouTube streaming music player"
 arch=('x86_64')
 url="https://flavio.tordini.org/musictube"
-license=('unknown')
+license=('custom:"Copyright (c) Flavio Tordini <flavio.tordini@gmail.com> All Rights Reserved."')
 depends=('qt5-declarative' 'qt5-x11extras' 'mpv')
 source=("$pkgname-$pkgver.deb::https://flavio.tordini.org/files/$pkgname/$pkgname.deb")
 sha256sums=('c0993bc31a5e528e39b57f2ac604de7c35c73bd292b191502c74d2bb30abe453')
@@ -23,4 +23,7 @@ package() {
 
   # Remove deprecated app menu
   rm -rf "$pkgdir/usr/share/menu"
+
+  # custom license to correct path
+  install -Dm644 "$pkgdir/usr/share/doc/$pkgname/copyright" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
