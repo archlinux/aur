@@ -1,7 +1,7 @@
 pkgbase = android-meson
 	pkgdesc = Meson wrapper for Android
 	pkgver = 3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mesonbuild.com/
 	arch = any
 	license = GPL

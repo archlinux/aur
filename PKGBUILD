@@ -3,7 +3,7 @@
 
 pkgname=android-meson
 pkgver=3
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Meson wrapper for Android"
 depends=('meson'
@@ -20,11 +20,17 @@ _architectures="aarch64 armv7a-eabi x86 x86-64"
 
 build() {
     for _arch in ${_architectures}; do
-        unset CPPFLAGS
-        unset CFLAGS
-        unset CXXFLAGS
-        unset LDFLAGS
+        unset ANDROID_CFLAGS
+        unset ANDROID_CPPFLAGS
+        unset ANDROID_CXXFLAGS
+        unset ANDROID_LDFLAGS
+
         source android-env ${_arch}
+
+        export CFLAGS="${ANDROID_CFLAGS}"
+        export CPPFLAGS="${ANDROID_CPPFLAGS}"
+        export CXXFLAGS="${ANDROID_CXXFLAGS}"
+        export LDFLAGS="${ANDROID_LDFLAGS}"
         python toolchain_generator.py --arch ${_arch} --output-file toolchain-android-${_arch}.meson
         sed "s|@TRIPLE@|${_arch}|g;" meson-android-wrapper.sh > android-${_arch}-meson
     done
