@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="supabase"
-pkgver=1.183.5
+pkgver=1.187.3
 pkgrel=1
 pkgdesc="A CLI for Supabase, an open source Firebase alternative"
 arch=('any')
@@ -14,12 +14,11 @@ optdepends=('bash-completion: for shell auto-completion'
             'zsh-completions: for shell auto-completion')
 _pkgsrc="cli-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('46d897aff84559071a9714115c7bfb9b2222870d7b77a3d7e1dad7c079c4f63e')
+sha256sums=('c6b13def47cecaab8173c7c19230bcc80f153b08119c1e13ac08a6fb869e7bcd')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
-  [ -d "build" ] || mkdir "build"
-  [ -d "completions" ] || mkdir "completions"
+  mkdir -p "build" "completions"
 }
 
 build() {
@@ -31,7 +30,7 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   go build -o "build/${pkgname}" .
 
-  for _sh in bash fish zsh; do
+  for _sh in bash fish zsh powershell; do
     ./"build/${pkgname}" completion "${_sh}" > "completions/${pkgname}.${_sh}"
   done
 }
@@ -39,7 +38,7 @@ build() {
 # check() {
 #  cd "${srcdir}/${_pkgsrc}"
 #  go test ./...
-#}
+# }
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
@@ -48,7 +47,8 @@ package() {
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   cd "completions"
-  install -Dm644 "${pkgname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
-  install -Dm644 "${pkgname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
-  install -Dm644 "${pkgname}.zsh"  "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
+  install -Dm644 "${pkgname}.bash"       "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+  install -Dm644 "${pkgname}.fish"       "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
+  install -Dm644 "${pkgname}.zsh"        "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
+  install -Dm644 "${pkgname}.powershell" "${pkgdir}/usr/share/powershell/Modules/${pkgname}/${pkgname}.ps1"
 }
