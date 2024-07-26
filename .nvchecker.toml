@@ -1,0 +1,3 @@
+[python-endpoints]
+source = "pypi"
+pypi = "endpoints"
