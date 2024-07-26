@@ -1,6 +1,6 @@
 pkgbase = sfcgal
 	pkgdesc = Wrapper around the CGAL library that intents to implement 2D and 3D operations on OGC standards models
-	pkgver = 1.5.1
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://gitlab.com/Oslandia/SFCGAL
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = sfcgal
 	depends = mpfr
 	depends = openscenegraph
 	provides = sfcgal
-	source = https://gitlab.com/Oslandia/sfcgal/-/archive/v1.5.1/SFCGAL-v1.5.1.tar.gz
-	sha256sums = ea5d1662fada7de715ad564dc810c3059024ed81ae393f5352489f706fdfa3b1
+	source = https://gitlab.com/Oslandia/sfcgal/-/archive/v1.5.2/SFCGAL-v1.5.2.tar.gz
+	sha256sums = b946b3c20d53f6e2703046085f0fcfea6c1a4081163f7bedd30b1195801efdd2
 
 pkgname = sfcgal
