@@ -2,13 +2,13 @@
 
 pkgname=quarto-cli-pre-release
 pkgver=1.6.4
-pkgrel=1
+pkgrel=2
 _pkgbasename=quarto-cli
 _denodomver="0.1.35-alpha-artifacts"
 _deno_arch="deno-x86_64-unknown-linux-gnu"
 pkgdesc="Quarto is an open-source scientific and technical publishing system built on [Pandoc](https://pandoc.org). This package tracks pre-release tags of Quarto."
 arch=('x86_64' 'i686')
-depends=('nodejs' 'deno' 'dart-sass' 'esbuild' 'pandoc' 'lua-lpeg' 'typst')
+depends=('nodejs' 'deno<1.45' 'dart-sass' 'esbuild' 'pandoc' 'lua-lpeg' 'typst')
 makedepends=('git' 'npm' 'rust')
 url="https://quarto.org/"
 license=('MIT')
