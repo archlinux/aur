@@ -3,7 +3,7 @@ pkgname=chatpad-ai-bin
 _pkgname=Chatpad-AI
 pkgver=1.4.0
 _electronversion=25
-pkgrel=9
+pkgrel=10
 pkgdesc="Not just another ChatGPT user-interface!"
 arch=("x86_64")
 url="https://chatpad.ai/"
@@ -22,7 +22,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('05593b7575fe119cb08aa6049cb93d76dc2cfe0cc86fc0db2d22601f453d9c93'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
