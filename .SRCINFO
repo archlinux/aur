@@ -1,7 +1,7 @@
 pkgbase = google-docs-bin
 	pkgdesc = Google Docs Desktop App made with electron. Includes Google Docs, Sheets, Slides, Forms, and Drive.
 	pkgver = 2022.12.1
-	pkgrel = 12
+	pkgrel = 13
 	url = https://github.com/Comp-Labs/Google-Docs
 	arch = x86_64
 	license = MIT
@@ -13,6 +13,6 @@ pkgbase = google-docs-bin
 	source = google-docs.sh
 	sha256sums = ec35d80b9189ddfa095b108fc939490e0d2ef682036a82e7807679ae0b3a49d4
 	sha256sums = 22d8c1bb0c91f6cb8fa332a53a40d5223f7caa4b12af0029f4b0c2b65b6a1596
-	sha256sums = 41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = google-docs-bin
