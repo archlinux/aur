@@ -1,6 +1,6 @@
 pkgbase = erigon
 	pkgdesc = Ethereum implementation on the efficiency frontier.
-	pkgver = 2.60.4
+	pkgver = 2.60.5
 	pkgrel = 2
 	epoch = 1
 	url = https://github.com/ledgerwatch/erigon
@@ -9,7 +9,7 @@ pkgbase = erigon
 	license = GPL3
 	makedepends = go
 	depends = glibc
-	source = https://github.com/ledgerwatch/erigon/archive/refs/tags/v2.60.4.tar.gz
-	b2sums = c7f2315ba339ec9dbba9f5023e2aee6fcb9225dc6029a52c8e7c7daa04468175d7ba1d60a2d4baed6c0f268eebe0d8c65ee2a04825ce2f270f36b7a936627f1d
+	source = https://github.com/ledgerwatch/erigon/archive/refs/tags/v2.60.5.tar.gz
+	b2sums = af0c50239020307041aa7902d06014530274845437f37672a276af1f2305533b7dd25bfc1f5db0754f115338d47d37961f775b6e58d4b8417a13f6b2d7120eb8
 
 pkgname = erigon
