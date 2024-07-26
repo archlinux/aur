@@ -13,7 +13,6 @@ sha256sums=('0557d393595eae97b11feb6ec9b9914d8d3779c047ff3771be7307487cbed07c')
 
 prepare() {
   cd "$pkgname-$pkgver"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=nightly
   cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
@@ -21,7 +20,6 @@ prepare() {
 build() {
   cd "$pkgname-$pkgver"
   CFLAGS+=" -ffat-lto-objects"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=nightly
   export GOPATH="$srcdir/gopath"
   export CGO_CPPFLAGS="${CPPFLAGS}"
