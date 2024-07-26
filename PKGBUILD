@@ -3,7 +3,7 @@ pkgname=brs-desktop-bin
 _pkgname="BrightScript Simulator"
 pkgver=1.2.0
 _electronversion=25
-pkgrel=3
+pkgrel=4
 pkgdesc="Roku device simulator as a desktop app "
 arch=('x86_64')
 url="https://github.com/lvcabral/brs-desktop"
@@ -23,7 +23,7 @@ source=(
 )
 sha256sums=('d9873d6542ada40eb92886c092bea44038ed78193a98dc39b70a6d6e7a9c2a35'
             '2a22abb3fe5e373c8bc269cc5f61321ca9ece31084b86e3b093bd7bf37427c23'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
