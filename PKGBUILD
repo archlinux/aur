@@ -31,7 +31,7 @@ validpgpkeys=()
 
 build() {
 	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr
+	./configure --prefix=/usr CFLAGS="-Wno-error=implicit-int"
 	make
 }
 
