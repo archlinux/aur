@@ -2,7 +2,7 @@
 # Contributor: Andreas Wagner <Andreas dot Wagner at em dot uni-frankfurt dot de>
 
 pkgname=lbdb
-pkgver=0.52.1
+pkgver=0.53
 pkgrel=1
 pkgdesc="The little brother's database for the mutt mail reader"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ optdepends=(
 )
 backup=('etc/lbdb.rc' 'etc/lbdb_ldap.rc')
 source=(https://github.com/RolandRosenfeld/lbdb/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('186b263056bc979d399d1d7f29664e84dd7a4282ffbe4378cb567e55318d7929')
+sha256sums=('86cecfe20f721ac98d9e57763fd609d85cc199461f9bb64cd51e1748e16a2089')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
