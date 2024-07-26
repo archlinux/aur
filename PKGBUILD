@@ -38,14 +38,12 @@ sha256sums=('641c094cac32ec751414bb3ac1bff3ba5aff4b6c9b34c11cc58530d3555aea17')
 
 prepare() {
   cd "$pkgname"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   CFLAGS+=" -ffat-lto-objects"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   arch-meson "$pkgname" build \
     -D sodium-source='system' \
@@ -54,7 +52,6 @@ build() {
 }
 
 check() {
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   meson test -C build --print-errorlogs || :
 }
