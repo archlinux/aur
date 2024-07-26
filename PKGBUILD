@@ -1,5 +1,6 @@
 # Maintainer: Lorenzo Bodini <lorenzo.bodini@prabo.org>
 pkgname=priv-git
+_pkgname=${pkgname%-git}
 pkgver=1.0
 pkgrel=1
 epoch=
@@ -16,7 +17,7 @@ source=("git+${url}")
 sha256sums=("SKIP")
 
 package() {
-    cd "$pkgname"
+    cd "$_pkgname"
     PRIV_INSTALL_SKIP_CONF=true PREFIX="${pkgdir}/usr" ./install.sh
     install -Dm 755 priv.conf "${pkgdir}/etc/priv.conf"
 }
