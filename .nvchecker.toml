@@ -1,0 +1,5 @@
+[trunk-recorder]
+source = "github"
+github = "robotastic/trunk-recorder"
+use_max_tag = true
+prefix = "v"
