@@ -1,7 +1,7 @@
 # Maintainer: Matthew Wilding <mbwilding at gmail dot com>
 
 pkgname=("sand")
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Sand is an engaging and interactive terminal physics sandbox"
 url="https://github.com/mbwilding/sand"

@@ -1,11 +1,11 @@
 pkgbase = sand
 	pkgdesc = Sand is an engaging and interactive terminal physics sandbox
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/mbwilding/sand
 	arch = x86_64
 	license = MIT
-	source = https://github.com/mbwilding/sand/releases/download/v0.1.3/sand-Linux-x86_64-musl.tar.gz
+	source = https://github.com/mbwilding/sand/releases/download/v0.1.4/sand-Linux-x86_64-musl.tar.gz
 	sha256sums = 30ca6ff9a97f0ff3f33447fb02caca8d32d782d06938fa435d96148b3c80cb04
 
 pkgname = sand
