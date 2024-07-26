@@ -1,6 +1,6 @@
 pkgname=dae-bin-x64-v2
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.7.0
+pkgrel=3
 pkgdesc="A Linux lightweight and high-performance transparent proxy solution based on eBPF."
 arch=('x86_64')
 url="https://github.com/daeuniverse/dae"
@@ -14,7 +14,7 @@ provides=("dae")
 conflicts=("dae")
 backup=("etc/dae/config.dae")
 source=("${url}/releases/download/v${pkgver}/dae-linux-x86_64_v2_sse.zip")
-sha256sums=('e0f3e1e9a0814f689a425d730f9a02e178685210b8064741bc3f253896a57122')
+sha256sums=('842be8818005eee7d5a98683bf4fd7f6cd58dc2f2e4e8399b46ea0fa6fded596')
 
 prepare() {
 	if !(/lib/ld-linux-x86-64.so.2 --help | grep "x86-64-v2 (supported, searched)" &> /dev/null); then
