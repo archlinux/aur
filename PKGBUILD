@@ -2,7 +2,7 @@
 
 pkgname=archipelagomw-bin
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A Multi-Game Randomizer and Server"
 arch=("x86_64")
 url="https://github.com/ArchipelagoMW/Archipelago"
@@ -22,7 +22,7 @@ package() {
     cat <<EOF >"$pkgdir/usr/bin/$file"
 #!/bin/bash
 cd /opt/Archipelago
-./$file
+./$file "\$@"
 EOF
     chmod +x "$pkgdir/usr/bin/$file"
     # desktop entries
