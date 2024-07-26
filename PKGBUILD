@@ -3,7 +3,7 @@ pkgname=broadcast-bin
 _pkgname="Cubic Broadcast"
 pkgver=1.0.5
 _electronversion=25
-pkgrel=8
+pkgrel=9
 pkgdesc="Advanced tool for recording your desktop. Complete with overlay support."
 arch=("x86_64")
 url="https://github.com/Mobiz-Advanced-Technologies/Broadcast"
@@ -17,7 +17,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('e2a9142bb8f5e024922538cd2fd216c52ae7c44ee06c1cd8a8058ed1a28bb5e1'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
