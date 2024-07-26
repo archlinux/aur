@@ -3,15 +3,15 @@
 
 pkgname=daed-git
 _pkgname=${pkgname%-git}
-pkgver=0.7.0rc1.r1.gba8d223
-pkgrel=1
+pkgver=0.7.0rc1.1.r0.g740cf42
+pkgrel=2
 pkgdesc="A modern dashboard for dae, bundled with dae-wing (backend API server) and dae (core)."
 arch=('x86_64' 'aarch64')
 url="https://github.com/daeuniverse/daed"
 license=('AGPL-3.0-or-later AND MIT')
 makedepends=('git' 'pnpm' 'clang' 'go')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+provides=("${_pkgname}" "dae")
+conflicts=("${_pkgname}" "dae")
 source=("git+https://github.com/daeuniverse/${_pkgname}.git")
 sha256sums=('SKIP')
 install="${_pkgname}.install"
