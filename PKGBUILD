@@ -3,7 +3,7 @@
 
 pkgname=cosmic-settings-git
 pkgver=r433.4908e38
-pkgrel=1
+pkgrel=2
 pkgdesc="The settings application for the COSMIC desktop environment."
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-settings"
