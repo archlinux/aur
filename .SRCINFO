@@ -1,7 +1,7 @@
 pkgbase = kalc
 	pkgdesc = a complex numbers, 2d/3d graphing, arbitrary precision, vector/matrix, cli calculator with real-time output and support for units
 	pkgver = 1.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bgkillas/kalc
 	arch = any
 	license = GPL3
@@ -10,6 +10,8 @@ pkgbase = kalc
 	makedepends = gcc
 	makedepends = m4
 	makedepends = make
+	depends = gmp
+	depends = mpfr
 	source = kalc-1.3.2.tar.gz::https://github.com/bgkillas/kalc/archive/refs/tags/v1.3.2.tar.gz
 	sha512sums = f722aac0ae8b1d73c231f7f10c269801109818b6c4914b804f45b49250be793be3cadfc4648b3021b941fa46452c4e28e392e77ded9849ac0dd812a2da5a7bba
 
