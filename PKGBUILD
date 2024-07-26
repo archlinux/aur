@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=napcat-bin
 _pkgname=NapCat
-pkgver=1.6.7
+pkgver=1.6.9
 pkgrel=1
 pkgdesc="基于NTQQ的无头Bot框架."
 arch=(
@@ -16,7 +16,6 @@ conflicts=("${pkgname%-bin}")
 depends=(
     'linuxqq'
     'nodejs'
-    'python-setuptools'
 )
 makedepends=(
     'gendesk'
@@ -31,8 +30,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${pkgver}/${_pkgname}.linux.arm64.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${pkgver}/${_pkgname}.linux.x64.zip")
 sha256sums=('f9dd38354229f567957ca10faeba7c2ee381db370507ca1db46d1ab7224ea5fc')
-sha256sums_aarch64=('b4b00ba24d549dadc42cc375ff8cb4c096f7d2fa92745cd420e576352220c64a')
-sha256sums_x86_64=('b8e401307f8c4ba148f5abf7ac7d20e7259ef72efb33ad8ffb89020b4f37e252')
+sha256sums_aarch64=('9312191789f37e41d2b65bbbacb0bd9f160229a9a52e0618bd6f5e7aaa019fc8')
+sha256sums_x86_64=('e82538386c486324e1c8c30e90a18a790440d83939b584e4a6f7562e10e30b3f')
 build() {
     gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Network" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
     chmod 755 "${srcdir}/${_pkgname}.linux."*/"${pkgname%-bin}".*
