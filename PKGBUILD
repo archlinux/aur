@@ -3,7 +3,7 @@
 # Contributor: Reto Brunner <brunnre8@gmail.com>
 
 pkgname=mkosi-git
-pkgver=23.1.r11.g6972f9efba
+pkgver=24.r1.gd87c4dd08d
 pkgrel=1
 pkgdesc='Build Legacy-Free OS Images'
 arch=('any')
@@ -93,4 +93,8 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm 644 mkosi/resources/mkosi.1 "$pkgdir/usr/share/man/man1/mkosi.1" || true
+
+  python -m mkosi completion bash | install -Dm 644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/mkosi"
+  python -m mkosi completion fish | install -Dm 644 /dev/stdin "$pkgdir/usr/share/fish/completions/mkosi.fish"
+  python -m mkosi completion zsh  | install -Dm 644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_mkosi"
 }
