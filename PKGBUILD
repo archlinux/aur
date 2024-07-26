@@ -1,6 +1,6 @@
 # Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
 pkgname=python-nextcord-git
-pkgver=r.
+pkgver=r4336.9785cb70
 pkgrel=1
 pkgdesc="A Python wrapper for the Discord API forked from discord.py "
 arch=('any')
@@ -16,8 +16,7 @@ conflicts=('python-nextcord')
 md5sums=('SKIP')
 
 pkgver() {
-  mkdir python-nextcord-git
-  cd "$pkgname"
+  cd nextcord-git
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
