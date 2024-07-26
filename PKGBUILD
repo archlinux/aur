@@ -3,7 +3,7 @@
 pkgname=semgrep-bin
 _name=semgrep
 pkgver=1.81.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and syntax-aware semantic code pattern search for many languages: like grep but for code"
 arch=(x86_64)
 url=https://github.com/returntocorp/semgrep
@@ -13,7 +13,7 @@ depends=(
   'python' 'python-attrs' 'python-boltons' 'python-click' 'python-click-option-group'
   'python-colorama' 'python-defusedxml' 'python-glom' 'python-jsonschema' 'python-packaging'
   'python-peewee' 'python-lsp-jsonrpc' 'python-requests' 'python-rich'  'python-ruamel-yaml'
-  'python-tomli' 'python-typing_extensions' 'python-urllib3' 'python-wcmatch'
+  'python-tomli' 'python-typing_extensions' 'python-urllib3' 'python-wcmatch' 'python-opentelemetry-api'
 )
 optdepends=('jsonnet: experimental jsonnet support')
 provides=('semgrep')

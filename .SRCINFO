@@ -1,7 +1,7 @@
 pkgbase = semgrep-bin
 	pkgdesc = Fast and syntax-aware semantic code pattern search for many languages: like grep but for code
 	pkgver = 1.81.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/returntocorp/semgrep
 	arch = x86_64
 	license = LGPL2.1
@@ -27,6 +27,7 @@ pkgbase = semgrep-bin
 	depends = python-typing_extensions
 	depends = python-urllib3
 	depends = python-wcmatch
+	depends = python-opentelemetry-api
 	optdepends = jsonnet: experimental jsonnet support
 	provides = semgrep
 	options = !strip
