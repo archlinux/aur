@@ -1,0 +1,3 @@
+#!/bin/sh
+cd /usr/share/serproid-desktop
+exec java --module-path /usr/lib/jvm/java-*-openjfx/lib --add-modules javafx.controls,javafx.fxml,javafx.swing -Djava.util.logging.config.class=smartcert.LogConfig -classpath "lib/*" smartcert.Main
