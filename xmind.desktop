@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Xmind
+Exec=/usr/bin/xmind %U
+Terminal=false
+Type=Application
+Icon=xmind
+StartupWMClass=Xmind
+StartupNotify=true
+Comment=Xmind - The most popular mind mapping software.
+MimeType=application/xmind;x-scheme-handler/xmind;x-scheme-handler/xmind-zen;
+Categories=Office;
