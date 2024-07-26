@@ -1,10 +1,10 @@
 diff --git a/alcotest.opam b/alcotest.opam
-index afefbd7..e946488 100644
+index 4136740..f9b59ab 100644
 --- a/alcotest.opam
 +++ b/alcotest.opam
 @@ -25,9 +25,7 @@ depends: [
    "astring"
-   "cmdliner" {>= "1.1.0"}
+   "cmdliner" {>= "1.2.0"}
    "re" {>= "1.7.2"}
 -  "stdlib-shims"
    "uutf" {>= "1.0.1"}
@@ -13,12 +13,12 @@ index afefbd7..e946488 100644
  ]
  conflicts: [
 diff --git a/dune-project b/dune-project
-index 68f54b3..cc95020 100644
+index a8f6d75..dff5795 100644
 --- a/dune-project
 +++ b/dune-project
 @@ -29,9 +29,7 @@ tests to run.
    astring
-   (cmdliner (>= 1.1.0))
+   (cmdliner (>= 1.2.0))
    (re (>= 1.7.2))
 -  stdlib-shims
 -  (uutf (>= 1.0.1))
@@ -26,7 +26,7 @@ index 68f54b3..cc95020 100644
 +  (uutf (>= 1.0.1)))
   (conflicts
    (result (< 1.5)) ;; Ensure `Result.result` = `Stdlib.result` when possible
-   ))
+   (js_of_ocaml-compiler (< 5.8)) ;; requirement for the js stubs
 diff --git a/src/alcotest-engine/dune b/src/alcotest-engine/dune
 index 5dbe572..197e0ef 100644
 --- a/src/alcotest-engine/dune
