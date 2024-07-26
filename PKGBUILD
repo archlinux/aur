@@ -2,7 +2,7 @@
 # Contributer: Alpin <alpin 'at' alpindale 'dot' dev>
 # Author: LostRuins (concedo), YellowRoseCx
 pkgname=koboldcpp-hipblas
-_pkgver=1.70
+_pkgver=1.71
 pkgver=$_pkgver.yr0
 pkgrel=1
 pkgdesc="An easy-to-use AI text-generation software for GGML and GGUF models (with HIPBLAS, for ROCM)"
@@ -29,7 +29,7 @@ source=(
   'koboldcpp.png'
 )
 sha256sums=(
-  'ad766f86a44c94b80535a69c734cda4a483cab724c1bd1d2d80a6f12709e1d6a'
+  '4a3c88530ffc84577cf5c0e194e7e7ec71e2ee58389c78a96a9a705b643fe5a5'
   'fcec7b843b908e1c03496fdc0605e6509f52526a855c43db16e287ef646503ef'
   'd244788c74a693a383bea7db6ab2bb2f762e6020de900be977b16e18dcd20f54'
 )
