@@ -1,0 +1,4 @@
+[ruby-tcxread]
+source = "github"
+github = "firefly-cpp/tcxread"
+use_latest_release = "true"
