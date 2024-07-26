@@ -1,5 +1,5 @@
 # Maintainer: Benjamin Voisin <benjamin.voisin@ens-rennes.fr>
-pkgname=croco_dc
+pkgname=croco_dc-git
 pkgver=latest
 pkgrel=1
 pkgdesc="A crocodile replacement of sl"
