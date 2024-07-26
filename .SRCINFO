@@ -1,16 +1,16 @@
 pkgbase = python-asdf-standard
 	pkgdesc = Standards document describing ASDF, Advanced Scientific Data Format
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://asdf-standard.readthedocs.io
 	arch = any
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/a/asdf_standard/asdf_standard-1.1.0.tar.gz
-	md5sums = ccdd9e09c94f12fddd78914faecad727
+	source = https://files.pythonhosted.org/packages/source/a/asdf_standard/asdf_standard-1.1.1.tar.gz
+	md5sums = 72245c8caeef404b8cd8c9fd21031a28
 
 pkgname = python-asdf-standard
 	depends = python>=3.8
