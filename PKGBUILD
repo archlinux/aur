@@ -3,15 +3,15 @@
 
 pkgname=bio-tbtools
 _pkgname=tbtools
-pkgver=2.070
-pkgrel=2
+pkgver=2.109
+pkgrel=1
 epoch=1
 pkgdesc='GUI/CommandLine Tool Box for biologistists to utilize NGS data. \
-	https://doi.org/10.1016/j.molp.2020.06.009'
+	https://doi.org/10.1016/j.molp.2023.09.010'
 arch=('x86_64')
 url='https://github.com/CJ-Chen/TBtools-II'
 license=('unknown')
-depends=('java-runtime'
+depends=('java-runtime>=11'
          'bash')
 makedepends=('unzip'
              'gendesk')
@@ -23,10 +23,8 @@ optdepends=('blast+: BLAST support'
             'trimal: large scale align support'
             'iqtree: maximum likelihood phylogenomic tree support'
             'kaks_calculator: kaks calculate support')
-source=("https://github.com/CJ-Chen/TBtools-II/releases/download/${pkgver}/TBtools_JRE1.6.jar"
-        "LICENSE")
-sha256sums=('2e50c2ec7119f7c33391a1e9dbd018742edd64004a43cc9f590a6ec30fcf0e03'
-            'ea019d305df02a42515d8fdd378158503fb49349e3c10aa94569e7f301f72c1f')
+source=("https://github.com/CJ-Chen/TBtools-II/releases/download/${pkgver}/TBtools_JRE1.6.jar")
+sha256sums=('49ee8bca260d9c083d4b04336795406482933673c103687bc0665217a30a1c82')
 
 prepare() {
     # generate /usr/bin file
@@ -36,7 +34,6 @@ prepare() {
 }
 
 package() {
-    install -Dm644 ${srcdir}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm 755 ${srcdir}/${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
     install -Dm 644 ${srcdir}/${_pkgname}.desktop ${pkgdir}/usr/share/applications/${_pkgname}.desktop
     install -Dm 755 ${srcdir}/TBtools*.jar ${pkgdir}/usr/share/${pkgname}/${_pkgname}.jar
