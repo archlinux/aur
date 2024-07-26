@@ -1,0 +1,17 @@
+pkgbase = hfd-git
+	pkgdesc = CLI-Tool for download Huggingface models and datasets with aria2/wget+git
+	pkgver = r30.258f20e
+	pkgrel = 1
+	url = https://gist.github.com/padeoe/697678ab8e528b85a2a7bddafea1fa4f
+	arch = any
+	license = unknown
+	depends = bash
+	depends = git
+	depends = git-lfs
+	optdepends = aria2: Optional download tool for hfd. At least one optional download tool must be installed.
+	optdepends = wget: Optional download tool for hfd. At least one optional download tool must be installed.
+	provides = hfd
+	source = hfd-git::git+https://gist.github.com/padeoe/697678ab8e528b85a2a7bddafea1fa4f.git
+	sha256sums = SKIP
+
+pkgname = hfd-git
