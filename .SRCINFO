@@ -1,6 +1,6 @@
 pkgbase = jdk17-graalvm-ee-bin
 	pkgdesc = Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java 17 version
-	pkgver = 17.0.11
+	pkgver = 17.0.12
 	pkgrel = 1
 	url = https://www.graalvm.org/
 	install = jdk17-graalvm-ee-bin.install
@@ -12,11 +12,10 @@ pkgbase = jdk17-graalvm-ee-bin
 	provides = java-runtime=17
 	provides = java-environment=17
 	options = staticlibs
-	source = graalvm-ee-rebuild-libpolyglot.hook
-	sha256sums = 7dc37bd3703ebebcd6efa39534e6bb6e3ec9c8ee0d97e46d6df5349739c7d2ca
-	source_x86_64 = https://download.oracle.com/graalvm/17/archive/graalvm-jdk-17.0.11_linux-x64_bin.tar.gz
-	sha256sums_x86_64 = b7418747b3064990d2006797edbb08d738ae81a3f87ae45c26af9ca2f0c1518c
-	source_aarch64 = https://download.oracle.com/graalvm/17/archive/graalvm-jdk-17.0.11_linux-aarch64_bin.tar.gz
-	sha256sums_aarch64 = d09fd76971b3372060c6b5b51e052fb4108f3d17c0bf3c0ec7aee9fd0718e2ed
+	options = !debug
+	source_x86_64 = https://download.oracle.com/graalvm/17/archive/graalvm-jdk-17.0.12_linux-x64_bin.tar.gz
+	sha256sums_x86_64 = b6f3dace24cf1960ec790216f4c86f00d4f43df64e4e8b548f6382f04894713f
+	source_aarch64 = https://download.oracle.com/graalvm/17/archive/graalvm-jdk-17.0.12_linux-aarch64_bin.tar.gz
+	sha256sums_aarch64 = bd991d486b92deb74337b881e0f13a764c9c1e90fc358819080f7321fa5175e8
 
 pkgname = jdk17-graalvm-ee-bin
