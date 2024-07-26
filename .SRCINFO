@@ -1,0 +1,17 @@
+pkgbase = ricoh-sp210-211-ppd
+	pkgdesc = CUPS driver for Ricoh SP210 and 211
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://support.ricoh.com/bb/html/dr_ut_e/re1/model/sp210/sp210.htm
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = binutils
+	makedepends = tar
+	makedepends = glibc
+	depends = cups
+	depends = ghostscript
+	source = git+https://github.com/droidzone/ricohsp210
+	sha256sums = SKIP
+
+pkgname = ricoh-sp210-211-ppd
