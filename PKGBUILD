@@ -1,8 +1,9 @@
 # Maintainer: Chris Vittal <chris@vittal.dev>
+# Contributor: Adityarup Laha <me@adityaruplaha.me>
 _pkgname='plink1.9'
 pkgname="$_pkgname-git"
 _pkgver=1.9
-pkgver=1.9.r40.gdcc7785a
+pkgver=1.9.r91.g705f965b
 pkgrel=1
 pkgdesc="whole-genome association analysis toolset, version 1.9"
 arch=(x86_64)
@@ -12,7 +13,7 @@ source=('plink1.9::git+https://github.com/chrchang/plink-ng.git'
         'bin-name.patch')
 depends=('zlib>=1.2.4' 'cblas' 'lapack')
 sha256sums=(SKIP
-            6d489d96f1c9f055dd5858ca3618db34d47adcb5f1eba2a12ad699ff787028ac)
+            24f570e751f51b6ab05c29f92cad4a57b0a54b7bb4a81dd067cf1cdc1c887327)
 
 prepare() {
     cd "$_pkgname/$_pkgver"
@@ -21,14 +22,14 @@ prepare() {
 
 build() {
     cd "$_pkgname/$_pkgver"
-    CFLAGS+=' -DDYNAMIC_ZLIB' CXXFLAGS+=' -DDYNAMIC_ZLIB' \
+    CFLAGS+=" -DDYNAMIC_ZLIB $(pkg-config --cflags lapack blas cblas)" CXXFLAGS+=' -DDYNAMIC_ZLIB'\
         BLASFLAGS=$(pkg-config --libs lapack blas cblas) ZLIB=-lz \
-        LDFLAGS+=' -lpthread -lm' BIN=$_pkgname make -f Makefile.std
+        LDFLAGS+=' -lpthread -lm' BIN=$_pkgname make -f Makefile
 }
 
 package() {
     cd "$_pkgname/$_pkgver"
-    BIN="$_pkgname" DESTDIR="$pkgdir" PREFIX=/usr make -f Makefile.std install
+    BIN="$_pkgname" DESTDIR="$pkgdir" PREFIX=/usr make -f Makefile install
 }
 
 pkgver() {
