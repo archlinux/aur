@@ -1,7 +1,7 @@
 # Maintainer: Jonas Kalsvik <jonas@kalsvik.no>
 pkgname="epicmickeylauncher"
-pkgver="0.4.4"
-pkgrel=7
+pkgver="0.4.5"
+pkgrel=8
 epoch=
 pkgdesc="Mod Installer, Level Loader & Launcher for every Epic Mickey game."
 arch=('x86_64')
@@ -19,7 +19,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/KjubDusJub/Epic-Mickey-Launcher/releases/download/${pkgver}/epic-mickey-launcher_${pkgver}_amd64.deb")
+source=("https://github.com/Epic-Mickey-Launcher/launcher/releases/download/${pkgver}/epic-mickey-launcher_${pkgver}_amd64.deb")
 noextract=()
 md5sums=("SKIP")
 validpgpkeys=()
