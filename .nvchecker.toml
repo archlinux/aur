@@ -1,0 +1,4 @@
+[python-scikit-fem]
+source = "github"
+github = "kinnala/scikit-fem"
+use_latest_release = "true"
