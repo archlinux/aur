@@ -1,13 +1,13 @@
 pkgbase = croco_dc-git
 	pkgdesc = A crocodile replacement of sl
 	pkgver = latest
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/TomSoucies/croco_dc
 	arch = x86_64
 	makedepends = git
 	depends = ncurses
 	replaces = sl
-	source = croco_dc-git::git+https://gitlab.com/TomSoucies/croco_dc-git.git
+	source = croco_dc-git::git+https://gitlab.com/TomSoucies/croco_dc.git
 	sha256sums = SKIP
 
 pkgname = croco_dc-git
