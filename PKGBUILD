@@ -2,7 +2,7 @@
 pkgname=boostchanger-bin
 pkgver=5.0.3
 _electronversion=25
-pkgrel=9
+pkgrel=10
 pkgdesc="With this app you can control CPU turbo boost and the settings of the cpu speed in order to consuming less battery voltage on Linux"
 arch=('x86_64')
 url="https://github.com/nbebaw/boostchanger"
@@ -22,7 +22,7 @@ source=(
 )
 sha256sums=('4f9d2239359802b2f0e3662556114a2c48a9f232064d6356f1a1501c7dd91726'
             'af8aec94b8f5c88f4c4e4435570b94d143970c621048db7e25f27403fa4ec02e'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
