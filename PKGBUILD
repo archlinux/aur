@@ -7,9 +7,10 @@ pkgdesc="Implementation of several preprocessing techniques for Association Rule
 url="https://github.com/firefly-cpp/${_base}"
 arch=(any)
 license=(MIT)
-depends=(python-niaarm python-sport-activities-features python-scikit-learn)
+depends=(python-niaarm python-scikit-learn)
 makedepends=(python-build python-installer python-poetry-core)
 checkdepends=(python-pytest)
+optdepends=(python-sport-activities-features)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
 sha512sums=('ee27ec56d3a4e934e98b1bdbd07bc8523a35de049f4d1d2242ea4662d31a2618b78b850cd3529036537a956266337c5f5d1db4e3d5812bd5b54e2e06f39c4817')
 
