@@ -13,13 +13,11 @@ sha256sums=('9000c92df8e0e200dc618656e18400ab16c9878b3d539e7c68723fad243c5c3c')
 
 prepare() {
   cd Geopard
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   arch-meson Geopard build
   meson compile -C build
