@@ -2,7 +2,7 @@
 pkgname='gut-bin'
 pkgver='0.3.0'
 pkgrel=1
-pkgdesc="Easy-to-use git client"
+pkgdesc="An alternative git CLI for Windows, macOS, and Linux"
 arch=('x86_64' 'i386' 'aarch64')
 url='https://gut-cli.dev'
 license=('MIT')
