@@ -1,6 +1,6 @@
 pkgbase = gcac
 	pkgdesc = API-based replacement bash completion script for git clone
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://gitlab.com/dpeukert/gcac
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = gcac
 	depends = git
 	depends = jq
 	depends = openssh
-	source = gcac-1.0.0.tar.gz::https://gitlab.com/dpeukert/gcac/-/archive/1.0.0/gcac-1.0.0.tar.gz
-	b2sums = dd883d81057b7762c75d6e93fe16a829c3679c029c63e5d2d236279a2c99a3060472baf06970d1870b1da40c22d16c859565bf72b01c77967daa23b735768d24
+	source = gcac-1.0.1.tar.gz::https://gitlab.com/dpeukert/gcac/-/archive/1.0.1/gcac-1.0.1.tar.gz
+	b2sums = c6cd66359e7b606e852f7388c416c21d29d376edad3cc970db224e0591a1f2672ee6a38c3b1424b6e11dd18fc955d2364fba5379277992319847ff27dfc02cb2
 
 pkgname = gcac
