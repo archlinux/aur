@@ -1,7 +1,7 @@
 # Maintainer: Torsten Keßler <tpkessler at archlinux dot org>
 pkgname=terra
-pkgver=1.1.1
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Low-level system programming language"
 arch=('x86_64')
 url="https://terralang.org/"
@@ -9,11 +9,11 @@ license=('MIT')
 makedepends=('ninja' 'cmake' 'python')
 _git='https://github.com/terralang/terra'
 _llvm='https://github.com/llvm/llvm-project'
-_llvm_ver=16.0.6
+_llvm_ver=18.1.8
 source=("$pkgname-$pkgver.tar.gz::$_git/archive/refs/tags/release-$pkgver.tar.gz"
 				"$pkgname-llvm-$_llvm_ver.tar.xz::$_llvm/releases/download/llvmorg-$_llvm_ver/llvm-project-$_llvm_ver.src.tar.xz")
-b2sums=('70d6b3c83c5b3999a690d96f606331e8aa90da61ef4f263fc7fbc6e007ed190feedb8a59e7ecf968ae0edb872d11788ed05438f18ab6a2dece2900462bfd9b1c'
-        '95192d39cbd2914e5609db365965f1c00bfea6c2d653b3996bd2acef8a2b37e37f6fc8a9d2b65711ad72657e0ef52c42f733053cf65051e7822f27396c30406d')
+b2sums=('a2921f7ab0bf85181cdb2a8a2c8eaa50bcf93853eeb0c485e9cfeb5fd456afa99950c4a338b67f4b56531c62f8ebafd75f6cc859b887b4a02bf55aa3943c6f29'
+        'a950492f1dbfb874dff63b1ffef86468169ba2f211a9733ec2d4cf30040f7f277ef00f048bb44dee9f97d7d762f0f241f19e5a2a7b0b49217d3821ddfc8c354f')
 # Arch's default build flags cause terra to crash. Remove them until we find a fix.
 options=(!lto !buildflags)
 
