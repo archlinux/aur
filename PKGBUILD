@@ -19,23 +19,23 @@ _unused_components=(
   'vmware-horizon-scannerclient'
   'vmware-horizon-serialportclient'
   'vmware-horizon-url-redirection')
-pkgver=2312.1
-_build1=8.12.1
-_build2=23543969
-_cart="CART25FQ1_LIN64_${pkgver}"
+pkgver=2406
+_build1=8.13.0
+_build2=9995429239
+_cart="CART25FQ2_LIN64_${pkgver}"
 pkgrel=1
 pkgdesc='VMware Horizon Client connect to VMware Horizon virtual desktop'
 arch=('x86_64')
 options=('!debug')
-url='https://www.vmware.com/go/viewclients'
+url='https://customerconnect.omnissa.com/downloads/info/slug/desktop_end_user_computing/vmware_horizon_clients/horizon_8'
 license=('custom')
 makedepends=('libxslt' 'patchelf' 'librsvg')
-source=("${pkgbase}-${pkgver}-${_build1}-${_build2}-x86_64.bundle::https://download3.vmware.com/software/${_cart}/VMware-Horizon-Client-${pkgver}-${_build1}-${_build2}.x64.bundle"
+source=("${pkgbase}-${pkgver}-${_build1}-${_build2}-x86_64.bundle::https://download3.omnissa.com/software/${_cart}/VMware-Horizon-Client-${pkgver}-${_build1}-${_build2}.x64.bundle"
         "vmware-bundle.eclass-${pkgver}::https://gitweb.gentoo.org/proj/vmware.git/plain/eclass/vmware-bundle.eclass"
         'vmware-horizon-usb'
         'vmware-horizon-usb.service'
         'vmware-horizon.svg')
-sha256sums=('37bb1116b398c1e0786b03103f48a54f62c56de2420f00771ea47c7c0e5acc8d'
+sha256sums=('e0f152f92495de0d98948fd0ad6eba093f3b6cbec3db7072b657d841c0f595df'
             'd6863e92b891fc506fc8e81714a47ca3f9f74b7fe68bdf48be058d5e0d433033'
             '008b60ebf45f7d1e033c8ad8ce1688d5e1c59fc0668493067fb89b563b1dc00f'
             'a897c1b9e8928fc222880ebbfc7bb6aff940bff4acf4e4e0cd4002fff81c7226'
