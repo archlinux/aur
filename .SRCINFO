@@ -1,6 +1,6 @@
 pkgbase = monitoring-plugins
 	pkgdesc = Plugins for Icinga, Naemon, Nagios, Shinken, Sensu and other monitoring applications
-	pkgver = 2.3.5
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://www.monitoring-plugins.org
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = monitoring-plugins
 	provides = nagios-plugins
 	conflicts = nagios-plugins
 	replaces = nagios-plugins
-	source = https://www.monitoring-plugins.org/download/monitoring-plugins-2.3.5.tar.gz
-	sha256sums = f3edd79a9254f231a1b46b32d14def806648f5267e133ef0c0d39329587ee38b
+	source = https://www.monitoring-plugins.org/download/monitoring-plugins-2.4.0.tar.gz
+	sha256sums = e5dfd4ad8fde0a40da50aab3aff6d9a27020b8f283e332bc4da6ef9914f4028c
 
 pkgname = monitoring-plugins

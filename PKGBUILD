@@ -2,7 +2,7 @@
 # Contributor: Idares <idares at seznam dot cz>
 
 pkgname=monitoring-plugins
-pkgver=2.3.5
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Plugins for Icinga, Naemon, Nagios, Shinken, Sensu and other monitoring applications"
 arch=('x86_64')
@@ -23,7 +23,7 @@ provides=('nagios-plugins')
 conflicts=('nagios-plugins')
 replaces=('nagios-plugins')
 source=("https://www.monitoring-plugins.org/download/$pkgname-$pkgver.tar.gz")
-sha256sums=('f3edd79a9254f231a1b46b32d14def806648f5267e133ef0c0d39329587ee38b')
+sha256sums=('e5dfd4ad8fde0a40da50aab3aff6d9a27020b8f283e332bc4da6ef9914f4028c')
 
 build() {
   cd $pkgname-$pkgver
