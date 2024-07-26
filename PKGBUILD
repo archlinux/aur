@@ -51,8 +51,10 @@ prepare() {
 
 build() {
   cd "${pkgname%-git}"
-  CFLAGS+=" -ffat-lto-objects"
   export RUSTUP_TOOLCHAIN=stable
+
+  # use mold instead of lld to speed up build
+  RUSTFLAGS="-C link-arg=-fuse-ld=mold"
 
   # use nice to build with lower priority
   nice just build-vendored
