@@ -6,6 +6,7 @@ import argparse
 import shutil
 import signal
 import numpy as np
+import sys
 
 # Color codes
 COLOR_CODES = {
@@ -26,14 +27,18 @@ def clear_screen():
 def print_grid(grid, cell_color):
     color_code = COLOR_CODES.get(cell_color, COLOR_CODES['white'])
     reset_code = COLOR_CODES['reset']
-    for row in grid:
-        print(''.join([f'{color_code}█{reset_code}' if cell else ' ' for cell in row]))
-
+    for i, row in enumerate(grid):
+        end_char = '' if i == len(grid) - 1 else '\n'
+        sys.stdout.write(''.join([f'{color_code}█{reset_code}' if cell else ' ' for cell in row]) + end_char)
+    sys.stdout.flush()
+    
 def hide_cursor():
     print("\033[?25l", end='', flush=True)
+    sys.stdout.flush()
 
 def show_cursor():
     print("\033[?25h", end='', flush=True)
+    sys.stdout.flush()
 
 def get_neighbors(grid, x, y):
     return np.sum(grid[x-1:x+2, y-1:y+2]) - grid[x, y]
