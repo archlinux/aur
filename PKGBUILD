@@ -24,6 +24,8 @@ makedepends=(
     'nvm'
     'gendesk'
     'icoutils'
+    'curl'
+    'yarn'
 )
 source=(
     "${pkgname%-git}.git::git+${_ghurl}.git"
@@ -31,7 +33,7 @@ source=(
 )
 
 sha256sums=('SKIP'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
@@ -50,7 +52,7 @@ build() {
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${pkgname%-git}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-git} %U"
+    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
@@ -69,9 +71,9 @@ build() {
         echo "Your network is OK."
     fi
     rm -rf build dist node_modules
-    yarn install --cache-folder "${srcdir}/.yarn_cache"
-    yarn run dist
-    yarn run build
+    NODE_ENV=development yarn install --cache-folder "${srcdir}/.yarn_cache"
+    NODE_ENV=production yarn run dist
+    NODE_ENV=production yarn run build
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
