@@ -1,6 +1,6 @@
-# Maintainer: Jhon Diaz <electimon@gmail.com>
+# Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
+# Contributor: Jhon Diaz <electimon@gmail.com>
 # Contributor: Matthew Bauer <mjbauer95@gmail.com>
-# Contributor: Ivan Shapovalov <intelfx100@gmail.com>
 
 pkgname=libideviceactivation-git
 epoch=1
