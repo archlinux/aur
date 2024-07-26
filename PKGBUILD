@@ -5,14 +5,14 @@ _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libpng
 pkgver=1.6.43
-pkgrel=3
+pkgrel=4
 pkgdesc="A collection of routines used to create PNG format graphics (Android ${_android_arch})"
 arch=('any')
 url="http://www.libpng.org/pub/png/libpng.html"
 license=('custom')
 depends=("android-${_android_arch}-zlib")
-options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-configure')
+options=(!strip !buildflags staticlibs !emptydirs)
 source=("http://downloads.sourceforge.net/sourceforge/libpng/libpng-${pkgver}.tar.xz"
         '0001-Disable-zlib-version-check.patch')
 md5sums=('22b8362d16c3724eba9c1fb8d187320a'
@@ -22,13 +22,6 @@ prepare() {
     cd "${srcdir}/libpng-${pkgver}"
 
     patch -Np1 -i ../0001-Disable-zlib-version-check.patch
-
-    sed -i 's|PNGLIB_BASENAME = libpng@PNGLIB_MAJOR@@PNGLIB_MINOR@|PNGLIB_BASENAME = libpng|g' Makefile.in
-    sed -i 's|libpng@PNGLIB_MAJOR@@PNGLIB_MINOR@.la|libpng.la|g' Makefile.in
-    sed -i 's|libpng@PNGLIB_MAJOR@@PNGLIB_MINOR@-config|libpng-config|g' Makefile.in
-    sed -i 's|libpng@PNGLIB_MAJOR@@PNGLIB_MINOR@.pc|libpng.pc|g' Makefile.in
-    sed -i 's|@PNGLIB_MAJOR@@PNGLIB_MINOR@||g' libpng.pc.in
-    sed -i 's|@PNGLIB_MAJOR@@PNGLIB_MINOR@||g' libpng-config.in
 }
 
 build() {
@@ -52,7 +45,7 @@ package () {
     cd "${srcdir}/libpng-${pkgver}"
     source android-env ${_android_arch}
 
-    make DESTDIR="$pkgdir" install
+    make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
