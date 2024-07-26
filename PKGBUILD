@@ -2,7 +2,7 @@
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 _base=ray
 pkgname=python-${_base}
-pkgver=2.32.0
+pkgver=2.33.0
 pkgrel=1
 pkgdesc="A fast and simple framework for building and running distributed
 applications"
@@ -11,7 +11,7 @@ url="https://github.com/${_base}-project/${_base}"
 license=(Apache-2.0)
 depends=(psmisc python-click python-filelock python-jsonschema python-msgpack python-packaging
   python-protobuf python-pyaml python-aiosignal python-frozenlist python-requests)
-makedepends=(python-build python-installer python-setuptools-scm python-wheel cython bazel)
+makedepends=(python-build python-installer python-setuptools-scm python-wheel cython bazel python-pip)
 optdepends=('python-pandas: for ray[data, tune, rllib]'
   'python-fsspec: for ray[data, tune, rllib]'
   'python-aiohttp: for ray[default, serve]'
@@ -37,13 +37,18 @@ optdepends=('python-pandas: for ray[data, tune, rllib]'
   'python-typer: for ray[rllib]'
   'python-rich: for ray[rllib]'
 )
+conflicts=(mesa-demos)
 source=(${_base}-${_base}-${pkgver}.tar.gz::${url}/archive/${_base}-${pkgver}.tar.gz)
-sha512sums=('db56e773b2289146d086c4e74372e48beadb9544fa7ad407e709632ce6fbb5ced5c3edef7cc9283d1076e00599e9ac8651ad2138c28f4600f5615f4e9cac6149')
+sha512sums=('47266669cb92b9e6540cf4654e0a29e4c9caa1ea2d8f3de6068d4a7e101e39e9e45f88522e7e2a16c43e442a9b62c4454f557783ca5a532442fd62b4608a3128')
+
+# prepare() {
+#   sed -i '/    runtime_env_agent_pip_packages/,+11 s/^/#/' ${_base}-${_base}-${pkgver}/python/setup.py
+# }
 
 build() {
   cd ${_base}-${_base}-${pkgver}/python
   export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
-  python -m build --wheel --skip-dependency-check --no-isolation
+  SKIP_THIRDPARTY_INSTALL=1 python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package() {
