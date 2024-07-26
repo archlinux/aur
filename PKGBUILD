@@ -2,8 +2,8 @@
 # Contributor: Corey Hinshaw <corey(at)electrickite(dot)org>
 pkgname=firmware-manager
 _app_id=com.system76.FirmwareManager
-pkgver=0.1.5+3+gf3ead34
-pkgrel=2
+pkgver=0.1.5+12+g3c542bd
+pkgrel=1
 pkgdesc="Generic framework and GTK UI for firmware updates from system76-firmware and fwupd"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/firmware-manager"
@@ -14,7 +14,7 @@ optdepends=('fwupd: Generic firmware updates'
             'system76-firmware-daemon: System76 firmware updates')
 conflicts=('libfirmware-manager')
 install="$pkgname.install"
-_commit=f3ead34e243025eb1ae39d19b5844f91e17f3c31  # branch/master
+_commit=3c542bd09ecbd872e194595570074fdd15e6e975  # branch/master
 source=("git+https://github.com/pop-os/firmware-manager.git#commit=${_commit}"
         "${_app_id}.policy"
         "$pkgname.sh")
@@ -29,15 +29,13 @@ pkgver() {
 
 prepare() {
   cd "$pkgname"
-  CFLAGS+=" -ffat-lto-objects"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd "$pkgname"
-  export CARGO_HOME="$srcdir/cargo-home"
+  CFLAGS+=" -ffat-lto-objects"
   export RUSTUP_TOOLCHAIN=stable
   make prefix=/usr
 }
