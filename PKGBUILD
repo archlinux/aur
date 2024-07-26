@@ -11,7 +11,7 @@ license=(LGPL-3.0-or-later)
 depends=(precice python-mpi4py)
 makedepends=(python-build python-installer python-setuptools cython python-pkgconfig python-wheel)
 source=(python-bindings-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('bafc3e6615738666a596c2833474bde600466dc6a7ea551fff150decf198db83733986028f087d135ba7d36c3c230f501e79c33b854465df26f1fa6baa6feb5b')
+sha512sums=('ec50fb1451ffac7e419d7a4c27f06ca847ed18a70a5bcc4672996079221a8e6df5f553ca25b16125e3eb65c55482a8736a2e593cfbe35b5894838cde1a77d092')
 
 build() {
   cd python-bindings-${pkgver}
