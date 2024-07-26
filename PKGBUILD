@@ -4,7 +4,7 @@
 # shellcheck disable=SC2034,SC2154
 
 pkgname=lix
-pkgver=0.10.24
+pkgver=0.10.25
 pkgrel=1
 pkgdesc="An action-puzzle game inspired by Lemmings"
 url="https://www.lixgame.com/"
@@ -14,7 +14,7 @@ license=('custom:CC0')
 _gitname=LixD
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/SimonN/LixD/archive/v$pkgver.tar.gz"
         "$pkgname-music-1.1.zip::https://www.lixgame.com/dow/lix-music.zip")
-sha512sums=('12a36e189a085f67b6c9605317eac454c803a9b598011df1f76f944ca4c9fffe964d5f1278e03e2ee6592824f7d928966012b8ca47e2e78fa6a65a1f9ee45368'
+sha512sums=('5025c171ab770c7392ce1b161e0db850e216525ad000edcb7f7b4f7cee72a42497eb0b32eba4406c6e05924a5e3126ccdd3b9fec969beaf181b6e886acd9a349'
             '280fd25a479ac8dd24475b014234270a12ab34edca7fb2f7ce4b768259111b1e7626d3ba37ac13d810f0653d23d7c9f212776e94d2c0b31a0de580864771ce9f')
 
 arch=('i686' 'x86_64')
