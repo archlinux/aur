@@ -14,14 +14,12 @@ sha256sums=('19ce60f91de407acbb14511436c43e261ef58e1fbb38e0f02b46855e5392fe42')
 
 prepare() {
   cd WebApps
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   just vendor
 }
 
 build() {
   cd WebApps
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
 
   # Package contains reference to $srcdir
