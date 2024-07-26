@@ -1,6 +1,6 @@
 pkgname=kalc
 pkgver=1.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="a complex numbers, 2d/3d graphing, arbitrary precision, vector/matrix, cli calculator with real-time output and support for units"
 arch=('any')
 url="https://github.com/bgkillas/kalc"
@@ -12,7 +12,7 @@ sha512sums=('f722aac0ae8b1d73c231f7f10c269801109818b6c4914b804f45b49250be793be3c
 build()
 {
   cd "$srcdir/$pkgname-$pkgver"
-  cargo build --relese||(
+  cargo build --release||(
   sed -i 's/\["force-cross"\]/\["use-system-libs"\]/g' Cargo.toml
   cargo build --release
   )
