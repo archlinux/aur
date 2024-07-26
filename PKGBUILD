@@ -1,7 +1,7 @@
-# Maintainer: Ben Westover <kwestover.kw@gmail.com>
+# Maintainer: Ben Westover <me@benthetechguy.net>
 
 pkgname=python-debianbts
-pkgver=4.0.2
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="Python library for querying Debian's Bug Tracking System"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python' 'python-pysimplesoap')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 checkdepends=('python-pytest' 'python-pytest-cov' 'python-pytest-xdist')
 source=("https://github.com/venthur/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('19613df0e4685f7af37e377a952d375034596b819f26eaef1275e454a29ba700')
+sha256sums=('208d77775a6aa522afe507e16784c10fc56342b7eb2f118cc0c04efde12c1041')
 
 build() {
 	cd $pkgname-$pkgver
