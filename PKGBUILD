@@ -1,20 +1,20 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=devito
 pkgname=python-${_base}
-pkgver=4.8.10
+pkgver=4.8.11
 pkgrel=1
 pkgdesc="Finite Difference DSL for symbolic computation"
 arch=(any)
 url="https://github.com/${_base}codes/${_base}"
 license=(MIT)
-depends=(python-sympy python-cached-property python-psutil python-py-cpuinfo
-  python-codepy python-multidict python-anytree python-cloudpickle python-click)
-makedepends=(python-build python-installer python-setuptools python-wheel openmp git)
-# checkdepends=(python-pytest python-scipy python-nbval python-matplotlib)
+depends=(python-sympy python-psutil python-py-cpuinfo python-codepy python-click
+  python-multidict python-anytree python-cloudpickle)
+makedepends=(python-build python-installer python-setuptools python-wheel openmp)
+# checkdepends=(python-pytest python-scipy python-nbval python-matplotlib python-mpi4py)
 optdepends=('python-mpi4py: for parallel support'
   'python-ipyparallel: for parallel support')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('e96824e189ea2830dbf35ce64a96189dd8689087029ba4c1afd6a977522d98ce07edb68c79841d87008e603182e5c6ff2c678658ea123d85bd44e52e4295974f')
+sha512sums=('a3d7a659e8ada4f57eff3e2bc46b931dbdc91b9aa13827cb150a2b7472dce3ae920d97b8dec1287f28fe4f1237ab9754f337ff200fc3982966380bb00cdd9409')
 
 build() {
   cd ${_base}-${pkgver}
