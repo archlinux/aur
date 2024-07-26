@@ -8,9 +8,9 @@ pkgbase = kraftkit-bin
 	provides = kraftkit
 	arch = aarch64
 	source_aarch64 = https://github.com/unikraft/kraftkit/releases/download/v0.9.0/kraft_0.9.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 3d79f763c361e027a49aaab7e6a89c522b2ba170f90198aed37087df4f404cec
+	sha256sums_aarch64 = 42ff245c6f41ccd1de8932f048242824ce69cd7082f8779b6df8c3a4d213110f
 	arch = x86_64
 	source_x86_64 = https://github.com/unikraft/kraftkit/releases/download/v0.9.0/kraft_0.9.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 0716c48f72ed8bc8bbc14b41b491d800f431ca414a7fef95dc35d76566343b89
+	sha256sums_x86_64 = a03ee6a99e613f40b949e568965eb91b401b02fedbdfb170b6c97fcf69ce9070
 	
 pkgname = kraftkit-bin
