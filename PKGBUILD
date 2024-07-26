@@ -15,7 +15,6 @@ sha256sums=('f9736bf7ba5761168559fc90950623602d974b2e1a5f26c4eef4692b87e9517e')
 
 prepare() {
   cd "BoxBuddyRS-$pkgver"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
@@ -24,7 +23,6 @@ build() {
   cd "BoxBuddyRS-$pkgver"
 #  CFLAGS+=" -ffat-lto-objects"
   export GETTEXT_SYSTEM=true
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features
