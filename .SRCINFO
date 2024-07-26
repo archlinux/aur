@@ -13,7 +13,7 @@ pkgbase = warp
 	depends = gst-plugins-bad
 	depends = libadwaita
 	optdepends = yelp: View help
-	source = git+https://gitlab.gnome.org/World/warp.git#commit=ce2e235adc5e27a7249af01a3b41193434725571
+	source = git+https://gitlab.gnome.org/World/warp.git#tag=v0.7.0
 	sha256sums = 69276b052c89cffe0cedb108431d3aa6983b7697744348743b62c7c20750ccad
 
 pkgname = warp

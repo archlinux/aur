@@ -11,20 +11,13 @@ license=('GPL-3.0-or-later')
 depends=('gst-plugins-bad' 'libadwaita')
 makedepends=('cargo' 'git' 'itstool' 'meson')
 optdepends=('yelp: View help')
-_commit=ce2e235adc5e27a7249af01a3b41193434725571  # tags/v0.7.0^0
-source=("git+https://gitlab.gnome.org/World/warp.git#commit=$_commit")
+source=("git+https://gitlab.gnome.org/World/warp.git#tag=v$pkgver")
 sha256sums=('69276b052c89cffe0cedb108431d3aa6983b7697744348743b62c7c20750ccad')
-
-pkgver() {
-  cd "$pkgname"
-  git describe --tags | sed 's/^v//;s/-/+/g'
-}
 
 prepare() {
   cd "$pkgname"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 
   # Temporary solution to the binary name conflict
   # https://www.yesodweb.com/book/web-application-interface
@@ -34,7 +27,6 @@ prepare() {
 
 build() {
   CFLAGS+=" -ffat-lto-objects"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   arch-meson "$pkgname" build
   meson compile -C build
