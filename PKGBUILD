@@ -12,14 +12,12 @@ sha256sums=('a5687dda1feee7ea97105c9f7a725b917519b8d361594f871a59a9574992fd03')
 
 prepare() {
   cd "garden-v${pkgver}"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd "garden-v${pkgver}"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features
