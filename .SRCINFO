@@ -1,0 +1,19 @@
+pkgbase = python-wat-git
+	pkgdesc = WAT Inspector: Deep inspection of Python objects (latest commit)
+	pkgver = 0.2.1.r0.g88838b6
+	pkgrel = 1
+	url = https://github.com/igrek51/wat
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	provides = python-wat
+	conflicts = python-wat
+	conflicts = python-wat-inspector
+	source = git+https://github.com/igrek51/wat.git
+	sha256sums = SKIP
+
+pkgname = python-wat-git
