@@ -1,7 +1,7 @@
 From fd0d767b06ef8fb2c169d8948e0526349de92ff8 Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Mon, 15 Apr 2024 08:22:37 -0600
-Subject: [PATCH 31/32] Linux-6.9: file_lock mbrs moved to file_lock_core
+Subject: [PATCH 31/37] Linux-6.9: file_lock mbrs moved to file_lock_core
 
 In the Linux 6.9 commit:
  'filelock: split common fields into struct file_lock_core' (a69ce85ec9)
@@ -228,5 +228,5 @@ index 7889c904a..b22930690 100644
 +                       [])
 +])
 -- 
-2.45.1
+2.45.2
 

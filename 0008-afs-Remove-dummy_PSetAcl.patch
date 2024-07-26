@@ -1,7 +1,7 @@
 From bd2828f1ab4c88b95a5d075e29a942922aa86dba Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Fri, 12 Jan 2024 09:28:02 -0700
-Subject: [PATCH 08/32] afs: Remove dummy_PSetAcl()
+Subject: [PATCH 08/37] afs: Remove dummy_PSetAcl()
 
 The function dummy_PSetAcl() is not referenced anywhere within the
 source tree.
@@ -52,5 +52,5 @@ index 9182a4b52..7ddb5add2 100644
  {
      afs_int32 code;
 -- 
-2.45.1
+2.45.2
 

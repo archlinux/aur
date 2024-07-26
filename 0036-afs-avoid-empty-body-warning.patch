@@ -1,0 +1,85 @@
+From 39a5b7d566d481aa1a7cfeff05916635155cbca4 Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Wed, 12 Jun 2024 14:24:01 -0600
+Subject: [PATCH 36/37] afs: avoid empty-body warning
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+With Linux 6.10 commit:
+    "kbuild: turn on -Wextra by default" (f5982cceb3)
+there are additional compiler warnings that can turn
+into build errors when --enable-checking is used.
+
+    "error: suggest braces around empty body in an ‘if’
+     statement [-Werror=empty-body]"
+
+when there is an empty body, e.g.
+    if (foo)
+        ;
+
+Most cases are due to the macros afs_PutCell and afs_PutServer which are
+"empty" macros.
+
+Update the afs_PutCell and afs_PutServer macros so they expand to
+  do {} while(0)
+
+Add a comment at the definitions for afs_PutCell and afs_PutServer to
+document the reason for keeping them.
+
+Add braces to conditionals that have an empty body.
+
+There are no functional changes with this commit.
+
+Change-Id: I359723eb6a19d1c78449902b4f477da131b0fa18
+Reviewed-on: https://gerrit.openafs.org/15766
+Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+---
+ src/afs/afs.h         | 6 ++++--
+ src/afs/afs_cbqueue.c | 4 +++-
+ 2 files changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/src/afs/afs.h b/src/afs/afs.h
+index 7872412df..345cecb91 100644
+--- a/src/afs/afs.h
++++ b/src/afs/afs.h
+@@ -348,7 +348,8 @@ struct cell_alias {
+     char *cell;
+ };
+ 
+-#define	afs_PutCell(cellp, locktype)
++/* In case someday a counterpart for afs_GetCell is needed */
++#define afs_PutCell(cellp, locktype) do {} while(0)
+ 
+ /* the unixuser flag bit definitions */
+ #define	UHasTokens	1	/* are the st and ct fields valid (ever set)? */
+@@ -536,7 +537,8 @@ struct server {
+     afs_int32 capabilities;
+ };
+ 
+-#define	afs_PutServer(servp, locktype)
++/* In case someday a counterpart for afs_GetServer is needed */
++#define afs_PutServer(servp, locktype) do {} while(0)
+ 
+ /* structs for some pioctls  - these are (or should be)
+  * also in venus.h
+diff --git a/src/afs/afs_cbqueue.c b/src/afs/afs_cbqueue.c
+index 2dd633588..11e3aa3f1 100644
+--- a/src/afs/afs_cbqueue.c
++++ b/src/afs/afs_cbqueue.c
+@@ -139,7 +139,9 @@ afs_DequeueCallback(struct vcache *avc)
+     debugvc = avc;
+     if (avc->callsort.prev) {
+ 	QRemove(&(avc->callsort));
+-    } else;			/* must have got dequeued in a race */
++    } else {
++	/* must have got dequeued in a race */
++    }
+ 
+     return;
+ }				/* afs_DequeueCallback */
+-- 
+2.45.2
+

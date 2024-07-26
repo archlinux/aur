@@ -1,7 +1,7 @@
 From fca6fd911e493a344c040a95ea4ab820e2828802 Mon Sep 17 00:00:00 2001
 From: Andrew Deason <adeason@sinenomine.net>
 Date: Thu, 28 Jun 2018 12:50:52 -0500
-Subject: [PATCH 01/32] afs: Make afs_AllocDCache static
+Subject: [PATCH 01/37] afs: Make afs_AllocDCache static
 
 Nothing using afs_AllocDCache outside of afs_dcache.c. Declare the
 function static, to ensure that nobody else uses it, and to maybe
@@ -36,5 +36,5 @@ index 3572f2f23..46d0bdba5 100644
  		struct VenusFid *ashFid)
  {
 -- 
-2.45.1
+2.45.2
 

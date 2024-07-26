@@ -1,7 +1,7 @@
 From dfb6b53a6802e90f6bc2cd3cd39da467ce8e4488 Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Wed, 3 Apr 2024 11:36:54 -0600
-Subject: [PATCH 30/32] Linux: Define afs_thread_wrapper() as static
+Subject: [PATCH 30/37] Linux: Define afs_thread_wrapper() as static
 
 When building against a Linux 6.8 kernel, functions that are missing
 prototypes or declarations are flagged.
@@ -54,5 +54,5 @@ index aa5d5fc93..27f73cd1f 100644
      void (*proc)(void) = rock;
      __module_get(THIS_MODULE);
 -- 
-2.45.1
+2.45.2
 

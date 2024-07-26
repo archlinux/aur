@@ -1,7 +1,7 @@
 From d1a42401fddc51bd2f16da39dfebe0f60fc670ad Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Thu, 29 Feb 2024 17:58:17 -0700
-Subject: [PATCH 29/32] Linux: Remove weak attribute for key_type_keyring
+Subject: [PATCH 29/37] Linux: Remove weak attribute for key_type_keyring
 
 The reference to the Linux symbol key_type_keyring uses a weak
 attribute to assist in determining if the symbol is exported.  This
@@ -87,5 +87,5 @@ index 87d149f56..901312d2a 100644
  /* install_session_keyring returns negative error values */
  static int
 -- 
-2.45.1
+2.45.2
 

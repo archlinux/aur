@@ -1,7 +1,7 @@
 From 73844a4939a7b8198bf11d4dcbce9e28b621bd11 Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Thu, 8 Feb 2024 16:10:57 -0700
-Subject: [PATCH 11/32] afs: Remove afs_DbgDisconFiles()
+Subject: [PATCH 11/37] afs: Remove afs_DbgDisconFiles()
 
 The function afs_DbgDisconFiles() is not referenced anywhere within the
 source tree.
@@ -77,5 +77,5 @@ index 3b8858539..1aaabd905 100644
   * Generate a fake fid for a disconnected shadow dir.
   * Similar to afs_GenFakeFid, only that it uses the dhash
 -- 
-2.45.1
+2.45.2
 

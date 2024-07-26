@@ -1,7 +1,7 @@
 From 90b8dcff36e9b03ec01550ad1a070a0ab7db8c46 Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Fri, 9 Feb 2024 09:01:33 -0700
-Subject: [PATCH 21/32] afs: fix 'ops' variable may be used uninitialized
+Subject: [PATCH 21/37] afs: fix 'ops' variable may be used uninitialized
 
 When the function rxfs_storeInit() has the static attribute, gcc flags
 the variable 'ops' as possibly uninitialized.
@@ -81,5 +81,5 @@ index 7b35b8f7f..63b370dae 100644
  #ifdef AFS_64BIT_CLIENT
  	      restart:
 -- 
-2.45.1
+2.45.2
 

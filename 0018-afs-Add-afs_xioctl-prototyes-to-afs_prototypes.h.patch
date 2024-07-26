@@ -1,7 +1,7 @@
 From 96932160fa8ef1cf4422e9e1d1ca2a449f8ffe93 Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Mon, 12 Feb 2024 08:59:32 -0700
-Subject: [PATCH 18/32] afs: Add afs_xioctl prototyes to afs_prototypes.h
+Subject: [PATCH 18/37] afs: Add afs_xioctl prototyes to afs_prototypes.h
 
 Several .c files have external function prototypes for the afs_xioctl
 function, while the implementing files do not have the prototype.
@@ -163,5 +163,5 @@ index 9b3b1afec..d7894dd67 100644
  /* afs_segments.c */
  extern int afs_StoreAllSegments(struct vcache *avc,
 -- 
-2.45.1
+2.45.2
 

@@ -1,7 +1,7 @@
 From b1c93f13870e24795b857cb483320871703d00e8 Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Wed, 7 Feb 2024 15:25:10 -0700
-Subject: [PATCH 14/32] Linux 6.8: Add function prototypes for krb5
+Subject: [PATCH 14/37] Linux 6.8: Add function prototypes for krb5
 
 The external files for heimdal/krb5 do not provide function prototypes
 in a header file that is used when building files that we use from
@@ -183,5 +183,5 @@ index 6e706737c..04292eefa 100644
  
  struct _krb5_checksum_type * _krb5_find_checksum (krb5_cksumtype);
 -- 
-2.45.1
+2.45.2
 

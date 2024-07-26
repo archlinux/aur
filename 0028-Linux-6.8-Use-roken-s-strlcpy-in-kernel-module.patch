@@ -1,7 +1,7 @@
 From 7b4802efaf29ef76969c8b931a31e93dd4fbb000 Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Mon, 11 Mar 2024 09:05:33 -0600
-Subject: [PATCH 28/32] Linux 6.8: Use roken's strlcpy() in kernel module
+Subject: [PATCH 28/37] Linux 6.8: Use roken's strlcpy() in kernel module
 
 The Linux 6.8 commit 'string: Remove strlcpy()' (d26270061a) removed the
 the strlcpy function from the Linux kernel.  The replacement function,
@@ -157,5 +157,5 @@ index 8744ab8b6..6e62c8c97 100644
  AFS_OS_NFSOBJS =
  
 -- 
-2.45.1
+2.45.2
 

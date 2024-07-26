@@ -1,7 +1,7 @@
 From 6333fae573f8a7b7656e9c1b05d445a37b951b88 Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Tue, 5 Mar 2024 08:37:47 -0700
-Subject: [PATCH 27/32] Linux 6.8: Remove ctl_table sentinels
+Subject: [PATCH 27/37] Linux 6.8: Remove ctl_table sentinels
 
 The Linux 6.8 commit 'sysctl: Remove the now superfluous sentinel
 elements from ctl_table array' (c8a65501d3) was a clean up commit
@@ -87,5 +87,5 @@ index a0a039892..c1116fc79 100644
  # endif
  int
 -- 
-2.45.1
+2.45.2
 

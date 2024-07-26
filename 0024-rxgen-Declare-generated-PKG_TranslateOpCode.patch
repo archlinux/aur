@@ -1,7 +1,7 @@
 From 57e0192a690942c2a0f4f1f685cfadf2106b763a Mon Sep 17 00:00:00 2001
 From: Andrew Deason <adeason@sinenomine.net>
 Date: Tue, 7 Dec 2021 15:43:35 -0600
-Subject: [PATCH 24/32] rxgen: Declare generated PKG_TranslateOpCode()
+Subject: [PATCH 24/37] rxgen: Declare generated PKG_TranslateOpCode()
 
 Ever since commit 5c77a6ca (rxgen: add *TranslateOpcode functions to
 XDR code), rxgen generates a PKG_TranslateOpCode function in the
@@ -53,5 +53,5 @@ index 768e42f3b..59854f4d5 100644
  
  void
 -- 
-2.45.1
+2.45.2
 

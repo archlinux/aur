@@ -1,7 +1,7 @@
 From 4c92936aefede187e57a9a433c0c192af2fc5e84 Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Fri, 12 Jan 2024 15:30:23 -0700
-Subject: [PATCH 23/32] rx: Add static attribute to internal functions
+Subject: [PATCH 23/37] rx: Add static attribute to internal functions
 
 When building against a Linux 6.8 kernel, functions that are missing
 prototypes or declarations are flagged.
@@ -77,5 +77,5 @@ index aaec60907..d6c52c369 100644
  {
      rpc_stat->invocations = 0;
 -- 
-2.45.1
+2.45.2
 
