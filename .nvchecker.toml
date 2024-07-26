@@ -1,5 +1,6 @@
-[kwin-effects-forceblur]
+[signal-monochrome-tray]
 source = "gitlab"
 gitlab = "doppelhelix/signal-monochrome-tray-hook"
+branch = "main"
 prefix = "v"
 use_max_tag = true
