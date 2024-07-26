@@ -27,7 +27,7 @@ _cppflags=" -DU_USING_ICU_NAMESPACE=1  -DU_DEFINE_FALSE_AND_TRUE=1 "
 _build_apache_cfg="etc/httpd/conf/extra"
 _build_bundled_gd="0"
 _build_conf_d="etc/php73/conf.d"
-_build_forced_openssl_11="1"
+_build_forced_openssl_11="0"
 _build_fpm_name="php-fpm73"
 _build_fpm_service_name="php73-fpm"
 _build_icu_src_dir="icu/source"
@@ -181,7 +181,7 @@ makedepends=(
     "argon2"
     "libxslt"
     "e2fsprogs"
-    "openssl-1.1"
+    "openssl"
     "lmdb"
     "db5.3"
     "postgresql-libs"
@@ -242,11 +242,11 @@ _sapi_depends=(
 _ext_depends_snmp=(
     "php73=7.3.33"
     "net-snmp"
-    "openssl-1.1"
+    "openssl"
 )
 _ext_depends_ftp=(
     "php73=7.3.33"
-    "openssl-1.1"
+    "openssl"
 )
 _ext_depends_intl=(
     "php73=7.3.33"
@@ -258,7 +258,7 @@ _ext_depends_imap=(
     "krb5"
     "c-client"
     "libxcrypt"
-    "openssl-1.1"
+    "openssl"
 )
 _ext_depends_gd=(
     "php73=7.3.33"
@@ -300,7 +300,7 @@ _ext_depends_openssl=(
     "php73=7.3.33"
     "krb5"
     "e2fsprogs"
-    "openssl-1.1"
+    "openssl"
 )
 _phpconfig="\
     --prefix=/usr \
@@ -527,11 +527,12 @@ _build_sapi() {
 # BUILD them all
 ################################################################################
 build() {
-    export CFLAGS="${CFLAGS} -fPIC -Wno-error=incompatible-pointer-types"
-    export CXXFLAGS="${CXXFLAGS} -fPIC -Wno-error=incompatible-pointer-types -std=c++17"
     if ((_phpbase <= 73)); then
-        export CFLAGS="${CFLAGS} -Wno-implicit-function-declaration -fpermissive"
-        export CXXFLAGS="${CXXFLAGS} -Wno-implicit-function-declaration -fpermissive"
+        export CFLAGS="${CFLAGS} -fPIC -Wno-error=incompatible-pointer-types -Wno-implicit-function-declaration -fpermissive"
+        export CXXFLAGS="${CXXFLAGS} -fPIC -Wno-error=incompatible-pointer-types -std=c++17 -Wno-implicit-function-declaration -fpermissive"
+    else
+        export CFLAGS="${CFLAGS} -fPIC -Wno-error=incompatible-pointer-types"
+        export CXXFLAGS="${CXXFLAGS} -fPIC -Wno-error=incompatible-pointer-types -std=c++17"
     fi
     export EXTENSION_DIR="/usr/lib/${pkgbase}/modules"
     if ((_build_forced_openssl_11)); then
