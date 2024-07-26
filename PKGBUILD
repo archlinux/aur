@@ -3,7 +3,7 @@ pkgname=ai-chat-bin
 _pkgname="AI Chat"
 pkgver=1.2.5
 _electronversion=28
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform desktop application that provides quick access to chatbots like OpenAI ChatGPT from the menu bar (tray)"
 arch=('x86_64')
 url="https://www.chatbar.top/"
@@ -22,7 +22,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('e8c85506ef9116456fd8763d7a7833cf491565fa895fe200c56421e83b6cc4a2'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
