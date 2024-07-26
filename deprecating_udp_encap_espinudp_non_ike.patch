@@ -1,0 +1,16 @@
+diff -ura --color old/source/iked/ike.socket.cpp new/source/iked/ike.socket.cpp
+--- old/source/iked/ike.socket.cpp	2024-07-26 11:20:21.864961513 -0500
++++ new/source/iked/ike.socket.cpp	2024-07-26 11:20:48.275305448 -0500
+@@ -134,8 +134,10 @@
+ 		optval = UDP_ENCAP_ESPINUDP_NON_IKE;
+ 		if( setsockopt( sock_info->sock, SOL_UDP, UDP_ENCAP, &optval, sizeof( optval ) ) < 0)
+ 		{
+-			log.txt( LLOG_ERROR, "!! : socket set udp-encap non-ike option failed\n" );
+-			return LIBIKE_SOCKET;
++                        log.txt( LLOG_ERROR, "!! : socket set udp-encap non-ike option failed.\n" );
++                        log.txt( LLOG_ERROR, "!! : Kernel 6.10 and above dropped support for UDP_ENCAP_ESPINUDP_NON_IKE sockets.\n" );
++                        log.txt( LLOG_ERROR, "!! : No longer treating this as an error, as the deprecation is beyond our control.\n" );
++                        log.txt( LLOG_ERROR, "!! : Continuing without setting UDP_ENCAP option on IKE socket.\n" );
+ 		}
+ 	}
+ 
