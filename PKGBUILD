@@ -16,8 +16,8 @@ install="${pkgname%-*}.install"
 _commit=e9043f890c56b4d0db50851e3fa4db10f230118e
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=$pkgver"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_commit}?signed")
-sha256sums=('8064e0181b1d30352f25eab563bade47b2fd157ca9646b97aff928241d9870ea'
-            '76015a774788a2274d29e3fa1e06cb752a8488f24a973b5143d8659d5b290e9c')
+sha256sums=('6186c0023698431e75aa2fd1720b083abc560a13f02e364ca0b2daa7c67e9084'
+            'f097255f0d415597cce88ae7a8de24440a533620a932d492fbe4e84c76f7c8d1')
 validpgpkeys=('225E40C8F1C8DEB7977ABF59F293063FECE2E8ED' # Linus Färnstrand <linus@mullvad.net>
               '8339C7D2942EB854E3F27CE5AEE9DECFD582E984' # David Lönnhager (code signing) <david.l@mullvad.net>
               '4B986EF5222BA1B810230C602F391DE6B00D619C' # Oskar Nyberg (code signing) <oskar@mullvad.net>
