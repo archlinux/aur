@@ -1,0 +1,10 @@
+# Written by TipsyTheCat on AUR
+[Desktop Entry]
+Version=1.0
+Name=Heimdall Frontend
+Type=Application
+Comment=Firmware flasher for Samsung mobile devices
+Terminal=false
+Exec=heimdall-frontend
+Icon=phone
+Categories=Development;
