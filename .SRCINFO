@@ -1,6 +1,6 @@
 pkgbase = danmakufactory-git
 	pkgdesc = A tool for converting XML danmaku to ass subtitles.
-	pkgver = r70.cc4a846
+	pkgver = r72.7c70234
 	pkgrel = 1
 	url = https://github.com/hihkm/DanmakuFactory
 	arch = x86_64
