@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=cosmic-applibrary-git
-pkgver=r225.5848972
+pkgver=r226.feb9cbe
 pkgrel=1
 pkgdesc="WIP Cosmic App Library"
 arch=('x86_64' 'aarch64')
@@ -20,6 +20,7 @@ makedepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
+options=('!lto')
 source=('git+https://github.com/pop-os/cosmic-applibrary.git')
 sha256sums=('SKIP')
 
@@ -36,7 +37,6 @@ prepare() {
 
 build() {
   cd "${pkgname%-git}"
-  CFLAGS+=" -ffat-lto-objects"
   export RUSTUP_TOOLCHAIN=stable
 
   # use mold instead of lld to speed up build

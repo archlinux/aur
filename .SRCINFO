@@ -1,6 +1,6 @@
 pkgbase = cosmic-applibrary-git
 	pkgdesc = WIP Cosmic App Library
-	pkgver = r225.5848972
+	pkgver = r226.feb9cbe
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-applibrary
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = cosmic-applibrary-git
 	depends = libxkbcommon
 	provides = cosmic-applibrary
 	conflicts = cosmic-applibrary
+	options = !lto
 	source = git+https://github.com/pop-os/cosmic-applibrary.git
 	sha256sums = SKIP
 
