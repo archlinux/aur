@@ -1,41 +1,33 @@
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Gleidson <gleidson.echeli@gmail.com>
 
 pkgname=emacs-haskell-mode-git
-pkgver=r2719.f63f315
+pkgver=17.5.r14.g727f72a
 pkgrel=1
 pkgdesc="Haskell mode package for Emacs"
 arch=(any)
-license=('GPL')
+license=('GPL-3.0-or-later')
 url="https://github.com/haskell/haskell-mode"
-install=${pkgname}.install
+install="${pkgname}.install"
 makedepends=('emacs' 'git')
-optdepends=(
-    'stylish-haskell: code formatting support'
-    'hasktags: tags generation support'
-    )
 provides=('emacs-haskell-mode')
-source=("${pkgname}::git://github.com/haskell/haskell-mode")
-md5sums=('SKIP')
+conflicts=('emacs-haskell-mode')
+source=("${pkgname}::git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "$srcdir"/${pkgname}
-  sed -i 's|haskell-mode-pkg.el,|haskell-mode-pkg.el haskell-mode.el,|' Makefile
+  cd "${pkgname}"
+  git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir"/${pkgname}
+  cd "${pkgname}"
   export EMACS=/usr/bin/emacs
   make
 }
 
 package() {
-  cd "$srcdir"/${pkgname}
+  cd "${pkgname}"
 
   install -dm0755 "$pkgdir"/usr/share/emacs/site-lisp/haskell-mode
   install -m0644 *.el -t "$pkgdir"/usr/share/emacs/site-lisp/haskell-mode

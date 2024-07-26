@@ -1,6 +1,6 @@
 post_install () {
   echo ""
-  echo "==> read the manual via M-x info-display-manual RET haskell-mode RET"
+  echo "==> Read the haskell-*.el files in /usr/share/emacs/site-lisp/haskell-mode"
   echo "==> for information about how to configure your ~/.emacs"
   echo ""
 }
