@@ -1,0 +1,3 @@
+[python-fluids]
+source = "pypi"
+pypi = "fluids"
