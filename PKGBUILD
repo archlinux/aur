@@ -14,7 +14,7 @@ fi
 _pkgname="logseq-desktop"
 pkgname="$_pkgname-bin"
 pkgver=0.10.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Privacy-first, open-source platform for knowledge sharing and management"
 url="https://github.com/logseq/logseq"
 license=('AGPL-3.0-or-later')
@@ -76,8 +76,8 @@ package() {
 Type=Application
 Name=Logseq
 Comment=$pkgdesc
-Exec=$_pkgname %u
-Icon=$_pkgname
+Exec=logseq %u
+Icon=logseq
 Terminal=false
 StartupNotify=true
 Categories=Office;
