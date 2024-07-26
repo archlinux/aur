@@ -24,14 +24,12 @@ sha256sums=('6e5d22815386180fa934a2fecebc3761ab4d60617bb390a3c46c30ed5deb5a4d')
 
 prepare() {
   cd "$pkgname-$pkgver"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
   CFLAGS+=" -ffat-lto-objects"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   arch-meson "$pkgname-$pkgver" build
   meson compile -C build
@@ -39,7 +37,6 @@ build() {
 
 check() {
   CFLAGS+=" -ffat-lto-objects"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   meson test -C build --print-errorlogs || :
 }
