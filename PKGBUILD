@@ -13,13 +13,11 @@ sha256sums=('6cf2239ff8e4d58f0851da1c252931b0e8bb06fb493a2786592d6dab8995bab1')
 
 prepare() {
   cd "Impression-v$pkgver"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   arch-meson "Impression-v$pkgver" build
   meson compile -C build
