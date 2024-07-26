@@ -2,7 +2,7 @@
 
 pkgname='zig-zvm'
 pkgver='0.4.4'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Fast and simple zig version manager'
 arch=('x86_64')
 url='https://github.com/hendriknielaender/zvm'
@@ -21,6 +21,6 @@ build() {
 
 package() {
     cd "$srcdir/zvm"
-    install -Dm755 -t "$pkgdir/usr/bin/zvm" zig-out/$CARCH-linux-zvm
+    install -Dm755 zig-out/$CARCH-linux-zvm "$pkgdir/usr/bin/zvm"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
