@@ -13,15 +13,13 @@ sha256sums=('fb33ef20264dab6bd2015c79c69b0d31eb66fe79ea9eaa2977255bbdae10a039')
 
 prepare() {
   cd "Protonup-rs-$pkgver"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd "Protonup-rs-$pkgver"
   CFLAGS+=" -ffat-lto-objects"
-  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --release --all-features
