@@ -5,7 +5,7 @@ _pkgname=paperlib
 _Pkgname=Paperlib
 
 pkgname="${_pkgname}"-appimage
-pkgver=3.1.7
+pkgver=3.1.8
 pkgrel=1
 pkgdesc="An open-source and simple academic paper management tool."
 arch=('x86_64')
@@ -16,33 +16,33 @@ options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::${url}/releases/download/release-electron-${pkgver}/${_Pkgname}_${pkgver}.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('4e8b9217a342f77e2f18517b780acf3da3608189c1efe749dbd6531af5ce4fef')
+sha256sums_x86_64=('fdd88c516df2c2c2877cfd161b691023bbfea62884e5a258a614af8fca8ef4fe')
 prepare() {
-    chmod +x "${_appimage}"
-    ./"${_appimage}" --appimage-extract
+  chmod +x "${_appimage}"
+  ./"${_appimage}" --appimage-extract
 }
 
 build() {
-    # Adjust .desktop so it will work outside of AppImage container
-    sed -i -E "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_pkgname}|"\
-        "squashfs-root/${_pkgname}.desktop"
-    # Fix permissions; .AppImage permissions are 700 for all directories
-    chmod -R a-x+rX squashfs-root/usr
+  # Adjust .desktop so it will work outside of AppImage container
+  sed -i -E "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_pkgname}|" \
+    "squashfs-root/${_pkgname}.desktop"
+  # Fix permissions; .AppImage permissions are 700 for all directories
+  chmod -R a-x+rX squashfs-root/usr
 }
 
 package() {
-    # AppImage
-    install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
+  # AppImage
+  install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
 
-    # Desktop file
-    install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop"\
-            "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+  # Desktop file
+  install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" \
+    "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
-    # Icon images
-    install -dm755 "${pkgdir}/usr/share/"
-    cp -a "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
+  # Icon images
+  install -dm755 "${pkgdir}/usr/share/"
+  cp -a "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
 
-    # Symlink executable
-    install -dm755 "${pkgdir}/usr/bin"
-    ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
+  # Symlink executable
+  install -dm755 "${pkgdir}/usr/bin"
+  ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
 }
