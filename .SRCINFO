@@ -1,0 +1,14 @@
+pkgbase = garden-devops-bin
+	pkgdesc = DevOps automation tool for developing Kubernetes apps.
+	pkgver = 0.13.35
+	pkgrel = 1
+	url = https://garden.io/
+	install = garden.install
+	arch = x86_64
+	license = MPL-2.0
+	provides = garden-devops
+	options = !strip
+	source = https://download.garden.io/core/0.13.35/garden-0.13.35-linux-amd64.tar.gz
+	sha256sums = e24183d0906b82f83dd72e8b650cd1a62b6406a71f83bd6edc7d1e4a2ec21b3e
+
+pkgname = garden-devops-bin
