@@ -1,0 +1,18 @@
+--- a/Makefile
++++ b/Makefile
+@@ -14,12 +14,12 @@
+ ASFLAGS += -felf64
+ 
+ ${BIN}: ${OBJ}
+-	$(LD) -o $@ $(LDFLAGS) $^
++	ld -o $@ $^
+ 
+ ${BUILDDIR}/%.o: %.asm
+ 	@mkdir -p ${@D}
+-	@$(AS) -o $@ -M -MF ${@:.o=.d} $<
+-	$(AS) -o $@ $(ASFLAGS) $<
++	@$(AS) -o $@ -M -MF ${@:.o=.d} $< $(ASFLAGS) $(LDFLAGS)
++	$(AS) -o $@ $(ASFLAGS) $(LDFLAGS) $<
+ 
+ ${BINTAR}: ${BIN}
+ 	tar czf $@ $^

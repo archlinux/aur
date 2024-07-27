@@ -1,0 +1,5 @@
+*
+!PKGBUILD
+!fix_ldflags.patch
+!.SRCINFO
+!.gitignore
