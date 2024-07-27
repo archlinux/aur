@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=napf
 pkgname=python-${_base}
-pkgver=0.0.8
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="nanoflann python bindings for kdtree"
 url="https://tataratat.github.io/${_base}"
@@ -11,7 +11,7 @@ depends=(python-numpy nanoflann)
 makedepends=(python-build python-installer python-setuptools python-wheel pybind11)
 checkdepends=(python-pytest)
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('399ff195fe3a300320959944453e330c5e067a4970029e302166bb485073fc05bc39c077f4118fcfefa3ec4349f77f64f7cdc0cc059584845aa8dd443766eb19')
+sha512sums=('0b20762077b8c727264ca31a8806152e2be49ba334774ce80f8c34b580f93258e175b2aa05d6bea14ec8fe1c1165a6ddd7b4545591788e045415306067650c27')
 
 build() {
   cd ${_base}-${pkgver}
