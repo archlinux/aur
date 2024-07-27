@@ -1,0 +1,13 @@
+pkgbase = zip2hashcat-git
+	pkgdesc = Processes input ZIP files into a format suitable for use with hashcat
+	pkgver = 1.0.r1.462bd94
+	pkgrel = 1
+	url = https://github.com/hashstation/zip2hashcat
+	arch = x86_64
+	license = MIT
+	provides = zip2hashcat
+	conflicts = zip2hashcat
+	source = git+https://github.com/hashstation/zip2hashcat.git
+	sha256sums = SKIP
+
+pkgname = zip2hashcat-git
