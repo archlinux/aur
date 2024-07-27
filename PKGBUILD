@@ -4,6 +4,7 @@ pkgname=tunasync-git
 pkgver=20240403.r476.938f67c
 pkgrel=1
 pkgdesc="Mirror job management tool developed by TUNA"
+url="https://github.com/tuna/tunasync"
 arch=('x86_64')
 license=('GPL3')
 depends=('glibc')

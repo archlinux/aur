@@ -2,6 +2,7 @@ pkgbase = tunasync-git
 	pkgdesc = Mirror job management tool developed by TUNA
 	pkgver = 20240403.r476.938f67c
 	pkgrel = 1
+	url = https://github.com/tuna/tunasync
 	arch = x86_64
 	license = GPL3
 	makedepends = git
