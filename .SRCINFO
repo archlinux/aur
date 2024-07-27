@@ -1,0 +1,11 @@
+pkgbase = crackstation
+	pkgdesc = CrackStation's password cracking dictionary
+	pkgver = 2019.05.26
+	pkgrel = 1
+	url = https://crackstation.net/crackstation-wordlist-password-cracking-dictionary.htm
+	arch = any
+	license = CC-BY-SA-3.0
+	source = https://crackstation.net/files/crackstation.txt.gz
+	sha256sums = a6dc17d27d0a34f57c989741acdd485b8aee45a6e9796daf8c9435370dc61612
+
+pkgname = crackstation
