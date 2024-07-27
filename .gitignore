@@ -2,3 +2,4 @@ pkg/
 src/
 plink2/
 *.pkg.tar.*
+*.log

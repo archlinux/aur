@@ -9,7 +9,7 @@ arch=(x86_64)
 license=('GPL-3.0-or-later')
 url="https://www.cog-genomics.org/plink/2.0/"
 source=('plink2::git+https://github.com/chrchang/plink-ng.git' fixes.patch)
-depends=('zlib>=1.2.4' 'intel-oneapi-mkl' 'intel-oneapi-openmp')
+depends=('zlib>=1.2.4' 'intel-oneapi-mkl' 'intel-oneapi-openmp' 'intel-oneapi-compiler-shared-runtime')
 makedepends=('git')
 sha256sums=('SKIP'
             '1e0b255a74d75f0246cead411ef5d9d4723d039198a7e7875f650a3ae0f1090c')
@@ -21,10 +21,7 @@ prepare() {
 
 build() {
     cd "$_pkgname/$_pkgver/build_dynamic"
-    DYNAMIC_MKL=1 \
-        CFLAGS=$(pkg-config --cflags lapack blas cblas) \
-        CXXFLAGS=$(pkg-config --cflags lapack blas cblas) \
-        BIN=$_pkgname make -f Makefile
+    DYNAMIC_MKL=1 LD_LIBRARY_PATH="/opt/intel/oneapi/compiler/latest/lib" BIN=$_pkgname make -f Makefile
 }
 
 package() {

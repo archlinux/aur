@@ -9,6 +9,7 @@ pkgbase = plink2-mkl-git
 	depends = zlib>=1.2.4
 	depends = intel-oneapi-mkl
 	depends = intel-oneapi-openmp
+	depends = intel-oneapi-compiler-shared-runtime
 	source = plink2::git+https://github.com/chrchang/plink-ng.git
 	source = fixes.patch
 	sha256sums = SKIP
