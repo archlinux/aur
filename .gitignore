@@ -1,0 +1,4 @@
+pkg
+src/zvm
+zvm
+*.tar.zst
