@@ -34,11 +34,11 @@ fi
 ###################################################################################
 
 pkgbase=linux-zen-pds
-pkgver=6.9.9.zen1
+pkgver=6.10.1.zen1
 pkgrel=1
-linuxver=6.9.9
-commit=d374ea33fb3184339d0f5b2d37f1eea30843a7d0
-versiontag=6.9.9-zen1
+linuxver=6.10.1
+commit=95579b272eb7ab6e22cc232fb5a9bdf3f284b5c8
+versiontag=6.10.1-zen1
 arch=(x86_64)
 url='https://www.kernel.org/'
 license=(GPL-2.0-only)
@@ -361,9 +361,9 @@ _package-headers(){
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-sha256sums=('2be05b487eb239a3bf687d628a8f104177d09c310f00bcc2a5e50f1733421eb9'
-            'c5064d6506a1b1ce99becd2d8f9edeb1f308a009b3a31f4c07a5e7c11c879e30'
-            'b25aa8189e7a5d9a71e56badb5fd49121ffb25cd67ad7824a6f279825126373e')
+sha256sums=('70109dfd1cd1c5f8a58eb1cb37122b9bf93f9c6a6280bf91019263c7339cf76b'
+            '590ac7eee4d3a9bbe533611933f32166903ca57448eeb918e0d3ba1cb91b17df'
+            '89543b55fc3f2b079cb5608321c5e576559361d0504e88f8ac8f3c6afa2394ef')
 
 pkgname=($pkgbase $pkgbase-headers)
 for _p in "${pkgname[@]}"; do
