@@ -1,15 +1,15 @@
-#Maintainer: Brian Bidulock <bidulock@openss7.org>
+#Contributor: Brian Bidulock <bidulock@openss7.org>
 pkgname=xorg-beforelight
 _pkgname=beforelight
 pkgdesc="MIT-SCREEN-SAVER sample"
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 arch=('x86_64' 'i686')
 url="http://www.x.org/"
 license=('custom')
 depends=('libxss' 'libxt')
-source=("http://xorg.freedesktop.org/releases/individual/app/$_pkgname-$pkgver.tar.bz2")
-md5sums=('d587e2e64d63d0a33e7e911727f9ebd4')
+source=("http://xorg.freedesktop.org/releases/individual/app/$_pkgname-$pkgver.tar.gz")
+md5sums=('25f93f57081f4948e8ee31b5a89e3efe')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
