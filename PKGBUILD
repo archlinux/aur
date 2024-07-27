@@ -3,7 +3,7 @@
 # Contributor: Anatoly Bashmakov anatoly at posteo dot net
 
 pkgname=asciidoctor-pdf
-pkgver=2.3.17
+pkgver=2.3.18
 pkgrel=1
 pkgdesc="Translate asciidoctor directly to pdf"
 arch=(any)
@@ -37,14 +37,12 @@ source=(
   "remove-failing-tests.patch"
 )
 sha256sums=(
-  '729320de291fe26a1fb18bbed5259b46ca686b1e69f2f2dd1947923d369ec8ac'
+  'd2d9140363e8a81c2aa4a06a35d2fb63971773900674d7b1942b4e090bd8194c'
   '40e0aea913c4abc3313b9ae05957e334510899ae64fd882a898144c9ede025d4'
 )
 
-_archive="$pkgname-$pkgver"
-
 prepare() {
-  cd "$_archive"
+  cd $pkgname-$pkgver
 
   # update gemspec/Gemfile to allow newer version of the dependencies
   sed -i -E 's|~>|>=|g' "$pkgname.gemspec"
@@ -53,7 +51,7 @@ prepare() {
 }
 
 build() {
-  cd "$_archive"
+  cd $pkgname-$pkgver
 
   local gemdir="$(gem env gemdir)"
 
@@ -96,16 +94,15 @@ build() {
 }
 
 check() {
-  cd "$_archive"
+  cd $pkgname-$pkgver
 
   GEM_HOME="tmp_install/$(gem env gemdir)" rspec
 }
 
 package() {
-  cd "$_archive"
+  cd $pkgname-$pkgver
 
   cp -a -t "$pkgdir" tmp_install/*
-
   install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.adoc
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
