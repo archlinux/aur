@@ -17,7 +17,8 @@ provides=(openapoc)
 
 prepare() {
   if [ ! -f ../cd.iso ]; then
-    echo "cd.iso from X-Com: Apocalypse needs to be in same folder as PKGBUILD"
+    echo "cd.iso from X-Com: Apocalypse needs to be in this folder:"
+    echo `realpath "$PWD/.."`
     exit 42
   fi
 
