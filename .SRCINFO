@@ -1,7 +1,7 @@
 pkgbase = python-webdriver-manager
 	pkgdesc = Simplify management of binary drivers for different browsers in Selenium
-	pkgver = 4.0.1
-	pkgrel = 2
+	pkgver = 4.0.2
+	pkgrel = 1
 	url = https://github.com/SergeyPirogov/webdriver_manager
 	arch = any
 	license = Apache-2.0
@@ -18,7 +18,7 @@ pkgbase = python-webdriver-manager
 	depends = python-dotenv
 	depends = python-packaging
 	depends = python-requests
-	source = python-webdriver-manager-4.0.1.tar.gz::https://github.com/SergeyPirogov/webdriver_manager/archive/refs/tags/v4.0.1.tar.gz
-	sha256sums = fbf249e4c8c8021fe0ef279e3eb39ba0b6a3d6662dfe4e6f0a02b16d174005a2
+	source = python-webdriver-manager-4.0.2.tar.gz::https://github.com/SergeyPirogov/webdriver_manager/archive/v4.0.2.tar.gz
+	sha256sums = e6014321aa966eb009d8a635f381f8615eddf56709de7a3f6d4e3be6ae51ce13
 
 pkgname = python-webdriver-manager

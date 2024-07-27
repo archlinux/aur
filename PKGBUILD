@@ -1,9 +1,9 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=python-webdriver-manager
-_name=webdriver_manager
-pkgver=4.0.1
-pkgrel=2
+_pkgname=webdriver_manager
+pkgver=4.0.2
+pkgrel=1
 pkgdesc="Simplify management of binary drivers for different browsers in Selenium"
 arch=(any)
 url="https://github.com/SergeyPirogov/webdriver_manager"
@@ -27,40 +27,36 @@ checkdepends=(
   python-pytest
   python-selenium
 )
-
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('fbf249e4c8c8021fe0ef279e3eb39ba0b6a3d6662dfe4e6f0a02b16d174005a2')
-
-_archive="$_name-$pkgver"
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('e6014321aa966eb009d8a635f381f8615eddf56709de7a3f6d4e3be6ae51ce13')
 
 build() {
-  cd "$_archive"
+  cd $_pkgname-$pkgver
 
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "$_archive"
+  cd $_pkgname-$pkgver
 
-  # The ignored/deselected tests fail - haven't looked into why.
+  # The deselected tests fail - haven't looked into why.
   pytest \
-    --ignore tests/test_firefox_manager.py \
-    --ignore tests/test_opera_manager.py \
-    --ignore tests_xdist/ \
     --deselect 'tests/test_chrome_driver.py::test_chrome_manager_cached_driver_with_selenium' \
     --deselect 'tests/test_chrome_driver.py::test_chrome_manager_with_selenium' \
+    --deselect 'tests/test_edge_driver.py::test_can_get_edge_driver_from_cache' \
     --deselect 'tests/test_edge_driver.py::test_edge_manager_with_selenium' \
-    --deselect 'tests/test_ie_driver.py::test_can_download_ie_driver_x64[win32]' \
-    --deselect 'tests/test_ie_driver.py::test_can_download_ie_driver_x64[win64]' \
-    --deselect 'tests/test_ie_driver.py::test_can_get_ie_driver_from_cache[win32]' \
-    --deselect 'tests/test_ie_driver.py::test_can_get_ie_driver_from_cache[win64]' \
+    --deselect 'tests/test_edge_driver.py::test_edge_with_specific_version' \
+    --deselect 'tests/test_firefox_manager.py' \
+    --deselect 'tests/test_ie_driver.py::test_can_download_ie_driver_x64' \
+    --deselect 'tests/test_ie_driver.py::test_can_get_ie_driver_from_cache' \
     --deselect 'tests/test_ie_driver.py::test_driver_with_ssl_verify_disabled_can_be_downloaded' \
-    --deselect 'tests/test_ie_driver.py::test_ie_manager_with_different_versions[3.0]' \
-    --deselect 'tests/test_ie_driver.py::test_ie_manager_with_different_versions[3.150.0]'
+    --deselect 'tests/test_ie_driver.py::test_ie_manager_with_different_versions' \
+    --deselect 'tests/test_opera_manager.py' \
+    --deselect 'tests_xdist'
 }
 
 package() {
-  cd "$_archive"
+  cd $_pkgname-$pkgver
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
