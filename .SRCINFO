@@ -1,13 +1,13 @@
 pkgbase = gnome-shell-extension-dark-variant
 	pkgdesc = Gnome Shell extension to apply dark window decorations
-	pkgver = 11
+	pkgver = 12
 	pkgrel = 1
 	url = https://github.com/hardpixel/dark-variant
 	arch = any
 	license = GPL
 	depends = gnome-shell
 	depends = xorg-xprop
-	source = gnome-shell-extension-dark-variant-11.zip::https://github.com/hardpixel/dark-variant/releases/download/v11/dark-variant-v11.zip
-	md5sums = b06dd0833bdb4c89eb56afd0d1aad9b5
+	source = gnome-shell-extension-dark-variant-12.zip::https://github.com/hardpixel/dark-variant/releases/download/v12/dark-variant-v12.zip
+	md5sums = ea9892335c342f733fe1acd7611a2ba6
 
 pkgname = gnome-shell-extension-dark-variant
