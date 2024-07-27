@@ -8,8 +8,9 @@ arch=(x86_64)
 url="https://github.com/kryksyh/$pkgname"
 license=(MIT)
 depends=()
-makedepends=(cargo)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/kryksyh/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
+conflicts=('ttynt-bin')
+provides=('ttynt')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha512sums=('6df2e79dda353f9a87ebeaaeb7435df929a642266b833b8a06a99390de12bd1a28d840d72c0934c2e7f11bca1038306985fc5ce72cf89bcd17451b9a22a8b7f8')
 
 prepare() {
