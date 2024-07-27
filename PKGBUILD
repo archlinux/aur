@@ -1,18 +1,35 @@
 # Maintainer:  Peter Mattern <pmattern at arcor dot de>
-# Contributor:  Chris Severance aur.severach aATt spamgourmet dott com
+# Contributor: Chris Severance aur.severach aATt spamgourmet dott com
 # Contributor: lilac
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
-pkgbase=cups-git
-pkgname=(libcups-git cups-git)
-pkgver=2.4.3.r346.g3b564fd99
-pkgrel=2
-pkgdesc="OpenPrinting CUPS"
+_pkgname=cups
+pkgname=$_pkgname-git
+pkgver=2.4.3.r351.gefb31d1a9
+pkgrel=1
+pkgdesc="OpenPrinting CUPS. Monolithic VCS package providing client libraries, headers and daemon."
 arch=(x86_64)
 license=('Apache-2.0 WITH LLVM-exception AND BSD-3-Clause AND Zlib AND BSD-2-Clause')
 url="https://openprinting.github.io/cups/"
-makedepends=('git' 'zlib' 'cups-browsed-git' 'ipp-usb-git' 'libusb' 'systemd' 'gnutls'
-             'xdg-utils' 'hicolor-icon-theme' 'colord' 'avahi' 'bash' 'logrotate')
+depends=('zlib' 'systemd' 'avahi' 'gnutls' 'hicolor-icon-theme' 'bash')
+makedepends=('git' 'cups-browsed-git' 'ipp-usb-git' 'libusb' 'xdg-utils' 'colord' 'logrotate')
+optdepends=('cups-browsed-git: to browse the network for remote CUPS queues and IPP network printers'
+            'libusb: for usb printer backend'
+            'ipp-usb-git: allows to send HTTP requests via a USB connection on devices without Ethernet or WiFi connections'
+            'xdg-utils: xdg .desktop file support'
+            'colord: for ICC color profile support'
+            'logrotate: for logfile rotation support')
+provides=('cups' 'libcups')
+conflicts=('cups' 'libcups' 'libcups')
+backup=(etc/cups/cupsd.conf
+        etc/cups/snmp.conf
+        etc/cups/printers.conf
+        etc/cups/classes.conf
+        etc/cups/cups-files.conf
+        etc/cups/subscriptions.conf
+        etc/logrotate.d/cups
+        etc/pam.d/cups)
+install=cups.install
 source=("git+https://github.com/OpenPrinting/cups.git"
         cups.logrotate
         cups.pam
@@ -30,12 +47,12 @@ sha256sums=('SKIP'
             '1b1c3268bdff6627b78070b6cd9abec6ef41572c27abbafccb237199f7137653')
 
 pkgver() {
-  cd "${pkgbase%-git}"
+  cd $_pkgname
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "${pkgbase%-git}"
+  cd $_pkgname
 
   # move /var/run -> /run for pid file
   patch -Np1 -i "${srcdir}"/cups-2.4.0-statedir.patch
@@ -55,7 +72,7 @@ prepare() {
 }
 
 build() {
-  cd "${pkgbase%-git}"
+  cd $_pkgname
 
   # The build system uses only DSOFLAGS but not LDFLAGS to build some libraries.
   export DSOFLAGS=${LDFLAGS}
@@ -84,52 +101,15 @@ build() {
 }
 
 #check() {
-#  cd "${pkgbase%-git}"
+#  cd $_pkgname
 #  make -k check
 #}
 
-package_libcups-git() {
-  pkgdesc+=" - client libraries and headers"
-  depends=('zlib' 'avahi' 'gnutls' 'bash')
-  provides=("libcups=${pkgver%.r*}")
-  conflicts=(libcups)
+package() {
 
-  cd "${pkgbase%-git}"
-  make BUILDROOT="${pkgdir}" install-headers install-libs
-  # put this into the libs pkg to make other software find the libs(no pkg-config file included)
-  mkdir -p "${pkgdir}"/usr/bin
-  install -m755 "${srcdir}"/cups/cups-config "${pkgdir}"/usr/bin/cups-config
-  install -Dm644 "${srcdir}"/${pkgbase%-git}/NOTICE -t "${pkgdir}"/usr/share/licenses/libcups-git
-}
-
-package_cups-git() {
-  pkgdesc+=" - daemon package"
-  install=cups.install
-  backup=(etc/cups/cupsd.conf
-          etc/cups/snmp.conf
-          etc/cups/printers.conf
-          etc/cups/classes.conf
-          etc/cups/cups-files.conf
-          etc/cups/subscriptions.conf
-          etc/logrotate.d/cups
-          etc/pam.d/cups)
-  depends=('libcups-git' 'systemd' 'hicolor-icon-theme')
-  optdepends=('cups-browsed-git: to browse the network for remote CUPS queues and IPP network printers'
-              'libusb: for usb printer backend'
-              'ipp-usb-git: allows to send HTTP requests via a USB connection on devices without Ethernet or WiFi connections'
-              'xdg-utils: xdg .desktop file support'
-              'colord: for ICC color profile support'
-              'logrotate: for logfile rotation support')
-  provides=(cups)
-  conflicts=(cups)
-
-
-  cd "${pkgbase%-git}"
-  make BUILDROOT="${pkgdir}" install-data install-exec
-  install -Dm644 "${srcdir}"/${pkgbase%-git}/NOTICE -t "${pkgdir}"/usr/share/licenses/cups-git
-
-  # this one we ship in the libcups pkg
-  rm -f "${pkgdir}"/usr/bin/cups-config
+  cd $_pkgname
+  make BUILDROOT="${pkgdir}" install-headers install-libs install-data install-exec
+  install -Dm644 "${srcdir}"/${_pkgname}/NOTICE -t "${pkgdir}"/usr/share/licenses/$pkgname
 
   # kill the sysv stuff
   rm -rf "${pkgdir}"/etc/rc*.d
@@ -163,15 +143,9 @@ package_cups-git() {
   # compress some driver files, adopted from Fedora
   find "${pkgdir}"/usr/share/cups/model -name "*.ppd" | xargs gzip -n9f
 
-  # remove client.conf man page
-  rm -f "${pkgdir}"/usr/share/man/man5/client.conf.5
-
   # comment out removed filters that are now part of cups-filters
   perl -p -i -e 's:^(.*\s+bannertops\s*)$:#\1:' "${pkgdir}"/usr/share/cups/mime/mime.convs
 
   # comment out unnecessary PageLogFormat entry
   sed -i -e 's:PageLogFormat:#PageLogFormat:' "${pkgdir}"/etc/cups/cupsd.conf*
-
-  # no more xinetd support
-  rm -rf "${pkgdir}"/etc/xinetd.d
 }
