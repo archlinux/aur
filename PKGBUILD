@@ -13,12 +13,12 @@
 pkgbase=bcompare
 pkgname=('bcompare' 'bcompare-kde6' 'bcompare-kde5' 'bcompare-kde4' 'bcompare-nautilus' 'bcompare-thunar' 'bcompare-cinnamon' 'bcompare-mate')
 pkgver=5.0.1.29877
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://www.scootersoftware.com'
 license=('custom')
 groups=('utility')
-depends=('qt5-base' 'fontconfig' 'libsm' 'libxcursor' 'libxft' 'libxinerama' 'libxrandr' 'zlib')
+depends=('qt5-x11extras' 'fontconfig' 'zlib')
 makedepends=('sed')
 source=("https://www.scootersoftware.com/${pkgbase}-${pkgver}.x86_64.tar.gz")
 sha256sums=('ff6078a6498361cace8729f700e46e986ac7df48723208bc4f0e09b3f325e304')
