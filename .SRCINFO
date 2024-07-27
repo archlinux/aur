@@ -1,0 +1,19 @@
+pkgbase = memtest_vulkan-git
+	pkgdesc = Vulkan compute tool for testing video memory stability
+	pkgver = v0.5.0
+	pkgrel = 1
+	url = https://github.com/GpuZelenograd/memtest_vulkan
+	arch = x86_64
+	arch = aarch64
+	license = Zlib
+	makedepends = git
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	depends = vulkan-driver
+	provides = memtest_vulkan
+	conflicts = memtest_vulkan
+	source = git+https://github.com/GpuZelenograd/memtest_vulkan
+	sha256sums = SKIP
+
+pkgname = memtest_vulkan-git
