@@ -1,6 +1,6 @@
 pkgbase = archiso-git
 	pkgdesc = Tools for creating Arch Linux live and install iso images
-	pkgver = 75.r2.g2932a9d
+	pkgver = 79.r0.gfa3aba3
 	pkgrel = 1
 	url = https://gitlab.archlinux.org/archlinux/archiso
 	arch = any
@@ -13,16 +13,16 @@ pkgbase = archiso-git
 	depends = dosfstools
 	depends = e2fsprogs
 	depends = erofs-utils
-	depends = grub
 	depends = libarchive
 	depends = libisoburn
 	depends = mtools
 	depends = squashfs-tools
 	optdepends = edk2-ovmf: for emulating UEFI with run_archiso
 	optdepends = gnupg: for PGP signature verification of rootfs over PXE
+	optdepends = grub: for grub support in the ISO
 	optdepends = openssl: for CMS signature verification of PXE artifacts and rootfs over PXE
 	optdepends = qemu-desktop: for run_archiso
-	provides = archiso=75.r2.g2932a9d
+	provides = archiso=79.r0.gfa3aba3
 	conflicts = archiso
 	source = git+https://gitlab.archlinux.org/archlinux/archiso.git?signed
 	validpgpkeys = 991F6E3F0765CF6295888586139B09DA5BF0D338

@@ -6,18 +6,19 @@
 # Contributor: Gerardo Exequiel Pozzi <djgera@archlinux.org>
 
 pkgname=archiso-git
-pkgver=75.r2.g2932a9d
+pkgver=79.r0.gfa3aba3
 pkgrel=1
 pkgdesc='Tools for creating Arch Linux live and install iso images'
 arch=('any')
 url='https://gitlab.archlinux.org/archlinux/archiso'
 license=('GPL-3.0-or-later')
-depends=('arch-install-scripts' 'bash' 'dosfstools' 'e2fsprogs' 'erofs-utils' 'grub' 'libarchive' 'libisoburn' 'mtools' 'squashfs-tools')
+depends=('arch-install-scripts' 'bash' 'dosfstools' 'e2fsprogs' 'erofs-utils' 'libarchive' 'libisoburn' 'mtools' 'squashfs-tools')
 makedepends=('git' 'python-docutils')
 checkdepends=('shellcheck')
 optdepends=(
   'edk2-ovmf: for emulating UEFI with run_archiso'
   'gnupg: for PGP signature verification of rootfs over PXE'
+  'grub: for grub support in the ISO'
   'openssl: for CMS signature verification of PXE artifacts and rootfs over PXE'
   'qemu-desktop: for run_archiso'
 )
