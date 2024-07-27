@@ -12,6 +12,7 @@ pkgbase = zig-zvm-git
 	conflicts = zig-zvm-bin
 	conflicts = zvm
 	conflicts = zig-zvm
+	conflicts = zig
 	source = git+https://github.com/hendriknielaender/zvm.git
 	md5sums = SKIP
 

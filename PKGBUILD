@@ -9,7 +9,7 @@ url='https://github.com/hendriknielaender/zvm'
 license=('MIT')
 makedepends=('zig' 'git')
 provides=("zvm" "zig-zvm")
-conflicts=('zig-zvm-bin' 'zvm' 'zig-zvm')
+conflicts=('zig-zvm-bin' 'zvm' 'zig-zvm' 'zig')
 source=("git+https://github.com/hendriknielaender/zvm.git")
 md5sums=('SKIP')
 
@@ -27,5 +27,6 @@ build() {
 package() {
     cd "$srcdir/zvm"
     install -Dm755 zig-out/$CARCH-linux-zvm "$pkgdir/usr/bin/zvm"
+    ln -s "/usr/bin/zvm" "$pkgdir/usr/bin/zig"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
