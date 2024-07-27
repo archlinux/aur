@@ -1,6 +1,6 @@
 pkgbase = slack-libpurple-git
 	pkgdesc = A purple-based (Pidgin) plugin for Slack.
-	pkgver = r372.1cfcf66
+	pkgver = r375.ee43d55
 	pkgrel = 1
 	url = https://github.com/dylex/slack-libpurple.git
 	arch = i686

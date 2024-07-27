@@ -1,8 +1,9 @@
-# Maintainer: Vasilii Novikov <n1dr+cm3513git@yaaa.ru>  (replace "aaa" with a single "a")
+# Maintainer:  Sahal Ansari <arch@sahal.info>
+# Contributor: Vasilii Novikov <n1dr+cm3513git@yaaa.ru>  (replace "aaa" with a single "a")
 # Contributor: sergej@aur.archlinux.org
 
 pkgname=slack-libpurple-git
-pkgver=r372.1cfcf66
+pkgver=r375.ee43d55
 pkgver() {
   cd "$srcdir/slack-libpurple/"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
