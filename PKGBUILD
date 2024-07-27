@@ -2,13 +2,13 @@
 
 pkgname=zig-zvm-bin
 pkgver='0.4.4'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Fast and simple zig version manager'
 arch=('x86_64')
 url='https://github.com/hendriknielaender/zvm'
 license=('MIT')
 provides=("zvm" "zig-zvm")
-conflicts=('zig-zvm-bin' 'zvm')
+conflicts=('zig-zvm' 'zvm')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hendriknielaender/zvm/releases/download/v$pkgver/$CARCH-linux-zvm.tar.gz" "LICENSE")
 sha256sums=(
     '4ce6c5aab807c1b5769c38f9ec1bf2b7c6cff9ab8e6895c671aa33e2f1023f68'
