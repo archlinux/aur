@@ -35,11 +35,14 @@ build() {
 	scons use-system-pkgs=1
 }
 
-# skip tests, because there's no X display
-#check() {
-#	cd "${srcdir}/${pkgname}"
-#	scons use-system-pkgs=1 run_tests
-#}
+check() {
+	if [ -z "$DISPLAY" ]; then
+		echo "Skipping tests, because there is not X11 DISPLAY"
+	else
+		cd "${srcdir}/${pkgname}"
+		scons use-system-pkgs=1 run_tests
+	fi
+}
 
 package() {
 	cd "${srcdir}/${pkgname}"
