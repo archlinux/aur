@@ -15,6 +15,7 @@ pkgbase = openapoc-git
 	depends = boost-libs
 	depends = glibc
 	depends = gcc-libs
+	depends = bash
 	provides = openapoc
 	source = openapoc-git::git+https://github.com/OpenApoc/OpenApoc.git
 	sha256sums = SKIP
