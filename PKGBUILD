@@ -2,7 +2,7 @@
 pkgname=lcode-bin
 _binname=lcode
 _repository=lcode
-pkgver=v0.9.3
+pkgver=v0.9.4
 pkgrel=1
 pkgdesc="An application of terminal write leetcode."
 arch=('x86_64' 'aarch64')
@@ -15,9 +15,9 @@ provides=('lcode')
 conflicts=()
 
 source_x86_64=("https://github.com/saying121/${_repository}/releases/download/${pkgver}/${_binname}-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('6312a88a1c595810c6b20aa4d24235b5b931930ff258169410874225102b9b0b')
+sha256sums_x86_64=('e9d8ed64f795f0c5333e598d5ec4286edaa7ea9273cb3d4a3cace91438d860b3')
 source_aarch64=("https://github.com/saying121/${_repository}/releases/download/${pkgver}/${_binname}-${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_aarch64=('1817c9ca5d65f9c3e3e006172855d360ca97fab1cf7a88597d5b916b6b4073ed')
+sha256sums_aarch64=('046db4e1eaa2230344b5032a7f51f1bf227034307fbe4197e69fad2752edb9bd')
 
 build() {
     install -dm755 "completions"
