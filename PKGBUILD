@@ -2,15 +2,15 @@
 
 pkgbase=svdtools
 pkgname=svdtools
-pkgver=0.3.14
-pkgrel=1
+pkgver=0.3.17
+pkgrel=2
 epoch=
 pkgdesc="svdtools is a set of tools for modifying vendor-supplied, often buggy SVD files. It can be imported as a library for use in other applications, or run directly via the included svdtools CLI utility."
 arch=(x86_64
   aarch64
   riscv64)
 url="https://github.com/rust-embedded/svdtools"
-license=('MIT', 'Apache-2.0')
+license=('MIT AND Apache-2.0')
 groups=()
 depends=(gcc-libs
   glibc)
@@ -26,7 +26,7 @@ install=
 changelog=
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('cd3dc6b0fe5b8fbbb4f4175283eefb133977a8bec5ba987c858c1e3b2d5e19db')
+sha256sums=('8796ca8feaf937bc7ad8d243d2debb6879374aebe8bddf67dd81592506658a0a')
 #validpgpkeys=()
 
 export RUSTUP_TOOLCHAIN=stable
