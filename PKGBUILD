@@ -73,6 +73,7 @@ Name=Miru
 Comment=Miru App
 Exec=${_gitname}
 Icon=${_gitname}
+Keywords=animation;anime;movie;player;tv;video;ebook;novel;
 Terminal=false
 EOF
 }
