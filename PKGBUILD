@@ -3,7 +3,7 @@
 pkgbase=python-reproject
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.13.1
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Python-based Astronomical image reprojection"
 arch=('i686' 'x86_64')
@@ -17,6 +17,7 @@ makedepends=('cython>=3.0.4'
              'python-installer'
              'python-numpy'
              'python-sphinx-astropy'
+             'python-matplotlib'
              'python-astropy-healpix'
              'python-dask'
              'python-scipy'
@@ -28,11 +29,12 @@ makedepends=('cython>=3.0.4'
 #              'python-pytest-remotedata'
 ##             'python-matplotlib'
 #              'python-sunpy'
+#              'python-mpl-animators'
 #              'python-gwcs'
 #              'python-shapely'
 #              'python-zarr')     # astropy-healpix dask scipy already in makedep
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('19076686f302fc52aba977dd5c7e83a3')
+md5sums=('eae73f9972c996ff1c0eda6e0b4aaebe')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -71,7 +73,7 @@ package_python-reproject() {
              'python-fsspec'
              'python-scipy>=1.9'
              'python-astropy>=5.0'
-             'python-astropy-healpix>=0.6'
+             'python-astropy-healpix>=1.0'
              'python-zarr')
     optdepends=('python-shapely>=1.6: For some of the mosaicking functionality'
                 'python-reproject-doc: Documentation for Reproject'
