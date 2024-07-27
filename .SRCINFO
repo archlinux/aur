@@ -1,5 +1,5 @@
 pkgbase = python-miniflux
-	pkgdesc = A Python wrapper for the NAIF C SPICE Toolkit (N67) written using ctypes.
+	pkgdesc = Python client for Miniflux API.
 	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/miniflux/python-client
