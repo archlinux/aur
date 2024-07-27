@@ -1,7 +1,7 @@
 # Maintainer:  Nicholas Wang <me#nicho1as.wang>
 
 pkgname=tunasync-git
-pkgver=r476.938f67c
+pkgver=20240403.r476.938f67c
 pkgrel=1
 pkgdesc="Mirror job management tool developed by TUNA"
 arch=('x86_64')
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}"/tunasync
-  printf "%s-r%s.%s" "$(git log -1 --format="%cd" --date=short | sed 's/-//g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  printf "%s.r%s.%s" "$(git log -1 --format="%cd" --date=short | sed 's/-//g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
