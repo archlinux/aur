@@ -2,7 +2,7 @@
 
 pkgname="olivetin-bin"
 pkgver=2024.07.153
-pkgrel=2
+pkgrel=3
 pkgdesc="Safe and simple access to predefined shell commands from a web interface"
 url="https://www.olivetin.app/"
 license=("AGPL3")
@@ -25,7 +25,7 @@ prepare(){
  # enter the proper directory
  case "$CARCH" in
   "x86_64") cd "OliveTin-linux-amd64";;
-  "armv7h") cd "OliveTin-linux-arm32v7";;
+  "armv7h") cd "OliveTin-linux-armv7";;
   "aarch64") cd "OliveTin-linux-arm64";;
   *) echo "[KO] Unsupported architecture provided" && return 1;;
  esac
@@ -38,7 +38,7 @@ ShowNavigation: true
 ShowFooter: true
 
 # see https://docs.olivetin.app/network-ports.html
-listenAddressRestActions: localhost:1338
+listenAddressRestActions: localhost:133888
 listenAddressGrpcActions: localhost:1339
 listenAddressWebUI: localhost:1340
 
@@ -52,7 +52,7 @@ package(){
  # enter the proper directory
  case "$CARCH" in
   "x86_64") cd "OliveTin-linux-amd64";;
-  "armv7h") cd "OliveTin-linux-arm32v7";;
+  "armv7h") cd "OliveTin-linux-arm7";;
   "aarch64") cd "OliveTin-linux-arm64";;
   *) echo "[KO] Unsupported architecture provided" && return 1;;
  esac
