@@ -20,6 +20,6 @@ pkgbase = heimdall-grimler-git
 	source = Heimdall::git+https://git.sr.ht/~grimler/Heimdall
 	source = heimdall-frontend.desktop
 	sha512sums = SKIP
-	sha512sums = 9bb916b7efcf2384afedf8fc7e7c32948b3dc557839f4c49b40dd2a50ece2e32fca98328cfebc87d2a6dc817942cbfdb3f8dcad93598f990944450632f5e3a07
+	sha512sums = b9830d3f8d08132ecb2083b1cde875b500358a24dbae0b9217401d542beb5e121534949686a8fb58c8d6294b86cf81b806ca7c94327026017275cc4fbe8cf2a1
 
 pkgname = heimdall-grimler-git
