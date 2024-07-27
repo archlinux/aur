@@ -1,0 +1,3 @@
+[yt-music-archive]
+source = "git"
+git = "https://github.com/mumu-lhl/yt-music-archive.git"
