@@ -1,26 +1,27 @@
 # Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
 
-_pkgname=doom_ascii
-pkgname=${_pkgname}-git
-pkgver=0.1.1.r7.052c252
+_pkgname="doom_ascii"
+pkgname="${_pkgname}-git"
+pkgver=0.1.1.r7.g052c252
 pkgrel=1
 pkgdesc="Text-based DOOM in your terminal! Source-port of doomgeneric. Does not have sound."
 arch=('any')
 url="https://github.com/wojciech-graj/doom-ascii"
 license=('GPL-2.0-or-later')
 makedepends=('git' 'make' 'gcc')
-_pkgsrc="${_pkgname}"
+depends=('glibc' 'sh')
+provides=("${_pkgname}=${pkgver%%.r*}")
+conflicts=("${_pkgname}")
+_pkgsrc="doom-ascii"
 source=("${_pkgsrc}::git+${url}.git"
         "${_pkgname}.sh")
-conflicts=("${_pkgname}")
-provides=("${_pkgname}=${pkgver%%.r*}")
 sha256sums=('SKIP'
             '27864d019900aa0728c95d77e70dfd94869e44a65e6657ef04110c5f5c1cc202')
 backup=("opt/${_pkgname}/.default.cfg")
 
 pkgver() {
   cd "${_pkgsrc}"
-  printf "%s" "$(git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
+  git describe --long --tags --abbrev=7 | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

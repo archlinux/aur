@@ -1,10 +1,5 @@
-*.tar.*
-*.orig
-*.rej
-*.swp
-*.part
-src
-pkg
-doom_ascii
-LICENSE
-README.md
+*
+!PKGBUILD
+!doom_ascii.sh
+!.SRCINFO
+!.gitignore
