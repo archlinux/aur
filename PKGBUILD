@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: TDY <tdy@gmx.com>
 pkgname=git-cola
-pkgver=4.8.0
+pkgver=4.8.1
 pkgrel=1
 pkgdesc="The highly caffeinated Git GUI"
 arch=('any')
@@ -40,7 +40,7 @@ optdepends=(
   'tk: to use the built-in ssh-askpass handler'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/git-cola/git-cola/archive/v$pkgver.tar.gz")
-sha256sums=('e333172d3a7a0d92bf55cfd407c357ed95af38de43f3bd9bd6b3e3f9f8421b11')
+sha256sums=('a9c175e64bdf86cce4160365dc9365d6ecab9a76e005baa747712b4de9f57867')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -63,7 +63,7 @@ check() {
   appstreamcli validate --no-net share/metainfo/*.appdata.xml || :
 
   # Run 'garden test'
-#  make test
+  make test || :
 }
 
 package() {
