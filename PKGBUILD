@@ -2,7 +2,7 @@
 # Contributor: Antony Ho <ntonyworkshop@gmail.com>
 
 pkgname=session-desktop
-pkgver=1.12.4
+pkgver=1.12.5
 pkgrel=1
 pkgdesc="Onion routing based messenger"
 arch=(x86_64)
@@ -10,33 +10,33 @@ url="https://getsession.org"
 license=('GPL-3.0-only')
 _electron=electron25
 depends=('bash' "${_electron}" 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'python')
-makedepends=('cmake' 'git' 'nvm' 'python-setuptools' 'yarn')
+makedepends=('cmake' 'git' 'libxcrypt-compat' 'nvm' 'python-setuptools' 'yarn')
 source=("git+https://github.com/oxen-io/session-desktop.git#tag=v${pkgver}"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('acb6601585be376e31c3c0a5e770fd4a6c0dea6e644a144101d366dc1f72fe68'
+sha256sums=('fa37c6456545a1e9ef713c88877f408a5b41c1cc2e4e0367228e61430d3ecc20'
             '267d772a94ba49b19e799e7ecee25c0077ded4dd9c853c073ec386a8ab6a7e5c'
             'a5279447d005060aa77536dcabe0ab66226f9cffa668dc0b6e07a2f1e52ab5ce')
 
 prepare() {
-  source /usr/share/nvm/init-nvm.sh
-  nvm install 18.15
-  nvm use 18.15
-
   sed "s/@ELECTRON@/${_electron}/" -i "${pkgname}.sh"
 
   cd "${pkgname}"
+  source /usr/share/nvm/init-nvm.sh
+  nvm install
+  nvm use
+
   yarn install
 }
 
 build() {
   cd "${pkgname}"
-  export SIGNAL_ENV=production
+  export NODE_ENV=production SIGNAL_ENV=production
   yarn build-everything
   yarn electron-builder --linux --dir \
-    --config.extraMetadata.environment="${SIGNAL_ENV}" \
-    --config.electronDist="/usr/lib/${_electron}" \
-    --config.electronVersion="$(cat /usr/lib/${_electron}/version)"
+    -c.extraMetadata.environment=production \
+    -c.electronDist="/usr/lib/${_electron}" \
+    -c.electronVersion="$(cat /usr/lib/${_electron}/version)"
 }
 
 package() {
