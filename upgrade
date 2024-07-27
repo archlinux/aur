@@ -14,6 +14,7 @@ pkgbuild="${own_dir}/PKGBUILD"
 source ${pkgbuild}
 
 echo "old version: $pkgver"
+old_version="${pkgver}"
 if [ "${version}" == "${pkgver}" ]; then
   echo "version must be different from old version"
   exit 1
@@ -27,3 +28,10 @@ echo "downloading from $src_url to calculate digest"
 digest=$(curl -L "${src_url}" | b2sum | cut -d' ' -f1)
 
 sed -i "s/b2sums=.*/b2sums=('${digest}')/" "${pkgbuild}"
+
+srcinfo="${own_dir}/.SRCINFO"
+
+old_version_re=$(echo "${old_version}" | sed "s/\./\\\./g")
+sed -i "s/${old_version_re}/${version}/" "${srcinfo}"
+
+sed -i "s/b2sums =.*/b2sums = ${digest}/" "${srcinfo}"
