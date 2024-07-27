@@ -2,7 +2,7 @@
 # Contributor: Andreas Bilke <abilke at cosy dot sbg dot ac dot at>
 # Contributor: Myles English <myles at rockhead dot biz>
 # Contributor: Lucas H. Gabrielli <heitzmann at gmail dot com>
-pkgver=3.21.2
+pkgver=3.21.3
 pkgrel=1
 pkgname=petsc
 pkgdesc="Portable, extensible toolkit for scientific computation"
@@ -32,7 +32,7 @@ optdepends=(
 install=petsc.install
 source=(http://web.cels.anl.gov/projects/petsc/download/release-snapshots/${pkgname}-${pkgver}.tar.gz
         test_optdepends.sh)
-sha512sums=('f0c08909c3d5cdc086c1ab2705bc63ad487d7d9eac1785aca492b2154af7ac203f09c0a5046fde34ce46d5dfa72795cbca67961cd83930b07bbbb460d7218e2d'
+sha512sums=('699bbf3ddfc8fe8ebd4a1cb51a04108c10cafb65d30e7a74a9bf1b1ddd0f4350f0b893b256ea8a835e076e0a2f982189902bff30a9e301b3e04b539d2d2b6f99'
             'aef377e84e6bf5aea114f97b1bac8301203e3a6e736cacb49f01a2e95a29022062fc0d9e85fe8ba1ae9bdc1ffa6c007a031327c185e4966d3393adf038fc0993')
 
 PETSC_ARCH=linux-c-opt
@@ -57,8 +57,7 @@ build() {
             --with-gsl=1 \
             --with-zlib=1 \
             --with-superlu-lib=-lsuperlu --with-superlu-include=/usr/include/superlu \
-            --with-suitesparse-include=/usr/include/suitesparse \
-            --with-suitesparse-lib=[libamd.so,libbtf.so,libcamd.so,libccolamd.so,libcholmod.so,libcolamd.so,libcxsparse.so,libgraphblas.so,libklu.so,libklu_cholmod.so,liblagraph.so,liblagraphx.so,libldl.so,libparu.so,librbio.so,libspex.so,libspqr.so,libsuitesparse_mongoose.so,libsuitesparseconfig.so,libumfpack.so] \
+            --with-suitesparse=1 \
             --with-hdf5=1 --with-hdf5-fortran-bindings=1 \
             $(sh ${srcdir}/test_optdepends.sh)"
 
