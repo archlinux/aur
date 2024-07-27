@@ -2,7 +2,7 @@
 
 pkgname=crm
 pkgver=0.2.1
-pkgrel=7
+pkgrel=8
 pkgdesc="crm (Cargo registry manager)"
 arch=(x86_64
     aarch64
@@ -12,8 +12,9 @@ license=('MIT' 'Apache-2.0')
 provides=(${pkgname})
 conflicts=(${pkgname})
 replaces=()
-depends=('cargo')
-makedepends=('rust')
+depends=(gcc-libs
+    glibc)
+makedepends=(cargo)
 backup=()
 options=('!lto')
 install=
