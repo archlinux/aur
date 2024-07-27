@@ -1,6 +1,6 @@
-# Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer: Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
-pkgname=doom_ascii
+pkgname="doom_ascii"
 pkgver=0.1.1
 pkgrel=2
 pkgdesc="Text-based DOOM in your terminal! Source-port of doomgeneric. Does not have sound."
