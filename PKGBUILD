@@ -1,21 +1,16 @@
-# Maintainer: John Reese <john@noswap.com>
-# Upstream URL: https://github.com/jreese/nib
-#
-# For improvements/fixes to this package, please send a pull request:
-# https://github.com/jreese/arch
-
+# Contributor: John Reese <john@noswap.com>
 
 pkgname=nib-git
-pkgver=20131014
+pkgver=20231224
 pkgrel=1
 pkgdesc="static site generator"
 arch=('any')
 url="https://github.com/jreese/nib"
 license=('MIT')
-depends=('python-setuptools' 'python-sh' 'python-markdown' 'python-jinja' 'python-yaml')
-makedepends=('git')
+depends=('python-sh' 'python-markdown' 'python-jinja' 'python-yaml')
+makedepends=('git' 'python-setuptools')
 
-_gitroot="git://github.com/jreese/nib"
+_gitroot="git+https://github.com/jreese/nib"
 _gitname="nib"
 
 source=("$_gitroot")
