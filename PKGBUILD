@@ -36,7 +36,7 @@ build() {
 }
 
 package() {
-  cd "${pkgdir}"
-
-  install -m755 "${srcdir}/Superuser/bin/superuser" "/usr/bin/superuser"
+  echo -e "\e[1;32mPermission Required to Create Symbolic Link\e[0m";
+  echo -e "\e[1;32m${HOME}/.local/bin/superuser  ->  /usr/bin/superuser\e[0m";
+  sudo ln -sT "${HOME}/.local/bin/superuser" /usr/bin/superuser
 }
