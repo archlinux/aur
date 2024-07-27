@@ -7,9 +7,10 @@ pkgbase = git-interactive-rebase-tool
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
+	makedepends = git
 	makedepends = cargo
 	depends = libgit2
-	source = git-interactive-rebase-tool-2.4.1.tar.gz::https://github.com/MitMaro/git-interactive-rebase-tool/archive/2.4.1.tar.gz
-	sha256sums = 0b1ba68a1ba1548f44209ce1228d17d6d5768d72ffa991909771df8e9d42d70d
+	source = git+https://github.com/MitMaro/git-interactive-rebase-tool#tag=2.4.1
+	sha256sums = 28bc3a528c7b70ad3c436d86a42acd56e2102e09549af395fae27cf36e984769
 
 pkgname = git-interactive-rebase-tool
