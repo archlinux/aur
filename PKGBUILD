@@ -3,7 +3,7 @@
 # Contributor: Siddhartha Das bablu.boy@gmail.com>
 pkgname=nutty-git
 _app_id=com.github.babluboy.nutty
-pkgver=1.1.1.r84.g294d666
+pkgver=1.2.0.r0.g69331cb
 pkgrel=1
 pkgdesc="A network utility with a user interface for common command line tools"
 arch=('x86_64')
@@ -21,7 +21,6 @@ depends=(
   'nmap'
   'pciutils'
   'polkit'
-  'speedtest-cli'
   'sqlite'
   'traceroute'
   'vnstat'
@@ -37,8 +36,8 @@ source=('git+https://github.com/babluboy/nutty.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${pkgname%-git}"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -54,8 +53,4 @@ package() {
   meson install -C build --destdir "$pkgdir"
 
   ln -s "/usr/bin/${_app_id}" "$pkgdir/usr/bin/${pkgname%-git}"
-
-  # Included speedtest-cli script is broken, use system package:
-  rm "$pkgdir/usr/share/${_app_id}/scripts/speedtest-cli"
-  ln -s /usr/bin/speedtest-cli "$pkgdir/usr/share/${_app_id}/scripts/"
 }
