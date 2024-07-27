@@ -3,8 +3,8 @@
 # -*- sh -*-
 
 pkgname=nncp
-pkgver=8.10.0
-pkgrel=7
+pkgver=8.11.0
+pkgrel=1
 pkgdesc="Node-to-Node Copy Protocol utilities for secure store-and-forward"
 url="http://www.nncpgo.org/"
 arch=('aarch64' 'x86_64')
@@ -12,24 +12,28 @@ license=('GPL-3.0-or-later')  # SPDX-License-Identifier: GPL-3.0-or-later
 depends=('glibc')
 makedepends=('go')
 options=('lto')
-source=("http://www.nncpgo.org/download/nncp-$pkgver.tar.xz"
-        "http://www.nncpgo.org/download/nncp-$pkgver.tar.xz.asc"
-        nncp.sysusers
-        nncp.tmpfiles
-        nncp-daemon.service
-        nncp-uucp.socket
-        nncp-uucp@.service)
-sha256sums=('154e13ba15c0ea93f54525793b0699e496b2db7281e1555f08d785a528f3f7fc'
-            'SKIP'
-            '81d3d892da555eb1e5fc764788e18e21ab9293ca1d4bd8febc27fed1ea403fb6'
-            'd2ebd1bafc630b013041c62035fac454cf151049712f87b2876fe63282851c71'
-            '4e343b2914b0955270d0958d0b579ad986eb6049d1b1c16e95ef3fe496e2216d'
-            '9efee582d01776fb489eaa0c3c02a0629cae537794bbcb00eef13a55bbe7d818'
-            '319b302a4613b541d1feeb5ad19a290be79d5ac619a6800ed77580c7c8d34801')
+source=(
+  "http://www.nncpgo.org/download/nncp-$pkgver.tar.xz"
+  "http://www.nncpgo.org/download/nncp-$pkgver.tar.xz.asc"
+  nncp.sysusers
+  nncp.tmpfiles
+  nncp-daemon.service
+  nncp-uucp.socket
+  nncp-uucp@.service
+)
+sha256sums=(
+  'ec4114bcd9184aa8781f38dbaa3aa04255dfbba9c3536bf75969e66bc334aff2'
+  'SKIP'
+  '81d3d892da555eb1e5fc764788e18e21ab9293ca1d4bd8febc27fed1ea403fb6'
+  'd2ebd1bafc630b013041c62035fac454cf151049712f87b2876fe63282851c71'
+  '4e343b2914b0955270d0958d0b579ad986eb6049d1b1c16e95ef3fe496e2216d'
+  '9efee582d01776fb489eaa0c3c02a0629cae537794bbcb00eef13a55bbe7d818'
+  '319b302a4613b541d1feeb5ad19a290be79d5ac619a6800ed77580c7c8d34801'
+)
 validpgpkeys=('92C2F0AEFE73208E46BFF3DE2B25868E75A1A953')
 
-install=nncp.install
-backup=(etc/nncp/nncp.hjson)
+install='nncp.install'
+backup=('etc/nncp/nncp.hjson')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -38,8 +42,8 @@ build() {
   # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
   #
   # ld(1) says: “Supported for i386 and x86-64.”
-  case "${CARCH:-unknown}" in
-    'x86_64' | 'i386' )
+  case "Z${CARCH:-unknown}" in
+    'Zx86_64' | 'Zi386' )
       export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
     ;;
     * ) : pass ;;
@@ -57,6 +61,12 @@ build() {
   bin/build
 }
 
+check() {
+  cd "$pkgname-$pkgver"
+
+  bin/nncp-daemon -version
+}
+
 package() {
   cd "$pkgname-$pkgver"
 
@@ -68,18 +78,17 @@ package() {
 
   ./install
 
-  install -Dm0644 "$srcdir/nncp.sysusers" \
-                    "$pkgdir/usr/lib/sysusers.d/nncp.conf"
-  install -Dm0644 "$srcdir/nncp.tmpfiles" \
-                    "$pkgdir/usr/lib/tmpfiles.d/nncp.conf"
+  install -vDm0644 "$srcdir/nncp.sysusers" \
+    "$pkgdir/usr/lib/sysusers.d/nncp.conf"
+  install -vDm0644 "$srcdir/nncp.tmpfiles" \
+    "$pkgdir/usr/lib/tmpfiles.d/nncp.conf"
 
   # TODO: nncp-caller
   # TODO: nncp-toss
   # TODO: nncp-check
-  for unit in nncp-{daemon,uucp@}.service \
-              nncp-uucp.socket; do
-    install -Dm0644 "$srcdir/$unit" \
-                      "$pkgdir/usr/lib/systemd/system/$unit"
+  for _unit in nncp-{daemon,uucp@}.service nncp-uucp.socket; do
+    install -vDm0644 "$srcdir/$_unit" \
+      "$pkgdir/usr/lib/systemd/system/$_unit"
   done
 }
 
