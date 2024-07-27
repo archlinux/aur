@@ -1,0 +1,15 @@
+pkgbase = olagem
+	pkgdesc = A terminal based typing speed test
+	pkgver = 0.1.2
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/benjamin-voisin/olagem
+	arch = x86_64
+	license = CC-BY-SA-4.0
+	makedepends = git
+	makedepends = cargo
+	source = olagem-0.1.2::git+https://github.com/benjamin-voisin/olagem#tag=1e7d47bd389a6d1871cf0d0e0c3db2fe43cea7ea
+	validpgpkeys = F6BB766662E7D433F7EE159EC5C8EDD125FBFD78
+	sha256sums = SKIP
+
+pkgname = olagem
