@@ -1,15 +1,15 @@
 # Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname=doom_ascii
-_pkgname=doom-ascii
 pkgver=0.1.1
 pkgrel=2
 pkgdesc="Text-based DOOM in your terminal! Source-port of doomgeneric. Does not have sound."
 arch=('any')
-url="https://github.com/wojciech-graj/${_pkgname}"
+url="https://github.com/wojciech-graj/doom-ascii"
 license=('GPL-2.0-or-later')
 makedepends=('make' 'gcc')
-_pkgsrc="${_pkgname}-${pkgver}"
+depends=('glibc' 'sh')
+_pkgsrc="doom-ascii-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.sh"
         "fix_i_endread.patch")
