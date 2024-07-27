@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+set -eu
+
+version="${1:-}"
+own_dir="$(dirname "${BASH_SOURCE[0]}")"
+
+if [ -z "${version:-}" ]; then
+  echo "Usage: ${BASH_SOURCE[0]} VERSION"
+  exit 1
+fi
+
+pkgbuild="${own_dir}/PKGBUILD"
+source ${pkgbuild}
+
+echo "old version: $pkgver"
+if [ "${version}" == "${pkgver}" ]; then
+  echo "version must be different from old version"
+  exit 1
+fi
+
+sed -i "s/pkgver=.*/pkgver=${version}/" "${pkgbuild}"
+source ${pkgbuild}
+
+src_url="${source[0]}"
+echo "downloading from $src_url to calculate digest"
+digest=$(curl -L "${src_url}" | b2sum | cut -d' ' -f1)
+
+sed -i "s/b2sums=.*/b2sums=('${digest}')/" "${pkgbuild}"
