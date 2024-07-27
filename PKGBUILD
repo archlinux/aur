@@ -2,7 +2,7 @@
 
 pkgname="olivetin-bin"
 pkgver=2024.07.153
-pkgrel=3
+pkgrel=4
 pkgdesc="Safe and simple access to predefined shell commands from a web interface"
 url="https://www.olivetin.app/"
 license=("AGPL3")
@@ -43,7 +43,6 @@ listenAddressGrpcActions: localhost:1339
 listenAddressWebUI: localhost:1340
 
 # see https://docs.olivetin.app/update-tracking.html
-checkForUpdates: true
 showNewVersions: true
 CONTENT
 }
