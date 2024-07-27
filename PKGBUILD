@@ -11,8 +11,10 @@ pkgdesc="A shell utility that bundles custom built versions of five common shell
 arch=('x86_64')
 license=('GPL-3.0')
 url="https://github.com/sneekyfoxx/Superuser"
-depends=('nim>=2.0.4-1' 'musl' 'upx')
-source=("https://github.com/sneekyfoxx/Superuser")
+depends=()
+makedepends=('nim' 'musl' 'upx')
+source=(Superuser::git+"https://github.com/sneekyfoxx/Superuser.git")
+sha256sums=('SKIP')
 
 build() {
   cd "${srcdir}/Superuser"

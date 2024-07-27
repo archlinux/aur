@@ -5,9 +5,10 @@ pkgbase = superuser
 	url = https://github.com/sneekyfoxx/Superuser
 	arch = x86_64
 	license = GPL-3.0
-	depends = nim
-	depends = musl
-	depends = upx
-	source = https://github.com/sneekyfoxx/Superuser
+	makedepends = nim
+	makedepends = musl
+	makedepends = upx
+	source = Superuser::git+https://github.com/sneekyfoxx/Superuser.git
+	sha256sums = SKIP
 
 pkgname = superuser
