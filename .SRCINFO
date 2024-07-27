@@ -1,6 +1,6 @@
 pkgbase = python-doubleratchet
 	pkgdesc = A python implementation of the Double Ratchet algorithm
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/Syndace/python-doubleratchet
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-doubleratchet
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python-cryptography
-	source = python-doubleratchet_1.0.3.tar.gz::https://github.com/Syndace/python-doubleratchet/archive/refs/tags/v1.0.3.tar.gz
-	sha256sums = a254ace2b972d8adde25d7ba620e40249e47eb2ec4b5cb9a2657e0d565e024b0
+	source = python-doubleratchet_1.0.4.tar.gz::https://github.com/Syndace/python-doubleratchet/archive/refs/tags/v1.0.4.tar.gz
+	sha256sums = 7a74ad789e053ac1259a53b16868a54aafbcefda984a383f88525b767536a941
 
 pkgname = python-doubleratchet
