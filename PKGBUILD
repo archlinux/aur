@@ -4,8 +4,7 @@
 # Contributor: Klemen Košir <klemen913@gmail.com>
 
 pkgname=cataclysm-dda-git
-pkgver=0.G.2024.07.06
-_pkgver=0.G
+pkgver=cdda.experimental.2024.07.27
 pkgrel=1
 pkgdesc="A post-apocalyptic roguelike."
 #url="http://cataclysmrl.blogspot.com/"
@@ -20,20 +19,18 @@ optdepends=('sdl2_image: for tiles'
             'freetype2: for tiles'
             'sdl2_mixer: for tiles')
 options=('!strip')
-#source=("$pkgname"::'git://github.com/CleverRaven/Cataclysm-DDA.git#branch=master')
+#source=("$pkgname"::'git+https://github.com/CleverRaven/Cataclysm-DDA.git#branch=master')
 # The git repo is more than a GB
 # so download a snapshot while waiting for shallow clone support in makepkg
 # (you may uncomment the alternate source/pkgver() if you would prefer to use that)
-source=(
-  'https://github.com/CleverRaven/Cataclysm-DDA/archive/master.zip'
-)
+source=("$pkgname::https://github.com/CleverRaven/Cataclysm-DDA/archive/master.zip")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "Cataclysm-DDA-master"
-  #git describe --tags --long | sed 's/-/.r/; s/-/./'
+  cd "$pkgname"
+  #git describe --tags --long | sed 's/-/./g'
   # no git metadata in the snapshot, so fake it
-  echo "${_pkgver}.$(date +%Y.%m.%d)"
+  echo "cdda.experimental.$(date +%Y.%m.%d)"
 }
 
 prepare() {
@@ -42,7 +39,7 @@ prepare() {
 }
 
 build() {
-  cd "Cataclysm-DDA-master"
+  cd "$pkgname"
 
   # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=109418
   # -Werror=maybe-uninitialized has false positives, including in gcc libs, so we disable it here.
@@ -59,7 +56,7 @@ build() {
 }
 
 package() {
-  cd "Cataclysm-DDA-master"
+  cd "cataclysm-dda-git"
 
   # no DESTDIR
   make PREFIX="$pkgdir/usr" \
