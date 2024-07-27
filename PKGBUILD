@@ -1,21 +1,20 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.29
 
 pkgname='perl-http-body'
-pkgver='1.22'
+pkgver='1.23'
 pkgrel='1'
 pkgdesc="HTTP Body Parser"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl-http-message')
 makedepends=()
 checkdepends=('perl-test-deep')
 url='http://search.mcpan.org/dist/HTTP-Body'
-source=('http://search.mcpan.org/CPAN/authors/id/G/GE/GETTY/HTTP-Body-1.22.tar.gz')
-md5sums=('81a38eab683d8750b78ad0d4845ef0d5')
-sha512sums=('62665989d76699a3c3747d8f4e23d2009488bc229220bcf6fc07fc425e6ac5118f6ea48c75af681c2f29e9ed644d7a7979368cc36df77aca0544786b523c9cfe')
-_distdir="HTTP-Body-1.22"
+source=('https://cpan.metacpan.org/authors/id/G/GE/GETTY/HTTP-Body-1.23.tar.gz')
+md5sums=('067c2c71d20ed0b364187cdb75b69d40')
+_distdir="HTTP-Body-1.23"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
