@@ -1,40 +1,35 @@
-# Maintainer: xiota / aur.chaotic.cx
+# Maintainer:
 # Contributor: adrusi <adrian at adrusi dot com>
 
 _pkgname="terra"
 pkgname="$_pkgname-bin"
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Low-level system programming language designed to interoperate seamlessly with Lua'
-arch=('x86_64')
 url='https://github.com/terralang/terra'
 license=('MIT')
+arch=('x86_64')
 
-options=(!strip !debug)
+provides=("terra=$pkgver")
+conflicts=("terra")
 
-if [ x"$pkgname" != x"$_pkgname" ] ; then
-  provides=(terra)
-  conflicts=(terra)
-fi
+options=('!strip' '!debug')
 
-_commit='094c5ad'
+_commit='cc543dbcc85dbda84d5aec624d80f76642566940'
 
-_pkgsrc="terra-Linux-$CARCH-$_commit"
+_pkgsrc="terra-Linux-$CARCH-${_commit::7}"
 _pkgext="tar.xz"
 source=(
-  "$_pkgname-$pkgver-$_commit.$_pkgext"::"$url/releases/download/release-$pkgver/terra-Linux-$CARCH-$_commit.$_pkgext"
+  "$_pkgname-$pkgver-${_commit::7}.$_pkgext"::"$url/releases/download/release-$pkgver/terra-Linux-$CARCH-${_commit::7}.$_pkgext"
 )
 sha256sums=(
-  '6c75e69f50b50153987a655b51ebfc352155946d077b7808f5465b23a24a501d'
+  '32f6420330de4d7176396aa36929a76733fe5a1fbc5a0cf8b9a6d270f9630d8d'
 )
 
 package() {
   cd "$_pkgsrc"
-
-  mkdir -p "$pkgdir"/usr/{lib,include/terra}
-  install -Dm644 include/terra/* "$pkgdir/usr/include/terra"
-  install -Dm644 lib/* "$pkgdir/usr/lib"
-  install -Dm644 share/terra/LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 include/terra/* -t "$pkgdir/usr/include/terra/"
+  install -Dm644 lib/* -t "$pkgdir/usr/lib/"
+  install -Dm644 share/terra/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm755 bin/terra "$pkgdir/usr/bin/terra"
 }
-
