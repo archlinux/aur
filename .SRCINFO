@@ -1,0 +1,14 @@
+pkgbase = python-miniflux
+	pkgdesc = A Python wrapper for the NAIF C SPICE Toolkit (N67) written using ctypes.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/miniflux/python-client
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	source = python-miniflux-1.0.1::git+https://github.com/miniflux/python-client#tag=1.0.1
+	sha512sums = c8a50130643e7b85724ffa3fae22bddd1fc6ebc757cb4cfea8cdf38d1de6bff6c4101ab077f7e7d18ae7afe38b415cc628982a82cfe0c56bfa753b507226dc09
+
+pkgname = python-miniflux
