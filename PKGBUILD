@@ -3,7 +3,7 @@
 pkgname=faugus-launcher-git
 pkgver=r97.fee09a8
 pkgrel=1
-pkgdesc="Simple and Lightweight Game Launcher"
+pkgdesc="A simple and lightweight app for running Windows games using UMU-Launcher/UMU-Proton"
 arch=('x86_64')
 url="https://github.com/Faugus/faugus-launcher"
 license=('MIT')
