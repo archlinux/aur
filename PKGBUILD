@@ -24,6 +24,7 @@ depends=("alsa-lib" "libx11" "gcc-libs")
 optdepends=("jack: For JACK audio support")
 options=("!strip")
 conflicts=("renoise3-demo")
+provides=("vst-host" "vst3-host" "ladspa-host" "dssi-host")
 
 source_x86_64=("file://rns_${pkgver//./}_linux_x86_64.tar.gz")
 source_aarch64=("file://rns_${pkgver//./}_linux_arm64.tar.gz")
