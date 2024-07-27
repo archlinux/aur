@@ -9,7 +9,6 @@ pkgbase = python-napf
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-scikit-build-core
-	makedepends = python-wheel
 	makedepends = pybind11
 	depends = python-numpy
 	depends = nanoflann
