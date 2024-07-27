@@ -4,7 +4,7 @@ _pkgbase=penpot
 pkgname=(penpot penpot-exporter penpot-frontend)
 pkgver=2.1.1
 babashka_version="1.3.189"
-pkgrel=2
+pkgrel=3
 pkgdesc="The open-source design tool for design and code collaboration "
 arch=('x86_64')
 url="https://penpot.app"
@@ -91,8 +91,6 @@ build() {
   ./scripts/build "${pkgver}"
   sed -i "2 i JAVA_HOME='$JAVA_HOME'" target/dist/run.sh
   sed -i s#penpot.jar#/usr/share/java/penpot/backend.jar# target/dist/run.sh
-
-  exit 1
 }
 
 package_penpot-exporter() {

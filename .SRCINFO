@@ -1,7 +1,7 @@
 pkgbase = penpot
 	pkgdesc = The open-source design tool for design and code collaboration
 	pkgver = 2.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://penpot.app
 	arch = x86_64
 	license = MPL-2.0
