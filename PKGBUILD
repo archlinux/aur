@@ -1,7 +1,7 @@
 # Contributor: Tarn W. Burton <twburton@gmail.com>
 
 pkgname=ecl-git
-pkgver=23.9.9.r91.gac89091af
+pkgver=24.5.10.r262.g4f0fed469
 pkgrel=1
 pkgdesc="Embeddable Common Lisp"
 arch=('x86_64')
