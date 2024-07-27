@@ -1,7 +1,7 @@
 # Maintainer: Daringcuteseal <daringcuteseal at gmail dot com>
 
 pkgname=python-commitizen
-pkgver=3.27.0
+pkgver=3.28.0
 pkgrel=1
 pkgdesc="Create committing rules for projects, auto bump versions, and auto changelog generation"
 arch=('any')
@@ -25,7 +25,7 @@ depends=(
 	'python-importlib-metadata'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6896d7f1a7cbddefbd5f97584316f08a746c52403f15cb0be29c4bac65bd3723')
+sha256sums=('1bfc3bd9243c8b077361f7da0e253fa3eefbdbc8fc01b25cc34467538d1c7270')
 
 _pkgname="${pkgname/python-/}"
 
