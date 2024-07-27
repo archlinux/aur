@@ -1,7 +1,7 @@
 pkgbase = dprint-bin
 	pkgdesc = Pluggable and configurable code formatting platform
 	pkgver = 0.47.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dprint/dprint
 	arch = x86_64
 	arch = aarch64
