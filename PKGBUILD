@@ -30,7 +30,7 @@ build() {
   cd "$pkgname"
 
   export LIBGIT2_NO_VENDOR=1
-  cargo build --release --locked
+  cargo build --release --locked --bins --tests
 }
 
 check() {
