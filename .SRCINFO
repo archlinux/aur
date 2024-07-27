@@ -1,0 +1,12 @@
+pkgbase = ttynt
+	pkgdesc = A command-line tool for coloring and highlighting text in the terminal based on regex patterns
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/kryksyh/ttynt
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = ttynt-0.0.1.tar.gz::https://github.com/kryksyh/ttynt/archive/refs/tags/v0.0.1.tar.gz
+	sha512sums = 6df2e79dda353f9a87ebeaaeb7435df929a642266b833b8a06a99390de12bd1a28d840d72c0934c2e7f11bca1038306985fc5ce72cf89bcd17451b9a22a8b7f8
+
+pkgname = ttynt
