@@ -1,5 +1,5 @@
 pkgbase = dotnet-core-6.0
-	pkgver = 6.0.31.sdk131
+	pkgver = 6.0.32.sdk132
 	pkgrel = 1
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
@@ -26,11 +26,11 @@ pkgbase = dotnet-core-6.0
 	optdepends = bash-completion: Bash completion support
 	options = !lto
 	options = staticlibs
-	source = dotnet-installer::git+https://github.com/dotnet/installer.git#tag=df83ef13f54ad5b212234482efbfa1068fb337ad
+	source = dotnet-installer::git+https://github.com/dotnet/installer.git#tag=b1806f3a38b61b34fb53e175efce615f223718e9
 	source = dotnet.sh
 	source = dotnet-core-runtime-disable-package-validation.patch
 	source = dotnet-core-sdk-telemetry-optout.patch
-	b2sums = 1a53fe6331e4f49570c9a5347af0cf8a31793da58dfc0d07f4a42277333a375ea5bc9f398013c69452c845f6cafdb92eb950a0734c25da56902b36a883c580b4
+	b2sums = f021bd8eb383594b884af80b6d7bf96b7836850b4abd5de983fed8f817c641197a1ced96a41210b94badf6f6752b6bc4d029e53bf8892c47a19d538fee977f23
 	b2sums = 4a64e3ee550e296bdde894f9202c6f372934cc29154f47d302599b4c368825a96a7b786faa6109a24a1101ff130fd9e4d0ccba094ec91e7f2ca645725bf71b34
 	b2sums = b9472b3967c9d7549ee2bbf0180d919748b40b1f9a65b1c3789be40f62ed17a9d37c2020409f7835570620108bd5ec43e728966d075d66bf0b7261cdd36a60c3
 	b2sums = 95b083b842da6049a084ca015b7ddc099550aa818fc382d556cca832fee52265be568d20a2c50e70819aef6cf879e7a368f7dd3b5966356643b2efdd756e73f4
