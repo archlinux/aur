@@ -7,6 +7,8 @@ pkgbase = zig-zvm
 	license = MIT
 	makedepends = zig
 	makedepends = git
+	provides = zvm
+	provides = zig-zvm
 	conflicts = zig-zvm-bin
 	conflicts = zvm
 	source = git+https://github.com/hendriknielaender/zvm.git#tag=v0.4.4

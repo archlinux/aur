@@ -8,6 +8,7 @@ arch=('x86_64')
 url='https://github.com/hendriknielaender/zvm'
 license=('MIT')
 makedepends=('zig' 'git')
+provides=("zvm" "zig-zvm")
 conflicts=('zig-zvm-bin' 'zvm')
 source=("git+https://github.com/hendriknielaender/zvm.git#tag=v${pkgver}")
 
