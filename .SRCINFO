@@ -1,6 +1,6 @@
 pkgbase = python-pretty-errors-git
 	pkgdesc = Prettifies Python exception output to make it legible.
-	pkgver = r1.891da7e
+	pkgver = 1.891da7e
 	pkgrel = 1
 	url = https://github.com/onelivesleft/PrettyErrors/
 	arch = any
