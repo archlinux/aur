@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname="nginx-ui"
-pkgver=2.0.0_beta.28
+pkgver=2.0.0_beta.29
 _pkgver=${pkgver//_/-}
 pkgrel=1
 pkgdesc="Yet another WebUI for Nginx"
@@ -11,10 +11,8 @@ backup=("etc/${pkgname}/config.ini")
 license=("AGPL-3.0-or-later")
 depends=("nginx")
 makedepends=("pnpm" "go")
-source=("${pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz"
-        "${pkgname}.service")
-sha256sums=('378e8c9a9de020e4090ae1f29a46f958f6573c1f734c71b890e48ef6ffe9380c'
-            'ff046cd729097a4c68c4f6d3d035125455457933fed18300c63072e9c55a8fdd')
+source=("${pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz")
+sha256sums=('30948b6e3c9595091bad1c4397ccc242d2be336d143ab6da8ab1f5ed89dfcd50')
 
 build() {
     export CGO_CFLAGS="${CFLAGS}"
@@ -34,16 +32,20 @@ build() {
     go build \
         -trimpath \
         -tags jsoniter \
-        -ldflags="-s -w -extldflags '${LDFLAGS}'" \
+        -ldflags="${ldflags}" \
         -o "${pkgname}" \
         ./main.go
+    
+    sed -E \
+        -e "s|^(ExecStart=).+|\1/usr/bin/${pkgname} --config /etc/${pkgname}/config.ini|g" \
+        -e "s|^(Documentation=).+|\1https://nginxui.com|g" \
+        -i "${pkgname}.service"
 }
 
 package() {
-    install -Dm644 "${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
-
     cd "${pkgname}-${_pkgver}"
-    install -Dm755 "${pkgname}"    "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 app.example.ini "${pkgdir}/etc/${pkgname}/config.ini"
-    install -Dm644 *.md         -t "${pkgdir}/usr/share/doc/${pkgname}"
+    install -Dm755 "${pkgname}"         "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+    install -Dm644 app.example.ini      "${pkgdir}/etc/${pkgname}/config.ini"
+    install -Dm644 *.md             -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
