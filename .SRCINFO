@@ -1,0 +1,22 @@
+pkgbase = openapoc-git
+	pkgdesc = OpenApoc is an open-source re-implementation of the original X-COM: Apocalypse
+	pkgver = r3905.3ce2def9
+	pkgrel = 1
+	url = https://github.com/OpenApoc/OpenApoc
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = cmake
+	makedepends = base-devel
+	depends = libvorbis
+	depends = sdl2
+	depends = libunwind
+	depends = libglvnd
+	depends = boost-libs
+	depends = glibc
+	depends = gcc-libs
+	provides = openapoc
+	source = openapoc-git::git+https://github.com/OpenApoc/OpenApoc.git
+	sha256sums = SKIP
+
+pkgname = openapoc-git
