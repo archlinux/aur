@@ -1,7 +1,7 @@
 # Maintainer: Mikhail Golubchikov <golubchikov.mihail@gmail.com>
 
 pkgname=cpp-argparse-dev
-pkgver=1.9.2
+pkgver=1.9.3
 pkgrel=1
 pkgdesc="Python-like argument parser for C++ projects"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/rue-ryuzaki/argparse"
 license=('MIT')
 makedepends=(cmake gcc make)
 source=("https://github.com/rue-ryuzaki/argparse/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=(f8a0e40d216b38cc4ee159fbf0c76bda)
+md5sums=(1ba215704f997fbcf09fa0377c438dd5)
 
 build() {
     cmake -B build -S "argparse-${pkgver}" \
