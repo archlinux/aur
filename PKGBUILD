@@ -2,15 +2,14 @@
 
 pkgname='zig-zvm'
 pkgver='0.4.4'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Fast and simple zig version manager'
 arch=('x86_64')
 url='https://github.com/hendriknielaender/zvm'
 license=('MIT')
 makedepends=('zig' 'git')
-source=(
-    "git+https://github.com/hendriknielaender/zvm.git#tag=v${pkgver}"
-)
+conflicts=('zig-zvm-bin' 'zvm')
+source=("git+https://github.com/hendriknielaender/zvm.git#tag=v${pkgver}")
 
 md5sums=('SKIP')
 
