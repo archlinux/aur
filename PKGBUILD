@@ -1,14 +1,14 @@
 # Maintainer: la Fleur <lafleur at boum dot org>
 
 pkgname=vim-mesonic-git
-pkgver=r52.f480c87
+pkgver=r76.69a3a1e
 pkgrel=1
 pkgdesc="lets you use meson and ninja with ':make' in vim ; see ':help mesonic'"
 arch=('i686' 'x86_64')
 url="https://github.com/igankevich/mesonic"
 license=('unknown')
-depends=('vim')
-optdepends=('vim-syntastic')
+depends=('meson')
+optdepends=('vim' 'neovim' 'vim-syntastic')
 makedepends=('git')
 provides=('vim-mesonic')
 conflicts=('vim-mesonic')
