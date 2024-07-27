@@ -1,4 +1,4 @@
-# Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 _pkgname="doom_ascii"
 pkgname="${_pkgname}-git"
