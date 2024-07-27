@@ -2,7 +2,7 @@
 
 pkgname=python-pytest-memray
 _pkgname=${pkgname#python-}
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="A pytest plugin for easy integration of memray memory profiler"
 arch=(any)
@@ -20,23 +20,22 @@ makedepends=(
   python-wheel
 )
 checkdepends=(
+  python-anyio
   python-flaky
   python-pytest-xdist
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('67eb6d8a6225338f08ae05239e005601491da903077f7c28b1fdb2d06a137991')
-
-_archive="$_pkgname-$pkgver"
+sha256sums=('ca10a74053ca4d75d160b82cd988182608b1ea0a8274771adf1412a1c6edef0f')
 
 build() {
-  cd "$_archive"
+  cd "$_pkgname-$pkgver"
 
   export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "$_archive"
+  cd "$_pkgname-$pkgver"
 
   rm -rf tmp_install
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
@@ -47,7 +46,7 @@ check() {
 }
 
 package() {
-  cd "$_archive"
+  cd "$_pkgname-$pkgver"
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
