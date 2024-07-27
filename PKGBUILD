@@ -1,6 +1,6 @@
 # Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
 pkgname=python-pretty-errors-git
-pkgver=r.
+pkgver=r1.891da7e
 pkgrel=1
 pkgdesc="Prettifies Python exception output to make it legible."
 arch=('any')
