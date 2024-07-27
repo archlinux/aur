@@ -1,15 +1,15 @@
-# Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
-pkgname=paper-soccer
+pkgname="paper-soccer"
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 _gtest_abbrev="ca4b7c9ff4d8a5c37ac51795b03ffe934958aeff"
 pkgdesc="A networked version of paper soccer game in modern console"
 arch=('any')
-url="https://github.com/MateuszJanda/paper-soccer"
+url="https://github.com/MateuszJanda/${pkgname}"
 license=('MIT')
-depends=('protobuf' 'boost-libs' 'ncurses')
-makedepends=('cmake' 'gcc' 'protobuf' 'boost' 'ncurses')
+makedepends=('cmake' 'make' 'gcc' 'protobuf' 'boost' 'ncurses')
+depends=('glibc' 'gcc-libs' 'protobuf' 'boost-libs' 'ncurses')
 _pkgsrc="${pkgname}-${pkgver}"
 _gtestsrc="googletest-${_gtest_abbrev}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
@@ -19,14 +19,19 @@ sha256sums=('09cde23ce2b02a59725b495107ab55058c47e4d532f3dedc47909f7133b6a8c6'
 
 prepare() {
   cd "${srcdir}"
-  tar -xf "${_gtestsrc}.tar.gz"
-  mv "${_gtestsrc}"/* "${_pkgsrc}/lib/googletest"
+  cp -r "${_gtestsrc}"/* "${_pkgsrc}/lib/googletest"
 }
 
 build() {
-  cd "${srcdir}/${_pkgsrc}"
-  cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
-  cmake --build build
+  cd "${srcdir}"
+  cmake \
+    -G 'Unix Makefiles' \
+    -B "${_pkgsrc}/build" \
+    -S "${_pkgsrc}" \
+    -DCMAKE_BUILD_TYPE:STRING='Release' \
+    -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+    -Wno-dev
+  cmake --build "${_pkgsrc}/build"
 }
 
 check() {

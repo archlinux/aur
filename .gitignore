@@ -1,8 +1,4 @@
-*.tar.*
-*.zip
-*.orig
-*.rej
-*.swp
-*.part
-src
-pkg
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
