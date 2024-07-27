@@ -1,0 +1,3 @@
+[python-chemicals]
+source = "pypi"
+pypi = "chemicals"

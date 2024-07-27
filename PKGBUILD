@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 _base=chemicals
 pkgname=python-${_base}
-pkgver=1.1.5
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Chemical database of Chemical Engineering Design Library"
 arch=(any)
@@ -12,7 +12,7 @@ depends=(python-fluids python-pandas)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest python-sympy python-openpyxl ipython python-pint python-numba)
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('187fee6427b1d16382e7f7f20989dffb5092cf4e1a1a99c683f10b32cbba48daeb10dfdf18c867715d6fbf235ecd807c9cc27e46ddbe668e50d943de1b0070e4')
+sha512sums=('474544bce2c2ad09631e65c5b9de2154e1290b4c74e2859bfb7ac94979c8c32322c7a456a9d5803402c5e9c559a84af85f35b76fe4d55c6583017d90149c72e7')
 
 build() {
   cd ${_base}-${pkgver}
