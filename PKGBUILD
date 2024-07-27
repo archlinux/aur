@@ -2,15 +2,15 @@
 # Contributor: David Runge <dave@sleepmap.de>
 
 pkgname=apparmor-git
-pkgver=4.0.0.alpha3.r36.g9bba464
+pkgver=4.0.0.beta3.r194.geac9f23
 pkgrel=1
 pkgdesc='Mandatory Access Control (MAC) using Linux Security Module (LSM)'
 arch=('x86_64')
 url='https://gitlab.com/apparmor/apparmor'
-license=('GPL2' 'LGPL2.1')
-depends=('audit' 'bash' 'glibc' 'pam' 'python')
-makedepends=('git' 'apache' 'libxcrypt' 'python-setuptools' 'perl' 'ruby' 'swig')
-checkdepends=('dejagnu' 'perl-locale-gettext' 'python-pyflakes' 'python-notify2' 'python-psutil')
+license=('GPL-2.0-only' 'LGPL-2.0-only' 'LGPL-2.1-only')
+depends=('audit' 'bash' 'gcc-libs' 'glibc' 'pam' 'python')
+makedepends=('git' 'apache' 'autoconf-archive' 'libxcrypt' 'python-setuptools' 'ruby' 'swig')
+checkdepends=('dejagnu' 'perl-locale-gettext' 'python-notify2' 'python-psutil')
 optdepends=('perl: for perl bindings'
             'python-notify2: for aa-notify'
             'python-psutil: for aa-notify'
@@ -22,8 +22,6 @@ backup=('etc/apparmor/easyprof.conf'
         'etc/apparmor/notify.conf'
         'etc/apparmor/parser.conf'
         'etc/apparmor/severity.db')
-# LTO is currently still broken: https://gitlab.com/apparmor/apparmor/-/issues/214
-options=(!lto)
 source=('git+https://gitlab.com/apparmor/apparmor.git')
 sha512sums=('SKIP')
 # AppArmor Development Team (AppArmor signing key) <apparmor@lists.ubuntu.com>
@@ -37,42 +35,31 @@ pkgver() {
 }
 
 prepare() {
-	cd "${srcdir}/${pkgname%-git}"
-
-	# fix PYTHONPATH and add LD_LIBRARY_PATH for aa-logprof based check:
-	# https://gitlab.com/apparmor/apparmor/issues/39
-	local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
-	local path="${PWD}/libraries/libapparmor/swig/python/build/lib.linux-${CARCH}-${python_version}/"
-	local libs="${PWD}/libraries/libapparmor/src/.libs"
-
-	sed -e "/PYTHONPATH/ s|utils\ |utils:$path\ LD_LIBRARY_PATH=$libs\ |" -i profiles/Makefile
-
-	(
-		cd libraries/libapparmor/
-		autoreconf -fiv
-	)
+	cd "${srcdir}/${pkgname%-git}/libraries/libapparmor/"
+	autoreconf -fiv
 }
 
 build() {
+	local configure_options=(
+		--prefix=/usr
+		--sbindir=/usr/bin
+		--with-perl
+		--with-python
+		--with-ruby
+	)
+
+	cd "${srcdir}/${pkgname%-git}"
+
 	# export required perl executable locations
 	export MAKEFLAGS+=" POD2MAN=${_core_perl}/pod2man"
 	export MAKEFLAGS+=" POD2HTML=${_core_perl}/pod2html"
 	export MAKEFLAGS+=" PODCHECKER=${_core_perl}/podchecker"
 	export MAKEFLAGS+=" PROVE=${_core_perl}/prove"
-
 	(
-		cd "${srcdir}/${pkgname%-git}/libraries/libapparmor"
-		./configure \
-			--prefix=/usr \
-			--sbindir=/usr/bin \
-			--sysconfdir=/etc \
-			--with-pic \
-			--with-perl \
-			--with-python \
-			--with-ruby
+		cd libraries/libapparmor/
+		./configure "${configure_options[@]}"
 		make
 	)
-	cd "${srcdir}/${pkgname%-git}"
 	make -C binutils
 	make -C parser
 	make -C profiles
@@ -113,26 +100,26 @@ check() {
 package() {
 	cd "${srcdir}/${pkgname%-git}"
 	make -C libraries/libapparmor DESTDIR="${pkgdir}" install
-	make -C changehat/pam_apparmor DESTDIR="${pkgdir}" SECDIR="${pkgdir}/usr/lib/security" install
+	make -C changehat/pam_apparmor DESTDIR="${pkgdir}/usr" install
 	make -C changehat/mod_apparmor DESTDIR="${pkgdir}" install
 	make -C binutils DESTDIR="${pkgdir}" SBINDIR="${pkgdir}/usr/bin" USR_SBINDIR="${pkgdir}/usr/bin" install
-	make -C parser -j1 DESTDIR="${pkgdir}" APPARMOR_BIN_PREFIX="${pkgdir}/usr/lib/apparmor" SBINDIR="${pkgdir}/usr/bin" USR_SBINDIR="${pkgdir}/usr/bin" install install-systemd
+	make -C parser -j1 DESTDIR="${pkgdir}" SBINDIR="${pkgdir}/usr/bin" USR_SBINDIR="${pkgdir}/usr/bin" APPARMOR_BIN_PREFIX="${pkgdir}/usr/lib/apparmor" install install-systemd
 	make -C profiles DESTDIR="${pkgdir}" install
-	make -C utils DESTDIR="${pkgdir}" BINDIR="${pkgdir}/usr/bin" SBINDIR="${pkgdir}/usr/bin" USR_SBINDIR="${pkgdir}/usr/bin" VIM_INSTALL_PATH="${pkgdir}/usr/share/vim/vimfiles/syntax" install
+	make -C utils DESTDIR="${pkgdir}" SBINDIR="${pkgdir}/usr/bin" USR_SBINDIR="${pkgdir}/usr/bin" BINDIR="${pkgdir}/usr/bin" VIM_INSTALL_PATH="${pkgdir}/usr/share/vim/vimfiles/syntax" install
 
 	# set file mode to allow the perl library to be stripped:
 	# https://gitlab.com/apparmor/apparmor/issues/34
-	find "${pkgdir}/usr/lib/perl5/" -type f -iname "*.so" -exec chmod 755 {} \;
+	find "${pkgdir}/usr/lib/perl5/" -type f -iname '*.so' -exec chmod 755 {} ';'
 
-	# removing empty core_perl directory:
+	# remove empty core_perl directory:
 	# https://gitlab.com/apparmor/apparmor/issues/40
-	rm -rv "${pkgdir}/usr/lib/perl5/"*/core_perl
+	rm -rv "${pkgdir}"/usr/lib/perl5/*/core_perl
 	# move ruby bindings to vendor_ruby:
 	# https://gitlab.com/apparmor/apparmor/issues/35
-	mv -v "${pkgdir}/usr/lib/ruby/site_ruby/" "${pkgdir}/usr/lib/ruby/vendor_ruby/"
+	mv -v "${pkgdir}/usr/lib/ruby/"{site,vendor}_ruby
 	# adding files below /etc/apparmor.d to backup array
 	cd "${pkgdir}"
 	# trick extract_function_variable() in makepkg into not detecting the
 	# backup array modification and adding remaining configuration files
-	true && backup+=( $(find 'etc/apparmor.d/' -type f) )
+	[[ /usr/bin/true ]] && backup=( ${backup[@]} $(find "etc/${pkgname%-git}.d/" -type f | LC_ALL=C sort) )
 }
