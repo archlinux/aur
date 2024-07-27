@@ -1,13 +1,12 @@
 pkgname=xenia-git
-pkgver=r6938.f6b5424a9
+pkgver=r6950.3d30b2eec
 pkgrel=1
 pkgdesc="An experimental emulator for the Xbox 360."
 arch=('x86_64')
 url="http://xenia.jp"
 license=('BSD')
-options=('debug' '!strip')
-depends=('gtk3' 'lz4' 'glew' 'libx11')
-makedepends=('premake' 'python' 'clang' 'git' 'libpthread-stubs')
+depends=('gtk3' 'lz4' 'glew' 'libx11' 'sdl2')
+makedepends=('premake' 'python' 'clang' 'git' 'libpthread-stubs' 'llvm')
 provides=('xenia')
 conflicts=('xenia')
 # TODO: Use system installed deps for non-forked libs
@@ -126,4 +125,4 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-# vim:set ts=2 sw=2 et:
+## vim:set ts=2 sw=2 et:
