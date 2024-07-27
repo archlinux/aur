@@ -1,6 +1,6 @@
 # Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
 pkgname=python-disnake-git
-pkgver=r4684.9383d15ff
+pkgver=4684.9383d15ff
 pkgrel=1
 pkgdesc="An API wrapper for Discord written in Python. "
 arch=('any')
