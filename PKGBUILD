@@ -18,19 +18,19 @@ source=(Superuser::git+"https://github.com/sneekyfoxx/Superuser.git")
 sha256sums=('SKIP')
 
 build() {
-  cd "${srcdir}/Superuser"
+  cd "./Superuser"
 
   if [ ! -d "${HOME}/.local/bin" ]; then
     mkdir "${HOME}/.local/bin";
   fi
 
-  "${srcdir}/install-nim.sh"
-  mkdir "${srcdir}/bin"
-  "${srcdir}/build.sh" -c
+  "./install-nim.sh"
+  mkdir "./bin"
+  "./build.sh" -c
 }
 
 package() {
-  cd "${srcdir}/Superuser"
+  cd "Superuser/"
 
-  install -m755 "${pkgdir}/bin/superuser" "/usr/bin/superuser"
+  install -m755 "./bin/superuser" "/usr/bin/superuser"
 }
