@@ -1,15 +1,15 @@
 pkgbase = wmtop
 	pkgdesc = wmapplet for monitoring cpu usage
-	pkgver = 0.84
-	pkgrel = 3
-	url = http://wmtop.sourceforge.net/
+	pkgver = 0.85
+	pkgrel = 1
+	url = https://www.dockapps.net/wmtop
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = xorg-server
 	depends = libxpm
-	source = http://downloads.sourceforge.net/wmtop/wmtop-0.84.tar.bz2
-	md5sums = 2bab22c5bc3a5b887e7c03d6dbfe59d7
+	depends = libdockapp
+	source = https://www.dockapps.net/download/wmtop-0.85.tar.gz
+	md5sums = 286fdcca77a8429ae1e99e618ea6b140
 
 pkgname = wmtop
-

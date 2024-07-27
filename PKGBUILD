@@ -1,26 +1,28 @@
-# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Hermann Gessl <h.gessl@aon.at>
+# Contributor: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=wmtop
-pkgver=0.84
-pkgrel=3
+pkgver=0.85
+pkgrel=1
 pkgdesc="wmapplet for monitoring cpu usage"
 arch=('i686' 'x86_64')
 license=('GPL')
-url="http://wmtop.sourceforge.net/"
-depends=('libxpm')
+url="https://www.dockapps.net/wmtop"
+depends=('libxpm' 'libdockapp')
 makedepends=('xorg-server')
-source=("http://downloads.sourceforge.net/wmtop/wmtop-0.84.tar.bz2")
-md5sums=('2bab22c5bc3a5b887e7c03d6dbfe59d7')
+source=("https://www.dockapps.net/download/wmtop-0.85.tar.gz")
+md5sums=('286fdcca77a8429ae1e99e618ea6b140')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make linux
+  cd "$srcdir/dockapps-be3f170"
+  autoreconf -fvi
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  install -Dm0755 wmtop "$pkgdir/usr/bin/wmtop"
-  install -Dm0644 wmtop.1 "$pkgdir/usr/share/man/man1/wmtop.1"
+  cd "$srcdir/dockapps-be3f170"
+  make DESTDIR="$pkgdir/" install
 }
 
 # vim: set sw=2 et:
