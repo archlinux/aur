@@ -21,6 +21,9 @@ pkgver() {
 }
 
 build() {
+	# apply make job options for to SCons, if applicable
+	echo "$MAKEFLAGS" | grep  -q '^-j[0-9]\+$' && export SCONSFLAGS="$MAKEFLAGS"
+
 	cd "${srcdir}/${pkgname}"
 	scons
 }
