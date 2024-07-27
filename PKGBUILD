@@ -1,7 +1,7 @@
 # Maintainer:  Nicholas Wang <me#nicho1as.wang>
 
 pkgname=tunasync-git
-pkgver=20200917
+pkgver=r476.938f67c
 pkgrel=1
 pkgdesc="Mirror job management tool developed by TUNA"
 arch=('x86_64')
@@ -16,11 +16,17 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}"/tunasync
-  git log -1 --format="%cd" --date=short | sed 's|-||g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
   cd "${srcdir}"/tunasync
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie"
+  export GOPATH="${srcdir}"
   make
 }
 

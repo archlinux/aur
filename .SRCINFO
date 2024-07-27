@@ -1,6 +1,6 @@
 pkgbase = tunasync-git
 	pkgdesc = Mirror job management tool developed by TUNA
-	pkgver = 20200917
+	pkgver = r476.938f67c
 	pkgrel = 1
 	arch = x86_64
 	license = GPL3
@@ -15,4 +15,3 @@ pkgbase = tunasync-git
 	md5sums = SKIP
 
 pkgname = tunasync-git
-
