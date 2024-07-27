@@ -1,0 +1,19 @@
+--- quarto-cli-1.5.55/src/command/render/pandoc.ts.original	2024-07-27 22:49:08.770086319 +1200
++++ quarto-cli-1.5.55/src/command/render/pandoc.ts	2024-07-27 22:49:23.266719276 +1200
+@@ -235,16 +235,6 @@
+         pandocEnv["QUARTO_TRACE_FILTERS"] = traceFilters + traceCountSuffix;
+       }
+     }
+-
+-    // https://github.com/quarto-dev/quarto-cli/issues/8274
+-    // do not use the default LUA_CPATH, as it will cause pandoc to
+-    // load the system lua libraries, which may not be compatible with
+-    // the lua version we are using
+-    if (Deno.env.get("QUARTO_LUA_CPATH") !== undefined) {
+-      pandocEnv["LUA_CPATH"] = getEnv("QUARTO_LUA_CPATH");
+-    } else {
+-      pandocEnv["LUA_CPATH"] = "";
+-    }
+   };
+ 
+   // compute cwd for render
