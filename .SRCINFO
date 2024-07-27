@@ -1,12 +1,11 @@
 pkgbase = gpgfrontend
 	pkgdesc = An exceptional GUI frontend for the modern GnuPG (gpg)
-	pkgver = 2.1.3+3+g71b9ea8
-	pkgrel = 1
+	pkgver = 2.1.3
+	pkgrel = 2
 	url = https://gpgfrontend.bktus.com
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = boost
-	makedepends = chrpath
 	makedepends = cmake
 	makedepends = git
 	makedepends = qt6-tools
@@ -21,7 +20,7 @@ pkgbase = gpgfrontend
 	depends = mimalloc
 	depends = ncurses
 	depends = qt6-base
-	source = git+https://github.com/saturneric/GpgFrontend#commit=71b9ea8d3a902d10890ca8d327d8275a0f0f349d
+	source = git+https://github.com/saturneric/GpgFrontend#tag=v2.1.3
 	source = git+https://github.com/bricke/Qt-AES.git
 	source = git+https://github.com/gabime/spdlog.git
 	source = git+https://github.com/microsoft/mimalloc.git

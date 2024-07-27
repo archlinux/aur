@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Konsonanz <maximilian.lehmann@protonmail.com>
 pkgname=gpgfrontend
-pkgver=2.1.3+3+g71b9ea8
-pkgrel=1
+pkgver=2.1.3
+pkgrel=2
 pkgdesc="An exceptional GUI frontend for the modern GnuPG (gpg)"
 arch=('x86_64')
 url="https://gpgfrontend.bktus.com"
@@ -22,13 +22,11 @@ depends=(
 )
 makedepends=(
   'boost'
-  'chrpath'
   'cmake'
   'git'
   'qt6-tools'
 )
-_commit=71b9ea8d3a902d10890ca8d327d8275a0f0f349d  # branch/main
-source=("git+https://github.com/saturneric/GpgFrontend#commit=${_commit}"
+source=("git+https://github.com/saturneric/GpgFrontend#tag=v$pkgver"
         'git+https://github.com/bricke/Qt-AES.git'
         'git+https://github.com/gabime/spdlog.git'
         'git+https://github.com/microsoft/mimalloc.git'
@@ -42,11 +40,6 @@ sha256sums=('b1095d1e09482eb1248cad7c092ab2fc8d1960ab414f2239e0d4fad500fd4d0a'
             'SKIP'
             'SKIP'
             'SKIP')
-
-pkgver() {
-  cd GpgFrontend
-  git describe --tags --abbrev=7 | sed 's/^v//;s/-/+/g'
-}
 
 prepare() {
   cd GpgFrontend
