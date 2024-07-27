@@ -2,7 +2,7 @@
 
 pkgname=python-litestar
 _pkgname=${pkgname#python-}
-pkgver=2.9.1
+pkgver=2.10.0
 pkgrel=1
 pkgdesc="Production-ready, Light, Flexible and Extensible ASGI API framework"
 arch=(any)
@@ -93,18 +93,16 @@ optdepends=(
   'python-sqlalchemy: SQLAlchemy integration'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('25c6c5b71a5747b0a3567f782fbeacc62cdc508ad0d6235bc6b91af4a5516ea7')
-
-_archive="$_pkgname-$pkgver"
+sha256sums=('c4ef6f3ccdbba289348f59c750887946297cde01fd18eb06c414b02ebc320255')
 
 build() {
-  cd "$_archive"
+  cd "$_pkgname-$pkgver"
 
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "$_archive"
+  cd "$_pkgname-$pkgver"
 
   local pytest_args=(
     --ignore=tests/examples/
@@ -145,9 +143,8 @@ check() {
 }
 
 package() {
-  cd "$_archive"
+  cd "$_pkgname-$pkgver"
 
   python -m installer --destdir="$pkgdir" dist/*.whl
-
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
