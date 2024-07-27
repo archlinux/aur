@@ -11,7 +11,7 @@ pkgdesc="A shell utility that bundles custom built versions of five common shell
 arch=('x86_64')
 license=('GPL-3.0')
 url="https://github.com/sneekyfoxx/Superuser"
-depends=('nim' 'musl' 'upx')
+depends=('nim>=2.0.4-1' 'musl' 'upx')
 source=("https://github.com/sneekyfoxx/Superuser")
 
 build() {
