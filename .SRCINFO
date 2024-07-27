@@ -11,6 +11,8 @@ pkgbase = git-interactive-rebase-tool
 	makedepends = cargo
 	depends = libgit2
 	source = git+https://github.com/MitMaro/git-interactive-rebase-tool#tag=2.4.1
+	source = update-libgit2.patch
 	sha256sums = 28bc3a528c7b70ad3c436d86a42acd56e2102e09549af395fae27cf36e984769
+	sha256sums = e0d80850fb3bc460a77e95dd322ade15e3aeaad5b5a3c462060b30d56c163a0a
 
 pkgname = git-interactive-rebase-tool

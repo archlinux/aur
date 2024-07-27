@@ -14,18 +14,29 @@ license=('GPL3')
 depends=('libgit2')
 makedepends=('git' 'cargo')
 install=$pkgname.install
-source=("git+https://github.com/MitMaro/$pkgname#tag=$pkgver")
-sha256sums=('28bc3a528c7b70ad3c436d86a42acd56e2102e09549af395fae27cf36e984769')
+source=("git+https://github.com/MitMaro/$pkgname#tag=$pkgver"
+        "update-libgit2.patch")
+sha256sums=('28bc3a528c7b70ad3c436d86a42acd56e2102e09549af395fae27cf36e984769'
+            'e0d80850fb3bc460a77e95dd322ade15e3aeaad5b5a3c462060b30d56c163a0a')
+
+prepare() {
+  cd "$pkgname"
+
+  # bump git2 crate for compatibility with libgit2 0.18.x
+  git apply -3 "$srcdir/update-libgit2.patch"
+}
 
 build() {
   cd "$pkgname"
 
+  export LIBGIT2_NO_VENDOR=1
   cargo build --release --locked
 }
 
 check() {
   cd "$pkgname"
 
+  export LIBGIT2_NO_VENDOR=1
   cargo test --release --locked
 }
 
