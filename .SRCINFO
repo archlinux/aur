@@ -1,6 +1,6 @@
 pkgbase = perl-apache-asp
 	pkgdesc = Active Server Pages for Apache with mod_perl
-	pkgver = 2.62
+	pkgver = 2.63
 	pkgrel = 1
 	url = http://search.cpan.org/dist/Apache-ASP
 	arch = any
@@ -9,9 +9,7 @@ pkgbase = perl-apache-asp
 	depends = perl-mldbm
 	depends = perl-mldbm-sync
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/C/CH/CHAMAS/Apache-ASP-2.62.tar.gz
-	md5sums = 60639bbb979fab917225a9078414f317
-	sha512sums = 4e31c76cee66fa024c59a6e1c3b698ec8ef734fc8cdb2bc7631ab0fb3527163a35ba5e73648bc2c7fd5079d1b1797bc8d58da4811ae2b1fdf80998a0b419ddb3
+	source = http://search.cpan.org/CPAN/authors/id/C/CH/CHAMAS/Apache-ASP-2.63.tar.gz
+	md5sums = 46b55f4bd8c23fd44ec490ab3a2c424f
 
 pkgname = perl-apache-asp
-
