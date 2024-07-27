@@ -33,11 +33,6 @@ pkgver() {
   echo "cdda.experimental.$(date +%Y.%m.%d)"
 }
 
-prepare() {
-  cd "Cataclysm-DDA-master"
-  sed -i 's/ncursesw5-config/ncursesw6-config/' Makefile
-}
-
 build() {
   cd "$pkgname"
 
