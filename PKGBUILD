@@ -1,6 +1,6 @@
 # Maintainer: jhideki 
 pkgname='pywal-spicetify'
-pkgver=0.1
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Apply wal colors to spicetify"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('python-pywal' 'spicetify-cli')
 makedepends=('cargo' 'git')
 source=("${pkgname}::git+https://github.com/jhideki/pywal-spicetify#tag=${pkgver}")
 sha256sums=('SKIP')
-options=('!debug')
+options=('strip' '!debug')
 
 build() {
     cd "$srcdir/$pkgname"
