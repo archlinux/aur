@@ -1,15 +1,15 @@
 # Maintainer: Alex Henrie <alexhenrie24@gmail.com>
 pkgname=hexabyte
-pkgver=0.8.3
+pkgver=0.8.7
 pkgrel=1
 pkgdesc='A modern, modular, and robust TUI hex editor'
 arch=('any')
 url='https://github.com/thetacom/hexabyte'
 license=('GPL3')
 depends=('python-hilbertcurve' 'python-linkify-it-py' 'python-munch' 'python-textual' 'python-toml')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-poetry' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('3379e2638629efb1f785dd85e8d38ec2b9dd41fd51db57bfd698375091d722bb')
+sha256sums=('4f9b4b15cf2eac0db276110cee4b7462d617c3cf57234c33d8e3de4bd37db251')
 
 build() {
 	cd "$pkgname-$pkgver"
