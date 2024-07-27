@@ -1,7 +1,7 @@
-From 52c98a9a7e1cfb0463c28ddee3ad4e7c6e8f73c0 Mon Sep 17 00:00:00 2001
+From a98b16e4ef86ea261b80daff4c5f683f3fa932e8 Mon Sep 17 00:00:00 2001
 From: Arjan van de Ven <arjan@linux.intel.com>
 Date: Thu, 2 Jun 2016 23:36:32 -0500
-Subject: [PATCH 5/5] drivers: initialize ata before graphics
+Subject: [PATCH 4/4] drivers: initialize ata before graphics
 
 ATA init is the long pole in the boot process, and its asynchronous.
 move the graphics init after it so that ata and graphics initialize
@@ -13,10 +13,10 @@ Signed-off-by: Alexandre Frade <kernel@xanmod.org>
  1 file changed, 7 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/Makefile b/drivers/Makefile
-index 3bf5cab4b451..3c3ba6266417 100644
+index fe9ceb0d2288..b58955caf19b 100644
 --- a/drivers/Makefile
 +++ b/drivers/Makefile
-@@ -66,14 +66,8 @@ obj-y				+= char/
+@@ -61,14 +61,8 @@ obj-y				+= char/
  # iommu/ comes before gpu as gpu are using iommu controllers
  obj-y				+= iommu/
  
@@ -31,7 +31,7 @@ index 3bf5cab4b451..3c3ba6266417 100644
  obj-$(CONFIG_PARPORT)		+= parport/
  obj-y				+= base/ block/ misc/ mfd/ nfc/
  obj-$(CONFIG_LIBNVDIMM)		+= nvdimm/
-@@ -85,6 +79,13 @@ obj-y				+= macintosh/
+@@ -80,6 +74,13 @@ obj-y				+= macintosh/
  obj-y				+= scsi/
  obj-y				+= nvme/
  obj-$(CONFIG_ATA)		+= ata/

@@ -1,0 +1,113 @@
+From 81bc96a8d41ffd596c94ad4a341ec28da6e9ded4 Mon Sep 17 00:00:00 2001
+From: "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>
+Date: Fri, 21 Jun 2024 19:40:57 +0200
+Subject: [PATCH 2/3] x86/sched: Add basic support for CPU capacity scaling
+
+In order be able to compute the sizes of tasks consistently across all
+CPUs in a hybrid system, it is necessary to provide CPU capacity scaling
+information to the scheduler via arch_scale_cpu_capacity().
+
+Add support for it via arch_cpu_scale per-CPU variables that can be set
+by whoever has sufficient information on the CPU capacities.
+
+By default, arch_cpu_scale is equal to SCHED_CAPACITY_SCALE for all
+CPUs, so this change by itself is not expected to alter the current
+behavior of the kernel.
+
+Note that setting arch_cpu_scale also requires setting the maximum to
+base frequency ratio for the given CPU so that its value corresponds
+to the new arch_cpu_scale value.
+
+Signed-off-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
+---
+ arch/x86/include/asm/topology.h  | 28 ++++++++++++++++++++++++++++
+ arch/x86/kernel/cpu/aperfmperf.c | 12 +++++++++++-
+ 2 files changed, 39 insertions(+), 1 deletion(-)
+
+diff --git a/arch/x86/include/asm/topology.h b/arch/x86/include/asm/topology.h
+index 48a727e2e..3e6f7db2d 100644
+--- a/arch/x86/include/asm/topology.h
++++ b/arch/x86/include/asm/topology.h
+@@ -272,6 +272,7 @@ DECLARE_STATIC_KEY_FALSE(arch_scale_freq_key);
+ 
+ #define arch_scale_freq_invariant() static_branch_likely(&arch_scale_freq_key)
+ 
++DECLARE_PER_CPU(unsigned long, max_freq_ratio);
+ DECLARE_PER_CPU(unsigned long, arch_freq_scale);
+ 
+ static inline long arch_scale_freq_capacity(int cpu)
+@@ -280,11 +281,38 @@ static inline long arch_scale_freq_capacity(int cpu)
+ }
+ #define arch_scale_freq_capacity arch_scale_freq_capacity
+ 
++DECLARE_PER_CPU(unsigned long, arch_cpu_scale);
++
++static inline unsigned long arch_scale_cpu_capacity(int cpu)
++{
++	return READ_ONCE(per_cpu(arch_cpu_scale, cpu));
++}
++#define arch_scale_cpu_capacity arch_scale_cpu_capacity
++
++/**
++ * arch_set_cpu_capacity - Set scale-invariance parameters for a CPU
++ * @cap: CPU capacity at its maximum frequency.
++ * @freq_ratio: Maximum to base frequency ratio times SCHED_CAPACITY_SCALE.
++ *
++ * The maximum CPU frequency used for computing @freq_ratio must be the one at
++ * which @cap is achieved.  The base frequency used for that computation must be
++ * the frequency at which APERF and MPERF count.
++ */
++static inline void arch_set_cpu_capacity(int cpu, unsigned long cap,
++					 unsigned long freq_ratio)
++{
++	WRITE_ONCE(per_cpu(max_freq_ratio, cpu), freq_ratio);
++	WRITE_ONCE(per_cpu(arch_cpu_scale, cpu), cap);
++}
++
+ extern void arch_set_max_freq_ratio(bool turbo_disabled);
+ extern void freq_invariance_set_perf_ratio(u64 ratio, bool turbo_disabled);
+ 
+ void arch_rebuild_sched_domains(void);
+ #else
++static inline void arch_set_cpu_capacity(int cpu, unsigned long cap,
++					 unsigned long freq_ratio) { }
++
+ static inline void arch_set_max_freq_ratio(bool turbo_disabled) { }
+ static inline void freq_invariance_set_perf_ratio(u64 ratio, bool turbo_disabled) { }
+ 
+diff --git a/arch/x86/kernel/cpu/aperfmperf.c b/arch/x86/kernel/cpu/aperfmperf.c
+index b3fa61d45..28421cbab 100644
+--- a/arch/x86/kernel/cpu/aperfmperf.c
++++ b/arch/x86/kernel/cpu/aperfmperf.c
+@@ -347,9 +347,15 @@ static DECLARE_WORK(disable_freq_invariance_work,
+ DEFINE_PER_CPU(unsigned long, arch_freq_scale) = SCHED_CAPACITY_SCALE;
+ EXPORT_PER_CPU_SYMBOL_GPL(arch_freq_scale);
+ 
++/* Maximum to base frequency ratio of this CPU times SCHED_CAPACITY_SCALE */
++DEFINE_PER_CPU(unsigned long, max_freq_ratio);
++/* Capacity of this CPU at its maximum frequency */
++DEFINE_PER_CPU(unsigned long, arch_cpu_scale) = SCHED_CAPACITY_SCALE;
++
+ static void scale_freq_tick(u64 acnt, u64 mcnt)
+ {
+ 	u64 freq_scale;
++	u64 freq_ratio;
+ 
+ 	if (!arch_scale_freq_invariant())
+ 		return;
+@@ -357,7 +363,11 @@ static void scale_freq_tick(u64 acnt, u64 mcnt)
+ 	if (check_shl_overflow(acnt, 2*SCHED_CAPACITY_SHIFT, &acnt))
+ 		goto error;
+ 
+-	if (check_mul_overflow(mcnt, arch_max_freq_ratio, &mcnt) || !mcnt)
++	freq_ratio = this_cpu_read(max_freq_ratio);
++	if (!freq_ratio)
++		freq_ratio = arch_max_freq_ratio;
++
++	if (check_mul_overflow(mcnt, freq_ratio, &mcnt) || !mcnt)
+ 		goto error;
+ 
+ 	freq_scale = div64_u64(acnt, mcnt);
+-- 
+2.45.2.606.g9005149a4a
+

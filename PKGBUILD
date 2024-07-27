@@ -35,11 +35,11 @@ fi
 ###################################################################################
 
 pkgbase=linux-intel
-pkgver=6.9.0
-_pkgver=6.9
+pkgver=6.10.1
+_pkgver=6.10.1
 pkgrel=1
-major=6.9
-commit=1e29f0ecf2221b2fbf580752f42ab5040d88b5e0
+major=6.10
+commit=c46c57d605e71bd94b6842006b68ce9277fddf15
 arch=(x86_64)
 url='https://www.kernel.org/'
 license=(GPL-2.0-only)
@@ -95,15 +95,16 @@ source=(https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$_pkgver.tar.xz
         0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
         0002-drivers-firmware-skip-simpledrm-if-nvidia-drm.modese.patch
         0003-arch-Kconfig-Default-to-maximum-amount-of-ASLR-bits.patch
-        0004-docs-kernel_include.py-Fix-build-with-docutils-0.21..patch
         # Intel Patches
-        # CachyOS
-        0001-intel-thread-director.patch
         # Xanmod
-        0002-sched-wait-Do-accept-in-LIFO-order-for-cache-efficie.patch
-        0003-firmware-Enable-stateless-firmware-loading.patch
-        0004-locking-rwsem-spin-faster.patch
-        0005-drivers-initialize-ata-before-graphics.patch)
+        0001-sched-wait-Do-accept-in-LIFO-order-for-cache-efficie.patch
+        0002-firmware-Enable-stateless-firmware-loading.patch
+        0003-locking-rwsem-spin-faster.patch
+        0004-drivers-initialize-ata-before-graphics.patch
+        # sirlucjan
+        0001-x86-sched-Introduce-arch_rebuild_sched_domains.patch
+        0002-x86-sched-Add-basic-support-for-CPU-capacity-scaling.patch
+        0003-cpufreq-intel_pstate-Set-asymmetric-CPU-capacity-on-.patch)
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -175,8 +176,19 @@ prepare(){
     plain ""
   fi
 
-  msg "Enable IPC classes of tasks"
-  scripts/config --enable CONFIG_IPC_CLASSES
+  msg "Set Font"
+  scripts/config --disable CONFIG_FONTS
+  scripts/config --enable CONFIG_FONT_8x8
+  scripts/config --enable CONFIG_FONT_8x16
+
+  sleep 2s
+
+  plain ""
+
+  msg "Set Font"
+  scripts/config --disable CONFIG_FONTS
+  scripts/config --enable CONFIG_FONT_8x8
+  scripts/config --enable CONFIG_FONT_8x16
 
   sleep 2s
 
@@ -346,17 +358,18 @@ _package-headers(){
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-sha256sums=('24fa01fb989c7a3e28453f117799168713766e119c5381dac30115f18f268149'
-            '5f8a4de3f17d6d1b624e70514327b05fafffe8af913f95829b9c6830b4a8a4e3'
-            'e3ff7450ac5ce41729febf471cba26446f88c3e711808cb01a012ed4d9f8d345'
-            '29c297704b3e6a8b865457061dd829e449e4c7a5fda29b74352738643ef649cc'
-            '87470fae9a8a0080c2cb3d38be224b3ccbcb2004316207e0d148ff8a62764a9e'
-            '1e36095b05ee849ad05e3696f3e16cc15e0467b7065ec8fe4624bffa3afaf6b5'
-            '75a19fcd0c329a4aa2e93e1f6d65f04899549d627de7fb5e6c48c234509c9d32'
-            'f39b2c7c114105062b8c5b8437fef091cbd776397faff98b9c412c9bcb3c5487'
-            '18233bf30bb63bb7bf6d60d24ac8afd09bda0b75687a80280b1c8642374d3983'
-            '467fbd08bb9cc1f293357387763334a3abb634a81df469c126b046a5c9bc472e'
-            'fe7b8ab06b854cd7069c0d87683c667b4a3b48fd7e907e95efb3431b64d02cc2')
+sha256sums=('70109dfd1cd1c5f8a58eb1cb37122b9bf93f9c6a6280bf91019263c7339cf76b'
+            'b7fc249683be13c565a941976c2d2c0bc90185ae1bf97779ee0c269fb3d90a37'
+            '34af4212998f8866c13edbaca3f6da262aba7807856802b7588426e6cd5359c9'
+            '893a8b1f0cfd419f22b04aebc2790f5384d42ed7e2f3703774b69afce7b72cdc'
+            '997777f15a43e2e5f9e97e61f1cccbd00e62f236851a1016d43ecb6865375f35'
+            '69b89348660c89a295c45ac273df967be3aa7e59713654e585077cc54babdfd8'
+            '63a794c9acc0ee3ddf6e1bea1d90d4c2ec5f2e64273c4b7e84b2085c9340bbfb'
+            '463ebc4d4da63bda3714f16142b8b8b092c5589a84a7b4debc2067cd7fc5600d'
+            '20104f3240903bc7bf596b565186b6bb7e5bb8597c8f809d977ad9f2f5c6a7b0'
+            '787b796dad8108000390de02c4ba950ae6786b3615b84aacbadade6c020327f1'
+            '742e3a2961ca5dbfdee8537ec67d02be3d6394782261995550e8e2470cd05e2f'
+            '9ffc49bbb91302b5ee885d4f852b5749ab163ece601242a3d2806106b4c5ec32')
 
 pkgname=($pkgbase $pkgbase-headers)
 for _p in "${pkgname[@]}"; do

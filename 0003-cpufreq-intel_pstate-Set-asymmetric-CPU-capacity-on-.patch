@@ -1,0 +1,371 @@
+From abf56c70c679b64b3fd45468ab1083b92ecb3985 Mon Sep 17 00:00:00 2001
+From: "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>
+Date: Fri, 21 Jun 2024 19:51:58 +0200
+Subject: [PATCH 3/3] cpufreq: intel_pstate: Set asymmetric CPU capacity on
+ hybrid systems
+
+Make intel_pstate use the HWP_HIGHEST_PERF values from
+MSR_HWP_CAPABILITIES to set asymmetric CPU capacity information
+via the previously introduced arch_set_cpu_capacity() on hybrid
+systems without SMT.
+
+Setting asymmetric CPU capacity is generally necessary to allow the
+scheduler to compute task sizes in a consistent way across all CPUs
+in a system where they differ by capacity.  That, in turn, should help
+to improve scheduling decisions.  It is also necessary for the schedutil
+cpufreq governor to operate as expected on hybrid systems where tasks
+migrate between CPUs of different capacities.
+
+The underlying observation is that intel_pstate already uses
+MSR_HWP_CAPABILITIES to get CPU performance information which is
+exposed by it via sysfs and CPU performance scaling is based on it.
+Thus using this information for setting asymmetric CPU capacity is
+consistent with what the driver has been doing already.  Moreover,
+HWP_HIGHEST_PERF reflects the maximum capacity of a given CPU including
+both the instructions-per-cycle (IPC) factor and the maximum turbo
+frequency and the units in which that value is expressed are the same
+for all CPUs in the system, so the maximum capacity ratio between two
+CPUs can be obtained by computing the ratio of their HWP_HIGHEST_PERF
+values.  Of course, in principle that capacity ratio need not be
+directly applicable at lower frequencies, so using it for providing the
+asymmetric CPU capacity information to the scheduler is a rough
+approximation, but it is as good as it gets.  Also, measurements
+indicate that this approximation is not too bad in practice.
+
+If the given system is hybrid and non-SMT, the new code disables ITMT
+support in the scheduler (because it may get in the way of asymmetric CPU
+capacity code in the scheduler that automatically gets enabled by setting
+asymmetric CPU capacity) after initializing all online CPUs and finds
+the one with the maximum HWP_HIGHEST_PERF value.  Next, it computes the
+capacity number for each (online) CPU by dividing the product of its
+HWP_HIGHEST_PERF and SCHED_CAPACITY_SCALE by the maximum HWP_HIGHEST_PERF.
+
+When a CPU goes offline, its capacity is reset to SCHED_CAPACITY_SCALE
+and if it is the one with the maximum HWP_HIGHEST_PERF value, the
+capacity numbers for all of the other online CPUs are recomputed.  This
+also takes care of a cleanup during driver operation mode changes.
+
+Analogously, when a new CPU goes online, its capacity number is updated
+and if its HWP_HIGHEST_PERF value is greater than the current maximum
+one, the capacity numbers for all of the other online CPUs are
+recomputed.
+
+The case when the driver is notified of a CPU capacity change, either
+through the HWP interrupt or through an ACPI notification, is handled
+similarly to the CPU online case above, except that if the target CPU
+is the current highest-capacity one and its capacity is reduced, the
+capacity numbers for all of the other online CPUs need to be recomputed
+either.
+
+If the driver's "no_trubo" sysfs attribute is updated, all of the CPU
+capacity information is computed from scratch to reflect the new turbo
+status.
+
+Signed-off-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
+---
+ drivers/cpufreq/intel_pstate.c | 199 ++++++++++++++++++++++++++++++++-
+ 1 file changed, 195 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/cpufreq/intel_pstate.c b/drivers/cpufreq/intel_pstate.c
+index c31914a98..c6388974a 100644
+--- a/drivers/cpufreq/intel_pstate.c
++++ b/drivers/cpufreq/intel_pstate.c
+@@ -16,6 +16,7 @@
+ #include <linux/tick.h>
+ #include <linux/slab.h>
+ #include <linux/sched/cpufreq.h>
++#include <linux/sched/smt.h>
+ #include <linux/list.h>
+ #include <linux/cpu.h>
+ #include <linux/cpufreq.h>
+@@ -215,6 +216,8 @@ struct global_params {
+  * @hwp_req_cached:	Cached value of the last HWP Request MSR
+  * @hwp_cap_cached:	Cached value of the last HWP Capabilities MSR
+  * @last_io_update:	Last time when IO wake flag was set
++ * @capacity_perf:	Perf from HWP_CAP used for capacity computations
++ * @max_freq_ratio:	Max to base frequency ratio times SCHED_CAPACITY_SCALE
+  * @sched_flags:	Store scheduler flags for possible cross CPU update
+  * @hwp_boost_min:	Last HWP boosted min performance
+  * @suspended:		Whether or not the driver has been suspended.
+@@ -253,6 +256,8 @@ struct cpudata {
+ 	u64 hwp_req_cached;
+ 	u64 hwp_cap_cached;
+ 	u64 last_io_update;
++	unsigned int capacity_perf;
++	unsigned int max_freq_ratio;
+ 	unsigned int sched_flags;
+ 	u32 hwp_boost_min;
+ 	bool suspended;
+@@ -295,6 +300,7 @@ static int hwp_mode_bdw __ro_after_init;
+ static bool per_cpu_limits __ro_after_init;
+ static bool hwp_forced __ro_after_init;
+ static bool hwp_boost __read_mostly;
++static bool hwp_is_hybrid;
+ 
+ static struct cpufreq_driver *intel_pstate_driver __read_mostly;
+ 
+@@ -933,6 +939,105 @@ static struct freq_attr *hwp_cpufreq_attrs[] = {
+ 	NULL,
+ };
+ 
++static void intel_pstate_set_cpu_capacity(struct cpudata *cpu, u64 cap)
++{
++	arch_set_cpu_capacity(cpu->cpu, cap, cpu->max_freq_ratio);
++}
++
++static void intel_pstate_clear_cpu_capacity(unsigned int cpunum)
++{
++	arch_set_cpu_capacity(cpunum, SCHED_CAPACITY_SCALE, 0);
++}
++
++static struct cpudata *hybrid_max_perf_cpu __read_mostly;
++/*
++ * This protects hybrid_max_perf_cpu, the @capacity_perf fields in struct
++ * cpudata, and the x86 arch capacity information from concurrent updates.
++ */
++static DEFINE_MUTEX(hybrid_capacity_lock);
++
++static void hybrid_get_cap_perf(struct cpudata *cpu)
++{
++	u64 cap_perf;
++
++	if (READ_ONCE(global.no_turbo))
++		cap_perf = cpu->pstate.max_pstate_physical;
++	else
++		cap_perf = HWP_HIGHEST_PERF(READ_ONCE(cpu->hwp_cap_cached));
++
++	cpu->capacity_perf = cap_perf;
++	cpu->max_freq_ratio = div_u64(cap_perf << SCHED_CAPACITY_SHIFT,
++				      cpu->pstate.max_pstate_physical);
++}
++
++static void hybrid_set_cpu_capacity(struct cpudata *cpu)
++{
++	u64 cap = div_u64((u64)cpu->capacity_perf << SCHED_CAPACITY_SHIFT,
++			  hybrid_max_perf_cpu->capacity_perf);
++
++	intel_pstate_set_cpu_capacity(cpu, cap);
++}
++
++static void hybrid_set_capacity_of_cpus(void)
++{
++	int cpunum;
++
++	for_each_online_cpu(cpunum) {
++		struct cpudata *cpu = all_cpu_data[cpunum];
++
++		/*
++		 * Skip hybrid_max_perf_cpu because its capacity is the
++		 * maximum and need not be computed.
++		 */
++		if (cpu && cpu != hybrid_max_perf_cpu)
++			hybrid_set_cpu_capacity(cpu);
++	}
++}
++
++static void hybrid_update_cpu_scaling(void)
++{
++	struct cpudata *max_perf_cpu = NULL;
++	unsigned int max_cap_perf = 0;
++	int cpunum;
++
++	for_each_online_cpu(cpunum) {
++		struct cpudata *cpu = all_cpu_data[cpunum];
++
++		/*
++		 * If hybrid_max_perf_cpu is not NULL at this point, it is
++		 * being replaced, so skip it.
++		 */
++		if (!cpu || cpu == hybrid_max_perf_cpu)
++			continue;
++
++		hybrid_get_cap_perf(cpu);
++		if (cpu->capacity_perf > max_cap_perf) {
++			max_cap_perf = cpu->capacity_perf;
++			max_perf_cpu = cpu;
++		}
++	}
++
++	if (max_perf_cpu) {
++		intel_pstate_set_cpu_capacity(max_perf_cpu, SCHED_CAPACITY_SCALE);
++		hybrid_max_perf_cpu = max_perf_cpu;
++		hybrid_set_capacity_of_cpus();
++	} else {
++		/* Revert to the flat CPU capacity structure. */
++		for_each_online_cpu(cpunum)
++			intel_pstate_clear_cpu_capacity(cpunum);
++	}
++}
++
++static void hybrid_init_cpu_scaling(void)
++{
++	mutex_lock(&hybrid_capacity_lock);
++
++	hybrid_max_perf_cpu = NULL;
++	hybrid_update_cpu_scaling();
++
++	mutex_unlock(&hybrid_capacity_lock);
++}
++
+ static void __intel_pstate_get_hwp_cap(struct cpudata *cpu)
+ {
+ 	u64 cap;
+@@ -961,6 +1066,38 @@ static void intel_pstate_get_hwp_cap(struct cpudata *cpu)
+ 	}
+ }
+ 
++static void hybrid_update_capacity(struct cpudata *cpu)
++{
++	unsigned int max_cap_perf;
++
++	mutex_lock(&hybrid_capacity_lock);
++
++	if (!hybrid_max_perf_cpu)
++		goto unlock;
++
++	max_cap_perf = hybrid_max_perf_cpu->capacity_perf;
++
++	intel_pstate_get_hwp_cap(cpu);
++
++	hybrid_get_cap_perf(cpu);
++	if (cpu->capacity_perf > max_cap_perf) {
++		intel_pstate_set_cpu_capacity(cpu, SCHED_CAPACITY_SCALE);
++		hybrid_max_perf_cpu = cpu;
++		hybrid_set_capacity_of_cpus();
++		goto unlock;
++	}
++
++	if (cpu == hybrid_max_perf_cpu && cpu->capacity_perf < max_cap_perf) {
++		hybrid_update_cpu_scaling();
++		goto unlock;
++	}
++
++	hybrid_set_cpu_capacity(cpu);
++
++unlock:
++	mutex_unlock(&hybrid_capacity_lock);
++}
++
+ static void intel_pstate_hwp_set(unsigned int cpu)
+ {
+ 	struct cpudata *cpu_data = all_cpu_data[cpu];
+@@ -1069,6 +1206,16 @@ static void intel_pstate_hwp_offline(struct cpudata *cpu)
+ 		value |= HWP_ENERGY_PERF_PREFERENCE(HWP_EPP_POWERSAVE);
+ 
+ 	wrmsrl_on_cpu(cpu->cpu, MSR_HWP_REQUEST, value);
++
++	mutex_lock(&hybrid_capacity_lock);
++
++	if (hybrid_max_perf_cpu == cpu)
++		hybrid_update_cpu_scaling();
++
++	mutex_unlock(&hybrid_capacity_lock);
++
++	/* Reset the capacity of the CPU going offline to the initial value. */
++	intel_pstate_clear_cpu_capacity(cpu->cpu);
+ }
+ 
+ #define POWER_CTL_EE_ENABLE	1
+@@ -1164,21 +1311,41 @@ static void __intel_pstate_update_max_freq(struct cpudata *cpudata,
+ static void intel_pstate_update_limits(unsigned int cpu)
+ {
+ 	struct cpufreq_policy *policy = cpufreq_cpu_acquire(cpu);
++	struct cpudata *cpudata;
+ 
+ 	if (!policy)
+ 		return;
+ 
+-	__intel_pstate_update_max_freq(all_cpu_data[cpu], policy);
++	cpudata = all_cpu_data[cpu];
++
++	__intel_pstate_update_max_freq(cpudata, policy);
++
++	/* Prevent the driver from being unregistered now. */
++	mutex_lock(&intel_pstate_driver_lock);
+ 
+ 	cpufreq_cpu_release(policy);
++
++	hybrid_update_capacity(cpudata);
++
++	mutex_unlock(&intel_pstate_driver_lock);
+ }
+ 
+ static void intel_pstate_update_limits_for_all(void)
+ {
+ 	int cpu;
+ 
+-	for_each_possible_cpu(cpu)
+-		intel_pstate_update_limits(cpu);
++	for_each_possible_cpu(cpu) {
++		struct cpufreq_policy *policy = cpufreq_cpu_acquire(cpu);
++
++		if (!policy)
++			continue;
++
++		__intel_pstate_update_max_freq(all_cpu_data[cpu], policy);
++
++		cpufreq_cpu_release(policy);
++	}
++
++	hybrid_init_cpu_scaling();
+ }
+ 
+ /************************** sysfs begin ************************/
+@@ -1617,6 +1784,13 @@ static void intel_pstate_notify_work(struct work_struct *work)
+ 		__intel_pstate_update_max_freq(cpudata, policy);
+ 
+ 		cpufreq_cpu_release(policy);
++
++		/*
++		 * The driver will not be unregistered while this function is
++		 * running, so update the capacity without acquiring the driver
++		 * lock.
++		 */
++		hybrid_update_capacity(cpudata);
+ 	}
+ 
+ 	wrmsrl_on_cpu(cpudata->cpu, MSR_HWP_STATUS, 0);
+@@ -2018,8 +2192,10 @@ static void intel_pstate_get_cpu_pstates(struct cpudata *cpu)
+ 
+ 		if (pstate_funcs.get_cpu_scaling) {
+ 			cpu->pstate.scaling = pstate_funcs.get_cpu_scaling(cpu->cpu);
+-			if (cpu->pstate.scaling != perf_ctl_scaling)
++			if (cpu->pstate.scaling != perf_ctl_scaling) {
+ 				intel_pstate_hybrid_hwp_adjust(cpu);
++				hwp_is_hybrid = true;
++			}
+ 		} else {
+ 			cpu->pstate.scaling = perf_ctl_scaling;
+ 		}
+@@ -2687,6 +2863,8 @@ static int intel_pstate_cpu_online(struct cpufreq_policy *policy)
+ 		 */
+ 		intel_pstate_hwp_reenable(cpu);
+ 		cpu->suspended = false;
++
++		hybrid_update_capacity(cpu);
+ 	}
+ 
+ 	return 0;
+@@ -3129,6 +3307,19 @@ static int intel_pstate_register_driver(struct cpufreq_driver *driver)
+ 
+ 	global.min_perf_pct = min_perf_pct_min();
+ 
++	/*
++	 * On hybrid systems, use asym capacity instead of ITMT, but because
++	 * the capacity of SMT threads is not deterministic even approximately,
++	 * do not do that when SMT is in use.
++	 */
++	if (hwp_is_hybrid && !sched_smt_active()) {
++		sched_clear_itmt_support();
++
++		hybrid_init_cpu_scaling();
++
++		arch_rebuild_sched_domains();
++	}
++
+ 	return 0;
+ }
+ 
+-- 
+2.45.2.606.g9005149a4a
+
