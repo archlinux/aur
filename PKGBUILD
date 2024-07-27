@@ -3,11 +3,11 @@
 pkgname="olagem"
 epoch=1
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A terminal based typing speed test"
 url="https://github.com/benjamin-voisin/$pkgname"
 arch=(x86_64)
-license=("CC-BY-SA-4.0")
+license=("CC0-1.0")
 
 makedepends=(
   git
