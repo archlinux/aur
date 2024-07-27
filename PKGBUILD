@@ -2,13 +2,15 @@
 
 pkgname=quarto-cli
 pkgver=1.5.55
-pkgrel=2
+pkgrel=3
 _pkgbasename=quarto-cli
 _denodomver="0.1.35-alpha-artifacts"
+_denover="1.41.3-1"
+_deno_commit=0d7662e1556a60bcc4b7075752fb2c2842b1afea
 _deno_arch="deno-x86_64-unknown-linux-gnu"
 pkgdesc="Quarto is an open-source scientific and technical publishing system built on [Pandoc](https://pandoc.org)."
-arch=('x86_64' 'i686')
-depends=('nodejs' 'deno<1.45' 'dart-sass' 'esbuild' 'pandoc' 'lua-lpeg' 'typst')
+arch=('x86_64')
+depends=('nodejs' 'deno' 'dart-sass' 'esbuild' 'pandoc' 'lua-lpeg' 'typst')
 makedepends=('git' 'npm' 'rust')
 url="https://quarto.org/"
 license=('MIT')
@@ -17,16 +19,20 @@ conflicts=('quarto-cli-bin' 'quarto-cli-pre-release' 'quarto-cli-bin-pre-release
 options=(!strip)
 
 source=("${_pkgbasename}-${pkgver}.tar.gz::https://github.com/quarto-dev/quarto-cli/archive/refs/tags/v${pkgver}.tar.gz"
+        "https://archive.archlinux.org/packages/d/deno/deno-${_denover}-x86_64.pkg.tar.zst"
         "https://github.com/b-fuze/deno-dom/archive/refs/tags/v${_denodomver}.tar.gz"
-        "001_deno_1.44.diff"
+        "000_pandoc_lua.diff"
        )
 
 sha256sums=('68141e59fe833abae7e82120fc31977381d2ea490eff314c759b24ef84ef5eb5'
+            '2d148c7ae8dbe2f8703654a8d3cb59e16613005a29180c3377c103799728474a'
             '14fb042a6912041b9fda91fd643cf278764d075bc9539aa1e107475915cd896c'
-            '522adaf045f39357918f174b7f5f005bd868ca9ca3526628114ba6a029870839')
+            '0f27dff1e1b16e4f2f21c43b838aaae18bf9f82339eb65878b24de128f89450f')
+
 prepare() {
   cd "${srcdir}/${_pkgbasename}-${pkgver}"
-  patch -p1 < ../001_deno_1.44.diff
+  ## Roll back "fix" of https://github.com/quarto-dev/quarto-cli/issues/8274
+  patch -p1 < ../000_pandoc_lua.diff
 }
 
 build() {
@@ -48,7 +54,7 @@ build() {
 
   mkdir -p package/dist/bin/tools/${arch}/dart-sass
   mkdir -p package/dist/bin/tools/${arch}/deno_dom
-  cp /usr/bin/deno package/dist/bin/tools
+  cp ${srcdir}/usr/bin/deno package/dist/bin/tools
   ln -sfT /usr/bin/pandoc package/dist/bin/tools/${arch}/pandoc
   ln -sfT /usr/bin/sass package/dist/bin/tools/${arch}/dart-sass/sass
   ln -sfT /usr/bin/esbuild package/dist/bin/tools/${arch}/esbuild
@@ -65,6 +71,7 @@ build() {
   ../dist/bin/tools/deno run --unstable --allow-env --allow-read --allow-write --allow-run --allow-net --allow-ffi --importmap=../../src/import_map.json bld.ts prepare-dist --log-level info
 
 }
+
 
 package() {
   cd "${srcdir}/${_pkgbasename}-${pkgver}"
