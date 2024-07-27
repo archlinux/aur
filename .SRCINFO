@@ -1,0 +1,13 @@
+pkgbase = superuser
+	pkgdesc = A shell utility that bundles custom built versions of five common shell utilities.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/sneekyfoxx/Superuser
+	arch = x86_64
+	license = GPL-3.0
+	depends = nim
+	depends = musl
+	depends = upx
+	source = https://github.com/sneekyfoxx/Superuser
+
+pkgname = superuser
