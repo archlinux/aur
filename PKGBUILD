@@ -13,7 +13,7 @@ makedepends=('git')
 provides=('vim-mesonic')
 conflicts=('vim-mesonic')
 groups=('vim-plugins')
-source=("$pkgname"::'git://github.com/igankevich/mesonic' "mesonic-ftdetect.vim")
+source=("$pkgname"::'git+https://github.com/igankevich/mesonic' "mesonic-ftdetect.vim")
 md5sums=('SKIP' '96ad7cc96c944ce67a6efc8bb83ae991')
 
 pkgver() {
