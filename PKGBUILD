@@ -11,6 +11,9 @@ depends=(
     "gtk3"
     "mpv"
 )
+optdepends=(
+    "vlc"
+)
 makedepends=(
     "git"
     "clang"

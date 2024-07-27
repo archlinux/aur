@@ -12,6 +12,7 @@ pkgbase = miru-app-git
 	makedepends = cmake
 	depends = gtk3
 	depends = mpv
+	optdepends = vlc
 	provides = miru-app
 	source = git+https://github.com/miru-project/miru-app#branch=dev
 	source = modify-data-directory.patch
