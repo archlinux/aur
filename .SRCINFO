@@ -1,12 +1,13 @@
 pkgbase = yt-music-archive
 	pkgdesc = Download youtube music locally and store its id in a archive file, and restore the music from this file.
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/mumu-lhl/yt-music-archive
 	arch = any
 	license = MIT
 	depends = yt-dlp
 	backup = etc/yt-music-archive/yt-music-archive.conf
-	source = https://github.com/mumu-lhl/yt-music-archive/archive/refs/tags/0.1.0.tar.gz
+	source = https://github.com/mumu-lhl/yt-music-archive/archive/refs/tags/0.1.1.tar.gz
+	sha256sums = 9c16a0bd6afbd6436a36fde5cf6303923d513b2ceab06c1bad28ff3d45324cb4
 
 pkgname = yt-music-archive
