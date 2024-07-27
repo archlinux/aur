@@ -1,7 +1,7 @@
 pkgbase = samplecat-git
 	pkgdesc = A program for cataloguing and auditioning audio samples.
-	pkgver = 0.3.2.r1.geb6003a
-	pkgrel = 2
+	pkgver = 0.3.3.r0.gccec9d4
+	pkgrel = 1
 	url = http://ayyi.github.io/samplecat
 	arch = x86_64
 	license = GPL-3.0-only
@@ -21,7 +21,7 @@ pkgbase = samplecat-git
 	depends = sqlite
 	provides = samplecat
 	conflicts = samplecat
-	source = git+https://github.com/ayyi/samplecat.git#branch=ffmpeg-5
+	source = git+https://github.com/ayyi/samplecat.git
 	source = git+https://github.com/ayyi/libwaveform.git
 	sha256sums = SKIP
 	sha256sums = SKIP

@@ -3,8 +3,8 @@
 
 _pkgname=samplecat
 pkgname=$_pkgname-git
-pkgver=0.3.2.r1.geb6003a
-pkgrel=2
+pkgver=0.3.3.r0.gccec9d4
+pkgrel=1
 pkgdesc="A program for cataloguing and auditioning audio samples."
 arch=(x86_64)
 url="http://ayyi.github.io/samplecat"
@@ -29,7 +29,7 @@ makedepends=(
 )
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=('git+https://github.com/ayyi/samplecat.git#branch=ffmpeg-5'
+source=('git+https://github.com/ayyi/samplecat.git'
         'git+https://github.com/ayyi/libwaveform.git')
 sha256sums=('SKIP'
             'SKIP')
@@ -48,6 +48,8 @@ prepare() {
   git submodule init
   git config submodule.waveform.url "${srcdir}/libwaveform"
   git -c protocol.file.allow=always submodule update
+  cd lib/waveform
+  git checkout master
 }
 
 build() {
