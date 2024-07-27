@@ -1,0 +1,17 @@
+pkgbase = zig-zvm-bin
+	pkgdesc = Fast and simple zig version manager
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://github.com/hendriknielaender/zvm
+	arch = x86_64
+	license = MIT
+	provides = zvm
+	provides = zig-zvm
+	conflicts = zig-zvm-bin
+	conflicts = zvm
+	source = zig-zvm-bin-0.4.4.tar.gz::https://github.com/hendriknielaender/zvm/releases/download/v0.4.4/x86_64-linux-zvm.tar.gz
+	source = LICENSE
+	sha256sums = 4ce6c5aab807c1b5769c38f9ec1bf2b7c6cff9ab8e6895c671aa33e2f1023f68
+	sha256sums = c37983c1c40639eef5330e8e5769a9107c3e260f946576f8464747b18048558f
+
+pkgname = zig-zvm-bin
