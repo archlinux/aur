@@ -2,7 +2,7 @@
 
 pkgname=chatterino2-technorino-git
 _pkgname=technorino
-pkgver=r4431.13ea4ad1
+pkgver=r4927.ba3b86b4
 pkgrel=1
 pkgdesc='Another fork of Chatterino2 with features (or fixes) that are not accepted into the upstream repo (7tv emotes included)'
 arch=('any')
@@ -11,10 +11,10 @@ license=('MIT')
 depends=('qt6-base' 'qt6-tools' 'boost-libs' 'openssl' 'qt6-imageformats' 'qtkeychain-qt6' 'qt6-5compat' 'qt6-svg')
 makedepends=('git' 'boost' 'cmake')
 optdepends=('streamlink: For piping streams to video players'
-            'pulseaudio: For audio output')
+            'pipewire: For audio output')
 provides=('chatterino')
 options=('lto')
-conflicts=('chatterino2-git' 'chatterino2-appimage' 'chatterino2-nightly-appimage' 'chatterino2-7tv-git' 'chatterino2-dankerino-git')
+conflicts=('chatterino')
 install=$pkgname.install
 source=("git+https://github.com/2547techno/technorino"
         "git+https://github.com/arsenm/sanitizers-cmake"
