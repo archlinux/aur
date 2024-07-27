@@ -1,7 +1,7 @@
 # Maintainer: Christian Cwienk <ccwienk@dr1fter.de>
 
 pkgname=ocm-cli
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='Open Component Model (OCM) Command Line Client'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/open-component-model/ocm'
 license=('Apache-2.0')
 source=("https://github.com/open-component-model/ocm/releases/download/v${pkgver}/ocm-${pkgver}-linux-amd64.tar.gz")
 noextract=()
-b2sums=('c87cb3197011eb507c93b3daad1f82f847a3fdc9123044bcc37aca6f0155a97d09b13b9774f0d1e5e80e782a1b3086167d8b81e48f00329e969e3c3f24330eec')
+b2sums=('d0c30da4f93b40ce8c825b08569f89affd31156cff303bbf8326f9ab608ed049359edad4c1fa77b064b8144711dd5b97d4de479f2f41c302e979684e41a1ff0f')
 
 
 build() {
