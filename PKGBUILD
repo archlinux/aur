@@ -1,7 +1,7 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname=sysbox-ce
 pkgver=0.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Container runtime with VM-like isolation (run Systemd, Docker, K8s in containers)"
 url="https://github.com/nestybox/sysbox"
 arch=('x86_64' 'aarch64')
@@ -16,6 +16,10 @@ source=("git+https://github.com/nestybox/sysbox.git#tag=v$pkgver"
         "git+https://github.com/nestybox/sysbox-mgr.git#commit=03f5d7bc584fdcb2319b2c1831bd58581185fc1c"
         "git+https://github.com/nestybox/sysbox-pkgr.git#commit=a4c76e1348b3bcdddb7847969f99b21f5e9a5f10"
         "git+https://github.com/nestybox/sysbox-runc.git#commit=085502643ea5281652c6984eed9797872f22698a"
+        go-get-grpc-v1.63.0-and-tidy-sysbox-fs.patch
+        go-get-grpc-v1.63.0-and-tidy-sysbox-ipc.patch
+        go-get-grpc-v1.63.0-and-tidy-sysbox-mgr.patch
+        go-get-grpc-v1.63.0-and-tidy-sysbox-runc.patch
         Honor-SOURCE_DATE_EPOCH-for-reproducible-builds.patch)
 sha256sums=(4190cb7cbf96fddab352ded0553d2419935a003780aa39d45f762710bc0ad20b
             2b1a7c1af588ee08216a345b5c5ed17d193dc69409464a2f1aa518daf5bc87e9
@@ -26,6 +30,10 @@ sha256sums=(4190cb7cbf96fddab352ded0553d2419935a003780aa39d45f762710bc0ad20b
             7e7fb434307e5f8848756227d7eab84d9d1b01cd5ef1fcdbf9bc688608536ea0
             79741411d414bad1d7644765357db8dc1642a1d799e0f0335753b1b069a2091d
             2dae82c08b0a084ae1b789ac644cd2f1c78081a00519df72dea4d0a782197ed5
+            7789a83d353abe64c2e952aa000ad09a25ccd32dabe9d422911d5eb3d69a70a4
+            2be62c1f36a378ee0ea830e0fe5e10e30758047b48d32bc12f5f4c2877f52010
+            4d7a5b94b1191131187c605d44348153983ebcca61d981f53b85b6963f558048
+            9d904fe997bcd3ba3ba5f5d9855f7fcb2bc91dfe276292c059bd2c74270ad668
             5264ed0c448868083a9f1bedc2846d744c9ea90e58f8555c50bbc155008512e5)
 install=install.sh
 depends=('rsync' 'fuse2')
@@ -60,6 +68,15 @@ prepare() {
 		sysbox/sysbox-ipc/sysboxMgrGrpc/sysboxMgrProtobuf/Makefile
 
 	patch -d sysbox -Np1 -i "$srcdir/Honor-SOURCE_DATE_EPOCH-for-reproducible-builds.patch"
+
+	# Support for protoc-gen-go-grpc 1.4.0-1
+	# Those patches are the result of running "go get -u google.golang.org/grpc@v1.63.0"
+	# on sysbox-ipc's folder, and then "go mod tidy" on sysbox-{fs,ipc,mgr,runc} folders
+	# We should be able to get rid of this on the next release since sysbox's git also has this update
+	patch -d sysbox/sysbox-fs -Np1 -i "$srcdir/go-get-grpc-v1.63.0-and-tidy-sysbox-fs.patch"
+	patch -d sysbox/sysbox-ipc -Np1 -i "$srcdir/go-get-grpc-v1.63.0-and-tidy-sysbox-ipc.patch"
+	patch -d sysbox/sysbox-mgr -Np1 -i "$srcdir/go-get-grpc-v1.63.0-and-tidy-sysbox-mgr.patch"
+	patch -d sysbox/sysbox-runc -Np1 -i "$srcdir/go-get-grpc-v1.63.0-and-tidy-sysbox-runc.patch"
 }
 
 build() {

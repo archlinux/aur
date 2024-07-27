@@ -1,7 +1,7 @@
 pkgbase = sysbox-ce
 	pkgdesc = Container runtime with VM-like isolation (run Systemd, Docker, K8s in containers)
 	pkgver = 0.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nestybox/sysbox
 	install = install.sh
 	arch = x86_64
@@ -25,6 +25,10 @@ pkgbase = sysbox-ce
 	source = git+https://github.com/nestybox/sysbox-mgr.git#commit=03f5d7bc584fdcb2319b2c1831bd58581185fc1c
 	source = git+https://github.com/nestybox/sysbox-pkgr.git#commit=a4c76e1348b3bcdddb7847969f99b21f5e9a5f10
 	source = git+https://github.com/nestybox/sysbox-runc.git#commit=085502643ea5281652c6984eed9797872f22698a
+	source = go-get-grpc-v1.63.0-and-tidy-sysbox-fs.patch
+	source = go-get-grpc-v1.63.0-and-tidy-sysbox-ipc.patch
+	source = go-get-grpc-v1.63.0-and-tidy-sysbox-mgr.patch
+	source = go-get-grpc-v1.63.0-and-tidy-sysbox-runc.patch
 	source = Honor-SOURCE_DATE_EPOCH-for-reproducible-builds.patch
 	sha256sums = 4190cb7cbf96fddab352ded0553d2419935a003780aa39d45f762710bc0ad20b
 	sha256sums = 2b1a7c1af588ee08216a345b5c5ed17d193dc69409464a2f1aa518daf5bc87e9
@@ -35,6 +39,10 @@ pkgbase = sysbox-ce
 	sha256sums = 7e7fb434307e5f8848756227d7eab84d9d1b01cd5ef1fcdbf9bc688608536ea0
 	sha256sums = 79741411d414bad1d7644765357db8dc1642a1d799e0f0335753b1b069a2091d
 	sha256sums = 2dae82c08b0a084ae1b789ac644cd2f1c78081a00519df72dea4d0a782197ed5
+	sha256sums = 7789a83d353abe64c2e952aa000ad09a25ccd32dabe9d422911d5eb3d69a70a4
+	sha256sums = 2be62c1f36a378ee0ea830e0fe5e10e30758047b48d32bc12f5f4c2877f52010
+	sha256sums = 4d7a5b94b1191131187c605d44348153983ebcca61d981f53b85b6963f558048
+	sha256sums = 9d904fe997bcd3ba3ba5f5d9855f7fcb2bc91dfe276292c059bd2c74270ad668
 	sha256sums = 5264ed0c448868083a9f1bedc2846d744c9ea90e58f8555c50bbc155008512e5
 
 pkgname = sysbox-ce
