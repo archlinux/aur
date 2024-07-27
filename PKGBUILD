@@ -3,8 +3,8 @@
 _app_name=yaak-app
 pkgname=${_app_name}-beta
 pkgver=2024.7.0
-_betaver=beta.9
-pkgrel=9
+_betaver=beta.10
+pkgrel=10
 pkgdesc="Yaak is a cross-platform desktop app for interacting with REST, GraphQL, gRPC and OpenAPI."
 arch=('x86_64')
 url="https://yaak.app/"
@@ -15,17 +15,13 @@ conflicts=(${_app_name})
 options=(!strip)
 
 source=("${pkgname}-${pkgver}-${_betaver}.deb::https://releases.yaak.app/releases/${pkgver}-${_betaver}/yaak_${pkgver}-${_betaver}_amd64.deb")
-sha256sums=('c11516c70e59453ce0784543333aae8875ceda4a3e46b2a79c226b3345e0cdf8')
+sha256sums=('fe54d7548d77de033eb7297f69a7c68e3c4c2af016d996b1ab383783dc218df1')
+
+prepare() {
+    bsdtar -xf data.tar.gz
+}
 
 package() {
-    bsdtar -O -xf ${pkgname}-${pkgver}-${_betaver}.deb data.tar.gz | bsdtar -C "${pkgdir}" -xJf -
-    tar xf "${srcdir}"/data.tar.gz
-
-    rm -rf ${pkgdir}/usr/bin
-
-    # install -Dm755 "${srcdir}/usr/bin/node" "${pkgdir}/usr/local/bin/node"
-    # install -Dm755 "${srcdir}/usr/bin/protoc" "${pkgdir}/usr/local/bin/protoc"
-    # install -Dm755 "${srcdir}/usr/bin/${_app_name}" "${pkgdir}/usr/local/bin/${_app_name}"
-
+    install -d "$pkgdir/usr/"
     cp -ar usr/{bin,lib,share} "${pkgdir}/usr"
 }
