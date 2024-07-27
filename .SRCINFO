@@ -1,0 +1,27 @@
+pkgbase = dxx-redux-git
+	pkgdesc = A source port of the Descent and Descent 2engines (git version)
+	pkgver = 1.0.r10.g8b03e18
+	pkgrel = 1
+	url = https://www.dxx-redux.com/
+	arch = x86_64
+	license = custom:D1X-Rebirth
+	license = custom:Parallax
+	makedepends = git
+	makedepends = cmake
+	depends = physfs
+	depends = sdl12-compat
+	depends = sdl_mixer
+	depends = libpng
+	depends = glew
+	source = git+https://github.com/dxx-redux/dxx-redux.git
+	sha256sums = SKIP
+
+pkgname = d1x-redux-git
+	pkgdesc = A source port of the Descent engine (git version)
+	provides = d1x-redux
+	conflicts = d1x-redux
+
+pkgname = d2x-redux-git
+	pkgdesc = A source port of the Descent 2 engine (git version)
+	provides = d2x-redux
+	conflicts = d2x-redux
