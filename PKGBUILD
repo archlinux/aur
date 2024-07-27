@@ -2,7 +2,7 @@
 # Contributor: linzeen
 pkgname=lze-web
 makedepends=('tar')
-pkgver=1.2.1
+pkgver=2.0
 pkgrel=1
 pkgdesc="lze-web"
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=('!strip' '!emptydirs')
 install=${pkgname}.install
 package(){
 git clone https://github.com/linzeennnn/lze-web.git 
-cp -r "lze-web/opt" "${pkgdir}/"
-cp -r "lze-web/etc" "${pkgdir}/"
-cp -r "lze-web/usr" "${pkgdir}/"
+install -t  "${pkgdir}/" "lze-web/opt"
+install -t  "${pkgdir}/" "lze-web/usr"
+install -t  "${pkgdir}/" "lze-web/etc"
 }

@@ -6,12 +6,13 @@ else
 fi
 
   mkdir -p /$cu_user
-  mkdir -p /$cu_user/Documents
+  mkdir -p /$cu_user/Documents/upload
   mkdir -p /$cu_user/Downloads
   mkdir -p /$cu_user/Pictures
   mkdir -p /$cu_user/Note
   mkdir -p /$cu_user/Bookmark
   chmod 777  -R /$cu_user
+  chmod 777  -R /opt/lze-web
   ln -sf /$cu_user /opt/lze-web/file
   ln -sf /opt/lze-web/code/Terminal/webssh-start /usr/bin/webssh-start
   ln -sf /opt/lze-web/code/Terminal/webssh-stop /usr/bin/webssh-stop
@@ -24,9 +25,9 @@ fi
 sudo systemctl enable --now wessh.service
 }
 pre_upgrade() {
-  post_remove
 }
 post_upgrade() {
+  post_remove
 	post_install
 }
 
