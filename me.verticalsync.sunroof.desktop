@@ -6,5 +6,5 @@ Type=Application
 Exec=/usr/bin/sunroof
 Icon=sunroof
 Categories=Network;InstantMessaging;
-StartupWMClass=sunroof;
+StartupWMClass=sunroof
 Keywords=discord;suncord;sunroof
