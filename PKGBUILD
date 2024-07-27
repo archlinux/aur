@@ -2,7 +2,7 @@
 # Contributor: Maxime "pep" Buquet <archlinux@bouah.net>
 
 pkgname=python-x3dh
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="A python implementation of the Extended Triple Diffie-Hellman key agreement protocol"
 url="https://github.com/Syndace/${pkgname}"
@@ -10,7 +10,7 @@ license=('MIT')
 arch=('any')
 makedepends=(python-build python-installer python-wheel)
 source=("${pkgname}_${pkgver}.zip::https://github.com/Syndace/${pkgname}/archive/refs/tags/v${pkgver}.zip")
-sha256sums=('e968169027374ed05a4eed96ef6ee966ba80140b7ba24b4f721c11ca307ae2ed')
+sha256sums=('3af698ecbc525cd3cfd798090df8636a18c1f28dbcfbb1ed4ebed9d78208c118')
 depends=('python-xeddsa')
 
 build() {
