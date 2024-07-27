@@ -1,7 +1,7 @@
 pkgbase = cups-git
 	pkgdesc = OpenPrinting CUPS
 	pkgver = 2.4.3.r346.g3b564fd99
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openprinting.github.io/cups/
 	arch = x86_64
 	license = Apache-2.0 WITH LLVM-exception AND BSD-3-Clause AND Zlib AND BSD-2-Clause

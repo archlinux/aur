@@ -6,8 +6,8 @@
 pkgbase=cups-git
 pkgname=(libcups-git cups-git)
 pkgver=2.4.3.r346.g3b564fd99
+pkgrel=2
 pkgdesc="OpenPrinting CUPS"
-pkgrel=1
 arch=(x86_64)
 license=('Apache-2.0 WITH LLVM-exception AND BSD-3-Clause AND Zlib AND BSD-2-Clause')
 url="https://openprinting.github.io/cups/"
@@ -74,8 +74,8 @@ build() {
      --with-max-log-size=0 \
      --enable-pam=yes \
      --enable-raw-printing \
-     --with-tls=gnutls \
      --enable-dbus=yes \
+     --with-tls=gnutls \
      --with-dbusdir=/usr/share/dbus-1 \
      --enable-relro \
      --enable-libpaper \
@@ -95,10 +95,10 @@ package_libcups-git() {
   conflicts=(libcups)
 
   cd "${pkgbase%-git}"
-  make -j1 BUILDROOT=${pkgdir} install-headers install-libs
+  make BUILDROOT="${pkgdir}" install-headers install-libs
   # put this into the libs pkg to make other software find the libs(no pkg-config file included)
-  mkdir -p ${pkgdir}/usr/bin
-  install -m755 ${srcdir}/cups/cups-config ${pkgdir}/usr/bin/cups-config
+  mkdir -p "${pkgdir}"/usr/bin
+  install -m755 "${srcdir}"/cups/cups-config "${pkgdir}"/usr/bin/cups-config
   install -Dm644 "${srcdir}"/${pkgbase%-git}/NOTICE -t "${pkgdir}"/usr/share/licenses/libcups-git
 }
 
@@ -125,8 +125,6 @@ package_cups-git() {
 
 
   cd "${pkgbase%-git}"
-  make -j1 BUILDROOT=${pkgdir} install-data install-exec
-
   make BUILDROOT="${pkgdir}" install-data install-exec
   install -Dm644 "${srcdir}"/${pkgbase%-git}/NOTICE -t "${pkgdir}"/usr/share/licenses/cups-git
 
@@ -144,7 +142,7 @@ package_cups-git() {
   chmod 755 "${pkgdir}"/etc
 
   # use cups group FS#36769
-  install -Dm644 "$srcdir"/cups.sysusers "${pkgdir}/usr/lib/sysusers.d/$pkgname.conf"
+  install -Dm644 "${srcdir}"/cups.sysusers "${pkgdir}"/usr/lib/sysusers.d/$pkgname.conf
   sed -i "s:#User 209:User 209:" "${pkgdir}"/etc/cups/cups-files.conf{,.default}
   sed -i "s:#Group 209:Group 209:" "${pkgdir}"/etc/cups/cups-files.conf{,.default}
 
@@ -169,10 +167,10 @@ package_cups-git() {
   rm -f "${pkgdir}"/usr/share/man/man5/client.conf.5
 
   # comment out removed filters that are now part of cups-filters
-  perl -p -i -e 's:^(.*\s+bannertops\s*)$:#\1:' "$pkgdir"/usr/share/cups/mime/mime.convs
+  perl -p -i -e 's:^(.*\s+bannertops\s*)$:#\1:' "${pkgdir}"/usr/share/cups/mime/mime.convs
 
   # comment out unnecessary PageLogFormat entry
-  sed -i -e 's:PageLogFormat:#PageLogFormat:' "$pkgdir"/etc/cups/cupsd.conf*
+  sed -i -e 's:PageLogFormat:#PageLogFormat:' "${pkgdir}"/etc/cups/cupsd.conf*
 
   # no more xinetd support
   rm -rf "${pkgdir}"/etc/xinetd.d
