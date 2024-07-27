@@ -20,19 +20,13 @@ sha256sums=('4af63703b3504370ef298693abc5061fe5bf215536e6d45952afda33a92f8101')
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  if [ $(which rustup > /dev/null 2>&1; echo $?) -eq 0 ]; then
-    if [ $(rustup default > /dev/null 2>&1; echo $?) -ne 0 ]; then
-      rustup default stable
-    fi
-  fi
-
-  cargo build --release --locked --target-dir=target
+  cargo build --release --locked
 }
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  cargo test --release --locked --target-dir=target
+  cargo test --release --locked
 }
 
 package() {
