@@ -1,7 +1,7 @@
 pkgbase = python-xeddsa
 	pkgdesc = A python implementation of the XEdDSA signature scheme
-	pkgver = 1.0.2
-	pkgrel = 2
+	pkgver = 1.0.3
+	pkgrel = 1
 	url = https://github.com/Syndace/python-xeddsa
 	arch = x86_64
 	license = MIT
@@ -20,7 +20,7 @@ pkgbase = python-xeddsa
 	depends = python-pynacl
 	provides = python-xeddsa
 	conflicts = python-xeddsa
-	source = https://github.com/Syndace/python-xeddsa/archive/refs/tags/v1.0.2.tar.gz
-	sha256sums = b72b3265b7d69809aae8fcf063e0f2a72f1c600a47cc625813d5bda5a15b1731
+	source = https://github.com/Syndace/python-xeddsa/archive/refs/tags/v1.0.3.tar.gz
+	sha256sums = 4f4904d2275ae954d344fcaa6542fa0f4e50e0b3f9b65a3a68c2d87421af4e4d
 
 pkgname = python-xeddsa
