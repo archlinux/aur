@@ -17,20 +17,26 @@ optdepends=('upx>=4.2.4')
 source=(Superuser::git+"https://github.com/sneekyfoxx/Superuser.git")
 sha256sums=('SKIP')
 
-build() {
+prepare() {
   cd "${srcdir}/Superuser"
+  
+  "${srcdir}/Superuser/install-nim.sh"
 
   if [ ! -d "${HOME}/.local/bin" ]; then
     mkdir "${HOME}/.local/bin";
   fi
 
-  "${srcdir}/Superuser/install-nim.sh"
   mkdir "${srcdir}/Superuser/bin"
+}
+
+build() {
+  cd "${srcdir}/Superuser"
+
   "${srcdir}/Superuser/build.sh" -c
 }
 
 package() {
-  cd "${pkgdir}/superuser/Superuser"
+  cd "${pkgdir}"
 
-  install -m755 "${pkgdir}/superuser/Superuser/bin/superuser" "${pkgdir}/usr/bin/superuser"
+  install -m755 "${srcdir}/Superuser/bin/superuser" "/usr/bin/superuser"
 }
