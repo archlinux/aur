@@ -1,7 +1,7 @@
 # Maintainer: Jon Stelly < 967068+jonstelly at users.noreply.github.com >
 pkgname=kubevpn-bin
 pkgver=2.2.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Access kubernetes via VPN"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/KubeNetworks/kubevpn"
@@ -21,4 +21,5 @@ sha256sums_armv7h=('aac7d50f2b528e88c4e1b9096dc179a317e3a66e495ee25cb024c42bfa75
 
 package() {
   install -Dm755 "${srcdir}/bin/kubevpn" "${pkgdir}/usr/bin/kubevpn"
+  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/kubevpn-bin/LICENSE"
 }
