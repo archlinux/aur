@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.1.0.r121.g7ad4431
+pkgver=0.1.0.r211.g680192a0
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('x86_64')
@@ -31,7 +31,7 @@ makedepends=(
 	'vulkan-memory-allocator>=3.1'
 	'xbyak>=7.07'
 	'xxhash>=0.8.2'
-	'zydis>=4.1'
+	# 'zydis>=4.1'
 )
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
@@ -41,9 +41,11 @@ source=(
 	"$_pkgname-discord-rpc::git+https://github.com/shadps4-emu/ext-discord-rpc.git"
 	"$_pkgname-sirit::git+https://github.com/shadps4-emu/sirit.git"
 	"$_pkgname-tracy::git+https://github.com/shadps4-emu/tracy.git"
+	"zydis::git+https://github.com/zyantific/zydis.git"
 	"$_pkgname.sh"
 )
 b2sums=(
+	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -59,10 +61,11 @@ pkgver() {
 
 prepare() {
 	cd $_pkgname
-	git config submodule.externals/ext-boost.url ../$_pkgname-boost
 	git config submodule.externals/discord-rpc.url ../$_pkgname-discord-rpc
+	git config submodule.externals/ext-boost.url ../$_pkgname-boost
 	git config submodule.externals/sirit.url ../$_pkgname-sirit
 	git config submodule.externals/tracy.url ../$_pkgname-tracy
+	git config submodule.externals/zydis.url ../zydis
 	git -c protocol.file.allow=always submodule update
 	sed -ri '/find_package/s/\b[.0-9]+\b//' CMakeLists.txt
 }
@@ -82,7 +85,7 @@ package() {
 	depends+=(
 		'libfmt.so'
 		'libxxhash.so'
-		'libZydis.so'
+		# 'libZydis.so'
 		'qt6-base'
 	)
 	# shellcheck disable=SC2154
