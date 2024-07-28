@@ -14,7 +14,7 @@
 # Contributor: Diego Jose <diegoxter1006@gmail.com>
 
 pkgbase=lib32-mesa-amdonly-gaming-git
-pkgver=24.3.0_devel.192290.bed6e0d691c.d41d8cd
+pkgver=24.3.0_devel.192624.1242f3ed3a4.d41d8cd
 options=(!lto) # LTO is bad for mesa, makes random applications crash on my system
 
 pkgname=(
@@ -418,6 +418,7 @@ package_lib32-amdonly-gaming-mesa-git() {
   _install fakeinstall/$_libdir/d3d
   _install fakeinstall/$_libdir/lib{gbm,glapi}.so*
   _install fakeinstall/$_libdir/libOSMesa.so*
+  _install fakeinstall/$_libdir/libgallium*.so*
 
   # only needed when gallium-xa is enabled
   #_install fakeinstall/$_libdir/libxatracker.so*
