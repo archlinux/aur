@@ -1,8 +1,8 @@
 # Maintainer: JinZhongjia <mail @ nvimer.org>
 
 pkgname='zig-zvm'
-pkgver='0.4.4'
-pkgrel='3'
+pkgver='0.4.5'
+pkgrel='1'
 pkgdesc='Fast and simple zig version manager'
 arch=('x86_64')
 url='https://github.com/hendriknielaender/zvm'
