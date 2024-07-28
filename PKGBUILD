@@ -1,7 +1,7 @@
 # Maintainer: Trey Blancher $(base64 -d <<< dHJleUBibGFuY2hlci5uZXQK)
 pkgname=nri-mysql-bin
 _pkg=${pkgname/-bin/}
-pkgver=1.10.8
+pkgver=1.10.9
 pkgrel=1
 pkgdesc="MySQL integration for New Relic"
 arch=(aarch64 armv7h x86_64)
@@ -27,6 +27,6 @@ package() {
     install -m u=rwx,go=rx ${srcdir}/var/db/newrelic-infra/newrelic-integrations/bin/nri-mysql \
         ${pkgdir}/var/db/newrelic-infra/newrelic-integrations/bin/
 }
-sha256sums_aarch64=('048c484a4be74ec1e20b5e6bbeaf40e57a7d7e8a8007affa4f00b7634ea20b3a')
-sha256sums_armv7h=('c7ef9d94cee317260f693bb57941b827d263196e86662de33388a87353c5ef23')
-sha256sums_x86_64=('6df72f15ecc53ccb89ef2c611fb4dc302a02dc688b9a38577f1149c40b3332da')
+sha256sums_aarch64=('6d284aad5ca21ce07a4b28932863750439ae3ad9270b6ea2085e11a0370a2936')
+sha256sums_armv7h=('920f29025743c5e23756d09c717b6e5e7ffc9ac23a301795e52a2fe3e8b40005')
+sha256sums_x86_64=('e71ab6ea15ffb4db1960645dd3ecffdf86aee1d853ff447293f948dd5d3d69f7')
