@@ -2,7 +2,7 @@
 _pkgname=torzu
 _branch=main
 pkgname=torzu-git
-pkgver=r27142.e3ea6f205
+pkgver=r27157.c8997e4ab
 pkgrel=1
 pkgdesc="Torzu is a fork of yuzu, the world's most popular, open-source, Nintendo Switch emulator. It is written in C++ with portability in mind."
 arch=(x86_64)
@@ -103,7 +103,7 @@ build() {
   CXXFLAGS+=" -I/usr/include/libusb-1.0"
   
   cmake -B build -G Ninja \
-    -DTORZU_USE_BUNDLED_VCPKG=ON \
+    -DYUZU_USE_BUNDLED_VCPKG=ON \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_CXX_FLAGS="-march=x86-64-v2" \
     -DCMAKE_CXX_COMPILER=/usr/bin/g++-13 \
@@ -112,12 +112,12 @@ build() {
     -DENABLE_QT_TRANSLATION=OFF \
     -DUSE_DISCORD_PRESENCE=ON \
     -DYUZU_USE_EXTERNAL_VULKAN_SPIRV_TOOLS=OFF \
-    -DTORZU_ENABLE_COMPATIBILITY_REPORTING=${ENABLE_COMPATIBILITY_REPORTING:-"OFF"} \
-    -DTORZU_USE_BUNDLED_FFMPEG=ON \
-    -DTORZU_ENABLE_LTO=ON \
-    -DTORZU_CRASH_DUMPS=OFF \
+    -DYUZU_ENABLE_COMPATIBILITY_REPORTING=${ENABLE_COMPATIBILITY_REPORTING:-"OFF"} \
+    -DYUZU_USE_BUNDLED_FFMPEG=OFF \
+    -DYUZU_ENABLE_LTO=ON \
+    -DYUZU_CRASH_DUMPS=OFF \
     -DCMAKE_INSTALL_PREFIX="/usr" \
-    -DTORZU_ROOM=OFF \
+    -DYUZU_ROOM=OFF \
     -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
     -DFFmpeg_COMPONENTS="swscale;avutil;avfilter;avcodec" \
     -DFFmpeg_PREFIX=$srcdir/externals/ffmpeg/ffmpeg \
