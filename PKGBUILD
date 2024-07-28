@@ -2,7 +2,7 @@
 
 _pkgname=genseki-font
 pkgname=ttf-${_pkgname%-font}-git
-pkgver=v1.501
+pkgver=v2.000
 pkgrel=1
 pkgdesc="Free font derived from Source Han Serif."
 arch=('any')

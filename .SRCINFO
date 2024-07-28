@@ -1,6 +1,6 @@
 pkgbase = ttf-genseki-git
 	pkgdesc = Free font derived from Source Han Serif.
-	pkgver = v1.501
+	pkgver = v2.000
 	pkgrel = 1
 	url = https://github.com/ButTaiwan/genseki-font
 	arch = any
