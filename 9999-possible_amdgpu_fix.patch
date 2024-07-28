@@ -1,0 +1,23 @@
+That is just a waste of time on APUs.
+
+Signed-off-by: Christian König <christian.koenig@xxxxxxx>
+---
+ drivers/gpu/drm/amd/amdgpu/amdgpu_object.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_object.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_object.c
+index 8d8c39be6129..f7b534c55c43 100644
+--- a/drivers/gpu/drm/amd/amdgpu/amdgpu_object.c
++++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_object.c
+@@ -180,7 +180,8 @@ void amdgpu_bo_placement_from_domain(struct amdgpu_bo *abo, u32 domain)
+ 		 * When GTT is just an alternative to VRAM make sure that we
+ 		 * only use it as fallback and still try to fill up VRAM first.
+ 		 */
+-		if (domain & abo->preferred_domains & AMDGPU_GEM_DOMAIN_VRAM)
++		if (domain & abo->preferred_domains & AMDGPU_GEM_DOMAIN_VRAM &&
++		    !(adev->flags & AMD_IS_APU))
+ 			places[c].flags |= TTM_PL_FLAG_FALLBACK;
+ 		c++;
+ 	}
+-- 
+2.34.1
