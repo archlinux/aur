@@ -1,6 +1,6 @@
 pkgbase = zig-zvm-git
 	pkgdesc = Fast and simple zig version manager
-	pkgver = 0.4.4.r3.g452d94f2
+	pkgver = 0.4.5.r0.gba2e28b5
 	pkgrel = 1
 	url = https://github.com/hendriknielaender/zvm
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer: JinZhongjia <mail @ nvimer.org>
 
 pkgname='zig-zvm-git'
-pkgver=0.4.4.r3.g452d94f2
+pkgver=0.4.5.r0.gba2e28b5
 pkgrel=1
 pkgdesc='Fast and simple zig version manager'
 arch=('x86_64')
