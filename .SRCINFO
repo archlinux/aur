@@ -1,6 +1,6 @@
 pkgbase = python-mpi4py-intel
 	pkgdesc = Python bindings for the Message Passing Interface compiled with intel mpi
-	pkgver = 3.1.6
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/mpi4py/mpi4py
 	arch = x86_64
@@ -11,13 +11,13 @@ pkgbase = python-mpi4py-intel
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	makedepends = cython0
+	makedepends = cython
 	depends = python
 	depends = intel-oneapi-basekit
 	provides = python-mpi4py
 	conflicts = python-mpi4py
 	options = !emptydirs
-	source = mpi4py-3.1.6.tar.gz::https://github.com/mpi4py/mpi4py/archive/3.1.6.tar.gz
-	sha512sums = e99fa0aab13d8e3d2479880a4c920c621512925c6fa2706e7b46b8c3380ca061c1583be70dc5b94f40bf32c0ac7f4cfb508917429226227c52348548ebe0a0d9
+	source = mpi4py-4.0.0.tar.gz::https://github.com/mpi4py/mpi4py/archive/4.0.0.tar.gz
+	sha512sums = a8be7af1abe24d6505b35940e6817261175c848ff3e715e0564b0717f1aabdf2395f8e2625680109e6569031e6129b560b870d8df8b6d2b3285b43504c7a851f
 
 pkgname = python-mpi4py-intel
