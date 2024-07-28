@@ -1,0 +1,5 @@
+[python-cheap_repr]
+source = "github"
+github = "alexmojaki/cheap_repr"
+use_max_tag = "true"
+prefix = "v"
