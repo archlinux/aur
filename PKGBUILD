@@ -10,10 +10,11 @@ license=('GPL-3.0-only')
 makedepends=('gobject-introspection' 'meson')
 depends=('python' 'glib2' 'glib2-devel' 'glibc' 'gtk4' 'gtk4-layer-shell' 'libpulse' 'python-cairo' 'python-gobject')
 optdepends=('gst-plugin-pipewire: required for recorder service'
-			'gst-plugins-good: required for recorder service'
-			'gst-plugins-ugly: required for recorder service'			
-			'python-requests: required for mpris service'
-            'networkmanager: required for network service')
+            'gst-plugins-good: required for recorder service'
+            'gst-plugins-ugly: required for recorder service'
+            'python-requests: required for mpris service'
+            'networkmanager: required for network service'
+            'dart-sass: SASS/SCSS compilation support')
             
 conflicts=('ignis')
 source=("git+${url}"

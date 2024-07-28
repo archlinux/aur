@@ -21,6 +21,7 @@ pkgbase = ignis-git
 	optdepends = gst-plugins-ugly: required for recorder service
 	optdepends = python-requests: required for mpris service
 	optdepends = networkmanager: required for network service
+	optdepends = dart-sass: SASS/SCSS compilation support
 	conflicts = ignis
 	source = git+https://github.com/linkfrg/ignis
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control
