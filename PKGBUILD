@@ -70,7 +70,8 @@ depends=(
 optdepends=()
 
 _get_dependencies() {
-  ### This is a bash snippet helping to generate the dependency entries when called from wiithin downloaded 'freetz-ng' source:
+  ### This is a bash snippet helping to generate the dependency entries when called from within downloaded 'freetz-ng' source.
+  #   Maybe 'ccache' and 'glib2-devel' need to be added manually.
   printf '%s\n' '  ## Executables:'; pacman -Qqo `grep -E -e '(^program|^binary)' .prerequisites | awk '{print $2}' | grep .` | sort | uniq | while read i; do printf '%s\n' "  '$i'"; done
   printf '\n'
   printf '%s\n' '  ## Headers:'; pacman -Qqo `grep -E -e '^header' .prerequisites | awk '{print "/usr/include/"$2}' | grep .` | sort | uniq | while read i; do printf '%s\n' "  '$i'"; done
