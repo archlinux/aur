@@ -5,7 +5,7 @@
 
 pkgname=neo4j-community
 _pkgname=neo4j
-pkgver=5.21.2
+pkgver=5.22.0
 pkgrel=1
 pkgdesc="A fully transactional graph database implemented in Java"
 arch=(any)
@@ -32,17 +32,15 @@ source=(
   "neo4j.tmpfiles"
 )
 sha256sums=(
-  'f67d9b3eef60622e3110ce563ec65d45a87a16f52e0cfae0aa48db56407b2bc0'
+  'f4f8aad6b01940d2a77734e0c9dcf8f1302155d200c3efcadaf96c78c9d1b056'
   '152e35d949fe9090c890e7a213da917c09bc087a060119a1c32541821f91781f'
   '090e9ced1708e22592f775490360762d973e81061a0170b4150b087b1751e142'
   'a1d3dd94aecf80289e8d9b6381d4393ed60b7a5dec3cae436e721be676c15f3a'
   '45033d5009c84340b79f914bfc13b00c67a8c0bf30a5ccf9d016b5e238762f92'
 )
 
-_archive="$_pkgname-$pkgver"
-
 prepare() {
-  cd "$_archive"
+  cd $_pkgname-$pkgver
 
   mvn versions:set -DnewVersion="$pkgver"
 
@@ -70,7 +68,7 @@ prepare() {
 }
 
 build() {
-  cd "$_archive"
+  cd $_pkgname-$pkgver
 
   export PATH="/usr/lib/jvm/java-$_java_version-openjdk/bin:$PATH"
   mvn \
@@ -79,7 +77,7 @@ build() {
 }
 
 check() {
-  cd "$_archive"
+  cd $_pkgname-$pkgver
 
   # Running all integration tests takes ~1 hour
   mvn \
@@ -88,7 +86,7 @@ check() {
 }
 
 package() {
-  cd "$_archive"
+  cd $_pkgname-$pkgver
 
   tar -xf "packaging/standalone/target/neo4j-community-$pkgver-unix.tar.gz"
   local bin_archive="neo4j-community-$pkgver"
