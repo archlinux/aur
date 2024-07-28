@@ -1,0 +1,25 @@
+pkgbase = hurrycurry-server
+	pkgdesc = A game about cooking (server)
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://codeberg.org/hurrycurry/hurrycurry
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = AGPL3
+	makedepends = rustup
+	makedepends = deno
+	makedepends = graphviz
+	makedepends = godot
+	source = hurrcurry-1.3.0.tar.gz::https://codeberg.org/hurrycurry/hurrycurry/archive/v1.3.0.tar.gz
+	source = hurrycurry.service
+	source = hurrycurry.yaml
+	source = sysusers.conf
+	sha256sums = 4852c4e313fa921cc8216219956c877f1d1983e9b3a10f72608d2c45ab46743e
+	sha256sums = d520ab278a04fd434429833e806b67f876529fcbbf7e8f5aa80c3e102b621750
+	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+	sha256sums = bbb29eff6b62d4530b04c0a964a88229212fea165f97a1c4674c53fae9fb4fe4
+
+pkgname = hurrycurry-server
