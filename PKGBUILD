@@ -1,4 +1,4 @@
-# Mainintainer : Jenrikku (JkKU)
+# Maintainer : Jenrikku (JkKU)
 pkgname="openutau"
 pkgver=0.1.529
 pkgrel=1
