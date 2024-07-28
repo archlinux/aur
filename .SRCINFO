@@ -1,0 +1,17 @@
+pkgbase = hwfetch-git
+	pkgdesc = A really bad hardware fetch
+	pkgver = r5.c379d6f
+	pkgrel = 1
+	url = https://github.com/morr0ne/hwfetch
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = cargo
+	makedepends = just
+	provides = hwfetch
+	conflicts = hwfetch
+	source = git+https://github.com/morr0ne/hwfetch.git
+	sha256sums = SKIP
+
+pkgname = hwfetch-git
