@@ -17,7 +17,10 @@ build() {
   cd "$srcdir/$pkgname-$pkgver"
   export GOPATH="$srcdir/go"
   export GO111MODULE=on
+
+  chmod -R u+w "$GOPATH/pkg/mod"
   go build -o gowall
+
 }
 
 
