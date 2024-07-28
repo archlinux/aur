@@ -1,7 +1,7 @@
 # Maintainer: zotan <aur@zotan.email>
 
 pkgname=iceshrimp-bin
-pkgver=v2023.12.8
+pkgver=v2023.12.9
 pkgrel=1
 pkgdesc="YAMF (Yet another Misskey fork) bringing you no-nonsense fixes, features & improvements you actually want since 2023"
 arch=(x86_64)
@@ -27,7 +27,7 @@ source=(
   "iceshrimp.hook"
 )
 
-sha512sums=('c15dcd521da9fe922eedd1ea6abf4de5f3a5cfc9f2d2f8a379ba645bb79f3bd37bb68aafbb6427217ba4526efe54b01fe8c47a045c0751471e62245629880778'
+sha512sums=('a9fcbe49b18d156dec2e1d96b8e6deece3d5232a9da3afa4bdfac422176953e104ae27ff05ff6d2e5e4d1aab23a81e9e8ca79d9657051bddd75ddb851f5cfd6d'
             '91c456bda5c14b01cbf770a2e9e57425ac5e82226799d39e11cc6e83b219a0559eeed8693c5eb051fffb28cdd23d4682ee40f46372117880aeeddb00ecb8726f')
 
 package() {
