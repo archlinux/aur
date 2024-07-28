@@ -1,12 +1,13 @@
 # Maintainer: bcareil <baptiste.careil@gmail.com>
+# Contributor: LordBlick <Lord.Blick@gmail.com>
 
 pkgname='path-of-building-community-git'
-pkgrel=2
+pkgrel=1
 pkgdesc="An offline build planner for Path of Exile using PoBFrontend, LocalIdentity's fork"
 arch=('x86_64')
 url='https://github.com/PathOfBuildingCommunity/PathOfBuilding'
 license=('MIT')
-pkgver=2.41.1.r7815.62.517
+pkgver=2.46.0.r8101.62.517
 
 depends=('zlib' 'qt6-base' 'luajit' 'libgl' 'curl' 'ttf-liberation' 'ttf-bitstream-vera')
 makedepends=('meson' 'ninja' 'unzip' 'rsync' 'git')
