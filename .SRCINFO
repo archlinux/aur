@@ -1,6 +1,6 @@
 pkgbase = lib32-libsodium
 	pkgdesc = A modern, portable, easy to use crypto library
-	pkgver = 1.0.19
+	pkgver = 1.0.20
 	pkgrel = 1
 	url = https://github.com/jedisct1/libsodium
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = lib32-libsodium
 	depends = lib32-glibc
 	depends = libsodium
 	provides = libsodium.so
-	source = git+https://github.com/jedisct1/libsodium.git#tag=1.0.19
-	sha256sums = SKIP
+	source = git+https://github.com/jedisct1/libsodium.git#tag=9511c982fb1d046470a8b42aa36556cdb7da15de
+	b2sums = d67cf311966660f71ff010e058f08a84fa27998c463be263808848de6954ac020c0eb793fa28be7d3b9d5b099a6607680f129f00968e4a231e4eaec7bd5f12f4
 
 pkgname = lib32-libsodium
