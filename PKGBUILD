@@ -21,6 +21,8 @@ prepare() {
     cd "$pkgname-$pkgver"
 
     patch --forward --strip=1 --input=../dotnet-8.0.106.patch
+    desktop-file-edit build/resources/_common/applications/sourcegit.desktop \
+        --set-icon=sourcegit --set-key=Exec --set-value=sourcegit
 }
 
 build() {
@@ -32,9 +34,6 @@ build() {
     dotnet publish src/SourceGit.csproj -c Release -r linux-x64 -o publish
     rm -f publish/SourceGit.pdb
     mv publish/SourceGit "publish/$pkgname"
-
-    desktop-file-edit build/resources/_common/applications/sourcegit.desktop \
-        --set-icon=sourcegit --set-key=Exec --set-value=sourcegit
 }
 
 package() {
