@@ -7,16 +7,16 @@
 # https://github.com/michaellass/AUR
 
 pkgname=ikiwiki
-pkgver=3.20200202.3
+pkgver=3.20200202.4
 pkgrel=1
 pkgdesc='Wiki compiler'
 arch=(any)
-license=('GPL')
+license=(GPL-2.0-or-later)
 url='https://ikiwiki.info'
 depends=(perl-yaml perl-text-markdown perl-cgi-session perl-cgi-formbuilder perl-timedate perl-html-parser perl-html-scrubber perl-mail-sendmail perl-time-duration perl-uri perl-html-template perl-locale-gettext perl-rpc-xml perl-yaml-libyaml)
 source=("http://deb.debian.org/debian/pool/main/i/${pkgname}/${pkgname}_${pkgver}.orig.tar.xz")
 backup=('etc/ikiwiki/wikilist')
-sha256sums=('594f13bcee8959356376a42eed6c5a8e295d325724b1c09f9395404e3262796a')
+sha256sums=('be61813068b6c5f5b77f2b346e41efac59d9f0574b6a361154851f735412fe8f')
 
 build() {
   cd "$pkgname-$pkgver"
