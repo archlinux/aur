@@ -16,7 +16,7 @@ optdepends=('gst-plugin-pipewire: required for recorder service'
             
 conflicts=('ignis-git')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v${pkgver}/ignis-v${pkgver}.tar.gz")
-sha256sums=('8166bc6fb95b6cb9e8b2cdff02acaf9e8449ae3b614973f5dd200464b3dfed53')
+sha256sums=('555aee575c36f2473bace871ea4f575bca9faae14142222fafd471ffeff5f51c')
 
 build() {
   cd $srcdir/$pkgname
