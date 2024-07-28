@@ -1,0 +1,15 @@
+pkgbase = mpv-quality-menu-git
+	pkgdesc = A userscript for MPV that allows you to change the streamed video and audio quality (ytdl-format) on the fly.
+	pkgver = 4.1.1.r173.ab40a0d
+	pkgrel = 1
+	url = https://github.com/christoph-heinrich/mpv-quality-menu
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = mpv
+	provides = mpv-quality-menu
+	conflicts = mpv-quality-menu
+	source = git+https://github.com/christoph-heinrich/mpv-quality-menu.git
+	md5sums = SKIP
+
+pkgname = mpv-quality-menu-git
