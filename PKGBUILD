@@ -6,12 +6,13 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-curl
-pkgver=8.8.0
+pkgver=8.9.0
 pkgrel=1
 arch=('any')
 pkgdesc="An URL retrival utility and library (Android ${_android_arch})"
 url="https://curl.haxx.se"
-license=("MIT")
+license=('MIT')
+groups=('android-curl')
 depends=("android-${_android_arch}-brotli"
          "android-${_android_arch}-libidn2"
          "android-${_android_arch}-libnghttp2"
@@ -26,9 +27,9 @@ options=(!strip !buildflags staticlibs !emptydirs)
 source=("${url}/download/curl-${pkgver}.tar.bz2"
         "0002-nghttp2-static.patch"
         "0004-more-static-fixes.patch")
-md5sums=('d5265a351fdfb12ec840a2a0ba1ce9ff'
+md5sums=('c04c664726cd20db7a59076150c429ea'
          '08976b11b3e986c43c2ebd8eac36e2fb'
-         '98ba4e01c3545650087a4852192ce10e')
+         '1df80f9a2a4026efdb7d93c6fc6394c5')
 
 prepare() {
     cd "${srcdir}/curl-${pkgver}"
@@ -63,7 +64,7 @@ package() {
     cd "${srcdir}/curl-${pkgver}"
     source android-env ${_android_arch}
 
-    make DESTDIR="$pkgdir" install
+    make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/${ANDROID_PREFIX_BIN}/curl"
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
