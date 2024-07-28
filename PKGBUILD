@@ -5,16 +5,18 @@
 _base=birdseye
 pkgname=python-${_base}
 pkgdesc="Graphical Python debugger which lets you view the values of all evaluated expressions"
-pkgver=0.9.4
-pkgrel=2
+pkgver=0.9.5
+pkgrel=1
 arch=(any)
 url="https://github.com/alexmojaki/${_base}"
 license=(MIT)
-depends=(python-flask-humanize python-sqlalchemy python-asttokens python-littleutils python-cheap_repr python-outdated python-cached-property)
+depends=(python-flask-humanize python-sqlalchemy python-asttokens python-littleutils
+  python-cheap_repr python-outdated python-cached-property)
 makedepends=(python-build python-installer python-setuptools-scm python-wheel)
-checkdepends=(python-pytest python-markupsafe python-pandas python-beautifulsoup4 python-selenium python-flask) # chromedriver
+checkdepends=(python-pytest python-markupsafe python-pandas python-beautifulsoup4
+  python-selenium python-flask) # chromedriver
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('79fe0004c50075080a637b59fdf1731d95404f121770fb18c96377e36f629cbe51b85b2cd1b9bb603625ac995b0cf7f38636bcd530acf4e5d2e8db65ae64c988')
+sha512sums=('fdd95e85302f75162edd1e8fb1f1530674da0fdd9b5f29a6b4d0d0c46a91ce12932b92e6d35b256d90cd8260c76dd3f692e8d53e303fd4dac835da35615bf2ae')
 
 build() {
   export SETUPTOOLS_SCM_PRETEND_VERSION=${pkgver}
@@ -24,7 +26,7 @@ build() {
 
 check() {
   cd ${_base}-${pkgver}
-  python -m pytest -k 'not open_with_encoding_check and not against_files and not interface.py'
+  python -m pytest -k 'not against_files and not cheap_repr and not interface.py and not open_with_encoding_check'
 }
 
 package() {

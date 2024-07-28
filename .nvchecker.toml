@@ -1,0 +1,5 @@
+[python-birdseye]
+source = "github"
+github = "alexmojaki/birdseye"
+use_max_tag = "true"
+prefix = "v"
