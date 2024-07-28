@@ -1,22 +1,30 @@
-# Maintainer : Dev Brush Technology <feedback@devbrush.com>
-
+# Maintainer: linkfrg
 pkgname=ignis
-pkgver=1.0.3.1
+pkgver=0.1
 pkgrel=1
-pkgdesc='A Console Based Static Website Building Program'
-arch=('any')
-url='http://devbrush.com/project/ignis'
-license=('BSD')
-depends=('python>=3.0')
-source=("http://devbrush.com/files/${pkgname}${pkgver}.tar.gz")
-sha512sums=('6a13fcd382d20126b61b1723183798d19ceaab31e7eda28f70b8a3b45cc86dc19b27ec385c8845d4c4bda537fb5ee73e7ff8a3111a1d25dda051a90455dce08f')
+pkgdesc="Full-featured Python framework for building desktop shells using GTK4."
+arch=('x86_64')
+url="https://github.com/linkfrg/ignis"
+license=('GPL-3.0-only')
+makedepends=('gobject-introspection' 'meson')
+depends=('python' 'glib2' 'glib2-devel' 'glibc' 'gtk4' 'gtk4-layer-shell' 'libpulse' 'python-cairo' 'python-gobject')
+optdepends=('gst-plugin-pipewire: required for recorder service'
+			'gst-plugins-good: required for recorder service'
+			'gst-plugins-ugly: required for recorder service'			
+			'python-requests: required for mpris service'
+            'networkmanager: required for network service')
+            
+conflicts=('ignis-git')
+source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v${pkgver}/ignis-v${pkgver}.tar.gz")
+sha256sums=('8166bc6fb95b6cb9e8b2cdff02acaf9e8449ae3b614973f5dd200464b3dfed53')
 
-package() {
-    cd ${srcdir}/${pkgname}${pkgver}
-    python setup.py install --root=${pkgdir}/ --optimize=1
-    mkdir -p ${pkgdir}/etc/ignis/
-    cp -r "${srcdir}/${pkgname}${pkgver}/docs/example/" "${pkgdir}/etc/${pkgname}/"
-    install -Dm644 "${srcdir}/${pkgname}${pkgver}/docs/ignis.1.gz" "${pkgdir}/usr/share/man/man1/${pkgname}.1.gz"
-    install -Dm644 "${srcdir}/${pkgname}${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+build() {
+  cd $srcdir/$pkgname
+  arch-meson build --libdir "lib/$pkgname"
+  meson compile -C build
 }
 
+package() {
+  cd $srcdir/$pkgname
+  meson install -C build --destdir "$pkgdir"
+}
