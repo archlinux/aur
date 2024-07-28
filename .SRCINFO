@@ -1,10 +1,10 @@
 pkgbase = honggfuzz-git
 	pkgdesc = Security oriented, feedback-driven, evolutionary, easy-to-use fuzzer
-	pkgver = 2.6.r11.g4856852e
+	pkgver = 2.6.r33.gb4f72b42
 	pkgrel = 1
 	url = https://honggfuzz.dev
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	makedepends = git
 	depends = binutils
 	depends = libunwind
