@@ -21,12 +21,12 @@ sha256sums=('39f72ad2741659601410017d128758f37a43c90a7992f2e94baed8943f75b91c'
 
 prepare() {
     bsdtar -xf data.tar.xz
+
+    desktop-file-edit usr/share/applications/sourcegit.desktop \
+        --set-icon=sourcegit --set-key=Exec --set-value=sourcegit
 }
 
 package() {
-    desktop-file-edit usr/share/applications/sourcegit.desktop \
-        --set-icon=sourcegit --set-key=Exec --set-value=sourcegit
-
     install -d "$pkgdir/opt/$_name/"
     install -d "$pkgdir/usr/bin/"
 
