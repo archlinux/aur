@@ -2,7 +2,7 @@
 
 pkgname=noto-fonts-cjk-chws-patch
 pkgver=20230817
-pkgrel=3
+pkgrel=4
 pkgdesc="noto-cjk-chws 的标点部分"
 arch=("any")
 url="https://github.com/tjw123hh/noto-cjk-chws-patch"
@@ -26,18 +26,18 @@ package() {
   install -Dm644 *.ttc -t "$pkgdir"/usr/share/fonts/noto-cjk-patch
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
-sha256sums=('7963ade8519039e7f4bac78cf16b0f4b7f5cd37fe4e7940c92ec17d0271fb4a1'
-            '164502b713a6d3abcac07e12b361a5c76beded52bbe8af704aa801a780bda8fd'
-            '25d0d73a7e55308cc3ab73dce7d408ebb35f2e5f344dfb8450252deb8899efb8'
-            '96e72c2d2296c4e29aea292190bd8bc5c83afff0278992fed556767360c1afdf'
-            'faeb4c86c0c3e2c769815ad6b762a9025f16ca384af2fe35a519b8750e348b69'
-            '01076d4999423f0a24c65d9de7fc3b29060b207637f995107d52cbcb268b7230'
-            '2d65146710a8b96247de61db51400026fe87bdb42e6176276a1e8883ce93d1a8'
-            '16425caddc5d0c4883203307ba42c5c384dfc35009645da9962b1acb11c5231a'
-            'a5c67d272e84bfb8491b05868e7ea851f459ab1a282165019c1a21d07d669fca'
-            '3868468e45c38c95ca5ccefebeb29626ad8f01a2472c6f7349ba924aa6943aef'
-            'c15494f366207cb4d8f03ddad8ca1e2875e1515d5a045f3d10e72cc7862e770d'
-            '9794481c66695176821208af367f64f1837d55c88be144d39f0d654f200bb3e0'
-            '72aa8a45a3d21553eee54dea03f4d5edfa1a06d13e5c2153ba7094e31d88a2fb'
-            'ac733b6b15f8ce03c1e9044ee090afed98a75a9e3122d948459067278908e851'
+sha256sums=('b05462a21d4e07e0eec92a06fa499e672bdc9dc2ac0e57fbfbfd464acad36b8b'
+            '0567b622ecd266b08a48c8b9e7c78ae8b459441415dfa4c15c6d08cccfbf4fa6'
+            '0f55254f9e32e85db71f9ff5b4dbb807346aa04d8dd55dba1244538e7714d712'
+            '19610f9f4f5407d2713123d54dec492a66f98d582824d8dadb829ec5da2edd8a'
+            '19462c9ea17e3001ae50af2eab7a6e2cfb4734cde935dc9c2d0b746dd8ae4087'
+            '2baea31046ed401b0b7090834b50c910ef7911751a67210079d4802c1e8506ec'
+            '549282eb734d3e6f30c5a591826792825fdb30d063333932ba282252390aecab'
+            '8e9baacb0608b954a2c51067116764bfdb60964857b7cdf872ae26c2f8a74393'
+            '533433e91ef2dfe9d33ceee67981bbd390a22172cdc4c421d33a6061b8bc0aa7'
+            '549e05c687d979532be660b77f77ac693331b44102d2da421d04dc007722bc5f'
+            'd0cd3dd73fcf097c3d3b4995e83fc0a8686573ec25cfc6aef2430a8ce34cf9b9'
+            '9cbb14d35c9fb6ae0222c5ce25f1b15bc5c03e4e3e3d745868223aed4b9e45f3'
+            '84d2bffed19e0ed76d866153e595b798b0c835ed4980dd6cd7e0638e5363f74c'
+            'a95b12b106a471f0555999bbcd61c59d2a6ceee925457777412b424013ab69af'
             '6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2')
