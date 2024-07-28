@@ -43,7 +43,7 @@ package() {
 	install -v -m755 -D -t "${pkgdir}/usr/lib/systemd/system-sleep/" usr/lib/systemd/system-sleep/*
 
 	# Install firmware
-	install -v -m644 -D -t "${pkgdir}/usr/lib/firmware/" usr/lib/firmware/*
+	install -v -m644 -D -t "${pkgdir}/usr/lib/firmware/" usr/lib/firmware/*.bin
 
 	# Install firmware DSDT and EDID
 	install -v -m644 -D -t "${pkgdir}/usr/lib/firmware/dsdt/" usr/lib/firmware/dsdt/*
