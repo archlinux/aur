@@ -1,7 +1,7 @@
-# Maintainer: Agustin Ferrario 'py_crash' <agustin dot ferrario at hotmail dot com>
+# Contributor: Agustin Ferrario 'py_crash' <agustin dot ferrario at hotmail dot com>
 
 pkgname=guake-colors-solarized-git
-pkgver=16
+pkgver=20
 pkgrel=1
 pkgdesc="Precision colors for machines and people. Guake integration."
 arch=('any')
@@ -15,7 +15,7 @@ install=$pkgname.install
 source=("git+https://github.com/coolwanglu/${pkgname%-*}"
         "dir.patch")
 md5sums=('SKIP'
-         '1e0761637fe55ee8de1904440be3c1ec')
+         'ead7208cf0b7ee4a352b88f3f0b3417a')
 
 pkgver() {
   cd "${srcdir}"/${pkgname%-*}

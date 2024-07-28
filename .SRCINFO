@@ -1,6 +1,6 @@
 pkgbase = guake-colors-solarized-git
 	pkgdesc = Precision colors for machines and people. Guake integration.
-	pkgver = 16
+	pkgver = 20
 	pkgrel = 1
 	url = http://ethanschoonover.com/solarized
 	install = guake-colors-solarized-git.install
@@ -13,7 +13,6 @@ pkgbase = guake-colors-solarized-git
 	source = git+https://github.com/coolwanglu/guake-colors-solarized
 	source = dir.patch
 	md5sums = SKIP
-	md5sums = 1e0761637fe55ee8de1904440be3c1ec
+	md5sums = ead7208cf0b7ee4a352b88f3f0b3417a
 
 pkgname = guake-colors-solarized-git
-

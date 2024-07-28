@@ -11,7 +11,7 @@ index 5742e80..ad5a6a9 100755
 @@ -1,6 +1,6 @@
  #!/usr/bin/env bash
  default='solarized'
--dir=`dirname $0`
+-dir=$(dirname $0)
 +dir='/usr/share/guake/solarized-colors/'
  
  if [ -d $dir/colors/$1 ]; then
@@ -24,7 +24,7 @@ index e150376..7283c7b 100755
 @@ -1,6 +1,6 @@
  #!/usr/bin/env bash
  default='solarized'
--dir=`dirname $0`
+-dir=$(dirname $0)
 +dir='/usr/share/guake/solarized-colors/'
  
  if [ -d $dir/colors/$1 ]; then
