@@ -1,7 +1,7 @@
 pkgbase = circadian
 	pkgdesc = Linux auto-suspend/wake power management daemon
 	pkgver = 0.8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mrmekon/circadian
 	arch = x86_64
 	arch = aarch64
