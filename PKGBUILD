@@ -2,7 +2,7 @@
 pkgbase=python-czml3
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Python 3 library to write CZML"
 arch=('any')
@@ -22,7 +22,7 @@ checkdepends=('python-pytest'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #       "https://github.com/poliastro/czml3/raw/main/tests/simple.czml"
 #       "https://github.com/poliastro/czml3/raw/main/tests/smiley.png")
-md5sums=('4b31059b94ed1ef975452fc4b2999856')
+md5sums=('9819ff7c755c72543c7b099fdf8ecb0a')
 #        'SKIP'
 #        'SKIP')
 
