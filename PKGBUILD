@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=protonup-qt
 _app_id=net.davidotek.pupgui2
-pkgver=2.9.2
+pkgver=2.10.2
 pkgrel=1
 pkgdesc="Install and manage Proton-GE and Luxtorpeda for Steam and Wine-GE for Lutris"
 arch=('any')
@@ -14,17 +14,17 @@ depends=(
   'python-pyaml'
   'python-pyxdg'
   'python-requests'
-  'python-steam'
-  'python-vdf'
+  'python-steam-solstice'
+  'python-vdf-solstice'
   'python-zstandard'
   'qt6-tools'
 )
 makedepends=(
- 'python-build'
- 'python-installer'
- 'python-setuptools'
- 'python-wheel'
- )
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
 checkdepends=('appstream' 'desktop-file-utils')
 optdepends=(
   'dosbox: required for Boxtron'
@@ -43,7 +43,7 @@ optdepends=(
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/DavidoTek/ProtonUp-Qt/archive/refs/tags/v$pkgver.tar.gz"
         "${_app_id}.sh")
-sha256sums=('10c44639fd481a9ea3d25492b0119a2fbb18ec386a3ca9723c686547a49df222'
+sha256sums=('6f5cf2265777154bb03c1f5a488ae75487efbc7a5e673d8c1a64f68352d4f378'
             '732fd88026a801d64ffb85c98c1bc53536100524cced87ab86a112d83de07c1f')
 
 prepare() {
