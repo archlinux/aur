@@ -9,7 +9,7 @@
 
 pkgname=asterisk-lts-20
 _pkg=${pkgname//-lts-20/}
-pkgver=20.8.1
+pkgver=20.9.1
 pkgrel=1
 pkgdesc='A complete PBX solution - Long Term Support release 20'
 arch=(x86_64 i686 aarch64 armv7h)
@@ -218,7 +218,7 @@ package(){
 
 	chmod 0750 "$pkgdir"/{etc,run,var/{lib,log,spool}}/"${_pkg}"
 }
-sha256sums=('fa498b6224e8c262de6840a67e00e3747e178fcefd9fb2595885d402ca3248f5'
+sha256sums=('548cdb1e1d854bc466af5178a5ee1b51b6e52d07359a0b286bc9147a64c1adb1'
             '38a53911647fb2308482179cba605ebf12345df37eed23eb4ea67bf0bf041486'
             'b97dc10a262621c95e4b75e024834712efd58561267b59b9171c959ecd9f7164'
             '1b6b489d4f71015bfc56ce739d92df7e9abdb349aed6f5a47dd9c18d84546c1b'
