@@ -1,0 +1,5 @@
+[picopt]
+source = "github"
+github = "ajslater/picopt"
+use_latest_release = "true"
+prefix = "v"
