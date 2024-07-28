@@ -4,11 +4,12 @@
 
 _pkgname=server
 pkgname=etebase-server
-pkgver=0.14.0
+pkgver=0.14.2
 pkgrel=1
 pkgdesc="A self-hostable Etebase (EteSync 2.0) server"
 arch=(any)
 depends=(
+	'python'
 	'python-redis'
 	'python-aiofiles'
 	'python-django'
@@ -29,7 +30,7 @@ optdepends=(
 	'python-ldap: LDAP user verification'
 )
 url="https://github.com/etesync/$_pkgname"
-license=('AGPL3')
+license=('AGPL-3.0-only')
 backup=("etc/$pkgname/$pkgname.ini")
 options=(!emptydirs)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
@@ -39,7 +40,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         $pkgname.nginx.conf
         $pkgname.ini.patch
         $pkgname)
-sha256sums=('bafc93ccbc9374dc3cda621eee877a2b4102f5d32475c62d3b32fb48e9cb88b3'
+sha256sums=('270c10dd4444375a57e10f413ac396966d8c3f4877086725e8d8fb251dbb508c'
             'd42e2518975363aed2900fe4e03eefade98ed9b6f8b8140fd1eddc081d4081e7'
             'f8b9bdbfdd90365a6b463ab2af4320eb2fddb527e6c33d0f02f4f8820864eb43'
             '8ecd76be056ea582b01f6230de9a74b9c4ce4a637f2b0a27edc5b6f7848b5fba'
