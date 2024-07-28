@@ -3,7 +3,7 @@
 pkgbase=ch343ser-git
 pkgname=(ch343ser-dkms-git libch343ser-git)
 pkgver=r42.05b4e1f
-pkgrel=7
+pkgrel=8
 pkgdesc="USB serial driver for ch342/ch343/ch344/ch347/ch347f/ch9101/ch9102/ch9103/ch9104, etc."
 arch=('any')
 url="https://github.com/WCHSoftGroup/ch343ser_linux"
@@ -43,42 +43,41 @@ package_ch343ser-dkms-git() {
 obj-m := ch343.o
 
 KVER ?= \$(shell uname -r)
-KDIR ?= /lib/modules/$(KVER)/build
+KDIR ?= /lib/modules/\$(KVER)/build
 VERSION ?= \$(shell cat VERSION)
 
 default:
-\$(MAKE) -C \$(KDIR) M=\$(CURDIR) modules
+	\$(MAKE) -C \$(KDIR) M=\$(CURDIR) modules
 
 clean:
-\$(MAKE) -C \$(KDIR) M=\$(CURDIR) clean
+	\$(MAKE) -C \$(KDIR) M=\$(CURDIR) clean
 
 install:
-\$(MAKE) -C \$(KDIR) M=\$(CURDIR) modules_install
+	\$(MAKE) -C \$(KDIR) M=\$(CURDIR) modules_install
 
-load:
--/sbin/rmmod ch343
-/sbin/insmod ch343.ko
+load: -/sbin/rmmod ch343
+	/sbin/insmod ch343.ko
 
 dkms.conf: dkms.conf.in
-sed "s/@@VERSION@@/\$(VERSION)/" $^ > \$@
+	sed "s/@@VERSION@@/\$(VERSION)/" $^ > \$@
 
 dkms-add: dkms.conf
-/usr/sbin/dkms add \$(CURDIR)
+	/usr/sbin/dkms add \$(CURDIR)
 
 dkms-build: dkms.conf
-/usr/sbin/dkms build ch343/\$(VERSION)
+	/usr/sbin/dkms build ch343/\$(VERSION)
 
 dkms-install: dkms.conf
-/usr/sbin/dkms install ch343/\$(VERSION)
+	/usr/sbin/dkms install ch343/\$(VERSION)
 
 dkms-remove: dkms.conf
-/usr/sbin/dkms remove ch343/\$(VERSION) --all
+	/usr/sbin/dkms remove ch343/\$(VERSION) --all
 
 modprobe-install:
-modprobe ch343
+	modprobe ch343
 
 modprobe-remove:
-modprobe -r ch343
+	modprobe -r ch343
 
 dev: modprobe-remove dkms-remove dkms-add dkms-builddkms-install modprobe-install
 EOF
@@ -92,7 +91,7 @@ PACKAGE_NAME="ch343ser"
 PACKAGE_VERSION="#MODULE_VERSION#"
 AUTOINSTALL="yes"
 
-MAKE[0]="make --uname_r=\$kernelver"
+MAKE[0]="make"
 CLEAN="make clean"
 
 BUILT_MODULE_NAME[0]="ch343"
