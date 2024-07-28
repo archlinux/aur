@@ -13,8 +13,6 @@ pkgbase = openfireapp
 	depends = qt5-svg
 	depends = icu
 	source = https://github.com/TeamOpenFIRE/OpenFIRE-App/archive/refs/tags/v2.1.tar.gz
-	source = org.TeamOpenFIRE.OpenFIREapp.desktop
-	md5sums = becebad8451f9eaf2e1169fa4d03f1b0
-	md5sums = d8b6cd0884c57ff3d5df1142ec9ca30b
+	md5sums = b2c0a2ccb15a59823b1540943ee0226e
 
 pkgname = openfireapp
