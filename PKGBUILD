@@ -8,12 +8,12 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-glib2
-pkgver=2.80.3
+pkgver=2.80.4
 pkgrel=1
 arch=('any')
 pkgdesc="Low level core library (Android ${_android_arch})"
 url="https://wiki.gnome.org/Projects/GLib"
-license=("LGPL2.1")
+license=('LGPL2.1')
 groups=('android-glib2')
 depends=("android-${_android_arch}-libffi"
          "android-${_android_arch}-pcre2"
@@ -22,31 +22,22 @@ depends=("android-${_android_arch}-libffi"
 makedepends=('android-meson')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://download.gnome.org/sources/glib/${pkgver%.*}/glib-${pkgver}.tar.xz")
-md5sums=('099a2203b256115985b85312f96a7190')
+md5sums=('4334211338220a165350d1c4a1597b0e')
 
 build() {
     cd "${srcdir}/glib-${pkgver}"
     source android-env ${_android_arch}
 
-    android-${_android_arch}-meson build-static \
-        --default-library static \
+    android-${_android_arch}-meson build \
         -Dtests=false
-    ninja -C build-static
-
-    android-${_android_arch}-meson build-shared \
-        --default-library shared \
-        -Dtests=false \
-        -Dman-pages=false
-    ninja -C build-shared
+    ninja -C build
 }
 
 package() {
     cd "${srcdir}/glib-${pkgver}"
     source android-env ${_android_arch}
 
-    DESTDIR="${pkgdir}" ninja -C build-static install
-    DESTDIR="${pkgdir}" ninja -C build-shared install
-
+    DESTDIR="${pkgdir}" ninja -C build install
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
 
