@@ -1,0 +1,46 @@
+From 3993940e17682f62492affeb39a0bff39e3eecb5 Mon Sep 17 00:00:00 2001
+From: Michael Adler <therisen06@gmail.com>
+Date: Thu, 25 Jul 2024 22:38:08 +0200
+Subject: [PATCH river-ultitile] build: update to zig 0.13
+
+---
+ build.zig     | 4 ++--
+ build.zig.zon | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/build.zig b/build.zig
+index b703c40..df09eb4 100644
+--- a/build.zig
++++ b/build.zig
+@@ -74,11 +74,11 @@ pub fn build(b: *std.Build) !void {
+     scanner.generate("river_layout_manager_v3", 2);
+ 
+     const wayland = b.createModule(.{ .root_source_file = scanner.result });
+-    const flags = b.createModule(.{ .root_source_file = .{ .path = "common/flags.zig" } });
++    const flags = b.createModule(.{ .root_source_file = .{ .cwd_relative = "common/flags.zig" } });
+ 
+     const exe = b.addExecutable(.{
+         .name = "river-ultitile",
+-        .root_source_file = .{ .path = "src/main.zig" },
++        .root_source_file = .{ .cwd_relative = "src/main.zig" },
+         .target = target,
+         .optimize = optimize,
+     });
+diff --git a/build.zig.zon b/build.zig.zon
+index efc24ac..08bdc4d 100644
+--- a/build.zig.zon
++++ b/build.zig.zon
+@@ -3,8 +3,8 @@
+     .version = "0.1.0",
+     .dependencies = .{
+         .@"zig-wayland" = .{
+-            .url = "https://codeberg.org/ifreund/zig-wayland/archive/v0.1.0.tar.gz",
+-            .hash = "1220b0f8f822c1625af7aae4cb3ab2c4ec1a4c0e99ef32867b2a8d88bb070b3e7f6d",
++            .url = "https://codeberg.org/ifreund/zig-wayland/archive/v0.2.0.tar.gz",
++            .hash = "1220687c8c47a48ba285d26a05600f8700d37fc637e223ced3aa8324f3650bf52242",
+         },
+     },
+     .paths = .{""},
+-- 
+2.45.2
+

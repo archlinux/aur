@@ -1,0 +1,22 @@
+pkgbase = river-ultitile-git
+	pkgdesc = A layout generator for river
+	pkgver = v1.1.1.r1.g2ba8531
+	pkgrel = 1
+	url = https://git.sr.ht/~midgard/river-ultitile
+	arch = x86_64
+	arch = aarch64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	makedepends = pandoc
+	depends = zig
+	depends = wayland
+	depends = wayland-protocols
+	provides = river-ultitile
+	conflicts = river-ultitile
+	source = git+https://git.sr.ht/~midgard/river-ultitile
+	source = 0001-build-update-to-zig-0.13.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = river-ultitile-git
