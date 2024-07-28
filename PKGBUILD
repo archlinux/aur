@@ -5,12 +5,12 @@
 
 pkgname=applecommander
 _pkgname=AppleCommander
-pkgver=1.8.0
-pkgrel=2
+pkgver=1.9.0
+pkgrel=1
 pkgdesc="Tool that manipulates Apple ][ disk images"
-arch=(x86_64)
+arch=(any)
 url="https://applecommander.github.io/"
-license=('GPL2')
+license=(GPL-2.0-only)
 depends=("archlinux-java-run>=7" bash "java-runtime>=11")
 optdepends=('gtk3: Graphical User Interface')
 makedepends=(gradle "java-environment>=11")
@@ -19,11 +19,11 @@ source=(https://github.com/${_pkgname}/${_pkgname}/archive/refs/tags/${pkgver}.t
         applecommander-acx.sh
         applecommander-gui.sh
         0001-Update-to-Gradle-8.1.1.patch)
-sha256sums=('66def97b3f6c3b6caf1e4a30580f81b2d44ec78781542a4c170b4cecf0e187e6'
+sha256sums=('9047e79af4de04f65e958ee6db46ca6134ae29a30857525214a15f68362a0640'
             'd7b1ddd2d4bf0eb5a1fd595352cd36b645f1342e1da427a01579bef779b29714'
             '35bfb9831c1f0411a2ea60b7f33c671dda4accbb413ac94ae8320450d9325a42'
             '034f41f16c0200e398c3a019359c6c30978eb857fec4e5eb97948f962e79e0dc'
-            '8c1301dcdca6d2857e8ce4615aa80e21f9590de96716a8a6be168bdce7dd1da6')
+            '4d1aa733d4a3fc06e19b36cbd2b22ee6180218fbeb0ec357a7f13bc2318542f2')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
