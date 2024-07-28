@@ -11,8 +11,7 @@ pkgbase = jacknotifier-git
 	depends = libnotify
 	depends = jacklistener-git
 	provides = jacknotifier
-	source = jacknotifier::git://github.com/gentoo-root/jacknotifier.git
-	md5sums = SKIP
+	source = jacknotifier::git+https://github.com/gentoo-root/jacknotifier.git
+	sha256sums = SKIP
 
 pkgname = jacknotifier-git
-

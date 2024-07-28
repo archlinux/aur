@@ -10,8 +10,7 @@ license=('GPL3')
 provides=('jacknotifier')
 depends=('dbus' 'libnotify' 'jacklistener-git')
 makedepends=('git')
-source=('jacknotifier::git://github.com/gentoo-root/jacknotifier.git')
-
+source=('jacknotifier::git+https://github.com/gentoo-root/jacknotifier.git')
 
 build() {
   cd jacknotifier
@@ -28,4 +27,4 @@ pkgver() {
   echo $(git rev-list --count master).$(git rev-parse --short master)
 }
 
-md5sums=('SKIP')
+sha256sums=('SKIP')
