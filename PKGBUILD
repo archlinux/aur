@@ -15,9 +15,10 @@ _build_clblas=false # 2024-04-17: Fails to link with
                     # and more errors.
 _build_vulkan=true
 
-# Those variables skip CUDA and ROCm build, introduced in https://github.com/ollama/ollama/pull/4462/files.
+# Those variables skip CUDA, ROCm and ONEAPI build.
 export OLLAMA_SKIP_CUDA_GENERATE=true
 export OLLAMA_SKIP_ROCM_GENERATE=true
+export OLLAMA_SKIP_ONEAPI_GENERATE=true
 export ONEAPI_ROOT='/tmp/does_not_exist/this/path/should/not/exist/to/force-off/oneapi/build'
 
 _name="ollama"
@@ -41,7 +42,7 @@ if "${_build_vulkan}"; then
 fi
 pkgdesc='Create, run and share large language models (LLMs). Package(s) without dedicated GPU offloading (no CUDA, no ROCm, no SYCL).'
 pkgver=0.2.8+5.r3186.20240722.c7808926
-pkgrel=1
+pkgrel=2
 arch=(
   'armv7h'
   'aarch64'
