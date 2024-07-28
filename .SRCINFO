@@ -1,12 +1,10 @@
 pkgbase = python-mpi4py-intel
 	pkgdesc = Python bindings for the Message Passing Interface compiled with intel mpi
 	pkgver = 4.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mpi4py/mpi4py
 	arch = x86_64
 	license = BSD-2-Clause
-	checkdepends = python-pytest
-	checkdepends = python-numba
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
