@@ -1,6 +1,6 @@
 pkgbase = unciv-bin
 	pkgdesc = Open-source remake of Civilization V
-	pkgver = 4.12.14_msi_test_6
+	pkgver = 4.12.14_msi_test_7
 	pkgrel = 0
 	url = https://github.com/yairm210/Unciv
 	arch = any
@@ -10,12 +10,12 @@ pkgbase = unciv-bin
 	depends = xorg-xrandr
 	provides = unciv
 	conflicts = unciv
-	noextract = Unciv-4.12.14-msi-test-6.jar
-	source = Unciv-4.12.14-msi-test-6.jar::https://github.com/yairm210/Unciv/releases/download/4.12.14-msi-test-6/Unciv.jar
-	source = Unciv-4.12.14-msi-test-6.png::https://raw.githubusercontent.com/yairm210/Unciv/4.12.14-msi-test-6/extraImages/Icons/Unciv%20icon%20v5.png
-	source = Unciv-4.12.14-msi-test-6.zip::https://github.com/yairm210/Unciv/releases/download/4.12.14-msi-test-6/linuxFilesForJar.zip
-	md5sums = 63f94d74716c0f12f6202fbcbfbbf21c
+	noextract = Unciv-4.12.14-msi-test-7.jar
+	source = Unciv-4.12.14-msi-test-7.jar::https://github.com/yairm210/Unciv/releases/download/4.12.14-msi-test-7/Unciv.jar
+	source = Unciv-4.12.14-msi-test-7.png::https://raw.githubusercontent.com/yairm210/Unciv/4.12.14-msi-test-7/extraImages/Icons/Unciv%20icon%20v5.png
+	source = Unciv-4.12.14-msi-test-7.zip::https://github.com/yairm210/Unciv/releases/download/4.12.14-msi-test-7/linuxFilesForJar.zip
+	md5sums = c20763e825b032dcad0134a81a61c2d3
 	md5sums = c3f79bbc7e80620b3cdc4f90f21f4d68
-	md5sums = 280088589c5b5fdbf942974e6bc45dde
+	md5sums = b7113dae1faba9f72c8a8c521ae95e61
 
 pkgname = unciv-bin
