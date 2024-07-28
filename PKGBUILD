@@ -2,7 +2,7 @@
 
 _pkgname=nsncd-codyps
 pkgname=nsncd-codyps-git
-pkgver=v1.4.2.codyps.1.r4.gb74b6b8
+pkgver=v1.4.2.codyps.1.r5.gb01247c
 pkgrel=1
 pkgdesc='nscd-compatible daemon that proxies lookups, without caching.'
 arch=('x86_64')
