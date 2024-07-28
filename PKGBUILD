@@ -5,9 +5,9 @@ _suffix=""
 pkgname=(
 		"${pkgbase}${_suffix}" "${pkgbase}-headers${_suffix}"
 )
-_rev=6f0a35f90bc50aba828b41599209bee974d1879f
-pkgver=6.10.pf1
-pkgrel=2
+_rev=89a429668c8e13983a1ac6d2434171a9daf4016f
+pkgver=6.10.pf2
+pkgrel=1
 pkgdesc="pf-kernel"
 arch=(x86_64)
 url=https://pfkernel.natalenko.name
