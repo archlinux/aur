@@ -1,9 +1,10 @@
 pkgbase = android-x86-64-libassuan
 	pkgdesc = IPC library used by some GnuPG related software (Android x86-64)
-	pkgver = 2.5.7
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = http://www.gnupg.org/related_software/libassuan/
 	arch = any
+	groups = android-libassuan
 	license = GPL
 	makedepends = android-configure
 	depends = android-x86-64-libgpg-error
@@ -11,7 +12,7 @@ pkgbase = android-x86-64-libassuan
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://gnupg.org/ftp/gcrypt/libassuan/libassuan-2.5.7.tar.bz2
-	md5sums = fe8310b1a5bcaa32d70af476fa2b942a
+	source = https://gnupg.org/ftp/gcrypt/libassuan/libassuan-3.0.0.tar.bz2
+	md5sums = b7f42a82a4864fb275c290a155cd1b8a
 
 pkgname = android-x86-64-libassuan
