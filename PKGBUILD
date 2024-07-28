@@ -1,7 +1,7 @@
 # Maintainer: Your Name <martinp6282@gmail.com>
 pkgname=sysi
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple script to display system information"
 arch=('any')
 url="https://github.com/stuffbymax/sysi"
