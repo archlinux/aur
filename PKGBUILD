@@ -2,7 +2,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=lib32-libvpx
-pkgver=1.14.0
+pkgver=1.14.1
 pkgrel=1
 pkgdesc='VP8 and VP9 codec'
 arch=(x86_64)
@@ -17,9 +17,9 @@ makedepends=(
   nasm
 )
 provides=(libvpx.so)
-_tag=602e2e8979d111b02c959470da5322797dd96a19
+_tag=12f3a2ac603e8f10742105519e0cd03c3b8f71dd
 source=(git+https://chromium.googlesource.com/webm/libvpx#tag=${_tag})
-b2sums=(SKIP)
+b2sums=('2ee22fba5822c0f3667c0c74de799536724ce88694b31e0493ce10c6f9a11c6ac563e39f5dcaf9fb4378346276610008dcbfc47f9407411b7c35ba4c71fb5f66')
 
 pkgver() {
   cd libvpx
