@@ -12,7 +12,6 @@ license=('MIT')
 depends=()
 options=('!lto')
 makedepends=('git' 'cargo' 'binutils')
-provides=(websum)
 source=("git+$url")
 sha256sums=('SKIP')
 
