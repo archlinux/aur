@@ -1,14 +1,3 @@
---- a/libcurl.pc.in
-+++ b/libcurl.pc.in
-@@ -36,6 +36,8 @@
- URL: https://curl.se/
- Description: Library to transfer files with ftp, http, etc.
- Version: @CURLVERSION@
-+Requires.private: libidn2 libbrotlidec
- Libs: -L${libdir} -lcurl @LIBCURL_NO_SHARED@
- Libs.private: @LIBCURL_LIBS@
- Cflags: -I${includedir} @CPPFLAG_CURL_STATICLIB@
-+Cflags.private: -DCURL_STATICLIB
 --- a/configure.ac
 +++ b/configure.ac
 @@ -1914,7 +1914,7 @@
@@ -19,5 +8,4 @@
 +  LIBS="-ladvapi32 -lcrypt32 -lbcrypt $LIBS"
  fi
  
- case "x$OPENSSL_ENABLED$GNUTLS_ENABLED$NSS_ENABLED$MBEDTLS_ENABLED$WOLFSSL_ENABLED$SCHANNEL_ENABLED$SECURETRANSPORT_ENABLED$BEARSSL_ENABLED$AMISSL_ENABLED$RUSTLS_ENABLED"
-
+ dnl link bcrypt for BCryptGenRandom() (used when building for Vista or newer)
