@@ -1,7 +1,8 @@
 # Maintainer: Ahmet Arda Kavakcı <ahmetardakavakci@gmail.com>
 
 pkgname=websum-git
-pkgver=0.2.1
+_reponame=websum
+pkgver=r9.90f3e7e
 pkgrel=1
 pkgdesc="Next-gen integrity checker written in Rust"
 arch=(x86_64)
@@ -14,12 +15,17 @@ provides=(websum)
 source=("git+$url")
 sha256sums=('SKIP')
 
+pkgver() {
+    cd "$srcdir/$_reponame"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 build() {
-	cd $srcdir/websum
+    cd "$srcdir/$_reponame"
 	cargo build --release --target-dir target
 }
 
 package() {
-	cd $srcdir/websum
+    cd "$srcdir/$_reponame"
 	install -Dm755 target/release/websum "${pkgdir}/usr/bin/websum"
 }
