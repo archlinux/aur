@@ -1,0 +1,16 @@
+pkgbase = scrapscript-git
+	pkgdesc = A functional, content-addressable programming language
+	pkgver = r377.03e0ac2
+	pkgrel = 1
+	url = https://github.com/tekknolagi/scrapscript
+	arch = any
+	license = MIT
+	depends = python
+	depends = bash
+	optdepends = cosmocc: compiling scrap elf binaries
+	source = git+https://github.com/tekknolagi/scrapscript.git
+	source = scrap
+	sha256sums = SKIP
+	sha256sums = 31d8d14556c3af454bb5032585bb57bf2ac1cd18d86536abd7a4ded68e6f0094
+
+pkgname = scrapscript-git
