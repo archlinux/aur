@@ -1,6 +1,6 @@
 # Maintainer: Jacob Lucas <jtljac2 at gmail dot com>
 pkgname="rimsort-bin"
-pkgver="v1.0.8"
+pkgver="v1.0.9"
 pkgrel="1"
 pkgdesc="A Mod Manager For Rimworld game"
 arch=("x86_64")
@@ -9,7 +9,7 @@ license=("GPL3")
 source=("$pkgname-${pkgver//_/-}.zip::https://github.com/oceancabbage/RimSort/releases/download/${pkgver}/RimSort-${pkgver}-Ubuntu-24.04_x86_64.zip"
         "RimSort.desktop"
         "launch-script.sh")
-sha512sums=("d0bd57c47f095c75e02c3113ba1535f2f7604bc39204fa24c865e0f72873ff1ab3834618047228946462be5968f2c06cd81926be4e884c2b4320e1a46316c8ca"
+sha512sums=("3cccb0ed234f93277078282880973ff134a5b90fb1e1f3a7aa0c0555f984a07314e3af3d4af2331ca587efd68d30eb9141dd27341d31b4f7d73808bcb0e852ea"
             "43aa5e5d28ec832f3a54434d66e4724c9a8fdde5098b2910911faf62a80823896a9b6d455dbe749150adf11e44126f6851bcd4cd937a3e00bb9b7f95699ca96e"
             "b737900aa332b202ae7cf48bd2f345b8e2af7fecaf0bd606768d26d8c632843b325f173f9c39879ef8ff0e1dafebd0bbdcb28d4be6d35c3532fba807b0ac86fd")
 
