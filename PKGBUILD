@@ -1,43 +1,55 @@
 # Maintainer: Jiuyang Liu <liu@jiuyang.me>
 
-_pkgname=nsncd
-pkgname=nsncd-git
-pkgver=r89.82dd540
+_pkgname=nsncd-codyps
+pkgname=nsncd-codyps-git
+pkgver=v1.4.2.codyps.1.r4.gb74b6b8
 pkgrel=1
 pkgdesc='nscd-compatible daemon that proxies lookups, without caching.'
 arch=('x86_64')
-url='https://github.com/twosigma/nsncd'
+url='https://github.com/codyps/nsncd'
 license=('MIT')
+conflicts=('nsncd' 'nsncd-git')
 makedepends=('git' 'cargo')
-options=('!lto')
+depends=(glibc gcc-libs)
 source=("$_pkgname::git+$url.git")
 b2sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd "$_pkgname"
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd "$_pkgname"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features
+}
+
+check() {
+  cd "$_pkgname"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  #cargo test --frozen --all-features
 }
 
 package() {
   cd "$_pkgname"
 
   # binary
-  install -vDm755 -t "$pkgdir/usr/bin" "target/release/$_pkgname"
+  install -vDm755 -T "target/release/nsncd" "$pkgdir/usr/lib/nsncd"
 
   # license
-  install -vDm644 -t "$pkgdir/usr/share/licenses/$_pkgname" LICENSE
+  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 
   # systemd
-  install -vDm644 $_pkgname.service "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
-  sed -i "s:^ExecStart.*:ExecStart=/usr/bin/$_pkgname:" "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
+  install -vDm644 -T "nsncd.service" "$pkgdir/usr/lib/systemd/system/nsncd.service"
+  install -vDm644 -T "nsncd.socket" "$pkgdir/usr/lib/systemd/system/nsncd.socket"
 }
