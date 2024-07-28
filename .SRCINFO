@@ -1,6 +1,6 @@
 pkgbase = go-size-analyzer-bin
 	pkgdesc = A tool for analyzing the size of compiled Go binaries
-	pkgver = 1.5.4
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://gsa.zxilly.dev
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = go-size-analyzer-bin
 	provides = gsa
 	conflicts = go-size-analyzer
 	conflicts = gsa
-	source_x86_64 = go-size-analyzer-1.5.4-x86_64.tar.gz::https://github.com/Zxilly/go-size-analyzer/releases/download/v1.5.4/go-size-analyzer_linux_amd64.tar.gz
-	sha256sums_x86_64 = 88bf86c16ce02b5d012567cebd4e5112a27f619e57a92683d190883461cab640
-	source_aarch64 = go-size-analyzer-1.5.4-aarch64.tar.gz::https://github.com/Zxilly/go-size-analyzer/releases/download/v1.5.4/go-size-analyzer_linux_arm64.tar.gz
-	sha256sums_aarch64 = 7ed6de468c861637914a8bf6b436a98462bc4a130ef67a7fecfcfc7fa2a2f8ff
+	source_x86_64 = go-size-analyzer-1.6.0-x86_64.tar.gz::https://github.com/Zxilly/go-size-analyzer/releases/download/v1.6.0/go-size-analyzer_linux_amd64.tar.gz
+	sha256sums_x86_64 = a1693e35751831dcfe86f4b59711de1c76a5f234afae9b2a28cc8ab25493422d
+	source_aarch64 = go-size-analyzer-1.6.0-aarch64.tar.gz::https://github.com/Zxilly/go-size-analyzer/releases/download/v1.6.0/go-size-analyzer_linux_arm64.tar.gz
+	sha256sums_aarch64 = 754bba3fa265de26540cb860edce20eb0a7494eccab4bbffae9f1a8fa02510ef
 
 pkgname = go-size-analyzer-bin
