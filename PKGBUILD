@@ -1,6 +1,6 @@
 # Maintainer: El Bachir <bachiralfa@gmail.com>
 pkgname=gt
-pkgver=0.3.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A tree-like command-line tool written in Go"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go>=1.22')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/elbachir-one/gt/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('467efe7c6087805b6b818f0623f4edbd02a46e4f1c2b359993fb0efbc51c5e0a') 
+sha256sums=('280d48d80b01ec23757ae032a74585d73433b41ad1601179e86a1e08699056eb') 
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
