@@ -14,9 +14,6 @@ sha256sums=('SKIP')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
-  
-  # Initialize and tidy the go module
-  go mod init "${url#https://}"
   go mod tidy
 
 }
