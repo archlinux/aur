@@ -1,6 +1,6 @@
 pkgbase = python-jaraco.vcs
 	pkgdesc = Facilities for working with VCS repositories
-	pkgver = 2.2.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/jaraco/jaraco.vcs
 	arch = any
@@ -22,7 +22,8 @@ pkgbase = python-jaraco.vcs
 	depends = python-jaraco.versioning
 	depends = python-more-itertools
 	depends = python-packaging
-	source = jaraco.vcs-2.2.0.tar.gz::https://github.com/jaraco/jaraco.vcs/archive/refs/tags/v2.2.0.tar.gz
-	sha256sums = 73692028fd00dbe7366ee4cc7bd1942a5c6c18d8a54b67230c3fd6a8fd1938b1
+	depends = python-tempora
+	source = jaraco.vcs-2.3.0.tar.gz::https://github.com/jaraco/jaraco.vcs/archive/refs/tags/v2.3.0.tar.gz
+	sha256sums = 63d31b70b860cbc46bc0691d15185e065e913171152074b6a661f6002369febd
 
 pkgname = python-jaraco.vcs
