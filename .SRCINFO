@@ -13,7 +13,7 @@ pkgbase = virtme-ng-git
 	depends = python-requests
 	depends = python-setuptools
 	depends = qemu>=1.6
-	optdepends = busybox: for inclusion of busybox
+	optdepends = busybox: BusyBox support
 	conflicts = virtme-git
 	conflicts = virtme-ng
 	source = git+https://github.com/arighi/virtme-ng.git
