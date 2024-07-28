@@ -5,6 +5,7 @@ _reponame=keym
 pkgver=r40.67a6d39
 pkgrel=1
 pkgdesc="C tool to control mouse with keyboard for X11 "
+provides=('keym')
 arch=(x86_64)
 url="https://github.com/cwkx/keym"
 license=('MIT')

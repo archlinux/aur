@@ -9,6 +9,7 @@ pkgbase = keym-git
 	makedepends = git
 	depends = libx11
 	depends = libxtst
+	provides = keym
 	source = git+https://github.com/cwkx/keym
 	sha256sums = SKIP
 
