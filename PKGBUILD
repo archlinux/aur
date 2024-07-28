@@ -22,17 +22,20 @@ sha256sums=('3c7afc5349b5f2f1296f1c7bf24f055f97c08931f3877c2fd6e126c6cbebfdf2')
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
   mkdir -p "build" "completions"
+  go mod download
+  go mod tidy
 }
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export LDFLAGS="${LDFLAGS:-} \
-                  -X github.com/deta/space/cmd/shared.SpaceVersion=DEV"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o "build/${_binname}" .
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build -v -o "build/${_binname}" -ldflags "\
+    -X github.com/deta/space/cmd/shared.SpaceVersion=DEV" \
+    .
 
   for _sh in bash fish zsh powershell; do
     ./"build/${_binname}" completion "${_sh}" > "completions/${_binname}.${_sh}"
