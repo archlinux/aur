@@ -2,7 +2,7 @@
 
 _pkgname=swei-spring
 pkgname=ttf-${_pkgname}-git
-pkgver=1.065.r6.6668e35
+pkgver=1.068.r1.365dde9
 pkgrel=1
 pkgdesc="Swei Spring-derived from Noto Serif CJK font family with a more concise & modern look."
 arch=('any')
