@@ -6,7 +6,7 @@
 pkgname=ddcci-driver-linux-dkms-git
 _pkgname=${pkgname%-git}
 _reponame=${_pkgname%-dkms}
-pkgver=v0.4.4.r2.g3eb20df
+pkgver=0.4.5.r0.ga199701
 pkgrel=1
 pkgdesc="A pair of Linux kernel drivers for DDC/CI monitors (DKMS) - git version"
 arch=('i686' 'x86_64' 'aarch64')
@@ -19,7 +19,7 @@ b2sums=('SKIP')
 
 pkgver() {
   cd "$_reponame"
-  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^v//'
 }
 
 package() {

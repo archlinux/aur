@@ -1,6 +1,6 @@
 pkgbase = ddcci-driver-linux-dkms-git
 	pkgdesc = A pair of Linux kernel drivers for DDC/CI monitors (DKMS) - git version
-	pkgver = v0.4.4.r2.g3eb20df
+	pkgver = 0.4.5.r0.ga199701
 	pkgrel = 1
 	url = https://gitlab.com/ddcci-driver-linux/ddcci-driver-linux/
 	arch = i686
