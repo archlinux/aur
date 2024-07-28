@@ -1,4 +1,5 @@
-# Maintainer: Nep_Nep <nepnep91 at child dot pizza>
+# Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
+# Contributor: Nep_Nep <nepnep91 at child dot pizza>
 
 pkgname=simplex-desktop-bin
 pkgver=5.8.2
