@@ -8,6 +8,7 @@ _pkgname=${pkgname%-git}
 _reponame=${_pkgname%-dkms}
 pkgver=0.4.5.r0.ga199701
 pkgrel=1
+epoch=1
 pkgdesc="A pair of Linux kernel drivers for DDC/CI monitors (DKMS) - git version"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://gitlab.com/ddcci-driver-linux/ddcci-driver-linux/"
