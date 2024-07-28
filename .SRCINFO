@@ -1,6 +1,6 @@
 pkgbase = buildbox-common
 	pkgdesc = Shared protocol-buffer definitions and various helper functions
-	pkgver = 1.2.10
+	pkgver = 1.2.11
 	pkgrel = 1
 	url = https://buildgrid.build
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = buildbox-common
 	replaces = buildbox-casd
 	replaces = buildbox-fuse
 	replaces = buildbox-run-bubblewrap
-	source = git+https://gitlab.com/BuildGrid/buildbox/buildbox-common#tag=1.2.10&commit=2f917a54d1fba04e27c4afce76bf893e7653cd0b
+	source = git+https://gitlab.com/BuildGrid/buildbox/buildbox-common#tag=1.2.11&commit=40eaacd9863aefde23955e23adc3b61aa01fe2d7
 	sha256sums = SKIP
 
 pkgname = buildbox-common
