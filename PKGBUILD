@@ -8,7 +8,7 @@ arch=(x86_64)
 url="https://github.com/cwkx/keym"
 license=('MIT')
 depends=('libx11' 'libxtst')
-makedepends=(gcc)
+makedepends=('gcc' 'git')
 source=("git+$url")
 sha256sums=('SKIP')
 
