@@ -1,0 +1,17 @@
+[Unit]
+Description=Daemon for garage
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=garage
+Group=garage
+Environment='RUST_LOG=garage=info' 'RUST_BACKTRACE=1'
+ExecStart=/usr/bin/garage -c /etc/garage.toml server
+Restart=on-failure
+RestartSec=20s
+StartLimitInterval=30min
+StartLimitBurst=30
+
+[Install]
+WantedBy=multi-user.target
