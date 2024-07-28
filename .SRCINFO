@@ -1,6 +1,6 @@
 pkgbase = unciv-bin
 	pkgdesc = Open-source remake of Civilization V
-	pkgver = 4.12.14
+	pkgver = 4.12.14_show_github_json_parse_error_text
 	pkgrel = 0
 	url = https://github.com/yairm210/Unciv
 	arch = any
@@ -10,12 +10,12 @@ pkgbase = unciv-bin
 	depends = xorg-xrandr
 	provides = unciv
 	conflicts = unciv
-	noextract = Unciv-4.12.14.jar
-	source = Unciv-4.12.14.jar::https://github.com/yairm210/Unciv/releases/download/4.12.14/Unciv.jar
-	source = Unciv-4.12.14.png::https://raw.githubusercontent.com/yairm210/Unciv/4.12.14/extraImages/Icons/Unciv%20icon%20v5.png
-	source = Unciv-4.12.14.zip::https://github.com/yairm210/Unciv/releases/download/4.12.14/linuxFilesForJar.zip
-	md5sums = fd33b42aa4e8965a7feeab8cad83520c
+	noextract = Unciv-4.12.14-show-github-json-parse-error-text.jar
+	source = Unciv-4.12.14-show-github-json-parse-error-text.jar::https://github.com/yairm210/Unciv/releases/download/4.12.14-show-github-json-parse-error-text/Unciv.jar
+	source = Unciv-4.12.14-show-github-json-parse-error-text.png::https://raw.githubusercontent.com/yairm210/Unciv/4.12.14-show-github-json-parse-error-text/extraImages/Icons/Unciv%20icon%20v5.png
+	source = Unciv-4.12.14-show-github-json-parse-error-text.zip::https://github.com/yairm210/Unciv/releases/download/4.12.14-show-github-json-parse-error-text/linuxFilesForJar.zip
+	md5sums = c293092344f0167cb118f0b09c6b8c6b
 	md5sums = c3f79bbc7e80620b3cdc4f90f21f4d68
-	md5sums = ff43e379015d09f810d427d668ebc842
+	md5sums = 416ea3a26a14bacffc5b770ba54c6f7d
 
 pkgname = unciv-bin
