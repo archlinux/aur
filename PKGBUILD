@@ -5,6 +5,7 @@ _reponame=websum
 pkgver=r9.90f3e7e
 pkgrel=1
 pkgdesc="Next-gen integrity checker written in Rust"
+provides=('websum')
 arch=(x86_64)
 url="https://github.com/yilmaz08/websum"
 license=('MIT')
