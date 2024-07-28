@@ -3,7 +3,7 @@
 # Previous maintainer: Joel Teichroeb <joel@teichroeb.net>
 
 pkgname=rr
-pkgver=5.7.0
+pkgver=5.8.0
 pkgrel=1
 pkgdesc='Record and Replay framework: lightweight recording and deterministic debugging'
 arch=(i686 x86_64 aarch64)
@@ -20,7 +20,7 @@ options=(!strip)
 source=(
 	$pkgname-$pkgver.tar.gz::https://github.com/rr-debugger/${pkgname}/archive/${pkgver}.tar.gz
 )
-sha1sums=('0f7d634a7341f08d96a6e14d0de4dd7117577250')
+sha1sums=('ca7163cd6b210fbd688d095a623ca33b8163dff4')
 
 build() {
 	cmake \
