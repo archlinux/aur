@@ -1,16 +1,17 @@
 pkgbase = jre8-arm
 	pkgdesc = Java 8 runtime for the ARM architecture
-	pkgver = 8.211.u12
+	pkgver = 8.422.u05
 	pkgrel = 1
 	url = https://openjdk.java.net/
 	arch = aarch64
-	arch = armv7
 	license = LicenseRef-Java
 	provides = java-runtime=8
 	provides = java-runtime-openjdk=8
-	source_aarch64 = https://github.com/jrullan/java8_arm/raw/master/jdk-8u211-linux-arm64-vfp-hflt.tar.gz
-	sha256sums_aarch64 = SKIP
-	source_armv7 = https://github.com/jrullan/java8_arm/raw/master/jdk-8u211-linux-armv7-vfp-hflt.tar.gz
-	sha256sums_armv7 = SKIP
+	conflicts = jre8-openjdk
+	conflicts = jre8-openjdk-headless
+	source = http://ftp.us.debian.org/debian/pool/main/o/openjdk-8/openjdk-8-jre_8u422-b05-1_arm64.deb
+	source = http://ftp.us.debian.org/debian/pool/main/o/openjdk-8/openjdk-8-jre-headless_8u422-b05-1_arm64.deb
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = jre8-arm
