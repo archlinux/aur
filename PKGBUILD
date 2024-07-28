@@ -1,4 +1,5 @@
 # Maintainer: Manuel Wiesinger <m {you know what belongs here} mmap {and here} at>
+# Maintainer: Peter Jung <admin@ptr1337.dev>
 
 _srcname=virtme-ng
 pkgname=$_srcname-git
