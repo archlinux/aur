@@ -12,7 +12,7 @@ license=('apache')
 conflicts=('kops' 'kops-beta-bin' 'kops-git' 'kops21-bin')
 
 source_x86_64=("$pkgname-$pkgver::https://github.com/kubernetes/kops/releases/download/${_build}/kops-linux-amd64")
-source_aarch64=("https://github.com/kubernetes/kops/releases/download/${_build}/kops-linux-arm64")
+source_aarch64=("$pkgname-$pkgver::https://github.com/kubernetes/kops/releases/download/${_build}/kops-linux-arm64")
 sha256sums_aarch64=('1523e4e6ca612bf9f90a6d143183263fd44f146d32cd4ad3b18838b186201e1c')
 sha256sums_x86_64=('f87bf06910cd38c5a6f000890d1123598c81b9bea0cc8fbb5bc4254e90f28906')
 
