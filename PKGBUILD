@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=printerd-git
-pkgver=117.b69008d
+pkgver=297.f3259d8
 pkgrel=1
 pkgdesc="A daemon to manage local and remote printers on Linux."
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/hughsie/printerd"
 license=('GPL2')
 depends=('gnome-common' 'gobject-introspection')
 makedepends=('git' 'intltool' 'gtk-doc')
-source=('printerd::git://github.com/hughsie/printerd.git')
+source=('printerd::git+https://github.com/hughsie/printerd.git')
 
 
 build() {
@@ -29,4 +29,4 @@ pkgver() {
   echo $(git rev-list --count master).$(git rev-parse --short master)
 }
 
-md5sums=('SKIP')
+sha256sums=('SKIP')
