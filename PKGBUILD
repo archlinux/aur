@@ -2,8 +2,8 @@
 
 pkgbase=ch9344ser-git
 pkgname=(ch9344ser-dkms-git libch9344ser-git)
-pkgver=r36.c9640d2
-pkgrel=4
+pkgver=r38.d4fc95f
+pkgrel=3
 pkgdesc="This driver supports USB to quad serial ports chip ch9344 and USB to octal serial ports chip ch348."
 arch=('any')
 url="https://github.com/WCHSoftGroup/ch9344ser_linux"
@@ -47,38 +47,37 @@ KDIR ?= /lib/modules/$(KVER)/build
 VERSION ?= \$(shell cat VERSION)
 
 default:
-\$(MAKE) -C \$(KDIR) M=\$(CURDIR) modules
+    \$(MAKE) -C \$(KDIR) M=\$(CURDIR) modules
 
 clean:
-\$(MAKE) -C \$(KDIR) M=\$(CURDIR) clean
+    \$(MAKE) -C \$(KDIR) M=\$(CURDIR) clean
 
 install:
-\$(MAKE) -C \$(KDIR) M=\$(CURDIR) modules_install
+    \$(MAKE) -C \$(KDIR) M=\$(CURDIR) modules_install
 
-load:
--/sbin/rmmod ch9344
-/sbin/insmod ch9344.ko
+load: -/sbin/rmmod ch9344
+    /sbin/insmod ch9344.ko
 
 dkms.conf: dkms.conf.in
-sed "s/@@VERSION@@/\$(VERSION)/" $^ > \$@
+    sed "s/@@VERSION@@/\$(VERSION)/" $^ > \$@
 
 dkms-add: dkms.conf
-/usr/sbin/dkms add \$(CURDIR)
+    /usr/sbin/dkms add \$(CURDIR)
 
 dkms-build: dkms.conf
-/usr/sbin/dkms build ch9344/\$(VERSION)
+    /usr/sbin/dkms build ch9344/\$(VERSION)
 
 dkms-install: dkms.conf
-/usr/sbin/dkms install ch9344/\$(VERSION)
+    /usr/sbin/dkms install ch9344/\$(VERSION)
 
 dkms-remove: dkms.conf
-/usr/sbin/dkms remove ch9344/\$(VERSION) --all
+    /usr/sbin/dkms remove ch9344/\$(VERSION) --all
 
 modprobe-install:
-modprobe ch9344
+    modprobe ch9344
 
 modprobe-remove:
-modprobe -r ch9344
+    modprobe -r ch9344
 
 dev: modprobe-remove dkms-remove dkms-add dkms-builddkms-install modprobe-install
 EOF
@@ -92,7 +91,7 @@ PACKAGE_NAME="ch9344ser"
 PACKAGE_VERSION="#MODULE_VERSION#"
 AUTOINSTALL="yes"
 
-MAKE[0]="make --uname_r=\$kernelver"
+MAKE[0]="make"
 CLEAN="make clean"
 
 BUILT_MODULE_NAME[0]="ch9344"
