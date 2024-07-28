@@ -1,7 +1,7 @@
 pkgbase = python-x3dh
 	pkgdesc = A python implementation of the Extended Triple Diffie-Hellman key agreement protocol
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Syndace/python-x3dh
 	arch = any
 	license = MIT
