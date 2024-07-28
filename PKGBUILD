@@ -1,6 +1,6 @@
 # Maintainer: Martin Kröner <aur@kroner.dev>
 pkgname=iwqr
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='QR code generator for networks saved using iwd'
 url='https://gitlab.com/krenyy/iwqr'
@@ -9,7 +9,7 @@ arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 license=('GPL3')
 makedepends=('cargo')
 depends=('iwd')
-sha256sums=('36afc6a5b3371c2d64116314e71c0fd5d7630ebab0f70b96ad2556d3a22c6a5b')
+sha256sums=('ba15034e078b42d4f9acd24c6e9fb7efccc0015067ccc29f3ad8e058b89f2aa6')
 
 build() {
 	cd "$srcdir/$pkgname-v$pkgver"
