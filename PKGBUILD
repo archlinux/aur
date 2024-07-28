@@ -4,13 +4,13 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-libavif
-pkgver=1.0.4
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 arch=('any')
 pkgdesc="Library for encoding and decoding .avif files (Android ${_android_arch})"
 url="https://github.com/AOMediaCodec/libavif"
 license=('LicenseRef-libavif')
-groups=(android-libavif)
+groups=('android-libavif')
 depends=("android-${_android_arch}-aom"
          "android-${_android_arch}-dav1d"
          "android-${_android_arch}-svt-av1"
@@ -22,7 +22,7 @@ makedepends=('android-cmake'
              'nasm')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("${url}/archive/v${pkgver}/libavif-${pkgver}.tar.gz")
-md5sums=('8c786fd21f8757ace8cc011401e4d420')
+md5sums=('cc9c6014b4c83a56e1714099b4892d7f')
 
 build() {
     cd "${srcdir}/libavif-${pkgver}"
@@ -33,10 +33,10 @@ build() {
         -B build-shared \
         -DBUILD_SHARED_LIBS=ON \
         -DAVIF_BUILD_APPS=OFF \
-        -DAVIF_CODEC_AOM=ON \
-        -DAVIF_CODEC_DAV1D=ON \
-        -DAVIF_CODEC_RAV1E=ON \
-        -DAVIF_CODEC_SVT=ON \
+        -DAVIF_CODEC_AOM=SYSTEM \
+        -DAVIF_CODEC_DAV1D=SYSTEM \
+        -DAVIF_CODEC_RAV1E=SYSTEM \
+        -DAVIF_CODEC_SVT=SYSTEM \
         -DAVIF_BUILD_GDK_PIXBUF=ON \
         -DAVIF_ENABLE_GTEST=OFF \
         -DDAV1D_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
@@ -50,7 +50,9 @@ build() {
         -DPNG_PNG_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
         -DPNG_LIBRARY="${ANDROID_PREFIX_LIB}/libpng.so" \
         -DJPEG_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
-        -DJPEG_LIBRARY="${ANDROID_PREFIX_LIB}/libjpeg.so"
+        -DJPEG_LIBRARY="${ANDROID_PREFIX_LIB}/libjpeg.so" \
+        -DLIBYUV_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}/libyuv" \
+        -DLIBYUV_LIBRARY="${ANDROID_PREFIX_LIB}/libyuv.so"
     sed -i "s|  -lgdk_pixbuf-2.0|  -L${ANDROID_PREFIX_LIB} -lgdk_pixbuf-2.0|g" build-shared/contrib/gdk-pixbuf/CMakeFiles/pixbufloader-avif.dir/link.txt
     make -C build-shared $MAKEFLAGS
 
@@ -59,10 +61,10 @@ build() {
         -B build-static \
         -DBUILD_SHARED_LIBS=OFF \
         -DAVIF_BUILD_APPS=OFF \
-        -DAVIF_CODEC_AOM=ON \
-        -DAVIF_CODEC_DAV1D=ON \
-        -DAVIF_CODEC_RAV1E=ON \
-        -DAVIF_CODEC_SVT=ON \
+        -DAVIF_CODEC_AOM=SYSTEM \
+        -DAVIF_CODEC_DAV1D=SYSTEM \
+        -DAVIF_CODEC_RAV1E=SYSTEM \
+        -DAVIF_CODEC_SVT=SYSTEM \
         -DAVIF_BUILD_GDK_PIXBUF=ON \
         -DAVIF_ENABLE_GTEST=OFF \
         -DDAV1D_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
@@ -76,7 +78,9 @@ build() {
         -DPNG_PNG_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
         -DPNG_LIBRARY="${ANDROID_PREFIX_LIB}/libpng.a" \
         -DJPEG_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
-        -DJPEG_LIBRARY="${ANDROID_PREFIX_LIB}/libjpeg.a"
+        -DJPEG_LIBRARY="${ANDROID_PREFIX_LIB}/libjpeg.a" \
+        -DLIBYUV_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}/libyuv" \
+        -DLIBYUV_LIBRARY="${ANDROID_PREFIX_LIB}/libyuv.a"
     sed -i "s|  -lgdk_pixbuf-2.0|  -L${ANDROID_PREFIX_LIB} -lgdk_pixbuf-2.0|g" build-static/contrib/gdk-pixbuf/CMakeFiles/pixbufloader-avif.dir/link.txt
     make -C build-static $MAKEFLAGS
 }
