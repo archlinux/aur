@@ -12,21 +12,26 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/Achno/gowall/archive/refs/t
 sha256sums=('SKIP')
 
 
-
 prepare() {
-  cd "$srcdir"
+  cd "$srcdir/$pkgname-$pkgver"
+  
+  # Initialize and tidy the go module
+  go mod init "${url#https://}"
+  go mod tidy
 
-  # give perms so ~/.cache/yay/gowall/go/pkg/mod/ ... can be deleted
-  mkdir -p "$srcdir/go/pkg/mod"
-  chmod -R u+rw "$srcdir/go/pkg/mod"
 }
 
 build() {
 
   cd "$srcdir/$pkgname-$pkgver"
-  export GOPATH="$srcdir/go"
+  # export GOPATH="$srcdir/go"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-  go build -o gowall
+  go build -v -o gowall
 
 }
 
