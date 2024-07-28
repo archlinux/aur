@@ -1,4 +1,4 @@
-# Maintainer: ponsfoot <cabezon dot hashimoto at gmail dot com>
+# Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 # Contributor: Jan Jezek <honzin.jezek@gmail.com>
 
 _pkgname=xfce4-dev-tools
@@ -6,10 +6,10 @@ pkgname=${_pkgname}-git
 provides=($_pkgname)
 conflicts=($_pkgname)
 _gitname=$_pkgname
-source=("git://git.xfce.org/xfce/${_pkgname}")
+source=("git+https://gitlab.xfce.org/xfce/${_pkgname}.git")
 md5sums=('SKIP')
 
-pkgver=20150313
+pkgver=20240627
 pkgrel=1
 pkgdesc="The Xfce development tools"
 arch=('i686' 'x86_64')
