@@ -2,7 +2,7 @@
 
 _pkgname="crc"
 pkgname="${_pkgname}-git"
-pkgver=2.39.0.r5.g2fa7958
+pkgver=2.39.0.r8.gdb4810b
 pkgrel=1
 pkgdesc="A tool that manages local OpenShift 4.x cluster, optimized for testing and development purposes"
 arch=('any')
@@ -18,13 +18,6 @@ _pkgsrc="${_pkgname}"
 source=("${_pkgsrc}::git+${url}.git")
 sha256sums=('SKIP')
 
-VERSION_VARIABLES="-X ${url#https://}/v2/pkg/${_pkgname}/version.crcVersion=2.38.0 \
-                   -X ${url#https://}/v2/pkg/${_pkgname}/version.ocpVersion=4.15.17 \
-                   -X ${url#https://}/v2/pkg/${_pkgname}/version.okdVersion=4.15.0-0.okd-2024-02-23-163410 \
-                   -X ${url#https://}/v2/pkg/${_pkgname}/version.microshiftVersion=4.15.17 \
-                   -X ${url#https://}/v2/pkg/${_pkgname}/version.commitSha=$(git rev-parse --short=6 HEAD)"
-RELEASE_VERSION_VARIABLES="-X ${url#https://}/v2/pkg/${_pkgname}/segment.WriteKey=cvpHsNcmGCJqVzf6YxrSnVlwFSAZaYtp"
-
 pkgver() {
   cd "${_pkgsrc}"
   git describe --long --tags --abbrev=7 | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
@@ -33,19 +26,24 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
   mkdir -p "build" "completions"
+  go mod download
 }
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export LDFLAGS="${LDFLAGS:-} \
-                  ${VERSION_VARIABLES} \
-                  ${GO_EXTRA_LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -tags "containers_image_openpgp" -o "build/${_pkgname}" "./cmd/${_pkgname}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    go build -v -tags "$(grep -E '^BUILDTAGS :=' Makefile | sed 's/.*= //')" -o "build/${_pkgname}" -ldflags "\
+    -X ${url#https://}/v2/pkg/${_pkgname}/version.crcVersion=${pkgver} \
+    -X ${url#https://}/v2/pkg/${_pkgname}/version.ocpVersion=$(grep -E '^OPENSHIFT_VERSION \?=' Makefile | sed 's/.*= //') \
+    -X ${url#https://}/v2/pkg/${_pkgname}/version.okdVersion=$(grep -E '^OKD_VERSION \?=' Makefile | sed 's/.*= //') \
+    -X ${url#https://}/v2/pkg/${_pkgname}/version.microshiftVersion=$(grep -E '^MICROSHIFT_VERSION \?=' Makefile | sed 's/.*= //') \
+    -X ${url#https://}/v2/pkg/${_pkgname}/version.commitSha=$(git rev-parse --short=6 HEAD) \
+    -X ${url#https://}/v2/pkg/${_pkgname}/segment.WriteKey=$(grep -oP '(?<=WriteKey=)[^ ]+' Makefile)" \
+    ./"cmd/${_pkgname}"
 
   for _sh in bash fish zsh powershell; do
     ./"build/${_pkgname}" completion "${_sh}" > "completions/${_pkgname}.${_sh}"
@@ -54,7 +52,13 @@ build() {
 
 # check() {
 #   cd "${srcdir}/${_pkgsrc}"
-#   go test --tags "build containers_image_openpgp" -v -ldflags="${VERSION_VARIABLES}" . ./pkg/... ./cmd/...
+#   go test -tags "$(grep -E '^BUILDTAGS :=' Makefile | sed 's/.*= //')" -ldflags "\
+#     -X ${url#https://}/v2/pkg/${_pkgname}/version.crcVersion=${pkgver} \
+#     -X ${url#https://}/v2/pkg/${_pkgname}/version.ocpVersion=$(grep -E '^OPENSHIFT_VERSION \?=' Makefile | sed 's/.*= //') \
+#     -X ${url#https://}/v2/pkg/${_pkgname}/version.okdVersion=$(grep -E '^OKD_VERSION \?=' Makefile | sed 's/.*= //') \
+#     -X ${url#https://}/v2/pkg/${_pkgname}/version.microshiftVersion=$(grep -E '^MICROSHIFT_VERSION \?=' Makefile | sed 's/.*= //') \
+#     -X ${url#https://}/v2/pkg/${_pkgname}/version.commitSha=$(git rev-parse --short=6 HEAD)" \
+#     . ./pkg/... ./cmd/...
 # }
 
 package() {
