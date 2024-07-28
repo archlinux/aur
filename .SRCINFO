@@ -1,7 +1,7 @@
 pkgbase = crc
 	pkgdesc = A tool that manages local OpenShift 4.x cluster, optimized for testing and development purposes
 	pkgver = 2.39.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/crc-org/crc
 	arch = any
 	license = Apache-2.0
