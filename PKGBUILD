@@ -2,7 +2,7 @@
 
 _binname="gsa"
 pkgname="go-size-analyzer"
-pkgver=1.5.4
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="A tool for analyzing the size of compiled Go binaries"
 arch=('any')
@@ -14,7 +14,7 @@ conflicts=("${pkgname}" "${_binname}")
 makedepends=('go')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('39a0b7bc7609de0a8cfbb6e7f82b41b2ca460bab24e981b1763325905dc9baa8')
+sha256sums=('f583490683bf33ca66806922aaec7ca9f08dcfa871becd36b866ad7834ca143a')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
