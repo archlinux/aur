@@ -1,7 +1,7 @@
 # Maintainer:  dreieck
 
 pkgname=freetz-ng-devel
-pkgver=20240419.01
+pkgver=20240728.01
 pkgrel=1
 pkgdesc='Metapackage to pull all dependencies required to build freetz-ng'
 arch=('any')
@@ -13,6 +13,7 @@ depends=(
   'bc'
   'bison'
   'bzip2'
+  'ccache'
   'coreutils'
   'cpio'
   'eclipse-ecj'
@@ -24,6 +25,7 @@ depends=(
   'gettext'
   'git'
   'glib2'
+  'glib2-devel'
   'glibc'
   'grep'
   'inkscape'
