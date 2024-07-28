@@ -2,78 +2,43 @@
 # Contributor: Marco Rubin <marco.rubin@protonmail.com>
 
 ## options
-if [ -n "$_srcinfo" ] || [ -n "$_pkgver" ]; then
-  : ${_autoupdate:=false}
-else
+if [ -z "$_srcinfo" ] && [ -z "$_pkgver" ]; then
   : ${_autoupdate:=true}
 fi
 
-: ${_build_git:=false}
-
-unset _pkgtype
-[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
-
 ## basic info
 _pkgname="ryujinx"
-pkgname="$_pkgname${_pkgtype:-}"
-pkgver=1.1.1340
+pkgname="$_pkgname"
+pkgver=1.1.1361
 pkgrel=1
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
 url="https://github.com/Ryujinx/Ryujinx"
 license=('MIT')
-arch=(x86_64)
+arch=('x86_64')
 
-# main package
-_main_package() {
-  makedepends=(
-    'desktop-file-utils'
-    'dotnet-sdk>=8.0.6.sdk302' # aur/dotnet-core-bin
-  )
+depends=(
+  'gcc-libs'
+  'zlib'
+)
+makedepends=(
+  'desktop-file-utils'
+  'dotnet-sdk>=8.0.7.sdk303' # aur/dotnet-core-bin
+)
 
-  options=('!strip' '!debug')
-  install="$_pkgname.install"
+options=('!strip' '!debug' 'emptydirs')
+install="$_pkgname.install"
 
-  if [ "${_build_git::1}" != "t" ]; then
-    _main_stable
-  else
-    _main_git
-  fi
-}
-
-# stable package
-_main_stable() {
-  _update_version
-
+_source_ryujinx() {
   _pkgsrc="Ryujinx-$_pkgver"
   _pkgext="tar.gz"
   source=("$_pkgname-$_pkgver.$_pkgext"::"$url/archive/$_pkgver.$_pkgext")
   sha256sums=('SKIP')
-
-  pkgver() {
-    echo "${_pkgver:?}"
-  }
 }
 
-# git package
-_main_git() {
-  makedepends+=('git')
-
-  provides+=("$_pkgname=${pkgver%%.r*}")
-  conflicts+=("$_pkgname")
-
-  _pkgsrc="$_pkgname"
-  source+=("$_pkgsrc"::"git+$url.git")
-  sha256sums+=('SKIP')
-
-  pkgver() {
-    cd "$_pkgsrc"
-
-    git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
-      | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
-  }
+pkgver() {
+  echo "${_pkgver:?}"
 }
 
-# common functions
 build() {
   cd "$_pkgsrc"
 
@@ -94,6 +59,7 @@ build() {
 
   dotnet publish "${_args[@]}" -o publish_ava src/Ryujinx
   dotnet publish "${_args[@]}" -o publish_gtk src/Ryujinx.Gtk3
+  dotnet publish "${_args[@]}" -o publish_sdl src/Ryujinx.Headless.SDL2
 }
 
 package() {
@@ -101,13 +67,15 @@ package() {
 
   # program
   install -dm755 "$pkgdir/opt/ryujinx"
-  cp --reflink=auto -r publish_gtk/* "$pkgdir/opt/ryujinx/"
-  cp --reflink=auto -r publish_ava/* "$pkgdir/opt/ryujinx/"
+  cp -a --update=none --reflink=auto publish_ava/* "$pkgdir/opt/ryujinx/"
+  cp -a --update=none --reflink=auto publish_gtk/* "$pkgdir/opt/ryujinx/"
+  cp -a --update=none --reflink=auto publish_sdl/* "$pkgdir/opt/ryujinx/"
 
   # symlinks
   install -dm755 "$pkgdir/usr/bin"
   ln -s "/opt/ryujinx/Ryujinx" "$pkgdir/usr/bin/ryujinx"
   ln -s "/opt/ryujinx/Ryujinx.Gtk3" "$pkgdir/usr/bin/ryujinx.gtk"
+  ln -s "/opt/ryujinx/Ryujinx.Headless.SDL2" "$pkgdir/usr/bin/ryujinx.sdl"
 
   # .desktop
   install -Dm644 distribution/linux/Ryujinx.desktop "$pkgdir/usr/share/applications/ryujinx.desktop"
@@ -119,14 +87,14 @@ package() {
   install -Dm644 distribution/linux/mime/Ryujinx.xml "$pkgdir/usr/share/mime/packages/ryujinx.xml"
 
   # license
-  install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # fix permissions
-  #chmod -R u=rwX,go=rX "$pkgdir"
   find "$pkgdir" -type d -exec chmod 755 {} \;
   find "$pkgdir" -type f -exec chmod 644 {} \;
   chmod 755 "$pkgdir/opt/ryujinx/Ryujinx"
   chmod 755 "$pkgdir/opt/ryujinx/Ryujinx.Gtk3"
+  chmod 755 "$pkgdir/opt/ryujinx/Ryujinx.Headless.SDL2"
   chmod 755 "$pkgdir/opt/ryujinx/Ryujinx.sh"
 
   # writable log directory
@@ -137,7 +105,6 @@ package() {
   desktop-file-edit --set-icon="ryujinx" "$pkgdir/usr/share/applications/ryujinx.desktop"
 }
 
-# update version
 _update_version() {
   : ${_pkgver:=${pkgver%%.r*}}
 
@@ -160,5 +127,5 @@ _update_version() {
   fi
 }
 
-# execute
-_main_package
+_update_version
+_source_ryujinx

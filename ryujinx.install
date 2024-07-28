@@ -1,6 +1,5 @@
-
 pre_remove() {
-  if [ -d "/opt/ryujinx/Logs" ] ; then
+  if [ -d "/opt/ryujinx/Logs" ]; then
     rm -rf /opt/ryujinx/Logs/*
   fi
 }
