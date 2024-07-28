@@ -10,21 +10,26 @@ _toolpkgname="$_projectname-emu-tool"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git" "$_toolpkgname-git")
 pkgver='2407.r103.g87b7009c12'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
 arch=('x86_64' 'aarch64')
 url="https://$_mainpkgname.org"
 license=('GPL-2.0-or-later')
 depends=(
-	'alsa-lib' 'bluez-libs' 'bzip2' 'enet' 'hidapi' 'libevdev' 'libgl' 'libpulse'
-	'libx11' 'libxi' 'libxrandr' 'lz4' 'lzo' 'mbedtls2' 'minizip-ng' 'pugixml'
-	'sdl2' 'sfml' 'speexdsp' 'xz' 'zstd' 'cubeb' 'zlib-ng'
-	'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libcurl.so' 'libfmt.so'
-	'libminiupnpc.so' 'libsfml-network.so' 'libsfml-system.so' 'libspng.so'
-	'libswscale.so' 'libudev.so' 'libusb-1.0.so' 'libxxhash.so'
+	# Based on the repo package
+	'bluez-libs' 'bzip2' 'enet' 'gcc-libs' 'glibc' 'hidapi' 'libavcodec.so'
+	'libavformat.so' 'libavutil.so' 'libcurl.so' 'libfmt.so' 'libgl'
+	'libsfml-network.so' 'libsfml-system.so' 'libspng.so' 'libswscale.so'
+	'libusb-1.0.so' 'libx11' 'libxi' 'libxrandr' 'lz4' 'lzo' 'mbedtls2'
+	'minizip-ng' 'pugixml' 'sdl2' 'sfml' 'speexdsp' 'xz' 'zstd'
+	# Addition dependencies to replace vendored deps
+	'cubeb' 'libxxhash.so' 'zlib-ng'
 )
-makedepends=('cmake' 'git' 'ninja' 'python' 'qt6-base' 'qt6-svg')
+makedepends=(
+	'alsa-lib' 'cmake' 'git' 'libevdev' 'libminiupnpc.so' 'libpulse' 'libudev.so'
+	'ninja' 'python' 'qt6-base' 'qt6-svg'
+)
 checkdepends=('gtest')
 optdepends=('pulseaudio: PulseAudio backend')
 options=('!lto')
@@ -87,10 +92,12 @@ build() {
 	export LDFLAGS="-Wl,--copy-dt-needed-entries"
 
 	# CMAKE_BUILD_TYPE - the dolphin-emu package in the repos uses 'None' for some reason, so we use it as well
+	# CMAKE_SKIP_RPATH - do not add run time path information (the package in the repos does it, presumably because of reproducible builds)
 	# USE_SYSTEM_LIBS - we want to use system libs where possible
 	# USE_SYSTEM_LIBMGBA - the current version of mgba in the repos is not compatible with Dolphin
 	cmake -S '.' -B 'build/' -G Ninja \
 		-DCMAKE_BUILD_TYPE=None \
+		-DCMAKE_SKIP_RPATH=ON \
 		-DCMAKE_INSTALL_PREFIX='/usr' \
 		-DDISTRIBUTOR='aur.archlinux.org/packages/dolphin-emu-git' \
 		-DENABLE_AUTOUPDATE=OFF \
@@ -117,7 +124,10 @@ check() {
 
 package_dolphin-emu-git() {
 	pkgdesc="$pkgdesc$_pkgdescappend"
-	depends+=('hicolor-icon-theme' 'qt6-base' 'qt6-svg')
+	depends+=(
+		'alsa-lib' 'hicolor-icon-theme' 'libevdev' 'libminiupnpc.so' 'libpulse'
+		'libudev.so' 'qt6-base' 'qt6-svg'
+	)
 	provides=("$_mainpkgname")
 	conflicts=("$_mainpkgname")
 
