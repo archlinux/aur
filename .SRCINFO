@@ -1,6 +1,6 @@
 pkgbase = qt5-wayland-decorations
-	pkgdesc = Provides APIs for Wayland (with patch required for shadows on qadwaitadecorations-qt5)
-	pkgver = 5.15.13+kde+r60
+	pkgdesc = Provides APIs for Wayland - using QAdwaitaDecorations
+	pkgver = 5.15.14+kde+r58
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = x86_64
@@ -14,9 +14,13 @@ pkgbase = qt5-wayland-decorations
 	depends = libxcomposite
 	provides = qt5-wayland
 	conflicts = qt5-wayland
-	source = git+https://invent.kde.org/qt/qt/qtwayland#commit=9c82b5461736f59a06923ab68c6f7584ecab4f77
-	source = https://src.fedoraproject.org/rpms/qt5-qtwayland/raw/1d8e08648debad9741dca0820f5f0e91633b5a4e/f/qtwayland-decoration-support-backports-from-qt6.patch
-	sha256sums = SKIP
+	source = git+https://invent.kde.org/qt/qt/qtwayland#commit=11e099c6b7fbec0e198bffaf8016676ef430cfba
+	source = qtwayland-use-adwaita-decorations-by-default.patch-c0ca8c9d633f93c5f65c61ba7fe220ddb7641866::https://src.fedoraproject.org/rpms/qt5-qtwayland/raw/c0ca8c9d633f93c5f65c61ba7fe220ddb7641866/f/qtwayland-use-adwaita-decorations-by-default.patch
+	source = qtwayland-decoration-support-backports-from-qt6.patch-c0ca8c9d633f93c5f65c61ba7fe220ddb7641866::https://src.fedoraproject.org/rpms/qt5-qtwayland/raw/c0ca8c9d633f93c5f65c61ba7fe220ddb7641866/f/qtwayland-decoration-support-backports-from-qt6.patch
+	source = qtwayland-client-fix-window-margin-calculation.patch-c0ca8c9d633f93c5f65c61ba7fe220ddb7641866::https://src.fedoraproject.org/rpms/qt5-qtwayland/raw/c0ca8c9d633f93c5f65c61ba7fe220ddb7641866/f/qtwayland-client-fix-window-margin-calculation.patch
+	sha256sums = e659f4b1e029866c7475822837b3db019a5821ffcb8a85d72e7edec9ef42a6d6
+	sha256sums = 5b606c5526b44c0db9f5f7fd4be91c95bcb73bd06af304589c9f8c1922607fca
 	sha256sums = 4d8c5d686666cbaae7550ec3defee66ea56ca624152c56c51ff945693706c29d
+	sha256sums = 569ae734860335b72a0fc04e3418bc87086f574baf8db22c0dc5ba0846e22d4f
 
 pkgname = qt5-wayland-decorations
