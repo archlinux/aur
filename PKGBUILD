@@ -1,7 +1,7 @@
 # Maintainer: Ahmet Arda Kavakcı <ahmetardakavakci@gmail.com>
 
 pkgname=websum-git
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Next-gen integrity checker written in Rust"
 arch=(x86_64)
