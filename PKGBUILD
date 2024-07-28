@@ -26,6 +26,7 @@ package() {
 	rm -rf usr/lib/jvm/java-8-openjdk-arm64/jre/man
 	rm usr/lib/jvm/.java-1.8.0-openjdk-arm64.jinfo
 	rm usr/lib/jvm/java-1.8.0-openjdk-arm64
+	rm etc/java-8-openjdk/accessibility.properties
 
 	mv usr/lib/jvm/java-8-openjdk-arm64/jre/* usr/lib/jvm/java-8-openjdk-arm64
 	rmdir usr/lib/jvm/java-8-openjdk-arm64/jre
