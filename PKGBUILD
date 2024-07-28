@@ -1,4 +1,5 @@
 # Maintainer: Jon Stelly < 967068+jonstelly at users.noreply.github.com >
+# Contributor: Dino Morelli < dino AT ui3 DOT info >
 pkgname=kubevpn-bin
 pkgver=2.2.15
 pkgrel=2
