@@ -12,13 +12,20 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/Achno/gowall/archive/refs/t
 sha256sums=('SKIP')
 
 
+
+prepare() {
+  cd "$srcdir"
+
+  # give perms so ~/.cache/yay/gowall/go/pkg/mod/ ... can be deleted
+  mkdir -p "$srcdir/go/pkg/mod"
+  chmod -R u+rw "$srcdir/go/pkg/mod"
+}
+
 build() {
 
   cd "$srcdir/$pkgname-$pkgver"
   export GOPATH="$srcdir/go"
-  # export GO111MODULE=on
 
-  go mod tidy
   go build -o gowall
 
 }
