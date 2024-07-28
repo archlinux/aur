@@ -1,21 +1,20 @@
 # Maintainer: maoyaotang <292898660@qq.com>
 
-pkgname=ttf-honorsans
-pkgver=2024.7.16
-pkgrel=2
+pkgname=ttf-HONORSans
+_pkgname=honorsans
+pkgver=2024.7.28
+pkgrel=1
 pkgdesc='华为HONORSans字体'
 arch=('any')
 url='https://www.huawei.com/cn/'
 license=('custom')
-depends=('xorg-fonts-encodings')
-source=("HONORSans.tar.xz::https://116-142-255-144.pd1.cjjd19.com:30443/download-cdn.cjjd19.com/123-718/251c5e0c/1817992511-0/251c5e0c60a3a8145147c4ba82e202ce/c-m44?v=5&t=1721188954&s=1721188954d50697fad5efd734be10fbbcf835358b&r=EEWFQM&bzc=2&bzs=313831373939323531313a38303639323339313a32363439323138313a30&filename=MagicOS+Android+15+beta+2+fonts.zip&x-mf-biz-cid=b2aa5be7-2b5b-4b1d-a052-f52a17b787c4-6eaa77&auto_redirect=0&cache_type=1&xmfcid=d2bebe29-10c8-418f-ba97-8dd0de7e7cbd-1-50111d3b1"
-       "LICENSE.html::https://www.huawei.com/cn/legal" )
-sha256sums=('SKIP'  
-          'SKIP')
+depends=('git')
+source=("git+https://gitee.com/mao-yaotang/honorsans.git")
+sha256sums=('SKIP')
 
 package() {
-  cd "${srcdir}"
+  cd "${_pkgname}"
   install -dm 755 "${pkgdir}/usr/share/fonts/HONORSans"
-  install -Dm644 *.ttf "${pkgdir}/usr/share/fonts/HONORSans"
-  install -Dm644 LICENSE.html "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+  cp -r * "${pkgdir}/usr/share/fonts/HONORSans"
+  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
