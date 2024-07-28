@@ -2,9 +2,9 @@
 
 _name=OpenFIRE-App
 pkgname=openfireapp
-pkgver=2.0
-_rc='-rc6'
-pkgrel=3
+pkgver=2.1
+_rc=''
+pkgrel=1
 pkgdesc='Configuration utility for the OpenFIRE lightgun system.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/TeamOpenFIRE/OpenFIRE-App'
@@ -12,10 +12,8 @@ license=('GPL-3.0-only')
 depends=('qt5-base' 'qt5-serialport' 'qt5-svg' 'icu')
 makedepends=('cmake')
 install=$pkgname.install
-source=("https://github.com/TeamOpenFIRE/OpenFIRE-App/archive/refs/tags/v${pkgver}${_rc}.tar.gz"
-        'org.TeamOpenFIRE.OpenFIREapp.desktop')
-md5sums=('becebad8451f9eaf2e1169fa4d03f1b0'
-         'd8b6cd0884c57ff3d5df1142ec9ca30b')
+source=("https://github.com/TeamOpenFIRE/OpenFIRE-App/archive/refs/tags/v${pkgver}${_rc}.tar.gz")
+md5sums=('b2c0a2ccb15a59823b1540943ee0226e')
 
 build() {
   mkdir "$srcdir/$_name-$pkgver${_rc}/build"
@@ -27,5 +25,5 @@ build() {
 package() {
   install -Dm755 "$srcdir/$_name-$pkgver${_rc}/build/OpenFIREapp" "$pkgdir/usr/bin/OpenFIREapp"
   install -Dm755 "$srcdir/$_name-$pkgver${_rc}/ico/openfire.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/org.TeamOpenFIRE.OpenFIREapp.svg"
-  install -Dm755 "$srcdir/org.TeamOpenFIRE.OpenFIREapp.desktop" "$pkgdir/usr/share/applications/org.TeamOpenFIRE.OpenFIREapp.desktop"
+  install -Dm755 "$srcdir/$_name-$pkgver${_rc}/org.TeamOpenFIRE.OpenFIREapp.desktop" "$pkgdir/usr/share/applications/org.TeamOpenFIRE.OpenFIREapp.desktop"
 }
