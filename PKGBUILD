@@ -10,8 +10,7 @@ license=('MIT')
 makedepends=('git' 'go')
 depends=('glibc')
 optdepends=('bash-completion: for shell auto-completion'
-            'zsh-completions: for shell auto-completion'
-            'ipswd: ipsw daemon')
+            'zsh-completions: for shell auto-completion')
 backup=("etc/${pkgname}.conf")
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}::git+${url}#tag=v${pkgver}")
