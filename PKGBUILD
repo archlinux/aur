@@ -5,13 +5,13 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-libheif
-pkgver=1.17.6
-pkgrel=2
+pkgver=1.18.1
+pkgrel=1
 arch=('any')
 pkgdesc="An HEIF and AVIF file format decoder and encoder (Android ${_android_arch})"
 url='https://github.com/strukturag/libheif'
 license=('GPL3')
-groups=(android-libheif)
+groups=('android-libheif')
 makedepends=('android-cmake'
              "android-${_android_arch}-dav1d"
              "android-${_android_arch}-ffmpeg"
@@ -33,16 +33,8 @@ optdepends=("android-${_android_arch}-libjpeg: for heif-convert and heif-enc"
             "android-${_android_arch}-svt-av1: svt-av1 encoder")
 conflicts=("android-${_android_arch}-libheif-boostrap")
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://github.com/strukturag/libheif/releases/download/v$pkgver/libheif-$pkgver.tar.gz"
-        "https://github.com/strukturag/libheif/commit/a911b26a902c5f89fee2dc20ac4dfaafcb8144ec.patch")
-sha256sums=('8390baf4913eda0a183e132cec62b875fb2ef507ced5ddddc98dfd2f17780aee'
-            '53a7eeb0f0f1c9fb076a6f56c6753abf8e30cf625355c54e720cc028ae9c1ce9')
-
-prepare() {
-    cd "${srcdir}/libheif-${pkgver}"
-
-    patch -Np1 -i ../a911b26a902c5f89fee2dc20ac4dfaafcb8144ec.patch # fix build against svt-av1 2.0.0
-}
+source=("https://github.com/strukturag/libheif/releases/download/v${pkgver}/libheif-${pkgver}.tar.gz")
+sha256sums=('8702564b0f288707ea72b260b3bf4ba9bf7abfa7dac01353def3a86acd6bbb76')
 
 build() {
     cd "${srcdir}/libheif-${pkgver}"
