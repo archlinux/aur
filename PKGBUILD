@@ -1,6 +1,7 @@
+# Maintainer: javalsai <javalsai@proton.me>
 pkgname=lidm-bin
 pkgver=0.0.1
-pkgrel=3
+pkgrel=4
 depends=('pam')
 pkgdesc="A fully colorful cutomizable TUI display manager made in C. (release binary)"
 arch=('x86_64')
