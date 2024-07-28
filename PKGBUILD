@@ -2,8 +2,8 @@
 # https://github.com/TD-Sky/PKGBUILDs
 
 pkgname=dagtoc
-pkgver=5.0.0
-pkgrel=2
+pkgver=5.0.1
+pkgrel=1
 pkgdesc="A CLI tool for operating pdf contents"
 arch=('x86_64')
 url="https://github.com/TD-Sky/dagtoc"
@@ -12,7 +12,7 @@ provides=("$pkgname")
 conflicts=("$pkgname-bin")
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ad48f63411aded55c028bf02bea0ff253055c70e4602c716344beaadde65ac85')
+sha256sums=('9f0e401adcf39e76296c87766e00fc3cc31c9a4a907588f6ca1c758e893b83ff')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
