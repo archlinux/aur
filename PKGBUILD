@@ -2,7 +2,7 @@
 
 _pkgname=iansui
 pkgname=ttf-${_pkgname}-git
-pkgver=v0.940.r1.64efa9f
+pkgver=v1.000.r6.116d684
 pkgrel=1
 pkgdesc="Free font derived from Source Han Serif."
 arch=('any')
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 package() {
   cd "${srcdir}/${_pkgname}"
 
-  install -Dm644 -t "${pkgdir}/usr/share/fonts/TTF/" *.ttf
+  install -Dm644 -t "${pkgdir}/usr/share/fonts/TTF/" fonts/*.ttf
 
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname%-git}/README.md"
   install -Dm644 ChangeLog.md "${pkgdir}/usr/share/doc/${pkgname%-git}/CHANGELOG.md"
