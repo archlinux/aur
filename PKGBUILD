@@ -1,6 +1,6 @@
 # Maintainer: Alex Butler <alexheretic@gmail.com>
 pkgname=ab-av1
-pkgver=0.7.16
+pkgver=0.7.17
 pkgrel=1
 pkgdesc="AV1 encoding tool with fast VMAF sampling."
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('cargo'
              'git'
              'lld')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/alexheretic/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('934da95163872d395a0b10e78b28b86b1dc1e3f1ef04ab97969590d394fea16a')
+sha256sums=('e3c0a7127cf1b9bbcc5596b125373c74c7cdfb6d8c0ffc169963ef1bd136f440')
 
 build() {
   cd "$pkgname-$pkgver"
