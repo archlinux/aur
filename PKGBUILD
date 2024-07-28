@@ -4,8 +4,8 @@
 # Contributor: farnsworth517
 
 pkgname=soulseekqt
-pkgver=20221224
-_pkgver=2022-12-24
+pkgver=20240630
+_pkgver=2024-6-30
 _appimage="SoulseekQt-${_pkgver}-64bit.AppImage"
 pkgrel=1
 pkgdesc="A desktop client for the Soulseek peer-to-peer file sharing network"
@@ -59,7 +59,7 @@ package() {
   rm -rf "${pkgdir}"/opt/soulseekqt/{AppRun,default.desktop,soulseek.png,*.AppImage}
 }
 
-sha256sums=('86e1f5501e614cb12ee32242daff5338d1d45e3a0fd9a882d32d517b68eb1849'
+sha256sums=('25a7800d4b2609d727443fad7f309a6e9f2a608072d93bc7f06b551e182949a8'
             'dabd228cf296dc4dd9462a21d16cc6cbfc77ee2abfcae3297ec783e6184dc9f4'
             'ecb2e829138c9d8373b5ba4e042e01ef34b3701ddc306f753acf894fff4047bf'
             '5097f36ea49f1a61cbb975507de99dc7e768d0377e3736b431fee47f13a45e1c'
