@@ -9,13 +9,13 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium
-pkgver=126.0.6478.182
+pkgver=127.0.6533.72
 pkgrel=1
 _launcher_ver=8
 _system_clang=1
 # ungoogled chromium variables
 _uc_usr=ungoogled-software
-_uc_ver=126.0.6478.182-1
+_uc_ver=127.0.6533.72-1
 pkgdesc="A lightweight approach to removing Google web service dependency"
 arch=('x86_64')
 url="https://github.com/ungoogled-software/ungoogled-chromium"
@@ -24,12 +24,14 @@ depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'libva'
          'libffi' 'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'gperf' 'nodejs' 'pipewire'
-             'rust' 'qt5-base' 'qt6-base' 'java-runtime-headless' 'git')
+             'rust' 'rust-bindgen' 'qt5-base' 'qt6-base' 'java-runtime-headless'
+             'git')
 optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: support for native dialogs in Plasma'
             'gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
-            'kwallet: support for storing passwords in KWallet on Plasma')
+            'kwallet: support for storing passwords in KWallet on Plasma'
+            'upower: Battery Status API support')
 provides=("chromium=$pkgver" "chromedriver=$pkgver")
 conflicts=('chromium' 'chromedriver')
 options=('!lto') # Chromium adds its own flags for ThinLTO
@@ -37,34 +39,36 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         $pkgname-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/$_uc_ver.tar.gz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/${pkgver%%.*}/chromium-patches-${pkgver%%.*}.tar.bz2
+        allow-ANGLEImplementation-kVulkan.patch
+        chromium-browser-ui-missing-deps.patch
+        compiler-rt-adjust-paths.patch
+        increase-fortify-level.patch
         use-oauth2-client-switches-as-default.patch
         0001-adjust-buffer-format-order.patch
         0001-enable-linux-unstable-deb-target.patch
         0001-ozone-wayland-implement-text_input_manager_v3.patch
         0001-ozone-wayland-implement-text_input_manager-fixes.patch
-        0001-vaapi-flag-ozone-wayland.patch
-        drop-flag-unsupported-by-clang17.patch
-        compiler-rt-adjust-paths.patch
-        allow-ANGLEImplementation-kVulkan.patch)
-sha256sums=('3939f5b3116ebd3cb15ff8c7059888f6b00f4cfa8a77bde983ee4ce5d0eea427'
-            '3d44e2ed7ac159c4f5a0205750469ae2cff5b25772d316b94799cee5f1f02c07'
+        0001-vaapi-flag-ozone-wayland.patch)
+sha256sums=('7f21f1bfc89e1a2c474463ef950b72e6401d1375cf3c17d907bf3d346720efbe'
+            '45ce5780948b1348c21b23efbc93a78ec2b706a469856a7d0e4c9afbfaea601e'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-            'daf0df74d2601c35fd66a746942d9ca3fc521ede92312f85af51d94c399fd6e0'
+            '0887d215c47085013d09252409964a5eedec453561db1f2b133914e349b8a0b2'
+            '8f81059d79040ec598b5fb077808ec69d26d6c9cbebf9c4f4ea48b388a2596c5'
+            '75f9c3ccdcc914d029ddcc5ca181df90177db35a343bf44ff541ff127bcea43d'
+            'b3de01b7df227478687d7517f61a777450dca765756002c80c4915f271e2d961'
+            'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             'a9b417b96daec33c9059065e15b3a92ae1bf4b59f89d353659b335d9e0379db6'
             '8ba5c67b7eb6cacd2dbbc29e6766169f0fca3bbb07779b1a0a76c913f17d343f'
             '2a44756404e13c97d000cc0d859604d6848163998ea2f838b3b9bb2c840967e3'
             'd9974ddb50777be428fd0fa1e01ffe4b587065ba6adefea33678e1b3e25d1285'
             'a2da75d0c20529f2d635050e0662941c0820264ea9371eb900b9d90b5968fa6a'
-            '9a5594293616e1390462af1f50276ee29fd6075ffab0e3f944f6346cb2eb8aec'
-            '028acc97299cec5d1ed9f456bbdc462807fa491277d266db2aa1d405d3cd753d'
-            'b3de01b7df227478687d7517f61a777450dca765756002c80c4915f271e2d961'
-            '8f81059d79040ec598b5fb077808ec69d26d6c9cbebf9c4f4ea48b388a2596c5')
+            '9a5594293616e1390462af1f50276ee29fd6075ffab0e3f944f6346cb2eb8aec')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -gA _system_libs=(
   [brotli]=brotli
-  [dav1d]=dav1d
+  #[dav1d]=dav1d
   #[ffmpeg]=ffmpeg    # YouTube playback stopped working in Chromium 120
   [flac]=flac
   [fontconfig]=fontconfig
@@ -104,8 +108,7 @@ prepare() {
          -e '1i #include <cstdlib>' \
     third_party/blink/renderer/core/xml/*.cc \
     third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
-    third_party/libxml/chromium/*.cc \
-    third_party/maldoca/src/maldoca/ole/oss_utils.h
+    third_party/libxml/chromium/*.cc
 
   # Use the --oauth2-client-id= and --oauth2-client-secret= switches for
   # setting GOOGLE_DEFAULT_CLIENT_ID and GOOGLE_DEFAULT_CLIENT_SECRET at
@@ -115,19 +118,22 @@ prepare() {
   # Upstream fixes
   patch -Np1 -i ../allow-ANGLEImplementation-kVulkan.patch
 
-  # Drop compiler flag that needs newer clang
-  patch -Np1 -i ../drop-flag-unsupported-by-clang17.patch
+  # https://issues.chromium.org/issues/351157339
+  patch -Np1 -i ../chromium-browser-ui-missing-deps.patch
 
   # Allow libclang_rt.builtins from compiler-rt >= 16 to be used
   patch -Np1 -i ../compiler-rt-adjust-paths.patch
 
+  # Increase _FORTIFY_SOURCE level to match Arch's default flags
+  patch -Np1 -i ../increase-fortify-level.patch
+
   # Fixes for building with libstdc++ instead of libc++
   patch -Np1 -i ../chromium-patches-*/chromium-117-material-color-include.patch
 
-  # Link to system tools required by the build
-  mkdir -p third_party/node/linux/node-linux-x64/bin
-  ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
-  ln -s /usr/bin/java third_party/jdk/current/bin/
+  # test deps are broken for ui/lens with system ICU
+  # "//third_party/icu:icuuc_public" (taken from Gentoo ebuild)
+  sed -i '/source_set("unit_tests") {/,/}/d' chrome/browser/ui/lens/BUILD.gn
+  sed -i '/lens:unit_tests/d' chrome/test/BUILD.gn components/BUILD.gn
 
   if (( !_system_clang )); then
     # Use prebuilt rust as system rust cannot be used due to the error:
@@ -148,6 +154,11 @@ prepare() {
   msg2 'Applying domain substitution'
   python "$_utils/domain_substitution.py" apply -r "$_ungoogled_repo/domain_regex.list" \
     -f "$_ungoogled_repo/domain_substitution.list" -c domainsubcache.tar.gz ./
+
+  # Link to system tools required by the build
+  rm -f third_party/node/linux/node-linux-x64/bin/node
+  ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
+  ln -s /usr/bin/java third_party/jdk/current/bin/
 
   # Remove bundled libraries for which we will use the system copies; this
   # *should* do what the remove_bundled_libraries.py script does, with the
@@ -231,6 +242,7 @@ build() {
 
     _flags+=(
       'rust_sysroot_absolute="/usr"'
+      'rust_bindgen_root="/usr"'
       "rustc_version=\"$(rustc --version)\""
     )
   fi
