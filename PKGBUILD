@@ -9,7 +9,7 @@ license=('GPL3')
 provides=('musicpaused')
 depends=('dbus' 'jacklistener-git')
 makedepends=('git')
-source=('musicpaused::git://github.com/gentoo-root/musicpaused.git')
+source=('musicpaused::git+https://github.com/gentoo-root/musicpaused.git')
 
 
 build() {
@@ -27,4 +27,4 @@ pkgver() {
   echo $(git rev-list --count master).$(git rev-parse --short master)
 }
 
-md5sums=('SKIP')
+sha256sums=('SKIP')

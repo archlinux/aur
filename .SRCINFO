@@ -10,8 +10,7 @@ pkgbase = musicpaused-git
 	depends = dbus
 	depends = jacklistener-git
 	provides = musicpaused
-	source = musicpaused::git://github.com/gentoo-root/musicpaused.git
-	md5sums = SKIP
+	source = musicpaused::git+https://github.com/gentoo-root/musicpaused.git
+	sha256sums = SKIP
 
 pkgname = musicpaused-git
-
