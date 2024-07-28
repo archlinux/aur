@@ -1,18 +1,17 @@
 pkgbase = pulpo-bin
 	pkgdesc = A Gnome (wayland) shell notifier for Gotify and Ntfy server based on Rust.
-	pkgver = 1.5
-	pkgrel = 15
+	pkgver = 1.6
+	pkgrel = 16
 	url = https://github.com/fseoane/pulpo.git
 	arch = x86_64
 	license = MIT
 	depends = libappindicator-gtk3
-	depends = gnome-shell-extension-appindicator
 	provides = pulpo
 	conflicts = pulpo
 	replaces = pulpo
 	backup = etc/pulpo.conf
 	backup = opt/pulpo/config/pulpo.conf
-	source = https://github.com/fseoane/pulpo/releases/download/v1.5/pulpo.1.5_Arch_amd64.zip
+	source = https://github.com/fseoane/pulpo/releases/download/v1.6/pulpo.1.6_Arch_amd64.zip
 	md5sums = SKIP
 
 pkgname = pulpo-bin
