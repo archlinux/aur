@@ -1,0 +1,15 @@
+diff '--color=auto' --unified --recursive --text package.orig/mines-0.6.0/deb/mines_0.5.1_amd64/usr/share/applications/mines.desktop package.new/mines-0.6.0/deb/mines_0.5.1_amd64/usr/share/applications/mines.desktop
+--- package.orig/mines-0.6.0/deb/mines_0.5.1_amd64/usr/share/applications/mines.desktop	2024-06-28 16:05:42.042593894 +0200
++++ package.new/mines-0.6.0/deb/mines_0.5.1_amd64/usr/share/applications/mines.desktop	2024-06-28 16:06:10.508593459 +0200
+@@ -4,8 +4,8 @@
+ Type=Application
+ NoDisplay=false
+ Terminal=true
+-Exec=mines %f
+-Icon=mines
+-Name=Mines
++Exec=mines-tui %f
++Icon=mines-tui
++Name=Mines-tui
+ Comment=A Terminal based Minesweeper implementation
+ Categories=Game
