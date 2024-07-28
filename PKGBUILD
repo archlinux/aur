@@ -3,13 +3,13 @@
 pkgbase=vertebrae-git
 pkgname=vertebrae-git
 pkgver=0.1.0.r0.gf7432fd
-pkgrel=1
+pkgrel=2
 pkgdesc="A configurable, automatic backup management utility written in Rust."
 arch=('x86_64')
 url="https://github.com/JacoMalan1/vertebrae"
 license=('GPL-3.0-or-later')
-depends=(gcc-libs gmp lib32-gmp mpfr libmpc)
-makedepends=('cargo' 'git' 'gcc')
+depends=()
+makedepends=('cargo' 'git')
 provides=('vertebrae')
 conflicts=('vertebrae')
 source=("$pkgbase::git+https://github.com/JacoMalan1/vertebrae.git")
