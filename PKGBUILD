@@ -2,7 +2,7 @@
 # Co-maintainer: Nebulosa <nebulosa2007 at yandex dot ru>
 
 pkgname=cassette-git
-pkgver=0.1.4.r660.g74db83a
+pkgver=0.2.0.r14.g3b15be4
 pkgrel=1
 pkgdesc="GTK4/Adwaita application that allows you to use Yandex Music service on Linux operating systems"
 arch=(aarch64 x86_64)
@@ -44,7 +44,7 @@ pkgver() {
 }
 
 build() {
-  arch-meson -Dprofile=development ${pkgname%-git} build
+  arch-meson -Dis_devel=true ${pkgname%-git} build
   meson configure  build --no-pager
   meson compile -C build
 }
