@@ -1,7 +1,7 @@
 pkgbase = virtme-ng
 	pkgdesc = A tool that allows to easily and quickly recompile and test a Linux kernel, starting from the source code.
 	pkgver = 1.25
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/arighi/virtme-ng
 	arch = any
 	license = GPL-2.0-only
@@ -12,9 +12,8 @@ pkgbase = virtme-ng
 	depends = python-requests
 	depends = python-setuptools
 	depends = qemu>=1.6
-	optdepends = busybox: for inclusion of busybox
-	conflicts = virtme-git
-	conflicts = virtme-ng-git
+	optdepends = busybox: BusyBox support
+	conflicts = virtme
 	source = virtme-ng-1.25.tar.gz::https://github.com/arighi/virtme-ng/archive/refs/tags/v1.25.tar.gz
 	b2sums = 5b061b30cffa966199bcba5a7661f2bf5254939ba41309fc4e63e46cea2215cc132537279170a76a7099ab6c8231d90a1d82178695376a0295e7ed351aa4a418
 
