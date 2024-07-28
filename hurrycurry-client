@@ -1,0 +1,2 @@
+#!/bin/sh
+godot --main-pack /usr/share/hurrycurry/client.pck
