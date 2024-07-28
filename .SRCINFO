@@ -1,0 +1,19 @@
+pkgbase = python-vdf-solstice
+	pkgdesc = Library for working with Valve's VDF text format (Solstice Game Studios fork)
+	pkgver = 3.5
+	pkgrel = 1
+	url = https://github.com/solsticegamestudios/vdf
+	arch = any
+	license = MIT
+	checkdepends = python-pytest-cov
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	provides = python-vdf
+	conflicts = python-vdf
+	source = vdf-3.5.tar.gz::https://github.com/solsticegamestudios/vdf/archive/v3.5.tar.gz
+	sha256sums = 79768533023f9fd08d329924947912408ce65a97680e44422cbe2aff0d1594bb
+
+pkgname = python-vdf-solstice
