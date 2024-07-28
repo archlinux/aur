@@ -12,11 +12,15 @@ makedepends=('git' 'autoconf')
 optdepends=('python2' 'wxpython: gui support')
 provides=('tinc-pre' 'tinc-pre-systemd')
 conflicts=('tinc' 'tinc-pre-systemd')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/gsliepen/tinc/archive/refs/tags/release-$pkgver.tar.gz")
-sha256sums=('bd2d010a1bdeb1dd767f6fbc769fce2a2169119fb3d177df928c27d1f20b5775')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/gsliepen/tinc/archive/refs/tags/release-$pkgver.tar.gz"
+        "tinc-1.1_pre18-fix-upnp.patch")
+sha256sums=('bd2d010a1bdeb1dd767f6fbc769fce2a2169119fb3d177df928c27d1f20b5775'
+            '3ab0064994f62a649f6736d732e5617deba5cb686e0159ecf8e42f773b1fb9b5')
 
 build() {
     cd "$srcdir/tinc-release-$pkgver"
+
+    patch -p1 < "../tinc-1.1_pre18-fix-upnp.patch"
 
     autoreconf -fsi
     ./configure \
