@@ -14,7 +14,7 @@ pkgname=(
   libnm-iwd
   nm-iwd-cloud-setup
 )
-pkgver=1.48.4
+pkgver=1.48.6
 pkgrel=1
 pkgdesc="Network connection manager and user applications; using iwd backend instead of wpa_supplicant"
 url="https://networkmanager.dev/"
@@ -64,7 +64,7 @@ checkdepends=(
 )
 source=("git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#tag=$pkgver"
         "$pkgbase.install")
-b2sums=('323cff19f9d4afb5d3773d74928fc0e6ec819d11ebb30b555e86fdde0e2dc95361d34b60e2ebf3417d9ef1bcf8321658510dda745df0203916a05942c803206e'
+b2sums=('cfa1a7881d24e35eb1bfd41282fdabc47513dbd354740d8988fa30416cab5f3fc2bbac2742a280310366d95479108161f1a1b0f87dbfd8b0b7a1bd0084f421d7'
         '1045d7a75487dd063e2d52f2c94944c04650b9337d4cb839b66dc692f477797406ed2164725a53a1c213c46dd7ea398ca9764ee09386766554aa179d8c320cd2')
 
 build() {
