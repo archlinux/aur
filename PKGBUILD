@@ -3,12 +3,12 @@
 
 _pkgname=neural-amp-modeler-lv2
 pkgname=$_pkgname-git
-pkgver=0.1.3.r14.43fb036
+pkgver=0.1.3.r23.1ff6dab
 pkgrel=1
 pkgdesc='Neural Amp Modeler (NAM) LV2 plugin (git version)'
 arch=(aarch64 armv7h i686 pentium4 riscv64 riscv x86_64)
 url='https://github.com/mikeoliphant/neural-amp-modeler-lv2'
-license=(GPL3)
+license=(GPL-3.0-only)
 depends=(gcc-libs glibc)
 makedepends=(git cmake)
 provides=($_pkgname)
