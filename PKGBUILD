@@ -2,7 +2,7 @@
 
 pkgname=anycubic-slicer
 provides=("$pkgname")
-pkgver=1.3.2
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="G-code generator for 3D printers (Anycubic fork of Prusa Slicer)"
 arch=('x86_64')
