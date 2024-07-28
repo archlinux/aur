@@ -10,6 +10,8 @@ pkgbase = openutau
 	depends = fuse-common
 	options = !strip
 	source_x86_64 = OpenUtau-linux-x64.tar.gz::https://github.com/stakira/OpenUtau/releases/download/build%2F0.1.529/OpenUtau-linux-x64.tar.gz
+	source_x86_64 = openutau.desktop
+	source_x86_64 = openutau.svg
 	b2sums_x86_64 = 287463dc16152f58b6f5e218dbd0f7ff96619fde3111757663b6d7a34147623c7bfcad38dd73b4eeb23db3ce4cfb0ece27915bdb3b8f25bd52fae3a09e9d5425
 
 pkgname = openutau
