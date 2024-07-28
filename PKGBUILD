@@ -1,6 +1,6 @@
 # Maintainer: maoyaotang <292898660@qq.com>
 
-pkgname=ttf-HONORSans
+pkgname=ttf-honorsans
 _pkgname=honorsans
 pkgver=2024.7.28
 pkgrel=1

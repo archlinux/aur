@@ -1,4 +1,4 @@
-pkgbase = ttf-HONORSans
+pkgbase = ttf-honorsans
 	pkgdesc = 华为HONORSans字体
 	pkgver = 2024.7.28
 	pkgrel = 1
@@ -9,4 +9,4 @@ pkgbase = ttf-HONORSans
 	source = git+https://gitee.com/mao-yaotang/honorsans.git
 	sha256sums = SKIP
 
-pkgname = ttf-HONORSans
+pkgname = ttf-honorsans
