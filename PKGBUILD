@@ -6,17 +6,18 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-argparse
-pkgver=3.0
+pkgver=3.1
 pkgrel=1
 arch=('any')
 pkgdesc="Argument Parser for Modern C++ (Android ${_android_arch})"
 url="https://github.com/p-ranav/argparse"
-license=("MIT")
+license=('MIT')
+groups=('android-argparse')
 depends=('android-ndk')
 makedepends=('android-cmake')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/p-ranav/argparse/archive/v${pkgver}.tar.gz")
-md5sums=('cda6aa415ca13319d3975ebaa75750a5')
+md5sums=('11822ccbe1bd8d84c948450d24281b67')
 
 build() {
     cd "${srcdir}/argparse-${pkgver}"
@@ -35,5 +36,5 @@ package() {
     cd "${srcdir}/argparse-${pkgver}"
     source android-env ${_android_arch}
 
-    make -C build DESTDIR="$pkgdir" install
+    make -C build DESTDIR="${pkgdir}" install
 }
