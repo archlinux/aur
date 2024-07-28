@@ -1,27 +1,25 @@
 # Maintainer: Benjamin Voisin <benjamin.voisin@ens-rennes.fr>
 pkgname=sunpaper
-pkgver=v2.0
+pkgver=2.1
 pkgrel=1
 pkgdesc="An utility to change wallpaper based on local sunrise and sunset times."
 arch=('x86_64')
 url="https://github.com/hexive/$pkgname"
 license=('Apache')
 depends=('sunwait' 'wallutils')
-makedepends=('git')
 optdepends=('swww' 'pywall' 'python-pywal')
-_tag=1a987b75996a349a67bce41cb94ecca62a0ec0c4 #git rev-parse $pkgver
-source=( "$pkgname-$pkgver::git+$url.git#tag=$_tag")
-sha256sums=('SKIP')
+source=("$pkgname-v$pkgver.tar.gz::https://github.com/hexive/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('33f9568b40bef4ff10f9adf54f48829c979e4251a25424000171f4f0711f1043')
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
   # As we copy the defaults wallpapers into /ush/share/sunpaper, the default
   # path to found them should be this one
   sed -i 's|wallpaperPath=".*"|wallpaperPath="/usr/share/sunpaper/images/Corporate-Synergy"|' AUR/config
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
   mkdir -p $pkgdir/usr/share/sunpaper
   mkdir -p $pkgdir/usr/bin
   cp sunpaper.sh $pkgdir/usr/bin/sunpaper

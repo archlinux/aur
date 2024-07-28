@@ -1,6 +1,6 @@
 pkgbase = sunpaper
 	pkgdesc = An utility to change wallpaper based on local sunrise and sunset times.
-	pkgver = v2.0
+	pkgver = 2.1
 	pkgrel = 1
 	url = https://github.com/hexive/sunpaper
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = sunpaper
 	optdepends = swww
 	optdepends = pywall
 	optdepends = python-pywal
-	source = sunpaper-v2.0::git+https://github.com/hexive/sunpaper.git#tag=1a987b75996a349a67bce41cb94ecca62a0ec0c4
-	sha256sums = SKIP
+	source = sunpaper-v2.1.tar.gz::https://github.com/hexive/sunpaper/archive/refs/tags/v2.1.tar.gz
+	sha256sums = 33f9568b40bef4ff10f9adf54f48829c979e4251a25424000171f4f0711f1043
 
 pkgname = sunpaper
