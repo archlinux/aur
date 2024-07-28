@@ -1,27 +1,33 @@
 # Maintainer: Manuel Wiesinger <m {you know what belongs here} mmap {and here} at>
 
 _srcname=virtme-ng
-pkgver=v1.25.r36.g3bb0256
-pkgrel=1
 pkgname=$_srcname-git
+pkgver=v1.25.r50.g599d8ba
+pkgrel=1
 pkgdesc="A tool that allows to easily and quickly recompile and test a Linux kernel, starting from the source code."
-arch=('any')
+arch=('x86_64')
 url="https://github.com/arighi/virtme-ng"
 license=('GPL-2.0-only')
-makedepends=('git')
-depends=('bash' 'python>=3.8' 'python-argcomplete' 'python-importlib-metadata' 'python-requests' 'python-setuptools' 'qemu>=1.6')
+makedepends=('cargo' 'git')
+depends=('bash' 'gcc-libs' 'glibc' 'python-argcomplete' 'python-importlib-metadata' 'python-requests' 'python-setuptools' 'python>=3.8' 'qemu>=1.6')
 optdepends=('busybox: BusyBox support')
 conflicts=('virtme-git' 'virtme-ng')
-source=("git+${url}.git")
-b2sums=('SKIP')
+source=("git+${url}.git"
+	"git+https://github.com/arighi/virtme-ng-init.git")
+b2sums=('SKIP' 'SKIP')
 
 prepare() {
     cd "$srcdir/${_srcname}"
+    git submodule init
+    git config submodule.virtme_ng_init.url "$srcdir/virtme-ng-init"
+    git -c protocol.file.allow=always submodule update
+}
 
-    # Sumlinks do not work with the latest setuptools (could also be something
-    # else). So we have to replace the link with its target as a quick fix.
-    rm virtme/scripts
-    cp -r bin virtme/scripts
+build() {
+    cd "$srcdir/${_srcname}"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    BUILD_VIRTME_NG_INIT=1 python setup.py build
 }
 
 package() {
