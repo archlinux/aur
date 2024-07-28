@@ -37,7 +37,7 @@ build() {
 	export CGO_LDFLAGS="${LDFLAGS}"
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
     go build -v -tags "$(grep -E '^BUILDTAGS :=' Makefile | sed 's/.*= //')" -o "build/${_pkgname}" -ldflags "\
-    -X ${url#https://}/v2/pkg/${_pkgname}/version.crcVersion=${pkgver} \
+    -X ${url#https://}/v2/pkg/${_pkgname}/version.crcVersion=${pkgver%%.r*} \
     -X ${url#https://}/v2/pkg/${_pkgname}/version.ocpVersion=$(grep -E '^OPENSHIFT_VERSION \?=' Makefile | sed 's/.*= //') \
     -X ${url#https://}/v2/pkg/${_pkgname}/version.okdVersion=$(grep -E '^OKD_VERSION \?=' Makefile | sed 's/.*= //') \
     -X ${url#https://}/v2/pkg/${_pkgname}/version.microshiftVersion=$(grep -E '^MICROSHIFT_VERSION \?=' Makefile | sed 's/.*= //') \
@@ -53,7 +53,7 @@ build() {
 # check() {
 #   cd "${srcdir}/${_pkgsrc}"
 #   go test -tags "$(grep -E '^BUILDTAGS :=' Makefile | sed 's/.*= //')" -ldflags "\
-#     -X ${url#https://}/v2/pkg/${_pkgname}/version.crcVersion=${pkgver} \
+#     -X ${url#https://}/v2/pkg/${_pkgname}/version.crcVersion=${pkgver%%.r*} \
 #     -X ${url#https://}/v2/pkg/${_pkgname}/version.ocpVersion=$(grep -E '^OPENSHIFT_VERSION \?=' Makefile | sed 's/.*= //') \
 #     -X ${url#https://}/v2/pkg/${_pkgname}/version.okdVersion=$(grep -E '^OKD_VERSION \?=' Makefile | sed 's/.*= //') \
 #     -X ${url#https://}/v2/pkg/${_pkgname}/version.microshiftVersion=$(grep -E '^MICROSHIFT_VERSION \?=' Makefile | sed 's/.*= //') \
