@@ -2,7 +2,7 @@
 # Maintainer: Radu C. Martin <radu dot c dot martin at gmail dot com>
 
 pkgname=textpieces
-pkgver=4.0.7
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="Small tool for quick text transformations"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ checkdepends=('appstream-glib')
 conflicts=("${pkgname}-git")
 options=('!debug' '!emptydirs')
 source=("${url}/-/archive/v${pkgver/_/-}/${pkgname}-v${pkgver/_/-}.tar.gz")
-b2sums=('7fec75efb2e464e82b3e72897e4fe063832927c16d1b2fc9c15ca153b75434db0be072d545e498971b76a6c5d64602a998f9b7271ee0af8c1a65510d498fb9ac')
+b2sums=('07e553a7ad3b247583ba42390dfbcdf16d9d46f8767e9e992367c61921b9992caf162d272f026c67be74e22e3e4b3d0f09701f6a72c2e52404b42f9822d2f4ac')
 
 build() {
   mkdir -p "${srcdir}"/output
