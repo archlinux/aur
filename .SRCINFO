@@ -10,6 +10,7 @@ pkgbase = xcorners-git
 	depends = libx11
 	depends = libxfixes
 	depends = cairo
+	provides = xcorners
 	source = git+https://github.com/Spydr06/xcorners
 	sha256sums = SKIP
 

@@ -5,6 +5,7 @@ _reponame=xcorners
 pkgver=r16.2763402
 pkgrel=1
 pkgdesc="A small utility for drawing rounded screen corners on X11 "
+provides=('xcorners')
 arch=(x86_64)
 url="https://github.com/Spydr06/xcorners"
 license=('MIT')
