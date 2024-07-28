@@ -1,5 +1,5 @@
 pkgbase = nsncd-codyps-git
-	pkgdesc = nscd-compatible daemon that proxies lookups, without caching.
+	pkgdesc = nscd-compatible daemon without caching. (fork with fixes & socket activation)
 	pkgver = v1.4.2.codyps.1.r5.gb01247c
 	pkgrel = 1
 	url = https://github.com/codyps/nsncd
