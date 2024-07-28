@@ -1,15 +1,17 @@
 # Maintainer: Hauke Stieler <mail@hauke-stieler.d>
 
 pkgname=wiki2book
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Wiki2book is a CLI tool to convert one or multiple Wikipedia articles into an eBook."
 arch=("any")
 url="https://github.com/hauke96/wiki2book"
 license=("GPL-3.0")
-depends=("pandoc" "imagemagick")
-optdepends=("ttf-dejavu: Font used in the default style")
-makedepends=("go>=1.20")
+depends=("imagemagick")
+optdepends=(
+	"ttf-dejavu: Font used in the default style"
+	"pandoc: Used as one possible way to create EPUB files")
+makedepends=("go>=1.21")
 backup=()
 conflicts=()
 provides=("wiki2book=${pkgver}")
