@@ -2,7 +2,7 @@
 
 pkgname=keym-git
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="C tool to control mouse with keyboard for X11 "
 arch=(x86_64)
 url="https://github.com/cwkx/keym"

@@ -1,11 +1,12 @@
 pkgbase = keym-git
 	pkgdesc = C tool to control mouse with keyboard for X11
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cwkx/keym
 	arch = x86_64
 	license = MIT
 	makedepends = gcc
+	makedepends = git
 	depends = libx11
 	depends = libxtst
 	source = git+https://github.com/cwkx/keym
