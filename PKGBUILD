@@ -1,11 +1,11 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-panel-git
-pkgver=r437.53fd47a
+pkgver=r441.49a40f0
 pkgrel=1
 pkgdesc="XDG Shell Wrapper Panel for COSMIC"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-panel"
-license=('GPL-3.0-or-later')
+license=('GPL-3.0-only')
 groups=('cosmic')
 depends=(
   'libxkbcommon'
