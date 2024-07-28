@@ -1,7 +1,7 @@
 # Maintainer: xiretza <xiretza+aur@xiretza.xyz>
 
 pkgname=zabbix-agent2-plugin-postgresql
-pkgver=7.0.0
+pkgver=7.0.1
 pkgrel=1
 epoch=1
 pkgdesc="Loadable plugin for PostreSQL integration in Zabbix agent2"
@@ -14,7 +14,7 @@ source=(
 	"$url/$pkgname-$pkgver.tar.gz"
 	"postgresql.conf"
 )
-sha256sums=('d988f39a1c72d36eed402685feac756643deba210c90f33f56f65661270c0d39'
+sha256sums=('b781a04476e0b15524f2c5a772eb8238fb1c78a185756783a07f88ac237e70cd'
             '0d6c00e85997b125513c1786cfa6755c8bbcbf9c671a083285e68ef77b5fd801')
 
 build() {
