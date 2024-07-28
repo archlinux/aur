@@ -3,40 +3,37 @@
 
 _srcname=virtme-ng
 pkgname=$_srcname-git
-pkgver=v1.25.r50.g599d8ba
+pkgver=1.25.r53.g6758f55
 pkgrel=1
 pkgdesc="A tool that allows to easily and quickly recompile and test a Linux kernel, starting from the source code."
 arch=('x86_64')
 url="https://github.com/arighi/virtme-ng"
 license=('GPL-2.0-only')
-makedepends=('cargo' 'git')
-depends=('bash' 'gcc-libs' 'glibc' 'python-argcomplete' 'python-importlib-metadata' 'python-requests' 'python-setuptools' 'python>=3.8' 'qemu>=1.6')
+depends=('gcc-libs' 'glibc' 'python' 'qemu' 'busybox' 'coreutils' 'python-requests' 'virtiofsd')
 optdepends=('busybox: BusyBox support')
+makedepends=('python-setuptools' 'python-argcomplete' 'python-argparse-manpage' 'cargo' 'git')
 conflicts=('virtme-git' 'virtme-ng')
 source=("git+${url}.git"
-	"git+https://github.com/arighi/virtme-ng-init.git")
-b2sums=('SKIP' 'SKIP')
+	    "git+https://github.com/arighi/virtme-ng-init.git")
+b2sums=('SKIP'
+        'SKIP')
+
+pkgver() {
+  cd "$srcdir/${_srcname}"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
     cd "$srcdir/${_srcname}"
-    git submodule init
-    git config submodule.virtme_ng_init.url "$srcdir/virtme-ng-init"
-    git -c protocol.file.allow=always submodule update
+    git submodule update --init --filter=tree:0 --recursive
 }
 
 build() {
     cd "$srcdir/${_srcname}"
-    export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
     BUILD_VIRTME_NG_INIT=1 python setup.py build
 }
 
 package() {
     cd "$srcdir/$_srcname"
     python setup.py install --root="$pkgdir/" --optimize=1
-}
-
-pkgver() {
-    cd "$srcdir/${_srcname}"
-    git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
