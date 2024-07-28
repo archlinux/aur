@@ -1,7 +1,7 @@
 # Maintainer: Ash <xash at riseup d0t net>
 pkgname=alterware-launcher-git
 _pkgname=alterware-launcher
-pkgver=r372.5e161f6
+pkgver=0.7.0.r383.812d880
 pkgrel=1
 provides=('alterware-launcher')
 pkgdesc='AlterWare.dev updater & launcher, written in Rust.'
