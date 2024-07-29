@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=draw.io
 pkgname="${_pkgname//./}-desktop-git"
-pkgver=24.6.4.r1.g7e6d2b0
-_electronversion=30
+pkgver=24.6.4.r3.g1f37396
+_electronversion=31
 _nodeversion=20
 pkgrel=1
 pkgdesc="A diagramming and whiteboarding desktop app based on Electron that wraps the core draw.io editor."
@@ -21,6 +21,7 @@ makedepends=(
     'nvm'
     'libicns'
     'imagemagick'
+    'curl'
 )
 provides=("${pkgname%-git}=${pkgver}")
 conflicts=("${pkgname%-git}")
@@ -48,7 +49,7 @@ build() {
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${_pkgname//./}-desktop" --pkgdesc="${pkgdesc}" --categories="Graphics" --exec="${pkgname%-git} %U"
+    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Graphics" -name="${pkgname%-git}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
