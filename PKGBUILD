@@ -1,7 +1,7 @@
 # Maintainer: Gregor Kaelin <kaelingre at gmail dot com>
 pkgname=xeus3
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ implementation of the Jupyter kernel protocol - Legacy version 3.2"
 arch=("x86_64")
 url="https://github.com/QuantStack/xeus"
@@ -10,10 +10,9 @@ depends=('openssl' 'crypto++' 'nlohmann-json' 'xtl' 'zeromq')
 makedepends=('cmake' 'zeromq' 'cppzmq')
 conflicts=('xeus')
 provides=('xeus=3.2.0')
-options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/QuantStack/xeus/archive/$pkgver.tar.gz")
 sha256sums=('c0bf95e0cc58c083c99f49cdbf84fc60a1c03bed89d2cd63c10697ae8c87d1d1')
-options=(staticlibs)
+options=(staticlibs !debug)
 
 build() {
   cd "xeus-$pkgver"

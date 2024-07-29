@@ -1,7 +1,7 @@
 pkgbase = xeus3
 	pkgdesc = C++ implementation of the Jupyter kernel protocol - Legacy version 3.2
 	pkgver = 3.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/QuantStack/xeus
 	arch = x86_64
 	license = BSD
@@ -16,6 +16,7 @@ pkgbase = xeus3
 	provides = xeus=3.2.0
 	conflicts = xeus
 	options = staticlibs
+	options = !debug
 	source = xeus3-3.2.0.tar.gz::https://github.com/QuantStack/xeus/archive/3.2.0.tar.gz
 	sha256sums = c0bf95e0cc58c083c99f49cdbf84fc60a1c03bed89d2cd63c10697ae8c87d1d1
 
