@@ -3,8 +3,8 @@
 pkgname=steam-gamepadui-session-git
 _gitown=chenx-dust
 _gitdir=steam-gamepadui-session
-pkgver=r8.015e098
-pkgrel=2
+pkgver=r17.fabfbd9
+pkgrel=1
 pkgdesc="Steam Big Picture session based on gamescope for vanilla Arch Linux"
 arch=('any')
 url="https://github.com/${_gitown}/${_gitdir}"
@@ -19,7 +19,7 @@ optdepends=(
 	'gamemode: for performance tuning'
 	'lib32-gamemode: for performance tuning'
 )
-conflict=('gamescope-session-steam-git')
+conflicts=('gamescope-session-steam-git')
 makedepends=('git')
 source=("${_gitdir}::git+https://github.com/${_gitown}/${_gitdir}.git")
 md5sums=('SKIP')

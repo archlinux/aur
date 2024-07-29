@@ -1,7 +1,7 @@
 pkgbase = steam-gamepadui-session-git
 	pkgdesc = Steam Big Picture session based on gamescope for vanilla Arch Linux
-	pkgver = r8.015e098
-	pkgrel = 2
+	pkgver = r17.fabfbd9
+	pkgrel = 1
 	url = https://github.com/chenx-dust/steam-gamepadui-session
 	arch = any
 	license = MIT
@@ -15,6 +15,7 @@ pkgbase = steam-gamepadui-session-git
 	optdepends = steam-removable-media-git: removable media support
 	optdepends = gamemode: for performance tuning
 	optdepends = lib32-gamemode: for performance tuning
+	conflicts = gamescope-session-steam-git
 	source = steam-gamepadui-session::git+https://github.com/chenx-dust/steam-gamepadui-session.git
 	md5sums = SKIP
 
