@@ -1,0 +1,13 @@
+pkgbase = evi
+	pkgdesc = Editing layer for secure, encrypted documents
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/notwithering/evi
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	source = evi-1.0.0.tar.gz::https://github.com/notwithering/evi/archive/v1.0.0.tar.gz
+	sha256sums = 9441d08037b7f97ddc232a540df949c40fd349cf31e1055c0dc91faa4eb6e8e0
+
+pkgname = evi
