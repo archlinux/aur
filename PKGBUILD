@@ -13,7 +13,7 @@
 pkgbase=mesa-minimal-git
 pkgname=(mesa-minimal-git opencl-rusticl-mesa-minimal-git)
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
-pkgver=24.3.0_devel.192479.c33d2db06ac
+pkgver=24.3.0_devel.192698.0acc31a0013
 pkgrel=1
 arch=('x86_64')
 makedepends=(git meson ninja libglvnd python-packaging python-mako xorgproto libxml2 libx11  libva elfutils libxrandr
@@ -63,6 +63,7 @@ build() {
        -D platforms=x11,wayland \
        -D gallium-drivers=radeonsi,llvmpipe,zink,virgl,iris \
        -D vulkan-drivers=amd,swrast,intel \
+       -D legacy-x11=dri2 \
        -D dri3=enabled \
        -D egl=enabled \
        -D gallium-extra-hud=true \
