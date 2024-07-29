@@ -1,6 +1,6 @@
 # Maintainer: acuteenvy
 pkgname=tlrc
-pkgver=1.9.2
+pkgver=1.9.3
 pkgrel=1
 pkgdesc="Official tldr client written in Rust"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('cargo')
 provides=('tldr')
 conflicts=('tldr')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('af610d3484c9f8aca0eb091ab6d92d9ef88dce62c100828febdeb80dead105e3a7bfe0432a8e69227c5cf65072157d94446556752efc459bd282f43bdc7f89f8')
+b2sums=('fd80fa77358a3989cf0a495acf5da310cbeecd0d3484098567c0b2930517880d9f9ff8224251b0ea79b13cb32abc3debdb2d57d151090f606e4172d76c983585')
 # This is needed for `ring` to compile. See https://github.com/briansmith/ring/issues/1444
 options=('!lto')
 
