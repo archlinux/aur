@@ -5,7 +5,7 @@
 pkgname=musicpod
 _app_id=org.feichtmeier.Musicpod
 pkgver=1.5.0
-pkgrel=2
+pkgrel=3
 _flutterver=3.19.5
 pkgdesc="Music, radio, television and podcast player"
 arch=('x86_64' 'aarch64')
@@ -35,7 +35,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  export FVM_CACHE_PATH="$srcdir/fvm"
+  export FVM_CACHE_PATH="$srcdir/.fvm"
   fvm flutter build linux --release
 }
 
