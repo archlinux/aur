@@ -1,11 +1,11 @@
-# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Maintainer: Dee.H.Y <dongfengweixiao at hotmail dot com>
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 # This repository is a fork of musicpod-git.
 # Before executing makepkg, you can set FVM_CACHE_PATH to $HOME/fvm or the path specified by the cachePath field in the $HOME/.config/fvm/.fvmrc file.
 pkgname=musicpod
 _app_id=org.feichtmeier.Musicpod
-pkgver=1.4.5
-pkgrel=3
+pkgver=1.5.0
+pkgrel=1
 _flutterver=3.19.5
 pkgdesc="Music, radio, television and podcast player"
 arch=('x86_64' 'aarch64')
@@ -16,11 +16,11 @@ makedepends=('clang' 'cmake' 'fvm' 'ninja')
 provides=("${pkgname}")
 conflicts=('musicpod-git' 'musicpod-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ubuntu-flutter-community/musicpod/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('1e5ffa5ff2f42fec14d2572d87efad4d6c2ae8034ac665770cbcc50bdfca4ae1')
+sha256sums=('4d96ec7aa5ab9965a8f7b85db6caf2fdbdf4bc6701a8d68f10e1963bd53c5c62')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
-  export FVM_CACHE_PATH="$srcdir/fvm"
+  export FVM_CACHE_PATH="$HOME/.fvm"
   fvm install "${_flutterver}"
   fvm global "${_flutterver}"
 
