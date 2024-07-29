@@ -2,9 +2,9 @@
 _appname=anythingllm
 pkgname="${_appname}-desktop-bin"
 _pkgname=Anything-LLM-Desktop
-pkgver=1.5.7
+pkgver=1.0.0
 _electronversion=26
-pkgrel=2
+pkgrel=1
 pkgdesc="The all-in-one AI application, tool suite, and API for RAG & Agents for Docker & Desktop."
 arch=('x86_64')
 url="https://useanything.com/"
@@ -18,7 +18,6 @@ conflicts=(
 depends=(
     "electron${_electronversion}"
     'nodejs'
-    'python-setuptools'
 )
 makedepends=(
     'fuse2'
@@ -32,7 +31,7 @@ source=(
     "LICENSE::https://raw.githubusercontent.com/Mintplex-Labs/anything-llm/master/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('3f3c201fe39e16a1839471995fcbaaad41200be6bcf3421729e3c46efd741c89'
+sha256sums=('4c5c8118dcf8621dae7a2a301c488c64199004a6f1d8fe1f36d2a7711365553d'
             '782d2dc18a1ed9028ca992520f42b2e0b6187807da0d14455b8ae608e2e5692e'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
