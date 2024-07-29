@@ -1,6 +1,6 @@
 pkgbase = joplin-beta-appimage-wayland-hook
 	pkgdesc = Pacman hook to change joplin-beta-appimage to start with electron flags to start with wayland after install or upgrade.
-	pkgver = 1
+	pkgver = 2
 	pkgrel = 1
 	install = joplin-beta-appimage-wayland-hook.install
 	arch = any
@@ -9,6 +9,6 @@ pkgbase = joplin-beta-appimage-wayland-hook
 	source = joplin-beta-appimage-wayland.hook
 	source = joplin-beta-appimage-wayland
 	sha1sums = d55e3b40ce9f2938b8faebcfa090416c92efa7e4
-	sha1sums = 05d85cbab17fafbf7ba4214e46aca335306b66b5
+	sha1sums = 4a67d353ff44b074cfa9d4e21b26d6f4eb481a65
 
 pkgname = joplin-beta-appimage-wayland-hook

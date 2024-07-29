@@ -1,5 +1,5 @@
 post_install() {
-    TARGET_PATH="/usr/bin/joplin-beta-appimage"
+    TARGET_PATH="/usr/bin/joplin-desktop"
     EXPECTED_LINK_TARGET="/opt/joplin-beta-appimage/joplin-beta-appimage"
 
     # Check if the target path is a symlink
