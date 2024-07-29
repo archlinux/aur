@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=RespawnIRC
+Comment=Interface de client IRC pour les forums de JVC
+Exec=RespawnIRC %U
+Icon=/usr/share/icons/hicolor/48x48/apps/respawnirc.ico
+Terminal=false
+Type=Application
+Categories=Network;Chat;

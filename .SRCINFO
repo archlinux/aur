@@ -1,0 +1,18 @@
+pkgbase = respawnirc
+	pkgdesc = Logiciel offrant une interface de client IRC pour les forums de jeuxvideo.com
+	pkgver = 3.1.16
+	pkgrel = 1
+	url = https://pijon.fr/RespawnIRC/
+	arch = x86_64
+	license = Zlib
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = qt5-multimedia
+	depends = qt5-webengine
+	depends = hunspell
+	source = https://github.com/FranckRJ/RespawnIRC/archive/refs/tags/v3.1.16.tar.gz
+	source = respawnirc.desktop
+	sha256sums = SKIP
+	sha256sums = 220ebdf594fd3f69a971f331d848ce07a5624636221e0c0f768f0ad1ff56b7c2
+
+pkgname = respawnirc
