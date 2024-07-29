@@ -1,5 +1,5 @@
 pkgname=gpt4all-chat
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="run open-source LLMs anywhere"
 arch=("x86_64")
@@ -17,7 +17,7 @@ source=(
     "002-disable-downloading-model.diff"
 )
 declare -rAg _modules_name_map=(
-    [gpt4all-backend/llama.cpp-mainline]=https://github.com/nomic-ai/llama.cpp/archive/2bae44a07fddf10512005c9475b73c09d38364a2.tar.gz
+    [gpt4all-backend/llama.cpp-mainline]=https://github.com/nomic-ai/llama.cpp/archive/c6546b0544ad2c01e8a1630b101e92336a68b036.tar.gz
     [gpt4all-backend/llama.cpp-mainline/ggml/src/kompute]=https://github.com/nomic-ai/kompute/archive/f592b5bca3cbc169feb194218a086b18d618cca4.tar.gz
     [gpt4all-chat/usearch]=https://github.com/nomic-ai/usearch/archive/22cfa3bd00ea542132ee826cdb220f9d6434bd43.tar.gz
     [gpt4all-chat/usearch/fp16]=https://github.com/Maratyszcza/FP16/archive/0a92994d729ff76a58f692d3028ca1b64b145d91.tar.gz
@@ -40,12 +40,12 @@ do
         source+=("$_source_str")
     fi
 done
-sha256sums=('2ba3d2daabc290ce64810f230f00df64cd89d87902f3fd2944fc1e800fcbfff0'
+sha256sums=('da5ce43c0dbc72611d7b0f075acac55023bc7b5bd9f6799f6a72fd01f38b0ff9'
             '11b0dc92cff31b9eb857d6c9d0f58ebed7bad4a01faf220d66c0d2bc9cbb9593'
             'a01b1bcf4f184a98405bfb3a848b96114b03a5c59d37927dfc47d061fe0aa25d'
             'b16fc2ee15a1df76e0459df32905285c94fb59135595ccbff2095167c3c865a1'
             'b5c35b9e64abe4968bd887128d94e02272072b44267c58a057a08971e3ca6806'
-            'f5662ff78271aa036fd9c119e7996990cfd319e2ed997fc736e0372234e906c4'
+            '400070f7f8828256a4dd7434e5ac1d254acfcd7e3e298dc82d20347bb597693d'
             '5f151fe3d71bb7b719eb50ed4bdedfde9c92d9d21c7eea172eec177b9875eff5'
             'a91f4770ff9c39f4d72e339c379f566b3bbb359fa66122d85fc0bae3dde7abc7'
             '8c7450f146920b7f312d51aede2ff39561fb2d926c2abd61ab136187ffaf9620')
