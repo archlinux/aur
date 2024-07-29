@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=media-hoarder-bin
 _pkgname="Media Hoarder"
-pkgver=1.3.4
+pkgver=1.3.5
 _electronversion=13
-pkgrel=4
+pkgrel=1
 pkgdesc="The media frontend for data hoarders and movie lovers"
 arch=('x86_64')
 url="https://github.com/theMK2k/Media-Hoarder"
@@ -21,7 +21,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/theMK2k/Media-Hoarder/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('b190b12fc40a476488ce68e479b73546ad1927c65d7e581cf2ec6f083e06d9a1'
+sha256sums=('1ddfd8b0202aa3274b830f4f0418c847fd2621082812902783ab2404f4a06884'
             '3c67fce0428a3d133bb589cd1db329789ec235049af1412511f89420c99ae9a6'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
