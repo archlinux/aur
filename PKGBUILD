@@ -3,7 +3,7 @@
 
 _pkgname="rbspy"
 pkgname="${_pkgname}-bin"
-pkgver=0.23.0
+pkgver=0.24.0
 pkgrel=1
 pkgdesc="Sampling profiler for Ruby"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -16,18 +16,18 @@ depends_aarch64=('glibc' 'gcc-libs')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
-source=("README.md-${pkgver}::${_url}/raw/v${pkgver}/README.md"
-        "LICENSE.md-${pkgver}::${_url}/raw/v${pkgver}/License.md")
+source=("README-${pkgver}.md::${_url}/raw/v${pkgver}/README.md"
+        "LICENSE-${pkgver}.md::${_url}/raw/v${pkgver}/License.md")
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname}-x86_64-unknown-linux-gnu.tar.gz")
 source_i686=("${_pkgsrc}-i686.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname}-i686-unknown-linux-musl.tar.gz")
 source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname}-aarch64-unknown-linux-gnu.tar.gz")
 source_armv7h=("${_pkgsrc}-armv7h.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname}-armv7-unknown-linux-musleabihf.tar.gz")
 sha256sums=('2f7b5020c7b8023d6edbeccc19f3e3cb86ffcdd4055ebd87adc2f29a9e2ae902'
             '5705baf37fec97f83ce5e9624118a3479c4b1ed15f56e168c7f020700331a5df')
-sha256sums_x86_64=('0a177c4fa49d17c86820966fd830d35006046481c5af300e601dcf1e2df40e27')
-sha256sums_i686=('16665cc6f7c522e8c77015672216b8441c324df058b2ec5d5700342b332b94f5')
-sha256sums_aarch64=('e323b7ccacd8faf2e970f9d5f31b336e7b3b22583ea1e799919d958e21b31233')
-sha256sums_armv7h=('88efbb3fa74b9da0d9727a42a86ce20b2ef368576de4f95196702202e71f3a09')
+sha256sums_x86_64=('4bb0b071bfcd5893c6c0a1a3ba6f1da857cdb4705c2a3b62f34b289a3e4bf1b0')
+sha256sums_i686=('bfa839d8a2dda518c340384bb7fdc4e4f0200f1f65198bf0184ef1ebf9c449b2')
+sha256sums_aarch64=('2c3be55ed2ea36d0c5200b646843833fa81b66727d3db3d6487d868057213b96')
+sha256sums_armv7h=('cacc1a2f10904162425f1f170783b41b91dee8bfe89825c1bd6ef2be93cc8f07')
 
 case "${CARCH}" in
   x86_64)
@@ -51,6 +51,6 @@ esac
 package() {
   cd "${srcdir}"
   install -Dm755 "${_pkgname}-${_suffix}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 "README.md-${pkgver}"    "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -Dm644 "LICENSE.md-${pkgver}"   "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.md"
+  install -Dm644 "README-${pkgver}.md"    "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -Dm644 "LICENSE-${pkgver}.md"   "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.md"
 }
