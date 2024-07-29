@@ -5,7 +5,7 @@
 _module="glean_parser"
 _pkgname="python-${_module//_/-}"
 pkgname="$_pkgname"
-pkgver=14.2.0
+pkgver=14.3.0
 pkgrel=1
 pkgdesc="Tools for parsing the metadata for Mozilla's glean telemetry SDK"
 url="https://github.com/mozilla/glean_parser"
@@ -19,11 +19,8 @@ depends=(
   'python-diskcache' # AUR
   'python-jinja'
   'python-jsonschema'
-  'python-markupsafe'
-  'python-setuptools'
   'python-yaml'
 )
-
 makedepends=(
   'python-build'
   'python-installer'
@@ -44,7 +41,7 @@ source=(
   "$_pkgsrc.$_pkgext"::"$_dl_url/${_module::1}/$_module/$_pkgsrc.$_pkgext"
 )
 sha256sums=(
-  '036be604fdd6515846b6599ee3201f9c77305457a0cc73e8017c940ae3c881f7'
+  'b48d643029fb824b0b76adb2b4a00e88a49de4ec479ac9c5add52c511e9be481'
 )
 
 build() {
@@ -59,5 +56,5 @@ check() {
 
 package() {
   cd "$_pkgsrc"
-  python -m installer --destdir="$pkgdir" "$(ls -1 dist/*.whl | sort -rV | head -1)"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
