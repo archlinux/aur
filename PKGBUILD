@@ -1,6 +1,6 @@
 # Maintainer: Omar Emara <mail@OmarEmara.dev>
 pkgname=halide
-pkgver=16.0.0
+pkgver=18.0.0
 pkgrel=1
 pkgdesc="A language for fast and portable data-parallel computation."
 arch=('x86_64')
@@ -26,6 +26,7 @@ build() {
     -DWITH_TESTS=OFF \
     -DWITH_TUTORIALS=OFF \
     -DWITH_PYTHON_BINDINGS=OFF \
+    -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
     -Wno-dev
   ninja -C build
 }
