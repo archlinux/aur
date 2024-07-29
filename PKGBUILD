@@ -1,6 +1,6 @@
 # Maintainer: Ash <xash at riseup d0t net>
 pkgname="mpv-quality-menu-git"
-pkgver=r173.ab40a0d
+pkgver=4.1.1.r173.ab40a0d
 pkgrel=1
 pkgdesc="A userscript for MPV that allows you to change the streamed video and audio quality (ytdl-format) on the fly."
 arch=('any')
