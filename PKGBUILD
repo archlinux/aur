@@ -4,7 +4,7 @@
 
 pkgbase='gvim-wayland-lilydjwg-git'
 pkgname=('gvim-wayland-lilydjwg-git' 'vim-wayland-lilydjwg-git-runtime')
-pkgver=18588.b05737abd
+pkgver=20022.a1abaec71
 pkgrel=1
 pkgdesc="VIM: Vi IMproved. Fork by lilydjwg to add Wayland support for the GUI mode."
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ backup=()
 options=()
 makedepends=('glibc' 'libgcrypt' 'gpm' 'python' 'ruby' 'libxt' 'gtk3' 'lua'
              'gawk' 'tcl' 'zlib' 'libcanberra')
-source=("git+https://github.com/lilydjwg/vim.git#branch=wayland"
+source=("git+https://github.com/lilydjwg/vim.git#branch=all"
         vimrc
         archlinux.vim
         vimdoc.hook
@@ -30,7 +30,7 @@ sha512sums=('SKIP'
 
 pkgver() {
     cd "vim"
-    echo $(git rev-list --count origin/wayland).$(git rev-parse --short origin/wayland)
+    echo $(git rev-list --count origin/all).$(git rev-parse --short origin/all)
 }
 
 prepare() {
