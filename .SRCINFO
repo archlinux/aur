@@ -1,10 +1,13 @@
 pkgbase = reader-bin
 	pkgdesc = A minimal command line reader offering better readability of web pages on the CLI.
 	pkgver = 0.4.5
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/mrusme/reader
 	arch = i686
 	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = GPL-3.0
 	provides = reader
 	conflicts = reader
@@ -16,5 +19,11 @@ pkgbase = reader-bin
 	sha256sums_i686 = 54693382007bdc5c4bc81f5e5cdf33a31b5625dd8bc45c553a9c6197b5b91404
 	source_x86_64 = reader_0.4.5_x86_64.tar.gz::https://github.com/mrusme/reader/releases/download/v0.4.5/reader_0.4.5_linux_amd64.tar.gz
 	sha256sums_x86_64 = e5a74d0584a14602d8339c6d6121de1177efeb297b201bae442e9621d542c99e
+	source_armv6h = reader_0.4.5_armv6h.tar.gz::https://github.com/mrusme/reader/releases/download/v0.4.5/reader_0.4.5_linux_armv6.tar.gz
+	sha256sums_armv6h = 32e8d95ebcbb4e939f797fe67d008729fdd8ab892ca4d7292b22eb8b0f7eef3b
+	source_armv7h = reader_0.4.5_armv7h.tar.gz::https://github.com/mrusme/reader/releases/download/v0.4.5/reader_0.4.5_linux_armv7.tar.gz
+	sha256sums_armv7h = 9aba36acbf57110432dfcafd444622a27027b92d905f2e4bcc7eef14e8ec2df5
+	source_aarch64 = reader_0.4.5_aarch64.tar.gz::https://github.com/mrusme/reader/releases/download/v0.4.5/reader_0.4.5_linux_arm64.tar.gz
+	sha256sums_aarch64 = ccaa8c64b8e2f4703fddacda097498c4da6ce92aabc5bf1da62253e5a654dcc0
 
 pkgname = reader-bin
