@@ -1,0 +1,14 @@
+--- package.json	2024-07-28 20:57:36.595452114 -0400
++++ package2.json	2024-07-28 20:56:42.005195112 -0400
+@@ -66,10 +66,8 @@
+       ]
+     },
+     "linux": {
+-      "target": [
++      "target":
+         "appimage",
+-        "deb"
+-      ],
+       "artifactName": "deemix-gui.${ext}",
+       "category": "AudioVideo,Audio",
+       "icon": "build/icon.icns"
