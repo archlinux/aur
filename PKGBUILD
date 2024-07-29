@@ -1,4 +1,5 @@
-# Maintainer: Anthony VanBerkum <anthonyvbop@gmail.com>
+# Maintainer: Brice Vissière <dev at pystash dot me>
+# Contributor: Anthony VanBerkum <anthonyvbop@gmail.com>
 # Contributor: schuay <jakob.gruber@gmail.com>
 # Contributor: mk47at
 
@@ -24,7 +25,7 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname-$pkgver/src"
- 
+
   make DESTDIR="$pkgdir/" install
   install -D -m644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
   install -D -m644 "$srcdir/$pkgname.svg" "$pkgdir/usr/share/rftg/$pkgname.svg"
