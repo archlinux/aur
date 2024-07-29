@@ -1,4 +1,4 @@
-# Maintainer: Emanuel Serpa <emanuelvserpa@gmail.com>
+# Maintainer: Dhruva Sambrani <dhruvasambrani19[at]gmail[dot]com>
 
 pkgname=teams-for-linux-wayland-hook
 pkgver=2
