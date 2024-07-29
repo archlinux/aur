@@ -11,7 +11,7 @@ license=('GPL-3.0-or-later')
 depends=('python' 'python-colorama' 'python-colour' 'python-setproctitle' 'python-requests' 'python-pyqt6' 'python-pyqt6-webengine' 'qt6-svg' 'libappindicator-gtk3' 'python-gobject' 'python-openrazer')
 makedepends=('meson' 'ninja' 'sassc')
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/polychromatic/polychromatic/archive/v$pkgver.tar.gz")
-sha512sums=('fa1738ebf1da891946cb8ce72ebddcfb20f5bb7dfb2bbf5246873bbe47d251afdadfb9b8e70609a2d6914dfa047b2e3d1e155e41199ddb17700e18c05405d755')
+sha512sums=('0fafac6b00e6684cf78e898da075ed2b8e5ae78af0f224072fc413e2e36453b64d002d87d4369ddeb108cf87d78154ff48605b9ec20aa75cd142b8c159b8d169')
 
 build() {
   arch-meson $pkgname-$pkgver build
