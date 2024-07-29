@@ -1,8 +1,7 @@
-# Maintainer: Your Name <your.email@example.com>
-
+# Maintainer: Ash <xash at riseup d0t net>
 pkgname=respawnirc
 pkgver=3.1.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Logiciel offrant une interface de client IRC pour les forums de jeuxvideo.com"
 arch=('x86_64')
 url="https://pijon.fr/RespawnIRC/"
