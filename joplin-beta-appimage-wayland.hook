@@ -1,0 +1,17 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = joplin-beta-appimage
+
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = joplin-beta-appimage-wayland-hook
+
+
+[Action]
+Description = Defaulting to Wayland support for joplin-beta-appimage
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/joplin-beta-appimage-wayland
