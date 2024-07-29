@@ -1,0 +1,94 @@
+# Maintainer: Troplo <troplo@troplo.com>
+
+pkgname=flowfox
+_pkgname=flowfox
+pkgver=128.0.4
+pkgrel=1
+_github_rel=firefox-128.0.4.en-US.linux-x86_64-1
+pkgdesc="Fork of Firefox with minimal changes, including rebinding of default keyboard shortcuts to better match Chromium. Not affiliated with Mozilla."
+arch=('x86_64' 'i686')
+license=(MPL GPL LGPL)
+depends=(
+  alsa-lib
+  at-spi2-core
+  bash
+  cairo
+  dbus
+  ffmpeg
+  fontconfig
+  freetype2
+  gcc-libs
+  gdk-pixbuf2
+  glib2
+  glibc
+  gtk3
+  hicolor-icon-theme
+  libpulse
+  libx11
+  libxcb
+  libxcomposite
+  libxdamage
+  libxext
+  libxfixes
+  libxrandr
+  libxss
+  libxt
+  mime-types
+  nspr
+  nss
+  pango
+  ttf-font
+)
+optdepends=(
+  'hunspell-en_US: Spell checking, American English'
+  'libnotify: Notification integration'
+  'networkmanager: Location detection via available WiFi networks'
+  'speech-dispatcher: Text-to-Speech'
+  'xdg-desktop-portal: Screensharing with Wayland'
+)
+options=(!strip)
+# https://github.com/Troplo/foxrel/releases/download/firefox-128.0.4.en-US.linux-x86_64-1/firefox-128.0.4.en-US.linux-x86_64.tar.bz2
+_archive="https://github.com/Troplo/foxrel/releases/download/"
+source_x86_64=("firefox-$pkgver-x86_64.tar.bz2::$_archive/$_github_rel/firefox-$pkgver.en-US.linux-x86_64.tar.bz2")
+source=($_pkgname.sh
+        $_pkgname.desktop
+        policies.json)
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP')
+sha256sums_x86_64=('SKIP')
+
+package() {
+  # Create directories
+  mkdir -p "$pkgdir"/usr/bin
+  mkdir -p "$pkgdir"/usr/share/applications
+  mkdir -p "$pkgdir"/opt
+
+  # Install
+  cp -r firefox/ "$pkgdir"/opt/$pkgname
+
+  # Launchers
+  install -m755 $_pkgname.sh "$pkgdir"/usr/bin/$_pkgname
+
+  # Desktops
+  install -m644 *.desktop "$pkgdir"/usr/share/applications/
+
+  # Icons
+  for i in 16x16 32x32 48x48 64x64 128x128; do
+    install -d "$pkgdir"/usr/share/icons/hicolor/$i/apps/
+    ln -s /opt/$pkgname/browser/chrome/icons/default/default${i/x*}.png \
+          "$pkgdir"/usr/share/icons/hicolor/$i/apps/$_pkgname.png
+  done
+
+  # Use system-provided dictionaries
+  #rm -r "$pkgdir"/opt/$_pkgname/dictionaries
+  ln -Ts /usr/share/hunspell "$pkgdir"/opt/$pkgname/dictionaries
+  ln -Ts /usr/share/hyphen "$pkgdir"/opt/$pkgname/hyphenation
+
+  # Use system certificates
+  ln -sf /usr/lib/libnssckbi.so "$pkgdir"/opt/$pkgname/libnssckbi.so
+
+  # Disable update checks (managed by pacman)
+  mkdir "$pkgdir"/opt/$pkgname/distribution
+  install -m644 "$srcdir"/policies.json "$pkgdir"/opt/$pkgname/distribution/
+}
