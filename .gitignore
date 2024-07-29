@@ -3,5 +3,5 @@
 !.gitignore
 !PKGBUILD
 !sourcegit.desktop
-!dotnet-8.0.106.patch
+!disable-aot.patch
 !.SRCINFO
