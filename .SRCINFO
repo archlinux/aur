@@ -35,6 +35,7 @@ pkgbase = cosmic-session-git
 	optdepends = cosmic-store-git: COSMIC store
 	optdepends = cosmic-term-git: COSMIC terminal
 	optdepends = cosmic-wallpapers-git: COSMIC wallpapers
+	optdepends = vulkan-driver: packaged vulkan driver
 	provides = cosmic-session
 	conflicts = cosmic-session
 	source = git+https://github.com/pop-os/cosmic-session.git

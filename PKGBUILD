@@ -40,6 +40,7 @@ optdepends=(
   'cosmic-store-git: COSMIC store'
   'cosmic-term-git: COSMIC terminal'
   'cosmic-wallpapers-git: COSMIC wallpapers'
+  'vulkan-driver: packaged vulkan driver'
 
   # Default applications
   # See data/cosmic-mimeapps.list
