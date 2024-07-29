@@ -10,7 +10,7 @@
 
 pkgname=ungoogled-chromium
 pkgver=127.0.6533.72
-pkgrel=4
+pkgrel=5
 _launcher_ver=8
 _system_clang=1
 # ungoogled chromium variables
