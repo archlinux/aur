@@ -5,10 +5,11 @@
 pkgname=scx-scheds
 gitname=scx
 pkgver=1.0.1
-pkgrel=1
-pkgdesc='Sched_ext schedulers'
+pkgrel=2
+pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64' 'aarch64')
+backup=('etc/default/scx')
 license=('GPL-2.0-only')
 depends=('libelf' 'zlib' 'jq')
 makedepends=('git' 'python' 'meson' 'clang' 'llvm' 'llvm-libs' 'rust')
