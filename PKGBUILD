@@ -21,11 +21,11 @@ pkgver() {
 package() {
   cd "${srcdir}/mpv-quality-menu"
   
-  install -Dm 644 "quality-menu.lua" "$pkgdir/usr/share/mpv/scripts/quality-menu.lua"
-  install -Dm 644 "quality-menu.conf" "$pkgdir/usr/share/mpv/script-opts/quality-menu.conf"
+  install -Dm 644 "quality-menu.lua" "$pkgdir/etc/mpv/scripts/quality-menu.lua"
+  install -Dm 644 "quality-menu.conf" "$pkgdir/etc/mpv/script-opts/quality-menu.conf"
   
   # Optional OSC extension
-  install -Dm 644 "quality-menu-osc.lua" "$pkgdir/usr/share/mpv/scripts/quality-menu-osc.lua"
+  install -Dm 644 "quality-menu-osc.lua" "$pkgdir/etc/mpv/scripts/quality-menu-osc.lua"
   
   # Install LICENSE
   install -Dm 644 "LICENSE.md" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE.md"
