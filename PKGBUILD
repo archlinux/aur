@@ -2,7 +2,7 @@
 pkgname=cn.i4tools-bin
 _pkgname=i4tools
 pkgver=v3.06.002
-pkgrel=1
+pkgrel=2
 pkgdesc='简单好用的多功能苹果设备管理助手。'
 arch=('x86_64')
 url="https://www.i4.cn/pro_pc.html"
