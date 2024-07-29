@@ -22,10 +22,11 @@ build () {
 	cd "${srcdir}/${pkgname}/"
 
 	# Possible values for DOWNLOAD_GAMEPACKS are:
-	# "free" (free gamepacks only, downloaded from different locations)
+	# "yes" (free gamepacks only, downloaded from different locations)
 	# "all" (free & proprietary gamepacks, downloaded from different locations)
 	# "allinone" (free & proprietary gamepacks downloaded from a single archive, provided by the NRC maintainer)
-	# The "subversion" optdepend is needed when using the first 2 values
+	# "no"
+ 	# The "subversion" optdepend is needed when using the first 2 values
 	make \
 	 RADIANT_ABOUTMSG="NetRadiant-custom ${pkgver}" \
 	 DOWNLOAD_GAMEPACKS=allinone
