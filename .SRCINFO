@@ -1,0 +1,13 @@
+pkgbase = futura-icon-pack-git
+	pkgdesc = Futuristic icon pack, combination of Kora (mainly), Papirus, Tela
+	pkgver = r12
+	pkgrel = 1
+	url = https://github.com/coderhisham/Futura-Icon-Pack
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = unzip
+	source = git+https://github.com/coderhisham/Futura-Icon-Pack.git
+	md5sums = SKIP
+
+pkgname = futura-icon-pack-git
