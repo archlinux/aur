@@ -165,6 +165,7 @@ function execApp() {
 	systemd-run \
 	--user \
 	${sdOption} \
+	-p SyslogIdentifier=WeChat \
 	-p Environment=LD_PRELOAD="${LD_PRELOAD}" \
 	-u "${unitName}" \
 	-p Description="WeChat Qt" \
@@ -301,6 +302,9 @@ function execApp() {
 		--setenv XDG_DATA_HOME "${XDG_DATA_HOME}" \
 		-- \
 			"${launchTarget}"
+	if [[ $? = 0 ]]; then
+		echo '[Info] To view logs, launch this script with "--actions connect-tty" or type "journalctl --user -eu wechat-uos-qt"'
+	fi
 }
 
 function warnMulRunning() {
@@ -430,15 +434,19 @@ function launch() {
 	if [[ $(systemctl --user is-active wechat-uos-qt.service) = active ]]; then
 		warnMulRunning wechat-uos-qt.service
 	fi
-	if [[ $@ =~ "--actions" ]] && [[ $@ =~ "debug-shell" ]]; then
-		launchTarget="/usr/bin/bash"
-	else
-		launchTarget="/opt/wechat-uos-qt/files/wechat"
+	if [[ ! ${launchTarget} ]]; then
+		if [[ $@ =~ "--actions" ]] && [[ $@ =~ "debug-shell" ]]; then
+			launchTarget="/usr/bin/bash"
+		else
+			launchTarget="/opt/wechat-uos-qt/files/wechat"
+		fi
 	fi
-	if [[ $@ =~ "--actions" ]] && [[ $@ =~ "disconnect-tty" ]]; then
+	if [[ $@ =~ "--actions" ]] && [[ $@ =~ "connect-tty" ]]; then
+		sdOption="-t"
+	elif [[ $@ =~ "--actions" ]] && [[ $@ =~ "pipe-tty" ]]; then
 		sdOption="-P"
 	else
-		sdOption="-t"
+		sdOption=""
 	fi
 	if [[ ${trashAppUnsafe} = 1 ]]; then
 		echo "Launching WeChat UOS (unsafe)..."

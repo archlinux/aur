@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 pkgname=(wechat-uos-bwrap wechat-uos-qt wechat-key-block)
 pkgver=1.0.0.241
-pkgrel=22
+pkgrel=23
 epoch=
 pkgdesc="WeChat Qt, the so-called universal version"
 arch=('x86_64' 'aarch64' 'loong64')
@@ -98,7 +98,7 @@ source_loong64=(
 	wechat-loong64-${pkgver}.deb::"https://pro-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.wechat/com.tencent.wechat_${pkgver}_arm64.deb"
 )
 
-md5sums=('286d850e6056e997914aee0d9ec8df02'
+md5sums=('14301e8a2428d955f9d8a47ee0c9b928'
          'd9ae5b19fa5879cb164089fc98c6621a'
          '600e74549ce2258c045d5c2f7689ea63'
          'bab8288bb500c9d4d48a88af27acd16f'
@@ -114,12 +114,6 @@ md5sums_loong64=('c4d443515fe76ec35e792d43e9521887')
 
 function build() {
 	cd "${srcdir}"
-# 	if [ -d key-block ]; then
-# 		rm -rf key-block
-# 		mkdir key-block
-# 	else
-# 		mkdir key-block
-# 	fi
 	mkdir key-block -p
 	cd key-block
 	cp "${srcdir}"/{keyBlocker.cpp,CMakeLists.txt} "${srcdir}"/key-block/
