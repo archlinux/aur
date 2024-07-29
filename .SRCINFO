@@ -1,0 +1,14 @@
+pkgbase = brother-hll2405w
+	pkgdesc = CUPS driver for the Brother HL-L2405W
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = https://brother.com
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = cups
+	source = https://download.brother.com/welcome/dlf105954/hll2405wpdrv-4.1.0-1.i386.rpm
+	sha256sums = e5497bcdf1fc63e0700691b985b0817b1a34bef745f56202f85dfb6365f74647
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-hll2405w
