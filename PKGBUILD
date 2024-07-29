@@ -1,8 +1,6 @@
 # Maintainer:
 
 # options
-: ${_autoupdate:=false}
-
 : ${_build_clang:=true}
 
 : ${_build_avx:=false}
@@ -22,79 +20,36 @@ url="https://github.com/flyinghead/flycast"
 license=('GPL-2.0-only')
 arch=('x86_64' 'i686')
 
-# main package
-_main_package() {
-  depends=(
-    'alsa-lib'
-    'libgl'
-    'libzip'
+depends=(
+  'alsa-lib'
+  'libgl'
+  'libzip'
+)
+makedepends=(
+  'cmake'
+  'git'
+  'python'
+)
+
+if [[ "${_build_clang::1}" == "t" ]]; then
+  makedepends+=(
+    'clang'
+    'lld'
+    'llvm'
   )
-  makedepends=(
-    'cmake'
-    'git'
-    'python'
-  )
+fi
 
-  if [[ "${_build_clang::1}" == "t" ]]; then
-    makedepends+=(
-      'clang'
-      'lld'
-      'llvm'
-    )
-  fi
-
-  if [ "${_build_git::1}" != "t" ]; then
-    _main_stable
-  else
-    _main_git
-  fi
-
-  source+=("breakpad-disable.patch")
-  sha256sums+=('SKIP')
-
-  _source_flycast
-  #_source_vinniefalco_luabridge
-}
-
-# stable package
-_main_stable() {
-  _update_version
-
-  _pkgsrc="$_pkgname"
-  source+=("$_pkgsrc"::"git+$url.git#tag=v$_pkgver")
-  sha256sums+=('SKIP')
-
-  _prepare() {
-    :
-  }
-
-  pkgver() {
-    echo "${_pkgver:?}"
-  }
-}
-
-# git package
-_main_git() {
-  provides+=("$_pkgname=${pkgver%%.r*}")
-  conflicts+=("$_pkgname")
-
-  _pkgsrc="$_pkgname"
-  source+=("$_pkgsrc"::"git+$url.git")
-  sha256sums+=('SKIP')
-
-  _prepare() {
-    :
-  }
-
-  pkgver() {
-    cd "$_pkgsrc"
-    git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
-      | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
-  }
-}
-
-# submodules
 _source_flycast() {
+  _pkgsrc="$_pkgname"
+  source=(
+    "$_pkgsrc"::"git+$url.git#tag=v$pkgver"
+    'breakpad-disable.patch'
+  )
+  sha256sums=(
+    '40bfce628692596b0be0d8dcc1fcbc76b37dbed68587235f43803c479ba706e8'
+    '0a6a9c7bc3ba1fc3ca9bdd3134e722f6db73f2a222990e49cabae8fb687c0beb'
+  )
+
   source+=(
     'flyinghead.mingw-breakpad'::'git+https://github.com/flyinghead/mingw-breakpad.git'
     'google.oboe'::'git+https://github.com/google/oboe.git'
@@ -119,51 +74,32 @@ _source_flycast() {
     'SKIP'
     'SKIP'
   )
-
-  _prepare_flycast() (
-    cd "$srcdir/$_pkgsrc"
-    local -A _submodules=(
-      ['flyinghead.mingw-breakpad']='core/deps/breakpad'
-      ['google.oboe']='core/deps/oboe'
-      ['gpuopen-librariesandsdks.vulkanmemoryallocator']='core/deps/VulkanMemoryAllocator'
-      ['khronosgroup.glslang']='core/deps/glslang'
-      ['khronosgroup.vulkan-headers']='core/deps/Vulkan-Headers'
-      ['libsdl-org.sdl']='core/deps/SDL'
-      ['rtissera.libchdr']='core/deps/libchdr'
-      ['vinniefalco.luabridge']='core/deps/luabridge'
-      ['vkedwardli.spout2']='core/deps/Spout'
-      ['vkedwardli.syphon-framework']='core/deps/Syphon'
-    )
-    _submodule_update
-  )
 }
 
-_source_vinniefalco_luabridge() {
-  source+=(
-    'google.googletest'::'git+https://github.com/google/googletest.git'
+_prepare_flycast() (
+  cd "$srcdir/$_pkgsrc"
+  local _submodules=(
+    'flyinghead.mingw-breakpad'::'core/deps/breakpad'
+    'google.oboe'::'core/deps/oboe'
+    'gpuopen-librariesandsdks.vulkanmemoryallocator'::'core/deps/VulkanMemoryAllocator'
+    'khronosgroup.glslang'::'core/deps/glslang'
+    'khronosgroup.vulkan-headers'::'core/deps/Vulkan-Headers'
+    'libsdl-org.sdl'::'core/deps/SDL'
+    'rtissera.libchdr'::'core/deps/libchdr'
+    'vinniefalco.luabridge'::'core/deps/luabridge'
+    'vkedwardli.spout2'::'core/deps/Spout'
+    'vkedwardli.syphon-framework'::'core/deps/Syphon'
   )
-  sha256sums+=(
-    'SKIP'
-  )
+  _submodule_update
+)
 
-  _prepare_vinniefalco_luabridge() (
-    cd "$srcdir/$_pkgsrc"
-    cd 'core/deps/luabridge'
-    local -A _submodules=(
-      ['google.googletest']='third_party/gtest'
-    )
-    _submodule_update
-  )
-}
-
-# common functions
 prepare() {
   _submodule_update() {
-    local key
-    for key in ${!_submodules[@]}; do
-      git submodule init "${_submodules[${key}]}"
-      git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
-      git -c protocol.file.allow=always submodule update "${_submodules[${key}]}"
+    local _module
+    for _module in "${_submodules[@]}"; do
+      git submodule init "${_module##*::}"
+      git submodule set-url "${_module##*::}" "$srcdir/${_module%::*}"
+      git -c protocol.file.allow=always submodule update "${_module##*::}"
     done
   }
 
@@ -177,9 +113,6 @@ prepare() {
   }
 
   _prepare_flycast
-  #_prepare_vinniefalco_luabridge
-
-  _prepare
 
   cd "$_pkgsrc"
   apply-patch "$srcdir/breakpad-disable.patch"
@@ -217,28 +150,4 @@ package() {
   DESTDIR="$pkgdir" cmake --install build
 }
 
-# update version
-_update_version() {
-  : ${_pkgver:=${pkgver%%.r*}}
-
-  if [[ "${_autoupdate::1}" != "t" ]]; then
-    return
-  fi
-
-  local _response=$(curl -Ssf "$url/releases.atom")
-  local _tag=$(
-    printf '%s' "$_response" \
-      | grep '/releases/tag/' \
-      | sed -E 's@^.*/releases/tag/(.*)".*$@\1@' \
-      | grep -Ev '[a-z]{2}' | sort -V | tail -1
-  )
-  local _pkgver_new="${_tag#v}"
-
-  # update _pkgver
-  if [ "$_pkgver" != "${_pkgver_new:?}" ]; then
-    _pkgver="$_pkgver_new"
-  fi
-}
-
-# execute
-_main_package
+_source_flycast
