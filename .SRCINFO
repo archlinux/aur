@@ -1,6 +1,6 @@
 pkgbase = protoc-gen-go-grpc
 	pkgdesc = gRPC bindings generator for Go language
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/grpc/grpc-go
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = protoc-gen-go-grpc
 	makedepends = go
 	depends = glibc
 	depends = protoc-gen-go
-	source = grpc-go-cmd-protoc-gen-go-grpc-v1.4.0.tar.gz::https://github.com/grpc/grpc-go/archive/cmd/protoc-gen-go-grpc/v1.4.0.tar.gz
-	sha256sums = e932b9ceb1a338eabdb3a421b7e3bbc871f85d359d31955a5e4627ee1132f882
+	source = grpc-go-cmd-protoc-gen-go-grpc-v1.5.0.tar.gz::https://github.com/grpc/grpc-go/archive/cmd/protoc-gen-go-grpc/v1.5.0.tar.gz
+	sha256sums = 04c464ca834f411273468a51ebfd7f4b9fc22eebc6b24aa8080006ea4f1c5f00
 
 pkgname = protoc-gen-go-grpc
