@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark.wagie@proton.me>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Corey Hinshaw <corey@electrickite.org>
 pkgname=system76-firmware-git
