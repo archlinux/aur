@@ -1,6 +1,6 @@
 pkgbase = python-blis
 	pkgdesc = Fast matrix-multiplication as a self-contained Python library
-	pkgver = 0.9.1
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/explosion/cython-blis
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = python-blis
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	depends = python-numpy
-	source = python-blis-0.9.1.tar.gz::https://files.pythonhosted.org/packages/source/b/blis/blis-0.9.1.tar.gz
-	sha256sums = 7ceac466801f9d97ecb34e10dded8c24cf5e0927ea7e834da1cc9d2ed3fc366f
+	depends = python-numpy>=2.0
+	source = python-blis-1.0.0.tar.gz::https://files.pythonhosted.org/packages/source/b/blis/blis-1.0.0.tar.gz
+	sha256sums = 9ea14649ff07457e4112c7b94605e4aeb4f2fd5a8bd57c296ff8fbd154966ede
 
 pkgname = python-blis
