@@ -1,20 +1,28 @@
 pkgbase = virtme-ng
 	pkgdesc = A tool that allows to easily and quickly recompile and test a Linux kernel, starting from the source code.
-	pkgver = 1.25
-	pkgrel = 2
+	pkgver = 1.26
+	pkgrel = 1
 	url = https://github.com/arighi/virtme-ng
-	arch = any
+	arch = x86_64
 	license = GPL-2.0-only
+	makedepends = python-setuptools
+	makedepends = python-argcomplete
+	makedepends = python-argparse-manpage
+	makedepends = cargo
+	makedepends = git
 	depends = bash
-	depends = python>=3.8
-	depends = python-argcomplete
-	depends = python-importlib-metadata
+	depends = busybox
+	depends = coreutils
+	depends = gcc-libs
+	depends = glibc
+	depends = python
 	depends = python-requests
-	depends = python-setuptools
-	depends = qemu>=1.6
-	optdepends = busybox: BusyBox support
+	depends = qemu
+	depends = virtiofsd
 	conflicts = virtme
-	source = virtme-ng-1.25.tar.gz::https://github.com/arighi/virtme-ng/archive/refs/tags/v1.25.tar.gz
-	b2sums = 5b061b30cffa966199bcba5a7661f2bf5254939ba41309fc4e63e46cea2215cc132537279170a76a7099ab6c8231d90a1d82178695376a0295e7ed351aa4a418
+	source = virtme-ng-1.26.tar.gz::https://github.com/arighi/virtme-ng/archive/refs/tags/v1.26.tar.gz
+	source = virtme-init-ng-6e2b515c5c178ba2ae3206933024ad24f658f368.zip::https://github.com/arighi/virtme-ng-init/archive/6e2b515c5c178ba2ae3206933024ad24f658f368.zip
+	b2sums = a8f356591c536bf45b5cd6fcdb6c5856787231ad1eff00cbfb4bf78787a051f413d23ae86bce4e4ed1353f30dd67417a9d6b7d4feea6e32b98c0b831d300dec3
+	b2sums = 6ca1d1288a07286bf8a240ec9e0ae955b5126936d51d902276050735df474e3be01d8f5238d08cfa3822a1c9310dcccc84bd69837c8bde1ac49d249f8c6e1d61
 
 pkgname = virtme-ng
