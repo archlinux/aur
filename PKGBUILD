@@ -3,7 +3,7 @@
 
 pkgname=katawa-shoujo-reengineered
 pkgver=1.4.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A fan-made modernization of the classic visual novel"
 arch=('any')
 url='https://www.fhs.sh/projects'
@@ -11,7 +11,7 @@ license=('MPL-2.0' 'CC-BY-NC-ND')
 depends=('renpy' 'python-pypresence')
 
 source=(
-    "KSRE-linux.tar.bz2::https://github.com/fleetingheart/ksre/releases/download/v${pkgver}/KSRE-linux.tar.bz2"
+    "KSRE-${pkgver}-linux.tar.bz2::https://github.com/fleetingheart/ksre/releases/download/v${pkgver}/KSRE-linux.tar.bz2"
     "${pkgname}"
     "${pkgname}.desktop"
     "${pkgname}.png"
