@@ -2,7 +2,7 @@
 # Contributor: Senge Dev <sengedev at gmail dot com>
 
 pkgname=1panel-bin
-pkgver=1.10.9_lts
+pkgver=1.10.10_lts
 pkgrel=1
 pkgdesc="1Panel is a modern and open source Linux panel."
 arch=('x86_64' 'aarch64')
@@ -28,8 +28,8 @@ provides=(1panel)
 conflicts=(1panel)
 source_aarch64=("${pkgname}-${pkgver//_/-}-arm64.tar.gz::https://resource.fit2cloud.com/1panel/package/stable/v${pkgver//_/-}/release/1panel-v${pkgver//_/-}-linux-arm64.tar.gz")
 source_x86_64=("${pkgname}-${pkgver//_/-}-amd64.tar.gz::https://resource.fit2cloud.com/1panel/package/stable/v${pkgver//_/-}/release/1panel-v${pkgver//_/-}-linux-amd64.tar.gz")
-sha256sums_x86_64=('a5b23b46017c179d189b9ac30ae0b14bf113ad67159d6fcd01eba1c8a6f87533')
-sha256sums_aarch64=('a44bbae01b90b5ae04a10a058f441bc431fb096c866fe4b32018e6a0ea8f7b51')
+sha256sums_x86_64=('e700c337fe31b1960d3ddaef9d5ee01f920320bc5071d4f438f7fe4bd420531b')
+sha256sums_aarch64=('d241e0a8ee0f7a68f9e0f781b179f6843cff82fe74e653563d4a6e29ccd8f497')
 
 build() {
     _1panel_port=`expr $RANDOM % 55535 + 10000`
