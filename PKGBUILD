@@ -2,7 +2,7 @@
 # Contributor: Asuka Minato
 pkgname=caido-cli
 pkgver=0.39.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight web security auditing toolkit."
 arch=(x86_64 aarch64 armv7h)
 url="https://caido.io/"
