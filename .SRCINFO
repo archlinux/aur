@@ -1,0 +1,20 @@
+pkgbase = danisrace-git
+	pkgdesc = The Libre Game Dani's Race.
+	pkgver = r3.6cb5deb
+	pkgrel = 1
+	url = https://forg.madiator.cloud/BlenderDumbass/danisrace
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = upbge
+	depends = gtk3
+	depends = python
+	depends = python-cairo
+	depends = python-gobject
+	depends = hicolor-icon-theme
+	provides = danisrace
+	conflicts = danisrace
+	source = danisrace-git::git+https://forg.madiator.cloud/BlenderDumbass/danisrace.git
+	sha512sums = SKIP
+
+pkgname = danisrace-git
