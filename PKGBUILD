@@ -11,18 +11,19 @@ depends=('git')
 source=(
     "i4tools_v3.06.002.rpm::https://d-updater.i4.cn/i4linux/deb/${_pkgname}_${pkgver}.rpm"
     "cn.i4Tools.desktop"
+    "run.sh"
     "LICENSE.html::https://www.i4.cn/copyright.html"
 )
 sha256sums=('1d3c09e1a595e6bf1e66e9e283656bee7975d0353cf9926f5c5deaaff19e7d3b'
             'c39f1408107cd69076a37d14326609fb8773717914b5ee335cb039e0bd66e1ed'
+            'b7fc9c90852ce99769fb31352e33d387cb8fe8ea3ec4c6a745c73cfd719020b7'
             'f3cc70ece76bae973291aa37ced5a48da64360ec4860e8549240a5f6cd3babd4')
-
 package() {
     install -m755 -d "${pkgdir}/opt/cn.i4Tools"
     install -m755 -d "${pkgdir}/usr/share/pixmaps"
     install -m755 -d "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
     install -m755 -d "${pkgdir}/usr/bin"
-    ln -s "/opt/cn.i4Tools/run.sh" "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm755  ../run.sh "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm644 ../cn.i4Tools.desktop "$pkgdir"/usr/share/applications/cn.i4Tools.desktop 
     cp -r "${srcdir}/opt/apps/cn.i4Tools" "${pkgdir}/opt/"
     install -Dm644 ../LICENSE.html "$pkgdir/usr/share/licenses/$pkgname/LICENSE.html"
