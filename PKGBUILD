@@ -5,7 +5,7 @@
 # Contributor: Bernardo Barros
 
 pkgname=csound-blue
-pkgver=2.8.1
+pkgver=2.9.1
 pkgrel=1
 pkgdesc="A music composition environment for Csound"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ conflicts=('csound-blue')
 source=("https://github.com/kunstmusik/blue/releases/download/${pkgver}/blue-linux-${pkgver}.zip"
         "blue.desktop"
         "icons.tar.gz")
-sha256sums=('f35867f09b34a47672682700d7e049ef016f7704b4480549c41f546e093194a4'
+sha256sums=('0b36dee97570953fc1bb646a7ae80b920624fb3abf8c770ba955f57bf2844e64'
             '06dcc0dbade0b9c2eb904815aefa86d32e8e21de47fd7cd8873f139c1fb24fe6'
             '60240d02dd3f25b9df684efaf93a5fd05e520b5f46e94f24b58de60604dbae36')
 options=(!strip)
