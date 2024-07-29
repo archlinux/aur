@@ -1,13 +1,13 @@
 pkgbase = veretino
 	pkgdesc = Multiple checksums calculator
-	pkgver = 0.4.4
+	pkgver = 0.4.5
 	pkgrel = 1
 	url = https://github.com/artemvlas/veretino
 	arch = x86_64
 	license = GPL3
 	depends = qt5-base
 	depends = qt5-svg
-	source = https://github.com/artemvlas/veretino/archive/refs/tags/v0.4.4.tar.gz
-	sha256sums = 2ce000a0bc4c0fdc76f78fe75d86792c5b9dbaf1bc421436ceb7702bbfe3bcf2
+	source = https://github.com/artemvlas/veretino/archive/refs/tags/v0.4.5.tar.gz
+	sha256sums = 5f910bb76c944a3921c04b152fbc48086ae640defeaef67e4cc8450d680d2f73
 
 pkgname = veretino

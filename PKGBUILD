@@ -1,6 +1,6 @@
 # Maintainer: Artem Vlasenko <artemvlas at proton dot me>
 pkgname=veretino
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 pkgdesc="Multiple checksums calculator"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('qt5-base' 'qt5-svg')
 
 source=(https://github.com/artemvlas/veretino/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=(2ce000a0bc4c0fdc76f78fe75d86792c5b9dbaf1bc421436ceb7702bbfe3bcf2)
+sha256sums=(5f910bb76c944a3921c04b152fbc48086ae640defeaef67e4cc8450d680d2f73)
 
 build() {
 	cd "$pkgname-$pkgver"
