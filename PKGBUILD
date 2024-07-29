@@ -4,7 +4,7 @@
 pkgname=autenticacao-gov-pt
 _pkgname=autenticacao.gov
 pkgver=3.12.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Portuguese Citizen Card Application (Portugal eID)"
 arch=('i686' 'x86_64')
 url="http://www.cartaodecidadao.pt/"
@@ -19,14 +19,12 @@ depends=('qt5-base'
          'ccid'
          'libzip'
          'poppler-qt5'
-         'libxerces-c-3.1'
          'libcurl-compat'
          'xml-security-c'
          'libcurl-gnutls'
          'openjpeg2'
-         'java-runtime'
-         'java-environment'
-         'openpace-git')
+         'openpace-git'
+         'cjson')
 makedepends=('swig' 'qconf' 'git')
 optdepends=('plugin-autenticacao-gov-pt: Necessário para autenticações online'
             'autenticacao-gov-pt-pki: PKI que confirma a validade dos certificados dos CC'
@@ -68,6 +66,7 @@ package() {
   # Fix library path from debian to Arch Linux
   mv ${pkgdir}/usr/local/lib/ ${pkgdir}/usr/lib/
 
+
   # Install desktop files
   install -Dm644 ${srcdir}/${_pkgname}/pteid-mw-pt/_src/eidmw/debian/pteid-mw-gui.desktop ${pkgdir}/usr/share/applications/pteid-mw-gui.desktop
 
@@ -75,6 +74,9 @@ package() {
   install -Dm644 ${srcdir}/${_pkgname}/pteid-mw-pt/_src/eidmw/eidguiV2/fonts/lato/Lato-Black.ttf ${pkgdir}/usr/share/fonts/pteid/lato/
   install -Dm644 ${srcdir}/${_pkgname}/pteid-mw-pt/_src/eidmw/eidguiV2/fonts/lato/Lato-Bold.ttf ${pkgdir}/usr/share/fonts/pteid/lato/
   install -Dm644 ${srcdir}/${_pkgname}/pteid-mw-pt/_src/eidmw/eidguiV2/fonts/lato/Lato-Regular.ttf ${pkgdir}/usr/share/fonts/pteid/lato/
+
+  # Cleanup
+  rm -rf ${pkgdir}/usr/local/share/pteid-mw/fonts/Lato-Regular.ttf
 
   # Install image files
   install -Dm644 ${srcdir}/${_pkgname}/pteid-mw-pt/_src/eidmw/debian/pteid-signature.png ${pkgdir}/usr/share/autenticacao-gov/pteid-signature.png
