@@ -1,9 +1,9 @@
 # Maintainer: Lukas1818 aur at lukas1818 dot de
 
 pkgname=nfauthenticationkey
-_commit=178afcf58b1bc8713d1e0bfb81387e3f6f240095
-pkgver=1.1.6
-pkgrel=2
+_commit=387e7439ab85558ffe0ce3ccb13e5b85132e1045
+pkgver=1.1.8
+pkgrel=1
 arch=('any')
 pkgdesc="create a Netflix authentican Key, which can be used for the Neflix Kodi addon or somewhere else."
 url="https://github.com/CastagnaIT/NFAuthenticationKey/tree/linux"
@@ -12,7 +12,7 @@ makedepends=('sed')
 optdepends=('chromium' 'google-chrome' 'brave')
 depends=('python' 'python-pycryptodomex' 'python-websocket-client')
 source=("NFAuthenticationKey-Linux-$pkgver.tar.gz::https://github.com/CastagnaIT/NFAuthenticationKey/archive/$_commit.tar.gz")
-sha512sums=('3a50428e9d8e5f059d48671053c809d3d1434d76c0940997dd6f997380cdc626d0233affdfeaeac5f2d14f77ac5d6a442e91e4471e5a11f5e38dcc0b851f7ac7')
+sha512sums=('eab9cd9efe94f1f06d58f6d0222965d277b3c647f19cf24e959a533408e5063ad2c96b0440c6b535a9f743944331187aa7a286ebe22670dfea01db9443393379')
 
 _check_browser()
 {
