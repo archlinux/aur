@@ -1,0 +1,11 @@
+[Unit]
+Description=Control-D DNS Proxy
+After=network.target
+Before=nss-lookup.target
+
+[Service]
+ExecStart=/usr/bin/ctrld run -c /etc/controld/ctrld.toml
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

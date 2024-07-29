@@ -1,0 +1,61 @@
+# Sample configuration
+# from https://raw.githubusercontent.com/Control-D-Inc/ctrld/main/docs/config.md
+#
+# [service]
+#     log_level = "info"
+#     log_path = ""
+#     cache_enable = true
+#     cache_size = 4096
+#     cache_ttl_override = 60
+#     cache_serve_stale = true
+# 
+# [network.0]
+#     cidrs = ["0.0.0.0/0"]
+#     name = "Everyone"
+# 
+# [network.1]
+#     cidrs = ["10.10.10.0/24"]
+#     name = "Admins"
+# 
+# [upstream.0]
+#     bootstrap_ip = "76.76.2.11"
+#     endpoint = "https://freedns.controld.com/p1"
+#     name = "Control D - Anti-Malware"
+#     timeout = 5000
+#     type = "doh"
+#     ip_stack = "both"
+# 
+# [upstream.1]
+#     bootstrap_ip = "76.76.2.11"
+#     endpoint = "p2.freedns.controld.com"
+#     name = "Control D - No Ads"
+#     timeout = 5000
+#     type = "doq"
+#     ip_stack = "split"
+# 
+# [upstream.2]
+#     bootstrap_ip = "76.76.2.22"
+#     endpoint = "private.dns.controld.com"
+#     name = "Control D - Private"
+#     timeout = 5000
+#     type = "dot"
+#     ip_stack = "v4"
+# 
+# [listener.0]
+#     ip = "127.0.0.1"
+#     port = 53
+# 
+# [listener.0.policy]
+#     name = "My Policy"
+#     networks = [
+#         {"network.0" = ["upstream.1"]},
+#     ]
+#     rules = [
+#         {"*.local" = ["upstream.1"]},
+#         {"test.com" = ["upstream.2", "upstream.1"]},
+#     ]
+# 
+# [listener.1]
+#     ip = "127.0.0.69"
+#     port = 53
+#     restricted = true
