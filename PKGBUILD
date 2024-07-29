@@ -2,14 +2,14 @@
 
 pkgname=gsettings-desktop-schemas-nofont
 pkgver=46.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Shared GSettings schemas for the desktop, patched to drop font dependencies'
 arch=('any')
 url="https://gitlab.gnome.org/GNOME/${pkgname%-nofont}"
 license=('LGPL-2.1-or-later')
 groups=()
 depends=('dconf'
-         'glib2')
+         'gsettings-system-schemas')
 makedepends=('git'
              'glib2-devel'
              'gobject-introspection'
@@ -41,4 +41,10 @@ check() {
 
 package() {
   meson install -C build --destdir "$pkgdir"
+
+  # These schemas belong to gsettings-system-schemas
+  rm "$pkgdir/usr/share/glib-2.0/schemas/org.gnome.desktop.enums.xml"
+  rm "$pkgdir/usr/share/glib-2.0/schemas/org.gnome.system.locale.gschema.xml"
+  rm "$pkgdir/usr/share/glib-2.0/schemas/org.gnome.system.location.gschema.xml"
+  rm "$pkgdir/usr/share/glib-2.0/schemas/org.gnome.system.proxy.gschema.xml"
 }

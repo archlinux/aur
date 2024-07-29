@@ -1,7 +1,7 @@
 pkgbase = gsettings-desktop-schemas-nofont
 	pkgdesc = Shared GSettings schemas for the desktop, patched to drop font dependencies
 	pkgver = 46.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas
 	arch = any
 	license = LGPL-2.1-or-later
@@ -10,7 +10,7 @@ pkgbase = gsettings-desktop-schemas-nofont
 	makedepends = gobject-introspection
 	makedepends = meson
 	depends = dconf
-	depends = glib2
+	depends = gsettings-system-schemas
 	provides = gsettings-desktop-schemas
 	conflicts = gsettings-desktop-schemas
 	source = gsettings-desktop-schemas-nofont::git+https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas.git#tag=46.1
