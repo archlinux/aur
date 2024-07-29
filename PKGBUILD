@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=gomoon-git
 _pkgname=Gomoon
-pkgver=1.0.5.r245.gd64afec
+pkgver=1.0.5.r279.g326d9b6
 _electronversion=29
 _nodeversion=18
 pkgrel=1
@@ -29,11 +29,11 @@ noextract=(
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
-    "resources.zip::https://github.com/zxp19821005/My_AUR_Files/releases/download/gomoon/gomoon-resources-20240327.zip"
+    "resources.zip::https://github.com/zxp19821005/My_AUR_Files/releases/download/gomoon-1.1.7/gomoon-resources-20240729.zip"
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'c929b84eb11bd1a344b38a94f4778925a9207ad84e73392552d2ec920b2e6898'
+            'dc94dbd1243700952a3e9d4a783bbf4f31055fdbf9f727c8b0bf8d8bb5bfb605'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
