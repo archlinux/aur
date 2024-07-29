@@ -4,7 +4,7 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libxml2
-pkgver=2.13.1
+pkgver=2.13.3
 pkgrel=1
 arch=('any')
 pkgdesc="XML parsing library, version 2 (Android ${_android_arch})"
@@ -18,7 +18,7 @@ depends=('android-ndk'
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://gitlab.gnome.org/GNOME/libxml2/-/archive/v${pkgver}/libxml2-v${pkgver}.tar.gz")
-md5sums=('1b8d4e14bf1ada36132f54e29488d5c9')
+md5sums=('f312e123df5096472359b430836f653e')
 
 prepare () {
     cd "${srcdir}/libxml2-v${pkgver}"
@@ -51,7 +51,7 @@ package()
     cd "${srcdir}/libxml2-v${pkgver}"
     source android-env ${_android_arch}
 
-    make DESTDIR="$pkgdir" install
+    make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/${ANDROID_PREFIX_BIN}"
     rm -r "${pkgdir}/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
