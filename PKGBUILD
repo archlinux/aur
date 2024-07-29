@@ -2,7 +2,7 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 _pkgname=libretro-flycast
 pkgname=$_pkgname-git
-pkgver=2.3.2.r120.g7d645541f
+pkgver=2.3.2.r168.g45bf218df
 pkgrel=1
 pkgdesc="Sega Dreamcast, NAOMI, NAOMI 2, Atomiswave and System SP core (fork of reicast)"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -33,7 +33,7 @@ source=(
 b2sums=(
 	'SKIP'
 	'SKIP'
-	'e3f29bee55d7108d8f4685f41715dabe9e403b8998d8b8bb793285cadecc5842877bc6aee099fb83a386aa47dd793d40f903fb413b36786da7ebaff5e530c5f3'
+	'6786e164d9fc724a47bf5a39d6694e06e143a0b0967d4e5e86755c71a9b4cb9807bf2d53183e6b4f3e22b82bd80ed6e1a83449e4cabd5318a744a62afbfbcd0c'
 )
 
 pkgver() {
@@ -45,7 +45,6 @@ prepare() {
 	cd flycast
 	git config submodule.core/deps/Vulkan-Headers.url ../vulkan-headers
 	git -c protocol.file.allow=always submodule update
-	git cherry-pick -n 71982eda7a038e24942921e558845103b6c12326
 	patch -Np1 < ../use-system-libs.patch
 	rm -r core/deps/libretro-common/include/libchdr
 }
