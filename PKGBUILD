@@ -9,7 +9,7 @@
 # 感谢 Peternal 对 SVG图标 的授权
 pkgname=bilibili-bin
 _pkgname="io.github.msojocs.${pkgname%-bin}"
-pkgver=1.14.0_1
+pkgver=1.14.0_2
 _electronversion=21
 epoch=5
 pkgrel=1
@@ -35,8 +35,8 @@ source=(
 )
 sha256sums=('21668b8229199de1a523b82805c80d6e110a67fef5766aa7cc3c7df4416d1468'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-sha256sums_aarch64=('4b99ffca26ece2117934b900a97ce70ace3defb936d1dcfe0a6856aaebcb2827')
-sha256sums_x86_64=('e3e0c62ff0cd477c0b1547dfd7b3aab8033a74e91cb1714d782a80ec84ed09a2')
+sha256sums_aarch64=('51a188e012e17e8625b99a4046c8fe2348849855d860d7e5e095a105638e8a9d')
+sha256sums_x86_64=('41031d129284eebfdf3cc697ff212869aeca8e296188f3182d1bc63e4bf58ddb')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
