@@ -10,7 +10,7 @@
 
 pkgname=ungoogled-chromium
 pkgver=127.0.6533.72
-pkgrel=5
+pkgrel=6
 _launcher_ver=8
 _system_clang=1
 # ungoogled chromium variables
@@ -148,7 +148,7 @@ prepare() {
   _ungoogled_repo="$srcdir/$pkgname-$_uc_ver"
   _utils="${_ungoogled_repo}/utils"
   msg2 'Pruning binaries'
-  python "$_utils/prune_binaries.py" ./ "$_ungoogled_repo/pruning.list"
+  python "$_utils/prune_binaries.py" ./ "$_ungoogled_repo/pruning.list" || echo "some errors"
   msg2 'Applying patches'
   python "$_utils/patches.py" apply ./ "$_ungoogled_repo/patches"
   msg2 'Applying domain substitution'
