@@ -3,7 +3,7 @@
 pkgname=openpace-git
 _pkgname=openpace
 pkgver=1.1.3.r11.g1466126
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenPACE - Cryptographic library for EAC version 2"
 arch=('i686' 'x86_64')
 url="https://frankmorgner.github.io/openpace"
@@ -42,4 +42,7 @@ package() {
   cd ${srcdir}/${_pkgname}
   DESTDIR="${pkgdir}" make install
   mv "${pkgdir}"/usr/etc "${pkgdir}"/
+
+  # cleanup
+  rm -rf "${pkgdir}"/usr/bin/example
 }
