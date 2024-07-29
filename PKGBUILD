@@ -4,7 +4,7 @@
 _pkgname=katawa-shoujo-reengineered
 pkgname=${_pkgname}-bin
 pkgver=1.4.7
-pkgrel=2
+pkgrel=3
 pkgdesc="A fan-made modernization of the classic visual novel (uses bundled Ren'Py)"
 arch=("x86_64")
 url="https://www.fhs.sh/projects"
@@ -13,7 +13,7 @@ conflicts=('katawa-shoujo-reengineered')
 options=("!strip")
 
 source=(
-    "KSRE-linux.tar.bz2::https://github.com/fleetingheart/ksre/releases/download/v${pkgver}/KSRE-linux.tar.bz2"
+    "KSRE-${pkgver}-linux.tar.bz2::https://github.com/fleetingheart/ksre/releases/download/v${pkgver}/KSRE-linux.tar.bz2"
     "${_pkgname}"
     "${_pkgname}.png"
     "${_pkgname}.desktop"
