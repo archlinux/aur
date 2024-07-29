@@ -7,12 +7,13 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-openmpi
-pkgver=5.0.3
+pkgver=5.0.5
 pkgrel=1
 arch=('any')
 pkgdesc="High performance message passing library (MPI) (Android ${_android_arch})"
 url='https://www.open-mpi.org'
 license=('BSD-3-Clause AND LicenseRef- MPICH')
+groups=('android-openmpi')
 depends=("android-${_android_arch}-hwloc"
          "android-${_android_arch}-libevent"
          "android-${_android_arch}-libfabric"
@@ -29,13 +30,13 @@ makedepends=("android-${_android_arch}-hwloc"
              'android-environment')
 optdepends=("android-${_android_arch}-openssh: for execution on remote hosts via plm_ssh_agent")
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://www.open-mpi.org/software/ompi/v${pkgver%.*}/downloads/openmpi-$pkgver.tar.bz2"
+source=("https://www.open-mpi.org/software/ompi/v${pkgver%.*}/downloads/openmpi-${pkgver}.tar.bz2"
         '0001-Remove-shmctl.patch'
         '0004-Remove-getifaddrs.patch'
         '0006-Add-missing-headers.patch'
         '0007-Fix-missing-macros.patch'
         '0008-Force-32-bit-build.patch')
-md5sums=('af6896a78969b258da908d424c1c34ca'
+md5sums=('4dcea38dcfa6710a7ed2922fa609e41e'
          '137c5041b5a3a47574b5630b0ff82b4e'
          '49fc1b27cf765f847ce5350a0b38d3f4'
          '15e07e34a261129ccc56fe58d115827e'
@@ -43,7 +44,7 @@ md5sums=('af6896a78969b258da908d424c1c34ca'
          '44d0ecc271eea6fc0722f02c4bd1c001')
 
 prepare() {
-    cd "${srcdir}/openmpi-$pkgver"
+    cd "${srcdir}/openmpi-${pkgver}"
     source android-env ${_android_arch}
 
     patch -Np1 -i ../0008-Force-32-bit-build.patch
@@ -76,7 +77,7 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}/openmpi-$pkgver"
+    cd "${srcdir}/openmpi-${pkgver}"
     source android-env ${_android_arch}
 
     # set environment variables for reproducible build
@@ -134,7 +135,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/openmpi-$pkgver"
+    cd "${srcdir}/openmpi-${pkgver}"
     source android-env ${_android_arch}
 
     make DESTDIR="${pkgdir}" install
