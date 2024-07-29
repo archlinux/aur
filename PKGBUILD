@@ -13,10 +13,9 @@ optdepends=(
   'nvidia-utils: for Vulkan support on NVIDIA GPUs'
   'vulkan-intel: for Vulkan support on Intel GPUs'
   'vulkan-radeon: for Vulkan support on AMD GPUs'
-  'wgpu-git: WebGPU implementation (AUR)'
 )
 source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
-sha256sums=('c7eb202f4245674319180b06106dc977fa5cdc3ec1efd2e2abfa5eeb816b9abd')  # This will be replaced with the actual checksum in CI
+sha256sums=('c7eb202f4245674319180b06106dc977fa5cdc3ec1efd2e2abfa5eeb816b9abd')
 
 build() {
   cd "$pkgname-$pkgver"
