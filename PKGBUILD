@@ -3,26 +3,38 @@ pkgname="openutau"
 pkgver=0.1.529
 pkgrel=1
 pkgdesc="Open source UTAU successor"
-arch=('x86_64')
+arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/stakira/OpenUtau"
 license=('MIT')
-depends=('fuse2' 'fuse3' 'fuse-common')
-_appimage="OpenUtau-linux-x64.tar.gz"
-source_x86_64=("${_appimage}::https://github.com/stakira/OpenUtau/releases/download/build%2F${pkgver}/${_appimage}"
-               "${pkgname}.desktop"
-               "${pkgname}.svg")
-#noextract=("${_appimage}")
-b2sums_x86_64=('287463dc16152f58b6f5e218dbd0f7ff96619fde3111757663b6d7a34147623c7bfcad38dd73b4eeb23db3ce4cfb0ece27915bdb3b8f25bd52fae3a09e9d5425'
-               'c0428a24dfcd4354e5b993a8301683b23006fbd71ae039f820276e341b69af2151d0e134606dc21240c31fa21807029383e798fa9dfc17138608dba60e7ccfac'
-               'ca36996bbbcf8045c103fca717843f3c5585ebd5fe1c031a01c29a5edd5291bfe0c7206fa3c3b6c277b6832e7c35b4bee8af9768766116d981e9506d83c23166')
-options+=('!strip')
+#depends=('fuse2' 'fuse3' 'fuse-common')
+depends=('dotnet-runtime>=6')
+makedepends=('dotnet-sdk>=6')
+options=(!strip)
+source=("https://github.com/stakira/OpenUtau/archive/refs/tags/build/$pkgver.tar.gz"
+        "${pkgname}.desktop"
+        "${pkgname}.svg")
+sha256sums=('3599a8d83c1e65d24dce026e9a889e6d526d1ce170cd0bc03f7700593998b501'
+            '104e3f21f46958623fca959694f424036653e85a6b0cf7815d6a2251504db632'
+            '490fd7489bb3c4225c3f2d1e96ba8320bd481da6eb031b97229dcf06997c2f5b')
+
+build() {
+	export DOTNET_CLI_TELEMETRY_OPTOUT=1
+
+    cd "$srcdir/OpenUtau-build-$pkgver/OpenUtau"
+    dotnet publish -c "Release" -o "$srcdir/publish"
+}
 
 package() {
-    # AppImage
-    mkdir -p "${pkgdir}/opt/"
-    cp -rv "${srcdir}" "${pkgdir}/opt/${pkgname}"
-    # Desktop file
+    mkdir -p "${pkgdir}/opt/openutau/"
+    mkdir -p "${pkgdir}/usr/bin/"
+
+    cd $srcdir
+    cp -r publish/* "${pkgdir}/opt/openutau/"
+
+    # Desktop file and icon
     install -Dm644 ${pkgname}.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    # Icon
     install -Dm644 ${pkgname}.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/${pkgname}.desktop"
+
+    # Add link in /bin
+    ln -s "/opt/openutau/OpenUtau" "$pkgdir/usr/bin/openutau"
 }

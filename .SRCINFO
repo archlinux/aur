@@ -4,16 +4,17 @@ pkgbase = openutau
 	pkgrel = 1
 	url = https://github.com/stakira/OpenUtau
 	arch = x86_64
+	arch = armv7h
+	arch = aarch64
 	license = MIT
-	depends = fuse2
-	depends = fuse3
-	depends = fuse-common
+	makedepends = dotnet-sdk>=6
+	depends = dotnet-runtime>=6
 	options = !strip
-	source_x86_64 = OpenUtau-linux-x64.tar.gz::https://github.com/stakira/OpenUtau/releases/download/build%2F0.1.529/OpenUtau-linux-x64.tar.gz
-	source_x86_64 = openutau.desktop
-	source_x86_64 = openutau.svg
-	b2sums_x86_64 = 287463dc16152f58b6f5e218dbd0f7ff96619fde3111757663b6d7a34147623c7bfcad38dd73b4eeb23db3ce4cfb0ece27915bdb3b8f25bd52fae3a09e9d5425
-	b2sums_x86_64 = c0428a24dfcd4354e5b993a8301683b23006fbd71ae039f820276e341b69af2151d0e134606dc21240c31fa21807029383e798fa9dfc17138608dba60e7ccfac
-	b2sums_x86_64 = ca36996bbbcf8045c103fca717843f3c5585ebd5fe1c031a01c29a5edd5291bfe0c7206fa3c3b6c277b6832e7c35b4bee8af9768766116d981e9506d83c23166
+	source = https://github.com/stakira/OpenUtau/archive/refs/tags/build/0.1.529.tar.gz
+	source = openutau.desktop
+	source = openutau.svg
+	sha256sums = 3599a8d83c1e65d24dce026e9a889e6d526d1ce170cd0bc03f7700593998b501
+	sha256sums = 104e3f21f46958623fca959694f424036653e85a6b0cf7815d6a2251504db632
+	sha256sums = 490fd7489bb3c4225c3f2d1e96ba8320bd481da6eb031b97229dcf06997c2f5b
 
 pkgname = openutau
