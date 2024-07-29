@@ -1,7 +1,7 @@
 # Maintainer: Ash <xash at riseup d0t net>
 pkgname="mpv-quality-menu-git"
-pkgver=4.1.1.r1.gab40a0d
-pkgrel=3
+pkgver=r173.ab40a0d
+pkgrel=4
 pkgdesc="A userscript for MPV that allows you to change the streamed video and audio quality (ytdl-format) on the fly."
 arch=('any')
 url="https://github.com/christoph-heinrich/mpv-quality-menu"
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/mpv-quality-menu"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
