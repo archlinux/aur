@@ -4,8 +4,8 @@
 # Contributor: Niklas Wojtkowiak <aur.7xcqe@passmail.com>
 _pkgname='spacedrive'
 pkgname="${_pkgname}-bin"
-pkgver='0.4.0'
-pkgrel='2'
+pkgver='0.4.1'
+pkgrel='1'
 epoch='1'
 pkgdesc="A file manager from the future."
 arch=('x86_64')
@@ -14,7 +14,7 @@ _url_source='https://github.com/spacedriveapp/spacedrive'
 license=('AGPL3')
 source=("${_url_source}/releases/download/${pkgver}/Spacedrive-linux-x86_64.deb"
 	"desktop_patch.patch")
-sha256sums=('f192f10a89d441b353a3a2e39c5268773494a7bba79719bcea85a61ffd37f75b'
+sha256sums=('09aa395aa025207073a096e168a59fbee91b40b0609fdf162aa589877decd322'
             'd24fff5cc9e249dcc6fc6a4380bab6582de69fe5a9a1bd68e6f53d4fc27d161c')
 depends=(gtk3 ffmpeg4.4 ffmpeg webkit2gtk openssl-1.1 glibc gcc-libs glib2 pango libsoup cairo gdk-pixbuf2 libheif onnxruntime webkit2gtk-4.1 xdotool)
 provides=(spacedrive)
