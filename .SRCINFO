@@ -1,26 +1,27 @@
 pkgbase = android-armv7a-eabi-libtool
 	pkgdesc = A generic library support script (Android armv7a-eabi)
-	pkgver = 2.5.0
+	pkgver = 2.5.1
 	pkgrel = 1
 	url = https://www.gnu.org/software/libtool
 	arch = any
+	groups = android-libtool
 	license = GPL
 	makedepends = android-configure
 	makedepends = help2man
 	depends = android-ndk
 	depends = tar
-	provides = android-armv7a-eabi-libltdl=2.5.0
+	provides = android-armv7a-eabi-libltdl=2.5.1
 	conflicts = android-armv7a-eabi-libltdl
 	replaces = android-armv7a-eabi-libltdl
 	options = !strip
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://git.savannah.gnu.org/cgit/libtool.git/snapshot/libtool-2.5.0.tar.gz
-	source = gnulib.tgz::https://git.savannah.gnu.org/gitweb/?p=gnulib.git;a=snapshot;h=HEAD;sf=tgz
-	source = gnulib-bootstrap.zip::https://github.com/gnulib-modules/bootstrap/archive/refs/heads/master.zip
-	sha256sums = 730e866d17f87068b0601f219d4a7cf68f1640aa348b0a2a05e4aa7d4e0add8e
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = https://github.com/autotools-mirror/libtool/archive/refs/tags/v2.5.1.tar.gz
+	source = gnulib.tar.gz::https://github.com/coreutils/gnulib/archive/refs/heads/master.tar.gz
+	source = gnulib-bootstrap.tar.gz::https://github.com/gnulib-modules/bootstrap/archive/refs/heads/master.tar.gz
+	md5sums = 2789e678f0a727cb8bf597f99c096927
+	md5sums = SKIP
+	md5sums = SKIP
 
 pkgname = android-armv7a-eabi-libtool
