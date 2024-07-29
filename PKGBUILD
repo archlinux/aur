@@ -2,8 +2,8 @@
 # Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 
 pkgname=perl-pgplot
-pkgver=2.29
-pkgrel=3
+pkgver=2.30
+pkgrel=1
 pkgdesc='PGPLOT module for Perl'
 _dist=PGPLOT
 arch=(i686 x86_64)
@@ -13,7 +13,7 @@ depends=(perl pgplot)
 makedepends=(perl-devel-checklib perl-extutils-f77)
 source=("https://cpan.metacpan.org/authors/id/E/ET/ETJ/$_dist-$pkgver.tar.gz")
 options=('!emptydirs')
-sha256sums=(a23107bca507658b0960e0099ff0d7e90dbb75b878895a4d18b0d4777194ca9f)
+sha256sums=('4bd0de4bd5523fdc12871a69bbfe1fa9b12bf37795dda3534bf680419603287a')
 
 build() {
   cd "$srcdir/$_dist-$pkgver"

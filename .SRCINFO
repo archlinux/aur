@@ -1,7 +1,7 @@
 pkgbase = perl-pgplot
 	pkgdesc = PGPLOT module for Perl
-	pkgver = 2.29
-	pkgrel = 3
+	pkgver = 2.30
+	pkgrel = 1
 	url = https://metacpan.org/release/PGPLOT
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = perl-pgplot
 	depends = perl
 	depends = pgplot
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/E/ET/ETJ/PGPLOT-2.29.tar.gz
-	sha256sums = a23107bca507658b0960e0099ff0d7e90dbb75b878895a4d18b0d4777194ca9f
+	source = https://cpan.metacpan.org/authors/id/E/ET/ETJ/PGPLOT-2.30.tar.gz
+	sha256sums = 4bd0de4bd5523fdc12871a69bbfe1fa9b12bf37795dda3534bf680419603287a
 
 pkgname = perl-pgplot
