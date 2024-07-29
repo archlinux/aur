@@ -1,17 +1,17 @@
 pkgbase = nostr-relay-tray-bin
 	pkgdesc = A simple nostr relay tray.
-	pkgver = 1.5.1
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/CodyTseng/nostr-relay-tray
 	arch = x86_64
 	license = MIT
 	depends = electron28
-	provides = nostr-relay-tray=1.5.1
+	provides = nostr-relay-tray=1.6.0
 	conflicts = nostr-relay-tray
-	source = nostr-relay-tray-1.5.1.deb::https://github.com/CodyTseng/nostr-relay-tray/releases/download/v1.5.1/nostr-relay-tray_1.5.1_amd64.deb
-	source = LICENSE-1.5.1::https://raw.githubusercontent.com/CodyTseng/nostr-relay-tray/v1.5.1/LICENSE
+	source = nostr-relay-tray-1.6.0.deb::https://github.com/CodyTseng/nostr-relay-tray/releases/download/v1.6.0/nostr-relay-tray_1.6.0_amd64.deb
+	source = LICENSE-1.6.0::https://raw.githubusercontent.com/CodyTseng/nostr-relay-tray/v1.6.0/LICENSE
 	source = nostr-relay-tray.sh
-	sha256sums = 5ef441d50040d5d4e5b278a910cc05a09bfdc248d0ef608ff9f90eaef9d5147b
+	sha256sums = 4651a01f34ce263db5cad7b742b59cd646941a77d0312101f01a5b48de6eca70
 	sha256sums = 6aa57f1ed1b76d69cf0dbd1d68048c6a718a80589d762a8e2f2f2a389c802083
 	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
