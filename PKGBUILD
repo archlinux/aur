@@ -19,27 +19,16 @@ url="https://pytorch.org"
 license=('BSD')
 depends=(pybind11)
 makedepends=()
-source=(
-    "${_pkgname}-${pkgver}-cuda.zip::https://download.pytorch.org/libtorch/${_cuda_version}/libtorch-cxx11-abi-shared-with-deps-${pkgver}%2B${_cuda_version}.zip"
-    "${_pkgname}-${pkgver}-rocm.zip::https://download.pytorch.org/libtorch/${_rocm_version}/libtorch-cxx11-abi-shared-with-deps-${pkgver}%2B${_rocm_version}.zip"
-    "${_pkgname}-${pkgver}-cpu.zip::https://download.pytorch.org/libtorch/cpu/libtorch-cxx11-abi-shared-with-deps-${pkgver}%2Bcpu.zip"
-)
-noextract=(
-    "${_pkgname}-${pkgver}-cuda.zip"
-    "${_pkgname}-${pkgver}-rocm.zip"
-    "${_pkgname}-${pkgver}-cpu.zip"
-)
-sha256sums=(
-    "SKIP"
-    "SKIP"
-    "SKIP"
-)
+source=()
+sha256sums=()
 options=('!strip' '!debug' 'libtool' 'staticlibs')
 
 package_libtorch-cxx11abi-cuda() {
     pkgdesc="${_pkgdesc} (with CUDA support)"
     provides=("libtorch-cxx11abi-cuda")
     depends=(pybind11)
+    cd ${srcdir}
+    wget https://download.pytorch.org/libtorch/${_cuda_version}/libtorch-cxx11-abi-shared-with-deps-${pkgver}%2B${_cuda_version}.zip -O ${_pkgname}-${pkgver}-cuda.zip
     install -vdm755 "${pkgdir}/opt"
     cd ${pkgdir}/opt
     bsdtar -xv -f "${srcdir}/${_pkgname}-${pkgver}-cuda.zip"
@@ -51,6 +40,8 @@ package_libtorch-cxx11abi-rocm() {
     pkgdesc="${_pkgdesc} (with ROCM support)"
     provides=("libtorch-cxx11abi-rocm")
     depends=(pybind11)
+    cd ${srcdir}
+    wget https://download.pytorch.org/libtorch/${_rocm_version}/libtorch-cxx11-abi-shared-with-deps-${pkgver}%2B${_rocm_version}.zip -O ${_pkgname}-${pkgver}-rocm.zip
     install -vdm755 "${pkgdir}/opt"
     cd ${pkgdir}/opt
     bsdtar -xv -f "${srcdir}/${_pkgname}-${pkgver}-rocm.zip"
@@ -62,6 +53,8 @@ package_libtorch-cxx11abi-cpu() {
     pkgdesc="${_pkgdesc} (CPU only)"
     provides=("libtorch-cxx11abi-cpu")
     depends=(pybind11)
+    cd ${srcdir}
+    wget https://download.pytorch.org/libtorch/cpu/libtorch-cxx11-abi-shared-with-deps-${pkgver}%2Bcpu.zip -O ${_pkgname}-${pkgver}-cpu.zip
     install -vdm755 "${pkgdir}/opt"
     cd ${pkgdir}/opt
     bsdtar -xv -f "${srcdir}/${_pkgname}-${pkgver}-cpu.zip"
