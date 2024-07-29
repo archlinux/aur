@@ -8,8 +8,8 @@ _pkgbase=gdal
 pkgbase=gdal-libkml-filegdb
 pkgname=(gdal-libkml-filegdb python-gdal-libkml-filegdb)
 pkgver=3.9.1
-pkgrel=1
-provides=('gdal')
+pkgrel=2
+provides=("gdal=${pkgver}")
 pkgdesc="A translator library for raster and vector geospatial data formats (with libkml and filegdb support)"
 arch=(x86_64)
 url="https://gdal.org/"
@@ -83,7 +83,6 @@ build() {
 }
 
 package_gdal-libkml-filegdb () {
-  provides+=('gdal-libkml-filegdb')
   conflicts=('gdal')
   depends=(proj blosc crypto++ curl libdeflate expat libfreexl geos libgeotiff
            giflib libjpeg-turbo json-c xz libxml2 lz4 unixodbc ocl-icd openssl
@@ -113,7 +112,7 @@ package_gdal-libkml-filegdb () {
 package_python-gdal-libkml-filegdb () {
   pkgdesc="Python bindings for GDAL"
   depends=("gdal-libkml-filegdb=$pkgver" 'python-numpy')
-  provides=('python-gdal')
+  provides=("python-gdal=${pkgver}")
   conflicts=('python-gdal')
 
   install -d "${pkgdir}"/usr/{bin,lib}
