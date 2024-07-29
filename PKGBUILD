@@ -3,7 +3,7 @@
 _dlname="tinyMediaManager"
 _pkgname="${_dlname,,}"
 pkgname="${_pkgname}-bin"
-pkgver=5.0.8
+pkgver=5.0.9
 pkgrel=1
 pkgdesc="A media management tool written in Java/Swing."
 provides=("${_pkgname}")
@@ -18,8 +18,8 @@ source_x86_64=("https://release.${_pkgname}.org/v${pkgver%%.*}/dist/${_dlname}-$
 source_aarch64=("https://release.${_pkgname}.org/v${pkgver%%.*}/dist/${_dlname}-${pkgver}-linux-arm64.tar.xz")
 sha256sums=('08499a10730b6af6113c4a56e4ed7bed068d7fed282080dfd550b66d6a8ac9f5'
             '79b50c260b1c1c1f695c0ea1d743742d11d9a1337a2bc73985e4428752492f0f')
-sha256sums_x86_64=('9734413ce8670ae426c70c2ca33cdd54e5c40438c789c04c3257193904de47bc')
-sha256sums_aarch64=('d934ea7357e53a06b6705e1da0a7705d20cbdb00a5848c7ab2ecd550ce1b6905')
+sha256sums_x86_64=('229937b80c5ad7ddd10df9e22ea7ab123e41b2a11aabcc303343c56b10b271da')
+sha256sums_aarch64=('56946b9cfe7a5a4f27d2d90cb90c177efd03a47c9ae62752bcafec7e35ae3fce')
 _mark1=$(if [[ $CARCH == x86_64 ]]; then echo "linux";      elif [[ $CARCH == aarch64 ]]; then echo "arm";            fi)
 _mark2=$(if [[ $CARCH == x86_64 ]]; then echo "${_dlname}"; elif [[ $CARCH == aarch64 ]]; then echo "${_dlname}-arm"; fi)
 
