@@ -1,0 +1,20 @@
+pkgbase = git-credential-msal
+	pkgdesc = Git credential helper for Microsoft Azure authentication
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://binary-eater.github.io/posts/git_oidc/
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools-scm
+	depends = python-pyjwt
+	depends = python-keyring
+	depends = python-pyxdg
+	depends = python-msal
+	depends = git>=2.46
+	source = git+https://github.com/Binary-Eater/git-credential-msal#tag=v1.0.0
+	b2sums = 131031e64fbdc40ab5fad317fd3ba5eb9953fe45400aff5038001089a0598de6eaf5c88fc6a9ee29c2fa144ca282ce183d8cba1fef02076c14b56f6302ff1eb2
+
+pkgname = git-credential-msal
