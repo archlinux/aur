@@ -12,7 +12,7 @@ provides=('lze-web')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 package(){
-git clone https://github.com/linzeennnn/lze-web.git 
+git clone --depth=1 https://github.com/linzeennnn/lze-web.git 
 install -t  "${pkgdir}/" "lze-web/opt"
 install -t  "${pkgdir}/" "lze-web/usr"
 install -t  "${pkgdir}/" "lze-web/etc"
