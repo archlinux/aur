@@ -3,7 +3,7 @@
 
 pkgname=gftp
 pkgver=2.9.1b
-pkgrel=5
+pkgrel=6
 pkgdesc="A multithreaded ftp client for X Windows"
 arch=('x86_64')
 url="https://www.gftp.org/"
@@ -20,6 +20,7 @@ prepare() {
 }
 
 build() {
+   CFLAGS+=' -Wno-error=incompatible-pointer-types'
    cd "$srcdir/$pkgname-$pkgver"
    ./autogen.sh
    ./configure --prefix=/usr --mandir=/usr/share/man #--enable-gtk3

@@ -1,7 +1,7 @@
 pkgbase = gftp
 	pkgdesc = A multithreaded ftp client for X Windows
 	pkgver = 2.9.1b
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.gftp.org/
 	arch = x86_64
 	license = MIT
