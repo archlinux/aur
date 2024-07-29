@@ -1,15 +1,15 @@
-# Maintainer: irmluity <45vw4yz8g@mozmail.com>
+# Contributor: irmluity <45vw4yz8g@mozmail.com>
 
 pkgname=python-pybase64-git
 _pkgname=pybase64
-pkgver=1.3.0
+pkgver=1.3.2.r84.g94b9e83
 pkgrel=1
 pkgdesc="Fast Base64 encoding/decoding in Python"
 arch=("any")
 url="https://github.com/mayeut/pybase64"
 license=('BSD-2-Clause')
 depends=('python')
-makedepends=('git' 'python-setuptools' 'python-pip')
+makedepends=('git' 'python-setuptools' 'cmake')
 provides=(${_pkgname})
 source=(
     "git+https://github.com/mayeut/pybase64"
@@ -28,9 +28,14 @@ prepare() {
     git submodule update --init --recursive
 }
 
+build() {
+    cd "$srcdir/${_pkgname}"
+    python setup.py build
+}
+
 package() {
     cd "$srcdir/${_pkgname}"
-    python -m pip install --no-deps --ignore-installed --prefix="$pkgdir/usr" .
+    python setup.py install --prefix=/usr --root="$pkgdir"
     install -Dm644 LICENSE -t ${pkgdir}/usr/share/licenses/python-${_pkgname}/
 }
 
