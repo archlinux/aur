@@ -2,7 +2,7 @@
 
 pkgname=ophis-git
 _pkgname=Ophis
-pkgver=r107.99f074d
+pkgver=r119.6a5e5a5
 pkgrel=1
 epoch=
 pkgdesc="An assembler for the 6502 microprocessor"
@@ -32,16 +32,16 @@ pkgver()
 
 build()
 {
-  cd ${srcdir}/${_pkgname}/src
+  cd ${srcdir}/${_pkgname}
 
-  python setup.py build
+  python -m build
 }
 
 package()
 {
-  cd ${srcdir}/${_pkgname}/src
+  cd ${srcdir}/${_pkgname}
 
-  python setup.py install --root=${pkgdir} --optimize=1
+  python -m pip install --root=${pkgdir} .
 
   cd ${srcdir}/${_pkgname}
   install -Dm 644 "README" "${pkgdir}/usr/share/licenses/${pkgname}/README"
