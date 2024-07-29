@@ -3,7 +3,7 @@
 _pkgname=heif-convert
 pkgname=python-heif-convert
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-Platform command line tool written in Python to convert HEIF images"
 arch=('any')
 url='https://github.com/NeverMendel/heif-convert'
@@ -11,6 +11,7 @@ license=('MIT')
 depends=(
     'python>=3.3'
     'libheif'
+    'python-pillow'
     'python-pillow_heif'
 )
 makedepends=('python-setuptools')

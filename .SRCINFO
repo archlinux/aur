@@ -1,13 +1,14 @@
 pkgbase = python-heif-convert
 	pkgdesc = Multi-Platform command line tool written in Python to convert HEIF images
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NeverMendel/heif-convert
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python>=3.3
 	depends = libheif
+	depends = python-pillow
 	depends = python-pillow_heif
 	source = python-heif-convert-1.1.1.tar.gz::https://github.com/NeverMendel/heif-convert/archive/v1.1.1.tar.gz
 	sha256sums = 4af07f06bf278c6aa5c0aaacfb2b7aa5bc6aa6fbf9e64d90529c8d408ffbaca5
