@@ -2,8 +2,8 @@
 
 pkgname=openpace-git
 _pkgname=openpace
-pkgver=1.1.3.r11.g1466126
-pkgrel=2
+pkgver=1.1.3.r12.g16f9947
+pkgrel=1
 pkgdesc="OpenPACE - Cryptographic library for EAC version 2"
 arch=('i686' 'x86_64')
 url="https://frankmorgner.github.io/openpace"
