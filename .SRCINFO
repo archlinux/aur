@@ -1,7 +1,7 @@
 pkgbase = dymoprint
 	pkgdesc = Linux Software to print with LabelManager PnP from Dymo
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/computerlyrik/dymoprint
 	arch = any
 	license = Apache
@@ -12,7 +12,7 @@ pkgbase = dymoprint
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	makedepends = python-hatchling
-	makedepends = python-hatch-vcs
+	makedepends = python-hatch-vcs<0.4
 	depends = python
 	depends = python-appdirs
 	depends = python-pillow

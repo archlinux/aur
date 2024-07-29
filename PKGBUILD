@@ -1,7 +1,7 @@
 # Maintainer: Marcin Kornat <rarvolt@gmail.com>
 pkgname=dymoprint
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux Software to print with LabelManager PnP from Dymo"
 arch=('any')
 license=('Apache')
@@ -26,7 +26,7 @@ makedepends=(
     'python-setuptools'
     'python-wheel'
     'python-hatchling'
-    'python-hatch-vcs'
+    'python-hatch-vcs<0.4'
     )
 source=(
         "${pkgname}-${pkgver}::git+https://github.com/computerlyrik/dymoprint.git#tag=v${pkgver}"
