@@ -1,6 +1,6 @@
 # Maintainer: Taylor Beeston <beeston.taylor@gmail.com>
 pkgname=image-colorizer
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Snap an image to a colorscheme extremely quickly"
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=(
   'wgpu-git: WebGPU implementation (AUR)'
 )
 source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
-sha256sums=('11ccc0c2a4e8b1ec5d16785b7b75ec22a33bc979a310a879deb2f29b7574e08e')  # This will be replaced with the actual checksum in CI
+sha256sums=('c7eb202f4245674319180b06106dc977fa5cdc3ec1efd2e2abfa5eeb816b9abd')  # This will be replaced with the actual checksum in CI
 
 build() {
   cd "$pkgname-$pkgver"

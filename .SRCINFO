@@ -1,6 +1,6 @@
 pkgbase = image-colorizer
 	pkgdesc = Snap an image to a colorscheme extremely quickly
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/TaylorBeeston/image-colorizer
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = image-colorizer
 	optdepends = vulkan-intel: for Vulkan support on Intel GPUs
 	optdepends = vulkan-radeon: for Vulkan support on AMD GPUs
 	optdepends = wgpu-git: WebGPU implementation (AUR)
-	source = image-colorizer-1.0.1.tar.gz::https://crates.io/api/v1/crates/image-colorizer/1.0.1/download
-	sha256sums = 11ccc0c2a4e8b1ec5d16785b7b75ec22a33bc979a310a879deb2f29b7574e08e
+	source = image-colorizer-1.0.2.tar.gz::https://crates.io/api/v1/crates/image-colorizer/1.0.2/download
+	sha256sums = c7eb202f4245674319180b06106dc977fa5cdc3ec1efd2e2abfa5eeb816b9abd
 
 pkgname = image-colorizer
