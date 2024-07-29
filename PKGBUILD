@@ -1,6 +1,6 @@
 # Maintainer: thepasto <thepasto@gmail.com>
 pkgname=kodi-addon-pvr-iptvsimple
-pkgver=21.8.4
+pkgver=21.8.5
 pkgrel=1
 pkgdesc='IPTV Simple PVR client addon for Kodi'
 _koditarget=Omega
@@ -14,7 +14,7 @@ makedepends=('cmake' 'kodi-platform' 'kodi-dev' 'pugixml')
 conflicts=('kodi-addon-pvr-iptvsimple-git');
 depends=('kodi')
 source=("https://github.com/kodi-pvr/${_gitname}/archive/${pkgver}-${_koditarget}.tar.gz")
-sha256sums=('287d9fe5ca348f70b7fae96be7de0e0f092e9a00a3e8043c67ad24bd77a9a82d')
+sha256sums=('aa463ad43e0dda1aaf10f5fca562823d91762671ad5b5077f5dbaeb7dc425fa7')
 
 #prepare() {
     #cd xbmc-${_kodiver}-${_koditarget}
@@ -26,7 +26,6 @@ sha256sums=('287d9fe5ca348f70b7fae96be7de0e0f092e9a00a3e8043c67ad24bd77a9a82d')
 build() {
     mkdir -p "${_gitname}-${pkgver}-${_koditarget}/build"
     cd "${_gitname}-${pkgver}-${_koditarget}/build"
-    
     CFLAGS="$CFLAGS -Wp,-U_GLIBCXX_ASSERTIONS"
     CXXFLAGS="$CXXFLAGS -Wp,-U_GLIBCXX_ASSERTIONS"
 
