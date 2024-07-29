@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Mufeed Ali <lastweakness@tuta.io>
 pkgname=dialect
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc="A translation app for GNOME."
 arch=('any')
@@ -25,7 +25,7 @@ makedepends=(
 )
 source=("git+https://github.com/dialect-app/dialect.git#tag=$pkgver"
         'git+https://github.com/dialect-app/po.git')
-sha256sums=('b28b2f28dad13b83cb4348555eeaccc3da1a8a78b39e6db9cad2538ab8a1b61e'
+sha256sums=('72e49c41bcc17c2983f25775ac02d0dd106e67517f030df97174ea4f87ed0a09'
             'SKIP')
 
 prepare() {
