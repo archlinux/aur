@@ -1,0 +1,21 @@
+pkgbase = yaabe-git
+	pkgdesc = Yet Another Atom BIOS Editor - Parse and edit AMD/ATI vBIOS
+	pkgver = v0.5.0.r531.b568c55
+	pkgrel = 1
+	url = https:github.com/netblock/yaabe
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = meson
+	makedepends = ninja
+	makedepends = git
+	depends = glibc
+	depends = zlib
+	depends = glib2
+	depends = gtk4
+	depends = python-json5
+	provides = yaabe
+	conflicts = yaabe
+	source = yaabe-git::git+https://github.com/netblock/yaabe.git
+	md5sums = SKIP
+
+pkgname = yaabe-git
