@@ -1,21 +1,19 @@
 pkgbase = lampswitch
-	pkgdesc = Indicator and control applet for web services
+	pkgdesc = Indicator and control applet for Web services
 	pkgver = 23.12.1
 	pkgrel = 1
 	url = https://tari.in/www/software/lampswitch
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = pentium4
 	license = GPL-3.0-or-later
-	makedepends = python-setuptools
-	makedepends = python-polib
+	makedepends = cmake
 	depends = gtk3
-	depends = python-gobject
 	depends = libayatana-appindicator
-	depends = python-psutil
 	depends = hicolor-icon-theme
-	depends = python
 	depends = glib2
-	depends = gdk-pixbuf2
 	depends = bash
+	depends = glibc
 	source = lampswitch-23.12.1.tar.gz::https://github.com/tari01/lampswitch/archive/23.12.1.tar.gz
 	md5sums = b4f13c6b496d37324089dc3ad760698e
 

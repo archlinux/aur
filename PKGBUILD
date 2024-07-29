@@ -4,24 +4,24 @@
 pkgname="lampswitch"
 pkgver="23.12.1"
 pkgrel=1
-pkgdesc="Indicator and control applet for web services"
-arch=("any")
+pkgdesc="Indicator and control applet for Web services"
+arch=("i686" "x86_64" "pentium4")
 url="https://tari.in/www/software/lampswitch"
 license=("GPL-3.0-or-later")
-depends=("gtk3" "python-gobject" "libayatana-appindicator" "python-psutil" "hicolor-icon-theme" "python" "glib2" "gdk-pixbuf2" "bash")
-makedepends=("python-setuptools" "python-polib")
+depends=("gtk3" "libayatana-appindicator" "hicolor-icon-theme" "glib2" "bash" "glibc")
+makedepends=("cmake")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tari01/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=("b4f13c6b496d37324089dc3ad760698e")
 
 build()
 {
-    cd ${srcdir}/${pkgname}-${pkgver}
-    python setup.py build
+    cd ${pkgname}-${pkgver}
+    cmake -S . -B build
+    cmake --build build
 }
 
 package()
 {
-    cd ${srcdir}/${pkgname}-${pkgver}
-    python setup.py install --root="${pkgdir}" --optimize=1
-
+    cd ${pkgname}-${pkgver}
+    DESTDIR="${pkgdir}" cmake --install build
 }
