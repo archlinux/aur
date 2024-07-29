@@ -1,0 +1,20 @@
+pkgbase = equibop-bin
+	pkgdesc = A Equibop fork cross platform electron-based desktop app aiming to give you a snappier Discord experience with Suncord pre-installed
+	pkgver = 2.0.6
+	pkgrel = 2
+	url = https://github.com/Equicord/Equibop
+	arch = aarch64
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = electron31
+	provides = equibop=2.0.6
+	conflicts = equibop
+	conflicts = equibop-git
+	source = equibop.sh
+	sha256sums = 4549a54cf532dbca791f3c51e70bfb5900a5d742ceb9f60498d8dfe26b4e57bf
+	source_aarch64 = equibop-2.0.6-aarch64.deb::https://github.com/verticalsync/Sunroof/releases/download/v1.6.1/sunroof_1.5.8_arm64.deb
+	sha256sums_aarch64 = 0db70b0af415f5e574b56977727d8c2c6a7f17498d9fbbc2eccea03e864987ac
+	source_x86_64 = equibop-2.0.6-x86_64.deb::https://github.com/verticalsync/Sunroof/releases/download/v1.6.1/sunroof_1.5.8_amd64.deb
+	sha256sums_x86_64 = a484ba8dd77dcf2f535a8f98c9fa777d4094925d00ec87ff15653a00472a7d99
+
+pkgname = equibop-bin
