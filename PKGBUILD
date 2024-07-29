@@ -1,8 +1,9 @@
-# Maintainer: Filipe Bertelli <filipebertelli@tutanota.com>
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Contributor: Filipe Bertelli <filipebertelli@tutanota.com>
 # Contributor: "Darren Ng <$(base64 --decode <<<VW4xR2ZuQGdtYWlsLmNvbQo=)>"
 
 pkgname=genimage
-pkgver=17
+pkgver=18
 pkgrel=1
 pkgdesc="Tool to generate multiple filesystem and flash images from a tree"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -16,12 +17,12 @@ optdepends=(
     'qemu: qemu-img'
 	'uboot-tools: mkimage'
     'rauc'
-  	'android-simg2img: simg2img'
-    'simg-tools: simg2img'
+#  	'android-simg2img: simg2img'
+#    'simg-tools: simg2img'
 )
 
 source=($pkgname-$pkgver.tar.gz::https://github.com/pengutronix/$pkgname/archive/v$pkgver.tar.gz)
-sha256sums=('466a243cd104720f956e5ea305a64322ba2722b239a1520a7481f8ea904c0d13')
+sha256sums=('af555b9d9f17301ab4cc2cda4849afd88d2b97ae4cc8badb9b8448299d6f6080')
 
 build() {
   cd $pkgname-$pkgver
