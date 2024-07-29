@@ -1,9 +1,10 @@
 pkgbase = android-x86-64-p11-kit
-	pkgdesc = Loads and enumerates PKCS#11 modules (android)
+	pkgdesc = Loads and enumerates PKCS#11 modules (Android x86-64)
 	pkgver = 0.25.3
 	pkgrel = 1
 	url = https://p11-glue.freedesktop.org
 	arch = any
+	groups = android-p11-kit
 	license = BSD
 	makedepends = android-meson
 	depends = android-x86-64-libffi
@@ -17,7 +18,7 @@ pkgbase = android-x86-64-p11-kit
 	validpgpkeys = C0F67099B808FB063E2C81117BFB1108D92765AF
 	validpgpkeys = 462225C3B46F34879FC8496CD605848ED7E69871
 	validpgpkeys = 5D46CB0F763405A7053556F47A75A648B3F9220C
-	b2sums = 5c695c1ef95edf4bbbab001aa634076c433df0bc89cb8104deaec2ce00c6908640e467755b49c6900e5d7d5d81e1a3871f4978a212c6f6ae088386ac0b95289a
-	b2sums = SKIP
+	md5sums = 2610cef2951d83d7037577eaae1acb54
+	md5sums = SKIP
 
 pkgname = android-x86-64-p11-kit
