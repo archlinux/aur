@@ -5,9 +5,10 @@ pkgbase = rucola-notes
 	url = https://github.com/Linus-Mussmaecher/rucola
 	arch = x86_64
 	license = GPL-3.0-only
+	makedepends = cargo
 	provides = rucola-notes
 	conflicts = rucola-notes
-	source = https://github.com/Linus-Mussmaecher/rucola/releases/download/v0.3.6/rucola-notes-0.3.6-x86_64.tar.gz
-	sha256sums = cc2144ecb52dee54e2ce2f1d0250b244a0934952ddf91c0ad1857aede2ee820b
+	source = rucola-notes-0.3.6.tar.gz::https://github.com/Linus-Mussmaecher/rucola/archive/v0.3.6.tar.gz
+	sha256sums = 5cd3d1336c053397ad39516f451d002a5cfd21da3dac97dcad764b5f22cb1329
 
 pkgname = rucola-notes
