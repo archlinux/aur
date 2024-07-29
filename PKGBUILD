@@ -2,12 +2,13 @@
 
 pkgname=ctrld-bin
 pkgver=1.3.7
-pkgrel=2
+pkgrel=3
 pkgdesc="A highly configurable, multi-protocol DNS forwarding proxy"
 arch=('x86_64')
 url="https://github.com/Control-D-Inc/ctrld"
 license=('MIT')
 provides=('ctrld')
+backup=('etc/controld/ctrld.toml')
 source=(
   "${url}/releases/download/v${pkgver}/ctrld_${pkgver}_linux_amd64.tar.gz"
   "ctrld.service"
