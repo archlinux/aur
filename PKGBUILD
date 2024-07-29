@@ -2,7 +2,7 @@
 
 pkgname=websum-bin
 _reponame=websum
-pkgver=v0.2.1
+pkgver=v0.3.0
 pkgrel=1
 pkgdesc="Next-gen integrity checker written in Rust"
 provides=('websum')
@@ -11,7 +11,7 @@ url="https://github.com/yilmaz08/websum"
 license=('MIT')
 conflicts=('websum-git')
 source=("$_reponame-$pkgver::https://github.com/yilmaz08/$_reponame/releases/download/$pkgver/$_reponame-$pkgver")
-sha256sums=('e0770b4f999025fea28906906cfae7cdbbfe70bb5fa8d752f9e909e743e7c8bc')
+sha256sums=('3a8f17879ff82b7f2662310a6bc168ea41ed559c1e40b10e423d94c5c4ea7abf')
 
 package() {
 	install -Dm755 $srcdir/$_reponame-$pkgver "${pkgdir}/usr/bin/${_reponame}"
