@@ -1,9 +1,10 @@
 pkgbase = scx-scheds-git
-	pkgdesc = sched_ext schedulers
+	pkgdesc = sched_ext schedulers and tools
 	pkgver = 0.1.10.r166.g769e6c4
 	pkgrel = 1
 	url = https://github.com/sched-ext/scx
 	arch = x86_64
+	arch = aarch64
 	license = GPL-2.0-only
 	makedepends = git
 	makedepends = python
@@ -19,7 +20,6 @@ pkgbase = scx-scheds-git
 	conflicts = scx-scheds
 	options = !lto
 	backup = etc/default/scx
-	backup = etc/systemd/journald@sched-ext.conf
 	source = git+https://github.com/sched-ext/scx
 	sha256sums = SKIP
 
