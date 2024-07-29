@@ -24,8 +24,6 @@ fi
   systemctl enable --now httpd.service
 sudo systemctl enable --now wessh.service
 }
-pre_upgrade() {
-}
 post_upgrade() {
   post_remove
 	post_install
