@@ -4,12 +4,12 @@
 
 pkgname=cytoscape
 pkgver=3.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Network Data Integration, Analysis, and Visualization in a Box"
 arch=('any')
 url=https://www.cytoscape.org
 license=('LGPL-2.1-only')
-depends=('java-runtime=17' 'bash')
+depends=('jdk17-openjdk' 'bash')
 optdepends=('opencl-driver: for OpenCL support')
 source=("https://github.com/cytoscape/cytoscape/releases/download/${pkgver}/cytoscape-unix-${pkgver}.tar.gz"
         "${pkgname}.desktop"

@@ -1,11 +1,11 @@
 pkgbase = cytoscape
 	pkgdesc = Network Data Integration, Analysis, and Visualization in a Box
 	pkgver = 3.10.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.cytoscape.org
 	arch = any
 	license = LGPL-2.1-only
-	depends = java-runtime=17
+	depends = jdk17-openjdk
 	depends = bash
 	optdepends = opencl-driver: for OpenCL support
 	source = https://github.com/cytoscape/cytoscape/releases/download/3.10.2/cytoscape-unix-3.10.2.tar.gz
