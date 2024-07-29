@@ -5,12 +5,13 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-prrte
-pkgver=3.0.5
+pkgver=3.0.6
 pkgrel=1
 arch=('any')
 pkgdesc="PMIx Reference RunTime Environment (Android ${_android_arch})"
 url="https://github.com/openpmix/prrte"
 license=('BSD-3-Clause')
+groups=('android-prrte')
 depends=("android-${_android_arch}-hwloc"
          "android-${_android_arch}-libevent"
          "android-${_android_arch}-openpmix")
@@ -21,13 +22,13 @@ makedepends=("android-${_android_arch}-hwloc"
              'perl')
 optdepends=("android-${_android_arch}-openssh: for execution on remote hosts via plm_ssh_agent")
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("$url/releases/download/v$pkgver/prrte-$pkgver.tar.gz"
+source=("${url}/releases/download/v${pkgver}/prrte-${pkgver}.tar.gz"
         'prte-mca-params.conf'
         'prrte-ssh'
         '0001-Force-32-bits-compile.patch'
         '0002-Unversioned-libs.patch'
         '0003-Remove-getdtablesize.patch')
-md5sums=('099bfb7922146b5199e5e19a3ca624f2'
+md5sums=('e541663d71fd9c44fe9cac3353fbbd1c'
          '846d0affc94d41dafa76adb72abe210b'
          'aed50d2a9dae9f25179547c76332eae2'
          '33b8d8a53fb67b636835e9e3e955ff77'
@@ -35,7 +36,7 @@ md5sums=('099bfb7922146b5199e5e19a3ca624f2'
          '7ff35a9373c7aae9bd177312833388c0')
 
 prepare() {
-    cd "$srcdir/prrte-$pkgver"
+    cd "${srcdir}/prrte-${pkgver}"
     source android-env ${_android_arch}
 
     ./autogen.pl
@@ -62,7 +63,7 @@ prepare() {
 }
 
 build() {
-    cd "$srcdir/prrte-$pkgver"
+    cd "${srcdir}/prrte-${pkgver}"
     source android-env ${_android_arch}
 
     # set environment variables for reproducible build
@@ -71,7 +72,7 @@ build() {
     export USER=builduser
 
     # Platform specific patches
-    case "$_android_arch" in
+    case "${_android_arch}" in
         aarch64)
              host=armv8-unknown-linux
             ;;
@@ -90,9 +91,9 @@ build() {
 
     ./configure \
         --host=${host} \
-        --prefix=${ANDROID_PREFIX} \
-        --libdir=${ANDROID_PREFIX_LIB} \
-        --includedir=${ANDROID_PREFIX_INCLUDE} \
+        --prefix="${ANDROID_PREFIX}" \
+        --libdir="${ANDROID_PREFIX_LIB}" \
+        --includedir="${ANDROID_PREFIX_INCLUDE}" \
         --enable-shared \
         --enable-static \
         --sysconfdir="${ANDROID_PREFIX_ETC}/prtte" \
@@ -102,14 +103,14 @@ build() {
 }
 
 package() {
-    cd "$srcdir/prrte-$pkgver"
+    cd "${srcdir}/prrte-${pkgver}"
     source android-env ${_android_arch}
 
-    make DESTDIR="$pkgdir" install
+    make DESTDIR="${pkgdir}" install
     rm -f "$pkgdir/${ANDROID_PREFIX_BIN}"/*
     rm -rf "$pkgdir/${ANDROID_PREFIX_SHARE}"
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
     rm -f "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so.*
 
     # install our dummy ssh wrapper
