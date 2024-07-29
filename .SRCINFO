@@ -15,6 +15,7 @@ pkgbase = ntopng
 	makedepends = libxml2
 	makedepends = npm
 	makedepends = jq
+	makedepends = python-setuptools
 	depends = redis
 	depends = libmariadbclient
 	depends = libpcap
